@@ -4,24 +4,24 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.km;
-import com.tencent.mm.g.a.oq;
-import com.tencent.mm.g.a.qn;
-import com.tencent.mm.g.a.qo;
+import com.tencent.mm.g.a.kv;
+import com.tencent.mm.g.a.oz;
+import com.tencent.mm.g.a.qy;
+import com.tencent.mm.g.a.qz;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.protocal.j.h;
 import com.tencent.mm.protocal.j.i;
 import com.tencent.mm.protocal.x.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.j;
 
 public class PluginSecInfoReport
   extends f
   implements b
 {
-  private static ao xnE = null;
+  private static ap yBF = null;
   private n.a appForegroundListener;
   
   public PluginSecInfoReport()
@@ -32,14 +32,14 @@ public class PluginSecInfoReport
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(89144);
-        ai.cin();
+        aj.cmR();
         AppMethodBeat.o(89144);
       }
       
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(89143);
-        if (ai.cin()) {
+        if (aj.cmR()) {
           PluginSecInfoReport.access$000(PluginSecInfoReport.this);
         }
         AppMethodBeat.o(89143);
@@ -51,63 +51,81 @@ public class PluginSecInfoReport
   private void TrustIdRequestAsync()
   {
     AppMethodBeat.i(89162);
-    if (xnE == null)
+    if (yBF == null)
     {
-      ac.e("MicroMsg.PSIR", "[debug] workerposter is null, give up doing rest ops.");
+      ad.e("MicroMsg.PSIR", "[debug] workerposter is null, give up doing rest ops.");
       AppMethodBeat.o(89162);
       return;
     }
-    if ((com.tencent.mm.plugin.secinforeport.a.d.xnP.as(3, 86400000L)) || (!com.tencent.mm.plugin.normsg.a.b.vor.dkE()))
+    if ((com.tencent.mm.plugin.secinforeport.a.d.yBQ.az(3, 86400000L)) || (!com.tencent.mm.plugin.normsg.a.b.wtJ.duQ()))
     {
-      ac.i("MicroMsg.PSIR", "[+] req task posted.");
-      if ((i.GqL) && (i.GqK) && (ai.getContext().getSharedPreferences(ai.eUX(), 0).getBoolean("gprs_alert", true)))
+      ad.i("MicroMsg.PSIR", "[+] req task posted.");
+      if ((j.Icz) && (j.Icy) && (aj.getContext().getSharedPreferences(aj.fkC(), 0).getBoolean("gprs_alert", true)))
       {
-        ac.i("MicroMsg.PSIR", "CTA alert is not checked Return here.");
+        ad.i("MicroMsg.PSIR", "CTA alert is not checked Return here.");
         AppMethodBeat.o(89162);
         return;
       }
-      xnE.post(new PluginSecInfoReport.4(this));
+      yBF.post(new PluginSecInfoReport.4(this));
     }
     AppMethodBeat.o(89162);
   }
   
-  private void asyncReportFinderSecurityInfoThroughCgi(int paramInt)
+  private void asyncReportFinderSecurityInfoThroughCgi(final int paramInt)
   {
-    AppMethodBeat.i(207469);
-    if (xnE == null)
+    AppMethodBeat.i(197164);
+    if (yBF == null)
     {
-      ac.e("MicroMsg.PSIR", "[debug] workerposter[finder] is null, give up doing rest ops.");
-      AppMethodBeat.o(207469);
+      ad.e("MicroMsg.PSIR", "[debug] workerposter[finder] is null, give up doing rest ops.");
+      AppMethodBeat.o(197164);
       return;
     }
-    xnE.post(new PluginSecInfoReport.12(this, paramInt));
-    AppMethodBeat.o(207469);
+    yBF.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(89154);
+        ad.i("MicroMsg.PSIR", "[+] report finder task start running.");
+        try
+        {
+          com.tencent.mm.plugin.secinforeport.a.d.yBQ.OX(paramInt);
+          AppMethodBeat.o(89154);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          ad.printErrStackTrace("MicroMsg.PSIR", localThrowable, "[finder] unexpected exception was thrown.", new Object[0]);
+          AppMethodBeat.o(89154);
+        }
+      }
+    });
+    AppMethodBeat.o(197164);
   }
   
   private void asyncReportPaySecurityInfoThroughCgi()
   {
     AppMethodBeat.i(89160);
-    if (xnE == null)
+    if (yBF == null)
     {
-      ac.e("MicroMsg.PSIR", "[debug] workerposter[yap] is null, give up doing rest ops.");
+      ad.e("MicroMsg.PSIR", "[debug] workerposter[yap] is null, give up doing rest ops.");
       AppMethodBeat.o(89160);
       return;
     }
-    xnE.post(new Runnable()
+    yBF.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(89153);
-        ac.i("MicroMsg.PSIR", "[+] report yap task start running.");
+        ad.i("MicroMsg.PSIR", "[+] report yap task start running.");
         try
         {
-          com.tencent.mm.plugin.secinforeport.a.d.xnP.dBC();
+          com.tencent.mm.plugin.secinforeport.a.d.yBQ.dMZ();
           AppMethodBeat.o(89153);
           return;
         }
         catch (Throwable localThrowable)
         {
-          ac.printErrStackTrace("MicroMsg.PSIR", localThrowable, "[yap] unexpected exception was thrown.", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.PSIR", localThrowable, "[yap] unexpected exception was thrown.", new Object[0]);
           AppMethodBeat.o(89153);
         }
       }
@@ -118,19 +136,19 @@ public class PluginSecInfoReport
   private void reportSecurityInfoAsync(int paramInt)
   {
     AppMethodBeat.i(89161);
-    if (xnE == null)
+    if (yBF == null)
     {
-      ac.e("MicroMsg.PSIR", "[tomys] workerposter is null, give up doing rest ops.");
+      ad.e("MicroMsg.PSIR", "[tomys] workerposter is null, give up doing rest ops.");
       AppMethodBeat.o(89161);
       return;
     }
-    if (com.tencent.mm.plugin.secinforeport.a.d.xnP.ar(1, 86400000L))
+    if (com.tencent.mm.plugin.secinforeport.a.d.yBQ.ay(1, 86400000L))
     {
-      ac.i("MicroMsg.PSIR", "[+] report task posted.");
-      xnE.post(new PluginSecInfoReport.2(this, paramInt));
+      ad.i("MicroMsg.PSIR", "[+] report task posted.");
+      yBF.post(new PluginSecInfoReport.2(this, paramInt));
     }
-    if (com.tencent.mm.plugin.secinforeport.a.d.xnP.ar(2, 86400000L)) {
-      xnE.post(new PluginSecInfoReport.3(this));
+    if (com.tencent.mm.plugin.secinforeport.a.d.yBQ.ay(2, 86400000L)) {
+      yBF.post(new PluginSecInfoReport.3(this));
     }
     AppMethodBeat.o(89161);
   }
@@ -138,8 +156,8 @@ public class PluginSecInfoReport
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(89158);
-    com.tencent.mm.plugin.secinforeport.a.d.a(c.xnI);
-    com.tencent.mm.plugin.secinforeport.a.a.a(a.xnC);
+    com.tencent.mm.plugin.secinforeport.a.d.a(c.yBJ);
+    com.tencent.mm.plugin.secinforeport.a.a.a(a.yBD);
     AppMethodBeat.o(89158);
   }
   
@@ -155,27 +173,27 @@ public class PluginSecInfoReport
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(89159);
-    if (xnE == null) {}
+    if (yBF == null) {}
     try
     {
-      xnE = new ao("SIRWorker");
-      com.tencent.mm.sdk.b.a.GpY.b(new com.tencent.mm.sdk.b.c() {});
-      com.tencent.mm.sdk.b.a.GpY.b(new com.tencent.mm.sdk.b.c() {});
-      com.tencent.mm.sdk.b.a.GpY.b(new com.tencent.mm.sdk.b.c() {});
-      com.tencent.mm.sdk.b.a.GpY.b(new com.tencent.mm.sdk.b.c() {});
-      com.tencent.mm.sdk.b.a.GpY.b(new com.tencent.mm.sdk.b.c() {});
+      yBF = new ap("SIRWorker");
+      com.tencent.mm.sdk.b.a.IbL.b(new com.tencent.mm.sdk.b.c() {});
+      com.tencent.mm.sdk.b.a.IbL.b(new com.tencent.mm.sdk.b.c() {});
+      com.tencent.mm.sdk.b.a.IbL.b(new com.tencent.mm.sdk.b.c() {});
+      com.tencent.mm.sdk.b.a.IbL.b(new com.tencent.mm.sdk.b.c() {});
+      com.tencent.mm.sdk.b.a.IbL.b(new com.tencent.mm.sdk.b.c() {});
       ((com.tencent.mm.plugin.auth.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(new com.tencent.mm.plugin.auth.a.a()
       {
         public final void a(j.h paramAnonymoush, j.i paramAnonymousi, boolean paramAnonymousBoolean)
         {
           int i = 0;
-          AppMethodBeat.i(207467);
-          ac.i("MicroMsg.PSIR", "[+] type 1 report triggered, autoauth: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          AppMethodBeat.i(197162);
+          ad.i("MicroMsg.PSIR", "[+] type 1 report triggered, autoauth: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (paramAnonymousBoolean) {}
           for (;;)
           {
             PluginSecInfoReport.access$100(PluginSecInfoReport.this, i);
-            AppMethodBeat.o(207467);
+            AppMethodBeat.o(197162);
             return;
             i = 540999680;
           }
@@ -183,10 +201,10 @@ public class PluginSecInfoReport
         
         public final void a(x.b paramAnonymousb, String paramAnonymousString1, int paramAnonymousInt1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(207468);
-          ac.i("MicroMsg.PSIR", "[+] type 2 report triggered.");
+          AppMethodBeat.i(197163);
+          ad.i("MicroMsg.PSIR", "[+] type 2 report triggered.");
           PluginSecInfoReport.access$100(PluginSecInfoReport.this, 540999681);
-          AppMethodBeat.o(207468);
+          AppMethodBeat.o(197163);
         }
       });
       this.appForegroundListener.alive();
@@ -197,7 +215,7 @@ public class PluginSecInfoReport
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.PSIR", paramg, "[tomys] unexpected exception.", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.PSIR", paramg, "[tomys] unexpected exception.", new Object[0]);
       }
     }
   }

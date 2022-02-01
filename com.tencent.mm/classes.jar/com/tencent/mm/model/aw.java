@@ -1,20 +1,8 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.storagebase.h.b;
-import java.util.HashMap;
-
-@Deprecated
 public abstract interface aw
 {
-  public abstract void clearPluginData(int paramInt);
-  
-  public abstract HashMap<Integer, h.b> getBaseDBFactories();
-  
-  public abstract void onAccountPostReset(boolean paramBoolean);
-  
-  public abstract void onAccountRelease();
-  
-  public abstract void onSdcardMount(boolean paramBoolean);
+  public abstract void aBH();
 }
 
 

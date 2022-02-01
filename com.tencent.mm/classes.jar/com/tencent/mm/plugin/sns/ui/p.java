@@ -7,22 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.c;
-import com.tencent.mm.av.o;
-import com.tencent.mm.modelsns.d;
+import com.tencent.mm.modelsns.e;
 import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.j.h;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ba;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.bb;
+import com.tencent.mm.plugin.sns.model.bc;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.brd;
-import com.tencent.mm.protocal.protobuf.dbw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.protocal.protobuf.bvq;
+import com.tencent.mm.protocal.protobuf.dhj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.z;
 import java.util.Iterator;
@@ -30,214 +25,214 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class p
-  implements ab
+  implements ac
 {
   private String appId = "";
   private String appName = "";
-  private String dmK = "";
-  private String dvl;
+  private String dHo;
+  private String dyy = "";
+  private MMActivity fLP;
   private int h = -1;
-  private Bitmap hua = null;
-  private MMActivity iMV;
+  private Bitmap hMs = null;
   private String link = "";
-  private boolean oWm = false;
-  private String qYH = "";
-  private View qe = null;
+  private boolean pzW = false;
+  private String rJX = "";
+  private View rY = null;
   private String title = "";
   private TextView titleTv = null;
   private int w = -1;
-  private int xXU = 1;
-  private byte[] yyP = null;
-  private String yyQ;
-  private int yyR;
-  private CdnImageView yyS = null;
-  private TextView yyT = null;
-  private int yyU;
-  private String yyV = "";
-  private String yyW = "";
-  private d yyX = null;
-  private String yyY = "";
+  private byte[] zQb = null;
+  private String zQc;
+  private int zQd;
+  private CdnImageView zQe = null;
+  private TextView zQf = null;
+  private int zQg;
+  private String zQh = "";
+  private String zQi = "";
+  private e zQj = null;
+  private String zQk = "";
+  private int znT = 1;
   
   public p(MMActivity paramMMActivity)
   {
-    this.iMV = paramMMActivity;
+    this.fLP = paramMMActivity;
   }
   
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, brd parambrd, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bvq parambvq, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
     AppMethodBeat.i(97861);
-    paramLinkedList = new bb(23);
-    paramPInt.value = paramLinkedList.aUt;
-    if (paramInt3 > a.xMh) {
-      paramLinkedList.Ou(2);
+    paramLinkedList = new bc(23);
+    paramPInt.value = paramLinkedList.beN;
+    if (paramInt3 > a.zbZ) {
+      paramLinkedList.Qb(2);
     }
     if (parami != null) {
-      paramLinkedList.jf(parami.token, parami.FjO);
+      paramLinkedList.jr(parami.token, parami.GTp);
     }
-    paramLinkedList.auj(this.title).auh(this.yyW).aui(this.link).aue(paramString1);
+    paramLinkedList.azo(this.title).azm(this.zQi).azn(this.link).azj(paramString1);
     boolean bool2 = false;
     boolean bool1;
-    if (!bs.isNullOrNil(this.dmK))
+    if (!bt.isNullOrNil(this.dyy))
     {
-      bool1 = paramLinkedList.a(com.tencent.mm.vfs.i.aU(this.dmK, 0, -1), this.yyW, this.title, this.yyU, this.yyV);
+      bool1 = paramLinkedList.a(com.tencent.mm.vfs.i.aY(this.dyy, 0, -1), this.zQi, this.title, this.zQg, this.zQh);
       bool2 = bool1;
       if (!bool1)
       {
-        ac.i("MicroMsg.EmotionListShareWidget", "set userData user imgurl ");
-        bool2 = paramLinkedList.c(this.qYH, this.qYH, this.yyW, this.yyU, this.yyV);
+        ad.i("MicroMsg.EmotionListShareWidget", "set userData user imgurl ");
+        bool2 = paramLinkedList.c(this.rJX, this.rJX, this.zQi, this.zQg, this.zQh);
       }
       if (!bool2) {
-        ac.e("MicroMsg.EmotionListShareWidget", "set userData faild");
+        ad.e("MicroMsg.EmotionListShareWidget", "set userData faild");
       }
-      paramLinkedList.bV(this.xXU, this.yyY);
-      paramLinkedList.Oy(this.yyR);
-      paramLinkedList.aum(this.dvl);
-      paramLinkedList.aun(this.yyQ);
-      paramLinkedList.Ow(paramInt1);
+      paramLinkedList.cc(this.znT, this.zQk);
+      paramLinkedList.Qg(this.zQd);
+      paramLinkedList.azr(this.dHo);
+      paramLinkedList.azs(this.zQc);
+      paramLinkedList.Qe(paramInt1);
       if (!paramBoolean) {
         break label458;
       }
-      paramLinkedList.Oz(1);
+      paramLinkedList.Qh(1);
     }
     for (;;)
     {
-      paramLinkedList.fy(paramList2);
-      if (!bs.isNullOrNil(this.appId))
+      paramLinkedList.fL(paramList2);
+      if (!bt.isNullOrNil(this.appId))
       {
-        paramLinkedList.auk(this.appId);
-        paramLinkedList.aul(this.appName);
+        paramLinkedList.azp(this.appId);
+        paramLinkedList.azq(this.appName);
       }
       parami = new LinkedList();
       if (paramList1 == null) {
         break label468;
       }
       new LinkedList();
-      paramString1 = com.tencent.mm.pluginsdk.g.j.fdk();
+      paramString1 = com.tencent.mm.pluginsdk.i.d.fas();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         paramList2 = (String)paramList1.next();
         if (!paramString1.contains(paramList2))
         {
-          paramPInt = new dbw();
-          paramPInt.ncR = paramList2;
+          paramPInt = new dhj();
+          paramPInt.nDo = paramList2;
           parami.add(paramPInt);
         }
       }
       bool1 = bool2;
-      if (bs.isNullOrNil(this.qYH)) {
+      if (bt.isNullOrNil(this.rJX)) {
         break;
       }
       bool1 = bool2;
-      if (o.aFw() == null) {
+      if (com.tencent.mm.aw.q.aIE() == null) {
         break;
       }
-      o.aFw();
-      parami = c.te(this.qYH);
+      com.tencent.mm.aw.q.aIE();
+      parami = com.tencent.mm.aw.d.vT(this.rJX);
       bool1 = bool2;
       if (parami == null) {
         break;
       }
-      bool1 = paramLinkedList.a(f.ay(parami), this.yyW, this.title, this.yyU, this.yyV);
+      bool1 = paramLinkedList.a(com.tencent.mm.sdk.platformtools.g.aA(parami), this.zQi, this.title, this.zQg, this.zQh);
       break;
       label458:
-      paramLinkedList.Oz(0);
+      paramLinkedList.Qh(0);
     }
     label468:
-    paramLinkedList.aT(parami);
-    paramLinkedList.a(parambrd);
+    paramLinkedList.aU(parami);
+    paramLinkedList.a(parambvq);
     paramLinkedList.g(null, null, null, paramInt4, paramInt5);
     paramInt1 = paramLinkedList.commit();
-    if (this.yyX != null)
+    if (this.zQj != null)
     {
-      this.yyX.pu(paramInt1);
-      h.yes.c(this.yyX);
+      this.zQj.pX(paramInt1);
+      com.tencent.mm.plugin.sns.j.g.zus.c(this.zQj);
     }
-    af.dHN().dGr();
-    this.iMV.finish();
+    ag.dUa().dSE();
+    this.fLP.finish();
     AppMethodBeat.o(97861);
     return false;
   }
   
-  public final void ak(Bundle paramBundle)
+  public final void ap(Bundle paramBundle)
   {
     AppMethodBeat.i(97859);
-    this.yyX = d.w(this.iMV.getIntent());
-    this.w = this.iMV.getIntent().getIntExtra("Ksnsupload_width", -1);
-    this.h = this.iMV.getIntent().getIntExtra("Ksnsupload_height", -1);
-    this.yyR = this.iMV.getIntent().getIntExtra("Ksnsupload_source", 0);
-    this.link = bs.bG(this.iMV.getIntent().getStringExtra("Ksnsupload_link"), "");
-    this.title = bs.bG(this.iMV.getIntent().getStringExtra("Ksnsupload_title"), "");
-    this.qYH = bs.bG(this.iMV.getIntent().getStringExtra("Ksnsupload_imgurl"), "");
-    this.dmK = this.iMV.getIntent().getStringExtra("KsnsUpload_imgPath");
-    this.oWm = this.iMV.getIntent().getBooleanExtra("ksnsis_video", false);
-    this.dvl = bs.bG(this.iMV.getIntent().getStringExtra("src_username"), "");
-    this.yyQ = bs.bG(this.iMV.getIntent().getStringExtra("src_displayname"), "");
-    this.yyW = bs.bG(this.iMV.getIntent().getStringExtra("KContentObjDesc"), "");
-    this.yyV = bs.bG(this.iMV.getIntent().getStringExtra("KUploadProduct_UserData"), "");
-    this.appName = bs.bG(this.iMV.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.appId = bs.bG(this.iMV.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.yyU = this.iMV.getIntent().getIntExtra("KUploadProduct_subType", 0);
-    if (this.iMV.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
-    for (this.xXU = 1;; this.xXU = 0)
+    this.zQj = e.w(this.fLP.getIntent());
+    this.w = this.fLP.getIntent().getIntExtra("Ksnsupload_width", -1);
+    this.h = this.fLP.getIntent().getIntExtra("Ksnsupload_height", -1);
+    this.zQd = this.fLP.getIntent().getIntExtra("Ksnsupload_source", 0);
+    this.link = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_link"), "");
+    this.title = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_title"), "");
+    this.rJX = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_imgurl"), "");
+    this.dyy = this.fLP.getIntent().getStringExtra("KsnsUpload_imgPath");
+    this.pzW = this.fLP.getIntent().getBooleanExtra("ksnsis_video", false);
+    this.dHo = bt.bI(this.fLP.getIntent().getStringExtra("src_username"), "");
+    this.zQc = bt.bI(this.fLP.getIntent().getStringExtra("src_displayname"), "");
+    this.zQi = bt.bI(this.fLP.getIntent().getStringExtra("KContentObjDesc"), "");
+    this.zQh = bt.bI(this.fLP.getIntent().getStringExtra("KUploadProduct_UserData"), "");
+    this.appName = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.appId = bt.bI(this.fLP.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.zQg = this.fLP.getIntent().getIntExtra("KUploadProduct_subType", 0);
+    if (this.fLP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.znT = 1;; this.znT = 0)
     {
-      this.yyY = bs.bG(this.iMV.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      this.zQk = bt.bI(this.fLP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
       AppMethodBeat.o(97859);
       return;
     }
   }
   
-  public final void al(Bundle paramBundle) {}
+  public final void aq(Bundle paramBundle) {}
   
-  public final boolean dNr()
+  public final boolean dZG()
   {
     return true;
   }
   
-  public final View dNs()
+  public final View dZH()
   {
     AppMethodBeat.i(97860);
-    this.qe = z.jD(this.iMV).inflate(2131495816, null);
-    this.yyS = ((CdnImageView)this.qe.findViewById(2131300948));
-    this.titleTv = ((TextView)this.qe.findViewById(2131305950));
-    this.yyT = ((TextView)this.qe.findViewById(2131304202));
-    if (this.oWm)
+    this.rY = z.jO(this.fLP).inflate(2131495816, null);
+    this.zQe = ((CdnImageView)this.rY.findViewById(2131300948));
+    this.titleTv = ((TextView)this.rY.findViewById(2131305950));
+    this.zQf = ((TextView)this.rY.findViewById(2131304202));
+    if (this.pzW)
     {
-      this.qe.findViewById(2131305185).setVisibility(0);
+      this.rY.findViewById(2131305185).setVisibility(0);
       this.titleTv.setText(this.title);
-      if (bs.isNullOrNil(this.qYH)) {
+      if (bt.isNullOrNil(this.rJX)) {
         break label178;
       }
-      this.yyS.setVisibility(0);
-      this.yyS.setUrl(this.qYH);
+      this.zQe.setVisibility(0);
+      this.zQe.setUrl(this.rJX);
     }
     for (;;)
     {
-      q.b(this.yyS, this.iMV);
-      View localView = this.qe;
+      com.tencent.mm.plugin.sns.data.q.b(this.zQe, this.fLP);
+      View localView = this.rY;
       AppMethodBeat.o(97860);
       return localView;
-      this.qe.findViewById(2131305185).setVisibility(8);
+      this.rY.findViewById(2131305185).setVisibility(8);
       break;
       label178:
-      if (!bs.cv(this.yyP))
+      if (!bt.cC(this.zQb))
       {
-        this.yyS.setVisibility(0);
-        this.hua = f.ck(this.yyP);
-        this.yyS.setImageBitmap(this.hua);
+        this.zQe.setVisibility(0);
+        this.hMs = com.tencent.mm.sdk.platformtools.g.cr(this.zQb);
+        this.zQe.setImageBitmap(this.hMs);
       }
       else
       {
-        this.yyS.setVisibility(8);
+        this.zQe.setVisibility(8);
       }
     }
   }
   
-  public final boolean dNt()
+  public final boolean dZI()
   {
     AppMethodBeat.i(97862);
-    if ((this.hua != null) && (!this.hua.isRecycled())) {
-      this.hua.recycle();
+    if ((this.hMs != null) && (!this.hMs.isRecycled())) {
+      this.hMs.recycle();
     }
     AppMethodBeat.o(97862);
     return false;

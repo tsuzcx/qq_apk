@@ -1,145 +1,105 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.bs;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class bf
+  extends bs
 {
-  public static final bf GYA;
-  public static final bf GYB;
-  public static final bf GYC;
-  public static final bf GYD;
-  public static final bf GYE;
-  public static final bf GYF;
-  public static final bf GYG;
-  public static final bf GYH;
-  public static final bf GYI;
-  public static final bf GYJ;
-  public static final bf GYK;
-  public static final bf GYL;
-  public static final bf GYz;
-  public int gIh = 0;
-  public String tag = "";
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(133298);
-    GYz = new bf("timeline");
-    GYA = new bf("album_friend");
-    GYB = new bf("album_self");
-    GYC = new bf("album_stranger");
-    GYD = new bf("profile_friend");
-    GYE = new bf("profile_stranger");
-    GYF = new bf("comment");
-    GYG = new bf("comment_detail");
-    GYH = new bf("other");
-    GYI = new bf("snssight");
-    GYJ = new bf("fts");
-    GYK = new bf("storysight");
-    GYL = new bf("storyalbum");
-    AppMethodBeat.o(133298);
+    AppMethodBeat.i(43197);
+    c.a locala = new c.a();
+    locala.IhA = new Field[17];
+    locala.columns = new String[18];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "talker";
+    locala.IhC.put("talker", "TEXT default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" talker TEXT default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IhB = "talker";
+    locala.columns[1] = "encryptTalker";
+    locala.IhC.put("encryptTalker", "TEXT default '' ");
+    localStringBuilder.append(" encryptTalker TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "displayName";
+    locala.IhC.put("displayName", "TEXT default '' ");
+    localStringBuilder.append(" displayName TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "state";
+    locala.IhC.put("state", "INTEGER default '0' ");
+    localStringBuilder.append(" state INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "lastModifiedTime";
+    locala.IhC.put("lastModifiedTime", "LONG default '0' ");
+    localStringBuilder.append(" lastModifiedTime LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "isNew";
+    locala.IhC.put("isNew", "INTEGER default '0' ");
+    localStringBuilder.append(" isNew INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "addScene";
+    locala.IhC.put("addScene", "INTEGER default '0' ");
+    localStringBuilder.append(" addScene INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "fmsgSysRowId";
+    locala.IhC.put("fmsgSysRowId", "LONG default '0' ");
+    localStringBuilder.append(" fmsgSysRowId LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "fmsgIsSend";
+    locala.IhC.put("fmsgIsSend", "INTEGER default '0' ");
+    localStringBuilder.append(" fmsgIsSend INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "fmsgType";
+    locala.IhC.put("fmsgType", "INTEGER default '0' ");
+    localStringBuilder.append(" fmsgType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "fmsgContent";
+    locala.IhC.put("fmsgContent", "TEXT default '' ");
+    localStringBuilder.append(" fmsgContent TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "recvFmsgType";
+    locala.IhC.put("recvFmsgType", "INTEGER default '0' ");
+    localStringBuilder.append(" recvFmsgType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "contentFromUsername";
+    locala.IhC.put("contentFromUsername", "TEXT default '' ");
+    localStringBuilder.append(" contentFromUsername TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "contentNickname";
+    locala.IhC.put("contentNickname", "TEXT default '' ");
+    localStringBuilder.append(" contentNickname TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "contentPhoneNumMD5";
+    locala.IhC.put("contentPhoneNumMD5", "TEXT default '' ");
+    localStringBuilder.append(" contentPhoneNumMD5 TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "contentFullPhoneNumMD5";
+    locala.IhC.put("contentFullPhoneNumMD5", "TEXT default '' ");
+    localStringBuilder.append(" contentFullPhoneNumMD5 TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[16] = "contentVerifyContent";
+    locala.IhC.put("contentVerifyContent", "TEXT default '' ");
+    localStringBuilder.append(" contentVerifyContent TEXT default '' ");
+    locala.columns[17] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(43197);
   }
   
-  public bf(String paramString)
+  public final c.a getDBInfo()
   {
-    this.tag = paramString;
-  }
-  
-  public static bf a(bf parambf, int paramInt)
-  {
-    AppMethodBeat.i(133295);
-    parambf = new bf(parambf.tag);
-    parambf.gIh = paramInt;
-    AppMethodBeat.o(133295);
-    return parambf;
-  }
-  
-  public static bf fbk()
-  {
-    AppMethodBeat.i(133288);
-    bf localbf = new bf("timeline");
-    AppMethodBeat.o(133288);
-    return localbf;
-  }
-  
-  public static bf fbl()
-  {
-    AppMethodBeat.i(133289);
-    bf localbf = new bf("album_friend");
-    AppMethodBeat.o(133289);
-    return localbf;
-  }
-  
-  public static bf fbm()
-  {
-    AppMethodBeat.i(133290);
-    bf localbf = new bf("album_self");
-    AppMethodBeat.o(133290);
-    return localbf;
-  }
-  
-  public static bf fbn()
-  {
-    AppMethodBeat.i(133291);
-    bf localbf = new bf("album_stranger");
-    AppMethodBeat.o(133291);
-    return localbf;
-  }
-  
-  public static bf fbo()
-  {
-    AppMethodBeat.i(133292);
-    bf localbf = new bf("comment_detail");
-    AppMethodBeat.o(133292);
-    return localbf;
-  }
-  
-  public static bf fbp()
-  {
-    AppMethodBeat.i(133293);
-    bf localbf = new bf("snssight");
-    AppMethodBeat.o(133293);
-    return localbf;
-  }
-  
-  public static bf fbq()
-  {
-    AppMethodBeat.i(133294);
-    bf localbf = new bf("storysight");
-    AppMethodBeat.o(133294);
-    return localbf;
-  }
-  
-  public final bf YL(int paramInt)
-  {
-    this.gIh = paramInt;
-    return this;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(133296);
-    if ((paramObject instanceof bf))
-    {
-      bool = ((bf)paramObject).tag.equals(this.tag);
-      AppMethodBeat.o(133296);
-      return bool;
-    }
-    boolean bool = super.equals(paramObject);
-    AppMethodBeat.o(133296);
-    return bool;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(133297);
-    String str = this.tag + "@" + this.gIh;
-    AppMethodBeat.o(133297);
-    return str;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bf
  * JD-Core Version:    0.7.0.1
  */

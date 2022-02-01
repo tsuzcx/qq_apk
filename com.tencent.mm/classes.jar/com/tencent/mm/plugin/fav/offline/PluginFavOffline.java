@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.fav.offline;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.gn;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.gq;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.fav.a.ae;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.vfs.o;
 import java.util.HashMap;
@@ -20,9 +20,9 @@ public class PluginFavOffline
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c, a
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.sdk.b.c<gn> qKD;
-  private com.tencent.mm.plugin.fav.offline.b.b qKE;
-  private com.tencent.mm.plugin.fav.offline.a.b qKF;
+  private com.tencent.mm.sdk.b.c<gq> ruF;
+  private com.tencent.mm.plugin.fav.offline.b.b ruG;
+  private com.tencent.mm.plugin.fav.offline.a.b ruH;
   
   static
   {
@@ -42,9 +42,9 @@ public class PluginFavOffline
   public PluginFavOffline()
   {
     AppMethodBeat.i(73529);
-    this.qKD = new com.tencent.mm.sdk.b.c() {};
-    this.qKE = null;
-    this.qKF = null;
+    this.ruF = new com.tencent.mm.sdk.b.c() {};
+    this.ruG = null;
+    this.ruH = null;
     AppMethodBeat.o(73529);
   }
   
@@ -61,8 +61,8 @@ public class PluginFavOffline
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(73533);
-    if (paramg.ahL()) {
-      o.aj("favoffline", "favoffline", 3);
+    if (paramg.akw()) {
+      o.an("favoffline", "favoffline", 3);
     }
     AppMethodBeat.o(73533);
   }
@@ -77,8 +77,8 @@ public class PluginFavOffline
   public com.tencent.mm.plugin.fav.offline.a.b getFavOfflineService()
   {
     AppMethodBeat.i(73536);
-    com.tencent.mm.kernel.g.agP().afT();
-    com.tencent.mm.plugin.fav.offline.a.b localb = this.qKF;
+    com.tencent.mm.kernel.g.ajA().aiF();
+    com.tencent.mm.plugin.fav.offline.a.b localb = this.ruH;
     AppMethodBeat.o(73536);
     return localb;
   }
@@ -86,8 +86,8 @@ public class PluginFavOffline
   public com.tencent.mm.plugin.fav.offline.b.b getFavOfflineStorage()
   {
     AppMethodBeat.i(73535);
-    com.tencent.mm.kernel.g.agP().afT();
-    com.tencent.mm.plugin.fav.offline.b.b localb = this.qKE;
+    com.tencent.mm.kernel.g.ajA().aiF();
+    com.tencent.mm.plugin.fav.offline.b.b localb = this.ruG;
     AppMethodBeat.o(73535);
     return localb;
   }
@@ -95,49 +95,49 @@ public class PluginFavOffline
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(73530);
-    this.qKE = new com.tencent.mm.plugin.fav.offline.b.b(com.tencent.mm.kernel.g.agR().ghG);
-    this.qKF = new com.tencent.mm.plugin.fav.offline.a.b();
-    this.qKD.alive();
+    this.ruG = new com.tencent.mm.plugin.fav.offline.b.b(com.tencent.mm.kernel.g.ajC().gBq);
+    this.ruH = new com.tencent.mm.plugin.fav.offline.a.b();
+    this.ruF.alive();
     AppMethodBeat.o(73530);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(73531);
-    if (this.qKF != null)
+    if (this.ruH != null)
     {
-      com.tencent.mm.plugin.fav.offline.a.b localb = this.qKF;
-      com.tencent.mm.kernel.g.agQ().b(localb.hBi);
-      this.qKF = null;
+      com.tencent.mm.plugin.fav.offline.a.b localb = this.ruH;
+      com.tencent.mm.kernel.g.ajB().b(localb.hTD);
+      this.ruH = null;
     }
-    this.qKD.dead();
+    this.ruF.dead();
     AppMethodBeat.o(73531);
   }
   
   public boolean useOffline(String paramString, long paramLong)
   {
     AppMethodBeat.i(73534);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73534);
       return false;
     }
-    com.tencent.mm.plugin.fav.offline.b.a locala = getFavOfflineStorage().acQ(paramString);
+    com.tencent.mm.plugin.fav.offline.b.a locala = getFavOfflineStorage().agF(paramString);
     if (locala == null)
     {
-      ac.i("MicroMsg.offline.PluginFavOffline", "useOffline url(%s) favOffline is null", new Object[] { paramString });
+      ad.i("MicroMsg.offline.PluginFavOffline", "useOffline url(%s) favOffline is null", new Object[] { paramString });
       AppMethodBeat.o(73534);
       return false;
     }
-    if (!getFavOfflineService().qKJ)
+    if (!getFavOfflineService().ruL)
     {
-      ac.i("MicroMsg.offline.PluginFavOffline", "useOffline url:%s status:%s", new Object[] { locala.field_url, Integer.valueOf(locala.field_status) });
+      ad.i("MicroMsg.offline.PluginFavOffline", "useOffline url:%s status:%s", new Object[] { locala.field_url, Integer.valueOf(locala.field_status) });
       if (locala.field_status != 0)
       {
         paramString = new Intent();
         paramString.putExtra("key_path", locala.field_url);
         paramString.putExtra("key_detail_info_id", paramLong);
-        d.b(ai.getContext(), "fav.offline", ".ui.FavOfflineWebViewUI", paramString);
+        d.b(aj.getContext(), "fav.offline", ".ui.FavOfflineWebViewUI", paramString);
         AppMethodBeat.o(73534);
         return true;
       }

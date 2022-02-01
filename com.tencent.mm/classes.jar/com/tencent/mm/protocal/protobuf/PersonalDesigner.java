@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PersonalDesigner
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int DesignerUin;
   public String HeadUrl;
@@ -15,7 +15,7 @@ public class PersonalDesigner
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.DesignerUin);
+      paramVarArgs.aS(1, this.DesignerUin);
       if (this.Name != null) {
         paramVarArgs.d(2, this.Name);
       }
@@ -27,7 +27,7 @@ public class PersonalDesigner
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.DesignerUin) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.DesignerUin) + 0;
       paramInt = i;
       if (this.Name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.Name);
@@ -42,9 +42,9 @@ public class PersonalDesigner
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(104828);
@@ -60,15 +60,15 @@ public class PersonalDesigner
         AppMethodBeat.o(104828);
         return -1;
       case 1: 
-        localPersonalDesigner.DesignerUin = locala.LVo.xF();
+        localPersonalDesigner.DesignerUin = locala.NPN.zc();
         AppMethodBeat.o(104828);
         return 0;
       case 2: 
-        localPersonalDesigner.Name = locala.LVo.readString();
+        localPersonalDesigner.Name = locala.NPN.readString();
         AppMethodBeat.o(104828);
         return 0;
       }
-      localPersonalDesigner.HeadUrl = locala.LVo.readString();
+      localPersonalDesigner.HeadUrl = locala.NPN.readString();
       AppMethodBeat.o(104828);
       return 0;
     }

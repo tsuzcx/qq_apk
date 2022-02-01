@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.exdevice.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int pAs;
-  public String pAt;
-  public String pAu;
+  public int qdX;
+  public String qdY;
+  public String qdZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -15,26 +15,26 @@ public final class a
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.pAs);
-      if (this.pAt != null) {
-        paramVarArgs.d(2, this.pAt);
+      paramVarArgs.aS(1, this.qdX);
+      if (this.qdY != null) {
+        paramVarArgs.d(2, this.qdY);
       }
-      if (this.pAu != null) {
-        paramVarArgs.d(3, this.pAu);
+      if (this.qdZ != null) {
+        paramVarArgs.d(3, this.qdZ);
       }
       AppMethodBeat.o(23482);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.pAs) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.qdX) + 0;
       paramInt = i;
-      if (this.pAt != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.pAt);
+      if (this.qdY != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.qdY);
       }
       i = paramInt;
-      if (this.pAu != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.pAu);
+      if (this.qdZ != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.qdZ);
       }
       AppMethodBeat.o(23482);
       return i;
@@ -42,9 +42,9 @@ public final class a
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(23482);
@@ -60,15 +60,15 @@ public final class a
         AppMethodBeat.o(23482);
         return -1;
       case 1: 
-        locala1.pAs = locala.LVo.xF();
+        locala1.qdX = locala.NPN.zc();
         AppMethodBeat.o(23482);
         return 0;
       case 2: 
-        locala1.pAt = locala.LVo.readString();
+        locala1.qdY = locala.NPN.readString();
         AppMethodBeat.o(23482);
         return 0;
       }
-      locala1.pAu = locala.LVo.readString();
+      locala1.qdZ = locala.NPN.readString();
       AppMethodBeat.o(23482);
       return 0;
     }
@@ -78,7 +78,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.e.a
  * JD-Core Version:    0.7.0.1
  */

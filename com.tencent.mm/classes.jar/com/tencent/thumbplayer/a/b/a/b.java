@@ -2,15 +2,15 @@ package com.tencent.thumbplayer.a.b.a;
 
 public final class b
 {
-  public int KeN = 0;
-  private int dcp;
+  public int LYJ = 0;
+  private int dnL;
   private int errorCode;
   
   public b(int paramInt1, int paramInt2, int paramInt3)
   {
     this.errorCode = paramInt3;
-    this.dcp = paramInt2;
-    this.KeN = paramInt1;
+    this.dnL = paramInt2;
+    this.LYJ = paramInt1;
   }
 }
 

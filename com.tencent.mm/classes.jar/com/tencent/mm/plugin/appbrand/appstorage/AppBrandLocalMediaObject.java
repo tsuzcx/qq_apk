@@ -10,12 +10,12 @@ public class AppBrandLocalMediaObject
   implements Parcelable, p.a
 {
   public static final Parcelable.Creator<AppBrandLocalMediaObject> CREATOR;
-  public String dgl;
-  public String fBR;
-  public String hqg;
-  public long ixc;
-  public boolean jsm;
-  public long jsn;
+  public String drH;
+  public String fVf;
+  public String hIy;
+  public long iQl;
+  public boolean jMg;
+  public long jMh;
   public String mimeType;
   
   static
@@ -30,24 +30,24 @@ public class AppBrandLocalMediaObject
   protected AppBrandLocalMediaObject(Parcel paramParcel)
   {
     AppMethodBeat.i(134302);
-    this.dgl = paramParcel.readString();
-    this.hqg = paramParcel.readString();
+    this.drH = paramParcel.readString();
+    this.hIy = paramParcel.readString();
     this.mimeType = paramParcel.readString();
-    this.fBR = paramParcel.readString();
+    this.fVf = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jsm = bool;
-      this.ixc = paramParcel.readLong();
-      this.jsn = paramParcel.readLong();
+      this.jMg = bool;
+      this.iQl = paramParcel.readLong();
+      this.jMh = paramParcel.readLong();
       AppMethodBeat.o(134302);
       return;
     }
   }
   
-  public final long aXW()
+  public final long bbu()
   {
-    return this.ixc;
+    return this.iQl;
   }
   
   public int describeContents()
@@ -57,18 +57,18 @@ public class AppBrandLocalMediaObject
   
   public final String getFileName()
   {
-    return this.dgl;
+    return this.drH;
   }
   
   public final long lastModified()
   {
-    return this.jsn;
+    return this.jMh;
   }
   
   public String toString()
   {
     AppMethodBeat.i(134300);
-    String str = "AppBrandLocalMediaObject{localId='" + this.dgl + '\'' + ", fileFullPath='" + this.hqg + '\'' + ", mimeType='" + this.mimeType + '\'' + ", fileExt='" + this.fBR + '\'' + '}';
+    String str = "AppBrandLocalMediaObject{localId='" + this.drH + '\'' + ", fileFullPath='" + this.hIy + '\'' + ", mimeType='" + this.mimeType + '\'' + ", fileExt='" + this.fVf + '\'' + '}';
     AppMethodBeat.o(134300);
     return str;
   }
@@ -76,16 +76,16 @@ public class AppBrandLocalMediaObject
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134301);
-    paramParcel.writeString(this.dgl);
-    paramParcel.writeString(this.hqg);
+    paramParcel.writeString(this.drH);
+    paramParcel.writeString(this.hIy);
     paramParcel.writeString(this.mimeType);
-    paramParcel.writeString(this.fBR);
-    if (this.jsm) {}
+    paramParcel.writeString(this.fVf);
+    if (this.jMg) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeLong(this.ixc);
-      paramParcel.writeLong(this.jsn);
+      paramParcel.writeLong(this.iQl);
+      paramParcel.writeLong(this.jMh);
       AppMethodBeat.o(134301);
       return;
     }

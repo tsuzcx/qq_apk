@@ -5,33 +5,33 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  public static final long cwA = TimeUnit.MINUTES.toMillis(20L);
-  private static final b cwB = b.cwI;
-  private static final long cwz = TimeUnit.MINUTES.toMillis(1L);
-  public final com.tencent.c.a.a cqF;
-  public final b cwC;
-  public final boolean cwD;
-  public final Intent cwE;
+  private static final long cHu = TimeUnit.MINUTES.toMillis(1L);
+  public static final long cHv = TimeUnit.MINUTES.toMillis(20L);
+  private static final b cHw = b.cHD;
+  public final com.tencent.c.a.a cBC;
+  public final b cHx;
+  public final boolean cHy;
+  public final Intent cHz;
   
   private a(com.tencent.c.a.a parama, b paramb, boolean paramBoolean, Intent paramIntent)
   {
-    this.cqF = parama;
-    this.cwC = paramb;
-    this.cwD = paramBoolean;
-    this.cwE = paramIntent;
+    this.cBC = parama;
+    this.cHx = paramb;
+    this.cHy = paramBoolean;
+    this.cHz = paramIntent;
   }
   
-  public final long Hk()
+  public final long IF()
   {
-    return this.cqF.get(com.tencent.c.a.a.a.JJn.name(), cwz);
+    return this.cBC.get(com.tencent.c.a.a.a.LCW.name(), cHu);
   }
   
   public static final class a
   {
-    public com.tencent.c.a.a ctq;
-    public boolean cwD = false;
-    public Intent cwE;
-    public a.b cwF = a.Hl();
+    public com.tencent.c.a.a cEm;
+    public a.b cHA = a.IG();
+    public boolean cHy = false;
+    public Intent cHz;
   }
   
   public static enum b

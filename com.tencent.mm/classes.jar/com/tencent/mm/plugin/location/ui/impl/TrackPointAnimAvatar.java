@@ -11,17 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class TrackPointAnimAvatar
   extends RelativeLayout
 {
-  private ImageView iKw;
+  private ImageView jdF;
   private Context mContext;
-  private LinearLayout ufC;
-  private Animation ufD;
-  private Animation ufE;
   private String username;
+  private LinearLayout vim;
+  private Animation vin;
+  private Animation vio;
   
   public TrackPointAnimAvatar(Context paramContext)
   {
@@ -41,16 +41,16 @@ public class TrackPointAnimAvatar
     AppMethodBeat.o(56194);
   }
   
-  private void cYj()
+  private void dhv()
   {
     AppMethodBeat.i(56198);
-    this.ufD = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
-    this.ufD.setDuration(500L);
-    this.ufD.setFillAfter(true);
-    this.ufE = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
-    this.ufE.setDuration(500L);
-    this.ufE.setFillAfter(true);
-    this.ufD.setAnimationListener(new Animation.AnimationListener()
+    this.vin = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
+    this.vin.setDuration(500L);
+    this.vin.setFillAfter(true);
+    this.vio = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
+    this.vio.setDuration(500L);
+    this.vio.setFillAfter(true);
+    this.vin.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -64,7 +64,7 @@ public class TrackPointAnimAvatar
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.ufE.setAnimationListener(new Animation.AnimationListener()
+    this.vio.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -85,20 +85,20 @@ public class TrackPointAnimAvatar
   {
     AppMethodBeat.i(56196);
     View localView = View.inflate(this.mContext, 2131495802, this);
-    this.ufC = ((LinearLayout)localView.findViewById(2131296671));
-    this.iKw = ((ImageView)localView.findViewById(2131296670));
-    cYj();
+    this.vim = ((LinearLayout)localView.findViewById(2131296671));
+    this.jdF = ((ImageView)localView.findViewById(2131296670));
+    dhv();
     AppMethodBeat.o(56196);
   }
   
   public void setUser(String paramString)
   {
     AppMethodBeat.i(56197);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
       this.username = paramString;
-      if (this.iKw != null) {
-        a.b.d(this.iKw, this.username);
+      if (this.jdF != null) {
+        a.b.d(this.jdF, this.username);
       }
     }
     AppMethodBeat.o(56197);

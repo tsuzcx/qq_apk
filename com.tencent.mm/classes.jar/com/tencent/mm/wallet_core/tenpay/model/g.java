@@ -1,8 +1,8 @@
 package com.tencent.mm.wallet_core.tenpay.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -10,23 +10,23 @@ import org.json.JSONObject;
 public class g
   extends p
 {
-  protected JSONObject JGa;
-  public boolean JGb;
-  public int JGc;
-  public boolean JGd;
+  protected JSONObject Lze;
+  public boolean Lzf;
+  public int Lzg;
+  public boolean Lzh;
   
   public g(Map<String, String> paramMap)
   {
     AppMethodBeat.i(72891);
-    this.JGb = false;
-    this.JGc = 0;
-    this.JGd = false;
-    ac.i("MicroMsg.NetSceneDelayQueryOrder", "NetSceneDelayQueryOrder call");
+    this.Lzf = false;
+    this.Lzg = 0;
+    this.Lzh = false;
+    ad.i("MicroMsg.NetSceneDelayQueryOrder", "NetSceneDelayQueryOrder call");
     setRequestData(paramMap);
     AppMethodBeat.o(72891);
   }
   
-  public final void Z(boolean paramBoolean, int paramInt)
+  public final void aa(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(72892);
     HashMap localHashMap = new HashMap();
@@ -42,9 +42,9 @@ public class g
     }
   }
   
-  public final JSONObject fAH()
+  public final JSONObject fRR()
   {
-    return this.JGa;
+    return this.Lze;
   }
   
   public int getFuncId()
@@ -67,15 +67,15 @@ public class g
     AppMethodBeat.i(72893);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     JSONObject localJSONObject1 = paramJSONObject;
-    if (ab.iwG) {}
+    if (ac.iPO) {}
     try
     {
       localJSONObject1 = new JSONObject("{\"retcode\":268447844,\"retmsg\":\"系统麻烦请稍后再试\",\"can_pay_retry\":1,\"show_retmsg_type\":1}");
-      ac.i("MicroMsg.NetSceneDelayQueryOrder", "errCode = " + paramInt + "errMsg=" + paramString);
-      this.JGa = localJSONObject1;
+      ad.i("MicroMsg.NetSceneDelayQueryOrder", "errCode = " + paramInt + "errMsg=" + paramString);
+      this.Lze = localJSONObject1;
       if (localJSONObject1 != null)
       {
-        ac.d("MicroMsg.NetSceneDelayQueryOrder", "ret json: %s", new Object[] { localJSONObject1.toString() });
+        ad.d("MicroMsg.NetSceneDelayQueryOrder", "ret json: %s", new Object[] { localJSONObject1.toString() });
         if (localJSONObject1.optInt("can_pay_retry") != 1) {
           break label129;
         }
@@ -83,8 +83,8 @@ public class g
       label129:
       for (boolean bool = true;; bool = false)
       {
-        this.JGb = bool;
-        this.JGc = localJSONObject1.optInt("show_retmsg_type");
+        this.Lzf = bool;
+        this.Lzg = localJSONObject1.optInt("show_retmsg_type");
         AppMethodBeat.o(72893);
         return;
       }

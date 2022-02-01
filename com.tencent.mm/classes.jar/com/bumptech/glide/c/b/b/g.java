@@ -9,7 +9,7 @@ public final class g
   extends f<com.bumptech.glide.c.h, u<?>>
   implements h
 {
-  private h.a aHq;
+  private h.a aJh;
   
   public g(long paramLong)
   {
@@ -18,7 +18,7 @@ public final class g
   
   public final void a(h.a parama)
   {
-    this.aHq = parama;
+    this.aJh = parama;
   }
   
   @SuppressLint({"InlinedApi"})
@@ -27,12 +27,12 @@ public final class g
     AppMethodBeat.i(77156);
     if (paramInt >= 40)
     {
-      oC();
+      oU();
       AppMethodBeat.o(77156);
       return;
     }
     if ((paramInt >= 20) || (paramInt == 15)) {
-      o(pZ() / 2L);
+      o(qr() / 2L);
     }
     AppMethodBeat.o(77156);
   }

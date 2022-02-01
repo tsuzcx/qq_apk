@@ -7,8 +7,8 @@ import java.lang.reflect.Constructor;
 public final class a<T>
   implements b<T>
 {
-  private Bitmap.Config aCO;
-  private Class<? extends T> aMt;
+  private Bitmap.Config aEF;
+  private Class<? extends T> aWK;
   
   public a(Class<? extends T> paramClass)
   {
@@ -17,20 +17,20 @@ public final class a<T>
   
   private a(Class<? extends T> paramClass, byte paramByte)
   {
-    this.aMt = paramClass;
-    this.aCO = null;
+    this.aWK = paramClass;
+    this.aEF = null;
   }
   
-  public final T qf()
+  public final T rD()
   {
     AppMethodBeat.i(157341);
-    if (this.aCO == null)
+    if (this.aEF == null)
     {
-      localObject = this.aMt.newInstance();
+      localObject = this.aWK.newInstance();
       AppMethodBeat.o(157341);
       return localObject;
     }
-    Object localObject = this.aMt.getConstructor(new Class[] { Bitmap.Config.class }).newInstance(new Object[] { this.aCO });
+    Object localObject = this.aWK.getConstructor(new Class[] { Bitmap.Config.class }).newInstance(new Object[] { this.aEF });
     AppMethodBeat.o(157341);
     return localObject;
   }

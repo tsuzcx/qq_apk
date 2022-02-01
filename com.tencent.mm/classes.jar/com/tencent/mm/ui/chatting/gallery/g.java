@@ -6,41 +6,41 @@ import com.tencent.mm.b.f;
 import com.tencent.mm.b.f.a;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.be;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class g
 {
-  protected HashMap<String, Long> IbP;
-  private bd hyl;
+  protected HashMap<String, Long> JRh;
+  private be hQF;
   private int mScrollState;
-  protected f<String, Bitmap> sRA;
-  public LinkedList<String> sRC;
-  private boolean sRE;
+  protected f<String, Bitmap> tOe;
+  public LinkedList<String> tOg;
+  private boolean tOi;
   
   public g()
   {
     AppMethodBeat.i(36076);
-    this.sRA = new b(4, new f.b() {}, getClass());
-    this.IbP = new HashMap();
-    this.sRC = new LinkedList();
-    this.hyl = new bd(1, "chatting-image-gallery-preload-loader");
-    this.sRE = false;
+    this.tOe = new b(4, new f.b() {}, getClass());
+    this.JRh = new HashMap();
+    this.tOg = new LinkedList();
+    this.hQF = new be(1, "chatting-image-gallery-preload-loader");
+    this.tOi = false;
     this.mScrollState = 0;
     AppMethodBeat.o(36076);
   }
   
-  public final void cNO()
+  public final void cWg()
   {
     AppMethodBeat.i(36077);
-    this.sRA.a(new f.a() {});
+    this.tOe.a(new f.a() {});
     AppMethodBeat.o(36077);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.g
  * JD-Core Version:    0.7.0.1
  */

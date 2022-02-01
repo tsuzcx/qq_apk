@@ -5,24 +5,24 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.topstory.ui.d;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.protocal.protobuf.aqc;
-import com.tencent.mm.protocal.protobuf.cft;
+import com.tencent.mm.protocal.protobuf.aty;
+import com.tencent.mm.protocal.protobuf.cks;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.f;
@@ -30,9 +30,9 @@ import com.tencent.mm.ui.base.preference.f;
 public final class a
   implements com.tencent.mm.pluginsdk.b.a, n.b
 {
-  private ai contact;
+  private am contact;
   private Context context;
-  private CheckBoxPreference oNN;
+  private CheckBoxPreference prv;
   private f screen;
   
   public a(Context paramContext)
@@ -40,50 +40,50 @@ public final class a
     this.context = paramContext;
   }
   
-  private void bYK()
+  private void cdo()
   {
     AppMethodBeat.i(126629);
-    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.aPN("contact_info_header_helper");
-    localHelperHeaderPreference.aR(this.contact.field_username, this.contact.aaS(), this.context.getString(2131757887));
+    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.aVD("contact_info_header_helper");
+    localHelperHeaderPreference.aZ(this.contact.field_username, this.contact.adv(), this.context.getString(2131757887));
     int i;
-    if ((u.axI() & 0x4000000) == 0)
+    if ((u.aAy() & 0x4000000) == 0)
     {
       i = 1;
       if (i == 0) {
         break label144;
       }
       localHelperHeaderPreference.updateStatus(1);
-      this.screen.cK("contact_info_top_story_install", true);
-      this.screen.cK("contact_info_top_story_uninstall", false);
-      this.screen.cK("contact_info_go_to_top_story", false);
-      this.screen.cK("contact_info_top_story_not_disturb", false);
+      this.screen.cP("contact_info_top_story_install", true);
+      this.screen.cP("contact_info_top_story_uninstall", false);
+      this.screen.cP("contact_info_go_to_top_story", false);
+      this.screen.cP("contact_info_top_story_not_disturb", false);
     }
     for (;;)
     {
-      if (!eeG()) {
+      if (!eqX()) {
         break label204;
       }
-      this.oNN.mF = true;
+      this.prv.oB = true;
       AppMethodBeat.o(126629);
       return;
       i = 0;
       break;
       label144:
       localHelperHeaderPreference.updateStatus(0);
-      this.screen.cK("contact_info_top_story_install", false);
-      this.screen.cK("contact_info_top_story_uninstall", true);
-      this.screen.cK("contact_info_go_to_top_story", true);
-      this.screen.cK("contact_info_top_story_not_disturb", true);
+      this.screen.cP("contact_info_top_story_install", false);
+      this.screen.cP("contact_info_top_story_uninstall", true);
+      this.screen.cP("contact_info_go_to_top_story", true);
+      this.screen.cP("contact_info_top_story_not_disturb", true);
     }
     label204:
-    this.oNN.mF = false;
+    this.prv.oB = false;
     AppMethodBeat.o(126629);
   }
   
-  private static boolean eeG()
+  private static boolean eqX()
   {
     AppMethodBeat.i(126631);
-    if ((u.axC() & 0x1000000) == 0)
+    if ((u.aAs() & 0x1000000) == 0)
     {
       AppMethodBeat.o(126631);
       return true;
@@ -92,67 +92,11 @@ public final class a
     return false;
   }
   
-  public final boolean WZ(String paramString)
-  {
-    AppMethodBeat.i(126627);
-    if ("contact_info_go_to_top_story".equals(paramString)) {
-      d.ag(this.context, 0);
-    }
-    do
-    {
-      for (;;)
-      {
-        AppMethodBeat.o(126627);
-        return false;
-        if ("contact_info_top_story_install".equals(paramString))
-        {
-          pb(true);
-        }
-        else
-        {
-          if (!"contact_info_top_story_uninstall".equals(paramString)) {
-            break;
-          }
-          h.d(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(126624);
-              a.this.pb(false);
-              AppMethodBeat.o(126624);
-            }
-          }, null);
-        }
-      }
-    } while (!"contact_info_top_story_not_disturb".equals(paramString));
-    int i = u.axC();
-    if (this.oNN.isChecked())
-    {
-      i &= 0xFEFFFFFF;
-      label132:
-      g.agR().agA().set(40, Integer.valueOf(i));
-      paramString = new aqc();
-      paramString.EIY = 55;
-      if (!this.oNN.isChecked()) {
-        break label217;
-      }
-    }
-    label217:
-    for (i = 2;; i = 1)
-    {
-      paramString.vVH = i;
-      ((k)g.ab(k.class)).awA().c(new j.a(55, paramString));
-      break;
-      i |= 0x1000000;
-      break label132;
-    }
-  }
-  
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(126630);
-    paramInt = bs.l(paramObject, 0);
-    if ((paramn != g.agR().agA()) || (paramInt <= 0))
+    paramInt = bt.m(paramObject, 0);
+    if ((paramn != g.ajC().ajl()) || (paramInt <= 0))
     {
       AppMethodBeat.o(126630);
       return;
@@ -162,44 +106,100 @@ public final class a
       AppMethodBeat.o(126630);
       return;
     }
-    bYK();
+    cdo();
     AppMethodBeat.o(126630);
   }
   
-  public final boolean a(f paramf, ai paramai, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(126625);
     this.screen = paramf;
-    this.contact = paramai;
+    this.contact = paramam;
     paramf.addPreferencesFromResource(2131951659);
-    g.agR().agA().a(this);
-    this.oNN = ((CheckBoxPreference)paramf.aPN("contact_info_top_story_not_disturb"));
-    bYK();
+    g.ajC().ajl().a(this);
+    this.prv = ((CheckBoxPreference)paramf.aVD("contact_info_top_story_not_disturb"));
+    cdo();
     AppMethodBeat.o(126625);
     return true;
   }
   
-  public final boolean bYJ()
+  public final boolean aaG(String paramString)
+  {
+    AppMethodBeat.i(126627);
+    if ("contact_info_go_to_top_story".equals(paramString)) {
+      d.aj(this.context, 0);
+    }
+    do
+    {
+      for (;;)
+      {
+        AppMethodBeat.o(126627);
+        return false;
+        if ("contact_info_top_story_install".equals(paramString))
+        {
+          sM(true);
+        }
+        else
+        {
+          if (!"contact_info_top_story_uninstall".equals(paramString)) {
+            break;
+          }
+          h.e(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(126624);
+              a.this.sM(false);
+              AppMethodBeat.o(126624);
+            }
+          }, null);
+        }
+      }
+    } while (!"contact_info_top_story_not_disturb".equals(paramString));
+    int i = u.aAs();
+    if (this.prv.isChecked())
+    {
+      i &= 0xFEFFFFFF;
+      label132:
+      g.ajC().ajl().set(40, Integer.valueOf(i));
+      paramString = new aty();
+      paramString.GrZ = 55;
+      if (!this.prv.isChecked()) {
+        break label217;
+      }
+    }
+    label217:
+    for (i = 2;; i = 1)
+    {
+      paramString.xcI = i;
+      ((l)g.ab(l.class)).azo().c(new k.a(55, paramString));
+      break;
+      i |= 0x1000000;
+      break label132;
+    }
+  }
+  
+  public final boolean cdn()
   {
     AppMethodBeat.i(126626);
-    g.agR().agA().b(this);
+    g.ajC().ajl().b(this);
     AppMethodBeat.o(126626);
     return true;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  final void pb(boolean paramBoolean)
+  final void sM(boolean paramBoolean)
   {
     AppMethodBeat.i(126628);
-    int i = u.axI();
+    int i = u.aAy();
     Object localObject;
     if (paramBoolean)
     {
       i &= 0xFBFFFFFF;
-      g.agR().agA().set(34, Integer.valueOf(i));
-      localObject = new cft();
-      ((cft)localObject).DNd = 67108864;
+      g.ajC().ajl().set(34, Integer.valueOf(i));
+      localObject = new cks();
+      ((cks)localObject).Fsi = 67108864;
       if (!paramBoolean) {
         break label195;
       }
@@ -207,21 +207,21 @@ public final class a
     label195:
     for (i = 0;; i = 1)
     {
-      ((cft)localObject).Fuc = i;
-      ((k)g.ab(k.class)).awA().c(new j.a(39, (com.tencent.mm.bw.a)localObject));
-      bYK();
+      ((cks)localObject).Heh = i;
+      ((l)g.ab(l.class)).azo().c(new k.a(39, (com.tencent.mm.bx.a)localObject));
+      cdo();
       if (!paramBoolean) {
         break label200;
       }
-      if (((k)g.ab(k.class)).awG().aNI("topstoryapp") == null)
+      if (((l)g.ab(l.class)).azv().aTz("topstoryapp") == null)
       {
-        localObject = new ap();
-        ((ap)localObject).setUsername("topstoryapp");
-        ((ap)localObject).setContent(this.context.getString(2131757887));
-        ((ap)localObject).ou(bs.eWj());
-        ((ap)localObject).jT(0);
-        ((ap)localObject).jR(0);
-        ((k)g.ab(k.class)).awG().e((ap)localObject);
+        localObject = new at();
+        ((at)localObject).setUsername("topstoryapp");
+        ((at)localObject).setContent(this.context.getString(2131757887));
+        ((at)localObject).qu(bt.flT());
+        ((at)localObject).kr(0);
+        ((at)localObject).kp(0);
+        ((l)g.ab(l.class)).azv().e((at)localObject);
       }
       AppMethodBeat.o(126628);
       return;
@@ -229,7 +229,7 @@ public final class a
       break;
     }
     label200:
-    ((k)g.ab(k.class)).awG().aNG("topstoryapp");
+    ((l)g.ab(l.class)).azv().aTx("topstoryapp");
     AppMethodBeat.o(126628);
   }
 }

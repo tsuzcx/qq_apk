@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.d.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Vector;
@@ -10,21 +10,21 @@ import junit.framework.Assert;
 public final class d
 {
   private final HashMap<c, Vector<Integer>> dz;
-  private b nop;
+  private b nPl;
   
   public d(b paramb)
   {
     AppMethodBeat.i(22439);
     this.dz = new HashMap();
-    this.nop = null;
-    this.nop = paramb;
+    this.nPl = null;
+    this.nPl = paramb;
     AppMethodBeat.o(22439);
   }
   
   private void a(Vector<Integer> paramVector, c paramc)
   {
     AppMethodBeat.i(22441);
-    ac.i("MicroMsg.exdevie.IBeaconManager", "calDistance");
+    ad.i("MicroMsg.exdevie.IBeaconManager", "calDistance");
     Object localObject = new int[paramVector.size()];
     int i = 0;
     while (i < localObject.length)
@@ -33,10 +33,10 @@ public final class d
       i += 1;
     }
     paramVector = new a((int[])localObject);
-    if (1 == paramVector.nol.length)
+    if (1 == paramVector.nPh.length)
     {
-      ac.d("MicroMsg.exdevice.GaussianFilter", "data group length = 1, no need to filter, just return");
-      paramVector = paramVector.nol;
+      ad.d("MicroMsg.exdevice.GaussianFilter", "data group length = 1, no need to filter, just return");
+      paramVector = paramVector.nPh;
     }
     while ((paramVector == null) || (paramVector.length == 0))
     {
@@ -46,29 +46,29 @@ public final class d
       localObject = new StringBuilder("");
       ((StringBuilder)localObject).append("Data Before GaussianFilter \r\n");
       i = 0;
-      while (i < paramVector.nol.length)
+      while (i < paramVector.nPh.length)
       {
-        ((StringBuilder)localObject).append(" " + paramVector.nol[i]);
+        ((StringBuilder)localObject).append(" " + paramVector.nPh[i]);
         i += 1;
       }
-      ac.d("MicroMsg.exdevice.GaussianFilter", ((StringBuilder)localObject).toString());
-      d1 = i.v(paramVector.nol);
-      d2 = i.w(paramVector.nol);
+      ad.d("MicroMsg.exdevice.GaussianFilter", ((StringBuilder)localObject).toString());
+      d1 = i.v(paramVector.nPh);
+      d2 = i.w(paramVector.nPh);
       d3 = i.i(0.15D, d2).add(new BigDecimal(d1)).doubleValue();
       double d4 = i.i(3.09D, d2).add(new BigDecimal(d1)).doubleValue();
-      ac.d("MicroMsg.exdevice.GaussianFilter", "Mean = " + d1 + "SD = " + d2 + "LowerLimit = " + d3 + " UpperLimit = " + d4);
+      ad.d("MicroMsg.exdevice.GaussianFilter", "Mean = " + d1 + "SD = " + d2 + "LowerLimit = " + d3 + " UpperLimit = " + d4);
       i = 0;
-      localObject = new int[paramVector.nol.length];
+      localObject = new int[paramVector.nPh.length];
       int j = 0;
-      while (j < paramVector.nol.length)
+      while (j < paramVector.nPh.length)
       {
         int k = i;
-        if (paramVector.nol[j] >= d3)
+        if (paramVector.nPh[j] >= d3)
         {
           k = i;
-          if (paramVector.nol[j] <= d4)
+          if (paramVector.nPh[j] <= d4)
           {
-            localObject[i] = paramVector.nol[j];
+            localObject[i] = paramVector.nPh[j];
             k = i + 1;
           }
         }
@@ -95,17 +95,17 @@ public final class d
         ((StringBuilder)localObject).append(" " + paramVector[i]);
         i += 1;
       }
-      ac.d("MicroMsg.exdevice.GaussianFilter", ((StringBuilder)localObject).toString());
+      ad.d("MicroMsg.exdevice.GaussianFilter", ((StringBuilder)localObject).toString());
     }
     double d2 = i.v(paramVector);
-    paramc.noo = new BigDecimal(d2).divide(new BigDecimal(1), 3, 4).doubleValue();
-    double d3 = paramc.non.nor.noV;
+    paramc.nPk = new BigDecimal(d2).divide(new BigDecimal(1), 3, 4).doubleValue();
+    double d3 = paramc.nPj.nPn.nPR;
     double d1 = 1.0D * d2 / d3;
     if (d1 < 1.0D) {}
     for (d1 = Math.pow(d1, 10.0D);; d1 = Math.pow(d1, 9.9476D) * 0.92093D + 0.54992D)
     {
-      ac.i("MicroMsg.exdevie.IBeaconManager", "txPower = %f , rssi = %f,distance = %f", new Object[] { Double.valueOf(d3), Double.valueOf(d2), Double.valueOf(d1) });
-      this.nop.a(d1, paramc);
+      ad.i("MicroMsg.exdevie.IBeaconManager", "txPower = %f , rssi = %f,distance = %f", new Object[] { Double.valueOf(d3), Double.valueOf(d2), Double.valueOf(d1) });
+      this.nPl.a(d1, paramc);
       AppMethodBeat.o(22441);
       return;
     }
@@ -114,17 +114,17 @@ public final class d
   public final void a(int paramInt, String paramString, e parame)
   {
     AppMethodBeat.i(22440);
-    ac.i("MicroMsg.exdevie.IBeaconManager", "advertismentProcess, brand = %s, rssi = %d", new Object[] { null, Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.exdevie.IBeaconManager", "advertismentProcess, brand = %s, rssi = %d", new Object[] { null, Integer.valueOf(paramInt) });
     if (parame == null)
     {
-      ac.e("MicroMsg.exdevie.IBeaconManager", "null == aProtocal");
+      ad.e("MicroMsg.exdevie.IBeaconManager", "null == aProtocal");
       AppMethodBeat.o(22440);
       return;
     }
     c localc = new c();
-    localc.nom = null;
-    localc.non = parame;
-    localc.cDv = paramString;
+    localc.nPi = null;
+    localc.nPj = parame;
+    localc.cOA = paramString;
     if (!this.dz.containsKey(localc))
     {
       paramString = new Vector();
@@ -143,7 +143,7 @@ public final class d
       }
       catch (Exception parame)
       {
-        ac.e("MicroMsg.exdevie.IBeaconManager", "calDistance failed!!!, %s", new Object[] { parame.getMessage() });
+        ad.e("MicroMsg.exdevie.IBeaconManager", "calDistance failed!!!, %s", new Object[] { parame.getMessage() });
         return;
       }
       finally

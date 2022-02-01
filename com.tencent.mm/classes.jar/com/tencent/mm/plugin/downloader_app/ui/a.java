@@ -16,16 +16,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends RecyclerView.h
 {
-  private final Drawable akL;
+  private final Drawable amC;
   private int mSize;
-  private final Drawable oNb;
+  private final Drawable pqJ;
   
   public a(Resources paramResources)
   {
     AppMethodBeat.i(9025);
-    this.akL = new ColorDrawable(paramResources.getColor(2131100251));
+    this.amC = new ColorDrawable(paramResources.getColor(2131100251));
     this.mSize = paramResources.getDimensionPixelSize(2131166455);
-    this.oNb = new ColorDrawable(paramResources.getColor(2131101179));
+    this.pqJ = new ColorDrawable(paramResources.getColor(2131101179));
     AppMethodBeat.o(9025);
   }
   
@@ -46,8 +46,8 @@ public final class a
       if ((localView2.getVisibility() == 8) || (localView1.getVisibility() == 8)) {
         if ((localView1 instanceof TaskItemView))
         {
-          this.oNb.setBounds(j, n, k, i1);
-          this.oNb.draw(paramCanvas);
+          this.pqJ.setBounds(j, n, k, i1);
+          this.pqJ.draw(paramCanvas);
         }
       }
       for (;;)
@@ -56,8 +56,8 @@ public final class a
         break;
         if (((localView1 instanceof TaskManagerHeaderView)) || ((localView1 instanceof TaskHeaderView)) || ((localView1 instanceof ExpandView)))
         {
-          this.akL.setBounds(j, n, k, i1);
-          this.akL.draw(paramCanvas);
+          this.amC.setBounds(j, n, k, i1);
+          this.amC.draw(paramCanvas);
         }
         else
         {
@@ -72,15 +72,15 @@ public final class a
               }
               if (((localView2 instanceof ExpandView)) && (localView2.getVisibility() == 8))
               {
-                this.akL.setBounds(j, n, k, i1);
-                this.akL.draw(paramCanvas);
+                this.amC.setBounds(j, n, k, i1);
+                this.amC.draw(paramCanvas);
                 continue;
               }
             }
-            this.akL.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
-            this.akL.draw(paramCanvas);
-            this.oNb.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
-            this.oNb.draw(paramCanvas);
+            this.amC.setBounds(((TaskItemView)localView1).getNamePaddingLeft() + j, n, k, i1);
+            this.amC.draw(paramCanvas);
+            this.pqJ.setBounds(j, n, ((TaskItemView)localView1).getNamePaddingLeft() + j, i1);
+            this.pqJ.draw(paramCanvas);
             continue;
           }
           label353:
@@ -100,7 +100,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,10 +5,10 @@ import java.util.LinkedList;
 
 public class b
 {
-  public int cQG;
-  public byte[] cQH;
-  public volatile LinkedList<String> cQI;
   public int channels;
+  public int dbW;
+  public byte[] dbX;
+  public volatile LinkedList<String> dbY;
   public int sampleRate;
   
   public b()
@@ -16,8 +16,8 @@ public class b
     AppMethodBeat.i(136708);
     this.sampleRate = 0;
     this.channels = 0;
-    this.cQG = 2;
-    this.cQI = new LinkedList();
+    this.dbW = 2;
+    this.dbY = new LinkedList();
     AppMethodBeat.o(136708);
   }
 }

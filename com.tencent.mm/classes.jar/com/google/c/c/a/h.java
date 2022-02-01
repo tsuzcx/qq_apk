@@ -6,14 +6,14 @@ import java.nio.charset.Charset;
 
 final class h
 {
-  final String bIO;
-  l bIP;
-  b bIQ;
-  b bIR;
-  final StringBuilder bIS;
-  int bIT;
-  k bIU;
-  int bIV;
+  l bTc;
+  b bTd;
+  b bTe;
+  final StringBuilder bTf;
+  int bTg;
+  k bTh;
+  int bTi;
+  final String msg;
   int pos;
   
   h(String paramString)
@@ -35,57 +35,64 @@ final class h
       localStringBuilder.append(c);
       i += 1;
     }
-    this.bIO = localStringBuilder.toString();
-    this.bIP = l.bJk;
-    this.bIS = new StringBuilder(paramString.length());
-    this.bIT = -1;
+    this.msg = localStringBuilder.toString();
+    this.bTc = l.bTx;
+    this.bTf = new StringBuilder(paramString.length());
+    this.bTg = -1;
     AppMethodBeat.o(12272);
   }
   
-  private int yb()
+  private int zy()
   {
     AppMethodBeat.i(12277);
-    int i = this.bIO.length();
-    int j = this.bIV;
+    int i = this.msg.length();
+    int j = this.bTi;
     AppMethodBeat.o(12277);
     return i - j;
   }
   
-  public final void bm(String paramString)
+  public final void cf(String paramString)
   {
     AppMethodBeat.i(12274);
-    this.bIS.append(paramString);
+    this.bTf.append(paramString);
     AppMethodBeat.o(12274);
   }
   
-  public final void e(char paramChar)
-  {
-    AppMethodBeat.i(12275);
-    this.bIS.append(paramChar);
-    AppMethodBeat.o(12275);
-  }
-  
-  public final void fU(int paramInt)
+  public final void fX(int paramInt)
   {
     AppMethodBeat.i(12280);
-    if ((this.bIU == null) || (paramInt > this.bIU.bJd)) {
-      this.bIU = k.a(paramInt, this.bIP, this.bIQ, this.bIR);
+    if ((this.bTh == null) || (paramInt > this.bTh.bTq)) {
+      this.bTh = k.a(paramInt, this.bTc, this.bTd, this.bTe);
     }
     AppMethodBeat.o(12280);
   }
   
-  public final char xZ()
+  public final void g(char paramChar)
+  {
+    AppMethodBeat.i(12275);
+    this.bTf.append(paramChar);
+    AppMethodBeat.o(12275);
+  }
+  
+  public final void zA()
+  {
+    AppMethodBeat.i(12279);
+    fX(this.bTf.length());
+    AppMethodBeat.o(12279);
+  }
+  
+  public final char zw()
   {
     AppMethodBeat.i(12273);
-    char c = this.bIO.charAt(this.pos);
+    char c = this.msg.charAt(this.pos);
     AppMethodBeat.o(12273);
     return c;
   }
   
-  public final boolean ya()
+  public final boolean zx()
   {
     AppMethodBeat.i(12276);
-    if (this.pos < yb())
+    if (this.pos < zy())
     {
       AppMethodBeat.o(12276);
       return true;
@@ -94,25 +101,18 @@ final class h
     return false;
   }
   
-  public final int yc()
+  public final int zz()
   {
     AppMethodBeat.i(12278);
-    int i = yb();
+    int i = zy();
     int j = this.pos;
     AppMethodBeat.o(12278);
     return i - j;
   }
-  
-  public final void yd()
-  {
-    AppMethodBeat.i(12279);
-    fU(this.bIS.length());
-    AppMethodBeat.o(12279);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.h
  * JD-Core Version:    0.7.0.1
  */

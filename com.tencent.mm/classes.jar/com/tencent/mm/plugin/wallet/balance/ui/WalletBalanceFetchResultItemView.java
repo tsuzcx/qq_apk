@@ -7,14 +7,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.utils.g;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class WalletBalanceFetchResultItemView
   extends LinearLayout
 {
-  private TextView lfN;
-  private TextView lgw;
-  private boolean wFT;
+  private TextView lCL;
+  private TextView lDu;
+  private boolean xTA;
   
   public WalletBalanceFetchResultItemView(Context paramContext)
   {
@@ -25,7 +25,7 @@ public class WalletBalanceFetchResultItemView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(68564);
-    this.wFT = false;
+    this.xTA = false;
     init();
     AppMethodBeat.o(68564);
   }
@@ -34,7 +34,7 @@ public class WalletBalanceFetchResultItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(68565);
-    this.wFT = false;
+    this.xTA = false;
     init();
     AppMethodBeat.o(68565);
   }
@@ -43,8 +43,8 @@ public class WalletBalanceFetchResultItemView
   {
     super(paramContext);
     AppMethodBeat.i(68563);
-    this.wFT = false;
-    this.wFT = paramBoolean;
+    this.xTA = false;
+    this.xTA = paramBoolean;
     init();
     AppMethodBeat.o(68563);
   }
@@ -52,13 +52,13 @@ public class WalletBalanceFetchResultItemView
   private void init()
   {
     AppMethodBeat.i(68566);
-    if (this.wFT) {
+    if (this.xTA) {
       inflate(getContext(), 2131493152, this);
     }
     for (;;)
     {
-      this.lfN = ((TextView)findViewById(2131297519));
-      this.lgw = ((TextView)findViewById(2131297518));
+      this.lCL = ((TextView)findViewById(2131297519));
+      this.lDu = ((TextView)findViewById(2131297518));
       AppMethodBeat.o(68566);
       return;
       inflate(getContext(), 2131493151, this);
@@ -68,21 +68,21 @@ public class WalletBalanceFetchResultItemView
   public final void a(String paramString1, CharSequence paramCharSequence, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(68567);
-    this.lfN.setText(paramString1);
-    if (!bs.isNullOrNil(paramString2)) {
-      this.lfN.setTextColor(g.cd(paramString2, true));
+    this.lCL.setText(paramString1);
+    if (!bt.isNullOrNil(paramString2)) {
+      this.lCL.setTextColor(g.cl(paramString2, true));
     }
     if (paramBoolean) {
-      this.lgw.setText(k.b(getContext(), paramCharSequence, this.lgw.getTextSize()));
+      this.lDu.setText(k.b(getContext(), paramCharSequence, this.lDu.getTextSize()));
     }
     for (;;)
     {
-      if (!bs.isNullOrNil(paramString3)) {
-        this.lgw.setTextColor(g.cd(paramString3, true));
+      if (!bt.isNullOrNil(paramString3)) {
+        this.lDu.setTextColor(g.cl(paramString3, true));
       }
       AppMethodBeat.o(68567);
       return;
-      this.lgw.setText(paramCharSequence);
+      this.lDu.setText(paramCharSequence);
     }
   }
   
@@ -95,7 +95,7 @@ public class WalletBalanceFetchResultItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceFetchResultItemView
  * JD-Core Version:    0.7.0.1
  */

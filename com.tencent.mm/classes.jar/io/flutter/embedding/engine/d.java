@@ -10,25 +10,25 @@ import java.util.Set;
 
 public final class d
 {
-  private Set<String> KLS;
+  private Set<String> MCP;
   
   private d(List<String> paramList)
   {
     AppMethodBeat.i(10183);
-    this.KLS = new HashSet(paramList);
+    this.MCP = new HashSet(paramList);
     AppMethodBeat.o(10183);
   }
   
   public d(String[] paramArrayOfString)
   {
     AppMethodBeat.i(10182);
-    this.KLS = new HashSet(Arrays.asList(paramArrayOfString));
+    this.MCP = new HashSet(Arrays.asList(paramArrayOfString));
     AppMethodBeat.o(10182);
   }
   
-  public static d bw(Intent paramIntent)
+  public static d bB(Intent paramIntent)
   {
-    AppMethodBeat.i(192801);
+    AppMethodBeat.i(213248);
     ArrayList localArrayList = new ArrayList();
     if (paramIntent.getBooleanExtra("trace-startup", false)) {
       localArrayList.add("--trace-startup");
@@ -42,6 +42,9 @@ public final class d
     }
     if (paramIntent.getBooleanExtra("disable-service-auth-codes", false)) {
       localArrayList.add("--disable-service-auth-codes");
+    }
+    if (paramIntent.getBooleanExtra("endless-trace-buffer", false)) {
+      localArrayList.add("--endless-trace-buffer");
     }
     if (paramIntent.getBooleanExtra("use-test-fonts", false)) {
       localArrayList.add("--use-test-fonts");
@@ -71,15 +74,15 @@ public final class d
       localArrayList.add("--dart-flags=" + paramIntent.getStringExtra("dart-flags"));
     }
     paramIntent = new d(localArrayList);
-    AppMethodBeat.o(192801);
+    AppMethodBeat.o(213248);
     return paramIntent;
   }
   
-  public final String[] fNp()
+  public final String[] toArray()
   {
     AppMethodBeat.i(10184);
-    String[] arrayOfString = new String[this.KLS.size()];
-    arrayOfString = (String[])this.KLS.toArray(arrayOfString);
+    String[] arrayOfString = new String[this.MCP.size()];
+    arrayOfString = (String[])this.MCP.toArray(arrayOfString);
     AppMethodBeat.o(10184);
     return arrayOfString;
   }

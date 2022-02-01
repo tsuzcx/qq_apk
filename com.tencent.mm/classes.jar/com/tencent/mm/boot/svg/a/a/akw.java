@@ -13,8 +13,8 @@ import com.tencent.mm.svg.c;
 public final class akw
   extends c
 {
-  private final int height = 72;
-  private final int width = 72;
+  private final int height = 24;
+  private final int width = 24;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -24,8 +24,8 @@ public final class akw
     for (;;)
     {
       return 0;
-      return 72;
-      return 72;
+      return 24;
+      return 24;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
       c.j(paramVarArgs);
@@ -43,30 +43,34 @@ public final class akw
       ((Paint)localObject).setStrokeMiter(4.0F);
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
-      localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
+      localPaint.setColor(-1);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(40.5F, 63.0F);
-      ((Path)localObject).lineTo(40.5F, 51.0F);
-      ((Path)localObject).lineTo(31.5F, 51.0F);
-      ((Path)localObject).lineTo(31.5F, 63.0F);
-      ((Path)localObject).lineTo(21.0F, 63.0F);
-      ((Path)localObject).cubicTo(19.343145F, 63.0F, 18.0F, 61.656853F, 18.0F, 60.0F);
-      ((Path)localObject).lineTo(18.0F, 42.0F);
-      ((Path)localObject).lineTo(10.24264F, 42.0F);
-      ((Path)localObject).cubicTo(9.446991F, 42.0F, 8.683929F, 41.683929F, 8.121321F, 41.121319F);
-      ((Path)localObject).cubicTo(6.949748F, 39.949749F, 6.949748F, 38.050251F, 8.121321F, 36.878681F);
-      ((Path)localObject).lineTo(33.878681F, 11.121321F);
-      ((Path)localObject).cubicTo(35.050251F, 9.949747F, 36.949749F, 9.949747F, 38.121319F, 11.121321F);
-      ((Path)localObject).lineTo(63.878681F, 36.878681F);
-      ((Path)localObject).cubicTo(64.441292F, 37.441288F, 64.757362F, 38.20435F, 64.757362F, 39.0F);
-      ((Path)localObject).cubicTo(64.757362F, 40.656853F, 63.414215F, 42.0F, 61.757359F, 42.0F);
-      ((Path)localObject).lineTo(54.0F, 42.0F);
-      ((Path)localObject).lineTo(54.0F, 60.0F);
-      ((Path)localObject).cubicTo(54.0F, 61.656853F, 52.656853F, 63.0F, 51.0F, 63.0F);
-      ((Path)localObject).lineTo(40.5F, 63.0F);
+      ((Path)localObject).moveTo(10.999252F, 14.071F);
+      ((Path)localObject).lineTo(8.464466F, 11.535534F);
+      ((Path)localObject).lineTo(7.050252F, 12.949747F);
+      ((Path)localObject).lineTo(11.646446F, 17.545942F);
+      ((Path)localObject).cubicTo(11.820013F, 17.719507F, 12.089437F, 17.738792F, 12.284306F, 17.603798F);
+      ((Path)localObject).lineTo(12.353554F, 17.545942F);
+      ((Path)localObject).lineTo(16.949747F, 12.949747F);
+      ((Path)localObject).lineTo(15.535534F, 11.535534F);
+      ((Path)localObject).lineTo(12.999252F, 14.071F);
+      ((Path)localObject).lineTo(13.0F, 6.0F);
+      ((Path)localObject).lineTo(19.0F, 6.0F);
+      ((Path)localObject).cubicTo(19.552284F, 6.0F, 20.0F, 6.447715F, 20.0F, 7.0F);
+      ((Path)localObject).lineTo(20.0F, 20.5F);
+      ((Path)localObject).cubicTo(20.0F, 21.052284F, 19.552284F, 21.5F, 19.0F, 21.5F);
+      ((Path)localObject).lineTo(5.0F, 21.5F);
+      ((Path)localObject).cubicTo(4.447715F, 21.5F, 4.0F, 21.052284F, 4.0F, 20.5F);
+      ((Path)localObject).lineTo(4.0F, 7.0F);
+      ((Path)localObject).cubicTo(4.0F, 6.447715F, 4.447715F, 6.0F, 5.0F, 6.0F);
+      ((Path)localObject).lineTo(11.0F, 6.0F);
+      ((Path)localObject).lineTo(11.0F, 2.0F);
+      ((Path)localObject).lineTo(13.0F, 2.0F);
+      ((Path)localObject).lineTo(13.0F, 6.25F);
+      ((Path)localObject).lineTo(11.0F, 6.25F);
+      ((Path)localObject).lineTo(10.999252F, 14.071F);
       ((Path)localObject).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
@@ -77,7 +81,7 @@ public final class akw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.akw
  * JD-Core Version:    0.7.0.1
  */

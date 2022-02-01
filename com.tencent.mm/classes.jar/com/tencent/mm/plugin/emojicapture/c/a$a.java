@@ -4,22 +4,22 @@ import com.tencent.mm.media.widget.camerarecordview.b.b;
 import com.tencent.mm.sticker.f;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IPresenter;", "", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "destroy", "exit", "pauseCapture", "startRecord", "stopCallBack", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "isBackCamera", "", "stopRecord", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IPresenter;", "", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "destroy", "exit", "pauseCapture", "startRecord", "stopCallBack", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "isBackCamera", "", "stopRecord", "plugin-emojicapture_release"})
 public abstract interface a$a
 {
-  public abstract boolean NX();
+  public abstract boolean PG();
   
   public abstract void a(b paramb, boolean paramBoolean);
   
   public abstract void a(f paramf);
   
-  public abstract void bgk();
+  public abstract void bjO();
   
   public abstract void destroy();
   
   public abstract void exit();
   
-  public abstract void qZ();
+  public abstract void sx();
 }
 
 

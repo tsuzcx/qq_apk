@@ -7,10 +7,10 @@
                 <LinearLayout android:orientation="vertical" android:id="@id/bcy" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:paddingBottom="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <RelativeLayout android:gravity="center_vertical" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="21.0dip" android:layout_marginBottom="16.0dip">
                         <ImageView android:id="@id/cnh" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentLeft="true" />
-                        <com.tencent.mm.plugin.ball.view.EllipsizeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="31.0dip" android:layout_toRightOf="@id/cnh" android:layout_centerVertical="true">
+                        <com.tencent.mm.ui.widget.EllipsizeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="31.0dip" android:layout_toRightOf="@id/cnh" android:layout_centerVertical="true">
                             <TextView android:textSize="16.0dip" android:textColor="@color/y3" android:ellipsize="end" android:id="@id/ps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
                             <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/bk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:maxLines="1" />
-                        </com.tencent.mm.plugin.ball.view.EllipsizeLayout>
+                        </com.tencent.mm.ui.widget.EllipsizeLayout>
                         <FrameLayout android:id="@id/gdo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
                             <ImageView android:padding="@dimen/ju" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/subscribe_msg_info_ic" android:cropToPadding="true" />
                         </FrameLayout> ` </RelativeLayout>

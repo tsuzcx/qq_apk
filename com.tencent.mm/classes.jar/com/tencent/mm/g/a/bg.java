@@ -2,11 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class bg
   extends b
 {
-  public a daV;
+  public a dmg;
+  public b dmh;
   
   public bg()
   {
@@ -15,21 +17,29 @@ public final class bg
   
   private bg(byte paramByte)
   {
-    AppMethodBeat.i(114790);
-    this.daV = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(104409);
+    this.dmg = new a();
+    this.dmh = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(114790);
+    AppMethodBeat.o(104409);
   }
   
   public static final class a
   {
-    public boolean aKd = false;
+    public EmojiInfo dmi;
+    public String dmj;
+    public int type;
+  }
+  
+  public static final class b
+  {
+    public boolean result = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.bg
  * JD-Core Version:    0.7.0.1
  */

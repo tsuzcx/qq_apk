@@ -43,14 +43,14 @@ public class t
   
   public void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(193040);
+    AppMethodBeat.i(187061);
     paramk = l.a(paramk, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
     localFloatBuffer.put(paramk);
     localFloatBuffer.flip();
     this.r = localByteBuffer;
-    AppMethodBeat.o(193040);
+    AppMethodBeat.o(187061);
   }
   
   public boolean b()

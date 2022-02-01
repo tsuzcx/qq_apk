@@ -1,241 +1,299 @@
 package com.tencent.mm.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.f;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class ab
 {
-  public static boolean iuU;
-  public static boolean iuV;
-  public static boolean iuW;
-  public static boolean iuX;
-  public static boolean iuY;
-  public static boolean iuZ;
-  public static boolean ivA;
-  public static String ivB;
-  public static String ivC;
-  public static boolean ivD;
-  public static boolean ivE;
-  public static int ivF;
-  public static int ivG;
-  public static int ivH;
-  public static String ivI;
-  public static String ivJ;
-  public static String ivK;
-  public static String ivL;
-  public static boolean ivM;
-  public static boolean ivN;
-  public static boolean ivO;
-  public static boolean ivP;
-  public static String ivQ;
-  public static String ivR;
-  public static String ivS;
-  public static String ivT;
-  public static String ivU;
-  public static boolean ivV;
-  public static boolean ivW;
-  public static boolean ivX;
-  public static int ivY;
-  public static boolean ivZ;
-  public static boolean iva;
-  public static boolean ivb;
-  public static boolean ivc;
-  public static boolean ivd;
-  public static boolean ive;
-  public static boolean ivf;
-  public static String ivg;
-  public static boolean ivh;
-  public static boolean ivi;
-  public static boolean ivj;
-  public static boolean ivk;
-  public static int ivl;
-  public static boolean ivm;
-  public static boolean ivn;
-  public static boolean ivo;
-  public static String ivp;
-  public static String ivq;
-  public static boolean ivr;
-  public static boolean ivs;
-  public static boolean ivt;
-  public static boolean ivu;
-  public static boolean ivv;
-  public static boolean ivw;
-  public static boolean ivx;
-  public static int ivy;
-  public static int ivz;
-  public static boolean iwA;
-  public static String iwB;
-  public static String iwC;
-  public static boolean iwD;
-  public static boolean iwE;
-  public static boolean iwF;
-  public static boolean iwG;
-  public static boolean iwH;
-  public static boolean iwI;
-  public static boolean iwJ;
-  public static boolean iwK;
-  public static boolean iwL;
-  public static boolean iwM;
-  public static boolean iwN;
-  private static HashMap<Integer, ConcurrentLinkedQueue<Integer>> iwO;
-  public static boolean iwP;
-  public static boolean iwQ;
-  public static boolean iwR;
-  public static boolean iwa;
-  public static boolean iwb;
-  public static boolean iwc;
-  public static boolean iwd;
-  public static String iwe;
-  public static int iwf;
-  public static boolean iwg;
-  public static boolean iwh;
-  public static boolean iwi;
-  public static boolean iwj;
-  public static String iwk;
-  public static int iwl;
-  public static boolean iwm;
-  public static boolean iwn;
-  public static int iwo;
-  public static boolean iwp;
-  public static String iwq;
-  public static float iwr;
-  public static float iws;
-  public static boolean iwt;
-  public static int iwu;
-  public static int iwv;
-  public static boolean iww;
-  public static String iwx;
-  public static String iwy;
-  public static boolean iwz;
-  public static double lat;
-  public static double lng;
+  private static final ab iNX;
+  public static AtomicBoolean iNY;
+  public f iNZ;
   
   static
   {
-    AppMethodBeat.i(132987);
-    iuU = false;
-    iuV = false;
-    iuW = false;
-    iuX = false;
-    iuY = false;
-    iuZ = false;
-    iva = false;
-    ivb = false;
-    ivc = false;
-    ivd = false;
-    ive = false;
-    ivf = false;
-    ivg = "";
-    ivh = false;
-    ivi = false;
-    ivj = false;
-    ivk = false;
-    ivl = 0;
-    ivm = false;
-    ivn = false;
-    ivo = false;
-    ivp = "";
-    ivq = "";
-    ivr = false;
-    ivs = false;
-    ivt = false;
-    ivu = false;
-    ivv = false;
-    ivw = false;
-    ivx = false;
-    ivy = 0;
-    ivz = 0;
-    ivA = false;
-    ivB = null;
-    ivC = null;
-    ivD = false;
-    ivE = false;
-    ivF = 0;
-    ivG = 0;
-    ivH = 0;
-    ivI = "";
-    ivJ = "";
-    ivK = null;
-    ivL = null;
-    ivM = false;
-    ivN = false;
-    ivO = false;
-    ivP = false;
-    lat = 0.0D;
-    lng = 0.0D;
-    ivQ = "";
-    ivR = "";
-    ivS = "";
-    ivT = "";
-    ivU = "";
-    ivV = false;
-    ivW = false;
-    ivX = false;
-    ivY = 0;
-    ivZ = false;
-    iwa = false;
-    iwb = false;
-    iwc = false;
-    iwd = false;
-    iwe = "";
-    iwf = 0;
-    iwg = false;
-    iwh = true;
-    iwi = false;
-    iwj = false;
-    iwk = "";
-    iwl = 0;
-    iwm = false;
-    iwn = false;
-    iwo = -1;
-    iwp = false;
-    iwq = "";
-    iwr = 0.4F;
-    iws = 0.7F;
-    iwt = false;
-    iwu = 0;
-    iwv = 0;
-    iww = false;
-    iwx = "";
-    iwy = "";
-    iwz = false;
-    iwA = false;
-    iwB = "";
-    iwC = "";
-    iwD = false;
-    iwE = false;
-    iwF = false;
-    iwG = false;
-    iwH = false;
-    iwI = false;
-    iwJ = false;
-    iwK = false;
-    iwL = false;
-    iwM = false;
-    iwN = false;
-    iwO = new HashMap();
-    iwP = false;
-    iwQ = false;
-    iwR = false;
-    AppMethodBeat.o(132987);
+    AppMethodBeat.i(189863);
+    iNX = new ab();
+    iNY = new AtomicBoolean(true);
+    AppMethodBeat.o(189863);
   }
   
-  public static void dt(int paramInt1, int paramInt2)
+  /* Error */
+  public static int a(f paramf)
   {
-    AppMethodBeat.i(132986);
-    synchronized (iwO)
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: ldc 43
+    //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: ldc 45
+    //   10: aconst_null
+    //   11: iconst_0
+    //   12: invokevirtual 50	com/tencent/mm/storagebase/f:a	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   15: astore_3
+    //   16: aload_3
+    //   17: invokeinterface 56 1 0
+    //   22: pop
+    //   23: aload_3
+    //   24: iconst_0
+    //   25: invokeinterface 60 2 0
+    //   30: istore_1
+    //   31: aload_3
+    //   32: ifnull +9 -> 41
+    //   35: aload_3
+    //   36: invokeinterface 63 1 0
+    //   41: ldc 43
+    //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: iload_1
+    //   47: ireturn
+    //   48: astore_2
+    //   49: ldc 43
+    //   51: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aload_2
+    //   55: athrow
+    //   56: astore_0
+    //   57: aload_3
+    //   58: ifnull +13 -> 71
+    //   61: aload_2
+    //   62: ifnull +25 -> 87
+    //   65: aload_3
+    //   66: invokeinterface 63 1 0
+    //   71: ldc 43
+    //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: aload_0
+    //   77: athrow
+    //   78: astore_3
+    //   79: aload_2
+    //   80: aload_3
+    //   81: invokevirtual 67	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   84: goto -13 -> 71
+    //   87: aload_3
+    //   88: invokeinterface 63 1 0
+    //   93: goto -22 -> 71
+    //   96: astore_0
+    //   97: goto -40 -> 57
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	paramf	f
+    //   30	17	1	i	int
+    //   1	1	2	localObject	Object
+    //   48	32	2	localThrowable1	java.lang.Throwable
+    //   15	51	3	localCursor	android.database.Cursor
+    //   78	10	3	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   16	31	48	java/lang/Throwable
+    //   49	56	56	finally
+    //   65	71	78	java/lang/Throwable
+    //   16	31	96	finally
+  }
+  
+  public static String a(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    AppMethodBeat.i(189857);
+    int i = 0;
+    while (i < 2)
     {
-      ConcurrentLinkedQueue localConcurrentLinkedQueue2 = (ConcurrentLinkedQueue)iwO.get(Integer.valueOf(paramInt1));
-      ConcurrentLinkedQueue localConcurrentLinkedQueue1 = localConcurrentLinkedQueue2;
-      if (localConcurrentLinkedQueue2 == null)
+      if (paramArrayOfString1[i].equalsIgnoreCase(paramString))
       {
-        localConcurrentLinkedQueue1 = new ConcurrentLinkedQueue();
-        iwO.put(Integer.valueOf(paramInt1), localConcurrentLinkedQueue1);
+        paramString = paramArrayOfString2[i];
+        AppMethodBeat.o(189857);
+        return paramString;
       }
-      localConcurrentLinkedQueue1.add(Integer.valueOf(paramInt2));
-      AppMethodBeat.o(132986);
-      return;
+      i += 1;
+    }
+    AppMethodBeat.o(189857);
+    return "";
+  }
+  
+  public static boolean a(f paramf, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(189859);
+    Object localObject = null;
+    try
+    {
+      paramf.execSQL("DROP INDEX ".concat(String.valueOf(paramString1)));
+      paramf = localObject;
+    }
+    catch (Exception paramf)
+    {
+      for (;;)
+      {
+        ad.e("TableIndexFixer", "DROP INDEX, failure! indexName=%s %s", new Object[] { paramString1, paramf });
+        e.ygI.idkeyStat(1457L, 0L, 1L, true);
+        e.ygI.f(20708, new Object[] { "1", Integer.valueOf(0), paramf.getMessage() + " indexName=" + paramString1 });
+      }
+      AppMethodBeat.o(189859);
+    }
+    if (paramf == null) {
+      ad.i("TableIndexFixer", "DROP INDEX, successfully! indexName=%s, tblName=%s", new Object[] { paramString1, paramString2 });
+    }
+    if (paramf == null)
+    {
+      AppMethodBeat.o(189859);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(f paramf, String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(189860);
+    if (bt.isNullOrNil(paramString1))
+    {
+      ad.e("TableIndexFixer", "[createIndex] rightTblName is wrong.");
+      AppMethodBeat.o(189860);
+      return false;
+    }
+    Object localObject = null;
+    paramString1 = paramString3.replaceAll(paramString2, paramString1);
+    try
+    {
+      paramf.execSQL(paramString1);
+      paramf = localObject;
+    }
+    catch (Exception paramf)
+    {
+      for (;;)
+      {
+        ad.e("TableIndexFixer", "CREATE INDEX, failure! sql=%s %s", new Object[] { paramString1, paramf });
+        e.ygI.idkeyStat(1457L, 5L, 1L, true);
+        e.ygI.f(20708, new Object[] { "1", Integer.valueOf(4), paramf.getMessage() + "sql=" + paramString1 });
+      }
+      AppMethodBeat.o(189860);
+    }
+    if (paramf == null) {
+      ad.i("TableIndexFixer", "CREATE INDEX, successfully! %s => %s", new Object[] { paramString3, paramString1 });
+    }
+    if (paramf == null)
+    {
+      AppMethodBeat.o(189860);
+      return true;
+    }
+    return false;
+  }
+  
+  public static boolean a(String[] paramArrayOfString, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(189858);
+    if (paramString1.startsWith("sqlite_"))
+    {
+      AppMethodBeat.o(189858);
+      return false;
+    }
+    if (paramString1.equals(paramString2))
+    {
+      AppMethodBeat.o(189858);
+      return false;
+    }
+    if (paramString1.startsWith(paramString2))
+    {
+      AppMethodBeat.o(189858);
+      return false;
+    }
+    int i = 0;
+    while (i < 2)
+    {
+      if (paramString2.equalsIgnoreCase(paramArrayOfString[i]))
+      {
+        AppMethodBeat.o(189858);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(189858);
+    return false;
+  }
+  
+  public static ab aQI()
+  {
+    return iNX;
+  }
+  
+  /* Error */
+  public static int b(f paramf)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: ldc 187
+    //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: ldc 189
+    //   10: aconst_null
+    //   11: iconst_0
+    //   12: invokevirtual 50	com/tencent/mm/storagebase/f:a	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+    //   15: astore_3
+    //   16: aload_3
+    //   17: invokeinterface 56 1 0
+    //   22: pop
+    //   23: aload_3
+    //   24: iconst_0
+    //   25: invokeinterface 60 2 0
+    //   30: istore_1
+    //   31: aload_3
+    //   32: ifnull +9 -> 41
+    //   35: aload_3
+    //   36: invokeinterface 63 1 0
+    //   41: ldc 187
+    //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: iload_1
+    //   47: ireturn
+    //   48: astore_2
+    //   49: ldc 187
+    //   51: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aload_2
+    //   55: athrow
+    //   56: astore_0
+    //   57: aload_3
+    //   58: ifnull +13 -> 71
+    //   61: aload_2
+    //   62: ifnull +25 -> 87
+    //   65: aload_3
+    //   66: invokeinterface 63 1 0
+    //   71: ldc 187
+    //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: aload_0
+    //   77: athrow
+    //   78: astore_3
+    //   79: aload_2
+    //   80: aload_3
+    //   81: invokevirtual 67	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   84: goto -13 -> 71
+    //   87: aload_3
+    //   88: invokeinterface 63 1 0
+    //   93: goto -22 -> 71
+    //   96: astore_0
+    //   97: goto -40 -> 57
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	paramf	f
+    //   30	17	1	i	int
+    //   1	1	2	localObject	Object
+    //   48	32	2	localThrowable1	java.lang.Throwable
+    //   15	51	3	localCursor	android.database.Cursor
+    //   78	10	3	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   16	31	48	java/lang/Throwable
+    //   49	56	56	finally
+    //   65	71	78	java/lang/Throwable
+    //   16	31	96	finally
+  }
+  
+  public final class a
+  {
+    public String sql;
+    public String table;
+    
+    public a(String paramString1, String paramString2)
+    {
+      this.table = paramString1;
+      this.sql = paramString2;
     }
   }
 }

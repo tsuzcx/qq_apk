@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bl;
 
 public abstract class b
 {
-  private bk<a> jzP = new bk(100);
+  private bl<a> jTK = new bl(100);
   
   public void a(a parama)
   {
     if (parama == null) {
       return;
     }
-    this.jzP.release(parama);
+    this.jTK.release(parama);
   }
   
-  public final a aZQ()
+  public final a bdp()
   {
-    a locala2 = (a)this.jzP.acquire();
+    a locala2 = (a)this.jTK.acquire();
     a locala1 = locala2;
     if (locala2 == null) {
-      locala1 = aZR();
+      locala1 = bdq();
     }
     return locala1;
   }
   
-  public abstract a aZR();
+  public abstract a bdq();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -12,57 +12,57 @@ import org.xwalk.core.XWalkUpdater.XWalkBackgroundUpdateListener;
 public final class e
   implements XWalkInitializer.XWalkInitListener, XWalkUpdater.XWalkBackgroundUpdateListener
 {
-  private static e KIA;
-  public static boolean KIy = true;
-  private static boolean KIz = false;
-  XWalkInitializer KGX;
-  XWalkUpdater KGY;
+  public static boolean Mzd = true;
+  private static boolean Mze = false;
+  private static e Mzf;
+  XWalkInitializer Mxx;
+  XWalkUpdater Mxy;
   Context mContext;
   
   private e(Context paramContext)
   {
     AppMethodBeat.i(154564);
     this.mContext = paramContext;
-    this.KGX = new XWalkInitializer(this, paramContext);
-    this.KGY = new XWalkUpdater(this, paramContext);
+    this.Mxx = new XWalkInitializer(this, paramContext);
+    this.Mxy = new XWalkUpdater(this, paramContext);
     AppMethodBeat.o(154564);
   }
   
   public static boolean isXWalkReady()
   {
     AppMethodBeat.i(154569);
-    if ((!KIz) || (KIA == null))
+    if ((!Mze) || (Mzf == null))
     {
       AppMethodBeat.o(154569);
       return false;
     }
-    boolean bool = KIA.KGX.isXWalkReady();
+    boolean bool = Mzf.Mxx.isXWalkReady();
     AppMethodBeat.o(154569);
     return bool;
   }
   
-  public static boolean lt(Context paramContext)
+  public static boolean lF(Context paramContext)
   {
     AppMethodBeat.i(154570);
-    if (KIz)
+    if (Mze)
     {
-      boolean bool = KIz;
+      boolean bool = Mze;
       AppMethodBeat.o(154570);
       return bool;
     }
-    KIz = true;
-    KIA = new e(paramContext);
+    Mze = true;
+    Mzf = new e(paramContext);
     XWalkEnvironment.init(paramContext);
     if (XWalkEnvironment.isDownloadMode())
     {
-      paramContext = KIA;
-      if (!KIy)
+      paramContext = Mzf;
+      if (!Mzd)
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("UpdaterCheckType", "0");
-        new f(paramContext.KGY, localHashMap).execute(new String[0]);
+        new f(paramContext.Mxy, localHashMap).execute(new String[0]);
       }
-      if (paramContext.KGX.tryInitSync())
+      if (paramContext.Mxx.tryInitSync())
       {
         XWalkInitializer.addXWalkInitializeLog("initSync Sucsess");
         AppMethodBeat.o(154570);
@@ -86,21 +86,21 @@ public final class e
   public final void onXWalkUpdateCancelled()
   {
     AppMethodBeat.i(154566);
-    f.fMu();
+    f.gdR();
     AppMethodBeat.o(154566);
   }
   
   public final void onXWalkUpdateCompleted()
   {
     AppMethodBeat.i(154568);
-    f.fMv();
+    f.gdS();
     AppMethodBeat.o(154568);
   }
   
   public final void onXWalkUpdateFailed(int paramInt)
   {
     AppMethodBeat.i(154567);
-    f.agq(paramInt);
+    f.aiR(paramInt);
     AppMethodBeat.o(154567);
   }
   
@@ -109,7 +109,7 @@ public final class e
   public final void onXWalkUpdateStarted()
   {
     AppMethodBeat.i(154565);
-    f.fMt();
+    f.gdQ();
     AppMethodBeat.o(154565);
   }
 }

@@ -8,39 +8,39 @@ import java.util.Map;
 public final class c
   extends a<BaseDrawActionArg>
 {
-  private static com.tencent.mm.plugin.appbrand.canvas.c jzQ;
-  private static c jzR;
+  private static com.tencent.mm.plugin.appbrand.canvas.c jTL;
+  private static c jTM;
   
   static
   {
     AppMethodBeat.i(145318);
-    jzQ = new com.tencent.mm.plugin.appbrand.canvas.c();
-    jzR = new c();
+    jTL = new com.tencent.mm.plugin.appbrand.canvas.c();
+    jTM = new c();
     AppMethodBeat.o(145318);
   }
   
-  public static c aZS()
+  public static c bdr()
   {
-    return jzR;
+    return jTM;
   }
   
-  public final <T> T Jw(String paramString)
+  public final <T> T MP(String paramString)
   {
     AppMethodBeat.i(145317);
-    paramString = (d)jzQ.jza.get(paramString);
+    paramString = (d)jTL.jSX.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(145317);
       return null;
     }
-    paramString = paramString.aZO();
+    paramString = paramString.bdn();
     AppMethodBeat.o(145317);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.c
  * JD-Core Version:    0.7.0.1
  */

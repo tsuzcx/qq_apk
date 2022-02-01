@@ -3,19 +3,21 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;", "invoke", "(Ljava/lang/Integer;Landroid/content/Intent;)V"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "Landroid/content/Intent;", "invoke", "(Ljava/lang/Integer;Landroid/content/Intent;)V"})
 final class w$a
-  extends d.g.b.l
-  implements m<Integer, Intent, y>
+  extends q
+  implements m<Integer, Intent, z>
 {
-  public static final a lKU;
+  public static final a mkI;
   
   static
   {
     AppMethodBeat.i(148136);
-    lKU = new a();
+    mkI = new a();
     AppMethodBeat.o(148136);
   }
   

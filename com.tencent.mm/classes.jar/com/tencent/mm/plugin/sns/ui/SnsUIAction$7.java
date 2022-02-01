@@ -8,9 +8,10 @@ import android.view.DragEvent;
 import android.view.View;
 import android.view.View.OnDragListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.tools.r;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 
 final class SnsUIAction$7
@@ -26,21 +27,26 @@ final class SnsUIAction$7
       public final boolean onDrag(View paramAnonymousView, DragEvent paramAnonymousDragEvent)
       {
         AppMethodBeat.i(176358);
+        Object localObject1 = new b();
+        ((b)localObject1).bd(paramAnonymousView);
+        ((b)localObject1).bd(paramAnonymousDragEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", this, ((b)localObject1).ahq());
         boolean bool = false;
         int i = paramAnonymousDragEvent.getAction();
         switch (i)
         {
         default: 
-          ac.e("MicroMsg.SnsActivity", "Unknown action type received by OnDragListener.");
+          ad.e("MicroMsg.SnsActivity", "Unknown action type received by OnDragListener.");
         }
         for (;;)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z");
           AppMethodBeat.o(176358);
           return bool;
           bool = true;
-          ac.i("MicroMsg.SnsActivity", "ACTION: [%s]", new Object[] { Integer.valueOf(i) });
+          ad.i("MicroMsg.SnsActivity", "ACTION: [%s]", new Object[] { Integer.valueOf(i) });
           continue;
-          ac.i("MicroMsg.SnsActivity", "ACTION_DROP");
+          ad.i("MicroMsg.SnsActivity", "ACTION_DROP");
           paramAnonymousDragEvent = paramAnonymousDragEvent.getClipData();
           if (paramAnonymousDragEvent != null)
           {
@@ -51,25 +57,24 @@ final class SnsUIAction$7
             {
               Object localObject2 = paramAnonymousDragEvent.getItemAt(i);
               if (localObject2 == null) {
-                ac.e("MicroMsg.SnsActivity", "item == null");
+                ad.e("MicroMsg.SnsActivity", "item == null");
               }
               for (;;)
               {
                 i += 1;
                 break;
-                Object localObject1;
                 if (((ClipData.Item)localObject2).getIntent() != null)
                 {
-                  localObject1 = SnsUIAction.a(SnsUIAction.7.this.yWy);
+                  localObject1 = SnsUIAction.a(SnsUIAction.7.this.Aoi);
                   localObject2 = ((ClipData.Item)localObject2).getIntent();
-                  localObject2 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject2);
-                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).aeD(), "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  ((Activity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).lR(0));
+                  localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
+                  com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahp(), "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  ((Activity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mq(0));
                   com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 }
                 else if (((ClipData.Item)localObject2).getUri() != null)
                 {
-                  localObject1 = new r(SnsUIAction.a(SnsUIAction.7.this.yWy), ((ClipData.Item)localObject2).getUri());
+                  localObject1 = new r(SnsUIAction.a(SnsUIAction.7.this.Aoi), ((ClipData.Item)localObject2).getUri());
                   if ((((r)localObject1).fileType != 0) && (((r)localObject1).filePath != null)) {}
                   switch (((r)localObject1).fileType)
                   {
@@ -78,34 +83,35 @@ final class SnsUIAction$7
                   case 3: 
                     paramAnonymousView.add(((r)localObject1).filePath);
                     continue;
-                    ac.e("MicroMsg.SnsActivity", "get file path failed");
+                    ad.e("MicroMsg.SnsActivity", "get file path failed");
                   }
                 }
               }
             }
             if (paramAnonymousView.size() < 0)
             {
-              ac.e("MicroMsg.SnsActivity", "no image file available");
+              ad.e("MicroMsg.SnsActivity", "no image file available");
+              com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "android/view/View$OnDragListener", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z");
               AppMethodBeat.o(176358);
               return true;
             }
-            paramAnonymousDragEvent = new Intent(SnsUIAction.a(SnsUIAction.7.this.yWy), SnsUploadUI.class);
+            paramAnonymousDragEvent = new Intent(SnsUIAction.a(SnsUIAction.7.this.Aoi), SnsUploadUI.class);
             paramAnonymousDragEvent.putExtra("KSnsPostManu", true);
-            paramAnonymousDragEvent.putExtra("KTouchCameraTime", bs.aNx());
+            paramAnonymousDragEvent.putExtra("KTouchCameraTime", bt.aQJ());
             paramAnonymousDragEvent.putStringArrayListExtra("sns_kemdia_path_list", paramAnonymousView);
             paramAnonymousDragEvent.setAction("android.intent.action.SEND");
             paramAnonymousDragEvent.addCategory("android.intent.category.DEFAULT");
             paramAnonymousDragEvent.addFlags(268435456);
             paramAnonymousDragEvent.putExtra("android.intent.extra.TEXT", "");
             paramAnonymousDragEvent.putExtra("Ksnsupload_empty_img", true);
-            if (SnsUIAction.b(SnsUIAction.7.this.yWy)) {
+            if (SnsUIAction.b(SnsUIAction.7.this.Aoi)) {
               paramAnonymousDragEvent.putExtra("Ksnsupload_source", 11);
             }
             paramAnonymousDragEvent.setType("image/*");
-            paramAnonymousView = SnsUIAction.a(SnsUIAction.7.this.yWy);
-            paramAnonymousDragEvent = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousDragEvent);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousDragEvent.aeD(), "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)paramAnonymousDragEvent.lR(0));
+            paramAnonymousView = SnsUIAction.a(SnsUIAction.7.this.Aoi);
+            paramAnonymousDragEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousDragEvent);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousDragEvent.ahp(), "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)paramAnonymousDragEvent.mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/sns/ui/SnsUIAction$15$1", "onDrag", "(Landroid/view/View;Landroid/view/DragEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             bool = true;
           }
@@ -116,8 +122,8 @@ final class SnsUIAction$7
         }
       }
     };
-    if (this.yWy.yaU != null) {
-      this.yWy.yaU.setOnDragListener(local1);
+    if (this.Aoi.zqQ != null) {
+      this.Aoi.zqQ.setOnDragListener(local1);
     }
     AppMethodBeat.o(176359);
   }

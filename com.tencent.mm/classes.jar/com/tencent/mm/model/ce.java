@@ -1,111 +1,58 @@
 package com.tencent.mm.model;
 
-import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.al.e;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ai;
+import java.util.Map;
 
 public final class ce
+  implements e
 {
-  private static boolean hqb = false;
-  private static long hqc = 0L;
-  
-  public static long azH()
+  public final e.b b(e.a parama)
   {
-    AppMethodBeat.i(132281);
-    if (ai.ciE())
+    AppMethodBeat.i(20397);
+    parama = parama.gqE;
+    if (parama == null)
     {
-      g.agS();
-      if (g.agP().afY()) {}
-    }
-    else
-    {
-      ac.i("MicroMsg.TimeHelper", "account error");
-      AppMethodBeat.o(132281);
-      return 0L;
+      ad.e("MicroMsg.SysNoticeMsgExtension", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(20397);
+      return null;
     }
     try
     {
-      long l = azI();
-      AppMethodBeat.o(132281);
-      return l;
+      parama = bw.M("<root>" + parama.Fvk + "</root>", "root");
+      int i = Integer.valueOf((String)parama.get(".root.newcount")).intValue();
+      int j = Integer.valueOf((String)parama.get(".root.version")).intValue();
+      ba.aBQ();
+      parama = c.ajl();
+      if (j == bt.n((Integer)parama.get(12305, null)))
+      {
+        ad.i("MicroMsg.SysNoticeMsgExtension", "ignore new sys notice count, same version");
+        AppMethodBeat.o(20397);
+        return null;
+      }
+      parama.set(12304, Integer.valueOf(i));
+      parama.set(12305, Integer.valueOf(j));
     }
-    catch (Throwable localThrowable)
+    catch (Exception parama)
     {
-      ac.e("MicroMsg.TimeHelper", localThrowable.getMessage());
-      AppMethodBeat.o(132281);
+      for (;;)
+      {
+        ad.e("MicroMsg.SysNoticeMsgExtension", "exception:%s", new Object[] { bt.n(parama) });
+      }
     }
-    return 0L;
+    AppMethodBeat.o(20397);
+    return null;
   }
   
-  public static long azI()
-  {
-    AppMethodBeat.i(132283);
-    long l2 = SystemClock.elapsedRealtime();
-    g.agS();
-    long l3 = g.agR().agA().a(ah.a.GMN, l2);
-    g.agS();
-    long l1 = g.agR().agA().a(ah.a.GMM, 0L);
-    l2 = Math.max(0L, l2 - l3);
-    ac.d("MicroMsg.TimeHelper", "[getSyncServerTimeMs] SyncServerTime:" + hqc + " offset:" + l2);
-    if (0L < l1)
-    {
-      AppMethodBeat.o(132283);
-      return l2 + l1;
-    }
-    l1 = System.currentTimeMillis();
-    AppMethodBeat.o(132283);
-    return l1;
-  }
-  
-  public static long azJ()
-  {
-    AppMethodBeat.i(162133);
-    if (hqb)
-    {
-      l = azI();
-      AppMethodBeat.o(162133);
-      return l;
-    }
-    long l = System.currentTimeMillis();
-    AppMethodBeat.o(162133);
-    return l;
-  }
-  
-  public static int azK()
-  {
-    AppMethodBeat.i(132284);
-    int i = (int)(azI() / 1000L);
-    AppMethodBeat.o(132284);
-    return i;
-  }
-  
-  public static void pM(long paramLong)
-  {
-    AppMethodBeat.i(132282);
-    long l = SystemClock.elapsedRealtime();
-    hqc = Math.max(paramLong, hqc);
-    g.agS();
-    g.agR().agA().set(ah.a.GMM, Long.valueOf(hqc));
-    g.agS();
-    g.agR().agA().set(ah.a.GMN, Long.valueOf(l));
-    ac.d("MicroMsg.TimeHelper", "[updateSyncServerTime] elapsedTime:%s SLastSyncServerTimeMs:%s", new Object[] { Long.valueOf(l), Long.valueOf(hqc) });
-    hqb = true;
-    AppMethodBeat.o(132282);
-  }
-  
-  public static long pN(long paramLong)
-  {
-    AppMethodBeat.i(132285);
-    long l = azI() / 1000L;
-    AppMethodBeat.o(132285);
-    return l - paramLong;
-  }
+  public final void b(e.c paramc) {}
 }
 
 

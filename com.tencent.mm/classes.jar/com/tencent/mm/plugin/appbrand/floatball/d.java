@@ -10,98 +10,98 @@ import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.ball.f.b;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
 {
-  public c jPp;
-  public f jPq;
-  public g jPr;
-  public h jPs;
-  public a jPt;
+  public f kjA;
+  public g kjB;
+  public h kjC;
+  public a kjD;
+  public c kjz;
   
   public static void a(com.tencent.mm.plugin.ball.service.a parama, AppBrandInitConfig paramAppBrandInitConfig)
   {
     int i = 0;
-    AppMethodBeat.i(186456);
+    AppMethodBeat.i(188152);
     if (!(paramAppBrandInitConfig instanceof AppBrandInitConfigWC))
     {
-      AppMethodBeat.o(186456);
+      AppMethodBeat.o(188152);
       return;
     }
     paramAppBrandInitConfig = (AppBrandInitConfigWC)paramAppBrandInitConfig;
-    ac.i("MicroMsg.AppBrandFloatBallLogic", "setReportInfo, floatBallHelper:%s, configAppName:%s", new Object[] { parama, paramAppBrandInitConfig.ddh });
-    parama.bGv().dlk = paramAppBrandInitConfig.appId;
-    parama.bGv().hxt = paramAppBrandInitConfig.ddh;
-    parama.bGv().nfH = String.valueOf(paramAppBrandInitConfig.cca);
-    parama = parama.bGv();
-    if (paramAppBrandInitConfig.ccl == null) {}
+    ad.i("MicroMsg.AppBrandFloatBallLogic", "setReportInfo, floatBallHelper:%s, configAppName:%s", new Object[] { parama, paramAppBrandInitConfig.doD });
+    parama.bKG().dwX = paramAppBrandInitConfig.appId;
+    parama.bKG().hPO = paramAppBrandInitConfig.doD;
+    parama.bKG().nGd = String.valueOf(paramAppBrandInitConfig.cmr);
+    parama = parama.bKG();
+    if (paramAppBrandInitConfig.cmC == null) {}
     for (;;)
     {
-      parama.nfF = i;
-      AppMethodBeat.o(186456);
+      parama.nGb = i;
+      AppMethodBeat.o(188152);
       return;
-      i = paramAppBrandInitConfig.ccl.scene;
+      i = paramAppBrandInitConfig.cmC.scene;
     }
   }
   
-  public final void A(o paramo)
+  public final void r(o paramo)
   {
-    AppMethodBeat.i(186455);
-    ac.i("MicroMsg.AppBrandFloatBallLogic", "destroy, runtime:%s", new Object[] { paramo.mAppId });
-    if (this.jPp != null) {
-      this.jPp.onDestroy();
+    AppMethodBeat.i(188151);
+    ad.i("MicroMsg.AppBrandFloatBallLogic", "destroy, runtime:%s", new Object[] { paramo.mAppId });
+    if (this.kjz != null) {
+      this.kjz.onDestroy();
     }
-    if (this.jPq != null) {
-      this.jPq.onDestroy();
+    if (this.kjA != null) {
+      this.kjA.onDestroy();
     }
-    if (this.jPr != null) {
-      this.jPr.onDestroy();
+    if (this.kjB != null) {
+      this.kjB.onDestroy();
     }
-    if (this.jPt != null) {
-      this.jPt.onDestroy();
+    if (this.kjD != null) {
+      this.kjD.onDestroy();
     }
-    if (this.jPs != null) {
-      this.jPs.onDestroy();
+    if (this.kjC != null) {
+      this.kjC.onDestroy();
     }
-    AppMethodBeat.o(186455);
+    AppMethodBeat.o(188151);
   }
   
-  public final boolean rV(int paramInt)
+  public final boolean sx(int paramInt)
   {
-    AppMethodBeat.i(186454);
-    if ((this.jPp != null) && (this.jPp.rT(paramInt)))
+    AppMethodBeat.i(188150);
+    if ((this.kjz != null) && (this.kjz.sv(paramInt)))
     {
-      AppMethodBeat.o(186454);
+      AppMethodBeat.o(188150);
       return true;
     }
-    if ((this.jPq != null) && (this.jPq.rT(paramInt)))
+    if ((this.kjA != null) && (this.kjA.sv(paramInt)))
     {
-      AppMethodBeat.o(186454);
+      AppMethodBeat.o(188150);
       return true;
     }
-    if ((this.jPr != null) && (this.jPr.rT(paramInt)))
+    if ((this.kjB != null) && (this.kjB.sv(paramInt)))
     {
-      AppMethodBeat.o(186454);
+      AppMethodBeat.o(188150);
       return true;
     }
-    if ((this.jPt != null) && (this.jPt.rT(paramInt)))
+    if ((this.kjD != null) && (this.kjD.sv(paramInt)))
     {
-      AppMethodBeat.o(186454);
+      AppMethodBeat.o(188150);
       return true;
     }
-    if ((this.jPs != null) && (this.jPs.rT(paramInt)))
+    if ((this.kjC != null) && (this.kjC.sv(paramInt)))
     {
-      AppMethodBeat.o(186454);
+      AppMethodBeat.o(188150);
       return true;
     }
-    AppMethodBeat.o(186454);
+    AppMethodBeat.o(188150);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r
 {
-  private n bWG;
+  private n cgV;
   
   r(n paramn)
   {
-    this.bWG = paramn;
+    this.cgV = paramn;
   }
   
   @JavascriptInterface
   public final String send(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(140346);
-    paramString = this.bWG.i(paramString, paramBoolean);
+    paramString = this.cgV.i(paramString, paramBoolean);
     AppMethodBeat.o(140346);
     return paramString;
   }

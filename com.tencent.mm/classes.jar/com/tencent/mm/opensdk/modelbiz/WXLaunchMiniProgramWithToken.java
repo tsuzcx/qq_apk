@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXLaunchMiniProgramWithToken
 {
@@ -18,7 +18,7 @@ public class WXLaunchMiniProgramWithToken
     public final boolean checkArgs()
     {
       AppMethodBeat.i(3869);
-      if (d.b(this.token))
+      if (b.b(this.token))
       {
         Log.e("MicroMsg.SDK.WXLaunchMiniProgramWithToken.Req", "token is null");
         AppMethodBeat.o(3869);

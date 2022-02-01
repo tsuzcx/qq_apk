@@ -3,54 +3,54 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.report.service.h;
-import d.g.b.k;
+import com.tencent.mm.plugin.report.service.g;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativeReporter;", "", "()V", "reportAppCloseBeforeReadyIfNeed", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "reportAppReadyIfNeed", "shouldReport", "", "appId", "", "versionType", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativeReporter;", "", "()V", "reportAppCloseBeforeReadyIfNeed", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "reportAppReadyIfNeed", "shouldReport", "", "appId", "", "versionType", "", "plugin-appbrand-integration_release"})
 public final class e
 {
-  public static final e mmy;
+  public static final e mNa;
   
   static
   {
     AppMethodBeat.i(51358);
-    mmy = new e();
+    mNa = new e();
     AppMethodBeat.o(51358);
   }
   
-  public static final void P(o paramo)
+  public static final void G(o paramo)
   {
     AppMethodBeat.i(51354);
-    k.h(paramo, "runtime");
-    if (R(paramo)) {
-      h.wUl.dB(1089, 51);
+    p.h(paramo, "runtime");
+    if (I(paramo)) {
+      g.yhR.dD(1089, 51);
     }
     AppMethodBeat.o(51354);
   }
   
-  public static final void Q(o paramo)
+  public static final void H(o paramo)
   {
     AppMethodBeat.i(51355);
-    k.h(paramo, "runtime");
-    if (R(paramo)) {
-      h.wUl.dB(1089, 50);
+    p.h(paramo, "runtime");
+    if (I(paramo)) {
+      g.yhR.dD(1089, 50);
     }
     AppMethodBeat.o(51355);
   }
   
-  private static boolean R(o paramo)
+  private static boolean I(o paramo)
   {
     AppMethodBeat.i(51356);
-    boolean bool = cb(paramo.getAppId(), paramo.aSy());
+    boolean bool = ce(paramo.getAppId(), paramo.aVL());
     AppMethodBeat.o(51356);
     return bool;
   }
   
-  public static final boolean cb(String paramString, int paramInt)
+  public static final boolean ce(String paramString, int paramInt)
   {
     AppMethodBeat.i(51357);
-    if ((k.g("wxb6d22f922f37b35a", paramString)) && (j.a.rq(paramInt)))
+    if ((p.i("wxb6d22f922f37b35a", paramString)) && (j.a.rQ(paramInt)))
     {
       AppMethodBeat.o(51357);
       return true;

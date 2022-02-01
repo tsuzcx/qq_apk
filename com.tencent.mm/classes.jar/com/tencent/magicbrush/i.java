@@ -2,35 +2,35 @@ package com.tencent.magicbrush;
 
 import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.n;
-import d.g.b.w;
+import d.g.b.t;
+import d.g.b.z;
 import d.l;
 import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(fNY={1, 1, 13})
+@l(gfx={1, 1, 13})
 final class i
-  extends n
+  extends t
 {
-  public static final h cnf;
+  public static final h cxK;
   
   static
   {
     AppMethodBeat.i(140106);
-    cnf = new i();
+    cxK = new i();
     AppMethodBeat.o(140106);
   }
   
-  public final String FZ()
+  public final String Hu()
   {
     return "getAsset_manager()Landroid/content/res/AssetManager;";
   }
   
-  public final d Ga()
+  public final d Hv()
   {
     AppMethodBeat.i(140107);
-    b localb = w.bn(MBRuntime.MBParams.class);
+    b localb = z.bp(MBRuntime.MBParams.class);
     AppMethodBeat.o(140107);
     return localb;
   }
@@ -52,7 +52,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.i
  * JD-Core Version:    0.7.0.1
  */

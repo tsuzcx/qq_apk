@@ -12,31 +12,31 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class w
 {
-  static b Kzs;
-  static a Kzt;
+  static b MpN;
+  static a MpO;
   
   static
   {
     AppMethodBeat.i(156773);
-    j.a locala = j.g(WebView.c.KzZ);
-    Kzs = (b)locala.excute("STR_CMD_GET_UPDATER", null);
-    Kzt = (a)locala.excute("STR_CMD_GET_PLUGIN_UPDATER", null);
+    j.a locala = j.g(WebView.c.Mqu);
+    MpN = (b)locala.excute("STR_CMD_GET_UPDATER", null);
+    MpO = (a)locala.excute("STR_CMD_GET_PLUGIN_UPDATER", null);
     AppMethodBeat.o(156773);
   }
   
   public static void a(Context paramContext, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(156769);
-    g.fLn();
-    if (Kzs != null)
+    g.gcI();
+    if (MpN != null)
     {
       Log.i("WCWebUpdater", "start check runtime update");
-      Kzs.a(paramContext, paramHashMap);
+      MpN.a(paramContext, paramHashMap);
     }
-    while (Kzt != null)
+    while (MpO != null)
     {
-      g.fLg();
-      Kzt.a(paramContext, paramHashMap);
+      g.gcB();
+      MpO.a(paramContext, paramHashMap);
       AppMethodBeat.o(156769);
       return;
       Log.e("WCWebUpdater", "no sWebviewUpdater");
@@ -45,15 +45,15 @@ public final class w
     AppMethodBeat.o(156769);
   }
   
-  public static void fJo()
+  public static void gaI()
   {
     AppMethodBeat.i(156770);
-    if (Kzs != null)
+    if (MpN != null)
     {
       Log.i("WCWebUpdater", "start check runtime update");
       HashMap localHashMap = new HashMap();
       localHashMap.put("UpdaterCheckType", "2");
-      Kzs.a(XWalkEnvironment.getApplicationContext(), localHashMap);
+      MpN.a(XWalkEnvironment.getApplicationContext(), localHashMap);
       AppMethodBeat.o(156770);
       return;
     }
@@ -61,14 +61,14 @@ public final class w
     AppMethodBeat.o(156770);
   }
   
-  public static void fJp()
+  public static void gaJ()
   {
     AppMethodBeat.i(156771);
-    if (Kzs != null)
+    if (MpN != null)
     {
       Log.i("WCWebUpdater", "start check runtime update");
       new HashMap().put("UpdaterCheckType", "3");
-      Kzs.a(XWalkEnvironment.getApplicationContext(), null);
+      MpN.a(XWalkEnvironment.getApplicationContext(), null);
       AppMethodBeat.o(156771);
       return;
     }
@@ -76,34 +76,34 @@ public final class w
     AppMethodBeat.o(156771);
   }
   
-  public static void fJq()
+  public static void gaK()
   {
-    AppMethodBeat.i(205066);
-    if (Kzs != null)
+    AppMethodBeat.i(197077);
+    if (MpN != null)
     {
       Log.i("WCWebUpdater", "tryEmbedInstall");
       HashMap localHashMap = new HashMap();
       localHashMap.put("UpdaterCheckType", "4");
-      Kzs.a(XWalkEnvironment.getApplicationContext(), localHashMap);
-      AppMethodBeat.o(205066);
+      MpN.a(XWalkEnvironment.getApplicationContext(), localHashMap);
+      AppMethodBeat.o(197077);
       return;
     }
     Log.e("WCWebUpdater", "no sWebviewUpdater");
-    AppMethodBeat.o(205066);
+    AppMethodBeat.o(197077);
   }
   
   public static boolean isBusy()
   {
     AppMethodBeat.i(156772);
     boolean bool1;
-    if (Kzs != null)
+    if (MpN != null)
     {
-      bool1 = Kzs.isBusy();
-      if (Kzt == null) {
+      bool1 = MpN.isBusy();
+      if (MpO == null) {
         break label62;
       }
     }
-    for (boolean bool2 = Kzt.isBusy();; bool2 = false)
+    for (boolean bool2 = MpO.isBusy();; bool2 = false)
     {
       if ((!bool1) && (!bool2)) {
         break label74;
@@ -126,7 +126,7 @@ public final class w
   {
     public abstract void a(String paramString, i parami);
     
-    public abstract void fJr();
+    public abstract void gaL();
   }
   
   public static abstract interface b

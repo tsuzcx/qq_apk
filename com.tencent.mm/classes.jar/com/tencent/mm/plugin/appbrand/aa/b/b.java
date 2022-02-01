@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.aa.d.e;
 import com.tencent.mm.plugin.appbrand.aa.e.f;
 import com.tencent.mm.plugin.appbrand.aa.e.h;
 import com.tencent.mm.plugin.appbrand.aa.e.i;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.security.MessageDigest;
@@ -21,19 +21,19 @@ import java.util.Random;
 public class b
   extends a
 {
-  private ByteBuffer mqm;
-  private com.tencent.mm.plugin.appbrand.aa.d.d mqn;
-  private final Random mqo;
+  private ByteBuffer mQS;
+  private com.tencent.mm.plugin.appbrand.aa.d.d mQT;
+  private final Random mQU;
   
   public b()
   {
     AppMethodBeat.i(156631);
-    this.mqn = null;
-    this.mqo = new Random();
+    this.mQT = null;
+    this.mQU = new Random();
     AppMethodBeat.o(156631);
   }
   
-  private static String RB(String paramString)
+  private static String Vg(String paramString)
   {
     AppMethodBeat.i(156638);
     paramString = paramString.trim();
@@ -47,7 +47,7 @@ public class b
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      ac.e("MicroMsg.AppBrandNetWork.Draft_10", "not such algorithm " + paramString.toString());
+      ad.e("MicroMsg.AppBrandNetWork.Draft_10", "not such algorithm " + paramString.toString());
       AppMethodBeat.o(156638);
     }
     return "";
@@ -56,7 +56,7 @@ public class b
   public static int g(f paramf)
   {
     AppMethodBeat.i(156632);
-    paramf = paramf.RE("Sec-WebSocket-Version");
+    paramf = paramf.Vj("Sec-WebSocket-Version");
     if (paramf.length() > 0) {
       try
       {
@@ -128,26 +128,26 @@ public class b
         throw paramByteBuffer;
       }
     }
-    d.a locala = d.a.mqu;
-    while ((!bool) && ((locala == d.a.mqx) || (locala == d.a.mqy) || (locala == d.a.mqz)))
+    d.a locala = d.a.mRa;
+    while ((!bool) && ((locala == d.a.mRd) || (locala == d.a.mRe) || (locala == d.a.mRf)))
     {
       paramByteBuffer = new com.tencent.mm.plugin.appbrand.aa.c.c("control frames may no be fragmented");
       AppMethodBeat.o(156642);
       throw paramByteBuffer;
-      locala = d.a.mqv;
+      locala = d.a.mRb;
       continue;
-      locala = d.a.mqw;
+      locala = d.a.mRc;
       continue;
-      locala = d.a.mqz;
+      locala = d.a.mRf;
       continue;
-      locala = d.a.mqx;
+      locala = d.a.mRd;
       continue;
-      locala = d.a.mqy;
+      locala = d.a.mRe;
     }
     Object localObject;
     if ((i < 0) || (i > 125))
     {
-      if ((locala == d.a.mqx) || (locala == d.a.mqy) || (locala == d.a.mqz))
+      if ((locala == d.a.mRd) || (locala == d.a.mRe) || (locala == d.a.mRf))
       {
         paramByteBuffer = new com.tencent.mm.plugin.appbrand.aa.c.c("more than 125 octets");
         AppMethodBeat.o(156642);
@@ -197,7 +197,7 @@ public class b
         long l = new BigInteger((byte[])localObject).longValue();
         if (l > 2147483647L)
         {
-          ac.e("MicroMsg.AppBrandNetWork.Draft_10", "Payloadsize is to big...");
+          ad.e("MicroMsg.AppBrandNetWork.Draft_10", "Payloadsize is to big...");
           j = m;
           break;
         }
@@ -206,7 +206,7 @@ public class b
         break;
       }
       label578:
-      localObject = ByteBuffer.allocate(vh(i));
+      localObject = ByteBuffer.allocate(vN(i));
       if (k != 0)
       {
         byte[] arrayOfByte = new byte[4];
@@ -220,7 +220,7 @@ public class b
       }
       ((ByteBuffer)localObject).put(paramByteBuffer.array(), paramByteBuffer.position(), ((ByteBuffer)localObject).limit());
       paramByteBuffer.position(paramByteBuffer.position() + ((ByteBuffer)localObject).limit());
-      if (locala == d.a.mqz) {
+      if (locala == d.a.mRf) {
         paramByteBuffer = new com.tencent.mm.plugin.appbrand.aa.d.b();
       }
       for (;;)
@@ -230,7 +230,7 @@ public class b
         AppMethodBeat.o(156642);
         return paramByteBuffer;
         paramByteBuffer = new e();
-        paramByteBuffer.hH(bool);
+        paramByteBuffer.hS(bool);
         paramByteBuffer.a(locala);
       }
     }
@@ -240,11 +240,11 @@ public class b
   {
     int j = 1;
     AppMethodBeat.i(156633);
-    Object localObject = parama.RE("Sec-WebSocket-Protocol");
-    String str = paramh.RE("Sec-WebSocket-Protocol");
-    if ((!bs.isNullOrNil((String)localObject)) && (!bs.isNullOrNil(str)))
+    Object localObject = parama.Vj("Sec-WebSocket-Protocol");
+    String str = paramh.Vj("Sec-WebSocket-Protocol");
+    if ((!bt.isNullOrNil((String)localObject)) && (!bt.isNullOrNil(str)))
     {
-      ac.d("MicroMsg.AppBrandNetWork.Draft_10", "respProtocol is %s", new Object[] { str });
+      ad.d("MicroMsg.AppBrandNetWork.Draft_10", "respProtocol is %s", new Object[] { str });
       localObject = ((String)localObject).split(", ");
       int k = localObject.length;
       i = 0;
@@ -258,26 +258,26 @@ public class b
     {
       if (i == 0)
       {
-        parama = a.b.mqk;
+        parama = a.b.mQP;
         AppMethodBeat.o(156633);
         return parama;
         i += 1;
         break;
       }
-      if ((!parama.RF("Sec-WebSocket-Key")) || (!paramh.RF("Sec-WebSocket-Accept")))
+      if ((!parama.Vk("Sec-WebSocket-Key")) || (!paramh.Vk("Sec-WebSocket-Accept")))
       {
-        parama = a.b.mqk;
+        parama = a.b.mQP;
         AppMethodBeat.o(156633);
         return parama;
       }
-      paramh = paramh.RE("Sec-WebSocket-Accept");
-      if (RB(parama.RE("Sec-WebSocket-Key")).equals(paramh))
+      paramh = paramh.Vj("Sec-WebSocket-Accept");
+      if (Vg(parama.Vj("Sec-WebSocket-Key")).equals(paramh))
       {
-        parama = a.b.mqj;
+        parama = a.b.mQO;
         AppMethodBeat.o(156633);
         return parama;
       }
-      parama = a.b.mqk;
+      parama = a.b.mQP;
       AppMethodBeat.o(156633);
       return parama;
     }
@@ -290,7 +290,7 @@ public class b
     paramb.put("Connection", "Upgrade");
     paramb.put("Sec-WebSocket-Version", "8");
     byte[] arrayOfByte = new byte[16];
-    this.mqo.nextBytes(arrayOfByte);
+    this.mQU.nextBytes(arrayOfByte);
     paramb.put("Sec-WebSocket-Key", com.tencent.mm.plugin.appbrand.aa.f.a.aA(arrayOfByte));
     AppMethodBeat.o(156639);
     return paramb;
@@ -300,16 +300,16 @@ public class b
   {
     AppMethodBeat.i(156640);
     parami.put("Upgrade", "websocket");
-    parami.put("Connection", parama.RE("Connection"));
-    parami.RD("Switching Protocols");
-    parama = parama.RE("Sec-WebSocket-Key");
+    parami.put("Connection", parama.Vj("Connection"));
+    parami.Vi("Switching Protocols");
+    parama = parama.Vj("Sec-WebSocket-Key");
     if (parama == null)
     {
       parama = new com.tencent.mm.plugin.appbrand.aa.c.d("missing Sec-WebSocket-Key");
       AppMethodBeat.o(156640);
       throw parama;
     }
-    parami.put("Sec-WebSocket-Accept", RB(parama));
+    parami.put("Sec-WebSocket-Accept", Vg(parama));
     AppMethodBeat.o(156640);
     return parami;
   }
@@ -321,9 +321,9 @@ public class b
     try
     {
       locale.A(paramByteBuffer);
-      locale.hH(true);
-      locale.a(d.a.mqw);
-      locale.hI(paramBoolean);
+      locale.hS(true);
+      locale.a(d.a.mRc);
+      locale.hT(paramBoolean);
       paramByteBuffer = Collections.singletonList(locale);
       AppMethodBeat.o(156636);
       return paramByteBuffer;
@@ -332,21 +332,21 @@ public class b
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandNetWork.Draft_10", "createFrames setPayload exception" + paramByteBuffer.toString());
+        ad.e("MicroMsg.AppBrandNetWork.Draft_10", "createFrames setPayload exception" + paramByteBuffer.toString());
       }
     }
   }
   
-  public final List<com.tencent.mm.plugin.appbrand.aa.d.d> az(String paramString, boolean paramBoolean)
+  public final List<com.tencent.mm.plugin.appbrand.aa.d.d> aB(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(156637);
     e locale = new e();
     try
     {
-      locale.A(ByteBuffer.wrap(com.tencent.mm.plugin.appbrand.aa.f.b.RG(paramString)));
-      locale.hH(true);
-      locale.a(d.a.mqv);
-      locale.hI(paramBoolean);
+      locale.A(ByteBuffer.wrap(com.tencent.mm.plugin.appbrand.aa.f.b.Vl(paramString)));
+      locale.hS(true);
+      locale.a(d.a.mRb);
+      locale.hT(paramBoolean);
       paramString = Collections.singletonList(locale);
       AppMethodBeat.o(156637);
       return paramString;
@@ -355,22 +355,22 @@ public class b
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandNetWork.Draft_10", "createFrames setPayload exception" + paramString.toString());
+        ad.e("MicroMsg.AppBrandNetWork.Draft_10", "createFrames setPayload exception" + paramString.toString());
       }
     }
   }
   
-  public a bxA()
+  public final a.a bBE()
+  {
+    return a.a.mQM;
+  }
+  
+  public a bBF()
   {
     AppMethodBeat.i(156643);
     b localb = new b();
     AppMethodBeat.o(156643);
     return localb;
-  }
-  
-  public final a.a bxz()
-  {
-    return a.a.mqh;
   }
   
   public a.b c(com.tencent.mm.plugin.appbrand.aa.e.a parama)
@@ -379,18 +379,18 @@ public class b
     int i = g(parama);
     if ((i == 7) || (i == 8))
     {
-      if ((parama.RE("Upgrade").equalsIgnoreCase("websocket")) && (parama.RE("Connection").toLowerCase(Locale.ENGLISH).contains("upgrade"))) {}
+      if ((parama.Vj("Upgrade").equalsIgnoreCase("websocket")) && (parama.Vj("Connection").toLowerCase(Locale.ENGLISH).contains("upgrade"))) {}
       for (i = 1; i != 0; i = 0)
       {
-        parama = a.b.mqj;
+        parama = a.b.mQO;
         AppMethodBeat.o(156634);
         return parama;
       }
-      parama = a.b.mqk;
+      parama = a.b.mQP;
       AppMethodBeat.o(156634);
       return parama;
     }
-    parama = a.b.mqk;
+    parama = a.b.mQP;
     AppMethodBeat.o(156634);
     return parama;
   }
@@ -400,7 +400,7 @@ public class b
     int k = -128;
     int i1 = 0;
     AppMethodBeat.i(156635);
-    ByteBuffer localByteBuffer1 = paramd.bxE();
+    ByteBuffer localByteBuffer1 = paramd.bBJ();
     int m;
     int j;
     label46:
@@ -410,7 +410,7 @@ public class b
     label63:
     ByteBuffer localByteBuffer2;
     d.a locala;
-    if (this.mpJ == com.tencent.mm.plugin.appbrand.aa.a.b.mpu)
+    if (this.mQo == com.tencent.mm.plugin.appbrand.aa.a.b.mPZ)
     {
       m = 1;
       if (localByteBuffer1.remaining() > 125) {
@@ -426,13 +426,13 @@ public class b
       }
       n = 4;
       localByteBuffer2 = ByteBuffer.allocate(n + (i + 1) + localByteBuffer1.remaining());
-      locala = paramd.bxH();
-      if (locala != d.a.mqu) {
+      locala = paramd.bBM();
+      if (locala != d.a.mRa) {
         break label268;
       }
       i = 0;
       label98:
-      if (!paramd.bxF()) {
+      if (!paramd.bBK()) {
         break label368;
       }
       n = -128;
@@ -455,7 +455,7 @@ public class b
         break label468;
       }
       paramd = ByteBuffer.allocate(4);
-      paramd.putInt(this.mqo.nextInt());
+      paramd.putInt(this.mQU.nextInt());
       localByteBuffer2.put(paramd.array());
       i = i1;
       while (localByteBuffer1.hasRemaining())
@@ -480,32 +480,32 @@ public class b
       n = 0;
       break label63;
       label268:
-      if (locala == d.a.mqv)
+      if (locala == d.a.mRb)
       {
         i = 1;
         break label98;
       }
-      if (locala == d.a.mqw)
+      if (locala == d.a.mRc)
       {
         i = 2;
         break label98;
       }
-      if (locala == d.a.mqz)
+      if (locala == d.a.mRf)
       {
         i = 8;
         break label98;
       }
-      if (locala == d.a.mqx)
+      if (locala == d.a.mRd)
       {
         i = 9;
         break label98;
       }
-      if (locala == d.a.mqy)
+      if (locala == d.a.mRe)
       {
         i = 10;
         break label98;
       }
-      ac.e("MicroMsg.AppBrandNetWork.Draft_10", "Don't know how to handle force close" + locala.toString());
+      ad.e("MicroMsg.AppBrandNetWork.Draft_10", "Don't know how to handle force close" + locala.toString());
       i = 8;
       break label98;
       label368:
@@ -537,7 +537,7 @@ public class b
           k = 0;
         }
       }
-      ac.e("MicroMsg.AppBrandNetWork.Draft_10", "Size representation not supported/specified");
+      ad.e("MicroMsg.AppBrandNetWork.Draft_10", "Size representation not supported/specified");
     }
     label468:
     localByteBuffer2.put(localByteBuffer1);
@@ -548,7 +548,7 @@ public class b
   
   public final void reset()
   {
-    this.mqm = null;
+    this.mQS = null;
   }
   
   public final List<com.tencent.mm.plugin.appbrand.aa.d.d> x(ByteBuffer paramByteBuffer)
@@ -557,24 +557,24 @@ public class b
     for (;;)
     {
       Object localObject = new LinkedList();
-      if (this.mqm != null) {}
+      if (this.mQS != null) {}
       try
       {
         paramByteBuffer.mark();
         int i = paramByteBuffer.remaining();
-        int j = this.mqm.remaining();
+        int j = this.mQS.remaining();
         if (j > i)
         {
-          this.mqm.put(paramByteBuffer.array(), paramByteBuffer.position(), i);
+          this.mQS.put(paramByteBuffer.array(), paramByteBuffer.position(), i);
           paramByteBuffer.position(i + paramByteBuffer.position());
           localObject = Collections.emptyList();
           AppMethodBeat.o(156641);
           return localObject;
         }
-        this.mqm.put(paramByteBuffer.array(), paramByteBuffer.position(), j);
+        this.mQS.put(paramByteBuffer.array(), paramByteBuffer.position(), j);
         paramByteBuffer.position(paramByteBuffer.position() + j);
-        ((List)localObject).add(z((ByteBuffer)this.mqm.duplicate().position(0)));
-        this.mqm = null;
+        ((List)localObject).add(z((ByteBuffer)this.mQS.duplicate().position(0)));
+        this.mQS = null;
         while (paramByteBuffer.hasRemaining())
         {
           paramByteBuffer.mark();
@@ -585,8 +585,8 @@ public class b
           catch (a locala2)
           {
             paramByteBuffer.reset();
-            this.mqm = ByteBuffer.allocate(vh(locala2.mqp));
-            this.mqm.put(paramByteBuffer);
+            this.mQS = ByteBuffer.allocate(vN(locala2.mQV));
+            this.mQS.put(paramByteBuffer);
           }
         }
         AppMethodBeat.o(156641);
@@ -594,11 +594,11 @@ public class b
       }
       catch (a locala1)
       {
-        this.mqm.limit();
-        ByteBuffer localByteBuffer = ByteBuffer.allocate(vh(locala1.mqp));
-        this.mqm.rewind();
-        localByteBuffer.put(this.mqm);
-        this.mqm = localByteBuffer;
+        this.mQS.limit();
+        ByteBuffer localByteBuffer = ByteBuffer.allocate(vN(locala1.mQV));
+        this.mQS.rewind();
+        localByteBuffer.put(this.mQS);
+        this.mQS = localByteBuffer;
       }
     }
   }
@@ -606,17 +606,17 @@ public class b
   final class a
     extends Throwable
   {
-    int mqp;
+    int mQV;
     
     public a(int paramInt)
     {
-      this.mqp = paramInt;
+      this.mQV = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.b.b
  * JD-Core Version:    0.7.0.1
  */

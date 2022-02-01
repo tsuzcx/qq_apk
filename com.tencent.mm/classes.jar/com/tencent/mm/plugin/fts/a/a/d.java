@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bz;
+import com.tencent.mm.g.c.ca;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends bz
+  extends ca
 {
   public static c.a info;
   
@@ -15,56 +15,56 @@ public final class d
   {
     AppMethodBeat.i(131673);
     c.a locala = new c.a();
-    locala.GvF = new Field[12];
+    locala.IhA = new Field[12];
     locala.columns = new String[13];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "featureId";
-    locala.GvH.put("featureId", "INTEGER PRIMARY KEY ");
+    locala.IhC.put("featureId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" featureId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "featureId";
+    locala.IhB = "featureId";
     locala.columns[1] = "title";
-    locala.GvH.put("title", "TEXT");
+    locala.IhC.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "titlePY";
-    locala.GvH.put("titlePY", "TEXT");
+    locala.IhC.put("titlePY", "TEXT");
     localStringBuilder.append(" titlePY TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "titleShortPY";
-    locala.GvH.put("titleShortPY", "TEXT");
+    locala.IhC.put("titleShortPY", "TEXT");
     localStringBuilder.append(" titleShortPY TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "tag";
-    locala.GvH.put("tag", "TEXT");
+    locala.IhC.put("tag", "TEXT");
     localStringBuilder.append(" tag TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "actionType";
-    locala.GvH.put("actionType", "INTEGER default '0' ");
+    locala.IhC.put("actionType", "INTEGER default '0' ");
     localStringBuilder.append(" actionType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "url";
-    locala.GvH.put("url", "TEXT");
+    locala.IhC.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "helpUrl";
-    locala.GvH.put("helpUrl", "TEXT");
+    locala.IhC.put("helpUrl", "TEXT");
     localStringBuilder.append(" helpUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "updateUrl";
-    locala.GvH.put("updateUrl", "TEXT");
+    locala.IhC.put("updateUrl", "TEXT");
     localStringBuilder.append(" updateUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "androidUrl";
-    locala.GvH.put("androidUrl", "TEXT");
+    locala.IhC.put("androidUrl", "TEXT");
     localStringBuilder.append(" androidUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "iconPath";
-    locala.GvH.put("iconPath", "TEXT");
+    locala.IhC.put("iconPath", "TEXT");
     localStringBuilder.append(" iconPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "timestamp";
-    locala.GvH.put("timestamp", "LONG default '0' ");
+    locala.IhC.put("timestamp", "LONG default '0' ");
     localStringBuilder.append(" timestamp LONG default '0' ");
     locala.columns[12] = "rowid";
     locala.sql = localStringBuilder.toString();

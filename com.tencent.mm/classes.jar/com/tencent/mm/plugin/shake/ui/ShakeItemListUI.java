@@ -27,60 +27,63 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ut;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.c;
-import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.shake.b.m;
+import com.tencent.mm.g.a.vm;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.c;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.shake.d.a.i;
 import com.tencent.mm.plugin.shake.d.a.i.1;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.applet.b.a;
 import com.tencent.mm.ui.applet.b.b;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.tools.l;
 
 public class ShakeItemListUI
   extends MMActivity
 {
-  private int cZX;
-  private com.tencent.mm.av.a.a hJM;
-  private ListView iNr;
+  private int dlp;
+  private com.tencent.mm.aw.a.a icC;
   private int id;
-  private n.d ntM;
-  private View ofC;
-  public long xzO;
-  private boolean xzP;
-  private a xzQ;
+  private ListView jgA;
+  private n.e nUI;
+  private View oIV;
+  private a yOA;
+  public long yOy;
+  private boolean yOz;
   
   public ShakeItemListUI()
   {
     AppMethodBeat.i(28409);
-    this.xzO = 0L;
-    this.xzP = false;
-    this.hJM = null;
-    this.ntM = new n.d()
+    this.yOy = 0L;
+    this.yOz = false;
+    this.icC = null;
+    this.nUI = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         AppMethodBeat.i(28398);
-        m.dDl().NH(ShakeItemListUI.f(ShakeItemListUI.this));
+        com.tencent.mm.plugin.shake.b.m.dOO().Pk(ShakeItemListUI.f(ShakeItemListUI.this));
         AppMethodBeat.o(28398);
       }
     };
     AppMethodBeat.o(28409);
   }
   
-  public static int NP(int paramInt)
+  public static int Ps(int paramInt)
   {
     switch (paramInt)
     {
@@ -108,15 +111,15 @@ public class ShakeItemListUI
   public void initView()
   {
     AppMethodBeat.i(28411);
-    this.hJM = new com.tencent.mm.av.a.a(this);
-    az.ayM();
-    final int i = bs.a((Integer)com.tencent.mm.model.c.agA().get(12290, null), 0);
-    this.cZX = getIntent().getIntExtra("_key_show_type_", 0);
+    this.icC = new com.tencent.mm.aw.a.a(this);
+    ba.aBQ();
+    final int i = bt.a((Integer)com.tencent.mm.model.c.ajl().get(12290, null), 0);
+    this.dlp = getIntent().getIntExtra("_key_show_type_", 0);
     Object localObject = getIntent().getStringExtra("_key_title_");
-    if (!bs.isNullOrNil((String)localObject)) {
+    if (!bt.isNullOrNil((String)localObject)) {
       setMMTitle((String)localObject);
     }
-    this.xzP = getIntent().getBooleanExtra("_key_show_from_shake_", false);
+    this.yOz = getIntent().getBooleanExtra("_key_show_from_shake_", false);
     addTextOptionMenu(0, getString(2131755694), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -132,30 +135,30 @@ public class ShakeItemListUI
             }
             for (;;)
             {
-              ShakeItemListUI.b(ShakeItemListUI.this).Xb();
+              ShakeItemListUI.b(ShakeItemListUI.this).Zu();
               ShakeItemListUI.c(ShakeItemListUI.this).setVisibility(8);
               paramAnonymous2DialogInterface = (TextView)ShakeItemListUI.this.findViewById(2131302694);
-              paramAnonymous2DialogInterface.setText(ShakeItemListUI.NP(ShakeItemListUI.a(ShakeItemListUI.this)));
+              paramAnonymous2DialogInterface.setText(ShakeItemListUI.Ps(ShakeItemListUI.a(ShakeItemListUI.this)));
               paramAnonymous2DialogInterface.setVisibility(0);
               ShakeItemListUI.this.enableOptionMenu(false);
               AppMethodBeat.o(28390);
               return;
-              m.dDl().NI(0);
-              m.dDl().dDa();
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(0);
+              com.tencent.mm.plugin.shake.b.m.dOO().dOD();
               continue;
-              m.dDl().NI(0);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(0);
               continue;
-              az.agU().az(new i.1());
-              m.dDl().NI(4);
+              ba.ajF().ay(new i.1());
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(4);
               continue;
-              m.dDl().NI(7);
-              m.dDl().NI(6);
-              m.dDl().NI(8);
-              m.dDl().NI(9);
-              m.dDl().NI(10);
-              m.dDl().NI(12);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(7);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(6);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(8);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(9);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(10);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(12);
               continue;
-              m.dDl().NI(11);
+              com.tencent.mm.plugin.shake.b.m.dOO().Pl(11);
             }
           }
         }, null);
@@ -163,30 +166,34 @@ public class ShakeItemListUI
         return true;
       }
     });
-    this.iNr = ((ListView)findViewById(2131302692));
-    this.ofC = getLayoutInflater().inflate(2131495415, null);
-    this.ofC.findViewById(2131304676).setOnClickListener(new View.OnClickListener()
+    this.jgA = ((ListView)findViewById(2131302692));
+    this.oIV = getLayoutInflater().inflate(2131495415, null);
+    this.oIV.findViewById(2131304676).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28392);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/ui/ShakeItemListUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         ShakeItemListUI.a(ShakeItemListUI.this, ShakeItemListUI.a(ShakeItemListUI.this) ^ 0xFFFFFFFF);
         ShakeItemListUI.this.setShowType(ShakeItemListUI.a(ShakeItemListUI.this));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28392);
       }
     });
-    this.iNr.addFooterView(this.ofC);
-    if (this.cZX == -1)
+    this.jgA.addFooterView(this.oIV);
+    if (this.dlp == -1)
     {
-      this.ofC.findViewById(2131304676).setVisibility(0);
-      this.xzQ = new a(this);
-      this.xzQ.setShowType(this.cZX);
-      if (this.xzQ.getCount() > 0) {
+      this.oIV.findViewById(2131304676).setVisibility(0);
+      this.yOA = new a(this);
+      this.yOA.setShowType(this.dlp);
+      if (this.yOA.getCount() > 0) {
         break label325;
       }
-      this.iNr.setVisibility(8);
+      this.jgA.setVisibility(8);
       localObject = (TextView)findViewById(2131302694);
-      ((TextView)localObject).setText(NP(this.cZX));
+      ((TextView)localObject).setText(Ps(this.dlp));
       ((TextView)localObject).setVisibility(0);
       enableOptionMenu(false);
     }
@@ -208,98 +215,115 @@ public class ShakeItemListUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(28396);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/ui/ShakeItemListUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
           paramAnonymousView = ShakeItemListUI.c(ShakeItemListUI.this);
-          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
-          Object localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-          BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+          localObject = new Object();
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(28396);
         }
       });
-      this.iNr.setOnTouchListener(new View.OnTouchListener()
+      this.jgA.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(28397);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/ui/ShakeItemListUI$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
           if (ShakeItemListUI.b(ShakeItemListUI.this) != null)
           {
             paramAnonymousView = ShakeItemListUI.b(ShakeItemListUI.this);
-            if (paramAnonymousView.iKs != null) {
-              paramAnonymousView.iKs.onTouchEvent(paramAnonymousMotionEvent);
+            if (paramAnonymousView.jdB != null) {
+              paramAnonymousView.jdB.onTouchEvent(paramAnonymousMotionEvent);
             }
           }
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(28397);
           return false;
         }
       });
       AppMethodBeat.o(28411);
       return;
-      this.ofC.findViewById(2131304676).setVisibility(8);
+      this.oIV.findViewById(2131304676).setVisibility(8);
       break;
       label325:
-      this.iNr.setAdapter(this.xzQ);
-      this.iNr.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.jgA.setAdapter(this.yOA);
+      this.jgA.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(28393);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramAnonymousInt);
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).qY(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/ui/ShakeItemListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
           paramAnonymousAdapterView = (com.tencent.mm.plugin.shake.b.d)ShakeItemListUI.b(ShakeItemListUI.this).getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(28393);
             return;
           }
-          paramAnonymousView = m.dDl();
+          paramAnonymousView = com.tencent.mm.plugin.shake.b.m.dOO();
           int i;
           if (paramAnonymousAdapterView == null)
           {
-            ac.w("MicroMsg.NewShakeItemStorage", "setRead, but item is null");
+            ad.w("MicroMsg.NewShakeItemStorage", "setRead, but item is null");
             i = paramAnonymousAdapterView.field_type;
             if (i != 4) {
-              break label213;
+              break label288;
             }
             paramAnonymousView = new Intent();
-            if (!com.tencent.mm.ay.e.aGF()) {
-              break label180;
+            if (!com.tencent.mm.az.e.aJQ()) {
+              break label255;
             }
-            com.tencent.mm.ay.a.c(i.d(paramAnonymousAdapterView.field_lvbuffer, 0L));
+            com.tencent.mm.az.a.c(i.d(paramAnonymousAdapterView.field_lvbuffer, 0L));
           }
           for (;;)
           {
             paramAnonymousView.putExtra("key_scene", 3);
-            com.tencent.mm.br.d.b(ShakeItemListUI.this, "music", ".ui.MusicMainUI", paramAnonymousView);
+            com.tencent.mm.bs.d.b(ShakeItemListUI.this, "music", ".ui.MusicMainUI", paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(28393);
             return;
             paramAnonymousAdapterView.field_insertBatch = 1;
-            paramAnonymousAdapterView.drx = 1024;
+            paramAnonymousAdapterView.dDp = 1024;
             if (-1 == paramAnonymousView.db.update("shakeitem1", paramAnonymousAdapterView.convertTo(), "shakeItemID=? and insertBatch=?", new String[] { paramAnonymousAdapterView.field_shakeItemID, "2" })) {
               break;
             }
             paramAnonymousView.doNotify();
             break;
-            label180:
-            com.tencent.mm.ay.a.aGt();
+            label255:
+            com.tencent.mm.az.a.aJE();
             paramAnonymousView.putExtra("key_mode", 1);
             paramAnonymousView.putExtra("KGlobalShakeMusic", true);
-            com.tencent.mm.ay.a.d(i.d(paramAnonymousAdapterView.field_lvbuffer, 0L));
+            com.tencent.mm.az.a.d(i.d(paramAnonymousAdapterView.field_lvbuffer, 0L));
           }
-          label213:
+          label288:
           if (i == 11)
           {
-            if (System.currentTimeMillis() - ShakeItemListUI.this.xzO > 2000L)
+            if (System.currentTimeMillis() - ShakeItemListUI.this.yOy > 2000L)
             {
-              ShakeItemListUI.this.xzO = System.currentTimeMillis();
+              ShakeItemListUI.this.yOy = System.currentTimeMillis();
               if ((paramAnonymousAdapterView.field_reserved3 == null) || (paramAnonymousAdapterView.field_reserved3.split(",").length != 3) || (paramAnonymousAdapterView.field_reserved3.split(",")[0] == null) || (paramAnonymousAdapterView.field_reserved3.split(",")[0].equals(""))) {
-                break label407;
+                break label494;
               }
               paramAnonymousView = paramAnonymousAdapterView.field_reserved3.split(",");
-              localObject = new ut();
-              ((ut)localObject).dxt.userName = paramAnonymousView[0];
-              ((ut)localObject).dxt.dxv = bs.bG(paramAnonymousView[1], "");
-              ((ut)localObject).dxt.dxw = Integer.parseInt(paramAnonymousView[2]);
-              ((ut)localObject).dxt.scene = 1077;
-              com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+              localObject = new vm();
+              ((vm)localObject).dJF.userName = paramAnonymousView[0];
+              ((vm)localObject).dJF.dJH = bt.bI(paramAnonymousView[1], "");
+              ((vm)localObject).dJF.dJI = Integer.parseInt(paramAnonymousView[2]);
+              ((vm)localObject).dJF.scene = 1077;
+              com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
             }
             for (;;)
             {
@@ -308,28 +332,30 @@ public class ShakeItemListUI
                 com.tencent.mm.plugin.shake.d.a.h.a(paramAnonymousAdapterView);
                 com.tencent.mm.plugin.shake.d.a.h.b(paramAnonymousAdapterView);
               }
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(28393);
               return;
+              label494:
               paramAnonymousView = new Intent();
               paramAnonymousView.putExtra("rawUrl", paramAnonymousAdapterView.getCity());
               paramAnonymousView.putExtra("scene", 27);
               paramAnonymousView.putExtra("stastic_scene", 5);
-              com.tencent.mm.br.d.b(com.tencent.mm.sdk.platformtools.ai.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+              com.tencent.mm.bs.d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
             }
           }
-          label407:
-          if (com.tencent.mm.plugin.shake.d.a.k.NN(i))
+          if (com.tencent.mm.plugin.shake.d.a.k.Pq(i))
           {
             com.tencent.mm.plugin.shake.d.a.k.a(paramAnonymousAdapterView, ShakeItemListUI.this, true);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(28393);
             return;
           }
           paramAnonymousView = paramAnonymousAdapterView.field_username;
-          az.ayM();
-          Object localObject = com.tencent.mm.model.c.awB().aNt(paramAnonymousView);
-          ac.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramAnonymousView + " display:" + paramAnonymousAdapterView.field_nickname + " position:" + paramAnonymousInt + " contactName" + ((av)localObject).field_username);
-          ac.d("MicroMsg.ShakeItemListUI", "isContact:" + com.tencent.mm.n.b.ln(((av)localObject).field_type) + "  contact:" + localObject);
-          if (com.tencent.mm.n.b.ln(((av)localObject).field_type))
+          ba.aBQ();
+          localObject = com.tencent.mm.model.c.azp().Bf(paramAnonymousView);
+          ad.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramAnonymousView + " display:" + paramAnonymousAdapterView.field_nickname + " position:" + paramAnonymousInt + " contactName" + ((aw)localObject).field_username);
+          ad.d("MicroMsg.ShakeItemListUI", "isContact:" + com.tencent.mm.o.b.lM(((aw)localObject).field_type) + "  contact:" + localObject);
+          if (com.tencent.mm.o.b.lM(((aw)localObject).field_type))
           {
             Intent localIntent = new Intent();
             localIntent.putExtra("Contact_User", paramAnonymousView);
@@ -340,18 +366,19 @@ public class ShakeItemListUI
               localIntent.putExtra("Sns_from_Scene", 22);
               if ((paramAnonymousView != null) && (paramAnonymousView.length() > 0))
               {
-                if (((com.tencent.mm.storage.ai)localObject).fad())
+                if (((am)localObject).fqg())
                 {
-                  com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramAnonymousAdapterView.field_username + "," + localIntent.getIntExtra("Contact_Scene", 23));
+                  g.yhR.kvStat(10298, paramAnonymousAdapterView.field_username + "," + localIntent.getIntExtra("Contact_Scene", 23));
                   localIntent.putExtra("Contact_Scene", 23);
                 }
-                com.tencent.mm.plugin.shake.a.iyx.c(localIntent, ShakeItemListUI.this);
+                com.tencent.mm.plugin.shake.a.iRG.c(localIntent, ShakeItemListUI.this);
               }
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeItemListUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(28393);
               return;
             }
           }
-          ac.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramAnonymousView + " display:" + paramAnonymousAdapterView.field_nickname + " position:" + paramAnonymousInt + " contactName" + ((av)localObject).field_username);
+          ad.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramAnonymousView + " display:" + paramAnonymousAdapterView.field_nickname + " position:" + paramAnonymousInt + " contactName" + ((aw)localObject).field_username);
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView.field_username);
           paramAnonymousView.putExtra("Contact_Nick", paramAnonymousAdapterView.field_nickname);
@@ -371,27 +398,26 @@ public class ShakeItemListUI
             paramAnonymousView.putExtra("Contact_KSnsIFlag", paramAnonymousAdapterView.field_snsFlag);
             paramAnonymousView.putExtra("Contact_KSnsBgUrl", paramAnonymousAdapterView.field_sns_bgurl);
             if ((paramAnonymousAdapterView.field_reserved1 & 0x8) > 0) {
-              com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramAnonymousAdapterView.field_username + "," + paramAnonymousView.getIntExtra("Contact_Scene", 23));
+              g.yhR.kvStat(10298, paramAnonymousAdapterView.field_username + "," + paramAnonymousView.getIntExtra("Contact_Scene", 23));
             }
-            com.tencent.mm.plugin.shake.a.iyx.c(paramAnonymousView, ShakeItemListUI.this);
-            AppMethodBeat.o(28393);
-            return;
+            com.tencent.mm.plugin.shake.a.iRG.c(paramAnonymousView, ShakeItemListUI.this);
+            break;
           }
         }
       });
-      localObject = new com.tencent.mm.ui.tools.l(this);
-      this.iNr.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+      localObject = new l(this);
+      this.jgA.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
       {
         public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(28394);
           if (paramAnonymousInt < ShakeItemListUI.c(ShakeItemListUI.this).getHeaderViewsCount())
           {
-            ac.w("MicroMsg.ShakeItemListUI", "on header view long click, ignore");
+            ad.w("MicroMsg.ShakeItemListUI", "on header view long click, ignore");
             AppMethodBeat.o(28394);
             return true;
           }
-          this.ntP.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeItemListUI.this, ShakeItemListUI.e(ShakeItemListUI.this));
+          this.nUL.a(paramAnonymousView, paramAnonymousInt, paramAnonymousLong, ShakeItemListUI.this, ShakeItemListUI.e(ShakeItemListUI.this));
           AppMethodBeat.o(28394);
           return true;
         }
@@ -404,9 +430,9 @@ public class ShakeItemListUI
     AppMethodBeat.i(28410);
     super.onCreate(paramBundle);
     initView();
-    m.dDl().add(this.xzQ);
-    this.xzQ.Xc();
-    ac.i("MicroMsg.ShakeItemListUI", "onResume");
+    com.tencent.mm.plugin.shake.b.m.dOO().add(this.yOA);
+    this.yOA.Zv();
+    ad.i("MicroMsg.ShakeItemListUI", "onResume");
     AppMethodBeat.o(28410);
   }
   
@@ -414,7 +440,7 @@ public class ShakeItemListUI
   {
     AppMethodBeat.i(28412);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    this.id = ((com.tencent.mm.plugin.shake.b.d)this.xzQ.getItem(paramView.position)).field_shakeItemID;
+    this.id = ((com.tencent.mm.plugin.shake.b.d)this.yOA.getItem(paramView.position)).field_shakeItemID;
     paramContextMenu.add(paramView.position, 0, 0, 2131755707);
     AppMethodBeat.o(28412);
   }
@@ -422,17 +448,17 @@ public class ShakeItemListUI
   public void onDestroy()
   {
     AppMethodBeat.i(28414);
-    this.xzQ.cVi();
-    a locala = this.xzQ;
-    if (locala.iKs != null)
+    this.yOA.det();
+    a locala = this.yOA;
+    if (locala.jdB != null)
     {
-      locala.iKs.detach();
-      locala.iKs = null;
+      locala.jdB.detach();
+      locala.jdB = null;
     }
-    m.dDl().remove(this.xzQ);
-    ac.i("MicroMsg.ShakeItemListUI", "onPause");
-    if (this.hJM != null) {
-      this.hJM.detach();
+    com.tencent.mm.plugin.shake.b.m.dOO().remove(this.yOA);
+    ad.i("MicroMsg.ShakeItemListUI", "onPause");
+    if (this.icC != null) {
+      this.icC.detach();
     }
     super.onDestroy();
     AppMethodBeat.o(28414);
@@ -454,7 +480,7 @@ public class ShakeItemListUI
   protected final void setShowType(int paramInt)
   {
     AppMethodBeat.i(28415);
-    this.xzQ.setShowType(paramInt);
+    this.yOA.setShowType(paramInt);
     switch (paramInt)
     {
     }
@@ -462,13 +488,13 @@ public class ShakeItemListUI
     {
       AppMethodBeat.o(28415);
       return;
-      if (this.ofC != null)
+      if (this.oIV != null)
       {
-        this.ofC.findViewById(2131304676).setVisibility(8);
+        this.oIV.findViewById(2131304676).setVisibility(8);
         AppMethodBeat.o(28415);
         return;
-        if (this.ofC != null) {
-          this.ofC.findViewById(2131304676).setVisibility(0);
+        if (this.oIV != null) {
+          this.oIV.findViewById(2131304676).setVisibility(0);
         }
       }
     }
@@ -477,39 +503,39 @@ public class ShakeItemListUI
   final class a
     extends r<com.tencent.mm.plugin.shake.b.d>
   {
-    private int cZX;
-    com.tencent.mm.ui.applet.b iKs;
-    private b.b iKt;
+    private int dlp;
+    com.tencent.mm.ui.applet.b jdB;
+    private b.b jdC;
     
     public a(ShakeItemListUI paramShakeItemListUI)
     {
       super(new com.tencent.mm.plugin.shake.b.d());
       AppMethodBeat.i(28403);
-      this.cZX = 0;
-      this.iKt = null;
-      this.iKs = new com.tencent.mm.ui.applet.b(new b.a()
+      this.dlp = 0;
+      this.jdC = null;
+      this.jdB = new com.tencent.mm.ui.applet.b(new b.a()
       {
-        public final Bitmap Go(String paramAnonymousString)
+        public final Bitmap JD(String paramAnonymousString)
         {
           AppMethodBeat.i(28399);
-          paramAnonymousString = com.tencent.mm.aj.c.a(paramAnonymousString, false, -1, null);
+          paramAnonymousString = com.tencent.mm.ak.c.a(paramAnonymousString, false, -1, null);
           AppMethodBeat.o(28399);
           return paramAnonymousString;
         }
       });
-      Xc();
+      Zv();
       AppMethodBeat.o(28403);
     }
     
-    public final void Xb()
+    public final void Zu()
     {
       AppMethodBeat.i(28406);
-      if (!az.agM())
+      if (!ba.ajx())
       {
         AppMethodBeat.o(28406);
         return;
       }
-      switch (this.cZX)
+      switch (this.dlp)
       {
       }
       for (;;)
@@ -517,41 +543,41 @@ public class ShakeItemListUI
         super.notifyDataSetChanged();
         AppMethodBeat.o(28406);
         return;
-        setCursor(m.dDl().dCR());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOu());
         continue;
-        setCursor(m.dDl().dCT());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOw());
         continue;
-        setCursor(m.dDl().dCS());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOv());
         continue;
-        setCursor(m.dDl().dCU());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOx());
         continue;
-        setCursor(m.dDl().dCV());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOy());
         continue;
-        setCursor(m.dDl().dCW());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOz());
         continue;
-        setCursor(m.dDl().dCX());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOA());
         continue;
-        setCursor(m.dDl().dCY());
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().dOB());
         continue;
-        setCursor(m.dDl().NG(ShakeItemListUI.this.getIntent().getIntExtra("_ibeacon_new_insert_size", 2)));
+        setCursor(com.tencent.mm.plugin.shake.b.m.dOO().Pj(ShakeItemListUI.this.getIntent().getIntExtra("_ibeacon_new_insert_size", 2)));
       }
     }
     
-    public final void Xc()
+    public final void Zv()
     {
       AppMethodBeat.i(28405);
-      cVi();
-      Xb();
+      det();
+      Zu();
       AppMethodBeat.o(28405);
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(28404);
-      if (this.iKt == null) {
-        this.iKt = new b.b()
+      if (this.jdC == null) {
+        this.jdC = new b.b()
         {
-          public final int aPz()
+          public final int aSL()
           {
             AppMethodBeat.i(28401);
             int i = ShakeItemListUI.a.this.getCount();
@@ -559,12 +585,12 @@ public class ShakeItemListUI
             return i;
           }
           
-          public final String qN(int paramAnonymousInt)
+          public final String rn(int paramAnonymousInt)
           {
             AppMethodBeat.i(28400);
             if ((paramAnonymousInt < 0) || (paramAnonymousInt >= ShakeItemListUI.a.this.getCount()))
             {
-              ac.e("MicroMsg.ShakeFriendAdapter", "pos is invalid");
+              ad.e("MicroMsg.ShakeFriendAdapter", "pos is invalid");
               AppMethodBeat.o(28400);
               return null;
             }
@@ -580,24 +606,24 @@ public class ShakeItemListUI
           }
         };
       }
-      if (this.iKs != null) {
-        this.iKs.a(paramInt, this.iKt);
+      if (this.jdB != null) {
+        this.jdB.a(paramInt, this.jdC);
       }
       if (paramView == null)
       {
         paramViewGroup = new a();
         paramView = View.inflate(this.context, 2131495414, null);
-        paramViewGroup.iKw = ((ImageView)paramView.findViewById(2131302687));
-        paramViewGroup.iIN = ((TextView)paramView.findViewById(2131302693));
-        paramViewGroup.iKx = ((TextView)paramView.findViewById(2131302690));
-        paramViewGroup.xzW = ((ImageView)paramView.findViewById(2131302695));
-        paramViewGroup.vjW = ((TextView)paramView.findViewById(2131302688));
-        paramViewGroup.vjX = ((TextView)paramView.findViewById(2131302696));
-        paramViewGroup.vjY = ((ImageView)paramView.findViewById(2131302698));
-        paramViewGroup.xzX = ((TextView)paramView.findViewById(2131304721));
-        paramViewGroup.xzV = paramView.findViewById(2131304194);
-        paramViewGroup.xzY = ((LinearLayout)paramView.findViewById(2131304681));
-        paramViewGroup.xzZ = ((TextView)paramView.findViewById(2131304682));
+        paramViewGroup.jdF = ((ImageView)paramView.findViewById(2131302687));
+        paramViewGroup.jbW = ((TextView)paramView.findViewById(2131302693));
+        paramViewGroup.jdG = ((TextView)paramView.findViewById(2131302690));
+        paramViewGroup.yOG = ((ImageView)paramView.findViewById(2131302695));
+        paramViewGroup.wpo = ((TextView)paramView.findViewById(2131302688));
+        paramViewGroup.wpp = ((TextView)paramView.findViewById(2131302696));
+        paramViewGroup.wpq = ((ImageView)paramView.findViewById(2131302698));
+        paramViewGroup.yOH = ((TextView)paramView.findViewById(2131304721));
+        paramViewGroup.yOF = paramView.findViewById(2131304194);
+        paramViewGroup.yOI = ((LinearLayout)paramView.findViewById(2131304681));
+        paramViewGroup.yOJ = ((TextView)paramView.findViewById(2131304682));
         paramView.setTag(paramViewGroup);
       }
       Object localObject1;
@@ -613,48 +639,48 @@ public class ShakeItemListUI
         paramViewGroup = (a)paramView.getTag();
       }
       paramViewGroup.clear();
-      if ((4 == ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) || ((com.tencent.mm.plugin.shake.d.a.k.NN(((com.tencent.mm.plugin.shake.b.d)localObject1).field_type)) && (6 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type)))
+      if ((4 == ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) || ((com.tencent.mm.plugin.shake.d.a.k.Pq(((com.tencent.mm.plugin.shake.b.d)localObject1).field_type)) && (6 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type)))
       {
         if (4 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) {
-          paramViewGroup.iKw.setScaleType(ImageView.ScaleType.CENTER_CROP);
+          paramViewGroup.jdF.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
-        e.a(paramViewGroup.iKw, ((com.tencent.mm.plugin.shake.b.d)localObject1).field_sns_bgurl, 2131689584, false);
-        paramViewGroup.iKw.setVisibility(0);
-        if ((7 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (10 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (12 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (13 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && ((8 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) || (!bs.isNullOrNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname)) || (!bs.isNullOrNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_username)))) {
+        e.a(paramViewGroup.jdF, ((com.tencent.mm.plugin.shake.b.d)localObject1).field_sns_bgurl, 2131689584, false);
+        paramViewGroup.jdF.setVisibility(0);
+        if ((7 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (10 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (12 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (13 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && ((8 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) || (!bt.isNullOrNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname)) || (!bt.isNullOrNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_username)))) {
           break label508;
         }
         if (8 != ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) {
           break label493;
         }
-        paramViewGroup.xzZ.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_distance);
+        paramViewGroup.yOJ.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_distance);
       }
       for (;;)
       {
-        paramViewGroup.xzZ.setVisibility(0);
-        paramViewGroup.xzY.setVisibility(8);
+        paramViewGroup.yOJ.setVisibility(0);
+        paramViewGroup.yOI.setVisibility(8);
         AppMethodBeat.o(28404);
         return paramView;
         if (11 == ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type)
         {
-          ShakeItemListUI.g(ShakeItemListUI.this).loadImage(((com.tencent.mm.plugin.shake.b.d)localObject1).getProvince(), paramViewGroup.iKw);
+          ShakeItemListUI.g(ShakeItemListUI.this).loadImage(((com.tencent.mm.plugin.shake.b.d)localObject1).getProvince(), paramViewGroup.jdF);
           break;
         }
-        a.b.c(paramViewGroup.iKw, ((com.tencent.mm.plugin.shake.b.d)localObject1).field_username);
+        a.b.c(paramViewGroup.jdF, ((com.tencent.mm.plugin.shake.b.d)localObject1).field_username);
         break;
         label493:
-        paramViewGroup.xzZ.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname);
+        paramViewGroup.yOJ.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname);
       }
       label508:
-      paramViewGroup.xzZ.setVisibility(8);
-      paramViewGroup.xzY.setVisibility(0);
-      if ((8 == ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (bs.isNullOrNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname)))
+      paramViewGroup.yOJ.setVisibility(8);
+      paramViewGroup.yOI.setVisibility(0);
+      if ((8 == ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type) && (bt.isNullOrNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname)))
       {
         ((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname = ((com.tencent.mm.plugin.shake.b.d)localObject1).field_distance;
         ((com.tencent.mm.plugin.shake.b.d)localObject1).field_distance = ((com.tencent.mm.plugin.shake.b.d)localObject1).field_username;
       }
-      Object localObject2 = bs.nullAsNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname);
-      paramViewGroup.iIN.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, (CharSequence)localObject2, paramViewGroup.iIN.getTextSize()));
-      paramViewGroup.iIN.setVisibility(0);
+      Object localObject2 = bt.nullAsNil(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname);
+      paramViewGroup.jbW.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, (CharSequence)localObject2, paramViewGroup.jbW.getTextSize()));
+      paramViewGroup.jbW.setVisibility(0);
       paramInt = paramView.getPaddingBottom();
       int i = paramView.getPaddingTop();
       int j = paramView.getPaddingRight();
@@ -666,43 +692,43 @@ public class ShakeItemListUI
         switch (((com.tencent.mm.plugin.shake.b.d)localObject1).field_type)
         {
         default: 
-          paramViewGroup.xzV.setVisibility(0);
-          paramViewGroup.vjW.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_distance);
-          paramViewGroup.vjW.setVisibility(0);
+          paramViewGroup.yOF.setVisibility(0);
+          paramViewGroup.wpo.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_distance);
+          paramViewGroup.wpo.setVisibility(0);
           if ((((com.tencent.mm.plugin.shake.b.d)localObject1).field_signature == null) || (((com.tencent.mm.plugin.shake.b.d)localObject1).field_signature.trim().equals("")))
           {
-            paramViewGroup.vjX.setVisibility(8);
+            paramViewGroup.wpp.setVisibility(8);
             label758:
             if (((com.tencent.mm.plugin.shake.b.d)localObject1).field_sex != 1) {
               break label1059;
             }
-            paramViewGroup.xzW.setVisibility(0);
-            paramViewGroup.xzW.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131690323));
-            paramViewGroup.xzW.setContentDescription(this.context.getString(2131761078));
+            paramViewGroup.yOG.setVisibility(0);
+            paramViewGroup.yOG.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131690323));
+            paramViewGroup.yOG.setContentDescription(this.context.getString(2131761078));
             label809:
-            az.ayM();
-            localObject2 = com.tencent.mm.model.c.awB().aNt(((com.tencent.mm.plugin.shake.b.d)localObject1).field_username);
-            if ((localObject2 == null) || (!com.tencent.mm.n.b.ln(((av)localObject2).field_type))) {
+            ba.aBQ();
+            localObject2 = com.tencent.mm.model.c.azp().Bf(((com.tencent.mm.plugin.shake.b.d)localObject1).field_username);
+            if ((localObject2 == null) || (!com.tencent.mm.o.b.lM(((aw)localObject2).field_type))) {
               break label1145;
             }
-            paramViewGroup.iKx.setVisibility(0);
-            if (!com.tencent.mm.storage.ai.YI(((com.tencent.mm.plugin.shake.b.d)localObject1).field_reserved1)) {
+            paramViewGroup.jdG.setVisibility(0);
+            if (!am.aaR(((com.tencent.mm.plugin.shake.b.d)localObject1).field_reserved1)) {
               break label1125;
             }
-            paramViewGroup.iKx.setText(this.context.getString(2131761502));
+            paramViewGroup.jdG.setText(this.context.getString(2131761502));
             label880:
             if (6 == ((com.tencent.mm.plugin.shake.b.d)localObject1).field_type)
             {
-              paramViewGroup.vjW.setText(this.context.getString(2131763562));
-              paramViewGroup.iKx.setVisibility(8);
+              paramViewGroup.wpo.setText(this.context.getString(2131763562));
+              paramViewGroup.jdG.setVisibility(8);
             }
             if (((com.tencent.mm.plugin.shake.b.d)localObject1).field_reserved1 == 0) {
               break label1157;
             }
-            paramViewGroup.vjY.setVisibility(0);
-            localObject1 = BackwardSupportUtil.b.n(ar.a.hny.nR(((com.tencent.mm.plugin.shake.b.d)localObject1).field_reserved1), 2.0F);
-            paramViewGroup.vjY.setImageBitmap((Bitmap)localObject1);
-            paramViewGroup.xzW.setVisibility(8);
+            paramViewGroup.wpq.setVisibility(0);
+            localObject1 = BackwardSupportUtil.b.o(as.a.hFQ.or(((com.tencent.mm.plugin.shake.b.d)localObject1).field_reserved1), 2.0F);
+            paramViewGroup.wpq.setImageBitmap((Bitmap)localObject1);
+            paramViewGroup.yOG.setVisibility(8);
           }
           break;
         }
@@ -713,94 +739,94 @@ public class ShakeItemListUI
         return paramView;
         paramView.setBackgroundDrawable(com.tencent.mm.cc.a.l(this.context, 2131231818));
         break;
-        paramViewGroup.xzX.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname);
-        paramViewGroup.xzX.setVisibility(0);
+        paramViewGroup.yOH.setText(((com.tencent.mm.plugin.shake.b.d)localObject1).field_nickname);
+        paramViewGroup.yOH.setVisibility(0);
         AppMethodBeat.o(28404);
         return paramView;
-        paramViewGroup.vjX.setVisibility(0);
-        paramViewGroup.vjX.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, ((com.tencent.mm.plugin.shake.b.d)localObject1).field_signature, paramViewGroup.iIN.getTextSize()));
+        paramViewGroup.wpp.setVisibility(0);
+        paramViewGroup.wpp.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, ((com.tencent.mm.plugin.shake.b.d)localObject1).field_signature, paramViewGroup.jbW.getTextSize()));
         break label758;
         label1059:
         if (((com.tencent.mm.plugin.shake.b.d)localObject1).field_sex == 2)
         {
-          paramViewGroup.xzW.setVisibility(0);
-          paramViewGroup.xzW.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131690322));
-          paramViewGroup.xzW.setContentDescription(this.context.getString(2131759044));
+          paramViewGroup.yOG.setVisibility(0);
+          paramViewGroup.yOG.setImageDrawable(com.tencent.mm.cc.a.l(this.context, 2131690322));
+          paramViewGroup.yOG.setContentDescription(this.context.getString(2131759044));
           break label809;
         }
-        paramViewGroup.xzW.setVisibility(8);
+        paramViewGroup.yOG.setVisibility(8);
         break label809;
         label1125:
-        paramViewGroup.iKx.setText(this.context.getString(2131761507));
+        paramViewGroup.jdG.setText(this.context.getString(2131761507));
         break label880;
         label1145:
-        paramViewGroup.iKx.setVisibility(8);
+        paramViewGroup.jdG.setVisibility(8);
         break label880;
         label1157:
-        paramViewGroup.vjY.setVisibility(8);
+        paramViewGroup.wpq.setVisibility(8);
       }
     }
     
     protected final void setShowType(int paramInt)
     {
       AppMethodBeat.i(28407);
-      this.cZX = paramInt;
-      Xc();
+      this.dlp = paramInt;
+      Zv();
       AppMethodBeat.o(28407);
     }
     
     final class a
     {
-      TextView iIN;
-      ImageView iKw;
-      TextView iKx;
-      TextView vjW;
-      TextView vjX;
-      ImageView vjY;
-      View xzV;
-      ImageView xzW;
-      TextView xzX;
-      LinearLayout xzY;
-      TextView xzZ;
+      TextView jbW;
+      ImageView jdF;
+      TextView jdG;
+      TextView wpo;
+      TextView wpp;
+      ImageView wpq;
+      View yOF;
+      ImageView yOG;
+      TextView yOH;
+      LinearLayout yOI;
+      TextView yOJ;
       
       a() {}
       
       public final void clear()
       {
         AppMethodBeat.i(28402);
-        if (this.iKw != null)
+        if (this.jdF != null)
         {
-          this.iKw.setImageDrawable(null);
-          this.iKw.setVisibility(8);
+          this.jdF.setImageDrawable(null);
+          this.jdF.setVisibility(8);
         }
-        if (this.iIN != null)
+        if (this.jbW != null)
         {
-          this.iIN.setText("");
-          this.iIN.setVisibility(8);
+          this.jbW.setText("");
+          this.jbW.setVisibility(8);
         }
-        if (this.iKx != null) {
-          this.iKx.setVisibility(8);
+        if (this.jdG != null) {
+          this.jdG.setVisibility(8);
         }
-        if (this.xzW != null) {
-          this.xzW.setVisibility(8);
+        if (this.yOG != null) {
+          this.yOG.setVisibility(8);
         }
-        if (this.vjW != null)
+        if (this.wpo != null)
         {
-          this.vjW.setText("");
-          this.vjW.setVisibility(8);
+          this.wpo.setText("");
+          this.wpo.setVisibility(8);
         }
-        if (this.vjX != null)
+        if (this.wpp != null)
         {
-          this.vjX.setVisibility(8);
-          this.xzV.setVisibility(8);
+          this.wpp.setVisibility(8);
+          this.yOF.setVisibility(8);
         }
-        if (this.vjY != null) {
-          this.vjY.setVisibility(8);
+        if (this.wpq != null) {
+          this.wpq.setVisibility(8);
         }
-        if (this.xzX != null)
+        if (this.yOH != null)
         {
-          this.xzX.setText("");
-          this.xzX.setVisibility(8);
+          this.yOH.setText("");
+          this.yOH.setVisibility(8);
         }
         AppMethodBeat.o(28402);
       }
@@ -809,7 +835,7 @@ public class ShakeItemListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeItemListUI
  * JD-Core Version:    0.7.0.1
  */

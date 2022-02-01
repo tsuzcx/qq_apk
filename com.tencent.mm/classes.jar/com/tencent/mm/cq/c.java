@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ax;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -12,24 +12,24 @@ import java.util.Set;
 public class c
   implements SharedPreferences, SharedPreferences.Editor
 {
-  aw JIn;
+  ax LBQ;
   
-  public c(aw paramaw)
+  public c(ax paramax)
   {
-    this.JIn = paramaw;
+    this.LBQ = paramax;
   }
   
   public void apply()
   {
     AppMethodBeat.i(152941);
-    this.JIn.apply();
+    this.LBQ.apply();
     AppMethodBeat.o(152941);
   }
   
   public SharedPreferences.Editor clear()
   {
     AppMethodBeat.i(152939);
-    SharedPreferences.Editor localEditor = this.JIn.clear();
+    SharedPreferences.Editor localEditor = this.LBQ.clear();
     AppMethodBeat.o(152939);
     return localEditor;
   }
@@ -37,7 +37,7 @@ public class c
   public boolean commit()
   {
     AppMethodBeat.i(152940);
-    boolean bool = this.JIn.commit();
+    boolean bool = this.LBQ.commit();
     AppMethodBeat.o(152940);
     return bool;
   }
@@ -45,7 +45,7 @@ public class c
   public boolean contains(String paramString)
   {
     AppMethodBeat.i(152928);
-    boolean bool = this.JIn.contains(paramString);
+    boolean bool = this.LBQ.contains(paramString);
     AppMethodBeat.o(152928);
     return bool;
   }
@@ -53,7 +53,7 @@ public class c
   public SharedPreferences.Editor edit()
   {
     AppMethodBeat.i(152929);
-    SharedPreferences.Editor localEditor = this.JIn.edit();
+    SharedPreferences.Editor localEditor = this.LBQ.edit();
     AppMethodBeat.o(152929);
     return localEditor;
   }
@@ -62,7 +62,7 @@ public class c
   {
     AppMethodBeat.i(152921);
     HashMap localHashMap = new HashMap();
-    String[] arrayOfString = this.JIn.allKeys();
+    String[] arrayOfString = this.LBQ.allKeys();
     if (arrayOfString == null)
     {
       AppMethodBeat.o(152921);
@@ -82,7 +82,7 @@ public class c
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(152927);
-    paramBoolean = this.JIn.getBoolean(paramString, paramBoolean);
+    paramBoolean = this.LBQ.getBoolean(paramString, paramBoolean);
     AppMethodBeat.o(152927);
     return paramBoolean;
   }
@@ -90,7 +90,7 @@ public class c
   public float getFloat(String paramString, float paramFloat)
   {
     AppMethodBeat.i(152926);
-    paramFloat = this.JIn.getFloat(paramString, paramFloat);
+    paramFloat = this.LBQ.getFloat(paramString, paramFloat);
     AppMethodBeat.o(152926);
     return paramFloat;
   }
@@ -98,7 +98,7 @@ public class c
   public int getInt(String paramString, int paramInt)
   {
     AppMethodBeat.i(152924);
-    paramInt = this.JIn.getInt(paramString, paramInt);
+    paramInt = this.LBQ.getInt(paramString, paramInt);
     AppMethodBeat.o(152924);
     return paramInt;
   }
@@ -106,7 +106,7 @@ public class c
   public long getLong(String paramString, long paramLong)
   {
     AppMethodBeat.i(152925);
-    paramLong = this.JIn.getLong(paramString, paramLong);
+    paramLong = this.LBQ.getLong(paramString, paramLong);
     AppMethodBeat.o(152925);
     return paramLong;
   }
@@ -114,7 +114,7 @@ public class c
   public String getString(String paramString1, String paramString2)
   {
     AppMethodBeat.i(152922);
-    paramString1 = this.JIn.getString(paramString1, paramString2);
+    paramString1 = this.LBQ.getString(paramString1, paramString2);
     AppMethodBeat.o(152922);
     return paramString1;
   }
@@ -122,7 +122,7 @@ public class c
   public Set<String> getStringSet(String paramString, Set<String> paramSet)
   {
     AppMethodBeat.i(152923);
-    paramString = this.JIn.getStringSet(paramString, paramSet);
+    paramString = this.LBQ.getStringSet(paramString, paramSet);
     AppMethodBeat.o(152923);
     return paramString;
   }
@@ -130,7 +130,7 @@ public class c
   public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(152937);
-    paramString = this.JIn.putBoolean(paramString, paramBoolean);
+    paramString = this.LBQ.putBoolean(paramString, paramBoolean);
     AppMethodBeat.o(152937);
     return paramString;
   }
@@ -138,7 +138,7 @@ public class c
   public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
   {
     AppMethodBeat.i(152936);
-    paramString = this.JIn.putFloat(paramString, paramFloat);
+    paramString = this.LBQ.putFloat(paramString, paramFloat);
     AppMethodBeat.o(152936);
     return paramString;
   }
@@ -146,7 +146,7 @@ public class c
   public SharedPreferences.Editor putInt(String paramString, int paramInt)
   {
     AppMethodBeat.i(152934);
-    paramString = this.JIn.putInt(paramString, paramInt);
+    paramString = this.LBQ.putInt(paramString, paramInt);
     AppMethodBeat.o(152934);
     return paramString;
   }
@@ -154,7 +154,7 @@ public class c
   public SharedPreferences.Editor putLong(String paramString, long paramLong)
   {
     AppMethodBeat.i(152935);
-    paramString = this.JIn.putLong(paramString, paramLong);
+    paramString = this.LBQ.putLong(paramString, paramLong);
     AppMethodBeat.o(152935);
     return paramString;
   }
@@ -162,7 +162,7 @@ public class c
   public SharedPreferences.Editor putString(String paramString1, String paramString2)
   {
     AppMethodBeat.i(152932);
-    paramString1 = this.JIn.putString(paramString1, paramString2);
+    paramString1 = this.LBQ.putString(paramString1, paramString2);
     AppMethodBeat.o(152932);
     return paramString1;
   }
@@ -170,7 +170,7 @@ public class c
   public SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
   {
     AppMethodBeat.i(152933);
-    paramString = this.JIn.putStringSet(paramString, paramSet);
+    paramString = this.LBQ.putStringSet(paramString, paramSet);
     AppMethodBeat.o(152933);
     return paramString;
   }
@@ -178,14 +178,14 @@ public class c
   public void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
     AppMethodBeat.i(152930);
-    this.JIn.registerOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
+    this.LBQ.registerOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
     AppMethodBeat.o(152930);
   }
   
   public SharedPreferences.Editor remove(String paramString)
   {
     AppMethodBeat.i(152938);
-    paramString = this.JIn.remove(paramString);
+    paramString = this.LBQ.remove(paramString);
     AppMethodBeat.o(152938);
     return paramString;
   }
@@ -193,7 +193,7 @@ public class c
   public void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
   {
     AppMethodBeat.i(152931);
-    this.JIn.unregisterOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
+    this.LBQ.unregisterOnSharedPreferenceChangeListener(paramOnSharedPreferenceChangeListener);
     AppMethodBeat.o(152931);
   }
 }

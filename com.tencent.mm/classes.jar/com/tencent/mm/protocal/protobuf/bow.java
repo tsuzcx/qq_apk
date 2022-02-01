@@ -3,45 +3,55 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bow
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public double latitude;
-  public double longitude;
-  public String nYj;
+  public float GJE;
+  public float GJF;
+  public float GJG;
+  public String GJH;
+  public String Label;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(93333);
+    AppMethodBeat.i(32326);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, this.latitude);
-      paramVarArgs.e(2, this.longitude);
-      if (this.nYj != null) {
-        paramVarArgs.d(3, this.nYj);
+      paramVarArgs.z(1, this.GJE);
+      paramVarArgs.z(2, this.GJF);
+      paramVarArgs.z(3, this.GJG);
+      if (this.Label != null) {
+        paramVarArgs.d(4, this.Label);
       }
-      AppMethodBeat.o(93333);
+      if (this.GJH != null) {
+        paramVarArgs.d(5, this.GJH);
+      }
+      AppMethodBeat.o(32326);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.fK(1) + 8 + 0 + (f.a.a.b.b.a.fK(2) + 8);
+      int i = f.a.a.b.b.a.alU(1) + 0 + f.a.a.b.b.a.alU(2) + f.a.a.b.b.a.alU(3);
       paramInt = i;
-      if (this.nYj != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.nYj);
+      if (this.Label != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Label);
       }
-      AppMethodBeat.o(93333);
-      return paramInt;
+      i = paramInt;
+      if (this.GJH != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.GJH);
+      }
+      AppMethodBeat.o(32326);
+      return i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(93333);
+      AppMethodBeat.o(32326);
       return 0;
     }
     if (paramInt == 3)
@@ -51,22 +61,30 @@ public final class bow
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(93333);
+        AppMethodBeat.o(32326);
         return -1;
       case 1: 
-        localbow.latitude = Double.longBitsToDouble(locala.LVo.gab());
-        AppMethodBeat.o(93333);
+        localbow.GJE = Float.intBitsToFloat(locala.NPN.grz());
+        AppMethodBeat.o(32326);
         return 0;
       case 2: 
-        localbow.longitude = Double.longBitsToDouble(locala.LVo.gab());
-        AppMethodBeat.o(93333);
+        localbow.GJF = Float.intBitsToFloat(locala.NPN.grz());
+        AppMethodBeat.o(32326);
+        return 0;
+      case 3: 
+        localbow.GJG = Float.intBitsToFloat(locala.NPN.grz());
+        AppMethodBeat.o(32326);
+        return 0;
+      case 4: 
+        localbow.Label = locala.NPN.readString();
+        AppMethodBeat.o(32326);
         return 0;
       }
-      localbow.nYj = locala.LVo.readString();
-      AppMethodBeat.o(93333);
+      localbow.GJH = locala.NPN.readString();
+      AppMethodBeat.o(32326);
       return 0;
     }
-    AppMethodBeat.o(93333);
+    AppMethodBeat.o(32326);
     return -1;
   }
 }

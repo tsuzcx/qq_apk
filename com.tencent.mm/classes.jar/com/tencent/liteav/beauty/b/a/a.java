@@ -204,7 +204,13 @@ public class a
   public void f(int paramInt)
   {
     AppMethodBeat.i(14987);
-    this.D = (0.7F + paramInt / 12.0F);
+    float f = 0.7F + paramInt / 12.0F;
+    if (Math.abs(this.D - f) < 0.001D)
+    {
+      AppMethodBeat.o(14987);
+      return;
+    }
+    this.D = f;
     TXCLog.i(this.x, "set mSharpenLevel ".concat(String.valueOf(paramInt)));
     if (this.v != null) {
       this.v.a(this.D);

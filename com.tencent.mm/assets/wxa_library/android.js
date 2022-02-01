@@ -70,8 +70,8 @@ var WeixinJSCoreAndroid = (function(global) {
 
 // 直接注入的JsApi不支持多态，需要手动处理
 if (typeof WeixinWorker !== 'undefined') {
-    let createWorker = WeixinWorker.create;
-    let createWithParams = WeixinWorker.createWithParams;
+    var createWorker = WeixinWorker.create;
+    var createWithParams = WeixinWorker.createWithParams;
     if (createWorker && createWithParams) {
         WeixinWorker.create = function(path, params) {
             if (!params) {

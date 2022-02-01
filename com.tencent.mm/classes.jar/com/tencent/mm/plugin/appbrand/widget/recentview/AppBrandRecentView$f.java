@@ -7,9 +7,9 @@ public enum AppBrandRecentView$f
   static
   {
     AppMethodBeat.i(153240);
-    mMx = new f("RECENT_APP_BRAND", 0);
-    mMy = new f("MY_APP_BRAND", 1);
-    mMz = new f[] { mMx, mMy };
+    nmT = new f("RECENT_APP_BRAND", 0);
+    nmU = new f("MY_APP_BRAND", 1);
+    nmV = new f[] { nmT, nmU };
     AppMethodBeat.o(153240);
   }
   
@@ -17,7 +17,7 @@ public enum AppBrandRecentView$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView.f
  * JD-Core Version:    0.7.0.1
  */

@@ -26,9 +26,9 @@ public class AppCompatTextView
   extends TextView
   implements s, b
 {
-  private final e ahY = new e(this);
-  private final l ahZ;
-  private Future<c> ajr;
+  private final e ajP = new e(this);
+  private final l ajQ;
+  private Future<c> ali;
   
   public AppCompatTextView(Context paramContext)
   {
@@ -43,19 +43,19 @@ public class AppCompatTextView
   public AppCompatTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(aw.ac(paramContext), paramAttributeSet, paramInt);
-    this.ahY.a(paramAttributeSet, paramInt);
-    this.ahZ = new l(this);
-    this.ahZ.a(paramAttributeSet, paramInt);
-    this.ahZ.iP();
+    this.ajP.a(paramAttributeSet, paramInt);
+    this.ajQ = new l(this);
+    this.ajQ.a(paramAttributeSet, paramInt);
+    this.ajQ.jf();
   }
   
-  private void iR()
+  private void jh()
   {
-    if (this.ajr != null) {}
+    if (this.ali != null) {}
     try
     {
-      Future localFuture = this.ajr;
-      this.ajr = null;
+      Future localFuture = this.ali;
+      this.ali = null;
       q.a(this, (c)localFuture.get());
       return;
     }
@@ -65,69 +65,69 @@ public class AppCompatTextView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ahY != null) {
-      this.ahY.iH();
+    if (this.ajP != null) {
+      this.ajP.iX();
     }
-    if (this.ahZ != null) {
-      this.ahZ.iP();
+    if (this.ajQ != null) {
+      this.ajQ.jf();
     }
   }
   
   public int getAutoSizeMaxTextSize()
   {
-    if (QA) {
+    if (Sp) {
       return super.getAutoSizeMaxTextSize();
     }
-    if (this.ahZ != null) {
-      return Math.round(this.ahZ.ajm.ajy);
+    if (this.ajQ != null) {
+      return Math.round(this.ajQ.ald.alp);
     }
     return -1;
   }
   
   public int getAutoSizeMinTextSize()
   {
-    if (QA) {
+    if (Sp) {
       return super.getAutoSizeMinTextSize();
     }
-    if (this.ahZ != null) {
-      return Math.round(this.ahZ.ajm.ajx);
+    if (this.ajQ != null) {
+      return Math.round(this.ajQ.ald.alo);
     }
     return -1;
   }
   
   public int getAutoSizeStepGranularity()
   {
-    if (QA) {
+    if (Sp) {
       return super.getAutoSizeStepGranularity();
     }
-    if (this.ahZ != null) {
-      return Math.round(this.ahZ.ajm.ajw);
+    if (this.ajQ != null) {
+      return Math.round(this.ajQ.ald.aln);
     }
     return -1;
   }
   
   public int[] getAutoSizeTextAvailableSizes()
   {
-    if (QA) {
+    if (Sp) {
       return super.getAutoSizeTextAvailableSizes();
     }
-    if (this.ahZ != null) {
-      return this.ahZ.ajm.ajz;
+    if (this.ajQ != null) {
+      return this.ajQ.ald.alq;
     }
     return new int[0];
   }
   
   public int getAutoSizeTextType()
   {
-    if (QA)
+    if (Sp)
     {
       if (super.getAutoSizeTextType() == 1) {
         return 1;
       }
       return 0;
     }
-    if (this.ahZ != null) {
-      return this.ahZ.ajm.aju;
+    if (this.ajQ != null) {
+      return this.ajQ.ald.all;
     }
     return 0;
   }
@@ -144,23 +144,23 @@ public class AppCompatTextView
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ahY != null) {
-      return this.ahY.getSupportBackgroundTintList();
+    if (this.ajP != null) {
+      return this.ajP.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ahY != null) {
-      return this.ahY.getSupportBackgroundTintMode();
+    if (this.ajP != null) {
+      return this.ajP.getSupportBackgroundTintMode();
     }
     return null;
   }
   
   public CharSequence getText()
   {
-    iR();
+    jh();
     return super.getText();
   }
   
@@ -177,71 +177,71 @@ public class AppCompatTextView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.ahZ != null) {
-      this.ahZ.iQ();
+    if (this.ajQ != null) {
+      this.ajQ.jg();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    iR();
+    jh();
     super.onMeasure(paramInt1, paramInt2);
   }
   
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if ((this.ahZ != null) && (!QA) && (this.ahZ.ajm.iW())) {
-      this.ahZ.ajm.iU();
+    if ((this.ajQ != null) && (!Sp) && (this.ajQ.ald.jm())) {
+      this.ajQ.ald.jk();
     }
   }
   
   public void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QA) {
+    if (Sp) {
       super.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    while (this.ahZ == null) {
+    while (this.ajQ == null) {
       return;
     }
-    this.ahZ.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.ajQ.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
-    if (QA) {
+    if (Sp) {
       super.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
     }
-    while (this.ahZ == null) {
+    while (this.ajQ == null) {
       return;
     }
-    this.ahZ.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    this.ajQ.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
   }
   
   public void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    if (QA) {
+    if (Sp) {
       super.setAutoSizeTextTypeWithDefaults(paramInt);
     }
-    while (this.ahZ == null) {
+    while (this.ajQ == null) {
       return;
     }
-    this.ahZ.setAutoSizeTextTypeWithDefaults(paramInt);
+    this.ajQ.setAutoSizeTextTypeWithDefaults(paramInt);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.ahY != null) {
-      this.ahY.iG();
+    if (this.ajP != null) {
+      this.ajP.iW();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.ahY != null) {
-      this.ahY.bG(paramInt);
+    if (this.ajP != null) {
+      this.ajP.bG(paramInt);
     }
   }
   
@@ -282,29 +282,29 @@ public class AppCompatTextView
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ahY != null) {
-      this.ahY.setSupportBackgroundTintList(paramColorStateList);
+    if (this.ajP != null) {
+      this.ajP.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ahY != null) {
-      this.ahY.setSupportBackgroundTintMode(paramMode);
+    if (this.ajP != null) {
+      this.ajP.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.ahZ != null) {
-      this.ahZ.u(paramContext, paramInt);
+    if (this.ajQ != null) {
+      this.ajQ.u(paramContext, paramInt);
     }
   }
   
   public void setTextFuture(Future<c> paramFuture)
   {
-    this.ajr = paramFuture;
+    this.ali = paramFuture;
     requestLayout();
   }
   
@@ -314,7 +314,7 @@ public class AppCompatTextView
     int i;
     if (Build.VERSION.SDK_INT >= 18)
     {
-      localTextDirectionHeuristic = parama.Mi;
+      localTextDirectionHeuristic = parama.Oa;
       if ((localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_RTL) || (localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR)) {
         break label163;
       }
@@ -330,8 +330,8 @@ public class AppCompatTextView
       if (Build.VERSION.SDK_INT >= 23) {
         break;
       }
-      float f = parama.Mh.getTextScaleX();
-      getPaint().set(parama.Mh);
+      float f = parama.NZ.getTextScaleX();
+      getPaint().set(parama.NZ);
       if (f == getTextScaleX()) {
         setTextScaleX(f / 2.0F + 1.0F);
       }
@@ -352,20 +352,20 @@ public class AppCompatTextView
         i = 1;
       }
     }
-    getPaint().set(parama.Mh);
-    setBreakStrategy(parama.Mj);
-    setHyphenationFrequency(parama.Mk);
+    getPaint().set(parama.NZ);
+    setBreakStrategy(parama.Ob);
+    setHyphenationFrequency(parama.Oc);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    if (QA) {
+    if (Sp) {
       super.setTextSize(paramInt, paramFloat);
     }
-    while (this.ahZ == null) {
+    while (this.ajQ == null) {
       return;
     }
-    this.ahZ.setTextSize(paramInt, paramFloat);
+    this.ajQ.setTextSize(paramInt, paramFloat);
   }
 }
 

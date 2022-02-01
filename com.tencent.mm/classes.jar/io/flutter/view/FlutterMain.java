@@ -28,7 +28,7 @@ public class FlutterMain
       AppMethodBeat.o(9742);
       return;
     }
-    a.fNr().ensureInitializationComplete(paramContext, paramArrayOfString);
+    a.geQ().ensureInitializationComplete(paramContext, paramArrayOfString);
     AppMethodBeat.o(9742);
   }
   
@@ -40,46 +40,50 @@ public class FlutterMain
       AppMethodBeat.o(9743);
       return;
     }
-    a locala = a.fNr();
+    a locala = a.geQ();
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramContext = new IllegalStateException("ensureInitializationComplete must be called on the main thread");
       AppMethodBeat.o(9743);
       throw paramContext;
     }
-    if (locala.KMt == null)
+    if (locala.MDq == null)
     {
       paramContext = new IllegalStateException("ensureInitializationComplete must be called after startInitialization");
       AppMethodBeat.o(9743);
       throw paramContext;
     }
-    if (!locala.KMr) {
-      new Thread(new a.1(locala, paramContext, paramArrayOfString, paramHandler, paramRunnable)).start();
+    if (locala.MDo)
+    {
+      paramHandler.post(paramRunnable);
+      AppMethodBeat.o(9743);
+      return;
     }
+    new Thread(new a.1(locala, paramContext, paramArrayOfString, paramHandler, paramRunnable)).start();
     AppMethodBeat.o(9743);
   }
   
   public static String findAppBundlePath()
   {
-    AppMethodBeat.i(192795);
-    String str = a.fNr().KMp;
-    AppMethodBeat.o(192795);
+    AppMethodBeat.i(213242);
+    String str = a.geQ().MDm;
+    AppMethodBeat.o(213242);
     return str;
   }
   
   @Deprecated
   public static String findAppBundlePath(Context paramContext)
   {
-    AppMethodBeat.i(192796);
-    paramContext = a.fNr().KMp;
-    AppMethodBeat.o(192796);
+    AppMethodBeat.i(213243);
+    paramContext = a.geQ().MDm;
+    AppMethodBeat.o(213243);
     return paramContext;
   }
   
   public static String getLookupKeyForAsset(String paramString)
   {
     AppMethodBeat.i(9747);
-    paramString = a.fNr().getLookupKeyForAsset(paramString);
+    paramString = a.geQ().getLookupKeyForAsset(paramString);
     AppMethodBeat.o(9747);
     return paramString;
   }
@@ -87,7 +91,7 @@ public class FlutterMain
   public static String getLookupKeyForAsset(String paramString1, String paramString2)
   {
     AppMethodBeat.i(9748);
-    paramString1 = a.fNr().getLookupKeyForAsset("packages" + File.separator + paramString2 + File.separator + paramString1);
+    paramString1 = a.geQ().getLookupKeyForAsset("packages" + File.separator + paramString2 + File.separator + paramString1);
     AppMethodBeat.o(9748);
     return paramString1;
   }
@@ -106,7 +110,7 @@ public class FlutterMain
       AppMethodBeat.o(9740);
       return;
     }
-    a.fNr().startInitialization(paramContext);
+    a.geQ().startInitialization(paramContext);
     AppMethodBeat.o(9740);
   }
   
@@ -119,14 +123,14 @@ public class FlutterMain
       return;
     }
     a.a locala = new a.a();
-    locala.kSu = parama.kSu;
-    a.fNr().a(paramContext, locala);
+    locala.loX = parama.loX;
+    a.geQ().a(paramContext, locala);
     AppMethodBeat.o(9741);
   }
   
   public static final class a
   {
-    String kSu;
+    String loX;
   }
 }
 

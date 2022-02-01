@@ -7,10 +7,10 @@ public enum BaseToyUI$a
   static
   {
     AppMethodBeat.i(159984);
-    KtI = new a("CHANGE", 0);
-    KtJ = new a("INSERT", 1);
-    KtK = new a("REMOVE", 2);
-    KtL = new a[] { KtI, KtJ, KtK };
+    MjJ = new a("CHANGE", 0);
+    MjK = new a("INSERT", 1);
+    MjL = new a("REMOVE", 2);
+    MjM = new a[] { MjJ, MjK, MjL };
     AppMethodBeat.o(159984);
   }
   

@@ -3,42 +3,417 @@ package com.tencent.mm.plugin.expt.hellhound.a.c;
 import android.os.Process;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.a.d.c;
-import com.tencent.mm.plugin.expt.a.e.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.apx;
+import com.tencent.mm.plugin.expt.b.d.c;
+import com.tencent.mm.plugin.expt.b.e.a;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.protocal.protobuf.atr;
 import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.dhz;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dno;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
-  private static volatile c qpq;
-  public a qpo;
-  public d.c qpp;
-  private boolean qpr;
-  private boolean qps;
-  private boolean qpt;
+  private static volatile c qYp;
+  public final a qYn;
+  public d.c qYo;
+  private boolean qYq;
+  private boolean qYr;
+  private boolean qYs;
   
   private c()
   {
     AppMethodBeat.i(122032);
-    this.qpr = false;
-    this.qps = false;
-    this.qpt = true;
-    this.qpo = new a();
+    this.qYq = false;
+    this.qYr = false;
+    this.qYs = true;
+    this.qYn = new a();
     AppMethodBeat.o(122032);
   }
   
-  private boolean aaD(String paramString)
+  public static void a(int paramInt1, String paramString, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(210436);
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.cnt()) || (!com.tencent.mm.plugin.expt.hellhound.a.cnu()))
+    {
+      ad.e("HABBYGE-MALI.HellFrontBackMonitor", "HellFrontBackMonitor monitor close !!!");
+      AppMethodBeat.o(210436);
+      return;
+    }
+    ad.i("HABBYGE-MALI.HellFrontBackMonitor", "HellFrontBackMonitor monitor start !!!");
+    Object localObject3 = cpn();
+    label128:
+    label190:
+    boolean bool1;
+    label288:
+    label373:
+    Object localObject4;
+    Object localObject2;
+    switch (paramInt1)
+    {
+    default: 
+      AppMethodBeat.o(210436);
+      return;
+    case 100: 
+    case 101: 
+    case 102: 
+    case 103: 
+      if (!TextUtils.isEmpty(paramString)) {}
+      switch (paramInt1)
+      {
+      default: 
+        AppMethodBeat.o(210436);
+        return;
+      case 100: 
+        if (!TextUtils.isEmpty(paramString))
+        {
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeBack2Front: %s, %s", new Object[] { paramString, Integer.valueOf(paramInt2) });
+          if ((!com.tencent.mm.plugin.expt.hellhound.a.e.a.cpz()) || (com.tencent.mm.plugin.expt.hellhound.a.e.a.cpx() == -1)) {
+            break label288;
+          }
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "HellFrontToBackMonitor, judgeBack2Front, requestPermission !!");
+          com.tencent.mm.plugin.expt.hellhound.a.e.a.cpy();
+          com.tencent.mm.plugin.expt.hellhound.a.e.a.lb(false);
+        }
+        for (;;)
+        {
+          localObject3 = a.cpm();
+          Object localObject1 = localObject3;
+          if (localObject3 == null) {
+            localObject1 = new atr();
+          }
+          if (com.tencent.mm.plugin.expt.hellhound.core.b.cnC()) {
+            ((atr)localObject1).GrH = Process.myPid();
+          }
+          ((atr)localObject1).GrI = paramString;
+          ((atr)localObject1).aHQ = paramInt2;
+          ((atr)localObject1).GrG = System.currentTimeMillis();
+          ad.d("HABBYGE-MALI.FrontBackDao", "setLastMMProcessParamsOnResume: %s, %d", new Object[] { ((atr)localObject1).GrI, Integer.valueOf(((atr)localObject1).inh) });
+          a.a((atr)localObject1);
+          AppMethodBeat.o(210436);
+          return;
+          if (((c)localObject3).aer(paramString))
+          {
+            ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeBack2Front: _launchWx TRUE");
+            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.CS(7);
+            a.Di(7);
+            ((c)localObject3).t(paramString, paramInt2, paramLong);
+          }
+          else
+          {
+            ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeBack2Front: _launchWx FALSE");
+            try
+            {
+              bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cod().qRB.adX(paramString);
+              ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_doIsBackToFront isStartActivity: %b", new Object[] { Boolean.valueOf(bool1) });
+              if (!bool1) {
+                break;
+              }
+              paramInt1 = 0;
+            }
+            catch (Exception localException)
+            {
+              ad.printErrStackTrace("HABBYGE-MALI.HellFrontBackMonitor", localException, "backToFront crash", new Object[0]);
+              g.yhR.idkeyStat(932L, 44L, 1L, false);
+            }
+            if (paramInt1 == 0) {
+              break label769;
+            }
+            ad.i("HABBYGE-MALI.HellFrontBackMonitor", "backToFront: isFrontToBackOfLastAction: YES");
+            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.CS(7);
+            a.Di(7);
+            ((c)localObject3).t(paramString, paramInt2, paramLong);
+          }
+        }
+        bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cod().qRB.cnZ();
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_doIsBackToFront isFinish: %b", new Object[] { Boolean.valueOf(bool1) });
+        if (bool1)
+        {
+          paramInt1 = 0;
+        }
+        else
+        {
+          if (!TextUtils.isEmpty(paramString))
+          {
+            com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnR();
+            localObject4 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnU();
+            if (localObject4 != null)
+            {
+              localObject2 = (String)((com.tencent.mm.vending.j.b)localObject4).get(0);
+              localObject4 = (Integer)((com.tencent.mm.vending.j.c)localObject4).get(1);
+              if (localObject4 == null) {}
+              for (paramInt1 = -1;; paramInt1 = ((Integer)localObject4).intValue())
+              {
+                localObject4 = Integer.valueOf(paramInt1);
+                ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_doIsBackToFront resume: %s, %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt2), localObject2, localObject4 });
+                if (!paramString.equals(localObject2)) {
+                  break label1771;
+                }
+                if (paramInt2 == ((Integer)localObject4).intValue()) {
+                  break;
+                }
+                break label1771;
+              }
+            }
+          }
+          if (com.tencent.mm.plugin.expt.hellhound.core.b.adB(paramString))
+          {
+            ad.e("HABBYGE-MALI.HellFrontBackMonitor", "_doIsBackToFront 7事件，过滤小程序");
+            paramInt1 = 0;
+          }
+          else
+          {
+            ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_doIsBackToFront ret: true");
+            paramInt1 = 1;
+            break label1762;
+            label628:
+            localObject2 = a.cpm();
+            if ((localObject2 == null) || (((atr)localObject2).GrF != 8)) {
+              break label1781;
+            }
+          }
+        }
+        break;
+      }
+      break;
+    }
+    label769:
+    label974:
+    label1757:
+    label1762:
+    label1771:
+    label1774:
+    label1776:
+    label1781:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if (paramInt1 != 0)
+      {
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFrontToBackAction.lastAction: true");
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.adF(paramString))
+        {
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_isBackToFront 过滤掉第三方App进入微信的场景: %s", new Object[] { paramString });
+          break label1776;
+        }
+        ((c)localObject3).qYr = true;
+        paramInt1 = 1;
+        break label373;
+      }
+      com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnR();
+      localObject4 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnU();
+      localObject2 = null;
+      if (localObject4 != null) {
+        localObject2 = (String)((com.tencent.mm.vending.j.b)localObject4).get(0);
+      }
+      if ((!TextUtils.isEmpty(paramString)) && (TextUtils.isEmpty((CharSequence)localObject2)))
+      {
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "HellFrontBackMonitor _isBackToFront: crash路径 !!!");
+        g.yhR.idkeyStat(932L, 98L, 1L, false);
+        paramInt1 = 1;
+        break label373;
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "backToFront: isFrontToBackOfLastAction: FALSE");
+        break label190;
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "frontBack ACTION_PAUSE: %s", new Object[] { paramString });
+        boolean bool2 = false;
+        com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnR();
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cnW();
+        bool1 = bool2;
+        if (localObject2 != null)
+        {
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnPause topActivity: %s, %s", new Object[] { ((bj)localObject2).Fti.activityName, Integer.valueOf(((bj)localObject2).Fti.aHQ) });
+          if (((bj)localObject2).Fti.activityName.startsWith("com.tencent.mm")) {
+            break label974;
+          }
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnPause 栈顶非微信页面: %s", new Object[] { ((bj)localObject2).Fti.activityName });
+          bool1 = true;
+        }
+        for (;;)
+        {
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnPause: is8Event: %b", new Object[] { Boolean.valueOf(bool1) });
+          if (bool1) {
+            break label1068;
+          }
+          bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cod().qRB.coa();
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnPause.startActivity: %b, %s", new Object[] { Boolean.valueOf(bool1), paramString });
+          if (!bool1) {
+            break;
+          }
+          ((c)localObject3).qYs = false;
+          AppMethodBeat.o(210436);
+          return;
+          bool1 = bool2;
+          if ("com.tencent.mm.ui.transmit.SendAppMessageWrapperUI".equals(((bj)localObject2).Fti.activityName))
+          {
+            bool1 = bool2;
+            if ("com.tencent.mm.plugin.sns.ui.SnsUploadUI".equals(paramString)) {
+              bool1 = true;
+            }
+          }
+        }
+        bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cod().qRB.adY(paramString);
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnPause.finish: %b, %s", new Object[] { Boolean.valueOf(bool1), paramString });
+        if (bool1)
+        {
+          ((c)localObject3).qYs = false;
+          AppMethodBeat.o(210436);
+          return;
+        }
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.CT(104);
+        localObject4 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.CT(105);
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFrontToBackOnPause: %s, %s", new Object[] { localObject2, localObject4 });
+        if ((com.tencent.mm.plugin.expt.hellhound.core.b.adu((String)localObject2)) && (com.tencent.mm.plugin.expt.hellhound.core.b.ads((String)localObject4)))
+        {
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFrontToBackOnPause, SelectContactUI NOT 8-Event !!");
+          AppMethodBeat.o(210436);
+          return;
+        }
+        if ((com.tencent.mm.plugin.expt.hellhound.core.b.adt((String)localObject2)) || (com.tencent.mm.plugin.expt.hellhound.core.b.adu((String)localObject4)))
+        {
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFrontToBackOnPause, GroupCardSelectUI NOT 8-Event !!");
+          AppMethodBeat.o(210436);
+          return;
+        }
+        if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ads(paramString)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.adK((String)localObject2)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ads((String)localObject4)))
+        {
+          if (com.tencent.mm.plugin.expt.hellhound.a.e.a.cpx() != -1)
+          {
+            com.tencent.mm.plugin.expt.hellhound.a.e.a.lb(true);
+            ad.i("HABBYGE-MALI.HellFrontBackMonitor", "HellFrontToBackMonitor, judgeFrontToBackOnPause, requestPermission !!");
+            AppMethodBeat.o(210436);
+            return;
+          }
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnPause front2back YES: %s", new Object[] { paramString });
+          com.tencent.mm.plugin.expt.hellhound.core.b.a.a.CS(8);
+          a.Di(8);
+          ((c)localObject3).qYs = true;
+          ((c)localObject3).u(paramString, paramInt2, paramLong);
+        }
+        AppMethodBeat.o(210436);
+        return;
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "frontBack ACTION_STOP: %s", new Object[] { paramString });
+        if (TextUtils.isEmpty(paramString))
+        {
+          ad.e("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnStop == null");
+          AppMethodBeat.o(210436);
+          return;
+        }
+        if (((c)localObject3).qYs)
+        {
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnStop isFront2Back-1: true");
+          AppMethodBeat.o(210436);
+          return;
+        }
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnStop stopActivityName: %s", new Object[] { paramString });
+        try
+        {
+          localObject2 = de(paramString, paramInt2);
+          if ((localObject2 == null) || (!((Boolean)((com.tencent.mm.vending.j.d)localObject2).get(2)).booleanValue()))
+          {
+            ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnStop: false");
+            AppMethodBeat.o(210436);
+            return;
+          }
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnStop, 7-event: %s, TRUE", new Object[] { (String)((com.tencent.mm.vending.j.b)localObject2).get(0) });
+          com.tencent.mm.plugin.expt.hellhound.core.b.a.a.CS(8);
+          a.Di(8);
+          ((c)localObject3).u(paramString, paramInt2, paramLong);
+          AppMethodBeat.o(210436);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          ad.printErrStackTrace("HABBYGE-MALI.HellFrontBackMonitor", paramString, "judgeFront2BackOnStop crash", new Object[0]);
+          g.yhR.idkeyStat(932L, 42L, 1L, false);
+          AppMethodBeat.o(210436);
+          return;
+        }
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "frontBack ACTION_FINISH: %s", new Object[] { paramString });
+        com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnR();
+        if (paramString == null) {}
+        for (;;)
+        {
+          try
+          {
+            ad.e("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnFinish: aName == null");
+            localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnT();
+            if (localObject2 != null)
+            {
+              paramString = (String)((com.tencent.mm.vending.j.b)localObject2).get(0);
+              ((Integer)((com.tencent.mm.vending.j.c)localObject2).get(1)).intValue();
+            }
+            paramInt1 = 0;
+            ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnFinish activity==null: %s", new Object[] { paramString });
+            if ((paramInt1 != 0) && (com.tencent.mm.plugin.expt.hellhound.core.b.ads(paramString)))
+            {
+              ad.i("HABBYGE-MALI.HellFrontBackMonitor", "shutdown && isLauncherUI");
+              localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnU();
+              if (localObject2 == null) {
+                break label1757;
+              }
+              localObject2 = (String)((com.tencent.mm.vending.j.b)localObject2).get(0);
+              ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_quiteActivity.pause = %s", new Object[] { localObject2 });
+              if (!"com.tencent.mm.plugin.setting.ui.setting.SettingsUI".equals(localObject2)) {
+                break label1757;
+              }
+              paramInt1 = 1;
+              if (paramInt1 != 0)
+              {
+                a.Di(8);
+                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.CS(8);
+                ((c)localObject3).u(paramString, paramInt2, paramLong);
+              }
+            }
+            AppMethodBeat.o(210436);
+            return;
+          }
+          catch (Exception paramString)
+          {
+            ad.printErrStackTrace("HABBYGE-MALI.HellFrontBackMonitor", paramString, "judgeFront2BackOnFinish", new Object[0]);
+            g.yhR.idkeyStat(932L, 40L, 1L, false);
+          }
+          paramInt1 = 1;
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "judgeFront2BackOnFinish: %s", new Object[] { paramString });
+          continue;
+          break label128;
+          if (!com.tencent.mm.plugin.expt.hellhound.core.b.cnC()) {
+            break;
+          }
+          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().CR(600);
+          AppMethodBeat.o(210436);
+          return;
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "HellFrontBackMonitor, ACTION_add7Event_login");
+          d.a("login", e.a.qPh, 1, paramLong);
+          AppMethodBeat.o(210436);
+          return;
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "HellFrontBackMonitor, ACTION_add8Event_logout");
+          d.a("logout", e.a.qPi, -1, paramLong);
+          break;
+          paramInt1 = 0;
+        }
+        for (;;)
+        {
+          if (paramInt1 == 0) {
+            break label1774;
+          }
+          paramInt1 = 1;
+          break;
+          paramInt1 = 0;
+        }
+        break label628;
+      }
+      paramInt1 = 0;
+      break label373;
+    }
+  }
+  
+  private boolean aer(String paramString)
   {
     AppMethodBeat.i(122034);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnR();
     try
     {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciU();
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnU();
       if (localObject == null) {
-        break label97;
+        break label102;
       }
       localObject = (String)((com.tencent.mm.vending.j.b)localObject).get(0);
     }
@@ -48,110 +423,109 @@ public final class c
       for (;;)
       {
         Object localObject;
-        h.wUl.idkeyStat(932L, 45L, 1L, false);
+        g.yhR.idkeyStat(932L, 45L, 1L, false);
         localCharSequence = null;
       }
-      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZI(paramString)) || (!TextUtils.isEmpty(localCharSequence))) {
-        break label130;
+      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.adv(paramString)) || (!TextUtils.isEmpty(localCharSequence))) {
+        break label137;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 1");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 1");
       AppMethodBeat.o(122034);
       return true;
-      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZI(paramString)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ZJ(localCharSequence))) {
-        break label158;
+      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.adv(paramString)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.adw(localCharSequence))) {
+        break label167;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 splash hook restart ~");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 splash hook restart ~");
       AppMethodBeat.o(122034);
       return true;
-      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZF(paramString)) || (!TextUtils.isEmpty(localCharSequence))) {
-        break label186;
+      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ads(paramString)) || (!TextUtils.isEmpty(localCharSequence))) {
+        break label197;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 2");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 2");
       AppMethodBeat.o(122034);
       return true;
-      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZI(localCharSequence)) || (com.tencent.mm.plugin.expt.hellhound.core.b.ZS(paramString)) || ("com.tencent.mm.plugin.base.stub.UIEntryStub".equals(paramString)) || ("com.tencent.mm.plugin.webview.ui.tools.SDKOAuthUI".equals(paramString))) {
-        break label232;
+      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.adv(localCharSequence)) || (com.tencent.mm.plugin.expt.hellhound.core.b.adF(paramString)) || ("com.tencent.mm.plugin.base.stub.UIEntryStub".equals(paramString)) || ("com.tencent.mm.plugin.webview.ui.tools.SDKOAuthUI".equals(paramString))) {
+        break label247;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 3");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 3");
       AppMethodBeat.o(122034);
       return true;
-      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZI(localCharSequence)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ZF(paramString))) {
-        break label265;
+      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.adv(localCharSequence)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ads(paramString))) {
+        break label282;
       }
-      this.qpr = true;
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 4");
+      this.qYq = true;
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 4");
       AppMethodBeat.o(122034);
       return true;
       if ((!"com.tencent.mm.ui.tools.ShareToTimeLineUI".equals(paramString)) || (localCharSequence != null)) {
-        break label292;
+        break label312;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx: frome outer jump to Timeline");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx: frome outer jump to Timeline");
       AppMethodBeat.o(122034);
       return true;
-      if ((!"com.tencent.mm.ui.tools.AddFavoriteUI".equals(paramString)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ZI(localCharSequence))) {
-        break label322;
+      if ((!"com.tencent.mm.ui.tools.AddFavoriteUI".equals(paramString)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.adv(localCharSequence))) {
+        break label345;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx: from outer jump to 收藏");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx: from outer jump to 收藏");
       AppMethodBeat.o(122034);
       return true;
-      if (!aaE(paramString)) {
-        break label343;
+      if (!aes(paramString)) {
+        break label368;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 通过小程序桌面快捷方式");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 通过小程序桌面快捷方式");
       AppMethodBeat.o(122034);
       return true;
       if (!"com.tencent.mm.plugin.base.stub.UIEntryStub".equals(paramString)) {
-        break label366;
+        break label394;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 通过第三方拉起微信(第三方登录、分享好友、朋友圈)");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 通过第三方拉起微信(第三方登录、分享好友、朋友圈)");
       AppMethodBeat.o(122034);
       return true;
-      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZN(paramString)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ZF(localCharSequence))) {
-        break label399;
+      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.adA(paramString)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ads(localCharSequence))) {
+        break label428;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx 启动微信进程 之前登录过，登录页");
-      if (!this.qpr) {
-        break label406;
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx 启动微信进程 之前登录过，登录页");
+      if (!this.qYq) {
+        break label436;
       }
-      this.qpr = false;
+      this.qYq = false;
       AppMethodBeat.o(122034);
       return false;
     }
-    ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _launchWx resume/pause: %s, %s", new Object[] { paramString, localObject });
-    if (("com.tencent.mm.plugin.voip.ui.VideoActivity".equals(paramString)) && ((TextUtils.isEmpty((CharSequence)localObject)) || (com.tencent.mm.plugin.expt.hellhound.core.b.ZI((String)localObject))))
+    ad.i("HABBYGE-MALI.HellFrontBackMonitor", "_launchWx resume/pause: %s, %s", new Object[] { paramString, localObject });
+    if (("com.tencent.mm.plugin.voip.ui.VideoActivity".equals(paramString)) && ((TextUtils.isEmpty((CharSequence)localObject)) || (com.tencent.mm.plugin.expt.hellhound.core.b.adv((String)localObject))))
     {
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, VOIP start MM Process");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "VOIP start MM Process");
       AppMethodBeat.o(122034);
       return true;
     }
-    label97:
-    label232:
-    label366:
-    while (this.qps) {
-      this.qps = false;
+    label102:
+    label247:
+    while (this.qYr) {
+      this.qYr = false;
     }
-    label130:
-    label158:
-    label186:
-    label322:
-    label343:
+    label137:
+    label167:
+    label197:
+    label345:
+    label368:
     AppMethodBeat.o(122034);
-    label265:
-    label292:
+    label282:
+    label312:
     return true;
   }
   
-  private static boolean aaE(String paramString)
+  private static boolean aes(String paramString)
   {
     AppMethodBeat.i(122035);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
-    label73:
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnR();
+    label77:
     CharSequence localCharSequence;
     try
     {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciU();
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnU();
       if (localObject == null) {
-        break label73;
+        break label77;
       }
       localObject = (String)((com.tencent.mm.vending.j.b)localObject).get(0);
     }
@@ -160,424 +534,58 @@ public final class c
       for (;;)
       {
         Object localObject;
-        ac.printErrStackTrace("HellFrontBackMonitor", localException, "HABBYGE-MALI, isStartWxByLittlePragramShortcut", new Object[0]);
+        ad.printErrStackTrace("HABBYGE-MALI.HellFrontBackMonitor", localException, "isStartWxByLittlePragramShortcut", new Object[0]);
         localCharSequence = null;
         continue;
         i = 0;
       }
-      label83:
-      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZO(paramString)) || (!TextUtils.isEmpty(localCharSequence))) {
-        break label117;
+      label87:
+      if ((!com.tencent.mm.plugin.expt.hellhound.core.b.adB(paramString)) || (!TextUtils.isEmpty(localCharSequence))) {
+        break label123;
       }
-      label117:
+      label123:
       for (int i = 1; i != 0; i = 0)
       {
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isStartWxByLittlePragramShortcut case-2");
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isStartWxByLittlePragramShortcut case-2");
         AppMethodBeat.o(122035);
         return true;
       }
-      if (!com.tencent.mm.plugin.expt.hellhound.core.b.ZO(paramString)) {
-        break label156;
+      if (!com.tencent.mm.plugin.expt.hellhound.core.b.adB(paramString)) {
+        break label164;
       }
     }
-    if ((com.tencent.mm.plugin.expt.hellhound.core.b.ZO(paramString)) && (com.tencent.mm.plugin.expt.hellhound.core.b.ZR((String)localObject)))
+    if ((com.tencent.mm.plugin.expt.hellhound.core.b.adB(paramString)) && (com.tencent.mm.plugin.expt.hellhound.core.b.adE((String)localObject)))
     {
       i = 1;
       if (i == 0) {
-        break label83;
+        break label87;
       }
-      ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isStartWxByLittlePragramShortcut case-1");
+      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isStartWxByLittlePragramShortcut case-1");
       AppMethodBeat.o(122035);
       return true;
     }
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.ZI(localCharSequence)) {}
-    label156:
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.adv(localCharSequence)) {}
+    label164:
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isStartWxByLittlePragramShortcut case-3");
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isStartWxByLittlePragramShortcut case-3");
       }
       AppMethodBeat.o(122035);
       return bool;
     }
   }
   
-  public static void b(int paramInt, String paramString1, String paramString2, long paramLong)
-  {
-    AppMethodBeat.i(184359);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.ciw()) || (!com.tencent.mm.plugin.expt.hellhound.a.cix()))
-    {
-      ac.e("HellFrontBackMonitor", "HABBYGE-MALI, HellFrontBackMonitor monitor close !!!");
-      AppMethodBeat.o(184359);
-      return;
-    }
-    ac.i("HellFrontBackMonitor", "HABBYGE-MALI, HellFrontBackMonitor monitor start !!!");
-    Object localObject3 = cjZ();
-    label128:
-    label187:
-    boolean bool1;
-    label285:
-    label373:
-    Object localObject4;
-    Object localObject2;
-    switch (paramInt)
-    {
-    default: 
-      AppMethodBeat.o(184359);
-      return;
-    case 100: 
-    case 101: 
-    case 102: 
-    case 103: 
-      if (!TextUtils.isEmpty(paramString1)) {}
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(184359);
-        return;
-      case 100: 
-        if (!TextUtils.isEmpty(paramString1))
-        {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeBack2Front: %s, %s", new Object[] { paramString1, paramString2 });
-          if ((!com.tencent.mm.plugin.expt.hellhound.a.e.a.ckk()) || (com.tencent.mm.plugin.expt.hellhound.a.e.a.cki() == -1)) {
-            break label285;
-          }
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, HellFrontToBackMonitor, judgeBack2Front, requestPermission !!");
-          com.tencent.mm.plugin.expt.hellhound.a.e.a.ckj();
-          com.tencent.mm.plugin.expt.hellhound.a.e.a.kJ(false);
-        }
-        for (;;)
-        {
-          localObject3 = a.cjY();
-          Object localObject1 = localObject3;
-          if (localObject3 == null) {
-            localObject1 = new apx();
-          }
-          if (com.tencent.mm.plugin.expt.hellhound.core.b.ciE()) {
-            ((apx)localObject1).EIP = Process.myPid();
-          }
-          ((apx)localObject1).EIQ = paramString1;
-          ((apx)localObject1).EIR = paramString2;
-          ((apx)localObject1).EIO = System.currentTimeMillis();
-          ac.d("FrontBackDao", "habbyge-mali, setLastMMProcessParamsOnResume: %s, %d", new Object[] { ((apx)localObject1).EIQ, Integer.valueOf(((apx)localObject1).hTM) });
-          a.a((apx)localObject1);
-          AppMethodBeat.o(184359);
-          return;
-          if (((c)localObject3).aaD(paramString1))
-          {
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeBack2Front: _launchWx TRUE");
-            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Ch(7);
-            a.Cv(7);
-            ((c)localObject3).p(paramString1, paramString2, paramLong);
-          }
-          else
-          {
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeBack2Front: _launchWx FALSE");
-            try
-            {
-              bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cjd().qjB.aak(paramString1);
-              ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _doIsBackToFront isStartActivity: %b", new Object[] { Boolean.valueOf(bool1) });
-              if (!bool1) {
-                break;
-              }
-              paramInt = 0;
-            }
-            catch (Exception localException)
-            {
-              ac.printErrStackTrace("HellFrontBackMonitor", localException, "HABBYGE-MALI, backToFront crash", new Object[0]);
-              h.wUl.idkeyStat(932L, 44L, 1L, false);
-            }
-            if (paramInt == 0) {
-              break label748;
-            }
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, backToFront: isFrontToBackOfLastAction: YES");
-            com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Ch(7);
-            a.Cv(7);
-            ((c)localObject3).p(paramString1, paramString2, paramLong);
-          }
-        }
-        bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cjd().qjB.ciZ();
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _doIsBackToFront isFinish: %b", new Object[] { Boolean.valueOf(bool1) });
-        if (bool1)
-        {
-          paramInt = 0;
-        }
-        else
-        {
-          if (!TextUtils.isEmpty(paramString1))
-          {
-            com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
-            localObject4 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciU();
-            if (localObject4 != null)
-            {
-              localObject2 = (String)((com.tencent.mm.vending.j.b)localObject4).get(0);
-              localObject4 = (String)((com.tencent.mm.vending.j.c)localObject4).get(1);
-              ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _doIsBackToFront resume: %s, pause: %s, %s, %s", new Object[] { paramString1, paramString2, localObject2, localObject4 });
-              if ((!paramString1.equals(localObject2)) || (!paramString2.equals(localObject4))) {
-                break label1736;
-              }
-            }
-          }
-          if (com.tencent.mm.plugin.expt.hellhound.core.b.ZO(paramString1))
-          {
-            ac.e("HellFrontBackMonitor", "HABBYGE-MALI, _doIsBackToFront 7事件，过滤小程序");
-            paramInt = 0;
-          }
-          else
-          {
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _doIsBackToFront ret: true");
-            paramInt = 1;
-            break label1727;
-            label607:
-            localObject2 = a.cjY();
-            if ((localObject2 == null) || (((apx)localObject2).EIN != 8)) {
-              break label1746;
-            }
-          }
-        }
-        break;
-      }
-      break;
-    }
-    label950:
-    label1722:
-    label1727:
-    label1736:
-    label1739:
-    label1741:
-    label1746:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (paramInt != 0)
-      {
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFrontToBackAction.lastAction: true");
-        if (com.tencent.mm.plugin.expt.hellhound.core.b.ZS(paramString1))
-        {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _isBackToFront 过滤掉第三方App进入微信的场景: %s", new Object[] { paramString1 });
-          break label1741;
-        }
-        ((c)localObject3).qps = true;
-        paramInt = 1;
-        break label373;
-      }
-      com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
-      localObject4 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciU();
-      localObject2 = null;
-      if (localObject4 != null) {
-        localObject2 = (String)((com.tencent.mm.vending.j.b)localObject4).get(0);
-      }
-      if ((!TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty((CharSequence)localObject2)))
-      {
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, HellFrontBackMonitor _isBackToFront: crash路径 !!!");
-        h.wUl.idkeyStat(932L, 98L, 1L, false);
-        paramInt = 1;
-        break label373;
-        label748:
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, backToFront: isFrontToBackOfLastAction: FALSE");
-        break label187;
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, frontBack ACTION_PAUSE: %s", new Object[] { paramString1 });
-        boolean bool2 = false;
-        com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.e.ciW();
-        bool1 = bool2;
-        if (localObject2 != null)
-        {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnPause topActivity: %s, %s", new Object[] { ((bj)localObject2).DOc.activityName, ((bj)localObject2).DOc.EIR });
-          if (((bj)localObject2).DOc.activityName.startsWith("com.tencent.mm")) {
-            break label950;
-          }
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnPause 栈顶非微信页面: %s", new Object[] { ((bj)localObject2).DOc.activityName });
-          bool1 = true;
-        }
-        for (;;)
-        {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnPause: is8Event: %b", new Object[] { Boolean.valueOf(bool1) });
-          if (bool1) {
-            break label1044;
-          }
-          bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cjd().qjB.cja();
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnPause.startActivity: %b, %s", new Object[] { Boolean.valueOf(bool1), paramString1 });
-          if (!bool1) {
-            break;
-          }
-          ((c)localObject3).qpt = false;
-          AppMethodBeat.o(184359);
-          return;
-          bool1 = bool2;
-          if ("com.tencent.mm.ui.transmit.SendAppMessageWrapperUI".equals(((bj)localObject2).DOc.activityName))
-          {
-            bool1 = bool2;
-            if ("com.tencent.mm.plugin.sns.ui.SnsUploadUI".equals(paramString1)) {
-              bool1 = true;
-            }
-          }
-        }
-        bool1 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cjd().qjB.aal(paramString1);
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnPause.finish: %b, %s", new Object[] { Boolean.valueOf(bool1), paramString1 });
-        if (bool1)
-        {
-          ((c)localObject3).qpt = false;
-          AppMethodBeat.o(184359);
-          return;
-        }
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Ci(104);
-        localObject4 = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Ci(105);
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFrontToBackOnPause: %s, %s", new Object[] { localObject2, localObject4 });
-        if ((com.tencent.mm.plugin.expt.hellhound.core.b.ZH((String)localObject2)) && (com.tencent.mm.plugin.expt.hellhound.core.b.ZF((String)localObject4)))
-        {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFrontToBackOnPause, SelectContactUI NOT 8-Event !!");
-          AppMethodBeat.o(184359);
-          return;
-        }
-        if ((com.tencent.mm.plugin.expt.hellhound.core.b.ZG((String)localObject2)) || (com.tencent.mm.plugin.expt.hellhound.core.b.ZH((String)localObject4)))
-        {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFrontToBackOnPause, GroupCardSelectUI NOT 8-Event !!");
-          AppMethodBeat.o(184359);
-          return;
-        }
-        if ((!com.tencent.mm.plugin.expt.hellhound.core.b.ZF(paramString1)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ZX((String)localObject2)) || (!com.tencent.mm.plugin.expt.hellhound.core.b.ZF((String)localObject4)))
-        {
-          if (com.tencent.mm.plugin.expt.hellhound.a.e.a.cki() != -1)
-          {
-            com.tencent.mm.plugin.expt.hellhound.a.e.a.kJ(true);
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, HellFrontToBackMonitor, judgeFrontToBackOnPause, requestPermission !!");
-            AppMethodBeat.o(184359);
-            return;
-          }
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnPause front2back YES: %s", new Object[] { paramString1 });
-          com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Ch(8);
-          a.Cv(8);
-          ((c)localObject3).qpt = true;
-          ((c)localObject3).q(paramString1, paramString2, paramLong);
-        }
-        AppMethodBeat.o(184359);
-        return;
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, frontBack ACTION_STOP: %s", new Object[] { paramString1 });
-        if (TextUtils.isEmpty(paramString1))
-        {
-          ac.e("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnStop == null");
-          AppMethodBeat.o(184359);
-          return;
-        }
-        if (((c)localObject3).qpt)
-        {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnStop isFront2Back-1: true");
-          AppMethodBeat.o(184359);
-          return;
-        }
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnStop stopActivityName: %s", new Object[] { paramString1 });
-        try
-        {
-          localObject2 = fJ(paramString1, paramString2);
-          if ((localObject2 == null) || (!((Boolean)((com.tencent.mm.vending.j.d)localObject2).get(2)).booleanValue()))
-          {
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnStop: false");
-            AppMethodBeat.o(184359);
-            return;
-          }
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnStop, 7-event: %s, TRUE", new Object[] { (String)((com.tencent.mm.vending.j.b)localObject2).get(0) });
-          com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Ch(8);
-          a.Cv(8);
-          ((c)localObject3).q(paramString1, paramString2, paramLong);
-          AppMethodBeat.o(184359);
-          return;
-        }
-        catch (Exception paramString1)
-        {
-          ac.printErrStackTrace("HellFrontBackMonitor", paramString1, "HABBYGE-MALI, judgeFront2BackOnStop crash", new Object[0]);
-          h.wUl.idkeyStat(932L, 42L, 1L, false);
-          AppMethodBeat.o(184359);
-          return;
-        }
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, frontBack ACTION_FINISH: %s", new Object[] { paramString1 });
-        com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
-        if (paramString1 == null) {}
-        for (;;)
-        {
-          try
-          {
-            ac.e("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnFinish: aName == null");
-            localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciT();
-            if (localObject2 != null)
-            {
-              paramString1 = (String)((com.tencent.mm.vending.j.b)localObject2).get(0);
-              paramString2 = null;
-            }
-            paramInt = 0;
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnFinish activity==null: %s", new Object[] { paramString1 });
-            if ((paramInt != 0) && (com.tencent.mm.plugin.expt.hellhound.core.b.ZF(paramString1)))
-            {
-              ac.i("HellFrontBackMonitor", "HABBYGE-MALI, shutdown && isLauncherUI");
-              localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciU();
-              if (localObject2 == null) {
-                break label1722;
-              }
-              localObject2 = (String)((com.tencent.mm.vending.j.b)localObject2).get(0);
-              ac.i("HellFrontBackMonitor", "HABBYGE-MALI, _quiteActivity.pause = %s", new Object[] { localObject2 });
-              if (!"com.tencent.mm.plugin.setting.ui.setting.SettingsUI".equals(localObject2)) {
-                break label1722;
-              }
-              paramInt = 1;
-              if (paramInt != 0)
-              {
-                a.Cv(8);
-                com.tencent.mm.plugin.expt.hellhound.core.b.a.a.Ch(8);
-                ((c)localObject3).q(paramString1, paramString2, paramLong);
-              }
-            }
-            AppMethodBeat.o(184359);
-            return;
-          }
-          catch (Exception paramString1)
-          {
-            ac.printErrStackTrace("HellFrontBackMonitor", paramString1, "HABBYGE-MALI, judgeFront2BackOnFinish", new Object[0]);
-            h.wUl.idkeyStat(932L, 40L, 1L, false);
-          }
-          paramInt = 1;
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, judgeFront2BackOnFinish: %s", new Object[] { paramString1 });
-          continue;
-          break label128;
-          if (!com.tencent.mm.plugin.expt.hellhound.core.b.ciE()) {
-            break;
-          }
-          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().Cg(600);
-          AppMethodBeat.o(184359);
-          return;
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, HellFrontBackMonitor, ACTION_add7Event_login");
-          d.a("login", e.a.qiu, 1, paramLong);
-          AppMethodBeat.o(184359);
-          return;
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, HellFrontBackMonitor, ACTION_add8Event_logout");
-          d.a("logout", e.a.qiv, -1, paramLong);
-          break;
-          paramInt = 0;
-        }
-        for (;;)
-        {
-          if (paramInt == 0) {
-            break label1739;
-          }
-          paramInt = 1;
-          break;
-          paramInt = 0;
-        }
-        break label607;
-      }
-      paramInt = 0;
-      break label373;
-    }
-  }
-  
-  public static c cjZ()
+  public static c cpn()
   {
     AppMethodBeat.i(122031);
-    if (qpq == null) {}
+    if (qYp == null) {}
     try
     {
-      if (qpq == null) {
-        qpq = new c();
+      if (qYp == null) {
+        qYp = new c();
       }
-      c localc = qpq;
+      c localc = qYp;
       AppMethodBeat.o(122031);
       return localc;
     }
@@ -587,123 +595,128 @@ public final class c
     }
   }
   
-  private static com.tencent.mm.vending.j.d<String, String, Boolean> fJ(String paramString1, String paramString2)
+  private static com.tencent.mm.vending.j.d<String, Integer, Boolean> de(String paramString, int paramInt)
   {
-    AppMethodBeat.i(122036);
-    com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciR();
+    AppMethodBeat.i(210437);
+    com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnR();
     for (;;)
     {
       int i;
+      int j;
       boolean bool1;
       try
       {
-        Object localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciT();
-        com.tencent.mm.vending.j.c localc = com.tencent.mm.plugin.expt.hellhound.core.stack.d.ciU();
-        if ((paramString1 == null) || (localObject == null) || (localc == null))
+        Object localObject2 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnT();
+        Object localObject1 = com.tencent.mm.plugin.expt.hellhound.core.stack.d.cnU();
+        if ((paramString == null) || (localObject2 == null) || (localObject1 == null))
         {
-          ac.e("HellFrontBackMonitor", "HABBYGE-MALI, isFront2BackOnStop: illeagal Event");
-          AppMethodBeat.o(122036);
+          ad.e("HABBYGE-MALI.HellFrontBackMonitor", "isFront2BackOnStop: illeagal Event");
+          AppMethodBeat.o(210437);
           return null;
         }
-        String str = (String)((com.tencent.mm.vending.j.b)localObject).get(0);
-        if (com.tencent.mm.plugin.expt.hellhound.core.b.ZT(str))
+        String str = (String)((com.tencent.mm.vending.j.b)localObject2).get(0);
+        if (com.tencent.mm.plugin.expt.hellhound.core.b.adG(str))
         {
-          ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFakeSwitchAccountUI true");
-          AppMethodBeat.o(122036);
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFakeSwitchAccountUI true");
+          AppMethodBeat.o(210437);
           return null;
         }
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFront2BackOnStop: Resume: %s, Pause: %s, Stop: %s", new Object[] { localObject, localc, paramString1 });
-        if ((paramString2.equals(((com.tencent.mm.vending.j.c)localObject).get(1))) && (paramString2.equals(localc.get(1))))
+        ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFront2BackOnStop: Resume: %s, Pause: %s, Stop: %s", new Object[] { localObject2, localObject1, paramString });
+        localObject2 = (Integer)((com.tencent.mm.vending.j.c)localObject2).get(1);
+        Integer localInteger = (Integer)((com.tencent.mm.vending.j.c)localObject1).get(1);
+        if ((localObject2 != null) && (localInteger != null))
         {
-          i = 1;
-          if ((paramString1.equals(str)) && (paramString1.equals(localc.get(0))))
+          if ((paramInt == ((Integer)localObject2).intValue()) && (paramInt == localInteger.intValue()))
           {
-            j = 1;
-            break label436;
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFront2BackOnStop, case-1：%b", new Object[] { Boolean.valueOf(bool1) });
-            bool2 = bool1;
-            if (bool1)
+            i = 1;
+            if ((paramString.equals(str)) && (paramString.equals(((com.tencent.mm.vending.j.b)localObject1).get(0))))
             {
+              j = 1;
+              break label468;
+              ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFront2BackOnStop, case-1：%b", new Object[] { Boolean.valueOf(bool1) });
               bool2 = bool1;
-              if (!com.tencent.mm.plugin.expt.hellhound.core.b.ZU(paramString1))
+              if (bool1)
               {
                 bool2 = bool1;
-                if (!com.tencent.mm.plugin.expt.hellhound.core.b.ZV(paramString1))
+                if (!com.tencent.mm.plugin.expt.hellhound.core.b.adH(paramString))
                 {
-                  localObject = com.tencent.mm.plugin.expt.hellhound.core.stack.e.ciW();
                   bool2 = bool1;
-                  if (localObject != null)
+                  if (!com.tencent.mm.plugin.expt.hellhound.core.b.adI(paramString))
                   {
-                    ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFront2BackOnStop isEvent8: %s, %s", new Object[] { ((bj)localObject).DOc.activityName, ((bj)localObject).DOc.EIR });
-                    if (!((bj)localObject).DOc.activityName.startsWith("com.tencent.mm")) {
-                      continue;
-                    }
+                    localObject1 = com.tencent.mm.plugin.expt.hellhound.core.stack.e.cnW();
                     bool2 = bool1;
-                    if (TextUtils.isEmpty(((bj)localObject).DOc.EIR))
+                    if (localObject1 != null)
                     {
+                      ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFront2BackOnStop isEvent8: %s, %s", new Object[] { ((bj)localObject1).Fti.activityName, Integer.valueOf(((bj)localObject1).Fti.aHQ) });
+                      if (!((bj)localObject1).Fti.activityName.startsWith("com.tencent.mm")) {
+                        continue;
+                      }
                       bool2 = bool1;
-                      if (!((bj)localObject).DOc.activityName.equals(paramString1))
+                      if (((bj)localObject1).Fti.aHQ <= 0)
                       {
-                        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFront2BackOnStop isEvent8-1: false");
-                        bool2 = false;
+                        bool2 = bool1;
+                        if (!((bj)localObject1).Fti.activityName.equals(paramString))
+                        {
+                          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFront2BackOnStop isEvent8-1: false");
+                          bool2 = false;
+                        }
                       }
                     }
                   }
                 }
               }
+              ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFront2BackOnStop case1 && case2：%b", new Object[] { Boolean.valueOf(bool2) });
+              paramString = com.tencent.mm.vending.j.a.i(paramString, Integer.valueOf(paramInt), Boolean.valueOf(bool2));
+              AppMethodBeat.o(210437);
+              return paramString;
             }
-            ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFront2BackOnStop case1 && case2：%b", new Object[] { Boolean.valueOf(bool2) });
-            paramString1 = com.tencent.mm.vending.j.a.i(paramString1, paramString2, Boolean.valueOf(bool2));
-            AppMethodBeat.o(122036);
-            return paramString1;
           }
-        }
-        else
-        {
-          i = 0;
+          else
+          {
+            i = 0;
+            continue;
+          }
+          j = 0;
+          break label468;
+          bool1 = false;
+          continue;
+          ad.i("HABBYGE-MALI.HellFrontBackMonitor", "isFront2BackOnStop: NOT wx activity");
+          boolean bool2 = bool1;
           continue;
         }
-        int j = 0;
-        break label436;
-        bool1 = false;
-        continue;
-        ac.i("HellFrontBackMonitor", "HABBYGE-MALI, isFront2BackOnStop: NOT wx activity");
-        boolean bool2 = bool1;
-        continue;
-        if (j == 0) {
-          continue;
-        }
+        i = 0;
       }
-      catch (Exception paramString1)
+      catch (Exception paramString)
       {
-        ac.printErrStackTrace("HellFrontBackMonitor", paramString1, "HABBYGE-MALI, isFront2BackOnStop", new Object[0]);
-        h.wUl.idkeyStat(932L, 43L, 1L, false);
-        AppMethodBeat.o(122036);
+        ad.printErrStackTrace("HABBYGE-MALI.HellFrontBackMonitor", paramString, "isFront2BackOnStop", new Object[0]);
+        g.yhR.idkeyStat(932L, 43L, 1L, false);
+        AppMethodBeat.o(210437);
         return null;
       }
-      label436:
-      if (i != 0) {
+      continue;
+      label468:
+      if ((j != 0) && (i != 0)) {
         bool1 = true;
       }
     }
   }
   
-  private void p(String paramString1, String paramString2, long paramLong)
+  private void t(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(184360);
-    if (this.qpp != null) {
-      this.qpp.n(paramString1, paramString2, paramLong);
+    AppMethodBeat.i(210438);
+    if (this.qYo != null) {
+      this.qYo.j(paramString, paramInt, paramLong);
     }
-    AppMethodBeat.o(184360);
+    AppMethodBeat.o(210438);
   }
   
-  private void q(String paramString1, String paramString2, long paramLong)
+  private void u(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(184361);
-    if (this.qpp != null) {
-      this.qpp.o(paramString1, paramString2, paramLong);
+    AppMethodBeat.i(210439);
+    if (this.qYo != null) {
+      this.qYo.k(paramString, paramInt, paramLong);
     }
-    AppMethodBeat.o(184361);
+    AppMethodBeat.o(210439);
   }
 }
 

@@ -14,23 +14,23 @@ import java.util.List;
 public final class t
   extends BaseAdapter
 {
-  private List<String> DrN;
-  private List<String> iCx;
+  private List<String> EWR;
+  private List<String> iVH;
   private Context mContext;
   
   public t(Context paramContext, List<String> paramList1, List<String> paramList2)
   {
     this.mContext = paramContext;
-    this.iCx = paramList2;
-    this.DrN = paramList1;
+    this.iVH = paramList2;
+    this.EWR = paramList1;
   }
   
-  private static a fG(View paramView)
+  private static a fV(View paramView)
   {
     AppMethodBeat.i(31426);
     a locala = new a((byte)0);
-    locala.fuY = ((ImageView)paramView.findViewById(2131297965));
-    locala.iMz = ((TextView)paramView.findViewById(2131297968));
+    locala.fOf = ((ImageView)paramView.findViewById(2131297965));
+    locala.jfJ = ((TextView)paramView.findViewById(2131297968));
     paramView.setTag(locala);
     AppMethodBeat.o(31426);
     return locala;
@@ -39,7 +39,7 @@ public final class t
   public final int getCount()
   {
     AppMethodBeat.i(31423);
-    int i = this.iCx.size();
+    int i = this.iVH.size();
     AppMethodBeat.o(31423);
     return i;
   }
@@ -47,7 +47,7 @@ public final class t
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(31424);
-    Object localObject = this.iCx.get(paramInt);
+    Object localObject = this.iVH.get(paramInt);
     AppMethodBeat.o(31424);
     return localObject;
   }
@@ -63,23 +63,23 @@ public final class t
     if (paramView == null)
     {
       paramView = View.inflate(this.mContext, 2131493373, null);
-      paramViewGroup = fG(paramView);
+      paramViewGroup = fV(paramView);
     }
     label260:
     for (;;)
     {
-      int i = this.iCx.size();
-      if ((paramInt >= 0) && (paramInt < this.iCx.size()) && (paramInt < this.DrN.size()))
+      int i = this.iVH.size();
+      if ((paramInt >= 0) && (paramInt < this.iVH.size()) && (paramInt < this.EWR.size()))
       {
-        paramViewGroup.fuY.setVisibility(0);
-        paramViewGroup.iMz.setVisibility(0);
-        a.b.c(paramViewGroup.fuY, (String)this.DrN.get(paramInt));
-        paramViewGroup.iMz.setText((CharSequence)this.iCx.get(paramInt));
-        paramViewGroup.iMz.setText(((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, (CharSequence)this.iCx.get(paramInt), paramViewGroup.iMz.getTextSize()));
-        if ((this.iCx.size() <= 12) || (paramInt < this.iCx.size() - i % 4)) {
+        paramViewGroup.fOf.setVisibility(0);
+        paramViewGroup.jfJ.setVisibility(0);
+        a.b.c(paramViewGroup.fOf, (String)this.EWR.get(paramInt));
+        paramViewGroup.jfJ.setText((CharSequence)this.iVH.get(paramInt));
+        paramViewGroup.jfJ.setText(((com.tencent.mm.plugin.emoji.b.a)g.ab(com.tencent.mm.plugin.emoji.b.a.class)).a(this.mContext, (CharSequence)this.iVH.get(paramInt), paramViewGroup.jfJ.getTextSize()));
+        if ((this.iVH.size() <= 12) || (paramInt < this.iVH.size() - i % 4)) {
           break label246;
         }
-        paramViewGroup.iMz.setPadding(0, 0, 0, com.tencent.mm.cc.a.au(this.mContext, 2131165258));
+        paramViewGroup.jfJ.setPadding(0, 0, 0, com.tencent.mm.cc.a.ax(this.mContext, 2131165258));
       }
       for (;;)
       {
@@ -89,18 +89,18 @@ public final class t
         if (paramViewGroup != null) {
           break label260;
         }
-        paramViewGroup = fG(paramView);
+        paramViewGroup = fV(paramView);
         break;
         label246:
-        paramViewGroup.iMz.setPadding(0, 0, 0, 0);
+        paramViewGroup.jfJ.setPadding(0, 0, 0, 0);
       }
     }
   }
   
   static final class a
   {
-    public ImageView fuY;
-    public TextView iMz;
+    public ImageView fOf;
+    public TextView jfJ;
   }
 }
 

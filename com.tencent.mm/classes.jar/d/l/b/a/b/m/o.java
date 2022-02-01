@@ -1,43 +1,43 @@
 package d.l.b.a.b.m;
 
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
 
 public abstract class o
   extends n
 {
-  private final aj Lqj;
+  private final aj Nhg;
   
   public o(aj paramaj)
   {
-    this.Lqj = paramaj;
+    this.Nhg = paramaj;
   }
   
   private o i(g paramg)
   {
-    k.h(paramg, "newAnnotations");
-    if (paramg != fQj()) {
+    p.h(paramg, "newAnnotations");
+    if (paramg != ghH()) {
       return (o)new i((aj)this, paramg);
     }
     return this;
   }
   
-  protected final aj fUt()
+  public final aj Ac(boolean paramBoolean)
   {
-    return this.Lqj;
-  }
-  
-  public final aj zo(boolean paramBoolean)
-  {
-    if (paramBoolean == fUx()) {
+    if (paramBoolean == glW()) {
       return (aj)this;
     }
-    return this.Lqj.zo(paramBoolean).d(fQj());
+    return this.Nhg.Ac(paramBoolean).d(ghH());
+  }
+  
+  protected final aj glS()
+  {
+    return this.Nhg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.o
  * JD-Core Version:    0.7.0.1
  */

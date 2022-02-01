@@ -9,7 +9,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 class NetStatRuler
   extends View
@@ -48,9 +48,9 @@ class NetStatRuler
     float f6 = 2.0F * f1 / 3.0F;
     float f7 = localRect.top;
     localTextPaint.setColor(-7829368);
-    paramCanvas.drawText(bs.An(NetStatUnit.xpG * 2L / 3L), f2, f3 + f4, localTextPaint);
-    paramCanvas.drawText(bs.An(NetStatUnit.xpG / 3L), f2, f5 + f6, localTextPaint);
-    paramCanvas.drawText(bs.An(0L), f2, f7 + f1, localTextPaint);
+    paramCanvas.drawText(bt.Dd(NetStatUnit.yEj * 2L / 3L), f2, f3 + f4, localTextPaint);
+    paramCanvas.drawText(bt.Dd(NetStatUnit.yEj / 3L), f2, f5 + f6, localTextPaint);
+    paramCanvas.drawText(bt.Dd(0L), f2, f7 + f1, localTextPaint);
     AppMethodBeat.o(73898);
   }
 }

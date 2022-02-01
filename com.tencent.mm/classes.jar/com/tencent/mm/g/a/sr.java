@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class sr
   extends b
 {
-  public a dvE;
+  public a dHk;
   
   public sr()
   {
@@ -15,24 +15,22 @@ public final class sr
   
   private sr(byte paramByte)
   {
-    AppMethodBeat.i(121036);
-    this.dvE = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(148369);
+    this.dHk = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(121036);
+    AppMethodBeat.o(148369);
   }
   
   public static final class a
   {
-    public String djc;
-    public Boolean dvD;
-    public long dvF;
-    public Boolean dvG;
+    public byte[] buf;
+    public int len;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.sr
  * JD-Core Version:    0.7.0.1
  */

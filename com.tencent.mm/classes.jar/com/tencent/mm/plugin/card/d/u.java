@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.d;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.rr;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.tl;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public final class u
 {
-  public static ArrayList<rr> VK(String paramString)
+  public static ArrayList<tl> Zt(String paramString)
   {
     AppMethodBeat.i(113878);
     if (TextUtils.isEmpty(paramString))
@@ -50,27 +50,27 @@ public final class u
             localArrayList.add(paramString);
             break label282;
           }
-          paramString = new rr();
+          paramString = new tl();
           paramString.name = localJSONObject.optString("name");
           paramString.descriptor = localJSONObject.optString("descriptor");
-          paramString.nUG = localJSONObject.optString("phone");
+          paramString.oyb = localJSONObject.optString("phone");
           paramString.country = localJSONObject.optString("country");
-          paramString.exV = localJSONObject.optString("province");
-          paramString.exW = localJSONObject.optString("city");
-          paramString.hEt = localJSONObject.optString("address");
-          paramString.yhi = ((float)localJSONObject.optDouble("distance"));
-          paramString.doB = ((float)localJSONObject.optDouble("longitude"));
-          paramString.dmL = ((float)localJSONObject.optDouble("latitude"));
-          paramString.nWj = localJSONObject.optString("jump_url");
-          paramString.Ekb = localJSONObject.optString("app_brand_user_name");
-          paramString.Ekc = localJSONObject.optString("app_brand_pass");
+          paramString.ePu = localJSONObject.optString("province");
+          paramString.ePv = localJSONObject.optString("city");
+          paramString.hWY = localJSONObject.optString("address");
+          paramString.zxp = ((float)localJSONObject.optDouble("distance"));
+          paramString.dAp = ((float)localJSONObject.optDouble("longitude"));
+          paramString.dyz = ((float)localJSONObject.optDouble("latitude"));
+          paramString.ozD = localJSONObject.optString("jump_url");
+          paramString.FRk = localJSONObject.optString("app_brand_user_name");
+          paramString.FRl = localJSONObject.optString("app_brand_pass");
           continue;
         }
         AppMethodBeat.o(113878);
       }
       catch (JSONException paramString)
       {
-        ac.printErrStackTrace("MicroMsg.ShopInfoItemParser", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ShopInfoItemParser", paramString, "", new Object[0]);
         AppMethodBeat.o(113878);
         return null;
       }
@@ -82,7 +82,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.u
  * JD-Core Version:    0.7.0.1
  */

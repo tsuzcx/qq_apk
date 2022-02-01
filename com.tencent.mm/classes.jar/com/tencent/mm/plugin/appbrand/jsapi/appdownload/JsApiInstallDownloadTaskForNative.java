@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 import org.json.JSONObject;
 
@@ -30,12 +30,12 @@ public final class JsApiInstallDownloadTaskForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<InstallDownloadTask> CREATOR;
-    private int bWl;
-    private boolean jYA;
-    private String jYB;
-    private long jYC;
-    private m jYs;
-    private c kay;
+    private int cgA;
+    private m ksO;
+    private boolean ksW;
+    private String ksX;
+    private long ksY;
+    private c kuU;
     private String mAppId;
     
     static
@@ -55,27 +55,27 @@ public final class JsApiInstallDownloadTaskForNative
     public InstallDownloadTask(m paramm, c paramc, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45816);
-      this.jYs = paramm;
-      this.kay = paramc;
-      this.bWl = paramInt;
-      this.jYC = paramJSONObject.optLong("downloadId");
+      this.ksO = paramm;
+      this.kuU = paramc;
+      this.cgA = paramInt;
+      this.ksY = paramJSONObject.optLong("downloadId");
       this.mAppId = paramJSONObject.optString("appId");
-      this.jYA = true;
+      this.ksW = true;
       AppMethodBeat.o(45816);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(45818);
-      ac.i("MicroMsg.JsApiInstallDownloadTaskForNative", "doInstallDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.jYC) });
+      ad.i("MicroMsg.JsApiInstallDownloadTaskForNative", "doInstallDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ksY) });
       com.tencent.mm.plugin.downloader.g.a locala;
-      if (!bs.isNullOrNil(this.mAppId))
+      if (!bt.isNullOrNil(this.mAppId))
       {
-        locala = d.Ww(this.mAppId);
-        if ((locala != null) && (locala.field_status == 3) && (i.eA(locala.field_filePath))) {
+        locala = d.aad(this.mAppId);
+        if ((locala != null) && (locala.field_status == 3) && (i.fv(locala.field_filePath))) {
           com.tencent.mm.plugin.downloader.i.a.a(locala.field_downloadId, false, new com.tencent.mm.pluginsdk.permission.a()
           {
-            public final void gk(boolean paramAnonymousBoolean)
+            public final void gp(boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(45813);
               JsApiInstallDownloadTaskForNative.InstallDownloadTask localInstallDownloadTask = JsApiInstallDownloadTaskForNative.InstallDownloadTask.this;
@@ -92,14 +92,14 @@ public final class JsApiInstallDownloadTaskForNative
       }
       for (;;)
       {
-        bet();
+        bhX();
         AppMethodBeat.o(45818);
         return;
-        locala = d.sc(this.jYC);
-        if ((locala != null) && (locala.field_status == 3) && (i.eA(locala.field_filePath))) {
+        locala = d.ua(this.ksY);
+        if ((locala != null) && (locala.field_status == 3) && (i.fv(locala.field_filePath))) {
           com.tencent.mm.plugin.downloader.i.a.a(locala.field_downloadId, false, new com.tencent.mm.pluginsdk.permission.a()
           {
-            public final void gk(boolean paramAnonymousBoolean)
+            public final void gp(boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(45814);
               JsApiInstallDownloadTaskForNative.InstallDownloadTask localInstallDownloadTask = JsApiInstallDownloadTaskForNative.InstallDownloadTask.this;
@@ -116,20 +116,20 @@ public final class JsApiInstallDownloadTaskForNative
       }
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(45819);
-      if (this.jYA)
+      if (this.ksW)
       {
-        if (bs.isNullOrNil(this.jYB)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.jYB }))
+        if (bt.isNullOrNil(this.ksX)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ksX }))
         {
-          this.kay.h(this.bWl, this.jYs.e(str, null));
+          this.kuU.h(this.cgA, this.ksO.e(str, null));
           AppMethodBeat.o(45819);
           return;
         }
       }
-      this.kay.h(this.bWl, this.jYs.e("ok", null));
+      this.kuU.h(this.cgA, this.ksO.e("ok", null));
       AppMethodBeat.o(45819);
     }
     
@@ -137,13 +137,13 @@ public final class JsApiInstallDownloadTaskForNative
     {
       boolean bool = true;
       AppMethodBeat.i(45820);
-      this.jYC = paramParcel.readLong();
+      this.ksY = paramParcel.readLong();
       this.mAppId = paramParcel.readString();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.jYA = bool;
-        this.jYB = paramParcel.readString();
+        this.ksW = bool;
+        this.ksX = paramParcel.readString();
         AppMethodBeat.o(45820);
         return;
         bool = false;
@@ -153,13 +153,13 @@ public final class JsApiInstallDownloadTaskForNative
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45821);
-      paramParcel.writeLong(this.jYC);
+      paramParcel.writeLong(this.ksY);
       paramParcel.writeString(this.mAppId);
-      if (this.jYA) {}
+      if (this.ksW) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.jYB);
+        paramParcel.writeString(this.ksX);
         AppMethodBeat.o(45821);
         return;
       }

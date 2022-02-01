@@ -7,77 +7,79 @@ import com.tencent.mm.sdk.e.c;
 public abstract class fi
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS ShareCardInfo_card_tp_id_index ON ShareCardInfo(card_tp_id)" };
-  private static final int eBB;
-  private static final int eEc = "updateSeq".hashCode();
-  private static final int eZD;
-  private static final int eZE;
-  private static final int eZF;
-  private static final int eZG;
-  private static final int eZH;
-  private static final int eZI;
-  private static final int eZJ = "block_mask".hashCode();
-  private static final int eZK = "dataInfoData".hashCode();
-  private static final int eZL = "cardTpInfoData".hashCode();
-  private static final int eZM = "shareInfoData".hashCode();
-  private static final int eZN = "shopInfoData".hashCode();
-  private static final int eZO = "categoryType".hashCode();
-  private static final int eZP = "itemIndex".hashCode();
-  private static final int elV;
-  private static final int eol;
-  private static final int euO = "card_id".hashCode();
-  private static final int euP = "card_tp_id".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS record_localid_index ON RecordCDNInfo(recordLocalId)" };
+  private static final int eDc;
+  private static final int eEX;
+  private static final int eEZ;
+  private static final int eFa;
+  private static final int eFw;
+  private static final int eTg;
+  private static final int eTp = "tpauthkey".hashCode();
+  private static final int eVF;
+  private static final int eVa;
+  private static final int eVc;
+  private static final int eVj = "localId".hashCode();
+  private static final int eXc;
+  private static final int eXl;
+  private static final int fpu = "recordLocalId".hashCode();
+  private static final int fpv;
+  private static final int fpw;
+  private static final int fpx = "tpdataurl".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAP = true;
-  private boolean eDO = true;
-  private boolean eZA = true;
-  private boolean eZB = true;
-  private boolean eZC = true;
-  private boolean eZq = true;
-  private boolean eZr = true;
-  private boolean eZs = true;
-  private boolean eZt = true;
-  private boolean eZu = true;
-  private boolean eZv = true;
-  private boolean eZw = true;
-  private boolean eZx = true;
-  private boolean eZy = true;
-  private boolean eZz = true;
-  private boolean elS = true;
-  private boolean eoi = true;
-  private boolean euv = true;
-  private boolean euw = true;
-  public String field_app_id;
-  public long field_begin_time;
-  public long field_block_mask;
-  public byte[] field_cardTpInfoData;
-  public String field_card_id;
-  public String field_card_tp_id;
-  public int field_categoryType;
-  public String field_consumer;
-  public byte[] field_dataInfoData;
-  public long field_end_time;
-  public String field_from_username;
-  public int field_itemIndex;
-  public long field_local_updateTime;
-  public byte[] field_shareInfoData;
-  public long field_share_time;
-  public byte[] field_shopInfoData;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eCZ = true;
+  private boolean eEG = true;
+  private boolean eEI = true;
+  private boolean eEJ = true;
+  private boolean eFs = true;
+  private boolean eSD = true;
+  private boolean eSu = true;
+  private boolean eUV = true;
+  private boolean eUX = true;
+  private boolean eVh = true;
+  private boolean eVr = true;
+  private boolean eWI = true;
+  private boolean eWz = true;
+  public String field_cdnKey;
+  public String field_cdnUrl;
+  public String field_dataId;
+  public int field_errCode;
+  public int field_fileType;
+  public boolean field_isThumb;
+  public int field_localId;
+  public String field_mediaId;
+  public int field_offset;
+  public String field_path;
+  public int field_recordLocalId;
   public int field_status;
-  public long field_updateSeq;
-  public long field_updateTime;
+  public String field_toUser;
+  public int field_totalLen;
+  public String field_tpaeskey;
+  public String field_tpauthkey;
+  public String field_tpdataurl;
+  public int field_type;
+  private boolean fpp = true;
+  private boolean fpq = true;
+  private boolean fpr = true;
+  private boolean fpt = true;
   
   static
   {
-    eZD = "from_username".hashCode();
-    eZE = "consumer".hashCode();
-    eBB = "app_id".hashCode();
-    elV = "status".hashCode();
-    eZF = "share_time".hashCode();
-    eZG = "local_updateTime".hashCode();
-    eol = "updateTime".hashCode();
-    eZH = "begin_time".hashCode();
-    eZI = "end_time".hashCode();
+    eVF = "toUser".hashCode();
+    eVa = "dataId".hashCode();
+    eEX = "mediaId".hashCode();
+    eFw = "path".hashCode();
+    eTg = "cdnUrl".hashCode();
+    eVc = "cdnKey".hashCode();
+    eEZ = "totalLen".hashCode();
+    fpv = "isThumb".hashCode();
+    eFa = "offset".hashCode();
+    type_HASHCODE = "type".hashCode();
+    eXc = "fileType".hashCode();
+    eDc = "status".hashCode();
+    eXl = "errCode".hashCode();
+    fpw = "tpaeskey".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -86,18 +88,18 @@ public abstract class fi
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (euO != k) {
+      if (eVj != k) {
         break label65;
       }
-      this.field_card_id = paramCursor.getString(i);
-      this.euv = true;
+      this.field_localId = paramCursor.getInt(i);
+      this.eVh = true;
     }
     for (;;)
     {
@@ -105,44 +107,68 @@ public abstract class fi
       break label20;
       break;
       label65:
-      if (euP == k) {
-        this.field_card_tp_id = paramCursor.getString(i);
-      } else if (eZD == k) {
-        this.field_from_username = paramCursor.getString(i);
-      } else if (eZE == k) {
-        this.field_consumer = paramCursor.getString(i);
-      } else if (eBB == k) {
-        this.field_app_id = paramCursor.getString(i);
-      } else if (elV == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eZF == k) {
-        this.field_share_time = paramCursor.getLong(i);
-      } else if (eZG == k) {
-        this.field_local_updateTime = paramCursor.getLong(i);
-      } else if (eol == k) {
-        this.field_updateTime = paramCursor.getLong(i);
-      } else if (eZH == k) {
-        this.field_begin_time = paramCursor.getLong(i);
-      } else if (eZI == k) {
-        this.field_end_time = paramCursor.getLong(i);
-      } else if (eEc == k) {
-        this.field_updateSeq = paramCursor.getLong(i);
-      } else if (eZJ == k) {
-        this.field_block_mask = paramCursor.getLong(i);
-      } else if (eZK == k) {
-        this.field_dataInfoData = paramCursor.getBlob(i);
-      } else if (eZL == k) {
-        this.field_cardTpInfoData = paramCursor.getBlob(i);
-      } else if (eZM == k) {
-        this.field_shareInfoData = paramCursor.getBlob(i);
-      } else if (eZN == k) {
-        this.field_shopInfoData = paramCursor.getBlob(i);
-      } else if (eZO == k) {
-        this.field_categoryType = paramCursor.getInt(i);
-      } else if (eZP == k) {
-        this.field_itemIndex = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      if (fpu == k)
+      {
+        this.field_recordLocalId = paramCursor.getInt(i);
+      }
+      else if (eVF == k)
+      {
+        this.field_toUser = paramCursor.getString(i);
+      }
+      else if (eVa == k)
+      {
+        this.field_dataId = paramCursor.getString(i);
+      }
+      else if (eEX == k)
+      {
+        this.field_mediaId = paramCursor.getString(i);
+      }
+      else if (eFw == k)
+      {
+        this.field_path = paramCursor.getString(i);
+      }
+      else if (eTg == k)
+      {
+        this.field_cdnUrl = paramCursor.getString(i);
+      }
+      else if (eVc == k)
+      {
+        this.field_cdnKey = paramCursor.getString(i);
+      }
+      else if (eEZ == k)
+      {
+        this.field_totalLen = paramCursor.getInt(i);
+      }
+      else
+      {
+        if (fpv == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_isThumb = bool;
+            break;
+          }
+        }
+        if (eFa == k) {
+          this.field_offset = paramCursor.getInt(i);
+        } else if (type_HASHCODE == k) {
+          this.field_type = paramCursor.getInt(i);
+        } else if (eXc == k) {
+          this.field_fileType = paramCursor.getInt(i);
+        } else if (eDc == k) {
+          this.field_status = paramCursor.getInt(i);
+        } else if (eXl == k) {
+          this.field_errCode = paramCursor.getInt(i);
+        } else if (fpw == k) {
+          this.field_tpaeskey = paramCursor.getString(i);
+        } else if (eTp == k) {
+          this.field_tpauthkey = paramCursor.getString(i);
+        } else if (fpx == k) {
+          this.field_tpdataurl = paramCursor.getString(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -150,62 +176,62 @@ public abstract class fi
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.euv) {
-      localContentValues.put("card_id", this.field_card_id);
+    if (this.eVh) {
+      localContentValues.put("localId", Integer.valueOf(this.field_localId));
     }
-    if (this.euw) {
-      localContentValues.put("card_tp_id", this.field_card_tp_id);
+    if (this.fpp) {
+      localContentValues.put("recordLocalId", Integer.valueOf(this.field_recordLocalId));
     }
-    if (this.eZq) {
-      localContentValues.put("from_username", this.field_from_username);
+    if (this.field_toUser == null) {
+      this.field_toUser = "";
     }
-    if (this.eZr) {
-      localContentValues.put("consumer", this.field_consumer);
+    if (this.eVr) {
+      localContentValues.put("toUser", this.field_toUser);
     }
-    if (this.eAP) {
-      localContentValues.put("app_id", this.field_app_id);
+    if (this.eUV) {
+      localContentValues.put("dataId", this.field_dataId);
     }
-    if (this.elS) {
+    if (this.eEG) {
+      localContentValues.put("mediaId", this.field_mediaId);
+    }
+    if (this.eFs) {
+      localContentValues.put("path", this.field_path);
+    }
+    if (this.eSu) {
+      localContentValues.put("cdnUrl", this.field_cdnUrl);
+    }
+    if (this.eUX) {
+      localContentValues.put("cdnKey", this.field_cdnKey);
+    }
+    if (this.eEI) {
+      localContentValues.put("totalLen", Integer.valueOf(this.field_totalLen));
+    }
+    if (this.fpq) {
+      localContentValues.put("isThumb", Boolean.valueOf(this.field_isThumb));
+    }
+    if (this.eEJ) {
+      localContentValues.put("offset", Integer.valueOf(this.field_offset));
+    }
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.eWz) {
+      localContentValues.put("fileType", Integer.valueOf(this.field_fileType));
+    }
+    if (this.eCZ) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eZs) {
-      localContentValues.put("share_time", Long.valueOf(this.field_share_time));
+    if (this.eWI) {
+      localContentValues.put("errCode", Integer.valueOf(this.field_errCode));
     }
-    if (this.eZt) {
-      localContentValues.put("local_updateTime", Long.valueOf(this.field_local_updateTime));
+    if (this.fpr) {
+      localContentValues.put("tpaeskey", this.field_tpaeskey);
     }
-    if (this.eoi) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.eSD) {
+      localContentValues.put("tpauthkey", this.field_tpauthkey);
     }
-    if (this.eZu) {
-      localContentValues.put("begin_time", Long.valueOf(this.field_begin_time));
-    }
-    if (this.eZv) {
-      localContentValues.put("end_time", Long.valueOf(this.field_end_time));
-    }
-    if (this.eDO) {
-      localContentValues.put("updateSeq", Long.valueOf(this.field_updateSeq));
-    }
-    if (this.eZw) {
-      localContentValues.put("block_mask", Long.valueOf(this.field_block_mask));
-    }
-    if (this.eZx) {
-      localContentValues.put("dataInfoData", this.field_dataInfoData);
-    }
-    if (this.eZy) {
-      localContentValues.put("cardTpInfoData", this.field_cardTpInfoData);
-    }
-    if (this.eZz) {
-      localContentValues.put("shareInfoData", this.field_shareInfoData);
-    }
-    if (this.eZA) {
-      localContentValues.put("shopInfoData", this.field_shopInfoData);
-    }
-    if (this.eZB) {
-      localContentValues.put("categoryType", Integer.valueOf(this.field_categoryType));
-    }
-    if (this.eZC) {
-      localContentValues.put("itemIndex", Integer.valueOf(this.field_itemIndex));
+    if (this.fpt) {
+      localContentValues.put("tpdataurl", this.field_tpdataurl);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -215,7 +241,7 @@ public abstract class fi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fi
  * JD-Core Version:    0.7.0.1
  */

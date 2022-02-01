@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.kinda.gen.KBarCodeView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.by.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.bz.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class KindaBarCodeViewImpl
   extends BaseKindaCodeView
@@ -16,7 +16,7 @@ public class KindaBarCodeViewImpl
     AppMethodBeat.i(18855);
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("base_MMKView", "getBarcodeBitmap mBarcode == null");
+      ad.e("base_MMKView", "getBarcodeBitmap mBarcode == null");
       AppMethodBeat.o(18855);
       return null;
     }

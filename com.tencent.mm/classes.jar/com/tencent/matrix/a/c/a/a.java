@@ -2,15 +2,15 @@ package com.tencent.matrix.a.c.a;
 
 public abstract interface a
 {
-  public abstract void GN();
+  public abstract void Ii();
   
-  public abstract void GO();
+  public abstract void Ij();
   
-  public abstract int GP();
+  public abstract int Ik();
   
   public abstract void a(com.tencent.matrix.a.c.a parama);
   
-  public abstract void bT(boolean paramBoolean);
+  public abstract void bV(boolean paramBoolean);
 }
 
 

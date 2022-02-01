@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.story.f.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class a$j$1
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
   a$j$1(long paramLong, boolean paramBoolean, String paramString1, String paramString2)
   {

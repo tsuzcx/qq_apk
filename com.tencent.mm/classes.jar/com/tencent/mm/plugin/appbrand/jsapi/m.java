@@ -1,10 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.luggage.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsruntime.k;
 import com.tencent.mm.plugin.appbrand.utils.v;
 import com.tencent.mm.plugin.appbrand.utils.v.a;
 import com.tencent.mm.plugin.appbrand.utils.v.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -13,22 +16,27 @@ import org.json.JSONObject;
 public abstract class m
   extends b
 {
-  protected boolean jWs = false;
+  protected boolean kqJ = false;
   
-  public final String LM(String paramString)
+  public final String Pg(String paramString)
   {
     return e(paramString, null);
   }
   
   public final String a(c paramc, String paramString, Map<String, ? extends Object> paramMap)
   {
-    if (v.a(paramc.aUV(), paramMap, (v.a)paramc.ar(v.a.class)) == v.b.moH) {
+    if (v.a(paramc.aYh(), paramMap, (v.a)paramc.ar(v.a.class)) == v.b.mPj) {
       return e("fail:convert native buffer parameter fail. native buffer exceed size limit.", null);
     }
-    return k(paramString, paramMap);
+    return m(paramString, paramMap);
   }
   
-  public boolean beF()
+  public ByteBuffer a(String paramString, k paramk, int paramInt)
+  {
+    return paramk.ak(paramInt, false);
+  }
+  
+  public boolean bij()
   {
     return false;
   }
@@ -42,10 +50,10 @@ public abstract class m
     if (localJSONObject.has("errMsg"))
     {
       paramJSONObject = "api " + getName() + ": Cant put errMsg in res!!!";
-      if (this.jWs) {
+      if (this.kqJ) {
         throw new IllegalArgumentException(paramJSONObject);
       }
-      ac.e("MicroMsg.AppBrandJsApi", paramJSONObject);
+      ad.e("MicroMsg.AppBrandJsApi", paramJSONObject);
     }
     try
     {
@@ -56,12 +64,12 @@ public abstract class m
     {
       for (;;)
       {
-        ac.e("MicroMsg.AppBrandJsApi", "makeReturnJson with JSONObject, put errMsg, e=%s", new Object[] { paramString });
+        ad.e("MicroMsg.AppBrandJsApi", "makeReturnJson with JSONObject, put errMsg, e=%s", new Object[] { paramString });
       }
     }
   }
   
-  public final String k(String paramString, Map<String, ? extends Object> paramMap)
+  public final String m(String paramString, Map<String, ? extends Object> paramMap)
   {
     String str = paramString;
     if ("cancel".equals(paramString)) {
@@ -70,10 +78,10 @@ public abstract class m
     if ((!str.startsWith("fail")) && (!str.startsWith("ok")))
     {
       paramString = String.format(Locale.ENGLISH, "api[%s] assert, argument [reason] must start with special prefix", new Object[] { getName() });
-      if (this.jWs) {
+      if (this.kqJ) {
         throw new IllegalArgumentException(paramString);
       }
-      ac.e("MicroMsg.AppBrandJsApi", paramString);
+      ad.e("MicroMsg.AppBrandJsApi", paramString);
     }
     if ((paramMap instanceof HashMap)) {
       paramString = paramMap;
@@ -81,24 +89,62 @@ public abstract class m
     while ((paramMap != null) && (paramMap.containsKey("errMsg")))
     {
       paramMap = "api " + getName() + ": Cant put errMsg in res!!!";
-      if (this.jWs)
+      if (this.kqJ)
       {
         throw new IllegalArgumentException(paramMap);
         paramString = new HashMap();
       }
       else
       {
-        ac.e("MicroMsg.AppBrandJsApi", paramMap);
+        ad.e("MicroMsg.AppBrandJsApi", paramMap);
       }
     }
     paramString.put("errMsg", getName() + ":" + str);
     d.d(paramString);
     return new JSONObject(paramString).toString();
   }
+  
+  public static class a
+  {
+    public final String errMsg;
+    public final Map<String, Object> values;
+    
+    public a(String paramString, Object... paramVarArgs)
+    {
+      AppMethodBeat.i(140640);
+      this.values = new HashMap();
+      if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
+      {
+        this.errMsg = paramString;
+        AppMethodBeat.o(140640);
+        return;
+      }
+      this.errMsg = String.format(paramString, paramVarArgs);
+      AppMethodBeat.o(140640);
+    }
+    
+    public a o(String paramString, Object paramObject)
+    {
+      AppMethodBeat.i(140641);
+      this.values.put(paramString, paramObject);
+      AppMethodBeat.o(140641);
+      return this;
+    }
+    
+    public a y(Map<String, Object> paramMap)
+    {
+      AppMethodBeat.i(140642);
+      if (paramMap != null) {
+        this.values.putAll(paramMap);
+      }
+      AppMethodBeat.o(140642);
+      return this;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m
  * JD-Core Version:    0.7.0.1
  */

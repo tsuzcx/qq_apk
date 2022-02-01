@@ -15,18 +15,18 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public class TalkRoomVolumeMeter
   extends FrameLayout
 {
-  private a zXH;
-  private ImageView zXI;
-  private ImageView zXJ;
-  private ImageView zXK;
-  private FrameLayout zXL;
+  private a Bpl;
+  private ImageView Bpm;
+  private ImageView Bpn;
+  private ImageView Bpo;
+  private FrameLayout Bpp;
   
   public TalkRoomVolumeMeter(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,35 +47,35 @@ public class TalkRoomVolumeMeter
   private void initView()
   {
     AppMethodBeat.i(29651);
-    this.zXH = new a(getContext());
-    this.zXI = new ImageView(getContext());
-    this.zXI.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.zXI.setImageResource(2131234331);
-    this.zXI.setVisibility(0);
-    this.zXJ = new ImageView(getContext());
-    this.zXJ.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.zXJ.setImageResource(2131234330);
-    this.zXJ.setVisibility(8);
-    this.zXK = new ImageView(getContext());
-    this.zXK.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.zXK.setImageResource(2131234327);
-    this.zXK.setVisibility(8);
-    this.zXL = new FrameLayout(getContext());
-    this.zXL.addView(this.zXH);
-    this.zXL.addView(this.zXJ);
-    this.zXL.setVisibility(8);
-    addView(this.zXL);
-    addView(this.zXK);
-    addView(this.zXI);
+    this.Bpl = new a(getContext());
+    this.Bpm = new ImageView(getContext());
+    this.Bpm.setScaleType(ImageView.ScaleType.FIT_XY);
+    this.Bpm.setImageResource(2131234331);
+    this.Bpm.setVisibility(0);
+    this.Bpn = new ImageView(getContext());
+    this.Bpn.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.Bpn.setImageResource(2131234330);
+    this.Bpn.setVisibility(8);
+    this.Bpo = new ImageView(getContext());
+    this.Bpo.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.Bpo.setImageResource(2131234327);
+    this.Bpo.setVisibility(8);
+    this.Bpp = new FrameLayout(getContext());
+    this.Bpp.addView(this.Bpl);
+    this.Bpp.addView(this.Bpn);
+    this.Bpp.setVisibility(8);
+    addView(this.Bpp);
+    addView(this.Bpo);
+    addView(this.Bpm);
     setBackgroundColor(-16777216);
-    bringChildToFront(this.zXI);
+    bringChildToFront(this.Bpm);
     AppMethodBeat.o(29651);
   }
   
   private void setShowErr(boolean paramBoolean)
   {
     AppMethodBeat.i(29652);
-    ImageView localImageView = this.zXK;
+    ImageView localImageView = this.Bpo;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -87,28 +87,28 @@ public class TalkRoomVolumeMeter
   
   private void setShowRed(boolean paramBoolean)
   {
-    this.zXH.zXX = paramBoolean;
+    this.Bpl.BpB = paramBoolean;
   }
   
   public void setMax(int paramInt)
   {
-    this.zXH.max = paramInt;
+    this.Bpl.max = paramInt;
   }
   
   public void setMaxPos(int paramInt)
   {
-    this.zXH.zXN = paramInt;
+    this.Bpl.Bpr = paramInt;
   }
   
   public void setMinPos(int paramInt)
   {
-    this.zXH.zXM = paramInt;
+    this.Bpl.Bpq = paramInt;
   }
   
   public void setShowFlame(boolean paramBoolean)
   {
     AppMethodBeat.i(29653);
-    Object localObject = this.zXL;
+    Object localObject = this.Bpp;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -116,20 +116,20 @@ public class TalkRoomVolumeMeter
       if (!paramBoolean) {
         break;
       }
-      localObject = this.zXH;
+      localObject = this.Bpl;
       if (!((a)localObject).started)
       {
         ((a)localObject).started = true;
-        ((a)localObject).zXT.au(100L, 100L);
+        ((a)localObject).Bpx.az(100L, 100L);
       }
       AppMethodBeat.o(29653);
       return;
     }
-    a locala = this.zXH;
+    a locala = this.Bpl;
     if (locala.started)
     {
       locala.started = false;
-      if ((locala.zXV >= locala.zXM) && (locala.zXV <= locala.zXN)) {
+      if ((locala.Bpz >= locala.Bpq) && (locala.Bpz <= locala.Bpr)) {
         break label132;
       }
     }
@@ -139,26 +139,26 @@ public class TalkRoomVolumeMeter
     {
       do
       {
-        locala.zXT.stopTimer();
+        locala.Bpx.stopTimer();
         AppMethodBeat.o(29653);
         return;
-      } while ((locala.zXQ == null) || (locala.zXP == null));
-      localCanvas = locala.zXO.lockCanvas();
-    } while ((localCanvas == null) || (locala.zXS == null));
-    localCanvas.setDrawFilter(locala.zXW);
-    locala.zXS.set(0, 0, locala.xnd, locala.xne + 0);
-    if (locala.zXX) {}
-    for (localObject = locala.zXQ;; localObject = locala.zXP)
+      } while ((locala.Bpu == null) || (locala.Bpt == null));
+      localCanvas = locala.Bps.lockCanvas();
+    } while ((localCanvas == null) || (locala.Bpw == null));
+    localCanvas.setDrawFilter(locala.BpA);
+    locala.Bpw.set(0, 0, locala.yBe, locala.yBf + 0);
+    if (locala.BpB) {}
+    for (localObject = locala.Bpu;; localObject = locala.Bpt)
     {
-      localCanvas.drawBitmap((Bitmap)localObject, null, locala.zXS, locala.paint);
-      locala.zXO.unlockCanvasAndPost(localCanvas);
+      localCanvas.drawBitmap((Bitmap)localObject, null, locala.Bpw, locala.paint);
+      locala.Bps.unlockCanvasAndPost(localCanvas);
       break;
     }
   }
   
   public void setValue(int paramInt)
   {
-    a locala = this.zXH;
+    a locala = this.Bpl;
     int i;
     if (paramInt < 0) {
       i = 0;
@@ -166,7 +166,7 @@ public class TalkRoomVolumeMeter
     for (;;)
     {
       locala.value = i;
-      locala.zXV = (locala.zXN - (locala.zXN - locala.zXM) * (locala.value * 1.0F / locala.max));
+      locala.Bpz = (locala.Bpr - (locala.Bpr - locala.Bpq) * (locala.value * 1.0F / locala.max));
       return;
       i = paramInt;
       if (paramInt > locala.max) {
@@ -179,26 +179,26 @@ public class TalkRoomVolumeMeter
     extends SurfaceView
     implements SurfaceHolder.Callback
   {
+    PaintFlagsDrawFilter BpA;
+    boolean BpB;
+    float Bpq;
+    float Bpr;
+    SurfaceHolder Bps;
+    Bitmap Bpt;
+    Bitmap Bpu;
+    private Bitmap Bpv;
+    Rect Bpw;
+    av Bpx;
+    private float Bpy;
+    float Bpz;
     private boolean isRefreshing;
-    private float[] jzv;
+    private float[] jTs;
     int max;
     Paint paint;
     boolean started;
     int value;
-    int xnd;
-    int xne;
-    float zXM;
-    float zXN;
-    SurfaceHolder zXO;
-    Bitmap zXP;
-    Bitmap zXQ;
-    private Bitmap zXR;
-    Rect zXS;
-    au zXT;
-    private float zXU;
-    float zXV;
-    PaintFlagsDrawFilter zXW;
-    boolean zXX;
+    int yBe;
+    int yBf;
     
     public a(Context paramContext)
     {
@@ -206,19 +206,19 @@ public class TalkRoomVolumeMeter
       AppMethodBeat.i(29643);
       this.max = 100;
       this.value = 0;
-      this.zXM = 0.0F;
-      this.zXN = 0.0F;
+      this.Bpq = 0.0F;
+      this.Bpr = 0.0F;
       this.isRefreshing = false;
-      this.zXU = this.zXN;
-      this.zXV = this.zXN;
-      this.zXX = false;
+      this.Bpy = this.Bpr;
+      this.Bpz = this.Bpr;
+      this.BpB = false;
       this.started = false;
-      this.zXO = getHolder();
-      this.zXO.addCallback(this);
+      this.Bps = getHolder();
+      this.Bps.addCallback(this);
       this.paint = new Paint();
       this.paint.setAntiAlias(true);
-      this.zXW = new PaintFlagsDrawFilter(0, 3);
-      this.zXT = new au(new au.a()
+      this.BpA = new PaintFlagsDrawFilter(0, 3);
+      this.Bpx = new av(new av.a()
       {
         public final boolean onTimerExpired()
         {
@@ -232,15 +232,15 @@ public class TalkRoomVolumeMeter
       AppMethodBeat.o(29643);
     }
     
-    private int ebP()
+    private int eog()
     {
       AppMethodBeat.i(29645);
-      if (this.zXP == null)
+      if (this.Bpt == null)
       {
         AppMethodBeat.o(29645);
         return 190;
       }
-      int i = this.zXP.getHeight();
+      int i = this.Bpt.getHeight();
       AppMethodBeat.o(29645);
       return i;
     }
@@ -248,14 +248,14 @@ public class TalkRoomVolumeMeter
     public final void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(29646);
-      ac.v("MicroMsg.TalkRoomVoiceMeter", "surfaceChanged, width = " + paramInt2 + " height = " + paramInt3);
-      this.zXN = 0.0F;
-      this.zXM = (paramInt3 - ebP());
-      this.zXU = this.zXN;
-      this.zXV = this.zXN;
-      this.xnd = paramInt2;
-      this.xne = ebP();
-      this.zXS = new Rect(0, (int)this.zXU, this.xnd, (int)this.zXU + this.xne);
+      ad.v("MicroMsg.TalkRoomVoiceMeter", "surfaceChanged, width = " + paramInt2 + " height = " + paramInt3);
+      this.Bpr = 0.0F;
+      this.Bpq = (paramInt3 - eog());
+      this.Bpy = this.Bpr;
+      this.Bpz = this.Bpr;
+      this.yBe = paramInt2;
+      this.yBf = eog();
+      this.Bpw = new Rect(0, (int)this.Bpy, this.yBe, (int)this.Bpy + this.yBf);
       this.isRefreshing = true;
       AppMethodBeat.o(29646);
     }
@@ -263,36 +263,36 @@ public class TalkRoomVolumeMeter
     public final void surfaceCreated(SurfaceHolder paramSurfaceHolder)
     {
       AppMethodBeat.i(29644);
-      ac.v("MicroMsg.TalkRoomVoiceMeter", "surfaceCreated");
-      this.zXP = BitmapFactory.decodeResource(getResources(), 2131234328);
-      this.zXR = BitmapFactory.decodeResource(getResources(), 2131234327);
-      this.zXQ = BitmapFactory.decodeResource(getResources(), 2131234329);
+      ad.v("MicroMsg.TalkRoomVoiceMeter", "surfaceCreated");
+      this.Bpt = BitmapFactory.decodeResource(getResources(), 2131234328);
+      this.Bpv = BitmapFactory.decodeResource(getResources(), 2131234327);
+      this.Bpu = BitmapFactory.decodeResource(getResources(), 2131234329);
       AppMethodBeat.o(29644);
     }
     
     public final void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
     {
       AppMethodBeat.i(29647);
-      ac.v("MicroMsg.TalkRoomVoiceMeter", "surfaceDestroyed");
+      ad.v("MicroMsg.TalkRoomVoiceMeter", "surfaceDestroyed");
       this.isRefreshing = false;
-      this.zXT.stopTimer();
-      if (this.zXP != null)
+      this.Bpx.stopTimer();
+      if (this.Bpt != null)
       {
-        ac.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.zXP.toString() });
-        this.zXP.recycle();
-        this.zXP = null;
+        ad.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.Bpt.toString() });
+        this.Bpt.recycle();
+        this.Bpt = null;
       }
-      if (this.zXR != null)
+      if (this.Bpv != null)
       {
-        ac.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.zXR.toString() });
-        this.zXR.recycle();
-        this.zXR = null;
+        ad.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.Bpv.toString() });
+        this.Bpv.recycle();
+        this.Bpv = null;
       }
-      if (this.zXQ != null)
+      if (this.Bpu != null)
       {
-        ac.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.zXQ.toString() });
-        this.zXQ.recycle();
-        this.zXQ = null;
+        ad.i("MicroMsg.TalkRoomVoiceMeter", "bitmap recycle %s", new Object[] { this.Bpu.toString() });
+        this.Bpu.recycle();
+        this.Bpu = null;
       }
       AppMethodBeat.o(29647);
     }

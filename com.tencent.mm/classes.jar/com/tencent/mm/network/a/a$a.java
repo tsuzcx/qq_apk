@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a$a
 {
   public long beginTime = 0L;
-  public long cfj = 0L;
   public String clientIp = "";
   public long count = 0L;
+  public long cpz = 0L;
   public long endTime = 0L;
   public int errCode = 0;
   public int errType = 0;
   public long expand1 = 0L;
   public long expand2 = 0L;
-  public int inA = 0;
-  public int inB = 0;
-  public long inC = 0L;
-  public long inD = 0L;
-  public long inE = 0L;
-  public c inw;
-  public boolean inx = false;
-  public long iny = 0L;
-  public long inz = 0L;
+  public c iGO;
+  public boolean iGP = false;
+  public long iGQ = 0L;
+  public long iGR = 0L;
+  public int iGS = 0;
+  public int iGT = 0;
+  public long iGU = 0L;
+  public long iGV = 0L;
+  public long iGW = 0L;
   public long netSignal = 0L;
   public int netType = 0;
   public int retryCount = 0;
@@ -35,12 +35,12 @@ public final class a$a
     long l3 = this.endTime;
     long l4 = this.endTime;
     long l5 = this.beginTime;
-    long l6 = this.cfj;
+    long l6 = this.cpz;
     long l7 = this.count;
-    if (this.inw == null) {}
-    for (String str = "null";; str = this.inw.toString())
+    if (this.iGO == null) {}
+    for (String str = "null";; str = this.iGO.toString())
     {
-      str = String.format("rtType:%d begin:%d, end:%d time:%d cost:%d count:%d ipInfo:%s socket:%b netType:%d err:(%d,%d) tx:%d rx:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4 - l5), Long.valueOf(l6), Long.valueOf(l7), str, Boolean.valueOf(this.inx), Integer.valueOf(this.netType), Integer.valueOf(this.errType), Integer.valueOf(this.errCode), Long.valueOf(this.iny), Long.valueOf(this.inz) });
+      str = String.format("rtType:%d begin:%d, end:%d time:%d cost:%d count:%d ipInfo:%s socket:%b netType:%d err:(%d,%d) tx:%d rx:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4 - l5), Long.valueOf(l6), Long.valueOf(l7), str, Boolean.valueOf(this.iGP), Integer.valueOf(this.netType), Integer.valueOf(this.errType), Integer.valueOf(this.errCode), Long.valueOf(this.iGQ), Long.valueOf(this.iGR) });
       AppMethodBeat.o(132962);
       return str;
     }

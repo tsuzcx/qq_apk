@@ -20,17 +20,17 @@ public final class b
   extends BaseAdapter
   implements k.a
 {
+  boolean Bkd = false;
   private Context context;
-  private List<g> xsD;
-  boolean zSy = false;
+  private List<g> yHm;
   
   public b(Context paramContext, List<g> paramList)
   {
     this.context = paramContext;
-    this.xsD = paramList;
+    this.yHm = paramList;
   }
   
-  private int cRx()
+  private int dac()
   {
     AppMethodBeat.i(29163);
     int i = getRealCount();
@@ -41,16 +41,16 @@ public final class b
   private int getRealCount()
   {
     AppMethodBeat.i(29162);
-    int i = this.xsD.size();
+    int i = this.yHm.size();
     AppMethodBeat.o(29162);
     return i;
   }
   
-  public final boolean GF(int paramInt)
+  public final boolean HY(int paramInt)
   {
     AppMethodBeat.i(29160);
-    int i = this.xsD.size();
-    if ((paramInt >= i) && (paramInt < i + cRx()))
+    int i = this.yHm.size();
+    if ((paramInt >= i) && (paramInt < i + dac()))
     {
       AppMethodBeat.o(29160);
       return true;
@@ -70,7 +70,7 @@ public final class b
   {
     AppMethodBeat.i(29159);
     int i = getRealCount();
-    int j = cRx();
+    int j = dac();
     AppMethodBeat.o(29159);
     return i + j;
   }
@@ -78,12 +78,12 @@ public final class b
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(29161);
-    if (GF(paramInt))
+    if (HY(paramInt))
     {
       AppMethodBeat.o(29161);
       return null;
     }
-    Object localObject = this.xsD.get(paramInt);
+    Object localObject = this.yHm.get(paramInt);
     AppMethodBeat.o(29161);
     return localObject;
   }
@@ -100,53 +100,53 @@ public final class b
     {
       paramViewGroup = new c();
       paramView = View.inflate(this.context, 2131493084, null);
-      paramViewGroup.fBA = ((ImageView)paramView.findViewById(2131296905));
-      paramViewGroup.zST = ((TextView)paramView.findViewById(2131296904));
-      paramViewGroup.fwQ = ((TextView)paramView.findViewById(2131296906));
-      paramViewGroup.zSU = paramView.findViewById(2131296907);
+      paramViewGroup.fUN = ((ImageView)paramView.findViewById(2131296905));
+      paramViewGroup.Bky = ((TextView)paramView.findViewById(2131296904));
+      paramViewGroup.fQd = ((TextView)paramView.findViewById(2131296906));
+      paramViewGroup.Bkz = paramView.findViewById(2131296907);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.zSU.setVisibility(4);
-      if (!GF(paramInt)) {
+      paramViewGroup.Bkz.setVisibility(4);
+      if (!HY(paramInt)) {
         break;
       }
-      paramViewGroup.fBA.setVisibility(4);
-      paramViewGroup.zST.setVisibility(4);
-      paramViewGroup.fwQ.setVisibility(4);
+      paramViewGroup.fUN.setVisibility(4);
+      paramViewGroup.Bky.setVisibility(4);
+      paramViewGroup.fQd.setVisibility(4);
       AppMethodBeat.o(29158);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
     }
     g localg = (g)getItem(paramInt);
-    paramViewGroup.fBA.setVisibility(0);
+    paramViewGroup.fUN.setVisibility(0);
     Bitmap localBitmap = h.c(localg.field_appId, 5, a.getDensity(this.context));
     if (localBitmap == null)
     {
-      paramViewGroup.fBA.setBackgroundResource(2131231052);
-      paramViewGroup.fwQ.setVisibility(0);
-      paramViewGroup.fwQ.setText(h.a(this.context, localg, null));
-      if (!this.zSy) {
+      paramViewGroup.fUN.setBackgroundResource(2131231052);
+      paramViewGroup.fQd.setVisibility(0);
+      paramViewGroup.fQd.setText(h.a(this.context, localg, null));
+      if (!this.Bkd) {
         break label259;
       }
-      paramViewGroup.zST.setVisibility(0);
+      paramViewGroup.Bky.setVisibility(0);
     }
     for (;;)
     {
       AppMethodBeat.o(29158);
       return paramView;
-      paramViewGroup.fBA.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      paramViewGroup.fUN.setBackgroundDrawable(new BitmapDrawable(localBitmap));
       break;
       label259:
-      paramViewGroup.zST.setVisibility(8);
+      paramViewGroup.Bky.setVisibility(8);
     }
   }
   
-  public final void rX(boolean paramBoolean)
+  public final void sD(boolean paramBoolean)
   {
     AppMethodBeat.i(29157);
-    this.zSy = paramBoolean;
+    this.Bkd = paramBoolean;
     notifyDataSetChanged();
     AppMethodBeat.o(29157);
   }

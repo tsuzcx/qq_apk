@@ -1,197 +1,102 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.editor.a.a;
-import com.tencent.mm.media.editor.a.b;
-import com.tencent.mm.protocal.protobuf.bxe;
-import com.tencent.mm.protocal.protobuf.dqm;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "", "respId", "", "materials", "", "Lcom/tencent/mm/plugin/vlog/model/Material;", "netMusicPath", "", "xEffectConfig", "Lcom/tencent/mm/protocal/protobuf/VlogResp;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "editData", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "drawingRect", "", "(JLjava/util/List;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/VlogResp;Ljava/util/ArrayList;Ljava/util/ArrayList;[F)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditData", "()Ljava/util/ArrayList;", "setEditData", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "fid", "", "getFid", "()I", "getMaterials", "()Ljava/util/List;", "setMaterials", "(Ljava/util/List;)V", "getNetMusicPath", "()Ljava/lang/String;", "setNetMusicPath", "(Ljava/lang/String;)V", "getRespId", "()J", "setRespId", "(J)V", "sid", "getSid", "vid", "getVid", "getXEffectConfig", "()Lcom/tencent/mm/protocal/protobuf/VlogResp;", "setXEffectConfig", "(Lcom/tencent/mm/protocal/protobuf/VlogResp;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "copy", "equals", "", "other", "getVideoDurationMs", "hashCode", "isValid", "toString", "Companion", "plugin-vlog_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "", "outputDurationMs", "", "outputAudioType", "outputPath", "", "targetWidth", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "audioSampleRate", "audioChannelCount", "(IILjava/lang/String;IIIIIIII)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioChannelCount", "setAudioChannelCount", "getAudioSampleRate", "setAudioSampleRate", "getFrameRate", "setFrameRate", "getOutputAudioType", "setOutputAudioType", "getOutputDurationMs", "setOutputDurationMs", "getOutputPath", "()Ljava/lang/String;", "setOutputPath", "(Ljava/lang/String;)V", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getVideoBitrate", "setVideoBitrate", "getVideoRotate", "setVideoRotate", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "toString", "plugin-vlog_release"})
 public final class y
 {
-  public static final a AoZ;
-  public long AoU;
-  public List<? extends i> AoV;
-  public String AoW;
-  public dqm AoX;
-  public ArrayList<a> AoY;
-  public float[] wnb;
-  public ArrayList<b> wpu;
+  public int BGH;
+  public int BGI;
+  public int audioBitrate;
+  public int audioChannelCount;
+  public int audioSampleRate;
+  public int frameRate;
+  public int hlJ;
+  public String pSc;
+  public int targetHeight;
+  public int targetWidth;
+  public int videoBitrate;
   
-  static
+  private y(String paramString)
   {
-    AppMethodBeat.i(110947);
-    AoZ = new a((byte)0);
-    AppMethodBeat.o(110947);
+    AppMethodBeat.i(110935);
+    this.BGH = 0;
+    this.BGI = 0;
+    this.pSc = paramString;
+    this.targetWidth = 0;
+    this.targetHeight = 0;
+    this.videoBitrate = 0;
+    this.audioBitrate = 0;
+    this.frameRate = 0;
+    this.hlJ = 0;
+    this.audioSampleRate = 0;
+    this.audioChannelCount = 1;
+    AppMethodBeat.o(110935);
   }
   
-  private y(long paramLong, List<? extends i> paramList, String paramString, dqm paramdqm, ArrayList<b> paramArrayList, ArrayList<a> paramArrayList1, float[] paramArrayOfFloat)
+  public final void aDr(String paramString)
   {
-    AppMethodBeat.i(110945);
-    this.AoU = paramLong;
-    this.AoV = paramList;
-    this.AoW = paramString;
-    this.AoX = paramdqm;
-    this.wpu = paramArrayList;
-    this.AoY = paramArrayList1;
-    this.wnb = paramArrayOfFloat;
-    AppMethodBeat.o(110945);
-  }
-  
-  public final void aF(ArrayList<b> paramArrayList)
-  {
-    AppMethodBeat.i(110943);
-    k.h(paramArrayList, "<set-?>");
-    this.wpu = paramArrayList;
-    AppMethodBeat.o(110943);
-  }
-  
-  public final int efM()
-  {
-    return (int)this.AoX.FXO.EKf;
-  }
-  
-  public final int efN()
-  {
-    return (int)this.AoX.FXO.EKg;
-  }
-  
-  public final int efO()
-  {
-    return (int)this.AoX.FXO.EbQ;
+    AppMethodBeat.i(110934);
+    p.h(paramString, "<set-?>");
+    this.pSc = paramString;
+    AppMethodBeat.o(110934);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(110949);
+    AppMethodBeat.i(110939);
     if (this != paramObject)
     {
       if ((paramObject instanceof y))
       {
         paramObject = (y)paramObject;
-        if ((this.AoU != paramObject.AoU) || (!k.g(this.AoV, paramObject.AoV)) || (!k.g(this.AoW, paramObject.AoW)) || (!k.g(this.AoX, paramObject.AoX)) || (!k.g(this.wpu, paramObject.wpu)) || (!k.g(this.AoY, paramObject.AoY)) || (!k.g(this.wnb, paramObject.wnb))) {}
+        if ((this.BGH != paramObject.BGH) || (this.BGI != paramObject.BGI) || (!p.i(this.pSc, paramObject.pSc)) || (this.targetWidth != paramObject.targetWidth) || (this.targetHeight != paramObject.targetHeight) || (this.videoBitrate != paramObject.videoBitrate) || (this.audioBitrate != paramObject.audioBitrate) || (this.frameRate != paramObject.frameRate) || (this.hlJ != paramObject.hlJ) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.audioChannelCount != paramObject.audioChannelCount)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(110949);
+      AppMethodBeat.o(110939);
       return true;
     }
-    AppMethodBeat.o(110949);
+    AppMethodBeat.o(110939);
     return false;
-  }
-  
-  public final int getVideoDurationMs()
-  {
-    AppMethodBeat.i(110941);
-    long l = 0L;
-    Iterator localIterator = ((Iterable)this.AoV).iterator();
-    if (localIterator.hasNext())
-    {
-      i locali = (i)localIterator.next();
-      if (locali.endTime <= l) {
-        break label72;
-      }
-      l = locali.endTime;
-    }
-    label72:
-    for (;;)
-    {
-      break;
-      int i = (int)l;
-      AppMethodBeat.o(110941);
-      return i;
-    }
   }
   
   public final int hashCode()
   {
-    int i1 = 0;
-    AppMethodBeat.i(110948);
-    long l = this.AoU;
-    int i2 = (int)(l ^ l >>> 32);
-    Object localObject = this.AoV;
-    int i;
-    int j;
-    label59:
-    int k;
-    label76:
-    int m;
-    if (localObject != null)
+    AppMethodBeat.i(110938);
+    int j = this.BGH;
+    int k = this.BGI;
+    String str = this.pSc;
+    if (str != null) {}
+    for (int i = str.hashCode();; i = 0)
     {
-      i = localObject.hashCode();
-      localObject = this.AoW;
-      if (localObject == null) {
-        break label176;
-      }
-      j = localObject.hashCode();
-      localObject = this.AoX;
-      if (localObject == null) {
-        break label181;
-      }
-      k = localObject.hashCode();
-      localObject = this.wpu;
-      if (localObject == null) {
-        break label186;
-      }
-      m = localObject.hashCode();
-      label94:
-      localObject = this.AoY;
-      if (localObject == null) {
-        break label192;
-      }
+      int m = this.targetWidth;
+      int n = this.targetHeight;
+      int i1 = this.videoBitrate;
+      int i2 = this.audioBitrate;
+      int i3 = this.frameRate;
+      int i4 = this.hlJ;
+      int i5 = this.audioSampleRate;
+      int i6 = this.audioChannelCount;
+      AppMethodBeat.o(110938);
+      return ((((((((i + (j * 31 + k) * 31) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6;
     }
-    label176:
-    label181:
-    label186:
-    label192:
-    for (int n = localObject.hashCode();; n = 0)
-    {
-      localObject = this.wnb;
-      if (localObject != null) {
-        i1 = Arrays.hashCode((float[])localObject);
-      }
-      AppMethodBeat.o(110948);
-      return (n + (m + (k + (j + (i + i2 * 31) * 31) * 31) * 31) * 31) * 31 + i1;
-      i = 0;
-      break;
-      j = 0;
-      break label59;
-      k = 0;
-      break label76;
-      m = 0;
-      break label94;
-    }
-  }
-  
-  public final void p(float[] paramArrayOfFloat)
-  {
-    AppMethodBeat.i(110944);
-    k.h(paramArrayOfFloat, "<set-?>");
-    this.wnb = paramArrayOfFloat;
-    AppMethodBeat.o(110944);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(110942);
-    String str = "VLogScriptModel(respId=" + this.AoU + ", materials=" + this.AoV + ", netMusicPath='" + this.AoW + "', xEffectConfig=" + this.AoX + ", editItems=" + this.wpu + ", editData=" + this.AoY + ", drawingRect=" + Arrays.toString(this.wnb) + ')';
-    AppMethodBeat.o(110942);
+    AppMethodBeat.i(110937);
+    String str = "VLogGenerateModel(outputDurationMs=" + this.BGH + ", outputAudioType=" + this.BGI + ", outputPath=" + this.pSc + ", targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", frameRate=" + this.frameRate + ", videoRotate=" + this.hlJ + ", audioSampleRate=" + this.audioSampleRate + ", audioChannelCount=" + this.audioChannelCount + ")";
+    AppMethodBeat.o(110937);
     return str;
   }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel$Companion;", "", "()V", "default", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "plugin-vlog_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.y
  * JD-Core Version:    0.7.0.1
  */

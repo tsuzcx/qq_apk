@@ -2,85 +2,63 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class ex
   extends a
 {
-  private long dWa = 0L;
-  private long dWb = 0L;
-  private long dWc = 0L;
-  private long dWd = 0L;
-  private int dWe = 0;
+  private String dSb = "";
+  public long ejx = 0L;
+  private long ejy = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118500);
+    AppMethodBeat.i(94832);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWa);
+    ((StringBuffer)localObject).append(this.ejx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWb);
+    ((StringBuffer)localObject).append(this.dSb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWc);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWe);
+    ((StringBuffer)localObject).append(this.ejy);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118500);
+    awz((String)localObject);
+    AppMethodBeat.o(94832);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118501);
+    AppMethodBeat.i(94833);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("StartZipTime:").append(this.dWa);
+    ((StringBuffer)localObject).append("Entrance:").append(this.ejx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Enable:").append(this.dWb);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Exceed:").append(this.dWc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Cost:").append(this.dWd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Result:").append(this.dWe);
+    ((StringBuffer)localObject).append("ClickTimeStampMs:").append(this.ejy);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118501);
+    AppMethodBeat.o(94833);
     return localObject;
   }
   
-  public final ex Rs()
+  public final ex Tm()
   {
-    this.dWc = 1L;
+    AppMethodBeat.i(94831);
+    this.ejy = bt.flT();
+    super.bg("ClickTimeStampMs", this.ejy);
+    AppMethodBeat.o(94831);
     return this;
   }
   
   public final int getId()
   {
-    return 17654;
+    return 15987;
   }
   
-  public final ex it(int paramInt)
+  public final ex of(String paramString)
   {
-    this.dWe = paramInt;
-    return this;
-  }
-  
-  public final ex jh(long paramLong)
-  {
-    this.dWa = paramLong;
-    return this;
-  }
-  
-  public final ex ji(long paramLong)
-  {
-    this.dWb = paramLong;
-    return this;
-  }
-  
-  public final ex jj(long paramLong)
-  {
-    this.dWd = paramLong;
+    AppMethodBeat.i(94830);
+    this.dSb = t("SessionId", paramString, true);
+    AppMethodBeat.o(94830);
     return this;
   }
 }

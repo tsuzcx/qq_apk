@@ -14,19 +14,19 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class SnsArtistPreference
   extends Preference
 {
-  private MMActivity iMV;
+  private MMActivity fLP;
   private String mTitle;
-  private String vLt;
-  private int xpM;
-  private int xpN;
-  private TextView yIu;
-  String yIv;
+  private String wSC;
+  private int yEp;
+  private int yEq;
+  private TextView zZO;
+  String zZP;
   
   public SnsArtistPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(98475);
-    this.iMV = ((MMActivity)paramContext);
+    this.fLP = ((MMActivity)paramContext);
     AppMethodBeat.o(98475);
   }
   
@@ -34,24 +34,24 @@ public final class SnsArtistPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98476);
-    this.vLt = "";
+    this.wSC = "";
     this.mTitle = "";
-    this.xpM = -1;
-    this.xpN = 8;
-    this.yIu = null;
-    this.yIv = "";
-    this.iMV = ((MMActivity)paramContext);
+    this.yEp = -1;
+    this.yEq = 8;
+    this.zZO = null;
+    this.zZP = "";
+    this.fLP = ((MMActivity)paramContext);
     setLayoutResource(2131494804);
     AppMethodBeat.o(98476);
   }
   
-  public final void dPh()
+  public final void eby()
   {
     AppMethodBeat.i(98477);
-    if ((this.yIu != null) && (this.yIv != null) && (!this.yIv.equals("")) && (this.iMV != null))
+    if ((this.zZO != null) && (this.zZP != null) && (!this.zZP.equals("")) && (this.fLP != null))
     {
-      String str = this.iMV.getString(2131763415, new Object[] { this.yIv });
-      this.yIu.setText(str);
+      String str = this.fLP.getString(2131763415, new Object[] { this.zZP });
+      this.zZO.setText(str);
     }
     AppMethodBeat.o(98477);
   }
@@ -60,18 +60,18 @@ public final class SnsArtistPreference
   {
     AppMethodBeat.i(98479);
     super.onBindView(paramView);
-    this.yIu = ((TextView)paramView.findViewById(2131296948));
+    this.zZO = ((TextView)paramView.findViewById(2131296948));
     ((TextView)paramView.findViewById(2131296626)).setText(this.mTitle);
     paramView = (TextView)paramView.findViewById(2131305745);
     if (paramView != null)
     {
-      paramView.setVisibility(this.xpN);
-      paramView.setText(this.vLt);
-      if (this.xpM != -1) {
-        paramView.setBackgroundDrawable(a.l(this.iMV, this.xpM));
+      paramView.setVisibility(this.yEq);
+      paramView.setText(this.wSC);
+      if (this.yEp != -1) {
+        paramView.setBackgroundDrawable(a.l(this.fLP, this.yEp));
       }
     }
-    dPh();
+    eby();
     AppMethodBeat.o(98479);
   }
   
@@ -82,7 +82,7 @@ public final class SnsArtistPreference
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
     ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    this.mTitle = this.iMV.getString(2131763416);
+    this.mTitle = this.fLP.getString(2131763416);
     localLayoutInflater.inflate(2131494806, localViewGroup);
     AppMethodBeat.o(98478);
     return paramViewGroup;
@@ -90,7 +90,7 @@ public final class SnsArtistPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsArtistPreference
  * JD-Core Version:    0.7.0.1
  */

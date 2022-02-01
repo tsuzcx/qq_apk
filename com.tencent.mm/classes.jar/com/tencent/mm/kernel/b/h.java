@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cn.a;
 import com.tencent.mm.cn.a.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.vending.b.b;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
@@ -13,69 +13,68 @@ import com.tencent.tinker.entry.ApplicationLike;
 public final class h
   extends g
 {
-  public com.tencent.mm.booter.d fnq;
-  public ApplicationLike gku;
-  public a<ApplicationLifeCycle> gkv;
+  public com.tencent.mm.booter.d fFy;
+  public ApplicationLike gEe;
+  public a<ApplicationLifeCycle> gEf;
   public com.tencent.mm.compatible.loader.d mProfileCompat;
   
   public h(String paramString, Application paramApplication, ApplicationLike paramApplicationLike)
   {
     super(paramString, paramApplication);
     AppMethodBeat.i(132220);
-    this.gkv = new a();
-    ai.setProcessName(paramString);
-    this.gku = paramApplicationLike;
+    this.gEf = new a();
+    this.gEe = paramApplicationLike;
     AppMethodBeat.o(132220);
   }
   
   public final b a(ApplicationLifeCycle paramApplicationLifeCycle)
   {
     AppMethodBeat.i(132226);
-    paramApplicationLifeCycle = this.gkv.bs(paramApplicationLifeCycle);
+    paramApplicationLifeCycle = this.gEf.bu(paramApplicationLifeCycle);
     AppMethodBeat.o(132226);
     return paramApplicationLifeCycle;
   }
   
   public final String getPackageName()
   {
-    AppMethodBeat.i(210302);
-    String str = ai.getPackageName();
-    AppMethodBeat.o(210302);
+    AppMethodBeat.i(221709);
+    String str = aj.getPackageName();
+    AppMethodBeat.o(221709);
     return str;
   }
   
   public final void onConfigurationChanged(final Configuration paramConfiguration)
   {
     AppMethodBeat.i(132225);
-    this.gkv.a(new a.a() {});
+    this.gEf.a(new a.a() {});
     AppMethodBeat.o(132225);
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(132221);
-    this.gkv.a(new a.a() {});
+    this.gEf.a(new a.a() {});
     AppMethodBeat.o(132221);
   }
   
   public final void onLowMemory()
   {
     AppMethodBeat.i(132222);
-    this.gkv.a(new a.a() {});
+    this.gEf.a(new a.a() {});
     AppMethodBeat.o(132222);
   }
   
   public final void onTerminate()
   {
     AppMethodBeat.i(132224);
-    this.gkv.a(new a.a() {});
+    this.gEf.a(new a.a() {});
     AppMethodBeat.o(132224);
   }
   
   public final void onTrimMemory(final int paramInt)
   {
     AppMethodBeat.i(132223);
-    this.gkv.a(new a.a() {});
+    this.gEf.a(new a.a() {});
     AppMethodBeat.o(132223);
   }
 }

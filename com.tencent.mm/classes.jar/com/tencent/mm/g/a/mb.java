@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bij;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class mb
   extends b
 {
-  public a dog;
+  public a dzu;
   
   public mb()
   {
@@ -17,17 +15,18 @@ public final class mb
   
   private mb(byte paramByte)
   {
-    AppMethodBeat.i(101728);
-    this.dog = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19821);
+    this.dzu = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(101728);
+    AppMethodBeat.o(19821);
   }
   
   public static final class a
   {
-    public LinkedList<bij> doh;
-    public boolean doi = false;
+    public byte[] dzv;
+    public int dzw;
+    public boolean dzx;
   }
 }
 

@@ -16,15 +16,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xa;
+import com.tencent.mm.g.a.xt;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout.a;
 import com.tencent.mm.pluginsdk.ui.VoiceInputLayout.b;
 import com.tencent.mm.pluginsdk.ui.VoiceInputScrollView;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,77 +33,77 @@ import java.util.List;
 public final class a
   extends LinearLayout
 {
-  private List<String> Ami;
-  private a DGG;
-  private VoiceInputLayout.a Dps;
-  private MMEditText Dpx;
-  public int DsU;
-  private long DzA;
-  private long DzB;
-  private boolean DzC;
-  private boolean DzD;
-  private final int DzE;
-  private boolean DzF;
-  private c<xa> DzI;
-  private VoiceInputLayout.b DzL;
-  public boolean DzM;
-  private VoiceInputLayout Dzg;
-  private ImageButton Dzh;
-  private Button Dzi;
-  private VoiceInputScrollView Dzm;
-  private TextView Dzn;
-  private long Dzo;
-  private float Dzq;
-  private float Dzr;
-  private boolean Dzs;
-  private boolean Dzt;
-  private boolean Dzu;
-  private int Dzv;
-  private boolean Dzx;
-  private boolean Dzy;
-  private long Dzz;
+  private List<String> BDU;
+  private MMEditText EUB;
+  private VoiceInputLayout.a EUw;
+  public int EXY;
+  private float FeA;
+  private boolean FeB;
+  private boolean FeC;
+  private boolean FeD;
+  private int FeE;
+  private boolean FeG;
+  private boolean FeH;
+  private long FeI;
+  private long FeJ;
+  private long FeK;
+  private boolean FeL;
+  private boolean FeM;
+  private final int FeN;
+  private boolean FeO;
+  private c<xt> FeR;
+  private VoiceInputLayout.b FeU;
+  public boolean FeV;
+  private VoiceInputLayout Fep;
+  private ImageButton Feq;
+  private Button Fer;
+  private VoiceInputScrollView Fev;
+  private TextView Few;
+  private long Fex;
+  private float Fez;
+  private a FlN;
   AudioManager audioManager;
-  private String cWE;
-  private Button fTu;
-  PhoneStateListener kMN;
+  private String dhU;
+  private Button gmY;
+  PhoneStateListener ljq;
   private Context mContext;
-  private Toast sGM;
-  private boolean sGU;
-  private TelephonyManager tHh;
+  private Toast tDF;
+  private boolean tDN;
+  private TelephonyManager uJU;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(32054);
-    this.Dzo = 0L;
-    this.Dzq = 0.0F;
-    this.Dzr = 0.0F;
-    this.Dzs = false;
-    this.Dzt = false;
-    this.sGU = false;
-    this.Dzu = false;
-    this.Dzv = 300;
-    this.Dzx = false;
-    this.Dzy = false;
-    this.Dzz = 0L;
-    this.DzA = 0L;
-    this.DzB = 0L;
-    this.DzC = false;
-    this.DzD = false;
-    this.DzE = 2;
-    this.DzF = false;
-    this.Ami = new ArrayList();
-    this.cWE = "";
-    this.Dps = new VoiceInputLayout.a()
+    this.Fex = 0L;
+    this.Fez = 0.0F;
+    this.FeA = 0.0F;
+    this.FeB = false;
+    this.FeC = false;
+    this.tDN = false;
+    this.FeD = false;
+    this.FeE = 300;
+    this.FeG = false;
+    this.FeH = false;
+    this.FeI = 0L;
+    this.FeJ = 0L;
+    this.FeK = 0L;
+    this.FeL = false;
+    this.FeM = false;
+    this.FeN = 2;
+    this.FeO = false;
+    this.BDU = new ArrayList();
+    this.dhU = "";
+    this.EUw = new VoiceInputLayout.a()
     {
-      public final void cLO()
+      public final void cUh()
       {
         AppMethodBeat.i(32044);
         a.a(a.this, 2131764727);
         AppMethodBeat.o(32044);
       }
     };
-    this.kMN = new PhoneStateListener()
+    this.ljq = new PhoneStateListener()
     {
       public final void onCallStateChanged(int paramAnonymousInt, String paramAnonymousString)
       {
@@ -112,7 +113,7 @@ public final class a
         if (a.f(a.this) != null) {
           i = a.f(a.this).getCurrentState();
         }
-        ac.d("MicroMsg.VoiceInputPanel", "onCallStateChanged :%s, currentState: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+        ad.d("MicroMsg.VoiceInputPanel", "onCallStateChanged :%s, currentState: %s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
         a.f(a.this);
         if (i != 2)
         {
@@ -123,12 +124,12 @@ public final class a
         AppMethodBeat.o(32046);
       }
     };
-    this.DzL = new VoiceInputLayout.b()
+    this.FeU = new VoiceInputLayout.b()
     {
-      public final void aF(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      public final void aH(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(32053);
-        ac.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectError localerrorType = %s errorType = %s errCode = %s time %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Long.valueOf(System.currentTimeMillis()) });
+        ad.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectError localerrorType = %s errorType = %s errCode = %s time %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), Long.valueOf(System.currentTimeMillis()) });
         a.d(a.this);
         if ((a.j(a.this) instanceof Activity)) {
           ((Activity)a.j(a.this)).getWindow().clearFlags(128);
@@ -138,7 +139,7 @@ public final class a
         }
         for (;;)
         {
-          a.e(a.this).uZ(false);
+          a.e(a.this).vK(false);
           a.c(a.this).setHint(null);
           AppMethodBeat.o(32053);
           return;
@@ -154,25 +155,25 @@ public final class a
           if (a.n(a.this)) {
             a.d(a.this, false);
           }
-          ac.i("MicroMsg.VoiceInputPanel", "onDetected %s", new Object[] { paramAnonymousArrayOfString[0] });
+          ad.i("MicroMsg.VoiceInputPanel", "onDetected %s", new Object[] { paramAnonymousArrayOfString[0] });
           a.c(a.this).setText(paramAnonymousArrayOfString[0]);
           if ((!a.o(a.this)) && (paramAnonymousArrayOfString[0].length() != 0))
           {
             a.b(a.this, true);
             a.b(a.this, System.currentTimeMillis());
-            ac.d("VOICEDEBUG", "First Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(a.p(a.this) - a.g(a.this)) });
+            ad.d("VOICEDEBUG", "First Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(System.currentTimeMillis()), Long.valueOf(a.p(a.this) - a.g(a.this)) });
           }
           a.q(a.this).addAll(paramAnonymousList);
         }
         AppMethodBeat.o(32052);
       }
       
-      public final void cLF()
+      public final void cTY()
       {
         AppMethodBeat.i(32047);
         a.a(a.this, System.currentTimeMillis());
-        ac.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectStart time %s", new Object[] { Long.valueOf(a.g(a.this)) });
-        ac.d("VOICEDEBUG", "Start Record Time = %s", new Object[] { Long.valueOf(a.g(a.this)) });
+        ad.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectStart time %s", new Object[] { Long.valueOf(a.g(a.this)) });
+        ad.d("VOICEDEBUG", "Start Record Time = %s", new Object[] { Long.valueOf(a.g(a.this)) });
         a.b(a.this, false);
         a.c(a.this, true);
         a.d(a.this, true);
@@ -192,96 +193,100 @@ public final class a
         a.l(a.this).setVisibility(4);
         a.m(a.this).setVisibility(8);
         a.c(a.this).setHint(a.this.getResources().getString(2131764725));
-        a.e(a.this).uZ(true);
+        a.e(a.this).vK(true);
         AppMethodBeat.o(32047);
       }
       
-      public final void cLI()
+      public final void cUb()
       {
         AppMethodBeat.i(32048);
-        a.e(a.this).uZ(false);
+        a.e(a.this).vK(false);
         a.c(a.this).setHint(null);
         AppMethodBeat.o(32048);
       }
       
-      public final void cLJ()
+      public final void cUc()
       {
         AppMethodBeat.i(32049);
-        ac.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectCancel time " + System.currentTimeMillis());
+        ad.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectCancel time " + System.currentTimeMillis());
         a.d(a.this);
         if ((a.j(a.this) instanceof Activity)) {
           ((Activity)a.j(a.this)).getWindow().clearFlags(128);
         }
-        a.e(a.this).uZ(false);
+        a.e(a.this).vK(false);
         a.c(a.this).setHint(null);
         a.b(a.this, 2);
         AppMethodBeat.o(32049);
       }
       
-      public final void cLK()
+      public final void cUd()
       {
         AppMethodBeat.i(32050);
-        ac.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onStateReset time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        ad.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onStateReset time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
         a.d(a.this);
         if ((a.j(a.this) instanceof Activity)) {
           ((Activity)a.j(a.this)).getWindow().clearFlags(128);
         }
-        a.e(a.this).uZ(false);
+        a.e(a.this).vK(false);
         a.c(a.this).setHint(null);
         AppMethodBeat.o(32050);
       }
       
-      public final void cLL()
+      public final void cUe()
       {
         AppMethodBeat.i(32051);
-        ac.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectFinish  time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+        ad.i("MicroMsg.VoiceInputPanel", "VoiceDetectListener onDetectFinish  time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
         a.d(a.this);
         if ((a.j(a.this) instanceof Activity)) {
           ((Activity)a.j(a.this)).getWindow().clearFlags(128);
         }
-        a.e(a.this).uZ(false);
+        a.e(a.this).vK(false);
         a.c(a.this).setHint(null);
         a.b(a.this, 2);
         AppMethodBeat.o(32051);
       }
     };
-    this.DsU = com.tencent.mm.cc.a.fromDPToPix(getContext(), 280);
-    this.DzM = true;
+    this.EXY = com.tencent.mm.cc.a.fromDPToPix(getContext(), 280);
+    this.FeV = true;
     this.mContext = paramContext;
-    ac.d("MicroMsg.VoiceInputPanel", "init");
+    ad.d("MicroMsg.VoiceInputPanel", "init");
     View.inflate(getContext(), 2131496075, this);
-    this.Dzh = ((ImageButton)findViewById(2131306494));
-    this.Dzi = ((Button)findViewById(2131306493));
-    this.fTu = ((Button)findViewById(2131306499));
-    this.Dzn = ((TextView)findViewById(2131305205));
-    this.Dzh.setVisibility(0);
-    this.fTu.setVisibility(4);
-    this.Dzi.setVisibility(8);
-    this.Dpx = ((MMEditText)findViewById(2131306501));
-    this.Dpx.setHintTextColor(getResources().getColor(2131100707));
-    this.Dpx.setClickable(false);
-    this.Dzm = ((VoiceInputScrollView)findViewById(2131306498));
-    this.Dzh.setOnClickListener(new View.OnClickListener()
+    this.Feq = ((ImageButton)findViewById(2131306494));
+    this.Fer = ((Button)findViewById(2131306493));
+    this.gmY = ((Button)findViewById(2131306499));
+    this.Few = ((TextView)findViewById(2131305205));
+    this.Feq.setVisibility(0);
+    this.gmY.setVisibility(4);
+    this.Fer.setVisibility(8);
+    this.EUB = ((MMEditText)findViewById(2131306501));
+    this.EUB.setHintTextColor(getResources().getColor(2131100707));
+    this.EUB.setClickable(false);
+    this.Fev = ((VoiceInputScrollView)findViewById(2131306498));
+    this.Feq.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(32043);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/websearch/WebSearchVoiceInputPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         a.a(a.this);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/websearch/WebSearchVoiceInputPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(32043);
       }
     });
-    this.Dpx.clearFocus();
-    this.Dpx.setFocusable(false);
-    this.Dpx.setClickable(false);
-    this.Dpx.setLongClickable(false);
+    this.EUB.clearFocus();
+    this.EUB.setFocusable(false);
+    this.EUB.setClickable(false);
+    this.EUB.setLongClickable(false);
     this.audioManager = ((AudioManager)getContext().getSystemService("audio"));
-    this.cWE = String.valueOf(System.nanoTime());
-    ac.i("MicroMsg.VoiceInputPanel", "mToUser %s", new Object[] { this.cWE });
-    ePv();
+    this.dhU = String.valueOf(System.nanoTime());
+    ad.i("MicroMsg.VoiceInputPanel", "mToUser %s", new Object[] { this.dhU });
+    fex();
     AppMethodBeat.o(32054);
   }
   
-  private void aGs()
+  private void aJD()
   {
     AppMethodBeat.i(32061);
     if (this.audioManager != null) {
@@ -293,146 +298,146 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(32058);
-    ac.i("MicroMsg.VoiceInputPanel", "destroy");
+    ad.i("MicroMsg.VoiceInputPanel", "destroy");
     reset();
-    if (this.DzI != null)
+    if (this.FeR != null)
     {
-      com.tencent.mm.sdk.b.a.GpY.d(this.DzI);
-      this.DzI = null;
+      com.tencent.mm.sdk.b.a.IbL.d(this.FeR);
+      this.FeR = null;
     }
-    if (this.Dzg != null)
+    if (this.Fep != null)
     {
-      this.Dzg.aKQ();
-      this.Dzg.setVoiceDetectListener(null);
-      this.Dzg.cMa();
-      this.Dzg.eNi();
-      this.Dzg = null;
+      this.Fep.aNZ();
+      this.Fep.setVoiceDetectListener(null);
+      this.Fep.cUt();
+      this.Fep.fch();
+      this.Fep = null;
     }
-    if ((this.tHh != null) && (this.kMN != null))
+    if ((this.uJU != null) && (this.ljq != null))
     {
-      this.tHh.listen(this.kMN, 0);
-      this.kMN = null;
+      this.uJU.listen(this.ljq, 0);
+      this.ljq = null;
     }
-    this.tHh = null;
+    this.uJU = null;
     this.mContext = null;
     AppMethodBeat.o(32058);
   }
   
-  public final void ePv()
+  public final void fex()
   {
     AppMethodBeat.i(32055);
-    this.Dzo = bs.Gn();
-    if (this.DzI == null)
+    this.Fex = bt.HI();
+    if (this.FeR == null)
     {
-      ac.i("MicroMsg.VoiceInputPanel", " initVoiceResultListener");
-      this.DzI = new c() {};
-      com.tencent.mm.sdk.b.a.GpY.c(this.DzI);
+      ad.i("MicroMsg.VoiceInputPanel", " initVoiceResultListener");
+      this.FeR = new c() {};
+      com.tencent.mm.sdk.b.a.IbL.c(this.FeR);
     }
-    if (this.Dzg == null)
+    if (this.Fep == null)
     {
-      this.Dzg = ((VoiceInputLayout)findViewById(2131306502));
-      this.Dzg.setVoiceDetectListener(this.DzL);
-      this.Dzg.setLongClickLisnter(this.Dps);
+      this.Fep = ((VoiceInputLayout)findViewById(2131306502));
+      this.Fep.setVoiceDetectListener(this.FeU);
+      this.Fep.setLongClickLisnter(this.EUw);
     }
-    this.Dzn.setVisibility(0);
-    if (this.tHh == null)
+    this.Few.setVisibility(0);
+    if (this.uJU == null)
     {
-      this.tHh = ((TelephonyManager)ai.getContext().getSystemService("phone"));
-      this.tHh.listen(this.kMN, 32);
+      this.uJU = ((TelephonyManager)aj.getContext().getSystemService("phone"));
+      this.uJU.listen(this.ljq, 32);
     }
     AppMethodBeat.o(32055);
   }
   
-  public final void ePx()
+  public final void fez()
   {
     AppMethodBeat.i(32060);
-    ac.d("MicroMsg.VoiceInputPanel", "setTextHintAndColor");
-    if ((this.Dpx != null) && (this.Dpx.getText() != null) && (this.Dpx.getText().length() == 0))
+    ad.d("MicroMsg.VoiceInputPanel", "setTextHintAndColor");
+    if ((this.EUB != null) && (this.EUB.getText() != null) && (this.EUB.getText().length() == 0))
     {
-      this.fTu.setVisibility(4);
-      this.Dzh.setVisibility(0);
-      this.Dzi.setVisibility(8);
-      this.Dzn.setVisibility(0);
+      this.gmY.setVisibility(4);
+      this.Feq.setVisibility(0);
+      this.Fer.setVisibility(8);
+      this.Few.setVisibility(0);
     }
     for (;;)
     {
-      aGs();
-      if (!this.Dzy)
+      aJD();
+      if (!this.FeH)
       {
-        this.Dzy = true;
-        this.DzB = System.currentTimeMillis();
-        ac.d("VOICEDEBUG", "Last Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(this.DzB), Long.valueOf(this.DzB - this.DzA) });
+        this.FeH = true;
+        this.FeK = System.currentTimeMillis();
+        ad.d("VOICEDEBUG", "Last Text Time = %s Corss Time = %s", new Object[] { Long.valueOf(this.FeK), Long.valueOf(this.FeK - this.FeJ) });
       }
       AppMethodBeat.o(32060);
       return;
-      this.Dzh.setVisibility(4);
-      this.Dzn.setVisibility(8);
+      this.Feq.setVisibility(4);
+      this.Few.setVisibility(8);
     }
   }
   
   public final void pause()
   {
     AppMethodBeat.i(32056);
-    ac.i("MicroMsg.VoiceInputPanel", "pause");
-    if (this.Dzg != null) {
-      this.Dzg.aKQ();
+    ad.i("MicroMsg.VoiceInputPanel", "pause");
+    if (this.Fep != null) {
+      this.Fep.aNZ();
     }
-    this.Dzq = 0.0F;
-    this.Dzr = 0.0F;
-    this.Dzs = false;
-    this.Dzt = false;
-    this.sGU = false;
-    this.Dzu = false;
-    this.DzC = false;
-    this.DzM = true;
+    this.Fez = 0.0F;
+    this.FeA = 0.0F;
+    this.FeB = false;
+    this.FeC = false;
+    this.tDN = false;
+    this.FeD = false;
+    this.FeL = false;
+    this.FeV = true;
     AppMethodBeat.o(32056);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(32057);
-    ac.i("MicroMsg.VoiceInputPanel", "VoiceInputPanel reset");
+    ad.i("MicroMsg.VoiceInputPanel", "VoiceInputPanel reset");
     pause();
-    this.DzD = false;
-    this.Ami.clear();
-    if (this.Dpx != null)
+    this.FeM = false;
+    this.BDU.clear();
+    if (this.EUB != null)
     {
-      this.Dpx.setText("");
-      ePx();
+      this.EUB.setText("");
+      fez();
     }
     AppMethodBeat.o(32057);
   }
   
   public final void setCallback(a parama)
   {
-    this.DGG = parama;
+    this.FlN = parama;
   }
   
   public final void setToUser(String paramString)
   {
     AppMethodBeat.i(32059);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      this.cWE = paramString;
+      this.dhU = paramString;
       AppMethodBeat.o(32059);
       return;
     }
-    ac.e("MicroMsg.VoiceInputPanel", "setToUser toUser is isNullOrNil");
+    ad.e("MicroMsg.VoiceInputPanel", "setToUser toUser is isNullOrNil");
     AppMethodBeat.o(32059);
   }
   
   public static abstract interface a
   {
-    public abstract void aGY(String paramString);
+    public abstract void aMB(String paramString);
     
-    public abstract void eNg();
+    public abstract void fcf();
     
-    public abstract void uZ(boolean paramBoolean);
+    public abstract void vK(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.websearch.a
  * JD-Core Version:    0.7.0.1
  */

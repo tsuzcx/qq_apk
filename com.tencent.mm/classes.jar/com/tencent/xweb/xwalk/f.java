@@ -8,12 +8,12 @@ import org.xwalk.core.XWalkCookieManager;
 public final class f
   implements CookieInternal.ICookieSyncManagerInternal
 {
-  XWalkCookieManager KGe;
+  XWalkCookieManager MwE;
   
   public f()
   {
     AppMethodBeat.i(154262);
-    this.KGe = new XWalkCookieManager();
+    this.MwE = new XWalkCookieManager();
     AppMethodBeat.o(154262);
   }
   
@@ -22,8 +22,8 @@ public final class f
   public final void sync()
   {
     AppMethodBeat.i(154263);
-    if (this.KGe != null) {
-      this.KGe.flushCookieStore();
+    if (this.MwE != null) {
+      this.MwE.flushCookieStore();
     }
     AppMethodBeat.o(154263);
   }

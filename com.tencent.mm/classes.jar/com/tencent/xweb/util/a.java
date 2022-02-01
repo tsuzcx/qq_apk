@@ -13,7 +13,7 @@ public final class a
   public static String a(String paramString, SecretKey paramSecretKey)
   {
     AppMethodBeat.i(156985);
-    paramString = a(aVi(paramString), paramSecretKey);
+    paramString = a(bbm(paramString), paramSecretKey);
     if (paramString == null)
     {
       AppMethodBeat.o(156985);
@@ -44,12 +44,12 @@ public final class a
     return null;
   }
   
-  public static SecretKey aVh(String paramString)
+  public static SecretKey bbl(String paramString)
   {
     AppMethodBeat.i(156983);
     try
     {
-      paramString = new SecretKeySpec(aVi(paramString), "AES");
+      paramString = new SecretKeySpec(bbm(paramString), "AES");
       AppMethodBeat.o(156983);
       return paramString;
     }
@@ -61,7 +61,7 @@ public final class a
     return null;
   }
   
-  private static byte[] aVi(String paramString)
+  public static byte[] bbm(String paramString)
   {
     AppMethodBeat.i(156986);
     int j = paramString.length();

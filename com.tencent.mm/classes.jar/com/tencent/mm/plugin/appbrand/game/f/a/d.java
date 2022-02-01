@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.game.f.a;
 
 import android.opengl.EGLContext;
-import com.tencent.mm.media.i.a;
+import com.tencent.mm.media.j.a;
 import com.tencent.mm.media.widget.camerarecordview.preview.f;
 import d.g.a.b;
-import d.y;
+import d.z;
 
 public abstract interface d
   extends f
@@ -23,7 +23,7 @@ public abstract interface d
   
   public abstract void setOnSurfaceTextureAvailableDelegate(a parama);
   
-  public abstract void setOnTextureDrawFinishDelegate(b<com.tencent.mm.media.f.d, y> paramb);
+  public abstract void setOnTextureDrawFinishDelegate(b<com.tencent.mm.media.g.d, z> paramb);
   
   public abstract void setPreviewRenderer(a parama);
   

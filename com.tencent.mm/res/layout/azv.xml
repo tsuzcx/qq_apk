@@ -6,9 +6,9 @@
         <include layout="@layout/azt" />
         <TextView android:textColor="@color/s5" android:gravity="center|left" android:id="@id/gil" android:background="@drawable/st" android:padding="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" android:text="@string/c41" android:drawablePadding="@dimen/jn" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/eun" android:background="@drawable/st" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/e7" android:minHeight="@dimen/e6" style="@style/j6">
-            <FrameLayout android:layout_gravity="center_vertical" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <FrameLayout android:layout_gravity="center_vertical" android:id="@id/hzb" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <com.tencent.mm.ui.MMImageView android:id="@id/cn1" android:src="@color/a_r" android:contentDescription="@string/ge" style="@style/j7" />
-                <ImageView android:layout_gravity="center" android:id="@id/cnl" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/b0h" android:contentDescription="@string/ge" />
+                <ImageView android:layout_gravity="center" android:id="@id/cnl" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/shortvideo_play_btn" android:contentDescription="@string/ge" />
             </FrameLayout>
             <LinearLayout android:orientation="vertical" android:paddingTop="@dimen/jn" android:paddingBottom="@dimen/jn" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
                 <TextView android:textSize="@dimen/ia" android:id="@id/gam" android:layout_marginLeft="10.0dip" style="@style/j4" />

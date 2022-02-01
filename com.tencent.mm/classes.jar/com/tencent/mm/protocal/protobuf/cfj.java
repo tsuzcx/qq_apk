@@ -1,80 +1,84 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class cfj
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String FtP;
+  public com.tencent.mm.bx.b GZa;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43122);
+    AppMethodBeat.i(43115);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FtP == null)
+      if (this.GZa == null)
       {
-        paramVarArgs = new b("Not all required fields were included: PhoneNum");
-        AppMethodBeat.o(43122);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: buf");
+        AppMethodBeat.o(43115);
         throw paramVarArgs;
       }
-      if (this.FtP != null) {
-        paramVarArgs.d(1, this.FtP);
+      paramVarArgs.aS(1, this.type);
+      if (this.GZa != null) {
+        paramVarArgs.c(2, this.GZa);
       }
-      AppMethodBeat.o(43122);
+      AppMethodBeat.o(43115);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.FtP == null) {
-        break label261;
-      }
-    }
-    label261:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FtP) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(43122);
+      int i = f.a.a.b.b.a.bz(1, this.type) + 0;
+      paramInt = i;
+      if (this.GZa != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.GZa);
+      }
+      AppMethodBeat.o(43115);
       return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        if (this.FtP == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: PhoneNum");
-          AppMethodBeat.o(43122);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(43122);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cfj localcfj = (cfj)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(43122);
-          return -1;
-        }
-        localcfj.FtP = locala.LVo.readString();
-        AppMethodBeat.o(43122);
-        return 0;
-      }
-      AppMethodBeat.o(43122);
-      return -1;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      if (this.GZa == null)
+      {
+        paramVarArgs = new f.a.a.b("Not all required fields were included: buf");
+        AppMethodBeat.o(43115);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(43115);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      cfj localcfj = (cfj)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(43115);
+        return -1;
+      case 1: 
+        localcfj.type = locala.NPN.zc();
+        AppMethodBeat.o(43115);
+        return 0;
+      }
+      localcfj.GZa = locala.NPN.gxI();
+      AppMethodBeat.o(43115);
+      return 0;
+    }
+    AppMethodBeat.o(43115);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cfj
  * JD-Core Version:    0.7.0.1
  */

@@ -16,39 +16,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   implements MenuItem
 {
-  public boolean Hyj;
-  private int Hyk;
-  public int Hyl;
-  private Drawable Hym;
-  public ContextMenu.ContextMenuInfo Hyn;
-  private MenuItem.OnMenuItemClickListener Hyo;
-  private int abP;
-  private int abW;
-  public boolean dvX;
+  public boolean JlZ;
+  public boolean Jma;
+  private int Jmb;
+  public int Jmc;
+  private Drawable Jmd;
+  public ContextMenu.ContextMenuInfo Jme;
+  private MenuItem.OnMenuItemClickListener Jmf;
+  private int adG;
+  private int adN;
+  public boolean dIh;
   private int iconId;
   private Intent intent;
-  public String kbL;
-  public boolean ltx;
+  public String kwk;
+  public boolean lSG;
   private Context mContext;
-  public CharSequence sEs;
+  public CharSequence tBj;
   private CharSequence title;
   
   public m(Context paramContext, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159237);
-    this.sEs = null;
-    this.ltx = false;
+    this.Jma = false;
+    this.tBj = null;
+    this.lSG = false;
     this.mContext = paramContext;
-    this.abW = paramInt1;
-    this.abP = paramInt2;
-    this.Hyl = paramContext.getResources().getColor(2131099732);
+    this.adN = paramInt1;
+    this.adG = paramInt2;
+    this.Jmc = paramContext.getResources().getColor(2131099732);
     AppMethodBeat.o(159237);
   }
   
   public final MenuItem C(Drawable paramDrawable)
   {
-    this.Hym = paramDrawable;
-    this.Hyl = 0;
+    this.Jmd = paramDrawable;
+    this.Jmc = 0;
     return this;
   }
   
@@ -79,13 +81,13 @@ public final class m
   
   public final int getGroupId()
   {
-    return this.abP;
+    return this.adG;
   }
   
   public final Drawable getIcon()
   {
     AppMethodBeat.i(159239);
-    if (this.Hym == null)
+    if (this.Jmd == null)
     {
       if ((this.iconId != 0) && (this.mContext != null))
       {
@@ -96,7 +98,7 @@ public final class m
       AppMethodBeat.o(159239);
       return null;
     }
-    Drawable localDrawable = this.Hym;
+    Drawable localDrawable = this.Jmd;
     AppMethodBeat.o(159239);
     return localDrawable;
   }
@@ -108,12 +110,12 @@ public final class m
   
   public final int getItemId()
   {
-    return this.abW;
+    return this.adN;
   }
   
   public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return this.Hyn;
+    return this.Jme;
   }
   
   public final char getNumericShortcut()
@@ -136,9 +138,9 @@ public final class m
     AppMethodBeat.i(159238);
     if (this.title == null)
     {
-      if ((this.Hyk != 0) && (this.mContext != null))
+      if ((this.Jmb != 0) && (this.mContext != null))
       {
-        localObject = this.mContext.getString(this.Hyk);
+        localObject = this.mContext.getString(this.Jmb);
         AppMethodBeat.o(159238);
         return localObject;
       }
@@ -185,19 +187,19 @@ public final class m
     return true;
   }
   
-  public final MenuItem jx(int paramInt1, int paramInt2)
+  public final MenuItem jJ(int paramInt1, int paramInt2)
   {
     this.iconId = paramInt1;
-    this.Hyl = paramInt2;
+    this.Jmc = paramInt2;
     return this;
   }
   
   public final boolean performClick()
   {
     AppMethodBeat.i(159240);
-    if (this.Hyo != null)
+    if (this.Jmf != null)
     {
-      boolean bool = this.Hyo.onMenuItemClick(this);
+      boolean bool = this.Jmf.onMenuItemClick(this);
       AppMethodBeat.o(159240);
       return bool;
     }
@@ -248,7 +250,7 @@ public final class m
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    this.Hym = paramDrawable;
+    this.Jmd = paramDrawable;
     return this;
   }
   
@@ -270,7 +272,7 @@ public final class m
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.Hyo = paramOnMenuItemClickListener;
+    this.Jmf = paramOnMenuItemClickListener;
     return this;
   }
   
@@ -288,7 +290,7 @@ public final class m
   
   public final MenuItem setTitle(int paramInt)
   {
-    this.Hyk = paramInt;
+    this.Jmb = paramInt;
     return this;
   }
   

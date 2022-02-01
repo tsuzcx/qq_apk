@@ -11,7 +11,15 @@ import java.io.OutputStream;
 public final class b
   implements e
 {
-  public final String aKe(String paramString)
+  public final OutputStream Cz(String paramString)
+  {
+    AppMethodBeat.i(183508);
+    paramString = new FileOutputStream(paramString);
+    AppMethodBeat.o(183508);
+    return paramString;
+  }
+  
+  public final String aPK(String paramString)
   {
     AppMethodBeat.i(183505);
     paramString = d.getMD5(paramString);
@@ -19,10 +27,10 @@ public final class b
     return paramString;
   }
   
-  public final boolean lm(String paramString1, String paramString2)
+  public final boolean lL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(183506);
-    boolean bool = c.lm(paramString1, paramString2);
+    boolean bool = c.lL(paramString1, paramString2);
     AppMethodBeat.o(183506);
     return bool;
   }
@@ -32,14 +40,6 @@ public final class b
     AppMethodBeat.i(183507);
     paramString = new FileInputStream(paramString);
     AppMethodBeat.o(183507);
-    return paramString;
-  }
-  
-  public final OutputStream zA(String paramString)
-  {
-    AppMethodBeat.i(183508);
-    paramString = new FileOutputStream(paramString);
-    AppMethodBeat.o(183508);
     return paramString;
   }
 }

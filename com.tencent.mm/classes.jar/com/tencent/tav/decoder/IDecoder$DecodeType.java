@@ -6,11 +6,11 @@ public enum IDecoder$DecodeType
 {
   static
   {
-    AppMethodBeat.i(197852);
+    AppMethodBeat.i(218235);
     Video = new DecodeType("Video", 0);
     Audio = new DecodeType("Audio", 1);
     $VALUES = new DecodeType[] { Video, Audio };
-    AppMethodBeat.o(197852);
+    AppMethodBeat.o(218235);
   }
   
   private IDecoder$DecodeType() {}

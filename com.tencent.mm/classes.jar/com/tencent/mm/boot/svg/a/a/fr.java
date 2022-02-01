@@ -46,13 +46,13 @@ public final class fr
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-13882324);
-      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, -333.0F, 0.0F, 1.0F, -317.0F);
+      localPaint1.setColor(-1);
+      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, -211.0F, 0.0F, 1.0F, -317.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject2);
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
-      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 333.0F, 0.0F, 1.0F, 317.0F);
+      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 211.0F, 0.0F, 1.0F, 317.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject2);
       localCanvas.concat((Matrix)localObject1);
@@ -99,7 +99,7 @@ public final class fr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.fr
  * JD-Core Version:    0.7.0.1
  */

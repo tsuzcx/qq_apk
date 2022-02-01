@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gz
   extends b
 {
-  public a dhW;
+  public a dtp;
   
   public gz()
   {
@@ -15,22 +15,22 @@ public final class gz
   
   private gz(byte paramByte)
   {
-    AppMethodBeat.i(168879);
-    this.dhW = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(200892);
+    this.dtp = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(168879);
+    AppMethodBeat.o(200892);
   }
   
   public static final class a
   {
-    public long dcd;
-    public int progress;
+    public long dtq;
+    public boolean dtr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.gz
  * JD-Core Version:    0.7.0.1
  */

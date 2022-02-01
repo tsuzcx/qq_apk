@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 public final class t
   extends x
 {
-  public int ygY;
-  public int yhn;
-  public String yho;
-  public String yhp;
-  public String yhq;
-  public boolean yjc;
-  public String yjg;
-  public String yjh;
+  public int zxf;
+  public int zxu;
+  public String zxv;
+  public String zxw;
+  public String zxx;
+  public boolean zzK;
+  public String zzO;
+  public String zzP;
 }
 
 

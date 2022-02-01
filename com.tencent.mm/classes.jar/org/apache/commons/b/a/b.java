@@ -11,48 +11,48 @@ import org.apache.commons.b.h;
 public abstract class b
   implements Serializable
 {
-  public static final b Mao = new a();
-  public static final b Map = new b();
-  public static final b Maq = new c();
-  public static final b Mar = new d();
-  public static final b Mas = new e();
-  private static final ThreadLocal Mat = new ThreadLocal();
-  boolean MaA = false;
-  String MaB = ",";
-  private String MaC = "{";
-  private String MaD = ",";
-  private boolean MaE = true;
-  private String MaF = "}";
-  private boolean MaG = true;
-  String MaH = "<null>";
-  private String MaI = "<size=";
-  private String MaJ = ">";
-  private String MaK = "<";
-  private String MaL = ">";
-  boolean Mau = true;
-  boolean Mav = true;
-  boolean Maw = false;
-  boolean Max = true;
-  private String May = "=";
-  boolean Maz = false;
-  String vWI = "[";
-  String vWJ = "]";
+  public static final b NUO = new a();
+  public static final b NUP = new b();
+  public static final b NUQ = new c();
+  public static final b NUR = new d();
+  public static final b NUS = new e();
+  private static final ThreadLocal NUT = new ThreadLocal();
+  boolean NUU = true;
+  boolean NUV = true;
+  boolean NUW = false;
+  boolean NUX = true;
+  private String NUY = "=";
+  boolean NUZ = false;
+  boolean NVa = false;
+  String NVb = ",";
+  private String NVc = "{";
+  private String NVd = ",";
+  private boolean NVe = true;
+  private String NVf = "}";
+  private boolean NVg = true;
+  String NVh = "<null>";
+  private String NVi = "<size=";
+  private String NVj = ">";
+  private String NVk = "<";
+  private String NVl = ">";
+  String xeA = "]";
+  String xez = "[";
   
   private void a(StringBuffer paramStringBuffer, int paramInt)
   {
-    paramStringBuffer.append(this.MaI);
+    paramStringBuffer.append(this.NVi);
     paramStringBuffer.append(paramInt);
-    paramStringBuffer.append(this.MaJ);
+    paramStringBuffer.append(this.NVj);
   }
   
   private void a(StringBuffer paramStringBuffer, String paramString, Object paramObject, boolean paramBoolean)
   {
-    if ((fY(paramObject)) && (!(paramObject instanceof Number)) && (!(paramObject instanceof Boolean)) && (!(paramObject instanceof Character)))
+    if ((gu(paramObject)) && (!(paramObject instanceof Number)) && (!(paramObject instanceof Boolean)) && (!(paramObject instanceof Character)))
     {
       e.a(paramStringBuffer, paramObject);
       return;
     }
-    fZ(paramObject);
+    gv(paramObject);
     for (;;)
     {
       try
@@ -73,7 +73,7 @@ public abstract class b
       }
       finally
       {
-        ga(paramObject);
+        gw(paramObject);
       }
       if (paramBoolean)
       {
@@ -167,13 +167,13 @@ public abstract class b
   
   private void a(StringBuffer paramStringBuffer, String paramString, Object[] paramArrayOfObject)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     if (i < paramArrayOfObject.length)
     {
       Object localObject = paramArrayOfObject[i];
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       if (localObject == null) {
         b(paramStringBuffer);
@@ -182,192 +182,183 @@ public abstract class b
       {
         i += 1;
         break;
-        a(paramStringBuffer, paramString, localObject, this.MaE);
+        a(paramStringBuffer, paramString, localObject, this.NVe);
       }
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, byte[] paramArrayOfByte)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfByte.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfByte[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, char[] paramArrayOfChar)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfChar.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfChar[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, double[] paramArrayOfDouble)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfDouble.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfDouble[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, float[] paramArrayOfFloat)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfFloat.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfFloat[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, int[] paramArrayOfInt)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfInt.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfInt[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, long[] paramArrayOfLong)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfLong.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfLong[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, short[] paramArrayOfShort)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfShort.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfShort[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void a(StringBuffer paramStringBuffer, boolean[] paramArrayOfBoolean)
   {
-    paramStringBuffer.append(this.MaC);
+    paramStringBuffer.append(this.NVc);
     int i = 0;
     while (i < paramArrayOfBoolean.length)
     {
       if (i > 0) {
-        paramStringBuffer.append(this.MaD);
+        paramStringBuffer.append(this.NVd);
       }
       paramStringBuffer.append(paramArrayOfBoolean[i]);
       i += 1;
     }
-    paramStringBuffer.append(this.MaF);
+    paramStringBuffer.append(this.NVf);
   }
   
   private void b(StringBuffer paramStringBuffer)
   {
-    paramStringBuffer.append(this.MaH);
+    paramStringBuffer.append(this.NVh);
   }
   
   private void c(StringBuffer paramStringBuffer, Object paramObject)
   {
-    paramStringBuffer.append(this.MaK);
-    paramStringBuffer.append(org.apache.commons.b.b.bC(paramObject.getClass()));
-    paramStringBuffer.append(this.MaL);
+    paramStringBuffer.append(this.NVk);
+    paramStringBuffer.append(org.apache.commons.b.b.bE(paramObject.getClass()));
+    paramStringBuffer.append(this.NVl);
   }
   
-  private static boolean fY(Object paramObject)
+  private static boolean gu(Object paramObject)
   {
-    Map localMap = gfJ();
+    Map localMap = gyh();
     return (localMap != null) && (localMap.containsKey(paramObject));
   }
   
-  static void fZ(Object paramObject)
+  static void gv(Object paramObject)
   {
     if (paramObject != null)
     {
-      Map localMap = gfJ();
+      Map localMap = gyh();
       Object localObject = localMap;
       if (localMap == null)
       {
         localObject = new WeakHashMap();
-        Mat.set(localObject);
+        NUT.set(localObject);
       }
       ((Map)localObject).put(paramObject, null);
     }
   }
   
-  static void ga(Object paramObject)
+  static void gw(Object paramObject)
   {
     if (paramObject != null)
     {
-      Map localMap = gfJ();
+      Map localMap = gyh();
       if (localMap != null)
       {
         localMap.remove(paramObject);
         if (localMap.isEmpty()) {
-          Mat.set(null);
+          NUT.set(null);
         }
       }
     }
   }
   
-  private static Map gfJ()
+  private static Map gyh()
   {
-    return (Map)Mat.get();
-  }
-  
-  protected final void aXy(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.vWJ = str;
+    return (Map)NUT.get();
   }
   
   public final void b(StringBuffer paramStringBuffer, Object paramObject)
@@ -379,13 +370,22 @@ public abstract class b
     {
       c(paramStringBuffer);
       return;
-      a(paramStringBuffer, null, paramObject, this.MaG);
+      a(paramStringBuffer, null, paramObject, this.NVg);
     }
+  }
+  
+  protected final void bdS(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.xeA = str;
   }
   
   final void c(StringBuffer paramStringBuffer)
   {
-    paramStringBuffer.append(this.MaB);
+    paramStringBuffer.append(this.NVb);
   }
   
   static final class a
@@ -393,7 +393,7 @@ public abstract class b
   {
     private Object readResolve()
     {
-      return b.Mao;
+      return b.NUO;
     }
   }
   
@@ -403,21 +403,21 @@ public abstract class b
     b()
     {
       AppMethodBeat.i(40698);
-      this.vWI = "[";
-      String str2 = h.LQw + "  ";
+      this.xez = "[";
+      String str2 = h.NHr + "  ";
       String str1 = str2;
       if (str2 == null) {
         str1 = "";
       }
-      this.MaB = str1;
-      this.Maz = true;
-      aXy(h.LQw + "]");
+      this.NVb = str1;
+      this.NUZ = true;
+      bdS(h.NHr + "]");
       AppMethodBeat.o(40698);
     }
     
     private Object readResolve()
     {
-      return b.Map;
+      return b.NUP;
     }
   }
   
@@ -426,12 +426,12 @@ public abstract class b
   {
     c()
     {
-      this.Mau = false;
+      this.NUU = false;
     }
     
     private Object readResolve()
     {
-      return b.Maq;
+      return b.NUQ;
     }
   }
   
@@ -440,13 +440,13 @@ public abstract class b
   {
     d()
     {
-      this.Maw = true;
-      this.Max = false;
+      this.NUW = true;
+      this.NUX = false;
     }
     
     private Object readResolve()
     {
-      return b.Mar;
+      return b.NUR;
     }
   }
   
@@ -456,23 +456,23 @@ public abstract class b
     e()
     {
       AppMethodBeat.i(40699);
-      this.Mav = false;
-      this.Max = false;
-      this.Mau = false;
-      this.vWI = "";
-      aXy("");
+      this.NUV = false;
+      this.NUX = false;
+      this.NUU = false;
+      this.xez = "";
+      bdS("");
       AppMethodBeat.o(40699);
     }
     
     private Object readResolve()
     {
-      return b.Mas;
+      return b.NUS;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.a.b
  * JD-Core Version:    0.7.0.1
  */

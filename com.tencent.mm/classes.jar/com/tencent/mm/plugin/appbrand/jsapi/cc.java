@@ -1,16 +1,41 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class cc
-  extends a<d>
+  extends a
 {
-  public static final int CTRL_INDEX = 283;
-  public static final String NAME = "traceEvent";
+  public static final int CTRL_INDEX = 731;
+  public static final String NAME = "saveWaid";
+  
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(45633);
+    HashMap localHashMap = new HashMap();
+    try
+    {
+      localHashMap.put("result", "0");
+      paramc.h(paramInt, m("ok", localHashMap));
+      ad.i("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, data=" + paramJSONObject + ", waidNum=0");
+      AppMethodBeat.o(45633);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      localHashMap.put("result", "0");
+      paramc.h(paramInt, m("fail", localHashMap));
+      ad.e("MicroMsg.JsApiSaveWaid", "appBrand JsApiSaveWaid, exp=" + paramJSONObject.toString());
+      AppMethodBeat.o(45633);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cc
  * JD-Core Version:    0.7.0.1
  */

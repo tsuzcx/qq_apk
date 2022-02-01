@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static String Wj(int paramInt)
+  public static String Ya(int paramInt)
   {
     AppMethodBeat.i(110785);
     Object localObject = new JSONObject();
@@ -37,7 +37,7 @@ public final class a
     }
   }
   
-  public static String aFx(String paramString)
+  public static String aKX(String paramString)
   {
     AppMethodBeat.i(110784);
     if (paramString == null)
@@ -55,7 +55,7 @@ public final class a
     }
     catch (JSONException paramString)
     {
-      ac.e("MicroMsg.WePkgReport", paramString.getMessage());
+      ad.e("MicroMsg.WePkgReport", paramString.getMessage());
       AppMethodBeat.o(110784);
       return "";
     }
@@ -63,7 +63,7 @@ public final class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.WePkgReport", paramString.getMessage());
+        ad.e("MicroMsg.WePkgReport", paramString.getMessage());
       }
     }
   }
@@ -71,15 +71,15 @@ public final class a
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5)
   {
     AppMethodBeat.i(110781);
-    ac.d("MicroMsg.WePkgReport", "reportWepkgLogicKv, scene = %s, url = %s, pkgId = %s, version = %s, resultCode = %d, costTime = %d, extInfo = %s", new Object[] { paramString1, paramString2, paramString3, paramString4, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString5 });
+    ad.d("MicroMsg.WePkgReport", "reportWepkgLogicKv, scene = %s, url = %s, pkgId = %s, version = %s, resultCode = %d, costTime = %d, extInfo = %s", new Object[] { paramString1, paramString2, paramString3, paramString4, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString5 });
     for (;;)
     {
       try
       {
-        if (bs.isNullOrNil(paramString5))
+        if (bt.isNullOrNil(paramString5))
         {
           localObject = new JSONObject();
-          ((JSONObject)localObject).put("netType", ax.iH(ai.getContext()));
+          ((JSONObject)localObject).put("netType", ay.iR(aj.getContext()));
           localObject = URLEncoder.encode(((JSONObject)localObject).toString(), "UTF-8");
           paramString5 = (String)localObject;
           localObject = paramString5;
@@ -95,7 +95,7 @@ public final class a
       }
       try
       {
-        if (!bs.isNullOrNil(paramString2))
+        if (!bt.isNullOrNil(paramString2))
         {
           str3 = URLEncoder.encode(paramString2, "UTF-8");
           localObject = paramString5;
@@ -107,11 +107,11 @@ public final class a
         str3 = paramString2;
         continue;
       }
-      h.wUl.f(13980, new Object[] { paramString1, str3, paramString3, paramString4, Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
+      g.yhR.f(13980, new Object[] { paramString1, str3, paramString3, paramString4, Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
       AppMethodBeat.o(110781);
       return;
       localObject = new JSONObject(URLDecoder.decode(paramString5, "UTF-8"));
-      ((JSONObject)localObject).put("netType", ax.iH(ai.getContext()));
+      ((JSONObject)localObject).put("netType", ay.iR(aj.getContext()));
       localObject = URLEncoder.encode(((JSONObject)localObject).toString(), "UTF-8");
       paramString5 = (String)localObject;
     }
@@ -120,11 +120,11 @@ public final class a
   public static void c(String paramString1, int paramInt, String paramString2, long paramLong)
   {
     AppMethodBeat.i(110782);
-    com.tencent.mm.plugin.wepkg.b.a locala = com.tencent.mm.plugin.wepkg.b.b.eIR().aEV(paramString1);
+    com.tencent.mm.plugin.wepkg.b.a locala = com.tencent.mm.plugin.wepkg.b.b.eXL().aKv(paramString1);
     if (locala != null)
     {
       paramString1 = t(new Object[] { paramString1, locala.field_version, Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0), paramString2, "", locala.field_oldVersion, Integer.valueOf(4), Long.valueOf(paramLong), Integer.valueOf(locala.field_pkgSize) });
-      com.tencent.mm.game.report.api.a.fYF.a(new com.tencent.mm.game.report.api.b(14229, paramString1));
+      com.tencent.mm.game.report.api.a.gsb.a(new com.tencent.mm.game.report.api.b(14229, paramString1));
     }
     AppMethodBeat.o(110782);
   }

@@ -14,7 +14,7 @@ final class PluginBigBallOfMudAsync$4
   public final MMWebView eo(Context paramContext)
   {
     AppMethodBeat.i(22422);
-    paramContext = MMWebViewWithJsApi.a.gU(paramContext);
+    paramContext = MMWebViewWithJsApi.a.gZ(paramContext);
     AppMethodBeat.o(22422);
     return paramContext;
   }

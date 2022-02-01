@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class j
   extends f
 {
-  private float cTr = 1.0F;
-  private boolean cTs = true;
+  private float deH = 1.0F;
+  private boolean deI = true;
   
-  protected final byte[] G(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136877);
-    this.cTs = true;
+    this.deI = true;
     int j = 0;
     if (j < paramInt2)
     {
@@ -19,18 +19,18 @@ public final class j
       int k = 0;
       while (k < paramInt1)
       {
-        i += this.cTj[k][j];
+        i += this.dez[k][j];
         k += 1;
       }
-      boolean bool = this.cTs;
+      boolean bool = this.deI;
       for (;;)
       {
-        k = (int)(this.cTr * i);
+        k = (int)(this.deH * i);
         if (k > this.MAX_VALUE)
         {
-          this.cTr = (this.MAX_VALUE / i);
-          if (this.cTr < 1.0F) {
-            this.cTr -= (1.0F - this.cTr) / 16.0F;
+          this.deH = (this.MAX_VALUE / i);
+          if (this.deH < 1.0F) {
+            this.deH -= (1.0F - this.deH) / 16.0F;
           }
           bool = false;
           i = k;
@@ -40,32 +40,32 @@ public final class j
           if (k >= this.MIN_VALUE) {
             break;
           }
-          this.cTr = (this.MIN_VALUE / i);
-          if (this.cTr < 1.0F) {
-            this.cTr -= (1.0F - this.cTr) / 16.0F;
+          this.deH = (this.MIN_VALUE / i);
+          if (this.deH < 1.0F) {
+            this.deH -= (1.0F - this.deH) / 16.0F;
           }
           bool = false;
           i = k;
         }
       }
       if ((bool) && (i < this.MAX_VALUE) && (i > this.MIN_VALUE)) {
-        if (this.cTr >= 1.0F) {
+        if (this.deH >= 1.0F) {
           break label280;
         }
       }
       label280:
-      for (this.cTr += (1.0F - this.cTr) / 16.0F;; this.cTr = 1.0F)
+      for (this.deH += (1.0F - this.deH) / 16.0F;; this.deH = 1.0F)
       {
-        this.cTs = false;
+        this.deI = false;
         if (j == paramInt2 / 2) {
-          this.cTs = true;
+          this.deI = true;
         }
-        this.cTm[j] = hC(k);
+        this.deC[j] = hJ(k);
         j += 1;
         break;
       }
     }
-    byte[] arrayOfByte = ce(paramInt3, paramInt2);
+    byte[] arrayOfByte = cg(paramInt3, paramInt2);
     AppMethodBeat.o(136877);
     return arrayOfByte;
   }

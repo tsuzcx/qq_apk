@@ -9,31 +9,31 @@ import com.tencent.d.e.a.b.e;
 import com.tencent.d.e.a.b.g;
 import com.tencent.d.f.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
 {
-  private static final int[] JTA = { 1, 5, 4, 8, 9, 2 };
-  private static int JTB = -1;
+  private static final int[] LNq = { 1, 5, 4, 8, 9, 2 };
+  private static int LNr = -1;
   
   public static com.tencent.d.e.a.b.a a(int paramInt1, int paramInt2, Context paramContext, int paramInt3, SparseArray<i> paramSparseArray, List<k> paramList)
   {
     AppMethodBeat.i(138393);
     com.tencent.d.e.a.b.a locala = new com.tencent.d.e.a.b.a();
-    locala.JTX = 0L;
-    locala.dpt = "";
-    locala.BZA = com.tencent.d.f.i.cu(paramContext, paramContext.getPackageName()).versionCode;
-    locala.JRO = "14D6ACDE3C2F2F48";
+    locala.LNN = 0L;
+    locala.dBg = "";
+    locala.DCw = com.tencent.d.f.i.cz(paramContext, paramContext.getPackageName()).versionCode;
+    locala.LLG = "14D6ACDE3C2F2F48";
     locala.channel = 500000;
     locala.requestType = paramInt3;
-    locala.JTZ = aTg(paramContext.getPackageName());
+    locala.LNP = aZg(paramContext.getPackageName());
     ArrayList localArrayList = new ArrayList();
     paramInt3 = 0;
     while (paramInt3 < paramSparseArray.size())
     {
-      localArrayList.addAll(((i)paramSparseArray.valueAt(paramInt3)).iC(paramList));
+      localArrayList.addAll(((i)paramSparseArray.valueAt(paramInt3)).iQ(paramList));
       paramInt3 += 1;
     }
     if ((localArrayList.size() <= 0) || (localArrayList.get(0) == null))
@@ -43,26 +43,26 @@ public final class b
       throw paramContext;
     }
     paramSparseArray = new e();
-    paramSparseArray.JUh = ((g)localArrayList.get(0)).JUm;
-    paramSparseArray.JUi = localArrayList;
-    paramSparseArray.JTj = paramInt1;
+    paramSparseArray.LNX = ((g)localArrayList.get(0)).LOc;
+    paramSparseArray.LNY = localArrayList;
+    paramSparseArray.LNa = paramInt1;
     paramSparseArray.action = paramInt2;
     paramList = new ArrayList();
     paramList.add(paramSparseArray);
-    locala.JTY = paramList;
-    locala.imei = aTg(d.getIMEI(paramContext));
-    locala.imsi = aTg(d.kJ(paramContext));
-    locala.hym = aTg(Build.BRAND);
-    locala.model = aTg(Build.MODEL);
-    locala.JUa = aTg(Build.FINGERPRINT);
-    locala.JUb = fCD();
+    locala.LNO = paramList;
+    locala.imei = aZg(d.getIMEI(paramContext));
+    locala.imsi = aZg(d.kW(paramContext));
+    locala.hQG = aZg(Build.BRAND);
+    locala.model = aZg(Build.MODEL);
+    locala.LNQ = aZg(Build.FINGERPRINT);
+    locala.LNR = fTT();
     locala.sdkVer = Build.VERSION.SDK_INT;
     locala.platform = 2;
     AppMethodBeat.o(138393);
     return locala;
   }
   
-  private static String aTg(String paramString)
+  private static String aZg(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
@@ -71,23 +71,23 @@ public final class b
     return str;
   }
   
-  private static int fCD()
+  private static int fTT()
   {
     AppMethodBeat.i(138394);
-    if (JTB == -1)
+    if (LNr == -1)
     {
-      SensorManager localSensorManager = (SensorManager)ai.getContext().getSystemService("sensor");
+      SensorManager localSensorManager = (SensorManager)aj.getContext().getSystemService("sensor");
       if (localSensorManager == null)
       {
-        i = JTB;
+        i = LNr;
         AppMethodBeat.o(138394);
         return i;
       }
       i = 0;
       int j = 1;
-      if (i < JTA.length)
+      if (i < LNq.length)
       {
-        if (localSensorManager.getDefaultSensor(JTA[i]) == null) {}
+        if (localSensorManager.getDefaultSensor(LNq[i]) == null) {}
         for (int k = 0;; k = 1)
         {
           j |= k << i;
@@ -95,9 +95,9 @@ public final class b
           break;
         }
       }
-      JTB = j;
+      LNr = j;
     }
-    int i = JTB;
+    int i = LNr;
     AppMethodBeat.o(138394);
     return i;
   }

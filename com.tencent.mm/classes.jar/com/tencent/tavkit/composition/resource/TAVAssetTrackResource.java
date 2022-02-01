@@ -16,28 +16,28 @@ public class TAVAssetTrackResource
   
   public TAVAssetTrackResource(Asset paramAsset)
   {
-    AppMethodBeat.i(192081);
+    AppMethodBeat.i(219880);
     this.asset = paramAsset;
     this.duration = paramAsset.getDuration();
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramAsset.getDuration());
-    AppMethodBeat.o(192081);
+    AppMethodBeat.o(219880);
   }
   
   public TAVAssetTrackResource(String paramString)
   {
     this(new URLAsset(paramString));
-    AppMethodBeat.i(192080);
-    AppMethodBeat.o(192080);
+    AppMethodBeat.i(219879);
+    AppMethodBeat.o(219879);
   }
   
   public TAVResource clone()
   {
-    AppMethodBeat.i(192084);
+    AppMethodBeat.i(219883);
     TAVAssetTrackResource localTAVAssetTrackResource = new TAVAssetTrackResource(this.asset);
     localTAVAssetTrackResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVAssetTrackResource.scaledDuration = this.scaledDuration.clone();
     localTAVAssetTrackResource.duration = this.duration.clone();
-    AppMethodBeat.o(192084);
+    AppMethodBeat.o(219883);
     return localTAVAssetTrackResource;
   }
   
@@ -48,33 +48,33 @@ public class TAVAssetTrackResource
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192083);
+    AppMethodBeat.i(219882);
     AssetTrack localAssetTrack = (AssetTrack)tracksForType(paramInt1).get(paramInt2);
     TrackInfo localTrackInfo = new TrackInfo();
     localTrackInfo.setTrack(localAssetTrack);
     localTrackInfo.setSelectedTimeRange(getSourceTimeRange());
     localTrackInfo.setScaleToDuration(getScaledDuration());
-    AppMethodBeat.o(192083);
+    AppMethodBeat.o(219882);
     return localTrackInfo;
   }
   
   public List<AssetTrack> tracksForType(int paramInt)
   {
-    AppMethodBeat.i(192082);
+    AppMethodBeat.i(219881);
     if (this.asset != null)
     {
       localObject = this.asset.tracksWithMediaType(paramInt);
-      AppMethodBeat.o(192082);
+      AppMethodBeat.o(219881);
       return localObject;
     }
     Object localObject = new ArrayList();
-    AppMethodBeat.o(192082);
+    AppMethodBeat.o(219881);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVAssetTrackResource
  * JD-Core Version:    0.7.0.1
  */

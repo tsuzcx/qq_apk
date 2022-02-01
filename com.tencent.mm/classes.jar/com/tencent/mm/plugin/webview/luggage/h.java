@@ -1,128 +1,104 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.graphics.Bitmap;
-import android.net.http.SslError;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.WebResourceRequest;
-import com.tencent.xweb.WebResourceResponse;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
-import com.tencent.xweb.r;
+import com.tencent.xweb.x5.export.external.extension.proxy.a;
 
 public class h
-  extends ac
+  extends a
 {
-  private ac vFR;
+  private a DPo;
   
   public h()
   {
-    AppMethodBeat.i(78342);
-    this.vFR = new ac();
-    AppMethodBeat.o(78342);
+    AppMethodBeat.i(78331);
+    this.DPo = new a();
+    AppMethodBeat.o(78331);
   }
   
-  public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(78349);
-    paramWebView = this.vFR.a(paramWebView, paramWebResourceRequest);
-    AppMethodBeat.o(78349);
-    return paramWebView;
-  }
-  
-  public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, Bundle paramBundle)
-  {
-    AppMethodBeat.i(78350);
-    paramWebView = this.vFR.a(paramWebView, paramWebResourceRequest, paramBundle);
-    AppMethodBeat.o(78350);
-    return paramWebView;
-  }
-  
-  public final void a(WebView paramWebView, float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(78353);
-    this.vFR.a(paramWebView, paramFloat1, paramFloat2);
-    AppMethodBeat.o(78353);
-  }
-  
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(78346);
-    this.vFR.a(paramWebView, paramInt, paramString1, paramString2);
-    AppMethodBeat.o(78346);
-  }
-  
-  public void a(WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse)
-  {
-    AppMethodBeat.i(78354);
-    this.vFR.a(paramWebView, paramWebResourceRequest, paramWebResourceResponse);
-    AppMethodBeat.o(78354);
-  }
-  
-  public void a(WebView paramWebView, r paramr, SslError paramSslError)
-  {
-    AppMethodBeat.i(78352);
-    this.vFR.a(paramWebView, paramr, paramSslError);
-    AppMethodBeat.o(78352);
-  }
-  
-  public final void a(WebView paramWebView, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(78351);
-    this.vFR.a(paramWebView, paramString, paramBoolean);
-    AppMethodBeat.o(78351);
-  }
-  
-  public final void a(ac paramac)
-  {
-    if (paramac != null) {
-      this.vFR = paramac;
+    if (parama != null) {
+      this.DPo = parama;
     }
   }
   
-  public boolean a(WebView paramWebView, String paramString)
+  public void computeScroll(View paramView)
   {
-    AppMethodBeat.i(78347);
-    boolean bool = this.vFR.a(paramWebView, paramString);
-    AppMethodBeat.o(78347);
+    AppMethodBeat.i(78339);
+    this.DPo.computeScroll(paramView);
+    AppMethodBeat.o(78339);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    AppMethodBeat.i(78335);
+    boolean bool = this.DPo.dispatchTouchEvent(paramMotionEvent, paramView);
+    AppMethodBeat.o(78335);
     return bool;
   }
   
-  public void b(WebView paramWebView, String paramString)
+  public void invalidate()
   {
-    AppMethodBeat.i(78345);
-    this.vFR.b(paramWebView, paramString);
-    AppMethodBeat.o(78345);
+    AppMethodBeat.i(78341);
+    this.DPo.invalidate();
+    AppMethodBeat.o(78341);
   }
   
-  public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    AppMethodBeat.i(78344);
-    this.vFR.b(paramWebView, paramString, paramBitmap);
-    AppMethodBeat.o(78344);
-  }
-  
-  public WebResourceResponse c(WebView paramWebView, String paramString)
-  {
-    AppMethodBeat.i(78348);
-    paramWebView = this.vFR.c(paramWebView, paramString);
-    AppMethodBeat.o(78348);
-    return paramWebView;
-  }
-  
-  public final boolean d(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    AppMethodBeat.i(188291);
-    boolean bool = this.vFR.d(paramWebView, paramWebResourceRequest);
-    AppMethodBeat.o(188291);
+    AppMethodBeat.i(78334);
+    boolean bool = this.DPo.onInterceptTouchEvent(paramMotionEvent, paramView);
+    AppMethodBeat.o(78334);
     return bool;
   }
   
-  public void h(WebView paramWebView, String paramString)
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(78343);
-    this.vFR.h(paramWebView, paramString);
-    AppMethodBeat.o(78343);
+    AppMethodBeat.i(78332);
+    paramString = this.DPo.onMiscCallBack(paramString, paramBundle);
+    AppMethodBeat.o(78332);
+    return paramString;
+  }
+  
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
+  {
+    AppMethodBeat.i(78338);
+    this.DPo.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+    AppMethodBeat.o(78338);
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    AppMethodBeat.i(78337);
+    this.DPo.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    AppMethodBeat.o(78337);
+  }
+  
+  public boolean onShowLongClickPopupMenu()
+  {
+    AppMethodBeat.i(78340);
+    boolean bool = this.DPo.onShowLongClickPopupMenu();
+    AppMethodBeat.o(78340);
+    return bool;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    AppMethodBeat.i(78333);
+    boolean bool = this.DPo.onTouchEvent(paramMotionEvent, paramView);
+    AppMethodBeat.o(78333);
+    return bool;
+  }
+  
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    AppMethodBeat.i(78336);
+    paramBoolean = this.DPo.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
+    AppMethodBeat.o(78336);
+    return paramBoolean;
   }
 }
 

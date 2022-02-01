@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
 import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.protocal.protobuf.crt;
+import com.tencent.mm.protocal.protobuf.cxa;
 
 public final class h
   extends com.tencent.mm.plugin.appbrand.jsapi.a<aa>

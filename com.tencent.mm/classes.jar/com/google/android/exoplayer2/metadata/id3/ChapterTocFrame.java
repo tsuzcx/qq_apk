@@ -10,11 +10,11 @@ public final class ChapterTocFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<ChapterTocFrame> CREATOR;
-  public final boolean bfH;
-  private final Id3Frame[] bkd;
-  public final String bke;
-  public final boolean bkf;
-  public final String[] bkg;
+  public final boolean bqb;
+  public final boolean buA;
+  public final String[] buB;
+  private final Id3Frame[] buy;
+  public final String buz;
   
   static
   {
@@ -27,11 +27,11 @@ public final class ChapterTocFrame
   {
     super("CTOC");
     AppMethodBeat.i(92415);
-    this.bke = paramParcel.readString();
+    this.buz = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.bkf = bool1;
+      this.buA = bool1;
       if (paramParcel.readByte() == 0) {
         break label114;
       }
@@ -39,13 +39,13 @@ public final class ChapterTocFrame
     label114:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.bfH = bool1;
-      this.bkg = paramParcel.createStringArray();
+      this.bqb = bool1;
+      this.buB = paramParcel.createStringArray();
       int j = paramParcel.readInt();
-      this.bkd = new Id3Frame[j];
+      this.buy = new Id3Frame[j];
       while (i < j)
       {
-        this.bkd[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
+        this.buy[i] = ((Id3Frame)paramParcel.readParcelable(Id3Frame.class.getClassLoader()));
         i += 1;
       }
       bool1 = false;
@@ -57,11 +57,11 @@ public final class ChapterTocFrame
   public ChapterTocFrame(String paramString, boolean paramBoolean1, boolean paramBoolean2, String[] paramArrayOfString, Id3Frame[] paramArrayOfId3Frame)
   {
     super("CTOC");
-    this.bke = paramString;
-    this.bkf = paramBoolean1;
-    this.bfH = paramBoolean2;
-    this.bkg = paramArrayOfString;
-    this.bkd = paramArrayOfId3Frame;
+    this.buz = paramString;
+    this.buA = paramBoolean1;
+    this.bqb = paramBoolean2;
+    this.buB = paramArrayOfString;
+    this.buy = paramArrayOfId3Frame;
   }
   
   public final boolean equals(Object paramObject)
@@ -78,7 +78,7 @@ public final class ChapterTocFrame
       return false;
     }
     paramObject = (ChapterTocFrame)paramObject;
-    if ((this.bkf == paramObject.bkf) && (this.bfH == paramObject.bfH) && (x.g(this.bke, paramObject.bke)) && (Arrays.equals(this.bkg, paramObject.bkg)) && (Arrays.equals(this.bkd, paramObject.bkd)))
+    if ((this.buA == paramObject.buA) && (this.bqb == paramObject.bqb) && (x.i(this.buz, paramObject.buz)) && (Arrays.equals(this.buB, paramObject.buB)) && (Arrays.equals(this.buy, paramObject.buy)))
     {
       AppMethodBeat.o(92416);
       return true;
@@ -93,17 +93,17 @@ public final class ChapterTocFrame
     int k = 0;
     AppMethodBeat.i(92417);
     int i;
-    if (this.bkf)
+    if (this.buA)
     {
       i = 1;
-      if (!this.bfH) {
+      if (!this.bqb) {
         break label66;
       }
     }
     for (;;)
     {
-      if (this.bke != null) {
-        k = this.bke.hashCode();
+      if (this.buz != null) {
+        k = this.buz.hashCode();
       }
       AppMethodBeat.o(92417);
       return ((i + 527) * 31 + j) * 31 + k;
@@ -118,12 +118,12 @@ public final class ChapterTocFrame
   {
     int i = 1;
     AppMethodBeat.i(92418);
-    paramParcel.writeString(this.bke);
-    if (this.bkf)
+    paramParcel.writeString(this.buz);
+    if (this.buA)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.bfH) {
+      if (!this.bqb) {
         break label96;
       }
     }
@@ -131,12 +131,12 @@ public final class ChapterTocFrame
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeStringArray(this.bkg);
-      paramParcel.writeInt(this.bkd.length);
+      paramParcel.writeStringArray(this.buB);
+      paramParcel.writeInt(this.buy.length);
       paramInt = 0;
-      while (paramInt < this.bkd.length)
+      while (paramInt < this.buy.length)
       {
-        paramParcel.writeParcelable(this.bkd[paramInt], 0);
+        paramParcel.writeParcelable(this.buy[paramInt], 0);
         paramInt += 1;
       }
       paramInt = 0;

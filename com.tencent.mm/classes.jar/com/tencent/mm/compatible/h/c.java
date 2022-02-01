@@ -10,213 +10,242 @@ import java.nio.ByteBuffer;
 @TargetApi(16)
 public final class c
 {
-  public final MediaExtractor fKr;
+  public final MediaExtractor gdS;
   
   public c()
   {
     AppMethodBeat.i(155923);
-    this.fKr = new MediaExtractor();
+    this.gdS = new MediaExtractor();
     AppMethodBeat.o(155923);
   }
   
   public final boolean advance()
   {
-    AppMethodBeat.i(210546);
-    boolean bool = this.fKr.advance();
-    AppMethodBeat.o(210546);
+    AppMethodBeat.i(221730);
+    boolean bool = this.gdS.advance();
+    AppMethodBeat.o(221730);
     return bool;
   }
   
   public final long getSampleTime()
   {
-    AppMethodBeat.i(210547);
-    long l = this.fKr.getSampleTime();
-    AppMethodBeat.o(210547);
+    AppMethodBeat.i(221731);
+    long l = this.gdS.getSampleTime();
+    AppMethodBeat.o(221731);
     return l;
   }
   
   public final int getSampleTrackIndex()
   {
     AppMethodBeat.i(155936);
-    int i = this.fKr.getSampleTrackIndex();
+    int i = this.gdS.getSampleTrackIndex();
     AppMethodBeat.o(155936);
     return i;
   }
   
   public final int getTrackCount()
   {
-    AppMethodBeat.i(210545);
-    int i = this.fKr.getTrackCount();
-    AppMethodBeat.o(210545);
+    AppMethodBeat.i(221729);
+    int i = this.gdS.getTrackCount();
+    AppMethodBeat.o(221729);
     return i;
   }
   
   public final MediaFormat getTrackFormat(int paramInt)
   {
     AppMethodBeat.i(155930);
-    MediaFormat localMediaFormat = this.fKr.getTrackFormat(paramInt);
+    MediaFormat localMediaFormat = this.gdS.getTrackFormat(paramInt);
     AppMethodBeat.o(155930);
     return localMediaFormat;
   }
   
-  public final int j(ByteBuffer paramByteBuffer)
+  public final int readSampleData(ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(155935);
-    int i = this.fKr.readSampleData(paramByteBuffer, 0);
-    AppMethodBeat.o(155935);
-    return i;
+    AppMethodBeat.i(196921);
+    paramInt = this.gdS.readSampleData(paramByteBuffer, paramInt);
+    AppMethodBeat.o(196921);
+    return paramInt;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(210544);
-    this.fKr.release();
-    AppMethodBeat.o(210544);
-  }
-  
-  /* Error */
-  public final void sI(String paramString)
-  {
-    // Byte code:
-    //   0: ldc 71
-    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_1
-    //   6: ldc 73
-    //   8: invokestatic 79	com/tencent/mm/vfs/i:lY	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
-    //   11: astore 4
-    //   13: aload_0
-    //   14: getfield 25	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
-    //   17: aload 4
-    //   19: invokevirtual 85	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
-    //   22: invokevirtual 89	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
-    //   25: aload 4
-    //   27: ifnull +8 -> 35
-    //   30: aload 4
-    //   32: invokevirtual 92	android/os/ParcelFileDescriptor:close	()V
-    //   35: ldc 71
-    //   37: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   40: return
-    //   41: astore_3
-    //   42: ldc 71
-    //   44: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   47: aload_3
-    //   48: athrow
-    //   49: astore_2
-    //   50: aload 4
-    //   52: ifnull +12 -> 64
-    //   55: aload_3
-    //   56: ifnull +75 -> 131
-    //   59: aload 4
-    //   61: invokevirtual 92	android/os/ParcelFileDescriptor:close	()V
-    //   64: ldc 71
-    //   66: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   69: aload_2
-    //   70: athrow
-    //   71: astore_2
-    //   72: ldc 94
-    //   74: new 96	java/lang/StringBuilder
-    //   77: dup
-    //   78: ldc 98
-    //   80: invokespecial 100	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   83: aload_1
-    //   84: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: ldc 106
-    //   89: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: aload_2
-    //   93: invokevirtual 110	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   96: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   99: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   102: invokestatic 119	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   105: aload_0
-    //   106: getfield 25	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
-    //   109: aload_1
-    //   110: aconst_null
-    //   111: invokevirtual 122	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
-    //   114: ldc 71
-    //   116: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   119: return
-    //   120: astore 4
-    //   122: aload_3
-    //   123: aload 4
-    //   125: invokevirtual 126	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   128: goto -64 -> 64
-    //   131: aload 4
-    //   133: invokevirtual 92	android/os/ParcelFileDescriptor:close	()V
-    //   136: goto -72 -> 64
-    //   139: astore_2
-    //   140: aconst_null
-    //   141: astore_3
-    //   142: goto -92 -> 50
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	145	0	this	c
-    //   0	145	1	paramString	String
-    //   49	21	2	localObject1	Object
-    //   71	22	2	localIOException	java.io.IOException
-    //   139	1	2	localObject2	Object
-    //   41	82	3	localThrowable1	java.lang.Throwable
-    //   141	1	3	localObject3	Object
-    //   11	49	4	localParcelFileDescriptor	android.os.ParcelFileDescriptor
-    //   120	12	4	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   13	25	41	java/lang/Throwable
-    //   42	49	49	finally
-    //   5	13	71	java/io/IOException
-    //   30	35	71	java/io/IOException
-    //   59	64	71	java/io/IOException
-    //   64	71	71	java/io/IOException
-    //   122	128	71	java/io/IOException
-    //   131	136	71	java/io/IOException
-    //   59	64	120	java/lang/Throwable
-    //   13	25	139	finally
+    AppMethodBeat.i(221728);
+    this.gdS.release();
+    AppMethodBeat.o(221728);
   }
   
   public final void seekTo(long paramLong, int paramInt)
   {
     AppMethodBeat.i(155933);
-    this.fKr.seekTo(paramLong, paramInt);
+    this.gdS.seekTo(paramLong, paramInt);
     AppMethodBeat.o(155933);
   }
   
   public final void selectTrack(int paramInt)
   {
     AppMethodBeat.i(155931);
-    this.fKr.selectTrack(paramInt);
+    this.gdS.selectTrack(paramInt);
     AppMethodBeat.o(155931);
   }
   
   public final void setDataSource(FileDescriptor paramFileDescriptor)
   {
     AppMethodBeat.i(155926);
-    this.fKr.setDataSource(paramFileDescriptor);
+    this.gdS.setDataSource(paramFileDescriptor);
     AppMethodBeat.o(155926);
   }
   
   public final void setDataSource(FileDescriptor paramFileDescriptor, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(155927);
-    this.fKr.setDataSource(paramFileDescriptor, paramLong1, paramLong2);
+    this.gdS.setDataSource(paramFileDescriptor, paramLong1, paramLong2);
     AppMethodBeat.o(155927);
   }
   
   public final void setDataSource(String paramString)
   {
-    AppMethodBeat.i(210543);
-    sI(paramString);
-    AppMethodBeat.o(210543);
+    AppMethodBeat.i(221727);
+    vx(paramString);
+    AppMethodBeat.o(221727);
   }
   
   public final void unselectTrack(int paramInt)
   {
     AppMethodBeat.i(155932);
-    this.fKr.unselectTrack(paramInt);
+    this.gdS.unselectTrack(paramInt);
     AppMethodBeat.o(155932);
+  }
+  
+  /* Error */
+  public final void vx(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 94
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: iconst_0
+    //   7: invokestatic 100	com/tencent/mm/vfs/i:k	(Ljava/lang/String;Z)Ljava/lang/String;
+    //   10: ifnull +52 -> 62
+    //   13: aload_0
+    //   14: getfield 25	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+    //   17: aload_1
+    //   18: aconst_null
+    //   19: invokevirtual 103	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
+    //   22: ldc 94
+    //   24: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: return
+    //   28: astore_2
+    //   29: ldc 105
+    //   31: new 107	java/lang/StringBuilder
+    //   34: dup
+    //   35: ldc 109
+    //   37: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   40: aload_1
+    //   41: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: ldc 117
+    //   46: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: aload_2
+    //   50: invokevirtual 121	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   53: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 130	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: aload_1
+    //   63: ldc 132
+    //   65: invokestatic 136	com/tencent/mm/vfs/i:my	(Ljava/lang/String;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    //   68: astore 4
+    //   70: aload_0
+    //   71: getfield 25	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+    //   74: aload 4
+    //   76: invokevirtual 142	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
+    //   79: invokevirtual 76	android/media/MediaExtractor:setDataSource	(Ljava/io/FileDescriptor;)V
+    //   82: aload 4
+    //   84: ifnull +8 -> 92
+    //   87: aload 4
+    //   89: invokevirtual 145	android/os/ParcelFileDescriptor:close	()V
+    //   92: ldc 94
+    //   94: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: return
+    //   98: astore_3
+    //   99: ldc 94
+    //   101: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: aload_3
+    //   105: athrow
+    //   106: astore_2
+    //   107: aload 4
+    //   109: ifnull +12 -> 121
+    //   112: aload_3
+    //   113: ifnull +75 -> 188
+    //   116: aload 4
+    //   118: invokevirtual 145	android/os/ParcelFileDescriptor:close	()V
+    //   121: ldc 94
+    //   123: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   126: aload_2
+    //   127: athrow
+    //   128: astore_2
+    //   129: ldc 105
+    //   131: new 107	java/lang/StringBuilder
+    //   134: dup
+    //   135: ldc 147
+    //   137: invokespecial 111	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   140: aload_1
+    //   141: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: ldc 117
+    //   146: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: aload_2
+    //   150: invokevirtual 121	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   153: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   159: invokestatic 130	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   162: aload_0
+    //   163: getfield 25	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+    //   166: aload_1
+    //   167: aconst_null
+    //   168: invokevirtual 103	android/media/MediaExtractor:setDataSource	(Ljava/lang/String;Ljava/util/Map;)V
+    //   171: ldc 94
+    //   173: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   176: return
+    //   177: astore 4
+    //   179: aload_3
+    //   180: aload 4
+    //   182: invokevirtual 151	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   185: goto -64 -> 121
+    //   188: aload 4
+    //   190: invokevirtual 145	android/os/ParcelFileDescriptor:close	()V
+    //   193: goto -72 -> 121
+    //   196: astore_2
+    //   197: aconst_null
+    //   198: astore_3
+    //   199: goto -92 -> 107
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	202	0	this	c
+    //   0	202	1	paramString	String
+    //   28	22	2	localIOException1	java.io.IOException
+    //   106	21	2	localObject1	Object
+    //   128	22	2	localIOException2	java.io.IOException
+    //   196	1	2	localObject2	Object
+    //   98	82	3	localThrowable1	java.lang.Throwable
+    //   198	1	3	localObject3	Object
+    //   68	49	4	localParcelFileDescriptor	android.os.ParcelFileDescriptor
+    //   177	12	4	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   13	22	28	java/io/IOException
+    //   70	82	98	java/lang/Throwable
+    //   99	106	106	finally
+    //   62	70	128	java/io/IOException
+    //   87	92	128	java/io/IOException
+    //   116	121	128	java/io/IOException
+    //   121	128	128	java/io/IOException
+    //   179	185	128	java/io/IOException
+    //   188	193	128	java/io/IOException
+    //   116	121	177	java/lang/Throwable
+    //   70	82	196	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.h.c
  * JD-Core Version:    0.7.0.1
  */

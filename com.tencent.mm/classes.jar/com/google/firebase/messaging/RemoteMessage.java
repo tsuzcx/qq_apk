@@ -20,8 +20,8 @@ public final class RemoteMessage
 {
   public static final Parcelable.Creator<RemoteMessage> CREATOR;
   @SafeParcelable.Field(id=2)
-  public Bundle bCp;
-  public Map<String, String> bCq;
+  public Bundle bMD;
+  public Map<String, String> bME;
   
   static
   {
@@ -33,14 +33,14 @@ public final class RemoteMessage
   @SafeParcelable.Constructor
   public RemoteMessage(@SafeParcelable.Param(id=2) Bundle paramBundle)
   {
-    this.bCp = paramBundle;
+    this.bMD = paramBundle;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(116786);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
-    SafeParcelWriter.writeBundle(paramParcel, 2, this.bCp, false);
+    SafeParcelWriter.writeBundle(paramParcel, 2, this.bMD, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
     AppMethodBeat.o(116786);
   }

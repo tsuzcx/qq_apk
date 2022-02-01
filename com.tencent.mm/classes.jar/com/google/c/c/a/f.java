@@ -57,9 +57,9 @@ final class f
     AppMethodBeat.i(12359);
     Object localObject = new StringBuilder();
     char c;
-    if (paramh.ya())
+    if (paramh.zx())
     {
-      c = paramh.xZ();
+      c = paramh.zw();
       if ((c < ' ') || (c > '?')) {
         break label138;
       }
@@ -72,12 +72,12 @@ final class f
       if (((StringBuilder)localObject).length() < 4) {
         break;
       }
-      paramh.bm(t((CharSequence)localObject));
+      paramh.cf(t((CharSequence)localObject));
       ((StringBuilder)localObject).delete(0, 4);
-      if (j.b(paramh.bIO, paramh.pos, 4) == 4) {
+      if (j.b(paramh.msg, paramh.pos, 4) == 4) {
         break;
       }
-      paramh.bIT = 0;
+      paramh.bTg = 0;
       ((StringBuilder)localObject).append('\037');
       try
       {
@@ -89,17 +89,17 @@ final class f
           if ((c >= '@') && (c <= '^')) {
             ((StringBuilder)localObject).append((char)(c - '@'));
           } else {
-            j.i(c);
+            j.k(c);
           }
         }
         else
         {
           if (i == 1)
           {
-            paramh.yd();
-            k = paramh.bIU.bJd;
-            int m = paramh.bIS.length();
-            int n = paramh.yc();
+            paramh.zA();
+            k = paramh.bTh.bTq;
+            int m = paramh.bTf.length();
+            int n = paramh.zz();
             if ((n == 0) && (k - m <= 2)) {
               return;
             }
@@ -114,13 +114,13 @@ final class f
       }
       finally
       {
-        paramh.bIT = 0;
+        paramh.bTg = 0;
         AppMethodBeat.o(12359);
       }
     }
     int k = i - 1;
     String str = t(localCharSequence);
-    if (!paramh.ya()) {
+    if (!paramh.zx()) {
       i = 1;
     }
     for (;;)
@@ -128,20 +128,20 @@ final class f
       j = i;
       if (k <= 2)
       {
-        paramh.fU(paramh.bIS.length() + k);
+        paramh.fX(paramh.bTf.length() + k);
         j = i;
-        if (paramh.bIU.bJd - paramh.bIS.length() >= 3)
+        if (paramh.bTh.bTq - paramh.bTf.length() >= 3)
         {
-          paramh.fU(paramh.bIS.length() + str.length());
+          paramh.fX(paramh.bTf.length() + str.length());
           j = 0;
         }
       }
       if (j != 0)
       {
-        paramh.bIU = null;
+        paramh.bTh = null;
         paramh.pos -= k;
         label381:
-        paramh.bIT = 0;
+        paramh.bTg = 0;
         AppMethodBeat.o(12359);
         return;
         i = 0;
@@ -150,7 +150,7 @@ final class f
       {
         i = 0;
         break;
-        paramh.bm(str);
+        paramh.cf(str);
         break label381;
       }
       i = j;
@@ -159,7 +159,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.f
  * JD-Core Version:    0.7.0.1
  */

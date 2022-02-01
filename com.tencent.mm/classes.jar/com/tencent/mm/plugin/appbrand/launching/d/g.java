@@ -1,183 +1,183 @@
 package com.tencent.mm.plugin.appbrand.launching.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.g.b.a.ht;
-import com.tencent.mm.g.b.a.ht.b;
-import com.tencent.mm.g.b.a.ht.c;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.g.b.a.ix;
+import com.tencent.mm.g.b.a.ix.b;
+import com.tencent.mm.g.b.a.ix.c;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
 import com.tencent.mm.plugin.appbrand.report.quality.f;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.protocal.protobuf.vg;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.btg;
+import com.tencent.mm.protocal.protobuf.xf;
+import d.g.b.p;
 import d.l;
 import java.util.concurrent.FutureTask;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "userName", "", "versionType", "", "enterScene", "enterPath", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "referrer", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "appId", "appbrandPushMsgId", "(Ljava/lang/String;IILjava/lang/String;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getAppbrandPushMsgId", "cgiBack", "getEnterPath", "getEnterScene", "()I", "isBackground", "", "isBackground$annotations", "()V", "isSync", "()Z", "setSync", "(Z)V", "getReferrer", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "getStat", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "getUserName", "getVersionType", "getPreFetchResult", "timeoutMs", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/LaunchWxaAppResponse;", "userName", "", "versionType", "", "enterScene", "enterPath", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "referrer", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "appId", "appbrandPushMsgId", "(Ljava/lang/String;IILjava/lang/String;Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getAppbrandPushMsgId", "cgiBack", "getEnterPath", "getEnterScene", "()I", "isBackground", "", "isBackground$annotations", "()V", "isSync", "()Z", "setSync", "(Z)V", "getReferrer", "()Lcom/tencent/mm/plugin/appbrand/config/AppBrandLaunchReferrer;", "getStat", "()Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "getUserName", "getVersionType", "getPreFetchResult", "timeoutMs", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "setIsUsed", "used", "Companion", "plugin-appbrand-integration_release"})
 public final class g
-  extends a<c.a<bot>>
+  extends a<a.a<btg>>
 {
-  public static final a lpF;
+  public static final a lMY;
   private final String appId;
-  private final AppBrandLaunchReferrer cce;
+  private final AppBrandLaunchReferrer cmv;
   private final int enterScene;
-  private final int hxM;
-  public boolean iWl;
-  private final String jDN;
-  private final AppBrandStatObject jjR;
-  private final String jjf;
-  private boolean kum;
-  private c.a<bot> lpD;
+  private final int hQh;
+  private final String jCN;
+  private final AppBrandStatObject jDH;
+  private final String jXO;
+  public boolean jpu;
+  private boolean kPK;
+  private a.a<btg> lMW;
   private final String userName;
   
   static
   {
     AppMethodBeat.i(50815);
-    lpF = new a((byte)0);
+    lMY = new a((byte)0);
     AppMethodBeat.o(50815);
   }
   
   public g(String paramString1, int paramInt1, int paramInt2, String paramString2, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, String paramString3, String paramString4)
   {
     this.userName = paramString1;
-    this.hxM = paramInt1;
+    this.hQh = paramInt1;
     this.enterScene = paramInt2;
-    this.jjf = paramString2;
-    this.jjR = paramAppBrandStatObject;
-    this.cce = paramAppBrandLaunchReferrer;
+    this.jCN = paramString2;
+    this.jDH = paramAppBrandStatObject;
+    this.cmv = paramAppBrandLaunchReferrer;
     this.appId = paramString3;
-    this.jDN = paramString4;
+    this.jXO = paramString4;
   }
   
-  public final int DL()
+  public final int Fk()
   {
     return 0;
   }
   
   public final void c(QualitySession paramQualitySession)
   {
-    AppMethodBeat.i(187341);
-    k.h(paramQualitySession, "qualitySession");
-    if (this.lpD == null)
+    AppMethodBeat.i(189333);
+    p.h(paramQualitySession, "qualitySession");
+    if (this.lMW == null)
     {
-      AppMethodBeat.o(187341);
+      AppMethodBeat.o(189333);
       return;
     }
-    ht localht = f.f(paramQualitySession);
+    ix localix = f.f(paramQualitySession);
     String str = this.appId;
     paramQualitySession = str;
     if (str == null) {
       paramQualitySession = "";
     }
-    localht.oU(paramQualitySession);
-    localht.oV(this.userName);
-    localht.Ta();
-    localht.nl(f.getNetworkType());
+    localix.rB(paramQualitySession);
+    localix.rC(this.userName);
+    localix.Vn();
+    localix.pj(f.getNetworkType());
     long l;
-    if (this.iWl)
+    if (this.jpu)
     {
-      paramQualitySession = ht.b.ehM;
-      localht.a(paramQualitySession);
-      localht.nj(this.cff);
-      localht.nk(this.cfh);
-      localht.nh(this.cfh - this.cff);
-      if (!this.kum) {
+      paramQualitySession = ix.b.eyM;
+      localix.a(paramQualitySession);
+      localix.ph(this.cpw);
+      localix.pi(this.cpx);
+      localix.pf(this.cpx - this.cpw);
+      if (!this.kPK) {
         break label276;
       }
       l = 1L;
       label147:
-      localht.nm(l);
-      paramQualitySession = this.lpD;
+      localix.pk(l);
+      paramQualitySession = this.lMW;
       if (paramQualitySession == null) {
-        k.fOy();
+        p.gfZ();
       }
       int i = paramQualitySession.errType;
-      paramQualitySession = this.lpD;
+      paramQualitySession = this.lMW;
       if (paramQualitySession == null) {
-        k.fOy();
+        p.gfZ();
       }
       int j = paramQualitySession.errCode;
-      paramQualitySession = this.lpD;
+      paramQualitySession = this.lMW;
       if (paramQualitySession == null) {
-        k.fOy();
+        p.gfZ();
       }
-      if (!com.tencent.mm.plugin.appbrand.o.a.a(i, j, paramQualitySession.hvj)) {
+      if (!com.tencent.mm.plugin.appbrand.n.a.a(i, j, paramQualitySession.hNC)) {
         break label343;
       }
-      paramQualitySession = this.lpD;
+      paramQualitySession = this.lMW;
       if (paramQualitySession == null) {
-        k.fOy();
+        p.gfZ();
       }
-      paramQualitySession = paramQualitySession.hvj;
+      paramQualitySession = paramQualitySession.hNC;
       if (paramQualitySession == null) {
-        k.fOy();
+        p.gfZ();
       }
-      if (((bot)paramQualitySession).Feg != null) {
+      if (((btg)paramQualitySession).GNK != null) {
         break label282;
       }
-      localht.a(ht.c.ehR);
+      localix.a(ix.c.eyR);
     }
     for (;;)
     {
-      localht.aHZ();
-      AppMethodBeat.o(187341);
+      localix.aLk();
+      AppMethodBeat.o(189333);
       return;
-      paramQualitySession = ht.b.ehN;
+      paramQualitySession = ix.b.eyN;
       break;
       label276:
       l = 0L;
       break label147;
       label282:
-      paramQualitySession = this.lpD;
+      paramQualitySession = this.lMW;
       if (paramQualitySession == null) {
-        k.fOy();
+        p.gfZ();
       }
-      paramQualitySession = paramQualitySession.hvj;
+      paramQualitySession = paramQualitySession.hNC;
       if (paramQualitySession == null) {
-        k.fOy();
+        p.gfZ();
       }
-      if (((bot)paramQualitySession).Feg.Epw == null)
+      if (((btg)paramQualitySession).GNK.FWI == null)
       {
-        localht.a(ht.c.ehS);
+        localix.a(ix.c.eyS);
       }
       else
       {
-        localht.a(ht.c.ehP);
+        localix.a(ix.c.eyP);
         continue;
         label343:
-        localht.a(ht.c.ehQ);
+        localix.a(ix.c.eyQ);
       }
     }
   }
   
-  public final c.a<bot> tK(int paramInt)
+  public final a.a<btg> uo(int paramInt)
   {
     AppMethodBeat.i(180641);
-    if (((com.tencent.luggage.sdk.e.a)this).cfe == null)
+    if (((com.tencent.luggage.sdk.e.a)this).cpv == null)
     {
       localObject = (Throwable)new IllegalStateException();
       AppMethodBeat.o(180641);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.cfe;
+    Object localObject = this.cpv;
     if (localObject == null) {
-      k.aVY("futureTask");
+      p.bcb("futureTask");
     }
     if (((FutureTask)localObject).isDone()) {
-      b.lA(5);
+      b.ma(5);
     }
     for (;;)
     {
-      localObject = (c.a)super.gx(paramInt);
+      localObject = (a.a)super.gC(paramInt);
       AppMethodBeat.o(180641);
       return localObject;
-      b.lA(6);
+      b.ma(6);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchLaunchTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

@@ -3,10 +3,10 @@ package com.tencent.mm.ui.chatting;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.transmit.SelectConversationUI;
 
@@ -15,7 +15,7 @@ public final class e
   public static boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
   {
     AppMethodBeat.i(34306);
-    if (bs.isNullOrNil(paramString1))
+    if (bt.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(34306);
       return false;
@@ -28,9 +28,9 @@ public final class e
     {
       AppMethodBeat.o(34306);
       return true;
-      if (b.aQa(paramString1)) {
+      if (b.aVQ(paramString1)) {
         localObject = new b();
-      } else if (d.aQa(paramString1)) {
+      } else if (d.aVQ(paramString1)) {
         localObject = new d();
       }
     }
@@ -102,7 +102,7 @@ public final class e
   static final class b
     implements e.c
   {
-    public static boolean aQa(String paramString)
+    public static boolean aVQ(String paramString)
     {
       AppMethodBeat.i(34302);
       if ((paramString != null) && ((paramString.startsWith("weixin://openNativeUrl/myDeviceList")) || (paramString.startsWith("weixin://openNativeUrl/bindMyDevice"))))
@@ -117,7 +117,7 @@ public final class e
     public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
       AppMethodBeat.i(34303);
-      if (bs.isNullOrNil(paramString1))
+      if (bt.isNullOrNil(paramString1))
       {
         AppMethodBeat.o(34303);
         return false;
@@ -148,7 +148,7 @@ public final class e
   static final class d
     implements e.c
   {
-    public static boolean aQa(String paramString)
+    public static boolean aVQ(String paramString)
     {
       AppMethodBeat.i(34304);
       if ((paramString != null) && ((paramString.startsWith("weixin://wesport/recommend")) || (paramString.startsWith("weixin://openNativeUrl/rankMyHomepage")) || (paramString.startsWith("weixin://openNativeUrl/rankSetting"))))
@@ -163,9 +163,9 @@ public final class e
     public final boolean a(String paramString1, Context paramContext, MMFragment paramMMFragment, String paramString2)
     {
       AppMethodBeat.i(34305);
-      if (bs.isNullOrNil(paramString1))
+      if (bt.isNullOrNil(paramString1))
       {
-        ac.d("MicroMsg.BizNativeUrlDispatcher", "nativeUrl is null.");
+        ad.d("MicroMsg.BizNativeUrlDispatcher", "nativeUrl is null.");
         AppMethodBeat.o(34305);
         return false;
       }
@@ -182,23 +182,23 @@ public final class e
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankMyHomepage"))
       {
-        paramString1 = u.axw();
-        if (bs.isNullOrNil(paramString1))
+        paramString1 = u.aAm();
+        if (bt.isNullOrNil(paramString1))
         {
-          ac.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
+          ad.e("MicroMsg.BizNativeUrlDispatcher", "Get username from UserInfo return null or nil.");
           AppMethodBeat.o(34305);
           return false;
         }
         paramMMFragment = new Intent();
         paramMMFragment.putExtra("username", paramString1);
         d.b(paramContext, "exdevice", ".ui.ExdeviceProfileUI", paramMMFragment);
-        ac.i("MicroMsg.BizNativeUrlDispatcher", "Jump to ExdeviceProfileUI.");
+        ad.i("MicroMsg.BizNativeUrlDispatcher", "Jump to ExdeviceProfileUI.");
         AppMethodBeat.o(34305);
         return true;
       }
       if (paramString1.startsWith("weixin://openNativeUrl/rankSetting"))
       {
-        d.N(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
+        d.Q(paramContext, "exdevice", ".ui.ExdeviceSettingUI");
         AppMethodBeat.o(34305);
         return true;
       }

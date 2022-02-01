@@ -32,14 +32,14 @@ public final class af
   public static void e(Throwable paramThrowable)
   {
     AppMethodBeat.i(125027);
-    ApplicationLike localApplicationLike = d.cIg;
+    ApplicationLike localApplicationLike = d.cTo;
     if ((localApplicationLike == null) || (localApplicationLike.getApplication() == null))
     {
       ShareTinkerLog.v("TinkerCrashProtect", "applicationlike is null", new Object[0]);
       AppMethodBeat.o(125027);
       return;
     }
-    if (!b.c(localApplicationLike))
+    if (!b.d(localApplicationLike))
     {
       ShareTinkerLog.v("TinkerCrashProtect", "tinker is not loaded", new Object[0]);
       AppMethodBeat.o(125027);
@@ -76,7 +76,7 @@ public final class af
         {
           ShareTinkerLog.v("TinkerCrashProtect", "have xposed: just clean tinker", new Object[0]);
           ShareTinkerInternals.killAllOtherProcess(localApplicationLike.getApplication());
-          b.e(localApplicationLike);
+          b.f(localApplicationLike);
           ShareTinkerInternals.setTinkerDisableWithSharedPreferences(localApplicationLike.getApplication());
           AppMethodBeat.o(125027);
           return;
@@ -90,7 +90,7 @@ public final class af
           {
             ShareTinkerLog.v("TinkerCrashProtect", "have zuk parse error: just clean tinker", new Object[0]);
             ShareTinkerInternals.killAllOtherProcess(localApplicationLike.getApplication());
-            b.e(localApplicationLike);
+            b.f(localApplicationLike);
             ShareTinkerInternals.setTinkerDisableWithSharedPreferences(localApplicationLike.getApplication());
             AppMethodBeat.o(125027);
             return;

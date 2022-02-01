@@ -1,48 +1,50 @@
 package com.tencent.mm.sticker.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ayx;
-import com.tencent.mm.protocal.protobuf.ayy;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bdb;
+import com.tencent.mm.protocal.protobuf.bdc;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-sticker_release"})
 public final class a
   extends n
-  implements com.tencent.mm.network.k
+  implements k
 {
   private final String TAG;
-  private g callback;
+  private f callback;
   public final b rr;
   
   public a()
   {
     AppMethodBeat.i(105976);
     this.TAG = "MicroMsg.NetSceneGetLensInfo";
-    Object localObject = new ayx();
-    ((ayx)localObject).Ewy = "com.tencent.xin.lens.lens_test1";
+    Object localObject = new bdb();
+    ((bdb)localObject).Geb = "com.tencent.xin.lens.lens_test1";
     b.a locala = new b.a();
-    locala.c((com.tencent.mm.bw.a)localObject);
-    locala.d((com.tencent.mm.bw.a)new ayy());
-    locala.Am("/cgi-bin/micromsg-bin/getlensinfo");
-    locala.op(3903);
-    localObject = locala.aAz();
-    d.g.b.k.g(localObject, "builder.buildInstance()");
+    locala.c((com.tencent.mm.bx.a)localObject);
+    locala.d((com.tencent.mm.bx.a)new bdc());
+    locala.Dl("/cgi-bin/micromsg-bin/getlensinfo");
+    locala.oP(3903);
+    localObject = locala.aDC();
+    p.g(localObject, "builder.buildInstance()");
     this.rr = ((b)localObject);
     AppMethodBeat.o(105976);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(105974);
-    this.callback = paramg;
-    int i = dispatch(parame, (q)this.rr, (com.tencent.mm.network.k)this);
+    this.callback = paramf;
+    int i = dispatch(parame, (q)this.rr, (k)this);
     AppMethodBeat.o(105974);
     return i;
   }
@@ -55,7 +57,7 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(105975);
-    ac.i(this.TAG, "onGYNetEnd: " + paramInt2 + ", " + paramInt3);
+    ad.i(this.TAG, "onGYNetEnd: " + paramInt2 + ", " + paramInt3);
     paramq = this.callback;
     if (paramq != null)
     {

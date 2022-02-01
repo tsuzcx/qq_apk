@@ -9,8 +9,8 @@ public final class AppBrandAuthorizeUI$AuthStateChangedByUserEvent
   implements Parcelable
 {
   public static final Parcelable.Creator<AuthStateChangedByUserEvent> CREATOR;
-  public boolean maE;
-  public boolean maF;
+  public boolean mAw;
+  public boolean mAx;
   
   static
   {
@@ -21,8 +21,8 @@ public final class AppBrandAuthorizeUI$AuthStateChangedByUserEvent
   
   public AppBrandAuthorizeUI$AuthStateChangedByUserEvent()
   {
-    this.maE = false;
-    this.maF = false;
+    this.mAw = false;
+    this.mAx = false;
   }
   
   protected AppBrandAuthorizeUI$AuthStateChangedByUserEvent(Parcel paramParcel)
@@ -31,7 +31,7 @@ public final class AppBrandAuthorizeUI$AuthStateChangedByUserEvent
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.maE = bool1;
+      this.mAw = bool1;
       if (paramParcel.readByte() == 0) {
         break label50;
       }
@@ -39,7 +39,7 @@ public final class AppBrandAuthorizeUI$AuthStateChangedByUserEvent
     label50:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.maF = bool1;
+      this.mAx = bool1;
       AppMethodBeat.o(48548);
       return;
       bool1 = false;
@@ -56,11 +56,11 @@ public final class AppBrandAuthorizeUI$AuthStateChangedByUserEvent
   {
     int i = 1;
     AppMethodBeat.i(48549);
-    if (this.maE)
+    if (this.mAw)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.maF) {
+      if (!this.mAx) {
         break label48;
       }
     }
@@ -77,7 +77,7 @@ public final class AppBrandAuthorizeUI$AuthStateChangedByUserEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeUI.AuthStateChangedByUserEvent
  * JD-Core Version:    0.7.0.1
  */

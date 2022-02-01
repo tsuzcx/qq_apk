@@ -2,7 +2,7 @@ package d.l.b.a.b.j.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.e;
 import d.l.b.a.b.b.h;
@@ -20,14 +20,14 @@ import d.l.b.a.b.m.u;
 import d.m;
 
 public final class r
-  extends g<b>
+  extends g<r.b>
 {
-  public static final a LFJ;
+  public static final a NwH;
   
   static
   {
     AppMethodBeat.i(60106);
-    LFJ = new a((byte)0);
+    NwH = new a((byte)0);
     AppMethodBeat.o(60106);
   }
   
@@ -40,12 +40,12 @@ public final class r
   
   public r(f paramf)
   {
-    this((b)new r.b.b(paramf));
+    this((r.b)new r.b.b(paramf));
     AppMethodBeat.i(60104);
     AppMethodBeat.o(60104);
   }
   
-  public r(b paramb)
+  public r(r.b paramb)
   {
     super(paramb);
     AppMethodBeat.i(60103);
@@ -55,36 +55,36 @@ public final class r
   private ab c(y paramy)
   {
     AppMethodBeat.i(60102);
-    k.h(paramy, "module");
-    Object localObject1 = (b)getValue();
+    p.h(paramy, "module");
+    Object localObject1 = (r.b)getValue();
     if ((localObject1 instanceof r.b.a))
     {
-      paramy = ((r.b.a)getValue()).KXI;
+      paramy = ((r.b.a)getValue()).MOF;
       AppMethodBeat.o(60102);
       return paramy;
     }
     if ((localObject1 instanceof r.b.b))
     {
-      Object localObject2 = ((r.b.b)getValue()).LFK;
-      localObject1 = ((f)localObject2).LbB;
-      int j = ((f)localObject2).LFt;
+      Object localObject2 = ((r.b.b)getValue()).NwI;
+      localObject1 = ((f)localObject2).MSw;
+      int j = ((f)localObject2).Nwr;
       localObject2 = s.b(paramy, (d.l.b.a.b.f.a)localObject1);
       if (localObject2 == null)
       {
-        paramy = u.aWR("Unresolved type: " + localObject1 + " (arrayDimensions=" + j + ')');
-        k.g(paramy, "ErrorUtils.createErrorTy…sions=$arrayDimensions)\")");
+        paramy = u.bcU("Unresolved type: " + localObject1 + " (arrayDimensions=" + j + ')');
+        p.g(paramy, "ErrorUtils.createErrorTy…sions=$arrayDimensions)\")");
         paramy = (ab)paramy;
         AppMethodBeat.o(60102);
         return paramy;
       }
-      localObject1 = ((e)localObject2).fRe();
-      k.g(localObject1, "descriptor.defaultType");
+      localObject1 = ((e)localObject2).giC();
+      p.g(localObject1, "descriptor.defaultType");
       localObject1 = d.l.b.a.b.m.d.a.aP((ab)localObject1);
       int i = 0;
       while (i < j)
       {
-        localObject1 = paramy.fRE().a(bh.LLV, (ab)localObject1);
-        k.g(localObject1, "module.builtIns.getArray…Variance.INVARIANT, type)");
+        localObject1 = paramy.gjd().a(bh.NCP, (ab)localObject1);
+        p.g(localObject1, "module.builtIns.getArray…Variance.INVARIANT, type)");
         localObject1 = (ab)localObject1;
         i += 1;
       }
@@ -99,14 +99,14 @@ public final class r
   public final ab b(y paramy)
   {
     AppMethodBeat.i(60101);
-    k.h(paramy, "module");
-    Object localObject = d.l.b.a.b.b.a.g.LeU;
-    localObject = d.l.b.a.b.b.a.g.a.fSm();
-    e locale = paramy.fRE().a(d.l.b.a.b.a.g.KZg.Lal.fZL());
+    p.h(paramy, "module");
+    Object localObject = d.l.b.a.b.b.a.g.MVP;
+    localObject = d.l.b.a.b.b.a.g.a.gjL();
+    e locale = paramy.gjd().a(d.l.b.a.b.a.g.MQb.MRg.grk());
     if (locale == null) {
-      d.l.b.a.b.a.g.agL(19);
+      d.l.b.a.b.a.g.ajm(19);
     }
-    k.g(locale, "module.builtIns.kClass");
+    p.g(locale, "module.builtIns.kClass");
     paramy = (ab)ac.a((d.l.b.a.b.b.a.g)localObject, locale, j.listOf(new ax(c(paramy))));
     AppMethodBeat.o(60101);
     return paramy;
@@ -117,7 +117,7 @@ public final class r
     public static g<?> af(ab paramab)
     {
       AppMethodBeat.i(60092);
-      k.h(paramab, "argumentType");
+      p.h(paramab, "argumentType");
       if (ad.aq(paramab))
       {
         AppMethodBeat.o(60092);
@@ -127,11 +127,11 @@ public final class r
       Object localObject = paramab;
       while (d.l.b.a.b.a.g.m((ab)localObject))
       {
-        localObject = ((av)j.iS(((ab)localObject).gbw())).fRV();
-        k.g(localObject, "type.arguments.single().type");
+        localObject = ((av)j.jg(((ab)localObject).gsW())).gju();
+        p.g(localObject, "type.arguments.single().type");
         i += 1;
       }
-      localObject = ((ab)localObject).gbz().fQq();
+      localObject = ((ab)localObject).gsZ().ghO();
       if ((localObject instanceof e))
       {
         localObject = d.l.b.a.b.j.d.a.c((h)localObject);
@@ -147,8 +147,8 @@ public final class r
       }
       if ((localObject instanceof as))
       {
-        paramab = d.l.b.a.b.f.a.p(d.l.b.a.b.a.g.KZg.KZk.fZL());
-        k.g(paramab, "ClassId.topLevel(KotlinB…ns.FQ_NAMES.any.toSafe())");
+        paramab = d.l.b.a.b.f.a.p(d.l.b.a.b.a.g.MQb.MQf.grk());
+        p.g(paramab, "ClassId.topLevel(KotlinB…ns.FQ_NAMES.any.toSafe())");
         paramab = (g)new r(paramab, 0);
         AppMethodBeat.o(60092);
         return paramab;
@@ -157,125 +157,10 @@ public final class r
       return null;
     }
   }
-  
-  public static abstract class b
-  {
-    public static final class a
-      extends r.b
-    {
-      public final ab KXI;
-      
-      public a(ab paramab)
-      {
-        super();
-        AppMethodBeat.i(60093);
-        this.KXI = paramab;
-        AppMethodBeat.o(60093);
-      }
-      
-      public final boolean equals(Object paramObject)
-      {
-        AppMethodBeat.i(60096);
-        if (this != paramObject)
-        {
-          if ((paramObject instanceof a))
-          {
-            paramObject = (a)paramObject;
-            if (!k.g(this.KXI, paramObject.KXI)) {}
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(60096);
-          return true;
-        }
-        AppMethodBeat.o(60096);
-        return false;
-      }
-      
-      public final int hashCode()
-      {
-        AppMethodBeat.i(60095);
-        ab localab = this.KXI;
-        if (localab != null)
-        {
-          int i = localab.hashCode();
-          AppMethodBeat.o(60095);
-          return i;
-        }
-        AppMethodBeat.o(60095);
-        return 0;
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(60094);
-        String str = "LocalClass(type=" + this.KXI + ")";
-        AppMethodBeat.o(60094);
-        return str;
-      }
-    }
-    
-    public static final class b
-      extends r.b
-    {
-      public final f LFK;
-      
-      public b(f paramf)
-      {
-        super();
-        AppMethodBeat.i(60097);
-        this.LFK = paramf;
-        AppMethodBeat.o(60097);
-      }
-      
-      public final boolean equals(Object paramObject)
-      {
-        AppMethodBeat.i(60100);
-        if (this != paramObject)
-        {
-          if ((paramObject instanceof b))
-          {
-            paramObject = (b)paramObject;
-            if (!k.g(this.LFK, paramObject.LFK)) {}
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(60100);
-          return true;
-        }
-        AppMethodBeat.o(60100);
-        return false;
-      }
-      
-      public final int hashCode()
-      {
-        AppMethodBeat.i(60099);
-        f localf = this.LFK;
-        if (localf != null)
-        {
-          int i = localf.hashCode();
-          AppMethodBeat.o(60099);
-          return i;
-        }
-        AppMethodBeat.o(60099);
-        return 0;
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(60098);
-        String str = "NormalClass(value=" + this.LFK + ")";
-        AppMethodBeat.o(60098);
-        return str;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.b.r
  * JD-Core Version:    0.7.0.1
  */

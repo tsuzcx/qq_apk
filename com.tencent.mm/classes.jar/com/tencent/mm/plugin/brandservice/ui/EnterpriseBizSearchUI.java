@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.ui.b;
 import com.tencent.mm.modelvoiceaddr.ui.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.tools.r;
@@ -19,11 +19,11 @@ public class EnterpriseBizSearchUI
   extends MMActivity
   implements b.a, EnterpriseBizContactListView.d
 {
-  private b nwH;
-  private EnterpriseBizContactListView nwM;
-  private String nxJ;
+  private b nYf;
+  private EnterpriseBizContactListView nYk;
+  private String nZh;
   
-  public final boolean Ga(String paramString)
+  public final boolean Jp(String paramString)
   {
     AppMethodBeat.i(5747);
     hideVKB();
@@ -31,37 +31,37 @@ public class EnterpriseBizSearchUI
     return true;
   }
   
-  public final void Gb(String paramString)
+  public final void Jq(String paramString)
   {
     AppMethodBeat.i(5746);
-    ac.i("MicroMsg.EnterpriseBizSearchUI", "search biz, key word : %s", new Object[] { paramString });
-    this.nwM.aPR(paramString);
+    ad.i("MicroMsg.EnterpriseBizSearchUI", "search biz, key word : %s", new Object[] { paramString });
+    this.nYk.aVH(paramString);
     AppMethodBeat.o(5746);
   }
   
   public final void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt) {}
   
-  public final void aKY()
+  public final void aOh()
   {
     AppMethodBeat.i(5748);
     hideVKB();
     AppMethodBeat.o(5748);
   }
   
-  public final void aPa()
+  public final void aSm()
   {
     AppMethodBeat.i(5745);
     finish();
     AppMethodBeat.o(5745);
   }
   
-  public final void aPb() {}
+  public final void aSn() {}
   
-  public final void aPc() {}
+  public final void aSo() {}
   
-  public final void aPd() {}
+  public final void aSp() {}
   
-  public final boolean bJC()
+  public final boolean bNV()
   {
     AppMethodBeat.i(5752);
     hideVKB();
@@ -77,27 +77,27 @@ public class EnterpriseBizSearchUI
   public void initView()
   {
     AppMethodBeat.i(5744);
-    if (bs.isNullOrNil(this.nxJ))
+    if (bt.isNullOrNil(this.nZh))
     {
-      this.nxJ = getIntent().getStringExtra("enterprise_biz_name");
-      if (bs.isNullOrNil(this.nxJ)) {
+      this.nZh = getIntent().getStringExtra("enterprise_biz_name");
+      if (bt.isNullOrNil(this.nZh)) {
         finish();
       }
     }
-    this.nwM = ((EnterpriseBizContactListView)findViewById(2131305113));
-    this.nwM.setFatherBizName(this.nxJ);
-    this.nwM.setExcludeBizChat(true);
-    this.nwM.refresh();
-    this.nwM.setMode(1);
-    this.nwM.bJD();
-    this.nwM.fjx();
-    this.nwM.wY(false);
-    this.nwM.setOnTouchListener(this);
-    ((TextView)this.nwM.getNoResultView()).setText(2131758448);
-    this.nwH = new b();
-    this.nwH.xO(true);
-    this.nwH.a(this);
-    this.nwH.igd = false;
+    this.nYk = ((EnterpriseBizContactListView)findViewById(2131305113));
+    this.nYk.setFatherBizName(this.nZh);
+    this.nYk.setExcludeBizChat(true);
+    this.nYk.refresh();
+    this.nYk.setMode(1);
+    this.nYk.bNW();
+    this.nYk.fzM();
+    this.nYk.xJ(false);
+    this.nYk.setOnTouchListener(this);
+    ((TextView)this.nYk.getNoResultView()).setText(2131758448);
+    this.nYf = new b();
+    this.nYf.yC(true);
+    this.nYf.a(this);
+    this.nYf.izx = false;
     AppMethodBeat.o(5744);
   }
   
@@ -112,7 +112,7 @@ public class EnterpriseBizSearchUI
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(5750);
-    this.nwH.a(this, paramMenu);
+    this.nYf.a(this, paramMenu);
     AppMethodBeat.o(5750);
     return true;
   }
@@ -121,7 +121,7 @@ public class EnterpriseBizSearchUI
   {
     AppMethodBeat.i(5743);
     super.onDestroy();
-    if (this.nwM != null) {
+    if (this.nYk != null) {
       EnterpriseBizContactListView.release();
     }
     AppMethodBeat.o(5743);
@@ -131,15 +131,15 @@ public class EnterpriseBizSearchUI
   {
     AppMethodBeat.i(5749);
     super.onPause();
-    this.nwH.cancel();
-    this.nwH.clearFocus();
+    this.nYf.cancel();
+    this.nYf.clearFocus();
     AppMethodBeat.o(5749);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
     AppMethodBeat.i(5751);
-    this.nwH.a(this, paramMenu);
+    this.nYf.a(this, paramMenu);
     AppMethodBeat.o(5751);
     return true;
   }

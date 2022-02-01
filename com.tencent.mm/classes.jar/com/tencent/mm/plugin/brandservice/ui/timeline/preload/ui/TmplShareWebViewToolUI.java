@@ -10,260 +10,251 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.x;
+import com.tencent.mm.ai.x;
 import com.tencent.mm.plugin.brandservice.a.b.a;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.UrlExKt;
-import com.tencent.mm.plugin.brandservice.ui.timeline.preload.q;
-import com.tencent.mm.plugin.brandservice.ui.timeline.video.b;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.util.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.e.m;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.e;
+import d.g.b.p;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;", "Lcom/tencent/mm/plugin/webview/preload/api/ITmplShareWebView;", "()V", "TAG", "", "_webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "get_webView", "()Lcom/tencent/mm/ui/widget/MMWebView;", "set_webView", "(Lcom/tencent/mm/ui/widget/MMWebView;)V", "contentRoot", "Landroid/view/ViewGroup;", "getContentRoot", "()Landroid/view/ViewGroup;", "contentRoot$delegate", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazy;", "density", "", "enterId", "", "getEnterId", "()I", "enterId$delegate", "enterPageTime", "", "getEnterPageTime", "()J", "setEnterPageTime", "(J)V", "mOnForegroundListener", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$mOnForegroundListener$1", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$mOnForegroundListener$1;", "mpMenuHelper", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MpMenuHelper;", "getMpMenuHelper", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MpMenuHelper;", "setMpMenuHelper", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MpMenuHelper;)V", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "getMsgInfo", "()Lcom/tencent/mm/message/MPMsgInfo;", "msgInfo$delegate", "nativePageRootLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getNativePageRootLayout", "()Landroid/view/View;", "nativePageRootLayout$delegate", "pageController", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "getPageController", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "setPageController", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;)V", "pageStayTime", "getPageStayTime", "setPageStayTime", "publishId", "getPublishId", "()Ljava/lang/String;", "publishId$delegate", "redirectedFullScreenH5", "", "getRedirectedFullScreenH5", "()Z", "setRedirectedFullScreenH5", "(Z)V", "resumePageTime", "getResumePageTime", "setResumePageTime", "scene", "getScene", "scene$delegate", "shareLayout", "Landroid/widget/RelativeLayout;", "getShareLayout", "()Landroid/widget/RelativeLayout;", "shareLayout$delegate", "subScene", "getSubScene", "subScene$delegate", "timeLineSessionId", "getTimeLineSessionId", "timeLineSessionId$delegate", "videoEnterId", "getVideoEnterId", "setVideoEnterId", "(I)V", "webView", "getWebView", "webView$delegate", "adWebviewReady", "", "bundle", "Landroid/os/Bundle;", "canTryPreloadNextWebView", "closeAdWebview", "closeDotWebview", "convertFuncFlag", "flag", "createAdWebview", "createWebView", "doOnDestroy", "dotWebviewReady", "enableMinimize", "getFuncFlag", "getMPVideoState", "getNaitivePageLayoutID", "hideDotWebview", "isNativePage", "loadForceUrl", "forceUrl", "fullScreen", "modifyForceUrl", "url", "needShowBottom", "onDestroy", "onPause", "onReset", "onResetAfterCreate", "onResume", "onWebViewScrollChanged", "scrollY", "opPlayer", "redirectFullScreenH5", "redirectUrl", "sendMPPageData", "setDotScriptData", "setFuncFlag", "setShareFuncFlag", "showReaderModeMenu", "showShareMenu", "switchVideo", "updateMenu", "updateShareContentHeight", "plugin-brandservice_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplWebViewToolUI;", "Lcom/tencent/mm/plugin/webview/preload/api/ITmplShareWebView;", "()V", "TAG", "", "_webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "get_webView", "()Lcom/tencent/mm/ui/widget/MMWebView;", "set_webView", "(Lcom/tencent/mm/ui/widget/MMWebView;)V", "contentRoot", "Landroid/view/ViewGroup;", "getContentRoot", "()Landroid/view/ViewGroup;", "contentRoot$delegate", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazy;", "density", "", "enterId", "", "getEnterId", "()I", "enterId$delegate", "enterPageTime", "", "getEnterPageTime", "()J", "setEnterPageTime", "(J)V", "mOnForegroundListener", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$mOnForegroundListener$1", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$mOnForegroundListener$1;", "mpMenuHelper", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MpMenuHelper;", "getMpMenuHelper", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MpMenuHelper;", "setMpMenuHelper", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MpMenuHelper;)V", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "getMsgInfo", "()Lcom/tencent/mm/message/MPMsgInfo;", "msgInfo$delegate", "nativePageRootLayout", "Landroid/view/View;", "kotlin.jvm.PlatformType", "getNativePageRootLayout", "()Landroid/view/View;", "nativePageRootLayout$delegate", "pageController", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "getPageController", "()Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "setPageController", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;)V", "pageStayTime", "getPageStayTime", "setPageStayTime", "publishId", "getPublishId", "()Ljava/lang/String;", "publishId$delegate", "redirectedFullScreenH5", "", "getRedirectedFullScreenH5", "()Z", "setRedirectedFullScreenH5", "(Z)V", "resumePageTime", "getResumePageTime", "setResumePageTime", "scene", "getScene", "scene$delegate", "shareLayout", "Landroid/widget/RelativeLayout;", "getShareLayout", "()Landroid/widget/RelativeLayout;", "shareLayout$delegate", "subScene", "getSubScene", "subScene$delegate", "timeLineSessionId", "getTimeLineSessionId", "timeLineSessionId$delegate", "videoEnterId", "getVideoEnterId", "setVideoEnterId", "(I)V", "webView", "getWebView", "webView$delegate", "adWebviewReady", "", "bundle", "Landroid/os/Bundle;", "canTryPreloadNextWebView", "closeAdWebview", "closeDotWebview", "convertFuncFlag", "flag", "createAdWebview", "createWebView", "doOnDestroy", "dotWebviewReady", "enableMinimize", "getMPVideoState", "getNaitivePageLayoutID", "hideDotWebview", "isNativePage", "loadForceUrl", "forceUrl", "fullScreen", "modifyForceUrl", "url", "needShowBottom", "onDestroy", "onPause", "onReset", "onResetAfterCreate", "onResume", "onWebViewScrollChanged", "scrollY", "opPlayer", "redirectFullScreenH5", "redirectUrl", "sendMPPageData", "setDotScriptData", "setFuncFlag", "setShareFuncFlag", "showReaderModeMenu", "showShareMenu", "switchVideo", "updateMenu", "updateShareContentHeight", "plugin-brandservice_release"})
 public abstract class TmplShareWebViewToolUI
   extends TmplWebViewToolUI
   implements com.tencent.mm.plugin.webview.g.a.c
 {
-  private final String TAG = "MicroMsg.TmplShareWebViewToolUI";
+  protected final String TAG = "MicroMsg.TmplShareWebViewToolUI";
   private float density = 3.0F;
-  protected long lBM;
-  MMWebView nKA;
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKB = q.a(this.nLf, (d.g.a.a)new n(this));
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKC = q.a(this.nLf, (d.g.a.a)new f(this));
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKD = q.a(this.nLf, (d.g.a.a)new e(this));
-  public b nKE = new b();
-  protected com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o nKF = new com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o();
-  protected long nKG;
-  protected long nKH;
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKI = q.a(this.nLf, (d.g.a.a)new j(this));
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKJ = q.a(this.nLf, (d.g.a.a)new l(this));
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKK = q.a(this.nLf, (d.g.a.a)new c(this));
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKL = q.a(this.nLf, (d.g.a.a)new h(this));
-  protected final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKM = q.a(this.nLf, (d.g.a.a)new m(this));
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKN = q.a(this.nLf, (d.g.a.a)new k(this));
-  private int nKO;
-  private boolean nKP;
-  private final d nKQ = new d(this);
-  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o nKz = q.a(this.nLf, (d.g.a.a)new a(this));
+  protected long mbn;
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o onf = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new a(this));
+  MMWebView ong;
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o onh = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new n(this));
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o oni = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new f(this));
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o onj = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new e(this));
+  public com.tencent.mm.plugin.brandservice.ui.timeline.video.b onk = new com.tencent.mm.plugin.brandservice.ui.timeline.video.b();
+  protected com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o onl = new com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o();
+  protected long onm;
+  protected long onn;
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o ono = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new j(this));
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o onp = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new l(this));
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o onq = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new c(this));
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o onr = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new h(this));
+  protected final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o ons = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new m(this));
+  private final com.tencent.mm.plugin.brandservice.ui.timeline.preload.o ont = com.tencent.mm.plugin.brandservice.ui.timeline.preload.q.a(this.onL, (d.g.a.a)new k(this));
+  private int onu;
+  private boolean onv;
+  private final d onw = new d(this);
   
-  public final void O(Bundle paramBundle)
+  public final void Q(Bundle paramBundle)
   {
-    com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o localo = this.nKF;
+    com.tencent.mm.plugin.brandservice.ui.timeline.video.util.o localo = this.onl;
     if (paramBundle != null) {}
     for (paramBundle = paramBundle.getString("extInfo");; paramBundle = null)
     {
-      localo.nPu = paramBundle;
-      this.nKF.jg(true);
+      localo.osa = paramBundle;
+      this.onl.jr(true);
       return;
     }
   }
   
-  public void P(Bundle paramBundle)
+  public void R(Bundle paramBundle)
   {
     Object localObject = new x();
     ((x)localObject).t(paramBundle);
     ((x)localObject).t(getIntent());
-    paramBundle = ((x)localObject).hkX.url;
-    d.g.b.k.g(paramBundle, "msgInfo.item.url");
-    paramBundle = UrlExKt.appendUrlParam(UrlExKt.appendUrlParam(paramBundle, "isNativePage", "2"), "enterid", String.valueOf(bMl()));
+    paramBundle = ((x)localObject).hDg.url;
+    p.g(paramBundle, "msgInfo.item.url");
+    paramBundle = UrlExKt.appendUrlParam(UrlExKt.appendUrlParam(paramBundle, "isNativePage", "2"), "enterid", String.valueOf(bQM()));
     localObject = new b.a();
     AppCompatActivity localAppCompatActivity = getContext();
-    d.g.b.k.g(localAppCompatActivity, "context");
-    com.tencent.mm.plugin.brandservice.ui.timeline.preload.k.a((Context)localAppCompatActivity, paramBundle, getIntent().getIntExtra(e.m.HhB, -1), getIntent().getIntExtra(e.m.Hhx, -1), getIntent().getIntExtra(e.m.Hhy, -1), getIntent(), -1, (b.a)localObject, false);
+    p.g(localAppCompatActivity, "context");
+    com.tencent.mm.plugin.brandservice.ui.timeline.preload.k.a((Context)localAppCompatActivity, paramBundle, getIntent().getIntExtra(e.m.IUR, -1), getIntent().getIntExtra(e.m.IUN, -1), getIntent().getIntExtra(e.m.IUO, -1), getIntent(), -1, (b.a)localObject, false);
     onReset();
   }
   
-  public boolean Q(Bundle paramBundle)
+  public boolean S(Bundle paramBundle)
   {
     return false;
   }
-  
-  public void R(Bundle paramBundle) {}
-  
-  public void S(Bundle paramBundle) {}
   
   public void T(Bundle paramBundle) {}
   
   public void U(Bundle paramBundle) {}
   
-  public final void Uj(String paramString)
-  {
-    d.g.b.k.h(paramString, "redirectUrl");
-    if (this.nKP) {
-      return;
-    }
-    this.nKP = true;
-    AppCompatActivity localAppCompatActivity = getContext();
-    d.g.b.k.g(localAppCompatActivity, "context");
-    com.tencent.mm.plugin.brandservice.ui.timeline.video.util.l.a((Context)localAppCompatActivity, bMi(), paramString);
-    ap.n((Runnable)new i(this), 300L);
-    com.tencent.mm.plugin.webview.h.a.Vj(5);
-  }
-  
   public void V(Bundle paramBundle) {}
   
   public void W(Bundle paramBundle) {}
   
-  public final void WT()
+  public void X(Bundle paramBundle) {}
+  
+  public final void XS(String paramString)
   {
-    this.nKF.WT();
+    p.h(paramString, "redirectUrl");
+    if (this.onv) {
+      return;
+    }
+    this.onv = true;
+    AppCompatActivity localAppCompatActivity = getContext();
+    p.g(localAppCompatActivity, "context");
+    com.tencent.mm.plugin.brandservice.ui.timeline.video.util.l.a((Context)localAppCompatActivity, bQJ(), paramString);
+    aq.o((Runnable)new i(this), 300L);
+    com.tencent.mm.plugin.webview.h.a.WZ(5);
   }
   
-  protected final ViewGroup bMg()
+  public void Y(Bundle paramBundle) {}
+  
+  public final void Zm()
   {
-    return (ViewGroup)this.nKz.a($$delegatedProperties[0]);
+    this.onl.Zm();
   }
   
-  public final View bMh()
+  protected final ViewGroup bQH()
   {
-    return (View)this.nKC.a($$delegatedProperties[2]);
+    return (ViewGroup)this.onf.a(cwV[0]);
   }
   
-  protected final x bMi()
+  public final View bQI()
   {
-    return (x)this.nKD.a($$delegatedProperties[3]);
+    return (View)this.oni.a(cwV[2]);
   }
   
-  protected final String bMj()
+  protected final x bQJ()
   {
-    return (String)this.nKL.a($$delegatedProperties[7]);
+    return (x)this.onj.a(cwV[3]);
   }
   
-  public final RelativeLayout bMk()
+  protected final String bQK()
   {
-    return (RelativeLayout)this.nKN.a($$delegatedProperties[9]);
+    return (String)this.onr.a(cwV[7]);
   }
   
-  protected final int bMl()
+  public final RelativeLayout bQL()
   {
-    if (this.nKO == 0) {}
-    for (int i = ((Number)this.nKK.a($$delegatedProperties[6])).intValue();; i = this.nKO)
+    return (RelativeLayout)this.ont.a(cwV[9]);
+  }
+  
+  protected final int bQM()
+  {
+    if (this.onu == 0) {}
+    for (int i = ((Number)this.onq.a(cwV[6])).intValue();; i = this.onu)
     {
-      this.nKO = i;
-      return this.nKO;
+      this.onu = i;
+      return this.onu;
     }
   }
   
-  public final MMWebView bMm()
+  public final MMWebView bQN()
   {
-    MMWebView localMMWebView = super.bMm();
+    MMWebView localMMWebView = super.bQN();
     if (localMMWebView != null)
     {
-      this.nKA = localMMWebView;
+      this.ong = localMMWebView;
       localMMWebView.a((MMWebView.e)new b(this));
       return localMMWebView;
     }
     return null;
   }
   
-  public boolean bMn()
+  public boolean bQO()
   {
     return false;
   }
   
-  public void bMo()
+  public void bQP()
   {
-    super.bMo();
-    this.nKG = System.currentTimeMillis();
-    com.tencent.mm.sdk.b.a.GpY.c((com.tencent.mm.sdk.b.c)this.nKQ);
-    MMWebView localMMWebView = this.nKq;
+    super.bQP();
+    this.onm = System.currentTimeMillis();
+    com.tencent.mm.sdk.b.a.IbL.c((com.tencent.mm.sdk.b.c)this.onw);
+    MMWebView localMMWebView = this.omW;
     if (localMMWebView != null) {
-      localMMWebView.setOnLongClickListener((View.OnLongClickListener)g.nKS);
+      localMMWebView.setOnLongClickListener((View.OnLongClickListener)g.ony);
     }
     this.density = getWebView().getMMDensity();
   }
   
-  public void bMp() {}
+  public void bQQ() {}
   
-  public final boolean bMq()
+  public final boolean bQR()
   {
     return false;
   }
   
-  public final void bMr()
+  public final void bQS()
   {
-    this.nKF.jg(false);
-    this.nKE.nLI.eb(20, 0);
+    this.onl.jr(false);
+    this.onk.ooo.ed(20, 0);
   }
   
-  public final Bundle bMs()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("funcFlag", zi(this.nKE.hhc));
-    return localBundle;
-  }
+  public final void bQT() {}
   
-  public final void bMt() {}
+  public void bQU() {}
   
-  public void bMu() {}
+  public void bQV() {}
   
-  public void bMv() {}
-  
-  public Bundle bMw()
+  public Bundle bQW()
   {
     return new Bundle();
   }
   
-  public final boolean bMx()
+  public final boolean bQX()
   {
     return true;
   }
   
   protected final int getScene()
   {
-    return ((Number)this.nKI.a($$delegatedProperties[4])).intValue();
+    return ((Number)this.ono.a(cwV[4])).intValue();
   }
   
   protected final int getSubScene()
   {
-    return ((Number)this.nKJ.a($$delegatedProperties[5])).intValue();
+    return ((Number)this.onp.a(cwV[5])).intValue();
   }
   
   protected final MMWebView getWebView()
   {
-    return (MMWebView)this.nKB.a($$delegatedProperties[1]);
+    return (MMWebView)this.onh.a(cwV[1]);
   }
   
   public void onDestroy()
   {
-    bMp();
+    bQQ();
     super.onDestroy();
-    com.tencent.mm.sdk.b.a.GpY.d((com.tencent.mm.sdk.b.c)this.nKQ);
+    com.tencent.mm.sdk.b.a.IbL.d((com.tencent.mm.sdk.b.c)this.onw);
   }
   
   public void onPause()
   {
     super.onPause();
     long l = System.currentTimeMillis();
-    this.lBM += l - this.nKH;
-    this.nKH = l;
+    this.mbn += l - this.onn;
+    this.onn = l;
   }
   
   public void onReset()
   {
-    this.nKA = null;
-    Object localObject = bMh();
-    d.g.b.k.g(localObject, "nativePageRootLayout");
+    this.ong = null;
+    Object localObject = bQI();
+    p.g(localObject, "nativePageRootLayout");
     localObject = ((View)localObject).getParent();
     if (localObject == null) {
       throw new d.v("null cannot be cast to non-null type android.view.ViewGroup");
     }
-    ((ViewGroup)localObject).removeView(bMh());
-    localObject = bMk().getParent();
+    ((ViewGroup)localObject).removeView(bQI());
+    localObject = bQL().getParent();
     if (localObject == null) {
       throw new d.v("null cannot be cast to non-null type android.view.ViewGroup");
     }
-    ((ViewGroup)localObject).removeView((View)bMk());
+    ((ViewGroup)localObject).removeView((View)bQL());
     super.onReset();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.nKH = System.currentTimeMillis();
+    this.onn = System.currentTimeMillis();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -272,47 +263,11 @@ public abstract class TmplShareWebViewToolUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public void zh(int paramInt) {}
+  public void zR(int paramInt) {}
   
-  protected final int zi(int paramInt)
-  {
-    if (paramInt == -1) {
-      return -1;
-    }
-    int j;
-    int i;
-    if ((paramInt & 0x8) == 0)
-    {
-      j = 1;
-      if ((paramInt & 0x10) != 0) {
-        break label69;
-      }
-      i = 1;
-      label25:
-      if (j == 0) {
-        break label74;
-      }
-    }
-    label69:
-    label74:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      j = paramInt;
-      if (i != 0) {
-        j = paramInt | 0x2;
-      }
-      ac.i(this.TAG, "convertFuncFlag %d", new Object[] { Integer.valueOf(j) });
-      return j;
-      j = 0;
-      break;
-      i = 0;
-      break label25;
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
   static final class a
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<ViewGroup>
   {
     a(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -321,7 +276,7 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "", "scrollY", "<anonymous parameter 2>", "<anonymous parameter 3>", "onWebViewScrollChanged", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$createWebView$1$1"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "scrollY", "<anonymous parameter 2>", "<anonymous parameter 3>", "onWebViewScrollChanged", "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$createWebView$1$1"})
   static final class b
     implements MMWebView.e
   {
@@ -330,14 +285,14 @@ public abstract class TmplShareWebViewToolUI
     public final void onWebViewScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(6869);
-      this.nKR.zh(paramInt2);
+      this.onx.zR(paramInt2);
       AppMethodBeat.o(6869);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class c
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<Integer>
   {
     c(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -346,14 +301,14 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$mOnForegroundListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/AppActiveEvent;", "callback", "", "event", "plugin-brandservice_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$mOnForegroundListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/AppActiveEvent;", "callback", "", "event", "plugin-brandservice_release"})
   public static final class d
     extends com.tencent.mm.sdk.b.c<com.tencent.mm.g.a.k>
   {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/message/MPMsgInfo;", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/message/MPMsgInfo;", "invoke"})
   static final class e
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<x>
   {
     e(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -362,9 +317,9 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<View>
   {
     f(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -373,28 +328,34 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
   static final class g
     implements View.OnLongClickListener
   {
-    public static final g nKS;
+    public static final g ony;
     
     static
     {
       AppMethodBeat.i(6874);
-      nKS = new g();
+      ony = new g();
       AppMethodBeat.o(6874);
     }
     
     public final boolean onLongClick(View paramView)
     {
+      AppMethodBeat.i(210079);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$onResetAfterCreate$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/brandservice/ui/timeline/preload/ui/TmplShareWebViewToolUI$onResetAfterCreate$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(210079);
       return true;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "kotlin.jvm.PlatformType", "invoke"})
   static final class h
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<String>
   {
     h(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -403,7 +364,7 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class i
     implements Runnable
   {
@@ -412,14 +373,14 @@ public abstract class TmplShareWebViewToolUI
     public final void run()
     {
       AppMethodBeat.i(6876);
-      this.nKR.finish();
+      this.onx.finish();
       AppMethodBeat.o(6876);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class j
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<Integer>
   {
     j(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -428,9 +389,9 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/widget/RelativeLayout;", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/widget/RelativeLayout;", "invoke"})
   static final class k
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<RelativeLayout>
   {
     k(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -439,9 +400,9 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class l
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<Integer>
   {
     l(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -450,9 +411,9 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class m
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<Integer>
   {
     m(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)
@@ -461,9 +422,9 @@ public abstract class TmplShareWebViewToolUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMWebView;", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMWebView;", "invoke"})
   static final class n
-    extends d.g.b.l
+    extends d.g.b.q
     implements d.g.a.a<MMWebView>
   {
     n(TmplShareWebViewToolUI paramTmplShareWebViewToolUI)

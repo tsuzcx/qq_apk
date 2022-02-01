@@ -4,9 +4,9 @@ import android.content.Context;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cq.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.xweb.f.a;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public final class MiniReaderLogic
   private static String a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString2)
   {
     AppMethodBeat.i(150140);
-    Object localObject = ai.getContext();
+    Object localObject = aj.getContext();
     String str = "";
     for (;;)
     {
@@ -33,7 +33,7 @@ public final class MiniReaderLogic
         localJSONObject2 = new JSONObject();
         localJSONObject2.put("type", "miniqb");
         localJSONObject2.put("filePath", paramString1);
-        localJSONObject2.put("processName", ai.getProcessName());
+        localJSONObject2.put("processName", aj.getProcessName());
         localJSONObject2.put("appid", paramString2);
         localJSONObject1.put("thirdCtx", localJSONObject2);
         paramString2 = new ArrayList();
@@ -50,7 +50,7 @@ public final class MiniReaderLogic
       {
         JSONObject localJSONObject1;
         JSONObject localJSONObject2;
-        ac.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "getMenuInfo() Exception:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+        ad.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "getMenuInfo() Exception:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
         paramString1 = str;
         continue;
         paramBoolean2 = false;
@@ -81,7 +81,7 @@ public final class MiniReaderLogic
   
   private static JSONObject a(int paramInt1, int paramInt2, String paramString, boolean paramBoolean, int paramInt3)
   {
-    AppMethodBeat.i(192598);
+    AppMethodBeat.i(195204);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -90,14 +90,14 @@ public final class MiniReaderLogic
       localJSONObject.put("text", paramString);
       localJSONObject.put("isShow", paramBoolean);
       localJSONObject.put("idx", paramInt3);
-      AppMethodBeat.o(192598);
+      AppMethodBeat.o(195204);
       return localJSONObject;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ac.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "getMenuInfo() Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
+        ad.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "getMenuInfo() Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
       }
     }
   }
@@ -119,7 +119,7 @@ public final class MiniReaderLogic
       localJSONObject.put("isShow", false);
       paramString5.put(localJSONObject);
       localHashMap.put("update_menu_param", paramString5.toString());
-      a.a(paramContext, paramString1, paramString2, paramString3, paramString4, true, localHashMap, f.a.KyM, paramValueCallback, paramValueCallback1, true);
+      a.a(paramContext, paramString1, paramString2, paramString3, paramString4, true, localHashMap, f.a.Mpi, paramValueCallback, paramValueCallback1, true);
       AppMethodBeat.o(150148);
       return;
     }
@@ -127,7 +127,7 @@ public final class MiniReaderLogic
     {
       for (;;)
       {
-        ac.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "updateMenu() Exception:%s %s", new Object[] { paramString5.getClass().getSimpleName(), paramString5.getMessage() });
+        ad.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "updateMenu() Exception:%s %s", new Object[] { paramString5.getClass().getSimpleName(), paramString5.getMessage() });
       }
     }
   }
@@ -145,7 +145,7 @@ public final class MiniReaderLogic
     HashMap localHashMap = new HashMap();
     localHashMap.put("menuData", a(paramString1, paramBoolean1, false, paramBoolean2, paramString5));
     localHashMap.put("query_param", "feature_wx_float_window");
-    a.a(paramContext, paramString1, paramString2, paramString3, paramString4, false, localHashMap, f.a.KyM, paramValueCallback, paramValueCallback1, paramBoolean3);
+    a.a(paramContext, paramString1, paramString2, paramString3, paramString4, false, localHashMap, f.a.Mpi, paramValueCallback, paramValueCallback1, paramBoolean3);
     AppMethodBeat.o(177289);
   }
   
@@ -178,12 +178,12 @@ public final class MiniReaderLogic
     if (paramBoolean2)
     {
       int i = 1;
-      if (bs.jl(paramInt, 9)) {
+      if (bt.jx(paramInt, 9)) {
         i = 3;
       }
       localHashMap.put("param_flag", String.valueOf(i));
     }
-    a.a(paramContext, paramString1, paramString2, paramString3, paramString4, true, localHashMap, f.a.KyM, paramValueCallback, paramValueCallback1, paramBoolean4);
+    a.a(paramContext, paramString1, paramString2, paramString3, paramString4, true, localHashMap, f.a.Mpi, paramValueCallback, paramValueCallback1, paramBoolean4);
     AppMethodBeat.o(177288);
   }
   
@@ -203,7 +203,7 @@ public final class MiniReaderLogic
     {
       for (;;)
       {
-        ac.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "getMenuInfo() Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
+        ad.e("MicroMsg.FilesFloatBall.MiniReaderLogic", "getMenuInfo() Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
       }
     }
   }

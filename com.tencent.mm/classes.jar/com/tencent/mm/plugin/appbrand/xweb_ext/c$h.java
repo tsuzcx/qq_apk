@@ -2,18 +2,20 @@ package com.tencent.mm.plugin.appbrand.xweb_ext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class c$h
-  extends d.g.b.l
+  extends q
   implements a<Boolean>
 {
-  public static final h mQL;
+  public static final h nrl;
   
   static
   {
     AppMethodBeat.i(51472);
-    mQL = new h();
+    nrl = new h();
     AppMethodBeat.o(51472);
   }
   

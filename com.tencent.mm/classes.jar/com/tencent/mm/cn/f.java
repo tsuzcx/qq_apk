@@ -11,10 +11,10 @@ import com.tencent.mm.vending.h.d;
 public class f<_Var>
   extends e<_Var>
 {
-  public final f<_Var> K(Object... paramVarArgs)
+  public final f<_Var> L(Object... paramVarArgs)
   {
     AppMethodBeat.i(133533);
-    paramVarArgs = (f)super.G(paramVarArgs);
+    paramVarArgs = (f)super.H(paramVarArgs);
     AppMethodBeat.o(133533);
     return paramVarArgs;
   }
@@ -78,7 +78,7 @@ public class f<_Var>
   public final <_Ret> f<_Ret> j(a<_Ret, _Var> parama)
   {
     AppMethodBeat.i(133538);
-    parama = (f)super.b(i.JHS).c(parama);
+    parama = (f)super.b(i.LAV).c(parama);
     AppMethodBeat.o(133538);
     return parama;
   }

@@ -5,25 +5,25 @@ import java.util.regex.Pattern;
 
 public final class d
 {
-  public static final Pattern iYL;
-  public static int sjj;
+  public static final Pattern jrU;
+  public static int tfL;
   
   static
   {
-    AppMethodBeat.i(195043);
-    iYL = Pattern.compile("<a>(.+?)</a>");
-    sjj = 33554432;
-    AppMethodBeat.o(195043);
+    AppMethodBeat.i(209260);
+    jrU = Pattern.compile("<a>(.+?)</a>");
+    tfL = 33554432;
+    AppMethodBeat.o(209260);
   }
   
   public static abstract interface a
   {
-    public static final int sjk = Runtime.getRuntime().availableProcessors();
+    public static final int tfM = Math.max(4, Runtime.getRuntime().availableProcessors());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.d
  * JD-Core Version:    0.7.0.1
  */

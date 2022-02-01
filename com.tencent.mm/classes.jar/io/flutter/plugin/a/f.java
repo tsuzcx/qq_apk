@@ -9,16 +9,16 @@ import org.json.JSONTokener;
 public final class f
   implements i<Object>
 {
-  public static final f KOW;
+  public static final f MFT;
   
   static
   {
     AppMethodBeat.i(9882);
-    KOW = new f();
+    MFT = new f();
     AppMethodBeat.o(9882);
   }
   
-  public final Object I(ByteBuffer paramByteBuffer)
+  public final Object J(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(9881);
     if (paramByteBuffer == null)
@@ -29,8 +29,8 @@ public final class f
     Object localObject;
     try
     {
-      localObject = p.KPf;
-      paramByteBuffer = new JSONTokener(p.O(paramByteBuffer));
+      localObject = p.MGc;
+      paramByteBuffer = new JSONTokener(p.P(paramByteBuffer));
       localObject = paramByteBuffer.nextValue();
       if (paramByteBuffer.more())
       {
@@ -49,7 +49,7 @@ public final class f
     return localObject;
   }
   
-  public final ByteBuffer eD(Object paramObject)
+  public final ByteBuffer eG(Object paramObject)
   {
     AppMethodBeat.i(9880);
     if (paramObject == null)
@@ -60,20 +60,20 @@ public final class f
     paramObject = h.wrap(paramObject);
     if ((paramObject instanceof String))
     {
-      localp = p.KPf;
-      paramObject = p.aVV(JSONObject.quote((String)paramObject));
+      localp = p.MGc;
+      paramObject = p.bbY(JSONObject.quote((String)paramObject));
       AppMethodBeat.o(9880);
       return paramObject;
     }
-    p localp = p.KPf;
-    paramObject = p.aVV(paramObject.toString());
+    p localp = p.MGc;
+    paramObject = p.bbY(paramObject.toString());
     AppMethodBeat.o(9880);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     io.flutter.plugin.a.f
  * JD-Core Version:    0.7.0.1
  */

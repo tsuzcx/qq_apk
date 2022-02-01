@@ -2,95 +2,95 @@ package com.tencent.mm.modelvideo;
 
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.i.d;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cuu;
-import com.tencent.mm.protocal.protobuf.cuv;
-import com.tencent.mm.protocal.protobuf.dhx;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.protocal.protobuf.dae;
+import com.tencent.mm.protocal.protobuf.daf;
+import com.tencent.mm.protocal.protobuf.dnm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
 import java.util.LinkedList;
 
 public final class e
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private String clientId;
-  private long hYX;
-  private s hYY;
-  private d hYZ;
+  private long ist;
+  private s isu;
+  private d isv;
   private b rr;
   
   public e(long paramLong, s params, d paramd, String paramString)
   {
     AppMethodBeat.i(126838);
-    this.hYX = -1L;
-    this.hYY = null;
-    this.hYZ = null;
+    this.ist = -1L;
+    this.isu = null;
+    this.isv = null;
     this.clientId = "";
-    ac.i("MicroMsg.NetSceneMassUploadSight", "massSendId %d, clientId %s", new Object[] { Long.valueOf(paramLong), paramString });
-    this.hYX = paramLong;
-    this.hYY = params;
-    this.hYZ = paramd;
+    ad.i("MicroMsg.NetSceneMassUploadSight", "massSendId %d, clientId %s", new Object[] { Long.valueOf(paramLong), paramString });
+    this.ist = paramLong;
+    this.isu = params;
+    this.isv = paramd;
     this.clientId = paramString;
     AppMethodBeat.o(126838);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     int i = 0;
     AppMethodBeat.i(126839);
-    this.callback = paramg;
-    paramg = new b.a();
-    paramg.hvt = new cuu();
-    paramg.hvu = new cuv();
-    paramg.uri = "/cgi-bin/micromsg-bin/sendsight";
-    paramg.funcId = 245;
-    this.rr = paramg.aAz();
-    paramg = (cuu)this.rr.hvr.hvw;
-    paramg.fQi = this.hYZ.field_aesKey;
-    paramg.yaF = this.clientId;
-    paramg.md5 = this.hYY.dwi;
-    paramg.FFZ = this.hYY.hpy;
-    o.aJy();
-    Object localObject = t.DW(this.hYY.getFileName());
-    BitmapFactory.Options localOptions = f.aKw((String)localObject);
+    this.callback = paramf;
+    paramf = new b.a();
+    paramf.hNM = new dae();
+    paramf.hNN = new daf();
+    paramf.uri = "/cgi-bin/micromsg-bin/sendsight";
+    paramf.funcId = 245;
+    this.rr = paramf.aDC();
+    paramf = (dae)this.rr.hNK.hNQ;
+    paramf.gjI = this.isv.field_aesKey;
+    paramf.zqB = this.clientId;
+    paramf.md5 = this.isu.dIs;
+    paramf.FNy = this.isu.hHQ;
+    o.aMJ();
+    Object localObject = t.Hi(this.isu.getFileName());
+    BitmapFactory.Options localOptions = g.aQc((String)localObject);
     if (localOptions != null)
     {
-      paramg.thumbWidth = localOptions.outWidth;
-      paramg.thumbHeight = localOptions.outHeight;
+      paramf.thumbWidth = localOptions.outWidth;
+      paramf.thumbHeight = localOptions.outHeight;
     }
     for (;;)
     {
-      paramg.hZq = this.hYY.iaG;
-      localObject = bs.bG(this.hYY.iaQ, "").split(",");
+      paramf.isM = this.isu.iuc;
+      localObject = bt.bI(this.isu.ium, "").split(",");
       if ((localObject != null) && (localObject.length > 0)) {
         break;
       }
-      ac.e("MicroMsg.NetSceneMassUploadSight", "cdn upload video done, massSendId[%d], split username fail", new Object[] { Long.valueOf(this.hYX) });
+      ad.e("MicroMsg.NetSceneMassUploadSight", "cdn upload video done, massSendId[%d], split username fail", new Object[] { Long.valueOf(this.ist) });
       AppMethodBeat.o(126839);
       return -1;
-      ac.w("MicroMsg.NetSceneMassUploadSight", "sight send getImageOptions for thumb failed path:%s", new Object[] { localObject });
+      ad.w("MicroMsg.NetSceneMassUploadSight", "sight send getImageOptions for thumb failed path:%s", new Object[] { localObject });
     }
     int j = localObject.length;
     while (i < j)
     {
       localOptions = localObject[i];
-      dhx localdhx = new dhx();
-      localdhx.username = localOptions;
-      paramg.FFY.add(localdhx);
+      dnm localdnm = new dnm();
+      localdnm.username = localOptions;
+      paramf.Hqz.add(localdnm);
       i += 1;
     }
-    paramg.url = this.hYZ.field_fileId;
-    paramg.hpy = this.hYY.hux;
+    paramf.url = this.isv.field_fileId;
+    paramf.hHQ = this.isu.hMP;
     i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(126839);
     return i;
@@ -104,7 +104,7 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(126840);
-    ac.i("MicroMsg.NetSceneMassUploadSight", "cdntra onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " useCdnTransClientId:" + this.clientId + " massSendId " + this.hYX);
+    ad.i("MicroMsg.NetSceneMassUploadSight", "cdntra onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " useCdnTransClientId:" + this.clientId + " massSendId " + this.ist);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(126840);
   }

@@ -1,10 +1,12 @@
 package com.tencent.mm.live.ui;
 
 import d.g.a.a;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class LiveUIB$b
-  extends d.g.b.l
+  extends q
   implements a
 {
   LiveUIB$b(LiveUIB paramLiveUIB)
@@ -14,7 +16,7 @@ final class LiveUIB$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUIB.b
  * JD-Core Version:    0.7.0.1
  */

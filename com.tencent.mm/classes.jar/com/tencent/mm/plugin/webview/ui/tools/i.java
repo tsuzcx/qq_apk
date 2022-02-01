@@ -26,35 +26,34 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.compatible.util.p;
-import com.tencent.mm.m.d.a;
-import com.tencent.mm.m.d.b;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.n.d.a;
+import com.tencent.mm.n.d.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.c.j;
 import com.tencent.mm.plugin.webview.c.l.a;
 import com.tencent.mm.plugin.webview.core.BaseWebViewController;
-import com.tencent.mm.plugin.webview.model.ax;
-import com.tencent.mm.plugin.webview.model.ax.d;
+import com.tencent.mm.plugin.webview.model.ay;
+import com.tencent.mm.plugin.webview.model.ay.d;
 import com.tencent.mm.plugin.webview.ui.tools.game.GameWebViewUI;
 import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.af;
-import com.tencent.mm.sdk.platformtools.bg;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.bh;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.m;
 import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.tools.o;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.a.e.b;
-import com.tencent.mm.vfs.q;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -72,59 +71,59 @@ import java.util.Set;
 public final class i
   extends a
 {
-  Set<Integer> CxA;
-  ArrayList<d.b> CxB;
-  Boolean CxC;
-  protected Map<String, SparseBooleanArray> Cxs;
-  protected Map<String, Integer> Cxt;
-  af<String, Bitmap> Cxu;
-  HashMap<String, String> Cxv;
-  public String Cxw;
-  HashMap<String, Integer> Cxx;
-  public boolean Cxy;
-  public boolean Cxz;
+  protected Map<String, SparseBooleanArray> Eba;
+  protected Map<String, Integer> Ebb;
+  ag<String, Bitmap> Ebc;
+  HashMap<String, String> Ebd;
+  public String Ebe;
+  HashMap<String, Integer> Ebf;
+  public boolean Ebg;
+  public boolean Ebh;
+  Set<Integer> Ebi;
+  ArrayList<d.b> Ebj;
+  Boolean Ebk;
   private int height;
-  private String kQX;
-  com.tencent.mm.ui.widget.a.e mdB;
-  public boolean nPt;
+  private String lny;
+  com.tencent.mm.ui.widget.a.e mDL;
+  public boolean orZ;
   private int width;
   
   public i(WebViewUI paramWebViewUI)
   {
     super(paramWebViewUI);
     AppMethodBeat.i(79877);
-    this.Cxs = new HashMap();
-    this.Cxt = new HashMap();
-    this.Cxu = new af(12);
-    this.Cxv = new HashMap();
-    this.kQX = "";
-    this.Cxx = new HashMap();
-    this.Cxy = true;
-    this.Cxz = false;
-    this.nPt = false;
-    this.CxA = new HashSet();
+    this.Eba = new HashMap();
+    this.Ebb = new HashMap();
+    this.Ebc = new ag(12);
+    this.Ebd = new HashMap();
+    this.lny = "";
+    this.Ebf = new HashMap();
+    this.Ebg = true;
+    this.Ebh = false;
+    this.orZ = false;
+    this.Ebi = new HashSet();
     this.width = paramWebViewUI.getResources().getDisplayMetrics().widthPixels;
     this.height = paramWebViewUI.getResources().getDisplayMetrics().heightPixels;
     AppMethodBeat.o(79877);
   }
   
-  private void VG(int paramInt)
+  private void Xv(int paramInt)
   {
     AppMethodBeat.i(79891);
-    String str2 = eCT().aAP(eCT().eDS());
-    if ((TextUtils.isEmpty(eCT().eDS())) || (TextUtils.isEmpty(str2)))
+    String str2 = eRK().aGj(eRK().eSK());
+    if ((TextUtils.isEmpty(eRK().eSK())) || (TextUtils.isEmpty(str2)))
     {
-      ac.i("MicroMsg.WebViewMenuHelper", "stev appId is null or empty");
+      ad.i("MicroMsg.WebViewMenuHelper", "stev appId is null or empty");
       AppMethodBeat.o(79891);
       return;
     }
-    ac.i("MicroMsg.WebViewMenuHelper", "stev appId %s", new Object[] { str2 });
-    long l = bs.aNx();
-    ac.d("MicroMsg.WebViewMenuHelper", "stev report(%s), clickTimestamp : %d, appID : %s, url : %s, sessionId : %s, actionType : %d, flag : %d", new Object[] { Integer.valueOf(13377), Long.valueOf(l), str2, eCT().eDS(), eCT().sessionId, Integer.valueOf(3), Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.WebViewMenuHelper", "stev appId %s", new Object[] { str2 });
+    long l = bt.aQJ();
+    ad.d("MicroMsg.WebViewMenuHelper", "stev report(%s), clickTimestamp : %d, appID : %s, url : %s, sessionId : %s, actionType : %d, flag : %d", new Object[] { Integer.valueOf(13377), Long.valueOf(l), str2, eRK().eSK(), eRK().sessionId, Integer.valueOf(3), Integer.valueOf(paramInt) });
     Object localObject = "";
     try
     {
-      str1 = p.encode(eCT().eDS(), "UTF-8");
+      str1 = com.tencent.mm.compatible.util.q.encode(eRK().eSK(), "UTF-8");
       localObject = str1;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -133,15 +132,15 @@ public final class i
       {
         String str1;
         int i;
-        ac.printErrStackTrace("MicroMsg.WebViewMenuHelper", localUnsupportedEncodingException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WebViewMenuHelper", localUnsupportedEncodingException, "", new Object[0]);
       }
     }
-    i = eCT().aAT(eCT().getIntent().getStringExtra("geta8key_username"));
+    i = eRK().aGo(eRK().getIntent().getStringExtra("geta8key_username"));
     str1 = "";
     if ((i == 7) || (i == 56)) {
-      str1 = eCT().getIntent().getStringExtra("geta8key_username");
+      str1 = eRK().getIntent().getStringExtra("geta8key_username");
     }
-    com.tencent.mm.plugin.report.service.h.wUl.f(13377, new Object[] { Long.valueOf(l), str2, localObject, eCT().sessionId, Integer.valueOf(3), Integer.valueOf(paramInt), Integer.valueOf(0), str1 });
+    com.tencent.mm.plugin.report.service.g.yhR.f(13377, new Object[] { Long.valueOf(l), str2, localObject, eRK().sessionId, Integer.valueOf(3), Integer.valueOf(paramInt), Integer.valueOf(0), str1 });
     AppMethodBeat.o(79891);
   }
   
@@ -153,7 +152,7 @@ public final class i
       AppMethodBeat.o(79882);
       return false;
     }
-    paramInt = paramJsapiPermissionWrapper.XF(paramInt);
+    paramInt = paramJsapiPermissionWrapper.ZB(paramInt);
     if ((paramInt == 1) || (paramInt == 10))
     {
       AppMethodBeat.o(79882);
@@ -171,7 +170,7 @@ public final class i
       AppMethodBeat.o(79883);
       return false;
     }
-    if (paramJsapiPermissionWrapper.XF(paramInt) == 10)
+    if (paramJsapiPermissionWrapper.ZB(paramInt) == 10)
     {
       AppMethodBeat.o(79883);
       return true;
@@ -180,13 +179,13 @@ public final class i
     return false;
   }
   
-  private ArrayList<d.b> eDp()
+  private ArrayList<d.b> eSh()
   {
     AppMethodBeat.i(79888);
-    Object localObject = eCT().nKq.getUrl();
-    if (eCT().CzL.containsKey(localObject))
+    Object localObject = eRK().omW.getUrl();
+    if (eRK().Edt.containsKey(localObject))
     {
-      localObject = (ArrayList)eCT().CzL.get(localObject);
+      localObject = (ArrayList)eRK().Edt.get(localObject);
       AppMethodBeat.o(79888);
       return localObject;
     }
@@ -194,30 +193,7 @@ public final class i
     return null;
   }
   
-  private int eDv()
-  {
-    AppMethodBeat.i(79901);
-    if ((eCT() == null) || (eCT().kYu == null))
-    {
-      ac.e("MicroMsg.WebViewMenuHelper", "getShareFuncFlag params failed");
-      AppMethodBeat.o(79901);
-      return -1;
-    }
-    JsapiPermissionWrapper localJsapiPermissionWrapper = eCT().kYu.eCm();
-    if (a(localJsapiPermissionWrapper, 21, 1)) {}
-    for (int i = 1;; i = 0)
-    {
-      int j = i;
-      if (a(localJsapiPermissionWrapper, 23, 2)) {
-        j = i | 0x2;
-      }
-      ac.i("MicroMsg.WebViewMenuHelper", "getShareFuncFlag %d", new Object[] { Integer.valueOf(j) });
-      AppMethodBeat.o(79901);
-      return j;
-    }
-  }
-  
-  private void gJ(List<String> paramList)
+  private void gV(List<String> paramList)
   {
     AppMethodBeat.i(79894);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -232,62 +208,3610 @@ public final class i
         break label308;
       }
       String str2 = (String)localIterator.next();
-      if (this.Cxu.get(str2) != null) {
-        ac.i("MicroMsg.WebViewMenuHelper", "find %s icon from cache ok", new Object[] { str2 });
+      if (this.Ebc.get(str2) != null) {
+        ad.i("MicroMsg.WebViewMenuHelper", "find %s icon from cache ok", new Object[] { str2 });
       }
       for (;;)
       {
-        if (!this.Cxv.containsKey(str2)) {
+        if (!this.Ebd.containsKey(str2)) {
           break label216;
         }
-        ac.i("MicroMsg.WebViewMenuHelper", "find %s nick from cache ok", new Object[] { str2 });
+        ad.i("MicroMsg.WebViewMenuHelper", "find %s nick from cache ok", new Object[] { str2 });
         break;
-        ac.w("MicroMsg.WebViewMenuHelper", "not found %s icon from cache, try to load", new Object[] { str2 });
+        ad.w("MicroMsg.WebViewMenuHelper", "not found %s icon from cache, try to load", new Object[] { str2 });
         try
         {
-          paramList = eCT().Cfr.kYt.aCP(str2);
-          if (!bs.isNullOrNil(paramList))
+          paramList = eRK().DIv.lvv.aIq(str2);
+          if (!bt.isNullOrNil(paramList))
           {
-            paramList = e.aDe(paramList);
+            paramList = e.aIF(paramList);
             if (paramList != null)
             {
-              ac.i("MicroMsg.WebViewMenuHelper", "load ok, and cache it");
-              this.Cxu.put(str2, paramList);
+              ad.i("MicroMsg.WebViewMenuHelper", "load ok, and cache it");
+              this.Ebc.put(str2, paramList);
             }
           }
         }
         catch (Exception paramList)
         {
-          ac.w("MicroMsg.WebViewMenuHelper", "getheadimg, ex = " + paramList.getMessage());
+          ad.w("MicroMsg.WebViewMenuHelper", "getheadimg, ex = " + paramList.getMessage());
         }
       }
       label216:
-      ac.w("MicroMsg.WebViewMenuHelper", "not found %s nick from cache, try to load", new Object[] { str2 });
+      ad.w("MicroMsg.WebViewMenuHelper", "not found %s nick from cache, try to load", new Object[] { str2 });
       paramList = null;
       try
       {
-        String str1 = eCT().Cfr.kYt.wk(str2);
+        String str1 = eRK().DIv.lvv.zf(str2);
         paramList = str1;
-        ac.i("MicroMsg.WebViewMenuHelper", "load nick ok");
+        ad.i("MicroMsg.WebViewMenuHelper", "load nick ok");
         paramList = str1;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.w("MicroMsg.WebViewMenuHelper", "onAttach, ex = " + localException.getMessage());
+          ad.w("MicroMsg.WebViewMenuHelper", "onAttach, ex = " + localException.getMessage());
         }
       }
-      this.Cxv.put(str2, paramList);
+      this.Ebd.put(str2, paramList);
     }
     label308:
     AppMethodBeat.o(79894);
   }
   
-  protected final boolean VF(int paramInt)
+  protected final void Cs(final long paramLong)
+  {
+    AppMethodBeat.i(208017);
+    this.Ebj = eSh();
+    boolean bool;
+    if ((this.Ebj != null) && (this.Ebj.size() > 0))
+    {
+      bool = true;
+      this.Ebk = Boolean.valueOf(bool);
+      if (!this.orZ) {
+        if (!this.Ebk.booleanValue()) {
+          break label172;
+        }
+      }
+    }
+    Object localObject2;
+    label172:
+    for (this.mDL = new com.tencent.mm.ui.widget.a.e(eRK(), 1, false);; this.mDL = new com.tencent.mm.ui.widget.a.e(eRK(), 0, true))
+    {
+      this.mDL.KJC = new com.tencent.mm.ui.base.n.a()
+      {
+        public final void a(ImageView paramAnonymousImageView, MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(79858);
+          if (i.e(paramAnonymousMenuItem))
+          {
+            paramAnonymousImageView.setVisibility(8);
+            AppMethodBeat.o(79858);
+            return;
+          }
+          paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
+          if ((i.this.Ebc.get(paramAnonymousMenuItem) != null) && (!((Bitmap)i.this.Ebc.get(paramAnonymousMenuItem)).isRecycled()))
+          {
+            paramAnonymousImageView.setImageBitmap((Bitmap)i.this.Ebc.get(paramAnonymousMenuItem));
+            AppMethodBeat.o(79858);
+            return;
+          }
+          ad.w("MicroMsg.WebViewMenuHelper", "on attach icon, load from cache fail");
+          try
+          {
+            Object localObject = i.this.eRK().DIv.lvv.aIq(paramAnonymousMenuItem);
+            if (!bt.isNullOrNil((String)localObject))
+            {
+              localObject = e.aIF((String)localObject);
+              if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+              {
+                paramAnonymousImageView.setImageBitmap((Bitmap)localObject);
+                i.this.Ebc.put(paramAnonymousMenuItem, localObject);
+              }
+            }
+            AppMethodBeat.o(79858);
+            return;
+          }
+          catch (Exception paramAnonymousImageView)
+          {
+            ad.w("MicroMsg.WebViewMenuHelper", "getheadimg, ex = " + paramAnonymousImageView.getMessage());
+            AppMethodBeat.o(79858);
+          }
+        }
+      };
+      this.mDL.KJD = new n.b()
+      {
+        public final void a(TextView paramAnonymousTextView, MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(79869);
+          paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
+          if (paramAnonymousTextView != null)
+          {
+            String str = (String)i.this.Ebd.get(paramAnonymousMenuItem);
+            if (bt.isNullOrNil(str))
+            {
+              paramAnonymousTextView.setText(paramAnonymousMenuItem);
+              AppMethodBeat.o(79869);
+              return;
+            }
+            paramAnonymousTextView.setText(k.b(i.this.eRK(), str, paramAnonymousTextView.getTextSize()));
+          }
+          AppMethodBeat.o(79869);
+        }
+      };
+      localObject2 = new n.e()
+      {
+        /* Error */
+        public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+        {
+          // Byte code:
+          //   0: ldc 28
+          //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+          //   5: aload_0
+          //   6: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   9: iconst_0
+          //   10: putfield 38	com/tencent/mm/plugin/webview/ui/tools/i:orZ	Z
+          //   13: aload_1
+          //   14: invokestatic 42	com/tencent/mm/plugin/webview/ui/tools/i:e	(Landroid/view/MenuItem;)Z
+          //   17: ifeq +145 -> 162
+          //   20: aload_1
+          //   21: invokeinterface 48 1 0
+          //   26: checkcast 50	com/tencent/mm/n/d$b
+          //   29: astore 4
+          //   31: aload 4
+          //   33: ifnull +123 -> 156
+          //   36: aload_0
+          //   37: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   40: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   43: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   46: astore_1
+          //   47: aload_1
+          //   48: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   51: ifne +16 -> 67
+          //   54: ldc 67
+          //   56: ldc 69
+          //   58: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   61: ldc 28
+          //   63: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   66: return
+          //   67: ldc 67
+          //   69: ldc 79
+          //   71: invokestatic 81	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   74: new 83	java/util/HashMap
+          //   77: dup
+          //   78: invokespecial 84	java/util/HashMap:<init>	()V
+          //   81: astore 5
+          //   83: aload 5
+          //   85: ldc 86
+          //   87: aload 4
+          //   89: getfield 89	com/tencent/mm/n/d$b:key	Ljava/lang/String;
+          //   92: invokevirtual 93	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+          //   95: pop
+          //   96: aload 5
+          //   98: ldc 95
+          //   100: aload 4
+          //   102: getfield 97	com/tencent/mm/n/d$b:title	Ljava/lang/String;
+          //   105: invokevirtual 93	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+          //   108: pop
+          //   109: ldc 99
+          //   111: aload 5
+          //   113: aload_1
+          //   114: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   117: aload_1
+          //   118: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   121: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   124: astore 4
+          //   126: aload_1
+          //   127: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   130: new 117	java/lang/StringBuilder
+          //   133: dup
+          //   134: ldc 119
+          //   136: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   139: aload 4
+          //   141: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   144: ldc 128
+          //   146: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   149: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   152: aconst_null
+          //   153: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   156: ldc 28
+          //   158: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   161: return
+          //   162: ldc 140
+          //   164: ldc 142
+          //   166: iconst_1
+          //   167: anewarray 4	java/lang/Object
+          //   170: dup
+          //   171: iconst_0
+          //   172: aload_1
+          //   173: invokeinterface 146 1 0
+          //   178: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   181: aastore
+          //   182: invokestatic 155	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   185: aload_1
+          //   186: invokeinterface 146 1 0
+          //   191: lookupswitch	default:+313->504, 1:+564->755, 2:+799->990, 3:+1117->1308, 5:+1194->1385, 6:+1573->1764, 7:+1636->1827, 8:+2124->2315, 9:+2282->2473, 10:+2382->2573, 11:+1328->1519, 12:+2447->2638, 15:+2578->2769, 16:+2643->2834, 17:+2708->2899, 18:+2773->2964, 19:+2838->3029, 20:+3176->3367, 21:+3373->3564, 22:+3531->3722, 23:+696->887, 24:+3937->4128, 25:+2903->3094, 26:+3112->3303, 27:+484->675, 28:+1506->1697, 29:+4001->4192, 31:+4065->4256, 33:+3728->3919, 34:+4189->4380, 35:+4287->4478, 36:+4358->4549, 37:+2060->2251, 38:+987->1178, 39:+1052->1243, 40:+4496->4687, 41:+4496->4687, 42:+4496->4687, 99:+4429->4620
+          //   505: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   508: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   511: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   514: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   517: iconst_3
+          //   518: anewarray 4	java/lang/Object
+          //   521: dup
+          //   522: iconst_0
+          //   523: aload_0
+          //   524: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   527: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   530: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   533: aastore
+          //   534: dup
+          //   535: iconst_1
+          //   536: bipush 16
+          //   538: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   541: aastore
+          //   542: dup
+          //   543: iconst_2
+          //   544: iconst_1
+          //   545: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   548: aastore
+          //   549: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   552: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   555: new 117	java/lang/StringBuilder
+          //   558: dup
+          //   559: invokespecial 178	java/lang/StringBuilder:<init>	()V
+          //   562: aload_1
+          //   563: invokeinterface 182 1 0
+          //   568: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+          //   571: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   574: astore 4
+          //   576: aload 4
+          //   578: invokestatic 191	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+          //   581: ifne +4351 -> 4932
+          //   584: iconst_0
+          //   585: istore_2
+          //   586: new 193	android/os/Bundle
+          //   589: dup
+          //   590: invokespecial 194	android/os/Bundle:<init>	()V
+          //   593: astore_1
+          //   594: aload_1
+          //   595: ldc 196
+          //   597: aload 4
+          //   599: invokevirtual 199	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+          //   602: aload_0
+          //   603: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   606: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   609: getfield 203	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+          //   612: getfield 209	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+          //   615: bipush 50
+          //   617: aload_1
+          //   618: invokeinterface 215 3 0
+          //   623: astore_1
+          //   624: aload_1
+          //   625: ifnull +31 -> 656
+          //   628: aload_1
+          //   629: ldc 217
+          //   631: invokevirtual 221	android/os/Bundle:getInt	(Ljava/lang/String;)I
+          //   634: istore_2
+          //   635: iload_2
+          //   636: iconst_2
+          //   637: if_icmpne +4080 -> 4717
+          //   640: iconst_1
+          //   641: istore_2
+          //   642: aload_1
+          //   643: ldc 217
+          //   645: invokevirtual 221	android/os/Bundle:getInt	(Ljava/lang/String;)I
+          //   648: istore_3
+          //   649: iload_3
+          //   650: iconst_3
+          //   651: if_icmpne +4071 -> 4722
+          //   654: iconst_1
+          //   655: istore_2
+          //   656: iload_2
+          //   657: ifeq +4089 -> 4746
+          //   660: aload_0
+          //   661: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   664: aload 4
+          //   666: invokevirtual 224	com/tencent/mm/plugin/webview/ui/tools/i:aIM	(Ljava/lang/String;)V
+          //   669: ldc 28
+          //   671: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   674: return
+          //   675: aload_0
+          //   676: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   679: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   682: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   685: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   688: iconst_3
+          //   689: anewarray 4	java/lang/Object
+          //   692: dup
+          //   693: iconst_0
+          //   694: aload_0
+          //   695: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   698: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   701: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   704: aastore
+          //   705: dup
+          //   706: iconst_1
+          //   707: bipush 32
+          //   709: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   712: aastore
+          //   713: dup
+          //   714: iconst_2
+          //   715: iconst_1
+          //   716: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   719: aastore
+          //   720: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   723: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   726: aload_0
+          //   727: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   730: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   733: invokevirtual 228	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:ePd	()Z
+          //   736: ifne +4196 -> 4932
+          //   739: aload_0
+          //   740: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   743: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   746: invokevirtual 231	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:finish	()V
+          //   749: ldc 28
+          //   751: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   754: return
+          //   755: aload_0
+          //   756: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   759: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   762: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   765: ldc 240
+          //   767: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   770: astore_1
+          //   771: aload_0
+          //   772: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   775: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   778: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   781: ldc 248
+          //   783: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   786: astore 4
+          //   788: aload_0
+          //   789: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   792: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   795: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   798: ldc 250
+          //   800: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   803: astore 5
+          //   805: aload_0
+          //   806: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   809: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   812: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   815: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   818: bipush 6
+          //   820: anewarray 4	java/lang/Object
+          //   823: dup
+          //   824: iconst_0
+          //   825: aload_0
+          //   826: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   829: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   832: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   835: aastore
+          //   836: dup
+          //   837: iconst_1
+          //   838: iconst_1
+          //   839: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   842: aastore
+          //   843: dup
+          //   844: iconst_2
+          //   845: iconst_1
+          //   846: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   849: aastore
+          //   850: dup
+          //   851: iconst_3
+          //   852: aload_1
+          //   853: aastore
+          //   854: dup
+          //   855: iconst_4
+          //   856: aload 4
+          //   858: aastore
+          //   859: dup
+          //   860: iconst_5
+          //   861: aload 5
+          //   863: aastore
+          //   864: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   867: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   870: aload_0
+          //   871: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   874: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   877: iconst_0
+          //   878: invokevirtual 253	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:XA	(I)V
+          //   881: ldc 28
+          //   883: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   886: return
+          //   887: new 242	android/content/Intent
+          //   890: dup
+          //   891: invokespecial 254	android/content/Intent:<init>	()V
+          //   894: astore_1
+          //   895: aload_0
+          //   896: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   899: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   902: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   905: ldc_w 256
+          //   908: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   911: astore 4
+          //   913: aload 4
+          //   915: ifnull +42 -> 957
+          //   918: aload_1
+          //   919: ldc_w 258
+          //   922: iconst_1
+          //   923: invokevirtual 262	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+          //   926: pop
+          //   927: aload_1
+          //   928: ldc_w 256
+          //   931: aload 4
+          //   933: invokevirtual 265	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+          //   936: pop
+          //   937: aload_0
+          //   938: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   941: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   944: ldc_w 267
+          //   947: aload_1
+          //   948: invokestatic 273	com/tencent/mm/bs/d:f	(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V
+          //   951: ldc 28
+          //   953: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   956: return
+          //   957: aload_1
+          //   958: ldc_w 275
+          //   961: aload_0
+          //   962: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   965: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   968: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   971: ldc_w 277
+          //   974: ldc2_w 278
+          //   977: invokevirtual 283	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+          //   980: invokestatic 288	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+          //   983: invokevirtual 291	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
+          //   986: pop
+          //   987: goto -50 -> 937
+          //   990: aload_0
+          //   991: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   994: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   997: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   1000: ldc 240
+          //   1002: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   1005: astore_1
+          //   1006: aload_0
+          //   1007: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1010: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1013: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   1016: ldc 248
+          //   1018: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   1021: astore 4
+          //   1023: aload_0
+          //   1024: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1027: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1030: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   1033: ldc 250
+          //   1035: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   1038: astore 5
+          //   1040: aload_0
+          //   1041: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1044: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1047: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1050: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1053: bipush 6
+          //   1055: anewarray 4	java/lang/Object
+          //   1058: dup
+          //   1059: iconst_0
+          //   1060: aload_0
+          //   1061: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1064: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1067: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1070: aastore
+          //   1071: dup
+          //   1072: iconst_1
+          //   1073: iconst_2
+          //   1074: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1077: aastore
+          //   1078: dup
+          //   1079: iconst_2
+          //   1080: iconst_1
+          //   1081: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1084: aastore
+          //   1085: dup
+          //   1086: iconst_3
+          //   1087: aload_1
+          //   1088: aastore
+          //   1089: dup
+          //   1090: iconst_4
+          //   1091: aload 4
+          //   1093: aastore
+          //   1094: dup
+          //   1095: iconst_5
+          //   1096: aload 5
+          //   1098: aastore
+          //   1099: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1102: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1105: iconst_0
+          //   1106: istore_2
+          //   1107: aload_0
+          //   1108: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1111: getfield 295	com/tencent/mm/plugin/webview/ui/tools/i:Ebf	Ljava/util/HashMap;
+          //   1114: aload_0
+          //   1115: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1118: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1121: getfield 298	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   1124: invokevirtual 301	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+          //   1127: invokevirtual 305	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+          //   1130: ifeq +33 -> 1163
+          //   1133: aload_0
+          //   1134: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1137: getfield 295	com/tencent/mm/plugin/webview/ui/tools/i:Ebf	Ljava/util/HashMap;
+          //   1140: aload_0
+          //   1141: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1144: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1147: getfield 298	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   1150: invokevirtual 301	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+          //   1153: invokevirtual 309	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+          //   1156: checkcast 148	java/lang/Integer
+          //   1159: invokevirtual 312	java/lang/Integer:intValue	()I
+          //   1162: istore_2
+          //   1163: aload_0
+          //   1164: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1167: iload_2
+          //   1168: iconst_0
+          //   1169: invokestatic 316	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;II)V
+          //   1172: ldc 28
+          //   1174: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1177: return
+          //   1178: aload_0
+          //   1179: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1182: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1185: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1188: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1191: iconst_3
+          //   1192: anewarray 4	java/lang/Object
+          //   1195: dup
+          //   1196: iconst_0
+          //   1197: aload_0
+          //   1198: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1201: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1204: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1207: aastore
+          //   1208: dup
+          //   1209: iconst_1
+          //   1210: bipush 36
+          //   1212: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1215: aastore
+          //   1216: dup
+          //   1217: iconst_2
+          //   1218: iconst_1
+          //   1219: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1222: aastore
+          //   1223: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1226: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1229: aload_0
+          //   1230: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1233: iconst_1
+          //   1234: invokestatic 319	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)V
+          //   1237: ldc 28
+          //   1239: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1242: return
+          //   1243: aload_0
+          //   1244: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1247: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1250: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1253: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1256: iconst_3
+          //   1257: anewarray 4	java/lang/Object
+          //   1260: dup
+          //   1261: iconst_0
+          //   1262: aload_0
+          //   1263: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1266: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1269: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1272: aastore
+          //   1273: dup
+          //   1274: iconst_1
+          //   1275: bipush 37
+          //   1277: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1280: aastore
+          //   1281: dup
+          //   1282: iconst_2
+          //   1283: iconst_1
+          //   1284: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1287: aastore
+          //   1288: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1291: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1294: aload_0
+          //   1295: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1298: iconst_0
+          //   1299: invokestatic 319	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)V
+          //   1302: ldc 28
+          //   1304: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1307: return
+          //   1308: aload_0
+          //   1309: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1312: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1315: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1318: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1321: iconst_3
+          //   1322: anewarray 4	java/lang/Object
+          //   1325: dup
+          //   1326: iconst_0
+          //   1327: aload_0
+          //   1328: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1331: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1334: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1337: aastore
+          //   1338: dup
+          //   1339: iconst_1
+          //   1340: iconst_3
+          //   1341: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1344: aastore
+          //   1345: dup
+          //   1346: iconst_2
+          //   1347: iconst_1
+          //   1348: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1351: aastore
+          //   1352: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1355: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1358: getstatic 325	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   1361: ldc2_w 326
+          //   1364: ldc2_w 328
+          //   1367: lconst_1
+          //   1368: iconst_0
+          //   1369: invokevirtual 333	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
+          //   1372: aload_0
+          //   1373: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1376: invokevirtual 336	com/tencent/mm/plugin/webview/ui/tools/i:eSi	()V
+          //   1379: ldc 28
+          //   1381: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1384: return
+          //   1385: aload_0
+          //   1386: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1389: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1392: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1395: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1398: iconst_3
+          //   1399: anewarray 4	java/lang/Object
+          //   1402: dup
+          //   1403: iconst_0
+          //   1404: aload_0
+          //   1405: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1408: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1411: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1414: aastore
+          //   1415: dup
+          //   1416: iconst_1
+          //   1417: iconst_4
+          //   1418: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1421: aastore
+          //   1422: dup
+          //   1423: iconst_2
+          //   1424: iconst_1
+          //   1425: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1428: aastore
+          //   1429: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1432: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1435: aload_0
+          //   1436: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1439: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1442: getfield 339	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Eds	Ljava/util/HashMap;
+          //   1445: aload_0
+          //   1446: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1449: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1452: getfield 298	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   1455: invokevirtual 301	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+          //   1458: invokevirtual 309	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+          //   1461: checkcast 341	java/lang/String
+          //   1464: astore 4
+          //   1466: aload 4
+          //   1468: astore_1
+          //   1469: aload 4
+          //   1471: ifnonnull +19 -> 1490
+          //   1474: aload_0
+          //   1475: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1478: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1481: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   1484: ldc 250
+          //   1486: invokevirtual 246	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+          //   1489: astore_1
+          //   1490: aload_0
+          //   1491: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1494: ldc_w 343
+          //   1497: bipush 43
+          //   1499: invokevirtual 347	com/tencent/mm/plugin/webview/ui/tools/i:fP	(Ljava/lang/String;I)V
+          //   1502: aload_0
+          //   1503: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1506: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1509: aload_1
+          //   1510: invokevirtual 350	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aIR	(Ljava/lang/String;)V
+          //   1513: ldc 28
+          //   1515: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1518: return
+          //   1519: aload_0
+          //   1520: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1523: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1526: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1529: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1532: iconst_3
+          //   1533: anewarray 4	java/lang/Object
+          //   1536: dup
+          //   1537: iconst_0
+          //   1538: aload_0
+          //   1539: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1542: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1545: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1548: aastore
+          //   1549: dup
+          //   1550: iconst_1
+          //   1551: bipush 8
+          //   1553: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1556: aastore
+          //   1557: dup
+          //   1558: iconst_2
+          //   1559: iconst_1
+          //   1560: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1563: aastore
+          //   1564: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1567: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1570: aload_0
+          //   1571: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1574: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1577: getfield 354	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcG	Landroid/view/View;
+          //   1580: invokevirtual 359	android/view/View:getVisibility	()I
+          //   1583: bipush 8
+          //   1585: if_icmpne +51 -> 1636
+          //   1588: aload_0
+          //   1589: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1592: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1595: ldc_w 360
+          //   1598: invokestatic 366	android/view/animation/AnimationUtils:loadAnimation	(Landroid/content/Context;I)Landroid/view/animation/Animation;
+          //   1601: astore_1
+          //   1602: aload_0
+          //   1603: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1606: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1609: getfield 354	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcG	Landroid/view/View;
+          //   1612: aload_1
+          //   1613: invokevirtual 370	android/view/View:startAnimation	(Landroid/view/animation/Animation;)V
+          //   1616: aload_0
+          //   1617: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1620: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1623: getfield 354	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcG	Landroid/view/View;
+          //   1626: iconst_0
+          //   1627: invokevirtual 373	android/view/View:setVisibility	(I)V
+          //   1630: ldc 28
+          //   1632: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1635: return
+          //   1636: aload_0
+          //   1637: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1640: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1643: ldc_w 374
+          //   1646: invokestatic 366	android/view/animation/AnimationUtils:loadAnimation	(Landroid/content/Context;I)Landroid/view/animation/Animation;
+          //   1649: astore_1
+          //   1650: aload_1
+          //   1651: new 13	com/tencent/mm/plugin/webview/ui/tools/i$12$1
+          //   1654: dup
+          //   1655: aload_0
+          //   1656: invokespecial 377	com/tencent/mm/plugin/webview/ui/tools/i$12$1:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i$12;)V
+          //   1659: invokevirtual 383	android/view/animation/Animation:setAnimationListener	(Landroid/view/animation/Animation$AnimationListener;)V
+          //   1662: aload_0
+          //   1663: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1666: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1669: getfield 354	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcG	Landroid/view/View;
+          //   1672: aload_1
+          //   1673: invokevirtual 370	android/view/View:startAnimation	(Landroid/view/animation/Animation;)V
+          //   1676: aload_0
+          //   1677: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1680: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1683: getfield 354	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcG	Landroid/view/View;
+          //   1686: bipush 8
+          //   1688: invokevirtual 373	android/view/View:setVisibility	(I)V
+          //   1691: ldc 28
+          //   1693: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1696: return
+          //   1697: aload_0
+          //   1698: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1701: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1704: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1707: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1710: iconst_3
+          //   1711: anewarray 4	java/lang/Object
+          //   1714: dup
+          //   1715: iconst_0
+          //   1716: aload_0
+          //   1717: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1720: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1723: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1726: aastore
+          //   1727: dup
+          //   1728: iconst_1
+          //   1729: bipush 10
+          //   1731: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1734: aastore
+          //   1735: dup
+          //   1736: iconst_2
+          //   1737: iconst_1
+          //   1738: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1741: aastore
+          //   1742: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1745: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1748: aload_0
+          //   1749: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1752: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1755: invokevirtual 386	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eSX	()V
+          //   1758: ldc 28
+          //   1760: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1763: return
+          //   1764: aload_0
+          //   1765: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1768: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1771: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1774: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1777: iconst_3
+          //   1778: anewarray 4	java/lang/Object
+          //   1781: dup
+          //   1782: iconst_0
+          //   1783: aload_0
+          //   1784: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1787: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1790: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1793: aastore
+          //   1794: dup
+          //   1795: iconst_1
+          //   1796: iconst_5
+          //   1797: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1800: aastore
+          //   1801: dup
+          //   1802: iconst_2
+          //   1803: iconst_1
+          //   1804: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1807: aastore
+          //   1808: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1811: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1814: aload_0
+          //   1815: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1818: invokestatic 388	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
+          //   1821: ldc 28
+          //   1823: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1826: return
+          //   1827: aload_0
+          //   1828: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1831: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1834: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   1837: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1840: iconst_3
+          //   1841: anewarray 4	java/lang/Object
+          //   1844: dup
+          //   1845: iconst_0
+          //   1846: aload_0
+          //   1847: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1850: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1853: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   1856: aastore
+          //   1857: dup
+          //   1858: iconst_1
+          //   1859: bipush 13
+          //   1861: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1864: aastore
+          //   1865: dup
+          //   1866: iconst_2
+          //   1867: iconst_1
+          //   1868: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   1871: aastore
+          //   1872: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   1875: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   1878: aload_0
+          //   1879: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   1882: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   1885: astore 5
+          //   1887: aload 5
+          //   1889: getfield 392	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EaP	Lcom/tencent/mm/plugin/webview/modeltools/a;
+          //   1892: astore 6
+          //   1894: aload 5
+          //   1896: getfield 393	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+          //   1899: astore 7
+          //   1901: aload 5
+          //   1903: invokevirtual 396	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:isFinishing	()Z
+          //   1906: ifne +214 -> 2120
+          //   1909: aload 5
+          //   1911: invokevirtual 399	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eNy	()Ljava/lang/String;
+          //   1914: astore 4
+          //   1916: aload 4
+          //   1918: invokestatic 191	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+          //   1921: ifeq +18 -> 1939
+          //   1924: ldc_w 401
+          //   1927: ldc_w 403
+          //   1930: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   1933: ldc 28
+          //   1935: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   1938: return
+          //   1939: aload 4
+          //   1941: astore_1
+          //   1942: aload 7
+          //   1944: ifnull +13 -> 1957
+          //   1947: aload 7
+          //   1949: aload 4
+          //   1951: invokeinterface 406 2 0
+          //   1956: astore_1
+          //   1957: aload_1
+          //   1958: astore 4
+          //   1960: aload_1
+          //   1961: ldc_w 408
+          //   1964: invokevirtual 411	java/lang/String:startsWith	(Ljava/lang/String;)Z
+          //   1967: ifne +28 -> 1995
+          //   1970: aload_1
+          //   1971: astore 4
+          //   1973: aload_1
+          //   1974: ldc_w 413
+          //   1977: invokevirtual 411	java/lang/String:startsWith	(Ljava/lang/String;)Z
+          //   1980: ifne +15 -> 1995
+          //   1983: ldc_w 408
+          //   1986: aload_1
+          //   1987: invokestatic 416	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+          //   1990: invokevirtual 419	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+          //   1993: astore 4
+          //   1995: new 242	android/content/Intent
+          //   1998: dup
+          //   1999: ldc_w 421
+          //   2002: aload 4
+          //   2004: invokestatic 427	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+          //   2007: invokespecial 430	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+          //   2010: astore_1
+          //   2011: aload 5
+          //   2013: invokestatic 434	com/tencent/mm/sdk/platformtools/bt:jk	(Landroid/content/Context;)Z
+          //   2016: ifne +9 -> 2025
+          //   2019: invokestatic 439	com/tencent/mm/sdk/platformtools/j:fjZ	()Z
+          //   2022: ifeq +209 -> 2231
+          //   2025: ldc_w 401
+          //   2028: ldc_w 441
+          //   2031: iconst_2
+          //   2032: anewarray 4	java/lang/Object
+          //   2035: dup
+          //   2036: iconst_0
+          //   2037: aload 5
+          //   2039: invokestatic 434	com/tencent/mm/sdk/platformtools/bt:jk	(Landroid/content/Context;)Z
+          //   2042: invokestatic 446	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+          //   2045: aastore
+          //   2046: dup
+          //   2047: iconst_1
+          //   2048: invokestatic 439	com/tencent/mm/sdk/platformtools/j:fjZ	()Z
+          //   2051: invokestatic 446	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+          //   2054: aastore
+          //   2055: invokestatic 155	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   2058: bipush 29
+          //   2060: invokestatic 452	com/tencent/mm/compatible/util/d:ly	(I)Z
+          //   2063: ifeq +87 -> 2150
+          //   2066: aload 5
+          //   2068: iconst_0
+          //   2069: aload_1
+          //   2070: ldc_w 453
+          //   2073: invokestatic 459	android/app/PendingIntent:getActivity	(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+          //   2076: aload 5
+          //   2078: iconst_1
+          //   2079: aconst_null
+          //   2080: new 461	com/tencent/mm/plugin/webview/modeltools/a$1
+          //   2083: dup
+          //   2084: aload 6
+          //   2086: invokespecial 464	com/tencent/mm/plugin/webview/modeltools/a$1:<init>	(Lcom/tencent/mm/plugin/webview/modeltools/a;)V
+          //   2089: aconst_null
+          //   2090: invokevirtual 468	android/app/PendingIntent:send	(Landroid/content/Context;ILandroid/content/Intent;Landroid/app/PendingIntent$OnFinished;Landroid/os/Handler;)V
+          //   2093: ldc 28
+          //   2095: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2098: return
+          //   2099: astore_1
+          //   2100: ldc_w 401
+          //   2103: ldc_w 470
+          //   2106: iconst_1
+          //   2107: anewarray 4	java/lang/Object
+          //   2110: dup
+          //   2111: iconst_0
+          //   2112: aload_1
+          //   2113: invokevirtual 473	java/lang/Exception:getMessage	()Ljava/lang/String;
+          //   2116: aastore
+          //   2117: invokestatic 475	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   2120: ldc 28
+          //   2122: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2125: return
+          //   2126: astore_1
+          //   2127: ldc_w 401
+          //   2130: ldc_w 477
+          //   2133: iconst_1
+          //   2134: anewarray 4	java/lang/Object
+          //   2137: dup
+          //   2138: iconst_0
+          //   2139: aload_1
+          //   2140: aastore
+          //   2141: invokestatic 475	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   2144: aload 4
+          //   2146: astore_1
+          //   2147: goto -190 -> 1957
+          //   2150: new 479	com/tencent/mm/hellhoundlib/b/a
+          //   2153: dup
+          //   2154: invokespecial 480	com/tencent/mm/hellhoundlib/b/a:<init>	()V
+          //   2157: aload_1
+          //   2158: invokevirtual 484	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+          //   2161: astore_1
+          //   2162: aload 5
+          //   2164: aload_1
+          //   2165: invokevirtual 488	com/tencent/mm/hellhoundlib/b/a:ahp	()[Ljava/lang/Object;
+          //   2168: ldc_w 490
+          //   2171: ldc_w 492
+          //   2174: ldc_w 494
+          //   2177: ldc_w 496
+          //   2180: ldc_w 498
+          //   2183: ldc_w 500
+          //   2186: invokestatic 505	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+          //   2189: aload 5
+          //   2191: aload_1
+          //   2192: iconst_0
+          //   2193: invokevirtual 509	com/tencent/mm/hellhoundlib/b/a:mq	(I)Ljava/lang/Object;
+          //   2196: checkcast 242	android/content/Intent
+          //   2199: invokevirtual 511	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:startActivity	(Landroid/content/Intent;)V
+          //   2202: aload 5
+          //   2204: ldc_w 490
+          //   2207: ldc_w 492
+          //   2210: ldc_w 494
+          //   2213: ldc_w 496
+          //   2216: ldc_w 498
+          //   2219: ldc_w 500
+          //   2222: invokestatic 514	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+          //   2225: ldc 28
+          //   2227: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2230: return
+          //   2231: aload 5
+          //   2233: aload 5
+          //   2235: aload_1
+          //   2236: aload 4
+          //   2238: invokestatic 519	com/tencent/mm/plugin/webview/modeltools/a:a	(Landroid/app/Activity;Landroid/content/Intent;Ljava/lang/String;)Landroid/content/Intent;
+          //   2241: iconst_2
+          //   2242: invokevirtual 523	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:startActivityForResult	(Landroid/content/Intent;I)V
+          //   2245: ldc 28
+          //   2247: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2250: return
+          //   2251: aload_0
+          //   2252: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2255: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2258: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2261: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2264: iconst_3
+          //   2265: anewarray 4	java/lang/Object
+          //   2268: dup
+          //   2269: iconst_0
+          //   2270: aload_0
+          //   2271: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2274: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2277: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2280: aastore
+          //   2281: dup
+          //   2282: iconst_1
+          //   2283: bipush 35
+          //   2285: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2288: aastore
+          //   2289: dup
+          //   2290: iconst_2
+          //   2291: iconst_1
+          //   2292: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2295: aastore
+          //   2296: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2299: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2302: aload_0
+          //   2303: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2306: invokestatic 525	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
+          //   2309: ldc 28
+          //   2311: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2314: return
+          //   2315: aload_0
+          //   2316: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2319: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2322: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2325: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2328: iconst_3
+          //   2329: anewarray 4	java/lang/Object
+          //   2332: dup
+          //   2333: iconst_0
+          //   2334: aload_0
+          //   2335: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2338: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2341: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2344: aastore
+          //   2345: dup
+          //   2346: iconst_1
+          //   2347: bipush 15
+          //   2349: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2352: aastore
+          //   2353: dup
+          //   2354: iconst_2
+          //   2355: iconst_1
+          //   2356: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2359: aastore
+          //   2360: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2363: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2366: aload_0
+          //   2367: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2370: astore_1
+          //   2371: aload_1
+          //   2372: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2375: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   2378: ldc_w 527
+          //   2381: iconst_1
+          //   2382: invokevirtual 531	com/tencent/mm/plugin/webview/c/f:cn	(Ljava/lang/String;Z)V
+          //   2385: aload_1
+          //   2386: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2389: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   2392: astore_1
+          //   2393: aload_1
+          //   2394: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   2397: ifne +17 -> 2414
+          //   2400: ldc 67
+          //   2402: ldc_w 533
+          //   2405: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   2408: ldc 28
+          //   2410: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2413: return
+          //   2414: ldc_w 535
+          //   2417: new 83	java/util/HashMap
+          //   2420: dup
+          //   2421: invokespecial 84	java/util/HashMap:<init>	()V
+          //   2424: aload_1
+          //   2425: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   2428: aload_1
+          //   2429: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   2432: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   2435: astore 4
+          //   2437: aload_1
+          //   2438: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   2441: new 117	java/lang/StringBuilder
+          //   2444: dup
+          //   2445: ldc 119
+          //   2447: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   2450: aload 4
+          //   2452: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   2455: ldc 128
+          //   2457: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   2460: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   2463: aconst_null
+          //   2464: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   2467: ldc 28
+          //   2469: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2472: return
+          //   2473: aload_0
+          //   2474: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2477: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2480: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2483: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2486: iconst_3
+          //   2487: anewarray 4	java/lang/Object
+          //   2490: dup
+          //   2491: iconst_0
+          //   2492: aload_0
+          //   2493: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2496: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2499: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2502: aastore
+          //   2503: dup
+          //   2504: iconst_1
+          //   2505: bipush 7
+          //   2507: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2510: aastore
+          //   2511: dup
+          //   2512: iconst_2
+          //   2513: iconst_1
+          //   2514: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2517: aastore
+          //   2518: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2521: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2524: aload_0
+          //   2525: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2528: astore_1
+          //   2529: aload_1
+          //   2530: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2533: aload_1
+          //   2534: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2537: ldc_w 536
+          //   2540: invokevirtual 540	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+          //   2543: aconst_null
+          //   2544: aconst_null
+          //   2545: aload_1
+          //   2546: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2549: ldc_w 541
+          //   2552: invokevirtual 540	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+          //   2555: new 543	com/tencent/mm/plugin/webview/ui/tools/i$7
+          //   2558: dup
+          //   2559: aload_1
+          //   2560: invokespecial 545	com/tencent/mm/plugin/webview/ui/tools/i$7:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
+          //   2563: invokestatic 550	com/tencent/mm/ui/base/h:a	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Lcom/tencent/mm/ui/base/h$d;)Landroid/app/Dialog;
+          //   2566: pop
+          //   2567: ldc 28
+          //   2569: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2572: return
+          //   2573: aload_0
+          //   2574: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2577: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2580: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2583: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2586: iconst_3
+          //   2587: anewarray 4	java/lang/Object
+          //   2590: dup
+          //   2591: iconst_0
+          //   2592: aload_0
+          //   2593: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2596: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2599: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2602: aastore
+          //   2603: dup
+          //   2604: iconst_1
+          //   2605: bipush 11
+          //   2607: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2610: aastore
+          //   2611: dup
+          //   2612: iconst_2
+          //   2613: iconst_1
+          //   2614: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2617: aastore
+          //   2618: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2621: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2624: aload_0
+          //   2625: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2628: aconst_null
+          //   2629: invokevirtual 553	com/tencent/mm/plugin/webview/ui/tools/i:aIN	(Ljava/lang/String;)V
+          //   2632: ldc 28
+          //   2634: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2637: return
+          //   2638: aload_0
+          //   2639: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2642: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2645: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2648: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2651: iconst_3
+          //   2652: anewarray 4	java/lang/Object
+          //   2655: dup
+          //   2656: iconst_0
+          //   2657: aload_0
+          //   2658: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2661: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2664: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2667: aastore
+          //   2668: dup
+          //   2669: iconst_1
+          //   2670: bipush 6
+          //   2672: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2675: aastore
+          //   2676: dup
+          //   2677: iconst_2
+          //   2678: iconst_1
+          //   2679: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2682: aastore
+          //   2683: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2686: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2689: new 242	android/content/Intent
+          //   2692: dup
+          //   2693: invokespecial 254	android/content/Intent:<init>	()V
+          //   2696: astore_1
+          //   2697: aload_1
+          //   2698: ldc_w 555
+          //   2701: iconst_2
+          //   2702: invokevirtual 558	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+          //   2705: pop
+          //   2706: aload_1
+          //   2707: ldc_w 560
+          //   2710: aload_0
+          //   2711: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2714: invokevirtual 234	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2717: invokevirtual 238	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+          //   2720: ldc_w 562
+          //   2723: ldc2_w 563
+          //   2726: invokevirtual 283	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+          //   2729: invokevirtual 567	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
+          //   2732: pop
+          //   2733: aload_0
+          //   2734: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2737: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2740: ldc_w 569
+          //   2743: aload_1
+          //   2744: invokestatic 573	com/tencent/mm/plugin/fav/a/b:b	(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V
+          //   2747: aload_0
+          //   2748: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2751: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2754: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2757: ldc_w 575
+          //   2760: invokevirtual 578	com/tencent/mm/plugin/webview/model/ay:aHE	(Ljava/lang/String;)V
+          //   2763: ldc 28
+          //   2765: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2768: return
+          //   2769: aload_0
+          //   2770: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2773: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2776: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2779: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2782: iconst_3
+          //   2783: anewarray 4	java/lang/Object
+          //   2786: dup
+          //   2787: iconst_0
+          //   2788: aload_0
+          //   2789: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2792: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2795: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2798: aastore
+          //   2799: dup
+          //   2800: iconst_1
+          //   2801: bipush 19
+          //   2803: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2806: aastore
+          //   2807: dup
+          //   2808: iconst_2
+          //   2809: iconst_1
+          //   2810: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2813: aastore
+          //   2814: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2817: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2820: aload_0
+          //   2821: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2824: aload_1
+          //   2825: invokestatic 581	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
+          //   2828: ldc 28
+          //   2830: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2833: return
+          //   2834: aload_0
+          //   2835: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2838: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2841: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2844: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2847: iconst_3
+          //   2848: anewarray 4	java/lang/Object
+          //   2851: dup
+          //   2852: iconst_0
+          //   2853: aload_0
+          //   2854: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2857: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2860: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2863: aastore
+          //   2864: dup
+          //   2865: iconst_1
+          //   2866: bipush 21
+          //   2868: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2871: aastore
+          //   2872: dup
+          //   2873: iconst_2
+          //   2874: iconst_1
+          //   2875: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2878: aastore
+          //   2879: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2882: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2885: aload_0
+          //   2886: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2889: aload_1
+          //   2890: invokestatic 581	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
+          //   2893: ldc 28
+          //   2895: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2898: return
+          //   2899: aload_0
+          //   2900: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2903: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2906: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2909: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2912: iconst_3
+          //   2913: anewarray 4	java/lang/Object
+          //   2916: dup
+          //   2917: iconst_0
+          //   2918: aload_0
+          //   2919: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2922: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2925: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2928: aastore
+          //   2929: dup
+          //   2930: iconst_1
+          //   2931: bipush 20
+          //   2933: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2936: aastore
+          //   2937: dup
+          //   2938: iconst_2
+          //   2939: iconst_1
+          //   2940: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   2943: aastore
+          //   2944: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2947: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   2950: aload_0
+          //   2951: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2954: aload_1
+          //   2955: invokestatic 581	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
+          //   2958: ldc 28
+          //   2960: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   2963: return
+          //   2964: aload_0
+          //   2965: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2968: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2971: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   2974: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   2977: iconst_3
+          //   2978: anewarray 4	java/lang/Object
+          //   2981: dup
+          //   2982: iconst_0
+          //   2983: aload_0
+          //   2984: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   2987: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   2990: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   2993: aastore
+          //   2994: dup
+          //   2995: iconst_1
+          //   2996: bipush 22
+          //   2998: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3001: aastore
+          //   3002: dup
+          //   3003: iconst_2
+          //   3004: iconst_1
+          //   3005: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3008: aastore
+          //   3009: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3012: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3015: aload_0
+          //   3016: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3019: aload_1
+          //   3020: invokestatic 581	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
+          //   3023: ldc 28
+          //   3025: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3028: return
+          //   3029: aload_0
+          //   3030: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3033: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3036: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   3039: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3042: iconst_3
+          //   3043: anewarray 4	java/lang/Object
+          //   3046: dup
+          //   3047: iconst_0
+          //   3048: aload_0
+          //   3049: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3052: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3055: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   3058: aastore
+          //   3059: dup
+          //   3060: iconst_1
+          //   3061: bipush 23
+          //   3063: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3066: aastore
+          //   3067: dup
+          //   3068: iconst_2
+          //   3069: iconst_1
+          //   3070: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3073: aastore
+          //   3074: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3077: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3080: aload_0
+          //   3081: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3084: aload_1
+          //   3085: invokestatic 581	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
+          //   3088: ldc 28
+          //   3090: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3093: return
+          //   3094: aload_0
+          //   3095: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3098: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3101: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   3104: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3107: iconst_3
+          //   3108: anewarray 4	java/lang/Object
+          //   3111: dup
+          //   3112: iconst_0
+          //   3113: aload_0
+          //   3114: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3117: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3120: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   3123: aastore
+          //   3124: dup
+          //   3125: iconst_1
+          //   3126: bipush 26
+          //   3128: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3131: aastore
+          //   3132: dup
+          //   3133: iconst_2
+          //   3134: iconst_1
+          //   3135: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3138: aastore
+          //   3139: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3142: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3145: aload_0
+          //   3146: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3149: astore_1
+          //   3150: aload_1
+          //   3151: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3154: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3157: ldc_w 583
+          //   3160: iconst_1
+          //   3161: invokevirtual 531	com/tencent/mm/plugin/webview/c/f:cn	(Ljava/lang/String;Z)V
+          //   3164: aload_1
+          //   3165: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3168: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3171: astore_1
+          //   3172: aload_1
+          //   3173: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   3176: ifne +17 -> 3193
+          //   3179: ldc 67
+          //   3181: ldc_w 585
+          //   3184: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   3187: ldc 28
+          //   3189: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3192: return
+          //   3193: ldc_w 587
+          //   3196: new 83	java/util/HashMap
+          //   3199: dup
+          //   3200: invokespecial 84	java/util/HashMap:<init>	()V
+          //   3203: aload_1
+          //   3204: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   3207: aload_1
+          //   3208: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   3211: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   3214: astore 4
+          //   3216: aload_1
+          //   3217: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   3220: new 117	java/lang/StringBuilder
+          //   3223: dup
+          //   3224: ldc 119
+          //   3226: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   3229: aload 4
+          //   3231: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3234: ldc 128
+          //   3236: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3239: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   3242: aconst_null
+          //   3243: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   3246: aload_1
+          //   3247: getfield 588	com/tencent/mm/plugin/webview/c/f:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+          //   3250: ldc_w 590
+          //   3253: ldc_w 592
+          //   3256: aload_1
+          //   3257: getfield 596	com/tencent/mm/plugin/webview/c/f:DMF	I
+          //   3260: invokeinterface 600 4 0
+          //   3265: ldc 28
+          //   3267: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3270: return
+          //   3271: astore_1
+          //   3272: ldc 67
+          //   3274: new 117	java/lang/StringBuilder
+          //   3277: dup
+          //   3278: ldc_w 602
+          //   3281: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   3284: aload_1
+          //   3285: invokevirtual 473	java/lang/Exception:getMessage	()Ljava/lang/String;
+          //   3288: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3291: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   3294: invokestatic 605	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+          //   3297: ldc 28
+          //   3299: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3302: return
+          //   3303: aload_0
+          //   3304: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3307: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3310: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   3313: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3316: iconst_3
+          //   3317: anewarray 4	java/lang/Object
+          //   3320: dup
+          //   3321: iconst_0
+          //   3322: aload_0
+          //   3323: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3326: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3329: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   3332: aastore
+          //   3333: dup
+          //   3334: iconst_1
+          //   3335: bipush 27
+          //   3337: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3340: aastore
+          //   3341: dup
+          //   3342: iconst_2
+          //   3343: iconst_1
+          //   3344: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3347: aastore
+          //   3348: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3351: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3354: aload_0
+          //   3355: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3358: invokestatic 608	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
+          //   3361: ldc 28
+          //   3363: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3366: return
+          //   3367: aload_0
+          //   3368: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3371: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3374: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   3377: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3380: iconst_3
+          //   3381: anewarray 4	java/lang/Object
+          //   3384: dup
+          //   3385: iconst_0
+          //   3386: aload_0
+          //   3387: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3390: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3393: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   3396: aastore
+          //   3397: dup
+          //   3398: iconst_1
+          //   3399: bipush 17
+          //   3401: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3404: aastore
+          //   3405: dup
+          //   3406: iconst_2
+          //   3407: iconst_1
+          //   3408: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3411: aastore
+          //   3412: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3415: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3418: aload_0
+          //   3419: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3422: astore_1
+          //   3423: aload_1
+          //   3424: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3427: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3430: ldc_w 610
+          //   3433: iconst_1
+          //   3434: invokevirtual 531	com/tencent/mm/plugin/webview/c/f:cn	(Ljava/lang/String;Z)V
+          //   3437: aload_1
+          //   3438: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3441: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3444: astore_1
+          //   3445: aload_1
+          //   3446: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   3449: ifne +17 -> 3466
+          //   3452: ldc 67
+          //   3454: ldc_w 612
+          //   3457: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   3460: ldc 28
+          //   3462: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3465: return
+          //   3466: aload_1
+          //   3467: iconst_1
+          //   3468: invokevirtual 616	com/tencent/mm/plugin/webview/c/f:WE	(I)Landroid/os/Bundle;
+          //   3471: astore 4
+          //   3473: aload 4
+          //   3475: ifnull +30 -> 3505
+          //   3478: aload 4
+          //   3480: ldc_w 618
+          //   3483: iconst_0
+          //   3484: invokevirtual 622	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+          //   3487: ifeq +18 -> 3505
+          //   3490: aload_1
+          //   3491: aload 4
+          //   3493: ldc_w 610
+          //   3496: invokevirtual 626	com/tencent/mm/plugin/webview/c/f:h	(Landroid/os/Bundle;Ljava/lang/String;)V
+          //   3499: ldc 28
+          //   3501: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3504: return
+          //   3505: ldc_w 628
+          //   3508: new 83	java/util/HashMap
+          //   3511: dup
+          //   3512: invokespecial 84	java/util/HashMap:<init>	()V
+          //   3515: aload_1
+          //   3516: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   3519: aload_1
+          //   3520: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   3523: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   3526: astore 4
+          //   3528: aload_1
+          //   3529: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   3532: new 117	java/lang/StringBuilder
+          //   3535: dup
+          //   3536: ldc 119
+          //   3538: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   3541: aload 4
+          //   3543: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3546: ldc 128
+          //   3548: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3551: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   3554: aconst_null
+          //   3555: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   3558: ldc 28
+          //   3560: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3563: return
+          //   3564: aload_0
+          //   3565: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3568: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3571: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   3574: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3577: iconst_3
+          //   3578: anewarray 4	java/lang/Object
+          //   3581: dup
+          //   3582: iconst_0
+          //   3583: aload_0
+          //   3584: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3587: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3590: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   3593: aastore
+          //   3594: dup
+          //   3595: iconst_1
+          //   3596: bipush 18
+          //   3598: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3601: aastore
+          //   3602: dup
+          //   3603: iconst_2
+          //   3604: iconst_1
+          //   3605: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3608: aastore
+          //   3609: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3612: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3615: aload_0
+          //   3616: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3619: astore_1
+          //   3620: aload_1
+          //   3621: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3624: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3627: ldc_w 630
+          //   3630: iconst_1
+          //   3631: invokevirtual 531	com/tencent/mm/plugin/webview/c/f:cn	(Ljava/lang/String;Z)V
+          //   3634: aload_1
+          //   3635: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3638: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3641: astore_1
+          //   3642: aload_1
+          //   3643: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   3646: ifne +17 -> 3663
+          //   3649: ldc 67
+          //   3651: ldc_w 632
+          //   3654: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   3657: ldc 28
+          //   3659: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3662: return
+          //   3663: ldc_w 634
+          //   3666: new 83	java/util/HashMap
+          //   3669: dup
+          //   3670: invokespecial 84	java/util/HashMap:<init>	()V
+          //   3673: aload_1
+          //   3674: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   3677: aload_1
+          //   3678: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   3681: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   3684: astore 4
+          //   3686: aload_1
+          //   3687: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   3690: new 117	java/lang/StringBuilder
+          //   3693: dup
+          //   3694: ldc 119
+          //   3696: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   3699: aload 4
+          //   3701: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3704: ldc 128
+          //   3706: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3709: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   3712: aconst_null
+          //   3713: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   3716: ldc 28
+          //   3718: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3721: return
+          //   3722: aload_0
+          //   3723: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3726: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3729: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   3732: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3735: iconst_3
+          //   3736: anewarray 4	java/lang/Object
+          //   3739: dup
+          //   3740: iconst_0
+          //   3741: aload_0
+          //   3742: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3745: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3748: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   3751: aastore
+          //   3752: dup
+          //   3753: iconst_1
+          //   3754: bipush 24
+          //   3756: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3759: aastore
+          //   3760: dup
+          //   3761: iconst_2
+          //   3762: iconst_1
+          //   3763: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3766: aastore
+          //   3767: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3770: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3773: aload_0
+          //   3774: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3777: astore_1
+          //   3778: aload_1
+          //   3779: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3782: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3785: ldc_w 636
+          //   3788: iconst_1
+          //   3789: invokevirtual 531	com/tencent/mm/plugin/webview/c/f:cn	(Ljava/lang/String;Z)V
+          //   3792: aload_1
+          //   3793: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3796: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3799: astore_1
+          //   3800: aload_1
+          //   3801: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   3804: ifne +17 -> 3821
+          //   3807: ldc 67
+          //   3809: ldc_w 638
+          //   3812: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   3815: ldc 28
+          //   3817: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3820: return
+          //   3821: aload_1
+          //   3822: iconst_1
+          //   3823: invokevirtual 616	com/tencent/mm/plugin/webview/c/f:WE	(I)Landroid/os/Bundle;
+          //   3826: astore 4
+          //   3828: aload 4
+          //   3830: ifnull +30 -> 3860
+          //   3833: aload 4
+          //   3835: ldc_w 618
+          //   3838: iconst_0
+          //   3839: invokevirtual 622	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+          //   3842: ifeq +18 -> 3860
+          //   3845: aload_1
+          //   3846: aload 4
+          //   3848: ldc_w 636
+          //   3851: invokevirtual 626	com/tencent/mm/plugin/webview/c/f:h	(Landroid/os/Bundle;Ljava/lang/String;)V
+          //   3854: ldc 28
+          //   3856: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3859: return
+          //   3860: ldc_w 640
+          //   3863: new 83	java/util/HashMap
+          //   3866: dup
+          //   3867: invokespecial 84	java/util/HashMap:<init>	()V
+          //   3870: aload_1
+          //   3871: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   3874: aload_1
+          //   3875: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   3878: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   3881: astore 4
+          //   3883: aload_1
+          //   3884: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   3887: new 117	java/lang/StringBuilder
+          //   3890: dup
+          //   3891: ldc 119
+          //   3893: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   3896: aload 4
+          //   3898: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3901: ldc 128
+          //   3903: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   3906: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   3909: aconst_null
+          //   3910: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   3913: ldc 28
+          //   3915: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   3918: return
+          //   3919: aload_0
+          //   3920: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3923: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3926: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   3929: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3932: iconst_3
+          //   3933: anewarray 4	java/lang/Object
+          //   3936: dup
+          //   3937: iconst_0
+          //   3938: aload_0
+          //   3939: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3942: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3945: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   3948: aastore
+          //   3949: dup
+          //   3950: iconst_1
+          //   3951: bipush 14
+          //   3953: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3956: aastore
+          //   3957: dup
+          //   3958: iconst_2
+          //   3959: iconst_1
+          //   3960: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   3963: aastore
+          //   3964: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   3967: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   3970: aload_0
+          //   3971: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   3974: astore_1
+          //   3975: aload_1
+          //   3976: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3979: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3982: ldc_w 583
+          //   3985: iconst_1
+          //   3986: invokevirtual 531	com/tencent/mm/plugin/webview/c/f:cn	(Ljava/lang/String;Z)V
+          //   3989: aload_1
+          //   3990: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   3993: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   3996: astore_1
+          //   3997: aload_1
+          //   3998: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   4001: ifne +17 -> 4018
+          //   4004: ldc 67
+          //   4006: ldc_w 642
+          //   4009: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   4012: ldc 28
+          //   4014: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4017: return
+          //   4018: ldc_w 587
+          //   4021: new 83	java/util/HashMap
+          //   4024: dup
+          //   4025: invokespecial 84	java/util/HashMap:<init>	()V
+          //   4028: aload_1
+          //   4029: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   4032: aload_1
+          //   4033: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   4036: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   4039: astore 4
+          //   4041: aload_1
+          //   4042: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   4045: new 117	java/lang/StringBuilder
+          //   4048: dup
+          //   4049: ldc 119
+          //   4051: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   4054: aload 4
+          //   4056: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   4059: ldc 128
+          //   4061: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   4064: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   4067: aconst_null
+          //   4068: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   4071: aload_1
+          //   4072: getfield 588	com/tencent/mm/plugin/webview/c/f:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+          //   4075: ldc_w 590
+          //   4078: ldc_w 644
+          //   4081: aload_1
+          //   4082: getfield 596	com/tencent/mm/plugin/webview/c/f:DMF	I
+          //   4085: invokeinterface 600 4 0
+          //   4090: ldc 28
+          //   4092: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4095: return
+          //   4096: astore_1
+          //   4097: ldc 67
+          //   4099: new 117	java/lang/StringBuilder
+          //   4102: dup
+          //   4103: ldc_w 602
+          //   4106: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   4109: aload_1
+          //   4110: invokevirtual 473	java/lang/Exception:getMessage	()Ljava/lang/String;
+          //   4113: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   4116: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   4119: invokestatic 605	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+          //   4122: ldc 28
+          //   4124: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4127: return
+          //   4128: aload_0
+          //   4129: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4132: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4135: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   4138: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4141: iconst_3
+          //   4142: anewarray 4	java/lang/Object
+          //   4145: dup
+          //   4146: iconst_0
+          //   4147: aload_0
+          //   4148: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4151: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4154: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   4157: aastore
+          //   4158: dup
+          //   4159: iconst_1
+          //   4160: bipush 16
+          //   4162: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4165: aastore
+          //   4166: dup
+          //   4167: iconst_2
+          //   4168: iconst_1
+          //   4169: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4172: aastore
+          //   4173: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4176: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   4179: aload_0
+          //   4180: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4183: invokestatic 647	com/tencent/mm/plugin/webview/ui/tools/i:d	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
+          //   4186: ldc 28
+          //   4188: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4191: return
+          //   4192: aload_0
+          //   4193: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4196: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4199: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   4202: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4205: iconst_3
+          //   4206: anewarray 4	java/lang/Object
+          //   4209: dup
+          //   4210: iconst_0
+          //   4211: aload_0
+          //   4212: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4215: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4218: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   4221: aastore
+          //   4222: dup
+          //   4223: iconst_1
+          //   4224: bipush 31
+          //   4226: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4229: aastore
+          //   4230: dup
+          //   4231: iconst_2
+          //   4232: iconst_1
+          //   4233: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4236: aastore
+          //   4237: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4240: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   4243: aload_0
+          //   4244: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4247: invokevirtual 650	com/tencent/mm/plugin/webview/ui/tools/i:bLY	()V
+          //   4250: ldc 28
+          //   4252: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4255: return
+          //   4256: getstatic 325	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+          //   4259: ldc2_w 651
+          //   4262: lconst_1
+          //   4263: lconst_1
+          //   4264: iconst_0
+          //   4265: invokevirtual 333	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
+          //   4268: aload_0
+          //   4269: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4272: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4275: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   4278: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4281: iconst_3
+          //   4282: anewarray 4	java/lang/Object
+          //   4285: dup
+          //   4286: iconst_0
+          //   4287: aload_0
+          //   4288: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4291: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4294: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   4297: aastore
+          //   4298: dup
+          //   4299: iconst_1
+          //   4300: bipush 28
+          //   4302: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4305: aastore
+          //   4306: dup
+          //   4307: iconst_2
+          //   4308: iconst_1
+          //   4309: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4312: aastore
+          //   4313: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4316: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   4319: aload_0
+          //   4320: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4323: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4326: getfield 656	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcP	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
+          //   4329: invokevirtual 661	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:isShown	()Z
+          //   4332: ifne +600 -> 4932
+          //   4335: aload_0
+          //   4336: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4339: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4342: getfield 656	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcP	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
+          //   4345: invokevirtual 664	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:reset	()V
+          //   4348: aload_0
+          //   4349: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4352: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4355: getfield 656	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcP	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
+          //   4358: invokevirtual 667	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:eVK	()V
+          //   4361: aload_0
+          //   4362: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4365: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4368: getfield 656	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcP	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
+          //   4371: invokevirtual 670	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:show	()V
+          //   4374: ldc 28
+          //   4376: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4379: return
+          //   4380: aload_0
+          //   4381: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4384: astore_1
+          //   4385: ldc 140
+          //   4387: ldc_w 672
+          //   4390: invokestatic 81	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   4393: aload_1
+          //   4394: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4397: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   4400: ifnull +72 -> 4472
+          //   4403: aload_1
+          //   4404: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4407: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   4410: astore_1
+          //   4411: aload_1
+          //   4412: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   4415: ifne +17 -> 4432
+          //   4418: ldc 67
+          //   4420: ldc_w 674
+          //   4423: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   4426: ldc 28
+          //   4428: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4431: return
+          //   4432: ldc 67
+          //   4434: ldc_w 676
+          //   4437: invokestatic 81	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   4440: new 678	com/tencent/mm/plugin/webview/c/f$20
+          //   4443: dup
+          //   4444: aload_1
+          //   4445: ldc_w 680
+          //   4448: new 83	java/util/HashMap
+          //   4451: dup
+          //   4452: invokespecial 84	java/util/HashMap:<init>	()V
+          //   4455: aload_1
+          //   4456: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   4459: aload_1
+          //   4460: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   4463: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   4466: invokespecial 683	com/tencent/mm/plugin/webview/c/f$20:<init>	(Lcom/tencent/mm/plugin/webview/c/f;Ljava/lang/String;)V
+          //   4469: invokestatic 688	com/tencent/mm/sdk/platformtools/aq:f	(Ljava/lang/Runnable;)V
+          //   4472: ldc 28
+          //   4474: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4477: return
+          //   4478: aload_0
+          //   4479: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4482: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4485: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   4488: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4491: iconst_3
+          //   4492: anewarray 4	java/lang/Object
+          //   4495: dup
+          //   4496: iconst_0
+          //   4497: aload_0
+          //   4498: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4501: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4504: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   4507: aastore
+          //   4508: dup
+          //   4509: iconst_1
+          //   4510: bipush 33
+          //   4512: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4515: aastore
+          //   4516: dup
+          //   4517: iconst_2
+          //   4518: iconst_1
+          //   4519: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4522: aastore
+          //   4523: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4526: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   4529: aload_0
+          //   4530: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4533: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4536: getfield 692	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EdZ	Lcom/tencent/mm/plugin/webview/ui/tools/floatball/a;
+          //   4539: iconst_1
+          //   4540: invokevirtual 698	com/tencent/mm/plugin/webview/ui/tools/floatball/a:gf	(Z)V
+          //   4543: ldc 28
+          //   4545: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4548: return
+          //   4549: aload_0
+          //   4550: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4553: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4556: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   4559: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4562: iconst_3
+          //   4563: anewarray 4	java/lang/Object
+          //   4566: dup
+          //   4567: iconst_0
+          //   4568: aload_0
+          //   4569: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4572: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4575: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   4578: aastore
+          //   4579: dup
+          //   4580: iconst_1
+          //   4581: bipush 34
+          //   4583: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4586: aastore
+          //   4587: dup
+          //   4588: iconst_2
+          //   4589: iconst_1
+          //   4590: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4593: aastore
+          //   4594: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4597: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   4600: aload_0
+          //   4601: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4604: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4607: getfield 692	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EdZ	Lcom/tencent/mm/plugin/webview/ui/tools/floatball/a;
+          //   4610: iconst_0
+          //   4611: invokevirtual 698	com/tencent/mm/plugin/webview/ui/tools/floatball/a:gf	(Z)V
+          //   4614: ldc 28
+          //   4616: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4619: return
+          //   4620: aload_0
+          //   4621: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4624: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4627: getfield 159	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIg	Lcom/tencent/mm/plugin/webview/model/ay;
+          //   4630: invokevirtual 165	com/tencent/mm/plugin/webview/model/ay:eQG	()Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4633: iconst_3
+          //   4634: anewarray 4	java/lang/Object
+          //   4637: dup
+          //   4638: iconst_0
+          //   4639: aload_0
+          //   4640: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4643: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4646: invokevirtual 168	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+          //   4649: aastore
+          //   4650: dup
+          //   4651: iconst_1
+          //   4652: bipush 99
+          //   4654: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4657: aastore
+          //   4658: dup
+          //   4659: iconst_2
+          //   4660: iconst_1
+          //   4661: invokestatic 152	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+          //   4664: aastore
+          //   4665: invokevirtual 174	com/tencent/mm/plugin/webview/model/ay$d:C	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ay$d;
+          //   4668: invokevirtual 177	com/tencent/mm/plugin/webview/model/ay$d:report	()V
+          //   4671: aload_0
+          //   4672: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4675: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4678: invokevirtual 701	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eSY	()V
+          //   4681: ldc 28
+          //   4683: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4686: return
+          //   4687: aload_0
+          //   4688: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4691: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4694: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   4697: ldc_w 680
+          //   4700: aconst_null
+          //   4701: new 703	org/json/JSONObject
+          //   4704: dup
+          //   4705: invokespecial 704	org/json/JSONObject:<init>	()V
+          //   4708: invokevirtual 707	com/tencent/mm/plugin/webview/c/f:b	(Ljava/lang/String;Ljava/util/Map;Lorg/json/JSONObject;)V
+          //   4711: ldc 28
+          //   4713: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4716: return
+          //   4717: iconst_0
+          //   4718: istore_2
+          //   4719: goto -4077 -> 642
+          //   4722: iconst_0
+          //   4723: istore_2
+          //   4724: goto -4068 -> 656
+          //   4727: astore_1
+          //   4728: iconst_0
+          //   4729: istore_2
+          //   4730: ldc 140
+          //   4732: aload_1
+          //   4733: ldc_w 709
+          //   4736: iconst_0
+          //   4737: anewarray 4	java/lang/Object
+          //   4740: invokestatic 713	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   4743: goto -4087 -> 656
+          //   4746: aload_0
+          //   4747: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$12:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+          //   4750: astore_1
+          //   4751: aload_1
+          //   4752: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4755: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   4758: ldc_w 583
+          //   4761: iconst_0
+          //   4762: invokevirtual 531	com/tencent/mm/plugin/webview/c/f:cn	(Ljava/lang/String;Z)V
+          //   4765: aload_1
+          //   4766: invokevirtual 54	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+          //   4769: getfield 60	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DzP	Lcom/tencent/mm/plugin/webview/c/f;
+          //   4772: astore_1
+          //   4773: aload_1
+          //   4774: getfield 65	com/tencent/mm/plugin/webview/c/f:BHY	Z
+          //   4777: ifne +17 -> 4794
+          //   4780: ldc 67
+          //   4782: ldc_w 715
+          //   4785: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   4788: ldc 28
+          //   4790: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4793: return
+          //   4794: new 83	java/util/HashMap
+          //   4797: dup
+          //   4798: invokespecial 84	java/util/HashMap:<init>	()V
+          //   4801: astore 5
+          //   4803: aload 5
+          //   4805: ldc_w 590
+          //   4808: ldc_w 717
+          //   4811: invokevirtual 93	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+          //   4814: pop
+          //   4815: ldc_w 587
+          //   4818: aload 5
+          //   4820: aload_1
+          //   4821: getfield 102	com/tencent/mm/plugin/webview/c/f:DMD	Z
+          //   4824: aload_1
+          //   4825: getfield 105	com/tencent/mm/plugin/webview/c/f:vJP	Ljava/lang/String;
+          //   4828: invokestatic 111	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
+          //   4831: astore 5
+          //   4833: aload_1
+          //   4834: getfield 115	com/tencent/mm/plugin/webview/c/f:DMv	Lcom/tencent/mm/ui/widget/MMWebView;
+          //   4837: new 117	java/lang/StringBuilder
+          //   4840: dup
+          //   4841: ldc 119
+          //   4843: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   4846: aload 5
+          //   4848: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   4851: ldc 128
+          //   4853: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   4856: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   4859: aconst_null
+          //   4860: invokevirtual 138	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
+          //   4863: aload_1
+          //   4864: getfield 588	com/tencent/mm/plugin/webview/c/f:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+          //   4867: ldc_w 719
+          //   4870: aload 4
+          //   4872: aload_1
+          //   4873: getfield 596	com/tencent/mm/plugin/webview/c/f:DMF	I
+          //   4876: invokeinterface 600 4 0
+          //   4881: aload_1
+          //   4882: getfield 588	com/tencent/mm/plugin/webview/c/f:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+          //   4885: ldc_w 590
+          //   4888: ldc_w 717
+          //   4891: aload_1
+          //   4892: getfield 596	com/tencent/mm/plugin/webview/c/f:DMF	I
+          //   4895: invokeinterface 600 4 0
+          //   4900: ldc 28
+          //   4902: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4905: return
+          //   4906: astore_1
+          //   4907: ldc 67
+          //   4909: new 117	java/lang/StringBuilder
+          //   4912: dup
+          //   4913: ldc_w 602
+          //   4916: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+          //   4919: aload_1
+          //   4920: invokevirtual 473	java/lang/Exception:getMessage	()Ljava/lang/String;
+          //   4923: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+          //   4926: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
+          //   4929: invokestatic 605	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+          //   4932: ldc 28
+          //   4934: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+          //   4937: return
+          //   4938: astore_1
+          //   4939: goto -209 -> 4730
+          // Local variable table:
+          //   start	length	slot	name	signature
+          //   0	4942	0	this	12
+          //   0	4942	1	paramAnonymousMenuItem	MenuItem
+          //   0	4942	2	paramAnonymousInt	int
+          //   648	4	3	i	int
+          //   29	4842	4	localObject1	Object
+          //   81	4766	5	localObject2	Object
+          //   1892	193	6	locala	com.tencent.mm.plugin.webview.modeltools.a
+          //   1899	49	7	locale	com.tencent.mm.plugin.webview.stub.e
+          // Exception table:
+          //   from	to	target	type
+          //   2011	2025	2099	java/lang/Exception
+          //   2025	2098	2099	java/lang/Exception
+          //   2150	2230	2099	java/lang/Exception
+          //   2231	2245	2099	java/lang/Exception
+          //   1947	1957	2126	java/lang/Exception
+          //   3246	3265	3271	java/lang/Exception
+          //   4071	4090	4096	java/lang/Exception
+          //   586	624	4727	java/lang/Exception
+          //   628	635	4727	java/lang/Exception
+          //   4863	4900	4906	java/lang/Exception
+          //   642	649	4938	java/lang/Exception
+        }
+      };
+      this.mDL.KJz = ((n.e)localObject2);
+      this.mDL.JXC = new e.b()
+      {
+        public final void onDismiss()
+        {
+          i.this.orZ = false;
+        }
+      };
+      if (eRK().lvw != null) {
+        break label192;
+      }
+      ad.e("MicroMsg.WebViewMenuHelper", "get permission failed");
+      AppMethodBeat.o(208017);
+      return;
+      bool = false;
+      break;
+    }
+    label192:
+    Object localObject3 = eRK().DIv.lvw.eRg();
+    this.mDL.KJy = new n.d()
+    {
+      /* Error */
+      public final void onCreateMMMenu(l paramAnonymousl)
+      {
+        // Byte code:
+        //   0: ldc 30
+        //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: getstatic 42	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
+        //   8: ldc2_w 43
+        //   11: lconst_0
+        //   12: lconst_1
+        //   13: iconst_0
+        //   14: invokevirtual 48	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
+        //   17: aload_1
+        //   18: invokevirtual 53	com/tencent/mm/ui/base/l:clear	()V
+        //   21: aload_0
+        //   22: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   25: getfield 57	com/tencent/mm/plugin/webview/ui/tools/i:Ebk	Ljava/lang/Boolean;
+        //   28: invokevirtual 63	java/lang/Boolean:booleanValue	()Z
+        //   31: ifeq +90 -> 121
+        //   34: aload_0
+        //   35: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   38: getfield 67	com/tencent/mm/plugin/webview/ui/tools/i:Ebj	Ljava/util/ArrayList;
+        //   41: invokevirtual 73	java/util/ArrayList:size	()I
+        //   44: istore_3
+        //   45: iconst_0
+        //   46: istore_2
+        //   47: iload_2
+        //   48: iload_3
+        //   49: if_icmpge +66 -> 115
+        //   52: aload_0
+        //   53: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   56: getfield 67	com/tencent/mm/plugin/webview/ui/tools/i:Ebj	Ljava/util/ArrayList;
+        //   59: iload_2
+        //   60: invokevirtual 77	java/util/ArrayList:get	(I)Ljava/lang/Object;
+        //   63: checkcast 79	com/tencent/mm/n/d$b
+        //   66: astore 8
+        //   68: aload_1
+        //   69: aload 8
+        //   71: getfield 83	com/tencent/mm/n/d$b:id	I
+        //   74: aload 8
+        //   76: getfield 87	com/tencent/mm/n/d$b:title	Ljava/lang/String;
+        //   79: invokevirtual 91	com/tencent/mm/ui/base/l:c	(ILjava/lang/CharSequence;)Landroid/view/MenuItem;
+        //   82: checkcast 93	com/tencent/mm/ui/base/m
+        //   85: astore 9
+        //   87: aload 9
+        //   89: aload 8
+        //   91: putfield 97	com/tencent/mm/ui/base/m:Jme	Landroid/view/ContextMenu$ContextMenuInfo;
+        //   94: aload 9
+        //   96: aconst_null
+        //   97: invokevirtual 101	com/tencent/mm/ui/base/m:setIcon	(Landroid/graphics/drawable/Drawable;)Landroid/view/MenuItem;
+        //   100: pop
+        //   101: aload 9
+        //   103: iconst_0
+        //   104: invokevirtual 104	com/tencent/mm/ui/base/m:setIcon	(I)Landroid/view/MenuItem;
+        //   107: pop
+        //   108: iload_2
+        //   109: iconst_1
+        //   110: iadd
+        //   111: istore_2
+        //   112: goto -65 -> 47
+        //   115: ldc 30
+        //   117: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   120: return
+        //   121: aload_0
+        //   122: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   125: iconst_1
+        //   126: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   129: ifeq +70 -> 199
+        //   132: aload_0
+        //   133: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   136: bipush 21
+        //   138: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   141: ifeq +58 -> 199
+        //   144: aload_0
+        //   145: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   148: iconst_1
+        //   149: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   152: ifeq +47 -> 199
+        //   155: aload_1
+        //   156: iconst_1
+        //   157: aload_0
+        //   158: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   161: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   164: ldc 124
+        //   166: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   169: ldc 131
+        //   171: aload_0
+        //   172: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   175: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   178: invokevirtual 135	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
+        //   181: ldc 136
+        //   183: invokevirtual 142	android/content/res/Resources:getColor	(I)I
+        //   186: aload_0
+        //   187: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   190: bipush 21
+        //   192: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   195: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   198: pop
+        //   199: aload_0
+        //   200: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   203: iconst_2
+        //   204: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   207: ifeq +56 -> 263
+        //   210: aload_0
+        //   211: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   214: bipush 23
+        //   216: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   219: ifeq +44 -> 263
+        //   222: aload_0
+        //   223: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   226: iconst_2
+        //   227: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   230: ifeq +33 -> 263
+        //   233: aload_1
+        //   234: iconst_2
+        //   235: aload_0
+        //   236: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   239: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   242: ldc 148
+        //   244: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   247: ldc 149
+        //   249: iconst_0
+        //   250: aload_0
+        //   251: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   254: bipush 23
+        //   256: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   259: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   262: pop
+        //   263: new 151	android/os/Bundle
+        //   266: dup
+        //   267: invokespecial 152	android/os/Bundle:<init>	()V
+        //   270: astore 8
+        //   272: aload 8
+        //   274: ldc 154
+        //   276: aload_0
+        //   277: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   280: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   283: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   286: invokevirtual 163	com/tencent/mm/plugin/webview/core/h:eNj	()I
+        //   289: invokevirtual 167	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+        //   292: aload 8
+        //   294: ldc 169
+        //   296: aload_0
+        //   297: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   300: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   303: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   306: getfield 175	com/tencent/mm/plugin/webview/core/BaseWebViewController:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+        //   309: invokevirtual 181	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+        //   312: invokevirtual 185	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+        //   315: aload_0
+        //   316: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   319: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   322: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   325: getfield 189	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+        //   328: bipush 109
+        //   330: aload 8
+        //   332: invokeinterface 195 3 0
+        //   337: astore 8
+        //   339: aload 8
+        //   341: ifnull +1742 -> 2083
+        //   344: aload 8
+        //   346: ldc 197
+        //   348: iconst_0
+        //   349: invokevirtual 201	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+        //   352: istore_2
+        //   353: aload 8
+        //   355: ldc 203
+        //   357: iconst_m1
+        //   358: invokevirtual 201	android/os/Bundle:getInt	(Ljava/lang/String;I)I
+        //   361: istore 4
+        //   363: iload_2
+        //   364: istore_3
+        //   365: iload 4
+        //   367: istore_2
+        //   368: iload_3
+        //   369: iconst_1
+        //   370: if_icmpne +67 -> 437
+        //   373: aload_0
+        //   374: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   377: bipush 38
+        //   379: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   382: ifeq +1532 -> 1914
+        //   385: aload_0
+        //   386: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   389: bipush 38
+        //   391: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   394: ifeq +1520 -> 1914
+        //   397: iload_2
+        //   398: ifne +1516 -> 1914
+        //   401: aload_1
+        //   402: bipush 38
+        //   404: aload_0
+        //   405: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   408: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   411: ldc 204
+        //   413: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   416: ldc 205
+        //   418: aload_0
+        //   419: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   422: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   425: invokevirtual 135	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
+        //   428: ldc 206
+        //   430: invokevirtual 142	android/content/res/Resources:getColor	(I)I
+        //   433: invokevirtual 209	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;II)Landroid/view/MenuItem;
+        //   436: pop
+        //   437: aload_0
+        //   438: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   441: iconst_3
+        //   442: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   445: ifeq +139 -> 584
+        //   448: aload_0
+        //   449: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   452: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   455: getfield 213	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Eda	Z
+        //   458: ifeq +61 -> 519
+        //   461: aload_0
+        //   462: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   465: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   468: invokevirtual 216	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eSK	()Ljava/lang/String;
+        //   471: invokestatic 222	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+        //   474: ifne +110 -> 584
+        //   477: aload_0
+        //   478: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   481: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   484: getfield 225	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Eev	Ljava/lang/String;
+        //   487: invokestatic 222	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+        //   490: ifne +94 -> 584
+        //   493: aload_0
+        //   494: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   497: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   500: invokevirtual 216	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eSK	()Ljava/lang/String;
+        //   503: aload_0
+        //   504: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   507: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   510: getfield 225	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Eev	Ljava/lang/String;
+        //   513: invokevirtual 230	java/lang/String:startsWith	(Ljava/lang/String;)Z
+        //   516: ifne +68 -> 584
+        //   519: aload_0
+        //   520: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   523: sipush 323
+        //   526: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   529: ifeq +55 -> 584
+        //   532: aload_0
+        //   533: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   536: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/i:eSk	()Z
+        //   539: ifeq +45 -> 584
+        //   542: aload_0
+        //   543: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   546: iconst_3
+        //   547: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   550: ifeq +34 -> 584
+        //   553: aload_1
+        //   554: iconst_3
+        //   555: aload_0
+        //   556: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   559: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   562: ldc 234
+        //   564: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   567: ldc 235
+        //   569: iconst_0
+        //   570: aload_0
+        //   571: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   574: sipush 323
+        //   577: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   580: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   583: pop
+        //   584: aload_0
+        //   585: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   588: bipush 25
+        //   590: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   593: ifeq +104 -> 697
+        //   596: aload_0
+        //   597: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   600: sipush 322
+        //   603: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   606: ifeq +91 -> 697
+        //   609: aload_0
+        //   610: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   613: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   616: invokestatic 241	com/tencent/wework/api/WWAPIFactory:lt	(Landroid/content/Context;)Lcom/tencent/wework/api/IWWAPI;
+        //   619: invokeinterface 246 1 0
+        //   624: ifeq +73 -> 697
+        //   627: aload_0
+        //   628: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   631: bipush 25
+        //   633: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   636: ifeq +61 -> 697
+        //   639: aload_0
+        //   640: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   643: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   646: invokestatic 241	com/tencent/wework/api/WWAPIFactory:lt	(Landroid/content/Context;)Lcom/tencent/wework/api/IWWAPI;
+        //   649: invokeinterface 249 1 0
+        //   654: astore 8
+        //   656: aload_1
+        //   657: bipush 25
+        //   659: aload_0
+        //   660: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   663: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   666: ldc 250
+        //   668: iconst_1
+        //   669: anewarray 4	java/lang/Object
+        //   672: dup
+        //   673: iconst_0
+        //   674: aload 8
+        //   676: aastore
+        //   677: invokevirtual 253	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+        //   680: ldc 254
+        //   682: iconst_0
+        //   683: aload_0
+        //   684: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   687: sipush 322
+        //   690: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   693: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   696: pop
+        //   697: aload_0
+        //   698: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   701: bipush 33
+        //   703: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   706: ifeq +91 -> 797
+        //   709: aload_0
+        //   710: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   713: bipush 31
+        //   715: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   718: ifeq +79 -> 797
+        //   721: aload_0
+        //   722: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   725: bipush 33
+        //   727: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   730: ifeq +67 -> 797
+        //   733: aload_0
+        //   734: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   737: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   740: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   743: getfield 189	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+        //   746: bipush 78
+        //   748: aconst_null
+        //   749: invokeinterface 195 3 0
+        //   754: ldc_w 256
+        //   757: iconst_0
+        //   758: invokevirtual 260	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
+        //   761: ifeq +36 -> 797
+        //   764: aload_1
+        //   765: bipush 33
+        //   767: aload_0
+        //   768: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   771: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   774: ldc_w 261
+        //   777: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   780: ldc_w 262
+        //   783: iconst_0
+        //   784: aload_0
+        //   785: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   788: bipush 31
+        //   790: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   793: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   796: pop
+        //   797: aload_0
+        //   798: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   801: bipush 26
+        //   803: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   806: ifeq +88 -> 894
+        //   809: aload_0
+        //   810: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   813: sipush 278
+        //   816: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   819: ifeq +75 -> 894
+        //   822: aload_0
+        //   823: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   826: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   829: aload_0
+        //   830: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   833: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   836: getfield 263	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+        //   839: invokevirtual 181	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+        //   842: invokestatic 269	com/tencent/mm/plugin/webview/stub/a:bB	(Landroid/content/Context;Ljava/lang/String;)Z
+        //   845: ifeq +49 -> 894
+        //   848: aload_0
+        //   849: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   852: bipush 26
+        //   854: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   857: ifeq +37 -> 894
+        //   860: aload_1
+        //   861: bipush 26
+        //   863: aload_0
+        //   864: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   867: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   870: ldc_w 270
+        //   873: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   876: ldc_w 271
+        //   879: iconst_0
+        //   880: aload_0
+        //   881: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   884: sipush 278
+        //   887: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   890: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   893: pop
+        //   894: aload_0
+        //   895: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   898: bipush 7
+        //   900: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   903: ifeq +75 -> 978
+        //   906: aload_0
+        //   907: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   910: bipush 45
+        //   912: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   915: ifeq +63 -> 978
+        //   918: aload_0
+        //   919: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   922: bipush 7
+        //   924: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   927: ifeq +51 -> 978
+        //   930: aload_1
+        //   931: bipush 7
+        //   933: aload_0
+        //   934: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   937: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   940: ldc_w 272
+        //   943: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   946: ldc_w 273
+        //   949: aload_0
+        //   950: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   953: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   956: invokevirtual 135	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
+        //   959: ldc_w 274
+        //   962: invokevirtual 142	android/content/res/Resources:getColor	(I)I
+        //   965: aload_0
+        //   966: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   969: bipush 45
+        //   971: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   974: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   977: pop
+        //   978: aload_0
+        //   979: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   982: invokevirtual 277	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   985: invokevirtual 281	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+        //   988: ldc_w 283
+        //   991: invokevirtual 289	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+        //   994: astore 8
+        //   996: aload_0
+        //   997: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1000: invokevirtual 277	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1003: invokevirtual 281	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+        //   1006: ldc_w 291
+        //   1009: ldc2_w 292
+        //   1012: invokevirtual 297	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+        //   1015: lstore 5
+        //   1017: aload_0
+        //   1018: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1021: bipush 23
+        //   1023: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1026: ifeq +51 -> 1077
+        //   1029: aload_0
+        //   1030: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1033: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1036: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   1039: getfield 189	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+        //   1042: lload 5
+        //   1044: aload 8
+        //   1046: invokeinterface 301 4 0
+        //   1051: ifeq +26 -> 1077
+        //   1054: aload_1
+        //   1055: bipush 23
+        //   1057: aload_0
+        //   1058: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1061: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1064: ldc_w 302
+        //   1067: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1070: ldc_w 303
+        //   1073: invokevirtual 306	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;I)Landroid/view/MenuItem;
+        //   1076: pop
+        //   1077: aload_0
+        //   1078: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1081: bipush 24
+        //   1083: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1086: ifeq +139 -> 1225
+        //   1089: aload_0
+        //   1090: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1093: bipush 43
+        //   1095: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1098: ifeq +127 -> 1225
+        //   1101: aload_0
+        //   1102: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1105: bipush 24
+        //   1107: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   1110: ifeq +115 -> 1225
+        //   1113: aload_0
+        //   1114: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1117: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1120: ldc_w 308
+        //   1123: invokestatic 313	com/tencent/mm/pluginsdk/model/app/q:s	(Landroid/content/Context;Ljava/lang/String;)Z
+        //   1126: ifne +99 -> 1225
+        //   1129: new 151	android/os/Bundle
+        //   1132: dup
+        //   1133: invokespecial 152	android/os/Bundle:<init>	()V
+        //   1136: astore 8
+        //   1138: aload 8
+        //   1140: ldc_w 315
+        //   1143: ldc_w 317
+        //   1146: invokevirtual 185	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1149: aload_0
+        //   1150: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1153: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1156: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   1159: getfield 189	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+        //   1162: bipush 71
+        //   1164: aload 8
+        //   1166: invokeinterface 195 3 0
+        //   1171: astore 8
+        //   1173: aload 8
+        //   1175: ifnull +866 -> 2041
+        //   1178: aload 8
+        //   1180: ldc_w 317
+        //   1183: invokevirtual 319	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
+        //   1186: istore 7
+        //   1188: iload 7
+        //   1190: ifeq +35 -> 1225
+        //   1193: aload_1
+        //   1194: bipush 24
+        //   1196: aload_0
+        //   1197: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1200: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1203: ldc_w 320
+        //   1206: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1209: ldc_w 321
+        //   1212: aload_0
+        //   1213: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1216: bipush 43
+        //   1218: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1221: invokevirtual 324	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IZ)Landroid/view/MenuItem;
+        //   1224: pop
+        //   1225: aload_0
+        //   1226: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1229: bipush 8
+        //   1231: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1234: ifeq +110 -> 1344
+        //   1237: aload_0
+        //   1238: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1241: bipush 36
+        //   1243: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1246: ifeq +98 -> 1344
+        //   1249: aload_0
+        //   1250: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1253: bipush 8
+        //   1255: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   1258: ifeq +86 -> 1344
+        //   1261: aconst_null
+        //   1262: astore 8
+        //   1264: aload_0
+        //   1265: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1268: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1271: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   1274: getfield 189	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+        //   1277: invokeinterface 327 1 0
+        //   1282: astore 9
+        //   1284: aload 9
+        //   1286: astore 8
+        //   1288: aload 8
+        //   1290: invokestatic 222	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+        //   1293: ifne +754 -> 2047
+        //   1296: aload_1
+        //   1297: bipush 8
+        //   1299: aload_0
+        //   1300: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1303: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1306: ldc_w 328
+        //   1309: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1312: ldc_w 329
+        //   1315: aload_0
+        //   1316: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1319: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1322: invokevirtual 135	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
+        //   1325: ldc_w 274
+        //   1328: invokevirtual 142	android/content/res/Resources:getColor	(I)I
+        //   1331: aload_0
+        //   1332: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1335: bipush 36
+        //   1337: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1340: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   1343: pop
+        //   1344: aload_0
+        //   1345: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1348: bipush 20
+        //   1350: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1353: ifeq +73 -> 1426
+        //   1356: aload_0
+        //   1357: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1360: bipush 91
+        //   1362: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1365: ifeq +61 -> 1426
+        //   1368: aload_0
+        //   1369: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1372: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1375: invokestatic 333	com/tencent/mm/plugin/webview/stub/a:gU	(Landroid/content/Context;)Z
+        //   1378: ifeq +48 -> 1426
+        //   1381: aload_0
+        //   1382: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1385: bipush 20
+        //   1387: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   1390: ifeq +36 -> 1426
+        //   1393: aload_1
+        //   1394: bipush 20
+        //   1396: aload_0
+        //   1397: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1400: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1403: ldc_w 334
+        //   1406: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1409: ldc_w 335
+        //   1412: iconst_0
+        //   1413: aload_0
+        //   1414: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1417: bipush 91
+        //   1419: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1422: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   1425: pop
+        //   1426: aload_0
+        //   1427: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1430: bipush 22
+        //   1432: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1435: ifeq +75 -> 1510
+        //   1438: aload_0
+        //   1439: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1442: sipush 133
+        //   1445: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1448: ifeq +62 -> 1510
+        //   1451: aload_0
+        //   1452: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1455: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1458: invokestatic 333	com/tencent/mm/plugin/webview/stub/a:gU	(Landroid/content/Context;)Z
+        //   1461: ifeq +49 -> 1510
+        //   1464: aload_0
+        //   1465: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1468: bipush 22
+        //   1470: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   1473: ifeq +37 -> 1510
+        //   1476: aload_1
+        //   1477: bipush 22
+        //   1479: aload_0
+        //   1480: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1483: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1486: ldc_w 336
+        //   1489: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1492: ldc_w 337
+        //   1495: iconst_0
+        //   1496: aload_0
+        //   1497: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1500: sipush 133
+        //   1503: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1506: invokevirtual 147	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
+        //   1509: pop
+        //   1510: aload_0
+        //   1511: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1514: iconst_0
+        //   1515: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1518: ifeq +133 -> 1651
+        //   1521: aload_0
+        //   1522: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1525: bipush 43
+        //   1527: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1530: ifeq +121 -> 1651
+        //   1533: aload_0
+        //   1534: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1537: iconst_0
+        //   1538: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   1541: ifeq +110 -> 1651
+        //   1544: aload_0
+        //   1545: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1548: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1551: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   1554: getfield 189	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+        //   1557: invokeinterface 340 1 0
+        //   1562: ifeq +89 -> 1651
+        //   1565: aload_0
+        //   1566: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1569: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1572: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:DIv	Lcom/tencent/mm/plugin/webview/core/h;
+        //   1575: getfield 189	com/tencent/mm/plugin/webview/core/h:lvv	Lcom/tencent/mm/plugin/webview/stub/e;
+        //   1578: invokeinterface 344 1 0
+        //   1583: astore 8
+        //   1585: aload 8
+        //   1587: invokeinterface 350 1 0
+        //   1592: astore 9
+        //   1594: aload 9
+        //   1596: invokeinterface 355 1 0
+        //   1601: ifeq +458 -> 2059
+        //   1604: aload_1
+        //   1605: aload 9
+        //   1607: invokeinterface 359 1 0
+        //   1612: checkcast 227	java/lang/String
+        //   1615: invokevirtual 363	com/tencent/mm/ui/base/l:add	(Ljava/lang/CharSequence;)Landroid/view/MenuItem;
+        //   1618: pop
+        //   1619: goto -25 -> 1594
+        //   1622: astore 8
+        //   1624: ldc_w 365
+        //   1627: new 367	java/lang/StringBuilder
+        //   1630: dup
+        //   1631: ldc_w 369
+        //   1634: invokespecial 372	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   1637: aload 8
+        //   1639: invokevirtual 375	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   1642: invokevirtual 379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   1645: invokevirtual 382	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   1648: invokestatic 387	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1651: aload_0
+        //   1652: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1655: bipush 27
+        //   1657: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1660: ifeq +55 -> 1715
+        //   1663: aload_0
+        //   1664: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1667: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1670: getfield 391	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcK	Lcom/tencent/mm/plugin/webview/ui/tools/widget/MovingImageButton;
+        //   1673: ifnull +42 -> 1715
+        //   1676: aload_0
+        //   1677: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1680: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1683: getfield 391	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:EcK	Lcom/tencent/mm/plugin/webview/ui/tools/widget/MovingImageButton;
+        //   1686: invokevirtual 396	com/tencent/mm/plugin/webview/ui/tools/widget/MovingImageButton:getVisibility	()I
+        //   1689: ifne +26 -> 1715
+        //   1692: aload_1
+        //   1693: bipush 27
+        //   1695: aload_0
+        //   1696: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1699: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1702: ldc_w 397
+        //   1705: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1708: ldc_w 398
+        //   1711: invokevirtual 306	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;I)Landroid/view/MenuItem;
+        //   1714: pop
+        //   1715: aload_0
+        //   1716: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1719: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1722: aload_0
+        //   1723: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1726: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1729: invokevirtual 216	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eSK	()Ljava/lang/String;
+        //   1732: invokevirtual 401	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aGj	(Ljava/lang/String;)Ljava/lang/String;
+        //   1735: astore 8
+        //   1737: aload_0
+        //   1738: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1741: invokevirtual 277	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1744: invokevirtual 281	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
+        //   1747: ldc_w 403
+        //   1750: invokevirtual 289	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+        //   1753: astore 9
+        //   1755: aload_0
+        //   1756: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1759: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1762: getfield 406	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Edc	Z
+        //   1765: ifne +89 -> 1854
+        //   1768: aload 8
+        //   1770: invokestatic 222	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+        //   1773: ifne +81 -> 1854
+        //   1776: aload 9
+        //   1778: invokestatic 222	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+        //   1781: ifne +73 -> 1854
+        //   1784: aload_0
+        //   1785: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1788: sipush 255
+        //   1791: invokestatic 115	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1794: ifeq +60 -> 1854
+        //   1797: aload_0
+        //   1798: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1801: bipush 29
+        //   1803: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   1806: ifeq +48 -> 1854
+        //   1809: aload_0
+        //   1810: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1813: bipush 29
+        //   1815: invokestatic 111	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
+        //   1818: ifeq +36 -> 1854
+        //   1821: aload_1
+        //   1822: bipush 29
+        //   1824: aload_0
+        //   1825: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1828: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1831: ldc_w 407
+        //   1834: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1837: ldc_w 408
+        //   1840: aload_0
+        //   1841: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebo	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
+        //   1844: sipush 255
+        //   1847: invokestatic 144	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
+        //   1850: invokevirtual 324	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IZ)Landroid/view/MenuItem;
+        //   1853: pop
+        //   1854: aload_0
+        //   1855: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1858: iconst_1
+        //   1859: putfield 411	com/tencent/mm/plugin/webview/ui/tools/i:orZ	Z
+        //   1862: aload_0
+        //   1863: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1866: getfield 415	com/tencent/mm/plugin/webview/ui/tools/i:mDL	Lcom/tencent/mm/ui/widget/a/e;
+        //   1869: invokevirtual 420	com/tencent/mm/ui/widget/a/e:fMg	()V
+        //   1872: ldc 30
+        //   1874: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1877: return
+        //   1878: astore 8
+        //   1880: iconst_m1
+        //   1881: istore_3
+        //   1882: ldc_w 365
+        //   1885: new 367	java/lang/StringBuilder
+        //   1888: dup
+        //   1889: ldc_w 422
+        //   1892: invokespecial 372	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   1895: aload 8
+        //   1897: invokevirtual 375	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   1900: invokevirtual 379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   1903: invokevirtual 382	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   1906: invokestatic 425	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1909: iconst_m1
+        //   1910: istore_2
+        //   1911: goto -1543 -> 368
+        //   1914: aload_0
+        //   1915: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1918: bipush 39
+        //   1920: invokevirtual 119	com/tencent/mm/plugin/webview/ui/tools/i:Xu	(I)Z
+        //   1923: ifeq -1486 -> 437
+        //   1926: iload_2
+        //   1927: iconst_1
+        //   1928: if_icmpne -1491 -> 437
+        //   1931: aload_1
+        //   1932: bipush 39
+        //   1934: aload_0
+        //   1935: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1938: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1941: ldc_w 426
+        //   1944: invokevirtual 130	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
+        //   1947: ldc_w 427
+        //   1950: aload_0
+        //   1951: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   1954: invokevirtual 123	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+        //   1957: invokevirtual 135	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
+        //   1960: ldc 206
+        //   1962: invokevirtual 142	android/content/res/Resources:getColor	(I)I
+        //   1965: invokevirtual 209	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;II)Landroid/view/MenuItem;
+        //   1968: pop
+        //   1969: goto -1532 -> 437
+        //   1972: astore 8
+        //   1974: ldc_w 365
+        //   1977: aload 8
+        //   1979: ldc_w 429
+        //   1982: iconst_0
+        //   1983: anewarray 4	java/lang/Object
+        //   1986: invokestatic 433	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   1989: goto -1192 -> 797
+        //   1992: astore 8
+        //   1994: ldc_w 365
+        //   1997: aload 8
+        //   1999: ldc_w 429
+        //   2002: iconst_0
+        //   2003: anewarray 4	java/lang/Object
+        //   2006: invokestatic 433	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   2009: goto -932 -> 1077
+        //   2012: astore 8
+        //   2014: ldc_w 365
+        //   2017: new 367	java/lang/StringBuilder
+        //   2020: dup
+        //   2021: ldc_w 369
+        //   2024: invokespecial 372	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+        //   2027: aload 8
+        //   2029: invokevirtual 375	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   2032: invokevirtual 379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        //   2035: invokevirtual 382	java/lang/StringBuilder:toString	()Ljava/lang/String;
+        //   2038: invokestatic 387	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+        //   2041: iconst_0
+        //   2042: istore 7
+        //   2044: goto -856 -> 1188
+        //   2047: ldc_w 365
+        //   2050: ldc_w 435
+        //   2053: invokestatic 437	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   2056: goto -712 -> 1344
+        //   2059: aload_0
+        //   2060: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:Ebl	Lcom/tencent/mm/plugin/webview/ui/tools/i;
+        //   2063: aload 8
+        //   2065: invokestatic 440	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Ljava/util/List;)V
+        //   2068: goto -417 -> 1651
+        //   2071: astore 9
+        //   2073: goto -785 -> 1288
+        //   2076: astore 8
+        //   2078: iload_2
+        //   2079: istore_3
+        //   2080: goto -198 -> 1882
+        //   2083: iconst_m1
+        //   2084: istore_2
+        //   2085: iconst_m1
+        //   2086: istore_3
+        //   2087: goto -1719 -> 368
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	2090	0	this	14
+        //   0	2090	1	paramAnonymousl	l
+        //   46	2039	2	i	int
+        //   44	2043	3	j	int
+        //   361	5	4	k	int
+        //   1015	28	5	l	long
+        //   1186	857	7	bool	boolean
+        //   66	1520	8	localObject1	Object
+        //   1622	16	8	localException1	Exception
+        //   1735	34	8	str	String
+        //   1878	18	8	localException2	Exception
+        //   1972	6	8	localException3	Exception
+        //   1992	6	8	localException4	Exception
+        //   2012	52	8	localException5	Exception
+        //   2076	1	8	localException6	Exception
+        //   85	1692	9	localObject2	Object
+        //   2071	1	9	localException7	Exception
+        // Exception table:
+        //   from	to	target	type
+        //   1510	1594	1622	java/lang/Exception
+        //   1594	1619	1622	java/lang/Exception
+        //   2059	2068	1622	java/lang/Exception
+        //   263	339	1878	java/lang/Exception
+        //   344	353	1878	java/lang/Exception
+        //   733	797	1972	java/lang/Exception
+        //   1017	1077	1992	java/lang/Exception
+        //   1129	1173	2012	java/lang/Exception
+        //   1178	1188	2012	java/lang/Exception
+        //   1264	1284	2071	java/lang/Exception
+        //   353	363	2076	java/lang/Exception
+      }
+    };
+    Object localObject4 = eRK().eNy();
+    eRK();
+    Object localObject1 = n.aIT((String)localObject4);
+    int i;
+    if ((com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class) != null) && (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).isMpUrl((String)localObject4)))
+    {
+      i = 1;
+      this.mDL.KWs = new n.d()
+      {
+        public final void onCreateMMMenu(l paramAnonymousl)
+        {
+          AppMethodBeat.i(79873);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(480L, 0L, 1L, false);
+          paramAnonymousl.clear();
+          if (i.this.Ebk.booleanValue())
+          {
+            AppMethodBeat.o(79873);
+            return;
+          }
+          if ((i.this.eRK().EdZ != null) && (i.this.eRK().EdZ.EeJ.ePk()))
+          {
+            if ((!i.b(i.this, 35)) || (!i.this.Xu(35)) || (i.this.eRK().EdZ.bKz())) {
+              break label279;
+            }
+            paramAnonymousl.a(35, i.this.eRK().getString(2131762178), 2131690574);
+          }
+          for (;;)
+          {
+            switch (i.this.eRK().Eeg)
+            {
+            }
+            try
+            {
+              label168:
+              LinkedList localLinkedList = i.this.eRK().eSZ();
+              int i;
+              label279:
+              if (localLinkedList != null)
+              {
+                i = 0;
+                label187:
+                if ((i < localLinkedList.size()) && (i < 8))
+                {
+                  d.a locala = (d.a)localLinkedList.get(i);
+                  m localm = null;
+                  if ("index".equals(bt.nullAsNil(locala.id))) {
+                    localm = (m)paramAnonymousl.a(15, i.this.eRK().getString(2131766098), 2131689814);
+                  }
+                  for (;;)
+                  {
+                    if (localm != null) {
+                      localm.kwk = locala.url;
+                    }
+                    i += 1;
+                    break label187;
+                    if ((!i.this.Xu(36)) || (!i.this.eRK().EdZ.bKz())) {
+                      break;
+                    }
+                    paramAnonymousl.a(36, i.this.eRK().getString(2131762168), 2131690573);
+                    break;
+                    paramAnonymousl.a(40, i.this.eRK().getString(2131766150), 2131690335);
+                    break label168;
+                    paramAnonymousl.a(41, i.this.eRK().getString(2131766148), 2131690334);
+                    break label168;
+                    paramAnonymousl.a(42, i.this.eRK().getString(2131766149), 2131690335);
+                    break label168;
+                    if ("categories".equals(bt.nullAsNil(locala.id))) {
+                      localm = (m)paramAnonymousl.a(16, i.this.eRK().getString(2131766097), 2131689813);
+                    } else if ("cart".equals(bt.nullAsNil(locala.id))) {
+                      localm = (m)paramAnonymousl.a(17, i.this.eRK().getString(2131766096), 2131689812);
+                    } else if ("profile".equals(bt.nullAsNil(locala.id))) {
+                      localm = (m)paramAnonymousl.a(18, i.this.eRK().getString(2131766100), 2131689820);
+                    } else if ("member".equals(bt.nullAsNil(locala.id))) {
+                      localm = (m)paramAnonymousl.a(19, i.this.eRK().getString(2131766099), 2131689815);
+                    }
+                  }
+                }
+              }
+              try
+              {
+                bool1 = i.this.eRK().DIv.lvv.zE((String)localObject);
+                if (bool1) {}
+              }
+              catch (Exception localException4)
+              {
+                for (;;)
+                {
+                  boolean bool1;
+                  try
+                  {
+                    Object localObject;
+                    i.this.eRK().DIv.lvv.aIw((String)localObject);
+                    if (i.this.Xu(10)) {
+                      paramAnonymousl.a(10, i.this.eRK().getString(2131756596), 2131690646);
+                    }
+                    if ((i.b(i.this, 6)) && (i.a(this.Ebo, 44)) && (i.this.Xu(6))) {
+                      paramAnonymousl.a(6, i.this.eRK().getString(2131766247), 2131690588, i.b(this.Ebo, 44));
+                    }
+                    if ((i.b(i.this, 28)) && (i.this.Xu(28))) {
+                      paramAnonymousl.a(28, i.this.eRK().getString(2131766077), 2131690644);
+                    }
+                    if (((paramLong & 1L) == 0L) && (i.b(i.this, 31))) {
+                      paramAnonymousl.a(31, i.this.eRK().getString(2131766282), 2131689494);
+                    }
+                    if ((this.Ebo.FnH != null) && (i.this.eRK().Eda) && (!bt.isNullOrNil(i.this.eRK().eSK())) && (!bt.isNullOrNil(i.this.eRK().Eev)) && (i.this.eRK().eSK().startsWith(i.this.eRK().Eev)) && (i.this.eRK().getIntent().getBooleanExtra("key_detail_can_delete", true)) && (i.this.eSk()))
+                    {
+                      if ((i.b(i.this, 12)) && (i.this.Xu(12))) {
+                        paramAnonymousl.a(12, i.this.eRK().getString(2131758846), 2131689794);
+                      }
+                      if (i.b(i.this, 9)) {
+                        paramAnonymousl.a(9, i.this.eRK().getString(2131755707), 2131689802);
+                      }
+                    }
+                    if (i.b(i.this, 37))
+                    {
+                      i.this.eRK();
+                      if ((com.tencent.mm.plugin.webview.c.a(i.this.eRK().omW)) && (i.this.Xu(37))) {
+                        paramAnonymousl.a(37, i.this.eRK().getString(2131766125), 2131690669);
+                      }
+                    }
+                    if (((paramLong & 0x2) == 0L) && (i.b(i.this, 11)) && (i.a(this.Ebo, 18)) && (i.this.Xu(11))) {
+                      paramAnonymousl.a(11, i.this.eRK().getString(2131762162), 2131690578, i.b(this.Ebo, 18));
+                    }
+                    if ((com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.DEBUG) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qEO, 0) == 1))
+                    {
+                      localObject = i.this.eRK();
+                      if (!j.eOR()) {
+                        break label1588;
+                      }
+                      i = 2131766119;
+                      paramAnonymousl.a(99, ((WebViewUI)localObject).getString(i), 2131691441, false);
+                    }
+                    i.this.orZ = true;
+                    i.this.mDL.fMg();
+                    AppMethodBeat.o(79873);
+                    return;
+                    localException4 = localException4;
+                    ad.e("MicroMsg.WebViewMenuHelper", "sharebtn click fail isBizContact, ex = " + localException4.getMessage());
+                    bool1 = false;
+                  }
+                  catch (Exception localException2)
+                  {
+                    ad.e("MicroMsg.WebViewMenuHelper", "sharebtn click fail triggerGetContact, ex = " + localException2.getMessage());
+                    continue;
+                  }
+                  boolean bool2;
+                  try
+                  {
+                    bool1 = i.this.eRK().DIv.lvv.zD(localException2);
+                    if (bool1)
+                    {
+                      bool1 = i.a(this.Ebo, 19);
+                      bool2 = i.b(this.Ebo, 19);
+                      boolean bool3 = i.this.eRK().eNF();
+                      if ((!i.b(i.this, 5)) || (!bool1) || (!i.this.Xu(5))) {
+                        continue;
+                      }
+                      if (!bool3) {
+                        break label1544;
+                      }
+                      paramAnonymousl.a(5, i.this.eRK().getString(2131766259), 2131690612, bool2);
+                    }
+                  }
+                  catch (Exception localException3)
+                  {
+                    for (;;)
+                    {
+                      ad.e("MicroMsg.WebViewMenuHelper", "sharebtn click fail, ex = " + localException3.getMessage());
+                      bool1 = false;
+                      continue;
+                      bool1 = i.a(this.Ebo, 20);
+                      bool2 = i.b(this.Ebo, 20);
+                    }
+                  }
+                  if ((this.Ebq == null) || (!this.Ebq.DWz))
+                  {
+                    paramAnonymousl.a(5, i.this.eRK().getString(2131766258), 2131690612, bool2);
+                    continue;
+                    i = 2131766120;
+                  }
+                }
+              }
+            }
+            catch (Exception localException1)
+            {
+              ad.e("MicroMsg.WebViewMenuHelper", "exception in add jd menu, " + localException1.getMessage());
+              localObject = i.this.eRK().getIntent().getStringExtra("srcUsername");
+              if (bt.isNullOrNil((String)localObject)) {}
+            }
+          }
+        }
+      };
+      this.mDL.KWv = ((n.e)localObject2);
+      localObject2 = eRK().DIv.getCurrentUrl();
+      if (bt.isNullOrNil((String)localObject2)) {
+        break label813;
+      }
+      localObject3 = Uri.parse((String)localObject2).getHost();
+      localObject4 = eRK().getString(2131766116, new Object[] { localObject3 });
+      if (!bt.isNullOrNil(this.Ebe)) {
+        break label642;
+      }
+      if ((i == 0) || (localObject1 == null) || (!((n.a)localObject1).isDataValid())) {
+        break label621;
+      }
+      localObject2 = LayoutInflater.from(eRK()).inflate(2131494913, null);
+      localObject3 = (ImageView)((View)localObject2).findViewById(2131301214);
+      Object localObject5 = (TextView)((View)localObject2).findViewById(2131306141);
+      localObject4 = ((View)localObject2).findViewById(2131298761);
+      ((TextView)localObject5).setText(((n.a)localObject1).EeQ);
+      localObject5 = new c.a();
+      ((c.a)localObject5).idq = true;
+      ((c.a)localObject5).hfi = true;
+      ((c.a)localObject5).idD = 2131231875;
+      com.tencent.mm.aw.a.a.aIP().a(((n.a)localObject1).EeR, (ImageView)localObject3, ((c.a)localObject5).aJc());
+      ((View)localObject4).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(175795);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/WebViewMenuHelper$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          i.this.fP("Contact_Scene", 173);
+          i.this.eRK().DIg.eQG().C(new Object[] { i.this.eRK().bQm(), Integer.valueOf(38), Integer.valueOf(1) }).report();
+          i.this.eRK().aIR(this.Ebq.hQR);
+          if (i.this.mDL != null) {
+            i.this.mDL.bpT();
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/WebViewMenuHelper$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(175795);
+        }
+      });
+      o.gU((View)localObject4);
+      this.mDL.K((View)localObject2, true);
+      label521:
+      if (!eRK().EcL) {
+        break label827;
+      }
+      this.mDL.lzG = true;
+      this.mDL.lzH = true;
+      label547:
+      if ((eRK().EcP == null) || (!eRK().EcP.isShown())) {
+        break label846;
+      }
+      eRK().EcP.hide();
+      this.mDL.cMW();
+    }
+    for (;;)
+    {
+      if (eRK().DzP != null) {
+        eRK().DzP.aGN("");
+      }
+      AppMethodBeat.o(208017);
+      return;
+      i = 0;
+      break;
+      label621:
+      if (bt.isNullOrNil((String)localObject3)) {
+        break label521;
+      }
+      this.mDL.p((CharSequence)localObject4, 1);
+      break label521;
+      label642:
+      localObject3 = LayoutInflater.from(eRK()).inflate(2131494914, null);
+      localObject1 = (MMNeat7extView)((View)localObject3).findViewById(2131299007);
+      this.mDL.K((View)localObject3, false);
+      localObject3 = k.g(((MMNeat7extView)localObject1).getContext(), bt.nullAsNil(this.Ebe), (int)((MMNeat7extView)localObject1).getTextSize());
+      ((MMNeat7extView)localObject1).ar((CharSequence)localObject3);
+      localObject3 = (ClickableSpan[])((SpannableString)localObject3).getSpans(0, ((SpannableString)localObject3).length(), ClickableSpan.class);
+      if ((localObject3 == null) || (localObject3.length <= 0)) {
+        break label521;
+      }
+      ad.i("MicroMsg.WebViewMenuHelper", "terry h5 apply show");
+      com.tencent.mm.plugin.report.service.g.yhR.f(16337, new Object[] { localObject2, Integer.valueOf(1), Integer.valueOf(0) });
+      ((MMNeat7extView)localObject1).setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.g((NeatTextView)localObject1, new com.tencent.mm.pluginsdk.ui.span.n(((MMNeat7extView)localObject1).getContext()))
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          AppMethodBeat.i(175796);
+          boolean bool = super.onTouch(paramAnonymousView, paramAnonymousMotionEvent);
+          if (bool)
+          {
+            ad.i("MMNeatTouchListener", "terry h5 apply click");
+            com.tencent.mm.plugin.report.service.g.yhR.f(16337, new Object[] { this.val$url, Integer.valueOf(1), Integer.valueOf(1) });
+          }
+          AppMethodBeat.o(175796);
+          return bool;
+        }
+      });
+      break label521;
+      label813:
+      this.mDL.p(" ", 1);
+      break label521;
+      label827:
+      this.mDL.lzG = false;
+      this.mDL.lzH = false;
+      break label547;
+      label846:
+      eRK().hideVKB();
+      this.mDL.cMW();
+    }
+  }
+  
+  protected final boolean Xu(int paramInt)
   {
     AppMethodBeat.i(79881);
-    SparseBooleanArray localSparseBooleanArray = (SparseBooleanArray)this.Cxs.get(eCT().nKq.getUrl());
+    SparseBooleanArray localSparseBooleanArray = (SparseBooleanArray)this.Eba.get(eRK().omW.getUrl());
     if ((localSparseBooleanArray != null) && (localSparseBooleanArray.get(paramInt, false)))
     {
       AppMethodBeat.o(79881);
@@ -297,11 +3821,11 @@ public final class i
     return true;
   }
   
-  public final void WT()
+  public final void Zm()
   {
     AppMethodBeat.i(79885);
-    if (this.nPt) {
-      bMr();
+    if (this.orZ) {
+      Cs(0L);
     }
     AppMethodBeat.o(79885);
   }
@@ -314,7 +3838,7 @@ public final class i
       AppMethodBeat.o(79902);
       return false;
     }
-    if ((paramJsapiPermissionWrapper.XF(paramInt1) == 1) && (VF(paramInt2)))
+    if ((paramJsapiPermissionWrapper.ZB(paramInt1) == 1) && (Xu(paramInt2)))
     {
       AppMethodBeat.o(79902);
       return true;
@@ -323,108 +3847,108 @@ public final class i
     return false;
   }
   
-  final void aDl(String paramString)
+  final void aIM(String paramString)
   {
     AppMethodBeat.i(79889);
-    eCT().Cjc.cf("sendAppMessage", false);
-    com.tencent.mm.plugin.webview.c.f localf = eCT().Cjc;
-    if (!localf.Apr)
+    eRK().DzP.cn("sendAppMessage", false);
+    f localf = eRK().DzP;
+    if (!localf.BHY)
     {
-      ac.e("MicroMsg.JsApiHandler", "onSendToEnterprise fail, not ready");
+      ad.e("MicroMsg.JsApiHandler", "onSendToEnterprise fail, not ready");
       AppMethodBeat.o(79889);
       return;
     }
     Object localObject = new HashMap();
     ((HashMap)localObject).put("scene", "enterprise");
-    localObject = l.a.b("menu:share:appmessage", (Map)localObject, localf.Cjz, localf.CjA);
-    localf.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + (String)localObject + ")", null);
+    localObject = l.a.b("menu:share:appmessage", (Map)localObject, localf.DMD, localf.vJP);
+    localf.DMv.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + (String)localObject + ")", null);
     try
     {
-      localf.kYt.ac("connector_local_send", paramString, localf.CjB);
-      localf.kYt.ac("scene", "enterprise", localf.CjB);
+      localf.lvv.ah("connector_local_send", paramString, localf.DMF);
+      localf.lvv.ah("scene", "enterprise", localf.DMF);
       AppMethodBeat.o(79889);
       return;
     }
     catch (Exception paramString)
     {
-      ac.w("MicroMsg.JsApiHandler", "jsapiBundlePutString, ex = " + paramString.getMessage());
+      ad.w("MicroMsg.JsApiHandler", "jsapiBundlePutString, ex = " + paramString.getMessage());
       AppMethodBeat.o(79889);
     }
   }
   
   /* Error */
-  protected final void aDm(String paramString)
+  protected final void aIN(String paramString)
   {
     // Byte code:
-    //   0: ldc_w 835
+    //   0: ldc_w 1068
     //   3: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 220	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   7: invokevirtual 220	com/tencent/mm/plugin/webview/ui/tools/a:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
     //   10: invokevirtual 224	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
     //   13: ldc 226
     //   15: invokevirtual 231	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   18: astore 7
     //   20: aload_0
-    //   21: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   24: invokevirtual 470	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eyJ	()Ljava/lang/String;
+    //   21: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   24: invokevirtual 522	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eNy	()Ljava/lang/String;
     //   27: astore 8
     //   29: aconst_null
     //   30: astore 4
     //   32: aload 8
-    //   34: invokestatic 439	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   34: invokestatic 497	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   37: ifne +13 -> 50
     //   40: aload 8
-    //   42: invokestatic 598	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   45: invokevirtual 838	android/net/Uri:getHost	()Ljava/lang/String;
+    //   42: invokestatic 612	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   45: invokevirtual 862	android/net/Uri:getHost	()Ljava/lang/String;
     //   48: astore 4
     //   50: aload 4
-    //   52: invokestatic 439	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   52: invokestatic 497	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   55: ifne +495 -> 550
     //   58: aload 4
-    //   60: ldc_w 840
-    //   63: invokevirtual 843	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   60: ldc_w 1070
+    //   63: invokevirtual 1073	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   66: ifeq +484 -> 550
-    //   69: ldc_w 845
+    //   69: ldc_w 1075
     //   72: iconst_1
     //   73: anewarray 183	java/lang/Object
     //   76: dup
     //   77: iconst_0
     //   78: aload 8
-    //   80: ldc_w 588
-    //   83: invokestatic 219	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   80: ldc_w 602
+    //   83: invokestatic 219	com/tencent/mm/compatible/util/q:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   86: aastore
-    //   87: invokestatic 849	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   87: invokestatic 1079	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   90: astore 4
     //   92: aload_0
-    //   93: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   93: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
     //   96: aload_0
-    //   97: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   100: getfield 442	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-    //   103: invokevirtual 445	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
-    //   106: invokevirtual 164	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aAP	(Ljava/lang/String;)Ljava/lang/String;
+    //   97: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   100: getfield 323	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+    //   103: invokevirtual 328	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+    //   106: invokevirtual 164	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aGj	(Ljava/lang/String;)Ljava/lang/String;
     //   109: astore 9
     //   111: ldc 172
-    //   113: ldc_w 851
+    //   113: ldc_w 1081
     //   116: iconst_1
     //   117: anewarray 183	java/lang/Object
     //   120: dup
     //   121: iconst_0
-    //   122: getstatic 854	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   122: getstatic 1084	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
     //   125: aastore
-    //   126: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   129: aload 9
     //   131: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   134: ifne +175 -> 309
     //   137: aload_0
-    //   138: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   141: getfield 442	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-    //   144: invokevirtual 445	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+    //   138: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   141: getfield 323	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+    //   144: invokevirtual 328	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
     //   147: invokestatic 170	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   150: ifne +159 -> 309
-    //   153: invokestatic 192	com/tencent/mm/sdk/platformtools/bs:aNx	()J
+    //   153: invokestatic 192	com/tencent/mm/sdk/platformtools/bt:aQJ	()J
     //   156: lstore_2
     //   157: ldc 172
-    //   159: ldc_w 856
+    //   159: ldc_w 1086
     //   162: bipush 7
     //   164: anewarray 183	java/lang/Object
     //   167: dup
@@ -444,14 +3968,14 @@ public final class i
     //   188: dup
     //   189: iconst_3
     //   190: aload_0
-    //   191: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   194: getfield 442	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-    //   197: invokevirtual 445	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+    //   191: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   194: getfield 323	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+    //   197: invokevirtual 328	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
     //   200: aastore
     //   201: dup
     //   202: iconst_4
     //   203: aload_0
-    //   204: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   204: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
     //   207: getfield 208	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:sessionId	Ljava/lang/String;
     //   210: aastore
     //   211: dup
@@ -464,19 +3988,19 @@ public final class i
     //   221: iconst_1
     //   222: invokestatic 200	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   225: aastore
-    //   226: invokestatic 211	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   226: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   229: ldc 105
     //   231: astore 5
     //   233: aload_0
-    //   234: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   237: getfield 442	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-    //   240: invokevirtual 445	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
+    //   234: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   237: getfield 323	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:omW	Lcom/tencent/mm/ui/widget/MMWebView;
+    //   240: invokevirtual 328	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
     //   243: ldc 213
-    //   245: invokestatic 219	com/tencent/mm/compatible/util/p:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   245: invokestatic 219	com/tencent/mm/compatible/util/q:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   248: astore 6
     //   250: aload 6
     //   252: astore 5
-    //   254: getstatic 241	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   254: getstatic 241	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   257: sipush 13377
     //   260: bipush 6
     //   262: anewarray 183	java/lang/Object
@@ -496,7 +4020,7 @@ public final class i
     //   282: dup
     //   283: iconst_3
     //   284: aload_0
-    //   285: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   285: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
     //   288: getfield 208	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:sessionId	Ljava/lang/String;
     //   291: aastore
     //   292: dup
@@ -509,13 +4033,13 @@ public final class i
     //   301: iconst_1
     //   302: invokestatic 200	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   305: aastore
-    //   306: invokevirtual 245	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   306: invokevirtual 245	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
     //   309: aload 4
     //   311: astore 5
     //   313: aload 4
-    //   315: invokestatic 439	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   315: invokestatic 497	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   318: ifeq +23 -> 341
-    //   321: ldc_w 858
+    //   321: ldc_w 1088
     //   324: iconst_1
     //   325: anewarray 183	java/lang/Object
     //   328: dup
@@ -523,26 +4047,26 @@ public final class i
     //   330: bipush 34
     //   332: invokestatic 200	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   335: aastore
-    //   336: invokestatic 849	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   336: invokestatic 1079	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   339: astore 5
     //   341: new 228	android/content/Intent
     //   344: dup
-    //   345: invokespecial 859	android/content/Intent:<init>	()V
+    //   345: invokespecial 1089	android/content/Intent:<init>	()V
     //   348: astore 4
     //   350: aload_1
-    //   351: invokestatic 439	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   351: invokestatic 497	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   354: ifne +23 -> 377
     //   357: aload 4
-    //   359: ldc_w 861
+    //   359: ldc_w 1091
     //   362: aload_1
     //   363: ldc 213
-    //   365: invokevirtual 865	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   365: invokevirtual 1095	java/lang/String:getBytes	(Ljava/lang/String;)[B
     //   368: bipush 11
-    //   370: invokestatic 871	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   373: invokevirtual 875	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   370: invokestatic 1101	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   373: invokevirtual 1105	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   376: pop
     //   377: ldc 172
-    //   379: ldc_w 877
+    //   379: ldc_w 1107
     //   382: iconst_2
     //   383: anewarray 183	java/lang/Object
     //   386: dup
@@ -552,76 +4076,76 @@ public final class i
     //   391: dup
     //   392: iconst_1
     //   393: aload_0
-    //   394: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   397: invokevirtual 584	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
+    //   394: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   397: invokevirtual 598	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
     //   400: aastore
-    //   401: invokestatic 186	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   401: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   404: aload 4
-    //   406: ldc_w 879
+    //   406: ldc_w 1109
     //   409: aload 5
-    //   411: invokevirtual 875	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   411: invokevirtual 1105	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   414: pop
     //   415: aload 4
-    //   417: ldc_w 881
+    //   417: ldc_w 1111
     //   420: aload 8
-    //   422: invokevirtual 875	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   422: invokevirtual 1105	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   425: pop
     //   426: aload 4
-    //   428: ldc_w 883
+    //   428: ldc_w 1113
     //   431: aload_0
-    //   432: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   435: invokevirtual 584	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-    //   438: invokevirtual 875	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    //   432: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   435: invokevirtual 598	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bQm	()Ljava/lang/String;
+    //   438: invokevirtual 1105	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
     //   441: pop
     //   442: aload 4
-    //   444: ldc_w 885
+    //   444: ldc_w 1115
     //   447: aload_0
-    //   448: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   448: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
     //   451: aload 7
-    //   453: invokevirtual 235	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aAT	(Ljava/lang/String;)I
-    //   456: invokevirtual 888	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   453: invokevirtual 235	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aGo	(Ljava/lang/String;)I
+    //   456: invokevirtual 1118	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   459: pop
     //   460: aload 4
-    //   462: ldc_w 890
+    //   462: ldc_w 1120
     //   465: iconst_1
-    //   466: invokevirtual 893	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   466: invokevirtual 1123	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
     //   469: pop
     //   470: aload_0
-    //   471: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   471: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
     //   474: aload_0
-    //   475: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   478: ldc_w 894
+    //   475: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   478: ldc_w 1124
     //   481: invokevirtual 286	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
     //   484: ldc 105
     //   486: aload_0
-    //   487: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   490: ldc_w 895
+    //   487: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   490: ldc_w 1125
     //   493: invokevirtual 286	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
     //   496: aload_0
-    //   497: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-    //   500: ldc_w 896
+    //   497: invokevirtual 156	com/tencent/mm/plugin/webview/ui/tools/i:eRK	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
+    //   500: ldc_w 1126
     //   503: invokevirtual 286	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
     //   506: iconst_0
     //   507: new 34	com/tencent/mm/plugin/webview/ui/tools/i$5
     //   510: dup
     //   511: aload_0
     //   512: aload 4
-    //   514: invokespecial 899	com/tencent/mm/plugin/webview/ui/tools/i$5:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/content/Intent;)V
+    //   514: invokespecial 1129	com/tencent/mm/plugin/webview/ui/tools/i$5:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/content/Intent;)V
     //   517: new 36	com/tencent/mm/plugin/webview/ui/tools/i$6
     //   520: dup
     //   521: aload_0
     //   522: aload 4
-    //   524: invokespecial 900	com/tencent/mm/plugin/webview/ui/tools/i$6:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/content/Intent;)V
-    //   527: invokestatic 903	com/tencent/mm/ui/base/h:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLandroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mm/ui/widget/a/d;
+    //   524: invokespecial 1130	com/tencent/mm/plugin/webview/ui/tools/i$6:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/content/Intent;)V
+    //   527: invokestatic 1133	com/tencent/mm/ui/base/h:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLandroid/content/DialogInterface$OnClickListener;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mm/ui/widget/a/d;
     //   530: pop
-    //   531: ldc_w 835
+    //   531: ldc_w 1068
     //   534: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   537: return
     //   538: astore 4
     //   540: ldc 172
     //   542: aload 4
-    //   544: invokevirtual 904	java/io/UnsupportedEncodingException:getMessage	()Ljava/lang/String;
-    //   547: invokestatic 300	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   544: invokevirtual 1134	java/io/UnsupportedEncodingException:getMessage	()Ljava/lang/String;
+    //   547: invokestatic 300	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   550: aconst_null
     //   551: astore 4
     //   553: goto -461 -> 92
@@ -631,19 +4155,19 @@ public final class i
     //   562: ldc 105
     //   564: iconst_0
     //   565: anewarray 183	java/lang/Object
-    //   568: invokestatic 249	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   568: invokestatic 249	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   571: goto -317 -> 254
     //   574: astore_1
     //   575: ldc 172
-    //   577: new 409	java/lang/StringBuilder
+    //   577: new 469	java/lang/StringBuilder
     //   580: dup
-    //   581: ldc_w 906
-    //   584: invokespecial 413	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   581: ldc_w 1136
+    //   584: invokespecial 473	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   587: aload_1
-    //   588: invokevirtual 904	java/io/UnsupportedEncodingException:getMessage	()Ljava/lang/String;
-    //   591: invokevirtual 417	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   594: invokevirtual 422	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   597: invokestatic 300	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   588: invokevirtual 1134	java/io/UnsupportedEncodingException:getMessage	()Ljava/lang/String;
+    //   591: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   594: invokevirtual 482	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   597: invokestatic 300	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   600: goto -223 -> 377
     // Local variable table:
     //   start	length	slot	name	signature
@@ -666,14 +4190,14 @@ public final class i
     //   357	377	574	java/io/UnsupportedEncodingException
   }
   
-  protected final void bHN()
+  protected final void bLY()
   {
     AppMethodBeat.i(79897);
-    String str1 = eCT().aAP(eCT().eDS());
-    String str2 = eCT().getIntent().getStringExtra("shortcut_user_name");
-    if ((bs.isNullOrNil(str1)) || (bs.isNullOrNil(str2)))
+    String str1 = eRK().aGj(eRK().eSK());
+    String str2 = eRK().getIntent().getStringExtra("shortcut_user_name");
+    if ((bt.isNullOrNil(str1)) || (bt.isNullOrNil(str2)))
     {
-      ac.e("MicroMsg.WebViewMenuHelper", "addShortcut, appid or username is null");
+      ad.e("MicroMsg.WebViewMenuHelper", "addShortcut, appid or username is null");
       AppMethodBeat.o(79897);
       return;
     }
@@ -683,3533 +4207,35 @@ public final class i
     localBundle.putInt("webviewui_binder_id", hashCode());
     try
     {
-      eCT().Cfr.kYt.k(80, localBundle);
+      eRK().DIv.lvv.k(80, localBundle);
       AppMethodBeat.o(79897);
       return;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.WebViewMenuHelper", "addShortcut, e = " + localException.getMessage());
+      ad.e("MicroMsg.WebViewMenuHelper", "addShortcut, e = " + localException.getMessage());
       AppMethodBeat.o(79897);
     }
   }
   
-  protected final void bMr()
+  protected final void bQS()
   {
-    AppMethodBeat.i(79887);
-    this.CxB = eDp();
-    if ((this.CxB != null) && (this.CxB.size() > 0))
-    {
-      bool = true;
-      this.CxC = Boolean.valueOf(bool);
-      if (!this.nPt) {
-        if (!this.CxC.booleanValue()) {
-          break label167;
-        }
-      }
-    }
-    label167:
-    for (this.mdB = new com.tencent.mm.ui.widget.a.e(eCT(), 1, false);; this.mdB = new com.tencent.mm.ui.widget.a.e(eCT(), 0, true))
-    {
-      this.mdB.ISy = new com.tencent.mm.ui.base.n.a()
-      {
-        public final void a(ImageView paramAnonymousImageView, MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(79858);
-          if (i.e(paramAnonymousMenuItem))
-          {
-            paramAnonymousImageView.setVisibility(8);
-            AppMethodBeat.o(79858);
-            return;
-          }
-          paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
-          if ((i.this.Cxu.get(paramAnonymousMenuItem) != null) && (!((Bitmap)i.this.Cxu.get(paramAnonymousMenuItem)).isRecycled()))
-          {
-            paramAnonymousImageView.setImageBitmap((Bitmap)i.this.Cxu.get(paramAnonymousMenuItem));
-            AppMethodBeat.o(79858);
-            return;
-          }
-          ac.w("MicroMsg.WebViewMenuHelper", "on attach icon, load from cache fail");
-          try
-          {
-            Object localObject = i.this.eCT().Cfr.kYt.aCP(paramAnonymousMenuItem);
-            if (!bs.isNullOrNil((String)localObject))
-            {
-              localObject = e.aDe((String)localObject);
-              if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
-              {
-                paramAnonymousImageView.setImageBitmap((Bitmap)localObject);
-                i.this.Cxu.put(paramAnonymousMenuItem, localObject);
-              }
-            }
-            AppMethodBeat.o(79858);
-            return;
-          }
-          catch (Exception paramAnonymousImageView)
-          {
-            ac.w("MicroMsg.WebViewMenuHelper", "getheadimg, ex = " + paramAnonymousImageView.getMessage());
-            AppMethodBeat.o(79858);
-          }
-        }
-      };
-      this.mdB.ISz = new n.b()
-      {
-        public final void a(TextView paramAnonymousTextView, MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(79869);
-          paramAnonymousMenuItem = paramAnonymousMenuItem.getTitle();
-          if (paramAnonymousTextView != null)
-          {
-            String str = (String)i.this.Cxv.get(paramAnonymousMenuItem);
-            if (bs.isNullOrNil(str))
-            {
-              paramAnonymousTextView.setText(paramAnonymousMenuItem);
-              AppMethodBeat.o(79869);
-              return;
-            }
-            paramAnonymousTextView.setText(k.b(i.this.eCT(), str, paramAnonymousTextView.getTextSize()));
-          }
-          AppMethodBeat.o(79869);
-        }
-      };
-      localObject2 = new n.d()
-      {
-        /* Error */
-        public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-        {
-          // Byte code:
-          //   0: iconst_0
-          //   1: istore_2
-          //   2: ldc 27
-          //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-          //   7: aload_0
-          //   8: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   11: iconst_0
-          //   12: putfield 37	com/tencent/mm/plugin/webview/ui/tools/i:nPt	Z
-          //   15: aload_1
-          //   16: invokestatic 41	com/tencent/mm/plugin/webview/ui/tools/i:e	(Landroid/view/MenuItem;)Z
-          //   19: ifeq +145 -> 164
-          //   22: aload_1
-          //   23: invokeinterface 47 1 0
-          //   28: checkcast 49	com/tencent/mm/m/d$b
-          //   31: astore 4
-          //   33: aload 4
-          //   35: ifnull +123 -> 158
-          //   38: aload_0
-          //   39: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   42: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   45: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   48: astore_1
-          //   49: aload_1
-          //   50: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   53: ifne +16 -> 69
-          //   56: ldc 66
-          //   58: ldc 68
-          //   60: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   63: ldc 27
-          //   65: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   68: return
-          //   69: ldc 66
-          //   71: ldc 78
-          //   73: invokestatic 80	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-          //   76: new 82	java/util/HashMap
-          //   79: dup
-          //   80: invokespecial 83	java/util/HashMap:<init>	()V
-          //   83: astore 5
-          //   85: aload 5
-          //   87: ldc 85
-          //   89: aload 4
-          //   91: getfield 88	com/tencent/mm/m/d$b:key	Ljava/lang/String;
-          //   94: invokevirtual 92	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-          //   97: pop
-          //   98: aload 5
-          //   100: ldc 94
-          //   102: aload 4
-          //   104: getfield 96	com/tencent/mm/m/d$b:title	Ljava/lang/String;
-          //   107: invokevirtual 92	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-          //   110: pop
-          //   111: ldc 98
-          //   113: aload 5
-          //   115: aload_1
-          //   116: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   119: aload_1
-          //   120: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   123: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   126: astore 4
-          //   128: aload_1
-          //   129: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   132: new 116	java/lang/StringBuilder
-          //   135: dup
-          //   136: ldc 118
-          //   138: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   141: aload 4
-          //   143: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   146: ldc 127
-          //   148: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   151: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   154: aconst_null
-          //   155: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   158: ldc 27
-          //   160: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   163: return
-          //   164: ldc 139
-          //   166: ldc 141
-          //   168: iconst_1
-          //   169: anewarray 4	java/lang/Object
-          //   172: dup
-          //   173: iconst_0
-          //   174: aload_1
-          //   175: invokeinterface 145 1 0
-          //   180: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   183: aastore
-          //   184: invokestatic 154	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   187: aload_1
-          //   188: invokeinterface 145 1 0
-          //   193: lookupswitch	default:+315->508, 1:+564->757, 2:+796->989, 3:+1111->1304, 5:+1188->1381, 6:+1567->1760, 7:+1630->1823, 8:+2070->2263, 9:+2228->2421, 10:+2328->2521, 11:+1322->1515, 12:+2393->2586, 15:+2524->2717, 16:+2589->2782, 17:+2654->2847, 18:+2719->2912, 19:+2784->2977, 20:+3122->3315, 21:+3319->3512, 22:+3477->3670, 23:+695->888, 24:+3883->4076, 25:+2849->3042, 26:+3058->3251, 27:+484->677, 28:+1500->1693, 29:+3947->4140, 31:+4011->4204, 33:+3674->3867, 34:+4135->4328, 35:+4233->4426, 36:+4304->4497, 37:+2006->2199, 38:+981->1174, 39:+1046->1239, 40:+4442->4635, 41:+4442->4635, 42:+4442->4635, 99:+4375->4568
-          //   509: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   512: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   515: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   518: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   521: iconst_3
-          //   522: anewarray 4	java/lang/Object
-          //   525: dup
-          //   526: iconst_0
-          //   527: aload_0
-          //   528: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   531: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   534: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   537: aastore
-          //   538: dup
-          //   539: iconst_1
-          //   540: bipush 16
-          //   542: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   545: aastore
-          //   546: dup
-          //   547: iconst_2
-          //   548: iconst_1
-          //   549: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   552: aastore
-          //   553: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   556: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   559: new 116	java/lang/StringBuilder
-          //   562: dup
-          //   563: invokespecial 177	java/lang/StringBuilder:<init>	()V
-          //   566: aload_1
-          //   567: invokeinterface 181 1 0
-          //   572: invokevirtual 184	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-          //   575: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   578: astore 4
-          //   580: aload 4
-          //   582: invokestatic 190	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-          //   585: ifne +4295 -> 4880
-          //   588: new 192	android/os/Bundle
-          //   591: dup
-          //   592: invokespecial 193	android/os/Bundle:<init>	()V
-          //   595: astore_1
-          //   596: aload_1
-          //   597: ldc 195
-          //   599: aload 4
-          //   601: invokevirtual 198	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-          //   604: aload_0
-          //   605: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   608: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   611: getfield 202	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-          //   614: getfield 208	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-          //   617: bipush 50
-          //   619: aload_1
-          //   620: invokeinterface 214 3 0
-          //   625: astore_1
-          //   626: aload_1
-          //   627: ifnull +4263 -> 4890
-          //   630: aload_1
-          //   631: ldc 216
-          //   633: invokevirtual 220	android/os/Bundle:getInt	(Ljava/lang/String;)I
-          //   636: istore_2
-          //   637: iload_2
-          //   638: iconst_2
-          //   639: if_icmpne +4026 -> 4665
-          //   642: iconst_1
-          //   643: istore_2
-          //   644: aload_1
-          //   645: ldc 216
-          //   647: invokevirtual 220	android/os/Bundle:getInt	(Ljava/lang/String;)I
-          //   650: istore_3
-          //   651: iload_3
-          //   652: iconst_3
-          //   653: if_icmpne +4017 -> 4670
-          //   656: iconst_1
-          //   657: istore_2
-          //   658: iload_2
-          //   659: ifeq +4035 -> 4694
-          //   662: aload_0
-          //   663: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   666: aload 4
-          //   668: invokevirtual 223	com/tencent/mm/plugin/webview/ui/tools/i:aDl	(Ljava/lang/String;)V
-          //   671: ldc 27
-          //   673: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   676: return
-          //   677: aload_0
-          //   678: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   681: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   684: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   687: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   690: iconst_3
-          //   691: anewarray 4	java/lang/Object
-          //   694: dup
-          //   695: iconst_0
-          //   696: aload_0
-          //   697: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   700: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   703: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   706: aastore
-          //   707: dup
-          //   708: iconst_1
-          //   709: bipush 32
-          //   711: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   714: aastore
-          //   715: dup
-          //   716: iconst_2
-          //   717: iconst_1
-          //   718: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   721: aastore
-          //   722: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   725: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   728: aload_0
-          //   729: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   732: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   735: invokevirtual 227	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eAn	()Z
-          //   738: ifne +4142 -> 4880
-          //   741: aload_0
-          //   742: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   745: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   748: invokevirtual 230	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:finish	()V
-          //   751: ldc 27
-          //   753: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   756: return
-          //   757: aload_0
-          //   758: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   761: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   764: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   767: ldc 239
-          //   769: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   772: astore_1
-          //   773: aload_0
-          //   774: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   777: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   780: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   783: ldc 247
-          //   785: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   788: astore 4
-          //   790: aload_0
-          //   791: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   794: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   797: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   800: ldc 249
-          //   802: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   805: astore 5
-          //   807: aload_0
-          //   808: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   811: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   814: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   817: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   820: bipush 6
-          //   822: anewarray 4	java/lang/Object
-          //   825: dup
-          //   826: iconst_0
-          //   827: aload_0
-          //   828: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   831: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   834: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   837: aastore
-          //   838: dup
-          //   839: iconst_1
-          //   840: iconst_1
-          //   841: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   844: aastore
-          //   845: dup
-          //   846: iconst_2
-          //   847: iconst_1
-          //   848: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   851: aastore
-          //   852: dup
-          //   853: iconst_3
-          //   854: aload_1
-          //   855: aastore
-          //   856: dup
-          //   857: iconst_4
-          //   858: aload 4
-          //   860: aastore
-          //   861: dup
-          //   862: iconst_5
-          //   863: aload 5
-          //   865: aastore
-          //   866: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   869: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   872: aload_0
-          //   873: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   876: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   879: invokevirtual 252	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:dFh	()V
-          //   882: ldc 27
-          //   884: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   887: return
-          //   888: new 241	android/content/Intent
-          //   891: dup
-          //   892: invokespecial 253	android/content/Intent:<init>	()V
-          //   895: astore_1
-          //   896: aload_0
-          //   897: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   900: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   903: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   906: ldc 255
-          //   908: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   911: astore 4
-          //   913: aload 4
-          //   915: ifnull +41 -> 956
-          //   918: aload_1
-          //   919: ldc_w 257
-          //   922: iconst_1
-          //   923: invokevirtual 261	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-          //   926: pop
-          //   927: aload_1
-          //   928: ldc 255
-          //   930: aload 4
-          //   932: invokevirtual 264	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-          //   935: pop
-          //   936: aload_0
-          //   937: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   940: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   943: ldc_w 266
-          //   946: aload_1
-          //   947: invokestatic 271	com/tencent/mm/br/d:e	(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V
-          //   950: ldc 27
-          //   952: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   955: return
-          //   956: aload_1
-          //   957: ldc_w 273
-          //   960: aload_0
-          //   961: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   964: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   967: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   970: ldc_w 275
-          //   973: ldc2_w 276
-          //   976: invokevirtual 281	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-          //   979: invokestatic 286	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-          //   982: invokevirtual 289	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;
-          //   985: pop
-          //   986: goto -50 -> 936
-          //   989: aload_0
-          //   990: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   993: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   996: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   999: ldc 239
-          //   1001: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   1004: astore_1
-          //   1005: aload_0
-          //   1006: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1009: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1012: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   1015: ldc 247
-          //   1017: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   1020: astore 4
-          //   1022: aload_0
-          //   1023: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1026: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1029: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   1032: ldc 249
-          //   1034: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   1037: astore 5
-          //   1039: aload_0
-          //   1040: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1043: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1046: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1049: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1052: bipush 6
-          //   1054: anewarray 4	java/lang/Object
-          //   1057: dup
-          //   1058: iconst_0
-          //   1059: aload_0
-          //   1060: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1063: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1066: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1069: aastore
-          //   1070: dup
-          //   1071: iconst_1
-          //   1072: iconst_2
-          //   1073: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1076: aastore
-          //   1077: dup
-          //   1078: iconst_2
-          //   1079: iconst_1
-          //   1080: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1083: aastore
-          //   1084: dup
-          //   1085: iconst_3
-          //   1086: aload_1
-          //   1087: aastore
-          //   1088: dup
-          //   1089: iconst_4
-          //   1090: aload 4
-          //   1092: aastore
-          //   1093: dup
-          //   1094: iconst_5
-          //   1095: aload 5
-          //   1097: aastore
-          //   1098: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1101: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1104: aload_0
-          //   1105: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1108: getfield 293	com/tencent/mm/plugin/webview/ui/tools/i:Cxx	Ljava/util/HashMap;
-          //   1111: aload_0
-          //   1112: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1115: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1118: getfield 296	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   1121: invokevirtual 299	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
-          //   1124: invokevirtual 303	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-          //   1127: ifeq +33 -> 1160
-          //   1130: aload_0
-          //   1131: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1134: getfield 293	com/tencent/mm/plugin/webview/ui/tools/i:Cxx	Ljava/util/HashMap;
-          //   1137: aload_0
-          //   1138: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1141: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1144: getfield 296	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   1147: invokevirtual 299	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
-          //   1150: invokevirtual 307	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-          //   1153: checkcast 147	java/lang/Integer
-          //   1156: invokevirtual 310	java/lang/Integer:intValue	()I
-          //   1159: istore_2
-          //   1160: aload_0
-          //   1161: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1164: iload_2
-          //   1165: invokestatic 314	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)V
-          //   1168: ldc 27
-          //   1170: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1173: return
-          //   1174: aload_0
-          //   1175: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1178: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1181: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1184: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1187: iconst_3
-          //   1188: anewarray 4	java/lang/Object
-          //   1191: dup
-          //   1192: iconst_0
-          //   1193: aload_0
-          //   1194: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1197: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1200: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1203: aastore
-          //   1204: dup
-          //   1205: iconst_1
-          //   1206: bipush 36
-          //   1208: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1211: aastore
-          //   1212: dup
-          //   1213: iconst_2
-          //   1214: iconst_1
-          //   1215: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1218: aastore
-          //   1219: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1222: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1225: aload_0
-          //   1226: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1229: iconst_1
-          //   1230: invokestatic 316	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)V
-          //   1233: ldc 27
-          //   1235: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1238: return
-          //   1239: aload_0
-          //   1240: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1243: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1246: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1249: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1252: iconst_3
-          //   1253: anewarray 4	java/lang/Object
-          //   1256: dup
-          //   1257: iconst_0
-          //   1258: aload_0
-          //   1259: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1262: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1265: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1268: aastore
-          //   1269: dup
-          //   1270: iconst_1
-          //   1271: bipush 37
-          //   1273: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1276: aastore
-          //   1277: dup
-          //   1278: iconst_2
-          //   1279: iconst_1
-          //   1280: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1283: aastore
-          //   1284: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1287: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1290: aload_0
-          //   1291: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1294: iconst_0
-          //   1295: invokestatic 316	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)V
-          //   1298: ldc 27
-          //   1300: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1303: return
-          //   1304: aload_0
-          //   1305: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1308: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1311: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1314: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1317: iconst_3
-          //   1318: anewarray 4	java/lang/Object
-          //   1321: dup
-          //   1322: iconst_0
-          //   1323: aload_0
-          //   1324: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1327: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1330: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1333: aastore
-          //   1334: dup
-          //   1335: iconst_1
-          //   1336: iconst_3
-          //   1337: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1340: aastore
-          //   1341: dup
-          //   1342: iconst_2
-          //   1343: iconst_1
-          //   1344: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1347: aastore
-          //   1348: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1351: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1354: getstatic 322	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   1357: ldc2_w 323
-          //   1360: ldc2_w 325
-          //   1363: lconst_1
-          //   1364: iconst_0
-          //   1365: invokevirtual 330	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
-          //   1368: aload_0
-          //   1369: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1372: invokevirtual 333	com/tencent/mm/plugin/webview/ui/tools/i:eDq	()V
-          //   1375: ldc 27
-          //   1377: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1380: return
-          //   1381: aload_0
-          //   1382: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1385: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1388: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1391: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1394: iconst_3
-          //   1395: anewarray 4	java/lang/Object
-          //   1398: dup
-          //   1399: iconst_0
-          //   1400: aload_0
-          //   1401: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1404: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1407: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1410: aastore
-          //   1411: dup
-          //   1412: iconst_1
-          //   1413: iconst_4
-          //   1414: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1417: aastore
-          //   1418: dup
-          //   1419: iconst_2
-          //   1420: iconst_1
-          //   1421: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1424: aastore
-          //   1425: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1428: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1431: aload_0
-          //   1432: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1435: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1438: getfield 336	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CzK	Ljava/util/HashMap;
-          //   1441: aload_0
-          //   1442: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1445: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1448: getfield 296	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   1451: invokevirtual 299	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
-          //   1454: invokevirtual 307	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-          //   1457: checkcast 338	java/lang/String
-          //   1460: astore 4
-          //   1462: aload 4
-          //   1464: astore_1
-          //   1465: aload 4
-          //   1467: ifnonnull +19 -> 1486
-          //   1470: aload_0
-          //   1471: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1474: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1477: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   1480: ldc 249
-          //   1482: invokevirtual 245	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-          //   1485: astore_1
-          //   1486: aload_0
-          //   1487: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1490: ldc_w 340
-          //   1493: bipush 43
-          //   1495: invokevirtual 344	com/tencent/mm/plugin/webview/ui/tools/i:fs	(Ljava/lang/String;I)V
-          //   1498: aload_0
-          //   1499: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1502: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1505: aload_1
-          //   1506: invokevirtual 347	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aDq	(Ljava/lang/String;)V
-          //   1509: ldc 27
-          //   1511: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1514: return
-          //   1515: aload_0
-          //   1516: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1519: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1522: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1525: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1528: iconst_3
-          //   1529: anewarray 4	java/lang/Object
-          //   1532: dup
-          //   1533: iconst_0
-          //   1534: aload_0
-          //   1535: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1538: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1541: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1544: aastore
-          //   1545: dup
-          //   1546: iconst_1
-          //   1547: bipush 8
-          //   1549: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1552: aastore
-          //   1553: dup
-          //   1554: iconst_2
-          //   1555: iconst_1
-          //   1556: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1559: aastore
-          //   1560: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1563: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1566: aload_0
-          //   1567: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1570: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1573: getfield 351	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CyX	Landroid/view/View;
-          //   1576: invokevirtual 356	android/view/View:getVisibility	()I
-          //   1579: bipush 8
-          //   1581: if_icmpne +51 -> 1632
-          //   1584: aload_0
-          //   1585: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1588: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1591: ldc_w 357
-          //   1594: invokestatic 363	android/view/animation/AnimationUtils:loadAnimation	(Landroid/content/Context;I)Landroid/view/animation/Animation;
-          //   1597: astore_1
-          //   1598: aload_0
-          //   1599: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1602: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1605: getfield 351	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CyX	Landroid/view/View;
-          //   1608: aload_1
-          //   1609: invokevirtual 367	android/view/View:startAnimation	(Landroid/view/animation/Animation;)V
-          //   1612: aload_0
-          //   1613: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1616: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1619: getfield 351	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CyX	Landroid/view/View;
-          //   1622: iconst_0
-          //   1623: invokevirtual 370	android/view/View:setVisibility	(I)V
-          //   1626: ldc 27
-          //   1628: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1631: return
-          //   1632: aload_0
-          //   1633: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1636: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1639: ldc_w 371
-          //   1642: invokestatic 363	android/view/animation/AnimationUtils:loadAnimation	(Landroid/content/Context;I)Landroid/view/animation/Animation;
-          //   1645: astore_1
-          //   1646: aload_1
-          //   1647: new 13	com/tencent/mm/plugin/webview/ui/tools/i$14$1
-          //   1650: dup
-          //   1651: aload_0
-          //   1652: invokespecial 374	com/tencent/mm/plugin/webview/ui/tools/i$14$1:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i$14;)V
-          //   1655: invokevirtual 380	android/view/animation/Animation:setAnimationListener	(Landroid/view/animation/Animation$AnimationListener;)V
-          //   1658: aload_0
-          //   1659: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1662: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1665: getfield 351	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CyX	Landroid/view/View;
-          //   1668: aload_1
-          //   1669: invokevirtual 367	android/view/View:startAnimation	(Landroid/view/animation/Animation;)V
-          //   1672: aload_0
-          //   1673: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1676: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1679: getfield 351	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CyX	Landroid/view/View;
-          //   1682: bipush 8
-          //   1684: invokevirtual 370	android/view/View:setVisibility	(I)V
-          //   1687: ldc 27
-          //   1689: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1692: return
-          //   1693: aload_0
-          //   1694: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1697: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1700: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1703: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1706: iconst_3
-          //   1707: anewarray 4	java/lang/Object
-          //   1710: dup
-          //   1711: iconst_0
-          //   1712: aload_0
-          //   1713: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1716: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1719: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1722: aastore
-          //   1723: dup
-          //   1724: iconst_1
-          //   1725: bipush 10
-          //   1727: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1730: aastore
-          //   1731: dup
-          //   1732: iconst_2
-          //   1733: iconst_1
-          //   1734: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1737: aastore
-          //   1738: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1741: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1744: aload_0
-          //   1745: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1748: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1751: invokevirtual 383	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eEf	()V
-          //   1754: ldc 27
-          //   1756: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1759: return
-          //   1760: aload_0
-          //   1761: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1764: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1767: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1770: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1773: iconst_3
-          //   1774: anewarray 4	java/lang/Object
-          //   1777: dup
-          //   1778: iconst_0
-          //   1779: aload_0
-          //   1780: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1783: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1786: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1789: aastore
-          //   1790: dup
-          //   1791: iconst_1
-          //   1792: iconst_5
-          //   1793: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1796: aastore
-          //   1797: dup
-          //   1798: iconst_2
-          //   1799: iconst_1
-          //   1800: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1803: aastore
-          //   1804: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1807: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1810: aload_0
-          //   1811: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1814: invokestatic 385	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
-          //   1817: ldc 27
-          //   1819: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1822: return
-          //   1823: aload_0
-          //   1824: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1827: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1830: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   1833: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1836: iconst_3
-          //   1837: anewarray 4	java/lang/Object
-          //   1840: dup
-          //   1841: iconst_0
-          //   1842: aload_0
-          //   1843: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1846: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1849: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   1852: aastore
-          //   1853: dup
-          //   1854: iconst_1
-          //   1855: bipush 13
-          //   1857: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1860: aastore
-          //   1861: dup
-          //   1862: iconst_2
-          //   1863: iconst_1
-          //   1864: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   1867: aastore
-          //   1868: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   1871: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   1874: aload_0
-          //   1875: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   1878: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   1881: astore 5
-          //   1883: aload 5
-          //   1885: getfield 386	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-          //   1888: astore 6
-          //   1890: aload 5
-          //   1892: invokevirtual 389	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:isFinishing	()Z
-          //   1895: ifne +254 -> 2149
-          //   1898: aload 5
-          //   1900: invokevirtual 392	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eyJ	()Ljava/lang/String;
-          //   1903: astore 4
-          //   1905: aload 4
-          //   1907: invokestatic 190	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-          //   1910: ifeq +18 -> 1928
-          //   1913: ldc_w 394
-          //   1916: ldc_w 396
-          //   1919: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   1922: ldc 27
-          //   1924: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   1927: return
-          //   1928: aload 4
-          //   1930: astore_1
-          //   1931: aload 6
-          //   1933: ifnull +13 -> 1946
-          //   1936: aload 6
-          //   1938: aload 4
-          //   1940: invokeinterface 399 2 0
-          //   1945: astore_1
-          //   1946: aload_1
-          //   1947: astore 4
-          //   1949: aload_1
-          //   1950: ldc_w 401
-          //   1953: invokevirtual 404	java/lang/String:startsWith	(Ljava/lang/String;)Z
-          //   1956: ifne +28 -> 1984
-          //   1959: aload_1
-          //   1960: astore 4
-          //   1962: aload_1
-          //   1963: ldc_w 406
-          //   1966: invokevirtual 404	java/lang/String:startsWith	(Ljava/lang/String;)Z
-          //   1969: ifne +15 -> 1984
-          //   1972: ldc_w 401
-          //   1975: aload_1
-          //   1976: invokestatic 409	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-          //   1979: invokevirtual 412	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-          //   1982: astore 4
-          //   1984: new 241	android/content/Intent
-          //   1987: dup
-          //   1988: ldc_w 414
-          //   1991: aload 4
-          //   1993: invokestatic 420	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-          //   1996: invokespecial 423	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
-          //   1999: astore_1
-          //   2000: aload 5
-          //   2002: invokestatic 427	com/tencent/mm/sdk/platformtools/bs:ja	(Landroid/content/Context;)Z
-          //   2005: ifne +9 -> 2014
-          //   2008: invokestatic 432	com/tencent/mm/sdk/platformtools/i:eUv	()Z
-          //   2011: ifeq +168 -> 2179
-          //   2014: ldc_w 394
-          //   2017: ldc_w 434
-          //   2020: iconst_2
-          //   2021: anewarray 4	java/lang/Object
-          //   2024: dup
-          //   2025: iconst_0
-          //   2026: aload 5
-          //   2028: invokestatic 427	com/tencent/mm/sdk/platformtools/bs:ja	(Landroid/content/Context;)Z
-          //   2031: invokestatic 439	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-          //   2034: aastore
-          //   2035: dup
-          //   2036: iconst_1
-          //   2037: invokestatic 432	com/tencent/mm/sdk/platformtools/i:eUv	()Z
-          //   2040: invokestatic 439	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-          //   2043: aastore
-          //   2044: invokestatic 154	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   2047: new 441	com/tencent/mm/hellhoundlib/b/a
-          //   2050: dup
-          //   2051: invokespecial 442	com/tencent/mm/hellhoundlib/b/a:<init>	()V
-          //   2054: aload_1
-          //   2055: invokevirtual 446	com/tencent/mm/hellhoundlib/b/a:ba	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
-          //   2058: astore_1
-          //   2059: aload 5
-          //   2061: aload_1
-          //   2062: invokevirtual 450	com/tencent/mm/hellhoundlib/b/a:aeD	()[Ljava/lang/Object;
-          //   2065: ldc_w 452
-          //   2068: ldc_w 454
-          //   2071: ldc_w 456
-          //   2074: ldc_w 458
-          //   2077: ldc_w 460
-          //   2080: ldc_w 462
-          //   2083: invokestatic 467	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-          //   2086: aload 5
-          //   2088: aload_1
-          //   2089: iconst_0
-          //   2090: invokevirtual 471	com/tencent/mm/hellhoundlib/b/a:lR	(I)Ljava/lang/Object;
-          //   2093: checkcast 241	android/content/Intent
-          //   2096: invokevirtual 473	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:startActivity	(Landroid/content/Intent;)V
-          //   2099: aload 5
-          //   2101: ldc_w 452
-          //   2104: ldc_w 454
-          //   2107: ldc_w 456
-          //   2110: ldc_w 458
-          //   2113: ldc_w 460
-          //   2116: ldc_w 462
-          //   2119: invokestatic 476	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-          //   2122: ldc 27
-          //   2124: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2127: return
-          //   2128: astore_1
-          //   2129: ldc_w 394
-          //   2132: ldc_w 478
-          //   2135: iconst_1
-          //   2136: anewarray 4	java/lang/Object
-          //   2139: dup
-          //   2140: iconst_0
-          //   2141: aload_1
-          //   2142: invokevirtual 481	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   2145: aastore
-          //   2146: invokestatic 483	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   2149: ldc 27
-          //   2151: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2154: return
-          //   2155: astore_1
-          //   2156: ldc_w 394
-          //   2159: ldc_w 485
-          //   2162: iconst_1
-          //   2163: anewarray 4	java/lang/Object
-          //   2166: dup
-          //   2167: iconst_0
-          //   2168: aload_1
-          //   2169: aastore
-          //   2170: invokestatic 483	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   2173: aload 4
-          //   2175: astore_1
-          //   2176: goto -230 -> 1946
-          //   2179: aload 5
-          //   2181: aload 5
-          //   2183: aload_1
-          //   2184: aload 4
-          //   2186: invokestatic 490	com/tencent/mm/plugin/webview/modeltools/a:a	(Landroid/app/Activity;Landroid/content/Intent;Ljava/lang/String;)Landroid/content/Intent;
-          //   2189: iconst_2
-          //   2190: invokevirtual 494	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:startActivityForResult	(Landroid/content/Intent;I)V
-          //   2193: ldc 27
-          //   2195: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2198: return
-          //   2199: aload_0
-          //   2200: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2203: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2206: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2209: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2212: iconst_3
-          //   2213: anewarray 4	java/lang/Object
-          //   2216: dup
-          //   2217: iconst_0
-          //   2218: aload_0
-          //   2219: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2222: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2225: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2228: aastore
-          //   2229: dup
-          //   2230: iconst_1
-          //   2231: bipush 35
-          //   2233: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2236: aastore
-          //   2237: dup
-          //   2238: iconst_2
-          //   2239: iconst_1
-          //   2240: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2243: aastore
-          //   2244: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2247: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2250: aload_0
-          //   2251: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2254: invokestatic 496	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
-          //   2257: ldc 27
-          //   2259: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2262: return
-          //   2263: aload_0
-          //   2264: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2267: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2270: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2273: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2276: iconst_3
-          //   2277: anewarray 4	java/lang/Object
-          //   2280: dup
-          //   2281: iconst_0
-          //   2282: aload_0
-          //   2283: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2286: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2289: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2292: aastore
-          //   2293: dup
-          //   2294: iconst_1
-          //   2295: bipush 15
-          //   2297: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2300: aastore
-          //   2301: dup
-          //   2302: iconst_2
-          //   2303: iconst_1
-          //   2304: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2307: aastore
-          //   2308: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2311: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2314: aload_0
-          //   2315: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2318: astore_1
-          //   2319: aload_1
-          //   2320: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2323: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   2326: ldc_w 498
-          //   2329: iconst_1
-          //   2330: invokevirtual 502	com/tencent/mm/plugin/webview/c/f:cf	(Ljava/lang/String;Z)V
-          //   2333: aload_1
-          //   2334: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2337: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   2340: astore_1
-          //   2341: aload_1
-          //   2342: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   2345: ifne +17 -> 2362
-          //   2348: ldc 66
-          //   2350: ldc_w 504
-          //   2353: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   2356: ldc 27
-          //   2358: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2361: return
-          //   2362: ldc_w 506
-          //   2365: new 82	java/util/HashMap
-          //   2368: dup
-          //   2369: invokespecial 83	java/util/HashMap:<init>	()V
-          //   2372: aload_1
-          //   2373: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   2376: aload_1
-          //   2377: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   2380: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   2383: astore 4
-          //   2385: aload_1
-          //   2386: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   2389: new 116	java/lang/StringBuilder
-          //   2392: dup
-          //   2393: ldc 118
-          //   2395: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   2398: aload 4
-          //   2400: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   2403: ldc 127
-          //   2405: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   2408: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   2411: aconst_null
-          //   2412: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   2415: ldc 27
-          //   2417: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2420: return
-          //   2421: aload_0
-          //   2422: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2425: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2428: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2431: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2434: iconst_3
-          //   2435: anewarray 4	java/lang/Object
-          //   2438: dup
-          //   2439: iconst_0
-          //   2440: aload_0
-          //   2441: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2444: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2447: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2450: aastore
-          //   2451: dup
-          //   2452: iconst_1
-          //   2453: bipush 7
-          //   2455: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2458: aastore
-          //   2459: dup
-          //   2460: iconst_2
-          //   2461: iconst_1
-          //   2462: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2465: aastore
-          //   2466: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2469: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2472: aload_0
-          //   2473: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2476: astore_1
-          //   2477: aload_1
-          //   2478: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2481: aload_1
-          //   2482: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2485: ldc_w 507
-          //   2488: invokevirtual 511	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-          //   2491: aconst_null
-          //   2492: aconst_null
-          //   2493: aload_1
-          //   2494: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2497: ldc_w 512
-          //   2500: invokevirtual 511	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-          //   2503: new 514	com/tencent/mm/plugin/webview/ui/tools/i$7
-          //   2506: dup
-          //   2507: aload_1
-          //   2508: invokespecial 516	com/tencent/mm/plugin/webview/ui/tools/i$7:<init>	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
-          //   2511: invokestatic 521	com/tencent/mm/ui/base/h:a	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;Ljava/util/List;Ljava/lang/String;Lcom/tencent/mm/ui/base/h$d;)Landroid/app/Dialog;
-          //   2514: pop
-          //   2515: ldc 27
-          //   2517: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2520: return
-          //   2521: aload_0
-          //   2522: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2525: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2528: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2531: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2534: iconst_3
-          //   2535: anewarray 4	java/lang/Object
-          //   2538: dup
-          //   2539: iconst_0
-          //   2540: aload_0
-          //   2541: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2544: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2547: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2550: aastore
-          //   2551: dup
-          //   2552: iconst_1
-          //   2553: bipush 11
-          //   2555: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2558: aastore
-          //   2559: dup
-          //   2560: iconst_2
-          //   2561: iconst_1
-          //   2562: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2565: aastore
-          //   2566: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2569: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2572: aload_0
-          //   2573: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2576: aconst_null
-          //   2577: invokevirtual 524	com/tencent/mm/plugin/webview/ui/tools/i:aDm	(Ljava/lang/String;)V
-          //   2580: ldc 27
-          //   2582: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2585: return
-          //   2586: aload_0
-          //   2587: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2590: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2593: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2596: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2599: iconst_3
-          //   2600: anewarray 4	java/lang/Object
-          //   2603: dup
-          //   2604: iconst_0
-          //   2605: aload_0
-          //   2606: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2609: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2612: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2615: aastore
-          //   2616: dup
-          //   2617: iconst_1
-          //   2618: bipush 6
-          //   2620: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2623: aastore
-          //   2624: dup
-          //   2625: iconst_2
-          //   2626: iconst_1
-          //   2627: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2630: aastore
-          //   2631: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2634: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2637: new 241	android/content/Intent
-          //   2640: dup
-          //   2641: invokespecial 253	android/content/Intent:<init>	()V
-          //   2644: astore_1
-          //   2645: aload_1
-          //   2646: ldc_w 526
-          //   2649: iconst_2
-          //   2650: invokevirtual 529	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-          //   2653: pop
-          //   2654: aload_1
-          //   2655: ldc_w 531
-          //   2658: aload_0
-          //   2659: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2662: invokevirtual 233	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2665: invokevirtual 237	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-          //   2668: ldc_w 533
-          //   2671: ldc2_w 534
-          //   2674: invokevirtual 281	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-          //   2677: invokevirtual 538	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
-          //   2680: pop
-          //   2681: aload_0
-          //   2682: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2685: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2688: ldc_w 540
-          //   2691: aload_1
-          //   2692: invokestatic 544	com/tencent/mm/plugin/fav/a/b:b	(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;)V
-          //   2695: aload_0
-          //   2696: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2699: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2702: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2705: ldc_w 546
-          //   2708: invokevirtual 549	com/tencent/mm/plugin/webview/model/ax:aCe	(Ljava/lang/String;)V
-          //   2711: ldc 27
-          //   2713: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2716: return
-          //   2717: aload_0
-          //   2718: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2721: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2724: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2727: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2730: iconst_3
-          //   2731: anewarray 4	java/lang/Object
-          //   2734: dup
-          //   2735: iconst_0
-          //   2736: aload_0
-          //   2737: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2740: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2743: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2746: aastore
-          //   2747: dup
-          //   2748: iconst_1
-          //   2749: bipush 19
-          //   2751: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2754: aastore
-          //   2755: dup
-          //   2756: iconst_2
-          //   2757: iconst_1
-          //   2758: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2761: aastore
-          //   2762: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2765: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2768: aload_0
-          //   2769: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2772: aload_1
-          //   2773: invokestatic 552	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
-          //   2776: ldc 27
-          //   2778: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2781: return
-          //   2782: aload_0
-          //   2783: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2786: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2789: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2792: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2795: iconst_3
-          //   2796: anewarray 4	java/lang/Object
-          //   2799: dup
-          //   2800: iconst_0
-          //   2801: aload_0
-          //   2802: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2805: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2808: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2811: aastore
-          //   2812: dup
-          //   2813: iconst_1
-          //   2814: bipush 21
-          //   2816: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2819: aastore
-          //   2820: dup
-          //   2821: iconst_2
-          //   2822: iconst_1
-          //   2823: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2826: aastore
-          //   2827: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2830: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2833: aload_0
-          //   2834: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2837: aload_1
-          //   2838: invokestatic 552	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
-          //   2841: ldc 27
-          //   2843: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2846: return
-          //   2847: aload_0
-          //   2848: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2851: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2854: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2857: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2860: iconst_3
-          //   2861: anewarray 4	java/lang/Object
-          //   2864: dup
-          //   2865: iconst_0
-          //   2866: aload_0
-          //   2867: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2870: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2873: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2876: aastore
-          //   2877: dup
-          //   2878: iconst_1
-          //   2879: bipush 20
-          //   2881: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2884: aastore
-          //   2885: dup
-          //   2886: iconst_2
-          //   2887: iconst_1
-          //   2888: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2891: aastore
-          //   2892: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2895: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2898: aload_0
-          //   2899: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2902: aload_1
-          //   2903: invokestatic 552	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
-          //   2906: ldc 27
-          //   2908: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2911: return
-          //   2912: aload_0
-          //   2913: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2916: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2919: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2922: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2925: iconst_3
-          //   2926: anewarray 4	java/lang/Object
-          //   2929: dup
-          //   2930: iconst_0
-          //   2931: aload_0
-          //   2932: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2935: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2938: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   2941: aastore
-          //   2942: dup
-          //   2943: iconst_1
-          //   2944: bipush 22
-          //   2946: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2949: aastore
-          //   2950: dup
-          //   2951: iconst_2
-          //   2952: iconst_1
-          //   2953: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   2956: aastore
-          //   2957: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2960: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   2963: aload_0
-          //   2964: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2967: aload_1
-          //   2968: invokestatic 552	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
-          //   2971: ldc 27
-          //   2973: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   2976: return
-          //   2977: aload_0
-          //   2978: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   2981: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   2984: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   2987: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   2990: iconst_3
-          //   2991: anewarray 4	java/lang/Object
-          //   2994: dup
-          //   2995: iconst_0
-          //   2996: aload_0
-          //   2997: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3000: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3003: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   3006: aastore
-          //   3007: dup
-          //   3008: iconst_1
-          //   3009: bipush 23
-          //   3011: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3014: aastore
-          //   3015: dup
-          //   3016: iconst_2
-          //   3017: iconst_1
-          //   3018: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3021: aastore
-          //   3022: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3025: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   3028: aload_0
-          //   3029: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3032: aload_1
-          //   3033: invokestatic 552	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Landroid/view/MenuItem;)V
-          //   3036: ldc 27
-          //   3038: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3041: return
-          //   3042: aload_0
-          //   3043: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3046: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3049: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   3052: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3055: iconst_3
-          //   3056: anewarray 4	java/lang/Object
-          //   3059: dup
-          //   3060: iconst_0
-          //   3061: aload_0
-          //   3062: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3065: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3068: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   3071: aastore
-          //   3072: dup
-          //   3073: iconst_1
-          //   3074: bipush 26
-          //   3076: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3079: aastore
-          //   3080: dup
-          //   3081: iconst_2
-          //   3082: iconst_1
-          //   3083: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3086: aastore
-          //   3087: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3090: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   3093: aload_0
-          //   3094: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3097: astore_1
-          //   3098: aload_1
-          //   3099: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3102: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3105: ldc_w 554
-          //   3108: iconst_1
-          //   3109: invokevirtual 502	com/tencent/mm/plugin/webview/c/f:cf	(Ljava/lang/String;Z)V
-          //   3112: aload_1
-          //   3113: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3116: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3119: astore_1
-          //   3120: aload_1
-          //   3121: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   3124: ifne +17 -> 3141
-          //   3127: ldc 66
-          //   3129: ldc_w 556
-          //   3132: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   3135: ldc 27
-          //   3137: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3140: return
-          //   3141: ldc_w 558
-          //   3144: new 82	java/util/HashMap
-          //   3147: dup
-          //   3148: invokespecial 83	java/util/HashMap:<init>	()V
-          //   3151: aload_1
-          //   3152: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   3155: aload_1
-          //   3156: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   3159: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   3162: astore 4
-          //   3164: aload_1
-          //   3165: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   3168: new 116	java/lang/StringBuilder
-          //   3171: dup
-          //   3172: ldc 118
-          //   3174: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   3177: aload 4
-          //   3179: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3182: ldc 127
-          //   3184: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3187: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   3190: aconst_null
-          //   3191: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   3194: aload_1
-          //   3195: getfield 559	com/tencent/mm/plugin/webview/c/f:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-          //   3198: ldc_w 561
-          //   3201: ldc_w 563
-          //   3204: aload_1
-          //   3205: getfield 567	com/tencent/mm/plugin/webview/c/f:CjB	I
-          //   3208: invokeinterface 571 4 0
-          //   3213: ldc 27
-          //   3215: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3218: return
-          //   3219: astore_1
-          //   3220: ldc 66
-          //   3222: new 116	java/lang/StringBuilder
-          //   3225: dup
-          //   3226: ldc_w 573
-          //   3229: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   3232: aload_1
-          //   3233: invokevirtual 481	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   3236: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3239: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   3242: invokestatic 576	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-          //   3245: ldc 27
-          //   3247: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3250: return
-          //   3251: aload_0
-          //   3252: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3255: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3258: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   3261: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3264: iconst_3
-          //   3265: anewarray 4	java/lang/Object
-          //   3268: dup
-          //   3269: iconst_0
-          //   3270: aload_0
-          //   3271: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3274: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3277: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   3280: aastore
-          //   3281: dup
-          //   3282: iconst_1
-          //   3283: bipush 27
-          //   3285: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3288: aastore
-          //   3289: dup
-          //   3290: iconst_2
-          //   3291: iconst_1
-          //   3292: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3295: aastore
-          //   3296: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3299: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   3302: aload_0
-          //   3303: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3306: invokestatic 579	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
-          //   3309: ldc 27
-          //   3311: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3314: return
-          //   3315: aload_0
-          //   3316: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3319: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3322: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   3325: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3328: iconst_3
-          //   3329: anewarray 4	java/lang/Object
-          //   3332: dup
-          //   3333: iconst_0
-          //   3334: aload_0
-          //   3335: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3338: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3341: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   3344: aastore
-          //   3345: dup
-          //   3346: iconst_1
-          //   3347: bipush 17
-          //   3349: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3352: aastore
-          //   3353: dup
-          //   3354: iconst_2
-          //   3355: iconst_1
-          //   3356: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3359: aastore
-          //   3360: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3363: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   3366: aload_0
-          //   3367: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3370: astore_1
-          //   3371: aload_1
-          //   3372: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3375: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3378: ldc_w 581
-          //   3381: iconst_1
-          //   3382: invokevirtual 502	com/tencent/mm/plugin/webview/c/f:cf	(Ljava/lang/String;Z)V
-          //   3385: aload_1
-          //   3386: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3389: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3392: astore_1
-          //   3393: aload_1
-          //   3394: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   3397: ifne +17 -> 3414
-          //   3400: ldc 66
-          //   3402: ldc_w 583
-          //   3405: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   3408: ldc 27
-          //   3410: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3413: return
-          //   3414: aload_1
-          //   3415: iconst_1
-          //   3416: invokevirtual 587	com/tencent/mm/plugin/webview/c/f:UN	(I)Landroid/os/Bundle;
-          //   3419: astore 4
-          //   3421: aload 4
-          //   3423: ifnull +30 -> 3453
-          //   3426: aload 4
-          //   3428: ldc_w 589
-          //   3431: iconst_0
-          //   3432: invokevirtual 593	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
-          //   3435: ifeq +18 -> 3453
-          //   3438: aload_1
-          //   3439: aload 4
-          //   3441: ldc_w 581
-          //   3444: invokevirtual 596	com/tencent/mm/plugin/webview/c/f:i	(Landroid/os/Bundle;Ljava/lang/String;)V
-          //   3447: ldc 27
-          //   3449: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3452: return
-          //   3453: ldc_w 598
-          //   3456: new 82	java/util/HashMap
-          //   3459: dup
-          //   3460: invokespecial 83	java/util/HashMap:<init>	()V
-          //   3463: aload_1
-          //   3464: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   3467: aload_1
-          //   3468: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   3471: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   3474: astore 4
-          //   3476: aload_1
-          //   3477: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   3480: new 116	java/lang/StringBuilder
-          //   3483: dup
-          //   3484: ldc 118
-          //   3486: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   3489: aload 4
-          //   3491: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3494: ldc 127
-          //   3496: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3499: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   3502: aconst_null
-          //   3503: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   3506: ldc 27
-          //   3508: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3511: return
-          //   3512: aload_0
-          //   3513: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3516: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3519: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   3522: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3525: iconst_3
-          //   3526: anewarray 4	java/lang/Object
-          //   3529: dup
-          //   3530: iconst_0
-          //   3531: aload_0
-          //   3532: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3535: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3538: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   3541: aastore
-          //   3542: dup
-          //   3543: iconst_1
-          //   3544: bipush 18
-          //   3546: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3549: aastore
-          //   3550: dup
-          //   3551: iconst_2
-          //   3552: iconst_1
-          //   3553: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3556: aastore
-          //   3557: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3560: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   3563: aload_0
-          //   3564: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3567: astore_1
-          //   3568: aload_1
-          //   3569: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3572: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3575: ldc_w 600
-          //   3578: iconst_1
-          //   3579: invokevirtual 502	com/tencent/mm/plugin/webview/c/f:cf	(Ljava/lang/String;Z)V
-          //   3582: aload_1
-          //   3583: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3586: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3589: astore_1
-          //   3590: aload_1
-          //   3591: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   3594: ifne +17 -> 3611
-          //   3597: ldc 66
-          //   3599: ldc_w 602
-          //   3602: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   3605: ldc 27
-          //   3607: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3610: return
-          //   3611: ldc_w 604
-          //   3614: new 82	java/util/HashMap
-          //   3617: dup
-          //   3618: invokespecial 83	java/util/HashMap:<init>	()V
-          //   3621: aload_1
-          //   3622: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   3625: aload_1
-          //   3626: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   3629: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   3632: astore 4
-          //   3634: aload_1
-          //   3635: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   3638: new 116	java/lang/StringBuilder
-          //   3641: dup
-          //   3642: ldc 118
-          //   3644: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   3647: aload 4
-          //   3649: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3652: ldc 127
-          //   3654: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3657: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   3660: aconst_null
-          //   3661: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   3664: ldc 27
-          //   3666: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3669: return
-          //   3670: aload_0
-          //   3671: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3674: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3677: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   3680: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3683: iconst_3
-          //   3684: anewarray 4	java/lang/Object
-          //   3687: dup
-          //   3688: iconst_0
-          //   3689: aload_0
-          //   3690: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3693: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3696: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   3699: aastore
-          //   3700: dup
-          //   3701: iconst_1
-          //   3702: bipush 24
-          //   3704: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3707: aastore
-          //   3708: dup
-          //   3709: iconst_2
-          //   3710: iconst_1
-          //   3711: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3714: aastore
-          //   3715: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3718: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   3721: aload_0
-          //   3722: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3725: astore_1
-          //   3726: aload_1
-          //   3727: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3730: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3733: ldc_w 606
-          //   3736: iconst_1
-          //   3737: invokevirtual 502	com/tencent/mm/plugin/webview/c/f:cf	(Ljava/lang/String;Z)V
-          //   3740: aload_1
-          //   3741: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3744: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3747: astore_1
-          //   3748: aload_1
-          //   3749: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   3752: ifne +17 -> 3769
-          //   3755: ldc 66
-          //   3757: ldc_w 608
-          //   3760: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   3763: ldc 27
-          //   3765: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3768: return
-          //   3769: aload_1
-          //   3770: iconst_1
-          //   3771: invokevirtual 587	com/tencent/mm/plugin/webview/c/f:UN	(I)Landroid/os/Bundle;
-          //   3774: astore 4
-          //   3776: aload 4
-          //   3778: ifnull +30 -> 3808
-          //   3781: aload 4
-          //   3783: ldc_w 589
-          //   3786: iconst_0
-          //   3787: invokevirtual 593	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
-          //   3790: ifeq +18 -> 3808
-          //   3793: aload_1
-          //   3794: aload 4
-          //   3796: ldc_w 606
-          //   3799: invokevirtual 596	com/tencent/mm/plugin/webview/c/f:i	(Landroid/os/Bundle;Ljava/lang/String;)V
-          //   3802: ldc 27
-          //   3804: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3807: return
-          //   3808: ldc_w 610
-          //   3811: new 82	java/util/HashMap
-          //   3814: dup
-          //   3815: invokespecial 83	java/util/HashMap:<init>	()V
-          //   3818: aload_1
-          //   3819: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   3822: aload_1
-          //   3823: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   3826: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   3829: astore 4
-          //   3831: aload_1
-          //   3832: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   3835: new 116	java/lang/StringBuilder
-          //   3838: dup
-          //   3839: ldc 118
-          //   3841: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   3844: aload 4
-          //   3846: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3849: ldc 127
-          //   3851: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   3854: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   3857: aconst_null
-          //   3858: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   3861: ldc 27
-          //   3863: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3866: return
-          //   3867: aload_0
-          //   3868: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3871: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3874: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   3877: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3880: iconst_3
-          //   3881: anewarray 4	java/lang/Object
-          //   3884: dup
-          //   3885: iconst_0
-          //   3886: aload_0
-          //   3887: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3890: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3893: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   3896: aastore
-          //   3897: dup
-          //   3898: iconst_1
-          //   3899: bipush 14
-          //   3901: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3904: aastore
-          //   3905: dup
-          //   3906: iconst_2
-          //   3907: iconst_1
-          //   3908: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   3911: aastore
-          //   3912: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   3915: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   3918: aload_0
-          //   3919: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   3922: astore_1
-          //   3923: aload_1
-          //   3924: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3927: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3930: ldc_w 554
-          //   3933: iconst_1
-          //   3934: invokevirtual 502	com/tencent/mm/plugin/webview/c/f:cf	(Ljava/lang/String;Z)V
-          //   3937: aload_1
-          //   3938: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   3941: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   3944: astore_1
-          //   3945: aload_1
-          //   3946: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   3949: ifne +17 -> 3966
-          //   3952: ldc 66
-          //   3954: ldc_w 612
-          //   3957: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   3960: ldc 27
-          //   3962: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   3965: return
-          //   3966: ldc_w 558
-          //   3969: new 82	java/util/HashMap
-          //   3972: dup
-          //   3973: invokespecial 83	java/util/HashMap:<init>	()V
-          //   3976: aload_1
-          //   3977: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   3980: aload_1
-          //   3981: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   3984: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   3987: astore 4
-          //   3989: aload_1
-          //   3990: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   3993: new 116	java/lang/StringBuilder
-          //   3996: dup
-          //   3997: ldc 118
-          //   3999: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   4002: aload 4
-          //   4004: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   4007: ldc 127
-          //   4009: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   4012: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   4015: aconst_null
-          //   4016: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   4019: aload_1
-          //   4020: getfield 559	com/tencent/mm/plugin/webview/c/f:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-          //   4023: ldc_w 561
-          //   4026: ldc_w 614
-          //   4029: aload_1
-          //   4030: getfield 567	com/tencent/mm/plugin/webview/c/f:CjB	I
-          //   4033: invokeinterface 571 4 0
-          //   4038: ldc 27
-          //   4040: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4043: return
-          //   4044: astore_1
-          //   4045: ldc 66
-          //   4047: new 116	java/lang/StringBuilder
-          //   4050: dup
-          //   4051: ldc_w 573
-          //   4054: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   4057: aload_1
-          //   4058: invokevirtual 481	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   4061: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   4064: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   4067: invokestatic 576	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-          //   4070: ldc 27
-          //   4072: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4075: return
-          //   4076: aload_0
-          //   4077: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4080: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4083: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   4086: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4089: iconst_3
-          //   4090: anewarray 4	java/lang/Object
-          //   4093: dup
-          //   4094: iconst_0
-          //   4095: aload_0
-          //   4096: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4099: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4102: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   4105: aastore
-          //   4106: dup
-          //   4107: iconst_1
-          //   4108: bipush 16
-          //   4110: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4113: aastore
-          //   4114: dup
-          //   4115: iconst_2
-          //   4116: iconst_1
-          //   4117: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4120: aastore
-          //   4121: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4124: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   4127: aload_0
-          //   4128: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4131: invokestatic 617	com/tencent/mm/plugin/webview/ui/tools/i:d	(Lcom/tencent/mm/plugin/webview/ui/tools/i;)V
-          //   4134: ldc 27
-          //   4136: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4139: return
-          //   4140: aload_0
-          //   4141: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4144: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4147: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   4150: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4153: iconst_3
-          //   4154: anewarray 4	java/lang/Object
-          //   4157: dup
-          //   4158: iconst_0
-          //   4159: aload_0
-          //   4160: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4163: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4166: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   4169: aastore
-          //   4170: dup
-          //   4171: iconst_1
-          //   4172: bipush 31
-          //   4174: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4177: aastore
-          //   4178: dup
-          //   4179: iconst_2
-          //   4180: iconst_1
-          //   4181: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4184: aastore
-          //   4185: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4188: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   4191: aload_0
-          //   4192: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4195: invokevirtual 620	com/tencent/mm/plugin/webview/ui/tools/i:bHN	()V
-          //   4198: ldc 27
-          //   4200: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4203: return
-          //   4204: getstatic 322	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-          //   4207: ldc2_w 621
-          //   4210: lconst_1
-          //   4211: lconst_1
-          //   4212: iconst_0
-          //   4213: invokevirtual 330	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
-          //   4216: aload_0
-          //   4217: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4220: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4223: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   4226: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4229: iconst_3
-          //   4230: anewarray 4	java/lang/Object
-          //   4233: dup
-          //   4234: iconst_0
-          //   4235: aload_0
-          //   4236: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4239: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4242: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   4245: aastore
-          //   4246: dup
-          //   4247: iconst_1
-          //   4248: bipush 28
-          //   4250: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4253: aastore
-          //   4254: dup
-          //   4255: iconst_2
-          //   4256: iconst_1
-          //   4257: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4260: aastore
-          //   4261: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4264: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   4267: aload_0
-          //   4268: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4271: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4274: getfield 626	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czg	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
-          //   4277: invokevirtual 631	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:isShown	()Z
-          //   4280: ifne +600 -> 4880
-          //   4283: aload_0
-          //   4284: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4287: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4290: getfield 626	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czg	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
-          //   4293: invokevirtual 634	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:reset	()V
-          //   4296: aload_0
-          //   4297: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4300: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4303: getfield 626	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czg	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
-          //   4306: invokevirtual 637	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:eGK	()V
-          //   4309: aload_0
-          //   4310: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4313: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4316: getfield 626	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czg	Lcom/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter;
-          //   4319: invokevirtual 640	com/tencent/mm/plugin/webview/ui/tools/widget/WebViewSearchContentInputFooter:show	()V
-          //   4322: ldc 27
-          //   4324: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4327: return
-          //   4328: aload_0
-          //   4329: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4332: astore_1
-          //   4333: ldc 139
-          //   4335: ldc_w 642
-          //   4338: invokestatic 80	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-          //   4341: aload_1
-          //   4342: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4345: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   4348: ifnull +72 -> 4420
-          //   4351: aload_1
-          //   4352: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4355: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   4358: astore_1
-          //   4359: aload_1
-          //   4360: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   4363: ifne +17 -> 4380
-          //   4366: ldc 66
-          //   4368: ldc_w 644
-          //   4371: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   4374: ldc 27
-          //   4376: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4379: return
-          //   4380: ldc 66
-          //   4382: ldc_w 646
-          //   4385: invokestatic 80	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-          //   4388: new 648	com/tencent/mm/plugin/webview/c/f$19
-          //   4391: dup
-          //   4392: aload_1
-          //   4393: ldc_w 650
-          //   4396: new 82	java/util/HashMap
-          //   4399: dup
-          //   4400: invokespecial 83	java/util/HashMap:<init>	()V
-          //   4403: aload_1
-          //   4404: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   4407: aload_1
-          //   4408: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   4411: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   4414: invokespecial 653	com/tencent/mm/plugin/webview/c/f$19:<init>	(Lcom/tencent/mm/plugin/webview/c/f;Ljava/lang/String;)V
-          //   4417: invokestatic 659	com/tencent/mm/sdk/platformtools/ap:f	(Ljava/lang/Runnable;)V
-          //   4420: ldc 27
-          //   4422: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4425: return
-          //   4426: aload_0
-          //   4427: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4430: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4433: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   4436: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4439: iconst_3
-          //   4440: anewarray 4	java/lang/Object
-          //   4443: dup
-          //   4444: iconst_0
-          //   4445: aload_0
-          //   4446: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4449: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4452: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   4455: aastore
-          //   4456: dup
-          //   4457: iconst_1
-          //   4458: bipush 33
-          //   4460: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4463: aastore
-          //   4464: dup
-          //   4465: iconst_2
-          //   4466: iconst_1
-          //   4467: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4470: aastore
-          //   4471: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4474: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   4477: aload_0
-          //   4478: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4481: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4484: getfield 663	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CAr	Lcom/tencent/mm/plugin/webview/ui/tools/b/a;
-          //   4487: iconst_1
-          //   4488: invokevirtual 669	com/tencent/mm/plugin/webview/ui/tools/b/a:ga	(Z)V
-          //   4491: ldc 27
-          //   4493: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4496: return
-          //   4497: aload_0
-          //   4498: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4501: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4504: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   4507: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4510: iconst_3
-          //   4511: anewarray 4	java/lang/Object
-          //   4514: dup
-          //   4515: iconst_0
-          //   4516: aload_0
-          //   4517: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4520: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4523: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   4526: aastore
-          //   4527: dup
-          //   4528: iconst_1
-          //   4529: bipush 34
-          //   4531: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4534: aastore
-          //   4535: dup
-          //   4536: iconst_2
-          //   4537: iconst_1
-          //   4538: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4541: aastore
-          //   4542: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4545: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   4548: aload_0
-          //   4549: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4552: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4555: getfield 663	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CAr	Lcom/tencent/mm/plugin/webview/ui/tools/b/a;
-          //   4558: iconst_0
-          //   4559: invokevirtual 669	com/tencent/mm/plugin/webview/ui/tools/b/a:ga	(Z)V
-          //   4562: ldc 27
-          //   4564: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4567: return
-          //   4568: aload_0
-          //   4569: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4572: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4575: getfield 158	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfc	Lcom/tencent/mm/plugin/webview/model/ax;
-          //   4578: invokevirtual 164	com/tencent/mm/plugin/webview/model/ax:eBM	()Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4581: iconst_3
-          //   4582: anewarray 4	java/lang/Object
-          //   4585: dup
-          //   4586: iconst_0
-          //   4587: aload_0
-          //   4588: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4591: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4594: invokevirtual 167	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:bLL	()Ljava/lang/String;
-          //   4597: aastore
-          //   4598: dup
-          //   4599: iconst_1
-          //   4600: bipush 99
-          //   4602: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4605: aastore
-          //   4606: dup
-          //   4607: iconst_2
-          //   4608: iconst_1
-          //   4609: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-          //   4612: aastore
-          //   4613: invokevirtual 173	com/tencent/mm/plugin/webview/model/ax$d:B	([Ljava/lang/Object;)Lcom/tencent/mm/plugin/webview/model/ax$d;
-          //   4616: invokevirtual 176	com/tencent/mm/plugin/webview/model/ax$d:report	()V
-          //   4619: aload_0
-          //   4620: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4623: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4626: invokevirtual 672	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eEg	()V
-          //   4629: ldc 27
-          //   4631: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4634: return
-          //   4635: aload_0
-          //   4636: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4639: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4642: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   4645: ldc_w 650
-          //   4648: aconst_null
-          //   4649: new 674	org/json/JSONObject
-          //   4652: dup
-          //   4653: invokespecial 675	org/json/JSONObject:<init>	()V
-          //   4656: invokevirtual 678	com/tencent/mm/plugin/webview/c/f:b	(Ljava/lang/String;Ljava/util/Map;Lorg/json/JSONObject;)V
-          //   4659: ldc 27
-          //   4661: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4664: return
-          //   4665: iconst_0
-          //   4666: istore_2
-          //   4667: goto -4023 -> 644
-          //   4670: iconst_0
-          //   4671: istore_2
-          //   4672: goto -4014 -> 658
-          //   4675: astore_1
-          //   4676: iconst_0
-          //   4677: istore_2
-          //   4678: ldc 139
-          //   4680: aload_1
-          //   4681: ldc_w 680
-          //   4684: iconst_0
-          //   4685: anewarray 4	java/lang/Object
-          //   4688: invokestatic 684	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   4691: goto -4033 -> 658
-          //   4694: aload_0
-          //   4695: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$14:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-          //   4698: astore_1
-          //   4699: aload_1
-          //   4700: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4703: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   4706: ldc_w 554
-          //   4709: iconst_0
-          //   4710: invokevirtual 502	com/tencent/mm/plugin/webview/c/f:cf	(Ljava/lang/String;Z)V
-          //   4713: aload_1
-          //   4714: invokevirtual 53	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-          //   4717: getfield 59	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cjc	Lcom/tencent/mm/plugin/webview/c/f;
-          //   4720: astore_1
-          //   4721: aload_1
-          //   4722: getfield 64	com/tencent/mm/plugin/webview/c/f:Apr	Z
-          //   4725: ifne +17 -> 4742
-          //   4728: ldc 66
-          //   4730: ldc_w 686
-          //   4733: invokestatic 73	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   4736: ldc 27
-          //   4738: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4741: return
-          //   4742: new 82	java/util/HashMap
-          //   4745: dup
-          //   4746: invokespecial 83	java/util/HashMap:<init>	()V
-          //   4749: astore 5
-          //   4751: aload 5
-          //   4753: ldc_w 561
-          //   4756: ldc_w 688
-          //   4759: invokevirtual 92	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-          //   4762: pop
-          //   4763: ldc_w 558
-          //   4766: aload 5
-          //   4768: aload_1
-          //   4769: getfield 101	com/tencent/mm/plugin/webview/c/f:Cjz	Z
-          //   4772: aload_1
-          //   4773: getfield 104	com/tencent/mm/plugin/webview/c/f:CjA	Ljava/lang/String;
-          //   4776: invokestatic 110	com/tencent/mm/plugin/webview/c/l$a:b	(Ljava/lang/String;Ljava/util/Map;ZLjava/lang/String;)Ljava/lang/String;
-          //   4779: astore 5
-          //   4781: aload_1
-          //   4782: getfield 114	com/tencent/mm/plugin/webview/c/f:Cjr	Lcom/tencent/mm/ui/widget/MMWebView;
-          //   4785: new 116	java/lang/StringBuilder
-          //   4788: dup
-          //   4789: ldc 118
-          //   4791: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   4794: aload 5
-          //   4796: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   4799: ldc 127
-          //   4801: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   4804: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   4807: aconst_null
-          //   4808: invokevirtual 137	com/tencent/mm/ui/widget/MMWebView:evaluateJavascript	(Ljava/lang/String;Landroid/webkit/ValueCallback;)V
-          //   4811: aload_1
-          //   4812: getfield 559	com/tencent/mm/plugin/webview/c/f:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-          //   4815: ldc_w 690
-          //   4818: aload 4
-          //   4820: aload_1
-          //   4821: getfield 567	com/tencent/mm/plugin/webview/c/f:CjB	I
-          //   4824: invokeinterface 571 4 0
-          //   4829: aload_1
-          //   4830: getfield 559	com/tencent/mm/plugin/webview/c/f:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-          //   4833: ldc_w 561
-          //   4836: ldc_w 688
-          //   4839: aload_1
-          //   4840: getfield 567	com/tencent/mm/plugin/webview/c/f:CjB	I
-          //   4843: invokeinterface 571 4 0
-          //   4848: ldc 27
-          //   4850: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4853: return
-          //   4854: astore_1
-          //   4855: ldc 66
-          //   4857: new 116	java/lang/StringBuilder
-          //   4860: dup
-          //   4861: ldc_w 573
-          //   4864: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-          //   4867: aload_1
-          //   4868: invokevirtual 481	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   4871: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-          //   4874: invokevirtual 131	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   4877: invokestatic 576	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-          //   4880: ldc 27
-          //   4882: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-          //   4885: return
-          //   4886: astore_1
-          //   4887: goto -209 -> 4678
-          //   4890: iconst_0
-          //   4891: istore_2
-          //   4892: goto -4234 -> 658
-          // Local variable table:
-          //   start	length	slot	name	signature
-          //   0	4895	0	this	14
-          //   0	4895	1	paramAnonymousMenuItem	MenuItem
-          //   0	4895	2	paramAnonymousInt	int
-          //   650	4	3	i	int
-          //   31	4788	4	localObject1	Object
-          //   83	4712	5	localObject2	Object
-          //   1888	49	6	locale	com.tencent.mm.plugin.webview.stub.e
-          // Exception table:
-          //   from	to	target	type
-          //   2000	2014	2128	java/lang/Exception
-          //   2014	2127	2128	java/lang/Exception
-          //   2179	2193	2128	java/lang/Exception
-          //   1936	1946	2155	java/lang/Exception
-          //   3194	3213	3219	java/lang/Exception
-          //   4019	4038	4044	java/lang/Exception
-          //   588	626	4675	java/lang/Exception
-          //   630	637	4675	java/lang/Exception
-          //   4811	4848	4854	java/lang/Exception
-          //   644	651	4886	java/lang/Exception
-        }
-      };
-      this.mdB.ISv = ((n.d)localObject2);
-      this.mdB.Ihj = new e.b()
-      {
-        public final void onDismiss()
-        {
-          i.this.nPt = false;
-        }
-      };
-      if (eCT().kYu != null) {
-        break label187;
-      }
-      ac.e("MicroMsg.WebViewMenuHelper", "get permission failed");
-      AppMethodBeat.o(79887);
-      return;
-      bool = false;
-      break;
-    }
-    label187:
-    Object localObject3 = eCT().Cfr.kYu.eCm();
-    this.mdB.ISu = new n.c()
-    {
-      /* Error */
-      public final void onCreateMMMenu(l paramAnonymousl)
-      {
-        // Byte code:
-        //   0: ldc 29
-        //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: getstatic 41	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
-        //   8: ldc2_w 42
-        //   11: lconst_0
-        //   12: lconst_1
-        //   13: iconst_0
-        //   14: invokevirtual 47	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
-        //   17: aload_1
-        //   18: invokevirtual 52	com/tencent/mm/ui/base/l:clear	()V
-        //   21: aload_0
-        //   22: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   25: getfield 56	com/tencent/mm/plugin/webview/ui/tools/i:CxC	Ljava/lang/Boolean;
-        //   28: invokevirtual 62	java/lang/Boolean:booleanValue	()Z
-        //   31: ifeq +90 -> 121
-        //   34: aload_0
-        //   35: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   38: getfield 66	com/tencent/mm/plugin/webview/ui/tools/i:CxB	Ljava/util/ArrayList;
-        //   41: invokevirtual 72	java/util/ArrayList:size	()I
-        //   44: istore_3
-        //   45: iconst_0
-        //   46: istore_2
-        //   47: iload_2
-        //   48: iload_3
-        //   49: if_icmpge +66 -> 115
-        //   52: aload_0
-        //   53: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   56: getfield 66	com/tencent/mm/plugin/webview/ui/tools/i:CxB	Ljava/util/ArrayList;
-        //   59: iload_2
-        //   60: invokevirtual 76	java/util/ArrayList:get	(I)Ljava/lang/Object;
-        //   63: checkcast 78	com/tencent/mm/m/d$b
-        //   66: astore 8
-        //   68: aload_1
-        //   69: aload 8
-        //   71: getfield 82	com/tencent/mm/m/d$b:id	I
-        //   74: aload 8
-        //   76: getfield 86	com/tencent/mm/m/d$b:title	Ljava/lang/String;
-        //   79: invokevirtual 90	com/tencent/mm/ui/base/l:c	(ILjava/lang/CharSequence;)Landroid/view/MenuItem;
-        //   82: checkcast 92	com/tencent/mm/ui/base/m
-        //   85: astore 9
-        //   87: aload 9
-        //   89: aload 8
-        //   91: putfield 96	com/tencent/mm/ui/base/m:Hyn	Landroid/view/ContextMenu$ContextMenuInfo;
-        //   94: aload 9
-        //   96: aconst_null
-        //   97: invokevirtual 100	com/tencent/mm/ui/base/m:setIcon	(Landroid/graphics/drawable/Drawable;)Landroid/view/MenuItem;
-        //   100: pop
-        //   101: aload 9
-        //   103: iconst_0
-        //   104: invokevirtual 103	com/tencent/mm/ui/base/m:setIcon	(I)Landroid/view/MenuItem;
-        //   107: pop
-        //   108: iload_2
-        //   109: iconst_1
-        //   110: iadd
-        //   111: istore_2
-        //   112: goto -65 -> 47
-        //   115: ldc 29
-        //   117: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   120: return
-        //   121: aload_0
-        //   122: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   125: iconst_1
-        //   126: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   129: ifeq +70 -> 199
-        //   132: aload_0
-        //   133: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   136: bipush 21
-        //   138: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   141: ifeq +58 -> 199
-        //   144: aload_0
-        //   145: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   148: iconst_1
-        //   149: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   152: ifeq +47 -> 199
-        //   155: aload_1
-        //   156: iconst_1
-        //   157: aload_0
-        //   158: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   161: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   164: ldc 122
-        //   166: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   169: ldc 129
-        //   171: aload_0
-        //   172: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   175: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   178: invokevirtual 133	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
-        //   181: ldc 134
-        //   183: invokevirtual 140	android/content/res/Resources:getColor	(I)I
-        //   186: aload_0
-        //   187: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   190: bipush 21
-        //   192: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   195: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   198: pop
-        //   199: aload_0
-        //   200: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   203: iconst_2
-        //   204: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   207: ifeq +56 -> 263
-        //   210: aload_0
-        //   211: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   214: bipush 23
-        //   216: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   219: ifeq +44 -> 263
-        //   222: aload_0
-        //   223: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   226: iconst_2
-        //   227: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   230: ifeq +33 -> 263
-        //   233: aload_1
-        //   234: iconst_2
-        //   235: aload_0
-        //   236: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   239: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   242: ldc 147
-        //   244: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   247: ldc 148
-        //   249: iconst_0
-        //   250: aload_0
-        //   251: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   254: bipush 23
-        //   256: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   259: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   262: pop
-        //   263: new 150	android/os/Bundle
-        //   266: dup
-        //   267: invokespecial 151	android/os/Bundle:<init>	()V
-        //   270: astore 8
-        //   272: aload 8
-        //   274: ldc 153
-        //   276: aload_0
-        //   277: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   280: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   283: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   286: invokevirtual 162	com/tencent/mm/plugin/webview/core/h:eyt	()I
-        //   289: invokevirtual 166	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-        //   292: aload 8
-        //   294: ldc 168
-        //   296: aload_0
-        //   297: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   300: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   303: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   306: getfield 174	com/tencent/mm/plugin/webview/core/BaseWebViewController:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-        //   309: invokevirtual 180	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
-        //   312: invokevirtual 184	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-        //   315: aload_0
-        //   316: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   319: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   322: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   325: getfield 188	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-        //   328: bipush 109
-        //   330: aload 8
-        //   332: invokeinterface 194 3 0
-        //   337: astore 8
-        //   339: aload 8
-        //   341: ifnull +1741 -> 2082
-        //   344: aload 8
-        //   346: ldc 196
-        //   348: iconst_0
-        //   349: invokevirtual 200	android/os/Bundle:getInt	(Ljava/lang/String;I)I
-        //   352: istore_2
-        //   353: aload 8
-        //   355: ldc 202
-        //   357: iconst_m1
-        //   358: invokevirtual 200	android/os/Bundle:getInt	(Ljava/lang/String;I)I
-        //   361: istore 4
-        //   363: iload_2
-        //   364: istore_3
-        //   365: iload 4
-        //   367: istore_2
-        //   368: iload_3
-        //   369: iconst_1
-        //   370: if_icmpne +67 -> 437
-        //   373: aload_0
-        //   374: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   377: bipush 38
-        //   379: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   382: ifeq +1531 -> 1913
-        //   385: aload_0
-        //   386: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   389: bipush 38
-        //   391: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   394: ifeq +1519 -> 1913
-        //   397: iload_2
-        //   398: ifne +1515 -> 1913
-        //   401: aload_1
-        //   402: bipush 38
-        //   404: aload_0
-        //   405: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   408: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   411: ldc 203
-        //   413: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   416: ldc 204
-        //   418: aload_0
-        //   419: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   422: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   425: invokevirtual 133	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
-        //   428: ldc 205
-        //   430: invokevirtual 140	android/content/res/Resources:getColor	(I)I
-        //   433: invokevirtual 208	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;II)Landroid/view/MenuItem;
-        //   436: pop
-        //   437: aload_0
-        //   438: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   441: iconst_3
-        //   442: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   445: ifeq +139 -> 584
-        //   448: aload_0
-        //   449: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   452: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   455: getfield 212	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czs	Z
-        //   458: ifeq +61 -> 519
-        //   461: aload_0
-        //   462: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   465: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   468: invokevirtual 215	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eDS	()Ljava/lang/String;
-        //   471: invokestatic 221	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-        //   474: ifne +110 -> 584
-        //   477: aload_0
-        //   478: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   481: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   484: getfield 224	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CAN	Ljava/lang/String;
-        //   487: invokestatic 221	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-        //   490: ifne +94 -> 584
-        //   493: aload_0
-        //   494: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   497: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   500: invokevirtual 215	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eDS	()Ljava/lang/String;
-        //   503: aload_0
-        //   504: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   507: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   510: getfield 224	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:CAN	Ljava/lang/String;
-        //   513: invokevirtual 229	java/lang/String:startsWith	(Ljava/lang/String;)Z
-        //   516: ifne +68 -> 584
-        //   519: aload_0
-        //   520: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   523: sipush 323
-        //   526: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   529: ifeq +55 -> 584
-        //   532: aload_0
-        //   533: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   536: invokevirtual 232	com/tencent/mm/plugin/webview/ui/tools/i:eDs	()Z
-        //   539: ifeq +45 -> 584
-        //   542: aload_0
-        //   543: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   546: iconst_3
-        //   547: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   550: ifeq +34 -> 584
-        //   553: aload_1
-        //   554: iconst_3
-        //   555: aload_0
-        //   556: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   559: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   562: ldc 233
-        //   564: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   567: ldc 234
-        //   569: iconst_0
-        //   570: aload_0
-        //   571: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   574: sipush 323
-        //   577: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   580: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   583: pop
-        //   584: aload_0
-        //   585: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   588: bipush 25
-        //   590: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   593: ifeq +104 -> 697
-        //   596: aload_0
-        //   597: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   600: sipush 322
-        //   603: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   606: ifeq +91 -> 697
-        //   609: aload_0
-        //   610: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   613: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   616: invokestatic 240	com/tencent/wework/api/WWAPIFactory:lg	(Landroid/content/Context;)Lcom/tencent/wework/api/IWWAPI;
-        //   619: invokeinterface 245 1 0
-        //   624: ifeq +73 -> 697
-        //   627: aload_0
-        //   628: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   631: bipush 25
-        //   633: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   636: ifeq +61 -> 697
-        //   639: aload_0
-        //   640: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   643: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   646: invokestatic 240	com/tencent/wework/api/WWAPIFactory:lg	(Landroid/content/Context;)Lcom/tencent/wework/api/IWWAPI;
-        //   649: invokeinterface 248 1 0
-        //   654: astore 8
-        //   656: aload_1
-        //   657: bipush 25
-        //   659: aload_0
-        //   660: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   663: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   666: ldc 249
-        //   668: iconst_1
-        //   669: anewarray 4	java/lang/Object
-        //   672: dup
-        //   673: iconst_0
-        //   674: aload 8
-        //   676: aastore
-        //   677: invokevirtual 252	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
-        //   680: ldc 253
-        //   682: iconst_0
-        //   683: aload_0
-        //   684: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   687: sipush 322
-        //   690: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   693: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   696: pop
-        //   697: aload_0
-        //   698: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   701: bipush 33
-        //   703: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   706: ifeq +90 -> 796
-        //   709: aload_0
-        //   710: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   713: bipush 31
-        //   715: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   718: ifeq +78 -> 796
-        //   721: aload_0
-        //   722: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   725: bipush 30
-        //   727: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   730: ifeq +66 -> 796
-        //   733: aload_0
-        //   734: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   737: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   740: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   743: getfield 188	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-        //   746: bipush 78
-        //   748: aconst_null
-        //   749: invokeinterface 194 3 0
-        //   754: ldc 255
-        //   756: iconst_0
-        //   757: invokevirtual 259	android/os/Bundle:getBoolean	(Ljava/lang/String;Z)Z
-        //   760: ifeq +36 -> 796
-        //   763: aload_1
-        //   764: bipush 33
-        //   766: aload_0
-        //   767: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   770: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   773: ldc_w 260
-        //   776: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   779: ldc_w 261
-        //   782: iconst_0
-        //   783: aload_0
-        //   784: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   787: bipush 31
-        //   789: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   792: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   795: pop
-        //   796: aload_0
-        //   797: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   800: bipush 26
-        //   802: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   805: ifeq +88 -> 893
-        //   808: aload_0
-        //   809: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   812: sipush 278
-        //   815: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   818: ifeq +75 -> 893
-        //   821: aload_0
-        //   822: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   825: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   828: aload_0
-        //   829: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   832: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   835: getfield 262	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:nKq	Lcom/tencent/mm/ui/widget/MMWebView;
-        //   838: invokevirtual 180	com/tencent/mm/ui/widget/MMWebView:getUrl	()Ljava/lang/String;
-        //   841: invokestatic 268	com/tencent/mm/plugin/webview/stub/a:bx	(Landroid/content/Context;Ljava/lang/String;)Z
-        //   844: ifeq +49 -> 893
-        //   847: aload_0
-        //   848: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   851: bipush 26
-        //   853: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   856: ifeq +37 -> 893
-        //   859: aload_1
-        //   860: bipush 26
-        //   862: aload_0
-        //   863: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   866: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   869: ldc_w 269
-        //   872: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   875: ldc_w 270
-        //   878: iconst_0
-        //   879: aload_0
-        //   880: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   883: sipush 278
-        //   886: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   889: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   892: pop
-        //   893: aload_0
-        //   894: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   897: bipush 7
-        //   899: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   902: ifeq +75 -> 977
-        //   905: aload_0
-        //   906: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   909: bipush 45
-        //   911: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   914: ifeq +63 -> 977
-        //   917: aload_0
-        //   918: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   921: bipush 7
-        //   923: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   926: ifeq +51 -> 977
-        //   929: aload_1
-        //   930: bipush 7
-        //   932: aload_0
-        //   933: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   936: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   939: ldc_w 271
-        //   942: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   945: ldc_w 272
-        //   948: aload_0
-        //   949: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   952: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   955: invokevirtual 133	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
-        //   958: ldc_w 273
-        //   961: invokevirtual 140	android/content/res/Resources:getColor	(I)I
-        //   964: aload_0
-        //   965: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   968: bipush 45
-        //   970: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   973: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   976: pop
-        //   977: aload_0
-        //   978: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   981: invokevirtual 276	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   984: invokevirtual 280	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-        //   987: ldc_w 282
-        //   990: invokevirtual 288	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-        //   993: astore 8
-        //   995: aload_0
-        //   996: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   999: invokevirtual 276	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1002: invokevirtual 280	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-        //   1005: ldc_w 290
-        //   1008: ldc2_w 291
-        //   1011: invokevirtual 296	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
-        //   1014: lstore 5
-        //   1016: aload_0
-        //   1017: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1020: bipush 23
-        //   1022: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1025: ifeq +51 -> 1076
-        //   1028: aload_0
-        //   1029: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1032: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1035: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   1038: getfield 188	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-        //   1041: lload 5
-        //   1043: aload 8
-        //   1045: invokeinterface 300 4 0
-        //   1050: ifeq +26 -> 1076
-        //   1053: aload_1
-        //   1054: bipush 23
-        //   1056: aload_0
-        //   1057: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1060: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1063: ldc_w 301
-        //   1066: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1069: ldc_w 302
-        //   1072: invokevirtual 305	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;I)Landroid/view/MenuItem;
-        //   1075: pop
-        //   1076: aload_0
-        //   1077: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1080: bipush 24
-        //   1082: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1085: ifeq +139 -> 1224
-        //   1088: aload_0
-        //   1089: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1092: bipush 43
-        //   1094: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1097: ifeq +127 -> 1224
-        //   1100: aload_0
-        //   1101: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1104: bipush 24
-        //   1106: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   1109: ifeq +115 -> 1224
-        //   1112: aload_0
-        //   1113: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1116: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1119: ldc_w 307
-        //   1122: invokestatic 312	com/tencent/mm/pluginsdk/model/app/q:t	(Landroid/content/Context;Ljava/lang/String;)Z
-        //   1125: ifne +99 -> 1224
-        //   1128: new 150	android/os/Bundle
-        //   1131: dup
-        //   1132: invokespecial 151	android/os/Bundle:<init>	()V
-        //   1135: astore 8
-        //   1137: aload 8
-        //   1139: ldc_w 314
-        //   1142: ldc_w 316
-        //   1145: invokevirtual 184	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1148: aload_0
-        //   1149: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1152: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1155: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   1158: getfield 188	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-        //   1161: bipush 71
-        //   1163: aload 8
-        //   1165: invokeinterface 194 3 0
-        //   1170: astore 8
-        //   1172: aload 8
-        //   1174: ifnull +866 -> 2040
-        //   1177: aload 8
-        //   1179: ldc_w 316
-        //   1182: invokevirtual 318	android/os/Bundle:getBoolean	(Ljava/lang/String;)Z
-        //   1185: istore 7
-        //   1187: iload 7
-        //   1189: ifeq +35 -> 1224
-        //   1192: aload_1
-        //   1193: bipush 24
-        //   1195: aload_0
-        //   1196: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1199: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1202: ldc_w 319
-        //   1205: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1208: ldc_w 320
-        //   1211: aload_0
-        //   1212: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1215: bipush 43
-        //   1217: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1220: invokevirtual 323	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IZ)Landroid/view/MenuItem;
-        //   1223: pop
-        //   1224: aload_0
-        //   1225: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1228: bipush 8
-        //   1230: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1233: ifeq +110 -> 1343
-        //   1236: aload_0
-        //   1237: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1240: bipush 36
-        //   1242: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1245: ifeq +98 -> 1343
-        //   1248: aload_0
-        //   1249: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1252: bipush 8
-        //   1254: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   1257: ifeq +86 -> 1343
-        //   1260: aconst_null
-        //   1261: astore 8
-        //   1263: aload_0
-        //   1264: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1267: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1270: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   1273: getfield 188	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-        //   1276: invokeinterface 326 1 0
-        //   1281: astore 9
-        //   1283: aload 9
-        //   1285: astore 8
-        //   1287: aload 8
-        //   1289: invokestatic 221	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-        //   1292: ifne +754 -> 2046
-        //   1295: aload_1
-        //   1296: bipush 8
-        //   1298: aload_0
-        //   1299: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1302: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1305: ldc_w 327
-        //   1308: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1311: ldc_w 328
-        //   1314: aload_0
-        //   1315: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1318: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1321: invokevirtual 133	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
-        //   1324: ldc_w 273
-        //   1327: invokevirtual 140	android/content/res/Resources:getColor	(I)I
-        //   1330: aload_0
-        //   1331: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1334: bipush 36
-        //   1336: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1339: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   1342: pop
-        //   1343: aload_0
-        //   1344: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1347: bipush 20
-        //   1349: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1352: ifeq +73 -> 1425
-        //   1355: aload_0
-        //   1356: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1359: bipush 91
-        //   1361: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1364: ifeq +61 -> 1425
-        //   1367: aload_0
-        //   1368: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1371: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1374: invokestatic 332	com/tencent/mm/plugin/webview/stub/a:gP	(Landroid/content/Context;)Z
-        //   1377: ifeq +48 -> 1425
-        //   1380: aload_0
-        //   1381: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1384: bipush 20
-        //   1386: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   1389: ifeq +36 -> 1425
-        //   1392: aload_1
-        //   1393: bipush 20
-        //   1395: aload_0
-        //   1396: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1399: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1402: ldc_w 333
-        //   1405: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1408: ldc_w 334
-        //   1411: iconst_0
-        //   1412: aload_0
-        //   1413: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1416: bipush 91
-        //   1418: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1421: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   1424: pop
-        //   1425: aload_0
-        //   1426: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1429: bipush 22
-        //   1431: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1434: ifeq +75 -> 1509
-        //   1437: aload_0
-        //   1438: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1441: sipush 133
-        //   1444: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1447: ifeq +62 -> 1509
-        //   1450: aload_0
-        //   1451: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1454: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1457: invokestatic 332	com/tencent/mm/plugin/webview/stub/a:gP	(Landroid/content/Context;)Z
-        //   1460: ifeq +49 -> 1509
-        //   1463: aload_0
-        //   1464: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1467: bipush 22
-        //   1469: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   1472: ifeq +37 -> 1509
-        //   1475: aload_1
-        //   1476: bipush 22
-        //   1478: aload_0
-        //   1479: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1482: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1485: ldc_w 335
-        //   1488: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1491: ldc_w 336
-        //   1494: iconst_0
-        //   1495: aload_0
-        //   1496: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1499: sipush 133
-        //   1502: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1505: invokevirtual 146	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IIZ)Landroid/view/MenuItem;
-        //   1508: pop
-        //   1509: aload_0
-        //   1510: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1513: iconst_0
-        //   1514: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1517: ifeq +133 -> 1650
-        //   1520: aload_0
-        //   1521: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1524: bipush 43
-        //   1526: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1529: ifeq +121 -> 1650
-        //   1532: aload_0
-        //   1533: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1536: iconst_0
-        //   1537: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   1540: ifeq +110 -> 1650
-        //   1543: aload_0
-        //   1544: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1547: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1550: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   1553: getfield 188	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-        //   1556: invokeinterface 339 1 0
-        //   1561: ifeq +89 -> 1650
-        //   1564: aload_0
-        //   1565: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1568: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1571: getfield 157	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Cfr	Lcom/tencent/mm/plugin/webview/core/h;
-        //   1574: getfield 188	com/tencent/mm/plugin/webview/core/h:kYt	Lcom/tencent/mm/plugin/webview/stub/e;
-        //   1577: invokeinterface 343 1 0
-        //   1582: astore 8
-        //   1584: aload 8
-        //   1586: invokeinterface 349 1 0
-        //   1591: astore 9
-        //   1593: aload 9
-        //   1595: invokeinterface 354 1 0
-        //   1600: ifeq +458 -> 2058
-        //   1603: aload_1
-        //   1604: aload 9
-        //   1606: invokeinterface 358 1 0
-        //   1611: checkcast 226	java/lang/String
-        //   1614: invokevirtual 362	com/tencent/mm/ui/base/l:add	(Ljava/lang/CharSequence;)Landroid/view/MenuItem;
-        //   1617: pop
-        //   1618: goto -25 -> 1593
-        //   1621: astore 8
-        //   1623: ldc_w 364
-        //   1626: new 366	java/lang/StringBuilder
-        //   1629: dup
-        //   1630: ldc_w 368
-        //   1633: invokespecial 371	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   1636: aload 8
-        //   1638: invokevirtual 374	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   1641: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   1644: invokevirtual 381	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   1647: invokestatic 386	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1650: aload_0
-        //   1651: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1654: bipush 27
-        //   1656: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1659: ifeq +55 -> 1714
-        //   1662: aload_0
-        //   1663: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1666: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1669: getfield 390	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czb	Lcom/tencent/mm/plugin/webview/ui/tools/widget/MovingImageButton;
-        //   1672: ifnull +42 -> 1714
-        //   1675: aload_0
-        //   1676: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1679: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1682: getfield 390	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czb	Lcom/tencent/mm/plugin/webview/ui/tools/widget/MovingImageButton;
-        //   1685: invokevirtual 395	com/tencent/mm/plugin/webview/ui/tools/widget/MovingImageButton:getVisibility	()I
-        //   1688: ifne +26 -> 1714
-        //   1691: aload_1
-        //   1692: bipush 27
-        //   1694: aload_0
-        //   1695: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1698: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1701: ldc_w 396
-        //   1704: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1707: ldc_w 397
-        //   1710: invokevirtual 305	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;I)Landroid/view/MenuItem;
-        //   1713: pop
-        //   1714: aload_0
-        //   1715: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1718: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1721: aload_0
-        //   1722: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1725: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1728: invokevirtual 215	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:eDS	()Ljava/lang/String;
-        //   1731: invokevirtual 400	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:aAP	(Ljava/lang/String;)Ljava/lang/String;
-        //   1734: astore 8
-        //   1736: aload_0
-        //   1737: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1740: invokevirtual 276	com/tencent/mm/plugin/webview/ui/tools/a:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1743: invokevirtual 280	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getIntent	()Landroid/content/Intent;
-        //   1746: ldc_w 402
-        //   1749: invokevirtual 288	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-        //   1752: astore 9
-        //   1754: aload_0
-        //   1755: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1758: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1761: getfield 405	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:Czu	Z
-        //   1764: ifne +89 -> 1853
-        //   1767: aload 8
-        //   1769: invokestatic 221	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-        //   1772: ifne +81 -> 1853
-        //   1775: aload 9
-        //   1777: invokestatic 221	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
-        //   1780: ifne +73 -> 1853
-        //   1783: aload_0
-        //   1784: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1787: sipush 255
-        //   1790: invokestatic 113	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1793: ifeq +60 -> 1853
-        //   1796: aload_0
-        //   1797: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1800: bipush 29
-        //   1802: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   1805: ifeq +48 -> 1853
-        //   1808: aload_0
-        //   1809: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1812: bipush 29
-        //   1814: invokestatic 109	com/tencent/mm/plugin/webview/ui/tools/i:c	(Lcom/tencent/mm/plugin/webview/ui/tools/i;I)Z
-        //   1817: ifeq +36 -> 1853
-        //   1820: aload_1
-        //   1821: bipush 29
-        //   1823: aload_0
-        //   1824: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1827: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1830: ldc_w 406
-        //   1833: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1836: ldc_w 407
-        //   1839: aload_0
-        //   1840: getfield 21	com/tencent/mm/plugin/webview/ui/tools/i$16:CxG	Lcom/tencent/mm/protocal/JsapiPermissionWrapper;
-        //   1843: sipush 255
-        //   1846: invokestatic 143	com/tencent/mm/plugin/webview/ui/tools/i:b	(Lcom/tencent/mm/protocal/JsapiPermissionWrapper;I)Z
-        //   1849: invokevirtual 323	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;IZ)Landroid/view/MenuItem;
-        //   1852: pop
-        //   1853: aload_0
-        //   1854: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1857: iconst_1
-        //   1858: putfield 410	com/tencent/mm/plugin/webview/ui/tools/i:nPt	Z
-        //   1861: aload_0
-        //   1862: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1865: getfield 414	com/tencent/mm/plugin/webview/ui/tools/i:mdB	Lcom/tencent/mm/ui/widget/a/e;
-        //   1868: invokevirtual 419	com/tencent/mm/ui/widget/a/e:fvu	()V
-        //   1871: ldc 29
-        //   1873: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   1876: return
-        //   1877: astore 8
-        //   1879: iconst_m1
-        //   1880: istore_3
-        //   1881: ldc_w 364
-        //   1884: new 366	java/lang/StringBuilder
-        //   1887: dup
-        //   1888: ldc_w 421
-        //   1891: invokespecial 371	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   1894: aload 8
-        //   1896: invokevirtual 374	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   1899: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   1902: invokevirtual 381	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   1905: invokestatic 424	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1908: iconst_m1
-        //   1909: istore_2
-        //   1910: goto -1542 -> 368
-        //   1913: aload_0
-        //   1914: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1917: bipush 39
-        //   1919: invokevirtual 117	com/tencent/mm/plugin/webview/ui/tools/i:VF	(I)Z
-        //   1922: ifeq -1485 -> 437
-        //   1925: iload_2
-        //   1926: iconst_1
-        //   1927: if_icmpne -1490 -> 437
-        //   1930: aload_1
-        //   1931: bipush 39
-        //   1933: aload_0
-        //   1934: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1937: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1940: ldc_w 425
-        //   1943: invokevirtual 128	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getString	(I)Ljava/lang/String;
-        //   1946: ldc_w 426
-        //   1949: aload_0
-        //   1950: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   1953: invokevirtual 121	com/tencent/mm/plugin/webview/ui/tools/i:eCT	()Lcom/tencent/mm/plugin/webview/ui/tools/WebViewUI;
-        //   1956: invokevirtual 133	com/tencent/mm/plugin/webview/ui/tools/WebViewUI:getResources	()Landroid/content/res/Resources;
-        //   1959: ldc 205
-        //   1961: invokevirtual 140	android/content/res/Resources:getColor	(I)I
-        //   1964: invokevirtual 208	com/tencent/mm/ui/base/l:a	(ILjava/lang/CharSequence;II)Landroid/view/MenuItem;
-        //   1967: pop
-        //   1968: goto -1531 -> 437
-        //   1971: astore 8
-        //   1973: ldc_w 364
-        //   1976: aload 8
-        //   1978: ldc_w 428
-        //   1981: iconst_0
-        //   1982: anewarray 4	java/lang/Object
-        //   1985: invokestatic 432	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   1988: goto -1192 -> 796
-        //   1991: astore 8
-        //   1993: ldc_w 364
-        //   1996: aload 8
-        //   1998: ldc_w 428
-        //   2001: iconst_0
-        //   2002: anewarray 4	java/lang/Object
-        //   2005: invokestatic 432	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   2008: goto -932 -> 1076
-        //   2011: astore 8
-        //   2013: ldc_w 364
-        //   2016: new 366	java/lang/StringBuilder
-        //   2019: dup
-        //   2020: ldc_w 368
-        //   2023: invokespecial 371	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-        //   2026: aload 8
-        //   2028: invokevirtual 374	java/lang/Exception:getMessage	()Ljava/lang/String;
-        //   2031: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        //   2034: invokevirtual 381	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   2037: invokestatic 386	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-        //   2040: iconst_0
-        //   2041: istore 7
-        //   2043: goto -856 -> 1187
-        //   2046: ldc_w 364
-        //   2049: ldc_w 434
-        //   2052: invokestatic 436	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   2055: goto -712 -> 1343
-        //   2058: aload_0
-        //   2059: getfield 19	com/tencent/mm/plugin/webview/ui/tools/i$16:CxD	Lcom/tencent/mm/plugin/webview/ui/tools/i;
-        //   2062: aload 8
-        //   2064: invokestatic 439	com/tencent/mm/plugin/webview/ui/tools/i:a	(Lcom/tencent/mm/plugin/webview/ui/tools/i;Ljava/util/List;)V
-        //   2067: goto -417 -> 1650
-        //   2070: astore 9
-        //   2072: goto -785 -> 1287
-        //   2075: astore 8
-        //   2077: iload_2
-        //   2078: istore_3
-        //   2079: goto -198 -> 1881
-        //   2082: iconst_m1
-        //   2083: istore_2
-        //   2084: iconst_m1
-        //   2085: istore_3
-        //   2086: goto -1718 -> 368
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	2089	0	this	16
-        //   0	2089	1	paramAnonymousl	l
-        //   46	2038	2	i	int
-        //   44	2042	3	j	int
-        //   361	5	4	k	int
-        //   1014	28	5	l	long
-        //   1185	857	7	bool	boolean
-        //   66	1519	8	localObject1	Object
-        //   1621	16	8	localException1	Exception
-        //   1734	34	8	str	String
-        //   1877	18	8	localException2	Exception
-        //   1971	6	8	localException3	Exception
-        //   1991	6	8	localException4	Exception
-        //   2011	52	8	localException5	Exception
-        //   2075	1	8	localException6	Exception
-        //   85	1691	9	localObject2	Object
-        //   2070	1	9	localException7	Exception
-        // Exception table:
-        //   from	to	target	type
-        //   1509	1593	1621	java/lang/Exception
-        //   1593	1618	1621	java/lang/Exception
-        //   2058	2067	1621	java/lang/Exception
-        //   263	339	1877	java/lang/Exception
-        //   344	353	1877	java/lang/Exception
-        //   733	796	1971	java/lang/Exception
-        //   1016	1076	1991	java/lang/Exception
-        //   1128	1172	2011	java/lang/Exception
-        //   1177	1187	2011	java/lang/Exception
-        //   1263	1283	2070	java/lang/Exception
-        //   353	363	2075	java/lang/Exception
-      }
-    };
-    Object localObject4 = eCT().eyJ();
-    eCT();
-    Object localObject1 = n.aDs((String)localObject4);
-    boolean bool = ((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).isMpUrl((String)localObject4);
-    this.mdB.Jfj = new n.c()
-    {
-      public final void onCreateMMMenu(l paramAnonymousl)
-      {
-        AppMethodBeat.i(79873);
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(480L, 0L, 1L, false);
-        paramAnonymousl.clear();
-        if (i.this.CxC.booleanValue())
-        {
-          AppMethodBeat.o(79873);
-          return;
-        }
-        if ((i.this.eCT().CAr != null) && (i.this.eCT().CAr.CBb.eAu()))
-        {
-          if ((!i.c(i.this, 35)) || (!i.this.VF(35)) || (i.this.eCT().CAr.bGo())) {
-            break label279;
-          }
-          paramAnonymousl.a(35, i.this.eCT().getString(2131762178), 2131690574);
-        }
-        for (;;)
-        {
-          switch (i.this.eCT().CAy)
-          {
-          }
-          try
-          {
-            label168:
-            LinkedList localLinkedList = i.this.eCT().eEh();
-            int i;
-            label279:
-            if (localLinkedList != null)
-            {
-              i = 0;
-              label187:
-              if ((i < localLinkedList.size()) && (i < 8))
-              {
-                d.a locala = (d.a)localLinkedList.get(i);
-                m localm = null;
-                if ("index".equals(bs.nullAsNil(locala.id))) {
-                  localm = (m)paramAnonymousl.a(15, i.this.eCT().getString(2131766098), 2131689814);
-                }
-                for (;;)
-                {
-                  if (localm != null) {
-                    localm.kbL = locala.url;
-                  }
-                  i += 1;
-                  break label187;
-                  if ((!i.this.VF(36)) || (!i.this.eCT().CAr.bGo())) {
-                    break;
-                  }
-                  paramAnonymousl.a(36, i.this.eCT().getString(2131762168), 2131690573);
-                  break;
-                  paramAnonymousl.a(40, i.this.eCT().getString(2131766150), 2131690335);
-                  break label168;
-                  paramAnonymousl.a(41, i.this.eCT().getString(2131766148), 2131690334);
-                  break label168;
-                  paramAnonymousl.a(42, i.this.eCT().getString(2131766149), 2131690335);
-                  break label168;
-                  if ("categories".equals(bs.nullAsNil(locala.id))) {
-                    localm = (m)paramAnonymousl.a(16, i.this.eCT().getString(2131766097), 2131689813);
-                  } else if ("cart".equals(bs.nullAsNil(locala.id))) {
-                    localm = (m)paramAnonymousl.a(17, i.this.eCT().getString(2131766096), 2131689812);
-                  } else if ("profile".equals(bs.nullAsNil(locala.id))) {
-                    localm = (m)paramAnonymousl.a(18, i.this.eCT().getString(2131766100), 2131689820);
-                  } else if ("member".equals(bs.nullAsNil(locala.id))) {
-                    localm = (m)paramAnonymousl.a(19, i.this.eCT().getString(2131766099), 2131689815);
-                  }
-                }
-              }
-            }
-            try
-            {
-              bool1 = i.this.eCT().Cfr.kYt.wH((String)localObject);
-              if (bool1) {}
-            }
-            catch (Exception localException4)
-            {
-              for (;;)
-              {
-                boolean bool1;
-                try
-                {
-                  Object localObject;
-                  i.this.eCT().Cfr.kYt.aCV((String)localObject);
-                  if (i.this.VF(10)) {
-                    paramAnonymousl.a(10, i.this.eCT().getString(2131756596), 2131690646);
-                  }
-                  if ((i.c(i.this, 6)) && (i.a(this.CxG, 44)) && (i.this.VF(6))) {
-                    paramAnonymousl.a(6, i.this.eCT().getString(2131766247), 2131690588, i.b(this.CxG, 44));
-                  }
-                  if ((i.c(i.this, 28)) && (i.this.VF(28))) {
-                    paramAnonymousl.a(28, i.this.eCT().getString(2131766077), 2131690644);
-                  }
-                  if (i.c(i.this, 31)) {
-                    paramAnonymousl.a(31, i.this.eCT().getString(2131766282), 2131689494);
-                  }
-                  if ((this.CxG.DIA != null) && (i.this.eCT().Czs) && (!bs.isNullOrNil(i.this.eCT().eDS())) && (!bs.isNullOrNil(i.this.eCT().CAN)) && (i.this.eCT().eDS().startsWith(i.this.eCT().CAN)) && (i.this.eCT().getIntent().getBooleanExtra("key_detail_can_delete", true)) && (i.this.eDs()))
-                  {
-                    if ((i.c(i.this, 12)) && (i.this.VF(12))) {
-                      paramAnonymousl.a(12, i.this.eCT().getString(2131758846), 2131689794);
-                    }
-                    if (i.c(i.this, 9)) {
-                      paramAnonymousl.a(9, i.this.eCT().getString(2131755707), 2131689802);
-                    }
-                  }
-                  if (i.c(i.this, 37))
-                  {
-                    i.this.eCT();
-                    if ((com.tencent.mm.plugin.webview.c.a(i.this.eCT().nKq)) && (i.this.VF(37))) {
-                      paramAnonymousl.a(37, i.this.eCT().getString(2131766125), 2131690669);
-                    }
-                  }
-                  if ((i.c(i.this, 11)) && (i.a(this.CxG, 18)) && (i.this.VF(11))) {
-                    paramAnonymousl.a(11, i.this.eCT().getString(2131762162), 2131690578, i.b(this.CxG, 18));
-                  }
-                  if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG) || (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pZB, 0) == 1))
-                  {
-                    localObject = i.this.eCT();
-                    if (!j.eAd()) {
-                      break label1564;
-                    }
-                    i = 2131766119;
-                    paramAnonymousl.a(99, ((WebViewUI)localObject).getString(i), 2131691441, false);
-                  }
-                  i.this.nPt = true;
-                  i.this.mdB.fvu();
-                  AppMethodBeat.o(79873);
-                  return;
-                  localException4 = localException4;
-                  ac.e("MicroMsg.WebViewMenuHelper", "sharebtn click fail isBizContact, ex = " + localException4.getMessage());
-                  bool1 = false;
-                }
-                catch (Exception localException2)
-                {
-                  ac.e("MicroMsg.WebViewMenuHelper", "sharebtn click fail triggerGetContact, ex = " + localException2.getMessage());
-                  continue;
-                }
-                boolean bool2;
-                try
-                {
-                  bool1 = i.this.eCT().Cfr.kYt.wG(localException2);
-                  if (bool1)
-                  {
-                    bool1 = i.a(this.CxG, 19);
-                    bool2 = i.b(this.CxG, 19);
-                    boolean bool3 = i.this.eCT().eyQ();
-                    if ((!i.c(i.this, 5)) || (!bool1) || (!i.this.VF(5))) {
-                      continue;
-                    }
-                    if (!bool3) {
-                      break label1520;
-                    }
-                    paramAnonymousl.a(5, i.this.eCT().getString(2131766259), 2131690612, bool2);
-                  }
-                }
-                catch (Exception localException3)
-                {
-                  for (;;)
-                  {
-                    ac.e("MicroMsg.WebViewMenuHelper", "sharebtn click fail, ex = " + localException3.getMessage());
-                    bool1 = false;
-                    continue;
-                    bool1 = i.a(this.CxG, 20);
-                    bool2 = i.b(this.CxG, 20);
-                  }
-                }
-                if ((this.CxI == null) || (!this.CxI.CsU))
-                {
-                  paramAnonymousl.a(5, i.this.eCT().getString(2131766258), 2131690612, bool2);
-                  continue;
-                  i = 2131766120;
-                }
-              }
-            }
-          }
-          catch (Exception localException1)
-          {
-            ac.e("MicroMsg.WebViewMenuHelper", "exception in add jd menu, " + localException1.getMessage());
-            localObject = i.this.eCT().getIntent().getStringExtra("srcUsername");
-            if (bs.isNullOrNil((String)localObject)) {}
-          }
-        }
-      }
-    };
-    this.mdB.Jfl = ((n.d)localObject2);
-    Object localObject2 = eCT().Cfr.getCurrentUrl();
-    if (!bs.isNullOrNil((String)localObject2))
-    {
-      localObject3 = Uri.parse((String)localObject2).getHost();
-      localObject4 = eCT().getString(2131766116, new Object[] { localObject3 });
-      if (bs.isNullOrNil(this.Cxw)) {
-        if ((bool) && (localObject1 != null) && (((n.a)localObject1).isDataValid()))
-        {
-          localObject2 = LayoutInflater.from(eCT()).inflate(2131494913, null);
-          localObject3 = (ImageView)((View)localObject2).findViewById(2131301214);
-          Object localObject5 = (TextView)((View)localObject2).findViewById(2131306141);
-          localObject4 = ((View)localObject2).findViewById(2131298761);
-          ((TextView)localObject5).setText(((n.a)localObject1).CBi);
-          localObject5 = new c.a();
-          ((c.a)localObject5).hKw = true;
-          ((c.a)localObject5).gLt = true;
-          ((c.a)localObject5).hKI = 2131231875;
-          com.tencent.mm.av.a.a.aFG().a(((n.a)localObject1).CBj, (ImageView)localObject3, ((c.a)localObject5).aFT());
-          ((View)localObject4).setOnClickListener(new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(175795);
-              i.this.fs("Contact_Scene", 173);
-              i.this.eCT().Cfc.eBM().B(new Object[] { i.this.eCT().bLL(), Integer.valueOf(38), Integer.valueOf(1) }).report();
-              i.this.eCT().aDq(this.CxI.hyx);
-              if (i.this.mdB != null) {
-                i.this.mdB.bmi();
-              }
-              AppMethodBeat.o(175795);
-            }
-          });
-          o.gD((View)localObject4);
-          this.mdB.J((View)localObject2, true);
-          if (!eCT().Czc) {
-            break label778;
-          }
-          this.mdB.lcG = true;
-          this.mdB.lcH = true;
-          label512:
-          if ((eCT().Czg == null) || (!eCT().Czg.isShown())) {
-            break label797;
-          }
-          eCT().Czg.hide();
-          this.mdB.cED();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (eCT().Cjc != null) {
-        eCT().Cjc.aCo("");
-      }
-      AppMethodBeat.o(79887);
-      return;
-      if (bs.isNullOrNil((String)localObject3)) {
-        break;
-      }
-      this.mdB.p((CharSequence)localObject4, 1);
-      break;
-      localObject3 = LayoutInflater.from(eCT()).inflate(2131494914, null);
-      localObject1 = (MMNeat7extView)((View)localObject3).findViewById(2131299007);
-      this.mdB.J((View)localObject3, false);
-      localObject3 = k.g(((MMNeat7extView)localObject1).getContext(), bs.nullAsNil(this.Cxw), (int)((MMNeat7extView)localObject1).getTextSize());
-      ((MMNeat7extView)localObject1).ar((CharSequence)localObject3);
-      localObject3 = (ClickableSpan[])((SpannableString)localObject3).getSpans(0, ((SpannableString)localObject3).length(), ClickableSpan.class);
-      if ((localObject3 == null) || (localObject3.length <= 0)) {
-        break;
-      }
-      ac.i("MicroMsg.WebViewMenuHelper", "terry h5 apply show");
-      com.tencent.mm.plugin.report.service.h.wUl.f(16337, new Object[] { localObject2, Integer.valueOf(1), Integer.valueOf(0) });
-      ((MMNeat7extView)localObject1).setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.g((NeatTextView)localObject1, new com.tencent.mm.pluginsdk.ui.span.n(((MMNeat7extView)localObject1).getContext()))
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(175796);
-          boolean bool = super.onTouch(paramAnonymousView, paramAnonymousMotionEvent);
-          if (bool)
-          {
-            ac.i("MMNeatTouchListener", "terry h5 apply click");
-            com.tencent.mm.plugin.report.service.h.wUl.f(16337, new Object[] { this.val$url, Integer.valueOf(1), Integer.valueOf(1) });
-          }
-          AppMethodBeat.o(175796);
-          return bool;
-        }
-      });
-      break;
-      this.mdB.p(" ", 1);
-      break;
-      label778:
-      this.mdB.lcG = false;
-      this.mdB.lcH = false;
-      break label512;
-      label797:
-      eCT().hideVKB();
-      this.mdB.cED();
-    }
+    AppMethodBeat.i(221644);
+    Cs(0L);
+    AppMethodBeat.o(221644);
   }
   
-  public final void bMt()
+  public final void bQT()
   {
     AppMethodBeat.i(79900);
-    if ((eCT() == null) || (eCT().nKq == null) || (eCT().kYu == null))
+    if ((eRK() == null) || (eRK().omW == null) || (eRK().lvw == null))
     {
-      ac.e("MicroMsg.WebViewMenuHelper", "setShareFuncFlag params failed");
+      ad.e("MicroMsg.WebViewMenuHelper", "setShareFuncFlag params failed");
       AppMethodBeat.o(79900);
       return;
     }
-    String str = eCT().nKq.getUrl();
-    if (!bs.isNullOrNil(str))
+    String str = eRK().omW.getUrl();
+    if (!bt.isNullOrNil(str))
     {
       try
       {
@@ -4222,7 +4248,7 @@ public final class i
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.WebViewMenuHelper", "create url fail : " + localException.getLocalizedMessage());
+        ad.e("MicroMsg.WebViewMenuHelper", "create url fail : " + localException.getLocalizedMessage());
         AppMethodBeat.o(79900);
         return;
       }
@@ -4233,111 +4259,119 @@ public final class i
       return;
     }
     label135:
-    int i = eDv();
-    if (eCT().Cjc != null) {
-      eCT().Cjc.fd("setFuncFlag", i);
+    int i = eSm();
+    if (eRK().DzP != null) {
+      eRK().DzP.fA("setFuncFlag", i);
     }
     AppMethodBeat.o(79900);
   }
   
-  public final void eDm()
+  public final void eSe()
   {
     AppMethodBeat.i(79879);
-    this.Cxt.clear();
-    this.Cxt.put("menuItem:share:brand", Integer.valueOf(0));
-    this.Cxt.put("menuItem:share:appMessage", Integer.valueOf(1));
-    this.Cxt.put("menuItem:share:dataMessage", Integer.valueOf(23));
-    this.Cxt.put("menuItem:share:timeline", Integer.valueOf(2));
-    this.Cxt.put("menuItem:favorite", Integer.valueOf(3));
-    this.Cxt.put("menuItem:profile", Integer.valueOf(5));
-    this.Cxt.put("menuItem:addContact", Integer.valueOf(5));
-    this.Cxt.put("menuItem:copyUrl", Integer.valueOf(6));
-    this.Cxt.put("menuItem:openWithSafari", Integer.valueOf(7));
-    this.Cxt.put("menuItem:share:email", Integer.valueOf(8));
-    this.Cxt.put("menuItem:delete", Integer.valueOf(9));
-    this.Cxt.put("menuItem:exposeArticle", Integer.valueOf(10));
-    this.Cxt.put("menuItem:setFont", Integer.valueOf(11));
-    this.Cxt.put("menuItem:editTag", Integer.valueOf(12));
-    this.Cxt.put("menuItem:share:qq", Integer.valueOf(20));
-    this.Cxt.put("menuItem:share:weiboApp", Integer.valueOf(21));
-    this.Cxt.put("menuItem:share:QZone", Integer.valueOf(22));
-    this.Cxt.put("menuItem:share:Facebook", Integer.valueOf(33));
-    this.Cxt.put("menuItem:share:enterprise", Integer.valueOf(24));
-    this.Cxt.put("menuItem:refresh", Integer.valueOf(28));
-    this.Cxt.put("menuItem:share:wework", Integer.valueOf(25));
-    this.Cxt.put("menuItem:share:weread", Integer.valueOf(26));
-    this.Cxt.put("menuItem:addShortcut", Integer.valueOf(29));
-    this.Cxt.put("menuItem:search", Integer.valueOf(31));
-    this.Cxt.put("menuItem:readArticle", Integer.valueOf(34));
-    this.Cxt.put("menuItem:minimize", Integer.valueOf(35));
-    this.Cxt.put("menuItem:cancelMinimize", Integer.valueOf(36));
-    this.Cxt.put("menuItem:translate", Integer.valueOf(37));
-    this.Cxt.put("menuItem:haoKan", Integer.valueOf(38));
-    this.Cxt.put("menuItem:cancelHaoKan", Integer.valueOf(39));
-    this.Cxt.put("menuItem:ttsStart", Integer.valueOf(40));
-    this.Cxt.put("menuItem:ttsPause", Integer.valueOf(41));
-    this.Cxt.put("menuItem:ttsResume", Integer.valueOf(42));
+    this.Ebb.clear();
+    this.Ebb.put("menuItem:share:brand", Integer.valueOf(0));
+    this.Ebb.put("menuItem:share:appMessage", Integer.valueOf(1));
+    this.Ebb.put("menuItem:share:dataMessage", Integer.valueOf(23));
+    this.Ebb.put("menuItem:share:timeline", Integer.valueOf(2));
+    this.Ebb.put("menuItem:favorite", Integer.valueOf(3));
+    this.Ebb.put("menuItem:profile", Integer.valueOf(5));
+    this.Ebb.put("menuItem:addContact", Integer.valueOf(5));
+    this.Ebb.put("menuItem:copyUrl", Integer.valueOf(6));
+    this.Ebb.put("menuItem:openWithSafari", Integer.valueOf(7));
+    this.Ebb.put("menuItem:share:email", Integer.valueOf(8));
+    this.Ebb.put("menuItem:delete", Integer.valueOf(9));
+    this.Ebb.put("menuItem:exposeArticle", Integer.valueOf(10));
+    this.Ebb.put("menuItem:setFont", Integer.valueOf(11));
+    this.Ebb.put("menuItem:editTag", Integer.valueOf(12));
+    this.Ebb.put("menuItem:share:qq", Integer.valueOf(20));
+    this.Ebb.put("menuItem:share:weiboApp", Integer.valueOf(21));
+    this.Ebb.put("menuItem:share:QZone", Integer.valueOf(22));
+    this.Ebb.put("menuItem:share:facebook", Integer.valueOf(33));
+    this.Ebb.put("menuItem:share:enterprise", Integer.valueOf(24));
+    this.Ebb.put("menuItem:refresh", Integer.valueOf(28));
+    this.Ebb.put("menuItem:share:wework", Integer.valueOf(25));
+    this.Ebb.put("menuItem:share:weread", Integer.valueOf(26));
+    this.Ebb.put("menuItem:addShortcut", Integer.valueOf(29));
+    this.Ebb.put("menuItem:search", Integer.valueOf(31));
+    this.Ebb.put("menuItem:readArticle", Integer.valueOf(34));
+    this.Ebb.put("menuItem:minimize", Integer.valueOf(35));
+    this.Ebb.put("menuItem:cancelMinimize", Integer.valueOf(36));
+    this.Ebb.put("menuItem:translate", Integer.valueOf(37));
+    this.Ebb.put("menuItem:haoKan", Integer.valueOf(38));
+    this.Ebb.put("menuItem:cancelHaoKan", Integer.valueOf(39));
+    this.Ebb.put("menuItem:ttsStart", Integer.valueOf(40));
+    this.Ebb.put("menuItem:ttsPause", Integer.valueOf(41));
+    this.Ebb.put("menuItem:ttsResume", Integer.valueOf(42));
     AppMethodBeat.o(79879);
   }
   
-  protected final void eDn()
+  protected final void eSf()
   {
     AppMethodBeat.i(79884);
-    if (!this.Cxz)
+    if (!this.Ebh)
     {
       AppMethodBeat.o(79884);
       return;
     }
-    this.Cxy = false;
-    eCT().CAJ = false;
-    this.Cxz = false;
-    if (this.nPt) {
-      bMr();
+    this.Ebg = false;
+    eRK().Eer = false;
+    this.Ebh = false;
+    if (this.orZ) {
+      Cs(0L);
     }
     AppMethodBeat.o(79884);
   }
   
-  public final void eDo()
+  public final void eSg()
   {
     AppMethodBeat.i(79886);
-    this.Cxy = true;
-    this.CxA.clear();
-    if ((eCT() instanceof GameWebViewUI))
+    this.Ebg = true;
+    this.Ebi.clear();
+    if ((eRK() instanceof GameWebViewUI))
     {
-      this.CxA.add(Integer.valueOf(11));
-      this.CxA.add(Integer.valueOf(28));
+      this.Ebi.add(Integer.valueOf(11));
+      this.Ebi.add(Integer.valueOf(28));
       AppMethodBeat.o(79886);
       return;
     }
-    this.CxA.add(Integer.valueOf(7));
-    this.CxA.add(Integer.valueOf(11));
-    this.CxA.add(Integer.valueOf(28));
+    this.Ebi.add(Integer.valueOf(7));
+    this.Ebi.add(Integer.valueOf(11));
+    this.Ebi.add(Integer.valueOf(28));
     AppMethodBeat.o(79886);
   }
   
-  protected final void eDq()
+  protected final void eSi()
   {
     AppMethodBeat.i(79892);
-    if (eCT().Cjc != null) {
-      eCT().Cjc.aCo("fav");
+    if (eRK().DzP != null)
+    {
+      eRK().DzP.aGN("fav");
+      eRK().DzP.cn("sendAppMessage", false);
+      eRK().DzP.m(eSj());
+      AppMethodBeat.o(79892);
+      return;
     }
     Object localObject1 = new Bundle();
-    ((Bundle)localObject1).putLong("msg_id", eCT().getIntent().getLongExtra("msg_id", -9223372036854775808L));
-    ((Bundle)localObject1).putString("sns_local_id", eCT().getIntent().getStringExtra("sns_local_id"));
-    ((Bundle)localObject1).putInt("news_svr_id", eCT().getIntent().getIntExtra("news_svr_id", 0));
-    ((Bundle)localObject1).putString("news_svr_tweetid", eCT().getIntent().getStringExtra("news_svr_tweetid"));
-    ((Bundle)localObject1).putInt("message_index", eCT().getIntent().getIntExtra("message_index", 0));
-    ((Bundle)localObject1).putString("rawUrl", eCT().bLL());
+    ((Bundle)localObject1).putLong("msg_id", eRK().getIntent().getLongExtra("msg_id", -9223372036854775808L));
+    ((Bundle)localObject1).putString("sns_local_id", eRK().getIntent().getStringExtra("sns_local_id"));
+    ((Bundle)localObject1).putInt("news_svr_id", eRK().getIntent().getIntExtra("news_svr_id", 0));
+    ((Bundle)localObject1).putString("news_svr_tweetid", eRK().getIntent().getStringExtra("news_svr_tweetid"));
+    ((Bundle)localObject1).putInt("message_index", eRK().getIntent().getIntExtra("message_index", 0));
+    ((Bundle)localObject1).putString("rawUrl", eRK().bQm());
     Object localObject2;
-    if ((!bs.isNullOrNil(eCT().bLL())) && (eCT().bLL().endsWith("#rd")))
+    if ((!bt.isNullOrNil(eRK().bQm())) && (eRK().bQm().endsWith("#rd")))
     {
-      localObject2 = eCT().bLL().substring(0, eCT().bLL().length() - 3);
-      if ((!bs.isNullOrNil(eCT().eDS())) && (!eCT().eDS().startsWith((String)localObject2)))
+      localObject2 = eRK().bQm().substring(0, eRK().bQm().length() - 3);
+      if ((!bt.isNullOrNil(eRK().eSK())) && (!eRK().eSK().startsWith((String)localObject2)))
       {
-        ((Bundle)localObject1).putString("rawUrl", eCT().eDS());
+        ((Bundle)localObject1).putString("rawUrl", eRK().eSK());
         ((Bundle)localObject1).putLong("msg_id", -9223372036854775808L);
       }
-      localObject2 = eCT().getIntent();
+    }
+    for (;;)
+    {
+      localObject2 = eRK().getIntent();
       if (localObject2 != null)
       {
         ((Bundle)localObject1).putString("preChatName", ((Intent)localObject2).getStringExtra("preChatName"));
@@ -4345,106 +4379,53 @@ public final class i
         ((Bundle)localObject1).putString("prePublishId", ((Intent)localObject2).getStringExtra("prePublishId"));
         ((Bundle)localObject1).putString("preUsername", ((Intent)localObject2).getStringExtra("preUsername"));
       }
-    }
-    for (;;)
-    {
-      boolean bool;
       try
       {
-        for (;;)
+        localObject1 = eRK().DIv.lvv.aL((Bundle)localObject1);
+        if (((com.tencent.mm.plugin.webview.stub.c)localObject1).eRs())
         {
-          localObject1 = eCT().Cfr.kYt.aG((Bundle)localObject1);
-          if (!((com.tencent.mm.plugin.webview.stub.c)localObject1).eCB()) {
-            break label786;
-          }
-          eCT().Cjc.cf("sendAppMessage", false);
-          localObject1 = eCT().Cjc;
-          localObject2 = eDr();
-          ac.i("MicroMsg.JsApiHandler", "onFavorite %b", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.webview.c.f)localObject1).Apr) });
-          bool = ((com.tencent.mm.plugin.webview.c.f)localObject1).Apr;
-          if (!bool) {
-            try
-            {
-              ((com.tencent.mm.plugin.webview.c.f)localObject1).kYt.ac("scene", "favorite", ((com.tencent.mm.plugin.webview.c.f)localObject1).CjB);
-              ((com.tencent.mm.plugin.webview.c.f)localObject1).i(((com.tencent.mm.plugin.webview.c.f)localObject1).bu((Map)localObject2), "sendAppMessage");
-              ac.i("MicroMsg.WebViewMenuHelper", "on favorite simple url");
-              AppMethodBeat.o(79892);
-              return;
-              if ((bs.isNullOrNil(eCT().eDS())) || (eCT().eDS().startsWith(eCT().bLL()))) {
-                break;
-              }
-              ((Bundle)localObject1).putString("rawUrl", eCT().eDS());
-              ((Bundle)localObject1).putLong("msg_id", -9223372036854775808L);
-            }
-            catch (Exception localException1)
-            {
-              for (;;)
-              {
-                ac.w("MicroMsg.JsApiHandler", "jsapiBundlePutString, ex = " + localException1.getMessage());
-              }
-            }
+          eRK().DzP.cn("sendAppMessage", false);
+          eRK().DzP.m(eSj());
+          ad.i("MicroMsg.WebViewMenuHelper", "on favorite simple url");
+          AppMethodBeat.o(79892);
+          return;
+          if ((!bt.isNullOrNil(eRK().eSK())) && (!eRK().eSK().startsWith(eRK().bQm())))
+          {
+            ((Bundle)localObject1).putString("rawUrl", eRK().eSK());
+            ((Bundle)localObject1).putLong("msg_id", -9223372036854775808L);
           }
         }
-        localObject2 = localException2.UN(1);
+        else
+        {
+          com.tencent.mm.plugin.fav.ui.e.a(((com.tencent.mm.plugin.webview.stub.c)localObject1).getRet(), eRK(), eRK().tUH);
+          if (((com.tencent.mm.plugin.webview.stub.c)localObject1).getRet() == 0)
+          {
+            Xv(1);
+            AppMethodBeat.o(79892);
+            return;
+          }
+        }
       }
-      catch (Exception localException2)
+      catch (Exception localException)
       {
-        ac.e("MicroMsg.WebViewMenuHelper", "edw, favoriteUrl fail, ex = " + localException2.getMessage());
+        ad.e("MicroMsg.WebViewMenuHelper", "edw, favoriteUrl fail, ex = " + localException.getMessage());
         AppMethodBeat.o(79892);
         return;
       }
-      if (localObject2 != null)
-      {
-        bool = ((Bundle)localObject2).getBoolean("WebViewShare_reslut", false);
-        if (bool) {
-          try
-          {
-            localException2.kYt.ac("scene", "favorite", localException2.CjB);
-            localException2.i((Bundle)localObject2, "sendAppMessage");
-          }
-          catch (Exception localException4)
-          {
-            for (;;)
-            {
-              ac.w("MicroMsg.JsApiHandler", "jsapiBundlePutString, ex = " + localException4.getMessage());
-            }
-          }
-        }
-      }
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("scene", "favorite");
-      localObject2 = l.a.b("menu:share:appmessage", (Map)localObject2, localException2.Cjz, localException2.CjA);
-      localException2.Cjr.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + (String)localObject2 + ")", null);
-      try
-      {
-        localException2.kYt.ac("scene", "favorite", localException2.CjB);
-      }
-      catch (Exception localException3)
-      {
-        ac.w("MicroMsg.JsApiHandler", "jsapiBundlePutString, ex = " + localException3.getMessage());
-      }
     }
-    label786:
-    com.tencent.mm.plugin.fav.ui.e.a(localException3.getRet(), eCT(), eCT().sXH);
-    if (localException3.getRet() == 0)
-    {
-      VG(1);
-      AppMethodBeat.o(79892);
-      return;
-    }
-    VG(2);
+    Xv(2);
     AppMethodBeat.o(79892);
   }
   
-  public final HashMap<String, String> eDr()
+  public final HashMap<String, String> eSj()
   {
     AppMethodBeat.i(79893);
-    if (!eCT().CAJ)
+    if (!eRK().Eer)
     {
       AppMethodBeat.o(79893);
       return null;
     }
-    Intent localIntent = eCT().getIntent();
+    Intent localIntent = eRK().getIntent();
     String str1 = localIntent.getStringExtra("share_report_pre_msg_url");
     String str2 = localIntent.getStringExtra("share_report_pre_msg_title");
     String str3 = localIntent.getStringExtra("share_report_pre_msg_icon_url");
@@ -4457,135 +4438,149 @@ public final class i
     return localHashMap;
   }
   
-  final boolean eDs()
+  final boolean eSk()
   {
     AppMethodBeat.i(79896);
     try
     {
-      boolean bool = eCT().Cfr.kYt.aCT("favorite");
+      boolean bool = eRK().DIv.lvv.aIu("favorite");
       AppMethodBeat.o(79896);
       return bool;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.WebViewMenuHelper", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.WebViewMenuHelper", localException, "", new Object[0]);
       AppMethodBeat.o(79896);
     }
     return false;
   }
   
-  public final Bundle eDt()
-  {
-    AppMethodBeat.i(79898);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("funcFlag", eDv());
-    AppMethodBeat.o(79898);
-    return localBundle;
-  }
-  
-  public final void eDu()
+  public final void eSl()
   {
     AppMethodBeat.i(79899);
-    if ((eCT() == null) || (eCT().kYu == null))
+    if ((eRK() == null) || (eRK().lvw == null))
     {
-      ac.e("MicroMsg.WebViewMenuHelper", "showShareMenu params failed");
+      ad.e("MicroMsg.WebViewMenuHelper", "showShareMenu params failed");
       AppMethodBeat.o(79899);
       return;
     }
-    final JsapiPermissionWrapper localJsapiPermissionWrapper = eCT().kYu.eCm();
+    final JsapiPermissionWrapper localJsapiPermissionWrapper = eRK().lvw.eRg();
     if ((!a(localJsapiPermissionWrapper, 21, 1)) && (!a(localJsapiPermissionWrapper, 23, 2)))
     {
-      com.tencent.mm.ui.base.h.cg(eCT(), eCT().getString(2131766260));
+      com.tencent.mm.ui.base.h.cl(eRK(), eRK().getString(2131766260));
       AppMethodBeat.o(79899);
       return;
     }
-    com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(eCT(), 1, false);
-    locale.ISu = new n.c()
+    com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(eRK(), 1, false);
+    locale.KJy = new n.d()
     {
       public final void onCreateMMMenu(l paramAnonymousl)
       {
-        AppMethodBeat.i(210031);
-        if (i.this.a(localJsapiPermissionWrapper, 23, 2)) {
-          paramAnonymousl.a(2, i.this.eCT().getString(2131762164), 2131689817, false);
-        }
+        AppMethodBeat.i(208012);
         if (i.this.a(localJsapiPermissionWrapper, 21, 1)) {
-          paramAnonymousl.a(1, i.this.eCT().getString(2131762163), 2131689831, false);
+          paramAnonymousl.a(1, i.this.eRK().getString(2131762163), 2131689831, false);
         }
-        AppMethodBeat.o(210031);
+        if (i.this.a(localJsapiPermissionWrapper, 23, 2)) {
+          paramAnonymousl.a(2, i.this.eRK().getString(2131762164), 2131689817, false);
+        }
+        AppMethodBeat.o(208012);
       }
     };
-    locale.ISv = new n.d()
+    locale.KJz = new n.e()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
         paramAnonymousInt = 0;
-        AppMethodBeat.i(210032);
+        AppMethodBeat.i(208013);
         switch (paramAnonymousMenuItem.getItemId())
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(210032);
+          AppMethodBeat.o(208013);
           return;
-          paramAnonymousMenuItem = i.this.eCT().getIntent().getStringExtra("KPublisherId");
-          String str1 = i.this.eCT().getIntent().getStringExtra("KAppId");
-          String str2 = i.this.eCT().getIntent().getStringExtra("srcUsername");
-          i.this.eCT().Cfc.eBM().B(new Object[] { i.this.eCT().bLL(), Integer.valueOf(1), Integer.valueOf(1), paramAnonymousMenuItem, str1, str2 }).report();
-          i.this.eCT().dFh();
-          AppMethodBeat.o(210032);
+          paramAnonymousMenuItem = i.this.eRK().getIntent().getStringExtra("KPublisherId");
+          String str1 = i.this.eRK().getIntent().getStringExtra("KAppId");
+          String str2 = i.this.eRK().getIntent().getStringExtra("srcUsername");
+          i.this.eRK().DIg.eQG().C(new Object[] { i.this.eRK().bQm(), Integer.valueOf(1), Integer.valueOf(1), paramAnonymousMenuItem, str1, str2 }).report();
+          i.this.eRK().XA(1);
+          AppMethodBeat.o(208013);
           return;
-          paramAnonymousMenuItem = i.this.eCT().getIntent().getStringExtra("KPublisherId");
-          str1 = i.this.eCT().getIntent().getStringExtra("KAppId");
-          str2 = i.this.eCT().getIntent().getStringExtra("srcUsername");
-          i.this.eCT().Cfc.eBM().B(new Object[] { i.this.eCT().bLL(), Integer.valueOf(2), Integer.valueOf(1), paramAnonymousMenuItem, str1, str2 }).report();
-          if (i.this.Cxx.containsKey(i.this.eCT().nKq.getUrl())) {
-            paramAnonymousInt = ((Integer)i.this.Cxx.get(i.this.eCT().nKq.getUrl())).intValue();
+          paramAnonymousMenuItem = i.this.eRK().getIntent().getStringExtra("KPublisherId");
+          str1 = i.this.eRK().getIntent().getStringExtra("KAppId");
+          str2 = i.this.eRK().getIntent().getStringExtra("srcUsername");
+          i.this.eRK().DIg.eQG().C(new Object[] { i.this.eRK().bQm(), Integer.valueOf(2), Integer.valueOf(1), paramAnonymousMenuItem, str1, str2 }).report();
+          if (i.this.Ebf.containsKey(i.this.eRK().omW.getUrl())) {
+            paramAnonymousInt = ((Integer)i.this.Ebf.get(i.this.eRK().omW.getUrl())).intValue();
           }
-          i.a(i.this, paramAnonymousInt);
+          i.a(i.this, paramAnonymousInt, 1);
         }
       }
     };
     locale.p(" ", 1);
-    locale.cED();
+    locale.cMW();
     AppMethodBeat.o(79899);
+  }
+  
+  public final int eSm()
+  {
+    AppMethodBeat.i(79901);
+    if ((eRK() == null) || (eRK().lvw == null))
+    {
+      ad.e("MicroMsg.WebViewMenuHelper", "getShareFuncFlag params failed");
+      AppMethodBeat.o(79901);
+      return -1;
+    }
+    JsapiPermissionWrapper localJsapiPermissionWrapper = eRK().lvw.eRg();
+    if (a(localJsapiPermissionWrapper, 21, 1)) {}
+    for (int i = 1;; i = 0)
+    {
+      int j = i;
+      if (a(localJsapiPermissionWrapper, 23, 2)) {
+        j = i | 0x2;
+      }
+      ad.i("MicroMsg.WebViewMenuHelper", "getShareFuncFlag %d", new Object[] { Integer.valueOf(j) });
+      AppMethodBeat.o(79901);
+      return j;
+    }
   }
   
   public final void f(String paramString, Intent paramIntent)
   {
-    AppMethodBeat.i(188374);
-    SparseBooleanArray localSparseBooleanArray2 = (SparseBooleanArray)this.Cxs.get(paramString);
+    AppMethodBeat.i(208015);
+    SparseBooleanArray localSparseBooleanArray2 = (SparseBooleanArray)this.Eba.get(paramString);
     SparseBooleanArray localSparseBooleanArray1 = localSparseBooleanArray2;
     if (localSparseBooleanArray2 == null)
     {
       localSparseBooleanArray1 = new SparseBooleanArray();
-      this.Cxs.put(paramString, localSparseBooleanArray1);
+      this.Eba.put(paramString, localSparseBooleanArray1);
     }
     if (localSparseBooleanArray1 != null)
     {
       localSparseBooleanArray1.put(34, true);
       localSparseBooleanArray1.put(10, paramIntent.getBooleanExtra("key_menu_hide_expose", false));
     }
-    AppMethodBeat.o(188374);
+    AppMethodBeat.o(208015);
   }
   
-  public final void fs(String paramString, int paramInt)
+  public final void fP(String paramString, int paramInt)
   {
     AppMethodBeat.i(79895);
-    if (eCT().Cjc != null)
+    if (eRK().DzP != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt(paramString, paramInt);
-      paramString = eCT().Cjc;
+      paramString = eRK().DzP;
       try
       {
-        paramString.kYt.a(21, localBundle, paramString.CjB);
+        paramString.lvv.a(21, localBundle, paramString.DMF);
         AppMethodBeat.o(79895);
         return;
       }
       catch (Exception paramString)
       {
-        ac.printErrStackTrace("MicroMsg.JsApiHandler", paramString, "", new Object[0]);
-        ac.w("MicroMsg.JsApiHandler", "updateJsapiArgsBundleKV, ex = ".concat(String.valueOf(paramString)));
+        ad.printErrStackTrace("MicroMsg.JsApiHandler", paramString, "", new Object[0]);
+        ad.w("MicroMsg.JsApiHandler", "updateJsapiArgsBundleKV, ex = ".concat(String.valueOf(paramString)));
       }
     }
     AppMethodBeat.o(79895);
@@ -4594,7 +4589,7 @@ public final class i
   public final void onDestroy()
   {
     AppMethodBeat.i(79878);
-    Iterator localIterator = this.Cxs.values().iterator();
+    Iterator localIterator = this.Eba.values().iterator();
     while (localIterator.hasNext())
     {
       SparseBooleanArray localSparseBooleanArray = (SparseBooleanArray)localIterator.next();
@@ -4602,10 +4597,10 @@ public final class i
         localSparseBooleanArray.clear();
       }
     }
-    this.Cxs.clear();
-    this.Cxx.clear();
-    if ((this.mdB != null) && (this.mdB.isShowing())) {
-      this.mdB.bmi();
+    this.Eba.clear();
+    this.Ebf.clear();
+    if ((this.mDL != null) && (this.mDL.isShowing())) {
+      this.mDL.bpT();
     }
     AppMethodBeat.o(79878);
   }

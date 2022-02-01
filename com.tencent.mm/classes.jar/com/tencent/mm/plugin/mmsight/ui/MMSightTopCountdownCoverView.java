@@ -14,31 +14,31 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ui.al;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class MMSightTopCountdownCoverView
   extends FrameLayout
 {
-  final ao mHandler;
-  final View uSh;
-  private final ImageView uSi;
-  final TextView uSj;
-  final TextView uSk;
-  long uSl;
-  long uSm;
-  final Runnable uSn;
-  final Runnable uSo;
-  final ObjectAnimator uSp;
+  final ap mHandler;
+  final View vVq;
+  private final ImageView vVr;
+  final TextView vVs;
+  final TextView vVt;
+  long vVu;
+  long vVv;
+  final Runnable vVw;
+  final Runnable vVx;
+  final ObjectAnimator vVy;
   
   public MMSightTopCountdownCoverView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(94569);
-    this.mHandler = new ao(Looper.getMainLooper());
-    this.uSn = new Runnable()
+    this.mHandler = new ap(Looper.getMainLooper());
+    this.vVw = new Runnable()
     {
       public final void run()
       {
@@ -47,7 +47,7 @@ public class MMSightTopCountdownCoverView
         AppMethodBeat.o(94567);
       }
     };
-    this.uSo = new Runnable()
+    this.vVx = new Runnable()
     {
       public final void run()
       {
@@ -63,17 +63,17 @@ public class MMSightTopCountdownCoverView
       }
     };
     LayoutInflater.from(getContext()).inflate(2131494917, this, true);
-    this.uSh = findViewById(2131297932);
-    this.uSi = ((ImageView)findViewById(2131298801));
-    this.uSj = ((TextView)findViewById(2131298802));
-    this.uSk = ((TextView)findViewById(2131298800));
-    this.uSp = ObjectAnimator.ofFloat(this.uSi, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-    this.uSp.setDuration(2000L);
-    this.uSp.setInterpolator(new AccelerateInterpolator());
-    this.uSp.setRepeatCount(-1);
-    this.uSp.setRepeatMode(1);
+    this.vVq = findViewById(2131297932);
+    this.vVr = ((ImageView)findViewById(2131298801));
+    this.vVs = ((TextView)findViewById(2131298802));
+    this.vVt = ((TextView)findViewById(2131298800));
+    this.vVy = ObjectAnimator.ofFloat(this.vVr, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+    this.vVy.setDuration(2000L);
+    this.vVy.setInterpolator(new AccelerateInterpolator());
+    this.vVy.setRepeatCount(-1);
+    this.vVy.setRepeatMode(1);
     setBackgroundColor(Color.argb(Math.round(127.5F), 0, 0, 0));
-    deu();
+    dnS();
     setVisibility(8);
     AppMethodBeat.o(94569);
   }
@@ -82,8 +82,8 @@ public class MMSightTopCountdownCoverView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(94570);
-    this.mHandler = new ao(Looper.getMainLooper());
-    this.uSn = new Runnable()
+    this.mHandler = new ap(Looper.getMainLooper());
+    this.vVw = new Runnable()
     {
       public final void run()
       {
@@ -92,7 +92,7 @@ public class MMSightTopCountdownCoverView
         AppMethodBeat.o(94567);
       }
     };
-    this.uSo = new Runnable()
+    this.vVx = new Runnable()
     {
       public final void run()
       {
@@ -108,22 +108,22 @@ public class MMSightTopCountdownCoverView
       }
     };
     LayoutInflater.from(getContext()).inflate(2131494917, this, true);
-    this.uSh = findViewById(2131297932);
-    this.uSi = ((ImageView)findViewById(2131298801));
-    this.uSj = ((TextView)findViewById(2131298802));
-    this.uSk = ((TextView)findViewById(2131298800));
-    this.uSp = ObjectAnimator.ofFloat(this.uSi, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
-    this.uSp.setDuration(2000L);
-    this.uSp.setInterpolator(new AccelerateInterpolator());
-    this.uSp.setRepeatCount(-1);
-    this.uSp.setRepeatMode(1);
+    this.vVq = findViewById(2131297932);
+    this.vVr = ((ImageView)findViewById(2131298801));
+    this.vVs = ((TextView)findViewById(2131298802));
+    this.vVt = ((TextView)findViewById(2131298800));
+    this.vVy = ObjectAnimator.ofFloat(this.vVr, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+    this.vVy.setDuration(2000L);
+    this.vVy.setInterpolator(new AccelerateInterpolator());
+    this.vVy.setRepeatCount(-1);
+    this.vVy.setRepeatMode(1);
     setBackgroundColor(Color.argb(Math.round(127.5F), 0, 0, 0));
-    deu();
+    dnS();
     setVisibility(8);
     AppMethodBeat.o(94570);
   }
   
-  private void deu()
+  private void dnS()
   {
     AppMethodBeat.i(94571);
     Object localObject = getContext();
@@ -132,7 +132,7 @@ public class MMSightTopCountdownCoverView
       AppMethodBeat.o(94571);
       return;
     }
-    localObject = aj.bf((Activity)localObject);
+    localObject = al.bf((Activity)localObject);
     int j = getPaddingLeft();
     if (localObject != null) {
       i = getPaddingTop();
@@ -145,33 +145,33 @@ public class MMSightTopCountdownCoverView
     }
   }
   
-  private void dex()
+  private void dnV()
   {
     AppMethodBeat.i(94575);
-    dew();
-    this.uSp.cancel();
+    dnU();
+    this.vVy.cancel();
     AppMethodBeat.o(94575);
   }
   
-  public final void dev()
+  public final void dnT()
   {
     AppMethodBeat.i(94572);
-    if (this.uSm > 0L)
+    if (this.vVv > 0L)
     {
-      dex();
-      this.uSi.setAlpha(1.0F);
-      this.uSj.setText(String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(0), Integer.valueOf(0) }));
-      this.uSm = 0L;
-      this.uSl = 0L;
+      dnV();
+      this.vVr.setAlpha(1.0F);
+      this.vVs.setText(String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(0), Integer.valueOf(0) }));
+      this.vVv = 0L;
+      this.vVu = 0L;
     }
     AppMethodBeat.o(94572);
   }
   
-  final void dew()
+  final void dnU()
   {
     AppMethodBeat.i(94574);
-    this.mHandler.removeCallbacks(this.uSo);
-    this.mHandler.removeCallbacks(this.uSn);
+    this.mHandler.removeCallbacks(this.vVx);
+    this.mHandler.removeCallbacks(this.vVw);
     AppMethodBeat.o(94574);
   }
   
@@ -179,13 +179,13 @@ public class MMSightTopCountdownCoverView
   {
     AppMethodBeat.i(94573);
     super.onDetachedFromWindow();
-    dex();
+    dnV();
     AppMethodBeat.o(94573);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.MMSightTopCountdownCoverView
  * JD-Core Version:    0.7.0.1
  */

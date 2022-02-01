@@ -34,10 +34,10 @@ public class WebViewJSSDKVideoItem
     AppMethodBeat.o(79022);
   }
   
-  public final void bt(JSONObject paramJSONObject)
+  public final void bC(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(182697);
-    super.bt(paramJSONObject);
+    super.bC(paramJSONObject);
     if (paramJSONObject != null) {
       this.duration = paramJSONObject.optInt("duration");
     }
@@ -49,10 +49,10 @@ public class WebViewJSSDKVideoItem
     return 0;
   }
   
-  public final JSONObject fcF()
+  public final JSONObject ftr()
   {
     AppMethodBeat.i(182698);
-    JSONObject localJSONObject = super.fcF();
+    JSONObject localJSONObject = super.ftr();
     try
     {
       localJSONObject.put("duration", this.duration);
@@ -66,20 +66,20 @@ public class WebViewJSSDKVideoItem
     }
   }
   
-  public final WebViewJSSDKFileItem fcG()
+  public final WebViewJSSDKFileItem fts()
   {
     AppMethodBeat.i(79021);
-    this.dgl = aw.aBZ(this.jAH);
+    this.drH = ax.aHA(this.jUC);
     AppMethodBeat.o(79021);
     return this;
   }
   
-  public final String fcH()
+  public final String ftt()
   {
     return "mp4";
   }
   
-  public final String fda()
+  public final String ftu()
   {
     return "video";
   }

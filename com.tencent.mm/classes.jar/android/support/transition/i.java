@@ -6,106 +6,106 @@ import android.graphics.RectF;
 
 final class i
 {
-  static final Matrix vW = new Matrix()
+  static final Matrix xP = new Matrix()
   {
-    private static void du()
+    private static void dJ()
     {
       throw new IllegalStateException("Matrix can not be modified");
     }
     
     public final boolean postConcat(Matrix paramAnonymousMatrix)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean postRotate(float paramAnonymousFloat)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean postRotate(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean postScale(float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean postScale(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3, float paramAnonymousFloat4)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean postSkew(float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean postSkew(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3, float paramAnonymousFloat4)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean postTranslate(float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preConcat(Matrix paramAnonymousMatrix)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preRotate(float paramAnonymousFloat)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preRotate(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preScale(float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preScale(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3, float paramAnonymousFloat4)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preSkew(float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preSkew(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3, float paramAnonymousFloat4)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean preTranslate(float paramAnonymousFloat1, float paramAnonymousFloat2)
     {
-      du();
+      dJ();
       return false;
     }
     
@@ -115,19 +115,19 @@ final class i
     
     public final boolean setConcat(Matrix paramAnonymousMatrix1, Matrix paramAnonymousMatrix2)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean setPolyToPoly(float[] paramAnonymousArrayOfFloat1, int paramAnonymousInt1, float[] paramAnonymousArrayOfFloat2, int paramAnonymousInt2, int paramAnonymousInt3)
     {
-      du();
+      dJ();
       return false;
     }
     
     public final boolean setRectToRect(RectF paramAnonymousRectF1, RectF paramAnonymousRectF2, Matrix.ScaleToFit paramAnonymousScaleToFit)
     {
-      du();
+      dJ();
       return false;
     }
     

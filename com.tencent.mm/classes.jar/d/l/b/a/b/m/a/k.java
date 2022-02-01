@@ -3,50 +3,60 @@ package d.l.b.a.b.m.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.v;
 import d.g.a.a;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
+import d.l.b.a.b.b.as;
 import d.l.b.a.b.j.f.h;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.aj;
 import d.l.b.a.b.m.av;
 import d.l.b.a.b.m.bg;
 import d.l.b.a.b.m.c.b;
-import d.l.b.a.b.m.c.c;
+import d.l.b.a.b.m.c.d;
 import d.l.b.a.b.m.u;
 import java.util.List;
 
 public final class k
   extends aj
-  implements c
+  implements d
 {
-  private final boolean LFm;
-  private final b LMl;
-  final l LMm;
-  final bg LMn;
-  private final g Lez;
+  private final g MVu;
+  private final b NDg;
+  final l NDh;
+  final bg NDi;
+  private final boolean Nwk;
   
   public k(b paramb, l paraml, bg parambg, g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(61069);
-    this.LMl = paramb;
-    this.LMm = paraml;
-    this.LMn = parambg;
-    this.Lez = paramg;
-    this.LFm = paramBoolean;
+    this.NDg = paramb;
+    this.NDh = paraml;
+    this.NDi = parambg;
+    this.MVu = paramg;
+    this.Nwk = paramBoolean;
     AppMethodBeat.o(61069);
   }
   
-  public k(b paramb, bg parambg, av paramav)
+  public k(b paramb, bg parambg, av paramav, as paramas)
   {
-    this(paramb, new l(paramav), parambg);
-    AppMethodBeat.i(61071);
-    AppMethodBeat.o(61071);
+    this(paramb, new l(paramav, null, paramas, 6), parambg);
+    AppMethodBeat.i(187796);
+    AppMethodBeat.o(187796);
+  }
+  
+  private k As(boolean paramBoolean)
+  {
+    AppMethodBeat.i(61063);
+    k localk = new k(this.NDg, this.NDh, this.NDi, this.MVu, paramBoolean);
+    AppMethodBeat.o(61063);
+    return localk;
   }
   
   private k k(g paramg)
   {
     AppMethodBeat.i(61060);
-    d.g.b.k.h(paramg, "newAnnotations");
-    paramg = new k(this.LMl, this.LMm, this.LMn, paramg, this.LFm);
+    p.h(paramg, "newAnnotations");
+    paramg = new k(this.NDg, this.NDh, this.NDi, paramg, this.Nwk);
     AppMethodBeat.o(61060);
     return paramg;
   }
@@ -55,75 +65,66 @@ public final class k
   {
     Object localObject3 = null;
     AppMethodBeat.i(61066);
-    d.g.b.k.h(parami, "kotlinTypeRefiner");
-    b localb = this.LMl;
-    Object localObject2 = this.LMm;
-    d.g.b.k.h(parami, "kotlinTypeRefiner");
-    av localav = ((l)localObject2).LFo.m(parami);
-    d.g.b.k.g(localav, "projection.refine(kotlinTypeRefiner)");
+    p.h(parami, "kotlinTypeRefiner");
+    b localb = this.NDg;
+    l locall1 = this.NDh;
+    p.h(parami, "kotlinTypeRefiner");
+    av localav = locall1.Nwm.m(parami);
+    p.g(localav, "projection.refine(kotlinTypeRefiner)");
     Object localObject1;
-    l locall;
-    if (((l)localObject2).LMp != null)
+    Object localObject2;
+    if (locall1.NDk != null)
     {
-      localObject1 = (a)new l.c((l)localObject2, parami);
-      locall = ((l)localObject2).LMq;
-      if (locall != null) {
-        break label152;
+      localObject1 = (a)new l.c(locall1, parami);
+      l locall2 = locall1.NDl;
+      localObject2 = locall2;
+      if (locall2 == null) {
+        localObject2 = locall1;
+      }
+      localObject1 = new l(localav, (a)localObject1, (l)localObject2, locall1.NCv);
+      localObject2 = this.NDi;
+      if (localObject2 == null) {
+        break label162;
       }
     }
-    for (;;)
+    label162:
+    for (parami = parami.aL((ab)localObject2).gua();; parami = localObject3)
     {
-      localObject1 = new l(localav, (a)localObject1, (l)localObject2);
-      localObject2 = this.LMn;
-      if (localObject2 != null) {}
-      for (parami = parami.aL((ab)localObject2).gcz();; parami = localObject3)
-      {
-        parami = new k(localb, (l)localObject1, parami, this.Lez, this.LFm);
-        AppMethodBeat.o(61066);
-        return parami;
-        localObject1 = null;
-        break;
-      }
-      label152:
-      localObject2 = locall;
+      parami = new k(localb, (l)localObject1, parami, this.MVu, this.Nwk);
+      AppMethodBeat.o(61066);
+      return parami;
+      localObject1 = null;
+      break;
     }
   }
   
-  private k zE(boolean paramBoolean)
+  public final g ghH()
   {
-    AppMethodBeat.i(61063);
-    k localk = new k(this.LMl, this.LMm, this.LMn, this.Lez, paramBoolean);
-    AppMethodBeat.o(61063);
-    return localk;
+    return this.MVu;
   }
   
-  public final h fQN()
+  public final h gil()
   {
     AppMethodBeat.i(61059);
-    h localh = u.dq("No member resolution should be done on captured type!", true);
-    d.g.b.k.g(localh, "ErrorUtils.createErrorSc…on captured type!\", true)");
+    h localh = u.dv("No member resolution should be done on captured type!", true);
+    p.g(localh, "ErrorUtils.createErrorSc…on captured type!\", true)");
     AppMethodBeat.o(61059);
     return localh;
   }
   
-  public final g fQj()
+  public final boolean glW()
   {
-    return this.Lez;
+    return this.Nwk;
   }
   
-  public final boolean fUx()
+  public final List<av> gsW()
   {
-    return this.LFm;
-  }
-  
-  public final List<av> gbw()
-  {
-    return (List)v.KTF;
+    return (List)v.MKE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.a.k
  * JD-Core Version:    0.7.0.1
  */

@@ -6,37 +6,42 @@ import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.patmsg.a.c.a;
 
 public final class s
 {
-  r DqY;
-  private final View.OnTouchListener DrF;
-  int DrK;
-  b DrL;
-  a Dre;
+  private final View.OnTouchListener EWJ;
+  int EWO;
+  b EWP;
+  boolean EWb;
+  r EWc;
+  a EWi;
   private int background;
-  boolean ftK;
+  boolean fMM;
   int index;
-  View.OnClickListener iu;
+  View kBS;
+  View.OnClickListener km;
   int row;
   
   public s()
   {
     AppMethodBeat.i(152233);
     this.background = -1;
-    this.DrF = new s.1(this);
-    this.iu = new s.2(this);
+    this.EWJ = new s.1(this);
+    this.km = new s.2(this);
     AppMethodBeat.o(152233);
   }
   
   public static abstract interface a
   {
-    public abstract void e(ViewGroup paramViewGroup, View paramView, int paramInt);
+    public abstract void n(ViewGroup paramViewGroup, int paramInt);
   }
   
   public static abstract interface b
   {
-    public abstract boolean kF(int paramInt);
+    public abstract boolean le(int paramInt);
   }
 }
 

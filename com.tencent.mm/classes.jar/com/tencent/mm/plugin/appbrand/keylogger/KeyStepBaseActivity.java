@@ -8,12 +8,14 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public abstract class KeyStepBaseActivity
   extends HellActivity
 {
-  private TextView lfN;
+  private TextView lCL;
   
   static
   {
@@ -36,14 +38,18 @@ public abstract class KeyStepBaseActivity
     int i = getLayoutId();
     assert (i != 0);
     localLayoutInflater.inflate(i, paramBundle);
-    this.lfN = ((TextView)findViewById(2131296415));
+    this.lCL = ((TextView)findViewById(2131296415));
     findViewById(2131296417).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(200988);
+        AppMethodBeat.i(187660);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         KeyStepBaseActivity.this.finish();
-        AppMethodBeat.o(200988);
+        a.a(this, "com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(187660);
       }
     });
   }
@@ -56,12 +62,12 @@ public abstract class KeyStepBaseActivity
   
   protected final void setTitle(String paramString)
   {
-    this.lfN.setText(paramString);
+    this.lCL.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.KeyStepBaseActivity
  * JD-Core Version:    0.7.0.1
  */

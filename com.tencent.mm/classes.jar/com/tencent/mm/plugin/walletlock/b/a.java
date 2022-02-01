@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.walletlock.b;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xr;
-import com.tencent.mm.g.a.xr.b;
+import com.tencent.mm.g.a.yl;
+import com.tencent.mm.g.a.yl.b;
 import com.tencent.mm.kernel.c;
 import com.tencent.mm.plugin.walletlock.a.b.a;
 import com.tencent.mm.plugin.walletlock.a.b.b;
 import com.tencent.mm.plugin.walletlock.c.d;
 import com.tencent.mm.plugin.walletlock.fingerprint.ui.FingerprintWalletLockUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
   extends com.tencent.mm.plugin.walletlock.c.a
@@ -26,23 +26,23 @@ public final class a
   public final boolean a(Activity paramActivity, b.b paramb)
   {
     AppMethodBeat.i(129651);
-    if (!com.tencent.mm.kernel.g.agN().aa(com.tencent.mm.plugin.walletlock.a.a.class))
+    if (!com.tencent.mm.kernel.g.ajy().aa(com.tencent.mm.plugin.walletlock.a.a.class))
     {
-      ac.d("MicroMsg.FaceIdLockImpl", "Plugin gesture is not installed.");
+      ad.d("MicroMsg.FaceIdLockImpl", "Plugin gesture is not installed.");
       AppMethodBeat.o(129651);
       return false;
     }
     if ((paramb != null) && (!paramb.aK(paramActivity)))
     {
-      ac.d("MicroMsg.FaceIdLockImpl", "protectMeOnCreate: still in filter range, do not activate protection.");
+      ad.d("MicroMsg.FaceIdLockImpl", "protectMeOnCreate: still in filter range, do not activate protection.");
       AppMethodBeat.o(129651);
       return false;
     }
-    paramb = new xr();
-    paramb.dBa.dBc = 0;
-    paramb.dBa.activity = paramActivity;
-    com.tencent.mm.sdk.b.a.GpY.l(paramb);
-    switch (((Integer)paramb.dBb.data).intValue())
+    paramb = new yl();
+    paramb.dNn.dNp = 0;
+    paramb.dNn.activity = paramActivity;
+    com.tencent.mm.sdk.b.a.IbL.l(paramb);
+    switch (((Integer)paramb.dNo.data).intValue())
     {
     default: 
       AppMethodBeat.o(129651);
@@ -54,10 +54,10 @@ public final class a
       paramb.putExtra("next_action", "next_action.goto_protected_page");
       paramb.putExtra("page_intent", paramActivity.getIntent());
       paramb.putExtra("scene", aL(paramActivity));
-      paramb.setPackage(ai.getPackageName());
-      paramb = new com.tencent.mm.hellhoundlib.b.a().ba(paramb);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramb.aeD(), "com/tencent/mm/plugin/walletlock/faceid/FaceIdLockImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivity.startActivity((Intent)paramb.lR(0));
+      paramb.setPackage(aj.getPackageName());
+      paramb = new com.tencent.mm.hellhoundlib.b.a().bc(paramb);
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramb.ahp(), "com/tencent/mm/plugin/walletlock/faceid/FaceIdLockImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivity.startActivity((Intent)paramb.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/faceid/FaceIdLockImpl", "protectMeOnCreate", "(Landroid/app/Activity;Lcom/tencent/mm/plugin/walletlock/api/IWalletLock$GuardFilter;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       paramActivity.finish();
       AppMethodBeat.o(129651);
@@ -74,19 +74,19 @@ public final class a
     AppMethodBeat.o(129653);
   }
   
-  public final b.b evh()
+  public final b.b eJn()
   {
     AppMethodBeat.i(129654);
-    d locald = d.evT();
+    d locald = d.eJZ();
     AppMethodBeat.o(129654);
     return locald;
   }
   
-  public final boolean evi()
+  public final boolean eJo()
   {
     AppMethodBeat.i(129655);
-    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.BVG;
-    boolean bool = com.tencent.mm.plugin.walletlock.c.g.evn();
+    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.Dwa;
+    boolean bool = com.tencent.mm.plugin.walletlock.c.g.eJt();
     AppMethodBeat.o(129655);
     return bool;
   }
@@ -94,9 +94,9 @@ public final class a
   public final void init()
   {
     AppMethodBeat.i(129650);
-    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.BVG;
-    com.tencent.mm.plugin.walletlock.c.g.evW();
-    com.tencent.mm.plugin.walletlock.c.g.BVG.TZ(3);
+    com.tencent.mm.plugin.walletlock.c.g localg = com.tencent.mm.plugin.walletlock.c.g.Dwa;
+    com.tencent.mm.plugin.walletlock.c.g.eKc();
+    com.tencent.mm.plugin.walletlock.c.g.Dwa.VR(3);
     AppMethodBeat.o(129650);
   }
 }

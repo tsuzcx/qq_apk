@@ -3,6 +3,8 @@ package d.l.b.a.b.b.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.e;
 import d.a.v;
+import d.g.b.p;
+import d.l.b.a.b.d.a.e.k;
 import d.l.b.a.b.d.a.e.y;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -14,22 +16,22 @@ import java.util.List;
 
 public final class m
   extends r
-  implements d.l.b.a.b.d.a.e.k
+  implements k
 {
-  public final Constructor<?> LjF;
+  public final Constructor<?> NaB;
   
   public m(Constructor<?> paramConstructor)
   {
     AppMethodBeat.i(57478);
-    this.LjF = paramConstructor;
+    this.NaB = paramConstructor;
     AppMethodBeat.o(57478);
   }
   
-  public final List<x> fQR()
+  public final List<x> gip()
   {
     AppMethodBeat.i(57477);
-    Object localObject = this.LjF.getTypeParameters();
-    d.g.b.k.g(localObject, "member.typeParameters");
+    Object localObject = this.NaB.getTypeParameters();
+    p.g(localObject, "member.typeParameters");
     Collection localCollection = (Collection)new ArrayList(localObject.length);
     int j = localObject.length;
     int i = 0;
@@ -43,43 +45,43 @@ public final class m
     return localObject;
   }
   
-  public final List<y> fQU()
+  public final List<y> gis()
   {
     AppMethodBeat.i(57476);
-    Object localObject1 = this.LjF.getGenericParameterTypes();
-    d.g.b.k.g(localObject1, "types");
+    Object localObject1 = this.NaB.getGenericParameterTypes();
+    p.g(localObject1, "types");
     if (localObject1.length == 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      localObject1 = (List)v.KTF;
+      localObject1 = (List)v.MKE;
       AppMethodBeat.o(57476);
       return localObject1;
     }
-    Object localObject2 = this.LjF.getDeclaringClass();
-    d.g.b.k.g(localObject2, "klass");
+    Object localObject2 = this.NaB.getDeclaringClass();
+    p.g(localObject2, "klass");
     if ((((Class)localObject2).getDeclaringClass() != null) && (!Modifier.isStatic(((Class)localObject2).getModifiers()))) {
       localObject1 = (Type[])e.copyOfRange((Object[])localObject1, 1, localObject1.length);
     }
     for (;;)
     {
-      localObject2 = this.LjF.getParameterAnnotations();
+      localObject2 = this.NaB.getParameterAnnotations();
       if (((Object[])localObject2).length >= localObject1.length) {
         break;
       }
-      localObject1 = (Throwable)new IllegalStateException("Illegal generic signature: " + this.LjF);
+      localObject1 = (Throwable)new IllegalStateException("Illegal generic signature: " + this.NaB);
       AppMethodBeat.o(57476);
       throw ((Throwable)localObject1);
     }
     if (((Object[])localObject2).length > localObject1.length)
     {
-      d.g.b.k.g(localObject2, "annotations");
+      p.g(localObject2, "annotations");
       localObject2 = (Annotation[][])e.copyOfRange((Object[])localObject2, ((Object[])localObject2).length - localObject1.length, ((Object[])localObject2).length);
     }
     for (;;)
     {
-      d.g.b.k.g(localObject1, "realTypes");
-      d.g.b.k.g(localObject2, "realAnnotations");
-      localObject1 = a((Type[])localObject1, (Annotation[][])localObject2, this.LjF.isVarArgs());
+      p.g(localObject1, "realTypes");
+      p.g(localObject2, "realAnnotations");
+      localObject1 = a((Type[])localObject1, (Annotation[][])localObject2, this.NaB.isVarArgs());
       AppMethodBeat.o(57476);
       return localObject1;
     }
@@ -87,7 +89,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.m
  * JD-Core Version:    0.7.0.1
  */

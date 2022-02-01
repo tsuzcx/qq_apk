@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,22 +10,22 @@ import java.util.Properties;
 
 public final class a
 {
-  private Properties cIJ;
+  private Properties cTR;
   private String filePath;
   
   public a(String paramString)
   {
     AppMethodBeat.i(158052);
-    this.cIJ = null;
+    this.cTR = null;
     this.filePath = null;
-    this.cIJ = new Properties();
+    this.cTR = new Properties();
     this.filePath = paramString;
     try
     {
       InputStream localInputStream = i.openRead(paramString);
       localObject1 = localInputStream;
       localObject3 = localInputStream;
-      this.cIJ.load(localInputStream);
+      this.cTR.load(localInputStream);
       if (localInputStream != null) {
         try
         {
@@ -35,7 +35,7 @@ public final class a
         }
         catch (IOException localIOException1)
         {
-          ac.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException1.getLocalizedMessage() });
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException1.getLocalizedMessage() });
           AppMethodBeat.o(158052);
           return;
         }
@@ -45,7 +45,7 @@ public final class a
     catch (Exception localException)
     {
       localObject3 = localIOException1;
-      ac.e("MicroMsg.ReadConfig", "Read File: %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
+      ad.e("MicroMsg.ReadConfig", "Read File: %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
       if (localIOException1 != null) {
         try
         {
@@ -55,7 +55,7 @@ public final class a
         }
         catch (IOException localIOException2)
         {
-          ac.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException2.getLocalizedMessage() });
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException2.getLocalizedMessage() });
           AppMethodBeat.o(158052);
           return;
         }
@@ -74,25 +74,17 @@ public final class a
       {
         for (;;)
         {
-          ac.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException3.getLocalizedMessage() });
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException3.getLocalizedMessage() });
         }
       }
       AppMethodBeat.o(158052);
     }
   }
   
-  public static boolean A(String paramString1, String paramString2, long paramLong)
-  {
-    AppMethodBeat.i(158062);
-    boolean bool = new a(paramString1).bU(paramString2, paramLong);
-    AppMethodBeat.o(158062);
-    return bool;
-  }
-  
-  public static boolean aV(String paramString1, String paramString2, String paramString3)
+  public static boolean be(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(158061);
-    boolean bool = new a(paramString1).M(paramString2, paramString3);
+    boolean bool = new a(paramString1).N(paramString2, paramString3);
     AppMethodBeat.o(158061);
     return bool;
   }
@@ -105,23 +97,31 @@ public final class a
     return paramString1;
   }
   
-  public static Long ls(String paramString1, String paramString2)
+  public static Long lR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(158060);
-    paramString1 = new a(paramString1).aLS(paramString2);
+    paramString1 = new a(paramString1).aRz(paramString2);
     AppMethodBeat.o(158060);
     return paramString1;
   }
   
-  public static boolean lt(String paramString1, String paramString2)
+  public static boolean lS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(158063);
-    boolean bool = new a(paramString1).fN(paramString2, 0);
+    boolean bool = new a(paramString1).gk(paramString2, 0);
     AppMethodBeat.o(158063);
     return bool;
   }
   
-  public final boolean M(String paramString1, String paramString2)
+  public static boolean o(String paramString1, String paramString2, long paramLong)
+  {
+    AppMethodBeat.i(158062);
+    boolean bool = new a(paramString1).bY(paramString2, paramLong);
+    AppMethodBeat.o(158062);
+    return bool;
+  }
+  
+  public final boolean N(String paramString1, String paramString2)
   {
     bool2 = true;
     AppMethodBeat.i(158053);
@@ -131,13 +131,13 @@ public final class a
     {
       try
       {
-        localOutputStream = i.cS(this.filePath, false);
+        localOutputStream = i.cX(this.filePath, false);
         localObject1 = localOutputStream;
         localObject2 = localOutputStream;
-        this.cIJ.setProperty(paramString1, paramString2);
+        this.cTR.setProperty(paramString1, paramString2);
         localObject1 = localOutputStream;
         localObject2 = localOutputStream;
-        this.cIJ.store(localOutputStream, "");
+        this.cTR.store(localOutputStream, "");
         bool1 = bool2;
         if (localOutputStream == null) {}
       }
@@ -145,7 +145,7 @@ public final class a
       {
         OutputStream localOutputStream;
         localObject2 = localObject1;
-        ac.e("MicroMsg.ReadConfig", "Write File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
+        ad.e("MicroMsg.ReadConfig", "Write File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
         if (localObject1 == null) {
           continue;
         }
@@ -156,7 +156,7 @@ public final class a
         }
         catch (IOException paramString1)
         {
-          ac.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
           bool1 = false;
         }
         continue;
@@ -174,7 +174,7 @@ public final class a
         }
         catch (IOException paramString2)
         {
-          ac.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString2.getLocalizedMessage() });
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString2.getLocalizedMessage() });
           continue;
         }
         boolean bool1 = false;
@@ -187,7 +187,7 @@ public final class a
       }
       catch (IOException paramString1)
       {
-        ac.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
+        ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
         bool1 = bool2;
       }
     }
@@ -195,30 +195,7 @@ public final class a
     return bool1;
   }
   
-  public final Long aLS(String paramString)
-  {
-    AppMethodBeat.i(158057);
-    paramString = getValue(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(158057);
-      return null;
-    }
-    try
-    {
-      long l = Long.parseLong(paramString);
-      AppMethodBeat.o(158057);
-      return Long.valueOf(l);
-    }
-    catch (Exception localException)
-    {
-      ac.e("MicroMsg.ReadConfig", "getLongValue ParseLong : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
-      AppMethodBeat.o(158057);
-    }
-    return null;
-  }
-  
-  public final Integer aLT(String paramString)
+  public final Integer aRA(String paramString)
   {
     AppMethodBeat.i(158058);
     paramString = getValue(paramString);
@@ -235,39 +212,62 @@ public final class a
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.ReadConfig", "getIntegerValue ParseInteger : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
+      ad.e("MicroMsg.ReadConfig", "getIntegerValue ParseInteger : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
       AppMethodBeat.o(158058);
     }
     return null;
   }
   
-  public final boolean bU(String paramString, long paramLong)
+  public final Long aRz(String paramString)
   {
-    AppMethodBeat.i(158054);
-    boolean bool = M(paramString, String.valueOf(paramLong));
-    AppMethodBeat.o(158054);
-    return bool;
+    AppMethodBeat.i(158057);
+    paramString = getValue(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(158057);
+      return null;
+    }
+    try
+    {
+      long l = Long.parseLong(paramString);
+      AppMethodBeat.o(158057);
+      return Long.valueOf(l);
+    }
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.ReadConfig", "getLongValue ParseLong : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
+      AppMethodBeat.o(158057);
+    }
+    return null;
   }
   
-  public final boolean fN(String paramString, int paramInt)
+  public final boolean bY(String paramString, long paramLong)
   {
-    AppMethodBeat.i(158055);
-    boolean bool = M(paramString, String.valueOf(paramInt));
-    AppMethodBeat.o(158055);
+    AppMethodBeat.i(158054);
+    boolean bool = N(paramString, String.valueOf(paramLong));
+    AppMethodBeat.o(158054);
     return bool;
   }
   
   public final String getValue(String paramString)
   {
     AppMethodBeat.i(158056);
-    if ((this.cIJ != null) && (this.cIJ.containsKey(paramString)))
+    if ((this.cTR != null) && (this.cTR.containsKey(paramString)))
     {
-      paramString = this.cIJ.getProperty(paramString);
+      paramString = this.cTR.getProperty(paramString);
       AppMethodBeat.o(158056);
       return paramString;
     }
     AppMethodBeat.o(158056);
     return null;
+  }
+  
+  public final boolean gk(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(158055);
+    boolean bool = N(paramString, String.valueOf(paramInt));
+    AppMethodBeat.o(158055);
+    return bool;
   }
 }
 

@@ -203,15 +203,15 @@ public abstract class IUIModal
     
     public final DynamicColor statusbarColor()
     {
-      AppMethodBeat.i(192961);
+      AppMethodBeat.i(190323);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         localObject = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(192961);
+        AppMethodBeat.o(190323);
         throw ((Throwable)localObject);
       }
       Object localObject = native_statusbarColor(this.nativeRef);
-      AppMethodBeat.o(192961);
+      AppMethodBeat.o(190323);
       return localObject;
     }
     

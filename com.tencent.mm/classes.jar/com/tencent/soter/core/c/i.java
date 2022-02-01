@@ -12,25 +12,25 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public String JWA;
-  private ArrayList<String> JWB;
-  long JWy;
-  private String JWz;
+  public String AFy;
+  long LQt;
+  private String LQu;
+  public String LQv;
+  private ArrayList<String> LQw;
   public String signature;
   public int uid;
-  public String znE;
   
   public i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88673);
-    this.JWy = -1L;
+    this.LQt = -1L;
     this.uid = -1;
-    this.znE = "";
-    this.JWz = "";
-    this.JWA = "";
-    this.JWB = null;
+    this.AFy = "";
+    this.LQu = "";
+    this.LQv = "";
+    this.LQw = null;
     this.signature = "";
-    this.JWA = paramString1;
+    this.LQv = paramString1;
     for (;;)
     {
       try
@@ -44,20 +44,20 @@ public final class i
           d.e("Soter.SoterPubKeyModel", "certificates train not enough", new Object[0]);
         }
         d.i("Soter.SoterPubKeyModel", "certs size: [%d]", new Object[] { Integer.valueOf(localJSONArray.length()) });
-        this.JWB = new ArrayList();
+        this.LQw = new ArrayList();
         int i = 0;
         if (i < localJSONArray.length())
         {
           String str = localJSONArray.getString(i);
-          this.JWB.add(str);
+          this.LQw.add(str);
           i += 1;
           continue;
         }
-        a((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(((String)this.JWB.get(0)).getBytes())));
-        paramString1.put("cpu_id", this.znE);
+        a((X509Certificate)CertificateFactory.getInstance("X.509").generateCertificate(new ByteArrayInputStream(((String)this.LQw.get(0)).getBytes())));
+        paramString1.put("cpu_id", this.AFy);
         paramString1.put("uid", this.uid);
-        paramString1.put("counter", this.JWy);
-        this.JWA = paramString1.toString();
+        paramString1.put("counter", this.LQt);
+        this.LQv = paramString1.toString();
       }
       catch (Exception paramString1)
       {
@@ -67,22 +67,22 @@ public final class i
       this.signature = paramString2;
       AppMethodBeat.o(88673);
       return;
-      this.JWy = paramString1.optLong("counter");
+      this.LQt = paramString1.optLong("counter");
       this.uid = paramString1.optInt("uid");
-      this.znE = paramString1.optString("cpu_id");
-      this.JWz = paramString1.optString("pub_key");
+      this.AFy = paramString1.optString("cpu_id");
+      this.LQu = paramString1.optString("pub_key");
     }
   }
   
   public i(Certificate[] paramArrayOfCertificate)
   {
     AppMethodBeat.i(88674);
-    this.JWy = -1L;
+    this.LQt = -1L;
     this.uid = -1;
-    this.znE = "";
-    this.JWz = "";
-    this.JWA = "";
-    this.JWB = null;
+    this.AFy = "";
+    this.LQu = "";
+    this.LQv = "";
+    this.LQw = null;
     this.signature = "";
     if (paramArrayOfCertificate != null) {}
     try
@@ -102,13 +102,13 @@ public final class i
         localArrayList.add(str);
         i += 1;
       }
-      this.JWB = localArrayList;
+      this.LQw = localArrayList;
       paramArrayOfCertificate = new JSONObject();
       paramArrayOfCertificate.put("certs", localJSONArray);
-      paramArrayOfCertificate.put("cpu_id", this.znE);
+      paramArrayOfCertificate.put("cpu_id", this.AFy);
       paramArrayOfCertificate.put("uid", this.uid);
-      paramArrayOfCertificate.put("counter", this.JWy);
-      this.JWA = paramArrayOfCertificate.toString();
+      paramArrayOfCertificate.put("counter", this.LQt);
+      this.LQv = paramArrayOfCertificate.toString();
       AppMethodBeat.o(88674);
       return;
     }
@@ -138,7 +138,7 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(88672);
-    String str = "SoterPubKeyModel{counter=" + this.JWy + ", uid=" + this.uid + ", cpu_id='" + this.znE + '\'' + ", pub_key_in_x509='" + this.JWz + '\'' + ", rawJson='" + this.JWA + '\'' + ", signature='" + this.signature + '\'' + '}';
+    String str = "SoterPubKeyModel{counter=" + this.LQt + ", uid=" + this.uid + ", cpu_id='" + this.AFy + '\'' + ", pub_key_in_x509='" + this.LQu + '\'' + ", rawJson='" + this.LQv + '\'' + ", signature='" + this.signature + '\'' + '}';
     AppMethodBeat.o(88672);
     return str;
   }

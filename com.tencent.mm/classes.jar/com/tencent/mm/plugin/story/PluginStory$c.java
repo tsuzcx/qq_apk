@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.story;
 
-import com.tencent.mm.g.a.vg;
+import com.tencent.mm.g.a.vz;
 import com.tencent.mm.sdk.b.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/PluginStory$StorySynclistener;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/StorySyncEvent;", "()V", "callback", "", "event", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/PluginStory$StorySynclistener;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/StorySyncEvent;", "()V", "callback", "", "event", "plugin-story_release"})
 public final class PluginStory$c
-  extends c<vg>
+  extends c<vz>
 {}
 
 

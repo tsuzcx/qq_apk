@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.remittance;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
   implements d
 {
-  public final m createApplication()
+  public final n createApplication()
   {
     return null;
   }
   
-  public final aw createSubCore()
+  public final ax createSubCore()
   {
     AppMethodBeat.i(67332);
     com.tencent.mm.plugin.remittance.a.c localc = new com.tencent.mm.plugin.remittance.a.c();

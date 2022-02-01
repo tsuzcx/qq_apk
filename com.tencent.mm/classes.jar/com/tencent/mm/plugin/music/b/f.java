@@ -7,177 +7,178 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.w;
 import com.tencent.mm.g.a.w.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.qqmusic.mediaplayer.CommonPlayer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class f
 {
-  private static f vcO;
-  com.tencent.mm.ai.a cZk;
-  Object pwZ;
-  HashMap<String, com.tencent.mm.ai.b> vcA;
-  private HashMap<String, com.tencent.mm.ai.d> vcB;
-  private LinkedList<String> vcC;
-  HashMap<String, Integer> vcD;
-  private LinkedList<String> vcE;
-  boolean vcF;
-  private boolean vcG;
-  long vcH;
-  private long vcI;
-  com.tencent.mm.plugin.music.b.a.d vcJ;
-  private com.tencent.mm.plugin.music.b.b.a vcK;
-  private HashMap<String, String> vcL;
-  HashMap<String, Integer> vcM;
-  com.tencent.mm.audio.mix.f.c vcN;
-  private c vcP;
-  private Runnable vcQ;
-  Runnable vcR;
-  private com.tencent.mm.audio.mix.f.b vcS;
-  private com.tencent.mm.audio.mix.f.g vcT;
-  private LinkedList<String> vcs;
-  HashMap<String, h> vct;
-  LinkedList<String> vcu;
-  HashMap<String, h> vcv;
-  LinkedList<String> vcw;
-  public LinkedList<String> vcx;
-  private HashMap<String, String> vcy;
-  HashMap<String, LinkedList<String>> vcz;
+  private static f wik;
+  com.tencent.mm.aj.a dkC;
+  Object qaE;
+  private LinkedList<String> whO;
+  HashMap<String, h> whP;
+  LinkedList<String> whQ;
+  HashMap<String, h> whR;
+  LinkedList<String> whS;
+  public LinkedList<String> whT;
+  private HashMap<String, String> whU;
+  HashMap<String, LinkedList<String>> whV;
+  HashMap<String, com.tencent.mm.aj.b> whW;
+  private HashMap<String, com.tencent.mm.aj.d> whX;
+  private LinkedList<String> whY;
+  HashMap<String, Integer> whZ;
+  private LinkedList<String> wia;
+  boolean wib;
+  private boolean wic;
+  long wid;
+  private long wie;
+  com.tencent.mm.plugin.music.b.a.d wif;
+  private com.tencent.mm.plugin.music.b.b.a wig;
+  private HashMap<String, String> wih;
+  HashMap<String, Integer> wii;
+  com.tencent.mm.audio.mix.f.c wij;
+  private c wil;
+  private Runnable wim;
+  Runnable win;
+  private com.tencent.mm.audio.mix.f.b wio;
+  private com.tencent.mm.audio.mix.f.g wip;
   
   private f()
   {
     AppMethodBeat.i(137037);
-    this.vcs = new LinkedList();
-    this.vct = new HashMap();
-    this.vcu = new LinkedList();
-    this.vcv = new HashMap();
-    this.vcw = new LinkedList();
-    this.vcx = new LinkedList();
-    this.vcy = new HashMap();
-    this.vcz = new HashMap();
-    this.vcA = new HashMap();
-    this.vcB = new HashMap();
-    this.vcC = new LinkedList();
-    this.vcD = new HashMap();
-    this.vcE = new LinkedList();
-    this.pwZ = new Object();
-    this.vcF = false;
-    this.vcG = false;
-    this.vcH = 0L;
-    this.vcI = 0L;
-    this.cZk = new com.tencent.mm.ai.a();
-    this.vcK = new com.tencent.mm.plugin.music.b.b.a();
-    this.vcL = new HashMap();
-    this.vcM = new HashMap();
-    this.vcP = new c()
+    this.whO = new LinkedList();
+    this.whP = new HashMap();
+    this.whQ = new LinkedList();
+    this.whR = new HashMap();
+    this.whS = new LinkedList();
+    this.whT = new LinkedList();
+    this.whU = new HashMap();
+    this.whV = new HashMap();
+    this.whW = new HashMap();
+    this.whX = new HashMap();
+    this.whY = new LinkedList();
+    this.whZ = new HashMap();
+    this.wia = new LinkedList();
+    this.qaE = new Object();
+    this.wib = false;
+    this.wic = false;
+    this.wid = 0L;
+    this.wie = 0L;
+    this.dkC = new com.tencent.mm.aj.a();
+    this.wig = new com.tencent.mm.plugin.music.b.b.a();
+    this.wih = new HashMap();
+    this.wii = new HashMap();
+    this.wil = new c()
     {
-      public final void acj(String paramAnonymousString)
+      public final void afY(String paramAnonymousString)
       {
         AppMethodBeat.i(137018);
-        h localh = f.this.amT(paramAnonymousString);
+        h localh = f.this.arS(paramAnonymousString);
         if (localh == null)
         {
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "onStop player is null");
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "onStop player is null");
           AppMethodBeat.o(137018);
           return;
         }
         f.this.b(paramAnonymousString, localh);
         f.this.f(paramAnonymousString, localh);
         f.a(f.this);
-        f.this.dho();
+        f.this.drB();
         f.a(f.this, paramAnonymousString);
-        f.this.ane(paramAnonymousString);
+        f.this.asd(paramAnonymousString);
         AppMethodBeat.o(137018);
       }
       
-      public final void amK(String paramAnonymousString)
+      public final void arJ(String paramAnonymousString)
       {
         AppMethodBeat.i(137017);
-        h localh = f.this.amT(paramAnonymousString);
+        h localh = f.this.arS(paramAnonymousString);
         if (localh == null)
         {
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "onPause player is null");
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "onPause player is null");
           AppMethodBeat.o(137017);
           return;
         }
         f.this.b(paramAnonymousString, localh);
         f.this.f(paramAnonymousString, localh);
         f.a(f.this);
-        f.this.dho();
+        f.this.drB();
         AppMethodBeat.o(137017);
       }
       
-      public final void fh(String paramAnonymousString)
+      public final void gc(String paramAnonymousString)
       {
         AppMethodBeat.i(137019);
-        h localh = f.this.amT(paramAnonymousString);
+        h localh = f.this.arS(paramAnonymousString);
         if (localh == null)
         {
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "onComplete player is null");
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "onComplete player is null");
           AppMethodBeat.o(137019);
           return;
         }
         f.this.b(paramAnonymousString, localh);
         f.this.f(paramAnonymousString, localh);
         f.a(f.this);
-        f.this.dho();
+        f.this.drB();
         f.a(f.this, paramAnonymousString);
-        f.this.ane(paramAnonymousString);
+        f.this.asd(paramAnonymousString);
         AppMethodBeat.o(137019);
       }
       
       public final void onError(String paramAnonymousString)
       {
         AppMethodBeat.i(137020);
-        h localh = f.this.amT(paramAnonymousString);
+        h localh = f.this.arS(paramAnonymousString);
         if (localh == null)
         {
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "onError player is null");
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "onError player is null");
           AppMethodBeat.o(137020);
           return;
         }
         f.this.b(paramAnonymousString, localh);
         f localf = f.this;
-        int j = localh.pwp;
-        if (localf.vcD.containsKey(paramAnonymousString)) {}
-        for (int i = ((Integer)localf.vcD.get(paramAnonymousString)).intValue();; i = 0)
+        int j = localh.pZU;
+        if (localf.whZ.containsKey(paramAnonymousString)) {}
+        for (int i = ((Integer)localf.whZ.get(paramAnonymousString)).intValue();; i = 0)
         {
           if (i > 0)
           {
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "try it one time, don't try again");
-            localf.vcD.remove(paramAnonymousString);
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "try it one time, don't try again");
+            localf.whZ.remove(paramAnonymousString);
           }
           for (i = 0;; i = 1)
           {
             if (i == 0) {
               break label189;
             }
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "try to stop same url players and play again");
-            f.this.dhs();
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "try to stop same url players and play again");
+            f.this.drF();
             f.this.b(paramAnonymousString, null);
             AppMethodBeat.o(137020);
             return;
             if (66 != j)
             {
-              localf.vcD.remove(paramAnonymousString);
+              localf.whZ.remove(paramAnonymousString);
               break;
             }
-            if (!localf.and(paramAnonymousString)) {
+            if (!localf.asc(paramAnonymousString)) {
               break;
             }
-            localf.vcD.put(paramAnonymousString, Integer.valueOf(i + 1));
+            localf.whZ.put(paramAnonymousString, Integer.valueOf(i + 1));
           }
           label189:
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "not try to play again");
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "not try to play again");
           f.this.f(paramAnonymousString, localh);
           f.a(f.this);
-          f.this.dho();
+          f.this.drB();
           AppMethodBeat.o(137020);
           return;
         }
@@ -186,46 +187,62 @@ public final class f
       public final void onStart(String arg1)
       {
         AppMethodBeat.i(137016);
-        h localh = f.this.amT(???);
+        h localh = f.this.arS(???);
         if (localh == null)
         {
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "onStart player is null");
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "onStart player is null");
           AppMethodBeat.o(137016);
           return;
         }
         f.this.e(???, localh);
-        synchronized (f.this.pwZ)
+        synchronized (f.this.qaE)
         {
-          f.this.vcF = false;
-          ap.aB(f.this.vcR);
+          f.this.wib = false;
+          aq.aA(f.this.win);
           AppMethodBeat.o(137016);
           return;
         }
       }
     };
-    this.vcQ = new f.2(this);
-    this.vcR = new Runnable()
+    this.wim = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(137021);
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "stopAudioDelayRunnable, run");
+        Iterator localIterator = f.this.whT.iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if (f.this.arR(str) == 0) {
+            f.this.arT(str);
+          }
+        }
+        AppMethodBeat.o(137021);
+      }
+    };
+    this.win = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(137022);
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "releaseAudioDelayRunnable, run");
-        Iterator localIterator = f.this.vcx.iterator();
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "releaseAudioDelayRunnable, run");
+        Iterator localIterator = f.this.whT.iterator();
         int i = 0;
         f localf;
         Object localObject5;
         if (localIterator.hasNext())
         {
           ??? = (String)localIterator.next();
-          if (f.this.amS((String)???) != 0) {
+          if (f.this.arR((String)???) != 0) {
             break label450;
           }
           localf = f.this;
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllAudioPlayersAndSaveState, appId:%s", new Object[] { ??? });
-          localObject5 = (LinkedList)localf.vcz.get(???);
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllAudioPlayersAndSaveState, appId:%s", new Object[] { ??? });
+          localObject5 = (LinkedList)localf.whV.get(???);
           if ((localObject5 == null) || (((LinkedList)localObject5).size() == 0))
           {
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to stop");
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to stop");
             label112:
             i = 1;
           }
@@ -239,24 +256,24 @@ public final class f
           for (;;)
           {
             h localh;
-            synchronized (localf.pwZ)
+            synchronized (localf.qaE)
             {
               localObject6 = ((LinkedList)localObject5).iterator();
               if (!((Iterator)localObject6).hasNext()) {
                 break;
               }
               localObject7 = (String)((Iterator)localObject6).next();
-              if (localf.vcN.fk((String)localObject7)) {
-                localf.vcN.fo((String)localObject7);
+              if (localf.wij.gf((String)localObject7)) {
+                localf.wij.gj((String)localObject7);
               }
-              localh = (h)localf.vct.remove(localObject7);
-              localf.vcu.remove(localObject7);
+              localh = (h)localf.whP.remove(localObject7);
+              localf.whQ.remove(localObject7);
               if (localh == null) {
                 continue;
               }
               localf.b((String)localObject7, localh);
-              ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroy player");
-              if (localh.htD) {
+              ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroy player");
+              if (localh.hLV) {
                 f.d((String)localObject7, localh);
               }
             }
@@ -266,16 +283,16 @@ public final class f
           while (((Iterator)localObject5).hasNext())
           {
             localObject6 = (String)((Iterator)localObject5).next();
-            if (localf.vcN.fk((String)localObject6)) {
-              localf.vcN.fo((String)localObject6);
+            if (localf.wij.gf((String)localObject6)) {
+              localf.wij.gj((String)localObject6);
             }
-            localObject7 = (h)localf.vcv.remove(localObject6);
-            localf.vcw.remove(localObject6);
+            localObject7 = (h)localf.whR.remove(localObject6);
+            localf.whS.remove(localObject6);
             if (localObject7 != null)
             {
               localf.b((String)localObject6, (h)localObject7);
-              ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroy recycled player");
-              if (((h)localObject7).htD) {
+              ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroy recycled player");
+              if (((h)localObject7).hLV) {
                 f.d((String)localObject6, (h)localObject7);
               } else {
                 f.c((String)localObject6, (h)localObject7);
@@ -284,105 +301,105 @@ public final class f
           }
           break label112;
           if (i == 0) {}
-          synchronized (f.this.pwZ)
+          synchronized (f.this.qaE)
           {
-            f.this.vcF = true;
-            f.this.vcH = System.currentTimeMillis();
-            ap.n(f.this.vcR, 1800000L);
+            f.this.wib = true;
+            f.this.wid = System.currentTimeMillis();
+            aq.o(f.this.win, 1800000L);
             AppMethodBeat.o(137022);
             return;
           }
         }
       }
     };
-    this.vcS = new com.tencent.mm.audio.mix.f.b()
+    this.wio = new com.tencent.mm.audio.mix.f.b()
     {
       public final void b(w paramAnonymousw)
       {
         AppMethodBeat.i(137024);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137024);
       }
       
       public final void c(w paramAnonymousw)
       {
         AppMethodBeat.i(137025);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137025);
       }
       
       public final void d(w paramAnonymousw)
       {
         AppMethodBeat.i(137026);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137026);
       }
       
       public final void e(w paramAnonymousw)
       {
         AppMethodBeat.i(137027);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137027);
       }
       
       public final void f(w paramAnonymousw)
       {
         AppMethodBeat.i(137028);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137028);
       }
       
       public final void g(w paramAnonymousw)
       {
         AppMethodBeat.i(137029);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137029);
       }
       
       public final void h(w paramAnonymousw)
       {
         AppMethodBeat.i(137030);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137030);
       }
       
       public final void i(w paramAnonymousw)
       {
         AppMethodBeat.i(137031);
-        com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+        com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
         AppMethodBeat.o(137031);
       }
       
       public final void j(w paramAnonymousw)
       {
         AppMethodBeat.i(137032);
-        int i = paramAnonymousw.cZm.errCode;
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "onError errCode:%d", new Object[] { Integer.valueOf(i) });
+        int i = paramAnonymousw.dkE.errCode;
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "onError errCode:%d", new Object[] { Integer.valueOf(i) });
         if ((i == 709) || (i == 702) || (i == 703) || (i == 705) || (i == 706)) {
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "decode mix cache errors, don't callback to JS");
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "decode mix cache errors, don't callback to JS");
         }
-        while (f.this.vcJ != null)
+        while (f.this.wif != null)
         {
-          com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)f.this.vcA.get(paramAnonymousw.cZm.cQO);
+          com.tencent.mm.aj.b localb = (com.tencent.mm.aj.b)f.this.whW.get(paramAnonymousw.dkE.dce);
           if (localb == null)
           {
             AppMethodBeat.o(137032);
             return;
-            com.tencent.mm.sdk.b.a.GpY.a(paramAnonymousw, Looper.getMainLooper());
+            com.tencent.mm.sdk.b.a.IbL.a(paramAnonymousw, Looper.getMainLooper());
           }
           else
           {
-            f.this.vcJ.Ju(paramAnonymousw.cZm.errCode);
-            if (!f.this.vcN.fx(localb.filePath))
+            f.this.wif.KW(paramAnonymousw.dkE.errCode);
+            if (!f.this.wij.gs(localb.filePath))
             {
-              if (f.this.vcM.containsKey(localb.filePath))
+              if (f.this.wii.containsKey(localb.filePath))
               {
-                i = ((Integer)f.this.vcM.get(localb.filePath)).intValue();
-                f.this.vcM.put(localb.filePath, Integer.valueOf(i + 1));
+                i = ((Integer)f.this.wii.get(localb.filePath)).intValue();
+                f.this.wii.put(localb.filePath, Integer.valueOf(i + 1));
                 AppMethodBeat.o(137032);
                 return;
               }
-              f.this.vcM.put(localb.filePath, Integer.valueOf(1));
+              f.this.wii.put(localb.filePath, Integer.valueOf(1));
             }
           }
         }
@@ -392,209 +409,209 @@ public final class f
       public final void k(w paramAnonymousw)
       {
         AppMethodBeat.i(137033);
-        if (f.this.vcJ != null)
+        if (f.this.wif != null)
         {
-          com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)f.this.vcA.get(paramAnonymousw.cZm.cQO);
+          com.tencent.mm.aj.b localb = (com.tencent.mm.aj.b)f.this.whW.get(paramAnonymousw.dkE.dce);
           if (localb == null)
           {
             AppMethodBeat.o(137033);
             return;
           }
-          if (localb.htt > 1000000L) {
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "onRealPlay: %s, invokeCallTime:%d", new Object[] { localb.cQO, Long.valueOf(localb.htt) });
+          if (localb.hLL > 1000000L) {
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "onRealPlay: %s, invokeCallTime:%d", new Object[] { localb.dce, Long.valueOf(localb.hLL) });
           }
-          Object localObject = paramAnonymousw.cZm.cRZ;
+          Object localObject = paramAnonymousw.dkE.ddp;
           paramAnonymousw = (w)localObject;
           if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramAnonymousw = localb.cRZ;
+            paramAnonymousw = localb.ddp;
           }
-          localObject = f.this.vcJ;
-          String str1 = localb.cQO;
+          localObject = f.this.wif;
+          String str1 = localb.dce;
           long l1 = System.currentTimeMillis();
-          long l2 = localb.htr;
-          long l3 = localb.hts;
-          long l4 = localb.htt;
+          long l2 = localb.hLJ;
+          long l3 = localb.hLK;
+          long l4 = localb.hLL;
           String str2 = localb.filePath;
-          long l5 = f.this.vcN.ft(localb.cQO);
+          long l5 = f.this.wij.go(localb.dce);
           long l6 = localb.fileSize;
           String str3 = localb.filePath;
-          ((com.tencent.mm.plugin.music.b.a.d)localObject).a(str1, paramAnonymousw, l1 - l2, l3, l4, false, str2, l5, l6, com.tencent.mm.audio.mix.b.e.ML().eR(str3));
-          if (f.this.vcM.containsKey(localb.filePath)) {
-            f.this.vcM.remove(localb.filePath);
+          ((com.tencent.mm.plugin.music.b.a.d)localObject).a(str1, paramAnonymousw, l1 - l2, l3, l4, false, str2, l5, l6, com.tencent.mm.audio.mix.b.e.Ou().fM(str3));
+          if (f.this.wii.containsKey(localb.filePath)) {
+            f.this.wii.remove(localb.filePath);
           }
         }
         AppMethodBeat.o(137033);
       }
     };
-    this.vcT = new com.tencent.mm.audio.mix.f.g()
+    this.wip = new com.tencent.mm.audio.mix.f.g()
     {
-      public final void hG(int paramAnonymousInt)
+      public final void hN(int paramAnonymousInt)
       {
         AppMethodBeat.i(137034);
-        if (f.this.vcJ != null) {
-          f.this.vcJ.Jt(paramAnonymousInt);
+        if (f.this.wif != null) {
+          f.this.wif.KV(paramAnonymousInt);
         }
         AppMethodBeat.o(137034);
       }
     };
     _release();
-    this.vcN = new com.tencent.mm.audio.mix.f.c();
-    this.vcN.a(this.vcS);
-    this.vcN.a(this.vcT);
+    this.wij = new com.tencent.mm.audio.mix.f.c();
+    this.wij.a(this.wio);
+    this.wij.a(this.wip);
     AppMethodBeat.o(137037);
   }
   
-  private void a(com.tencent.mm.ai.b paramb1, com.tencent.mm.ai.b paramb2)
+  private void a(com.tencent.mm.aj.b paramb1, com.tencent.mm.aj.b paramb2)
   {
     AppMethodBeat.i(137045);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "startAudioByMixPlayer");
-    amY(paramb1.cQO);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "startAudioByMixPlayer");
+    arX(paramb1.dce);
     k(paramb1);
     if ((TextUtils.isEmpty(paramb1.filePath)) && (paramb2 != null) && (paramb2.e(paramb1))) {
       paramb1.filePath = paramb2.filePath;
     }
-    if (paramb1.htn)
+    if (paramb1.hLF)
     {
       if ((paramb2 != null) && (!paramb2.e(paramb1)))
       {
         a(paramb1, true, false);
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer param src change, do stop now and play new");
-        if ((this.vcN.eX(paramb1.cQO)) || (this.vcN.fp(paramb1.cQO)) || (this.vcN.fq(paramb1.cQO)) || (this.vcN.fr(paramb1.cQO)) || (this.vcN.isPaused(paramb1.cQO))) {
-          this.vcN.fo(paramb1.cQO);
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer param src change, do stop now and play new");
+        if ((this.wij.fS(paramb1.dce)) || (this.wij.gk(paramb1.dce)) || (this.wij.gl(paramb1.dce)) || (this.wij.gm(paramb1.dce)) || (this.wij.isPaused(paramb1.dce))) {
+          this.wij.gj(paramb1.dce);
         }
-        this.vcN.a(paramb1);
+        this.wij.a(paramb1);
         AppMethodBeat.o(137045);
         return;
       }
-      if (this.vcN.eX(paramb1.cQO))
+      if (this.wij.fS(paramb1.dce))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is playing, do nothing");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is playing, do nothing");
         AppMethodBeat.o(137045);
         return;
       }
-      if ((this.vcN.fp(paramb1.cQO)) && (this.vcN.isPaused(paramb1.cQO)))
+      if ((this.wij.gk(paramb1.dce)) && (this.wij.isPaused(paramb1.dce)))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is paused, do resume");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is paused, do resume");
         a(paramb1, true, false);
-        this.vcN.fm(paramb1.cQO);
+        this.wij.gh(paramb1.dce);
         AppMethodBeat.o(137045);
         return;
       }
-      if (this.vcN.fr(paramb1.cQO))
+      if (this.wij.gm(paramb1.dce))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is isPrepared, do resume");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is isPrepared, do resume");
         a(paramb1, true, false);
-        this.vcN.fm(paramb1.cQO);
+        this.wij.gh(paramb1.dce);
         AppMethodBeat.o(137045);
         return;
       }
-      if (this.vcN.fq(paramb1.cQO))
+      if (this.wij.gl(paramb1.dce))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is isPreparing, do nothing");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is isPreparing, do nothing");
         AppMethodBeat.o(137045);
         return;
       }
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is end or stop, do startPlay");
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer is end or stop, do startPlay");
       a(paramb1, true, false);
-      this.vcN.a(paramb1);
+      this.wij.a(paramb1);
       AppMethodBeat.o(137045);
       return;
     }
-    if (this.vcN.fk(paramb1.cQO)) {
-      this.vcN.c(paramb1);
+    if (this.wij.gf(paramb1.dce)) {
+      this.wij.c(paramb1);
     }
     for (;;)
     {
       if ((paramb2 != null) && (!paramb2.e(paramb1)))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer param src change, do stop now");
-        if ((this.vcN.eX(paramb1.cQO)) || (this.vcN.fp(paramb1.cQO)) || (this.vcN.fq(paramb1.cQO)) || (this.vcN.fr(paramb1.cQO)) || (this.vcN.isPaused(paramb1.cQO))) {
-          this.vcN.fo(paramb1.cQO);
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixPlayer param src change, do stop now");
+        if ((this.wij.fS(paramb1.dce)) || (this.wij.gk(paramb1.dce)) || (this.wij.gl(paramb1.dce)) || (this.wij.gm(paramb1.dce)) || (this.wij.isPaused(paramb1.dce))) {
+          this.wij.gj(paramb1.dce);
         }
       }
-      this.vcN.o(7, paramb1.cQO);
+      this.wij.o(7, paramb1.dce);
       AppMethodBeat.o(137045);
       return;
-      this.vcN.b(paramb1);
+      this.wij.b(paramb1);
     }
   }
   
-  private void a(com.tencent.mm.ai.b paramb, boolean paramBoolean1, boolean paramBoolean2)
+  private void a(com.tencent.mm.aj.b paramb, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(137091);
-    this.vcJ = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
-    if (this.vcJ != null) {
-      this.vcJ.r(paramb.cQO, paramb.cRZ, paramBoolean2);
+    this.wif = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
+    if (this.wif != null) {
+      this.wif.r(paramb.dce, paramb.ddp, paramBoolean2);
     }
     long l2 = System.currentTimeMillis();
-    paramb.htr = l2;
+    paramb.hLJ = l2;
     long l1;
     if (paramBoolean1) {
-      l1 = paramb.htv;
+      l1 = paramb.hLN;
     }
-    for (paramb.hts = paramb.htu; (l1 > 0L) && (l2 > l1); paramb.hts = paramb.htw)
+    for (paramb.hLK = paramb.hLM; (l1 > 0L) && (l2 > l1); paramb.hLK = paramb.hLO)
     {
-      paramb.htt = (l2 - l1);
+      paramb.hLL = (l2 - l1);
       AppMethodBeat.o(137091);
       return;
-      l1 = paramb.htx;
+      l1 = paramb.hLP;
     }
-    paramb.htt = 0L;
+    paramb.hLL = 0L;
     AppMethodBeat.o(137091);
   }
   
-  private void a(String paramString, com.tencent.mm.ai.b paramb)
+  private void a(String paramString, com.tencent.mm.aj.b paramb)
   {
     AppMethodBeat.i(137039);
     if (paramb == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "restorePlayerParam param == null, audioId:%s", new Object[] { paramString });
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "restorePlayerParam param == null, audioId:%s", new Object[] { paramString });
       AppMethodBeat.o(137039);
       return;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "restorePlayerParam audioId:%s", new Object[] { paramString });
-    this.vcy.put(paramb.appId, paramb.processName);
-    this.vcA.put(paramb.cQO, paramb);
-    hR(paramb.appId, paramString);
-    this.vcD.remove(paramString);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "restorePlayerParam audioId:%s", new Object[] { paramString });
+    this.whU.put(paramb.appId, paramb.processName);
+    this.whW.put(paramb.dce, paramb);
+    ic(paramb.appId, paramString);
+    this.whZ.remove(paramString);
     AppMethodBeat.o(137039);
   }
   
   private void a(String paramString, h paramh)
   {
     AppMethodBeat.i(137068);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "pausePlayerOnBackground, pause player on background by audioId:%s", new Object[] { paramString });
-    com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)this.vcA.get(paramString);
-    if ((localb != null) && (paramh.aGv()) && (paramh.aGx()))
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "pausePlayerOnBackground, pause player on background by audioId:%s", new Object[] { paramString });
+    com.tencent.mm.aj.b localb = (com.tencent.mm.aj.b)this.whW.get(paramString);
+    if ((localb != null) && (paramh.aJG()) && (paramh.aJI()))
     {
-      localb.htn = true;
-      localb.cSh = paramh.dhO();
+      localb.hLF = true;
+      localb.ddx = paramh.dsc();
     }
     for (;;)
     {
       b(paramString, paramh);
-      paramString = amR(paramString);
-      if ((paramString != null) && (paramh.aGv())) {
-        paramString.rM = true;
+      paramString = arQ(paramString);
+      if ((paramString != null) && (paramh.aJG())) {
+        paramString.tG = true;
       }
-      if ((!paramh.aGv()) && (!paramh.aGx()) && (!paramh.cDT()) && (!paramh.blh()) && (!paramh.isPaused())) {
+      if ((!paramh.aJG()) && (!paramh.aJI()) && (!paramh.cMm()) && (!paramh.boS()) && (!paramh.isPaused())) {
         break;
       }
-      paramh.dhL();
+      paramh.drZ();
       AppMethodBeat.o(137068);
       return;
-      if ((localb != null) && (paramh.aGx()))
+      if ((localb != null) && (paramh.aJI()))
       {
-        localb.htn = true;
-        localb.cSh = paramh.dhO();
+        localb.hLF = true;
+        localb.ddx = paramh.dsc();
       }
       else if (localb != null)
       {
-        localb.htn = true;
-        localb.cSh = 0;
+        localb.hLF = true;
+        localb.ddx = 0;
       }
     }
-    paramh.dhK();
+    paramh.drY();
     AppMethodBeat.o(137068);
   }
   
@@ -606,7 +623,7 @@ public final class f
       AppMethodBeat.o(137075);
       return true;
     }
-    if ((paramh.aGv()) || (paramh.isPaused()) || (paramh.cDT()) || (paramh.blh()) || (paramh.aGx())) {}
+    if ((paramh.aJG()) || (paramh.isPaused()) || (paramh.cMm()) || (paramh.boS()) || (paramh.aJI())) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(137075);
@@ -616,14 +633,14 @@ public final class f
     return false;
   }
   
-  private void amW(String arg1)
+  private void arV(String arg1)
   {
     AppMethodBeat.i(137064);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllStoppedAudioPlayersAndSaveStateByAppId, appId:%s", new Object[] { ??? });
-    Object localObject1 = (LinkedList)this.vcz.get(???);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllStoppedAudioPlayersAndSaveStateByAppId, appId:%s", new Object[] { ??? });
+    Object localObject1 = (LinkedList)this.whV.get(???);
     if ((localObject1 == null) || (((LinkedList)localObject1).size() == 0))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to stop");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to stop");
       AppMethodBeat.o(137064);
       return;
     }
@@ -631,24 +648,24 @@ public final class f
     {
       String str;
       h localh;
-      synchronized (this.pwZ)
+      synchronized (this.qaE)
       {
         localObject1 = ((LinkedList)localObject1).iterator();
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
         str = (String)((Iterator)localObject1).next();
-        if (this.vcN.fk(str)) {
-          this.vcN.fo(str);
+        if (this.wij.gf(str)) {
+          this.wij.gj(str);
         }
-        localh = (h)this.vcv.remove(str);
-        this.vcw.remove(str);
+        localh = (h)this.whR.remove(str);
+        this.whS.remove(str);
         if (localh == null) {
           continue;
         }
         b(str, localh);
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroy recycled player");
-        if (localh.htD) {
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroy recycled player");
+        if (localh.hLV) {
           d(str, localh);
         }
       }
@@ -657,14 +674,14 @@ public final class f
     AppMethodBeat.o(137064);
   }
   
-  private String amX(String paramString)
+  private String arW(String paramString)
   {
     AppMethodBeat.i(137067);
-    Iterator localIterator = this.vcx.iterator();
+    Iterator localIterator = this.whT.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      LinkedList localLinkedList = (LinkedList)this.vcz.get(str);
+      LinkedList localLinkedList = (LinkedList)this.whV.get(str);
       if ((localLinkedList != null) && (localLinkedList.contains(paramString)))
       {
         AppMethodBeat.o(137067);
@@ -675,103 +692,103 @@ public final class f
     return "";
   }
   
-  private boolean amY(String paramString)
+  private boolean arX(String paramString)
   {
     AppMethodBeat.i(137074);
-    ??? = amT(paramString);
+    ??? = arS(paramString);
     if (??? == null)
     {
       AppMethodBeat.o(137074);
       return false;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAndRemovePlayer, audioId:%s", new Object[] { paramString });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAndRemovePlayer, audioId:%s", new Object[] { paramString });
     c(paramString, (h)???);
-    synchronized (this.pwZ)
+    synchronized (this.qaE)
     {
-      this.vct.remove(paramString);
-      this.vcu.remove(paramString);
-      this.vcv.remove(paramString);
-      this.vcw.remove(paramString);
+      this.whP.remove(paramString);
+      this.whQ.remove(paramString);
+      this.whR.remove(paramString);
+      this.whS.remove(paramString);
       AppMethodBeat.o(137074);
       return true;
     }
   }
   
-  private void amZ(String paramString)
+  private void arY(String paramString)
   {
     AppMethodBeat.i(137078);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "recyclePlayer");
-    int i = this.vct.size();
-    int j = this.vcv.size();
-    int k = dhp();
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "start_player_count:%d, recycled_player_count:%d, paused_player_count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "recyclePlayer");
+    int i = this.whP.size();
+    int j = this.whR.size();
+    int k = drC();
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "start_player_count:%d, recycled_player_count:%d, paused_player_count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
     if (i >= 10) {
-      dhq();
+      drD();
     }
     Iterator localIterator;
     String str;
     for (;;)
     {
-      paramString = amX(paramString);
-      i = this.vct.size();
-      j = this.vcv.size();
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "start_player_count:%d, recycled_player_count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      paramString = arW(paramString);
+      i = this.whP.size();
+      j = this.whR.size();
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "start_player_count:%d, recycled_player_count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if (j < 50) {
         break;
       }
-      localIterator = this.vcx.iterator();
+      localIterator = this.whT.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
         if ((str != null) && (!str.equalsIgnoreCase(paramString))) {
-          ana(str);
+          arZ(str);
         }
       }
       if (k >= 6) {
-        dhq();
+        drD();
       } else if (i + k >= 8) {
-        dhq();
+        drD();
       }
     }
     if (j + i >= 50)
     {
-      localIterator = this.vcx.iterator();
+      localIterator = this.whT.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
         if ((str != null) && (!str.equalsIgnoreCase(paramString))) {
-          ana(str);
+          arZ(str);
         }
       }
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "not do recycle player, condition is not satisfy to do recycleStopPlayerByAppId");
-    j = this.vcv.size();
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "start_player_count:%d, recycled_player_count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "not do recycle player, condition is not satisfy to do recycleStopPlayerByAppId");
+    j = this.whR.size();
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "start_player_count:%d, recycled_player_count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
     if (j >= 50)
     {
-      dhr();
+      drE();
       AppMethodBeat.o(137078);
       return;
     }
     if (j + i >= 50)
     {
-      dhr();
+      drE();
       AppMethodBeat.o(137078);
       return;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "not do recycle player, condition is not satisfy to do recycleAllStopPlayer");
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "not do recycle player, condition is not satisfy to do recycleAllStopPlayer");
     AppMethodBeat.o(137078);
   }
   
-  private void ana(String paramString)
+  private void arZ(String paramString)
   {
     AppMethodBeat.i(137081);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "recycleStoppedPlayerByAppId");
-    amW(paramString);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "recycleStoppedPlayerByAppId");
+    arV(paramString);
     AppMethodBeat.o(137081);
   }
   
-  private boolean anb(String paramString)
+  private boolean asa(String paramString)
   {
     AppMethodBeat.i(137082);
     boolean bool1 = false;
@@ -782,48 +799,48 @@ public final class f
     Object localObject3;
     for (;;)
     {
-      synchronized (this.pwZ)
+      synchronized (this.qaE)
       {
-        m = this.vct.size();
+        m = this.whP.size();
         if (m < 10)
         {
-          this.vcC.clear();
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "playerCount:%d is not need to remove", new Object[] { Integer.valueOf(m) });
+          this.whY.clear();
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "playerCount:%d is not need to remove", new Object[] { Integer.valueOf(m) });
           AppMethodBeat.o(137082);
           return false;
         }
-        localObject3 = this.vcu.iterator();
+        localObject3 = this.whQ.iterator();
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
         localObject4 = (String)((Iterator)localObject3).next();
-        localObject4 = (com.tencent.mm.ai.b)this.vcA.get(localObject4);
-        if ((localObject4 == null) || (((com.tencent.mm.ai.b)localObject4).cRZ == null)) {
+        localObject4 = (com.tencent.mm.aj.b)this.whW.get(localObject4);
+        if ((localObject4 == null) || (((com.tencent.mm.aj.b)localObject4).ddp == null)) {
           continue;
         }
-        if (!localHashMap2.containsKey(((com.tencent.mm.ai.b)localObject4).cRZ))
+        if (!localHashMap2.containsKey(((com.tencent.mm.aj.b)localObject4).ddp))
         {
-          localHashMap2.put(((com.tencent.mm.ai.b)localObject4).cRZ, Integer.valueOf(1));
+          localHashMap2.put(((com.tencent.mm.aj.b)localObject4).ddp, Integer.valueOf(1));
           localArrayList = new ArrayList();
-          localArrayList.add(((com.tencent.mm.ai.b)localObject4).cQO);
-          localHashMap1.put(((com.tencent.mm.ai.b)localObject4).cRZ, localArrayList);
-          if (((ArrayList)localObject2).contains(((com.tencent.mm.ai.b)localObject4).cRZ)) {
+          localArrayList.add(((com.tencent.mm.aj.b)localObject4).dce);
+          localHashMap1.put(((com.tencent.mm.aj.b)localObject4).ddp, localArrayList);
+          if (((ArrayList)localObject2).contains(((com.tencent.mm.aj.b)localObject4).ddp)) {
             continue;
           }
-          ((ArrayList)localObject2).add(((com.tencent.mm.ai.b)localObject4).cRZ);
+          ((ArrayList)localObject2).add(((com.tencent.mm.aj.b)localObject4).ddp);
         }
       }
-      i = ((Integer)localHashMap2.get(((com.tencent.mm.ai.b)localObject4).cRZ)).intValue();
-      localHashMap2.put(((com.tencent.mm.ai.b)localObject4).cRZ, Integer.valueOf(i + 1));
-      ArrayList localArrayList = (ArrayList)localHashMap1.get(((com.tencent.mm.ai.b)localObject4).cRZ);
-      if (!localArrayList.contains(((com.tencent.mm.ai.b)localObject4).cQO)) {
-        localArrayList.add(((com.tencent.mm.ai.b)localObject4).cQO);
+      i = ((Integer)localHashMap2.get(((com.tencent.mm.aj.b)localObject4).ddp)).intValue();
+      localHashMap2.put(((com.tencent.mm.aj.b)localObject4).ddp, Integer.valueOf(i + 1));
+      ArrayList localArrayList = (ArrayList)localHashMap1.get(((com.tencent.mm.aj.b)localObject4).ddp);
+      if (!localArrayList.contains(((com.tencent.mm.aj.b)localObject4).dce)) {
+        localArrayList.add(((com.tencent.mm.aj.b)localObject4).dce);
       }
-      localHashMap1.put(((com.tencent.mm.ai.b)localObject4).cRZ, localArrayList);
+      localHashMap1.put(((com.tencent.mm.aj.b)localObject4).ddp, localArrayList);
     }
     ??? = "";
-    int k = com.tencent.mm.plugin.music.cache.g.dij();
-    ac.d("MicroMsg.Audio.AudioPlayerMgr", "removePlayerGroupMinCount:%d", new Object[] { Integer.valueOf(k) });
+    int k = com.tencent.mm.plugin.music.cache.g.dsv();
+    ad.d("MicroMsg.Audio.AudioPlayerMgr", "removePlayerGroupMinCount:%d", new Object[] { Integer.valueOf(k) });
     Object localObject4 = ((ArrayList)localObject2).iterator();
     int i = k;
     int j;
@@ -831,7 +848,7 @@ public final class f
     {
       localObject3 = (String)((Iterator)localObject4).next();
       j = ((Integer)localHashMap2.get(localObject3)).intValue();
-      ac.d("MicroMsg.Audio.AudioPlayerMgr", "count:%d, url:%s", new Object[] { Integer.valueOf(j), localObject3 });
+      ad.d("MicroMsg.Audio.AudioPlayerMgr", "count:%d, url:%s", new Object[] { Integer.valueOf(j), localObject3 });
       if (j < k) {
         break label908;
       }
@@ -859,10 +876,10 @@ public final class f
       break;
       if (bool1)
       {
-        paramString = (com.tencent.mm.ai.b)this.vcA.get(paramString);
-        if ((paramString != null) && (??? != null) && (((String)???).equalsIgnoreCase(paramString.cRZ)))
+        paramString = (com.tencent.mm.aj.b)this.whW.get(paramString);
+        if ((paramString != null) && (??? != null) && (((String)???).equalsIgnoreCase(paramString.ddp)))
         {
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "srcUrl is same, not remove and don't play again");
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "srcUrl is same, not remove and don't play again");
           bool1 = false;
         }
       }
@@ -870,7 +887,7 @@ public final class f
       {
         if (bool1)
         {
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "need to remove player");
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "need to remove player");
           ??? = (ArrayList)localHashMap1.get(???);
           if ((??? != null) && (((ArrayList)???).size() > 0))
           {
@@ -879,30 +896,30 @@ public final class f
             while (((Iterator)???).hasNext())
             {
               localObject2 = (String)((Iterator)???).next();
-              localObject2 = (com.tencent.mm.ai.b)this.vcA.get(localObject2);
+              localObject2 = (com.tencent.mm.aj.b)this.whW.get(localObject2);
               if (localObject2 != null) {
                 paramString.add(localObject2);
               }
             }
-            Collections.sort(paramString, new f.a(this));
+            Collections.sort(paramString, new a());
             ??? = new LinkedList();
             paramString = paramString.iterator();
             while (paramString.hasNext()) {
-              ((LinkedList)???).add(((com.tencent.mm.ai.b)paramString.next()).cQO);
+              ((LinkedList)???).add(((com.tencent.mm.aj.b)paramString.next()).dce);
             }
             i = m - 10;
             if ((i <= 0) || (((LinkedList)???).size() <= i)) {
               break label826;
             }
             i += 1;
-            ac.i("MicroMsg.Audio.AudioPlayerMgr", "removeCount should be %d", new Object[] { Integer.valueOf(i) });
+            ad.i("MicroMsg.Audio.AudioPlayerMgr", "removeCount should be %d", new Object[] { Integer.valueOf(i) });
             j = ((LinkedList)???).size() - i;
             i = j;
             if (j < 0) {
               i = 1;
             }
-            this.vcC.addAll(((LinkedList)???).subList(i, ((LinkedList)???).size()));
-            ac.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player count : %d", new Object[] { Integer.valueOf(this.vcC.size()) });
+            this.whY.addAll(((LinkedList)???).subList(i, ((LinkedList)???).size()));
+            ad.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player count : %d", new Object[] { Integer.valueOf(this.whY.size()) });
           }
         }
         for (;;)
@@ -912,13 +929,13 @@ public final class f
           label826:
           if ((i > 0) && (((LinkedList)???).size() < i))
           {
-            this.vcC.addAll(((LinkedList)???).subList(1, ((LinkedList)???).size()));
+            this.whY.addAll(((LinkedList)???).subList(1, ((LinkedList)???).size()));
             break;
           }
-          this.vcC.add(((LinkedList)???).get(((LinkedList)???).size() - 1));
+          this.whY.add(((LinkedList)???).get(((LinkedList)???).size() - 1));
           break;
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "not need to remove player");
-          this.vcC.clear();
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "not need to remove player");
+          this.whY.clear();
         }
       }
       label905:
@@ -929,44 +946,44 @@ public final class f
     }
   }
   
-  private void b(com.tencent.mm.ai.b paramb1, com.tencent.mm.ai.b paramb2)
+  private void b(com.tencent.mm.aj.b paramb1, com.tencent.mm.aj.b paramb2)
   {
     int i = 1;
     AppMethodBeat.i(137046);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "startAudioByQQAudioPlayer");
-    h localh = amT(paramb1.cQO);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "startAudioByQQAudioPlayer");
+    h localh = arS(paramb1.dce);
     if (localh == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio, player is null, create new QQAudioPlayer with audioId:%s", new Object[] { paramb1.cQO });
-      paramb2 = dhn();
-      paramb2.a(this.vcP);
-      paramb2.anf(paramb1.cQO);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio, player is null, create new QQAudioPlayer with audioId:%s", new Object[] { paramb1.dce });
+      paramb2 = drA();
+      paramb2.a(this.wil);
+      paramb2.ase(paramb1.dce);
       paramb2.b(paramb1);
-      if (paramb1.htn)
+      if (paramb1.hLF)
       {
         a(paramb1, true, true);
-        e(paramb1.cQO, paramb2);
-        paramb1.hto = System.currentTimeMillis();
+        e(paramb1.dce, paramb2);
+        paramb1.hLG = System.currentTimeMillis();
         paramb2.l(paramb1);
         AppMethodBeat.o(137046);
         return;
       }
-      f(paramb1.cQO, paramb2);
-      paramb2.dhz();
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "new player autoplay false, not to play ");
+      f(paramb1.dce, paramb2);
+      paramb2.drN();
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "new player autoplay false, not to play ");
       AppMethodBeat.o(137046);
       return;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "startAudio, audioId:%s", new Object[] { paramb1.cQO });
-    if (paramb1.htn)
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "startAudio, audioId:%s", new Object[] { paramb1.dce });
+    if (paramb1.hLF)
     {
-      e(paramb1.cQO, localh);
-      paramb1.hto = System.currentTimeMillis();
+      e(paramb1.dce, localh);
+      paramb1.hLG = System.currentTimeMillis();
       localh.b(paramb1);
       if ((paramb2 != null) && (!paramb2.e(paramb1)))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "param src change, do stop now and play new");
-        if ((localh.aGv()) || (localh.aGx()) || (localh.cDT()) || (localh.blh()) || (localh.isPaused())) {
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "param src change, do stop now and play new");
+        if ((localh.aJG()) || (localh.aJI()) || (localh.cMm()) || (localh.boS()) || (localh.isPaused())) {
           localh.stopPlay();
         }
         a(paramb1, true, true);
@@ -974,90 +991,90 @@ public final class f
         AppMethodBeat.o(137046);
         return;
       }
-      if (localh.aGv())
+      if (localh.aJG())
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is playing, do nothing");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is playing, do nothing");
         AppMethodBeat.o(137046);
         return;
       }
-      if ((localh.aGx()) && (localh.isPaused()))
+      if ((localh.aJI()) && (localh.isPaused()))
       {
         a(paramb1, true, true);
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is paused, do resume");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is paused, do resume");
         localh.resume();
         AppMethodBeat.o(137046);
         return;
       }
-      if (localh.blh())
+      if (localh.boS())
       {
         a(paramb1, true, true);
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is isPrepared, do resume");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is isPrepared, do resume");
         localh.resume();
         AppMethodBeat.o(137046);
         return;
       }
-      if (localh.cDT())
+      if (localh.cMm())
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is isPreparing, do nothing");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is isPreparing, do nothing");
         AppMethodBeat.o(137046);
         return;
       }
       a(paramb1, true, true);
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "is end or stop, do startPlay");
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "is end or stop, do startPlay");
       localh.l(paramb1);
       AppMethodBeat.o(137046);
       return;
     }
     for (;;)
     {
-      synchronized (this.pwZ)
+      synchronized (this.qaE)
       {
-        if (!this.vcu.contains(paramb1.cQO)) {
+        if (!this.whQ.contains(paramb1.dce)) {
           break label594;
         }
         if (i == 0)
         {
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "mark player recycle");
-          f(paramb1.cQO, localh);
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "mark player recycle");
+          f(paramb1.dce, localh);
           localh.b(paramb1);
           if ((paramb2 != null) && (!paramb2.e(paramb1)))
           {
-            ac.i("MicroMsg.Audio.AudioPlayerMgr", "param src change, do stop now");
-            if ((localh.aGv()) || (localh.aGx()) || (localh.cDT()) || (localh.blh()) || (localh.isPaused())) {
+            ad.i("MicroMsg.Audio.AudioPlayerMgr", "param src change, do stop now");
+            if ((localh.aJG()) || (localh.aJI()) || (localh.cMm()) || (localh.boS()) || (localh.isPaused())) {
               localh.stopPlay();
             }
           }
-          localh.dhz();
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "autoplay false, not to play ");
+          localh.drN();
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "autoplay false, not to play ");
           AppMethodBeat.o(137046);
           return;
         }
       }
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "don't mark player, is playing");
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "don't mark player, is playing");
       continue;
       label594:
       i = 0;
     }
   }
   
-  private void bt(int paramInt, String paramString)
+  private void by(int paramInt, String paramString)
   {
     AppMethodBeat.i(137065);
-    ac.e("MicroMsg.Audio.AudioPlayerMgr", "onErrorEvent with errCode:%d, audioId:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ad.e("MicroMsg.Audio.AudioPlayerMgr", "onErrorEvent with errCode:%d, audioId:%s", new Object[] { Integer.valueOf(paramInt), paramString });
     String str = paramString;
     if (TextUtils.isEmpty(paramString))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "audioId is empty");
-      str = e.dhk();
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "audioId is empty");
+      str = e.drx();
     }
     paramString = new w();
-    paramString.cZm.action = 4;
-    paramString.cZm.state = "error";
-    paramString.cZm.errCode = com.tencent.mm.plugin.music.f.a.e.JY(paramInt);
-    paramString.cZm.errMsg = com.tencent.mm.plugin.music.f.a.e.tV(paramInt);
-    paramString.cZm.cQO = str;
-    paramString.cZm.appId = amX(str);
-    com.tencent.mm.sdk.b.a.GpY.a(paramString, Looper.getMainLooper());
+    paramString.dkE.action = 4;
+    paramString.dkE.state = "error";
+    paramString.dkE.errCode = com.tencent.mm.plugin.music.f.a.e.LA(paramInt);
+    paramString.dkE.errMsg = com.tencent.mm.plugin.music.f.a.e.uz(paramInt);
+    paramString.dkE.dce = str;
+    paramString.dkE.appId = arW(str);
+    com.tencent.mm.sdk.b.a.IbL.a(paramString, Looper.getMainLooper());
     AppMethodBeat.o(137065);
   }
   
@@ -1066,82 +1083,35 @@ public final class f
     AppMethodBeat.i(137070);
     if (paramh == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "destroyPlayer player is null for audioId:%s", new Object[] { paramString });
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "destroyPlayer player is null for audioId:%s", new Object[] { paramString });
       AppMethodBeat.o(137070);
       return;
     }
-    if ((paramh.aGv()) || (paramh.aGx()) || (paramh.cDT()) || (paramh.blh()) || (paramh.isPaused())) {
+    if ((paramh.aJG()) || (paramh.aJI()) || (paramh.cMm()) || (paramh.boS()) || (paramh.isPaused())) {
       paramh.stopPlay();
     }
     paramh.release();
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroyPlayer stop and release player by audioId:%s", new Object[] { paramString });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroyPlayer stop and release player by audioId:%s", new Object[] { paramString });
     AppMethodBeat.o(137070);
   }
   
   static void d(String paramString, h paramh)
   {
     AppMethodBeat.i(137071);
-    ac.d("MicroMsg.Audio.AudioPlayerMgr", "releasePlayer");
+    ad.d("MicroMsg.Audio.AudioPlayerMgr", "releasePlayer");
     c(paramString, paramh);
     AppMethodBeat.o(137071);
   }
   
-  /* Error */
-  public static void dhl()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc_w 743
-    //   6: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 745	com/tencent/mm/plugin/music/b/f:vcO	Lcom/tencent/mm/plugin/music/b/f;
-    //   12: ifnull +13 -> 25
-    //   15: ldc_w 743
-    //   18: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   21: ldc 2
-    //   23: monitorexit
-    //   24: return
-    //   25: new 2	com/tencent/mm/plugin/music/b/f
-    //   28: dup
-    //   29: invokespecial 746	com/tencent/mm/plugin/music/b/f:<init>	()V
-    //   32: putstatic 745	com/tencent/mm/plugin/music/b/f:vcO	Lcom/tencent/mm/plugin/music/b/f;
-    //   35: ldc_w 743
-    //   38: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   41: goto -20 -> 21
-    //   44: astore_0
-    //   45: ldc 2
-    //   47: monitorexit
-    //   48: aload_0
-    //   49: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   44	5	0	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	21	44	finally
-    //   25	41	44	finally
-  }
-  
-  public static f dhm()
-  {
-    AppMethodBeat.i(137036);
-    if (vcO == null) {
-      vcO = new f();
-    }
-    f localf = vcO;
-    AppMethodBeat.o(137036);
-    return localf;
-  }
-  
-  private h dhn()
+  private h drA()
   {
     AppMethodBeat.i(137066);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "createOrReusePlayer");
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "createOrReusePlayer");
     Object localObject5;
     int i;
-    synchronized (this.pwZ)
+    synchronized (this.qaE)
     {
-      if (this.vcv.size() == 0)
+      if (this.whR.size() == 0)
       {
         localObject1 = new h();
         AppMethodBeat.o(137066);
@@ -1151,29 +1121,29 @@ public final class f
       localObject5 = "";
       long l1 = 0L;
       long l2 = System.currentTimeMillis();
-      Iterator localIterator = this.vcw.iterator();
+      Iterator localIterator = this.whS.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        ??? = (h)this.vcv.get(str);
+        ??? = (h)this.whR.get(str);
         if (??? != null)
         {
-          if ((!((h)???).htD) && (!((h)???).isCompleted()) && (!((h)???).isStopped()))
+          if ((!((h)???).hLV) && (!((h)???).isCompleted()) && (!((h)???).isStopped()))
           {
-            if (((h)???).vda == null) {
+            if (((h)???).wiw == null) {
               break label422;
             }
-            if (((h)???).vda.getPlayerState() != 9) {
+            if (((h)???).wiw.getPlayerState() != 9) {
               break label417;
             }
             i = 1;
             break label395;
           }
           label169:
-          if ((l1 != 0L) && (((h)???).gcd >= l1)) {
+          if ((l1 != 0L) && (((h)???).gvN >= l1)) {
             break label380;
           }
-          l1 = ((h)???).gcd;
+          l1 = ((h)???).gvN;
           localObject1 = str;
           localObject5 = ???;
           break label402;
@@ -1181,19 +1151,19 @@ public final class f
       }
       if ((localObject1 != null) && (l2 - l1 > 500L))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "player is be reuse to play again with other audio");
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "unmarkPlayer, unmark player by audioId:%s", new Object[] { localObject5 });
-        synchronized (this.pwZ)
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "player is be reuse to play again with other audio");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "unmarkPlayer, unmark player by audioId:%s", new Object[] { localObject5 });
+        synchronized (this.qaE)
         {
-          if (this.vcw.contains(localObject5))
+          if (this.whS.contains(localObject5))
           {
-            this.vcv.remove(localObject5);
-            this.vcw.remove(localObject5);
+            this.whR.remove(localObject5);
+            this.whS.remove(localObject5);
           }
-          if (this.vcu.contains(localObject5))
+          if (this.whQ.contains(localObject5))
           {
-            this.vcu.remove(localObject5);
-            this.vct.remove(localObject5);
+            this.whQ.remove(localObject5);
+            this.whP.remove(localObject5);
           }
           AppMethodBeat.o(137066);
           return localObject1;
@@ -1231,27 +1201,27 @@ public final class f
     }
   }
   
-  private int dhp()
+  private int drC()
   {
     AppMethodBeat.i(137077);
     int i;
     boolean bool;
-    synchronized (this.pwZ)
+    synchronized (this.qaE)
     {
-      Iterator localIterator = this.vcw.iterator();
+      Iterator localIterator = this.whS.iterator();
       i = 0;
       if (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
-        h localh = amT((String)localObject3);
+        h localh = arS((String)localObject3);
         if (localh == null)
         {
-          ac.e("MicroMsg.Audio.AudioPlayerMgr", "isPausedPlayer, player is null");
-          localObject3 = amR((String)localObject3);
+          ad.e("MicroMsg.Audio.AudioPlayerMgr", "isPausedPlayer, player is null");
+          localObject3 = arQ((String)localObject3);
           if (localObject3 == null) {
             break label135;
           }
-          bool = ((com.tencent.mm.ai.d)localObject3).rM;
+          bool = ((com.tencent.mm.aj.d)localObject3).tG;
         }
         else
         {
@@ -1280,19 +1250,19 @@ public final class f
     }
   }
   
-  private void dhq()
+  private void drD()
   {
     AppMethodBeat.i(137079);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "recyclePausedPlayer");
-    synchronized (this.pwZ)
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "recyclePausedPlayer");
+    synchronized (this.qaE)
     {
       Object localObject2 = new LinkedList();
-      ((LinkedList)localObject2).addAll(this.vcw);
+      ((LinkedList)localObject2).addAll(this.whS);
       localObject2 = ((LinkedList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
         String str = (String)((Iterator)localObject2).next();
-        h localh = (h)this.vcv.get(str);
+        h localh = (h)this.whR.get(str);
         if ((localh != null) && (localh.isPaused())) {
           a(str, localh);
         }
@@ -1301,29 +1271,29 @@ public final class f
     AppMethodBeat.o(137079);
   }
   
-  private void dhr()
+  private void drE()
   {
     AppMethodBeat.i(137080);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "recycleStopPlayer");
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "recycleStopPlayer");
     for (;;)
     {
       String str;
       h localh;
-      synchronized (this.pwZ)
+      synchronized (this.qaE)
       {
         Object localObject2 = new LinkedList();
-        ((LinkedList)localObject2).addAll(this.vcw);
+        ((LinkedList)localObject2).addAll(this.whS);
         localObject2 = ((LinkedList)localObject2).iterator();
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
         str = (String)((Iterator)localObject2).next();
-        localh = (h)this.vcv.remove(str);
-        this.vcw.remove(str);
+        localh = (h)this.whR.remove(str);
+        this.whS.remove(str);
         if (localh == null) {
           continue;
         }
-        if (localh.htD)
+        if (localh.hLV)
         {
           b(str, localh);
           d(str, localh);
@@ -1338,42 +1308,89 @@ public final class f
     AppMethodBeat.o(137080);
   }
   
-  private void dht()
+  private void drG()
   {
     AppMethodBeat.i(137086);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixWithOther:%b, focus:%b", new Object[] { Boolean.valueOf(this.cZk.htl), Boolean.valueOf(this.vcK.vdQ) });
-    if ((!this.cZk.htl) && (!this.vcK.vdQ))
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixWithOther:%b, focus:%b", new Object[] { Boolean.valueOf(this.dkC.hLD), Boolean.valueOf(this.wig.wjm) });
+    if ((!this.dkC.hLD) && (!this.wig.wjm))
     {
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "requestFocus()");
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "requestFocus()");
       requestFocus();
       AppMethodBeat.o(137086);
       return;
     }
-    if ((this.cZk.htl) && (this.vcK.vdQ))
+    if ((this.dkC.hLD) && (this.wig.wjm))
     {
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "abandonFocus()");
-      bjF();
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "abandonFocus()");
+      bpH();
     }
     AppMethodBeat.o(137086);
   }
   
-  private void dhu()
+  private void drH()
   {
     AppMethodBeat.i(137089);
-    this.vcJ = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
-    if (this.vcJ != null) {
-      this.vcJ.dhS();
+    this.wif = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
+    if (this.wif != null) {
+      this.wif.dsg();
     }
     AppMethodBeat.o(137089);
   }
   
-  private boolean ec(String paramString, int paramInt)
+  /* Error */
+  public static void dry()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc_w 811
+    //   6: invokestatic 81	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 813	com/tencent/mm/plugin/music/b/f:wik	Lcom/tencent/mm/plugin/music/b/f;
+    //   12: ifnull +13 -> 25
+    //   15: ldc_w 811
+    //   18: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: ldc 2
+    //   23: monitorexit
+    //   24: return
+    //   25: new 2	com/tencent/mm/plugin/music/b/f
+    //   28: dup
+    //   29: invokespecial 814	com/tencent/mm/plugin/music/b/f:<init>	()V
+    //   32: putstatic 813	com/tencent/mm/plugin/music/b/f:wik	Lcom/tencent/mm/plugin/music/b/f;
+    //   35: ldc_w 811
+    //   38: invokestatic 171	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   41: goto -20 -> 21
+    //   44: astore_0
+    //   45: ldc 2
+    //   47: monitorexit
+    //   48: aload_0
+    //   49: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   44	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	21	44	finally
+    //   25	41	44	finally
+  }
+  
+  public static f drz()
+  {
+    AppMethodBeat.i(137036);
+    if (wik == null) {
+      wik = new f();
+    }
+    f localf = wik;
+    AppMethodBeat.o(137036);
+    return localf;
+  }
+  
+  private boolean eu(String paramString, int paramInt)
   {
     AppMethodBeat.i(137053);
-    paramString = (com.tencent.mm.ai.b)this.vcA.get(paramString);
+    paramString = (com.tencent.mm.aj.b)this.whW.get(paramString);
     if (paramString != null)
     {
-      paramString.cSh = paramInt;
+      paramString.ddx = paramInt;
       AppMethodBeat.o(137053);
       return true;
     }
@@ -1381,7 +1398,24 @@ public final class f
     return false;
   }
   
-  private void hR(String paramString1, String paramString2)
+  private void i(com.tencent.mm.aj.b paramb)
+  {
+    AppMethodBeat.i(137044);
+    if (this.wij.gf(paramb.dce)) {
+      this.wij.c(paramb);
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramb.filePath)) {
+        asd(paramb.dce);
+      }
+      AppMethodBeat.o(137044);
+      return;
+      this.wij.b(paramb);
+    }
+  }
+  
+  private void ic(String paramString1, String paramString2)
   {
     AppMethodBeat.i(137040);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
@@ -1389,14 +1423,14 @@ public final class f
       AppMethodBeat.o(137040);
       return;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "saveCreateId, appId:%s, audioId:%s", new Object[] { paramString1, paramString2 });
-    if (!this.vcx.contains(paramString1)) {
-      this.vcx.add(paramString1);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "saveCreateId, appId:%s, audioId:%s", new Object[] { paramString1, paramString2 });
+    if (!this.whT.contains(paramString1)) {
+      this.whT.add(paramString1);
     }
-    if (!this.vcs.contains(paramString2)) {
-      this.vcs.add(paramString2);
+    if (!this.whO.contains(paramString2)) {
+      this.whO.add(paramString2);
     }
-    LinkedList localLinkedList2 = (LinkedList)this.vcz.get(paramString1);
+    LinkedList localLinkedList2 = (LinkedList)this.whV.get(paramString1);
     LinkedList localLinkedList1 = localLinkedList2;
     if (localLinkedList2 == null) {
       localLinkedList1 = new LinkedList();
@@ -1404,51 +1438,34 @@ public final class f
     if (!localLinkedList1.contains(paramString2)) {
       localLinkedList1.add(paramString2);
     }
-    this.vcz.put(paramString1, localLinkedList1);
+    this.whV.put(paramString1, localLinkedList1);
     AppMethodBeat.o(137040);
   }
   
-  private void i(com.tencent.mm.ai.b paramb)
-  {
-    AppMethodBeat.i(137044);
-    if (this.vcN.fk(paramb.cQO)) {
-      this.vcN.c(paramb);
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramb.filePath)) {
-        ane(paramb.cQO);
-      }
-      AppMethodBeat.o(137044);
-      return;
-      this.vcN.b(paramb);
-    }
-  }
-  
-  private void j(com.tencent.mm.ai.b paramb)
+  private void j(com.tencent.mm.aj.b paramb)
   {
     AppMethodBeat.i(137090);
-    this.vcJ = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
-    if (this.vcJ != null) {
-      this.vcJ.hT(paramb.cQO, paramb.cRZ);
+    this.wif = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
+    if (this.wif != null) {
+      this.wif.ie(paramb.dce, paramb.ddp);
     }
     AppMethodBeat.o(137090);
   }
   
-  private static void k(com.tencent.mm.ai.b paramb)
+  private static void k(com.tencent.mm.aj.b paramb)
   {
     AppMethodBeat.i(137093);
-    if (paramb.htA != null) {
+    if (paramb.hLS != null) {
       try
       {
-        paramb.htA.close();
-        paramb.htA = null;
+        paramb.hLS.close();
+        paramb.hLS = null;
         AppMethodBeat.o(137093);
         return;
       }
       catch (Exception paramb)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.AudioPlayerMgr", paramb, "closeAudioDataSource", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.AudioPlayerMgr", paramb, "closeAudioDataSource", new Object[0]);
       }
     }
     AppMethodBeat.o(137093);
@@ -1457,80 +1474,114 @@ public final class f
   private void requestFocus()
   {
     AppMethodBeat.i(137087);
-    if (this.vcK.vdQ)
+    if (this.wig.wjm)
     {
       AppMethodBeat.o(137087);
       return;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "requestFocus focus:%b", new Object[] { Boolean.valueOf(this.vcK.requestFocus()) });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "requestFocus focus:%b", new Object[] { Boolean.valueOf(this.wig.requestFocus()) });
     AppMethodBeat.o(137087);
+  }
+  
+  public final boolean CH(String paramString)
+  {
+    AppMethodBeat.i(137055);
+    h localh = arS(paramString);
+    if (localh == null)
+    {
+      if (this.wij.gf(paramString))
+      {
+        bool = this.wij.fS(paramString);
+        AppMethodBeat.o(137055);
+        return bool;
+      }
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "isPlayingAudio, player is null");
+      AppMethodBeat.o(137055);
+      return false;
+    }
+    boolean bool = localh.aJG();
+    AppMethodBeat.o(137055);
+    return bool;
+  }
+  
+  public final com.tencent.mm.aj.b CI(String paramString)
+  {
+    AppMethodBeat.i(137060);
+    if (this.whW.containsKey(paramString))
+    {
+      paramString = (com.tencent.mm.aj.b)this.whW.get(paramString);
+      AppMethodBeat.o(137060);
+      return paramString;
+    }
+    AppMethodBeat.o(137060);
+    return null;
   }
   
   public final void _release()
   {
     AppMethodBeat.i(137038);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "_release");
-    this.vcs.clear();
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "_release");
+    this.whO.clear();
     String str;
-    synchronized (this.pwZ)
+    synchronized (this.qaE)
     {
-      Iterator localIterator = this.vcu.iterator();
+      Iterator localIterator = this.whQ.iterator();
       if (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        c(str, (h)this.vct.remove(str));
+        c(str, (h)this.whP.remove(str));
       }
     }
-    this.vcu.clear();
-    this.vct.clear();
-    Object localObject3 = this.vcw.iterator();
+    this.whQ.clear();
+    this.whP.clear();
+    Object localObject3 = this.whS.iterator();
     while (((Iterator)localObject3).hasNext())
     {
       str = (String)((Iterator)localObject3).next();
-      c(str, (h)this.vcv.remove(str));
+      c(str, (h)this.whR.remove(str));
     }
-    this.vcw.clear();
-    this.vcv.clear();
-    ??? = this.vcx.iterator();
+    this.whS.clear();
+    this.whR.clear();
+    ??? = this.whT.iterator();
     while (((Iterator)???).hasNext())
     {
       localObject3 = (String)((Iterator)???).next();
-      localObject3 = (LinkedList)this.vcz.remove(localObject3);
+      localObject3 = (LinkedList)this.whV.remove(localObject3);
       if (localObject3 != null) {
         ((LinkedList)localObject3).clear();
       }
     }
-    this.vcx.clear();
-    this.vcy.clear();
-    this.vcz.clear();
-    this.vcA.clear();
-    this.vcB.clear();
-    this.vcD.clear();
-    this.vcE.clear();
-    ap.aB(this.vcQ);
-    ap.aB(this.vcR);
-    this.vcF = false;
-    this.vcG = false;
+    this.whT.clear();
+    this.whU.clear();
+    this.whV.clear();
+    this.whW.clear();
+    this.whX.clear();
+    this.whZ.clear();
+    this.wia.clear();
+    aq.aA(this.wim);
+    aq.aA(this.win);
+    this.wib = false;
+    this.wic = false;
     AppMethodBeat.o(137038);
   }
   
-  public final boolean amL(String paramString)
+  public final boolean arK(String paramString)
   {
     AppMethodBeat.i(137048);
-    h localh = amT(paramString);
+    h localh = arS(paramString);
     if (localh == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "pauseAudio, player is null");
-      if (this.vcN.fk(paramString))
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "pauseAudio, player is null");
+      if (this.wij.gf(paramString))
       {
-        this.vcN.fn(paramString);
+        this.wij.gi(paramString);
         AppMethodBeat.o(137048);
         return true;
       }
       AppMethodBeat.o(137048);
       return false;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "pauseAudio, audioId:%s", new Object[] { paramString });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "pauseAudio, audioId:%s", new Object[] { paramString });
     localh.pause();
     b(paramString, localh);
     f(paramString, localh);
@@ -1538,29 +1589,29 @@ public final class f
     return true;
   }
   
-  public final boolean amM(String paramString)
+  public final boolean arL(String paramString)
   {
     AppMethodBeat.i(137049);
-    h localh = amT(paramString);
+    h localh = arS(paramString);
     if (localh == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "stopAudio, player is null");
-      if (this.vcN.fk(paramString))
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "stopAudio, player is null");
+      if (this.wij.gf(paramString))
       {
-        this.vcN.fo(paramString);
+        this.wij.gj(paramString);
         AppMethodBeat.o(137049);
         return true;
       }
       AppMethodBeat.o(137049);
       return false;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "stopAudio, audioId:%s", new Object[] { paramString });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "stopAudio, audioId:%s", new Object[] { paramString });
     localh.stopPlay();
-    com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)this.vcA.get(paramString);
+    com.tencent.mm.aj.b localb = (com.tencent.mm.aj.b)this.whW.get(paramString);
     if (localb != null)
     {
-      localb.cSh = 0;
-      localb.htn = true;
+      localb.ddx = 0;
+      localb.hLF = true;
     }
     b(paramString, localh);
     f(paramString, localh);
@@ -1568,26 +1619,26 @@ public final class f
     return true;
   }
   
-  public final boolean amN(String paramString)
+  public final boolean arM(String paramString)
   {
     AppMethodBeat.i(137050);
-    if (this.vcN.fk(paramString)) {
-      this.vcN.fo(paramString);
+    if (this.wij.gf(paramString)) {
+      this.wij.gj(paramString);
     }
-    h localh = amT(paramString);
+    h localh = arS(paramString);
     if (localh == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "stopPlayOnBackGround, player is null");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "stopPlayOnBackGround, player is null");
       AppMethodBeat.o(137050);
       return false;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "stopPlayOnBackGround, audioId:%s", new Object[] { paramString });
-    localh.dhM();
-    com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)this.vcA.get(paramString);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "stopPlayOnBackGround, audioId:%s", new Object[] { paramString });
+    localh.dsa();
+    com.tencent.mm.aj.b localb = (com.tencent.mm.aj.b)this.whW.get(paramString);
     if (localb != null)
     {
-      localb.cSh = 0;
-      localb.htn = true;
+      localb.ddx = 0;
+      localb.hLF = true;
     }
     b(paramString, localh);
     f(paramString, localh);
@@ -1595,137 +1646,137 @@ public final class f
     return true;
   }
   
-  public final boolean amO(String paramString)
+  public final boolean arN(String paramString)
   {
     AppMethodBeat.i(137051);
-    this.vcN.fo(paramString);
-    this.vcN.remove(paramString);
-    ??? = amT(paramString);
+    this.wij.gj(paramString);
+    this.wij.remove(paramString);
+    ??? = arS(paramString);
     if (??? == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "destroyAudio, player is null");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "destroyAudio, player is null");
       AppMethodBeat.o(137051);
       return false;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAudio, audioId:%s", new Object[] { paramString });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAudio, audioId:%s", new Object[] { paramString });
     c(paramString, (h)???);
-    synchronized (this.pwZ)
+    synchronized (this.qaE)
     {
-      this.vct.remove(paramString);
-      this.vcu.remove(paramString);
-      this.vcv.remove(paramString);
-      this.vcw.remove(paramString);
-      this.vcs.remove(paramString);
-      ??? = this.vcx.iterator();
+      this.whP.remove(paramString);
+      this.whQ.remove(paramString);
+      this.whR.remove(paramString);
+      this.whS.remove(paramString);
+      this.whO.remove(paramString);
+      ??? = this.whT.iterator();
       while (((Iterator)???).hasNext())
       {
         String str = (String)((Iterator)???).next();
-        LinkedList localLinkedList = (LinkedList)this.vcz.get(str);
+        LinkedList localLinkedList = (LinkedList)this.whV.get(str);
         if ((localLinkedList != null) && (localLinkedList.contains(paramString)))
         {
           localLinkedList.remove(paramString);
           if (localLinkedList.size() == 0)
           {
-            this.vcz.remove(str);
-            this.vcx.remove(str);
-            this.vcy.remove(str);
+            this.whV.remove(str);
+            this.whT.remove(str);
+            this.whU.remove(str);
           }
         }
       }
-      this.vcA.remove(paramString);
-      this.vcB.remove(paramString);
+      this.whW.remove(paramString);
+      this.whX.remove(paramString);
       AppMethodBeat.o(137051);
       return true;
     }
   }
   
-  public final boolean amP(String paramString)
+  public final boolean arO(String paramString)
   {
     AppMethodBeat.i(137054);
-    h localh = amT(paramString);
+    h localh = arS(paramString);
     if (localh == null)
     {
-      if (this.vcN.fk(paramString))
+      if (this.wij.gf(paramString))
       {
-        bool = this.vcN.fp(paramString);
+        bool = this.wij.gk(paramString);
         AppMethodBeat.o(137054);
         return bool;
       }
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "isStartPlayAudio, player is null");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "isStartPlayAudio, player is null");
       AppMethodBeat.o(137054);
       return false;
     }
-    boolean bool = localh.aGx();
+    boolean bool = localh.aJI();
     AppMethodBeat.o(137054);
     return bool;
   }
   
-  public final boolean amQ(String paramString)
+  public final boolean arP(String paramString)
   {
     AppMethodBeat.i(137057);
-    h localh = amT(paramString);
+    h localh = arS(paramString);
     if (localh == null)
     {
-      if (this.vcN.fk(paramString))
+      if (this.wij.gf(paramString))
       {
-        bool = this.vcN.NH();
+        bool = this.wij.Pq();
         AppMethodBeat.o(137057);
         return bool;
       }
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "isPauseOnBackground, player is null");
-      paramString = amR(paramString);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "isPauseOnBackground, player is null");
+      paramString = arQ(paramString);
       if (paramString != null)
       {
-        bool = paramString.htD;
+        bool = paramString.hLV;
         AppMethodBeat.o(137057);
         return bool;
       }
       AppMethodBeat.o(137057);
       return false;
     }
-    boolean bool = localh.htD;
+    boolean bool = localh.hLV;
     AppMethodBeat.o(137057);
     return bool;
   }
   
-  public final com.tencent.mm.ai.d amR(String paramString)
+  public final com.tencent.mm.aj.d arQ(String paramString)
   {
     AppMethodBeat.i(137058);
-    Object localObject = amT(paramString);
+    Object localObject = arS(paramString);
     if (localObject != null)
     {
-      paramString = ((h)localObject).dhP();
+      paramString = ((h)localObject).dsd();
       AppMethodBeat.o(137058);
       return paramString;
     }
-    if (this.vcN.fk(paramString))
+    if (this.wij.gf(paramString))
     {
-      localObject = this.vcN.fu(paramString);
+      localObject = this.wij.gp(paramString);
       if (localObject != null)
       {
         AppMethodBeat.o(137058);
         return localObject;
       }
     }
-    paramString = (com.tencent.mm.ai.d)this.vcB.get(paramString);
+    paramString = (com.tencent.mm.aj.d)this.whX.get(paramString);
     AppMethodBeat.o(137058);
     return paramString;
   }
   
-  public final int amS(String paramString)
+  public final int arR(String paramString)
   {
     AppMethodBeat.i(137059);
-    int j = dhp();
-    synchronized (this.pwZ)
+    int j = drC();
+    synchronized (this.qaE)
     {
-      int k = this.vcs.size();
-      int m = this.vct.size();
-      int n = this.vcv.size();
-      paramString = (LinkedList)this.vcz.get(paramString);
+      int k = this.whO.size();
+      int m = this.whP.size();
+      int n = this.whR.size();
+      paramString = (LinkedList)this.whV.get(paramString);
       if (paramString == null)
       {
         i = 0;
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "getAudioPlayerCount, count:%d, player_count:%d, recycled_player_count:%d, audioIdsCount:%d, pause_count:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(j) });
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "getAudioPlayerCount, count:%d, player_count:%d, recycled_player_count:%d, audioIdsCount:%d, pause_count:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(j) });
         AppMethodBeat.o(137059);
         return m;
       }
@@ -1733,18 +1784,18 @@ public final class f
     }
   }
   
-  final h amT(String paramString)
+  final h arS(String paramString)
   {
     AppMethodBeat.i(137061);
-    if (this.vct.containsKey(paramString))
+    if (this.whP.containsKey(paramString))
     {
-      paramString = (h)this.vct.get(paramString);
+      paramString = (h)this.whP.get(paramString);
       AppMethodBeat.o(137061);
       return paramString;
     }
-    if (this.vcv.containsKey(paramString))
+    if (this.whR.containsKey(paramString))
     {
-      paramString = (h)this.vcv.get(paramString);
+      paramString = (h)this.whR.get(paramString);
       AppMethodBeat.o(137061);
       return paramString;
     }
@@ -1752,96 +1803,96 @@ public final class f
     return null;
   }
   
-  public final void amU(String paramString)
+  public final void arT(String paramString)
   {
     AppMethodBeat.i(137062);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "pauseAllAudioPlayers, appId:%s", new Object[] { paramString });
-    this.vcN.NG();
-    bjF();
-    Object localObject3 = (LinkedList)this.vcz.get(paramString);
-    long l1 = this.vcN.NJ();
-    long l2 = com.tencent.mm.audio.mix.b.e.ML().MM();
-    long l3 = com.tencent.mm.audio.mix.b.d.MJ().MK();
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "pauseAllAudioPlayers, appId:%s", new Object[] { paramString });
+    this.wij.Pp();
+    bpH();
+    Object localObject3 = (LinkedList)this.whV.get(paramString);
+    long l1 = this.wij.Ps();
+    long l2 = com.tencent.mm.audio.mix.b.e.Ou().Ov();
+    long l3 = com.tencent.mm.audio.mix.b.d.Os().Ot();
     long l4 = l2 + l3;
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "mixAverageTime:%d, loadedCacheBufferSize:%d, remainingBufferSize:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
-    this.vcJ = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "mixAverageTime:%d, loadedCacheBufferSize:%d, remainingBufferSize:%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
+    this.wif = ((com.tencent.mm.plugin.music.b.a.d)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.b.a.d.class));
     if ((localObject3 == null) || (((LinkedList)localObject3).size() == 0))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to pause");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to pause");
       AppMethodBeat.o(137062);
       return;
     }
-    if ((this.vct.isEmpty()) && (this.vcv.isEmpty()))
+    if ((this.whP.isEmpty()) && (this.whR.isEmpty()))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to pause");
-      if (this.vcJ != null) {
-        this.vcJ.c(paramString, l1, l4, l2);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to pause");
+      if (this.wif != null) {
+        this.wif.c(paramString, l1, l4, l2);
       }
       AppMethodBeat.o(137062);
       return;
     }
     Object localObject1 = new LinkedList();
-    synchronized (this.pwZ)
+    synchronized (this.qaE)
     {
       ((LinkedList)localObject1).addAll((Collection)localObject3);
       ??? = ((LinkedList)localObject1).iterator();
       while (((Iterator)???).hasNext())
       {
         localObject3 = (String)((Iterator)???).next();
-        h localh = (h)this.vcv.get(localObject3);
+        h localh = (h)this.whR.get(localObject3);
         if (localh != null) {
           a((String)localObject3, localh);
         }
       }
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "playing player count:%d", new Object[] { Integer.valueOf(this.vct.size()) });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "playing player count:%d", new Object[] { Integer.valueOf(this.whP.size()) });
     localObject1 = ((LinkedList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       ??? = (String)((Iterator)localObject1).next();
-      localObject3 = (h)this.vct.get(???);
+      localObject3 = (h)this.whP.get(???);
       if (localObject3 != null)
       {
         a((String)???, (h)localObject3);
         f((String)???, (h)localObject3);
       }
     }
-    if (this.vcJ != null) {
-      this.vcJ.c(paramString, l1, l4, l2);
+    if (this.wif != null) {
+      this.wif.c(paramString, l1, l4, l2);
     }
     AppMethodBeat.o(137062);
   }
   
-  public final void amV(String paramString)
+  public final void arU(String paramString)
   {
     AppMethodBeat.i(137063);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllAudioPlayers, appId:%s", new Object[] { paramString });
-    bjF();
-    LinkedList localLinkedList = (LinkedList)this.vcz.remove(paramString);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllAudioPlayers, appId:%s", new Object[] { paramString });
+    bpH();
+    LinkedList localLinkedList = (LinkedList)this.whV.remove(paramString);
     if ((localLinkedList == null) || (localLinkedList.size() == 0))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to stop");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "there is no audioIds and players for this appId to stop");
       AppMethodBeat.o(137063);
       return;
     }
     String str;
     h localh;
-    synchronized (this.pwZ)
+    synchronized (this.qaE)
     {
       localIterator = localLinkedList.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        localh = (h)this.vct.remove(str);
-        this.vcu.remove(str);
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroy playing player");
+        localh = (h)this.whP.remove(str);
+        this.whQ.remove(str);
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroy playing player");
         c(str, localh);
-        this.vcA.remove(str);
-        this.vcB.remove(str);
-        if (this.vcN.fk(str))
+        this.whW.remove(str);
+        this.whX.remove(str);
+        if (this.wij.gf(str))
         {
-          this.vcN.fo(str);
-          this.vcN.remove(str);
+          this.wij.gj(str);
+          this.wij.remove(str);
         }
       }
     }
@@ -1849,57 +1900,57 @@ public final class f
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      localh = (h)this.vcv.remove(str);
-      this.vcw.remove(str);
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroy recycled player");
+      localh = (h)this.whR.remove(str);
+      this.whS.remove(str);
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroy recycled player");
       c(str, localh);
-      this.vcA.remove(str);
-      this.vcB.remove(str);
-      if (this.vcN.fk(str))
+      this.whW.remove(str);
+      this.whX.remove(str);
+      if (this.wij.gf(str))
       {
-        this.vcN.fo(str);
-        this.vcN.remove(str);
+        this.wij.gj(str);
+        this.wij.remove(str);
       }
     }
-    this.vcs.removeAll(localLinkedList);
-    this.vcx.remove(paramString);
-    this.vcy.remove(paramString);
-    this.vcN.clearCache();
-    this.vcN.NI();
-    this.vcL.clear();
-    this.vcM.clear();
+    this.whO.removeAll(localLinkedList);
+    this.whT.remove(paramString);
+    this.whU.remove(paramString);
+    this.wij.clearCache();
+    this.wij.Pr();
+    this.wih.clear();
+    this.wii.clear();
     AppMethodBeat.o(137063);
   }
   
-  public final void anc(String paramString)
+  public final void asb(String paramString)
   {
     AppMethodBeat.i(137084);
-    if (this.vcx.size() == 0)
+    if (this.whT.size() == 0)
     {
       AppMethodBeat.o(137084);
       return;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllAudioPlayersByProcessName with name :%s", new Object[] { paramString });
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "destroyAllAudioPlayersByProcessName with name :%s", new Object[] { paramString });
     Object localObject = new ArrayList();
-    ((ArrayList)localObject).addAll(this.vcx);
+    ((ArrayList)localObject).addAll(this.whT);
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str1 = (String)((Iterator)localObject).next();
-      String str2 = (String)this.vcy.get(str1);
+      String str2 = (String)this.whU.get(str1);
       if ((paramString != null) && (paramString.equalsIgnoreCase(str2)))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "The app brand process name is same as the process which is killed by system");
-        amV(str1);
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "The app brand process name is same as the process which is killed by system");
+        arU(str1);
       }
     }
     AppMethodBeat.o(137084);
   }
   
-  final boolean and(String paramString)
+  final boolean asc(String paramString)
   {
     AppMethodBeat.i(137085);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "canRemoveAudioPlayerInPlayingListForTry");
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "canRemoveAudioPlayerInPlayingListForTry");
     boolean bool1 = false;
     Object localObject1 = new ArrayList();
     HashMap localHashMap1 = new HashMap();
@@ -1907,58 +1958,58 @@ public final class f
     for (;;)
     {
       Object localObject4;
-      synchronized (this.pwZ)
+      synchronized (this.qaE)
       {
-        i = this.vct.size();
+        i = this.whP.size();
         if (i <= 5)
         {
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "playerCount:%d is not need to remove for try", new Object[] { Integer.valueOf(i) });
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "playerCount:%d is not need to remove for try", new Object[] { Integer.valueOf(i) });
           AppMethodBeat.o(137085);
           return false;
         }
-        localObject3 = this.vcu.iterator();
+        localObject3 = this.whQ.iterator();
         if (!((Iterator)localObject3).hasNext()) {
           break;
         }
         localObject4 = (String)((Iterator)localObject3).next();
-        localObject4 = (com.tencent.mm.ai.b)this.vcA.get(localObject4);
-        if ((localObject4 == null) || (((com.tencent.mm.ai.b)localObject4).cRZ == null)) {
+        localObject4 = (com.tencent.mm.aj.b)this.whW.get(localObject4);
+        if ((localObject4 == null) || (((com.tencent.mm.aj.b)localObject4).ddp == null)) {
           continue;
         }
-        if (!localHashMap1.containsKey(((com.tencent.mm.ai.b)localObject4).cRZ))
+        if (!localHashMap1.containsKey(((com.tencent.mm.aj.b)localObject4).ddp))
         {
-          localHashMap1.put(((com.tencent.mm.ai.b)localObject4).cRZ, Integer.valueOf(1));
+          localHashMap1.put(((com.tencent.mm.aj.b)localObject4).ddp, Integer.valueOf(1));
           localArrayList = new ArrayList();
-          localArrayList.add(((com.tencent.mm.ai.b)localObject4).cQO);
-          localHashMap2.put(((com.tencent.mm.ai.b)localObject4).cRZ, localArrayList);
-          if (((ArrayList)localObject1).contains(((com.tencent.mm.ai.b)localObject4).cRZ)) {
+          localArrayList.add(((com.tencent.mm.aj.b)localObject4).dce);
+          localHashMap2.put(((com.tencent.mm.aj.b)localObject4).ddp, localArrayList);
+          if (((ArrayList)localObject1).contains(((com.tencent.mm.aj.b)localObject4).ddp)) {
             continue;
           }
-          ((ArrayList)localObject1).add(((com.tencent.mm.ai.b)localObject4).cRZ);
+          ((ArrayList)localObject1).add(((com.tencent.mm.aj.b)localObject4).ddp);
         }
       }
-      i = ((Integer)localHashMap1.get(((com.tencent.mm.ai.b)localObject4).cRZ)).intValue();
-      localHashMap1.put(((com.tencent.mm.ai.b)localObject4).cRZ, Integer.valueOf(i + 1));
-      ArrayList localArrayList = (ArrayList)localHashMap2.get(((com.tencent.mm.ai.b)localObject4).cRZ);
-      if (!localArrayList.contains(((com.tencent.mm.ai.b)localObject4).cQO)) {
-        localArrayList.add(((com.tencent.mm.ai.b)localObject4).cQO);
+      i = ((Integer)localHashMap1.get(((com.tencent.mm.aj.b)localObject4).ddp)).intValue();
+      localHashMap1.put(((com.tencent.mm.aj.b)localObject4).ddp, Integer.valueOf(i + 1));
+      ArrayList localArrayList = (ArrayList)localHashMap2.get(((com.tencent.mm.aj.b)localObject4).ddp);
+      if (!localArrayList.contains(((com.tencent.mm.aj.b)localObject4).dce)) {
+        localArrayList.add(((com.tencent.mm.aj.b)localObject4).dce);
       }
-      localHashMap2.put(((com.tencent.mm.ai.b)localObject4).cRZ, localArrayList);
+      localHashMap2.put(((com.tencent.mm.aj.b)localObject4).ddp, localArrayList);
     }
-    paramString = (com.tencent.mm.ai.b)this.vcA.get(paramString);
+    paramString = (com.tencent.mm.aj.b)this.whW.get(paramString);
     ??? = ((ArrayList)localObject1).iterator();
     while (((Iterator)???).hasNext())
     {
       localObject3 = (String)((Iterator)???).next();
-      if ((paramString != null) && (localObject3 != null) && (((String)localObject3).equalsIgnoreCase(paramString.cRZ)))
+      if ((paramString != null) && (localObject3 != null) && (((String)localObject3).equalsIgnoreCase(paramString.ddp)))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "srcUrl is same, not remove and don't play again for try");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "srcUrl is same, not remove and don't play again for try");
         AppMethodBeat.o(137085);
         return false;
       }
     }
     paramString = "";
-    ac.d("MicroMsg.Audio.AudioPlayerMgr", "removePlayerGroupMinCountForTry:%d", new Object[] { Integer.valueOf(2) });
+    ad.d("MicroMsg.Audio.AudioPlayerMgr", "removePlayerGroupMinCountForTry:%d", new Object[] { Integer.valueOf(2) });
     int i = 2;
     Object localObject3 = ((ArrayList)localObject1).iterator();
     int j;
@@ -1966,7 +2017,7 @@ public final class f
     {
       ??? = (String)((Iterator)localObject3).next();
       j = ((Integer)localHashMap1.get(???)).intValue();
-      ac.d("MicroMsg.Audio.AudioPlayerMgr", "count:%d, url:%s", new Object[] { Integer.valueOf(j), ??? });
+      ad.d("MicroMsg.Audio.AudioPlayerMgr", "count:%d, url:%s", new Object[] { Integer.valueOf(j), ??? });
       if (j < 2) {
         break label788;
       }
@@ -1994,7 +2045,7 @@ public final class f
       break;
       if (bool1)
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "need to remove player");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "need to remove player");
         localObject1 = (ArrayList)localHashMap2.get(paramString);
         if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
         {
@@ -2003,26 +2054,26 @@ public final class f
           while (((Iterator)localObject1).hasNext())
           {
             ??? = (String)((Iterator)localObject1).next();
-            ??? = (com.tencent.mm.ai.b)this.vcA.get(???);
+            ??? = (com.tencent.mm.aj.b)this.whW.get(???);
             if (??? != null) {
               paramString.add(???);
             }
           }
-          Collections.sort(paramString, new f.a(this));
+          Collections.sort(paramString, new a());
           localObject1 = new LinkedList();
           paramString = paramString.iterator();
           while (paramString.hasNext()) {
-            ((LinkedList)localObject1).add(((com.tencent.mm.ai.b)paramString.next()).cQO);
+            ((LinkedList)localObject1).add(((com.tencent.mm.aj.b)paramString.next()).dce);
           }
-          this.vcE.add(((LinkedList)localObject1).getLast());
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player count for try: %d", new Object[] { Integer.valueOf(this.vcE.size()) });
+          this.wia.add(((LinkedList)localObject1).getLast());
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player count for try: %d", new Object[] { Integer.valueOf(this.wia.size()) });
         }
       }
       for (;;)
       {
         AppMethodBeat.o(137085);
         return bool1;
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "not need to remove player for try");
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "not need to remove player for try");
       }
       label785:
       break label534;
@@ -2032,10 +2083,10 @@ public final class f
     }
   }
   
-  public final void ane(final String paramString)
+  public final void asd(final String paramString)
   {
     AppMethodBeat.i(137092);
-    if (!b.dhj())
+    if (!b.drw())
     {
       AppMethodBeat.o(137092);
       return;
@@ -2045,22 +2096,22 @@ public final class f
       public final boolean queueIdle()
       {
         AppMethodBeat.i(137023);
-        com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)f.this.vcA.get(paramString);
+        com.tencent.mm.aj.b localb = (com.tencent.mm.aj.b)f.this.whW.get(paramString);
         if (localb == null) {
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "preloadMixCache param is null");
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "preloadMixCache param is null");
         }
         long l1;
         long l2;
         com.tencent.mm.audio.mix.f.c localc;
         int i;
         int j;
-        if ((!TextUtils.isEmpty(localb.filePath)) && (!f.this.vcN.fx(localb.filePath)))
+        if ((!TextUtils.isEmpty(localb.filePath)) && (!f.this.wij.gs(localb.filePath)))
         {
-          l1 = com.tencent.mm.audio.mix.h.a.fD(localb.filePath);
-          ac.i("MicroMsg.Audio.AudioPlayerMgr", "preloadMixCache preload filePath:%s, fileSize:%d", new Object[] { localb.filePath, Long.valueOf(l1) });
-          l2 = com.tencent.mm.audio.mix.b.e.ML().MM();
-          localc = f.this.vcN;
-          long l3 = com.tencent.mm.audio.mix.b.e.ML().MM();
+          l1 = com.tencent.mm.audio.mix.h.a.gy(localb.filePath);
+          ad.i("MicroMsg.Audio.AudioPlayerMgr", "preloadMixCache preload filePath:%s, fileSize:%d", new Object[] { localb.filePath, Long.valueOf(l1) });
+          l2 = com.tencent.mm.audio.mix.b.e.Ou().Ov();
+          localc = f.this.wij;
+          long l3 = com.tencent.mm.audio.mix.b.e.Ou().Ov();
           com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioMixPlayer", "cacheInMemoryTotalSize:%d, appId:%s", new Object[] { Long.valueOf(l3), localc.appId });
           if (l3 >= 50000000L)
           {
@@ -2069,17 +2120,17 @@ public final class f
               com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioMixPlayer", "isLoadedCacheExceedMaxMemory, exceed max cache 50M!, appId:%s", new Object[] { localc.appId });
             }
             j = 0;
-            if (f.this.vcM.containsKey(localb.filePath)) {
-              j = ((Integer)f.this.vcM.get(localb.filePath)).intValue();
+            if (f.this.wii.containsKey(localb.filePath)) {
+              j = ((Integer)f.this.wii.get(localb.filePath)).intValue();
             }
             if (i == 0) {
               break label288;
             }
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "loaded cache is exceed Max Memory 50M, don't load more audio into memory!");
-            if (f.this.vcJ != null) {
-              f.this.vcJ.Jv(713);
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "loaded cache is exceed Max Memory 50M, don't load more audio into memory!");
+            if (f.this.wif != null) {
+              f.this.wif.KX(713);
             }
-            f.this.vcN.fv("");
+            f.this.wij.gq("");
           }
         }
         for (;;)
@@ -2091,45 +2142,45 @@ public final class f
           label288:
           if (l2 + l1 > 50000000L)
           {
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "loaded cache and loading fileSize is exceed Max Memory 50M, don't load more audio into memory!  loadCacheBufferSize:%d, fileSize:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) });
-            if (f.this.vcJ != null) {
-              f.this.vcJ.Jv(714);
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "loaded cache and loading fileSize is exceed Max Memory 50M, don't load more audio into memory!  loadCacheBufferSize:%d, fileSize:%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) });
+            if (f.this.wif != null) {
+              f.this.wif.KX(714);
             }
-            f.this.vcN.fv("");
+            f.this.wij.gq("");
           }
           else if (j >= 30)
           {
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "load audio fail number exceed MAX_LOAD_FAIL_COUNT, don't load again!");
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "load audio fail number exceed MAX_LOAD_FAIL_COUNT, don't load again!");
           }
-          else if (!com.tencent.mm.audio.mix.h.a.fC(localb.filePath))
+          else if (!com.tencent.mm.audio.mix.h.a.gx(localb.filePath))
           {
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "don't support load large file and invalid file");
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "don't support load large file and invalid file");
           }
           else
           {
-            localc = f.this.vcN;
+            localc = f.this.wij;
             String str = localb.filePath;
-            if (!localc.cTz.eT(str))
+            if (!localc.deP.fO(str))
             {
-              localb.htC = true;
+              localb.hLU = true;
               localb.fileSize = l1;
-              f.this.vcN.a(localb);
+              f.this.wij.a(localb);
             }
             else
             {
-              ac.i("MicroMsg.Audio.AudioPlayerMgr", "mix audio cache is loading");
+              ad.i("MicroMsg.Audio.AudioPlayerMgr", "mix audio cache is loading");
               continue;
               if (!TextUtils.isEmpty(localb.filePath))
               {
-                localb.htC = false;
-                if (!f.this.vcN.fk(paramString)) {
-                  f.this.vcN.b(localb);
+                localb.hLU = false;
+                if (!f.this.wij.gf(paramString)) {
+                  f.this.wij.b(localb);
                 }
-                localb.fileSize = com.tencent.mm.audio.mix.h.a.fD(localb.filePath);
+                localb.fileSize = com.tencent.mm.audio.mix.h.a.gy(localb.filePath);
               }
               else
               {
-                localb.htC = false;
+                localb.hLU = false;
               }
             }
           }
@@ -2142,67 +2193,67 @@ public final class f
   final void b(String paramString, h paramh)
   {
     AppMethodBeat.i(137069);
-    this.vcB.put(paramString, paramh.dhP());
+    this.whX.put(paramString, paramh.dsd());
     AppMethodBeat.o(137069);
   }
   
-  public final boolean b(String paramString, com.tencent.mm.ai.b paramb)
+  public final boolean b(String paramString, com.tencent.mm.aj.b paramb)
   {
     AppMethodBeat.i(137047);
-    com.tencent.mm.ai.b localb2 = (com.tencent.mm.ai.b)this.vcA.get(paramString);
-    com.tencent.mm.ai.b localb1;
+    com.tencent.mm.aj.b localb2 = (com.tencent.mm.aj.b)this.whW.get(paramString);
+    com.tencent.mm.aj.b localb1;
     boolean bool1;
-    if (((!this.vcs.contains(paramString)) || (localb2 == null)) && (paramb != null))
+    if (((!this.whO.contains(paramString)) || (localb2 == null)) && (paramb != null))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio, the audioId %s is not found or param is null, backupParam is exit", new Object[] { paramString });
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio, the audioId %s is not found or param is null, backupParam is exit", new Object[] { paramString });
       a(paramString, paramb);
       localb1 = localb2;
       if (localb2 == null) {
         localb1 = paramb;
       }
       j(localb1);
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio, audioId:%s", new Object[] { paramString });
-      int i = amS(amX(paramString));
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio, audioId:%s", new Object[] { paramString });
+      int i = arR(arW(paramString));
       if (i >= 10)
       {
-        ac.e("MicroMsg.Audio.AudioPlayerMgr", "now created QQAudioPlayer count %d arrive MAX_PLAY_AUDIO_PLAYER_COUNT", new Object[] { Integer.valueOf(i) });
-        if (!anb(paramString)) {
+        ad.e("MicroMsg.Audio.AudioPlayerMgr", "now created QQAudioPlayer count %d arrive MAX_PLAY_AUDIO_PLAYER_COUNT", new Object[] { Integer.valueOf(i) });
+        if (!asa(paramString)) {
           break label368;
         }
-        dhs();
+        drF();
       }
-      dht();
-      this.vcA.put(paramString, localb1);
-      paramb = amT(paramString);
-      if (!b.dhj()) {
+      drG();
+      this.whW.put(paramString, localb1);
+      paramb = arS(paramString);
+      if (!b.drw()) {
         break label451;
       }
       boolean bool2 = a(paramb);
-      if ((!this.vcN.fk(paramString)) || (!this.vcN.fw(paramString))) {
+      if ((!this.wij.gf(paramString)) || (!this.wij.gr(paramString))) {
         break label388;
       }
       bool1 = true;
       label200:
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "resume canUseMixPlayer:%b, localCacheExit:%b, audioId:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), localb1.cQO });
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "resume canUseMixPlayer:%b, localCacheExit:%b, audioId:%s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), localb1.dce });
       if ((!bool2) || (!bool1)) {
         break label459;
       }
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "use AudioMixPlayer");
-      amY(localb1.cQO);
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "use AudioMixPlayer");
+      arX(localb1.dce);
       k(localb1);
-      if (!this.vcN.eX(localb1.cQO)) {
+      if (!this.wij.fS(localb1.dce)) {
         break label394;
       }
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "mix player is playing, do nothing");
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "mix player is playing, do nothing");
     }
     for (;;)
     {
       AppMethodBeat.o(137047);
       return true;
-      if (!this.vcs.contains(paramString))
+      if (!this.whO.contains(paramString))
       {
-        ac.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio fail, the audioId is not found!");
-        bt(601, paramString);
+        ad.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio fail, the audioId is not found!");
+        by(601, paramString);
         AppMethodBeat.o(137047);
         return false;
       }
@@ -2210,225 +2261,225 @@ public final class f
       if (localb2 != null) {
         break;
       }
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio fail, the param is not found!");
-      bt(602, paramString);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio fail, the param is not found!");
+      by(602, paramString);
       AppMethodBeat.o(137047);
       return false;
       label368:
-      dhu();
-      bt(600, paramString);
+      drH();
+      by(600, paramString);
       AppMethodBeat.o(137047);
       return false;
       label388:
       bool1 = false;
       break label200;
       label394:
-      if (this.vcN.fq(localb1.cQO))
+      if (this.wij.gl(localb1.dce))
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "mix player is preparing, do nothing");
-        localb1.htn = true;
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "mix player is preparing, do nothing");
+        localb1.hLF = true;
         paramb.b(localb1);
       }
       else
       {
         a(localb1, false, false);
-        this.vcN.fl(paramString);
+        this.wij.gg(paramString);
       }
     }
     label451:
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "Not support mix audio");
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "Not support mix audio");
     label459:
     if (paramb == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio, player is null");
-      amZ(paramString);
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "create new QQAudioPlayer with audioId %s to play", new Object[] { paramString });
-      paramb = dhn();
-      paramb.a(this.vcP);
-      paramb.anf(paramString);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "resumeAudio, player is null");
+      arY(paramString);
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "create new QQAudioPlayer with audioId %s to play", new Object[] { paramString });
+      paramb = drA();
+      paramb.a(this.wil);
+      paramb.ase(paramString);
       e(paramString, paramb);
-      localb1.htn = true;
-      localb1.cSh = 0;
-      localb1.hto = System.currentTimeMillis();
+      localb1.hLF = true;
+      localb1.ddx = 0;
+      localb1.hLG = System.currentTimeMillis();
       a(localb1, false, true);
       paramb.l(localb1);
       AppMethodBeat.o(137047);
       return true;
     }
     e(paramString, paramb);
-    if ((paramb.aGx()) && (!paramb.aGv()))
+    if ((paramb.aJI()) && (!paramb.aJG()))
     {
       a(localb1, false, true);
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "is pause, do resume");
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "is pause, do resume");
       paramb.resume();
     }
     for (;;)
     {
       AppMethodBeat.o(137047);
       return true;
-      if (paramb.blh())
+      if (paramb.boS())
       {
         a(localb1, false, true);
-        localb1.htn = true;
-        localb1.hto = System.currentTimeMillis();
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is prepared, do resume");
+        localb1.hLF = true;
+        localb1.hLG = System.currentTimeMillis();
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is prepared, do resume");
         paramb.resume();
-        localb1.cSh = 0;
+        localb1.ddx = 0;
         paramb.b(localb1);
       }
-      else if (paramb.cDT())
+      else if (paramb.cMm())
       {
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is preparing, do update param");
-        localb1.htn = true;
-        localb1.hto = System.currentTimeMillis();
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is preparing, do update param");
+        localb1.hLF = true;
+        localb1.hLG = System.currentTimeMillis();
         paramb.b(localb1);
       }
-      else if (paramb.htD)
+      else if (paramb.hLV)
       {
         a(localb1, false, true);
-        localb1.htn = true;
-        localb1.hto = System.currentTimeMillis();
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is paused on background, do resume");
+        localb1.hLF = true;
+        localb1.hLG = System.currentTimeMillis();
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is paused on background, do resume");
         paramb.l(localb1);
       }
       else
       {
-        if (paramb.aGx()) {
+        if (paramb.aJI()) {
           break;
         }
         a(localb1, false, true);
-        localb1.htn = true;
-        localb1.hto = System.currentTimeMillis();
-        ac.i("MicroMsg.Audio.AudioPlayerMgr", "is stop, do startPlay");
+        localb1.hLF = true;
+        localb1.hLG = System.currentTimeMillis();
+        ad.i("MicroMsg.Audio.AudioPlayerMgr", "is stop, do startPlay");
         paramb.l(localb1);
-        localb1.cSh = 0;
+        localb1.ddx = 0;
       }
     }
-    ac.e("MicroMsg.Audio.AudioPlayerMgr", "do nothing");
+    ad.e("MicroMsg.Audio.AudioPlayerMgr", "do nothing");
     AppMethodBeat.o(137047);
     return false;
   }
   
-  final void bjF()
+  final void bpH()
   {
     AppMethodBeat.i(137088);
-    if (this.vcK.vdQ) {
-      this.vcK.bjF();
+    if (this.wig.wjm) {
+      this.wig.bpH();
     }
     AppMethodBeat.o(137088);
   }
   
-  public final void dho()
+  public final void drB()
   {
     AppMethodBeat.i(137076);
     long l = System.currentTimeMillis();
-    if ((this.vcF) && (l - this.vcH < 10000L))
+    if ((this.wib) && (l - this.wid < 10000L))
     {
       AppMethodBeat.o(137076);
       return;
     }
-    this.vcH = l;
-    synchronized (this.pwZ)
+    this.wid = l;
+    synchronized (this.qaE)
     {
-      this.vcF = true;
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "releaseAudioDelayIfPaused, delay_ms:%d", new Object[] { Integer.valueOf(1800000) });
-      ap.aB(this.vcR);
-      ap.n(this.vcR, 1800000L);
+      this.wib = true;
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "releaseAudioDelayIfPaused, delay_ms:%d", new Object[] { Integer.valueOf(1800000) });
+      aq.aA(this.win);
+      aq.o(this.win, 1800000L);
       AppMethodBeat.o(137076);
       return;
     }
   }
   
-  final void dhs()
+  final void drF()
   {
     AppMethodBeat.i(137083);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "removeAndStopPlayingAudioPlayer");
-    Iterator localIterator = this.vcC.iterator();
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "removeAndStopPlayingAudioPlayer");
+    Iterator localIterator = this.whY.iterator();
     String str;
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player audioId : %s", new Object[] { str });
-      amM(str);
-      dhu();
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player audioId : %s", new Object[] { str });
+      arL(str);
+      drH();
     }
-    localIterator = this.vcE.iterator();
+    localIterator = this.wia.iterator();
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player for try audioId : %s", new Object[] { str });
-      amM(str);
-      dhu();
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "need remove and stop player for try audioId : %s", new Object[] { str });
+      arL(str);
+      drH();
     }
-    this.vcC.clear();
-    this.vcE.clear();
+    this.whY.clear();
+    this.wia.clear();
     AppMethodBeat.o(137083);
   }
   
   final void e(String paramString, h paramh)
   {
     AppMethodBeat.i(137072);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "markPlayer, mark player by audioId:%s", new Object[] { paramString });
-    synchronized (this.pwZ)
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "markPlayer, mark player by audioId:%s", new Object[] { paramString });
+    synchronized (this.qaE)
     {
-      if (this.vcw.contains(paramString))
+      if (this.whS.contains(paramString))
       {
-        this.vcv.remove(paramString);
-        this.vcw.remove(paramString);
+        this.whR.remove(paramString);
+        this.whS.remove(paramString);
       }
-      if (!this.vcu.contains(paramString))
+      if (!this.whQ.contains(paramString))
       {
-        this.vcu.add(paramString);
-        this.vct.put(paramString, paramh);
+        this.whQ.add(paramString);
+        this.whP.put(paramString, paramh);
       }
       AppMethodBeat.o(137072);
       return;
     }
   }
   
-  public final boolean eb(String paramString, int paramInt)
+  public final boolean et(String paramString, int paramInt)
   {
     AppMethodBeat.i(137052);
-    h localh = amT(paramString);
+    h localh = arS(paramString);
     if (localh == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, player is null");
-      if (this.vcN.fk(paramString)) {
-        this.vcN.w(paramString, paramInt);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, player is null");
+      if (this.wij.gf(paramString)) {
+        this.wij.y(paramString, paramInt);
       }
-      bool = ec(paramString, paramInt);
+      bool = eu(paramString, paramInt);
       AppMethodBeat.o(137052);
       return bool;
     }
     if (paramInt < 0)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, time pos is invalid time:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localh.getDuration()) });
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, time pos is invalid time:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localh.getDuration()) });
       AppMethodBeat.o(137052);
       return false;
     }
     if (localh.getDuration() <= 0)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, duration is invalid, time:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localh.getDuration()) });
-      localh.dhE();
-      bool = ec(paramString, paramInt);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, duration is invalid, time:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localh.getDuration()) });
+      localh.drS();
+      bool = eu(paramString, paramInt);
       AppMethodBeat.o(137052);
       return bool;
     }
     if ((paramInt > 0) && (paramInt > localh.getDuration()))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, time pos is invalid, exceed duration time:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localh.getDuration()) });
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, time pos is invalid, exceed duration time:%d, duration:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localh.getDuration()) });
       AppMethodBeat.o(137052);
       return false;
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, audioId:%s, time:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
-    if ((localh.aGv()) || (localh.aGx()) || (localh.isPaused()))
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "seekToAudio, audioId:%s, time:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    if ((localh.aJG()) || (localh.aJI()) || (localh.isPaused()))
     {
-      bool = localh.pl(paramInt);
+      bool = localh.pO(paramInt);
       AppMethodBeat.o(137052);
       return bool;
     }
-    localh.dhE();
-    boolean bool = ec(paramString, paramInt);
+    localh.drS();
+    boolean bool = eu(paramString, paramInt);
     AppMethodBeat.o(137052);
     return bool;
   }
@@ -2436,37 +2487,80 @@ public final class f
   final void f(String paramString, h paramh)
   {
     AppMethodBeat.i(137073);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "markPlayerRecycled, mark player recycled by audioId:%s", new Object[] { paramString });
-    synchronized (this.pwZ)
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "markPlayerRecycled, mark player recycled by audioId:%s", new Object[] { paramString });
+    synchronized (this.qaE)
     {
-      if (this.vcu.contains(paramString))
+      if (this.whQ.contains(paramString))
       {
-        this.vct.remove(paramString);
-        this.vcu.remove(paramString);
+        this.whP.remove(paramString);
+        this.whQ.remove(paramString);
       }
-      if (!this.vcw.contains(paramString))
+      if (!this.whS.contains(paramString))
       {
-        this.vcw.add(paramString);
-        this.vcv.put(paramString, paramh);
+        this.whS.add(paramString);
+        this.whR.put(paramString, paramh);
       }
       AppMethodBeat.o(137073);
       return;
     }
   }
   
-  public final boolean fs(String paramString)
+  public final boolean g(com.tencent.mm.aj.b paramb)
+  {
+    AppMethodBeat.i(137042);
+    if (paramb == null)
+    {
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "setAudioParam param == null");
+      AppMethodBeat.o(137042);
+      return false;
+    }
+    com.tencent.mm.aj.b localb = (com.tencent.mm.aj.b)this.whW.get(paramb.dce);
+    if (localb != null)
+    {
+      localb.f(paramb);
+      h localh = arS(paramb.dce);
+      if (localh == null) {
+        break label130;
+      }
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "setAudioParam player ok");
+      localh.b(localb);
+      label76:
+      if (b.drw())
+      {
+        if (!this.wij.gf(paramb.dce)) {
+          break label141;
+        }
+        this.wij.c(paramb);
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(137042);
+      return true;
+      this.whW.put(paramb.dce, paramb);
+      localb = paramb;
+      break;
+      label130:
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "setAudioParam player is null");
+      break label76;
+      label141:
+      this.wij.b(paramb);
+    }
+  }
+  
+  public final boolean gn(String paramString)
   {
     AppMethodBeat.i(137056);
-    h localh = amT(paramString);
+    h localh = arS(paramString);
     if (localh == null)
     {
-      if (this.vcN.fk(paramString))
+      if (this.wij.gf(paramString))
       {
-        bool = this.vcN.fs(paramString);
+        bool = this.wij.gn(paramString);
         AppMethodBeat.o(137056);
         return bool;
       }
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "isStoppedAudio, player is null");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "isStoppedAudio, player is null");
       AppMethodBeat.o(137056);
       return true;
     }
@@ -2475,140 +2569,97 @@ public final class f
     return bool;
   }
   
-  public final boolean g(com.tencent.mm.ai.b paramb)
-  {
-    AppMethodBeat.i(137042);
-    if (paramb == null)
-    {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "setAudioParam param == null");
-      AppMethodBeat.o(137042);
-      return false;
-    }
-    com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)this.vcA.get(paramb.cQO);
-    if (localb != null)
-    {
-      localb.f(paramb);
-      h localh = amT(paramb.cQO);
-      if (localh == null) {
-        break label130;
-      }
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "setAudioParam player ok");
-      localh.b(localb);
-      label76:
-      if (b.dhj())
-      {
-        if (!this.vcN.fk(paramb.cQO)) {
-          break label141;
-        }
-        this.vcN.c(paramb);
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(137042);
-      return true;
-      this.vcA.put(paramb.cQO, paramb);
-      localb = paramb;
-      break;
-      label130:
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "setAudioParam player is null");
-      break label76;
-      label141:
-      this.vcN.b(paramb);
-    }
-  }
-  
-  public final boolean h(com.tencent.mm.ai.b paramb)
+  public final boolean h(com.tencent.mm.aj.b paramb)
   {
     AppMethodBeat.i(137043);
     if (paramb == null)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio, play param is null");
-      bt(605, "");
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio, play param is null");
+      by(605, "");
       AppMethodBeat.o(137043);
       return false;
     }
-    if (TextUtils.isEmpty(paramb.cQO))
+    if (TextUtils.isEmpty(paramb.dce))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio fail, the audioId is empty!");
-      bt(604, paramb.cQO);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio fail, the audioId is empty!");
+      by(604, paramb.dce);
       AppMethodBeat.o(137043);
       return false;
     }
-    if (!this.vcs.contains(paramb.cQO))
+    if (!this.whO.contains(paramb.dce))
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio fail, the audioId is not found!");
-      bt(601, paramb.cQO);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio fail, the audioId is not found!");
+      by(601, paramb.dce);
       AppMethodBeat.o(137043);
       return false;
     }
-    if (paramb.htn) {
+    if (paramb.hLF) {
       j(paramb);
     }
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "startAudio");
-    Object localObject2 = amX(paramb.cQO);
-    Object localObject1 = zJ(paramb.cQO);
-    int i = amS((String)localObject2);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "startAudio");
+    Object localObject2 = arW(paramb.dce);
+    Object localObject1 = CI(paramb.dce);
+    int i = arR((String)localObject2);
     boolean bool2;
     boolean bool3;
     if (i >= 10)
     {
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio now created QQAudioPlayer count %d arrive MAX_PLAY_AUDIO_PLAYER_COUNT, but save param!", new Object[] { Integer.valueOf(i) });
-      this.vcA.put(paramb.cQO, paramb);
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "autoPlay:%b", new Object[] { Boolean.valueOf(paramb.htn) });
-      if ((paramb.htn) && (anb(paramb.cQO))) {
-        dhs();
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "startAudio now created QQAudioPlayer count %d arrive MAX_PLAY_AUDIO_PLAYER_COUNT, but save param!", new Object[] { Integer.valueOf(i) });
+      this.whW.put(paramb.dce, paramb);
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "autoPlay:%b", new Object[] { Boolean.valueOf(paramb.hLF) });
+      if ((paramb.hLF) && (asa(paramb.dce))) {
+        drF();
       }
     }
     else
     {
-      amZ(paramb.cQO);
-      dht();
-      this.vcy.put(localObject2, paramb.processName);
-      this.vcA.put(paramb.cQO, paramb);
-      if ((TextUtils.isEmpty(paramb.filePath)) && (this.vcL.containsKey(paramb.cRZ))) {
-        paramb.filePath = ((String)this.vcL.get(paramb.cRZ));
+      arY(paramb.dce);
+      drG();
+      this.whU.put(localObject2, paramb.processName);
+      this.whW.put(paramb.dce, paramb);
+      if ((TextUtils.isEmpty(paramb.filePath)) && (this.wih.containsKey(paramb.ddp))) {
+        paramb.filePath = ((String)this.wih.get(paramb.ddp));
       }
-      localObject2 = amT(paramb.cQO);
-      bool2 = b.dhj();
+      localObject2 = arS(paramb.dce);
+      bool2 = b.drw();
       if (!bool2) {
         break label552;
       }
       bool3 = a((h)localObject2);
-      if (((TextUtils.isEmpty(paramb.filePath)) || (!this.vcN.fx(paramb.filePath))) && ((localObject1 == null) || (!paramb.e((com.tencent.mm.ai.b)localObject1)) || (TextUtils.isEmpty(((com.tencent.mm.ai.b)localObject1).filePath)) || (!this.vcN.fx(((com.tencent.mm.ai.b)localObject1).filePath)))) {
+      if (((TextUtils.isEmpty(paramb.filePath)) || (!this.wij.gs(paramb.filePath))) && ((localObject1 == null) || (!paramb.e((com.tencent.mm.aj.b)localObject1)) || (TextUtils.isEmpty(((com.tencent.mm.aj.b)localObject1).filePath)) || (!this.wij.gs(((com.tencent.mm.aj.b)localObject1).filePath)))) {
         break label547;
       }
     }
     label547:
     for (boolean bool1 = true;; bool1 = false)
     {
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "canUseMixPlayer:%b, localCacheExit:%b, audioId:%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1), paramb.cQO });
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "canUseMixPlayer:%b, localCacheExit:%b, audioId:%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1), paramb.dce });
       if ((!bool3) || (!bool1)) {
         break;
       }
-      a(paramb, (com.tencent.mm.ai.b)localObject1);
+      a(paramb, (com.tencent.mm.aj.b)localObject1);
       AppMethodBeat.o(137043);
       return true;
-      if (paramb.htn)
+      if (paramb.hLF)
       {
-        bt(600, paramb.cQO);
-        dhu();
+        by(600, paramb.dce);
+        drH();
         AppMethodBeat.o(137043);
         return false;
       }
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "save param, do nothing ");
-      localObject1 = amT(paramb.cQO);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "save param, do nothing ");
+      localObject1 = arS(paramb.dce);
       if (localObject1 != null)
       {
         ((h)localObject1).b(paramb);
-        ((h)localObject1).dhz();
+        ((h)localObject1).drN();
       }
       AppMethodBeat.o(137043);
       return true;
     }
     label552:
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "not support mix audio");
-    b(paramb, (com.tencent.mm.ai.b)localObject1);
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "not support mix audio");
+    b(paramb, (com.tencent.mm.aj.b)localObject1);
     if (bool2) {
       i(paramb);
     }
@@ -2616,12 +2667,12 @@ public final class f
     return true;
   }
   
-  public final String hS(String paramString1, String paramString2)
+  public final String id(String paramString1, String paramString2)
   {
     AppMethodBeat.i(137041);
-    ac.i("MicroMsg.Audio.AudioPlayerMgr", "createAudioPlayer");
-    LinkedList localLinkedList = (LinkedList)this.vcz.get(paramString1);
-    Object localObject = this.pwZ;
+    ad.i("MicroMsg.Audio.AudioPlayerMgr", "createAudioPlayer");
+    LinkedList localLinkedList = (LinkedList)this.whV.get(paramString1);
+    Object localObject = this.qaE;
     if (localLinkedList != null) {}
     for (;;)
     {
@@ -2630,18 +2681,18 @@ public final class f
       {
         if (localLinkedList.contains(paramString2))
         {
-          if (this.vcu.contains(paramString2)) {
+          if (this.whQ.contains(paramString2)) {
             break label241;
           }
-          if (this.vcw.contains(paramString2))
+          if (this.whS.contains(paramString2))
           {
             break label241;
-            j = amS(paramString1);
+            j = arR(paramString1);
             if (!TextUtils.isEmpty(paramString2)) {
               break label133;
             }
-            ac.e("MicroMsg.Audio.AudioPlayerMgr", "createAudioPlayer fail, the audioId is empty!");
-            bt(604, paramString2);
+            ad.e("MicroMsg.Audio.AudioPlayerMgr", "createAudioPlayer fail, the audioId is empty!");
+            by(604, paramString2);
             AppMethodBeat.o(137041);
             return null;
           }
@@ -2657,21 +2708,21 @@ public final class f
         AppMethodBeat.o(137041);
       }
       label133:
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "now created QQAudioPlayer count %d arrive MAX_AUDIO_PLAYER_COUNT, save id and not send error event, not create player!", new Object[] { Integer.valueOf(j) });
-      hR(paramString1, paramString2);
+      ad.e("MicroMsg.Audio.AudioPlayerMgr", "now created QQAudioPlayer count %d arrive MAX_AUDIO_PLAYER_COUNT, save id and not send error event, not create player!", new Object[] { Integer.valueOf(j) });
+      ic(paramString1, paramString2);
       AppMethodBeat.o(137041);
       return null;
       label174:
       if (i != 0)
       {
-        ac.e("MicroMsg.Audio.AudioPlayerMgr", "now created QQAudioPlayer fail, the audioId exist in mAudioIds");
-        bt(603, paramString2);
+        ad.e("MicroMsg.Audio.AudioPlayerMgr", "now created QQAudioPlayer fail, the audioId exist in mAudioIds");
+        by(603, paramString2);
         AppMethodBeat.o(137041);
         return null;
       }
-      hR(paramString1, paramString2);
-      amZ(paramString2);
-      ac.i("MicroMsg.Audio.AudioPlayerMgr", "create player success, appId:%s, audioId:%s", new Object[] { paramString1, paramString2 });
+      ic(paramString1, paramString2);
+      arY(paramString2);
+      ad.i("MicroMsg.Audio.AudioPlayerMgr", "create player success, appId:%s, audioId:%s", new Object[] { paramString1, paramString2 });
       AppMethodBeat.o(137041);
       return paramString2;
       label241:
@@ -2679,38 +2730,10 @@ public final class f
     }
   }
   
-  public final boolean zI(String paramString)
+  public final class a
+    implements Comparator<com.tencent.mm.aj.b>
   {
-    AppMethodBeat.i(137055);
-    h localh = amT(paramString);
-    if (localh == null)
-    {
-      if (this.vcN.fk(paramString))
-      {
-        bool = this.vcN.eX(paramString);
-        AppMethodBeat.o(137055);
-        return bool;
-      }
-      ac.e("MicroMsg.Audio.AudioPlayerMgr", "isPlayingAudio, player is null");
-      AppMethodBeat.o(137055);
-      return false;
-    }
-    boolean bool = localh.aGv();
-    AppMethodBeat.o(137055);
-    return bool;
-  }
-  
-  public final com.tencent.mm.ai.b zJ(String paramString)
-  {
-    AppMethodBeat.i(137060);
-    if (this.vcA.containsKey(paramString))
-    {
-      paramString = (com.tencent.mm.ai.b)this.vcA.get(paramString);
-      AppMethodBeat.o(137060);
-      return paramString;
-    }
-    AppMethodBeat.o(137060);
-    return null;
+    public a() {}
   }
 }
 

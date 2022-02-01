@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.facedetect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class l
 {
-  public static int CU(int paramInt)
+  public static int DM(int paramInt)
   {
     AppMethodBeat.i(103771);
     if ((paramInt < 90000) && (paramInt != 0))
     {
-      ac.i("MicroMsg.FaceJSAPITranslateCenter", "hy: server error. not translate");
+      ad.i("MicroMsg.FaceJSAPITranslateCenter", "hy: server error. not translate");
       AppMethodBeat.o(103771);
       return paramInt;
     }
     if (paramInt > 90099)
     {
-      ac.i("MicroMsg.FaceJSAPITranslateCenter", "hy: already translated");
+      ad.i("MicroMsg.FaceJSAPITranslateCenter", "hy: already translated");
       AppMethodBeat.o(103771);
       return paramInt;
     }
@@ -73,7 +73,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.l
  * JD-Core Version:    0.7.0.1
  */

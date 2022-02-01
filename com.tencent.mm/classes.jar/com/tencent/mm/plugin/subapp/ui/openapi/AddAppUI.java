@@ -10,21 +10,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 
 public class AddAppUI
   extends MMPreference
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private f screen;
-  private AppPreference zSv;
-  private AppPreference zSw;
+  private AppPreference Bka;
+  private AppPreference Bkb;
+  private com.tencent.mm.ui.base.preference.f screen;
   
   public int getResourceId()
   {
@@ -48,37 +50,58 @@ public class AddAppUI
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(getResourceId());
-    this.zSv = ((AppPreference)this.screen.aPN("addapp_added"));
-    this.zSv.zSz = 1;
-    this.zSv.zSC = new AdapterView.OnItemClickListener()
+    this.Bka = ((AppPreference)this.screen.aVD("addapp_added"));
+    this.Bka.Bke = 1;
+    this.Bka.Bkh = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29112);
-        paramAnonymousAdapterView = AddAppUI.a(AddAppUI.this).Ra(paramAnonymousInt);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        paramAnonymousAdapterView = AddAppUI.a(AddAppUI.this).SK(paramAnonymousInt);
         AddAppUI.a(AddAppUI.this, paramAnonymousAdapterView.field_appId);
+        a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(29112);
       }
     };
-    this.zSv.zSD = new AdapterView.OnItemClickListener()
+    this.Bka.Bki = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29113);
-        AddAppUI.h(AddAppUI.a(AddAppUI.this).Ra(paramAnonymousInt));
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        AddAppUI.h(AddAppUI.a(AddAppUI.this).SK(paramAnonymousInt));
         AddAppUI.this.initView();
+        a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(29113);
       }
     };
-    this.zSw = ((AppPreference)this.screen.aPN("addapp_available"));
-    this.zSw.zSz = 0;
-    this.zSw.zSC = new AdapterView.OnItemClickListener()
+    this.Bkb = ((AppPreference)this.screen.aVD("addapp_available"));
+    this.Bkb.Bke = 0;
+    this.Bkb.Bkh = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(29114);
-        paramAnonymousAdapterView = AddAppUI.b(AddAppUI.this).Ra(paramAnonymousInt);
+        b localb = new b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        a.b("com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        paramAnonymousAdapterView = AddAppUI.b(AddAppUI.this).SK(paramAnonymousInt);
         AddAppUI.a(AddAppUI.this, paramAnonymousAdapterView.field_appId);
+        a.a(this, "com/tencent/mm/plugin/subapp/ui/openapi/AddAppUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(29114);
       }
     };
@@ -96,27 +119,27 @@ public class AddAppUI
   {
     AppMethodBeat.i(29117);
     super.onPause();
-    if (this.zSv != null) {
-      this.zSv.onPause();
+    if (this.Bka != null) {
+      this.Bka.onPause();
     }
-    if (this.zSw != null) {
-      this.zSw.onPause();
+    if (this.Bkb != null) {
+      this.Bkb.onPause();
     }
     AppMethodBeat.o(29117);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(29119);
     if (paramPreference.mKey.equals("addapp_recommend"))
     {
-      paramf = getContext().getSharedPreferences(ai.eUX(), 0);
+      paramf = getContext().getSharedPreferences(aj.fkC(), 0);
       getContext();
-      paramf = ab.f(paramf);
-      paramf = getString(2131755165, new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.DIc), paramf, ab.eUN() });
+      paramf = ac.f(paramf);
+      paramf = getString(2131755165, new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.Fnj), paramf, ac.fkr() });
       paramPreference = new Intent();
       paramPreference.putExtra("rawUrl", paramf);
-      com.tencent.mm.br.d.b(this, "webview", ".ui.tools.WebViewUI", paramPreference);
+      com.tencent.mm.bs.d.b(this, "webview", ".ui.tools.WebViewUI", paramPreference);
       AppMethodBeat.o(29119);
       return true;
     }
@@ -129,11 +152,11 @@ public class AddAppUI
     AppMethodBeat.i(29116);
     super.onResume();
     initView();
-    if (this.zSv != null) {
-      this.zSv.onResume();
+    if (this.Bka != null) {
+      this.Bka.onResume();
     }
-    if (this.zSw != null) {
-      this.zSw.onResume();
+    if (this.Bkb != null) {
+      this.Bkb.onResume();
     }
     AppMethodBeat.o(29116);
   }
@@ -141,13 +164,13 @@ public class AddAppUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(29120);
-    ac.d("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ad.d("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       AppMethodBeat.o(29120);
       return;
     }
-    ac.e("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ad.e("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     AppMethodBeat.o(29120);
   }
   

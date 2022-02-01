@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.mm.bw.b;
+import com.tencent.mm.bx.b;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "getErrType", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "incrementList", "", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "isNeedClear", "setNeedClear", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "pullType", "getPullType", "setPullType", "(I)V", "request", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IRequest;", "getRequest", "()Lcom/tencent/mm/plugin/finder/feed/model/internal/IRequest;", "setRequest", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IRequest;)V", "plugin-finder_release"})
-public class IResponse<T extends h>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "getErrType", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "incrementList", "", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "isNeedClear", "setNeedClear", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "pullType", "getPullType", "setPullType", "(I)V", "request", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "plugin-finder_release"})
+public class IResponse<T extends i>
 {
   private final int errCode;
   private final String errMsg;
@@ -15,7 +15,12 @@ public class IResponse<T extends h>
   private boolean isNeedClear;
   private b lastBuffer;
   private int pullType;
-  private i request;
+  private Object request;
+  
+  public IResponse()
+  {
+    this(0, 0, null, 7, null);
+  }
   
   public IResponse(int paramInt1, int paramInt2, String paramString)
   {
@@ -62,7 +67,7 @@ public class IResponse<T extends h>
     return this.pullType;
   }
   
-  public final i getRequest()
+  public final Object getRequest()
   {
     return this.request;
   }
@@ -97,14 +102,14 @@ public class IResponse<T extends h>
     this.pullType = paramInt;
   }
   
-  public final void setRequest(i parami)
+  public final void setRequest(Object paramObject)
   {
-    this.request = parami;
+    this.request = paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.internal.IResponse
  * JD-Core Version:    0.7.0.1
  */

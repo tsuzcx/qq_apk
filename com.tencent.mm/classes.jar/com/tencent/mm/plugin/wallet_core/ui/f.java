@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 public abstract interface f
 {
-  public abstract void eth();
+  public abstract void eHn();
   
   public abstract void onActivityPause();
 }

@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.pluginsdk.m;
 
 final class WelcomeActivity$1
   implements View.OnClickListener
@@ -15,10 +15,14 @@ final class WelcomeActivity$1
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(128794);
+    b localb = new b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/WelcomeActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
     paramView = new Intent();
     paramView.putExtra("not_auth_setting", true);
     paramView.putExtra("from_login_history", true);
-    a.iyx.o(paramView, this.iYl);
+    com.tencent.mm.plugin.account.a.a.iRG.o(paramView, this.jru);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/WelcomeActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128794);
   }
 }

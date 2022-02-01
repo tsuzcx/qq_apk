@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.expt.hellhound.a.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cvp;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dbb;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  public static void a(cvp paramcvp)
+  public static void a(dbb paramdbb)
   {
     try
     {
       AppMethodBeat.i(122128);
       try
       {
-        com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mkv_k_hellsscld", paramcvp.toByteArray());
+        com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mkv_k_hellsscld", paramdbb.toByteArray());
         AppMethodBeat.o(122128);
       }
-      catch (Exception paramcvp)
+      catch (Exception paramdbb)
       {
         for (;;)
         {
-          ac.printErrStackTrace("HellSessionCloudConfigDao", paramcvp, "habbyge-mali, HellSessionCloudConfigDao writeBack", new Object[0]);
+          ad.printErrStackTrace("HABBYGE-MALI.HellSessionCloudConfigDao", paramdbb, "HellSessionCloudConfigDao writeBack", new Object[0]);
           AppMethodBeat.o(122128);
         }
       }
@@ -30,42 +30,42 @@ public final class b
   }
   
   /* Error */
-  public static cvp ckM()
+  public static dbb cqb()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 47
+    //   3: ldc 48
     //   5: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc 17
-    //   10: invokestatic 51	com/tencent/mm/plugin/expt/hellhound/core/a/b:getBytes	(Ljava/lang/String;)[B
+    //   10: invokestatic 52	com/tencent/mm/plugin/expt/hellhound/core/a/b:getBytes	(Ljava/lang/String;)[B
     //   13: astore_1
     //   14: aload_1
     //   15: ifnull +8 -> 23
     //   18: aload_1
     //   19: arraylength
     //   20: ifgt +22 -> 42
-    //   23: ldc 33
-    //   25: ldc 53
-    //   27: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   30: ldc 47
-    //   32: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: ldc 34
+    //   25: ldc 54
+    //   27: invokestatic 58	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: ldc 48
+    //   32: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: aconst_null
     //   36: astore_0
     //   37: ldc 2
     //   39: monitorexit
     //   40: aload_0
     //   41: areturn
-    //   42: new 19	com/tencent/mm/protocal/protobuf/cvp
+    //   42: new 19	com/tencent/mm/protocal/protobuf/dbb
     //   45: dup
-    //   46: invokespecial 61	com/tencent/mm/protocal/protobuf/cvp:<init>	()V
+    //   46: invokespecial 62	com/tencent/mm/protocal/protobuf/dbb:<init>	()V
     //   49: astore_0
     //   50: aload_0
     //   51: aload_1
-    //   52: invokevirtual 65	com/tencent/mm/protocal/protobuf/cvp:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   52: invokevirtual 66	com/tencent/mm/protocal/protobuf/dbb:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   55: pop
-    //   56: ldc 47
-    //   58: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: ldc 48
+    //   58: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: goto -24 -> 37
     //   64: astore_0
     //   65: ldc 2
@@ -73,20 +73,20 @@ public final class b
     //   68: aload_0
     //   69: athrow
     //   70: astore_0
-    //   71: ldc 33
+    //   71: ldc 34
     //   73: aload_0
-    //   74: ldc 67
+    //   74: ldc 68
     //   76: iconst_0
     //   77: anewarray 4	java/lang/Object
-    //   80: invokestatic 41	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   83: ldc 47
-    //   85: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: invokestatic 42	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   83: ldc 48
+    //   85: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aconst_null
     //   89: astore_0
     //   90: goto -53 -> 37
     // Local variable table:
     //   start	length	slot	name	signature
-    //   36	15	0	localcvp	cvp
+    //   36	15	0	localdbb	dbb
     //   64	5	0	localObject1	Object
     //   70	4	0	localIOException	java.io.IOException
     //   89	1	0	localObject2	Object

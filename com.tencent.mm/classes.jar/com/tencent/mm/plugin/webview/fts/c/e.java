@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.webview.fts.c;
 
 public abstract interface e
 {
-  public abstract void L(int paramInt, String paramString1, String paramString2);
+  public abstract void O(int paramInt, String paramString1, String paramString2);
   
-  public abstract void M(int paramInt, String paramString1, String paramString2);
+  public abstract void P(int paramInt, String paramString1, String paramString2);
   
-  public abstract void UL(int paramInt);
+  public abstract void WC(int paramInt);
   
-  public abstract void cs(int paramInt, String paramString);
+  public abstract void cy(int paramInt, String paramString);
 }
 
 

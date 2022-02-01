@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.finder.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$OnItemSelectListener;", "", "onItemClick", "", "mediaItem", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onItemSelectedChanged", "selected", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderGridGalleryView$OnItemSelectListener;", "", "onItemClick", "", "mediaItem", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "onItemSelectedChanged", "selected", "Landroid/os/Bundle;", "plugin-finder_release"})
 public abstract interface FinderGridGalleryView$b {}
 
 

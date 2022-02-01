@@ -3,19 +3,19 @@ package d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongRange;", "Lkotlin/ranges/LongProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(JJ)V", "getEndInclusive", "()Ljava/lang/Long;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongRange;", "Lkotlin/ranges/LongProgression;", "Lkotlin/ranges/ClosedRange;", "", "start", "endInclusive", "(JJ)V", "getEndInclusive", "()Ljava/lang/Long;", "getStart", "contains", "", "value", "equals", "other", "", "hashCode", "", "isEmpty", "toString", "", "Companion", "kotlin-stdlib"})
 public final class g
   extends e
   implements a<Long>
 {
-  private static final g KVn;
-  public static final a KVo;
+  private static final g MMt;
+  public static final a MMu;
   
   static
   {
     AppMethodBeat.i(129302);
-    KVo = new a((byte)0);
-    KVn = new g(1L, 0L);
+    MMu = new a((byte)0);
+    MMt = new g(1L, 0L);
     AppMethodBeat.o(129302);
   }
   
@@ -27,7 +27,7 @@ public final class g
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(129299);
-    if (((paramObject instanceof g)) && (((isEmpty()) && (((g)paramObject).isEmpty())) || ((this.first == ((g)paramObject).first) && (this.KVj == ((g)paramObject).KVj))))
+    if (((paramObject instanceof g)) && (((isEmpty()) && (((g)paramObject).isEmpty())) || ((this.first == ((g)paramObject).first) && (this.MMp == ((g)paramObject).MMp))))
     {
       AppMethodBeat.o(129299);
       return true;
@@ -44,25 +44,25 @@ public final class g
       AppMethodBeat.o(129300);
       return -1;
     }
-    int i = (int)(31L * (this.first ^ this.first >>> 32) + (this.KVj ^ this.KVj >>> 32));
+    int i = (int)(31L * (this.first ^ this.first >>> 32) + (this.MMp ^ this.MMp >>> 32));
     AppMethodBeat.o(129300);
     return i;
   }
   
   public final boolean isEmpty()
   {
-    return this.first > this.KVj;
+    return this.first > this.MMp;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(129301);
-    String str = this.first + ".." + this.KVj;
+    String str = this.first + ".." + this.MMp;
     AppMethodBeat.o(129301);
     return str;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/LongRange;", "getEMPTY", "()Lkotlin/ranges/LongRange;", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongRange$Companion;", "", "()V", "EMPTY", "Lkotlin/ranges/LongRange;", "getEMPTY", "()Lkotlin/ranges/LongRange;", "kotlin-stdlib"})
   public static final class a {}
 }
 

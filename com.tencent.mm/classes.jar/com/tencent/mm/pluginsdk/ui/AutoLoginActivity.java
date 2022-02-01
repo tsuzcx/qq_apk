@@ -4,44 +4,44 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
 public abstract class AutoLoginActivity
   extends MMActivity
 {
-  private void WM(int paramInt)
+  private void YI(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      ac.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
-      a(a.DmL, getIntent());
+      ad.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
+      a(a.ERO, getIntent());
       return;
     case -1: 
-      a(a.DmK, getIntent());
+      a(a.ERN, getIntent());
       return;
     case 0: 
-      dkq();
+      duC();
       return;
     }
-    a(a.DmM, getIntent());
+    a(a.ERP, getIntent());
   }
-  
-  protected abstract boolean Z(Intent paramIntent);
   
   protected abstract void a(a parama, Intent paramIntent);
   
-  protected boolean dkq()
+  protected abstract boolean ab(Intent paramIntent);
+  
+  protected boolean duC()
   {
-    g.agP();
-    if ((!com.tencent.mm.kernel.a.afX()) || (com.tencent.mm.kernel.a.afS()))
+    g.ajA();
+    if ((!com.tencent.mm.kernel.a.aiJ()) || (com.tencent.mm.kernel.a.aiE()))
     {
-      ac.w("MicroMsg.AutoLoginActivity", "not login");
+      ad.w("MicroMsg.AutoLoginActivity", "not login");
       Intent localIntent1 = new Intent(this, getClass());
       localIntent1.putExtras(getIntent());
       localIntent1.addFlags(67108864);
@@ -67,32 +67,32 @@ public abstract class AutoLoginActivity
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      ac.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
+      ad.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
       finish();
       return;
     }
-    d.eQD();
-    ac.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
-    int i = x.getIntExtra(paramBundle, "wizard_activity_result_code", -2);
-    ac.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
+    d.ffH();
+    ad.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
+    int i = y.getIntExtra(paramBundle, "wizard_activity_result_code", -2);
+    ad.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
     if (i != -2)
     {
-      WM(i);
+      YI(i);
       return;
     }
-    if (!Z(paramBundle))
+    if (!ab(paramBundle))
     {
-      ac.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
+      ad.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
       finish();
       return;
     }
-    if (dkq())
+    if (duC())
     {
       finish();
-      ac.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
+      ad.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
       return;
     }
-    a(a.DmK, paramBundle);
+    a(a.ERN, paramBundle);
   }
   
   public void onDestroy()
@@ -107,9 +107,9 @@ public abstract class AutoLoginActivity
     }
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    int i = x.getIntExtra(paramIntent, "wizard_activity_result_code", 0);
-    ac.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
-    WM(i);
+    int i = y.getIntExtra(paramIntent, "wizard_activity_result_code", 0);
+    ad.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
+    YI(i);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -123,10 +123,10 @@ public abstract class AutoLoginActivity
     static
     {
       AppMethodBeat.i(155389);
-      DmK = new a("LOGIN_OK", 0);
-      DmL = new a("LOGIN_FAIL", 1);
-      DmM = new a("LOGIN_CANCEL", 2);
-      DmN = new a[] { DmK, DmL, DmM };
+      ERN = new a("LOGIN_OK", 0);
+      ERO = new a("LOGIN_FAIL", 1);
+      ERP = new a("LOGIN_CANCEL", 2);
+      ERQ = new a[] { ERN, ERO, ERP };
       AppMethodBeat.o(155389);
     }
     

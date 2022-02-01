@@ -7,7 +7,7 @@ import com.tencent.toybrick.c.f;
 public class a
   extends RecyclerView.w
 {
-  public f KtH;
+  public f MjI;
   
   public a(View paramView)
   {
@@ -16,7 +16,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.toybrick.f.a
  * JD-Core Version:    0.7.0.1
  */

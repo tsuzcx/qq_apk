@@ -11,32 +11,32 @@ import com.tencent.mm.plugin.appbrand.q;
 public enum e
 {
   public final int code;
-  public final int lYu;
-  public final Class<? extends q> lYv;
-  public final Class<? extends aa> lYw;
+  public final int myj;
+  public final Class<? extends q> myk;
+  public final Class<? extends aa> myl;
   
   static
   {
     AppMethodBeat.i(48433);
-    lYr = new e("WASERVICE", 0, 1, 2147483647, com.tencent.mm.plugin.appbrand.service.c.class, ae.class);
-    lYs = new e("WAGAME", 1, 2, 2, com.tencent.mm.plugin.appbrand.game.c.class, d.class);
-    lYt = new e("NIL", 2, 0, 0, null, null);
-    lYx = new e[] { lYr, lYs, lYt };
+    myg = new e("WASERVICE", 0, 1, 2147483647, com.tencent.mm.plugin.appbrand.service.c.class, ae.class);
+    myh = new e("WAGAME", 1, 2, 2, com.tencent.mm.plugin.appbrand.game.c.class, d.class);
+    myi = new e("NIL", 2, 0, 0, null, null);
+    mym = new e[] { myg, myh, myi };
     AppMethodBeat.o(48433);
   }
   
   private e(int paramInt1, int paramInt2, Class<? extends q> paramClass, Class<? extends aa> paramClass1)
   {
     this.code = paramInt1;
-    this.lYu = paramInt2;
-    this.lYv = paramClass;
-    this.lYw = paramClass1;
+    this.myj = paramInt2;
+    this.myk = paramClass;
+    this.myl = paramClass1;
   }
   
-  public static e J(Intent paramIntent)
+  public static e L(Intent paramIntent)
   {
     AppMethodBeat.i(48431);
-    int j = paramIntent.getIntExtra("AppBrandServiceType", lYt.code);
+    int j = paramIntent.getIntExtra("AppBrandServiceType", myi.code);
     paramIntent = values();
     int k = paramIntent.length;
     int i = 0;
@@ -55,33 +55,54 @@ public enum e
     throw paramIntent;
   }
   
-  public static e ht(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return lYs;
-    }
-    return lYr;
-  }
-  
-  public static e i(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  public static e h(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
     AppMethodBeat.i(48432);
-    if (paramAppBrandInitConfigWC.CC())
+    if (paramAppBrandInitConfigWC.Eb())
     {
-      paramAppBrandInitConfigWC = lYs;
+      paramAppBrandInitConfigWC = myh;
       AppMethodBeat.o(48432);
       return paramAppBrandInitConfigWC;
     }
-    paramAppBrandInitConfigWC = lYr;
+    paramAppBrandInitConfigWC = myg;
     AppMethodBeat.o(48432);
     return paramAppBrandInitConfigWC;
   }
   
-  public final Intent I(Intent paramIntent)
+  public static e hA(boolean paramBoolean)
   {
-    AppMethodBeat.i(186974);
+    if (paramBoolean) {
+      return myh;
+    }
+    return myg;
+  }
+  
+  public static e vt(int paramInt)
+  {
+    AppMethodBeat.i(188781);
+    Object localObject = values();
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      e locale = localObject[i];
+      if (locale.code == paramInt)
+      {
+        AppMethodBeat.o(188781);
+        return locale;
+      }
+      i += 1;
+    }
+    localObject = new IllegalStateException("AppBrandServiceType DeserializeFrom[Int] Unreached Code");
+    AppMethodBeat.o(188781);
+    throw ((Throwable)localObject);
+  }
+  
+  public final Intent K(Intent paramIntent)
+  {
+    AppMethodBeat.i(188780);
     paramIntent.putExtra("AppBrandServiceType", this.code);
-    AppMethodBeat.o(186974);
+    AppMethodBeat.o(188780);
     return paramIntent;
   }
 }

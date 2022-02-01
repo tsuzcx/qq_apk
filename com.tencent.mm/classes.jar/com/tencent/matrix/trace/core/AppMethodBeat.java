@@ -54,7 +54,7 @@ public class AppMethodBeat
     sCurrentDiffTime = l;
     sDiffTime = l;
     sMainThreadId = Looper.getMainLooper().getThread().getId();
-    sTimerUpdateThread = com.tencent.matrix.g.b.df("matrix_time_update_thread");
+    sTimerUpdateThread = com.tencent.matrix.g.b.ed("matrix_time_update_thread");
     sHandler = new Handler(sTimerUpdateThread.getLooper());
     sFocusActivitySet = new HashSet();
     listeners = new HashSet();
@@ -142,9 +142,9 @@ public class AppMethodBeat
     a locala = sIndexRecordHead;
     while ((locala != null) && ((locala.index == paramInt) || ((locala.index == -1) && (sLastIndex == 999999))))
     {
-      locala.cyW = false;
+      locala.cJS = false;
       c.w("Matrix.AppMethodBeat", "[checkPileup] %s", new Object[] { locala.toString() });
-      locala = locala.cyV;
+      locala = locala.cJR;
       sIndexRecordHead = locala;
     }
   }
@@ -163,14 +163,14 @@ public class AppMethodBeat
     //   14: aload 9
     //   16: astore 7
     //   18: aload_1
-    //   19: getfield 268	com/tencent/matrix/trace/core/AppMethodBeat$a:cyW	Z
+    //   19: getfield 268	com/tencent/matrix/trace/core/AppMethodBeat$a:cJS	Z
     //   22: ifeq +336 -> 358
     //   25: aload 9
     //   27: astore 8
     //   29: aload 9
     //   31: astore 7
     //   33: aload_2
-    //   34: getfield 268	com/tencent/matrix/trace/core/AppMethodBeat$a:cyW	Z
+    //   34: getfield 268	com/tencent/matrix/trace/core/AppMethodBeat$a:cJS	Z
     //   37: ifeq +321 -> 358
     //   40: aload 9
     //   42: astore 8
@@ -477,7 +477,7 @@ public class AppMethodBeat
   
   public static String getVisibleScene()
   {
-    return com.tencent.matrix.a.cqa.cqd;
+    return com.tencent.matrix.a.cAS.cAV;
   }
   
   public static void i(int paramInt)
@@ -579,7 +579,7 @@ public class AppMethodBeat
     };
     checkStartExpiredRunnable = local4;
     localHandler.postDelayed(local4, 15000L);
-    com.tencent.matrix.trace.c.a.HG();
+    com.tencent.matrix.trace.c.a.Jb();
     a.a(looperMonitorListener);
   }
   
@@ -640,19 +640,19 @@ public class AppMethodBeat
         {
           paramString = sIndexRecordHead;
           sIndexRecordHead = locala2;
-          locala2.cyV = paramString;
+          locala2.cJR = paramString;
           return locala2;
         }
-        paramString = ((a)localObject).cyV;
-        ((a)localObject).cyV = locala2;
-        locala2.cyV = paramString;
+        paramString = ((a)localObject).cJR;
+        ((a)localObject).cJR = locala2;
+        locala2.cJR = paramString;
         return locala2;
       }
-      a locala1 = paramString.cyV;
+      a locala1 = paramString.cJR;
       localObject = paramString;
       paramString = locala1;
     }
-    ((a)localObject).cyV = locala2;
+    ((a)localObject).cJR = locala2;
     return locala2;
   }
   
@@ -695,7 +695,7 @@ public class AppMethodBeat
   public void printIndexRecord()
   {
     StringBuilder localStringBuilder = new StringBuilder(" \n");
-    for (a locala = sIndexRecordHead; locala != null; locala = locala.cyV) {
+    for (a locala = sIndexRecordHead; locala != null; locala = locala.cJR) {
       localStringBuilder.append(locala).append("\n");
     }
     c.i("Matrix.AppMethodBeat", "[printIndexRecord] %s", new Object[] { localStringBuilder.toString() });
@@ -712,14 +712,14 @@ public class AppMethodBeat
   
   public static final class a
   {
-    a cyV;
-    public boolean cyW = true;
+    a cJR;
+    public boolean cJS = true;
     public int index;
     public String source;
     
     public a()
     {
-      this.cyW = false;
+      this.cJS = false;
     }
     
     public a(int paramInt)
@@ -729,7 +729,7 @@ public class AppMethodBeat
     
     public final void release()
     {
-      this.cyW = false;
+      this.cJS = false;
       Object localObject1 = AppMethodBeat.sIndexRecordHead;
       Object localObject2 = null;
       for (;;)
@@ -742,17 +742,17 @@ public class AppMethodBeat
           if (localObject2 == null) {
             break label38;
           }
-          localObject2.cyV = ((a)localObject1).cyV;
+          localObject2.cJR = ((a)localObject1).cJR;
         }
         for (;;)
         {
-          ((a)localObject1).cyV = null;
+          ((a)localObject1).cJR = null;
           return;
           label38:
-          AppMethodBeat.access$1002(((a)localObject1).cyV);
+          AppMethodBeat.access$1002(((a)localObject1).cJR);
         }
         label49:
-        a locala = ((a)localObject1).cyV;
+        a locala = ((a)localObject1).cJR;
         localObject2 = localObject1;
         localObject1 = locala;
       }
@@ -760,7 +760,7 @@ public class AppMethodBeat
     
     public final String toString()
     {
-      return "index:" + this.index + ",\tisValid:" + this.cyW + " source:" + this.source;
+      return "index:" + this.index + ",\tisValid:" + this.cJS + " source:" + this.source;
     }
   }
   

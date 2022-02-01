@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.luckymoney;
 
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class a
-  implements m
+  implements n
 {
-  public static l iyx;
-  private static k iyy;
-  
-  public final void a(k paramk)
-  {
-    iyy = paramk;
-  }
+  public static m iRG;
+  private static l iRH;
   
   public final void a(l paraml)
   {
-    iyx = paraml;
+    iRH = paraml;
+  }
+  
+  public final void a(m paramm)
+  {
+    iRG = paramm;
   }
 }
 

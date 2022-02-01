@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.voip.video;
 
 import android.graphics.SurfaceTexture;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip/video/VoipSurfaceTexture;", "Landroid/graphics/SurfaceTexture;", "texName", "", "(I)V", "TAG", "", "plugin-voip_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/video/VoipSurfaceTexture;", "Landroid/graphics/SurfaceTexture;", "texName", "", "(I)V", "TAG", "", "plugin-voip_release"})
 public final class l
   extends SurfaceTexture
 {
@@ -23,14 +23,14 @@ public final class l
     }
     catch (Exception localException)
     {
-      ac.i(this.TAG, "detachFromGLContext  in init error");
+      ad.i(this.TAG, "detachFromGLContext  in init error");
       AppMethodBeat.o(115960);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.l
  * JD-Core Version:    0.7.0.1
  */

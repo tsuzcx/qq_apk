@@ -12,8 +12,8 @@ import com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyFactory;
 import com.tencent.thumbplayer.d.g;
 import com.tencent.thumbplayer.utils.TPNetworkChangeMonitor;
 import com.tencent.thumbplayer.utils.TPNetworkChangeMonitor.b;
-import com.tencent.thumbplayer.utils.d.a;
-import com.tencent.thumbplayer.utils.d.b;
+import com.tencent.thumbplayer.utils.b.a;
+import com.tencent.thumbplayer.utils.b.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,53 +25,53 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public final class c
-  implements a, TPNetworkChangeMonitor.b, d.b
+  implements a, TPNetworkChangeMonitor.b, b.b
 {
-  private static int Khw = -1;
-  private p KhA;
-  private com.tencent.thumbplayer.b.b.a KhB;
-  private LinkedList<b> KhC;
-  private HashMap<String, Integer> KhD;
-  private long KhE;
-  private boolean KhF;
-  private ITPDownloadProxy Khr;
-  private boolean Khs;
-  private int Kht;
-  private a Khu;
-  private ITPPlayListener Khv;
-  private ArrayList<com.tencent.thumbplayer.b.b.b> Khx;
-  private String Khy;
-  private int Khz;
-  private long bZS;
+  private static int MaM = -1;
+  private ITPDownloadProxy MaH;
+  private boolean MaI;
+  private int MaJ;
+  private a MaK;
+  private ITPPlayListener MaL;
+  private ArrayList<com.tencent.thumbplayer.b.b.b> MaN;
+  private String MaO;
+  private int MaP;
+  private p MaQ;
+  private com.tencent.thumbplayer.b.b.a MaR;
+  private LinkedList<b> MaS;
+  private HashMap<String, Integer> MaT;
+  private long MaU;
+  private boolean MaV;
+  private long ckk;
   private Context mContext;
   private String mOriginUrl;
   private int mServiceType;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(187892);
-    this.Khs = false;
-    this.Kht = 3;
-    this.mServiceType = Khw;
-    this.Khz = -1;
-    this.KhB = null;
-    this.KhF = false;
+    AppMethodBeat.i(191913);
+    this.MaI = false;
+    this.MaJ = 3;
+    this.mServiceType = MaM;
+    this.MaP = -1;
+    this.MaR = null;
+    this.MaV = false;
     this.mContext = paramContext;
-    d.a.fGu().a(this);
-    TPNetworkChangeMonitor.fGv().a(this);
-    this.Khu = new a((byte)0);
-    this.Khv = new d("TPThumbPlayer[TPPlayManagerImpl.java]");
-    this.KhD = new HashMap();
-    AppMethodBeat.o(187892);
+    b.a.fXG().a(this);
+    TPNetworkChangeMonitor.fXH().a(this);
+    this.MaK = new a((byte)0);
+    this.MaL = new d("TPThumbPlayer[TPPlayManagerImpl.java]");
+    this.MaT = new HashMap();
+    AppMethodBeat.o(191913);
   }
   
   private int a(List<com.tencent.thumbplayer.b.a.e> paramList, String paramString, ArrayList<com.tencent.thumbplayer.b.b.b> paramArrayList)
   {
-    AppMethodBeat.i(187909);
-    if (com.tencent.thumbplayer.utils.b.isEmpty(paramList))
+    AppMethodBeat.i(191930);
+    if (com.tencent.thumbplayer.utils.a.isEmpty(paramList))
     {
-      com.tencent.thumbplayer.utils.f.w("TPThumbPlayer[TPPlayManagerImpl.java]", "clipList is empty, return");
-      AppMethodBeat.o(187909);
+      com.tencent.thumbplayer.utils.d.w("TPThumbPlayer[TPPlayManagerImpl.java]", "clipList is empty, return");
+      AppMethodBeat.o(191930);
       return -1;
     }
     int k = paramList.size();
@@ -82,7 +82,7 @@ public final class c
     if (j < k)
     {
       localObject2 = (com.tencent.thumbplayer.b.a.e)paramList.get(j);
-      if ((!(localObject2 instanceof com.tencent.thumbplayer.d.e)) || (!com.tencent.thumbplayer.utils.b.aRh(((com.tencent.thumbplayer.d.e)localObject2).Khb))) {
+      if ((!(localObject2 instanceof com.tencent.thumbplayer.d.e)) || (!com.tencent.thumbplayer.utils.a.aXf(((com.tencent.thumbplayer.d.e)localObject2).Mar))) {
         break label594;
       }
       ((HashMap)localObject1).put(localObject2, new c(i, j));
@@ -93,16 +93,16 @@ public final class c
     {
       j += 1;
       break;
-      if (com.tencent.thumbplayer.utils.b.isEmpty((Map)localObject1))
+      if (com.tencent.thumbplayer.utils.a.isEmpty((Map)localObject1))
       {
-        com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "all urls is local file url, return");
-        AppMethodBeat.o(187909);
+        com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "all urls is local file url, return");
+        AppMethodBeat.o(191930);
         return -1;
       }
-      if ((paramArrayList.size() > 0) && (((com.tencent.thumbplayer.b.b.b)paramArrayList.get(0)).KfV) && (!TPDownloadProxyFactory.isReadyForDownload()))
+      if ((paramArrayList.size() > 0) && (((com.tencent.thumbplayer.b.b.b)paramArrayList.get(0)).LZP) && (!TPDownloadProxyFactory.isReadyForDownload()))
       {
         paramList = a("", e(paramArrayList, 0));
-        i = this.Khr.startPlay(paramString, paramList, this.Khu);
+        i = this.MaH.startPlay(paramString, paramList, this.MaK);
         if (i > 0)
         {
           paramList = ((HashMap)localObject1).entrySet().iterator();
@@ -112,14 +112,14 @@ public final class c
             paramString = (com.tencent.thumbplayer.b.a.e)paramArrayList.getKey();
             paramArrayList = (c)paramArrayList.getValue();
             if ((paramString instanceof com.tencent.thumbplayer.d.e)) {
-              ((com.tencent.thumbplayer.d.e)paramString).Khb = this.Khr.getClipPlayUrl(i, paramArrayList.KhK + 1);
+              ((com.tencent.thumbplayer.d.e)paramString).Mar = this.MaH.getClipPlayUrl(i, paramArrayList.Mba + 1);
             }
           }
-          AppMethodBeat.o(187909);
+          AppMethodBeat.o(191930);
           return i;
         }
       }
-      i = this.Khr.startClipPlay(paramString, ((HashMap)localObject1).size(), this.Khu);
+      i = this.MaH.startClipPlay(paramString, ((HashMap)localObject1).size(), this.MaK);
       if (i > 0)
       {
         paramList = ((HashMap)localObject1).entrySet().iterator();
@@ -131,52 +131,52 @@ public final class c
           if ((localObject1 instanceof com.tencent.thumbplayer.d.e))
           {
             localObject1 = (com.tencent.thumbplayer.d.e)localObject1;
-            Object localObject3 = e(paramArrayList, paramString.KhK);
+            Object localObject3 = e(paramArrayList, paramString.Mba);
             if (localObject3 == null)
             {
-              com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "fatal err, paramData is null.");
-              AppMethodBeat.o(187909);
+              com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "fatal err, paramData is null.");
+              AppMethodBeat.o(191930);
               return -1;
             }
-            com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "multi trackClipIndex:" + paramString.KhK + ", download seq:" + paramString.KhJ + ", clip.url:" + ((com.tencent.thumbplayer.d.e)localObject1).getUrl() + ", clip.getFilePath:" + ((com.tencent.thumbplayer.d.e)localObject1).Khb + ", paramData.savePath:" + ((com.tencent.thumbplayer.b.b.b)localObject3).savePath + ", paramData.DownloadFileID:" + ((com.tencent.thumbplayer.b.b.b)localObject3).Kfx);
-            localObject2 = ((com.tencent.thumbplayer.b.b.b)localObject3).Kfx;
-            localObject3 = a(((com.tencent.thumbplayer.d.e)localObject1).Khb, (com.tencent.thumbplayer.b.b.b)localObject3);
-            if (this.Khr.setClipInfo(i, paramString.KhJ, (String)localObject2, (TPDownloadParam)localObject3)) {
-              ((com.tencent.thumbplayer.d.e)localObject1).Khb = this.Khr.getClipPlayUrl(i, paramString.KhJ);
+            com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "multi trackClipIndex:" + paramString.Mba + ", download seq:" + paramString.MaZ + ", clip.url:" + ((com.tencent.thumbplayer.d.e)localObject1).getUrl() + ", clip.getFilePath:" + ((com.tencent.thumbplayer.d.e)localObject1).Mar + ", paramData.savePath:" + ((com.tencent.thumbplayer.b.b.b)localObject3).savePath + ", paramData.DownloadFileID:" + ((com.tencent.thumbplayer.b.b.b)localObject3).LZr);
+            localObject2 = ((com.tencent.thumbplayer.b.b.b)localObject3).LZr;
+            localObject3 = a(((com.tencent.thumbplayer.d.e)localObject1).Mar, (com.tencent.thumbplayer.b.b.b)localObject3);
+            if (this.MaH.setClipInfo(i, paramString.MaZ, (String)localObject2, (TPDownloadParam)localObject3)) {
+              ((com.tencent.thumbplayer.d.e)localObject1).Mar = this.MaH.getClipPlayUrl(i, paramString.MaZ);
             }
           }
         }
       }
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start clip play failed, cause : playId < 0");
-      AppMethodBeat.o(187909);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start clip play failed, cause : playId < 0");
+      AppMethodBeat.o(191930);
       return i;
     }
   }
   
   private static TPDownloadParam a(String paramString, com.tencent.thumbplayer.b.b.b paramb)
   {
-    AppMethodBeat.i(210021);
+    AppMethodBeat.i(221339);
     paramString = h.b(paramString, paramb);
-    AppMethodBeat.o(210021);
+    AppMethodBeat.o(221339);
     return paramString;
   }
   
   private String a(long paramLong, String paramString, com.tencent.thumbplayer.b.b.b paramb)
   {
     String str2 = null;
-    AppMethodBeat.i(187900);
-    if (!com.tencent.thumbplayer.utils.b.aRh(paramString))
+    AppMethodBeat.i(191921);
+    if (!com.tencent.thumbplayer.utils.a.aXf(paramString))
     {
-      AppMethodBeat.o(187900);
+      AppMethodBeat.o(191921);
       return paramString;
     }
-    if (yK(false))
+    if (zx(false))
     {
-      AppMethodBeat.o(187900);
+      AppMethodBeat.o(191921);
       return paramString;
     }
-    if (this.KhC == null) {
-      this.KhC = new LinkedList();
+    if (this.MaS == null) {
+      this.MaS = new LinkedList();
     }
     TPDownloadParam localTPDownloadParam;
     if (paramb != null) {
@@ -190,137 +190,137 @@ public final class c
       }
       try
       {
-        str2 = paramb.Kfx;
+        str2 = paramb.LZr;
         str1 = paramString;
-        int i = this.Khr.startPlay(str2, localTPDownloadParam, this.Khu);
+        int i = this.MaH.startPlay(str2, localTPDownloadParam, this.MaK);
         if (i > 0)
         {
           str1 = paramString;
-          paramString = this.Khr.getPlayUrl(i);
+          paramString = this.MaH.getPlayUrl(i);
           str1 = paramString;
-          this.KhC.offer(new b(paramLong, i));
+          this.MaS.offer(new b(paramLong, i));
           str1 = paramString;
-          com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def sucess, defId:" + paramLong + ",playId:" + i);
-          AppMethodBeat.o(187900);
+          com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def sucess, defId:" + paramLong + ",playId:" + i);
+          AppMethodBeat.o(191921);
           return paramString;
           localTPDownloadParam = null;
         }
         else
         {
           str1 = paramString;
-          com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def failed, cause : playId < 0");
+          com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def failed, cause : playId < 0");
         }
       }
       catch (Throwable paramString)
       {
         for (;;)
         {
-          com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy switch def failed");
+          com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy switch def failed");
           paramString = str1;
         }
       }
     }
-    AppMethodBeat.o(187900);
+    AppMethodBeat.o(191921);
     return paramString;
   }
   
-  private void aeM(int paramInt)
+  private void ahm(int paramInt)
   {
-    AppMethodBeat.i(187905);
-    if (yK(false))
+    AppMethodBeat.i(191926);
+    if (zx(false))
     {
-      AppMethodBeat.o(187905);
+      AppMethodBeat.o(191926);
       return;
     }
     try
     {
-      this.Khr.pauseDownload(paramInt);
-      AppMethodBeat.o(187905);
+      this.MaH.pauseDownload(paramInt);
+      AppMethodBeat.o(191926);
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy pause download failed, taskId:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(187905);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy pause download failed, taskId:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(191926);
     }
   }
   
-  private void aeN(int paramInt)
+  private void ahn(int paramInt)
   {
-    AppMethodBeat.i(187907);
-    if (yK(false))
+    AppMethodBeat.i(191928);
+    if (zx(false))
     {
-      AppMethodBeat.o(187907);
+      AppMethodBeat.o(191928);
       return;
     }
     try
     {
-      this.Khr.resumeDownload(this.Khz);
-      AppMethodBeat.o(187907);
+      this.MaH.resumeDownload(this.MaP);
+      AppMethodBeat.o(191928);
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy resume download failed, taskId:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(187907);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy resume download failed, taskId:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(191928);
     }
   }
   
-  private void aeO(int paramInt)
+  private void aho(int paramInt)
   {
-    AppMethodBeat.i(187912);
-    if (yK(false))
+    AppMethodBeat.i(191933);
+    if (zx(false))
     {
-      AppMethodBeat.o(187912);
+      AppMethodBeat.o(191933);
       return;
     }
     try
     {
-      this.Khr.stopPlay(paramInt);
-      AppMethodBeat.o(187912);
+      this.MaH.stopPlay(paramInt);
+      AppMethodBeat.o(191933);
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy stop play failed, taskID:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(187912);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy stop play failed, taskID:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(191933);
     }
   }
   
-  private void aeP(int paramInt)
+  private void ahp(int paramInt)
   {
-    AppMethodBeat.i(187913);
-    if (yK(false))
+    AppMethodBeat.i(191934);
+    if (zx(false))
     {
-      AppMethodBeat.o(187913);
+      AppMethodBeat.o(191934);
       return;
     }
     try
     {
-      this.Khr.pushEvent(paramInt);
-      AppMethodBeat.o(187913);
+      this.MaH.pushEvent(paramInt);
+      AppMethodBeat.o(191934);
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy pushEvent failed, event:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(187913);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable, "p2p proxy pushEvent failed, event:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(191934);
     }
   }
   
   private static List<com.tencent.thumbplayer.b.a.e> d(com.tencent.thumbplayer.b.a.a parama)
   {
-    AppMethodBeat.i(187908);
+    AppMethodBeat.i(191929);
     if ((parama instanceof com.tencent.thumbplayer.d.b))
     {
-      parama = ((com.tencent.thumbplayer.d.b)parama).KgT;
-      if (!com.tencent.thumbplayer.utils.b.isEmpty(parama))
+      parama = ((com.tencent.thumbplayer.d.b)parama).Maj;
+      if (!com.tencent.thumbplayer.utils.a.isEmpty(parama))
       {
         parama = (com.tencent.thumbplayer.b.a.d)parama.get(0);
-        if ((parama != null) && (!com.tencent.thumbplayer.utils.b.isEmpty(parama.fFn())))
+        if ((parama != null) && (!com.tencent.thumbplayer.utils.a.isEmpty(parama.fWE())))
         {
-          parama = parama.fFn();
-          AppMethodBeat.o(187908);
+          parama = parama.fWE();
+          AppMethodBeat.o(191929);
           return parama;
         }
       }
@@ -328,10 +328,10 @@ public final class c
     else if ((parama instanceof com.tencent.thumbplayer.b.a.d))
     {
       parama = (com.tencent.thumbplayer.b.a.d)parama;
-      if (!com.tencent.thumbplayer.utils.b.isEmpty(parama.fFn()))
+      if (!com.tencent.thumbplayer.utils.a.isEmpty(parama.fWE()))
       {
-        parama = parama.fFn();
-        AppMethodBeat.o(187908);
+        parama = parama.fWE();
+        AppMethodBeat.o(191929);
         return parama;
       }
     }
@@ -339,200 +339,200 @@ public final class c
     {
       ArrayList localArrayList = new ArrayList(1);
       localArrayList.add((com.tencent.thumbplayer.b.a.e)parama);
-      AppMethodBeat.o(187908);
+      AppMethodBeat.o(191929);
       return localArrayList;
     }
-    AppMethodBeat.o(187908);
+    AppMethodBeat.o(191929);
     return null;
   }
   
   private static com.tencent.thumbplayer.b.b.b e(ArrayList<com.tencent.thumbplayer.b.b.b> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(187922);
-    if ((com.tencent.thumbplayer.utils.b.isEmpty(paramArrayList)) || (paramInt >= paramArrayList.size()))
+    AppMethodBeat.i(191943);
+    if ((com.tencent.thumbplayer.utils.a.isEmpty(paramArrayList)) || (paramInt >= paramArrayList.size()))
     {
-      AppMethodBeat.o(187922);
+      AppMethodBeat.o(191943);
       return null;
     }
     paramArrayList = (com.tencent.thumbplayer.b.b.b)paramArrayList.get(paramInt);
-    AppMethodBeat.o(187922);
+    AppMethodBeat.o(191943);
     return paramArrayList;
   }
   
-  private void fFN()
+  private void fXc()
   {
-    AppMethodBeat.i(187893);
-    if (this.Khs)
+    AppMethodBeat.i(191914);
+    if (this.MaI)
     {
-      AppMethodBeat.o(187893);
+      AppMethodBeat.o(191914);
       return;
     }
-    if (this.Kht > 0)
+    if (this.MaJ > 0)
     {
       try
       {
-        if (this.mServiceType == Khw) {
-          this.mServiceType = com.tencent.thumbplayer.e.a.fFG();
+        if (this.mServiceType == MaM) {
+          this.mServiceType = com.tencent.thumbplayer.e.a.fWV();
         }
-        b localb = f.a.fFP().aeR(this.mServiceType);
-        if ((localb == null) || (localb.fFM() == null)) {
+        b localb = f.a.fXe().ahr(this.mServiceType);
+        if ((localb == null) || (localb.fXb() == null)) {
           break label257;
         }
-        this.Khr = localb.fFM();
-        this.Khr.setUserData("qq_is_vip", Boolean.valueOf(com.tencent.thumbplayer.e.a.fFF()));
-        if (!TextUtils.isEmpty(com.tencent.thumbplayer.e.a.fFC())) {
-          this.Khr.setUserData("user_uin", com.tencent.thumbplayer.e.a.fFC());
+        this.MaH = localb.fXb();
+        this.MaH.setUserData("qq_is_vip", Boolean.valueOf(com.tencent.thumbplayer.e.a.fWU()));
+        if (!TextUtils.isEmpty(com.tencent.thumbplayer.e.a.fWR())) {
+          this.MaH.setUserData("user_uin", com.tencent.thumbplayer.e.a.fWR());
         }
         if (!TextUtils.isEmpty(com.tencent.thumbplayer.e.a.getAppVersionName(this.mContext))) {
-          this.Khr.setUserData("app_version_name", com.tencent.thumbplayer.e.a.getAppVersionName(this.mContext));
+          this.MaH.setUserData("app_version_name", com.tencent.thumbplayer.e.a.getAppVersionName(this.mContext));
         }
-        if (com.tencent.thumbplayer.e.a.kV(this.mContext) != -1L) {
-          this.Khr.setUserData("app_version_code", String.valueOf(com.tencent.thumbplayer.e.a.kV(this.mContext)));
+        if (com.tencent.thumbplayer.e.a.li(this.mContext) != -1L) {
+          this.MaH.setUserData("app_version_code", String.valueOf(com.tencent.thumbplayer.e.a.li(this.mContext)));
         }
-        this.Khr.setUserData("carrier_pesudo_code", com.tencent.thumbplayer.e.a.fFD());
-        this.Khr.setUserData("carrier_pesudo_state", Integer.valueOf(com.tencent.thumbplayer.e.a.fFE()));
-        this.Khs = true;
-        AppMethodBeat.o(187893);
+        this.MaH.setUserData("carrier_pesudo_code", com.tencent.thumbplayer.e.a.fWS());
+        this.MaH.setUserData("carrier_pesudo_state", Integer.valueOf(com.tencent.thumbplayer.e.a.fWT()));
+        this.MaI = true;
+        AppMethodBeat.o(191914);
         return;
       }
       catch (Exception localException)
       {
-        this.Kht -= 1;
-        com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localException);
+        this.MaJ -= 1;
+        com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localException);
       }
     }
     else
     {
-      AppMethodBeat.o(187893);
+      AppMethodBeat.o(191914);
       return;
     }
     label257:
-    this.Kht -= 1;
-    com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p so load failed");
-    AppMethodBeat.o(187893);
+    this.MaJ -= 1;
+    com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p so load failed");
+    AppMethodBeat.o(191914);
   }
   
-  private void fFO()
+  private void fXd()
   {
-    AppMethodBeat.i(187923);
-    this.Khr.setUserData("dl_param_play_start_time", Long.valueOf(this.bZS));
-    this.Khr.setUserData("dl_param_play_end_time", Long.valueOf(this.KhE));
-    AppMethodBeat.o(187923);
+    AppMethodBeat.i(191944);
+    this.MaH.setUserData("dl_param_play_start_time", Long.valueOf(this.ckk));
+    this.MaH.setUserData("dl_param_play_end_time", Long.valueOf(this.MaU));
+    AppMethodBeat.o(191944);
   }
   
-  private boolean mt(String paramString1, String paramString2)
+  private boolean mR(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187895);
+    AppMethodBeat.i(191916);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString1);
     paramString1 = new HashMap();
     paramString1.put("dl_param_data_transfer_mode", Integer.valueOf(1));
     paramString1 = new TPDownloadParam(localArrayList, 3, paramString1);
-    boolean bool = this.Khr.setClipInfo(this.Khz, 2, paramString2, paramString1);
-    AppMethodBeat.o(187895);
+    boolean bool = this.MaH.setClipInfo(this.MaP, 2, paramString2, paramString1);
+    AppMethodBeat.o(191916);
     return bool;
   }
   
-  private boolean yK(boolean paramBoolean)
+  private boolean zx(boolean paramBoolean)
   {
-    AppMethodBeat.i(187920);
-    if (!com.tencent.thumbplayer.e.a.fFy())
+    AppMethodBeat.i(191941);
+    if (!com.tencent.thumbplayer.e.a.fWN())
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "config set don't use p2p proxy!");
-      AppMethodBeat.o(187920);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "config set don't use p2p proxy!");
+      AppMethodBeat.o(191941);
       return true;
     }
     if (paramBoolean) {
-      this.Kht = 3;
+      this.MaJ = 3;
     }
-    fFN();
-    if (!this.Khs)
+    fXc();
+    if (!this.MaI)
     {
-      AppMethodBeat.o(187920);
+      AppMethodBeat.o(191941);
       return true;
     }
-    AppMethodBeat.o(187920);
+    AppMethodBeat.o(191941);
     return false;
   }
   
-  public final void BY(long paramLong)
+  public final void Fa(long paramLong)
   {
-    AppMethodBeat.i(187901);
-    if (yK(false))
+    AppMethodBeat.i(191922);
+    if (zx(false))
     {
-      AppMethodBeat.o(187901);
+      AppMethodBeat.o(191922);
       return;
     }
     try
     {
-      if (!com.tencent.thumbplayer.utils.b.isEmpty(this.KhC))
+      if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaS))
       {
-        for (b localb = (b)this.KhC.peek(); (localb != null) && (localb.KhH != paramLong); localb = (b)this.KhC.peek())
+        for (b localb = (b)this.MaS.peek(); (localb != null) && (localb.MaX != paramLong); localb = (b)this.MaS.peek())
         {
-          com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stop proxy definitionID:" + localb.KhH + ", taskID:" + localb.KhI);
-          aeO(localb.KhI);
-          this.KhC.removeFirst();
+          com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stop proxy definitionID:" + localb.MaX + ", taskID:" + localb.MaY);
+          aho(localb.MaY);
+          this.MaS.removeFirst();
         }
         if (localb != null)
         {
-          com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stop proxy task id:" + localb.KhI);
-          aeO(this.Khz);
-          this.Khz = localb.KhI;
-          this.KhC.remove(localb);
+          com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stop proxy task id:" + localb.MaY);
+          aho(this.MaP);
+          this.MaP = localb.MaY;
+          this.MaS.remove(localb);
         }
       }
-      AppMethodBeat.o(187901);
+      AppMethodBeat.o(191922);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localException, "playerSwitchDefComplete exception");
-      AppMethodBeat.o(187901);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localException, "playerSwitchDefComplete exception");
+      AppMethodBeat.o(191922);
     }
   }
   
   public final com.tencent.thumbplayer.b.a.a a(com.tencent.thumbplayer.b.a.a parama, long paramLong, p paramp)
   {
-    AppMethodBeat.i(187899);
-    if ((yK(false)) || (parama == null))
+    AppMethodBeat.i(191920);
+    if ((zx(false)) || (parama == null))
     {
-      AppMethodBeat.o(187899);
+      AppMethodBeat.o(191920);
       return parama;
     }
-    if (this.KhC == null) {
-      this.KhC = new LinkedList();
+    if (this.MaS == null) {
+      this.MaS = new LinkedList();
     }
     if (paramp == null)
     {
-      AppMethodBeat.o(187899);
+      AppMethodBeat.o(191920);
       return parama;
     }
     if ((parama instanceof com.tencent.thumbplayer.b.a.c)) {
-      if (paramp.Kft == null) {
+      if (paramp.LZn == null) {
         break label240;
       }
     }
     label240:
-    for (paramp = (com.tencent.thumbplayer.b.b.b)paramp.Kft.get(0);; paramp = null)
+    for (paramp = (com.tencent.thumbplayer.b.b.b)paramp.LZn.get(0);; paramp = null)
     {
-      paramp = a(paramLong, ((com.tencent.thumbplayer.b.a.c)parama).fFl(), paramp);
-      ((com.tencent.thumbplayer.b.a.c)parama).aTK(paramp);
-      AppMethodBeat.o(187899);
+      paramp = a(paramLong, ((com.tencent.thumbplayer.b.a.c)parama).fWC(), paramp);
+      ((com.tencent.thumbplayer.b.a.c)parama).aZK(paramp);
+      AppMethodBeat.o(191920);
       return parama;
       List localList = d(parama);
-      if ((!com.tencent.thumbplayer.utils.b.isEmpty(localList)) && (paramp != null))
+      if ((!com.tencent.thumbplayer.utils.a.isEmpty(localList)) && (paramp != null))
       {
-        int i = a(localList, paramp.Kfs, paramp.Kft);
+        int i = a(localList, paramp.LZm, paramp.LZn);
         if (i > 0)
         {
-          this.KhC.offer(new b(paramLong, i));
-          com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def sucess, defId:" + paramLong + ",playId:" + i);
-          AppMethodBeat.o(187899);
+          this.MaS.offer(new b(paramLong, i));
+          com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch def sucess, defId:" + paramLong + ",playId:" + i);
+          AppMethodBeat.o(191920);
           return parama;
         }
-        com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch clip def failed, cause : playId < 0");
+        com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy switch clip def failed, cause : playId < 0");
       }
-      AppMethodBeat.o(187899);
+      AppMethodBeat.o(191920);
       return parama;
     }
   }
@@ -540,23 +540,23 @@ public final class c
   public final String a(int paramInt, String paramString, com.tencent.thumbplayer.b.b.b paramb)
   {
     i = 0;
-    AppMethodBeat.i(187917);
+    AppMethodBeat.i(191938);
     if (TextUtils.isEmpty(paramString))
     {
-      com.tencent.thumbplayer.utils.f.w("TPThumbPlayer[TPPlayManagerImpl.java]", "return coz url is empty");
-      AppMethodBeat.o(187917);
+      com.tencent.thumbplayer.utils.d.w("TPThumbPlayer[TPPlayManagerImpl.java]", "return coz url is empty");
+      AppMethodBeat.o(191938);
       return paramString;
     }
-    if (!com.tencent.thumbplayer.utils.b.aRh(paramString))
+    if (!com.tencent.thumbplayer.utils.a.aXf(paramString))
     {
-      com.tencent.thumbplayer.utils.f.w("TPThumbPlayer[TPPlayManagerImpl.java]", "return coz url is locol url, not need use proxy");
-      AppMethodBeat.o(187917);
+      com.tencent.thumbplayer.utils.d.w("TPThumbPlayer[TPPlayManagerImpl.java]", "return coz url is locol url, not need use proxy");
+      AppMethodBeat.o(191938);
       return paramString;
     }
-    if (yK(false))
+    if (zx(false))
     {
-      com.tencent.thumbplayer.utils.f.w("TPThumbPlayer[TPPlayManagerImpl.java]", "return coz download proxy init failed");
-      AppMethodBeat.o(187917);
+      com.tencent.thumbplayer.utils.d.w("TPThumbPlayer[TPPlayManagerImpl.java]", "return coz download proxy init failed");
+      AppMethodBeat.o(191938);
       return paramString;
     }
     if (paramb != null) {
@@ -568,18 +568,18 @@ public final class c
       {
         paramb = h.b(paramString, paramb);
         str = paramString;
-        paramInt = this.Khr.startPlay(com.tencent.thumbplayer.utils.b.axc(paramString), paramb, this.Khu);
+        paramInt = this.MaH.startPlay(com.tencent.thumbplayer.utils.a.aCg(paramString), paramb, this.MaK);
         if (paramInt <= 0) {
           continue;
         }
         str = paramString;
-        paramString = this.Khr.getPlayUrl(paramInt);
+        paramString = this.MaH.getPlayUrl(paramInt);
         str = paramString;
-        this.KhD.put(paramString, Integer.valueOf(paramInt));
+        this.MaT.put(paramString, Integer.valueOf(paramInt));
       }
       catch (Throwable paramString)
       {
-        com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed:".concat(String.valueOf(paramString)));
+        com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed:".concat(String.valueOf(paramString)));
         paramString = str;
         continue;
         if (paramInt != 2) {
@@ -588,10 +588,10 @@ public final class c
         i = 3;
         continue;
         str = paramString;
-        com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed, cause : playId < 0");
+        com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed, cause : playId < 0");
         continue;
       }
-      AppMethodBeat.o(187917);
+      AppMethodBeat.o(191938);
       return paramString;
       str = paramString;
       paramb = new ArrayList();
@@ -608,64 +608,64 @@ public final class c
   
   public final String a(long paramLong, String paramString, p paramp)
   {
-    AppMethodBeat.i(187898);
+    AppMethodBeat.i(191919);
     if (paramp == null)
     {
-      AppMethodBeat.o(187898);
+      AppMethodBeat.o(191919);
       return paramString;
     }
     com.tencent.thumbplayer.b.b.b localb = null;
-    if (paramp.Kft != null) {
-      localb = (com.tencent.thumbplayer.b.b.b)paramp.Kft.get(0);
+    if (paramp.LZn != null) {
+      localb = (com.tencent.thumbplayer.b.b.b)paramp.LZn.get(0);
     }
     paramString = a(paramLong, paramString, localb);
-    AppMethodBeat.o(187898);
+    AppMethodBeat.o(191919);
     return paramString;
   }
   
   public final void a(p paramp)
   {
-    AppMethodBeat.i(187919);
+    AppMethodBeat.i(191940);
     if (paramp == null)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "setVideoInfo, param is null ");
-      AppMethodBeat.o(187919);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "setVideoInfo, param is null ");
+      AppMethodBeat.o(191940);
       return;
     }
-    if ((this.KhA != null) && (!yK(false)))
+    if ((this.MaQ != null) && (!zx(false)))
     {
-      this.KhA = paramp;
-      if ((paramp != null) && (paramp.Kft != null)) {
+      this.MaQ = paramp;
+      if ((paramp != null) && (paramp.LZn != null)) {
         break label117;
       }
-      com.tencent.thumbplayer.utils.f.w("TPThumbPlayer[TPPlayManagerImpl.java]", "video or downloadParamList is null, return");
+      com.tencent.thumbplayer.utils.d.w("TPThumbPlayer[TPPlayManagerImpl.java]", "video or downloadParamList is null, return");
     }
     for (;;)
     {
-      this.KhA = paramp;
-      com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "setVideoInfo, enter");
-      this.Khy = paramp.Kfs;
-      if (!com.tencent.thumbplayer.utils.b.isEmpty(this.Khx)) {
-        this.Khx.clear();
+      this.MaQ = paramp;
+      com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "setVideoInfo, enter");
+      this.MaO = paramp.LZm;
+      if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaN)) {
+        this.MaN.clear();
       }
-      this.Khx = paramp.Kft;
-      AppMethodBeat.o(187919);
+      this.MaN = paramp.LZn;
+      AppMethodBeat.o(191940);
       return;
       label117:
-      if (this.Khz <= 0)
+      if (this.MaP <= 0)
       {
-        com.tencent.thumbplayer.utils.f.w("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy not start, return");
+        com.tencent.thumbplayer.utils.d.w("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy not start, return");
       }
       else
       {
-        ArrayList localArrayList = paramp.Kft;
+        ArrayList localArrayList = paramp.LZn;
         int i = 0;
         while (i < localArrayList.size())
         {
           com.tencent.thumbplayer.b.b.b localb = (com.tencent.thumbplayer.b.b.b)localArrayList.get(i);
           TPDownloadParam localTPDownloadParam = h.b(localb.url, localb);
-          if (!this.Khr.setClipInfo(this.Khz, localb.KfL, localb.Kfx, localTPDownloadParam)) {
-            com.tencent.thumbplayer.utils.f.w("TPThumbPlayer[TPPlayManagerImpl.java]", "setClipInfo failed, playID:" + this.Khz + ", clipNo:" + localb.KfL + ", downloadFileID:" + localb.Kfx);
+          if (!this.MaH.setClipInfo(this.MaP, localb.LZF, localb.LZr, localTPDownloadParam)) {
+            com.tencent.thumbplayer.utils.d.w("TPThumbPlayer[TPPlayManagerImpl.java]", "setClipInfo failed, playID:" + this.MaP + ", clipNo:" + localb.LZF + ", downloadFileID:" + localb.LZr);
           }
           i += 1;
         }
@@ -675,25 +675,25 @@ public final class c
   
   public final void a(ITPPlayListener paramITPPlayListener)
   {
-    this.Khv = paramITPPlayListener;
+    this.MaL = paramITPPlayListener;
   }
   
-  public final String aTM(String paramString)
+  public final String aZM(String paramString)
   {
-    AppMethodBeat.i(187894);
-    if (!com.tencent.thumbplayer.utils.b.aRh(paramString))
+    AppMethodBeat.i(191915);
+    if (!com.tencent.thumbplayer.utils.a.aXf(paramString))
     {
-      AppMethodBeat.o(187894);
+      AppMethodBeat.o(191915);
       return paramString;
     }
-    if (yK(true))
+    if (zx(true))
     {
-      AppMethodBeat.o(187894);
+      AppMethodBeat.o(191915);
       return paramString;
     }
-    fFO();
+    fXd();
     this.mOriginUrl = paramString;
-    com.tencent.thumbplayer.b.b.b localb = e(this.Khx, 0);
+    com.tencent.thumbplayer.b.b.b localb = e(this.MaN, 0);
     if (localb != null)
     {
       localObject2 = h.b(paramString, localb);
@@ -714,28 +714,28 @@ public final class c
         break label306;
       }
       localObject1 = paramString;
-      str = localb.Kfx;
+      str = localb.LZr;
     }
     catch (Throwable paramString)
     {
       for (;;)
       {
         StringBuilder localStringBuilder;
-        com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy start play failed");
+        com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", paramString, "p2p proxy start play failed");
         paramString = (String)localObject1;
         continue;
         String str = "null";
       }
     }
     localObject1 = paramString;
-    com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", str);
+    com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", str);
     localObject1 = paramString;
-    this.Khz = this.Khr.startPlay(this.Khy, (TPDownloadParam)localObject2, this.Khu);
+    this.MaP = this.MaH.startPlay(this.MaO, (TPDownloadParam)localObject2, this.MaK);
     localObject1 = paramString;
-    if (this.Khz > 0)
+    if (this.MaP > 0)
     {
       localObject1 = paramString;
-      localObject2 = this.Khr.getPlayUrl(this.Khz);
+      localObject2 = this.MaH.getPlayUrl(this.MaP);
     }
     try
     {
@@ -754,10 +754,10 @@ public final class c
       }
     }
     localObject1 = paramString;
-    com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "startDownloadPlay, playId:" + this.Khz);
+    com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "startDownloadPlay, playId:" + this.MaP);
     for (;;)
     {
-      AppMethodBeat.o(187894);
+      AppMethodBeat.o(191915);
       return paramString;
       localObject2 = null;
       break;
@@ -765,315 +765,315 @@ public final class c
       str = "null";
       break label107;
       localObject1 = paramString;
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed, cause : playId < 0");
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", "p2p proxy start play failed, cause : playId < 0");
     }
   }
   
-  public final void aeL(int paramInt)
+  public final void ahl(int paramInt)
   {
-    AppMethodBeat.i(187918);
-    com.tencent.thumbplayer.utils.f.d("TPThumbPlayer[TPPlayManagerImpl.java]", "setProxyPlayState: ".concat(String.valueOf(paramInt)));
-    if (yK(false))
+    AppMethodBeat.i(191939);
+    com.tencent.thumbplayer.utils.d.d("TPThumbPlayer[TPPlayManagerImpl.java]", "setProxyPlayState: ".concat(String.valueOf(paramInt)));
+    if (zx(false))
     {
-      AppMethodBeat.o(187918);
+      AppMethodBeat.o(191939);
       return;
     }
     try
     {
-      this.Khr.setPlayState(this.Khz, paramInt);
-      AppMethodBeat.o(187918);
+      this.MaH.setPlayState(this.MaP, paramInt);
+      AppMethodBeat.o(191939);
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable);
-      AppMethodBeat.o(187918);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable);
+      AppMethodBeat.o(191939);
     }
   }
   
   public final void b(com.tencent.thumbplayer.b.f paramf)
   {
-    AppMethodBeat.i(187916);
-    if (yK(false))
+    AppMethodBeat.i(191937);
+    if (zx(false))
     {
-      AppMethodBeat.o(187916);
+      AppMethodBeat.o(191937);
       return;
     }
     if ((paramf != null) && (paramf.key == 100))
     {
-      this.bZS = paramf.KeS.value;
-      AppMethodBeat.o(187916);
+      this.ckk = paramf.LYO.value;
+      AppMethodBeat.o(191937);
       return;
     }
     if ((paramf != null) && (paramf.key == 500))
     {
-      this.KhE = paramf.KeS.value;
-      if (this.Khz > 0) {
-        this.Khr.setUserData("dl_param_play_end_time", Long.valueOf(this.KhE));
+      this.MaU = paramf.LYO.value;
+      if (this.MaP > 0) {
+        this.MaH.setUserData("dl_param_play_end_time", Long.valueOf(this.MaU));
       }
     }
-    AppMethodBeat.o(187916);
+    AppMethodBeat.o(191937);
   }
   
   public final com.tencent.thumbplayer.b.a.a c(com.tencent.thumbplayer.b.a.a parama)
   {
-    AppMethodBeat.i(187903);
-    if (yK(true))
+    AppMethodBeat.i(191924);
+    if (zx(true))
     {
-      AppMethodBeat.o(187903);
+      AppMethodBeat.o(191924);
       return parama;
     }
-    fFO();
+    fXd();
     if ((parama instanceof g))
     {
-      localObject = aTM(((g)parama).mPlayUrl);
+      localObject = aZM(((g)parama).mPlayUrl);
       ((g)parama).mPlayUrl = ((String)localObject);
-      AppMethodBeat.o(187903);
+      AppMethodBeat.o(191924);
       return parama;
     }
     Object localObject = d(parama);
-    if (!com.tencent.thumbplayer.utils.b.isEmpty((Collection)localObject)) {
-      this.Khz = a((List)localObject, this.Khy, this.Khx);
+    if (!com.tencent.thumbplayer.utils.a.isEmpty((Collection)localObject)) {
+      this.MaP = a((List)localObject, this.MaO, this.MaN);
     }
-    AppMethodBeat.o(187903);
+    AppMethodBeat.o(191924);
     return parama;
   }
   
-  public final void fFI()
+  public final void fWX()
   {
-    AppMethodBeat.i(187897);
-    if (this.KhF)
+    AppMethodBeat.i(191918);
+    if (this.MaV)
     {
-      aeO(this.Khz);
-      aTM(this.mOriginUrl);
+      aho(this.MaP);
+      aZM(this.mOriginUrl);
     }
-    this.KhF = false;
-    AppMethodBeat.o(187897);
+    this.MaV = false;
+    AppMethodBeat.o(191918);
   }
   
-  public final boolean fFJ()
+  public final boolean fWY()
   {
-    AppMethodBeat.i(187902);
-    if (yK(false))
+    AppMethodBeat.i(191923);
+    if (zx(false))
     {
-      AppMethodBeat.o(187902);
+      AppMethodBeat.o(191923);
       return false;
     }
-    if ((this.KhC != null) && (this.KhC.size() > 0))
+    if ((this.MaS != null) && (this.MaS.size() > 0))
     {
-      AppMethodBeat.o(187902);
+      AppMethodBeat.o(191923);
       return true;
     }
-    AppMethodBeat.o(187902);
+    AppMethodBeat.o(191923);
     return false;
   }
   
-  public final String fFK()
+  public final String fWZ()
   {
-    AppMethodBeat.i(187915);
-    if (yK(false))
+    AppMethodBeat.i(191936);
+    if (zx(false))
     {
-      AppMethodBeat.o(187915);
+      AppMethodBeat.o(191936);
       return null;
     }
     try
     {
-      String str = this.Khr.getPlayErrorCodeStr(this.Khz);
-      AppMethodBeat.o(187915);
+      String str = this.MaH.getPlayErrorCodeStr(this.MaP);
+      AppMethodBeat.o(191936);
       return str;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.thumbplayer.utils.f.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable);
-      AppMethodBeat.o(187915);
+      com.tencent.thumbplayer.utils.d.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable);
+      AppMethodBeat.o(191936);
     }
     return null;
   }
   
-  public final com.tencent.thumbplayer.b.b.a fFL()
+  public final void fWu()
   {
-    return this.KhB;
-  }
-  
-  public final void fFd()
-  {
-    AppMethodBeat.i(187906);
-    aeN(this.Khz);
+    AppMethodBeat.i(191927);
+    ahn(this.MaP);
     Iterator localIterator;
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.KhC))
+    if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaS))
     {
-      localIterator = this.KhC.iterator();
+      localIterator = this.MaS.iterator();
       while (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
         if (localb != null) {
-          aeN(localb.KhI);
+          ahn(localb.MaY);
         }
       }
     }
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.KhD))
+    if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaT))
     {
-      localIterator = this.KhD.values().iterator();
+      localIterator = this.MaT.values().iterator();
       while (localIterator.hasNext()) {
-        aeN(((Integer)localIterator.next()).intValue());
+        ahn(((Integer)localIterator.next()).intValue());
       }
     }
-    AppMethodBeat.o(187906);
+    AppMethodBeat.o(191927);
+  }
+  
+  public final com.tencent.thumbplayer.b.b.a fXa()
+  {
+    return this.MaR;
   }
   
   public final boolean isEnable()
   {
-    AppMethodBeat.i(187914);
-    if (!yK(false))
+    AppMethodBeat.i(191935);
+    if (!zx(false))
     {
-      AppMethodBeat.o(187914);
+      AppMethodBeat.o(191935);
       return true;
     }
-    AppMethodBeat.o(187914);
+    AppMethodBeat.o(191935);
     return false;
   }
   
-  public final void kE(int paramInt1, int paramInt2)
+  public final void kT(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(187924);
-    com.tencent.thumbplayer.utils.f.d("TPThumbPlayer[TPPlayManagerImpl.java]", "onNetworkStatusChanged oldNetStatus: " + paramInt1 + ", netStatus: " + paramInt2);
+    AppMethodBeat.i(191945);
+    com.tencent.thumbplayer.utils.d.d("TPThumbPlayer[TPPlayManagerImpl.java]", "onNetworkStatusChanged oldNetStatus: " + paramInt1 + ", netStatus: " + paramInt2);
     if (paramInt2 == 1)
     {
-      aeP(1);
-      aeP(10);
-      AppMethodBeat.o(187924);
+      ahp(1);
+      ahp(10);
+      AppMethodBeat.o(191945);
       return;
     }
     if (paramInt2 == 2)
     {
-      aeP(2);
-      aeP(9);
-      AppMethodBeat.o(187924);
+      ahp(2);
+      ahp(9);
+      AppMethodBeat.o(191945);
       return;
     }
     if (paramInt2 == 3)
     {
-      aeP(2);
-      aeP(10);
+      ahp(2);
+      ahp(10);
     }
-    AppMethodBeat.o(187924);
+    AppMethodBeat.o(191945);
   }
   
-  public final void ms(String paramString1, String paramString2)
+  public final void mQ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(187896);
-    if ((!com.tencent.thumbplayer.utils.b.aRh(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    AppMethodBeat.i(191917);
+    if ((!com.tencent.thumbplayer.utils.a.aXf(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
       paramString1 = new Exception("illegal argument.");
-      AppMethodBeat.o(187896);
+      AppMethodBeat.o(191917);
       throw paramString1;
     }
-    if (!this.KhF)
+    if (!this.MaV)
     {
-      if (!mt(paramString1, paramString2))
+      if (!mR(paramString1, paramString2))
       {
         paramString1 = new Exception("setClipInfo err.");
-        AppMethodBeat.o(187896);
+        AppMethodBeat.o(191917);
         throw paramString1;
       }
     }
     else
     {
-      aeO(this.Khz);
-      aTM(this.mOriginUrl);
-      if (!mt(paramString1, paramString2))
+      aho(this.MaP);
+      aZM(this.mOriginUrl);
+      if (!mR(paramString1, paramString2))
       {
         paramString1 = new Exception("setClipInfo err.");
-        AppMethodBeat.o(187896);
+        AppMethodBeat.o(191917);
         throw paramString1;
       }
     }
-    this.KhF = true;
-    AppMethodBeat.o(187896);
+    this.MaV = true;
+    AppMethodBeat.o(191917);
   }
   
   public final void pauseDownload()
   {
-    AppMethodBeat.i(187904);
-    aeM(this.Khz);
+    AppMethodBeat.i(191925);
+    ahm(this.MaP);
     Iterator localIterator;
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.KhC))
+    if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaS))
     {
-      localIterator = this.KhC.iterator();
+      localIterator = this.MaS.iterator();
       while (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
         if (localb != null) {
-          aeM(localb.KhI);
+          ahm(localb.MaY);
         }
       }
     }
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.KhD))
+    if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaT))
     {
-      localIterator = this.KhD.values().iterator();
+      localIterator = this.MaT.values().iterator();
       while (localIterator.hasNext()) {
-        aeM(((Integer)localIterator.next()).intValue());
+        ahm(((Integer)localIterator.next()).intValue());
       }
     }
-    AppMethodBeat.o(187904);
+    AppMethodBeat.o(191925);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(187911);
+    AppMethodBeat.i(191932);
     stopDownload();
-    TPNetworkChangeMonitor.fGv().b(this);
-    d.a.fGu().b(this);
-    this.KhB = null;
-    this.Khv = new d("TPThumbPlayer[TPPlayManagerImpl.java]");
-    this.Khu = null;
-    this.Khr = null;
-    AppMethodBeat.o(187911);
+    TPNetworkChangeMonitor.fXH().b(this);
+    b.a.fXG().b(this);
+    this.MaR = null;
+    this.MaL = new d("TPThumbPlayer[TPPlayManagerImpl.java]");
+    this.MaK = null;
+    this.MaH = null;
+    AppMethodBeat.o(191932);
   }
   
   public final void stopDownload()
   {
-    AppMethodBeat.i(187910);
-    if (this.Khz < 0)
+    AppMethodBeat.i(191931);
+    if (this.MaP < 0)
     {
-      com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stopDownload failed, coz playId:" + this.Khz + ", less than zero. maybe download proxy didn't started");
-      AppMethodBeat.o(187910);
+      com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stopDownload failed, coz playId:" + this.MaP + ", less than zero. maybe download proxy didn't started");
+      AppMethodBeat.o(191931);
       return;
     }
-    com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stopDownload, playId:" + this.Khz);
-    aeO(this.Khz);
+    com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "stopDownload, playId:" + this.MaP);
+    aho(this.MaP);
     Iterator localIterator;
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.KhC))
+    if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaS))
     {
-      localIterator = this.KhC.iterator();
+      localIterator = this.MaS.iterator();
       while (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
         if (localb != null) {
-          aeO(localb.KhI);
+          aho(localb.MaY);
         }
       }
-      this.KhC.clear();
+      this.MaS.clear();
     }
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.KhD))
+    if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaT))
     {
-      localIterator = this.KhD.values().iterator();
+      localIterator = this.MaT.values().iterator();
       while (localIterator.hasNext()) {
-        aeO(((Integer)localIterator.next()).intValue());
+        aho(((Integer)localIterator.next()).intValue());
       }
-      this.KhD.clear();
+      this.MaT.clear();
     }
-    this.Khz = -1;
-    com.tencent.thumbplayer.utils.f.i("TPThumbPlayer[TPPlayManagerImpl.java]", "reset");
-    this.Khy = "";
+    this.MaP = -1;
+    com.tencent.thumbplayer.utils.d.i("TPThumbPlayer[TPPlayManagerImpl.java]", "reset");
+    this.MaO = "";
     this.mOriginUrl = "";
-    this.KhA = null;
-    this.bZS = 0L;
-    this.KhE = 0L;
-    if (!com.tencent.thumbplayer.utils.b.isEmpty(this.Khx)) {
-      this.Khx.clear();
+    this.MaQ = null;
+    this.ckk = 0L;
+    this.MaU = 0L;
+    if (!com.tencent.thumbplayer.utils.a.isEmpty(this.MaN)) {
+      this.MaN.clear();
     }
-    AppMethodBeat.o(187910);
+    AppMethodBeat.o(191931);
   }
   
   final class a
@@ -1083,186 +1083,186 @@ public final class c
     
     public final long getAdvRemainTime()
     {
-      AppMethodBeat.i(187883);
+      AppMethodBeat.i(191904);
       long l = c.a(c.this).getAdvRemainTime();
-      AppMethodBeat.o(187883);
+      AppMethodBeat.o(191904);
       return l;
     }
     
     public final String getContentType(long paramLong, String paramString)
     {
-      AppMethodBeat.i(187891);
+      AppMethodBeat.i(191912);
       paramString = c.a(c.this).getContentType(paramLong, paramString);
-      AppMethodBeat.o(187891);
+      AppMethodBeat.o(191912);
       return paramString;
     }
     
     public final int getCurrentPlayClipNo()
     {
-      AppMethodBeat.i(187882);
+      AppMethodBeat.i(191903);
       int i = c.a(c.this).getCurrentPlayClipNo();
-      AppMethodBeat.o(187882);
+      AppMethodBeat.o(191903);
       return i;
     }
     
     public final long getCurrentPosition()
     {
-      AppMethodBeat.i(187881);
+      AppMethodBeat.i(191902);
       long l = c.a(c.this).getCurrentPosition();
-      AppMethodBeat.o(187881);
+      AppMethodBeat.o(191902);
       return l;
     }
     
     public final String getDataFilePath(long paramLong, String paramString)
     {
-      AppMethodBeat.i(187890);
+      AppMethodBeat.i(191911);
       paramString = c.a(c.this).getDataFilePath(paramLong, paramString);
-      AppMethodBeat.o(187890);
+      AppMethodBeat.o(191911);
       return paramString;
     }
     
     public final long getDataTotalSize(long paramLong, String paramString)
     {
-      AppMethodBeat.i(187889);
+      AppMethodBeat.i(191910);
       paramLong = c.a(c.this).getDataTotalSize(paramLong, paramString);
-      AppMethodBeat.o(187889);
+      AppMethodBeat.o(191910);
       return paramLong;
     }
     
     public final Object getPlayInfo(long paramLong)
     {
-      AppMethodBeat.i(187884);
+      AppMethodBeat.i(191905);
       Object localObject = c.a(c.this).getPlayInfo(paramLong);
-      AppMethodBeat.o(187884);
+      AppMethodBeat.o(191905);
       return localObject;
     }
     
     public final Object getPlayInfo(String paramString)
     {
-      AppMethodBeat.i(187885);
+      AppMethodBeat.i(191906);
       paramString = c.a(c.this).getPlayInfo(paramString);
-      AppMethodBeat.o(187885);
+      AppMethodBeat.o(191906);
       return paramString;
     }
     
     public final long getPlayerBufferLength()
     {
-      AppMethodBeat.i(187880);
+      AppMethodBeat.i(191901);
       long l = c.a(c.this).getPlayerBufferLength();
-      AppMethodBeat.o(187880);
+      AppMethodBeat.o(191901);
       return l;
     }
     
     public final void onDownloadCdnUrlExpired(Map<String, String> paramMap)
     {
-      AppMethodBeat.i(187878);
+      AppMethodBeat.i(191899);
       c.a(c.this).onDownloadCdnUrlExpired(paramMap);
-      AppMethodBeat.o(187878);
+      AppMethodBeat.o(191899);
     }
     
     public final void onDownloadCdnUrlInfoUpdate(String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      AppMethodBeat.i(187875);
+      AppMethodBeat.i(191896);
       c.a(c.this).onDownloadCdnUrlInfoUpdate(paramString1, paramString2, paramString3, paramString4);
-      AppMethodBeat.o(187875);
+      AppMethodBeat.o(191896);
     }
     
     public final void onDownloadCdnUrlUpdate(String paramString)
     {
-      AppMethodBeat.i(187874);
+      AppMethodBeat.i(191895);
       c.a(c.this).onDownloadCdnUrlUpdate(paramString);
-      AppMethodBeat.o(187874);
+      AppMethodBeat.o(191895);
     }
     
     public final void onDownloadError(int paramInt1, int paramInt2, String paramString)
     {
-      AppMethodBeat.i(187873);
+      AppMethodBeat.i(191894);
       c.a(c.this).onDownloadError(paramInt1, paramInt2, paramString);
-      AppMethodBeat.o(187873);
+      AppMethodBeat.o(191894);
     }
     
     public final void onDownloadFinish()
     {
-      AppMethodBeat.i(187872);
+      AppMethodBeat.i(191893);
       c.a(c.this).onDownloadFinish();
-      AppMethodBeat.o(187872);
+      AppMethodBeat.o(191893);
     }
     
     public final void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(187871);
+      AppMethodBeat.i(191892);
       c.a(c.this).onDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2);
-      AppMethodBeat.o(187871);
+      AppMethodBeat.o(191892);
     }
     
     public final void onDownloadProtocolUpdate(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(187877);
+      AppMethodBeat.i(191898);
       c.a(c.this).onDownloadProtocolUpdate(paramString1, paramString2);
-      AppMethodBeat.o(187877);
+      AppMethodBeat.o(191898);
     }
     
     public final void onDownloadStatusUpdate(int paramInt)
     {
-      AppMethodBeat.i(187876);
+      AppMethodBeat.i(191897);
       c.a(c.this).onDownloadStatusUpdate(paramInt);
-      AppMethodBeat.o(187876);
+      AppMethodBeat.o(191897);
     }
     
     public final Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
     {
-      AppMethodBeat.i(187879);
+      AppMethodBeat.i(191900);
       paramObject1 = c.a(c.this).onPlayCallback(paramInt, paramObject1, paramObject2, paramObject3, paramObject4);
-      AppMethodBeat.o(187879);
+      AppMethodBeat.o(191900);
       return paramObject1;
     }
     
     public final int onReadData(long paramLong1, String paramString, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(187887);
+      AppMethodBeat.i(191908);
       int i = c.a(c.this).onReadData(paramLong1, paramString, paramLong2, paramLong3);
-      AppMethodBeat.o(187887);
+      AppMethodBeat.o(191908);
       return i;
     }
     
     public final int onStartReadData(long paramLong1, String paramString, long paramLong2, long paramLong3)
     {
-      AppMethodBeat.i(187886);
+      AppMethodBeat.i(191907);
       int i = c.a(c.this).onStartReadData(paramLong1, paramString, paramLong2, paramLong3);
-      AppMethodBeat.o(187886);
+      AppMethodBeat.o(191907);
       return i;
     }
     
     public final int onStopReadData(long paramLong, String paramString)
     {
-      AppMethodBeat.i(187888);
+      AppMethodBeat.i(191909);
       int i = c.a(c.this).onStopReadData(paramLong, paramString);
-      AppMethodBeat.o(187888);
+      AppMethodBeat.o(191909);
       return i;
     }
   }
   
   static final class b
   {
-    long KhH;
-    int KhI;
+    long MaX;
+    int MaY;
     
     b(long paramLong, int paramInt)
     {
-      this.KhH = paramLong;
-      this.KhI = paramInt;
+      this.MaX = paramLong;
+      this.MaY = paramInt;
     }
   }
   
   static final class c
   {
-    int KhJ;
-    int KhK;
+    int MaZ;
+    int Mba;
     
     c(int paramInt1, int paramInt2)
     {
-      this.KhJ = paramInt1;
-      this.KhK = paramInt2;
+      this.MaZ = paramInt1;
+      this.Mba = paramInt2;
     }
   }
 }

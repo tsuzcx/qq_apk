@@ -11,15 +11,15 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.launching.a.b;
 import com.tencent.mm.plugin.appbrand.launching.a.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.protocal.protobuf.dzp;
-import com.tencent.mm.protocal.protobuf.ebf;
-import com.tencent.mm.protocal.protobuf.ecj;
+import com.tencent.mm.protocal.protobuf.eft;
+import com.tencent.mm.protocal.protobuf.ehj;
+import com.tencent.mm.protocal.protobuf.eip;
 
 public final class AppBrandTaskUsageRecorder$UpdateTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<UpdateTask> CREATOR;
-  AppBrandTaskUsageRecorder.LaunchCheckParams liw;
+  AppBrandTaskUsageRecorder.LaunchCheckParams lFz;
   
   static
   {
@@ -37,29 +37,29 @@ public final class AppBrandTaskUsageRecorder$UpdateTask
   
   public AppBrandTaskUsageRecorder$UpdateTask(AppBrandTaskUsageRecorder.LaunchCheckParams paramLaunchCheckParams)
   {
-    this.liw = paramLaunchCheckParams;
+    this.lFz = paramLaunchCheckParams;
   }
   
-  public final void aLq()
+  public final void aOA()
   {
     AppMethodBeat.i(47113);
-    if ((!g.agP().ggT) || (a.afS()))
+    if ((!g.ajA().gAD) || (a.aiE()))
     {
       AppMethodBeat.o(47113);
       return;
     }
-    this.liw.getClass();
-    Object localObject = this.liw.liu.cce;
-    ecj localecj = d.b((AppBrandLaunchReferrer)localObject);
+    this.lFz.getClass();
+    Object localObject = this.lFz.lFx.cmv;
+    eip localeip = d.b((AppBrandLaunchReferrer)localObject);
     localObject = d.c((AppBrandLaunchReferrer)localObject);
-    dzp localdzp = new dzp();
-    localdzp.FbR = this.liw.liu.joY;
-    localdzp.Eae = this.liw.pkgVersion;
-    localdzp.Scene = this.liw.liv.scene;
-    localdzp.Fhn = this.liw.liu.jjf;
-    localdzp.Fhm = 1;
-    localdzp.Fhl = this.liw.liv.dxE;
-    new b(this.liw.liu.appId, false, localdzp, localecj, (ebf)localObject, this.liw.cbY, this.liw.khA, this.liw.jDH, "", this.liw.liu.jjr).bnW();
+    eft localeft = new eft();
+    localeft.GLq = this.lFz.lFx.dPf;
+    localeft.FFN = this.lFz.pkgVersion;
+    localeft.Scene = this.lFz.lFy.scene;
+    localeft.GQP = this.lFz.lFx.jCN;
+    localeft.GQO = 1;
+    localeft.GQN = this.lFz.lFy.dJQ;
+    new b(this.lFz.lFx.appId, false, localeft, localeip, (ehj)localObject, this.lFz.cmp, this.lFz.kCr, this.lFz.jXD, "", this.lFz.lFx.jCZ).brP();
     AppMethodBeat.o(47113);
   }
   
@@ -71,14 +71,14 @@ public final class AppBrandTaskUsageRecorder$UpdateTask
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(47115);
-    this.liw = ((AppBrandTaskUsageRecorder.LaunchCheckParams)paramParcel.readParcelable(AppBrandTaskUsageRecorder.LaunchCheckParams.class.getClassLoader()));
+    this.lFz = ((AppBrandTaskUsageRecorder.LaunchCheckParams)paramParcel.readParcelable(AppBrandTaskUsageRecorder.LaunchCheckParams.class.getClassLoader()));
     AppMethodBeat.o(47115);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(47116);
-    paramParcel.writeParcelable(this.liw, paramInt);
+    paramParcel.writeParcelable(this.lFz, paramInt);
     AppMethodBeat.o(47116);
   }
 }

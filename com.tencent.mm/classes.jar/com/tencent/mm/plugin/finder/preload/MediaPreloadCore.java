@@ -3,26 +3,25 @@ package com.tencent.mm.plugin.finder.preload;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.mars.cdn.CdnLogic.C2CDownloadRequest;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.event.base.c;
 import com.tencent.mm.plugin.finder.event.base.d;
 import com.tencent.mm.plugin.finder.event.base.h;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.w;
-import com.tencent.mm.plugin.finder.preload.worker.b.h;
-import com.tencent.mm.plugin.finder.preload.worker.b.k;
+import com.tencent.mm.plugin.finder.model.al;
+import com.tencent.mm.plugin.finder.model.y;
+import com.tencent.mm.plugin.finder.preload.worker.b.i;
+import com.tencent.mm.plugin.finder.preload.worker.b.l;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
 import d.a.j;
-import d.g.b.k;
+import d.f;
+import d.g;
+import d.g.b.p;
+import d.g.b.q;
 import d.l;
 import d.o;
 import java.util.ArrayList;
@@ -30,177 +29,279 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "imagePreloadWorker", "Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker;", "videoPreloadWorker", "Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "onMediaFocus", "", "mediaId", "", "isFocused", "", "onOnlineDownloading", "isFinish", "onStart", "onStop", "registerCallback", "callback", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "setup", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "unregisterCallback", "Companion", "MoovReadyInfo", "Observer", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "imagePreloadWorker", "Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker;", "isWaitingPreload", "", "lastCenterFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "preloadModel", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "getPreloadModel", "()Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "preloadModel$delegate", "Lkotlin/Lazy;", "videoPreloadWorker", "Lcom/tencent/mm/plugin/finder/preload/worker/VideoPreloadWorker;", "isEnableWaitPreload", "onMediaFocusDownload", "", "mediaId", "", "isFocused", "onMediaFocusForTP", "onOnlineCachePlaying", "cacheTime", "", "timeDuration", "onPreloadStart", "source", "onPreloadStop", "onStart", "onStop", "registerCallback", "callback", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "setup", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "startPreloadForTP", "stopPreloadForTP", "unregisterCallback", "Companion", "MoovReadyInfo", "Observer", "plugin-finder_release"})
 public final class MediaPreloadCore
   extends UIComponent
 {
-  private static boolean rvn;
-  public static final a rvo;
-  public final com.tencent.mm.plugin.finder.preload.worker.b rvl;
-  private final com.tencent.mm.plugin.finder.preload.worker.a rvm;
+  private static boolean skN;
+  public static final a skO;
+  private final f skI;
+  public final com.tencent.mm.plugin.finder.preload.worker.b skJ;
+  private final com.tencent.mm.plugin.finder.preload.worker.a skK;
+  public boolean skL;
+  private BaseFinderFeed skM;
   
   static
   {
-    AppMethodBeat.i(202611);
-    rvo = new a((byte)0);
-    e locale = g.agR();
-    k.g(locale, "MMKernel.storage()");
-    rvn = locale.agA().getBoolean(ah.a.GVx, false);
-    AppMethodBeat.o(202611);
+    AppMethodBeat.i(203032);
+    skO = new a((byte)0);
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+    skN = ((Boolean)com.tencent.mm.plugin.finder.storage.b.cGQ().value()).booleanValue();
+    AppMethodBeat.o(203032);
   }
   
   public MediaPreloadCore(MMActivity paramMMActivity)
   {
     super(paramMMActivity);
-    AppMethodBeat.i(202610);
-    paramMMActivity = com.tencent.mm.plugin.finder.storage.b.rCU;
-    if (com.tencent.mm.plugin.finder.storage.b.czb()) {}
-    for (paramMMActivity = new com.tencent.mm.plugin.finder.preload.worker.b(((PluginFinder)g.ad(PluginFinder.class)).getMediaPreloadModel());; paramMMActivity = null)
+    AppMethodBeat.i(203031);
+    this.skI = g.O((d.g.a.a)d.skU);
+    paramMMActivity = com.tencent.mm.plugin.finder.storage.b.sxa;
+    if (com.tencent.mm.plugin.finder.storage.b.cFW()) {}
+    for (paramMMActivity = new com.tencent.mm.plugin.finder.preload.worker.b(getPreloadModel());; paramMMActivity = null)
     {
-      this.rvl = paramMMActivity;
-      paramMMActivity = com.tencent.mm.plugin.finder.storage.b.rCU;
+      this.skJ = paramMMActivity;
+      paramMMActivity = com.tencent.mm.plugin.finder.storage.b.sxa;
       paramMMActivity = localObject;
-      if (com.tencent.mm.plugin.finder.storage.b.czc()) {
+      if (com.tencent.mm.plugin.finder.storage.b.cFX()) {
         paramMMActivity = new com.tencent.mm.plugin.finder.preload.worker.a();
       }
-      this.rvm = paramMMActivity;
-      AppMethodBeat.o(202610);
+      this.skK = paramMMActivity;
+      AppMethodBeat.o(203031);
       return;
     }
   }
   
-  public static void adH(String paramString)
+  private final void ahB(String paramString)
   {
-    AppMethodBeat.i(202608);
-    k.h(paramString, "mediaId");
-    AppMethodBeat.o(202608);
+    AppMethodBeat.i(203022);
+    ad.i("Finder.MediaPreloadCore", "[onPreloadStop] source=".concat(String.valueOf(paramString)));
+    paramString = this.skJ;
+    if (paramString != null)
+    {
+      if (paramString.deX.compareAndSet(false, true)) {
+        paramString.i("resetRunningTask", (d.g.a.a)new b.l(paramString));
+      }
+      AppMethodBeat.o(203022);
+      return;
+    }
+    AppMethodBeat.o(203022);
   }
   
-  public final void a(DataBuffer<BaseFinderFeed> paramDataBuffer, c paramc)
+  public final void a(DataBuffer<al> paramDataBuffer, c paramc)
   {
-    AppMethodBeat.i(202604);
-    k.h(paramDataBuffer, "dataList");
+    AppMethodBeat.i(203020);
+    p.h(paramDataBuffer, "dataList");
     Object localObject = new StringBuilder("[CREATE] isPreloadMediaEnable=");
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-    localObject = ((StringBuilder)localObject).append(com.tencent.mm.plugin.finder.storage.b.czb()).append(" isPreloadImageEnable=");
-    localb = com.tencent.mm.plugin.finder.storage.b.rCU;
-    ac.i("Finder.MediaPreloadCore", com.tencent.mm.plugin.finder.storage.b.czc() + ' ' + "isShowPreloadView=" + rvn);
-    localObject = com.tencent.mm.plugin.finder.storage.b.rCU;
-    if (!com.tencent.mm.plugin.finder.storage.b.czb())
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+    localObject = ((StringBuilder)localObject).append(com.tencent.mm.plugin.finder.storage.b.cFW()).append(" isPreloadImageEnable=");
+    localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+    ad.i("Finder.MediaPreloadCore", com.tencent.mm.plugin.finder.storage.b.cFX() + ' ' + "isShowPreloadView=" + skN);
+    localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+    if (!com.tencent.mm.plugin.finder.storage.b.cFW())
     {
-      localObject = com.tencent.mm.plugin.finder.storage.b.rCU;
-      if (!com.tencent.mm.plugin.finder.storage.b.czc()) {}
+      localObject = com.tencent.mm.plugin.finder.storage.b.sxa;
+      if (!com.tencent.mm.plugin.finder.storage.b.cFX()) {}
     }
     else if (paramc != null)
     {
       paramc.a((d)new c(paramDataBuffer));
-      AppMethodBeat.o(202604);
+      AppMethodBeat.o(203020);
       return;
     }
-    AppMethodBeat.o(202604);
+    AppMethodBeat.o(203020);
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(202609);
-    k.h(paramb, "callback");
-    Object localObject = this.rvl;
+    AppMethodBeat.i(203030);
+    p.h(paramb, "callback");
+    Object localObject = this.skJ;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.plugin.finder.preload.worker.b)localObject).rwe;
+      localObject = ((com.tencent.mm.plugin.finder.preload.worker.b)localObject).slF;
       if (localObject != null)
       {
         ((ConcurrentLinkedQueue)localObject).add(paramb);
-        AppMethodBeat.o(202609);
+        AppMethodBeat.o(203030);
         return;
       }
     }
-    AppMethodBeat.o(202609);
+    AppMethodBeat.o(203030);
   }
   
-  public final void aY(String paramString, boolean paramBoolean)
+  public final void ahA(String paramString)
   {
-    AppMethodBeat.i(202607);
-    k.h(paramString, "mediaId");
-    if (this.rvm != null) {
-      com.tencent.mm.plugin.finder.preload.worker.a.adL(paramString);
-    }
-    com.tencent.mm.plugin.finder.preload.worker.b localb = this.rvl;
-    if (localb != null)
+    AppMethodBeat.i(203021);
+    ad.i("Finder.MediaPreloadCore", "[onPreloadStart] source=".concat(String.valueOf(paramString)));
+    paramString = this.skJ;
+    if (paramString != null)
     {
-      localb.aY(paramString, paramBoolean);
-      AppMethodBeat.o(202607);
+      if (paramString.deX.compareAndSet(true, false)) {
+        paramString.cDd();
+      }
+      AppMethodBeat.o(203021);
       return;
     }
-    AppMethodBeat.o(202607);
+    AppMethodBeat.o(203021);
+  }
+  
+  public final void ahC(String paramString)
+  {
+    AppMethodBeat.i(203027);
+    p.h(paramString, "mediaId");
+    ad.i("Finder.MediaPreloadCore", "[stopPreloadForTP] mediaId=".concat(String.valueOf(paramString)));
+    if (!this.skL)
+    {
+      ahB("onMediaFocusForTP#".concat(String.valueOf(paramString)));
+      this.skL = true;
+    }
+    AppMethodBeat.o(203027);
+  }
+  
+  public final void ahD(String paramString)
+  {
+    AppMethodBeat.i(203028);
+    p.h(paramString, "mediaId");
+    ad.i("Finder.MediaPreloadCore", "[startPreloadForTP] mediaId=".concat(String.valueOf(paramString)));
+    if (this.skL)
+    {
+      ahA("startPreloadForTP#".concat(String.valueOf(paramString)));
+      this.skL = false;
+    }
+    AppMethodBeat.o(203028);
+  }
+  
+  public final void ba(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(203025);
+    p.h(paramString, "mediaId");
+    ad.i("Finder.MediaPreloadCore", "[onMediaFocusDownload] mediaId=" + paramString + " isFocused=" + paramBoolean);
+    if (cDa())
+    {
+      if (!paramBoolean) {
+        break label113;
+      }
+      ahB("onMediaFocusDownload#".concat(String.valueOf(paramString)));
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.skL = bool;
+      if (this.skK != null) {
+        com.tencent.mm.plugin.finder.preload.worker.a.ahH(paramString);
+      }
+      com.tencent.mm.plugin.finder.preload.worker.b localb = this.skJ;
+      if (localb == null) {
+        break;
+      }
+      localb.bc(paramString, paramBoolean);
+      AppMethodBeat.o(203025);
+      return;
+      label113:
+      ahA("onMediaFocusDownload#".concat(String.valueOf(paramString)));
+    }
+    AppMethodBeat.o(203025);
+  }
+  
+  public final void bb(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(203026);
+    p.h(paramString, "mediaId");
+    ad.i("Finder.MediaPreloadCore", "[onMediaFocusForTP] mediaId=" + paramString + " isFocused=" + paramBoolean);
+    if (this.skK != null) {
+      com.tencent.mm.plugin.finder.preload.worker.a.ahH(paramString);
+    }
+    com.tencent.mm.plugin.finder.preload.worker.b localb = this.skJ;
+    if (localb != null)
+    {
+      localb.bc(paramString, paramBoolean);
+      AppMethodBeat.o(203026);
+      return;
+    }
+    AppMethodBeat.o(203026);
+  }
+  
+  public final boolean cDa()
+  {
+    AppMethodBeat.i(203029);
+    if ((getPreloadModel().sln >= 0) && (getPreloadModel().slm >= 0))
+    {
+      AppMethodBeat.o(203029);
+      return true;
+    }
+    AppMethodBeat.o(203029);
+    return false;
+  }
+  
+  public final com.tencent.mm.plugin.finder.preload.model.a getPreloadModel()
+  {
+    AppMethodBeat.i(203019);
+    com.tencent.mm.plugin.finder.preload.model.a locala = (com.tencent.mm.plugin.finder.preload.model.a)this.skI.getValue();
+    AppMethodBeat.o(203019);
+    return locala;
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(202605);
+    AppMethodBeat.i(203023);
     super.onStart();
-    com.tencent.mm.plugin.finder.preload.worker.b localb = this.rvl;
-    if (localb != null)
-    {
-      localb.isStop = false;
-      localb.cwL();
-      AppMethodBeat.o(202605);
-      return;
+    if (!this.skL) {
+      ahA("Activity#onStart");
     }
-    AppMethodBeat.o(202605);
+    AppMethodBeat.o(203023);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(202606);
+    AppMethodBeat.i(203024);
     super.onStop();
-    com.tencent.mm.plugin.finder.preload.worker.b localb = this.rvl;
-    if (localb != null)
-    {
-      localb.x((d.g.a.a)new b.k(localb));
-      localb.isStop = true;
-      AppMethodBeat.o(202606);
-      return;
+    if (!this.skL) {
+      ahB("Activity#onStrop");
     }
-    AppMethodBeat.o(202606);
+    AppMethodBeat.o(203024);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$Companion;", "", "()V", "TAG", "", "isShowPreloadView", "", "()Z", "setShowPreloadView", "(Z)V", "checkMoovReady", "Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$MoovReadyInfo;", "cache", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$Companion;", "", "()V", "SOURCE_DATA_INSERTED", "", "SOURCE_IDLE", "SOURCE_LOAD_MORE", "SOURCE_REFRESH", "SOURCE_TAB_CHANGE", "TAG", "", "isShowPreloadView", "", "()Z", "setShowPreloadView", "(Z)V", "checkMoovReady", "Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$MoovReadyInfo;", "cache", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "plugin-finder_release"})
   public static final class a
   {
-    public static MediaPreloadCore.b a(w paramw)
+    public static MediaPreloadCore.b a(y paramy)
     {
-      AppMethodBeat.i(202594);
-      k.h(paramw, "cache");
-      String str = paramw.field_filePath;
+      AppMethodBeat.i(203009);
+      p.h(paramy, "cache");
+      String str3 = paramy.field_filePath;
       CdnLogic.C2CDownloadRequest localC2CDownloadRequest = new CdnLogic.C2CDownloadRequest();
       long[] arrayOfLong = new long[2];
-      localC2CDownloadRequest.fileKey = paramw.field_mediaId;
+      localC2CDownloadRequest.fileKey = paramy.field_mediaId;
       localC2CDownloadRequest.fileType = 8;
-      localC2CDownloadRequest.url = paramw.getUrl();
-      localC2CDownloadRequest.setSavePath(str);
+      StringBuilder localStringBuilder = new StringBuilder();
+      String str2 = paramy.field_url;
+      String str1 = str2;
+      if (str2 == null) {
+        str1 = "";
+      }
+      localC2CDownloadRequest.url = (str1 + paramy.field_urlToken);
+      localC2CDownloadRequest.snsCipherKey = paramy.field_decodeKey;
+      localC2CDownloadRequest.setSavePath(str3);
       localC2CDownloadRequest.videoflagPolicy = 0;
-      localC2CDownloadRequest.requestVideoFlag = paramw.field_fileFormat;
-      localC2CDownloadRequest.requestVideoFormat = paramw.field_reqFormat;
-      boolean bool = CdnLogic.queryVideoMoovInfo(localC2CDownloadRequest, arrayOfLong);
-      ac.i("Finder.MediaPreloadCore", "[checkMoovReady] moovReady=" + bool + " cache=" + paramw);
-      paramw = new MediaPreloadCore.b(bool, arrayOfLong[0], arrayOfLong[1]);
-      AppMethodBeat.o(202594);
-      return paramw;
+      localC2CDownloadRequest.requestVideoFlag = paramy.field_fileFormat;
+      localC2CDownloadRequest.requestVideoFormat = paramy.field_reqFormat;
+      paramy = new MediaPreloadCore.b(CdnLogic.queryVideoMoovInfo(localC2CDownloadRequest, arrayOfLong), arrayOfLong[0], arrayOfLong[1]);
+      AppMethodBeat.o(203009);
+      return paramy;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$MoovReadyInfo;", "", "isMoovReady", "", "offset", "", "length", "(ZJJ)V", "()Z", "getLength", "()J", "getOffset", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$MoovReadyInfo;", "", "isMoovReady", "", "offset", "", "length", "(ZJJ)V", "()Z", "getLength", "()J", "getOffset", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-finder_release"})
   public static final class b
   {
-    public final long length;
-    public final long offset;
-    public final boolean rvp;
+    private final long length;
+    private final long offset;
+    public final boolean skP;
     
     public b(boolean paramBoolean, long paramLong1, long paramLong2)
     {
-      this.rvp = paramBoolean;
+      this.skP = paramBoolean;
       this.offset = paramLong1;
       this.length = paramLong2;
     }
@@ -212,7 +313,7 @@ public final class MediaPreloadCore
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((this.rvp != paramObject.rvp) || (this.offset != paramObject.offset) || (this.length != paramObject.length)) {}
+          if ((this.skP != paramObject.skP) || (this.offset != paramObject.offset) || (this.length != paramObject.length)) {}
         }
       }
       else {
@@ -228,93 +329,128 @@ public final class MediaPreloadCore
     
     public final String toString()
     {
-      AppMethodBeat.i(202595);
-      String str = "MoovReadyInfo(isMoovReady=" + this.rvp + ", offset=" + this.offset + ", length=" + this.length + ")";
-      AppMethodBeat.o(202595);
+      AppMethodBeat.i(203010);
+      String str = "MoovReadyInfo(isMoovReady=" + this.skP + ", offset=" + this.offset + ", length=" + this.length + ")";
+      AppMethodBeat.o(203010);
       return str;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$Observer;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "(Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;)V", "asyncHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "dispatchPreload", "", "centerFeed", "eventType", "", "isAsync", "", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "ev", "onRelease", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore$Observer;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "dataList", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "(Lcom/tencent/mm/plugin/finder/preload/MediaPreloadCore;Lcom/tencent/mm/plugin/finder/feed/model/internal/DataBuffer;)V", "asyncHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "dispatchPreload", "", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "eventType", "", "isAsync", "", "isCareEvent", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "onEventHappen", "ev", "onRelease", "plugin-finder_release"})
   public final class c
     extends d
   {
-    private final DataBuffer<BaseFinderFeed> dataList;
-    private final ao hFu;
+    private final DataBuffer<al> dataList;
+    private final ap hXZ;
     
     public c()
     {
-      AppMethodBeat.i(202602);
+      AppMethodBeat.i(203015);
       this.dataList = localObject;
-      this.hFu = new ao("FinderMediaPreloadCore");
-      AppMethodBeat.o(202602);
+      this.hXZ = new ap("FinderMediaPreloadCore");
+      AppMethodBeat.o(203015);
     }
     
     public final void a(com.tencent.mm.plugin.finder.event.base.b paramb)
     {
-      AppMethodBeat.i(202598);
-      k.h(paramb, "ev");
+      AppMethodBeat.i(203013);
+      p.h(paramb, "ev");
       if ((paramb instanceof h))
       {
-        final BaseFinderFeed localBaseFinderFeed1 = ((h)paramb).rde;
+        final BaseFinderFeed localBaseFinderFeed = ((h)paramb).rRn;
         final int j = ((h)paramb).type;
-        if (localBaseFinderFeed1 != null)
+        if (localBaseFinderFeed != null)
         {
-          int k = this.dataList.getTotalSize();
-          paramb = new ArrayList(k);
-          int i = 0;
-          while (i < k)
+          long l = localBaseFinderFeed.lP();
+          paramb = MediaPreloadCore.c(MediaPreloadCore.this);
+          int i;
+          label78:
+          ArrayList localArrayList;
+          label104:
+          al localal;
+          if ((paramb == null) || (l != paramb.lP()))
           {
-            BaseFinderFeed localBaseFinderFeed2 = (BaseFinderFeed)this.dataList.get(i);
-            paramb.add(new o(localBaseFinderFeed2, j.r((Collection)localBaseFinderFeed2.feedObject.getMediaList())));
-            i += 1;
+            i = 1;
+            if (i == 0) {
+              break label179;
+            }
+            paramb = localBaseFinderFeed;
+            if (paramb == null) {
+              break label244;
+            }
+            int k = this.dataList.getTotalSize();
+            localArrayList = new ArrayList(k);
+            i = 0;
+            if (i >= k) {
+              break label199;
+            }
+            localal = (al)this.dataList.get(i);
+            if (!(localal instanceof BaseFinderFeed)) {
+              break label184;
+            }
           }
-          paramb = (List)paramb;
-          this.hFu.post((Runnable)new a(paramb, this, localBaseFinderFeed1, j));
+          label179:
+          label184:
+          for (List localList = j.s((Collection)((BaseFinderFeed)localal).feedObject.getMediaList());; localList = (List)new ArrayList())
+          {
+            localArrayList.add(new o(localal, localList));
+            i += 1;
+            break label104;
+            i = 0;
+            break;
+            paramb = null;
+            break label78;
+          }
+          label199:
+          localList = (List)localArrayList;
+          this.hXZ.post((Runnable)new a(localList, this, localBaseFinderFeed, j));
+          MediaPreloadCore.a(MediaPreloadCore.this, paramb);
+          AppMethodBeat.o(203013);
+          return;
         }
       }
-      AppMethodBeat.o(202598);
+      label244:
+      AppMethodBeat.o(203013);
     }
     
     public final boolean a(c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
     {
-      AppMethodBeat.i(202597);
-      k.h(paramc, "dispatcher");
-      k.h(paramb, "event");
-      if ((paramb instanceof h))
+      AppMethodBeat.i(203012);
+      p.h(paramc, "dispatcher");
+      p.h(paramb, "event");
+      if (((paramb instanceof h)) && ((((h)paramb).type == 6) || (((h)paramb).type == 7) || (((h)paramb).type == 0)))
       {
-        AppMethodBeat.o(202597);
+        AppMethodBeat.o(203012);
         return true;
       }
-      boolean bool = super.a(paramc, paramb);
-      AppMethodBeat.o(202597);
-      return bool;
+      AppMethodBeat.o(203012);
+      return false;
     }
     
-    public final boolean csW()
+    public final boolean cyW()
     {
       return false;
     }
     
     public final void onRelease()
     {
-      AppMethodBeat.i(202599);
+      AppMethodBeat.i(203014);
       super.onRelease();
       MediaPreloadCore.a(MediaPreloadCore.this);
       com.tencent.mm.plugin.finder.preload.worker.b localb = MediaPreloadCore.b(MediaPreloadCore.this);
       if (localb != null)
       {
-        localb.gRc = true;
+        localb.hju = true;
         LinkedList localLinkedList = new LinkedList();
-        localb.x((d.g.a.a)new b.h(localb, localLinkedList));
-        ac.i(localb.TAG, "[onClearAll] ".concat(String.valueOf(localLinkedList)));
-        AppMethodBeat.o(202599);
+        localb.i("onClearAll", (d.g.a.a)new b.i(localb, localLinkedList));
+        ad.i(localb.TAG, "[onClearAll] ".concat(String.valueOf(localLinkedList)));
+        AppMethodBeat.o(203014);
         return;
       }
-      AppMethodBeat.o(202599);
+      AppMethodBeat.o(203014);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/preload/MediaPreloadCore$Observer$dispatchPreload$1$1"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run", "com/tencent/mm/plugin/finder/preload/MediaPreloadCore$Observer$dispatchPreload$2$1"})
     static final class a
       implements Runnable
     {
@@ -322,22 +458,53 @@ public final class MediaPreloadCore
       
       public final void run()
       {
-        AppMethodBeat.i(202596);
-        com.tencent.mm.plugin.finder.preload.worker.b localb = MediaPreloadCore.b(jdField_this.rvq);
+        AppMethodBeat.i(203011);
+        com.tencent.mm.plugin.finder.preload.worker.b localb = MediaPreloadCore.b(jdField_this.skQ);
         if (localb != null) {
-          localb.a(localBaseFinderFeed1, this.gmd, j);
+          localb.a(localBaseFinderFeed, this.gFM, j);
         }
-        if (MediaPreloadCore.a(jdField_this.rvq) != null) {
-          com.tencent.mm.plugin.finder.preload.worker.a.a(localBaseFinderFeed1, this.gmd);
+        if (MediaPreloadCore.a(jdField_this.skQ) != null) {
+          com.tencent.mm.plugin.finder.preload.worker.a.a(localBaseFinderFeed, this.gFM);
         }
-        AppMethodBeat.o(202596);
+        AppMethodBeat.o(203011);
       }
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/preload/model/MediaPreloadModel;", "invoke"})
+  static final class d
+    extends q
+    implements d.g.a.a<com.tencent.mm.plugin.finder.preload.model.a>
+  {
+    public static final d skU;
+    
+    static
+    {
+      AppMethodBeat.i(203017);
+      skU = new d();
+      AppMethodBeat.o(203017);
+    }
+    
+    d()
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/IVideoPreloadCallback;", "kotlin.jvm.PlatformType", "invoke"})
+  public static final class e
+    extends q
+    implements d.g.a.b<b, Boolean>
+  {
+    public e(b paramb)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.MediaPreloadCore
  * JD-Core Version:    0.7.0.1
  */

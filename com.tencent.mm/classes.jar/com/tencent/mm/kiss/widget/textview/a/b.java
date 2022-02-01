@@ -5,44 +5,50 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public a glF;
+  public a gFp;
   
-  public static b ahZ()
+  public static b akK()
   {
     AppMethodBeat.i(141136);
     b localb = new b();
-    localb.glF = new a();
+    localb.gFp = new a();
     AppMethodBeat.o(141136);
     return localb;
   }
   
   public final b a(TextUtils.TruncateAt paramTruncateAt)
   {
-    this.glF.gls = paramTruncateAt;
+    this.gFp.gFc = paramTruncateAt;
     return this;
   }
   
-  public final b ag(float paramFloat)
+  public final b aj(float paramFloat)
   {
-    this.glF.textSize = paramFloat;
+    this.gFp.textSize = paramFloat;
     return this;
   }
   
-  public final b aia()
+  public final b akL()
   {
-    this.glF.maxLines = 6;
+    this.gFp.maxLines = 6;
     return this;
   }
   
-  public final b mu(int paramInt)
+  public final b akM()
   {
-    this.glF.gravity = paramInt;
+    this.gFp.breakStrategy = 1;
     return this;
   }
   
-  public final b mv(int paramInt)
+  public final b mT(int paramInt)
   {
-    this.glF.textColor = paramInt;
+    this.gFp.gravity = paramInt;
+    return this;
+  }
+  
+  public final b mU(int paramInt)
+  {
+    this.gFp.textColor = paramInt;
     return this;
   }
 }

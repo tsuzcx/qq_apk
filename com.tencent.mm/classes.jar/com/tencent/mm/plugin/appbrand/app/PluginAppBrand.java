@@ -12,46 +12,45 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.support.annotation.Keep;
-import com.tencent.luggage.bridge.a.a.1;
-import com.tencent.luggage.bridge.a.a.b;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.mars.cdn.CdnLogic.AppCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
-import com.tencent.mm.g.a.yw;
-import com.tencent.mm.kernel.a.b.a.a;
+import com.tencent.mm.g.a.zt;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.am;
-import com.tencent.mm.model.cc;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.appbrand.appcache.ar;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.plugin.appbrand.appcache.as;
 import com.tencent.mm.plugin.appbrand.appcache.h.a;
 import com.tencent.mm.plugin.appbrand.appcache.v;
+import com.tencent.mm.plugin.appbrand.appcache.x;
 import com.tencent.mm.plugin.appbrand.appstorage.y.a;
 import com.tencent.mm.plugin.appbrand.appstorage.y.b;
 import com.tencent.mm.plugin.appbrand.appusage.af;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
-import com.tencent.mm.plugin.appbrand.as;
+import com.tencent.mm.plugin.appbrand.appusage.ai;
+import com.tencent.mm.plugin.appbrand.appusage.ao;
+import com.tencent.mm.plugin.appbrand.at;
 import com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataStorageIPC;
 import com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataTokenStorageIPC;
 import com.tencent.mm.plugin.appbrand.config.j.1;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
 import com.tencent.mm.plugin.appbrand.jsruntime.ab;
 import com.tencent.mm.plugin.appbrand.keylogger.KeyStepBaseActivity;
-import com.tencent.mm.plugin.appbrand.launching.bk;
+import com.tencent.mm.plugin.appbrand.launching.bn;
 import com.tencent.mm.plugin.appbrand.menu.k.a;
 import com.tencent.mm.plugin.appbrand.preload.IAppBrandBatchPreloadController;
 import com.tencent.mm.plugin.appbrand.service.IBSPatchJNIService;
+import com.tencent.mm.plugin.appbrand.service.q;
 import com.tencent.mm.plugin.appbrand.task.preload.AppBrandBatchPreloadController;
 import com.tencent.mm.plugin.appbrand.task.preload.d.a;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
-import com.tencent.mm.protocal.protobuf.bhi;
+import com.tencent.mm.protocal.protobuf.blq;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.at.c;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.au.c;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
@@ -62,7 +61,7 @@ import java.util.Queue;
 @Keep
 public final class PluginAppBrand
   extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.api.c, am, com.tencent.mm.plugin.appbrand.a.c
+  implements com.tencent.mm.kernel.api.c, an, com.tencent.mm.plugin.appbrand.api.c
 {
   public static final String TAG = "MicroMsg.PluginAppBrand[speedtest]";
   private final com.tencent.mm.plugin.appbrand.utils.g singletonRegistry;
@@ -77,14 +76,14 @@ public final class PluginAppBrand
   private void copyWxaDecodeKeyFile()
   {
     AppMethodBeat.i(174699);
-    String str = com.tencent.mm.sdk.platformtools.ai.getContext().getApplicationContext().getFilesDir().getAbsolutePath() + "/wasae.dat";
-    if ((!com.tencent.mm.vfs.i.eA(str)) || (!"43bff1e72298b0ea0b73e2960d3c97b8".equals(com.tencent.mm.vfs.i.aKe(str))))
+    String str = aj.getContext().getApplicationContext().getFilesDir().getAbsolutePath() + "/wasae.dat";
+    if ((!com.tencent.mm.vfs.i.fv(str)) || (!"43bff1e72298b0ea0b73e2960d3c97b8".equals(com.tencent.mm.vfs.i.aPK(str))))
     {
-      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.PluginAppBrand[speedtest]", "copy key file ok: %b", new Object[] { Boolean.valueOf(com.tencent.mm.sdk.platformtools.o.P(com.tencent.mm.sdk.platformtools.ai.getContext(), "wasae.dat", str)) });
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.PluginAppBrand[speedtest]", "copy key file ok: %b", new Object[] { Boolean.valueOf(com.tencent.mm.sdk.platformtools.p.S(aj.getContext(), "wasae.dat", str)) });
       AppMethodBeat.o(174699);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.PluginAppBrand[speedtest]", "key file exist, skip copy");
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.PluginAppBrand[speedtest]", "key file exist, skip copy");
     AppMethodBeat.o(174699);
   }
   
@@ -100,8 +99,8 @@ public final class PluginAppBrand
   public static SharedPreferences getProcessSharedPrefs()
   {
     AppMethodBeat.i(44162);
-    Object localObject = d.jjJ;
-    localObject = d.JW();
+    Object localObject = d.jDy;
+    localObject = d.Lv();
     AppMethodBeat.o(44162);
     return localObject;
   }
@@ -110,7 +109,7 @@ public final class PluginAppBrand
   private void initJSONABTestGetter()
   {
     AppMethodBeat.i(44163);
-    com.tencent.mm.ab.h.a(new com.tencent.mm.ab.e() {});
+    com.tencent.mm.ac.h.a(new com.tencent.mm.ac.e() {});
     AppMethodBeat.o(44163);
   }
   
@@ -119,8 +118,8 @@ public final class PluginAppBrand
     AppMethodBeat.i(44160);
     try
     {
-      String str = com.tencent.mm.sdk.platformtools.ai.getPackageName();
-      boolean bool = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.agO().agp()).mProcessName.startsWith(str + ":appbrand");
+      String str = aj.getPackageName();
+      boolean bool = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName.startsWith(str + ":appbrand");
       AppMethodBeat.o(44160);
       return bool;
     }
@@ -136,7 +135,7 @@ public final class PluginAppBrand
     AppMethodBeat.i(44161);
     try
     {
-      boolean bool = "com.tencent.mm:support".equals(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.agO().agp()).mProcessName);
+      boolean bool = "com.tencent.mm:support".equals(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName);
       AppMethodBeat.o(44161);
       return bool;
     }
@@ -150,8 +149,8 @@ public final class PluginAppBrand
   public final void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(44157);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.PluginAppBrand[speedtest]", "configure()");
-    com.tencent.mm.ipcinvoker.extension.c.a(com.tencent.mm.plugin.appbrand.ui.c.a.a.mnr);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PluginAppBrand[speedtest]", "configure()");
+    com.tencent.mm.ipcinvoker.extension.c.a(com.tencent.mm.plugin.appbrand.ui.c.a.a.mNT);
     if (isAppBrandProcess())
     {
       fixProcessSharedStringFormatLocale();
@@ -182,12 +181,12 @@ public final class PluginAppBrand
         
         public final void onLowMemory() {}
       });
-      com.tencent.mm.sdk.a.b.b(com.tencent.mm.plugin.appbrand.f.a.jGr);
+      com.tencent.mm.sdk.a.b.b(com.tencent.mm.plugin.appbrand.e.a.kaA);
     }
-    if ((!com.tencent.mm.sdk.platformtools.ai.ciE()) && (com.tencent.mm.cn.i.JHS == null))
+    if ((!aj.cnC()) && (com.tencent.mm.cn.i.LAV == null))
     {
-      com.tencent.mm.cn.i.JHS = new com.tencent.mm.vending.h.h(com.tencent.mm.cn.d.c(new com.tencent.mm.sdk.platformtools.ao(com.tencent.mm.sdk.g.a.aLY("WeChat.WORKER").getLooper())), "WeChat.WORKER");
-      com.tencent.mm.vending.h.g.a("WeChat.WORKER", com.tencent.mm.cn.i.JHS);
+      com.tencent.mm.cn.i.LAV = new com.tencent.mm.vending.h.h(com.tencent.mm.cn.d.c(new ap(com.tencent.mm.sdk.g.a.aRF("WeChat.WORKER").getLooper())), "WeChat.WORKER");
+      com.tencent.mm.vending.h.g.a("WeChat.WORKER", com.tencent.mm.cn.i.LAV);
     }
     AppMethodBeat.o(44157);
   }
@@ -195,157 +194,145 @@ public final class PluginAppBrand
   public final void dependency()
   {
     AppMethodBeat.i(44156);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.PluginAppBrand[speedtest]", "dependency()");
-    if (com.tencent.mm.sdk.platformtools.ai.cin()) {
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PluginAppBrand[speedtest]", "dependency()");
+    if (aj.cmR()) {
       dependsOn(com.tencent.mm.plugin.comm.a.a.class);
     }
     AppMethodBeat.o(44156);
   }
   
-  public final void execute(final com.tencent.mm.kernel.b.g paramg)
+  public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(44159);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.PluginAppBrand[speedtest]", "execute() current process name = %s, isMainThread %b", new Object[] { ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.agO().agp()).mProcessName, Boolean.valueOf(com.tencent.mm.sdk.platformtools.ap.isMainThread()) });
-    if (com.tencent.mm.plugin.appbrand.report.a.a.btm())
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PluginAppBrand[speedtest]", "execute() current process name = %s, isMainThread %b", new Object[] { ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName, Boolean.valueOf(com.tencent.mm.sdk.platformtools.aq.isMainThread()) });
+    if (com.tencent.mm.plugin.appbrand.report.a.a.bxr())
     {
       com.tencent.mm.plugin.appbrand.keylogger.c.a(new com.tencent.mm.plugin.appbrand.keylogger.g());
-      com.tencent.mm.plugin.appbrand.keylogger.c.bmI();
+      com.tencent.mm.plugin.appbrand.keylogger.c.bqt();
     }
-    com.tencent.mm.plugin.appbrand.keylogger.d.a("WeAppLaunch", com.tencent.mm.plugin.appbrand.report.quality.n.lWn);
+    com.tencent.mm.plugin.appbrand.keylogger.d.a("WeAppLaunch", com.tencent.mm.plugin.appbrand.report.quality.n.mwc);
     com.tencent.mm.kernel.g.a(IBSPatchJNIService.class, new com.tencent.mm.kernel.c.e(new BSPatchJNIWrapper()));
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.n.class, new com.tencent.mm.kernel.c.e(new bk()));
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.appbrand.e.c.class, com.tencent.mm.plugin.appbrand.e.b.jBq);
-    if (paramg.ahL()) {
+    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.o.class, new com.tencent.mm.kernel.c.e(new bn()));
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.appbrand.d.c.class, com.tencent.mm.plugin.appbrand.d.b.jVl);
+    if (paramg.akw()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.j.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.xweb_ext.video.c()));
     }
     if (!isAppBrandProcess()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.g.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.dynamic.a.c()));
     }
-    if (paramg.ahL()) {
+    if (paramg.akw()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.i.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.dynamic.a.d()));
     }
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.o.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.launching.c.g()));
-    if (paramg.ahL()) {}
-    for (Object localObject1 = y.b.jtO;; localObject1 = y.a.jtM)
+    if (paramg.akw()) {
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.report.c()));
+    }
+    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.p.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.launching.c.g()));
+    if (paramg.akw()) {}
+    for (Object localObject1 = y.b.jNI;; localObject1 = y.a.jNG)
     {
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.appbrand.appstorage.a.a.class, (com.tencent.mm.kernel.c.a)localObject1);
       if (isAppBrandProcess())
       {
-        localObject1 = com.tencent.mm.plugin.webview.c.a.Cjn;
-        com.tencent.mm.plugin.webview.c.a.ezF();
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.PluginAppBrand[speedtest]", "init DefaultJsApiPool");
-        com.tencent.mm.plugin.appbrand.game.c.b.AY();
-        com.tencent.luggage.game.b.c.AX().bYr = new com.tencent.mm.plugin.appbrand.game.d.a();
-        com.tencent.mm.plugin.appbrand.z.g.bxf();
-        com.tencent.xweb.s.a(com.tencent.mm.plugin.appbrand.xweb_ext.e.mQN);
+        localObject1 = com.tencent.mm.plugin.webview.c.a.DMt;
+        com.tencent.mm.plugin.webview.c.a.eOu();
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PluginAppBrand[speedtest]", "init DefaultJsApiPool");
+        com.tencent.mm.plugin.appbrand.game.c.b.Cx();
+        com.tencent.luggage.game.b.c.Cw().ciJ = new com.tencent.mm.plugin.appbrand.game.d.a();
+        com.tencent.mm.plugin.appbrand.z.g.bBl();
+        com.tencent.xweb.s.a(com.tencent.mm.plugin.appbrand.xweb_ext.e.nrn);
       }
-      com.tencent.luggage.sdk.g.c.a("WeChatMultiProcessInitDelegateImpl", new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(44138);
-          k localk = new k(paramg);
-          if (com.tencent.luggage.bridge.a.a.bWH != null)
-          {
-            com.tencent.mm.sdk.platformtools.ac.e("Luggage.LuggageBoot", "do not setup more than once.");
-            AppMethodBeat.o(44138);
-            return;
-          }
-          com.tencent.luggage.bridge.a.a.bWH = localk;
-          localk.a(new a.1());
-          AppMethodBeat.o(44138);
-        }
-      });
-      if (!paramg.ahL()) {
+      com.tencent.luggage.sdk.g.c.a("WeChatMultiProcessInitDelegateImpl", new PluginAppBrand.6(this, paramg));
+      if (!paramg.akw()) {
         break;
       }
       paramg.ca.registerActivityLifecycleCallbacks(new com.tencent.mm.plugin.appbrand.z.a()
       {
         public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
         {
-          AppMethodBeat.i(186298);
-          if (((paramAnonymousActivity instanceof KeyStepBaseActivity)) && (!com.tencent.mm.plugin.appbrand.report.a.a.btm())) {
+          AppMethodBeat.i(187985);
+          if (((paramAnonymousActivity instanceof KeyStepBaseActivity)) && (!com.tencent.mm.plugin.appbrand.report.a.a.bxr())) {
             paramAnonymousActivity.finish();
           }
-          AppMethodBeat.o(186298);
+          AppMethodBeat.o(187985);
         }
       });
-      paramg = com.tencent.mm.msgsubscription.storage.f.iix;
+      paramg = com.tencent.mm.msgsubscription.storage.f.iBR;
       com.tencent.mm.msgsubscription.storage.f.a("name_wxa", new com.tencent.mm.msgsubscription.storage.a()
       {
-        public final com.tencent.mm.msgsubscription.storage.d aLj()
+        public final com.tencent.mm.msgsubscription.storage.d aOt()
         {
-          return com.tencent.mm.al.b.b.hAn;
+          return com.tencent.mm.am.b.b.hSI;
         }
       });
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
+      com.tencent.mm.kernel.g.ajD().a(new com.tencent.mm.kernel.api.g()
       {
-        public final void Lh()
+        public final void MP()
         {
           AppMethodBeat.i(44140);
-          com.tencent.mm.plugin.appbrand.ui.banner.d.bvV();
+          com.tencent.mm.plugin.appbrand.ui.banner.d.bAb();
           AppMethodBeat.o(44140);
         }
         
-        public final void cf(boolean paramAnonymousBoolean)
+        public final void cg(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(44141);
           AppMethodBeat.o(44141);
         }
       });
-      paramg = com.tencent.mm.plugin.appbrand.widget.desktop.a.b.myz;
-      com.tencent.mm.plugin.appbrand.widget.desktop.a.b.init(com.tencent.mm.sdk.platformtools.ai.getContext());
-      com.tencent.mm.plugin.x.c.xCh.a(new as());
-      com.tencent.mm.plugin.x.c.xCh.a(new com.tencent.mm.plugin.appbrand.at());
+      paramg = com.tencent.mm.plugin.appbrand.widget.desktop.a.b.mZh;
+      com.tencent.mm.plugin.appbrand.widget.desktop.a.b.init(aj.getContext());
+      com.tencent.mm.plugin.y.c.yQR.a(new at());
+      com.tencent.mm.plugin.y.c.yQR.a(new com.tencent.mm.plugin.appbrand.au());
       com.tencent.mm.kernel.g.a(a.class, new com.tencent.mm.kernel.c.e(new a()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.widget.recentview.d.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.widget.c()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.share.a.a()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.ui.banner.e.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.ui.banner.a()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.i.class, new com.tencent.mm.kernel.c.e(new h()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.m.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.config.s()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.p.class, new com.tencent.mm.kernel.c.e(new f()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.a.e.class, new com.tencent.mm.kernel.c.e(new l()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.widget.a.a.class, new com.tencent.mm.kernel.c.e(new m()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.r.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.ao()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.game.d()));
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.n.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.config.t()));
+      com.tencent.mm.kernel.g.a(q.class, new com.tencent.mm.kernel.c.e(new f()));
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.api.e.class, new com.tencent.mm.kernel.c.e(new l()));
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.widget.a.b.class, new com.tencent.mm.kernel.c.e(new m()));
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.s.class, new com.tencent.mm.kernel.c.e(new ao()));
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.m.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.game.d()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.m.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.message.g()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.message.c()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.utils.m()));
       com.tencent.mm.kernel.g.a(IAppBrandBatchPreloadController.class, new com.tencent.mm.kernel.c.e(new AppBrandBatchPreloadController()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.g.class, new com.tencent.mm.kernel.c.e(new b()));
-      com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.appbrand.b(), new String[] { "//wagame", "//enable_appbrand_monkey_test", "//disable_appbrand_monkey_test", "//appbrand_monkey_bringtofront", "//appbrand_predownload_trigger", "//callsearchshowoutwxaapp", "//getsearchshowoutwxaapp", "//appbrandtest", "//wxafts", "//wxatest", "//xweb_live", "//xweb_video_preload", "//xweb_video_ps", "//xweb_video_player", "//xweb_video_proxy", "//xweb_video_hls_proxy", "//xweb_hls_video_player", "//xweb_video", "//showad", "//allshowad", "//localwxalibrary" });
+      com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.appbrand.b(), new String[] { "//wagame", "//enable_appbrand_monkey_test", "//disable_appbrand_monkey_test", "//appbrand_monkey_bringtofront", "//appbrand_monkey_test_skip_appbrand_process_suicide", "//appbrand_predownload_trigger", "//callsearchshowoutwxaapp", "//getsearchshowoutwxaapp", "//appbrandtest", "//wxafts", "//wxatest", "//xweb_live", "//xweb_video_preload", "//xweb_video_ps", "//xweb_video_player", "//xweb_video_proxy", "//xweb_video_hls_proxy", "//xweb_hls_video_player", "//xweb_video", "//showad", "//allshowad", "//localwxalibrary" });
       com.tencent.mm.pluginsdk.cmd.b.a(new com.tencent.mm.plugin.appbrand.dynamic.c.a(), new String[] { "//widget" });
-      com.tencent.mm.plugin.appbrand.xweb_ext.b.AY();
-      com.tencent.mm.kernel.g.agS().a(new com.tencent.mm.kernel.api.g()
+      com.tencent.mm.plugin.appbrand.xweb_ext.b.Cx();
+      com.tencent.mm.kernel.g.ajD().a(new com.tencent.mm.kernel.api.g()
       {
-        public final void Lh()
+        public final void MP()
         {
-          AppMethodBeat.i(186299);
+          AppMethodBeat.i(187986);
           ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).initialize();
-          AppMethodBeat.o(186299);
+          AppMethodBeat.o(187986);
         }
         
-        public final void cf(boolean paramAnonymousBoolean)
+        public final void cg(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(186300);
+          AppMethodBeat.i(187987);
           ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).shutdown();
-          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aAB().exit();
-          AppMethodBeat.o(186300);
+          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).aDE().exit();
+          AppMethodBeat.o(187987);
         }
       });
-      if (DebuggerShell.baX()) {
+      if (DebuggerShell.bex()) {
         com.tencent.mm.kernel.g.b(DebuggerShell.class, new DebuggerShell());
       }
-      com.tencent.mm.plugin.appbrand.appcache.ac.a(new v());
+      com.tencent.mm.plugin.appbrand.appcache.ad.a(new com.tencent.mm.plugin.appbrand.appcache.w());
       com.tencent.mm.plugin.appbrand.jsapi.video.b.init();
-      com.tencent.mm.plugin.appbrand.jsapi.video.n.bjG().a(com.tencent.mm.sdk.platformtools.ai.getContext(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bCj(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bCl(), com.tencent.mm.plugin.appbrand.xweb_ext.video.a.bCi(), null);
+      com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr().a(aj.getContext(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bGo(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bGq(), com.tencent.mm.plugin.appbrand.xweb_ext.video.a.bGn(), null);
       AppMethodBeat.o(44159);
       return;
     }
     Object localObject2;
     if (isAppBrandProcess())
     {
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.appusage.ai.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.o()));
+      com.tencent.mm.plugin.appbrand.debugger.b.setup();
+      com.tencent.mm.kernel.g.a(ai.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.o()));
       com.tencent.mm.kernel.g.a(ah.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.g()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.widget.recentview.d.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.widget.c()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.backgroundfetch.k.class, new com.tencent.mm.kernel.c.e(new AppBrandBackgroundFetchDataStorageIPC()));
@@ -355,76 +342,76 @@ public final class PluginAppBrand
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.i.class, new com.tencent.mm.kernel.c.e(new i()));
       localObject1 = this.singletonRegistry;
       localObject2 = paramg.ca;
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.AppSingletonRegistry ");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.AppSingletonRegistry ");
       ((Application)localObject2).registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject1);
       localObject1 = this.singletonRegistry;
       localObject2 = paramg.ca;
-      ((com.tencent.mm.plugin.appbrand.utils.g)localObject1).mod = true;
+      ((com.tencent.mm.plugin.appbrand.utils.g)localObject1).mOF = true;
       ((com.tencent.mm.plugin.appbrand.utils.g)localObject1).app = ((Application)localObject2);
       localObject1 = this.singletonRegistry;
-      localObject2 = com.tencent.mm.plugin.appbrand.utils.a.a.moW;
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.AppSingletonRegistry", "registerAppSingleton() called with: singleton = [%s]", new Object[] { localObject2 });
-      ((com.tencent.mm.plugin.appbrand.utils.g)localObject1).mob.offer(localObject2);
-      com.tencent.mm.plugin.appbrand.h.g(paramg.ca);
-      ak.g(paramg.ca);
-      localObject1 = com.tencent.mm.plugin.appbrand.luggage.b.c.lqD;
+      localObject2 = com.tencent.mm.plugin.appbrand.utils.a.a.mPB;
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppSingletonRegistry", "registerAppSingleton() called with: singleton = [%s]", new Object[] { localObject2 });
+      ((com.tencent.mm.plugin.appbrand.utils.g)localObject1).mOD.offer(localObject2);
+      com.tencent.mm.plugin.appbrand.h.i(paramg.ca);
+      com.tencent.mm.ui.am.i(paramg.ca);
+      localObject1 = com.tencent.mm.plugin.appbrand.luggage.b.c.lOb;
       localObject2 = paramg.ca;
-      d.g.b.k.h(localObject2, "app");
+      d.g.b.p.h(localObject2, "app");
       ((Application)localObject2).registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)localObject1);
-      com.tencent.mm.plugin.appbrand.jsapi.video.n.bjG().a(com.tencent.mm.sdk.platformtools.ai.getContext(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bCj(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bCl(), com.tencent.mm.plugin.appbrand.xweb_ext.video.a.bCi(), null);
+      com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr().a(aj.getContext(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bGo(), com.tencent.mm.plugin.appbrand.xweb_ext.video.b.bGq(), com.tencent.mm.plugin.appbrand.xweb_ext.video.a.bGn(), null);
     }
-    if ((com.tencent.mm.sdk.platformtools.ai.eVd()) || (com.tencent.mm.sdk.platformtools.ai.eVe()))
+    if ((aj.fkI()) || (aj.fkJ()))
     {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.i.class, new com.tencent.mm.kernel.c.e(new i()));
       com.tencent.mm.kernel.g.a(IAppBrandBatchPreloadController.class, new com.tencent.mm.kernel.c.e(new AppBrandBatchPreloadController()));
       com.tencent.mm.plugin.appbrand.dynamic.widget.b.initialize();
-      if (((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQk, 0) != 1) {
-        break label1610;
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qux, 0) != 1) {
+        break label1647;
       }
     }
-    label1610:
+    label1647:
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.plugin.appbrand.jsapi.video.n.bjG().a(com.tencent.mm.sdk.platformtools.ai.getContext(), bool, bool, com.tencent.mm.plugin.appbrand.xweb_ext.video.a.bCi(), new com.tencent.luggage.k.a.a.b.a.a.a());
+      com.tencent.mm.plugin.appbrand.jsapi.video.j.bnr().a(aj.getContext(), bool, bool, com.tencent.mm.plugin.appbrand.xweb_ext.video.a.bGn(), new com.tencent.luggage.xweb_ext.extendplugin.component.video.a.a.a());
       if (isAppBrandProcess())
       {
-        com.tencent.mm.sdk.platformtools.at.a(new at.c()
+        com.tencent.mm.sdk.platformtools.au.a(new au.c()
         {
-          public final void a(com.tencent.mm.sdk.platformtools.at paramAnonymousat, String paramAnonymousString, Throwable paramAnonymousThrowable)
+          public final void a(com.tencent.mm.sdk.platformtools.au paramAnonymousau, String paramAnonymousString, Throwable paramAnonymousThrowable)
           {
-            AppMethodBeat.i(186301);
-            if (bs.nullAsNil(paramAnonymousString).contains(".plugin.appbrand"))
+            AppMethodBeat.i(187988);
+            if (bt.nullAsNil(paramAnonymousString).contains(".plugin.appbrand"))
             {
-              com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(365L, 3L, 1L, false);
-              KVCommCrossProcessReceiver.dyN();
+              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(365L, 3L, 1L, false);
+              KVCommCrossProcessReceiver.dKl();
             }
-            AppMethodBeat.o(186301);
+            AppMethodBeat.o(187988);
           }
         });
         AppBrandProcessSuicideLogic.c(paramg.ca);
-        c.h(paramg.ca);
+        c.j(paramg.ca);
       }
       try
       {
-        localObject1 = MultiProcessSharedPreferences.getSharedPreferences(com.tencent.mm.sdk.platformtools.ai.getContext(), "pref_appbrand_process", 4);
-        localObject2 = com.tencent.mm.sdk.platformtools.ai.getProcessName() + ":start_time";
+        localObject1 = MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "pref_appbrand_process", 4);
+        localObject2 = aj.getProcessName() + ":start_time";
         SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
         if (((SharedPreferences)localObject1).contains((String)localObject2))
         {
           localEditor.remove((String)localObject2);
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(365L, 2L, 1L, false);
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(365L, 2L, 1L, false);
         }
-        com.tencent.mm.plugin.report.e.wTc.idkeyStat(365L, 4L, 1L, false);
+        com.tencent.mm.plugin.report.e.ygI.idkeyStat(365L, 4L, 1L, false);
         localEditor.putLong((String)localObject2, System.currentTimeMillis());
         localEditor.commit();
-        com.tencent.mm.sdk.platformtools.ac.v("MicroMsg.AppBrandReporter", "onProcessStart");
-        KVCommCrossProcessReceiver.dyL();
+        com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.AppBrandReporter", "onProcessStart");
+        KVCommCrossProcessReceiver.dKj();
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("MicroMsg.AppBrandReporter", localThrowable, "onProcessStart()", new Object[0]);
+          com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.AppBrandReporter", localThrowable, "onProcessStart()", new Object[0]);
         }
       }
       com.tencent.mm.plugin.appbrand.task.preload.f.c(paramg.ca);
@@ -445,11 +432,11 @@ public final class PluginAppBrand
       });
       if (isSupportProcess())
       {
-        com.tencent.mm.plugin.appbrand.dynamic.h.e.dn(com.tencent.mm.sdk.platformtools.ai.getContext());
-        com.tencent.mm.ab.h.initialize();
+        com.tencent.mm.plugin.appbrand.dynamic.h.e.dl(aj.getContext());
+        com.tencent.mm.ac.h.initialize();
       }
-      if (com.tencent.mm.sdk.platformtools.ai.eVd()) {
-        com.tencent.mm.ab.h.initialize();
+      if (aj.fkI()) {
+        com.tencent.mm.ac.h.initialize();
       }
       AppMethodBeat.o(44159);
       return;
@@ -459,12 +446,12 @@ public final class PluginAppBrand
   final j getCore()
   {
     AppMethodBeat.i(44154);
-    j localj = (j)t.ap(j.class);
+    j localj = (j)com.tencent.mm.model.t.ap(j.class);
     AppMethodBeat.o(44154);
     return localj;
   }
   
-  public final List<al> getDataTransferList()
+  public final List<com.tencent.mm.model.am> getDataTransferList()
   {
     AppMethodBeat.i(44153);
     LinkedList localLinkedList = new LinkedList();
@@ -481,8 +468,8 @@ public final class PluginAppBrand
   public final void installed()
   {
     AppMethodBeat.i(44155);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.PluginAppBrand[speedtest]", "installed()");
-    alias(com.tencent.mm.plugin.appbrand.a.c.class);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PluginAppBrand[speedtest]", "installed()");
+    alias(com.tencent.mm.plugin.appbrand.api.c.class);
     if (!isAppBrandProcess()) {
       new com.tencent.mm.sdk.b.c() {}.alive();
     }
@@ -499,26 +486,26 @@ public final class PluginAppBrand
   public final void onAccountRelease() {}
   
   static final class a
-    extends t
+    extends com.tencent.mm.model.t
     implements com.tencent.mm.app.n, com.tencent.mm.kernel.a.b.b
   {
-    private com.tencent.mm.plugin.appbrand.jsapi.appdownload.a jjZ;
-    private com.tencent.mm.plugin.appbrand.debugger.j jka;
+    private com.tencent.mm.plugin.appbrand.jsapi.appdownload.a jDP;
+    private com.tencent.mm.plugin.appbrand.debugger.k jDQ;
     
     a()
     {
       super();
       AppMethodBeat.i(44144);
-      this.jka = new com.tencent.mm.plugin.appbrand.debugger.j();
+      this.jDQ = new com.tencent.mm.plugin.appbrand.debugger.k();
       AppMethodBeat.o(44144);
     }
     
     private static void a(String paramString, d.a parama)
     {
       AppMethodBeat.i(44146);
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.PluginAppBrand[speedtest]", "AppBrandCompatCore tryPreloadNextTaskProcess (both waservice and wagame) reason[%s]", new Object[] { paramString });
-      com.tencent.mm.plugin.appbrand.task.f.a(com.tencent.mm.plugin.appbrand.task.e.lYr, parama);
-      com.tencent.mm.plugin.appbrand.task.f.a(com.tencent.mm.plugin.appbrand.task.e.lYs, parama);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.PluginAppBrand[speedtest]", "AppBrandCompatCore tryPreloadNextTaskProcess (both waservice and wagame) reason[%s]", new Object[] { paramString });
+      com.tencent.mm.plugin.appbrand.task.f.a(com.tencent.mm.plugin.appbrand.task.e.myg, parama);
+      com.tencent.mm.plugin.appbrand.task.f.a(com.tencent.mm.plugin.appbrand.task.e.myh, parama);
       AppMethodBeat.o(44146);
     }
     
@@ -526,66 +513,67 @@ public final class PluginAppBrand
     {
       AppMethodBeat.i(44145);
       super.onAccountInitialized(paramc);
-      ar.a(com.tencent.mm.plugin.appbrand.appcache.ap.jnd);
-      if (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED)
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.PluginAppBrand[speedtest]", "onAccountInitialized, WAKeyStepKvLogger.ENABLE=%b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.appbrand.report.quality.n.bxY()) });
+      as.a(com.tencent.mm.plugin.appbrand.appcache.aq.jHb);
+      if (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED)
       {
         paramc = new com.tencent.mm.plugin.appbrand.appusage.e();
-        if (paramc.nP(com.tencent.mm.protocal.d.DIc)) {
-          paramc.transfer(com.tencent.mm.protocal.d.DIc);
+        if (paramc.op(com.tencent.mm.protocal.d.Fnj)) {
+          paramc.transfer(com.tencent.mm.protocal.d.Fnj);
         }
         paramc = new ab();
-        if (paramc.nP(com.tencent.mm.protocal.d.DIc)) {
-          paramc.transfer(com.tencent.mm.protocal.d.DIc);
+        if (paramc.op(com.tencent.mm.protocal.d.Fnj)) {
+          paramc.transfer(com.tencent.mm.protocal.d.Fnj);
         }
       }
-      if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE)) {
-        com.tencent.mm.plugin.appbrand.appusage.j.aYz().aYA();
+      if ((com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_PURPLE)) {
+        com.tencent.mm.plugin.appbrand.appusage.j.bbX().bbY();
       }
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.appusage.c.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.c()));
       paramc = new com.tencent.mm.plugin.appbrand.appusage.s();
-      if (paramc.nP(com.tencent.mm.protocal.d.DIc)) {
-        paramc.transfer(com.tencent.mm.protocal.d.DIc);
+      if (paramc.op(com.tencent.mm.protocal.d.Fnj)) {
+        paramc.transfer(com.tencent.mm.protocal.d.Fnj);
       }
       paramc = new com.tencent.mm.plugin.appbrand.appusage.r();
-      if (paramc.nP(com.tencent.mm.protocal.d.DIc)) {
-        paramc.transfer(com.tencent.mm.protocal.d.DIc);
+      if (paramc.op(com.tencent.mm.protocal.d.Fnj)) {
+        paramc.transfer(com.tencent.mm.protocal.d.Fnj);
       }
       com.tencent.mm.plugin.appbrand.dynamic.widget.b.initialize();
-      ((com.tencent.mm.plugin.messenger.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.f.class)).a("link_view_wxapp", new com.tencent.mm.plugin.appbrand.message.f());
-      ((com.tencent.mm.plugin.messenger.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.f.class)).a("link_view_wxapp", new com.tencent.mm.plugin.appbrand.message.e());
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.a.b.class, new com.tencent.mm.kernel.c.e(com.tencent.mm.plugin.appbrand.appcache.w.jmC));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.appusage.ai.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.p()));
+      ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.e.class)).a("link_view_wxapp", new com.tencent.mm.plugin.appbrand.message.f());
+      ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.e.class)).a("link_view_wxapp", new com.tencent.mm.plugin.appbrand.message.e());
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.api.b.class, new com.tencent.mm.kernel.c.e(x.jGy));
+      com.tencent.mm.kernel.g.a(ai.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.p()));
       com.tencent.mm.kernel.g.a(ah.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appusage.f()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.b.a.class, new com.tencent.mm.kernel.c.e(com.tencent.mm.plugin.appbrand.s.aUu()));
+      com.tencent.mm.kernel.g.a(com.tencent.mm.modelappbrand.b.a.class, new com.tencent.mm.kernel.c.e(com.tencent.mm.plugin.appbrand.s.aXG()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.backgroundrunning.h.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.backgroundrunning.i()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.backgroundfetch.k.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.backgroundfetch.e()));
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.backgroundfetch.l.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.backgroundfetch.h()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.q.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appcache.b.d()));
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.r.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.appbrand.appcache.b.d()));
       com.tencent.mm.kernel.g.a(IAppBrandBatchPreloadController.class, new com.tencent.mm.kernel.c.e(new AppBrandBatchPreloadController()));
-      com.tencent.mm.vfs.i.cU(com.tencent.mm.sdk.platformtools.ai.getContext().getFilesDir().getParent() + "/voice_split_joint/", true);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("WeAppSyncCommand", com.tencent.mm.plugin.appbrand.appcache.b.f.jqe);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("subscribesysmsg", com.tencent.mm.plugin.appbrand.message.d.luZ);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("weapp_pushmsg", com.tencent.mm.plugin.appbrand.message.a.luL);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("WeAppPushCommand", com.tencent.mm.plugin.appbrand.message.h.lvl);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("wxaapp_msgchannel", com.tencent.mm.plugin.appbrand.message.b.luP);
-      this.jjZ = new com.tencent.mm.plugin.appbrand.jsapi.appdownload.a();
-      com.tencent.mm.plugin.downloader.model.f.bXJ();
-      com.tencent.mm.plugin.downloader.model.c.a(this.jjZ);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("DebugAppCodeUpdated", this.jka);
+      com.tencent.mm.vfs.i.cZ(aj.getContext().getFilesDir().getParent() + "/voice_split_joint/", true);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().a("WeAppSyncCommand", com.tencent.mm.plugin.appbrand.appcache.b.f.jJY);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().a("subscribesysmsg", com.tencent.mm.plugin.appbrand.message.d.lUi);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().a("weapp_pushmsg", com.tencent.mm.plugin.appbrand.message.a.lTU);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().a("WeAppPushCommand", com.tencent.mm.plugin.appbrand.message.h.lUu);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().a("wxaapp_msgchannel", com.tencent.mm.plugin.appbrand.message.b.lTY);
+      this.jDP = new com.tencent.mm.plugin.appbrand.jsapi.appdownload.a();
+      com.tencent.mm.plugin.downloader.model.f.ccl();
+      com.tencent.mm.plugin.downloader.model.c.a(this.jDP);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().a("DebugAppCodeUpdated", this.jDQ);
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.service.f.class, new com.tencent.mm.kernel.c.e(new AppBrandMixExportLogicService()));
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.launching.b.a.a.class, new com.tencent.mm.kernel.c.e(com.tencent.mm.plugin.appbrand.launching.b.a.loP));
-      com.tencent.mm.blink.b.TR().w(new Runnable()
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.appbrand.launching.b.a.a.class, new com.tencent.mm.kernel.c.e(com.tencent.mm.plugin.appbrand.launching.b.a.lMh));
+      com.tencent.mm.blink.b.Wi().w(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(44143);
-          PluginAppBrand.a.b("FirstScreenArrangement", d.a.lZk);
+          PluginAppBrand.a.b("FirstScreenArrangement", d.a.mza);
           AppMethodBeat.o(44143);
         }
       });
       com.tencent.mm.plugin.appbrand.appcache.h.a(new h.a()
       {
-        public final com.tencent.mm.cn.f<c.a<bhi>> a(com.tencent.mm.plugin.appbrand.appcache.h paramAnonymoush)
+        public final com.tencent.mm.cn.f<com.tencent.mm.al.a.a<blq>> a(com.tencent.mm.plugin.appbrand.appcache.h paramAnonymoush)
         {
           AppMethodBeat.i(180188);
           paramAnonymoush = com.tencent.mm.plugin.appbrand.launching.w.b(paramAnonymoush);
@@ -593,15 +581,16 @@ public final class PluginAppBrand
           return paramAnonymoush;
         }
       });
-      paramc = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.mzF;
-      com.tencent.mm.plugin.appbrand.widget.desktop.b.c.bzz();
+      paramc = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.nan;
+      com.tencent.mm.plugin.appbrand.widget.desktop.b.c.bDD();
+      v.setup();
       AppMethodBeat.o(44145);
     }
     
     public final void onAccountRelease()
     {
       AppMethodBeat.i(44150);
-      com.tencent.mm.kernel.g.ac(com.tencent.mm.plugin.appbrand.appusage.ai.class);
+      com.tencent.mm.kernel.g.ac(ai.class);
       com.tencent.mm.kernel.g.ac(ah.class);
       com.tencent.mm.kernel.g.ac(com.tencent.mm.plugin.appbrand.widget.recentview.d.class);
       com.tencent.mm.kernel.g.ac(com.tencent.mm.plugin.appbrand.backgroundfetch.k.class);
@@ -612,17 +601,17 @@ public final class PluginAppBrand
       com.tencent.mm.kernel.g.ac(IAppBrandBatchPreloadController.class);
       com.tencent.mm.kernel.g.ac(com.tencent.mm.plugin.appbrand.appusage.c.class);
       super.onAccountRelease();
-      ((com.tencent.mm.plugin.messenger.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.f.class)).akI("link_view_wxapp");
-      ((com.tencent.mm.plugin.messenger.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.f.class)).akJ("link_view_wxapp");
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("WeAppSyncCommand", com.tencent.mm.plugin.appbrand.appcache.b.f.jqe);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("subscribesysmsg", com.tencent.mm.plugin.appbrand.message.d.luZ);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("weapp_pushmsg", com.tencent.mm.plugin.appbrand.message.a.luL);
-      com.tencent.mm.plugin.downloader.model.f.bXJ();
-      com.tencent.mm.plugin.downloader.model.c.b(this.jjZ);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("DebugAppCodeUpdated", this.jka);
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("wxaapp_msgchannel", com.tencent.mm.plugin.appbrand.message.b.luP);
-      com.tencent.mm.plugin.appbrand.u.a.bsT();
-      com.tencent.mm.plugin.appbrand.widget.desktop.b.c localc = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.mzF;
+      ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.e.class)).apu("link_view_wxapp");
+      ((com.tencent.mm.plugin.messenger.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.e.class)).apv("link_view_wxapp");
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().b("WeAppSyncCommand", com.tencent.mm.plugin.appbrand.appcache.b.f.jJY);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().b("subscribesysmsg", com.tencent.mm.plugin.appbrand.message.d.lUi);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().b("weapp_pushmsg", com.tencent.mm.plugin.appbrand.message.a.lTU);
+      com.tencent.mm.plugin.downloader.model.f.ccl();
+      com.tencent.mm.plugin.downloader.model.c.b(this.jDP);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().b("DebugAppCodeUpdated", this.jDQ);
+      ((com.tencent.mm.plugin.messenger.foundation.a.r)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.r.class)).getSysCmdMsgExtension().b("wxaapp_msgchannel", com.tencent.mm.plugin.appbrand.message.b.lTY);
+      com.tencent.mm.plugin.appbrand.u.a.bwX();
+      com.tencent.mm.plugin.appbrand.widget.desktop.b.c localc = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.nan;
       com.tencent.mm.plugin.appbrand.widget.desktop.b.c.release();
       AppMethodBeat.o(44150);
     }
@@ -630,23 +619,23 @@ public final class PluginAppBrand
     public final void onAppBackground(String paramString)
     {
       AppMethodBeat.i(44148);
-      paramString = com.tencent.mm.plugin.appbrand.ipc.a.a.jVP;
-      com.tencent.mm.plugin.appbrand.ipc.a.a.beu();
+      paramString = com.tencent.mm.plugin.appbrand.ipc.a.a.kqd;
+      com.tencent.mm.plugin.appbrand.ipc.a.a.bhY();
       AppMethodBeat.o(44148);
     }
     
     public final void onAppForeground(String paramString)
     {
       AppMethodBeat.i(44147);
-      a("onAppForeground:".concat(String.valueOf(paramString)), d.a.lZl);
+      a("onAppForeground:".concat(String.valueOf(paramString)), d.a.mzb);
       AppMethodBeat.o(44147);
     }
     
     public final void parallelsDependency()
     {
       AppMethodBeat.i(44149);
-      com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class));
-      com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.appbrand.a.c.class));
+      com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class));
+      com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.appbrand.api.c.class));
       AppMethodBeat.o(44149);
     }
   }

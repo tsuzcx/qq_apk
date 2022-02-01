@@ -2,8 +2,8 @@ package d.l.b.a.b.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.ae;
-import d.aa;
-import d.g.b.k;
+import d.ac;
+import d.g.b.p;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.e;
 import d.l.b.a.b.m.ab;
@@ -20,46 +20,46 @@ public final class j
   public static final au a(e parame1, e parame2)
   {
     AppMethodBeat.i(56826);
-    k.h(parame1, "from");
-    k.h(parame2, "to");
-    if (parame1.fQm().size() == parame2.fQm().size()) {}
-    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
+    p.h(parame1, "from");
+    p.h(parame2, "to");
+    if (parame1.ghK().size() == parame2.ghK().size()) {}
+    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
     {
-      parame1 = (Throwable)new AssertionError(parame1 + " and " + parame2 + " should have same number of type parameters, but " + parame1.fQm().size() + " / " + parame2.fQm().size() + " found");
+      parame1 = (Throwable)new AssertionError(parame1 + " and " + parame2 + " should have same number of type parameters, but " + parame1.ghK().size() + " / " + parame2.ghK().size() + " found");
       AppMethodBeat.o(56826);
       throw parame1;
     }
-    Object localObject1 = au.LLE;
-    parame1 = parame1.fQm();
-    k.g(parame1, "from.declaredTypeParameters");
+    Object localObject1 = au.NCz;
+    parame1 = parame1.ghK();
+    p.g(parame1, "from.declaredTypeParameters");
     localObject1 = (Iterable)parame1;
     parame1 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      parame1.add(((as)((Iterator)localObject1).next()).fPW());
+      parame1.add(((as)((Iterator)localObject1).next()).ghu());
     }
     parame1 = (Iterable)parame1;
-    parame2 = parame2.fQm();
-    k.g(parame2, "to.declaredTypeParameters");
+    parame2 = parame2.ghK();
+    p.g(parame2, "to.declaredTypeParameters");
     localObject1 = (Iterable)parame2;
     parame2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject1, 10));
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (as)((Iterator)localObject1).next();
-      k.g(localObject2, "it");
-      localObject2 = ((as)localObject2).fRe();
-      k.g(localObject2, "it.defaultType");
+      p.g(localObject2, "it");
+      localObject2 = ((as)localObject2).giC();
+      p.g(localObject2, "it.defaultType");
       parame2.add(a.aO((ab)localObject2));
     }
-    parame1 = au.a.ch(ae.y((Iterable)d.a.j.b(parame1, (Iterable)parame2)));
+    parame1 = au.a.ck(ae.A((Iterable)d.a.j.c(parame1, (Iterable)parame2)));
     AppMethodBeat.o(56826);
     return parame1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.a.b.j
  * JD-Core Version:    0.7.0.1
  */

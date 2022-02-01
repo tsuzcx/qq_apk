@@ -10,12 +10,12 @@ import java.util.List;
 public final class c
   implements b
 {
-  private final List<d.a> JSY;
+  private final List<d.a> LMP;
   
   public c()
   {
     AppMethodBeat.i(138344);
-    this.JSY = new ArrayList();
+    this.LMP = new ArrayList();
     AppMethodBeat.o(138344);
   }
   
@@ -27,7 +27,7 @@ public final class c
       AppMethodBeat.o(138345);
       return;
     }
-    if ((TextUtils.isEmpty(parama.JTg)) || (!"u:r:zygote:s0".equals(parama.JTg)))
+    if ((TextUtils.isEmpty(parama.LMX)) || (!"u:r:zygote:s0".equals(parama.LMX)))
     {
       AppMethodBeat.o(138345);
       return;
@@ -38,15 +38,15 @@ public final class c
       return;
     }
     new StringBuilder("JavaProcessAnalyzer match : ").append(parama.toString());
-    h.fCO();
-    this.JSY.add(parama);
+    h.fUg();
+    this.LMP.add(parama);
     AppMethodBeat.o(138345);
   }
   
-  public final boolean fCu()
+  public final boolean fTK()
   {
     AppMethodBeat.i(138346);
-    if (this.JSY.size() > 0)
+    if (this.LMP.size() > 0)
     {
       AppMethodBeat.o(138346);
       return true;

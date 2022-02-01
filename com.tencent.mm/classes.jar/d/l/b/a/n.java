@@ -1,245 +1,169 @@
 package d.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.v;
-import d.g.a.m;
-import d.g.b.j;
-import d.g.b.u;
-import d.l.b.a.b.b.ah;
-import d.l.b.a.b.b.d.b.b;
-import d.l.b.a.b.e.a.k;
-import d.l.b.a.b.e.a.m;
-import d.l.b.a.b.e.a.s;
-import d.l.b.a.b.e.c.a.g;
-import d.l.b.a.b.h.i.c;
-import d.l.b.a.b.h.i.f;
-import d.l.b.a.b.h.q;
-import d.l.d;
-import java.util.Collection;
+import d.g.b.p;
+import d.g.b.q;
+import d.g.b.x;
+import d.g.b.z;
+import d.l;
+import d.l.b.a.b.b.ae;
+import d.l.b.a.b.b.av;
+import d.l.b.a.b.f.f;
+import d.l.b.a.b.m.ab;
+import d.l.j;
+import d.l.j.a;
+import d.l.k;
+import d.l.o;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
+import java.util.List;
 
-@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KPackageImpl;", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "jClass", "Ljava/lang/Class;", "usageModuleName", "", "(Ljava/lang/Class;Ljava/lang/String;)V", "constructorDescriptors", "", "Lkotlin/reflect/jvm/internal/impl/descriptors/ConstructorDescriptor;", "getConstructorDescriptors", "()Ljava/util/Collection;", "data", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "Lkotlin/reflect/jvm/internal/KPackageImpl$Data;", "kotlin.jvm.PlatformType", "getJClass", "()Ljava/lang/Class;", "members", "Lkotlin/reflect/KCallable;", "getMembers", "methodOwner", "getMethodOwner", "scope", "Lkotlin/reflect/jvm/internal/impl/resolve/scopes/MemberScope;", "getScope", "()Lorg/jetbrains/kotlin/resolve/scopes/MemberScope;", "getUsageModuleName", "()Ljava/lang/String;", "equals", "", "other", "", "getFunctions", "Lkotlin/reflect/jvm/internal/impl/descriptors/FunctionDescriptor;", "name", "Lkotlin/reflect/jvm/internal/impl/name/Name;", "getLocalProperty", "Lkotlin/reflect/jvm/internal/impl/descriptors/PropertyDescriptor;", "index", "", "getProperties", "hashCode", "toString", "Data", "kotlin-reflection"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/reflect/jvm/internal/KParameterImpl;", "Lkotlin/reflect/KParameter;", "callable", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "index", "", "kind", "Lkotlin/reflect/KParameter$Kind;", "computeDescriptor", "Lkotlin/Function0;", "Lkotlin/reflect/jvm/internal/impl/descriptors/ParameterDescriptor;", "(Lkotlin/reflect/jvm/internal/KCallableImpl;ILkotlin/reflect/KParameter$Kind;Lkotlin/jvm/functions/Function0;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "annotations$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "getCallable", "()Lkotlin/reflect/jvm/internal/KCallableImpl;", "descriptor", "getDescriptor", "()Lorg/jetbrains/kotlin/descriptors/ParameterDescriptor;", "descriptor$delegate", "getIndex", "()I", "isOptional", "", "()Z", "isVararg", "getKind", "()Lkotlin/reflect/KParameter$Kind;", "name", "", "getName", "()Ljava/lang/String;", "type", "Lkotlin/reflect/KType;", "getType", "()Lkotlin/reflect/KType;", "equals", "other", "", "hashCode", "toString", "kotlin-reflection"})
 public final class n
-  extends i
+  implements j
 {
-  final Class<?> KUC;
-  private final String KWZ;
-  private final z.b<a> KWc;
+  private final y.a MNj;
+  private final y.a MNk;
+  final e<?> MOf;
+  final j.a MOg;
+  final int index;
   
-  public n(Class<?> paramClass, String paramString)
+  static
   {
-    AppMethodBeat.i(56432);
-    this.KUC = paramClass;
-    this.KWZ = paramString;
-    paramClass = z.M((d.g.a.a)new b(this));
-    d.g.b.k.g(paramClass, "ReflectProperties.lazy { Data() }");
-    this.KWc = paramClass;
-    AppMethodBeat.o(56432);
+    AppMethodBeat.i(56434);
+    cwV = new k[] { (k)z.a(new x(z.bp(n.class), "descriptor", "getDescriptor()Lorg/jetbrains/kotlin/descriptors/ParameterDescriptor;")), (k)z.a(new x(z.bp(n.class), "annotations", "getAnnotations()Ljava/util/List;")) };
+    AppMethodBeat.o(56434);
   }
   
-  private final d.l.b.a.b.j.f.h fPd()
+  public n(e<?> parame, int paramInt, j.a parama, d.g.a.a<? extends ae> parama1)
   {
-    AppMethodBeat.i(56425);
-    d.l.b.a.b.j.f.h localh = ((a)this.KWc.invoke()).fPd();
-    AppMethodBeat.o(56425);
-    return localh;
+    AppMethodBeat.i(56440);
+    this.MOf = parame;
+    this.index = paramInt;
+    this.MOg = parama;
+    this.MNj = y.R(parama1);
+    this.MNk = y.R((d.g.a.a)new a(this));
+    AppMethodBeat.o(56440);
   }
   
-  public final Collection<ah> a(d.l.b.a.b.f.f paramf)
+  private final ae ggC()
   {
-    AppMethodBeat.i(56426);
-    d.g.b.k.h(paramf, "name");
-    paramf = fPd().a(paramf, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.LjZ);
-    AppMethodBeat.o(56426);
-    return paramf;
+    AppMethodBeat.i(56435);
+    ae localae = (ae)this.MNj.invoke();
+    AppMethodBeat.o(56435);
+    return localae;
   }
   
-  public final ah agK(int paramInt)
+  public final boolean bqA()
   {
-    AppMethodBeat.i(56428);
-    Object localObject2 = (d.t)((a)this.KWc.invoke()).KXd.invoke();
-    if (localObject2 != null)
-    {
-      Object localObject3 = (g)((d.t)localObject2).first;
-      Object localObject1 = (a.k)((d.t)localObject2).second;
-      localObject2 = (d.l.b.a.b.e.c.a.f)((d.t)localObject2).KTn;
-      Object localObject4 = (i.c)localObject1;
-      Object localObject5 = d.l.b.a.b.e.c.a.Lyo;
-      d.g.b.k.g(localObject5, "JvmProtoBuf.packageLocalVariable");
-      localObject5 = (a.m)d.l.b.a.b.e.b.f.a((i.c)localObject4, (i.f)localObject5, paramInt);
-      if (localObject5 != null)
-      {
-        localObject4 = this.KUC;
-        localObject5 = (q)localObject5;
-        localObject3 = (d.l.b.a.b.e.b.c)localObject3;
-        localObject1 = ((a.k)localObject1).Luc;
-        d.g.b.k.g(localObject1, "packageProto.typeTable");
-        localObject1 = (ah)af.a((Class)localObject4, (q)localObject5, (d.l.b.a.b.e.b.c)localObject3, new d.l.b.a.b.e.b.h((a.s)localObject1), (d.l.b.a.b.e.b.a)localObject2, (m)c.KXh);
-        AppMethodBeat.o(56428);
-        return localObject1;
-      }
-      AppMethodBeat.o(56428);
-      return null;
+    AppMethodBeat.i(187764);
+    ae localae = ggC();
+    Object localObject = localae;
+    if (!(localae instanceof av)) {
+      localObject = null;
     }
-    AppMethodBeat.o(56428);
-    return null;
-  }
-  
-  public final Collection<d.l.b.a.b.b.t> b(d.l.b.a.b.f.f paramf)
-  {
-    AppMethodBeat.i(56427);
-    d.g.b.k.h(paramf, "name");
-    paramf = fPd().b(paramf, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.LjZ);
-    AppMethodBeat.o(56427);
-    return paramf;
+    localObject = (av)localObject;
+    if (localObject != null)
+    {
+      boolean bool = d.l.b.a.b.j.d.a.b((av)localObject);
+      AppMethodBeat.o(187764);
+      return bool;
+    }
+    AppMethodBeat.o(187764);
+    return false;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(56429);
-    if (((paramObject instanceof n)) && (d.g.b.k.g(this.KUC, ((n)paramObject).KUC)))
+    AppMethodBeat.i(56437);
+    if (((paramObject instanceof n)) && (p.i(this.MOf, ((n)paramObject).MOf)) && (p.i(ggC(), ((n)paramObject).ggC())))
     {
-      AppMethodBeat.o(56429);
+      AppMethodBeat.o(56437);
       return true;
     }
-    AppMethodBeat.o(56429);
+    AppMethodBeat.o(56437);
     return false;
   }
   
-  public final Collection<d.l.b.a.b.b.k> fOL()
+  public final String getName()
   {
-    return (Collection)v.KTF;
-  }
-  
-  protected final Class<?> fOX()
-  {
-    AppMethodBeat.i(56424);
-    Class localClass2 = (Class)((a)this.KWc.invoke()).KXc.invoke();
-    Class localClass1 = localClass2;
-    if (localClass2 == null) {
-      localClass1 = this.KUC;
+    AppMethodBeat.i(56436);
+    ae localae = ggC();
+    Object localObject = localae;
+    if (!(localae instanceof av)) {
+      localObject = null;
     }
-    AppMethodBeat.o(56424);
-    return localClass1;
+    localObject = (av)localObject;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(56436);
+      return null;
+    }
+    if (((av)localObject).gjv().git())
+    {
+      AppMethodBeat.o(56436);
+      return null;
+    }
+    localObject = ((av)localObject).giD();
+    p.g(localObject, "valueParameter.name");
+    if (((f)localObject).Nqp)
+    {
+      AppMethodBeat.o(56436);
+      return null;
+    }
+    localObject = ((f)localObject).sD();
+    AppMethodBeat.o(56436);
+    return localObject;
   }
   
-  public final Class<?> fOt()
+  public final o ggg()
   {
-    return this.KUC;
+    AppMethodBeat.i(187763);
+    Object localObject = ggC().gju();
+    p.g(localObject, "descriptor.type");
+    localObject = (o)new t((ab)localObject, (d.g.a.a)new b(this));
+    AppMethodBeat.o(187763);
+    return localObject;
+  }
+  
+  public final j.a ggh()
+  {
+    return this.MOg;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(56430);
-    int i = this.KUC.hashCode();
-    AppMethodBeat.o(56430);
-    return i;
+    AppMethodBeat.i(56438);
+    int i = this.MOf.hashCode();
+    int j = ggC().hashCode();
+    AppMethodBeat.o(56438);
+    return i * 31 + j;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(56431);
-    String str = "file class " + b.bz(this.KUC).fZF();
-    AppMethodBeat.o(56431);
-    return str;
+    AppMethodBeat.i(56439);
+    Object localObject = aa.MOS;
+    localObject = aa.b(this);
+    AppMethodBeat.o(56439);
+    return localObject;
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"Lkotlin/reflect/jvm/internal/KPackageImpl$Data;", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl$Data;", "Lkotlin/reflect/jvm/internal/KDeclarationContainerImpl;", "(Lkotlin/reflect/jvm/internal/KPackageImpl;)V", "kotlinClass", "Lkotlin/reflect/jvm/internal/impl/descriptors/runtime/components/ReflectKotlinClass;", "getKotlinClass", "()Lorg/jetbrains/kotlin/descriptors/runtime/components/ReflectKotlinClass;", "kotlinClass$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazySoftVal;", "members", "", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "getMembers", "()Ljava/util/Collection;", "members$delegate", "metadata", "Lkotlin/Triple;", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/deserialization/JvmNameResolver;", "Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Package;", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/deserialization/JvmMetadataVersion;", "getMetadata", "()Lkotlin/Triple;", "metadata$delegate", "Lkotlin/reflect/jvm/internal/ReflectProperties$LazyVal;", "multifileFacade", "Ljava/lang/Class;", "getMultifileFacade", "()Ljava/lang/Class;", "multifileFacade$delegate", "scope", "Lkotlin/reflect/jvm/internal/impl/resolve/scopes/MemberScope;", "getScope", "()Lorg/jetbrains/kotlin/resolve/scopes/MemberScope;", "scope$delegate", "kotlin-reflection"})
-  final class a
-    extends i.b
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "", "invoke"})
+  static final class a
+    extends q
+    implements d.g.a.a<List<? extends Annotation>>
   {
-    private final z.a KXa;
-    private final z.a KXb;
-    final z.b KXc;
-    final z.b KXd;
-    private final z.a KXe;
-    
-    static
-    {
-      AppMethodBeat.i(56416);
-      $$delegatedProperties = new d.l.k[] { (d.l.k)d.g.b.w.a(new u(d.g.b.w.bn(a.class), "kotlinClass", "getKotlinClass()Lorg/jetbrains/kotlin/descriptors/runtime/components/ReflectKotlinClass;")), (d.l.k)d.g.b.w.a(new u(d.g.b.w.bn(a.class), "scope", "getScope()Lorg/jetbrains/kotlin/resolve/scopes/MemberScope;")), (d.l.k)d.g.b.w.a(new u(d.g.b.w.bn(a.class), "multifileFacade", "getMultifileFacade()Ljava/lang/Class;")), (d.l.k)d.g.b.w.a(new u(d.g.b.w.bn(a.class), "metadata", "getMetadata()Lkotlin/Triple;")), (d.l.k)d.g.b.w.a(new u(d.g.b.w.bn(a.class), "members", "getMembers()Ljava/util/Collection;")) };
-      AppMethodBeat.o(56416);
-    }
-    
-    public a()
+    a(n paramn)
     {
       super();
-      AppMethodBeat.i(56418);
-      this.KXa = z.N((d.g.a.a)new a(this));
-      this.KXb = z.N((d.g.a.a)new e(this));
-      this.KXc = z.M((d.g.a.a)new d(this));
-      this.KXd = z.M((d.g.a.a)new c(this));
-      this.KXe = z.N((d.g.a.a)new b(this));
-      AppMethodBeat.o(56418);
-    }
-    
-    public final d.l.b.a.b.j.f.h fPd()
-    {
-      AppMethodBeat.i(56417);
-      d.l.b.a.b.j.f.h localh = (d.l.b.a.b.j.f.h)this.KXb.invoke();
-      AppMethodBeat.o(56417);
-      return localh;
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/impl/descriptors/runtime/components/ReflectKotlinClass;", "invoke"})
-    static final class a
-      extends d.g.b.l
-      implements d.g.a.a<d.l.b.a.b.b.d.a.f>
-    {
-      a(n.a parama)
-      {
-        super();
-      }
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "", "Lkotlin/reflect/jvm/internal/KCallableImpl;", "invoke"})
-    static final class b
-      extends d.g.b.l
-      implements d.g.a.a<Collection<? extends e<?>>>
-    {
-      b(n.a parama)
-      {
-        super();
-      }
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/Triple;", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/deserialization/JvmNameResolver;", "Lkotlin/reflect/jvm/internal/impl/metadata/ProtoBuf$Package;", "Lkotlin/reflect/jvm/internal/impl/metadata/jvm/deserialization/JvmMetadataVersion;", "invoke"})
-    static final class c
-      extends d.g.b.l
-      implements d.g.a.a<d.t<? extends g, ? extends a.k, ? extends d.l.b.a.b.e.c.a.f>>
-    {
-      c(n.a parama)
-      {
-        super();
-      }
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Ljava/lang/Class;", "invoke"})
-    static final class d
-      extends d.g.b.l
-      implements d.g.a.a<Class<?>>
-    {
-      d(n.a parama)
-      {
-        super();
-      }
-    }
-    
-    @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/impl/resolve/scopes/MemberScope;", "invoke"})
-    static final class e
-      extends d.g.b.l
-      implements d.g.a.a<d.l.b.a.b.j.f.h>
-    {
-      e(n.a parama)
-      {
-        super();
-      }
     }
   }
   
-  @d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"<anonymous>", "Lkotlin/reflect/jvm/internal/KPackageImpl$Data;", "Lkotlin/reflect/jvm/internal/KPackageImpl;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/lang/reflect/Type;", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.a<n.a>
+    extends q
+    implements d.g.a.a<Type>
   {
     b(n paramn)
     {
@@ -249,7 +173,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.a;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.d.a;
-import com.tencent.mm.protocal.protobuf.aqf;
-import com.tencent.mm.protocal.protobuf.aqg;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.aub;
+import com.tencent.mm.protocal.protobuf.auc;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,18 +15,18 @@ import java.util.Set;
 
 public final class d
 {
-  private static String aaQ(String paramString)
+  private static String aeE(String paramString)
   {
     AppMethodBeat.i(185584);
-    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.abg(paramString))
+    if (!com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeT(paramString))
     {
-      paramString = aaR(paramString);
+      paramString = aeF(paramString) + "#";
       AppMethodBeat.o(185584);
       return paramString;
     }
     Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(aaR(paramString)).append("#");
-    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.aaP(paramString);
+    ((StringBuilder)localObject1).append(aeF(paramString)).append("#");
+    Object localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.b.aeD(paramString);
     if ((localObject2 != null) && (!((Map)localObject2).isEmpty()))
     {
       localObject2 = ((Map)localObject2).entrySet().iterator();
@@ -36,15 +36,15 @@ public final class d
         ((StringBuilder)localObject1).append(localEntry.getKey()).append("_").append(localEntry.getValue()).append("|");
       }
     }
-    localObject2 = a.qpv;
-    paramString = a.aaH(paramString);
-    ac.i("SessionPageCollector", "HABBYGE-MALI, getLastSessionPagePath, matchedPathList: %d", new Object[] { Integer.valueOf(paramString.size()) });
+    localObject2 = a.qYu;
+    paramString = a.aev(paramString);
+    ad.i("HABBYGE-MALI.SessionPageCollector", "getLastSessionPagePath, matchedPathList: %d", new Object[] { Integer.valueOf(paramString.size()) });
     paramString = paramString.iterator();
     while (paramString.hasNext())
     {
-      localObject2 = (aqg)paramString.next();
-      if (((aqg)localObject2).EJg.size() > 0) {
-        ((StringBuilder)localObject1).append(((aqg)localObject2).EJj).append("_").append(((aqf)((aqg)localObject2).EJg.get(0)).startTime).append("|");
+      localObject2 = (auc)paramString.next();
+      if (((auc)localObject2).Gsi.size() > 0) {
+        ((StringBuilder)localObject1).append(((auc)localObject2).Gsl).append("_").append(((aub)((auc)localObject2).Gsi.get(0)).startTime).append("|");
       }
     }
     localObject1 = ((StringBuilder)localObject1).toString();
@@ -56,7 +56,7 @@ public final class d
     return paramString;
   }
   
-  private static String aaR(String paramString)
+  private static String aeF(String paramString)
   {
     AppMethodBeat.i(185585);
     if (paramString == null)
@@ -69,31 +69,31 @@ public final class d
     {
       String str = paramString.substring(0, i);
       paramString = paramString.substring(i + 1);
-      paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.abe(str) + "_" + paramString;
+      paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeR(str) + "_" + paramString;
       AppMethodBeat.o(185585);
       return paramString;
     }
-    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.abe(paramString);
+    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aeR(paramString);
     AppMethodBeat.o(185585);
     return paramString;
   }
   
-  public static String ckv()
+  public static String cpL()
   {
     AppMethodBeat.i(169348);
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.ckp();
-    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.cks();
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.cpE();
+    Object localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.cpI();
     if (localObject1 == null)
     {
-      ac.e("SessionPageCollector", "HABBYGE-MALI, realGetSessionPageId, pair == null");
+      ad.e("HABBYGE-MALI.SessionPageCollector", "realGetSessionPageId, pair == null");
       AppMethodBeat.o(169348);
       return null;
     }
     Object localObject2 = (String)((Pair)localObject1).first;
     String str = (String)((Pair)localObject1).second;
     localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append(aaR((String)localObject2)).append("#");
-    Object localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.b.aaO((String)localObject2);
+    ((StringBuilder)localObject1).append(aeF((String)localObject2)).append("#");
+    Object localObject3 = com.tencent.mm.plugin.expt.hellhound.a.f.b.aeC((String)localObject2);
     if ((localObject3 != null) && (!((Map)localObject3).isEmpty()))
     {
       localObject3 = ((Map)localObject3).entrySet().iterator();
@@ -103,17 +103,17 @@ public final class d
         ((StringBuilder)localObject1).append(localEntry.getKey()).append("_").append(localEntry.getValue()).append("|");
       }
     }
-    localObject3 = a.qpv;
-    localObject2 = a.aaG((String)localObject2);
+    localObject3 = a.qYu;
+    localObject2 = a.aeu((String)localObject2);
     if (localObject2 != null)
     {
-      ac.i("SessionPageCollector", "HABBYGE-MALI, realGetSessionPageId, matchingPathList: %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
+      ad.i("HABBYGE-MALI.SessionPageCollector", "realGetSessionPageId, matchingPathList: %d", new Object[] { Integer.valueOf(((List)localObject2).size()) });
       localObject2 = ((List)localObject2).iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (aqg)((Iterator)localObject2).next();
-        if (((aqg)localObject3).EJg.size() > 0) {
-          ((StringBuilder)localObject1).append(((aqg)localObject3).EJj).append("_").append(((aqf)((aqg)localObject3).EJg.get(0)).startTime).append("|");
+        localObject3 = (auc)((Iterator)localObject2).next();
+        if (((auc)localObject3).Gsi.size() > 0) {
+          ((StringBuilder)localObject1).append(((auc)localObject3).Gsl).append("_").append(((aub)((auc)localObject3).Gsi.get(0)).startTime).append("|");
         }
       }
     }
@@ -122,7 +122,7 @@ public final class d
     if (((String)localObject2).endsWith("|")) {
       localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
     }
-    localObject1 = (String)localObject1 + "$" + aaQ(str);
+    localObject1 = (String)localObject1 + "$" + aeE(str);
     AppMethodBeat.o(169348);
     return localObject1;
   }

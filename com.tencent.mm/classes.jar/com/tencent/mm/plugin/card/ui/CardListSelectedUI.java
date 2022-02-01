@@ -22,7 +22,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.opensdk.channel.MMessageActV2;
 import com.tencent.mm.opensdk.channel.MMessageActV2.Args;
 import com.tencent.mm.opensdk.modelbiz.ChooseCardFromWXCardPackage.Resp;
@@ -31,13 +32,10 @@ import com.tencent.mm.plugin.card.b.j.a;
 import com.tencent.mm.plugin.card.b.j.b;
 import com.tencent.mm.plugin.card.d.d;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.model.a;
-import com.tencent.mm.plugin.card.model.aj;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import java.util.ArrayList;
@@ -48,58 +46,58 @@ import org.json.JSONObject;
 
 public class CardListSelectedUI
   extends MMActivity
-  implements com.tencent.mm.ak.g, j.a
+  implements f, j.a
 {
-  private View EP;
+  private View GG;
   private String app_id;
-  LinkedList<a> fXm;
-  private int fwc;
-  private p fxw;
-  boolean gNN;
+  private int fPp;
+  private p fQJ;
+  LinkedList<com.tencent.mm.plugin.card.model.a> gqI;
+  boolean hhJ;
   private ListView mListView;
-  private String nUr;
-  com.tencent.mm.bw.b nWX;
-  private boolean nZZ;
-  private BaseAdapter oao;
-  private String obi;
-  private String obk;
-  private TextView oeQ;
-  private RelativeLayout oeR;
-  private TextView oeS;
-  private TextView oeT;
-  boolean oeU;
-  HashMap<Integer, Boolean> oeV;
-  private boolean oeW;
-  private boolean oeX;
-  private boolean oeY;
-  private int oeZ;
-  private String ofa;
-  private String ofb;
-  private String ofc;
-  private String ofd;
-  private int ofe;
-  public String ofg;
-  private boolean ofh;
-  private a ofi;
+  com.tencent.mm.bx.b oAr;
+  private BaseAdapter oDI;
+  private boolean oDt;
+  private String oEC;
+  private String oED;
+  private boolean oIA;
+  private com.tencent.mm.plugin.card.model.a oIB;
+  private TextView oIk;
+  private RelativeLayout oIl;
+  private TextView oIm;
+  private TextView oIn;
+  boolean oIo;
+  HashMap<Integer, Boolean> oIp;
+  private boolean oIq;
+  private boolean oIr;
+  private boolean oIs;
+  private int oIt;
+  private String oIu;
+  private String oIv;
+  private String oIw;
+  private String oIx;
+  private int oIy;
+  public String oIz;
+  private String oxM;
   private int time_stamp;
   
   public CardListSelectedUI()
   {
     AppMethodBeat.i(113496);
-    this.fxw = null;
-    this.oeU = false;
-    this.fXm = new LinkedList();
-    this.oeV = new HashMap();
-    this.gNN = true;
-    this.nWX = null;
-    this.nZZ = false;
-    this.obi = "";
-    this.ofh = false;
-    this.fwc = 0;
+    this.fQJ = null;
+    this.oIo = false;
+    this.gqI = new LinkedList();
+    this.oIp = new HashMap();
+    this.hhJ = true;
+    this.oAr = null;
+    this.oDt = false;
+    this.oEC = "";
+    this.oIA = false;
+    this.fPp = 0;
     AppMethodBeat.o(113496);
   }
   
-  private static String Ve(String paramString)
+  private static String YN(String paramString)
   {
     AppMethodBeat.i(113501);
     if (TextUtils.isEmpty(paramString))
@@ -115,29 +113,29 @@ public class CardListSelectedUI
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.CardListSelectedUI", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CardListSelectedUI", paramString, "", new Object[0]);
       AppMethodBeat.o(113501);
     }
     return null;
   }
   
-  private void aG(int paramInt, String paramString)
+  private void aJ(int paramInt, String paramString)
   {
     AppMethodBeat.i(113509);
-    if (this.fwc != 8)
+    if (this.fPp != 8)
     {
-      ac.e("MicroMsg.CardListSelectedUI", "setResultToSDK need MM_CARD_ITEM_FROM_SCENE_OPENAPI scene, the fromscene is " + this.fwc);
+      ad.e("MicroMsg.CardListSelectedUI", "setResultToSDK need MM_CARD_ITEM_FROM_SCENE_OPENAPI scene, the fromscene is " + this.fPp);
       AppMethodBeat.o(113509);
       return;
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("_wxapi_choose_card_from_wx_card_list", paramString);
-    Object localObject = h.k(this.app_id, true, false);
+    Object localObject = h.m(this.app_id, true, false);
     ChooseCardFromWXCardPackage.Resp localResp = new ChooseCardFromWXCardPackage.Resp(localBundle);
     if (localObject != null) {
       localResp.openId = ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_openId;
     }
-    localResp.transaction = this.obk;
+    localResp.transaction = this.oED;
     String str2 = this.app_id;
     String str1;
     if (localObject == null)
@@ -148,10 +146,10 @@ public class CardListSelectedUI
       }
       localObject = "null appinfo";
       label130:
-      ac.i("MicroMsg.CardListSelectedUI", "setResultToSDK, appid : %s, appname : %s, openid : %s, transcation : %s", new Object[] { str2, str1, localObject, this.obk });
+      ad.i("MicroMsg.CardListSelectedUI", "setResultToSDK, appid : %s, appname : %s, openid : %s, transcation : %s", new Object[] { str2, str1, localObject, this.oED });
       localResp.toBundle(localBundle);
-      ac.i("MicroMsg.CardListSelectedUI", "setResultToSDK result:".concat(String.valueOf(paramInt)));
-      ac.d("MicroMsg.CardListSelectedUI", "setResultToSDK card_list:".concat(String.valueOf(paramString)));
+      ad.i("MicroMsg.CardListSelectedUI", "setResultToSDK result:".concat(String.valueOf(paramInt)));
+      ad.d("MicroMsg.CardListSelectedUI", "setResultToSDK card_list:".concat(String.valueOf(paramString)));
       if (paramInt != -1) {
         break label273;
       }
@@ -161,11 +159,11 @@ public class CardListSelectedUI
     for (localResp.errCode = 0;; localResp.errCode = -2)
     {
       paramString = new MMessageActV2.Args();
-      paramString.targetPkgName = this.obi;
+      paramString.targetPkgName = this.oEC;
       paramString.bundle = localBundle;
-      com.tencent.mm.pluginsdk.model.app.q.aW(localBundle);
-      com.tencent.mm.pluginsdk.model.app.q.aX(localBundle);
-      MMessageActV2.send(ai.getContext(), paramString);
+      com.tencent.mm.pluginsdk.model.app.q.bb(localBundle);
+      com.tencent.mm.pluginsdk.model.app.q.bc(localBundle);
+      MMessageActV2.send(com.tencent.mm.sdk.platformtools.aj.getContext(), paramString);
       AppMethodBeat.o(113509);
       return;
       str1 = ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appName;
@@ -175,62 +173,43 @@ public class CardListSelectedUI
     }
   }
   
-  private void bRD()
-  {
-    AppMethodBeat.i(113506);
-    Intent localIntent = new Intent();
-    String str = bSu();
-    if (this.ofh) {
-      localIntent.putExtra("choose_invoice_info", str);
-    }
-    for (;;)
-    {
-      setResult(-1, localIntent);
-      aG(-1, str);
-      finish();
-      AppMethodBeat.o(113506);
-      return;
-      localIntent.putExtra("choose_card_info", str);
-    }
-  }
-  
-  private void bSt()
+  private void bWY()
   {
     AppMethodBeat.i(113498);
-    if (this.nZZ)
+    if (this.oDt)
     {
-      ac.e("MicroMsg.CardListSelectedUI", "doNetSceneGetShareCardsLayout, isDoingGetData is true");
+      ad.e("MicroMsg.CardListSelectedUI", "doNetSceneGetShareCardsLayout, isDoingGetData is true");
       AppMethodBeat.o(113498);
       return;
     }
-    if (this.nWX == null)
+    if (this.oAr == null)
     {
-      this.oeW = false;
-      this.oeX = false;
-      this.oeY = false;
+      this.oIq = false;
+      this.oIr = false;
+      this.oIs = false;
     }
-    com.tencent.mm.kernel.g.agQ().ghe.a(1059, this);
-    aj localaj = new aj(this.app_id, this.oeZ, this.ofa, this.ofb, this.time_stamp, this.ofc, this.nUr, this.ofd, this.nWX);
-    com.tencent.mm.kernel.g.agQ().ghe.a(localaj, 0);
-    ji(true);
-    this.nZZ = true;
-    if (this.ofe == 1) {
-      this.oeU = true;
+    com.tencent.mm.kernel.g.ajB().gAO.a(1059, this);
+    com.tencent.mm.plugin.card.model.aj localaj = new com.tencent.mm.plugin.card.model.aj(this.app_id, this.oIt, this.oIu, this.oIv, this.time_stamp, this.oIw, this.oxM, this.oIx, this.oAr);
+    com.tencent.mm.kernel.g.ajB().gAO.a(localaj, 0);
+    jt(true);
+    this.oDt = true;
+    if (this.oIy == 1) {
+      this.oIo = true;
     }
     AppMethodBeat.o(113498);
   }
   
-  private String bSu()
+  private String bWZ()
   {
     int j = 0;
     AppMethodBeat.i(113507);
     Object localObject1 = new ArrayList();
     int i = 0;
-    while (i < this.fXm.size())
+    while (i < this.gqI.size())
     {
-      localObject2 = (Boolean)this.oeV.get(Integer.valueOf(i));
+      localObject2 = (Boolean)this.oIp.get(Integer.valueOf(i));
       if ((localObject2 != null) && (((Boolean)localObject2).booleanValue())) {
-        ((ArrayList)localObject1).add(this.fXm.get(i));
+        ((ArrayList)localObject1).add(this.gqI.get(i));
       }
       i += 1;
     }
@@ -242,14 +221,14 @@ public class CardListSelectedUI
       if (i != 0) {
         ((StringBuilder)localObject2).append(",");
       }
-      a locala = (a)((ArrayList)localObject1).get(i);
+      com.tencent.mm.plugin.card.model.a locala = (com.tencent.mm.plugin.card.model.a)((ArrayList)localObject1).get(i);
       ((StringBuilder)localObject2).append("{");
       ((StringBuilder)localObject2).append("\"card_id\":");
-      ((StringBuilder)localObject2).append("\"" + locala.nUr + "\"");
+      ((StringBuilder)localObject2).append("\"" + locala.oxM + "\"");
       ((StringBuilder)localObject2).append(",");
       ((StringBuilder)localObject2).append("\"encrypt_code\":");
-      ((StringBuilder)localObject2).append("\"" + locala.nUu + "\"");
-      if (this.ofh)
+      ((StringBuilder)localObject2).append("\"" + locala.oxP + "\"");
+      if (this.oIA)
       {
         ((StringBuilder)localObject2).append(",");
         ((StringBuilder)localObject2).append("\"app_id\":");
@@ -264,67 +243,86 @@ public class CardListSelectedUI
     return localObject1;
   }
   
-  public final void UA(String paramString) {}
+  private void bWi()
+  {
+    AppMethodBeat.i(113506);
+    Intent localIntent = new Intent();
+    String str = bWZ();
+    if (this.oIA) {
+      localIntent.putExtra("choose_invoice_info", str);
+    }
+    for (;;)
+    {
+      setResult(-1, localIntent);
+      aJ(-1, str);
+      finish();
+      AppMethodBeat.o(113506);
+      return;
+      localIntent.putExtra("choose_card_info", str);
+    }
+  }
+  
+  public final void Yj(String paramString) {}
   
   public final void b(String paramString, j.b paramb)
   {
     int j = 0;
     AppMethodBeat.i(113502);
-    ji(false);
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(this.ofi.nUw)))
+    jt(false);
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(this.oIB.oxR)))
     {
-      ac.e("MicroMsg.CardListSelectedUI", "onMarkSuccess(), the mark card id is diff from current id!");
+      ad.e("MicroMsg.CardListSelectedUI", "onMarkSuccess(), the mark card id is diff from current id!");
       AppMethodBeat.o(113502);
       return;
     }
-    ac.i("MicroMsg.CardListSelectedUI", "onMarkSuccess()");
-    ac.i("MicroMsg.CardListSelectedUI", "markSucc:" + paramb.nUf + " markCardId: " + paramb.nUg);
-    if (paramb.nUf == 1)
+    ad.i("MicroMsg.CardListSelectedUI", "onMarkSuccess()");
+    ad.i("MicroMsg.CardListSelectedUI", "markSucc:" + paramb.oxA + " markCardId: " + paramb.oxB);
+    if (paramb.oxA == 1)
     {
       int i;
-      if ((!TextUtils.isEmpty(paramb.nUg)) && (!paramString.equals(paramb.nUg)))
+      if ((!TextUtils.isEmpty(paramb.oxB)) && (!paramString.equals(paramb.oxB)))
       {
-        ac.i("MicroMsg.CardListSelectedUI", "markCardId is diff as now id!");
+        ad.i("MicroMsg.CardListSelectedUI", "markCardId is diff as now id!");
         i = 0;
-        if (i < this.fXm.size())
+        if (i < this.gqI.size())
         {
-          if (((a)this.fXm.get(i)).nUw != paramb.nUg) {
+          if (((com.tencent.mm.plugin.card.model.a)this.gqI.get(i)).oxR != paramb.oxB) {
             break label230;
           }
-          while (j < this.fXm.size())
+          while (j < this.gqI.size())
           {
-            this.oeV.put(Integer.valueOf(j), Boolean.FALSE);
+            this.oIp.put(Integer.valueOf(j), Boolean.FALSE);
             j += 1;
           }
-          this.oeV.put(Integer.valueOf(i), Boolean.TRUE);
+          this.oIp.put(Integer.valueOf(i), Boolean.TRUE);
         }
       }
       for (;;)
       {
-        bRD();
+        bWi();
         AppMethodBeat.o(113502);
         return;
         label230:
         i += 1;
         break;
-        ac.i("MicroMsg.CardListSelectedUI", "markCardId is same as now id!");
+        ad.i("MicroMsg.CardListSelectedUI", "markCardId is same as now id!");
       }
     }
     d.c(this, getString(2131756927));
     AppMethodBeat.o(113502);
   }
   
-  public final void eL(String paramString1, String paramString2)
+  public final void eV(String paramString1, String paramString2)
   {
     AppMethodBeat.i(113503);
-    ji(false);
-    if ((!TextUtils.isEmpty(paramString1)) && (!paramString1.equals(this.ofi.nUw)))
+    jt(false);
+    if ((!TextUtils.isEmpty(paramString1)) && (!paramString1.equals(this.oIB.oxR)))
     {
-      ac.e("MicroMsg.CardListSelectedUI", "onMarkFail(), the mark card id is diff from current id!");
+      ad.e("MicroMsg.CardListSelectedUI", "onMarkFail(), the mark card id is diff from current id!");
       AppMethodBeat.o(113503);
       return;
     }
-    ac.i("MicroMsg.CardListSelectedUI", "onMarkFail()");
+    ad.i("MicroMsg.CardListSelectedUI", "onMarkFail()");
     paramString1 = paramString2;
     if (TextUtils.isEmpty(paramString2)) {
       paramString1 = getString(2131756926);
@@ -341,7 +339,7 @@ public class CardListSelectedUI
   public void initView()
   {
     AppMethodBeat.i(113499);
-    if (this.ofh)
+    if (this.oIA)
     {
       setMMTitle(2131756921);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -356,17 +354,17 @@ public class CardListSelectedUI
           return true;
         }
       });
-      if (!this.ofh)
+      if (!this.oIA)
       {
         addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
             AppMethodBeat.i(113483);
-            if ((!CardListSelectedUI.this.oeU) && (CardListSelectedUI.b(CardListSelectedUI.this).nUB))
+            if ((!CardListSelectedUI.this.oIo) && (CardListSelectedUI.b(CardListSelectedUI.this).oxW))
             {
-              CardListSelectedUI.this.ji(true);
-              am.bQu().S(CardListSelectedUI.b(CardListSelectedUI.this).nUw, l.VE(CardListSelectedUI.b(CardListSelectedUI.this).userName), 3);
+              CardListSelectedUI.this.jt(true);
+              am.bUZ().U(CardListSelectedUI.b(CardListSelectedUI.this).oxR, l.Zn(CardListSelectedUI.b(CardListSelectedUI.this).userName), 3);
             }
             for (;;)
             {
@@ -379,31 +377,38 @@ public class CardListSelectedUI
         enableOptionMenu(false);
       }
       this.mListView = ((ListView)findViewById(2131297841));
-      if (!this.ofh) {
+      if (!this.oIA) {
         break label288;
       }
     }
     label288:
-    for (this.oao = new b();; this.oao = new a())
+    for (this.oDI = new b();; this.oDI = new a())
     {
-      this.mListView.setAdapter(this.oao);
+      this.mListView.setAdapter(this.oDI);
       this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           int i = 0;
           AppMethodBeat.i(113484);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousAdapterView);
+          localb.bd(paramAnonymousView);
+          localb.mr(paramAnonymousInt);
+          localb.qY(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CardListSelectedUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
           if (paramAnonymousView.getAlpha() != 1.0F)
           {
-            ac.d("MicroMsg.CardListSelectedUI", "item view is gray, cannot click, do nothing return！");
+            ad.d("MicroMsg.CardListSelectedUI", "item view is gray, cannot click, do nothing return！");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardListSelectedUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(113484);
             return;
           }
           boolean bool;
-          if (CardListSelectedUI.this.oeU)
+          if (CardListSelectedUI.this.oIo)
           {
-            bool = ((Boolean)CardListSelectedUI.this.oeV.get(Integer.valueOf(paramAnonymousInt))).booleanValue();
-            paramAnonymousAdapterView = CardListSelectedUI.this.oeV;
+            bool = ((Boolean)CardListSelectedUI.this.oIp.get(Integer.valueOf(paramAnonymousInt))).booleanValue();
+            paramAnonymousAdapterView = CardListSelectedUI.this.oIp;
             if (!bool)
             {
               bool = true;
@@ -414,17 +419,18 @@ public class CardListSelectedUI
           {
             CardListSelectedUI.c(CardListSelectedUI.this).notifyDataSetChanged();
             CardListSelectedUI.d(CardListSelectedUI.this);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardListSelectedUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(113484);
             return;
             bool = false;
             break;
-            while (i < CardListSelectedUI.this.fXm.size())
+            while (i < CardListSelectedUI.this.gqI.size())
             {
-              CardListSelectedUI.this.oeV.put(Integer.valueOf(i), Boolean.FALSE);
+              CardListSelectedUI.this.oIp.put(Integer.valueOf(i), Boolean.FALSE);
               i += 1;
             }
-            CardListSelectedUI.this.oeV.put(Integer.valueOf(paramAnonymousInt), Boolean.TRUE);
-            CardListSelectedUI.a(CardListSelectedUI.this, (a)CardListSelectedUI.this.fXm.get(paramAnonymousInt));
+            CardListSelectedUI.this.oIp.put(Integer.valueOf(paramAnonymousInt), Boolean.TRUE);
+            CardListSelectedUI.a(CardListSelectedUI.this, (com.tencent.mm.plugin.card.model.a)CardListSelectedUI.this.gqI.get(paramAnonymousInt));
           }
         }
       });
@@ -433,9 +439,9 @@ public class CardListSelectedUI
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(113485);
-          if ((paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (!CardListSelectedUI.this.gNN))
+          if ((paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1) && (!CardListSelectedUI.this.hhJ))
           {
-            ac.d("MicroMsg.CardListSelectedUI", "onScroll() >> doGetCardList()");
+            ad.d("MicroMsg.CardListSelectedUI", "onScroll() >> doGetCardList()");
             CardListSelectedUI.e(CardListSelectedUI.this);
           }
           AppMethodBeat.o(113485);
@@ -443,35 +449,43 @@ public class CardListSelectedUI
         
         public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
       });
-      this.EP = findViewById(2131298768);
-      this.oeQ = ((TextView)findViewById(2131302872));
-      if (this.ofh) {
-        this.oeQ.setText(getString(2131756962));
+      this.GG = findViewById(2131298768);
+      this.oIk = ((TextView)findViewById(2131302872));
+      if (this.oIA) {
+        this.oIk.setText(getString(2131756962));
       }
-      this.oeR = ((RelativeLayout)findViewById(2131301082));
-      this.oeS = ((TextView)findViewById(2131301099));
-      this.oeT = ((TextView)findViewById(2131301094));
-      if (!this.ofh) {
+      this.oIl = ((RelativeLayout)findViewById(2131301082));
+      this.oIm = ((TextView)findViewById(2131301099));
+      this.oIn = ((TextView)findViewById(2131301094));
+      if (!this.oIA) {
         break label303;
       }
-      this.oeR.setVisibility(0);
-      this.oeS.setOnClickListener(new View.OnClickListener()
+      this.oIl.setVisibility(0);
+      this.oIm.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(113486);
-          if (!bs.isNullOrNil(CardListSelectedUI.this.ofg)) {
-            com.tencent.mm.plugin.card.d.b.a(CardListSelectedUI.this, CardListSelectedUI.this.ofg, CardListSelectedUI.this.getString(2131756909));
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CardListSelectedUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          if (!bt.isNullOrNil(CardListSelectedUI.this.oIz)) {
+            com.tencent.mm.plugin.card.d.b.a(CardListSelectedUI.this, CardListSelectedUI.this.oIz, CardListSelectedUI.this.getString(2131756909));
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardListSelectedUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(113486);
         }
       });
-      this.oeT.setOnClickListener(new View.OnClickListener()
+      this.oIn.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(113487);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/card/ui/CardListSelectedUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           CardListSelectedUI.a(CardListSelectedUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/ui/CardListSelectedUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(113487);
         }
       });
@@ -481,23 +495,23 @@ public class CardListSelectedUI
       break;
     }
     label303:
-    this.oeR.setVisibility(8);
+    this.oIl.setVisibility(8);
     AppMethodBeat.o(113499);
   }
   
-  protected final void ji(boolean paramBoolean)
+  protected final void jt(boolean paramBoolean)
   {
     AppMethodBeat.i(113505);
     if (paramBoolean)
     {
-      this.fxw = p.a(this, getString(2131760709), false, 0, null);
+      this.fQJ = p.a(this, getString(2131760709), false, 0, null);
       AppMethodBeat.o(113505);
       return;
     }
-    if ((this.fxw != null) && (this.fxw.isShowing()))
+    if ((this.fQJ != null) && (this.fQJ.isShowing()))
     {
-      this.fxw.dismiss();
-      this.fxw = null;
+      this.fQJ.dismiss();
+      this.fQJ = null;
     }
     AppMethodBeat.o(113505);
   }
@@ -506,45 +520,45 @@ public class CardListSelectedUI
   {
     AppMethodBeat.i(113497);
     super.onCreate(paramBundle);
-    am.bQu().a(this);
+    am.bUZ().a(this);
     paramBundle = getIntent();
-    ac.i("MicroMsg.CardListSelectedUI", "initData()");
+    ad.i("MicroMsg.CardListSelectedUI", "initData()");
     if (paramBundle == null)
     {
-      ac.e("MicroMsg.CardListSelectedUI", "doGetCardList()  intent == null");
+      ad.e("MicroMsg.CardListSelectedUI", "doGetCardList()  intent == null");
       setResult(1);
-      aG(1, "");
+      aJ(1, "");
       finish();
     }
     for (;;)
     {
-      bSt();
+      bWY();
       initView();
       AppMethodBeat.o(113497);
       return;
-      this.fwc = paramBundle.getIntExtra("key_from_scene", 0);
-      ac.i("MicroMsg.CardListSelectedUI", "mFromScene:" + this.fwc);
+      this.fPp = paramBundle.getIntExtra("key_from_scene", 0);
+      ad.i("MicroMsg.CardListSelectedUI", "mFromScene:" + this.fPp);
       this.app_id = paramBundle.getStringExtra("app_id");
-      this.oeZ = paramBundle.getIntExtra("shop_id", 0);
-      this.ofa = paramBundle.getStringExtra("sign_type");
-      this.ofb = paramBundle.getStringExtra("card_sign");
+      this.oIt = paramBundle.getIntExtra("shop_id", 0);
+      this.oIu = paramBundle.getStringExtra("sign_type");
+      this.oIv = paramBundle.getStringExtra("card_sign");
       this.time_stamp = paramBundle.getIntExtra("time_stamp", 0);
-      this.ofc = paramBundle.getStringExtra("nonce_str");
-      this.nUr = paramBundle.getStringExtra("card_tp_id");
-      this.ofd = paramBundle.getStringExtra("card_type");
-      this.ofe = paramBundle.getIntExtra("can_multi_select", 0);
-      this.obi = paramBundle.getStringExtra("key_package_name");
-      this.obk = paramBundle.getStringExtra("key_transaction");
-      ac.i("MicroMsg.CardListSelectedUI", "app_id:" + this.app_id + " shop_id:" + this.oeZ + " sign_type:" + this.ofa + " time_stamp:" + this.time_stamp);
-      ac.i("MicroMsg.CardListSelectedUI", "nonce_str:" + this.ofc + " card_tp_id:" + this.nUr + " card_type:" + this.ofd + " canMultiSelect:" + this.ofe + " packateName:" + this.obi);
-      if ("INVOICE".equalsIgnoreCase(this.ofd)) {
-        this.ofh = true;
+      this.oIw = paramBundle.getStringExtra("nonce_str");
+      this.oxM = paramBundle.getStringExtra("card_tp_id");
+      this.oIx = paramBundle.getStringExtra("card_type");
+      this.oIy = paramBundle.getIntExtra("can_multi_select", 0);
+      this.oEC = paramBundle.getStringExtra("key_package_name");
+      this.oED = paramBundle.getStringExtra("key_transaction");
+      ad.i("MicroMsg.CardListSelectedUI", "app_id:" + this.app_id + " shop_id:" + this.oIt + " sign_type:" + this.oIu + " time_stamp:" + this.time_stamp);
+      ad.i("MicroMsg.CardListSelectedUI", "nonce_str:" + this.oIw + " card_tp_id:" + this.oxM + " card_type:" + this.oIx + " canMultiSelect:" + this.oIy + " packateName:" + this.oEC);
+      if ("INVOICE".equalsIgnoreCase(this.oIx)) {
+        this.oIA = true;
       }
       if (TextUtils.isEmpty(this.app_id))
       {
-        ac.e("MicroMsg.CardListSelectedUI", "doGetCardList()  app_id is nulls");
+        ad.e("MicroMsg.CardListSelectedUI", "doGetCardList()  app_id is nulls");
         setResult(1);
-        aG(1, "app_id  or card_sign is empty!");
+        aJ(1, "app_id  or card_sign is empty!");
         finish();
       }
     }
@@ -553,7 +567,7 @@ public class CardListSelectedUI
   public void onDestroy()
   {
     AppMethodBeat.i(113504);
-    am.bQu().b(this);
+    am.bUZ().b(this);
     super.onDestroy();
     AppMethodBeat.o(113504);
   }
@@ -564,7 +578,7 @@ public class CardListSelectedUI
     if (paramInt == 4)
     {
       setResult(0);
-      aG(0, "");
+      aJ(0, "");
       finish();
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
@@ -575,78 +589,78 @@ public class CardListSelectedUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(113500);
-    if ((paramn instanceof aj))
+    if ((paramn instanceof com.tencent.mm.plugin.card.model.aj))
     {
-      com.tencent.mm.kernel.g.agQ().ghe.b(1059, this);
-      ji(false);
+      com.tencent.mm.kernel.g.ajB().gAO.b(1059, this);
+      jt(false);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label395;
       }
-      paramString = ((aj)paramn).nWw;
-      ac.d("MicroMsg.CardListSelectedUI", paramString);
-      LinkedList localLinkedList1 = a.UD(paramString);
-      LinkedList localLinkedList2 = a.UE(paramString);
-      this.ofg = Ve(paramString);
-      if ((this.nWX == null) && ((localLinkedList1 != null) || (localLinkedList2 != null)))
+      paramString = ((com.tencent.mm.plugin.card.model.aj)paramn).ozQ;
+      ad.d("MicroMsg.CardListSelectedUI", paramString);
+      LinkedList localLinkedList1 = com.tencent.mm.plugin.card.model.a.Ym(paramString);
+      LinkedList localLinkedList2 = com.tencent.mm.plugin.card.model.a.Yn(paramString);
+      this.oIz = YN(paramString);
+      if ((this.oAr == null) && ((localLinkedList1 != null) || (localLinkedList2 != null)))
       {
-        this.oeV.clear();
-        this.fXm.clear();
+        this.oIp.clear();
+        this.gqI.clear();
       }
       if (localLinkedList1 != null)
       {
-        if ((localLinkedList1.size() > 0) && (!this.oeW))
+        if ((localLinkedList1.size() > 0) && (!this.oIq))
         {
-          this.oeW = true;
-          if (!this.ofh) {
+          this.oIq = true;
+          if (!this.oIA) {
             break label208;
           }
         }
         label208:
-        for (((a)localLinkedList1.get(0)).nvS = getString(2131756973);; ((a)localLinkedList1.get(0)).nvS = getString(2131756972))
+        for (((com.tencent.mm.plugin.card.model.a)localLinkedList1.get(0)).nXq = getString(2131756973);; ((com.tencent.mm.plugin.card.model.a)localLinkedList1.get(0)).nXq = getString(2131756972))
         {
-          paramInt1 = this.fXm.size();
-          this.fXm.addAll(localLinkedList1);
-          while (paramInt1 < this.fXm.size())
+          paramInt1 = this.gqI.size();
+          this.gqI.addAll(localLinkedList1);
+          while (paramInt1 < this.gqI.size())
           {
-            this.oeV.put(Integer.valueOf(paramInt1), Boolean.FALSE);
+            this.oIp.put(Integer.valueOf(paramInt1), Boolean.FALSE);
             paramInt1 += 1;
           }
         }
       }
       if (localLinkedList2 != null)
       {
-        if ((localLinkedList2.size() > 0) && (!this.oeX))
+        if ((localLinkedList2.size() > 0) && (!this.oIr))
         {
-          this.oeX = true;
-          ((a)localLinkedList2.get(0)).nvS = getString(2131756824);
+          this.oIr = true;
+          ((com.tencent.mm.plugin.card.model.a)localLinkedList2.get(0)).nXq = getString(2131756824);
         }
-        paramInt1 = this.fXm.size();
-        this.fXm.addAll(localLinkedList2);
-        while (paramInt1 < this.fXm.size())
+        paramInt1 = this.gqI.size();
+        this.gqI.addAll(localLinkedList2);
+        while (paramInt1 < this.gqI.size())
         {
-          this.oeV.put(Integer.valueOf(paramInt1), Boolean.FALSE);
+          this.oIp.put(Integer.valueOf(paramInt1), Boolean.FALSE);
           paramInt1 += 1;
         }
       }
-      this.gNN = ((aj)paramn).gNN;
-      this.nWX = ((aj)paramn).nWX;
-      this.oao.notifyDataSetChanged();
-      if (this.fXm.size() == 0) {
+      this.hhJ = ((com.tencent.mm.plugin.card.model.aj)paramn).hhJ;
+      this.oAr = ((com.tencent.mm.plugin.card.model.aj)paramn).oAr;
+      this.oDI.notifyDataSetChanged();
+      if (this.gqI.size() == 0) {
         break label404;
       }
-      this.EP.setVisibility(8);
+      this.GG.setVisibility(8);
       this.mListView.setVisibility(0);
     }
     for (;;)
     {
-      this.nZZ = false;
+      this.oDt = false;
       AppMethodBeat.o(113500);
       return;
       label395:
       d.b(this, paramString, paramInt2);
       break;
       label404:
-      this.EP.setVisibility(0);
+      this.GG.setVisibility(0);
       this.mListView.setVisibility(8);
     }
   }
@@ -662,10 +676,10 @@ public class CardListSelectedUI
   {
     a() {}
     
-    private a zU(int paramInt)
+    private com.tencent.mm.plugin.card.model.a AD(int paramInt)
     {
       AppMethodBeat.i(113489);
-      a locala = (a)CardListSelectedUI.this.fXm.get(paramInt);
+      com.tencent.mm.plugin.card.model.a locala = (com.tencent.mm.plugin.card.model.a)CardListSelectedUI.this.gqI.get(paramInt);
       AppMethodBeat.o(113489);
       return locala;
     }
@@ -673,7 +687,7 @@ public class CardListSelectedUI
     public final int getCount()
     {
       AppMethodBeat.i(113488);
-      int i = CardListSelectedUI.this.fXm.size();
+      int i = CardListSelectedUI.this.gqI.size();
       AppMethodBeat.o(113488);
       return i;
     }
@@ -686,7 +700,7 @@ public class CardListSelectedUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(113490);
-      Object localObject = zU(paramInt);
+      Object localObject = AD(paramInt);
       label186:
       label217:
       int i;
@@ -694,43 +708,43 @@ public class CardListSelectedUI
       {
         paramView = View.inflate(CardListSelectedUI.this, 2131493340, null);
         paramViewGroup = new CardListSelectedUI.d(CardListSelectedUI.this);
-        paramViewGroup.ofq = ((ImageView)paramView.findViewById(2131301584));
-        paramViewGroup.fUk = ((TextView)paramView.findViewById(2131305902));
-        paramViewGroup.ofm = ((TextView)paramView.findViewById(2131305508));
-        paramViewGroup.ofr = ((TextView)paramView.findViewById(2131296994));
-        paramViewGroup.nvL = ((TextView)paramView.findViewById(2131297925));
-        paramViewGroup.ofs = paramView.findViewById(2131297424);
-        paramViewGroup.oft = ((ImageView)paramView.findViewById(2131297894));
+        paramViewGroup.oIJ = ((ImageView)paramView.findViewById(2131301584));
+        paramViewGroup.gnM = ((TextView)paramView.findViewById(2131305902));
+        paramViewGroup.oIF = ((TextView)paramView.findViewById(2131305508));
+        paramViewGroup.oIK = ((TextView)paramView.findViewById(2131296994));
+        paramViewGroup.nXj = ((TextView)paramView.findViewById(2131297925));
+        paramViewGroup.oIL = paramView.findViewById(2131297424);
+        paramViewGroup.oIM = ((ImageView)paramView.findViewById(2131297894));
         paramView.setTag(paramViewGroup);
-        if (!l.zG(((a)localObject).lRv)) {
+        if (!l.Ap(((com.tencent.mm.plugin.card.model.a)localObject).mrl)) {
           break label389;
         }
-        paramViewGroup.fUk.setText(((a)localObject).nUs);
-        if (TextUtils.isEmpty(((a)localObject).title)) {
+        paramViewGroup.gnM.setText(((com.tencent.mm.plugin.card.model.a)localObject).oxN);
+        if (TextUtils.isEmpty(((com.tencent.mm.plugin.card.model.a)localObject).title)) {
           break label347;
         }
-        paramViewGroup.ofm.setVisibility(0);
-        paramViewGroup.ofm.setText(((a)localObject).title);
-        if (TextUtils.isEmpty(((a)localObject).nUt)) {
+        paramViewGroup.oIF.setVisibility(0);
+        paramViewGroup.oIF.setText(((com.tencent.mm.plugin.card.model.a)localObject).title);
+        if (TextUtils.isEmpty(((com.tencent.mm.plugin.card.model.a)localObject).oxO)) {
           break label359;
         }
-        paramViewGroup.ofr.setVisibility(0);
-        paramViewGroup.ofr.setText(((a)localObject).nUt);
-        TextView localTextView = paramViewGroup.nvL;
-        if (!bs.isNullOrNil(((a)localObject).nvS)) {
+        paramViewGroup.oIK.setVisibility(0);
+        paramViewGroup.oIK.setText(((com.tencent.mm.plugin.card.model.a)localObject).oxO);
+        TextView localTextView = paramViewGroup.nXj;
+        if (!bt.isNullOrNil(((com.tencent.mm.plugin.card.model.a)localObject).nXq)) {
           break label371;
         }
         i = 8;
         label238:
         localTextView.setVisibility(i);
-        paramViewGroup.nvL.setText(((a)localObject).nvS);
+        paramViewGroup.nXj.setText(((com.tencent.mm.plugin.card.model.a)localObject).nXq);
         i = CardListSelectedUI.this.getBaseContext().getResources().getDimensionPixelSize(2131165996);
-        CardListSelectedUI.a(paramViewGroup.ofq, ((a)localObject).hhs, i);
-        localObject = (Boolean)CardListSelectedUI.this.oeV.get(Integer.valueOf(paramInt));
+        CardListSelectedUI.a(paramViewGroup.oIJ, ((com.tencent.mm.plugin.card.model.a)localObject).hzB, i);
+        localObject = (Boolean)CardListSelectedUI.this.oIp.get(Integer.valueOf(paramInt));
         if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
           break label377;
         }
-        paramViewGroup.oft.setImageResource(2131231424);
+        paramViewGroup.oIM.setImageResource(2131231424);
       }
       for (;;)
       {
@@ -739,19 +753,19 @@ public class CardListSelectedUI
         paramViewGroup = (CardListSelectedUI.d)paramView.getTag();
         break;
         label347:
-        paramViewGroup.ofm.setVisibility(8);
+        paramViewGroup.oIF.setVisibility(8);
         break label186;
         label359:
-        paramViewGroup.ofr.setVisibility(8);
+        paramViewGroup.oIK.setVisibility(8);
         break label217;
         label371:
         i = 0;
         break label238;
         label377:
-        paramViewGroup.oft.setImageResource(2131231425);
+        paramViewGroup.oIM.setImageResource(2131231425);
         continue;
         label389:
-        ac.i("MicroMsg.CardListSelectedUI", "not support type");
+        ad.i("MicroMsg.CardListSelectedUI", "not support type");
       }
     }
   }
@@ -761,10 +775,10 @@ public class CardListSelectedUI
   {
     b() {}
     
-    private a zU(int paramInt)
+    private com.tencent.mm.plugin.card.model.a AD(int paramInt)
     {
       AppMethodBeat.i(113493);
-      a locala = (a)CardListSelectedUI.this.fXm.get(paramInt);
+      com.tencent.mm.plugin.card.model.a locala = (com.tencent.mm.plugin.card.model.a)CardListSelectedUI.this.gqI.get(paramInt);
       AppMethodBeat.o(113493);
       return locala;
     }
@@ -772,7 +786,7 @@ public class CardListSelectedUI
     public final int getCount()
     {
       AppMethodBeat.i(113492);
-      int i = CardListSelectedUI.this.fXm.size();
+      int i = CardListSelectedUI.this.gqI.size();
       AppMethodBeat.o(113492);
       return i;
     }
@@ -785,62 +799,62 @@ public class CardListSelectedUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(113494);
-      a locala = zU(paramInt);
+      com.tencent.mm.plugin.card.model.a locala = AD(paramInt);
       if (paramView == null)
       {
         paramView = View.inflate(CardListSelectedUI.this, 2131493339, null);
         paramViewGroup = new CardListSelectedUI.c(CardListSelectedUI.this);
-        paramViewGroup.ofk = ((ImageView)paramView.findViewById(2131297894));
-        paramViewGroup.ofl = ((TextView)paramView.findViewById(2131301093));
-        paramViewGroup.fUk = ((TextView)paramView.findViewById(2131305902));
-        paramViewGroup.ofm = ((TextView)paramView.findViewById(2131305508));
-        paramViewGroup.ofn = paramView.findViewById(2131306261);
-        paramViewGroup.ofo = ((TextView)paramView.findViewById(2131301097));
-        paramViewGroup.ofp = ((TextView)paramView.findViewById(2131301085));
+        paramViewGroup.oID = ((ImageView)paramView.findViewById(2131297894));
+        paramViewGroup.oIE = ((TextView)paramView.findViewById(2131301093));
+        paramViewGroup.gnM = ((TextView)paramView.findViewById(2131305902));
+        paramViewGroup.oIF = ((TextView)paramView.findViewById(2131305508));
+        paramViewGroup.oIG = paramView.findViewById(2131306261);
+        paramViewGroup.oIH = ((TextView)paramView.findViewById(2131301097));
+        paramViewGroup.oII = ((TextView)paramView.findViewById(2131301085));
         paramView.setTag(paramViewGroup);
-        if (!l.zG(locala.lRv)) {
+        if (!l.Ap(locala.mrl)) {
           break label549;
         }
         if (TextUtils.isEmpty(locala.title)) {
           break label387;
         }
-        paramViewGroup.fUk.setVisibility(0);
-        paramViewGroup.fUk.setText(locala.title);
+        paramViewGroup.gnM.setVisibility(0);
+        paramViewGroup.gnM.setText(locala.title);
         label174:
-        if (TextUtils.isEmpty(locala.nUs)) {
+        if (TextUtils.isEmpty(locala.oxN)) {
           break label399;
         }
-        paramViewGroup.ofm.setVisibility(0);
-        paramViewGroup.ofm.setText(locala.nUs);
+        paramViewGroup.oIF.setVisibility(0);
+        paramViewGroup.oIF.setText(locala.oxN);
         label205:
-        if (locala.nUx != 0) {
+        if (locala.oxS != 0) {
           break label423;
         }
         paramView.setAlpha(1.0F);
-        paramViewGroup.ofk.setVisibility(0);
-        paramViewGroup.ofl.setVisibility(8);
-        Boolean localBoolean = (Boolean)CardListSelectedUI.this.oeV.get(Integer.valueOf(paramInt));
+        paramViewGroup.oID.setVisibility(0);
+        paramViewGroup.oIE.setVisibility(8);
+        Boolean localBoolean = (Boolean)CardListSelectedUI.this.oIp.get(Integer.valueOf(paramInt));
         if ((localBoolean == null) || (!localBoolean.booleanValue())) {
           break label411;
         }
-        paramViewGroup.ofk.setImageResource(2131231424);
+        paramViewGroup.oID.setImageResource(2131231424);
         label276:
-        if (bs.isNullOrNil(locala.nUy)) {
+        if (bt.isNullOrNil(locala.oxT)) {
           break label514;
         }
-        paramViewGroup.ofo.setVisibility(0);
-        paramViewGroup.ofo.setText(locala.nUy);
+        paramViewGroup.oIH.setVisibility(0);
+        paramViewGroup.oIH.setText(locala.oxT);
         label307:
-        if (bs.isNullOrNil(locala.nUz)) {
+        if (bt.isNullOrNil(locala.oxU)) {
           break label526;
         }
-        paramViewGroup.ofp.setVisibility(0);
-        paramViewGroup.ofp.setText(locala.nUz);
+        paramViewGroup.oII.setVisibility(0);
+        paramViewGroup.oII.setText(locala.oxU);
         label338:
-        if ((!bs.isNullOrNil(locala.nUy)) || (!bs.isNullOrNil(locala.nUz))) {
+        if ((!bt.isNullOrNil(locala.oxT)) || (!bt.isNullOrNil(locala.oxU))) {
           break label538;
         }
-        paramViewGroup.ofn.setVisibility(8);
+        paramViewGroup.oIG.setVisibility(8);
       }
       for (;;)
       {
@@ -849,75 +863,75 @@ public class CardListSelectedUI
         paramViewGroup = (CardListSelectedUI.c)paramView.getTag();
         break;
         label387:
-        paramViewGroup.fUk.setVisibility(8);
+        paramViewGroup.gnM.setVisibility(8);
         break label174;
         label399:
-        paramViewGroup.ofm.setVisibility(8);
+        paramViewGroup.oIF.setVisibility(8);
         break label205;
         label411:
-        paramViewGroup.ofk.setImageResource(2131231425);
+        paramViewGroup.oID.setImageResource(2131231425);
         break label276;
         label423:
-        if (locala.nUx == 1)
+        if (locala.oxS == 1)
         {
           paramView.setAlpha(0.2F);
-          paramViewGroup.ofk.setVisibility(8);
-          if (!bs.isNullOrNil(locala.nUA))
+          paramViewGroup.oID.setVisibility(8);
+          if (!bt.isNullOrNil(locala.oxV))
           {
-            paramViewGroup.ofl.setVisibility(0);
-            paramViewGroup.ofl.setText(locala.nUA);
+            paramViewGroup.oIE.setVisibility(0);
+            paramViewGroup.oIE.setText(locala.oxV);
             break label276;
           }
-          paramViewGroup.ofl.setVisibility(8);
+          paramViewGroup.oIE.setVisibility(8);
           break label276;
         }
-        paramViewGroup.ofk.setVisibility(8);
-        paramViewGroup.ofl.setVisibility(8);
+        paramViewGroup.oID.setVisibility(8);
+        paramViewGroup.oIE.setVisibility(8);
         break label276;
         label514:
-        paramViewGroup.ofo.setVisibility(8);
+        paramViewGroup.oIH.setVisibility(8);
         break label307;
         label526:
-        paramViewGroup.ofp.setVisibility(8);
+        paramViewGroup.oII.setVisibility(8);
         break label338;
         label538:
-        paramViewGroup.ofn.setVisibility(0);
+        paramViewGroup.oIG.setVisibility(0);
         continue;
         label549:
-        ac.i("MicroMsg.CardListSelectedUI", "not support type");
+        ad.i("MicroMsg.CardListSelectedUI", "not support type");
       }
     }
   }
   
   final class c
   {
-    public TextView fUk;
-    public ImageView ofk;
-    public TextView ofl;
-    public TextView ofm;
-    public View ofn;
-    public TextView ofo;
-    public TextView ofp;
+    public TextView gnM;
+    public ImageView oID;
+    public TextView oIE;
+    public TextView oIF;
+    public View oIG;
+    public TextView oIH;
+    public TextView oII;
     
     c() {}
   }
   
   final class d
   {
-    public TextView fUk;
-    public TextView nvL;
-    public TextView ofm;
-    public ImageView ofq;
-    public TextView ofr;
-    public View ofs;
-    public ImageView oft;
+    public TextView gnM;
+    public TextView nXj;
+    public TextView oIF;
+    public ImageView oIJ;
+    public TextView oIK;
+    public View oIL;
+    public ImageView oIM;
     
     d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardListSelectedUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,19 @@ import java.util.regex.Pattern;
 public final class a
 {
   private static String TAG;
-  private static f<String, Spanned> oQu;
-  public static Spanned oQv;
+  private static f<String, Spanned> pue;
+  public static Spanned puf;
   
   static
   {
     AppMethodBeat.i(181693);
     TAG = "MicroMsg.ConvertHtmlToSpanned";
-    oQu = new com.tencent.mm.memory.a.c(30);
-    oQv = null;
+    pue = new com.tencent.mm.memory.a.c(30);
+    puf = null;
     AppMethodBeat.o(181693);
   }
   
-  public static Spanned Xo(String paramString)
+  public static Spanned aaV(String paramString)
   {
     AppMethodBeat.i(181691);
     Object localObject = paramString;
@@ -32,7 +32,7 @@ public final class a
     }
     paramString = Pattern.compile("\n", 2).matcher((CharSequence)localObject).replaceAll("<br/>");
     localObject = fromHtml(paramString);
-    oQu.put(paramString, localObject);
+    pue.put(paramString, localObject);
     AppMethodBeat.o(181691);
     return localObject;
   }
@@ -50,7 +50,7 @@ public final class a
     }
     try
     {
-      oQv = null;
+      puf = null;
       paramString = Html.fromHtml(paramString, null, new c());
       if (paramString == null)
       {
@@ -62,9 +62,9 @@ public final class a
     {
       for (;;)
       {
-        if (oQv != null)
+        if (puf != null)
         {
-          paramString = oQv;
+          paramString = puf;
           continue;
           int i = paramString.toString().length();
           if ((i > 1) && (paramString.toString().endsWith("\n")))
@@ -91,7 +91,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.a.a
  * JD-Core Version:    0.7.0.1
  */

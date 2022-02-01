@@ -4,7 +4,7 @@ public abstract class b
 {
   public abstract int a(b paramb);
   
-  public abstract Object bYv();
+  public abstract Object ccZ();
 }
 
 

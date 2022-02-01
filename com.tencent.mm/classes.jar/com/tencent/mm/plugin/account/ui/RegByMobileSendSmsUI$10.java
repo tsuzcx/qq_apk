@@ -12,14 +12,14 @@ final class RegByMobileSendSmsUI$10
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128571);
-    RegByMobileSendSmsUI.d(this.iWh);
+    RegByMobileSendSmsUI.d(this.jpq);
     AppMethodBeat.o(128571);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileSendSmsUI.10
  * JD-Core Version:    0.7.0.1
  */

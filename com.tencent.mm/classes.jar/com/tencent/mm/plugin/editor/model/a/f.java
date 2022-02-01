@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.editor.model.a;
 public class f
   extends d
 {
-  public int dhE;
-  public int dhF;
-  public String kvC;
+  public int dtc;
+  public int dtd;
+  public String kRE;
   public int length;
-  public String oQk = "amr";
-  public int oQl;
-  public String oQm;
-  public String oQn;
+  public String ptU = "amr";
+  public int ptV;
+  public String ptW;
+  public String ptX;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.a.f
  * JD-Core Version:    0.7.0.1
  */

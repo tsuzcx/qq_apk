@@ -1,17 +1,17 @@
 package d.l.b.a.b.m.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class a<T>
 {
-  final T LNc;
-  public final T LNd;
+  final T NDX;
+  public final T NDY;
   
   public a(T paramT1, T paramT2)
   {
-    this.LNc = paramT1;
-    this.LNd = paramT2;
+    this.NDX = paramT1;
+    this.NDY = paramT2;
   }
   
   public final boolean equals(Object paramObject)
@@ -22,7 +22,7 @@ public final class a<T>
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!k.g(this.LNc, paramObject.LNc)) || (!k.g(this.LNd, paramObject.LNd))) {}
+        if ((!p.i(this.NDX, paramObject.NDX)) || (!p.i(this.NDY, paramObject.NDY))) {}
       }
     }
     else
@@ -38,11 +38,11 @@ public final class a<T>
   {
     int j = 0;
     AppMethodBeat.i(61258);
-    Object localObject = this.LNc;
+    Object localObject = this.NDX;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.LNd;
+      localObject = this.NDY;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -54,7 +54,7 @@ public final class a<T>
   public final String toString()
   {
     AppMethodBeat.i(61257);
-    String str = "ApproximationBounds(lower=" + this.LNc + ", upper=" + this.LNd + ")";
+    String str = "ApproximationBounds(lower=" + this.NDX + ", upper=" + this.NDY + ")";
     AppMethodBeat.o(61257);
     return str;
   }

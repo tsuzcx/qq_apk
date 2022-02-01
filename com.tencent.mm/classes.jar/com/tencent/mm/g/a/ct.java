@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ct
   extends b
 {
-  public a dct;
-  
   public ct()
   {
     this((byte)0);
@@ -15,21 +12,13 @@ public final class ct
   
   private ct(byte paramByte)
   {
-    AppMethodBeat.i(91203);
-    this.dct = new a();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91203);
-  }
-  
-  public static final class a
-  {
-    public int dcu = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ct
  * JD-Core Version:    0.7.0.1
  */

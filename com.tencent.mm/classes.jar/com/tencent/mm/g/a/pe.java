@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class pe
   extends b
 {
-  public a drT;
-  public b drU;
+  public a dDg;
+  public b dDh;
   
   public pe()
   {
@@ -16,28 +17,31 @@ public final class pe
   
   private pe(byte paramByte)
   {
-    AppMethodBeat.i(127289);
-    this.drT = new a();
-    this.drU = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(117551);
+    this.dDg = new a();
+    this.dDh = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(127289);
+    AppMethodBeat.o(117551);
   }
   
   public static final class a
   {
-    public String drV;
-    public String talker;
+    public Context context;
+    public String dDi;
+    public int opType = 0;
   }
   
   public static final class b
   {
-    public boolean dbS = false;
+    public String dDj;
+    public boolean dno = false;
+    public String thumbPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.pe
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import java.util.List;
 
 public final class f
 {
-  private final List<a<?, ?>> aKz;
+  private final List<a<?, ?>> aMq;
   
   public f()
   {
     AppMethodBeat.i(77535);
-    this.aKz = new ArrayList();
+    this.aMq = new ArrayList();
     AppMethodBeat.o(77535);
   }
   
@@ -21,7 +21,7 @@ public final class f
     try
     {
       AppMethodBeat.i(77536);
-      this.aKz.add(new a(paramClass, paramClass1, parame));
+      this.aMq.add(new a(paramClass, paramClass1, parame));
       AppMethodBeat.o(77536);
       return;
     }
@@ -39,13 +39,13 @@ public final class f
       AppMethodBeat.i(77537);
       if (paramClass1.isAssignableFrom(paramClass))
       {
-        paramClass = g.pv();
+        paramClass = g.pN();
         AppMethodBeat.o(77537);
       }
       for (;;)
       {
         return paramClass;
-        Iterator localIterator = this.aKz.iterator();
+        Iterator localIterator = this.aMq.iterator();
         a locala;
         do
         {
@@ -54,7 +54,7 @@ public final class f
           }
           locala = (a)localIterator.next();
         } while (!locala.e(paramClass, paramClass1));
-        paramClass = locala.aFn;
+        paramClass = locala.aHe;
         AppMethodBeat.o(77537);
       }
       paramClass = new IllegalArgumentException("No transcoder registered to transcode from " + paramClass + " to " + paramClass1);
@@ -78,7 +78,7 @@ public final class f
           AppMethodBeat.o(77538);
           return localArrayList;
         }
-        Iterator localIterator = this.aKz.iterator();
+        Iterator localIterator = this.aMq.iterator();
         if (localIterator.hasNext())
         {
           if (((a)localIterator.next()).e(paramClass, paramClass1)) {
@@ -95,21 +95,21 @@ public final class f
   
   static final class a<Z, R>
   {
-    final e<Z, R> aFn;
-    private final Class<Z> aKA;
-    private final Class<R> aKB;
+    final e<Z, R> aHe;
+    private final Class<Z> aMr;
+    private final Class<R> aMs;
     
     a(Class<Z> paramClass, Class<R> paramClass1, e<Z, R> parame)
     {
-      this.aKA = paramClass;
-      this.aKB = paramClass1;
-      this.aFn = parame;
+      this.aMr = paramClass;
+      this.aMs = paramClass1;
+      this.aHe = parame;
     }
     
     public final boolean e(Class<?> paramClass1, Class<?> paramClass2)
     {
       AppMethodBeat.i(77534);
-      if ((this.aKA.isAssignableFrom(paramClass1)) && (paramClass2.isAssignableFrom(this.aKB)))
+      if ((this.aMr.isAssignableFrom(paramClass1)) && (paramClass2.isAssignableFrom(this.aMs)))
       {
         AppMethodBeat.o(77534);
         return true;

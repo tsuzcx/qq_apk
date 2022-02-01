@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.freewifi.model;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.c;
+import com.tencent.mm.n.c;
 import com.tencent.mm.plugin.freewifi.g.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
 {
   int MAX_RETRY_COUNT = 5;
   
   /* Error */
-  static String afw(String paramString)
+  static String ajU(String paramString)
   {
     // Byte code:
     //   0: sipush 24803
@@ -52,7 +52,7 @@ public final class g
     //   65: iconst_1
     //   66: aload_2
     //   67: aastore
-    //   68: invokestatic 75	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 75	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: aload_0
     //   72: ifnull +14 -> 86
     //   75: aload_0
@@ -68,7 +68,7 @@ public final class g
     //   95: ldc 62
     //   97: aload_3
     //   98: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   101: invokestatic 98	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: goto -22 -> 82
     //   107: aload_0
     //   108: ifnull +14 -> 122
@@ -85,7 +85,7 @@ public final class g
     //   131: ldc 62
     //   133: aload_2
     //   134: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   137: invokestatic 98	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   137: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   140: goto -22 -> 118
     //   143: astore_2
     //   144: aconst_null
@@ -99,7 +99,7 @@ public final class g
     //   156: aload_2
     //   157: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   160: aastore
-    //   161: invokestatic 102	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   161: invokestatic 102	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   164: aload_0
     //   165: ifnull -43 -> 122
     //   168: aload_0
@@ -112,7 +112,7 @@ public final class g
     //   183: ldc 62
     //   185: aload_2
     //   186: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   189: invokestatic 98	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   189: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: goto -17 -> 175
     //   195: astore_2
     //   196: aconst_null
@@ -132,7 +132,7 @@ public final class g
     //   222: ldc 62
     //   224: aload_3
     //   225: invokevirtual 94	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   228: invokestatic 98	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   228: invokestatic 98	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   231: goto -22 -> 209
     //   234: astore_2
     //   235: goto -37 -> 198
@@ -171,12 +171,12 @@ public final class g
   
   public static abstract interface b
   {
-    public abstract void dm(String paramString, int paramInt);
+    public abstract void dC(String paramString, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.g
  * JD-Core Version:    0.7.0.1
  */

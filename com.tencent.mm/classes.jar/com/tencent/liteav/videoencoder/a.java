@@ -23,7 +23,7 @@ import com.tencent.liteav.basic.d.l;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.e;
+import com.tencent.liteav.basic.util.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -85,7 +85,7 @@ public class a
   private long o;
   private long p;
   private MediaCodec q;
-  private e r;
+  private g r;
   private Runnable s;
   private Runnable t;
   private Runnable u;
@@ -181,7 +181,7 @@ public class a
         AppMethodBeat.o(14822);
       }
     };
-    this.r = new e("HWVideoEncoder");
+    this.r = new g("HWVideoEncoder");
     AppMethodBeat.o(14859);
   }
   

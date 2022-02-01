@@ -8,28 +8,28 @@ import java.util.Queue;
 public final class d
   extends InputStream
 {
-  private static final Queue<d> aMf;
-  private InputStream aMg;
-  public IOException aMh;
+  private static final Queue<d> aNW;
+  private InputStream aNX;
+  public IOException aNY;
   
   static
   {
     AppMethodBeat.i(77745);
-    aMf = j.dx(0);
+    aNW = j.dx(0);
     AppMethodBeat.o(77745);
   }
   
   public static d e(InputStream paramInputStream)
   {
     AppMethodBeat.i(77734);
-    synchronized (aMf)
+    synchronized (aNW)
     {
-      d locald = (d)aMf.poll();
+      d locald = (d)aNW.poll();
       ??? = locald;
       if (locald == null) {
         ??? = new d();
       }
-      ((d)???).aMg = paramInputStream;
+      ((d)???).aNX = paramInputStream;
       AppMethodBeat.o(77734);
       return ???;
     }
@@ -38,7 +38,7 @@ public final class d
   public final int available()
   {
     AppMethodBeat.i(77735);
-    int i = this.aMg.available();
+    int i = this.aNX.available();
     AppMethodBeat.o(77735);
     return i;
   }
@@ -46,21 +46,21 @@ public final class d
   public final void close()
   {
     AppMethodBeat.i(77736);
-    this.aMg.close();
+    this.aNX.close();
     AppMethodBeat.o(77736);
   }
   
   public final void mark(int paramInt)
   {
     AppMethodBeat.i(77737);
-    this.aMg.mark(paramInt);
+    this.aNX.mark(paramInt);
     AppMethodBeat.o(77737);
   }
   
   public final boolean markSupported()
   {
     AppMethodBeat.i(77738);
-    boolean bool = this.aMg.markSupported();
+    boolean bool = this.aNX.markSupported();
     AppMethodBeat.o(77738);
     return bool;
   }
@@ -70,7 +70,7 @@ public final class d
     AppMethodBeat.i(77743);
     try
     {
-      i = this.aMg.read();
+      i = this.aNX.read();
       AppMethodBeat.o(77743);
       return i;
     }
@@ -78,7 +78,7 @@ public final class d
     {
       for (;;)
       {
-        this.aMh = localIOException;
+        this.aNY = localIOException;
         int i = -1;
       }
     }
@@ -89,7 +89,7 @@ public final class d
     AppMethodBeat.i(77739);
     try
     {
-      i = this.aMg.read(paramArrayOfByte);
+      i = this.aNX.read(paramArrayOfByte);
       AppMethodBeat.o(77739);
       return i;
     }
@@ -97,7 +97,7 @@ public final class d
     {
       for (;;)
       {
-        this.aMh = paramArrayOfByte;
+        this.aNY = paramArrayOfByte;
         int i = -1;
       }
     }
@@ -108,7 +108,7 @@ public final class d
     AppMethodBeat.i(77740);
     try
     {
-      paramInt1 = this.aMg.read(paramArrayOfByte, paramInt1, paramInt2);
+      paramInt1 = this.aNX.read(paramArrayOfByte, paramInt1, paramInt2);
       AppMethodBeat.o(77740);
       return paramInt1;
     }
@@ -116,7 +116,7 @@ public final class d
     {
       for (;;)
       {
-        this.aMh = paramArrayOfByte;
+        this.aNY = paramArrayOfByte;
         paramInt1 = -1;
       }
     }
@@ -125,11 +125,11 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(77744);
-    this.aMh = null;
-    this.aMg = null;
-    synchronized (aMf)
+    this.aNY = null;
+    this.aNX = null;
+    synchronized (aNW)
     {
-      aMf.offer(this);
+      aNW.offer(this);
       AppMethodBeat.o(77744);
       return;
     }
@@ -140,7 +140,7 @@ public final class d
     try
     {
       AppMethodBeat.i(77741);
-      this.aMg.reset();
+      this.aNX.reset();
       AppMethodBeat.o(77741);
       return;
     }
@@ -156,7 +156,7 @@ public final class d
     AppMethodBeat.i(77742);
     try
     {
-      paramLong = this.aMg.skip(paramLong);
+      paramLong = this.aNX.skip(paramLong);
       AppMethodBeat.o(77742);
       return paramLong;
     }
@@ -164,7 +164,7 @@ public final class d
     {
       for (;;)
       {
-        this.aMh = localIOException;
+        this.aNY = localIOException;
         paramLong = 0L;
       }
     }

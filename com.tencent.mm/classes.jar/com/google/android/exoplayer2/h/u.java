@@ -8,47 +8,47 @@ import java.io.InputStream;
 public final class u<T>
   implements t.c
 {
-  private final g aXs;
-  public final j bmN;
-  private final a<? extends T> bvl;
-  public volatile long bvm;
+  public volatile long bFA;
+  private final a<? extends T> bFz;
+  private final g bhN;
+  public final j bxi;
   private volatile boolean isCanceled;
   public volatile T result;
   public final int type;
   
   public u(g paramg, Uri paramUri, a<? extends T> parama)
   {
-    AppMethodBeat.i(195777);
-    this.aXs = paramg;
-    this.bmN = new j(paramUri);
+    AppMethodBeat.i(217127);
+    this.bhN = paramg;
+    this.bxi = new j(paramUri);
     this.type = 4;
-    this.bvl = parama;
-    AppMethodBeat.o(195777);
+    this.bFz = parama;
+    AppMethodBeat.o(217127);
   }
   
-  public final void tV()
+  public final void vu()
   {
     this.isCanceled = true;
   }
   
-  public final boolean tW()
+  public final boolean vv()
   {
     return this.isCanceled;
   }
   
-  public final void tX()
+  public final void vw()
   {
     AppMethodBeat.i(93101);
-    i locali = new i(this.aXs, this.bmN);
+    i locali = new i(this.bhN, this.bxi);
     try
     {
       locali.checkOpened();
-      this.result = this.bvl.b(this.aXs.getUri(), locali);
+      this.result = this.bFz.b(this.bhN.getUri(), locali);
       return;
     }
     finally
     {
-      this.bvm = locali.totalBytesRead;
+      this.bFA = locali.totalBytesRead;
       x.closeQuietly(locali);
       AppMethodBeat.o(93101);
     }

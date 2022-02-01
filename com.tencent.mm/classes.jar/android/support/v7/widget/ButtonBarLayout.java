@@ -15,15 +15,15 @@ import android.widget.LinearLayout.LayoutParams;
 public class ButtonBarLayout
   extends LinearLayout
 {
-  private boolean ajC;
-  private int ajD = -1;
-  private int ajE = 0;
+  private boolean alt;
+  private int alu = -1;
+  private int alv = 0;
   
   public ButtonBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ButtonBarLayout);
-    this.ajC = paramContext.getBoolean(0, true);
+    this.alt = paramContext.getBoolean(0, true);
     paramContext.recycle();
   }
   
@@ -40,7 +40,7 @@ public class ButtonBarLayout
     return -1;
   }
   
-  private boolean iY()
+  private boolean jo()
   {
     return getOrientation() == 1;
   }
@@ -85,30 +85,30 @@ public class ButtonBarLayout
   
   public int getMinimumHeight()
   {
-    return Math.max(this.ajE, super.getMinimumHeight());
+    return Math.max(this.alv, super.getMinimumHeight());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt1);
-    if (this.ajC)
+    if (this.alt)
     {
-      if ((i > this.ajD) && (iY())) {
+      if ((i > this.alu) && (jo())) {
         setStacked(false);
       }
-      this.ajD = i;
+      this.alu = i;
     }
     int j;
-    if ((!iY()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
+    if ((!jo()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
     {
       j = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
       i = 1;
       super.onMeasure(j, paramInt2);
       int k = i;
-      if (this.ajC)
+      if (this.alt)
       {
         k = i;
-        if (!iY())
+        if (!jo())
         {
           if ((getMeasuredWidthAndState() & 0xFF000000) != 16777216) {
             break label261;
@@ -136,7 +136,7 @@ public class ButtonBarLayout
       i = localView.getMeasuredHeight();
       j = localLayoutParams.topMargin;
       paramInt2 = localLayoutParams.bottomMargin + (i + paramInt2 + j) + 0;
-      if (!iY()) {
+      if (!jo()) {
         break label267;
       }
       i = bJ(paramInt1 + 1);
@@ -167,10 +167,10 @@ public class ButtonBarLayout
   
   public void setAllowStacking(boolean paramBoolean)
   {
-    if (this.ajC != paramBoolean)
+    if (this.alt != paramBoolean)
     {
-      this.ajC = paramBoolean;
-      if ((!this.ajC) && (getOrientation() == 1)) {
+      this.alt = paramBoolean;
+      if ((!this.alt) && (getOrientation() == 1)) {
         setStacked(false);
       }
       requestLayout();

@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.an;
 import d.l.b.a.b.b.ao;
 import java.lang.annotation.Annotation;
@@ -9,27 +9,27 @@ import java.lang.annotation.Annotation;
 public final class b
   implements an
 {
-  public final Annotation LiW;
+  public final Annotation MZS;
   
   public b(Annotation paramAnnotation)
   {
     AppMethodBeat.i(57352);
-    this.LiW = paramAnnotation;
+    this.MZS = paramAnnotation;
     AppMethodBeat.o(57352);
   }
   
-  public final ao fRR()
+  public final ao gjq()
   {
     AppMethodBeat.i(57351);
-    ao localao = ao.Led;
-    k.g(localao, "SourceFile.NO_SOURCE_FILE");
+    ao localao = ao.MUY;
+    p.g(localao, "SourceFile.NO_SOURCE_FILE");
     AppMethodBeat.o(57351);
     return localao;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.b
  * JD-Core Version:    0.7.0.1
  */

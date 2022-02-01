@@ -5,32 +5,32 @@ import com.tencent.mm.kernel.b.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/PluginAudio;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/audio/api/IPluginAudio;", "()V", "configure", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "execute", "name", "", "Companion", "plugin-audio_release"})
 public final class PluginAudio
   extends f
   implements com.tencent.mm.plugin.audio.a.a
 {
-  public static final a mQT;
+  public static final a nrs;
   
   static
   {
-    AppMethodBeat.i(198330);
-    mQT = new a((byte)0);
-    AppMethodBeat.o(198330);
+    AppMethodBeat.i(199728);
+    nrs = new a((byte)0);
+    AppMethodBeat.o(199728);
   }
   
   public final void configure(g paramg)
   {
-    AppMethodBeat.i(198329);
-    if ((paramg != null) && (paramg.ahL()))
+    AppMethodBeat.i(199727);
+    if ((paramg != null) && (paramg.akw()))
     {
-      ac.i("MicroMsg.PluginAudio", "PluginAudio configure");
+      ad.i("MicroMsg.PluginAudio", "PluginAudio configure");
       pin((c)new t(com.tencent.mm.plugin.audio.c.a.class));
     }
-    AppMethodBeat.o(198329);
+    AppMethodBeat.o(199727);
   }
   
   public final void execute(g paramg) {}
@@ -40,7 +40,7 @@ public final class PluginAudio
     return "plugin-audio";
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/audio/PluginAudio$Companion;", "", "()V", "TAG", "", "plugin-audio_release"})
   public static final class a {}
 }
 

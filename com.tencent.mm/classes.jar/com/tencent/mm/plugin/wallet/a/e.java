@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.wallet.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String BgE;
-  public String hlj;
+  public String CGS;
+  public String hDs;
   public String name;
   public String url;
   
@@ -22,11 +22,11 @@ public final class e
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
-      if (this.BgE != null) {
-        paramVarArgs.d(3, this.BgE);
+      if (this.CGS != null) {
+        paramVarArgs.d(3, this.CGS);
       }
-      if (this.hlj != null) {
-        paramVarArgs.d(4, this.hlj);
+      if (this.hDs != null) {
+        paramVarArgs.d(4, this.hDs);
       }
       AppMethodBeat.o(91289);
       return 0;
@@ -44,21 +44,21 @@ public final class e
         paramInt = i + f.a.a.b.b.a.e(2, this.name);
       }
       i = paramInt;
-      if (this.BgE != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.BgE);
+      if (this.CGS != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.CGS);
       }
       paramInt = i;
-      if (this.hlj != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.hlj);
+      if (this.hDs != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.hDs);
       }
       AppMethodBeat.o(91289);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91289);
@@ -74,19 +74,19 @@ public final class e
           AppMethodBeat.o(91289);
           return -1;
         case 1: 
-          locale.url = locala.LVo.readString();
+          locale.url = locala.NPN.readString();
           AppMethodBeat.o(91289);
           return 0;
         case 2: 
-          locale.name = locala.LVo.readString();
+          locale.name = locala.NPN.readString();
           AppMethodBeat.o(91289);
           return 0;
         case 3: 
-          locale.BgE = locala.LVo.readString();
+          locale.CGS = locala.NPN.readString();
           AppMethodBeat.o(91289);
           return 0;
         }
-        locale.hlj = locala.LVo.readString();
+        locale.hDs = locala.NPN.readString();
         AppMethodBeat.o(91289);
         return 0;
       }

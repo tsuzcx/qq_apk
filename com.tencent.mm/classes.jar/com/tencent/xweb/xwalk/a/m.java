@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   extends l
 {
-  public final String agh(int paramInt)
+  public final String aiI(int paramInt)
   {
     AppMethodBeat.i(157201);
-    String str = cV(paramInt, "wordreader.apk");
+    String str = dd(paramInt, "wordreader.apk");
     AppMethodBeat.o(157201);
     return str;
   }
   
-  public final String fLK()
+  public final String gdf()
   {
     return "com.tencent.xweb.xfiles.word.WordReader";
   }
   
-  public final String fLL()
+  public final String gdg()
   {
     return "com.tencent.xweb.xfiles.word.WordReaderEnvironment";
   }
   
-  public final int fLM()
+  public final int gdh()
   {
     return 100;
   }

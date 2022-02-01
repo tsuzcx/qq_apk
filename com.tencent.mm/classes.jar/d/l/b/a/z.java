@@ -1,138 +1,93 @@
 package d.l.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import java.lang.ref.SoftReference;
+import d.g.b.n;
+import d.g.b.q;
+import d.g.b.t;
+import d.g.b.w;
+import d.l.h;
 
-public final class z
+public class z
+  extends d.g.b.aa
 {
-  public static <T> b<T> M(a<T> parama)
+  private static i a(d.g.b.e parame)
   {
-    AppMethodBeat.i(56518);
-    parama = new b(parama);
-    AppMethodBeat.o(56518);
-    return parama;
-  }
-  
-  public static <T> a<T> N(a<T> parama)
-  {
-    AppMethodBeat.i(56520);
-    if (parama == null) {
-      agL(2);
-    }
-    parama = a(null, parama);
-    AppMethodBeat.o(56520);
-    return parama;
-  }
-  
-  public static <T> a<T> a(T paramT, a<T> parama)
-  {
-    AppMethodBeat.i(56519);
-    if (parama == null) {
-      agL(1);
-    }
-    paramT = new a(paramT, parama);
-    AppMethodBeat.o(56519);
-    return paramT;
-  }
-  
-  public static final class a<T>
-    extends z.c<T>
-  {
-    private final a<T> KTi;
-    private SoftReference<Object> KXS;
-    
-    public a(T paramT, a<T> parama)
+    AppMethodBeat.i(56530);
+    parame = parame.Hv();
+    if ((parame instanceof i))
     {
-      AppMethodBeat.i(56514);
-      this.KXS = null;
-      this.KTi = parama;
-      if (paramT != null) {
-        this.KXS = new SoftReference(eV(paramT));
-      }
-      AppMethodBeat.o(56514);
+      parame = (i)parame;
+      AppMethodBeat.o(56530);
+      return parame;
     }
-    
-    public final T invoke()
+    parame = a.MMI;
+    AppMethodBeat.o(56530);
+    return parame;
+  }
+  
+  public final d.l.e a(n paramn)
+  {
+    AppMethodBeat.i(56526);
+    paramn = new j(a(paramn), paramn.getName(), paramn.Hu(), paramn.gfP());
+    AppMethodBeat.o(56526);
+    return paramn;
+  }
+  
+  public final h a(t paramt)
+  {
+    AppMethodBeat.i(56529);
+    paramt = new l(a(paramt), paramt.getName(), paramt.Hu(), paramt.gfP());
+    AppMethodBeat.o(56529);
+    return paramt;
+  }
+  
+  public final d.l.m a(w paramw)
+  {
+    AppMethodBeat.i(56528);
+    paramw = new p(a(paramw), paramw.getName(), paramw.Hu(), paramw.gfP());
+    AppMethodBeat.o(56528);
+    return paramw;
+  }
+  
+  public final String a(d.g.b.m paramm)
+  {
+    AppMethodBeat.i(56525);
+    Object localObject = d.l.b.b.a(paramm);
+    if (localObject != null)
     {
-      AppMethodBeat.i(56515);
-      Object localObject = this.KXS;
+      localObject = ae.eZ(localObject);
       if (localObject != null)
       {
-        localObject = ((SoftReference)localObject).get();
-        if (localObject != null)
-        {
-          localObject = eW(localObject);
-          AppMethodBeat.o(56515);
-          return localObject;
-        }
+        paramm = aa.MOS;
+        paramm = aa.b(((j)localObject).ggz());
+        AppMethodBeat.o(56525);
+        return paramm;
       }
-      localObject = this.KTi.invoke();
-      this.KXS = new SoftReference(eV(localObject));
-      AppMethodBeat.o(56515);
-      return localObject;
     }
+    paramm = super.a(paramm);
+    AppMethodBeat.o(56525);
+    return paramm;
   }
   
-  public static final class b<T>
-    extends z.c<T>
+  public final String a(q paramq)
   {
-    private final a<T> KTi;
-    private Object value;
-    
-    public b(a<T> parama)
-    {
-      AppMethodBeat.i(56516);
-      this.value = null;
-      this.KTi = parama;
-      AppMethodBeat.o(56516);
-    }
-    
-    public final T invoke()
-    {
-      AppMethodBeat.i(56517);
-      Object localObject = this.value;
-      if (localObject != null)
-      {
-        localObject = eW(localObject);
-        AppMethodBeat.o(56517);
-        return localObject;
-      }
-      localObject = this.KTi.invoke();
-      this.value = eV(localObject);
-      AppMethodBeat.o(56517);
-      return localObject;
-    }
+    AppMethodBeat.i(56524);
+    paramq = a(paramq);
+    AppMethodBeat.o(56524);
+    return paramq;
   }
   
-  public static abstract class c<T>
+  public final d.l.b bp(Class paramClass)
   {
-    private static final Object KXT = new Object() {};
-    
-    protected static Object eV(T paramT)
-    {
-      Object localObject = paramT;
-      if (paramT == null) {
-        localObject = KXT;
-      }
-      return localObject;
-    }
-    
-    protected static T eW(Object paramObject)
-    {
-      Object localObject = paramObject;
-      if (paramObject == KXT) {
-        localObject = null;
-      }
-      return localObject;
-    }
-    
-    public abstract T invoke();
+    AppMethodBeat.i(56523);
+    paramClass = f.bq(paramClass);
+    AppMethodBeat.o(56523);
+    return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.z
  * JD-Core Version:    0.7.0.1
  */

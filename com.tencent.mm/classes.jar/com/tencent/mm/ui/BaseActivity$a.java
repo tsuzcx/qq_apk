@@ -7,11 +7,11 @@ public enum BaseActivity$a
   static
   {
     AppMethodBeat.i(159094);
-    Hgh = new a("CUSTOM", 0);
-    Hgi = new a("BACK", 1);
-    Hgj = new a("CLOSE", 2);
-    Hgk = new a("NONE", 3);
-    Hgl = new a[] { Hgh, Hgi, Hgj, Hgk };
+    ITx = new a("CUSTOM", 0);
+    ITy = new a("BACK", 1);
+    ITz = new a("CLOSE", 2);
+    ITA = new a("NONE", 3);
+    ITB = new a[] { ITx, ITy, ITz, ITA };
     AppMethodBeat.o(159094);
   }
   

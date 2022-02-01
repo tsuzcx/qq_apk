@@ -12,19 +12,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   implements e<Bitmap, BitmapDrawable>
 {
-  private final Resources aIP;
+  private final Resources aKG;
   
   public b(Resources paramResources)
   {
     AppMethodBeat.i(77530);
-    this.aIP = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
+    this.aKG = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
     AppMethodBeat.o(77530);
   }
   
   public final u<BitmapDrawable> a(u<Bitmap> paramu, j paramj)
   {
     AppMethodBeat.i(77531);
-    paramu = l.a(this.aIP, paramu);
+    paramu = l.a(this.aKG, paramu);
     AppMethodBeat.o(77531);
     return paramu;
   }

@@ -16,25 +16,25 @@ public class TexturePool
   
   public TexturePool()
   {
-    AppMethodBeat.i(197910);
+    AppMethodBeat.i(218293);
     this.textureInfoList = new ArrayList();
     this.MaxCacheSize = 207360000L;
     this.MaxCacheLength = 60;
     Logger.d("TexturePool", "TexturePool: create " + Thread.currentThread().getId());
-    AppMethodBeat.o(197910);
+    AppMethodBeat.o(218293);
   }
   
   private void adaptCacheSize()
   {
     try
     {
-      AppMethodBeat.i(197915);
+      AppMethodBeat.i(218298);
       while ((this.textureInfoList.size() > 0) && (this.textureInfoList.size() - this.MaxCacheLength > 0))
       {
         ((TextureInfo)this.textureInfoList.get(0)).release();
         this.textureInfoList.remove(0);
       }
-      AppMethodBeat.o(197915);
+      AppMethodBeat.o(218298);
     }
     finally {}
   }
@@ -46,7 +46,7 @@ public class TexturePool
       int i;
       try
       {
-        AppMethodBeat.i(197916);
+        AppMethodBeat.i(218299);
         long l = 0L;
         i = 0;
         if (i < this.textureInfoList.size())
@@ -55,7 +55,7 @@ public class TexturePool
           l += localTextureInfo.width * localTextureInfo.height;
           if (l > this.MaxCacheSize)
           {
-            Logger.d("TexturePool", "texture: release " + localTextureInfo + " - " + Thread.currentThread());
+            Logger.v("TexturePool", "texture: release " + localTextureInfo + " - " + Thread.currentThread());
             localTextureInfo.release();
             this.textureInfoList.remove(i);
             i -= 1;
@@ -63,7 +63,7 @@ public class TexturePool
         }
         else
         {
-          AppMethodBeat.o(197916);
+          AppMethodBeat.o(218299);
           return;
         }
       }
@@ -78,7 +78,7 @@ public class TexturePool
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 115
+    //   2: ldc 118
     //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: iconst_0
     //   8: istore 4
@@ -94,7 +94,7 @@ public class TexturePool
     //   35: checkcast 88	com/tencent/tav/coremedia/TextureInfo
     //   38: astore 5
     //   40: aload 5
-    //   42: getfield 118	com/tencent/tav/coremedia/TextureInfo:textureType	I
+    //   42: getfield 121	com/tencent/tav/coremedia/TextureInfo:textureType	I
     //   45: iload_1
     //   46: if_icmpne +72 -> 118
     //   49: aload 5
@@ -108,20 +108,20 @@ public class TexturePool
     //   67: ldc 10
     //   69: new 41	java/lang/StringBuilder
     //   72: dup
-    //   73: ldc 120
+    //   73: ldc 123
     //   75: invokespecial 46	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   78: aload 5
-    //   80: getfield 123	com/tencent/tav/coremedia/TextureInfo:textureID	I
-    //   83: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   80: getfield 126	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   83: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   86: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   89: invokestatic 70	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: invokestatic 115	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: aload_0
     //   93: getfield 33	com/tencent/tav/decoder/TexturePool:textureInfoList	Ljava/util/List;
     //   96: iload 4
     //   98: invokeinterface 94 2 0
     //   103: checkcast 88	com/tencent/tav/coremedia/TextureInfo
     //   106: astore 5
-    //   108: ldc 115
+    //   108: ldc 118
     //   110: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: aload_0
     //   114: monitorexit
@@ -133,12 +133,12 @@ public class TexturePool
     //   122: istore 4
     //   124: goto -114 -> 10
     //   127: iload_1
-    //   128: invokestatic 132	com/tencent/tav/decoder/RenderContext:createTexture	(I)I
+    //   128: invokestatic 135	com/tencent/tav/decoder/RenderContext:createTexture	(I)I
     //   131: istore_1
     //   132: aload_0
-    //   133: invokespecial 134	com/tencent/tav/decoder/TexturePool:adaptCacheSize	()V
+    //   133: invokespecial 137	com/tencent/tav/decoder/TexturePool:adaptCacheSize	()V
     //   136: aload_0
-    //   137: invokespecial 136	com/tencent/tav/decoder/TexturePool:adapterCacheMemorySize	()V
+    //   137: invokespecial 139	com/tencent/tav/decoder/TexturePool:adapterCacheMemorySize	()V
     //   140: new 88	com/tencent/tav/coremedia/TextureInfo
     //   143: dup
     //   144: iload_1
@@ -147,9 +147,9 @@ public class TexturePool
     //   149: iload_3
     //   150: aconst_null
     //   151: iconst_0
-    //   152: invokespecial 139	com/tencent/tav/coremedia/TextureInfo:<init>	(IIIILandroid/graphics/Matrix;I)V
+    //   152: invokespecial 142	com/tencent/tav/coremedia/TextureInfo:<init>	(IIIILandroid/graphics/Matrix;I)V
     //   155: astore 5
-    //   157: ldc 115
+    //   157: ldc 118
     //   159: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   162: goto -49 -> 113
     //   165: astore 5
@@ -179,7 +179,7 @@ public class TexturePool
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 142
+    //   2: ldc 145
     //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: iconst_0
     //   8: istore_2
@@ -195,28 +195,28 @@ public class TexturePool
     //   32: checkcast 88	com/tencent/tav/coremedia/TextureInfo
     //   35: astore_3
     //   36: aload_3
-    //   37: getfield 118	com/tencent/tav/coremedia/TextureInfo:textureType	I
+    //   37: getfield 121	com/tencent/tav/coremedia/TextureInfo:textureType	I
     //   40: aload_1
-    //   41: getfield 118	com/tencent/tav/coremedia/TextureInfo:textureType	I
+    //   41: getfield 121	com/tencent/tav/coremedia/TextureInfo:textureType	I
     //   44: if_icmpne +50 -> 94
     //   47: aload_3
-    //   48: getfield 123	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   48: getfield 126	com/tencent/tav/coremedia/TextureInfo:textureID	I
     //   51: aload_1
-    //   52: getfield 123	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   52: getfield 126	com/tencent/tav/coremedia/TextureInfo:textureID	I
     //   55: if_icmpne +39 -> 94
     //   58: ldc 10
     //   60: new 41	java/lang/StringBuilder
     //   63: dup
-    //   64: ldc 144
+    //   64: ldc 147
     //   66: invokespecial 46	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   69: aload_3
-    //   70: getfield 123	com/tencent/tav/coremedia/TextureInfo:textureID	I
-    //   73: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   70: getfield 126	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   73: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   76: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   79: invokestatic 70	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 115	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: aload_1
     //   83: invokevirtual 91	com/tencent/tav/coremedia/TextureInfo:release	()V
-    //   86: ldc 142
+    //   86: ldc 145
     //   88: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: aload_0
     //   92: monitorexit
@@ -229,23 +229,23 @@ public class TexturePool
     //   101: ldc 10
     //   103: new 41	java/lang/StringBuilder
     //   106: dup
-    //   107: ldc 146
+    //   107: ldc 149
     //   109: invokespecial 46	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   112: aload_1
-    //   113: getfield 123	com/tencent/tav/coremedia/TextureInfo:textureID	I
-    //   116: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   113: getfield 126	com/tencent/tav/coremedia/TextureInfo:textureID	I
+    //   116: invokevirtual 129	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   119: ldc 109
     //   121: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: invokestatic 52	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   127: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   130: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   133: invokestatic 70	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   133: invokestatic 115	com/tencent/tav/decoder/logger/Logger:v	(Ljava/lang/String;Ljava/lang/String;)V
     //   136: aload_0
     //   137: getfield 33	com/tencent/tav/decoder/TexturePool:textureInfoList	Ljava/util/List;
     //   140: aload_1
-    //   141: invokeinterface 150 2 0
+    //   141: invokeinterface 153 2 0
     //   146: pop
-    //   147: ldc 142
+    //   147: ldc 145
     //   149: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: goto -61 -> 91
     //   155: astore_1
@@ -270,7 +270,7 @@ public class TexturePool
   {
     try
     {
-      AppMethodBeat.i(197917);
+      AppMethodBeat.i(218300);
       Logger.d("TexturePool", " release all " + Thread.currentThread().getId());
       int i = 0;
       while (i < this.textureInfoList.size())
@@ -278,7 +278,7 @@ public class TexturePool
         ((TextureInfo)this.textureInfoList.get(i)).release();
         i += 1;
       }
-      AppMethodBeat.o(197917);
+      AppMethodBeat.o(218300);
       return;
     }
     finally {}
@@ -286,23 +286,23 @@ public class TexturePool
   
   public void setMaxCacheLength(int paramInt)
   {
-    AppMethodBeat.i(197912);
+    AppMethodBeat.i(218295);
     this.MaxCacheLength = paramInt;
     adapterCacheMemorySize();
-    AppMethodBeat.o(197912);
+    AppMethodBeat.o(218295);
   }
   
   public void setMaxCacheSize(long paramLong)
   {
-    AppMethodBeat.i(197911);
+    AppMethodBeat.i(218294);
     this.MaxCacheSize = paramLong;
     adaptCacheSize();
-    AppMethodBeat.o(197911);
+    AppMethodBeat.o(218294);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.decoder.TexturePool
  * JD-Core Version:    0.7.0.1
  */

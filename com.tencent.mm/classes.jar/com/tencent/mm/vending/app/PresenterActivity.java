@@ -10,30 +10,30 @@ public abstract class PresenterActivity
   extends HellActivity
   implements b
 {
-  private c gkC = new c();
+  private c gEm = new c();
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gkC.B(getIntent(), this);
+    this.gEm.B(getIntent(), this);
   }
   
   public void onDestroy()
   {
-    this.gkC.onDestroy();
+    this.gEm.onDestroy();
     super.onDestroy();
   }
   
   public void onPause()
   {
-    this.gkC.adp(3);
+    this.gEm.afP(3);
     super.onPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gkC.adp(2);
+    this.gEm.afP(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

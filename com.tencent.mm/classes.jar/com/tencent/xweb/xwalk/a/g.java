@@ -15,29 +15,16 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class g
 {
-  private static Map<String, f> KHk;
+  private static Map<String, f> MxK;
   
   static
   {
     AppMethodBeat.i(157195);
-    KHk = new HashMap();
+    MxK = new HashMap();
     AppMethodBeat.o(157195);
   }
   
-  public static f aUJ(String paramString)
-  {
-    AppMethodBeat.i(157189);
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      AppMethodBeat.o(157189);
-      return null;
-    }
-    paramString = (f)KHk.get(paramString);
-    AppMethodBeat.o(157189);
-    return paramString;
-  }
-  
-  private static a ai(File paramFile)
+  private static a ak(File paramFile)
   {
     AppMethodBeat.i(157193);
     if (paramFile == null)
@@ -76,48 +63,61 @@ public final class g
     return null;
   }
   
-  public static void fLO()
+  public static f baM(String paramString)
+  {
+    AppMethodBeat.i(157189);
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      AppMethodBeat.o(157189);
+      return null;
+    }
+    paramString = (f)MxK.get(paramString);
+    AppMethodBeat.o(157189);
+    return paramString;
+  }
+  
+  public static void gdj()
   {
     AppMethodBeat.i(157192);
-    if (KHk.size() == 0)
+    if (MxK.size() == 0)
     {
       Log.e("XWalkPluginMgr", "checkFiles error, sPluginMap size is 0");
       AppMethodBeat.o(157192);
       return;
     }
-    Iterator localIterator = KHk.entrySet().iterator();
+    Iterator localIterator = MxK.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((f)((Map.Entry)localIterator.next()).getValue()).fLO();
+      ((f)((Map.Entry)localIterator.next()).getValue()).gdj();
     }
     AppMethodBeat.o(157192);
   }
   
-  public static boolean fLQ()
+  public static boolean gdl()
   {
     AppMethodBeat.i(157187);
-    if (KHk.size() == 0)
+    if (MxK.size() == 0)
     {
       Log.i("XWalkPluginMgr", "initPlugins");
       Object localObject = new c();
-      KHk.put("FullScreenVideo", localObject);
+      MxK.put("FullScreenVideo", localObject);
       localObject = new d();
-      KHk.put("XFilesPDFReader", localObject);
+      MxK.put("XFilesPDFReader", localObject);
       localObject = new e();
-      KHk.put("XFilesPPTReader", localObject);
+      MxK.put("XFilesPPTReader", localObject);
       localObject = new m();
-      KHk.put("XFilesWordReader", localObject);
+      MxK.put("XFilesWordReader", localObject);
       localObject = new b();
-      KHk.put("XFilesExcelReader", localObject);
+      MxK.put("XFilesExcelReader", localObject);
     }
     AppMethodBeat.o(157187);
     return true;
   }
   
-  public static List<f> fLR()
+  public static List<f> gdm()
   {
     AppMethodBeat.i(157190);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = KHk.entrySet().iterator();
+    Iterator localIterator = MxK.entrySet().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add(((Map.Entry)localIterator.next()).getValue());
     }
@@ -125,16 +125,16 @@ public final class g
     return localArrayList;
   }
   
-  public static String fLS()
+  public static String gdn()
   {
     AppMethodBeat.i(157191);
     Object localObject = new StringBuilder();
-    Iterator localIterator = KHk.entrySet().iterator();
+    Iterator localIterator = MxK.entrySet().iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)((Map.Entry)localIterator.next()).getValue();
       if (localf != null) {
-        ((StringBuilder)localObject).append(localf.getPluginName()).append(" = ").append(localf.KHj).append(", ");
+        ((StringBuilder)localObject).append(localf.getPluginName()).append(" = ").append(localf.MxJ).append(", ");
       }
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -142,10 +142,10 @@ public final class g
     return localObject;
   }
   
-  public static void fLT()
+  public static void gdo()
   {
     AppMethodBeat.i(157194);
-    if (KHk.size() == 0)
+    if (MxK.size() == 0)
     {
       Log.e("XWalkPluginMgr", "clearOldVersions error, sPluginMap size is 0");
       AppMethodBeat.o(157194);
@@ -173,37 +173,37 @@ public final class g
       a locala;
       if (localFile != null)
       {
-        locala = ai(localFile);
+        locala = ak(localFile);
         if (locala != null) {
           break label159;
         }
         Log.e("XWalkPluginMgr", "clearOldVersions can not get plugin info, delete " + localFile.getAbsolutePath());
-        com.tencent.xweb.util.c.aVj(localFile.getAbsolutePath());
+        com.tencent.xweb.util.c.bbn(localFile.getAbsolutePath());
       }
       for (;;)
       {
         i += 1;
         break;
         label159:
-        f localf = (f)KHk.get(locala.xpL);
+        f localf = (f)MxK.get(locala.yEo);
         if (localf == null)
         {
           Log.e("XWalkPluginMgr", "clearOldVersions invalid plugin info, delete " + localFile.getAbsolutePath());
-          com.tencent.xweb.util.c.aVj(localFile.getAbsolutePath());
+          com.tencent.xweb.util.c.bbn(localFile.getAbsolutePath());
         }
         else
         {
-          if (localf.KHj < 0) {
-            localf.fLP();
+          if (localf.MxJ < 0) {
+            localf.gdk();
           }
-          if (localf.KHj < 0)
+          if (localf.MxJ < 0)
           {
             Log.e("XWalkPluginMgr", "clearOldVersions can not get availableVersion, skip " + localFile.getAbsolutePath());
           }
-          else if (locala.KHl < localf.KHj)
+          else if (locala.MxL < localf.MxJ)
           {
             Log.i("XWalkPluginMgr", "clearOldVersions is old version, delete " + localFile.getAbsolutePath());
-            com.tencent.xweb.util.c.aVj(localFile.getAbsolutePath());
+            com.tencent.xweb.util.c.bbn(localFile.getAbsolutePath());
           }
         }
       }
@@ -211,7 +211,7 @@ public final class g
     AppMethodBeat.o(157194);
   }
   
-  public static Map<String, Integer> ls(Context paramContext)
+  public static Map<String, Integer> lE(Context paramContext)
   {
     AppMethodBeat.i(157188);
     HashMap localHashMap = new HashMap();
@@ -226,13 +226,13 @@ public final class g
   
   static final class a
   {
-    int KHl;
-    String xpL;
+    int MxL;
+    String yEo;
     
     a(String paramString, int paramInt)
     {
-      this.xpL = paramString;
-      this.KHl = paramInt;
+      this.yEo = paramString;
+      this.MxL = paramInt;
     }
   }
 }

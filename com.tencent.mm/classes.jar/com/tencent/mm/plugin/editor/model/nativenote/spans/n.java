@@ -7,12 +7,12 @@ import java.util.Iterator;
 
 public final class n
 {
-  final ArrayList<a> oTG;
+  final ArrayList<a> pxq;
   
   public n()
   {
     AppMethodBeat.i(181949);
-    this.oTG = new ArrayList();
+    this.pxq = new ArrayList();
     AppMethodBeat.o(181949);
   }
   
@@ -20,7 +20,7 @@ public final class n
   {
     AppMethodBeat.i(181951);
     if ((paramObject instanceof g)) {
-      this.oTG.add(new a(paramObject, paraml, true));
+      this.pxq.add(new a(paramObject, paraml, true));
     }
     AppMethodBeat.o(181951);
   }
@@ -38,33 +38,33 @@ public final class n
   public final void b(Object paramObject, l paraml)
   {
     AppMethodBeat.i(181952);
-    this.oTG.add(new a(paramObject, paraml, false));
+    this.pxq.add(new a(paramObject, paraml, false));
     AppMethodBeat.o(181952);
   }
   
   public final void c(Spannable paramSpannable)
   {
     AppMethodBeat.i(181953);
-    Iterator localIterator = this.oTG.iterator();
+    Iterator localIterator = this.pxq.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      g localg = locala.oTH;
-      int m = locala.oTI.atr;
+      g localg = locala.pxr;
+      int m = locala.pxs.avj;
       int i;
-      if (locala.oTJ)
+      if (locala.pxt)
       {
         i = paramSpannable.getSpanStart(localg);
         if ((i >= 0) && (i < m)) {
-          paramSpannable.setSpan(localg.caM(), i, m, 34);
+          paramSpannable.setSpan(localg.cfq(), i, m, 34);
         }
         paramSpannable.removeSpan(localg);
       }
       else
       {
-        l locall = locala.oTI;
-        int k = locala.oTI.MZ;
-        if ((locall.oTF) && (locall.isEmpty())) {
+        l locall = locala.pxs;
+        int k = locala.pxs.OQ;
+        if ((locall.pxp) && (locall.isEmpty())) {
           i = 34;
         }
         for (;;)
@@ -75,9 +75,9 @@ public final class n
           }
           paramSpannable.setSpan(localg, m, j, i);
           break;
-          if ((locall.oTF) && (locall.oTE)) {
+          if ((locall.pxp) && (locall.pxo)) {
             i = 18;
-          } else if (locall.oTF) {
+          } else if (locall.pxp) {
             i = 34;
           } else {
             i = 33;
@@ -90,23 +90,23 @@ public final class n
   
   static final class a
   {
-    final g oTH;
-    final l oTI;
-    final boolean oTJ;
+    final g pxr;
+    final l pxs;
+    final boolean pxt;
     
     a(Object paramObject, l paraml, boolean paramBoolean)
     {
       AppMethodBeat.i(181948);
-      this.oTH = ((g)paramObject);
-      this.oTI = paraml;
-      this.oTJ = paramBoolean;
+      this.pxr = ((g)paramObject);
+      this.pxs = paraml;
+      this.pxt = paramBoolean;
       AppMethodBeat.o(181948);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.n
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import java.util.Arrays;
 public final class a$k
   extends e
 {
-  public int ADE = 0;
-  public long ADF = 0L;
-  public byte[] JMC = g.bGH;
-  public a.bd JMq = null;
-  public int JMs = 0;
+  public int CcE = 0;
+  public long CcF = 0L;
+  public a.bd LFZ = null;
+  public int LGb = 0;
+  public byte[] LGl = g.bQV;
   public String groupId = "";
   
   public a$k()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
@@ -25,57 +25,57 @@ public final class a$k
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.ADE != 0) {
-      paramb.bv(2, this.ADE);
+    if (this.CcE != 0) {
+      paramb.bx(2, this.CcE);
     }
-    if (this.ADF != 0L) {
-      paramb.n(3, this.ADF);
+    if (this.CcF != 0L) {
+      paramb.n(3, this.CcF);
     }
-    if (this.JMq != null) {
-      paramb.a(4, this.JMq);
+    if (this.LFZ != null) {
+      paramb.a(4, this.LFZ);
     }
-    if (this.JMs != 0) {
-      paramb.bw(5, this.JMs);
+    if (this.LGb != 0) {
+      paramb.by(5, this.LGb);
     }
-    if (!Arrays.equals(this.JMC, g.bGH)) {
-      paramb.b(200, this.JMC);
+    if (!Arrays.equals(this.LGl, g.bQV)) {
+      paramb.b(200, this.LGl);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.ADE != 0) {
-      j = i + b.bx(2, this.ADE);
+    if (this.CcE != 0) {
+      j = i + b.bz(2, this.CcE);
     }
     i = j;
-    if (this.ADF != 0L) {
-      i = j + b.p(3, this.ADF);
+    if (this.CcF != 0L) {
+      i = j + b.p(3, this.CcF);
     }
     j = i;
-    if (this.JMq != null) {
-      j = i + b.b(4, this.JMq);
+    if (this.LFZ != null) {
+      j = i + b.b(4, this.LFZ);
     }
     i = j;
-    if (this.JMs != 0) {
-      i = j + b.by(5, this.JMs);
+    if (this.LGb != 0) {
+      i = j + b.bA(5, this.LGb);
     }
     j = i;
-    if (!Arrays.equals(this.JMC, g.bGH)) {
-      j = i + b.c(200, this.JMC);
+    if (!Arrays.equals(this.LGl, g.bQV)) {
+      j = i + b.c(200, this.LGl);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.k
  * JD-Core Version:    0.7.0.1
  */

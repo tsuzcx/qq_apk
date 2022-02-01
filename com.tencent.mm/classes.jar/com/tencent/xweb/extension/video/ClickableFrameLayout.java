@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ClickableFrameLayout
   extends FrameLayout
 {
-  private GestureDetector kVo;
+  private GestureDetector lsn;
   private View.OnClickListener mOnClickListener;
   
   public ClickableFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -31,7 +31,7 @@ public class ClickableFrameLayout
   
   public void setGestureDetector(GestureDetector paramGestureDetector)
   {
-    this.kVo = paramGestureDetector;
+    this.lsn = paramGestureDetector;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -44,7 +44,7 @@ public class ClickableFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.xweb.extension.video.ClickableFrameLayout
  * JD-Core Version:    0.7.0.1
  */

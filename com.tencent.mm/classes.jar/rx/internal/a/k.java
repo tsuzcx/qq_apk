@@ -11,16 +11,16 @@ import rx.internal.util.b.a;
 public final class k<T>
   implements d.b<T, T>
 {
-  private final Long Mdk = null;
-  private final rx.b.a Mdl = null;
-  private final a.d Mdm = rx.a.MbK;
+  private final Long NYm = null;
+  private final rx.b.a NYn = null;
+  private final a.d NYo = rx.a.NWM;
   
   private rx.i<? super T> b(rx.i<? super T> parami)
   {
     AppMethodBeat.i(90289);
-    a locala = new a(parami, this.Mdk, this.Mdl, this.Mdm);
+    a locala = new a(parami, this.NYm, this.NYn, this.NYo);
     parami.b(locala);
-    parami.a(locala.Mdp);
+    parami.a(locala.NYr);
     AppMethodBeat.o(90289);
     return locala;
   }
@@ -29,38 +29,38 @@ public final class k<T>
     extends rx.i<T>
     implements b.a
   {
-    private final rx.i<? super T> Mdc;
-    private final c<T> Mde;
-    private final rx.b.a Mdl;
-    private final a.d Mdm;
-    private final AtomicLong Mdn;
-    private final AtomicBoolean Mdo;
-    final rx.internal.util.b Mdp;
-    private final ConcurrentLinkedQueue<Object> rNK;
+    private final rx.i<? super T> NYe;
+    private final c<T> NYg;
+    private final rx.b.a NYn;
+    private final a.d NYo;
+    private final AtomicLong NYp;
+    private final AtomicBoolean NYq;
+    final rx.internal.util.b NYr;
+    private final ConcurrentLinkedQueue<Object> sJP;
     
     public a(rx.i<? super T> parami, Long paramLong, rx.b.a parama, a.d paramd)
     {
       AppMethodBeat.i(90279);
-      this.rNK = new ConcurrentLinkedQueue();
-      this.Mdo = new AtomicBoolean(false);
-      this.Mde = c.ggs();
-      this.Mdc = parami;
+      this.sJP = new ConcurrentLinkedQueue();
+      this.NYq = new AtomicBoolean(false);
+      this.NYg = c.gyW();
+      this.NYe = parami;
       if (paramLong != null) {}
       for (parami = new AtomicLong(paramLong.longValue());; parami = null)
       {
-        this.Mdn = parami;
-        this.Mdl = parama;
-        this.Mdp = new rx.internal.util.b(this);
-        this.Mdm = paramd;
+        this.NYp = parami;
+        this.NYn = parama;
+        this.NYr = new rx.internal.util.b(this);
+        this.NYo = paramd;
         AppMethodBeat.o(90279);
         return;
       }
     }
     
-    private boolean ggu()
+    private boolean gyY()
     {
       AppMethodBeat.i(90288);
-      if (this.Mdn == null)
+      if (this.NYp == null)
       {
         AppMethodBeat.o(90288);
         return true;
@@ -69,13 +69,13 @@ public final class k<T>
       label148:
       do
       {
-        l = this.Mdn.get();
+        l = this.NYp.get();
         if (l <= 0L) {
           for (;;)
           {
             try
             {
-              if (!this.Mdm.ggg()) {
+              if (!this.NYo.gyK()) {
                 continue;
               }
               Object localObject = poll();
@@ -86,18 +86,18 @@ public final class k<T>
             }
             catch (rx.a.c localc)
             {
-              if (!this.Mdo.compareAndSet(false, true)) {
+              if (!this.NYq.compareAndSet(false, true)) {
                 continue;
               }
-              this.Mcl.ggm();
-              this.Mdc.onError(localc);
+              this.NXn.gyQ();
+              this.NYe.onError(localc);
               int i = 0;
               continue;
             }
-            if (this.Mdl != null) {}
+            if (this.NYn != null) {}
             try
             {
-              this.Mdl.call();
+              this.NYn.call();
               if (i != 0) {
                 break label148;
               }
@@ -106,70 +106,70 @@ public final class k<T>
             }
             catch (Throwable localThrowable)
             {
-              rx.a.b.J(localThrowable);
-              this.Mdp.O(localThrowable);
+              rx.a.b.K(localThrowable);
+              this.NYr.P(localThrowable);
               AppMethodBeat.o(90288);
               return false;
             }
             i = 0;
           }
         }
-      } while (!this.Mdn.compareAndSet(l, l - 1L));
+      } while (!this.NYp.compareAndSet(l, l - 1L));
       AppMethodBeat.o(90288);
       return true;
     }
     
-    public final void M(Throwable paramThrowable)
+    public final void N(Throwable paramThrowable)
     {
       AppMethodBeat.i(90285);
       if (paramThrowable != null)
       {
-        this.Mdc.onError(paramThrowable);
+        this.NYe.onError(paramThrowable);
         AppMethodBeat.o(90285);
         return;
       }
-      this.Mdc.ggi();
+      this.NYe.gyM();
       AppMethodBeat.o(90285);
     }
     
     public final boolean accept(Object paramObject)
     {
       AppMethodBeat.i(90284);
-      boolean bool = c.a(this.Mdc, paramObject);
+      boolean bool = c.a(this.NYe, paramObject);
       AppMethodBeat.o(90284);
       return bool;
     }
     
-    public final void gd(T paramT)
-    {
-      AppMethodBeat.i(90283);
-      if (!ggu())
-      {
-        AppMethodBeat.o(90283);
-        return;
-      }
-      this.rNK.offer(c.gf(paramT));
-      this.Mdp.drain();
-      AppMethodBeat.o(90283);
-    }
-    
-    public final void ggi()
+    public final void gyM()
     {
       AppMethodBeat.i(90281);
-      if (!this.Mdo.get())
+      if (!this.NYq.get())
       {
-        rx.internal.util.b localb = this.Mdp;
+        rx.internal.util.b localb = this.NYr;
         localb.terminated = true;
         localb.drain();
       }
       AppMethodBeat.o(90281);
     }
     
+    public final void gz(T paramT)
+    {
+      AppMethodBeat.i(90283);
+      if (!gyY())
+      {
+        AppMethodBeat.o(90283);
+        return;
+      }
+      this.sJP.offer(c.gB(paramT));
+      this.NYr.drain();
+      AppMethodBeat.o(90283);
+    }
+    
     public final void onError(Throwable paramThrowable)
     {
       AppMethodBeat.i(90282);
-      if (!this.Mdo.get()) {
-        this.Mdp.O(paramThrowable);
+      if (!this.NYq.get()) {
+        this.NYr.P(paramThrowable);
       }
       AppMethodBeat.o(90282);
     }
@@ -177,14 +177,14 @@ public final class k<T>
     public final void onStart()
     {
       AppMethodBeat.i(90280);
-      CI(9223372036854775807L);
+      FO(9223372036854775807L);
       AppMethodBeat.o(90280);
     }
     
     public final Object peek()
     {
       AppMethodBeat.i(90286);
-      Object localObject = this.rNK.peek();
+      Object localObject = this.sJP.peek();
       AppMethodBeat.o(90286);
       return localObject;
     }
@@ -192,9 +192,9 @@ public final class k<T>
     public final Object poll()
     {
       AppMethodBeat.i(90287);
-      Object localObject = this.rNK.poll();
-      if ((this.Mdn != null) && (localObject != null)) {
-        this.Mdn.incrementAndGet();
+      Object localObject = this.sJP.poll();
+      if ((this.NYp != null) && (localObject != null)) {
+        this.NYp.incrementAndGet();
       }
       AppMethodBeat.o(90287);
       return localObject;
@@ -203,12 +203,12 @@ public final class k<T>
   
   public static final class b
   {
-    public static final k<?> Mdq;
+    public static final k<?> NYs;
     
     static
     {
       AppMethodBeat.i(90278);
-      Mdq = new k();
+      NYs = new k();
       AppMethodBeat.o(90278);
     }
   }

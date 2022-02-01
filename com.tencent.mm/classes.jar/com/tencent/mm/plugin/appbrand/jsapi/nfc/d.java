@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -12,62 +10,36 @@ import org.json.JSONObject;
 public final class d
   extends JsApiAppBrandNFCBase
 {
-  public static final int CTRL_INDEX = 354;
-  public static final String NAME = "sendHCEMessage";
+  public static final int CTRL_INDEX = 358;
+  public static final String NAME = "getHCEState";
   
-  static void a(c paramc, int paramInt, String paramString)
+  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(136106);
-    ac.i("MicroMsg.JsApiNFCSendHCEResponseCommand", "alvinluo sendHCEMessage callback json: %s", new Object[] { paramString });
-    if (paramc != null) {
-      paramc.h(paramInt, paramString);
-    }
-    AppMethodBeat.o(136106);
-  }
-  
-  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
-  {
-    AppMethodBeat.i(136105);
+    AppMethodBeat.i(136103);
     a(new JsApiAppBrandNFCBase.a()
     {
       public final void y(int paramAnonymousInt, String paramAnonymousString)
       {
-        AppMethodBeat.i(136104);
-        Object localObject1 = new HashMap();
-        ((Map)localObject1).put("errCode", Integer.valueOf(paramAnonymousInt));
+        AppMethodBeat.i(136102);
+        ad.i("MicroMsg.JsApiGetHCEState", "alvinluo checkIsSupport onResult errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("errCode", Integer.valueOf(paramAnonymousInt));
         if (paramAnonymousInt == 0)
         {
-          paramAnonymousString = d.this;
-          localObject1 = paramc;
-          paramAnonymousInt = paramInt;
-          Object localObject2 = paramJSONObject;
-          HashMap localHashMap = new HashMap();
-          localObject2 = ((JSONObject)localObject2).optString("data");
-          if (bs.isNullOrNil((String)localObject2))
-          {
-            localHashMap.put("errCode", Integer.valueOf(13005));
-            d.a((c)localObject1, paramAnonymousInt, paramAnonymousString.k("fail", localHashMap));
-            AppMethodBeat.o(136104);
-            return;
-          }
-          Bundle localBundle = new Bundle();
-          localBundle.putString("key_apdu_command", (String)localObject2);
-          HCEEventLogic.a(((c)localObject1).getAppId(), 32, localBundle);
-          localHashMap.put("errCode", Integer.valueOf(0));
-          ((c)localObject1).h(paramAnonymousInt, paramAnonymousString.k("ok", localHashMap));
-          AppMethodBeat.o(136104);
+          paramc.h(paramInt, d.this.m("ok", localHashMap));
+          AppMethodBeat.o(136102);
           return;
         }
-        d.a(paramc, paramInt, d.this.k("fail: ".concat(String.valueOf(paramAnonymousString)), (Map)localObject1));
-        AppMethodBeat.o(136104);
+        paramc.h(paramInt, d.this.m("fail ".concat(String.valueOf(paramAnonymousString)), localHashMap));
+        AppMethodBeat.o(136102);
       }
     });
-    AppMethodBeat.o(136105);
+    AppMethodBeat.o(136103);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.d
  * JD-Core Version:    0.7.0.1
  */

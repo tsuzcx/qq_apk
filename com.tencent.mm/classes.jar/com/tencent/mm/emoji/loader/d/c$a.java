@@ -3,12 +3,14 @@ package com.tencent.mm.emoji.loader.d;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class c$a
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
   c$a(boolean paramBoolean, Bitmap paramBitmap, ImageView paramImageView)
   {
@@ -17,7 +19,7 @@ final class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.c.a
  * JD-Core Version:    0.7.0.1
  */

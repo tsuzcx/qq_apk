@@ -10,7 +10,7 @@ public abstract interface o
   
   public abstract void b(String paramString1, int paramInt, String paramString2);
   
-  public abstract void t(String paramString);
+  public abstract void s(String paramString);
 }
 
 

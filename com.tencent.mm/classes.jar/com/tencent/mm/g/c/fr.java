@@ -7,30 +7,53 @@ import com.tencent.mm.sdk.e.c;
 public abstract class fr
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS snsreport_kv_logtime ON SnsReportKv(logtime)" };
-  private static final int enU;
-  private static final int fbr = "logtime".hashCode();
-  private static final int fbs;
-  private static final int fbt;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eDc;
+  private static final int eEB;
+  private static final int eEm;
+  private static final int eIP = "isSend".hashCode();
+  private static final int eLf;
+  private static final int eSQ = "svrid".hashCode();
+  private static final int feK;
+  private static final int fgJ;
+  private static final int fgK;
+  private static final int fgL;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE;
-  private boolean __hadSetvalue = true;
-  private boolean enD = true;
-  private boolean fbo = true;
-  private boolean fbp = true;
-  private boolean fbq = true;
-  public int field_errorcount;
-  public int field_logsize;
-  public long field_logtime;
-  public int field_offset;
-  public byte[] field_value;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eCZ = true;
+  private boolean eDP = true;
+  private boolean eEz = true;
+  private boolean eIA = true;
+  private boolean eKS = true;
+  private boolean eSe = true;
+  private boolean feB = true;
+  private boolean fgF = true;
+  private boolean fgG = true;
+  private boolean fgH = true;
+  public String field_content;
+  public long field_createtime;
+  public String field_imgpath;
+  public int field_isSend;
+  public String field_sayhicontent;
+  public String field_sayhiuser;
+  public int field_scene;
+  public int field_status;
+  public long field_svrid;
+  public String field_talker;
+  public int field_type;
   
   static
   {
-    enU = "offset".hashCode();
-    fbs = "logsize".hashCode();
-    fbt = "errorcount".hashCode();
-    value_HASHCODE = "value".hashCode();
+    eDc = "status".hashCode();
+    type_HASHCODE = "type".hashCode();
+    eEB = "scene".hashCode();
+    feK = "createtime".hashCode();
+    eLf = "talker".hashCode();
+    eEm = "content".hashCode();
+    fgJ = "sayhiuser".hashCode();
+    fgK = "sayhicontent".hashCode();
+    fgL = "imgpath".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -46,25 +69,38 @@ public abstract class fr
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fbr != k) {
-        break label60;
+      if (eSQ != k) {
+        break label65;
       }
-      this.field_logtime = paramCursor.getLong(i);
+      this.field_svrid = paramCursor.getLong(i);
+      this.eSe = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (enU == k) {
-        this.field_offset = paramCursor.getInt(i);
-      } else if (fbs == k) {
-        this.field_logsize = paramCursor.getInt(i);
-      } else if (fbt == k) {
-        this.field_errorcount = paramCursor.getInt(i);
-      } else if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getBlob(i);
+      label65:
+      if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (eEB == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (feK == k) {
+        this.field_createtime = paramCursor.getLong(i);
+      } else if (eLf == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (eEm == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (fgJ == k) {
+        this.field_sayhiuser = paramCursor.getString(i);
+      } else if (fgK == k) {
+        this.field_sayhicontent = paramCursor.getString(i);
+      } else if (fgL == k) {
+        this.field_imgpath = paramCursor.getString(i);
+      } else if (eIP == k) {
+        this.field_isSend = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -74,20 +110,38 @@ public abstract class fr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fbo) {
-      localContentValues.put("logtime", Long.valueOf(this.field_logtime));
+    if (this.eSe) {
+      localContentValues.put("svrid", Long.valueOf(this.field_svrid));
     }
-    if (this.enD) {
-      localContentValues.put("offset", Integer.valueOf(this.field_offset));
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.fbp) {
-      localContentValues.put("logsize", Integer.valueOf(this.field_logsize));
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.fbq) {
-      localContentValues.put("errorcount", Integer.valueOf(this.field_errorcount));
+    if (this.eEz) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.feB) {
+      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
+    }
+    if (this.eKS) {
+      localContentValues.put("talker", this.field_talker);
+    }
+    if (this.eDP) {
+      localContentValues.put("content", this.field_content);
+    }
+    if (this.fgF) {
+      localContentValues.put("sayhiuser", this.field_sayhiuser);
+    }
+    if (this.fgG) {
+      localContentValues.put("sayhicontent", this.field_sayhicontent);
+    }
+    if (this.fgH) {
+      localContentValues.put("imgpath", this.field_imgpath);
+    }
+    if (this.eIA) {
+      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -97,7 +151,7 @@ public abstract class fr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.fr
  * JD-Core Version:    0.7.0.1
  */

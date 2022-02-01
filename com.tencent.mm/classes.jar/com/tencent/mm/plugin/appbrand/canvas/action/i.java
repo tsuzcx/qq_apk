@@ -18,12 +18,12 @@ public final class i
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(144885);
-    Paint.FontMetrics localFontMetrics = paramd.jzb.getFontMetrics();
+    Paint.FontMetrics localFontMetrics = paramd.jSY.getFontMetrics();
     float f;
-    if (paramd.jzb.jAa == a.a.jAh)
+    if (paramd.jSY.jTV == a.a.jUc)
     {
       f = paramFloat2 + Math.abs(localFontMetrics.ascent);
-      paramd = paramd.jzb;
+      paramd = paramd.jSY;
       paramFloat2 = paramd.measureText(paramString);
       if ((paramFloat3 <= 0.0F) || (paramFloat3 >= paramFloat2)) {
         break label189;
@@ -39,13 +39,13 @@ public final class i
     {
       AppMethodBeat.o(144885);
       return true;
-      if (paramd.jzb.jAa == a.a.jAj)
+      if (paramd.jSY.jTV == a.a.jUe)
       {
         f = paramFloat2 + Math.abs((-localFontMetrics.ascent + localFontMetrics.descent) / 2.0F - localFontMetrics.descent);
         break;
       }
       f = paramFloat2;
-      if (paramd.jzb.jAa != a.a.jAi) {
+      if (paramd.jSY.jTV != a.a.jUd) {
         break;
       }
       f = paramFloat2 - Math.abs(localFontMetrics.descent);
@@ -82,7 +82,7 @@ public final class i
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144883);
     DrawTextActionArg localDrawTextActionArg = new DrawTextActionArg();

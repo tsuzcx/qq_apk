@@ -3,33 +3,33 @@ package com.tencent.mm.protocal;
 import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.nio.charset.Charset;
 
 public final class aa$b
   extends l.e
   implements l.c
 {
-  public long DJB = 7L;
-  private byte[] DJC;
-  private String dqf = null;
-  public byte[] ghj = null;
+  public long FoI = 7L;
+  private byte[] FoJ;
+  private String dBS = null;
+  public byte[] gAT = null;
   
   @TargetApi(9)
-  public final String eRs()
+  public final String fgw()
   {
     AppMethodBeat.i(133127);
-    if (this.ghj == null)
+    if (this.gAT == null)
     {
       AppMethodBeat.o(133127);
       return "";
     }
     Object localObject;
-    if (this.dqf == null)
+    if (this.dBS == null)
     {
-      localObject = MMProtocalJni.aesDecrypt(this.DJC, this.ghj);
-      if (bs.cv((byte[])localObject))
+      localObject = MMProtocalJni.aesDecrypt(this.FoJ, this.gAT);
+      if (bt.cC((byte[])localObject))
       {
         AppMethodBeat.o(133127);
         return "";
@@ -39,9 +39,9 @@ public final class aa$b
       }
     }
     label91:
-    for (this.dqf = new String((byte[])localObject, Charset.forName("UTF-8"));; this.dqf = new String((byte[])localObject))
+    for (this.dBS = new String((byte[])localObject, Charset.forName("UTF-8"));; this.dBS = new String((byte[])localObject))
     {
-      localObject = this.dqf;
+      localObject = this.dBS;
       AppMethodBeat.o(133127);
       return localObject;
     }
@@ -56,34 +56,34 @@ public final class aa$b
       if (paramArrayOfByte == null) {}
       for (i = -1;; i = paramArrayOfByte.length)
       {
-        ac.e("MicroMsg.MMSyncCheck", i);
+        ad.e("MicroMsg.MMSyncCheck", i);
         AppMethodBeat.o(133128);
         return -1;
       }
     }
-    this.DJB = (paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24);
+    this.FoI = (paramArrayOfByte[3] & 0xFF | (paramArrayOfByte[2] & 0xFF) << 8 | (paramArrayOfByte[1] & 0xFF) << 16 | (paramArrayOfByte[0] & 0xFF) << 24);
     int i = paramArrayOfByte[7] & 0xFF | (paramArrayOfByte[6] & 0xFF) << 8 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[4] & 0xFF) << 24;
     int j = paramArrayOfByte[11] & 0xFF | (paramArrayOfByte[10] & 0xFF) << 8 | (paramArrayOfByte[9] & 0xFF) << 16 | (paramArrayOfByte[8] & 0xFF) << 24;
-    ac.d("MicroMsg.MMSyncCheck", " fromProtoBuf oreh synccheck resp selector:%d, redCode:%d, keyLen:%d", new Object[] { Long.valueOf(this.DJB), Integer.valueOf(i), Integer.valueOf(j) });
+    ad.d("MicroMsg.MMSyncCheck", " fromProtoBuf oreh synccheck resp selector:%d, redCode:%d, keyLen:%d", new Object[] { Long.valueOf(this.FoI), Integer.valueOf(i), Integer.valueOf(j) });
     if (i != -3002)
     {
-      this.dqf = "";
+      this.dBS = "";
       AppMethodBeat.o(133128);
       return i;
     }
     if ((j != paramArrayOfByte.length - 12) && (j != paramArrayOfByte.length - 12 - 16))
     {
-      ac.e("MicroMsg.MMSyncCheck", " the key len is invalid keyLen:%d, bufLen:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramArrayOfByte.length) });
+      ad.e("MicroMsg.MMSyncCheck", " the key len is invalid keyLen:%d, bufLen:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramArrayOfByte.length) });
       AppMethodBeat.o(133128);
       return -1;
     }
     if (j == paramArrayOfByte.length - 12 - 16)
     {
-      this.ghj = new byte[16];
-      System.arraycopy(paramArrayOfByte, paramArrayOfByte.length - 16, this.ghj, 0, 16);
+      this.gAT = new byte[16];
+      System.arraycopy(paramArrayOfByte, paramArrayOfByte.length - 16, this.gAT, 0, 16);
     }
-    this.DJC = new byte[j];
-    System.arraycopy(paramArrayOfByte, 12, this.DJC, 0, j);
+    this.FoJ = new byte[j];
+    System.arraycopy(paramArrayOfByte, 12, this.FoJ, 0, j);
     AppMethodBeat.o(133128);
     return i;
   }
@@ -100,7 +100,7 @@ public final class aa$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.aa.b
  * JD-Core Version:    0.7.0.1
  */

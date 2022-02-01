@@ -11,9 +11,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class m
   extends d
 {
-  public long AMc;
-  public int tOL;
-  public String tmu;
+  public long Clq;
+  public int uRy;
+  public String ukT;
   
   public m(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
@@ -23,15 +23,15 @@ public final class m
     try
     {
       localj.groupId = paramString;
-      this.tmu = paramString;
+      this.ukT = paramString;
       localj.roomId = paramInt1;
-      this.tOL = paramInt1;
-      localj.tIG = paramLong;
-      this.AMc = paramLong;
+      this.uRy = paramInt1;
+      localj.uLt = paramLong;
+      this.Clq = paramLong;
       localj.action = paramInt2;
       localj.timestamp = System.currentTimeMillis();
       this.mNetType = 3;
-      this.JLH = c.fIe().aUe(paramString);
+      this.LFq = c.fZv().bac(paramString);
       c(243, localj);
       AppMethodBeat.o(62524);
       return;
@@ -45,7 +45,7 @@ public final class m
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62525);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -68,7 +68,7 @@ public final class m
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSSwitchVideoGroupReq";
   }
@@ -80,7 +80,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.m
  * JD-Core Version:    0.7.0.1
  */

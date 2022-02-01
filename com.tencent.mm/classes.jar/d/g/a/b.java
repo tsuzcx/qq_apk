@@ -3,11 +3,11 @@ package d.g.a;
 import d.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/functions/Function1;", "P1", "R", "Lkotlin/Function;", "invoke", "p1", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/functions/Function1;", "P1", "R", "Lkotlin/Function;", "invoke", "p1", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
 public abstract interface b<P1, R>
   extends c<R>
 {
-  public abstract R ay(P1 paramP1);
+  public abstract R invoke(P1 paramP1);
 }
 
 

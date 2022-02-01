@@ -10,9 +10,7 @@ import android.os.Process;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.k;
-import com.tencent.mm.network.ad;
-import com.tencent.mm.network.ad.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.network.ad.b;
 
 @k
 @JgClassChecked(author=20, fComment="checked", lastDate="20140819", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
@@ -23,7 +21,7 @@ public class MMReceivers$ConnectionReceiver
   {
     AppMethodBeat.i(131890);
     new StringBuilder("onReceive process: ").append(Process.myPid());
-    ac.i("MicroMsg.ConnectionReceiver", "onReceive threadID: " + Thread.currentThread().getId());
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ConnectionReceiver", "onReceive threadID: " + Thread.currentThread().getId());
     if (paramContext == null)
     {
       AppMethodBeat.o(131890);
@@ -31,12 +29,12 @@ public class MMReceivers$ConnectionReceiver
     }
     if (!b.c(paramContext, "connection", true))
     {
-      MMReceivers.AlarmReceiver.bO(paramContext);
-      ac.eUQ();
+      MMReceivers.AlarmReceiver.bN(paramContext);
+      com.tencent.mm.sdk.platformtools.ad.fku();
       AppMethodBeat.o(131890);
       return;
     }
-    if (ad.aMe() == null)
+    if (com.tencent.mm.network.ad.aPl() == null)
     {
       AppMethodBeat.o(131890);
       return;
@@ -52,30 +50,30 @@ public class MMReceivers$ConnectionReceiver
     {
       for (;;)
       {
-        ac.e("MicroMsg.ConnectionReceiver", "getActiveNetworkInfo failed. exception: %s", new Object[] { paramIntent.getMessage() });
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ConnectionReceiver", "getActiveNetworkInfo failed. exception: %s", new Object[] { paramIntent.getMessage() });
         continue;
         paramIntent = paramContext.getState();
       }
-      ac.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: true");
-      paramIntent = ad.aMe();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: true");
+      paramIntent = com.tencent.mm.network.ad.aPl();
       paramContext.getTypeName();
       paramContext.getSubtypeName();
-      paramIntent.cv(true);
+      paramIntent.cx(true);
       AppMethodBeat.o(131890);
     }
     if ((paramContext == null) || (paramContext.getState() != NetworkInfo.State.CONNECTED)) {
       if (paramContext == null)
       {
         paramIntent = "null";
-        ac.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: false, state:%s", new Object[] { paramIntent });
-        paramIntent = ad.aMe();
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: false, state:%s", new Object[] { paramIntent });
+        paramIntent = com.tencent.mm.network.ad.aPl();
         if (paramContext != null) {
           paramContext.getTypeName();
         }
         if (paramContext != null) {
           paramContext.getSubtypeName();
         }
-        paramIntent.cv(false);
+        paramIntent.cx(false);
         AppMethodBeat.o(131890);
         return;
       }

@@ -2,54 +2,54 @@ package com.tencent.mm.plugin.story.i;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dw;
+import com.tencent.mm.g.c.eg;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"})
 public final class i
   extends j<h>
   implements k.a
 {
+  private static final String ATX = "select * from MMStoryHistoryItem ";
+  public static final a AUa;
   private static final String[] SQL_CREATE;
   public static final String TABLE = "MMStoryHistoryItem";
   private static final String TAG = "MicroMsg.StoryHistoryInfoStorage";
-  public static final i.a zCB;
-  private static final String zCy = "select * from MMStoryHistoryItem ";
   public final e db;
   
   static
   {
     AppMethodBeat.i(119529);
-    zCB = new i.a((byte)0);
+    AUa = new a((byte)0);
     TAG = "MicroMsg.StoryHistoryInfoStorage";
     TABLE = "MMStoryHistoryItem";
-    h.a locala = h.zCA;
+    h.a locala = h.ATZ;
     SQL_CREATE = new String[] { j.getCreateSQLs(h.access$getInfo$cp(), TABLE) };
-    zCy = "select * from " + TABLE + ' ';
+    ATX = "select * from " + TABLE + ' ';
     AppMethodBeat.o(119529);
   }
   
   public i(e parame)
   {
-    super(parame, h.access$getInfo$cp(), TABLE, dw.INDEX_CREATE);
+    super(parame, h.access$getInfo$cp(), TABLE, eg.INDEX_CREATE);
     AppMethodBeat.i(119528);
     this.db = parame;
     AppMethodBeat.o(119528);
   }
   
-  private boolean axf(String paramString)
+  private boolean aCj(String paramString)
   {
     AppMethodBeat.i(119525);
-    k.h(paramString, "date");
-    paramString = zCy + " WHERE " + TABLE + ".date = '" + paramString + '\'';
+    p.h(paramString, "date");
+    paramString = ATX + " WHERE " + TABLE + ".date = '" + paramString + '\'';
     paramString = this.db.rawQuery(paramString, null);
-    k.g(paramString, "cu");
+    p.g(paramString, "cu");
     int i = paramString.getCount();
     paramString.close();
     if (i > 0)
@@ -64,7 +64,7 @@ public final class i
   private boolean b(h paramh)
   {
     AppMethodBeat.i(119527);
-    k.h(paramh, "info");
+    p.h(paramh, "info");
     boolean bool = super.replace((c)paramh);
     AppMethodBeat.o(119527);
     return bool;
@@ -75,8 +75,8 @@ public final class i
   public final boolean a(h paramh)
   {
     AppMethodBeat.i(119524);
-    k.h(paramh, "storyHistoryInfo");
-    if (axf(paramh.dZf()))
+    p.h(paramh, "storyHistoryInfo");
+    if (aCj(paramh.elu()))
     {
       bool = update((c)paramh, new String[] { "date" });
       AppMethodBeat.o(119524);
@@ -87,11 +87,11 @@ public final class i
     return bool;
   }
   
-  public final h axg(String paramString)
+  public final h aCk(String paramString)
   {
     AppMethodBeat.i(119526);
-    k.h(paramString, "date");
-    paramString = zCy + " WHERE " + TABLE + ".date = '" + paramString + '\'';
+    p.h(paramString, "date");
+    paramString = ATX + " WHERE " + TABLE + ".date = '" + paramString + '\'';
     paramString = this.db.rawQuery(paramString, null);
     if (paramString.moveToFirst())
     {
@@ -105,10 +105,13 @@ public final class i
     AppMethodBeat.o(119526);
     return null;
   }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage$Companion;", "", "()V", "SQL_CREATE", "", "", "kotlin.jvm.PlatformType", "getSQL_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "SelectAllData", "TABLE", "getTABLE", "()Ljava/lang/String;", "TAG", "plugin-story_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.i.i
  * JD-Core Version:    0.7.0.1
  */

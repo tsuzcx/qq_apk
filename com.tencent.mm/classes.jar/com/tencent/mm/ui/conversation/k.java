@@ -14,101 +14,104 @@ import android.content.res.Resources;
 import android.os.PowerManager.WakeLock;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.cu;
-import com.tencent.mm.g.a.hq;
-import com.tencent.mm.g.a.kc;
-import com.tencent.mm.g.a.pb;
-import com.tencent.mm.g.a.wh;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.cx;
+import com.tencent.mm.g.a.hx;
+import com.tencent.mm.g.a.kk;
+import com.tencent.mm.g.a.pk;
+import com.tencent.mm.g.a.xa;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.u;
 import com.tencent.mm.modelmulti.l;
 import com.tencent.mm.modelmulti.p;
-import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.plugin.sns.b.o;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.platformtools.FLock;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.LauncherUI;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d.a;
 import com.tencent.mm.ui.y;
 import com.tencent.mm.ui.y.a;
 import java.lang.ref.WeakReference;
 
 public final class k
-  implements com.tencent.mm.ak.g, com.tencent.mm.ak.h
+  implements com.tencent.mm.al.f, com.tencent.mm.al.g
 {
-  private static boolean IEQ = false;
-  private com.tencent.mm.ui.widget.a.d IEK;
-  private com.tencent.mm.ui.widget.a.d IEL;
-  private boolean IEM;
-  private com.tencent.mm.compatible.util.f.a IEN;
-  boolean IEO;
-  private com.tencent.mm.modelmulti.f IEP;
-  a IER;
-  a IES;
-  com.tencent.mm.sdk.b.c IET;
-  com.tencent.mm.sdk.b.c IEU;
-  FLock IEV;
-  Activity dgE;
-  ProgressDialog fts;
-  WeakReference<Activity> jrI;
+  private static boolean KvT = false;
+  private com.tencent.mm.ui.widget.a.d KvN;
+  private com.tencent.mm.ui.widget.a.d KvO;
+  private boolean KvP;
+  private com.tencent.mm.compatible.util.f.a KvQ;
+  boolean KvR;
+  private com.tencent.mm.modelmulti.f KvS;
+  a KvU;
+  a KvV;
+  com.tencent.mm.sdk.b.c KvW;
+  com.tencent.mm.sdk.b.c KvX;
+  FLock KvY;
+  Activity dsa;
+  ProgressDialog fMu;
+  WeakReference<Activity> jLC;
   PowerManager.WakeLock wakeLock;
   
   public k()
   {
     AppMethodBeat.i(38610);
-    this.IEK = null;
-    this.IEL = null;
-    this.IEM = false;
-    this.IEN = new com.tencent.mm.compatible.util.f.a();
+    this.KvN = null;
+    this.KvO = null;
+    this.KvP = false;
+    this.KvQ = new com.tencent.mm.compatible.util.f.a();
     this.wakeLock = null;
-    this.IEO = false;
-    this.IEP = null;
-    this.fts = null;
-    this.IET = new com.tencent.mm.sdk.b.c() {};
-    this.IEU = new com.tencent.mm.sdk.b.c() {};
+    this.KvR = false;
+    this.KvS = null;
+    this.fMu = null;
+    this.KvW = new com.tencent.mm.sdk.b.c() {};
+    this.KvX = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(38610);
   }
   
-  private boolean aL(int paramInt1, int paramInt2, int paramInt3)
+  private boolean aM(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(38615);
-    if (!com.tencent.mm.kernel.g.agM())
+    if (!com.tencent.mm.kernel.g.ajx())
     {
-      ac.w("MicroMsg.InitHelper", "account not ready");
+      ad.w("MicroMsg.InitHelper", "account not ready");
       AppMethodBeat.o(38615);
       return false;
     }
-    az.ayM();
-    long l1 = bs.a((Long)com.tencent.mm.model.c.agA().get(ah.a.GDz, null), 0L);
-    az.ayM();
-    long l2 = bs.a((Long)com.tencent.mm.model.c.agA().get(ah.a.GDB, null), 0L);
-    az.ayM();
-    long l3 = bs.a((Long)com.tencent.mm.model.c.agA().get(ah.a.GDA, null), 0L);
-    az.ayM();
-    com.tencent.mm.model.c.agA().set(ah.a.GDz, Long.valueOf(0L));
-    az.ayM();
-    com.tencent.mm.model.c.agA().set(ah.a.GDA, Long.valueOf(0L));
-    if ((l3 == com.tencent.mm.protocal.d.DIc) && (bs.pN(l2) < 3600L)) {
+    ba.aBQ();
+    long l1 = bt.a((Long)com.tencent.mm.model.c.ajl().get(al.a.IpS, null), 0L);
+    ba.aBQ();
+    long l2 = bt.a((Long)com.tencent.mm.model.c.ajl().get(al.a.IpU, null), 0L);
+    ba.aBQ();
+    long l3 = bt.a((Long)com.tencent.mm.model.c.ajl().get(al.a.IpT, null), 0L);
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().set(al.a.IpS, Long.valueOf(0L));
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().set(al.a.IpT, Long.valueOf(0L));
+    if ((l3 == com.tencent.mm.protocal.d.Fnj) && (bt.rM(l2) < 3600L)) {
       if (l1 == 1L)
       {
-        if (y.c(this.dgE, 4, -17))
+        if (y.c(this.dsa, 4, -17))
         {
           AppMethodBeat.o(38615);
           return true;
         }
       }
-      else if ((l1 == 2L) && (y.c(this.dgE, 4, -16)))
+      else if ((l1 == 2L) && (y.c(this.dsa, 4, -16)))
       {
         AppMethodBeat.o(38615);
         return true;
@@ -116,11 +119,11 @@ public final class k
     }
     if ((paramInt1 == 4) && ((paramInt2 == -16) || (paramInt2 == -17)))
     {
-      ac.i("MicroMsg.InitHelper", "trigger check update: errCode:%d, sceneType:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      if (ab.ivt) {
-        ai.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bs.aNx() - 86400L - 1L).commit();
+      ad.i("MicroMsg.InitHelper", "trigger check update: errCode:%d, sceneType:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      if (ac.iOA) {
+        aj.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bt.aQJ() - 86400L - 1L).commit();
       }
-      if (y.c(this.dgE, paramInt1, paramInt2))
+      if (y.c(this.dsa, paramInt1, paramInt2))
       {
         AppMethodBeat.o(38615);
         return true;
@@ -130,63 +133,63 @@ public final class k
     return false;
   }
   
-  private void fst()
+  private void fJh()
   {
     AppMethodBeat.i(38612);
-    if (this.IEM)
+    if (this.KvP)
     {
-      ac.i("MicroMsg.InitHelper", "summerinit doPreCreate but hasTryDoInitButFailed true ret");
+      ad.i("MicroMsg.InitHelper", "summerinit doPreCreate but hasTryDoInitButFailed true ret");
       AppMethodBeat.o(38612);
       return;
     }
     if (!this.wakeLock.isHeld())
     {
-      ac.w("MicroMsg.InitHelper", "tryDoInit wakelock.acquire!");
+      ad.w("MicroMsg.InitHelper", "tryDoInit wakelock.acquire!");
       this.wakeLock.acquire();
     }
-    this.IES.fsw();
-    cu localcu = new cu();
-    localcu.dcv.action = 1;
-    com.tencent.mm.sdk.b.a.GpY.l(localcu);
-    if (this.IEP == null)
+    this.KvV.fJk();
+    cx localcx = new cx();
+    localcx.dnR.action = 1;
+    com.tencent.mm.sdk.b.a.IbL.l(localcx);
+    if (this.KvS == null)
     {
-      if (com.tencent.mm.plugin.sns.b.o.xMb != null) {
-        com.tencent.mm.plugin.sns.b.o.xMb.dGm();
+      if (o.zbT != null) {
+        o.zbT.dSz();
       }
-      this.IEP = new com.tencent.mm.modelmulti.f(this);
-      ac.d("MicroMsg.InitHelper", "dkinit doPreCreate t:%d initScene:%d", new Object[] { Long.valueOf(this.IEN.YH()), Integer.valueOf(this.IEP.hashCode()) });
-      this.IEN.fJW = SystemClock.elapsedRealtime();
-      az.agi().a(this.IEP, 0);
+      this.KvS = new com.tencent.mm.modelmulti.f(this);
+      ad.d("MicroMsg.InitHelper", "dkinit doPreCreate t:%d initScene:%d", new Object[] { Long.valueOf(this.KvQ.abj()), Integer.valueOf(this.KvS.hashCode()) });
+      this.KvQ.gdx = SystemClock.elapsedRealtime();
+      ba.aiU().a(this.KvS, 0);
     }
-    com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(38606);
-        long l = k.f(k.this).YH();
+        long l = k.f(k.this).abj();
         if (k.g(k.this) == null) {}
         for (int i = -2;; i = k.g(k.this).hashCode())
         {
-          ac.d("MicroMsg.InitHelper", "dkinit showProgressDlg t:%d initScene:%d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
+          ad.d("MicroMsg.InitHelper", "dkinit showProgressDlg t:%d initScene:%d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
           if ((k.h(k.this) != null) && (k.h(k.this).isShowing())) {
             k.h(k.this).dismiss();
           }
           k localk = k.this;
           Activity localActivity = k.a(k.this);
           k.a(k.this).getString(2131755906);
-          k.a(localk, com.tencent.mm.ui.base.h.b(localActivity, k.a(k.this).getString(2131755805), false, new DialogInterface.OnCancelListener()
+          k.a(localk, h.b(localActivity, k.a(k.this).getString(2131755805), false, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(38605);
-              az.agi().a(k.g(k.this));
-              if (com.tencent.mm.plugin.sns.b.o.xMb != null) {
-                com.tencent.mm.plugin.sns.b.o.xMb.dGn();
+              ba.aiU().a(k.g(k.this));
+              if (o.zbT != null) {
+                o.zbT.dSA();
               }
               AppMethodBeat.o(38605);
             }
           }));
-          az.agU().Kw();
+          ba.ajF().LZ();
           AppMethodBeat.o(38606);
           return;
         }
@@ -206,13 +209,13 @@ public final class k
     if (paramInt2 != 0) {}
     for (long l = paramInt1 * 100L / paramInt2;; l = 0L)
     {
-      com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(38607);
           if (k.h(k.this) != null) {
-            k.h(k.this).setMessage(k.a(k.this).getString(2131755805) + this.ckK + "%");
+            k.h(k.this).setMessage(k.a(k.this).getString(2131755805) + this.cvm + "%");
           }
           AppMethodBeat.o(38607);
         }
@@ -222,40 +225,40 @@ public final class k
     }
   }
   
-  final boolean fss()
+  final boolean fJg()
   {
     AppMethodBeat.i(38611);
-    if (!l.aGj())
+    if (!l.aJs())
     {
       AppMethodBeat.o(38611);
       return false;
     }
-    if ((this.IEL != null) && (this.IEL.isShowing()))
+    if ((this.KvO != null) && (this.KvO.isShowing()))
     {
       AppMethodBeat.o(38611);
       return false;
     }
-    com.tencent.mm.kernel.g.agS();
-    if (com.tencent.mm.kernel.g.agR().agt())
+    com.tencent.mm.kernel.g.ajD();
+    if (com.tencent.mm.kernel.g.ajC().ajf())
     {
-      this.IEL = new d.a(this.dgE).acF(2131758015).aRI(this.dgE.getString(2131758014)).yf(false).acM(2131758016).b(new k.9(this)).acN(2131758013).c(new DialogInterface.OnClickListener()
+      this.KvO = new d.a(this.dsa).afe(2131758015).aXG(this.dsa.getString(2131758014)).yR(false).afl(2131758016).c(new k.9(this)).afm(2131758013).d(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(38603);
-          com.tencent.mm.kernel.g.agU().az(new Runnable()
+          com.tencent.mm.kernel.g.ajF().ay(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(38601);
-              ae localae = com.tencent.mm.kernel.g.agR().agA();
-              localae.set(89, Integer.valueOf(2));
-              localae.faa();
+              ai localai = com.tencent.mm.kernel.g.ajC().ajl();
+              localai.set(89, Integer.valueOf(2));
+              localai.fqc();
               AppMethodBeat.o(38601);
             }
           });
           k.e(k.this).dismiss();
-          com.tencent.mm.ui.base.h.a(k.a(k.this), 2131757994, 2131755906, false, new DialogInterface.OnClickListener()
+          h.a(k.a(k.this), 2131757994, 2131755906, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -266,33 +269,33 @@ public final class k
           });
           AppMethodBeat.o(38603);
         }
-      }).fvp();
-      this.IEL.show();
+      }).fMb();
+      this.KvO.show();
     }
     for (;;)
     {
       AppMethodBeat.o(38611);
       return true;
-      fst();
+      fJh();
     }
   }
   
-  final int fsu()
+  final int fJi()
   {
     AppMethodBeat.i(38616);
-    if (this.IEP == null)
+    if (this.KvS == null)
     {
       AppMethodBeat.o(38616);
       return -2;
     }
-    int i = this.IEP.hashCode();
+    int i = this.KvS.hashCode();
     AppMethodBeat.o(38616);
     return i;
   }
   
-  public final boolean fsv()
+  public final boolean fJj()
   {
-    return this.IEP != null;
+    return this.KvS != null;
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -302,11 +305,11 @@ public final class k
     {
       if ((paramn.getType() != 113) && (paramn.getType() != 0))
       {
-        aL(paramInt1, paramInt2, paramn.getType());
+        aM(paramInt1, paramInt2, paramn.getType());
         AppMethodBeat.o(38614);
         return;
       }
-      ac.i("MicroMsg.InitHelper", "onSceneEnd from GetUpdateInfo, ignore it.");
+      ad.i("MicroMsg.InitHelper", "onSceneEnd from GetUpdateInfo, ignore it.");
       AppMethodBeat.o(38614);
       return;
     }
@@ -314,178 +317,192 @@ public final class k
     int k = hashCode();
     int i;
     Object localObject;
-    if (this.IEP == null)
+    if (this.KvS == null)
     {
       i = -2;
-      ac.i("MicroMsg.InitHelper", "dkinit onSceneEnd:[%d,%d,%s] type:%d hash:%d init:%d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
-      if ((this.IEP != null) && (paramn.getType() == 139))
+      ad.i("MicroMsg.InitHelper", "dkinit onSceneEnd:[%d,%d,%s] type:%d hash:%d init:%d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
+      if ((this.KvS != null) && (paramn.getType() == 139))
       {
-        this.IEP = null;
-        ac.w("MicroMsg.InitHelper", "summerinit dkinit Kevin init FINISH : %d ", new Object[] { Long.valueOf(this.IEN.YH()) });
-        ar.a.hnw.a(null, null, null);
-        if (com.tencent.mm.plugin.sns.b.o.xMb != null) {
-          com.tencent.mm.plugin.sns.b.o.xMb.dGn();
+        this.KvS = null;
+        ad.w("MicroMsg.InitHelper", "summerinit dkinit Kevin init FINISH : %d ", new Object[] { Long.valueOf(this.KvQ.abj()) });
+        as.a.hFO.aBs();
+        if (o.zbT != null) {
+          o.zbT.dSA();
         }
-        this.IES.abk();
-        localObject = new cu();
-        ((cu)localObject).dcv.action = 2;
-        com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
+        this.KvV.adO();
+        localObject = new cx();
+        ((cx)localObject).dnR.action = 2;
+        com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
         if (this.wakeLock.isHeld())
         {
-          ac.w("MicroMsg.InitHelper", "onSceneEnd wakelock.release!");
+          ad.w("MicroMsg.InitHelper", "onSceneEnd wakelock.release!");
           this.wakeLock.release();
         }
-        az.agU().eVm();
-        if (this.fts != null)
+        ba.ajF().fkT();
+        if (this.fMu != null)
         {
-          this.fts.dismiss();
-          this.fts = null;
+          this.fMu.dismiss();
+          this.fMu = null;
         }
-        localObject = (Activity)this.jrI.get();
-        if ((!com.tencent.mm.kernel.g.agM()) || (!com.tencent.mm.kernel.g.agP().ggT) || (localObject == null) || (this.dgE.getSharedPreferences(ai.eUX() + "_fontScaleTip", 0).getBoolean("font_scale_tip_login", false))) {
-          break label1291;
+        j = 0;
+        localObject = (Activity)this.jLC.get();
+        i = j;
+        if (com.tencent.mm.kernel.g.ajx())
+        {
+          i = j;
+          if (com.tencent.mm.kernel.g.ajA().gAD)
+          {
+            i = j;
+            if (localObject != null)
+            {
+              i = j;
+              if (!this.dsa.getSharedPreferences(aj.fkC() + "_fontScaleTip", 0).getBoolean("font_scale_tip_login", false))
+              {
+                if (1.0F != com.tencent.mm.cc.a.eb(this.dsa)) {
+                  break label729;
+                }
+                if (1.0F == this.dsa.getResources().getConfiguration().fontScale) {
+                  break label1307;
+                }
+                com.tencent.mm.plugin.report.service.g.yhR.f(15181, new Object[] { Integer.valueOf(1) });
+                com.tencent.mm.ui.widget.a.f.a locala = new com.tencent.mm.ui.widget.a.f.a((Context)localObject);
+                locala.av(((Activity)localObject).getResources().getString(2131759585)).aXO(((Activity)localObject).getResources().getString(2131759582)).aXS(((Activity)localObject).getResources().getString(2131759584)).aXT(((Activity)localObject).getResources().getString(2131759583));
+                locala.c(new k.12(this, (Activity)localObject)).show();
+                this.dsa.getSharedPreferences(aj.fkC() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
+                i = 1;
+              }
+            }
+          }
         }
-        if (1.0F != com.tencent.mm.cc.a.eb(this.dgE)) {
-          break label713;
-        }
-        if (1.0F == this.dgE.getResources().getConfiguration().fontScale) {
-          break label1291;
-        }
-        com.tencent.mm.plugin.report.service.h.wUl.f(15181, new Object[] { Integer.valueOf(1) });
-        com.tencent.mm.ui.widget.a.f.a locala = new com.tencent.mm.ui.widget.a.f.a((Context)localObject);
-        locala.av(((Activity)localObject).getResources().getString(2131759585)).aRQ(((Activity)localObject).getResources().getString(2131759582)).aRU(((Activity)localObject).getResources().getString(2131759584)).aRV(((Activity)localObject).getResources().getString(2131759583));
-        locala.c(new k.12(this, (Activity)localObject)).show();
-        this.dgE.getSharedPreferences(ai.eUX() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
-        i = 1;
       }
     }
     for (;;)
     {
       if (i == 0) {
-        this.dgE.getSharedPreferences(ai.eUX() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip", false).apply();
+        this.dsa.getSharedPreferences(aj.fkC() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip", false).apply();
       }
-      if (y.a(this.dgE, paramInt1, paramInt2, new Intent().setClass(this.dgE, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString))
+      if (y.a(this.dsa, paramInt1, paramInt2, new Intent().setClass(this.dsa, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString))
       {
-        ac.i("MicroMsg.InitHelper", "summerinit onSceneEnd accountExpired ret");
+        ad.i("MicroMsg.InitHelper", "summerinit onSceneEnd accountExpired ret");
         AppMethodBeat.o(38614);
         return;
-        i = this.IEP.hashCode();
+        i = this.KvS.hashCode();
         break;
-        label713:
-        this.dgE.getSharedPreferences(ai.eUX() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
+        label729:
+        this.dsa.getSharedPreferences(aj.fkC() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
         i = 1;
         continue;
       }
-      if (!az.agM())
+      if (!ba.ajx())
       {
-        ac.w("MicroMsg.InitHelper", "summerinit onSceneEnd not set uin");
+        ad.w("MicroMsg.InitHelper", "summerinit onSceneEnd not set uin");
         AppMethodBeat.o(38614);
         return;
       }
-      if (!this.IEO)
+      if (!this.KvR)
       {
-        this.IEO = true;
-        az.ayM();
-        localObject = (String)com.tencent.mm.model.c.agA().get(5, null);
-        az.ayM();
-        if (((Integer)com.tencent.mm.model.c.agA().get(57, Integer.valueOf(0))).intValue() == 0) {
-          break label988;
+        this.KvR = true;
+        ba.aBQ();
+        localObject = (String)com.tencent.mm.model.c.ajl().get(5, null);
+        ba.aBQ();
+        if (((Integer)com.tencent.mm.model.c.ajl().get(57, Integer.valueOf(0))).intValue() == 0) {
+          break label1004;
         }
       }
-      label988:
+      label1004:
       for (i = 1;; i = 0)
       {
         if ((i != 0) && (localObject != null)) {
-          com.tencent.mm.ui.base.h.d(this.dgE, this.dgE.getString(2131762314, new Object[] { localObject }), this.dgE.getString(2131755906), this.dgE.getString(2131762316), this.dgE.getString(2131762315), new k.3(this), new k.4(this));
+          h.e(this.dsa, this.dsa.getString(2131762314, new Object[] { localObject }), this.dsa.getString(2131755906), this.dsa.getString(2131762316), this.dsa.getString(2131762315), new k.3(this), new k.4(this));
         }
-        if ((paramInt1 == 4) && (paramInt2 == -17) && (!IEQ))
+        if ((paramInt1 == 4) && (paramInt2 == -17) && (!KvT))
         {
-          com.tencent.mm.modelmulti.o.aGm().pj(7);
-          IEQ = true;
+          p.aJx().pM(7);
+          KvT = true;
         }
-        if (!aL(paramInt1, paramInt2, paramn.getType())) {
+        if (!aM(paramInt1, paramInt2, paramn.getType())) {
           break;
         }
-        ac.w("MicroMsg.InitHelper", "summerinit onSceneEnd checkUpdate ret");
+        ad.w("MicroMsg.InitHelper", "summerinit onSceneEnd checkUpdate ret");
         AppMethodBeat.o(38614);
         return;
       }
       if (paramn.getType() == 139)
       {
-        localObject = new kc();
+        localObject = new kk();
         if ((paramInt1 != 3) || (paramInt2 != -1)) {
-          break label1075;
+          break label1091;
         }
-        this.IEM = true;
-        ((kc)localObject).dlG.dka = false;
-        com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
-        this.IER.frL();
+        this.KvP = true;
+        ((kk)localObject).dxt.dvN = false;
+        com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
+        this.KvU.fIA();
       }
-      while (y.a.a(this.dgE, paramInt1, paramInt2, paramString, 4))
+      while (y.a.a(this.dsa, paramInt1, paramInt2, paramString, 4))
       {
         AppMethodBeat.o(38614);
         return;
-        label1075:
-        ((kc)localObject).dlG.dka = true;
-        com.tencent.mm.sdk.b.a.GpY.l((b)localObject);
+        label1091:
+        ((kk)localObject).dxt.dvN = true;
+        com.tencent.mm.sdk.b.a.IbL.l((b)localObject);
       }
       if (paramn.getType() == 139)
       {
-        new ao().post(new Runnable()
+        new ap().post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(38609);
-            com.tencent.mm.modelmulti.o.aGm().pj(5);
+            p.aJx().pM(5);
             AppMethodBeat.o(38609);
           }
         });
-        if ((u.axC() & 0x80) != 0)
+        if ((u.aAs() & 0x80) != 0)
         {
-          az.ayM();
-          if (com.tencent.mm.model.c.awG().aNI("masssendapp") == null)
+          ba.aBQ();
+          if (com.tencent.mm.model.c.azv().aTz("masssendapp") == null)
           {
-            paramString = new com.tencent.mm.storage.ap();
+            paramString = new at();
             paramString.setUsername("masssendapp");
-            paramString.setContent(ai.getContext().getResources().getString(2131757722));
-            paramString.ou(bs.eWj() + 2000L);
-            paramString.jT(0);
-            paramString.jR(0);
-            az.ayM();
-            com.tencent.mm.model.c.awG().e(paramString);
-            paramInt1 = u.axC();
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(40, Integer.valueOf(paramInt1 & 0xFFFFFF7F));
+            paramString.setContent(aj.getContext().getResources().getString(2131757722));
+            paramString.qu(bt.flT() + 2000L);
+            paramString.kr(0);
+            paramString.kp(0);
+            ba.aBQ();
+            com.tencent.mm.model.c.azv().e(paramString);
+            paramInt1 = u.aAs();
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().set(40, Integer.valueOf(paramInt1 & 0xFFFFFF7F));
           }
         }
       }
       if ((paramn.getType() == 138) || (paramn.getType() == 139))
       {
-        com.tencent.mm.sdk.platformtools.ap.f(new Runnable()
+        aq.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(38591);
-            hq localhq = new hq();
-            localhq.diI.data = "MAIN_UI_EVENT_INIT_FINALLY";
-            com.tencent.mm.sdk.b.a.GpY.l(localhq);
+            hx localhx = new hx();
+            localhx.duu.data = "MAIN_UI_EVENT_INIT_FINALLY";
+            com.tencent.mm.sdk.b.a.IbL.l(localhx);
             AppMethodBeat.o(38591);
           }
         });
-        this.IER.frL();
+        this.KvU.fIA();
       }
       AppMethodBeat.o(38614);
       return;
-      label1291:
+      label1307:
       i = 0;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void abk();
+    public abstract void adO();
     
-    public abstract void fsw();
+    public abstract void fJk();
   }
 }
 

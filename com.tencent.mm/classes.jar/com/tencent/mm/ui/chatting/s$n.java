@@ -1,11 +1,11 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.e.a;
 
 public abstract interface s$n
 {
-  public abstract void a(a parama, bo parambo);
+  public abstract void a(a parama, bu parambu);
 }
 
 

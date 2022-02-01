@@ -1,48 +1,77 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.view.MotionEvent;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.span.a;
 
 final class bo
+  extends LinkMovementMethod
 {
-  LinearLayout IrA;
-  View IrB;
-  LinearLayout IrC;
-  LinearLayout IrD;
-  View IrE;
-  LinearLayout IrF;
-  LinearLayout IrG;
-  View IrH;
-  TextView IrI;
-  TextView IrJ;
-  ImageView IrK;
-  ImageView IrL;
-  ImageView IrM;
-  View IrN;
-  ImageView IrO;
-  TextView IrP;
-  LinearLayout IrQ;
-  TextView IrR;
-  View Iri;
-  ImageView Irj;
-  View Irk;
-  ImageView Irl;
-  TextView Irm;
-  View Irn;
-  ImageView Iro;
-  View Irp;
-  View Irq;
-  TextView Irr;
-  TextView Irs;
-  View Irt;
-  LinearLayout Iru;
-  TextView Irv;
-  TextView Irw;
-  TextView Irx;
-  TextView Iry;
-  View Irz;
+  private a KhM;
+  
+  private static a a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(37563);
+    int i = (int)paramMotionEvent.getX();
+    int j = (int)paramMotionEvent.getY();
+    int k = paramTextView.getTotalPaddingLeft();
+    int m = paramTextView.getTotalPaddingTop();
+    int n = paramTextView.getScrollX();
+    int i1 = paramTextView.getScrollY();
+    paramTextView = paramTextView.getLayout();
+    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
+    paramTextView = (a[])paramSpannable.getSpans(i, i, a.class);
+    if (paramTextView.length > 0) {}
+    for (paramTextView = paramTextView[0];; paramTextView = null)
+    {
+      AppMethodBeat.o(37563);
+      return paramTextView;
+    }
+  }
+  
+  public final boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(37562);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.KhM = a(paramTextView, paramSpannable, paramMotionEvent);
+      if (this.KhM != null)
+      {
+        this.KhM.setIsPressed(true);
+        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.KhM), paramSpannable.getSpanEnd(this.KhM));
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(37562);
+      return true;
+      if (paramMotionEvent.getAction() == 2)
+      {
+        paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
+        if ((this.KhM != null) && (paramTextView != this.KhM))
+        {
+          this.KhM.setIsPressed(false);
+          this.KhM = null;
+          Selection.removeSelection(paramSpannable);
+        }
+      }
+      else
+      {
+        if (this.KhM != null)
+        {
+          this.KhM.setIsPressed(false);
+          super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+        }
+        this.KhM = null;
+        Selection.removeSelection(paramSpannable);
+      }
+    }
+  }
 }
 
 

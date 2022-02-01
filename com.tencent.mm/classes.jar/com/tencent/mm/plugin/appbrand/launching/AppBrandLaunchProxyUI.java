@@ -23,9 +23,9 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
 import com.tencent.mm.plugin.appbrand.launching.e.e;
 import com.tencent.mm.plugin.appbrand.launching.e.g;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.statusbar.c.a;
@@ -36,24 +36,24 @@ public final class AppBrandLaunchProxyUI
   extends MMBaseActivity
   implements ab, c.a
 {
-  private com.tencent.mm.sdk.b.c<com.tencent.mm.plugin.appbrand.ab.f> kcx;
-  private g lhc;
-  private View lhd;
-  public final ao lhe;
-  public final Runnable lhf;
-  private int lhg;
+  private com.tencent.mm.sdk.b.c<com.tencent.mm.plugin.appbrand.ab.f> kwW;
+  private g lEa;
+  private View lEb;
+  public final ap lEc;
+  public final Runnable lEd;
+  private int lEe;
   private MMActivity.a onActResult;
   
   public AppBrandLaunchProxyUI()
   {
     AppMethodBeat.i(47052);
-    this.lhe = new ao(Looper.getMainLooper());
-    this.lhf = new Runnable()
+    this.lEc = new ap(Looper.getMainLooper());
+    this.lEd = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(174928);
-        if ((!AppBrandLaunchProxyUI.this.isDestroyed()) && (!AppBrandLaunchProxyUI.this.isFinishing()) && (AppBrandLaunchProxyUI.a(AppBrandLaunchProxyUI.this) != null) && (AppBrandLaunchProxyUI.a(AppBrandLaunchProxyUI.this).boh())) {
+        if ((!AppBrandLaunchProxyUI.this.isDestroyed()) && (!AppBrandLaunchProxyUI.this.isFinishing()) && (AppBrandLaunchProxyUI.a(AppBrandLaunchProxyUI.this) != null) && (AppBrandLaunchProxyUI.a(AppBrandLaunchProxyUI.this).bsa())) {
           try
           {
             if (AppBrandLaunchProxyUI.b(AppBrandLaunchProxyUI.this) == null)
@@ -66,7 +66,7 @@ public final class AppBrandLaunchProxyUI
             }
             for (;;)
             {
-              AppBrandLaunchProxyUI.this.tx(AppBrandLaunchProxyUI.c(AppBrandLaunchProxyUI.this));
+              AppBrandLaunchProxyUI.this.ua(AppBrandLaunchProxyUI.c(AppBrandLaunchProxyUI.this));
               AppMethodBeat.o(174928);
               return;
               AppBrandLaunchProxyUI.b(AppBrandLaunchProxyUI.this).setVisibility(0);
@@ -75,18 +75,18 @@ public final class AppBrandLaunchProxyUI
           }
           catch (Exception localException)
           {
-            ac.e("MicroMsg.AppBrandLaunchProxyUI", "attach dialog View e=%s", new Object[] { localException });
+            ad.e("MicroMsg.AppBrandLaunchProxyUI", "attach dialog View e=%s", new Object[] { localException });
           }
         }
       }
     };
-    this.lhg = 0;
+    this.lEe = 0;
     this.onActResult = null;
-    this.kcx = new com.tencent.mm.sdk.b.c() {};
+    this.kwW = new AppBrandLaunchProxyUI.2(this);
     AppMethodBeat.o(47052);
   }
   
-  public static boolean F(Intent paramIntent)
+  public static boolean G(Intent paramIntent)
   {
     AppMethodBeat.i(47053);
     if (paramIntent != null) {}
@@ -107,22 +107,22 @@ public final class AppBrandLaunchProxyUI
     return false;
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, LaunchParamsOptional paramLaunchParamsOptional)
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, AppBrandStatObject paramAppBrandStatObject, LaunchParamsOptional paramLaunchParamsOptional)
   {
-    AppMethodBeat.i(47054);
-    a(paramContext, paramString1, null, paramString2, paramInt1, paramInt2, paramAppBrandStatObject, paramAppBrandLaunchReferrer, paramLaunchParamsOptional);
-    AppMethodBeat.o(47054);
+    AppMethodBeat.i(188580);
+    a(paramContext, paramString1, null, paramString2, paramInt1, paramInt2, paramAppBrandStatObject, null, paramLaunchParamsOptional);
+    AppMethodBeat.o(188580);
   }
   
   public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, AppBrandStatObject paramAppBrandStatObject, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, LaunchParamsOptional paramLaunchParamsOptional)
   {
     AppMethodBeat.i(47055);
-    if ((bs.isNullOrNil(paramString1)) && (bs.isNullOrNil(paramString2)))
+    if ((bt.isNullOrNil(paramString1)) && (bt.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(47055);
       return false;
     }
-    boolean bool = com.tencent.mm.plugin.appbrand.launching.e.f.lqh.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramAppBrandStatObject, paramAppBrandLaunchReferrer, paramLaunchParamsOptional);
+    boolean bool = com.tencent.mm.plugin.appbrand.launching.e.f.lNC.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramAppBrandStatObject, paramAppBrandLaunchReferrer, paramLaunchParamsOptional);
     AppMethodBeat.o(47055);
     return bool;
   }
@@ -135,7 +135,7 @@ public final class AppBrandLaunchProxyUI
     AppMethodBeat.o(47064);
   }
   
-  public final boolean bmX()
+  public final boolean bqI()
   {
     AppMethodBeat.i(47066);
     if (!isFinishing())
@@ -165,12 +165,12 @@ public final class AppBrandLaunchProxyUI
     AppMethodBeat.i(47063);
     if ((isFinishing()) || (isDestroyed()))
     {
-      ac.w("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI finish() already finishing");
+      ad.w("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI finish() already finishing");
       AppMethodBeat.o(47063);
       return;
     }
     super.finish();
-    ac.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI finish");
+    ad.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI finish");
     AppMethodBeat.o(47063);
   }
   
@@ -234,16 +234,16 @@ public final class AppBrandLaunchProxyUI
     }
     for (;;)
     {
-      this.lhc = paramBundle;
-      if (this.lhc == null) {
+      this.lEa = paramBundle;
+      if (this.lEa == null) {
         break;
       }
-      ac.i("MicroMsg.AppBrandLaunchProxyUI", "onCreate, uiDelegate %s", new Object[] { this.lhc.getClass().getSimpleName() });
-      this.lhc.G(getIntent());
-      if ((!isFinishing()) && (this.lhc.boh())) {
-        this.lhe.postDelayed(this.lhf, 500L);
+      ad.i("MicroMsg.AppBrandLaunchProxyUI", "onCreate, uiDelegate %s", new Object[] { this.lEa.getClass().getSimpleName() });
+      this.lEa.H(getIntent());
+      if ((!isFinishing()) && (this.lEa.bsa())) {
+        this.lEc.postDelayed(this.lEd, 500L);
       }
-      this.kcx.alive();
+      this.kwW.alive();
       AppMethodBeat.o(47056);
       return;
       if (paramBundle.getBooleanExtra("extra_launch_weishi_video", false)) {
@@ -260,35 +260,35 @@ public final class AppBrandLaunchProxyUI
   {
     AppMethodBeat.i(47060);
     super.onDestroy();
-    ac.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI onDestroy");
-    this.lhe.removeCallbacksAndMessages(null);
-    if (this.lhc != null)
+    ad.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI onDestroy");
+    this.lEc.removeCallbacksAndMessages(null);
+    if (this.lEa != null)
     {
-      this.lhc.onDestroy();
-      if (!this.lhc.boh()) {}
+      this.lEa.onDestroy();
+      if (!this.lEa.bsa()) {}
     }
     try
     {
       findViewById(16908290).setVisibility(4);
       label65:
-      if (this.kcx != null) {
-        this.kcx.dead();
+      if (this.kwW != null) {
+        this.kwW.dead();
       }
-      Object localObject = com.tencent.mm.plugin.appbrand.loading.a.lqr;
-      localObject = com.tencent.mm.plugin.appbrand.loading.a.bom();
+      Object localObject = com.tencent.mm.plugin.appbrand.loading.a.lNP;
+      localObject = com.tencent.mm.plugin.appbrand.loading.a.bsf();
       if (localObject != null) {
         try
         {
           unbindService((ServiceConnection)localObject);
-          localObject = com.tencent.mm.plugin.appbrand.loading.a.lqr;
+          localObject = com.tencent.mm.plugin.appbrand.loading.a.lNP;
           com.tencent.mm.plugin.appbrand.loading.a.a(null);
-          ac.i("MicroMsg.AppBrandLaunchProxyUI", "onDestroy: unbindService");
+          ad.i("MicroMsg.AppBrandLaunchProxyUI", "onDestroy: unbindService");
           AppMethodBeat.o(47060);
           return;
         }
         catch (Exception localException)
         {
-          ac.d("MicroMsg.AppBrandLaunchProxyUI", "onDestroy: ", new Object[] { localException });
+          ad.d("MicroMsg.AppBrandLaunchProxyUI", "onDestroy: ", new Object[] { localException });
         }
       }
       AppMethodBeat.o(47060);
@@ -304,10 +304,10 @@ public final class AppBrandLaunchProxyUI
   {
     AppMethodBeat.i(47059);
     super.onPause();
-    ac.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI onPause");
-    if (this.lhc != null)
+    ad.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI onPause");
+    if (this.lEa != null)
     {
-      this.lhc.onPause();
+      this.lEa.onPause();
       AppMethodBeat.o(47059);
       return;
     }
@@ -319,10 +319,10 @@ public final class AppBrandLaunchProxyUI
   {
     AppMethodBeat.i(47058);
     super.onResume();
-    ac.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI onResume");
-    if (this.lhc != null)
+    ad.i("MicroMsg.AppBrandLaunchProxyUI", "AppBrandLaunchProxyUI onResume");
+    if (this.lEa != null)
     {
-      this.lhc.onResume();
+      this.lEa.onResume();
       AppMethodBeat.o(47058);
       return;
     }
@@ -336,7 +336,7 @@ public final class AppBrandLaunchProxyUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void tx(int paramInt)
+  public final void ua(int paramInt)
   {
     AppMethodBeat.i(47057);
     if ((isFinishing()) || (isDestroyed()))
@@ -344,18 +344,18 @@ public final class AppBrandLaunchProxyUI
       AppMethodBeat.o(47057);
       return;
     }
-    this.lhg = paramInt;
-    if ((this.lhd != null) && ((this.lhd.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+    this.lEe = paramInt;
+    if ((this.lEb != null) && ((this.lEb.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
-      ((ViewGroup.MarginLayoutParams)this.lhd.getLayoutParams()).topMargin = paramInt;
-      this.lhd.requestLayout();
+      ((ViewGroup.MarginLayoutParams)this.lEb.getLayoutParams()).topMargin = paramInt;
+      this.lEb.requestLayout();
     }
     AppMethodBeat.o(47057);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.mm.network;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.o;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class ab
 {
-  private static final byte[] imK;
-  public m imL;
+  private static final byte[] iGb;
+  public m iGc;
   
   static
   {
     AppMethodBeat.i(132892);
-    imK = o.ha(7);
+    iGb = o.hh(7);
     AppMethodBeat.o(132892);
   }
   
@@ -25,7 +25,7 @@ public final class ab
     if (paramArrayOfByte == null)
     {
       i = 0;
-      ac.i("MicroMsg.MMNativeNetNotifyAdapter", i + " cmd= " + paramInt);
+      ad.i("MicroMsg.MMNativeNetNotifyAdapter", i + " cmd= " + paramInt);
       switch (paramInt)
       {
       }
@@ -36,76 +36,76 @@ public final class ab
       return;
       i = paramArrayOfByte.length;
       break;
-      ac.i("MicroMsg.MMNativeNetNotifyAdapter", "old notify");
-      this.imL.f(138, imK);
+      ad.i("MicroMsg.MMNativeNetNotifyAdapter", "old notify");
+      this.iGc.f(138, iGb);
       AppMethodBeat.o(132891);
       return;
-      ac.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush new notify [%s]", new Object[] { bs.cu(paramArrayOfByte) });
-      this.imL.f(138, paramArrayOfByte);
+      ad.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush new notify [%s]", new Object[] { bt.cB(paramArrayOfByte) });
+      this.iGc.f(138, paramArrayOfByte);
       AppMethodBeat.o(132891);
       return;
-      ac.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do synccheck");
-      this.imL.f(39, null);
+      ad.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do synccheck");
+      this.iGc.f(39, null);
       AppMethodBeat.o(132891);
       return;
       AppMethodBeat.o(132891);
       return;
-      this.imL.f(174, paramArrayOfByte);
+      this.iGc.f(174, paramArrayOfByte);
       AppMethodBeat.o(132891);
       return;
       if (paramArrayOfByte.length > 0)
       {
-        this.imL.f(10, paramArrayOfByte);
+        this.iGc.f(10, paramArrayOfByte);
         AppMethodBeat.o(132891);
         return;
         AppMethodBeat.o(132891);
         return;
-        ac.i("MicroMsg.MMNativeNetNotifyAdapter", "MM_PKT_VOIP_REQ");
+        ad.i("MicroMsg.MMNativeNetNotifyAdapter", "MM_PKT_VOIP_REQ");
         if (paramArrayOfByte.length > 0)
         {
-          this.imL.f(120, paramArrayOfByte);
+          this.iGc.f(120, paramArrayOfByte);
           AppMethodBeat.o(132891);
           return;
-          ac.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush MM_PKT_PUSH_DATA_REQ");
+          ad.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush MM_PKT_PUSH_DATA_REQ");
           if (paramArrayOfByte.length > 0)
           {
-            this.imL.f(268369921, paramArrayOfByte);
+            this.iGc.f(268369921, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.imL.f(1000000205, paramArrayOfByte);
+            this.iGc.f(1000000205, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.imL.f(192, paramArrayOfByte);
+            this.iGc.f(192, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            ac.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do oob do notify");
-            this.imL.f(268369923, paramArrayOfByte);
+            ad.i("MicroMsg.MMNativeNetNotifyAdapter", "dkpush do oob do notify");
+            this.iGc.f(268369923, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            ac.i("MicroMsg.MMNativeNetNotifyAdapter", "jacks do voice notify PUSH");
-            this.imL.f(241, paramArrayOfByte);
+            ad.i("MicroMsg.MMNativeNetNotifyAdapter", "jacks do voice notify PUSH");
+            this.iGc.f(241, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            ac.i("MicroMsg.MMNativeNetNotifyAdapter", "pandy do gamesync notify");
-            this.imL.f(244, paramArrayOfByte);
+            ad.i("MicroMsg.MMNativeNetNotifyAdapter", "pandy do gamesync notify");
+            this.iGc.f(244, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            ac.i("MicroMsg.MMNativeNetNotifyAdapter", "hy: on notify new year shake");
-            this.imL.f(319, paramArrayOfByte);
+            ad.i("MicroMsg.MMNativeNetNotifyAdapter", "on notify F2F data");
+            this.iGc.f(311, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            ac.i("MicroMsg.MMNativeNetNotifyAdapter", "on notify F2F data");
-            this.imL.f(311, paramArrayOfByte);
+            ad.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on silence notify");
+            this.iGc.f(318, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            ac.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on silence notify");
-            this.imL.f(318, paramArrayOfByte);
+            ad.i("MicroMsg.MMNativeNetNotifyAdapter", "summerbadcr on byp notify");
+            this.iGc.f(319, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.imL.f(271, paramArrayOfByte);
+            this.iGc.f(271, paramArrayOfByte);
             AppMethodBeat.o(132891);
             return;
-            this.imL.f(3941, paramArrayOfByte);
+            this.iGc.f(3941, paramArrayOfByte);
           }
         }
       }
@@ -114,7 +114,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.network.ab
  * JD-Core Version:    0.7.0.1
  */

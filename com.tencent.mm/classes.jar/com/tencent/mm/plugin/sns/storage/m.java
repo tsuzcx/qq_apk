@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class m
   extends j<l>
 {
   public static final String[] SQL_CREATE;
-  private static String yvu;
-  public static String yvv;
-  public static String yvw;
+  private static String zMH;
+  public static String zMI;
+  public static String zMJ;
   public com.tencent.mm.sdk.e.e db;
   
   static
   {
     AppMethodBeat.i(176289);
     SQL_CREATE = new String[] { j.getCreateSQLs(l.info, "snsDraft") };
-    yvu = " (snsDraft.extFlag & 2 == 0 ) ";
-    yvv = " (snsDraft.extFlag & 2 != 0 ) ";
-    yvw = " order by snsDraft.timestamp desc";
+    zMH = " (snsDraft.extFlag & 2 == 0 ) ";
+    zMI = " (snsDraft.extFlag & 2 != 0 ) ";
+    zMJ = " order by snsDraft.timestamp desc";
     AppMethodBeat.o(176289);
   }
   
@@ -34,11 +34,11 @@ public final class m
     super(parame, l.info, "snsDraft", null);
     AppMethodBeat.i(176285);
     this.db = parame;
-    ac.i("MicroMsg.SnsDraftStorage", "createDraftStorage " + parame + "  " + Thread.currentThread().getId());
+    ad.i("MicroMsg.SnsDraftStorage", "createDraftStorage " + parame + "  " + Thread.currentThread().getId());
     AppMethodBeat.o(176285);
   }
   
-  public final l auU(String paramString)
+  public final l aAb(String paramString)
   {
     Integer localInteger = null;
     AppMethodBeat.i(176288);
@@ -55,7 +55,7 @@ public final class m
     }
     for (;;)
     {
-      ac.i("MicroMsg.SnsDraftStorage", "readDraft: %s, %s", new Object[] { paramString, localInteger });
+      ad.i("MicroMsg.SnsDraftStorage", "readDraft: %s, %s", new Object[] { paramString, localInteger });
       AppMethodBeat.o(176288);
       return locall;
       ((Cursor)localObject).close();
@@ -72,7 +72,7 @@ public final class m
     if (paramArrayOfByte == null) {}
     for (Object localObject = null;; localObject = Integer.valueOf(paramArrayOfByte.length))
     {
-      ac.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
+      ad.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
       localObject = new l();
       ((l)localObject).field_key = paramString;
       ((l)localObject).field_timestamp = System.currentTimeMillis();
@@ -84,33 +84,33 @@ public final class m
     }
   }
   
-  public final void rd(boolean paramBoolean)
+  public final void rH(boolean paramBoolean)
   {
     AppMethodBeat.i(176286);
     Object localObject;
     if (paramBoolean)
     {
-      g.agS();
-      localObject = (String)g.agR().agA().get(ah.a.GGf, null);
+      g.ajD();
+      localObject = (String)g.ajC().ajl().get(al.a.Isx, null);
     }
-    while (!bs.isNullOrNil((String)localObject))
+    while (!bt.isNullOrNil((String)localObject))
     {
-      localObject = com.tencent.d.f.e.aTn((String)localObject);
-      if (!bs.cv((byte[])localObject)) {
+      localObject = com.tencent.d.f.e.aZn((String)localObject);
+      if (!bt.cC((byte[])localObject)) {
         if (paramBoolean)
         {
-          g.agS();
-          g.agR().agA().set(ah.a.GGf, "");
+          g.ajD();
+          g.ajC().ajl().set(al.a.Isx, "");
           b("draft_text", (byte[])localObject, 0);
           AppMethodBeat.o(176286);
           return;
-          g.agS();
-          localObject = (String)g.agR().agA().get(ah.a.GGe, null);
+          g.ajD();
+          localObject = (String)g.ajC().ajl().get(al.a.Isw, null);
         }
         else
         {
-          g.agS();
-          g.agR().agA().set(ah.a.GGe, "");
+          g.ajD();
+          g.ajC().ajl().set(al.a.Isw, "");
           b("draft_normal", (byte[])localObject, 0);
         }
       }

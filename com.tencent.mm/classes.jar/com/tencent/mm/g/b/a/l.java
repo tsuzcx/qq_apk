@@ -6,81 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class l
   extends a
 {
-  public String dFh = "";
-  public int dFk = 0;
-  public long dFl = 0L;
-  public long dFm = 0L;
-  public long dFn = 0L;
-  private long dFo = 0L;
-  public long dFp = 0L;
-  public String dFq = "";
+  public long dSa;
+  public String dSb;
+  public long dSc;
+  public long dSd;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(121747);
+    AppMethodBeat.i(163174);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dFh);
+    ((StringBuffer)localObject).append(this.dSa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFk);
+    ((StringBuffer)localObject).append(this.dSb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFl);
+    ((StringBuffer)localObject).append(this.dSc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFm);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFn);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFo);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFp);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dFq);
+    ((StringBuffer)localObject).append(this.dSd);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(121747);
+    awz((String)localObject);
+    AppMethodBeat.o(163174);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(121748);
+    AppMethodBeat.i(163175);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatroomName:").append(this.dFh);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dSa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatroomMute:").append(this.dFk);
+    ((StringBuffer)localObject).append("SessionId:").append(this.dSb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadCount:").append(this.dFl);
+    ((StringBuffer)localObject).append("WeShiCount:").append(this.dSc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DisRedDotCount:").append(this.dFm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterCount:").append(this.dFn);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StayTimeMs:").append(this.dFo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SendCount:").append(this.dFp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Score:").append(this.dFq);
+    ((StringBuffer)localObject).append("ClickTime:").append(this.dSd);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(121748);
+    AppMethodBeat.o(163175);
     return localObject;
-  }
-  
-  public final l bp(long paramLong)
-  {
-    AppMethodBeat.i(121746);
-    this.dFo = paramLong;
-    super.bc("StayTimeMs", this.dFo);
-    AppMethodBeat.o(121746);
-    return this;
   }
   
   public final int getId()
   {
-    return 15460;
+    return 18869;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.l
  * JD-Core Version:    0.7.0.1
  */

@@ -16,51 +16,26 @@ import java.util.List;
 public final class e
   extends a
 {
-  private static final Writer bEs;
-  private static final p bEt;
-  public final List<k> bEu;
-  private String bEv;
-  public k bEw;
+  private static final Writer bOG;
+  private static final p bOH;
+  public final List<k> bOI;
+  private String bOJ;
+  public k bOK;
   
   static
   {
     AppMethodBeat.i(108074);
-    bEs = new Writer()
-    {
-      public final void close()
-      {
-        AppMethodBeat.i(108081);
-        AssertionError localAssertionError = new AssertionError();
-        AppMethodBeat.o(108081);
-        throw localAssertionError;
-      }
-      
-      public final void flush()
-      {
-        AppMethodBeat.i(108080);
-        AssertionError localAssertionError = new AssertionError();
-        AppMethodBeat.o(108080);
-        throw localAssertionError;
-      }
-      
-      public final void write(char[] paramAnonymousArrayOfChar, int paramAnonymousInt1, int paramAnonymousInt2)
-      {
-        AppMethodBeat.i(108079);
-        paramAnonymousArrayOfChar = new AssertionError();
-        AppMethodBeat.o(108079);
-        throw paramAnonymousArrayOfChar;
-      }
-    };
-    bEt = new p("closed");
+    bOG = new e.1();
+    bOH = new p("closed");
     AppMethodBeat.o(108074);
   }
   
   public e()
   {
-    super(bEs);
+    super(bOG);
     AppMethodBeat.i(108059);
-    this.bEu = new ArrayList();
-    this.bEw = m.bDi;
+    this.bOI = new ArrayList();
+    this.bOK = m.bNw;
     AppMethodBeat.o(108059);
   }
   
@@ -68,35 +43,35 @@ public final class e
   {
     AppMethodBeat.i(108061);
     Object localObject2;
-    if (this.bEv != null)
+    if (this.bOJ != null)
     {
-      if ((!(paramk instanceof m)) || (this.bCP))
+      if ((!(paramk instanceof m)) || (this.bNd))
       {
-        localObject2 = (n)xq();
-        String str = this.bEv;
+        localObject2 = (n)yN();
+        String str = this.bOJ;
         localObject1 = paramk;
         if (paramk == null) {
-          localObject1 = m.bDi;
+          localObject1 = m.bNw;
         }
-        ((n)localObject2).bDj.put(str, localObject1);
+        ((n)localObject2).bNx.put(str, localObject1);
       }
-      this.bEv = null;
+      this.bOJ = null;
       AppMethodBeat.o(108061);
       return;
     }
-    if (this.bEu.isEmpty())
+    if (this.bOI.isEmpty())
     {
-      this.bEw = paramk;
+      this.bOK = paramk;
       AppMethodBeat.o(108061);
       return;
     }
-    Object localObject1 = xq();
+    Object localObject1 = yN();
     if ((localObject1 instanceof i))
     {
       localObject2 = (i)localObject1;
       localObject1 = paramk;
       if (paramk == null) {
-        localObject1 = m.bDi;
+        localObject1 = m.bNw;
       }
       ((i)localObject2).elements.add(localObject1);
       AppMethodBeat.o(108061);
@@ -107,26 +82,12 @@ public final class e
     throw paramk;
   }
   
-  private k xq()
+  private k yN()
   {
     AppMethodBeat.i(108060);
-    k localk = (k)this.bEu.get(this.bEu.size() - 1);
+    k localk = (k)this.bOI.get(this.bOI.size() - 1);
     AppMethodBeat.o(108060);
     return localk;
-  }
-  
-  public final a a(Boolean paramBoolean)
-  {
-    AppMethodBeat.i(108070);
-    if (paramBoolean == null)
-    {
-      paramBoolean = xv();
-      AppMethodBeat.o(108070);
-      return paramBoolean;
-    }
-    a(new p(paramBoolean));
-    AppMethodBeat.o(108070);
-    return this;
   }
   
   public final a a(Number paramNumber)
@@ -134,11 +95,11 @@ public final class e
     AppMethodBeat.i(108072);
     if (paramNumber == null)
     {
-      paramNumber = xv();
+      paramNumber = yS();
       AppMethodBeat.o(108072);
       return paramNumber;
     }
-    if (!this.bCU)
+    if (!this.bNi)
     {
       double d = paramNumber.doubleValue();
       if ((Double.isNaN(d)) || (Double.isInfinite(d)))
@@ -161,26 +122,32 @@ public final class e
     return this;
   }
   
-  public final a bf(boolean paramBoolean)
+  public final a b(Boolean paramBoolean)
   {
-    AppMethodBeat.i(108069);
-    a(new p(Boolean.valueOf(paramBoolean)));
-    AppMethodBeat.o(108069);
+    AppMethodBeat.i(108070);
+    if (paramBoolean == null)
+    {
+      paramBoolean = yS();
+      AppMethodBeat.o(108070);
+      return paramBoolean;
+    }
+    a(new p(paramBoolean));
+    AppMethodBeat.o(108070);
     return this;
   }
   
-  public final a bg(String paramString)
+  public final a bZ(String paramString)
   {
     AppMethodBeat.i(108066);
-    if ((this.bEu.isEmpty()) || (this.bEv != null))
+    if ((this.bOI.isEmpty()) || (this.bOJ != null))
     {
       paramString = new IllegalStateException();
       AppMethodBeat.o(108066);
       throw paramString;
     }
-    if ((xq() instanceof n))
+    if ((yN() instanceof n))
     {
-      this.bEv = paramString;
+      this.bOJ = paramString;
       AppMethodBeat.o(108066);
       return this;
     }
@@ -189,12 +156,20 @@ public final class e
     throw paramString;
   }
   
-  public final a bh(String paramString)
+  public final a bg(boolean paramBoolean)
+  {
+    AppMethodBeat.i(108069);
+    a(new p(Boolean.valueOf(paramBoolean)));
+    AppMethodBeat.o(108069);
+    return this;
+  }
+  
+  public final a ca(String paramString)
   {
     AppMethodBeat.i(108067);
     if (paramString == null)
     {
-      paramString = xv();
+      paramString = yS();
       AppMethodBeat.o(108067);
       return paramString;
     }
@@ -206,40 +181,40 @@ public final class e
   public final void close()
   {
     AppMethodBeat.i(108073);
-    if (!this.bEu.isEmpty())
+    if (!this.bOI.isEmpty())
     {
       IOException localIOException = new IOException("Incomplete document");
       AppMethodBeat.o(108073);
       throw localIOException;
     }
-    this.bEu.add(bEt);
+    this.bOI.add(bOH);
     AppMethodBeat.o(108073);
   }
   
   public final void flush() {}
   
-  public final a xr()
+  public final a yO()
   {
     AppMethodBeat.i(108062);
     i locali = new i();
     a(locali);
-    this.bEu.add(locali);
+    this.bOI.add(locali);
     AppMethodBeat.o(108062);
     return this;
   }
   
-  public final a xs()
+  public final a yP()
   {
     AppMethodBeat.i(108063);
-    if ((this.bEu.isEmpty()) || (this.bEv != null))
+    if ((this.bOI.isEmpty()) || (this.bOJ != null))
     {
       localIllegalStateException = new IllegalStateException();
       AppMethodBeat.o(108063);
       throw localIllegalStateException;
     }
-    if ((xq() instanceof i))
+    if ((yN() instanceof i))
     {
-      this.bEu.remove(this.bEu.size() - 1);
+      this.bOI.remove(this.bOI.size() - 1);
       AppMethodBeat.o(108063);
       return this;
     }
@@ -248,28 +223,28 @@ public final class e
     throw localIllegalStateException;
   }
   
-  public final a xt()
+  public final a yQ()
   {
     AppMethodBeat.i(108064);
     n localn = new n();
     a(localn);
-    this.bEu.add(localn);
+    this.bOI.add(localn);
     AppMethodBeat.o(108064);
     return this;
   }
   
-  public final a xu()
+  public final a yR()
   {
     AppMethodBeat.i(108065);
-    if ((this.bEu.isEmpty()) || (this.bEv != null))
+    if ((this.bOI.isEmpty()) || (this.bOJ != null))
     {
       localIllegalStateException = new IllegalStateException();
       AppMethodBeat.o(108065);
       throw localIllegalStateException;
     }
-    if ((xq() instanceof n))
+    if ((yN() instanceof n))
     {
-      this.bEu.remove(this.bEu.size() - 1);
+      this.bOI.remove(this.bOI.size() - 1);
       AppMethodBeat.o(108065);
       return this;
     }
@@ -278,17 +253,17 @@ public final class e
     throw localIllegalStateException;
   }
   
-  public final a xv()
+  public final a yS()
   {
     AppMethodBeat.i(108068);
-    a(m.bDi);
+    a(m.bNw);
     AppMethodBeat.o(108068);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.b.a.e
  * JD-Core Version:    0.7.0.1
  */

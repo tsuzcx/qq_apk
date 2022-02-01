@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.dxd;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.edd;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,18 +12,18 @@ import java.util.LinkedList;
 public final class i
   extends c
 {
-  private ArrayList<Integer> BXu;
-  private boolean Gw;
+  private ArrayList<Integer> DxN;
+  private boolean Io;
   
   public i()
   {
-    this.Gw = true;
+    this.Io = true;
   }
   
   public i(ArrayList<Integer> paramArrayList)
   {
-    this.BXu = paramArrayList;
-    this.Gw = false;
+    this.DxN = paramArrayList;
+    this.Io = false;
   }
   
   public final String getName()
@@ -34,16 +34,16 @@ public final class i
   protected final void send()
   {
     AppMethodBeat.i(30129);
-    ac.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.BXu });
-    dxd localdxd = new dxd();
-    if (this.BXu != null) {
-      localdxd.GdM.addAll(this.BXu);
+    ad.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.DxN });
+    edd localedd = new edd();
+    if (this.DxN != null) {
+      localedd.HOS.addAll(this.DxN);
     }
-    localdxd.GdN = this.Gw;
+    localedd.HOT = this.Io;
     try
     {
-      a.ewt();
-      r.a(20004, localdxd.toByteArray(), false);
+      a.eKz();
+      r.a(20004, localedd.toByteArray(), false);
       AppMethodBeat.o(30129);
       return;
     }
@@ -55,7 +55,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.i
  * JD-Core Version:    0.7.0.1
  */

@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.sns.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
-  extends j
+  extends i
 {
-  public static j yes;
+  public static i zus;
   
   static
   {
-    AppMethodBeat.i(96249);
-    yes = new h();
-    AppMethodBeat.o(96249);
+    AppMethodBeat.i(96250);
+    zus = new h();
+    AppMethodBeat.o(96250);
   }
 }
 

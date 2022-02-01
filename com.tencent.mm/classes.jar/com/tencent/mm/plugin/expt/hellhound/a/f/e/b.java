@@ -4,13 +4,17 @@ import android.annotation.SuppressLint;
 import android.support.v4.e.k;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aqf;
-import com.tencent.mm.protocal.protobuf.aqg;
-import com.tencent.mm.protocal.protobuf.bju;
-import com.tencent.mm.protocal.protobuf.bjv;
-import com.tencent.mm.protocal.protobuf.ccr;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.expt.hellhound.a.f.f.l;
+import com.tencent.mm.protocal.protobuf.aub;
+import com.tencent.mm.protocal.protobuf.auc;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.protocal.protobuf.bod;
+import com.tencent.mm.protocal.protobuf.bsg;
+import com.tencent.mm.protocal.protobuf.chj;
+import com.tencent.mm.protocal.protobuf.dwc;
+import com.tencent.mm.protocal.protobuf.of;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.c;
 import java.lang.reflect.Field;
@@ -23,93 +27,90 @@ import java.util.Map;
 
 final class b
 {
-  private static bjv a(Object paramObject, ccr paramccr)
+  private static bod a(Object paramObject, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(122196);
-    Object localObject2 = abx(paramccr.dsY);
-    if (localObject2 == null)
+    AppMethodBeat.i(210479);
+    paramString2 = afk(paramString2);
+    if (paramString2 == null)
     {
-      AppMethodBeat.o(122196);
+      AppMethodBeat.o(210479);
       return null;
     }
     for (;;)
     {
       try
       {
-        Object localObject1 = Class.forName(paramccr.className);
-        localObject2 = ((List)localObject2).iterator();
-        Object localObject3;
-        if (((Iterator)localObject2).hasNext())
+        paramString1 = Class.forName(paramString1);
+        paramString2 = paramString2.iterator();
+        Object localObject1;
+        if (paramString2.hasNext())
         {
-          localObject3 = (k)((Iterator)localObject2).next();
-          if (localObject3 != null)
+          localObject1 = (k)paramString2.next();
+          if (localObject1 != null)
           {
-            Object localObject4 = (String)((k)localObject3).first;
-            localObject3 = (String)((k)localObject3).second;
-            if ((localObject4 != null) && (!((String)localObject4).isEmpty()) && (localObject3 != null) && (!((String)localObject3).isEmpty()))
+            Object localObject2 = (String)((k)localObject1).first;
+            localObject1 = (String)((k)localObject1).second;
+            if ((localObject2 != null) && (!((String)localObject2).isEmpty()) && (localObject1 != null) && (!((String)localObject1).isEmpty()))
             {
-              ac.i("HABBYGE-MALI.HellSessionParamUtil", "fieldName/fieldClassName: %s, %s", new Object[] { localObject4, localObject3 });
-              localObject4 = ((Class)localObject1).getDeclaredField((String)localObject4);
-              ((Field)localObject4).setAccessible(true);
-              paramObject = ((Field)localObject4).get(paramObject);
-              ac.i("HABBYGE-MALI.HellSessionParamUtil", "_doParse, object: %s", new Object[] { String.valueOf(paramObject) });
+              localObject2 = paramString1.getDeclaredField((String)localObject2);
+              ((Field)localObject2).setAccessible(true);
+              paramObject = ((Field)localObject2).get(paramObject);
               int i;
-              if (((String)localObject3).startsWith("["))
+              if (((String)localObject1).startsWith("["))
               {
-                localObject3 = aby((String)localObject3);
-                if (localObject3 != null)
+                localObject1 = afl((String)localObject1);
+                if (localObject1 != null)
                 {
-                  i = ((Integer)((c)localObject3).get(1)).intValue();
+                  i = ((Integer)((c)localObject1).get(1)).intValue();
                   paramObject = (Object[])paramObject;
                   if ((paramObject == null) || (paramObject.length <= 0) || (i >= paramObject.length))
                   {
-                    ac.e("HABBYGE-MALI.HellSessionParamUtil", "array == null || array.length <= 0");
-                    AppMethodBeat.o(122196);
+                    ad.e("HABBYGE-MALI.HellSessionParamUtil", "array == null || array.length <= 0");
+                    AppMethodBeat.o(210479);
                     return null;
                   }
                   paramObject = paramObject[i];
-                  localObject1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject3).get(0));
+                  paramString1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject1).get(0));
                 }
               }
-              else if (((String)localObject3).startsWith("Ljava/util/List;"))
+              else if (((String)localObject1).startsWith("Ljava/util/List;"))
               {
-                localObject3 = fQ((String)localObject3, "Ljava/util/List;");
-                if (localObject3 != null)
+                localObject1 = fY((String)localObject1, "Ljava/util/List;");
+                if (localObject1 != null)
                 {
                   paramObject = (List)paramObject;
                   try
                   {
-                    i = Integer.parseInt((String)((c)localObject3).get(1));
-                    ac.i("HABBYGE-MALI.HellSessionParamUtil", "_doParse, indexOfField: %d", new Object[] { Integer.valueOf(i) });
+                    i = Integer.parseInt((String)((c)localObject1).get(1));
                     if ((paramObject == null) || (paramObject.isEmpty()) || (i >= paramObject.size()))
                     {
-                      ac.e("HABBYGE-MALI.HellSessionParamUtil", "list.isEmpty");
-                      AppMethodBeat.o(122196);
+                      ad.e("HABBYGE-MALI.HellSessionParamUtil", "list.isEmpty");
+                      AppMethodBeat.o(210479);
                       return null;
                     }
                   }
                   catch (NumberFormatException paramObject)
                   {
-                    ac.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramObject, "SessionParam, Ljava/util/List;, crash", new Object[0]);
-                    AppMethodBeat.o(122196);
+                    ad.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramObject, "SessionParam, Ljava/util/List;, crash", new Object[0]);
+                    AppMethodBeat.o(210479);
                     return null;
                   }
                   paramObject = paramObject.get(i);
-                  localObject1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject3).get(0));
+                  paramString1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject1).get(0));
                 }
               }
               else
               {
                 int j;
-                if (((String)localObject3).startsWith("Ljava/util/ArrayList;"))
+                if (((String)localObject1).startsWith("Ljava/util/ArrayList;"))
                 {
-                  localObject3 = fQ((String)localObject3, "Ljava/util/ArrayList;");
-                  if (localObject3 != null)
+                  localObject1 = fY((String)localObject1, "Ljava/util/ArrayList;");
+                  if (localObject1 != null)
                   {
                     paramObject = (ArrayList)paramObject;
                     try
                     {
-                      i = Integer.parseInt((String)((c)localObject3).get(1));
+                      i = Integer.parseInt((String)((c)localObject1).get(1));
                       if ((paramObject != null) && (!paramObject.isEmpty()))
                       {
                         j = paramObject.size();
@@ -117,29 +118,29 @@ final class b
                       }
                       else
                       {
-                        AppMethodBeat.o(122196);
+                        AppMethodBeat.o(210479);
                         return null;
                       }
                     }
                     catch (NumberFormatException paramObject)
                     {
-                      ac.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramObject, "SessionParam, Ljava/util/ArrayList;, crash", new Object[0]);
-                      AppMethodBeat.o(122196);
+                      ad.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramObject, "SessionParam, Ljava/util/ArrayList;, crash", new Object[0]);
+                      AppMethodBeat.o(210479);
                       return null;
                     }
                     paramObject = paramObject.get(i);
-                    localObject1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject3).get(0));
+                    paramString1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject1).get(0));
                   }
                 }
-                else if (((String)localObject3).startsWith("Ljava/util/LinkedList;"))
+                else if (((String)localObject1).startsWith("Ljava/util/LinkedList;"))
                 {
-                  localObject3 = fQ((String)localObject3, "Ljava/util/LinkedList;");
-                  if (localObject3 != null)
+                  localObject1 = fY((String)localObject1, "Ljava/util/LinkedList;");
+                  if (localObject1 != null)
                   {
                     paramObject = (LinkedList)paramObject;
                     try
                     {
-                      i = Integer.parseInt((String)((c)localObject3).get(1));
+                      i = Integer.parseInt((String)((c)localObject1).get(1));
                       if ((paramObject != null) && (!paramObject.isEmpty()))
                       {
                         j = paramObject.size();
@@ -147,27 +148,27 @@ final class b
                       }
                       else
                       {
-                        AppMethodBeat.o(122196);
+                        AppMethodBeat.o(210479);
                         return null;
                       }
                     }
                     catch (NumberFormatException paramObject)
                     {
-                      ac.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramObject, "_doParse, Ljava/util/LinkedList;, crash", new Object[0]);
-                      AppMethodBeat.o(122196);
+                      ad.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramObject, "_doParse, Ljava/util/LinkedList;, crash", new Object[0]);
+                      AppMethodBeat.o(210479);
                       return null;
                     }
                     paramObject = paramObject.get(i);
-                    localObject1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject3).get(0));
+                    paramString1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject1).get(0));
                   }
                 }
                 else
                 {
                   boolean bool;
-                  if (((String)localObject3).startsWith("Ljava/util/Map;"))
+                  if (((String)localObject1).startsWith("Ljava/util/Map;"))
                   {
-                    localObject3 = fQ((String)localObject3, "Ljava/util/Map;");
-                    if (localObject3 != null)
+                    localObject1 = fY((String)localObject1, "Ljava/util/Map;");
+                    if (localObject1 != null)
                     {
                       paramObject = (Map)paramObject;
                       if (paramObject != null)
@@ -177,22 +178,22 @@ final class b
                       }
                       else
                       {
-                        AppMethodBeat.o(122196);
+                        AppMethodBeat.o(210479);
                         return null;
                       }
-                      paramObject = paramObject.get(((c)localObject3).get(1));
+                      paramObject = paramObject.get(((c)localObject1).get(1));
                       if (paramObject == null)
                       {
-                        AppMethodBeat.o(122196);
+                        AppMethodBeat.o(210479);
                         return null;
                       }
-                      localObject1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject3).get(0));
+                      paramString1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject1).get(0));
                     }
                   }
-                  else if (((String)localObject3).startsWith("Ljava/util/HashMap;"))
+                  else if (((String)localObject1).startsWith("Ljava/util/HashMap;"))
                   {
-                    localObject3 = fQ((String)localObject3, "Ljava/util/HashMap;");
-                    if (localObject3 != null)
+                    localObject1 = fY((String)localObject1, "Ljava/util/HashMap;");
+                    if (localObject1 != null)
                     {
                       paramObject = (HashMap)paramObject;
                       if (paramObject != null)
@@ -202,21 +203,21 @@ final class b
                       }
                       else
                       {
-                        AppMethodBeat.o(122196);
+                        AppMethodBeat.o(210479);
                         return null;
                       }
-                      paramObject = paramObject.get(((c)localObject3).get(1));
+                      paramObject = paramObject.get(((c)localObject1).get(1));
                       if (paramObject == null)
                       {
-                        AppMethodBeat.o(122196);
+                        AppMethodBeat.o(210479);
                         return null;
                       }
-                      localObject1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject3).get(0));
+                      paramString1 = Class.forName((String)((com.tencent.mm.vending.j.b)localObject1).get(0));
                     }
                   }
                   else
                   {
-                    localObject1 = Class.forName((String)localObject3);
+                    paramString1 = Class.forName((String)localObject1);
                   }
                 }
               }
@@ -227,93 +228,153 @@ final class b
         {
           if (paramObject == null)
           {
-            ac.e("HABBYGE-MALI.HellSessionParamUtil", "SessionParams, object == NULL !!");
-            AppMethodBeat.o(122196);
+            ad.e("HABBYGE-MALI.HellSessionParamUtil", "SessionParams, object == NULL !!");
+            AppMethodBeat.o(210479);
             return null;
           }
-          localObject3 = new bjv();
-          localObject2 = String.valueOf(paramObject);
-          localObject1 = localObject2;
+          localObject1 = new bod();
+          paramString2 = String.valueOf(paramObject);
+          paramString1 = paramString2;
           if ((paramObject instanceof Long)) {
-            localObject1 = com.tencent.mm.plugin.expt.hellhound.core.b.pb(bs.getLong((String)localObject2, 0L));
+            paramString1 = com.tencent.mm.plugin.expt.hellhound.core.b.rc(bt.getLong(paramString2, 0L));
           }
-          ac.i("HABBYGE-MALI.HellSessionParamUtil", "SessionParams, value: %s", new Object[] { localObject1 });
-          ((bjv)localObject3).value = ((String)localObject1);
-          ((bjv)localObject3).dsY = paramccr.dsY;
-          AppMethodBeat.o(122196);
-          return localObject3;
+          ad.i("HABBYGE-MALI.HellSessionParamUtil", "SessionParams, value: %s, %s", new Object[] { paramString1, paramString3 });
+          ((bod)localObject1).value = paramString1;
+          ((bod)localObject1).dEZ = paramString3;
+          AppMethodBeat.o(210479);
+          return localObject1;
         }
       }
       catch (Exception paramObject)
       {
-        ac.m("HABBYGE-MALI.HellSessionParamUtil", "HellSessionParamUtil, _doParse, crash: %s", new Object[] { paramObject.getMessage() });
-        AppMethodBeat.o(122196);
+        AppMethodBeat.o(210479);
         return null;
       }
     }
   }
   
-  private static void a(bjv parambjv, aqf paramaqf, String paramString)
+  private static void a(bod parambod, aub paramaub)
   {
-    AppMethodBeat.i(169358);
-    int j = paramaqf.EJd.size();
+    AppMethodBeat.i(210477);
+    int j = paramaub.Gse.size();
     int i = 0;
     while (i < j)
     {
-      bjv localbjv = (bjv)paramaqf.EJd.get(i);
-      if ((localbjv.dsY != null) && (localbjv.dsY.equals(parambjv.dsY))) {
+      bod localbod = (bod)paramaub.Gse.get(i);
+      if ((localbod.dEZ != null) && (localbod.dEZ.equals(parambod.dEZ))) {
         break;
       }
       i += 1;
     }
     if (i < j)
     {
-      ac.i("HABBYGE-MALI.HellSessionParamUtil", "catchPageParams, putParamIn, update: %s, %s, %s, %s", new Object[] { paramString, parambjv.koY, parambjv.dsY, parambjv.value });
-      paramaqf.EJd.set(i, parambjv);
-      AppMethodBeat.o(169358);
+      paramaub.Gse.set(i, parambod);
+      AppMethodBeat.o(210477);
       return;
     }
-    ac.i("HABBYGE-MALI.HellSessionParamUtil", "catchPageParams, putParamIn, add: %s, %s, %s, %s", new Object[] { paramString, parambjv.koY, parambjv.dsY, parambjv.value });
-    paramaqf.EJd.add(parambjv);
-    AppMethodBeat.o(169358);
+    paramaub.Gse.add(parambod);
+    AppMethodBeat.o(210477);
   }
   
-  static void a(Object paramObject, ccr paramccr, aqg paramaqg, boolean paramBoolean)
+  @SuppressLint({"NewApi"})
+  static void a(Object paramObject, chj paramchj, long paramLong, dwc paramdwc)
+  {
+    AppMethodBeat.i(210478);
+    if ((paramObject == null) || (TextUtils.isEmpty(paramchj.className)) || (TextUtils.isEmpty(paramchj.dEZ)) || (paramdwc == null))
+    {
+      AppMethodBeat.o(210478);
+      return;
+    }
+    if (paramchj.HaM == null) {}
+    for (Object localObject = paramchj.dEZ;; localObject = paramchj.HaM.hHZ)
+    {
+      bod localbod = a(paramObject, paramchj.HaL, (String)localObject, paramchj.dEZ);
+      localObject = localbod;
+      if (localbod != null) {
+        break;
+      }
+      l.vc(129L);
+      paramObject = a(paramObject, paramchj.className, paramchj.dEZ, paramchj.dEZ);
+      localObject = paramObject;
+      if (paramObject != null) {
+        break;
+      }
+      l.vc(133L);
+      AppMethodBeat.o(210478);
+      return;
+    }
+    l.vc(132L);
+    paramObject = paramdwc.FJw.iterator();
+    while (paramObject.hasNext())
+    {
+      paramchj = (of)paramObject.next();
+      if (paramLong == paramchj.FJv) {
+        paramchj.FJw.add(localObject);
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        paramObject = new of();
+        paramObject.FJv = paramLong;
+        paramObject.FJw.add(localObject);
+        paramdwc.FJw.add(paramObject);
+        ad.i("HABBYGE-MALI.HellSessionParamUtil", "catchParamsWhenViewOp, add pathId=%s, dataPath=%s, value=%s", new Object[] { Long.valueOf(paramLong), ((bod)localObject).dEZ, ((bod)localObject).value });
+      }
+      AppMethodBeat.o(210478);
+      return;
+    }
+  }
+  
+  static void a(Object paramObject, chj paramchj, auc paramauc, boolean paramBoolean)
   {
     AppMethodBeat.i(169357);
-    if ((paramObject == null) || (TextUtils.isEmpty(paramccr.className)) || (TextUtils.isEmpty(paramccr.dsY)))
+    if ((paramObject == null) || (TextUtils.isEmpty(paramchj.className)) || (TextUtils.isEmpty(paramchj.dEZ)))
     {
       AppMethodBeat.o(169357);
       return;
     }
-    if ("0".equals(paramccr.action))
+    if ("0".equals(paramchj.action))
     {
       if (!paramBoolean) {
         AppMethodBeat.o(169357);
       }
     }
-    else if (("2".equals(paramccr.action)) && (paramBoolean))
+    else if (("2".equals(paramchj.action)) && (paramBoolean))
     {
       AppMethodBeat.o(169357);
       return;
     }
-    String str1 = paramObject.getClass().getSimpleName();
-    ac.i("HABBYGE-MALI.HellSessionParamUtil", "catchPageParams, %s, %s", new Object[] { str1, Long.valueOf(paramaqg.EJj) });
-    paramObject = a(paramObject, paramccr);
-    if (paramObject == null)
+    String str = paramObject.getClass().getSimpleName();
+    if (paramchj.HaM == null) {}
+    for (Object localObject = paramchj.dEZ;; localObject = paramchj.HaM.hHZ)
     {
+      bod localbod = a(paramObject, paramchj.HaL, (String)localObject, paramchj.dEZ);
+      localObject = localbod;
+      if (localbod != null) {
+        break;
+      }
+      if ((paramchj.HaM != null) && (!TextUtils.isEmpty(paramchj.HaM.hHZ))) {
+        l.vc(158L);
+      }
+      paramObject = a(paramObject, paramchj.className, paramchj.dEZ, paramchj.dEZ);
+      localObject = paramObject;
+      if (paramObject != null) {
+        break;
+      }
       AppMethodBeat.o(169357);
       return;
     }
-    ac.i("HABBYGE-MALI.HellSessionParamUtil", "catchPageParams, paramItem: %s", new Object[] { paramObject.value });
-    int i = paramaqg.EJg.size() - 1;
+    l.vc(135L);
+    int i = paramauc.Gsi.size() - 1;
     while (i >= 0)
     {
-      paramccr = (aqf)paramaqg.EJg.get(i);
-      String str2 = com.tencent.mm.plugin.expt.hellhound.core.b.ZK(paramccr.name);
-      if ((str2 != null) && (str2.equals(str1)))
+      paramObject = (aub)paramauc.Gsi.get(i);
+      paramchj = com.tencent.mm.plugin.expt.hellhound.core.b.adx(paramObject.name);
+      if ((paramchj != null) && (paramchj.equals(str)))
       {
-        a(paramObject, paramccr, str2);
+        a((bod)localObject, paramObject);
         AppMethodBeat.o(169357);
         return;
       }
@@ -323,51 +384,64 @@ final class b
   }
   
   @SuppressLint({"NewApi"})
-  static void a(Object paramObject, ccr paramccr, bju parambju, boolean paramBoolean1, boolean paramBoolean2)
+  static void a(Object paramObject, chj paramchj, boc paramboc, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(122195);
-    if ((paramObject == null) || (TextUtils.isEmpty(paramccr.className)) || (TextUtils.isEmpty(paramccr.dsY)))
+    if ((paramObject == null) || (TextUtils.isEmpty(paramchj.className)) || (TextUtils.isEmpty(paramchj.dEZ)))
     {
       AppMethodBeat.o(122195);
       return;
     }
-    if ("0".equals(paramccr.action))
+    if ("0".equals(paramchj.action))
     {
       if (!paramBoolean2) {
         AppMethodBeat.o(122195);
       }
     }
-    else if (("2".equals(paramccr.action)) && (paramBoolean2))
+    else if (("2".equals(paramchj.action)) && (paramBoolean2))
     {
       AppMethodBeat.o(122195);
       return;
     }
-    ac.i("HABBYGE-MALI.HellSessionParamUtil", "catchPageParams, pageParamConfig: %s, %s, %s, %s, %b, %b", new Object[] { paramObject.getClass().getSimpleName(), paramccr.className, paramccr.dsY, paramccr.action, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    paramObject = a(paramObject, paramccr);
-    if (paramObject == null)
+    if (paramchj.HaM == null) {}
+    for (Object localObject = paramchj.dEZ;; localObject = paramchj.HaM.hHZ)
     {
+      bod localbod = a(paramObject, paramchj.HaL, (String)localObject, paramchj.dEZ);
+      localObject = localbod;
+      if (localbod != null) {
+        break;
+      }
+      if ((!paramBoolean1) && (paramchj.HaM != null) && (!TextUtils.isEmpty(paramchj.HaM.hHZ))) {
+        l.vc(158L);
+      }
+      paramObject = a(paramObject, paramchj.className, paramchj.dEZ, paramchj.dEZ);
+      localObject = paramObject;
+      if (paramObject != null) {
+        break;
+      }
       AppMethodBeat.o(122195);
       return;
     }
     if (paramBoolean1)
     {
-      parambju.EZl.add(paramObject);
+      paramboc.GIJ.add(localObject);
       AppMethodBeat.o(122195);
       return;
     }
-    parambju.EJd.add(paramObject);
+    paramboc.Gse.add(localObject);
+    l.vc(135L);
     AppMethodBeat.o(122195);
   }
   
-  private static List<k<String, String>> abx(String paramString)
+  private static List<k<String, String>> afk(String paramString)
   {
+    int i = 0;
     AppMethodBeat.i(122197);
     ArrayList localArrayList = new ArrayList();
     try
     {
       paramString = paramString.split(",");
       int j = paramString.length;
-      int i = 0;
       while (i < j)
       {
         String[] arrayOfString = paramString[i].split("\\|");
@@ -379,16 +453,15 @@ final class b
     }
     catch (Exception paramString)
     {
-      ac.m("HABBYGE-MALI.HellSessionParamUtil", "HellSessionParamUtil, _getFieldWithClass, crash: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(122197);
     }
     return null;
   }
   
-  private static c<String, Integer> aby(String paramString)
+  private static c<String, Integer> afl(String paramString)
   {
     AppMethodBeat.i(122198);
-    c localc = abz(paramString);
+    c localc = afm(paramString);
     if (localc == null)
     {
       AppMethodBeat.o(122198);
@@ -398,19 +471,19 @@ final class b
     try
     {
       int i = Integer.parseInt((String)localc.get(0));
-      paramString = a.L(paramString, Integer.valueOf(i));
+      paramString = a.N(paramString, Integer.valueOf(i));
       AppMethodBeat.o(122198);
       return paramString;
     }
     catch (NumberFormatException paramString)
     {
-      ac.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramString, "HellPageParamsCatcher, getClassNameAndIndexOfArray", new Object[0]);
+      ad.printErrStackTrace("HABBYGE-MALI.HellSessionParamUtil", paramString, "HellPageParamsCatcher, getClassNameAndIndexOfArray", new Object[0]);
       AppMethodBeat.o(122198);
     }
     return null;
   }
   
-  private static c<String, Integer> abz(String paramString)
+  private static c<String, Integer> afm(String paramString)
   {
     AppMethodBeat.i(122200);
     int i = paramString.lastIndexOf("@");
@@ -419,21 +492,21 @@ final class b
       AppMethodBeat.o(122200);
       return null;
     }
-    paramString = a.L(paramString.substring(i + 1), Integer.valueOf(i));
+    paramString = a.N(paramString.substring(i + 1), Integer.valueOf(i));
     AppMethodBeat.o(122200);
     return paramString;
   }
   
-  private static c<String, String> fQ(String paramString1, String paramString2)
+  private static c<String, String> fY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(122199);
-    c localc = abz(paramString1);
+    c localc = afm(paramString1);
     if (localc == null)
     {
       AppMethodBeat.o(122199);
       return null;
     }
-    paramString1 = a.L(paramString1.substring(paramString2.length(), ((Integer)localc.get(1)).intValue()), localc.get(0));
+    paramString1 = a.N(paramString1.substring(paramString2.length(), ((Integer)localc.get(1)).intValue()), localc.get(0));
     AppMethodBeat.o(122199);
     return paramString1;
   }

@@ -7,24 +7,24 @@ import com.google.b.a.g;
 public final class a$e
   extends e
 {
-  public int ADE = 0;
-  public long ADF = 0L;
-  public int JMk = 0;
-  public a.aw JMo = null;
-  public a.bd JMq = null;
-  public int JMs = 0;
-  public String[] JMv = g.EMPTY_STRING_ARRAY;
-  public a.n[] JMw = a.n.fBH();
-  public int JMx = 0;
-  public a.t JMy = null;
-  public int JMz = 0;
+  public int CcE = 0;
+  public long CcF = 0L;
+  public int LFT = 0;
+  public a.aw LFX = null;
+  public a.bd LFZ = null;
+  public int LGb = 0;
+  public String[] LGe = g.EMPTY_STRING_ARRAY;
+  public a.n[] LGf = a.n.fSW();
+  public int LGg = 0;
+  public a.t LGh = null;
+  public int LGi = 0;
   public String groupId = "";
   public int netType = 0;
-  public int urD = 0;
+  public int vug = 0;
   
   public a$e()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
@@ -33,127 +33,127 @@ public final class a$e
     if (!this.groupId.equals("")) {
       paramb.d(1, this.groupId);
     }
-    if (this.ADE != 0) {
-      paramb.bv(2, this.ADE);
+    if (this.CcE != 0) {
+      paramb.bx(2, this.CcE);
     }
-    if (this.ADF != 0L) {
-      paramb.n(3, this.ADF);
+    if (this.CcF != 0L) {
+      paramb.n(3, this.CcF);
     }
-    if (this.JMq != null) {
-      paramb.a(4, this.JMq);
+    if (this.LFZ != null) {
+      paramb.a(4, this.LFZ);
     }
-    if (this.urD != 0) {
-      paramb.bv(5, this.urD);
+    if (this.vug != 0) {
+      paramb.bx(5, this.vug);
     }
-    if (this.JMs != 0) {
-      paramb.bw(6, this.JMs);
+    if (this.LGb != 0) {
+      paramb.by(6, this.LGb);
     }
-    if (this.JMk != 0) {
-      paramb.bv(7, this.JMk);
+    if (this.LFT != 0) {
+      paramb.bx(7, this.LFT);
     }
     if (this.netType != 0) {
-      paramb.bw(8, this.netType);
+      paramb.by(8, this.netType);
     }
-    if (this.JMo != null) {
-      paramb.a(200, this.JMo);
+    if (this.LFX != null) {
+      paramb.a(200, this.LFX);
     }
     int i;
     Object localObject;
-    if ((this.JMv != null) && (this.JMv.length > 0))
+    if ((this.LGe != null) && (this.LGe.length > 0))
     {
       i = 0;
-      while (i < this.JMv.length)
+      while (i < this.LGe.length)
       {
-        localObject = this.JMv[i];
+        localObject = this.LGe[i];
         if (localObject != null) {
           paramb.d(201, (String)localObject);
         }
         i += 1;
       }
     }
-    if ((this.JMw != null) && (this.JMw.length > 0))
+    if ((this.LGf != null) && (this.LGf.length > 0))
     {
       i = j;
-      while (i < this.JMw.length)
+      while (i < this.LGf.length)
       {
-        localObject = this.JMw[i];
+        localObject = this.LGf[i];
         if (localObject != null) {
           paramb.a(202, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.JMy != null) {
-      paramb.a(203, this.JMy);
+    if (this.LGh != null) {
+      paramb.a(203, this.LGh);
     }
-    if (this.JMz != 0) {
-      paramb.bw(204, this.JMz);
+    if (this.LGi != 0) {
+      paramb.by(204, this.LGi);
     }
-    if (this.JMx != 0) {
-      paramb.bw(240, this.JMx);
+    if (this.LGg != 0) {
+      paramb.by(240, this.LGg);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
     int i2 = 0;
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(1, this.groupId);
     }
     j = i;
-    if (this.ADE != 0) {
-      j = i + b.bx(2, this.ADE);
+    if (this.CcE != 0) {
+      j = i + b.bz(2, this.CcE);
     }
     i = j;
-    if (this.ADF != 0L) {
-      i = j + b.p(3, this.ADF);
+    if (this.CcF != 0L) {
+      i = j + b.p(3, this.CcF);
     }
     j = i;
-    if (this.JMq != null) {
-      j = i + b.b(4, this.JMq);
+    if (this.LFZ != null) {
+      j = i + b.b(4, this.LFZ);
     }
     i = j;
-    if (this.urD != 0) {
-      i = j + b.bx(5, this.urD);
+    if (this.vug != 0) {
+      i = j + b.bz(5, this.vug);
     }
     j = i;
-    if (this.JMs != 0) {
-      j = i + b.by(6, this.JMs);
+    if (this.LGb != 0) {
+      j = i + b.bA(6, this.LGb);
     }
     i = j;
-    if (this.JMk != 0) {
-      i = j + b.bx(7, this.JMk);
+    if (this.LFT != 0) {
+      i = j + b.bz(7, this.LFT);
     }
     int k = i;
     if (this.netType != 0) {
-      k = i + b.by(8, this.netType);
+      k = i + b.bA(8, this.netType);
     }
     j = k;
-    if (this.JMo != null) {
-      j = k + b.b(200, this.JMo);
+    if (this.LFX != null) {
+      j = k + b.b(200, this.LFX);
     }
     i = j;
     Object localObject;
-    if (this.JMv != null)
+    if (this.LGe != null)
     {
       i = j;
-      if (this.JMv.length > 0)
+      if (this.LGe.length > 0)
       {
         i = 0;
         k = 0;
         int n;
-        for (int m = 0; i < this.JMv.length; m = n)
+        for (int m = 0; i < this.LGe.length; m = n)
         {
-          localObject = this.JMv[i];
+          localObject = this.LGe[i];
           int i1 = k;
           n = m;
           if (localObject != null)
           {
             n = m + 1;
-            i1 = k + b.bj((String)localObject);
+            i1 = k + b.cc((String)localObject);
           }
           i += 1;
           k = i1;
@@ -162,19 +162,19 @@ public final class a$e
       }
     }
     j = i;
-    if (this.JMw != null)
+    if (this.LGf != null)
     {
       j = i;
-      if (this.JMw.length > 0)
+      if (this.LGf.length > 0)
       {
         k = i2;
         for (;;)
         {
           j = i;
-          if (k >= this.JMw.length) {
+          if (k >= this.LGf.length) {
             break;
           }
-          localObject = this.JMw[k];
+          localObject = this.LGf[k];
           j = i;
           if (localObject != null) {
             j = i + b.b(202, (e)localObject);
@@ -185,23 +185,23 @@ public final class a$e
       }
     }
     i = j;
-    if (this.JMy != null) {
-      i = j + b.b(203, this.JMy);
+    if (this.LGh != null) {
+      i = j + b.b(203, this.LGh);
     }
     j = i;
-    if (this.JMz != 0) {
-      j = i + b.by(204, this.JMz);
+    if (this.LGi != 0) {
+      j = i + b.bA(204, this.LGi);
     }
     i = j;
-    if (this.JMx != 0) {
-      i = j + b.by(240, this.JMx);
+    if (this.LGg != 0) {
+      i = j + b.bA(240, this.LGg);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.e
  * JD-Core Version:    0.7.0.1
  */

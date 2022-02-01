@@ -6,32 +6,33 @@ import android.content.pm.ConfigurationInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.HashMap;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/PluginVideoEditor;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/recordvideo/IPluginVideoEditor;", "Lcom/tencent/mm/kernel/api/bucket/ICoreAccountCallbackBucket;", "Lcom/tencent/mm/kernel/api/bucket/ICollectDBFactoryBucket;", "Lcom/tencent/mm/kernel/api/bucket/ICoreStorageCallbackBucket;", "()V", "appForegroundListener", "com/tencent/mm/plugin/recordvideo/PluginVideoEditor$appForegroundListener$1", "Lcom/tencent/mm/plugin/recordvideo/PluginVideoEditor$appForegroundListener$1;", "videoEditorDataStorage", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage;", "collectDatabaseFactory", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "execute", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "getVideoEditorDataStorage", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "onDataBaseClosed", "dataDB", "Lcom/tencent/mm/storagebase/SqliteDB;", "readOnlyDB", "onDataBaseOpened", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/PluginVideoEditor;", "Lcom/tencent/mm/kernel/plugin/Plugin;", "Lcom/tencent/mm/plugin/recordvideo/IPluginVideoEditor;", "Lcom/tencent/mm/kernel/api/bucket/ICoreAccountCallbackBucket;", "Lcom/tencent/mm/kernel/api/bucket/ICollectDBFactoryBucket;", "Lcom/tencent/mm/kernel/api/bucket/ICoreStorageCallbackBucket;", "()V", "appForegroundListener", "com/tencent/mm/plugin/recordvideo/PluginVideoEditor$appForegroundListener$1", "Lcom/tencent/mm/plugin/recordvideo/PluginVideoEditor$appForegroundListener$1;", "videoEditorDataStorage", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditDataStorage;", "collectDatabaseFactory", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "execute", "", "profile", "Lcom/tencent/mm/kernel/plugin/ProcessProfile;", "getVideoEditorDataStorage", "onAccountInitialized", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "onDataBaseClosed", "dataDB", "Lcom/tencent/mm/storagebase/SqliteDB;", "readOnlyDB", "onDataBaseOpened", "plugin-recordvideo_release"})
 public final class PluginVideoEditor
   extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.kernel.api.bucket.d, a
 {
-  private com.tencent.mm.plugin.recordvideo.background.f wlq;
-  private final a wlr;
+  private com.tencent.mm.plugin.recordvideo.background.d xtm;
+  private final a xtn;
   
   public PluginVideoEditor()
   {
     AppMethodBeat.i(75051);
-    this.wlr = new a();
+    this.xtn = new a();
     AppMethodBeat.o(75051);
   }
   
@@ -40,11 +41,11 @@ public final class PluginVideoEditor
     AppMethodBeat.i(75048);
     HashMap localHashMap = new HashMap();
     Map localMap = (Map)localHashMap;
-    Object localObject = com.tencent.mm.plugin.recordvideo.background.e.wmq;
-    localMap.put(Integer.valueOf(com.tencent.mm.plugin.recordvideo.background.e.dum().hashCode()), b.wls);
+    Object localObject = com.tencent.mm.plugin.recordvideo.background.c.xug;
+    localMap.put(Integer.valueOf(com.tencent.mm.plugin.recordvideo.background.c.dEI().hashCode()), PluginVideoEditor.b.xto);
     localMap = (Map)localHashMap;
-    localObject = com.tencent.mm.plugin.recordvideo.background.provider.b.woM;
-    localMap.put(Integer.valueOf(com.tencent.mm.plugin.recordvideo.background.provider.b.dum().hashCode()), c.wlt);
+    localObject = com.tencent.mm.plugin.recordvideo.background.provider.b.xwC;
+    localMap.put(Integer.valueOf(com.tencent.mm.plugin.recordvideo.background.provider.b.dEI().hashCode()), PluginVideoEditor.c.xtp);
     AppMethodBeat.o(75048);
     return localHashMap;
   }
@@ -52,10 +53,10 @@ public final class PluginVideoEditor
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(75045);
-    paramg = com.tencent.mm.media.j.c.gWJ;
-    paramg = ai.getContext();
-    k.g(paramg, "MMApplicationContext.getContext()");
-    k.h(paramg, "context");
+    paramg = com.tencent.mm.media.k.c.hoP;
+    paramg = aj.getContext();
+    p.g(paramg, "MMApplicationContext.getContext()");
+    p.h(paramg, "context");
     for (;;)
     {
       int i;
@@ -68,31 +69,31 @@ public final class PluginVideoEditor
           if (paramg != null)
           {
             j = (paramg.reqGlEsVersion & 0xFFFF0000) >> 16;
-            aw localaw = aw.aKT("mmkv_gl_key");
-            i = localaw.decodeInt("support_egl_context_client_version", 3);
-            ac.i("MicroMsg.GLEnvironmentUtil", "egl support version " + paramg.getGlEsVersion() + "   configurationInfo.reqGlEsVersion : " + paramg.reqGlEsVersion + "   major:" + j + "  curVersion:" + i);
+            ax localax = ax.aQz("mmkv_gl_key");
+            i = localax.decodeInt("support_egl_context_client_version", 3);
+            ad.i("MicroMsg.GLEnvironmentUtil", "egl support version " + paramg.getGlEsVersion() + "   configurationInfo.reqGlEsVersion : " + paramg.reqGlEsVersion + "   major:" + j + "  curVersion:" + i);
             if ((i >= 3) && (j == 2))
             {
-              ac.i("MicroMsg.GLEnvironmentUtil", "markEglVersion2");
-              locald = com.tencent.mm.media.j.d.gWO;
-              com.tencent.mm.media.j.d.arB();
+              ad.i("MicroMsg.GLEnvironmentUtil", "markEglVersion2");
+              locald = com.tencent.mm.media.k.d.hoU;
+              com.tencent.mm.media.k.d.auo();
             }
-            if (localaw.decodeBool("has_reported_egl_version", false)) {
+            if (localax.decodeBool("has_reported_egl_version", false)) {
               break label279;
             }
-            ac.i("MicroMsg.GLEnvironmentUtil", "markEglVersion3");
-            com.tencent.mm.media.j.d locald = com.tencent.mm.media.j.d.gWO;
-            com.tencent.mm.media.j.d.arC();
-            localaw.encode("has_reported_egl_version", true);
+            ad.i("MicroMsg.GLEnvironmentUtil", "markEglVersion3");
+            com.tencent.mm.media.k.d locald = com.tencent.mm.media.k.d.hoU;
+            com.tencent.mm.media.k.d.aup();
+            localax.encode("has_reported_egl_version", true);
             break label279;
-            localaw.encode("support_egl_context_client_version", j);
+            localax.encode("support_egl_context_client_version", j);
           }
           if (paramg == null) {
-            ac.e("MicroMsg.GLEnvironmentUtil", "configurationInfo == null");
+            ad.e("MicroMsg.GLEnvironmentUtil", "configurationInfo == null");
           }
-          if (!((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUD, true))
+          if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzj, true))
           {
-            aw.aKT("mmkv_gl_key").encode("support_egl_context_client_version", 3);
+            ax.aQz("mmkv_gl_key").encode("support_egl_context_client_version", 3);
             AppMethodBeat.o(75045);
           }
         }
@@ -105,7 +106,7 @@ public final class PluginVideoEditor
       }
       catch (Exception paramg)
       {
-        ac.printErrStackTrace("MicroMsg.GLEnvironmentUtil", (Throwable)paramg, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.GLEnvironmentUtil", (Throwable)paramg, "", new Object[0]);
         AppMethodBeat.o(75045);
         return;
       }
@@ -120,21 +121,21 @@ public final class PluginVideoEditor
     }
   }
   
-  public final com.tencent.mm.plugin.recordvideo.background.f getVideoEditorDataStorage()
+  public final com.tencent.mm.plugin.recordvideo.background.d getVideoEditorDataStorage()
   {
     AppMethodBeat.i(75050);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (this.wlq == null)
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (this.xtm == null)
     {
-      localObject = com.tencent.mm.kernel.g.agR();
-      k.g(localObject, "MMKernel.storage()");
-      localObject = ((com.tencent.mm.kernel.e)localObject).agw();
-      k.g(localObject, "MMKernel.storage().dataDB");
-      this.wlq = new com.tencent.mm.plugin.recordvideo.background.f((com.tencent.mm.sdk.e.e)localObject);
+      localObject = com.tencent.mm.kernel.g.ajC();
+      p.g(localObject, "MMKernel.storage()");
+      localObject = ((com.tencent.mm.kernel.e)localObject).getDataDB();
+      p.g(localObject, "MMKernel.storage().dataDB");
+      this.xtm = new com.tencent.mm.plugin.recordvideo.background.d((com.tencent.mm.sdk.e.e)localObject);
     }
-    Object localObject = this.wlq;
+    Object localObject = this.xtm;
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
     AppMethodBeat.o(75050);
     return localObject;
@@ -143,44 +144,44 @@ public final class PluginVideoEditor
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(75046);
-    this.wlr.alive();
-    paramc = com.tencent.mm.plugin.recordvideo.background.h.wmI;
-    com.tencent.mm.plugin.recordvideo.background.h.dux();
+    this.xtn.alive();
+    paramc = com.tencent.mm.plugin.recordvideo.background.f.xuv;
+    com.tencent.mm.plugin.recordvideo.background.f.dET();
     AppMethodBeat.o(75046);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(75047);
-    this.wlr.dead();
+    this.xtn.dead();
     AppMethodBeat.o(75047);
   }
   
-  public final void onDataBaseClosed(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2) {}
+  public final void onDataBaseClosed(h paramh1, h paramh2) {}
   
-  public final void onDataBaseOpened(com.tencent.mm.storagebase.h paramh1, com.tencent.mm.storagebase.h paramh2)
+  public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(75049);
     if (paramh1 == null) {
-      k.fOy();
+      p.gfZ();
     }
-    this.wlq = new com.tencent.mm.plugin.recordvideo.background.f((com.tencent.mm.sdk.e.e)paramh1);
+    this.xtm = new com.tencent.mm.plugin.recordvideo.background.d((com.tencent.mm.sdk.e.e)paramh1);
     AppMethodBeat.o(75049);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/PluginVideoEditor$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/recordvideo/PluginVideoEditor$appForegroundListener$1", "Lcom/tencent/mm/app/IAppForegroundListener$Impl;", "onAppBackground", "", "activity", "", "onAppForeground", "plugin-recordvideo_release"})
   public static final class a
     extends n.a
   {
     public final void onAppBackground(String paramString)
     {
       AppMethodBeat.i(75040);
-      if (com.tencent.mm.kernel.g.agM())
+      if (com.tencent.mm.kernel.g.ajx())
       {
-        paramString = com.tencent.mm.kernel.g.agP();
-        k.g(paramString, "account()");
-        if (paramString.afZ()) {
-          com.tencent.mm.kernel.a.afS();
+        paramString = com.tencent.mm.kernel.g.ajA();
+        p.g(paramString, "account()");
+        if (paramString.aiL()) {
+          com.tencent.mm.kernel.a.aiE();
         }
       }
       AppMethodBeat.o(75040);
@@ -189,78 +190,32 @@ public final class PluginVideoEditor
     public final void onAppForeground(String paramString)
     {
       AppMethodBeat.i(75039);
-      if (com.tencent.mm.kernel.g.agM())
+      if (com.tencent.mm.kernel.g.ajx())
       {
-        paramString = com.tencent.mm.kernel.g.agP();
-        k.g(paramString, "account()");
-        if ((paramString.afZ()) && (!com.tencent.mm.kernel.a.afS()))
+        paramString = com.tencent.mm.kernel.g.ajA();
+        p.g(paramString, "account()");
+        if ((paramString.aiL()) && (!com.tencent.mm.kernel.a.aiE()))
         {
-          paramString = com.tencent.mm.kernel.g.agR();
-          k.g(paramString, "storage()");
-          paramString = paramString.agA().get(ah.a.GTx, Long.valueOf(0L));
+          paramString = com.tencent.mm.kernel.g.ajC();
+          p.g(paramString, "storage()");
+          paramString = paramString.ajl().get(al.a.IGc, Long.valueOf(0L));
           if (paramString == null)
           {
             paramString = new v("null cannot be cast to non-null type kotlin.Long");
             AppMethodBeat.o(75039);
             throw paramString;
           }
-          if (bs.pN(bs.g((Long)paramString)) > 86400L)
+          if (bt.rM(bt.g((Long)paramString)) > 86400L)
           {
-            paramString = com.tencent.mm.kernel.g.agR();
-            k.g(paramString, "storage()");
-            paramString.agA().set(ah.a.GTx, Long.valueOf(bs.aNx()));
-            paramString = com.tencent.mm.plugin.recordvideo.background.g.wmx;
-            com.tencent.mm.plugin.recordvideo.background.g.duu();
+            paramString = com.tencent.mm.kernel.g.ajC();
+            p.g(paramString, "storage()");
+            paramString.ajl().set(al.a.IGc, Long.valueOf(bt.aQJ()));
+            paramString = com.tencent.mm.plugin.recordvideo.background.e.xuo;
+            com.tencent.mm.plugin.recordvideo.background.e.dEQ();
           }
         }
       }
       AppMethodBeat.o(75039);
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
-  static final class b
-    implements h.b
-  {
-    public static final b wls;
-    
-    static
-    {
-      AppMethodBeat.i(75042);
-      wls = new b();
-      AppMethodBeat.o(75042);
-    }
-    
-    public final String[] getSQLs()
-    {
-      AppMethodBeat.i(75041);
-      Object localObject = com.tencent.mm.plugin.recordvideo.background.f.wmu;
-      localObject = com.tencent.mm.plugin.recordvideo.background.f.cty();
-      AppMethodBeat.o(75041);
-      return localObject;
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
-  static final class c
-    implements h.b
-  {
-    public static final c wlt;
-    
-    static
-    {
-      AppMethodBeat.i(75044);
-      wlt = new c();
-      AppMethodBeat.o(75044);
-    }
-    
-    public final String[] getSQLs()
-    {
-      AppMethodBeat.i(75043);
-      Object localObject = com.tencent.mm.plugin.recordvideo.background.provider.a.woz;
-      localObject = com.tencent.mm.plugin.recordvideo.background.provider.a.cty();
-      AppMethodBeat.o(75043);
-      return localObject;
     }
   }
 }

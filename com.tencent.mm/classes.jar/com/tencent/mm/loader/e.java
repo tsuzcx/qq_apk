@@ -1,24 +1,24 @@
 package com.tencent.mm.loader;
 
 import android.graphics.Bitmap;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/LoaderFactory;", "", "()V", "defaultImageLoader", "Lcom/tencent/mm/loader/DefaultImageLoader;", "instance", "Lcom/tencent/mm/loader/Loader;", "T", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "instanceDefault", "", "newInstance", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/LoaderFactory;", "", "()V", "defaultImageLoader", "Lcom/tencent/mm/loader/DefaultImageLoader;", "instance", "Lcom/tencent/mm/loader/Loader;", "T", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "configuration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "Landroid/graphics/Bitmap;", "instanceDefault", "", "newInstance", "libimageloader_release"})
 public final class e
 {
-  private static a gIB = new a((com.tencent.mm.loader.c.d)new com.tencent.mm.loader.c.c());
-  public static final e gIC = new e();
+  private static a hcl = new a((com.tencent.mm.loader.c.d)new com.tencent.mm.loader.c.c());
+  public static final e hcm = new e();
   
   public static <T extends com.tencent.mm.loader.h.a.c> d<T> a(com.tencent.mm.loader.c.d<T, Bitmap> paramd)
   {
-    k.h(paramd, "configuration");
+    p.h(paramd, "configuration");
     return (d)new c(paramd);
   }
   
-  public static a anT()
+  public static a aqF()
   {
-    return gIB;
+    return hcl;
   }
 }
 

@@ -11,8 +11,8 @@ public class ScaleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<ScaleActionArg> CREATOR;
-  public float jzq;
-  public float jzr;
+  public float jTn;
+  public float jTo;
   
   static
   {
@@ -52,7 +52,7 @@ public class ScaleActionArg
       return false;
     }
     paramObject = (ScaleActionArg)paramObject;
-    if ((Float.compare(paramObject.jzq, this.jzq) == 0) && (Float.compare(paramObject.jzr, this.jzr) == 0))
+    if ((Float.compare(paramObject.jTn, this.jTn) == 0) && (Float.compare(paramObject.jTo, this.jTo) == 0))
     {
       AppMethodBeat.o(145120);
       return true;
@@ -65,15 +65,15 @@ public class ScaleActionArg
   {
     AppMethodBeat.i(145118);
     super.h(paramParcel);
-    this.jzq = paramParcel.readFloat();
-    this.jzr = paramParcel.readFloat();
+    this.jTn = paramParcel.readFloat();
+    this.jTo = paramParcel.readFloat();
     AppMethodBeat.o(145118);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145121);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jzq), Float.valueOf(this.jzr) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jTn), Float.valueOf(this.jTo) });
     AppMethodBeat.o(145121);
     return i;
   }
@@ -83,8 +83,8 @@ public class ScaleActionArg
     AppMethodBeat.i(145119);
     super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.jzq = ((float)paramJSONObject.optDouble(0));
-    this.jzr = ((float)paramJSONObject.optDouble(1));
+    this.jTn = ((float)paramJSONObject.optDouble(0));
+    this.jTo = ((float)paramJSONObject.optDouble(1));
     AppMethodBeat.o(145119);
   }
   
@@ -92,8 +92,8 @@ public class ScaleActionArg
   {
     AppMethodBeat.i(145122);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jzq);
-    paramParcel.writeFloat(this.jzr);
+    paramParcel.writeFloat(this.jTn);
+    paramParcel.writeFloat(this.jTo);
     AppMethodBeat.o(145122);
   }
 }

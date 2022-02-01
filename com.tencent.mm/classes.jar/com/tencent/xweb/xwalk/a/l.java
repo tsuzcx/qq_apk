@@ -22,11 +22,11 @@ import org.xwalk.core.XWalkEnvironment;
 public abstract class l
   extends f
 {
-  protected Class KHE = null;
-  protected Class KHF = null;
-  protected int KHG = -1;
-  ValueCallback<Pair<Integer, String>> KHH = new ValueCallback() {};
-  ValueCallback<Pair<Integer, String>> KHI = new ValueCallback() {};
+  protected Class Mye = null;
+  protected Class Myf = null;
+  protected int Myg = -1;
+  ValueCallback<Pair<Integer, String>> Myh = new ValueCallback() {};
+  ValueCallback<Pair<Integer, String>> Myi = new ValueCallback() {};
   
   private String a(ClassLoader paramClassLoader)
   {
@@ -35,7 +35,7 @@ public abstract class l
     {
       try
       {
-        paramClassLoader = paramClassLoader.loadClass(fLL());
+        paramClassLoader = paramClassLoader.loadClass(gdg());
         paramClassLoader = paramClassLoader.getMethod("getSupportFormats", new Class[0]);
         paramClassLoader.setAccessible(true);
         String str = (String)paramClassLoader.invoke(null, new Object[0]);
@@ -49,13 +49,24 @@ public abstract class l
       {
         Log.e(getPluginName(), "loadSupportFormatsFromPlugin error: " + paramClassLoader.getMessage());
       }
-      fLY();
-      paramClassLoader = this.KHF;
+      gdt();
+      paramClassLoader = this.Myf;
     }
     return "";
   }
   
-  private boolean aVy(String paramString)
+  private String aiP(int paramInt)
+  {
+    String str = aiK(paramInt);
+    if ((str == null) || (str.isEmpty()))
+    {
+      Log.e(getPluginName(), "getDexDir, versionDir is empty");
+      return "";
+    }
+    return str + File.separator + "dex";
+  }
+  
+  private boolean bbB(String paramString)
   {
     if (XWalkEnvironment.getApplicationContext() == null)
     {
@@ -75,28 +86,17 @@ public abstract class l
     return bool;
   }
   
-  private String ago(int paramInt)
-  {
-    String str = agj(paramInt);
-    if ((str == null) || (str.isEmpty()))
-    {
-      Log.e(getPluginName(), "getDexDir, versionDir is empty");
-      return "";
-    }
-    return str + File.separator + "dex";
-  }
-  
-  private void fLY()
+  private void gdt()
   {
     try
     {
-      if ((this.KHE == null) || (this.KHF == null) || (this.KHG != this.KHj))
+      if ((this.Mye == null) || (this.Myf == null) || (this.Myg != this.MxJ))
       {
-        Log.i(getPluginName(), "load class of version " + this.KHj);
-        ClassLoader localClassLoader = h.bf(agh(this.KHj), ago(this.KHj), null);
-        this.KHE = localClassLoader.loadClass(fLK());
-        this.KHF = localClassLoader.loadClass(fLL());
-        this.KHG = this.KHj;
+        Log.i(getPluginName(), "load class of version " + this.MxJ);
+        ClassLoader localClassLoader = h.bo(aiI(this.MxJ), aiP(this.MxJ), null);
+        this.Mye = localClassLoader.loadClass(gdf());
+        this.Myf = localClassLoader.loadClass(gdg());
+        this.Myg = this.MxJ;
       }
       return;
     }
@@ -110,12 +110,12 @@ public abstract class l
     if (!bool1)
     {
       Log.e(getPluginName(), "performInstall unZipAndCheck failed");
-      g.dj(getPluginName(), paramSchedulerConfig.KIp);
+      g.jdMethod_do(getPluginName(), paramSchedulerConfig.MyT);
     }
     do
     {
       return -1;
-      if (!paramSchedulerConfig.KIp) {
+      if (!paramSchedulerConfig.MyT) {
         break label138;
       }
       try
@@ -134,14 +134,14 @@ public abstract class l
         break label138;
       }
       Log.e(getPluginName(), "performInstall doPatch failed, delete all");
-      g.aVr(getPluginName());
-      paramSchedulerConfig = agj(paramSchedulerConfig.version);
+      g.bbu(getPluginName());
+      paramSchedulerConfig = aiK(paramSchedulerConfig.version);
     } while (paramSchedulerConfig.isEmpty());
-    c.aVj(paramSchedulerConfig);
+    c.bbn(paramSchedulerConfig);
     return -1;
     label138:
-    Object localObject1 = agh(paramSchedulerConfig.version);
-    String str = ago(paramSchedulerConfig.version);
+    Object localObject1 = aiI(paramSchedulerConfig.version);
+    String str = aiP(paramSchedulerConfig.version);
     Object localObject2 = new File(str);
     if (!((File)localObject2).exists()) {
       ((File)localObject2).mkdirs();
@@ -150,20 +150,20 @@ public abstract class l
     {
       try
       {
-        localObject1 = a(h.bf((String)localObject1, str, null));
-        aVy((String)localObject1);
+        localObject1 = a(h.bo((String)localObject1, str, null));
+        bbB((String)localObject1);
         localObject1 = ((String)localObject1).split(",");
-        y.fJs().a((String[])localObject1, f.a.KyM);
-        e.ae((String[])localObject1);
+        y.gaM().a((String[])localObject1, f.a.Mpi);
+        e.al((String[])localObject1);
         if (XWalkEnvironment.getApplicationContext() == null)
         {
           Log.e(getPluginName(), "clearPatchDownloadInfo, context is null");
-          localObject1 = agk(paramSchedulerConfig.version);
+          localObject1 = aiL(paramSchedulerConfig.version);
           if ((localObject1 != null) && (!((String)localObject1).isEmpty())) {
-            c.aVj((String)localObject1);
+            c.bbn((String)localObject1);
           }
-          agi(paramSchedulerConfig.version);
-          Log.i(getPluginName(), "performInstall version " + this.KHj + " success");
+          aiJ(paramSchedulerConfig.version);
+          Log.i(getPluginName(), "performInstall version " + this.MxJ + " success");
           return 0;
           localObject2 = ((File)localObject2).listFiles();
           if ((localObject2 == null) || (localObject2.length <= 0)) {
@@ -191,7 +191,7 @@ public abstract class l
       }
       catch (Exception localException2)
       {
-        g.dk(getPluginName(), paramSchedulerConfig.KIp);
+        g.dp(getPluginName(), paramSchedulerConfig.MyT);
         Log.e(getPluginName(), "performInstall error: " + localException2.getMessage());
         return -1;
       }
@@ -216,34 +216,34 @@ public abstract class l
       c("", paramValueCallback, -5);
       return false;
     }
-    int i = this.KHj;
+    int i = this.MxJ;
     if (i <= 0)
     {
       Log.e(getPluginName(), "readFile plugin not installed");
       c(str, paramValueCallback, -2);
       return false;
     }
-    if (i < fLM())
+    if (i < gdh())
     {
-      Log.e(getPluginName(), "readFile plugin version is too old, require: " + fLM());
+      Log.e(getPluginName(), "readFile plugin version is too old, require: " + gdh());
       c(str, paramValueCallback, -11);
       return false;
     }
     Log.i(getPluginName(), "readFile by xweb, plugin version ".concat(String.valueOf(i)));
     if ("XFilesPPTReader".equalsIgnoreCase(getPluginName())) {
-      agn(1068);
+      aiO(1068);
     }
     for (;;)
     {
       try
       {
-        paramHashMap.put("cache_dir", agk(i));
-        paramHashMap.put("res_dir", agl(i));
-        fLY();
-        Method localMethod = this.KHE.getMethod("readFile", new Class[] { Activity.class, ViewGroup.class, ClassLoader.class, HashMap.class, ValueCallback.class, ValueCallback.class, ValueCallback.class });
+        paramHashMap.put("cache_dir", aiL(i));
+        paramHashMap.put("res_dir", aiM(i));
+        gdt();
+        Method localMethod = this.Mye.getMethod("readFile", new Class[] { Activity.class, ViewGroup.class, ClassLoader.class, HashMap.class, ValueCallback.class, ValueCallback.class, ValueCallback.class });
         localMethod.setAccessible(true);
         e.onStart(str);
-        localMethod.invoke(null, new Object[] { paramActivity, paramViewGroup, this.KHE.getClassLoader(), paramHashMap, this.KHH, this.KHI, new ValueCallback() {} });
+        localMethod.invoke(null, new Object[] { paramActivity, paramViewGroup, this.Mye.getClassLoader(), paramHashMap, this.Myh, this.Myi, new ValueCallback() {} });
         return true;
       }
       catch (Exception paramHashMap)
@@ -253,11 +253,11 @@ public abstract class l
         c(str, paramValueCallback, -3);
       }
       if ("XFilesPDFReader".equalsIgnoreCase(getPluginName())) {
-        agn(1071);
+        aiO(1071);
       } else if ("XFilesWordReader".equalsIgnoreCase(getPluginName())) {
-        agn(1069);
+        aiO(1069);
       } else if ("XFilesExcelReader".equalsIgnoreCase(getPluginName())) {
-        agn(1070);
+        aiO(1070);
       } else {
         Log.e(getPluginName(), "unknown report id");
       }
@@ -265,11 +265,11 @@ public abstract class l
     return false;
   }
   
-  public abstract String agh(int paramInt);
+  public abstract String aiI(int paramInt);
   
-  public final String bi(int paramInt, boolean paramBoolean)
+  public final String bq(int paramInt, boolean paramBoolean)
   {
-    String str = agj(paramInt);
+    String str = aiK(paramInt);
     if ((str == null) || (str.isEmpty())) {
       return "";
     }
@@ -296,21 +296,21 @@ public abstract class l
     }
     for (;;)
     {
-      int i = this.KHj;
+      int i = this.MxJ;
       if ((i > 0) && ((paramInt == -3) || (paramInt == -13))) {}
       label144:
       try
       {
-        this.KHE = null;
-        this.KHF = null;
-        this.KHG = -1;
+        this.Mye = null;
+        this.Myf = null;
+        this.Myg = -1;
         Log.e(getPluginName(), "invoke error or abi not match, abandon current version ".concat(String.valueOf(i)));
-        paramString = agj(i);
-        agi(-1);
+        paramString = aiK(i);
+        aiJ(-1);
         if ((paramString != null) && (!paramString.isEmpty())) {
-          c.aVj(paramString);
+          c.bbn(paramString);
         }
-        com.tencent.xweb.f.aX(str, i, paramInt);
+        com.tencent.xweb.f.bb(str, i, paramInt);
         if (paramValueCallback != null) {
           paramValueCallback.onReceiveValue(Integer.valueOf(paramInt));
         }
@@ -337,9 +337,9 @@ public abstract class l
     }
   }
   
-  public final boolean jdMethod_do(String paramString, boolean paramBoolean)
+  public final boolean dt(String paramString, boolean paramBoolean)
   {
-    if (this.KHj < 0)
+    if (this.MxJ < 0)
     {
       Log.i(getPluginName(), "isSupport, not installed");
       return false;
@@ -361,7 +361,7 @@ public abstract class l
       try
       {
         localObject2 = a(null);
-        aVy((String)localObject2);
+        bbB((String)localObject2);
         return ((String)localObject2).toLowerCase().contains(paramString.toLowerCase());
       }
       catch (Exception paramString)
@@ -382,20 +382,20 @@ public abstract class l
     return false;
   }
   
-  public abstract String fLK();
+  public abstract String gdf();
   
-  public abstract String fLL();
+  public abstract String gdg();
   
-  public abstract int fLM();
+  public abstract int gdh();
   
-  public final boolean fLN()
+  public final boolean gdi()
   {
     return false;
   }
   
-  public final void fLO()
+  public final void gdj()
   {
-    if (this.KHj < 0) {
+    if (this.MxJ < 0) {
       Log.i(getPluginName(), "checkFiles, not installed");
     }
     String str;
@@ -404,23 +404,23 @@ public abstract class l
       do
       {
         return;
-      } while (bj(this.KHj, true));
-      Log.e(getPluginName(), "checkFiles failed, abandon version " + this.KHj);
-      g.aVs(getPluginName());
-      str = agj(this.KHj);
-      agi(-1);
+      } while (br(this.MxJ, true));
+      Log.e(getPluginName(), "checkFiles failed, abandon version " + this.MxJ);
+      g.bbv(getPluginName());
+      str = aiK(this.MxJ);
+      aiJ(-1);
     } while ((str == null) || (str.isEmpty()));
-    c.aVj(str);
+    c.bbn(str);
   }
   
   public final void q(HashMap<String, String> paramHashMap)
   {
-    if (this.KHE == null) {
+    if (this.Mye == null) {
       return;
     }
     try
     {
-      Method localMethod = this.KHE.getMethod("finishReadFile", new Class[] { HashMap.class });
+      Method localMethod = this.Mye.getMethod("finishReadFile", new Class[] { HashMap.class });
       localMethod.setAccessible(true);
       localMethod.invoke(null, new Object[] { paramHashMap });
       return;

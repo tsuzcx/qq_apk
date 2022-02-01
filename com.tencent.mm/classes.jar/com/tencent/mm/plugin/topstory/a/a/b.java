@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.topstory.a.a;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import java.util.ArrayList;
 
 public final class b
 {
-  public static void ecy()
+  public static void eoP()
   {
     AppMethodBeat.i(91001);
     try
@@ -23,7 +23,7 @@ public final class b
       localIDKey2.SetKey(1);
       localArrayList.add(localIDKey1);
       localArrayList.add(localIDKey2);
-      h.wUl.b(localArrayList, false);
+      g.yhR.b(localArrayList, false);
       AppMethodBeat.o(91001);
       return;
     }

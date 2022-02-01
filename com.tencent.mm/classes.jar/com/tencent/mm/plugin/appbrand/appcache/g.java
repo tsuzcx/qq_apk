@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.jo;
-import com.tencent.mm.protocal.protobuf.jp;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.protocal.protobuf.jx;
+import com.tencent.mm.protocal.protobuf.jy;
 
 public final class g
-  extends c<jp>
+  extends a<jy>
 {
   final b rr;
   
-  public g(jo paramjo)
+  public g(jx paramjx)
   {
-    this(paramjo, "/cgi-bin/mmbiz-bin/wxaapp/batchgetwxadownloadurl");
+    this(paramjx, "/cgi-bin/mmbiz-bin/wxaapp/batchgetwxadownloadurl");
   }
   
-  private g(jo paramjo, String paramString)
+  private g(jx paramjx, String paramString)
   {
     AppMethodBeat.i(174705);
     b.a locala = new b.a();
     locala.funcId = 1713;
     locala.uri = paramString;
-    locala.hvt = paramjo;
-    locala.hvu = new jp();
-    paramjo = locala.aAz();
-    this.rr = paramjo;
-    this.rr = paramjo;
+    locala.hNM = paramjx;
+    locala.hNN = new jy();
+    paramjx = locala.aDC();
+    this.rr = paramjx;
+    c(paramjx);
     AppMethodBeat.o(174705);
   }
 }

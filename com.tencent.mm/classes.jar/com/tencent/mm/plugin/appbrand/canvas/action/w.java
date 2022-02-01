@@ -17,7 +17,7 @@ public final class w
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
     AppMethodBeat.i(144939);
-    paramd = paramd.jzc;
+    paramd = paramd.jSZ;
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -224,7 +224,7 @@ public final class w
     return false;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144937);
     SetGlobalCompositeOperationActionArg localSetGlobalCompositeOperationActionArg = new SetGlobalCompositeOperationActionArg();

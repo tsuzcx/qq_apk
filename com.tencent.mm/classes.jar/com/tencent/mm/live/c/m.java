@@ -18,230 +18,223 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.live.api.LiveConfig;
 import com.tencent.mm.live.b.a.s;
 import com.tencent.mm.live.b.f.c;
-import com.tencent.mm.protocal.protobuf.bqd;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.protocal.protobuf.buq;
+import com.tencent.mm.ui.ar;
 import d.a.j;
-import d.g.b.k;
-import d.g.b.z;
+import d.g.b.p;
 import d.k.h;
+import d.l;
 import d.v;
-import d.y;
+import d.z;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveCommentPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "BAN_COMMENT_TIP_TIMEOUT", "", "BAN_COMMENT_TIP_TIMEOUT$1", "banCommentCallback", "Lkotlin/Function1;", "", "", "commentAdapter", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter;", "commentListView", "Landroid/support/v7/widget/RecyclerView;", "enable", "", "isAnchor", "linkMicCallback", "Lkotlin/Function2;", "newTipGroup", "newTipTv", "Landroid/widget/TextView;", "readCount", "", "hideNewCommentTip", "keyboardChange", "show", "height", "mount", "onMsgPosted", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setVisible", "visible", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "showNewCommentTip", "count", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "updateComments", "newDatas", "", "Lcom/tencent/mm/live/view/adapter/CommentData;", "updateMessages", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveCommentPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "BAN_COMMENT_TIP_TIMEOUT", "", "BAN_COMMENT_TIP_TIMEOUT$1", "banCommentCallback", "Lkotlin/Function1;", "", "", "commentAdapter", "Lcom/tencent/mm/live/view/adapter/LiveCommentAdapter;", "commentListView", "Landroid/support/v7/widget/RecyclerView;", "enable", "", "isAnchor", "linkMicCallback", "Lkotlin/Function2;", "newTipGroup", "newTipTv", "Landroid/widget/TextView;", "readCount", "", "hideNewCommentTip", "keyboardChange", "show", "height", "mount", "onMsgPosted", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "setVisible", "visible", "setupConfig", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "showNewCommentTip", "count", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "updateComments", "newDatas", "", "Lcom/tencent/mm/live/view/adapter/CommentData;", "updateMessages", "Companion", "plugin-logic_release"})
 public final class m
   extends a
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public static final m.a gAi;
-  private boolean dmG;
+  public static final m.a gTT;
+  private boolean dyu;
   private boolean enable;
-  private final ViewGroup gAb;
-  private final TextView gAc;
-  private final RecyclerView gAd;
-  private final com.tencent.mm.live.view.a.c gAe;
-  private final long gAf;
-  private final d.g.a.b<String, y> gAg;
-  private final d.g.a.m<Boolean, String, y> gAh;
-  private final b gzk;
+  private final b gSV;
+  private final ViewGroup gTM;
+  private final TextView gTN;
+  private final RecyclerView gTO;
+  private final com.tencent.mm.live.view.a.c gTP;
+  private final long gTQ;
+  private final d.g.a.b<String, z> gTR;
+  private final d.g.a.m<Boolean, String, z> gTS;
   private int readCount;
   
   static
   {
-    AppMethodBeat.i(190108);
-    gAi = new m.a((byte)0);
-    AppMethodBeat.o(190108);
+    AppMethodBeat.i(212396);
+    gTT = new m.a((byte)0);
+    AppMethodBeat.o(212396);
   }
   
   public m(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(190107);
-    this.gzk = paramb;
+    AppMethodBeat.i(212395);
+    this.gSV = paramb;
     paramb = paramViewGroup.findViewById(2131307604);
-    k.g(paramb, "root.findViewById(R.id.l…e_comment_list_tip_group)");
-    this.gAb = ((ViewGroup)paramb);
+    p.g(paramb, "root.findViewById(R.id.l…e_comment_list_tip_group)");
+    this.gTM = ((ViewGroup)paramb);
     paramb = paramViewGroup.findViewById(2131307605);
-    k.g(paramb, "root.findViewById(R.id.live_comment_list_tip_tv)");
-    this.gAc = ((TextView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_comment_list_tip_tv)");
+    this.gTN = ((TextView)paramb);
     paramb = paramViewGroup.findViewById(2131307603);
-    k.g(paramb, "root.findViewById(R.id.live_comment_list)");
-    this.gAd = ((RecyclerView)paramb);
-    this.gAe = new com.tencent.mm.live.view.a.c();
-    this.gAf = 3000L;
-    this.gAg = ((d.g.a.b)new b(this));
-    this.gAh = ((d.g.a.m)new c(this));
-    paramb = this.gAd;
+    p.g(paramb, "root.findViewById(R.id.live_comment_list)");
+    this.gTO = ((RecyclerView)paramb);
+    this.gTP = new com.tencent.mm.live.view.a.c();
+    this.gTQ = 3000L;
+    this.gTR = ((d.g.a.b)new b(this));
+    this.gTS = ((d.g.a.m)new c(this));
+    paramb = this.gTO;
     paramViewGroup.getContext();
     paramb.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    this.gAd.setAdapter((RecyclerView.a)this.gAe);
-    paramb = com.tencent.mm.live.b.c.gtd;
-    com.tencent.mm.live.b.c.a(name(), this.gAg);
-    paramb = com.tencent.mm.live.b.c.gtd;
-    com.tencent.mm.live.b.c.a(name(), this.gAh);
-    this.gAb.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.gTO.setAdapter((RecyclerView.a)this.gTP);
+    paramb = com.tencent.mm.live.b.c.gMO;
+    com.tencent.mm.live.b.c.a(name(), this.gTR);
+    paramb = com.tencent.mm.live.b.c.gMO;
+    com.tencent.mm.live.b.c.a(name(), this.gTS);
+    this.gTM.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(190078);
-        m.c(this.gAj);
-        paramAnonymousView = m.a(this.gAj);
-        Object localObject = com.tencent.mm.live.b.g.guG;
-        localObject = com.tencent.mm.hellhoundlib.b.c.a(com.tencent.mm.live.b.g.akD().size() - 1, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/live/plugin/LiveCommentPlugin$1", "onClick", "(Landroid/view/View;)V", "Undefined", "smoothScrollToPosition", "(I)V");
-        paramAnonymousView.smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0)).intValue());
+        AppMethodBeat.i(212366);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveCommentPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        m.c(this.gTU);
+        paramAnonymousView = m.a(this.gTU);
+        localObject = com.tencent.mm.live.b.g.gOr;
+        localObject = com.tencent.mm.hellhoundlib.b.c.a(com.tencent.mm.live.b.g.anp().size() - 1, new com.tencent.mm.hellhoundlib.b.a());
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/live/plugin/LiveCommentPlugin$1", "onClick", "(Landroid/view/View;)V", "Undefined", "smoothScrollToPosition", "(I)V");
+        paramAnonymousView.smoothScrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0)).intValue());
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/live/plugin/LiveCommentPlugin$1", "onClick", "(Landroid/view/View;)V", "Undefined", "smoothScrollToPosition", "(I)V");
-        AppMethodBeat.o(190078);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveCommentPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(212366);
       }
     });
-    this.gAd.a((RecyclerView.m)new RecyclerView.m()
+    this.gTO.a((RecyclerView.m)new RecyclerView.m()
     {
       public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(190079);
+        AppMethodBeat.i(212367);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bb(paramAnonymousRecyclerView);
-        localb.lS(paramAnonymousInt1);
-        localb.lS(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveCommentPlugin$2", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
-        k.h(paramAnonymousRecyclerView, "recyclerView");
-        paramAnonymousRecyclerView = m.a(this.gAj).getLayoutManager();
+        localb.bd(paramAnonymousRecyclerView);
+        localb.mr(paramAnonymousInt1);
+        localb.mr(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveCommentPlugin$2", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
+        p.h(paramAnonymousRecyclerView, "recyclerView");
+        paramAnonymousRecyclerView = m.a(this.gTU).getLayoutManager();
         if (paramAnonymousRecyclerView == null)
         {
           paramAnonymousRecyclerView = new v("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
-          AppMethodBeat.o(190079);
+          AppMethodBeat.o(212367);
           throw paramAnonymousRecyclerView;
         }
-        paramAnonymousInt1 = ((LinearLayoutManager)paramAnonymousRecyclerView).jY();
-        paramAnonymousRecyclerView = this.gAj;
-        m.a(paramAnonymousRecyclerView, h.la(paramAnonymousInt1, m.e(paramAnonymousRecyclerView)));
-        if (paramAnonymousInt1 == m.b(this.gAj).getItemCount() - 1) {}
+        paramAnonymousInt1 = ((LinearLayoutManager)paramAnonymousRecyclerView).ko();
+        paramAnonymousRecyclerView = this.gTU;
+        m.a(paramAnonymousRecyclerView, h.lp(paramAnonymousInt1, m.e(paramAnonymousRecyclerView)));
+        if (paramAnonymousInt1 == m.b(this.gTU).getItemCount() - 1) {}
         for (paramAnonymousInt1 = 1;; paramAnonymousInt1 = 0)
         {
           if (paramAnonymousInt1 != 0) {
-            m.c(this.gAj);
+            m.c(this.gTU);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveCommentPlugin$2", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-          AppMethodBeat.o(190079);
+          AppMethodBeat.o(212367);
           return;
         }
       }
       
       public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(190080);
+        AppMethodBeat.i(212368);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bb(paramAnonymousRecyclerView);
-        localb.lS(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveCommentPlugin$2", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
+        localb.bd(paramAnonymousRecyclerView);
+        localb.mr(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveCommentPlugin$2", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
         super.b(paramAnonymousRecyclerView, paramAnonymousInt);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveCommentPlugin$2", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-        AppMethodBeat.o(190080);
+        AppMethodBeat.o(212368);
       }
     });
-    if (aly())
+    if (aol())
     {
       paramb = paramViewGroup.getLayoutParams();
       if (paramb == null)
       {
         paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(190107);
+        AppMethodBeat.o(212395);
         throw paramViewGroup;
       }
-      ((ViewGroup.MarginLayoutParams)paramb).width = (ap.cl(paramViewGroup.getContext()).x * 35 / 100);
+      ((ViewGroup.MarginLayoutParams)paramb).width = (ar.ci(paramViewGroup.getContext()).x * 35 / 100);
     }
-    AppMethodBeat.o(190107);
+    AppMethodBeat.o(212395);
   }
   
-  private final void alW()
+  private final void aoJ()
   {
-    AppMethodBeat.i(190099);
-    this.gAb.setVisibility(8);
-    AppMethodBeat.o(190099);
+    AppMethodBeat.i(212387);
+    this.gTM.setVisibility(8);
+    AppMethodBeat.o(212387);
   }
   
   public final void a(LiveConfig paramLiveConfig)
   {
-    AppMethodBeat.i(190100);
-    k.h(paramLiveConfig, "config");
-    if (paramLiveConfig.aii() == LiveConfig.gmI) {}
+    AppMethodBeat.i(212388);
+    p.h(paramLiveConfig, "config");
+    if (paramLiveConfig.akU() == LiveConfig.gGr) {}
     for (boolean bool = true;; bool = false)
     {
-      this.dmG = bool;
-      AppMethodBeat.o(190100);
+      this.dyu = bool;
+      AppMethodBeat.o(212388);
       return;
     }
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(190103);
-    k.h(paramc, "status");
+    AppMethodBeat.i(212391);
+    p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (n.cfA[paramc.ordinal()])
+    switch (n.cpQ[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190103);
+      AppMethodBeat.o(212391);
       return;
-      nj(8);
+      nI(8);
       this.enable = false;
-      AppMethodBeat.o(190103);
+      AppMethodBeat.o(212391);
       return;
-      paramc = com.tencent.mm.live.b.g.guG;
-      com.tencent.mm.live.b.g.na(com.tencent.mm.live.b.g.alg() + 1);
-      alW();
-      paramc = this.gAd;
-      paramBundle = com.tencent.mm.live.b.g.guG;
-      paramBundle = com.tencent.mm.hellhoundlib.b.c.a(com.tencent.mm.live.b.g.akD().size() - 1, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(paramc, paramBundle.aeD(), "com/tencent/mm/live/plugin/LiveCommentPlugin", "onMsgPosted", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-      paramc.smoothScrollToPosition(((Integer)paramBundle.lR(0)).intValue());
+      paramc = com.tencent.mm.live.b.g.gOr;
+      com.tencent.mm.live.b.g.nz(com.tencent.mm.live.b.g.anT() + 1);
+      aoJ();
+      paramc = this.gTO;
+      paramBundle = com.tencent.mm.live.b.g.gOr;
+      paramBundle = com.tencent.mm.hellhoundlib.b.c.a(com.tencent.mm.live.b.g.anp().size() - 1, new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.a(paramc, paramBundle.ahp(), "com/tencent/mm/live/plugin/LiveCommentPlugin", "onMsgPosted", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+      paramc.smoothScrollToPosition(((Integer)paramBundle.mq(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(paramc, "com/tencent/mm/live/plugin/LiveCommentPlugin", "onMsgPosted", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-      AppMethodBeat.o(190103);
+      AppMethodBeat.o(212391);
       return;
-      nj(0);
+      nI(0);
       this.enable = true;
     }
   }
   
-  public final void alM()
+  public final void aoA()
   {
-    AppMethodBeat.i(190104);
-    super.alM();
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().a(904, (com.tencent.mm.ak.g)this);
-    AppMethodBeat.o(190104);
+    AppMethodBeat.i(212393);
+    super.aoA();
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().b(904, (f)this);
+    AppMethodBeat.o(212393);
   }
   
-  public final void alN()
+  public final void aoK()
   {
-    AppMethodBeat.i(190105);
-    super.alN();
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().b(904, (com.tencent.mm.ak.g)this);
-    AppMethodBeat.o(190105);
-  }
-  
-  public final void alX()
-  {
-    AppMethodBeat.i(190101);
-    if (this.gnb.getVisibility() == 0)
+    AppMethodBeat.i(212389);
+    if (this.gGK.getVisibility() == 0)
     {
-      Object localObject1 = com.tencent.mm.live.b.g.guG;
-      localObject1 = (Collection)com.tencent.mm.live.b.g.akD();
+      Object localObject1 = com.tencent.mm.live.b.g.gOr;
+      localObject1 = (Collection)com.tencent.mm.live.b.g.anp();
       int i;
       if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {
         i = 1;
@@ -249,53 +242,53 @@ public final class m
       while (i == 0)
       {
         localObject1 = new StringBuilder("liveMessageCallback msgListCount:");
-        Object localObject2 = com.tencent.mm.live.b.g.guG;
-        localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.live.b.g.akD().size()).append(" readCount:").append(this.readCount).append(" enable_comment:");
-        localObject2 = com.tencent.mm.live.b.g.guG;
-        localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.live.b.g.akF().DVV).append(" msgFilterTime:");
-        localObject2 = com.tencent.mm.live.b.g.guG;
-        ac.i("MicroMsg.LiveCommentPlugin", com.tencent.mm.live.b.g.akI());
-        localObject1 = this.gAd.getLayoutManager();
+        Object localObject2 = com.tencent.mm.live.b.g.gOr;
+        localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.live.b.g.anp().size()).append(" readCount:").append(this.readCount).append(" enable_comment:");
+        localObject2 = com.tencent.mm.live.b.g.gOr;
+        localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.live.b.g.ans().FBr).append(" msgFilterTime:");
+        localObject2 = com.tencent.mm.live.b.g.gOr;
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.LiveCommentPlugin", com.tencent.mm.live.b.g.anv());
+        localObject1 = this.gTO.getLayoutManager();
         if (localObject1 == null)
         {
           localObject1 = new v("null cannot be cast to non-null type android.support.v7.widget.LinearLayoutManager");
-          AppMethodBeat.o(190101);
+          AppMethodBeat.o(212389);
           throw ((Throwable)localObject1);
           i = 0;
         }
         else
         {
           int k;
-          if (((LinearLayoutManager)localObject1).jY() == this.gAe.getItemCount() - 1)
+          if (((LinearLayoutManager)localObject1).ko() == this.gTP.getItemCount() - 1)
           {
             i = 1;
-            localObject1 = com.tencent.mm.live.b.g.guG;
-            k = com.tencent.mm.live.b.g.akD().size() - this.readCount - 1;
-            localObject1 = com.tencent.mm.live.b.g.guG;
-            if (!com.tencent.mm.live.b.g.akF().DVV) {
+            localObject1 = com.tencent.mm.live.b.g.gOr;
+            k = com.tencent.mm.live.b.g.anp().size() - this.readCount - 1;
+            localObject1 = com.tencent.mm.live.b.g.gOr;
+            if (!com.tencent.mm.live.b.g.ans().FBr) {
               break label343;
             }
-            localObject1 = com.tencent.mm.live.b.g.guG;
+            localObject1 = com.tencent.mm.live.b.g.gOr;
           }
-          for (localObject1 = (List)com.tencent.mm.live.b.g.akD();; localObject1 = (List)localObject1)
+          for (localObject1 = (List)com.tencent.mm.live.b.g.anp();; localObject1 = (List)localObject1)
           {
             localObject2 = android.support.v7.h.c.a((c.a)new g(this, (List)localObject1), false);
-            k.g(localObject2, "DiffUtil.calculateDiff(o…      }\n        }, false)");
+            p.g(localObject2, "DiffUtil.calculateDiff(o…      }\n        }, false)");
             ((c.b)localObject2).a((d)new f(this, (List)localObject1));
-            if (this.gAe.getItemCount() <= 0) {
+            if (this.gTP.getItemCount() <= 0) {
               break label574;
             }
             if (i == 0) {
               break label473;
             }
-            this.gAd.post((Runnable)new h(this));
-            AppMethodBeat.o(190101);
+            this.gTO.post((Runnable)new h(this));
+            AppMethodBeat.o(212389);
             return;
             i = 0;
             break;
             label343:
-            localObject1 = com.tencent.mm.live.b.g.guG;
-            localObject2 = (Iterable)com.tencent.mm.live.b.g.akD();
+            localObject1 = com.tencent.mm.live.b.g.gOr;
+            localObject2 = (Iterable)com.tencent.mm.live.b.g.anp();
             localObject1 = (Collection)new ArrayList();
             localObject2 = ((Iterable)localObject2).iterator();
             label461:
@@ -304,12 +297,12 @@ public final class m
               Object localObject3 = ((Iterator)localObject2).next();
               Object localObject4 = (com.tencent.mm.live.view.a.a)localObject3;
               int j = ((com.tencent.mm.live.view.a.a)localObject4).msgType;
-              f.c localc = f.c.gtp;
-              if (j == f.c.akm())
+              f.c localc = f.c.gNa;
+              if (j == f.c.amY())
               {
-                j = ((com.tencent.mm.live.view.a.a)localObject4).gIh;
-                localObject4 = com.tencent.mm.live.b.g.guG;
-                if (j < com.tencent.mm.live.b.g.akI()) {}
+                j = ((com.tencent.mm.live.view.a.a)localObject4).hbR;
+                localObject4 = com.tencent.mm.live.b.g.gOr;
+                if (j < com.tencent.mm.live.b.g.anv()) {}
               }
               for (j = 1;; j = 0)
               {
@@ -324,50 +317,60 @@ public final class m
           label473:
           if (k > 0)
           {
-            this.gAb.setVisibility(0);
-            localObject1 = this.gAc;
-            localObject2 = z.KUT;
-            localObject2 = this.gnb.getContext();
-            k.g(localObject2, "root.context");
+            this.gTM.setVisibility(0);
+            localObject1 = this.gTN;
+            localObject2 = d.g.b.ad.MLZ;
+            localObject2 = this.gGK.getContext();
+            p.g(localObject2, "root.context");
             localObject2 = ((Context)localObject2).getResources().getString(2131766648);
-            k.g(localObject2, "root.context.resources.g…ing.live_new_comment_tip)");
+            p.g(localObject2, "root.context.resources.g…ing.live_new_comment_tip)");
             localObject2 = String.format((String)localObject2, Arrays.copyOf(new Object[] { Integer.valueOf(k) }, 1));
-            k.g(localObject2, "java.lang.String.format(format, *args)");
+            p.g(localObject2, "java.lang.String.format(format, *args)");
             ((TextView)localObject1).setText((CharSequence)localObject2);
           }
         }
       }
     }
     label574:
-    AppMethodBeat.o(190101);
+    AppMethodBeat.o(212389);
+  }
+  
+  public final void aoz()
+  {
+    AppMethodBeat.i(212392);
+    super.aoz();
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().a(904, (f)this);
+    AppMethodBeat.o(212392);
   }
   
   public final void i(boolean paramBoolean, int paramInt) {}
   
-  public final void nj(int paramInt)
+  public final void nI(int paramInt)
   {
-    AppMethodBeat.i(190102);
-    super.nj(paramInt);
-    this.gAd.setVisibility(0);
-    AppMethodBeat.o(190102);
+    AppMethodBeat.i(212390);
+    super.nI(paramInt);
+    this.gTO.setVisibility(0);
+    AppMethodBeat.o(212390);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(190106);
+    AppMethodBeat.i(212394);
     if (((paramn instanceof s)) && (paramInt1 == 4) && (paramInt2 == -100048))
     {
-      paramString = com.tencent.mm.live.b.g.guG;
-      j.a((List)com.tencent.mm.live.b.g.akD(), (d.g.a.b)new d(paramn));
-      com.tencent.mm.ac.c.g((d.g.a.a)new e(this));
+      paramString = com.tencent.mm.live.b.g.gOr;
+      j.b((List)com.tencent.mm.live.b.g.anp(), (d.g.a.b)new m.d(paramn));
+      com.tencent.mm.ad.c.g((d.g.a.a)new e(this));
     }
-    AppMethodBeat.o(190106);
+    AppMethodBeat.o(212394);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "wording", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "wording", "", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.b<String, y>
+    extends d.g.b.q
+    implements d.g.a.b<String, z>
   {
     b(m paramm)
     {
@@ -375,10 +378,10 @@ public final class m
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "linked", "", "callingUser", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "linked", "", "callingUser", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements d.g.a.m<Boolean, String, y>
+    extends d.g.b.q
+    implements d.g.a.m<Boolean, String, z>
   {
     c(m paramm)
     {
@@ -386,21 +389,10 @@ public final class m
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/live/view/adapter/CommentData;", "invoke"})
-  static final class d
-    extends d.g.b.l
-    implements d.g.a.b<com.tencent.mm.live.view.a.a, Boolean>
-  {
-    d(n paramn)
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class e
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
     e(m paramm)
     {
@@ -408,91 +400,91 @@ public final class m
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/plugin/LiveCommentPlugin$updateComments$1", "Landroid/support/v7/util/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveCommentPlugin$updateComments$1", "Landroid/support/v7/util/ListUpdateCallback;", "onChanged", "", "position", "", "count", "payload", "", "onInserted", "onMoved", "fromPosition", "toPosition", "onRemoved", "plugin-logic_release"})
   public static final class f
     implements d
   {
     f(List paramList) {}
     
-    public final void E(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(190092);
-      ac.d("MicroMsg.LiveCommentPlugin", "onInserted position:" + paramInt1 + ", count:" + paramInt2);
-      m.b(this.gAj).gIn.clear();
-      m.b(this.gAj).gIn.addAll((Collection)this.gAq);
-      m.b(this.gAj).aq(paramInt1, paramInt2);
-      AppMethodBeat.o(190092);
-    }
-    
-    public final void F(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(190093);
-      ac.d("MicroMsg.LiveCommentPlugin", "onRemoved position:" + paramInt1 + ", count:" + paramInt2);
-      m.b(this.gAj).gIn.clear();
-      m.b(this.gAj).gIn.addAll((Collection)this.gAq);
-      m.b(this.gAj).ar(paramInt1, paramInt2);
-      AppMethodBeat.o(190093);
-    }
-    
-    public final void G(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(190091);
-      ac.d("MicroMsg.LiveCommentPlugin", "onMoved fromPosition:" + paramInt1 + ", toPosition:" + paramInt2);
-      m.b(this.gAj).ap(paramInt1, paramInt2);
-      AppMethodBeat.o(190091);
-    }
-    
     public final void c(int paramInt1, int paramInt2, Object paramObject)
     {
-      AppMethodBeat.i(190090);
-      ac.d("MicroMsg.LiveCommentPlugin", "onChanged position:" + paramInt1 + ", count:" + paramInt2);
-      m.b(this.gAj).gIn.clear();
-      m.b(this.gAj).gIn.addAll((Collection)this.gAq);
-      m.b(this.gAj).ao(paramInt1, paramInt2);
-      AppMethodBeat.o(190090);
+      AppMethodBeat.i(212378);
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.LiveCommentPlugin", "onChanged position:" + paramInt1 + ", count:" + paramInt2);
+      m.b(this.gTU).hbX.clear();
+      m.b(this.gTU).hbX.addAll((Collection)this.gUa);
+      m.b(this.gTU).ap(paramInt1, paramInt2);
+      AppMethodBeat.o(212378);
+    }
+    
+    public final void f(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(212380);
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.LiveCommentPlugin", "onInserted position:" + paramInt1 + ", count:" + paramInt2);
+      m.b(this.gTU).hbX.clear();
+      m.b(this.gTU).hbX.addAll((Collection)this.gUa);
+      m.b(this.gTU).ar(paramInt1, paramInt2);
+      AppMethodBeat.o(212380);
+    }
+    
+    public final void k(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(212381);
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.LiveCommentPlugin", "onRemoved position:" + paramInt1 + ", count:" + paramInt2);
+      m.b(this.gTU).hbX.clear();
+      m.b(this.gTU).hbX.addAll((Collection)this.gUa);
+      m.b(this.gTU).as(paramInt1, paramInt2);
+      AppMethodBeat.o(212381);
+    }
+    
+    public final void l(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(212379);
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.LiveCommentPlugin", "onMoved fromPosition:" + paramInt1 + ", toPosition:" + paramInt2);
+      m.b(this.gTU).aq(paramInt1, paramInt2);
+      AppMethodBeat.o(212379);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/live/plugin/LiveCommentPlugin$updateComments$result$1", "Landroid/support/v7/util/DiffUtil$Callback;", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getNewListSize", "getOldListSize", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/live/plugin/LiveCommentPlugin$updateComments$result$1", "Landroid/support/v7/util/DiffUtil$Callback;", "areContentsTheSame", "", "oldItemPosition", "", "newItemPosition", "areItemsTheSame", "getNewListSize", "getOldListSize", "plugin-logic_release"})
   public static final class g
     extends c.a
   {
     g(List paramList) {}
     
-    public final boolean H(int paramInt1, int paramInt2)
+    public final int aA()
     {
-      AppMethodBeat.i(190096);
-      boolean bool = k.g((com.tencent.mm.live.view.a.a)m.b(this.gAj).gIn.get(paramInt1), (com.tencent.mm.live.view.a.a)this.gAq.get(paramInt2));
-      AppMethodBeat.o(190096);
-      return bool;
-    }
-    
-    public final boolean I(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(190097);
-      boolean bool = k.g((com.tencent.mm.live.view.a.a)m.b(this.gAj).gIn.get(paramInt1), (com.tencent.mm.live.view.a.a)this.gAq.get(paramInt2));
-      AppMethodBeat.o(190097);
-      return bool;
-    }
-    
-    public final int gZ()
-    {
-      AppMethodBeat.i(190094);
-      int i = m.b(this.gAj).gIn.size();
-      AppMethodBeat.o(190094);
+      AppMethodBeat.i(212383);
+      int i = this.gUa.size();
+      AppMethodBeat.o(212383);
       return i;
     }
     
-    public final int ha()
+    public final int az()
     {
-      AppMethodBeat.i(190095);
-      int i = this.gAq.size();
-      AppMethodBeat.o(190095);
+      AppMethodBeat.i(212382);
+      int i = m.b(this.gTU).hbX.size();
+      AppMethodBeat.o(212382);
       return i;
+    }
+    
+    public final boolean i(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(212384);
+      boolean bool = p.i((com.tencent.mm.live.view.a.a)m.b(this.gTU).hbX.get(paramInt1), (com.tencent.mm.live.view.a.a)this.gUa.get(paramInt2));
+      AppMethodBeat.o(212384);
+      return bool;
+    }
+    
+    public final boolean j(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(212385);
+      boolean bool = p.i((com.tencent.mm.live.view.a.a)m.b(this.gTU).hbX.get(paramInt1), (com.tencent.mm.live.view.a.a)this.gUa.get(paramInt2));
+      AppMethodBeat.o(212385);
+      return bool;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class h
     implements Runnable
   {
@@ -500,13 +492,13 @@ public final class m
     
     public final void run()
     {
-      AppMethodBeat.i(190098);
-      RecyclerView localRecyclerView = m.a(this.gAj);
-      com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(h.la(m.b(this.gAj).getItemCount() - 1, 0), new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.aeD(), "com/tencent/mm/live/plugin/LiveCommentPlugin$updateMessages$1", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-      localRecyclerView.smoothScrollToPosition(((Integer)locala.lR(0)).intValue());
+      AppMethodBeat.i(212386);
+      RecyclerView localRecyclerView = m.a(this.gTU);
+      com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(h.lp(m.b(this.gTU).getItemCount() - 1, 0), new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahp(), "com/tencent/mm/live/plugin/LiveCommentPlugin$updateMessages$1", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
+      localRecyclerView.smoothScrollToPosition(((Integer)locala.mq(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, "com/tencent/mm/live/plugin/LiveCommentPlugin$updateMessages$1", "run", "()V", "Undefined", "smoothScrollToPosition", "(I)V");
-      AppMethodBeat.o(190098);
+      AppMethodBeat.o(212386);
     }
   }
 }

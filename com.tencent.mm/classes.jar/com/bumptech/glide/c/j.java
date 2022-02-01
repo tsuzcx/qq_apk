@@ -8,25 +8,25 @@ import java.security.MessageDigest;
 public final class j
   implements h
 {
-  public final a<i<?>, Object> aDt;
+  public final a<i<?>, Object> aFk;
   
   public j()
   {
     AppMethodBeat.i(76856);
-    this.aDt = new b();
+    this.aFk = new b();
     AppMethodBeat.o(76856);
   }
   
   public final <T> T a(i<T> parami)
   {
     AppMethodBeat.i(76858);
-    if (this.aDt.containsKey(parami))
+    if (this.aFk.containsKey(parami))
     {
-      parami = this.aDt.get(parami);
+      parami = this.aFk.get(parami);
       AppMethodBeat.o(76858);
       return parami;
     }
-    parami = parami.aDq;
+    parami = parami.aFh;
     AppMethodBeat.o(76858);
     return parami;
   }
@@ -34,7 +34,7 @@ public final class j
   public final void a(j paramj)
   {
     AppMethodBeat.i(76857);
-    this.aDt.a(paramj.aDt);
+    this.aFk.a(paramj.aFk);
     AppMethodBeat.o(76857);
   }
   
@@ -42,15 +42,15 @@ public final class j
   {
     AppMethodBeat.i(76861);
     int i = 0;
-    while (i < this.aDt.size())
+    while (i < this.aFk.size())
     {
-      i locali = (i)this.aDt.keyAt(i);
-      Object localObject = this.aDt.valueAt(i);
-      i.a locala = locali.aDr;
-      if (locali.aDs == null) {
-        locali.aDs = locali.key.getBytes(h.aDo);
+      i locali = (i)this.aFk.keyAt(i);
+      Object localObject = this.aFk.valueAt(i);
+      i.a locala = locali.aFi;
+      if (locali.aFj == null) {
+        locali.aFj = locali.key.getBytes(h.aFf);
       }
-      locala.a(locali.aDs, localObject, paramMessageDigest);
+      locala.a(locali.aFj, localObject, paramMessageDigest);
       i += 1;
     }
     AppMethodBeat.o(76861);
@@ -62,7 +62,7 @@ public final class j
     if ((paramObject instanceof j))
     {
       paramObject = (j)paramObject;
-      boolean bool = this.aDt.equals(paramObject.aDt);
+      boolean bool = this.aFk.equals(paramObject.aFk);
       AppMethodBeat.o(76859);
       return bool;
     }
@@ -73,7 +73,7 @@ public final class j
   public final int hashCode()
   {
     AppMethodBeat.i(76860);
-    int i = this.aDt.hashCode();
+    int i = this.aFk.hashCode();
     AppMethodBeat.o(76860);
     return i;
   }
@@ -81,7 +81,7 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(76862);
-    String str = "Options{values=" + this.aDt + '}';
+    String str = "Options{values=" + this.aFk + '}';
     AppMethodBeat.o(76862);
     return str;
   }

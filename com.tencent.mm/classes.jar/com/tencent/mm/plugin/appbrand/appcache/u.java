@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class u
 {
-  public static boolean aWv()
+  public static boolean aZQ()
   {
     AppMethodBeat.i(44269);
-    if (!g.agM())
+    if (!g.ajx())
     {
       AppMethodBeat.o(44269);
       return false;
@@ -20,10 +20,10 @@ public final class u
     return true;
   }
   
-  public static boolean aWw()
+  public static boolean aZR()
   {
     AppMethodBeat.i(44270);
-    if (!g.agM())
+    if (!g.ajx())
     {
       AppMethodBeat.o(44270);
       return false;
@@ -32,10 +32,10 @@ public final class u
     return true;
   }
   
-  public static boolean aWx()
+  public static boolean aZS()
   {
     AppMethodBeat.i(44271);
-    if (!g.agM())
+    if (!g.ajx())
     {
       AppMethodBeat.o(44271);
       return false;
@@ -44,28 +44,28 @@ public final class u
     return true;
   }
   
-  public static boolean aWy()
+  public static boolean aZT()
   {
     AppMethodBeat.i(44273);
-    boolean bool = ((b)g.ab(b.class)).a(b.a.pOn, false);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.qsm, false);
     if (bool) {}
     for (int i = 1;; i = 0)
     {
-      ac.i("MicroMsg.PkgABTest", "openSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.PkgABTest", "openSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(44273);
       return bool;
     }
   }
   
-  public static boolean aWz()
+  public static boolean aZU()
   {
-    AppMethodBeat.i(186322);
-    boolean bool = ((b)g.ab(b.class)).a(b.a.pOo, false);
+    AppMethodBeat.i(188010);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.qsn, false);
     if (bool) {}
     for (int i = 1;; i = 0)
     {
-      ac.i("MicroMsg.PkgABTest", "openMultiSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(186322);
+      ad.i("MicroMsg.PkgABTest", "openMultiSplitPluginCode exp:%d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(188010);
       return bool;
     }
   }

@@ -18,41 +18,41 @@ import java.util.List;
 public final class e
   implements t.a<u<c>>
 {
-  public final d bnN;
-  final com.google.android.exoplayer2.source.a.a bnO;
-  public final u.a<c> bnW;
-  public a bnt;
-  public final Uri bpk;
-  public final int bpl;
-  public final IdentityHashMap<a.a, a> bpm;
-  public final Handler bpn;
-  final e bpo;
-  public final t bpp;
-  public a.a bpq;
-  b bpr;
-  public boolean bps;
+  public a bxO;
+  public final d byi;
+  final com.google.android.exoplayer2.source.a.a byj;
+  public final u.a<c> byr;
+  public final Uri bzF;
+  public final int bzG;
+  public final IdentityHashMap<a.a, a> bzH;
+  public final Handler bzI;
+  final e bzJ;
+  public final t bzK;
+  public a.a bzL;
+  b bzM;
+  public boolean bzN;
   public final List<b> listeners;
   
   public e(Uri paramUri, d paramd, com.google.android.exoplayer2.source.a.a parama, int paramInt, e parame, u.a<c> parama1)
   {
     AppMethodBeat.i(62914);
-    this.bpk = paramUri;
-    this.bnN = paramd;
-    this.bnO = parama;
-    this.bpl = paramInt;
-    this.bpo = parame;
-    this.bnW = parama1;
+    this.bzF = paramUri;
+    this.byi = paramd;
+    this.byj = parama;
+    this.bzG = paramInt;
+    this.bzJ = parame;
+    this.byr = parama1;
     this.listeners = new ArrayList();
-    this.bpp = new t("HlsPlaylistTracker:MasterPlaylist");
-    this.bpm = new IdentityHashMap();
-    this.bpn = new Handler();
+    this.bzK = new t("HlsPlaylistTracker:MasterPlaylist");
+    this.bzH = new IdentityHashMap();
+    this.bzI = new Handler();
     AppMethodBeat.o(62914);
   }
   
   static b.a a(b paramb1, b paramb2)
   {
     AppMethodBeat.i(62919);
-    int i = paramb2.box - paramb1.box;
+    int i = paramb2.byS - paramb1.byS;
     paramb1 = paramb1.segments;
     if (i < paramb1.size())
     {
@@ -67,13 +67,13 @@ public final class e
   private void e(a.a parama)
   {
     AppMethodBeat.i(62917);
-    if ((parama == this.bpq) || (!this.bnt.bor.contains(parama)) || ((this.bpr != null) && (this.bpr.boA)))
+    if ((parama == this.bzL) || (!this.bxO.byM.contains(parama)) || ((this.bzM != null) && (this.bzM.byV)))
     {
       AppMethodBeat.o(62917);
       return;
     }
-    this.bpq = parama;
-    ((a)this.bpm.get(this.bpq)).ut();
+    this.bzL = parama;
+    ((a)this.bzH.get(this.bzL)).vS();
     AppMethodBeat.o(62917);
   }
   
@@ -86,7 +86,7 @@ public final class e
     {
       a.a locala = (a.a)paramList.get(i);
       a locala1 = new a(locala);
-      this.bpm.put(locala, locala1);
+      this.bzH.put(locala, locala1);
       i += 1;
     }
     AppMethodBeat.o(62918);
@@ -95,7 +95,7 @@ public final class e
   public final b c(a.a parama)
   {
     AppMethodBeat.i(62915);
-    b localb = ((a)this.bpm.get(parama)).bpw;
+    b localb = ((a)this.bzH.get(parama)).bzR;
     if (localb != null) {
       e(parama);
     }
@@ -106,68 +106,68 @@ public final class e
   public final void d(a.a parama)
   {
     AppMethodBeat.i(62916);
-    this.bpm.get(parama);
+    this.bzH.get(parama);
     AppMethodBeat.o(62916);
   }
   
   public final class a
     implements t.a<u<c>>, Runnable
   {
-    private long bpA;
-    private boolean bpB;
-    private IOException bpC;
-    private final a.a bpt;
-    public final t bpu;
-    private final u<c> bpv;
-    public b bpw;
-    public long bpx;
-    private long bpy;
-    private long bpz;
+    private final a.a bzO;
+    public final t bzP;
+    private final u<c> bzQ;
+    public b bzR;
+    public long bzS;
+    private long bzT;
+    private long bzU;
+    private long bzV;
+    private boolean bzW;
+    private IOException bzX;
     
     public a(a.a parama)
     {
       AppMethodBeat.i(62904);
-      this.bpt = parama;
-      this.bpu = new t("HlsPlaylistTracker:MediaPlaylist");
-      this.bpv = new u(e.this.bnN.uk(), w.m(e.this.bnt.boJ, parama.url), e.this.bnW);
+      this.bzO = parama;
+      this.bzP = new t("HlsPlaylistTracker:MediaPlaylist");
+      this.bzQ = new u(e.this.byi.vJ(), w.m(e.this.bxO.bze, parama.url), e.this.byr);
       AppMethodBeat.o(62904);
     }
     
     private void b(b paramb)
     {
       AppMethodBeat.i(62908);
-      b localb = this.bpw;
+      b localb = this.bzR;
       long l3 = SystemClock.elapsedRealtime();
-      this.bpx = l3;
+      this.bzS = l3;
       Object localObject1 = e.this;
       int i;
       label70:
       Object localObject2;
-      if ((localb == null) || (paramb.box > localb.box))
+      if ((localb == null) || (paramb.byS > localb.byS))
       {
         i = 1;
         if (i != 0) {
           break label363;
         }
-        if (!paramb.boA) {
+        if (!paramb.byV) {
           break label356;
         }
-        if (!localb.boA) {
+        if (!localb.byV) {
           break label273;
         }
         localObject1 = localb;
-        this.bpw = ((b)localObject1);
-        if (this.bpw == localb) {
+        this.bzR = ((b)localObject1);
+        if (this.bzR == localb) {
           break label635;
         }
-        this.bpC = null;
-        this.bpy = l3;
+        this.bzX = null;
+        this.bzT = l3;
         paramb = e.this;
-        localObject1 = this.bpt;
-        localObject2 = this.bpw;
-        if (localObject1 == paramb.bpq) {
-          if (paramb.bpr == null) {
-            if (((b)localObject2).boA) {
+        localObject1 = this.bzO;
+        localObject2 = this.bzR;
+        if (localObject1 == paramb.bzL) {
+          if (paramb.bzM == null) {
+            if (((b)localObject2).byV) {
               break label629;
             }
           }
@@ -179,21 +179,21 @@ public final class e
       label629:
       for (boolean bool = true;; bool = false)
       {
-        paramb.bps = bool;
-        paramb.bpr = ((b)localObject2);
-        paramb.bpo.a((b)localObject2);
+        paramb.bzN = bool;
+        paramb.bzM = ((b)localObject2);
+        paramb.bzJ.a((b)localObject2);
         int j = paramb.listeners.size();
         i = 0;
         while (i < j)
         {
-          ((e.b)paramb.listeners.get(i)).un();
+          ((e.b)paramb.listeners.get(i)).vM();
           i += 1;
         }
-        if (paramb.box >= localb.box)
+        if (paramb.byS >= localb.byS)
         {
           i = paramb.segments.size();
           j = localb.segments.size();
-          if ((i > j) || ((i == j) && (paramb.boA) && (!localb.boA)))
+          if ((i > j) || ((i == j) && (paramb.byV) && (!localb.byV)))
           {
             i = 1;
             break;
@@ -201,23 +201,23 @@ public final class e
         }
         i = 0;
         break;
-        localObject1 = new b(localb.bot, localb.boJ, localb.boK, localb.bou, localb.bmR, localb.bov, localb.bow, localb.box, localb.version, localb.boy, localb.boz, true, localb.boB, localb.boC, localb.segments);
+        localObject1 = new b(localb.byO, localb.bze, localb.bzf, localb.byP, localb.bxm, localb.byQ, localb.byR, localb.byS, localb.version, localb.byT, localb.byU, true, localb.byW, localb.byX, localb.segments);
         break label70;
         localObject1 = localb;
         break label70;
-        if (paramb.boB) {
-          l1 = paramb.bmR;
+        if (paramb.byW) {
+          l1 = paramb.bxm;
         }
         for (;;)
         {
-          if (!paramb.bov) {
+          if (!paramb.byQ) {
             break label553;
           }
-          i = paramb.bow;
-          localObject1 = new b(paramb.bot, paramb.boJ, paramb.boK, paramb.bou, l1, true, i, paramb.box, paramb.version, paramb.boy, paramb.boz, paramb.boA, paramb.boB, paramb.boC, paramb.segments);
+          i = paramb.byR;
+          localObject1 = new b(paramb.byO, paramb.bze, paramb.bzf, paramb.byP, l1, true, i, paramb.byS, paramb.version, paramb.byT, paramb.byU, paramb.byV, paramb.byW, paramb.byX, paramb.segments);
           break;
-          if (((e)localObject1).bpr != null) {}
-          for (long l2 = ((e)localObject1).bpr.bmR;; l2 = 0L)
+          if (((e)localObject1).bzM != null) {}
+          for (long l2 = ((e)localObject1).bzM.bxm;; l2 = 0L)
           {
             l1 = l2;
             if (localb == null) {
@@ -228,16 +228,16 @@ public final class e
             if (localObject2 == null) {
               break label525;
             }
-            l1 = localb.bmR + ((b.a)localObject2).boE;
+            l1 = localb.bxm + ((b.a)localObject2).byZ;
             break;
           }
           l1 = l2;
-          if (i == paramb.box - localb.box) {
-            l1 = localb.us();
+          if (i == paramb.byS - localb.byS) {
+            l1 = localb.vR();
           }
         }
-        if (((e)localObject1).bpr != null) {}
-        for (j = ((e)localObject1).bpr.bow;; j = 0)
+        if (((e)localObject1).bzM != null) {}
+        for (j = ((e)localObject1).bzM.byR;; j = 0)
         {
           i = j;
           if (localb == null) {
@@ -248,55 +248,55 @@ public final class e
           if (localObject1 == null) {
             break;
           }
-          i = localb.bow + ((b.a)localObject1).boD - ((b.a)paramb.segments.get(0)).boD;
+          i = localb.byR + ((b.a)localObject1).byY - ((b.a)paramb.segments.get(0)).byY;
           break;
         }
       }
       label525:
       label553:
       label635:
-      if (!this.bpw.boA)
+      if (!this.bzR.byV)
       {
-        if (paramb.box + paramb.segments.size() < this.bpw.box) {
-          this.bpC = new e.c(this.bpt.url, (byte)0);
+        if (paramb.byS + paramb.segments.size() < this.bzR.byS) {
+          this.bzX = new e.c(this.bzO.url, (byte)0);
         }
       }
       else {
-        if (this.bpw == localb) {
+        if (this.bzR == localb) {
           break label806;
         }
       }
       label806:
-      for (long l1 = this.bpw.boy;; l1 = this.bpw.boy / 2L)
+      for (long l1 = this.bzR.byT;; l1 = this.bzR.byT / 2L)
       {
-        this.bpz = (com.google.android.exoplayer2.b.v(l1) + l3);
-        if ((this.bpt == e.this.bpq) && (!this.bpw.boA)) {
-          ut();
+        this.bzU = (com.google.android.exoplayer2.b.v(l1) + l3);
+        if ((this.bzO == e.this.bzL) && (!this.bzR.byV)) {
+          vS();
         }
         AppMethodBeat.o(62908);
         return;
-        if (l3 - this.bpy <= com.google.android.exoplayer2.b.v(this.bpw.boy) * 3.5D) {
+        if (l3 - this.bzT <= com.google.android.exoplayer2.b.v(this.bzR.byT) * 3.5D) {
           break;
         }
-        this.bpC = new e.d(this.bpt.url, (byte)0);
-        uv();
+        this.bzX = new e.d(this.bzO.url, (byte)0);
+        vU();
         break;
       }
     }
     
-    private void uu()
+    private void vT()
     {
       AppMethodBeat.i(62907);
-      this.bpu.a(this.bpv, this, e.this.bpl);
+      this.bzP.a(this.bzQ, this, e.this.bzG);
       AppMethodBeat.o(62907);
     }
     
-    private boolean uv()
+    private boolean vU()
     {
       AppMethodBeat.i(62909);
-      this.bpA = (SystemClock.elapsedRealtime() + 60000L);
-      e.a(e.this, this.bpt);
-      if ((e.this.bpq == this.bpt) && (!e.a(e.this)))
+      this.bzV = (SystemClock.elapsedRealtime() + 60000L);
+      e.a(e.this, this.bzO);
+      if ((e.this.bzL == this.bzO) && (!e.a(e.this)))
       {
         AppMethodBeat.o(62909);
         return true;
@@ -308,29 +308,29 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(62906);
-      this.bpB = false;
-      uu();
+      this.bzW = false;
+      vT();
       AppMethodBeat.o(62906);
     }
     
-    public final void ut()
+    public final void vS()
     {
       AppMethodBeat.i(62905);
-      this.bpA = 0L;
-      if ((this.bpB) || (this.bpu.isLoading()))
+      this.bzV = 0L;
+      if ((this.bzW) || (this.bzP.isLoading()))
       {
         AppMethodBeat.o(62905);
         return;
       }
       long l = SystemClock.elapsedRealtime();
-      if (l < this.bpz)
+      if (l < this.bzU)
       {
-        this.bpB = true;
-        e.this.bpn.postDelayed(this, this.bpz - l);
+        this.bzW = true;
+        e.this.bzI.postDelayed(this, this.bzU - l);
         AppMethodBeat.o(62905);
         return;
       }
-      uu();
+      vT();
       AppMethodBeat.o(62905);
     }
   }
@@ -339,29 +339,7 @@ public final class e
   {
     public abstract void b(a.a parama);
     
-    public abstract void un();
-  }
-  
-  public static final class c
-    extends IOException
-  {
-    public final String url;
-    
-    private c(String paramString)
-    {
-      this.url = paramString;
-    }
-  }
-  
-  public static final class d
-    extends IOException
-  {
-    public final String url;
-    
-    private d(String paramString)
-    {
-      this.url = paramString;
-    }
+    public abstract void vM();
   }
   
   public static abstract interface e
@@ -371,7 +349,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.a.e
  * JD-Core Version:    0.7.0.1
  */

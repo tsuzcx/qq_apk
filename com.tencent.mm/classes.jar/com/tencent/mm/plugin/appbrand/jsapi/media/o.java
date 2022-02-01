@@ -1,51 +1,58 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.f;
-import java.io.InputStream;
+import com.tencent.mm.sdk.f.b;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class o
-  implements d
+  extends a
 {
-  public static final o kzl;
+  public static final int CTRL_INDEX = 216;
+  public static final String NAME = "saveVideoToPhotosAlbum";
   
-  static
+  final boolean PQ(String paramString)
   {
-    AppMethodBeat.i(46601);
-    kzl = new o();
-    AppMethodBeat.o(46601);
+    AppMethodBeat.i(139885);
+    boolean bool = bt.nullAsNil(paramString).toLowerCase().contains("video");
+    AppMethodBeat.o(139885);
+    return bool;
   }
   
-  public final Bitmap b(InputStream paramInputStream, BitmapFactory.Options paramOptions)
+  final String PR(String paramString)
   {
-    AppMethodBeat.i(46600);
-    paramInputStream = MMBitmapFactory.decodeStream(paramInputStream, null, paramOptions);
-    AppMethodBeat.o(46600);
-    return paramInputStream;
-  }
-  
-  public final Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions)
-  {
-    AppMethodBeat.i(46599);
-    paramString = MMBitmapFactory.decodeFile(paramString, paramOptions);
-    AppMethodBeat.o(46599);
+    AppMethodBeat.i(139886);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "mp4";
+    }
+    paramString = b.aqN(str);
+    AppMethodBeat.o(139886);
     return paramString;
   }
   
-  public final Bitmap decodeStream(InputStream paramInputStream)
+  final void PS(final String paramString)
   {
-    AppMethodBeat.i(205651);
-    paramInputStream = f.decodeStream(paramInputStream);
-    AppMethodBeat.o(205651);
-    return paramInputStream;
+    AppMethodBeat.i(139887);
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139884);
+        Toast.makeText(aj.getContext(), aj.getContext().getString(2131764683, new Object[] { b.aRB(paramString) }), 1).show();
+        AppMethodBeat.o(139884);
+      }
+    });
+    AppMethodBeat.o(139887);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.o
  * JD-Core Version:    0.7.0.1
  */

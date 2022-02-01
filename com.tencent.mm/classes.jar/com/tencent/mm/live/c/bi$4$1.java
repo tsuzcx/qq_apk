@@ -2,20 +2,22 @@ package com.tencent.mm.live.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class bi$4$1
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final 1 gEa;
+  public static final 1 gXK;
   
   static
   {
-    AppMethodBeat.i(190346);
-    gEa = new 1();
-    AppMethodBeat.o(190346);
+    AppMethodBeat.i(212636);
+    gXK = new 1();
+    AppMethodBeat.o(212636);
   }
   
   bi$4$1()

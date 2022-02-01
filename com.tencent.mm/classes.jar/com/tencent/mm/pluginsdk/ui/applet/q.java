@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.w;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,140 +23,148 @@ import java.util.Set;
 
 public final class q
 {
-  private String DqU;
-  private HashMap<String, Preference> DqV;
-  private boolean DqW;
-  private boolean DqX;
-  public r DqY;
-  s.b DqZ;
-  private View.OnClickListener Dra;
-  private View.OnClickListener Drb;
-  private View.OnClickListener Drc;
-  private s.b Drd;
-  private s.a Dre;
-  private r.a Drf;
+  ContactListExpandPreference.a AHo;
+  private String EVX;
+  private HashMap<String, Preference> EVY;
+  private boolean EVZ;
+  private boolean EWa;
+  private boolean EWb;
+  public r EWc;
+  s.b EWd;
+  private View.OnClickListener EWe;
+  private View.OnClickListener EWf;
+  private View.OnClickListener EWg;
+  private s.b EWh;
+  private s.a EWi;
+  private r.a EWj;
   private Context context;
-  private View iMi;
-  public View.OnClickListener iu;
-  private View nzT;
+  private View jfs;
+  public View.OnClickListener km;
+  private View oaY;
   f screen;
   String username;
-  ContactListExpandPreference.a zpu;
   
   public q(Context paramContext)
   {
     AppMethodBeat.i(152183);
-    this.DqV = new HashMap();
-    this.DqW = false;
-    if (this.DqW) {
+    this.EVY = new HashMap();
+    this.EVZ = false;
+    if (this.EVZ) {
       bool = true;
     }
-    this.DqX = bool;
-    this.DqZ = null;
-    this.iu = null;
-    this.zpu = null;
-    this.Drc = new q.1(this);
-    this.Drd = new s.b()
+    this.EWa = bool;
+    this.EWd = null;
+    this.km = null;
+    this.AHo = null;
+    this.EWg = new q.1(this);
+    this.EWh = new s.b()
     {
-      public final boolean kF(int paramAnonymousInt)
+      public final boolean le(int paramAnonymousInt)
       {
         AppMethodBeat.i(152180);
-        if ((!q.this.DqY.Drq) || (!q.this.DqY.Xa(paramAnonymousInt)))
+        if ((!q.this.EWc.EWu) || (!q.this.EWc.YW(paramAnonymousInt)))
         {
           AppMethodBeat.o(152180);
           return true;
         }
-        if (!q.this.DqY.WY(paramAnonymousInt)) {
-          ac.d("MicroMsg.ContactListArchor", "onItemLongClick ".concat(String.valueOf(paramAnonymousInt)));
+        if (!q.this.EWc.YU(paramAnonymousInt)) {
+          ad.d("MicroMsg.ContactListArchor", "onItemLongClick ".concat(String.valueOf(paramAnonymousInt)));
         }
         AppMethodBeat.o(152180);
         return true;
       }
     };
-    this.Dre = new s.a()
+    this.EWi = new s.a()
     {
-      public final void e(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt)
+      public final void n(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
         int j = 1;
-        AppMethodBeat.i(192695);
-        if ((q.this.zpu != null) && (q.this.DqY != null))
+        AppMethodBeat.i(214479);
+        if ((q.this.AHo != null) && (q.this.EWc != null))
         {
-          r localr = q.this.DqY;
-          if (localr.Drq) {
-            if ((!localr.fxO) && (paramAnonymousInt == localr.Dro + 2)) {
+          r localr = q.this.EWc;
+          if (localr.EWu) {
+            if ((!localr.fRb) && (paramAnonymousInt == localr.EWs + 2))
+            {
               i = 1;
+              if (i != 0) {
+                break label408;
+              }
+              localr = q.this.EWc;
+              if ((localr.fRb) || (paramAnonymousInt != localr.EWs)) {
+                break label168;
+              }
             }
           }
-          while (i != 0)
+          label168:
+          for (int i = 1;; i = 0)
           {
-            q.this.zpu.d(paramAnonymousViewGroup, paramAnonymousView);
-            AppMethodBeat.o(192695);
+            if (i == 0) {
+              break label173;
+            }
+            if (!q.this.EWc.EWv) {
+              break label408;
+            }
+            q.this.AHo.ld(paramAnonymousInt);
+            AppMethodBeat.o(214479);
             return;
             i = 0;
-            continue;
-            if ((!localr.fxO) && (paramAnonymousInt == localr.Dro + 1)) {
+            break;
+            if ((!localr.fRb) && (paramAnonymousInt == localr.EWs + 1))
+            {
               i = 1;
-            } else {
-              i = 0;
+              break;
             }
+            i = 0;
+            break;
           }
-          localr = q.this.DqY;
-          if ((!localr.fxO) && (paramAnonymousInt == localr.Dro)) {}
-          for (int i = 1; i != 0; i = 0)
-          {
-            if (!q.this.DqY.Drr) {
-              break label448;
-            }
-            q.this.zpu.c(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousInt);
-            AppMethodBeat.o(192695);
-            return;
-          }
-          localr = q.this.DqY;
-          if ((!localr.fxO) && (paramAnonymousInt == localr.Dro + 1)) {
+          label173:
+          localr = q.this.EWc;
+          if ((!localr.fRb) && (paramAnonymousInt == localr.EWs + 1)) {
             i = j;
           }
           while (i != 0)
           {
-            if (!q.this.DqY.Drq) {
-              break label448;
+            if (!q.this.EWc.EWu) {
+              break label408;
             }
-            if (w.sQ(q.this.username))
+            if (w.vF(q.this.username))
             {
-              q.this.zpu.a(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousInt);
-              AppMethodBeat.o(192695);
+              q.this.AHo.lc(paramAnonymousInt);
+              AppMethodBeat.o(214479);
               return;
               i = 0;
             }
             else
             {
-              q.this.DqY.WY(0);
-              AppMethodBeat.o(192695);
+              q.this.EWc.YU(0);
+              AppMethodBeat.o(214479);
               return;
             }
           }
-          if ((q.this.DqY.fxO) && (q.this.DqY.Xa(paramAnonymousInt)))
+          if ((q.this.EWc.fRb) && (q.this.EWc.YW(paramAnonymousInt)))
           {
-            q.this.zpu.a(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousInt);
-            AppMethodBeat.o(192695);
+            q.this.AHo.lc(paramAnonymousInt);
+            AppMethodBeat.o(214479);
             return;
           }
-          if ((q.this.DqY.fxO) && (!q.this.DqY.Xa(paramAnonymousInt)))
+          if ((q.this.EWc.fRb) && (!q.this.EWc.YW(paramAnonymousInt)))
           {
-            q.this.zpu.e(paramAnonymousViewGroup, paramAnonymousView);
-            AppMethodBeat.o(192695);
+            q.this.AHo.YJ();
+            AppMethodBeat.o(214479);
             return;
           }
-          if ((!q.this.DqY.fxO) && (q.this.DqY.Xa(paramAnonymousInt))) {
-            q.this.zpu.b(paramAnonymousViewGroup, paramAnonymousView, paramAnonymousInt);
+          if ((!q.this.EWc.fRb) && (q.this.EWc.YW(paramAnonymousInt))) {
+            q.this.AHo.e(paramAnonymousViewGroup, paramAnonymousInt);
           }
         }
-        label448:
-        AppMethodBeat.o(192695);
+        label408:
+        AppMethodBeat.o(214479);
       }
     };
-    this.Drf = new r.a()
+    this.EWj = new r.a()
     {
-      public final void bYL()
+      public final void cdp()
       {
         AppMethodBeat.i(152182);
         if (q.this.screen != null) {
@@ -165,24 +174,24 @@ public final class q
       }
     };
     this.context = paramContext;
-    this.DqY = new r(this.context);
-    this.DqY.Dri = this.Drf;
+    this.EWc = new r(this.context);
+    this.EWc.EWm = this.EWj;
     AppMethodBeat.o(152183);
   }
   
-  private void WW(int paramInt)
+  private void YS(int paramInt)
   {
     AppMethodBeat.i(152188);
     int k = 0;
-    if (this.iMi != null) {
+    if (this.jfs != null) {
       k = 1;
     }
     Object localObject1;
-    if (this.nzT != null) {
-      if (this.DqW)
+    if (this.oaY != null) {
+      if (this.EVZ)
       {
-        localObject1 = this.DqY;
-        if (((r)localObject1).Drn <= ((r)localObject1).Drv) {
+        localObject1 = this.EWc;
+        if (((r)localObject1).EWr <= ((r)localObject1).EWz) {
           break label450;
         }
         i = 1;
@@ -205,37 +214,37 @@ public final class q
       if (k != 0)
       {
         localObject1 = new ContactListCustomPreference(this.context);
-        ((ContactListCustomPreference)localObject1).setKey(WX(-1));
-        ((ContactListCustomPreference)localObject1).setCustomView(this.iMi);
+        ((ContactListCustomPreference)localObject1).setKey(YT(-1));
+        ((ContactListCustomPreference)localObject1).setCustomView(this.jfs);
         ((ContactListCustomPreference)localObject1).background = 2131231818;
-        ((ContactListCustomPreference)localObject1).iu = this.Dra;
+        ((ContactListCustomPreference)localObject1).km = this.EWe;
         this.screen.a((Preference)localObject1, paramInt);
-        this.DqV.put(((Preference)localObject1).mKey, localObject1);
+        this.EVY.put(((Preference)localObject1).mKey, localObject1);
         j = paramInt + 1;
       }
       View.OnClickListener localOnClickListener;
       boolean bool1;
       boolean bool2;
-      if (this.DqZ != null)
+      if (this.EWd != null)
       {
-        localObject1 = this.DqZ;
-        if (this.iu == null) {
+        localObject1 = this.EWd;
+        if (this.km == null) {
           break label465;
         }
-        localOnClickListener = this.iu;
-        if ((this.DqY.ftP == null) || (!this.DqY.ftP.Wp())) {
+        localOnClickListener = this.km;
+        if ((this.EWc.fLO == null) || (!this.EWc.fLO.YH())) {
           break label474;
         }
         bool1 = true;
-        bool2 = this.DqY.eNG();
-        if (!this.DqY.qKh) {
+        bool2 = this.EWc.fcF();
+        if (!this.EWc.ruj) {
           break label756;
         }
-        bool1 = this.DqY.Drk;
+        bool1 = this.EWc.EWo;
       }
       for (;;)
       {
-        int i1 = this.DqY.Dro;
+        int i1 = this.EWc.EWs;
         if ((!bool2) || (bool1)) {}
         int m;
         Object localObject2;
@@ -243,36 +252,36 @@ public final class q
         for (paramInt = 2;; paramInt = 1)
         {
           m = 0;
-          localObject2 = this.DqY;
+          localObject2 = this.EWc;
           localObject3 = this.context;
           if (localObject3 != null) {
             break label485;
           }
           k = 0;
           n = 0;
-          while ((n < this.DqY.getCount()) && (n < i1 + paramInt))
+          while ((n < this.EWc.getCount()) && (n < i1 + paramInt))
           {
             localObject2 = new ContactListExpandPreference(this.context, 1);
-            ((ContactListExpandPreference)localObject2).setKey(WX(m));
-            localObject3 = ((ContactListExpandPreference)localObject2).DrJ;
-            ((s)localObject3).DqY = this.DqY;
+            ((ContactListExpandPreference)localObject2).setKey(YT(m));
+            localObject3 = ((ContactListExpandPreference)localObject2).EWN;
+            ((s)localObject3).EWc = this.EWc;
             ((s)localObject3).row = m;
             ((s)localObject3).index = n;
-            ((ContactListExpandPreference)localObject2).DrJ.DrK = k;
-            ((ContactListExpandPreference)localObject2).DrJ.ftK = bool1;
-            ((ContactListExpandPreference)localObject2).DrJ.iu = localOnClickListener;
-            ((ContactListExpandPreference)localObject2).DrJ.Dre = this.Dre;
-            ((ContactListExpandPreference)localObject2).DrJ.DrL = ((s.b)localObject1);
+            ((ContactListExpandPreference)localObject2).EWN.EWO = k;
+            ((ContactListExpandPreference)localObject2).EWN.fMM = bool1;
+            ((ContactListExpandPreference)localObject2).EWN.km = localOnClickListener;
+            ((ContactListExpandPreference)localObject2).EWN.EWi = this.EWi;
+            ((ContactListExpandPreference)localObject2).EWN.EWP = ((s.b)localObject1);
             this.screen.a((Preference)localObject2, j + m);
-            this.DqV.put(((Preference)localObject2).mKey, localObject2);
+            this.EVY.put(((Preference)localObject2).mKey, localObject2);
             n += k;
             m += 1;
           }
           i = 0;
           break;
-          localObject1 = this.Drd;
+          localObject1 = this.EWh;
           break label162;
-          localOnClickListener = this.Drc;
+          localOnClickListener = this.EWg;
           break label175;
           bool1 = false;
           break label201;
@@ -283,17 +292,17 @@ public final class q
         float f2;
         if ((k / (((Context)localObject3).getResources().getDimension(2131165510) + ((Context)localObject3).getResources().getDimension(2131165500) * 2.0F) >= 5.0F) && (n > k))
         {
-          ((r)localObject2).DrB = true;
+          ((r)localObject2).EWF = true;
           f2 = ((Context)localObject3).getResources().getDimension(2131165500);
-          if (!((r)localObject2).DrB) {
+          if (!((r)localObject2).EWF) {
             break label658;
           }
         }
         for (float f1 = ((Context)localObject3).getResources().getDimension(2131165510);; f1 = ((Context)localObject3).getResources().getDimension(2131165508))
         {
           n = k / (int)(f1 + 2.0F * f2);
-          ac.i("MicroMsg.ContactsListArchAdapter", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(n) });
-          r.Drh = n;
+          ad.i("MicroMsg.ContactsListArchAdapter", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(n) });
+          r.EWl = n;
           k = n;
           if (n != 4) {
             break;
@@ -301,17 +310,17 @@ public final class q
           r.MAX_COUNT = 43;
           k = n;
           break;
-          ((r)localObject2).DrB = false;
+          ((r)localObject2).EWF = false;
           break label562;
         }
         if (i != 0)
         {
           localObject1 = new ContactListCustomPreference(this.context);
-          ((ContactListCustomPreference)localObject1).setKey(WX(-2));
-          ((ContactListCustomPreference)localObject1).setCustomView(this.nzT);
-          ((ContactListCustomPreference)localObject1).iu = this.Drb;
+          ((ContactListCustomPreference)localObject1).setKey(YT(-2));
+          ((ContactListCustomPreference)localObject1).setCustomView(this.oaY);
+          ((ContactListCustomPreference)localObject1).km = this.EWf;
           this.screen.a((Preference)localObject1, j + m);
-          this.DqV.put(((Preference)localObject1).mKey, localObject1);
+          this.EVY.put(((Preference)localObject1).mKey, localObject1);
         }
         AppMethodBeat.o(152188);
         return;
@@ -319,7 +328,7 @@ public final class q
     }
   }
   
-  private static String WX(int paramInt)
+  private static String YT(int paramInt)
   {
     AppMethodBeat.i(152190);
     if (paramInt >= 0)
@@ -343,27 +352,40 @@ public final class q
     }
   }
   
-  private void ajY(String paramString)
+  private void aoL(String paramString)
   {
     AppMethodBeat.i(152186);
-    this.DqY.setUsername(paramString);
-    this.DqY.Dru = this.DqX;
-    this.DqY.WJ();
-    bzd();
+    this.EWc.setUsername(paramString);
+    this.EWc.EWy = this.EWa;
+    this.EWc.Zd();
+    bDh();
     AppMethodBeat.o(152186);
   }
   
   private void removeAll()
   {
     AppMethodBeat.i(152189);
-    Iterator localIterator = this.DqV.keySet().iterator();
+    Iterator localIterator = this.EVY.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.screen.aPO(str);
+      this.screen.aVE(str);
     }
-    this.DqV.clear();
+    this.EVY.clear();
     AppMethodBeat.o(152189);
+  }
+  
+  public final void A(String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(152184);
+    this.username = paramString;
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList(0);
+    }
+    this.EWc.fS((List)localObject);
+    aoL(paramString);
+    AppMethodBeat.o(152184);
   }
   
   public final void a(f paramf, String paramString)
@@ -375,57 +397,60 @@ public final class q
       return;
     }
     this.screen = paramf;
-    this.DqU = paramString;
-    paramf.cK(paramString, true);
+    this.EVX = paramString;
+    paramf.cP(paramString, true);
     AppMethodBeat.o(152187);
   }
   
-  public final void aQ(ArrayList<ai> paramArrayList)
+  public final void aN(ArrayList<am> paramArrayList)
   {
     AppMethodBeat.i(152185);
     Object localObject = paramArrayList;
     if (paramArrayList == null) {
       localObject = new ArrayList(0);
     }
-    this.DqY.aR((ArrayList)localObject);
-    ajY(null);
+    this.EWc.aO((ArrayList)localObject);
+    aoL(null);
     AppMethodBeat.o(152185);
   }
   
-  public final void bzd()
+  public final void bDh()
   {
     AppMethodBeat.i(152191);
-    if ((this.screen == null) || (this.DqU == null))
+    if ((this.screen == null) || (this.EVX == null))
     {
       AppMethodBeat.o(152191);
       return;
     }
     removeAll();
-    WW(this.screen.indexOf(this.DqU));
+    YS(this.screen.indexOf(this.EVX));
+    vN(this.EWb);
     AppMethodBeat.o(152191);
   }
   
-  public final void eNE()
+  public final void fcD()
   {
     boolean bool = false;
-    this.DqW = false;
-    if (this.DqW) {
+    this.EVZ = false;
+    if (this.EVZ) {
       bool = true;
     }
-    this.DqX = bool;
+    this.EWa = bool;
   }
   
-  public final void y(String paramString, List<String> paramList)
+  public final void vN(boolean paramBoolean)
   {
-    AppMethodBeat.i(152184);
-    this.username = paramString;
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList(0);
+    AppMethodBeat.i(214480);
+    this.EWb = paramBoolean;
+    Iterator localIterator = this.EVY.values().iterator();
+    while (localIterator.hasNext())
+    {
+      Preference localPreference = (Preference)localIterator.next();
+      if ((localPreference instanceof ContactListExpandPreference)) {
+        ((ContactListExpandPreference)localPreference).vN(paramBoolean);
+      }
     }
-    this.DqY.fH((List)localObject);
-    ajY(paramString);
-    AppMethodBeat.o(152184);
+    AppMethodBeat.o(214480);
   }
 }
 

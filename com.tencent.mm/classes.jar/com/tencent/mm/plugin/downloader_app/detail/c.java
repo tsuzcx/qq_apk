@@ -4,55 +4,52 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.g;
-import com.tencent.luggage.d.k;
-import com.tencent.luggage.d.n;
-import com.tencent.luggage.d.n.a;
+import com.tencent.luggage.d.p;
+import com.tencent.luggage.d.s;
+import com.tencent.luggage.d.s.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.z.d;
-import com.tencent.mm.plugin.webview.luggage.i;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.MMWebView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
-  extends n
+  extends s
 {
-  private MMWebView hqK;
-  boolean oKw;
-  private n.a oKx;
+  private MMWebView hJc;
+  boolean pod;
+  private s.a poe;
   
-  public c(g paramg, k paramk, Bundle paramBundle)
+  public c(com.tencent.luggage.d.j paramj, p paramp, Bundle paramBundle)
   {
-    super(paramg, paramk, paramBundle);
+    super(paramj, paramp, paramBundle);
     AppMethodBeat.i(8801);
-    this.oKw = false;
-    this.oKx = new n.a()
+    this.pod = false;
+    this.poe = new s.a()
     {
-      public final void a(n paramAnonymousn, String paramAnonymousString) {}
+      public final void a(s paramAnonymouss, String paramAnonymousString) {}
       
-      public final void b(final n paramAnonymousn, String paramAnonymousString)
+      public final void b(final s paramAnonymouss, String paramAnonymousString)
       {
         AppMethodBeat.i(8800);
-        ac.i("MicroMsg.DownloadDetailWebPage", "onUrlLoadingFinished, preload = %b", new Object[] { Boolean.valueOf(c.this.oKw) });
-        paramAnonymousn = c.this.mParams.getString("rawUrl");
-        if (bs.isNullOrNil(paramAnonymousn))
+        ad.i("MicroMsg.DownloadDetailWebPage", "onUrlLoadingFinished, preload = %b", new Object[] { Boolean.valueOf(c.this.pod) });
+        paramAnonymouss = c.this.mParams.getString("rawUrl");
+        if (bt.isNullOrNil(paramAnonymouss))
         {
           AppMethodBeat.o(8800);
           return;
         }
-        paramAnonymousn = Uri.parse(paramAnonymousn).getQueryParameter("appid");
-        c.this.bXF.a(new com.tencent.luggage.d.c()
+        paramAnonymouss = Uri.parse(paramAnonymouss).getQueryParameter("appid");
+        c.this.chX.a(new com.tencent.luggage.d.d()
         {
-          public final JSONObject Aq()
+          public final JSONObject BO()
           {
             AppMethodBeat.i(8799);
             JSONObject localJSONObject = new JSONObject();
             try
             {
-              localJSONObject.put("appid", paramAnonymousn);
+              localJSONObject.put("appid", paramAnonymouss);
               label25:
               AppMethodBeat.o(8799);
               return localJSONObject;
@@ -71,22 +68,22 @@ public final class c
         AppMethodBeat.o(8800);
       }
     };
-    if (paramk != null) {
-      this.oKw = true;
+    if (paramp != null) {
+      this.pod = true;
     }
-    ac.i("MicroMsg.DownloadDetailWebPage", "preload = %b", new Object[] { Boolean.valueOf(this.oKw) });
-    a(this.oKx);
-    this.bXF.bXu = a.bXK;
-    i.b(this);
+    ad.i("MicroMsg.DownloadDetailWebPage", "preload = %b", new Object[] { Boolean.valueOf(this.pod) });
+    a(this.poe);
+    this.chX.chG = a.cic;
+    com.tencent.mm.plugin.webview.luggage.j.b(this);
     AppMethodBeat.o(8801);
   }
   
-  private void WL(final String paramString)
+  private void aas(final String paramString)
   {
     AppMethodBeat.i(8808);
-    this.bXF.a(new com.tencent.luggage.d.c()
+    this.chX.a(new com.tencent.luggage.d.d()
     {
-      public final JSONObject Aq()
+      public final JSONObject BO()
       {
         AppMethodBeat.i(8798);
         JSONObject localJSONObject = new JSONObject();
@@ -111,28 +108,28 @@ public final class c
     AppMethodBeat.o(8808);
   }
   
-  public final String AQ()
-  {
-    AppMethodBeat.i(8807);
-    String str = d.Rn("luggage_mm_adapter.js");
-    AppMethodBeat.o(8807);
-    return str;
-  }
-  
-  public final View Ar()
+  public final View BQ()
   {
     AppMethodBeat.i(8802);
-    this.hqK = ((MMWebView)this.bXF.AN());
-    View localView = super.Ar();
+    this.hJc = ((MMWebView)this.chX.Cm());
+    View localView = super.BQ();
     AppMethodBeat.o(8802);
     return localView;
+  }
+  
+  public final String Cp()
+  {
+    AppMethodBeat.i(8807);
+    String str = com.tencent.mm.plugin.appbrand.z.d.UT("luggage_mm_adapter.js");
+    AppMethodBeat.o(8807);
+    return str;
   }
   
   public final void g(String paramString, Bundle paramBundle)
   {
     AppMethodBeat.i(8806);
-    if (!this.oKw) {
-      this.bXF.loadUrl(paramString);
+    if (!this.pod) {
+      this.chX.loadUrl(paramString);
     }
     AppMethodBeat.o(8806);
   }
@@ -140,27 +137,27 @@ public final class c
   public final void onBackground()
   {
     AppMethodBeat.i(8804);
-    ac.i("MicroMsg.DownloadDetailWebPage", "onBackground");
-    WL("onPause");
-    this.hqK.onPause();
+    ad.i("MicroMsg.DownloadDetailWebPage", "onBackground");
+    aas("onPause");
+    this.hJc.onPause();
     AppMethodBeat.o(8804);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(8805);
-    ac.i("MicroMsg.DownloadDetailWebPage", "onDestroy");
-    WL("onDestroy");
-    i.c(this);
+    ad.i("MicroMsg.DownloadDetailWebPage", "onDestroy");
+    aas("onDestroy");
+    com.tencent.mm.plugin.webview.luggage.j.c(this);
     AppMethodBeat.o(8805);
   }
   
   public final void onForeground()
   {
     AppMethodBeat.i(8803);
-    ac.i("MicroMsg.DownloadDetailWebPage", "onForeground");
-    WL("onResume");
-    this.hqK.onResume();
+    ad.i("MicroMsg.DownloadDetailWebPage", "onForeground");
+    aas("onResume");
+    this.hJc.onResume();
     AppMethodBeat.o(8803);
   }
 }

@@ -8,12 +8,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends JceStruct
 {
-  public String JST = "";
-  public String JSU = "";
-  public int JSV = 0;
-  public String JSW = "";
-  public int JSX = 0;
-  public String hym = "";
+  public String LMK = "";
+  public String LML = "";
+  public int LMM = 0;
+  public String LMN = "";
+  public int LMO = 0;
+  public String hQG = "";
   public String model = "";
   public String platform = "";
   
@@ -28,43 +28,43 @@ public final class d
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138341);
-    this.JST = paramJceInputStream.readString(0, false);
-    this.JSU = paramJceInputStream.readString(1, false);
-    this.hym = paramJceInputStream.readString(2, false);
+    this.LMK = paramJceInputStream.readString(0, false);
+    this.LML = paramJceInputStream.readString(1, false);
+    this.hQG = paramJceInputStream.readString(2, false);
     this.model = paramJceInputStream.readString(3, false);
-    this.JSV = paramJceInputStream.read(this.JSV, 4, false);
-    this.JSW = paramJceInputStream.readString(5, false);
+    this.LMM = paramJceInputStream.read(this.LMM, 4, false);
+    this.LMN = paramJceInputStream.readString(5, false);
     this.platform = paramJceInputStream.readString(6, false);
-    this.JSX = paramJceInputStream.read(this.JSX, 7, false);
+    this.LMO = paramJceInputStream.read(this.LMO, 7, false);
     AppMethodBeat.o(138341);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138340);
-    if (this.JST != null) {
-      paramJceOutputStream.write(this.JST, 0);
+    if (this.LMK != null) {
+      paramJceOutputStream.write(this.LMK, 0);
     }
-    if (this.JSU != null) {
-      paramJceOutputStream.write(this.JSU, 1);
+    if (this.LML != null) {
+      paramJceOutputStream.write(this.LML, 1);
     }
-    if (this.hym != null) {
-      paramJceOutputStream.write(this.hym, 2);
+    if (this.hQG != null) {
+      paramJceOutputStream.write(this.hQG, 2);
     }
     if (this.model != null) {
       paramJceOutputStream.write(this.model, 3);
     }
-    if (this.JSV != 0) {
-      paramJceOutputStream.write(this.JSV, 4);
+    if (this.LMM != 0) {
+      paramJceOutputStream.write(this.LMM, 4);
     }
-    if (this.JSW != null) {
-      paramJceOutputStream.write(this.JSW, 5);
+    if (this.LMN != null) {
+      paramJceOutputStream.write(this.LMN, 5);
     }
     if (this.platform != null) {
       paramJceOutputStream.write(this.platform, 6);
     }
-    if (this.JSX != 0) {
-      paramJceOutputStream.write(this.JSX, 7);
+    if (this.LMO != 0) {
+      paramJceOutputStream.write(this.LMO, 7);
     }
     AppMethodBeat.o(138340);
   }

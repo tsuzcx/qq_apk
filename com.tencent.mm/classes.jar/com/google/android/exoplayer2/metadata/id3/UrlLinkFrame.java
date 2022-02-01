@@ -49,7 +49,7 @@ public final class UrlLinkFrame
       return false;
     }
     paramObject = (UrlLinkFrame)paramObject;
-    if ((this.id.equals(paramObject.id)) && (x.g(this.description, paramObject.description)) && (x.g(this.url, paramObject.url)))
+    if ((this.id.equals(paramObject.id)) && (x.i(this.description, paramObject.description)) && (x.i(this.url, paramObject.url)))
     {
       AppMethodBeat.o(92458);
       return true;

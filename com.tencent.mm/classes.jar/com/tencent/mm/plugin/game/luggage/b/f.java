@@ -9,16 +9,17 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.e.h;
+import com.tencent.luggage.e.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.plugin.game.commlib.e.b.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.game.commlib.util.b.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.MMFragmentActivity.a;
@@ -30,22 +31,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class f
-  extends bo<com.tencent.mm.plugin.game.luggage.d.f>
+  extends br<com.tencent.mm.plugin.game.luggage.f.g>
 {
-  private static final String sXc;
-  private static final int sXd;
-  private p fxw;
-  private DialogInterface.OnCancelListener kxv;
+  private static final String tTM;
+  private static final int tTN;
+  private p fQJ;
+  private DialogInterface.OnCancelListener kTB;
   
   static
   {
     AppMethodBeat.i(83062);
-    sXc = com.tencent.mm.plugin.game.commlib.e.b.b(b.a.sWw) + "haowan/";
-    sXd = "choose_media_request_code".hashCode() & 0xFFFF;
+    tTM = com.tencent.mm.plugin.game.commlib.util.b.c(b.a.tTe) + "haowan/";
+    tTN = "choose_media_request_code".hashCode() & 0xFFFF;
     AppMethodBeat.o(83062);
   }
   
-  private static String gH(String paramString1, String paramString2)
+  private static String gS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(83059);
     int i = Exif.fromFile(paramString1).getOrientationInDegree();
@@ -56,27 +57,27 @@ public class f
         Object localObject = MMBitmapFactory.decodeFile(paramString1, localOptions);
         if (localObject == null)
         {
-          ac.e("MicroMsg.JsApiChooseHaowanMedia", "rotate image, get null bmp");
+          ad.e("MicroMsg.JsApiChooseHaowanMedia", "rotate image, get null bmp");
           AppMethodBeat.o(83059);
           return paramString1;
         }
         float f = i % 360;
-        Bitmap localBitmap = com.tencent.mm.sdk.platformtools.f.a((Bitmap)localObject, f);
-        ac.i("MicroMsg.JsApiChooseHaowanMedia", "doRotate, dstPath : %s", new Object[] { paramString2 });
-        if (com.tencent.luggage.e.a.a.d(localOptions)) {}
+        Bitmap localBitmap = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject, f);
+        ad.i("MicroMsg.JsApiChooseHaowanMedia", "doRotate, dstPath : %s", new Object[] { paramString2 });
+        if (a.d(localOptions)) {}
         for (localObject = Bitmap.CompressFormat.JPEG;; localObject = Bitmap.CompressFormat.PNG) {
           try
           {
-            com.tencent.mm.sdk.platformtools.f.a(localBitmap, 80, (Bitmap.CompressFormat)localObject, paramString2, true);
-            if (com.tencent.luggage.e.a.a.d(localOptions)) {
-              com.tencent.mm.plugin.appbrand.m.b.cR(paramString1, paramString2);
+            com.tencent.mm.sdk.platformtools.g.a(localBitmap, 80, (Bitmap.CompressFormat)localObject, paramString2, true);
+            if (a.d(localOptions)) {
+              com.tencent.mm.plugin.appbrand.l.b.cT(paramString1, paramString2);
             }
             AppMethodBeat.o(83059);
             return paramString2;
           }
           catch (Exception localException)
           {
-            ac.e("MicroMsg.JsApiChooseHaowanMedia", "rotate image, exception occurred when saving | %s", new Object[] { localException });
+            ad.e("MicroMsg.JsApiChooseHaowanMedia", "rotate image, exception occurred when saving | %s", new Object[] { localException });
             com.tencent.mm.vfs.i.deleteFile(paramString2);
             AppMethodBeat.o(83059);
             return paramString1;
@@ -98,10 +99,10 @@ public class f
     return paramString1;
   }
   
-  public final void a(final Context paramContext, String paramString, final bn.a parama)
+  public final void a(final Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(83058);
-    Object localObject = com.tencent.mm.plugin.webview.luggage.c.b.LK(paramString);
+    Object localObject = com.tencent.mm.plugin.webview.luggage.c.b.Pe(paramString);
     if (localObject == null)
     {
       parama.f("invalid_params", null);
@@ -124,16 +125,16 @@ public class f
         AppMethodBeat.i(83057);
         String str;
         Object localObject;
-        if (paramAnonymousInt1 == f.sXd)
+        if (paramAnonymousInt1 == f.tTN)
         {
           if (paramAnonymousInt2 != -1) {
             break label278;
           }
           str = paramAnonymousIntent.getStringExtra("key_video_info");
-          if (bs.isNullOrNil(str)) {
+          if (bt.isNullOrNil(str)) {
             break label146;
           }
-          ac.i("MicroMsg.JsApiChooseHaowanMedia", "video, result: %s", new Object[] { str });
+          ad.i("MicroMsg.JsApiChooseHaowanMedia", "video, result: %s", new Object[] { str });
           localObject = new JSONObject();
         }
         try
@@ -152,15 +153,15 @@ public class f
             return;
             label146:
             localObject = paramAnonymousIntent.getStringArrayListExtra("CropImage_OutputPath_List");
-            if (!bs.gY((List)localObject))
+            if (!bt.hj((List)localObject))
             {
               f.a(f.this, paramContext);
-              h.JZN.aS(new Runnable()
+              h.LTJ.aR(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(83056);
-                  ap.f(new Runnable()
+                  aq.f(new Runnable()
                   {
                     public final void run()
                     {
@@ -172,11 +173,11 @@ public class f
                       try
                       {
                         localJSONObject.put("type", 1);
-                        localJSONObject.put("localIds", this.sXh);
+                        localJSONObject.put("localIds", this.tTR);
                         localJSONObject.put("appId", f.1.1.this.val$data.getStringExtra("key_game_video_appid"));
                         localJSONObject.put("appName", f.1.1.this.val$data.getStringExtra("key_game_video_appname"));
                         label102:
-                        f.1.this.oKM.f(null, localJSONObject);
+                        f.1.this.pou.f(null, localJSONObject);
                         AppMethodBeat.o(83055);
                         return;
                       }
@@ -229,25 +230,25 @@ public class f
     }
     ((Intent)localObject).putExtra("game_haowan_ignore_video_preview", bool);
     if (k == 2) {
-      d.b(paramContext, "game", ".media.GameTabGalleryUI", (Intent)localObject, sXd);
+      d.b(paramContext, "game", ".media.GameTabGalleryUI", (Intent)localObject, tTN);
     }
     for (;;)
     {
-      ((Activity)paramContext).overridePendingTransition(MMFragmentActivity.a.mnC, MMFragmentActivity.a.mnD);
+      ((Activity)paramContext).overridePendingTransition(MMFragmentActivity.a.mOe, MMFragmentActivity.a.mOf);
       AppMethodBeat.o(83058);
       return;
       if (k != 1) {
         break;
       }
-      d.b(paramContext, "game", ".media.GamePublishGalleryUI", (Intent)localObject, sXd);
+      d.b(paramContext, "game", ".media.GamePublishGalleryUI", (Intent)localObject, tTN);
     }
     parama.f("galleryType is invalid", null);
     AppMethodBeat.o(83058);
   }
   
-  public final void b(com.tencent.luggage.d.a<com.tencent.mm.plugin.game.luggage.d.f>.a parama) {}
+  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb) {}
   
-  public final int bYk()
+  public final int ccO()
   {
     return 2;
   }

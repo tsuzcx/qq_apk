@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.chatting.f.a;
+import com.tencent.mm.ui.chatting.g.a;
 import org.json.JSONObject;
 
 public class MiniQbCallBackBaseUI
@@ -27,7 +27,7 @@ public class MiniQbCallBackBaseUI
   protected void h(String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(39075);
-    ac.i(getTag(), "dealEvent() processName:%s appId:%s", new Object[] { paramString1, paramString2 });
+    ad.i(getTag(), "dealEvent() processName:%s appId:%s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(39075);
   }
   
@@ -37,12 +37,12 @@ public class MiniQbCallBackBaseUI
     super.onCreate(paramBundle);
     if (getIntent() == null)
     {
-      ac.e(getTag(), "deal() getIntent() == null");
+      ad.e(getTag(), "deal() getIntent() == null");
       finish();
       AppMethodBeat.o(39074);
       return;
     }
-    ac.d(getTag(), "deal() %s %s", new Object[] { getIntent(), getIntent().getExtras() });
+    ad.d(getTag(), "deal() %s %s", new Object[] { getIntent(), getIntent().getExtras() });
     String str1 = "";
     localObject5 = "";
     Object localObject3 = "";
@@ -83,8 +83,8 @@ public class MiniQbCallBackBaseUI
     {
       for (;;)
       {
-        ac.i(getTag(), "deal() thirdCtx Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
-        Object localObject4 = ai.getProcessName();
+        ad.i(getTag(), "deal() thirdCtx Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        Object localObject4 = aj.getProcessName();
         continue;
         if (getIntent().hasExtra("menuId")) {
           i = getIntent().getIntExtra("menuId", -1);
@@ -97,20 +97,20 @@ public class MiniQbCallBackBaseUI
         if (getIntent().hasExtra("change_file")) {
           localObject4 = getIntent().getStringExtra("change_file");
         }
-        ac.i(getTag(), "id:%s  activityStatus:%s  changeFileName:%s", new Object[] { Integer.valueOf(i), localObject2, localObject4 });
-        if (bs.lr(paramBundle, "miniqb")) {
+        ad.i(getTag(), "id:%s  activityStatus:%s  changeFileName:%s", new Object[] { Integer.valueOf(i), localObject2, localObject4 });
+        if (bt.lQ(paramBundle, "miniqb")) {
           h((String)localObject5, localObject1, i, (String)localObject6);
         } else {
-          ac.e(getTag(), "deal() unknow source(type:%s)", new Object[] { paramBundle });
+          ad.e(getTag(), "deal() unknow source(type:%s)", new Object[] { paramBundle });
         }
       }
     }
-    ac.i(getTag(), "deal() type:%s processName:%s appId:%s filePath:%s", new Object[] { paramBundle, localObject3, localObject1, localObject2 });
+    ad.i(getTag(), "deal() type:%s processName:%s appId:%s filePath:%s", new Object[] { paramBundle, localObject3, localObject1, localObject2 });
     localObject5 = localObject3;
     localObject6 = localObject2;
     if (!a.isFileExist((String)localObject6))
     {
-      ac.e(getTag(), "deal() filePath not exitst");
+      ad.e(getTag(), "deal() filePath not exitst");
       finish();
       AppMethodBeat.o(39074);
       return;

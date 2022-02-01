@@ -6,37 +6,39 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import d.g.a.a;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations;", "", "()V", "TAG", "", "enqueueWorker", "", "block", "Lkotlin/Function0;", "IPC_accessRecord", "IPC_createRecord", "IPC_deleteRecord", "WebRenderingCacheRecordParcel", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations;", "", "()V", "TAG", "", "enqueueWorker", "", "block", "Lkotlin/Function0;", "IPC_accessRecord", "IPC_createRecord", "IPC_deleteRecord", "WebRenderingCacheRecordParcel", "plugin-appbrand-integration_release"})
 public final class WebRenderingCacheIPCOperations
 {
-  public static final WebRenderingCacheIPCOperations lHf;
+  public static final WebRenderingCacheIPCOperations mgR;
   
   static
   {
     AppMethodBeat.i(50983);
-    lHf = new WebRenderingCacheIPCOperations();
+    mgR = new WebRenderingCacheIPCOperations();
     AppMethodBeat.o(50983);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appId", "", "commLibVersionId", "appVersionId", "pageURL", "filePath", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getAppVersionId", "getCommLibVersionId", "getFilePath", "setFilePath", "(Ljava/lang/String;)V", "getPageURL", "describeContents", "", "toDBBean", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessRecord;", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appId", "", "commLibVersionId", "appVersionId", "pageURL", "filePath", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "getAppVersionId", "getCommLibVersionId", "getFilePath", "setFilePath", "(Ljava/lang/String;)V", "getPageURL", "describeContents", "", "toDBBean", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheAccessRecord;", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
   public static class WebRenderingCacheRecordParcel
     implements Parcelable
   {
     public static final Parcelable.Creator<WebRenderingCacheRecordParcel> CREATOR;
-    public static final a lHk;
+    public static final a mgW;
     private final String appId;
     String filePath;
-    private final String lHh;
-    private final String lHi;
-    private final String lHj;
+    private final String mgT;
+    private final String mgU;
+    private final String mgV;
     
     static
     {
       AppMethodBeat.i(50982);
-      lHk = new a((byte)0);
+      mgW = new a((byte)0);
       CREATOR = (Parcelable.Creator)new b();
       AppMethodBeat.o(50982);
     }
@@ -52,21 +54,21 @@ public final class WebRenderingCacheIPCOperations
     {
       AppMethodBeat.i(50980);
       this.appId = paramString1;
-      this.lHh = paramString2;
-      this.lHi = paramString3;
-      this.lHj = paramString4;
+      this.mgT = paramString2;
+      this.mgU = paramString3;
+      this.mgV = paramString4;
       this.filePath = paramString5;
       AppMethodBeat.o(50980);
     }
     
-    public final b brE()
+    public final b bvI()
     {
       AppMethodBeat.i(50979);
       b localb = new b();
       localb.field_appId = this.appId;
-      localb.field_commLibVersionId = this.lHh;
-      localb.field_appVersionId = this.lHi;
-      localb.field_pageURL = this.lHj;
+      localb.field_commLibVersionId = this.mgT;
+      localb.field_appVersionId = this.mgU;
+      localb.field_pageURL = this.mgV;
       AppMethodBeat.o(50979);
       return localb;
     }
@@ -79,32 +81,32 @@ public final class WebRenderingCacheIPCOperations
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(50978);
-      k.h(paramParcel, "dest");
+      p.h(paramParcel, "dest");
       paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.lHh);
-      paramParcel.writeString(this.lHi);
-      paramParcel.writeString(this.lHj);
+      paramParcel.writeString(this.mgT);
+      paramParcel.writeString(this.mgU);
+      paramParcel.writeString(this.mgV);
       paramParcel.writeString(this.filePath);
       AppMethodBeat.o(50978);
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "plugin-appbrand-integration_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "plugin-appbrand-integration_release"})
     public static final class a {}
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "plugin-appbrand-integration_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "plugin-appbrand-integration_release"})
     public static final class b
       implements Parcelable.Creator<WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel>
     {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$IPC_accessRecord;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$IPC_accessRecord;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   public static final class a
     implements com.tencent.mm.ipcinvoker.b<WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel, IPCVoid>
   {
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$enqueueWorker$1"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$enqueueWorker$1"})
     public static final class a
-      extends d.g.b.l
-      implements a<y>
+      extends q
+      implements a<z>
     {
       public a(WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel paramWebRenderingCacheRecordParcel)
       {
@@ -113,14 +115,14 @@ public final class WebRenderingCacheIPCOperations
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$IPC_createRecord;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$IPC_createRecord;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   public static final class b
     implements com.tencent.mm.ipcinvoker.b<WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel, IPCVoid>
   {
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$enqueueWorker$1"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$enqueueWorker$1"})
     public static final class a
-      extends d.g.b.l
-      implements a<y>
+      extends q
+      implements a<z>
     {
       public a(WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel paramWebRenderingCacheRecordParcel)
       {
@@ -129,14 +131,14 @@ public final class WebRenderingCacheIPCOperations
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$IPC_deleteRecord;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$IPC_deleteRecord;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$WebRenderingCacheRecordParcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   public static final class c
     implements com.tencent.mm.ipcinvoker.b<WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel, IPCVoid>
   {
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$enqueueWorker$1"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/appbrand/page/web_renderingcache/WebRenderingCacheIPCOperations$enqueueWorker$1"})
     public static final class a
-      extends d.g.b.l
-      implements a<y>
+      extends q
+      implements a<z>
     {
       public a(WebRenderingCacheIPCOperations.WebRenderingCacheRecordParcel paramWebRenderingCacheRecordParcel)
       {

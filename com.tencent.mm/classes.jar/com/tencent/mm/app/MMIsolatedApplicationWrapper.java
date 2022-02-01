@@ -6,12 +6,12 @@ import android.content.res.Configuration;
 import android.os.ParcelFileDescriptor;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.c;
+import com.tencent.mm.ae.c;
 import com.tencent.mm.boot.a.a;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.splash.m;
 import com.tencent.smtt.sandbox.SandboxListener;
 import com.tencent.smtt.sdk.QbSdk;
@@ -43,15 +43,15 @@ public class MMIsolatedApplicationWrapper
   public void onBaseContextAttached(Context paramContext)
   {
     AppMethodBeat.i(160051);
-    com.tencent.mm.kernel.a.a.giJ = SystemClock.elapsedRealtime();
-    com.tencent.mm.kernel.a.a.giI = System.currentTimeMillis();
+    com.tencent.mm.kernel.a.a.gCt = SystemClock.elapsedRealtime();
+    com.tencent.mm.kernel.a.a.gCs = System.currentTimeMillis();
     this.profile = new h(this.thisProcess, this.app, this.lifeCycle);
-    this.profile.gkk.gkl = this.processInitTimestamp;
+    this.profile.gDU.gDV = this.processInitTimestamp;
     com.tencent.mm.vfs.a.setContext(this.profile.ca);
     paramContext.getClassLoader();
-    j.sC("stlport_shared");
+    j.vr("stlport_shared");
     paramContext.getClassLoader();
-    j.sC("c++_shared");
+    j.vr("c++_shared");
     QbSdk.setSandboxListener(new SandboxListener()
     {
       public final void setCrashRecordFileDescriptor(ParcelFileDescriptor paramAnonymousParcelFileDescriptor1, ParcelFileDescriptor paramAnonymousParcelFileDescriptor2)
@@ -61,12 +61,12 @@ public class MMIsolatedApplicationWrapper
         AppMethodBeat.o(160134);
       }
     });
-    com.tencent.mm.splash.a.l(this.app);
-    com.tencent.mm.bu.a.a.eQT();
-    ac.i("MicroMsg.MMIsolatedApplicationWrapper", "is plain process. load nothing");
+    com.tencent.mm.splash.a.n(this.app);
+    com.tencent.mm.bv.a.a.ffX();
+    ad.i("MicroMsg.MMIsolatedApplicationWrapper", "is plain process. load nothing");
     ai.a(this.profile, null);
     ab.Y(a.a.class);
-    ab.ey("com.tencent.mm.boot");
+    ab.ft("com.tencent.mm.boot");
     AppMethodBeat.o(160051);
   }
   
@@ -82,8 +82,8 @@ public class MMIsolatedApplicationWrapper
   public void onCreate()
   {
     AppMethodBeat.i(160052);
-    c.e(this.app);
-    m.eXW();
+    c.g(this.app);
+    m.fnG();
     AppMethodBeat.o(160052);
   }
   

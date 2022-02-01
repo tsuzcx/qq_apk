@@ -1,32 +1,32 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
-import kotlinx.coroutines.internal.s;
+import java.util.concurrent.locks.LockSupport;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "CLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "DISPOSED_TASK$annotations", "MAX_DELAY_NS", "", "MAX_MS", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"})
-public final class bf
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"})
+public abstract class bf
+  extends bd
 {
-  private static final s LRI;
-  private static final s LRJ;
-  
-  static
+  protected final void c(long paramLong, be.b paramb)
   {
-    AppMethodBeat.i(191150);
-    LRI = new s("REMOVED_TASK");
-    LRJ = new s("CLOSED_EMPTY");
-    AppMethodBeat.o(191150);
+    if (am.gvd())
+    {
+      if ((bf)this != ao.NIf) {}
+      for (int i = 1; i == 0; i = 0) {
+        throw ((Throwable)new AssertionError());
+      }
+    }
+    ao.NIf.a(paramLong, paramb);
   }
   
-  public static final long Cy(long paramLong)
+  protected abstract Thread getThread();
+  
+  protected final void gvz()
   {
-    if (paramLong <= 0L) {
-      return 0L;
+    Thread localThread = getThread();
+    if ((Thread.currentThread() != localThread) && (ck.NJi == null)) {
+      LockSupport.unpark(localThread);
     }
-    if (paramLong >= 9223372036854L) {
-      return 9223372036854775807L;
-    }
-    return 1000000L * paramLong;
   }
 }
 

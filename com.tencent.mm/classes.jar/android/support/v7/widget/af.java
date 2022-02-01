@@ -6,12 +6,12 @@ import android.view.View;
 public class af
   extends at
 {
-  private aj aoT;
-  private aj aoU;
+  private aj aqL;
+  private aj aqM;
   
   private int a(RecyclerView.i parami, aj paramaj, int paramInt1, int paramInt2)
   {
-    int[] arrayOfInt = aH(paramInt1, paramInt2);
+    int[] arrayOfInt = aI(paramInt1, paramInt2);
     float f = b(parami, paramaj);
     if (f <= 0.0F) {
       return 0;
@@ -27,7 +27,7 @@ public class af
     int j = paramaj.bn(paramView);
     int k = paramaj.br(paramView) / 2;
     if (parami.getClipToPadding()) {}
-    for (int i = paramaj.kl() + paramaj.kn() / 2;; i = paramaj.getEnd() / 2) {
+    for (int i = paramaj.kB() + paramaj.kD() / 2;; i = paramaj.getEnd() / 2) {
       return k + j - i;
     }
   }
@@ -48,7 +48,7 @@ public class af
       if (!parami.getClipToPadding()) {
         break;
       }
-      j = paramaj.kl() + paramaj.kn() / 2;
+      j = paramaj.kB() + paramaj.kD() / 2;
       i = 2147483647;
       k = 0;
       localObject2 = localObject1;
@@ -130,18 +130,18 @@ public class af
   
   private aj b(RecyclerView.i parami)
   {
-    if ((this.aoT == null) || (this.aoT.apE != parami)) {
-      this.aoT = aj.e(parami);
+    if ((this.aqL == null) || (this.aqL.arw != parami)) {
+      this.aqL = aj.e(parami);
     }
-    return this.aoT;
+    return this.aqL;
   }
   
   private aj c(RecyclerView.i parami)
   {
-    if ((this.aoU == null) || (this.aoU.apE != parami)) {
-      this.aoU = aj.d(parami);
+    if ((this.aqM == null) || (this.aqM.arw != parami)) {
+      this.aqM = aj.d(parami);
     }
-    return this.aoU;
+    return this.aqM;
   }
   
   public int a(RecyclerView.i parami, int paramInt1, int paramInt2)
@@ -173,14 +173,14 @@ public class af
       if (localObject == null) {
         return -1;
       }
-      if (parami.jM())
+      if (parami.kc())
       {
         int i = a(parami, c(parami), paramInt1, 0);
         paramInt1 = i;
         if (((PointF)localObject).x < 0.0F) {
           paramInt1 = -i;
         }
-        if (!parami.jN()) {
+        if (!parami.kd()) {
           break label169;
         }
         i = a(parami, b(parami), 0, paramInt2);
@@ -188,7 +188,7 @@ public class af
         if (((PointF)localObject).y < 0.0F) {
           paramInt2 = -i;
         }
-        if (!parami.jN()) {
+        if (!parami.kd()) {
           break label174;
         }
       }
@@ -216,10 +216,10 @@ public class af
   
   public View a(RecyclerView.i parami)
   {
-    if (parami.jN()) {
+    if (parami.kd()) {
       return a(parami, b(parami));
     }
-    if (parami.jM()) {
+    if (parami.kc()) {
       return a(parami, c(parami));
     }
     return null;
@@ -228,10 +228,10 @@ public class af
   public int[] a(RecyclerView.i parami, View paramView)
   {
     int[] arrayOfInt = new int[2];
-    if (parami.jM()) {
+    if (parami.kc()) {
       arrayOfInt[0] = a(parami, paramView, c(parami));
     }
-    while (parami.jN())
+    while (parami.kd())
     {
       arrayOfInt[1] = a(parami, paramView, b(parami));
       return arrayOfInt;

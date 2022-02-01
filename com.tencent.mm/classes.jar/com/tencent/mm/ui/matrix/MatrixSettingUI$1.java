@@ -12,7 +12,7 @@ final class MatrixSettingUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(38886);
-    this.IKB.finish();
+    this.KBI.finish();
     AppMethodBeat.o(38886);
     return true;
   }

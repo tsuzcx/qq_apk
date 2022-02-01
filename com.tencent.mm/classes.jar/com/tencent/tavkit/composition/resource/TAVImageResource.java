@@ -11,40 +11,47 @@ public class TAVImageResource
   extends TAVResource
 {
   private HashMap<Thread, CIImage> ciImageHashMap;
+  private boolean emptyAudioTrack;
   private CIImage image;
   
   public TAVImageResource(CIImage paramCIImage, CMTime paramCMTime)
   {
-    AppMethodBeat.i(192090);
+    this(paramCIImage, paramCMTime, false);
+  }
+  
+  public TAVImageResource(CIImage paramCIImage, CMTime paramCMTime, boolean paramBoolean)
+  {
+    AppMethodBeat.i(219889);
     this.ciImageHashMap = new HashMap();
     this.image = paramCIImage;
     this.duration = paramCMTime;
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
-    AppMethodBeat.o(192090);
+    this.emptyAudioTrack = paramBoolean;
+    AppMethodBeat.o(219889);
   }
   
   public TAVResource clone()
   {
-    AppMethodBeat.i(192093);
-    TAVImageResource localTAVImageResource = new TAVImageResource(this.image, this.duration.clone());
+    AppMethodBeat.i(219892);
+    TAVImageResource localTAVImageResource = new TAVImageResource(this.image, this.duration.clone(), this.emptyAudioTrack);
     localTAVImageResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVImageResource.scaledDuration = this.scaledDuration.clone();
     localTAVImageResource.ciImageHashMap = this.ciImageHashMap;
-    AppMethodBeat.o(192093);
+    AppMethodBeat.o(219892);
     return localTAVImageResource;
   }
   
   public CIImage imageAtTime(CMTime paramCMTime, CGSize paramCGSize)
   {
-    AppMethodBeat.i(192091);
+    AppMethodBeat.i(219890);
     if (!this.sourceTimeRange.containsTime(paramCMTime))
     {
-      AppMethodBeat.o(192091);
+      AppMethodBeat.o(219890);
       return null;
     }
     if (this.image == null)
     {
-      AppMethodBeat.o(192091);
+      AppMethodBeat.o(219890);
       return null;
     }
     Thread localThread = Thread.currentThread();
@@ -56,26 +63,33 @@ public class TAVImageResource
       this.ciImageHashMap.put(localThread, paramCMTime);
     }
     paramCMTime.reset();
-    AppMethodBeat.o(192091);
+    AppMethodBeat.o(219890);
     return paramCMTime;
   }
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192092);
-    if (paramInt1 != 1)
+    AppMethodBeat.i(219891);
+    TrackInfo localTrackInfo;
+    if (paramInt1 == 1)
     {
-      AppMethodBeat.o(192092);
-      return null;
+      localTrackInfo = newEmptyTrackInfo(paramInt1, paramInt2);
+      AppMethodBeat.o(219891);
+      return localTrackInfo;
     }
-    TrackInfo localTrackInfo = super.trackInfoForType(paramInt1, paramInt2);
-    AppMethodBeat.o(192092);
-    return localTrackInfo;
+    if ((this.emptyAudioTrack) && (paramInt1 == 2))
+    {
+      localTrackInfo = newEmptyTrackInfo(paramInt1, paramInt2);
+      AppMethodBeat.o(219891);
+      return localTrackInfo;
+    }
+    AppMethodBeat.o(219891);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVImageResource
  * JD-Core Version:    0.7.0.1
  */

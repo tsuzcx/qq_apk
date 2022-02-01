@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item type="drawable" name="c8w">false</item>
     <item type="drawable" name="amx">false</item>
     <item type="drawable" name="amy">false</item>
     <item type="drawable" name="amz">false</item>
@@ -202,6 +203,7 @@
     <item type="drawable" name="b0b">false</item>
     <item type="drawable" name="b0c">false</item>
     <item type="drawable" name="b0g">false</item>
+    <item type="drawable" name="b0h">false</item>
     <item type="drawable" name="b0i">false</item>
     <item type="drawable" name="b0l">false</item>
     <item type="drawable" name="b0m">false</item>

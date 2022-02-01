@@ -8,16 +8,13 @@ public abstract class bb
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO = "appId".hashCode();
-  private static final int eoA = "versionType".hashCode();
-  private static final int ezq = "extJson".hashCode();
+  private static final int eCW = "msgId".hashCode();
+  private static final int eQM = "transferId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  private boolean eow = true;
-  private boolean ezp = true;
-  public String field_appId;
-  public String field_extJson;
-  public int field_versionType;
+  private boolean eCS = true;
+  private boolean eQL = true;
+  public long field_msgId;
+  public String field_transferId;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,21 +29,20 @@ public abstract class bb
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
-        break label60;
+      if (eCW != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getLong(i);
+      this.eCS = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eoA == k) {
-        this.field_versionType = paramCursor.getInt(i);
-      } else if (ezq == k) {
-        this.field_extJson = paramCursor.getString(i);
+      label65:
+      if (eQM == k) {
+        this.field_transferId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +52,11 @@ public abstract class bb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eCS) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eow) {
-      localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
-    }
-    if (this.ezp) {
-      localContentValues.put("extJson", this.field_extJson);
+    if (this.eQL) {
+      localContentValues.put("transferId", this.field_transferId);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

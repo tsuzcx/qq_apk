@@ -8,14 +8,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
-import com.tencent.mm.pluginsdk.g.h;
+import com.tencent.mm.pluginsdk.i.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bk.b;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bq.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
@@ -26,26 +26,26 @@ import com.tencent.mm.ui.r;
 import com.tencent.mm.ui.r.a;
 
 final class c
-  extends r<ap>
+  extends r<at>
   implements n.b
 {
-  private final MMActivity iMV;
-  protected MMSlideDelView.g ntA;
-  protected MMSlideDelView.c ntB;
-  protected MMSlideDelView.f ntC;
-  protected MMSlideDelView.d ntD;
+  private final MMActivity fLP;
+  protected MMSlideDelView.g nUw;
+  protected MMSlideDelView.c nUx;
+  protected MMSlideDelView.f nUy;
+  protected MMSlideDelView.d nUz;
   
   public c(Context paramContext, r.a parama)
   {
-    super(paramContext, new ap());
+    super(paramContext, new at());
     AppMethodBeat.i(27759);
-    this.ntD = MMSlideDelView.getItemStatusCallBack();
+    this.nUz = MMSlideDelView.getItemStatusCallBack();
     super.a(parama);
-    this.iMV = ((MMActivity)paramContext);
+    this.fLP = ((MMActivity)paramContext);
     AppMethodBeat.o(27759);
   }
   
-  private static int Tf(String paramString)
+  private static int WF(String paramString)
   {
     int j = 1;
     AppMethodBeat.i(27762);
@@ -70,28 +70,28 @@ final class c
     }
   }
   
-  public final void Xb()
+  public final void Zu()
   {
     AppMethodBeat.i(27760);
-    com.tencent.mm.model.az.ayM();
-    setCursor(com.tencent.mm.model.c.awG().aNR(w.hmQ));
-    if (this.HmY != null) {
-      this.HmY.aPg();
+    com.tencent.mm.model.ba.aBQ();
+    setCursor(com.tencent.mm.model.c.azv().aTI(w.hFg));
+    if (this.JaF != null) {
+      this.JaF.aSs();
     }
     super.notifyDataSetChanged();
     AppMethodBeat.o(27760);
   }
   
-  public final void Xc()
+  public final void Zv()
   {
     AppMethodBeat.i(27764);
-    Xb();
+    Zu();
     AppMethodBeat.o(27764);
   }
   
   public final void a(MMSlideDelView.f paramf)
   {
-    this.ntC = paramf;
+    this.nUy = paramf;
   }
   
   public final int getItemViewType(int paramInt)
@@ -102,41 +102,41 @@ final class c
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(27761);
-    ap localap = (ap)getItem(paramInt);
+    at localat = (at)getItem(paramInt);
     View localView;
     Object localObject;
     if (paramView == null)
     {
       paramViewGroup = new a();
-      localView = View.inflate(this.iMV, 2131495763, null);
-      paramViewGroup.fuY = ((ImageView)localView.findViewById(2131297008));
-      paramViewGroup.fuZ = ((TextView)localView.findViewById(2131302867));
-      paramViewGroup.ntF = ((TextView)localView.findViewById(2131306207));
-      paramViewGroup.ntG = ((TextView)localView.findViewById(2131301311));
-      paramViewGroup.mxD = ((ImageView)localView.findViewById(2131305187));
-      paramViewGroup.ntH = ((TextView)localView.findViewById(2131305882));
+      localView = View.inflate(this.fLP, 2131495763, null);
+      paramViewGroup.fOf = ((ImageView)localView.findViewById(2131297008));
+      paramViewGroup.fOg = ((TextView)localView.findViewById(2131302867));
+      paramViewGroup.nUB = ((TextView)localView.findViewById(2131306207));
+      paramViewGroup.nUC = ((TextView)localView.findViewById(2131301311));
+      paramViewGroup.mYk = ((ImageView)localView.findViewById(2131305187));
+      paramViewGroup.nUD = ((TextView)localView.findViewById(2131305882));
       localView.setTag(paramViewGroup);
-      paramViewGroup.fuZ.setText(v.wk(localap.field_username));
-      localObject = paramViewGroup.ntF;
-      if (localap.field_status != 1) {
+      paramViewGroup.fOg.setText(v.zf(localat.field_username));
+      localObject = paramViewGroup.nUB;
+      if (localat.field_status != 1) {
         break label461;
       }
-      paramView = this.iMV.getString(2131761075);
+      paramView = this.fLP.getString(2131761075);
       label170:
       ((TextView)localObject).setText(paramView);
-      a.b.c(paramViewGroup.fuY, localap.field_username);
-      com.tencent.mm.model.az.ayM();
-      localObject = com.tencent.mm.model.c.awG().Ls();
-      if (bs.isNullOrNil(localap.field_digest)) {
+      a.b.c(paramViewGroup.fOf, localat.field_username);
+      com.tencent.mm.model.ba.aBQ();
+      localObject = com.tencent.mm.model.c.azv().Na();
+      if (bt.isNullOrNil(localat.field_digest)) {
         break label518;
       }
-      if (bs.isNullOrNil(localap.field_digestUser)) {
+      if (bt.isNullOrNil(localat.field_digestUser)) {
         break label508;
       }
-      if ((localap.field_isSend != 0) || (!w.sQ(localap.field_username))) {
+      if ((localat.field_isSend != 0) || (!w.vF(localat.field_username))) {
         break label496;
       }
-      paramView = v.getDisplayName(localap.field_digestUser, localap.field_username);
+      paramView = v.getDisplayName(localat.field_digestUser, localat.field_username);
     }
     for (;;)
     {
@@ -145,9 +145,9 @@ final class c
       label508:
       try
       {
-        paramView = String.format(localap.field_digest, new Object[] { paramView });
-        paramViewGroup.ntG.setText(k.b(this.iMV, paramView, paramViewGroup.ntG.getTextSize()));
-        switch (localap.field_status)
+        paramView = String.format(localat.field_digest, new Object[] { paramView });
+        paramViewGroup.nUC.setText(k.b(this.fLP, paramView, paramViewGroup.nUC.getTextSize()));
+        switch (localat.field_status)
         {
         case 3: 
         case 4: 
@@ -156,17 +156,17 @@ final class c
           if (paramInt == -1) {
             break label580;
           }
-          paramViewGroup.mxD.setBackgroundResource(paramInt);
-          paramViewGroup.mxD.setVisibility(0);
+          paramViewGroup.mYk.setBackgroundResource(paramInt);
+          paramViewGroup.mYk.setVisibility(0);
           paramInt = localView.getPaddingBottom();
           int i = localView.getPaddingTop();
           int j = localView.getPaddingRight();
           int k = localView.getPaddingLeft();
-          if (localap.field_unReadCount <= 100) {
+          if (localat.field_unReadCount <= 100) {
             break label592;
           }
-          paramViewGroup.ntH.setText("...");
-          paramViewGroup.ntH.setVisibility(0);
+          paramViewGroup.nUD.setText("...");
+          paramViewGroup.nUD.setVisibility(0);
           localView.setBackgroundResource(2131233277);
           localView.setPadding(k, i, j, paramInt);
           AppMethodBeat.o(27761);
@@ -177,19 +177,19 @@ final class c
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
       break;
-      if (localap.field_conversationTime == 9223372036854775807L)
+      if (localat.field_conversationTime == 9223372036854775807L)
       {
         paramView = "";
         break label170;
       }
-      paramView = h.c(this.iMV, localap.field_conversationTime, true);
+      paramView = i.c(this.fLP, localat.field_conversationTime, true);
       break label170;
-      paramView = v.wk(localap.field_digestUser);
+      paramView = v.zf(localat.field_digestUser);
       continue;
-      paramView = localap.field_digest;
+      paramView = localat.field_digest;
       continue;
       label518:
-      paramView = ((bk.b)localObject).a(localap.field_isSend, localap.field_username, localap.field_content, Tf(localap.field_msgType), this.iMV);
+      paramView = ((bq.b)localObject).a(localat.field_isSend, localat.field_username, localat.field_content, WF(localat.field_msgType), this.fLP);
       continue;
       paramInt = -1;
       continue;
@@ -200,17 +200,17 @@ final class c
       paramInt = 2131690877;
       continue;
       label580:
-      paramViewGroup.mxD.setVisibility(8);
+      paramViewGroup.mYk.setVisibility(8);
       continue;
       label592:
-      if (localap.field_unReadCount > 0)
+      if (localat.field_unReadCount > 0)
       {
-        paramViewGroup.ntH.setText(localap.field_unReadCount);
-        paramViewGroup.ntH.setVisibility(0);
+        paramViewGroup.nUD.setText(localat.field_unReadCount);
+        paramViewGroup.nUD.setVisibility(0);
       }
       else
       {
-        paramViewGroup.ntH.setVisibility(4);
+        paramViewGroup.nUD.setVisibility(4);
       }
     }
   }
@@ -223,30 +223,30 @@ final class c
   public final void onPause()
   {
     AppMethodBeat.i(27763);
-    if (this.ntD != null) {
-      this.ntD.cVr();
+    if (this.nUz != null) {
+      this.nUz.deC();
     }
     AppMethodBeat.o(27763);
   }
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.ntB = paramc;
+    this.nUx = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.ntA = paramg;
+    this.nUw = paramg;
   }
   
   public static final class a
   {
-    public ImageView fuY;
-    public TextView fuZ;
-    public ImageView mxD;
-    public TextView ntF;
-    public TextView ntG;
-    public TextView ntH;
+    public ImageView fOf;
+    public TextView fOg;
+    public ImageView mYk;
+    public TextView nUB;
+    public TextView nUC;
+    public TextView nUD;
   }
 }
 

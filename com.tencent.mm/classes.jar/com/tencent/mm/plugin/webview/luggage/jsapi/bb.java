@@ -2,36 +2,46 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.g.14;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class bb
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(188302);
-    int i = parama.bWS.bVY.optInt("fontSize");
-    ((f)parama.bWR).US(i);
-    ac.i("MicroMsg.JsApiSetFrontSizeCallback", "doSetFontSizeCb, fontSize = ".concat(String.valueOf(i)));
-    parama.a("", null);
-    AppMethodBeat.o(188302);
+    AppMethodBeat.i(78622);
+    ad.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
+    String str = paramb.chh.cgn.optString("backgroundColor");
+    if (bt.isNullOrNil(str))
+    {
+      paramb.a("invalid_data", null);
+      AppMethodBeat.o(78622);
+      return;
+    }
+    g localg = (g)paramb.chg;
+    localg.mHandler.post(new g.14(localg, str));
+    paramb.a("", null);
+    AppMethodBeat.o(78622);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setFontSizeCallback";
+    return "setBounceBackground";
   }
 }
 

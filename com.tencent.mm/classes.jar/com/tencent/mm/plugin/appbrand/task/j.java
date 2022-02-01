@@ -2,72 +2,72 @@ package com.tencent.mm.plugin.appbrand.task;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.a.a;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.appbrand.api.a;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.vfs.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/task/IsolateProcessBootStepConfig;", "", "()V", "HARDCODE_OPEN", "", "beforePreload", "", "beforeStartApp", "touchConfigFileIfNeed", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/task/IsolateProcessBootStepConfig;", "", "()V", "HARDCODE_OPEN", "", "beforePreload", "", "beforeStartApp", "touchConfigFileIfNeed", "plugin-appbrand-integration_release"})
 public final class j
 {
-  private static final boolean lYU;
-  public static final j lYV;
+  private static final boolean myK;
+  public static final j myL;
   
   static
   {
     AppMethodBeat.i(51071);
-    lYV = new j();
-    if (!d.DId) {}
+    myL = new j();
+    if (!d.Fnk) {}
     for (boolean bool = true;; bool = false)
     {
-      lYU = bool;
+      myK = bool;
       AppMethodBeat.o(51071);
       return;
     }
   }
   
-  public static final void buI()
+  public static final void byM()
   {
     AppMethodBeat.i(51068);
-    buK();
+    byO();
     AppMethodBeat.o(51068);
   }
   
-  public static final void buJ()
+  public static final void byN()
   {
     AppMethodBeat.i(51069);
-    buK();
+    byO();
     AppMethodBeat.o(51069);
   }
   
-  private static void buK()
+  private static void byO()
   {
     AppMethodBeat.i(51070);
     int i;
-    if ((lYU) || (((b)g.ab(b.class)).a(b.a.pQF, false)))
+    if ((myK) || (((b)g.ab(b.class)).a(b.a.quW, false)))
     {
-      CharSequence localCharSequence = (CharSequence)a.jjd;
+      CharSequence localCharSequence = (CharSequence)a.jCL;
       if ((localCharSequence == null) || (localCharSequence.length() == 0)) {
         i = 1;
       }
     }
     while (i == 0)
     {
-      i.aSt(a.jjd);
+      i.aYs(a.jCL);
       AppMethodBeat.o(51070);
       return;
       i = 0;
       continue;
-      i.deleteFile(a.jjd);
+      i.deleteFile(a.jCL);
     }
     AppMethodBeat.o(51070);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.j
  * JD-Core Version:    0.7.0.1
  */

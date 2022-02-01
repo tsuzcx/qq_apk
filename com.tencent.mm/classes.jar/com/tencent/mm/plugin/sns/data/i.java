@@ -2,42 +2,43 @@ package com.tencent.mm.plugin.sns.data;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class i
 {
-  public static String xNd = "offline_video_error";
-  public static String xNe = "fullcard_info_null";
-  public static String xNf = "download_info_null";
-  public static String xNg = "video_end_in_anim";
-  public static String xNh = "sight_del_err_file";
-  public static String xNi = "cut_height_error";
-  public static String xNj = "oaid_empty";
+  public static String zcV = "offline_video_error";
+  public static String zcW = "offline_video_error2";
+  public static String zcX = "fullcard_info_null";
+  public static String zcY = "download_info_null";
+  public static String zcZ = "video_end_in_anim";
+  public static String zda = "sight_del_err_file";
+  public static String zdb = "cut_height_error";
+  public static String zdc = "oaid_empty";
   
   public static void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    AppMethodBeat.i(200038);
+    AppMethodBeat.i(197755);
     try
     {
       boolean bool = TextUtils.isEmpty(paramString1);
       if (bool)
       {
-        AppMethodBeat.o(200038);
+        AppMethodBeat.o(197755);
         return;
       }
-      paramString2 = bs.bG(paramString2, "");
-      paramString3 = bs.bG(paramString3, "");
-      ac.i("SnsAdTecReportUtil", "adTecReport, actName=" + paramString1 + ", actValue=" + paramString2 + ", subType=" + paramInt1 + ", subValue=" + paramInt2 + ", extra=" + paramString3);
-      h.wUl.f(19789, new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString3 });
-      AppMethodBeat.o(200038);
+      paramString2 = bt.bI(paramString2, "");
+      paramString3 = bt.bI(paramString3, "");
+      ad.i("SnsAdTecReportUtil", "adTecReport, actName=" + paramString1 + ", actValue=" + paramString2 + ", subType=" + paramInt1 + ", subValue=" + paramInt2 + ", extra=" + paramString3);
+      g.yhR.f(19789, new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString3 });
+      AppMethodBeat.o(197755);
       return;
     }
     catch (Throwable paramString1)
     {
-      ac.e("SnsAdTecReportUtil", "adTecReport exp=" + paramString1.toString());
-      AppMethodBeat.o(200038);
+      ad.e("SnsAdTecReportUtil", "adTecReport exp=" + paramString1.toString());
+      AppMethodBeat.o(197755);
     }
   }
 }

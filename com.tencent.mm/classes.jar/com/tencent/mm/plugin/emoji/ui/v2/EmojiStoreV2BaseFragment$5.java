@@ -4,6 +4,8 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class EmojiStoreV2BaseFragment$5
   implements View.OnClickListener
@@ -13,20 +15,25 @@ final class EmojiStoreV2BaseFragment$5
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(109138);
-    if (!this.piN.isScreenEnable())
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2BaseFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if (!this.pMn.isScreenEnable())
     {
+      a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2BaseFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(109138);
       return;
     }
-    if (EmojiStoreV2BaseFragment.a(this.piN) != null) {
-      EmojiStoreV2BaseFragment.a(this.piN).onMenuItemClick(null);
+    if (EmojiStoreV2BaseFragment.a(this.pMn) != null) {
+      EmojiStoreV2BaseFragment.a(this.pMn).onMenuItemClick(null);
     }
+    a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2BaseFragment$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(109138);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2BaseFragment.5
  * JD-Core Version:    0.7.0.1
  */

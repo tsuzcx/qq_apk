@@ -1,132 +1,132 @@
 package com.tencent.mm.plugin.wepkg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gw;
+import com.tencent.mm.g.c.hg;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends gw
+  extends hg
 {
-  public static final c.a hlR;
+  public static final c.a hEe;
   
   static
   {
     AppMethodBeat.i(110570);
     c.a locala = new c.a();
-    locala.GvF = new Field[25];
+    locala.IhA = new Field[25];
     locala.columns = new String[26];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "pkgId";
-    locala.GvH.put("pkgId", "TEXT PRIMARY KEY ");
+    locala.IhC.put("pkgId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" pkgId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "pkgId";
+    locala.IhB = "pkgId";
     locala.columns[1] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "version";
-    locala.GvH.put("version", "TEXT");
+    locala.IhC.put("version", "TEXT");
     localStringBuilder.append(" version TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "pkgPath";
-    locala.GvH.put("pkgPath", "TEXT");
+    locala.IhC.put("pkgPath", "TEXT");
     localStringBuilder.append(" pkgPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "disableWvCache";
-    locala.GvH.put("disableWvCache", "INTEGER default 'true' ");
+    locala.IhC.put("disableWvCache", "INTEGER default 'true' ");
     localStringBuilder.append(" disableWvCache INTEGER default 'true' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "clearPkgTime";
-    locala.GvH.put("clearPkgTime", "LONG");
+    locala.IhC.put("clearPkgTime", "LONG");
     localStringBuilder.append(" clearPkgTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "checkIntervalTime";
-    locala.GvH.put("checkIntervalTime", "LONG");
+    locala.IhC.put("checkIntervalTime", "LONG");
     localStringBuilder.append(" checkIntervalTime LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "packMethod";
-    locala.GvH.put("packMethod", "INTEGER");
+    locala.IhC.put("packMethod", "INTEGER");
     localStringBuilder.append(" packMethod INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "domain";
-    locala.GvH.put("domain", "TEXT");
+    locala.IhC.put("domain", "TEXT");
     localStringBuilder.append(" domain TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "md5";
-    locala.GvH.put("md5", "TEXT");
+    locala.IhC.put("md5", "TEXT");
     localStringBuilder.append(" md5 TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "downloadUrl";
-    locala.GvH.put("downloadUrl", "TEXT");
+    locala.IhC.put("downloadUrl", "TEXT");
     localStringBuilder.append(" downloadUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "pkgSize";
-    locala.GvH.put("pkgSize", "INTEGER");
+    locala.IhC.put("pkgSize", "INTEGER");
     localStringBuilder.append(" pkgSize INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "downloadNetType";
-    locala.GvH.put("downloadNetType", "INTEGER");
+    locala.IhC.put("downloadNetType", "INTEGER");
     localStringBuilder.append(" downloadNetType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[13] = "nextCheckTime";
-    locala.GvH.put("nextCheckTime", "LONG");
+    locala.IhC.put("nextCheckTime", "LONG");
     localStringBuilder.append(" nextCheckTime LONG");
     localStringBuilder.append(", ");
     locala.columns[14] = "createTime";
-    locala.GvH.put("createTime", "LONG");
+    locala.IhC.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
     locala.columns[15] = "accessTime";
-    locala.GvH.put("accessTime", "LONG default '0' ");
+    locala.IhC.put("accessTime", "LONG default '0' ");
     localStringBuilder.append(" accessTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "charset";
-    locala.GvH.put("charset", "TEXT default 'UTF-8' ");
+    locala.IhC.put("charset", "TEXT default 'UTF-8' ");
     localStringBuilder.append(" charset TEXT default 'UTF-8' ");
     localStringBuilder.append(", ");
     locala.columns[17] = "bigPackageReady";
-    locala.GvH.put("bigPackageReady", "INTEGER default 'false' ");
+    locala.IhC.put("bigPackageReady", "INTEGER default 'false' ");
     localStringBuilder.append(" bigPackageReady INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "preloadFilesReady";
-    locala.GvH.put("preloadFilesReady", "INTEGER default 'false' ");
+    locala.IhC.put("preloadFilesReady", "INTEGER default 'false' ");
     localStringBuilder.append(" preloadFilesReady INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[19] = "preloadFilesAtomic";
-    locala.GvH.put("preloadFilesAtomic", "INTEGER default 'false' ");
+    locala.IhC.put("preloadFilesAtomic", "INTEGER default 'false' ");
     localStringBuilder.append(" preloadFilesAtomic INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "autoDownloadCount";
-    locala.GvH.put("autoDownloadCount", "INTEGER default '0' ");
+    locala.IhC.put("autoDownloadCount", "INTEGER default '0' ");
     localStringBuilder.append(" autoDownloadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[21] = "disable";
-    locala.GvH.put("disable", "INTEGER default 'false' ");
+    locala.IhC.put("disable", "INTEGER default 'false' ");
     localStringBuilder.append(" disable INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[22] = "totalDownloadCount";
-    locala.GvH.put("totalDownloadCount", "INTEGER default '0' ");
+    locala.IhC.put("totalDownloadCount", "INTEGER default '0' ");
     localStringBuilder.append(" totalDownloadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[23] = "packageDownloadCount";
-    locala.GvH.put("packageDownloadCount", "INTEGER default '0' ");
+    locala.IhC.put("packageDownloadCount", "INTEGER default '0' ");
     localStringBuilder.append(" packageDownloadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[24] = "downloadTriggerType";
-    locala.GvH.put("downloadTriggerType", "INTEGER default '-1' ");
+    locala.IhC.put("downloadTriggerType", "INTEGER default '-1' ");
     localStringBuilder.append(" downloadTriggerType INTEGER default '-1' ");
     locala.columns[25] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(110570);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
 }
 

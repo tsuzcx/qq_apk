@@ -7,11 +7,11 @@ public enum c
   static
   {
     AppMethodBeat.i(12297);
-    bJU = new c("AUTO", 0);
-    bJV = new c("TEXT", 1);
-    bJW = new c("BYTE", 2);
-    bJX = new c("NUMERIC", 3);
-    bJY = new c[] { bJU, bJV, bJW, bJX };
+    bUh = new c("AUTO", 0);
+    bUi = new c("TEXT", 1);
+    bUj = new c("BYTE", 2);
+    bUk = new c("NUMERIC", 3);
+    bUl = new c[] { bUh, bUi, bUj, bUk };
     AppMethodBeat.o(12297);
   }
   

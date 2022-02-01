@@ -2,14 +2,14 @@ package android.support.a;
 
 public abstract class c<T>
 {
-  final String em;
+  final String gg;
   
   public c(String paramString)
   {
-    this.em = paramString;
+    this.gg = paramString;
   }
   
-  public abstract float e(T paramT);
+  public abstract float f(T paramT);
   
   public abstract void setValue(T paramT, float paramFloat);
 }

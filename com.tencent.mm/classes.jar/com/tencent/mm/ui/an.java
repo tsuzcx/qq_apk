@@ -1,140 +1,67 @@
 package com.tencent.mm.ui;
 
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class an
 {
-  private static a HsX;
-  private static a HsY;
-  
-  static
+  public static Bitmap c(Bitmap paramBitmap, float paramFloat)
   {
-    AppMethodBeat.i(159124);
-    a local1 = new a()
+    AppMethodBeat.i(159110);
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void v(String paramAnonymousString1, String paramAnonymousString2) {}
-      
-      public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
-    };
-    HsX = local1;
-    HsY = local1;
-    AppMethodBeat.o(159124);
-  }
-  
-  public static void a(a parama)
-  {
-    HsY = parama;
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159119);
-    if (HsY != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      HsY.d(paramString1, paramString2);
+      ap.e("WeUIBitmapUtil", "getRoundedCornerBitmap in bitmap is null", new Object[0]);
+      AppMethodBeat.o(159110);
+      return null;
     }
-    AppMethodBeat.o(159119);
-  }
-  
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159122);
-    if (HsY != null)
+    Bitmap localBitmap = j(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    if (localBitmap == null)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      HsY.e(paramString1, paramString2);
+      AppMethodBeat.o(159110);
+      return null;
     }
-    AppMethodBeat.o(159122);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    RectF localRectF = new RectF(localRect);
+    localPaint.setAntiAlias(true);
+    localPaint.setDither(true);
+    localPaint.setFilterBitmap(true);
+    localCanvas.drawARGB(0, 0, 0, 0);
+    localPaint.setColor(-4144960);
+    localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    ap.i("WeUIBitmapUtil", "getRoundedCornerBitmap bitmap recycle %s", new Object[] { paramBitmap });
+    paramBitmap.recycle();
+    AppMethodBeat.o(159110);
+    return localBitmap;
   }
   
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  private static Bitmap j(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    AppMethodBeat.i(159120);
-    if (HsY != null)
+    AppMethodBeat.i(159111);
+    Object localObject = null;
+    try
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      HsY.i(paramString1, paramString2);
+      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+      AppMethodBeat.o(159111);
+      return paramConfig;
     }
-    AppMethodBeat.o(159120);
-  }
-  
-  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159123);
-    if (HsY != null)
+    catch (Throwable paramConfig)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
+      for (;;)
+      {
+        paramConfig = localObject;
       }
-      paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      HsY.e(paramString1, paramThrowable);
     }
-    AppMethodBeat.o(159123);
-  }
-  
-  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159118);
-    if (HsY != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      HsY.v(paramString1, paramString2);
-    }
-    AppMethodBeat.o(159118);
-  }
-  
-  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159121);
-    if (HsY != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      HsY.w(paramString1, paramString2);
-    }
-    AppMethodBeat.o(159121);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void d(String paramString1, String paramString2);
-    
-    public abstract void e(String paramString1, String paramString2);
-    
-    public abstract void i(String paramString1, String paramString2);
-    
-    public abstract void v(String paramString1, String paramString2);
-    
-    public abstract void w(String paramString1, String paramString2);
   }
 }
 

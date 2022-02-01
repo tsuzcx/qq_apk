@@ -2,11 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bu;
 
 public final class lh
   extends b
 {
-  public a dna;
+  public a dyD;
+  public b dyE;
   
   public lh()
   {
@@ -15,16 +17,26 @@ public final class lh
   
   private lh(byte paramByte)
   {
-    AppMethodBeat.i(195923);
-    this.dna = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(55664);
+    this.dyD = new a();
+    this.dyE = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(195923);
+    AppMethodBeat.o(55664);
   }
   
   public static final class a
   {
-    public int dnb = 0;
+    public bu dku;
+    public boolean dyF = false;
+    public int dyx = 0;
+    public String language;
+  }
+  
+  public static final class b
+  {
+    public String duy;
+    public String dyG;
   }
 }
 

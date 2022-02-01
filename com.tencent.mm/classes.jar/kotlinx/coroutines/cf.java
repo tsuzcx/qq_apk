@@ -1,13 +1,28 @@
 package kotlinx.coroutines;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/TimeSource;", "", "currentTimeMillis", "", "nanoTime", "parkNanos", "", "blocker", "nanos", "registerTimeLoopThread", "trackTask", "unTrackTask", "unpark", "thread", "Ljava/lang/Thread;", "unregisterTimeLoopThread", "wrapTask", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "block", "kotlinx-coroutines-core"})
-public abstract interface cf
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ResumeUndispatchedRunnable;", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "", "(Lkotlinx/coroutines/CoroutineDispatcher;Lkotlinx/coroutines/CancellableContinuation;)V", "run", "kotlinx-coroutines-core"})
+final class cf
+  implements Runnable
 {
-  public abstract Runnable ges();
+  private final k<z> NHz;
+  private final ac NIl;
   
-  public abstract long nanoTime();
+  public cf(ac paramac, k<? super z> paramk)
+  {
+    this.NIl = paramac;
+    this.NHz = paramk;
+  }
+  
+  public final void run()
+  {
+    AppMethodBeat.i(190858);
+    this.NHz.a(this.NIl, z.MKo);
+    AppMethodBeat.o(190858);
+  }
 }
 
 

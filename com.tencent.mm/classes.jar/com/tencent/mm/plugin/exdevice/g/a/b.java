@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -13,26 +13,26 @@ import java.io.IOException;
 
 public final class b
 {
-  public static String YT(String paramString)
+  public static String acz(String paramString)
   {
     AppMethodBeat.i(23501);
-    if ((bs.isNullOrNil(paramString)) || ("#".equals(paramString)))
+    if ((bt.isNullOrNil(paramString)) || ("#".equals(paramString)))
     {
       AppMethodBeat.o(23501);
       return "";
     }
-    Object localObject = ah.dg(paramString);
-    localObject = new e(d.chc(), (String)localObject);
+    Object localObject = ai.ee(paramString);
+    localObject = new e(d.clG(), (String)localObject);
     if (((e)localObject).exists())
     {
-      paramString = q.B(((e)localObject).fxV());
+      paramString = q.B(((e)localObject).fOK());
       AppMethodBeat.o(23501);
       return paramString;
     }
     try
     {
       ((e)localObject).createNewFile();
-      az.agU().az(new a(paramString, (e)localObject));
+      ba.ajF().ay(new a(paramString, (e)localObject));
       AppMethodBeat.o(23501);
       return "";
     }
@@ -40,7 +40,7 @@ public final class b
     {
       for (;;)
       {
-        ac.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
+        ad.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
       }
     }
   }
@@ -48,21 +48,21 @@ public final class b
   static final class a
     implements Runnable
   {
-    private e pBb;
+    private e qeG;
     private String url;
     
     a(String paramString, e parame)
     {
       this.url = paramString;
-      this.pBb = parame;
+      this.qeG = parame;
     }
     
     public final void run()
     {
       AppMethodBeat.i(23499);
-      byte[] arrayOfByte = bs.aLC(this.url);
+      byte[] arrayOfByte = bt.aRi(this.url);
       if (arrayOfByte != null) {
-        i.f(q.B(this.pBb.mUri), arrayOfByte, arrayOfByte.length);
+        i.f(q.B(this.qeG.mUri), arrayOfByte, arrayOfByte.length);
       }
       AppMethodBeat.o(23499);
     }

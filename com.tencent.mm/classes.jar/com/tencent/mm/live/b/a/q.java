@@ -1,80 +1,82 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.network.e;
-import com.tencent.mm.protocal.protobuf.bpq;
-import com.tencent.mm.protocal.protobuf.bpr;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.network.k;
+import com.tencent.mm.protocal.protobuf.bud;
+import com.tencent.mm.protocal.protobuf.bue;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveLike;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "wechatRoomId", "", "likeCount", "", "(JLjava/lang/String;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/LikeLiveRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/LikeLiveResponse;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveLike;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "wechatRoomId", "", "likeCount", "", "(JLjava/lang/String;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/LikeLiveRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/LikeLiveResponse;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-logic_release"})
 public final class q
   extends n
-  implements com.tencent.mm.network.k
+  implements k
 {
-  public static final a gwF;
-  private g callback;
-  private b gvE;
-  private bpq gwD;
-  private bpr gwE;
+  public static final a gQq;
+  private f callback;
+  private b gPp;
+  private bud gQo;
+  private bue gQp;
   
   static
   {
-    AppMethodBeat.i(189946);
-    gwF = new a((byte)0);
-    AppMethodBeat.o(189946);
+    AppMethodBeat.i(212232);
+    gQq = new a((byte)0);
+    AppMethodBeat.o(212232);
   }
   
   public q(long paramLong, String paramString, int paramInt)
   {
-    AppMethodBeat.i(189945);
+    AppMethodBeat.i(212231);
     Object localObject = new b.a();
-    ((b.a)localObject).c((a)new bpq());
-    ((b.a)localObject).d((a)new bpr());
-    ((b.a)localObject).op(3957);
-    ((b.a)localObject).Am("/cgi-bin/micromsg-bin/likelive");
-    ((b.a)localObject).or(0);
-    ((b.a)localObject).os(0);
-    localObject = ((b.a)localObject).aAz();
-    d.g.b.k.g(localObject, "builder.buildInstance()");
-    this.gvE = ((b)localObject);
-    localObject = this.gvE.aBC();
+    ((b.a)localObject).c((a)new bud());
+    ((b.a)localObject).d((a)new bue());
+    ((b.a)localObject).oP(3957);
+    ((b.a)localObject).Dl("/cgi-bin/micromsg-bin/likelive");
+    ((b.a)localObject).oR(0);
+    ((b.a)localObject).oS(0);
+    localObject = ((b.a)localObject).aDC();
+    p.g(localObject, "builder.buildInstance()");
+    this.gPp = ((b)localObject);
+    localObject = this.gPp.aEE();
     if (localObject == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LikeLiveRequest");
-      AppMethodBeat.o(189945);
+      AppMethodBeat.o(212231);
       throw paramString;
     }
-    this.gwD = ((bpq)localObject);
-    localObject = this.gwD;
+    this.gQo = ((bud)localObject);
+    localObject = this.gQo;
     if (localObject != null) {
-      ((bpq)localObject).DMV = paramLong;
+      ((bud)localObject).Fsa = paramLong;
     }
-    localObject = this.gwD;
+    localObject = this.gQo;
     if (localObject != null) {
-      ((bpq)localObject).DMW = paramString;
+      ((bud)localObject).Fsb = paramString;
     }
-    localObject = this.gwD;
+    localObject = this.gQo;
     if (localObject != null) {
-      ((bpq)localObject).count = paramInt;
+      ((bud)localObject).count = paramInt;
     }
-    ac.i("MicroMsg.LiveNetScene.NetSceneLiveLike", "LikeLive liveId:" + paramLong + ", roomId:" + paramString + ", likeCount:" + paramInt);
-    AppMethodBeat.o(189945);
+    ad.i("MicroMsg.LiveNetScene.NetSceneLiveLike", "LikeLive liveId:" + paramLong + ", roomId:" + paramString + ", likeCount:" + paramInt);
+    AppMethodBeat.o(212231);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(189943);
-    ac.i("MicroMsg.LiveNetScene.NetSceneLiveLike", "doScene");
-    this.callback = paramg;
-    int i = dispatch(parame, (com.tencent.mm.network.q)this.gvE, (com.tencent.mm.network.k)this);
-    AppMethodBeat.o(189943);
+    AppMethodBeat.i(212229);
+    ad.i("MicroMsg.LiveNetScene.NetSceneLiveLike", "doScene");
+    this.callback = paramf;
+    int i = dispatch(parame, (com.tencent.mm.network.q)this.gPp, (k)this);
+    AppMethodBeat.o(212229);
     return i;
   }
   
@@ -85,36 +87,36 @@ public final class q
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(189944);
-    ac.i("MicroMsg.LiveNetScene.NetSceneLiveLike", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(212230);
+    ad.i("MicroMsg.LiveNetScene.NetSceneLiveLike", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(189944);
+      AppMethodBeat.o(212230);
       throw paramString;
     }
-    paramq = ((b)paramq).aBD();
+    paramq = ((b)paramq).aEF();
     if (paramq == null)
     {
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.LikeLiveResponse");
-      AppMethodBeat.o(189944);
+      AppMethodBeat.o(212230);
       throw paramString;
     }
-    this.gwE = ((bpr)paramq);
+    this.gQp = ((bue)paramq);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ac.e("MicroMsg.LiveNetScene.NetSceneLiveLike", "onGYNetEnd error");
+      ad.e("MicroMsg.LiveNetScene.NetSceneLiveLike", "onGYNetEnd error");
     }
     paramq = this.callback;
     if (paramq != null)
     {
       paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(189944);
+      AppMethodBeat.o(212230);
       return;
     }
-    AppMethodBeat.o(189944);
+    AppMethodBeat.o(212230);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveLike$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveLike$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.d;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bz;
+import com.tencent.mm.al.e.d;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.model.ca;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.qmessage.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bq;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class g
-  implements aw
+  implements ax
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private e vTa;
-  private f vTb;
-  private a vTc;
-  private b vTd;
+  private e xak;
+  private f xal;
+  private a xam;
+  private b xan;
   
   static
   {
@@ -44,94 +44,94 @@ public final class g
   public g()
   {
     AppMethodBeat.i(27727);
-    this.vTb = new f();
-    this.vTc = new a();
-    this.vTd = new b();
+    this.xal = new f();
+    this.xam = new a();
+    this.xan = new b();
     AppMethodBeat.o(27727);
   }
   
-  private static g drq()
+  private static g dBS()
   {
     AppMethodBeat.i(27728);
-    az.ayG();
-    g localg2 = (g)bz.yz("plugin.qmessage");
+    ba.aBK();
+    g localg2 = (g)ca.By("plugin.qmessage");
     g localg1 = localg2;
     if (localg2 == null)
     {
       localg1 = new g();
-      az.ayG().a("plugin.qmessage", localg1);
+      ba.aBK().a("plugin.qmessage", localg1);
     }
     AppMethodBeat.o(27728);
     return localg1;
   }
   
-  public static e drr()
+  public static e dBT()
   {
     AppMethodBeat.i(27729);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (drq().vTa == null)
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (dBS().xak == null)
     {
-      localObject = drq();
-      az.ayM();
-      ((g)localObject).vTa = new e(c.agw());
+      localObject = dBS();
+      ba.aBQ();
+      ((g)localObject).xak = new e(c.getDataDB());
     }
-    Object localObject = drq().vTa;
+    Object localObject = dBS().xak;
     AppMethodBeat.o(27729);
     return localObject;
   }
   
-  public static void drs()
+  public static void dBU()
   {
     AppMethodBeat.i(27732);
-    az.ayM();
-    if (c.awG().aNI("qmessage") == null)
+    ba.aBQ();
+    if (c.azv().aTz("qmessage") == null)
     {
-      localObject = new ap();
-      ((ap)localObject).setUsername("qmessage");
-      ((ap)localObject).setContent("");
-      ((ap)localObject).ou(bs.eWj());
-      ((ap)localObject).jT(0);
-      ((ap)localObject).jR(0);
-      az.ayM();
-      c.awG().e((ap)localObject);
+      localObject = new at();
+      ((at)localObject).setUsername("qmessage");
+      ((at)localObject).setContent("");
+      ((at)localObject).qu(bt.flT());
+      ((at)localObject).kr(0);
+      ((at)localObject).kp(0);
+      ba.aBQ();
+      c.azv().e((at)localObject);
       AppMethodBeat.o(27732);
       return;
     }
-    az.ayM();
-    Object localObject = c.awD().alk("qmessage");
-    ap localap = new ap();
-    localap.setUsername("qmessage");
+    ba.aBQ();
+    Object localObject = c.azs().apX("qmessage");
+    at localat = new at();
+    localat.setUsername("qmessage");
     if (localObject == null) {}
-    for (localObject = "";; localObject = ((dy)localObject).field_content)
+    for (localObject = "";; localObject = ((ei)localObject).field_content)
     {
-      localap.setContent((String)localObject);
-      localap.ou(bs.eWj());
-      localap.jT(0);
-      localap.jR(0);
-      az.ayM();
-      c.awG().a(localap, "qmessage");
+      localat.setContent((String)localObject);
+      localat.qu(bt.flT());
+      localat.kr(0);
+      localat.kp(0);
+      ba.aBQ();
+      c.azv().a(localat, "qmessage");
       AppMethodBeat.o(27732);
       return;
     }
   }
   
-  public static void drt()
+  public static void dBV()
   {
     AppMethodBeat.i(27733);
-    bi.aza();
-    az.ayM();
-    c.awG().aNH("@qqim");
-    az.ayM();
-    c.awG().aNG("qmessage");
+    bj.aCe();
+    ba.aBQ();
+    c.azv().aTy("@qqim");
+    ba.aBQ();
+    c.azv().aTx("qmessage");
     AppMethodBeat.o(27733);
   }
   
   public final void clearPluginData(int paramInt)
   {
     AppMethodBeat.i(27731);
-    ac.d("MicroMsg.SubCoreQMsg", "clear plugin");
+    ad.d("MicroMsg.SubCoreQMsg", "clear plugin");
     if ((paramInt & 0x20) != 0) {
-      drt();
+      dBV();
     }
     AppMethodBeat.o(27731);
   }
@@ -144,20 +144,20 @@ public final class g
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(27734);
-    f.d.a(Integer.valueOf(36), this.vTb);
-    f.d.a(Integer.valueOf(39), this.vTb);
-    com.tencent.mm.sdk.b.a.GpY.c(this.vTc);
-    com.tencent.mm.sdk.b.a.GpY.c(this.vTd);
+    e.d.a(Integer.valueOf(36), this.xal);
+    e.d.a(Integer.valueOf(39), this.xal);
+    com.tencent.mm.sdk.b.a.IbL.c(this.xam);
+    com.tencent.mm.sdk.b.a.IbL.c(this.xan);
     AppMethodBeat.o(27734);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(27730);
-    f.d.b(Integer.valueOf(36), this.vTb);
-    f.d.b(Integer.valueOf(39), this.vTb);
-    com.tencent.mm.sdk.b.a.GpY.d(this.vTc);
-    com.tencent.mm.sdk.b.a.GpY.d(this.vTd);
+    e.d.b(Integer.valueOf(36), this.xal);
+    e.d.b(Integer.valueOf(39), this.xal);
+    com.tencent.mm.sdk.b.a.IbL.d(this.xam);
+    com.tencent.mm.sdk.b.a.IbL.d(this.xan);
     AppMethodBeat.o(27730);
   }
   

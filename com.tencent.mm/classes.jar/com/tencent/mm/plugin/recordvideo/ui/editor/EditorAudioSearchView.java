@@ -26,55 +26,57 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fs;
+import com.tencent.mm.g.b.a.gt;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.recordvideo.model.audio.c.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.am;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import d.g.a.m;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.LinkedList;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;", "getCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;", "setCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;)V", "mAdapter", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "mClickClosePanel", "Landroid/view/View;", "mCloseBtn", "Landroid/widget/TextView;", "mEditCleanBtn", "Landroid/widget/ImageView;", "mEditView", "Landroid/widget/EditText;", "mFinishBtn", "Landroid/widget/Button;", "mLastSelectItem", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "mLastSelectTimestamp", "", "mRelatedRecId", "getMRelatedRecId", "()J", "setMRelatedRecId", "(J)V", "mScrollListener", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1;", "mSearchIcon", "mSearchNoResultTv", "mSearchOffset", "mSearchPanel", "mSearchRequestId", "mSearchResultView", "Landroid/support/v7/widget/RecyclerView;", "mSearchString", "mSearchingView", "Landroid/widget/LinearLayout;", "mSelectedPosition", "mTagsPanel", "mTranslateOffset", "showImeRunnable", "Ljava/lang/Runnable;", "back", "", "backAndPausePlayer", "", "cleanAndPausePlayer", "doSearch", "loadMore", "handleResult", "audioList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "init", "isShow", "reportSelect", "reset", "resetStyle", "bgResId", "textColor", "text", "(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)V", "selectItem", "position", "selectSearchItem", "setImeVisibility", "visible", "setMusicPlayer", "player", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "setSelection", "(Ljava/lang/Integer;)V", "setShow", "showNoResult", "showResultList", "Ljava/util/ArrayList;", "showSearchPanel", "showSearching", "showTagsPanel", "AudioSearchCallback", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "callback", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;", "getCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;", "setCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;)V", "mAdapter", "Lcom/tencent/mm/plugin/recordvideo/ui/adapter/RecommendMusicAdapter;", "mClickClosePanel", "Landroid/view/View;", "mCloseBtn", "Landroid/widget/TextView;", "mEditCleanBtn", "Landroid/widget/ImageView;", "mEditView", "Landroid/widget/EditText;", "mFinishBtn", "Landroid/widget/Button;", "mLastSelectItem", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "mLastSelectTimestamp", "", "mRelatedRecId", "getMRelatedRecId", "()J", "setMRelatedRecId", "(J)V", "mScrollListener", "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1;", "mSearchIcon", "mSearchNoResultTv", "mSearchOffset", "mSearchPanel", "mSearchRequestId", "mSearchResultView", "Landroid/support/v7/widget/RecyclerView;", "mSearchString", "mSearchingView", "Landroid/widget/LinearLayout;", "mSelectedPosition", "mTagsPanel", "mTranslateOffset", "showImeRunnable", "Ljava/lang/Runnable;", "back", "", "backAndPausePlayer", "", "cleanAndPausePlayer", "doSearch", "loadMore", "handleResult", "audioList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/MMSPRRecommendedMusicInfo;", "init", "isShow", "reportSelect", "reset", "resetStyle", "bgResId", "textColor", "text", "(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;)V", "selectItem", "position", "selectSearchItem", "setImeVisibility", "visible", "setMusicPlayer", "player", "Lcom/google/android/exoplayer2/SimpleExoPlayer;", "setSelection", "(Ljava/lang/Integer;)V", "setShow", "showNoResult", "showResultList", "Ljava/util/ArrayList;", "showSearchPanel", "showSearching", "showTagsPanel", "AudioSearchCallback", "plugin-recordvideo_release"})
 public final class EditorAudioSearchView
   extends RelativeLayout
 {
   private final String TAG;
-  private Button lKB;
-  private final Runnable ptC;
-  private final l wAA;
-  private int wAg;
-  private View wAh;
-  private View wAi;
-  private View wAj;
-  private TextView wAk;
-  public EditText wAl;
-  private RecyclerView wAm;
-  private TextView wAn;
-  private LinearLayout wAo;
-  private ImageView wAp;
-  private ImageView wAq;
-  private com.tencent.mm.plugin.recordvideo.ui.a.a wAr;
-  private long wAs;
-  private int wAt;
-  int wAu;
-  private String wAv;
-  private AudioCacheInfo wAw;
-  private long wAx;
-  private long wAy;
-  public a wAz;
+  private Button mkr;
+  private final Runnable pXg;
+  private int xJQ;
+  private View xJR;
+  private View xJS;
+  private View xJT;
+  private TextView xJU;
+  private EditText xJV;
+  private RecyclerView xJW;
+  private TextView xJX;
+  private LinearLayout xJY;
+  private ImageView xJZ;
+  private ImageView xKa;
+  private com.tencent.mm.plugin.recordvideo.ui.a.a xKb;
+  private long xKc;
+  private int xKd;
+  int xKe;
+  private String xKf;
+  private AudioCacheInfo xKg;
+  private long xKh;
+  private long xKi;
+  private a xKj;
+  private final l xKk;
   
   public EditorAudioSearchView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(75929);
     this.TAG = "MicroMsg.EditorAudioSearchView";
-    this.wAu = -1;
-    this.wAA = new l(this);
-    this.ptC = ((Runnable)new n(this));
+    this.xKe = -1;
+    this.xKk = new l(this);
+    this.pXg = ((Runnable)new n(this));
     init();
     AppMethodBeat.o(75929);
   }
@@ -84,21 +86,48 @@ public final class EditorAudioSearchView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(75930);
     this.TAG = "MicroMsg.EditorAudioSearchView";
-    this.wAu = -1;
-    this.wAA = new l(this);
-    this.ptC = ((Runnable)new n(this));
+    this.xKe = -1;
+    this.xKk = new l(this);
+    this.pXg = ((Runnable)new n(this));
     init();
     AppMethodBeat.o(75930);
   }
   
-  private final void dwE()
+  private final void dHu()
+  {
+    AppMethodBeat.i(75921);
+    dHx();
+    Object localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+    com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lU(1L);
+    localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+    c.a.dGh();
+    reset();
+    localObject = this.xJV;
+    if (localObject != null) {
+      ((EditText)localObject).clearFocus();
+    }
+    localObject = this.xKj;
+    if (localObject != null) {
+      ((a)localObject).dHz();
+    }
+    localObject = this.xKj;
+    if (localObject != null)
+    {
+      ((a)localObject).dHA();
+      AppMethodBeat.o(75921);
+      return;
+    }
+    AppMethodBeat.o(75921);
+  }
+  
+  private final void dHv()
   {
     AppMethodBeat.i(75922);
-    View localView = this.wAh;
+    View localView = this.xJR;
     if (localView != null) {
       localView.setVisibility(0);
     }
-    localView = this.wAi;
+    localView = this.xJS;
     if (localView != null)
     {
       localView.setVisibility(8);
@@ -108,18 +137,18 @@ public final class EditorAudioSearchView
     AppMethodBeat.o(75922);
   }
   
-  private final void dwF()
+  private final void dHw()
   {
     AppMethodBeat.i(75923);
-    Object localObject = this.wAo;
+    Object localObject = this.xJY;
     if (localObject != null) {
       ((LinearLayout)localObject).setVisibility(8);
     }
-    localObject = this.wAm;
+    localObject = this.xJW;
     if (localObject != null) {
       ((RecyclerView)localObject).setVisibility(8);
     }
-    localObject = this.wAn;
+    localObject = this.xJX;
     if (localObject != null)
     {
       ((TextView)localObject).setVisibility(0);
@@ -129,38 +158,77 @@ public final class EditorAudioSearchView
     AppMethodBeat.o(75923);
   }
   
+  private final void dHx()
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(75924);
+    StringBuilder localStringBuilder;
+    Object localObject3;
+    if (this.xKg != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localObject3 = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+      if (!bt.isNullOrNil(com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().Us())) {
+        break label133;
+      }
+      localObject3 = this.xKg;
+      localObject1 = localObject2;
+      if (localObject3 != null) {
+        localObject1 = Integer.valueOf(((AudioCacheInfo)localObject3).xyZ);
+      }
+      localStringBuilder.append(localObject1).append(":1:").append(System.currentTimeMillis() - this.xKh);
+    }
+    for (;;)
+    {
+      localObject1 = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+      localObject1 = com.tencent.mm.plugin.recordvideo.model.audio.c.dGg();
+      localObject2 = ((gt)localObject1).Us();
+      ((gt)localObject1).pC((String)localObject2 + localStringBuilder.toString());
+      AppMethodBeat.o(75924);
+      return;
+      label133:
+      localObject2 = localStringBuilder.append(";");
+      localObject3 = this.xKg;
+      if (localObject3 != null) {
+        localObject1 = Integer.valueOf(((AudioCacheInfo)localObject3).xyZ);
+      }
+      ((StringBuilder)localObject2).append(localObject1).append(":1:").append(System.currentTimeMillis() - this.xKh);
+    }
+  }
+  
   private final void init()
   {
     AppMethodBeat.i(75918);
     View.inflate(getContext(), 2131495682, (ViewGroup)this);
-    this.wAk = ((TextView)findViewById(2131305367));
-    this.wAl = ((EditText)findViewById(2131305368));
-    this.lKB = ((Button)findViewById(2131305372));
-    this.wAm = ((RecyclerView)findViewById(2131305378));
-    this.wAn = ((TextView)findViewById(2131305376));
-    this.wAo = ((LinearLayout)findViewById(2131305375));
-    this.wAp = ((ImageView)findViewById(2131305369));
-    this.wAh = findViewById(2131305381);
-    this.wAi = findViewById(2131305379);
-    this.wAj = findViewById(2131305366);
-    this.wAq = ((ImageView)findViewById(2131305370));
-    Object localObject = this.wAq;
+    this.xJU = ((TextView)findViewById(2131305367));
+    this.xJV = ((EditText)findViewById(2131305368));
+    this.mkr = ((Button)findViewById(2131305372));
+    this.xJW = ((RecyclerView)findViewById(2131305378));
+    this.xJX = ((TextView)findViewById(2131305376));
+    this.xJY = ((LinearLayout)findViewById(2131305375));
+    this.xJZ = ((ImageView)findViewById(2131305369));
+    this.xJR = findViewById(2131305381);
+    this.xJS = findViewById(2131305379);
+    this.xJT = findViewById(2131305366);
+    this.xKa = ((ImageView)findViewById(2131305370));
+    Object localObject = this.xKa;
     if (localObject != null) {
-      ((ImageView)localObject).setImageDrawable(am.k(getContext(), 2131690473, -1));
+      ((ImageView)localObject).setImageDrawable(ao.k(getContext(), 2131690473, -1));
     }
-    localObject = this.lKB;
+    localObject = this.mkr;
     if (localObject != null) {
       ((Button)localObject).setEnabled(false);
     }
-    localObject = this.wAp;
+    localObject = this.xJZ;
     if (localObject != null) {
-      ((ImageView)localObject).setImageDrawable(am.k(getContext(), 2131690372, -1));
+      ((ImageView)localObject).setImageDrawable(ao.k(getContext(), 2131690372, -1));
     }
-    localObject = this.wAp;
+    localObject = this.xJZ;
     if (localObject != null) {
       ((ImageView)localObject).setOnClickListener((View.OnClickListener)new c(this));
     }
-    localObject = this.wAm;
+    localObject = this.xJW;
     if (localObject != null) {}
     for (localObject = ((RecyclerView)localObject).getLayoutParams(); localObject == null; localObject = null)
     {
@@ -168,54 +236,54 @@ public final class EditorAudioSearchView
       AppMethodBeat.o(75918);
       throw ((Throwable)localObject);
     }
-    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (ap.ej(getContext()) + com.tencent.mm.cc.a.fromDPToPix(getContext(), 16));
-    localObject = this.wAm;
+    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = (ar.ej(getContext()) + com.tencent.mm.cc.a.fromDPToPix(getContext(), 16));
+    localObject = this.xJW;
     if (localObject != null)
     {
       getContext();
       ((RecyclerView)localObject).setLayoutManager((RecyclerView.i)new LinearLayoutManager(1));
     }
-    localObject = this.wAm;
+    localObject = this.xJW;
     if (localObject != null) {
-      ((RecyclerView)localObject).a((RecyclerView.m)this.wAA);
+      ((RecyclerView)localObject).a((RecyclerView.m)this.xKk);
     }
-    this.wAr = new com.tencent.mm.plugin.recordvideo.ui.a.a();
-    localObject = this.wAm;
+    this.xKb = new com.tencent.mm.plugin.recordvideo.ui.a.a();
+    localObject = this.xJW;
     if (localObject != null) {
-      ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.wAr);
+      ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.xKb);
     }
-    localObject = this.wAk;
+    localObject = this.xJU;
     if (localObject != null) {
       ((TextView)localObject).setOnClickListener((View.OnClickListener)new d(this));
     }
-    localObject = this.lKB;
+    localObject = this.mkr;
     if (localObject != null) {
       ((Button)localObject).setOnClickListener((View.OnClickListener)new e(this));
     }
-    localObject = this.wAl;
+    localObject = this.xJV;
     if (localObject != null) {
       ((EditText)localObject).setOnFocusChangeListener((View.OnFocusChangeListener)new f(this));
     }
-    localObject = this.wAl;
+    localObject = this.xJV;
     if (localObject != null) {
       ((EditText)localObject).addTextChangedListener((TextWatcher)new g(this));
     }
-    localObject = this.wAl;
+    localObject = this.xJV;
     if (localObject != null) {
       ((EditText)localObject).setOnEditorActionListener((TextView.OnEditorActionListener)new h(this));
     }
-    localObject = this.wAr;
+    localObject = this.xKb;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject).prv = ((m)new i(this));
+      ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject).pVb = ((m)new i(this));
     }
-    localObject = this.wAj;
+    localObject = this.xJT;
     if (localObject != null) {
       ((View)localObject).setOnClickListener((View.OnClickListener)new j(this));
     }
-    setOnClickListener((View.OnClickListener)EditorAudioSearchView.k.wAD);
-    this.wAg = ap.cl(getContext()).y;
-    setTranslationY(this.wAg);
-    dwE();
+    setOnClickListener((View.OnClickListener)EditorAudioSearchView.k.xKn);
+    this.xJQ = ar.ci(getContext()).y;
+    setTranslationY(this.xJQ);
+    dHv();
     AppMethodBeat.o(75918);
   }
   
@@ -224,11 +292,11 @@ public final class EditorAudioSearchView
     AppMethodBeat.i(75920);
     if (paramBoolean)
     {
-      post(this.ptC);
+      post(this.pXg);
       AppMethodBeat.o(75920);
       return;
     }
-    removeCallbacks(this.ptC);
+    removeCallbacks(this.pXg);
     InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
     if (localInputMethodManager != null)
     {
@@ -239,37 +307,37 @@ public final class EditorAudioSearchView
     AppMethodBeat.o(75920);
   }
   
-  public final void Ms(int paramInt)
+  public final void NR(int paramInt)
   {
     AppMethodBeat.i(75919);
-    Object localObject1 = this.wAr;
+    Object localObject1 = this.xKb;
     int i;
     Object localObject2;
-    if ((localObject1 == null) || (((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject1).ta != paramInt))
+    if ((localObject1 == null) || (((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject1).uT != paramInt))
     {
-      this.wAu = paramInt;
-      localObject1 = this.wAr;
+      this.xKe = paramInt;
+      localObject1 = this.xKb;
       if (localObject1 == null) {
         break label102;
       }
-      localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject1).Mr(paramInt);
+      localObject1 = ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject1).NQ(paramInt);
       if (localObject1 == null) {
         break label107;
       }
       i = ((AudioCacheInfo)localObject1).type;
-      localObject2 = AudioCacheInfo.wry;
-      if (i != AudioCacheInfo.dvz()) {
+      localObject2 = AudioCacheInfo.xzp;
+      if (i != AudioCacheInfo.dFV()) {
         break label107;
       }
-      localObject2 = this.wAz;
+      localObject2 = this.xKj;
       if (localObject2 != null) {
         ((a)localObject2).e(null);
       }
     }
     for (;;)
     {
-      this.wAw = ((AudioCacheInfo)localObject1);
-      this.wAx = System.currentTimeMillis();
+      this.xKg = ((AudioCacheInfo)localObject1);
+      this.xKh = System.currentTimeMillis();
       AppMethodBeat.o(75919);
       return;
       label102:
@@ -279,22 +347,22 @@ public final class EditorAudioSearchView
       if (localObject1 != null)
       {
         i = ((AudioCacheInfo)localObject1).type;
-        localObject2 = AudioCacheInfo.wry;
-        if (i == AudioCacheInfo.dvy())
+        localObject2 = AudioCacheInfo.xzp;
+        if (i == AudioCacheInfo.dFU())
         {
-          localObject2 = this.wAr;
+          localObject2 = this.xKb;
           if (localObject2 != null) {
             ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject2).setSelection(Integer.valueOf(paramInt));
           }
-          localObject2 = this.wAz;
+          localObject2 = this.xKj;
           if (localObject2 != null) {
             ((a)localObject2).e((AudioCacheInfo)localObject1);
           }
-          localObject2 = this.lKB;
+          localObject2 = this.mkr;
           if (localObject2 != null) {
             ((Button)localObject2).setEnabled(true);
           }
-          dwG();
+          dHx();
         }
       }
     }
@@ -302,8 +370,8 @@ public final class EditorAudioSearchView
   
   public final void b(Integer paramInteger1, Integer paramInteger2)
   {
-    AppMethodBeat.i(199419);
-    Button localButton = this.lKB;
+    AppMethodBeat.i(200532);
+    Button localButton = this.mkr;
     if (localButton != null)
     {
       if ((paramInteger1 != null) && (paramInteger1.intValue() != 0)) {
@@ -312,140 +380,123 @@ public final class EditorAudioSearchView
       if ((paramInteger2 != null) && (paramInteger2.intValue() != 0) && ((localButton instanceof TextView))) {
         localButton.setTextColor(android.support.v4.content.b.n(localButton.getContext(), paramInteger2.intValue()));
       }
-      AppMethodBeat.o(199419);
+      AppMethodBeat.o(200532);
       return;
     }
-    AppMethodBeat.o(199419);
+    AppMethodBeat.o(200532);
   }
   
-  public final void dwD()
+  public final boolean bni()
   {
-    AppMethodBeat.i(75921);
-    dwG();
-    Object localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-    com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().ki(1L);
-    localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-    c.a.dvJ();
-    reset();
-    localObject = this.wAl;
-    if (localObject != null) {
-      ((EditText)localObject).clearFocus();
-    }
-    localObject = this.wAz;
-    if (localObject != null) {
-      ((a)localObject).dwH();
-    }
-    localObject = this.wAz;
-    if (localObject != null)
+    AppMethodBeat.i(200533);
+    if (getVisibility() == 0)
     {
-      ((a)localObject).dwI();
-      AppMethodBeat.o(75921);
-      return;
+      AppMethodBeat.o(200533);
+      return true;
     }
-    AppMethodBeat.o(75921);
+    AppMethodBeat.o(200533);
+    return false;
   }
   
-  public final void dwG()
+  public final boolean dHy()
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    AppMethodBeat.i(75924);
-    StringBuilder localStringBuilder;
-    Object localObject3;
-    if (this.wAw != null)
+    AppMethodBeat.i(200534);
+    if (getVisibility() == 0)
     {
-      localStringBuilder = new StringBuilder();
-      localObject3 = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-      if (!bs.isNullOrNil(com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().Sl())) {
-        break label133;
+      Object localObject = this.xJV;
+      if (localObject != null)
+      {
+        localObject = ((EditText)localObject).getText();
+        if (!bt.ai((CharSequence)localObject)) {
+          break label54;
+        }
+        dHu();
       }
-      localObject3 = this.wAw;
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = Integer.valueOf(((AudioCacheInfo)localObject3).wri);
+      for (;;)
+      {
+        AppMethodBeat.o(200534);
+        return true;
+        localObject = null;
+        break;
+        label54:
+        dHx();
+        localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+        com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lU(1L);
+        localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+        c.a.dGh();
+        reset();
+        localObject = this.xKj;
+        if (localObject != null) {
+          ((a)localObject).dHz();
+        }
       }
-      localStringBuilder.append(localObject1).append(":1:").append(System.currentTimeMillis() - this.wAx);
     }
-    for (;;)
-    {
-      localObject1 = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-      localObject1 = com.tencent.mm.plugin.recordvideo.model.audio.c.dvI();
-      localObject2 = ((fs)localObject1).Sl();
-      ((fs)localObject1).nl((String)localObject2 + localStringBuilder.toString());
-      AppMethodBeat.o(75924);
-      return;
-      label133:
-      localObject2 = localStringBuilder.append(";");
-      localObject3 = this.wAw;
-      if (localObject3 != null) {
-        localObject1 = Integer.valueOf(((AudioCacheInfo)localObject3).wri);
-      }
-      ((StringBuilder)localObject2).append(localObject1).append(":1:").append(System.currentTimeMillis() - this.wAx);
-    }
+    AppMethodBeat.o(200534);
+    return false;
   }
   
   public final a getCallback()
   {
-    return this.wAz;
+    return this.xKj;
   }
   
   public final long getMRelatedRecId()
   {
-    return this.wAy;
+    return this.xKi;
   }
   
   public final void reset()
   {
     AppMethodBeat.i(75927);
-    this.wAt = 0;
-    this.wAu = -1;
-    this.wAs = 0L;
-    Object localObject = this.lKB;
+    this.xKd = 0;
+    this.xKe = -1;
+    this.xKc = 0L;
+    Object localObject = this.mkr;
     if (localObject != null) {
       ((Button)localObject).setEnabled(false);
     }
-    localObject = this.wAl;
+    localObject = this.xJV;
     if (localObject != null) {
       ((EditText)localObject).setText(null);
     }
-    localObject = this.wAr;
+    localObject = this.xKb;
     if (localObject != null) {
       ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject).setSelection(null);
     }
-    localObject = this.wAm;
+    localObject = this.xJW;
     if (localObject != null)
     {
       com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.aeD(), "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView", "reset", "()V", "Undefined", "scrollToPosition", "(I)V");
-      ((RecyclerView)localObject).ca(((Integer)locala.lR(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView", "reset", "()V", "Undefined", "scrollToPosition", "(I)V");
+      ((RecyclerView)localObject).ca(((Integer)locala.mq(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView", "reset", "()V", "Undefined", "scrollToPosition", "(I)V");
     }
-    localObject = this.wAr;
+    localObject = this.xKb;
     if (localObject != null) {
-      ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject).eQ((List)new LinkedList());
+      ((com.tencent.mm.plugin.recordvideo.ui.a.a)localObject).ff((List)new LinkedList());
     }
-    dwE();
-    this.wAv = null;
-    this.wAw = null;
-    this.wAx = 0L;
+    dHv();
+    this.xKf = null;
+    this.xKg = null;
+    this.xKh = 0L;
     AppMethodBeat.o(75927);
   }
   
   public final void setCallback(a parama)
   {
-    this.wAz = parama;
+    this.xKj = parama;
   }
   
   public final void setMRelatedRecId(long paramLong)
   {
-    this.wAy = paramLong;
+    this.xKi = paramLong;
   }
   
   public final void setMusicPlayer(com.google.android.exoplayer2.v paramv)
   {
     AppMethodBeat.i(75926);
-    k.h(paramv, "player");
-    com.tencent.mm.plugin.recordvideo.ui.a.a locala = this.wAr;
+    p.h(paramv, "player");
+    com.tencent.mm.plugin.recordvideo.ui.a.a locala = this.xKb;
     if (locala != null)
     {
       locala.setMusicPlayer(paramv);
@@ -458,7 +509,7 @@ public final class EditorAudioSearchView
   public final void setSelection(Integer paramInteger)
   {
     AppMethodBeat.i(75928);
-    com.tencent.mm.plugin.recordvideo.ui.a.a locala = this.wAr;
+    com.tencent.mm.plugin.recordvideo.ui.a.a locala = this.xKb;
     if (locala != null)
     {
       locala.setSelection(paramInteger);
@@ -473,11 +524,11 @@ public final class EditorAudioSearchView
     AppMethodBeat.i(75925);
     if (paramBoolean)
     {
-      localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-      com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().kl(this.wAy);
+      localObject = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+      com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lX(this.xKi);
       setVisibility(0);
       animate().translationY(0.0F).start();
-      localObject = this.wAl;
+      localObject = this.xJV;
       if (localObject != null)
       {
         ((EditText)localObject).requestFocus();
@@ -487,8 +538,8 @@ public final class EditorAudioSearchView
       AppMethodBeat.o(75925);
       return;
     }
-    animate().translationY(this.wAg).withEndAction((Runnable)new m(this)).start();
-    Object localObject = this.wAl;
+    animate().translationY(this.xJQ).withEndAction((Runnable)new m(this)).start();
+    Object localObject = this.xJV;
     if (localObject != null)
     {
       ((EditText)localObject).clearFocus();
@@ -498,26 +549,26 @@ public final class EditorAudioSearchView
     AppMethodBeat.o(75925);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;", "", "onPauseAudio", "", "onSearchAudioCancel", "onSearchAudioFinish", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "onSearchAudioSelected", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$AudioSearchCallback;", "", "onPauseAudio", "", "onSearchAudioCancel", "onSearchAudioFinish", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "onSearchAudioSelected", "plugin-recordvideo_release"})
   public static abstract interface a
   {
     public abstract void c(AudioCacheInfo paramAudioCacheInfo);
     
-    public abstract void dwH();
+    public abstract void dHA();
     
-    public abstract void dwI();
+    public abstract void dHz();
     
     public abstract void e(AudioCacheInfo paramAudioCacheInfo);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/MMSPRBgmSearchResp;", "call"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/MMSPRBgmSearchResp;", "call"})
   static final class b<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     b(EditorAudioSearchView paramEditorAudioSearchView, boolean paramBoolean) {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -526,32 +577,37 @@ public final class EditorAudioSearchView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(75905);
-      paramView = EditorAudioSearchView.a(this.wAB);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      paramView = EditorAudioSearchView.a(this.xKl);
       if (paramView != null)
       {
         paramView = paramView.getText();
-        if (paramView != null)
-        {
-          if (((CharSequence)paramView).length() == 0) {}
-          for (int i = 1; i == 0; i = 0)
-          {
-            paramView = EditorAudioSearchView.a(this.wAB);
-            if (paramView == null) {
-              break;
-            }
-            paramView.setText(null);
-            AppMethodBeat.o(75905);
-            return;
+        if (paramView != null) {
+          if (((CharSequence)paramView).length() != 0) {
+            break label108;
           }
         }
       }
-      AppMethodBeat.o(75905);
-      return;
-      AppMethodBeat.o(75905);
+      label108:
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0)
+        {
+          paramView = EditorAudioSearchView.a(this.xKl);
+          if (paramView != null) {
+            paramView.setText(null);
+          }
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(75905);
+        return;
+      }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -560,12 +616,16 @@ public final class EditorAudioSearchView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(75906);
-      EditorAudioSearchView.b(this.wAB);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      EditorAudioSearchView.b(this.xKl);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(75906);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -574,48 +634,50 @@ public final class EditorAudioSearchView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(75907);
-      paramView = EditorAudioSearchView.c(this.wAB);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      paramView = EditorAudioSearchView.c(this.xKl);
       if (paramView != null)
       {
-        if ((EditorAudioSearchView.d(this.wAB) == -1) || (EditorAudioSearchView.d(this.wAB) >= paramView.getItemCount())) {
-          break label126;
+        if ((EditorAudioSearchView.d(this.xKl) == -1) || (EditorAudioSearchView.d(this.xKl) >= paramView.getItemCount())) {
+          break label167;
         }
-        EditorAudioSearchView.a locala = this.wAB.getCallback();
-        if (locala != null) {
-          locala.c(paramView.Mr(EditorAudioSearchView.d(this.wAB)));
+        localObject = this.xKl.getCallback();
+        if (localObject != null) {
+          ((EditorAudioSearchView.a)localObject).c(paramView.NQ(EditorAudioSearchView.d(this.xKl)));
         }
-        EditorAudioSearchView.f(this.wAB);
-        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-        com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().ki(0L);
-        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-        c.a.dvJ();
+        EditorAudioSearchView.f(this.xKl);
+        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+        com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lU(0L);
+        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+        c.a.dGh();
       }
       for (;;)
       {
-        this.wAB.reset();
-        paramView = EditorAudioSearchView.a(this.wAB);
-        if (paramView == null) {
-          break;
+        this.xKl.reset();
+        paramView = EditorAudioSearchView.a(this.xKl);
+        if (paramView != null) {
+          paramView.clearFocus();
         }
-        paramView.clearFocus();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(75907);
         return;
-        label126:
-        paramView = this.wAB.getCallback();
+        label167:
+        paramView = this.xKl.getCallback();
         if (paramView != null) {
           paramView.c(null);
         }
-        EditorAudioSearchView.f(this.wAB);
-        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-        com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().ki(1L);
-        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-        c.a.dvJ();
+        EditorAudioSearchView.f(this.xKl);
+        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+        com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lU(1L);
+        paramView = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+        c.a.dGh();
       }
-      AppMethodBeat.o(75907);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "hasFocus", "", "onFocusChange"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "hasFocus", "", "onFocusChange"})
   static final class f
     implements View.OnFocusChangeListener
   {
@@ -624,12 +686,12 @@ public final class EditorAudioSearchView
     public final void onFocusChange(View paramView, boolean paramBoolean)
     {
       AppMethodBeat.i(75908);
-      EditorAudioSearchView.a(this.wAB, paramBoolean);
+      EditorAudioSearchView.a(this.xKl, paramBoolean);
       AppMethodBeat.o(75908);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$5", "Landroid/text/TextWatcher;", "afterTextChanged", "", "p0", "Landroid/text/Editable;", "beforeTextChanged", "", "p1", "", "p2", "p3", "onTextChanged", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$5", "Landroid/text/TextWatcher;", "afterTextChanged", "", "p0", "Landroid/text/Editable;", "beforeTextChanged", "", "p1", "", "p2", "p3", "onTextChanged", "plugin-recordvideo_release"})
   public static final class g
     implements TextWatcher
   {
@@ -642,7 +704,7 @@ public final class EditorAudioSearchView
       }
       while (i > 0)
       {
-        paramEditable = EditorAudioSearchView.g(this.wAB);
+        paramEditable = EditorAudioSearchView.g(this.xKl);
         if (paramEditable != null)
         {
           paramEditable.setVisibility(0);
@@ -656,7 +718,7 @@ public final class EditorAudioSearchView
           return;
         }
       }
-      paramEditable = EditorAudioSearchView.g(this.wAB);
+      paramEditable = EditorAudioSearchView.g(this.xKl);
       if (paramEditable != null)
       {
         paramEditable.setVisibility(8);
@@ -671,7 +733,7 @@ public final class EditorAudioSearchView
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "textView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "keyEvent", "Landroid/view/KeyEvent;", "onEditorAction"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "textView", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "keyEvent", "Landroid/view/KeyEvent;", "onEditorAction"})
   static final class h
     implements TextView.OnEditorActionListener
   {
@@ -682,28 +744,28 @@ public final class EditorAudioSearchView
       AppMethodBeat.i(75910);
       if (3 == paramInt)
       {
-        if (EditorAudioSearchView.h(this.wAB) != null)
+        if (EditorAudioSearchView.h(this.xKl) != null)
         {
-          String str = EditorAudioSearchView.h(this.wAB);
-          k.g(paramTextView, "textView");
+          String str = EditorAudioSearchView.h(this.xKl);
+          p.g(paramTextView, "textView");
           paramKeyEvent = paramTextView.getText();
           if (paramKeyEvent == null) {
             break label399;
           }
           paramKeyEvent = paramKeyEvent.toString();
-          if (!bs.lr(str, paramKeyEvent))
+          if (!bt.lQ(str, paramKeyEvent))
           {
-            EditorAudioSearchView.f(this.wAB);
-            paramKeyEvent = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-            com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().ki(2L);
-            paramKeyEvent = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-            c.a.dvJ();
-            paramKeyEvent = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-            com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().kl(this.wAB.getMRelatedRecId());
+            EditorAudioSearchView.f(this.xKl);
+            paramKeyEvent = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+            com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lU(2L);
+            paramKeyEvent = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+            c.a.dGh();
+            paramKeyEvent = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+            com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lX(this.xKl.getMRelatedRecId());
           }
         }
-        paramKeyEvent = this.wAB;
-        k.g(paramTextView, "textView");
+        paramKeyEvent = this.xKl;
+        p.g(paramTextView, "textView");
         paramTextView = paramTextView.getText();
         if (paramTextView == null) {
           break label404;
@@ -714,46 +776,46 @@ public final class EditorAudioSearchView
       for (paramTextView = paramTextView.toString();; paramTextView = null)
       {
         EditorAudioSearchView.a(paramKeyEvent, paramTextView);
-        if (!bs.isNullOrNil(EditorAudioSearchView.h(this.wAB)))
+        if (!bt.isNullOrNil(EditorAudioSearchView.h(this.xKl)))
         {
-          paramTextView = EditorAudioSearchView.c(this.wAB);
+          paramTextView = EditorAudioSearchView.c(this.xKl);
           if (paramTextView != null) {
             paramTextView.setSelection(null);
           }
-          paramTextView = EditorAudioSearchView.c(this.wAB);
+          paramTextView = EditorAudioSearchView.c(this.xKl);
           if (paramTextView != null) {
             paramTextView.setSelection(null);
           }
-          paramTextView = EditorAudioSearchView.i(this.wAB);
+          paramTextView = EditorAudioSearchView.i(this.xKl);
           if (paramTextView != null)
           {
             paramKeyEvent = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-            com.tencent.mm.hellhoundlib.a.a.a(paramTextView, paramKeyEvent.aeD(), "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$6", "onEditorAction", "(Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z", "Undefined", "scrollToPosition", "(I)V");
-            paramTextView.ca(((Integer)paramKeyEvent.lR(0)).intValue());
+            com.tencent.mm.hellhoundlib.a.a.a(paramTextView, paramKeyEvent.ahp(), "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$6", "onEditorAction", "(Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z", "Undefined", "scrollToPosition", "(I)V");
+            paramTextView.ca(((Integer)paramKeyEvent.mq(0)).intValue());
             com.tencent.mm.hellhoundlib.a.a.a(paramTextView, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$6", "onEditorAction", "(Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z", "Undefined", "scrollToPosition", "(I)V");
           }
-          paramTextView = EditorAudioSearchView.c(this.wAB);
+          paramTextView = EditorAudioSearchView.c(this.xKl);
           if (paramTextView != null) {
-            paramTextView.eQ((List)new LinkedList());
+            paramTextView.ff((List)new LinkedList());
           }
-          paramTextView = EditorAudioSearchView.j(this.wAB);
+          paramTextView = EditorAudioSearchView.j(this.xKl);
           if (paramTextView != null) {
             paramTextView.setEnabled(false);
           }
-          EditorAudioSearchView.a(this.wAB, 0L);
-          EditorAudioSearchView.e(this.wAB);
-          EditorAudioSearchView.a(this.wAB, 0);
-          paramTextView = EditorAudioSearchView.c(this.wAB);
+          EditorAudioSearchView.a(this.xKl, 0L);
+          EditorAudioSearchView.e(this.xKl);
+          EditorAudioSearchView.a(this.xKl, 0);
+          paramTextView = EditorAudioSearchView.c(this.xKl);
           if (paramTextView != null) {
-            paramTextView.wzP = EditorAudioSearchView.h(this.wAB);
+            paramTextView.xJc = EditorAudioSearchView.h(this.xKl);
           }
-          EditorAudioSearchView.m(this.wAB);
-          EditorAudioSearchView.n(this.wAB);
-          EditorAudioSearchView.o(this.wAB);
-          EditorAudioSearchView.b(this.wAB, false);
-          paramTextView = this.wAB.getCallback();
+          EditorAudioSearchView.m(this.xKl);
+          EditorAudioSearchView.n(this.xKl);
+          EditorAudioSearchView.o(this.xKl);
+          EditorAudioSearchView.b(this.xKl, false);
+          paramTextView = this.xKl.getCallback();
           if (paramTextView != null) {
-            paramTextView.dwH();
+            paramTextView.dHz();
           }
         }
         AppMethodBeat.o(75910);
@@ -764,10 +826,10 @@ public final class EditorAudioSearchView
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "position", "", "info", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "invoke"})
   static final class i
-    extends d.g.b.l
-    implements m<Integer, AudioCacheInfo, y>
+    extends q
+    implements m<Integer, AudioCacheInfo, z>
   {
     i(EditorAudioSearchView paramEditorAudioSearchView)
     {
@@ -775,7 +837,7 @@ public final class EditorAudioSearchView
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class j
     implements View.OnClickListener
   {
@@ -784,36 +846,40 @@ public final class EditorAudioSearchView
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(75912);
-      EditorAudioSearchView.b(this.wAB);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      EditorAudioSearchView.b(this.xKl);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$init$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(75912);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "plugin-recordvideo_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "plugin-recordvideo_release"})
   public static final class l
     extends RecyclerView.m
   {
     public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(199418);
+      AppMethodBeat.i(200531);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bb(paramRecyclerView);
-      localb.lS(paramInt1);
-      localb.lS(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
+      localb.bd(paramRecyclerView);
+      localb.mr(paramInt1);
+      localb.mr(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
       super.a(paramRecyclerView, paramInt1, paramInt2);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(199418);
+      AppMethodBeat.o(200531);
     }
     
     public final void b(RecyclerView paramRecyclerView, int paramInt)
     {
       AppMethodBeat.i(75915);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bb(paramRecyclerView);
-      localb.lS(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
-      k.h(paramRecyclerView, "recyclerView");
+      localb.bd(paramRecyclerView);
+      localb.mr(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorAudioSearchView$mScrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+      p.h(paramRecyclerView, "recyclerView");
       super.b(paramRecyclerView, paramInt);
       if (paramInt == 0)
       {
@@ -824,19 +890,19 @@ public final class EditorAudioSearchView
           AppMethodBeat.o(75915);
           throw paramRecyclerView;
         }
-        paramInt = ((LinearLayoutManager)paramRecyclerView).jY();
-        paramRecyclerView = com.tencent.mm.plugin.recordvideo.model.audio.c.wrN;
-        com.tencent.mm.plugin.recordvideo.model.audio.c.dvI().kj(paramInt);
-        paramRecyclerView = EditorAudioSearchView.c(this.wAB);
+        paramInt = ((LinearLayoutManager)paramRecyclerView).ko();
+        paramRecyclerView = com.tencent.mm.plugin.recordvideo.model.audio.c.xzE;
+        com.tencent.mm.plugin.recordvideo.model.audio.c.dGg().lV(paramInt);
+        paramRecyclerView = EditorAudioSearchView.c(this.xKl);
         if ((paramRecyclerView != null) && (paramInt == paramRecyclerView.getItemCount() - 1))
         {
-          paramRecyclerView = paramRecyclerView.Mr(paramInt);
+          paramRecyclerView = paramRecyclerView.NQ(paramInt);
           if (paramRecyclerView != null)
           {
             paramInt = paramRecyclerView.type;
-            paramRecyclerView = AudioCacheInfo.wry;
-            if (paramInt == AudioCacheInfo.dvA()) {
-              EditorAudioSearchView.b(this.wAB, true);
+            paramRecyclerView = AudioCacheInfo.xzp;
+            if (paramInt == AudioCacheInfo.dFW()) {
+              EditorAudioSearchView.b(this.xKl, true);
             }
           }
         }
@@ -846,7 +912,7 @@ public final class EditorAudioSearchView
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class m
     implements Runnable
   {
@@ -855,12 +921,12 @@ public final class EditorAudioSearchView
     public final void run()
     {
       AppMethodBeat.i(75916);
-      this.wAB.setVisibility(8);
+      this.xKl.setVisibility(8);
       AppMethodBeat.o(75916);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class n
     implements Runnable
   {
@@ -869,10 +935,10 @@ public final class EditorAudioSearchView
     public final void run()
     {
       AppMethodBeat.i(75917);
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.wAB.getContext().getSystemService("input_method");
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.xKl.getContext().getSystemService("input_method");
       if (localInputMethodManager != null)
       {
-        localInputMethodManager.showSoftInput((View)EditorAudioSearchView.a(this.wAB), 0);
+        localInputMethodManager.showSoftInput((View)EditorAudioSearchView.a(this.xKl), 0);
         AppMethodBeat.o(75917);
         return;
       }
@@ -882,7 +948,7 @@ public final class EditorAudioSearchView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioSearchView
  * JD-Core Version:    0.7.0.1
  */

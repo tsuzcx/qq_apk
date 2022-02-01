@@ -21,45 +21,45 @@ public class ExtractorWrapper
   
   private boolean exit()
   {
-    AppMethodBeat.i(198130);
+    AppMethodBeat.i(218527);
     if ((!TextUtils.isEmpty(this.videoPath)) && (new File(this.videoPath).exists()))
     {
-      AppMethodBeat.o(198130);
+      AppMethodBeat.o(218527);
       return true;
     }
-    AppMethodBeat.o(198130);
+    AppMethodBeat.o(218527);
     return false;
   }
   
   private void loadWith(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(198129);
+    AppMethodBeat.i(218526);
     this.duration = paramAssetExtractor.getDuration();
     this.videoSize = paramAssetExtractor.getSize();
     this.preferRotation = paramAssetExtractor.getPreferRotation();
     this.lastUpdateTime = new File(this.videoPath).lastModified();
-    AppMethodBeat.o(198129);
+    AppMethodBeat.o(218526);
   }
   
   private boolean needReload()
   {
-    AppMethodBeat.i(198131);
+    AppMethodBeat.i(218528);
     if (this.lastUpdateTime != new File(this.videoPath).lastModified())
     {
-      AppMethodBeat.o(198131);
+      AppMethodBeat.o(218528);
       return true;
     }
-    AppMethodBeat.o(198131);
+    AppMethodBeat.o(218528);
     return false;
   }
   
   void checkAndLoad(AssetExtractor paramAssetExtractor)
   {
-    AppMethodBeat.i(198128);
+    AppMethodBeat.i(218525);
     if ((exit()) && (needReload())) {
       loadWith(paramAssetExtractor);
     }
-    AppMethodBeat.o(198128);
+    AppMethodBeat.o(218525);
   }
   
   public long getDuration()
@@ -84,7 +84,7 @@ public class ExtractorWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.extractor.wrapper.ExtractorWrapper
  * JD-Core Version:    0.7.0.1
  */

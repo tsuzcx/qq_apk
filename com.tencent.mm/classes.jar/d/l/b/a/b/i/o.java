@@ -8,12 +8,12 @@ public enum o
   {
     AppMethodBeat.i(59864);
     o localo1 = new o("PRETTY", 0);
-    LEe = localo1;
+    Nvd = localo1;
     o localo2 = new o("DEBUG", 1);
-    LEf = localo2;
+    Nve = localo2;
     o localo3 = new o("NONE", 2);
-    LEg = localo3;
-    LEh = new o[] { localo1, localo2, localo3 };
+    Nvf = localo3;
+    Nvg = new o[] { localo1, localo2, localo3 };
     AppMethodBeat.o(59864);
   }
   
@@ -21,7 +21,7 @@ public enum o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.i.o
  * JD-Core Version:    0.7.0.1
  */

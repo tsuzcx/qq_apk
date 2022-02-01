@@ -1,60 +1,59 @@
 package com.tencent.mm.plugin.appbrand.jsapi.y;
 
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.l;
-import d.y;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebViewStore;", "", "()V", "map", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebView;", "add", "", "webview", "get", "binderID", "", "remove", "plugin-appbrand-integration_release"})
-public final class b
+public enum b
 {
-  private static final SparseArray<a> kYm;
-  public static final b kYn;
+  public final String lkt;
   
   static
   {
-    AppMethodBeat.i(175192);
-    kYn = new b();
-    kYm = new SparseArray();
-    AppMethodBeat.o(175192);
+    AppMethodBeat.i(147307);
+    lkp = new b("UPDATING", 0, "updating");
+    lkq = new b("NO_UPDATE", 1, "noUpdate");
+    lkr = new b("UPDATE_READY", 2, "updateReady");
+    lks = new b("UPDATE_FAILED", 3, "updateFailed");
+    lku = new b[] { lkp, lkq, lkr, lks };
+    AppMethodBeat.o(147307);
   }
   
-  public static void i(a parama)
+  private b(String paramString)
   {
-    AppMethodBeat.i(175189);
-    k.h(parama, "webview");
-    synchronized (kYm)
-    {
-      kYm.put(parama.getBinderID(), parama);
-      parama = y.KTp;
-      AppMethodBeat.o(175189);
-      return;
-    }
+    this.lkt = paramString;
   }
   
-  public static void j(a parama)
+  public static b QC(String paramString)
   {
-    AppMethodBeat.i(175190);
-    k.h(parama, "webview");
-    synchronized (kYm)
+    AppMethodBeat.i(147306);
+    b[] arrayOfb = values();
+    int j = arrayOfb.length;
+    int i = 0;
+    while (i < j)
     {
-      kYm.remove(parama.getBinderID());
-      parama = y.KTp;
-      AppMethodBeat.o(175190);
-      return;
+      b localb = arrayOfb[i];
+      if (localb.lkt.equals(paramString))
+      {
+        AppMethodBeat.o(147306);
+        return localb;
+      }
+      i += 1;
     }
+    paramString = new IllegalArgumentException(String.format("Invalid name %s", new Object[] { paramString }));
+    AppMethodBeat.o(147306);
+    throw paramString;
   }
   
-  public static a te(int paramInt)
+  public final String toString()
   {
-    AppMethodBeat.i(175191);
-    synchronized (kYm)
-    {
-      a locala = (a)kYm.get(paramInt);
-      AppMethodBeat.o(175191);
-      return locala;
-    }
+    return this.lkt;
+  }
+  
+  public static final class a
+    extends p
+  {
+    private static final int CTRL_INDEX = -2;
+    private static final String NAME = "onUpdateStatusChange";
   }
 }
 

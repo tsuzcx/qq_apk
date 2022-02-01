@@ -1,16 +1,16 @@
 package com.tencent.mm.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cl;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.protocal.protobuf.pp;
+import com.tencent.mm.g.c.cq;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.protocal.protobuf.qu;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class h
-  extends cl
+  extends cq
 {
   public static c.a info;
   
@@ -18,92 +18,92 @@ public final class h
   {
     AppMethodBeat.i(114786);
     c.a locala = new c.a();
-    locala.GvF = new Field[21];
+    locala.IhA = new Field[21];
     locala.columns = new String[22];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "cgi";
-    locala.GvH.put("cgi", "TEXT");
+    locala.IhC.put("cgi", "TEXT");
     localStringBuilder.append(" cgi TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "cmdid";
-    locala.GvH.put("cmdid", "INTEGER");
+    locala.IhC.put("cmdid", "INTEGER");
     localStringBuilder.append(" cmdid INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "functionmsgid";
-    locala.GvH.put("functionmsgid", "TEXT PRIMARY KEY ");
+    locala.IhC.put("functionmsgid", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" functionmsgid TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "functionmsgid";
+    locala.IhB = "functionmsgid";
     locala.columns[3] = "version";
-    locala.GvH.put("version", "LONG");
+    locala.IhC.put("version", "LONG");
     localStringBuilder.append(" version LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "preVersion";
-    locala.GvH.put("preVersion", "LONG");
+    locala.IhC.put("preVersion", "LONG");
     localStringBuilder.append(" preVersion LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "retryinterval";
-    locala.GvH.put("retryinterval", "INTEGER");
+    locala.IhC.put("retryinterval", "INTEGER");
     localStringBuilder.append(" retryinterval INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "reportid";
-    locala.GvH.put("reportid", "INTEGER");
+    locala.IhC.put("reportid", "INTEGER");
     localStringBuilder.append(" reportid INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "successkey";
-    locala.GvH.put("successkey", "INTEGER");
+    locala.IhC.put("successkey", "INTEGER");
     localStringBuilder.append(" successkey INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "failkey";
-    locala.GvH.put("failkey", "INTEGER");
+    locala.IhC.put("failkey", "INTEGER");
     localStringBuilder.append(" failkey INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "finalfailkey";
-    locala.GvH.put("finalfailkey", "INTEGER");
+    locala.IhC.put("finalfailkey", "INTEGER");
     localStringBuilder.append(" finalfailkey INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "custombuff";
-    locala.GvH.put("custombuff", "TEXT");
+    locala.IhC.put("custombuff", "TEXT");
     localStringBuilder.append(" custombuff TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "addMsg";
-    locala.GvH.put("addMsg", "BLOB");
+    locala.IhC.put("addMsg", "BLOB");
     localStringBuilder.append(" addMsg BLOB");
     localStringBuilder.append(", ");
     locala.columns[12] = "status";
-    locala.GvH.put("status", "INTEGER default '-1' ");
+    locala.IhC.put("status", "INTEGER default '-1' ");
     localStringBuilder.append(" status INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "needShow";
-    locala.GvH.put("needShow", "INTEGER default 'false' ");
+    locala.IhC.put("needShow", "INTEGER default 'false' ");
     localStringBuilder.append(" needShow INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "defaultContent";
-    locala.GvH.put("defaultContent", "TEXT");
+    locala.IhC.put("defaultContent", "TEXT");
     localStringBuilder.append(" defaultContent TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "actionTime";
-    locala.GvH.put("actionTime", "LONG default '-1' ");
+    locala.IhC.put("actionTime", "LONG default '-1' ");
     localStringBuilder.append(" actionTime LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "delayTime";
-    locala.GvH.put("delayTime", "LONG default '-1' ");
+    locala.IhC.put("delayTime", "LONG default '-1' ");
     localStringBuilder.append(" delayTime LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[17] = "retryCount";
-    locala.GvH.put("retryCount", "INTEGER default '0' ");
+    locala.IhC.put("retryCount", "INTEGER default '0' ");
     localStringBuilder.append(" retryCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "retryCountLimit";
-    locala.GvH.put("retryCountLimit", "INTEGER default '0' ");
+    locala.IhC.put("retryCountLimit", "INTEGER default '0' ");
     localStringBuilder.append(" retryCountLimit INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[19] = "businessInfo";
-    locala.GvH.put("businessInfo", "BLOB");
+    locala.IhC.put("businessInfo", "BLOB");
     localStringBuilder.append(" businessInfo BLOB");
     localStringBuilder.append(", ");
     locala.columns[20] = "opCode";
-    locala.GvH.put("opCode", "INTEGER default '-1' ");
+    locala.IhC.put("opCode", "INTEGER default '-1' ");
     localStringBuilder.append(" opCode INTEGER default '-1' ");
     locala.columns[21] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -111,66 +111,66 @@ public final class h
     AppMethodBeat.o(114786);
   }
   
-  public final void JA()
-  {
-    this.field_status = -1;
-  }
-  
-  public final void JB()
-  {
-    this.field_retryCount = 0;
-  }
-  
-  public final int Js()
+  public final int KR()
   {
     return this.field_opCode;
   }
   
-  public final String Jt()
+  public final String KS()
   {
     return this.field_functionmsgid;
   }
   
-  public final long Ju()
+  public final long KT()
   {
     return this.field_preVersion;
   }
   
-  public final String Jv()
+  public final String KU()
   {
     return this.field_custombuff;
   }
   
-  public final cu Jw()
+  public final cv KV()
   {
     return this.field_addMsg;
   }
   
-  public final pp Jx()
+  public final qu KW()
   {
     return this.field_businessInfo;
   }
   
-  public final long Jy()
+  public final long KX()
   {
     return this.field_delayTime;
   }
   
-  public final long Jz()
+  public final long KY()
   {
     return this.field_actionTime;
   }
   
-  public final void a(cu paramcu)
+  public final void KZ()
   {
-    if (paramcu != null) {
-      this.field_addMsg = paramcu;
+    this.field_status = -1;
+  }
+  
+  public final void La()
+  {
+    this.field_retryCount = 0;
+  }
+  
+  public final void a(cv paramcv)
+  {
+    if (paramcv != null) {
+      this.field_addMsg = paramcv;
     }
   }
   
-  public final void a(pp parampp)
+  public final void a(qu paramqu)
   {
-    this.field_businessInfo = parampp;
+    this.field_businessInfo = paramqu;
   }
   
   public final void aZ(long paramLong)
@@ -178,7 +178,7 @@ public final class h
     this.field_version = paramLong;
   }
   
-  public final void bX(boolean paramBoolean)
+  public final void bZ(boolean paramBoolean)
   {
     this.field_needShow = paramBoolean;
   }
@@ -198,34 +198,34 @@ public final class h
     this.field_actionTime = paramLong;
   }
   
-  public final void dL(String paramString)
+  public final void eG(String paramString)
   {
     AppMethodBeat.i(114780);
-    if (!bs.isNullOrNil(paramString)) {
+    if (!bt.isNullOrNil(paramString)) {
       this.field_cgi = paramString;
     }
     AppMethodBeat.o(114780);
   }
   
-  public final void dM(String paramString)
+  public final void eH(String paramString)
   {
     AppMethodBeat.i(114781);
-    if (!bs.isNullOrNil(paramString)) {
+    if (!bt.isNullOrNil(paramString)) {
       this.field_functionmsgid = paramString;
     }
     AppMethodBeat.o(114781);
   }
   
-  public final void dN(String paramString)
+  public final void eI(String paramString)
   {
     AppMethodBeat.i(114782);
-    if (!bs.isNullOrNil(paramString)) {
+    if (!bt.isNullOrNil(paramString)) {
       this.field_custombuff = paramString;
     }
     AppMethodBeat.o(114782);
   }
   
-  public final void dO(String paramString)
+  public final void eJ(String paramString)
   {
     if (paramString != null) {
       this.field_defaultContent = paramString;
@@ -273,32 +273,32 @@ public final class h
     return i;
   }
   
-  public final void he(int paramInt)
+  public final void hl(int paramInt)
   {
     this.field_opCode = paramInt;
   }
   
-  public final void hf(int paramInt)
+  public final void hm(int paramInt)
   {
     this.field_reportid = paramInt;
   }
   
-  public final void hg(int paramInt)
+  public final void hn(int paramInt)
   {
     this.field_successkey = paramInt;
   }
   
-  public final void hh(int paramInt)
+  public final void ho(int paramInt)
   {
     this.field_failkey = paramInt;
   }
   
-  public final void hi(int paramInt)
+  public final void hp(int paramInt)
   {
     this.field_finalfailkey = paramInt;
   }
   
-  public final void hj(int paramInt)
+  public final void hq(int paramInt)
   {
     this.field_retryCountLimit = paramInt;
   }
@@ -318,7 +318,7 @@ public final class h
     AppMethodBeat.i(114785);
     String str2 = "@null";
     String str1 = str2;
-    if (!bs.isNullOrNil(this.field_cgi))
+    if (!bt.isNullOrNil(this.field_cgi))
     {
       String[] arrayOfString = this.field_cgi.split("/");
       str1 = str2;
@@ -333,7 +333,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.api.h
  * JD-Core Version:    0.7.0.1
  */

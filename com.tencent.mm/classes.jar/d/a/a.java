@@ -1,13 +1,15 @@
 package d.a;
 
 import d.g.a.b;
-import d.g.b.f;
-import d.g.b.k;
+import d.g.b.i;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
 import d.v;
 import java.util.Collection;
 import java.util.Iterator;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/AbstractCollection;", "E", "", "()V", "size", "", "getSize", "()I", "contains", "", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "", "()[Ljava/lang/Object;", "T", "array", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/AbstractCollection;", "E", "", "()V", "size", "", "getSize", "()I", "contains", "", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "", "()[Ljava/lang/Object;", "T", "array", "([Ljava/lang/Object;)[Ljava/lang/Object;", "toString", "", "kotlin-stdlib"})
 public abstract class a<E>
   implements d.g.b.a.a, Collection<E>
 {
@@ -32,7 +34,7 @@ public abstract class a<E>
     {
       Iterator localIterator = iterator();
       while (localIterator.hasNext()) {
-        if (k.g(localIterator.next(), paramObject)) {
+        if (p.i(localIterator.next(), paramObject)) {
           return true;
         }
       }
@@ -42,7 +44,7 @@ public abstract class a<E>
   
   public boolean containsAll(Collection<? extends Object> paramCollection)
   {
-    k.h(paramCollection, "elements");
+    p.h(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
     if (!((Collection)paramCollection).isEmpty())
     {
@@ -85,13 +87,13 @@ public abstract class a<E>
   
   public Object[] toArray()
   {
-    return f.s((Collection)this);
+    return i.t((Collection)this);
   }
   
   public <T> T[] toArray(T[] paramArrayOfT)
   {
-    k.h(paramArrayOfT, "array");
-    paramArrayOfT = f.a((Collection)this, paramArrayOfT);
+    p.h(paramArrayOfT, "array");
+    paramArrayOfT = i.a((Collection)this, paramArrayOfT);
     if (paramArrayOfT == null) {
       throw new v("null cannot be cast to non-null type kotlin.Array<T>");
     }
@@ -103,9 +105,9 @@ public abstract class a<E>
     return j.a(this, (CharSequence)", ", (CharSequence)"[", (CharSequence)"]", 0, null, (b)new a(this), 24);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "E", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/CharSequence;"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "E", "it", "invoke", "(Ljava/lang/Object;)Ljava/lang/CharSequence;"})
   static final class a
-    extends d.g.b.l
+    extends q
     implements b<E, CharSequence>
   {
     a(a parama)

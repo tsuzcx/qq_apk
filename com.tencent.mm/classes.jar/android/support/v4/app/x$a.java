@@ -6,16 +6,16 @@ import java.util.Set;
 
 public final class x$a
 {
-  public final String GF;
-  public CharSequence GG;
-  public CharSequence[] GH;
-  public boolean GI = true;
-  public final Set<String> GJ = new HashSet();
+  public boolean IA = true;
+  public final Set<String> IB = new HashSet();
+  public final String Ix;
+  public CharSequence Iy;
+  public CharSequence[] Iz;
   public final Bundle mExtras = new Bundle();
   
   public x$a(String paramString)
   {
-    this.GF = paramString;
+    this.Ix = paramString;
   }
 }
 

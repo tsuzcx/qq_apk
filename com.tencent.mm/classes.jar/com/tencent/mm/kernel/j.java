@@ -2,31 +2,31 @@ package com.tencent.mm.kernel;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
 {
-  private static long giD;
-  private static long giE;
-  private static volatile a giF = null;
+  private static long gCn;
+  private static long gCo;
+  private static volatile a gCp = null;
   
   public static void a(a parama)
   {
-    giF = parama;
+    gCp = parama;
   }
   
-  public static void agW() {}
+  public static void ajH() {}
   
-  public static long agX()
+  public static long ajI()
   {
-    return giE;
+    return gCo;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158324);
-    if (giF != null) {
-      giF.d(paramString1, paramString2, paramVarArgs);
+    if (gCp != null) {
+      gCp.d(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(158324);
   }
@@ -34,8 +34,8 @@ public final class j
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158321);
-    if (giF != null) {
-      giF.e(paramString1, paramString2, paramVarArgs);
+    if (gCp != null) {
+      gCp.e(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(158321);
   }
@@ -43,8 +43,8 @@ public final class j
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158323);
-    if (giF != null) {
-      giF.i(paramString1, paramString2, paramVarArgs);
+    if (gCp != null) {
+      gCp.i(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(158323);
   }
@@ -52,42 +52,42 @@ public final class j
   public static void p(String paramString, long paramLong)
   {
     AppMethodBeat.i(158319);
-    ac.i("Blink-LOG", "since the %s : %s", new Object[] { paramString, Long.valueOf(System.nanoTime() - paramLong) });
+    ad.i("Blink-LOG", "since the %s : %s", new Object[] { paramString, Long.valueOf(System.nanoTime() - paramLong) });
     AppMethodBeat.o(158319);
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158325);
-    if (giF != null) {
-      giF.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (gCp != null) {
+      gCp.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(158325);
   }
   
   public static void q(long paramLong1, long paramLong2)
   {
-    giD = paramLong1;
-    giE = paramLong2;
-  }
-  
-  public static long uk(String paramString)
-  {
-    AppMethodBeat.i(199247);
-    long l = SystemClock.elapsedRealtime() - giE;
-    ac.i("Blink-LOG", "since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
-    String.format("since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
-    AppMethodBeat.o(199247);
-    return l;
+    gCn = paramLong1;
+    gCo = paramLong2;
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158322);
-    if (giF != null) {
-      giF.w(paramString1, paramString2, paramVarArgs);
+    if (gCp != null) {
+      gCp.w(paramString1, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(158322);
+  }
+  
+  public static long xa(String paramString)
+  {
+    AppMethodBeat.i(187799);
+    long l = SystemClock.elapsedRealtime() - gCo;
+    ad.i("Blink-LOG", "since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
+    String.format("since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
+    AppMethodBeat.o(187799);
+    return l;
   }
   
   public static abstract interface a

@@ -3,25 +3,25 @@ package com.tencent.e.i;
 public abstract class i
   implements f<Runnable>, Runnable
 {
-  protected abstract void aQi();
+  protected abstract void aTu();
   
   public final void run()
   {
-    aQj();
+    aTv();
     try
     {
-      aQi();
+      aTu();
       return;
     }
     finally
     {
-      ce(this);
+      cg(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.e.i.i
  * JD-Core Version:    0.7.0.1
  */

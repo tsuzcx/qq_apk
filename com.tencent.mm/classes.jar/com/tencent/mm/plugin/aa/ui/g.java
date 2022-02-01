@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.a.e;
@@ -20,8 +20,8 @@ public final class g
   extends s
 {
   private String chatroomName;
-  private String[] iCA;
-  private Cursor iCz;
+  private Cursor iVJ;
+  private String[] iVK;
   private String query;
   
   public g(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
@@ -29,9 +29,9 @@ public final class g
     super(paramMMBaseSelectContactUI, null, true, 0);
     AppMethodBeat.i(63562);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((c)com.tencent.mm.kernel.g.ab(c.class)).awK().xR(this.chatroomName);
+    paramMMBaseSelectContactUI = ((c)com.tencent.mm.kernel.g.ab(c.class)).azz().AR(this.chatroomName);
     if (paramMMBaseSelectContactUI != null) {
-      this.iCA = bs.gX(paramMMBaseSelectContactUI);
+      this.iVK = bt.hi(paramMMBaseSelectContactUI);
     }
     AppMethodBeat.o(63562);
   }
@@ -39,21 +39,21 @@ public final class g
   public final void b(String paramString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(63563);
-    ac.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
+    ad.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
     clearCache();
     this.query = paramString;
-    if (this.iCz != null)
+    if (this.iVJ != null)
     {
-      this.iCz.close();
-      this.iCz = null;
+      this.iVJ.close();
+      this.iVJ = null;
     }
-    if ((!bs.isNullOrNil(this.query)) && (this.iCA != null))
+    if ((!bt.isNullOrNil(this.query)) && (this.iVK != null))
     {
-      com.tencent.mm.kernel.g.agS();
-      this.iCz = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().a(this.iCA, "@all.chatroom", this.query, new LinkedList(), null);
+      com.tencent.mm.kernel.g.ajD();
+      this.iVJ = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().a(this.iVK, "@all.chatroom", this.query, new LinkedList(), null);
     }
     notifyDataSetChanged();
-    cO(paramString, true);
+    cT(paramString, true);
     AppMethodBeat.o(63563);
   }
   
@@ -61,10 +61,10 @@ public final class g
   {
     AppMethodBeat.i(63565);
     super.finish();
-    if (this.iCz != null)
+    if (this.iVJ != null)
     {
-      this.iCz.close();
-      this.iCz = null;
+      this.iVJ.close();
+      this.iVJ = null;
     }
     AppMethodBeat.o(63565);
   }
@@ -72,32 +72,32 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(63566);
-    if (this.iCz == null)
+    if (this.iVJ == null)
     {
       AppMethodBeat.o(63566);
       return 0;
     }
-    int i = this.iCz.getCount();
+    int i = this.iVJ.getCount();
     AppMethodBeat.o(63566);
     return i;
   }
   
-  public final a qH(int paramInt)
+  public final a rh(int paramInt)
   {
     AppMethodBeat.i(63564);
     Object localObject = null;
-    if (this.iCz.moveToPosition(paramInt))
+    if (this.iVJ.moveToPosition(paramInt))
     {
-      ai localai = new ai();
-      localai.convertFrom(this.iCz);
+      am localam = new am();
+      localam.convertFrom(this.iVJ);
       e locale = new e(paramInt);
-      locale.contact = localai;
-      locale.Iwh = true;
-      locale.IzC = true;
+      locale.contact = localam;
+      locale.KmP = true;
+      locale.KqI = true;
       localObject = locale;
-      if (ai.aNc(localai.field_username))
+      if (am.aSQ(localam.field_username))
       {
-        locale.IzB = true;
+        locale.KqH = true;
         localObject = locale;
       }
     }

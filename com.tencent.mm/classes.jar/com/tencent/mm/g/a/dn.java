@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class dn
   extends b
 {
-  public a dcY;
-  public b dcZ;
+  public a don;
+  public b doo;
   
   public dn()
   {
@@ -16,28 +17,30 @@ public final class dn
   
   private dn(byte paramByte)
   {
-    AppMethodBeat.i(115978);
-    this.dcY = new a();
-    this.dcZ = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(115975);
+    this.don = new a();
+    this.doo = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115978);
+    AppMethodBeat.o(115975);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public String dda;
+    public String dop;
+    public int doq = 0;
+    public n dor;
+    public int opType = 0;
   }
   
   public static final class b
   {
-    public boolean ddb;
+    public n dor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.dn
  * JD-Core Version:    0.7.0.1
  */

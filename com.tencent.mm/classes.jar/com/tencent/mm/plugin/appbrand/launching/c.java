@@ -12,37 +12,37 @@ import com.tencent.mm.plugin.boots.a.b;
 
 public final class c
 {
-  public static void a(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  public static void b(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(47067);
     paramAppBrandInitConfigWC.resetSession();
-    g.agP();
+    g.ajA();
     paramAppBrandInitConfigWC.uin = a.getUin();
-    boolean bool = j.aVA().bc(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.joY);
-    if (j.aVB().aZ(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.joY)) {
-      paramAppBrandStatObject.lRH = 1;
+    boolean bool = j.aYV().be(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.dPf);
+    if (j.aYW().bb(paramAppBrandInitConfigWC.username, paramAppBrandInitConfigWC.dPf)) {
+      paramAppBrandStatObject.mrx = 1;
     }
     for (;;)
     {
-      if (paramAppBrandInitConfigWC.CC()) {
-        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yo(b.nsW);
+      if (paramAppBrandInitConfigWC.Eb()) {
+        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yY(b.nTS);
       }
-      if (!paramAppBrandInitConfigWC.jDy)
+      if (!paramAppBrandInitConfigWC.jXu)
       {
-        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yo(b.nsY);
-        if (!paramAppBrandInitConfigWC.CC()) {
-          ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yo(b.nsZ);
+        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yY(b.nTU);
+        if (!paramAppBrandInitConfigWC.Eb()) {
+          ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yY(b.nTV);
         }
       }
       if ("wxfe02ecfe70800f46".equalsIgnoreCase(paramAppBrandInitConfigWC.appId)) {
-        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yo(b.nta);
+        ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).yY(b.nTW);
       }
       AppMethodBeat.o(47067);
       return;
       if (bool) {
-        paramAppBrandStatObject.lRH = 2;
+        paramAppBrandStatObject.mrx = 2;
       } else {
-        paramAppBrandStatObject.lRH = 3;
+        paramAppBrandStatObject.mrx = 3;
       }
     }
   }

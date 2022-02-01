@@ -7,9 +7,9 @@ import java.io.IOException;
 final class ac
   implements Runnable
 {
-  private final TaskCompletionSource bAZ;
-  private final ab bBV;
-  private final Bundle bBW;
+  private final TaskCompletionSource bLn;
+  private final ab bMj;
+  private final Bundle bMk;
   
   ac(ab arg1, Bundle arg2, TaskCompletionSource arg3) {}
   

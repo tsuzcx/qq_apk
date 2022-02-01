@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.backgroundrunning;
 import android.app.NotificationManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xh;
+import com.tencent.mm.g.a.yb;
 import com.tencent.mm.kernel.c.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
@@ -12,11 +12,11 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService.a;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bb;
-import com.tencent.mm.sdk.platformtools.bb.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bc;
+import com.tencent.mm.sdk.platformtools.bc.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,73 +28,73 @@ import java.util.Set;
 public final class i
   implements b, h
 {
-  private static NotificationManager jyx = null;
-  private LinkedHashMap<String, AppBrandBackgroundRunningApp> jyr;
-  private final HashSet<h.a> jys;
-  private bb jyt;
-  private bb.a jyu;
-  private final AppBrandMainProcessService.a jyv;
-  private com.tencent.mm.sdk.b.c<xh> jyw;
+  private static NotificationManager jSu = null;
+  private LinkedHashMap<String, AppBrandBackgroundRunningApp> jSo;
+  private final HashSet<h.a> jSp;
+  private bc jSq;
+  private bc.a jSr;
+  private final AppBrandMainProcessService.a jSs;
+  private com.tencent.mm.sdk.b.c<yb> jSt;
   
   public i()
   {
     AppMethodBeat.i(44795);
-    this.jys = new HashSet();
-    this.jyu = new bb.a()
+    this.jSp = new HashSet();
+    this.jSr = new bc.a()
     {
-      public final void kn(int paramAnonymousInt)
+      public final void kK(int paramAnonymousInt)
       {
-        AppMethodBeat.i(186398);
+        AppMethodBeat.i(188091);
         switch (paramAnonymousInt)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(186398);
+          AppMethodBeat.o(188091);
           return;
-          AppMethodBeat.o(186398);
+          AppMethodBeat.o(188091);
           return;
-          ac.i("MicroMsg.MMBackgroundRunningManagerService", "onPhoneCall, kill voip, state:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          i.this.aZF();
-          i.this.aZG();
+          ad.i("MicroMsg.MMBackgroundRunningManagerService", "onPhoneCall, kill voip, state:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          i.this.bde();
+          i.this.bdf();
         }
       }
     };
-    this.jyv = new AppBrandMainProcessService.a()
+    this.jSs = new AppBrandMainProcessService.a()
     {
-      public final void Hk(String paramAnonymousString)
+      public final void Ky(String paramAnonymousString)
       {
-        AppMethodBeat.i(186399);
-        super.Hk(paramAnonymousString);
-        ac.i("MicroMsg.MMBackgroundRunningManagerService", "onConnected, process:%s", new Object[] { paramAnonymousString });
-        AppMethodBeat.o(186399);
+        AppMethodBeat.i(188092);
+        super.Ky(paramAnonymousString);
+        ad.i("MicroMsg.MMBackgroundRunningManagerService", "onConnected, process:%s", new Object[] { paramAnonymousString });
+        AppMethodBeat.o(188092);
       }
       
       public final void onDisconnected(String paramAnonymousString)
       {
-        AppMethodBeat.i(186400);
+        AppMethodBeat.i(188093);
         super.onDisconnected(paramAnonymousString);
-        ac.i("MicroMsg.MMBackgroundRunningManagerService", "onDisconnected, process:%s", new Object[] { paramAnonymousString });
+        ad.i("MicroMsg.MMBackgroundRunningManagerService", "onDisconnected, process:%s", new Object[] { paramAnonymousString });
         AppBrandBackgroundRunningOperationParcel localAppBrandBackgroundRunningOperationParcel = new AppBrandBackgroundRunningOperationParcel();
         localAppBrandBackgroundRunningOperationParcel.process = paramAnonymousString;
-        localAppBrandBackgroundRunningOperationParcel.cZu = 3;
+        localAppBrandBackgroundRunningOperationParcel.dkM = 3;
         i.this.c(localAppBrandBackgroundRunningOperationParcel);
-        AppMethodBeat.o(186400);
+        AppMethodBeat.o(188093);
       }
     };
-    this.jyw = new com.tencent.mm.sdk.b.c() {};
+    this.jSt = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(44795);
   }
   
   private static void c(MMBackgroundRunningOperationParcel paramMMBackgroundRunningOperationParcel)
   {
-    AppMethodBeat.i(186405);
-    if (!bs.isNullOrNil(paramMMBackgroundRunningOperationParcel.appId))
+    AppMethodBeat.i(188098);
+    if (!bt.isNullOrNil(paramMMBackgroundRunningOperationParcel.appId))
     {
-      ac.i("MicroMsg.MMBackgroundRunningManagerService", "sendOperation from MM process, operation:%s", new Object[] { paramMMBackgroundRunningOperationParcel });
+      ad.i("MicroMsg.MMBackgroundRunningManagerService", "sendOperation from MM process, operation:%s", new Object[] { paramMMBackgroundRunningOperationParcel });
       com.tencent.mm.plugin.appbrand.ipc.e.b(paramMMBackgroundRunningOperationParcel.appId, paramMMBackgroundRunningOperationParcel);
     }
-    AppMethodBeat.o(186405);
+    AppMethodBeat.o(188098);
   }
   
   public final void a(h.a parama)
@@ -105,96 +105,56 @@ public final class i
       AppMethodBeat.o(44800);
       return;
     }
-    synchronized (this.jys)
+    synchronized (this.jSp)
     {
-      this.jys.add(parama);
+      this.jSp.add(parama);
       AppMethodBeat.o(44800);
       return;
     }
   }
   
-  public final List<AppBrandBackgroundRunningApp> aZE()
-  {
-    AppMethodBeat.i(44799);
-    ArrayList localArrayList = new ArrayList(this.jyr.values());
-    AppMethodBeat.o(44799);
-    return localArrayList;
-  }
-  
-  public final void aZF()
-  {
-    AppMethodBeat.i(186403);
-    Iterator localIterator = aZE().iterator();
-    while (localIterator.hasNext())
-    {
-      AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
-      MMBackgroundRunningOperationParcel localMMBackgroundRunningOperationParcel = new MMBackgroundRunningOperationParcel();
-      localMMBackgroundRunningOperationParcel.appId = localAppBrandBackgroundRunningApp.appId;
-      localMMBackgroundRunningOperationParcel.aUu = d.dD(d.jyg.aUu, d.jyi.aUu);
-      localMMBackgroundRunningOperationParcel.cZu = 2;
-      c(localMMBackgroundRunningOperationParcel);
-    }
-    AppMethodBeat.o(186403);
-  }
-  
-  public final void aZG()
-  {
-    AppMethodBeat.i(186404);
-    Iterator localIterator = aZE().iterator();
-    while (localIterator.hasNext())
-    {
-      AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
-      MMBackgroundRunningOperationParcel localMMBackgroundRunningOperationParcel = new MMBackgroundRunningOperationParcel();
-      localMMBackgroundRunningOperationParcel.appId = localAppBrandBackgroundRunningApp.appId;
-      localMMBackgroundRunningOperationParcel.aUu = d.jyh.aUu;
-      localMMBackgroundRunningOperationParcel.cZu = 2;
-      c(localMMBackgroundRunningOperationParcel);
-    }
-    AppMethodBeat.o(186404);
-  }
-  
-  public final void ahM()
+  public final void akx()
   {
     AppMethodBeat.i(44796);
-    ac.i("MicroMsg.MMBackgroundRunningManagerService", "onRegister MMBackgroundRunningManagerService");
-    this.jyt = new bb();
-    this.jyt.iR(ai.getContext());
-    this.jyt.a(this.jyu);
-    this.jyr = new LinkedHashMap();
-    ac.i("MicroMsg.AppBrandForegroundNotificationManager", "startListening");
-    if (f.jyp == null) {
-      f.jyp = new f.1();
+    ad.i("MicroMsg.MMBackgroundRunningManagerService", "onRegister MMBackgroundRunningManagerService");
+    this.jSq = new bc();
+    this.jSq.jb(aj.getContext());
+    this.jSq.a(this.jSr);
+    this.jSo = new LinkedHashMap();
+    ad.i("MicroMsg.AppBrandForegroundNotificationManager", "startListening");
+    if (f.jSm == null) {
+      f.jSm = new f.1();
     }
     if (g.ab(h.class) != null) {
-      ((h)g.ab(h.class)).a(f.jyp);
+      ((h)g.ab(h.class)).a(f.jSm);
     }
-    AppBrandMainProcessService.a(this.jyv);
-    a(com.tencent.mm.plugin.ball.service.d.bGD());
-    this.jyw.alive();
+    AppBrandMainProcessService.a(this.jSs);
+    a(com.tencent.mm.plugin.ball.service.d.bKN());
+    this.jSt.alive();
     AppMethodBeat.o(44796);
   }
   
-  public final void ahN()
+  public final void aky()
   {
     AppMethodBeat.i(44797);
-    ac.i("MicroMsg.MMBackgroundRunningManagerService", "onUnregister MMBackgroundRunningManagerService");
-    aZF();
-    this.jyt.b(this.jyu);
-    this.jyt.end();
-    ac.i("MicroMsg.AppBrandForegroundNotificationManager", "stopListening");
-    if (f.jyp != null)
+    ad.i("MicroMsg.MMBackgroundRunningManagerService", "onUnregister MMBackgroundRunningManagerService");
+    bde();
+    this.jSq.b(this.jSr);
+    this.jSq.end();
+    ad.i("MicroMsg.AppBrandForegroundNotificationManager", "stopListening");
+    if (f.jSm != null)
     {
       if (g.ab(h.class) != null) {
-        ((h)g.ab(h.class)).b(f.jyp);
+        ((h)g.ab(h.class)).b(f.jSm);
       }
-      f.jyp = null;
+      f.jSm = null;
     }
-    AppBrandMainProcessService.b(this.jyv);
-    b(com.tencent.mm.plugin.ball.service.d.bGD());
-    this.jyw.dead();
-    this.jys.clear();
-    this.jyr.clear();
-    this.jyr = null;
+    AppBrandMainProcessService.b(this.jSs);
+    b(com.tencent.mm.plugin.ball.service.d.bKN());
+    this.jSt.dead();
+    this.jSp.clear();
+    this.jSo.clear();
+    this.jSo = null;
     AppMethodBeat.o(44797);
   }
   
@@ -206,12 +166,52 @@ public final class i
       AppMethodBeat.o(44801);
       return;
     }
-    synchronized (this.jys)
+    synchronized (this.jSp)
     {
-      this.jys.remove(parama);
+      this.jSp.remove(parama);
       AppMethodBeat.o(44801);
       return;
     }
+  }
+  
+  public final List<AppBrandBackgroundRunningApp> bdd()
+  {
+    AppMethodBeat.i(44799);
+    ArrayList localArrayList = new ArrayList(this.jSo.values());
+    AppMethodBeat.o(44799);
+    return localArrayList;
+  }
+  
+  public final void bde()
+  {
+    AppMethodBeat.i(188096);
+    Iterator localIterator = bdd().iterator();
+    while (localIterator.hasNext())
+    {
+      AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
+      MMBackgroundRunningOperationParcel localMMBackgroundRunningOperationParcel = new MMBackgroundRunningOperationParcel();
+      localMMBackgroundRunningOperationParcel.appId = localAppBrandBackgroundRunningApp.appId;
+      localMMBackgroundRunningOperationParcel.beO = d.dF(d.jSd.beO, d.jSf.beO);
+      localMMBackgroundRunningOperationParcel.dkM = 2;
+      c(localMMBackgroundRunningOperationParcel);
+    }
+    AppMethodBeat.o(188096);
+  }
+  
+  public final void bdf()
+  {
+    AppMethodBeat.i(188097);
+    Iterator localIterator = bdd().iterator();
+    while (localIterator.hasNext())
+    {
+      AppBrandBackgroundRunningApp localAppBrandBackgroundRunningApp = (AppBrandBackgroundRunningApp)localIterator.next();
+      MMBackgroundRunningOperationParcel localMMBackgroundRunningOperationParcel = new MMBackgroundRunningOperationParcel();
+      localMMBackgroundRunningOperationParcel.appId = localAppBrandBackgroundRunningApp.appId;
+      localMMBackgroundRunningOperationParcel.beO = d.jSe.beO;
+      localMMBackgroundRunningOperationParcel.dkM = 2;
+      c(localMMBackgroundRunningOperationParcel);
+    }
+    AppMethodBeat.o(188097);
   }
   
   public final void c(AppBrandBackgroundRunningOperationParcel paramAppBrandBackgroundRunningOperationParcel)
@@ -223,19 +223,19 @@ public final class i
     Object localObject3;
     if (paramAppBrandBackgroundRunningOperationParcel != null)
     {
-      ac.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation in MM process, operation:%s", new Object[] { paramAppBrandBackgroundRunningOperationParcel });
-      if ((!bs.isNullOrNil(paramAppBrandBackgroundRunningOperationParcel.jxU)) && (paramAppBrandBackgroundRunningOperationParcel.jxU.endsWith(AppBrandPluginUI.class.getSimpleName())))
+      ad.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation in MM process, operation:%s", new Object[] { paramAppBrandBackgroundRunningOperationParcel });
+      if ((!bt.isNullOrNil(paramAppBrandBackgroundRunningOperationParcel.jRQ)) && (paramAppBrandBackgroundRunningOperationParcel.jRQ.endsWith(AppBrandPluginUI.class.getSimpleName())))
       {
-        ac.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, ignore fake native mini program");
+        ad.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, ignore fake native mini program");
         AppMethodBeat.o(44798);
         return;
       }
-      if (paramAppBrandBackgroundRunningOperationParcel.cZu == 3)
+      if (paramAppBrandBackgroundRunningOperationParcel.dkM == 3)
       {
         ??? = paramAppBrandBackgroundRunningOperationParcel.process;
-        if (!bs.isNullOrNil((String)???))
+        if (!bt.isNullOrNil((String)???))
         {
-          localObject2 = this.jyr.entrySet().iterator();
+          localObject2 = this.jSo.entrySet().iterator();
           i = 0;
           while (((Iterator)localObject2).hasNext())
           {
@@ -243,28 +243,28 @@ public final class i
             if (!((String)???).equalsIgnoreCase(((AppBrandBackgroundRunningApp)localObject3).process)) {
               break label1091;
             }
-            if (bs.isNullOrNil(paramAppBrandBackgroundRunningOperationParcel.jxU)) {
-              paramAppBrandBackgroundRunningOperationParcel.jxU = ((AppBrandBackgroundRunningApp)localObject3).jxU;
+            if (bt.isNullOrNil(paramAppBrandBackgroundRunningOperationParcel.jRQ)) {
+              paramAppBrandBackgroundRunningOperationParcel.jRQ = ((AppBrandBackgroundRunningApp)localObject3).jRQ;
             }
-            paramAppBrandBackgroundRunningOperationParcel.aUu |= ((AppBrandBackgroundRunningApp)localObject3).aUu;
+            paramAppBrandBackgroundRunningOperationParcel.beO |= ((AppBrandBackgroundRunningApp)localObject3).beO;
             paramAppBrandBackgroundRunningOperationParcel.appId = ((AppBrandBackgroundRunningApp)localObject3).appId;
-            paramAppBrandBackgroundRunningOperationParcel.hxM = ((AppBrandBackgroundRunningApp)localObject3).hxM;
-            this.jyr.remove(((AppBrandBackgroundRunningApp)localObject3).appId);
-            ac.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, operation kill process:%s, app:%s", new Object[] { ???, ((AppBrandBackgroundRunningApp)localObject3).appId });
-            if (!bs.isNullOrNil(((AppBrandBackgroundRunningApp)localObject3).jxV))
+            paramAppBrandBackgroundRunningOperationParcel.hQh = ((AppBrandBackgroundRunningApp)localObject3).hQh;
+            this.jSo.remove(((AppBrandBackgroundRunningApp)localObject3).appId);
+            ad.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, operation kill process:%s, app:%s", new Object[] { ???, ((AppBrandBackgroundRunningApp)localObject3).appId });
+            if (!bt.isNullOrNil(((AppBrandBackgroundRunningApp)localObject3).jRR))
             {
-              Object localObject4 = e.Jt(((AppBrandBackgroundRunningApp)localObject3).jxV);
+              Object localObject4 = e.MM(((AppBrandBackgroundRunningApp)localObject3).jRR);
               if (localObject4 == null)
               {
-                ac.w("MicroMsg.MMBackgroundRunningManagerService", "cancelCustomNotificationFallback for %s, customNotificationLogicClass is null", new Object[] { ((AppBrandBackgroundRunningApp)localObject3).appId });
+                ad.w("MicroMsg.MMBackgroundRunningManagerService", "cancelCustomNotificationFallback for %s, customNotificationLogicClass is null", new Object[] { ((AppBrandBackgroundRunningApp)localObject3).appId });
                 i = 3;
               }
               else
               {
-                o localo = a.GU(((AppBrandBackgroundRunningApp)localObject3).appId);
+                o localo = a.Kj(((AppBrandBackgroundRunningApp)localObject3).appId);
                 if (localo == null)
                 {
-                  ac.w("MicroMsg.MMBackgroundRunningManagerService", "cancelCustomNotificationFallback for %s, runtime is null", new Object[] { ((AppBrandBackgroundRunningApp)localObject3).appId });
+                  ad.w("MicroMsg.MMBackgroundRunningManagerService", "cancelCustomNotificationFallback for %s, runtime is null", new Object[] { ((AppBrandBackgroundRunningApp)localObject3).appId });
                   i = 3;
                 }
                 else
@@ -272,15 +272,15 @@ public final class i
                   localObject4 = (CustomBackgroundRunningNotificationLogic)localo.as((Class)localObject4);
                   if (localObject4 == null)
                   {
-                    ac.w("MicroMsg.MMBackgroundRunningManagerService", "cancelCustomNotificationFallback for %s, customNotificationLogic is null", new Object[] { ((AppBrandBackgroundRunningApp)localObject3).appId });
+                    ad.w("MicroMsg.MMBackgroundRunningManagerService", "cancelCustomNotificationFallback for %s, customNotificationLogic is null", new Object[] { ((AppBrandBackgroundRunningApp)localObject3).appId });
                     i = 3;
                   }
                   else
                   {
-                    if (jyx == null) {
-                      jyx = (NotificationManager)ai.getContext().getSystemService("notification");
+                    if (jSu == null) {
+                      jSu = (NotificationManager)aj.getContext().getSystemService("notification");
                     }
-                    jyx.cancel(((CustomBackgroundRunningNotificationLogic)localObject4).aZv());
+                    jSu.cancel(((CustomBackgroundRunningNotificationLogic)localObject4).bcT());
                   }
                 }
               }
@@ -302,89 +302,89 @@ public final class i
       {
         if (i != 0)
         {
-          synchronized (this.jys)
+          synchronized (this.jSp)
           {
-            localObject2 = aZE();
-            localObject3 = this.jys.iterator();
+            localObject2 = bdd();
+            localObject3 = this.jSp.iterator();
             if (!((Iterator)localObject3).hasNext()) {
               break label928;
             }
             ((h.a)((Iterator)localObject3).next()).a((List)localObject2, paramAppBrandBackgroundRunningOperationParcel, i);
           }
-          ac.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, operation kill, no process");
+          ad.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, operation kill, no process");
           i = j;
           continue;
-          ??? = (AppBrandBackgroundRunningApp)this.jyr.get(paramAppBrandBackgroundRunningOperationParcel.appId);
+          ??? = (AppBrandBackgroundRunningApp)this.jSo.get(paramAppBrandBackgroundRunningOperationParcel.appId);
           if (??? != null)
           {
-            if (paramAppBrandBackgroundRunningOperationParcel.cZu == 1)
+            if (paramAppBrandBackgroundRunningOperationParcel.dkM == 1)
             {
-              if (!d.contains(((AppBrandBackgroundRunningApp)???).aUu, paramAppBrandBackgroundRunningOperationParcel.aUu))
+              if (!d.contains(((AppBrandBackgroundRunningApp)???).beO, paramAppBrandBackgroundRunningOperationParcel.beO))
               {
-                ((AppBrandBackgroundRunningApp)???).aUu = d.dD(((AppBrandBackgroundRunningApp)???).aUu, paramAppBrandBackgroundRunningOperationParcel.aUu);
-                ac.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, app(%s) add new usage(%s)", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId, Integer.valueOf(paramAppBrandBackgroundRunningOperationParcel.aUu) });
+                ((AppBrandBackgroundRunningApp)???).beO = d.dF(((AppBrandBackgroundRunningApp)???).beO, paramAppBrandBackgroundRunningOperationParcel.beO);
+                ad.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, app(%s) add new usage(%s)", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId, Integer.valueOf(paramAppBrandBackgroundRunningOperationParcel.beO) });
                 i = 2;
                 continue;
               }
-              ac.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, this app has been added before, but now it wants to add a same usage!!!");
+              ad.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, this app has been added before, but now it wants to add a same usage!!!");
               i = j;
               continue;
             }
             i = j;
-            if (paramAppBrandBackgroundRunningOperationParcel.cZu != 2) {
+            if (paramAppBrandBackgroundRunningOperationParcel.dkM != 2) {
               continue;
             }
-            if (d.contains(((AppBrandBackgroundRunningApp)???).aUu, paramAppBrandBackgroundRunningOperationParcel.aUu))
+            if (d.contains(((AppBrandBackgroundRunningApp)???).beO, paramAppBrandBackgroundRunningOperationParcel.beO))
             {
-              paramAppBrandBackgroundRunningOperationParcel.hxM = ((AppBrandBackgroundRunningApp)???).hxM;
-              ((AppBrandBackgroundRunningApp)???).aUu = d.dE(((AppBrandBackgroundRunningApp)???).aUu, paramAppBrandBackgroundRunningOperationParcel.aUu);
-              ac.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, app(%s) remove usage(%s)", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId, Integer.valueOf(paramAppBrandBackgroundRunningOperationParcel.aUu) });
-              if (((AppBrandBackgroundRunningApp)???).aUu == 0)
+              paramAppBrandBackgroundRunningOperationParcel.hQh = ((AppBrandBackgroundRunningApp)???).hQh;
+              ((AppBrandBackgroundRunningApp)???).beO = d.dG(((AppBrandBackgroundRunningApp)???).beO, paramAppBrandBackgroundRunningOperationParcel.beO);
+              ad.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, app(%s) remove usage(%s)", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId, Integer.valueOf(paramAppBrandBackgroundRunningOperationParcel.beO) });
+              if (((AppBrandBackgroundRunningApp)???).beO == 0)
               {
-                if (bs.isNullOrNil(paramAppBrandBackgroundRunningOperationParcel.jxU)) {
-                  paramAppBrandBackgroundRunningOperationParcel.jxU = ((AppBrandBackgroundRunningApp)???).jxU;
+                if (bt.isNullOrNil(paramAppBrandBackgroundRunningOperationParcel.jRQ)) {
+                  paramAppBrandBackgroundRunningOperationParcel.jRQ = ((AppBrandBackgroundRunningApp)???).jRQ;
                 }
-                this.jyr.remove(paramAppBrandBackgroundRunningOperationParcel.appId);
-                ac.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, app(%s) has been removed", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId });
+                this.jSo.remove(paramAppBrandBackgroundRunningOperationParcel.appId);
+                ad.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, app(%s) has been removed", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId });
                 i = 3;
               }
             }
             else
             {
-              ac.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, this app has been added before, but now it wants to remove not added usage!!!");
+              ad.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, this app has been added before, but now it wants to remove not added usage!!!");
               i = j;
             }
           }
           else
           {
-            if (paramAppBrandBackgroundRunningOperationParcel.cZu == 1)
+            if (paramAppBrandBackgroundRunningOperationParcel.dkM == 1)
             {
               ??? = new AppBrandBackgroundRunningApp();
               ((AppBrandBackgroundRunningApp)???).appId = paramAppBrandBackgroundRunningOperationParcel.appId;
-              ((AppBrandBackgroundRunningApp)???).hxM = paramAppBrandBackgroundRunningOperationParcel.hxM;
-              ((AppBrandBackgroundRunningApp)???).aUu = paramAppBrandBackgroundRunningOperationParcel.aUu;
+              ((AppBrandBackgroundRunningApp)???).hQh = paramAppBrandBackgroundRunningOperationParcel.hQh;
+              ((AppBrandBackgroundRunningApp)???).beO = paramAppBrandBackgroundRunningOperationParcel.beO;
               ((AppBrandBackgroundRunningApp)???).name = paramAppBrandBackgroundRunningOperationParcel.name;
-              ((AppBrandBackgroundRunningApp)???).drM = paramAppBrandBackgroundRunningOperationParcel.drM;
+              ((AppBrandBackgroundRunningApp)???).dDH = paramAppBrandBackgroundRunningOperationParcel.dDH;
               ((AppBrandBackgroundRunningApp)???).username = paramAppBrandBackgroundRunningOperationParcel.username;
-              ((AppBrandBackgroundRunningApp)???).jxU = paramAppBrandBackgroundRunningOperationParcel.jxU;
+              ((AppBrandBackgroundRunningApp)???).jRQ = paramAppBrandBackgroundRunningOperationParcel.jRQ;
               ((AppBrandBackgroundRunningApp)???).process = paramAppBrandBackgroundRunningOperationParcel.process;
-              ((AppBrandBackgroundRunningApp)???).jxV = paramAppBrandBackgroundRunningOperationParcel.jxV;
-              this.jyr.put(((AppBrandBackgroundRunningApp)???).appId, ???);
-              ac.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, add app(%s) with usage(%s)", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId, Integer.valueOf(paramAppBrandBackgroundRunningOperationParcel.aUu) });
+              ((AppBrandBackgroundRunningApp)???).jRR = paramAppBrandBackgroundRunningOperationParcel.jRR;
+              this.jSo.put(((AppBrandBackgroundRunningApp)???).appId, ???);
+              ad.i("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, add app(%s) with usage(%s)", new Object[] { paramAppBrandBackgroundRunningOperationParcel.appId, Integer.valueOf(paramAppBrandBackgroundRunningOperationParcel.beO) });
               i = 1;
               continue;
             }
             i = j;
-            if (paramAppBrandBackgroundRunningOperationParcel.cZu != 2) {
+            if (paramAppBrandBackgroundRunningOperationParcel.dkM != 2) {
               continue;
             }
-            ac.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, this app has not been added before, but now it wants to remove some usage!!!");
+            ad.w("MicroMsg.MMBackgroundRunningManagerService", "receiveOperation, this app has not been added before, but now it wants to remove some usage!!!");
             i = j;
             continue;
             if (((List)localObject2).isEmpty()) {}
             for (paramAppBrandBackgroundRunningOperationParcel = null;; paramAppBrandBackgroundRunningOperationParcel = paramAppBrandBackgroundRunningOperationParcel.toString())
             {
-              ac.i("MicroMsg.MMBackgroundRunningManagerService", "report background running app list changed, note:%s", new Object[] { paramAppBrandBackgroundRunningOperationParcel });
+              ad.i("MicroMsg.MMBackgroundRunningManagerService", "report background running app list changed, note:%s", new Object[] { paramAppBrandBackgroundRunningOperationParcel });
               c.a(null, 0, System.currentTimeMillis(), 6, paramAppBrandBackgroundRunningOperationParcel, 0);
               AppMethodBeat.o(44798);
               return;
@@ -410,7 +410,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.i
  * JD-Core Version:    0.7.0.1
  */

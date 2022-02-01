@@ -9,20 +9,20 @@ import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/RecommendStickerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "itemPadding", "", "itemWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/layout/RecommendStickerDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "itemPadding", "", "itemWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojicapture_release"})
 public final class b
   extends RecyclerView.h
 {
   private final int itemPadding;
-  private final int onm;
+  private final int oQH;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(883);
-    this.onm = paramContext.getResources().getDimensionPixelSize(2131166206);
+    this.oQH = paramContext.getResources().getDimensionPixelSize(2131166206);
     this.itemPadding = paramContext.getResources().getDimensionPixelSize(2131165303);
     AppMethodBeat.o(883);
   }
@@ -30,10 +30,10 @@ public final class b
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(882);
-    k.h(paramRect, "outRect");
-    k.h(paramView, "view");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramRect, "outRect");
+    p.h(paramView, "view");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     int j = RecyclerView.bw(paramView);
     paramView = paramRecyclerView.getAdapter();
     int i;
@@ -51,7 +51,7 @@ public final class b
       if (j != 0) {
         break label115;
       }
-      paramRect.set((paramRecyclerView.getWidth() - this.onm) / 2, 0, this.itemPadding, 0);
+      paramRect.set((paramRecyclerView.getWidth() - this.oQH) / 2, 0, this.itemPadding, 0);
       AppMethodBeat.o(882);
       return;
       i = 0;
@@ -61,7 +61,7 @@ public final class b
     if (j == i - 1)
     {
       if (paramView == null) {}
-      for (i = (paramRecyclerView.getWidth() - this.onm) / 2;; i = paramRecyclerView.getWidth() / 2 - this.onm / 2 * 3 - this.itemPadding * 2)
+      for (i = (paramRecyclerView.getWidth() - this.oQH) / 2;; i = paramRecyclerView.getWidth() / 2 - this.oQH / 2 * 3 - this.itemPadding * 2)
       {
         paramRect.set(this.itemPadding, 0, i, 0);
         AppMethodBeat.o(882);

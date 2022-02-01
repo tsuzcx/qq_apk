@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements b, c
 {
-  private final c aLm;
-  private b aLn;
-  private b aLo;
+  private final c aNd;
+  private b aNe;
+  private b aNf;
   
   public a(c paramc)
   {
-    this.aLm = paramc;
+    this.aNd = paramc;
   }
   
   private boolean e(b paramb)
   {
     AppMethodBeat.i(77632);
-    if ((paramb.equals(this.aLn)) || ((this.aLn.isFailed()) && (paramb.equals(this.aLo))))
+    if ((paramb.equals(this.aNe)) || ((this.aNe.isFailed()) && (paramb.equals(this.aNf))))
     {
       AppMethodBeat.o(77632);
       return true;
@@ -28,8 +28,8 @@ public final class a
   
   public final void a(b paramb1, b paramb2)
   {
-    this.aLn = paramb1;
-    this.aLo = paramb2;
+    this.aNe = paramb1;
+    this.aNf = paramb2;
   }
   
   public final boolean a(b paramb)
@@ -38,7 +38,7 @@ public final class a
     if ((paramb instanceof a))
     {
       paramb = (a)paramb;
-      if ((this.aLn.a(paramb.aLn)) && (this.aLo.a(paramb.aLo)))
+      if ((this.aNe.a(paramb.aNe)) && (this.aNf.a(paramb.aNf)))
       {
         AppMethodBeat.o(77628);
         return true;
@@ -53,7 +53,7 @@ public final class a
   public final boolean b(b paramb)
   {
     AppMethodBeat.i(77629);
-    if ((this.aLm == null) || (this.aLm.b(this))) {}
+    if ((this.aNd == null) || (this.aNd.b(this))) {}
     for (int i = 1; (i != 0) && (e(paramb)); i = 0)
     {
       AppMethodBeat.o(77629);
@@ -66,8 +66,8 @@ public final class a
   public final void begin()
   {
     AppMethodBeat.i(77619);
-    if (!this.aLn.isRunning()) {
-      this.aLn.begin();
+    if (!this.aNe.isRunning()) {
+      this.aNe.begin();
     }
     AppMethodBeat.o(77619);
   }
@@ -75,7 +75,7 @@ public final class a
   public final boolean c(b paramb)
   {
     AppMethodBeat.i(77630);
-    if ((this.aLm == null) || (this.aLm.c(this))) {}
+    if ((this.aNd == null) || (this.aNd.c(this))) {}
     for (int i = 1; (i != 0) && (e(paramb)); i = 0)
     {
       AppMethodBeat.o(77630);
@@ -88,9 +88,9 @@ public final class a
   public final void clear()
   {
     AppMethodBeat.i(77621);
-    this.aLn.clear();
-    if (this.aLo.isRunning()) {
-      this.aLo.clear();
+    this.aNe.clear();
+    if (this.aNf.isRunning()) {
+      this.aNf.clear();
     }
     AppMethodBeat.o(77621);
   }
@@ -98,7 +98,7 @@ public final class a
   public final boolean d(b paramb)
   {
     AppMethodBeat.i(77631);
-    if ((this.aLm == null) || (this.aLm.d(this))) {}
+    if ((this.aNd == null) || (this.aNd.d(this))) {}
     for (int i = 1; (i != 0) && (e(paramb)); i = 0)
     {
       AppMethodBeat.o(77631);
@@ -111,8 +111,8 @@ public final class a
   public final void f(b paramb)
   {
     AppMethodBeat.i(77634);
-    if (this.aLm != null) {
-      this.aLm.f(this);
+    if (this.aNd != null) {
+      this.aNd.f(this);
     }
     AppMethodBeat.o(77634);
   }
@@ -120,16 +120,16 @@ public final class a
   public final void g(b paramb)
   {
     AppMethodBeat.i(77635);
-    if (!paramb.equals(this.aLo))
+    if (!paramb.equals(this.aNf))
     {
-      if (!this.aLo.isRunning()) {
-        this.aLo.begin();
+      if (!this.aNf.isRunning()) {
+        this.aNf.begin();
       }
       AppMethodBeat.o(77635);
       return;
     }
-    if (this.aLm != null) {
-      this.aLm.g(this);
+    if (this.aNd != null) {
+      this.aNd.g(this);
     }
     AppMethodBeat.o(77635);
   }
@@ -137,13 +137,13 @@ public final class a
   public final boolean isCancelled()
   {
     AppMethodBeat.i(77625);
-    if (this.aLn.isFailed())
+    if (this.aNe.isFailed())
     {
-      bool = this.aLo.isCancelled();
+      bool = this.aNf.isCancelled();
       AppMethodBeat.o(77625);
       return bool;
     }
-    boolean bool = this.aLn.isCancelled();
+    boolean bool = this.aNe.isCancelled();
     AppMethodBeat.o(77625);
     return bool;
   }
@@ -151,13 +151,13 @@ public final class a
   public final boolean isComplete()
   {
     AppMethodBeat.i(77623);
-    if (this.aLn.isFailed())
+    if (this.aNe.isFailed())
     {
-      bool = this.aLo.isComplete();
+      bool = this.aNf.isComplete();
       AppMethodBeat.o(77623);
       return bool;
     }
-    boolean bool = this.aLn.isComplete();
+    boolean bool = this.aNe.isComplete();
     AppMethodBeat.o(77623);
     return bool;
   }
@@ -165,7 +165,7 @@ public final class a
   public final boolean isFailed()
   {
     AppMethodBeat.i(77626);
-    if ((this.aLn.isFailed()) && (this.aLo.isFailed()))
+    if ((this.aNe.isFailed()) && (this.aNf.isFailed()))
     {
       AppMethodBeat.o(77626);
       return true;
@@ -177,22 +177,36 @@ public final class a
   public final boolean isRunning()
   {
     AppMethodBeat.i(77622);
-    if (this.aLn.isFailed())
+    if (this.aNe.isFailed())
     {
-      bool = this.aLo.isRunning();
+      bool = this.aNf.isRunning();
       AppMethodBeat.o(77622);
       return bool;
     }
-    boolean bool = this.aLn.isRunning();
+    boolean bool = this.aNe.isRunning();
     AppMethodBeat.o(77622);
     return bool;
   }
   
-  public final boolean pA()
+  public final boolean pR()
+  {
+    AppMethodBeat.i(77624);
+    if (this.aNe.isFailed())
+    {
+      bool = this.aNf.pR();
+      AppMethodBeat.o(77624);
+      return bool;
+    }
+    boolean bool = this.aNe.pR();
+    AppMethodBeat.o(77624);
+    return bool;
+  }
+  
+  public final boolean pS()
   {
     AppMethodBeat.i(77633);
-    if ((this.aLm != null) && (this.aLm.pA())) {}
-    for (int i = 1; (i != 0) || (pz()); i = 0)
+    if ((this.aNd != null) && (this.aNd.pS())) {}
+    for (int i = 1; (i != 0) || (pR()); i = 0)
     {
       AppMethodBeat.o(77633);
       return true;
@@ -204,34 +218,20 @@ public final class a
   public final void pause()
   {
     AppMethodBeat.i(77620);
-    if (!this.aLn.isFailed()) {
-      this.aLn.pause();
+    if (!this.aNe.isFailed()) {
+      this.aNe.pause();
     }
-    if (this.aLo.isRunning()) {
-      this.aLo.pause();
+    if (this.aNf.isRunning()) {
+      this.aNf.pause();
     }
     AppMethodBeat.o(77620);
-  }
-  
-  public final boolean pz()
-  {
-    AppMethodBeat.i(77624);
-    if (this.aLn.isFailed())
-    {
-      bool = this.aLo.pz();
-      AppMethodBeat.o(77624);
-      return bool;
-    }
-    boolean bool = this.aLn.pz();
-    AppMethodBeat.o(77624);
-    return bool;
   }
   
   public final void recycle()
   {
     AppMethodBeat.i(77627);
-    this.aLn.recycle();
-    this.aLo.recycle();
+    this.aNe.recycle();
+    this.aNf.recycle();
     AppMethodBeat.o(77627);
   }
 }

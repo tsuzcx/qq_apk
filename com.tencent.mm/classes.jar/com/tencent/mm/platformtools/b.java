@@ -2,109 +2,109 @@ package com.tencent.mm.platformtools;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class b
 {
-  private m itM;
-  private n itN;
-  private o itO;
-  private k itP;
-  private l itQ;
-  private j itR;
+  private m iMP;
+  private n iMQ;
+  private o iMR;
+  private k iMS;
+  private l iMT;
+  private j iMU;
   
   private static void a(c paramc)
   {
     AppMethodBeat.i(127674);
     if (paramc != null)
     {
-      Iterator localIterator = paramc.itS.iterator();
+      Iterator localIterator = paramc.iMV.iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        g.agi().b(localInteger.intValue(), paramc);
+        g.aiU().b(localInteger.intValue(), paramc);
       }
       paramc.activity = null;
     }
     AppMethodBeat.o(127674);
   }
   
-  public final boolean a(Activity paramActivity, ad paramad)
+  public final boolean a(Activity paramActivity, ae paramae)
   {
     AppMethodBeat.i(127673);
-    if ((paramad.type == 0) || (paramad.action == 0))
+    if ((paramae.type == 0) || (paramae.action == 0))
     {
       AppMethodBeat.o(127673);
       return false;
     }
-    if (this.itR == null) {
-      this.itR = new j(paramActivity);
+    if (this.iMU == null) {
+      this.iMU = new j(paramActivity);
     }
-    if (this.itR.a(paramad))
+    if (this.iMU.a(paramae))
     {
       AppMethodBeat.o(127673);
       return true;
     }
-    switch (paramad.type)
+    switch (paramae.type)
     {
     default: 
-      ac.e("MicroMsg.BaseErrorHelper", "Unkown error type");
+      ad.e("MicroMsg.BaseErrorHelper", "Unkown error type");
     }
     for (;;)
     {
       AppMethodBeat.o(127673);
       return false;
-      if (this.itM == null) {
-        this.itM = new m(paramActivity);
+      if (this.iMP == null) {
+        this.iMP = new m(paramActivity);
       }
-      this.itM.a(paramad);
+      this.iMP.a(paramae);
       continue;
-      if (this.itN == null) {
-        this.itN = new n(paramActivity);
+      if (this.iMQ == null) {
+        this.iMQ = new n(paramActivity);
       }
-      this.itN.a(paramad);
+      this.iMQ.a(paramae);
       continue;
-      if (this.itO == null) {
-        this.itO = new o(paramActivity);
+      if (this.iMR == null) {
+        this.iMR = new o(paramActivity);
       }
-      this.itO.a(paramad);
+      this.iMR.a(paramae);
       continue;
-      if (this.itP == null) {
-        this.itP = new k(paramActivity);
+      if (this.iMS == null) {
+        this.iMS = new k(paramActivity);
       }
-      this.itP.a(paramad);
+      this.iMS.a(paramae);
       continue;
-      if (this.itQ == null) {
-        this.itQ = new l(paramActivity);
+      if (this.iMT == null) {
+        this.iMT = new l(paramActivity);
       }
-      this.itQ.a(paramad);
+      this.iMT.a(paramae);
       continue;
-      if (this.itR == null) {
-        this.itR = new j(paramActivity);
+      if (this.iMU == null) {
+        this.iMU = new j(paramActivity);
       }
-      this.itR.a(paramad);
+      this.iMU.a(paramae);
     }
   }
   
   public final void close()
   {
     AppMethodBeat.i(127675);
-    a(this.itM);
-    a(this.itN);
-    a(this.itO);
-    a(this.itP);
-    a(this.itQ);
-    a(this.itR);
+    a(this.iMP);
+    a(this.iMQ);
+    a(this.iMR);
+    a(this.iMS);
+    a(this.iMT);
+    a(this.iMU);
     AppMethodBeat.o(127675);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.platformtools.b
  * JD-Core Version:    0.7.0.1
  */

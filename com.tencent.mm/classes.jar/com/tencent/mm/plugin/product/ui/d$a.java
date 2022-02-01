@@ -13,10 +13,10 @@ import java.util.List;
 final class d$a
   extends BaseAdapter
 {
-  List<String> aIJ;
+  List<String> aKA;
   private final Context context;
   private final int style;
-  int vGl = -1;
+  int wNr = -1;
   
   public d$a(Context paramContext)
   {
@@ -27,9 +27,9 @@ final class d$a
   public final int getCount()
   {
     AppMethodBeat.i(66957);
-    if (this.aIJ != null)
+    if (this.aKA != null)
     {
-      int i = this.aIJ.size();
+      int i = this.aKA.size();
       AppMethodBeat.o(66957);
       return i;
     }
@@ -56,35 +56,35 @@ final class d$a
     {
       paramViewGroup = View.inflate(this.context, 2131494854, null);
       paramView = new d.b();
-      paramView.nyS = ((TextView)paramViewGroup.findViewById(2131305710));
-      paramView.vGm = ((CheckBox)paramViewGroup.findViewById(2131298214));
-      paramView.vGn = ((RadioButton)paramViewGroup.findViewById(2131303704));
+      paramView.wNs = ((TextView)paramViewGroup.findViewById(2131305710));
+      paramView.wNt = ((CheckBox)paramViewGroup.findViewById(2131298214));
+      paramView.wNu = ((RadioButton)paramViewGroup.findViewById(2131303704));
       paramViewGroup.setTag(paramView);
     }
     paramView = (d.b)paramViewGroup.getTag();
-    paramView.nyS.setText((CharSequence)this.aIJ.get(paramInt));
+    paramView.wNs.setText((CharSequence)this.aKA.get(paramInt));
     switch (this.style)
     {
     default: 
-      paramView.vGm.setVisibility(8);
-      paramView.vGn.setVisibility(8);
+      paramView.wNt.setVisibility(8);
+      paramView.wNu.setVisibility(8);
       AppMethodBeat.o(66958);
       return paramViewGroup;
     case 1: 
-      paramView.vGm.setVisibility(8);
-      paramView.vGn.setVisibility(0);
-      paramView = paramView.vGn;
-      if (paramInt == this.vGl) {}
+      paramView.wNt.setVisibility(8);
+      paramView.wNu.setVisibility(0);
+      paramView = paramView.wNu;
+      if (paramInt == this.wNr) {}
       for (bool = true;; bool = false)
       {
         paramView.setChecked(bool);
         break;
       }
     }
-    paramView.vGm.setVisibility(0);
-    paramView.vGn.setVisibility(8);
-    paramView = paramView.vGm;
-    if (paramInt == this.vGl) {}
+    paramView.wNt.setVisibility(0);
+    paramView.wNu.setVisibility(8);
+    paramView = paramView.wNt;
+    if (paramInt == this.wNr) {}
     for (;;)
     {
       paramView.setChecked(bool);
@@ -95,7 +95,7 @@ final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

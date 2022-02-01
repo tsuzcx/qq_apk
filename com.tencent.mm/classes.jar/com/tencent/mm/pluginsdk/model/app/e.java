@@ -1,11 +1,13 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,15 +15,15 @@ import java.util.Map;
 import java.util.Set;
 
 public final class e
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  Map<Integer, Set<u>> hwk;
+  Map<Integer, Set<u>> hOz;
   
   public e()
   {
     AppMethodBeat.i(151661);
-    this.hwk = new HashMap();
-    com.tencent.mm.kernel.g.agQ().ghe.a(452, this);
+    this.hOz = new HashMap();
+    g.ajB().gAO.a(452, this);
     AppMethodBeat.o(151661);
   }
   
@@ -29,23 +31,23 @@ public final class e
   {
     AppMethodBeat.i(151664);
     paramaa = new ab(paramInt, paramaa);
-    com.tencent.mm.kernel.g.agQ().ghe.a(paramaa, 0);
+    g.ajB().gAO.a(paramaa, 0);
     AppMethodBeat.o(151664);
   }
   
   public final void a(final int paramInt, final u paramu)
   {
     AppMethodBeat.i(151662);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(151658);
-        if (!e.this.hwk.containsKey(Integer.valueOf(paramInt))) {
-          e.this.hwk.put(Integer.valueOf(paramInt), new HashSet());
+        if (!e.this.hOz.containsKey(Integer.valueOf(paramInt))) {
+          e.this.hOz.put(Integer.valueOf(paramInt), new HashSet());
         }
-        if ((e.this.hwk.get(Integer.valueOf(paramInt)) != null) && (!((Set)e.this.hwk.get(Integer.valueOf(paramInt))).contains(paramu))) {
-          ((Set)e.this.hwk.get(Integer.valueOf(paramInt))).add(paramu);
+        if ((e.this.hOz.get(Integer.valueOf(paramInt)) != null) && (!((Set)e.this.hOz.get(Integer.valueOf(paramInt))).contains(paramu))) {
+          ((Set)e.this.hOz.get(Integer.valueOf(paramInt))).add(paramu);
         }
         AppMethodBeat.o(151658);
       }
@@ -56,13 +58,13 @@ public final class e
   public final void b(final int paramInt, final u paramu)
   {
     AppMethodBeat.i(151663);
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(151659);
-        if (e.this.hwk.get(Integer.valueOf(paramInt)) != null) {
-          ((Set)e.this.hwk.get(Integer.valueOf(paramInt))).remove(paramu);
+        if (e.this.hOz.get(Integer.valueOf(paramInt)) != null) {
+          ((Set)e.this.hOz.get(Integer.valueOf(paramInt))).remove(paramu);
         }
         AppMethodBeat.o(151659);
       }
@@ -75,12 +77,12 @@ public final class e
     AppMethodBeat.i(151665);
     if (!(paramn instanceof ab))
     {
-      ac.i("MicroMsg.AppCenterNetSceneService", "onSceneEnd, the scene is not a instance of NetSceneAppCenter");
+      ad.i("MicroMsg.AppCenterNetSceneService", "onSceneEnd, the scene is not a instance of NetSceneAppCenter");
       AppMethodBeat.o(151665);
       return;
     }
     paramn = (ab)paramn;
-    Set localSet = (Set)this.hwk.get(Integer.valueOf(paramn.Diu));
+    Set localSet = (Set)this.hOz.get(Integer.valueOf(paramn.ENi));
     if ((localSet != null) && (localSet.size() > 0))
     {
       Object localObject = new HashSet();
@@ -90,7 +92,7 @@ public final class e
       {
         u localu = (u)((Iterator)localObject).next();
         if ((localu != null) && (localSet.contains(localu))) {
-          localu.a(paramInt1, paramInt2, paramString, paramn.Div);
+          localu.a(paramInt1, paramInt2, paramString, paramn.ENj);
         }
       }
     }
@@ -99,7 +101,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.e
  * JD-Core Version:    0.7.0.1
  */

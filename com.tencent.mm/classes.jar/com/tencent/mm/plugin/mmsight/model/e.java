@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.model;
 
 public abstract interface e
 {
-  public abstract boolean dbM();
+  public abstract boolean dlg();
 }
 
 

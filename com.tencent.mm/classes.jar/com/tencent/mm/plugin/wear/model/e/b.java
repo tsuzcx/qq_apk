@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.vfs.i;
 import java.io.File;
 import java.security.Key;
@@ -19,14 +19,14 @@ import javax.crypto.Cipher;
 public final class b
   extends a
 {
-  private byte[] BXe;
-  private byte[] BXf;
+  private byte[] Dxx;
+  private byte[] Dxy;
   private byte[] sessionKey;
   
-  private void ewJ()
+  private void eKP()
   {
     AppMethodBeat.i(30068);
-    File localFile3 = new File(com.tencent.mm.loader.j.b.apa(), "wear/key");
+    File localFile3 = new File(com.tencent.mm.loader.j.b.arN(), "wear/key");
     if (!localFile3.exists()) {
       localFile3.mkdirs();
     }
@@ -35,32 +35,32 @@ public final class b
     localFile3 = new File(localFile3, "session.key");
     if ((!localFile1.exists()) || (!localFile2.exists()) || (!localFile3.exists()))
     {
-      ac.i("MicroMsg.Wear.HttpAuthServer", "recreate keys");
+      ad.i("MicroMsg.Wear.HttpAuthServer", "recreate keys");
       localFile1.delete();
       localFile2.delete();
       localFile3.delete();
-      HashMap localHashMap = com.tencent.mm.plugin.wear.a.a.ewL();
+      HashMap localHashMap = com.tencent.mm.plugin.wear.a.a.eKR();
       RSAPrivateKey localRSAPrivateKey = (RSAPrivateKey)localHashMap.get("RSAPrivateKey");
-      this.BXf = ((RSAPublicKey)localHashMap.get("RSAPublicKey")).getEncoded();
-      this.BXe = localRSAPrivateKey.getEncoded();
-      this.sessionKey = com.tencent.mm.plugin.wear.a.a.ewM();
-      i.f(localFile1.getAbsolutePath(), this.BXe, this.BXe.length);
-      i.f(localFile2.getAbsolutePath(), this.BXf, this.BXf.length);
+      this.Dxy = ((RSAPublicKey)localHashMap.get("RSAPublicKey")).getEncoded();
+      this.Dxx = localRSAPrivateKey.getEncoded();
+      this.sessionKey = com.tencent.mm.plugin.wear.a.a.eKS();
+      i.f(localFile1.getAbsolutePath(), this.Dxx, this.Dxx.length);
+      i.f(localFile2.getAbsolutePath(), this.Dxy, this.Dxy.length);
       i.f(localFile3.getAbsolutePath(), this.sessionKey, this.sessionKey.length);
     }
     for (;;)
     {
-      ac.i("MicroMsg.Wear.HttpAuthServer", "publicKey=%s privateKey=%s sessionKey=%s", new Object[] { ah.B(this.BXf), ah.B(this.BXe), ah.B(this.sessionKey) });
+      ad.i("MicroMsg.Wear.HttpAuthServer", "publicKey=%s privateKey=%s sessionKey=%s", new Object[] { ai.B(this.Dxy), ai.B(this.Dxx), ai.B(this.sessionKey) });
       AppMethodBeat.o(30068);
       return;
-      ac.i("MicroMsg.Wear.HttpAuthServer", "use old keys");
-      this.BXf = i.aU(localFile2.getAbsolutePath(), 0, 2147483647);
-      this.BXe = i.aU(localFile1.getAbsolutePath(), 0, 2147483647);
-      this.sessionKey = i.aU(localFile3.getAbsolutePath(), 0, 2147483647);
+      ad.i("MicroMsg.Wear.HttpAuthServer", "use old keys");
+      this.Dxy = i.aY(localFile2.getAbsolutePath(), 0, 2147483647);
+      this.Dxx = i.aY(localFile1.getAbsolutePath(), 0, 2147483647);
+      this.sessionKey = i.aY(localFile3.getAbsolutePath(), 0, 2147483647);
     }
   }
   
-  public final List<Integer> ewH()
+  public final List<Integer> eKN()
   {
     AppMethodBeat.i(30069);
     ArrayList localArrayList = new ArrayList();
@@ -74,23 +74,23 @@ public final class b
   {
     boolean bool3 = true;
     AppMethodBeat.i(30067);
-    if ((this.BXf == null) || (this.BXe == null) || (this.sessionKey == null)) {
-      ac.i("MicroMsg.Wear.HttpAuthServer", "try to reload all key");
+    if ((this.Dxy == null) || (this.Dxx == null) || (this.sessionKey == null)) {
+      ad.i("MicroMsg.Wear.HttpAuthServer", "try to reload all key");
     }
     try
     {
-      ewJ();
-      if (this.BXf != null)
+      eKP();
+      if (this.Dxy != null)
       {
         bool1 = true;
-        if (this.BXe == null) {
+        if (this.Dxx == null) {
           break label135;
         }
         bool2 = true;
         if (this.sessionKey == null) {
           break label140;
         }
-        ac.i("MicroMsg.Wear.HttpAuthServer", "publicKey %s privateKey %s sessionKey %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+        ad.i("MicroMsg.Wear.HttpAuthServer", "publicKey %s privateKey %s sessionKey %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
         byte[] arrayOfByte = this.sessionKey;
         AppMethodBeat.o(30067);
         return arrayOfByte;
@@ -100,7 +100,7 @@ public final class b
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.Wear.HttpAuthServer", localException, "loadAllKey", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Wear.HttpAuthServer", localException, "loadAllKey", new Object[0]);
         continue;
         boolean bool1 = false;
         continue;
@@ -124,25 +124,25 @@ public final class b
     {
       AppMethodBeat.o(30070);
       return null;
-      ac.i("MicroMsg.Wear.HttpAuthServer", "request public key");
-      if ((this.BXf == null) || (this.BXe == null) || (this.sessionKey == null)) {
-        ac.i("MicroMsg.Wear.HttpAuthServer", "try to reload all key");
+      ad.i("MicroMsg.Wear.HttpAuthServer", "request public key");
+      if ((this.Dxy == null) || (this.Dxx == null) || (this.sessionKey == null)) {
+        ad.i("MicroMsg.Wear.HttpAuthServer", "try to reload all key");
       }
       try
       {
-        ewJ();
-        if (this.BXf != null)
+        eKP();
+        if (this.Dxy != null)
         {
           bool1 = true;
-          if (this.BXe == null) {
+          if (this.Dxx == null) {
             break label173;
           }
           bool2 = true;
           if (this.sessionKey == null) {
             break label179;
           }
-          ac.i("MicroMsg.Wear.HttpAuthServer", "publicKey %s privateKey %s sessionKey %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-          paramArrayOfByte = this.BXf;
+          ad.i("MicroMsg.Wear.HttpAuthServer", "publicKey %s privateKey %s sessionKey %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+          paramArrayOfByte = this.Dxy;
           AppMethodBeat.o(30070);
           return paramArrayOfByte;
         }
@@ -151,7 +151,7 @@ public final class b
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.Wear.HttpAuthServer", paramArrayOfByte, "loadAllKey", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Wear.HttpAuthServer", paramArrayOfByte, "loadAllKey", new Object[0]);
           continue;
           boolean bool1 = false;
           continue;
@@ -164,20 +164,20 @@ public final class b
       }
       try
       {
-        Object localObject2 = new PKCS8EncodedKeySpec(this.BXe);
+        Object localObject2 = new PKCS8EncodedKeySpec(this.Dxx);
         Object localObject1 = KeyFactory.getInstance("RSA");
         localObject2 = ((KeyFactory)localObject1).generatePrivate((KeySpec)localObject2);
         localObject1 = Cipher.getInstance(((KeyFactory)localObject1).getAlgorithm());
         ((Cipher)localObject1).init(2, (Key)localObject2);
         paramArrayOfByte = ((Cipher)localObject1).doFinal(paramArrayOfByte);
         localObject1 = com.tencent.mm.plugin.wear.a.a.j(this.sessionKey, paramArrayOfByte);
-        ac.i("MicroMsg.Wear.HttpAuthServer", "funid %d, randomKey=%s", new Object[] { Integer.valueOf(paramInt), ah.B(paramArrayOfByte) });
+        ad.i("MicroMsg.Wear.HttpAuthServer", "funid %d, randomKey=%s", new Object[] { Integer.valueOf(paramInt), ai.B(paramArrayOfByte) });
         AppMethodBeat.o(30070);
         return localObject1;
       }
       catch (Exception paramArrayOfByte)
       {
-        ac.printErrStackTrace("MicroMsg.Wear.HttpAuthServer", paramArrayOfByte, "sessionKey resp error", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Wear.HttpAuthServer", paramArrayOfByte, "sessionKey resp error", new Object[0]);
       }
     }
   }

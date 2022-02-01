@@ -6,12 +6,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.g.a.a;
 import d.g.a.b;
 import d.g.a.m;
-import d.y;
+import d.z;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,9 +22,9 @@ public class d
   implements o
 {
   public static final String[] SQL_CREATE;
-  private e jnc;
-  private b<String, String> jrV;
-  private m<String, String, y> jrW;
+  private e jHa;
+  private b<String, String> jLP;
+  private m<String, String, z> jLQ;
   
   static
   {
@@ -37,16 +37,16 @@ public class d
   {
     super(parame, c.info, "AppBrandKVData", null);
     AppMethodBeat.i(146935);
-    this.jrV = new b() {};
-    this.jrW = new m() {};
-    this.jnc = parame;
+    this.jLP = new b() {};
+    this.jLQ = new m() {};
+    this.jHa = parame;
     AppMethodBeat.o(146935);
   }
   
-  private int II(String paramString)
+  private int LZ(String paramString)
   {
     AppMethodBeat.i(146948);
-    paramString = this.jnc.a("AppBrandKVData", new String[] { "size" }, "key = ?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.jHa.a("AppBrandKVData", new String[] { "size" }, "key = ?", new String[] { paramString }, null, null, null, 2);
     if (paramString.moveToFirst())
     {
       int i = paramString.getInt(0);
@@ -59,14 +59,14 @@ public class d
     return 0;
   }
   
-  private int U(int paramInt, String paramString)
+  private int W(int paramInt, String paramString)
   {
     AppMethodBeat.i(146944);
     c localc = new c();
     localc.field_key = s.m(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@");
     if (super.get(localc, new String[0]))
     {
-      paramInt = bs.getInt(localc.field_data, 0);
+      paramInt = bt.getInt(localc.field_data, 0);
       AppMethodBeat.o(146944);
       return paramInt;
     }
@@ -74,10 +74,10 @@ public class d
     return 0;
   }
   
-  private void aU(String paramString, int paramInt)
+  private void aW(String paramString, int paramInt)
   {
     AppMethodBeat.i(146942);
-    s.b(paramString, paramInt, this.jrV, this.jrW);
+    s.b(paramString, paramInt, this.jLP, this.jLQ);
     AppMethodBeat.o(146942);
   }
   
@@ -94,62 +94,62 @@ public class d
   private int h(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(146947);
-    paramInt2 = Math.max(0, U(paramInt1, paramString) + paramInt2);
+    paramInt2 = Math.max(0, W(paramInt1, paramString) + paramInt2);
     g(paramInt1, paramString, paramInt2);
     AppMethodBeat.o(146947);
     return paramInt2;
   }
   
-  public final void IF(String paramString)
+  public final void LW(String paramString)
   {
     AppMethodBeat.i(146940);
     int i = 0;
     while (i <= 2)
     {
-      S(i, paramString);
+      U(i, paramString);
       i += 1;
     }
     AppMethodBeat.o(146940);
   }
   
-  public final int[] IG(String paramString)
+  public final int[] LX(String paramString)
   {
     AppMethodBeat.i(146941);
-    paramString = s.a(paramString, this.jrV, this.jrW);
+    paramString = s.a(paramString, this.jLP, this.jLQ);
     AppMethodBeat.o(146941);
     return paramString;
   }
   
-  public final int IH(String paramString)
+  public final int LY(String paramString)
   {
     AppMethodBeat.i(146945);
-    int[] arrayOfInt = IG(paramString);
+    int[] arrayOfInt = LX(paramString);
     int k = arrayOfInt.length;
     int j = 0;
     int m;
     for (int i = 0; j < k; i = m + i)
     {
-      m = U(arrayOfInt[j], paramString);
+      m = W(arrayOfInt[j], paramString);
       j += 1;
     }
     AppMethodBeat.o(146945);
     return i;
   }
   
-  public final void S(int paramInt, String paramString)
+  public final void U(int paramInt, String paramString)
   {
     AppMethodBeat.i(146939);
     if (paramInt == 0) {}
     for (String str = paramString + "__";; str = paramInt + "__" + paramString + "__")
     {
-      aU(paramString, paramInt);
-      this.jnc.delete("AppBrandKVData", String.format("%s like ? escape ? OR %s=?", new Object[] { "key", "key" }), new String[] { str.replace("_", "\\_") + "%", "\\", s.m(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@") });
+      aW(paramString, paramInt);
+      this.jHa.delete("AppBrandKVData", String.format("%s like ? escape ? OR %s=?", new Object[] { "key", "key" }), new String[] { str.replace("_", "\\_") + "%", "\\", s.m(paramInt, paramString, "@@@TOTAL@DATA@SIZE@@@") });
       AppMethodBeat.o(146939);
       return;
     }
   }
   
-  public final Object[] T(int paramInt, String paramString)
+  public final Object[] V(int paramInt, String paramString)
   {
     AppMethodBeat.i(146943);
     if (paramInt == 0) {}
@@ -157,7 +157,7 @@ public class d
     Object localObject2;
     for (String str = paramString + "__";; str = paramInt + "__" + paramString + "__")
     {
-      localObject1 = this.jnc;
+      localObject1 = this.jHa;
       localObject2 = str.replace("_", "\\_") + "%";
       localObject1 = ((e)localObject1).a("AppBrandKVData", new String[] { "key" }, "key like ? escape ?", new String[] { localObject2, "\\" }, null, null, null, 2);
       localObject2 = new ArrayList();
@@ -166,8 +166,8 @@ public class d
       }
     }
     ((Cursor)localObject1).close();
-    int i = U(paramInt, paramString);
-    paramInt = s.V(paramInt, paramString);
+    int i = W(paramInt, paramString);
+    paramInt = s.X(paramInt, paramString);
     AppMethodBeat.o(146943);
     return new Object[] { localObject2, Integer.valueOf(i), Integer.valueOf(paramInt) };
   }
@@ -175,20 +175,20 @@ public class d
   public final o.a c(final int paramInt, final String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(146937);
-    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
     {
-      paramString1 = o.a.jtb;
+      paramString1 = o.a.jMV;
       AppMethodBeat.o(146937);
       return paramString1;
     }
     Object localObject1 = s.c(paramInt, paramString1, paramString2, "__");
-    int i = II((String)localObject1);
-    int j = s.co(paramString2, paramString3);
+    int i = LZ((String)localObject1);
+    int j = s.cq(paramString2, paramString3);
     final int k = j - i;
-    if (U(paramInt, paramString1) + k >= s.V(paramInt, paramString1)) {}
+    if (W(paramInt, paramString1) + k >= s.X(paramInt, paramString1)) {}
     for (i = 1; i != 0; i = 0)
     {
-      paramString1 = o.a.jtd;
+      paramString1 = o.a.jMX;
       AppMethodBeat.o(146937);
       return paramString1;
     }
@@ -206,20 +206,20 @@ public class d
     }
     catch (SQLiteException paramString3)
     {
-      if (bs.nullAsNil(paramString3.getMessage()).contains("no such table"))
+      if (bt.nullAsNil(paramString3.getMessage()).contains("no such table"))
       {
-        ac.e("AppBrandKVStorage", "set storageId[%d] appId[%s] key[%s], get exception[%s] try create table", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, paramString3 });
+        ad.e("AppBrandKVStorage", "set storageId[%d] appId[%s] key[%s], get exception[%s] try create table", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, paramString3 });
         try
         {
           Object localObject3 = c.info;
-          localObject1 = this.jnc;
+          localObject1 = this.jHa;
           localObject2 = getTableName();
           localObject3 = getUpdateSQLs((c.a)localObject3, getTableName(), (e)localObject1).iterator();
           while (((Iterator)localObject3).hasNext())
           {
             String str = (String)((Iterator)localObject3).next();
             if (!((e)localObject1).execSQL((String)localObject2, str)) {
-              ac.e("AppBrandKVStorage", "updateColumnSQLs table failed %s, sql %s", new Object[] { localObject2, str });
+              ad.e("AppBrandKVStorage", "updateColumnSQLs table failed %s, sql %s", new Object[] { localObject2, str });
             }
           }
           paramString4 = (o.a)paramString4.invoke();
@@ -227,7 +227,7 @@ public class d
         catch (SQLiteException paramString4)
         {
           paramString1 = String.format(Locale.ENGLISH, "set storageId[%d] appId[%s] key[%s], get exception[%s] after retry", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, paramString3 });
-          ac.e("AppBrandKVStorage", paramString1);
+          ad.e("AppBrandKVStorage", paramString1);
           paramString1 = new SQLiteException(paramString1, paramString4);
           AppMethodBeat.o(146937);
           throw paramString1;
@@ -243,9 +243,9 @@ public class d
   public final Object[] k(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(146936);
-    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
     {
-      paramString1 = o.a.jtb;
+      paramString1 = o.a.jMV;
       AppMethodBeat.o(146936);
       return new Object[] { paramString1 };
     }
@@ -255,28 +255,28 @@ public class d
     {
       if (super.get((com.tencent.mm.sdk.e.c)localObject2, new String[0]))
       {
-        localObject1 = o.a.jsZ;
+        localObject1 = o.a.jMT;
         String str = ((c)localObject2).field_data;
         localObject2 = ((c)localObject2).field_dataType;
         AppMethodBeat.o(146936);
         return new Object[] { localObject1, str, localObject2 };
       }
-      Object localObject1 = s.jtg;
+      Object localObject1 = s.jNa;
       AppMethodBeat.o(146936);
       return localObject1;
     }
     catch (SQLiteException localSQLiteException)
     {
-      if (bs.nullAsNil(localSQLiteException.getMessage()).contains("no such table"))
+      if (bt.nullAsNil(localSQLiteException.getMessage()).contains("no such table"))
       {
-        ac.e("AppBrandKVStorage", "get storageId[%d] appId[%s] key[%s], no such table, return RET_GET_NO_SUCH_KEY", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
-        paramString1 = s.jtg;
+        ad.e("AppBrandKVStorage", "get storageId[%d] appId[%s] key[%s], no such table, return RET_GET_NO_SUCH_KEY", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
+        paramString1 = s.jNa;
         AppMethodBeat.o(146936);
         return paramString1;
       }
       if (localSQLiteException.getClass().getName().endsWith("CursorWindowAllocationException"))
       {
-        paramString1 = o.a.jte;
+        paramString1 = o.a.jMY;
         AppMethodBeat.o(146936);
         return new Object[] { paramString1 };
       }
@@ -288,21 +288,21 @@ public class d
   public final o.a l(int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(146938);
-    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
     {
-      paramString1 = o.a.jtb;
+      paramString1 = o.a.jMV;
       AppMethodBeat.o(146938);
       return paramString1;
     }
     paramString2 = s.c(paramInt, paramString1, paramString2, "__");
-    int i = h(paramInt, paramString1, -II(paramString2));
+    int i = h(paramInt, paramString1, -LZ(paramString2));
     c localc = new c();
     localc.field_key = paramString2;
     super.delete(localc, new String[0]);
     if (i <= 0) {
-      aU(paramString1, paramInt);
+      aW(paramString1, paramInt);
     }
-    paramString1 = o.a.jsZ;
+    paramString1 = o.a.jMT;
     AppMethodBeat.o(146938);
     return paramString1;
   }

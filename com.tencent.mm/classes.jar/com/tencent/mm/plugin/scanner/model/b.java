@@ -1,449 +1,274 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.os.Bundle;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.scanner.api.ScanGoodsRequest;
-import com.tencent.mm.protocal.protobuf.GoodsObject;
-import com.tencent.mm.protocal.protobuf.lq;
-import com.tencent.mm.protocal.protobuf.ls;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.plugin.scanner.api.c;
+import com.tencent.mm.plugin.scanner.api.d;
+import com.tencent.mm.plugin.scanner.c.a.b;
+import com.tencent.mm.protocal.protobuf.mi;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import d.v;
+import java.util.HashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader;", "", "source", "", "callback", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader$AiScanImageUploadCallback;", "(ILcom/tencent/mm/plugin/scanner/model/AiScanImageUploader$AiScanImageUploadCallback;)V", "currentSession", "", "isCancelled", "", "isFinished", "runningRequest", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader$RequestInfo;", "scanResultCallback", "waitingRequest", "cancelResult", "", "session", "doHandleResult", "result", "Landroid/os/Bundle;", "finishResult", "success", "getAdInfo", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageAdInfo;", "handleResult", "onError", "onScanFailed", "errCode", "errMsg", "", "onScanSuccess", "response", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageResponse;", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "saveTimeOut", "timeOut", "uploadImage", "frameId", "imageData", "", "mode", "originWidth", "originHeight", "cropObject", "Lcom/tencent/mm/protocal/protobuf/GoodsObject;", "usingAI", "isAiCrop", "adInfo", "uploadNext", "AiScanImageUploadCallback", "Companion", "RequestInfo", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/AiScanImageSceneUploader;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "callbackMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageResultCallback;", "Lkotlin/collections/HashMap;", "requestMap", "Lcom/tencent/mm/plugin/scanner/model/AiScanImageSceneUploader$ScanUploadImageRequestWrapper;", "cancel", "", "session", "doUploadImage", "requestWrapper", "onScanFailed", "errCode", "", "errMsg", "", "onScanSuccess", "response", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageSceneResponse;", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "release", "uploadImage", "request", "Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageRequest;", "callback", "Companion", "ScanUploadImageRequestWrapper", "plugin-scan_release"})
 public final class b
+  implements com.tencent.mm.al.f
 {
-  public static final b.b wYF;
-  private int dbL;
-  private boolean gnd;
-  private boolean isCancelled;
-  private long wYB;
-  private final a wYC;
-  private c wYD;
-  private c wYE;
+  public static final b.a ymk;
+  public HashMap<Long, d> gpP;
+  public HashMap<Long, b> kIV;
   
   static
   {
-    AppMethodBeat.i(52157);
-    wYF = new b.b((byte)0);
-    AppMethodBeat.o(52157);
+    AppMethodBeat.i(186266);
+    ymk = new b.a((byte)0);
+    AppMethodBeat.o(186266);
   }
   
-  public b(int paramInt, a parama)
+  public b()
   {
-    AppMethodBeat.i(52156);
-    this.dbL = paramInt;
-    this.wYC = parama;
-    AppMethodBeat.o(52156);
+    AppMethodBeat.i(186265);
+    this.kIV = new HashMap();
+    this.gpP = new HashMap();
+    g.aiU().a(1100, (com.tencent.mm.al.f)this);
+    AppMethodBeat.o(186265);
   }
   
-  private final void a(long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, int paramInt4, int paramInt5, GoodsObject paramGoodsObject, boolean paramBoolean1, boolean paramBoolean2, lq paramlq)
+  private final void f(final long paramLong, int paramInt, String paramString)
   {
-    AppMethodBeat.i(199580);
-    ac.i("MicroMsg.AiScanImageUploader", "alvinluo uploadImage imageData: %d, mode: %d", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt2) });
-    paramArrayOfByte = new d(paramArrayOfByte, paramInt3, paramInt2, paramLong, paramInt1, paramBoolean1, paramBoolean2, paramInt4, paramInt5, paramGoodsObject, paramlq);
-    paramGoodsObject = this.wYE;
-    if (paramGoodsObject != null) {
-      paramGoodsObject.wYG = ((n)paramArrayOfByte);
-    }
-    g.agi().b((n)paramArrayOfByte);
-    AppMethodBeat.o(199580);
+    AppMethodBeat.i(186264);
+    ad.e("MicroMsg.AiScanImageSceneUploader", "onScanFailed session: %d, errCode: %d, errMsg: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString });
+    c localc = new c();
+    localc.success = false;
+    localc.errCode = paramInt;
+    localc.errMsg = paramString;
+    h.LTJ.aP((Runnable)new d(this, paramLong, localc));
+    AppMethodBeat.o(186264);
   }
   
-  private static lq ah(Bundle paramBundle)
+  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
   {
-    AppMethodBeat.i(199582);
-    if (paramBundle == null)
-    {
-      AppMethodBeat.o(199582);
-      return null;
-    }
-    try
-    {
-      paramBundle = (ScanGoodsRequest)paramBundle.getParcelable("key_scan_request");
-      lq locallq = new lq();
-      if ((paramBundle instanceof ScanGoodsRequest))
-      {
-        locallq.xID = paramBundle.iN("key_sns_ad_ux_info", "");
-        locallq.DZv = bs.aLy(paramBundle.iN("key_gesture_id", ""));
-        ac.d("MicroMsg.AiScanImageUploader", "getAdInfo uxInfo: %s, gestureId: %s", new Object[] { locallq.xID, Integer.valueOf(locallq.DZv) });
-      }
-      AppMethodBeat.o(199582);
-      return locallq;
-    }
-    catch (Exception paramBundle)
-    {
-      ac.printErrStackTrace("MicroMsg.AiScanImageUploader", (Throwable)paramBundle, "getAdInfo exception", new Object[0]);
-      AppMethodBeat.o(199582);
-    }
-    return null;
-  }
-  
-  private final void d(long paramLong, Bundle paramBundle)
-  {
-    AppMethodBeat.i(52151);
-    if (paramBundle == null)
-    {
-      AppMethodBeat.o(52151);
-      return;
-    }
-    if (this.wYB != paramLong)
-    {
-      this.gnd = false;
-      this.wYB = paramLong;
-    }
-    int i = paramBundle.getInt("scan_source", 0);
-    byte[] arrayOfByte = paramBundle.getByteArray("result_best_img");
-    int j = paramBundle.getInt("key_scan_goods_mode", 0);
-    ac.i("MicroMsg.AiScanImageUploader", "alvinluo AiScanImage doHandleResult session: %d, source: %d, mode: %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(j) });
-    if (i == 1)
-    {
-      int k = paramBundle.getInt("result_best_img_id", 0);
-      int m = paramBundle.getInt("result_img_origin_width", 0);
-      int n = paramBundle.getInt("result_img_origin_height", 0);
-      GoodsObject localGoodsObject = new GoodsObject();
-      try
-      {
-        localGoodsObject.parseFrom(paramBundle.getByteArray("result_crop_object"));
-        if (arrayOfByte != null)
-        {
-          a(paramLong, k, arrayOfByte, j, i, m, n, localGoodsObject, s.isUsingAI(), s.isAICrop(), ah(paramBundle));
-          AppMethodBeat.o(52151);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ac.printErrStackTrace("MicroMsg.AiScanImageUploader", (Throwable)localException, "alvinluo handleResult cropObject parseFrom exception", new Object[0]);
-        }
-        onError();
-        AppMethodBeat.o(52151);
-        return;
-      }
-    }
-    if (i == 2)
-    {
-      if (arrayOfByte != null)
-      {
-        a(this, paramLong, arrayOfByte, j, i);
-        AppMethodBeat.o(52151);
-        return;
-      }
-      onError();
-      AppMethodBeat.o(52151);
-      return;
-    }
-    onError();
-    AppMethodBeat.o(52151);
-  }
-  
-  private final void onError()
-  {
-    AppMethodBeat.i(52152);
-    this.wYC.dzr();
-    AppMethodBeat.o(52152);
-  }
-  
-  public static void release()
-  {
-    AppMethodBeat.i(52150);
-    ac.i("MicroMsg.AiScanImageUploader", "alvinluo release");
-    AppMethodBeat.o(52150);
-  }
-  
-  public final void c(long paramLong, Bundle paramBundle)
-  {
-    AppMethodBeat.i(52147);
-    if (paramBundle == null)
-    {
-      AppMethodBeat.o(52147);
-      return;
-    }
-    int i = paramBundle.getInt("scan_source", 0);
-    if (this.wYE != null)
-    {
-      localc = this.wYE;
-      if ((localc == null) || (localc.gnd != true)) {}
-    }
-    else
-    {
-      localc = new c();
-      localc.dbL = i;
-      localc.dao = paramLong;
-      localc.gnd = false;
-      localc.dmf = paramBundle;
-      this.wYE = localc;
-      d(paramLong, paramBundle);
-      AppMethodBeat.o(52147);
-      return;
-    }
-    ac.i("MicroMsg.AiScanImageUploader", "alvinluo handleResult replace waiting request");
-    if (this.wYD == null) {
-      this.wYD = new c();
-    }
-    c localc = this.wYD;
-    if (localc != null)
-    {
-      localc.dbL = i;
-      localc.dao = paramLong;
-      localc.gnd = false;
-      localc.dmf = paramBundle;
-      AppMethodBeat.o(52147);
-      return;
-    }
-    AppMethodBeat.o(52147);
-  }
-  
-  public final void onSceneEnd(final int paramInt1, int paramInt2, final String paramString, n paramn)
-  {
-    AppMethodBeat.i(52155);
-    int i;
+    AppMethodBeat.i(186263);
     if (paramn != null)
     {
-      if (paramn.getType() != 2580) {
-        break label608;
+      if (paramn.getType() != 1100) {
+        break label270;
       }
-      i = 1;
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label430;
+        break label256;
       }
-      paramString = (d)paramn;
-      if (paramString.rr.aBD() == null) {
-        break label294;
+      paramString = (f)paramn;
+      if (paramString.rr.aEF() == null) {
+        break label237;
       }
-      paramString = paramString.rr.aBD();
+      paramString = paramString.rr.aEF();
       if (paramString == null)
       {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageResponse");
-        AppMethodBeat.o(52155);
+        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageSceneResponse");
+        AppMethodBeat.o(186263);
         throw paramString;
       }
     }
     else
     {
-      AppMethodBeat.o(52155);
+      AppMethodBeat.o(186263);
       return;
     }
-    paramString = (ls)paramString;
-    if ((paramString != null) && (paramString.DZC == ((d)paramn).dao))
+    label237:
+    for (paramString = (mi)paramString; (paramString != null) && (paramString.FFa == ((f)paramn).dlI); paramString = null)
     {
-      ac.d("MicroMsg.AiScanImageUploader", "alvinluo AiScanImage onSceneEnd sessionId: %s, scanId: %s", new Object[] { Long.valueOf(paramString.DZC), Integer.valueOf(paramString.DZB) });
-      paramInt1 = this.dbL;
-      ac.i("MicroMsg.AiScanImageUploader", "alvinluo onScanSuccess source: %d, isFinished: %b, isCancelled: %b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(this.gnd), Boolean.valueOf(this.isCancelled) });
-      if ((this.gnd) || (this.isCancelled))
-      {
-        ac.w("MicroMsg.AiScanImageUploader", "alvinluo onScanSuccess isFinished and ignore");
-        paramInt1 = i;
+      ad.d("MicroMsg.AiScanImageSceneUploader", "uploadImage onSceneEnd sessionId: %s, seqNum: %s", new Object[] { Long.valueOf(paramString.FFa), Integer.valueOf(paramString.FBz) });
+      final c localc = new c();
+      localc.dlu = paramString.dve;
+      localc.jumpType = paramString.FFk;
+      String str = paramString.FFz;
+      paramn = str;
+      if (str == null) {
+        paramn = "";
       }
-    }
-    for (;;)
-    {
-      this.wYE = null;
-      if (paramInt1 == 0) {
-        break label608;
-      }
-      ac.d("MicroMsg.AiScanImageUploader", "alvinluo uploadNext: %b, isCancelled: %b", new Object[] { Boolean.valueOf(this.gnd), Boolean.valueOf(this.isCancelled) });
-      paramString = this.wYE;
-      if (paramString != null) {
-        paramString.gnd = true;
-      }
-      this.wYE = null;
-      if ((!this.gnd) && (!this.isCancelled)) {
-        break label527;
-      }
-      AppMethodBeat.o(52155);
-      return;
-      label294:
-      paramString = null;
-      break;
-      if (this.wYE != null)
-      {
-        paramn = this.wYE;
-        if ((paramn == null) || (paramn.gnd != true)) {}
-      }
-      else
-      {
-        boolean bool;
-        if (this.wYE == null)
-        {
-          bool = true;
-          label336:
-          paramString = this.wYE;
-          if (paramString == null) {
-            break label389;
-          }
-        }
-        label389:
-        for (paramString = Boolean.valueOf(paramString.gnd);; paramString = null)
-        {
-          ac.w("MicroMsg.AiScanImageUploader", "alvinluo onScanSuccess runningRequest invalid and ignore isNull: %b, isFinished: %s", new Object[] { Boolean.valueOf(bool), paramString });
-          paramInt1 = i;
-          break;
-          bool = false;
-          break label336;
-        }
-      }
-      s.a((t)new d(this, paramString, paramInt1));
-      paramInt1 = i;
-      continue;
-      ac.w("MicroMsg.AiScanImageUploader", "alvinluo AiScanImage onSceneEnd success sessionId not the same");
-      paramInt1 = i;
-    }
-    label430:
-    if (paramInt2 == 1003) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
-    {
-      long l;
-      if ((!this.isCancelled) && (!this.gnd))
-      {
-        i = this.dbL;
-        l = ((d)paramn).dao;
-        ac.e("MicroMsg.AiScanImageUploader", "alvinluo onScanFailed source: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt2), paramString });
-        if (i == 1) {
-          s.dzB();
-        }
-        this.wYC.a(i, l, paramInt2, paramString);
-      }
-      break;
-      label527:
-      if (this.wYD != null)
-      {
-        paramString = this.wYD;
-        if (paramString == null) {
-          k.fOy();
-        }
-        if (!paramString.gnd)
-        {
-          this.wYE = this.wYD;
-          paramString = this.wYD;
-          if (paramString == null) {
-            k.fOy();
-          }
-          l = paramString.dao;
-          paramString = this.wYD;
-          if (paramString == null) {
-            k.fOy();
-          }
-          paramString = paramString.dmf;
-          this.wYD = null;
-          d(l, paramString);
-        }
-      }
-      label608:
-      AppMethodBeat.o(52155);
+      localc.yjT = paramn;
+      localc.success = true;
+      localc.errCode = 0;
+      localc.errMsg = "";
+      h.LTJ.aP((Runnable)new e(this, paramString, localc));
+      AppMethodBeat.o(186263);
       return;
     }
+    ad.w("MicroMsg.AiScanImageSceneUploader", "uploadImage onSceneEnd success sessionId not the same");
+    AppMethodBeat.o(186263);
+    return;
+    label256:
+    f(((f)paramn).dlI, paramInt2, paramString);
+    label270:
+    AppMethodBeat.o(186263);
   }
   
-  public final void wB(long paramLong)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/AiScanImageSceneUploader$ScanUploadImageRequestWrapper;", "", "()V", "request", "Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageRequest;", "getRequest", "()Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageRequest;", "setRequest", "(Lcom/tencent/mm/plugin/scanner/api/ScanUploadImageRequest;)V", "sceneHashCode", "", "getSceneHashCode", "()I", "setSceneHashCode", "(I)V", "plugin-scan_release"})
+  public static final class b
   {
-    AppMethodBeat.i(52149);
-    ac.i("MicroMsg.AiScanImageUploader", "alvinluo cancelResult session: %d", new Object[] { Long.valueOf(paramLong) });
-    q localq;
-    if (this.wYB == paramLong)
-    {
-      this.isCancelled = true;
-      localq = g.agi();
-      localObject = this.wYE;
-      if (localObject == null) {
-        break label81;
-      }
-    }
-    label81:
-    for (Object localObject = ((c)localObject).wYG;; localObject = null)
-    {
-      localq.a((n)localObject);
-      this.wYD = null;
-      this.wYE = null;
-      AppMethodBeat.o(52149);
-      return;
-    }
+    public com.tencent.mm.plugin.scanner.api.b yml;
+    public int ymm;
   }
   
-  public final void y(long paramLong, boolean paramBoolean)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "sucess", "", "image", "", "kotlin.jvm.PlatformType", "onCompressEnd"})
+  static final class c
+    implements a.b
   {
-    AppMethodBeat.i(161972);
-    ac.i("MicroMsg.AiScanImageUploader", "alvinluo finishResult current: %d, session: %d, success: %b", new Object[] { Long.valueOf(this.wYB), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) });
-    q localq;
-    if (this.wYB == paramLong)
-    {
-      this.gnd = true;
-      localq = g.agi();
-      localObject = this.wYE;
-      if (localObject == null) {
-        break label103;
-      }
-    }
-    label103:
-    for (Object localObject = ((c)localObject).wYG;; localObject = null)
-    {
-      localq.a((n)localObject);
-      this.wYD = null;
-      this.wYE = null;
-      AppMethodBeat.o(161972);
-      return;
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader$AiScanImageUploadCallback;", "", "onUploadError", "", "errCode", "", "onUploadFailed", "source", "session", "", "errMsg", "", "onUploadSuccess", "result", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsRemoteResult;", "plugin-scan_release"})
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, long paramLong, int paramInt2, String paramString);
+    c(b paramb, com.tencent.mm.plugin.scanner.api.b paramb1, long paramLong, b.b paramb2) {}
     
-    public abstract void a(u paramu);
-    
-    public abstract void dzr();
+    public final void a(boolean paramBoolean, byte[] paramArrayOfByte)
+    {
+      String str = null;
+      AppMethodBeat.i(186259);
+      if ((paramBoolean) && (paramArrayOfByte != null))
+      {
+        int i = this.ymo.mode;
+        Object localObject = z.ynN;
+        localObject = this.ymo.imagePath;
+        p.g(localObject, "request.imagePath");
+        ScanImagePHashInfo localScanImagePHashInfo = z.awH((String)localObject);
+        int j = paramArrayOfByte.length;
+        long l = this.ymp;
+        if (localScanImagePHashInfo != null) {}
+        for (localObject = localScanImagePHashInfo.getPHash();; localObject = null)
+        {
+          if (localScanImagePHashInfo != null) {
+            str = localScanImagePHashInfo.getPHashVersion();
+          }
+          ad.i("MicroMsg.AiScanImageSceneUploader", "doUploadImage imageData: %d, session: %d, mode: %d, frameId: %d, pHash: %s, %s", new Object[] { Integer.valueOf(j), Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(0), localObject, str });
+          paramArrayOfByte = new f(paramArrayOfByte, this.ymp, i, this.ymo.yjR, this.ymo.yjS, localScanImagePHashInfo);
+          this.ymq.ymm = paramArrayOfByte.hashCode();
+          g.aiU().b((n)paramArrayOfByte);
+          AppMethodBeat.o(186259);
+          return;
+        }
+      }
+      b.a(this.ymn, this.ymp, "decode image failed");
+      AppMethodBeat.o(186259);
+    }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader$RequestInfo;", "", "(Lcom/tencent/mm/plugin/scanner/model/AiScanImageUploader;)V", "data", "Landroid/os/Bundle;", "getData", "()Landroid/os/Bundle;", "setData", "(Landroid/os/Bundle;)V", "isFinished", "", "()Z", "setFinished", "(Z)V", "netScene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "getNetScene", "()Lcom/tencent/mm/modelbase/NetSceneBase;", "setNetScene", "(Lcom/tencent/mm/modelbase/NetSceneBase;)V", "session", "", "getSession", "()J", "setSession", "(J)V", "source", "", "getSource", "()I", "setSource", "(I)V", "plugin-scan_release"})
-  final class c
-  {
-    long dao;
-    int dbL;
-    Bundle dmf;
-    boolean gnd;
-    n wYG;
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class d
-    implements t
+    implements Runnable
   {
-    d(b paramb, ls paramls, int paramInt) {}
+    d(b paramb, long paramLong, c paramc) {}
     
     public final void run()
     {
-      AppMethodBeat.i(52146);
-      final u localu = s.a(paramString, paramInt1);
-      h.JZN.aQ((Runnable)new Runnable()
+      AppMethodBeat.i(186260);
+      Object localObject = (b.b)b.a(this.ymn).remove(Long.valueOf(paramLong));
+      if (localObject != null)
       {
-        public final void run()
+        c localc = this.ymr;
+        localObject = ((b.b)localObject).yml;
+        if (localObject != null)
         {
-          AppMethodBeat.i(52145);
-          localu.dbL = this.wYK.wYJ;
-          ac.i("MicroMsg.AiScanImageUploader", "alvinluo onScanSuccess source: %d, showResult: %b, isFinish: %b, isCancelled: %b", new Object[] { Integer.valueOf(this.wYK.wYJ), Boolean.valueOf(localu.wZz), Boolean.valueOf(b.a(this.wYK.wYH)), Boolean.valueOf(b.b(this.wYK.wYH)) });
-          if ((!b.a(this.wYK.wYH)) && (!b.b(this.wYK.wYH))) {
-            b.c(this.wYK.wYH).a(localu);
-          }
-          AppMethodBeat.o(52145);
+          String str = ((com.tencent.mm.plugin.scanner.api.b)localObject).imagePath;
+          localObject = str;
+          if (str != null) {}
         }
-      });
-      AppMethodBeat.o(52146);
+        else
+        {
+          localObject = "";
+        }
+        localc.imagePath = ((String)localObject);
+      }
+      localObject = (d)b.b(this.ymn).remove(Long.valueOf(paramLong));
+      if (localObject != null)
+      {
+        ((d)localObject).a(paramLong, this.ymr);
+        AppMethodBeat.o(186260);
+        return;
+      }
+      AppMethodBeat.o(186260);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  static final class e
+    implements Runnable
+  {
+    e(b paramb, mi parammi, c paramc) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(186261);
+      Object localObject = (b.b)b.a(this.ymn).remove(Long.valueOf(paramString.FFa));
+      if (localObject != null)
+      {
+        c localc = localc;
+        localObject = ((b.b)localObject).yml;
+        if (localObject != null)
+        {
+          String str = ((com.tencent.mm.plugin.scanner.api.b)localObject).imagePath;
+          localObject = str;
+          if (str != null) {}
+        }
+        else
+        {
+          localObject = "";
+        }
+        localc.imagePath = ((String)localObject);
+      }
+      localObject = (d)b.b(this.ymn).remove(Long.valueOf(paramString.FFa));
+      ad.i("MicroMsg.AiScanImageSceneUploader", "onScanSuccess session: %d, callback: %s", new Object[] { Long.valueOf(paramString.FFa), localObject });
+      if (localObject != null)
+      {
+        ((d)localObject).a(paramString.FFa, localc);
+        AppMethodBeat.o(186261);
+        return;
+      }
+      AppMethodBeat.o(186261);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  public static final class f
+    implements Runnable
+  {
+    public f(b paramb, long paramLong) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(186262);
+      b.b localb = (b.b)b.a(this.ymn).get(Long.valueOf(this.ymp));
+      if (localb == null)
+      {
+        AppMethodBeat.o(186262);
+        return;
+      }
+      if (localb.yml == null)
+      {
+        AppMethodBeat.o(186262);
+        return;
+      }
+      com.tencent.mm.plugin.scanner.api.b localb1 = localb.yml;
+      if (localb1 == null) {
+        p.gfZ();
+      }
+      Object localObject = z.ynN;
+      localObject = localb.yml;
+      if (localObject != null) {}
+      for (long l = ((com.tencent.mm.plugin.scanner.api.b)localObject).msgId;; l = 0L)
+      {
+        localb1.imagePath = z.yY(l);
+        b.a(this.ymn, this.ymp, localb);
+        AppMethodBeat.o(186262);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.b
  * JD-Core Version:    0.7.0.1
  */

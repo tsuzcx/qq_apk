@@ -1,49 +1,108 @@
 package com.tencent.mm.emoji.a.a;
 
-import android.support.v7.widget.RecyclerView.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.PersonalDesigner;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/PanelDataAdapterListener;", "Lcom/tencent/mm/emoji/model/panel/PanelDataListener;", "groupAdapter", "Landroid/support/v7/widget/RecyclerView$Adapter;", "tabAdapter", "(Landroid/support/v7/widget/RecyclerView$Adapter;Landroid/support/v7/widget/RecyclerView$Adapter;)V", "onGroupChange", "", "start", "", "count", "onGroupInsert", "onGroupMoved", "from", "to", "onGroupRemove", "onTabChange", "onTabInsert", "onTabRemove", "plugin-emojisdk_release"})
-public abstract class u
-  implements v
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/GroupTitleItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "designer", "Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "getDesigner", "()Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "setDesigner", "(Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "hasNew", "", "getHasNew", "()Z", "setHasNew", "(Z)V", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
+public final class u
+  extends ac
 {
-  private final RecyclerView.a<?> fRU;
-  private final RecyclerView.a<?> fRV;
+  public final EmojiGroupInfo gin;
+  public PersonalDesigner glw;
+  public boolean glx;
   
-  public u(RecyclerView.a<?> parama1, RecyclerView.a<?> parama2)
+  public u(EmojiGroupInfo paramEmojiGroupInfo)
   {
-    this.fRU = parama1;
-    this.fRV = parama2;
+    super(2);
+    AppMethodBeat.i(105562);
+    this.gin = paramEmojiGroupInfo;
+    AppMethodBeat.o(105562);
   }
   
-  public final void cC(int paramInt1, int paramInt2)
+  public final boolean aS(Object paramObject)
   {
-    this.fRV.aq(paramInt1, paramInt2);
+    Object localObject3 = null;
+    AppMethodBeat.i(183956);
+    if ((super.aS(paramObject)) && ((paramObject instanceof u)))
+    {
+      Object localObject1 = ((u)paramObject).glw;
+      Object localObject2;
+      if (localObject1 != null)
+      {
+        localObject1 = Integer.valueOf(((PersonalDesigner)localObject1).DesignerUin);
+        localObject2 = this.glw;
+        if (localObject2 == null) {
+          break label178;
+        }
+        localObject2 = Integer.valueOf(((PersonalDesigner)localObject2).DesignerUin);
+        label60:
+        if (!p.i(localObject1, localObject2)) {
+          break label198;
+        }
+        localObject1 = ((u)paramObject).glw;
+        if (localObject1 == null) {
+          break label183;
+        }
+        localObject1 = ((PersonalDesigner)localObject1).Name;
+        label85:
+        localObject2 = this.glw;
+        if (localObject2 == null) {
+          break label188;
+        }
+        localObject2 = ((PersonalDesigner)localObject2).Name;
+        label99:
+        if (!p.i(localObject1, localObject2)) {
+          break label198;
+        }
+        localObject1 = ((u)paramObject).glw;
+        if (localObject1 == null) {
+          break label193;
+        }
+      }
+      label178:
+      label183:
+      label188:
+      label193:
+      for (localObject1 = ((PersonalDesigner)localObject1).HeadUrl;; localObject1 = null)
+      {
+        PersonalDesigner localPersonalDesigner = this.glw;
+        localObject2 = localObject3;
+        if (localPersonalDesigner != null) {
+          localObject2 = localPersonalDesigner.HeadUrl;
+        }
+        if ((!p.i(localObject1, localObject2)) || (((u)paramObject).glx != this.glx)) {
+          break label198;
+        }
+        AppMethodBeat.o(183956);
+        return true;
+        localObject1 = null;
+        break;
+        localObject2 = null;
+        break label60;
+        localObject1 = null;
+        break label85;
+        localObject2 = null;
+        break label99;
+      }
+    }
+    label198:
+    AppMethodBeat.o(183956);
+    return false;
   }
   
-  public final void cD(int paramInt1, int paramInt2)
+  public final boolean equals(Object paramObject)
   {
-    this.fRV.ao(paramInt1, paramInt2);
-  }
-  
-  public final void cE(int paramInt1, int paramInt2)
-  {
-    this.fRV.ar(paramInt1, paramInt2);
-  }
-  
-  public final void cv(int paramInt1, int paramInt2)
-  {
-    this.fRU.aq(paramInt1, paramInt2);
-  }
-  
-  public final void cw(int paramInt1, int paramInt2)
-  {
-    this.fRU.ao(paramInt1, paramInt2);
-  }
-  
-  public final void cx(int paramInt1, int paramInt2)
-  {
-    this.fRU.ar(paramInt1, paramInt2);
+    AppMethodBeat.i(105561);
+    if ((super.equals(paramObject)) && ((paramObject instanceof u)) && (p.i(((u)paramObject).gin.fxi(), this.gin.fxi())))
+    {
+      AppMethodBeat.o(105561);
+      return true;
+    }
+    AppMethodBeat.o(105561);
+    return false;
   }
 }
 

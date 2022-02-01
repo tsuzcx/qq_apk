@@ -21,30 +21,30 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.f.a;
+import com.tencent.mm.plugin.game.g.a;
 
 public class CircleImageView
   extends ImageView
 {
-  private static final Bitmap.Config hew = Bitmap.Config.ARGB_8888;
-  private static final ImageView.ScaleType twK = ImageView.ScaleType.CENTER_CROP;
-  private BitmapShader It;
-  private final Matrix Iu;
-  private float kpJ;
-  private int kpM;
-  private final Paint kpN;
+  private static final Bitmap.Config hwE = Bitmap.Config.ARGB_8888;
+  private static final ImageView.ScaleType uvW = ImageView.ScaleType.CENTER_CROP;
+  private BitmapShader Kl;
+  private final Matrix Km;
+  private float kKJ;
+  private int kKM;
+  private final Paint kKN;
   private Bitmap mBitmap;
   private int mBitmapHeight;
   private int mBitmapWidth;
-  private final RectF twL;
-  private final RectF twM;
-  private final Paint twN;
-  private int twO;
-  private float twP;
-  private boolean twQ;
-  private boolean twR;
-  private boolean twS;
-  private ColorFilter vo;
+  private final RectF uvX;
+  private final RectF uvY;
+  private final Paint uvZ;
+  private int uwa;
+  private float uwb;
+  private boolean uwc;
+  private boolean uwd;
+  private boolean uwe;
+  private ColorFilter xh;
   
   public CircleImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -55,50 +55,50 @@ public class CircleImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(42593);
-    this.twL = new RectF();
-    this.twM = new RectF();
-    this.Iu = new Matrix();
-    this.twN = new Paint();
-    this.kpN = new Paint();
-    this.kpM = -16777216;
-    this.twO = 0;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, f.a.CircleImageView, paramInt, 0);
-    this.twO = paramContext.getDimensionPixelSize(2, 0);
-    this.kpM = paramContext.getColor(0, -16777216);
-    this.twS = paramContext.getBoolean(1, false);
+    this.uvX = new RectF();
+    this.uvY = new RectF();
+    this.Km = new Matrix();
+    this.uvZ = new Paint();
+    this.kKN = new Paint();
+    this.kKM = -16777216;
+    this.uwa = 0;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, g.a.CircleImageView, paramInt, 0);
+    this.uwa = paramContext.getDimensionPixelSize(2, 0);
+    this.kKM = paramContext.getColor(0, -16777216);
+    this.uwe = paramContext.getBoolean(1, false);
     paramContext.recycle();
-    super.setScaleType(twK);
-    this.twQ = true;
-    if (this.twR)
+    super.setScaleType(uvW);
+    this.uwc = true;
+    if (this.uwd)
     {
       setup();
-      this.twR = false;
+      this.uwd = false;
     }
     AppMethodBeat.o(42593);
   }
   
-  private void cRP()
+  private void daz()
   {
     AppMethodBeat.i(42609);
-    this.Iu.set(null);
+    this.Km.set(null);
     float f1;
     float f3;
     float f2;
-    if (this.mBitmapWidth * this.twL.height() > this.twL.width() * this.mBitmapHeight)
+    if (this.mBitmapWidth * this.uvX.height() > this.uvX.width() * this.mBitmapHeight)
     {
-      f1 = this.twL.height() / this.mBitmapHeight;
-      f3 = (this.twL.width() - this.mBitmapWidth * f1) * 0.5F;
+      f1 = this.uvX.height() / this.mBitmapHeight;
+      f3 = (this.uvX.width() - this.mBitmapWidth * f1) * 0.5F;
       f2 = 0.0F;
     }
     for (;;)
     {
-      this.Iu.setScale(f1, f1);
-      this.Iu.postTranslate((int)(f3 + 0.5F) + this.twL.left, (int)(f2 + 0.5F) + this.twL.top);
-      this.It.setLocalMatrix(this.Iu);
+      this.Km.setScale(f1, f1);
+      this.Km.postTranslate((int)(f3 + 0.5F) + this.uvX.left, (int)(f2 + 0.5F) + this.uvX.top);
+      this.Kl.setLocalMatrix(this.Km);
       AppMethodBeat.o(42609);
       return;
-      f1 = this.twL.width() / this.mBitmapWidth;
-      f2 = (this.twL.height() - this.mBitmapHeight * f1) * 0.5F;
+      f1 = this.uvX.width() / this.mBitmapWidth;
+      f2 = (this.uvX.height() - this.mBitmapHeight * f1) * 0.5F;
       f3 = 0.0F;
     }
   }
@@ -106,9 +106,9 @@ public class CircleImageView
   private void setup()
   {
     AppMethodBeat.i(42608);
-    if (!this.twQ)
+    if (!this.uwc)
     {
-      this.twR = true;
+      this.uwd = true;
       AppMethodBeat.o(42608);
       return;
     }
@@ -119,23 +119,23 @@ public class CircleImageView
     }
     Bitmap localBitmap = this.mBitmap;
     Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-    this.It = new BitmapShader(localBitmap, localTileMode, localTileMode);
-    this.twN.setAntiAlias(true);
-    this.twN.setShader(this.It);
-    this.kpN.setStyle(Paint.Style.STROKE);
-    this.kpN.setAntiAlias(true);
-    this.kpN.setColor(this.kpM);
-    this.kpN.setStrokeWidth(this.twO);
+    this.Kl = new BitmapShader(localBitmap, localTileMode, localTileMode);
+    this.uvZ.setAntiAlias(true);
+    this.uvZ.setShader(this.Kl);
+    this.kKN.setStyle(Paint.Style.STROKE);
+    this.kKN.setAntiAlias(true);
+    this.kKN.setColor(this.kKM);
+    this.kKN.setStrokeWidth(this.uwa);
     this.mBitmapHeight = this.mBitmap.getHeight();
     this.mBitmapWidth = this.mBitmap.getWidth();
-    this.twM.set(0.0F, 0.0F, getWidth(), getHeight());
-    this.kpJ = Math.min((this.twM.height() - this.twO) / 2.0F, (this.twM.width() - this.twO) / 2.0F);
-    this.twL.set(this.twM);
-    if (!this.twS) {
-      this.twL.inset(this.twO, this.twO);
+    this.uvY.set(0.0F, 0.0F, getWidth(), getHeight());
+    this.kKJ = Math.min((this.uvY.height() - this.uwa) / 2.0F, (this.uvY.width() - this.uwa) / 2.0F);
+    this.uvX.set(this.uvY);
+    if (!this.uwe) {
+      this.uvX.inset(this.uwa, this.uwa);
     }
-    this.twP = Math.min(this.twL.height() / 2.0F, this.twL.width() / 2.0F);
-    cRP();
+    this.uwb = Math.min(this.uvX.height() / 2.0F, this.uvX.width() / 2.0F);
+    daz();
     invalidate();
     AppMethodBeat.o(42608);
   }
@@ -157,7 +157,7 @@ public class CircleImageView
     try
     {
       if ((paramDrawable instanceof ColorDrawable)) {}
-      for (Bitmap localBitmap = Bitmap.createBitmap(2, 2, hew);; localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), hew))
+      for (Bitmap localBitmap = Bitmap.createBitmap(2, 2, hwE);; localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), hwE))
       {
         Canvas localCanvas = new Canvas(localBitmap);
         paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
@@ -175,17 +175,17 @@ public class CircleImageView
   
   public int getBorderColor()
   {
-    return this.kpM;
+    return this.kKM;
   }
   
   public int getBorderWidth()
   {
-    return this.twO;
+    return this.uwa;
   }
   
   public ImageView.ScaleType getScaleType()
   {
-    return twK;
+    return uvW;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -196,9 +196,9 @@ public class CircleImageView
       AppMethodBeat.o(42596);
       return;
     }
-    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.twP, this.twN);
-    if (this.twO != 0) {
-      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.kpJ, this.kpN);
+    paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.uwb, this.uvZ);
+    if (this.uwa != 0) {
+      paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.kKJ, this.kKN);
     }
     AppMethodBeat.o(42596);
   }
@@ -226,13 +226,13 @@ public class CircleImageView
   public void setBorderColor(int paramInt)
   {
     AppMethodBeat.i(42598);
-    if (paramInt == this.kpM)
+    if (paramInt == this.kKM)
     {
       AppMethodBeat.o(42598);
       return;
     }
-    this.kpM = paramInt;
-    this.kpN.setColor(this.kpM);
+    this.kKM = paramInt;
+    this.kKN.setColor(this.kKM);
     invalidate();
     AppMethodBeat.o(42598);
   }
@@ -247,12 +247,12 @@ public class CircleImageView
   public void setBorderOverlay(boolean paramBoolean)
   {
     AppMethodBeat.i(42601);
-    if (paramBoolean == this.twS)
+    if (paramBoolean == this.uwe)
     {
       AppMethodBeat.o(42601);
       return;
     }
-    this.twS = paramBoolean;
+    this.uwe = paramBoolean;
     setup();
     AppMethodBeat.o(42601);
   }
@@ -260,12 +260,12 @@ public class CircleImageView
   public void setBorderWidth(int paramInt)
   {
     AppMethodBeat.i(42600);
-    if (paramInt == this.twO)
+    if (paramInt == this.uwa)
     {
       AppMethodBeat.o(42600);
       return;
     }
-    this.twO = paramInt;
+    this.uwa = paramInt;
     setup();
     AppMethodBeat.o(42600);
   }
@@ -273,13 +273,13 @@ public class CircleImageView
   public void setColorFilter(ColorFilter paramColorFilter)
   {
     AppMethodBeat.i(42606);
-    if (paramColorFilter == this.vo)
+    if (paramColorFilter == this.xh)
     {
       AppMethodBeat.o(42606);
       return;
     }
-    this.vo = paramColorFilter;
-    this.twN.setColorFilter(this.vo);
+    this.xh = paramColorFilter;
+    this.uvZ.setColorFilter(this.xh);
     invalidate();
     AppMethodBeat.o(42606);
   }
@@ -323,7 +323,7 @@ public class CircleImageView
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
     AppMethodBeat.i(42594);
-    if (paramScaleType != twK)
+    if (paramScaleType != uvW)
     {
       paramScaleType = new IllegalArgumentException(String.format("ScaleType %s not supported.", new Object[] { paramScaleType }));
       AppMethodBeat.o(42594);
@@ -334,7 +334,7 @@ public class CircleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.CircleImageView
  * JD-Core Version:    0.7.0.1
  */

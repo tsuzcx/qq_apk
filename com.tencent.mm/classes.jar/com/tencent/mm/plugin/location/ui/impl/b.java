@@ -9,39 +9,38 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.k.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class b
-  extends a
+  extends com.tencent.mm.plugin.k.a
 {
+  protected float aTL = 0.0F;
+  protected float aTM = 0.0F;
   public Activity activity;
-  protected float rYu = 0.0F;
-  protected float tmJ = 0.0F;
   protected int type = 0;
-  protected com.tencent.mm.plugin.k.d uaq;
+  protected com.tencent.mm.plugin.k.d vcZ;
   
   public b(Activity paramActivity)
   {
     this.activity = paramActivity;
   }
   
-  public final boolean cXL()
+  public final boolean dgX()
   {
     return false;
   }
   
-  public abstract com.tencent.mm.plugin.k.d cXM();
+  public abstract com.tencent.mm.plugin.k.d dgY();
   
-  public void cXN() {}
+  public void dgZ() {}
   
-  public void cXO() {}
+  public void dha() {}
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ac.d("MicroMsg.MMBaseMapUI", "dispatchKeyEvent");
+      ad.d("MicroMsg.MMBaseMapUI", "dispatchKeyEvent");
       this.activity.finish();
       return true;
     }
@@ -65,39 +64,44 @@ public abstract class b
     this.activity.requestWindowFeature(1);
     this.activity.setContentView(2131495097);
     this.type = this.activity.getIntent().getIntExtra("map_view_type", 0);
-    ac.i("MicroMsg.MMBaseMapUI", "init oncreate type %d", new Object[] { Integer.valueOf(this.type) });
-    ((FrameLayout)findViewById(2131302155)).addView(d.fB(this.activity));
-    this.uaq = cXM();
-    this.uaq.setMapViewOnTouchListener(new View.OnTouchListener()
+    ad.i("MicroMsg.MMBaseMapUI", "init oncreate type %d", new Object[] { Integer.valueOf(this.type) });
+    ((FrameLayout)findViewById(2131302155)).addView(d.fG(this.activity));
+    this.vcZ = dgY();
+    this.vcZ.setMapViewOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(56000);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/location/ui/impl/MMBaseMapUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         int i = paramAnonymousMotionEvent.getAction();
-        ac.i("MicroMsg.MMBaseMapUI", "map action ".concat(String.valueOf(i)));
+        ad.i("MicroMsg.MMBaseMapUI", "map action ".concat(String.valueOf(i)));
         switch (i)
         {
         }
         for (;;)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/location/ui/impl/MMBaseMapUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(56000);
           return false;
-          b.this.rYu = paramAnonymousMotionEvent.getX();
-          b.this.tmJ = paramAnonymousMotionEvent.getY();
-          b.this.cXN();
+          b.this.aTL = paramAnonymousMotionEvent.getX();
+          b.this.aTM = paramAnonymousMotionEvent.getY();
+          b.this.dgZ();
           continue;
-          if ((Math.abs(paramAnonymousMotionEvent.getX() - b.this.rYu) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - b.this.tmJ) > 10.0F)) {
-            b.this.cXO();
+          if ((Math.abs(paramAnonymousMotionEvent.getX() - b.this.aTL) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - b.this.aTM) > 10.0F)) {
+            b.this.dha();
           }
         }
       }
     });
-    this.uaq.setMapAnchor(0.5F, 0.5F);
+    this.vcZ.setMapAnchor(0.5F, 0.5F);
   }
   
   public void onDestroy()
   {
-    this.uaq.destroy();
+    this.vcZ.destroy();
   }
   
   public void onPause() {}
@@ -106,7 +110,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.b
  * JD-Core Version:    0.7.0.1
  */

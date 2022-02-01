@@ -12,24 +12,24 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.b.f;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.g.a.cs.a;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.g.a.cv;
+import com.tencent.mm.g.a.cv.a;
+import com.tencent.mm.g.a.gw;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.plugin.fav.a.af;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahn;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
@@ -42,114 +42,114 @@ import java.util.Map;
 
 public class e
 {
-  private static Map<String, Integer> nhJ;
-  private static com.tencent.mm.b.f<String, Bitmap> qLT;
+  private static Map<String, Integer> nIf;
+  private static f<String, Bitmap> rvV;
   
   static
   {
     AppMethodBeat.i(106690);
-    qLT = new com.tencent.mm.memory.a.b(20, e.class);
-    nhJ = new HashMap();
+    rvV = new com.tencent.mm.memory.a.b(20, e.class);
+    nIf = new HashMap();
     HashMap localHashMap = new HashMap();
-    nhJ = localHashMap;
+    nIf = localHashMap;
     localHashMap.put("avi", Integer.valueOf(2131689581));
-    nhJ.put("m4v", Integer.valueOf(2131689581));
-    nhJ.put("vob", Integer.valueOf(2131689581));
-    nhJ.put("mpeg", Integer.valueOf(2131689581));
-    nhJ.put("mpe", Integer.valueOf(2131689581));
-    nhJ.put("asx", Integer.valueOf(2131689581));
-    nhJ.put("asf", Integer.valueOf(2131689581));
-    nhJ.put("f4v", Integer.valueOf(2131689581));
-    nhJ.put("flv", Integer.valueOf(2131689581));
-    nhJ.put("mkv", Integer.valueOf(2131689581));
-    nhJ.put("wmv", Integer.valueOf(2131689581));
-    nhJ.put("wm", Integer.valueOf(2131689581));
-    nhJ.put("3gp", Integer.valueOf(2131689581));
-    nhJ.put("mp4", Integer.valueOf(2131689581));
-    nhJ.put("rmvb", Integer.valueOf(2131689581));
-    nhJ.put("rm", Integer.valueOf(2131689581));
-    nhJ.put("ra", Integer.valueOf(2131689581));
-    nhJ.put("ram", Integer.valueOf(2131689581));
-    nhJ.put("mp3pro", Integer.valueOf(2131689564));
-    nhJ.put("vqf", Integer.valueOf(2131689564));
-    nhJ.put("cd", Integer.valueOf(2131689564));
-    nhJ.put("md", Integer.valueOf(2131689564));
-    nhJ.put("mod", Integer.valueOf(2131689564));
-    nhJ.put("vorbis", Integer.valueOf(2131689564));
-    nhJ.put("au", Integer.valueOf(2131689564));
-    nhJ.put("amr", Integer.valueOf(2131689564));
-    nhJ.put("silk", Integer.valueOf(2131689564));
-    nhJ.put("wma", Integer.valueOf(2131689564));
-    nhJ.put("mmf", Integer.valueOf(2131689564));
-    nhJ.put("mid", Integer.valueOf(2131689564));
-    nhJ.put("midi", Integer.valueOf(2131689564));
-    nhJ.put("mp3", Integer.valueOf(2131689564));
-    nhJ.put("aac", Integer.valueOf(2131689564));
-    nhJ.put("ape", Integer.valueOf(2131689564));
-    nhJ.put("aiff", Integer.valueOf(2131689564));
-    nhJ.put("aif", Integer.valueOf(2131689564));
-    nhJ.put("jfif", Integer.valueOf(2131689570));
-    nhJ.put("tiff", Integer.valueOf(2131689570));
-    nhJ.put("tif", Integer.valueOf(2131689570));
-    nhJ.put("jpe", Integer.valueOf(2131689570));
-    nhJ.put("dib", Integer.valueOf(2131689570));
-    nhJ.put("jpeg", Integer.valueOf(2131689570));
-    nhJ.put("jpg", Integer.valueOf(2131689570));
-    nhJ.put("png", Integer.valueOf(2131689570));
-    nhJ.put("bmp", Integer.valueOf(2131689570));
-    nhJ.put("gif", Integer.valueOf(2131689570));
-    nhJ.put("rar", Integer.valueOf(2131689573));
-    nhJ.put("zip", Integer.valueOf(2131689573));
-    nhJ.put("7z", Integer.valueOf(2131689573));
-    nhJ.put("iso", Integer.valueOf(2131689573));
-    nhJ.put("cab", Integer.valueOf(2131689573));
-    nhJ.put("doc", Integer.valueOf(2131689585));
-    nhJ.put("docx", Integer.valueOf(2131689585));
-    nhJ.put("ppt", Integer.valueOf(2131689571));
-    nhJ.put("pptx", Integer.valueOf(2131689571));
-    nhJ.put("xls", Integer.valueOf(2131689557));
-    nhJ.put("xlsx", Integer.valueOf(2131689557));
-    nhJ.put("txt", Integer.valueOf(2131689576));
-    nhJ.put("rtf", Integer.valueOf(2131689576));
-    nhJ.put("pdf", Integer.valueOf(2131689568));
-    nhJ.put("unknown", Integer.valueOf(2131689577));
+    nIf.put("m4v", Integer.valueOf(2131689581));
+    nIf.put("vob", Integer.valueOf(2131689581));
+    nIf.put("mpeg", Integer.valueOf(2131689581));
+    nIf.put("mpe", Integer.valueOf(2131689581));
+    nIf.put("asx", Integer.valueOf(2131689581));
+    nIf.put("asf", Integer.valueOf(2131689581));
+    nIf.put("f4v", Integer.valueOf(2131689581));
+    nIf.put("flv", Integer.valueOf(2131689581));
+    nIf.put("mkv", Integer.valueOf(2131689581));
+    nIf.put("wmv", Integer.valueOf(2131689581));
+    nIf.put("wm", Integer.valueOf(2131689581));
+    nIf.put("3gp", Integer.valueOf(2131689581));
+    nIf.put("mp4", Integer.valueOf(2131689581));
+    nIf.put("rmvb", Integer.valueOf(2131689581));
+    nIf.put("rm", Integer.valueOf(2131689581));
+    nIf.put("ra", Integer.valueOf(2131689581));
+    nIf.put("ram", Integer.valueOf(2131689581));
+    nIf.put("mp3pro", Integer.valueOf(2131689564));
+    nIf.put("vqf", Integer.valueOf(2131689564));
+    nIf.put("cd", Integer.valueOf(2131689564));
+    nIf.put("md", Integer.valueOf(2131689564));
+    nIf.put("mod", Integer.valueOf(2131689564));
+    nIf.put("vorbis", Integer.valueOf(2131689564));
+    nIf.put("au", Integer.valueOf(2131689564));
+    nIf.put("amr", Integer.valueOf(2131689564));
+    nIf.put("silk", Integer.valueOf(2131689564));
+    nIf.put("wma", Integer.valueOf(2131689564));
+    nIf.put("mmf", Integer.valueOf(2131689564));
+    nIf.put("mid", Integer.valueOf(2131689564));
+    nIf.put("midi", Integer.valueOf(2131689564));
+    nIf.put("mp3", Integer.valueOf(2131689564));
+    nIf.put("aac", Integer.valueOf(2131689564));
+    nIf.put("ape", Integer.valueOf(2131689564));
+    nIf.put("aiff", Integer.valueOf(2131689564));
+    nIf.put("aif", Integer.valueOf(2131689564));
+    nIf.put("jfif", Integer.valueOf(2131689570));
+    nIf.put("tiff", Integer.valueOf(2131689570));
+    nIf.put("tif", Integer.valueOf(2131689570));
+    nIf.put("jpe", Integer.valueOf(2131689570));
+    nIf.put("dib", Integer.valueOf(2131689570));
+    nIf.put("jpeg", Integer.valueOf(2131689570));
+    nIf.put("jpg", Integer.valueOf(2131689570));
+    nIf.put("png", Integer.valueOf(2131689570));
+    nIf.put("bmp", Integer.valueOf(2131689570));
+    nIf.put("gif", Integer.valueOf(2131689570));
+    nIf.put("rar", Integer.valueOf(2131689573));
+    nIf.put("zip", Integer.valueOf(2131689573));
+    nIf.put("7z", Integer.valueOf(2131689573));
+    nIf.put("iso", Integer.valueOf(2131689573));
+    nIf.put("cab", Integer.valueOf(2131689573));
+    nIf.put("doc", Integer.valueOf(2131689585));
+    nIf.put("docx", Integer.valueOf(2131689585));
+    nIf.put("ppt", Integer.valueOf(2131689571));
+    nIf.put("pptx", Integer.valueOf(2131689571));
+    nIf.put("xls", Integer.valueOf(2131689557));
+    nIf.put("xlsx", Integer.valueOf(2131689557));
+    nIf.put("txt", Integer.valueOf(2131689576));
+    nIf.put("rtf", Integer.valueOf(2131689576));
+    nIf.put("pdf", Integer.valueOf(2131689568));
+    nIf.put("unknown", Integer.valueOf(2131689577));
     AppMethodBeat.o(106690);
   }
   
-  private static int a(cs paramcs, int paramInt)
+  private static int a(cv paramcv, int paramInt)
   {
     AppMethodBeat.i(106682);
-    agx localagx;
-    if ((paramcs.dck.dcm.nxC != null) && (paramcs.dck.dcm.nxC.size() > 0))
+    ajn localajn;
+    if ((paramcv.dnG.dnI.nZa != null) && (paramcv.dnG.dnI.nZa.size() > 0))
     {
-      localagx = (agx)paramcs.dck.dcm.nxC.getLast();
+      localajn = (ajn)paramcv.dnG.dnI.nZa.getLast();
       if (paramInt <= 0) {
         switch (paramInt)
         {
         default: 
-          localagx.XO(0);
+          localajn.ZK(0);
         }
       }
     }
     for (;;)
     {
-      b(paramcs, paramInt);
+      b(paramcv, paramInt);
       AppMethodBeat.o(106682);
       return paramInt;
-      localagx.XO(1);
-      localagx.aIQ(null);
+      localajn.ZK(1);
+      localajn.aOt(null);
       continue;
-      localagx.XO(2);
-      localagx.aIQ(null);
+      localajn.ZK(2);
+      localajn.aOt(null);
     }
   }
   
-  private static int a(cs paramcs, agx paramagx, int paramInt)
+  private static int a(cv paramcv, ajn paramajn, int paramInt)
   {
     AppMethodBeat.i(106683);
-    if (paramagx == null)
+    if (paramajn == null)
     {
-      paramInt = a(paramcs, paramInt);
+      paramInt = a(paramcv, paramInt);
       AppMethodBeat.o(106683);
       return paramInt;
     }
@@ -157,50 +157,50 @@ public class e
       switch (paramInt)
       {
       default: 
-        paramagx.XO(0);
+        paramajn.ZK(0);
       }
     }
     for (;;)
     {
-      b(paramcs, paramInt);
+      b(paramcv, paramInt);
       AppMethodBeat.o(106683);
       return paramInt;
-      paramagx.XO(1);
-      paramagx.aIQ(null);
+      paramajn.ZK(1);
+      paramajn.aOt(null);
       continue;
-      paramagx.XO(2);
-      paramagx.aIQ(null);
+      paramajn.ZK(2);
+      paramajn.aOt(null);
     }
   }
   
-  public static int a(bo parambo, cs paramcs, boolean paramBoolean)
+  public static int a(bu parambu, cv paramcv, boolean paramBoolean)
   {
     AppMethodBeat.i(106681);
     Object localObject1 = "";
-    ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo msg type is %d", new Object[] { Integer.valueOf(parambo.getType()) });
+    ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo msg type is %d", new Object[] { Integer.valueOf(parambu.getType()) });
     int i;
-    if ((!paramBoolean) && (paramcs.dck.dcp > 0))
+    if ((!paramBoolean) && (paramcv.dnG.dnL > 0))
     {
-      ac.i("MicroMsg.FavExportLogic", "(!result)&&(favoriteEvent.data.errorType > FavExportLogic.KEY_FAV_PARA_NO_ERROR)");
-      i = a(paramcs, paramcs.dck.dcp);
+      ad.i("MicroMsg.FavExportLogic", "(!result)&&(favoriteEvent.data.errorType > FavExportLogic.KEY_FAV_PARA_NO_ERROR)");
+      i = a(paramcv, paramcv.dnG.dnL);
       AppMethodBeat.o(106681);
       return i;
     }
-    if ((paramcs.dck.type == 4) || (paramcs.dck.type == 8) || (paramcs.dck.type == 16) || (paramcs.dck.type == 2)) {}
+    if ((paramcv.dnG.type == 4) || (paramcv.dnG.type == 8) || (paramcv.dnG.type == 16) || (paramcv.dnG.type == 2)) {}
     for (paramBoolean = false;; paramBoolean = true)
     {
       boolean bool = paramBoolean;
-      agx localagx;
-      if (paramcs.dck.type == 14)
+      ajn localajn;
+      if (paramcv.dnG.type == 14)
       {
         bool = paramBoolean;
-        if (paramcs.dck.dcm.nxC.size() > 0)
+        if (paramcv.dnG.dnI.nZa.size() > 0)
         {
-          localagx = (agx)paramcs.dck.dcm.nxC.getLast();
-          if ((localagx.dataType != 4) && (localagx.dataType != 8) && (localagx.dataType != 15))
+          localajn = (ajn)paramcv.dnG.dnI.nZa.getLast();
+          if ((localajn.dataType != 4) && (localajn.dataType != 8) && (localajn.dataType != 15))
           {
             bool = paramBoolean;
-            if (localagx.dataType != 2) {}
+            if (localajn.dataType != 2) {}
           }
           else
           {
@@ -208,90 +208,90 @@ public class e
           }
         }
       }
-      if ((paramcs.dck.type == 14) || (paramcs.dck.type == 18)) {}
+      if ((paramcv.dnG.type == 14) || (paramcv.dnG.type == 18)) {}
       for (paramBoolean = false;; paramBoolean = true)
       {
-        ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo msg type skipCheck %B", new Object[] { Boolean.valueOf(bool) });
-        if ((bool) || (parambo.cru()))
+        ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo msg type skipCheck %B", new Object[] { Boolean.valueOf(bool) });
+        if ((bool) || (parambu.cxg()))
         {
-          i = a(paramcs, 0);
+          i = a(paramcv, 0);
           AppMethodBeat.o(106681);
           return i;
         }
-        if (paramcs.dck.dcm == null)
+        if (paramcv.dnG.dnI == null)
         {
-          i = a(paramcs, -1);
+          i = a(paramcv, -1);
           AppMethodBeat.o(106681);
           return i;
         }
-        if (paramcs.dck.dcm.nxC == null)
+        if (paramcv.dnG.dnI.nZa == null)
         {
-          i = a(paramcs, -1);
+          i = a(paramcv, -1);
           AppMethodBeat.o(106681);
           return i;
         }
-        if (System.currentTimeMillis() - parambo.field_createTime > 259200000L) {}
+        if (System.currentTimeMillis() - parambu.field_createTime > 259200000L) {}
         for (bool = true;; bool = false)
         {
-          ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo isOverThreeDays %B", new Object[] { Boolean.valueOf(bool) });
-          if (1 <= paramcs.dck.dcm.nxC.size())
+          ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo isOverThreeDays %B", new Object[] { Boolean.valueOf(bool) });
+          if (1 <= paramcv.dnG.dnI.nZa.size())
           {
-            localagx = (agx)paramcs.dck.dcm.nxC.getLast();
-            localObject1 = localagx.EzD;
+            localajn = (ajn)paramcv.dnG.dnI.nZa.getLast();
+            localObject1 = localajn.Ghp;
           }
-          for (i = localagx.dataType;; i = 0)
+          for (i = localajn.dataType;; i = 0)
           {
-            if (localagx == null) {
-              ac.w("MicroMsg.FavExportLogic", "dataItem is null, size:" + paramcs.dck.dcm.nxC.size());
+            if (localajn == null) {
+              ad.w("MicroMsg.FavExportLogic", "dataItem is null, size:" + paramcv.dnG.dnI.nZa.size());
             }
             if (bool)
             {
-              if (!bs.isNullOrNil((String)localObject1))
+              if (!bt.isNullOrNil((String)localObject1))
               {
                 localObject2 = localObject1;
-                if (i.eA((String)localObject1)) {}
+                if (i.fv((String)localObject1)) {}
               }
               else
               {
-                if ((parambo != null) && ((parambo.getType() == 43) || (parambo.getType() == 44) || (parambo.getType() == 62)))
+                if ((parambu != null) && ((parambu.getType() == 43) || (parambu.getType() == 44) || (parambu.getType() == 62)))
                 {
-                  localObject1 = u.Ej(parambo.field_imgPath);
-                  if ((localObject1 != null) && (((s)localObject1).iaP == -1))
+                  localObject1 = u.Hy(parambu.field_imgPath);
+                  if ((localObject1 != null) && (((s)localObject1).iul == -1))
                   {
-                    localObject1 = ((s)localObject1).aJJ();
-                    if (!i.eA((String)localObject1)) {}
+                    localObject1 = ((s)localObject1).aMU();
+                    if (!i.fv((String)localObject1)) {}
                   }
                 }
-                while (bs.isNullOrNil((String)localObject1))
+                while (bt.isNullOrNil((String)localObject1))
                 {
-                  i = a(paramcs, localagx, -4);
+                  i = a(paramcv, localajn, -4);
                   AppMethodBeat.o(106681);
                   return i;
                   localObject1 = null;
                 }
-                ((agx)paramcs.dck.dcm.nxC.getLast()).aIQ((String)localObject1);
+                ((ajn)paramcv.dnG.dnI.nZa.getLast()).aOt((String)localObject1);
                 localObject2 = localObject1;
               }
-              if (a(parambo, paramcs, localObject2, true, paramBoolean, i))
+              if (a(parambu, paramcv, localObject2, true, paramBoolean, i))
               {
-                i = a(paramcs, localagx, -5);
+                i = a(paramcv, localajn, -5);
                 AppMethodBeat.o(106681);
                 return i;
               }
-              ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  isOverThreeDays true not big not expired");
+              ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  isOverThreeDays true not big not expired");
             }
-            while (!a(parambo, paramcs, (String)localObject1, false, paramBoolean, i))
+            while (!a(parambu, paramcv, (String)localObject1, false, paramBoolean, i))
             {
               Object localObject2;
-              ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  fav data is normal");
-              i = a(paramcs, localagx, 0);
+              ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  fav data is normal");
+              i = a(paramcv, localajn, 0);
               AppMethodBeat.o(106681);
               return i;
             }
-            i = a(paramcs, localagx, -5);
+            i = a(paramcv, localajn, -5);
             AppMethodBeat.o(106681);
             return i;
-            localagx = null;
+            localajn = null;
           }
         }
       }
@@ -323,8 +323,8 @@ public class e
         {
           AppMethodBeat.i(106674);
           paramAnonymousDialogInterface.dismiss();
-          if (this.qLV != null) {
-            this.qLV.onClick(paramAnonymousDialogInterface, -2);
+          if (this.rvX != null) {
+            this.rvX.onClick(paramAnonymousDialogInterface, -2);
           }
           if (paramFragment != null)
           {
@@ -345,8 +345,8 @@ public class e
         {
           AppMethodBeat.i(106675);
           paramAnonymousDialogInterface.dismiss();
-          if (this.qLV != null) {
-            this.qLV.onClick(paramAnonymousDialogInterface, -1);
+          if (this.rvX != null) {
+            this.rvX.onClick(paramAnonymousDialogInterface, -1);
           }
           AppMethodBeat.o(106675);
         }
@@ -369,11 +369,11 @@ public class e
         if (paramInt1 != 14)
         {
           if (paramInt1 == 2) {
-            str = ((Context)localObject).getString(2131758847, new Object[] { Integer.valueOf(((af)g.ad(af.class)).getImageSizeLimitInMB(true)) });
+            str = ((Context)localObject).getString(2131758847, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getImageSizeLimitInMB(true)) });
           } else if (paramInt1 == 4) {
-            str = ((Context)localObject).getString(2131758847, new Object[] { Integer.valueOf(((af)g.ad(af.class)).getVideoSizeLimitInMB(true)) });
+            str = ((Context)localObject).getString(2131758847, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getVideoSizeLimitInMB(true)) });
           } else {
-            str = ((Context)localObject).getString(2131758847, new Object[] { Integer.valueOf(((af)g.ad(af.class)).getFileSizeLimitInMB(true)) });
+            str = ((Context)localObject).getString(2131758847, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getFileSizeLimitInMB(true)) });
           }
         }
         else {
@@ -420,12 +420,22 @@ public class e
     AppMethodBeat.i(106677);
     if ((paramActivity == null) && (paramFragment == null))
     {
-      ac.e("MicroMsg.FavExportLogic", "handleErrorType activity = null && fragment = null");
+      ad.e("MicroMsg.FavExportLogic", "handleErrorType activity = null && fragment = null");
       AppMethodBeat.o(106677);
       return;
     }
     if (paramb == null) {
-      paramb = new e.1();
+      paramb = new a.b()
+      {
+        public final void bip()
+        {
+          AppMethodBeat.i(106670);
+          gw localgw = new gw();
+          localgw.dsV.type = 35;
+          a.IbL.l(localgw);
+          AppMethodBeat.o(106670);
+        }
+      };
     }
     for (;;)
     {
@@ -462,14 +472,24 @@ public class e
         default: 
           if (paramInt2 == 2131759025) {
             if (paramInt1 == 2) {
-              paramActivity = ((Activity)localObject).getString(2131759025, new Object[] { Integer.valueOf(((af)g.ad(af.class)).getImageSizeLimitInMB(true)) });
+              paramActivity = ((Activity)localObject).getString(2131759025, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getImageSizeLimitInMB(true)) });
             }
           }
           break;
         }
         for (;;)
         {
-          h.d((Context)localObject, paramActivity, "", new e.2(paramOnClickListener));
+          h.d((Context)localObject, paramActivity, "", new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(106671);
+              if (this.rvW != null) {
+                this.rvW.onClick(paramAnonymousDialogInterface, -1);
+              }
+              AppMethodBeat.o(106671);
+            }
+          });
           AppMethodBeat.o(106677);
           return;
           a((Context)localObject, paramOnClickListener);
@@ -483,11 +503,11 @@ public class e
           return;
           if (paramInt1 == 4)
           {
-            paramActivity = ((Activity)localObject).getString(2131759025, new Object[] { Integer.valueOf(((af)g.ad(af.class)).getVideoSizeLimitInMB(true)) });
+            paramActivity = ((Activity)localObject).getString(2131759025, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getVideoSizeLimitInMB(true)) });
           }
           else
           {
-            paramActivity = ((Activity)localObject).getString(2131759025, new Object[] { Integer.valueOf(((af)g.ad(af.class)).getFileSizeLimitInMB(true)) });
+            paramActivity = ((Activity)localObject).getString(2131759025, new Object[] { Integer.valueOf(((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getFileSizeLimitInMB(true)) });
             continue;
             paramActivity = ((Activity)localObject).getString(2131759024);
           }
@@ -536,8 +556,8 @@ public class e
       {
         AppMethodBeat.i(106673);
         paramAnonymousDialogInterface.dismiss();
-        if (this.qLV != null) {
-          this.qLV.onClick(paramAnonymousDialogInterface, -1);
+        if (this.rvX != null) {
+          this.rvX.onClick(paramAnonymousDialogInterface, -1);
         }
         AppMethodBeat.o(106673);
       }
@@ -545,79 +565,79 @@ public class e
     AppMethodBeat.o(106679);
   }
   
-  private static boolean a(bo parambo, cs paramcs, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  private static boolean a(bu parambu, cv paramcv, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(106684);
     Object localObject;
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
       localObject = new com.tencent.mm.vfs.e(paramString);
       if (((com.tencent.mm.vfs.e)localObject).exists())
       {
-        if (((com.tencent.mm.vfs.e)localObject).length() > ((af)g.ad(af.class)).getFavSizeLimit(paramBoolean2, paramInt))
+        if (((com.tencent.mm.vfs.e)localObject).length() > ((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getFavSizeLimit(paramBoolean2, paramInt))
         {
-          ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  file is big");
+          ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  file is big");
           AppMethodBeat.o(106684);
           return true;
         }
-        ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  file not big");
+        ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  file not big");
       }
     }
     else
     {
-      localObject = parambo.field_content;
+      localObject = parambu.field_content;
       if (localObject == null) {
         break label274;
       }
     }
     label274:
-    for (parambo = k.b.az((String)localObject, parambo.field_reserved);; parambo = null)
+    for (parambu = k.b.aA((String)localObject, parambu.field_reserved);; parambu = null)
     {
-      if (parambo != null)
+      if (parambu != null)
       {
-        if (parambo.hhF > ((af)g.ad(af.class)).getFavSizeLimit(paramBoolean2, paramInt))
+        if (parambu.hzO > ((com.tencent.mm.plugin.fav.a.af)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fav.a.af.class)).getFavSizeLimit(paramBoolean2, paramInt))
         {
-          ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  file is big");
+          ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  file is big");
           AppMethodBeat.o(106684);
           return true;
           if (paramBoolean1) {
             break;
           }
-          ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  not download finish ！attachFile.exists()");
-          ((agx)paramcs.dck.dcm.nxC.getLast()).aIQ(null);
+          ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  not download finish ！attachFile.exists()");
+          ((ajn)paramcv.dnG.dnI.nZa.getLast()).aOt(null);
           break;
         }
-        if ((!bs.isNullOrNil(paramString)) && (i.eA(paramString)) && (!paramBoolean1))
+        if ((!bt.isNullOrNil(paramString)) && (i.fv(paramString)) && (!paramBoolean1))
         {
-          long l = i.aSp(paramString);
-          if (parambo.hhF > l)
+          long l = i.aYo(paramString);
+          if (parambu.hzO > l)
           {
-            ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  not download finish content.attachlen > datasize");
-            ((agx)paramcs.dck.dcm.nxC.getLast()).aIQ(null);
+            ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  not download finish content.attachlen > datasize");
+            ((ajn)paramcv.dnG.dnI.nZa.getLast()).aOt(null);
           }
         }
       }
-      if ((localObject == null) || (parambo == null)) {
-        ac.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  (xml == null ) ||(content == null)");
+      if ((localObject == null) || (parambu == null)) {
+        ad.i("MicroMsg.FavExportLogic", "checkMsgLegalInfo  (xml == null ) ||(content == null)");
       }
       AppMethodBeat.o(106684);
       return false;
     }
   }
   
-  public static Bitmap aX(String paramString, boolean paramBoolean)
+  public static Bitmap aZ(String paramString, boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(106687);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(106687);
       return null;
     }
-    Object localObject = (Bitmap)qLT.get(paramString);
+    Object localObject = (Bitmap)rvV.get(paramString);
     if (localObject != null)
     {
-      ac.d("MicroMsg.FavExportLogic", "get bm from cache %s", new Object[] { paramString });
+      ad.d("MicroMsg.FavExportLogic", "get bm from cache %s", new Object[] { paramString });
       AppMethodBeat.o(106687);
       return localObject;
     }
@@ -626,25 +646,25 @@ public class e
       AppMethodBeat.o(106687);
       return null;
     }
-    if (!i.eA(paramString))
+    if (!i.fv(paramString))
     {
       AppMethodBeat.o(106687);
       return null;
     }
-    ac.d("MicroMsg.FavExportLogic", "get from cache fail, try to decode from file");
+    ad.d("MicroMsg.FavExportLogic", "get from cache fail, try to decode from file");
     localObject = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
     Bitmap localBitmap = MMBitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
     if (localBitmap != null)
     {
-      ac.i("MicroMsg.FavExportLogic", "bitmap recycle %s", new Object[] { localBitmap });
+      ad.i("MicroMsg.FavExportLogic", "bitmap recycle %s", new Object[] { localBitmap });
       localBitmap.recycle();
     }
     int j;
-    if ((ae.dv(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight)) && (((BitmapFactory.Options)localObject).outWidth > 480))
+    if ((com.tencent.mm.sdk.platformtools.af.dx(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight)) && (((BitmapFactory.Options)localObject).outWidth > 480))
     {
       i = 1;
-      if ((!ae.du(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight)) || (((BitmapFactory.Options)localObject).outHeight <= 480)) {
+      if ((!com.tencent.mm.sdk.platformtools.af.dw(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight)) || (((BitmapFactory.Options)localObject).outHeight <= 480)) {
         break label256;
       }
       j = 1;
@@ -672,17 +692,17 @@ public class e
         }
         j = Math.max(1, j);
         i = Math.max(1, i);
-        ac.w("MicroMsg.FavExportLogic", "fit long picture, beg %d*%d, after %d*%d", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(j), Integer.valueOf(i) });
+        ad.w("MicroMsg.FavExportLogic", "fit long picture, beg %d*%d, after %d*%d", new Object[] { Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(j), Integer.valueOf(i) });
       }
     }
-    int i = BackwardSupportUtil.ExifHelper.ce(paramString);
+    int i = BackwardSupportUtil.ExifHelper.cY(paramString);
     if ((MMNativeJpeg.IsJpegFile(paramString)) && (MMNativeJpeg.isProgressive(paramString)))
     {
       localObject = MMNativeJpeg.decodeAsBitmap(paramString);
       if (localObject == null)
       {
         paramBoolean = bool;
-        ac.i("MicroMsg.FavExportLogic", "Progressive jpeg, result isNull:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+        ad.i("MicroMsg.FavExportLogic", "Progressive jpeg, result isNull:%b", new Object[] { Boolean.valueOf(paramBoolean) });
       }
     }
     for (;;)
@@ -690,32 +710,32 @@ public class e
       if (localObject != null) {
         break label415;
       }
-      ac.e("MicroMsg.FavExportLogic", "getSuitableBmp fail, temBmp is null, filePath = ".concat(String.valueOf(paramString)));
+      ad.e("MicroMsg.FavExportLogic", "getSuitableBmp fail, temBmp is null, filePath = ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(106687);
       return null;
       paramBoolean = false;
       break;
-      localObject = com.tencent.mm.sdk.platformtools.f.aKA(paramString);
+      localObject = com.tencent.mm.sdk.platformtools.g.aQg(paramString);
     }
     label415:
-    localObject = com.tencent.mm.sdk.platformtools.f.a((Bitmap)localObject, i);
+    localObject = com.tencent.mm.sdk.platformtools.g.a((Bitmap)localObject, i);
     if (((Bitmap)localObject).getByteCount() > 20971520)
     {
       AppMethodBeat.o(106687);
       return localObject;
     }
-    qLT.put(paramString, localObject);
+    rvV.put(paramString, localObject);
     AppMethodBeat.o(106687);
     return localObject;
   }
   
-  public static int acR(String paramString)
+  public static int agG(String paramString)
   {
     AppMethodBeat.i(106688);
-    paramString = (Integer)nhJ.get(paramString);
+    paramString = (Integer)nIf.get(paramString);
     if (paramString == null)
     {
-      i = ((Integer)nhJ.get("unknown")).intValue();
+      i = ((Integer)nIf.get("unknown")).intValue();
       AppMethodBeat.o(106688);
       return i;
     }
@@ -725,41 +745,41 @@ public class e
   }
   
   @TargetApi(8)
-  public static Bitmap acS(String paramString)
+  public static Bitmap agH(String paramString)
   {
     AppMethodBeat.i(106689);
     Bitmap localBitmap = null;
-    if (d.kZ(8)) {
-      localBitmap = com.tencent.mm.sdk.platformtools.f.createVideoThumbnail(paramString, 1);
+    if (d.ly(8)) {
+      localBitmap = com.tencent.mm.sdk.platformtools.g.createVideoThumbnail(paramString, 1);
     }
     AppMethodBeat.o(106689);
     return localBitmap;
   }
   
-  private static void b(cs paramcs, int paramInt)
+  private static void b(cv paramcv, int paramInt)
   {
     AppMethodBeat.i(106685);
-    if ((paramcs.dck.dcm.nxC == null) || (paramcs.dck.dcm.nxC.size() == 0))
+    if ((paramcv.dnG.dnI.nZa == null) || (paramcv.dnG.dnI.nZa.size() == 0))
     {
-      paramcs.dck.dcp = paramInt;
+      paramcv.dnG.dnL = paramInt;
       AppMethodBeat.o(106685);
       return;
     }
-    if (paramcs.dck.dcp == -9)
+    if (paramcv.dnG.dnL == -9)
     {
       AppMethodBeat.o(106685);
       return;
     }
-    if ((paramInt > 0) || (paramcs.dck.dcp > 0)) {}
+    if ((paramInt > 0) || (paramcv.dnG.dnL > 0)) {}
     for (int i = 1;; i = 0)
     {
       int k = 0;
       int n = 0;
       int m = 0;
       int j = 0;
-      if (k < paramcs.dck.dcm.nxC.size())
+      if (k < paramcv.dnG.dnI.nZa.size())
       {
-        switch (((agx)paramcs.dck.dcm.nxC.get(k)).EAn)
+        switch (((ajn)paramcv.dnG.dnI.nZa.get(k)).GhZ)
         {
         }
         for (;;)
@@ -777,11 +797,11 @@ public class e
       {
         if ((m > 0) || (n > 0))
         {
-          paramcs.dck.dcp = -9;
+          paramcv.dnG.dnL = -9;
           AppMethodBeat.o(106685);
           return;
         }
-        paramcs.dck.dcp = paramInt;
+        paramcv.dnG.dnL = paramInt;
         AppMethodBeat.o(106685);
         return;
       }
@@ -789,19 +809,19 @@ public class e
       {
         if (n > 0)
         {
-          paramcs.dck.dcp = -8;
+          paramcv.dnG.dnL = -8;
           AppMethodBeat.o(106685);
           return;
         }
         if (j == 0)
         {
-          paramcs.dck.dcp = -5;
+          paramcv.dnG.dnL = -5;
           AppMethodBeat.o(106685);
           return;
         }
         if (j > 0)
         {
-          paramcs.dck.dcp = -7;
+          paramcv.dnG.dnL = -7;
           AppMethodBeat.o(106685);
           return;
         }
@@ -812,13 +832,13 @@ public class e
       {
         if (j == 0)
         {
-          paramcs.dck.dcp = -4;
+          paramcv.dnG.dnL = -4;
           AppMethodBeat.o(106685);
           return;
         }
         if (j > 0)
         {
-          paramcs.dck.dcp = -6;
+          paramcv.dnG.dnL = -6;
           AppMethodBeat.o(106685);
           return;
         }
@@ -828,18 +848,18 @@ public class e
     }
   }
   
-  public static void cqy()
+  public static void cwd()
   {
     AppMethodBeat.i(106686);
-    qLT = new com.tencent.mm.memory.a.b(20, e.class);
+    rvV = new com.tencent.mm.memory.a.b(20, e.class);
     AppMethodBeat.o(106686);
   }
   
-  public static void cqz() {}
+  public static void cwe() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e
  * JD-Core Version:    0.7.0.1
  */

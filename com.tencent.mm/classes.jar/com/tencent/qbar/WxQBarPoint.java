@@ -2,22 +2,21 @@ package com.tencent.qbar;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/qbar/WxQBarPoint;", "Lcom/tencent/qbar/QbarNative$QBarPoint;", "Landroid/os/Parcelable;", "()V", "point", "(Lcom/tencent/qbar/QbarNative$QBarPoint;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "scan-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/qbar/WxQBarPoint;", "Lcom/tencent/qbar/QbarNative$QBarPoint;", "Landroid/os/Parcelable;", "()V", "point", "(Lcom/tencent/qbar/QbarNative$QBarPoint;)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "describeContents", "", "writeToParcel", "", "flags", "CREATOR", "scan-sdk_release"})
 public final class WxQBarPoint
   extends QbarNative.QBarPoint
   implements Parcelable
 {
-  public static final a CREATOR;
+  public static final WxQBarPoint.a CREATOR;
   
   static
   {
     AppMethodBeat.i(176221);
-    CREATOR = new a((byte)0);
+    CREATOR = new WxQBarPoint.a((byte)0);
     AppMethodBeat.o(176221);
   }
   
@@ -67,7 +66,7 @@ public final class WxQBarPoint
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(176218);
-    k.h(paramParcel, "parcel");
+    p.h(paramParcel, "parcel");
     paramParcel.writeInt(this.point_cnt);
     paramParcel.writeFloat(this.x0);
     paramParcel.writeFloat(this.x1);
@@ -79,15 +78,10 @@ public final class WxQBarPoint
     paramParcel.writeFloat(this.y3);
     AppMethodBeat.o(176218);
   }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/qbar/WxQBarPoint$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/qbar/WxQBarPoint;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/qbar/WxQBarPoint;", "scan-sdk_release"})
-  public static final class a
-    implements Parcelable.Creator<WxQBarPoint>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.qbar.WxQBarPoint
  * JD-Core Version:    0.7.0.1
  */

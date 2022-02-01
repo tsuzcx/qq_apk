@@ -10,7 +10,7 @@
         <ImageView android:id="@id/gqf" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:src="@drawable/bt4" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
         <ImageView android:id="@id/dwm" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:src="@raw/multitalk_network_mark" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
         <RelativeLayout android:id="@id/dw_" android:background="@drawable/a4h" android:visibility="gone" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
-            <ImageView android:id="@id/dwa" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/icon_filled_mike_off" android:layout_centerInParent="true" />
+            <ImageView android:id="@id/dwa" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
         </RelativeLayout>
         <RelativeLayout android:id="@id/hao" android:layout_width="wrap_content" android:layout_height="@dimen/cb" android:layout_alignBottom="@id/g5p" android:layout_alignParentBottom="true">
             <RelativeLayout android:id="@id/hap" android:background="@drawable/icon_shadow_multitalk_avatar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:layout_alignParentBottom="true" />
@@ -18,4 +18,5 @@
         </RelativeLayout>
     </RelativeLayout>
     <View android:id="@id/c62" android:layout_width="fill_parent" android:layout_height="@dimen/a_g" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/c1f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

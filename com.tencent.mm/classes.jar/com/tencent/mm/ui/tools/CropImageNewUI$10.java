@@ -4,32 +4,39 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.av;
 
 final class CropImageNewUI$10
   implements View.OnTouchListener
 {
-  CropImageNewUI$10(CropImageNewUI paramCropImageNewUI, au paramau) {}
+  CropImageNewUI$10(CropImageNewUI paramCropImageNewUI, av paramav) {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(39015);
+    b localb = new b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    a.b("com/tencent/mm/ui/tools/CropImageNewUI$18", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      a.a(false, this, "com/tencent/mm/ui/tools/CropImageNewUI$18", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(39015);
       return false;
-      this.INj.au(200L, 200L);
+      this.KEp.az(200L, 200L);
       continue;
-      this.INj.stopTimer();
+      this.KEp.stopTimer();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.CropImageNewUI.10
  * JD-Core Version:    0.7.0.1
  */

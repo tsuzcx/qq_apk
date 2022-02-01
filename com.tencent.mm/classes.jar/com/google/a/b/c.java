@@ -7,34 +7,26 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentNavigableMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 
 public final class c
 {
-  private final Map<Type, com.google.a.h<?>> bCO;
-  private final b bDw;
+  private final b bNK;
+  private final Map<Type, com.google.a.h<?>> bNc;
   
   public c(Map<Type, com.google.a.h<?>> paramMap)
   {
     AppMethodBeat.i(107906);
-    this.bDw = b.xw();
-    this.bCO = paramMap;
+    this.bNK = b.yT();
+    this.bNc = paramMap;
     AppMethodBeat.o(107906);
   }
   
@@ -45,11 +37,11 @@ public final class c
     {
       paramClass = paramClass.getDeclaredConstructor(new Class[0]);
       if (!paramClass.isAccessible()) {
-        this.bDw.a(paramClass);
+        this.bNK.a(paramClass);
       }
       paramClass = new h()
       {
-        public final T xk()
+        public final T yH()
         {
           AppMethodBeat.i(107888);
           try
@@ -91,17 +83,17 @@ public final class c
   public final <T> h<T> b(final a<T> parama)
   {
     AppMethodBeat.i(107907);
-    final Type localType = parama.bET;
-    final Class localClass = parama.bGk;
-    parama = (com.google.a.h)this.bCO.get(localType);
+    final Type localType = parama.bPh;
+    final Class localClass = parama.bQy;
+    parama = (com.google.a.h)this.bNc.get(localType);
     if (parama != null)
     {
       parama = new h()
       {
-        public final T xk()
+        public final T yH()
         {
           AppMethodBeat.i(107887);
-          Object localObject = parama.wZ();
+          Object localObject = parama.yw();
           AppMethodBeat.o(107887);
           return localObject;
         }
@@ -109,15 +101,15 @@ public final class c
       AppMethodBeat.o(107907);
       return parama;
     }
-    parama = (com.google.a.h)this.bCO.get(localClass);
+    parama = (com.google.a.h)this.bNc.get(localClass);
     if (parama != null)
     {
       parama = new h()
       {
-        public final T xk()
+        public final T yH()
         {
           AppMethodBeat.i(107910);
-          Object localObject = parama.wZ();
+          Object localObject = parama.yw();
           AppMethodBeat.o(107910);
           return localObject;
         }
@@ -133,16 +125,7 @@ public final class c
     }
     if (Collection.class.isAssignableFrom(localClass)) {
       if (SortedSet.class.isAssignableFrom(localClass)) {
-        parama = new h()
-        {
-          public final T xk()
-          {
-            AppMethodBeat.i(107933);
-            TreeSet localTreeSet = new TreeSet();
-            AppMethodBeat.o(107933);
-            return localTreeSet;
-          }
-        };
+        parama = new c.9(this);
       }
     }
     while (parama != null)
@@ -153,7 +136,7 @@ public final class c
       {
         parama = new h()
         {
-          public final T xk()
+          public final T yH()
           {
             AppMethodBeat.i(107891);
             if ((localType instanceof ParameterizedType))
@@ -177,93 +160,30 @@ public final class c
       }
       else if (Set.class.isAssignableFrom(localClass))
       {
-        parama = new h()
-        {
-          public final T xk()
-          {
-            AppMethodBeat.i(107939);
-            LinkedHashSet localLinkedHashSet = new LinkedHashSet();
-            AppMethodBeat.o(107939);
-            return localLinkedHashSet;
-          }
-        };
+        parama = new c.11(this);
       }
       else if (Queue.class.isAssignableFrom(localClass))
       {
-        parama = new h()
-        {
-          public final T xk()
-          {
-            AppMethodBeat.i(107889);
-            ArrayDeque localArrayDeque = new ArrayDeque();
-            AppMethodBeat.o(107889);
-            return localArrayDeque;
-          }
-        };
+        parama = new c.12(this);
       }
       else
       {
-        parama = new h()
-        {
-          public final T xk()
-          {
-            AppMethodBeat.i(107949);
-            ArrayList localArrayList = new ArrayList();
-            AppMethodBeat.o(107949);
-            return localArrayList;
-          }
-        };
+        parama = new c.13(this);
         continue;
         if (Map.class.isAssignableFrom(localClass))
         {
           if (ConcurrentNavigableMap.class.isAssignableFrom(localClass)) {
-            parama = new h()
-            {
-              public final T xk()
-              {
-                AppMethodBeat.i(107980);
-                ConcurrentSkipListMap localConcurrentSkipListMap = new ConcurrentSkipListMap();
-                AppMethodBeat.o(107980);
-                return localConcurrentSkipListMap;
-              }
-            };
+            parama = new c.14(this);
           } else if (ConcurrentMap.class.isAssignableFrom(localClass)) {
-            parama = new h()
-            {
-              public final T xk()
-              {
-                AppMethodBeat.i(107942);
-                ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-                AppMethodBeat.o(107942);
-                return localConcurrentHashMap;
-              }
-            };
+            parama = new c.2(this);
           } else if (SortedMap.class.isAssignableFrom(localClass)) {
-            parama = new h()
-            {
-              public final T xk()
-              {
-                AppMethodBeat.i(107975);
-                TreeMap localTreeMap = new TreeMap();
-                AppMethodBeat.o(107975);
-                return localTreeMap;
-              }
-            };
-          } else if (((localType instanceof ParameterizedType)) && (!String.class.isAssignableFrom(a.h(((ParameterizedType)localType).getActualTypeArguments()[0]).bGk))) {
-            parama = new h()
-            {
-              public final T xk()
-              {
-                AppMethodBeat.i(107941);
-                LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-                AppMethodBeat.o(107941);
-                return localLinkedHashMap;
-              }
-            };
+            parama = new c.3(this);
+          } else if (((localType instanceof ParameterizedType)) && (!String.class.isAssignableFrom(a.h(((ParameterizedType)localType).getActualTypeArguments()[0]).bQy))) {
+            parama = new c.4(this);
           } else {
             parama = new h()
             {
-              public final T xk()
+              public final T yH()
               {
                 AppMethodBeat.i(107985);
                 g localg = new g();
@@ -280,14 +200,14 @@ public final class c
     }
     parama = new h()
     {
-      private final l bDA;
+      private final l bNO;
       
-      public final T xk()
+      public final T yH()
       {
         AppMethodBeat.i(107951);
         try
         {
-          Object localObject = this.bDA.H(localClass);
+          Object localObject = this.bNO.H(localClass);
           AppMethodBeat.o(107951);
           return localObject;
         }
@@ -306,14 +226,14 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(107909);
-    String str = this.bCO.toString();
+    String str = this.bNc.toString();
     AppMethodBeat.o(107909);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.b.c
  * JD-Core Version:    0.7.0.1
  */

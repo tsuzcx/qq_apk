@@ -2,8 +2,6 @@ package com.tencent.mm.plugin.collect.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomSheetBehavior;
@@ -19,22 +17,18 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.collect.model.h;
 import com.tencent.mm.plugin.collect.model.r;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.base.MMPullDownView.c;
-import com.tencent.mm.ui.base.MMPullDownView.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MMPullDownView.e;
-import com.tencent.mm.ui.base.MMPullDownView.g;
 import com.tencent.mm.ui.z;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.g;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -43,27 +37,27 @@ public class CollectBillListUI
   extends WalletBaseUI
 {
   private int limit;
-  private Calendar oAA;
-  private List<com.tencent.mm.plugin.collect.model.h> oAB;
-  private ListView oAj;
-  private b oAk;
-  private LinearLayout oAl;
-  private CollectPullDownView oAm;
-  private TextView oAn;
-  private Dialog oAo;
-  private boolean oAp;
-  private boolean oAq;
-  private boolean oAr;
-  private boolean oAs;
-  private boolean oAt;
-  private boolean oAu;
-  private boolean oAv;
-  private boolean oAw;
-  private boolean oAx;
-  private long oAy;
-  private long oAz;
-  private View ofD;
-  private int oxu;
+  private View oIW;
+  private int paP;
+  private ListView pdE;
+  private b pdF;
+  private LinearLayout pdG;
+  private CollectPullDownView pdH;
+  private TextView pdI;
+  private Dialog pdJ;
+  private boolean pdK;
+  private boolean pdL;
+  private boolean pdM;
+  private boolean pdN;
+  private boolean pdO;
+  private boolean pdP;
+  private boolean pdQ;
+  private boolean pdR;
+  private boolean pdS;
+  private long pdT;
+  private long pdU;
+  private Calendar pdV;
+  private List<h> pdW;
   private int retryCount;
   private Dialog tipDialog;
   private int type;
@@ -71,51 +65,51 @@ public class CollectBillListUI
   public CollectBillListUI()
   {
     AppMethodBeat.i(64057);
-    this.oAp = false;
-    this.oAq = false;
-    this.oAr = false;
-    this.oAs = false;
-    this.oAt = false;
-    this.oAu = false;
-    this.oAv = true;
-    this.oAw = false;
-    this.oAx = false;
+    this.pdK = false;
+    this.pdL = false;
+    this.pdM = false;
+    this.pdN = false;
+    this.pdO = false;
+    this.pdP = false;
+    this.pdQ = true;
+    this.pdR = false;
+    this.pdS = false;
     this.type = 0;
     this.limit = 20;
-    this.oxu = 0;
+    this.paP = 0;
     this.retryCount = 0;
-    this.oAy = 0L;
-    this.oAz = 0L;
-    this.oAB = new ArrayList();
+    this.pdT = 0L;
+    this.pdU = 0L;
+    this.pdW = new ArrayList();
     AppMethodBeat.o(64057);
   }
   
-  private void Wl(String paramString)
+  private void ZS(String paramString)
   {
     AppMethodBeat.i(64063);
-    if (this.oAk.getCount() == 0)
+    if (this.pdF.getCount() == 0)
     {
-      ac.i("MicroMsg.CollectBillListUI", "show empty view");
-      if (!bs.isNullOrNil(paramString)) {
-        this.oAn.setText(paramString);
+      ad.i("MicroMsg.CollectBillListUI", "show empty view");
+      if (!bt.isNullOrNil(paramString)) {
+        this.pdI.setText(paramString);
       }
       for (;;)
       {
-        biu();
+        bmg();
         AppMethodBeat.o(64063);
         return;
-        if (this.oAu)
+        if (this.pdP)
         {
-          this.oAn.setText(getString(2131757441));
+          this.pdI.setText(getString(2131757441));
         }
         else
         {
           paramString = getString(2131757441) + getString(2131757442);
-          this.oAn.setText(paramString);
+          this.pdI.setText(paramString);
         }
       }
     }
-    if (!bs.isNullOrNil(paramString)) {
+    if (!bt.isNullOrNil(paramString)) {
       Toast.makeText(getContext(), paramString, 1).show();
     }
     AppMethodBeat.o(64063);
@@ -124,51 +118,51 @@ public class CollectBillListUI
   private void a(int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(64066);
-    ac.i("MicroMsg.CollectBillListUI", "get retry page, type: %d, timestamp: %s, tryNum: %d, directFlag: %d, chooseFlag: %d", new Object[] { Integer.valueOf(this.type), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ad.i("MicroMsg.CollectBillListUI", "get retry page, type: %d, timestamp: %s, tryNum: %d, directFlag: %d, chooseFlag: %d", new Object[] { Integer.valueOf(this.type), Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     doSceneProgress(new r(this.type, paramLong, paramInt2, this.limit, paramInt3, paramInt1), false);
     this.retryCount += 1;
     AppMethodBeat.o(64066);
   }
   
-  private void bWv()
-  {
-    AppMethodBeat.i(64061);
-    this.oAm.scrollTo(0, this.oAm.getTopHeight());
-    AppMethodBeat.o(64061);
-  }
-  
-  private void bWw()
-  {
-    AppMethodBeat.i(64065);
-    int i = this.oAk.getCount();
-    if (i > 0)
-    {
-      long l = this.oAk.AA(i - 1).owV;
-      if (l < this.oAz)
-      {
-        ac.i("MicroMsg.CollectBillListUI", "server lastTimestamp is error! %s, %s", new Object[] { Long.valueOf(l), Long.valueOf(this.oAz) });
-        this.oAz = l;
-      }
-    }
-    ac.i("MicroMsg.CollectBillListUI", "get next page, type: %d, timestamp: %s", new Object[] { Integer.valueOf(this.type), Long.valueOf(this.oAz) });
-    doSceneProgress(new r(this.type, this.oAz, this.limit, 0), false);
-    this.oAr = true;
-    AppMethodBeat.o(64065);
-  }
-  
-  private void biu()
+  private void bmg()
   {
     AppMethodBeat.i(64062);
-    this.oAj.setVisibility(8);
-    this.oAl.setVisibility(0);
-    this.oAn.setVisibility(0);
+    this.pdE.setVisibility(8);
+    this.pdG.setVisibility(0);
+    this.pdI.setVisibility(0);
     AppMethodBeat.o(64062);
   }
   
-  private void jC(boolean paramBoolean)
+  private void caY()
+  {
+    AppMethodBeat.i(64061);
+    this.pdH.scrollTo(0, this.pdH.getTopHeight());
+    AppMethodBeat.o(64061);
+  }
+  
+  private void caZ()
+  {
+    AppMethodBeat.i(64065);
+    int i = this.pdF.getCount();
+    if (i > 0)
+    {
+      long l = this.pdF.Bj(i - 1).paq;
+      if (l < this.pdU)
+      {
+        ad.i("MicroMsg.CollectBillListUI", "server lastTimestamp is error! %s, %s", new Object[] { Long.valueOf(l), Long.valueOf(this.pdU) });
+        this.pdU = l;
+      }
+    }
+    ad.i("MicroMsg.CollectBillListUI", "get next page, type: %d, timestamp: %s", new Object[] { Integer.valueOf(this.type), Long.valueOf(this.pdU) });
+    doSceneProgress(new r(this.type, this.pdU, this.limit, 0), false);
+    this.pdM = true;
+    AppMethodBeat.o(64065);
+  }
+  
+  private void jN(boolean paramBoolean)
   {
     AppMethodBeat.i(64064);
-    CollectPullDownView localCollectPullDownView = this.oAm;
+    CollectPullDownView localCollectPullDownView = this.pdH;
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
@@ -186,117 +180,79 @@ public class CollectBillListUI
   public void initView()
   {
     AppMethodBeat.i(64059);
-    this.oAj = ((ListView)findViewById(2131298440));
-    this.oAl = ((LinearLayout)findViewById(2131298438));
-    this.oAn = ((TextView)findViewById(2131298439));
-    this.ofD = z.jD(this).inflate(2131493556, this.oAj, false);
+    this.pdE = ((ListView)findViewById(2131298440));
+    this.pdG = ((LinearLayout)findViewById(2131298438));
+    this.pdI = ((TextView)findViewById(2131298439));
+    this.oIW = z.jO(this).inflate(2131493556, this.pdE, false);
     View localView = new View(this);
     localView.setLayoutParams(new AbsListView.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(this, 5)));
-    this.oAj.addHeaderView(localView, null, true);
+    this.pdE.addHeaderView(localView, null, true);
     new View(this).setLayoutParams(new AbsListView.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(this, 10)));
-    this.oAj.addFooterView(localView, null, true);
-    this.oAj.setOverScrollMode(2);
-    this.oAk = new b(this);
-    this.oAj.setAdapter(this.oAk);
-    this.oAj.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.pdE.addFooterView(localView, null, true);
+    this.pdE.setOverScrollMode(2);
+    this.pdF = new b(this);
+    this.pdE.setAdapter(this.pdF);
+    this.pdE.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(64053);
-        ac.d("MicroMsg.CollectBillListUI", "click item: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/collect/ui/CollectBillListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        ad.d("MicroMsg.CollectBillListUI", "click item: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if ((paramAnonymousInt < 0) || (paramAnonymousInt >= paramAnonymousAdapterView.getAdapter().getCount()))
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectBillListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(64053);
           return;
         }
         paramAnonymousView = new Intent(CollectBillListUI.this.getContext(), CollectBillUI.class);
-        paramAnonymousAdapterView = (com.tencent.mm.plugin.collect.model.h)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
+        paramAnonymousAdapterView = (h)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
         if (paramAnonymousAdapterView == null)
         {
-          ac.w("MicroMsg.CollectBillListUI", "invaild record: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          ad.w("MicroMsg.CollectBillListUI", "invaild record: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectBillListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(64053);
           return;
         }
         paramAnonymousView.putExtra("key_type", paramAnonymousAdapterView.type);
-        paramAnonymousView.putExtra("key_timestamp", paramAnonymousAdapterView.owV);
+        paramAnonymousView.putExtra("key_timestamp", paramAnonymousAdapterView.paq);
         paramAnonymousView.putExtra("key_from_scene", 2);
         paramAnonymousAdapterView = CollectBillListUI.this;
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.aeD(), "com/tencent/mm/plugin/collect/ui/CollectBillListUI$5", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lR(0));
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.ahp(), "com/tencent/mm/plugin/collect/ui/CollectBillListUI$5", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/plugin/collect/ui/CollectBillListUI$5", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        com.tencent.mm.plugin.report.service.h.wUl.f(13944, new Object[] { Integer.valueOf(3) });
+        com.tencent.mm.plugin.report.service.g.yhR.f(13944, new Object[] { Integer.valueOf(3) });
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/collect/ui/CollectBillListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(64053);
       }
     });
-    this.oAj.setOnScrollListener(new AbsListView.OnScrollListener()
+    this.pdE.setOnScrollListener(new AbsListView.OnScrollListener()
     {
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
     });
-    this.oAm = ((CollectPullDownView)findViewById(2131298442));
-    this.oAm.setTopViewVisible(false);
-    this.oAm.setIsTopShowAll(false);
-    this.oAm.setBottomViewVisible(true);
-    this.oAm.setIsBottomShowAll(false);
-    this.oAm.setCanOverScrool(true);
-    this.oAm.setAtTopCallBack(new MMPullDownView.d()
+    this.pdH = ((CollectPullDownView)findViewById(2131298442));
+    this.pdH.setTopViewVisible(false);
+    this.pdH.setIsTopShowAll(false);
+    this.pdH.setBottomViewVisible(true);
+    this.pdH.setIsBottomShowAll(false);
+    this.pdH.setCanOverScrool(true);
+    this.pdH.setAtTopCallBack(new CollectBillListUI.9(this));
+    this.pdH.setAtBottomCallBack(new CollectBillListUI.10(this));
+    this.pdH.setOnTopLoadDataListener(new CollectBillListUI.11(this));
+    this.pdH.setOnBottomLoadDataListener(new MMPullDownView.e()
     {
-      public final boolean bWy()
-      {
-        AppMethodBeat.i(64054);
-        int i = CollectBillListUI.e(CollectBillListUI.this).getFirstVisiblePosition();
-        if (i == 0)
-        {
-          View localView = CollectBillListUI.e(CollectBillListUI.this).getChildAt(i);
-          if ((localView != null) && (localView.getX() == 0.0F))
-          {
-            AppMethodBeat.o(64054);
-            return true;
-          }
-        }
-        AppMethodBeat.o(64054);
-        return false;
-      }
-    });
-    this.oAm.setAtBottomCallBack(new MMPullDownView.c()
-    {
-      public final boolean bWz()
-      {
-        AppMethodBeat.i(64055);
-        if (CollectBillListUI.f(CollectBillListUI.this).getVisibility() == 0)
-        {
-          ac.d("MicroMsg.CollectBillListUI", "empty view");
-          AppMethodBeat.o(64055);
-          return true;
-        }
-        View localView = CollectBillListUI.e(CollectBillListUI.this).getChildAt(CollectBillListUI.e(CollectBillListUI.this).getChildCount() - 1);
-        if ((localView != null) && (localView.getBottom() <= CollectBillListUI.e(CollectBillListUI.this).getHeight()) && (CollectBillListUI.e(CollectBillListUI.this).getLastVisiblePosition() == CollectBillListUI.e(CollectBillListUI.this).getAdapter().getCount() - 1))
-        {
-          AppMethodBeat.o(64055);
-          return true;
-        }
-        AppMethodBeat.o(64055);
-        return false;
-      }
-    });
-    this.oAm.setOnTopLoadDataListener(new MMPullDownView.g()
-    {
-      public final boolean bWA()
-      {
-        AppMethodBeat.i(64056);
-        ac.d("MicroMsg.CollectBillListUI", "top load");
-        AppMethodBeat.o(64056);
-        return true;
-      }
-    });
-    this.oAm.setOnBottomLoadDataListener(new MMPullDownView.e()
-    {
-      public final boolean bWx()
+      public final boolean cba()
       {
         AppMethodBeat.i(64049);
-        ac.d("MicroMsg.CollectBillListUI", "bottomLoad, isLoading: %s, isFinish: %s", new Object[] { Boolean.valueOf(CollectBillListUI.g(CollectBillListUI.this)), Boolean.valueOf(CollectBillListUI.h(CollectBillListUI.this)) });
+        ad.d("MicroMsg.CollectBillListUI", "bottomLoad, isLoading: %s, isFinish: %s", new Object[] { Boolean.valueOf(CollectBillListUI.g(CollectBillListUI.this)), Boolean.valueOf(CollectBillListUI.h(CollectBillListUI.this)) });
         if ((!CollectBillListUI.g(CollectBillListUI.this)) && (!CollectBillListUI.h(CollectBillListUI.this)))
         {
           CollectBillListUI.i(CollectBillListUI.this);
@@ -317,7 +273,7 @@ public class CollectBillListUI
     super.onCreate(paramBundle);
     initView();
     setMMTitle(2131757443);
-    if (this.oAx) {
+    if (this.pdS) {
       addIconOptionMenu(0, 2131689956, new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -329,12 +285,9 @@ public class CollectBillListUI
         }
       });
     }
-    this.tipDialog = g.a(this, false, new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
-    });
-    bWw();
-    com.tencent.mm.plugin.report.service.h.wUl.f(13944, new Object[] { Integer.valueOf(4) });
+    this.tipDialog = com.tencent.mm.wallet_core.ui.g.a(this, false, new CollectBillListUI.3(this));
+    caZ();
+    com.tencent.mm.plugin.report.service.g.yhR.f(13944, new Object[] { Integer.valueOf(4) });
     AppMethodBeat.o(64058);
   }
   
@@ -347,183 +300,183 @@ public class CollectBillListUI
       if (this.tipDialog.isShowing()) {
         this.tipDialog.dismiss();
       }
-      this.oAm.setLoadDataEnd(true);
+      this.pdH.setLoadDataEnd(true);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (paramn.oxu == 0)
+        if (paramn.paP == 0)
         {
-          if (this.oAt)
+          if (this.pdO)
           {
-            ac.i("MicroMsg.CollectBillListUI", "is loading filter, skip!");
+            ad.i("MicroMsg.CollectBillListUI", "is loading filter, skip!");
             AppMethodBeat.o(64060);
             return true;
           }
-          if (paramn.oxv == 1)
+          if (paramn.paQ == 1)
           {
-            this.oAv = paramn.hqq;
-            if (!paramn.oxy.isEmpty())
+            this.pdQ = paramn.hII;
+            if (!paramn.paT.isEmpty())
             {
-              paramString = this.oAk;
-              List localList = paramn.oxy;
-              paramString.oAg.addAll(0, localList);
+              paramString = this.pdF;
+              List localList = paramn.paT;
+              paramString.pdB.addAll(0, localList);
               paramString.notifyDataSetChanged();
-              this.oAy = ((com.tencent.mm.plugin.collect.model.h)paramn.oxy.get(0)).owV;
-              this.oAs = false;
-              this.oAq = false;
+              this.pdT = ((h)paramn.paT.get(0)).paq;
+              this.pdN = false;
+              this.pdL = false;
             }
           }
           for (;;)
           {
             AppMethodBeat.o(64060);
             return true;
-            this.oAv = true;
+            this.pdQ = true;
             break;
-            this.oAu = paramn.hqq;
-            this.oAj.setVisibility(0);
-            this.oAl.setVisibility(8);
+            this.pdP = paramn.hII;
+            this.pdE.setVisibility(0);
+            this.pdG.setVisibility(8);
             if (paramn.isRetry)
             {
-              if (!paramn.oxy.isEmpty()) {
-                this.oAB.addAll(paramn.oxy);
+              if (!paramn.paT.isEmpty()) {
+                this.pdW.addAll(paramn.paT);
               }
-              if ((paramn.oxw == 0) && (paramn.oxx > 0) && (paramn.oxy.isEmpty()))
+              if ((paramn.paR == 0) && (paramn.paS > 0) && (paramn.paT.isEmpty()))
               {
-                ac.i("MicroMsg.CollectBillListUI", "continue retry: %d", new Object[] { Integer.valueOf(this.retryCount) });
-                a(paramn.oxx, paramn.owV, paramn.oxv, paramn.oxu);
+                ad.i("MicroMsg.CollectBillListUI", "continue retry: %d", new Object[] { Integer.valueOf(this.retryCount) });
+                a(paramn.paS, paramn.paq, paramn.paQ, paramn.paP);
                 AppMethodBeat.o(64060);
                 return true;
               }
               this.retryCount = 0;
-              if (this.oAB.size() > 0) {
-                this.oAk.cK(this.oAB);
+              if (this.pdW.size() > 0) {
+                this.pdF.cL(this.pdW);
               }
               for (;;)
               {
-                this.oAr = false;
-                this.oAz = paramn.owV;
-                bWv();
-                jC(this.oAu);
+                this.pdM = false;
+                this.pdU = paramn.paq;
+                caY();
+                jN(this.pdP);
                 break;
-                ac.i("MicroMsg.CollectBillListUI", "retry data is empty");
-                Wl(paramn.jXd);
+                ad.i("MicroMsg.CollectBillListUI", "retry data is empty");
+                ZS(paramn.krz);
               }
             }
-            if (!paramn.oxy.isEmpty())
+            if (!paramn.paT.isEmpty())
             {
-              this.oAk.cK(paramn.oxy);
-              this.oAz = ((com.tencent.mm.plugin.collect.model.h)paramn.oxy.get(paramn.oxy.size() - 1)).owV;
-              if (this.oAz > paramn.owV)
+              this.pdF.cL(paramn.paT);
+              this.pdU = ((h)paramn.paT.get(paramn.paT.size() - 1)).paq;
+              if (this.pdU > paramn.paq)
               {
-                ac.d("MicroMsg.CollectBillListUI", "use from_timestamp");
-                this.oAz = paramn.owV;
+                ad.d("MicroMsg.CollectBillListUI", "use from_timestamp");
+                this.pdU = paramn.paq;
               }
               for (;;)
               {
-                this.oAr = false;
-                bWv();
-                jC(this.oAu);
+                this.pdM = false;
+                caY();
+                jN(this.pdP);
                 break;
-                ac.i("MicroMsg.CollectBillListUI", "last record timestamp is less than fromtimestamp, %s, %s", new Object[] { Long.valueOf(this.oAz), Long.valueOf(paramn.owV) });
+                ad.i("MicroMsg.CollectBillListUI", "last record timestamp is less than fromtimestamp, %s, %s", new Object[] { Long.valueOf(this.pdU), Long.valueOf(paramn.paq) });
               }
             }
-            if ((paramn.oxw == 0) && (paramn.oxx > 0))
+            if ((paramn.paR == 0) && (paramn.paS > 0))
             {
-              ac.i("MicroMsg.CollectBillListUI", "need retry, tryNum: %d, timestamp: %s", new Object[] { Integer.valueOf(paramn.oxx), Long.valueOf(paramn.owV) });
-              a(paramn.oxx, paramn.owV, paramn.oxv, paramn.oxu);
-              this.oAB.clear();
+              ad.i("MicroMsg.CollectBillListUI", "need retry, tryNum: %d, timestamp: %s", new Object[] { Integer.valueOf(paramn.paS), Long.valueOf(paramn.paq) });
+              a(paramn.paS, paramn.paq, paramn.paQ, paramn.paP);
+              this.pdW.clear();
             }
             else
             {
-              this.oAr = false;
-              bWv();
-              ac.i("MicroMsg.CollectBillListUI", "next loading is empty without retry");
-              Wl(paramn.jXd);
-              jC(this.oAu);
+              this.pdM = false;
+              caY();
+              ad.i("MicroMsg.CollectBillListUI", "next loading is empty without retry");
+              ZS(paramn.krz);
+              jN(this.pdP);
             }
           }
         }
-        this.oAu = paramn.hqq;
+        this.pdP = paramn.hII;
         if (paramn.isRetry)
         {
-          if (!paramn.oxy.isEmpty()) {
-            this.oAB.addAll(paramn.oxy);
+          if (!paramn.paT.isEmpty()) {
+            this.pdW.addAll(paramn.paT);
           }
-          if ((paramn.oxw == 0) && (paramn.oxx > 0))
+          if ((paramn.paR == 0) && (paramn.paS > 0))
           {
-            ac.i("MicroMsg.CollectBillListUI", "continue retry: %d", new Object[] { Integer.valueOf(this.retryCount) });
-            a(paramn.oxx, paramn.owV, paramn.oxv, paramn.oxu);
+            ad.i("MicroMsg.CollectBillListUI", "continue retry: %d", new Object[] { Integer.valueOf(this.retryCount) });
+            a(paramn.paS, paramn.paq, paramn.paQ, paramn.paP);
           }
           for (;;)
           {
             AppMethodBeat.o(64060);
             return true;
             this.retryCount = 0;
-            this.oAv = true;
-            this.oAz = paramn.owV;
-            if (paramn.oxw == 0) {}
-            for (this.oAu = false;; this.oAu = true)
+            this.pdQ = true;
+            this.pdU = paramn.paq;
+            if (paramn.paR == 0) {}
+            for (this.pdP = false;; this.pdP = true)
             {
-              if (this.oAB.size() <= 0) {
+              if (this.pdW.size() <= 0) {
                 break label861;
               }
-              this.oAk.setData(this.oAB);
+              this.pdF.setData(this.pdW);
               break;
             }
             label861:
-            ac.i("MicroMsg.CollectBillListUI", "still empty data, show empty view");
-            biu();
-            if (!bs.isNullOrNil(paramn.jXd))
+            ad.i("MicroMsg.CollectBillListUI", "still empty data, show empty view");
+            bmg();
+            if (!bt.isNullOrNil(paramn.krz))
             {
-              this.oAn.setText(paramn.jXd);
-              this.oAn.setVisibility(0);
+              this.pdI.setText(paramn.krz);
+              this.pdI.setVisibility(0);
             }
-            paramString = this.oAk;
-            paramString.oAg.clear();
+            paramString = this.pdF;
+            paramString.pdB.clear();
             paramString.notifyDataSetChanged();
           }
         }
-        if (!paramn.oxy.isEmpty())
+        if (!paramn.paT.isEmpty())
         {
-          this.oAk.setData(paramn.oxy);
-          this.oAy = ((com.tencent.mm.plugin.collect.model.h)paramn.oxy.get(0)).owV;
-          this.oAz = ((com.tencent.mm.plugin.collect.model.h)paramn.oxy.get(paramn.oxy.size() - 1)).owV;
+          this.pdF.setData(paramn.paT);
+          this.pdT = ((h)paramn.paT.get(0)).paq;
+          this.pdU = ((h)paramn.paT.get(paramn.paT.size() - 1)).paq;
         }
         for (;;)
         {
-          this.oAt = false;
-          this.oAv = false;
+          this.pdO = false;
+          this.pdQ = false;
           break;
-          if ((paramn.oxw == 0) && (paramn.oxx > 0))
+          if ((paramn.paR == 0) && (paramn.paS > 0))
           {
-            ac.i("MicroMsg.CollectBillListUI", "need retry, tryNum: %d, timestamp: %s", new Object[] { Integer.valueOf(paramn.oxx), Long.valueOf(paramn.owV) });
-            a(paramn.oxx, paramn.owV, paramn.oxv, paramn.oxu);
-            this.oAB.clear();
+            ad.i("MicroMsg.CollectBillListUI", "need retry, tryNum: %d, timestamp: %s", new Object[] { Integer.valueOf(paramn.paS), Long.valueOf(paramn.paq) });
+            a(paramn.paS, paramn.paq, paramn.paQ, paramn.paP);
+            this.pdW.clear();
           }
           else
           {
-            biu();
+            bmg();
           }
         }
       }
-      ac.i("MicroMsg.CollectBillListUI", "net error, errType: %s, errCode: %s, errMsg: %s, chooseFlag: %d, direcFlag: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.oxu), Integer.valueOf(paramn.oxv) });
-      if (paramn.oxu == 0) {
-        if (paramn.oxv == 0)
+      ad.i("MicroMsg.CollectBillListUI", "net error, errType: %s, errCode: %s, errMsg: %s, chooseFlag: %d, direcFlag: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.paP), Integer.valueOf(paramn.paQ) });
+      if (paramn.paP == 0) {
+        if (paramn.paQ == 0)
         {
-          this.oAr = false;
-          bWv();
+          this.pdM = false;
+          caY();
         }
       }
       for (;;)
       {
-        if (this.oAk.isEmpty()) {
-          biu();
+        if (this.pdF.isEmpty()) {
+          bmg();
         }
         Toast.makeText(this, 2131757440, 1).show();
         AppMethodBeat.o(64060);
         return true;
-        this.oAs = false;
+        this.pdN = false;
         continue;
-        this.oAt = false;
+        this.pdO = false;
       }
     }
     AppMethodBeat.o(64060);
@@ -538,7 +491,7 @@ public class CollectBillListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectBillListUI
  * JD-Core Version:    0.7.0.1
  */

@@ -43,84 +43,84 @@ import com.tencent.mm.plugin.transvoice.a.c;
 import com.tencent.mm.plugin.transvoice.a.c.a;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ao.a;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.d.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSheetBehavior", "Landroid/support/design/widget/MMBottomSheetBehavior;", "Landroid/view/View;", "bottomSheetCoordinatorLayout", "Landroid/support/design/widget/CoordinatorLayout;", "btnLayout", "canCloseKeyboard", "", "canClosePanel", "canHideKeyboard", "closeInputMethod", "Landroid/widget/ImageView;", "closePanel", "container", "Lcom/tencent/mm/modelvoiceaddr/ShortSentenceContainer;", "curTxt", "", "getCurTxt", "()Ljava/lang/String;", "setCurTxt", "(Ljava/lang/String;)V", "dotCounter", "", "dotStr", "emojiRoot", "Landroid/widget/FrameLayout;", "hasClick", "inputMethodLayout", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoicePanelLayout;", "inputMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$InputMode;", "isEdited", "isKeyboardShown", "keyboardHeight", "langType", "languageChoiceDialog", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog;", "mNewVoiceInputReport", "Lcom/tencent/mm/modelvoiceaddr/voicereport/NewVoiceInputReportManager;", "mVoiceIdSet", "", "needSendTxtMsg", "onLanguageItemClick", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "overTimeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "panelDragOpeMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$PanelDragOpeMode;", "reporter", "Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "sendTxtMsg", "Landroid/widget/Button;", "sendVoiceMsg", "showImeRunnable", "Ljava/lang/Runnable;", "smileyItem", "smileyOpener", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "talker", "getTalker", "setTalker", "targetView", "tmpClickChangeLangTypeTime", "", "transCancelable", "transMore", "transPanelAction", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "getTransPanelAction", "()Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "setTransPanelAction", "(Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;)V", "transSP", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "txtEditView", "Lcom/tencent/mm/ui/widget/MMEditText;", "txtMsg4Send", "updateDotTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "voiceAddr", "Lcom/tencent/mm/plugin/transvoice/model/SceneVoiceInputAddr2;", "value", "voiceFileName", "getVoiceFileName", "setVoiceFileName", "voiceLen", "getVoiceLen", "()J", "setVoiceLen", "(J)V", "voiceMsgSend", "cgiReport", "", "msg", "closeInputMethodBtnVisibility", "visible", "closeTransPanel", "exitType", "delPunctuation", "getContentTxt", "init", "initSmileyPanel", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "refreshBottomPanelHeight", "resetTransPanel", "saveTransLangTypeByTalker", "type", "setBottomBtnVisibility", "setKeyboardVisibility", "setSmileyItemVisibility", "setSmileyPanelVisibility", "show", "startTrans", "updateCurTxt", "updateTransLangTypeByTalker", "Companion", "InputMode", "PanelDragOpeMode", "TransPanelAction", "plugin-transvoice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog;", "Landroid/support/v7/app/AppCompatDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "bottomSheetBehavior", "Landroid/support/design/widget/MMBottomSheetBehavior;", "Landroid/view/View;", "bottomSheetCoordinatorLayout", "Landroid/support/design/widget/CoordinatorLayout;", "btnLayout", "canCloseKeyboard", "", "canClosePanel", "canHideKeyboard", "closeInputMethod", "Landroid/widget/ImageView;", "closePanel", "container", "Lcom/tencent/mm/modelvoiceaddr/ShortSentenceContainer;", "curTxt", "", "getCurTxt", "()Ljava/lang/String;", "setCurTxt", "(Ljava/lang/String;)V", "dotCounter", "", "dotStr", "emojiRoot", "Landroid/widget/FrameLayout;", "hasClick", "inputMethodLayout", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoicePanelLayout;", "inputMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$InputMode;", "isEdited", "isKeyboardShown", "keyboardHeight", "langType", "languageChoiceDialog", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog;", "mNewVoiceInputReport", "Lcom/tencent/mm/modelvoiceaddr/voicereport/NewVoiceInputReportManager;", "mVoiceIdSet", "", "needSendTxtMsg", "onLanguageItemClick", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "overTimeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "panelDragOpeMode", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$PanelDragOpeMode;", "reporter", "Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "sendTxtMsg", "Landroid/widget/Button;", "sendVoiceMsg", "showImeRunnable", "Ljava/lang/Runnable;", "smileyItem", "smileyOpener", "smileyPanel", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel;", "talker", "getTalker", "setTalker", "targetView", "tmpClickChangeLangTypeTime", "", "transCancelable", "transMore", "transPanelAction", "Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "getTransPanelAction", "()Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "setTransPanelAction", "(Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;)V", "transSP", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "txtEditView", "Lcom/tencent/mm/ui/widget/MMEditText;", "txtMsg4Send", "updateDotTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "voiceAddr", "Lcom/tencent/mm/plugin/transvoice/model/SceneVoiceInputAddr2;", "value", "voiceFileName", "getVoiceFileName", "setVoiceFileName", "voiceLen", "getVoiceLen", "()J", "setVoiceLen", "(J)V", "voiceMsgSend", "cgiReport", "", "msg", "closeInputMethodBtnVisibility", "visible", "closeTransPanel", "exitType", "delPunctuation", "getContentTxt", "init", "initSmileyPanel", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "refreshBottomPanelHeight", "resetTransPanel", "saveTransLangTypeByTalker", "type", "setBottomBtnVisibility", "setKeyboardVisibility", "setSmileyItemVisibility", "setSmileyPanelVisibility", "show", "startTrans", "updateCurTxt", "updateTransLangTypeByTalker", "Companion", "InputMode", "PanelDragOpeMode", "TransPanelAction", "plugin-transvoice_release"})
 public final class b
   extends e
 {
-  public static int Aml;
-  public static final b.a Amm;
-  private ImageView Akp;
-  private MMBottomSheetBehavior<View> Aks;
-  private boolean Akt;
-  private a.b Aku;
-  final c AlD;
-  long AlE;
-  boolean AlF;
-  private TransVoicePanelLayout AlG;
-  private MMEditText AlH;
-  private ImageView AlI;
-  private ImageView AlJ;
-  private View AlK;
-  private View AlL;
-  private ImageView AlM;
-  private Button AlN;
-  private Button AlO;
-  com.tencent.mm.plugin.transvoice.a.b AlP;
-  private b AlQ;
-  public long AlR;
-  String AlS;
-  private boolean AlT;
-  private String AlU;
-  private int AlV;
-  au AlW;
-  private boolean AlX;
-  private a AlY;
-  ao AlZ;
-  private SharedPreferences Ama;
-  private CoordinatorLayout Amb;
-  private b.c Amc;
-  private boolean Amd;
-  private boolean Ame;
-  private boolean Amf;
-  private String Amg;
-  private final com.tencent.mm.modelvoiceaddr.b.b Amh;
-  private List<String> Ami;
-  String Amj;
-  public d Amk;
-  private ChatFooterPanel fWT;
-  h iek;
-  int iep;
-  private int ngo;
-  private final Runnable ptC;
-  boolean qNK;
+  public static int BDX;
+  public static final b.a BDY;
+  private FrameLayout AZD;
+  private boolean AZK;
+  private ImageView BCb;
+  private MMBottomSheetBehavior<View> BCe;
+  private boolean BCf;
+  private a.b BCg;
+  com.tencent.mm.plugin.transvoice.a.b BDA;
+  private b BDB;
+  public long BDC;
+  String BDD;
+  private boolean BDE;
+  private String BDF;
+  private int BDG;
+  av BDH;
+  private boolean BDI;
+  private a BDJ;
+  ap BDK;
+  private SharedPreferences BDL;
+  boolean BDM;
+  private CoordinatorLayout BDN;
+  private b.c BDO;
+  private boolean BDP;
+  private boolean BDQ;
+  private boolean BDR;
+  private String BDS;
+  private final com.tencent.mm.modelvoiceaddr.b.b BDT;
+  private List<String> BDU;
+  String BDV;
+  public d BDW;
+  final c BDo;
+  long BDp;
+  boolean BDq;
+  private TransVoicePanelLayout BDr;
+  private MMEditText BDs;
+  private ImageView BDt;
+  private ImageView BDu;
+  private View BDv;
+  private View BDw;
+  private ImageView BDx;
+  private Button BDy;
+  private Button BDz;
+  h ixF;
+  int ixK;
+  private int nGK;
+  private ChatFooterPanel pWJ;
+  private final Runnable pXg;
   public String talker;
   private View targetView;
-  private FrameLayout zIc;
-  private boolean zIj;
   
   static
   {
     AppMethodBeat.i(102605);
-    Amm = new b.a((byte)0);
-    Aml = -1;
+    BDY = new b.a((byte)0);
+    BDX = -1;
     AppMethodBeat.o(102605);
   }
   
@@ -128,59 +128,84 @@ public final class b
   {
     super(paramContext, 2131821488);
     AppMethodBeat.i(102604);
-    c.a locala = c.Akm;
-    this.AlD = c.efd();
-    this.iep = g.ieO;
-    this.AlQ = b.Amn;
-    this.AlU = "";
-    this.Ama = paramContext.getSharedPreferences("voice2txt_sp", 0);
-    this.Amc = b.c.Amr;
-    this.Amg = "";
-    gt();
-    this.Amh = new com.tencent.mm.modelvoiceaddr.b.b();
-    this.ptC = ((Runnable)new w(this, paramContext));
-    this.Amj = "";
+    c.a locala = c.BBY;
+    this.BDo = c.eru();
+    this.ixK = g.iyi;
+    this.BDB = b.BDZ;
+    this.BDF = "";
+    this.BDL = paramContext.getSharedPreferences("voice2txt_sp", 0);
+    this.BDO = b.c.BEd;
+    this.BDS = "";
+    gK();
+    this.BDT = new com.tencent.mm.modelvoiceaddr.b.b();
+    this.pXg = ((Runnable)new w(this, paramContext));
+    this.BDV = "";
     AppMethodBeat.o(102604);
   }
   
-  private final void RO(int paramInt)
+  private final void Ty(int paramInt)
   {
     AppMethodBeat.i(102600);
     if (isShowing())
     {
-      this.AlD.setExitType(paramInt);
-      efq();
+      this.BDo.setExitType(paramInt);
+      erH();
       dismiss();
-      d locald = this.Amk;
+      d locald = this.BDW;
       if (locald != null) {
-        locald.efr();
+        locald.erI();
       }
-      if (!this.AlT)
+      if (!this.BDE)
       {
-        locald = this.Amk;
+        locald = this.BDW;
         if (locald != null) {
-          locald.ayc(this.AlS);
+          locald.aDh(this.BDD);
         }
       }
-      this.AlT = false;
+      this.BDE = false;
     }
     AppMethodBeat.o(102600);
+  }
+  
+  private final void sP(boolean paramBoolean)
+  {
+    AppMethodBeat.i(102598);
+    if (paramBoolean)
+    {
+      localImageView = this.BDt;
+      if (localImageView != null)
+      {
+        localImageView.setVisibility(4);
+        AppMethodBeat.o(102598);
+        return;
+      }
+      AppMethodBeat.o(102598);
+      return;
+    }
+    ImageView localImageView = this.BDt;
+    if (localImageView != null)
+    {
+      localImageView.setVisibility(0);
+      AppMethodBeat.o(102598);
+      return;
+    }
+    AppMethodBeat.o(102598);
   }
   
   private final void setKeyboardVisibility(boolean paramBoolean)
   {
     AppMethodBeat.i(102599);
-    ac.d("MicroMsg.TransVoiceDialog", "setKeyboardVisibility, %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.d("MicroMsg.TransVoiceDialog", "setKeyboardVisibility, %s.", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       localObject = this.targetView;
       if (localObject != null) {
-        ((View)localObject).removeCallbacks(this.ptC);
+        ((View)localObject).removeCallbacks(this.pXg);
       }
       localObject = this.targetView;
       if (localObject != null)
       {
-        ((View)localObject).post(this.ptC);
+        ((View)localObject).post(this.pXg);
         AppMethodBeat.o(102599);
         return;
       }
@@ -189,12 +214,12 @@ public final class b
     }
     Object localObject = this.targetView;
     if (localObject != null) {
-      ((View)localObject).removeCallbacks(this.ptC);
+      ((View)localObject).removeCallbacks(this.pXg);
     }
     InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
     if (localInputMethodManager != null)
     {
-      localObject = this.AlH;
+      localObject = this.BDs;
       if (localObject != null) {}
       for (localObject = ((MMEditText)localObject).getWindowToken();; localObject = null)
       {
@@ -206,189 +231,164 @@ public final class b
     AppMethodBeat.o(102599);
   }
   
-  private final void si(boolean paramBoolean)
-  {
-    AppMethodBeat.i(102598);
-    if (paramBoolean)
-    {
-      localImageView = this.AlI;
-      if (localImageView != null)
-      {
-        localImageView.setVisibility(4);
-        AppMethodBeat.o(102598);
-        return;
-      }
-      AppMethodBeat.o(102598);
-      return;
-    }
-    ImageView localImageView = this.AlI;
-    if (localImageView != null)
-    {
-      localImageView.setVisibility(0);
-      AppMethodBeat.o(102598);
-      return;
-    }
-    AppMethodBeat.o(102598);
-  }
-  
-  public final void axZ(String paramString)
+  public final void aDe(String paramString)
   {
     AppMethodBeat.i(185255);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      this.AlS = paramString;
-      a.a locala = com.tencent.mm.ck.a.Hez;
+      this.BDD = paramString;
+      a.a locala = com.tencent.mm.ck.a.IRP;
       if (paramString == null) {
-        k.fOy();
+        p.gfZ();
       }
-      k.h(paramString, "<set-?>");
-      com.tencent.mm.ck.a.aPp(paramString);
+      p.h(paramString, "<set-?>");
+      com.tencent.mm.ck.a.aVg(paramString);
     }
     AppMethodBeat.o(185255);
   }
   
-  public final void aya(String paramString)
+  public final void aDf(String paramString)
   {
     AppMethodBeat.i(102602);
-    k.h(paramString, "<set-?>");
-    this.Amj = paramString;
+    p.h(paramString, "<set-?>");
+    this.BDV = paramString;
     AppMethodBeat.o(102602);
   }
   
   public final void c(h paramh)
   {
     AppMethodBeat.i(185256);
-    k.h(paramh, "container");
+    p.h(paramh, "container");
     Object localObject = getWindow();
     if (localObject != null) {
       ((Window)localObject).setDimAmount(0.5F);
     }
-    localObject = this.Aks;
+    localObject = this.BCe;
     if (localObject != null) {
-      ((MMBottomSheetBehavior)localObject).cC();
+      ((MMBottomSheetBehavior)localObject).cS();
     }
-    this.AlF = false;
-    this.qNK = false;
-    int i = this.Ama.getInt(this.talker, 0);
-    localObject = this.AlY;
+    this.BDq = false;
+    this.BDM = false;
+    int i = this.BDL.getInt(this.talker, 0);
+    localObject = this.BDJ;
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
-    localObject = ((a)localObject).Akq;
+    localObject = ((a)localObject).BCc;
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
     if (((ArrayList)localObject).contains(Integer.valueOf(i))) {
-      this.iep = i;
+      this.ixK = i;
     }
     for (;;)
     {
-      this.AlD.Akb = this.iep;
-      efq();
-      localObject = this.AlZ;
+      this.BDo.BBN = this.ixK;
+      erH();
+      localObject = this.BDK;
       if (localObject != null) {
-        ((ao)localObject).sendEmptyMessageDelayed(5000, 5000L);
+        ((ap)localObject).sendEmptyMessageDelayed(5000, 5000L);
       }
-      localObject = this.AlW;
+      localObject = this.BDH;
       if (localObject != null) {
-        ((au)localObject).Ah(500L);
+        ((av)localObject).CX(500L);
       }
-      this.iek = paramh;
-      this.AlP = new com.tencent.mm.plugin.transvoice.a.b(paramh, this.iep, (g.b)new x(this));
-      paramh = this.AlP;
+      this.ixF = paramh;
+      this.BDA = new com.tencent.mm.plugin.transvoice.a.b(paramh, this.ixK, (g.b)new x(this));
+      paramh = this.BDA;
       if (paramh == null) {
         break;
       }
       paramh.start();
       AppMethodBeat.o(185256);
       return;
-      localObject = this.AlY;
+      localObject = this.BDJ;
       if (localObject == null) {
-        k.fOy();
+        p.gfZ();
       }
-      localObject = ((a)localObject).Akq;
+      localObject = ((a)localObject).BCc;
       if (localObject == null) {
-        k.fOy();
+        p.gfZ();
       }
       if (((ArrayList)localObject).size() > 0)
       {
-        localObject = this.AlY;
+        localObject = this.BDJ;
         if (localObject == null) {
-          k.fOy();
+          p.gfZ();
         }
-        localObject = ((a)localObject).Akq;
+        localObject = ((a)localObject).BCc;
         if (localObject == null) {
-          k.fOy();
+          p.gfZ();
         }
         localObject = ((ArrayList)localObject).get(0);
-        k.g(localObject, "languageChoiceDialog!!.langTypeArr!![0]");
-        this.iep = ((Number)localObject).intValue();
+        p.g(localObject, "languageChoiceDialog!!.langTypeArr!![0]");
+        this.ixK = ((Number)localObject).intValue();
       }
       else
       {
-        localObject = ab.iC(getContext());
-        if ((k.g(localObject, "zh_CN")) || (k.g(localObject, "zh_HK")) || (k.g(localObject, "zh_TW"))) {
-          this.iep = g.ieO;
-        } else if (k.g(localObject, "en")) {
-          this.iep = g.ieQ;
+        localObject = ac.iM(getContext());
+        if ((p.i(localObject, "zh_CN")) || (p.i(localObject, "zh_HK")) || (p.i(localObject, "zh_TW"))) {
+          this.ixK = g.iyi;
+        } else if (p.i(localObject, "en")) {
+          this.ixK = g.iyk;
         }
       }
     }
     AppMethodBeat.o(185256);
   }
   
-  final void efq()
+  final void erH()
   {
     AppMethodBeat.i(102601);
-    this.Amj = "";
-    this.AlV = 0;
-    this.AlU = "";
-    this.AlX = false;
-    Object localObject = this.AlH;
+    this.BDV = "";
+    this.BDG = 0;
+    this.BDF = "";
+    this.BDI = false;
+    Object localObject = this.BDs;
     if (localObject != null) {
       ((MMEditText)localObject).setText((CharSequence)"");
     }
-    localObject = this.AlH;
+    localObject = this.BDs;
     if (localObject != null) {
       ((MMEditText)localObject).setCursorVisible(false);
     }
-    localObject = this.AlH;
+    localObject = this.BDs;
     if (localObject != null) {
       ((MMEditText)localObject).setFocusable(false);
     }
-    localObject = this.AlH;
+    localObject = this.BDs;
     if (localObject != null) {
       ((MMEditText)localObject).setFocusableInTouchMode(false);
     }
-    localObject = this.AlK;
+    localObject = this.BDv;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
-    localObject = this.AlL;
+    localObject = this.BDw;
     if (localObject != null) {
       ((View)localObject).setVisibility(8);
     }
     setKeyboardVisibility(false);
-    localObject = this.fWT;
+    localObject = this.pWJ;
     if (localObject != null) {
       ((ChatFooterPanel)localObject).setVisibility(8);
     }
-    si(false);
-    localObject = this.AlZ;
+    sP(false);
+    localObject = this.BDK;
     if (localObject != null) {
-      ((ao)localObject).removeMessages(5000);
+      ((ap)localObject).removeMessages(5000);
     }
-    this.Amc = b.c.Amr;
-    this.Akt = false;
-    this.Amd = false;
-    this.Ame = false;
+    this.BDO = b.c.BEd;
+    this.BCf = false;
+    this.BDP = false;
+    this.BDQ = false;
     AppMethodBeat.o(102601);
   }
   
   public final void onBackPressed()
   {
     AppMethodBeat.i(102597);
-    RO(6);
+    Ty(6);
     super.onBackPressed();
     AppMethodBeat.o(102597);
   }
@@ -413,8 +413,8 @@ public final class b
     if (paramBundle != null)
     {
       paramBundle = (TransVoicePanelLayout)paramBundle.findViewById(2131301032);
-      this.AlG = paramBundle;
-      paramBundle = this.AlG;
+      this.BDr = paramBundle;
+      paramBundle = this.BDr;
       if (paramBundle != null) {
         paramBundle.setOnInputPanelChange((TransVoicePanelLayout.a)new h(this));
       }
@@ -424,19 +424,19 @@ public final class b
       }
       paramBundle = (CoordinatorLayout)paramBundle.findViewById(2131296673);
       label160:
-      this.Amb = paramBundle;
+      this.BDN = paramBundle;
       paramBundle = this.targetView;
       if (paramBundle == null) {
         break label1061;
       }
       paramBundle = paramBundle.findViewById(2131303747);
       label182:
-      this.Aks = MMBottomSheetBehavior.w(paramBundle);
-      paramBundle = this.Aks;
+      this.BCe = MMBottomSheetBehavior.w(paramBundle);
+      paramBundle = this.BCe;
       if (paramBundle != null) {
         paramBundle.a((MMBottomSheetBehavior.a)new o(this));
       }
-      paramBundle = this.Aks;
+      paramBundle = this.BCe;
       if (paramBundle != null) {
         paramBundle.a((MMBottomSheetBehavior.b)new p(this));
       }
@@ -446,8 +446,8 @@ public final class b
       }
       paramBundle = (MMEditText)paramBundle.findViewById(2131306060);
       label258:
-      this.AlH = paramBundle;
-      paramBundle = this.AlH;
+      this.BDs = paramBundle;
+      paramBundle = this.BDs;
       if (paramBundle != null)
       {
         paramBundle.setCursorVisible(false);
@@ -463,8 +463,8 @@ public final class b
       }
       paramBundle = (ImageView)paramBundle.findViewById(2131298375);
       label354:
-      this.Akp = paramBundle;
-      paramBundle = this.Akp;
+      this.BCb = paramBundle;
+      paramBundle = this.BCb;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new q(this));
       }
@@ -474,8 +474,8 @@ public final class b
       }
       paramBundle = (ImageView)paramBundle.findViewById(2131306061);
       label403:
-      this.AlI = paramBundle;
-      paramBundle = this.AlI;
+      this.BDt = paramBundle;
+      paramBundle = this.BDt;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new r(this));
       }
@@ -485,8 +485,8 @@ public final class b
       }
       paramBundle = (ImageView)paramBundle.findViewById(2131298371);
       label452:
-      this.AlJ = paramBundle;
-      paramBundle = this.AlJ;
+      this.BDu = paramBundle;
+      paramBundle = this.BDu;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new s(this));
       }
@@ -496,22 +496,22 @@ public final class b
       }
       paramBundle = paramBundle.findViewById(2131303745);
       label498:
-      this.AlK = paramBundle;
+      this.BDv = paramBundle;
       paramBundle = this.targetView;
       if (paramBundle == null) {
         break label1091;
       }
       paramBundle = paramBundle.findViewById(2131304864);
       label520:
-      this.AlL = paramBundle;
+      this.BDw = paramBundle;
       paramBundle = this.targetView;
       if (paramBundle == null) {
         break label1096;
       }
       paramBundle = (ImageView)paramBundle.findViewById(2131304869);
       label545:
-      this.AlM = paramBundle;
-      paramBundle = this.AlM;
+      this.BDx = paramBundle;
+      paramBundle = this.BDx;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new t(this));
       }
@@ -521,51 +521,51 @@ public final class b
       }
       paramBundle = (FrameLayout)paramBundle.findViewById(2131299431);
       label594:
-      this.zIc = paramBundle;
-      this.fWT = ((ChatFooterPanel)aa.bh(getContext()));
-      this.ngo = y.iy(getContext());
-      paramBundle = new FrameLayout.LayoutParams(-1, this.ngo);
-      localObject = this.zIc;
+      this.AZD = paramBundle;
+      this.pWJ = ((ChatFooterPanel)aa.bh(getContext()));
+      this.nGK = z.iI(getContext());
+      paramBundle = new FrameLayout.LayoutParams(-1, this.nGK);
+      localObject = this.AZD;
       if (localObject != null) {
-        ((FrameLayout)localObject).addView((View)this.fWT, (ViewGroup.LayoutParams)paramBundle);
+        ((FrameLayout)localObject).addView((View)this.pWJ, (ViewGroup.LayoutParams)paramBundle);
       }
-      paramBundle = this.fWT;
+      paramBundle = this.pWJ;
       if (paramBundle != null) {
-        paramBundle.setPortHeightPx(this.ngo);
+        paramBundle.setPortHeightPx(this.nGK);
       }
-      paramBundle = this.fWT;
+      paramBundle = this.pWJ;
       if (paramBundle != null) {
-        paramBundle.setEntranceScene(ChatFooterPanel.Dnj);
+        paramBundle.setEntranceScene(ChatFooterPanel.ESo);
       }
-      paramBundle = this.fWT;
+      paramBundle = this.pWJ;
       if (paramBundle != null) {
-        paramBundle.eMH();
+        paramBundle.fbF();
       }
-      paramBundle = this.fWT;
+      paramBundle = this.pWJ;
       if (paramBundle != null) {
         paramBundle.onResume();
       }
-      paramBundle = this.fWT;
+      paramBundle = this.pWJ;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.fWT;
+      paramBundle = this.pWJ;
       if (paramBundle != null) {
         paramBundle.setShowSend(true);
       }
-      paramBundle = this.fWT;
+      paramBundle = this.pWJ;
       if (paramBundle != null) {
         paramBundle.setOnTextOperationListener((ChatFooterPanel.a)new v(this));
       }
-      this.AlW = new au((au.a)new u(this), true);
+      this.BDH = new av((av.a)new u(this), true);
       paramBundle = this.targetView;
       if (paramBundle == null) {
         break label1106;
       }
       paramBundle = (Button)paramBundle.findViewById(2131297597);
       label815:
-      this.AlN = paramBundle;
-      paramBundle = this.AlN;
+      this.BDy = paramBundle;
+      paramBundle = this.BDy;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new i(this));
       }
@@ -575,19 +575,19 @@ public final class b
       }
       paramBundle = (Button)paramBundle.findViewById(2131297598);
       label864:
-      this.AlO = paramBundle;
-      paramBundle = this.AlO;
+      this.BDz = paramBundle;
+      paramBundle = this.BDz;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new j(this));
       }
-      paramBundle = this.AlN;
+      paramBundle = this.BDy;
       if (paramBundle == null) {
         break label1116;
       }
       paramBundle = paramBundle.getPaint();
       label907:
-      aj.a((Paint)paramBundle, 0.8F);
-      paramBundle = this.AlO;
+      al.a((Paint)paramBundle, 0.8F);
+      paramBundle = this.BDz;
       if (paramBundle == null) {
         break label1121;
       }
@@ -608,18 +608,18 @@ public final class b
     label1121:
     for (paramBundle = paramBundle.getPaint();; paramBundle = null)
     {
-      aj.a((Paint)paramBundle, 0.8F);
-      this.Aku = ((a.b)new k(this));
+      al.a((Paint)paramBundle, 0.8F);
+      this.BCg = ((a.b)new k(this));
       paramBundle = getContext();
-      k.g(paramBundle, "context");
-      this.AlY = new a(paramBundle);
-      paramBundle = this.AlY;
+      p.g(paramBundle, "context");
+      this.BDJ = new a(paramBundle);
+      paramBundle = this.BDJ;
       if (paramBundle != null)
       {
-        paramBundle.setOnDismissListener((DialogInterface.OnDismissListener)b.l.Amv);
-        paramBundle.Aku = this.Aku;
+        paramBundle.setOnDismissListener((DialogInterface.OnDismissListener)b.l.BEh);
+        paramBundle.BCg = this.BCg;
       }
-      this.AlZ = new ao((ao.a)new m(this));
+      this.BDK = new ap((ap.a)new m(this));
       setOnDismissListener((DialogInterface.OnDismissListener)new n(this));
       AppMethodBeat.o(102596);
       return;
@@ -657,44 +657,44 @@ public final class b
   public final void show()
   {
     AppMethodBeat.i(102603);
-    a.a locala = com.tencent.mm.ck.a.Hez;
-    com.tencent.mm.ck.a.wi(true);
+    a.a locala = com.tencent.mm.ck.a.IRP;
+    com.tencent.mm.ck.a.wU(true);
     super.show();
     AppMethodBeat.o(102603);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$InputMode;", "", "(Ljava/lang/String;I)V", "INPUT_NONE", "INPUT_EMOJI", "INPUT_KEYBOARD", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$InputMode;", "", "(Ljava/lang/String;I)V", "INPUT_NONE", "INPUT_EMOJI", "INPUT_KEYBOARD", "plugin-transvoice_release"})
   static enum b
   {
     static
     {
       AppMethodBeat.i(102558);
       b localb1 = new b("INPUT_NONE", 0);
-      Amn = localb1;
+      BDZ = localb1;
       b localb2 = new b("INPUT_EMOJI", 1);
-      Amo = localb2;
+      BEa = localb2;
       b localb3 = new b("INPUT_KEYBOARD", 2);
-      Amp = localb3;
-      Amq = new b[] { localb1, localb2, localb3 };
+      BEb = localb3;
+      BEc = new b[] { localb1, localb2, localb3 };
       AppMethodBeat.o(102558);
     }
     
     private b() {}
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "", "onTransPanelClose", "", "onTxtMsgSend", "txt", "", "onVoiceMsgDelete", "fileName", "onVoiceMsgSend", "", "fileLength", "", "(Ljava/lang/String;Ljava/lang/Long;)Z", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$TransPanelAction;", "", "onTransPanelClose", "", "onTxtMsgSend", "txt", "", "onVoiceMsgDelete", "fileName", "onVoiceMsgSend", "", "fileLength", "", "(Ljava/lang/String;Ljava/lang/Long;)Z", "plugin-transvoice_release"})
   public static abstract interface d
   {
-    public abstract void ayb(String paramString);
+    public abstract void aDg(String paramString);
     
-    public abstract void ayc(String paramString);
+    public abstract void aDh(String paramString);
     
     public abstract boolean b(String paramString, Long paramLong);
     
-    public abstract void efr();
+    public abstract void erI();
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "event", "Landroid/view/KeyEvent;", "onEditorAction", "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$1"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "actionId", "", "event", "Landroid/view/KeyEvent;", "onEditorAction", "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$1"})
   static final class e
     implements TextView.OnEditorActionListener
   {
@@ -705,12 +705,12 @@ public final class b
       AppMethodBeat.i(102565);
       if (4 != paramInt)
       {
-        k.g(paramKeyEvent, "event");
+        p.g(paramKeyEvent, "event");
         if (66 != paramKeyEvent.getAction()) {}
       }
       else
       {
-        b.o(this.Amu);
+        b.o(this.BEg);
         AppMethodBeat.o(102565);
         return true;
       }
@@ -719,7 +719,7 @@ public final class b
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$2"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$2"})
   static final class f
     implements View.OnClickListener
   {
@@ -728,42 +728,43 @@ public final class b
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(102566);
-      b.p(this.Amu).Akk = 1;
-      b.r(this.Amu);
-      if (b.s(this.Amu))
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$$inlined$run$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      b.p(this.BEg).BBW = 1;
+      b.r(this.BEg);
+      if (b.s(this.BEg))
       {
-        b.j(this.Amu, false);
-        b.p(this.Amu).Aki = 0;
-        b.p(this.Amu).Ake = System.currentTimeMillis();
-        paramView = b.t(this.Amu);
+        b.j(this.BEg, false);
+        b.p(this.BEg).BBU = 0;
+        b.p(this.BEg).BBQ = System.currentTimeMillis();
+        paramView = b.t(this.BEg);
         if (paramView != null) {
           paramView.cancel(true);
         }
-        paramView = b.u(this.Amu);
+        paramView = b.u(this.BEg);
         if (paramView != null) {
           paramView.setVisibility(0);
         }
-        paramView = b.v(this.Amu);
+        paramView = b.v(this.BEg);
         if (paramView != null) {
           paramView.removeMessages(5000);
         }
-        paramView = b.w(this.Amu);
+        paramView = b.w(this.BEg);
         if (paramView != null) {
           paramView.stopTimer();
         }
-        paramView = b.e(this.Amu);
-        if (paramView != null)
-        {
-          paramView.setText((CharSequence)this.Amu.Amj);
-          AppMethodBeat.o(102566);
-          return;
+        paramView = b.e(this.BEg);
+        if (paramView != null) {
+          paramView.setText((CharSequence)this.BEg.BDV);
         }
       }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$$inlined$run$lambda$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(102566);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$4$3", "Landroid/text/TextWatcher;", "afterTextChanged", "", "s", "Landroid/text/Editable;", "beforeTextChanged", "", "start", "", "count", "after", "onTextChanged", "before", "plugin-transvoice_release"})
   public static final class g
     implements TextWatcher
   {
@@ -773,14 +774,14 @@ public final class b
     {
       int i = 0;
       AppMethodBeat.i(102567);
-      if ((!b.x(this.Amu)) && (b.q(this.Amu)))
+      if ((!b.x(this.BEg)) && (b.q(this.BEg)))
       {
-        b.y(this.Amu);
-        b.p(this.Amu).Akj = 1;
+        b.y(this.BEg);
+        b.p(this.BEg).BBV = 1;
       }
-      Object localObject = b.z(this.Amu);
+      Object localObject = b.z(this.BEg);
       if (localObject != null) {
-        if (bs.aj((CharSequence)paramEditable)) {
+        if (bt.ai((CharSequence)paramEditable)) {
           break label115;
         }
       }
@@ -788,11 +789,11 @@ public final class b
       for (boolean bool = true;; bool = false)
       {
         ((Button)localObject).setEnabled(bool);
-        localObject = b.A(this.Amu);
+        localObject = b.A(this.BEg);
         if (localObject == null) {
           break;
         }
-        if (bs.aj((CharSequence)paramEditable)) {
+        if (bt.ai((CharSequence)paramEditable)) {
           i = 4;
         }
         ((ImageView)localObject).setVisibility(i);
@@ -807,7 +808,7 @@ public final class b
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "isKeyboardShow", "", "keyboardHeight", "", "onInputPanelChange"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "isKeyboardShow", "", "keyboardHeight", "", "onInputPanelChange"})
   static final class h
     implements TransVoicePanelLayout.a
   {
@@ -816,64 +817,64 @@ public final class b
     public final void g(boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(102568);
-      b.a(this.Amu, paramBoolean);
-      ac.d("MicroMsg.TransVoiceDialog", "isKeyboardShow %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+      b.a(this.BEg, paramBoolean);
+      ad.d("MicroMsg.TransVoiceDialog", "isKeyboardShow %s.", new Object[] { Boolean.valueOf(paramBoolean) });
       Object localObject;
       if (paramBoolean)
       {
-        b.a(this.Amu, b.b.Amp);
-        localObject = b.c(this.Amu);
+        b.a(this.BEg, b.b.BEb);
+        localObject = b.c(this.BEg);
         if ((localObject != null) && (3 == ((MMBottomSheetBehavior)localObject).getState())) {
-          b.a(this.Amu, b.c.Ams);
+          b.a(this.BEg, b.c.BEe);
         }
-        localObject = b.e(this.Amu);
+        localObject = b.e(this.BEg);
         if (localObject != null) {
           ((MMEditText)localObject).setCursorVisible(true);
         }
-        b.b(this.Amu, true);
-        b.c(this.Amu, false);
-        b.d(this.Amu, false);
-        localObject = b.f(this.Amu);
+        b.b(this.BEg, true);
+        b.c(this.BEg, false);
+        b.d(this.BEg, false);
+        localObject = b.f(this.BEg);
         if (localObject != null) {
           ((ImageView)localObject).setImageResource(2131231701);
         }
-        b.e(this.Amu, true);
+        b.e(this.BEg, true);
       }
       for (;;)
       {
-        if ((b.h(this.Amu) != paramInt) && (paramInt != 0))
+        if ((b.h(this.BEg) != paramInt) && (paramInt != 0))
         {
-          b.a(this.Amu, paramInt);
-          i.A(this.Amu.getContext(), paramInt);
-          b.i(this.Amu);
+          b.a(this.BEg, paramInt);
+          i.A(this.BEg.getContext(), paramInt);
+          b.i(this.BEg);
         }
         AppMethodBeat.o(102568);
         return;
-        localObject = b.c(this.Amu);
-        if ((localObject != null) && (3 == ((MMBottomSheetBehavior)localObject).getState()) && (b.b.Amo != b.b(this.Amu))) {
-          b.a(this.Amu, b.c.Amr);
+        localObject = b.c(this.BEg);
+        if ((localObject != null) && (3 == ((MMBottomSheetBehavior)localObject).getState()) && (b.b.BEa != b.b(this.BEg))) {
+          b.a(this.BEg, b.c.BEd);
         }
-        localObject = b.b(this.Amu);
-        switch (c.cfA[localObject.ordinal()])
+        localObject = b.b(this.BEg);
+        switch (c.cpQ[localObject.ordinal()])
         {
         case 1: 
         default: 
           break;
         case 2: 
-          b.a(this.Amu, b.b.Amn);
-          if (b.c.Ams != b.d(this.Amu))
+          b.a(this.BEg, b.b.BDZ);
+          if (b.c.BEe != b.d(this.BEg))
           {
-            b.b(this.Amu, false);
-            b.c(this.Amu, true);
-            localObject = b.g(this.Amu);
+            b.b(this.BEg, false);
+            b.c(this.BEg, true);
+            localObject = b.g(this.BEg);
             if (localObject != null) {
               ((ChatFooterPanel)localObject).setVisibility(8);
             }
-            localObject = b.e(this.Amu);
+            localObject = b.e(this.BEg);
             if (localObject != null) {
               ((MMEditText)localObject).setCursorVisible(false);
             }
-            b.e(this.Amu, false);
+            b.e(this.BEg, false);
           }
           break;
         }
@@ -881,7 +882,7 @@ public final class b
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class i
     implements View.OnClickListener
   {
@@ -890,17 +891,21 @@ public final class b
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(102569);
-      ac.i("MicroMsg.TransVoiceDialog", "sendVoiceMsg onClick.");
-      paramView = this.Amu.Amk;
-      if ((paramView != null) && (true == paramView.b(this.Amu.AlS, Long.valueOf(this.Amu.AlR)))) {
-        b.F(this.Amu);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      ad.i("MicroMsg.TransVoiceDialog", "sendVoiceMsg onClick.");
+      paramView = this.BEg.BDW;
+      if ((paramView != null) && (true == paramView.b(this.BEg.BDD, Long.valueOf(this.BEg.BDC)))) {
+        b.F(this.BEg);
       }
-      b.b(this.Amu, 7);
+      b.b(this.BEg, 7);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(102569);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class j
     implements View.OnClickListener
   {
@@ -909,62 +914,66 @@ public final class b
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(102570);
-      b.o(this.Amu);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      b.o(this.BEg);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$11", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(102570);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$12", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "onLanguageItemClick", "", "langType", "", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$12", "Lcom/tencent/mm/plugin/transvoice/ui/LanguageChoiceDialog$OnLanguageItemClick;", "onLanguageItemClick", "", "langType", "", "plugin-transvoice_release"})
   public static final class k
     implements a.b
   {
-    public final void RI(int paramInt)
+    public final void Ts(int paramInt)
     {
       AppMethodBeat.i(102571);
-      Object localObject1 = b.B(this.Amu);
+      Object localObject1 = b.B(this.BEg);
       if (localObject1 != null) {
         ((a)localObject1).dismiss();
       }
-      b.d(this.Amu, paramInt);
-      if (paramInt == b.C(this.Amu))
+      b.d(this.BEg, paramInt);
+      if (paramInt == b.C(this.BEg))
       {
         AppMethodBeat.o(102571);
         return;
       }
-      if (ax.isConnected(this.Amu.getContext()))
+      if (ay.isConnected(this.BEg.getContext()))
       {
-        localObject1 = this.Amu;
-        ((b)localObject1).AlF = false;
-        ((b)localObject1).qNK = false;
-        ((b)localObject1).AlD.Aka = ((b)localObject1).AlE;
-        ((b)localObject1).AlD.Akd = 0;
-        ((b)localObject1).AlD.Ake = 0L;
-        ((b)localObject1).AlD.Akf = 0;
-        ((b)localObject1).AlD.Aki = 0;
-        ((b)localObject1).AlD.Akj = 0;
-        ((b)localObject1).AlD.Akk = 0;
-        ((b)localObject1).efq();
-        localObject2 = ((b)localObject1).AlZ;
+        localObject1 = this.BEg;
+        ((b)localObject1).BDq = false;
+        ((b)localObject1).BDM = false;
+        ((b)localObject1).BDo.BBM = ((b)localObject1).BDp;
+        ((b)localObject1).BDo.BBP = 0;
+        ((b)localObject1).BDo.BBQ = 0L;
+        ((b)localObject1).BDo.BBR = 0;
+        ((b)localObject1).BDo.BBU = 0;
+        ((b)localObject1).BDo.BBV = 0;
+        ((b)localObject1).BDo.BBW = 0;
+        ((b)localObject1).erH();
+        localObject2 = ((b)localObject1).BDK;
         if (localObject2 != null) {
-          ((ao)localObject2).sendEmptyMessageDelayed(5000, 5000L);
+          ((ap)localObject2).sendEmptyMessageDelayed(5000, 5000L);
         }
-        localObject2 = ((b)localObject1).AlW;
+        localObject2 = ((b)localObject1).BDH;
         if (localObject2 != null) {
-          ((au)localObject2).Ah(500L);
+          ((av)localObject2).CX(500L);
         }
-        ((b)localObject1).iep = paramInt;
+        ((b)localObject1).ixK = paramInt;
         long l2 = System.nanoTime() & 0xFFFFFFFF;
         long l1 = l2;
         if (l2 < 0L) {
           l1 = Math.abs(l2);
         }
         localObject2 = new h(String.valueOf(l1));
-        h localh = ((b)localObject1).iek;
+        h localh = ((b)localObject1).ixF;
         if (localh != null) {
           localh.a((h)localObject2);
         }
-        ((b)localObject1).AlP = new com.tencent.mm.plugin.transvoice.a.b((h)localObject2, paramInt, (g.b)new b.y((b)localObject1));
-        localObject1 = ((b)localObject1).AlP;
+        ((b)localObject1).BDA = new com.tencent.mm.plugin.transvoice.a.b((h)localObject2, paramInt, (g.b)new b.y((b)localObject1));
+        localObject1 = ((b)localObject1).BDA;
         if (localObject1 != null)
         {
           ((com.tencent.mm.plugin.transvoice.a.b)localObject1).start();
@@ -974,24 +983,24 @@ public final class b
         AppMethodBeat.o(102571);
         return;
       }
-      localObject1 = new d.a(this.Amu.getContext());
-      Object localObject2 = this.Amu.getContext();
-      k.g(localObject2, "context");
-      ((d.a)localObject1).aRI(((Context)localObject2).getResources().getString(2131755828));
-      localObject2 = this.Amu.getContext();
-      k.g(localObject2, "context");
-      ((d.a)localObject1).aRO(((Context)localObject2).getResources().getString(2131761549));
-      localObject2 = this.Amu.getContext();
-      k.g(localObject2, "context");
-      ((d.a)localObject1).acO(((Context)localObject2).getResources().getColor(2131099770));
-      ((d.a)localObject1).fvp().show();
+      localObject1 = new d.a(this.BEg.getContext());
+      Object localObject2 = this.BEg.getContext();
+      p.g(localObject2, "context");
+      ((d.a)localObject1).aXG(((Context)localObject2).getResources().getString(2131755828));
+      localObject2 = this.BEg.getContext();
+      p.g(localObject2, "context");
+      ((d.a)localObject1).aXM(((Context)localObject2).getResources().getString(2131761549));
+      localObject2 = this.BEg.getContext();
+      p.g(localObject2, "context");
+      ((d.a)localObject1).afn(((Context)localObject2).getResources().getColor(2131099770));
+      ((d.a)localObject1).fMb().show();
       AppMethodBeat.o(102571);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
   static final class m
-    implements ao.a
+    implements ap.a
   {
     m(b paramb) {}
     
@@ -1005,33 +1014,33 @@ public final class b
       {
         AppMethodBeat.o(102573);
         return true;
-        b.p(this.Amu).Akd = 1;
-        b.p(this.Amu).Ake = System.currentTimeMillis();
-        b.p(this.Amu).Aki = 0;
-        paramMessage = b.w(this.Amu);
+        b.p(this.BEg).BBP = 1;
+        b.p(this.BEg).BBQ = System.currentTimeMillis();
+        b.p(this.BEg).BBU = 0;
+        paramMessage = b.w(this.BEg);
         if (paramMessage != null) {
           paramMessage.stopTimer();
         }
-        paramMessage = b.t(this.Amu);
+        paramMessage = b.t(this.BEg);
         if (paramMessage != null) {
           paramMessage.cancel(false);
         }
-        if (!bs.isNullOrNil(this.Amu.Amj))
+        if (!bt.isNullOrNil(this.BEg.BDV))
         {
-          paramMessage = b.e(this.Amu);
+          paramMessage = b.e(this.BEg);
           if (paramMessage != null) {
             paramMessage.setFocusable(true);
           }
-          paramMessage = b.e(this.Amu);
+          paramMessage = b.e(this.BEg);
           if (paramMessage != null) {
             paramMessage.setFocusableInTouchMode(true);
           }
         }
-        paramMessage = b.e(this.Amu);
+        paramMessage = b.e(this.BEg);
         if (paramMessage != null) {
-          paramMessage.setText((CharSequence)this.Amu.Amj);
+          paramMessage.setText((CharSequence)this.BEg.BDV);
         }
-        paramMessage = b.u(this.Amu);
+        paramMessage = b.u(this.BEg);
         if (paramMessage != null) {
           paramMessage.setVisibility(0);
         }
@@ -1039,7 +1048,7 @@ public final class b
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class n
     implements DialogInterface.OnDismissListener
   {
@@ -1048,55 +1057,55 @@ public final class b
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
       AppMethodBeat.i(102574);
-      ac.d("MicroMsg.TransVoiceDialog", "onDismiss.");
-      if (b.G(this.Amu))
+      ad.d("MicroMsg.TransVoiceDialog", "onDismiss.");
+      if (b.G(this.BEg))
       {
-        b.H(this.Amu);
-        if (!bs.isNullOrNil(b.I(this.Amu)))
+        b.H(this.BEg);
+        if (!bt.isNullOrNil(b.I(this.BEg)))
         {
-          paramDialogInterface = this.Amu.Amk;
+          paramDialogInterface = this.BEg.BDW;
           if (paramDialogInterface != null) {
-            paramDialogInterface.ayb(b.I(this.Amu));
+            paramDialogInterface.aDg(b.I(this.BEg));
           }
-          b.b(this.Amu, b.I(this.Amu));
+          b.b(this.BEg, b.I(this.BEg));
         }
       }
       AppMethodBeat.o(102574);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$2", "Landroid/support/design/widget/MMBottomSheetBehavior$BottomSheetCallback;", "onSlide", "", "bottomSheet", "Landroid/view/View;", "slideOffset", "", "onStateChanged", "newState", "", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$2", "Landroid/support/design/widget/MMBottomSheetBehavior$BottomSheetCallback;", "onSlide", "", "bottomSheet", "Landroid/view/View;", "slideOffset", "", "onStateChanged", "newState", "", "plugin-transvoice_release"})
   public static final class o
     extends MMBottomSheetBehavior.a
   {
     public final void b(View paramView, float paramFloat)
     {
       AppMethodBeat.i(102576);
-      k.h(paramView, "bottomSheet");
-      ac.d("MicroMsg.TransVoiceDialog", "slideOffset: %f, panelDragOpeMode: %s.", new Object[] { Float.valueOf(paramFloat), b.d(this.Amu) });
-      paramView = b.c(this.Amu);
+      p.h(paramView, "bottomSheet");
+      ad.d("MicroMsg.TransVoiceDialog", "slideOffset: %f, panelDragOpeMode: %s.", new Object[] { Float.valueOf(paramFloat), b.d(this.BEg) });
+      paramView = b.c(this.BEg);
       if (paramView != null)
       {
         if (paramView.getState() != 1) {
           break label305;
         }
-        if (b.c.Amr == b.d(this.Amu))
+        if (b.c.BEd == b.d(this.BEg))
         {
-          paramView = this.Amu;
+          paramView = this.BEg;
           if (0.7F < paramFloat) {
             break label239;
           }
           bool = true;
           b.f(paramView, bool);
-          paramView = this.Amu.getWindow();
+          paramView = this.BEg.getWindow();
           if (paramView != null) {
             paramView.setDimAmount((float)(0.5D - (1.0F - paramFloat) / 2.0D));
           }
         }
-        if (b.c.Ams != b.d(this.Amu)) {
+        if (b.c.BEe != b.d(this.BEg)) {
           break label305;
         }
-        paramView = this.Amu;
+        paramView = this.BEg;
         if (0.8F < paramFloat) {
           break label244;
         }
@@ -1109,15 +1118,15 @@ public final class b
         if (0.9F < paramFloat) {
           break label255;
         }
-        if (b.l(this.Amu)) {
+        if (b.l(this.BEg)) {
           break label305;
         }
-        b.h(this.Amu, true);
-        b.i(this.Amu, false);
-        b.b(this.Amu, false);
-        b.c(this.Amu, false);
-        b.d(this.Amu, false);
-        paramView = b.f(this.Amu);
+        b.h(this.BEg, true);
+        b.i(this.BEg, false);
+        b.b(this.BEg, false);
+        b.c(this.BEg, false);
+        b.d(this.BEg, false);
+        paramView = b.f(this.BEg);
         if (paramView == null) {
           break label249;
         }
@@ -1133,13 +1142,13 @@ public final class b
       AppMethodBeat.o(102576);
       return;
       label255:
-      if (b.l(this.Amu))
+      if (b.l(this.BEg))
       {
-        b.h(this.Amu, false);
-        b.i(this.Amu, true);
-        b.b(this.Amu, true);
-        b.c(this.Amu, false);
-        b.d(this.Amu, false);
+        b.h(this.BEg, false);
+        b.i(this.BEg, true);
+        b.b(this.BEg, true);
+        b.c(this.BEg, false);
+        b.d(this.BEg, false);
       }
       label305:
       AppMethodBeat.o(102576);
@@ -1149,57 +1158,57 @@ public final class b
     public final void k(View paramView, int paramInt)
     {
       AppMethodBeat.i(102577);
-      k.h(paramView, "bottomSheet");
-      ac.d("MicroMsg.TransVoiceDialog", "newState: %d, panelDragOpeMode: %s, canClosePanel: %s, canHideKeyboard: %s, canCloseKeyboard: %s.", new Object[] { Integer.valueOf(paramInt), b.d(this.Amu), Boolean.valueOf(b.j(this.Amu)), Boolean.valueOf(b.l(this.Amu)), Boolean.valueOf(b.k(this.Amu)) });
+      p.h(paramView, "bottomSheet");
+      ad.d("MicroMsg.TransVoiceDialog", "newState: %d, panelDragOpeMode: %s, canClosePanel: %s, canHideKeyboard: %s, canCloseKeyboard: %s.", new Object[] { Integer.valueOf(paramInt), b.d(this.BEg), Boolean.valueOf(b.j(this.BEg)), Boolean.valueOf(b.l(this.BEg)), Boolean.valueOf(b.k(this.BEg)) });
       switch (paramInt)
       {
       }
       while ((1 != paramInt) && (3 != paramInt)) {
-        if (!b.j(this.Amu))
+        if (!b.j(this.BEg))
         {
-          paramView = this.Amu.getWindow();
+          paramView = this.BEg.getWindow();
           if (paramView != null) {
             paramView.setDimAmount(0.5F);
           }
-          paramView = b.c(this.Amu);
+          paramView = b.c(this.BEg);
           if (paramView != null)
           {
-            paramView.cC();
+            paramView.cS();
             AppMethodBeat.o(102577);
             return;
-            b.f(this.Amu, false);
-            b.h(this.Amu, false);
-            b.g(this.Amu, false);
+            b.f(this.BEg, false);
+            b.h(this.BEg, false);
+            b.g(this.BEg, false);
             continue;
-            if ((b.c.Amr == b.d(this.Amu)) && (b.j(this.Amu))) {
-              b.b(this.Amu, 6);
+            if ((b.c.BEd == b.d(this.BEg)) && (b.j(this.BEg))) {
+              b.b(this.BEg, 6);
             }
-            if ((b.c.Ams == b.d(this.Amu)) && (b.l(this.Amu))) {
-              if (b.k(this.Amu))
+            if ((b.c.BEe == b.d(this.BEg)) && (b.l(this.BEg))) {
+              if (b.k(this.BEg))
               {
-                b.a(this.Amu, b.c.Amr);
-                b.c(this.Amu, true);
-                b.b(this.Amu, false);
-                paramView = b.g(this.Amu);
+                b.a(this.BEg, b.c.BEd);
+                b.c(this.BEg, true);
+                b.b(this.BEg, false);
+                paramView = b.g(this.BEg);
                 if (paramView != null) {
                   paramView.setVisibility(8);
                 }
-                paramView = b.e(this.Amu);
+                paramView = b.e(this.BEg);
                 if (paramView != null) {
                   paramView.setCursorVisible(false);
                 }
-                b.e(this.Amu, false);
-                paramView = b.m(this.Amu);
+                b.e(this.BEg, false);
+                paramView = b.m(this.BEg);
                 if (paramView != null) {
                   paramView.postDelayed((Runnable)new a(this), 200L);
                 }
               }
               else
               {
-                b.i(this.Amu, true);
-                b.b(this.Amu, true);
-                b.c(this.Amu, false);
-                b.d(this.Amu, false);
+                b.i(this.BEg, true);
+                b.b(this.BEg, true);
+                b.c(this.BEg, false);
+                b.d(this.BEg, false);
               }
             }
           }
@@ -1210,13 +1219,13 @@ public final class b
         }
         else
         {
-          b.b(this.Amu, 6);
+          b.b(this.BEg, 6);
         }
       }
       AppMethodBeat.o(102577);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -1225,7 +1234,7 @@ public final class b
       public final void run()
       {
         AppMethodBeat.i(102575);
-        TransVoicePanelLayout localTransVoicePanelLayout = b.m(this.Amw.Amu);
+        TransVoicePanelLayout localTransVoicePanelLayout = b.m(this.BEi.BEg);
         if (localTransVoicePanelLayout != null)
         {
           localTransVoicePanelLayout.requestLayout();
@@ -1237,44 +1246,44 @@ public final class b
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$3", "Landroid/support/design/widget/MMBottomSheetBehavior$ExternalTouchHelper;", "downY", "", "getDownY", "()F", "setDownY", "(F)V", "onInterceptTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onNeedJudge", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$3", "Landroid/support/design/widget/MMBottomSheetBehavior$ExternalTouchHelper;", "downY", "", "getDownY", "()F", "setDownY", "(F)V", "onInterceptTouchEvent", "", "event", "Landroid/view/MotionEvent;", "onNeedJudge", "plugin-transvoice_release"})
   public static final class p
     implements MMBottomSheetBehavior.b
   {
-    private float cCi;
+    private float cNh;
     
     public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
     {
       Boolean localBoolean = null;
       AppMethodBeat.i(102578);
-      k.h(paramMotionEvent, "event");
-      k.h(paramMotionEvent, "event");
-      Object localObject = b.n(this.Amu);
+      p.h(paramMotionEvent, "event");
+      p.h(paramMotionEvent, "event");
+      Object localObject = b.n(this.BEg);
       int i;
       if (localObject != null)
       {
-        MMEditText localMMEditText = b.e(this.Amu);
+        MMEditText localMMEditText = b.e(this.BEg);
         if (localMMEditText == null) {
-          k.fOy();
+          p.gfZ();
         }
         if (true == ((CoordinatorLayout)localObject).d((View)localMMEditText, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
         {
           i = 1;
           if (i != 0)
           {
-            localObject = b.e(this.Amu);
+            localObject = b.e(this.BEg);
             if (localObject == null) {
               break label268;
             }
             localObject = Boolean.valueOf(((MMEditText)localObject).canScrollVertically(-1));
             label106:
-            localMMEditText = b.e(this.Amu);
+            localMMEditText = b.e(this.BEg);
             if (localMMEditText != null) {
               localBoolean = Boolean.valueOf(localMMEditText.canScrollVertically(1));
             }
-            ac.d("MicroMsg.TransVoiceDialog", "can scroll up, %s.", new Object[] { localObject });
-            ac.d("MicroMsg.TransVoiceDialog", "can scroll down, %s.", new Object[] { localBoolean });
-            ac.d("MicroMsg.TransVoiceDialog", "action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
+            ad.d("MicroMsg.TransVoiceDialog", "can scroll up, %s.", new Object[] { localObject });
+            ad.d("MicroMsg.TransVoiceDialog", "can scroll down, %s.", new Object[] { localBoolean });
+            ad.d("MicroMsg.TransVoiceDialog", "action: %d, x: %f, y: %f, rawX: %f, rawY: %f.", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Float.valueOf(paramMotionEvent.getX()), Float.valueOf(paramMotionEvent.getY()), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()) });
             switch (paramMotionEvent.getAction())
             {
             }
@@ -1293,24 +1302,24 @@ public final class b
           break;
           localObject = null;
           break label106;
-          this.cCi = paramMotionEvent.getY();
+          this.cNh = paramMotionEvent.getY();
         }
-        f = paramMotionEvent.getY() - this.cCi;
-        ac.d("MicroMsg.TransVoiceDialog", "yOffset: %f.", new Object[] { Float.valueOf(f) });
+        f = paramMotionEvent.getY() - this.cNh;
+        ad.d("MicroMsg.TransVoiceDialog", "yOffset: %f.", new Object[] { Float.valueOf(f) });
         if (f > 0.0F)
         {
-          bool = k.g(Boolean.TRUE, localObject);
+          bool = p.i(Boolean.TRUE, localObject);
           AppMethodBeat.o(102578);
           return bool;
         }
       } while (f >= 0.0F);
-      boolean bool = k.g(Boolean.TRUE, localBoolean);
+      boolean bool = p.i(Boolean.TRUE, localBoolean);
       AppMethodBeat.o(102578);
       return bool;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class q
     implements View.OnClickListener
   {
@@ -1319,12 +1328,16 @@ public final class b
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(102579);
-      b.b(this.Amu, 6);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      b.b(this.BEg, 6);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(102579);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class r
     implements View.OnClickListener
   {
@@ -1333,27 +1346,28 @@ public final class b
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(102580);
-      b.a(this.Amu, System.currentTimeMillis());
-      paramView = b.B(this.Amu);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      b.a(this.BEg, System.currentTimeMillis());
+      paramView = b.B(this.BEg);
       if (paramView != null) {
-        paramView.iep = b.C(this.Amu);
+        paramView.ixK = b.C(this.BEg);
       }
-      paramView = b.B(this.Amu);
+      paramView = b.B(this.BEg);
       if (paramView != null) {
-        paramView.eff();
+        paramView.erw();
       }
-      paramView = b.B(this.Amu);
-      if (paramView != null)
-      {
+      paramView = b.B(this.BEg);
+      if (paramView != null) {
         paramView.show();
-        AppMethodBeat.o(102580);
-        return;
       }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(102580);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class s
     implements View.OnClickListener
   {
@@ -1362,38 +1376,40 @@ public final class b
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(102581);
-      paramView = b.b(this.Amu);
-      switch (c.fTL[paramView.ordinal()])
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      paramView = b.b(this.BEg);
+      switch (c.gnp[paramView.ordinal()])
       {
       }
       for (;;)
       {
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(102581);
         return;
-        b.i(this.Amu, false);
-        AppMethodBeat.o(102581);
-        return;
-        b.a(this.Amu, b.b.Amn);
-        b.b(this.Amu, false);
-        b.c(this.Amu, true);
-        paramView = b.g(this.Amu);
+        b.i(this.BEg, false);
+        continue;
+        b.a(this.BEg, b.b.BDZ);
+        b.b(this.BEg, false);
+        b.c(this.BEg, true);
+        paramView = b.g(this.BEg);
         if (paramView != null) {
           paramView.setVisibility(8);
         }
-        paramView = b.e(this.Amu);
+        paramView = b.e(this.BEg);
         if (paramView != null) {
           paramView.setCursorVisible(false);
         }
-        b.e(this.Amu, false);
-        AppMethodBeat.o(102581);
-        return;
-        b.a(this.Amu, b.b.Amn);
-        b.b(this.Amu, 6);
+        b.e(this.BEg, false);
+        continue;
+        b.a(this.BEg, b.b.BDZ);
+        b.b(this.BEg, 6);
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class t
     implements View.OnClickListener
   {
@@ -1402,72 +1418,72 @@ public final class b
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(102582);
-      if (b.a(this.Amu))
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+      if (b.a(this.BEg))
       {
-        b.a(this.Amu, b.b.Amo);
-        b.i(this.Amu, false);
-        b.d(this.Amu, true);
-        paramView = b.f(this.Amu);
-        if (paramView != null)
-        {
+        b.a(this.BEg, b.b.BEa);
+        b.i(this.BEg, false);
+        b.d(this.BEg, true);
+        paramView = b.f(this.BEg);
+        if (paramView != null) {
           paramView.setImageResource(2131231706);
-          AppMethodBeat.o(102582);
-          return;
         }
-        AppMethodBeat.o(102582);
-        return;
       }
-      b.a(this.Amu, b.b.Amp);
-      b.i(this.Amu, true);
-      b.d(this.Amu, false);
-      paramView = b.f(this.Amu);
-      if (paramView != null)
+      for (;;)
       {
-        paramView.setImageResource(2131231701);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$init$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(102582);
         return;
+        b.a(this.BEg, b.b.BEb);
+        b.i(this.BEg, true);
+        b.d(this.BEg, false);
+        paramView = b.f(this.BEg);
+        if (paramView != null) {
+          paramView.setImageResource(2131231701);
+        }
       }
-      AppMethodBeat.o(102582);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onTimerExpired"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "onTimerExpired"})
   static final class u
-    implements au.a
+    implements av.a
   {
     u(b paramb) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(102583);
-      int i = b.D(this.Amu);
-      b localb = this.Amu;
+      int i = b.D(this.BEg);
+      b localb = this.BEg;
       b.c(localb, b.D(localb) + 1);
       switch (i % 3)
       {
       }
       for (;;)
       {
-        b.E(this.Amu);
+        b.E(this.BEg);
         AppMethodBeat.o(102583);
         return true;
-        b.a(this.Amu, "·");
+        b.a(this.BEg, "·");
         continue;
-        b.a(this.Amu, "··");
+        b.a(this.BEg, "··");
         continue;
-        b.a(this.Amu, "···");
+        b.a(this.BEg, "···");
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$initSmileyPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$initSmileyPanel$1", "Lcom/tencent/mm/pluginsdk/ui/ChatFooterPanel$OnTextOperationListener;", "append", "", "text", "", "del", "onToSendTextEnable", "enable", "", "performSend", "plugin-transvoice_release"})
   public static final class v
     implements ChatFooterPanel.a
   {
-    public final void amb()
+    public final void aoO()
     {
       AppMethodBeat.i(102585);
-      Object localObject = b.e(this.Amu);
+      Object localObject = b.e(this.BEg);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
@@ -1475,7 +1491,7 @@ public final class b
           ((InputConnection)localObject).sendKeyEvent(new KeyEvent(0, 67));
         }
       }
-      localObject = b.e(this.Amu);
+      localObject = b.e(this.BEg);
       if (localObject != null)
       {
         localObject = ((MMEditText)localObject).getInputConnection();
@@ -1489,30 +1505,30 @@ public final class b
       AppMethodBeat.o(102585);
     }
     
-    public final void amc()
+    public final void aoP()
     {
       AppMethodBeat.i(102586);
-      b.o(this.Amu);
+      b.o(this.BEg);
       AppMethodBeat.o(102586);
     }
     
     public final void append(String paramString)
     {
       AppMethodBeat.i(102584);
-      MMEditText localMMEditText = b.e(this.Amu);
+      MMEditText localMMEditText = b.e(this.BEg);
       if (localMMEditText != null)
       {
-        localMMEditText.aRF(paramString);
+        localMMEditText.aXD(paramString);
         AppMethodBeat.o(102584);
         return;
       }
       AppMethodBeat.o(102584);
     }
     
-    public final void dS(boolean paramBoolean) {}
+    public final void dU(boolean paramBoolean) {}
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class w
     implements Runnable
   {
@@ -1524,7 +1540,7 @@ public final class b
       InputMethodManager localInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
       if (localInputMethodManager != null)
       {
-        localInputMethodManager.showSoftInput((View)b.e(this.Amu), 0);
+        localInputMethodManager.showSoftInput((View)b.e(this.BEg), 0);
         AppMethodBeat.o(102587);
         return;
       }
@@ -1532,34 +1548,34 @@ public final class b
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$startTrans$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$startTrans$1", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-transvoice_release"})
   public static final class x
     implements g.b
   {
-    public final void aKH()
+    public final void aNQ()
     {
       AppMethodBeat.i(102590);
-      ac.d("MicroMsg.TransVoiceDialog", "onRecordFin.");
+      ad.d("MicroMsg.TransVoiceDialog", "onRecordFin.");
       AppMethodBeat.o(102590);
     }
     
-    public final void aKL()
+    public final void aNU()
     {
       AppMethodBeat.i(102591);
-      ac.i("MicroMsg.TransVoiceDialog", "onRecognizeFinish.");
-      b.j(this.Amu, false);
-      b.p(this.Amu).Aki = 1;
-      b.p(this.Amu).Ake = System.currentTimeMillis();
-      Object localObject = b.v(this.Amu);
+      ad.i("MicroMsg.TransVoiceDialog", "onRecognizeFinish.");
+      b.j(this.BEg, false);
+      b.p(this.BEg).BBU = 1;
+      b.p(this.BEg).BBQ = System.currentTimeMillis();
+      Object localObject = b.v(this.BEg);
       if (localObject != null) {
-        ((ao)localObject).removeMessages(5000);
+        ((ap)localObject).removeMessages(5000);
       }
-      localObject = b.w(this.Amu);
+      localObject = b.w(this.BEg);
       if (localObject != null) {
-        ((au)localObject).stopTimer();
+        ((av)localObject).stopTimer();
       }
-      b.J(this.Amu);
-      localObject = b.u(this.Amu);
+      b.J(this.BEg);
+      localObject = b.u(this.BEg);
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
@@ -1572,13 +1588,13 @@ public final class b
     public final void b(String[] paramArrayOfString, List<String> paramList)
     {
       AppMethodBeat.i(102588);
-      ac.i("MicroMsg.TransVoiceDialog", "onRes.");
-      b.a(this.Amu, paramList);
-      paramList = b.v(this.Amu);
+      ad.i("MicroMsg.TransVoiceDialog", "onRes.");
+      b.a(this.BEg, paramList);
+      paramList = b.v(this.BEg);
       if (paramList != null) {
         paramList.removeMessages(5000);
       }
-      paramList = b.v(this.Amu);
+      paramList = b.v(this.BEg);
       if (paramList != null) {
         paramList.sendEmptyMessageDelayed(5000, 5000L);
       }
@@ -1590,22 +1606,22 @@ public final class b
           if (((CharSequence)paramList).length() > 0) {}
           for (int i = 1; i == 1; i = 0)
           {
-            this.Amu.aya(paramArrayOfString[0]);
-            ac.d("MicroMsg.TransVoiceDialog", "onRes, curTxt: %s.", new Object[] { this.Amu.Amj });
-            b.p(this.Amu).Akf = this.Amu.Amj.length();
-            if (b.s(this.Amu)) {
+            this.BEg.aDf(paramArrayOfString[0]);
+            ad.d("MicroMsg.TransVoiceDialog", "onRes, curTxt: %s.", new Object[] { this.BEg.BDV });
+            b.p(this.BEg).BBR = this.BEg.BDV.length();
+            if (b.s(this.BEg)) {
               break;
             }
-            b.j(this.Amu, true);
-            paramArrayOfString = b.e(this.Amu);
+            b.j(this.BEg, true);
+            paramArrayOfString = b.e(this.BEg);
             if (paramArrayOfString != null) {
               paramArrayOfString.setFocusable(true);
             }
-            paramArrayOfString = b.e(this.Amu);
+            paramArrayOfString = b.e(this.BEg);
             if (paramArrayOfString != null) {
               paramArrayOfString.setFocusableInTouchMode(true);
             }
-            paramArrayOfString = b.e(this.Amu);
+            paramArrayOfString = b.e(this.BEg);
             if (paramArrayOfString == null) {
               break;
             }
@@ -1623,41 +1639,41 @@ public final class b
     public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
     {
       AppMethodBeat.i(102589);
-      ac.i("MicroMsg.TransVoiceDialog", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
-      b.p(this.Amu).Aki = 0;
-      b.p(this.Amu).Ake = System.currentTimeMillis();
+      ad.i("MicroMsg.TransVoiceDialog", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
+      b.p(this.BEg).BBU = 0;
+      b.p(this.BEg).BBQ = System.currentTimeMillis();
       AppMethodBeat.o(102589);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$startTrans$2", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-transvoice_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/transvoice/ui/TransVoiceDialog$startTrans$2", "Lcom/tencent/mm/modelvoiceaddr/SceneVoiceInputAddr$UICallback;", "onError", "", "errType", "", "errCode", "localCode", "voiceid", "", "onRecognizeFinish", "onRecordFin", "onRes", "lst", "", "", "voiceIdSet", "", "([Ljava/lang/String;Ljava/util/List;)V", "plugin-transvoice_release"})
   public static final class y
     implements g.b
   {
-    public final void aKH()
+    public final void aNQ()
     {
       AppMethodBeat.i(102594);
-      ac.d("MicroMsg.TransVoiceDialog", "onRecordFin.");
+      ad.d("MicroMsg.TransVoiceDialog", "onRecordFin.");
       AppMethodBeat.o(102594);
     }
     
-    public final void aKL()
+    public final void aNU()
     {
       AppMethodBeat.i(102595);
-      ac.d("MicroMsg.TransVoiceDialog", "onRecognizeFinish.");
-      b.j(this.Amu, false);
-      b.p(this.Amu).Aki = 1;
-      b.p(this.Amu).Ake = System.currentTimeMillis();
-      Object localObject = b.v(this.Amu);
+      ad.d("MicroMsg.TransVoiceDialog", "onRecognizeFinish.");
+      b.j(this.BEg, false);
+      b.p(this.BEg).BBU = 1;
+      b.p(this.BEg).BBQ = System.currentTimeMillis();
+      Object localObject = b.v(this.BEg);
       if (localObject != null) {
-        ((ao)localObject).removeMessages(5000);
+        ((ap)localObject).removeMessages(5000);
       }
-      localObject = b.w(this.Amu);
+      localObject = b.w(this.BEg);
       if (localObject != null) {
-        ((au)localObject).stopTimer();
+        ((av)localObject).stopTimer();
       }
-      b.J(this.Amu);
-      localObject = b.u(this.Amu);
+      b.J(this.BEg);
+      localObject = b.u(this.BEg);
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
@@ -1670,13 +1686,13 @@ public final class b
     public final void b(String[] paramArrayOfString, List<String> paramList)
     {
       AppMethodBeat.i(102592);
-      ac.d("MicroMsg.TransVoiceDialog", "onRes.");
-      b.a(this.Amu, paramList);
-      paramList = b.v(this.Amu);
+      ad.d("MicroMsg.TransVoiceDialog", "onRes.");
+      b.a(this.BEg, paramList);
+      paramList = b.v(this.BEg);
       if (paramList != null) {
         paramList.removeMessages(5000);
       }
-      paramList = b.v(this.Amu);
+      paramList = b.v(this.BEg);
       if (paramList != null) {
         paramList.sendEmptyMessageDelayed(5000, 5000L);
       }
@@ -1688,22 +1704,22 @@ public final class b
           if (((CharSequence)paramList).length() > 0) {}
           for (int i = 1; i == 1; i = 0)
           {
-            this.Amu.aya(paramArrayOfString[0]);
-            ac.d("MicroMsg.TransVoiceDialog", "onRes, curTxt: %s.", new Object[] { this.Amu.Amj });
-            b.p(this.Amu).Akf = this.Amu.Amj.length();
-            if (b.s(this.Amu)) {
+            this.BEg.aDf(paramArrayOfString[0]);
+            ad.d("MicroMsg.TransVoiceDialog", "onRes, curTxt: %s.", new Object[] { this.BEg.BDV });
+            b.p(this.BEg).BBR = this.BEg.BDV.length();
+            if (b.s(this.BEg)) {
               break;
             }
-            b.j(this.Amu, true);
-            paramArrayOfString = b.e(this.Amu);
+            b.j(this.BEg, true);
+            paramArrayOfString = b.e(this.BEg);
             if (paramArrayOfString != null) {
               paramArrayOfString.setFocusable(true);
             }
-            paramArrayOfString = b.e(this.Amu);
+            paramArrayOfString = b.e(this.BEg);
             if (paramArrayOfString != null) {
               paramArrayOfString.setFocusableInTouchMode(true);
             }
-            paramArrayOfString = b.e(this.Amu);
+            paramArrayOfString = b.e(this.BEg);
             if (paramArrayOfString == null) {
               break;
             }
@@ -1721,9 +1737,9 @@ public final class b
     public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
     {
       AppMethodBeat.i(102593);
-      ac.d("MicroMsg.TransVoiceDialog", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
-      b.p(this.Amu).Aki = 0;
-      b.p(this.Amu).Ake = System.currentTimeMillis();
+      ad.d("MicroMsg.TransVoiceDialog", "onError, errType: %d, errCode: %d, localCode: %d, voiceid: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong) });
+      b.p(this.BEg).BBU = 0;
+      b.p(this.BEg).BBQ = System.currentTimeMillis();
       AppMethodBeat.o(102593);
     }
   }

@@ -9,9 +9,9 @@ public class MMBackgroundRunningOperationParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<MMBackgroundRunningOperationParcel> CREATOR;
-  public int aUu;
   public String appId;
-  public int cZu;
+  public int beO;
+  public int dkM;
   
   static
   {
@@ -26,8 +26,8 @@ public class MMBackgroundRunningOperationParcel
   {
     AppMethodBeat.i(153215);
     this.appId = paramParcel.readString();
-    this.aUu = paramParcel.readInt();
-    this.cZu = paramParcel.readInt();
+    this.beO = paramParcel.readInt();
+    this.dkM = paramParcel.readInt();
     AppMethodBeat.o(153215);
   }
   
@@ -39,7 +39,7 @@ public class MMBackgroundRunningOperationParcel
   public String toString()
   {
     AppMethodBeat.i(153216);
-    String str = "operation{appId='" + this.appId + '\'' + ", usage=" + this.aUu + ", operation=" + this.cZu + '}';
+    String str = "operation{appId='" + this.appId + '\'' + ", usage=" + this.beO + ", operation=" + this.dkM + '}';
     AppMethodBeat.o(153216);
     return str;
   }
@@ -48,8 +48,8 @@ public class MMBackgroundRunningOperationParcel
   {
     AppMethodBeat.i(153217);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.aUu);
-    paramParcel.writeInt(this.cZu);
+    paramParcel.writeInt(this.beO);
+    paramParcel.writeInt(this.dkM);
     AppMethodBeat.o(153217);
   }
 }

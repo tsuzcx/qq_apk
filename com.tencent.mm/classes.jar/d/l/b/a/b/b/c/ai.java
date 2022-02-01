@@ -1,6 +1,7 @@
 package d.l.b.a.b.b.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.a.b;
 import d.l.b.a.b.b.an;
 import d.l.b.a.b.b.aq;
 import d.l.b.a.b.b.aq.a;
@@ -9,6 +10,7 @@ import d.l.b.a.b.b.l;
 import d.l.b.a.b.f.f;
 import d.l.b.a.b.j.c;
 import d.l.b.a.b.j.d.a;
+import d.l.b.a.b.l.j;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.ad;
 import d.l.b.a.b.m.bh;
@@ -18,18 +20,18 @@ import java.util.List;
 public final class ai
   extends e
 {
-  private final d.g.a.b<ab, Void> LiH;
-  private final List<ab> LiI;
+  private final b<ab, Void> MZD;
+  private final List<ab> MZE;
   private boolean initialized;
   
-  private ai(l paraml, d.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq)
+  private ai(l paraml, d.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq, j paramj)
   {
-    super(d.l.b.a.b.l.b.LJP, paraml, paramg, paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
-    AppMethodBeat.i(57320);
-    this.LiI = new ArrayList(1);
+    super(paramj, paraml, paramg, paramf, parambh, paramBoolean, paramInt, paraman, paramaq);
+    AppMethodBeat.i(187774);
+    this.MZE = new ArrayList(1);
     this.initialized = false;
-    this.LiH = null;
-    AppMethodBeat.o(57320);
+    this.MZD = null;
+    AppMethodBeat.o(187774);
   }
   
   private void M(ab paramab)
@@ -40,100 +42,109 @@ public final class ai
       AppMethodBeat.o(57325);
       return;
     }
-    this.LiI.add(paramab);
+    this.MZE.add(paramab);
     AppMethodBeat.o(57325);
   }
   
-  public static as a(l paraml, d.l.b.a.b.b.a.g paramg, bh parambh, f paramf, int paramInt)
+  public static as a(l paraml, d.l.b.a.b.b.a.g paramg, bh parambh, f paramf, int paramInt, j paramj)
   {
-    AppMethodBeat.i(57317);
+    AppMethodBeat.i(187771);
     if (paraml == null) {
-      agL(0);
+      ajm(0);
     }
     if (paramg == null) {
-      agL(1);
+      ajm(1);
     }
     if (parambh == null) {
-      agL(2);
+      ajm(2);
     }
     if (paramf == null) {
-      agL(3);
+      ajm(3);
     }
-    paramg = a(paraml, paramg, false, parambh, paramf, paramInt, an.Lec);
-    paramg.L(a.G(paraml).fPH());
+    if (paramj == null) {
+      ajm(4);
+    }
+    paramg = a(paraml, paramg, false, parambh, paramf, paramInt, an.MUX, paramj);
+    paramg.L(a.G(paraml).ghf());
     paramg.setInitialized();
     if (paramg == null) {
-      agL(4);
+      ajm(5);
     }
-    AppMethodBeat.o(57317);
+    AppMethodBeat.o(187771);
     return paramg;
   }
   
-  public static ai a(l paraml, d.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman)
+  private static ai a(l paraml, d.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq, j paramj)
   {
-    AppMethodBeat.i(57318);
+    AppMethodBeat.i(187773);
     if (paraml == null) {
-      agL(5);
+      ajm(12);
     }
     if (paramg == null) {
-      agL(6);
+      ajm(13);
     }
     if (parambh == null) {
-      agL(7);
+      ajm(14);
     }
     if (paramf == null) {
-      agL(8);
+      ajm(15);
     }
     if (paraman == null) {
-      agL(9);
-    }
-    paraml = a(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, aq.a.Lee);
-    AppMethodBeat.o(57318);
-    return paraml;
-  }
-  
-  private static ai a(l paraml, d.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, aq paramaq)
-  {
-    AppMethodBeat.i(57319);
-    if (paraml == null) {
-      agL(10);
-    }
-    if (paramg == null) {
-      agL(11);
-    }
-    if (parambh == null) {
-      agL(12);
-    }
-    if (paramf == null) {
-      agL(13);
-    }
-    if (paraman == null) {
-      agL(14);
+      ajm(16);
     }
     if (paramaq == null) {
-      agL(15);
+      ajm(17);
     }
-    paraml = new ai(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, paramaq);
-    AppMethodBeat.o(57319);
+    if (paramj == null) {
+      ajm(18);
+    }
+    paraml = new ai(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, paramaq, paramj);
+    AppMethodBeat.o(187773);
     return paraml;
   }
   
-  private void fSU()
+  public static ai a(l paraml, d.l.b.a.b.b.a.g paramg, boolean paramBoolean, bh parambh, f paramf, int paramInt, an paraman, j paramj)
+  {
+    AppMethodBeat.i(187772);
+    if (paraml == null) {
+      ajm(6);
+    }
+    if (paramg == null) {
+      ajm(7);
+    }
+    if (parambh == null) {
+      ajm(8);
+    }
+    if (paramf == null) {
+      ajm(9);
+    }
+    if (paraman == null) {
+      ajm(10);
+    }
+    if (paramj == null) {
+      ajm(11);
+    }
+    paraml = a(paraml, paramg, paramBoolean, parambh, paramf, paramInt, paraman, aq.a.MUZ, paramj);
+    AppMethodBeat.o(187772);
+    return paraml;
+  }
+  
+  private void gkt()
   {
     AppMethodBeat.i(57321);
     if (this.initialized)
     {
-      IllegalStateException localIllegalStateException = new IllegalStateException("Type parameter descriptor is already initialized: " + fSV());
+      IllegalStateException localIllegalStateException = new IllegalStateException("Type parameter descriptor is already initialized: " + gku());
       AppMethodBeat.o(57321);
       throw localIllegalStateException;
     }
     AppMethodBeat.o(57321);
   }
   
-  private String fSV()
+  private String gku()
   {
     AppMethodBeat.i(57322);
-    String str = fRf() + " declared in " + c.n(fPU());
+    String str = giD() + " declared in " + c.n(ghs());
     AppMethodBeat.o(57322);
     return str;
   }
@@ -142,14 +153,14 @@ public final class ai
   {
     AppMethodBeat.i(57326);
     if (paramab == null) {
-      agL(23);
+      ajm(27);
     }
-    if (this.LiH == null)
+    if (this.MZD == null)
     {
       AppMethodBeat.o(57326);
       return;
     }
-    this.LiH.ay(paramab);
+    this.MZD.invoke(paramab);
     AppMethodBeat.o(57326);
   }
   
@@ -157,25 +168,25 @@ public final class ai
   {
     AppMethodBeat.i(57324);
     if (paramab == null) {
-      agL(22);
+      ajm(26);
     }
-    fSU();
+    gkt();
     M(paramab);
     AppMethodBeat.o(57324);
   }
   
-  protected final List<ab> fSu()
+  protected final List<ab> gjS()
   {
     AppMethodBeat.i(57327);
     if (!this.initialized)
     {
-      localObject = new IllegalStateException("Type parameter descriptor is not initialized: " + fSV());
+      localObject = new IllegalStateException("Type parameter descriptor is not initialized: " + gku());
       AppMethodBeat.o(57327);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.LiI;
+    Object localObject = this.MZE;
     if (localObject == null) {
-      agL(24);
+      ajm(28);
     }
     AppMethodBeat.o(57327);
     return localObject;
@@ -184,14 +195,14 @@ public final class ai
   public final void setInitialized()
   {
     AppMethodBeat.i(57323);
-    fSU();
+    gkt();
     this.initialized = true;
     AppMethodBeat.o(57323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.c.ai
  * JD-Core Version:    0.7.0.1
  */

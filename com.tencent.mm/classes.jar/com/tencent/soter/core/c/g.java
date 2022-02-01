@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 
 public final class g
 {
-  public static long BT(long paramLong)
+  public static long EV(long paramLong)
   {
     AppMethodBeat.i(88664);
     paramLong = (System.nanoTime() - paramLong) / 1000L / 1000L;

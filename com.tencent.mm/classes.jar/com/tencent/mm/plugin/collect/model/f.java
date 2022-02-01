@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.protocal.protobuf.sr;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.n;
+import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class f
-  implements g
+  implements com.tencent.mm.al.f
 {
-  public static f owy;
+  public static f oZT;
   private final String TAG;
-  public Map<l, a> mYy;
+  public Map<l, a> nyV;
   
   public f()
   {
     AppMethodBeat.i(63782);
     this.TAG = "MicroMsg.F2fGetPayUrlManager";
-    this.mYy = new HashMap();
+    this.nyV = new HashMap();
     AppMethodBeat.o(63782);
   }
   
@@ -30,34 +29,34 @@ public final class f
     if ((paramn instanceof l))
     {
       paramString = (l)paramn;
-      locala = (a)this.mYy.get(paramn);
+      locala = (a)this.nyV.get(paramn);
       if (locala == null)
       {
-        ac.w("MicroMsg.F2fGetPayUrlManager", "no match callback");
+        ad.w("MicroMsg.F2fGetPayUrlManager", "no match callback");
         AppMethodBeat.o(63783);
         return;
       }
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label91;
       }
-      locala.a(true, paramString.oxc);
+      locala.a(true, paramString.pax);
     }
     for (;;)
     {
-      this.mYy.remove(paramn);
+      this.nyV.remove(paramn);
       AppMethodBeat.o(63783);
       return;
       label91:
-      ac.e("MicroMsg.F2fGetPayUrlManager", "net error: %s", new Object[] { paramString });
-      locala.a(false, paramString.oxc);
+      ad.e("MicroMsg.F2fGetPayUrlManager", "net error: %s", new Object[] { paramString });
+      locala.a(false, paramString.pax);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void J(String paramString1, String paramString2, int paramInt);
+    public abstract void K(String paramString1, String paramString2, int paramInt);
     
-    public abstract void a(boolean paramBoolean, sr paramsr);
+    public abstract void a(boolean paramBoolean, um paramum);
   }
 }
 

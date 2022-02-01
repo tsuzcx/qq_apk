@@ -4,78 +4,78 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.b;
 import com.tencent.mm.compatible.util.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
 {
-  private Context GX;
-  private b cQq;
-  private b.a hmk;
-  private boolean hmm;
-  a kPu;
+  private Context IR;
+  private b dbG;
+  private b.a hEx;
+  private boolean hEz;
+  a llW;
   
   public a()
   {
-    AppMethodBeat.i(194143);
-    this.hmm = false;
-    this.GX = ai.getContext();
-    AppMethodBeat.o(194143);
+    AppMethodBeat.i(205955);
+    this.hEz = false;
+    this.IR = aj.getContext();
+    AppMethodBeat.o(205955);
   }
   
-  private boolean axi()
+  private boolean azX()
   {
-    AppMethodBeat.i(194146);
+    AppMethodBeat.i(205958);
     b localb = new b((byte)0);
-    if (this.cQq == null) {
-      this.cQq = new b(this.GX);
+    if (this.dbG == null) {
+      this.dbG = new b(this.IR);
     }
-    if (this.hmk != localb) {
-      this.hmk = localb;
+    if (this.hEx != localb) {
+      this.hEx = localb;
     }
-    this.cQq.a(this.hmk);
+    this.dbG.a(this.hEx);
     boolean bool = requestFocus();
-    AppMethodBeat.o(194146);
+    AppMethodBeat.o(205958);
     return bool;
   }
   
   private boolean requestFocus()
   {
-    AppMethodBeat.i(194145);
-    if (this.cQq == null)
+    AppMethodBeat.i(205957);
+    if (this.dbG == null)
     {
-      AppMethodBeat.o(194145);
+      AppMethodBeat.o(205957);
       return false;
     }
-    if (this.hmm)
+    if (this.hEz)
     {
-      AppMethodBeat.o(194145);
+      AppMethodBeat.o(205957);
       return false;
     }
-    this.cQq.requestFocus();
-    this.hmm = true;
-    boolean bool = this.hmm;
-    AppMethodBeat.o(194145);
+    this.dbG.requestFocus();
+    this.hEz = true;
+    boolean bool = this.hEz;
+    AppMethodBeat.o(205957);
     return bool;
   }
   
-  public final boolean bjK()
+  public final boolean bnv()
   {
-    AppMethodBeat.i(194144);
-    this.kPu = null;
-    boolean bool = axi();
-    AppMethodBeat.o(194144);
+    AppMethodBeat.i(205956);
+    this.llW = null;
+    boolean bool = azX();
+    AppMethodBeat.o(205956);
     return bool;
   }
   
-  public final boolean bjL()
+  public final boolean bnw()
   {
-    AppMethodBeat.i(194147);
-    if (this.cQq != null) {}
-    for (boolean bool = this.cQq.YC();; bool = false)
+    AppMethodBeat.i(205959);
+    if (this.dbG != null) {}
+    for (boolean bool = this.dbG.abe();; bool = false)
     {
-      this.hmm = false;
-      AppMethodBeat.o(194147);
+      this.hEz = false;
+      AppMethodBeat.o(205959);
       return bool;
     }
   }
@@ -87,14 +87,14 @@ public final class a
   {
     private b() {}
     
-    public final void hw(int paramInt)
+    public final void hD(int paramInt)
     {
-      AppMethodBeat.i(194142);
+      AppMethodBeat.i(205954);
       switch (paramInt)
       {
       case 0: 
       default: 
-        ac.v("MicroMsg.AudioHelperTool", "jacks UNKNOW_AUDIOFOCUS_LOSS DEFAULT");
+        ad.v("MicroMsg.AudioHelperTool", "jacks UNKNOW_AUDIOFOCUS_LOSS DEFAULT");
       }
       do
       {
@@ -104,29 +104,29 @@ public final class a
           {
             do
             {
-              AppMethodBeat.o(194142);
+              AppMethodBeat.o(205954);
               return;
-              ac.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_GAIN");
-            } while (a.this.kPu == null);
-            AppMethodBeat.o(194142);
+              ad.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_GAIN");
+            } while (a.this.llW == null);
+            AppMethodBeat.o(205954);
             return;
-            ac.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS");
-          } while (a.this.kPu == null);
-          AppMethodBeat.o(194142);
+            ad.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS");
+          } while (a.this.llW == null);
+          AppMethodBeat.o(205954);
           return;
-          ac.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT");
-        } while (a.this.kPu == null);
-        AppMethodBeat.o(194142);
+          ad.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT");
+        } while (a.this.llW == null);
+        AppMethodBeat.o(205954);
         return;
-        ac.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
-      } while (a.this.kPu == null);
-      AppMethodBeat.o(194142);
+        ad.v("MicroMsg.AudioHelperTool", "jacks AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK");
+      } while (a.this.llW == null);
+      AppMethodBeat.o(205954);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.a.a
  * JD-Core Version:    0.7.0.1
  */

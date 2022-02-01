@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.util.n;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -20,16 +20,16 @@ public final class b
 {
   private Context mContext;
   private View mView;
-  String pdo;
   f screen;
-  private ImageView xbm;
+  private ImageView ypn;
+  String ypo;
   
   public b(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51677);
     this.mView = null;
-    this.xbm = null;
+    this.ypn = null;
     setLayoutResource(2131495108);
     u.a(this);
     this.mContext = paramContext;
@@ -51,10 +51,10 @@ public final class b
   public final void k(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(51680);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(this.pdo)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(this.ypo)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.xbm.setImageBitmap(paramBitmap);
-      this.xbm.setBackgroundColor(0);
+      this.ypn.setImageBitmap(paramBitmap);
+      this.ypn.setBackgroundColor(0);
       if (this.screen != null) {
         this.screen.notifyDataSetChanged();
       }
@@ -66,19 +66,19 @@ public final class b
   {
     AppMethodBeat.i(51679);
     super.onBindView(paramView);
-    this.xbm = ((ImageView)paramView.findViewById(2131297185));
-    if (!bs.isNullOrNil(this.pdo))
+    this.ypn = ((ImageView)paramView.findViewById(2131297185));
+    if (!bt.isNullOrNil(this.ypo))
     {
-      paramView = u.a(new n(this.pdo));
+      paramView = u.a(new n(this.ypo));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.xbm.setImageBitmap(paramView);
-        this.xbm.setBackgroundColor(0);
+        this.ypn.setImageBitmap(paramView);
+        this.ypn.setBackgroundColor(0);
         AppMethodBeat.o(51679);
         return;
       }
-      this.xbm.setBackgroundColor(this.mContext.getResources().getColor(2131100481));
-      this.xbm.setImageBitmap(null);
+      this.ypn.setBackgroundColor(this.mContext.getResources().getColor(2131100481));
+      this.ypn.setImageBitmap(null);
     }
     AppMethodBeat.o(51679);
   }

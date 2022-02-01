@@ -11,7 +11,7 @@ import java.util.Map;
 public class ChangeScroll
   extends Transition
 {
-  private static final String[] yx = { "android:changeScroll:x", "android:changeScroll:y" };
+  private static final String[] Aq = { "android:changeScroll:x", "android:changeScroll:y" };
   
   public ChangeScroll() {}
   
@@ -62,7 +62,7 @@ public class ChangeScroll
   
   public final String[] getTransitionProperties()
   {
-    return yx;
+    return Aq;
   }
 }
 

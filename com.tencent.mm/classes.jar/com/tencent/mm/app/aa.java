@@ -2,29 +2,29 @@ package com.tencent.mm.app;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.reflect.Method;
 
 final class aa
 {
-  public static boolean bt(Context paramContext)
+  public static boolean bs(Context paramContext)
   {
-    AppMethodBeat.i(205032);
+    AppMethodBeat.i(207438);
     try
     {
-      if (!((Boolean)Class.forName(ai.getPackageName() + ".recovery.RecoveryInitializer").getMethod("init", new Class[] { Context.class }).invoke(null, new Object[] { paramContext })).booleanValue())
+      if (!((Boolean)Class.forName(aj.getPackageName() + ".recovery.RecoveryInitializer").getMethod("init", new Class[] { Context.class }).invoke(null, new Object[] { paramContext })).booleanValue())
       {
-        AppMethodBeat.o(205032);
+        AppMethodBeat.o(207438);
         return true;
       }
-      AppMethodBeat.o(205032);
+      AppMethodBeat.o(207438);
       return false;
     }
     catch (Throwable paramContext)
     {
-      ac.printErrStackTrace("MicroMsg.recovery.loader", paramContext, "recovery init fail", new Object[0]);
-      AppMethodBeat.o(205032);
+      ad.printErrStackTrace("MicroMsg.recovery.loader", paramContext, "recovery init fail", new Object[0]);
+      AppMethodBeat.o(207438);
     }
     return false;
   }

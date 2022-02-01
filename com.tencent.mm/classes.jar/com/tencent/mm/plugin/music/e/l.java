@@ -17,7 +17,7 @@ public final class l
     return locale;
   }
   
-  public final MediaPlayer diA()
+  public final MediaPlayer dsM()
   {
     AppMethodBeat.i(62962);
     k localk = new k();

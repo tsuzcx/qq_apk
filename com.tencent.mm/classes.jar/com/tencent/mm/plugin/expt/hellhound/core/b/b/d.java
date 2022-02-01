@@ -1,68 +1,76 @@
 package com.tencent.mm.plugin.expt.hellhound.core.b.b;
 
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.c;
-import com.tencent.mm.plugin.expt.hellhound.core.a.b.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.MMFragmentActivity;
-import d.l;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.plugin.expt.hellhound.core.a.b;
+import com.tencent.mm.protocal.protobuf.atj;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/FragmentLauncherUIMonitor;", "", "callback", "Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;", "(Lcom/tencent/mm/plugin/expt/hellhound/core/IFragmentLifecycleCallback;)V", "launcherUIClass", "Ljava/lang/Class;", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/ui/MMFragmentActivity;", "mCallback", "mChatProxy", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/fragment/ChatUIFragmentProxy;", "mLastFragmentIndex", "", "mListener", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "methodInfoMap", "Ljava/util/HashMap;", "", "", "", "Landroid/util/Pair;", "callbackMMFragmentActivityWhenResume", "", "mmfActivity", "timestamp", "", "doMonitor4MMFragmentActivity", "mmfa", "doMonitorViewPagerEvent", "fragmentPauseCallback", "fa", "Landroid/support/v4/app/FragmentActivity;", "monitor", "", "launcherUI", "onChatAction", "msgType", "onPageSelected", "position", "unmonitor", "Companion", "MethodListener", "plugin-expt_release"})
 public final class d
 {
-  public static final d.a qjK;
-  WeakReference<MMFragmentActivity> mActivityRef;
-  com.tencent.mm.plugin.expt.hellhound.core.d qjC;
-  Class<?> qjF;
-  a qjG;
-  private int qjH;
-  c qjI;
-  final HashMap<String, Map<String, List<Pair<String, String>>>> qjJ;
-  
-  static
+  public static void a(atj paramatj)
   {
-    AppMethodBeat.i(122562);
-    qjK = new d.a((byte)0);
-    AppMethodBeat.o(122562);
-  }
-  
-  public d(com.tencent.mm.plugin.expt.hellhound.core.d paramd)
-  {
-    AppMethodBeat.i(122561);
-    this.qjJ = new HashMap();
-    this.qjC = paramd;
-    this.qjI = ((c)new d.b(this));
-    try
+    AppMethodBeat.i(169278);
+    if (paramatj == null)
     {
-      paramd = com.tencent.mm.plugin.expt.hellhound.core.a.b.a.qjc;
-      this.qjF = a.a.getClass("com.tencent.mm.ui.LauncherUI");
-      this.qjG = new a(this.qjC);
-      paramd = new ArrayList();
-      paramd.add(Pair.create("onPageSelected", "(I)V"));
-      HashMap localHashMap = new HashMap();
-      ((Map)localHashMap).put("android/support/v4/view/ViewPager$OnPageChangeListener", paramd);
-      ((Map)this.qjJ).put("com/tencent/mm/ui/MainTabUI$TabsAdapter", localHashMap);
-      AppMethodBeat.o(122561);
+      AppMethodBeat.o(169278);
       return;
     }
-    catch (Exception paramd)
+    try
     {
-      for (;;)
-      {
-        ac.printErrStackTrace("HABBYGE-MALI.FragmentLauncherUIMonitor", (Throwable)paramd, "FragmentLauncherUIMonitor", new Object[0]);
-      }
+      paramatj = paramatj.toByteArray();
+      b.p("hell_mmkv_fbm__", paramatj);
+      AppMethodBeat.o(169278);
+      return;
     }
+    catch (IOException paramatj)
+    {
+      ad.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", paramatj, "HellMsgQDao, _write, crash: %s", new Object[] { paramatj.getMessage() });
+      AppMethodBeat.o(169278);
+    }
+  }
+  
+  public static String con()
+  {
+    AppMethodBeat.i(169276);
+    Object localObject = coo();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(169276);
+      return null;
+    }
+    localObject = ((atj)localObject).Grt;
+    AppMethodBeat.o(169276);
+    return localObject;
+  }
+  
+  public static atj coo()
+  {
+    AppMethodBeat.i(169277);
+    byte[] arrayOfByte = b.getBytes("hell_mmkv_fbm__");
+    if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
+    {
+      AppMethodBeat.o(169277);
+      return null;
+    }
+    atj localatj = new atj();
+    try
+    {
+      localatj.parseFrom(arrayOfByte);
+      AppMethodBeat.o(169277);
+      return localatj;
+    }
+    catch (IOException localIOException)
+    {
+      ad.printErrStackTrace("HABBYGE-MALI.FragmentFrontBackMonitor", localIOException, "FragmentFrontBack, _read, crash: %s", new Object[] { localIOException.getMessage() });
+      AppMethodBeat.o(169277);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.core.b.b.d
  * JD-Core Version:    0.7.0.1
  */

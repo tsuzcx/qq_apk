@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.soter.d.d;
 import com.tencent.mm.plugin.soter.d.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class KindaDeviceServiceImpl
   implements KDeviceService
@@ -28,14 +28,14 @@ public class KindaDeviceServiceImpl
   public void invokePhoneCall(String paramString)
   {
     AppMethodBeat.i(18424);
-    ac.i("KindaDeviceServiceImpl", "invokePhoneCall %s", new Object[] { paramString });
+    ad.i("KindaDeviceServiceImpl", "invokePhoneCall %s", new Object[] { paramString });
     Object localObject = new Intent("android.intent.action.DIAL");
     ((Intent)localObject).setFlags(268435456);
     ((Intent)localObject).setData(Uri.parse("tel:".concat(String.valueOf(paramString))));
-    paramString = ai.getContext();
-    localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+    paramString = aj.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/kinda/framework/app/KindaDeviceServiceImpl", "invokePhoneCall", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(18424);
   }
@@ -45,13 +45,13 @@ public class KindaDeviceServiceImpl
     AppMethodBeat.i(18417);
     if (this.mgr == null)
     {
-      ac.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceOpenBiometricVerification, mgr == null, return false.");
+      ad.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceOpenBiometricVerification, mgr == null, return false.");
       AppMethodBeat.o(18417);
       return false;
     }
-    boolean bool1 = this.mgr.cHf();
-    boolean bool2 = this.mgr.cHn();
-    ac.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceOpenBiometricVerification, isDeviceHasFingerPrint: " + bool1 + ", isDeviceHasFaceID: " + bool2);
+    boolean bool1 = this.mgr.cPu();
+    boolean bool2 = this.mgr.cPC();
+    ad.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceOpenBiometricVerification, isDeviceHasFingerPrint: " + bool1 + ", isDeviceHasFaceID: " + bool2);
     if ((bool1) || (bool2))
     {
       AppMethodBeat.o(18417);
@@ -66,12 +66,12 @@ public class KindaDeviceServiceImpl
     AppMethodBeat.i(18419);
     if (this.mgr == null)
     {
-      ac.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, mgr == null, return false.");
+      ad.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, mgr == null, return false.");
       AppMethodBeat.o(18419);
       return false;
     }
-    boolean bool = this.mgr.cHm();
-    ac.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(bool)));
+    boolean bool = this.mgr.cPB();
+    ad.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(bool)));
     AppMethodBeat.o(18419);
     return bool;
   }
@@ -81,12 +81,12 @@ public class KindaDeviceServiceImpl
     AppMethodBeat.i(18418);
     if (this.mgr == null)
     {
-      ac.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFP, mgr == null, return false.");
+      ad.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFP, mgr == null, return false.");
       AppMethodBeat.o(18418);
       return false;
     }
-    boolean bool = this.mgr.cHe();
-    ac.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFP, return".concat(String.valueOf(bool)));
+    boolean bool = this.mgr.cPt();
+    ad.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFP, return".concat(String.valueOf(bool)));
     AppMethodBeat.o(18418);
     return bool;
   }
@@ -96,11 +96,11 @@ public class KindaDeviceServiceImpl
     AppMethodBeat.i(18420);
     if (this.mgr == null)
     {
-      ac.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isRoot, mgr == null, return false.");
+      ad.w("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isRoot, mgr == null, return false.");
       AppMethodBeat.o(18420);
       return false;
     }
-    ac.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isRoot, return: false");
+    ad.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isRoot, return: false");
     AppMethodBeat.o(18420);
     return false;
   }
@@ -108,8 +108,8 @@ public class KindaDeviceServiceImpl
   public String soterCpuId()
   {
     AppMethodBeat.i(18421);
-    String str = d.dTq().znE;
-    ac.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.soterCpuId, return: ".concat(String.valueOf(str)));
+    String str = d.efE().AFy;
+    ad.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.soterCpuId, return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18421);
     return str;
   }
@@ -117,8 +117,8 @@ public class KindaDeviceServiceImpl
   public String soterUid()
   {
     AppMethodBeat.i(18422);
-    String str = d.dTq().znF;
-    ac.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(str)));
+    String str = d.efE().AFz;
+    ad.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.isDeviceSupportFaceId, return: ".concat(String.valueOf(str)));
     AppMethodBeat.o(18422);
     return str;
   }
@@ -127,31 +127,31 @@ public class KindaDeviceServiceImpl
   {
     AppMethodBeat.i(18423);
     if (paramInt == 0) {
-      if (this.mgr.cHe())
+      if (this.mgr.cPt())
       {
-        this.mgr.mh(paramBoolean);
-        this.mgr.mi(false);
+        this.mgr.my(paramBoolean);
+        this.mgr.mz(false);
       }
     }
     for (;;)
     {
-      ac.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.updateBiometricVerificationState, soterOpenType: " + paramInt + ", biometricVerificationState: " + paramBoolean);
+      ad.i("KindaDeviceServiceImpl", "KindaDeviceServiceImpl.updateBiometricVerificationState, soterOpenType: " + paramInt + ", biometricVerificationState: " + paramBoolean);
       AppMethodBeat.o(18423);
       return;
-      if (this.mgr.cHm())
+      if (this.mgr.cPB())
       {
-        this.mgr.mi(paramBoolean);
-        this.mgr.mh(false);
+        this.mgr.mz(paramBoolean);
+        this.mgr.my(false);
         continue;
-        if ((paramInt == 1) && (this.mgr.cHe()))
+        if ((paramInt == 1) && (this.mgr.cPt()))
         {
-          this.mgr.mh(paramBoolean);
-          this.mgr.mi(false);
+          this.mgr.my(paramBoolean);
+          this.mgr.mz(false);
         }
-        else if ((paramInt == 2) && (this.mgr.cHm()))
+        else if ((paramInt == 2) && (this.mgr.cPB()))
         {
-          this.mgr.mi(paramBoolean);
-          this.mgr.mh(false);
+          this.mgr.mz(paramBoolean);
+          this.mgr.my(false);
         }
       }
     }

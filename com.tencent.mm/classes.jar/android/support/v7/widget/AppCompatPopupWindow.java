@@ -12,15 +12,15 @@ import android.widget.PopupWindow;
 class AppCompatPopupWindow
   extends PopupWindow
 {
-  private static final boolean aiF;
-  private boolean aiG;
+  private static final boolean akw;
+  private boolean akx;
   
   static
   {
     if (Build.VERSION.SDK_INT < 21) {}
     for (boolean bool = true;; bool = false)
     {
-      aiF = bool;
+      akw = bool;
       return;
     }
   }
@@ -39,9 +39,9 @@ class AppCompatPopupWindow
   
   private void ah(boolean paramBoolean)
   {
-    if (aiF)
+    if (akw)
     {
-      this.aiG = paramBoolean;
+      this.akx = paramBoolean;
       return;
     }
     n.a(this, paramBoolean);
@@ -54,16 +54,16 @@ class AppCompatPopupWindow
       ah(paramContext.getBoolean(2, false));
     }
     setBackgroundDrawable(paramContext.getDrawable(0));
-    paramContext.awJ.recycle();
+    paramContext.ayA.recycle();
   }
   
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
   {
     int i = paramInt2;
-    if (aiF)
+    if (akw)
     {
       i = paramInt2;
-      if (this.aiG) {
+      if (this.akx) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -73,10 +73,10 @@ class AppCompatPopupWindow
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt2;
-    if (aiF)
+    if (akw)
     {
       i = paramInt2;
-      if (this.aiG) {
+      if (this.akx) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -85,7 +85,7 @@ class AppCompatPopupWindow
   
   public void update(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((aiF) && (this.aiG)) {
+    if ((akw) && (this.akx)) {
       paramInt2 -= paramView.getHeight();
     }
     for (;;)

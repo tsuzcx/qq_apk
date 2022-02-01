@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.n.a;
 
-import com.tencent.mm.storage.bn;
+import com.tencent.mm.storage.bt;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract bn awI();
+  public abstract bt azx();
 }
 
 

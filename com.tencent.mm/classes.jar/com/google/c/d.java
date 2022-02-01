@@ -5,27 +5,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends f
 {
-  private static final d bHm;
+  private static final d bRA;
   
   static
   {
     AppMethodBeat.i(12283);
     d locald = new d();
-    bHm = locald;
-    locald.setStackTrace(bHp);
+    bRA = locald;
+    locald.setStackTrace(bRD);
     AppMethodBeat.o(12283);
   }
   
-  public static d xU()
+  public static d zr()
   {
     AppMethodBeat.i(12282);
-    if (bHo)
+    if (bRC)
     {
       locald = new d();
       AppMethodBeat.o(12282);
       return locald;
     }
-    d locald = bHm;
+    d locald = bRA;
     AppMethodBeat.o(12282);
     return locald;
   }

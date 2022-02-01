@@ -1,13 +1,15 @@
 package com.tencent.mm.modelgeo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bd;
-import com.tencent.mm.sdk.platformtools.bd.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.be;
+import com.tencent.mm.sdk.platformtools.be.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,24 +18,24 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class c
-  implements com.tencent.mm.ak.g
+  implements f
 {
   public static String TAG = "MicroMsg.LocationAddr";
-  private static c hEI;
-  private HashMap<String, CopyOnWriteArrayList<WeakReference<a>>> bwc;
-  private c hEJ;
-  private CopyOnWriteArrayList<c> hEK;
-  private bd hEL;
-  private boolean hEM;
+  private static c hXn;
+  private HashMap<String, CopyOnWriteArrayList<WeakReference<a>>> bGq;
+  private c hXo;
+  private CopyOnWriteArrayList<c> hXp;
+  private be hXq;
+  private boolean hXr;
   
   private c()
   {
     AppMethodBeat.i(150467);
-    this.hEJ = null;
-    this.hEK = new CopyOnWriteArrayList();
-    this.bwc = new HashMap();
-    this.hEL = new bd(1, "addr_worker");
-    this.hEM = true;
+    this.hXo = null;
+    this.hXp = new CopyOnWriteArrayList();
+    this.bGq = new HashMap();
+    this.hXq = new be(1, "addr_worker");
+    this.hXr = true;
     AppMethodBeat.o(150467);
   }
   
@@ -43,7 +45,7 @@ public final class c
     // Byte code:
     //   0: ldc 80
     //   2: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:eUO	()Ljava/lang/String;
+    //   5: invokestatic 86	com/tencent/mm/sdk/platformtools/ac:fks	()Ljava/lang/String;
     //   8: astore 12
     //   10: new 88	com/tencent/mm/modelgeo/Addr
     //   13: dup
@@ -75,7 +77,7 @@ public final class c
     //   59: aload 6
     //   61: invokestatic 108	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   64: invokevirtual 112	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   67: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   67: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   70: aconst_null
     //   71: astore 10
     //   73: aconst_null
@@ -119,7 +121,7 @@ public final class c
     //   152: invokevirtual 144	com/tencent/mm/network/v:getResponseCode	()I
     //   155: invokevirtual 148	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   158: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   161: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   161: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   164: aload 6
     //   166: astore 7
     //   168: aload 6
@@ -164,7 +166,7 @@ public final class c
     //   253: astore 7
     //   255: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
     //   258: ldc 176
-    //   260: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   260: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   263: aload 6
     //   265: astore 7
     //   267: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
@@ -174,9 +176,9 @@ public final class c
     //   276: dup
     //   277: iconst_0
     //   278: aload 10
-    //   280: invokestatic 184	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   280: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   283: aastore
-    //   284: invokestatic 188	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   284: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   287: aload 8
     //   289: astore 7
     //   291: aload 6
@@ -224,7 +226,7 @@ public final class c
     //   374: invokevirtual 199	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   377: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   380: invokevirtual 151	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   383: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   386: aload 6
     //   388: astore 7
     //   390: new 204	org/json/JSONObject
@@ -247,7 +249,7 @@ public final class c
     //   427: aload 9
     //   429: ldc 219
     //   431: invokevirtual 222	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   434: putfield 225	com/tencent/mm/modelgeo/Addr:hEt	Ljava/lang/String;
+    //   434: putfield 225	com/tencent/mm/modelgeo/Addr:hWY	Ljava/lang/String;
     //   437: aload 6
     //   439: astore 7
     //   441: aload 10
@@ -294,7 +296,7 @@ public final class c
     //   530: astore 7
     //   532: aload 11
     //   534: aload 10
-    //   536: putfield 246	com/tencent/mm/modelgeo/Addr:hEu	Ljava/lang/String;
+    //   536: putfield 246	com/tencent/mm/modelgeo/Addr:hWZ	Ljava/lang/String;
     //   539: goto +559 -> 1098
     //   542: aload 6
     //   544: astore 7
@@ -306,7 +308,7 @@ public final class c
     //   558: astore 7
     //   560: aload 11
     //   562: aload 10
-    //   564: putfield 251	com/tencent/mm/modelgeo/Addr:hEv	Ljava/lang/String;
+    //   564: putfield 251	com/tencent/mm/modelgeo/Addr:hXa	Ljava/lang/String;
     //   567: goto +531 -> 1098
     //   570: aload 6
     //   572: astore 7
@@ -318,7 +320,7 @@ public final class c
     //   586: astore 7
     //   588: aload 11
     //   590: aload 10
-    //   592: putfield 256	com/tencent/mm/modelgeo/Addr:hEx	Ljava/lang/String;
+    //   592: putfield 256	com/tencent/mm/modelgeo/Addr:hXc	Ljava/lang/String;
     //   595: goto +503 -> 1098
     //   598: astore 6
     //   600: aload 7
@@ -339,7 +341,7 @@ public final class c
     //   635: astore 7
     //   637: aload 11
     //   639: aload 10
-    //   641: putfield 261	com/tencent/mm/modelgeo/Addr:hEy	Ljava/lang/String;
+    //   641: putfield 261	com/tencent/mm/modelgeo/Addr:hXd	Ljava/lang/String;
     //   644: goto +454 -> 1098
     //   647: aload 6
     //   649: astore 7
@@ -351,7 +353,7 @@ public final class c
     //   664: astore 7
     //   666: aload 11
     //   668: aload 10
-    //   670: putfield 266	com/tencent/mm/modelgeo/Addr:hEz	Ljava/lang/String;
+    //   670: putfield 266	com/tencent/mm/modelgeo/Addr:hXe	Ljava/lang/String;
     //   673: goto +425 -> 1098
     //   676: aload 6
     //   678: astore 7
@@ -363,7 +365,7 @@ public final class c
     //   693: astore 7
     //   695: aload 11
     //   697: aload 10
-    //   699: putfield 271	com/tencent/mm/modelgeo/Addr:hEA	Ljava/lang/String;
+    //   699: putfield 271	com/tencent/mm/modelgeo/Addr:hXf	Ljava/lang/String;
     //   702: goto +396 -> 1098
     //   705: aload 6
     //   707: astore 7
@@ -380,7 +382,7 @@ public final class c
     //   734: aload 6
     //   736: astore 7
     //   738: aload 11
-    //   740: getfield 225	com/tencent/mm/modelgeo/Addr:hEt	Ljava/lang/String;
+    //   740: getfield 225	com/tencent/mm/modelgeo/Addr:hWY	Ljava/lang/String;
     //   743: ldc_w 277
     //   746: invokestatic 283	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   749: astore 10
@@ -470,10 +472,10 @@ public final class c
     //   915: bipush 6
     //   917: aload 12
     //   919: aastore
-    //   920: invokestatic 298	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   920: invokestatic 298	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   923: aload 6
     //   925: astore 7
-    //   927: getstatic 304	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   927: getstatic 304	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   930: sipush 12886
     //   933: bipush 7
     //   935: anewarray 4	java/lang/Object
@@ -505,7 +507,7 @@ public final class c
     //   969: bipush 6
     //   971: aload 12
     //   973: aastore
-    //   974: invokevirtual 308	com/tencent/mm/plugin/report/service/h:f	(I[Ljava/lang/Object;)V
+    //   974: invokevirtual 308	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
     //   977: aload 6
     //   979: invokevirtual 191	com/tencent/mm/network/v:disconnect	()V
     //   982: aload 8
@@ -520,7 +522,7 @@ public final class c
     //   1000: astore 7
     //   1002: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
     //   1005: ldc_w 310
-    //   1008: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1008: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1011: aload 6
     //   1013: astore 7
     //   1015: getstatic 37	com/tencent/mm/modelgeo/c:TAG	Ljava/lang/String;
@@ -530,9 +532,9 @@ public final class c
     //   1024: dup
     //   1025: iconst_0
     //   1026: aload 9
-    //   1028: invokestatic 184	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1028: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1031: aastore
-    //   1032: invokestatic 188	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1032: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1035: aload 8
     //   1037: astore 7
     //   1039: aload 6
@@ -550,9 +552,9 @@ public final class c
     //   1067: dup
     //   1068: iconst_0
     //   1069: aload 6
-    //   1071: invokestatic 184	com/tencent/mm/sdk/platformtools/bs:m	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1071: invokestatic 184	com/tencent/mm/sdk/platformtools/bt:n	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1074: aastore
-    //   1075: invokestatic 188	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1075: invokestatic 188	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1078: goto -763 -> 315
     //   1081: astore 9
     //   1083: goto -85 -> 998
@@ -728,7 +730,7 @@ public final class c
   private void a(Addr paramAddr)
   {
     AppMethodBeat.i(150476);
-    if (this.hEJ == null)
+    if (this.hXo == null)
     {
       AppMethodBeat.o(150476);
       return;
@@ -737,13 +739,13 @@ public final class c
     if (paramAddr == null) {
       localAddr = new Addr();
     }
-    if (this.hEJ.tag == null) {}
-    for (paramAddr = new Object();; paramAddr = this.hEJ.tag)
+    if (this.hXo.tag == null) {}
+    for (paramAddr = new Object();; paramAddr = this.hXo.tag)
     {
       localAddr.tag = paramAddr;
-      localAddr.hEE = ((float)this.hEJ.lat);
-      localAddr.hEF = ((float)this.hEJ.lng);
-      paramAddr = (CopyOnWriteArrayList)this.bwc.get(this.hEJ.toString());
+      localAddr.hXj = ((float)this.hXo.lat);
+      localAddr.hXk = ((float)this.hXo.lng);
+      paramAddr = (CopyOnWriteArrayList)this.bGq.get(this.hXo.toString());
       if (paramAddr == null) {
         break;
       }
@@ -756,12 +758,12 @@ public final class c
         }
       }
     }
-    this.bwc.remove(this.hEJ.toString());
-    ac.d(TAG, "postexecute2 listeners %d", new Object[] { Integer.valueOf(this.bwc.size()) });
-    this.hEJ = null;
-    aEJ();
-    if ((this.hEJ == null) && (this.hEK.size() > 0)) {
-      com.tencent.mm.kernel.g.agi().b(655, this);
+    this.bGq.remove(this.hXo.toString());
+    ad.d(TAG, "postexecute2 listeners %d", new Object[] { Integer.valueOf(this.bGq.size()) });
+    this.hXo = null;
+    aHO();
+    if ((this.hXo == null) && (this.hXp.size() > 0)) {
+      g.aiU().b(655, this);
     }
     AppMethodBeat.o(150476);
   }
@@ -783,39 +785,39 @@ public final class c
     return false;
   }
   
-  public static c aEI()
+  public static c aHN()
   {
     AppMethodBeat.i(150468);
-    if (hEI == null) {
-      hEI = new c();
+    if (hXn == null) {
+      hXn = new c();
     }
-    c localc = hEI;
+    c localc = hXn;
     AppMethodBeat.o(150468);
     return localc;
   }
   
-  private void aEJ()
+  private void aHO()
   {
     AppMethodBeat.i(150474);
-    if ((this.hEJ == null) && (this.hEK != null) && (this.hEK.size() > 0))
+    if ((this.hXo == null) && (this.hXp != null) && (this.hXp.size() > 0))
     {
-      this.hEJ = ((c)this.hEK.remove(0));
-      aEK();
+      this.hXo = ((c)this.hXp.remove(0));
+      aHP();
     }
     AppMethodBeat.o(150474);
   }
   
-  private void aEK()
+  private void aHP()
   {
     AppMethodBeat.i(150475);
-    if (bs.ja(ai.getContext()))
+    if (bt.jk(aj.getContext()))
     {
-      this.hEL.c(new b());
+      this.hXq.c(new b());
       AppMethodBeat.o(150475);
       return;
     }
-    com.tencent.mm.kernel.g.agi().a(655, this);
-    com.tencent.mm.kernel.g.agi().a(new e(this.hEJ.lat, this.hEJ.lng), 0);
+    g.aiU().a(655, this);
+    g.aiU().a(new e(this.hXo.lat, this.hXo.lng), 0);
     AppMethodBeat.o(150475);
   }
   
@@ -855,17 +857,17 @@ public final class c
     AppMethodBeat.i(150472);
     if (paramObject != null)
     {
-      localObject = this.hEK.iterator();
+      localObject = this.hXp.iterator();
       while (((Iterator)localObject).hasNext())
       {
         localc = (c)((Iterator)localObject).next();
         if ((localc != null) && (localc.tag != null) && (localc.tag.equals(paramObject))) {
-          this.hEK.remove(localc);
+          this.hXp.remove(localc);
         }
       }
     }
     c localc = new c(paramDouble1, paramDouble2, paramObject);
-    Object localObject = (CopyOnWriteArrayList)this.bwc.get(localc.toString());
+    Object localObject = (CopyOnWriteArrayList)this.bGq.get(localc.toString());
     paramObject = localObject;
     if (localObject == null) {
       paramObject = new CopyOnWriteArrayList();
@@ -873,32 +875,32 @@ public final class c
     if (!a(paramObject, parama)) {
       paramObject.add(new WeakReference(parama));
     }
-    this.bwc.put(localc.toString(), paramObject);
-    parama = this.hEK.iterator();
+    this.bGq.put(localc.toString(), paramObject);
+    parama = this.hXp.iterator();
     while (parama.hasNext()) {
       if (((c)parama.next()).equals(localc))
       {
-        aEJ();
+        aHO();
         AppMethodBeat.o(150472);
         return false;
       }
     }
-    if ((this.hEJ != null) && (localc.equals(this.hEJ)))
+    if ((this.hXo != null) && (localc.equals(this.hXo)))
     {
       AppMethodBeat.o(150472);
       return false;
     }
-    this.hEK.add(localc);
-    ac.i(TAG, "push task size %d listeners %d", new Object[] { Integer.valueOf(this.hEK.size()), Integer.valueOf(this.bwc.size()) });
-    while (this.hEK.size() > 30)
+    this.hXp.add(localc);
+    ad.i(TAG, "push task size %d listeners %d", new Object[] { Integer.valueOf(this.hXp.size()), Integer.valueOf(this.bGq.size()) });
+    while (this.hXp.size() > 30)
     {
-      ac.i(TAG, "force remove task");
-      parama = (c)this.hEK.remove(0);
+      ad.i(TAG, "force remove task");
+      parama = (c)this.hXp.remove(0);
       if (parama != null) {
-        this.bwc.remove(parama.toString());
+        this.bGq.remove(parama.toString());
       }
     }
-    aEJ();
+    aHO();
     AppMethodBeat.o(150472);
     return true;
   }
@@ -908,13 +910,13 @@ public final class c
     AppMethodBeat.i(150469);
     Object localObject1 = new LinkedList();
     Object localObject2 = new LinkedList();
-    Object localObject3 = this.bwc.keySet().iterator();
+    Object localObject3 = this.bGq.keySet().iterator();
     while (((Iterator)localObject3).hasNext())
     {
       String str = (String)((Iterator)localObject3).next();
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.bwc.get(str);
+      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.bGq.get(str);
       b(localCopyOnWriteArrayList, parama);
-      this.bwc.put(str, localCopyOnWriteArrayList);
+      this.bGq.put(str, localCopyOnWriteArrayList);
       if ((localCopyOnWriteArrayList == null) || (localCopyOnWriteArrayList.size() == 0)) {
         ((LinkedList)localObject2).add(str);
       }
@@ -923,26 +925,26 @@ public final class c
     while (parama.hasNext())
     {
       localObject2 = (String)parama.next();
-      this.bwc.remove(localObject2);
+      this.bGq.remove(localObject2);
     }
-    parama = this.hEK.iterator();
+    parama = this.hXp.iterator();
     while (parama.hasNext())
     {
       localObject2 = (c)parama.next();
-      localObject3 = (CopyOnWriteArrayList)this.bwc.get(((c)localObject2).toString());
+      localObject3 = (CopyOnWriteArrayList)this.bGq.get(((c)localObject2).toString());
       if ((localObject3 == null) || (((CopyOnWriteArrayList)localObject3).size() == 0))
       {
         ((LinkedList)localObject1).add(localObject2);
-        this.bwc.remove(((c)localObject2).toString());
+        this.bGq.remove(((c)localObject2).toString());
       }
     }
     parama = ((LinkedList)localObject1).iterator();
     while (parama.hasNext())
     {
       localObject1 = (c)parama.next();
-      this.hEK.remove(localObject1);
+      this.hXp.remove(localObject1);
     }
-    ac.i(TAG, "remove taskLists %d listeners size %d", new Object[] { Integer.valueOf(this.hEK.size()), Integer.valueOf(this.bwc.size()) });
+    ad.i(TAG, "remove taskLists %d listeners size %d", new Object[] { Integer.valueOf(this.hXp.size()), Integer.valueOf(this.bGq.size()) });
     AppMethodBeat.o(150469);
     return true;
   }
@@ -952,10 +954,10 @@ public final class c
     AppMethodBeat.i(150478);
     if (paramn.getType() == 655)
     {
-      paramString = ((e)paramn).aEO();
-      if ((paramString == null) || (paramString.hEt == null) || (paramString.hEt.equals("")))
+      paramString = ((e)paramn).aHT();
+      if ((paramString == null) || (paramString.hWY == null) || (paramString.hWY.equals("")))
       {
-        this.hEL.c(new b());
+        this.hXq.c(new b());
         AppMethodBeat.o(150478);
         return;
       }
@@ -970,13 +972,13 @@ public final class c
   }
   
   final class b
-    implements bd.a
+    implements be.a
   {
-    private Addr hEN = null;
+    private Addr hXs = null;
     
     public b() {}
     
-    public final boolean aBj()
+    public final boolean aEm()
     {
       AppMethodBeat.i(150463);
       if (c.a(c.this) == null)
@@ -984,18 +986,18 @@ public final class c
         AppMethodBeat.o(150463);
         return false;
       }
-      if ((this.hEN == null) || (this.hEN.hEt == null) || (this.hEN.hEt.equals(""))) {
-        this.hEN = c.b(c.a(c.this).lat, c.a(c.this).lng, c.b(c.this));
+      if ((this.hXs == null) || (this.hXs.hWY == null) || (this.hXs.hWY.equals(""))) {
+        this.hXs = c.b(c.a(c.this).lat, c.a(c.this).lng, c.b(c.this));
       }
       AppMethodBeat.o(150463);
       return true;
     }
     
-    public final boolean aBk()
+    public final boolean aEn()
     {
       AppMethodBeat.i(150464);
       c.c(c.this);
-      c.a(c.this, this.hEN);
+      c.a(c.this, this.hXs);
       AppMethodBeat.o(150464);
       return true;
     }
@@ -1051,7 +1053,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelgeo.c
  * JD-Core Version:    0.7.0.1
  */

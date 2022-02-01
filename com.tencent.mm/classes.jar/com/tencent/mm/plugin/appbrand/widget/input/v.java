@@ -6,7 +6,6 @@ import android.support.v4.view.t;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,40 +16,31 @@ public final class v
   implements ac
 {
   private static final int VIEW_ID = 2131296761;
-  private boolean mED;
-  private a mEE;
-  private AppBrandNumberKeyboardView mEF;
   EditText mEditText;
+  private boolean nfc;
+  private a nfd;
+  private AppBrandNumberKeyboardView nfe;
   
   private v(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(136479);
-    this.mED = false;
+    this.nfc = false;
     super.setId(VIEW_ID);
     setOrientation(1);
     setBackgroundColor(-1);
     paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(getContext(), 30));
     Object localObject = LayoutInflater.from(getContext()).inflate(2131493095, null);
-    ((View)localObject).setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(136476);
-        v.a(v.this);
-        v.this.setVisibility(8);
-        AppMethodBeat.o(136476);
-      }
-    });
+    ((View)localObject).setOnClickListener(new v.1(this));
     addView((View)localObject, paramContext);
     paramContext = new ViewGroup.LayoutParams(-1, com.tencent.mm.cc.a.fromDPToPix(getContext(), 240));
     localObject = new AppBrandNumberKeyboardView(getContext());
-    this.mEF = ((AppBrandNumberKeyboardView)localObject);
+    this.nfe = ((AppBrandNumberKeyboardView)localObject);
     addView((View)localObject, paramContext);
     AppMethodBeat.o(136479);
   }
   
-  public static v dg(View paramView)
+  public static v di(View paramView)
   {
     AppMethodBeat.i(136477);
     paramView = (v)paramView.getRootView().findViewById(VIEW_ID);
@@ -58,14 +48,14 @@ public final class v
     return paramView;
   }
   
-  public static v dh(View paramView)
+  public static v dj(View paramView)
   {
     AppMethodBeat.i(136478);
-    Object localObject2 = dg(paramView);
+    Object localObject2 = di(paramView);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject2 = n.db(paramView);
+      localObject2 = n.dd(paramView);
       if (localObject2 == null)
       {
         AppMethodBeat.o(136478);
@@ -81,16 +71,16 @@ public final class v
   private void onDone()
   {
     AppMethodBeat.i(136481);
-    if ((!this.mED) && (this.mEE != null))
+    if ((!this.nfc) && (this.nfd != null))
     {
-      this.mED = true;
-      this.mEE.onDone();
-      this.mED = false;
+      this.nfc = true;
+      this.nfd.onDone();
+      this.nfc = false;
     }
     AppMethodBeat.o(136481);
   }
   
-  public final boolean bAu()
+  public final boolean bEw()
   {
     AppMethodBeat.i(136480);
     boolean bool = t.ay(this);
@@ -98,15 +88,15 @@ public final class v
     return bool;
   }
   
-  final void bAv()
+  final void bEx()
   {
     AppMethodBeat.i(136486);
     if (this.mEditText != null)
     {
       this.mEditText.clearFocus();
       this.mEditText = null;
-      this.mEE = null;
-      this.mED = false;
+      this.nfd = null;
+      this.nfc = false;
     }
     AppMethodBeat.o(136486);
   }
@@ -148,13 +138,13 @@ public final class v
   {
     AppMethodBeat.i(136484);
     this.mEditText = param_Input;
-    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.mEF;
+    AppBrandNumberKeyboardView localAppBrandNumberKeyboardView = this.nfe;
     com.tencent.mm.plugin.appbrand.widget.input.numberpad.a locala = (com.tencent.mm.plugin.appbrand.widget.input.numberpad.a)param_Input;
-    if (localAppBrandNumberKeyboardView.mEK != locala)
+    if (localAppBrandNumberKeyboardView.nfj != locala)
     {
       if (locala == null)
       {
-        localAppBrandNumberKeyboardView.mEJ = null;
+        localAppBrandNumberKeyboardView.nfi = null;
         AppMethodBeat.o(136484);
         return;
       }
@@ -184,7 +174,7 @@ public final class v
       if ((locala instanceof View)) {
         ((View)locala).requestFocus();
       }
-      localAppBrandNumberKeyboardView.mEJ = locala.bAt();
+      localAppBrandNumberKeyboardView.nfi = locala.bEv();
       AppMethodBeat.o(136484);
       return;
       if ((param_Input instanceof ContextWrapper))
@@ -201,7 +191,7 @@ public final class v
   
   public final void setOnDoneListener(a parama)
   {
-    this.mEE = parama;
+    this.nfd = parama;
   }
   
   public final void setVisibility(int paramInt)
@@ -226,7 +216,7 @@ public final class v
   public final void setXMode(int paramInt)
   {
     AppMethodBeat.i(136485);
-    this.mEF.setXMode(paramInt);
+    this.nfe.setXMode(paramInt);
     AppMethodBeat.o(136485);
   }
   
@@ -237,7 +227,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.v
  * JD-Core Version:    0.7.0.1
  */

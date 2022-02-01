@@ -7,8 +7,8 @@ import android.os.Build.VERSION;
 import android.support.v4.app.a;
 import android.support.v4.content.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class h
 {
@@ -31,11 +31,11 @@ public final class h
     }
     catch (Exception paramActivity)
     {
-      ac.e("Luggage.PermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
+      ad.e("Luggage.PermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
       AppMethodBeat.o(140519);
       return true;
     }
-    if (!bs.isNullOrNil(paramString3))
+    if (!bt.isNullOrNil(paramString3))
     {
       paramString1 = new h.1(paramActivity, paramString1, paramInt);
       String str1 = paramActivity.getString(2131761864);
@@ -52,7 +52,7 @@ public final class h
     }
   }
   
-  public static boolean o(Context paramContext, String paramString)
+  public static boolean n(Context paramContext, String paramString)
   {
     AppMethodBeat.i(140520);
     int i;
@@ -67,7 +67,7 @@ public final class h
     }
     catch (Exception paramContext)
     {
-      ac.e("Luggage.PermissionUtil", "check mpermission exception:%s.", new Object[] { paramContext });
+      ad.e("Luggage.PermissionUtil", "check mpermission exception:%s.", new Object[] { paramContext });
       AppMethodBeat.o(140520);
       return false;
     }
@@ -75,7 +75,7 @@ public final class h
     if (paramString.equals("android.permission.READ_CONTACTS"))
     {
       str = "android.permission.WRITE_CONTACTS";
-      if (bs.isNullOrNil(str)) {
+      if (bt.isNullOrNil(str)) {
         break label128;
       }
     }
@@ -93,7 +93,7 @@ public final class h
       }
       catch (Exception paramContext)
       {
-        ac.e("Luggage.PermissionUtil", "check mpermission otherPermisson exception:%s.", new Object[] { paramContext });
+        ad.e("Luggage.PermissionUtil", "check mpermission otherPermisson exception:%s.", new Object[] { paramContext });
         AppMethodBeat.o(140520);
         return false;
       }
@@ -110,7 +110,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.h.h
  * JD-Core Version:    0.7.0.1
  */

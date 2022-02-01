@@ -8,21 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
 import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.model.GameTabData.TabItem;
 import com.tencent.mm.plugin.game.model.aj;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 public final class a
   extends BaseAdapter
 {
   private Context mContext;
-  private GameTabData tvP;
-  private String tvQ;
+  private String uud;
+  private GameTabData uve;
   
   public a(Context paramContext)
   {
@@ -32,8 +32,8 @@ public final class a
   public final void a(GameTabData paramGameTabData, String paramString)
   {
     AppMethodBeat.i(42431);
-    this.tvP = paramGameTabData;
-    this.tvQ = paramString;
+    this.uve = paramGameTabData;
+    this.uud = paramString;
     notifyDataSetChanged();
     AppMethodBeat.o(42431);
   }
@@ -41,12 +41,12 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(42432);
-    if (this.tvP == null)
+    if (this.uve == null)
     {
       AppMethodBeat.o(42432);
       return 0;
     }
-    int i = this.tvP.acH().size();
+    int i = this.uve.afl().size();
     AppMethodBeat.o(42432);
     return i;
   }
@@ -61,23 +61,23 @@ public final class a
     AppMethodBeat.i(42433);
     paramView = LayoutInflater.from(this.mContext).inflate(2131494391, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    GameTabData.TabItem localTabItem = (GameTabData.TabItem)this.tvP.acH().get(paramInt);
+    GameTabData.TabItem localTabItem = (GameTabData.TabItem)this.uve.afl().get(paramInt);
     Object localObject;
     c.a locala;
     if (localTabItem != null)
     {
-      paramViewGroup.fUk.setText(localTabItem.title);
-      if (!bs.nullAsNil(this.tvQ).equalsIgnoreCase(localTabItem.tgk)) {
+      paramViewGroup.gnM.setText(localTabItem.title);
+      if (!bt.nullAsNil(this.uud).equalsIgnoreCase(localTabItem.uea)) {
         break label185;
       }
-      if (!bs.isNullOrNil(localTabItem.tgq))
+      if (!bt.isNullOrNil(localTabItem.ueg))
       {
-        localObject = aj.tgu + g.getMessageDigest(localTabItem.tgq.getBytes());
+        localObject = aj.uel + g.getMessageDigest(localTabItem.ueg.getBytes());
         locala = new c.a();
-        locala.hKx = true;
-        locala.gKe = ((String)localObject);
-        localObject = locala.aFT();
-        com.tencent.mm.av.a.a.aFG().a(localTabItem.tgq, paramViewGroup.ig, (c)localObject);
+        locala.idr = true;
+        locala.hdP = ((String)localObject);
+        localObject = locala.aJc();
+        com.tencent.mm.aw.a.a.aIP().a(localTabItem.ueg, paramViewGroup.ka, (c)localObject);
       }
     }
     for (;;)
@@ -86,35 +86,35 @@ public final class a
       AppMethodBeat.o(42433);
       return paramView;
       label185:
-      if (!bs.isNullOrNil(localTabItem.tgp))
+      if (!bt.isNullOrNil(localTabItem.uef))
       {
-        localObject = aj.tgu + g.getMessageDigest(localTabItem.tgp.getBytes());
+        localObject = aj.uel + g.getMessageDigest(localTabItem.uef.getBytes());
         locala = new c.a();
-        locala.hKx = true;
-        locala.gKe = ((String)localObject);
-        localObject = locala.aFT();
-        com.tencent.mm.av.a.a.aFG().a(localTabItem.tgp, paramViewGroup.ig, (c)localObject);
+        locala.idr = true;
+        locala.hdP = ((String)localObject);
+        localObject = locala.aJc();
+        com.tencent.mm.aw.a.a.aIP().a(localTabItem.uef, paramViewGroup.ka, (c)localObject);
       }
     }
   }
   
   public final class a
   {
-    TextView fUk;
-    ImageView ig;
+    TextView gnM;
+    ImageView ka;
     
     public a(View paramView)
     {
       AppMethodBeat.i(42430);
-      this.fUk = ((TextView)paramView.findViewById(2131297471));
-      this.ig = ((ImageView)paramView.findViewById(2131297469));
+      this.gnM = ((TextView)paramView.findViewById(2131297471));
+      this.ka = ((ImageView)paramView.findViewById(2131297469));
       AppMethodBeat.o(42430);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.tab.a
  * JD-Core Version:    0.7.0.1
  */

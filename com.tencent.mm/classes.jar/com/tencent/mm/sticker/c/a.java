@@ -1,35 +1,34 @@
 package com.tencent.mm.sticker.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c;
+import com.tencent.mm.al.b.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ayx;
-import com.tencent.mm.protocal.protobuf.ayy;
-import com.tencent.mm.protocal.protobuf.crm;
+import com.tencent.mm.protocal.protobuf.bdb;
+import com.tencent.mm.protocal.protobuf.bdc;
+import com.tencent.mm.protocal.protobuf.cwt;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/task/CgiGetLensInfo;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "lensId", "", "(Ljava/lang/String;)V", "getLensId", "()Ljava/lang/String;", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/task/CgiGetLensInfo;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "lensId", "", "(Ljava/lang/String;)V", "getLensId", "()Ljava/lang/String;", "plugin-sticker_release"})
 public final class a
-  extends c<ayy>
+  extends com.tencent.mm.al.a<bdc>
 {
-  private final String pmO;
+  private final String pQo;
   
   public a(String paramString)
   {
     AppMethodBeat.i(105981);
-    this.pmO = paramString;
-    paramString = new ayx();
-    ayy localayy = new ayy();
-    paramString.Ewy = this.pmO;
-    localayy.setBaseResponse(new BaseResponse());
-    localayy.BaseResponse.ErrMsg = new crm();
+    this.pQo = paramString;
+    paramString = new bdb();
+    bdc localbdc = new bdc();
+    paramString.Geb = this.pQo;
+    localbdc.setBaseResponse(new BaseResponse());
+    localbdc.BaseResponse.ErrMsg = new cwt();
     b.a locala = new b.a();
-    locala.c((com.tencent.mm.bw.a)paramString);
-    locala.d((com.tencent.mm.bw.a)localayy);
-    locala.Am("/cgi-bin/micromsg-bin/getlensinfo");
-    locala.op(3903);
-    c(locala.aAz());
+    locala.c((com.tencent.mm.bx.a)paramString);
+    locala.d((com.tencent.mm.bx.a)localbdc);
+    locala.Dl("/cgi-bin/micromsg-bin/getlensinfo");
+    locala.oP(3903);
+    c(locala.aDC());
     AppMethodBeat.o(105981);
   }
 }

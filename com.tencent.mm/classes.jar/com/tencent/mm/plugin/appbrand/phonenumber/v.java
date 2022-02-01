@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
@@ -10,43 +10,49 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.g.b.k;
-import d.y;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.permission.f;
+import com.tencent.mm.plugin.appbrand.r.a.c;
+import d.g.b.p;
+import d.l;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageDialog;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog;", "context", "Landroid/content/Context;", "appId", "", "(Landroid/content/Context;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "mItemAdapter", "Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "onAccept", "Lkotlin/Function0;", "", "getOnAccept", "()Lkotlin/jvm/functions/Function0;", "setOnAccept", "(Lkotlin/jvm/functions/Function0;)V", "onAddPhoneNumber", "getOnAddPhoneNumber", "setOnAddPhoneNumber", "onCancel", "getOnCancel", "setOnCancel", "onDeny", "getOnDeny", "setOnDeny", "onExplain", "getOnExplain", "setOnExplain", "onManagePhoneNumber", "getOnManagePhoneNumber", "setOnManagePhoneNumber", "onPhoneItemSelect", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getOnPhoneItemSelect", "()Lkotlin/jvm/functions/Function1;", "setOnPhoneItemSelect", "(Lkotlin/jvm/functions/Function1;)V", "value", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "phoneItems", "getPhoneItems", "()Ljava/util/ArrayList;", "setPhoneItems", "(Ljava/util/ArrayList;)V", "getDialogHeight", "", "onBackPressedEvent", "", "onDismiss", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberManageDialog;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog;", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/ui/IPhoneNumberManagerPresenterView;", "context", "Landroid/content/Context;", "appId", "", "(Landroid/content/Context;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "mItemAdapter", "Lcom/tencent/mm/plugin/appbrand/phonenumber/ItemAdapter;", "onAccept", "Lkotlin/Function0;", "", "getOnAccept", "()Lkotlin/jvm/functions/Function0;", "setOnAccept", "(Lkotlin/jvm/functions/Function0;)V", "onAddPhoneNumber", "getOnAddPhoneNumber", "setOnAddPhoneNumber", "onCancel", "getOnCancel", "setOnCancel", "onDeny", "getOnDeny", "setOnDeny", "onExplain", "getOnExplain", "setOnExplain", "onManagePhoneNumber", "getOnManagePhoneNumber", "setOnManagePhoneNumber", "onPhoneItemSelect", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getOnPhoneItemSelect", "()Lkotlin/jvm/functions/Function1;", "setOnPhoneItemSelect", "(Lkotlin/jvm/functions/Function1;)V", "value", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "phoneItems", "getPhoneItems", "()Ljava/util/ArrayList;", "setPhoneItems", "(Ljava/util/ArrayList;)V", "createSecondaryExplainPresenterView", "Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePrivacyExplainPresenterView;", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "content", "webviewOpener", "Lcom/tencent/mm/plugin/appbrand/jsapi/IExternalToolsHelper;", "dismiss", "getDialogHeight", "", "onBackPressedEvent", "", "onDismiss", "show", "showPrivacyExplainEntry", "luggage-wechat-full-sdk_release"})
 public final class v
   extends a
+  implements com.tencent.mm.plugin.appbrand.jsapi.autofill.b.a
 {
   final String appId;
-  ArrayList<PhoneItem> kgL;
-  d.g.a.a<y> kgM;
-  public d.g.a.a<y> kgO;
-  public d.g.a.a<y> kgQ;
-  public d.g.a.a<y> kgR;
-  public d.g.a.a<y> kgS;
-  private q lKG;
-  public d.g.a.a<y> lKH;
-  public b<? super PhoneItem, y> lKI;
+  d.g.a.a<z> kBA;
+  d.g.a.a<z> kBC;
+  d.g.a.a<z> kBE;
+  d.g.a.a<z> kBF;
+  d.g.a.a<z> kBG;
+  ArrayList<PhoneItem> kBz;
+  private q lPX;
+  d.g.a.a<z> lPY;
+  d.g.a.b<? super PhoneItem, z> lPZ;
   
   public v(Context paramContext, String paramString)
   {
     super(paramContext);
     AppMethodBeat.i(148135);
     this.appId = paramString;
-    this.kgL = new ArrayList();
-    this.kgM = ((d.g.a.a)a.lKK);
-    this.lKH = ((d.g.a.a)d.lKN);
-    this.kgO = ((d.g.a.a)c.lKM);
-    this.kgQ = ((d.g.a.a)e.lKO);
-    this.kgR = ((d.g.a.a)b.lKL);
-    this.kgS = ((d.g.a.a)f.lKP);
-    this.lJi = ((a.b)new a.b()
+    this.kBz = new ArrayList();
+    this.kBA = ((d.g.a.a)v.a.mkx);
+    this.lPY = ((d.g.a.a)v.d.mkA);
+    this.kBC = ((d.g.a.a)v.c.mkz);
+    this.kBE = ((d.g.a.a)v.e.mkB);
+    this.kBF = ((d.g.a.a)v.b.mky);
+    this.kBG = ((d.g.a.a)v.f.mkC);
+    this.lPZ = ((d.g.a.b)v.g.mkD);
+    this.miW = ((a.b)new a.b()
     {
-      public final void ut(int paramAnonymousInt)
+      public final void uX(int paramAnonymousInt)
       {
         AppMethodBeat.i(148123);
         switch (paramAnonymousInt)
@@ -56,13 +62,13 @@ public final class v
         {
           AppMethodBeat.o(148123);
           return;
-          this.lKJ.kgM.invoke();
-          Object localObject1 = v.a(this.lKJ);
+          this.mkw.kBA.invoke();
+          Object localObject1 = v.a(this.mkw);
           if (localObject1 != null) {}
-          for (localObject1 = ((q)localObject1).kgL;; localObject1 = null)
+          for (localObject1 = ((q)localObject1).kBz;; localObject1 = null)
           {
             if (localObject1 == null) {
-              k.fOy();
+              p.gfZ();
             }
             Object localObject2 = ((ArrayList)localObject1).iterator();
             do
@@ -71,72 +77,82 @@ public final class v
                 break;
               }
               localObject1 = (PhoneItem)((Iterator)localObject2).next();
-            } while (!((PhoneItem)localObject1).lKa);
-            localObject2 = this.lKJ.lKI;
-            if (localObject2 == null) {
-              break label143;
-            }
-            k.g(localObject1, "phoneItem");
-            ((b)localObject2).ay(localObject1);
+            } while (!((PhoneItem)localObject1).mjQ);
+            localObject2 = this.mkw.lPZ;
+            p.g(localObject1, "phoneItem");
+            ((d.g.a.b)localObject2).invoke(localObject1);
             AppMethodBeat.o(148123);
             return;
           }
-          label143:
+          this.mkw.lPY.invoke();
           AppMethodBeat.o(148123);
           return;
-          this.lKJ.lKH.invoke();
-          AppMethodBeat.o(148123);
-          return;
-          this.lKJ.kgO.invoke();
+          this.mkw.kBC.invoke();
         }
       }
     });
-    paramContext = paramContext.getResources();
-    if (paramContext != null) {}
-    for (paramContext = paramContext.getDrawable(2131230993);; paramContext = null)
-    {
-      this.lJj = paramContext;
-      this.lJd.setVisibility(8);
-      if (paramContext != null)
-      {
-        this.kgj.setImageDrawable(this.lJj);
-        this.lJd.setVisibility(0);
-      }
-      paramContext = (View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(148124);
-          this.lKJ.kgQ.invoke();
-          AppMethodBeat.o(148124);
-        }
-      };
-      this.lJd.setOnClickListener(paramContext);
-      this.lJg.setOnClickListener((View.OnClickListener)new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(148125);
-          switch (this.lKJ.kgL.size())
-          {
-          default: 
-            this.lKJ.kgS.invoke();
-            AppMethodBeat.o(148125);
-            return;
-          }
-          this.lKJ.kgR.invoke();
-          AppMethodBeat.o(148125);
-        }
-      });
-      this.lJf.setVisibility(0);
-      AppMethodBeat.o(148135);
-      return;
-    }
+    a((View.OnClickListener)new v.2(this));
+    this.lPW.setOnClickListener((View.OnClickListener)new v.3(this));
+    this.lPV.setVisibility(0);
+    AppMethodBeat.o(148135);
   }
   
-  public final boolean aLl()
+  public final f a(d paramd, String paramString, ac paramac)
+  {
+    AppMethodBeat.i(192406);
+    p.h(paramd, "component");
+    Context localContext = getContext();
+    p.g(localContext, "this.context");
+    paramString = new k(paramac, paramString, localContext, this.iCR.getMeasuredHeight());
+    paramd = paramd.getWindowAndroid();
+    p.g(paramd, "component.windowAndroid");
+    if (paramd.aWM()) {
+      paramString.setPosition(1);
+    }
+    paramd = (f)paramString;
+    AppMethodBeat.o(192406);
+    return paramd;
+  }
+  
+  public final boolean aOv()
   {
     return false;
+  }
+  
+  public final void gr(boolean paramBoolean)
+  {
+    AppMethodBeat.i(192404);
+    Object localObject = this.miU;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      ((ImageView)localObject).setVisibility(i);
+      if (!paramBoolean) {
+        break;
+      }
+      localObject = android.support.v4.content.b.l(getContext(), 2131230993);
+      this.miX = ((Drawable)localObject);
+      this.miU.setVisibility(8);
+      if (localObject != null)
+      {
+        this.miU.setImageDrawable(this.miX);
+        this.miU.setVisibility(0);
+      }
+      super.a((View.OnClickListener)new v.i(this));
+      AppMethodBeat.o(192404);
+      return;
+    }
+    super.a(null);
+    AppMethodBeat.o(192404);
+  }
+  
+  public final void h(d paramd)
+  {
+    AppMethodBeat.i(192405);
+    p.h(paramd, "component");
+    super.setPosition(this.iDw);
+    paramd.aVE().b((com.tencent.mm.plugin.appbrand.widget.dialog.k)this);
+    AppMethodBeat.o(192405);
   }
   
   public final void onDismiss()
@@ -146,191 +162,119 @@ public final class v
     AppMethodBeat.o(148134);
   }
   
-  public final void x(ArrayList<PhoneItem> paramArrayList)
+  public final void setOnAddPhoneNumber(d.g.a.a<z> parama)
+  {
+    AppMethodBeat.i(192401);
+    p.h(parama, "<set-?>");
+    this.kBF = parama;
+    AppMethodBeat.o(192401);
+  }
+  
+  public final void setOnCancel(d.g.a.a<z> parama)
+  {
+    AppMethodBeat.i(192399);
+    p.h(parama, "<set-?>");
+    this.kBC = parama;
+    AppMethodBeat.o(192399);
+  }
+  
+  public final void setOnDeny(d.g.a.a<z> parama)
+  {
+    AppMethodBeat.i(192398);
+    p.h(parama, "<set-?>");
+    this.lPY = parama;
+    AppMethodBeat.o(192398);
+  }
+  
+  public final void setOnExplain(d.g.a.a<z> parama)
+  {
+    AppMethodBeat.i(192400);
+    p.h(parama, "<set-?>");
+    this.kBE = parama;
+    AppMethodBeat.o(192400);
+  }
+  
+  public final void setOnManagePhoneNumber(d.g.a.a<z> parama)
+  {
+    AppMethodBeat.i(192402);
+    p.h(parama, "<set-?>");
+    this.kBG = parama;
+    AppMethodBeat.o(192402);
+  }
+  
+  public final void setOnPhoneItemSelect(d.g.a.b<? super PhoneItem, z> paramb)
+  {
+    AppMethodBeat.i(192403);
+    p.h(paramb, "<set-?>");
+    this.lPZ = paramb;
+    AppMethodBeat.o(192403);
+  }
+  
+  public final void setPhoneItems(ArrayList<PhoneItem> paramArrayList)
   {
     AppMethodBeat.i(148133);
-    k.h(paramArrayList, "value");
-    this.kgL.clear();
-    this.kgL.addAll((Collection)paramArrayList);
-    com.tencent.mm.plugin.appbrand.z.l.runOnUiThread((Runnable)new g(this));
+    p.h(paramArrayList, "value");
+    this.kBz.clear();
+    this.kBz.addAll((Collection)paramArrayList);
+    com.tencent.mm.plugin.appbrand.z.m.runOnUiThread((Runnable)new h(this));
     AppMethodBeat.o(148133);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class a
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    public static final a lKK;
-    
-    static
-    {
-      AppMethodBeat.i(148126);
-      lKK = new a();
-      AppMethodBeat.o(148126);
-    }
-    
-    a()
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class b
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    public static final b lKL;
-    
-    static
-    {
-      AppMethodBeat.i(148127);
-      lKL = new b();
-      AppMethodBeat.o(148127);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    public static final c lKM;
-    
-    static
-    {
-      AppMethodBeat.i(148128);
-      lKM = new c();
-      AppMethodBeat.o(148128);
-    }
-    
-    c()
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class d
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    public static final d lKN;
-    
-    static
-    {
-      AppMethodBeat.i(148129);
-      lKN = new d();
-      AppMethodBeat.o(148129);
-    }
-    
-    d()
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class e
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    public static final e lKO;
-    
-    static
-    {
-      AppMethodBeat.i(148130);
-      lKO = new e();
-      AppMethodBeat.o(148130);
-    }
-    
-    e()
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class f
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    public static final f lKP;
-    
-    static
-    {
-      AppMethodBeat.i(148131);
-      lKP = new f();
-      AppMethodBeat.o(148131);
-    }
-    
-    f()
-    {
-      super();
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
-  static final class g
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  static final class h
     implements Runnable
   {
-    g(v paramv) {}
+    h(v paramv) {}
     
     public final void run()
     {
       AppMethodBeat.i(148132);
-      Object localObject = this.lKJ;
-      String str = this.lKJ.appId;
-      Context localContext = this.lKJ.getContext();
-      k.g(localContext, "context");
-      v.a((v)localObject, new q(str, localContext, this.lKJ.kgL));
-      this.lKJ.alu.setAdapter((RecyclerView.a)v.a(this.lKJ));
-      if (this.lKJ.kgL.size() == 0)
+      Object localObject = this.mkw;
+      String str = this.mkw.appId;
+      Context localContext = this.mkw.getContext();
+      p.g(localContext, "context");
+      v.a((v)localObject, new q(str, localContext, this.mkw.kBz));
+      this.mkw.anl.setAdapter((RecyclerView.a)v.a(this.mkw));
+      if (this.mkw.kBz.size() == 0)
       {
-        this.lKJ.fzV.setVisibility(0);
-        this.lKJ.alu.setVisibility(8);
-        this.lKJ.lJg.setVisibility(8);
+        this.mkw.fTl.setVisibility(0);
+        this.mkw.anl.setVisibility(8);
+        this.mkw.lPW.setVisibility(8);
         AppMethodBeat.o(148132);
         return;
       }
-      if (this.lKJ.kgL.size() == 1)
+      if (this.mkw.kBz.size() == 1)
       {
-        this.lKJ.fzV.setVisibility(8);
-        this.lKJ.alu.setVisibility(0);
-        localObject = this.lKJ.alu.getAdapter();
+        this.mkw.fTl.setVisibility(8);
+        this.mkw.anl.setVisibility(0);
+        localObject = this.mkw.anl.getAdapter();
         if (localObject != null) {
           ((RecyclerView.a)localObject).notifyDataSetChanged();
         }
-        this.lKJ.lJg.setVisibility(0);
-        this.lKJ.lJg.setText((CharSequence)this.lKJ.getContext().getString(2131756029));
-        localObject = u.lKF;
-        u.bst();
+        this.mkw.lPW.setVisibility(0);
+        this.mkw.lPW.setText((CharSequence)this.mkw.getContext().getString(2131756029));
+        localObject = u.mkv;
+        u.bwy();
         AppMethodBeat.o(148132);
         return;
       }
-      this.lKJ.fzV.setVisibility(8);
-      this.lKJ.alu.setVisibility(0);
-      this.lKJ.lJg.setVisibility(0);
-      localObject = this.lKJ.alu.getAdapter();
+      this.mkw.fTl.setVisibility(8);
+      this.mkw.anl.setVisibility(0);
+      this.mkw.lPW.setVisibility(0);
+      localObject = this.mkw.anl.getAdapter();
       if (localObject != null) {
         ((RecyclerView.a)localObject).notifyDataSetChanged();
       }
-      this.lKJ.lJg.setText((CharSequence)this.lKJ.getContext().getString(2131756027));
-      localObject = u.lKF;
-      u.bst();
+      this.mkw.lPW.setText((CharSequence)this.mkw.getContext().getString(2131756027));
+      localObject = u.mkv;
+      u.bwy();
       AppMethodBeat.o(148132);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.v
  * JD-Core Version:    0.7.0.1
  */

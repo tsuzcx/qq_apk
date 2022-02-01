@@ -5,11 +5,11 @@ public class q
 {
   public void a(Transition paramTransition) {}
   
-  public void dn() {}
+  public void dC() {}
   
-  public void jdMethod_do() {}
+  public void dD() {}
   
-  public void ds() {}
+  public void dH() {}
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.cn;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
 {
@@ -14,13 +14,13 @@ public final class j
     AppMethodBeat.o(125332);
   }
   
-  public final void fBd()
+  public final void fSn()
   {
     AppMethodBeat.i(125333);
     synchronized (this.mLock)
     {
       if (this.mLock[0] != 0) {
-        ac.i("MicroMsg.WxTimeoutLock", "no need lock %s", new Object[] { this });
+        ad.i("MicroMsg.WxTimeoutLock", "no need lock %s", new Object[] { this });
       }
       for (;;)
       {
@@ -32,7 +32,7 @@ public final class j
         }
         catch (InterruptedException localInterruptedException)
         {
-          ac.printErrStackTrace("MicroMsg.WxTimeoutLock", localInterruptedException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WxTimeoutLock", localInterruptedException, "", new Object[0]);
         }
       }
     }

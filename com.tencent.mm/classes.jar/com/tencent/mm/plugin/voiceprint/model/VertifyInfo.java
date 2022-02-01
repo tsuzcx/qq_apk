@@ -4,22 +4,22 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class VertifyInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VertifyInfo> CREATOR;
-  public String AvR = "";
-  public int AvY = 0;
-  public int Awf;
-  public int Awg;
-  public int Awh = 0;
-  public boolean Awi = false;
-  public String iRo = "";
+  public int BVA;
+  public int BVB;
+  public int BVC = 0;
+  public boolean BVD = false;
+  public String BVm = "";
+  public int BVt = 0;
+  public String jkw = "";
   public String mFileName = "";
   public String mText = "";
-  public boolean qGc = false;
+  public boolean rpV = false;
   
   static
   {
@@ -37,18 +37,18 @@ public class VertifyInfo
   {
     int i = 1;
     AppMethodBeat.i(29790);
-    paramParcel.writeInt(this.Awf);
-    paramParcel.writeInt(this.Awg);
-    paramParcel.writeInt(this.Awh);
-    paramParcel.writeInt(this.AvY);
-    paramParcel.writeString(bs.bG(this.mText, ""));
-    paramParcel.writeString(bs.bG(this.AvR, ""));
-    paramParcel.writeString(bs.bG(this.mFileName, ""));
-    if (this.Awi)
+    paramParcel.writeInt(this.BVA);
+    paramParcel.writeInt(this.BVB);
+    paramParcel.writeInt(this.BVC);
+    paramParcel.writeInt(this.BVt);
+    paramParcel.writeString(bt.bI(this.mText, ""));
+    paramParcel.writeString(bt.bI(this.BVm, ""));
+    paramParcel.writeString(bt.bI(this.mFileName, ""));
+    if (this.BVD)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.qGc) {
+      if (!this.rpV) {
         break label119;
       }
     }
@@ -65,7 +65,7 @@ public class VertifyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.VertifyInfo
  * JD-Core Version:    0.7.0.1
  */

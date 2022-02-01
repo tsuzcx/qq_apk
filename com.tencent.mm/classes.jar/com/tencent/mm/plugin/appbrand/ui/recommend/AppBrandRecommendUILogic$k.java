@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
 final class AppBrandRecommendUILogic$k
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class AppBrandRecommendUILogic$k
   public final void run()
   {
     AppMethodBeat.i(51369);
-    this.jxd.invoke();
+    this.jQZ.invoke();
     AppMethodBeat.o(51369);
   }
 }

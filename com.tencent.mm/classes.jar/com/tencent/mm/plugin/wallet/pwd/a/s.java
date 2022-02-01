@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
+import com.tencent.mm.al.f;
 import com.tencent.mm.network.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,11 +21,11 @@ public final class s
     AppMethodBeat.o(69573);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(69575);
-    this.callback = paramg;
-    int i = super.doScene(parame, paramg);
+    this.callback = paramf;
+    int i = super.doScene(parame, paramf);
     AppMethodBeat.o(69575);
     return i;
   }
@@ -51,7 +51,7 @@ public final class s
     if (paramJSONObject != null) {}
     for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "null")
     {
-      ac.v("MicroMsg.NetSceneTouchLockVerifyByPwd", "alvinluo errCode: %d, errMsg: %s, json: %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+      ad.v("MicroMsg.NetSceneTouchLockVerifyByPwd", "alvinluo errCode: %d, errMsg: %s, json: %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
       AppMethodBeat.o(69574);
       return;
     }

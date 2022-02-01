@@ -2,22 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.cmp;
+import com.tencent.mm.protocal.protobuf.crr;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 
 public abstract class s
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO = "appId".hashCode();
-  private static final int eoP = "recommendCard".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eFY = "recommendCard".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  private boolean eoO = true;
+  private boolean eED = true;
+  private boolean eFX = true;
   public String field_appId;
-  public cmp field_recommendCard;
+  public crr field_recommendCard;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +32,11 @@ public abstract class s
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
+      if (eEU != k) {
         break label65;
       }
       this.field_appId = paramCursor.getString(i);
-      this.enx = true;
+      this.eED = true;
     }
     for (;;)
     {
@@ -44,18 +44,18 @@ public abstract class s
       break label20;
       break;
       label65:
-      if (eoP == k) {
+      if (eFY == k) {
         try
         {
           byte[] arrayOfByte = paramCursor.getBlob(i);
           if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_recommendCard = ((cmp)new cmp().parseFrom(arrayOfByte));
+          this.field_recommendCard = ((crr)new crr().parseFrom(arrayOfByte));
         }
         catch (IOException localIOException)
         {
-          ac.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
+          ad.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
         }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -66,10 +66,10 @@ public abstract class s
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
+    if (this.eED) {
       localContentValues.put("appId", this.field_appId);
     }
-    if ((this.eoO) && (this.field_recommendCard != null)) {}
+    if ((this.eFX) && (this.field_recommendCard != null)) {}
     try
     {
       localContentValues.put("recommendCard", this.field_recommendCard.toByteArray());
@@ -82,14 +82,14 @@ public abstract class s
     {
       for (;;)
       {
-        ac.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
+        ad.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.s
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,10 @@
                 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
                     <TextView android:id="@id/b3p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd" android:layout_marginRight="@dimen/bd" android:layout_marginBottom="@dimen/hk" android:includeFontPadding="false" style="@style/yn" />
                     <LinearLayout android:orientation="vertical" android:id="@id/dot" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd" android:layout_marginRight="@dimen/bd">
-                        <TextView android:typeface="monospace" android:ellipsize="end" android:gravity="center" android:id="@id/dos" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="msg_title" style="@style/yo" />
+                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                            <TextView android:ellipsize="end" android:gravity="center" android:id="@id/dos" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="msg_title" android:layout_weight="9.0" style="@style/yo" />
+                            <TextView android:ellipsize="end" android:gravity="center" android:id="@id/hb7" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="-" android:layout_weight="1.0" style="@style/yo" />
+                        </LinearLayout>
                         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
                             <ImageView android:id="@id/dov" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginTop="@dimen/d" android:layout_marginRight="@dimen/jn" android:scaleType="centerCrop" />
                             <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">

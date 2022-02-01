@@ -3,7 +3,7 @@ package com.tencent.d.f;
 public final class b
 {
   /* Error */
-  public static byte[] cH(byte[] paramArrayOfByte)
+  public static byte[] cO(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: ldc 11
@@ -37,7 +37,7 @@ public final class b
     //   53: aload 4
     //   55: invokestatic 48	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   58: invokevirtual 52	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: invokestatic 58	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   61: invokestatic 58	com/tencent/d/f/h:es	(Ljava/lang/Object;)V
     //   64: aload_0
     //   65: invokevirtual 61	java/io/ByteArrayInputStream:close	()V
     //   68: aload_2
@@ -137,7 +137,7 @@ public final class b
     //   54: aload_0
     //   55: invokestatic 48	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   58: invokevirtual 52	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: invokestatic 58	com/tencent/d/f/h:ep	(Ljava/lang/Object;)V
+    //   61: invokestatic 58	com/tencent/d/f/h:es	(Ljava/lang/Object;)V
     //   64: aload_1
     //   65: invokevirtual 63	java/io/ByteArrayOutputStream:close	()V
     //   68: aload_2

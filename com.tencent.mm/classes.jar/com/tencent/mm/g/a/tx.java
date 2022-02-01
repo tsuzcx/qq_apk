@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class tx
   extends b
 {
-  public a dwF;
+  public a dIp;
+  public b dIq;
   
   public tx()
   {
@@ -15,16 +16,27 @@ public final class tx
   
   private tx(byte paramByte)
   {
-    AppMethodBeat.i(125641);
-    this.dwF = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125631);
+    this.dIp = new a();
+    this.dIq = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125641);
+    AppMethodBeat.o(125631);
   }
   
   public static final class a
   {
-    public boolean dwG;
+    public boolean dIr;
+    public String dIs;
+    public boolean dIt = false;
+    public int type;
+    public String videoPath;
+  }
+  
+  public static final class b
+  {
+    public String dIs;
+    public String dIu;
   }
 }
 

@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.model.j;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class LuckyMoneyPrepareUI$10
-  implements n.d
+  implements n.e
 {
   LuckyMoneyPrepareUI$10(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
@@ -21,44 +21,44 @@ final class LuckyMoneyPrepareUI$10
     if (paramInt == 0)
     {
       Object localObject = new Intent();
-      ((Intent)localObject).setClass(this.uyl.getContext(), LuckyMoneyMyRecordUI.class);
+      ((Intent)localObject).setClass(this.vAO.getContext(), LuckyMoneyMyRecordUI.class);
       ((Intent)localObject).putExtra("key_type", 2);
-      paramMenuItem = this.uyl;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPrepareUI$18", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      paramMenuItem = this.vAO;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPrepareUI$18", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPrepareUI$18", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(65836);
       return;
     }
     if (paramInt == 1)
     {
-      h.wUl.f(15511, new Object[] { Integer.valueOf(LuckyMoneyPrepareUI.y(this.uyl)), Integer.valueOf(1) });
-      if (LuckyMoneyPrepareUI.y(this.uyl) == 1)
+      g.yhR.f(15511, new Object[] { Integer.valueOf(LuckyMoneyPrepareUI.y(this.vAO)), Integer.valueOf(1) });
+      if (LuckyMoneyPrepareUI.y(this.vAO) == 1)
       {
-        e.o(this.uyl.getContext(), "https://kf.qq.com/touch/scene_product.html?scene_id=kf7", false);
+        e.o(this.vAO.getContext(), "https://kf.qq.com/touch/scene_product.html?scene_id=kf7", false);
         AppMethodBeat.o(65836);
         return;
       }
-      if (LuckyMoneyPrepareUI.e(this.uyl) != null) {}
-      for (paramMenuItem = LuckyMoneyPrepareUI.e(this.uyl).ulr;; paramMenuItem = "")
+      if (LuckyMoneyPrepareUI.e(this.vAO) != null) {}
+      for (paramMenuItem = LuckyMoneyPrepareUI.e(this.vAO).vnX;; paramMenuItem = "")
       {
-        ac.i("MicroMsg.LuckyMoneyPrepareUI", "show qa foreign, config url: %s", new Object[] { paramMenuItem });
-        if ((LuckyMoneyPrepareUI.e(this.uyl) == null) || (bs.isNullOrNil(LuckyMoneyPrepareUI.e(this.uyl).ulr))) {
+        ad.i("MicroMsg.LuckyMoneyPrepareUI", "show qa foreign, config url: %s", new Object[] { paramMenuItem });
+        if ((LuckyMoneyPrepareUI.e(this.vAO) == null) || (bt.isNullOrNil(LuckyMoneyPrepareUI.e(this.vAO).vnX))) {
           break;
         }
-        e.o(this.uyl.getContext(), LuckyMoneyPrepareUI.e(this.uyl).ulr, false);
+        e.o(this.vAO.getContext(), LuckyMoneyPrepareUI.e(this.vAO).vnX, false);
         AppMethodBeat.o(65836);
         return;
       }
-      e.o(this.uyl.getContext(), "https://hkwallet.moneydata.hk/hybrid/www/weixin/hongbao_hk_v2/zh_hk/faq.shtml", false);
+      e.o(this.vAO.getContext(), "https://hkwallet.moneydata.hk/hybrid/www/weixin/hongbao_hk_v2/zh_hk/faq.shtml", false);
     }
     AppMethodBeat.o(65836);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.10
  * JD-Core Version:    0.7.0.1
  */

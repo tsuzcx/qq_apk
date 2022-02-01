@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.lang.ref.WeakReference;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/prompt/AutoDismissRunner;", "Ljava/lang/Runnable;", "toast", "Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;", "(Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;)V", "ref", "Ljava/lang/ref/WeakReference;", "run", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/prompt/AutoDismissRunner;", "Ljava/lang/Runnable;", "toast", "Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;", "(Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;)V", "ref", "Ljava/lang/ref/WeakReference;", "run", "", "plugin-appbrand-integration_release"})
 final class d
   implements Runnable
 {
-  private final WeakReference<c> lEz;
+  private final WeakReference<c> med;
   
   public d(c paramc)
   {
     AppMethodBeat.i(51452);
-    this.lEz = new WeakReference(paramc);
+    this.med = new WeakReference(paramc);
     AppMethodBeat.o(51452);
   }
   
   public final void run()
   {
     AppMethodBeat.i(51451);
-    c localc = (c)this.lEz.get();
+    c localc = (c)this.med.get();
     if (localc != null)
     {
       localc.dismiss();

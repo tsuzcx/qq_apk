@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.finder.video;
 
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -23,110 +24,109 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.b;
 import com.tencent.mm.plugin.finder.view.FinderMediaBanner;
 import com.tencent.mm.plugin.finder.view.FinderViewPager.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import d.f;
 import d.g;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
 import d.v;
-import d.y;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar;", "Landroid/widget/FrameLayout;", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "Landroid/view/GestureDetector$OnGestureListener;", "Landroid/view/GestureDetector$OnDoubleTapListener;", "Lcom/tencent/mm/plugin/finder/view/FinderViewPager$CheckScrollHorizontally;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isEnableGesture", "", "isSeekBarTrackingTouch", "isSeekMode", "()Z", "setSeekMode", "(Z)V", "originalProcessDrawableRect", "Landroid/graphics/Rect;", "progressAnimation", "Landroid/animation/ValueAnimator;", "seekBarCallback", "Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar$SeekBarCallback;", "seekBarTouchListener", "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1;", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "Lkotlin/Lazy;", "videoSeekBar", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "getVideoSeekBar", "()Landroid/widget/SeekBar;", "videoSeekBar$delegate", "canScrollHorizontally", "direction", "parent", "Landroid/view/ViewGroup;", "x", "", "y", "canScrollVertically", "cancelProgressAnim", "", "dismissProgressBar", "dismissProgressBarThumb", "getCurrentProgress", "isShownSeekBar", "onDoubleTap", "e", "Landroid/view/MotionEvent;", "onDoubleTapEvent", "onDown", "onFling", "e1", "e2", "velocityX", "velocityY", "onLayout", "changed", "left", "top", "right", "bottom", "onLongPress", "onProgressChanged", "seekBar", "progress", "fromUser", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapConfirmed", "onSingleTapUp", "onStartTrackingTouch", "onStopTrackingTouch", "setProgress", "target", "setSeekBarCallback", "showBigProgressBar", "isShowThumb", "showProgressBarThumb", "showSmallProgressBar", "updateProgress", "percent", "offsetSec", "allSec", "isWithAnim", "Companion", "SeekBarCallback", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar;", "Landroid/widget/FrameLayout;", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "Landroid/view/GestureDetector$OnGestureListener;", "Landroid/view/GestureDetector$OnDoubleTapListener;", "Lcom/tencent/mm/plugin/finder/view/FinderViewPager$CheckScrollHorizontally;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isEnableGesture", "", "isSeekBarTrackingTouch", "isSeekMode", "()Z", "setSeekMode", "(Z)V", "originalProcessDrawableRect", "Landroid/graphics/Rect;", "progressAnimation", "Landroid/animation/ValueAnimator;", "seekBarCallback", "Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar$SeekBarCallback;", "seekBarTouchListener", "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1;", "touchDetector", "Landroid/view/GestureDetector;", "getTouchDetector", "()Landroid/view/GestureDetector;", "touchDetector$delegate", "Lkotlin/Lazy;", "videoSeekBar", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "getVideoSeekBar", "()Landroid/widget/SeekBar;", "videoSeekBar$delegate", "canScrollHorizontally", "direction", "parent", "Landroid/view/ViewGroup;", "x", "", "y", "canScrollVertically", "cancelProgressAnim", "", "dismissProgressBar", "dismissProgressBarThumb", "getCurrentProgress", "isShownSeekBar", "onDoubleTap", "e", "Landroid/view/MotionEvent;", "onDoubleTapEvent", "onDown", "onFling", "e1", "e2", "velocityX", "velocityY", "onLayout", "changed", "left", "top", "right", "bottom", "onLongPress", "onProgressChanged", "seekBar", "progress", "fromUser", "onScroll", "distanceX", "distanceY", "onShowPress", "onSingleTapConfirmed", "onSingleTapUp", "onStartTrackingTouch", "onStopTrackingTouch", "setProgress", "target", "setSeekBarCallback", "showBigProgressBar", "isShowThumb", "showProgressBarThumb", "showSmallProgressBar", "updateProgress", "percent", "offsetSec", "allSec", "isWithAnim", "Companion", "SeekBarCallback", "plugin-finder_release"})
 public final class FinderVideoSeekBar
   extends FrameLayout
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, SeekBar.OnSeekBarChangeListener, FinderViewPager.a
 {
-  private static final int rTi;
-  public static final FinderVideoSeekBar.b rTj;
-  boolean rSQ;
-  private c rTa;
-  private final Rect rTb;
-  private final f rTc;
-  private final boolean rTd;
-  private boolean rTe;
-  private final f rTf;
-  private final d rTg;
-  ValueAnimator rTh;
+  private static final int sPS;
+  public static final b sPT;
+  boolean sPA;
+  private c sPK;
+  private final Rect sPL;
+  private final f sPM;
+  private final boolean sPN;
+  private boolean sPO;
+  private final f sPP;
+  private final d sPQ;
+  ValueAnimator sPR;
   
   static
   {
-    AppMethodBeat.i(203883);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(FinderVideoSeekBar.class), "videoSeekBar", "getVideoSeekBar()Landroid/widget/SeekBar;")), (d.l.k)w.a(new u(w.bn(FinderVideoSeekBar.class), "touchDetector", "getTouchDetector()Landroid/view/GestureDetector;")) };
-    rTj = new FinderVideoSeekBar.b((byte)0);
-    rTi = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 4);
-    AppMethodBeat.o(203883);
+    AppMethodBeat.i(204856);
+    sPT = new b((byte)0);
+    sPS = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 4);
+    AppMethodBeat.o(204856);
   }
   
   public FinderVideoSeekBar(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(203902);
-    this.rTb = new Rect();
-    this.rTc = g.K((d.g.a.a)new h(this));
-    paramContext = b.rCU;
-    this.rTd = b.czU();
-    this.rTf = g.K((d.g.a.a)new g(this));
-    this.rTg = new d(this);
+    AppMethodBeat.i(204853);
+    this.sPL = new Rect();
+    this.sPM = g.O((d.g.a.a)new h(this));
+    paramContext = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.sPN = com.tencent.mm.plugin.finder.storage.b.cGw();
+    this.sPP = g.O((d.g.a.a)new g(this));
+    this.sPQ = new d(this);
     setId(2131307914);
-    if (this.rTd) {
-      setOnTouchListener((View.OnTouchListener)this.rTg);
+    if (this.sPN) {
+      setOnTouchListener((View.OnTouchListener)this.sPQ);
     }
     LayoutInflater.from(getContext()).inflate(2131496269, (ViewGroup)this);
     paramContext = getVideoSeekBar();
-    d.g.b.k.g(paramContext, "videoSeekBar");
+    p.g(paramContext, "videoSeekBar");
     paramContext.setVisibility(4);
-    AppMethodBeat.o(203902);
+    AppMethodBeat.o(204853);
   }
   
   public FinderVideoSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(203903);
-    this.rTb = new Rect();
-    this.rTc = g.K((d.g.a.a)new h(this));
-    paramContext = b.rCU;
-    this.rTd = b.czU();
-    this.rTf = g.K((d.g.a.a)new g(this));
-    this.rTg = new d(this);
+    AppMethodBeat.i(204854);
+    this.sPL = new Rect();
+    this.sPM = g.O((d.g.a.a)new h(this));
+    paramContext = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.sPN = com.tencent.mm.plugin.finder.storage.b.cGw();
+    this.sPP = g.O((d.g.a.a)new g(this));
+    this.sPQ = new d(this);
     setId(2131307914);
-    if (this.rTd) {
-      setOnTouchListener((View.OnTouchListener)this.rTg);
+    if (this.sPN) {
+      setOnTouchListener((View.OnTouchListener)this.sPQ);
     }
     LayoutInflater.from(getContext()).inflate(2131496269, (ViewGroup)this);
     paramContext = getVideoSeekBar();
-    d.g.b.k.g(paramContext, "videoSeekBar");
+    p.g(paramContext, "videoSeekBar");
     paramContext.setVisibility(4);
-    AppMethodBeat.o(203903);
+    AppMethodBeat.o(204854);
   }
   
   public FinderVideoSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(203904);
-    this.rTb = new Rect();
-    this.rTc = g.K((d.g.a.a)new h(this));
-    paramContext = b.rCU;
-    this.rTd = b.czU();
-    this.rTf = g.K((d.g.a.a)new g(this));
-    this.rTg = new d(this);
+    AppMethodBeat.i(204855);
+    this.sPL = new Rect();
+    this.sPM = g.O((d.g.a.a)new h(this));
+    paramContext = com.tencent.mm.plugin.finder.storage.b.sxa;
+    this.sPN = com.tencent.mm.plugin.finder.storage.b.cGw();
+    this.sPP = g.O((d.g.a.a)new g(this));
+    this.sPQ = new d(this);
     setId(2131307914);
-    if (this.rTd) {
-      setOnTouchListener((View.OnTouchListener)this.rTg);
+    if (this.sPN) {
+      setOnTouchListener((View.OnTouchListener)this.sPQ);
     }
     LayoutInflater.from(getContext()).inflate(2131496269, (ViewGroup)this);
     paramContext = getVideoSeekBar();
-    d.g.b.k.g(paramContext, "videoSeekBar");
+    p.g(paramContext, "videoSeekBar");
     paramContext.setVisibility(4);
-    AppMethodBeat.o(203904);
+    AppMethodBeat.o(204855);
   }
   
-  private final void cEl()
+  private final void cMF()
   {
-    AppMethodBeat.i(203890);
+    AppMethodBeat.i(204838);
     Object localObject = getVideoSeekBar();
     if (localObject != null)
     {
@@ -134,16 +134,16 @@ public final class FinderVideoSeekBar
       if (localObject != null)
       {
         ((Drawable)localObject).setAlpha(255);
-        AppMethodBeat.o(203890);
+        AppMethodBeat.o(204838);
         return;
       }
     }
-    AppMethodBeat.o(203890);
+    AppMethodBeat.o(204838);
   }
   
-  private final void cEm()
+  private final void cMG()
   {
-    AppMethodBeat.i(203891);
+    AppMethodBeat.i(204839);
     Object localObject = getVideoSeekBar();
     if (localObject != null)
     {
@@ -151,143 +151,149 @@ public final class FinderVideoSeekBar
       if (localObject != null)
       {
         ((Drawable)localObject).setAlpha(0);
-        AppMethodBeat.o(203891);
+        AppMethodBeat.o(204839);
         return;
       }
     }
-    AppMethodBeat.o(203891);
+    AppMethodBeat.o(204839);
   }
   
   private final GestureDetector getTouchDetector()
   {
-    AppMethodBeat.i(203885);
-    GestureDetector localGestureDetector = (GestureDetector)this.rTf.getValue();
-    AppMethodBeat.o(203885);
+    AppMethodBeat.i(204833);
+    GestureDetector localGestureDetector = (GestureDetector)this.sPP.getValue();
+    AppMethodBeat.o(204833);
     return localGestureDetector;
   }
   
   public final boolean a(int paramInt, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(203899);
-    d.g.b.k.h(paramViewGroup, "parent");
-    AppMethodBeat.o(203899);
+    AppMethodBeat.i(204849);
+    p.h(paramViewGroup, "parent");
+    AppMethodBeat.o(204849);
     return true;
   }
   
-  public final void cEn()
+  public final void cMH()
   {
-    AppMethodBeat.i(203894);
+    AppMethodBeat.i(204842);
     SeekBar localSeekBar1 = getVideoSeekBar();
     if (localSeekBar1 != null)
     {
       SeekBar localSeekBar2 = getVideoSeekBar();
-      d.g.b.k.g(localSeekBar2, "videoSeekBar");
+      p.g(localSeekBar2, "videoSeekBar");
       localSeekBar2.setTag(null);
       if (localSeekBar1.getVisibility() == 4)
       {
-        AppMethodBeat.o(203894);
+        AppMethodBeat.o(204842);
         return;
       }
       localSeekBar1.setVisibility(4);
-      AppMethodBeat.o(203894);
+      AppMethodBeat.o(204842);
       return;
     }
-    AppMethodBeat.o(203894);
+    AppMethodBeat.o(204842);
   }
   
-  public final void cEo()
+  public final void cMI()
   {
-    AppMethodBeat.i(203895);
-    ValueAnimator localValueAnimator = this.rTh;
+    AppMethodBeat.i(204843);
+    ValueAnimator localValueAnimator = this.sPR;
     if (localValueAnimator != null)
     {
       localValueAnimator.cancel();
-      AppMethodBeat.o(203895);
+      AppMethodBeat.o(204843);
       return;
     }
-    AppMethodBeat.o(203895);
+    AppMethodBeat.o(204843);
   }
   
-  public final boolean cEp()
+  public final boolean cMJ()
   {
-    AppMethodBeat.i(203898);
+    AppMethodBeat.i(204846);
     SeekBar localSeekBar = getVideoSeekBar();
     if ((localSeekBar != null) && (localSeekBar.getVisibility() == 0))
     {
-      AppMethodBeat.o(203898);
+      AppMethodBeat.o(204846);
       return true;
     }
-    AppMethodBeat.o(203898);
+    AppMethodBeat.o(204846);
     return false;
   }
   
   public final boolean canScrollVertically(int paramInt)
   {
-    AppMethodBeat.i(203900);
-    if ((this.rTe) || (super.canScrollVertically(paramInt)))
+    AppMethodBeat.i(204850);
+    if ((this.sPO) || (super.canScrollVertically(paramInt)))
     {
-      AppMethodBeat.o(203900);
+      AppMethodBeat.o(204850);
       return true;
     }
-    AppMethodBeat.o(203900);
+    AppMethodBeat.o(204850);
     return false;
   }
   
   public final int getCurrentProgress()
   {
-    AppMethodBeat.i(203897);
+    AppMethodBeat.i(204845);
     SeekBar localSeekBar = getVideoSeekBar();
     if (localSeekBar != null)
     {
       int i = localSeekBar.getProgress();
-      AppMethodBeat.o(203897);
+      AppMethodBeat.o(204845);
       return i;
     }
-    AppMethodBeat.o(203897);
+    AppMethodBeat.o(204845);
     return 0;
   }
   
   final SeekBar getVideoSeekBar()
   {
-    AppMethodBeat.i(203884);
-    SeekBar localSeekBar = (SeekBar)this.rTc.getValue();
-    AppMethodBeat.o(203884);
+    AppMethodBeat.i(204832);
+    SeekBar localSeekBar = (SeekBar)this.sPM.getValue();
+    AppMethodBeat.o(204832);
     return localSeekBar;
   }
   
-  public final void lS(boolean paramBoolean)
+  public final void mk(boolean paramBoolean)
   {
-    AppMethodBeat.i(203893);
+    AppMethodBeat.i(204841);
     if (paramBoolean) {
-      cEl();
+      cMF();
     }
     for (;;)
     {
       localObject = getVideoSeekBar();
-      d.g.b.k.g(localObject, "videoSeekBar");
-      if (!d.g.b.k.g(((SeekBar)localObject).getTag(), Boolean.FALSE)) {
+      p.g(localObject, "videoSeekBar");
+      if (!p.i(((SeekBar)localObject).getTag(), Boolean.FALSE)) {
         break;
       }
-      AppMethodBeat.o(203893);
+      AppMethodBeat.o(204841);
       return;
-      cEm();
+      cMG();
     }
     Object localObject = getVideoSeekBar();
-    d.g.b.k.g(localObject, "videoSeekBar");
+    p.g(localObject, "videoSeekBar");
     ((SeekBar)localObject).setVisibility(0);
     localObject = (d.g.a.a)new f(this);
-    if (this.rTb.isEmpty())
+    if (this.sPL.isEmpty())
     {
       addOnLayoutChangeListener((View.OnLayoutChangeListener)new e(this, (d.g.a.a)localObject));
-      AppMethodBeat.o(203893);
+      AppMethodBeat.o(204841);
       return;
     }
     ((d.g.a.a)localObject).invoke();
-    AppMethodBeat.o(203893);
+    AppMethodBeat.o(204841);
   }
   
   public final boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(204851);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/FinderVideoSeekBar", "android/view/GestureDetector$OnDoubleTapListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar", "android/view/GestureDetector$OnDoubleTapListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
+    AppMethodBeat.o(204851);
     return false;
   }
   
@@ -308,28 +314,29 @@ public final class FinderVideoSeekBar
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(203892);
+    AppMethodBeat.i(204840);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     Object localObject1;
     Object localObject2;
-    if (this.rTb.isEmpty())
+    if (this.sPL.isEmpty())
     {
-      localObject1 = this.rTb;
+      localObject1 = this.sPL;
       localObject2 = getVideoSeekBar();
-      d.g.b.k.g(localObject2, "videoSeekBar");
+      p.g(localObject2, "videoSeekBar");
       localObject2 = ((SeekBar)localObject2).getProgressDrawable();
-      d.g.b.k.g(localObject2, "videoSeekBar.progressDrawable");
+      p.g(localObject2, "videoSeekBar.progressDrawable");
       ((Rect)localObject1).set(((Drawable)localObject2).getBounds());
     }
+    SeekBar localSeekBar;
     if (paramBoolean)
     {
       localObject1 = getVideoSeekBar();
-      d.g.b.k.g(localObject1, "videoSeekBar");
+      p.g(localObject1, "videoSeekBar");
       localObject1 = ((SeekBar)localObject1).getLayoutParams();
       if (localObject1 == null)
       {
         localObject1 = new v("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(203892);
+        AppMethodBeat.o(204840);
         throw ((Throwable)localObject1);
       }
       localObject1 = (FrameLayout.LayoutParams)localObject1;
@@ -337,35 +344,50 @@ public final class FinderVideoSeekBar
       if (localObject2 == null)
       {
         localObject1 = new v("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(203892);
+        AppMethodBeat.o(204840);
         throw ((Throwable)localObject1);
       }
       localObject2 = ((ViewGroup)localObject2).findViewById(2131306865);
-      paramInt2 = -rTi;
-      if (localObject2 == null) {
-        break label254;
+      p.g(localObject2, "warnView");
+      if (((View)localObject2).getVisibility() != 0) {
+        break label278;
       }
+      ((FrameLayout.LayoutParams)localObject1).bottomMargin = (-sPS + ((View)localObject2).getHeight());
+      localSeekBar = getVideoSeekBar();
+      p.g(localSeekBar, "videoSeekBar");
+      localSeekBar.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
-    label254:
-    for (paramInt1 = ((View)localObject2).getHeight();; paramInt1 = 0)
+    for (;;)
     {
-      ((FrameLayout.LayoutParams)localObject1).bottomMargin = (paramInt1 + paramInt2);
-      localObject2 = getVideoSeekBar();
-      d.g.b.k.g(localObject2, "videoSeekBar");
-      ((SeekBar)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      ac.i("Finder.VideoSeekBar", "bottomMargin=" + ((FrameLayout.LayoutParams)localObject1).bottomMargin);
-      AppMethodBeat.o(203892);
+      ad.i("Finder.VideoSeekBar", "bottomMargin=" + ((FrameLayout.LayoutParams)localObject1).bottomMargin + ", warnView visibility=" + ((View)localObject2).getVisibility());
+      AppMethodBeat.o(204840);
       return;
+      label278:
+      if (((FrameLayout.LayoutParams)localObject1).bottomMargin != -sPS)
+      {
+        ((FrameLayout.LayoutParams)localObject1).bottomMargin = (-sPS);
+        localSeekBar = getVideoSeekBar();
+        p.g(localSeekBar, "videoSeekBar");
+        localSeekBar.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      }
     }
   }
   
-  public final void onLongPress(MotionEvent paramMotionEvent) {}
+  public final void onLongPress(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(204848);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/FinderVideoSeekBar", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+    AppMethodBeat.o(204848);
+  }
   
   public final void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(203888);
-    d.g.b.k.h(paramSeekBar, "seekBar");
-    AppMethodBeat.o(203888);
+    AppMethodBeat.i(204836);
+    p.h(paramSeekBar, "seekBar");
+    AppMethodBeat.o(204836);
   }
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -378,32 +400,39 @@ public final class FinderVideoSeekBar
   public final boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(203901);
-    boolean bool1;
-    if (!this.rSQ)
+    AppMethodBeat.i(204852);
+    paramMotionEvent = this.sPK;
+    if ((paramMotionEvent == null) || (paramMotionEvent.cMA() != true))
     {
-      lS(true);
-      paramMotionEvent = this.rTa;
+      ad.w("Finder.VideoSeekBar", "[onSingleTapConfirmed] is Disable Seek");
+      AppMethodBeat.o(204852);
+      return false;
+    }
+    boolean bool1;
+    if (!this.sPA)
+    {
+      mk(true);
+      paramMotionEvent = this.sPK;
       if (paramMotionEvent != null) {
-        paramMotionEvent.lR(true);
+        paramMotionEvent.mj(true);
       }
       bool1 = true;
     }
     for (;;)
     {
-      this.rSQ = bool1;
-      paramMotionEvent = new StringBuilder("[onClick]...isShownSeekBar=").append(cEp()).append(" isSeekMode=").append(this.rSQ).append(" thumb=");
+      this.sPA = bool1;
+      paramMotionEvent = new StringBuilder("[onClick]...isShownSeekBar=").append(cMJ()).append(" isSeekMode=").append(this.sPA).append(" thumb=");
       SeekBar localSeekBar = getVideoSeekBar();
-      d.g.b.k.g(localSeekBar, "videoSeekBar");
-      ac.i("Finder.VideoSeekBar", localSeekBar.getAlpha());
-      AppMethodBeat.o(203901);
+      p.g(localSeekBar, "videoSeekBar");
+      ad.i("Finder.VideoSeekBar", localSeekBar.getAlpha());
+      AppMethodBeat.o(204852);
       return true;
-      lS(false);
-      paramMotionEvent = this.rTa;
+      mk(false);
+      paramMotionEvent = this.sPK;
       bool1 = bool2;
       if (paramMotionEvent != null)
       {
-        paramMotionEvent.lR(false);
+        paramMotionEvent.mj(false);
         bool1 = bool2;
       }
     }
@@ -411,16 +440,29 @@ public final class FinderVideoSeekBar
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(204847);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/FinderVideoSeekBar", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
+    AppMethodBeat.o(204847);
     return false;
   }
   
   public final void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    AppMethodBeat.i(203887);
-    d.g.b.k.h(paramSeekBar, "seekBar");
+    AppMethodBeat.i(204835);
+    p.h(paramSeekBar, "seekBar");
+    Object localObject1 = this.sPK;
+    if ((localObject1 == null) || (((c)localObject1).cMA() != true))
+    {
+      ad.w("Finder.VideoSeekBar", "[onStartTrackingTouch] is Disable Seek");
+      AppMethodBeat.o(204835);
+      return;
+    }
     paramSeekBar.animate().cancel();
-    this.rTe = true;
-    Object localObject1 = getVideoSeekBar();
+    this.sPO = true;
+    localObject1 = getVideoSeekBar();
     if (localObject1 != null) {
       ((SeekBar)localObject1).setVisibility(0);
     }
@@ -433,43 +475,50 @@ public final class FinderVideoSeekBar
     if (localObject1 != null) {
       ((FinderMediaBanner)localObject1).setFrozenRecyclerView(true);
     }
-    cEl();
+    cMF();
     localObject1 = getVideoSeekBar();
-    d.g.b.k.g(localObject1, "videoSeekBar");
-    if (!d.g.b.k.g(((SeekBar)localObject1).getTag(), Boolean.TRUE))
+    p.g(localObject1, "videoSeekBar");
+    if (!p.i(((SeekBar)localObject1).getTag(), Boolean.TRUE))
     {
       localObject1 = getVideoSeekBar();
-      d.g.b.k.g(localObject1, "videoSeekBar");
+      p.g(localObject1, "videoSeekBar");
       ((SeekBar)localObject1).setVisibility(0);
       localObject1 = getVideoSeekBar();
-      d.g.b.k.g(localObject1, "videoSeekBar");
+      p.g(localObject1, "videoSeekBar");
       localObject1 = ((SeekBar)localObject1).getProgressDrawable();
-      localObject2 = this.rTb;
-      d.g.b.k.g(localObject1, "progressDrawable");
+      localObject2 = this.sPL;
+      p.g(localObject1, "progressDrawable");
       ((Drawable)localObject1).setBounds(new Rect((Rect)localObject2));
       getVideoSeekBar().invalidate();
       localObject1 = getVideoSeekBar();
-      d.g.b.k.g(localObject1, "videoSeekBar");
+      p.g(localObject1, "videoSeekBar");
       ((SeekBar)localObject1).setTag(Boolean.TRUE);
     }
-    localObject1 = this.rTa;
+    localObject1 = this.sPK;
     if (localObject1 != null)
     {
       paramSeekBar.setProgress((int)(1.0F * ((c)localObject1).getCurrentPosSec() / ((c)localObject1).getVideoDurationSec() * paramSeekBar.getMax()));
-      ((c)localObject1).cEe();
-      AppMethodBeat.o(203887);
+      ((c)localObject1).cMz();
+      AppMethodBeat.o(204835);
       return;
     }
-    AppMethodBeat.o(203887);
+    AppMethodBeat.o(204835);
   }
   
   public final void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    AppMethodBeat.i(203889);
-    d.g.b.k.h(paramSeekBar, "seekBar");
+    AppMethodBeat.i(204837);
+    p.h(paramSeekBar, "seekBar");
+    Object localObject1 = this.sPK;
+    if ((localObject1 == null) || (((c)localObject1).cMA() != true))
+    {
+      ad.w("Finder.VideoSeekBar", "[onStopTrackingTouch] is Disable Seek");
+      AppMethodBeat.o(204837);
+      return;
+    }
     float f = 1.0F * paramSeekBar.getProgress() / paramSeekBar.getMax();
-    ac.i("Finder.VideoSeekBar", "[onStopTrackingTouch] percent=".concat(String.valueOf(f)));
-    for (Object localObject1 = getParent(); (localObject1 != null) && (!(localObject1 instanceof FinderMediaBanner)); localObject1 = ((ViewParent)localObject1).getParent()) {}
+    ad.i("Finder.VideoSeekBar", "[onStopTrackingTouch] percent=".concat(String.valueOf(f)));
+    for (localObject1 = getParent(); (localObject1 != null) && (!(localObject1 instanceof FinderMediaBanner)); localObject1 = ((ViewParent)localObject1).getParent()) {}
     Object localObject2 = localObject1;
     if (!(localObject1 instanceof FinderMediaBanner)) {
       localObject2 = null;
@@ -478,174 +527,233 @@ public final class FinderVideoSeekBar
     if (localObject1 != null) {
       ((FinderMediaBanner)localObject1).setFrozenRecyclerView(false);
     }
-    lS(this.rSQ);
+    mk(this.sPA);
     setProgress(paramSeekBar.getProgress());
-    paramSeekBar = this.rTa;
+    paramSeekBar = this.sPK;
     if (paramSeekBar != null) {
-      paramSeekBar.ba(f);
+      paramSeekBar.bd(f);
     }
-    this.rTe = false;
-    AppMethodBeat.o(203889);
+    this.sPO = false;
+    AppMethodBeat.o(204837);
   }
   
   public final void setProgress(int paramInt)
   {
-    AppMethodBeat.i(203896);
+    AppMethodBeat.i(204844);
     SeekBar localSeekBar = getVideoSeekBar();
     if (localSeekBar != null)
     {
       localSeekBar.setProgress(paramInt);
-      AppMethodBeat.o(203896);
+      AppMethodBeat.o(204844);
       return;
     }
-    AppMethodBeat.o(203896);
+    AppMethodBeat.o(204844);
   }
   
   public final void setSeekBarCallback(c paramc)
   {
-    AppMethodBeat.i(203886);
-    d.g.b.k.h(paramc, "seekBarCallback");
-    this.rTa = paramc;
-    AppMethodBeat.o(203886);
+    AppMethodBeat.i(204834);
+    p.h(paramc, "seekBarCallback");
+    this.sPK = paramc;
+    AppMethodBeat.o(204834);
   }
   
   public final void setSeekMode(boolean paramBoolean)
   {
-    this.rSQ = paramBoolean;
+    this.sPA = paramBoolean;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar$SeekBarCallback;", "", "getCurrentPosSec", "", "getVideoDurationSec", "onEnterSeekMode", "", "isEnter", "", "onStartSeek", "onStopSeek", "percent", "", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$updateProgress$1$1$1"})
+  static final class a
+    implements ValueAnimator.AnimatorUpdateListener
+  {
+    a(SeekBar paramSeekBar) {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    {
+      AppMethodBeat.i(204825);
+      p.g(paramValueAnimator, "it");
+      paramValueAnimator = paramValueAnimator.getAnimatedValue();
+      if (paramValueAnimator == null)
+      {
+        paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
+        AppMethodBeat.o(204825);
+        throw paramValueAnimator;
+      }
+      int i = ((Integer)paramValueAnimator).intValue();
+      this.sPU.setProgress(i);
+      AppMethodBeat.o(204825);
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar$Companion;", "", "()V", "ICON_DISMISS_DURATION", "", "LIMIT_DURATION", "", "TAG", "", "_4dp", "get_4dp", "()I", "plugin-finder_release"})
+  public static final class b {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/video/FinderVideoSeekBar$SeekBarCallback;", "", "getCurrentPosSec", "", "getVideoDurationSec", "isEnableSeek", "", "onEnterSeekMode", "", "isEnter", "onNeedIgnoreTouchEvent", "event", "Landroid/view/MotionEvent;", "onStartSeek", "onStopSeek", "percent", "", "plugin-finder_release"})
   public static abstract interface c
   {
-    public abstract void ba(float paramFloat);
+    public abstract boolean T(MotionEvent paramMotionEvent);
     
-    public abstract void cEe();
+    public abstract void bd(float paramFloat);
+    
+    public abstract boolean cMA();
+    
+    public abstract void cMz();
     
     public abstract int getCurrentPosSec();
     
     public abstract int getVideoDurationSec();
     
-    public abstract void lR(boolean paramBoolean);
+    public abstract void mj(boolean paramBoolean);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "Landroid/view/View$OnTouchListener;", "downX", "", "getDownX", "()I", "setDownX", "(I)V", "downY", "getDownY", "setDownY", "isHasSeek", "", "()Z", "setHasSeek", "(Z)V", "isNeedToSeek", "setNeedToSeek", "lastX", "getLastX", "setLastX", "padding", "getPadding", "rect", "Landroid/graphics/Rect;", "getRect", "()Landroid/graphics/Rect;", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "Landroid/view/View$OnTouchListener;", "downX", "", "getDownX", "()I", "setDownX", "(I)V", "downY", "getDownY", "setDownY", "isHasSeek", "", "()Z", "setHasSeek", "(Z)V", "isNeedToSeek", "setNeedToSeek", "lastX", "getLastX", "setLastX", "padding", "getPadding", "rect", "Landroid/graphics/Rect;", "getRect", "()Landroid/graphics/Rect;", "onTouch", "v", "Landroid/view/View;", "event", "Landroid/view/MotionEvent;", "plugin-finder_release"})
   public static final class d
     implements View.OnTouchListener
   {
     private final int padding;
-    private boolean rTl;
-    private int rTm;
-    private int rTn;
-    private int rTo;
-    private int rTp;
     private final Rect rect;
+    private boolean sPV;
+    private int sPW;
+    private int sPX;
+    private int sPY;
+    private int sPZ;
     
     d()
     {
-      AppMethodBeat.i(203878);
+      AppMethodBeat.i(204827);
       this.rect = new Rect();
       Context localContext = localContext.getContext();
-      d.g.b.k.g(localContext, "context");
+      p.g(localContext, "context");
       this.padding = ((int)localContext.getResources().getDimension(2131165296));
-      AppMethodBeat.o(203878);
+      AppMethodBeat.o(204827);
     }
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(203877);
-      d.g.b.k.h(paramView, "v");
-      d.g.b.k.h(paramMotionEvent, "event");
-      FinderVideoSeekBar.d(this.rTq).onTouchEvent(paramMotionEvent);
+      AppMethodBeat.i(204826);
+      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      p.h(paramView, "v");
+      p.h(paramMotionEvent, "event");
+      localObject = FinderVideoSeekBar.d(this.sQa);
+      com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
       paramView.getFocusedRect(this.rect);
       paramView = this.rect;
       paramView.left += this.padding;
-      if ((paramMotionEvent.getAction() == 0) && ((this.rTq.rSQ) || (this.rect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))))
+      if ((paramMotionEvent.getAction() == 0) && ((this.sQa.sPA) || (this.rect.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))))
       {
-        this.rTm = ((int)paramMotionEvent.getX());
-        this.rTo = ((int)paramMotionEvent.getY());
-        this.rTn = this.rTm;
-        this.rTp = 0;
-        AppMethodBeat.o(203877);
-        return true;
+        if (FinderVideoSeekBar.e(this.sQa) != null)
+        {
+          paramView = FinderVideoSeekBar.e(this.sQa);
+          if (paramView == null) {
+            break label292;
+          }
+        }
+        label292:
+        for (paramView = Boolean.valueOf(paramView.T(paramMotionEvent));; paramView = null)
+        {
+          if (paramView == null) {
+            p.gfZ();
+          }
+          if (paramView.booleanValue()) {
+            break;
+          }
+          this.sPW = ((int)paramMotionEvent.getX());
+          this.sPY = ((int)paramMotionEvent.getY());
+          this.sPX = this.sPW;
+          this.sPZ = 0;
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+          AppMethodBeat.o(204826);
+          return true;
+        }
       }
       int i;
-      if ((paramMotionEvent.getPointerCount() <= 1) && (this.rTn != 0) && (paramMotionEvent.getAction() == 2)) {
-        if (this.rTp != 100)
+      if ((paramMotionEvent.getPointerCount() <= 1) && (this.sPX != 0) && (paramMotionEvent.getAction() == 2)) {
+        if (this.sPZ != 100)
         {
-          i = this.rTp;
+          i = this.sPZ;
           if (i >= 0) {
-            break label254;
+            break label434;
           }
         }
       }
-      while (this.rTp == 100)
+      while (this.sPZ == 100)
       {
-        paramView = FinderVideoSeekBar.a(this.rTq);
+        paramView = FinderVideoSeekBar.a(this.sQa);
         if (paramView != null)
         {
-          if (!this.rTl) {
-            this.rTq.onStartTrackingTouch(paramView);
+          if (!this.sPV) {
+            this.sQa.onStartTrackingTouch(paramView);
           }
-          this.rTl = true;
-          paramView.setProgress(d.h.a.cj(((int)paramMotionEvent.getX() - this.rTm) * 0.7F) + paramView.getProgress());
-          this.rTm = ((int)paramMotionEvent.getX());
-          AppMethodBeat.o(203877);
+          this.sPV = true;
+          paramView.setProgress(d.h.a.co(((int)paramMotionEvent.getX() - this.sPW) * 0.7F) + paramView.getProgress());
+          this.sPW = ((int)paramMotionEvent.getX());
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+          AppMethodBeat.o(204826);
           return true;
-          label254:
+          label434:
           if (4 >= i)
           {
-            i = Math.abs(this.rTn - (int)paramMotionEvent.getX());
-            int j = Math.abs(this.rTo - (int)paramMotionEvent.getY());
+            i = Math.abs(this.sPX - (int)paramMotionEvent.getX());
+            int j = Math.abs(this.sPY - (int)paramMotionEvent.getY());
             if ((i >= 8) && ((j <= 0) || (i / j >= 2))) {}
-            for (i = 100;; i = this.rTp + 1)
+            for (i = 100;; i = this.sPZ + 1)
             {
-              this.rTp = i;
-              if (this.rTp == 100) {
+              this.sPZ = i;
+              if (this.sPZ == 100) {
                 break;
               }
-              AppMethodBeat.o(203877);
+              com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+              AppMethodBeat.o(204826);
               return true;
             }
             if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
             {
-              this.rTp = 0;
-              this.rTn = 0;
-              ViewParent localViewParent = this.rTq.getParent();
-              paramView = localViewParent;
-              if (!(localViewParent instanceof FinderMediaBanner)) {
+              this.sPZ = 0;
+              this.sPX = 0;
+              localObject = this.sQa.getParent();
+              paramView = (View)localObject;
+              if (!(localObject instanceof FinderMediaBanner)) {
                 paramView = null;
               }
               paramView = (FinderMediaBanner)paramView;
               if (paramView != null) {
                 paramView.setFrozenRecyclerView(false);
               }
-              if (this.rTl)
+              if (this.sPV)
               {
-                paramView = FinderVideoSeekBar.a(this.rTq);
+                paramView = FinderVideoSeekBar.a(this.sQa);
                 if (paramView != null) {
-                  this.rTq.onStopTrackingTouch(paramView);
+                  this.sQa.onStopTrackingTouch(paramView);
                 }
-                this.rTl = false;
-                AppMethodBeat.o(203877);
+                this.sPV = false;
+                com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+                AppMethodBeat.o(204826);
                 return true;
               }
               if (paramMotionEvent.getAction() == 1)
               {
-                i = Math.abs(this.rTn - (int)paramMotionEvent.getX());
-                if ((Math.abs(this.rTo - (int)paramMotionEvent.getY()) <= 5) && (i <= 5)) {
-                  this.rTq.performClick();
+                i = Math.abs(this.sPX - (int)paramMotionEvent.getX());
+                if ((Math.abs(this.sPY - (int)paramMotionEvent.getY()) <= 5) && (i <= 5)) {
+                  this.sQa.performClick();
                 }
               }
             }
           }
         }
       }
-      AppMethodBeat.o(203877);
+      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$seekBarTouchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+      AppMethodBeat.o(204826);
       return false;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$showSmallProgressBar$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/video/FinderVideoSeekBar$showSmallProgressBar$1", "Landroid/view/View$OnLayoutChangeListener;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "plugin-finder_release"})
   public static final class e
     implements View.OnLayoutChangeListener
   {
@@ -653,17 +761,17 @@ public final class FinderVideoSeekBar
     
     public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
     {
-      AppMethodBeat.i(203879);
-      this.rTr.invoke();
-      this.rTq.removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
-      AppMethodBeat.o(203879);
+      AppMethodBeat.i(204828);
+      this.sQb.invoke();
+      this.sQa.removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
+      AppMethodBeat.o(204828);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class f
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     f(FinderVideoSeekBar paramFinderVideoSeekBar)
     {
@@ -671,9 +779,9 @@ public final class FinderVideoSeekBar
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/view/GestureDetector;", "invoke"})
   static final class g
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<GestureDetector>
   {
     g(FinderVideoSeekBar paramFinderVideoSeekBar)
@@ -682,9 +790,9 @@ public final class FinderVideoSeekBar
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "invoke"})
   static final class h
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<SeekBar>
   {
     h(FinderVideoSeekBar paramFinderVideoSeekBar)
@@ -695,7 +803,7 @@ public final class FinderVideoSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.FinderVideoSeekBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.protocal.protobuf.bzp;
+import com.tencent.mm.vending.b.b;
 
 public abstract interface e
+  extends a
 {
-  public abstract void a(bo parambo, ap paramap);
+  public abstract b addContactAssembler(d paramd);
+  
+  public abstract void processModContact(bzp parambzp, String paramString, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.e
  * JD-Core Version:    0.7.0.1
  */

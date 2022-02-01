@@ -18,14 +18,14 @@ import android.view.ViewGroup;
 abstract class a
   extends ViewGroup
 {
-  protected final a afm = new a();
-  protected final Context afn;
-  protected ActionMenuView afo;
-  protected ActionMenuPresenter afp;
-  protected int afq;
-  protected x afr;
-  private boolean afs;
-  private boolean aft;
+  protected final a ahd = new a();
+  protected final Context ahe;
+  protected ActionMenuView ahf;
+  protected ActionMenuPresenter ahg;
+  protected int ahh;
+  protected x ahi;
+  private boolean ahj;
+  private boolean ahk;
   
   a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
@@ -33,10 +33,10 @@ abstract class a
     paramAttributeSet = new TypedValue();
     if ((paramContext.getTheme().resolveAttribute(2130968599, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
     {
-      this.afn = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
+      this.ahe = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
       return;
     }
-    this.afn = paramContext;
+    this.ahe = paramContext;
   }
   
   protected static int a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -74,36 +74,36 @@ abstract class a
   
   public x c(int paramInt, long paramLong)
   {
-    if (this.afr != null) {
-      this.afr.cancel();
+    if (this.ahi != null) {
+      this.ahi.cancel();
     }
     if (paramInt == 0)
     {
       if (getVisibility() != 0) {
         setAlpha(0.0F);
       }
-      localx = t.ag(this).A(1.0F);
+      localx = t.ag(this).y(1.0F);
       localx.j(paramLong);
-      localx.a(this.afm.a(localx, paramInt));
+      localx.a(this.ahd.a(localx, paramInt));
       return localx;
     }
-    x localx = t.ag(this).A(0.0F);
+    x localx = t.ag(this).y(0.0F);
     localx.j(paramLong);
-    localx.a(this.afm.a(localx, paramInt));
+    localx.a(this.ahd.a(localx, paramInt));
     return localx;
   }
   
   public int getAnimatedVisibility()
   {
-    if (this.afr != null) {
-      return this.afm.Cc;
+    if (this.ahi != null) {
+      return this.ahd.DU;
     }
     return getVisibility();
   }
   
   public int getContentHeight()
   {
-    return this.afq;
+    return this.ahh;
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
@@ -112,8 +112,8 @@ abstract class a
     paramConfiguration = getContext().obtainStyledAttributes(null, android.support.v7.a.a.a.ActionBar, 2130968602, 0);
     setContentHeight(paramConfiguration.getLayoutDimension(13, 0));
     paramConfiguration.recycle();
-    if (this.afp != null) {
-      this.afp.ie();
+    if (this.ahg != null) {
+      this.ahg.iv();
     }
   }
   
@@ -121,17 +121,17 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 9) {
-      this.aft = false;
+      this.ahk = false;
     }
-    if (!this.aft)
+    if (!this.ahk)
     {
       boolean bool = super.onHoverEvent(paramMotionEvent);
       if ((i == 9) && (!bool)) {
-        this.aft = true;
+        this.ahk = true;
       }
     }
     if ((i == 10) || (i == 3)) {
-      this.aft = false;
+      this.ahk = false;
     }
     return true;
   }
@@ -140,24 +140,24 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      this.afs = false;
+      this.ahj = false;
     }
-    if (!this.afs)
+    if (!this.ahj)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       if ((i == 0) && (!bool)) {
-        this.afs = true;
+        this.ahj = true;
       }
     }
     if ((i == 1) || (i == 3)) {
-      this.afs = false;
+      this.ahj = false;
     }
     return true;
   }
   
   public void setContentHeight(int paramInt)
   {
-    this.afq = paramInt;
+    this.ahh = paramInt;
     requestLayout();
   }
   
@@ -165,8 +165,8 @@ abstract class a
   {
     if (paramInt != getVisibility())
     {
-      if (this.afr != null) {
-        this.afr.cancel();
+      if (this.ahi != null) {
+        this.ahi.cancel();
       }
       super.setVisibility(paramInt);
     }
@@ -174,8 +174,8 @@ abstract class a
   
   public boolean showOverflowMenu()
   {
-    if (this.afp != null) {
-      return this.afp.showOverflowMenu();
+    if (this.ahg != null) {
+      return this.ahg.showOverflowMenu();
     }
     return false;
   }
@@ -183,15 +183,15 @@ abstract class a
   protected final class a
     implements y
   {
-    int Cc;
+    int DU;
     private boolean mCanceled = false;
     
     protected a() {}
     
     public final a a(x paramx, int paramInt)
     {
-      a.this.afr = paramx;
-      this.Cc = paramInt;
+      a.this.ahi = paramx;
+      this.DU = paramInt;
       return this;
     }
     
@@ -206,8 +206,8 @@ abstract class a
       if (this.mCanceled) {
         return;
       }
-      a.this.afr = null;
-      a.a(a.this, this.Cc);
+      a.this.ahi = null;
+      a.a(a.this, this.DU);
     }
     
     public final void aJ(View paramView)

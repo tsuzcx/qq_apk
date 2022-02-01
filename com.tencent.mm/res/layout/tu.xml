@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="?d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
+<android.support.constraint.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/chj" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
     <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/chi" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />

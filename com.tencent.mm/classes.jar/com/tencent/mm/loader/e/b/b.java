@@ -2,10 +2,10 @@ package com.tencent.mm.loader.e.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/impr/target/IWaitUI;", "", "uiDone", "", "isRemove", "", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/impr/target/IWaitUI;", "", "uiDone", "", "isRemove", "", "libimageloader_release"})
 public abstract interface b
 {
-  public abstract void dW(boolean paramBoolean);
+  public abstract void dY(boolean paramBoolean);
 }
 
 

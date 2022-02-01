@@ -13,15 +13,15 @@ public class MutableAudioMixInputParameters
   public MutableAudioMixInputParameters(AssetTrack paramAssetTrack)
   {
     super(paramAssetTrack.getTrackID(), "");
-    AppMethodBeat.i(197638);
-    AppMethodBeat.o(197638);
+    AppMethodBeat.i(217957);
+    AppMethodBeat.o(217957);
   }
   
   public MutableAudioMixInputParameters(AssetTrack paramAssetTrack, String paramString)
   {
     super(paramAssetTrack.getTrackID(), paramString);
-    AppMethodBeat.i(197637);
-    AppMethodBeat.o(197637);
+    AppMethodBeat.i(217956);
+    AppMethodBeat.o(217956);
   }
   
   public void setAudioTapProcessor(AudioTapProcessor paramAudioTapProcessor)
@@ -43,7 +43,7 @@ public class MutableAudioMixInputParameters
   
   public void setVolumeForTimeRange(float paramFloat)
   {
-    AppMethodBeat.i(197640);
+    AppMethodBeat.i(217959);
     Iterator localIterator = this.volumeRanges.iterator();
     while (localIterator.hasNext())
     {
@@ -51,30 +51,30 @@ public class MutableAudioMixInputParameters
       localVolumeRange.startVolume = paramFloat;
       localVolumeRange.endVolume = paramFloat;
     }
-    AppMethodBeat.o(197640);
+    AppMethodBeat.o(217959);
   }
   
   public void setVolumeForTimeRange(float paramFloat, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(197641);
+    AppMethodBeat.i(217960);
     setVolumeRampForTimeRange(paramFloat, paramFloat, paramCMTimeRange);
-    AppMethodBeat.o(197641);
+    AppMethodBeat.o(217960);
   }
   
   public void setVolumeRampForTimeRange(float paramFloat1, float paramFloat2, CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(197639);
-    AudioMixInputParameters.VolumeRange localVolumeRange = new AudioMixInputParameters.VolumeRange(this);
+    AppMethodBeat.i(217958);
+    AudioMixInputParameters.VolumeRange localVolumeRange = new AudioMixInputParameters.VolumeRange();
     localVolumeRange.timeRange = paramCMTimeRange;
     localVolumeRange.startVolume = paramFloat1;
     localVolumeRange.endVolume = paramFloat2;
     this.volumeRanges.add(0, localVolumeRange);
-    AppMethodBeat.o(197639);
+    AppMethodBeat.o(217958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.MutableAudioMixInputParameters
  * JD-Core Version:    0.7.0.1
  */

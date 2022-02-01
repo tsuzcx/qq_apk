@@ -10,32 +10,32 @@ import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location_soso.ViewManager;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class TrackPoint
   extends LinearLayout
 {
-  private double kwj;
-  private double kwk;
-  private double kwl;
-  private double kwm;
+  private double kSp;
+  private double kSq;
+  private double kSr;
+  private double kSs;
   private Context mContext;
   public ViewManager mViewManager;
-  public ImageView ufA;
-  private double ufB;
-  public FrameLayout ufz;
   private String username;
+  public FrameLayout vij;
+  public ImageView vik;
+  private double vil;
   private boolean visible;
   
   public TrackPoint(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(56180);
-    this.ufB = 0.0D;
-    this.kwj = -1.0D;
-    this.kwk = -1.0D;
-    this.kwl = -1.0D;
-    this.kwm = -1.0D;
+    this.vil = 0.0D;
+    this.kSp = -1.0D;
+    this.kSq = -1.0D;
+    this.kSr = -1.0D;
+    this.kSs = -1.0D;
     this.visible = true;
     this.mContext = paramContext;
     init(0);
@@ -46,11 +46,11 @@ public class TrackPoint
   {
     super(paramContext);
     AppMethodBeat.i(56181);
-    this.ufB = 0.0D;
-    this.kwj = -1.0D;
-    this.kwk = -1.0D;
-    this.kwl = -1.0D;
-    this.kwm = -1.0D;
+    this.vil = 0.0D;
+    this.kSp = -1.0D;
+    this.kSq = -1.0D;
+    this.kSr = -1.0D;
+    this.kSs = -1.0D;
     this.visible = true;
     this.mContext = paramContext;
     this.mViewManager = paramViewManager;
@@ -62,11 +62,11 @@ public class TrackPoint
   {
     super(paramContext);
     AppMethodBeat.i(56182);
-    this.ufB = 0.0D;
-    this.kwj = -1.0D;
-    this.kwk = -1.0D;
-    this.kwl = -1.0D;
-    this.kwm = -1.0D;
+    this.vil = 0.0D;
+    this.kSp = -1.0D;
+    this.kSq = -1.0D;
+    this.kSr = -1.0D;
+    this.kSs = -1.0D;
     this.visible = true;
     this.mContext = paramContext;
     this.mViewManager = paramViewManager;
@@ -77,57 +77,57 @@ public class TrackPoint
   private void init(int paramInt)
   {
     AppMethodBeat.i(56183);
-    this.ufz = ((FrameLayout)View.inflate(this.mContext, 2131495802, null));
-    this.ufA = new ImageView(this.mContext);
+    this.vij = ((FrameLayout)View.inflate(this.mContext, 2131495802, null));
+    this.vik = new ImageView(this.mContext);
     if (paramInt > 0) {
-      this.ufA.setImageResource(paramInt);
+      this.vik.setImageResource(paramInt);
     }
     for (;;)
     {
-      this.ufA.setBackgroundResource(2131233299);
-      this.ufA.setFocusable(true);
-      this.ufA.setFocusableInTouchMode(true);
+      this.vik.setBackgroundResource(2131233299);
+      this.vik.setFocusable(true);
+      this.vik.setFocusableInTouchMode(true);
       AppMethodBeat.o(56183);
       return;
-      this.ufA.setImageResource(2131232917);
+      this.vik.setImageResource(2131232917);
     }
   }
   
-  public final void cYh()
+  public final void dht()
   {
     AppMethodBeat.i(56185);
     this.visible = false;
-    this.ufz.setVisibility(4);
+    this.vij.setVisibility(4);
     if (this.mViewManager != null) {
-      this.mViewManager.toggleViewVisible(this.ufz);
+      this.mViewManager.toggleViewVisible(this.vij);
     }
     AppMethodBeat.o(56185);
   }
   
-  public final void cYi()
+  public final void dhu()
   {
     AppMethodBeat.i(56186);
     this.visible = true;
-    this.ufz.setVisibility(0);
+    this.vij.setVisibility(0);
     if (this.mViewManager != null) {
-      this.mViewManager.toggleViewVisible(this.ufz);
+      this.mViewManager.toggleViewVisible(this.vij);
     }
     AppMethodBeat.o(56186);
   }
   
   public double getHeading()
   {
-    return this.ufB;
+    return this.vil;
   }
   
   public double getLatOffest()
   {
-    return this.kwj - this.kwl;
+    return this.kSp - this.kSr;
   }
   
   public double getLongOffset()
   {
-    return this.kwk - this.kwm;
+    return this.kSq - this.kSs;
   }
   
   public final void n(double paramDouble1, double paramDouble2)
@@ -135,8 +135,8 @@ public class TrackPoint
     AppMethodBeat.i(56188);
     if (this.mViewManager != null)
     {
-      this.mViewManager.updateViewLayout(this.ufz, paramDouble1, paramDouble2, false);
-      this.mViewManager.updateLocationPinLayout(this.ufA, paramDouble1, paramDouble2, false);
+      this.mViewManager.updateViewLayout(this.vij, paramDouble1, paramDouble2, false);
+      this.mViewManager.updateLocationPinLayout(this.vik, paramDouble1, paramDouble2, false);
     }
     AppMethodBeat.o(56188);
   }
@@ -146,8 +146,8 @@ public class TrackPoint
     AppMethodBeat.i(56189);
     if (this.mViewManager != null)
     {
-      this.mViewManager.addView(this.ufz, paramDouble1, paramDouble2);
-      this.mViewManager.addView(this.ufA, paramDouble1, paramDouble2);
+      this.mViewManager.addView(this.vij, paramDouble1, paramDouble2);
+      this.mViewManager.addView(this.vik, paramDouble1, paramDouble2);
     }
     AppMethodBeat.o(56189);
   }
@@ -157,8 +157,8 @@ public class TrackPoint
     AppMethodBeat.i(56190);
     if (this.mViewManager != null)
     {
-      this.mViewManager.setMarker2Top(this.ufz);
-      this.mViewManager.setMarker2Top(this.ufA);
+      this.mViewManager.setMarker2Top(this.vij);
+      this.mViewManager.setMarker2Top(this.vik);
     }
     AppMethodBeat.o(56190);
   }
@@ -168,21 +168,21 @@ public class TrackPoint
     AppMethodBeat.i(56184);
     if (paramString.equals(this.username))
     {
-      ac.i("MicroMsg.TrackPoint", "skip this set avatar");
+      ad.i("MicroMsg.TrackPoint", "skip this set avatar");
       AppMethodBeat.o(56184);
       return;
     }
     this.username = paramString;
-    a.b.d((ImageView)this.ufz.findViewById(2131296670), paramString);
+    a.b.d((ImageView)this.vij.findViewById(2131296670), paramString);
     if (this.mViewManager != null) {
-      this.mViewManager.updateMarkerView(this.ufz);
+      this.mViewManager.updateMarkerView(this.vij);
     }
     AppMethodBeat.o(56184);
   }
   
   public void setHeading(double paramDouble)
   {
-    this.ufB = paramDouble;
+    this.vil = paramDouble;
   }
   
   public void setOnAvatarOnClickListener(View.OnClickListener paramOnClickListener) {}
@@ -192,9 +192,9 @@ public class TrackPoint
   public final void x(double paramDouble)
   {
     AppMethodBeat.i(56187);
-    this.ufB = paramDouble;
+    this.vil = paramDouble;
     if (this.mViewManager != null) {
-      this.mViewManager.updateRotation(this.ufA, (float)paramDouble);
+      this.mViewManager.updateRotation(this.vik, (float)paramDouble);
     }
     AppMethodBeat.o(56187);
   }

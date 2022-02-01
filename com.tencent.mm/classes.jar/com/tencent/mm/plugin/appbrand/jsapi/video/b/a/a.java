@@ -7,15 +7,15 @@ public abstract interface a
 {
   public abstract void B(e parame);
   
-  public abstract f J(String paramString, long paramLong);
+  public abstract f Q(String paramString, long paramLong);
   
-  public abstract f K(String paramString, long paramLong);
+  public abstract long QI(String paramString);
   
-  public abstract long Nl(String paramString);
+  public abstract c QJ(String paramString);
   
-  public abstract c Nm(String paramString);
+  public abstract long QK(String paramString);
   
-  public abstract long Nn(String paramString);
+  public abstract f R(String paramString, long paramLong);
   
   public abstract e a(String paramString, long paramLong1, long paramLong2, c paramc, long paramLong3);
   
@@ -25,7 +25,7 @@ public abstract interface a
   
   public abstract boolean isCached(String paramString);
   
-  public abstract long vi();
+  public abstract long wF();
   
   public static abstract interface a
   {

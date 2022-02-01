@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 public abstract interface d$a
 {
-  public abstract Intent r(int paramInt, Bundle paramBundle);
+  public abstract Intent s(int paramInt, Bundle paramBundle);
 }
 
 

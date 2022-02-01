@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.app.am;
+import com.tencent.mm.pluginsdk.model.app.al;
 
 final class JsApiLaunchApplication$a
-  implements am
+  implements al
 {
-  volatile boolean dmq;
-  volatile boolean hwA;
-  volatile boolean jYi;
-  volatile boolean jYj;
-  a jYk;
+  volatile boolean dye;
+  volatile boolean hOP;
+  volatile boolean ksE;
+  volatile boolean ksF;
+  a ksG;
   
   JsApiLaunchApplication$a(a parama)
   {
-    this.jYk = parama;
+    this.ksG = parama;
   }
   
-  final void gj(boolean paramBoolean)
+  final void go(boolean paramBoolean)
   {
     AppMethodBeat.i(45508);
-    this.dmq = paramBoolean;
-    this.jYj = true;
-    if ((this.hwA) && (this.jYk != null)) {
-      this.jYk.u(paramBoolean, this.jYi);
+    this.dye = paramBoolean;
+    this.ksF = true;
+    if ((this.hOP) && (this.ksG != null)) {
+      this.ksG.u(paramBoolean, this.ksE);
     }
     AppMethodBeat.o(45508);
   }
   
   public final void v(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(186563);
-    this.hwA = true;
-    this.jYi = paramBoolean1;
-    if ((this.jYj) && (this.jYk != null)) {
-      this.jYk.u(this.dmq, paramBoolean1);
+    AppMethodBeat.i(188266);
+    this.hOP = true;
+    this.ksE = paramBoolean1;
+    if ((this.ksF) && (this.ksG != null)) {
+      this.ksG.u(this.dye, paramBoolean1);
     }
-    AppMethodBeat.o(186563);
+    AppMethodBeat.o(188266);
   }
   
   static abstract interface a
@@ -46,7 +46,7 @@ final class JsApiLaunchApplication$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiLaunchApplication.a
  * JD-Core Version:    0.7.0.1
  */

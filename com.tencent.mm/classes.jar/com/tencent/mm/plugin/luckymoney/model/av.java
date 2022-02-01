@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bjm;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bnu;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class av
 {
-  public bjm ulc;
-  public au uok;
+  public bnu vnI;
+  public au vqO;
   
-  public static av akk(String paramString)
+  public static av aoX(String paramString)
   {
     AppMethodBeat.i(65312);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(65312);
       return null;
@@ -26,15 +26,15 @@ public final class av
       paramString = new JSONObject(paramString);
       JSONObject localJSONObject = paramString.optJSONObject("operation");
       if (localJSONObject != null) {
-        localav.uok = x.aw(localJSONObject);
+        localav.vqO = x.aF(localJSONObject);
       }
-      localav.ulc = x.ax(paramString.optJSONObject("source"));
+      localav.vnI = x.aG(paramString.optJSONObject("source"));
       AppMethodBeat.o(65312);
       return localav;
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.ShowSourceOpen", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ShowSourceOpen", paramString, "", new Object[0]);
       AppMethodBeat.o(65312);
     }
     return null;
@@ -42,7 +42,7 @@ public final class av
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.av
  * JD-Core Version:    0.7.0.1
  */

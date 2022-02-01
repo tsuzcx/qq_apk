@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public final class m<A, B>
 {
-  public final f<a<A>, B> aIu;
+  public final f<a<A>, B> aKl;
   
   public m()
   {
@@ -17,15 +17,15 @@ public final class m<A, B>
   public m(long paramLong)
   {
     AppMethodBeat.i(77265);
-    this.aIu = new f(paramLong) {};
+    this.aKl = new f(paramLong) {};
     AppMethodBeat.o(77265);
   }
   
-  public final B X(A paramA)
+  public final B Y(A paramA)
   {
     AppMethodBeat.i(77266);
-    paramA = a.Y(paramA);
-    Object localObject = this.aIu.get(paramA);
+    paramA = a.Z(paramA);
+    Object localObject = this.aKl.get(paramA);
     paramA.release();
     AppMethodBeat.o(77266);
     return localObject;
@@ -33,29 +33,29 @@ public final class m<A, B>
   
   public static final class a<A>
   {
-    private static final Queue<a<?>> aIw;
-    private A aBp;
+    private static final Queue<a<?>> aKn;
+    private A aDg;
     private int height;
     private int width;
     
     static
     {
       AppMethodBeat.i(77264);
-      aIw = j.dx(0);
+      aKn = j.dx(0);
       AppMethodBeat.o(77264);
     }
     
-    public static <A> a<A> Y(A paramA)
+    public static <A> a<A> Z(A paramA)
     {
       AppMethodBeat.i(77260);
-      synchronized (aIw)
+      synchronized (aKn)
       {
-        a locala = (a)aIw.poll();
+        a locala = (a)aKn.poll();
         ??? = locala;
         if (locala == null) {
           ??? = new a();
         }
-        ((a)???).aBp = paramA;
+        ((a)???).aDg = paramA;
         ((a)???).width = 0;
         ((a)???).height = 0;
         AppMethodBeat.o(77260);
@@ -69,7 +69,7 @@ public final class m<A, B>
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.width == paramObject.width) && (this.height == paramObject.height) && (this.aBp.equals(paramObject.aBp)))
+        if ((this.width == paramObject.width) && (this.height == paramObject.height) && (this.aDg.equals(paramObject.aDg)))
         {
           AppMethodBeat.o(77262);
           return true;
@@ -86,7 +86,7 @@ public final class m<A, B>
       AppMethodBeat.i(77263);
       int i = this.height;
       int j = this.width;
-      int k = this.aBp.hashCode();
+      int k = this.aDg.hashCode();
       AppMethodBeat.o(77263);
       return (i * 31 + j) * 31 + k;
     }
@@ -94,9 +94,9 @@ public final class m<A, B>
     public final void release()
     {
       AppMethodBeat.i(77261);
-      synchronized (aIw)
+      synchronized (aKn)
       {
-        aIw.offer(this);
+        aKn.offer(this);
         AppMethodBeat.o(77261);
         return;
       }

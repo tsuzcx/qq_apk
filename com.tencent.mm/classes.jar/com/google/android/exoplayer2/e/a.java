@@ -10,10 +10,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @TargetApi(16)
 public final class a
 {
-  public final boolean aVF;
-  public final boolean biI;
-  public final boolean biJ;
-  public final MediaCodecInfo.CodecCapabilities biK;
+  public final boolean bga;
+  public final boolean btc;
+  public final boolean btd;
+  public final MediaCodecInfo.CodecCapabilities bte;
   public final String mimeType;
   public final String name;
   
@@ -22,7 +22,7 @@ public final class a
     AppMethodBeat.i(92353);
     this.name = ((String)com.google.android.exoplayer2.i.a.checkNotNull(paramString1));
     this.mimeType = paramString2;
-    this.biK = paramCodecCapabilities;
+    this.bte = paramCodecCapabilities;
     if ((!paramBoolean1) && (paramCodecCapabilities != null)) {
       if ((x.SDK_INT >= 19) && (paramCodecCapabilities.isFeatureSupported("adaptive-playback")))
       {
@@ -32,7 +32,7 @@ public final class a
         }
         paramBoolean1 = true;
         label70:
-        this.biI = paramBoolean1;
+        this.btc = paramBoolean1;
         if (paramCodecCapabilities == null) {
           break label189;
         }
@@ -46,7 +46,7 @@ public final class a
         }
         paramBoolean1 = true;
         label108:
-        this.aVF = paramBoolean1;
+        this.bga = paramBoolean1;
         if (!paramBoolean2)
         {
           paramBoolean1 = bool;
@@ -70,7 +70,7 @@ public final class a
       if (i != 0) {
         paramBoolean1 = true;
       }
-      this.biJ = paramBoolean1;
+      this.btd = paramBoolean1;
       AppMethodBeat.o(92353);
       return;
       i = 0;
@@ -111,16 +111,16 @@ public final class a
   public final boolean a(int paramInt1, int paramInt2, double paramDouble)
   {
     AppMethodBeat.i(92354);
-    if (this.biK == null)
+    if (this.bte == null)
     {
-      ao("sizeAndRate.caps");
+      bh("sizeAndRate.caps");
       AppMethodBeat.o(92354);
       return false;
     }
-    Object localObject = this.biK.getVideoCapabilities();
+    Object localObject = this.bte.getVideoCapabilities();
     if (localObject == null)
     {
-      ao("sizeAndRate.vCaps");
+      bh("sizeAndRate.vCaps");
       AppMethodBeat.o(92354);
       return false;
     }
@@ -128,30 +128,30 @@ public final class a
     {
       if ((paramInt1 >= paramInt2) || (!a((MediaCodecInfo.VideoCapabilities)localObject, paramInt2, paramInt1, paramDouble)))
       {
-        ao("sizeAndRate.support, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble);
+        bh("sizeAndRate.support, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble);
         AppMethodBeat.o(92354);
         return false;
       }
       localObject = "sizeAndRate.rotated, " + paramInt1 + "x" + paramInt2 + "x" + paramDouble;
-      new StringBuilder("AssumedSupport [").append((String)localObject).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bxc).append("]");
+      new StringBuilder("AssumedSupport [").append((String)localObject).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHq).append("]");
     }
     AppMethodBeat.o(92354);
     return true;
   }
   
-  public final void ao(String paramString)
+  public final void bh(String paramString)
   {
     AppMethodBeat.i(92355);
-    new StringBuilder("NoSupport [").append(paramString).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bxc).append("]");
+    new StringBuilder("NoSupport [").append(paramString).append("] [").append(this.name).append(", ").append(this.mimeType).append("] [").append(x.bHq).append("]");
     AppMethodBeat.o(92355);
   }
   
-  public final MediaCodecInfo.CodecProfileLevel[] tv()
+  public final MediaCodecInfo.CodecProfileLevel[] uU()
   {
-    if ((this.biK == null) || (this.biK.profileLevels == null)) {
+    if ((this.bte == null) || (this.bte.profileLevels == null)) {
       return new MediaCodecInfo.CodecProfileLevel[0];
     }
-    return this.biK.profileLevels;
+    return this.bte.profileLevels;
   }
 }
 

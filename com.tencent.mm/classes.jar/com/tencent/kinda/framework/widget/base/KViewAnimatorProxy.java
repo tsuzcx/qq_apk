@@ -15,7 +15,7 @@ import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.PositionType;
 import com.tencent.kinda.gen.Visible;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class KViewAnimatorProxy
   implements KView
@@ -171,7 +171,10 @@ public class KViewAnimatorProxy
   
   public float getMarginBottom()
   {
-    return 0.0F;
+    AppMethodBeat.i(199461);
+    float f = this.mKView.getMarginBottom();
+    AppMethodBeat.o(199461);
+    return f;
   }
   
   public float getMarginBottomPercent()
@@ -194,7 +197,10 @@ public class KViewAnimatorProxy
   
   public float getMarginRight()
   {
-    return 0.0F;
+    AppMethodBeat.i(199459);
+    float f = this.mKView.getMarginRight();
+    AppMethodBeat.o(199459);
+    return f;
   }
   
   public float getMarginRightPercent()
@@ -204,7 +210,10 @@ public class KViewAnimatorProxy
   
   public float getMarginTop()
   {
-    return 0.0F;
+    AppMethodBeat.i(199457);
+    float f = this.mKView.getMarginTop();
+    AppMethodBeat.o(199457);
+    return f;
   }
   
   public float getMarginTopPercent()
@@ -456,7 +465,14 @@ public class KViewAnimatorProxy
   
   public void setLeftPercent(float paramFloat) {}
   
-  public void setMarginBottom(float paramFloat) {}
+  public void setMarginBottom(float paramFloat)
+  {
+    AppMethodBeat.i(199460);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginBottom", new float[] { this.mKView.getMarginBottom(), paramFloat });
+    localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
+    KindaGlobalAnimator.addAnimator(localObjectAnimator);
+    AppMethodBeat.o(199460);
+  }
   
   public void setMarginBottomPercent(float paramFloat) {}
   
@@ -471,11 +487,25 @@ public class KViewAnimatorProxy
   
   public void setMarginLeftPercent(float paramFloat) {}
   
-  public void setMarginRight(float paramFloat) {}
+  public void setMarginRight(float paramFloat)
+  {
+    AppMethodBeat.i(199458);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginRight", new float[] { this.mKView.getMarginRight(), paramFloat });
+    localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
+    KindaGlobalAnimator.addAnimator(localObjectAnimator);
+    AppMethodBeat.o(199458);
+  }
   
   public void setMarginRightPercent(float paramFloat) {}
   
-  public void setMarginTop(float paramFloat) {}
+  public void setMarginTop(float paramFloat)
+  {
+    AppMethodBeat.i(199456);
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "marginTop", new float[] { this.mKView.getMarginTop(), paramFloat });
+    localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
+    KindaGlobalAnimator.addAnimator(localObjectAnimator);
+    AppMethodBeat.o(199456);
+  }
   
   public void setMarginTopPercent(float paramFloat) {}
   
@@ -534,7 +564,7 @@ public class KViewAnimatorProxy
   public void setScaleX(float paramFloat)
   {
     AppMethodBeat.i(18820);
-    ac.d("base_MMKView", "setScaleX此时进入动画setter状态。");
+    ad.d("base_MMKView", "setScaleX此时进入动画setter状态。");
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "scaleX", new float[] { this.mKView.getScaleX(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);
@@ -544,7 +574,7 @@ public class KViewAnimatorProxy
   public void setScaleY(float paramFloat)
   {
     AppMethodBeat.i(18821);
-    ac.d("base_MMKView", "setScaleY此时进入动画setter状态。");
+    ad.d("base_MMKView", "setScaleY此时进入动画setter状态。");
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.mKView, "scaleY", new float[] { this.mKView.getScaleY(), paramFloat });
     localObjectAnimator.setDuration(KindaGlobalAnimator.animateDuration());
     KindaGlobalAnimator.addAnimator(localObjectAnimator);

@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.qmessage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pa;
+import com.tencent.mm.g.a.pj;
 import com.tencent.mm.sdk.b.c;
 
 public final class b
-  extends c<pa>
+  extends c<pj>
 {
   public b()
   {
     AppMethodBeat.i(161423);
-    this.__eventId = pa.class.getName().hashCode();
+    this.__eventId = pj.class.getName().hashCode();
     AppMethodBeat.o(161423);
   }
 }

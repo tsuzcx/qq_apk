@@ -1,62 +1,33 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.d;
 import d.l;
-import d.p;
-import d.p.a;
-import d.q;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/ResumeAwaitOnCompletion;", "T", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/JobSupport;", "job", "continuation", "Lkotlinx/coroutines/CancellableContinuationImpl;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/CancellableContinuationImpl;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
-final class cb<T>
-  extends br<bs>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
+public final class cb
+  implements ba, q
 {
-  private final k<T> LSj;
+  public static final cb NJe;
   
-  public cb(bs parambs, k<? super T> paramk)
+  static
   {
-    super((bo)parambs);
-    AppMethodBeat.i(191159);
-    this.LSj = paramk;
-    AppMethodBeat.o(191159);
+    AppMethodBeat.i(118190);
+    NJe = new cb();
+    AppMethodBeat.o(118190);
   }
+  
+  public final void dispose() {}
   
   public final String toString()
   {
-    AppMethodBeat.i(118268);
-    String str = "ResumeAwaitOnCompletion[" + this.LSj + ']';
-    AppMethodBeat.o(118268);
-    return str;
+    return "NonDisposableHandle";
   }
   
-  public final void u(Throwable paramThrowable)
+  public final boolean z(Throwable paramThrowable)
   {
-    AppMethodBeat.i(118266);
-    Object localObject = ((bs)this.LRS).gee();
-    if (al.gdD())
-    {
-      if (!(localObject instanceof bj)) {}
-      for (int i = 1; i == 0; i = 0)
-      {
-        paramThrowable = (Throwable)new AssertionError();
-        AppMethodBeat.o(118266);
-        throw paramThrowable;
-      }
-    }
-    if ((localObject instanceof t))
-    {
-      paramThrowable = (d)this.LSj;
-      localObject = ((t)localObject).cause;
-      locala = p.KTg;
-      paramThrowable.eK(p.eI(q.n((Throwable)localObject)));
-      AppMethodBeat.o(118266);
-      return;
-    }
-    paramThrowable = (d)this.LSj;
-    localObject = bt.fS(localObject);
-    p.a locala = p.KTg;
-    paramThrowable.eK(p.eI(localObject));
-    AppMethodBeat.o(118266);
+    AppMethodBeat.i(118189);
+    AppMethodBeat.o(118189);
+    return false;
   }
 }
 

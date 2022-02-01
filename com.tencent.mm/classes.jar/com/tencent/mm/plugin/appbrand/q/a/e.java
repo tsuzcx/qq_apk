@@ -8,27 +8,27 @@ import java.util.Set;
 
 public abstract class e
 {
-  public final q ceh;
-  private final a lyn;
-  private final Set<Integer> lyo = new b();
+  public final q cox;
+  private final a lXL;
+  private final Set<Integer> lXM = new b();
   
   public e(a parama, q paramq)
   {
-    this.lyn = parama;
-    this.ceh = paramq;
+    this.lXL = parama;
+    this.cox = paramq;
   }
   
   public final void Q(Map<String, Object> paramMap)
   {
-    Iterator localIterator = this.lyo.iterator();
+    Iterator localIterator = this.lXM.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
-      this.lyn.d(i, paramMap);
+      this.lXL.d(i, paramMap);
     }
   }
   
-  protected abstract void bpC();
+  protected abstract void btD();
   
   public abstract int getType();
   
@@ -38,17 +38,17 @@ public abstract class e
     {
       try
       {
-        if (this.lyo.isEmpty()) {
+        if (this.lXM.isEmpty()) {
           break label47;
         }
         i = 1;
-        this.lyo.add(Integer.valueOf(paramInt));
+        this.lXM.add(Integer.valueOf(paramInt));
         if (i != 0) {
           return;
         }
       }
       finally {}
-      bpC();
+      btD();
       return;
       label47:
       int i = 0;
@@ -61,10 +61,10 @@ public abstract class e
   {
     try
     {
-      if (this.lyo.contains(Integer.valueOf(paramInt))) {
-        this.lyo.remove(Integer.valueOf(paramInt));
+      if (this.lXM.contains(Integer.valueOf(paramInt))) {
+        this.lXM.remove(Integer.valueOf(paramInt));
       }
-      if (!this.lyo.isEmpty()) {
+      if (!this.lXM.isEmpty()) {
         return;
       }
       removeListener();

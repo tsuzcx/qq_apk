@@ -49,15 +49,7 @@ public class YTThreadOperate
   public static void runOnSubThread(Runnable paramRunnable)
   {
     AppMethodBeat.i(73398);
-    mExecutorService.submit(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(73392);
-        this.val$runnable.run();
-        AppMethodBeat.o(73392);
-      }
-    });
+    mExecutorService.submit(new YTThreadOperate.1(paramRunnable));
     AppMethodBeat.o(73398);
   }
   
@@ -127,7 +119,7 @@ public class YTThreadOperate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.tools.YTThreadOperate
  * JD-Core Version:    0.7.0.1
  */

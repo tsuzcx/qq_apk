@@ -1,78 +1,80 @@
 package com.tencent.mm.plugin.emoji.sync.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.plugin.emoji.sync.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class c
   extends com.tencent.mm.plugin.emoji.sync.c
 {
-  private String pbW;
-  private d pdl;
+  private String mKey;
+  private d pGW;
+  private n pGY;
+  private EmojiInfo pGZ;
   
   public c(String paramString)
   {
-    AppMethodBeat.i(108778);
-    if (bs.isNullOrNil(paramString)) {
-      ac.e("MicroMsg.BKGLoader.EmojiStoreTukaziSyncTask", "[cpan] empty productid");
+    AppMethodBeat.i(108781);
+    if (bt.isNullOrNil(paramString)) {
+      ad.e("MicroMsg.BKGLoader.EmojiUploadTask", "[cpan] can not create task. md5 is null.");
     }
-    this.pbW = paramString;
-    AppMethodBeat.o(108778);
+    this.mKey = paramString;
+    this.pGZ = k.getEmojiStorageMgr().ILn.aUK(this.mKey);
+    AppMethodBeat.o(108781);
   }
   
   public final void a(d paramd)
   {
-    this.pdl = paramd;
+    this.pGW = paramd;
   }
   
   public final void cancel() {}
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(108780);
+    AppMethodBeat.i(108783);
     if ((paramObject != null) && ((paramObject instanceof c)))
     {
       paramObject = (c)paramObject;
-      if ((!bs.isNullOrNil(this.pbW)) && (!bs.isNullOrNil(paramObject.getKey())) && (this.pbW.equals(paramObject.getKey())))
+      if ((!bt.isNullOrNil(this.mKey)) && (!bt.isNullOrNil(paramObject.mKey)) && (this.mKey.equals(paramObject.mKey)))
       {
-        AppMethodBeat.o(108780);
+        AppMethodBeat.o(108783);
         return true;
       }
     }
-    AppMethodBeat.o(108780);
+    AppMethodBeat.o(108783);
     return false;
   }
   
   public final String getKey()
   {
-    if (this.pbW == null) {
-      return "";
-    }
-    return this.pbW;
+    return this.mKey;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(108779);
-    if (this.pdl != null) {
-      this.pdl.Yq(getKey());
+    AppMethodBeat.i(108782);
+    if (this.pGW != null) {
+      this.pGW.abW(this.mKey);
     }
-    for (;;)
+    while (this.pGZ == null)
     {
-      EmojiGroupInfo localEmojiGroupInfo = k.getEmojiStorageMgr().GYa.cE(EmojiGroupInfo.Jsp, false);
-      localEmojiGroupInfo.field_flag = 0;
-      k.getEmojiStorageMgr().GYa.replace(localEmojiGroupInfo);
-      if (this.pdl != null) {
-        this.pdl.l(getKey(), 2, true);
-      }
-      AppMethodBeat.o(108779);
+      this.pGW.l(this.mKey, 1, false);
+      AppMethodBeat.o(108782);
       return;
-      ac.w("MicroMsg.BKGLoader.EmojiStoreTukaziSyncTask", "call back is null");
+      ad.w("MicroMsg.BKGLoader.EmojiUploadTask", "call back is null.");
     }
+    this.pGY = new com.tencent.mm.plugin.emoji.f.f(this.pGZ);
+    g.ajB().gAO.a(this.pGY, 0);
+    AppMethodBeat.o(108782);
   }
 }
 

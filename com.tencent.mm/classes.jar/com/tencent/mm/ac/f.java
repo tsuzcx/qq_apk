@@ -1,246 +1,328 @@
 package com.tencent.mm.ac;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.protocal.protobuf.crm;
-import d.g.b.k;
-import d.l;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import junit.framework.Assert;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"getKey", "", "originKey", "keyMap", "Ljava/util/HashMap;", "pbToJSON", "Lorg/json/JSONObject;", "originObj", "", "", "jsonObj", "pbToList", "Ljava/util/LinkedList;", "list", "pbToMap", "obj", "clazz", "Ljava/lang/Class;", "putListToJSON", "", "array", "Lorg/json/JSONArray;", "putMapToJSON", "map", "", "safePbToJSON", "libktcomm_release"})
 public final class f
+  extends JSONArray
+  implements a
 {
-  private static String a(String paramString, HashMap<String, String> paramHashMap)
+  private final a gAd;
+  
+  public f()
   {
-    AppMethodBeat.i(168834);
-    k.h(paramString, "originKey");
-    if ((paramHashMap != null) && (paramHashMap.containsKey(paramString)))
-    {
-      paramHashMap = (String)paramHashMap.get(paramString);
-      paramString = paramHashMap;
-      if (paramHashMap == null)
-      {
-        AppMethodBeat.o(168834);
-        return "";
-      }
-    }
-    AppMethodBeat.o(168834);
+    AppMethodBeat.i(158497);
+    this.gAd = h.aio();
+    AppMethodBeat.o(158497);
+  }
+  
+  f(a parama)
+  {
+    AppMethodBeat.i(158499);
+    Assert.assertNotNull(parama);
+    this.gAd = parama;
+    AppMethodBeat.o(158499);
+  }
+  
+  public f(String paramString)
+  {
+    AppMethodBeat.i(158498);
+    this.gAd = h.wL(paramString);
+    AppMethodBeat.o(158498);
+  }
+  
+  private f bm(Object paramObject)
+  {
+    AppMethodBeat.i(158505);
+    this.gAd.bl(paramObject);
+    AppMethodBeat.o(158505);
+    return this;
+  }
+  
+  private f cN(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(158508);
+    this.gAd.cM(paramInt1, paramInt2);
+    AppMethodBeat.o(158508);
+    return this;
+  }
+  
+  private f d(int paramInt, double paramDouble)
+  {
+    AppMethodBeat.i(158507);
+    this.gAd.c(paramInt, paramDouble);
+    AppMethodBeat.o(158507);
+    return this;
+  }
+  
+  private f dz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(158501);
+    this.gAd.dy(paramBoolean);
+    AppMethodBeat.o(158501);
+    return this;
+  }
+  
+  private f g(int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(158510);
+    this.gAd.f(paramInt, paramObject);
+    AppMethodBeat.o(158510);
+    return this;
+  }
+  
+  private f k(double paramDouble)
+  {
+    AppMethodBeat.i(158502);
+    this.gAd.j(paramDouble);
+    AppMethodBeat.o(158502);
+    return this;
+  }
+  
+  private f mF(int paramInt)
+  {
+    AppMethodBeat.i(158503);
+    this.gAd.mA(paramInt);
+    AppMethodBeat.o(158503);
+    return this;
+  }
+  
+  private f mH(int paramInt)
+  {
+    AppMethodBeat.i(158531);
+    f localf = new f(this.gAd.mC(paramInt));
+    AppMethodBeat.o(158531);
+    return localf;
+  }
+  
+  private f ra(long paramLong)
+  {
+    AppMethodBeat.i(158504);
+    this.gAd.qZ(paramLong);
+    AppMethodBeat.o(158504);
+    return this;
+  }
+  
+  private f u(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(158509);
+    this.gAd.t(paramInt, paramLong);
+    AppMethodBeat.o(158509);
+    return this;
+  }
+  
+  private f z(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(158506);
+    this.gAd.y(paramInt, paramBoolean);
+    AppMethodBeat.o(158506);
+    return this;
+  }
+  
+  public final Object get(int paramInt)
+  {
+    AppMethodBeat.i(158512);
+    Object localObject = this.gAd.get(paramInt);
+    AppMethodBeat.o(158512);
+    return localObject;
+  }
+  
+  public final boolean getBoolean(int paramInt)
+  {
+    AppMethodBeat.i(158515);
+    boolean bool = this.gAd.getBoolean(paramInt);
+    AppMethodBeat.o(158515);
+    return bool;
+  }
+  
+  public final double getDouble(int paramInt)
+  {
+    AppMethodBeat.i(158518);
+    double d = this.gAd.getDouble(paramInt);
+    AppMethodBeat.o(158518);
+    return d;
+  }
+  
+  public final int getInt(int paramInt)
+  {
+    AppMethodBeat.i(158521);
+    paramInt = this.gAd.getInt(paramInt);
+    AppMethodBeat.o(158521);
+    return paramInt;
+  }
+  
+  public final long getLong(int paramInt)
+  {
+    AppMethodBeat.i(158524);
+    long l = this.gAd.getLong(paramInt);
+    AppMethodBeat.o(158524);
+    return l;
+  }
+  
+  public final String getString(int paramInt)
+  {
+    AppMethodBeat.i(158527);
+    String str = this.gAd.getString(paramInt);
+    AppMethodBeat.o(158527);
+    return str;
+  }
+  
+  public final boolean isNull(int paramInt)
+  {
+    AppMethodBeat.i(158511);
+    boolean bool = this.gAd.isNull(paramInt);
+    AppMethodBeat.o(158511);
+    return bool;
+  }
+  
+  public final int length()
+  {
+    AppMethodBeat.i(158500);
+    int i = this.gAd.length();
+    AppMethodBeat.o(158500);
+    return i;
+  }
+  
+  public final f mG(int paramInt)
+  {
+    AppMethodBeat.i(158530);
+    f localf = new f(this.gAd.mB(paramInt));
+    AppMethodBeat.o(158530);
+    return localf;
+  }
+  
+  public final i mI(int paramInt)
+  {
+    AppMethodBeat.i(158532);
+    i locali = new i(this.gAd.mD(paramInt));
+    AppMethodBeat.o(158532);
+    return locali;
+  }
+  
+  public final i mJ(int paramInt)
+  {
+    AppMethodBeat.i(158533);
+    i locali = new i(this.gAd.mE(paramInt));
+    AppMethodBeat.o(158533);
+    return locali;
+  }
+  
+  public final Object opt(int paramInt)
+  {
+    AppMethodBeat.i(158513);
+    Object localObject = this.gAd.opt(paramInt);
+    AppMethodBeat.o(158513);
+    return localObject;
+  }
+  
+  public final boolean optBoolean(int paramInt)
+  {
+    AppMethodBeat.i(158516);
+    boolean bool = this.gAd.optBoolean(paramInt);
+    AppMethodBeat.o(158516);
+    return bool;
+  }
+  
+  public final boolean optBoolean(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(158517);
+    paramBoolean = this.gAd.optBoolean(paramInt, paramBoolean);
+    AppMethodBeat.o(158517);
+    return paramBoolean;
+  }
+  
+  public final double optDouble(int paramInt)
+  {
+    AppMethodBeat.i(158519);
+    double d = this.gAd.optDouble(paramInt);
+    AppMethodBeat.o(158519);
+    return d;
+  }
+  
+  public final double optDouble(int paramInt, double paramDouble)
+  {
+    AppMethodBeat.i(158520);
+    paramDouble = this.gAd.optDouble(paramInt, paramDouble);
+    AppMethodBeat.o(158520);
+    return paramDouble;
+  }
+  
+  public final int optInt(int paramInt)
+  {
+    AppMethodBeat.i(158522);
+    paramInt = this.gAd.optInt(paramInt);
+    AppMethodBeat.o(158522);
+    return paramInt;
+  }
+  
+  public final int optInt(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(158523);
+    paramInt1 = this.gAd.optInt(paramInt1, paramInt2);
+    AppMethodBeat.o(158523);
+    return paramInt1;
+  }
+  
+  public final long optLong(int paramInt)
+  {
+    AppMethodBeat.i(158525);
+    long l = this.gAd.optLong(paramInt);
+    AppMethodBeat.o(158525);
+    return l;
+  }
+  
+  public final long optLong(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(158526);
+    paramLong = this.gAd.optLong(paramInt, paramLong);
+    AppMethodBeat.o(158526);
+    return paramLong;
+  }
+  
+  public final String optString(int paramInt)
+  {
+    AppMethodBeat.i(158528);
+    String str = this.gAd.optString(paramInt);
+    AppMethodBeat.o(158528);
+    return str;
+  }
+  
+  public final String optString(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(158529);
+    paramString = this.gAd.optString(paramInt, paramString);
+    AppMethodBeat.o(158529);
     return paramString;
   }
   
-  private static HashMap<String, Object> a(Object paramObject, Class<?> paramClass, HashMap<String, String> paramHashMap)
+  public final Object remove(int paramInt)
   {
-    AppMethodBeat.i(168833);
-    k.h(paramObject, "obj");
-    k.h(paramClass, "clazz");
-    HashMap localHashMap = new HashMap();
-    paramClass = paramClass.getFields();
-    int j = paramClass.length;
-    int i = 0;
-    for (;;)
-    {
-      Object localObject1;
-      if (i < j) {
-        localObject1 = paramClass[i];
-      }
-      try
-      {
-        Object localObject2 = ((Field)localObject1).get(paramObject);
-        if (localObject2 == null) {
-          break label285;
-        }
-        k.g(localObject1, "field");
-        Object localObject3 = ((Field)localObject1).getType();
-        k.g(localObject3, "field.type");
-        if ((((Class)localObject3).isPrimitive()) || ((localObject2 instanceof String)))
-        {
-          localObject3 = (Map)localHashMap;
-          localObject1 = ((Field)localObject1).getName();
-          k.g(localObject1, "field.name");
-          ((Map)localObject3).put(a((String)localObject1, paramHashMap), localObject2);
-        }
-        else if ((localObject2 instanceof a))
-        {
-          localObject3 = ((Field)localObject1).getType();
-          k.g(localObject3, "field.type");
-          localObject2 = a(localObject2, (Class)localObject3, paramHashMap);
-          localObject3 = (Map)localHashMap;
-          localObject1 = ((Field)localObject1).getName();
-          k.g(localObject1, "field.name");
-          ((Map)localObject3).put(a((String)localObject1, paramHashMap), localObject2);
-        }
-        else if ((localObject2 instanceof LinkedList))
-        {
-          localObject2 = a((LinkedList)localObject2, paramHashMap);
-          if (localObject2 != null)
-          {
-            localObject3 = (Map)localHashMap;
-            localObject1 = ((Field)localObject1).getName();
-            k.g(localObject1, "field.name");
-            ((Map)localObject3).put(a((String)localObject1, paramHashMap), localObject2);
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        label285:
-        break label285;
-      }
-      AppMethodBeat.o(168833);
-      return localHashMap;
-      i += 1;
-    }
+    AppMethodBeat.i(158514);
+    Object localObject = this.gAd.remove(paramInt);
+    AppMethodBeat.o(158514);
+    return localObject;
   }
   
-  private static LinkedList<Object> a(LinkedList<?> paramLinkedList, HashMap<String, String> paramHashMap)
+  public final String toString()
   {
-    AppMethodBeat.i(168835);
-    k.h(paramLinkedList, "list");
-    if (paramLinkedList.size() > 0) {}
-    for (Object localObject1 = paramLinkedList.get(0);; localObject1 = null)
-    {
-      if (localObject1 == null) {
-        k.fOy();
-      }
-      if ((localObject1.getClass().isPrimitive()) || ((localObject1 instanceof String)))
-      {
-        AppMethodBeat.o(168835);
-        return paramLinkedList;
-      }
-      if ((localObject1 instanceof crm))
-      {
-        paramHashMap = new LinkedList();
-        paramLinkedList = paramLinkedList.iterator();
-        while (paramLinkedList.hasNext()) {
-          paramHashMap.add(paramLinkedList.next().toString());
-        }
-        AppMethodBeat.o(168835);
-        return paramHashMap;
-      }
-      if ((localObject1 instanceof a))
-      {
-        localObject1 = new LinkedList();
-        paramLinkedList = paramLinkedList.iterator();
-        while (paramLinkedList.hasNext())
-        {
-          Object localObject2 = paramLinkedList.next();
-          k.g(localObject2, "o");
-          ((LinkedList)localObject1).add(a(localObject2, localObject2.getClass(), paramHashMap));
-        }
-        AppMethodBeat.o(168835);
-        return localObject1;
-      }
-      AppMethodBeat.o(168835);
-      return null;
-    }
+    AppMethodBeat.i(158534);
+    String str = this.gAd.toString();
+    AppMethodBeat.o(158534);
+    return str;
   }
   
-  public static final void a(Object paramObject, JSONObject paramJSONObject)
+  public final String toString(int paramInt)
   {
-    AppMethodBeat.i(168830);
-    k.h(paramObject, "originObj");
-    k.h(paramJSONObject, "jsonObj");
-    a((Map)a(paramObject, paramObject.getClass(), null), paramJSONObject);
-    AppMethodBeat.o(168830);
-  }
-  
-  private static void a(List<? extends Object> paramList, JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(168832);
-    k.h(paramList, "list");
-    k.h(paramJSONArray, "array");
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject1 = paramList.next();
-      Object localObject2;
-      if ((localObject1 instanceof LinkedList))
-      {
-        localObject2 = new JSONArray();
-        a((List)localObject1, (JSONArray)localObject2);
-        paramJSONArray.put(localObject2);
-      }
-      else if ((localObject1 instanceof Map))
-      {
-        localObject2 = new JSONObject();
-        a((Map)localObject1, (JSONObject)localObject2);
-        paramJSONArray.put(localObject2);
-      }
-      else
-      {
-        paramJSONArray.put(localObject1);
-      }
-    }
-    AppMethodBeat.o(168832);
-  }
-  
-  private static void a(Map<String, ? extends Object> paramMap, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(168831);
-    k.h(paramMap, "map");
-    k.h(paramJSONObject, "obj");
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Object localObject1 = (Map.Entry)paramMap.next();
-      String str = (String)((Map.Entry)localObject1).getKey();
-      localObject1 = ((Map.Entry)localObject1).getValue();
-      Object localObject2;
-      if ((localObject1 instanceof Map))
-      {
-        localObject2 = new JSONObject();
-        a((Map)localObject1, (JSONObject)localObject2);
-        paramJSONObject.put(str, localObject2);
-      }
-      else if ((localObject1 instanceof LinkedList))
-      {
-        localObject2 = new JSONArray();
-        a((List)localObject1, (JSONArray)localObject2);
-        paramJSONObject.put(str, localObject2);
-      }
-      else if ((localObject1 instanceof Long))
-      {
-        paramJSONObject.put(str, localObject1.toString());
-      }
-      else
-      {
-        paramJSONObject.put(str, localObject1);
-      }
-    }
-    AppMethodBeat.o(168831);
-  }
-  
-  public static final JSONObject bD(Object paramObject)
-  {
-    AppMethodBeat.i(168829);
-    k.h(paramObject, "originObj");
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      a(paramObject, localJSONObject);
-      AppMethodBeat.o(168829);
-      return localJSONObject;
-    }
-    catch (Exception paramObject)
-    {
-      paramObject = new JSONObject();
-      AppMethodBeat.o(168829);
-    }
-    return paramObject;
+    AppMethodBeat.i(158535);
+    String str = this.gAd.toString(paramInt);
+    AppMethodBeat.o(158535);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ac.f
  * JD-Core Version:    0.7.0.1
  */

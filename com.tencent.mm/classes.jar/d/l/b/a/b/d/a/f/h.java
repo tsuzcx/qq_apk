@@ -1,25 +1,25 @@
 package d.l.b.a.b.d.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class h
 {
-  public final g Lqo;
-  public final boolean Lqp;
+  public final g Nhl;
+  public final boolean Nhm;
   
   public h(g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(58040);
-    this.Lqo = paramg;
-    this.Lqp = paramBoolean;
+    this.Nhl = paramg;
+    this.Nhm = paramBoolean;
     AppMethodBeat.o(58040);
   }
   
   private static h a(g paramg, boolean paramBoolean)
   {
     AppMethodBeat.i(58041);
-    k.h(paramg, "qualifier");
+    p.h(paramg, "qualifier");
     paramg = new h(paramg, paramBoolean);
     AppMethodBeat.o(58041);
     return paramg;
@@ -30,24 +30,17 @@ public final class h
     AppMethodBeat.i(58045);
     if (this != paramObject)
     {
-      if (!(paramObject instanceof h)) {
-        break label65;
-      }
-      paramObject = (h)paramObject;
-      if (!k.g(this.Lqo, paramObject.Lqo)) {
-        break label65;
-      }
-      if (this.Lqp != paramObject.Lqp) {
-        break label60;
+      if ((paramObject instanceof h))
+      {
+        paramObject = (h)paramObject;
+        if ((!p.i(this.Nhl, paramObject.Nhl)) || (this.Nhm != paramObject.Nhm)) {}
       }
     }
-    label60:
-    for (int i = 1; i != 0; i = 0)
+    else
     {
       AppMethodBeat.o(58045);
       return true;
     }
-    label65:
     AppMethodBeat.o(58045);
     return false;
   }
@@ -60,7 +53,7 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(58043);
-    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.Lqo + ", isForWarningOnly=" + this.Lqp + ")";
+    String str = "NullabilityQualifierWithMigrationStatus(qualifier=" + this.Nhl + ", isForWarningOnly=" + this.Nhm + ")";
     AppMethodBeat.o(58043);
     return str;
   }

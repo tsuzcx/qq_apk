@@ -264,7 +264,7 @@ class SystemWebViewClient
         bool1 = ((Boolean)paramWebView).booleanValue();
       }
     }
-    paramWebView = new SystemWebViewClient.e(this, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
+    paramWebView = new e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
     paramWebResourceRequest = this.a.shouldInterceptRequest(this.b, paramWebView);
     if (paramWebResourceRequest == null)
     {
@@ -339,7 +339,7 @@ class SystemWebViewClient
         bool1 = ((Boolean)paramWebView).booleanValue();
       }
     }
-    paramWebView = new SystemWebViewClient.e(this, paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
+    paramWebView = new e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
     bool1 = this.a.shouldOverrideUrlLoading(this.b, paramWebView);
     AppMethodBeat.o(54695);
     return bool1;
@@ -453,6 +453,61 @@ class SystemWebViewClient
       boolean bool = this.a.useHttpAuthUsernamePassword();
       AppMethodBeat.o(54324);
       return bool;
+    }
+  }
+  
+  class e
+    implements com.tencent.smtt.export.external.interfaces.WebResourceRequest
+  {
+    private String b;
+    private boolean c;
+    private boolean d;
+    private boolean e;
+    private String f;
+    private Map<String, String> g;
+    
+    public e(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Map<String, String> paramMap)
+    {
+      this.b = paramBoolean1;
+      this.c = paramBoolean2;
+      this.d = paramBoolean3;
+      this.e = paramString;
+      this.f = paramMap;
+      Object localObject;
+      this.g = localObject;
+    }
+    
+    public String getMethod()
+    {
+      return this.f;
+    }
+    
+    public Map<String, String> getRequestHeaders()
+    {
+      return this.g;
+    }
+    
+    public Uri getUrl()
+    {
+      AppMethodBeat.i(54362);
+      Uri localUri = Uri.parse(this.b);
+      AppMethodBeat.o(54362);
+      return localUri;
+    }
+    
+    public boolean hasGesture()
+    {
+      return this.e;
+    }
+    
+    public boolean isForMainFrame()
+    {
+      return this.c;
+    }
+    
+    public boolean isRedirect()
+    {
+      return this.d;
     }
   }
   

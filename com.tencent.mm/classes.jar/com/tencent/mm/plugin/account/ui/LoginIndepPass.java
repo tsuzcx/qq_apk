@@ -5,38 +5,33 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bn;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.bo;
 import com.tencent.mm.modelsimple.s;
 import com.tencent.mm.platformtools.e;
 import com.tencent.mm.platformtools.t;
 import com.tencent.mm.platformtools.y;
-import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.a;
@@ -45,38 +40,38 @@ import com.tencent.mm.ui.base.p;
 
 public class LoginIndepPass
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
   private String account;
-  private String dxX;
-  private ProgressDialog fts;
-  private String iHQ;
-  private p iJi;
-  private SecurityImage iJk;
-  private String iPp;
-  private c iQA;
-  private String iRN;
-  private f iRj;
-  private String iRn;
-  private EditText iSn;
-  private String iSo;
-  private Button iSp;
+  private String dKk;
+  private ProgressDialog fMu;
+  private String jaZ;
+  private p jcr;
+  private SecurityImage jct;
+  private String jiy;
+  private c jjI;
+  private String jkV;
+  private f jkr;
+  private String jkv;
+  private EditText jlv;
+  private String jlw;
+  private Button jlx;
   
   public LoginIndepPass()
   {
     AppMethodBeat.i(128163);
-    this.fts = null;
-    this.iJk = null;
-    this.iRj = new f();
-    this.iQA = new LoginIndepPass.1(this);
+    this.fMu = null;
+    this.jct = null;
+    this.jkr = new f();
+    this.jjI = new LoginIndepPass.1(this);
     AppMethodBeat.o(128163);
   }
   
-  private void aQH()
+  private void aTT()
   {
     AppMethodBeat.i(128169);
-    Object localObject = this.iSn.getText().toString();
-    if (bs.isNullOrNil(this.account))
+    Object localObject = this.jlv.getText().toString();
+    if (bt.isNullOrNil(this.account))
     {
       h.l(this, 2131764665, 2131760766);
       AppMethodBeat.o(128169);
@@ -89,19 +84,27 @@ public class LoginIndepPass
       return;
     }
     hideVKB();
-    com.tencent.mm.kernel.g.agi().a(701, this);
-    com.tencent.mm.kernel.g.agi().a(252, this);
+    com.tencent.mm.kernel.g.aiU().a(701, this);
+    com.tencent.mm.kernel.g.aiU().a(252, this);
     localObject = new s(this.account, (String)localObject, null, 1);
-    com.tencent.mm.kernel.g.agi().a((n)localObject, 0);
+    com.tencent.mm.kernel.g.aiU().a((n)localObject, 0);
     getString(2131755906);
-    this.fts = h.b(this, getString(2131760781), true, new LoginIndepPass.16(this, (s)localObject));
+    this.fMu = h.b(this, getString(2131760781), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(128162);
+        com.tencent.mm.kernel.g.aiU().a(this.jkG);
+        AppMethodBeat.o(128162);
+      }
+    });
     AppMethodBeat.o(128169);
   }
   
   private boolean n(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(128171);
-    if (com.tencent.mm.plugin.account.a.a.iyy.a(getContext(), paramInt1, paramInt2, paramString))
+    if (com.tencent.mm.plugin.account.a.a.iRH.a(getContext(), paramInt1, paramInt2, paramString))
     {
       AppMethodBeat.o(128171);
       return true;
@@ -113,7 +116,7 @@ public class LoginIndepPass
       AppMethodBeat.o(128171);
       return false;
     case -1: 
-      if (com.tencent.mm.kernel.g.agi().aBK() == 5)
+      if (com.tencent.mm.kernel.g.aiU().aEN() == 5)
       {
         h.l(this, 2131761537, 2131761536);
         AppMethodBeat.o(128171);
@@ -133,9 +136,9 @@ public class LoginIndepPass
     case -100: 
       com.tencent.mm.kernel.a.hold();
       AppCompatActivity localAppCompatActivity = getContext();
-      com.tencent.mm.kernel.g.agP();
-      if (TextUtils.isEmpty(com.tencent.mm.kernel.a.afG())) {}
-      for (paramString = com.tencent.mm.cc.a.aw(getContext(), 2131761063);; paramString = com.tencent.mm.kernel.a.afG())
+      com.tencent.mm.kernel.g.ajA();
+      if (TextUtils.isEmpty(com.tencent.mm.kernel.a.ais())) {}
+      for (paramString = com.tencent.mm.cc.a.az(getContext(), 2131761063);; paramString = com.tencent.mm.kernel.a.ais())
       {
         h.a(localAppCompatActivity, paramString, getContext().getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
         {
@@ -146,11 +149,11 @@ public class LoginIndepPass
         });
         AppMethodBeat.o(128171);
         return true;
-        com.tencent.mm.kernel.g.agP();
+        com.tencent.mm.kernel.g.ajA();
       }
     }
-    if (!bs.isNullOrNil(this.dxX)) {
-      y.m(getContext(), paramString, this.dxX);
+    if (!bt.isNullOrNil(this.dKk)) {
+      y.n(getContext(), paramString, this.dKk);
     }
     AppMethodBeat.o(128171);
     return true;
@@ -164,76 +167,30 @@ public class LoginIndepPass
   public void initView()
   {
     AppMethodBeat.i(128168);
-    this.iSn = ((EditText)findViewById(2131300998));
-    this.iSp = ((Button)findViewById(2131301581));
+    this.jlv = ((EditText)findViewById(2131300998));
+    this.jlx = ((Button)findViewById(2131301581));
     enableOptionMenu(false);
-    addTextOptionMenu(0, getString(2131760774), new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(128153);
-        LoginIndepPass.a(LoginIndepPass.this);
-        AppMethodBeat.o(128153);
-        return true;
-      }
-    });
-    this.iSn.addTextChangedListener(new TextWatcher()
-    {
-      public final void afterTextChanged(Editable paramAnonymousEditable)
-      {
-        AppMethodBeat.i(128154);
-        LoginIndepPass.b(LoginIndepPass.this);
-        AppMethodBeat.o(128154);
-      }
-      
-      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-      
-      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-    });
-    this.iSn.setOnEditorActionListener(new TextView.OnEditorActionListener()
-    {
-      public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
-      {
-        AppMethodBeat.i(128155);
-        if ((paramAnonymousInt == 6) || (paramAnonymousInt == 5))
-        {
-          LoginIndepPass.a(LoginIndepPass.this);
-          AppMethodBeat.o(128155);
-          return true;
-        }
-        AppMethodBeat.o(128155);
-        return false;
-      }
-    });
-    this.iSn.setOnKeyListener(new View.OnKeyListener()
-    {
-      public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
-      {
-        AppMethodBeat.i(128156);
-        if ((66 == paramAnonymousInt) && (paramAnonymousKeyEvent.getAction() == 0))
-        {
-          LoginIndepPass.a(LoginIndepPass.this);
-          AppMethodBeat.o(128156);
-          return true;
-        }
-        AppMethodBeat.o(128156);
-        return false;
-      }
-    });
-    this.iSp.setText(getString(2131760778));
-    this.iSp.setOnClickListener(new View.OnClickListener()
+    addTextOptionMenu(0, getString(2131760774), new LoginIndepPass.9(this));
+    this.jlv.addTextChangedListener(new LoginIndepPass.10(this));
+    this.jlv.setOnEditorActionListener(new LoginIndepPass.11(this));
+    this.jlv.setOnKeyListener(new LoginIndepPass.12(this));
+    this.jlx.setText(getString(2131760778));
+    this.jlx.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(128159);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/LoginIndepPass$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         h.a(LoginIndepPass.this, LoginIndepPass.this.getString(2131762365) + LoginIndepPass.c(LoginIndepPass.this), LoginIndepPass.this.getString(2131762366), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(final DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(128158);
-            com.tencent.mm.kernel.g.agi().a(145, LoginIndepPass.this);
+            com.tencent.mm.kernel.g.aiU().a(145, LoginIndepPass.this);
             paramAnonymous2DialogInterface = new com.tencent.mm.modelfriend.a(LoginIndepPass.d(LoginIndepPass.this), 16, "", 0, "");
-            com.tencent.mm.kernel.g.agi().a(paramAnonymous2DialogInterface, 0);
+            com.tencent.mm.kernel.g.aiU().a(paramAnonymous2DialogInterface, 0);
             LoginIndepPass localLoginIndepPass1 = LoginIndepPass.this;
             LoginIndepPass localLoginIndepPass2 = LoginIndepPass.this;
             LoginIndepPass.this.getString(2131755906);
@@ -242,9 +199,9 @@ public class LoginIndepPass
               public final void onCancel(DialogInterface paramAnonymous3DialogInterface)
               {
                 AppMethodBeat.i(128157);
-                com.tencent.mm.kernel.g.agi().a(paramAnonymous2DialogInterface);
-                com.tencent.mm.kernel.g.agi().b(701, LoginIndepPass.this);
-                com.tencent.mm.kernel.g.agi().b(252, LoginIndepPass.this);
+                com.tencent.mm.kernel.g.aiU().a(paramAnonymous2DialogInterface);
+                com.tencent.mm.kernel.g.aiU().b(701, LoginIndepPass.this);
+                com.tencent.mm.kernel.g.aiU().b(252, LoginIndepPass.this);
                 AppMethodBeat.o(128157);
               }
             }));
@@ -254,18 +211,19 @@ public class LoginIndepPass
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
         });
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/LoginIndepPass$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(128159);
       }
     });
     setBackBtn(new LoginIndepPass.14(this));
-    this.iPp = getIntent().getStringExtra("auth_ticket");
-    if (!bs.isNullOrNil(this.iPp)) {
-      new ao().postDelayed(new Runnable()
+    this.jiy = getIntent().getStringExtra("auth_ticket");
+    if (!bt.isNullOrNil(this.jiy)) {
+      new ap().postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(128161);
-          LoginIndepPass.a(LoginIndepPass.this, f.aQM(), f.aQN());
+          LoginIndepPass.a(LoginIndepPass.this, f.aTY(), f.aTZ());
           AppMethodBeat.o(128161);
         }
       }, 500L);
@@ -283,25 +241,25 @@ public class LoginIndepPass
     if (paramIntent == null)
     {
       bool = true;
-      ac.d("MicroMsg.LoginIndepPass", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      ad.d("MicroMsg.LoginIndepPass", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
       if ((paramInt2 != -1) || (paramInt1 != 1024) || (paramIntent == null)) {
         break label178;
       }
       str = paramIntent.getStringExtra("VoiceLoginAuthPwd");
       paramInt2 = paramIntent.getIntExtra("KVoiceHelpCode", 0);
-      bool = bs.isNullOrNil(str);
-      if (!bs.isNullOrNil(str)) {
+      bool = bt.isNullOrNil(str);
+      if (!bt.isNullOrNil(str)) {
         break label169;
       }
     }
     label169:
     for (paramInt1 = i;; paramInt1 = str.length())
     {
-      ac.d("MicroMsg.LoginIndepPass", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ad.d("MicroMsg.LoginIndepPass", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       if (paramInt2 != -217) {
         break label178;
       }
-      aQH();
+      aTT();
       AppMethodBeat.o(128172);
       return;
       bool = false;
@@ -316,16 +274,16 @@ public class LoginIndepPass
     AppMethodBeat.i(128164);
     super.onCreate(paramBundle);
     paramBundle = getString(2131760772);
-    if (d.DIf) {
-      paramBundle = getString(2131755822) + getString(2131755263);
+    if ((d.Fnm) || (i.IS_FLAVOR_BLUE)) {
+      paramBundle = getString(2131755822) + com.tencent.mm.cd.g.is(this);
     }
     setMMTitle(paramBundle);
-    this.iSo = getIntent().getStringExtra("bindmcontact_mobile");
-    if (this.iSo != null) {
-      this.account = az.aLc(this.iSo);
+    this.jlw = getIntent().getStringExtra("bindmcontact_mobile");
+    if (this.jlw != null) {
+      this.account = ba.aQI(this.jlw);
     }
-    com.tencent.mm.plugin.account.a.a.iyy.Lm();
-    this.iHQ = com.tencent.mm.plugin.b.a.EL();
+    com.tencent.mm.plugin.account.a.a.iRH.MU();
+    this.jaZ = com.tencent.mm.plugin.b.a.Mp();
     initView();
     AppMethodBeat.o(128164);
   }
@@ -333,8 +291,8 @@ public class LoginIndepPass
   public void onDestroy()
   {
     AppMethodBeat.i(128167);
-    com.tencent.mm.kernel.g.agi().b(701, this);
-    com.tencent.mm.kernel.g.agi().b(252, this);
+    com.tencent.mm.kernel.g.aiU().b(701, this);
+    com.tencent.mm.kernel.g.aiU().b(252, this);
     super.onDestroy();
     AppMethodBeat.o(128167);
   }
@@ -343,57 +301,57 @@ public class LoginIndepPass
   {
     AppMethodBeat.i(128166);
     super.onPause();
-    com.tencent.mm.sdk.b.a.GpY.d(this.iQA);
+    com.tencent.mm.sdk.b.a.IbL.d(this.jjI);
     StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.kernel.g.agP();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",L200_200,");
-    com.tencent.mm.kernel.g.agP();
-    com.tencent.mm.plugin.b.a.h(false, com.tencent.mm.kernel.a.uc("L200_200") + ",2");
+    com.tencent.mm.kernel.g.ajA();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",L200_200,");
+    com.tencent.mm.kernel.g.ajA();
+    com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.wS("L200_200") + ",2");
     AppMethodBeat.o(128166);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(128165);
-    com.tencent.mm.sdk.b.a.GpY.c(this.iQA);
+    com.tencent.mm.sdk.b.a.IbL.c(this.jjI);
     super.onResume();
     StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.kernel.g.agP();
-    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",L200_200,");
-    com.tencent.mm.kernel.g.agP();
-    com.tencent.mm.plugin.b.a.h(true, com.tencent.mm.kernel.a.uc("L200_200") + ",1");
-    com.tencent.mm.plugin.b.a.IK("L200_200");
+    com.tencent.mm.kernel.g.ajA();
+    localStringBuilder = localStringBuilder.append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",L200_200,");
+    com.tencent.mm.kernel.g.ajA();
+    com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.wS("L200_200") + ",1");
+    com.tencent.mm.plugin.b.a.Kc("L200_200");
     AppMethodBeat.o(128165);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(128170);
-    ac.i("MicroMsg.LoginIndepPass", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fts != null)
+    ad.i("MicroMsg.LoginIndepPass", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.fMu != null)
     {
-      this.fts.dismiss();
-      this.fts = null;
+      this.fMu.dismiss();
+      this.fMu = null;
     }
-    if (this.iJi != null)
+    if (this.jcr != null)
     {
-      this.iJi.dismiss();
-      this.iJi = null;
+      this.jcr.dismiss();
+      this.jcr = null;
     }
     if ((paramn.getType() == 252) || (paramn.getType() == 701))
     {
-      this.dxX = ((s)paramn).aHz();
-      com.tencent.mm.kernel.g.agi().b(701, this);
-      com.tencent.mm.kernel.g.agi().b(252, this);
-      this.iRj.iJn = ((s)paramn).aHA();
-      this.iRj.iJm = ((s)paramn).aHB();
-      this.iRj.iJo = ((s)paramn).aHC();
-      this.iRj.iSx = ((s)paramn).getSecCodeType();
-      this.iRj.account = this.account;
-      this.iRj.iJl = this.iSn.getText().toString();
+      this.dKk = ((s)paramn).aKK();
+      com.tencent.mm.kernel.g.aiU().b(701, this);
+      com.tencent.mm.kernel.g.aiU().b(252, this);
+      this.jkr.jcw = ((s)paramn).aKL();
+      this.jkr.jcv = ((s)paramn).aKM();
+      this.jkr.jcx = ((s)paramn).aKN();
+      this.jkr.jlF = ((s)paramn).getSecCodeType();
+      this.jkr.account = this.account;
+      this.jkr.jcu = this.jlv.getText().toString();
       if (paramInt2 == -75)
       {
-        y.de(getContext());
+        y.dc(getContext());
         AppMethodBeat.o(128170);
         return;
       }
@@ -411,24 +369,24 @@ public class LoginIndepPass
       }
       if (paramInt2 == -205)
       {
-        this.iPp = ((s)paramn).aEs();
-        this.iRN = ((s)paramn).aHE();
-        this.iRn = ((s)paramn).aHH();
-        ac.i("MicroMsg.LoginIndepPass", "summerphone MM_ERR_QQ_OK_NEED_MOBILE authTicket[%s], closeShowStyle[%s]", new Object[] { bs.aLJ(this.iPp), this.iRn });
-        f.a(this.iRj);
+        this.jiy = ((s)paramn).aHx();
+        this.jkV = ((s)paramn).aKP();
+        this.jkv = ((s)paramn).aKS();
+        ad.i("MicroMsg.LoginIndepPass", "summerphone MM_ERR_QQ_OK_NEED_MOBILE authTicket[%s], closeShowStyle[%s]", new Object[] { bt.aRp(this.jiy), this.jkv });
+        f.a(this.jkr);
         paramString = new Intent();
-        paramString.putExtra("auth_ticket", this.iPp);
-        paramString.putExtra("binded_mobile", this.iRN);
-        paramString.putExtra("close_safe_device_style", this.iRn);
+        paramString.putExtra("auth_ticket", this.jiy);
+        paramString.putExtra("binded_mobile", this.jkV);
+        paramString.putExtra("close_safe_device_style", this.jkv);
         paramString.putExtra("from_source", 5);
-        com.tencent.mm.plugin.account.a.a.iyx.g(this, paramString);
+        com.tencent.mm.plugin.account.a.a.iRG.g(this, paramString);
         AppMethodBeat.o(128170);
         return;
       }
       if (paramInt2 == -140)
       {
-        if (!bs.isNullOrNil(this.dxX)) {
-          y.m(this, paramString, this.dxX);
+        if (!bt.isNullOrNil(this.dKk)) {
+          y.n(this, paramString, this.dKk);
         }
         AppMethodBeat.o(128170);
         return;
@@ -436,46 +394,64 @@ public class LoginIndepPass
       if ((paramInt1 != 4) || ((paramInt2 != -16) && (paramInt2 != -17))) {
         break label1229;
       }
-      com.tencent.mm.kernel.g.agi().a(new bn(new LoginIndepPass.3(this)), 0);
+      com.tencent.mm.kernel.g.aiU().a(new bo(new LoginIndepPass.3(this)), 0);
     }
     label1229:
     for (int i = 1;; i = 0)
     {
       if ((paramInt2 == -6) || (paramInt2 == -311) || (paramInt2 == -310))
       {
-        com.tencent.mm.kernel.g.agi().a(701, this);
-        com.tencent.mm.kernel.g.agi().a(252, this);
-        if (this.iJk == null)
+        com.tencent.mm.kernel.g.aiU().a(701, this);
+        com.tencent.mm.kernel.g.aiU().a(252, this);
+        if (this.jct == null)
         {
-          this.iJk = SecurityImage.a.a(getContext(), this.iRj.iSx, this.iRj.iJm, this.iRj.iJn, this.iRj.iJo, new DialogInterface.OnClickListener()
+          this.jct = SecurityImage.a.a(getContext(), this.jkr.jlF, this.jkr.jcv, this.jkr.jcw, this.jkr.jcx, new DialogInterface.OnClickListener()
           {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
               AppMethodBeat.i(128150);
-              ac.d("MicroMsg.LoginIndepPass", "imgSid:" + LoginIndepPass.e(LoginIndepPass.this).iJn + " img len" + LoginIndepPass.e(LoginIndepPass.this).iJm.length + " " + com.tencent.mm.compatible.util.f.YG());
-              paramAnonymousDialogInterface = new s(LoginIndepPass.e(LoginIndepPass.this).account, LoginIndepPass.e(LoginIndepPass.this).iJl, LoginIndepPass.e(LoginIndepPass.this).iSx, LoginIndepPass.f(LoginIndepPass.this).getSecImgCode(), LoginIndepPass.f(LoginIndepPass.this).getSecImgSid(), LoginIndepPass.f(LoginIndepPass.this).getSecImgEncryptKey(), 1, "", false, false);
-              com.tencent.mm.kernel.g.agi().a(paramAnonymousDialogInterface, 0);
+              ad.d("MicroMsg.LoginIndepPass", "imgSid:" + LoginIndepPass.e(LoginIndepPass.this).jcw + " img len" + LoginIndepPass.e(LoginIndepPass.this).jcv.length + " " + com.tencent.mm.compatible.util.f.abi());
+              paramAnonymousDialogInterface = new s(LoginIndepPass.e(LoginIndepPass.this).account, LoginIndepPass.e(LoginIndepPass.this).jcu, LoginIndepPass.e(LoginIndepPass.this).jlF, LoginIndepPass.f(LoginIndepPass.this).getSecImgCode(), LoginIndepPass.f(LoginIndepPass.this).getSecImgSid(), LoginIndepPass.f(LoginIndepPass.this).getSecImgEncryptKey(), 1, "", false, false);
+              com.tencent.mm.kernel.g.aiU().a(paramAnonymousDialogInterface, 0);
               LoginIndepPass localLoginIndepPass1 = LoginIndepPass.this;
               LoginIndepPass localLoginIndepPass2 = LoginIndepPass.this;
               LoginIndepPass.this.getString(2131755906);
-              LoginIndepPass.a(localLoginIndepPass1, h.b(localLoginIndepPass2, LoginIndepPass.this.getString(2131760781), true, new LoginIndepPass.4.1(this, paramAnonymousDialogInterface)));
+              LoginIndepPass.a(localLoginIndepPass1, h.b(localLoginIndepPass2, LoginIndepPass.this.getString(2131760781), true, new DialogInterface.OnCancelListener()
+              {
+                public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+                {
+                  AppMethodBeat.i(128149);
+                  com.tencent.mm.kernel.g.aiU().a(paramAnonymousDialogInterface);
+                  com.tencent.mm.kernel.g.aiU().b(701, LoginIndepPass.this);
+                  com.tencent.mm.kernel.g.aiU().b(252, LoginIndepPass.this);
+                  AppMethodBeat.o(128149);
+                }
+              }));
               AppMethodBeat.o(128150);
             }
-          }, null, new LoginIndepPass.5(this), this.iRj);
+          }, null, new DialogInterface.OnDismissListener()
+          {
+            public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+            {
+              AppMethodBeat.i(128151);
+              LoginIndepPass.g(LoginIndepPass.this);
+              AppMethodBeat.o(128151);
+            }
+          }, this.jkr);
           AppMethodBeat.o(128170);
           return;
         }
-        ac.d("MicroMsg.LoginIndepPass", "imgSid:" + this.iRj.iJn + " img len" + this.iRj.iJm.length + " " + com.tencent.mm.compatible.util.f.YG());
-        this.iJk.b(this.iRj.iSx, this.iRj.iJm, this.iRj.iJn, this.iRj.iJo);
+        ad.d("MicroMsg.LoginIndepPass", "imgSid:" + this.jkr.jcw + " img len" + this.jkr.jcv.length + " " + com.tencent.mm.compatible.util.f.abi());
+        this.jct.b(this.jkr.jlF, this.jkr.jcv, this.jkr.jcw, this.jkr.jcx);
         AppMethodBeat.o(128170);
         return;
       }
       if ((i != 0) || ((paramInt1 == 0) && (paramInt2 == 0)))
       {
         com.tencent.mm.kernel.a.unhold();
-        com.tencent.mm.plugin.account.friend.a.l.aPH();
-        y.FH(this.iRj.account);
-        t.cW(this);
+        com.tencent.mm.plugin.account.friend.a.l.aST();
+        y.IW(this.jkr.account);
+        t.cU(this);
         y.showAddrBookUploadConfirm(this, new LoginIndepPass.6(this), false, 2);
         AppMethodBeat.o(128170);
         return;
@@ -487,7 +463,7 @@ public class LoginIndepPass
       }
       if ((paramn.getType() == 252) || (paramn.getType() == 701))
       {
-        paramString = com.tencent.mm.h.a.rM(paramString);
+        paramString = com.tencent.mm.h.a.uz(paramString);
         if ((paramString != null) && (paramString.a(this, null, null)))
         {
           AppMethodBeat.o(128170);
@@ -499,8 +475,8 @@ public class LoginIndepPass
       return;
       if (paramn.getType() == 145)
       {
-        com.tencent.mm.kernel.g.agi().b(145, this);
-        paramString = ((com.tencent.mm.modelfriend.a)paramn).aEt();
+        com.tencent.mm.kernel.g.aiU().b(145, this);
+        paramString = ((com.tencent.mm.modelfriend.a)paramn).aHy();
         if (paramInt2 == -41)
         {
           h.l(this, 2131762328, 2131762329);
@@ -513,19 +489,19 @@ public class LoginIndepPass
           AppMethodBeat.o(128170);
           return;
         }
-        com.tencent.mm.plugin.b.a.IL("L3");
+        com.tencent.mm.plugin.b.a.Ma("L3");
         Object localObject = new StringBuilder();
-        com.tencent.mm.kernel.g.agP();
-        localObject = ((StringBuilder)localObject).append(com.tencent.mm.kernel.a.agc()).append(",").append(getClass().getName()).append(",L3,");
-        com.tencent.mm.kernel.g.agP();
-        com.tencent.mm.plugin.b.a.h(true, com.tencent.mm.kernel.a.uc("L3") + ",1");
+        com.tencent.mm.kernel.g.ajA();
+        localObject = ((StringBuilder)localObject).append(com.tencent.mm.kernel.a.aiO()).append(",").append(getClass().getName()).append(",L3,");
+        com.tencent.mm.kernel.g.ajA();
+        com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.wS("L3") + ",1");
         localObject = new Intent();
-        ((Intent)localObject).putExtra("bindmcontact_mobile", this.iSo);
+        ((Intent)localObject).putExtra("bindmcontact_mobile", this.jlw);
         ((Intent)localObject).putExtra("bindmcontact_shortmobile", paramString);
         ((Intent)localObject).putExtra("mobile_verify_purpose", 1);
-        ((Intent)localObject).putExtra("mobileverify_countdownsec", ((com.tencent.mm.modelfriend.a)paramn).aEz());
-        ((Intent)localObject).putExtra("mobileverify_countdownstyle", ((com.tencent.mm.modelfriend.a)paramn).aEA());
-        ((Intent)localObject).putExtra("mobileverify_fb", ((com.tencent.mm.modelfriend.a)paramn).aEB());
+        ((Intent)localObject).putExtra("mobileverify_countdownsec", ((com.tencent.mm.modelfriend.a)paramn).aHE());
+        ((Intent)localObject).putExtra("mobileverify_countdownstyle", ((com.tencent.mm.modelfriend.a)paramn).aHF());
+        ((Intent)localObject).putExtra("mobileverify_fb", ((com.tencent.mm.modelfriend.a)paramn).aHG());
         startActivity(MobileVerifyUI.class, (Intent)localObject);
         AppMethodBeat.o(128170);
         return;

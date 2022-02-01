@@ -2,11 +2,11 @@ package com.google.android.exoplayer2.h;
 
 public abstract interface w<S>
 {
-  public abstract void eV(int paramInt);
+  public abstract void a(S paramS, j paramj);
   
-  public abstract void ve();
+  public abstract void ah(S paramS);
   
-  public abstract void vf();
+  public abstract void e(S paramS, int paramInt);
 }
 
 

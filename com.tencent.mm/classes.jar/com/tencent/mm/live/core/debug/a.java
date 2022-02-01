@@ -2,96 +2,96 @@ package com.tencent.mm.live.core.debug;
 
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/debug/LiveDebugViewMonitor;", "", "()V", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "printDebugInfo", "", "debugText", "", "printDebugTagInfo", "tag", "printErrorInfo", "printLiveInfo", "info", "release", "setup", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/debug/LiveDebugViewMonitor;", "", "()V", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "printDebugInfo", "", "debugText", "", "printDebugTagInfo", "tag", "printErrorInfo", "printLiveInfo", "info", "release", "setup", "plugin-core_release"})
 public final class a
 {
-  private static LiveDebugView gqE;
-  public static final a gqF;
+  private static LiveDebugView gKo;
+  public static final a gKp;
   
   static
   {
-    AppMethodBeat.i(209244);
-    gqF = new a();
-    AppMethodBeat.o(209244);
+    AppMethodBeat.i(216902);
+    gKp = new a();
+    AppMethodBeat.o(216902);
   }
   
-  public static void aq(String paramString1, String paramString2)
+  public static void ar(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(209241);
-    k.h(paramString1, "tag");
-    k.h(paramString2, "debugText");
-    ac.i(paramString1, paramString2);
-    paramString1 = gqE;
+    AppMethodBeat.i(216899);
+    p.h(paramString1, "tag");
+    p.h(paramString2, "debugText");
+    ad.i(paramString1, paramString2);
+    paramString1 = gKo;
     if (paramString1 != null)
     {
-      paramString1.uG(paramString2);
-      AppMethodBeat.o(209241);
+      paramString1.xx(paramString2);
+      AppMethodBeat.o(216899);
       return;
     }
-    AppMethodBeat.o(209241);
+    AppMethodBeat.o(216899);
   }
   
   public static void c(LiveDebugView paramLiveDebugView)
   {
-    AppMethodBeat.i(209239);
-    k.h(paramLiveDebugView, "debugView");
-    gqE = paramLiveDebugView;
-    AppMethodBeat.o(209239);
+    AppMethodBeat.i(216897);
+    p.h(paramLiveDebugView, "debugView");
+    gKo = paramLiveDebugView;
+    AppMethodBeat.o(216897);
   }
   
   public static void release()
   {
-    gqE = null;
+    gKo = null;
   }
   
-  public static void uG(String paramString)
+  public static void xx(String paramString)
   {
-    AppMethodBeat.i(209240);
-    k.h(paramString, "debugText");
-    ac.i("MicroMsg.LiveCore", paramString);
-    LiveDebugView localLiveDebugView = gqE;
+    AppMethodBeat.i(216898);
+    p.h(paramString, "debugText");
+    ad.i("MicroMsg.LiveCore", paramString);
+    LiveDebugView localLiveDebugView = gKo;
     if (localLiveDebugView != null)
     {
-      localLiveDebugView.uG(paramString);
-      AppMethodBeat.o(209240);
+      localLiveDebugView.xx(paramString);
+      AppMethodBeat.o(216898);
       return;
     }
-    AppMethodBeat.o(209240);
+    AppMethodBeat.o(216898);
   }
   
-  public static void uH(String paramString)
+  public static void xy(String paramString)
   {
-    AppMethodBeat.i(209242);
-    k.h(paramString, "debugText");
-    ac.i("MicroMsg.LiveCoreError", paramString);
-    LiveDebugView localLiveDebugView = gqE;
+    AppMethodBeat.i(216900);
+    p.h(paramString, "debugText");
+    ad.i("MicroMsg.LiveCoreError", paramString);
+    LiveDebugView localLiveDebugView = gKo;
     if (localLiveDebugView != null)
     {
-      localLiveDebugView.uG(paramString);
-      AppMethodBeat.o(209242);
+      localLiveDebugView.xx(paramString);
+      AppMethodBeat.o(216900);
       return;
     }
-    AppMethodBeat.o(209242);
+    AppMethodBeat.o(216900);
   }
   
-  public static void uI(String paramString)
+  public static void xz(String paramString)
   {
-    AppMethodBeat.i(209243);
-    k.h(paramString, "info");
-    ac.i("MicroMsg.LiveCoreNet", paramString);
-    LiveDebugView localLiveDebugView = gqE;
+    AppMethodBeat.i(216901);
+    p.h(paramString, "info");
+    ad.i("MicroMsg.LiveCoreNet", paramString);
+    LiveDebugView localLiveDebugView = gKo;
     if (localLiveDebugView != null)
     {
-      k.h(paramString, "liveInfo");
-      localLiveDebugView.gqC.setText((CharSequence)paramString);
-      AppMethodBeat.o(209243);
+      p.h(paramString, "liveInfo");
+      localLiveDebugView.gKm.setText((CharSequence)paramString);
+      AppMethodBeat.o(216901);
       return;
     }
-    AppMethodBeat.o(209243);
+    AppMethodBeat.o(216901);
   }
 }
 

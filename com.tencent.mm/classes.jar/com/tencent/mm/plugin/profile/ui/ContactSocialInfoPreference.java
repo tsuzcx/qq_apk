@@ -15,126 +15,126 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ContactSocialInfoPreference
   extends Preference
 {
-  private TextView oel;
-  private int vJA;
-  private ImageView vJp;
-  private ImageView vJq;
-  private ImageView vJr;
-  private ImageView vJs;
-  private ImageView vJt;
-  private ImageView vJu;
-  private int vJv;
-  private int vJw;
-  private int vJx;
-  private int vJy;
-  private int vJz;
+  private TextView oHF;
+  private ImageView wQA;
+  private ImageView wQB;
+  private ImageView wQC;
+  private ImageView wQD;
+  private int wQE;
+  private int wQF;
+  private int wQG;
+  private int wQH;
+  private int wQI;
+  private int wQJ;
+  private ImageView wQy;
+  private ImageView wQz;
   
   public ContactSocialInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.vJv = 8;
-    this.vJw = 8;
-    this.vJx = 8;
-    this.vJy = 8;
-    this.vJz = 8;
-    this.vJA = 8;
+    this.wQE = 8;
+    this.wQF = 8;
+    this.wQG = 8;
+    this.wQH = 8;
+    this.wQI = 8;
+    this.wQJ = 8;
   }
   
   public ContactSocialInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27047);
-    this.vJv = 8;
-    this.vJw = 8;
-    this.vJx = 8;
-    this.vJy = 8;
-    this.vJz = 8;
-    this.vJA = 8;
+    this.wQE = 8;
+    this.wQF = 8;
+    this.wQG = 8;
+    this.wQH = 8;
+    this.wQI = 8;
+    this.wQJ = 8;
     setLayoutResource(2131494804);
     AppMethodBeat.o(27047);
   }
   
-  private void cL()
+  private void updateView()
   {
     AppMethodBeat.i(27055);
-    if (this.vJp != null) {
-      this.vJp.setVisibility(this.vJv);
+    if (this.wQy != null) {
+      this.wQy.setVisibility(this.wQE);
     }
-    if (this.vJq != null) {
-      this.vJq.setVisibility(this.vJw);
+    if (this.wQz != null) {
+      this.wQz.setVisibility(this.wQF);
     }
-    if (this.vJr != null) {
-      this.vJr.setVisibility(this.vJx);
+    if (this.wQA != null) {
+      this.wQA.setVisibility(this.wQG);
     }
-    if (this.vJs != null) {
-      this.vJs.setVisibility(this.vJy);
+    if (this.wQB != null) {
+      this.wQB.setVisibility(this.wQH);
     }
-    if (this.vJt != null) {
-      this.vJt.setVisibility(this.vJz);
+    if (this.wQC != null) {
+      this.wQC.setVisibility(this.wQI);
     }
-    if (this.oel != null)
+    if (this.oHF != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.oel.getLayoutParams();
-      localLayoutParams.width = a.au(this.mContext, 2131165370);
-      this.oel.setLayoutParams(localLayoutParams);
+      ViewGroup.LayoutParams localLayoutParams = this.oHF.getLayoutParams();
+      localLayoutParams.width = a.ax(this.mContext, 2131165370);
+      this.oHF.setLayoutParams(localLayoutParams);
     }
-    if (this.vJu != null) {
-      this.vJu.setVisibility(this.vJA);
+    if (this.wQD != null) {
+      this.wQD.setVisibility(this.wQJ);
     }
     AppMethodBeat.o(27055);
   }
   
-  public final void Lk(int paramInt)
+  public final void MM(int paramInt)
   {
     AppMethodBeat.i(27051);
-    this.vJw = paramInt;
-    cL();
+    this.wQF = paramInt;
+    updateView();
     AppMethodBeat.o(27051);
   }
   
-  public final void Ll(int paramInt)
+  public final void MN(int paramInt)
   {
     AppMethodBeat.i(27052);
-    this.vJx = paramInt;
-    cL();
+    this.wQG = paramInt;
+    updateView();
     AppMethodBeat.o(27052);
   }
   
-  public final void Lm(int paramInt)
+  public final void MO(int paramInt)
   {
     AppMethodBeat.i(27053);
-    this.vJz = paramInt;
-    cL();
+    this.wQI = paramInt;
+    updateView();
     AppMethodBeat.o(27053);
   }
   
-  public final void Ln(int paramInt)
+  public final void MP(int paramInt)
   {
     AppMethodBeat.i(27054);
-    this.vJA = paramInt;
-    cL();
+    this.wQJ = paramInt;
+    updateView();
     AppMethodBeat.o(27054);
   }
   
-  public final void Lo(int paramInt)
+  public final void MQ(int paramInt)
   {
     AppMethodBeat.i(27050);
-    this.vJv = paramInt;
-    cL();
+    this.wQE = paramInt;
+    updateView();
     AppMethodBeat.o(27050);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27049);
-    this.vJp = ((ImageView)paramView.findViewById(2131300953));
-    this.vJq = ((ImageView)paramView.findViewById(2131300958));
-    this.vJr = ((ImageView)paramView.findViewById(2131300949));
-    this.vJs = ((ImageView)paramView.findViewById(2131300927));
-    this.vJt = ((ImageView)paramView.findViewById(2131300937));
-    this.vJu = ((ImageView)paramView.findViewById(2131300967));
-    this.oel = ((TextView)paramView.findViewById(2131305902));
-    cL();
+    this.wQy = ((ImageView)paramView.findViewById(2131300953));
+    this.wQz = ((ImageView)paramView.findViewById(2131300958));
+    this.wQA = ((ImageView)paramView.findViewById(2131300949));
+    this.wQB = ((ImageView)paramView.findViewById(2131300927));
+    this.wQC = ((ImageView)paramView.findViewById(2131300937));
+    this.wQD = ((ImageView)paramView.findViewById(2131300967));
+    this.oHF = ((TextView)paramView.findViewById(2131305902));
+    updateView();
     super.onBindView(paramView);
     AppMethodBeat.o(27049);
   }

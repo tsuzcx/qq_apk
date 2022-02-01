@@ -25,26 +25,26 @@ public class a<_Callback>
   public final void a(final a<_Callback> parama)
   {
     AppMethodBeat.i(158414);
-    Iterator localIterator = fxj().iterator();
+    Iterator localIterator = fNW().iterator();
     while (localIterator.hasNext())
     {
       final b localb = (b)localIterator.next();
       if (localb != null) {
-        if (localb.cII != null)
+        if (localb.cTQ != null)
         {
-          this.Jqe.c(localb.cII);
-          this.Jqe.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.Jql, true);
+          this.LhJ.c(localb.cTQ);
+          this.LhJ.a(new com.tencent.mm.vending.c.a() {}, com.tencent.mm.vending.c.a.LhQ, true);
         }
         else
         {
-          parama.bl(localb.Jqg);
+          parama.bn(localb.LhL);
         }
       }
     }
     AppMethodBeat.o(158414);
   }
   
-  public b<_Callback> bs(_Callback param_Callback)
+  public b<_Callback> bu(_Callback param_Callback)
   {
     AppMethodBeat.i(158415);
     param_Callback = super.a(new b(param_Callback, this));
@@ -61,7 +61,7 @@ public class a<_Callback>
   
   public static abstract interface a<_Callback>
   {
-    public abstract void bl(_Callback param_Callback);
+    public abstract void bn(_Callback param_Callback);
   }
 }
 

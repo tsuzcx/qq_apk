@@ -1,6 +1,7 @@
 package com.tencent.mm.live.core.core.trtc.widget;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,62 +16,68 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class MultiLineRadioGroup
   extends LinearLayout
 {
-  private int gqj;
-  private CompoundButton.OnCheckedChangeListener gqk;
-  private boolean gql;
-  private b gqm;
-  private c gqn;
+  private int gJT;
+  private CompoundButton.OnCheckedChangeListener gJU;
+  private boolean gJV;
+  private b gJW;
+  private c gJX;
   
   public MultiLineRadioGroup(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(209068);
-    this.gqj = -1;
-    this.gql = false;
-    this.gqj = -1;
+    AppMethodBeat.i(216722);
+    this.gJT = -1;
+    this.gJV = false;
+    this.gJT = -1;
     setOrientation(1);
-    this.gqk = new a((byte)0);
-    this.gqn = new c((byte)0);
-    super.setOnHierarchyChangeListener(this.gqn);
-    AppMethodBeat.o(209068);
+    this.gJU = new a((byte)0);
+    this.gJX = new c((byte)0);
+    super.setOnHierarchyChangeListener(this.gJX);
+    AppMethodBeat.o(216722);
   }
   
   private void c(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(209072);
+    AppMethodBeat.i(216726);
     View localView = findViewById(paramInt);
     if ((localView != null) && ((localView instanceof RadioButton))) {
       ((RadioButton)localView).setChecked(paramBoolean);
     }
-    AppMethodBeat.o(209072);
+    AppMethodBeat.o(216726);
   }
   
-  private MultiLineRadioGroup.LayoutParams h(AttributeSet paramAttributeSet)
+  private LayoutParams h(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(209073);
-    paramAttributeSet = new MultiLineRadioGroup.LayoutParams(getContext(), paramAttributeSet);
-    AppMethodBeat.o(209073);
+    AppMethodBeat.i(216727);
+    paramAttributeSet = new LayoutParams(getContext(), paramAttributeSet);
+    AppMethodBeat.o(216727);
     return paramAttributeSet;
   }
   
   private void setCheckedId(int paramInt)
   {
-    this.gqj = paramInt;
+    this.gJT = paramInt;
   }
   
   public void addView(final View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(209071);
+    AppMethodBeat.i(216725);
     if ((paramView instanceof RadioButton)) {
       paramView.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
-          AppMethodBeat.i(209062);
+          AppMethodBeat.i(216716);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          a.b("com/tencent/mm/live/core/core/trtc/widget/MultiLineRadioGroup$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
           ((RadioButton)paramView).setChecked(true);
           MultiLineRadioGroup.a(MultiLineRadioGroup.this, (RadioButton)paramView);
           if (MultiLineRadioGroup.a(MultiLineRadioGroup.this) != null)
@@ -78,7 +85,8 @@ public class MultiLineRadioGroup
             MultiLineRadioGroup.a(MultiLineRadioGroup.this);
             paramView.getId();
           }
-          AppMethodBeat.o(209062);
+          a.a(true, this, "com/tencent/mm/live/core/core/trtc/widget/MultiLineRadioGroup$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+          AppMethodBeat.o(216716);
           return true;
         }
       });
@@ -86,7 +94,7 @@ public class MultiLineRadioGroup
     for (;;)
     {
       super.addView(paramView, paramInt, paramLayoutParams);
-      AppMethodBeat.o(209071);
+      AppMethodBeat.o(216725);
       return;
       if ((paramView instanceof LinearLayout))
       {
@@ -102,15 +110,20 @@ public class MultiLineRadioGroup
             {
               public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
               {
-                AppMethodBeat.i(209063);
-                this.gqp.setChecked(true);
-                MultiLineRadioGroup.a(MultiLineRadioGroup.this, this.gqp);
+                AppMethodBeat.i(216717);
+                b localb = new b();
+                localb.bd(paramAnonymousView);
+                localb.bd(paramAnonymousMotionEvent);
+                a.b("com/tencent/mm/live/core/core/trtc/widget/MultiLineRadioGroup$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+                this.gJZ.setChecked(true);
+                MultiLineRadioGroup.a(MultiLineRadioGroup.this, this.gJZ);
                 if (MultiLineRadioGroup.a(MultiLineRadioGroup.this) != null)
                 {
                   MultiLineRadioGroup.a(MultiLineRadioGroup.this);
-                  this.gqp.getId();
+                  this.gJZ.getId();
                 }
-                AppMethodBeat.o(209063);
+                a.a(true, this, "com/tencent/mm/live/core/core/trtc/widget/MultiLineRadioGroup$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+                AppMethodBeat.o(216717);
                 return true;
               }
             });
@@ -123,62 +136,90 @@ public class MultiLineRadioGroup
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return paramLayoutParams instanceof MultiLineRadioGroup.LayoutParams;
+    return paramLayoutParams instanceof LayoutParams;
   }
   
   protected LinearLayout.LayoutParams generateDefaultLayoutParams()
   {
-    AppMethodBeat.i(209074);
-    MultiLineRadioGroup.LayoutParams localLayoutParams = new MultiLineRadioGroup.LayoutParams();
-    AppMethodBeat.o(209074);
+    AppMethodBeat.i(216728);
+    LayoutParams localLayoutParams = new LayoutParams();
+    AppMethodBeat.o(216728);
     return localLayoutParams;
   }
   
   public int getCheckedRadioButtonId()
   {
-    return this.gqj;
+    return this.gJT;
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(209070);
+    AppMethodBeat.i(216724);
     super.onFinishInflate();
-    if (this.gqj != -1)
+    if (this.gJT != -1)
     {
-      this.gql = true;
-      c(this.gqj, true);
-      this.gql = false;
-      setCheckedId(this.gqj);
+      this.gJV = true;
+      c(this.gJT, true);
+      this.gJV = false;
+      setCheckedId(this.gJT);
     }
-    AppMethodBeat.o(209070);
+    AppMethodBeat.o(216724);
   }
   
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
-    AppMethodBeat.i(209075);
+    AppMethodBeat.i(216729);
     super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(MultiLineRadioGroup.class.getName());
-    AppMethodBeat.o(209075);
+    AppMethodBeat.o(216729);
   }
   
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    AppMethodBeat.i(209076);
+    AppMethodBeat.i(216730);
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     paramAccessibilityNodeInfo.setClassName(MultiLineRadioGroup.class.getName());
-    AppMethodBeat.o(209076);
+    AppMethodBeat.o(216730);
   }
   
   public void setOnCheckedChangeListener(b paramb)
   {
-    this.gqm = paramb;
+    this.gJW = paramb;
   }
   
   public void setOnHierarchyChangeListener(ViewGroup.OnHierarchyChangeListener paramOnHierarchyChangeListener)
   {
-    AppMethodBeat.i(209069);
-    c.a(this.gqn, paramOnHierarchyChangeListener);
-    AppMethodBeat.o(209069);
+    AppMethodBeat.i(216723);
+    c.a(this.gJX, paramOnHierarchyChangeListener);
+    AppMethodBeat.o(216723);
+  }
+  
+  public static class LayoutParams
+    extends LinearLayout.LayoutParams
+  {
+    public LayoutParams()
+    {
+      super(-2);
+    }
+    
+    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+    }
+    
+    protected void setBaseAttributes(TypedArray paramTypedArray, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(216719);
+      if (paramTypedArray.hasValue(paramInt1)) {}
+      for (this.width = paramTypedArray.getLayoutDimension(paramInt1, "layout_width"); paramTypedArray.hasValue(paramInt2); this.width = -2)
+      {
+        this.height = paramTypedArray.getLayoutDimension(paramInt2, "layout_height");
+        AppMethodBeat.o(216719);
+        return;
+      }
+      this.height = -2;
+      AppMethodBeat.o(216719);
+    }
   }
   
   final class a
@@ -188,10 +229,10 @@ public class MultiLineRadioGroup
     
     public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
     {
-      AppMethodBeat.i(209064);
+      AppMethodBeat.i(216718);
       if (MultiLineRadioGroup.b(MultiLineRadioGroup.this))
       {
-        AppMethodBeat.o(209064);
+        AppMethodBeat.o(216718);
         return;
       }
       MultiLineRadioGroup.a(MultiLineRadioGroup.this, true);
@@ -201,7 +242,7 @@ public class MultiLineRadioGroup
       MultiLineRadioGroup.a(MultiLineRadioGroup.this, false);
       int i = paramCompoundButton.getId();
       MultiLineRadioGroup.b(MultiLineRadioGroup.this, i);
-      AppMethodBeat.o(209064);
+      AppMethodBeat.o(216718);
     }
   }
   
@@ -210,13 +251,13 @@ public class MultiLineRadioGroup
   final class c
     implements ViewGroup.OnHierarchyChangeListener
   {
-    private ViewGroup.OnHierarchyChangeListener oD;
+    private ViewGroup.OnHierarchyChangeListener qw;
     
     private c() {}
     
     public final void onChildViewAdded(View paramView1, View paramView2)
     {
-      AppMethodBeat.i(209066);
+      AppMethodBeat.i(216720);
       if ((paramView1 == MultiLineRadioGroup.this) && ((paramView2 instanceof RadioButton)))
       {
         if (paramView2.getId() == -1) {
@@ -224,22 +265,22 @@ public class MultiLineRadioGroup
         }
         ((RadioButton)paramView2).setOnCheckedChangeListener(MultiLineRadioGroup.d(MultiLineRadioGroup.this));
       }
-      if (this.oD != null) {
-        this.oD.onChildViewAdded(paramView1, paramView2);
+      if (this.qw != null) {
+        this.qw.onChildViewAdded(paramView1, paramView2);
       }
-      AppMethodBeat.o(209066);
+      AppMethodBeat.o(216720);
     }
     
     public final void onChildViewRemoved(View paramView1, View paramView2)
     {
-      AppMethodBeat.i(209067);
+      AppMethodBeat.i(216721);
       if ((paramView1 == MultiLineRadioGroup.this) && ((paramView2 instanceof RadioButton))) {
         ((RadioButton)paramView2).setOnCheckedChangeListener(null);
       }
-      if (this.oD != null) {
-        this.oD.onChildViewRemoved(paramView1, paramView2);
+      if (this.qw != null) {
+        this.qw.onChildViewRemoved(paramView1, paramView2);
       }
-      AppMethodBeat.o(209067);
+      AppMethodBeat.o(216721);
     }
   }
 }

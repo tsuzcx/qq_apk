@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bo;
 
 public final class rd
   extends b
 {
-  public a dui;
+  public a dFI;
   
   public rd()
   {
@@ -16,16 +16,27 @@ public final class rd
   
   private rd(byte paramByte)
   {
-    AppMethodBeat.i(116045);
-    this.dui = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116044);
+    this.dFI = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116045);
+    AppMethodBeat.o(116044);
   }
   
   public static final class a
   {
-    public bo cZc;
+    public Context context;
+    public long dAY;
+    public int dFJ;
+    public String dFK;
+    public int dFL;
+    public String dkh;
+    public String duW;
+    public String dyU;
+    public String mediaTagName;
+    public int msgType;
+    public String packageName;
+    public int scene;
   }
 }
 

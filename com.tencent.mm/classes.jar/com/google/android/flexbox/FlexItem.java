@@ -25,17 +25,17 @@ abstract interface FlexItem
   
   public abstract int getWidth();
   
-  public abstract int vY();
+  public abstract int xA();
   
-  public abstract boolean vZ();
+  public abstract int xv();
   
-  public abstract float wa();
+  public abstract boolean xw();
   
-  public abstract int wb();
+  public abstract float xx();
   
-  public abstract int wc();
+  public abstract int xy();
   
-  public abstract int wd();
+  public abstract int xz();
 }
 
 

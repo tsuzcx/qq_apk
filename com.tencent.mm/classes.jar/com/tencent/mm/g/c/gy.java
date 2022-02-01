@@ -8,22 +8,13 @@ public abstract class gy
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eVm = "appid".hashCode();
-  private static final int fjn = "jsExceptionCount".hashCode();
-  private static final int fjo = "crashCount".hashCode();
-  private static final int fjp = "beginTimestamp".hashCode();
-  private static final int fjq = "pkgVersion".hashCode();
+  private static final int fyV = "wallet_grey_item_buf".hashCode();
+  private static final int fyg = "wallet_region".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eVk = true;
-  public String field_appid;
-  public long field_beginTimestamp;
-  public int field_crashCount;
-  public int field_jsExceptionCount;
-  public int field_pkgVersion;
-  private boolean fjj = true;
-  private boolean fjk = true;
-  private boolean fjl = true;
-  private boolean fjm = true;
+  public byte[] field_wallet_grey_item_buf;
+  public int field_wallet_region;
+  private boolean fyU = true;
+  private boolean fya = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,11 +29,11 @@ public abstract class gy
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eVm != k) {
+      if (fyg != k) {
         break label65;
       }
-      this.field_appid = paramCursor.getString(i);
-      this.eVk = true;
+      this.field_wallet_region = paramCursor.getInt(i);
+      this.fya = true;
     }
     for (;;)
     {
@@ -50,14 +41,8 @@ public abstract class gy
       break label20;
       break;
       label65:
-      if (fjn == k) {
-        this.field_jsExceptionCount = paramCursor.getInt(i);
-      } else if (fjo == k) {
-        this.field_crashCount = paramCursor.getInt(i);
-      } else if (fjp == k) {
-        this.field_beginTimestamp = paramCursor.getLong(i);
-      } else if (fjq == k) {
-        this.field_pkgVersion = paramCursor.getInt(i);
+      if (fyV == k) {
+        this.field_wallet_grey_item_buf = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,20 +52,11 @@ public abstract class gy
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eVk) {
-      localContentValues.put("appid", this.field_appid);
+    if (this.fya) {
+      localContentValues.put("wallet_region", Integer.valueOf(this.field_wallet_region));
     }
-    if (this.fjj) {
-      localContentValues.put("jsExceptionCount", Integer.valueOf(this.field_jsExceptionCount));
-    }
-    if (this.fjk) {
-      localContentValues.put("crashCount", Integer.valueOf(this.field_crashCount));
-    }
-    if (this.fjl) {
-      localContentValues.put("beginTimestamp", Long.valueOf(this.field_beginTimestamp));
-    }
-    if (this.fjm) {
-      localContentValues.put("pkgVersion", Integer.valueOf(this.field_pkgVersion));
+    if (this.fyU) {
+      localContentValues.put("wallet_grey_item_buf", this.field_wallet_grey_item_buf);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -90,7 +66,7 @@ public abstract class gy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.gy
  * JD-Core Version:    0.7.0.1
  */

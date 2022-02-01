@@ -6,9 +6,9 @@ public abstract interface m
 {
   public abstract boolean a(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3, int paramInt);
   
-  public abstract void dGr();
+  public abstract void dSE();
   
-  public abstract boolean iS(String paramString1, String paramString2);
+  public abstract boolean jd(String paramString1, String paramString2);
 }
 
 

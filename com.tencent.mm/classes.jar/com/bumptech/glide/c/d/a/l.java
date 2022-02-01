@@ -11,14 +11,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   implements q, u<BitmapDrawable>
 {
-  private final Resources aIP;
-  private final u<Bitmap> aJJ;
+  private final Resources aKG;
+  private final u<Bitmap> aLA;
   
   private l(Resources paramResources, u<Bitmap> paramu)
   {
     AppMethodBeat.i(77412);
-    this.aIP = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
-    this.aJJ = ((u)i.checkNotNull(paramu, "Argument must not be null"));
+    this.aKG = ((Resources)i.checkNotNull(paramResources, "Argument must not be null"));
+    this.aLA = ((u)i.checkNotNull(paramu, "Argument must not be null"));
     AppMethodBeat.o(77412);
   }
   
@@ -38,7 +38,7 @@ public final class l
   public final int getSize()
   {
     AppMethodBeat.i(77413);
-    int i = this.aJJ.getSize();
+    int i = this.aLA.getSize();
     AppMethodBeat.o(77413);
     return i;
   }
@@ -46,13 +46,13 @@ public final class l
   public final void initialize()
   {
     AppMethodBeat.i(77415);
-    if ((this.aJJ instanceof q)) {
-      ((q)this.aJJ).initialize();
+    if ((this.aLA instanceof q)) {
+      ((q)this.aLA).initialize();
     }
     AppMethodBeat.o(77415);
   }
   
-  public final Class<BitmapDrawable> oy()
+  public final Class<BitmapDrawable> oQ()
   {
     return BitmapDrawable.class;
   }
@@ -60,7 +60,7 @@ public final class l
   public final void recycle()
   {
     AppMethodBeat.i(77414);
-    this.aJJ.recycle();
+    this.aLA.recycle();
     AppMethodBeat.o(77414);
   }
 }

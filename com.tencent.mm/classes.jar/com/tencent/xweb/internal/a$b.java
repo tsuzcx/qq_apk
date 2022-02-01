@@ -13,42 +13,46 @@ import org.xwalk.core.XWalkEnvironment;
 
 public class a$b
 {
-  public String KCA = "";
-  public String KCB = "";
-  public int KCC = -1;
-  public int KCD = -1;
-  public int KCE = -1;
-  public int KCF = -1;
-  public String KCG = null;
-  public String KCH = null;
-  public String KCI = null;
-  public String KCJ = null;
-  public int KCK = -1;
-  public int KCL = -1;
-  public String KCM;
-  public String KCN;
-  public int KCl = -1;
-  public int KCm = -1;
-  public int KCn = -1;
-  public int KCo = -1;
-  public int KCp = -1;
-  public int KCq = -1;
-  public String KCr = "";
-  public String KCs = "";
-  public int KCt = -1;
-  public int KCu = -1;
-  public int KCv = -1;
-  public int KCw = -1;
-  public int KCx = -1;
-  public double KCy = -1.0D;
-  public double KCz = -1.0D;
+  public int MsG = -1;
+  public int MsH = -1;
+  public int MsI = -1;
+  public int MsJ = -1;
+  public int MsK = -1;
+  public int MsL = -1;
+  public int MsM = -1;
+  public int MsN = -1;
+  public String MsO = "";
+  public String MsP = "";
+  public int MsQ = -1;
+  public int MsR = -1;
+  public int MsS = -1;
+  public int MsT = -1;
+  public int MsU = -1;
+  public int MsV = -1;
+  public int MsW = -1;
+  public double MsX = -1.0D;
+  public double MsY = -1.0D;
+  public String MsZ = "";
+  public String Mta = "";
+  public int Mtb = -1;
+  public int Mtc = -1;
+  public int Mtd = -1;
+  public int Mte = -1;
+  public String Mtf = null;
+  public String Mtg = null;
+  public String Mth = null;
+  public String Mti = null;
+  public int Mtj = -1;
+  public int Mtk = -1;
+  public String Mtl;
+  public String Mtm;
   
-  private static boolean G(double paramDouble)
+  private static boolean H(double paramDouble)
   {
     return (paramDouble >= 0.0D) && (paramDouble < 24.0D);
   }
   
-  private static boolean aV(int paramInt1, int paramInt2, int paramInt3)
+  private static boolean aW(int paramInt1, int paramInt2, int paramInt3)
   {
     if ((paramInt3 > 0) && (paramInt1 > paramInt3)) {}
     while ((paramInt2 > 0) && (paramInt1 < paramInt2)) {
@@ -57,7 +61,7 @@ public class a$b
     return true;
   }
   
-  private static boolean aVe(String paramString)
+  private static boolean bbh(String paramString)
   {
     AppMethodBeat.i(156954);
     Object localObject2 = "";
@@ -77,35 +81,35 @@ public class a$b
       AppMethodBeat.o(156954);
       return false;
     }
-    boolean bool = mF(paramString, (String)localObject2);
+    boolean bool = nd(paramString, (String)localObject2);
     AppMethodBeat.o(156954);
     return bool;
   }
   
-  private boolean fKk()
+  private boolean gbE()
   {
-    AppMethodBeat.i(205083);
-    if ((!G(this.KCy)) && (!G(this.KCz)))
+    AppMethodBeat.i(197094);
+    if ((!H(this.MsX)) && (!H(this.MsY)))
     {
-      AppMethodBeat.o(205083);
+      AppMethodBeat.o(197094);
       return true;
     }
-    double d = e.fKD();
-    if ((this.KCz > 0.0D) && (d > this.KCz))
+    double d = e.gbY();
+    if ((this.MsY > 0.0D) && (d > this.MsY))
     {
-      AppMethodBeat.o(205083);
+      AppMethodBeat.o(197094);
       return false;
     }
-    if ((this.KCy > 0.0D) && (d < this.KCy))
+    if ((this.MsX > 0.0D) && (d < this.MsX))
     {
-      AppMethodBeat.o(205083);
+      AppMethodBeat.o(197094);
       return false;
     }
-    AppMethodBeat.o(205083);
+    AppMethodBeat.o(197094);
     return true;
   }
   
-  private static boolean mE(String paramString1, String paramString2)
+  private static boolean nc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156953);
     if (paramString1 == null)
@@ -141,7 +145,7 @@ public class a$b
     return false;
   }
   
-  private static boolean mF(String paramString1, String paramString2)
+  private static boolean nd(String paramString1, String paramString2)
   {
     boolean bool1 = false;
     AppMethodBeat.i(156955);
@@ -171,7 +175,7 @@ public class a$b
     return bool1;
   }
   
-  public String fKh()
+  public String gbB()
   {
     AppMethodBeat.i(156951);
     String str = XWalkEnvironment.getRuntimeAbi();
@@ -179,101 +183,102 @@ public class a$b
     return str;
   }
   
-  public final boolean fKi()
+  public final boolean gbC()
   {
     AppMethodBeat.i(156952);
-    boolean bool = yZ(false);
+    boolean bool = zM(false);
     AppMethodBeat.o(156952);
     return bool;
   }
   
-  protected boolean fKj()
+  protected boolean gbD()
   {
     return false;
   }
   
-  public final boolean yZ(boolean paramBoolean)
+  public final boolean zM(boolean paramBoolean)
   {
-    AppMethodBeat.i(205082);
+    AppMethodBeat.i(197093);
     int j = XWalkEnvironment.getInstalledNewstVersionForCurAbi();
-    int k = WebView.getTbsSDKVersion(XWalkEnvironment.getApplicationContext());
-    int m = WebView.getInstalledTbsCoreVersion(XWalkEnvironment.getApplicationContext());
+    int k = XWalkEnvironment.getInstalledNewstVersionForPredownAbi();
+    int m = WebView.getTbsSDKVersion(XWalkEnvironment.getApplicationContext());
+    int n = WebView.getInstalledTbsCoreVersion(XWalkEnvironment.getApplicationContext());
     int i;
-    if ((paramBoolean) || (aV(XWalkEnvironment.getGrayValue(), this.KCt, this.KCu))) {
+    if ((paramBoolean) || (aW(XWalkEnvironment.getGrayValue(), this.MsQ, this.MsR))) {
       i = 1;
     }
-    while ((aV(j, this.KCn, this.KCo)) && (aV(200601, this.KCl, this.KCm)) && (aV(k, this.KCC, this.KCD)) && (aV(m, this.KCE, this.KCF)) && (aV(Build.VERSION.SDK_INT, this.KCp, this.KCq)) && (i != 0) && (!aVe(this.KCr)) && (!mF(this.KCA, XWalkEnvironment.getPackageName())) && (fKk())) {
-      if ((this.KCx > 0) && (XWalkEnvironment.getUserType() != this.KCx))
+    while ((aW(j, this.MsI, this.MsJ)) && (aW(k, this.MsK, this.MsL)) && (aW(200801, this.MsG, this.MsH)) && (aW(m, this.Mtb, this.Mtc)) && (aW(n, this.Mtd, this.Mte)) && (aW(Build.VERSION.SDK_INT, this.MsM, this.MsN)) && (i != 0) && (aW(XWalkEnvironment.getTodayGrayValue(), this.MsS, this.MsT)) && (!bbh(this.MsO)) && (!nd(this.MsZ, XWalkEnvironment.getPackageName())) && (gbE())) {
+      if ((this.MsW > 0) && (XWalkEnvironment.getUserType() != this.MsW))
       {
-        AppMethodBeat.o(205082);
+        AppMethodBeat.o(197093);
         return false;
         i = 0;
       }
       else
       {
-        if ((this.KCs != null) && (this.KCs.trim() != null) && (!this.KCs.trim().isEmpty()) && (!aVe(this.KCs)))
+        if ((this.MsP != null) && (this.MsP.trim() != null) && (!this.MsP.trim().isEmpty()) && (!bbh(this.MsP)))
         {
-          AppMethodBeat.o(205082);
+          AppMethodBeat.o(197093);
           return false;
         }
-        if ((this.KCB != null) && (this.KCB.trim() != null) && (!this.KCB.trim().isEmpty()) && (!mF(this.KCB, XWalkEnvironment.getPackageName())))
+        if ((this.Mta != null) && (this.Mta.trim() != null) && (!this.Mta.trim().isEmpty()) && (!nd(this.Mta, XWalkEnvironment.getPackageName())))
         {
-          AppMethodBeat.o(205082);
+          AppMethodBeat.o(197093);
           return false;
         }
-        if (((this.KCv > 0) || (this.KCw > 0)) && (!aV(XWalkEnvironment.getChromiunVersion(), this.KCv, this.KCw)))
+        if (((this.MsU > 0) || (this.MsV > 0)) && (!aW(XWalkEnvironment.getChromiunVersion(), this.MsU, this.MsV)))
         {
-          AppMethodBeat.o(205082);
+          AppMethodBeat.o(197093);
           return false;
         }
-        if (((fKj()) || (!TextUtils.isEmpty(this.KCH))) && (!mE(this.KCH, fKh())))
+        if (((gbD()) || (!TextUtils.isEmpty(this.Mtg))) && (!nc(this.Mtg, gbB())))
         {
-          Log.i("xweb.internal.ConfigDef", "not match runtimeabis, white abis is " + this.KCH + ", cur runtime abi is " + XWalkEnvironment.getRuntimeAbi());
-          AppMethodBeat.o(205082);
+          Log.i("xweb.internal.ConfigDef", "not match runtimeabis, white abis is " + this.Mtg + ", cur runtime abi is " + XWalkEnvironment.getRuntimeAbi());
+          AppMethodBeat.o(197093);
           return false;
         }
-        if ((!TextUtils.isEmpty(this.KCG)) && (!mE(this.KCG, XWalkEnvironment.getDeviceAbi())))
+        if ((!TextUtils.isEmpty(this.Mtf)) && (!nc(this.Mtf, XWalkEnvironment.getDeviceAbi())))
         {
-          Log.i("xweb.internal.ConfigDef", "not match deviceAbis, white abis is " + this.KCG + ", cur device abi is " + XWalkEnvironment.getDeviceAbi());
-          AppMethodBeat.o(205082);
+          Log.i("xweb.internal.ConfigDef", "not match deviceAbis, white abis is " + this.Mtf + ", cur device abi is " + XWalkEnvironment.getDeviceAbi());
+          AppMethodBeat.o(197093);
           return false;
         }
-        if ((!TextUtils.isEmpty(this.KCJ)) && (mE(this.KCJ, XWalkEnvironment.getRuntimeAbi())))
+        if ((!TextUtils.isEmpty(this.Mti)) && (nc(this.Mti, XWalkEnvironment.getRuntimeAbi())))
         {
-          Log.i("xweb.internal.ConfigDef", " match blackRuntimeAbis, black abis is " + this.KCJ + ", cur runtime abi is " + fKh());
-          AppMethodBeat.o(205082);
+          Log.i("xweb.internal.ConfigDef", " match blackRuntimeAbis, black abis is " + this.Mti + ", cur runtime abi is " + gbB());
+          AppMethodBeat.o(197093);
           return false;
         }
-        if ((!TextUtils.isEmpty(this.KCI)) && (mE(this.KCI, XWalkEnvironment.getDeviceAbi())))
+        if ((!TextUtils.isEmpty(this.Mth)) && (nc(this.Mth, XWalkEnvironment.getDeviceAbi())))
         {
-          Log.i("xweb.internal.ConfigDef", " match blackDeviceAbis, black abis is " + this.KCI + ", cur device abi is " + XWalkEnvironment.getDeviceAbi());
-          AppMethodBeat.o(205082);
+          Log.i("xweb.internal.ConfigDef", " match blackDeviceAbis, black abis is " + this.Mth + ", cur device abi is " + XWalkEnvironment.getDeviceAbi());
+          AppMethodBeat.o(197093);
           return false;
         }
         i = XWalkEnvironment.getAppClientVersion();
-        if ((i > 0) && (!aV(i, this.KCK, this.KCL)))
+        if ((i > 0) && (!aW(i, this.Mtj, this.Mtk)))
         {
           Log.i("xweb.internal.ConfigDef", " match AppClientVersion, failed cur client ver is ".concat(String.valueOf(i)));
-          AppMethodBeat.o(205082);
+          AppMethodBeat.o(197093);
           return false;
         }
-        if ((!TextUtils.isEmpty(this.KCM)) && (!XWalkEnvironment.containsAppInfo(this.KCM)))
+        if ((!TextUtils.isEmpty(this.Mtl)) && (!XWalkEnvironment.containsAppInfo(this.Mtl)))
         {
           Log.i("xweb.internal.ConfigDef", " match appInfoWhiteList failed  ");
-          AppMethodBeat.o(205082);
+          AppMethodBeat.o(197093);
           return false;
         }
-        if ((!TextUtils.isEmpty(this.KCN)) && (XWalkEnvironment.containsAppInfo(this.KCN)))
+        if ((!TextUtils.isEmpty(this.Mtm)) && (XWalkEnvironment.containsAppInfo(this.Mtm)))
         {
           Log.i("xweb.internal.ConfigDef", " match appInfoBlackList failed  ");
-          AppMethodBeat.o(205082);
+          AppMethodBeat.o(197093);
           return false;
         }
-        AppMethodBeat.o(205082);
+        AppMethodBeat.o(197093);
         return true;
       }
     }
-    AppMethodBeat.o(205082);
+    AppMethodBeat.o(197093);
     return false;
   }
 }

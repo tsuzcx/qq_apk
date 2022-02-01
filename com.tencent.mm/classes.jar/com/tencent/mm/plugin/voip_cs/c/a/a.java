@@ -2,48 +2,48 @@ package com.tencent.mm.plugin.voip_cs.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip.video.i;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
 {
-  private static a AVp;
-  public i oue;
+  private static a Cvx;
+  public i oXA;
   
   private a()
   {
     AppMethodBeat.i(125364);
-    this.oue = new i(ai.getContext());
+    this.oXA = new i(aj.getContext());
     AppMethodBeat.o(125364);
   }
   
-  public static a enL()
+  public static a eBK()
   {
     AppMethodBeat.i(125365);
-    if (AVp == null) {
-      AVp = new a();
+    if (Cvx == null) {
+      Cvx = new a();
     }
-    a locala = AVp;
+    a locala = Cvx;
     AppMethodBeat.o(125365);
     return locala;
   }
   
-  public static a enM()
+  public static a eBL()
   {
     AppMethodBeat.i(125366);
-    if (AVp == null) {
-      AVp = enL();
+    if (Cvx == null) {
+      Cvx = eBK();
     }
-    a locala = AVp;
+    a locala = Cvx;
     AppMethodBeat.o(125366);
     return locala;
   }
   
-  public final boolean bVB()
+  public final boolean cae()
   {
     AppMethodBeat.i(125369);
-    if (this.oue != null)
+    if (this.oXA != null)
     {
-      boolean bool = this.oue.Na();
+      boolean bool = this.oXA.OJ();
       AppMethodBeat.o(125369);
       return bool;
     }
@@ -51,11 +51,11 @@ public final class a
     return true;
   }
   
-  public final void enN()
+  public final void eBM()
   {
     AppMethodBeat.i(125367);
-    if (this.oue != null) {
-      this.oue.aI(0, true);
+    if (this.oXA != null) {
+      this.oXA.aO(0, true);
     }
     AppMethodBeat.o(125367);
   }
@@ -63,15 +63,15 @@ public final class a
   public final void stopRing()
   {
     AppMethodBeat.i(125368);
-    if (this.oue != null) {
-      this.oue.stop();
+    if (this.oXA != null) {
+      this.oXA.stop();
     }
     AppMethodBeat.o(125368);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.a.a
  * JD-Core Version:    0.7.0.1
  */

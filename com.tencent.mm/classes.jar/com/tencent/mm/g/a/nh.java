@@ -12,7 +12,7 @@ public final class nh
   
   private nh(byte paramByte)
   {
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
   }
 }

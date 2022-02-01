@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ik
   extends b
 {
-  public a djC;
+  public a duV;
   
   public ik()
   {
@@ -15,21 +15,21 @@ public final class ik
   
   private ik(byte paramByte)
   {
-    AppMethodBeat.i(93323);
-    this.djC = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(123476);
+    this.duV = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(93323);
+    AppMethodBeat.o(123476);
   }
   
   public static final class a
   {
-    public boolean djD = false;
+    public String duW;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ik
  * JD-Core Version:    0.7.0.1
  */

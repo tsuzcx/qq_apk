@@ -2,27 +2,27 @@ package d.l.b.a.b.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l.b.a.b.a.g;
-import d.l.b.a.b.l.i;
+import d.l.b.a.b.l.j;
 
 final class b
   extends g
 {
-  private static final g Lcd;
-  public static final a Lce;
+  private static final g MSY;
+  public static final a MSZ;
   
   static
   {
     AppMethodBeat.i(56748);
-    Lce = new a((byte)0);
-    Lcd = (g)new b();
+    MSZ = new a((byte)0);
+    MSY = (g)new b();
     AppMethodBeat.o(56748);
   }
   
   private b()
   {
-    super((i)new d.l.b.a.b.l.b("FallbackBuiltIns"));
+    super((j)new d.l.b.a.b.l.b("FallbackBuiltIns"));
     AppMethodBeat.i(56747);
-    fPz();
+    ggX();
     AppMethodBeat.o(56747);
   }
   
@@ -30,7 +30,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.a.b.b
  * JD-Core Version:    0.7.0.1
  */

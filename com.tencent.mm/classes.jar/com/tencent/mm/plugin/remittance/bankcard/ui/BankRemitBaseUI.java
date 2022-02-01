@@ -91,12 +91,12 @@ public abstract class BankRemitBaseUI
     }
   }
   
-  protected void cSW() {}
+  protected void dcd() {}
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    cSW();
+    dcd();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

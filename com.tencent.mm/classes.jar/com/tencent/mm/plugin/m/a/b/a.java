@@ -1,10 +1,14 @@
 package com.tencent.mm.plugin.m.a.b;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.widget.picker.b.a;
 import com.tencent.mm.ui.widget.picker.c;
+import com.tencent.mm.ui.widget.picker.c.a;
 import com.tencent.mm.ui.widget.picker.d;
+import com.tencent.mm.ui.widget.picker.d.a;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -14,26 +18,26 @@ import java.util.Set;
 
 public final class a
 {
-  String kjy;
-  d uAk;
-  com.tencent.mm.ui.widget.picker.b uAl;
-  c uAm;
-  String uAn;
-  String uAo;
-  ArrayList<String> uAp;
-  public a.a uAq;
+  String kEw;
+  d vCN;
+  com.tencent.mm.ui.widget.picker.b vCO;
+  c vCP;
+  String vCQ;
+  String vCR;
+  ArrayList<String> vCS;
+  public a vCT;
   String value;
   
   public a(Map<String, ?> paramMap)
   {
     AppMethodBeat.i(123786);
-    this.uAp = new ArrayList();
-    this.kjy = "selector";
-    ag(paramMap);
+    this.vCS = new ArrayList();
+    this.kEw = "selector";
+    al(paramMap);
     AppMethodBeat.o(123786);
   }
   
-  private void ag(Map<String, ?> paramMap)
+  private void al(Map<String, ?> paramMap)
   {
     AppMethodBeat.i(123787);
     paramMap = paramMap.entrySet().iterator();
@@ -55,7 +59,7 @@ public final class a
         default: 
           break;
         case 0: 
-          this.kjy = ((Map.Entry)localObject).getValue().toString();
+          this.kEw = ((Map.Entry)localObject).getValue().toString();
           break;
           if (!str.equals("mode")) {
             break label104;
@@ -83,17 +87,17 @@ public final class a
           i = 4;
         }
       }
-      this.uAn = ((Map.Entry)localObject).getValue().toString();
+      this.vCQ = ((Map.Entry)localObject).getValue().toString();
       continue;
-      this.uAo = ((Map.Entry)localObject).getValue().toString();
+      this.vCR = ((Map.Entry)localObject).getValue().toString();
       continue;
       localObject = ((Map.Entry)localObject).getValue().toString();
-      if (!bs.isNullOrNil((String)localObject))
+      if (!bt.isNullOrNil((String)localObject))
       {
         localObject = ((String)localObject).replaceAll("\\u005B\"", "").replaceAll("\"]", "");
-        ac.i("Picker", "range is :%s", new Object[] { localObject });
-        this.uAp.clear();
-        this.uAp.addAll(Arrays.asList(((String)localObject).split("\"|,|\"")));
+        ad.i("Picker", "range is :%s", new Object[] { localObject });
+        this.vCS.clear();
+        this.vCS.addAll(Arrays.asList(((String)localObject).split("\"|,|\"")));
         continue;
         this.value = ((Map.Entry)localObject).getValue().toString();
       }
@@ -104,13 +108,13 @@ public final class a
   public final void hide()
   {
     AppMethodBeat.i(123788);
-    ac.d("Picker", "hide");
+    ad.d("Picker", "hide");
     com.tencent.mm.plugin.m.a.c.b.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(123785);
-        String str = a.this.kjy;
+        String str = a.this.kEw;
         int i = -1;
         switch (str.hashCode())
         {
@@ -149,18 +153,18 @@ public final class a
           }
           i = 4;
           break;
-          if (a.this.uAm != null)
+          if (a.this.vCP != null)
           {
-            a.this.uAm.hide();
+            a.this.vCP.hide();
             AppMethodBeat.o(123785);
             return;
-            if (a.this.uAl != null)
+            if (a.this.vCO != null)
             {
-              a.this.uAl.hide();
+              a.this.vCO.hide();
               AppMethodBeat.o(123785);
               return;
-              if (a.this.uAk != null) {
-                a.this.uAk.hide();
+              if (a.this.vCN != null) {
+                a.this.vCN.hide();
               }
             }
           }
@@ -169,10 +173,15 @@ public final class a
     });
     AppMethodBeat.o(123788);
   }
+  
+  public static abstract interface a
+  {
+    public abstract void n(boolean paramBoolean, String paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.m.a.b.a
  * JD-Core Version:    0.7.0.1
  */

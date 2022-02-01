@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Resettable;", "", "reset", "", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Resettable;", "", "reset", "", "plugin-brandservice_release"})
 public abstract interface n
 {
   public abstract void reset();

@@ -1,67 +1,161 @@
 package com.tencent.thumbplayer.utils;
 
+import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
+import com.tencent.thumbplayer.b.h.a;
+import java.util.MissingFormatArgumentException;
 
 public final class d
 {
-  private ArrayList<b> mListeners;
+  private static h.a Mcn = null;
+  private static int Mco = 50;
+  private static boolean cFj = true;
   
-  private d()
+  private static void Z(int paramInt, String paramString1, String paramVarArgs)
   {
-    AppMethodBeat.i(188227);
-    this.mListeners = null;
-    if (this.mListeners == null) {
-      this.mListeners = new ArrayList();
+    AppMethodBeat.i(192164);
+    int i = paramInt;
+    if (paramInt == 20) {
+      i = 10;
     }
-    AppMethodBeat.o(188227);
-  }
-  
-  public final void a(b paramb)
-  {
     try
     {
-      AppMethodBeat.i(188228);
-      if ((this.mListeners != null) && (!this.mListeners.contains(paramb)))
+      if (Mcn != null)
       {
-        this.mListeners.add(paramb);
-        f.i("TPGlobalEventNofication", "add onNetStatus change listener: " + paramb + ", mListeners: " + this.mListeners.size());
+        if (i <= Mco)
+        {
+          aa(i, paramString1, paramVarArgs);
+          AppMethodBeat.o(192164);
+        }
       }
-      AppMethodBeat.o(188228);
+      else if ((cFj) && (i <= Mco)) {
+        Log.println(ahx(i), paramString1, paramVarArgs);
+      }
+      AppMethodBeat.o(192164);
       return;
     }
-    finally {}
-  }
-  
-  public final void b(b paramb)
-  {
-    try
+    catch (MissingFormatArgumentException paramString1)
     {
-      AppMethodBeat.i(188229);
-      if (this.mListeners != null)
-      {
-        this.mListeners.remove(paramb);
-        f.i("TPGlobalEventNofication", "remove netStatusChangeListener, listener: " + paramb + ", mListeners: " + this.mListeners.size());
-      }
-      AppMethodBeat.o(188229);
+      AppMethodBeat.o(192164);
       return;
     }
-    finally {}
-  }
-  
-  public static final class a
-  {
-    private static d Kmn;
-    
-    static
+    catch (Exception paramString1)
     {
-      AppMethodBeat.i(188226);
-      Kmn = new d((byte)0);
-      AppMethodBeat.o(188226);
+      AppMethodBeat.o(192164);
+      return;
+    }
+    catch (OutOfMemoryError paramString1)
+    {
+      AppMethodBeat.o(192164);
     }
   }
   
-  public static abstract interface b {}
+  public static void a(h.a parama)
+  {
+    Mcn = parama;
+  }
+  
+  private static void aa(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192165);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(192165);
+      return;
+      Mcn.v(paramString1, paramString2);
+      AppMethodBeat.o(192165);
+      return;
+      Mcn.d(paramString1, paramString2);
+      AppMethodBeat.o(192165);
+      return;
+      Mcn.i(paramString1, paramString2);
+      AppMethodBeat.o(192165);
+      return;
+      Mcn.w(paramString1, paramString2);
+      AppMethodBeat.o(192165);
+      return;
+      Mcn.e(paramString1, paramString2);
+    }
+  }
+  
+  private static int ahx(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 60: 
+      return 2;
+    case 50: 
+      return 3;
+    case 40: 
+      return 4;
+    case 20: 
+      return 5;
+    }
+    return 6;
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192158);
+    Z(50, paramString1, paramString2);
+    AppMethodBeat.o(192158);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192161);
+    Z(10, paramString1, paramString2);
+    AppMethodBeat.o(192161);
+  }
+  
+  public static void e(String paramString, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(192162);
+    e(paramString, paramThrowable, "");
+    AppMethodBeat.o(192162);
+  }
+  
+  public static void e(String paramString1, Throwable paramThrowable, String paramString2)
+  {
+    AppMethodBeat.i(192163);
+    String str = "";
+    if (!TextUtils.isEmpty(paramString2)) {
+      str = paramString2 + "\n";
+    }
+    paramString2 = str;
+    if (paramThrowable != null) {
+      paramString2 = str + Log.getStackTraceString(paramThrowable);
+    }
+    Z(10, paramString1, paramString2);
+    AppMethodBeat.o(192163);
+  }
+  
+  public static void i(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192159);
+    Z(40, paramString1, paramString2);
+    AppMethodBeat.o(192159);
+  }
+  
+  public static void v(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192157);
+    Z(60, paramString1, paramString2);
+    AppMethodBeat.o(192157);
+  }
+  
+  public static void w(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192160);
+    Z(20, paramString1, paramString2);
+    AppMethodBeat.o(192160);
+  }
 }
 
 

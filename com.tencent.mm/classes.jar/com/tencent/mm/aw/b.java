@@ -1,399 +1,246 @@
 package com.tencent.mm.aw;
 
+import android.net.TrafficStats;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Process;
+import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.RegionCodeDecoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
+import com.tencent.mm.al.n;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.g.a.on;
+import com.tencent.mm.g.a.x;
+import com.tencent.mm.g.a.x.a;
+import com.tencent.mm.g.a.yb;
+import com.tencent.mm.g.a.yb.b;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import java.lang.ref.WeakReference;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TimeZone;
+import java.util.Stack;
 
 public final class b
+  implements e.a
 {
-  private static Map<String, a> hLm = null;
-  private static Map<String, String> hLn = null;
-  private static String hLo = null;
+  int Mh;
+  boolean ckY;
+  private a hYR;
+  Stack<Long> hYS;
+  long hYT;
+  public int hYU;
+  long hYV;
+  int hYW;
+  boolean hYX;
+  long hYY;
+  long hYZ;
+  int hZa;
+  av hZb;
+  com.tencent.mm.sdk.b.c hZc;
+  com.tencent.mm.sdk.b.c hZd;
   
-  private static void CM(String paramString)
+  public b(Looper paramLooper)
   {
-    AppMethodBeat.i(43013);
-    hLm = new HashMap();
-    hLn = new HashMap();
-    String[] arrayOfString1 = bs.nullAsNil(paramString).trim().split(",");
-    int i = 0;
-    while (i < arrayOfString1.length)
+    AppMethodBeat.i(150518);
+    this.hYT = 0L;
+    this.hYU = 0;
+    this.ckY = false;
+    this.hYV = 0L;
+    this.hYW = 0;
+    this.hYX = false;
+    this.hYY = 0L;
+    this.hYZ = 0L;
+    this.hZb = new av(new av.a()
     {
-      String[] arrayOfString2 = arrayOfString1[i].trim().split(":");
-      if (arrayOfString2.length < 4)
+      public final boolean onTimerExpired()
       {
-        ac.e("MicroMsg.InternationaPluginlLogic", "this country item has problem %s", new Object[] { arrayOfString1[i].trim() });
-        i += 1;
-      }
-      else
-      {
-        RegionCodeDecoder.fcs();
-        String str = RegionCodeDecoder.getLocName(arrayOfString2[0]);
-        paramString = str;
-        if (bs.isNullOrNil(str)) {
-          paramString = arrayOfString2[2];
-        }
-        if (!ab.eUM()) {}
-        for (paramString = new a(arrayOfString2[0], arrayOfString2[1], paramString, arrayOfString2[3], arrayOfString2[3].charAt(0));; paramString = new a(arrayOfString2[0], arrayOfString2[1], paramString, arrayOfString2[3], a.CL(paramString)))
+        AppMethodBeat.i(150512);
+        long l1 = TrafficStats.getUidRxBytes(b.this.Mh);
+        long l2 = TrafficStats.getUidTxBytes(b.this.Mh);
+        long l3 = l1 - b.this.hYY + (l2 - b.this.hYZ);
+        ad.d("MicroMsg.AutoGetBigImgLogic", "delta of data: " + l3 / 1024L);
+        if (l3 <= 20480L)
         {
-          hLm.put(paramString.hLp + paramString.hLq, paramString);
-          hLn.put(paramString.hLp, paramString.hLq);
-          break;
+          b.this.hYX = false;
+          b.this.start();
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(150512);
+          return true;
+          b.this.hYY = l1;
+          b.this.hYZ = l2;
+          b.this.hZb.az(1000L, 1000L);
+        }
+      }
+    }, false);
+    this.hZc = new com.tencent.mm.sdk.b.c() {};
+    this.hZd = new com.tencent.mm.sdk.b.c()
+    {
+      private boolean a(x arg1)
+      {
+        AppMethodBeat.i(150514);
+        b.this.hZa = ???.dkF.mode;
+        ad.d("MicroMsg.AutoGetBigImgLogic", "mode = " + b.this.hZa);
+        com.tencent.mm.modelcontrol.c.aGN();
+        if (!com.tencent.mm.modelcontrol.c.aGO()) {}
+        synchronized (b.this.hYS)
+        {
+          b.this.hYS.clear();
+          AppMethodBeat.o(150514);
+          return false;
+        }
+      }
+    };
+    this.hYR = new a(this, paramLooper);
+    this.hYS = new Stack();
+    this.Mh = Process.myUid();
+    paramLooper = (Integer)com.tencent.mm.kernel.g.ajC().ajl().get(327681, null);
+    if ((paramLooper == null) || (3 == paramLooper.intValue())) {}
+    for (int i = 1;; i = paramLooper.intValue())
+    {
+      this.hZa = i;
+      com.tencent.mm.sdk.b.a.IbL.c(this.hZc);
+      com.tencent.mm.sdk.b.a.IbL.c(this.hZd);
+      AppMethodBeat.o(150518);
+      return;
+    }
+  }
+  
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject)
+  {
+    AppMethodBeat.i(150522);
+    ad.i("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + " has been canceled");
+    ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, false, true);
+    AppMethodBeat.o(150522);
+  }
+  
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, n paramn) {}
+  
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object arg7, int paramInt3, int paramInt4, String paramString, n paramn)
+  {
+    AppMethodBeat.i(150521);
+    if ((paramInt3 != 0) || (paramInt4 != 0))
+    {
+      ad.e("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + "msgLocalId " + paramLong2 + " download failed");
+      ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, false, false);
+    }
+    for (;;)
+    {
+      this.hYT = 0L;
+      com.tencent.mm.modelcontrol.c.aGN();
+      if (!com.tencent.mm.modelcontrol.c.aGO())
+      {
+        ad.i("MicroMsg.AutoGetBigImgLogic", "don't allow auto download, clear task list");
+        synchronized (this.hYS)
+        {
+          this.hYS.clear();
+          AppMethodBeat.o(150521);
+          return;
+          if (ay.isWifi(aj.getContext()))
+          {
+            ad.v("MicroMsg.AutoGetBigImgLogic", "is wifi pass count");
+            ((com.tencent.mm.plugin.comm.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.comm.a.b.class)).b(paramLong2, true, false);
+          }
+          else
+          {
+            long l1 = bt.a((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.Irk, null), 0L);
+            long l2 = bt.aRf((String)DateFormat.format("M", System.currentTimeMillis()));
+            ad.d("MicroMsg.AutoGetBigImgLogic", "img " + paramLong1 + " msgLocalId: " + paramLong2 + " has been downloaded current %d month %d", new Object[] { Long.valueOf(1L + l1), Long.valueOf(l2) });
+            com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Irk, Long.valueOf(l1 + 1L));
+            com.tencent.mm.kernel.g.ajC().ajl().set(al.a.Irl, Long.valueOf(l2));
+          }
         }
       }
     }
-    AppMethodBeat.o(43013);
+    this.hYY = TrafficStats.getUidRxBytes(this.Mh);
+    this.hYZ = TrafficStats.getUidTxBytes(this.Mh);
+    this.hZb.az(1000L, 1000L);
+    AppMethodBeat.o(150521);
   }
   
-  public static List<a> CN(String paramString)
+  public final void eE(boolean paramBoolean)
   {
-    localObject1 = null;
-    AppMethodBeat.i(43015);
-    try
-    {
-      String str = ab.eUO();
-      if (str != null)
-      {
-        localObject2 = str;
-        localObject1 = str;
-        if (str.equals(hLo)) {}
-      }
-      else
-      {
-        localObject1 = str;
-        hLm = null;
-        localObject2 = str;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2 = localObject1;
-      }
-    }
-    if (hLm == null)
-    {
-      hLo = (String)localObject2;
-      CM(paramString);
-    }
-    paramString = new ArrayList(hLm.values());
-    AppMethodBeat.o(43015);
-    return paramString;
+    AppMethodBeat.i(150520);
+    ad.d("MicroMsg.AutoGetBigImgLogic", "is foreground: ".concat(String.valueOf(paramBoolean)));
+    this.ckY = paramBoolean;
+    this.hYV = System.currentTimeMillis();
+    AppMethodBeat.o(150520);
   }
   
-  public static boolean CO(String paramString)
+  public final void start()
   {
-    AppMethodBeat.i(43016);
-    if ((paramString != null) && (paramString.length() > 1) && (paramString.startsWith("+")) && (!paramString.startsWith("+86")))
-    {
-      AppMethodBeat.o(43016);
-      return true;
-    }
-    AppMethodBeat.o(43016);
-    return false;
+    AppMethodBeat.i(150519);
+    this.hYR.sendEmptyMessage(1);
+    AppMethodBeat.o(150519);
   }
   
-  public static String CP(String paramString)
+  static final class a
+    extends ap
   {
-    AppMethodBeat.i(43017);
-    if ((paramString.startsWith("+886")) || (paramString.startsWith("+86")))
-    {
-      AppMethodBeat.o(43017);
-      return "zh-TW";
-    }
-    if ((paramString.startsWith("+852")) || (paramString.startsWith("+853")))
-    {
-      AppMethodBeat.o(43017);
-      return "zh-HK";
-    }
-    if (paramString.startsWith("+81"))
-    {
-      AppMethodBeat.o(43017);
-      return "ja";
-    }
-    if (paramString.startsWith("+82"))
-    {
-      AppMethodBeat.o(43017);
-      return "ko";
-    }
-    if (paramString.startsWith("+66"))
-    {
-      AppMethodBeat.o(43017);
-      return "th";
-    }
-    if (paramString.startsWith("+84"))
-    {
-      AppMethodBeat.o(43017);
-      return "vi";
-    }
-    if (paramString.startsWith("+62"))
-    {
-      AppMethodBeat.o(43017);
-      return "id";
-    }
-    if (paramString.startsWith("+55"))
-    {
-      AppMethodBeat.o(43017);
-      return "pt";
-    }
-    if (paramString.startsWith("+34"))
-    {
-      AppMethodBeat.o(43017);
-      return "es-419";
-    }
-    AppMethodBeat.o(43017);
-    return "en";
-  }
-  
-  public static boolean CQ(String paramString)
-  {
-    AppMethodBeat.i(43020);
-    if ((!bs.isNullOrNil(paramString)) && (new HashSet(Arrays.asList("AT,BE,BG,CY,CZ,HR,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,RO,LT,LU,MT,NL,PL,PT,SK,SI,ES,SE,GB,IS,LI,NO,CH,TR".split(","))).contains(paramString.toUpperCase())))
-    {
-      AppMethodBeat.o(43020);
-      return true;
-    }
-    AppMethodBeat.o(43020);
-    return false;
-  }
-  
-  public static boolean CR(String paramString)
-  {
-    AppMethodBeat.i(43021);
-    if ((!bs.isNullOrNil(paramString)) && (new HashSet(Arrays.asList("43,32,359,357,420,385,45,372,358,33,49,30,36,353,39,371,40,370,352,356,31,48,351,421,386,34,46,44,354,423,47,41,90".split(","))).contains(paramString)))
-    {
-      AppMethodBeat.o(43021);
-      return true;
-    }
-    AppMethodBeat.o(43021);
-    return false;
-  }
-  
-  public static boolean aGa()
-  {
-    AppMethodBeat.i(43008);
-    if ((!ab.eUK()) && (!ab.eUO().equals("en")))
-    {
-      AppMethodBeat.o(43008);
-      return true;
-    }
-    AppMethodBeat.o(43008);
-    return false;
-  }
-  
-  public static boolean aGb()
-  {
-    AppMethodBeat.i(194040);
-    boolean bool = bs.ja(ai.getContext());
-    AppMethodBeat.o(194040);
-    return bool;
-  }
-  
-  public static boolean aGc()
-  {
-    AppMethodBeat.i(43010);
-    if ((u.axv() == 0) && (bs.ja(ai.getContext())))
-    {
-      AppMethodBeat.o(43010);
-      return false;
-    }
-    AppMethodBeat.o(43010);
-    return true;
-  }
-  
-  public static boolean aGd()
-  {
-    return false;
-  }
-  
-  public static boolean aGe()
-  {
-    AppMethodBeat.i(43011);
-    if (!ab.eUO().equals("zh_CN"))
-    {
-      AppMethodBeat.o(43011);
-      return true;
-    }
-    TimeZone localTimeZone1 = TimeZone.getDefault();
-    TimeZone localTimeZone2 = TimeZone.getTimeZone("GMT+08:00");
-    if (localTimeZone1.getRawOffset() != localTimeZone2.getRawOffset())
-    {
-      AppMethodBeat.o(43011);
-      return true;
-    }
-    AppMethodBeat.o(43011);
-    return false;
-  }
-  
-  public static boolean aGf()
-  {
-    AppMethodBeat.i(210243);
-    boolean bool = bs.ja(ai.getContext());
-    AppMethodBeat.o(210243);
-    return bool;
-  }
-  
-  public static a bp(String paramString1, String paramString2)
-  {
-    localObject1 = null;
-    AppMethodBeat.i(43014);
-    try
-    {
-      String str = ab.eUO();
-      if (str != null)
-      {
-        localObject2 = str;
-        localObject1 = str;
-        if (str.equals(hLo)) {}
-      }
-      else
-      {
-        localObject1 = str;
-        hLm = null;
-        localObject2 = str;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2 = localObject1;
-      }
-    }
-    if ((hLm == null) || (hLn == null))
-    {
-      hLo = (String)localObject2;
-      CM(paramString2);
-    }
-    paramString1 = (a)hLm.get(paramString1.toUpperCase() + (String)hLn.get(paramString1.toUpperCase()));
-    AppMethodBeat.o(43014);
-    return paramString1;
-  }
-  
-  public static String bq(String paramString1, String paramString2)
-  {
-    localObject1 = null;
-    AppMethodBeat.i(43018);
-    try
-    {
-      String str = ab.eUO();
-      if (str != null)
-      {
-        localObject2 = str;
-        localObject1 = str;
-        if (str.equals(hLo)) {}
-      }
-      else
-      {
-        localObject1 = str;
-        hLm = null;
-        localObject2 = str;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2 = localObject1;
-      }
-    }
-    if (hLm == null)
-    {
-      hLo = (String)localObject2;
-      CM(paramString2);
-    }
-    paramString2 = hLm.values().iterator();
-    while (paramString2.hasNext())
-    {
-      localObject1 = (a)paramString2.next();
-      if (((a)localObject1).hLq.equals(paramString1))
-      {
-        paramString1 = ((a)localObject1).hLr;
-        AppMethodBeat.o(43018);
-        return paramString1;
-      }
-    }
-    AppMethodBeat.o(43018);
-    return "";
-  }
-  
-  public static String br(String paramString1, String paramString2)
-  {
-    localObject1 = null;
-    AppMethodBeat.i(43019);
-    try
-    {
-      String str = ab.eUO();
-      if (str != null)
-      {
-        localObject2 = str;
-        localObject1 = str;
-        if (str.equals(hLo)) {}
-      }
-      else
-      {
-        localObject1 = str;
-        hLm = null;
-        localObject2 = str;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject2 = localObject1;
-      }
-    }
-    if (hLm == null)
-    {
-      hLo = (String)localObject2;
-      CM(paramString2);
-    }
-    paramString2 = hLm.values().iterator();
-    while (paramString2.hasNext())
-    {
-      localObject1 = (a)paramString2.next();
-      if (((a)localObject1).hLq.equals(paramString1))
-      {
-        paramString1 = ((a)localObject1).hLp;
-        AppMethodBeat.o(43019);
-        return paramString1;
-      }
-    }
-    AppMethodBeat.o(43019);
-    return "";
-  }
-  
-  public static final class a
-  {
-    public String hLp;
-    public String hLq;
-    public String hLr;
-    public String hLs;
-    public int hLt;
+    private WeakReference<b> hZf;
     
-    public a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+    public a(b paramb, Looper paramLooper)
     {
-      this.hLp = paramString1;
-      this.hLq = paramString2;
-      this.hLr = paramString3;
-      this.hLs = paramString4;
-      this.hLt = paramInt;
+      super();
+      AppMethodBeat.i(150516);
+      this.hZf = new WeakReference(paramb);
+      AppMethodBeat.o(150516);
+    }
+    
+    public final void handleMessage(Message arg1)
+    {
+      AppMethodBeat.i(150517);
+      b localb = (b)this.hZf.get();
+      if ((localb != null) && (1 == ???.what))
+      {
+        boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qwM, false);
+        ??? = new yb();
+        ???.dMo.dsi = 2;
+        com.tencent.mm.sdk.b.a.IbL.l(???);
+        if (((!???.dMp.dMq) && (!com.tencent.mm.s.a.adC())) || (!bool))
+        {
+          if ((!localb.ckY) && (System.currentTimeMillis() - localb.hYV > 1200000L))
+          {
+            ad.i("MicroMsg.AutoGetBigImgLogic", "running to long in blackground");
+            AppMethodBeat.o(150517);
+            return;
+          }
+          if ((localb.hYT != 0L) || (localb.hYS.size() <= 0) || (localb.hYW != 0) || (localb.hYX))
+          {
+            ad.i("MicroMsg.AutoGetBigImgLogic", "curMsgId: " + localb.hYT + " size: " + localb.hYS.size() + " cnt: " + localb.hYW + " pauseOnMonitor: " + localb.hYX);
+            AppMethodBeat.o(150517);
+            return;
+          }
+          g localg;
+          synchronized (localb.hYS)
+          {
+            localb.hYT = ((Long)localb.hYS.pop()).longValue();
+            ??? = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(localb.hYT);
+            localg = q.aIF().F(???.field_talker, ???.field_msgSvrId);
+            if (localg.fkv == 1)
+            {
+              ad.i("MicroMsg.AutoGetBigImgLogic", localb.hYT + " already has hd thumb");
+              localb.hYT = 0L;
+              localb.start();
+              AppMethodBeat.o(150517);
+              return;
+            }
+          }
+          ad.i("MicroMsg.AutoGetBigImgLogic", "start download cdnautostart " + locala.hYT + "  image_" + ???.field_msgId);
+          f.aGI().hTO.add("image_" + ???.field_msgId);
+          q.aIG().a(localg.dnz, ???.field_msgId, 0, Long.valueOf(locala.hYT), locala.hYU, locala);
+        }
+      }
+      AppMethodBeat.o(150517);
     }
   }
 }

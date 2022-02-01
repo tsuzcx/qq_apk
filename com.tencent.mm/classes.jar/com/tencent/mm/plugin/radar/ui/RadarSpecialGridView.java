@@ -6,50 +6,50 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "mOldChildHeight", "", "mOldChildWidth", "mTable", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "getMTable", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "setMTable", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;)V", "computeScrollX", "computeScrollY", "initGridView", "", "onLayout", "changed", "", "l", "t", "r", "b", "reset", "OnItemClickListener", "plugin-radar_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialSmoothScrollView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "mOldChildHeight", "", "mOldChildWidth", "mTable", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "getMTable", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "setMTable", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;)V", "onItemClickListener", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "getOnItemClickListener", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "setOnItemClickListener", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;)V", "computeScrollX", "computeScrollY", "initGridView", "", "onLayout", "changed", "", "l", "t", "r", "b", "reset", "OnItemClickListener", "plugin-radar_release"})
 public final class RadarSpecialGridView
   extends RadarSpecialSmoothScrollView
 {
-  private a wcq;
-  public RadarSpecialTableLayout wcr;
-  private int wcs;
-  private int wct;
+  private a xjZ;
+  public RadarSpecialTableLayout xka;
+  private int xkb;
+  private int xkc;
   
   public RadarSpecialGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(138653);
     paramContext = getContext();
-    k.g(paramContext, "context");
-    this.wcr = new RadarSpecialTableLayout(paramContext);
+    p.g(paramContext, "context");
+    this.xka = new RadarSpecialTableLayout(paramContext);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
     paramContext.gravity = 80;
-    paramAttributeSet = this.wcr;
+    paramAttributeSet = this.xka;
     if (paramAttributeSet == null) {
-      k.aVY("mTable");
+      p.bcb("mTable");
     }
     paramAttributeSet.setLayoutParams((ViewGroup.LayoutParams)paramContext);
-    paramContext = this.wcr;
+    paramContext = this.xka;
     if (paramContext == null) {
-      k.aVY("mTable");
+      p.bcb("mTable");
     }
     paramContext.setStretchAllColumns(true);
-    paramContext = this.wcr;
+    paramContext = this.xka;
     if (paramContext == null) {
-      k.aVY("mTable");
+      p.bcb("mTable");
     }
     paramContext.setShrinkAllColumns(true);
-    paramContext = this.wcr;
+    paramContext = this.xka;
     if (paramContext == null) {
-      k.aVY("mTable");
+      p.bcb("mTable");
     }
     paramContext.setGravity(80);
-    paramContext = this.wcr;
+    paramContext = this.xka;
     if (paramContext == null) {
-      k.aVY("mTable");
+      p.bcb("mTable");
     }
     addView((View)paramContext);
     AppMethodBeat.o(138653);
@@ -58,9 +58,9 @@ public final class RadarSpecialGridView
   public final RadarSpecialTableLayout getMTable()
   {
     AppMethodBeat.i(138650);
-    RadarSpecialTableLayout localRadarSpecialTableLayout = this.wcr;
+    RadarSpecialTableLayout localRadarSpecialTableLayout = this.xka;
     if (localRadarSpecialTableLayout == null) {
-      k.aVY("mTable");
+      p.bcb("mTable");
     }
     AppMethodBeat.o(138650);
     return localRadarSpecialTableLayout;
@@ -68,7 +68,7 @@ public final class RadarSpecialGridView
   
   public final a getOnItemClickListener()
   {
-    return this.wcq;
+    return this.xjZ;
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -80,9 +80,9 @@ public final class RadarSpecialGridView
     {
       View localView = getChildAt(0);
       paramInt1 = getScrollX();
-      k.g(localView, "child");
-      paramInt1 = paramInt1 + localView.getWidth() - this.wct;
-      this.wct = localView.getWidth();
+      p.g(localView, "child");
+      paramInt1 = paramInt1 + localView.getWidth() - this.xkc;
+      this.xkc = localView.getWidth();
       if (paramInt1 > 0)
       {
         if (getChildCount() <= 0) {
@@ -90,9 +90,9 @@ public final class RadarSpecialGridView
         }
         localView = getChildAt(0);
         paramInt2 = getScrollY();
-        k.g(localView, "child");
-        paramInt3 = paramInt2 + localView.getHeight() - this.wcs;
-        this.wcs = localView.getHeight();
+        p.g(localView, "child");
+        paramInt3 = paramInt2 + localView.getHeight() - this.xkb;
+        this.xkb = localView.getHeight();
         paramInt2 = i;
         if (paramInt3 <= 0) {}
       }
@@ -113,17 +113,17 @@ public final class RadarSpecialGridView
   public final void setMTable(RadarSpecialTableLayout paramRadarSpecialTableLayout)
   {
     AppMethodBeat.i(138651);
-    k.h(paramRadarSpecialTableLayout, "<set-?>");
-    this.wcr = paramRadarSpecialTableLayout;
+    p.h(paramRadarSpecialTableLayout, "<set-?>");
+    this.xka = paramRadarSpecialTableLayout;
     AppMethodBeat.o(138651);
   }
   
   public final void setOnItemClickListener(a parama)
   {
-    this.wcq = parama;
+    this.xjZ = parama;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "", "onItemClick", "", "position", "", "view", "Landroid/view/View;", "plugin-radar_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView$OnItemClickListener;", "", "onItemClick", "", "position", "", "view", "Landroid/view/View;", "plugin-radar_release"})
   public static abstract interface a
   {
     public abstract void b(int paramInt, View paramView);

@@ -5,12 +5,12 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PathExtractor
 {
-  private long fXM;
   private String filePath;
+  private long gri;
   
   static
   {
@@ -23,14 +23,14 @@ public class PathExtractor
   {
     AppMethodBeat.i(145544);
     this.filePath = paramString;
-    this.fXM = nInit(paramString);
-    if (this.fXM != 0L)
+    this.gri = nInit(paramString);
+    if (this.gri != 0L)
     {
-      ac.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.fXM) });
+      ad.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.gri) });
       AppMethodBeat.o(145544);
       return;
     }
-    ac.e("MicroMsg.PathExtractor", "create for %s failed", new Object[] { paramString });
+    ad.e("MicroMsg.PathExtractor", "create for %s failed", new Object[] { paramString });
     AppMethodBeat.o(145544);
   }
   
@@ -49,11 +49,11 @@ public class PathExtractor
     AppMethodBeat.i(145546);
     if (paramMetrics == null)
     {
-      ac.w("MicroMsg.PathExtractor", "metrics is null");
+      ad.w("MicroMsg.PathExtractor", "metrics is null");
       AppMethodBeat.o(145546);
       return;
     }
-    nGetMetrics(this.fXM, paramMetrics);
+    nGetMetrics(this.gri, paramMetrics);
     paramMetrics.height *= 0.015625F;
     paramMetrics.ascender *= 0.015625F;
     paramMetrics.descender *= 0.015625F;
@@ -66,14 +66,14 @@ public class PathExtractor
     int[] arrayOfInt = new int[4];
     try
     {
-      bool = nExtractPath(this.fXM, paramChar, paramPath, arrayOfInt);
+      bool = nExtractPath(this.gri, paramChar, paramPath, arrayOfInt);
       if (bool)
       {
         Matrix localMatrix = new Matrix();
         localMatrix.setScale(0.015625F, 0.015625F);
         paramPath.transform(localMatrix);
         paramRectF.set(arrayOfInt[0] * 0.015625F, arrayOfInt[3] * 0.015625F, arrayOfInt[2] * 0.015625F, arrayOfInt[1] * 0.015625F);
-        ac.i("MicroMsg.PathExtractor", "load path for ".concat(String.valueOf(paramChar)));
+        ad.i("MicroMsg.PathExtractor", "load path for ".concat(String.valueOf(paramChar)));
         AppMethodBeat.o(145547);
         return true;
       }
@@ -82,10 +82,10 @@ public class PathExtractor
     {
       for (;;)
       {
-        ac.e("MicroMsg.PathExtractor", "extract path error %c", new Object[] { Character.valueOf(paramChar) });
+        ad.e("MicroMsg.PathExtractor", "extract path error %c", new Object[] { Character.valueOf(paramChar) });
         boolean bool = false;
       }
-      ac.w("MicroMsg.PathExtractor", "not such char ".concat(String.valueOf(paramChar)));
+      ad.w("MicroMsg.PathExtractor", "not such char ".concat(String.valueOf(paramChar)));
       AppMethodBeat.o(145547);
     }
     return false;
@@ -96,7 +96,7 @@ public class PathExtractor
     AppMethodBeat.i(145548);
     try
     {
-      nFinalize(this.fXM);
+      nFinalize(this.gri);
       return;
     }
     finally
@@ -108,14 +108,14 @@ public class PathExtractor
   
   public final boolean isValid()
   {
-    return this.fXM != 0L;
+    return this.gri != 0L;
   }
   
   public final void setTextSize(int paramInt)
   {
     AppMethodBeat.i(145545);
-    ac.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(this.fXM), Integer.valueOf(paramInt) });
-    nSetTextSize(this.fXM, paramInt);
+    ad.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(this.gri), Integer.valueOf(paramInt) });
+    nSetTextSize(this.gri, paramInt);
     AppMethodBeat.o(145545);
   }
   
@@ -129,7 +129,7 @@ public class PathExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.fontdecode.PathExtractor
  * JD-Core Version:    0.7.0.1
  */

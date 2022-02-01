@@ -9,27 +9,27 @@ public final class e
   extends d
   implements d.l.b.a.b.d.a.e.c
 {
-  private final Annotation LiW;
+  private final Annotation MZS;
   
   public e(f paramf, Annotation paramAnnotation)
   {
     super(paramf);
     AppMethodBeat.i(57417);
-    this.LiW = paramAnnotation;
+    this.MZS = paramAnnotation;
     AppMethodBeat.o(57417);
   }
   
-  public final a fTc()
+  public final a gkB()
   {
     AppMethodBeat.i(57416);
-    a locala = (a)new c(this.LiW);
+    a locala = (a)new c(this.MZS);
     AppMethodBeat.o(57416);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.e
  * JD-Core Version:    0.7.0.1
  */

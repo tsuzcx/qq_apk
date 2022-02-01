@@ -20,13 +20,10 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.MessageQueue;
-import android.os.MessageQueue.IdleHandler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewStub;
@@ -38,13 +35,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ea;
-import com.tencent.mm.g.a.eb;
-import com.tencent.mm.g.a.eh;
-import com.tencent.mm.g.a.ut;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.c;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.a.ed;
+import com.tencent.mm.g.a.ee;
+import com.tencent.mm.g.a.ek;
+import com.tencent.mm.g.a.vm;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.c;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.u;
@@ -54,25 +51,25 @@ import com.tencent.mm.plugin.shake.b.l.b;
 import com.tencent.mm.plugin.shake.c.a.f.a;
 import com.tencent.mm.plugin.shake.d.a.h.a;
 import com.tencent.mm.plugin.shake.d.a.j;
-import com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.n.b;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bx;
-import com.tencent.mm.storage.by;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.ce;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
 import com.tencent.mm.ui.base.h.c;
 import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.t;
 import com.tencent.mm.ui.base.y;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -92,142 +89,142 @@ import org.json.JSONObject;
 
 public class ShakeReportUI
   extends MMActivity
-  implements com.tencent.mm.model.av, u.a, l.a, f.a, k.a, n.b
+  implements com.tencent.mm.model.aw, u.a, l.a, f.a, k.a, n.b
 {
-  private static List<h.a> fnb;
-  private com.tencent.mm.modelgeo.d fmW;
-  private boolean fmZ;
-  private Map<String, h.a> fna;
-  private b.a fnd;
-  private ImageView fxQ;
-  private com.tencent.mm.av.a.a hJM;
-  private boolean iMq;
-  private com.tencent.mm.pluginsdk.j.d shakeSensor;
-  private boolean udt;
-  private View xAA;
-  private View xAB;
-  private View xAC;
-  private Animation xAD;
-  private Animation xAE;
-  private Animation xAF;
-  private Animation xAG;
-  private View xAH;
-  private View xAI;
-  private MMImageView xAJ;
-  private TextView xAK;
-  private ImageView xAL;
-  private String xAM;
-  private Bitmap xAN;
-  private Dialog xAO;
-  private ImageView xAP;
-  private com.tencent.mm.plugin.shake.b.d xAQ;
-  private ImageView xAR;
-  private ImageView xAS;
-  private ImageView xAT;
-  private ImageView xAU;
-  private ImageView xAV;
-  private ImageView xAW;
-  private TextView xAX;
-  private int xAY;
-  private int xAZ;
-  private boolean xAj;
-  private boolean xAk;
-  private boolean xAl;
-  private boolean xAm;
-  private boolean xAn;
-  private boolean xAo;
-  private boolean xAp;
-  private int xAq;
-  private c xAr;
-  private com.tencent.mm.plugin.shake.b.l xAs;
-  private com.tencent.mm.pluginsdk.ui.f xAt;
-  private View xAu;
-  private View xAv;
-  private TextView xAw;
-  private TextView xAx;
-  private TextView xAy;
-  private View xAz;
-  private View xBa;
-  private ImageView xBb;
-  private ImageView xBc;
-  private ImageView xBd;
-  private ImageView xBe;
-  private View xBf;
-  private View xBg;
-  private View xBh;
-  private View xBi;
-  private View xBj;
-  private int xBk;
-  private com.tencent.mm.plugin.shake.c.b.a xBl;
-  private boolean xBm;
+  private static List<h.a> fFj;
+  private com.tencent.mm.modelgeo.d fFe;
+  private boolean fFh;
+  private Map<String, h.a> fFi;
+  private b.a fFl;
+  private ImageView fRd;
+  private com.tencent.mm.aw.a.a icC;
+  private boolean jfA;
+  private com.tencent.mm.pluginsdk.l.d shakeSensor;
+  private boolean vgd;
+  private boolean yOT;
+  private boolean yOU;
+  private boolean yOV;
+  private boolean yOW;
+  private boolean yOX;
+  private boolean yOY;
+  private boolean yOZ;
+  private com.tencent.mm.plugin.shake.b.d yPA;
+  private ImageView yPB;
+  private ImageView yPC;
+  private ImageView yPD;
+  private ImageView yPE;
+  private ImageView yPF;
+  private ImageView yPG;
+  private TextView yPH;
+  private int yPI;
+  private int yPJ;
+  private View yPK;
+  private ImageView yPL;
+  private ImageView yPM;
+  private ImageView yPN;
+  private ImageView yPO;
+  private View yPP;
+  private View yPQ;
+  private View yPR;
+  private View yPS;
+  private View yPT;
+  private int yPU;
+  private com.tencent.mm.plugin.shake.c.b.a yPV;
+  private boolean yPW;
   @SuppressLint({"UseSparseArrays"})
-  private Map<Integer, Boolean> xBn;
-  private boolean xBo;
-  private boolean xBp;
-  private boolean xBq;
-  private boolean xBr;
-  private int xBs;
-  private long xBt;
-  private boolean xBu;
-  private com.tencent.mm.sdk.b.c xBv;
-  private com.tencent.mm.sdk.b.c xBw;
-  private View.OnClickListener xBx;
+  private Map<Integer, Boolean> yPX;
+  private boolean yPY;
+  private boolean yPZ;
+  private int yPa;
+  private c yPb;
+  private com.tencent.mm.plugin.shake.b.l yPc;
+  private com.tencent.mm.pluginsdk.ui.g yPd;
+  private View yPe;
+  private View yPf;
+  private TextView yPg;
+  private TextView yPh;
+  private TextView yPi;
+  private View yPj;
+  private View yPk;
+  private View yPl;
+  private View yPm;
+  private Animation yPn;
+  private Animation yPo;
+  private Animation yPp;
+  private Animation yPq;
+  private View yPr;
+  private View yPs;
+  private MMImageView yPt;
+  private TextView yPu;
+  private ImageView yPv;
+  private String yPw;
+  private Bitmap yPx;
+  private Dialog yPy;
+  private ImageView yPz;
+  private boolean yQa;
+  private boolean yQb;
+  private int yQc;
+  private long yQd;
+  private boolean yQe;
+  private com.tencent.mm.sdk.b.c yQf;
+  private com.tencent.mm.sdk.b.c yQg;
+  private View.OnClickListener yQh;
   
   static
   {
     AppMethodBeat.i(28541);
-    fnb = new CopyOnWriteArrayList();
+    fFj = new CopyOnWriteArrayList();
     AppMethodBeat.o(28541);
   }
   
   public ShakeReportUI()
   {
     AppMethodBeat.i(28483);
-    this.xAj = false;
-    this.xAk = false;
-    this.xAm = false;
-    this.xAn = false;
-    this.xAo = false;
-    this.xAp = false;
-    this.xAq = 22;
-    this.xAs = new com.tencent.mm.plugin.shake.b.l();
-    this.xAH = null;
-    this.xAI = null;
-    this.xAJ = null;
-    this.xAK = null;
-    this.xAL = null;
-    this.xAM = "";
-    this.xAN = null;
-    this.xAP = null;
-    this.hJM = null;
-    this.xAQ = null;
-    this.xAY = 1;
-    this.xAZ = 0;
-    this.xBj = null;
-    this.xBk = 0;
-    this.xBm = false;
-    this.xBn = new HashMap();
-    this.xBo = false;
-    this.xBp = false;
-    this.xBq = false;
-    this.xBr = false;
-    this.xBs = 1;
-    this.iMq = true;
-    this.fmZ = false;
-    this.fnd = new b.a()
+    this.yOT = false;
+    this.yOU = false;
+    this.yOW = false;
+    this.yOX = false;
+    this.yOY = false;
+    this.yOZ = false;
+    this.yPa = 22;
+    this.yPc = new com.tencent.mm.plugin.shake.b.l();
+    this.yPr = null;
+    this.yPs = null;
+    this.yPt = null;
+    this.yPu = null;
+    this.yPv = null;
+    this.yPw = "";
+    this.yPx = null;
+    this.yPz = null;
+    this.icC = null;
+    this.yPA = null;
+    this.yPI = 1;
+    this.yPJ = 0;
+    this.yPT = null;
+    this.yPU = 0;
+    this.yPW = false;
+    this.yPX = new HashMap();
+    this.yPY = false;
+    this.yPZ = false;
+    this.yQa = false;
+    this.yQb = false;
+    this.yQc = 1;
+    this.jfA = true;
+    this.fFh = false;
+    this.fFl = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(28446);
         if (paramAnonymousBoolean)
         {
-          ac.d("MicroMsg.ShakeReportUI", "on location get ok");
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GEV, String.valueOf(paramAnonymousFloat2));
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GEW, String.valueOf(paramAnonymousFloat1));
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GHB, String.valueOf(paramAnonymousDouble2));
+          ad.d("MicroMsg.ShakeReportUI", "on location get ok");
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.Irn, String.valueOf(paramAnonymousFloat2));
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.Iro, String.valueOf(paramAnonymousFloat1));
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.ItT, String.valueOf(paramAnonymousDouble2));
           ShakeReportUI.a(ShakeReportUI.this);
           if (ShakeReportUI.b(ShakeReportUI.this) != null) {
             ShakeReportUI.b(ShakeReportUI.this).c(ShakeReportUI.c(ShakeReportUI.this));
@@ -237,7 +234,7 @@ public class ShakeReportUI
         {
           AppMethodBeat.o(28446);
           return false;
-          if ((!ShakeReportUI.d(ShakeReportUI.this)) && (!com.tencent.mm.modelgeo.d.aEM()))
+          if ((!ShakeReportUI.d(ShakeReportUI.this)) && (!com.tencent.mm.modelgeo.d.aHR()))
           {
             ShakeReportUI.e(ShakeReportUI.this);
             com.tencent.mm.ui.base.h.a(ShakeReportUI.this, ShakeReportUI.this.getString(2131760082), ShakeReportUI.this.getString(2131755906), ShakeReportUI.this.getString(2131760598), ShakeReportUI.this.getString(2131755691), false, new DialogInterface.OnClickListener()
@@ -245,139 +242,148 @@ public class ShakeReportUI
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(28445);
-                com.tencent.mm.modelgeo.d.cE(ShakeReportUI.this);
+                com.tencent.mm.modelgeo.d.cB(ShakeReportUI.this);
                 AppMethodBeat.o(28445);
               }
             }, null);
           }
-          ac.w("MicroMsg.ShakeReportUI", "getLocation fail");
+          ad.w("MicroMsg.ShakeReportUI", "getLocation fail");
         }
       }
     };
-    this.fna = new ConcurrentHashMap();
-    this.xBt = 0L;
-    this.xBu = false;
-    this.xBv = new com.tencent.mm.sdk.b.c() {};
-    this.xBw = new com.tencent.mm.sdk.b.c() {};
-    this.xBx = new View.OnClickListener()
+    this.fFi = new ConcurrentHashMap();
+    this.yQd = 0L;
+    this.yQe = false;
+    this.yQf = new com.tencent.mm.sdk.b.c() {};
+    this.yQg = new com.tencent.mm.sdk.b.c() {};
+    this.yQh = new View.OnClickListener()
     {
-      public long xzO = 0L;
+      public long yOy = 0L;
       
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28467);
-        if (com.tencent.mm.sdk.platformtools.bs.isNullOrNil((String)ShakeReportUI.r(ShakeReportUI.this).getTag()))
+        Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/ui/ShakeReportUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+        if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)ShakeReportUI.r(ShakeReportUI.this).getTag()))
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(28467);
           return;
         }
         if (ShakeReportUI.N(ShakeReportUI.this) == null)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(28467);
           return;
         }
         paramAnonymousView = ShakeReportUI.N(ShakeReportUI.this);
-        Object localObject1 = paramAnonymousView.field_username;
+        localObject1 = paramAnonymousView.field_username;
         if (11 == paramAnonymousView.field_type)
         {
-          if (System.currentTimeMillis() - this.xzO > 3000L)
+          if (System.currentTimeMillis() - this.yOy > 3000L)
           {
-            this.xzO = System.currentTimeMillis();
+            this.yOy = System.currentTimeMillis();
             if ((paramAnonymousView.field_reserved3 == null) || (paramAnonymousView.field_reserved3.split(",").length != 3) || (paramAnonymousView.field_reserved3.split(",")[0] == null) || (paramAnonymousView.field_reserved3.split(",")[0].equals(""))) {
-              break label259;
+              break label324;
             }
             localObject1 = paramAnonymousView.field_reserved3.split(",");
-            localObject2 = new ut();
-            ((ut)localObject2).dxt.userName = localObject1[0];
-            ((ut)localObject2).dxt.dxv = com.tencent.mm.sdk.platformtools.bs.bG(localObject1[1], "");
-            ((ut)localObject2).dxt.dxw = com.tencent.mm.sdk.platformtools.bs.getInt(localObject1[2], 0);
-            ((ut)localObject2).dxt.scene = 1077;
-            com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
+            localObject2 = new vm();
+            ((vm)localObject2).dJF.userName = localObject1[0];
+            ((vm)localObject2).dJF.dJH = com.tencent.mm.sdk.platformtools.bt.bI(localObject1[1], "");
+            ((vm)localObject2).dJF.dJI = com.tencent.mm.sdk.platformtools.bt.getInt(localObject1[2], 0);
+            ((vm)localObject2).dJF.scene = 1077;
+            com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject2);
           }
           for (;;)
           {
-            localObject1 = ShakeReportUI.E(ShakeReportUI.this).xxj;
+            localObject1 = ShakeReportUI.E(ShakeReportUI.this).yLU;
             if ((localObject1 != null) && ((localObject1 instanceof com.tencent.mm.plugin.shake.d.a.h)))
             {
               com.tencent.mm.plugin.shake.d.a.h.a(paramAnonymousView);
               com.tencent.mm.plugin.shake.d.a.h.b(paramAnonymousView);
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(28467);
             return;
-            label259:
+            label324:
             localObject1 = new Intent();
             ((Intent)localObject1).putExtra("rawUrl", paramAnonymousView.getCity());
             ((Intent)localObject1).putExtra("scene", 27);
             ((Intent)localObject1).putExtra("stastic_scene", 5);
-            com.tencent.mm.br.d.b(com.tencent.mm.sdk.platformtools.ai.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+            com.tencent.mm.bs.d.b(aj.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
           }
         }
-        az.ayM();
-        Object localObject2 = com.tencent.mm.model.c.awB().aNt((String)localObject1);
-        if (com.tencent.mm.n.b.ln(((com.tencent.mm.g.c.av)localObject2).field_type))
+        ba.aBQ();
+        Object localObject2 = com.tencent.mm.model.c.azp().Bf((String)localObject1);
+        if (com.tencent.mm.o.b.lM(((com.tencent.mm.g.c.aw)localObject2).field_type))
         {
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("Contact_User", (String)localObject1);
           paramAnonymousView.putExtra("Sns_from_Scene", 22);
           if ((localObject1 != null) && (((String)localObject1).length() > 0))
           {
-            if (((com.tencent.mm.storage.ai)localObject2).fad())
+            if (((am)localObject2).fqg())
             {
-              com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, (String)localObject1 + "," + ShakeReportUI.O(ShakeReportUI.this));
+              com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, (String)localObject1 + "," + ShakeReportUI.O(ShakeReportUI.this));
               paramAnonymousView.putExtra("Contact_Scene", ShakeReportUI.O(ShakeReportUI.this));
             }
-            com.tencent.mm.plugin.shake.a.iyx.c(paramAnonymousView, ShakeReportUI.this);
+            com.tencent.mm.plugin.shake.a.iRG.c(paramAnonymousView, ShakeReportUI.this);
           }
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(28467);
           return;
+          if ((paramAnonymousView.field_reserved1 & 0x8) > 0) {
+            com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramAnonymousView.field_username + "," + ShakeReportUI.O(ShakeReportUI.this));
+          }
+          localObject1 = new Intent();
+          ((Intent)localObject1).putExtra("Contact_User", paramAnonymousView.field_username);
+          ((Intent)localObject1).putExtra("Contact_Nick", paramAnonymousView.field_nickname);
+          ((Intent)localObject1).putExtra("Contact_Distance", paramAnonymousView.field_distance);
+          ((Intent)localObject1).putExtra("Contact_Signature", paramAnonymousView.field_signature);
+          ((Intent)localObject1).putExtra("Contact_Province", paramAnonymousView.getProvince());
+          ((Intent)localObject1).putExtra("Contact_City", paramAnonymousView.getCity());
+          ((Intent)localObject1).putExtra("Contact_Sex", paramAnonymousView.field_sex);
+          ((Intent)localObject1).putExtra("Contact_IsLBSFriend", true);
+          ((Intent)localObject1).putExtra("Contact_VUser_Info", paramAnonymousView.field_reserved3);
+          ((Intent)localObject1).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.field_reserved1);
+          ((Intent)localObject1).putExtra("Contact_KSnsIFlag", paramAnonymousView.field_snsFlag);
+          ((Intent)localObject1).putExtra("Contact_KSnsBgUrl", paramAnonymousView.field_sns_bgurl);
+          ((Intent)localObject1).putExtra("Contact_Scene", ShakeReportUI.O(ShakeReportUI.this));
+          ((Intent)localObject1).putExtra("Sns_from_Scene", 22);
+          com.tencent.mm.plugin.shake.a.iRG.c((Intent)localObject1, ShakeReportUI.this);
         }
-        if ((paramAnonymousView.field_reserved1 & 0x8) > 0) {
-          com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramAnonymousView.field_username + "," + ShakeReportUI.O(ShakeReportUI.this));
-        }
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("Contact_User", paramAnonymousView.field_username);
-        ((Intent)localObject1).putExtra("Contact_Nick", paramAnonymousView.field_nickname);
-        ((Intent)localObject1).putExtra("Contact_Distance", paramAnonymousView.field_distance);
-        ((Intent)localObject1).putExtra("Contact_Signature", paramAnonymousView.field_signature);
-        ((Intent)localObject1).putExtra("Contact_Province", paramAnonymousView.getProvince());
-        ((Intent)localObject1).putExtra("Contact_City", paramAnonymousView.getCity());
-        ((Intent)localObject1).putExtra("Contact_Sex", paramAnonymousView.field_sex);
-        ((Intent)localObject1).putExtra("Contact_IsLBSFriend", true);
-        ((Intent)localObject1).putExtra("Contact_VUser_Info", paramAnonymousView.field_reserved3);
-        ((Intent)localObject1).putExtra("Contact_VUser_Info_Flag", paramAnonymousView.field_reserved1);
-        ((Intent)localObject1).putExtra("Contact_KSnsIFlag", paramAnonymousView.field_snsFlag);
-        ((Intent)localObject1).putExtra("Contact_KSnsBgUrl", paramAnonymousView.field_sns_bgurl);
-        ((Intent)localObject1).putExtra("Contact_Scene", ShakeReportUI.O(ShakeReportUI.this));
-        ((Intent)localObject1).putExtra("Sns_from_Scene", 22);
-        com.tencent.mm.plugin.shake.a.iyx.c((Intent)localObject1, ShakeReportUI.this);
-        AppMethodBeat.o(28467);
       }
     };
     AppMethodBeat.o(28483);
   }
   
-  private void NQ(int paramInt)
+  private void Pt(int paramInt)
   {
     AppMethodBeat.i(28503);
     if (paramInt == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      qx(bool);
+      qZ(bool);
       if (paramInt != 2) {
         break;
       }
-      qw(true);
+      qY(true);
       AppMethodBeat.o(28503);
       return;
     }
-    qw(false);
+    qY(false);
     AppMethodBeat.o(28503);
   }
   
   private void a(com.tencent.mm.plugin.shake.c.a.e parame)
   {
     AppMethodBeat.i(28508);
-    this.xBl = com.tencent.mm.plugin.shake.c.b.a.a(this, parame, new DialogInterface.OnCancelListener()new com.tencent.mm.plugin.shake.c.b.a.b
+    this.yPV = com.tencent.mm.plugin.shake.c.b.a.a(this, parame, new DialogInterface.OnCancelListener()new com.tencent.mm.plugin.shake.c.b.a.b
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -390,7 +396,7 @@ public class ShakeReportUI
       }
     }, new com.tencent.mm.plugin.shake.c.b.a.b()
     {
-      public final void dkf()
+      public final void dur()
       {
         AppMethodBeat.i(28466);
         ShakeReportUI.b(ShakeReportUI.this, true);
@@ -401,25 +407,25 @@ public class ShakeReportUI
     AppMethodBeat.o(28508);
   }
   
-  private void ast(String paramString)
+  private void axt(String paramString)
   {
     AppMethodBeat.i(28505);
-    this.xAm = false;
-    if (this.xAl) {
-      bc.aF(getContext(), 2131763595);
+    this.yOW = false;
+    if (this.yOV) {
+      bd.aI(getContext(), 2131763595);
     }
-    if (this.xAG == null) {
-      this.xAG = AnimationUtils.loadAnimation(getContext(), 2130772040);
+    if (this.yPq == null) {
+      this.yPq = AnimationUtils.loadAnimation(getContext(), 2130772040);
     }
-    NQ(2);
+    Pt(2);
     if ((paramString != null) && (paramString.length() > 1)) {
-      this.xAx.setText(paramString);
+      this.yPh.setText(paramString);
     }
     for (;;)
     {
-      this.xAx.startAnimation(this.xAG);
-      this.xAp = true;
-      ap.n(new Runnable()
+      this.yPh.startAnimation(this.yPq);
+      this.yOZ = true;
+      aq.o(new Runnable()
       {
         public final void run()
         {
@@ -428,38 +434,38 @@ public class ShakeReportUI
           ShakeReportUI.d(ShakeReportUI.this, false);
           AppMethodBeat.o(28463);
         }
-      }, this.xAG.getDuration());
+      }, this.yPq.getDuration());
       AppMethodBeat.o(28505);
       return;
-      this.xAx.setText(2131763561);
+      this.yPh.setText(2131763561);
     }
   }
   
-  private void bz(String paramString, boolean paramBoolean)
+  private void bG(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(28519);
-    this.xAm = false;
-    if (this.xAG == null) {
-      this.xAG = AnimationUtils.loadAnimation(getContext(), 2130772040);
+    this.yOW = false;
+    if (this.yPq == null) {
+      this.yPq = AnimationUtils.loadAnimation(getContext(), 2130772040);
     }
-    NQ(2);
-    qw(true);
+    Pt(2);
+    qY(true);
     if ((paramString != null) && (paramString.length() > 1)) {
-      this.xAx.setText(paramString);
+      this.yPh.setText(paramString);
     }
     for (;;)
     {
-      this.xAp = true;
+      this.yOZ = true;
       AppMethodBeat.o(28519);
       return;
       if (paramBoolean)
       {
-        this.xAx.setText(2131763551);
+        this.yPh.setText(2131763551);
       }
       else
       {
-        this.xAx.setText("");
-        qw(false);
+        this.yPh.setText("");
+        qY(false);
       }
     }
   }
@@ -467,53 +473,53 @@ public class ShakeReportUI
   private void c(com.tencent.mm.plugin.shake.b.d paramd)
   {
     AppMethodBeat.i(28513);
-    if (com.tencent.mm.sdk.platformtools.bs.isNullOrNil(paramd.field_username))
+    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramd.field_username))
     {
       AppMethodBeat.o(28513);
       return;
     }
-    this.xAu.setTag(paramd.field_username);
-    this.xAu.setVisibility(0);
-    az.ayM();
-    com.tencent.mm.storage.ai localai = com.tencent.mm.model.c.awB().aNt(paramd.field_username);
+    this.yPe.setTag(paramd.field_username);
+    this.yPe.setVisibility(0);
+    ba.aBQ();
+    am localam = com.tencent.mm.model.c.azp().Bf(paramd.field_username);
     Object localObject2 = new StringBuilder().append(paramd.field_nickname);
     Object localObject1;
     label156:
     label212:
     label363:
     int i;
-    if (com.tencent.mm.n.b.ln(localai.field_type))
+    if (com.tencent.mm.o.b.lM(localam.field_type))
     {
       localObject1 = getString(2131763588);
       localObject2 = (String)localObject1;
       if (paramd.field_sex != 1) {
         break label500;
       }
-      this.xAu.setContentDescription((String)localObject2 + paramd.field_distance + getContext().getString(2131763617));
-      TextView localTextView = (TextView)this.xAu.findViewById(2131304689);
+      this.yPe.setContentDescription((String)localObject2 + paramd.field_distance + getContext().getString(2131763617));
+      TextView localTextView = (TextView)this.yPe.findViewById(2131304689);
       AppCompatActivity localAppCompatActivity = getContext();
       StringBuilder localStringBuilder = new StringBuilder().append(paramd.field_nickname);
-      if (!com.tencent.mm.n.b.ln(localai.field_type)) {
+      if (!com.tencent.mm.o.b.lM(localam.field_type)) {
         break label585;
       }
       localObject1 = getString(2131763588);
       localTextView.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localAppCompatActivity, (String)localObject1, localTextView.getTextSize()));
-      if (this.fxQ != null)
+      if (this.fRd != null)
       {
-        if (com.tencent.mm.sdk.platformtools.bs.isNullOrNil((String)localObject2)) {
+        if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)localObject2)) {
           break label591;
         }
-        this.fxQ.setContentDescription(String.format(getString(2131763543), new Object[] { localObject2 }));
+        this.fRd.setContentDescription(String.format(getString(2131763543), new Object[] { localObject2 }));
       }
       label277:
-      ((TextView)this.xAu.findViewById(2131304687)).setText(paramd.field_distance);
-      com.tencent.mm.pluginsdk.ui.a.b.c((ImageView)this.xAu.findViewById(2131304688), paramd.field_username);
-      localObject1 = (ImageView)this.xAu.findViewById(2131304691);
+      ((TextView)this.yPe.findViewById(2131304687)).setText(paramd.field_distance);
+      com.tencent.mm.pluginsdk.ui.a.b.c((ImageView)this.yPe.findViewById(2131304688), paramd.field_username);
+      localObject1 = (ImageView)this.yPe.findViewById(2131304691);
       if (paramd.field_reserved1 == 0) {
         break label608;
       }
       ((ImageView)localObject1).setVisibility(0);
-      ((ImageView)localObject1).setImageBitmap(BackwardSupportUtil.b.n(ar.a.hny.nR(paramd.field_reserved1), 2.0F));
+      ((ImageView)localObject1).setImageBitmap(BackwardSupportUtil.b.o(as.a.hFQ.or(paramd.field_reserved1), 2.0F));
       if ((paramd.field_reserved1 != 0) || (paramd.field_sex == 0)) {
         break label624;
       }
@@ -523,22 +529,22 @@ public class ShakeReportUI
       i = 2131690323;
       label389:
       localObject1 = com.tencent.mm.cc.a.l(this, i);
-      this.xAu.findViewById(2131304690).setVisibility(0);
-      ((ImageView)this.xAu.findViewById(2131304690)).setImageDrawable((Drawable)localObject1);
+      this.yPe.findViewById(2131304690).setVisibility(0);
+      ((ImageView)this.yPe.findViewById(2131304690)).setImageDrawable((Drawable)localObject1);
     }
     for (;;)
     {
       if (paramd.getProvince() == null)
       {
-        ac.e("MicroMsg.ShakeReportUI", "PROVINCE NULL");
+        ad.e("MicroMsg.ShakeReportUI", "PROVINCE NULL");
         paramd.field_province = "";
       }
       if (paramd.getCity() == null)
       {
-        ac.e("MicroMsg.ShakeReportUI", "CITY NULL");
+        ad.e("MicroMsg.ShakeReportUI", "CITY NULL");
         paramd.field_city = "";
       }
-      this.xAu.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772129));
+      this.yPe.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772129));
       AppMethodBeat.o(28513);
       return;
       localObject1 = "";
@@ -546,16 +552,16 @@ public class ShakeReportUI
       label500:
       if (paramd.field_sex == 2)
       {
-        this.xAu.setContentDescription((String)localObject2 + paramd.field_distance + getContext().getString(2131763616));
+        this.yPe.setContentDescription((String)localObject2 + paramd.field_distance + getContext().getString(2131763616));
         break label156;
       }
-      this.xAu.setContentDescription((String)localObject2 + paramd.field_distance);
+      this.yPe.setContentDescription((String)localObject2 + paramd.field_distance);
       break label156;
       label585:
       localObject1 = "";
       break label212;
       label591:
-      this.fxQ.setContentDescription(getString(2131763544));
+      this.fRd.setContentDescription(getString(2131763544));
       break label277;
       label608:
       ((ImageView)localObject1).setVisibility(8);
@@ -564,148 +570,137 @@ public class ShakeReportUI
       i = 2131690322;
       break label389;
       label624:
-      this.xAu.findViewById(2131304690).setVisibility(8);
+      this.yPe.findViewById(2131304690).setVisibility(8);
     }
   }
   
   private void d(com.tencent.mm.plugin.shake.b.d paramd)
   {
     AppMethodBeat.i(28514);
-    if (com.tencent.mm.sdk.platformtools.bs.isNullOrNil(paramd.field_username))
+    if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramd.field_username))
     {
       AppMethodBeat.o(28514);
       return;
     }
-    this.xAu.setTag(paramd.field_username);
-    ((TextView)this.xAu.findViewById(2131304689)).setText(paramd.field_username);
-    this.xAu.setContentDescription(com.tencent.mm.sdk.platformtools.bs.nullAsNil(paramd.field_nickname));
-    ((TextView)this.xAu.findViewById(2131304687)).setText(paramd.field_signature);
-    this.hJM.loadImage(paramd.getProvince(), (ImageView)this.xAu.findViewById(2131304688));
-    this.xAu.findViewById(2131304690).setVisibility(8);
-    this.xAu.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772129));
-    this.xAu.setVisibility(0);
+    this.yPe.setTag(paramd.field_username);
+    ((TextView)this.yPe.findViewById(2131304689)).setText(paramd.field_username);
+    this.yPe.setContentDescription(com.tencent.mm.sdk.platformtools.bt.nullAsNil(paramd.field_nickname));
+    ((TextView)this.yPe.findViewById(2131304687)).setText(paramd.field_signature);
+    this.icC.loadImage(paramd.getProvince(), (ImageView)this.yPe.findViewById(2131304688));
+    this.yPe.findViewById(2131304690).setVisibility(8);
+    this.yPe.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772129));
+    this.yPe.setVisibility(0);
     AppMethodBeat.o(28514);
   }
   
-  private void dDU()
+  private void dDn()
   {
-    AppMethodBeat.i(28489);
-    if (!dEi())
+    AppMethodBeat.i(28486);
+    dPA();
+    ba.aBQ();
+    com.tencent.mm.model.c.a(this);
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().a(this);
+    com.tencent.mm.plugin.shake.b.m.dOO().add(this);
+    if (this.yPc.yLU != null) {
+      this.yPc.yLU.resume();
+    }
+    dPB();
+    new ap().postDelayed(new Runnable()
     {
-      AppMethodBeat.o(28489);
+      public final void run()
+      {
+        AppMethodBeat.i(28471);
+        if (ShakeReportUI.f(ShakeReportUI.this) != null) {
+          ShakeReportUI.f(ShakeReportUI.this).fbn();
+        }
+        AppMethodBeat.o(28471);
+      }
+    }, 1000L);
+    if (this.shakeSensor != null) {
+      this.shakeSensor.fbn();
+    }
+    qY(false);
+    qZ(false);
+    dPD();
+    ba.aBQ();
+    Object localObject = (String)com.tencent.mm.model.c.ajl().get(327696, "1");
+    if (com.tencent.mm.plugin.shake.d.a.k.dOM())
+    {
+      if (this.yPI == 4) {
+        qU(true);
+      }
+      if (((String)localObject).equals("4")) {
+        eK(findViewById(2131304719));
+      }
+    }
+    boolean bool;
+    if (((String)localObject).equals("3"))
+    {
+      eK(findViewById(2131304716));
+      bool = com.tencent.mm.z.c.aht().cJ(262154, 266258);
+      if ((!getIntent().getBooleanExtra("shake_music", false)) || (!com.tencent.mm.az.e.aJO()) || (this.yPc.yLT == 3)) {
+        break label357;
+      }
+      getIntent().putExtra("shake_music", false);
+      this.yPI = 3;
+    }
+    for (;;)
+    {
+      dPC();
+      qV(true);
+      ad.d("MicroMsg.ShakeReportUI", "isShakeGetConfigList = %s", new Object[] { Boolean.valueOf(com.tencent.mm.platformtools.ac.iOD) });
+      if (com.tencent.mm.platformtools.ac.iOD)
+      {
+        localObject = new com.tencent.mm.bc.l(7);
+        ba.aiU().a((com.tencent.mm.al.n)localObject, 0);
+      }
+      dPM();
+      dPJ();
+      dPx();
+      AppMethodBeat.o(28486);
       return;
-    }
-    if (BluetoothAdapter.getDefaultAdapter() != null)
-    {
-      Object localObject = com.tencent.mm.m.g.ZZ().ZQ();
-      if (localObject != null)
+      if ((!((String)localObject).equals("6")) || (!com.tencent.mm.plugin.shake.c.c.a.dPn())) {
+        break;
+      }
+      eK(findViewById(2131304706));
+      break;
+      label357:
+      if ((getIntent().getBooleanExtra("shake_tv", false)) && (this.yPc.yLT != 4) && (com.tencent.mm.plugin.shake.d.a.k.dOM()))
       {
-        this.xBt = System.currentTimeMillis();
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          ac.i("MicroMsg.ShakeReportUI", "op=true,iBeacon = %s", new Object[] { str });
-          ea localea = new ea();
-          localea.ddO.ddQ = str;
-          localea.ddO.ddN = true;
-          com.tencent.mm.sdk.b.a.GpY.l(localea);
-        }
+        getIntent().putExtra("shake_tv", false);
+        this.yPI = 4;
+      }
+      else if ((this.yPc.yLT != 6) && (com.tencent.mm.plugin.shake.c.c.a.dPn()) && ((bool) || (getIntent().getBooleanExtra("shake_card", false))))
+      {
+        this.yPU = getIntent().getIntExtra("shake_card", 0);
+        getIntent().putExtra("shake_card", false);
+        ad.i("MicroMsg.ShakeReportUI", "onresume shake card tab is open, activity type is 0 or open from specialview");
+        this.yPI = 6;
       }
     }
-    AppMethodBeat.o(28489);
   }
   
-  private void dDV()
-  {
-    AppMethodBeat.i(28490);
-    az.ayM();
-    if (!com.tencent.mm.sdk.platformtools.bs.a((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GHq, null), false))
-    {
-      this.fna.clear();
-      fnb = new CopyOnWriteArrayList();
-    }
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      Object localObject = com.tencent.mm.m.g.ZZ().ZQ();
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          ea localea = new ea();
-          ac.i("MicroMsg.ShakeReportUI", "op=false,iBeacon = %s", new Object[] { str });
-          localea.ddO.ddQ = str;
-          localea.ddO.ddN = false;
-          com.tencent.mm.sdk.b.a.GpY.l(localea);
-        }
-      }
-    }
-    AppMethodBeat.o(28490);
-  }
-  
-  private void dDW()
-  {
-    AppMethodBeat.i(28492);
-    if (com.tencent.mm.ay.e.aGE())
-    {
-      az.ayM();
-      if (com.tencent.mm.model.c.agA().getInt(4118, 0) == 0)
-      {
-        com.tencent.mm.ui.widget.a.d.a locala = new com.tencent.mm.ui.widget.a.d.a(getContext());
-        locala.acF(2131755906);
-        locala.acJ(2131763571);
-        locala.acM(2131763570).b(new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(28447);
-            if (ShakeReportUI.s(ShakeReportUI.this) != null) {
-              ShakeReportUI.s(ShakeReportUI.this).cancel();
-            }
-            AppMethodBeat.o(28447);
-          }
-        });
-        locala.yf(true);
-        locala.e(new DialogInterface.OnCancelListener()
-        {
-          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-          {
-            AppMethodBeat.i(28448);
-            az.ayM();
-            com.tencent.mm.model.c.agA().setInt(4118, 1);
-            ShakeReportUI.t(ShakeReportUI.this).setVisibility(8);
-            AppMethodBeat.o(28448);
-          }
-        });
-        this.xAO = locala.fvp();
-        this.xAO.show();
-      }
-    }
-    AppMethodBeat.o(28492);
-  }
-  
-  private void dDX()
+  private void dPA()
   {
     AppMethodBeat.i(28493);
-    az.ayM();
-    int j = com.tencent.mm.sdk.platformtools.bs.a((Integer)com.tencent.mm.model.c.agA().get(12290, null), 0);
+    ba.aBQ();
+    int j = com.tencent.mm.sdk.platformtools.bt.a((Integer)com.tencent.mm.model.c.ajl().get(12290, null), 0);
     ImageView localImageView = (ImageView)findViewById(2131304700);
-    if ((this.xAN != null) && (!this.xAN.isRecycled())) {
-      this.xAN.recycle();
+    if ((this.yPx != null) && (!this.yPx.isRecycled())) {
+      this.yPx.recycle();
     }
-    az.ayM();
+    ba.aBQ();
     Object localObject1;
-    if (com.tencent.mm.sdk.platformtools.bs.k((Boolean)com.tencent.mm.model.c.agA().get(4110, null)))
+    if (com.tencent.mm.sdk.platformtools.bt.n((Boolean)com.tencent.mm.model.c.ajl().get(4110, null)))
     {
       localObject1 = new StringBuilder();
-      az.ayM();
-      localObject1 = com.tencent.mm.model.c.awL() + "default_shake_img_filename.jpg";
-      if (com.tencent.mm.vfs.i.eA((String)localObject1))
+      ba.aBQ();
+      localObject1 = com.tencent.mm.model.c.azA() + "default_shake_img_filename.jpg";
+      if (com.tencent.mm.vfs.i.fv((String)localObject1))
       {
-        this.xAN = u.FE((String)localObject1);
-        localImageView.setImageDrawable(new BitmapDrawable(this.xAN));
+        this.yPx = u.IT((String)localObject1);
+        localImageView.setImageDrawable(new BitmapDrawable(this.yPx));
         localObject1 = (ImageView)findViewById(2131304686);
         localImageView = (ImageView)findViewById(2131304685);
         if (j != 2) {
@@ -731,8 +726,12 @@ public class ShakeReportUI
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(28455);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/ui/ShakeReportUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
             if (!ShakeReportUI.u(ShakeReportUI.this))
             {
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(28455);
               return;
             }
@@ -740,10 +739,10 @@ public class ShakeReportUI
             ShakeReportUI.c(ShakeReportUI.this, true);
             ShakeReportUI.d(ShakeReportUI.this, false);
             paramAnonymousView = ShakeReportUI.this.getContext();
-            String str = ShakeReportUI.this.getString(2131763575);
+            localObject = ShakeReportUI.this.getString(2131763575);
             h.c local1 = new h.c()
             {
-              public final void kG(int paramAnonymous2Int)
+              public final void lf(int paramAnonymous2Int)
               {
                 AppMethodBeat.i(28453);
                 ShakeReportUI.b(ShakeReportUI.this, true);
@@ -767,170 +766,171 @@ public class ShakeReportUI
                 AppMethodBeat.o(28454);
               }
             };
-            com.tencent.mm.ui.base.h.c(paramAnonymousView, null, new String[] { str }, "", local1);
+            com.tencent.mm.ui.base.h.c(paramAnonymousView, null, new String[] { localObject }, "", local1);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$15", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(28455);
           }
         };
         ((ImageView)localObject1).setOnClickListener(local7);
         localImageView.setOnClickListener(local7);
-        if (this.xAB == null) {
-          this.xAB = findViewById(2131304683);
+        if (this.yPl == null) {
+          this.yPl = findViewById(2131304683);
         }
-        this.xAB.setOnClickListener(local7);
-        if (this.xAC == null) {
-          this.xAC = findViewById(2131304684);
+        this.yPl.setOnClickListener(local7);
+        if (this.yPm == null) {
+          this.yPm = findViewById(2131304684);
         }
-        this.xAC.setOnClickListener(local7);
+        this.yPm.setOnClickListener(local7);
         AppMethodBeat.o(28493);
         return;
         try
         {
-          localObject1 = new BitmapDrawable(com.tencent.mm.sdk.platformtools.f.decodeStream(getContext().getAssets().open("resource/shakehideimg_man.jpg")));
+          localObject1 = new BitmapDrawable(com.tencent.mm.sdk.platformtools.g.decodeStream(getContext().getAssets().open("resource/shakehideimg_man.jpg")));
           localImageView.setImageDrawable((Drawable)localObject1);
         }
         catch (IOException localIOException)
         {
           for (;;)
           {
-            ac.w("MicroMsg.ShakeReportUI", "Bg decode exp:" + localIOException.getLocalizedMessage());
+            ad.w("MicroMsg.ShakeReportUI", "Bg decode exp:" + localIOException.getLocalizedMessage());
             Object localObject2 = null;
           }
         }
       }
-      az.ayM();
-      this.xAN = u.FE((String)com.tencent.mm.model.c.agA().get(4111, null));
-      localImageView.setImageDrawable(new BitmapDrawable(this.xAN));
+      ba.aBQ();
+      this.yPx = u.IT((String)com.tencent.mm.model.c.ajl().get(4111, null));
+      localImageView.setImageDrawable(new BitmapDrawable(this.yPx));
       break;
       i = 2131233995;
       break label179;
     }
   }
   
-  private void dDY()
+  private void dPB()
   {
     AppMethodBeat.i(28494);
-    this.xAo = true;
-    if ((this.xBl != null) && (this.xBl.isShowing()) && (!this.xBl.xyq)) {
-      this.xAo = false;
+    this.yOY = true;
+    if ((this.yPV != null) && (this.yPV.isShowing()) && (!this.yPV.yNb)) {
+      this.yOY = false;
     }
-    ac.i("MicroMsg.ShakeReportUI", "tryStartShake");
-    if ((this.shakeSensor != null) && (!this.shakeSensor.eMp()))
+    ad.i("MicroMsg.ShakeReportUI", "tryStartShake");
+    if ((this.shakeSensor != null) && (!this.shakeSensor.fbm()))
     {
       this.shakeSensor.a(new a(this));
-      if ((this.shakeSensor.eMr()) && (this.xAw != null))
+      if ((this.shakeSensor.fbo()) && (this.yPg != null))
       {
-        this.xAw.setText(getString(2131763534));
+        this.yPg.setText(getString(2131763534));
         AppMethodBeat.o(28494);
         return;
       }
-      this.xAw.setText(getString(2131763596));
+      this.yPg.setText(getString(2131763596));
     }
     AppMethodBeat.o(28494);
   }
   
-  private void dDZ()
+  private void dPC()
   {
     AppMethodBeat.i(28496);
-    if ((this.xAY == 3) && (com.tencent.mm.ay.e.aGD()))
+    if ((this.yPI == 3) && (com.tencent.mm.az.e.aJO()))
     {
-      this.xAY = 3;
-      this.xAy.setText(2131763612);
-      this.xAP.setBackgroundResource(2131233978);
-      this.xAR.setBackgroundResource(2131233984);
-      this.xAS.setBackgroundResource(2131233983);
-      this.xAT.setBackgroundResource(2131233987);
-      this.xAU.setBackgroundResource(2131233974);
+      this.yPI = 3;
+      this.yPi.setText(2131763612);
+      this.yPz.setBackgroundResource(2131233978);
+      this.yPB.setBackgroundResource(2131233984);
+      this.yPC.setBackgroundResource(2131233983);
+      this.yPD.setBackgroundResource(2131233987);
+      this.yPE.setBackgroundResource(2131233974);
       findViewById(2131304701).setVisibility(0);
       setMMTitle(2131763608);
-      com.tencent.mm.plugin.report.service.h.wUl.f(11720, new Object[] { Integer.valueOf(2) });
-      com.tencent.mm.plugin.report.service.h.wUl.n(834L, 2L, 1L);
+      com.tencent.mm.plugin.report.service.g.yhR.f(11720, new Object[] { Integer.valueOf(2) });
+      com.tencent.mm.plugin.report.service.g.yhR.n(834L, 2L, 1L);
     }
     for (;;)
     {
-      l.b localb = this.xAs.a(this, this.xAY, this);
-      if (!this.xAm) {
-        qx(false);
+      l.b localb = this.yPc.a(this, this.yPI, this);
+      if (!this.yOW) {
+        qZ(false);
       }
-      if ((com.tencent.mm.plugin.shake.c.c.a.dDK()) && ((localb instanceof com.tencent.mm.plugin.shake.c.a.g)))
+      if ((com.tencent.mm.plugin.shake.c.c.a.dPn()) && ((localb instanceof com.tencent.mm.plugin.shake.c.a.g)))
       {
-        ((com.tencent.mm.plugin.shake.c.a.g)localb).setFromScene(this.xBk);
-        if (this.xBk == 3)
+        ((com.tencent.mm.plugin.shake.c.a.g)localb).setFromScene(this.yPU);
+        if (this.yPU == 3)
         {
-          ac.i("MicroMsg.ShakeReportUI", "open shake card from specialview");
-          ((com.tencent.mm.plugin.shake.c.a.g)localb).WH(getIntent().getStringExtra("key_shake_card_ext_info"));
+          ad.i("MicroMsg.ShakeReportUI", "open shake card from specialview");
+          ((com.tencent.mm.plugin.shake.c.a.g)localb).aao(getIntent().getStringExtra("key_shake_card_ext_info"));
         }
       }
       AppMethodBeat.o(28496);
       return;
-      if ((this.xAY == 4) && (com.tencent.mm.plugin.shake.d.a.k.dDj()))
+      if ((this.yPI == 4) && (com.tencent.mm.plugin.shake.d.a.k.dOM()))
       {
-        this.xAY = 4;
-        this.xAy.setText(2131763613);
-        this.xAP.setBackgroundResource(2131233978);
-        this.xAR.setBackgroundResource(2131233984);
-        this.xAS.setBackgroundResource(2131233981);
-        this.xAT.setBackgroundResource(2131233989);
-        this.xAU.setBackgroundResource(2131233974);
+        this.yPI = 4;
+        this.yPi.setText(2131763613);
+        this.yPz.setBackgroundResource(2131233978);
+        this.yPB.setBackgroundResource(2131233984);
+        this.yPC.setBackgroundResource(2131233981);
+        this.yPD.setBackgroundResource(2131233989);
+        this.yPE.setBackgroundResource(2131233974);
         findViewById(2131304701).setVisibility(0);
         setMMTitle(2131763609);
-        com.tencent.mm.plugin.report.service.h.wUl.f(11720, new Object[] { Integer.valueOf(3) });
-        com.tencent.mm.plugin.report.service.h.wUl.n(834L, 3L, 1L);
+        com.tencent.mm.plugin.report.service.g.yhR.f(11720, new Object[] { Integer.valueOf(3) });
+        com.tencent.mm.plugin.report.service.g.yhR.n(834L, 3L, 1L);
       }
-      else if ((this.xAY == 5) && (dEh()))
+      else if ((this.yPI == 5) && (dPK()))
       {
-        this.xAY = 5;
-        this.xAy.setText(2131763611);
-        this.xAP.setBackgroundResource(2131233980);
-        this.xAR.setBackgroundResource(2131233984);
-        this.xAS.setBackgroundResource(2131233981);
-        this.xAT.setBackgroundResource(2131233987);
-        this.xAU.setBackgroundResource(2131233974);
+        this.yPI = 5;
+        this.yPi.setText(2131763611);
+        this.yPz.setBackgroundResource(2131233980);
+        this.yPB.setBackgroundResource(2131233984);
+        this.yPC.setBackgroundResource(2131233981);
+        this.yPD.setBackgroundResource(2131233987);
+        this.yPE.setBackgroundResource(2131233974);
         findViewById(2131304701).setVisibility(0);
         setMMTitle(2131763607);
-        com.tencent.mm.plugin.report.service.h.wUl.f(11720, new Object[] { Integer.valueOf(4) });
-        com.tencent.mm.plugin.report.service.h.wUl.n(834L, 4L, 1L);
+        com.tencent.mm.plugin.report.service.g.yhR.f(11720, new Object[] { Integer.valueOf(4) });
+        com.tencent.mm.plugin.report.service.g.yhR.n(834L, 4L, 1L);
       }
-      else if ((this.xAY == 6) && (com.tencent.mm.plugin.shake.c.c.a.dDK()))
+      else if ((this.yPI == 6) && (com.tencent.mm.plugin.shake.c.c.a.dPn()))
       {
-        this.xAY = 6;
-        this.xAy.setText(2131763610);
-        this.xAP.setBackgroundResource(2131233978);
-        this.xAR.setBackgroundResource(2131233984);
-        this.xAS.setBackgroundResource(2131233981);
-        this.xAT.setBackgroundResource(2131233987);
-        this.xAU.setBackgroundResource(2131233975);
+        this.yPI = 6;
+        this.yPi.setText(2131763610);
+        this.yPz.setBackgroundResource(2131233978);
+        this.yPB.setBackgroundResource(2131233984);
+        this.yPC.setBackgroundResource(2131233981);
+        this.yPD.setBackgroundResource(2131233987);
+        this.yPE.setBackgroundResource(2131233975);
         findViewById(2131304701).setVisibility(0);
         setMMTitle(2131763606);
-        dEc();
-        dEf();
-        com.tencent.mm.plugin.report.service.h.wUl.f(11720, new Object[] { Integer.valueOf(5) });
-        com.tencent.mm.plugin.report.service.h.wUl.n(834L, 5L, 1L);
+        dPF();
+        dPI();
+        com.tencent.mm.plugin.report.service.g.yhR.f(11720, new Object[] { Integer.valueOf(5) });
+        com.tencent.mm.plugin.report.service.g.yhR.n(834L, 5L, 1L);
       }
       else
       {
-        this.xAY = 1;
-        this.xAy.setText(2131763554);
-        this.xAP.setBackgroundResource(2131233978);
-        this.xAR.setBackgroundResource(2131233986);
-        this.xAS.setBackgroundResource(2131233981);
-        this.xAT.setBackgroundResource(2131233987);
-        this.xAU.setBackgroundResource(2131233974);
-        if (com.tencent.mm.ay.e.aGD()) {
+        this.yPI = 1;
+        this.yPi.setText(2131763554);
+        this.yPz.setBackgroundResource(2131233978);
+        this.yPB.setBackgroundResource(2131233986);
+        this.yPC.setBackgroundResource(2131233981);
+        this.yPD.setBackgroundResource(2131233987);
+        this.yPE.setBackgroundResource(2131233974);
+        if (com.tencent.mm.az.e.aJO()) {
           findViewById(2131304701).setVisibility(0);
         }
         setMMTitle(2131763605);
-        com.tencent.mm.plugin.report.service.h.wUl.f(11720, new Object[] { Integer.valueOf(1) });
-        com.tencent.mm.plugin.report.service.h.wUl.n(834L, 1L, 1L);
+        com.tencent.mm.plugin.report.service.g.yhR.f(11720, new Object[] { Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.g.yhR.n(834L, 1L, 1L);
       }
     }
   }
   
-  private void dEa()
+  private void dPD()
   {
     AppMethodBeat.i(28497);
-    az.ayM();
-    this.xAl = com.tencent.mm.sdk.platformtools.bs.k((Boolean)com.tencent.mm.model.c.agA().get(4112, null));
-    if (this.xAl)
+    ba.aBQ();
+    this.yOV = com.tencent.mm.sdk.platformtools.bt.n((Boolean)com.tencent.mm.model.c.ajl().get(4112, null));
+    if (this.yOV)
     {
       setTitleMuteIconVisibility(8);
       AppMethodBeat.o(28497);
@@ -940,76 +940,76 @@ public class ShakeReportUI
     AppMethodBeat.o(28497);
   }
   
-  private void dEb()
+  private void dPE()
   {
     AppMethodBeat.i(28517);
-    if (com.tencent.mm.plugin.shake.c.c.a.dDK())
+    if (com.tencent.mm.plugin.shake.c.c.a.dPn())
     {
-      if (com.tencent.mm.y.c.aeH().cH(262155, 266259))
+      if (com.tencent.mm.z.c.aht().cJ(262155, 266259))
       {
-        this.xAW.setVisibility(0);
+        this.yPG.setVisibility(0);
         AppMethodBeat.o(28517);
         return;
       }
-      this.xAW.setVisibility(8);
+      this.yPG.setVisibility(8);
     }
     AppMethodBeat.o(28517);
   }
   
-  private void dEc()
+  private void dPF()
   {
     AppMethodBeat.i(28518);
-    if ((this.xAY == 6) && (com.tencent.mm.plugin.shake.c.c.a.dDK()))
+    if ((this.yPI == 6) && (com.tencent.mm.plugin.shake.c.c.a.dPn()))
     {
-      boolean bool1 = com.tencent.mm.y.c.aeH().cH(262154, 266258);
-      boolean bool2 = com.tencent.mm.y.c.aeH().cH(262155, 266259);
+      boolean bool1 = com.tencent.mm.z.c.aht().cJ(262154, 266258);
+      boolean bool2 = com.tencent.mm.z.c.aht().cJ(262155, 266259);
       if (bool1)
       {
-        bz(com.tencent.mm.plugin.shake.c.c.a.dDF(), true);
+        bG(com.tencent.mm.plugin.shake.c.c.a.dPi(), true);
         AppMethodBeat.o(28518);
         return;
       }
       if (bool2)
       {
-        bz(com.tencent.mm.plugin.shake.c.c.a.dDH(), true);
+        bG(com.tencent.mm.plugin.shake.c.c.a.dPk(), true);
         AppMethodBeat.o(28518);
         return;
       }
-      if (!this.xBm)
+      if (!this.yPW)
       {
-        if (!TextUtils.isEmpty(com.tencent.mm.plugin.shake.c.c.a.dDD()))
+        if (!TextUtils.isEmpty(com.tencent.mm.plugin.shake.c.c.a.dPg()))
         {
-          bz(com.tencent.mm.plugin.shake.c.c.a.dDD(), true);
+          bG(com.tencent.mm.plugin.shake.c.c.a.dPg(), true);
           AppMethodBeat.o(28518);
           return;
         }
-        bz(getString(2131763551), true);
+        bG(getString(2131763551), true);
       }
     }
     AppMethodBeat.o(28518);
   }
   
-  private void dEd()
+  private void dPG()
   {
     AppMethodBeat.i(28520);
-    if ((this.xBl != null) && (this.xBl.isShowing())) {
-      this.xBl.dismiss();
+    if ((this.yPV != null) && (this.yPV.isShowing())) {
+      this.yPV.dismiss();
     }
-    this.xBl = null;
+    this.yPV = null;
     AppMethodBeat.o(28520);
   }
   
-  private void dEe()
+  private void dPH()
   {
     int m = 1;
     AppMethodBeat.i(28521);
-    boolean bool1 = com.tencent.mm.plugin.shake.c.c.a.dDg();
-    boolean bool2 = com.tencent.mm.y.c.aeH().cH(262154, 266258);
-    boolean bool3 = com.tencent.mm.y.c.aeH().cH(262155, 266259);
+    boolean bool1 = com.tencent.mm.plugin.shake.c.c.a.dOJ();
+    boolean bool2 = com.tencent.mm.z.c.aht().cJ(262154, 266258);
+    boolean bool3 = com.tencent.mm.z.c.aht().cJ(262155, 266259);
     if (getIntent().getBooleanExtra("shake_card", false)) {}
     for (int i = getIntent().getIntExtra("shake_card", 0);; i = 0)
     {
-      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.wUl;
+      com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yhR;
       int j;
       if (bool2)
       {
@@ -1019,8 +1019,8 @@ public class ShakeReportUI
         }
         k = 1;
         label87:
-        localh.f(11668, new Object[] { Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), com.tencent.mm.plugin.shake.c.c.a.dDG(), Integer.valueOf(com.tencent.mm.plugin.shake.c.c.a.dDC()) });
-        localh = com.tencent.mm.plugin.report.service.h.wUl;
+        localg.f(11668, new Object[] { Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), com.tencent.mm.plugin.shake.c.c.a.dPj(), Integer.valueOf(com.tencent.mm.plugin.shake.c.c.a.dPf()) });
+        localg = com.tencent.mm.plugin.report.service.g.yhR;
         if (!bool3) {
           break label236;
         }
@@ -1035,7 +1035,7 @@ public class ShakeReportUI
       label241:
       for (int k = m;; k = 0)
       {
-        localh.f(11668, new Object[] { Integer.valueOf(2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), com.tencent.mm.plugin.shake.c.c.a.dDG(), Integer.valueOf(com.tencent.mm.plugin.shake.c.c.a.dDC()) });
+        localg.f(11668, new Object[] { Integer.valueOf(2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), com.tencent.mm.plugin.shake.c.c.a.dPj(), Integer.valueOf(com.tencent.mm.plugin.shake.c.c.a.dPf()) });
         AppMethodBeat.o(28521);
         return;
         j = 0;
@@ -1048,16 +1048,16 @@ public class ShakeReportUI
     }
   }
   
-  private void dEf()
+  private void dPI()
   {
     AppMethodBeat.i(28522);
-    if (!TextUtils.isEmpty(com.tencent.mm.plugin.shake.c.c.a.dDE())) {
-      this.xAX.setText(com.tencent.mm.plugin.shake.c.c.a.dDE());
+    if (!TextUtils.isEmpty(com.tencent.mm.plugin.shake.c.c.a.dPh())) {
+      this.yPH.setText(com.tencent.mm.plugin.shake.c.c.a.dPh());
     }
     AppMethodBeat.o(28522);
   }
   
-  private void dEg()
+  private void dPJ()
   {
     AppMethodBeat.i(28523);
     label123:
@@ -1065,39 +1065,39 @@ public class ShakeReportUI
     label167:
     label208:
     int i;
-    if (com.tencent.mm.ay.e.aGD())
+    if (com.tencent.mm.az.e.aJO())
     {
-      ac.i("MicroMsg.ShakeReportUI", "is not oversea user, show shake music");
-      this.xBn.put(Integer.valueOf(3), Boolean.TRUE);
+      ad.i("MicroMsg.ShakeReportUI", "is not oversea user, show shake music");
+      this.yPX.put(Integer.valueOf(3), Boolean.TRUE);
       findViewById(2131304716).setVisibility(0);
-      if (com.tencent.mm.ay.e.aGE())
+      if (com.tencent.mm.az.e.aJP())
       {
-        az.ayM();
-        if (com.tencent.mm.model.c.agA().getInt(4118, 0) == 0) {
-          this.xAV.setVisibility(0);
+        ba.aBQ();
+        if (com.tencent.mm.model.c.ajl().getInt(4118, 0) == 0) {
+          this.yPF.setVisibility(0);
         }
       }
       else
       {
-        if (!com.tencent.mm.plugin.shake.d.a.k.dDj()) {
+        if (!com.tencent.mm.plugin.shake.d.a.k.dOM()) {
           break label309;
         }
-        this.xBn.put(Integer.valueOf(4), Boolean.TRUE);
+        this.yPX.put(Integer.valueOf(4), Boolean.TRUE);
         findViewById(2131304719).setVisibility(0);
-        ac.i("MicroMsg.ShakeReportUI", "show shake tv tab");
-        if (!com.tencent.mm.plugin.shake.c.c.a.dDK()) {
+        ad.i("MicroMsg.ShakeReportUI", "show shake tv tab");
+        if (!com.tencent.mm.plugin.shake.c.c.a.dPn()) {
           break label350;
         }
-        this.xBn.put(Integer.valueOf(6), Boolean.TRUE);
+        this.yPX.put(Integer.valueOf(6), Boolean.TRUE);
         findViewById(2131304706).setVisibility(0);
-        ac.i("MicroMsg.ShakeReportUI", "show shake card tab");
-        if (!dEh()) {
+        ad.i("MicroMsg.ShakeReportUI", "show shake card tab");
+        if (!dPK()) {
           break label392;
         }
-        this.xBn.put(Integer.valueOf(5), Boolean.TRUE);
-        this.xBj.setVisibility(0);
-        ac.i("MicroMsg.ShakeReportUI", "[shakezb]show shake ibeacon tab");
-        localObject = this.xBn.values().iterator();
+        this.yPX.put(Integer.valueOf(5), Boolean.TRUE);
+        this.yPT.setVisibility(0);
+        ad.i("MicroMsg.ShakeReportUI", "[shakezb]show shake ibeacon tab");
+        localObject = this.yPX.values().iterator();
         i = 0;
         label225:
         if (!((Iterator)localObject).hasNext()) {
@@ -1114,56 +1114,56 @@ public class ShakeReportUI
     for (;;)
     {
       break label225;
-      this.xAV.setVisibility(8);
+      this.yPF.setVisibility(8);
       break;
-      this.xBn.put(Integer.valueOf(3), Boolean.FALSE);
+      this.yPX.put(Integer.valueOf(3), Boolean.FALSE);
       findViewById(2131304716).setVisibility(8);
-      ac.i("MicroMsg.ShakeReportUI", "is oversea user, hide shake music");
+      ad.i("MicroMsg.ShakeReportUI", "is oversea user, hide shake music");
       break;
-      this.xBn.put(Integer.valueOf(4), Boolean.FALSE);
+      this.yPX.put(Integer.valueOf(4), Boolean.FALSE);
       findViewById(2131304719).setVisibility(8);
-      ac.i("MicroMsg.ShakeReportUI", "hide shake tv tab");
+      ad.i("MicroMsg.ShakeReportUI", "hide shake tv tab");
       break label123;
       label350:
       findViewById(2131304706).setVisibility(8);
-      this.xBn.put(Integer.valueOf(6), Boolean.FALSE);
-      ac.i("MicroMsg.ShakeReportUI", "hide shake card tab");
+      this.yPX.put(Integer.valueOf(6), Boolean.FALSE);
+      ad.i("MicroMsg.ShakeReportUI", "hide shake card tab");
       break label167;
-      this.xBn.put(Integer.valueOf(5), Boolean.FALSE);
-      this.xBj.setVisibility(8);
-      ac.i("MicroMsg.ShakeReportUI", "[shakezb]hide shake ibeacon tab");
+      this.yPX.put(Integer.valueOf(5), Boolean.FALSE);
+      this.yPT.setVisibility(8);
+      ad.i("MicroMsg.ShakeReportUI", "[shakezb]hide shake ibeacon tab");
       break label208;
-      this.xAZ = i;
+      this.yPJ = i;
       localObject = (LinearLayout)findViewById(2131304701);
       if (i == 1) {
         ((LinearLayout)localObject).setVisibility(8);
       }
-      while ((i > 4) && (this.xBu))
+      while ((i > 4) && (this.yQe))
       {
         findViewById(2131304719).setVisibility(8);
-        ac.i("MicroMsg.ShakeReportUI", "show tab count is > 4 and beaconMap.size() > 0.");
-        this.xAZ -= 1;
+        ad.i("MicroMsg.ShakeReportUI", "show tab count is > 4 and beaconMap.size() > 0.");
+        this.yPJ -= 1;
         AppMethodBeat.o(28523);
         return;
         ((LinearLayout)localObject).setVisibility(0);
       }
-      if ((i > 4) && (!this.xBu))
+      if ((i > 4) && (!this.yQe))
       {
-        this.xBj.setVisibility(8);
-        this.xBo = false;
-        this.xAZ -= 1;
-        ac.i("MicroMsg.ShakeReportUI", "show tab count is > 4 and beaconMap.size() <= 0.");
+        this.yPT.setVisibility(8);
+        this.yPY = false;
+        this.yPJ -= 1;
+        ad.i("MicroMsg.ShakeReportUI", "show tab count is > 4 and beaconMap.size() <= 0.");
       }
       AppMethodBeat.o(28523);
       return;
     }
   }
   
-  private boolean dEh()
+  private boolean dPK()
   {
     AppMethodBeat.i(28524);
-    ac.i("MicroMsg.ShakeReportUI", "[shakezb] isChineseAppLang :" + com.tencent.mm.sdk.platformtools.ab.eUK() + " ,getApplicationLanguage[en or zh_CN or zh_HK or zh_TW is avaliable] :" + com.tencent.mm.sdk.platformtools.ab.eUO());
-    if ((this.xBo) && (dEi()))
+    ad.i("MicroMsg.ShakeReportUI", "[shakezb] isChineseAppLang :" + com.tencent.mm.sdk.platformtools.ac.fko() + " ,getApplicationLanguage[en or zh_CN or zh_HK or zh_TW is avaliable] :" + com.tencent.mm.sdk.platformtools.ac.fks());
+    if ((this.yPY) && (dPL()))
     {
       AppMethodBeat.o(28524);
       return true;
@@ -1172,10 +1172,10 @@ public class ShakeReportUI
     return false;
   }
   
-  private static boolean dEi()
+  private static boolean dPL()
   {
     AppMethodBeat.i(28525);
-    if ((com.tencent.mm.sdk.platformtools.ab.eUK()) || (com.tencent.mm.sdk.platformtools.ab.eUO().equals("en")) || (com.tencent.mm.sdk.platformtools.ab.eUO().equals("ja")))
+    if ((com.tencent.mm.sdk.platformtools.ac.fko()) || (com.tencent.mm.sdk.platformtools.ac.fks().equals("en")) || (com.tencent.mm.sdk.platformtools.ac.fks().equals("ja")))
     {
       AppMethodBeat.o(28525);
       return true;
@@ -1184,102 +1184,113 @@ public class ShakeReportUI
     return false;
   }
   
-  private void dEj()
+  private void dPM()
   {
     AppMethodBeat.i(28526);
-    this.xBa.setVisibility(8);
+    this.yPK.setVisibility(8);
     AppMethodBeat.o(28526);
   }
   
-  private void dsQ()
+  private void dPx()
   {
-    AppMethodBeat.i(28486);
-    dDX();
-    az.ayM();
-    com.tencent.mm.model.c.a(this);
-    az.ayM();
-    com.tencent.mm.model.c.agA().a(this);
-    com.tencent.mm.plugin.shake.b.m.dDl().add(this);
-    if (this.xAs.xxj != null) {
-      this.xAs.xxj.resume();
-    }
-    dDY();
-    new ao().postDelayed(new Runnable()
+    AppMethodBeat.i(28489);
+    if (!dPL())
     {
-      public final void run()
-      {
-        AppMethodBeat.i(28471);
-        if (ShakeReportUI.f(ShakeReportUI.this) != null) {
-          ShakeReportUI.f(ShakeReportUI.this).eMq();
-        }
-        AppMethodBeat.o(28471);
-      }
-    }, 1000L);
-    if (this.shakeSensor != null) {
-      this.shakeSensor.eMq();
-    }
-    qw(false);
-    qx(false);
-    dEa();
-    az.ayM();
-    Object localObject = (String)com.tencent.mm.model.c.agA().get(327696, "1");
-    if (com.tencent.mm.plugin.shake.d.a.k.dDj())
-    {
-      if (this.xAY == 4) {
-        qs(true);
-      }
-      if (((String)localObject).equals("4")) {
-        ey(findViewById(2131304719));
-      }
-    }
-    boolean bool;
-    if (((String)localObject).equals("3"))
-    {
-      ey(findViewById(2131304716));
-      bool = com.tencent.mm.y.c.aeH().cH(262154, 266258);
-      if ((!getIntent().getBooleanExtra("shake_music", false)) || (!com.tencent.mm.ay.e.aGD()) || (this.xAs.xxi == 3)) {
-        break label357;
-      }
-      getIntent().putExtra("shake_music", false);
-      this.xAY = 3;
-    }
-    for (;;)
-    {
-      dDZ();
-      qt(true);
-      ac.d("MicroMsg.ShakeReportUI", "isShakeGetConfigList = %s", new Object[] { Boolean.valueOf(com.tencent.mm.platformtools.ab.ivw) });
-      if (com.tencent.mm.platformtools.ab.ivw)
-      {
-        localObject = new com.tencent.mm.bb.l(7);
-        az.agi().a((com.tencent.mm.ak.n)localObject, 0);
-      }
-      dEj();
-      dEg();
-      dDU();
-      AppMethodBeat.o(28486);
+      AppMethodBeat.o(28489);
       return;
-      if ((!((String)localObject).equals("6")) || (!com.tencent.mm.plugin.shake.c.c.a.dDK())) {
-        break;
-      }
-      ey(findViewById(2131304706));
-      break;
-      label357:
-      if ((getIntent().getBooleanExtra("shake_tv", false)) && (this.xAs.xxi != 4) && (com.tencent.mm.plugin.shake.d.a.k.dDj()))
+    }
+    if (BluetoothAdapter.getDefaultAdapter() != null)
+    {
+      Object localObject = com.tencent.mm.n.g.acB().acr();
+      if (localObject != null)
       {
-        getIntent().putExtra("shake_tv", false);
-        this.xAY = 4;
-      }
-      else if ((this.xAs.xxi != 6) && (com.tencent.mm.plugin.shake.c.c.a.dDK()) && ((bool) || (getIntent().getBooleanExtra("shake_card", false))))
-      {
-        this.xBk = getIntent().getIntExtra("shake_card", 0);
-        getIntent().putExtra("shake_card", false);
-        ac.i("MicroMsg.ShakeReportUI", "onresume shake card tab is open, activity type is 0 or open from specialview");
-        this.xAY = 6;
+        this.yQd = System.currentTimeMillis();
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          ad.i("MicroMsg.ShakeReportUI", "op=true,iBeacon = %s", new Object[] { str });
+          ed localed = new ed();
+          localed.dpk.dpm = str;
+          localed.dpk.dpj = true;
+          com.tencent.mm.sdk.b.a.IbL.l(localed);
+        }
       }
     }
+    AppMethodBeat.o(28489);
   }
   
-  private void ey(View paramView)
+  private void dPy()
+  {
+    AppMethodBeat.i(28490);
+    ba.aBQ();
+    if (!com.tencent.mm.sdk.platformtools.bt.a((Boolean)com.tencent.mm.model.c.ajl().get(al.a.ItI, null), false))
+    {
+      this.fFi.clear();
+      fFj = new CopyOnWriteArrayList();
+    }
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      Object localObject = com.tencent.mm.n.g.acB().acr();
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          ed localed = new ed();
+          ad.i("MicroMsg.ShakeReportUI", "op=false,iBeacon = %s", new Object[] { str });
+          localed.dpk.dpm = str;
+          localed.dpk.dpj = false;
+          com.tencent.mm.sdk.b.a.IbL.l(localed);
+        }
+      }
+    }
+    AppMethodBeat.o(28490);
+  }
+  
+  private void dPz()
+  {
+    AppMethodBeat.i(28492);
+    if (com.tencent.mm.az.e.aJP())
+    {
+      ba.aBQ();
+      if (com.tencent.mm.model.c.ajl().getInt(4118, 0) == 0)
+      {
+        com.tencent.mm.ui.widget.a.d.a locala = new com.tencent.mm.ui.widget.a.d.a(getContext());
+        locala.afe(2131755906);
+        locala.afi(2131763571);
+        locala.afl(2131763570).c(new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(28447);
+            if (ShakeReportUI.s(ShakeReportUI.this) != null) {
+              ShakeReportUI.s(ShakeReportUI.this).cancel();
+            }
+            AppMethodBeat.o(28447);
+          }
+        });
+        locala.yR(true);
+        locala.e(new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(28448);
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().setInt(4118, 1);
+            ShakeReportUI.t(ShakeReportUI.this).setVisibility(8);
+            AppMethodBeat.o(28448);
+          }
+        });
+        this.yPy = locala.fMb();
+        this.yPy.show();
+      }
+    }
+    AppMethodBeat.o(28492);
+  }
+  
+  private void eK(View paramView)
   {
     AppMethodBeat.i(28509);
     if (paramView == null)
@@ -1288,26 +1299,26 @@ public class ShakeReportUI
       return;
     }
     boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.RECORD_AUDIO", 80, "", "");
-    ac.i("MicroMsg.ShakeReportUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), com.tencent.mm.sdk.platformtools.bs.eWi(), this });
+    ad.i("MicroMsg.ShakeReportUI", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), com.tencent.mm.sdk.platformtools.bt.flS(), this });
     if (!bool)
     {
       AppMethodBeat.o(28509);
       return;
     }
-    bz("", false);
+    bG("", false);
     if (paramView.getId() == 2131304710)
     {
-      com.tencent.mm.plugin.report.service.h.wUl.f(11722, new Object[] { Integer.valueOf(1) });
-      if (this.xAY != 1)
+      com.tencent.mm.plugin.report.service.g.yhR.f(11722, new Object[] { Integer.valueOf(1) });
+      if (this.yPI != 1)
       {
-        if (this.xAY == 4) {
-          qs(false);
+        if (this.yPI == 4) {
+          qU(false);
         }
-        this.xAY = 1;
-        dDZ();
-        qu(false);
-        if (this.xAu != null) {
-          this.xAu.setVisibility(8);
+        this.yPI = 1;
+        dPC();
+        qW(false);
+        if (this.yPe != null) {
+          this.yPe.setVisibility(8);
         }
       }
     }
@@ -1315,48 +1326,48 @@ public class ShakeReportUI
     {
       for (;;)
       {
-        qt(true);
-        qx(false);
-        dEj();
+        qV(true);
+        qZ(false);
+        dPM();
         AppMethodBeat.o(28509);
         return;
         if (paramView.getId() == 2131304716)
         {
-          com.tencent.mm.plugin.report.service.h.wUl.f(11722, new Object[] { Integer.valueOf(2) });
-          if ((!this.fmZ) && (this.fmW != null)) {
-            this.fmW.a(this.fnd, true);
+          com.tencent.mm.plugin.report.service.g.yhR.f(11722, new Object[] { Integer.valueOf(2) });
+          if ((!this.fFh) && (this.fFe != null)) {
+            this.fFe.a(this.fFl, true);
           }
-          if ((!com.tencent.mm.r.a.ci(this)) && (!com.tencent.mm.r.a.cf(this)) && (!com.tencent.mm.r.a.ck(this)) && (this.xAY != 3))
+          if ((!com.tencent.mm.s.a.cf(this)) && (!com.tencent.mm.s.a.cd(this)) && (!com.tencent.mm.s.a.ch(this)) && (this.yPI != 3))
           {
-            if (this.xAY == 4) {
-              qs(false);
+            if (this.yPI == 4) {
+              qU(false);
             }
-            this.xAY = 3;
-            dDZ();
-            qu(false);
-            if (this.xAu != null) {
-              this.xAu.setVisibility(8);
+            this.yPI = 3;
+            dPC();
+            qW(false);
+            if (this.yPe != null) {
+              this.yPe.setVisibility(8);
             }
           }
-          dDW();
+          dPz();
         }
         else
         {
           if (paramView.getId() != 2131304719) {
             break;
           }
-          com.tencent.mm.plugin.report.service.h.wUl.f(11722, new Object[] { Integer.valueOf(3) });
-          if ((!this.fmZ) && (this.fmW != null)) {
-            this.fmW.a(this.fnd, true);
+          com.tencent.mm.plugin.report.service.g.yhR.f(11722, new Object[] { Integer.valueOf(3) });
+          if ((!this.fFh) && (this.fFe != null)) {
+            this.fFe.a(this.fFl, true);
           }
-          if ((!com.tencent.mm.r.a.ci(this)) && (!com.tencent.mm.r.a.cf(this)) && (!com.tencent.mm.r.a.ck(this)) && (this.xAY != 4))
+          if ((!com.tencent.mm.s.a.cf(this)) && (!com.tencent.mm.s.a.cd(this)) && (!com.tencent.mm.s.a.ch(this)) && (this.yPI != 4))
           {
-            qs(true);
-            this.xAY = 4;
-            dDZ();
-            qu(false);
-            if (this.xAu != null) {
-              this.xAu.setVisibility(8);
+            qU(true);
+            this.yPI = 4;
+            dPC();
+            qW(false);
+            if (this.yPe != null) {
+              this.yPe.setVisibility(8);
             }
           }
         }
@@ -1364,17 +1375,17 @@ public class ShakeReportUI
       if ((paramView.getId() != 2131304714) && (paramView.getId() != 2131304711)) {
         break;
       }
-      com.tencent.mm.plugin.report.service.h.wUl.f(11722, new Object[] { Integer.valueOf(4) });
-    } while (this.xAY == 5);
-    this.xAY = 5;
-    dDZ();
-    qu(false);
-    if (this.xAu != null) {
-      this.xAu.setVisibility(8);
+      com.tencent.mm.plugin.report.service.g.yhR.f(11722, new Object[] { Integer.valueOf(4) });
+    } while (this.yPI == 5);
+    this.yPI = 5;
+    dPC();
+    qW(false);
+    if (this.yPe != null) {
+      this.yPe.setVisibility(8);
     }
     if ((!Build.VERSION.RELEASE.equals("6.0")) && (!Build.VERSION.RELEASE.equals("6.0.0")) && (Build.VERSION.SDK_INT >= 23))
     {
-      paramView = (LocationManager)com.tencent.mm.sdk.platformtools.ai.getContext().getSystemService("location");
+      paramView = (LocationManager)aj.getContext().getSystemService("location");
       if (paramView == null) {
         break label743;
       }
@@ -1383,205 +1394,176 @@ public class ShakeReportUI
     for (bool = paramView.isProviderEnabled("gps");; bool = true)
     {
       if (!bool) {
-        ast(getString(2131763565));
+        axt(getString(2131763565));
       }
       paramView = BluetoothAdapter.getDefaultAdapter();
       if ((paramView != null) && (paramView.getState() != 12))
       {
-        ast(getString(2131763564));
+        axt(getString(2131763564));
         break;
       }
       if (paramView != null) {
         break;
       }
-      ast(getString(2131763568));
+      axt(getString(2131763568));
       break;
       if (paramView.getId() != 2131304706) {
         break;
       }
-      com.tencent.mm.plugin.report.service.h.wUl.f(11722, new Object[] { Integer.valueOf(5) });
-      if (this.xAY == 6) {
+      com.tencent.mm.plugin.report.service.g.yhR.f(11722, new Object[] { Integer.valueOf(5) });
+      if (this.yPI == 6) {
         break;
       }
-      if (this.xAY == 4) {
-        qs(false);
+      if (this.yPI == 4) {
+        qU(false);
       }
-      this.xAY = 6;
-      dDZ();
-      qu(false);
-      if (this.xAu != null) {
-        this.xAu.setVisibility(8);
+      this.yPI = 6;
+      dPC();
+      qW(false);
+      if (this.yPe != null) {
+        this.yPe.setVisibility(8);
       }
-      com.tencent.mm.y.c.aeH().x(262155, false);
-      this.xAW.setVisibility(8);
+      com.tencent.mm.z.c.aht().x(262155, false);
+      this.yPG.setVisibility(8);
       break;
     }
   }
   
-  private void qs(boolean paramBoolean)
+  private void qU(boolean paramBoolean)
   {
     AppMethodBeat.i(28495);
     String str = String.format("%1$s-shaketype-%2$d", new Object[] { getClass().getName(), Integer.valueOf(4) });
-    ac.d("MicroMsg.ShakeReportUI", "activate change report , class name=" + str + ", isActive=" + paramBoolean);
+    ad.d("MicroMsg.ShakeReportUI", "activate change report , class name=" + str + ", isActive=" + paramBoolean);
     y.d(paramBoolean, new Intent().putExtra("classname", str));
     AppMethodBeat.o(28495);
   }
   
-  private void qt(boolean paramBoolean)
+  private void qV(boolean paramBoolean)
   {
     AppMethodBeat.i(28498);
-    qu(paramBoolean);
-    qv(paramBoolean);
+    qW(paramBoolean);
+    qX(paramBoolean);
     AppMethodBeat.o(28498);
   }
   
-  private void qu(boolean paramBoolean)
+  private void qW(boolean paramBoolean)
   {
     AppMethodBeat.i(28499);
-    if (this.xAH == null) {
-      this.xAH = findViewById(2131300604);
+    if (this.yPr == null) {
+      this.yPr = findViewById(2131300604);
     }
-    if ((this.xAs.xxi == 3) || (this.xAs.xxi == 4) || (this.xAs.xxi == 5) || (this.xAs.xxi == 6) || (!paramBoolean))
+    if ((this.yPc.yLT == 3) || (this.yPc.yLT == 4) || (this.yPc.yLT == 5) || (this.yPc.yLT == 6) || (!paramBoolean))
     {
-      this.xAH.setVisibility(8);
+      this.yPr.setVisibility(8);
       AppMethodBeat.o(28499);
       return;
     }
-    int i = com.tencent.mm.bj.d.aJg().bQe();
+    int i = com.tencent.mm.bk.d.aMq().bUJ();
     if (i <= 0)
     {
-      this.xAH.setVisibility(8);
+      this.yPr.setVisibility(8);
       AppMethodBeat.o(28499);
       return;
     }
-    this.xAH.setVisibility(0);
-    ((TextView)this.xAH.findViewById(2131304292)).setText(getResources().getQuantityString(2131623965, i, new Object[] { Integer.valueOf(i) }));
-    this.xAH.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(28456);
-        Object localObject = new Intent(ShakeReportUI.this, ShakeSayHiListUI.class);
-        ((Intent)localObject).putExtra("IntentSayHiType", 1);
-        paramAnonymousView = ShakeReportUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI$16", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$16", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(28456);
-      }
-    });
-    if (this.xAL == null) {
-      this.xAL = ((ImageView)findViewById(2131302192));
+    this.yPr.setVisibility(0);
+    ((TextView)this.yPr.findViewById(2131304292)).setText(getResources().getQuantityString(2131623965, i, new Object[] { Integer.valueOf(i) }));
+    this.yPr.setOnClickListener(new ShakeReportUI.8(this));
+    if (this.yPv == null) {
+      this.yPv = ((ImageView)findViewById(2131302192));
     }
-    bx localbx = com.tencent.mm.bj.d.aJg().fcD();
-    if (localbx != null)
+    cd localcd = com.tencent.mm.bk.d.aMq().fsK();
+    if (localcd != null)
     {
-      this.xAM = localbx.field_sayhiuser;
-      com.tencent.mm.pluginsdk.ui.a.b.c(this.xAL, this.xAM);
+      this.yPw = localcd.field_sayhiuser;
+      com.tencent.mm.pluginsdk.ui.a.b.c(this.yPv, this.yPw);
     }
     AppMethodBeat.o(28499);
   }
   
-  private void qv(boolean paramBoolean)
+  private void qX(boolean paramBoolean)
   {
     AppMethodBeat.i(28500);
-    if (this.xAI == null) {
-      this.xAI = findViewById(2131300605);
+    if (this.yPs == null) {
+      this.yPs = findViewById(2131300605);
     }
     if (!paramBoolean)
     {
-      this.xAI.setVisibility(8);
+      this.yPs.setVisibility(8);
       AppMethodBeat.o(28500);
       return;
     }
-    int i = com.tencent.mm.plugin.shake.b.m.dDm().bQe();
+    int i = com.tencent.mm.plugin.shake.b.m.dOP().bUJ();
     if (i <= 0)
     {
-      this.xAI.setVisibility(8);
+      this.yPs.setVisibility(8);
       AppMethodBeat.o(28500);
       return;
     }
-    if (this.xAK == null) {
-      this.xAK = ((TextView)this.xAI.findViewById(2131304692));
+    if (this.yPu == null) {
+      this.yPu = ((TextView)this.yPs.findViewById(2131304692));
     }
-    this.xAK.setText(getString(2131763589, new Object[] { Integer.valueOf(i) }));
-    this.xAI.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(28457);
-        Object localObject = new Intent(ShakeReportUI.this, ShakeMsgListUI.class);
-        ((Intent)localObject).putExtra("shake_msg_from", 1);
-        ((Intent)localObject).putExtra("shake_msg_list_title", ShakeReportUI.this.getString(2131763637));
-        paramAnonymousView = ShakeReportUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI$17", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$17", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(28457);
-      }
-    });
-    if (this.xAJ == null) {
-      this.xAJ = ((MMImageView)findViewById(2131304698));
+    this.yPu.setText(getString(2131763589, new Object[] { Integer.valueOf(i) }));
+    this.yPs.setOnClickListener(new ShakeReportUI.9(this));
+    if (this.yPt == null) {
+      this.yPt = ((MMImageView)findViewById(2131304698));
     }
-    Object localObject = com.tencent.mm.plugin.shake.b.m.dDm().dDc();
+    Object localObject = com.tencent.mm.plugin.shake.b.m.dOP().dOF();
     if (localObject != null)
     {
       localObject = ((com.tencent.mm.plugin.shake.b.f)localObject).field_thumburl;
-      if (com.tencent.mm.sdk.platformtools.bs.isNullOrNil((String)localObject)) {
+      if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil((String)localObject)) {
         break label255;
       }
       localObject = new com.tencent.mm.plugin.shake.e.b((String)localObject);
       Bitmap localBitmap = u.a((s)localObject);
-      this.xAJ.setTag(((com.tencent.mm.plugin.shake.e.b)localObject).aNn());
+      this.yPt.setTag(((com.tencent.mm.plugin.shake.e.b)localObject).aQy());
       if ((localBitmap == null) || (localBitmap.isRecycled())) {
         break label242;
       }
-      this.xAJ.setImageBitmap(localBitmap);
+      this.yPt.setImageBitmap(localBitmap);
     }
     for (;;)
     {
-      this.xAI.setVisibility(0);
+      this.yPs.setVisibility(0);
       AppMethodBeat.o(28500);
       return;
       label242:
-      this.xAJ.setImageResource(2131689584);
+      this.yPt.setImageResource(2131689584);
       continue;
       label255:
-      this.xAJ.setImageResource(2131689584);
+      this.yPt.setImageResource(2131689584);
     }
   }
   
-  private void qw(boolean paramBoolean)
+  private void qY(boolean paramBoolean)
   {
     AppMethodBeat.i(28501);
-    if (this.xAx != null)
+    if (this.yPh != null)
     {
       if (paramBoolean)
       {
-        this.xAx.setVisibility(0);
+        this.yPh.setVisibility(0);
         AppMethodBeat.o(28501);
         return;
       }
-      this.xAx.setVisibility(8);
-      this.xAx.cancelLongPress();
+      this.yPh.setVisibility(8);
+      this.yPh.cancelLongPress();
     }
     AppMethodBeat.o(28501);
   }
   
-  private void qx(boolean paramBoolean)
+  private void qZ(boolean paramBoolean)
   {
     AppMethodBeat.i(28502);
-    if (this.xAv != null)
+    if (this.yPf != null)
     {
       if (paramBoolean)
       {
-        this.xAv.setVisibility(0);
+        this.yPf.setVisibility(0);
         AppMethodBeat.o(28502);
         return;
       }
-      this.xAv.setVisibility(4);
+      this.yPf.setVisibility(4);
     }
     AppMethodBeat.o(28502);
   }
@@ -1589,7 +1571,7 @@ public class ShakeReportUI
   public final void a(int paramInt, final com.tencent.mm.plugin.shake.c.a.e parame, long paramLong)
   {
     AppMethodBeat.i(28507);
-    this.xBm = true;
+    this.yPW = true;
     if (paramInt == 1251)
     {
       if (parame == null)
@@ -1597,13 +1579,13 @@ public class ShakeReportUI
         AppMethodBeat.o(28507);
         return;
       }
-      ac.i("MicroMsg.ShakeReportUI", "onShakeCardReturn MMFunc_Biz_GetLbsCard");
-      com.tencent.mm.plugin.shake.c.c.a.dDf();
-      dEg();
-      dEb();
-      dEe();
-      this.xBk = 4;
-      com.tencent.mm.plugin.shake.b.m.dDr().putValue("key_shake_card_item", parame);
+      ad.i("MicroMsg.ShakeReportUI", "onShakeCardReturn MMFunc_Biz_GetLbsCard");
+      com.tencent.mm.plugin.shake.c.c.a.dOI();
+      dPJ();
+      dPE();
+      dPH();
+      this.yPU = 4;
+      com.tencent.mm.plugin.shake.b.m.dOU().putValue("key_shake_card_item", parame);
       AppMethodBeat.o(28507);
       return;
     }
@@ -1612,23 +1594,23 @@ public class ShakeReportUI
     {
       if (parame == null)
       {
-        this.xAQ = null;
-        ast(null);
+        this.yPA = null;
+        axt(null);
         AppMethodBeat.o(28507);
         return;
       }
-      if (((parame == null) || (this.xAm)) && (!this.xAm))
+      if (((parame == null) || (this.yOW)) && (!this.yOW))
       {
-        this.xAQ = null;
-        ast(null);
+        this.yPA = null;
+        axt(null);
         AppMethodBeat.o(28507);
         return;
       }
-      this.xAm = false;
-      ac.i("MicroMsg.ShakeReportUI", "onShakeCardReturn MMFunc_Biz_ShakeCard");
-      if (this.xAs.xxi == 6)
+      this.yOW = false;
+      ad.i("MicroMsg.ShakeReportUI", "onShakeCardReturn MMFunc_Biz_ShakeCard");
+      if (this.yPc.yLT == 6)
       {
-        localObject = this.xAs.xxj;
+        localObject = this.yPc.yLU;
         if ((localObject != null) && ((localObject instanceof com.tencent.mm.plugin.shake.c.a.g)))
         {
           localObject = (com.tencent.mm.plugin.shake.c.a.g)localObject;
@@ -1642,38 +1624,38 @@ public class ShakeReportUI
     {
       AppMethodBeat.o(28507);
       return;
-      ac.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() ShakeCardService RETURN_OK");
-      if (((com.tencent.mm.plugin.shake.c.a.g)localObject).nWg == 3)
+      ad.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() ShakeCardService RETURN_OK");
+      if (((com.tencent.mm.plugin.shake.c.a.g)localObject).ozA == 3)
       {
-        ac.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() actionType is  MMBIZ_SHAKE_CARD_ACTION_TYPE_NO_CARD");
-        if ((parame != null) && (!TextUtils.isEmpty(parame.xxL)))
+        ad.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() actionType is  MMBIZ_SHAKE_CARD_ACTION_TYPE_NO_CARD");
+        if ((parame != null) && (!TextUtils.isEmpty(parame.yMw)))
         {
-          ast(parame.xxL);
+          axt(parame.yMw);
           AppMethodBeat.o(28507);
           return;
         }
-        ast(getString(2131763550));
+        axt(getString(2131763550));
         AppMethodBeat.o(28507);
         return;
       }
-      ac.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() actionType is " + ((com.tencent.mm.plugin.shake.c.a.g)localObject).nWg);
-      NQ(3);
-      if (parame.nWg == 1) {
-        this.xAo = false;
+      ad.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() actionType is " + ((com.tencent.mm.plugin.shake.c.a.g)localObject).ozA);
+      Pt(3);
+      if (parame.ozA == 1) {
+        this.yOY = false;
       }
-      if ((this.xBl != null) && (this.xBl.isShowing()))
+      if ((this.yPV != null) && (this.yPV.isShowing()))
       {
         AppMethodBeat.o(28507);
         return;
       }
-      if (parame.xxN)
+      if (parame.yMy)
       {
         localObject = (ViewStub)findViewById(2131306441);
         if (localObject != null) {
           ((ViewStub)localObject).inflate();
         }
         ((ShakeEggAnimFrame)findViewById(2131297976)).aC(this);
-        new ao().postDelayed(new Runnable()
+        new ap().postDelayed(new Runnable()
         {
           public final void run()
           {
@@ -1688,8 +1670,8 @@ public class ShakeReportUI
       a(parame);
       AppMethodBeat.o(28507);
       return;
-      ac.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() ShakeCardService RETURN_ERR_REPORT");
-      ast(getString(2131763550));
+      ad.i("MicroMsg.ShakeReportUI", "onShakeGetReturn() ShakeCardService RETURN_ERR_REPORT");
+      axt(getString(2131763550));
     }
   }
   
@@ -1703,80 +1685,80 @@ public class ShakeReportUI
   public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
     AppMethodBeat.i(28511);
-    dEa();
-    if (!this.xAn) {
-      qt(true);
+    dPD();
+    if (!this.yOX) {
+      qV(true);
     }
     AppMethodBeat.o(28511);
   }
   
-  public final void ayD()
+  public final void aBH()
   {
     AppMethodBeat.i(28504);
-    dDZ();
+    dPC();
     AppMethodBeat.o(28504);
   }
   
   public final void d(List<com.tencent.mm.plugin.shake.b.d> paramList, long paramLong)
   {
     AppMethodBeat.i(28506);
-    dEj();
-    if ((paramList == null) || (!this.xAm) || (paramLong == 6L))
+    dPM();
+    if ((paramList == null) || (!this.yOW) || (paramLong == 6L))
     {
-      this.xAQ = null;
+      this.yPA = null;
       if (paramLong == 6L)
       {
-        ast(getString(2131763569));
+        axt(getString(2131763569));
         AppMethodBeat.o(28506);
         return;
       }
       if (paramLong == 7L)
       {
-        ast(getString(2131763567));
+        axt(getString(2131763567));
         AppMethodBeat.o(28506);
         return;
       }
       if (paramLong == 8L)
       {
-        ast(getString(2131763565));
+        axt(getString(2131763565));
         AppMethodBeat.o(28506);
         return;
       }
       if (paramLong == 9L)
       {
-        ast(getString(2131763564));
+        axt(getString(2131763564));
         AppMethodBeat.o(28506);
         return;
       }
       if (paramLong == 10L)
       {
-        ast(getString(2131763568));
+        axt(getString(2131763568));
         AppMethodBeat.o(28506);
         return;
       }
-      ast(null);
+      axt(null);
       AppMethodBeat.o(28506);
       return;
     }
-    this.xAm = false;
+    this.yOW = false;
     if (paramList.size() > 0) {
-      this.xAQ = ((com.tencent.mm.plugin.shake.b.d)paramList.get(0));
+      this.yPA = ((com.tencent.mm.plugin.shake.b.d)paramList.get(0));
     }
     int i;
     Object localObject;
-    if (this.xAs.xxi == 1)
+    if (this.yPc.yLT == 1)
     {
       if ((paramList.size() > 0) && (((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).field_type != 0))
       {
-        ast(null);
+        axt(null);
         AppMethodBeat.o(28506);
         return;
       }
-      this.xAq = ((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).scene;
+      this.yPa = ((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).scene;
       i = paramList.size();
       if (i == 0)
       {
-        ast(null);
+        axt(null);
         AppMethodBeat.o(28506);
         return;
       }
@@ -1784,88 +1766,88 @@ public class ShakeReportUI
       {
         localObject = ((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).field_username;
         String str = ((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).field_nickname;
-        ac.i("MicroMsg.ShakeReportUI", "1 u:" + (String)localObject + " n:" + str + " d:" + ((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).field_distance);
-        if (this.xAl) {
-          bc.aF(getContext(), 2131763587);
+        ad.i("MicroMsg.ShakeReportUI", "1 u:" + (String)localObject + " n:" + str + " d:" + ((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).field_distance);
+        if (this.yOV) {
+          bd.aI(getContext(), 2131763587);
         }
-        NQ(3);
+        Pt(3);
         c((com.tencent.mm.plugin.shake.b.d)paramList.get(0));
         AppMethodBeat.o(28506);
         return;
       }
-      if (this.xAl) {
-        bc.aF(getContext(), 2131763587);
+      if (this.yOV) {
+        bd.aI(getContext(), 2131763587);
       }
-      NQ(3);
-      qu(false);
+      Pt(3);
+      qW(false);
       paramList = new Intent(this, ShakeItemListUI.class);
       paramList.putExtra("_key_show_type_", -1);
       paramList.putExtra("_key_title_", getString(2131763582));
-      paramList = new com.tencent.mm.hellhoundlib.b.a().ba(paramList);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramList.aeD(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI", "onShakeGetReturn", "(Ljava/util/List;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramList.lR(0));
+      paramList = new com.tencent.mm.hellhoundlib.b.a().bc(paramList);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramList.ahp(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI", "onShakeGetReturn", "(Ljava/util/List;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramList.mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI", "onShakeGetReturn", "(Ljava/util/List;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(28506);
       return;
     }
-    if (this.xAs.xxi == 3)
+    if (this.yPc.yLT == 3)
     {
       i = paramList.size();
       if (i == 0)
       {
-        ast(getString(2131763594));
+        axt(getString(2131763594));
         AppMethodBeat.o(28506);
         return;
       }
       if (i == 1)
       {
-        if (this.xAl) {
-          bc.aF(getContext(), 2131763587);
+        if (this.yOV) {
+          bd.aI(getContext(), 2131763587);
         }
-        NQ(3);
+        Pt(3);
         if (((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).field_type == 4)
         {
           paramList = com.tencent.mm.plugin.shake.d.a.i.d(((com.tencent.mm.plugin.shake.b.d)paramList.get(0)).field_lvbuffer, paramLong);
-          com.tencent.mm.ay.a.d(paramList);
+          com.tencent.mm.az.a.d(paramList);
           localObject = new Intent();
           ((Intent)localObject).putExtra("key_mode", 1);
-          ((Intent)localObject).putExtra("key_offset", paramList.hNT);
-          ((Intent)localObject).putExtra("music_player_beg_time", paramList.hOl);
+          ((Intent)localObject).putExtra("key_offset", paramList.ihh);
+          ((Intent)localObject).putExtra("music_player_beg_time", paramList.ihz);
           ((Intent)localObject).putExtra("key_scene", 3);
-          if (com.tencent.mm.ay.e.aGE()) {
+          if (com.tencent.mm.az.e.aJP()) {
             ((Intent)localObject).putExtra("KGlobalShakeMusic", true);
           }
-          com.tencent.mm.br.d.b(this, "music", ".ui.MusicMainUI", (Intent)localObject);
+          com.tencent.mm.bs.d.b(this, "music", ".ui.MusicMainUI", (Intent)localObject);
           AppMethodBeat.o(28506);
           return;
         }
-        ac.w("MicroMsg.ShakeReportUI", "Unexpected type, ignore.");
+        ad.w("MicroMsg.ShakeReportUI", "Unexpected type, ignore.");
       }
       AppMethodBeat.o(28506);
       return;
     }
-    if (this.xAs.xxi == 4)
+    if (this.yPc.yLT == 4)
     {
-      dEj();
+      dPM();
       i = paramList.size();
       if (i == 0)
       {
-        ast(getString(2131763638));
+        axt(getString(2131763638));
         AppMethodBeat.o(28506);
         return;
       }
       if (i == 1)
       {
-        if (this.xAl) {
-          bc.aF(getContext(), 2131763587);
+        if (this.yOV) {
+          bd.aI(getContext(), 2131763587);
         }
-        NQ(3);
+        Pt(3);
         com.tencent.mm.plugin.shake.d.a.k.a((com.tencent.mm.plugin.shake.b.d)paramList.get(0), this);
       }
       AppMethodBeat.o(28506);
       return;
     }
-    if (this.xAs.xxi == 5) {
+    if (this.yPc.yLT == 5) {
       switch ((int)paramLong)
       {
       }
@@ -1878,47 +1860,47 @@ public class ShakeReportUI
       {
         if (paramList.size() == 1)
         {
-          if (this.xAl) {
-            bc.aF(getContext(), 2131763587);
+          if (this.yOV) {
+            bd.aI(getContext(), 2131763587);
           }
-          NQ(3);
+          Pt(3);
           d((com.tencent.mm.plugin.shake.b.d)paramList.get(0));
           AppMethodBeat.o(28506);
           return;
         }
-        if (this.xAl) {
-          bc.aF(getContext(), 2131763587);
+        if (this.yOV) {
+          bd.aI(getContext(), 2131763587);
         }
-        NQ(3);
-        qu(false);
+        Pt(3);
+        qW(false);
         localObject = new Intent(this, ShakeItemListUI.class);
         ((Intent)localObject).putExtra("_key_show_type_", -12);
         ((Intent)localObject).putExtra("_key_title_", getString(2131763580));
         ((Intent)localObject).putExtra("_key_show_from_shake_", true);
         ((Intent)localObject).putExtra("_ibeacon_new_insert_size", paramList.size());
-        paramList = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramList.aeD(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI", "onShakeGetReturn", "(Ljava/util/List;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramList.lR(0));
+        paramList = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramList.ahp(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI", "onShakeGetReturn", "(Ljava/util/List;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramList.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI", "onShakeGetReturn", "(Ljava/util/List;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(28506);
         return;
       }
-      ast(null);
+      axt(null);
       AppMethodBeat.o(28506);
       return;
-      ast(getString(2131763569));
+      axt(getString(2131763569));
     }
   }
   
-  public final void dDu()
+  public final void dOX()
   {
     AppMethodBeat.i(28516);
-    com.tencent.mm.plugin.shake.c.c.a.dDf();
-    dEb();
-    dEc();
-    dEf();
-    dEg();
-    dEe();
+    com.tencent.mm.plugin.shake.c.c.a.dOI();
+    dPE();
+    dPF();
+    dPI();
+    dPJ();
+    dPH();
     AppMethodBeat.o(28516);
   }
   
@@ -1935,166 +1917,93 @@ public class ShakeReportUI
   public void initView()
   {
     AppMethodBeat.i(28491);
-    com.tencent.mm.plugin.shake.c.c.a.dDf();
-    this.xBn.put(Integer.valueOf(1), Boolean.TRUE);
-    this.xBn.put(Integer.valueOf(3), Boolean.FALSE);
-    this.xBn.put(Integer.valueOf(4), Boolean.FALSE);
-    this.xBn.put(Integer.valueOf(5), Boolean.FALSE);
-    this.xBn.put(Integer.valueOf(6), Boolean.FALSE);
-    this.hJM = new com.tencent.mm.av.a.a(this);
-    this.xAw = ((TextView)findViewById(2131304704));
-    this.xAv = findViewById(2131304720);
-    this.xAx = ((TextView)findViewById(2131304699));
-    this.xAy = ((TextView)findViewById(2131304703));
-    this.xBa = findViewById(2131304734);
-    this.xBb = ((ImageView)findViewById(2131304722));
-    this.xBc = ((ImageView)findViewById(2131304724));
-    this.xBd = ((ImageView)findViewById(2131304726));
-    this.xBe = ((ImageView)findViewById(2131304728));
-    this.xBf = findViewById(2131304723);
-    this.xBg = findViewById(2131304725);
-    this.xBh = findViewById(2131304727);
-    this.xBi = findViewById(2131304729);
-    this.xAu = findViewById(2131304702);
-    this.xAu.setOnClickListener(this.xBx);
-    this.fxQ = ((ImageView)this.xAu.findViewById(2131304688));
-    this.fxQ.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(28477);
-        if (ShakeReportUI.q(ShakeReportUI.this) != 5)
-        {
-          Object localObject = new Intent(ShakeReportUI.this.getContext(), ProfileHdHeadImg.class);
-          ((Intent)localObject).putExtra("username", (String)ShakeReportUI.r(ShakeReportUI.this).getTag());
-          paramAnonymousView = ShakeReportUI.this;
-          localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$6", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        }
-        AppMethodBeat.o(28477);
-      }
-    });
-    dDX();
+    com.tencent.mm.plugin.shake.c.c.a.dOI();
+    this.yPX.put(Integer.valueOf(1), Boolean.TRUE);
+    this.yPX.put(Integer.valueOf(3), Boolean.FALSE);
+    this.yPX.put(Integer.valueOf(4), Boolean.FALSE);
+    this.yPX.put(Integer.valueOf(5), Boolean.FALSE);
+    this.yPX.put(Integer.valueOf(6), Boolean.FALSE);
+    this.icC = new com.tencent.mm.aw.a.a(this);
+    this.yPg = ((TextView)findViewById(2131304704));
+    this.yPf = findViewById(2131304720);
+    this.yPh = ((TextView)findViewById(2131304699));
+    this.yPi = ((TextView)findViewById(2131304703));
+    this.yPK = findViewById(2131304734);
+    this.yPL = ((ImageView)findViewById(2131304722));
+    this.yPM = ((ImageView)findViewById(2131304724));
+    this.yPN = ((ImageView)findViewById(2131304726));
+    this.yPO = ((ImageView)findViewById(2131304728));
+    this.yPP = findViewById(2131304723);
+    this.yPQ = findViewById(2131304725);
+    this.yPR = findViewById(2131304727);
+    this.yPS = findViewById(2131304729);
+    this.yPe = findViewById(2131304702);
+    this.yPe.setOnClickListener(this.yQh);
+    this.fRd = ((ImageView)this.yPe.findViewById(2131304688));
+    this.fRd.setOnClickListener(new ShakeReportUI.26(this));
+    dPA();
     Object localObject = View.inflate(getContext(), 2131495416, null);
-    this.xAO = new com.tencent.mm.ui.base.i(getContext(), 2131821723);
-    this.xAO.setContentView((View)localObject);
-    this.xAO.setOnCancelListener(new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        AppMethodBeat.i(28450);
-        Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
-        {
-          public final boolean queueIdle()
-          {
-            AppMethodBeat.i(28449);
-            t.m(ShakeReportUI.this, ShakeReportUI.this.getString(2131763614));
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(4117, Boolean.TRUE);
-            AppMethodBeat.o(28449);
-            return false;
-          }
-        });
-        AppMethodBeat.o(28450);
-      }
-    });
+    this.yPy = new com.tencent.mm.ui.base.i(getContext(), 2131821723);
+    this.yPy.setContentView((View)localObject);
+    this.yPy.setOnCancelListener(new ShakeReportUI.4(this));
     ((Button)((View)localObject).findViewById(2131304679)).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(28451);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/shake/ui/ShakeReportUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         ShakeReportUI.s(ShakeReportUI.this).cancel();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(28451);
       }
     });
-    az.ayM();
-    boolean bool1 = com.tencent.mm.sdk.platformtools.bs.l((Boolean)com.tencent.mm.model.c.agA().get(4108, null));
-    az.ayM();
-    boolean bool2 = com.tencent.mm.sdk.platformtools.bs.l((Boolean)com.tencent.mm.model.c.agA().get(4117, null));
+    ba.aBQ();
+    boolean bool1 = com.tencent.mm.sdk.platformtools.bt.o((Boolean)com.tencent.mm.model.c.ajl().get(4108, null));
+    ba.aBQ();
+    boolean bool2 = com.tencent.mm.sdk.platformtools.bt.o((Boolean)com.tencent.mm.model.c.ajl().get(4117, null));
     if (!bool1)
     {
       ((View)localObject).setVisibility(0);
-      this.xAO.show();
-      az.ayM();
-      com.tencent.mm.model.c.agA().set(4108, Boolean.TRUE);
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(28478);
-          ShakeReportUI.a(ShakeReportUI.this, false);
-          ShakeReportUI.this.finish();
-          AppMethodBeat.o(28478);
-          return true;
-        }
-      });
-      addIconOptionMenu(0, 2131755135, 2131689511, new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          AppMethodBeat.i(28479);
-          ShakeReportUI.a(ShakeReportUI.this, false);
-          paramAnonymousMenuItem = new Intent();
-          paramAnonymousMenuItem.setClass(ShakeReportUI.this, ShakePersonalInfoUI.class);
-          ShakeReportUI.this.startActivityForResult(paramAnonymousMenuItem, 3);
-          AppMethodBeat.o(28479);
-          return true;
-        }
-      });
-      localObject = new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(28480);
-          ShakeReportUI.a(ShakeReportUI.this, paramAnonymousView);
-          AppMethodBeat.o(28480);
-        }
-      };
-      if ((!this.xBr) && (!this.xBp)) {
+      this.yPy.show();
+      ba.aBQ();
+      com.tencent.mm.model.c.ajl().set(4108, Boolean.TRUE);
+      setBackBtn(new ShakeReportUI.27(this));
+      addIconOptionMenu(0, 2131755135, 2131689511, new ShakeReportUI.28(this));
+      localObject = new ShakeReportUI.29(this);
+      if ((!this.yQb) && (!this.yPZ)) {
         break label772;
       }
     }
     label772:
-    for (this.xAP = ((ImageView)findViewById(2131304713));; this.xAP = ((ImageView)findViewById(2131304712)))
+    for (this.yPz = ((ImageView)findViewById(2131304713));; this.yPz = ((ImageView)findViewById(2131304712)))
     {
-      this.xAR = ((ImageView)findViewById(2131304709));
-      this.xAS = ((ImageView)findViewById(2131304715));
-      this.xAT = ((ImageView)findViewById(2131304718));
-      this.xAU = ((ImageView)findViewById(2131304705));
-      this.xAX = ((TextView)findViewById(2131304708));
-      this.xAW = ((ImageView)findViewById(2131304707));
-      this.xAV = ((ImageView)findViewById(2131304717));
-      dEf();
-      this.xBj.setOnClickListener((View.OnClickListener)localObject);
+      this.yPB = ((ImageView)findViewById(2131304709));
+      this.yPC = ((ImageView)findViewById(2131304715));
+      this.yPD = ((ImageView)findViewById(2131304718));
+      this.yPE = ((ImageView)findViewById(2131304705));
+      this.yPH = ((TextView)findViewById(2131304708));
+      this.yPG = ((ImageView)findViewById(2131304707));
+      this.yPF = ((ImageView)findViewById(2131304717));
+      dPI();
+      this.yPT.setOnClickListener((View.OnClickListener)localObject);
       findViewById(2131304714).setOnClickListener((View.OnClickListener)localObject);
       findViewById(2131304710).setOnClickListener((View.OnClickListener)localObject);
       findViewById(2131304716).setOnClickListener((View.OnClickListener)localObject);
       findViewById(2131304719).setOnClickListener((View.OnClickListener)localObject);
       findViewById(2131304706).setOnClickListener((View.OnClickListener)localObject);
-      com.tencent.mm.sdk.b.a.GpY.c(this.xBv);
-      com.tencent.mm.sdk.b.a.GpY.c(this.xBw);
-      dEb();
-      dEe();
-      dEj();
+      com.tencent.mm.sdk.b.a.IbL.c(this.yQf);
+      com.tencent.mm.sdk.b.a.IbL.c(this.yQg);
+      dPE();
+      dPH();
+      dPM();
       AppMethodBeat.o(28491);
       return;
       if (bool2) {
         break;
       }
-      Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
-      {
-        public final boolean queueIdle()
-        {
-          AppMethodBeat.i(28452);
-          t.m(ShakeReportUI.this, ShakeReportUI.this.getString(2131763614));
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(4117, Boolean.TRUE);
-          AppMethodBeat.o(28452);
-          return false;
-        }
-      });
+      Looper.myQueue().addIdleHandler(new ShakeReportUI.6(this));
       break;
     }
   }
@@ -2107,8 +2016,8 @@ public class ShakeReportUI
       AppMethodBeat.o(28515);
       return;
     }
-    if ((this.xAJ != null) && (this.xAJ.getTag() != null) && (paramString.equals((String)this.xAJ.getTag()))) {
-      this.xAJ.setImageBitmap(paramBitmap);
+    if ((this.yPt != null) && (this.yPt.getTag() != null) && (paramString.equals((String)this.yPt.getTag()))) {
+      this.yPt.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(28515);
   }
@@ -2133,9 +2042,9 @@ public class ShakeReportUI
       localIntent.putExtra("CropImage_Filter", true);
       localIntent.putExtra("CropImage_DirectlyIntoFilter", true);
       StringBuilder localStringBuilder = new StringBuilder();
-      az.ayM();
-      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.model.c.awL() + "custom_shake_img_filename.jpg");
-      com.tencent.mm.plugin.shake.a.iyx.a(localIntent, 2, this, paramIntent);
+      ba.aBQ();
+      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.model.c.azA() + "custom_shake_img_filename.jpg");
+      com.tencent.mm.plugin.shake.a.iRG.a(localIntent, 2, this, paramIntent);
       AppMethodBeat.o(28510);
       return;
     case 2: 
@@ -2145,11 +2054,11 @@ public class ShakeReportUI
         return;
       }
       paramIntent = paramIntent.getStringExtra("CropImage_OutputPath");
-      az.ayM();
-      com.tencent.mm.model.c.agA().set(4110, Boolean.FALSE);
-      az.ayM();
-      com.tencent.mm.model.c.agA().set(4111, paramIntent);
-      dDX();
+      ba.aBQ();
+      com.tencent.mm.model.c.ajl().set(4110, Boolean.FALSE);
+      ba.aBQ();
+      com.tencent.mm.model.c.ajl().set(4111, paramIntent);
+      dPA();
       AppMethodBeat.o(28510);
       return;
     }
@@ -2158,18 +2067,18 @@ public class ShakeReportUI
       paramIntent = paramIntent.getBundleExtra("result_data");
       if ((paramIntent != null) && (paramIntent.getString("go_next", "").equals("gdpr_auth_location")))
       {
-        com.tencent.mm.kernel.g.agR().agA().set(ah.a.GRN, Boolean.TRUE);
+        com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IEr, Boolean.TRUE);
         com.tencent.mm.pluginsdk.permission.b.b(this, "android.permission.ACCESS_COARSE_LOCATION", 64);
-        this.iMq = false;
+        this.jfA = false;
         AppMethodBeat.o(28510);
         return;
       }
-      this.iMq = true;
+      this.jfA = true;
       finish();
       AppMethodBeat.o(28510);
       return;
     }
-    this.iMq = true;
+    this.jfA = true;
     finish();
     AppMethodBeat.o(28510);
   }
@@ -2182,30 +2091,30 @@ public class ShakeReportUI
     setActionbarColor(getResources().getColor(2131100196));
     setNavigationbarColor(getResources().getColor(2131100196));
     hideActionbarLine();
-    this.fmW = com.tencent.mm.modelgeo.d.aEL();
-    az.ayM();
-    com.tencent.mm.model.c.agA().set(ah.a.GEV, "");
-    az.ayM();
-    com.tencent.mm.model.c.agA().set(ah.a.GEW, "");
-    az.ayM();
-    com.tencent.mm.model.c.agA().set(ah.a.GHB, "");
-    this.xBj = findViewById(2131304711);
-    paramBundle = com.tencent.mm.model.bs.azs();
-    Object localObject1 = com.tencent.mm.sdk.platformtools.bs.nullAsNil(paramBundle.provinceCode);
-    Object localObject2 = com.tencent.mm.sdk.platformtools.bs.nullAsNil(paramBundle.cityCode);
-    paramBundle = com.tencent.mm.m.g.ZZ().ag("IBeacon", "GatedLaunch");
+    this.fFe = com.tencent.mm.modelgeo.d.aHQ();
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().set(al.a.Irn, "");
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().set(al.a.Iro, "");
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().set(al.a.ItT, "");
+    this.yPT = findViewById(2131304711);
+    paramBundle = com.tencent.mm.model.bt.aCv();
+    Object localObject1 = com.tencent.mm.sdk.platformtools.bt.nullAsNil(paramBundle.provinceCode);
+    Object localObject2 = com.tencent.mm.sdk.platformtools.bt.nullAsNil(paramBundle.cityCode);
+    paramBundle = com.tencent.mm.n.g.acB().ah("IBeacon", "GatedLaunch");
     int i;
     int j;
-    if (!com.tencent.mm.sdk.platformtools.bs.isNullOrNil(paramBundle))
+    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(paramBundle))
     {
-      this.xBp = false;
-      this.xBq = false;
+      this.yPZ = false;
+      this.yQa = false;
       if (paramBundle != null) {}
       try
       {
         paramBundle = new JSONObject(paramBundle);
         i = paramBundle.getInt("gatedlaunch");
-        az.agM();
+        ba.ajx();
         if (i == 0) {
           break label493;
         }
@@ -2230,55 +2139,47 @@ public class ShakeReportUI
             label352:
             ((com.tencent.mm.plugin.shake.b.d)localObject2).field_lvbuffer = (String.valueOf(localObject1[4]) + "," + String.valueOf(localObject1[5]) + "," + String.valueOf(localObject1[6])).getBytes("utf-8");
             ((com.tencent.mm.plugin.shake.b.d)localObject2).field_insertBatch = 2;
-            Object localObject3 = com.tencent.mm.plugin.shake.b.m.dDl();
-            ((com.tencent.mm.plugin.shake.b.e)localObject3).dDb();
+            Object localObject3 = com.tencent.mm.plugin.shake.b.m.dOO();
+            ((com.tencent.mm.plugin.shake.b.e)localObject3).dOE();
             ((com.tencent.mm.plugin.shake.b.e)localObject3).a((com.tencent.mm.plugin.shake.b.d)localObject2, true);
             localObject3 = new LinkedList();
             ((List)localObject3).add(localObject2);
             d((List)localObject3, 1L);
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(ah.a.GHm, "");
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().set(al.a.ItE, "");
             paramBundle = paramBundle + "," + localObject1[4] + localObject1[5] + localObject1[6];
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(ah.a.GHn, paramBundle);
-            this.xAr = new c(getBodyView());
-            this.shakeSensor = new com.tencent.mm.pluginsdk.j.d();
-            if (!this.shakeSensor.eMr()) {
-              com.tencent.mm.ui.base.h.a(this, 2131763596, 2131755906, new DialogInterface.OnClickListener()
-              {
-                public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-                {
-                  AppMethodBeat.i(28461);
-                  ShakeReportUI.this.finish();
-                  AppMethodBeat.o(28461);
-                }
-              });
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().set(al.a.ItF, paramBundle);
+            this.yPb = new c(getBodyView());
+            this.shakeSensor = new com.tencent.mm.pluginsdk.l.d();
+            if (!this.shakeSensor.fbo()) {
+              com.tencent.mm.ui.base.h.a(this, 2131763596, 2131755906, new ShakeReportUI.12(this));
             }
-            if (com.tencent.mm.plugin.shake.a.iyy != null) {
-              com.tencent.mm.plugin.shake.a.iyy.Lj();
+            if (com.tencent.mm.plugin.shake.a.iRH != null) {
+              com.tencent.mm.plugin.shake.a.iRH.MR();
             }
             u.b(this);
-            ac.i("MicroMsg.ShakeReportUI", "%s", new Object[] { getResources().getDisplayMetrics().toString() });
-            i = com.tencent.mm.plugin.shake.b.m.dDm().bQe();
-            com.tencent.mm.plugin.report.service.h.wUl.f(11317, new Object[] { Integer.valueOf(i), e.dEl() });
-            com.tencent.mm.plugin.report.service.h.wUl.f(11710, new Object[] { Integer.valueOf(1) });
-            com.tencent.mm.plugin.report.service.h.wUl.n(834L, 0L, 1L);
+            ad.i("MicroMsg.ShakeReportUI", "%s", new Object[] { getResources().getDisplayMetrics().toString() });
+            i = com.tencent.mm.plugin.shake.b.m.dOP().bUJ();
+            com.tencent.mm.plugin.report.service.g.yhR.f(11317, new Object[] { Integer.valueOf(i), e.dPO() });
+            com.tencent.mm.plugin.report.service.g.yhR.f(11710, new Object[] { Integer.valueOf(1) });
+            com.tencent.mm.plugin.report.service.g.yhR.n(834L, 0L, 1L);
             AppMethodBeat.o(28484);
             return;
             if (i != 4) {
               continue;
             }
-            this.xBp = true;
-            this.xBq = true;
+            this.yPZ = true;
+            this.yQa = true;
             continue;
             paramBundle = paramBundle;
-            ac.e("MicroMsg.ShakeReportUI", "[shakezb]parse dymanic setting json fail!!");
-            this.xBp = false;
-            this.xBq = false;
+            ad.e("MicroMsg.ShakeReportUI", "[shakezb]parse dymanic setting json fail!!");
+            this.yPZ = false;
+            this.yQa = false;
             continue;
-            this.xBs = 1;
+            this.yQc = 1;
             continue;
-            com.tencent.mm.plugin.report.service.h.wUl.f(13139, new Object[] { localObject1, localObject2, Integer.valueOf(0), Integer.valueOf(this.xBs), Integer.valueOf(i), Integer.valueOf(j) });
+            com.tencent.mm.plugin.report.service.g.yhR.f(13139, new Object[] { localObject1, localObject2, Integer.valueOf(0), Integer.valueOf(this.yQc), Integer.valueOf(i), Integer.valueOf(j) });
             continue;
             if (paramBundle == null) {
               continue;
@@ -2287,7 +2188,7 @@ public class ShakeReportUI
           }
           catch (UnsupportedEncodingException localUnsupportedEncodingException)
           {
-            ac.e("MicroMsg.ShakeReportUI", "[kevinkma]parst shakeItem error!");
+            ad.e("MicroMsg.ShakeReportUI", "[kevinkma]parst shakeItem error!");
             continue;
           }
           initView();
@@ -2306,7 +2207,7 @@ public class ShakeReportUI
         j = ((JSONObject)localObject3).getInt("allgatedlaunch");
         if ((str.equals(localObject1)) && (j == 1))
         {
-          this.xBp = true;
+          this.yPZ = true;
           break label1559;
         }
         if ((!str.equals(localObject1)) || (j != 0)) {
@@ -2321,7 +2222,7 @@ public class ShakeReportUI
         if (!((JSONArray)localObject3).getString(j).equals(localObject2)) {
           break label1571;
         }
-        this.xBp = true;
+        this.yPZ = true;
         break label1571;
         if (i == 2)
         {
@@ -2336,8 +2237,8 @@ public class ShakeReportUI
           j = ((JSONObject)localObject3).getInt("allgatedlaunch");
           if ((str.equals(localObject1)) && (j == 1))
           {
-            this.xBq = true;
-            this.xBp = true;
+            this.yQa = true;
+            this.yPZ = true;
             break label1578;
           }
           if ((!str.equals(localObject1)) || (j != 0)) {
@@ -2356,27 +2257,27 @@ public class ShakeReportUI
         if (!((JSONArray)localObject3).getString(j).equals(localObject2)) {
           break label1585;
         }
-        this.xBq = true;
-        this.xBp = true;
+        this.yQa = true;
+        this.yPZ = true;
         break label1585;
         if (i == 3)
         {
-          this.xBp = true;
-          this.xBq = false;
+          this.yPZ = true;
+          this.yQa = false;
           label493:
-          if (az.agM())
+          if (ba.ajx())
           {
-            az.ayM();
-            if (((Integer)com.tencent.mm.model.c.agA().get(ah.a.GHt, Integer.valueOf(0))).intValue() == 1) {
-              this.xBr = true;
+            ba.aBQ();
+            if (((Integer)com.tencent.mm.model.c.ajl().get(al.a.ItL, Integer.valueOf(0))).intValue() == 1) {
+              this.yQb = true;
             }
           }
           paramBundle = BluetoothAdapter.getDefaultAdapter();
-          boolean bool = com.tencent.mm.sdk.platformtools.ai.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+          boolean bool = aj.getContext().getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
           if ((paramBundle == null) || (!bool) || (Build.VERSION.SDK_INT < 18) || (paramBundle.getState() != 12)) {
             break label1450;
           }
-          this.xBs = 0;
+          this.yQc = 0;
           if ((paramBundle == null) || (paramBundle.getState() != 12)) {
             break label1554;
           }
@@ -2385,55 +2286,55 @@ public class ShakeReportUI
             break label1549;
           }
           j = 1;
-          if (!this.xBp) {
+          if (!this.yPZ) {
             break label1458;
           }
-          com.tencent.mm.plugin.report.service.h.wUl.f(13139, new Object[] { localObject1, localObject2, Integer.valueOf(1), Integer.valueOf(this.xBs), Integer.valueOf(i), Integer.valueOf(j) });
-          if ((this.xBr) || (this.xBp))
+          com.tencent.mm.plugin.report.service.g.yhR.f(13139, new Object[] { localObject1, localObject2, Integer.valueOf(1), Integer.valueOf(this.yQc), Integer.valueOf(i), Integer.valueOf(j) });
+          if ((this.yQb) || (this.yPZ))
           {
-            this.xBo = true;
-            this.xBj = findViewById(2131304714);
-            if (this.xBq)
+            this.yPY = true;
+            this.yPT = findViewById(2131304714);
+            if (this.yQa)
             {
               if ((paramBundle != null) && (paramBundle.getState() == 12)) {
                 break label1516;
               }
-              this.xBo = false;
+              this.yPY = false;
             }
           }
-          paramBundle = com.tencent.mm.plugin.shake.b.m.dDq();
-          if (paramBundle.nTa == null) {
-            paramBundle.nTa = new ArrayList();
+          paramBundle = com.tencent.mm.plugin.shake.b.m.dOT();
+          if (paramBundle.owv == null) {
+            paramBundle.owv = new ArrayList();
           }
-          paramBundle.nTa.add(new WeakReference(this));
+          paramBundle.owv.add(new WeakReference(this));
           paramBundle = Boolean.FALSE;
-          long l3 = com.tencent.mm.sdk.platformtools.bs.aNx();
+          long l3 = com.tencent.mm.sdk.platformtools.bt.aQJ();
           long l2 = 0L;
           long l1 = 0L;
-          if (az.agM())
+          if (ba.ajx())
           {
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(ah.a.GHq, Boolean.TRUE);
-            az.ayM();
-            bool = com.tencent.mm.sdk.platformtools.bs.a((Boolean)com.tencent.mm.model.c.agA().get(ah.a.GHo, null), false);
-            az.ayM();
-            l2 = com.tencent.mm.sdk.platformtools.bs.a((Long)com.tencent.mm.model.c.agA().get(ah.a.GHp, null), 0L);
-            az.ayM();
-            l1 = com.tencent.mm.sdk.platformtools.bs.a((Long)com.tencent.mm.model.c.agA().get(ah.a.GHj, null), 0L);
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().set(al.a.ItI, Boolean.TRUE);
+            ba.aBQ();
+            bool = com.tencent.mm.sdk.platformtools.bt.a((Boolean)com.tencent.mm.model.c.ajl().get(al.a.ItG, null), false);
+            ba.aBQ();
+            l2 = com.tencent.mm.sdk.platformtools.bt.a((Long)com.tencent.mm.model.c.ajl().get(al.a.ItH, null), 0L);
+            ba.aBQ();
+            l1 = com.tencent.mm.sdk.platformtools.bt.a((Long)com.tencent.mm.model.c.ajl().get(al.a.ItB, null), 0L);
             paramBundle = Boolean.valueOf(bool);
           }
           if ((!paramBundle.booleanValue()) || (l3 - l2 >= l1)) {
             break label1542;
           }
-          this.xAY = 5;
-          this.xBo = true;
-          this.xAm = true;
+          this.yPI = 5;
+          this.yPY = true;
+          this.yOW = true;
           initView();
-          dDZ();
-          az.ayM();
-          paramBundle = com.tencent.mm.sdk.platformtools.bs.bG((String)com.tencent.mm.model.c.agA().get(ah.a.GHn, null), "");
-          az.ayM();
-          localObject1 = com.tencent.mm.sdk.platformtools.bs.bG((String)com.tencent.mm.model.c.agA().get(ah.a.GHm, null), "");
+          dPC();
+          ba.aBQ();
+          paramBundle = com.tencent.mm.sdk.platformtools.bt.bI((String)com.tencent.mm.model.c.ajl().get(al.a.ItF, null), "");
+          ba.aBQ();
+          localObject1 = com.tencent.mm.sdk.platformtools.bt.bI((String)com.tencent.mm.model.c.ajl().get(al.a.ItE, null), "");
           if ((localObject1 != null) && (!((String)localObject1).equals("")))
           {
             localObject1 = ((String)localObject1).split(",");
@@ -2471,66 +2372,66 @@ public class ShakeReportUI
   public void onDestroy()
   {
     AppMethodBeat.i(28488);
-    if ((this.xAN != null) && (!this.xAN.isRecycled())) {
-      this.xAN.recycle();
+    if ((this.yPx != null) && (!this.yPx.isRecycled())) {
+      this.yPx.recycle();
     }
-    if ((this.xAO != null) && (this.xAO.isShowing()))
+    if ((this.yPy != null) && (this.yPy.isShowing()))
     {
-      this.xAO.dismiss();
-      this.xAO = null;
+      this.yPy.dismiss();
+      this.yPy = null;
     }
-    if (this.xAs.xxj != null) {
-      this.xAs.xxj.dCP();
+    if (this.yPc.yLU != null) {
+      this.yPc.yLU.dOs();
     }
     if (this.shakeSensor != null)
     {
-      this.shakeSensor.bXB();
+      this.shakeSensor.cce();
       this.shakeSensor = null;
     }
     Object localObject = j.a(null);
-    if (j.icd)
+    if (j.ivz)
     {
-      j.icd = false;
-      if (!((j)localObject).xzl.dDM()) {
-        ac.e("Micromsg.ShakeMusicMgr", "release MusicFingerPrintRecorder error");
+      j.ivz = false;
+      if (!((j)localObject).yNV.dPp()) {
+        ad.e("Micromsg.ShakeMusicMgr", "release MusicFingerPrintRecorder error");
       }
     }
-    j.xzm = null;
+    j.yNW = null;
     u.c(this);
-    com.tencent.mm.sdk.b.a.GpY.d(this.xBv);
-    com.tencent.mm.sdk.b.a.GpY.d(this.xBw);
-    az.ayM();
-    com.tencent.mm.model.c.agA().set(ah.a.GHq, Boolean.FALSE);
-    dDV();
-    if (com.tencent.mm.plugin.shake.c.c.a.dDK()) {
-      com.tencent.mm.y.c.aeH().x(262154, false);
+    com.tencent.mm.sdk.b.a.IbL.d(this.yQf);
+    com.tencent.mm.sdk.b.a.IbL.d(this.yQg);
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().set(al.a.ItI, Boolean.FALSE);
+    dPy();
+    if (com.tencent.mm.plugin.shake.c.c.a.dPn()) {
+      com.tencent.mm.z.c.aht().x(262154, false);
     }
-    dEd();
-    localObject = com.tencent.mm.plugin.shake.b.m.dDq();
+    dPG();
+    localObject = com.tencent.mm.plugin.shake.b.m.dOT();
     int i;
-    if (((com.tencent.mm.plugin.shake.c.a.f)localObject).nTa != null) {
+    if (((com.tencent.mm.plugin.shake.c.a.f)localObject).owv != null) {
       i = 0;
     }
     for (;;)
     {
-      if (i < ((com.tencent.mm.plugin.shake.c.a.f)localObject).nTa.size())
+      if (i < ((com.tencent.mm.plugin.shake.c.a.f)localObject).owv.size())
       {
-        WeakReference localWeakReference = (WeakReference)((com.tencent.mm.plugin.shake.c.a.f)localObject).nTa.get(i);
+        WeakReference localWeakReference = (WeakReference)((com.tencent.mm.plugin.shake.c.a.f)localObject).owv.get(i);
         if (localWeakReference != null)
         {
           f.a locala = (f.a)localWeakReference.get();
           if ((locala != null) && (locala.equals(this))) {
-            ((com.tencent.mm.plugin.shake.c.a.f)localObject).nTa.remove(localWeakReference);
+            ((com.tencent.mm.plugin.shake.c.a.f)localObject).owv.remove(localWeakReference);
           }
         }
       }
       else
       {
-        localObject = com.tencent.mm.plugin.shake.b.m.dDr();
-        ((com.tencent.mm.plugin.shake.c.a.d)localObject).fmX = -85.0F;
-        ((com.tencent.mm.plugin.shake.c.a.d)localObject).fmY = -1000.0F;
-        if (this.fmW != null) {
-          this.fmW.c(this.fnd);
+        localObject = com.tencent.mm.plugin.shake.b.m.dOU();
+        ((com.tencent.mm.plugin.shake.c.a.d)localObject).fFf = -85.0F;
+        ((com.tencent.mm.plugin.shake.c.a.d)localObject).fFg = -1000.0F;
+        if (this.fFe != null) {
+          this.fFe.c(this.fFl);
         }
         super.onDestroy();
         AppMethodBeat.o(28488);
@@ -2543,28 +2444,28 @@ public class ShakeReportUI
   public void onPause()
   {
     AppMethodBeat.i(28487);
-    az.ayM();
+    ba.aBQ();
     com.tencent.mm.model.c.b(this);
-    az.ayM();
-    com.tencent.mm.model.c.agA().b(this);
-    com.tencent.mm.plugin.shake.b.m.dDl().remove(this);
-    if (this.xAs.xxj != null) {
-      this.xAs.xxj.pause();
+    ba.aBQ();
+    com.tencent.mm.model.c.ajl().b(this);
+    com.tencent.mm.plugin.shake.b.m.dOO().remove(this);
+    if (this.yPc.yLU != null) {
+      this.yPc.yLU.pause();
     }
-    this.xAo = false;
+    this.yOY = false;
     if (this.shakeSensor != null) {
-      this.shakeSensor.bXB();
+      this.shakeSensor.cce();
     }
-    this.xAr.dDR();
-    if (this.xAY != 5)
+    this.yPb.dPu();
+    if (this.yPI != 5)
     {
-      az.ayM();
-      com.tencent.mm.model.c.agA().set(327696, this.xAY);
+      ba.aBQ();
+      com.tencent.mm.model.c.ajl().set(327696, this.yPI);
     }
-    if (this.xAY == 4) {
-      qs(false);
+    if (this.yPI == 4) {
+      qU(false);
     }
-    dDV();
+    dPy();
     super.onPause();
     AppMethodBeat.o(28487);
   }
@@ -2574,11 +2475,11 @@ public class ShakeReportUI
     AppMethodBeat.i(28527);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ac.i("MicroMsg.ShakeReportUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      ad.i("MicroMsg.ShakeReportUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(28527);
       return;
     }
-    ac.i("MicroMsg.ShakeReportUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.ShakeReportUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -2588,63 +2489,17 @@ public class ShakeReportUI
       return;
       if (paramArrayOfInt[0] != 0)
       {
-        com.tencent.mm.ui.base.h.a(this, getString(2131761871), getString(2131761885), getString(2131760598), getString(2131756766), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(28468);
-            paramAnonymousDialogInterface.dismiss();
-            paramAnonymousDialogInterface = ShakeReportUI.this;
-            Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI$27", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$27", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            AppMethodBeat.o(28468);
-          }
-        }, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(28469);
-            paramAnonymousDialogInterface.dismiss();
-            AppMethodBeat.o(28469);
-          }
-        });
+        com.tencent.mm.ui.base.h.a(this, getString(2131761871), getString(2131761885), getString(2131760598), getString(2131756766), false, new ShakeReportUI.19(this), new ShakeReportUI.20(this));
         AppMethodBeat.o(28527);
         return;
         if (paramArrayOfInt[0] == 0)
         {
-          dsQ();
+          dDn();
           AppMethodBeat.o(28527);
           return;
         }
-        this.iMq = false;
-        com.tencent.mm.ui.base.h.a(this, getString(2131761869), getString(2131761885), getString(2131760598), getString(2131756766), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(28470);
-            paramAnonymousDialogInterface = ShakeReportUI.this;
-            Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/shake/ui/ShakeReportUI$29", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/shake/ui/ShakeReportUI$29", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            ShakeReportUI.P(ShakeReportUI.this);
-            ShakeReportUI.this.finish();
-            AppMethodBeat.o(28470);
-          }
-        }, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(28472);
-            ShakeReportUI.P(ShakeReportUI.this);
-            ShakeReportUI.this.finish();
-            AppMethodBeat.o(28472);
-          }
-        });
+        this.jfA = false;
+        com.tencent.mm.ui.base.h.a(this, getString(2131761869), getString(2131761885), getString(2131760598), getString(2131756766), false, new ShakeReportUI.21(this), new ShakeReportUI.23(this));
       }
     }
   }
@@ -2653,14 +2508,14 @@ public class ShakeReportUI
   {
     AppMethodBeat.i(28485);
     super.onResume();
-    if (this.iMq) {
-      if (com.tencent.mm.aw.b.CQ((String)com.tencent.mm.kernel.g.agR().agA().get(274436, null)))
+    if (this.jfA) {
+      if (com.tencent.mm.ax.b.FU((String)com.tencent.mm.kernel.g.ajC().ajl().get(274436, null)))
       {
-        if (!com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.ACCESS_COARSE_LOCATION"))
+        if (!com.tencent.mm.pluginsdk.permission.b.n(this, "android.permission.ACCESS_COARSE_LOCATION"))
         {
-          if (!((Boolean)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GRN, Boolean.FALSE)).booleanValue())
+          if (!((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IEr, Boolean.FALSE)).booleanValue())
           {
-            com.tencent.mm.plugin.account.a.b.a.b(this, getString(2131760740, new Object[] { com.tencent.mm.sdk.platformtools.ab.eUO() }), 30764, true);
+            com.tencent.mm.plugin.account.a.b.a.b(this, getString(2131760740, new Object[] { com.tencent.mm.sdk.platformtools.ac.fks() }), 30764, true);
             AppMethodBeat.o(28485);
             return;
           }
@@ -2671,7 +2526,7 @@ public class ShakeReportUI
       else
       {
         boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 64, "", "");
-        ac.i("MicroMsg.ShakeReportUI", "summerper checkPermission checkposition[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), com.tencent.mm.sdk.platformtools.bs.eWi(), this });
+        ad.i("MicroMsg.ShakeReportUI", "summerper checkPermission checkposition[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), com.tencent.mm.sdk.platformtools.bt.flS(), this });
         if (!bool)
         {
           AppMethodBeat.o(28485);
@@ -2679,7 +2534,7 @@ public class ShakeReportUI
         }
       }
     }
-    dsQ();
+    dDn();
     AppMethodBeat.o(28485);
   }
   
@@ -2690,19 +2545,19 @@ public class ShakeReportUI
   }
   
   static final class a
-    extends com.tencent.mm.pluginsdk.j.d.a
+    extends com.tencent.mm.pluginsdk.l.d.a
   {
-    private final long[] iwT;
+    private final long[] iQc;
     private long lastShakeTime;
-    private Vibrator njY;
-    WeakReference<ShakeReportUI> xBF;
+    private Vibrator nKv;
+    WeakReference<ShakeReportUI> yQp;
     
     public a(ShakeReportUI paramShakeReportUI)
     {
       AppMethodBeat.i(28481);
-      this.lastShakeTime = com.tencent.mm.sdk.platformtools.bs.Gn();
-      this.iwT = new long[] { 300L, 200L, 300L, 200L };
-      this.xBF = new WeakReference(paramShakeReportUI);
+      this.lastShakeTime = com.tencent.mm.sdk.platformtools.bt.HI();
+      this.iQc = new long[] { 300L, 200L, 300L, 200L };
+      this.yQp = new WeakReference(paramShakeReportUI);
       AppMethodBeat.o(28481);
     }
     
@@ -2711,7 +2566,7 @@ public class ShakeReportUI
     public final void onShake(boolean paramBoolean)
     {
       AppMethodBeat.i(28482);
-      ShakeReportUI localShakeReportUI = (ShakeReportUI)this.xBF.get();
+      ShakeReportUI localShakeReportUI = (ShakeReportUI)this.yQp.get();
       if (localShakeReportUI == null)
       {
         AppMethodBeat.o(28482);
@@ -2719,26 +2574,26 @@ public class ShakeReportUI
       }
       if (localShakeReportUI.isFinishing())
       {
-        ac.e("MicroMsg.ShakeReportUI", "ui finished");
+        ad.e("MicroMsg.ShakeReportUI", "ui finished");
         AppMethodBeat.o(28482);
         return;
       }
       if (!ShakeReportUI.v(localShakeReportUI))
       {
-        ac.i("MicroMsg.ShakeReportUI", "tryShake the status is can's shake");
+        ad.i("MicroMsg.ShakeReportUI", "tryShake the status is can's shake");
         AppMethodBeat.o(28482);
         return;
       }
       ShakeReportUI.w(localShakeReportUI);
-      long l = com.tencent.mm.sdk.platformtools.bs.aO(this.lastShakeTime);
+      long l = com.tencent.mm.sdk.platformtools.bt.aO(this.lastShakeTime);
       if (l < 1200L)
       {
-        ac.i("MicroMsg.ShakeReportUI", "tryStartShake delay too short:".concat(String.valueOf(l)));
+        ad.i("MicroMsg.ShakeReportUI", "tryStartShake delay too short:".concat(String.valueOf(l)));
         AppMethodBeat.o(28482);
         return;
       }
-      ac.w("MicroMsg.ShakeReportUI", "tryStartShake delaytoo enough:".concat(String.valueOf(l)));
-      this.lastShakeTime = com.tencent.mm.sdk.platformtools.bs.Gn();
+      ad.w("MicroMsg.ShakeReportUI", "tryStartShake delaytoo enough:".concat(String.valueOf(l)));
+      this.lastShakeTime = com.tencent.mm.sdk.platformtools.bt.HI();
       Object localObject;
       if (ShakeReportUI.x(localShakeReportUI) != null)
       {
@@ -2746,20 +2601,20 @@ public class ShakeReportUI
         if (((c)localObject).view != null) {
           ((c)localObject).view.setKeepScreenOn(true);
         }
-        ((c)localObject).cLS.au(30000L, 30000L);
+        ((c)localObject).cXg.az(30000L, 30000L);
       }
       if (ShakeReportUI.y(localShakeReportUI) != null)
       {
         localObject = ShakeReportUI.y(localShakeReportUI);
-        if (((com.tencent.mm.pluginsdk.ui.f)localObject).DnG != null) {
-          ((com.tencent.mm.pluginsdk.ui.f)localObject).DnG.dismiss();
+        if (((com.tencent.mm.pluginsdk.ui.g)localObject).ESL != null) {
+          ((com.tencent.mm.pluginsdk.ui.g)localObject).ESL.dismiss();
         }
       }
       if (ShakeReportUI.z(localShakeReportUI))
       {
-        localObject = (ShakeReportUI)this.xBF.get();
+        localObject = (ShakeReportUI)this.yQp.get();
         if (localObject != null) {
-          bc.aF((Context)localObject, 2131763618);
+          bd.aI((Context)localObject, 2131763618);
         }
       }
       for (;;)
@@ -2768,14 +2623,14 @@ public class ShakeReportUI
         ShakeReportUI.A(localShakeReportUI);
         AppMethodBeat.o(28482);
         return;
-        localObject = (ShakeReportUI)this.xBF.get();
+        localObject = (ShakeReportUI)this.yQp.get();
         if (localObject != null)
         {
-          if (this.njY == null) {
-            this.njY = ((Vibrator)((ShakeReportUI)localObject).getSystemService("vibrator"));
+          if (this.nKv == null) {
+            this.nKv = ((Vibrator)((ShakeReportUI)localObject).getSystemService("vibrator"));
           }
-          if (this.njY != null) {
-            this.njY.vibrate(this.iwT, -1);
+          if (this.nKv != null) {
+            this.nKv.vibrate(this.iQc, -1);
           }
         }
       }
@@ -2784,7 +2639,7 @@ public class ShakeReportUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeReportUI
  * JD-Core Version:    0.7.0.1
  */

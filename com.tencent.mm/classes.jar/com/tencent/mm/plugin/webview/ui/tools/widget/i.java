@@ -7,7 +7,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.webkit.GeolocationPermissions.Callback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.xweb.JsResult;
@@ -20,80 +20,80 @@ import java.util.concurrent.ConcurrentSkipListSet;
 public class i
   extends x
 {
-  public final ConcurrentSkipListSet<JsResult> CMo;
-  private int CzX;
-  private MMWebViewWithJsApi kYq;
+  private int EdF;
+  public final ConcurrentSkipListSet<JsResult> Eqo;
+  private MMWebViewWithJsApi lvs;
   
   public i(MMWebViewWithJsApi paramMMWebViewWithJsApi)
   {
-    AppMethodBeat.i(189267);
-    this.CzX = 0;
-    this.CMo = new ConcurrentSkipListSet(new Comparator() {});
-    this.kYq = paramMMWebViewWithJsApi;
-    AppMethodBeat.o(189267);
+    AppMethodBeat.i(208944);
+    this.EdF = 0;
+    this.Eqo = new ConcurrentSkipListSet(new Comparator() {});
+    this.lvs = paramMMWebViewWithJsApi;
+    AppMethodBeat.o(208944);
   }
   
   private JsResult a(final JsResult paramJsResult)
   {
-    AppMethodBeat.i(189268);
+    AppMethodBeat.i(208945);
     paramJsResult = new JsResult()
     {
       private boolean mCalled;
       
       public final void cancel()
       {
-        AppMethodBeat.i(189266);
+        AppMethodBeat.i(208943);
         if (!this.mCalled)
         {
           paramJsResult.cancel();
           this.mCalled = true;
         }
-        i.this.CMo.remove(this);
-        AppMethodBeat.o(189266);
+        i.this.Eqo.remove(this);
+        AppMethodBeat.o(208943);
       }
       
       public final void confirm()
       {
-        AppMethodBeat.i(189265);
+        AppMethodBeat.i(208942);
         if (!this.mCalled)
         {
           paramJsResult.confirm();
           this.mCalled = true;
         }
-        i.this.CMo.remove(this);
-        AppMethodBeat.o(189265);
+        i.this.Eqo.remove(this);
+        AppMethodBeat.o(208942);
       }
       
       public final void confirmWithResult(String paramAnonymousString)
       {
-        AppMethodBeat.i(189264);
+        AppMethodBeat.i(208941);
         if (!this.mCalled)
         {
           paramJsResult.confirmWithResult(paramAnonymousString);
           this.mCalled = true;
         }
-        i.this.CMo.remove(this);
-        AppMethodBeat.o(189264);
+        i.this.Eqo.remove(this);
+        AppMethodBeat.o(208941);
       }
     };
-    AppMethodBeat.o(189268);
+    AppMethodBeat.o(208945);
     return paramJsResult;
   }
   
   public final boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(82124);
-    Activity localActivity = a.jg(this.kYq.getContext());
+    Activity localActivity = a.jq(this.lvs.getContext());
     if (localActivity == null)
     {
-      ac.e("MicroMsg.WebView.MMWebChromeClient", "onJsAlert with url(%s) message(%s), NULL activity, return cancel", new Object[] { paramString1, paramString2 });
+      ad.e("MicroMsg.WebView.MMWebChromeClient", "onJsAlert with url(%s) message(%s), NULL activity, return cancel", new Object[] { paramString1, paramString2 });
       paramJsResult.cancel();
       AppMethodBeat.o(82124);
       return true;
     }
     final JsResult localJsResult = a(paramJsResult);
-    this.CzX += 1;
-    if (this.CzX > 2) {}
+    this.EdF += 1;
+    if (this.EdF > 2) {}
     for (paramJsResult = h.a(localActivity, paramString2, "", localActivity.getString(2131766261), localActivity.getString(2131755835), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -125,7 +125,7 @@ public class i
         }))
     {
       paramJsResult.setCanceledOnTouchOutside(false);
-      paramJsResult.yc(false);
+      paramJsResult.yO(false);
       AppMethodBeat.o(82124);
       return true;
     }
@@ -145,17 +145,17 @@ public class i
   public final boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(82125);
-    Activity localActivity = a.jg(this.kYq.getContext());
+    Activity localActivity = a.jq(this.lvs.getContext());
     if (localActivity == null)
     {
-      ac.e("MicroMsg.WebView.MMWebChromeClient", "onJsConfirm with url(%s) message(%s), NULL activity, return cancel", new Object[] { paramString1, paramString2 });
+      ad.e("MicroMsg.WebView.MMWebChromeClient", "onJsConfirm with url(%s) message(%s), NULL activity, return cancel", new Object[] { paramString1, paramString2 });
       paramJsResult.cancel();
       AppMethodBeat.o(82125);
       return true;
     }
     final JsResult localJsResult = a(paramJsResult);
-    this.CzX += 1;
-    if (this.CzX > 2) {}
+    this.EdF += 1;
+    if (this.EdF > 2) {}
     for (paramJsResult = h.a(localActivity, paramString2, "", localActivity.getString(2131766261), localActivity.getString(2131755835), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
@@ -180,17 +180,17 @@ public class i
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(189261);
+            AppMethodBeat.i(208938);
             localJsResult.confirm();
-            AppMethodBeat.o(189261);
+            AppMethodBeat.o(208938);
           }
         }, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(189262);
+            AppMethodBeat.i(208939);
             localJsResult.cancel();
-            AppMethodBeat.o(189262);
+            AppMethodBeat.o(208939);
           }
         }))
     {
@@ -214,7 +214,7 @@ public class i
   protected void onClose()
   {
     AppMethodBeat.i(82127);
-    Activity localActivity = a.jg(this.kYq.getContext());
+    Activity localActivity = a.jq(this.lvs.getContext());
     if (localActivity == null)
     {
       AppMethodBeat.o(82127);
@@ -227,10 +227,10 @@ public class i
   public final void onGeolocationPermissionsShowPrompt(final String paramString, final GeolocationPermissions.Callback paramCallback)
   {
     AppMethodBeat.i(82123);
-    Activity localActivity = a.jg(this.kYq.getContext());
+    Activity localActivity = a.jq(this.lvs.getContext());
     if (localActivity == null)
     {
-      ac.e("MicroMsg.WebView.MMWebChromeClient", "onGeolocationPermissionsShowPrompt with origin(%s) NULL activity, return denial", new Object[] { paramString });
+      ad.e("MicroMsg.WebView.MMWebChromeClient", "onGeolocationPermissionsShowPrompt with origin(%s) NULL activity, return denial", new Object[] { paramString });
       paramCallback.invoke(paramString, false, false);
       AppMethodBeat.o(82123);
       return;
@@ -257,7 +257,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.i
  * JD-Core Version:    0.7.0.1
  */

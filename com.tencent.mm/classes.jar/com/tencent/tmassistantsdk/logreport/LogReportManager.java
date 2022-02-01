@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.logreport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.downloadservice.DownloadHelper;
 import com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver;
 import com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver.INetworkChangedObserver;
@@ -41,7 +41,7 @@ public class LogReportManager
             }
             catch (Exception localException)
             {
-              ac.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+              ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
             }
           }
           else
@@ -96,7 +96,7 @@ public class LogReportManager
         }
         catch (Exception localException)
         {
-          ac.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+          ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
         }
       }
       else
@@ -129,7 +129,7 @@ public class LogReportManager
         }
         catch (Exception localException)
         {
-          ac.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+          ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
         }
       }
       else
@@ -163,7 +163,7 @@ public class LogReportManager
         }
         catch (Exception localException)
         {
-          ac.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+          ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
         }
         if (localException.equals(UpdateInfoReportManager.class)) {
           UpdateInfoReportManager.getInstance().reportLogData();

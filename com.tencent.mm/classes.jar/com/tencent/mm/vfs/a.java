@@ -35,24 +35,24 @@ import java.util.TreeMap;
 public final class a
   implements Handler.Callback
 {
-  private static volatile b Kgu = null;
-  private static volatile boolean Kgv = true;
+  private static volatile b Oft = null;
+  private static volatile boolean Ofu = true;
   @SuppressLint({"StaticFieldLeak"})
   private static volatile Context sContext = null;
-  private final File KgA;
-  final HandlerThread KgB;
-  private c Kgw;
-  private int Kgx;
-  private e Kgy;
-  final c Kgz;
-  private final c KhX;
-  private final Handler KiX;
-  private volatile long KiY;
-  private volatile long KiZ;
-  private volatile boolean Kja;
-  volatile d Kjb;
-  volatile boolean Kjc;
-  private volatile BroadcastReceiver Kjd;
+  final HandlerThread OfA;
+  private final c OfB;
+  private final Handler OfC;
+  private volatile long OfD;
+  private volatile long OfE;
+  private volatile boolean OfF;
+  volatile d OfG;
+  volatile boolean OfH;
+  private volatile BroadcastReceiver OfI;
+  private c Ofv;
+  private int Ofw;
+  private e Ofx;
+  final c Ofy;
+  private final File Ofz;
   final Context mContext;
   private final Object mLock;
   
@@ -72,20 +72,20 @@ public final class a
     if (localObject2 == null) {
       localObject1 = this.mContext.getCacheDir();
     }
-    this.KgA = new File((File)localObject1, ".vfs");
-    this.KgB = new HandlerThread("VFS.Maintenance", 4);
-    this.KgB.start();
-    this.KiX = new Handler(this.KgB.getLooper(), this);
-    this.KhX = new c((byte)0);
-    this.KiY = -1L;
-    this.KiZ = 9223372036854775807L;
-    this.Kjc = true;
+    this.Ofz = new File((File)localObject1, ".vfs");
+    this.OfA = new HandlerThread("VFS.Maintenance", 4);
+    this.OfA.start();
+    this.OfC = new Handler(this.OfA.getLooper(), this);
+    this.OfB = new c((byte)0);
+    this.OfD = -1L;
+    this.OfE = 9223372036854775807L;
+    this.OfH = true;
     Object localObject3 = this.mContext;
     localObject1 = new HashMap();
-    ((HashMap)localObject1).put(null, FileSchemeResolver.fxF());
-    ((HashMap)localObject1).put("", FileSchemeResolver.fxF());
-    ((HashMap)localObject1).put("file", FileSchemeResolver.fxF());
-    ((HashMap)localObject1).put("wcf", WcfSchemeResolver.fyA());
+    ((HashMap)localObject1).put(null, FileSchemeResolver.fOs());
+    ((HashMap)localObject1).put("", FileSchemeResolver.fOs());
+    ((HashMap)localObject1).put("file", FileSchemeResolver.fOs());
+    ((HashMap)localObject1).put("wcf", WcfSchemeResolver.fPu());
     localObject2 = new HashMap();
     ((HashMap)localObject2).put("data", ((Context)localObject3).getCacheDir().getParent());
     ((HashMap)localObject2).put("dataCache", ((Context)localObject3).getCacheDir().getPath());
@@ -99,22 +99,27 @@ public final class a
     if (localObject3 != null) {
       ((HashMap)localObject2).put("storage", ((File)localObject3).getPath());
     }
-    this.Kgz = new c().a((Map)localObject1, Collections.emptyMap(), new TreeMap(), (Map)localObject2, null);
-    this.Kgw = this.Kgz;
-    this.Kgx = 0;
-    this.Kgy = new e(null, null, this.Kgx, (byte)0);
+    this.Ofy = new c().a((Map)localObject1, Collections.emptyMap(), new TreeMap(), (Map)localObject2, null);
+    this.Ofv = this.Ofy;
+    this.Ofw = 0;
+    this.Ofx = new e(null, null, this.Ofw, (byte)0);
     AppMethodBeat.o(13122);
+  }
+  
+  public static void AC(boolean paramBoolean)
+  {
+    Ofu = paramBoolean;
   }
   
   private void a(CancellationSignal paramCancellationSignal)
   {
     AppMethodBeat.i(170153);
-    File localFile = new File(this.KgA, "maintain.timestamp");
+    File localFile = new File(this.Ofz, "maintain.timestamp");
     Object localObject3;
     synchronized (this.mLock)
     {
-      localObject1 = this.Kgw;
-      ??? = ((c)localObject1).Jtl.entrySet().iterator();
+      localObject1 = this.Ofv;
+      ??? = ((c)localObject1).LkQ.entrySet().iterator();
       if (((Iterator)???).hasNext())
       {
         localObject3 = (Map.Entry)((Iterator)???).next();
@@ -122,7 +127,7 @@ public final class a
         Log.i("VFS.FileSystemManager", "[Maintenance] " + (String)((Map.Entry)localObject3).getKey() + " => " + localSchemeResolver.toString());
       }
     }
-    Object localObject1 = ((c)localObject1).Jtm.entrySet().iterator();
+    Object localObject1 = ((c)localObject1).LkR.entrySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       ??? = (Map.Entry)((Iterator)localObject1).next();
@@ -146,7 +151,7 @@ public final class a
   
   public static void a(b paramb)
   {
-    Kgu = paramb;
+    Oft = paramb;
   }
   
   /* Error */
@@ -156,129 +161,129 @@ public final class a
     //   0: sipush 13125
     //   3: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokevirtual 403	com/tencent/mm/vfs/c:dMc	()Landroid/os/Bundle;
+    //   7: invokevirtual 405	com/tencent/mm/vfs/c:dYs	()Landroid/os/Bundle;
     //   10: astore 5
-    //   12: invokestatic 409	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   12: invokestatic 411	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   15: astore_2
     //   16: aload_2
     //   17: aload 5
-    //   19: invokevirtual 413	android/os/Parcel:writeBundle	(Landroid/os/Bundle;)V
+    //   19: invokevirtual 415	android/os/Parcel:writeBundle	(Landroid/os/Bundle;)V
     //   22: aload_2
-    //   23: invokevirtual 417	android/os/Parcel:marshall	()[B
+    //   23: invokevirtual 419	android/os/Parcel:marshall	()[B
     //   26: astore 4
     //   28: aload_2
-    //   29: invokevirtual 420	android/os/Parcel:recycle	()V
-    //   32: new 422	java/io/DataOutputStream
+    //   29: invokevirtual 422	android/os/Parcel:recycle	()V
+    //   32: new 424	java/io/DataOutputStream
     //   35: dup
-    //   36: new 424	java/io/FileOutputStream
+    //   36: new 426	java/io/FileOutputStream
     //   39: dup
     //   40: new 102	java/io/File
     //   43: dup
     //   44: aload_0
-    //   45: getfield 115	com/tencent/mm/vfs/a:KgA	Ljava/io/File;
-    //   48: ldc_w 426
+    //   45: getfield 115	com/tencent/mm/vfs/a:Ofz	Ljava/io/File;
+    //   48: ldc_w 428
     //   51: invokespecial 113	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   54: invokespecial 429	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   57: invokespecial 432	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   54: invokespecial 431	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   57: invokespecial 434	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   60: astore_3
     //   61: aload_3
     //   62: astore_2
     //   63: aload_3
     //   64: iconst_2
-    //   65: invokevirtual 435	java/io/DataOutputStream:writeInt	(I)V
+    //   65: invokevirtual 437	java/io/DataOutputStream:writeInt	(I)V
     //   68: aload_3
     //   69: astore_2
     //   70: aload_3
     //   71: aload 4
-    //   73: invokevirtual 439	java/io/DataOutputStream:write	([B)V
+    //   73: invokevirtual 441	java/io/DataOutputStream:write	([B)V
     //   76: aload_3
-    //   77: invokestatic 445	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   77: invokestatic 447	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   80: aload_0
     //   81: getfield 84	com/tencent/mm/vfs/a:mContext	Landroid/content/Context;
-    //   84: invokevirtual 448	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   84: invokevirtual 450	android/content/Context:getPackageName	()Ljava/lang/String;
     //   87: astore_2
-    //   88: new 450	android/content/Intent
+    //   88: new 452	android/content/Intent
     //   91: dup
-    //   92: new 275	java/lang/StringBuilder
+    //   92: new 277	java/lang/StringBuilder
     //   95: dup
-    //   96: invokespecial 350	java/lang/StringBuilder:<init>	()V
+    //   96: invokespecial 352	java/lang/StringBuilder:<init>	()V
     //   99: aload_2
-    //   100: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: ldc_w 452
-    //   106: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokespecial 453	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   100: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   103: ldc_w 454
+    //   106: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokespecial 455	android/content/Intent:<init>	(Ljava/lang/String;)V
     //   115: astore_2
     //   116: aload_2
     //   117: aload 5
-    //   119: invokevirtual 457	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   119: invokevirtual 459	android/content/Intent:putExtras	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   122: pop
     //   123: aload_2
-    //   124: ldc_w 459
-    //   127: invokestatic 465	android/os/Process:myPid	()I
-    //   130: invokevirtual 469	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
+    //   124: ldc_w 461
+    //   127: invokestatic 467	android/os/Process:myPid	()I
+    //   130: invokevirtual 471	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
     //   133: pop
     //   134: aload_0
     //   135: getfield 84	com/tencent/mm/vfs/a:mContext	Landroid/content/Context;
     //   138: aload_2
-    //   139: invokevirtual 473	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
-    //   142: new 275	java/lang/StringBuilder
+    //   139: invokevirtual 475	android/content/Context:sendBroadcast	(Landroid/content/Intent;)V
+    //   142: new 277	java/lang/StringBuilder
     //   145: dup
     //   146: sipush 2048
-    //   149: invokespecial 475	java/lang/StringBuilder:<init>	(I)V
+    //   149: invokespecial 477	java/lang/StringBuilder:<init>	(I)V
     //   152: astore_2
     //   153: aload_2
-    //   154: ldc_w 477
-    //   157: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: ldc_w 479
+    //   157: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: pop
     //   161: aload_1
-    //   162: getfield 242	com/tencent/mm/vfs/c:Jtl	Ljava/util/Map;
+    //   162: getfield 244	com/tencent/mm/vfs/c:LkQ	Ljava/util/Map;
     //   165: aload_2
-    //   166: invokestatic 360	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
+    //   166: invokestatic 362	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
     //   169: aload_2
-    //   170: ldc_w 362
-    //   173: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: ldc_w 364
+    //   173: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   176: pop
     //   177: aload_1
-    //   178: getfield 301	com/tencent/mm/vfs/c:Jtm	Ljava/util/Map;
+    //   178: getfield 303	com/tencent/mm/vfs/c:LkR	Ljava/util/Map;
     //   181: aload_2
-    //   182: invokestatic 360	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
+    //   182: invokestatic 362	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
     //   185: aload_2
-    //   186: ldc_w 367
-    //   189: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: ldc_w 369
+    //   189: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: pop
     //   193: aload_1
-    //   194: getfield 481	com/tencent/mm/vfs/c:Jtn	Ljava/util/SortedMap;
+    //   194: getfield 483	com/tencent/mm/vfs/c:LkS	Ljava/util/SortedMap;
     //   197: aload_2
-    //   198: invokestatic 360	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
+    //   198: invokestatic 362	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
     //   201: aload_2
-    //   202: ldc_w 369
-    //   205: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: ldc_w 371
+    //   205: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   208: pop
     //   209: aload_1
-    //   210: getfield 484	com/tencent/mm/vfs/c:Jtp	Ljava/util/Map;
+    //   210: getfield 486	com/tencent/mm/vfs/c:LkU	Ljava/util/Map;
     //   213: aload_2
-    //   214: invokestatic 360	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
+    //   214: invokestatic 362	com/tencent/mm/vfs/a:a	(Ljava/util/Map;Ljava/lang/StringBuilder;)V
     //   217: aload_2
-    //   218: ldc_w 371
-    //   221: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: ldc_w 373
+    //   221: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   224: aload_1
-    //   225: getfield 385	com/tencent/mm/vfs/c:Jtq	Lcom/tencent/mm/vfs/FileSystem;
-    //   228: invokevirtual 292	java/lang/Object:toString	()Ljava/lang/String;
-    //   231: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: getfield 387	com/tencent/mm/vfs/c:LkV	Lcom/tencent/mm/vfs/FileSystem;
+    //   228: invokevirtual 294	java/lang/Object:toString	()Ljava/lang/String;
+    //   231: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   234: bipush 10
-    //   236: invokevirtual 377	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 379	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   239: pop
-    //   240: ldc_w 273
-    //   243: new 275	java/lang/StringBuilder
+    //   240: ldc_w 275
+    //   243: new 277	java/lang/StringBuilder
     //   246: dup
-    //   247: ldc_w 486
-    //   250: invokespecial 278	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   247: ldc_w 488
+    //   250: invokespecial 280	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   253: aload_2
-    //   254: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   263: invokestatic 298	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   254: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   260: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   263: invokestatic 300	com/tencent/stubs/logger/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   266: sipush 13125
     //   269: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   272: return
@@ -287,24 +292,24 @@ public final class a
     //   276: astore_3
     //   277: aload_3
     //   278: astore_2
-    //   279: ldc_w 273
-    //   282: new 275	java/lang/StringBuilder
+    //   279: ldc_w 275
+    //   282: new 277	java/lang/StringBuilder
     //   285: dup
-    //   286: ldc_w 488
-    //   289: invokespecial 278	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   286: ldc_w 490
+    //   289: invokespecial 280	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   292: aload 4
-    //   294: invokevirtual 323	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   297: invokevirtual 287	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   300: invokevirtual 293	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   303: invokestatic 490	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   294: invokevirtual 325	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   297: invokevirtual 289	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   300: invokevirtual 295	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   303: invokestatic 492	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   306: aload_3
-    //   307: invokestatic 445	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   307: invokestatic 447	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   310: goto -230 -> 80
     //   313: astore_1
     //   314: aconst_null
     //   315: astore_2
     //   316: aload_2
-    //   317: invokestatic 445	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
+    //   317: invokestatic 447	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   320: sipush 13125
     //   323: invokestatic 94	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   326: aload_1
@@ -351,7 +356,7 @@ public final class a
     AppMethodBeat.o(13124);
   }
   
-  private void be(Bundle paramBundle)
+  private void bj(Bundle paramBundle)
   {
     AppMethodBeat.i(13123);
     ??? = paramBundle;
@@ -364,45 +369,45 @@ public final class a
       AppMethodBeat.o(13123);
       return;
     }
-    paramBundle = c.bf((Bundle)???);
-    Map localMap = paramBundle.fxQ();
+    paramBundle = c.bk((Bundle)???);
+    Map localMap = paramBundle.fOF();
     synchronized (this.mLock)
     {
-      this.Kgw = paramBundle;
-      this.Kgx += 1;
-      this.Kgy = new e(null, null, this.Kgx, (byte)0);
-      paramBundle.Jtq.bS(localMap);
-      localIterator = paramBundle.Jtl.values().iterator();
+      this.Ofv = paramBundle;
+      this.Ofw += 1;
+      this.Ofx = new e(null, null, this.Ofw, (byte)0);
+      paramBundle.LkV.bY(localMap);
+      localIterator = paramBundle.LkQ.values().iterator();
       if (localIterator.hasNext()) {
         localIterator.next();
       }
     }
-    Iterator localIterator = paramBundle.Jtm.values().iterator();
+    Iterator localIterator = paramBundle.LkR.values().iterator();
     while (localIterator.hasNext()) {
-      ((FileSystem)localIterator.next()).bS(localMap);
+      ((FileSystem)localIterator.next()).bY(localMap);
     }
     ??? = new StringBuilder(2048);
     ((StringBuilder)???).append("[Schemes]\n");
-    a(paramBundle.Jtl, (StringBuilder)???);
+    a(paramBundle.LkQ, (StringBuilder)???);
     ((StringBuilder)???).append("[File systems]\n");
-    a(paramBundle.Jtm, (StringBuilder)???);
+    a(paramBundle.LkR, (StringBuilder)???);
     ((StringBuilder)???).append("[Mount points]\n");
-    a(paramBundle.Jtn, (StringBuilder)???);
+    a(paramBundle.LkS, (StringBuilder)???);
     ((StringBuilder)???).append("[Environment]\n");
-    a(paramBundle.Jtp, (StringBuilder)???);
-    ((StringBuilder)???).append("[Root]\n  ").append(paramBundle.Jtq.toString()).append('\n');
+    a(paramBundle.LkU, (StringBuilder)???);
+    ((StringBuilder)???).append("[Root]\n  ").append(paramBundle.LkV.toString()).append('\n');
     Log.i("VFS.FileSystemManager", "Loaded file system from bundle:\n" + ((StringBuilder)???).toString());
     AppMethodBeat.o(13123);
   }
   
-  public static a ghk()
+  public static a gzU()
   {
-    return f.JsG;
+    return f.Lkl;
   }
   
-  static b ghl()
+  static b gzV()
   {
-    return Kgu;
+    return Oft;
   }
   
   public static void setContext(Context paramContext)
@@ -419,11 +424,6 @@ public final class a
     }
   }
   
-  public static void zM(boolean paramBoolean)
-  {
-    Kgv = paramBoolean;
-  }
-  
   public final e a(Uri paramUri, e parame)
   {
     AppMethodBeat.i(13118);
@@ -433,14 +433,14 @@ public final class a
     int i;
     try
     {
-      if (parame.beY == this.Kgx) {
+      if (parame.bpt == this.Ofw) {
         return parame;
       }
-      localc = this.Kgw;
-      i = this.Kgx;
-      parame = this.Kgy;
+      localc = this.Ofv;
+      i = this.Ofw;
+      parame = this.Ofx;
       localObject = paramUri.getScheme();
-      localObject = (SchemeResolver)localc.Jtl.get(localObject);
+      localObject = (SchemeResolver)localc.LkQ.get(localObject);
       if (localObject == null)
       {
         AppMethodBeat.o(13118);
@@ -462,10 +462,10 @@ public final class a
     return paramUri;
   }
   
-  public final void ax(long paramLong1, long paramLong2)
+  public final void aC(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(192573);
-    long l = this.KiY;
+    AppMethodBeat.i(190379);
+    long l = this.OfD;
     if ((paramLong1 >= 0L) && (l < 0L))
     {
       IntentFilter localIntentFilter = new IntentFilter();
@@ -473,25 +473,25 @@ public final class a
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
       localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
-      this.mContext.registerReceiver(this.KhX, localIntentFilter);
-      this.KhX.kw(this.mContext);
+      this.mContext.registerReceiver(this.OfB, localIntentFilter);
+      this.OfB.kI(this.mContext);
     }
     for (;;)
     {
-      this.KiY = paramLong1;
-      this.KiZ = paramLong2;
-      this.Kja = true;
-      AppMethodBeat.o(192573);
+      this.OfD = paramLong1;
+      this.OfE = paramLong2;
+      this.OfF = true;
+      AppMethodBeat.o(190379);
       return;
       if ((paramLong1 < 0L) && (l >= 0L))
       {
-        this.mContext.unregisterReceiver(this.KhX);
-        this.KiX.removeMessages(2);
+        this.mContext.unregisterReceiver(this.OfB);
+        this.OfC.removeMessages(2);
       }
     }
   }
   
-  public final a ghm()
+  public final a gzW()
   {
     AppMethodBeat.i(13119);
     a locala = new a();
@@ -499,42 +499,33 @@ public final class a
     return locala;
   }
   
-  public final void ghn()
+  public final void gzX()
   {
     AppMethodBeat.i(13120);
     synchronized (this.mLock)
     {
-      c localc = this.Kgw;
+      c localc = this.Ofv;
       a(localc);
       AppMethodBeat.o(13120);
       return;
     }
   }
   
-  public final Map<String, FileSystem> gho()
+  public final SchemeResolver.b gzY()
   {
-    AppMethodBeat.i(192574);
     synchronized (this.mLock)
     {
-      Object localObject2 = this.Kgw;
-      if (((c)localObject2).Jtr == null) {
-        ((c)localObject2).Jtr = Collections.unmodifiableMap(((c)localObject2).Jtm);
-      }
-      localObject2 = ((c)localObject2).Jtr;
-      AppMethodBeat.o(192574);
-      return localObject2;
+      c localc = this.Ofv;
+      return localc;
     }
   }
   
-  public final Map<String, String> ghp()
+  public final Map<String, String> gzZ()
   {
-    AppMethodBeat.i(192575);
-    synchronized (this.mLock)
-    {
-      Map localMap = this.Kgw.fxQ();
-      AppMethodBeat.o(192575);
-      return localMap;
-    }
+    AppMethodBeat.i(190380);
+    Map localMap = gzY().fOF();
+    AppMethodBeat.o(190380);
+    return localMap;
   }
   
   public final boolean handleMessage(Message paramMessage)
@@ -551,7 +542,7 @@ public final class a
       Log.i("VFS.FileSystemManager", "Refresh file system from broadcast.");
       try
       {
-        be(paramMessage.getExtras());
+        bj(paramMessage.getExtras());
         AppMethodBeat.o(13126);
         return true;
       }
@@ -564,8 +555,8 @@ public final class a
       }
     }
     CancellationSignal localCancellationSignal = (CancellationSignal)paramMessage.obj;
-    long l1 = this.KiZ;
-    paramMessage = new File(this.KgA, "maintain.timestamp");
+    long l1 = this.OfE;
+    paramMessage = new File(this.Ofz, "maintain.timestamp");
     long l2 = System.currentTimeMillis();
     long l3 = paramMessage.lastModified();
     if (l2 - l3 < l1)
@@ -574,7 +565,7 @@ public final class a
       AppMethodBeat.o(13126);
       return true;
     }
-    boolean bool = this.Kja;
+    boolean bool = this.OfF;
     if (bool) {
       if (this.mContext.checkCallingOrSelfPermission("android.permission.WAKE_LOCK") == 0) {
         bool = true;
@@ -588,12 +579,12 @@ public final class a
         if (bool) {
           paramMessage = ((PowerManager)this.mContext.getSystemService("power")).newWakeLock(1, "VFS:Maintenance");
         }
-        d locald = this.Kjb;
+        d locald = this.OfG;
         try
         {
           Log.i("VFS.FileSystemManager", "Maintenance started. WakeLock: ".concat(String.valueOf(bool)));
           if (locald != null) {
-            locald.fxN();
+            locald.fOA();
           }
           if (paramMessage != null) {
             paramMessage.acquire(1200000L);
@@ -606,7 +597,7 @@ public final class a
           if (locald == null) {
             break;
           }
-          locald.aQ(false, false);
+          locald.aY(false, false);
           break;
           bool = false;
         }
@@ -619,7 +610,7 @@ public final class a
           if (locald == null) {
             break;
           }
-          locald.aQ(true, false);
+          locald.aY(true, false);
           break;
         }
         catch (Exception localException)
@@ -631,7 +622,7 @@ public final class a
           if (locald == null) {
             break;
           }
-          locald.aQ(false, true);
+          locald.aY(false, true);
           break;
         }
         finally
@@ -640,7 +631,7 @@ public final class a
             paramMessage.release();
           }
           if (locald != null) {
-            locald.aQ(false, false);
+            locald.aY(false, false);
           }
           AppMethodBeat.o(13126);
         }
@@ -650,29 +641,29 @@ public final class a
   
   public final class a
   {
-    final HashMap<String, SchemeResolver> JsA;
-    final HashMap<String, FileSystem> JsB;
-    final TreeMap<String, String> JsC;
-    final HashMap<String, String> JsD;
-    FileSystem JsE;
-    boolean JsF;
+    final HashMap<String, SchemeResolver> Lkf;
+    final HashMap<String, FileSystem> Lkg;
+    final TreeMap<String, String> Lkh;
+    final HashMap<String, String> Lki;
+    FileSystem Lkj;
+    boolean Lkk;
     
     public a()
     {
       AppMethodBeat.i(13105);
-      this.JsA = new HashMap();
-      this.JsB = new HashMap();
-      this.JsC = new TreeMap();
-      this.JsD = new HashMap();
-      this.JsE = null;
-      this.JsF = false;
+      this.Lkf = new HashMap();
+      this.Lkg = new HashMap();
+      this.Lkh = new TreeMap();
+      this.Lki = new HashMap();
+      this.Lkj = null;
+      this.Lkk = false;
       AppMethodBeat.o(13105);
     }
     
     public final a a(String paramString, FileSystem paramFileSystem)
     {
       AppMethodBeat.i(13107);
-      this.JsB.put(paramString, paramFileSystem);
+      this.Lkg.put(paramString, paramFileSystem);
       AppMethodBeat.o(13107);
       return this;
     }
@@ -680,32 +671,32 @@ public final class a
     public final a a(String paramString, SchemeResolver paramSchemeResolver)
     {
       AppMethodBeat.i(13106);
-      this.JsA.put(paramString, paramSchemeResolver);
+      this.Lkf.put(paramString, paramSchemeResolver);
       AppMethodBeat.o(13106);
       return this;
     }
     
-    public final a aSl(String paramString)
+    public final a aYk(String paramString)
     {
       AppMethodBeat.i(184814);
-      this.JsB.put(paramString, null);
+      this.Lkg.put(paramString, null);
       AppMethodBeat.o(184814);
       return this;
     }
     
-    public final a aSm(String paramString)
+    public final a aYl(String paramString)
     {
       AppMethodBeat.i(13109);
-      paramString = q.m(paramString, true, false);
-      this.JsC.put(paramString, null);
+      paramString = q.o(paramString, true, false);
+      this.Lkh.put(paramString, null);
       AppMethodBeat.o(13109);
       return this;
     }
     
-    public final a aSn(String paramString)
+    public final a aYm(String paramString)
     {
       AppMethodBeat.i(13111);
-      this.JsD.put(paramString, null);
+      this.Lki.put(paramString, null);
       AppMethodBeat.o(13111);
       return this;
     }
@@ -713,85 +704,85 @@ public final class a
     public final void commit()
     {
       AppMethodBeat.i(13112);
-      yo(a.d(a.this));
+      za(a.d(a.this));
       AppMethodBeat.o(13112);
     }
     
-    public final a lV(String paramString1, String paramString2)
+    public final a mv(String paramString1, String paramString2)
     {
       AppMethodBeat.i(13108);
-      paramString1 = q.m(paramString1, true, false);
-      this.JsC.put(paramString1, paramString2);
+      paramString1 = q.o(paramString1, true, false);
+      this.Lkh.put(paramString1, paramString2);
       AppMethodBeat.o(13108);
       return this;
     }
     
-    public final a lW(String paramString1, String paramString2)
+    public final a mw(String paramString1, String paramString2)
     {
       AppMethodBeat.i(13110);
-      this.JsD.put(paramString1, paramString2);
+      this.Lki.put(paramString1, paramString2);
       AppMethodBeat.o(13110);
       return this;
     }
     
-    public final void yo(boolean paramBoolean)
+    public final void za(boolean paramBoolean)
     {
       AppMethodBeat.i(13113);
       a.a(a.this, this, paramBoolean);
-      this.JsB.clear();
-      this.JsC.clear();
-      this.JsD.clear();
-      this.JsF = false;
+      this.Lkg.clear();
+      this.Lkh.clear();
+      this.Lki.clear();
+      this.Lkk = false;
       AppMethodBeat.o(13113);
     }
   }
   
   public static abstract interface b
   {
-    public abstract Key P(String paramString, Map<String, String> paramMap);
+    public abstract Key R(String paramString, Map<String, String> paramMap);
   }
   
   final class c
     extends BroadcastReceiver
   {
-    private CancellationSignal GnW;
-    private boolean nSp;
-    private boolean nSq;
+    private CancellationSignal HZJ;
+    private boolean ovK;
+    private boolean ovL;
     
     private c() {}
     
-    private void fxM()
+    private void fOz()
     {
-      AppMethodBeat.i(192571);
-      Log.d("VFS.FileSystemManager", "Idle status changed: charging = " + this.nSp + ", interactive = " + this.nSq);
-      if ((this.nSp) && (!this.nSq) && (this.GnW == null))
+      AppMethodBeat.i(190377);
+      Log.d("VFS.FileSystemManager", "Idle status changed: charging = " + this.ovK + ", interactive = " + this.ovL);
+      if ((this.ovK) && (!this.ovL) && (this.HZJ == null))
       {
         long l = a.a(a.this);
         if (l < 0L)
         {
-          AppMethodBeat.o(192571);
+          AppMethodBeat.o(190377);
           return;
         }
-        this.GnW = new CancellationSignal();
-        a.b(a.this).sendMessageDelayed(Message.obtain(a.b(a.this), 2, this.GnW), l);
+        this.HZJ = new CancellationSignal();
+        a.b(a.this).sendMessageDelayed(Message.obtain(a.b(a.this), 2, this.HZJ), l);
         Log.i("VFS.FileSystemManager", "System idle, trigger maintenance timer for " + l / 1000L + " seconds.");
-        AppMethodBeat.o(192571);
+        AppMethodBeat.o(190377);
         return;
       }
-      if (((!this.nSp) || (this.nSq)) && (this.GnW != null))
+      if (((!this.ovK) || (this.ovL)) && (this.HZJ != null))
       {
         a.b(a.this).removeMessages(2);
-        this.GnW.cancel();
-        this.GnW = null;
+        this.HZJ.cancel();
+        this.HZJ = null;
         Log.i("VFS.FileSystemManager", "Exit idle state, maintenance cancelled.");
       }
-      AppMethodBeat.o(192571);
+      AppMethodBeat.o(190377);
     }
     
-    final void kw(Context paramContext)
+    final void kI(Context paramContext)
     {
-      AppMethodBeat.i(192572);
-      this.nSq = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
+      AppMethodBeat.i(190378);
+      this.ovL = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
       paramContext = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
       if (paramContext != null)
       {
@@ -803,9 +794,9 @@ public final class a
       label75:
       for (boolean bool = true;; bool = false)
       {
-        this.nSp = bool;
-        fxM();
-        AppMethodBeat.o(192572);
+        this.ovK = bool;
+        fOz();
+        AppMethodBeat.o(190378);
         return;
       }
     }
@@ -830,7 +821,7 @@ public final class a
       }
       for (;;)
       {
-        fxM();
+        fOz();
         AppMethodBeat.o(13114);
         return;
         if (!paramContext.equals("android.intent.action.SCREEN_ON")) {
@@ -853,35 +844,35 @@ public final class a
         }
         i = 3;
         break;
-        this.nSq = true;
+        this.ovL = true;
         continue;
-        this.nSq = false;
+        this.ovL = false;
         continue;
-        this.nSp = true;
+        this.ovK = true;
         continue;
-        this.nSp = false;
+        this.ovK = false;
       }
     }
   }
   
   public static abstract interface d
   {
-    public abstract void aQ(boolean paramBoolean1, boolean paramBoolean2);
+    public abstract void aY(boolean paramBoolean1, boolean paramBoolean2);
     
-    public abstract void fxN();
+    public abstract void fOA();
   }
   
   public static final class e
   {
-    public final FileSystem Jsh;
-    final int beY;
-    public final String path;
+    final FileSystem LjM;
+    final int bpt;
+    final String path;
     
     private e(FileSystem paramFileSystem, String paramString, int paramInt)
     {
-      this.Jsh = paramFileSystem;
+      this.LjM = paramFileSystem;
       this.path = paramString;
-      this.beY = paramInt;
+      this.bpt = paramInt;
     }
     
     public final String toString()
@@ -892,27 +883,27 @@ public final class a
         AppMethodBeat.o(13115);
         return "[INVALID]";
       }
-      String str = this.path + " -> " + this.Jsh.toString();
+      String str = this.path + " -> " + this.LjM.toString();
       AppMethodBeat.o(13115);
       return str;
     }
     
-    public final boolean valid()
+    final boolean valid()
     {
-      return this.Jsh != null;
+      return this.LjM != null;
     }
   }
   
   static final class f
   {
     @SuppressLint({"StaticFieldLeak"})
-    static final a JsG;
+    static final a Lkl;
     
     static
     {
       AppMethodBeat.i(13116);
       a locala = new a((byte)0);
-      JsG = locala;
+      Lkl = locala;
       a.c(locala);
       AppMethodBeat.o(13116);
     }

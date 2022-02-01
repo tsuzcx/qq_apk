@@ -4,25 +4,25 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.aj.p;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.p;
 import com.tencent.mm.b.f;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.pluginsdk.ui.i;
-import com.tencent.mm.pluginsdk.ui.i.a;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.pluginsdk.ui.j;
+import com.tencent.mm.pluginsdk.ui.j.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.storagebase.h.b;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public final class c
-  implements aw
+  implements ax
 {
   public final void clearPluginData(int paramInt) {}
   
@@ -34,14 +34,14 @@ public final class c
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(27618);
-    b.a.vQR = new i.a()
+    b.a.wYb = new j.a()
     {
-      private Bitmap cIi;
-      private f<String, WeakReference<Bitmap>> vQS;
+      private Bitmap cTq;
+      private f<String, WeakReference<Bitmap>> wYc;
       
-      public final Bitmap Kj()
+      public final Bitmap LL()
       {
-        return this.cIi;
+        return this.cTq;
       }
       
       public final Bitmap a(String paramAnonymousString, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
@@ -49,28 +49,28 @@ public final class c
         return null;
       }
       
-      public final void a(i paramAnonymousi)
+      public final void a(j paramAnonymousj)
       {
         AppMethodBeat.i(27616);
-        if ((paramAnonymousi instanceof e.a)) {
-          p.aBh().a((e.a)paramAnonymousi);
+        if ((paramAnonymousj instanceof e.a)) {
+          p.aEk().a((e.a)paramAnonymousj);
         }
         AppMethodBeat.o(27616);
       }
       
-      public final Bitmap el(String paramAnonymousString)
+      public final Bitmap fg(String paramAnonymousString)
       {
         AppMethodBeat.i(27617);
-        Object localObject = (WeakReference)this.vQS.get(paramAnonymousString);
-        if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != Kj()))
+        Object localObject = (WeakReference)this.wYc.get(paramAnonymousString);
+        if ((localObject == null) || (((WeakReference)localObject).get() == null) || (((Bitmap)((WeakReference)localObject).get()).isRecycled()) || (((WeakReference)localObject).get() != LL()))
         {
-          localObject = com.tencent.mm.aj.c.a(paramAnonymousString, false, -1, null);
+          localObject = com.tencent.mm.ak.c.a(paramAnonymousString, false, -1, null);
           if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {}
-          for (paramAnonymousString = this.cIi;; paramAnonymousString = (String)localObject)
+          for (paramAnonymousString = this.cTq;; paramAnonymousString = (String)localObject)
           {
             AppMethodBeat.o(27617);
             return paramAnonymousString;
-            this.vQS.o(paramAnonymousString, new WeakReference(localObject));
+            this.wYc.q(paramAnonymousString, new WeakReference(localObject));
           }
         }
         paramAnonymousString = (Bitmap)((WeakReference)localObject).get();
@@ -78,7 +78,7 @@ public final class c
         return paramAnonymousString;
       }
       
-      public final Bitmap em(String paramAnonymousString)
+      public final Bitmap fh(String paramAnonymousString)
       {
         return null;
       }
@@ -92,7 +92,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.c
  * JD-Core Version:    0.7.0.1
  */

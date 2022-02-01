@@ -1,19 +1,18 @@
 package d.l.b.a.b.d.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
 import d.l.b.a.b.m.ab;
 
 final class p
 {
-  final ab KXI;
-  final d Lrf;
+  final ab MOF;
+  final d Nic;
   
   public p(ab paramab, d paramd)
   {
     AppMethodBeat.i(58122);
-    this.KXI = paramab;
-    this.Lrf = paramd;
+    this.MOF = paramab;
+    this.Nic = paramd;
     AppMethodBeat.o(58122);
   }
   
@@ -25,7 +24,7 @@ final class p
       if ((paramObject instanceof p))
       {
         paramObject = (p)paramObject;
-        if ((!k.g(this.KXI, paramObject.KXI)) || (!k.g(this.Lrf, paramObject.Lrf))) {}
+        if ((!d.g.b.p.i(this.MOF, paramObject.MOF)) || (!d.g.b.p.i(this.Nic, paramObject.Nic))) {}
       }
     }
     else
@@ -41,11 +40,11 @@ final class p
   {
     int j = 0;
     AppMethodBeat.i(58124);
-    Object localObject = this.KXI;
+    Object localObject = this.MOF;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.Lrf;
+      localObject = this.Nic;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -57,7 +56,7 @@ final class p
   public final String toString()
   {
     AppMethodBeat.i(58123);
-    String str = "TypeAndDefaultQualifiers(type=" + this.KXI + ", defaultQualifiers=" + this.Lrf + ")";
+    String str = "TypeAndDefaultQualifiers(type=" + this.MOF + ", defaultQualifiers=" + this.Nic + ")";
     AppMethodBeat.o(58123);
     return str;
   }

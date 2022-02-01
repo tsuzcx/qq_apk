@@ -1,76 +1,73 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.h;
+import com.tencent.luggage.d.j;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.p;
-import com.tencent.mm.g.a.ut;
-import com.tencent.mm.g.a.ut.a;
-import com.tencent.mm.g.a.ut.b;
-import com.tencent.mm.plugin.webview.luggage.c.b;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class am
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  
+  public final void b(final b<g>.a paramb)
   {
-    AppMethodBeat.i(78591);
-    ac.i("MicroMsg.JsApiOpenWeApp", "invokeInMM");
-    paramString = b.LK(paramString);
-    if (paramString == null)
+    AppMethodBeat.i(78590);
+    ad.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
+    final String str = paramb.chh.cgn.optString("url");
+    ad.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
+    if (bt.isNullOrNil(str))
     {
-      parama.f("fail_invalid_data", null);
-      AppMethodBeat.o(78591);
+      paramb.a("fail", null);
+      AppMethodBeat.o(78590);
       return;
     }
-    String str1 = paramString.optString("currentUrl");
-    String str2 = paramString.optString("preVerifyAppId");
-    ut localut = new ut();
-    localut.dxt.context = paramContext;
-    localut.dxt.userName = paramString.optString("userName");
-    localut.dxt.appId = paramString.optString("appId");
-    localut.dxt.dxv = paramString.optString("relativeURL");
-    localut.dxt.aBM = paramString.optInt("appVersion", 0);
-    localut.dxt.scene = paramString.optInt("scene", 1018);
-    localut.dxt.cYP = paramString.optString("sceneNote");
-    if (bs.isNullOrNil(localut.dxt.cYP)) {
-      localut.dxt.cYP = p.encode(bs.nullAsNil(str1));
-    }
-    localut.dxt.dxx = paramString.optString("downloadURL");
-    localut.dxt.dxw = paramString.optInt("openType", 0);
-    localut.dxt.dxy = paramString.optString("checkSumMd5");
-    localut.dxt.dxA = false;
-    localut.dxt.dxB.hsc = paramString.optString("extJsonInfo");
-    localut.dxt.dxG = str2;
-    if (bs.isNullOrNil(localut.dxt.dxG)) {
-      localut.dxt.dxG = paramString.optString("sourceAppId");
-    }
-    localut.dxt.dxH = str1;
-    localut.dxt.dxI = paramString.optString("privateExtraData");
-    com.tencent.mm.sdk.b.a.GpY.l(localut);
-    if (localut.dxu.dxL)
+    Object localObject = Uri.parse(str);
+    if ((bt.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals("game.weixin.qq.com"))))
     {
-      parama.f(null, null);
-      AppMethodBeat.o(78591);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", str);
+      d.b(((g)paramb.chg).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+      paramb.a("", null);
+      AppMethodBeat.o(78590);
       return;
     }
-    parama.f(bs.nullAsNil(localut.dxu.dxM), null);
-    AppMethodBeat.o(78591);
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(78589);
+        Bundle localBundle = new Bundle();
+        localBundle.putString("rawUrl", str);
+        localBundle.putBoolean("from_find_more_friend", ((g)paramb.chg).mParams.getBoolean("from_find_more_friend", false));
+        ((g)paramb.chg).chm.Ce().h(str, localBundle);
+        AppMethodBeat.o(78589);
+      }
+    });
+    paramb.a("", null);
+    AppMethodBeat.o(78590);
   }
   
-  public final void b(com.tencent.luggage.d.a<f>.a parama) {}
-  
-  public final int bYk()
+  public final int ccO()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "openWeApp";
+    return "openUrlWithExtraWebview";
   }
 }
 

@@ -11,26 +11,26 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.appbrand.jsapi.h5_interact.SendDataToMiniProgramFromH5Event;
 import com.tencent.mm.vending.g.e;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.List;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess;", "Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebView;", "()V", "batchSyncWxaAttr", "", "usernameList", "", "", "html_bridge_invokeMiniProgramAPI", "binderID", "", "name", "args", "", "preloadEnv", "appId", "privateOpenWeappFunctionalPage", "uuid", "transferJson", "reportMiniProgramPageData", "Lcom/tencent/mm/vending/pipeline/Pipeline;", "sendDataToMiniProgram", "data", "webviewId", "BatchSyncWxaAttr", "PreloadCdnEnv", "PrivateOpenFunctionalPage", "SendDataToMiniProgram", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess;", "Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebView;", "()V", "batchSyncWxaAttr", "", "usernameList", "", "", "html_bridge_invokeMiniProgramAPI", "binderID", "", "name", "args", "", "preloadEnv", "appId", "privateOpenWeappFunctionalPage", "uuid", "transferJson", "reportMiniProgramPageData", "Lcom/tencent/mm/vending/pipeline/Pipeline;", "sendDataToMiniProgram", "data", "webviewId", "BatchSyncWxaAttr", "PreloadCdnEnv", "PrivateOpenFunctionalPage", "SendDataToMiniProgram", "plugin-appbrand-integration_release"})
 public final class i
   extends h
 {
-  public final e<Integer> HJ(String paramString)
+  public final e<Integer> Lb(String paramString)
   {
     AppMethodBeat.i(50172);
-    paramString = g.fBc().b((com.tencent.mm.vending.c.a)f.jkk);
-    k.g(paramString, "pipelineExt().`$ui` {\n  …turn@`$ui` null\n        }");
+    paramString = g.fSm().b((com.tencent.mm.vending.c.a)f.jEa);
+    p.g(paramString, "pipelineExt().`$ui` {\n  …turn@`$ui` null\n        }");
     paramString = (e)paramString;
     AppMethodBeat.o(50172);
     return paramString;
   }
   
-  public final void HK(String paramString)
+  public final void Lc(String paramString)
   {
     AppMethodBeat.i(50173);
     XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), i.b.class, null);
@@ -40,14 +40,14 @@ public final class i
   public final void a(int paramInt, String paramString, Object paramObject)
   {
     AppMethodBeat.i(175113);
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.y.b.kYn;
-    localObject = com.tencent.mm.plugin.appbrand.jsapi.y.b.te(paramInt);
+    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.ab.b.lvp;
+    localObject = com.tencent.mm.plugin.appbrand.jsapi.ab.b.tI(paramInt);
     if (localObject != null)
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("name", paramString);
       localJSONObject.put("arg", paramObject);
-      ((com.tencent.mm.plugin.appbrand.jsapi.y.a)localObject).V(localJSONObject);
+      ((com.tencent.mm.plugin.appbrand.jsapi.ab.a)localObject).X(localJSONObject);
       AppMethodBeat.o(175113);
       return;
     }
@@ -55,7 +55,7 @@ public final class i
   }
   
   @SuppressLint({"Recycle"})
-  public final void aR(List<String> paramList)
+  public final void aS(List<String> paramList)
   {
     AppMethodBeat.i(50175);
     if (paramList == null)
@@ -71,7 +71,7 @@ public final class i
     AppMethodBeat.o(50175);
   }
   
-  public final void cb(String paramString1, String paramString2)
+  public final void cd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(50176);
     if (paramString2 == null)
@@ -94,39 +94,39 @@ public final class i
     AppMethodBeat.o(50176);
   }
   
-  public final void p(String paramString1, String paramString2, int paramInt)
+  public final void q(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(50174);
     SendDataToMiniProgramFromH5Event localSendDataToMiniProgramFromH5Event = new SendDataToMiniProgramFromH5Event();
-    localSendDataToMiniProgramFromH5Event.ksh = paramString1;
+    localSendDataToMiniProgramFromH5Event.kND = paramString1;
     localSendDataToMiniProgramFromH5Event.data = paramString2;
-    localSendDataToMiniProgramFromH5Event.ksi = paramInt;
+    localSendDataToMiniProgramFromH5Event.kNE = paramInt;
     XIPCInvoker.a("com.tencent.mm", localSendDataToMiniProgramFromH5Event, d.class, null);
     AppMethodBeat.o(50174);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$SendDataToMiniProgram;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/h5_interact/SendDataToMiniProgramFromH5Event;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$SendDataToMiniProgram;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/h5_interact/SendDataToMiniProgramFromH5Event;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
   static final class d
     implements com.tencent.mm.ipcinvoker.b<SendDataToMiniProgramFromH5Event, IPCVoid>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class e<T>
     implements d<ResultType>
   {
     e(Parcel paramParcel) {}
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
   static final class f<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    public static final f jkk;
+    public static final f jEa;
     
     static
     {
       AppMethodBeat.i(50171);
-      jkk = new f();
+      jEa = new f();
       AppMethodBeat.o(50171);
     }
   }

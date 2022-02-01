@@ -1,194 +1,245 @@
 package com.tencent.mm.plugin.clean.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.clean.c.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
-import java.util.ArrayList;
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class a
   implements Runnable
 {
-  private static final Long cRz;
-  private static final Long oqx;
+  private static final Long dcP;
+  private static final Long oTS;
   private long cacheSize;
   private boolean isStop;
-  private long oqA;
-  private HashMap<String, Long> oqB;
-  private HashSet<String> oqC;
-  private a oqD;
-  LinkedList<String> oqE;
-  private long oqy;
-  private long oqz;
+  private long oTT;
+  private long oTU;
+  private long oTV;
+  private HashMap<String, Long> oTW;
+  private HashSet<String> oTX;
+  private a oTY;
+  LinkedList<String> oTZ;
   
   static
   {
     AppMethodBeat.i(22768);
-    cRz = Long.valueOf(604800000L);
-    oqx = Long.valueOf(7776000000L);
+    dcP = Long.valueOf(604800000L);
+    oTS = Long.valueOf(7776000000L);
     AppMethodBeat.o(22768);
   }
   
   public a(a parama)
   {
-    AppMethodBeat.i(195964);
+    AppMethodBeat.i(193174);
     this.isStop = false;
-    this.oqE = new LinkedList();
+    this.oTZ = new LinkedList();
     this.isStop = false;
-    this.oqD = parama;
-    this.oqB = new HashMap();
-    this.oqC = new HashSet();
-    AppMethodBeat.o(195964);
+    this.oTY = parama;
+    this.oTW = new HashMap();
+    this.oTX = new HashSet();
+    AppMethodBeat.o(193174);
   }
   
-  private long VZ(String paramString)
+  private long H(File paramFile)
   {
-    AppMethodBeat.i(22764);
-    Object localObject = new com.tencent.mm.vfs.e(paramString);
-    if (((com.tencent.mm.vfs.e)localObject).isDirectory())
+    AppMethodBeat.i(193175);
+    if (paramFile.isDirectory())
     {
-      String[] arrayOfString = ((com.tencent.mm.vfs.e)localObject).list();
-      if (arrayOfString != null)
+      File[] arrayOfFile = paramFile.listFiles();
+      if (arrayOfFile != null)
       {
         l1 = 0L;
-        int j = arrayOfString.length;
+        int j = arrayOfFile.length;
         int i = 0;
         while (i < j)
         {
-          localObject = arrayOfString[i];
-          StringBuilder localStringBuilder = new StringBuilder().append(paramString);
-          if (paramString.endsWith("/")) {}
-          long l2;
-          for (;;)
+          long l2 = H(arrayOfFile[i]);
+          if (l2 == -1L)
           {
-            l2 = VZ((String)localObject);
-            if (l2 != -1L) {
-              break;
-            }
-            AppMethodBeat.o(22764);
+            AppMethodBeat.o(193175);
             return -1L;
-            localObject = "/".concat(String.valueOf(localObject));
           }
           l1 += l2;
           i += 1;
         }
-        AppMethodBeat.o(22764);
+        AppMethodBeat.o(193175);
         return l1;
       }
     }
-    long l1 = ((com.tencent.mm.vfs.e)localObject).length();
-    AppMethodBeat.o(22764);
+    long l1 = paramFile.length();
+    AppMethodBeat.o(193175);
     return l1;
   }
   
-  private long Wa(String paramString)
+  private long I(File paramFile)
   {
-    long l = 0L;
-    AppMethodBeat.i(195965);
-    Object localObject = new com.tencent.mm.vfs.e(paramString);
-    if (((com.tencent.mm.vfs.e)localObject).isDirectory())
+    AppMethodBeat.i(193177);
+    if (paramFile.isDirectory())
     {
-      localObject = ((com.tencent.mm.vfs.e)localObject).list();
-      if (localObject != null)
+      File[] arrayOfFile = paramFile.listFiles();
+      if (arrayOfFile != null)
       {
-        int j = localObject.length;
+        l = 0L;
+        int j = arrayOfFile.length;
         int i = 0;
         while (i < j)
         {
-          String str = localObject[i];
-          l += Wa(paramString + "/" + str);
+          l += I(arrayOfFile[i]);
           i += 1;
         }
-        AppMethodBeat.o(195965);
+        AppMethodBeat.o(193177);
         return l;
       }
     }
     else
     {
-      this.cacheSize += i.aSp(paramString);
-      AppMethodBeat.o(195965);
-      return 0L;
+      this.cacheSize += paramFile.length();
+      l = paramFile.length();
+      AppMethodBeat.o(193177);
+      return l;
     }
-    l = i.aSp(paramString);
-    AppMethodBeat.o(195965);
+    this.cacheSize += paramFile.length();
+    long l = paramFile.length();
+    AppMethodBeat.o(193177);
     return l;
   }
   
-  private int a(List<String> paramList, HashSet<String> paramHashSet)
+  private int a(HashSet<String> paramHashSet1, HashSet<String> paramHashSet2)
   {
-    AppMethodBeat.i(22765);
-    String str1 = g.agR().ghB;
-    String str2 = g.agR().ghC;
-    String str3 = str1 + g.agR().ghD + '/';
-    ac.i("MicroMsg.CleanCalcLogic", "%s get MicroMsg path root[%s] acc[%s]", new Object[] { blf(), str1, str2 });
-    int j = 0;
-    int i = 0;
-    Object localObject = new com.tencent.mm.vfs.e(str1);
-    int k = j;
-    if (((com.tencent.mm.vfs.e)localObject).isDirectory())
+    AppMethodBeat.i(193176);
+    Object localObject1 = new HashSet();
+    HashSet localHashSet = new HashSet();
+    int k;
+    Object localObject2;
+    File[] arrayOfFile;
+    int j;
+    int i;
+    label274:
+    Object localObject3;
+    if (com.tencent.mm.loader.j.b.arO().equals(com.tencent.mm.loader.j.b.arP()))
     {
-      String[] arrayOfString = ((com.tencent.mm.vfs.e)localObject).list();
-      k = j;
-      if (arrayOfString != null)
+      ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.arU());
+      localHashSet.add(com.tencent.mm.loader.j.b.arU() + com.tencent.mm.kernel.g.ajC().gBp + File.separator);
+      localHashSet.add(com.tencent.mm.loader.j.b.arU() + com.tencent.mm.kernel.g.ajC().gBn + File.separator);
+      ad.i("MicroMsg.CleanCalcLogic", "%s get MicroMsg path SDCARD_ROOT[%s] DEFAULT_SDCARD_ROOT[%s], acc[%s], oldacc[%s]", new Object[] { boQ(), com.tencent.mm.loader.j.b.arO(), com.tencent.mm.loader.j.b.arP(), com.tencent.mm.kernel.g.ajC().gBp, com.tencent.mm.kernel.g.ajC().gBn });
+      k = 1;
+      localObject2 = com.tencent.mm.loader.j.b.arO() + "/Cache/";
+      paramHashSet1.add(localObject2);
+      ((HashSet)localObject1).remove(localObject2);
+      localObject2 = ((HashSet)localObject1).iterator();
+      int m;
+      do
       {
-        int m = arrayOfString.length;
-        j = 0;
-        k = i;
-        if (j < m)
+        do
         {
-          localObject = arrayOfString[j];
-          String str4 = str1 + (String)localObject + "/";
-          ac.d("MicroMsg.CleanCalcLogic", "%s sub file path[%s] sub[%s]", new Object[] { blf(), str4, localObject });
-          if (new com.tencent.mm.vfs.e(str4).isDirectory()) {
-            if (((String)localObject).length() >= 32) {
-              if ((!bs.lr(str2, str4)) && (!bs.lr(str3, str4)))
-              {
-                paramHashSet.add(str4);
-                paramList.add(str4);
-                i += 1;
-                this.oqC.add(localObject);
-              }
-            }
-          }
-          for (;;)
+          do
           {
-            j += 1;
-            break;
-            if (str2.endsWith("/")) {}
-            for (localObject = str2 + "music";; localObject = str2 + "/music")
-            {
-              paramList.add(localObject);
-              az.ayM();
-              paramList.add(c.awQ());
-              az.ayM();
-              paramList.add(c.getAccSnsPath());
-              az.ayM();
-              paramList.add(c.awV());
+            if (!((Iterator)localObject2).hasNext()) {
               break;
             }
-            paramList.add(str4);
-            i += 1;
-            continue;
-            paramList.add(str4);
-            i += 1;
+            localObject1 = new File((String)((Iterator)localObject2).next());
+          } while (!((File)localObject1).isDirectory());
+          arrayOfFile = ((File)localObject1).listFiles();
+        } while (arrayOfFile == null);
+        m = arrayOfFile.length;
+        j = 0;
+        i = k;
+        k = i;
+      } while (j >= m);
+      localObject3 = arrayOfFile[j];
+      ad.d("MicroMsg.CleanCalcLogic", "%s getMicroMsgPaths filePath[%s]", new Object[] { boQ(), ((File)localObject3).getAbsolutePath() });
+      if (!((File)localObject3).isDirectory()) {
+        break label856;
+      }
+      localObject1 = ((File)localObject3).getName();
+      localObject3 = ((File)localObject3).getAbsolutePath() + File.separator;
+      if (((String)localObject1).length() < 32) {
+        break label842;
+      }
+      if (!localHashSet.contains(localObject3)) {
+        break label811;
+      }
+      if (!((String)localObject3).endsWith(File.separator)) {
+        break label780;
+      }
+      localObject1 = (String)localObject3 + "music";
+      label411:
+      paramHashSet1.add(localObject1);
+      ba.aBQ();
+      paramHashSet1.add(c.azF());
+      ba.aBQ();
+      paramHashSet1.add(c.getAccSnsPath());
+      ba.aBQ();
+      paramHashSet1.add(c.azK());
+    }
+    for (;;)
+    {
+      j += 1;
+      break label274;
+      localObject2 = new File(com.tencent.mm.loader.j.b.arO() + File.separator);
+      if (((File)localObject2).isDirectory())
+      {
+        localObject2 = ((File)localObject2).listFiles();
+        if (localObject2 != null)
+        {
+          j = localObject2.length;
+          i = 0;
+          if (i < j)
+          {
+            arrayOfFile = localObject2[i];
+            if (arrayOfFile.isDirectory()) {
+              ((HashSet)localObject1).add(arrayOfFile.getAbsolutePath() + File.separator);
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              ((HashSet)localObject1).add(arrayOfFile.getAbsolutePath());
+            }
           }
         }
+        else
+        {
+          ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.arO() + File.separator);
+        }
       }
+      ((HashSet)localObject1).add(com.tencent.mm.loader.j.b.arT());
+      localHashSet.add(com.tencent.mm.loader.j.b.arU() + com.tencent.mm.kernel.g.ajC().gBp + File.separator);
+      localHashSet.add(com.tencent.mm.loader.j.b.arU() + com.tencent.mm.kernel.g.ajC().gBn + File.separator);
+      localHashSet.add(com.tencent.mm.loader.j.b.arT() + com.tencent.mm.kernel.g.ajC().gBp + File.separator);
+      localHashSet.add(com.tencent.mm.loader.j.b.arT() + com.tencent.mm.kernel.g.ajC().gBn + File.separator);
+      break;
+      label780:
+      localObject1 = (String)localObject3 + File.separator + "music";
+      break label411;
+      label811:
+      paramHashSet2.add(localObject3);
+      paramHashSet1.add(localObject3);
+      i += 1;
+      this.oTX.add(localObject1);
+      continue;
+      label842:
+      paramHashSet1.add(localObject3);
+      i += 1;
+      continue;
+      label856:
+      paramHashSet1.add(((File)localObject3).getAbsolutePath());
+      i += 1;
     }
-    AppMethodBeat.o(22765);
+    AppMethodBeat.o(193176);
     return k;
   }
   
-  private String blf()
+  private String boQ()
   {
     AppMethodBeat.i(22762);
     String str = hashCode();
@@ -199,110 +250,116 @@ public final class a
   public final void run()
   {
     AppMethodBeat.i(22763);
-    long l2 = bs.Gn();
+    long l2 = bt.HI();
     if (this.isStop)
     {
-      ac.i("MicroMsg.CleanCalcLogic", "%s start run but stop", new Object[] { blf() });
+      ad.i("MicroMsg.CleanCalcLogic", "%s start run but stop", new Object[] { boQ() });
       AppMethodBeat.o(22763);
       return;
     }
-    Object localObject = new ArrayList();
+    Object localObject2 = new HashSet();
     HashSet localHashSet = new HashSet();
-    a((List)localObject, localHashSet);
-    int j = ((List)localObject).size();
+    a((HashSet)localObject2, localHashSet);
+    Object localObject1 = com.tencent.mm.loader.j.b.arO() + "/Cache/";
+    int j = ((HashSet)localObject2).size();
+    localObject2 = ((HashSet)localObject2).iterator();
     int i = 0;
-    while ((!this.isStop) && (i < j))
+    String str;
+    label771:
+    do
     {
-      String str = (String)((List)localObject).get(i);
-      if (!bs.isNullOrNil(str))
+      if (((Iterator)localObject2).hasNext())
       {
-        if (str.endsWith("/sns/"))
-        {
-          this.oqE.add(str);
-          l1 = Wa(str);
+        str = (String)((Iterator)localObject2).next();
+        if (!this.isStop) {
+          break label771;
         }
-        for (;;)
-        {
-          this.oqB.put(str, Long.valueOf(l1));
-          ac.d("MicroMsg.CleanCalcLogic", "%s path[%s] size[%d]", new Object[] { blf(), str, Long.valueOf(l1) });
-          this.oqy += l1;
-          if (localHashSet.contains(str)) {
-            this.oqA = (l1 + this.oqA);
-          }
-          i += 1;
-          if (this.oqD != null) {
-            this.oqD.eV(i, j);
-          }
-          break;
-          if (str.endsWith("/music"))
-          {
-            this.oqE.add(str);
-            l1 = Wa(str);
-          }
-          else
-          {
-            l1 = VZ(str);
-          }
-        }
+        ad.e("MicroMsg.CleanCalcLogic", "run stop.");
       }
+      while (i >= j)
+      {
+        this.oTU = com.tencent.mm.plugin.f.b.bSU().bSV().bTd();
+        this.oTT += this.oTU;
+        l1 = H(new File(com.tencent.mm.loader.j.b.arL()));
+        if (this.oTT <= 0L)
+        {
+          this.oTT = 1L;
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(714L, 60L, 1L, false);
+        }
+        com.tencent.mm.kernel.g.ajD();
+        long l3 = i.aYo(com.tencent.mm.kernel.g.ajC().ajj());
+        ad.i("MicroMsg.CleanCalcLogic", "%s scan finish cost[%d] micromsg[%d] dataSize[%d] dbSize[%d], acc[%d] otherAcc[%d]", new Object[] { boQ(), Long.valueOf(bt.aO(l2)), Long.valueOf(this.oTT), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(this.oTU), Long.valueOf(this.oTV) });
+        d.bZI();
+        l2 = d.bZJ();
+        d.bZI();
+        long l4 = d.bZK();
+        i = (int)(this.oTT * 100L / l2);
+        j = (int)(this.oTU * 100L / this.oTT);
+        int k = (int)(this.oTV * 100L / this.oTT);
+        long l5 = this.oTT - this.oTU - this.oTV;
+        int m = (int)(100L * l5 / this.oTT);
+        localObject1 = new StringBuffer();
+        ((StringBuffer)localObject1).append(this.cacheSize).append(",");
+        ((StringBuffer)localObject1).append(this.oTT).append(",");
+        ((StringBuffer)localObject1).append(i).append(",");
+        ((StringBuffer)localObject1).append(l2 - l4).append(",");
+        ((StringBuffer)localObject1).append(l4).append(",");
+        ((StringBuffer)localObject1).append(l2).append(",");
+        ((StringBuffer)localObject1).append(l3).append(",");
+        ((StringBuffer)localObject1).append(this.oTU).append(",");
+        ((StringBuffer)localObject1).append(j).append(",");
+        ((StringBuffer)localObject1).append(this.oTV).append(",");
+        ((StringBuffer)localObject1).append(k).append(",");
+        ((StringBuffer)localObject1).append(l5).append(",");
+        ((StringBuffer)localObject1).append(m).append(",");
+        ((StringBuffer)localObject1).append("0");
+        localObject1 = ((StringBuffer)localObject1).toString();
+        ad.i("MicroMsg.CleanCalcLogic", "rpt content %s， data:%d", new Object[] { localObject1, Long.valueOf(l1) });
+        com.tencent.mm.plugin.report.service.g.yhR.kvStat(14762, (String)localObject1);
+        d.bZI().oUj = this.oTT;
+        d.bZI().dataSize = l1;
+        d.bZI().oTU = (this.oTU + l3);
+        d.bZI().cacheSize = this.cacheSize;
+        d.bZI().oTV = this.oTV;
+        d.bZI().oUk = this.oTW;
+        d.bZI().oUl = localHashSet;
+        d.bZI().owa = this.oTZ;
+        if (this.oTY != null) {
+          this.oTY.j(this.oTT, l3 + this.oTU, this.cacheSize);
+        }
+        stop();
+        AppMethodBeat.o(22763);
+        return;
+      }
+    } while (bt.isNullOrNil(str));
+    if ((str.endsWith("/sns/")) || (str.endsWith("/music")) || (str.equals(localObject1))) {
+      this.oTZ.add(str);
     }
-    this.oqz = com.tencent.mm.plugin.f.b.bOp().bOq().bOy();
-    this.oqy += this.oqz;
-    if (this.oqy <= 0L)
+    for (long l1 = I(new File(str));; l1 = H(new File(str)))
     {
-      this.oqy = 1L;
-      h.wUl.idkeyStat(714L, 60L, 1L, false);
+      this.oTW.put(str, Long.valueOf(l1));
+      ad.d("MicroMsg.CleanCalcLogic", "%s path[%s] size[%d]", new Object[] { boQ(), str, Long.valueOf(l1) });
+      this.oTT += l1;
+      if (localHashSet.contains(str)) {
+        this.oTV = (l1 + this.oTV);
+      }
+      i += 1;
+      if (this.oTY != null) {
+        this.oTY.eZ(i, j);
+      }
+      break;
     }
-    ac.i("MicroMsg.CleanCalcLogic", "%s scan finish cost[%d] micromsg[%d] acc[%d] otherAcc[%d]", new Object[] { blf(), Long.valueOf(bs.aO(l2)), Long.valueOf(this.oqy), Long.valueOf(this.oqz), Long.valueOf(this.oqA) });
-    d.bVd();
-    long l1 = d.bVe();
-    d.bVd();
-    l2 = d.bVf();
-    i = (int)(this.oqy * 100L / l1);
-    j = (int)(this.oqz * 100L / this.oqy);
-    int k = (int)(this.oqA * 100L / this.oqy);
-    long l3 = this.oqy - this.oqz - this.oqA;
-    int m = (int)(100L * l3 / this.oqy);
-    localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cacheSize).append(",");
-    ((StringBuffer)localObject).append(this.oqy).append(",");
-    ((StringBuffer)localObject).append(i).append(",");
-    ((StringBuffer)localObject).append(l1 - l2).append(",");
-    ((StringBuffer)localObject).append(l2).append(",");
-    ((StringBuffer)localObject).append(l1).append(",");
-    ((StringBuffer)localObject).append(this.oqz).append(",");
-    ((StringBuffer)localObject).append(j).append(",");
-    ((StringBuffer)localObject).append(this.oqA).append(",");
-    ((StringBuffer)localObject).append(k).append(",");
-    ((StringBuffer)localObject).append(l3).append(",");
-    ((StringBuffer)localObject).append(m).append(",");
-    ((StringBuffer)localObject).append("0");
-    localObject = ((StringBuffer)localObject).toString();
-    ac.i("MicroMsg.CleanCalcLogic", "rpt content %s", new Object[] { localObject });
-    h.wUl.kvStat(14762, (String)localObject);
-    d.bVd().oqy = this.oqy;
-    d.bVd().oqz = this.oqz;
-    d.bVd().cacheSize = this.cacheSize;
-    d.bVd().oqA = this.oqA;
-    d.bVd().oqO = this.oqB;
-    d.bVd().oqP = localHashSet;
-    d.bVd().nSF = this.oqE;
-    if (this.oqD != null) {
-      this.oqD.j(this.oqy, this.oqz, this.cacheSize);
-    }
-    stop();
-    AppMethodBeat.o(22763);
   }
   
   public final void stop()
   {
     this.isStop = true;
-    this.oqD = null;
+    this.oTY = null;
   }
   
   public static abstract interface a
   {
-    public abstract void eV(int paramInt1, int paramInt2);
+    public abstract void eZ(int paramInt1, int paramInt2);
     
     public abstract void j(long paramLong1, long paramLong2, long paramLong3);
   }

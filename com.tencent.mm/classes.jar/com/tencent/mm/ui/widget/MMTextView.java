@@ -14,32 +14,33 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMTextView
   extends TextView
 {
-  private GestureDetector IpA;
-  private boolean Ipz;
-  private b JaT;
-  private boolean JaU;
-  private boolean JaV;
-  private boolean JaW;
-  private a JaX;
-  private long foF;
+  private b KSe;
+  private boolean KSf;
+  private boolean KSg;
+  private boolean KSh;
+  private a KSi;
+  private boolean KfZ;
+  private GestureDetector Kga;
+  private long fGN;
   
   public MMTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143405);
-    this.Ipz = false;
-    this.JaT = null;
-    this.IpA = null;
-    this.JaU = false;
-    this.JaV = false;
-    this.JaW = false;
-    this.foF = -1L;
-    this.JaX = null;
+    this.KfZ = false;
+    this.KSe = null;
+    this.Kga = null;
+    this.KSf = false;
+    this.KSg = false;
+    this.KSh = false;
+    this.fGN = -1L;
+    this.KSi = null;
     init();
     AppMethodBeat.o(143405);
   }
@@ -48,14 +49,14 @@ public class MMTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143406);
-    this.Ipz = false;
-    this.JaT = null;
-    this.IpA = null;
-    this.JaU = false;
-    this.JaV = false;
-    this.JaW = false;
-    this.foF = -1L;
-    this.JaX = null;
+    this.KfZ = false;
+    this.KSe = null;
+    this.Kga = null;
+    this.KSf = false;
+    this.KSg = false;
+    this.KSh = false;
+    this.fGN = -1L;
+    this.KSi = null;
     init();
     AppMethodBeat.o(143406);
   }
@@ -63,18 +64,58 @@ public class MMTextView
   private void init()
   {
     AppMethodBeat.i(143407);
-    this.IpA = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()new Handler
+    this.Kga = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()new Handler
     {
+      public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(186512);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        boolean bool = super.onContextClick(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(186512);
+        return bool;
+      }
+      
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(143404);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
         if (MMTextView.a(MMTextView.this) == null)
         {
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(143404);
           return false;
         }
-        boolean bool = MMTextView.a(MMTextView.this).fV(MMTextView.this);
+        boolean bool = MMTextView.a(MMTextView.this).gk(MMTextView.this);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(143404);
+        return bool;
+      }
+      
+      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(186511);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        super.onLongPress(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+        AppMethodBeat.o(186511);
+      }
+      
+      public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(186510);
+        b localb = new b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/widget/MMTextView$1", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(186510);
         return bool;
       }
     }, new Handler(Looper.getMainLooper()));
@@ -84,8 +125,8 @@ public class MMTextView
   public void cancelLongPress()
   {
     AppMethodBeat.i(143411);
-    ac.d("MicroMsg.MMTextView", "cancelLongPress , should ignore Action Up Event next time");
-    this.Ipz = true;
+    ad.d("MicroMsg.MMTextView", "cancelLongPress , should ignore Action Up Event next time");
+    this.KfZ = true;
     super.cancelLongPress();
     AppMethodBeat.o(143411);
   }
@@ -101,7 +142,7 @@ public class MMTextView
     }
     catch (Throwable localThrowable)
     {
-      ac.printErrStackTrace("MicroMsg.MMTextView", localThrowable, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(143416);
     }
     return -1;
@@ -118,7 +159,7 @@ public class MMTextView
     }
     catch (Throwable paramCanvas)
     {
-      ac.printErrStackTrace("MicroMsg.MMTextView", paramCanvas, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(143414);
     }
   }
@@ -134,7 +175,7 @@ public class MMTextView
     }
     catch (Throwable localThrowable)
     {
-      ac.printErrStackTrace("MicroMsg.MMTextView", localThrowable, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(143413);
     }
   }
@@ -159,18 +200,25 @@ public class MMTextView
   {
     AppMethodBeat.i(143408);
     int j = paramMotionEvent.getAction();
-    if ((j == 1) && (this.Ipz)) {}
+    if ((j == 1) && (this.KfZ)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ac.d("MicroMsg.MMTextView", "ignore Action Up Event this time");
+      ad.d("MicroMsg.MMTextView", "ignore Action Up Event this time");
       AppMethodBeat.o(143408);
       return true;
     }
     if (j == 0) {
-      this.Ipz = false;
+      this.KfZ = false;
     }
-    if ((this.JaT != null) && (this.IpA != null)) {}
-    for (boolean bool1 = this.IpA.onTouchEvent(paramMotionEvent);; bool1 = false)
+    GestureDetector localGestureDetector;
+    com.tencent.mm.hellhoundlib.b.a locala;
+    if ((this.KSe != null) && (this.Kga != null))
+    {
+      localGestureDetector = this.Kga;
+      locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+      com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahp(), "com/tencent/mm/ui/widget/MMTextView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    }
+    for (boolean bool1 = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mq(0)), "com/tencent/mm/ui/widget/MMTextView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");; bool1 = false)
     {
       boolean bool2 = bool1;
       if (!bool1) {
@@ -184,8 +232,8 @@ public class MMTextView
   public boolean performLongClick()
   {
     AppMethodBeat.i(143412);
-    ac.d("MicroMsg.MMTextView", "performLongClick , should ignore Action Up Event next time");
-    this.Ipz = true;
+    ad.d("MicroMsg.MMTextView", "performLongClick , should ignore Action Up Event next time");
+    this.KfZ = true;
     boolean bool = super.performLongClick();
     AppMethodBeat.o(143412);
     return bool;
@@ -193,28 +241,28 @@ public class MMTextView
   
   public void setIsFromChatting(boolean paramBoolean)
   {
-    if (!this.JaU) {
-      this.JaU = paramBoolean;
+    if (!this.KSf) {
+      this.KSf = paramBoolean;
     }
   }
   
   public void setMMTextViewCallBack(a parama)
   {
-    if ((!this.JaW) && (parama != null))
+    if ((!this.KSh) && (parama != null))
     {
-      this.JaX = parama;
-      this.JaW = true;
+      this.KSi = parama;
+      this.KSh = true;
     }
   }
   
   public void setMsgId(long paramLong)
   {
-    this.foF = paramLong;
+    this.fGN = paramLong;
   }
   
   public void setOnDoubleClickLitsener(b paramb)
   {
-    this.JaT = paramb;
+    this.KSe = paramb;
   }
   
   @Suppress
@@ -222,17 +270,17 @@ public class MMTextView
   {
     AppMethodBeat.i(143410);
     super.setText(paramCharSequence, paramBufferType);
-    if ((this.JaX != null) && (this.JaU) && ((paramCharSequence instanceof Spannable)) && (((Spannable)paramCharSequence).getSpans(0, paramCharSequence.length(), Object.class) != null)) {
-      this.JaX.a(paramCharSequence, this.foF);
+    if ((this.KSi != null) && (this.KSf) && ((paramCharSequence instanceof Spannable)) && (((Spannable)paramCharSequence).getSpans(0, paramCharSequence.length(), Object.class) != null)) {
+      this.KSi.a(paramCharSequence, this.fGN);
     }
-    this.JaV = false;
+    this.KSg = false;
     AppMethodBeat.o(143410);
   }
   
   public void setTextInternal(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(143409);
-    this.JaV = true;
+    this.KSg = true;
     setText(paramCharSequence);
     AppMethodBeat.o(143409);
   }
@@ -244,12 +292,12 @@ public class MMTextView
   
   public static abstract interface b
   {
-    public abstract boolean fV(View paramView);
+    public abstract boolean gk(View paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMTextView
  * JD-Core Version:    0.7.0.1
  */

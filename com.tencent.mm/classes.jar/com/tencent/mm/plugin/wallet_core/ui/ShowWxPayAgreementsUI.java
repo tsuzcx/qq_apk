@@ -9,28 +9,28 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.z;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public class ShowWxPayAgreementsUI
   extends MMActivity
 {
-  private TextView BBP;
-  private TextView BBQ;
+  private TextView Dch;
+  private TextView Dci;
   private String content;
-  private MMWebView qKU;
+  private MMWebView ruW;
   private int type;
   
   public void finish()
   {
     AppMethodBeat.i(70686);
-    ac.i("MicroMsg.ShowWxPayAgreementsUI", "onRefreshed");
+    ad.i("MicroMsg.ShowWxPayAgreementsUI", "onRefreshed");
     super.finish();
     overridePendingTransition(2130771986, 2130772106);
     AppMethodBeat.o(70686);
@@ -44,38 +44,46 @@ public class ShowWxPayAgreementsUI
   public void initView()
   {
     AppMethodBeat.i(70685);
-    h.wUl.f(15236, new Object[] { Integer.valueOf(1) });
+    g.yhR.f(15236, new Object[] { Integer.valueOf(1) });
     getSupportActionBar().hide();
     overridePendingTransition(2130772108, 2130771986);
     this.type = getIntent().getIntExtra("agreement_type", 0);
-    this.qKU = MMWebView.a.a(this, getContentView(), 2131296526);
-    this.qKU.getSettings().setJavaScriptEnabled(true);
-    this.BBP = ((TextView)findViewById(2131296524));
-    this.BBQ = ((TextView)findViewById(2131296521));
+    this.ruW = MMWebView.a.a(this, getContentView(), 2131296526);
+    this.ruW.getSettings().setJavaScriptEnabled(true);
+    this.Dch = ((TextView)findViewById(2131296524));
+    this.Dci = ((TextView)findViewById(2131296521));
     this.content = getIntent().getStringExtra("agreement_content");
-    this.BBQ.setOnClickListener(new View.OnClickListener()
+    this.Dci.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70682);
-        h.wUl.f(15236, new Object[] { Integer.valueOf(2) });
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        g.yhR.f(15236, new Object[] { Integer.valueOf(2) });
         ShowWxPayAgreementsUI.this.setResult(-1);
         ShowWxPayAgreementsUI.this.finish();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70682);
       }
     });
-    this.BBP.setOnClickListener(new View.OnClickListener()
+    this.Dch.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(70683);
-        h.wUl.f(15236, new Object[] { Integer.valueOf(3) });
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        g.yhR.f(15236, new Object[] { Integer.valueOf(3) });
         ShowWxPayAgreementsUI.this.finish();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/ShowWxPayAgreementsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(70683);
       }
     });
-    this.qKU.setWebViewClient(new i(this));
-    this.qKU.loadData(this.content, "text/html; charset=UTF-8", null);
+    this.ruW.setWebViewClient(new i(this));
+    this.ruW.loadData(this.content, "text/html; charset=UTF-8", null);
     AppMethodBeat.o(70685);
   }
   

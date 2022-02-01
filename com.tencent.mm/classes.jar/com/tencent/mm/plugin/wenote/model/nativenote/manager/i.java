@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
 public abstract class i
 {
-  public static final c CWp = new c();
-  public static final b CWq = new b();
-  public static final a CWr = new a();
+  public static final c EAl = new c();
+  public static final b EAm = new b();
+  public static final a EAn = new a();
   
   public static final class a
     extends i
@@ -20,7 +20,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.i
  * JD-Core Version:    0.7.0.1
  */

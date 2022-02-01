@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.xv;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.yp;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.c.t;
 import java.util.Iterator;
 import java.util.Set;
@@ -18,52 +18,52 @@ import java.util.Set;
 public class WalletMixOrderInfoProxyUI
   extends WalletOrderInfoNewUI
 {
-  private Orders BhZ;
+  private Orders CIn;
   private String prepayId = null;
   
   public final void done()
   {
     AppMethodBeat.i(70974);
-    Object localObject1 = this.BGg.iterator();
+    Object localObject1 = this.Dgy.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      if (!bs.isNullOrNil((String)localObject2))
+      if (!bt.isNullOrNil((String)localObject2))
       {
-        ac.d("MicroMsg.WalletMixOrderInfoProxyUI", "hy: doing netscene subscribe...appName: %s", new Object[] { localObject2 });
-        g.agS();
-        g.agQ().ghe.a(new t((String)localObject2), 0);
+        ad.d("MicroMsg.WalletMixOrderInfoProxyUI", "hy: doing netscene subscribe...appName: %s", new Object[] { localObject2 });
+        g.ajD();
+        g.ajB().gAO.a(new t((String)localObject2), 0);
       }
     }
-    if (!bs.isNullOrNil(this.prepayId))
+    if (!bt.isNullOrNil(this.prepayId))
     {
-      localObject1 = new xv();
+      localObject1 = new yp();
       localObject2 = new Intent();
       ((Intent)localObject2).putExtra("intent_pay_end", true);
-      ((Intent)localObject2).putExtra("is_jsapi_close_page", this.BhZ.Bye);
-      ((xv)localObject1).dBk.intent = ((Intent)localObject2);
-      ((xv)localObject1).dBk.dac = this.prepayId;
-      ((xv)localObject1).dBk.result = -1;
-      ((xv)localObject1).dBk.dBn = 1;
-      a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+      ((Intent)localObject2).putExtra("is_jsapi_close_page", this.CIn.CYx);
+      ((yp)localObject1).dNx.intent = ((Intent)localObject2);
+      ((yp)localObject1).dNx.dlu = this.prepayId;
+      ((yp)localObject1).dNx.result = -1;
+      ((yp)localObject1).dNx.dNA = 1;
+      a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
     }
     setResult(-1);
     finish();
     AppMethodBeat.o(70974);
   }
   
-  protected final void etl() {}
-  
-  protected final Orders etz()
+  protected final Orders eHF()
   {
-    return this.BhZ;
+    return this.CIn;
   }
+  
+  protected final void eHr() {}
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(70973);
-    this.BhZ = ((Orders)getIntent().getParcelableExtra("key_orders"));
+    this.CIn = ((Orders)getIntent().getParcelableExtra("key_orders"));
     this.prepayId = getIntent().getStringExtra("prepayId");
     super.onCreate(paramBundle);
     AppMethodBeat.o(70973);

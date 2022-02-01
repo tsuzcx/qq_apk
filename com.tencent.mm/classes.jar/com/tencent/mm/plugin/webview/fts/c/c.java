@@ -8,7 +8,7 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import org.json.JSONArray;
@@ -74,7 +74,7 @@ public final class c
     }
   }
   
-  public static String bp(JSONObject paramJSONObject)
+  public static String by(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(78164);
     paramJSONObject = paramJSONObject.optJSONArray("playUrl");
@@ -87,14 +87,14 @@ public final class c
       }
       catch (JSONException paramJSONObject)
       {
-        ac.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramJSONObject.getMessage() });
+        ad.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramJSONObject.getMessage() });
       }
     }
     AppMethodBeat.o(78164);
     return "";
   }
   
-  private static float dw(Context paramContext)
+  private static float du(Context paramContext)
   {
     AppMethodBeat.i(78159);
     paramContext = paramContext.getContentResolver();
@@ -108,20 +108,20 @@ public final class c
     {
       for (;;)
       {
-        ac.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramContext.getMessage() });
+        ad.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramContext.getMessage() });
       }
     }
     AppMethodBeat.o(78159);
     return f;
   }
   
-  public static float dy(Context paramContext)
+  public static float dw(Context paramContext)
   {
     AppMethodBeat.i(78160);
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = dw(paramContext);
+      f = du(paramContext);
       AppMethodBeat.o(78160);
       return f;
     }
@@ -130,7 +130,7 @@ public final class c
     return f;
   }
   
-  public static String qn(long paramLong)
+  public static String sm(long paramLong)
   {
     AppMethodBeat.i(78161);
     if (paramLong < 3600000L) {}
@@ -146,7 +146,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.c
  * JD-Core Version:    0.7.0.1
  */

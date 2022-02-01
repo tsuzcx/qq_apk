@@ -8,94 +8,94 @@ import java.util.TimerTask;
 public final class a
   extends TimerTask
 {
-  private final WheelView JkQ;
-  private float irs;
-  private final float irt;
+  private final WheelView Lcn;
+  private float iKv;
+  private final float iKw;
   
   public a(WheelView paramWheelView, float paramFloat)
   {
-    this.JkQ = paramWheelView;
-    this.irt = paramFloat;
-    this.irs = 2.147484E+009F;
+    this.Lcn = paramWheelView;
+    this.iKw = paramFloat;
+    this.iKv = 2.147484E+009F;
   }
   
   public final void run()
   {
     float f1 = 2000.0F;
-    AppMethodBeat.i(199841);
-    if (this.irs == 2.147484E+009F)
+    AppMethodBeat.i(192791);
+    if (this.iKv == 2.147484E+009F)
     {
-      if (Math.abs(this.irt) <= 2000.0F) {
+      if (Math.abs(this.iKw) <= 2000.0F) {
         break label103;
       }
-      if (this.irt <= 0.0F) {
+      if (this.iKw <= 0.0F) {
         break label97;
       }
     }
     label97:
     label103:
-    for (this.irs = f1;; this.irs = this.irt)
+    for (this.iKv = f1;; this.iKv = this.iKw)
     {
-      if ((Math.abs(this.irs) < 0.0F) || (Math.abs(this.irs) > 20.0F)) {
+      if ((Math.abs(this.iKv) < 0.0F) || (Math.abs(this.iKv) > 20.0F)) {
         break label114;
       }
-      this.JkQ.aMF();
-      this.JkQ.getHandler().sendEmptyMessage(2000);
-      AppMethodBeat.o(199841);
+      this.Lcn.aPQ();
+      this.Lcn.getHandler().sendEmptyMessage(2000);
+      AppMethodBeat.o(192791);
       return;
       f1 = -2000.0F;
       break;
     }
     label114:
-    int i = (int)(this.irs / 100.0F);
-    this.JkQ.setTotalScrollY(this.JkQ.getTotalScrollY() - i);
+    int i = (int)(this.iKv / 100.0F);
+    this.Lcn.setTotalScrollY(this.Lcn.getTotalScrollY() - i);
     float f5;
     float f3;
     float f4;
     float f2;
-    if (!this.JkQ.hYH)
+    if (!this.Lcn.isd)
     {
-      f5 = this.JkQ.getItemHeight();
-      f3 = -this.JkQ.getInitPosition() * f5;
-      f4 = (this.JkQ.getItemsCount() - 1 - this.JkQ.getInitPosition()) * f5;
-      if (this.JkQ.getTotalScrollY() - f5 * 0.25D < f3)
+      f5 = this.Lcn.getItemHeight();
+      f3 = -this.Lcn.getInitPosition() * f5;
+      f4 = (this.Lcn.getItemsCount() - 1 - this.Lcn.getInitPosition()) * f5;
+      if (this.Lcn.getTotalScrollY() - f5 * 0.25D < f3)
       {
-        f2 = this.JkQ.getTotalScrollY() + i;
+        f2 = this.Lcn.getTotalScrollY() + i;
         f1 = f4;
-        if (this.JkQ.getTotalScrollY() > f2) {
+        if (this.Lcn.getTotalScrollY() > f2) {
           break label347;
         }
-        this.irs = 40.0F;
-        this.JkQ.setTotalScrollY((int)f2);
+        this.iKv = 40.0F;
+        this.Lcn.setTotalScrollY((int)f2);
       }
     }
     else
     {
       label262:
-      if (this.irs >= 0.0F) {
+      if (this.iKv >= 0.0F) {
         break label378;
       }
     }
     label347:
     label378:
-    for (this.irs += 20.0F;; this.irs -= 20.0F)
+    for (this.iKv += 20.0F;; this.iKv -= 20.0F)
     {
-      this.JkQ.getHandler().sendEmptyMessage(1000);
-      AppMethodBeat.o(199841);
+      this.Lcn.getHandler().sendEmptyMessage(1000);
+      AppMethodBeat.o(192791);
       return;
       f1 = f4;
       f2 = f3;
-      if (this.JkQ.getTotalScrollY() + f5 * 0.25D <= f4) {
+      if (this.Lcn.getTotalScrollY() + f5 * 0.25D <= f4) {
         break;
       }
-      f1 = this.JkQ.getTotalScrollY() + i;
+      f1 = this.Lcn.getTotalScrollY() + i;
       f2 = f3;
       break;
-      if (this.JkQ.getTotalScrollY() < f1) {
+      if (this.Lcn.getTotalScrollY() < f1) {
         break label262;
       }
-      this.JkQ.setTotalScrollY((int)f1);
-      this.irs = -40.0F;
+      this.Lcn.setTotalScrollY((int)f1);
+      this.iKv = -40.0F;
       break label262;
     }
   }

@@ -5,13 +5,13 @@ import java.io.OutputStream;
 
 public abstract interface e
 {
-  public abstract String aKe(String paramString);
+  public abstract OutputStream Cz(String paramString);
   
-  public abstract boolean lm(String paramString1, String paramString2);
+  public abstract String aPK(String paramString);
+  
+  public abstract boolean lL(String paramString1, String paramString2);
   
   public abstract InputStream openRead(String paramString);
-  
-  public abstract OutputStream zA(String paramString);
 }
 
 

@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.ball.f;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.a;
+import com.tencent.mm.br.a;
 import com.tencent.mm.compatible.d.b;
 import com.tencent.mm.plugin.ball.service.e;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class c
 {
-  private static String K(Context paramContext, int paramInt)
+  private static String L(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106335);
     switch (paramInt)
@@ -55,9 +55,9 @@ public final class c
   public static void a(Context paramContext, int paramInt, boolean paramBoolean, a parama)
   {
     AppMethodBeat.i(106333);
-    if (b.cc(paramContext))
+    if (b.ca(paramContext))
     {
-      ac.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
+      ad.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
       a(parama, true);
       AppMethodBeat.o(106333);
       return;
@@ -68,9 +68,9 @@ public final class c
     }
     while (str != null)
     {
-      e.bGN();
-      int i = e.SQ(str);
-      ac.i("MicroMsg.FloatBallPermissionUtil", "checkPermission from type:%d reqCnt: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+      e.bKX();
+      int i = e.Wo(str);
+      ad.i("MicroMsg.FloatBallPermissionUtil", "checkPermission from type:%d reqCnt: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       if (i >= 3)
       {
         a(parama, false);
@@ -82,20 +82,20 @@ public final class c
       }
       else
       {
-        e.bGN();
-        e.cl(str, i + 1);
+        e.bKX();
+        e.co(str, i + 1);
       }
     }
-    a(paramContext, K(paramContext, paramInt), paramBoolean, parama);
+    a(paramContext, L(paramContext, paramInt), paramBoolean, parama);
     AppMethodBeat.o(106333);
   }
   
   private static void a(Context paramContext, String paramString, boolean paramBoolean, a parama)
   {
     AppMethodBeat.i(106334);
-    if (b.cc(paramContext))
+    if (b.ca(paramContext))
     {
-      ac.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
+      ad.i("MicroMsg.FloatBallPermissionUtil", "checkPermission already had");
       a(parama, true);
       AppMethodBeat.o(106334);
       return;
@@ -105,31 +105,31 @@ public final class c
       public final void a(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
       {
         AppMethodBeat.i(106330);
-        ac.w("MicroMsg.FloatBallPermissionUtil", "float window permission granted");
+        ad.w("MicroMsg.FloatBallPermissionUtil", "float window permission granted");
         paramAnonymousRequestFloatWindowPermissionDialog.finish();
-        c.a(this.jPy, true);
+        c.a(this.kjI, true);
         AppMethodBeat.o(106330);
       }
       
       public final void b(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
       {
         AppMethodBeat.i(106331);
-        ac.w("MicroMsg.FloatBallPermissionUtil", "float window permission refused");
+        ad.w("MicroMsg.FloatBallPermissionUtil", "float window permission refused");
         paramAnonymousRequestFloatWindowPermissionDialog.finish();
-        c.a(this.jPy, false);
+        c.a(this.kjI, false);
         AppMethodBeat.o(106331);
       }
       
       public final void c(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
       {
         AppMethodBeat.i(186121);
-        boolean bool = b.cc(ai.getContext());
-        ac.w("MicroMsg.FloatBallPermissionUtil", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = b.ca(aj.getContext());
+        ad.w("MicroMsg.FloatBallPermissionUtil", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(bool) });
         paramAnonymousRequestFloatWindowPermissionDialog.finish();
-        c.a(this.jPy, bool);
+        c.a(this.kjI, bool);
         AppMethodBeat.o(186121);
       }
-    }, paramBoolean, a.Zb());
+    }, paramBoolean, a.abB());
     AppMethodBeat.o(106334);
   }
   
@@ -137,19 +137,19 @@ public final class c
   {
     AppMethodBeat.i(106336);
     if (parama != null) {
-      parama.fZ(paramBoolean);
+      parama.ge(paramBoolean);
     }
     AppMethodBeat.o(106336);
   }
   
   public static abstract interface a
   {
-    public abstract void fZ(boolean paramBoolean);
+    public abstract void ge(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.c
  * JD-Core Version:    0.7.0.1
  */

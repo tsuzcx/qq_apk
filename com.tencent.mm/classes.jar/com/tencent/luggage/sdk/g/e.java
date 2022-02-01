@@ -4,26 +4,26 @@ import android.webkit.ConsoleMessage;
 import android.webkit.ConsoleMessage.MessageLevel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.stubs.logger.Log;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.m;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/wxa_ktx/WebkitUtils;", "", "()V", "println", "", "Landroid/webkit/ConsoleMessage;", "tag", "", "luggage-wxa-app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/wxa_ktx/WebkitUtils;", "", "()V", "println", "", "Landroid/webkit/ConsoleMessage;", "tag", "", "luggage-wxa-app_release"})
 public final class e
 {
-  public static final e cfz;
+  public static final e cpP;
   
   static
   {
     AppMethodBeat.i(176453);
-    cfz = new e();
+    cpP = new e();
     AppMethodBeat.o(176453);
   }
   
   public static final void a(ConsoleMessage paramConsoleMessage, String paramString)
   {
     AppMethodBeat.i(176452);
-    k.h(paramString, "tag");
+    p.h(paramString, "tag");
     if (paramConsoleMessage != null) {}
     for (ConsoleMessage.MessageLevel localMessageLevel = paramConsoleMessage.messageLevel(); localMessageLevel == null; localMessageLevel = null)
     {
@@ -31,7 +31,7 @@ public final class e
       return;
     }
     int i;
-    switch (f.cfA[localMessageLevel.ordinal()])
+    switch (f.cpQ[localMessageLevel.ordinal()])
     {
     default: 
       paramConsoleMessage = new m();

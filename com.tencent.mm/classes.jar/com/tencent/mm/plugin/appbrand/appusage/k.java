@@ -1,33 +1,82 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class k
   extends j<b>
 {
-  public static final String[] hlS;
-  public final e jnc;
+  public static final String[] hEf;
+  public final e jHa;
   
   static
   {
     AppMethodBeat.i(44488);
-    hlS = new String[] { j.getCreateSQLs(b.hlR, "AppBrandAppLaunchUsernameDuplicateRecord2") };
+    hEf = new String[] { j.getCreateSQLs(b.hEe, "AppBrandAppLaunchUsernameDuplicateRecord2") };
     AppMethodBeat.o(44488);
   }
   
   public k(e parame)
   {
-    super(parame, b.hlR, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
-    this.jnc = parame;
+    super(parame, b.hEe, "AppBrandAppLaunchUsernameDuplicateRecord2", b.INDEX_CREATE);
+    this.jHa = parame;
   }
   
-  public final boolean I(String paramString, long paramLong)
+  public final b MD(String paramString)
+  {
+    AppMethodBeat.i(188029);
+    b localb = new b();
+    localb.field_usernameHash = paramString.hashCode();
+    if ((!get(localb, new String[] { "usernameHash" })) || (localb.field_username == null) || (!localb.field_username.equals(paramString)))
+    {
+      AppMethodBeat.o(188029);
+      return null;
+    }
+    AppMethodBeat.o(188029);
+    return localb;
+  }
+  
+  public final boolean ME(String paramString)
+  {
+    AppMethodBeat.i(188030);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(188030);
+      return false;
+    }
+    paramString = MD(paramString);
+    if ((paramString != null) && (paramString.field_updateTime > 0L))
+    {
+      AppMethodBeat.o(188030);
+      return true;
+    }
+    AppMethodBeat.o(188030);
+    return false;
+  }
+  
+  public final boolean MF(String paramString)
+  {
+    AppMethodBeat.i(188031);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(188031);
+      return false;
+    }
+    b localb = new b();
+    localb.field_username = paramString;
+    localb.field_usernameHash = paramString.hashCode();
+    boolean bool = super.delete(localb, new String[] { "usernameHash" });
+    AppMethodBeat.o(188031);
+    return bool;
+  }
+  
+  public final boolean P(String paramString, long paramLong)
   {
     AppMethodBeat.i(44487);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(44487);
       return false;
@@ -46,20 +95,6 @@ public final class k
     bool = insert(localb);
     AppMethodBeat.o(44487);
     return bool;
-  }
-  
-  public final b Jm(String paramString)
-  {
-    AppMethodBeat.i(186339);
-    b localb = new b();
-    localb.field_usernameHash = paramString.hashCode();
-    if ((!get(localb, new String[] { "usernameHash" })) || (localb.field_username == null) || (!localb.field_username.equals(paramString)))
-    {
-      AppMethodBeat.o(186339);
-      return null;
-    }
-    AppMethodBeat.o(186339);
-    return localb;
   }
 }
 

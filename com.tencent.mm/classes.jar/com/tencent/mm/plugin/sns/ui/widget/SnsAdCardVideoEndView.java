@@ -18,53 +18,53 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ad.e.a;
 import com.tencent.mm.plugin.sns.data.j;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.ui.aq;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.plugin.sns.ui.at;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.ui.base.MMTextureView;
 import org.json.JSONObject;
 
 public class SnsAdCardVideoEndView
   extends FrameLayout
 {
+  private at ABP;
+  private ImageView ABQ;
+  private View ABR;
+  private TextView ABS;
+  private TextView ABT;
+  private TextView ABU;
+  private View ABV;
+  private ImageView ABW;
+  private TextView ABX;
+  private TextView ABY;
+  private ImageView ABZ;
+  private p ACa;
+  private boolean ACb;
+  private long ACc;
+  private String AmA;
   private int mScene;
-  private String yUR;
-  private aq zjO;
-  private ImageView zjP;
-  private View zjQ;
-  private TextView zjR;
-  private TextView zjS;
-  private TextView zjT;
-  private View zjU;
-  private ImageView zjV;
-  private TextView zjW;
-  private TextView zjX;
-  private ImageView zjY;
-  private p zjZ;
-  private boolean zka;
-  private long zkb;
   
   public SnsAdCardVideoEndView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(176439);
-    this.yUR = "";
-    this.zjZ = null;
-    this.zka = false;
-    this.zkb = 0L;
+    this.AmA = "";
+    this.ACa = null;
+    this.ACb = false;
+    this.ACc = 0L;
     LayoutInflater.from(paramContext).inflate(2131495602, this);
-    this.zjP = ((ImageView)findViewById(2131302164));
-    this.zjQ = findViewById(2131306171);
-    this.zjR = ((TextView)findViewById(2131306173));
-    this.zjS = ((TextView)findViewById(2131306170));
-    this.zjT = ((TextView)findViewById(2131306172));
-    this.zjU = findViewById(2131300991);
-    this.zjV = ((ImageView)findViewById(2131300990));
-    this.zjW = ((TextView)findViewById(2131300989));
-    this.zjX = ((TextView)findViewById(2131300992));
-    this.zjY = ((ImageView)findViewById(2131298823));
-    this.zjP.setBackgroundColor(Color.parseColor("#7f000000"));
+    this.ABQ = ((ImageView)findViewById(2131302164));
+    this.ABR = findViewById(2131306171);
+    this.ABS = ((TextView)findViewById(2131306173));
+    this.ABT = ((TextView)findViewById(2131306170));
+    this.ABU = ((TextView)findViewById(2131306172));
+    this.ABV = findViewById(2131300991);
+    this.ABW = ((ImageView)findViewById(2131300990));
+    this.ABX = ((TextView)findViewById(2131300989));
+    this.ABY = ((TextView)findViewById(2131300992));
+    this.ABZ = ((ImageView)findViewById(2131298823));
+    this.ABQ.setBackgroundColor(Color.parseColor("#7f000000"));
     AppMethodBeat.o(176439);
   }
   
@@ -73,7 +73,7 @@ public class SnsAdCardVideoEndView
     AppMethodBeat.i(176447);
     if (paramp == null)
     {
-      ac.e("SnsAdCardVideoEndView", "reportVideoEndViewExpouse snsInfo==null");
+      ad.e("SnsAdCardVideoEndView", "reportVideoEndViewExpouse snsInfo==null");
       AppMethodBeat.o(176447);
       return;
     }
@@ -84,46 +84,46 @@ public class SnsAdCardVideoEndView
       localJSONObject2.put("exposureDuration", paramFloat);
       localJSONObject2.put("startTimestamp", paramLong);
       localJSONObject2.put("type", 5);
-      String str = bs.nullAsNil(paramp.dMD());
+      String str = bt.nullAsNil(paramp.dYT());
       localJSONObject1.put("extInfo", localJSONObject2);
       localJSONObject1.put("uxinfo", str);
       localJSONObject1.put("snsid", paramp.field_snsId);
       localJSONObject1.put("scene", this.mScene);
       paramp = localJSONObject1.toString();
-      j.iU("17539", paramp);
-      ac.i("SnsAdCardVideoEndView", "reportVideoEndViewExpouse 17539, content=".concat(String.valueOf(paramp)));
+      j.jf("17539", paramp);
+      ad.i("SnsAdCardVideoEndView", "reportVideoEndViewExpouse 17539, content=".concat(String.valueOf(paramp)));
       AppMethodBeat.o(176447);
       return;
     }
     catch (Exception paramp)
     {
-      ac.e("SnsAdCardVideoEndView", "reportVideoEndViewExpouse exp:" + paramp.toString());
+      ad.e("SnsAdCardVideoEndView", "reportVideoEndViewExpouse exp:" + paramp.toString());
       AppMethodBeat.o(176447);
     }
   }
   
-  private void dSz()
+  private void eeT()
   {
     AppMethodBeat.i(179375);
-    if ((this.zjZ != null) && (this.zjO != null) && (this.zkb > 0L))
+    if ((this.ACa != null) && (this.ABP != null) && (this.ACc > 0L))
     {
-      float f2 = (float)(System.currentTimeMillis() - this.zkb);
+      float f2 = (float)(System.currentTimeMillis() - this.ACc);
       float f1 = f2;
-      if (f2 > this.zjO.duration) {
-        f1 = this.zjO.duration;
+      if (f2 > this.ABP.duration) {
+        f1 = this.ABP.duration;
       }
-      a(this.zjZ, this.zkb, f1 / 1000.0F);
-      this.zkb = 0L;
+      a(this.ACa, this.ACc, f1 / 1000.0F);
+      this.ACc = 0L;
     }
     AppMethodBeat.o(179375);
   }
   
-  public static void h(p paramp, int paramInt)
+  public static void i(p paramp, int paramInt)
   {
     AppMethodBeat.i(176448);
     if (paramp == null)
     {
-      ac.e("SnsAdCardVideoEndView", "reportVideoEndViewClick snsInfo==null, scene=".concat(String.valueOf(paramInt)));
+      ad.e("SnsAdCardVideoEndView", "reportVideoEndViewClick snsInfo==null, scene=".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(176448);
       return;
     }
@@ -133,20 +133,20 @@ public class SnsAdCardVideoEndView
       JSONObject localJSONObject2 = new JSONObject();
       localJSONObject2.put("clickCount", 1);
       localJSONObject2.put("type", 4);
-      String str = bs.nullAsNil(paramp.dMD());
+      String str = bt.nullAsNil(paramp.dYT());
       localJSONObject1.put("extInfo", localJSONObject2);
       localJSONObject1.put("uxinfo", str);
       localJSONObject1.put("snsid", paramp.field_snsId);
       localJSONObject1.put("scene", paramInt);
       paramp = localJSONObject1.toString();
-      j.iU("17539", paramp);
-      ac.i("SnsAdCardVideoEndView", "reportVideoEndViewClick 17539, content=".concat(String.valueOf(paramp)));
+      j.jf("17539", paramp);
+      ad.i("SnsAdCardVideoEndView", "reportVideoEndViewClick 17539, content=".concat(String.valueOf(paramp)));
       AppMethodBeat.o(176448);
       return;
     }
     catch (Exception paramp)
     {
-      ac.e("SnsAdCardVideoEndView", "reportVideoEndViewClick exp:" + paramp.toString());
+      ad.e("SnsAdCardVideoEndView", "reportVideoEndViewClick exp:" + paramp.toString());
       AppMethodBeat.o(176448);
     }
   }
@@ -162,18 +162,18 @@ public class SnsAdCardVideoEndView
     AppMethodBeat.o(176446);
   }
   
-  public final boolean T(p paramp)
+  public final boolean V(p paramp)
   {
     AppMethodBeat.i(176442);
     String str = paramp.getSnsId();
-    if ((TextUtils.isEmpty(this.yUR)) || (!this.yUR.equals(str)))
+    if ((TextUtils.isEmpty(this.AmA)) || (!this.AmA.equals(str)))
     {
-      ac.i("SnsAdCardVideoEndView", "checkSnsId changed, old=" + this.yUR + ", new=" + str);
-      this.zkb = 0L;
-      dT(false);
-      this.yUR = str;
-      this.zjZ = paramp;
-      this.zka = false;
+      ad.i("SnsAdCardVideoEndView", "checkSnsId changed, old=" + this.AmA + ", new=" + str);
+      this.ACc = 0L;
+      dV(false);
+      this.AmA = str;
+      this.ACa = paramp;
+      this.ACb = false;
       setBackgroundDrawable(null);
       AppMethodBeat.o(176442);
       return true;
@@ -182,70 +182,57 @@ public class SnsAdCardVideoEndView
     return false;
   }
   
-  public final void a(aq paramaq, int paramInt)
+  public final void a(at paramat, int paramInt)
   {
     AppMethodBeat.i(176440);
-    if (paramaq == null) {
-      dT(false);
+    if (paramat == null) {
+      dV(false);
     }
-    this.zjO = paramaq;
+    this.ABP = paramat;
     this.mScene = paramInt;
     AppMethodBeat.o(176440);
   }
   
-  public final void aQP()
+  public final void aUb()
   {
     AppMethodBeat.i(176441);
-    if (this.zjO == null)
+    if (this.ABP == null)
     {
       AppMethodBeat.o(176441);
       return;
     }
-    if (!TextUtils.isEmpty(this.zjO.title))
+    if (!TextUtils.isEmpty(this.ABP.title))
     {
-      this.zjR.setText(this.zjO.title);
-      this.zjS.setText(this.zjO.desc);
-      this.zjT.setText(this.zjO.yFE);
-      this.zjQ.setVisibility(0);
-      this.zjU.setVisibility(8);
+      this.ABS.setText(this.ABP.title);
+      this.ABT.setText(this.ABP.desc);
+      this.ABU.setText(this.ABP.zWW);
+      this.ABR.setVisibility(0);
+      this.ABV.setVisibility(8);
     }
-    while (!TextUtils.isEmpty(this.zjO.coverImgUrl))
+    while (!TextUtils.isEmpty(this.ABP.coverImgUrl))
     {
-      this.zjY.setVisibility(0);
-      u(this.zjY, this.zjO.coverImgUrl);
+      this.ABZ.setVisibility(0);
+      u(this.ABZ, this.ABP.coverImgUrl);
       AppMethodBeat.o(176441);
       return;
-      this.zjW.setText(this.zjO.desc);
-      this.zjX.setText(this.zjO.yFE);
-      if (!TextUtils.isEmpty(this.zjO.yFD)) {
-        u(this.zjV, this.zjO.yFD);
+      this.ABX.setText(this.ABP.desc);
+      this.ABY.setText(this.ABP.zWW);
+      if (!TextUtils.isEmpty(this.ABP.zWV)) {
+        u(this.ABW, this.ABP.zWV);
       }
-      this.zjQ.setVisibility(8);
-      this.zjU.setVisibility(0);
+      this.ABR.setVisibility(8);
+      this.ABV.setVisibility(0);
     }
-    this.zjY.setVisibility(8);
+    this.ABZ.setVisibility(8);
     AppMethodBeat.o(176441);
   }
   
-  public final void dSy()
-  {
-    AppMethodBeat.i(176444);
-    ac.i("SnsAdCardVideoEndView", "show, anim=true");
-    this.zkb = System.currentTimeMillis();
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setStartOffset(100L);
-    localAlphaAnimation.setDuration(300L);
-    setVisibility(0);
-    startAnimation(localAlphaAnimation);
-    AppMethodBeat.o(176444);
-  }
-  
-  public final void dT(boolean paramBoolean)
+  public final void dV(boolean paramBoolean)
   {
     AppMethodBeat.i(176445);
-    ac.i("SnsAdCardVideoEndView", "hide, anim=".concat(String.valueOf(paramBoolean)));
+    ad.i("SnsAdCardVideoEndView", "hide, anim=".concat(String.valueOf(paramBoolean)));
     if (getVisibility() == 0) {
-      dSz();
+      eeT();
     }
     if (!paramBoolean)
     {
@@ -272,12 +259,25 @@ public class SnsAdCardVideoEndView
     AppMethodBeat.o(176445);
   }
   
+  public final void eeS()
+  {
+    AppMethodBeat.i(176444);
+    ad.i("SnsAdCardVideoEndView", "show, anim=true");
+    this.ACc = System.currentTimeMillis();
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setStartOffset(100L);
+    localAlphaAnimation.setDuration(300L);
+    setVisibility(0);
+    startAnimation(localAlphaAnimation);
+    AppMethodBeat.o(176444);
+  }
+  
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(179373);
     super.onAttachedToWindow();
     if (getVisibility() == 0) {
-      ac.i("SnsAdCardVideoEndView", "onAttachedToWindow");
+      ad.i("SnsAdCardVideoEndView", "onAttachedToWindow");
     }
     AppMethodBeat.o(179373);
   }
@@ -288,8 +288,8 @@ public class SnsAdCardVideoEndView
     super.onDetachedFromWindow();
     if (getVisibility() == 0)
     {
-      ac.i("SnsAdCardVideoEndView", "onDetachedFromWindow");
-      dSz();
+      ad.i("SnsAdCardVideoEndView", "onDetachedFromWindow");
+      eeT();
     }
     AppMethodBeat.o(179374);
   }
@@ -299,7 +299,7 @@ public class SnsAdCardVideoEndView
     AppMethodBeat.i(176443);
     try
     {
-      boolean bool = this.zka;
+      boolean bool = this.ACb;
       if (bool)
       {
         AppMethodBeat.o(176443);
@@ -307,16 +307,16 @@ public class SnsAdCardVideoEndView
       }
       long l1 = System.currentTimeMillis();
       if ((paramView instanceof MMTextureView)) {}
-      for (paramView = ((MMTextureView)paramView).getBitmap();; paramView = f.fL(paramView))
+      for (paramView = ((MMTextureView)paramView).getBitmap();; paramView = g.ga(paramView))
       {
         long l2 = System.currentTimeMillis();
         int i = paramView.getWidth() / 5;
         int j = paramView.getHeight() / 5;
-        paramView = f.l(Bitmap.createScaledBitmap(paramView, i, j, false), 20);
+        paramView = g.l(Bitmap.createScaledBitmap(paramView, i, j, false), 20);
         long l3 = System.currentTimeMillis();
         setBackgroundDrawable(new BitmapDrawable(paramView));
-        this.zka = true;
-        ac.i("SnsAdCardVideoEndView", "setBlurBkg, totalCost=" + (l3 - l1) + ", captureCost=" + (l2 - l1) + ", blurCost=" + (l3 - l2) + ", w=" + i + ", h=" + j);
+        this.ACb = true;
+        ad.i("SnsAdCardVideoEndView", "setBlurBkg, totalCost=" + (l3 - l1) + ", captureCost=" + (l2 - l1) + ", blurCost=" + (l3 - l2) + ", w=" + i + ", h=" + j);
         AppMethodBeat.o(176443);
         return;
       }
@@ -324,8 +324,8 @@ public class SnsAdCardVideoEndView
     }
     catch (Throwable paramView)
     {
-      ac.e("SnsAdCardVideoEndView", "setBlurBkg, exp=" + paramView.toString());
-      this.zka = false;
+      ad.e("SnsAdCardVideoEndView", "setBlurBkg, exp=" + paramView.toString());
+      this.ACb = false;
       AppMethodBeat.o(176443);
     }
   }

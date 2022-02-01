@@ -1,31 +1,30 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.wb;
-import com.tencent.mm.protocal.protobuf.wc;
-import com.tencent.mm.protocal.protobuf.wd;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.protocal.protobuf.ya;
+import com.tencent.mm.protocal.protobuf.yb;
+import com.tencent.mm.protocal.protobuf.yc;
 import java.util.LinkedList;
 
 public final class a
-  extends c<wd>
+  extends com.tencent.mm.al.a<yc>
 {
-  public a(LinkedList<wb> paramLinkedList, int paramInt, String paramString)
+  public a(LinkedList<ya> paramLinkedList, int paramInt, String paramString)
   {
     AppMethodBeat.i(6200);
     b.a locala = new b.a();
     locala.funcId = 2731;
     locala.uri = "/cgi-bin/mmbiz-bin/checktmplver";
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    wc localwc = new wc();
-    localwc.Scene = paramInt;
-    localwc.nOG = paramString;
-    localwc.Eqx = paramLinkedList;
-    locala.hvt = localwc;
-    locala.hvu = new wd();
-    this.rr = locala.aAz();
+    yb localyb = new yb();
+    localyb.Scene = paramInt;
+    localyb.orm = paramString;
+    localyb.FXI = paramLinkedList;
+    locala.hNM = localyb;
+    locala.hNN = new yc();
+    c(locala.aDC());
     AppMethodBeat.o(6200);
   }
 }

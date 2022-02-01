@@ -1,603 +1,245 @@
 package com.tencent.mm.y;
 
-import android.util.SparseArray;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import android.opengl.GLES20;
+import android.opengl.GLES30;
+import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.e.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Random;
-import java.util.Set;
+import com.tencent.mm.media.k.c;
+import com.tencent.mm.media.k.c.a;
+import com.tencent.mm.media.k.c.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import d.g.b.p;
+import d.l;
+import d.z;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/glrender/FilterRender;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callbackHandler", "Landroid/os/Handler;", "getCallbackHandler", "()Landroid/os/Handler;", "setCallbackHandler", "(Landroid/os/Handler;)V", "callbackThread", "Landroid/os/HandlerThread;", "getCallbackThread", "()Landroid/os/HandlerThread;", "setCallbackThread", "(Landroid/os/HandlerThread;)V", "curHeight", "", "getCurHeight", "()I", "setCurHeight", "(I)V", "curWidth", "getCurWidth", "setCurWidth", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setHandler", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "handlerThread", "getHandlerThread", "setHandlerThread", "imageReader", "Landroid/media/ImageReader;", "getImageReader", "()Landroid/media/ImageReader;", "setImageReader", "(Landroid/media/ImageReader;)V", "inputBitmap", "Landroid/graphics/Bitmap;", "getInputBitmap", "()Landroid/graphics/Bitmap;", "setInputBitmap", "(Landroid/graphics/Bitmap;)V", "inputTextureId", "getInputTextureId", "setInputTextureId", "mEGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "getMEGLEnvironment", "()Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "setMEGLEnvironment", "(Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;)V", "outputTextureId", "getOutputTextureId", "setOutputTextureId", "renderOutputBuffer", "Ljava/nio/ByteBuffer;", "getRenderOutputBuffer", "()Ljava/nio/ByteBuffer;", "setRenderOutputBuffer", "(Ljava/nio/ByteBuffer;)V", "waitingList", "", "Lkotlin/Function1;", "", "getWaitingList", "()Ljava/util/List;", "xLabEffect", "Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "getXLabEffect", "()Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;", "setXLabEffect", "(Lcom/tencent/mm/plugin/xlabeffect/XLabEffect;)V", "allocTexutreMem", "texture", "width", "height", "checkInitOutputBuffer", "copyToByteArray", "buffer", "rowPadding", "extractBitmapBuffer", "Lkotlin/Pair;", "reader", "filter", "lutFilePath", "colorWeight", "", "callback", "initGL", "setBitmap", "bitmap", "start", "originBitmap", "context", "Landroid/content/Context;", "stop", "plugin-photoedit-sdk_release"})
 public final class b
 {
-  SparseArray<a> gcT;
-  HashMap<ah.a, a> gcU;
-  SparseArray<b> gcV;
-  HashMap<ah.a, b> gcW;
-  private Random gcX;
-  ae gcY;
+  final String TAG;
+  public Handler callbackHandler;
+  public HandlerThread gtf;
+  public ImageReader gtg;
+  public c.b gth;
+  public Bitmap gti;
+  int gtj;
+  int gtk;
+  com.tencent.mm.plugin.xlabeffect.b gtl;
+  int gtm;
+  int gtn;
+  final List<d.g.a.b<Bitmap, z>> gto;
+  ap handler;
+  HandlerThread handlerThread;
   
   public b()
   {
-    AppMethodBeat.i(150060);
-    this.gcT = new SparseArray();
-    this.gcU = new HashMap();
-    this.gcV = new SparseArray();
-    this.gcW = new HashMap();
-    this.gcX = new Random();
-    this.gcY = null;
-    AppMethodBeat.o(150060);
+    AppMethodBeat.i(163164);
+    this.TAG = "MicroMsg.FilterRender";
+    this.gto = ((List)new ArrayList());
+    HandlerThread localHandlerThread = d.gZ("FilterRenderHandlerThread", 5);
+    p.g(localHandlerThread, "SpecialThreadFactory.cre…d\", Thread.NORM_PRIORITY)");
+    this.handlerThread = localHandlerThread;
+    this.handlerThread.start();
+    this.handler = new ap(this.handlerThread.getLooper());
+    AppMethodBeat.o(163164);
   }
   
-  private a a(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public final HandlerThread agH()
   {
-    AppMethodBeat.i(150073);
-    a locala = new a();
-    locala.gcP = paramInt1;
-    locala.type = paramInt2;
-    locala.value = paramString1;
-    locala.ddJ = paramString2;
-    AppMethodBeat.o(150073);
-    return locala;
+    AppMethodBeat.i(163161);
+    HandlerThread localHandlerThread = this.gtf;
+    if (localHandlerThread == null) {
+      p.bcb("callbackThread");
+    }
+    AppMethodBeat.o(163161);
+    return localHandlerThread;
   }
   
-  private a a(ah.a parama, int paramInt, String paramString1, String paramString2)
+  public final c.b agI()
   {
-    AppMethodBeat.i(150074);
-    a locala = new a();
-    locala.gcQ = parama;
-    locala.type = paramInt;
-    locala.value = paramString1;
-    locala.ddJ = paramString2;
-    AppMethodBeat.o(150074);
-    return locala;
-  }
-  
-  private void a(a parama)
-  {
-    AppMethodBeat.i(150063);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(parama.type);
-    localStringBuffer.append("|");
-    localStringBuffer.append(ty(parama.value));
-    localStringBuffer.append("|");
-    localStringBuffer.append(ty(parama.ddJ));
-    if (parama.gcQ != null)
-    {
-      this.gcY.set(parama.gcQ, localStringBuffer.toString());
-      AppMethodBeat.o(150063);
-      return;
+    AppMethodBeat.i(163162);
+    c.b localb = this.gth;
+    if (localb == null) {
+      p.bcb("mEGLEnvironment");
     }
-    this.gcY.set(parama.gcP, localStringBuffer.toString());
-    AppMethodBeat.o(150063);
-  }
-  
-  private a c(ah.a parama)
-  {
-    AppMethodBeat.i(150066);
-    String str = (String)this.gcY.get(parama, null);
-    if (str == null)
-    {
-      AppMethodBeat.o(150066);
-      return null;
-    }
-    String[] arrayOfString = str.split("\\|");
-    if (arrayOfString.length != 3)
-    {
-      ac.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
-      AppMethodBeat.o(150066);
-      return null;
-    }
-    try
-    {
-      parama = a(parama, Integer.valueOf(arrayOfString[0]).intValue(), unescape(arrayOfString[1]), unescape(arrayOfString[2]));
-      AppMethodBeat.o(150066);
-      return parama;
-    }
-    catch (Exception parama)
-    {
-      ac.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bs.m(parama) });
-      ac.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
-      AppMethodBeat.o(150066);
-    }
-    return null;
-  }
-  
-  private a c(ah.a parama, int paramInt)
-  {
-    AppMethodBeat.i(150076);
-    a locala2 = f(parama);
-    a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala1 = a(parama, paramInt, "", "");
-      this.gcU.put(parama, locala1);
-      a(locala1);
-    }
-    AppMethodBeat.o(150076);
-    return locala1;
-  }
-  
-  private a cJ(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(150075);
-    a locala2 = lW(paramInt1);
-    a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala1 = a(paramInt1, paramInt2, "", "");
-      this.gcT.put(paramInt1, locala1);
-      a(locala1);
-    }
-    AppMethodBeat.o(150075);
-    return locala1;
-  }
-  
-  private b d(ah.a parama)
-  {
-    AppMethodBeat.i(150069);
-    String str = (String)this.gcY.get(parama, null);
-    if (str == null)
-    {
-      parama = e(parama);
-      AppMethodBeat.o(150069);
-      return parama;
-    }
-    String[] arrayOfString = str.split("\\|");
-    if (arrayOfString.length % 2 != 0)
-    {
-      ac.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { str });
-      AppMethodBeat.o(150069);
-      return null;
-    }
-    for (;;)
-    {
-      int i;
-      try
-      {
-        parama = e(parama);
-        i = 0;
-        if (i < arrayOfString.length) {
-          if (tz(arrayOfString[i])) {
-            parama.gdb.put(Integer.valueOf(arrayOfString[i]).intValue(), unescape(arrayOfString[(i + 1)]));
-          } else {
-            parama.gdc.put(arrayOfString[i], unescape(arrayOfString[(i + 1)]));
-          }
-        }
-      }
-      catch (Exception parama)
-      {
-        ac.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bs.m(parama) });
-        ac.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { str });
-        AppMethodBeat.o(150069);
-        return null;
-      }
-      AppMethodBeat.o(150069);
-      return parama;
-      i += 2;
-    }
-  }
-  
-  private b e(ah.a parama)
-  {
-    AppMethodBeat.i(150072);
-    b localb = new b();
-    localb.gcS = parama;
-    AppMethodBeat.o(150072);
+    AppMethodBeat.o(163162);
     return localb;
   }
   
-  private b g(ah.a parama)
+  public final Bitmap agJ()
   {
-    AppMethodBeat.i(150080);
-    b localb2 = (b)this.gcW.get(parama);
-    b localb1 = localb2;
-    if (localb2 == null)
-    {
-      localb1 = d(parama);
-      if (localb1 == null)
-      {
-        ac.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
-        AppMethodBeat.o(150080);
-        return null;
-      }
-      this.gcW.put(parama, localb1);
+    AppMethodBeat.i(163163);
+    Bitmap localBitmap = this.gti;
+    if (localBitmap == null) {
+      p.bcb("inputBitmap");
     }
-    AppMethodBeat.o(150080);
-    return localb1;
+    AppMethodBeat.o(163163);
+    return localBitmap;
   }
   
-  private a lT(int paramInt)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
   {
-    AppMethodBeat.i(150065);
-    String str = (String)this.gcY.get(paramInt, null);
-    if (str == null)
+    a(b paramb, d.g.a.b paramb1, String paramString, float paramFloat) {}
+    
+    public final void run()
     {
-      AppMethodBeat.o(150065);
-      return null;
-    }
-    Object localObject = str.split("\\|");
-    if (localObject.length != 3)
-    {
-      ac.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
-      AppMethodBeat.o(150065);
-      return null;
-    }
-    try
-    {
-      localObject = a(paramInt, Integer.valueOf(localObject[0]).intValue(), unescape(localObject[1]), unescape(localObject[2]));
-      AppMethodBeat.o(150065);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      ac.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bs.m(localException) });
-      ac.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
-      AppMethodBeat.o(150065);
-    }
-    return null;
-  }
-  
-  private b lU(int paramInt)
-  {
-    AppMethodBeat.i(150068);
-    Object localObject = (String)this.gcY.get(paramInt, null);
-    if (localObject == null)
-    {
-      localObject = lV(paramInt);
-      AppMethodBeat.o(150068);
-      return localObject;
-    }
-    String[] arrayOfString = ((String)localObject).split("\\|");
-    if (arrayOfString.length % 2 != 0)
-    {
-      ac.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { localObject });
-      AppMethodBeat.o(150068);
-      return null;
-    }
-    for (;;)
-    {
-      b localb;
-      try
+      AppMethodBeat.i(163158);
+      synchronized (this.gtp.gto)
       {
-        localb = lV(paramInt);
-        paramInt = 0;
-        if (paramInt < arrayOfString.length) {
-          if (tz(arrayOfString[paramInt])) {
-            localb.gdb.put(Integer.valueOf(arrayOfString[paramInt]).intValue(), unescape(arrayOfString[(paramInt + 1)]));
-          } else {
-            localb.gdc.put(arrayOfString[paramInt], unescape(arrayOfString[(paramInt + 1)]));
-          }
+        this.gtp.gto.add(this.giT);
+        ??? = c.hoP;
+        c.a.aug();
+        ??? = this.gtp.gtl;
+        if (??? != null)
+        {
+          ((com.tencent.mm.plugin.xlabeffect.b)???).n(this.gtq, this.gtr);
+          com.tencent.mm.plugin.xlabeffect.b.a((com.tencent.mm.plugin.xlabeffect.b)???, this.gtp.gtj, this.gtp.gtk, false, 60);
         }
       }
-      catch (Exception localException)
+      synchronized (this.gtp.gto)
       {
-        ac.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bs.m(localException) });
-        ac.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { localObject });
-        AppMethodBeat.o(150068);
-        return null;
-      }
-      AppMethodBeat.o(150068);
-      return localb;
-      paramInt += 2;
-    }
-  }
-  
-  private static String ty(String paramString)
-  {
-    AppMethodBeat.i(150061);
-    paramString = paramString.replaceAll("\\|", "%7C");
-    AppMethodBeat.o(150061);
-    return paramString;
-  }
-  
-  private static boolean tz(String paramString)
-  {
-    AppMethodBeat.i(150067);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.matches("^[\\d]+$")))
-    {
-      AppMethodBeat.o(150067);
-      return true;
-    }
-    AppMethodBeat.o(150067);
-    return false;
-  }
-  
-  private static String unescape(String paramString)
-  {
-    AppMethodBeat.i(150062);
-    paramString = paramString.replaceAll("%7C", "|");
-    AppMethodBeat.o(150062);
-    return paramString;
-  }
-  
-  public final a J(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(150083);
-    ac.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceId %d, watcherId %d, type %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    a locala = lW(paramInt1);
-    if (locala == null)
-    {
-      ac.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
-      AppMethodBeat.o(150083);
-      return null;
-    }
-    if ((locala.type & paramInt3) == 0)
-    {
-      ac.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
-      AppMethodBeat.o(150083);
-      return null;
-    }
-    b localb = lX(paramInt2);
-    if (localb != null)
-    {
-      String str = (String)localb.gdb.get(paramInt1);
-      if ((str != null) && (str.equals(locala.ddJ)))
-      {
-        AppMethodBeat.o(150083);
-        return null;
-      }
-      if (str == null)
-      {
-        str = aeF();
-        localb.gdb.put(paramInt1, str);
-        a(localb);
-      }
-      AppMethodBeat.o(150083);
-      return locala;
-    }
-    ac.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
-    AppMethodBeat.o(150083);
-    return null;
-  }
-  
-  public final a a(ah.a parama1, ah.a parama2, int paramInt)
-  {
-    AppMethodBeat.i(150084);
-    ac.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceKey %s, watcherKey %s, type %d", new Object[] { parama1, parama2, Integer.valueOf(paramInt) });
-    a locala = f(parama1);
-    if (locala == null)
-    {
-      ac.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
-      AppMethodBeat.o(150084);
-      return null;
-    }
-    if ((locala.type & paramInt) == 0)
-    {
-      ac.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
-      AppMethodBeat.o(150084);
-      return null;
-    }
-    parama2 = g(parama2);
-    if (parama2 != null)
-    {
-      String str = (String)parama2.gdc.get(parama1.name());
-      if ((str != null) && (str.equals(locala.ddJ)))
-      {
-        AppMethodBeat.o(150084);
-        return null;
-      }
-      if (str == null)
-      {
-        str = aeF();
-        parama2.gdc.put(parama1.name(), str);
-        a(parama2);
-      }
-      AppMethodBeat.o(150084);
-      return locala;
-    }
-    ac.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
-    AppMethodBeat.o(150084);
-    return null;
-  }
-  
-  final void a(b paramb)
-  {
-    int m = 0;
-    AppMethodBeat.i(150064);
-    StringBuffer localStringBuffer = new StringBuffer();
-    Object localObject1 = paramb.gdc.entrySet().iterator();
-    int i = 0;
-    int j;
-    int k;
-    for (;;)
-    {
-      j = i;
-      k = m;
-      if (!((Iterator)localObject1).hasNext()) {
-        break;
-      }
-      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      String str = (String)((Map.Entry)localObject2).getKey();
-      localObject2 = (String)((Map.Entry)localObject2).getValue();
-      if (i != 0) {
-        localStringBuffer.append("|");
-      }
-      localStringBuffer.append(str);
-      localStringBuffer.append("|");
-      localStringBuffer.append(ty((String)localObject2));
-      i += 1;
-    }
-    while (k < paramb.gdb.size())
-    {
-      i = paramb.gdb.keyAt(k);
-      localObject1 = (String)paramb.gdb.get(i);
-      if (j != 0) {
-        localStringBuffer.append("|");
-      }
-      localStringBuffer.append(i);
-      localStringBuffer.append("|");
-      localStringBuffer.append(ty((String)localObject1));
-      j += 1;
-      k += 1;
-    }
-    if (paramb.gcS != null)
-    {
-      this.gcY.set(paramb.gcS, localStringBuffer.toString());
-      AppMethodBeat.o(150064);
-      return;
-    }
-    this.gcY.set(paramb.gda, localStringBuffer.toString());
-    AppMethodBeat.o(150064);
-  }
-  
-  final String aeF()
-  {
-    AppMethodBeat.i(150070);
-    String str = String.format("%d%04d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.gcX.nextInt(Math.abs(this.gcX.nextInt(2147483647))) % 10000) });
-    AppMethodBeat.o(150070);
-    return str;
-  }
-  
-  public final void b(ah.a parama, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(150082);
-    ac.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceKey %s, type %d, value %s", new Object[] { parama, Integer.valueOf(paramInt), paramString });
-    parama = c(parama, paramInt);
-    parama.value = paramString;
-    parama.type = paramInt;
-    parama.ddJ = aeF();
-    a(parama);
-    AppMethodBeat.o(150082);
-  }
-  
-  public final void d(ah.a parama1, ah.a parama2)
-  {
-    AppMethodBeat.i(150085);
-    ac.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, doWatch %s, watcherKey %s", new Object[] { parama1, parama2 });
-    a locala = f(parama1);
-    if (locala == null)
-    {
-      ac.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, dataSource == null");
-      AppMethodBeat.o(150085);
-      return;
-    }
-    b localb2 = g(parama2);
-    b localb1 = localb2;
-    if (localb2 == null)
-    {
-      ac.e("MicroMsg.NewBadgeDecoder", "[carl] doWatch, watcher == null, do some fix");
-      localb1 = e(parama2);
-      this.gcW.put(parama2, localb1);
-    }
-    localb1.gdc.put(parama1.name(), locala.ddJ);
-    a(localb1);
-    AppMethodBeat.o(150085);
-  }
-  
-  public final a f(ah.a parama)
-  {
-    AppMethodBeat.i(150078);
-    a locala2 = (a)this.gcU.get(parama);
-    a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala2 = c(parama);
-      locala1 = locala2;
-      if (locala2 != null)
-      {
-        this.gcU.put(parama, locala2);
-        locala1 = locala2;
+        if (this.gtp.gto.size() > 0)
+        {
+          localObject2 = c.hoP;
+          int i = this.gtp.gtk;
+          int j = this.gtp.gtm;
+          int k = this.gtp.gtn;
+          localObject2 = new int[1];
+          GLES30.glGenFramebuffers(1, (int[])localObject2, 0);
+          GLES30.glBindFramebuffer(36160, localObject2[0]);
+          GLES30.glFramebufferTexture2D(36160, 36064, 3553, i, 0);
+          ByteBuffer localByteBuffer = ByteBuffer.allocate(j * k * 4);
+          GLES30.glReadPixels(0, 0, j, k, 6408, 5121, (Buffer)localByteBuffer);
+          Bitmap localBitmap = Bitmap.createBitmap(j, k, Bitmap.Config.ARGB_8888);
+          localBitmap.copyPixelsFromBuffer((Buffer)localByteBuffer);
+          GLES30.glBindFramebuffer(36160, 0);
+          GLES30.glDeleteFramebuffers(1, (int[])localObject2, 0);
+          p.g(localBitmap, "bitmap");
+          ((d.g.a.b)this.gtp.gto.remove(0)).invoke(localBitmap);
+        }
+        Object localObject2 = z.MKo;
+        ??? = c.hoP;
+        c.a.a(this.gtp.agI().hoQ, this.gtp.agI().eglSurface);
+        AppMethodBeat.o(163158);
+        return;
+        localObject3 = finally;
+        AppMethodBeat.o(163158);
+        throw localObject3;
       }
     }
-    AppMethodBeat.o(150078);
-    return locala1;
   }
   
-  public final void g(int paramInt1, int paramInt2, String paramString)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
   {
-    AppMethodBeat.i(150081);
-    ac.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceId %d, type %d, value %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    a locala = cJ(paramInt1, paramInt2);
-    locala.value = paramString;
-    locala.type = paramInt2;
-    locala.ddJ = aeF();
-    a(locala);
-    AppMethodBeat.o(150081);
-  }
-  
-  final b lV(int paramInt)
-  {
-    AppMethodBeat.i(150071);
-    b localb = new b();
-    localb.gda = paramInt;
-    AppMethodBeat.o(150071);
-    return localb;
-  }
-  
-  public final a lW(int paramInt)
-  {
-    AppMethodBeat.i(150077);
-    a locala2 = (a)this.gcT.get(paramInt);
-    a locala1 = locala2;
-    if (locala2 == null)
-    {
-      locala2 = lT(paramInt);
-      locala1 = locala2;
-      if (locala2 != null)
-      {
-        this.gcT.put(paramInt, locala2);
-        locala1 = locala2;
-      }
-    }
-    AppMethodBeat.o(150077);
-    return locala1;
-  }
-  
-  final b lX(int paramInt)
-  {
-    AppMethodBeat.i(150079);
-    b localb2 = (b)this.gcV.get(paramInt);
-    b localb1 = localb2;
-    if (localb2 == null)
-    {
-      localb1 = lU(paramInt);
-      if (localb1 == null)
-      {
-        ac.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
-        AppMethodBeat.o(150079);
-        return null;
-      }
-      this.gcV.put(paramInt, localb1);
-    }
-    AppMethodBeat.o(150079);
-    return localb1;
-  }
-  
-  public final class a
-  {
-    String ddJ;
-    int gcP;
-    ah.a gcQ;
-    int type;
-    public String value;
+    b(b paramb) {}
     
-    public a() {}
+    public final void run()
+    {
+      AppMethodBeat.i(163159);
+      ad.i(this.gtp.TAG, "initGL");
+      Object localObject1 = this.gtp;
+      Object localObject2 = d.gW("FilterRenderCallbackHandlerThread", 5);
+      p.g(localObject2, "SpecialThreadFactory.cre…d\", Thread.NORM_PRIORITY)");
+      p.h(localObject2, "<set-?>");
+      ((b)localObject1).gtf = ((HandlerThread)localObject2);
+      this.gtp.agH().start();
+      localObject1 = this.gtp;
+      localObject2 = new Handler(this.gtp.agH().getLooper());
+      p.h(localObject2, "<set-?>");
+      ((b)localObject1).callbackHandler = ((Handler)localObject2);
+      localObject1 = this.gtp;
+      localObject2 = ImageReader.newInstance(this.gtp.gtm, this.gtp.gtn, 1, 3);
+      p.g(localObject2, "ImageReader.newInstance(…PixelFormat.RGBA_8888, 3)");
+      p.h(localObject2, "<set-?>");
+      ((b)localObject1).gtg = ((ImageReader)localObject2);
+      localObject1 = this.gtp.gtg;
+      if (localObject1 == null) {
+        p.bcb("imageReader");
+      }
+      localObject2 = (ImageReader.OnImageAvailableListener)new ImageReader.OnImageAvailableListener()
+      {
+        public final void onImageAvailable(ImageReader paramAnonymousImageReader) {}
+      };
+      Handler localHandler = this.gtp.callbackHandler;
+      if (localHandler == null) {
+        p.bcb("callbackHandler");
+      }
+      ((ImageReader)localObject1).setOnImageAvailableListener((ImageReader.OnImageAvailableListener)localObject2, localHandler);
+      localObject1 = this.gtp;
+      localObject2 = c.hoP;
+      localObject2 = ((b)localObject1).gtg;
+      if (localObject2 == null) {
+        p.bcb("imageReader");
+      }
+      ((b)localObject1).gth = c.a.a(((ImageReader)localObject2).getSurface(), 0, 0, null, 16);
+      localObject2 = ((b)localObject1).gtl;
+      if (localObject2 != null) {
+        ((com.tencent.mm.plugin.xlabeffect.b)localObject2).destroy();
+      }
+      ((b)localObject1).gtl = new com.tencent.mm.plugin.xlabeffect.b(((b)localObject1).gtm, ((b)localObject1).gtn, 1, 8);
+      localObject2 = ((b)localObject1).gtl;
+      if (localObject2 != null) {
+        ((com.tencent.mm.plugin.xlabeffect.b)localObject2).vB(false);
+      }
+      localObject2 = c.hoP;
+      ((b)localObject1).gtj = c.a.auh();
+      localObject2 = c.hoP;
+      ((b)localObject1).gtk = c.a.auh();
+      localObject2 = c.hoP;
+      localObject2 = ((b)localObject1).gti;
+      if (localObject2 == null) {
+        p.bcb("inputBitmap");
+      }
+      c.a.b((Bitmap)localObject2, ((b)localObject1).gtj);
+      int i = ((b)localObject1).gtk;
+      int j = ((b)localObject1).gtm;
+      int k = ((b)localObject1).gtn;
+      GLES20.glBindTexture(3553, i);
+      GLES20.glTexImage2D(3553, 0, 6408, j, k, 0, 6408, 5121, null);
+      GLES20.glBindTexture(3553, 0);
+      AppMethodBeat.o(163159);
+    }
   }
   
-  public final class b
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
   {
-    ah.a gcS;
-    int gda;
-    SparseArray<String> gdb;
-    HashMap<String, String> gdc;
+    c(b paramb) {}
     
-    public b()
+    public final void run()
     {
-      AppMethodBeat.i(150059);
-      this.gdb = new SparseArray();
-      this.gdc = new HashMap();
-      AppMethodBeat.o(150059);
+      AppMethodBeat.i(163160);
+      Object localObject = c.hoP;
+      c.a.a(this.gtp.agI());
+      this.gtp.handlerThread.quit();
+      this.gtp.agH().quit();
+      localObject = this.gtp.gtl;
+      if (localObject != null) {
+        ((com.tencent.mm.plugin.xlabeffect.b)localObject).destroy();
+      }
+      this.gtp.gtl = null;
+      AppMethodBeat.o(163160);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.y.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import java.util.Map;
 public final class a
   implements g
 {
-  private static final Charset bHq;
+  private static final Charset bRE;
   
   static
   {
     AppMethodBeat.i(12256);
-    bHq = Charset.forName("ISO-8859-1");
+    bRE = Charset.forName("ISO-8859-1");
     AppMethodBeat.o(12256);
   }
   
   private static b a(com.google.c.a.a.a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12255);
-    parama = parama.bHu;
+    parama = parama.bRI;
     if (parama == null)
     {
       parama = new IllegalStateException();
@@ -43,7 +43,7 @@ public final class a
       int j = 0;
       while (j < m)
       {
-        if (parama.bG(j, paramInt1)) {
+        if (parama.bI(j, paramInt1)) {
           localb.p(i, paramInt2, i1, i1);
         }
         j += 1;
@@ -59,7 +59,7 @@ public final class a
   public final b a(String paramString, com.google.c.a parama, int paramInt1, int paramInt2, Map<com.google.c.c, ?> paramMap)
   {
     AppMethodBeat.i(12254);
-    Charset localCharset1 = bHq;
+    Charset localCharset1 = bRE;
     int i = 33;
     int m = 0;
     Charset localCharset2 = localCharset1;
@@ -67,23 +67,23 @@ public final class a
     int k = m;
     if (paramMap != null)
     {
-      if (paramMap.containsKey(com.google.c.c.bHb)) {
-        localCharset1 = Charset.forName(paramMap.get(com.google.c.c.bHb).toString());
+      if (paramMap.containsKey(com.google.c.c.bRp)) {
+        localCharset1 = Charset.forName(paramMap.get(com.google.c.c.bRp).toString());
       }
-      if (paramMap.containsKey(com.google.c.c.bHa)) {
-        i = Integer.parseInt(paramMap.get(com.google.c.c.bHa).toString());
+      if (paramMap.containsKey(com.google.c.c.bRo)) {
+        i = Integer.parseInt(paramMap.get(com.google.c.c.bRo).toString());
       }
       localCharset2 = localCharset1;
       j = i;
       k = m;
-      if (paramMap.containsKey(com.google.c.c.bHj))
+      if (paramMap.containsKey(com.google.c.c.bRx))
       {
-        k = Integer.parseInt(paramMap.get(com.google.c.c.bHj).toString());
+        k = Integer.parseInt(paramMap.get(com.google.c.c.bRx).toString());
         j = i;
         localCharset2 = localCharset1;
       }
     }
-    if (parama != com.google.c.a.bGI)
+    if (parama != com.google.c.a.bQW)
     {
       paramString = new IllegalArgumentException("Can only encode AZTEC, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12254);

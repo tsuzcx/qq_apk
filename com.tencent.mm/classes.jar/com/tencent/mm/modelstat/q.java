@@ -1,32 +1,32 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.d;
+import com.tencent.mm.al.e.d;
 import com.tencent.mm.cn.c;
 import com.tencent.mm.cn.h;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.model.ar.e;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.as.e;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.model.t;
 import com.tencent.mm.network.aa;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class q
-  implements aw
+  implements ax
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.network.n hBi;
-  private l hXO;
-  private h<m> hXP;
-  private aa hXQ;
-  private h<g> hXR;
+  private com.tencent.mm.network.n hTD;
+  private l irj;
+  private h<m> irk;
+  private aa irl;
+  private h<g> irm;
   
   static
   {
@@ -46,11 +46,11 @@ public class q
   public q()
   {
     AppMethodBeat.i(151136);
-    this.hXO = new l();
-    this.hXP = new h(new c() {});
-    this.hXQ = new aa();
-    this.hXR = new h(new c() {});
-    this.hBi = new n.a()
+    this.irj = new l();
+    this.irk = new h(new c() {});
+    this.irl = new aa();
+    this.irm = new h(new c() {});
+    this.hTD = new n.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -60,17 +60,17 @@ public class q
           AppMethodBeat.o(151134);
           return;
         }
-        com.tencent.mm.kernel.g.agU().m(new Runnable()
+        com.tencent.mm.kernel.g.ajF().n(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(151132);
-            if (!com.tencent.mm.kernel.g.agP().afY())
+            if (!com.tencent.mm.kernel.g.ajA().aiK())
             {
               AppMethodBeat.o(151132);
               return;
             }
-            q.aIE().aIx();
+            q.aLO().aLH();
             AppMethodBeat.o(151132);
           }
           
@@ -82,7 +82,7 @@ public class q
             return str;
           }
         }, 3000L);
-        ac.d("MicroMsg.SubCoreStat", "NetTypeReporter st:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        ad.d("MicroMsg.SubCoreStat", "NetTypeReporter st:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         o.run(2);
         AppMethodBeat.o(151134);
       }
@@ -90,16 +90,16 @@ public class q
     AppMethodBeat.o(151136);
   }
   
-  public static g aIE()
+  public static g aLO()
   {
     AppMethodBeat.i(151137);
-    com.tencent.mm.kernel.g.agP().afT();
-    g localg = (g)aIF().hXR.get();
+    com.tencent.mm.kernel.g.ajA().aiF();
+    g localg = (g)aLP().irm.get();
     AppMethodBeat.o(151137);
     return localg;
   }
   
-  private static q aIF()
+  private static q aLP()
   {
     AppMethodBeat.i(151138);
     q localq = (q)t.ap(q.class);
@@ -107,11 +107,11 @@ public class q
     return localq;
   }
   
-  public static m aIG()
+  public static m aLQ()
   {
     AppMethodBeat.i(151139);
-    com.tencent.mm.kernel.g.agP().afT();
-    m localm = (m)aIF().hXP.get();
+    com.tencent.mm.kernel.g.ajA().aiF();
+    m localm = (m)aLP().irk.get();
     AppMethodBeat.o(151139);
     return localm;
   }
@@ -122,9 +122,9 @@ public class q
     if (parame == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bs.eWi() });
+      ad.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bt.flS() });
       if (parame != null) {
-        parame.a(aIF().hXO);
+        parame.a(aLP().irj);
       }
       AppMethodBeat.o(151140);
       return;
@@ -137,9 +137,9 @@ public class q
     if (parame == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bs.eWi() });
+      ad.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bt.flS() });
       if (parame != null) {
-        parame.a(aIF().hXQ);
+        parame.a(aLP().irl);
       }
       AppMethodBeat.o(151141);
       return;
@@ -156,14 +156,14 @@ public class q
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(151143);
-    f.d.a(Integer.valueOf(9998), this.hXO);
-    com.tencent.mm.kernel.g.agQ().a(this.hBi);
-    com.tencent.mm.model.ar.a.hnx = new ar.e()
+    e.d.a(Integer.valueOf(9998), this.irj);
+    com.tencent.mm.kernel.g.ajB().a(this.hTD);
+    com.tencent.mm.model.as.a.hFP = new as.e()
     {
-      public final void cZ(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void db(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(151135);
-        ac.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(0), bs.eWi() });
+        ad.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(0), bt.flS() });
         n.y(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(151135);
       }
@@ -174,10 +174,10 @@ public class q
   public void onAccountRelease()
   {
     AppMethodBeat.i(151142);
-    com.tencent.mm.kernel.g.agQ().b(this.hBi);
-    f.d.b(Integer.valueOf(9998), this.hXO);
-    this.hXO = new l();
-    com.tencent.mm.model.ar.a.hnx = null;
+    com.tencent.mm.kernel.g.ajB().b(this.hTD);
+    e.d.b(Integer.valueOf(9998), this.irj);
+    this.irj = new l();
+    com.tencent.mm.model.as.a.hFP = null;
     AppMethodBeat.o(151142);
   }
   

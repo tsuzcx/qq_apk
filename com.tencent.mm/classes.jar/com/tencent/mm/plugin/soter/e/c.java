@@ -5,7 +5,7 @@ import com.tencent.mm.vending.c.a;
 public final class c
   implements a<Boolean, com.tencent.mm.vending.j.c<Boolean, Boolean>>
 {
-  private com.tencent.mm.vending.g.b izm = null;
+  private com.tencent.mm.vending.g.b iSv = null;
 }
 
 

@@ -4,9 +4,9 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class c
   extends j<CardInfo>
@@ -27,7 +27,7 @@ public final class c
     this.db = parame;
   }
   
-  public final CardInfo UF(String paramString)
+  public final CardInfo Yo(String paramString)
   {
     AppMethodBeat.i(112768);
     CardInfo localCardInfo = new CardInfo();
@@ -44,19 +44,19 @@ public final class c
   public final Cursor a(n.a parama)
   {
     AppMethodBeat.i(112767);
-    long l = bs.aNx();
+    long l = bt.aQJ();
     Object localObject = "update UserCardInfo set stickyIndex=0, stickyEndTime=0 where stickyIndex>0 and (" + l + ">stickyEndTime and stickyEndTime<>0)";
     this.db.execSQL("UserCardInfo", (String)localObject);
     localObject = new StringBuilder("select * from UserCardInfo");
-    switch (1.nVH[parama.ordinal()])
+    switch (c.1.ozc[parama.ordinal()])
     {
     }
     for (;;)
     {
       ((StringBuilder)localObject).append(" order by stickyIndex desc, status asc , updateTime desc");
-      if (parama == n.a.nWt)
+      if (parama == n.a.ozN)
       {
-        int i = ((Integer)g.agR().agA().get(ah.a.GFy, Integer.valueOf(3))).intValue();
+        int i = ((Integer)g.ajC().ajl().get(al.a.IrQ, Integer.valueOf(3))).intValue();
         ((StringBuilder)localObject).append(" LIMIT ").append(i);
       }
       parama = this.db.rawQuery(((StringBuilder)localObject).toString(), null);
@@ -77,16 +77,16 @@ public final class c
   }
   
   /* Error */
-  public final java.util.List<CardInfo> bPY()
+  public final java.util.List<CardInfo> bUD()
   {
     // Byte code:
     //   0: ldc 173
-    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 49	com/tencent/mm/plugin/card/model/c:db	Lcom/tencent/mm/sdk/e/e;
+    //   6: getfield 47	com/tencent/mm/plugin/card/model/c:db	Lcom/tencent/mm/sdk/e/e;
     //   9: ldc 175
     //   11: iconst_1
-    //   12: anewarray 22	java/lang/String
+    //   12: anewarray 20	java/lang/String
     //   15: dup
     //   16: iconst_0
     //   17: ldc 177
@@ -97,9 +97,9 @@ public final class c
     //   27: ifnonnull +17 -> 44
     //   30: ldc 179
     //   32: ldc 181
-    //   34: invokestatic 187	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: invokestatic 187	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   37: ldc 173
-    //   39: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   39: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: aconst_null
     //   43: areturn
     //   44: new 189	java/util/ArrayList
@@ -109,9 +109,9 @@ public final class c
     //   52: aload_1
     //   53: invokeinterface 196 1 0
     //   58: ifeq +59 -> 117
-    //   61: new 24	com/tencent/mm/plugin/card/model/CardInfo
+    //   61: new 22	com/tencent/mm/plugin/card/model/CardInfo
     //   64: dup
-    //   65: invokespecial 54	com/tencent/mm/plugin/card/model/CardInfo:<init>	()V
+    //   65: invokespecial 52	com/tencent/mm/plugin/card/model/CardInfo:<init>	()V
     //   68: astore_3
     //   69: aload_3
     //   70: aload_1
@@ -131,11 +131,11 @@ public final class c
     //   96: aload_3
     //   97: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   100: aastore
-    //   101: invokestatic 216	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   101: invokestatic 216	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   104: aload_1
     //   105: invokeinterface 219 1 0
     //   110: ldc 173
-    //   112: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   112: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   115: aload_2
     //   116: areturn
     //   117: aload_1
@@ -145,7 +145,7 @@ public final class c
     //   127: aload_1
     //   128: invokeinterface 219 1 0
     //   133: ldc 173
-    //   135: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: aload_2
     //   139: athrow
     // Local variable table:
@@ -165,7 +165,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.c
  * JD-Core Version:    0.7.0.1
  */

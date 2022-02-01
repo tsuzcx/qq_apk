@@ -1,54 +1,12 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a.a;
-import d.d.a.b;
-import d.d.d;
-import d.d.e;
-import d.d.f;
-import d.d.f.c;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"delay", "Lkotlinx/coroutines/Delay;", "Lkotlin/coroutines/CoroutineContext;", "getDelay", "(Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/Delay;", "", "timeMillis", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class as
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/Delay;", "", "delay", "", "time", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "kotlinx-coroutines-core"})
+public abstract interface as
 {
-  public static final Object b(long paramLong, d<? super y> paramd)
-  {
-    AppMethodBeat.i(118246);
-    if (paramLong <= 0L)
-    {
-      paramd = y.KTp;
-      AppMethodBeat.o(118246);
-      return paramd;
-    }
-    Object localObject = new k(b.d(paramd));
-    j localj = (j)localObject;
-    c(localj.fOf()).a(paramLong, localj);
-    localObject = ((k)localObject).getResult();
-    if (localObject == a.KUd) {
-      d.g.b.k.h(paramd, "frame");
-    }
-    AppMethodBeat.o(118246);
-    return localObject;
-  }
-  
-  private static ar c(f paramf)
-  {
-    AppMethodBeat.i(118247);
-    Object localObject = paramf.get((f.c)e.KTW);
-    paramf = (f)localObject;
-    if (!(localObject instanceof ar)) {
-      paramf = null;
-    }
-    localObject = (ar)paramf;
-    paramf = (f)localObject;
-    if (localObject == null) {
-      paramf = ao.gdK();
-    }
-    AppMethodBeat.o(118247);
-    return paramf;
-  }
+  public abstract void a(long paramLong, k<? super z> paramk);
 }
 
 

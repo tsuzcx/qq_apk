@@ -2,44 +2,44 @@ package com.tencent.mm.audio.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.m.e;
+import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class g
 {
-  public static final String cWw;
-  public static final String cWx;
+  public static final String dhM;
+  public static final String dhN;
   
   static
   {
     AppMethodBeat.i(130009);
-    cWw = b.aph() + "test.wav";
-    cWx = b.aph() + "test.pcm";
+    dhM = b.arU() + "test.wav";
+    dhN = b.arU() + "test.pcm";
     AppMethodBeat.o(130009);
   }
   
-  public static int x(String paramString, int paramInt)
+  public static int z(String paramString, int paramInt)
   {
     AppMethodBeat.i(130008);
     try
     {
-      int i = bs.getInt(((a)com.tencent.mm.kernel.g.ab(a.class)).ZY().getValue(paramString), paramInt);
+      int i = bt.getInt(((a)com.tencent.mm.kernel.g.ab(a.class)).acA().getValue(paramString), paramInt);
       paramInt = i;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.e("MicroMsg.RecorderUtil", "getIntValFromDynamicConfig parseInt failed, key: ".concat(String.valueOf(paramString)));
+        ad.e("MicroMsg.RecorderUtil", "getIntValFromDynamicConfig parseInt failed, key: ".concat(String.valueOf(paramString)));
       }
     }
     catch (Error localError)
     {
       for (;;)
       {
-        ac.e("MicroMsg.RecorderUtil", "error on parseInt failed, key: ".concat(String.valueOf(paramString)));
+        ad.e("MicroMsg.RecorderUtil", "error on parseInt failed, key: ".concat(String.valueOf(paramString)));
       }
     }
     AppMethodBeat.o(130008);

@@ -62,7 +62,7 @@ public final class MpscLinkedQueue<E>
     b localb = (b)((b)localObject).get();
     if (localb != null)
     {
-      localObject = localb.ggF();
+      localObject = localb.gzj();
       spConsumerNode(localb);
       AppMethodBeat.o(90149);
       return localObject;
@@ -73,7 +73,7 @@ public final class MpscLinkedQueue<E>
       {
         localb = (b)((b)localObject).get();
       } while (localb == null);
-      localObject = localb.ggF();
+      localObject = localb.gzj();
       this.consumerNode = localb;
       AppMethodBeat.o(90149);
       return localObject;

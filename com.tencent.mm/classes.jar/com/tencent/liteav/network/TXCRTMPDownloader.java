@@ -9,7 +9,7 @@ import android.os.Message;
 import com.tencent.liteav.basic.c.a;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Vector;
 
@@ -65,9 +65,9 @@ public class TXCRTMPDownloader
       AppMethodBeat.o(15474);
       return;
     }
-    if ((this.mIsPlayRtmpAccStream) && (this.mLastNetworkType != d.e(this.mApplicationContext)))
+    if ((this.mIsPlayRtmpAccStream) && (this.mLastNetworkType != f.e(this.mApplicationContext)))
     {
-      this.mLastNetworkType = d.e(this.mApplicationContext);
+      this.mLastNetworkType = f.e(this.mApplicationContext);
       if (this.mRestartListener != null) {
         this.mRestartListener.onRestartDownloader();
       }

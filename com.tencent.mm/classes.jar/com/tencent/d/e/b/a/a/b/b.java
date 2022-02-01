@@ -5,7 +5,7 @@ import java.util.Locale;
 
 public final class b
 {
-  public static byte[] Vp(String paramString)
+  public static byte[] YY(String paramString)
   {
     AppMethodBeat.i(138450);
     int j = paramString.length() / 2;
@@ -20,7 +20,7 @@ public final class b
     return arrayOfByte;
   }
   
-  public static String cG(byte[] paramArrayOfByte)
+  public static String cN(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(138449);
     StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length);

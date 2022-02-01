@@ -8,25 +8,34 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactListCustomPreference
   extends Preference
 {
-  private final View.OnTouchListener DrF;
+  private final View.OnTouchListener EWJ;
   int background;
-  View.OnClickListener iu;
-  private View tk;
+  View.OnClickListener km;
+  private View vd;
   
   public ContactListCustomPreference(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(152207);
     this.background = -1;
-    this.DrF = new View.OnTouchListener()
+    this.EWJ = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
+        AppMethodBeat.i(214481);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.a(true, this, "com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(214481);
         return true;
       }
     };
@@ -39,10 +48,17 @@ public class ContactListCustomPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(152208);
     this.background = -1;
-    this.DrF = new View.OnTouchListener()
+    this.EWJ = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
+        AppMethodBeat.i(214481);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.a(true, this, "com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(214481);
         return true;
       }
     };
@@ -55,10 +71,17 @@ public class ContactListCustomPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(152209);
     this.background = -1;
-    this.DrF = new View.OnTouchListener()
+    this.EWJ = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
+        AppMethodBeat.i(214481);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        a.a(true, this, "com/tencent/mm/pluginsdk/ui/applet/ContactListCustomPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(214481);
         return true;
       }
     };
@@ -70,17 +93,17 @@ public class ContactListCustomPreference
   {
     AppMethodBeat.i(152210);
     ViewGroup localViewGroup = (ViewGroup)paramView;
-    if ((this.tk != null) && (this.tk != null))
+    if ((this.vd != null) && (this.vd != null))
     {
       localViewGroup.removeAllViews();
-      if (this.tk.getParent() != null) {
-        ((ViewGroup)this.tk.getParent()).removeAllViews();
+      if (this.vd.getParent() != null) {
+        ((ViewGroup)this.vd.getParent()).removeAllViews();
       }
-      localViewGroup.addView(this.tk);
-      if (this.iu == null) {
+      localViewGroup.addView(this.vd);
+      if (this.km == null) {
         break label95;
       }
-      localViewGroup.setOnClickListener(this.iu);
+      localViewGroup.setOnClickListener(this.km);
     }
     for (;;)
     {
@@ -90,7 +113,7 @@ public class ContactListCustomPreference
       AppMethodBeat.o(152210);
       return;
       label95:
-      localViewGroup.setOnTouchListener(this.DrF);
+      localViewGroup.setOnTouchListener(this.EWJ);
     }
   }
   
@@ -99,12 +122,12 @@ public class ContactListCustomPreference
     if (paramView == null) {
       return;
     }
-    this.tk = paramView;
+    this.vd = paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.ContactListCustomPreference
  * JD-Core Version:    0.7.0.1
  */

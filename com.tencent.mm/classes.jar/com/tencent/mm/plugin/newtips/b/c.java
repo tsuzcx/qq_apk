@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.newtips.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ee;
-import com.tencent.mm.protocal.protobuf.dhq;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.protocal.protobuf.dnf;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public final class c
-  extends ee
+  extends eo
 {
   protected static c.a info;
   
@@ -18,83 +18,83 @@ public final class c
   {
     AppMethodBeat.i(127270);
     c.a locala = new c.a();
-    locala.GvF = new Field[19];
+    locala.IhA = new Field[19];
     locala.columns = new String[20];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "uniqueId";
-    locala.GvH.put("uniqueId", "TEXT");
+    locala.IhC.put("uniqueId", "TEXT");
     localStringBuilder.append(" uniqueId TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "path";
-    locala.GvH.put("path", "INTEGER");
+    locala.IhC.put("path", "INTEGER");
     localStringBuilder.append(" path INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "showType";
-    locala.GvH.put("showType", "INTEGER");
+    locala.IhC.put("showType", "INTEGER");
     localStringBuilder.append(" showType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "title";
-    locala.GvH.put("title", "TEXT");
+    locala.IhC.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "icon_url";
-    locala.GvH.put("icon_url", "TEXT");
+    locala.IhC.put("icon_url", "TEXT");
     localStringBuilder.append(" icon_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "parents";
-    locala.GvH.put("parents", "BLOB");
+    locala.IhC.put("parents", "BLOB");
     localStringBuilder.append(" parents BLOB");
     localStringBuilder.append(", ");
     locala.columns[6] = "tipId";
-    locala.GvH.put("tipId", "INTEGER");
+    locala.IhC.put("tipId", "INTEGER");
     localStringBuilder.append(" tipId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "priority";
-    locala.GvH.put("priority", "INTEGER");
+    locala.IhC.put("priority", "INTEGER");
     localStringBuilder.append(" priority INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "tipType";
-    locala.GvH.put("tipType", "INTEGER");
+    locala.IhC.put("tipType", "INTEGER");
     localStringBuilder.append(" tipType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "beginShowTime";
-    locala.GvH.put("beginShowTime", "LONG");
+    locala.IhC.put("beginShowTime", "LONG");
     localStringBuilder.append(" beginShowTime LONG");
     localStringBuilder.append(", ");
     locala.columns[10] = "exposureTime";
-    locala.GvH.put("exposureTime", "LONG");
+    locala.IhC.put("exposureTime", "LONG");
     localStringBuilder.append(" exposureTime LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "overdueTime";
-    locala.GvH.put("overdueTime", "LONG");
+    locala.IhC.put("overdueTime", "LONG");
     localStringBuilder.append(" overdueTime LONG");
     localStringBuilder.append(", ");
     locala.columns[12] = "disappearTime";
-    locala.GvH.put("disappearTime", "LONG");
+    locala.IhC.put("disappearTime", "LONG");
     localStringBuilder.append(" disappearTime LONG");
     localStringBuilder.append(", ");
     locala.columns[13] = "exposureDisappearTime";
-    locala.GvH.put("exposureDisappearTime", "LONG");
+    locala.IhC.put("exposureDisappearTime", "LONG");
     localStringBuilder.append(" exposureDisappearTime LONG");
     localStringBuilder.append(", ");
     locala.columns[14] = "minClientVersion";
-    locala.GvH.put("minClientVersion", "INTEGER");
+    locala.IhC.put("minClientVersion", "INTEGER");
     localStringBuilder.append(" minClientVersion INTEGER");
     localStringBuilder.append(", ");
     locala.columns[15] = "maxClientVersion";
-    locala.GvH.put("maxClientVersion", "INTEGER");
+    locala.IhC.put("maxClientVersion", "INTEGER");
     localStringBuilder.append(" maxClientVersion INTEGER");
     localStringBuilder.append(", ");
     locala.columns[16] = "extInfo";
-    locala.GvH.put("extInfo", "TEXT");
+    locala.IhC.put("extInfo", "TEXT");
     localStringBuilder.append(" extInfo TEXT");
     localStringBuilder.append(", ");
     locala.columns[17] = "state";
-    locala.GvH.put("state", "INTEGER default '0' ");
+    locala.IhC.put("state", "INTEGER default '0' ");
     localStringBuilder.append(" state INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "dynamicPath";
-    locala.GvH.put("dynamicPath", "TEXT");
+    locala.IhC.put("dynamicPath", "TEXT");
     localStringBuilder.append(" dynamicPath TEXT");
     locala.columns[19] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -131,13 +131,13 @@ public final class c
     if (this.field_parents != null)
     {
       localObject1 = localObject2;
-      if (this.field_parents.fBS != null)
+      if (this.field_parents.fVg != null)
       {
         localObject1 = localObject2;
-        if (this.field_parents.fBS.size() > 0)
+        if (this.field_parents.fVg.size() > 0)
         {
           localObject1 = new StringBuilder();
-          localObject2 = this.field_parents.fBS.iterator();
+          localObject2 = this.field_parents.fVg.iterator();
           while (((Iterator)localObject2).hasNext()) {
             ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next()).append(",");
           }
@@ -152,7 +152,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import java.util.List;
 
 public final class b
 {
-  private final List<f> aDQ;
+  private final List<f> aFH;
   
   public b()
   {
     AppMethodBeat.i(77601);
-    this.aDQ = new ArrayList();
+    this.aFH = new ArrayList();
     AppMethodBeat.o(77601);
   }
   
@@ -21,7 +21,7 @@ public final class b
     try
     {
       AppMethodBeat.i(77602);
-      this.aDQ.add(paramf);
+      this.aFH.add(paramf);
       AppMethodBeat.o(77602);
       return;
     }
@@ -32,11 +32,11 @@ public final class b
     }
   }
   
-  public final List<f> py()
+  public final List<f> pQ()
   {
     try
     {
-      List localList = this.aDQ;
+      List localList = this.aFH;
       return localList;
     }
     finally

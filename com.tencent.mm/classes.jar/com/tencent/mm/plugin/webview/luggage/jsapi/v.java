@@ -1,81 +1,51 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.e;
-import com.tencent.luggage.d.n;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ax;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONObject;
 
 public class v
-  extends bn<n>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<n>.a parama)
+  public final void b(final com.tencent.luggage.d.b<g>.a paramb)
   {
-    AppMethodBeat.i(78558);
-    ac.i("MicroMsg.JsApiGetNetworkType", "invoke");
-    if (!ax.isConnected(((n)parama.bWR).mContext))
+    AppMethodBeat.i(207906);
+    String str = paramb.chh.cgn.optString("localId");
+    if (bt.isNullOrNil(str))
     {
-      ac.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, not connected");
-      parama.a("network_type:fail", null);
-      AppMethodBeat.o(78558);
+      ad.e("MicroMsg.JsApiGetLocalImgData", "localId is nil");
+      paramb.a("invaild_localid", null);
+      AppMethodBeat.o(207906);
       return;
     }
-    ac.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, type = ".concat(String.valueOf(ax.getNetType(((n)parama.bWR).mContext))));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("simtype", (IPCInteger)h.a("com.tencent.mm", null, a.class));
-    if (ax.isWifi(((n)parama.bWR).mContext))
-    {
-      ac.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, wifi");
-      parama.c("network_type:wifi", localHashMap);
-      AppMethodBeat.o(78558);
-      return;
-    }
-    if (ax.is2G(((n)parama.bWR).mContext))
-    {
-      ac.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 2g");
-      localHashMap.put("subtype", "2g");
-    }
-    for (;;)
-    {
-      parama.c("network_type:wwan", localHashMap);
-      AppMethodBeat.o(78558);
-      return;
-      if (ax.is3G(((n)parama.bWR).mContext))
-      {
-        ac.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 3g");
-        localHashMap.put("subtype", "3g");
-      }
-      else if (ax.is4G(((n)parama.bWR).mContext))
-      {
-        ac.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 4g");
-        localHashMap.put("subtype", "4g");
-      }
-    }
+    IPCString localIPCString = new IPCString();
+    localIPCString.value = str;
+    h.a("com.tencent.mm", localIPCString, a.class, new d() {});
+    AppMethodBeat.o(207906);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "getNetworkType";
+    return "getLocalImgData";
   }
   
   static class a
-    implements k<IPCVoid, IPCInteger>
+    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCString>
   {}
 }
 

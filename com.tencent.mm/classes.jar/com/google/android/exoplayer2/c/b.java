@@ -9,21 +9,21 @@ import java.util.Arrays;
 public final class b
   implements f
 {
-  private static final byte[] aXr = new byte[4096];
-  private final g aXs;
-  private final long aXt;
-  private byte[] aXu;
-  private int aXv;
-  private int aXw;
+  private static final byte[] bhM = new byte[4096];
+  private final g bhN;
+  private final long bhO;
+  private byte[] bhP;
+  private int bhQ;
+  private int bhR;
   private long position;
   
   public b(g paramg, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(91957);
-    this.aXs = paramg;
+    this.bhN = paramg;
     this.position = paramLong1;
-    this.aXt = paramLong2;
-    this.aXu = new byte[65536];
+    this.bhO = paramLong2;
+    this.bhP = new byte[65536];
     AppMethodBeat.o(91957);
   }
   
@@ -36,7 +36,7 @@ public final class b
       AppMethodBeat.o(91971);
       throw paramArrayOfByte;
     }
-    paramInt1 = this.aXs.read(paramArrayOfByte, paramInt1 + paramInt3, paramInt2 - paramInt3);
+    paramInt1 = this.bhN.read(paramArrayOfByte, paramInt1 + paramInt3, paramInt2 - paramInt3);
     if (paramInt1 == -1)
     {
       if ((paramInt3 == 0) && (paramBoolean))
@@ -55,54 +55,54 @@ public final class b
   private int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91969);
-    if (this.aXw == 0)
+    if (this.bhR == 0)
     {
       AppMethodBeat.o(91969);
       return 0;
     }
-    paramInt2 = Math.min(this.aXw, paramInt2);
-    System.arraycopy(this.aXu, 0, paramArrayOfByte, paramInt1, paramInt2);
-    dU(paramInt2);
+    paramInt2 = Math.min(this.bhR, paramInt2);
+    System.arraycopy(this.bhP, 0, paramArrayOfByte, paramInt1, paramInt2);
+    dY(paramInt2);
     AppMethodBeat.o(91969);
     return paramInt2;
   }
   
-  private void dS(int paramInt)
+  private void dW(int paramInt)
   {
     AppMethodBeat.i(91967);
-    paramInt = this.aXv + paramInt;
-    if (paramInt > this.aXu.length)
+    paramInt = this.bhQ + paramInt;
+    if (paramInt > this.bhP.length)
     {
-      paramInt = x.v(this.aXu.length * 2, 65536 + paramInt, paramInt + 524288);
-      this.aXu = Arrays.copyOf(this.aXu, paramInt);
+      paramInt = x.v(this.bhP.length * 2, 65536 + paramInt, paramInt + 524288);
+      this.bhP = Arrays.copyOf(this.bhP, paramInt);
     }
     AppMethodBeat.o(91967);
   }
   
-  private int dT(int paramInt)
+  private int dX(int paramInt)
   {
     AppMethodBeat.i(91968);
-    paramInt = Math.min(this.aXw, paramInt);
-    dU(paramInt);
+    paramInt = Math.min(this.bhR, paramInt);
+    dY(paramInt);
     AppMethodBeat.o(91968);
     return paramInt;
   }
   
-  private void dU(int paramInt)
+  private void dY(int paramInt)
   {
     AppMethodBeat.i(91970);
-    this.aXw -= paramInt;
-    this.aXv = 0;
-    byte[] arrayOfByte = this.aXu;
-    if (this.aXw < this.aXu.length - 524288) {
-      arrayOfByte = new byte[this.aXw + 65536];
+    this.bhR -= paramInt;
+    this.bhQ = 0;
+    byte[] arrayOfByte = this.bhP;
+    if (this.bhR < this.bhP.length - 524288) {
+      arrayOfByte = new byte[this.bhR + 65536];
     }
-    System.arraycopy(this.aXu, paramInt, arrayOfByte, 0, this.aXw);
-    this.aXu = arrayOfByte;
+    System.arraycopy(this.bhP, paramInt, arrayOfByte, 0, this.bhR);
+    this.bhP = arrayOfByte;
     AppMethodBeat.o(91970);
   }
   
-  private void dV(int paramInt)
+  private void dZ(int paramInt)
   {
     if (paramInt != -1) {
       this.position += paramInt;
@@ -112,11 +112,11 @@ public final class b
   private boolean m(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(91965);
-    dS(paramInt);
-    int i = Math.min(this.aXw - this.aXv, paramInt);
+    dW(paramInt);
+    int i = Math.min(this.bhR - this.bhQ, paramInt);
     while (i < paramInt)
     {
-      int j = a(this.aXu, this.aXv, paramInt, i, paramBoolean);
+      int j = a(this.bhP, this.bhQ, paramInt, i, paramBoolean);
       i = j;
       if (j == -1)
       {
@@ -124,8 +124,8 @@ public final class b
         return false;
       }
     }
-    this.aXv += paramInt;
-    this.aXw = Math.max(this.aXw, this.aXv);
+    this.bhQ += paramInt;
+    this.bhR = Math.max(this.bhR, this.bhQ);
     AppMethodBeat.o(91965);
     return true;
   }
@@ -134,7 +134,7 @@ public final class b
   {
     AppMethodBeat.i(91959);
     for (int i = c(paramArrayOfByte, paramInt1, paramInt2); (i < paramInt2) && (i != -1); i = a(paramArrayOfByte, paramInt1, paramInt2, i, paramBoolean)) {}
-    dV(i);
+    dZ(i);
     if (i != -1)
     {
       AppMethodBeat.o(91959);
@@ -159,33 +159,33 @@ public final class b
       AppMethodBeat.o(91963);
       return false;
     }
-    System.arraycopy(this.aXu, this.aXv - paramInt2, paramArrayOfByte, paramInt1, paramInt2);
+    System.arraycopy(this.bhP, this.bhQ - paramInt2, paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(91963);
     return true;
   }
   
-  public final int dP(int paramInt)
+  public final int dT(int paramInt)
   {
     AppMethodBeat.i(91961);
-    int j = dT(paramInt);
+    int j = dX(paramInt);
     int i = j;
     if (j == 0) {
-      i = a(aXr, 0, Math.min(paramInt, aXr.length), 0, true);
+      i = a(bhM, 0, Math.min(paramInt, bhM.length), 0, true);
     }
-    dV(i);
+    dZ(i);
     AppMethodBeat.o(91961);
     return i;
   }
   
-  public final void dQ(int paramInt)
+  public final void dU(int paramInt)
   {
     AppMethodBeat.i(91962);
-    for (int i = dT(paramInt); (i < paramInt) && (i != -1); i = a(aXr, -i, Math.min(paramInt, aXr.length + i), i, false)) {}
-    dV(i);
+    for (int i = dX(paramInt); (i < paramInt) && (i != -1); i = a(bhM, -i, Math.min(paramInt, bhM.length + i), i, false)) {}
+    dZ(i);
     AppMethodBeat.o(91962);
   }
   
-  public final void dR(int paramInt)
+  public final void dV(int paramInt)
   {
     AppMethodBeat.i(91966);
     m(paramInt, false);
@@ -194,7 +194,7 @@ public final class b
   
   public final long getLength()
   {
-    return this.aXt;
+    return this.bhO;
   }
   
   public final long getPosition()
@@ -210,7 +210,7 @@ public final class b
     if (j == 0) {
       i = a(paramArrayOfByte, paramInt1, paramInt2, 0, true);
     }
-    dV(i);
+    dZ(i);
     AppMethodBeat.o(91958);
     return i;
   }
@@ -222,14 +222,14 @@ public final class b
     AppMethodBeat.o(91960);
   }
   
-  public final void sR()
+  public final void uq()
   {
-    this.aXv = 0;
+    this.bhQ = 0;
   }
   
-  public final long sS()
+  public final long ur()
   {
-    return this.position + this.aXv;
+    return this.position + this.bhQ;
   }
 }
 

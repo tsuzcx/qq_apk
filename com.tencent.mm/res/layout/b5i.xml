@@ -2,21 +2,21 @@
 <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/c0b" android:background="@color/BW_97" android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip">
-        <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/ci" android:paddingTop="@dimen/c0" android:paddingRight="@dimen/ci" android:layout_width="144.0dip" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c00" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/bzm" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" />
-                <TextView android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/c0v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:singleLine="true" style="@style/hn" />
-            </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="144.0dip" android:layout_height="wrap_content">
             <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/c2g" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="96.0dip" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ci" android:scaleType="centerCrop" />
+                <ImageView android:id="@id/c2g" android:background="@color/BW_90" android:layout_width="@dimen/bz" android:layout_height="@dimen/bz" android:scaleType="centerCrop" />
                 <ImageView android:layout_gravity="center|right|top" android:id="@id/c0k" android:visibility="gone" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci" />
             </FrameLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c00" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci">
+                <ImageView android:id="@id/bzm" android:layout_width="14.0dip" android:layout_height="14.0dip" />
+                <TextView android:textSize="@dimen/bj" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/c0v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:singleLine="true" />
+            </LinearLayout>
             <TextView android:textSize="@dimen/ed" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/c2f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="84.0dip" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/c5" />
-            <TextView android:textSize="@dimen/ed" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/c03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" android:maxLines="2" />
-            <View android:background="@color/i_" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="@dimen/bq" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/amf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bq">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/amo" android:layout_width="13.0dip" android:layout_height="13.0dip" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange" />
-                <TextView android:textSize="@dimen/jv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:text="@string/cdx" style="@style/hn" />
+            <TextView android:textSize="@dimen/bj" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/c03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/bq" android:layout_marginRight="@dimen/ci" android:maxLines="1" />
+            <View android:background="@color/i_" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/bq" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/amf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/bq">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/amo" android:layout_width="@dimen/c0" android:layout_height="@dimen/c0" android:src="@raw/icons_outlined_finder_icon" app:iconColor="@color/Orange" />
+                <TextView android:textSize="8.0dip" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cdx" />
             </LinearLayout>
         </LinearLayout>
     </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

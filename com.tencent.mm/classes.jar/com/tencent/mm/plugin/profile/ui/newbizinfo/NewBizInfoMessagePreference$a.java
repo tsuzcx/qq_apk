@@ -10,44 +10,46 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.x;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.x;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.nd;
-import com.tencent.mm.protocal.protobuf.nj;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.v;
+import com.tencent.mm.protocal.protobuf.nz;
+import com.tencent.mm.protocal.protobuf.og;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.y;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.e.b;
 
 public final class NewBizInfoMessagePreference$a
   extends RecyclerView.a<a>
 {
-  private static int vOH;
-  private static final int vOI;
-  private static int vOJ;
-  private static int vOK;
-  private static int vOL;
-  private static int vOM;
-  private static int vON;
-  private com.tencent.mm.storage.ai contact;
-  private MMActivity iMV;
-  protected nd vOG;
-  private int vOO;
+  private static int wVQ;
+  private static final int wVR;
+  private static int wVS;
+  private static int wVT;
+  private static int wVU;
+  private static int wVV;
+  private static int wVW;
+  private am contact;
+  private MMActivity fLP;
+  protected nz wVP;
+  private int wVX;
   
   static
   {
     AppMethodBeat.i(27541);
-    vOH = com.tencent.mm.cc.a.fromDPToPix(com.tencent.mm.sdk.platformtools.ai.getContext(), 6);
-    vOI = com.tencent.mm.sdk.platformtools.ai.getResources().getDimensionPixelSize(2131165572);
-    vOJ = com.tencent.mm.cc.a.fromDPToPix(com.tencent.mm.sdk.platformtools.ai.getContext(), 4);
-    vOK = 13;
-    vOL = com.tencent.mm.cc.a.fromDPToPix(com.tencent.mm.sdk.platformtools.ai.getContext(), 1);
-    vOM = com.tencent.mm.cc.a.fromDPToPix(com.tencent.mm.sdk.platformtools.ai.getContext(), 8);
-    vON = 13;
+    wVQ = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 6);
+    wVR = aj.getResources().getDimensionPixelSize(2131165572);
+    wVS = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 4);
+    wVT = 13;
+    wVU = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 1);
+    wVV = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 8);
+    wVW = 13;
     AppMethodBeat.o(27541);
   }
   
@@ -55,13 +57,13 @@ public final class NewBizInfoMessagePreference$a
   {
     int i = 0;
     AppMethodBeat.i(27538);
-    if ((this.vOG == null) || (this.vOG.EcV == null))
+    if ((this.wVP == null) || (this.wVP.FIZ == null))
     {
       AppMethodBeat.o(27538);
       return 0;
     }
-    int j = a.eC(this.vOG.EcV);
-    if (this.vOG.EcW.Edp == 0) {
+    int j = a.eP(this.wVP.FIZ);
+    if (this.wVP.FJa.FJy == 0) {
       i = 1;
     }
     AppMethodBeat.o(27538);
@@ -72,22 +74,22 @@ public final class NewBizInfoMessagePreference$a
     extends RecyclerView.w
     implements View.OnClickListener
   {
-    public ImageView fBA;
-    public TextView fxS;
-    public View jPT;
-    public LinearLayout opd;
-    public ImageView vLg;
-    public com.tencent.mm.plugin.profile.ui.newbizinfo.b.b vOP;
+    public TextView fRf;
+    public ImageView fUN;
+    public View kke;
+    public LinearLayout oSy;
+    public ImageView wSp;
+    public com.tencent.mm.plugin.profile.ui.newbizinfo.b.b wVY;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(27536);
-      this.vLg = ((ImageView)paramView.findViewById(2131302732));
-      this.fBA = ((ImageView)paramView.findViewById(2131302731));
-      this.fxS = ((TextView)paramView.findViewById(2131302735));
-      this.opd = ((LinearLayout)paramView.findViewById(2131302728));
-      this.jPT = paramView.findViewById(2131302730);
+      this.wSp = ((ImageView)paramView.findViewById(2131302732));
+      this.fUN = ((ImageView)paramView.findViewById(2131302731));
+      this.fRf = ((TextView)paramView.findViewById(2131302735));
+      this.oSy = ((LinearLayout)paramView.findViewById(2131302728));
+      this.kke = paramView.findViewById(2131302730);
       paramView.setOnClickListener(this);
       AppMethodBeat.o(27536);
     }
@@ -95,69 +97,74 @@ public final class NewBizInfoMessagePreference$a
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(27537);
-      ac.i("MicroMsg.NewBizInfoMessagePreference", "onClick jump to url:%s", new Object[] { this.vOP.vPk });
+      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMessagePreference$messageItemAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+      ad.i("MicroMsg.NewBizInfoMessagePreference", "onClick jump to url:%s", new Object[] { this.wVY.wWv });
       int i = NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getIntExtra("KOpenArticleSceneFromScene", -1);
-      Intent localIntent = new Intent();
-      String str = m.d(this.vOP.vPk, 126, i, 0);
-      localIntent.putExtra("rawUrl", str);
-      localIntent.putExtra("useJs", true);
-      localIntent.putExtra("vertical_scroll", true);
-      localIntent.putExtra("geta8key_scene", 3);
-      Object localObject = NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getStringExtra("prePublishId");
-      if (!bs.isNullOrNil((String)localObject))
+      localObject1 = new Intent();
+      String str = m.d(this.wVY.wWv, 126, i, 0);
+      ((Intent)localObject1).putExtra("rawUrl", str);
+      ((Intent)localObject1).putExtra("useJs", true);
+      ((Intent)localObject1).putExtra("vertical_scroll", true);
+      ((Intent)localObject1).putExtra("geta8key_scene", 3);
+      Object localObject2 = NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getStringExtra("prePublishId");
+      if (!bt.isNullOrNil((String)localObject2))
       {
-        localIntent.putExtra("KPublisherId", (String)localObject);
-        localIntent.putExtra("prePublishId", (String)localObject);
-        localIntent.putExtra("preUsername", NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getStringExtra("preUsername"));
-        localIntent.putExtra("preChatName", NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getStringExtra("preChatName"));
-      }
-      for (;;)
-      {
-        localIntent.putExtra("preChatTYPE", NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getIntExtra("preChatTYPE", 0));
+        ((Intent)localObject1).putExtra("KPublisherId", (String)localObject2);
+        ((Intent)localObject1).putExtra("prePublishId", (String)localObject2);
+        ((Intent)localObject1).putExtra("preUsername", NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getStringExtra("preUsername"));
+        ((Intent)localObject1).putExtra("preChatName", NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getStringExtra("preChatName"));
+        ((Intent)localObject1).putExtra("preChatTYPE", NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getIntExtra("preChatTYPE", 0));
         i = NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this).getIntent().getIntExtra("KOpenArticleSceneFromScene", 10000);
-        if ((this.vOP.type == 5) && (((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).bIP()))
+        if ((this.wVY.type == 5) && (((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).bNg()))
         {
-          localIntent.putExtra(e.b.HgX, 126);
-          localIntent.putExtra(e.b.HgY, i);
-          localIntent.putExtra("biz_video_session_id", v.getSessionId());
-          localObject = new x();
-          ((x)localObject).hkW = localIntent.getStringExtra("KPublisherId");
-          ((x)localObject).ddo = NewBizInfoMessagePreference.a.b(NewBizInfoMessagePreference.a.this).field_username;
-          ((x)localObject).hkV = NewBizInfoMessagePreference.a.b(NewBizInfoMessagePreference.a.this).aaR();
-          ((x)localObject).hkX.url = str;
-          ((x)localObject).hkX.title = this.vOP.title;
-          ((x)localObject).hkX.hlf = this.vOP.vPp;
-          ((x)localObject).hkX.hld = this.vOP.coverImgUrl;
-          ((x)localObject).hkX.type = this.vOP.type;
-          ((x)localObject).hkX.time = this.vOP.gIh;
-          ((x)localObject).hkX.hlh = this.vOP.videoDuration;
-          ((x)localObject).hkX.videoWidth = this.vOP.videoWidth;
-          ((x)localObject).hkX.videoHeight = this.vOP.videoHeight;
-          ((x)localObject).hkX.hhd = this.vOP.hhd;
-          ((x)localObject).t(localIntent);
-          ac.i("MicroMsg.NewBizInfoMessagePreference", "jump to native video");
-          localObject = new int[2];
+          ((Intent)localObject1).putExtra(e.b.IUn, 126);
+          ((Intent)localObject1).putExtra(e.b.IUo, i);
+          ((Intent)localObject1).putExtra("biz_video_session_id", y.getSessionId());
+          localObject2 = new x();
+          ((x)localObject2).hDf = ((Intent)localObject1).getStringExtra("KPublisherId");
+          ((x)localObject2).doK = NewBizInfoMessagePreference.a.b(NewBizInfoMessagePreference.a.this).field_username;
+          ((x)localObject2).hDe = NewBizInfoMessagePreference.a.b(NewBizInfoMessagePreference.a.this).adu();
+          ((x)localObject2).hDg.url = str;
+          ((x)localObject2).hDg.title = this.wVY.title;
+          ((x)localObject2).hDg.hDo = this.wVY.wWA;
+          ((x)localObject2).hDg.hDm = this.wVY.coverImgUrl;
+          ((x)localObject2).hDg.type = this.wVY.type;
+          ((x)localObject2).hDg.time = this.wVY.hbR;
+          ((x)localObject2).hDg.hDq = this.wVY.videoDuration;
+          ((x)localObject2).hDg.videoWidth = this.wVY.videoWidth;
+          ((x)localObject2).hDg.videoHeight = this.wVY.videoHeight;
+          ((x)localObject2).hDg.hzm = this.wVY.hzm;
+          ((x)localObject2).t((Intent)localObject1);
+          ad.i("MicroMsg.NewBizInfoMessagePreference", "jump to native video");
+          localObject2 = new int[2];
           paramView = paramView.findViewById(2131302732);
           if (paramView != null)
           {
             int j = paramView.getWidth();
             int k = paramView.getHeight();
-            paramView.getLocationInWindow((int[])localObject);
-            localIntent.putExtra("img_gallery_width", j).putExtra("img_gallery_height", k).putExtra("img_gallery_left", localObject[0]).putExtra("img_gallery_top", localObject[1]);
+            paramView.getLocationInWindow((int[])localObject2);
+            ((Intent)localObject1).putExtra("img_gallery_width", j).putExtra("img_gallery_height", k).putExtra("img_gallery_left", localObject2[0]).putExtra("img_gallery_top", localObject2[1]);
           }
-          localIntent.addFlags(268435456);
+          ((Intent)localObject1).addFlags(268435456);
         }
-        if ((!((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).ys(6)) || (!((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).a(NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this), str, this.vOP.type, 126, i, localIntent))) {
-          break;
+        if ((!((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zc(6)) || (!((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).a(NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this), str, this.wVY.type, 126, i, (Intent)localObject1))) {
+          break label730;
         }
-        ac.i("MicroMsg.NewBizInfoMessagePreference", "jump to TmplWebview");
+        ad.i("MicroMsg.NewBizInfoMessagePreference", "jump to TmplWebview");
+      }
+      for (;;)
+      {
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMessagePreference$messageItemAdapter$ViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(27537);
         return;
-        localIntent.putExtra("prePublishId", "brand_profile");
-        localIntent.putExtra("KPublisherId", "brand_profile");
+        ((Intent)localObject1).putExtra("prePublishId", "brand_profile");
+        ((Intent)localObject1).putExtra("KPublisherId", "brand_profile");
+        break;
+        label730:
+        d.b(NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
       }
-      d.b(NewBizInfoMessagePreference.a.a(NewBizInfoMessagePreference.a.this), "webview", ".ui.tools.WebViewUI", localIntent);
-      AppMethodBeat.o(27537);
     }
   }
 }

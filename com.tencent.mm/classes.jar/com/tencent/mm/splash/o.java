@@ -8,7 +8,7 @@ public abstract interface o
   {
     public abstract void done();
     
-    public abstract void eXO();
+    public abstract void fny();
   }
 }
 

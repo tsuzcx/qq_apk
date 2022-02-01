@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iz
   extends b
 {
-  public a dkr;
+  public a dvH;
   
   public iz()
   {
@@ -15,16 +15,17 @@ public final class iz
   
   private iz(byte paramByte)
   {
-    AppMethodBeat.i(155369);
-    this.dkr = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(117547);
+    this.dvH = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(155369);
+    AppMethodBeat.o(117547);
   }
   
   public static final class a
   {
-    public int scene = 1;
+    public String dvI;
+    public String dvJ;
   }
 }
 

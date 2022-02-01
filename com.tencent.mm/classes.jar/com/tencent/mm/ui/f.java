@@ -7,11 +7,11 @@ import android.os.Message;
 import android.util.SparseArray;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.a.a;
 import com.tencent.mm.storagebase.a.d;
 import com.tencent.mm.storagebase.a.e;
@@ -26,43 +26,43 @@ import java.util.LinkedList;
 public abstract class f<K, T extends a>
   extends BaseAdapter
 {
-  protected boolean HhL = true;
-  protected f<K, T>.c HhM;
-  protected a HhN;
-  public int HhO = 1000;
-  public int HhP = 3000;
-  public boolean HhQ = true;
-  int HhR = 0;
-  private boolean HhS;
-  private boolean HhT;
-  private f<K, T>.e HhU;
-  public K HhV = null;
+  protected boolean IVc = true;
+  protected f<K, T>.c IVd;
+  protected a IVe;
+  public int IVf = 1000;
+  public int IVg = 3000;
+  public boolean IVh = true;
+  int IVi = 0;
+  private boolean IVj;
+  private boolean IVk;
+  private f<K, T>.e IVl;
+  public K IVm = null;
   public String TAG = "MicroMsg.CursorDataAdapter";
   public Context context;
   private HashMap<K, b<K, T>> events;
   private int pageSize;
-  private int tYu = 0;
+  private int vbd = 0;
   
   public f(Context paramContext)
   {
     this(paramContext, (byte)0);
     this.pageSize = 5000;
-    ac.i(this.TAG, "newCursor setPageSize %d", new Object[] { Integer.valueOf(5000) });
+    ad.i(this.TAG, "newCursor setPageSize %d", new Object[] { Integer.valueOf(5000) });
   }
   
   private f(Context paramContext, byte paramByte)
   {
     this.context = paramContext;
-    this.HhS = true;
+    this.IVj = true;
   }
   
   private f(Context paramContext, char paramChar)
   {
     this.context = paramContext;
-    this.HhS = true;
-    this.HhT = false;
-    this.HhO = 800;
-    this.HhP = 2000;
+    this.IVj = true;
+    this.IVk = false;
+    this.IVf = 800;
+    this.IVg = 2000;
   }
   
   public f(Context paramContext, short paramShort)
@@ -72,35 +72,35 @@ public abstract class f<K, T extends a>
   
   private void a(d<K> paramd)
   {
-    wn(true);
-    if ((this.HhM == null) || (this.HhM.Hcp != paramd))
+    wZ(true);
+    if ((this.IVd == null) || (this.IVd.IPF != paramd))
     {
-      if ((this.HhM != null) && (!this.HhM.isClosed()))
+      if ((this.IVd != null) && (!this.IVd.isClosed()))
       {
-        this.HhM.close();
-        this.HhM = null;
+        this.IVd.close();
+        this.IVd = null;
       }
-      this.HhM = new c(paramd);
-      this.HhM.getCount();
-      feZ();
+      this.IVd = new c(paramd);
+      this.IVd.getCount();
+      fvh();
       notifyDataSetChanged();
     }
   }
   
   private void a(f<K, T>.c paramf)
   {
-    wn(false);
-    this.HhM = paramf;
-    this.HhM.getCount();
-    feZ();
+    wZ(false);
+    this.IVd = paramf;
+    this.IVd.getCount();
+    fvh();
   }
   
   private void a(final f<K, T>.c paramf, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1)
     {
-      if ((this.HhU != null) && (this.HhU.ffo())) {
-        this.HhU.ffm();
+      if ((this.IVl != null) && (this.IVl.fvw())) {
+        this.IVl.fvu();
       }
       if (this.events != null) {
         this.events.clear();
@@ -110,7 +110,7 @@ public abstract class f<K, T extends a>
     {
       a(new d()
       {
-        public final void ffj()
+        public final void fvr()
         {
           AppMethodBeat.i(32997);
           f.a(f.this, paramf);
@@ -125,71 +125,71 @@ public abstract class f<K, T extends a>
   private void a(d paramd)
   {
     long l = System.currentTimeMillis();
-    if (this.HhN != null) {
-      this.HhN.ffk();
+    if (this.IVe != null) {
+      this.IVe.fvs();
     }
-    paramd.ffj();
+    paramd.fvr();
     notifyDataSetChanged();
-    if (this.HhN != null) {
-      this.HhN.aPg();
+    if (this.IVe != null) {
+      this.IVe.aSs();
     }
-    if (this.HhU != null) {
-      this.HhU.ffp();
+    if (this.IVl != null) {
+      this.IVl.fvx();
     }
-    ac.i(this.TAG, "newcursor update callback last :%d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ad.i(this.TAG, "newcursor update callback last :%d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
-  private void cH(String paramString, boolean paramBoolean)
+  private void cM(String paramString, boolean paramBoolean)
   {
-    if ((!ffh()) && ((this.HhQ | paramBoolean)))
+    if ((!fvp()) && ((this.IVh | paramBoolean)))
     {
       if (!paramBoolean) {
-        ac.i(this.TAG, "newcursor cache needRefresh : needRefreshInfront :%b from : %s %s", new Object[] { Boolean.valueOf(this.HhQ), paramString, bs.eWi() });
+        ad.i(this.TAG, "newcursor cache needRefresh : needRefreshInfront :%b from : %s %s", new Object[] { Boolean.valueOf(this.IVh), paramString, bt.flS() });
       }
-      lw(false);
+      lR(false);
     }
   }
   
-  private void feZ()
+  private void fvh()
   {
-    if (this.HhS) {
-      if (!this.HhM.fdB()) {
+    if (this.IVj) {
+      if (!this.IVd.ftJ()) {
         break label96;
       }
     }
     label96:
     for (int i = 1;; i = 2)
     {
-      if ((i != this.HhR) && (this.HhR != 0))
+      if ((i != this.IVi) && (this.IVi != 0))
       {
-        if ((this.HhU != null) && (this.HhU.ffo())) {
-          a(new c(ffb()), true, false);
+        if ((this.IVl != null) && (this.IVl.fvw())) {
+          a(new c(fvj()), true, false);
         }
-        ac.i(this.TAG, "newcursor change update stats  %d ", new Object[] { Integer.valueOf(i) });
+        ad.i(this.TAG, "newcursor change update stats  %d ", new Object[] { Integer.valueOf(i) });
       }
-      this.HhR = i;
+      this.IVi = i;
       return;
     }
   }
   
-  private void ffe()
+  private void fvm()
   {
     this.events.clear();
-    this.events.put(this.HhV, null);
+    this.events.put(this.IVm, null);
   }
   
-  private void fff()
+  private void fvn()
   {
-    if (!ffg()) {
+    if (!fvo()) {
       return;
     }
     int i = getChangeType();
-    if (this.HhU != null)
+    if (this.IVl != null)
     {
-      int j = this.HhU.ffq();
-      ac.i(this.TAG, "newcursor mWorkerHandler.isHandingMsg,type is %d ", new Object[] { Integer.valueOf(j) });
+      int j = this.IVl.fvy();
+      ad.i(this.TAG, "newcursor mWorkerHandler.isHandingMsg,type is %d ", new Object[] { Integer.valueOf(j) });
       if (j != 0) {
-        this.HhU.ffm();
+        this.IVl.fvu();
       }
       if (i != 2) {
         i = j;
@@ -197,38 +197,38 @@ public abstract class f<K, T extends a>
     }
     for (;;)
     {
-      ac.i(this.TAG, "newcursor ensureNewState  refreshstatus is %d ", new Object[] { Integer.valueOf(i) });
-      this.tYu = 0;
+      ad.i(this.TAG, "newcursor ensureNewState  refreshstatus is %d ", new Object[] { Integer.valueOf(i) });
+      this.vbd = 0;
       if (i == 2)
       {
-        a(new c(ffb()), true, true);
+        a(new c(fvj()), true, true);
         return;
       }
-      ffi();
+      fvq();
       return;
     }
   }
   
-  private boolean ffg()
+  private boolean fvo()
   {
-    return ((this.HhU != null) && (this.HhU.ffo())) || (getChangeType() != 0);
+    return ((this.IVl != null) && (this.IVl.fvw())) || (getChangeType() != 0);
   }
   
-  private boolean ffh()
+  private boolean fvp()
   {
-    return this.tYu == 0;
+    return this.vbd == 0;
   }
   
-  private void ffi()
+  private void fvq()
   {
-    if ((this.HhM != null) && (!this.HhM.isClosed()) && (this.events.size() == 0))
+    if ((this.IVd != null) && (!this.IVd.isClosed()) && (this.events.size() == 0))
     {
-      ac.i(this.TAG, "events size is 0  ");
+      ad.i(this.TAG, "events size is 0  ");
       return;
     }
     a(new d()
     {
-      public final void ffj()
+      public final void fvr()
       {
         AppMethodBeat.i(32996);
         Object localObject1;
@@ -240,7 +240,7 @@ public abstract class f<K, T extends a>
           while (((Iterator)localObject2).hasNext()) {
             ((HashSet)localObject1).add(((f.b)((Iterator)localObject2).next()).object);
           }
-          ac.i(f.this.TAG, "newcursor all event is delete");
+          ad.i(f.this.TAG, "newcursor all event is delete");
           f.c(f.this).c(((HashSet)localObject1).toArray(), null);
         }
         for (;;)
@@ -249,10 +249,10 @@ public abstract class f<K, T extends a>
           AppMethodBeat.o(32996);
           return;
           long l;
-          if (!f.b(f.this).containsKey(f.this.HhV))
+          if (!f.b(f.this).containsKey(f.this.IVm))
           {
             l = System.currentTimeMillis();
-            localObject2 = f.this.ffc();
+            localObject2 = f.this.fvk();
             localObject1 = f.this.a(new HashSet(f.b(f.this).values()), (SparseArray[])localObject2);
             int j = localObject2.length;
             if (j > 1)
@@ -260,35 +260,35 @@ public abstract class f<K, T extends a>
               int i = 0;
               while (i < j)
               {
-                ac.i(f.this.TAG, "newcursor %d  refreshPosistion last :%d, oldpos size is %d ,newpos size is %d  ", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localObject2[i].size()), Integer.valueOf(localObject1[i].size()) });
+                ad.i(f.this.TAG, "newcursor %d  refreshPosistion last :%d, oldpos size is %d ,newpos size is %d  ", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localObject2[i].size()), Integer.valueOf(localObject1[i].size()) });
                 i += 1;
               }
             }
-            ac.i(f.this.TAG, "newcursor refreshPosistion last :%d, oldpos size is %d ,newpos size is %d  ", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localObject2[0].size()), Integer.valueOf(localObject1[0].size()) });
+            ad.i(f.this.TAG, "newcursor refreshPosistion last :%d, oldpos size is %d ,newpos size is %d  ", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localObject2[0].size()), Integer.valueOf(localObject1[0].size()) });
             localObject2 = f.b(f.this).values().iterator();
             while (((Iterator)localObject2).hasNext())
             {
               f.b localb = (f.b)((Iterator)localObject2).next();
               if (localb != null)
               {
-                if (localb.HhZ != null) {
-                  ac.i(f.this.TAG, "newcursor notify cache update : key : %s ", new Object[] { localb.object });
+                if (localb.IVq != null) {
+                  ad.i(f.this.TAG, "newcursor notify cache update : key : %s ", new Object[] { localb.object });
                 }
-                f.c(f.this).c(localb.object, (a)localb.HhZ);
+                f.c(f.this).c(localb.object, (a)localb.IVq);
               }
               else
               {
-                ac.e(f.this.TAG, "newcursor event is null ! ");
+                ad.e(f.this.TAG, "newcursor event is null ! ");
               }
             }
             f.this.a((SparseArray[])localObject1);
-            ac.i(f.this.TAG, "newcursor after resort new pos size :%d  ", new Object[] { Integer.valueOf(f.c(f.this).fdz()[0].size()) });
+            ad.i(f.this.TAG, "newcursor after resort new pos size :%d  ", new Object[] { Integer.valueOf(f.c(f.this).ftH()[0].size()) });
           }
           else
           {
             l = System.currentTimeMillis();
-            f.a(f.this, new f.c(f.this, f.this.ffb()), true, false);
-            ac.i(f.this.TAG, "cache unuseful,reset cursor,last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+            f.a(f.this, new f.c(f.this, f.this.fvj()), true, false);
+            ad.i(f.this.TAG, "cache unuseful,reset cursor,last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
           }
         }
       }
@@ -300,37 +300,20 @@ public abstract class f<K, T extends a>
     if ((this.events == null) || (this.events.size() == 0)) {
       return 0;
     }
-    if (this.events.containsKey(this.HhV)) {
+    if (this.events.containsKey(this.IVm)) {
       return 2;
     }
     return 1;
   }
   
-  public final T Za(int paramInt)
-  {
-    if (this.HhM == null) {
-      a(ffb());
-    }
-    cH("getItem", false);
-    this.HhM.Hcp.moveToPosition(paramInt);
-    a locala = this.HhM.Hcp.Za(paramInt);
-    if (locala != null)
-    {
-      locala.eYX();
-      return locala;
-    }
-    ac.e(this.TAG, "newcursor getItem error %d", new Object[] { Integer.valueOf(paramInt) });
-    return locala;
-  }
-  
   public final void a(a parama)
   {
-    this.HhN = parama;
+    this.IVe = parama;
   }
   
   public final void a(SparseArray<K>[] paramArrayOfSparseArray)
   {
-    SparseArray[] arrayOfSparseArray = this.HhM.fdz();
+    SparseArray[] arrayOfSparseArray = this.IVd.ftH();
     int i = 0;
     while (i < arrayOfSparseArray.length)
     {
@@ -347,46 +330,63 @@ public abstract class f<K, T extends a>
   
   public abstract SparseArray<K>[] a(HashSet<b<K, T>> paramHashSet, SparseArray<K>[] paramArrayOfSparseArray);
   
-  public abstract ArrayList<T> aY(ArrayList<K> paramArrayList);
+  public abstract ArrayList<T> aV(ArrayList<K> paramArrayList);
   
-  protected boolean fdB()
+  public final T abj(int paramInt)
   {
-    if (this.HhM == null) {
+    if (this.IVd == null) {
+      a(fvj());
+    }
+    cM("getItem", false);
+    this.IVd.IPF.moveToPosition(paramInt);
+    a locala = this.IVd.IPF.abj(paramInt);
+    if (locala != null)
+    {
+      locala.foH();
+      return locala;
+    }
+    ad.e(this.TAG, "newcursor getItem error %d", new Object[] { Integer.valueOf(paramInt) });
+    return locala;
+  }
+  
+  protected boolean ftJ()
+  {
+    if (this.IVd == null) {
       return false;
     }
-    return this.HhM.fdB();
+    return this.IVd.ftJ();
   }
   
-  public abstract T fdN();
+  public abstract T ftV();
   
-  public final void feY()
+  public final void fvg()
   {
-    this.HhN = null;
+    this.IVe = null;
   }
   
-  public final int ffa()
+  public final int fvi()
   {
-    if (this.HhM == null) {
+    if (this.IVd == null) {
       return 0;
     }
-    d locald = this.HhM.Hcp;
+    d locald = this.IVd.IPF;
     if (locald == null) {
       return 0;
     }
     if ((locald instanceof e)) {
-      return ((e)locald).Hcf[0].getCount();
+      return ((e)locald).IPv[0].getCount();
     }
     throw new RuntimeException("the cursor is not instanceof MergeHeapCursor ,please call getCount() instead ");
   }
   
-  public abstract d<K> ffb();
+  public abstract d<K> fvj();
   
-  public final SparseArray<K>[] ffc()
+  public final SparseArray<K>[] fvk()
   {
-    if (this.HhM == null) {
+    if (this.IVd == null) {
       return null;
     }
-    SparseArray[] arrayOfSparseArray1 = this.HhM.fdz();
+    SparseArray[] arrayOfSparseArray1 = this.IVd.ftH();
     SparseArray[] arrayOfSparseArray2 = new SparseArray[arrayOfSparseArray1.length];
     int i = 0;
     while (i < arrayOfSparseArray2.length)
@@ -403,29 +403,21 @@ public abstract class f<K, T extends a>
     return arrayOfSparseArray2;
   }
   
-  public final HashMap<Object, T> ffd()
-  {
-    if (this.HhM == null) {
-      return null;
-    }
-    return this.HhM.Hcp.fdA();
-  }
-  
   public int getCount()
   {
-    if (this.HhM == null)
+    if (this.IVd == null)
     {
       long l = System.currentTimeMillis();
-      a(ffb());
-      ac.i(this.TAG, "newcursor createCursor last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      a(fvj());
+      ad.i(this.TAG, "newcursor createCursor last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
-    cH("getcount", false);
-    if (this.HhM == null)
+    cM("getcount", false);
+    if (this.IVd == null)
     {
-      ac.w(this.TAG, "[getCount] is zero!");
+      ad.w(this.TAG, "[getCount] is zero!");
       return 0;
     }
-    return this.HhM.getCount();
+    return this.IVd.getCount();
   }
   
   public long getItemId(int paramInt)
@@ -433,68 +425,68 @@ public abstract class f<K, T extends a>
     return 0L;
   }
   
-  public final void lw(boolean paramBoolean)
+  public final void lR(boolean paramBoolean)
   {
-    if ((this.HhT) || (paramBoolean)) {
-      fff();
+    if ((this.IVk) || (paramBoolean)) {
+      fvn();
     }
     for (;;)
     {
-      this.tYu = 0;
+      this.vbd = 0;
       return;
       int i = getChangeType();
       if (i == 0)
       {
-        ac.i(this.TAG, "newcursor need not change ");
+        ad.i(this.TAG, "newcursor need not change ");
         return;
       }
       if (i == 2)
       {
-        ac.i(this.TAG, "newcursor enqueueMessage resetcursor ");
+        ad.i(this.TAG, "newcursor enqueueMessage resetcursor ");
         this.events.clear();
       }
-      if (this.HhU == null) {
-        this.HhU = new e();
+      if (this.IVl == null) {
+        this.IVl = new e();
       }
-      this.HhU.Zo(i);
+      this.IVl.abx(i);
     }
   }
   
-  public void m(K paramK, int paramInt)
+  public void n(K paramK, int paramInt)
   {
     boolean bool;
-    if (this.HhM != null)
+    if (this.IVd != null)
     {
       if (this.events == null) {
         this.events = new HashMap();
       }
-      bool = this.events.containsKey(this.HhV);
-      if ((paramInt != 5) && (this.HhS) && (paramInt != 1)) {
+      bool = this.events.containsKey(this.IVm);
+      if ((paramInt != 5) && (this.IVj) && (paramInt != 1)) {
         break label197;
       }
       if (paramInt == 5) {
         break label171;
       }
-      ffe();
+      fvm();
     }
     label87:
     do
     {
       break label170;
-      ac.i(this.TAG, "newcursor syncHandle is true ,changeType is %d  ", new Object[] { Integer.valueOf(paramInt) });
+      ad.i(this.TAG, "newcursor syncHandle is true ,changeType is %d  ", new Object[] { Integer.valueOf(paramInt) });
       int i = 1;
-      this.tYu = getChangeType();
+      this.vbd = getChangeType();
       paramK = this.TAG;
-      int j = this.tYu;
-      if (this.HhR == 1) {}
+      int j = this.vbd;
+      if (this.IVi == 1) {}
       for (bool = true;; bool = false)
       {
-        ac.i(paramK, "newcursor refreshStatus: %d ,hasLoadedAllDataStatus %b changeType :%d ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+        ad.i(paramK, "newcursor refreshStatus: %d ,hasLoadedAllDataStatus %b changeType :%d ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
         if (i == 0) {
           break label711;
         }
-        ac.i(this.TAG, "newcursor event is refresh sync ");
-        lw(true);
+        ad.i(this.TAG, "newcursor event is refresh sync ");
+        lR(true);
         return;
         if (bool) {
           break;
@@ -503,17 +495,17 @@ public abstract class f<K, T extends a>
         break;
         if (bool)
         {
-          ac.i(this.TAG, "newcursor need reset ,return ");
+          ad.i(this.TAG, "newcursor need reset ,return ");
           return;
         }
-        if (this.HhR == 1)
+        if (this.IVi == 1)
         {
-          if ((this.HhM.dU(paramK)) || (paramInt == 2))
+          if ((this.IVd.dX(paramK)) || (paramInt == 2))
           {
             HashMap localHashMap = this.events;
             b localb1 = new b(paramK, paramInt);
-            if ((localb1.HhY == 2) && (this.HhM.dU(localb1.object))) {
-              localb1.HhY = 3;
+            if ((localb1.IVp == 2) && (this.IVd.dX(localb1.object))) {
+              localb1.IVp = 3;
             }
             b localb2 = (b)localHashMap.get(paramK);
             if (localb2 != null)
@@ -523,17 +515,17 @@ public abstract class f<K, T extends a>
                 break label669;
               }
               localHashMap.remove(localb2);
-              switch (localb1.HhY)
+              switch (localb1.IVp)
               {
               case 3: 
               case 4: 
               default: 
-                switch (localb2.HhY)
+                switch (localb2.IVp)
                 {
                 case 3: 
                 case 4: 
                 default: 
-                  localb1.HhY = 3;
+                  localb1.IVp = 3;
                   localHashMap.put(paramK, localb1);
                 }
                 break;
@@ -541,49 +533,49 @@ public abstract class f<K, T extends a>
             }
             for (;;)
             {
-              paramK = this.HhM;
+              paramK = this.IVd;
               i = localHashMap.size();
-              if (!paramK.Hcp.YZ(i))
+              if (!paramK.IPF.abi(i))
               {
-                ac.i(this.TAG, "newcursor events size exceed limit :size is :  %d", new Object[] { Integer.valueOf(localHashMap.size()) });
+                ad.i(this.TAG, "newcursor events size exceed limit :size is :  %d", new Object[] { Integer.valueOf(localHashMap.size()) });
                 localHashMap.clear();
-                localHashMap.put(this.HhV, null);
+                localHashMap.put(this.IVm, null);
               }
-              ac.i(this.TAG, "newcursor add event events size %d", new Object[] { Integer.valueOf(this.events.size()) });
+              ad.i(this.TAG, "newcursor add event events size %d", new Object[] { Integer.valueOf(this.events.size()) });
               i = 0;
               break;
               i = 0;
               break label302;
-              switch (localb2.HhY)
+              switch (localb2.IVp)
               {
               case 2: 
               case 3: 
               case 4: 
               default: 
-                localb1.HhY = 5;
+                localb1.IVp = 5;
                 break;
               case 5: 
-                ac.i(this.TAG, "newcursor processEvent last delete, now delete, impossible");
-                localb1.HhY = 5;
+                ad.i(this.TAG, "newcursor processEvent last delete, now delete, impossible");
+                localb1.IVp = 5;
                 break;
-                switch (localb2.HhY)
+                switch (localb2.IVp)
                 {
                 case 3: 
                 case 4: 
                 default: 
-                  ac.i(this.TAG, "newcursor processEvent last update, now insert, impossible");
-                  localb1.HhY = 2;
+                  ad.i(this.TAG, "newcursor processEvent last update, now insert, impossible");
+                  localb1.IVp = 2;
                   break;
                 case 5: 
-                  localb1.HhY = 3;
+                  localb1.IVp = 3;
                   break;
                 case 2: 
-                  ac.i(this.TAG, "newcursor processEvent last insert, now insert, impossible");
-                  localb1.HhY = 2;
+                  ad.i(this.TAG, "newcursor processEvent last insert, now insert, impossible");
+                  localb1.IVp = 2;
                   break;
-                  ac.i(this.TAG, "newcursor processEvent last delete, now update, impossible");
+                  ad.i(this.TAG, "newcursor processEvent last delete, now update, impossible");
                   break label384;
-                  localb1.HhY = 2;
+                  localb1.IVp = 2;
                   break;
                   localHashMap.put(paramK, localb1);
                 }
@@ -591,75 +583,75 @@ public abstract class f<K, T extends a>
               }
             }
           }
-          ac.i(this.TAG, "newcursor event pass ");
+          ad.i(this.TAG, "newcursor event pass ");
           i = 0;
           break label87;
         }
-        ffe();
+        fvm();
         i = 0;
         break label87;
       }
-    } while ((!this.HhL) || (!this.HhQ));
+    } while ((!this.IVc) || (!this.IVh));
     label170:
     label171:
     label197:
     label711:
-    lw(false);
+    lR(false);
     label302:
   }
   
   public void pause()
   {
-    this.HhL = false;
-    ac.i(this.TAG, "new cursor pasue");
+    this.IVc = false;
+    ad.i(this.TAG, "new cursor pasue");
   }
   
   public final void resume()
   {
-    ac.i(this.TAG, "newcursor resume ");
-    this.HhL = true;
-    cH("resume", true);
+    ad.i(this.TAG, "newcursor resume ");
+    this.IVc = true;
+    cM("resume", true);
   }
   
-  public final void wn(boolean paramBoolean)
+  public final void wZ(boolean paramBoolean)
   {
-    if (this.HhM != null)
+    if (this.IVd != null)
     {
-      this.HhM.close();
-      this.HhM = null;
+      this.IVd.close();
+      this.IVd = null;
     }
-    if ((paramBoolean) && (this.HhU != null))
+    if ((paramBoolean) && (this.IVl != null))
     {
-      this.HhU.quit();
-      this.HhU = null;
+      this.IVl.quit();
+      this.IVl = null;
       if (this.events != null)
       {
         this.events.clear();
-        ac.i(this.TAG, "newcursor closeCursor,clear events");
+        ad.i(this.TAG, "newcursor closeCursor,clear events");
       }
     }
-    this.tYu = 0;
-    this.HhR = 0;
+    this.vbd = 0;
+    this.IVi = 0;
   }
   
   public static abstract interface a
   {
-    public abstract void aPg();
+    public abstract void aSs();
     
-    public abstract void ffk();
+    public abstract void fvs();
   }
   
   public static final class b<K, T>
   {
-    public int HhY;
-    public T HhZ;
+    public int IVp;
+    public T IVq;
     public K object;
     
     public b(K paramK, int paramInt)
     {
       this.object = paramK;
-      this.HhY = paramInt;
-      this.HhZ = null;
+      this.IVp = paramInt;
+      this.IVq = null;
     }
     
     public final boolean equals(Object paramObject)
@@ -681,7 +673,7 @@ public abstract class f<K, T extends a>
         return false;
       }
       paramObject = (b)paramObject;
-      if (this.HhY != paramObject.HhY)
+      if (this.IVp != paramObject.IVp)
       {
         AppMethodBeat.o(32999);
         return false;
@@ -706,7 +698,7 @@ public abstract class f<K, T extends a>
     public final int hashCode()
     {
       AppMethodBeat.i(32998);
-      int j = this.HhY;
+      int j = this.IVp;
       if (this.object == null) {}
       for (int i = 0;; i = this.object.hashCode())
       {
@@ -726,18 +718,18 @@ public abstract class f<K, T extends a>
       AppMethodBeat.o(33000);
     }
     
-    public final ArrayList<T> aY(ArrayList paramArrayList)
+    public final ArrayList<T> aV(ArrayList paramArrayList)
     {
       AppMethodBeat.i(33002);
-      paramArrayList = f.this.aY(paramArrayList);
+      paramArrayList = f.this.aV(paramArrayList);
       AppMethodBeat.o(33002);
       return paramArrayList;
     }
     
-    public final T fdP()
+    public final T ftX()
     {
       AppMethodBeat.i(33001);
-      a locala = f.this.fdN();
+      a locala = f.this.ftV();
       AppMethodBeat.o(33001);
       return locala;
     }
@@ -745,71 +737,71 @@ public abstract class f<K, T extends a>
   
   static abstract interface d
   {
-    public abstract void ffj();
+    public abstract void fvr();
   }
   
   final class e
   {
-    f<K, T>.e.b Hia;
-    private f<K, T>.e.c Hib;
-    LinkedList<Integer> Hic;
-    int Hid;
+    f<K, T>.e.b IVr;
+    private f<K, T>.e.c IVs;
+    LinkedList<Integer> IVt;
+    int IVu;
     
     public e()
     {
       AppMethodBeat.i(33006);
-      ffl();
+      fvt();
       AppMethodBeat.o(33006);
     }
     
-    private void eKb()
+    private void eYP()
     {
       AppMethodBeat.i(33008);
-      Object localObject = this.Hib;
-      ((c)localObject).removeMessages(((c)localObject).Hik);
-      ((c)localObject).removeMessages(((c)localObject).Hil);
-      localObject = this.Hia;
-      ((b)localObject).Hig = true;
+      Object localObject = this.IVs;
+      ((c)localObject).removeMessages(((c)localObject).IVB);
+      ((c)localObject).removeMessages(((c)localObject).IVC);
+      localObject = this.IVr;
+      ((b)localObject).IVx = true;
       ((b)localObject).removeMessages(1);
       ((b)localObject).removeMessages(2);
-      this.Hic.clear();
-      this.Hid = 0;
+      this.IVt.clear();
+      this.IVu = 0;
       AppMethodBeat.o(33008);
     }
     
-    private void ffl()
+    private void fvt()
     {
       AppMethodBeat.i(33007);
-      this.Hia = new b(Looper.getMainLooper());
-      this.Hib = new c(az.agU().GrZ.getLooper());
+      this.IVr = new b(Looper.getMainLooper());
+      this.IVs = new c(ba.ajF().IdO.getLooper());
       AppMethodBeat.o(33007);
     }
     
-    final void Zo(int paramInt)
+    final void abx(int paramInt)
     {
       try
       {
         AppMethodBeat.i(33013);
-        if (!this.Hic.contains(Integer.valueOf(paramInt))) {
-          this.Hic.add(Integer.valueOf(paramInt));
+        if (!this.IVt.contains(Integer.valueOf(paramInt))) {
+          this.IVt.add(Integer.valueOf(paramInt));
         }
-        this.Hid = ffn();
-        c localc = this.Hib;
-        localc.sendEmptyMessage(localc.Hil);
+        this.IVu = fvv();
+        c localc = this.IVs;
+        localc.sendEmptyMessage(localc.IVC);
         AppMethodBeat.o(33013);
         return;
       }
       finally {}
     }
     
-    public final void ffm()
+    public final void fvu()
     {
       try
       {
         AppMethodBeat.i(33009);
-        ac.i(f.this.TAG, "newcursor resetQueue ");
-        eKb();
-        ffl();
+        ad.i(f.this.TAG, "newcursor resetQueue ");
+        eYP();
+        fvt();
         AppMethodBeat.o(33009);
         return;
       }
@@ -820,31 +812,31 @@ public abstract class f<K, T extends a>
       }
     }
     
-    final int ffn()
+    final int fvv()
     {
       int i = 0;
       AppMethodBeat.i(33011);
-      if (this.Hic.size() > 1) {
+      if (this.IVt.size() > 1) {
         i = 2;
       }
       for (;;)
       {
         AppMethodBeat.o(33011);
         return i;
-        if (this.Hic.size() == 1) {
-          i = ((Integer)this.Hic.get(0)).intValue();
+        if (this.IVt.size() == 1) {
+          i = ((Integer)this.IVt.get(0)).intValue();
         }
       }
     }
     
     /* Error */
-    public final boolean ffo()
+    public final boolean fvw()
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
       //   2: aload_0
-      //   3: getfield 156	com/tencent/mm/ui/f$e:Hid	I
+      //   3: getfield 156	com/tencent/mm/ui/f$e:IVu	I
       //   6: istore_1
       //   7: iload_1
       //   8: ifeq +9 -> 17
@@ -873,12 +865,12 @@ public abstract class f<K, T extends a>
       //   2	7	22	finally
     }
     
-    final void ffp()
+    final void fvx()
     {
       try
       {
         AppMethodBeat.i(33012);
-        this.Hib.lastUpdateTime = System.currentTimeMillis();
+        this.IVs.lastUpdateTime = System.currentTimeMillis();
         AppMethodBeat.o(33012);
         return;
       }
@@ -889,11 +881,11 @@ public abstract class f<K, T extends a>
       }
     }
     
-    final int ffq()
+    final int fvy()
     {
       try
       {
-        int i = this.Hid;
+        int i = this.IVu;
         return i;
       }
       finally
@@ -908,8 +900,8 @@ public abstract class f<K, T extends a>
       try
       {
         AppMethodBeat.i(33010);
-        ac.i(f.this.TAG, "newcursor quit ");
-        eKb();
+        ad.i(f.this.TAG, "newcursor quit ");
+        eYP();
         AppMethodBeat.o(33010);
         return;
       }
@@ -922,20 +914,20 @@ public abstract class f<K, T extends a>
     
     final class a
     {
-      int Hie;
+      int IVv;
       
       public a(int paramInt)
       {
-        this.Hie = paramInt;
+        this.IVv = paramInt;
       }
     }
     
     final class b
-      extends ao
+      extends ap
     {
-      boolean Hig;
-      public final int Hih = 1;
-      public final int Hii = 2;
+      boolean IVx;
+      public final int IVy = 1;
+      public final int IVz = 2;
       
       public b(Looper paramLooper)
       {
@@ -946,15 +938,15 @@ public abstract class f<K, T extends a>
       {
         AppMethodBeat.i(33003);
         super.handleMessage(paramMessage);
-        if (this.Hig)
+        if (this.IVx)
         {
           AppMethodBeat.o(33003);
           return;
         }
         synchronized (f.e.this)
         {
-          f.e.this.Hid = f.e.this.ffn();
-          ac.i(f.this.TAG, "newcursor updateWorkerRefresh status %d", new Object[] { Integer.valueOf(f.e.this.Hid) });
+          f.e.this.IVu = f.e.this.fvv();
+          ad.i(f.this.TAG, "newcursor updateWorkerRefresh status %d", new Object[] { Integer.valueOf(f.e.this.IVu) });
           if (paramMessage.what == 1)
           {
             f.d(f.this);
@@ -970,20 +962,20 @@ public abstract class f<K, T extends a>
     }
     
     final class c
-      extends ao
+      extends ap
     {
-      long Hij;
-      final int Hik;
-      final int Hil;
+      long IVA;
+      final int IVB;
+      final int IVC;
       long lastUpdateTime;
       
       public c(Looper paramLooper)
       {
         super();
         AppMethodBeat.i(33004);
-        this.Hik = (hashCode() | 0x776);
-        this.Hil = (hashCode() | 0x77A);
-        f.e.this.Hic = new LinkedList();
+        this.IVB = (hashCode() | 0x776);
+        this.IVC = (hashCode() | 0x77A);
+        f.e.this.IVt = new LinkedList();
         AppMethodBeat.o(33004);
       }
       
@@ -991,22 +983,22 @@ public abstract class f<K, T extends a>
       {
         AppMethodBeat.i(33005);
         super.handleMessage(paramMessage);
-        if (paramMessage.what == this.Hil)
+        if (paramMessage.what == this.IVC)
         {
-          removeMessages(this.Hik);
+          removeMessages(this.IVB);
           long l = System.currentTimeMillis();
-          if ((l - this.Hij > f.this.HhO) || (l - this.Hij < 0L) || ((this.lastUpdateTime != 0L) && (l - this.lastUpdateTime > f.this.HhP)) || (l - this.lastUpdateTime < 0L)) {
+          if ((l - this.IVA > f.this.IVf) || (l - this.IVA < 0L) || ((this.lastUpdateTime != 0L) && (l - this.lastUpdateTime > f.this.IVg)) || (l - this.lastUpdateTime < 0L)) {
             f.e.a(f.e.this);
           }
           for (;;)
           {
-            this.Hij = l;
+            this.IVA = l;
             AppMethodBeat.o(33005);
             return;
-            sendEmptyMessageDelayed(this.Hik, f.this.HhO);
+            sendEmptyMessageDelayed(this.IVB, f.this.IVf);
           }
         }
-        if (paramMessage.what == this.Hik) {
+        if (paramMessage.what == this.IVB) {
           f.e.a(f.e.this);
         }
         AppMethodBeat.o(33005);

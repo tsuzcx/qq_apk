@@ -1,91 +1,76 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.e;
-import com.tencent.luggage.d.g;
-import com.tencent.luggage.d.h;
-import com.tencent.luggage.d.n;
+import android.content.Intent;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.o.b;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ak
-  extends bo<f>
+  extends bq
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(final a<f>.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama)
   {
-    int i = 1;
-    AppMethodBeat.i(78588);
-    ac.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
-    final String str1 = parama.bWS.bVY.optString("url");
-    if (bs.isNullOrNil(str1))
+    AppMethodBeat.i(78586);
+    try
     {
-      parama.a("invalid_url", null);
-      AppMethodBeat.o(78588);
-      return;
-    }
-    ac.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
-    String str2 = parama.bWS.bVY.optString("orientation");
-    if (!bs.isNullOrNil(str2)) {
-      if (str2.equals("horizontal")) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      boolean bool1 = parama.bWS.bVY.optBoolean("fullscreen");
-      final boolean bool2 = parama.bWS.bVY.optString("finish_recent_webview").equals("1");
-      boolean bool3 = parama.bWS.bVY.optString("disable_swipe_back").equals("1");
-      str2 = parama.bWS.bVY.optString("username");
-      final Bundle localBundle = new Bundle();
-      localBundle.putString("rawUrl", str1);
-      localBundle.putInt("screen_orientation", i);
-      localBundle.putBoolean("show_full_screen", bool1);
-      localBundle.putBoolean("disable_swipe_back", bool3);
-      localBundle.putString("shortcut_user_name", str2);
-      localBundle.putString("game_hv_menu_appid", bs.nullAsNil(parama.bWS.bVY.optString("gameAppid")));
-      localBundle.putBoolean("from_find_more_friend", ((f)parama.bWR).mParams.getBoolean("from_find_more_friend", false));
-      ap.f(new Runnable()
+      paramString = new JSONObject(paramString);
+      paramString = paramString.optString("username");
+      if (bt.isNullOrNil(paramString))
       {
-        public final void run()
-        {
-          AppMethodBeat.i(78587);
-          if (bool2)
-          {
-            ((f)parama.bWR).bWW.AF().i(str1, localBundle);
-            AppMethodBeat.o(78587);
-            return;
-          }
-          ((f)parama.bWR).bWW.AF().h(str1, localBundle);
-          AppMethodBeat.o(78587);
-        }
-      });
-      parama.a("", null);
-      AppMethodBeat.o(78588);
-      return;
-      if (!str2.equals("vertical")) {
-        i = -1;
+        parama.f("param_err", null);
+        AppMethodBeat.o(78586);
+        return;
       }
     }
+    catch (JSONException paramContext)
+    {
+      ad.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
+      parama.f("fail", null);
+      AppMethodBeat.o(78586);
+      return;
+    }
+    Object localObject = ((l)g.ab(l.class)).azp().Bf(paramString);
+    if ((localObject == null) || (!((am)localObject).fqg()))
+    {
+      parama.f("not biz username", null);
+      AppMethodBeat.o(78586);
+      return;
+    }
+    if (!b.lM(((aw)localObject).field_type))
+    {
+      parama.f("open_biz_chat", null);
+      AppMethodBeat.o(78586);
+      return;
+    }
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("Chat_User", paramString);
+    ((Intent)localObject).putExtra("finish_direct", true);
+    d.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
+    parama.f(null, null);
+    AppMethodBeat.o(78586);
   }
   
-  public final int bYk()
+  public final void b(b.a parama) {}
+  
+  public final int ccO()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "openCustomWebview";
+    return "openBizChat";
   }
 }
 

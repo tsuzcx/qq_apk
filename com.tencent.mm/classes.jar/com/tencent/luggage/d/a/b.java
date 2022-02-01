@@ -7,10 +7,10 @@ public enum b
   static
   {
     AppMethodBeat.i(140465);
-    bXM = new b("PENDING", 0);
-    bXN = new b("PASS", 1);
-    bXO = new b("REJECT", 2);
-    bXP = new b[] { bXM, bXN, bXO };
+    cie = new b("PENDING", 0);
+    cif = new b("PASS", 1);
+    cig = new b("REJECT", 2);
+    cih = new b[] { cie, cif, cig };
     AppMethodBeat.o(140465);
   }
   

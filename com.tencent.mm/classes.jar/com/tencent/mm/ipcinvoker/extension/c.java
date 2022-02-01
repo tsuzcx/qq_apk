@@ -10,21 +10,21 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> gep;
-  private static Map<String, a> geq;
+  private static List<a> gxZ;
+  private static Map<String, a> gya;
   
   static
   {
     AppMethodBeat.i(158796);
-    gep = new LinkedList();
-    geq = new HashMap();
+    gxZ = new LinkedList();
+    gya = new HashMap();
     AppMethodBeat.o(158796);
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
     AppMethodBeat.i(158794);
-    paramString = (a)geq.get(paramString);
+    paramString = (a)gya.get(paramString);
     if (paramString != null)
     {
       paramString = paramString.c(paramParcel);
@@ -38,34 +38,34 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(158795);
-    if ((parama == null) || (gep.contains(parama)))
+    if ((parama == null) || (gxZ.contains(parama)))
     {
       AppMethodBeat.o(158795);
       return;
     }
-    geq.put(parama.getClass().getName(), parama);
-    gep.add(parama);
+    gya.put(parama.getClass().getName(), parama);
+    gxZ.add(parama);
     AppMethodBeat.o(158795);
   }
   
   public static void a(Object paramObject, Parcel paramParcel)
   {
     AppMethodBeat.i(158793);
-    a locala = bf(paramObject);
+    a locala = bh(paramObject);
     if (locala != null) {
       locala.a(paramObject, paramParcel);
     }
     AppMethodBeat.o(158793);
   }
   
-  public static a bf(Object paramObject)
+  public static a bh(Object paramObject)
   {
     AppMethodBeat.i(158792);
-    Iterator localIterator = gep.iterator();
+    Iterator localIterator = gxZ.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (locala.be(paramObject))
+      if (locala.bg(paramObject))
       {
         AppMethodBeat.o(158792);
         return locala;

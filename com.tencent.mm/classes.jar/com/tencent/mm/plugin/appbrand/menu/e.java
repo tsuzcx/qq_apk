@@ -14,37 +14,37 @@ import com.tencent.mm.plugin.appbrand.page.ae;
 public final class e
   extends com.tencent.mm.plugin.appbrand.menu.a.a<ae>
 {
-  private static final com.tencent.mm.plugin.appbrand.menu.a.c<ae> ltn;
+  private static final com.tencent.mm.plugin.appbrand.menu.a.c<ae> lSw;
   
   static
   {
     AppMethodBeat.i(47629);
     com.tencent.mm.plugin.appbrand.menu.a.c localc = new com.tencent.mm.plugin.appbrand.menu.a.c();
-    ltn = localc;
+    lSw = localc;
     localc.a(new com.tencent.mm.plugin.appbrand.menu.b.c());
-    ltn.a(new k());
-    ltn.a(new d());
-    ltn.a(new g());
-    ltn.a(new i());
-    ltn.a(new com.tencent.mm.plugin.appbrand.menu.b.e());
-    ltn.a(new j());
-    ltn.a(new b());
-    ltn.a(new com.tencent.mm.plugin.appbrand.menu.b.a());
-    ltn.a(new f());
-    ltn.a(h.luH);
+    lSw.a(new k());
+    lSw.a(new d());
+    lSw.a(new g());
+    lSw.a(new i());
+    lSw.a(new com.tencent.mm.plugin.appbrand.menu.b.e());
+    lSw.a(new j());
+    lSw.a(new b());
+    lSw.a(new com.tencent.mm.plugin.appbrand.menu.b.a());
+    lSw.a(new f());
+    lSw.a(h.lTQ);
     AppMethodBeat.o(47629);
   }
   
   public e()
   {
-    super(q.ltY.ordinal());
+    super(r.lTh.ordinal());
     AppMethodBeat.i(47626);
     AppMethodBeat.o(47626);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.e
  * JD-Core Version:    0.7.0.1
  */

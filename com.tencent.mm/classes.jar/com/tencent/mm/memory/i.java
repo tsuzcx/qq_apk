@@ -2,9 +2,9 @@ package com.tencent.mm.memory;
 
 public abstract interface i
 {
-  public abstract void avO();
+  public abstract void ayB();
   
-  public abstract void avP();
+  public abstract void ayC();
 }
 
 

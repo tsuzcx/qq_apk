@@ -2,50 +2,41 @@ package com.tencent.mm.plugin.finder.view.whatnews;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import d.f;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewController;", "", "()V", "ID_KEY", "", "TAG", "", "isAvailableBoot", "", "()Z", "isAvailableBootLazy", "isAvailableBootLazy$delegate", "Lkotlin/Lazy;", "isAvailableEnter", "style", "", "getStyle", "()I", "clearShowFlag", "", "hasShown", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/whatnews/FinderWhatsNewController;", "", "()V", "ID_KEY", "", "TAG", "", "isAvailableBoot", "", "()Z", "isAvailableBootLazy", "isAvailableBootLazy$delegate", "Lkotlin/Lazy;", "isAvailableEnter", "style", "", "getStyle", "()I", "clearShowFlag", "", "hasShown", "plugin-finder_release"})
 public final class a
 {
-  public static final a sbA;
-  public static final f sbz;
+  public static final f sYP;
+  public static final a sYQ;
   
   static
   {
     AppMethodBeat.i(168552);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(a.class), "isAvailableBootLazy", "isAvailableBootLazy()Z")) };
-    sbA = new a();
-    e locale = com.tencent.mm.kernel.g.agR();
-    d.g.b.k.g(locale, "MMKernel.storage()");
-    locale.agA().getBoolean(ah.a.GVh, false);
-    sbz = d.g.K((d.g.a.a)a.sbB);
+    sYQ = new a();
+    e locale = com.tencent.mm.kernel.g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    locale.ajl().getBoolean(al.a.IHP, false);
+    sYP = d.g.O((d.g.a.a)a.sYR);
     AppMethodBeat.o(168552);
   }
   
-  public static void cFE()
-  {
-    AppMethodBeat.i(168553);
-    e locale = com.tencent.mm.kernel.g.agR();
-    d.g.b.k.g(locale, "MMKernel.storage()");
-    locale.agA().set(ah.a.GVh, Boolean.FALSE);
-    AppMethodBeat.o(168553);
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class a
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<Boolean>
   {
-    public static final a sbB;
+    public static final a sYR;
     
     static
     {
       AppMethodBeat.i(168551);
-      sbB = new a();
+      sYR = new a();
       AppMethodBeat.o(168551);
     }
     

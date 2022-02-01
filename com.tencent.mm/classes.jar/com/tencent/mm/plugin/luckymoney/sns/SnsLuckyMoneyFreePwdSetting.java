@@ -9,9 +9,9 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.ty;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.ur;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -21,63 +21,63 @@ import com.tencent.mm.wallet_core.ui.WalletPreferenceUI;
 public class SnsLuckyMoneyFreePwdSetting
   extends WalletPreferenceUI
 {
-  protected f lZC;
-  protected CheckBoxPreference uoV;
+  protected f mzx;
+  protected CheckBoxPreference vrz;
   
-  private static void HQ(int paramInt)
+  private static void Jm(int paramInt)
   {
     AppMethodBeat.i(65353);
-    ty localty = new ty();
-    localty.dwH.key = paramInt;
-    localty.dwH.value = 1;
-    localty.dwH.dwI = true;
-    com.tencent.mm.sdk.b.a.GpY.l(localty);
+    ur localur = new ur();
+    localur.dIT.key = paramInt;
+    localur.dIT.value = 1;
+    localur.dIT.dIU = true;
+    com.tencent.mm.sdk.b.a.IbL.l(localur);
     AppMethodBeat.o(65353);
   }
   
-  private void cZu()
+  private void diG()
   {
     boolean bool = true;
     AppMethodBeat.i(65357);
-    if (com.tencent.mm.plugin.luckymoney.sns.b.a.cZw() == 1)
+    if (com.tencent.mm.plugin.luckymoney.sns.b.a.diI() == 1)
     {
-      this.uoV.mF = bool;
+      this.vrz.oB = bool;
       getDefaultSharedPreferences().edit().putBoolean("open_sns_pay_pref", bool).commit();
-      if (TextUtils.isEmpty(com.tencent.mm.plugin.luckymoney.sns.b.a.cZx())) {
+      if (TextUtils.isEmpty(com.tencent.mm.plugin.luckymoney.sns.b.a.diJ())) {
         break label149;
       }
-      ac.i("MicroMsg.mmui.MMPreference", "SetSnsPayTitle:" + com.tencent.mm.plugin.luckymoney.sns.b.a.cZx());
-      this.uoV.setTitle(com.tencent.mm.plugin.luckymoney.sns.b.a.cZx());
+      ad.i("MicroMsg.mmui.MMPreference", "SetSnsPayTitle:" + com.tencent.mm.plugin.luckymoney.sns.b.a.diJ());
+      this.vrz.setTitle(com.tencent.mm.plugin.luckymoney.sns.b.a.diJ());
       label87:
-      if (TextUtils.isEmpty(com.tencent.mm.plugin.luckymoney.sns.b.a.cZy())) {
+      if (TextUtils.isEmpty(com.tencent.mm.plugin.luckymoney.sns.b.a.diK())) {
         break label168;
       }
-      ac.i("MicroMsg.mmui.MMPreference", "SetSnsPayWording:" + com.tencent.mm.plugin.luckymoney.sns.b.a.cZy());
-      this.uoV.setSummary(com.tencent.mm.plugin.luckymoney.sns.b.a.cZy());
+      ad.i("MicroMsg.mmui.MMPreference", "SetSnsPayWording:" + com.tencent.mm.plugin.luckymoney.sns.b.a.diK());
+      this.vrz.setSummary(com.tencent.mm.plugin.luckymoney.sns.b.a.diK());
     }
     for (;;)
     {
-      this.lZC.notifyDataSetChanged();
+      this.mzx.notifyDataSetChanged();
       AppMethodBeat.o(65357);
       return;
       bool = false;
       break;
       label149:
-      ac.i("MicroMsg.mmui.MMPreference", "SetSnsPayTitle is empty");
-      this.uoV.setTitle(2131760874);
+      ad.i("MicroMsg.mmui.MMPreference", "SetSnsPayTitle is empty");
+      this.vrz.setTitle(2131760874);
       break label87;
       label168:
-      ac.i("MicroMsg.mmui.MMPreference", "getSetSnsPayWording is empty");
-      this.uoV.setSummary(2131760873);
+      ad.i("MicroMsg.mmui.MMPreference", "getSetSnsPayWording is empty");
+      this.vrz.setSummary(2131760873);
     }
   }
   
-  private void nE(boolean paramBoolean)
+  private void nY(boolean paramBoolean)
   {
     AppMethodBeat.i(65358);
     getDefaultSharedPreferences().edit().putBoolean("open_sns_pay_pref", paramBoolean).commit();
-    this.uoV.mF = paramBoolean;
-    this.lZC.notifyDataSetChanged();
+    this.vrz.oB = paramBoolean;
+    this.mzx.notifyDataSetChanged();
     AppMethodBeat.o(65358);
   }
   
@@ -86,30 +86,30 @@ public class SnsLuckyMoneyFreePwdSetting
     AppMethodBeat.i(65360);
     if ((paramn instanceof com.tencent.mm.plugin.luckymoney.sns.a.a))
     {
-      ac.i("MicroMsg.mmui.MMPreference", "free pwd setting onWalletSceneEnd, errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
+      ad.i("MicroMsg.mmui.MMPreference", "free pwd setting onWalletSceneEnd, errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label116;
       }
-      if (((com.tencent.mm.plugin.luckymoney.sns.a.a)paramn).upl != 1) {
+      if (((com.tencent.mm.plugin.luckymoney.sns.a.a)paramn).vrP != 1) {
         break label96;
       }
-      ac.i("MicroMsg.mmui.MMPreference", "onWalletSceneEnd() NetSceneSnsPayManage is success, setIsOpenSnsPay with 1");
-      HQ(119);
-      nE(true);
+      ad.i("MicroMsg.mmui.MMPreference", "onWalletSceneEnd() NetSceneSnsPayManage is success, setIsOpenSnsPay with 1");
+      Jm(119);
+      nY(true);
     }
     for (;;)
     {
       AppMethodBeat.o(65360);
       return false;
       label96:
-      nE(false);
-      HQ(118);
-      ac.i("MicroMsg.mmui.MMPreference", "onWalletSceneEnd() NetSceneSnsPayManage is success, setIsOpenSnsPay with 0");
+      nY(false);
+      Jm(118);
+      ad.i("MicroMsg.mmui.MMPreference", "onWalletSceneEnd() NetSceneSnsPayManage is success, setIsOpenSnsPay with 0");
       continue;
       label116:
-      HQ(119);
-      ac.i("MicroMsg.mmui.MMPreference", "onWalletSceneEnd() NetSceneSnsPayManage is failed, do nothing");
-      cZu();
+      Jm(119);
+      ad.i("MicroMsg.mmui.MMPreference", "onWalletSceneEnd() NetSceneSnsPayManage is failed, do nothing");
+      diG();
     }
   }
   
@@ -121,7 +121,7 @@ public class SnsLuckyMoneyFreePwdSetting
   public void initView()
   {
     AppMethodBeat.i(65355);
-    this.lZC = getPreferenceScreen();
+    this.mzx = getPreferenceScreen();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -133,8 +133,8 @@ public class SnsLuckyMoneyFreePwdSetting
       }
     });
     setMMTitle(2131760877);
-    this.uoV = ((CheckBoxPreference)this.lZC.aPN("open_sns_pay_pref"));
-    cZu();
+    this.vrz = ((CheckBoxPreference)this.mzx.aVD("open_sns_pay_pref"));
+    diG();
     AppMethodBeat.o(65355);
   }
   
@@ -143,7 +143,7 @@ public class SnsLuckyMoneyFreePwdSetting
     AppMethodBeat.i(65354);
     super.onCreate(paramBundle);
     initView();
-    HQ(116);
+    Jm(116);
     AppMethodBeat.o(65354);
   }
   
@@ -166,18 +166,18 @@ public class SnsLuckyMoneyFreePwdSetting
     AppMethodBeat.i(65361);
     if ("open_sns_pay_pref".equals(paramPreference.mKey))
     {
-      if ((this.uoV.isChecked()) || (com.tencent.mm.plugin.luckymoney.sns.b.a.cZw() != 1)) {
+      if ((this.vrz.isChecked()) || (com.tencent.mm.plugin.luckymoney.sns.b.a.diI() != 1)) {
         break label67;
       }
-      fAS().a(new com.tencent.mm.plugin.luckymoney.sns.a.a(0, "", ""), true, 1);
-      HQ(117);
+      fSc().a(new com.tencent.mm.plugin.luckymoney.sns.a.a(0, "", ""), true, 1);
+      Jm(117);
     }
     for (;;)
     {
       AppMethodBeat.o(65361);
       return false;
       label67:
-      HQ(120);
+      Jm(120);
       com.tencent.mm.wallet_core.a.a(this, a.class, null, null);
     }
   }
@@ -185,7 +185,7 @@ public class SnsLuckyMoneyFreePwdSetting
   public void onResume()
   {
     AppMethodBeat.i(65356);
-    cZu();
+    diG();
     super.onResume();
     AppMethodBeat.o(65356);
   }

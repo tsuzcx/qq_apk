@@ -7,12 +7,12 @@ public enum c$a
   static
   {
     AppMethodBeat.i(155551);
-    fCm = new a("PCM", 0);
-    fCn = new a("AMR", 1);
-    fCo = new a("SILK", 2);
-    fCp = new a("SPEEX", 3);
-    fCq = new a("UNKNOWN", 4);
-    fCr = new a[] { fCm, fCn, fCo, fCp, fCq };
+    fVA = new a("PCM", 0);
+    fVB = new a("AMR", 1);
+    fVC = new a("SILK", 2);
+    fVD = new a("SPEEX", 3);
+    fVE = new a("UNKNOWN", 4);
+    fVF = new a[] { fVA, fVB, fVC, fVD, fVE };
     AppMethodBeat.o(155551);
   }
   

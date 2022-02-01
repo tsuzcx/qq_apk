@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.finder.feed;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/FinderFriendLikeFeedUIContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class l {}
 
 

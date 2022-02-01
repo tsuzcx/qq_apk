@@ -2,7 +2,7 @@ package com.bumptech.glide.f.b;
 
 public abstract interface c<R>
 {
-  public abstract b<R> pW();
+  public abstract b<R> qo();
 }
 
 

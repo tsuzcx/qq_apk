@@ -25,28 +25,28 @@ public class h
   extends g.a
   implements j
 {
-  private static final boolean Meu;
-  public static final int Mev;
-  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> Mew;
-  private static final AtomicReference<ScheduledExecutorService> Mex;
-  private static volatile Object Mey;
-  private static final Object Mez;
-  final ScheduledExecutorService Mes;
-  volatile boolean Met;
+  private static volatile Object NZA;
+  private static final Object NZB;
+  private static final boolean NZw;
+  public static final int NZx;
+  private static final ConcurrentHashMap<ScheduledThreadPoolExecutor, ScheduledThreadPoolExecutor> NZy;
+  private static final AtomicReference<ScheduledExecutorService> NZz;
+  final ScheduledExecutorService NZu;
+  volatile boolean NZv;
   
   static
   {
     AppMethodBeat.i(90336);
-    Mez = new Object();
-    Mew = new ConcurrentHashMap();
-    Mex = new AtomicReference();
-    Mev = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
+    NZB = new Object();
+    NZy = new ConcurrentHashMap();
+    NZz = new AtomicReference();
+    NZx = Integer.getInteger("rx.scheduler.jdk6.purge-frequency-millis", 1000).intValue();
     boolean bool = Boolean.getBoolean("rx.scheduler.jdk6.purge-force");
-    int i = e.ggD();
+    int i = e.gzh();
     if ((!bool) && ((i == 0) || (i >= 21))) {}
     for (bool = true;; bool = false)
     {
-      Meu = bool;
+      NZw = bool;
       AppMethodBeat.o(90336);
       return;
     }
@@ -59,14 +59,14 @@ public class h
     if ((!b(paramThreadFactory)) && ((paramThreadFactory instanceof ScheduledThreadPoolExecutor))) {
       a((ScheduledThreadPoolExecutor)paramThreadFactory);
     }
-    this.Mes = paramThreadFactory;
+    this.NZu = paramThreadFactory;
     AppMethodBeat.o(90331);
   }
   
   public static void a(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90327);
-    Mew.remove(paramScheduledExecutorService);
+    NZy.remove(paramScheduledExecutorService);
     AppMethodBeat.o(90327);
   }
   
@@ -76,24 +76,24 @@ public class h
     for (;;)
     {
       ScheduledExecutorService localScheduledExecutorService;
-      if ((ScheduledExecutorService)Mex.get() == null)
+      if ((ScheduledExecutorService)NZz.get() == null)
       {
         localScheduledExecutorService = Executors.newScheduledThreadPool(1, new g("RxSchedulerPurge-"));
-        if (Mex.compareAndSet(null, localScheduledExecutorService)) {
+        if (NZz.compareAndSet(null, localScheduledExecutorService)) {
           localScheduledExecutorService.scheduleAtFixedRate(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(90325);
-              h.ggz();
+              h.gzd();
               AppMethodBeat.o(90325);
             }
-          }, Mev, Mev, TimeUnit.MILLISECONDS);
+          }, NZx, NZx, TimeUnit.MILLISECONDS);
         }
       }
       else
       {
-        Mew.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
+        NZy.putIfAbsent(paramScheduledThreadPoolExecutor, paramScheduledThreadPoolExecutor);
         AppMethodBeat.o(90326);
         return;
       }
@@ -104,14 +104,14 @@ public class h
   public static boolean b(ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(90329);
-    if (Meu)
+    if (NZw)
     {
       Object localObject1;
       Object localObject2;
       if ((paramScheduledExecutorService instanceof ScheduledThreadPoolExecutor))
       {
-        localObject1 = Mey;
-        if (localObject1 == Mez)
+        localObject1 = NZA;
+        if (localObject1 == NZB)
         {
           AppMethodBeat.o(90329);
           return false;
@@ -122,7 +122,7 @@ public class h
           if (localObject1 != null)
           {
             localObject2 = localObject1;
-            Mey = localObject2;
+            NZA = localObject2;
           }
         }
       }
@@ -157,7 +157,7 @@ public class h
             c.onError(paramScheduledExecutorService);
           }
         }
-        localObject2 = Mez;
+        localObject2 = NZB;
         break;
         localObject1 = (Method)localObject1;
         continue;
@@ -190,14 +190,14 @@ public class h
     return null;
   }
   
-  static void ggz()
+  static void gzd()
   {
     AppMethodBeat.i(90328);
     for (;;)
     {
       try
       {
-        Iterator localIterator = Mew.keySet().iterator();
+        Iterator localIterator = NZy.keySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -210,7 +210,7 @@ public class h
       }
       catch (Throwable localThrowable)
       {
-        b.J(localThrowable);
+        b.K(localThrowable);
         c.onError(localThrowable);
         AppMethodBeat.o(90328);
         return;
@@ -230,9 +230,9 @@ public class h
   public final j a(a parama, long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(90333);
-    if (this.Met)
+    if (this.NZv)
     {
-      parama = d.ggZ();
+      parama = d.gzD();
       AppMethodBeat.o(90333);
       return parama;
     }
@@ -246,7 +246,7 @@ public class h
     AppMethodBeat.i(90334);
     i locali = new i(c.b(parama));
     if (paramLong <= 0L) {}
-    for (parama = this.Mes.submit(locali);; parama = this.Mes.schedule(locali, paramLong, paramTimeUnit))
+    for (parama = this.NZu.submit(locali);; parama = this.NZu.schedule(locali, paramLong, paramTimeUnit))
     {
       locali.b(parama);
       AppMethodBeat.o(90334);
@@ -254,18 +254,18 @@ public class h
     }
   }
   
-  public final void ggm()
+  public final void gyQ()
   {
     AppMethodBeat.i(90335);
-    this.Met = true;
-    this.Mes.shutdownNow();
-    a(this.Mes);
+    this.NZv = true;
+    this.NZu.shutdownNow();
+    a(this.NZu);
     AppMethodBeat.o(90335);
   }
   
-  public final boolean ggn()
+  public final boolean gyR()
   {
-    return this.Met;
+    return this.NZv;
   }
 }
 

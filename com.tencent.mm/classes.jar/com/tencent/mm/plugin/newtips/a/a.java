@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.newtips.a;
 
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.dhn;
+import com.tencent.mm.protocal.protobuf.dnc;
 
 public abstract interface a
 {
   public abstract void a(k paramk, boolean paramBoolean);
   
-  public abstract boolean a(boolean paramBoolean, dhn paramdhn);
+  public abstract boolean a(boolean paramBoolean, dnc paramdnc);
   
-  public abstract boolean b(boolean paramBoolean, dhn paramdhn);
+  public abstract boolean b(boolean paramBoolean, dnc paramdnc);
   
-  public abstract boolean c(boolean paramBoolean, dhn paramdhn);
+  public abstract boolean c(boolean paramBoolean, dnc paramdnc);
   
-  public abstract boolean d(boolean paramBoolean, dhn paramdhn);
+  public abstract boolean d(boolean paramBoolean, dnc paramdnc);
   
-  public abstract boolean dbk();
+  public abstract boolean dkD();
   
   public abstract String getPath();
   
   public abstract View getRoot();
   
-  public abstract boolean nR(boolean paramBoolean);
+  public abstract boolean ol(boolean paramBoolean);
   
-  public abstract boolean nS(boolean paramBoolean);
+  public abstract boolean om(boolean paramBoolean);
   
-  public abstract boolean nT(boolean paramBoolean);
+  public abstract boolean on(boolean paramBoolean);
 }
 
 

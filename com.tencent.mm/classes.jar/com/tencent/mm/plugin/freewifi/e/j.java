@@ -13,8 +13,8 @@ import com.tencent.mm.plugin.freewifi.model.c;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.a;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.net.HttpURLConnection;
 import java.net.UnknownHostException;
 
@@ -22,51 +22,51 @@ public final class j
   extends e
   implements a
 {
-  String cJz;
+  String cUM;
   String openId;
   String sign;
-  private com.tencent.mm.plugin.freewifi.a sri;
-  private int sro;
-  String srz;
+  private com.tencent.mm.plugin.freewifi.a tnJ;
+  private int tnP;
+  String toa;
   
   public j(FreeWifiFrontPageUI paramFreeWifiFrontPageUI)
   {
     super(paramFreeWifiFrontPageUI);
     AppMethodBeat.i(24930);
-    this.sro = 0;
+    this.tnP = 0;
     this.openId = this.intent.getStringExtra("free_wifi_openid");
-    this.srz = this.intent.getStringExtra("free_wifi_tid");
-    this.cJz = this.intent.getStringExtra("ConstantsFreeWifi.FREE_WIFI_TIMESTAMP");
+    this.toa = this.intent.getStringExtra("free_wifi_tid");
+    this.cUM = this.intent.getStringExtra("ConstantsFreeWifi.FREE_WIFI_TIMESTAMP");
     this.sign = this.intent.getStringExtra("ConstantsFreeWifi.FREE_WIFI_SIGN");
-    ac.i("MicroMsg.FreeWifi.Protocol32", "sessionKey=%s, step=%d, desc=Data retrieved. openId=%s, tid=%s, timestamp=%s, sign=%s", new Object[] { m.aj(this.intent), Integer.valueOf(m.ak(this.intent)), this.openId, this.srz, this.cJz, this.sign });
+    ad.i("MicroMsg.FreeWifi.Protocol32", "sessionKey=%s, step=%d, desc=Data retrieved. openId=%s, tid=%s, timestamp=%s, sign=%s", new Object[] { m.ao(this.intent), Integer.valueOf(m.ap(this.intent)), this.openId, this.toa, this.cUM, this.sign });
     AppMethodBeat.o(24930);
   }
   
-  private void bg(int paramInt, String paramString)
+  private void bj(int paramInt, String paramString)
   {
     AppMethodBeat.i(24932);
-    k.a locala = k.cIC();
+    k.a locala = k.cQR();
     locala.ssid = this.ssid;
-    locala.bssid = m.afn("MicroMsg.FreeWifi.Protocol32");
-    locala.dbr = m.afo("MicroMsg.FreeWifi.Protocol32");
-    locala.dbq = this.dbq;
-    locala.soC = this.appId;
-    locala.ovU = m.aj(this.intent);
-    locala.soD = 32;
-    locala.soE = k.b.spg.spp;
-    locala.soF = k.b.spg.name;
+    locala.bssid = m.ajL("MicroMsg.FreeWifi.Protocol32");
+    locala.dmN = m.ajM("MicroMsg.FreeWifi.Protocol32");
+    locala.dmM = this.dmM;
+    locala.tlf = this.appId;
+    locala.oZp = m.ao(this.intent);
+    locala.tlg = 32;
+    locala.tlh = k.b.tlJ.tlS;
+    locala.tli = k.b.tlJ.name;
     locala.result = paramInt;
-    locala.fsq = paramString;
-    locala.channel = m.am(this.intent);
-    locala.cIE().cID();
+    locala.fKQ = paramString;
+    locala.channel = m.ar(this.intent);
+    locala.cQT().cQS();
     AppMethodBeat.o(24932);
   }
   
   public final void connect()
   {
     AppMethodBeat.i(24931);
-    this.sri = new com.tencent.mm.plugin.freewifi.a(this.ssid, this.srb);
-    com.tencent.mm.plugin.freewifi.model.j.cJn().cIW().post(new Runnable()
+    this.tnJ = new com.tencent.mm.plugin.freewifi.a(this.ssid, this.tnD);
+    com.tencent.mm.plugin.freewifi.model.j.cRC().cRl().post(new Runnable()
     {
       public final void run()
       {
@@ -80,7 +80,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.e.j
  * JD-Core Version:    0.7.0.1
  */

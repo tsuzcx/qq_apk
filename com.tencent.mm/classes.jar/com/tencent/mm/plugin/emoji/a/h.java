@@ -13,12 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.plugin.emoji.a.a.c;
 import com.tencent.mm.plugin.emoji.a.a.f;
 import com.tencent.mm.plugin.emoji.e.e;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 
 public final class h
@@ -26,29 +26,29 @@ public final class h
 {
   private Context mContext;
   private int mNumColumns;
-  private int mvQ;
-  private int myh;
-  private int oXE;
-  private int oXF;
-  private int oXG;
-  private boolean oXH;
-  public a oXI;
-  private HashMap<String, b> oXJ;
-  public int oXz;
+  private int mWv;
+  private int mYP;
+  public int pBj;
+  private int pBo;
+  private int pBp;
+  private int pBq;
+  private boolean pBr;
+  public a pBs;
+  private HashMap<String, b> pBt;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(108333);
     this.mNumColumns = 3;
-    this.oXz = 0;
+    this.pBj = 0;
     this.mContext = paramContext;
-    this.oXH = false;
-    this.oXE = this.mContext.getResources().getDimensionPixelSize(2131165516);
-    this.oXF = this.mContext.getResources().getDimensionPixelSize(2131165191);
-    this.myh = this.mContext.getResources().getDimensionPixelSize(2131166219);
-    this.oXG = com.tencent.mm.cc.a.ig(this.mContext);
-    this.mvQ = ((int)((this.oXG - this.mNumColumns * this.myh) / (this.mNumColumns + 1.0F)));
+    this.pBr = false;
+    this.pBo = this.mContext.getResources().getDimensionPixelSize(2131165516);
+    this.pBp = this.mContext.getResources().getDimensionPixelSize(2131165191);
+    this.mYP = this.mContext.getResources().getDimensionPixelSize(2131166219);
+    this.pBq = com.tencent.mm.cc.a.ip(this.mContext);
+    this.mWv = ((int)((this.pBq - this.mNumColumns * this.mYP) / (this.mNumColumns + 1.0F)));
     AppMethodBeat.o(108333);
   }
   
@@ -58,34 +58,34 @@ public final class h
     switch (paramInt)
     {
     default: 
-      paramb.oel.setTextColor(this.mContext.getResources().getColor(2131100711));
-      paramb.oel.setCompoundDrawables(null, null, null, null);
-      ac.w("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "unknow product status:%d", new Object[] { Integer.valueOf(paramInt) });
+      paramb.oHF.setTextColor(this.mContext.getResources().getColor(2131100711));
+      paramb.oHF.setCompoundDrawables(null, null, null, null);
+      ad.w("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "unknow product status:%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(108337);
       return;
     }
-    paramb.oel.setTextColor(this.mContext.getResources().getColor(2131100482));
+    paramb.oHF.setTextColor(this.mContext.getResources().getColor(2131100482));
     Drawable localDrawable = this.mContext.getResources().getDrawable(2131690103);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
-    paramb.oel.setCompoundDrawables(null, null, localDrawable, null);
+    paramb.oHF.setCompoundDrawables(null, null, localDrawable, null);
     AppMethodBeat.o(108337);
   }
   
-  public final void Bh(int paramInt)
+  public final void BP(int paramInt)
   {
-    this.oXz = paramInt;
+    this.pBj = paramInt;
   }
   
-  public final void Bi(int paramInt) {}
+  public final void BQ(int paramInt) {}
   
-  public final void Bj(int paramInt) {}
+  public final void BR(int paramInt) {}
   
-  public final int Bl(int paramInt)
+  public final int BT(int paramInt)
   {
-    if (this.oXH) {
+    if (this.pBr) {
       return this.mNumColumns * paramInt;
     }
-    return this.mNumColumns * paramInt + this.oXz;
+    return this.mNumColumns * paramInt + this.pBj;
   }
   
   public final View b(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -93,28 +93,28 @@ public final class h
     return null;
   }
   
-  public final void cP(String paramString, int paramInt)
+  public final void cS(String paramString, int paramInt)
   {
     AppMethodBeat.i(108338);
-    if (this.oXJ == null)
+    if (this.pBt == null)
     {
-      ac.w("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "updateStatus mCacheHolder is nulll.");
+      ad.w("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "updateStatus mCacheHolder is nulll.");
       AppMethodBeat.o(108338);
       return;
     }
-    b localb = (b)this.oXJ.get(paramString);
-    f localf = this.oXZ.XB(paramString);
+    b localb = (b)this.pBt.get(paramString);
+    f localf = this.pBJ.abi(paramString);
     if (localf != null) {
       a(localf, paramString, paramInt);
     }
-    if ((localf != null) && (this.oXZ != null) && (localf.mStatus == -1))
+    if ((localf != null) && (this.pBJ != null) && (localf.mStatus == -1))
     {
-      ac.i("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "force refresh status");
-      localf.a(this.oXZ.oYi, this.oXZ.XF(paramString), this.oXZ.XD(paramString));
+      ad.i("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "force refresh status");
+      localf.a(this.pBJ.pBS, this.pBJ.abm(paramString), this.pBJ.abk(paramString));
     }
     if (localb == null)
     {
-      ac.w("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "updateStatus viewHolder is nulll.");
+      ad.w("MicroMsg.emoji.EmojiStoreV2PersonAdapter", "updateStatus viewHolder is nulll.");
       AppMethodBeat.o(108338);
       return;
     }
@@ -122,34 +122,34 @@ public final class h
     AppMethodBeat.o(108338);
   }
   
-  public final int cbE()
+  public final int cgi()
   {
-    return this.oXz;
+    return this.pBj;
   }
   
-  public final int cbF()
-  {
-    return 0;
-  }
-  
-  public final int cbG()
+  public final int cgj()
   {
     return 0;
   }
   
-  public final int cbI()
+  public final int cgk()
+  {
+    return 0;
+  }
+  
+  public final int cgm()
   {
     AppMethodBeat.i(108334);
-    if (this.oXH)
+    if (this.pBr)
     {
-      if (this.oXz == 0)
+      if (this.pBj == 0)
       {
         AppMethodBeat.o(108334);
         return 0;
       }
-      if ((this.oXz > 0) && (super.getCount() > this.oXz))
+      if ((this.pBj > 0) && (super.getCount() > this.pBj))
       {
-        i = this.oXz;
+        i = this.pBj;
         AppMethodBeat.o(108334);
         return i;
       }
@@ -171,30 +171,30 @@ public final class h
   {
     int i = 0;
     AppMethodBeat.i(108335);
-    if (this.oXH)
+    if (this.pBr)
     {
-      if (this.oXz == 0)
+      if (this.pBj == 0)
       {
         AppMethodBeat.o(108335);
         return 0;
       }
-      if ((this.oXz > 0) && (cbI() > this.oXz))
+      if ((this.pBj > 0) && (cgm() > this.pBj))
       {
-        i = (int)Math.ceil(this.oXz / this.mNumColumns);
+        i = (int)Math.ceil(this.pBj / this.mNumColumns);
         AppMethodBeat.o(108335);
         return i;
       }
-      i = (int)Math.ceil(cbI() / this.mNumColumns);
+      i = (int)Math.ceil(cgm() / this.mNumColumns);
       AppMethodBeat.o(108335);
       return i;
     }
-    int j = cbI();
-    if (j <= this.oXz) {}
+    int j = cgm();
+    if (j <= this.pBj) {}
     for (;;)
     {
       AppMethodBeat.o(108335);
       return i;
-      i = (int)Math.ceil((j - this.oXz) / this.mNumColumns);
+      i = (int)Math.ceil((j - this.pBj) / this.mNumColumns);
     }
   }
   
@@ -213,35 +213,39 @@ public final class h
       int i = 0;
       if (i < this.mNumColumns)
       {
-        final int j = Bl(paramInt) + i;
-        localObject1 = new b(this.mContext, paramView.oXM.getChildAt(i));
-        ((b)localObject1).jja.setOnClickListener(new View.OnClickListener()
+        final int j = BT(paramInt) + i;
+        localObject1 = new b(this.mContext, paramView.pBw.getChildAt(i));
+        ((b)localObject1).jCI.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(108332);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/adapter/EmojiStoreV2PersonAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
             if (h.a(h.this) != null) {
-              h.a(h.this).Bm(j);
+              h.a(h.this).BU(j);
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/adapter/EmojiStoreV2PersonAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(108332);
           }
         });
-        Object localObject2 = Bk(j);
-        if ((j <= cbI() - 1) && (localObject2 != null))
+        Object localObject2 = BS(j);
+        if ((j <= cgm() - 1) && (localObject2 != null))
         {
-          if (this.oXJ == null) {
-            this.oXJ = new HashMap();
+          if (this.pBt == null) {
+            this.pBt = new HashMap();
           }
-          if (this.oXJ.containsValue(localObject1)) {
-            this.oXJ.remove(((b)localObject1).oXi);
+          if (this.pBt.containsValue(localObject1)) {
+            this.pBt.remove(((b)localObject1).pAS);
           }
-          ((b)localObject1).oXi = a((f)localObject2);
-          this.oXJ.put(a((f)localObject2), localObject1);
-          ((b)localObject1).jja.setVisibility(0);
-          ((b)localObject1).oel.setText(((f)localObject2).oYl.PackName);
-          o.aFB().a(((f)localObject2).oYl.IconUrl, ((b)localObject1).oXj, e.fk(((f)localObject2).oYl.ProductID, ((f)localObject2).oYl.IconUrl));
-          ((b)localObject1).oXk.setBackgroundResource(2131232029);
-          ((b)localObject1).jja.setClickable(true);
+          ((b)localObject1).pAS = a((f)localObject2);
+          this.pBt.put(a((f)localObject2), localObject1);
+          ((b)localObject1).jCI.setVisibility(0);
+          ((b)localObject1).oHF.setText(((f)localObject2).pBV.PackName);
+          q.aIJ().a(((f)localObject2).pBV.IconUrl, ((b)localObject1).pAT, e.fu(((f)localObject2).pBV.ProductID, ((f)localObject2).pBV.IconUrl));
+          ((b)localObject1).pAU.setBackgroundResource(2131232029);
+          ((b)localObject1).jCI.setClickable(true);
           a((b)localObject1, ((f)localObject2).mStatus);
         }
         for (;;)
@@ -253,22 +257,22 @@ public final class h
           paramViewGroup.setBackgroundResource(2131234429);
           paramViewGroup.setOrientation(0);
           paramViewGroup.setLayoutParams(paramView);
-          paramViewGroup.setPadding(0, 0, 0, this.oXF);
+          paramViewGroup.setPadding(0, 0, 0, this.pBp);
           paramView = new b();
-          paramView.oXM = paramViewGroup;
+          paramView.pBw = paramViewGroup;
           paramViewGroup.setTag(paramView);
           i = 0;
           while (i < this.mNumColumns)
           {
             localObject1 = new LinearLayout.LayoutParams(-2, -2);
-            ((LinearLayout.LayoutParams)localObject1).leftMargin = this.mvQ;
+            ((LinearLayout.LayoutParams)localObject1).leftMargin = this.mWv;
             localObject2 = new b(this.mContext);
-            paramView.oXM.addView(((b)localObject2).jja, i, (ViewGroup.LayoutParams)localObject1);
+            paramView.pBw.addView(((b)localObject2).jCI, i, (ViewGroup.LayoutParams)localObject1);
             i += 1;
           }
-          ((b)localObject1).jja.setClickable(false);
-          ((b)localObject1).jja.setVisibility(8);
-          ((b)localObject1).oXk.setBackgroundDrawable(null);
+          ((b)localObject1).jCI.setClickable(false);
+          ((b)localObject1).jCI.setVisibility(8);
+          ((b)localObject1).pAU.setBackgroundDrawable(null);
         }
       }
       AppMethodBeat.o(108336);
@@ -278,12 +282,12 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract void Bm(int paramInt);
+    public abstract void BU(int paramInt);
   }
   
   final class b
   {
-    LinearLayout oXM;
+    LinearLayout pBw;
     
     b() {}
   }

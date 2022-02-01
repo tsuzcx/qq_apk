@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends JceStruct
 {
-  public long JUl = 0L;
+  public long LOb = 0L;
   public float x = 0.0F;
   public float y = 0.0F;
   public float z = 0.0F;
@@ -16,7 +16,7 @@ public final class f
   public final void readFrom(JceInputStream paramJceInputStream)
   {
     AppMethodBeat.i(138426);
-    this.JUl = paramJceInputStream.read(this.JUl, 0, true);
+    this.LOb = paramJceInputStream.read(this.LOb, 0, true);
     this.x = paramJceInputStream.read(this.x, 1, true);
     this.y = paramJceInputStream.read(this.y, 2, true);
     this.z = paramJceInputStream.read(this.z, 3, true);
@@ -26,7 +26,7 @@ public final class f
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
     AppMethodBeat.i(138425);
-    paramJceOutputStream.write(this.JUl, 0);
+    paramJceOutputStream.write(this.LOb, 0);
     paramJceOutputStream.write(this.x, 1);
     paramJceOutputStream.write(this.y, 2);
     paramJceOutputStream.write(this.z, 3);

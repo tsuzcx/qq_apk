@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.appbrand.game.g.b.d;
 import com.tencent.mm.plugin.appbrand.game.g.d;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.game.api.GameShareOption;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +42,7 @@ public class c
       }
       catch (JSONException paramJSONArray)
       {
-        ac.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEdit", paramJSONArray, "hy: json exception!", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEdit", paramJSONArray, "hy: json exception!", new Object[0]);
         localArrayList.clear();
         localArrayList.add(new GameShareOption(0, paramq.getContext().getString(2131755974), false));
         AppMethodBeat.o(45139);
@@ -57,18 +57,18 @@ public class c
   protected final void a(q paramq, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(45141);
-    ac.w("MicroMsg.WAGameJsApiScreenRecorderEdit", "hy: fail errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    ad.w("MicroMsg.WAGameJsApiScreenRecorderEdit", "hy: fail errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     HashMap localHashMap = new HashMap(1);
     localHashMap.put("errCode", Integer.valueOf(paramInt3));
-    paramq.h(paramInt1, k(String.format("fail: errType: %d, errCode: %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }), localHashMap));
+    paramq.h(paramInt1, m(String.format("fail: errType: %d, errCode: %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }), localHashMap));
     AppMethodBeat.o(45141);
   }
   
   protected void a(com.tencent.mm.plugin.appbrand.service.c paramc, int paramInt, b.a parama, String paramString, ArrayList<GameShareOption> paramArrayList, b.d paramd)
   {
     AppMethodBeat.i(45140);
-    parama = parama.jRp;
-    if (bs.isNullOrNil(parama))
+    parama = parama.klD;
+    if (bt.isNullOrNil(parama))
     {
       a(paramc, paramInt, 1, 802, "clipped file lost");
       AppMethodBeat.o(45140);
@@ -77,7 +77,7 @@ public class c
     paramString = new HashMap(2);
     paramString.put("errCode", Integer.valueOf(0));
     paramString.put("videoPath", parama);
-    paramc.h(paramInt, k("ok", paramString));
+    paramc.h(paramInt, m("ok", paramString));
     AppMethodBeat.o(45140);
   }
 }

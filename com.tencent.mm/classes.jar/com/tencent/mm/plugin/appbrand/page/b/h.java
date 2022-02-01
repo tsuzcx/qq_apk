@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.page.b;
 
 public abstract interface h
 {
-  public abstract void Cl();
+  public abstract void DK();
   
-  public abstract void Cm();
+  public abstract void DL();
   
-  public abstract boolean Co();
+  public abstract boolean DN();
 }
 
 

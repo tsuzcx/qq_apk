@@ -7,15 +7,15 @@ import android.view.ViewOutlineProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip/ui/VoipRectangleViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "mRadius", "", "(F)V", "getMRadius", "()F", "setMRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-voip_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/ui/VoipRectangleViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "mRadius", "", "(F)V", "getMRadius", "()F", "setMRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-voip_release"})
 public final class e
   extends ViewOutlineProvider
 {
-  private float asW;
+  private float auN;
   
   public e(float paramFloat)
   {
-    this.asW = paramFloat;
+    this.auN = paramFloat;
   }
   
   public final void getOutline(View paramView, Outline paramOutline)
@@ -28,7 +28,7 @@ public final class e
     paramView = new Rect(0, 0, localRect.right - localRect.left + 0, localRect.bottom - localRect.top + 0);
     if (paramOutline != null)
     {
-      paramOutline.setRoundRect(paramView, this.asW);
+      paramOutline.setRoundRect(paramView, this.auN);
       AppMethodBeat.o(184119);
       return;
     }
@@ -37,7 +37,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.e
  * JD-Core Version:    0.7.0.1
  */

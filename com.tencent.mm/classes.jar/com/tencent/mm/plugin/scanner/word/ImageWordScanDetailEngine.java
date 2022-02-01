@@ -13,20 +13,20 @@ public class ImageWordScanDetailEngine
   implements LifecycleObserver, a<String, b>
 {
   private MMActivity activity;
-  private MutableLiveData<Pair<String, b>> xnk;
+  private MutableLiveData<Pair<String, b>> yBl;
   
   public ImageWordScanDetailEngine(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(204939);
-    this.xnk = new MutableLiveData();
+    AppMethodBeat.i(218744);
+    this.yBl = new MutableLiveData();
     paramMMActivity.getLifecycle().addObserver(this);
     this.activity = paramMMActivity;
-    AppMethodBeat.o(204939);
+    AppMethodBeat.o(218744);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.word.ImageWordScanDetailEngine
  * JD-Core Version:    0.7.0.1
  */

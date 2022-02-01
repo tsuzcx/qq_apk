@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 public final class EditorItemContainer$e
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final e wDp;
+  public static final e xOx;
   
   static
   {
     AppMethodBeat.i(76088);
-    wDp = new e();
+    xOx = new e();
     AppMethodBeat.o(76088);
   }
   

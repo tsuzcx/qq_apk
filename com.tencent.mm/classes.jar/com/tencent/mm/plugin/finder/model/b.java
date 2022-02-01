@@ -1,140 +1,62 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.h;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.j;
-import com.tencent.mm.plugin.finder.storage.logic.b.a;
-import com.tencent.mm.plugin.finder.storage.o;
-import com.tencent.mm.protocal.protobuf.amd;
-import com.tencent.mm.protocal.protobuf.ame;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.view.recyclerview.a;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.plugin.finder.storage.u;
+import com.tencent.mm.protocal.protobuf.apk;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "mixItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;)V", "baseFinderFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getBaseFinderFeed", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "setBaseFinderFeed", "(Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "getMixItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixItem;", "compare", "", "obj", "getItemId", "", "getItemType", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/BaseLocalFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "localItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;)V", "getLocalItem", "()Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "toString", "", "plugin-finder_release"})
 public final class b
-  implements h, a
+  implements al
 {
-  public BaseFinderFeed rux;
-  public final com.tencent.mm.plugin.finder.storage.n ruy;
+  private final u sjP;
   
-  public b(com.tencent.mm.plugin.finder.storage.n paramn)
+  public b(u paramu)
   {
-    AppMethodBeat.i(202545);
-    this.ruy = paramn;
-    paramn = this.ruy.rEg;
-    if (paramn != null) {
-      b.a locala = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
-    }
-    for (paramn = b.a.i(paramn);; paramn = null)
+    AppMethodBeat.i(202936);
+    this.sjP = paramu;
+    AppMethodBeat.o(202936);
+  }
+  
+  public final int a(i parami)
+  {
+    AppMethodBeat.i(202934);
+    p.h(parami, "obj");
+    if (((parami instanceof b)) && (((b)parami).sjP.a(this.sjP)))
     {
-      this.rux = paramn;
-      AppMethodBeat.o(202545);
-      return;
+      AppMethodBeat.o(202934);
+      return 0;
     }
+    AppMethodBeat.o(202934);
+    return -1;
   }
   
-  public final int a(h paramh)
+  public final int bYk()
   {
-    AppMethodBeat.i(202544);
-    k.h(paramh, "obj");
-    if (!(paramh instanceof b)) {}
-    for (Object localObject = null;; localObject = paramh)
-    {
-      if ((b)localObject != null)
-      {
-        localObject = this.ruy;
-        paramh = ((b)paramh).ruy;
-        k.h(paramh, "otherItem");
-        int i;
-        com.tencent.mm.plugin.finder.utils.n localn;
-        if (paramh.rEj.dataType == ((com.tencent.mm.plugin.finder.storage.n)localObject).rEj.dataType)
-        {
-          i = paramh.rEj.dataType;
-          if (i == com.tencent.mm.plugin.finder.storage.n.rEk)
-          {
-            localn = com.tencent.mm.plugin.finder.utils.n.rPN;
-            localObject = ((com.tencent.mm.plugin.finder.storage.n)localObject).rEf;
-            paramh = paramh.rEf;
-            if ((localObject != null) && (paramh != null)) {
-              if ((!bs.isNullOrNil(((j)localObject).cAA())) && (k.g(((j)localObject).cAA(), paramh.cAA()))) {
-                i = 1;
-              }
-            }
-          }
-        }
-        while (i != 0)
-        {
-          AppMethodBeat.o(202544);
-          return 0;
-          i = 0;
-          continue;
-          i = 0;
-          continue;
-          if (i == com.tencent.mm.plugin.finder.storage.n.rEl)
-          {
-            localn = com.tencent.mm.plugin.finder.utils.n.rPN;
-            localObject = ((com.tencent.mm.plugin.finder.storage.n)localObject).rEg;
-            paramh = paramh.rEg;
-            if ((localObject != null) && (paramh != null))
-            {
-              if ((((FinderItem)localObject).getMediaType() == 9999) && (paramh.getMediaType() == 9999))
-              {
-                i = 1;
-                continue;
-              }
-              if ((((FinderItem)localObject).field_id != 0L) && (paramh.field_id != 0L) && (((FinderItem)localObject).field_id == paramh.field_id))
-              {
-                i = 1;
-                continue;
-              }
-              if ((((FinderItem)localObject).getLocalId() > 0L) && (paramh.getLocalId() > 0L) && (((FinderItem)localObject).getLocalId() == paramh.getLocalId())) {
-                i = 1;
-              }
-            }
-          }
-          else if (i == com.tencent.mm.plugin.finder.storage.n.rEm)
-          {
-            localn = com.tencent.mm.plugin.finder.utils.n.rPN;
-            localObject = ((com.tencent.mm.plugin.finder.storage.n)localObject).rEh;
-            paramh = paramh.rEh;
-            if ((localObject != null) && (paramh != null))
-            {
-              k.h(paramh, "other");
-              if ((((o)localObject).rEo.EFD == paramh.rEo.EFD) && (!bs.isNullOrNil(((o)localObject).getWording())) && (k.g(((o)localObject).getWording(), paramh.getWording())))
-              {
-                i = 1;
-                continue;
-              }
-              i = 0;
-              continue;
-            }
-            i = 0;
-            continue;
-          }
-          i = 0;
-        }
-      }
-      AppMethodBeat.o(202544);
-      return -1;
-    }
+    return this.sjP.szb.GnS;
   }
   
-  public final int bTF()
+  public final long lP()
   {
-    return this.ruy.oeH;
+    AppMethodBeat.i(202933);
+    long l = this.sjP.getId();
+    AppMethodBeat.o(202933);
+    return l;
   }
   
-  public final long lx()
+  public final String toString()
   {
-    return this.ruy.rEi;
+    AppMethodBeat.i(202935);
+    String str = "ItemId=" + this.sjP.getId() + ",ItemType=" + bYk() + ' ';
+    AppMethodBeat.o(202935);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.b
  * JD-Core Version:    0.7.0.1
  */

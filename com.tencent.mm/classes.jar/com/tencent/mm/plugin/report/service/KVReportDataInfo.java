@@ -9,12 +9,12 @@ class KVReportDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<KVReportDataInfo> CREATOR;
-  public long cZM;
-  public long dml;
+  public long dle;
+  public long dxZ;
   public String value;
-  public boolean wTB;
-  public boolean wTX;
-  public boolean wTY;
+  public boolean yhD;
+  public boolean yhE;
+  public boolean yhl;
   
   static
   {
@@ -25,26 +25,26 @@ class KVReportDataInfo
   
   public KVReportDataInfo()
   {
-    this.cZM = 0L;
+    this.dle = 0L;
   }
   
   protected KVReportDataInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143844);
-    this.cZM = 0L;
-    this.dml = paramParcel.readLong();
-    this.cZM = paramParcel.readLong();
+    this.dle = 0L;
+    this.dxZ = paramParcel.readLong();
+    this.dle = paramParcel.readLong();
     this.value = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.wTX = bool1;
+      this.yhD = bool1;
       if (paramParcel.readInt() != 1) {
         break label96;
       }
       bool1 = true;
       label65:
-      this.wTB = bool1;
+      this.yhl = bool1;
       if (paramParcel.readInt() != 1) {
         break label101;
       }
@@ -53,7 +53,7 @@ class KVReportDataInfo
     label101:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.wTY = bool1;
+      this.yhE = bool1;
       AppMethodBeat.o(143844);
       return;
       bool1 = false;
@@ -72,20 +72,20 @@ class KVReportDataInfo
   {
     int i = 1;
     AppMethodBeat.i(143843);
-    paramParcel.writeLong(this.dml);
-    paramParcel.writeLong(this.cZM);
+    paramParcel.writeLong(this.dxZ);
+    paramParcel.writeLong(this.dle);
     paramParcel.writeString(this.value);
-    if (this.wTX)
+    if (this.yhD)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.wTB) {
+      if (!this.yhl) {
         break label84;
       }
       paramInt = 1;
       label54:
       paramParcel.writeInt(paramInt);
-      if (!this.wTY) {
+      if (!this.yhE) {
         break label89;
       }
     }

@@ -5,8 +5,8 @@ import com.tencent.e.g.a.a;
 public abstract class b
   extends a
 {
-  private final int KaK;
-  private final int KaL;
+  private final int LUH;
+  private final int LUI;
   
   static
   {
@@ -21,8 +21,8 @@ public abstract class b
   public b(int paramInt1, int paramInt2)
   {
     assert (paramInt1 >= paramInt2);
-    this.KaK = paramInt1;
-    this.KaL = paramInt2;
+    this.LUH = paramInt1;
+    this.LUI = paramInt2;
   }
   
   public void a(g paramg)
@@ -30,8 +30,8 @@ public abstract class b
     try
     {
       super.a(paramg);
-      if (paramg.gE("LIMIT", 0) <= this.KaL) {
-        paramg.gD("LIMIT", this.KaK);
+      if (paramg.hc("LIMIT", 0) <= this.LUI) {
+        paramg.hb("LIMIT", this.LUH);
       }
       return;
     }
@@ -49,13 +49,13 @@ public abstract class b
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokevirtual 53	com/tencent/e/g/g:fEs	()I
+    //   3: invokevirtual 53	com/tencent/e/g/g:fVK	()I
     //   6: istore_2
     //   7: aload_1
     //   8: ldc 37
     //   10: aload_0
-    //   11: getfield 29	com/tencent/e/g/b:KaK	I
-    //   14: invokevirtual 43	com/tencent/e/g/g:gE	(Ljava/lang/String;I)I
+    //   11: getfield 29	com/tencent/e/g/b:LUH	I
+    //   14: invokevirtual 43	com/tencent/e/g/g:hc	(Ljava/lang/String;I)I
     //   17: istore_3
     //   18: iload_3
     //   19: iload_2
@@ -66,13 +66,13 @@ public abstract class b
     //   28: ifne +21 -> 49
     //   31: iload_3
     //   32: aload_0
-    //   33: getfield 29	com/tencent/e/g/b:KaK	I
+    //   33: getfield 29	com/tencent/e/g/b:LUH	I
     //   36: if_icmplt +13 -> 49
     //   39: aload_1
     //   40: ldc 37
     //   42: aload_0
-    //   43: getfield 31	com/tencent/e/g/b:KaL	I
-    //   46: invokevirtual 47	com/tencent/e/g/g:gD	(Ljava/lang/String;I)V
+    //   43: getfield 31	com/tencent/e/g/b:LUI	I
+    //   46: invokevirtual 47	com/tencent/e/g/g:hb	(Ljava/lang/String;I)V
     //   49: aload_0
     //   50: monitorexit
     //   51: iload 4

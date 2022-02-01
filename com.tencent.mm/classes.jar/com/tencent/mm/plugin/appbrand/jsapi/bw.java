@@ -1,12 +1,46 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.q;
+import d.l;
+import d.z;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPredownloadMiniProgramPackage;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class bw
-  extends a<ae>
+  extends a<com.tencent.mm.plugin.appbrand.d>
 {
-  public static final int CTRL_INDEX = 66;
-  public static final String NAME = "reportSubmitForm";
+  public static final int CTRL_INDEX = 678;
+  public static final String NAME = "predownloadMiniProgramPackage";
+  @Deprecated
+  public static final a ktQ;
+  
+  static
+  {
+    AppMethodBeat.i(50409);
+    ktQ = new a((byte)0);
+    AppMethodBeat.o(50409);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPredownloadMiniProgramPackage$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
+  static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements d.g.a.a<z>
+  {
+    b(bw parambw, com.tencent.mm.plugin.appbrand.d paramd, int paramInt)
+    {
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class c<T>
+    implements com.tencent.mm.ipcinvoker.d<ResultType>
+  {
+    c(bw parambw, com.tencent.mm.plugin.appbrand.d paramd, int paramInt) {}
+  }
 }
 
 

@@ -6,13 +6,13 @@ import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -20,76 +20,76 @@ import java.util.HashMap;
 public class MainProcessChecker
   extends AbstractProcessChecker
 {
-  private static String vBF = "";
-  private static final long[] vBu = { 0L, 86400000L };
-  private boolean cBX;
+  private static final long[] wHT = { 0L, 86400000L };
+  private static String wIe = "";
+  private boolean cMW;
   private boolean isHardMode;
-  private int vBA;
-  private long vBB;
-  private StringBuilder vBC;
-  private boolean vBD;
-  private long vBE;
-  private long vBl;
-  private long vBm;
-  private long vBn;
-  private long vBo;
-  private int vBp;
-  private float vBq;
-  private int vBr;
-  private float vBs;
-  private boolean vBt;
-  private long vBv;
-  private long vBw;
-  private long vBx;
-  private long vBy;
-  private long vBz;
+  private long wHK;
+  private long wHL;
+  private long wHM;
+  private long wHN;
+  private int wHO;
+  private float wHP;
+  private int wHQ;
+  private float wHR;
+  private boolean wHS;
+  private long wHU;
+  private long wHV;
+  private long wHW;
+  private long wHX;
+  private long wHY;
+  private int wHZ;
+  private long wIa;
+  private StringBuilder wIb;
+  private boolean wIc;
+  private long wId;
   
   public MainProcessChecker()
   {
     AppMethodBeat.i(124985);
-    this.vBl = 1048576L;
-    this.vBm = 6000L;
-    this.vBn = 734003200L;
-    this.vBo = this.vBn;
-    this.vBp = 92;
-    this.vBq = (this.vBp * 0.01F);
-    this.vBr = 85;
-    this.vBs = (this.vBr * 0.01F);
-    this.cBX = false;
+    this.wHK = 1048576L;
+    this.wHL = 6000L;
+    this.wHM = 734003200L;
+    this.wHN = this.wHM;
+    this.wHO = 92;
+    this.wHP = (this.wHO * 0.01F);
+    this.wHQ = 85;
+    this.wHR = (this.wHQ * 0.01F);
+    this.cMW = false;
     this.isHardMode = true;
-    this.vBt = false;
-    this.vBA = 1;
-    this.vBC = new StringBuilder();
-    this.vBD = false;
-    this.vBE = 0L;
+    this.wHS = false;
+    this.wHZ = 1;
+    this.wIb = new StringBuilder();
+    this.wIc = false;
+    this.wId = 0L;
     AppMethodBeat.o(124985);
   }
   
-  public static void apn(String paramString)
+  public static void aus(String paramString)
   {
-    vBF = paramString;
+    wIe = paramString;
   }
   
-  private void dos()
+  private void dyP()
   {
     AppMethodBeat.i(124993);
-    this.vBv = br.Aj(0L);
-    this.vBw = br.Ak(0L);
-    this.vBx = br.Ai(0L);
-    this.vBy = br.eVY();
-    this.vBz = doq();
+    this.wHU = bs.CZ(0L);
+    this.wHV = bs.Da(0L);
+    this.wHW = bs.CY(0L);
+    this.wHX = bs.flI();
+    this.wHY = dyN();
     AppMethodBeat.o(124993);
   }
   
-  private static boolean gG(int paramInt1, int paramInt2)
+  private static boolean gY(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) > 0;
   }
   
-  private void gd(boolean paramBoolean)
+  private void gi(boolean paramBoolean)
   {
     AppMethodBeat.i(124992);
-    if ((!ai.ciE()) || (!this.cBX))
+    if ((!aj.cnC()) || (!this.cMW))
     {
       AppMethodBeat.o(124992);
       return;
@@ -108,7 +108,7 @@ public class MainProcessChecker
       localIDKey.SetKey(2);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      if (gG(this.vBA, 64))
+      if (gY(this.wHZ, 64))
       {
         localIDKey = new IDKey();
         localIDKey.SetID(959);
@@ -116,7 +116,7 @@ public class MainProcessChecker
         localIDKey.SetValue(1L);
         localArrayList.add(localIDKey);
       }
-      if (gG(this.vBA, 256))
+      if (gY(this.wHZ, 256))
       {
         localIDKey = new IDKey();
         localIDKey.SetID(959);
@@ -124,7 +124,7 @@ public class MainProcessChecker
         localIDKey.SetValue(1L);
         localArrayList.add(localIDKey);
       }
-      if (gG(this.vBA, 128))
+      if (gY(this.wHZ, 128))
       {
         localIDKey = new IDKey();
         localIDKey.SetID(959);
@@ -136,46 +136,46 @@ public class MainProcessChecker
       localIDKey.SetID(959);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      if (!gG(this.vBA, 4)) {
+      if (!gY(this.wHZ, 4)) {
         break label475;
       }
       localIDKey.SetKey(106);
     }
     for (;;)
     {
-      e.wTc.b(localArrayList, false);
+      e.ygI.b(localArrayList, false);
       AppMethodBeat.o(124992);
       return;
       localIDKey = new IDKey();
       localIDKey.SetID(959);
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
-      if (gG(this.vBA, 8))
+      if (gY(this.wHZ, 8))
       {
         localIDKey.SetKey(100);
         break;
       }
-      if (gG(this.vBA, 16))
+      if (gY(this.wHZ, 16))
       {
         localIDKey.SetKey(101);
         break;
       }
-      if (gG(this.vBA, 32))
+      if (gY(this.wHZ, 32))
       {
         localIDKey.SetKey(102);
         break;
       }
-      if (gG(this.vBA, 512))
+      if (gY(this.wHZ, 512))
       {
         localIDKey.SetKey(103);
         break;
       }
-      if (gG(this.vBA, 1024))
+      if (gY(this.wHZ, 1024))
       {
         localIDKey.SetKey(104);
         break;
       }
-      if ((gG(this.vBA, 64)) || (gG(this.vBA, 128)) || (gG(this.vBA, 256)))
+      if ((gY(this.wHZ, 64)) || (gY(this.wHZ, 128)) || (gY(this.wHZ, 256)))
       {
         localIDKey.SetKey(105);
         break;
@@ -187,40 +187,40 @@ public class MainProcessChecker
     }
   }
   
-  public final boolean aa(long paramLong1, long paramLong2)
+  public final boolean ac(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(124989);
-    this.cBX = true;
-    ac.i(getTag(), "[onCheck] processId:%s loopCheckTime:%sms isForeground:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(this.cqM) });
+    this.cMW = true;
+    ad.i(getTag(), "[onCheck] processId:%s loopCheckTime:%sms isForeground:%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(this.cBJ) });
     label1077:
     for (;;)
     {
       try
       {
-        if (!this.cBX)
+        if (!this.cMW)
         {
-          this.vBA |= 0x0;
+          this.wHZ |= 0x0;
           return false;
         }
-        if (bs.isNullOrNil(this.vAZ.vBc))
+        if (bt.isNullOrNil(this.wHy.wHB))
         {
-          ac.w("MicroMsg.MainProcessChecker", "it's never start activity! just return.");
-          this.vBA |= 0x2;
+          ad.w("MicroMsg.MainProcessChecker", "it's never start activity! just return.");
+          this.wHZ |= 0x2;
           return false;
         }
-        if (this.cqM)
+        if (this.cBJ)
         {
-          ac.w("MicroMsg.MainProcessChecker", "isForeground true! just return.");
-          this.vBA |= 0x4;
+          ad.w("MicroMsg.MainProcessChecker", "isForeground true! just return.");
+          this.wHZ |= 0x4;
           return false;
         }
-        if (SystemClock.uptimeMillis() - this.vBE >= paramLong2)
+        if (SystemClock.uptimeMillis() - this.wId >= paramLong2)
         {
           i = 1;
           if (i == 0)
           {
-            ac.w("MicroMsg.MainProcessChecker", "it's not enough loopCheckTime[%s], just return.", new Object[] { Long.valueOf(paramLong2) });
-            this.vBA |= 0x4;
+            ad.w("MicroMsg.MainProcessChecker", "it's not enough loopCheckTime[%s], just return.", new Object[] { Long.valueOf(paramLong2) });
+            this.wHZ |= 0x4;
             return false;
           }
         }
@@ -238,13 +238,13 @@ public class MainProcessChecker
         paramLong1 -= localCalendar.getTimeInMillis();
         if (!b.DEBUG)
         {
-          if ((vBu[0] <= paramLong1) && (paramLong1 <= vBu[1]))
+          if ((wHT[0] <= paramLong1) && (paramLong1 <= wHT[1]))
           {
             break label1077;
             if (i == 0)
             {
-              ac.w("MicroMsg.MainProcessChecker", "it's not at workTime[%s-%s], just return.", new Object[] { Long.valueOf(vBu[0]), Long.valueOf(vBu[1]) });
-              this.vBA |= 0x8;
+              ad.w("MicroMsg.MainProcessChecker", "it's not at workTime[%s-%s], just return.", new Object[] { Long.valueOf(wHT[0]), Long.valueOf(wHT[1]) });
+              this.wHZ |= 0x8;
               return false;
             }
           }
@@ -253,14 +253,14 @@ public class MainProcessChecker
             i = 0;
             continue;
           }
-          if (this.vBt) {
-            if ((!this.cqM) && (vBF.equalsIgnoreCase(this.vAZ.vBc)))
+          if (this.wHS) {
+            if ((!this.cBJ) && (wIe.equalsIgnoreCase(this.wHy.wHB)))
             {
               i = 1;
               if (i == 0)
               {
-                ac.w("MicroMsg.MainProcessChecker", "it cares if it whether LauncherUI to back but it's not, just return.");
-                this.vBA |= 0x10;
+                ad.w("MicroMsg.MainProcessChecker", "it cares if it whether LauncherUI to back but it's not, just return.");
+                this.wHZ |= 0x10;
                 return false;
               }
             }
@@ -270,22 +270,22 @@ public class MainProcessChecker
               continue;
             }
           }
-          if (dor())
+          if (dyO())
           {
-            this.vBA |= 0x20;
+            this.wHZ |= 0x20;
             return false;
           }
           if (this.isHardMode)
           {
-            paramLong1 = br.Aj(this.vBv) + br.Ak(this.vBw) + br.Ai(this.vBx) + br.Ak(this.vBy);
-            ac.i(getTag(), "[isTraffic] diff:%s byte", new Object[] { Long.valueOf(paramLong1) });
-            if ((float)paramLong1 > 1.0F * (float)paramLong2 / 60000.0F * (float)this.vBl)
+            paramLong1 = bs.CZ(this.wHU) + bs.Da(this.wHV) + bs.CY(this.wHW) + bs.Da(this.wHX);
+            ad.i(getTag(), "[isTraffic] diff:%s byte", new Object[] { Long.valueOf(paramLong1) });
+            if ((float)paramLong1 > 1.0F * (float)paramLong2 / 60000.0F * (float)this.wHK)
             {
               i = 1;
               if (i != 0)
               {
-                this.vBA |= 0x200;
-                ac.i(getTag(), "is over Traffic, just return");
+                this.wHZ |= 0x200;
+                ad.i(getTag(), "is over Traffic, just return");
                 return false;
               }
             }
@@ -297,15 +297,15 @@ public class MainProcessChecker
           }
           if (this.isHardMode)
           {
-            paramLong1 = doq() - this.vBz;
-            ac.i(getTag(), "[isCpuBusy] diff:%s Jiffies", new Object[] { Long.valueOf(paramLong1) });
-            if ((float)paramLong1 >= 1.0F * (float)paramLong2 / 60000.0F * (float)this.vBm)
+            paramLong1 = dyN() - this.wHY;
+            ad.i(getTag(), "[isCpuBusy] diff:%s Jiffies", new Object[] { Long.valueOf(paramLong1) });
+            if ((float)paramLong1 >= 1.0F * (float)paramLong2 / 60000.0F * (float)this.wHL)
             {
               i = 1;
               if (i != 0)
               {
-                this.vBA |= 0x400;
-                ac.i(getTag(), "is cpu busy, just return");
+                this.wHZ |= 0x400;
+                ad.i(getTag(), "is cpu busy, just return");
                 return false;
               }
             }
@@ -318,37 +318,37 @@ public class MainProcessChecker
           paramLong1 = Runtime.getRuntime().maxMemory();
           paramLong2 = Runtime.getRuntime().totalMemory();
           boolean bool1 = false;
-          ac.i(getTag(), "[isOverMemory] java[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong2 / (float)paramLong1), Float.valueOf(this.vBs) });
-          if (1.0F * (float)paramLong2 / (float)paramLong1 >= this.vBs)
+          ad.i(getTag(), "[isOverMemory] java[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong2 / (float)paramLong1), Float.valueOf(this.wHR) });
+          if (1.0F * (float)paramLong2 / (float)paramLong1 >= this.wHR)
           {
-            this.vBA |= 0x40;
+            this.wHZ |= 0x40;
             bool1 = true;
           }
           boolean bool2 = bool1;
-          if (!this.vBD)
+          if (!this.wIc)
           {
-            paramLong1 = HW();
-            ac.i(getTag(), "[isOverMemory] vm[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong1 / 4.294967E+009F), Float.valueOf(this.vBq) });
+            paramLong1 = Jr();
+            ad.i(getTag(), "[isOverMemory] vm[%s:%s]", new Object[] { Float.valueOf(1.0F * (float)paramLong1 / 4.294967E+009F), Float.valueOf(this.wHP) });
             bool2 = bool1;
-            if (1.0F * (float)paramLong1 / 4.294967E+009F >= this.vBq)
+            if (1.0F * (float)paramLong1 / 4.294967E+009F >= this.wHP)
             {
-              this.vBA |= 0x100;
+              this.wHZ |= 0x100;
               bool2 = true;
             }
           }
           paramLong1 = Debug.getNativeHeapSize();
-          ac.w(getTag(), "[isOverMemory] native[%s:%s]", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.vBo) });
-          if (paramLong1 > this.vBo)
+          ad.w(getTag(), "[isOverMemory] native[%s:%s]", new Object[] { Long.valueOf(paramLong1), Long.valueOf(this.wHN) });
+          if (paramLong1 > this.wHN)
           {
             i = 1;
             if (i != 0)
             {
-              this.vBA |= 0x80;
+              this.wHZ |= 0x80;
               bool2 = true;
             }
-            dos();
-            gd(bool2);
-            this.vBA = 1;
+            dyP();
+            gi(bool2);
+            this.wHZ = 1;
             AppMethodBeat.o(124989);
             return bool2;
           }
@@ -359,87 +359,69 @@ public class MainProcessChecker
       }
       finally
       {
-        dos();
-        gd(false);
-        this.vBA = 1;
+        dyP();
+        gi(false);
+        this.wHZ = 1;
         AppMethodBeat.o(124989);
       }
     }
   }
   
-  public final void bT(boolean paramBoolean)
+  public final void bV(boolean paramBoolean)
   {
     AppMethodBeat.i(124990);
-    super.bT(paramBoolean);
-    ac.i("MicroMsg.MainProcessChecker", "[onAppForeground] isForeground:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    super.bV(paramBoolean);
+    ad.i("MicroMsg.MainProcessChecker", "[onAppForeground] isForeground:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (!paramBoolean) {
-      this.vBE = SystemClock.uptimeMillis();
+      this.wId = SystemClock.uptimeMillis();
     }
     AppMethodBeat.o(124990);
   }
   
-  protected final void dom()
-  {
-    AppMethodBeat.i(124988);
-    ac.i(getTag(), "onScreenOff enable:%s", new Object[] { Boolean.valueOf(this.cBX) });
-    if (!this.cBX)
-    {
-      AppMethodBeat.o(124988);
-      return;
-    }
-    if ((b.DEBUG) || ((!this.vBD) && (HW() >= 3994319585.2800002D)))
-    {
-      this.vBA |= 0x100;
-      gd(true);
-      dol();
-    }
-    AppMethodBeat.o(124988);
-  }
-  
-  protected final String don()
+  protected final String dyK()
   {
     AppMethodBeat.i(124987);
-    Object localObject = new StringBuilder(this.vBC);
-    ((StringBuilder)localObject).append(super.don());
+    Object localObject = new StringBuilder(this.wIb);
+    ((StringBuilder)localObject).append(super.dyK());
     HashMap localHashMap = new HashMap();
-    int i = as(localHashMap);
+    int i = ax(localHashMap);
     if (i >= 300)
     {
       ((StringBuilder)localObject).append("threadCount:").append(i).append("\n");
       ((StringBuilder)localObject).append(localHashMap.toString()).append("\n");
-      e.wTc.idkeyStat(959L, 8L, 1L, true);
+      e.ygI.idkeyStat(959L, 8L, 1L, true);
     }
     localObject = ((StringBuilder)localObject).toString();
     AppMethodBeat.o(124987);
     return localObject;
   }
   
-  protected final long doo()
+  protected final long dyL()
   {
-    return this.vBB;
+    return this.wIa;
   }
   
-  protected final void gF(int paramInt1, int paramInt2)
+  protected final void gX(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(124991);
-    super.gF(paramInt1, paramInt2);
-    ac.w(getTag(), "[onCallUp] %s -> %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-    if (ai.ciE())
+    super.gX(paramInt1, paramInt2);
+    ad.w(getTag(), "[onCallUp] %s -> %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+    if (aj.cnC())
     {
-      e.wTc.idkeyStat(959L, 1L, 1L, true);
-      cOC().postDelayed(new Runnable()
+      e.ygI.idkeyStat(959L, 1L, 1L, true);
+      cWY().postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(124984);
-          if (MainProcessChecker.this.vAZ.vBd)
+          if (MainProcessChecker.this.wHy.wHC)
           {
-            ac.w(MainProcessChecker.this.getTag(), "[onCallUp] My God, you saw me!");
-            e.wTc.idkeyStat(959L, 7L, 1L, true);
+            ad.w(MainProcessChecker.this.getTag(), "[onCallUp] My God, you saw me!");
+            e.ygI.idkeyStat(959L, 7L, 1L, true);
             AppMethodBeat.o(124984);
             return;
           }
-          ac.w(MainProcessChecker.this.getTag(), "[onCallUp] you can't see me, perry!");
+          ad.w(MainProcessChecker.this.getTag(), "[onCallUp] you can't see me, perry!");
           AppMethodBeat.o(124984);
         }
       }, 30000L);
@@ -454,7 +436,25 @@ public class MainProcessChecker
   
   protected final boolean isEnable()
   {
-    return this.cBX;
+    return this.cMW;
+  }
+  
+  protected final void onScreenOff()
+  {
+    AppMethodBeat.i(124988);
+    ad.i(getTag(), "onScreenOff enable:%s", new Object[] { Boolean.valueOf(this.cMW) });
+    if (!this.cMW)
+    {
+      AppMethodBeat.o(124988);
+      return;
+    }
+    if ((b.DEBUG) || ((!this.wIc) && (Jr() >= 3994319585.2800002D)))
+    {
+      this.wHZ |= 0x100;
+      gi(true);
+      dyJ();
+    }
+    AppMethodBeat.o(124988);
   }
   
   public final void start()
@@ -463,31 +463,31 @@ public class MainProcessChecker
     super.start();
     try
     {
-      if (g.ab(com.tencent.mm.plugin.expt.a.b.class) == null)
+      if (g.ab(com.tencent.mm.plugin.expt.b.b.class) == null)
       {
-        ac.w("MicroMsg.MainProcessChecker", "IExptService is null!");
+        ad.w("MicroMsg.MainProcessChecker", "IExptService is null!");
         AppMethodBeat.o(124986);
         return;
       }
-      this.vBD = q.is64BitRuntime();
-      this.vBo = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOu, this.vBn);
-      this.vBq = (((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOv, this.vBp) * 0.01F);
-      this.vBs = (((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOw, this.vBr) * 0.01F);
-      vBu[0] = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOx, 0);
-      vBu[1] = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOy, 86400000L);
-      this.vBl = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOE, 1048576L);
-      this.vBm = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOD, 6000L);
-      this.isHardMode = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOA, true);
-      this.vBt = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOB, false);
-      this.vBB = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pOC, 1200000L);
-      this.vBC.append(" \n***************ProcessElf Config****************\n| is64BitRuntime:").append(this.vBD).append("\n| isHardMode:").append(this.isHardMode).append("\n| workTime:").append(vBu[0]).append("-").append(vBu[1]).append("ms\n| NATIVE_SIZE:").append(this.vBo).append("B\n| MEMORY_VM_TOP:").append(this.vBq).append("%\n| MEMORY_JAVA_TOP:").append(this.vBs).append("%\n| TRAFFIC_PER_MIN:").append(this.vBl).append("B\n| JIFFIES_PER_MIN:").append(this.vBm).append("jiffy\n| CHECK_TIME:").append(this.vBB).append("ms\n************************************************\n");
-      ac.i("MicroMsg.MainProcessChecker", this.vBC.toString());
+      this.wIc = q.is64BitRuntime();
+      this.wHN = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qst, this.wHM);
+      this.wHP = (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsu, this.wHO) * 0.01F);
+      this.wHR = (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsv, this.wHQ) * 0.01F);
+      wHT[0] = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsw, 0);
+      wHT[1] = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsx, 86400000L);
+      this.wHK = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsD, 1048576L);
+      this.wHL = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsC, 6000L);
+      this.isHardMode = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsz, true);
+      this.wHS = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsA, false);
+      this.wIa = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qsB, 1200000L);
+      this.wIb.append(" \n***************ProcessElf Config****************\n| is64BitRuntime:").append(this.wIc).append("\n| isHardMode:").append(this.isHardMode).append("\n| workTime:").append(wHT[0]).append("-").append(wHT[1]).append("ms\n| NATIVE_SIZE:").append(this.wHN).append("B\n| MEMORY_VM_TOP:").append(this.wHP).append("%\n| MEMORY_JAVA_TOP:").append(this.wHR).append("%\n| TRAFFIC_PER_MIN:").append(this.wHK).append("B\n| JIFFIES_PER_MIN:").append(this.wHL).append("jiffy\n| CHECK_TIME:").append(this.wIa).append("ms\n************************************************\n");
+      ad.i("MicroMsg.MainProcessChecker", this.wIb.toString());
       AppMethodBeat.o(124986);
       return;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.MainProcessChecker", "[resetConfig] ERROR!!! %s", new Object[] { localException });
+      ad.e("MicroMsg.MainProcessChecker", "[resetConfig] ERROR!!! %s", new Object[] { localException });
       AppMethodBeat.o(124986);
     }
   }

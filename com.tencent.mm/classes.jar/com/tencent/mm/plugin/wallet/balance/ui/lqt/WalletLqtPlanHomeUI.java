@@ -11,9 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,6 +19,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.CgiLqtPlanIndex;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.CgiLqtPlanIndex.BannerParcel;
@@ -35,15 +33,15 @@ import com.tencent.mm.plugin.wallet.balance.model.lqt.z;
 import com.tencent.mm.plugin.wallet.balance.model.lqt.z.a;
 import com.tencent.mm.plugin.wallet_core.model.m;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.btd;
-import com.tencent.mm.protocal.protobuf.bup;
-import com.tencent.mm.protocal.protobuf.bws;
-import com.tencent.mm.protocal.protobuf.cfp;
-import com.tencent.mm.protocal.protobuf.cfq;
-import com.tencent.mm.protocal.protobuf.djd;
-import com.tencent.mm.protocal.protobuf.in;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bxr;
+import com.tencent.mm.protocal.protobuf.bze;
+import com.tencent.mm.protocal.protobuf.cbi;
+import com.tencent.mm.protocal.protobuf.cko;
+import com.tencent.mm.protocal.protobuf.ckp;
+import com.tencent.mm.protocal.protobuf.dos;
+import com.tencent.mm.protocal.protobuf.iu;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.wallet_core.c.a.a;
 import com.tencent.mm.wallet_core.c.ah;
@@ -59,82 +57,82 @@ import java.util.List;
 public class WalletLqtPlanHomeUI
   extends WalletLqtBasePresenterUI
 {
-  private ListView BcR;
-  private TextView BcS;
-  private TextView BcT;
-  private LinearLayout BcU;
-  private Button BcV;
-  private RelativeLayout BcW;
-  private LinearLayout BcX;
-  private RelativeLayout BcY;
-  private LinearLayout BcZ;
-  private TextView Bda;
-  private z Bdb;
-  private a Bdc;
-  private List<cfq> Bdd;
-  private cfp Bde;
+  private ListView CDf;
+  private TextView CDg;
+  private TextView CDh;
+  private LinearLayout CDi;
+  private Button CDj;
+  private RelativeLayout CDk;
+  private LinearLayout CDl;
+  private RelativeLayout CDm;
+  private LinearLayout CDn;
+  private TextView CDo;
+  private z CDp;
+  private a CDq;
+  private List<ckp> CDr;
+  private cko CDs;
   private int requestCode;
-  private ViewGroup tDx;
+  private ViewGroup uGg;
   
   public WalletLqtPlanHomeUI()
   {
     AppMethodBeat.i(68942);
-    this.Bdb = ((z)am(z.class));
-    this.Bdc = new a((byte)0);
-    this.Bdd = new ArrayList();
+    this.CDp = ((z)am(z.class));
+    this.CDq = new a((byte)0);
+    this.CDr = new ArrayList();
     AppMethodBeat.o(68942);
   }
   
-  private void Tr(int paramInt)
+  private void Vj(int paramInt)
   {
     AppMethodBeat.i(68947);
-    ac.i("MicroMsg.WalletLqtPlanHomeUI", "go to add plan ui -> add");
+    ad.i("MicroMsg.WalletLqtPlanHomeUI", "go to add plan ui -> add");
     Intent localIntent = new Intent(this, WalletLqtPlanAddUI.class);
     localIntent.putExtra("key_mode", 1);
     startActivityForResult(localIntent, paramInt);
     AppMethodBeat.o(68947);
   }
   
-  private void b(cfp paramcfp)
+  private void b(cko paramcko)
   {
     AppMethodBeat.i(68946);
-    ac.i("MicroMsg.WalletLqtPlanHomeUI", "limit: %s", new Object[] { Long.valueOf(paramcfp.AWD) });
-    this.tDx.setVisibility(0);
-    if (paramcfp.AWD <= paramcfp.FtU.size())
+    ad.i("MicroMsg.WalletLqtPlanHomeUI", "limit: %s", new Object[] { Long.valueOf(paramcko.CwM) });
+    this.uGg.setVisibility(0);
+    if (paramcko.CwM <= paramcko.HdZ.size())
     {
-      this.tDx.findViewById(2131301635).setVisibility(8);
-      TextView localTextView = (TextView)this.tDx.findViewById(2131301636);
+      this.uGg.findViewById(2131301635).setVisibility(8);
+      TextView localTextView = (TextView)this.uGg.findViewById(2131301636);
       localTextView.setPadding(com.tencent.mm.cc.a.fromDPToPix(getContext(), 24), 0, 0, 0);
-      localTextView.setText(paramcfp.AWG);
+      localTextView.setText(paramcko.CwP);
       localTextView.setTextColor(getContext().getResources().getColor(2131100490));
-      this.tDx.setEnabled(false);
+      this.uGg.setEnabled(false);
       AppMethodBeat.o(68946);
       return;
     }
-    this.tDx.findViewById(2131301635).setVisibility(0);
-    paramcfp = (TextView)this.tDx.findViewById(2131301636);
-    paramcfp.setPadding(0, 0, 0, 0);
-    paramcfp.setText(2131765374);
-    paramcfp.setTextColor(getResources().getColor(2131100711));
-    this.tDx.setEnabled(true);
+    this.uGg.findViewById(2131301635).setVisibility(0);
+    paramcko = (TextView)this.uGg.findViewById(2131301636);
+    paramcko.setPadding(0, 0, 0, 0);
+    paramcko.setText(2131765374);
+    paramcko.setTextColor(getResources().getColor(2131100711));
+    this.uGg.setEnabled(true);
     AppMethodBeat.o(68946);
   }
   
-  private void c(final cfp paramcfp)
+  private void c(final cko paramcko)
   {
     AppMethodBeat.i(68949);
-    ac.d("MicroMsg.WalletLqtPlanHomeUI", "update view");
-    if (paramcfp != null)
+    ad.d("MicroMsg.WalletLqtPlanHomeUI", "update view");
+    if (paramcko != null)
     {
-      if ((paramcfp.FtU == null) || (paramcfp.FtU.isEmpty()))
+      if ((paramcko.HdZ == null) || (paramcko.HdZ.isEmpty()))
       {
-        ac.i("MicroMsg.WalletLqtPlanHomeUI", "show empty view");
+        ad.i("MicroMsg.WalletLqtPlanHomeUI", "show empty view");
         if (this.requestCode == 3)
         {
-          eoW();
-          this.Bdd = paramcfp.FtU;
-          this.Bdc.notifyDataSetChanged();
-          this.tDx.setVisibility(8);
+          eCW();
+          this.CDr = paramcko.HdZ;
+          this.CDq.notifyDataSetChanged();
+          this.uGg.setVisibility(8);
           AppMethodBeat.o(68949);
           return;
         }
@@ -142,66 +140,62 @@ public class WalletLqtPlanHomeUI
         AppMethodBeat.o(68949);
         return;
       }
-      if (bs.isNullOrNil(paramcfp.AWH)) {
+      if (bt.isNullOrNil(paramcko.CwQ)) {
         setMMTitle("");
       }
       for (;;)
       {
         setActionbarColor(getContext().getResources().getColor(2131099648));
-        this.BcW.setVisibility(8);
-        this.BcR.setVisibility(0);
-        b(paramcfp);
-        this.Bdd = paramcfp.FtU;
-        this.Bdc.notifyDataSetChanged();
-        if ((paramcfp.FtV == null) || (bs.isNullOrNil(paramcfp.FtV.title))) {
+        this.CDk.setVisibility(8);
+        this.CDf.setVisibility(0);
+        b(paramcko);
+        this.CDr = paramcko.HdZ;
+        this.CDq.notifyDataSetChanged();
+        if ((paramcko.Hea == null) || (bt.isNullOrNil(paramcko.Hea.title))) {
           break;
         }
-        this.Bda.setText(paramcfp.FtV.title);
-        this.BcX.setOnClickListener(new View.OnClickListener()
+        this.CDo.setText(paramcko.Hea.title);
+        this.CDl.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(68930);
-            ac.i("MicroMsg.WalletLqtPlanHomeUI", "click banner");
-            e.o(WalletLqtPlanHomeUI.this.getContext(), paramcfp.FtV.url, true);
+            b localb = new b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanHomeUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            ad.i("MicroMsg.WalletLqtPlanHomeUI", "click banner");
+            e.o(WalletLqtPlanHomeUI.this.getContext(), paramcko.Hea.url, true);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtPlanHomeUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(68930);
           }
         });
-        this.BcX.setVisibility(0);
+        this.CDl.setVisibility(0);
         AppMethodBeat.o(68949);
         return;
-        setMMTitle(paramcfp.AWH);
+        setMMTitle(paramcko.CwQ);
       }
-      this.BcX.setVisibility(8);
+      this.CDl.setVisibility(8);
       AppMethodBeat.o(68949);
       return;
     }
-    ac.i("MicroMsg.WalletLqtPlanHomeUI", "resp is null");
+    ad.i("MicroMsg.WalletLqtPlanHomeUI", "resp is null");
     finish();
     AppMethodBeat.o(68949);
   }
   
-  private void eoW()
+  private void eCW()
   {
     AppMethodBeat.i(68948);
-    ac.i("MicroMsg.WalletLqtPlanHomeUI", "show null plan home ui");
+    ad.i("MicroMsg.WalletLqtPlanHomeUI", "show null plan home ui");
     setMMTitle(getString(2131765488));
-    this.BcY = ((RelativeLayout)findViewById(2131301689));
-    this.BcY.setVisibility(0);
-    this.BcZ = ((LinearLayout)findViewById(2131301688));
-    this.BcZ.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(68929);
-        WalletLqtPlanHomeUI.b(WalletLqtPlanHomeUI.this);
-        AppMethodBeat.o(68929);
-      }
-    });
+    this.CDm = ((RelativeLayout)findViewById(2131301689));
+    this.CDm.setVisibility(0);
+    this.CDn = ((LinearLayout)findViewById(2131301688));
+    this.CDn.setOnClickListener(new WalletLqtPlanHomeUI.4(this));
     AppMethodBeat.o(68948);
   }
   
-  private void eoX()
+  private void eCX()
   {
     AppMethodBeat.i(68950);
     q localq = new q();
@@ -218,53 +212,28 @@ public class WalletLqtPlanHomeUI
   public void initView()
   {
     AppMethodBeat.i(68944);
-    this.BcR = ((ListView)findViewById(2131301609));
-    this.BcS = ((TextView)findViewById(2131301607));
-    this.BcT = ((TextView)findViewById(2131301605));
-    this.BcU = ((LinearLayout)findViewById(2131301608));
-    this.BcV = ((Button)findViewById(2131301604));
-    this.BcW = ((RelativeLayout)findViewById(2131301606));
-    this.BcX = ((LinearLayout)findViewById(2131301646));
-    this.Bda = ((TextView)findViewById(2131301647));
-    this.Bdc = new a((byte)0);
-    this.BcR.setAdapter(this.Bdc);
-    this.tDx = ((ViewGroup)LayoutInflater.from(this).inflate(2131494620, this.BcR, false));
-    this.tDx.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(68928);
-        WalletLqtPlanHomeUI.a(WalletLqtPlanHomeUI.this);
-        AppMethodBeat.o(68928);
-      }
-    });
-    this.BcR.addFooterView(this.tDx);
-    this.BcV.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(68926);
-        WalletLqtPlanHomeUI.a(WalletLqtPlanHomeUI.this);
-        AppMethodBeat.o(68926);
-      }
-    });
-    this.BcR.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(68927);
-        ac.i("MicroMsg.WalletLqtPlanHomeUI", "pos: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
-        AppMethodBeat.o(68927);
-      }
-    });
+    this.CDf = ((ListView)findViewById(2131301609));
+    this.CDg = ((TextView)findViewById(2131301607));
+    this.CDh = ((TextView)findViewById(2131301605));
+    this.CDi = ((LinearLayout)findViewById(2131301608));
+    this.CDj = ((Button)findViewById(2131301604));
+    this.CDk = ((RelativeLayout)findViewById(2131301606));
+    this.CDl = ((LinearLayout)findViewById(2131301646));
+    this.CDo = ((TextView)findViewById(2131301647));
+    this.CDq = new a((byte)0);
+    this.CDf.setAdapter(this.CDq);
+    this.uGg = ((ViewGroup)LayoutInflater.from(this).inflate(2131494620, this.CDf, false));
+    this.uGg.setOnClickListener(new WalletLqtPlanHomeUI.3(this));
+    this.CDf.addFooterView(this.uGg);
+    this.CDj.setOnClickListener(new WalletLqtPlanHomeUI.1(this));
+    this.CDf.setOnItemClickListener(new WalletLqtPlanHomeUI.2(this));
     AppMethodBeat.o(68944);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(68945);
-    ac.i("MicroMsg.WalletLqtPlanHomeUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.WalletLqtPlanHomeUI", "activity result: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     int i = paramInt1;
     if (paramInt1 == 5)
     {
@@ -288,15 +257,15 @@ public class WalletLqtPlanHomeUI
         paramInt1 = paramIntent.getIntExtra("oper_type", -1);
         int j = paramIntent.getIntExtra("plan_id", -1);
         final Dialog localDialog = com.tencent.mm.wallet_core.ui.g.c(getContext(), false, null);
-        z.a locala = this.Bdb.AXG;
+        z.a locala = this.CDp.CxP;
         com.tencent.mm.vending.g.g.h(Integer.valueOf(paramInt1), Integer.valueOf(j), str).c(locala).f(new com.tencent.mm.vending.c.a() {}).a(new d.a()
         {
-          public final void cc(Object paramAnonymousObject)
+          public final void ce(Object paramAnonymousObject)
           {
             AppMethodBeat.i(68933);
             localDialog.dismiss();
             if ((paramAnonymousObject instanceof m)) {
-              ((m)paramAnonymousObject).B(WalletLqtPlanHomeUI.this.getContext(), false);
+              ((m)paramAnonymousObject).D(WalletLqtPlanHomeUI.this.getContext(), false);
             }
             AppMethodBeat.o(68933);
           }
@@ -304,15 +273,15 @@ public class WalletLqtPlanHomeUI
         continue;
         if (paramInt2 == -1)
         {
-          eoX();
+          eCX();
           continue;
           if (paramInt2 == -1)
           {
-            eoX();
-            this.BcY.setVisibility(8);
+            eCX();
+            this.CDm.setVisibility(8);
             continue;
             if (paramInt2 == -1) {
-              eoX();
+              eCX();
             } else {
               finish();
             }
@@ -333,12 +302,12 @@ public class WalletLqtPlanHomeUI
     hideActionbarLine();
     initView();
     int i = getIntent().getIntExtra("key_plan_go_scene_ui", 0);
-    ac.i("MicroMsg.WalletLqtPlanHomeUI", "WalletLqtPlanHomeUI scene：%s", new Object[] { Integer.valueOf(i) });
+    ad.i("MicroMsg.WalletLqtPlanHomeUI", "WalletLqtPlanHomeUI scene：%s", new Object[] { Integer.valueOf(i) });
     CgiLqtPlanIndex.PlanIndexParcel localPlanIndexParcel;
     switch (i)
     {
     default: 
-      ac.i("MicroMsg.WalletLqtPlanHomeUI", "go to plan home ui");
+      ad.i("MicroMsg.WalletLqtPlanHomeUI", "go to plan home ui");
       paramBundle = getIntent().getParcelableExtra("key_plan_index_resp");
       if (!(paramBundle instanceof CgiLqtPlanIndex.PlanIndexParcel)) {
         break label662;
@@ -351,74 +320,74 @@ public class WalletLqtPlanHomeUI
     }
     for (;;)
     {
-      this.Bde = paramBundle;
-      c(this.Bde);
+      this.CDs = paramBundle;
+      c(this.CDs);
       AppMethodBeat.o(68943);
       return;
-      Tr(65282);
+      Vj(65282);
       AppMethodBeat.o(68943);
       return;
-      eoW();
+      eCW();
       AppMethodBeat.o(68943);
       return;
-      paramBundle = new cfp();
-      paramBundle.nWx = localPlanIndexParcel.nWx;
-      paramBundle.nWy = localPlanIndexParcel.nWy;
-      Iterator localIterator1 = localPlanIndexParcel.AWC.iterator();
+      paramBundle = new cko();
+      paramBundle.ozR = localPlanIndexParcel.ozR;
+      paramBundle.ozS = localPlanIndexParcel.ozS;
+      Iterator localIterator1 = localPlanIndexParcel.CwL.iterator();
       while (localIterator1.hasNext())
       {
         CgiLqtPlanIndex.PlanItemParcel localPlanItemParcel = (CgiLqtPlanIndex.PlanItemParcel)localIterator1.next();
-        cfq localcfq = new cfq();
-        localcfq.fsg = localPlanItemParcel.fsg;
-        localcfq.dBN = localPlanItemParcel.dBN;
-        localcfq.cZz = localPlanItemParcel.cZz;
-        localcfq.vxk = localPlanItemParcel.vxk;
-        localcfq.AWI = localPlanItemParcel.AWI;
-        localcfq.AWJ = localPlanItemParcel.AWJ;
-        localcfq.AWO = localPlanItemParcel.AWO;
-        localcfq.wEw = localPlanItemParcel.wEw;
-        if (localPlanItemParcel.AWK != null)
+        ckp localckp = new ckp();
+        localckp.fKG = localPlanItemParcel.fKG;
+        localckp.dOa = localPlanItemParcel.dOa;
+        localckp.dkR = localPlanItemParcel.dkR;
+        localckp.wCE = localPlanItemParcel.wCE;
+        localckp.CwR = localPlanItemParcel.CwR;
+        localckp.CwS = localPlanItemParcel.CwS;
+        localckp.CwX = localPlanItemParcel.CwX;
+        localckp.xSd = localPlanItemParcel.xSd;
+        if (localPlanItemParcel.CwT != null)
         {
-          localcfq.FtX = new djd();
-          localcfq.FtX.AWP = localPlanItemParcel.AWK.AWP;
-          localcfq.FtX.hiu = localPlanItemParcel.AWK.hiu;
+          localckp.Hec = new dos();
+          localckp.Hec.CwY = localPlanItemParcel.CwT.CwY;
+          localckp.Hec.hAD = localPlanItemParcel.CwT.hAD;
         }
-        if (localPlanItemParcel.AWL != null)
+        if (localPlanItemParcel.CwU != null)
         {
-          localcfq.FtY = new bws();
-          localcfq.FtY.title = localPlanItemParcel.AWL.title;
-          localcfq.FtY.url = localPlanItemParcel.AWL.url;
+          localckp.Hed = new cbi();
+          localckp.Hed.title = localPlanItemParcel.CwU.title;
+          localckp.Hed.url = localPlanItemParcel.CwU.url;
         }
-        if (localPlanItemParcel.AWM != null)
+        if (localPlanItemParcel.CwV != null)
         {
-          localcfq.FtZ = new bup();
-          localcfq.FtZ.AWz = localPlanItemParcel.AWM.AWz;
-          localcfq.FtZ.AWA = localPlanItemParcel.AWM.AWA;
-          Iterator localIterator2 = localPlanItemParcel.AWM.AWB.iterator();
+          localckp.Hee = new bze();
+          localckp.Hee.CwI = localPlanItemParcel.CwV.CwI;
+          localckp.Hee.CwJ = localPlanItemParcel.CwV.CwJ;
+          Iterator localIterator2 = localPlanItemParcel.CwV.CwK.iterator();
           while (localIterator2.hasNext())
           {
             Integer localInteger = (Integer)localIterator2.next();
-            localcfq.FtZ.Fky.add(localInteger);
+            localckp.Hee.GUg.add(localInteger);
           }
         }
-        localcfq.AWN = localPlanItemParcel.AWN;
-        localcfq.state = localPlanItemParcel.state;
-        localcfq.tGS = localPlanItemParcel.tGS;
-        paramBundle.FtU.add(localcfq);
+        localckp.CwW = localPlanItemParcel.CwW;
+        localckp.state = localPlanItemParcel.state;
+        localckp.uJF = localPlanItemParcel.uJF;
+        paramBundle.HdZ.add(localckp);
       }
-      paramBundle.AWD = localPlanIndexParcel.AWD;
-      paramBundle.AWE = localPlanIndexParcel.AWE;
-      if (localPlanIndexParcel.AWF != null)
+      paramBundle.CwM = localPlanIndexParcel.CwM;
+      paramBundle.CwN = localPlanIndexParcel.CwN;
+      if (localPlanIndexParcel.CwO != null)
       {
-        paramBundle.FtV = new in();
-        paramBundle.FtV.title = localPlanIndexParcel.AWF.title;
-        paramBundle.FtV.url = localPlanIndexParcel.AWF.url;
+        paramBundle.Hea = new iu();
+        paramBundle.Hea.title = localPlanIndexParcel.CwO.title;
+        paramBundle.Hea.url = localPlanIndexParcel.CwO.url;
       }
-      paramBundle.AWG = localPlanIndexParcel.AWG;
-      paramBundle.AWH = localPlanIndexParcel.AWH;
+      paramBundle.CwP = localPlanIndexParcel.CwP;
+      paramBundle.CwQ = localPlanIndexParcel.CwQ;
     }
     label662:
-    ac.i("MicroMsg.WalletLqtPlanHomeUI", "parcelable no instanceof CgiLqtPlanIndex.PlanIndexParcel");
+    ad.i("MicroMsg.WalletLqtPlanHomeUI", "parcelable no instanceof CgiLqtPlanIndex.PlanIndexParcel");
     finish();
     AppMethodBeat.o(68943);
   }
@@ -434,12 +403,12 @@ public class WalletLqtPlanHomeUI
   {
     private a() {}
     
-    private cfq Ts(int paramInt)
+    private ckp Vk(int paramInt)
     {
       AppMethodBeat.i(68937);
-      cfq localcfq = (cfq)WalletLqtPlanHomeUI.d(WalletLqtPlanHomeUI.this).get(paramInt);
+      ckp localckp = (ckp)WalletLqtPlanHomeUI.d(WalletLqtPlanHomeUI.this).get(paramInt);
       AppMethodBeat.o(68937);
-      return localcfq;
+      return localckp;
     }
     
     public final int getCount()
@@ -464,93 +433,93 @@ public class WalletLqtPlanHomeUI
         localView = LayoutInflater.from(WalletLqtPlanHomeUI.this.getContext()).inflate(2131494619, paramViewGroup, false);
         localView.setTag(new WalletLqtPlanHomeUI.b(WalletLqtPlanHomeUI.this, localView));
       }
-      paramView = Ts(paramInt);
+      paramView = Vk(paramInt);
       paramViewGroup = (WalletLqtPlanHomeUI.b)localView.getTag();
-      paramViewGroup.Bdj.setPrefix(ah.fAw());
-      Object localObject = e.a(paramView.dBN, "100", 2, RoundingMode.HALF_UP);
+      paramViewGroup.CDx.setPrefix(ah.fRG());
+      Object localObject = e.b(paramView.dOa, "100", 2, RoundingMode.HALF_UP);
       if (((BigDecimal)localObject).intValue() == ((BigDecimal)localObject).doubleValue())
       {
-        paramViewGroup.Bdj.setText(WalletLqtPlanHomeUI.ayQ(((BigDecimal)localObject).intValue()));
-        paramViewGroup.Bdm.setText(String.format("%s %s(%s)", new Object[] { paramView.tGS, paramView.AWO, paramView.vxk }));
-        localObject = u.a(new com.tencent.mm.plugin.wallet_core.ui.view.c(paramView.wEw));
+        paramViewGroup.CDx.setText(WalletLqtPlanHomeUI.aDY(((BigDecimal)localObject).intValue()));
+        paramViewGroup.CDA.setText(String.format("%s %s(%s)", new Object[] { paramView.uJF, paramView.CwX, paramView.wCE }));
+        localObject = u.a(new com.tencent.mm.plugin.wallet_core.ui.view.c(paramView.xSd));
         if (localObject != null) {
-          paramViewGroup.Bbx.setImageBitmap((Bitmap)localObject);
+          paramViewGroup.CBK.setImageBitmap((Bitmap)localObject);
         }
-        if ((paramView.FtX == null) || (bs.isNullOrNil(paramView.FtX.AWP))) {
+        if ((paramView.Hec == null) || (bt.isNullOrNil(paramView.Hec.CwY))) {
           break label429;
         }
-        paramViewGroup.Bdn.setText(paramView.FtX.AWP);
-        if (bs.isNullOrNil(paramView.FtX.hiu)) {
+        paramViewGroup.CDB.setText(paramView.Hec.CwY);
+        if (bt.isNullOrNil(paramView.Hec.hAD)) {
           break label406;
         }
-        paramViewGroup.Bdn.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.cd(paramView.FtX.hiu, true));
+        paramViewGroup.CDB.setTextColor(com.tencent.mm.plugin.wallet_core.utils.g.cl(paramView.Hec.hAD, true));
         label277:
-        paramViewGroup.Bdn.setVisibility(0);
+        paramViewGroup.CDB.setVisibility(0);
         label285:
-        paramViewGroup.Bdq.setVisibility(8);
-        paramViewGroup.Bdo.setVisibility(8);
-        if (paramView.FtY != null) {
-          paramViewGroup.Bdl.setOnClickListener(new WalletLqtPlanHomeUI.b.1(paramViewGroup, paramView));
+        paramViewGroup.CDE.setVisibility(8);
+        paramViewGroup.CDC.setVisibility(8);
+        if (paramView.Hed != null) {
+          paramViewGroup.CDz.setOnClickListener(new WalletLqtPlanHomeUI.b.1(paramViewGroup, paramView));
         }
         if (paramView.state == 1) {
           break label441;
         }
-        paramViewGroup.Bdp.setVisibility(0);
-        paramViewGroup.Bdm.setAlpha(0.2F);
-        paramViewGroup.Bdj.setAlpha(0.2F);
-        paramViewGroup.Bbx.setAlpha(0.3F);
-        paramViewGroup.Bdk.setAlpha(1.0F);
+        paramViewGroup.CDD.setVisibility(0);
+        paramViewGroup.CDA.setAlpha(0.2F);
+        paramViewGroup.CDx.setAlpha(0.2F);
+        paramViewGroup.CBK.setAlpha(0.3F);
+        paramViewGroup.CDy.setAlpha(1.0F);
       }
       for (;;)
       {
         AppMethodBeat.o(68938);
         return localView;
-        paramViewGroup.Bdj.setText(WalletLqtPlanHomeUI.ayQ(((BigDecimal)localObject).toString()));
+        paramViewGroup.CDx.setText(WalletLqtPlanHomeUI.aDY(((BigDecimal)localObject).toString()));
         break;
         label406:
-        paramViewGroup.Bdn.setTextColor(paramViewGroup.Bdf.getResources().getColor(2131099676));
+        paramViewGroup.CDB.setTextColor(paramViewGroup.CDt.getResources().getColor(2131099676));
         break label277;
         label429:
-        paramViewGroup.Bdn.setVisibility(8);
+        paramViewGroup.CDB.setVisibility(8);
         break label285;
         label441:
-        paramViewGroup.Bdp.setVisibility(8);
-        paramViewGroup.Bdm.setAlpha(1.0F);
-        paramViewGroup.Bdj.setAlpha(1.0F);
-        paramViewGroup.Bbx.setAlpha(1.0F);
-        paramViewGroup.Bdk.setAlpha(1.0F);
+        paramViewGroup.CDD.setVisibility(8);
+        paramViewGroup.CDA.setAlpha(1.0F);
+        paramViewGroup.CDx.setAlpha(1.0F);
+        paramViewGroup.CBK.setAlpha(1.0F);
+        paramViewGroup.CDy.setAlpha(1.0F);
       }
     }
   }
   
   public final class b
   {
-    public CdnImageView Bbx;
-    public WalletTextView Bdj;
-    public ImageView Bdk;
-    public LinearLayout Bdl;
-    public TextView Bdm;
-    public TextView Bdn;
-    public TextView Bdo;
-    public TextView Bdp;
-    public LinearLayout Bdq;
-    public View khe;
+    public CdnImageView CBK;
+    public TextView CDA;
+    public TextView CDB;
+    public TextView CDC;
+    public TextView CDD;
+    public LinearLayout CDE;
+    public WalletTextView CDx;
+    public ImageView CDy;
+    public LinearLayout CDz;
+    public View kBS;
     
     public b(View paramView)
     {
       AppMethodBeat.i(68941);
-      this.khe = paramView;
-      this.Bdj = ((WalletTextView)paramView.findViewById(2131301601));
-      this.Bdk = ((ImageView)paramView.findViewById(2131301602));
-      this.Bdp = ((TextView)paramView.findViewById(2131301603));
-      this.Bdm = ((TextView)paramView.findViewById(2131301598));
-      this.Bdn = ((TextView)paramView.findViewById(2131301599));
-      this.Bdo = ((TextView)paramView.findViewById(2131301597));
-      this.Bdq = ((LinearLayout)paramView.findViewById(2131301596));
-      this.Bbx = ((CdnImageView)paramView.findViewById(2131301595));
-      this.Bdl = ((LinearLayout)paramView.findViewById(2131301600));
+      this.kBS = paramView;
+      this.CDx = ((WalletTextView)paramView.findViewById(2131301601));
+      this.CDy = ((ImageView)paramView.findViewById(2131301602));
+      this.CDD = ((TextView)paramView.findViewById(2131301603));
+      this.CDA = ((TextView)paramView.findViewById(2131301598));
+      this.CDB = ((TextView)paramView.findViewById(2131301599));
+      this.CDC = ((TextView)paramView.findViewById(2131301597));
+      this.CDE = ((LinearLayout)paramView.findViewById(2131301596));
+      this.CBK = ((CdnImageView)paramView.findViewById(2131301595));
+      this.CDz = ((LinearLayout)paramView.findViewById(2131301600));
       int i = com.tencent.mm.cc.a.fromDPToPix(WalletLqtPlanHomeUI.this.getContext(), 50);
-      bs.n(this.Bdk, i, i, i, i);
+      bt.n(this.CDy, i, i, i, i);
       AppMethodBeat.o(68941);
     }
   }

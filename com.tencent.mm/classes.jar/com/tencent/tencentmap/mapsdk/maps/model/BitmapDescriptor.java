@@ -38,6 +38,8 @@ public final class BitmapDescriptor
     public abstract String getBitmapId();
     
     public abstract int getFormateType();
+    
+    public abstract void setScale(int paramInt);
   }
 }
 

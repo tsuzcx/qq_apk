@@ -3,81 +3,81 @@ package com.tencent.mm.plugin.backup.b;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean ggB = false;
-  private static int mSg = 0;
-  private static byte[] mSh = "key".getBytes();
-  private static SharedPreferences mSj;
-  public String mSc = "id";
-  public String mSd = "hello";
-  public String mSe = "ok";
-  public e mSf;
-  public byte[] mSi;
+  private static boolean gAl = false;
+  private static int nsF = 0;
+  private static byte[] nsG = "key".getBytes();
+  private static SharedPreferences nsI;
+  public String nsB = "id";
+  public String nsC = "hello";
+  public String nsD = "ok";
+  public e nsE;
+  public byte[] nsH;
   
   public static void aB(byte[] paramArrayOfByte)
   {
-    mSh = paramArrayOfByte;
+    nsG = paramArrayOfByte;
   }
   
-  public static int bCS()
+  public static int bHa()
   {
-    return mSg;
+    return nsF;
   }
   
-  public static byte[] bCT()
+  public static byte[] bHb()
   {
-    return mSh;
+    return nsG;
   }
   
-  public static SharedPreferences bCU()
+  public static SharedPreferences bHc()
   {
-    if (mSj == null) {
-      mSj = ai.getContext().getSharedPreferences("BACKUP_CONFIG", g.YK());
+    if (nsI == null) {
+      nsI = aj.getContext().getSharedPreferences("BACKUP_CONFIG", g.abm());
     }
-    return mSj;
+    return nsI;
   }
   
-  public static void bCV()
+  public static void bHd()
   {
-    ac.i(TAG, "holdReset");
-    ggB = true;
+    ad.i(TAG, "holdReset");
+    gAl = true;
   }
   
-  public static boolean bCW()
+  public static boolean bHe()
   {
-    return ggB;
+    return gAl;
   }
   
-  public static void bCX()
+  public static void bHf()
   {
-    mSh = "key".getBytes();
-    mSg = 0;
-    mSj = null;
-    ggB = false;
+    nsG = "key".getBytes();
+    nsF = 0;
+    nsI = null;
+    gAl = false;
   }
   
-  public static void wK(int paramInt)
+  public static void xq(int paramInt)
   {
-    mSg = paramInt;
+    nsF = paramInt;
   }
   
-  public final e bCP()
+  public final e bGX()
   {
-    if (this.mSf == null) {
-      this.mSf = new e();
+    if (this.nsE == null) {
+      this.nsE = new e();
     }
-    return this.mSf;
+    return this.nsE;
   }
   
-  public abstract void bCQ();
+  public abstract void bGY();
   
-  public abstract void bCR();
+  public abstract void bGZ();
   
   public abstract void p(Object... paramVarArgs);
 }

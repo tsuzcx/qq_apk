@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.appbrand.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ax;
 import d.f;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandProcessSharedMMKV;", "", "()V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "SP_NAME", "", "TAG", "UIN", "", "getUIN", "()I", "UIN_BY_SP", "getUIN_BY_SP", "UIN_BY_SP$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandProcessSharedMMKV;", "", "()V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "SP_NAME", "", "TAG", "UIN", "", "getUIN", "()I", "UIN_BY_SP", "getUIN_BY_SP", "UIN_BY_SP$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
 public final class d
 {
-  private static final f jjI;
-  public static final d jjJ;
+  private static final f jDx;
+  public static final d jDy;
   
   static
   {
     AppMethodBeat.i(50163);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(d.class), "UIN_BY_SP", "getUIN_BY_SP()I")) };
-    jjJ = new d();
-    jjI = d.g.K((d.g.a.a)a.jjK);
+    jDy = new d();
+    jDx = d.g.O((d.g.a.a)a.jDz);
     AppMethodBeat.o(50163);
   }
   
-  public static aw JW()
+  public static ax Lv()
   {
     AppMethodBeat.i(50164);
     Object localObject = new StringBuilder("AppBrandProcessSharedMMKV_");
-    if (com.tencent.mm.kernel.g.agM()) {
-      d.g.b.k.g(com.tencent.mm.kernel.g.agP(), "MMKernel.account()");
+    if (com.tencent.mm.kernel.g.ajx()) {
+      p.g(com.tencent.mm.kernel.g.ajA(), "MMKernel.account()");
     }
-    for (int i = com.tencent.mm.kernel.a.getUin();; i = ((Number)jjI.getValue()).intValue())
+    for (int i = com.tencent.mm.kernel.a.getUin();; i = ((Number)jDx.getValue()).intValue())
     {
-      localObject = aw.aKT(i);
+      localObject = ax.aQz(i);
       AppMethodBeat.o(50164);
       return localObject;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class a
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<Integer>
   {
-    public static final a jjK;
+    public static final a jDz;
     
     static
     {
       AppMethodBeat.i(50162);
-      jjK = new a();
+      jDz = new a();
       AppMethodBeat.o(50162);
     }
     

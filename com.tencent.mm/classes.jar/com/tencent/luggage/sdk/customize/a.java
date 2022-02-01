@@ -7,13 +7,13 @@ import com.tencent.mm.plugin.appbrand.appstorage.h;
 public abstract interface a
   extends b
 {
-  public abstract com.tencent.mm.plugin.appbrand.appstorage.d CJ();
+  public abstract com.tencent.mm.plugin.appbrand.appstorage.d Ei();
   
-  public abstract com.tencent.mm.plugin.appbrand.config.d CK();
+  public abstract com.tencent.mm.plugin.appbrand.config.d Ej();
   
-  public abstract void CL();
+  public abstract void Ek();
   
-  public abstract h ch(String paramString);
+  public abstract h dg(String paramString);
 }
 
 

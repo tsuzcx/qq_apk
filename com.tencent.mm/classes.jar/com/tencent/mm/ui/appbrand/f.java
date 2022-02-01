@@ -11,76 +11,82 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.plugin.appbrand.z.m;
+import com.tencent.mm.plugin.appbrand.z.n;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av.a;
 import com.tencent.mm.ui.base.o;
 
 public final class f
   implements b.k
 {
-  o DyG;
-  public boolean DyH;
-  private long HtH;
-  private ImageView HtI;
-  private String HtJ;
-  private ChatFooter HtK;
-  private boolean HtL;
-  public a HtM;
-  ao HtN;
+  private TextView Aic;
+  private TextView Aid;
+  o FdP;
+  public boolean FdQ;
+  private ChatFooter JhA;
+  private boolean JhB;
+  public a JhC;
+  ap JhD;
+  private long Jhx;
+  private ImageView Jhy;
+  private String Jhz;
   private Bitmap bitmap;
   private View contentView;
   private Context context;
-  private ImageView dkL;
-  private ProgressBar dkN;
-  private View fvu;
-  private TextView yQG;
-  private TextView yQH;
+  private ProgressBar dwA;
+  private ImageView dwy;
+  private View fOB;
   
   public f(Context paramContext, View paramView, ChatFooter paramChatFooter)
   {
     AppMethodBeat.i(33824);
-    this.HtH = 10000L;
+    this.Jhx = 10000L;
     this.contentView = null;
-    this.yQG = null;
-    this.yQH = null;
-    this.dkL = null;
-    this.HtI = null;
-    this.dkN = null;
-    this.HtJ = null;
+    this.Aic = null;
+    this.Aid = null;
+    this.dwy = null;
+    this.Jhy = null;
+    this.dwA = null;
+    this.Jhz = null;
     this.bitmap = null;
-    this.DyH = true;
-    this.HtL = false;
-    this.HtN = null;
+    this.FdQ = true;
+    this.JhB = false;
+    this.JhD = null;
     this.context = paramContext;
-    this.fvu = paramView;
-    this.HtK = paramChatFooter;
+    this.fOB = paramView;
+    this.JhA = paramChatFooter;
     this.contentView = View.inflate(this.context, 2131493398, null);
-    this.yQG = ((TextView)this.contentView.findViewById(2131300963));
-    this.yQH = ((TextView)this.contentView.findViewById(2131300964));
-    this.dkL = ((ImageView)this.contentView.findViewById(2131300943));
-    this.HtI = ((ImageView)this.contentView.findViewById(2131299520));
-    this.dkN = ((ProgressBar)this.contentView.findViewById(2131300955));
-    this.DyG = new o(this.contentView, -2, -2, true);
-    this.DyG.setBackgroundDrawable(new ColorDrawable(0));
-    this.DyG.setOutsideTouchable(true);
-    this.DyG.setFocusable(false);
+    this.Aic = ((TextView)this.contentView.findViewById(2131300963));
+    this.Aid = ((TextView)this.contentView.findViewById(2131300964));
+    this.dwy = ((ImageView)this.contentView.findViewById(2131300943));
+    this.Jhy = ((ImageView)this.contentView.findViewById(2131299520));
+    this.dwA = ((ProgressBar)this.contentView.findViewById(2131300955));
+    this.FdP = new o(this.contentView, -2, -2, true);
+    this.FdP.setBackgroundDrawable(new ColorDrawable(0));
+    this.FdP.setOutsideTouchable(true);
+    this.FdP.setFocusable(false);
     this.contentView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(33815);
-        if (f.this.HtM != null) {
-          f.this.HtM.fhW();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/ui/appbrand/AppBrandServiceImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (f.this.JhC != null) {
+          f.this.JhC.fym();
         }
-        f.this.DyG.dismiss();
+        f.this.FdP.dismiss();
+        a.a(this, "com/tencent/mm/ui/appbrand/AppBrandServiceImageBubble$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(33815);
       }
     });
-    this.HtN = new ao(this.context.getMainLooper())
+    this.JhD = new ap(this.context.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -92,10 +98,10 @@ public final class f
     AppMethodBeat.o(33824);
   }
   
-  public final String Ap()
+  public final String BM()
   {
     AppMethodBeat.i(33823);
-    String str = m.cE(this);
+    String str = n.cG(this);
     AppMethodBeat.o(33823);
     return str;
   }
@@ -103,51 +109,51 @@ public final class f
   public final void E(Bitmap paramBitmap)
   {
     AppMethodBeat.i(33821);
-    ac.d("MicroMsg.AppBrandServiceImageBubble", "onBitmapLoaded");
+    ad.d("MicroMsg.AppBrandServiceImageBubble", "onBitmapLoaded");
     if (paramBitmap == null)
     {
-      ac.w("MicroMsg.AppBrandServiceImageBubble", "bitmap is null");
+      ad.w("MicroMsg.AppBrandServiceImageBubble", "bitmap is null");
       AppMethodBeat.o(33821);
       return;
     }
     this.bitmap = paramBitmap;
-    this.dkN.setVisibility(8);
+    this.dwA.setVisibility(8);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.dkL.setVisibility(0);
-      this.dkL.setImageBitmap(paramBitmap);
-      this.HtI.setVisibility(8);
+      this.dwy.setVisibility(0);
+      this.dwy.setImageBitmap(paramBitmap);
+      this.Jhy.setVisibility(8);
       AppMethodBeat.o(33821);
       return;
     }
-    this.HtI.setVisibility(0);
-    this.dkL.setVisibility(8);
+    this.Jhy.setVisibility(0);
+    this.dwy.setVisibility(8);
     AppMethodBeat.o(33821);
   }
   
-  public final void aBa()
+  public final void aEd()
   {
     AppMethodBeat.i(33820);
-    ac.d("MicroMsg.AppBrandServiceImageBubble", "beforeLoadBitmap");
-    this.dkN.setVisibility(0);
-    this.dkL.setVisibility(8);
-    this.HtI.setVisibility(8);
+    ad.d("MicroMsg.AppBrandServiceImageBubble", "beforeLoadBitmap");
+    this.dwA.setVisibility(0);
+    this.dwy.setVisibility(8);
+    this.Jhy.setVisibility(8);
     AppMethodBeat.o(33820);
   }
   
-  public final void of()
+  public final void ox()
   {
     AppMethodBeat.i(33822);
-    ac.i("MicroMsg.AppBrandServiceImageBubble", "onLoadFailed");
-    this.HtI.setVisibility(0);
-    this.dkN.setVisibility(8);
-    this.dkL.setVisibility(8);
+    ad.i("MicroMsg.AppBrandServiceImageBubble", "onLoadFailed");
+    this.Jhy.setVisibility(0);
+    this.dwA.setVisibility(8);
+    this.dwy.setVisibility(8);
     AppMethodBeat.o(33822);
   }
   
   public static abstract interface a
   {
-    public abstract void fhW();
+    public abstract void fym();
   }
 }
 

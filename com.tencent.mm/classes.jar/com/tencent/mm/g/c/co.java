@@ -8,13 +8,19 @@ public abstract class co
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eEf = "createTime".hashCode();
+  private static final int eOw = "id".hashCode();
+  private static final int faZ = "protocolNumber".hashCode();
+  private static final int fba = "logContent".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE = "value".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean __hadSetvalue = true;
-  public String field_key;
-  public byte[] field_value;
+  private boolean eDI = true;
+  private boolean eOs = true;
+  private boolean faX = true;
+  private boolean faY = true;
+  public long field_createTime;
+  public String field_id;
+  public String field_logContent;
+  public int field_protocolNumber;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +35,11 @@ public abstract class co
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
+      if (eOw != k) {
         break label65;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_id = paramCursor.getString(i);
+      this.eOs = true;
     }
     for (;;)
     {
@@ -41,8 +47,12 @@ public abstract class co
       break label20;
       break;
       label65:
-      if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getBlob(i);
+      if (faZ == k) {
+        this.field_protocolNumber = paramCursor.getInt(i);
+      } else if (fba == k) {
+        this.field_logContent = paramCursor.getString(i);
+      } else if (eEf == k) {
+        this.field_createTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +62,17 @@ public abstract class co
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.eOs) {
+      localContentValues.put("id", this.field_id);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.faX) {
+      localContentValues.put("protocolNumber", Integer.valueOf(this.field_protocolNumber));
+    }
+    if (this.faY) {
+      localContentValues.put("logContent", this.field_logContent);
+    }
+    if (this.eDI) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

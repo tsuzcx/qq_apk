@@ -6,21 +6,21 @@ import java.util.Map;
 
 public final class f
 {
-  static final Map<String, Integer> mnM;
+  static final Map<String, Integer> mOo;
   
   static
   {
     AppMethodBeat.i(140808);
     HashMap localHashMap = new HashMap();
-    mnM = localHashMap;
+    mOo = localHashMap;
     localHashMap.put("darkgray", Integer.valueOf(-5658199));
-    mnM.put("gray", Integer.valueOf(-8355712));
-    mnM.put("lightgray", Integer.valueOf(-2894893));
-    mnM.put("darkgrey", Integer.valueOf(-5658199));
-    mnM.put("grey", Integer.valueOf(-8355712));
-    mnM.put("lightgrey", Integer.valueOf(-2894893));
-    mnM.put("green", Integer.valueOf(-16744448));
-    mnM.put("transparent", Integer.valueOf(0));
+    mOo.put("gray", Integer.valueOf(-8355712));
+    mOo.put("lightgray", Integer.valueOf(-2894893));
+    mOo.put("darkgrey", Integer.valueOf(-5658199));
+    mOo.put("grey", Integer.valueOf(-8355712));
+    mOo.put("lightgrey", Integer.valueOf(-2894893));
+    mOo.put("green", Integer.valueOf(-16744448));
+    mOo.put("transparent", Integer.valueOf(0));
     AppMethodBeat.o(140808);
   }
 }

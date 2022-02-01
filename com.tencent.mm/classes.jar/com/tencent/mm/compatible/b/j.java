@@ -4,46 +4,46 @@ import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.NoiseSuppressor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
   implements h.a
 {
-  private NoiseSuppressor fCN;
+  private NoiseSuppressor fWb;
   
   @TargetApi(16)
   public j(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155614);
-    this.fCN = null;
+    this.fWb = null;
     boolean bool = NoiseSuppressor.isAvailable();
-    ac.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
+    ad.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.fCN = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
+      this.fWb = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155614);
   }
   
   @TargetApi(16)
-  public final boolean Xh()
+  public final boolean ZI()
   {
     AppMethodBeat.i(155616);
-    if (this.fCN != null) {}
+    if (this.fWb != null) {}
     try
     {
-      int i = this.fCN.setEnabled(true);
+      int i = this.fWb.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155616);
         return true;
       }
-      ac.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed ".concat(String.valueOf(i)));
+      ad.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(155616);

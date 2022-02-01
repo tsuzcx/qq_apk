@@ -9,7 +9,7 @@ import java.util.Arrays;
 public final class c
   implements Serializable
 {
-  public byte[] vnG;
+  public byte[] wsY;
   
   public c(byte[] paramArrayOfByte)
   {
@@ -21,12 +21,12 @@ public final class c
       throw paramArrayOfByte;
     }
     paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-    bt(paramArrayOfByte);
-    this.vnG = paramArrayOfByte;
+    bB(paramArrayOfByte);
+    this.wsY = paramArrayOfByte;
     AppMethodBeat.o(26648);
   }
   
-  private static void bt(byte[] paramArrayOfByte)
+  private static void bB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26649);
     if (paramArrayOfByte.length < 2)
@@ -41,44 +41,44 @@ public final class c
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
     AppMethodBeat.i(26655);
-    this.vnG = ((byte[])(byte[])paramObjectInputStream.readUnshared());
-    bt(this.vnG);
+    this.wsY = ((byte[])(byte[])paramObjectInputStream.readUnshared());
+    bB(this.wsY);
     AppMethodBeat.o(26655);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(26652);
-    int j = this.vnG.length;
-    this.vnG = Arrays.copyOf(this.vnG, this.vnG.length + paramc.vnG.length - 2);
+    int j = this.wsY.length;
+    this.wsY = Arrays.copyOf(this.wsY, this.wsY.length + paramc.wsY.length - 2);
     j -= 2;
-    paramc = (byte[])paramc.vnG.clone();
+    paramc = (byte[])paramc.wsY.clone();
     int m = paramc.length;
     int k = 0;
     while (k < m)
     {
       int i = paramc[k];
-      this.vnG[j] = i;
+      this.wsY[j] = i;
       k += 1;
       j += 1;
     }
     AppMethodBeat.o(26652);
   }
   
-  public final short dkj()
+  public final short duv()
   {
-    return (short)(this.vnG[(this.vnG.length - 2)] & 0xFF);
+    return (short)(this.wsY[(this.wsY.length - 2)] & 0xFF);
   }
   
-  public final short dkk()
+  public final short duw()
   {
-    return (short)(this.vnG[(this.vnG.length - 1)] & 0xFF);
+    return (short)(this.wsY[(this.wsY.length - 1)] & 0xFF);
   }
   
-  public final boolean dkl()
+  public final boolean dux()
   {
     AppMethodBeat.i(26650);
-    if ((short)(dkj() << 8 | dkk()) == -28672)
+    if ((short)(duv() << 8 | duw()) == -28672)
     {
       AppMethodBeat.o(26650);
       return true;
@@ -101,7 +101,7 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    boolean bool = Arrays.equals(this.vnG, paramObject.vnG);
+    boolean bool = Arrays.equals(this.wsY, paramObject.wsY);
     AppMethodBeat.o(26653);
     return bool;
   }
@@ -109,7 +109,7 @@ public final class c
   public final int hashCode()
   {
     AppMethodBeat.i(26654);
-    int i = Arrays.hashCode(this.vnG);
+    int i = Arrays.hashCode(this.wsY);
     AppMethodBeat.o(26654);
     return i;
   }
@@ -117,7 +117,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(26651);
-    String str = a.byteArrayToHexString(this.vnG);
+    String str = a.byteArrayToHexString(this.wsY);
     AppMethodBeat.o(26651);
     return str;
   }

@@ -1,103 +1,46 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.task.c;
-import com.tencent.mm.plugin.appbrand.task.c.a;
-import com.tencent.mm.plugin.appbrand.task.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.y;
+import com.tencent.mm.protocal.protobuf.dus;
+import com.tencent.mm.vending.g.d.b;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "IPC_PreloadNextGame", "PreloadType", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiVerifyPlugin;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "()V", "invoke", "", "service", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-wechat-full-sdk_release"})
 public final class ci
-  extends a<d>
+  extends a<com.tencent.mm.plugin.appbrand.q>
 {
-  public static final int CTRL_INDEX = 644;
-  public static final String NAME = "preloadMiniProgramEnv";
+  public static final int CTRL_INDEX = 313;
+  public static final String NAME = "verifyPlugin";
   @Deprecated
-  public static final a kaz;
+  public static final a kuQ;
   
   static
   {
-    AppMethodBeat.i(50418);
-    kaz = new a((byte)0);
-    AppMethodBeat.o(50418);
+    AppMethodBeat.i(147901);
+    kuQ = new a((byte)0);
+    AppMethodBeat.o(147901);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiVerifyPlugin$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-wechat-full-sdk_release"})
   static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class b$a
-    extends d.g.b.l
-    implements d.g.a.a<y>
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
+  static final class b
+    extends d.g.b.q
+    implements d.g.a.a<z>
   {
-    public static final a kaA;
-    
-    static
-    {
-      AppMethodBeat.i(50411);
-      kaA = new a();
-      AppMethodBeat.o(50411);
-    }
-    
-    b$a()
+    b(ci paramci, String paramString, com.tencent.mm.plugin.appbrand.q paramq, int paramInt)
     {
       super();
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$PreloadType;", "", "serviceType", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;", "(Ljava/lang/String;ILcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;)V", "getServiceType", "()Lcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;", "APP", "GAME", "Companion", "plugin-appbrand-integration_release"})
-  static enum c
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "response", "Lcom/tencent/mm/protocal/protobuf/VerifyPluginResponse;", "kotlin.jvm.PlatformType", "onTerminate"})
+  static final class c<T>
+    implements d.b<dus>
   {
-    public static final a kaF;
-    final e kaE;
-    
-    static
-    {
-      AppMethodBeat.i(50413);
-      c localc1 = new c("APP", 0, e.lYr);
-      kaB = localc1;
-      c localc2 = new c("GAME", 1, e.lYs);
-      kaC = localc2;
-      kaD = new c[] { localc1, localc2 };
-      kaF = new a((byte)0);
-      AppMethodBeat.o(50413);
-    }
-    
-    private c(e parame)
-    {
-      this.kaE = parame;
-    }
-    
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$PreloadType$Companion;", "", "()V", "safeValueOf", "Lcom/tencent/mm/plugin/appbrand/jsapi/PrivateJSApiPreloadMiniProgramEnv$PreloadType;", "name", "", "plugin-appbrand-integration_release"})
-    public static final class a {}
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onReady"})
-  static final class d
-    implements c.a
-  {
-    d(ci paramci, d paramd, int paramInt) {}
-    
-    public final void onReady()
-    {
-      AppMethodBeat.i(50416);
-      if (c.bur() != null) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ci.beT();
-        ac.i("MicroMsg.AppBrand.PrivateJSApiPreloadMiniProgramEnv", "onReady, preloaded[" + bool + ']');
-        if (!bool) {
-          break;
-        }
-        this.jZw.h(this.jXx, this.kaG.LM("ok"));
-        AppMethodBeat.o(50416);
-        return;
-      }
-      this.jZw.h(this.jXx, this.kaG.LM("fail"));
-      AppMethodBeat.o(50416);
-    }
+    c(ci paramci, String paramString, com.tencent.mm.plugin.appbrand.q paramq, int paramInt) {}
   }
 }
 

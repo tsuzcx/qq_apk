@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.lite.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.al;
 import com.tencent.wax.a.a;
 import com.tencent.wax.d;
 import io.flutter.plugin.a.j;
@@ -21,10 +21,10 @@ public final class a
   
   public final a.a a(j paramj)
   {
-    AppMethodBeat.i(208143);
+    AppMethodBeat.i(214608);
     Object localObject = paramj.method;
-    paramj = paramj.fXJ;
-    ac.d("MicroMsg.LiteApp.WxaLiteAppUI", "consume method:%s", new Object[] { localObject });
+    paramj = paramj.grf;
+    ad.d("MicroMsg.LiteApp.WxaLiteAppUI", "consume method:%s", new Object[] { localObject });
     int i = -1;
     switch (((String)localObject).hashCode())
     {
@@ -35,7 +35,7 @@ public final class a
       {
       default: 
         paramj = new a.a(false, null);
-        AppMethodBeat.o(208143);
+        AppMethodBeat.o(214608);
         return paramj;
         if (((String)localObject).equals("publishEvent"))
         {
@@ -103,60 +103,60 @@ public final class a
         break;
       }
     }
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    localObject = d.fHA().KuF;
+    localObject = d.fYR().MkG;
     if ((localObject != null) && ((localObject instanceof com.tencent.mm.plugin.lite.ui.a)) && ((paramj instanceof Map))) {
-      ((com.tencent.mm.plugin.lite.ui.a)localObject).Hz(((Integer)((Map)paramj).get("offset")).intValue());
+      ((com.tencent.mm.plugin.lite.ui.a)localObject).IV(((Integer)((Map)paramj).get("offset")).intValue());
     }
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = d.fHA().KuF;
+    paramj = d.fYR().MkG;
     if ((paramj != null) && ((paramj instanceof com.tencent.mm.plugin.lite.ui.a))) {
-      ((com.tencent.mm.plugin.lite.ui.a)paramj).cWx();
+      ((com.tencent.mm.plugin.lite.ui.a)paramj).dfJ();
     }
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = d.fHA().KuF;
+    paramj = d.fYR().MkG;
     if ((paramj != null) && ((paramj instanceof com.tencent.mm.plugin.lite.ui.a))) {
-      ((com.tencent.mm.plugin.lite.ui.a)paramj).cWw();
+      ((com.tencent.mm.plugin.lite.ui.a)paramj).dfI();
     }
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = d.fHA().KuF;
+    paramj = d.fYR().MkG;
     if ((paramj != null) && ((paramj instanceof com.tencent.mm.plugin.lite.ui.a))) {
-      ((com.tencent.mm.plugin.lite.ui.a)paramj).bjx();
+      ((com.tencent.mm.plugin.lite.ui.a)paramj).bnj();
     }
-    paramj = ew(Boolean.TRUE);
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.TRUE);
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Boolean.valueOf(aj.E(d.fHA().KuF, true)));
-    AppMethodBeat.o(208143);
+    paramj = ez(Boolean.valueOf(al.G(d.fYR().MkG, true)));
+    AppMethodBeat.o(214608);
     return paramj;
-    paramj = ew(Double.valueOf(com.tencent.mm.cc.a.ax(this.mContext, aj.aF(this.mContext))));
-    AppMethodBeat.o(208143);
+    paramj = ez(Double.valueOf(com.tencent.mm.cc.a.aA(this.mContext, al.aF(this.mContext))));
+    AppMethodBeat.o(214608);
     return paramj;
   }
 }

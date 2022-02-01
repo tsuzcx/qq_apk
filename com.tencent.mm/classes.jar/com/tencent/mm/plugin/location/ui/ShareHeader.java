@@ -15,10 +15,10 @@ public class ShareHeader
   extends LinearLayout
 {
   private Context mContext;
-  private ViewGroup tZV;
-  private MMImageButton tZW;
-  private MMImageButton tZX;
   private TextView titleTv;
+  private ViewGroup vcE;
+  private MMImageButton vcF;
+  private MMImageButton vcG;
   
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,29 +43,29 @@ public class ShareHeader
   {
     AppMethodBeat.i(55887);
     View localView = View.inflate(this.mContext, 2131495426, this);
-    this.tZV = ((ViewGroup)localView.findViewById(2131300707));
-    this.tZW = ((MMImageButton)localView.findViewById(2131305935));
-    this.tZX = ((MMImageButton)localView.findViewById(2131305942));
+    this.vcE = ((ViewGroup)localView.findViewById(2131300707));
+    this.vcF = ((MMImageButton)localView.findViewById(2131305935));
+    this.vcG = ((MMImageButton)localView.findViewById(2131305942));
     this.titleTv = ((TextView)localView.findViewById(2131305902));
     AppMethodBeat.o(55887);
   }
   
   public ViewGroup getHeaderBar()
   {
-    return this.tZV;
+    return this.vcE;
   }
   
   public void setOnLeftClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55888);
-    this.tZW.setOnClickListener(paramOnClickListener);
+    this.vcF.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55888);
   }
   
   public void setOnRightClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55889);
-    this.tZX.setOnClickListener(paramOnClickListener);
+    this.vcG.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55889);
   }
   

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.game.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,10 +17,10 @@ public final class a
   {
     AppMethodBeat.i(45136);
     g(paramq);
-    ac.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch pause");
+    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch pause");
     paramq = new HashMap(1);
     paramq.put("state", "pause");
-    A(paramq).beN();
+    A(paramq).bir();
     AppMethodBeat.o(45136);
   }
   
@@ -28,10 +28,10 @@ public final class a
   {
     AppMethodBeat.i(45137);
     g(paramq);
-    ac.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch resume");
+    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch resume");
     paramq = new HashMap(1);
     paramq.put("state", "resume");
-    A(paramq).beN();
+    A(paramq).bir();
     AppMethodBeat.o(45137);
   }
 }

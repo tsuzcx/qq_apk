@@ -17,15 +17,15 @@ public class TAVAudioConfigurationSegment
   
   public String toString()
   {
-    AppMethodBeat.i(191998);
+    AppMethodBeat.i(219795);
     String str = "TAVAudioConfigurationSegment{compositionTimeRange=" + this.compositionTimeRange.toSimpleString() + ", audioConfiguration=" + this.audioConfiguration + '}';
-    AppMethodBeat.o(191998);
+    AppMethodBeat.o(219795);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.audio.TAVAudioConfigurationSegment
  * JD-Core Version:    0.7.0.1
  */

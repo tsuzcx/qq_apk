@@ -1,67 +1,105 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class drc
-  extends com.tencent.mm.bw.a
+  extends cvc
 {
-  public int FYQ;
-  public int FYR;
+  public String GEt;
+  public String qeP;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115867);
+    AppMethodBeat.i(32479);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.FYQ);
-      paramVarArgs.aR(2, this.FYR);
-      AppMethodBeat.o(115867);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bx(1, this.FYQ);
-      int i = f.a.a.b.b.a.bx(2, this.FYR);
-      AppMethodBeat.o(115867);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(115867);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      drc localdrc = (drc)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(115867);
-        return -1;
-      case 1: 
-        localdrc.FYQ = locala.LVo.xF();
-        AppMethodBeat.o(115867);
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.GEt != null) {
+        paramVarArgs.d(2, this.GEt);
+      }
+      if (this.qeP != null) {
+        paramVarArgs.d(3, this.qeP);
+      }
+      AppMethodBeat.o(32479);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label439;
+      }
+    }
+    label439:
+    for (int i = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.GEt != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.GEt);
+      }
+      i = paramInt;
+      if (this.qeP != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.qeP);
+      }
+      AppMethodBeat.o(32479);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(32479);
         return 0;
       }
-      localdrc.FYR = locala.LVo.xF();
-      AppMethodBeat.o(115867);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        drc localdrc = (drc)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(32479);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jc();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localdrc.BaseRequest = ((jc)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32479);
+          return 0;
+        case 2: 
+          localdrc.GEt = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(32479);
+          return 0;
+        }
+        localdrc.qeP = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(32479);
+        return 0;
+      }
+      AppMethodBeat.o(32479);
+      return -1;
     }
-    AppMethodBeat.o(115867);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.drc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.appbrand.z;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
 
 public final class n
 {
-  private static DisplayMetrics mnN;
-  
-  static
+  public static String cG(Object paramObject)
   {
-    AppMethodBeat.i(146132);
-    mnN = ai.getContext().getResources().getDisplayMetrics();
-    AppMethodBeat.o(146132);
+    AppMethodBeat.i(121092);
+    StringBuilder localStringBuilder = new StringBuilder("Token@");
+    if (paramObject != null) {}
+    for (paramObject = Integer.valueOf(paramObject.hashCode());; paramObject = "null")
+    {
+      paramObject = paramObject;
+      AppMethodBeat.o(121092);
+      return paramObject;
+    }
   }
   
-  public static int bxk()
+  public static String sZ(long paramLong)
   {
-    if (mnN == null) {
-      return 16;
-    }
-    return (int)(mnN.density * 16.0F);
+    AppMethodBeat.i(121093);
+    String str = "Token@".concat(String.valueOf(paramLong));
+    AppMethodBeat.o(121093);
+    return str;
   }
 }
 

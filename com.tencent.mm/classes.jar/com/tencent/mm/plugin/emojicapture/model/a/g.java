@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emojicapture.model.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"TAG", "", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"TAG", "", "plugin-emojicapture_release"})
 public final class g
 {
   private static final String TAG = "MicroMsg.StickerPanelData";

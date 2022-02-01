@@ -12,9 +12,9 @@ public final class b
   {
     AppMethodBeat.i(22633);
     getClass().getClassLoader();
-    j.sC("FFmpeg");
+    j.vr("FFmpeg");
     getClass().getClassLoader();
-    j.sC("wechatpack");
+    j.vr("wechatpack");
     AppMethodBeat.o(22633);
   }
   

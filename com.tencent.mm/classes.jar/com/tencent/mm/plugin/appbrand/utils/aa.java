@@ -4,27 +4,27 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @TargetApi(3)
 public final class aa
   extends OrientationEventListener
 {
-  private int ioV = 45;
-  private a moM = a.moO;
-  private b moN;
+  private int iIs = 45;
+  private a mPo = a.mPq;
+  private b mPp;
   
   public aa(Context paramContext, b paramb)
   {
     super(paramContext);
-    this.moN = paramb;
+    this.mPp = paramb;
   }
   
   public final void disable()
   {
     AppMethodBeat.i(137920);
     super.disable();
-    this.moM = a.moO;
+    this.mPo = a.mPq;
     AppMethodBeat.o(137920);
   }
   
@@ -43,39 +43,39 @@ public final class aa
       AppMethodBeat.o(137921);
       return;
     }
-    a locala2 = this.moM;
+    a locala2 = this.mPo;
     a locala1;
-    if (((paramInt >= 360 - this.ioV) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.ioV + 0))) {
-      locala1 = a.moP;
+    if (((paramInt >= 360 - this.iIs) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.iIs + 0))) {
+      locala1 = a.mPr;
     }
     for (;;)
     {
-      if (locala1 != this.moM)
+      if (locala1 != this.mPo)
       {
-        if ((this.moN != null) && (this.moM != a.moO)) {
-          this.moN.a(this.moM, locala1);
+        if ((this.mPp != null) && (this.mPo != a.mPq)) {
+          this.mPp.a(this.mPo, locala1);
         }
-        this.moM = locala1;
+        this.mPo = locala1;
       }
-      ac.i("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged: %d", new Object[] { Integer.valueOf(paramInt) });
+      ad.i("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged: %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(137921);
       return;
-      if ((paramInt >= 270 - this.ioV) && (paramInt <= this.ioV + 270))
+      if ((paramInt >= 270 - this.iIs) && (paramInt <= this.iIs + 270))
       {
-        locala1 = a.moQ;
+        locala1 = a.mPs;
       }
-      else if ((paramInt >= 180 - this.ioV) && (paramInt <= this.ioV + 180))
+      else if ((paramInt >= 180 - this.iIs) && (paramInt <= this.iIs + 180))
       {
-        locala1 = a.moR;
+        locala1 = a.mPt;
       }
       else
       {
         locala1 = locala2;
-        if (paramInt >= 90 - this.ioV)
+        if (paramInt >= 90 - this.iIs)
         {
           locala1 = locala2;
-          if (paramInt <= this.ioV + 90) {
-            locala1 = a.moS;
+          if (paramInt <= this.iIs + 90) {
+            locala1 = a.mPu;
           }
         }
       }
@@ -87,12 +87,12 @@ public final class aa
     static
     {
       AppMethodBeat.i(137918);
-      moO = new a("NONE", 0);
-      moP = new a("PORTRAIT", 1);
-      moQ = new a("LANDSCAPE", 2);
-      moR = new a("REVERSE_PORTRAIT", 3);
-      moS = new a("REVERSE_LANDSCAPE", 4);
-      moT = new a[] { moO, moP, moQ, moR, moS };
+      mPq = new a("NONE", 0);
+      mPr = new a("PORTRAIT", 1);
+      mPs = new a("LANDSCAPE", 2);
+      mPt = new a("REVERSE_PORTRAIT", 3);
+      mPu = new a("REVERSE_LANDSCAPE", 4);
+      mPv = new a[] { mPq, mPr, mPs, mPt, mPu };
       AppMethodBeat.o(137918);
     }
     
@@ -106,7 +106,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.aa
  * JD-Core Version:    0.7.0.1
  */

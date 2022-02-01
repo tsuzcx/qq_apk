@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.game.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hi;
+import com.tencent.mm.g.c.hs;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends hi
+  extends hs
 {
   protected static c.a info;
   
@@ -15,44 +15,44 @@ public final class a
   {
     AppMethodBeat.i(45095);
     c.a locala = new c.a();
-    locala.GvF = new Field[9];
+    locala.IhA = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "RecordId";
-    locala.GvH.put("RecordId", "TEXT PRIMARY KEY ");
+    locala.IhC.put("RecordId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" RecordId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "RecordId";
+    locala.IhB = "RecordId";
     locala.columns[1] = "AppId";
-    locala.GvH.put("AppId", "TEXT");
+    locala.IhC.put("AppId", "TEXT");
     localStringBuilder.append(" AppId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "AppName";
-    locala.GvH.put("AppName", "TEXT");
+    locala.IhC.put("AppName", "TEXT");
     localStringBuilder.append(" AppName TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "UserName";
-    locala.GvH.put("UserName", "TEXT");
+    locala.IhC.put("UserName", "TEXT");
     localStringBuilder.append(" UserName TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "IconUrl";
-    locala.GvH.put("IconUrl", "TEXT");
+    locala.IhC.put("IconUrl", "TEXT");
     localStringBuilder.append(" IconUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "BriefIntro";
-    locala.GvH.put("BriefIntro", "TEXT");
+    locala.IhC.put("BriefIntro", "TEXT");
     localStringBuilder.append(" BriefIntro TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "isSync";
-    locala.GvH.put("isSync", "INTEGER default 'false' ");
+    locala.IhC.put("isSync", "INTEGER default 'false' ");
     localStringBuilder.append(" isSync INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "debugType";
-    locala.GvH.put("debugType", "INTEGER");
+    locala.IhC.put("debugType", "INTEGER");
     localStringBuilder.append(" debugType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "createTime";
-    locala.GvH.put("createTime", "LONG");
+    locala.IhC.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();

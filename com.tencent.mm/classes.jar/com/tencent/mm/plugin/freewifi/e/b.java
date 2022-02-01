@@ -7,14 +7,14 @@ import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiNetCheckUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
 {
   private static String TAG = "MicroMsg.FreeWifi.Protocol31Entry";
   
-  public static void ao(Intent paramIntent)
+  public static void at(Intent paramIntent)
   {
     boolean bool1 = true;
     AppMethodBeat.i(24872);
@@ -25,7 +25,7 @@ public final class b
     }
     Object localObject = paramIntent.getStringExtra("free_wifi_ap_key");
     int i;
-    if (!m.cX((String)localObject))
+    if (!m.ea((String)localObject))
     {
       i = paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0);
       if (2 != i) {
@@ -38,38 +38,38 @@ public final class b
       paramIntent.putExtra("free_wifi_channel_id", i);
       paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_PROTOCOL_NUMBER", 31);
       m.e(paramIntent, paramIntent.getStringExtra("free_wifi_schema_ticket"));
-      paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_REPORT_WIFI_SERVER_ID", m.aj(paramIntent) + "_" + m.al(paramIntent) + "_" + m.am(paramIntent) + "_" + System.currentTimeMillis());
-      boolean bool2 = d.a.cJG().z(paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0), paramIntent.getStringExtra("free_wifi_ap_key"), paramIntent.getStringExtra("free_wifi_schema_ticket"));
-      k.a locala = k.cIC();
-      locala.ssid = m.afm(TAG);
-      locala.bssid = m.afn(TAG);
-      locala.dbq = ((String)localObject);
-      locala.ovU = paramIntent.getStringExtra("free_wifi_schema_ticket");
-      locala.soD = m.al(paramIntent);
-      locala.soE = k.b.soX.spp;
-      locala.soF = k.b.soX.name;
-      locala.channel = m.am(paramIntent);
+      paramIntent.putExtra("ConstantsFreeWifi.FREE_WIFI_REPORT_WIFI_SERVER_ID", m.ao(paramIntent) + "_" + m.aq(paramIntent) + "_" + m.ar(paramIntent) + "_" + System.currentTimeMillis());
+      boolean bool2 = d.a.cRV().y(paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0), paramIntent.getStringExtra("free_wifi_ap_key"), paramIntent.getStringExtra("free_wifi_schema_ticket"));
+      k.a locala = k.cQR();
+      locala.ssid = m.ajK(TAG);
+      locala.bssid = m.ajL(TAG);
+      locala.dmM = ((String)localObject);
+      locala.oZp = paramIntent.getStringExtra("free_wifi_schema_ticket");
+      locala.tlg = m.aq(paramIntent);
+      locala.tlh = k.b.tlA.tlS;
+      locala.tli = k.b.tlA.name;
+      locala.channel = m.ar(paramIntent);
       if (bool2)
       {
         i = 0;
         label254:
         locala.result = i;
-        localObject = locala.cIE();
+        localObject = locala.cQT();
         if (bool2) {
           break label407;
         }
       }
       for (;;)
       {
-        ((k)localObject).c(paramIntent, bool1).cID();
-        ac.i(TAG, "getLock = ".concat(String.valueOf(bool2)));
-        m.afp("type=" + paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0) + ";getLock=" + bool2);
+        ((k)localObject).c(paramIntent, bool1).cQS();
+        ad.i(TAG, "getLock = ".concat(String.valueOf(bool2)));
+        m.ajN("type=" + paramIntent.getIntExtra("free_wifi_threeone_startup_type", 0) + ";getLock=" + bool2);
         if (bool2)
         {
           m.e(paramIntent, paramIntent.getStringExtra("free_wifi_schema_ticket"));
-          paramIntent.setClass(ai.getContext(), FreeWifiNetCheckUI.class);
+          paramIntent.setClass(aj.getContext(), FreeWifiNetCheckUI.class);
           paramIntent.addFlags(67108864);
-          com.tencent.mm.br.d.b(ai.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramIntent);
+          com.tencent.mm.bs.d.b(aj.getContext(), "freewifi", ".ui.FreeWifiEntryUI", paramIntent);
         }
         AppMethodBeat.o(24872);
         return;
@@ -94,29 +94,29 @@ public final class b
     }
   }
   
-  public static b cJE()
+  public static b cRT()
   {
     AppMethodBeat.i(24871);
-    b localb = a.cJF();
+    b localb = a.cRU();
     AppMethodBeat.o(24871);
     return localb;
   }
   
   static final class a
   {
-    private static b sqW;
+    private static b tny;
     
     static
     {
       AppMethodBeat.i(24870);
-      sqW = new b((byte)0);
+      tny = new b((byte)0);
       AppMethodBeat.o(24870);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.e.b
  * JD-Core Version:    0.7.0.1
  */

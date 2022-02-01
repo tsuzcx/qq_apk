@@ -1,25 +1,75 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
-import android.content.Context;
-import com.tencent.luggage.d.e;
-import com.tencent.luggage.d.g;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.d;
+import com.tencent.mm.plugin.lite.jsapi.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
 
-public final class f
-  extends a
+public class f
+  extends com.tencent.mm.plugin.lite.jsapi.a
 {
-  public f()
+  public final int cXg()
   {
-    super(2);
+    return 1;
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.f paramf, bug parambug)
+  public final void j(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(83109);
-    paramf.bWW.AF().Ay();
-    AppMethodBeat.o(83109);
+    AppMethodBeat.i(211639);
+    long l = paramJSONObject.optLong("download_id");
+    if (l <= 0L)
+    {
+      ad.i("LiteAppJsApiInstallDownloadTask", "data is null");
+      this.uYz.YL("fail_invalid_data");
+      AppMethodBeat.o(211639);
+      return;
+    }
+    paramString = com.tencent.mm.plugin.downloader.model.f.ccl().tS(l);
+    if (paramString.status == -1)
+    {
+      ad.e("LiteAppJsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
+      this.uYz.YL("fail");
+      AppMethodBeat.o(211639);
+      return;
+    }
+    if (paramString.status != 3)
+    {
+      ad.e("LiteAppJsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
+      this.uYz.YL("fail");
+      AppMethodBeat.o(211639);
+      return;
+    }
+    com.tencent.mm.plugin.downloader.g.a locala = d.ua(l);
+    if (locala != null)
+    {
+      int i = paramJSONObject.optInt("scene");
+      int j = paramJSONObject.optInt("uiarea");
+      int k = paramJSONObject.optInt("notice_id");
+      int m = paramJSONObject.optInt("ssid");
+      locala.field_scene = i;
+      locala.field_uiarea = j;
+      locala.field_noticeId = k;
+      locala.field_ssid = m;
+      d.e(locala);
+    }
+    com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
+    {
+      public final void gp(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(211638);
+        if (paramAnonymousBoolean)
+        {
+          f.a(f.this).cXe();
+          AppMethodBeat.o(211638);
+          return;
+        }
+        f.b(f.this).YL("fail");
+        AppMethodBeat.o(211638);
+      }
+    });
+    AppMethodBeat.o(211639);
   }
 }
 

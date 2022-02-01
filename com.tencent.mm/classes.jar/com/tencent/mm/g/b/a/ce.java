@@ -6,72 +6,47 @@ import com.tencent.mm.plugin.report.a;
 public final class ce
   extends a
 {
-  private long dHR;
-  private String dNK;
-  private long dNM;
-  private long dOm = 0L;
+  public long dPl = 0L;
+  public long dVd = 0L;
+  public long eca = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(190821);
+    AppMethodBeat.i(120834);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHR);
+    ((StringBuffer)localObject).append(this.dVd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNK);
+    ((StringBuffer)localObject).append(this.dPl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dOm);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dNM);
+    ((StringBuffer)localObject).append(this.eca);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(190821);
+    awz((String)localObject);
+    AppMethodBeat.o(120834);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(190822);
+    AppMethodBeat.i(120835);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("scene:").append(this.dHR);
+    ((StringBuffer)localObject).append("Scene:").append(this.dVd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomid:").append(this.dNK);
+    ((StringBuffer)localObject).append("Action:").append(this.dPl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("reddot:").append(this.dOm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("roomRole:").append(this.dNM);
+    ((StringBuffer)localObject).append("Source:").append(this.eca);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(190822);
+    AppMethodBeat.o(120835);
     return localObject;
-  }
-  
-  public final ce QM()
-  {
-    this.dHR = 1L;
-    return this;
   }
   
   public final int getId()
   {
-    return 19887;
-  }
-  
-  public final ce hd(long paramLong)
-  {
-    this.dNM = paramLong;
-    return this;
-  }
-  
-  public final ce kf(String paramString)
-  {
-    AppMethodBeat.i(190820);
-    this.dNK = t("roomid", paramString, true);
-    AppMethodBeat.o(190820);
-    return this;
+    return 17055;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ce
  * JD-Core Version:    0.7.0.1
  */

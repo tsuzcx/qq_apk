@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.handoff.model;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "icon", "", "title", "appID", "appEntryPage", "appUserName", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAppEntryPage", "()Ljava/lang/String;", "setAppEntryPage", "(Ljava/lang/String;)V", "getAppID", "setAppID", "getAppUserName", "setAppUserName", "getIcon", "setIcon", "getTitle", "setTitle", "body", "copy", "describeContents", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/handoff/model/HandOff;", "icon", "", "title", "appID", "appEntryPage", "appUserName", "handOffType", "", "from", "to", "key", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "getAppEntryPage", "()Ljava/lang/String;", "setAppEntryPage", "(Ljava/lang/String;)V", "getAppID", "setAppID", "getAppUserName", "setAppUserName", "getIcon", "setIcon", "getTitle", "setTitle", "body", "copy", "describeContents", "getDataType", "toString", "update", "", "newHandOff", "writeToParcel", "dest", "flags", "Companion", "api-handoff_release"})
 public class HandOffMP
   extends HandOff
 {
   public static final Parcelable.Creator<HandOffMP> CREATOR;
-  public static final a tBl;
-  String dia;
-  String drM;
-  String kac;
-  public String tBk;
+  public static final a uDU;
+  String dDH;
+  String dtE;
+  String kuy;
   String title;
+  public String uDT;
   
   static
   {
     AppMethodBeat.i(121729);
-    tBl = new a((byte)0);
+    uDU = new a((byte)0);
     CREATOR = (Parcelable.Creator)new b();
     AppMethodBeat.o(121729);
   }
@@ -33,29 +33,29 @@ public class HandOffMP
     AppMethodBeat.i(121728);
     String str = paramParcel.readString();
     if (str == null) {
-      k.fOy();
+      p.gfZ();
     }
-    this.drM = str;
+    this.dDH = str;
     str = paramParcel.readString();
     if (str == null) {
-      k.fOy();
+      p.gfZ();
     }
     this.title = str;
     str = paramParcel.readString();
     if (str == null) {
-      k.fOy();
+      p.gfZ();
     }
-    this.kac = str;
+    this.kuy = str;
     str = paramParcel.readString();
     if (str == null) {
-      k.fOy();
+      p.gfZ();
     }
-    this.tBk = str;
+    this.uDT = str;
     paramParcel = paramParcel.readString();
     if (paramParcel == null) {
-      k.fOy();
+      p.gfZ();
     }
-    this.dia = paramParcel;
+    this.dtE = paramParcel;
     AppMethodBeat.o(121728);
   }
   
@@ -63,27 +63,27 @@ public class HandOffMP
   {
     super(paramInt, paramString6, paramString7, paramString8);
     AppMethodBeat.i(121726);
-    this.drM = paramString1;
+    this.dDH = paramString1;
     this.title = paramString2;
-    this.kac = paramString3;
-    this.tBk = paramString4;
-    this.dia = paramString5;
+    this.kuy = paramString3;
+    this.uDT = paramString4;
+    this.dtE = paramString5;
     AppMethodBeat.o(121726);
   }
   
-  protected final String cSF()
+  protected final String dbM()
   {
     AppMethodBeat.i(121722);
-    String str = n.aWZ("\n        <icon>" + a.di(this.drM) + "</icon>\n        <title>" + a.di(this.title) + "</title>\n        <appid>" + a.di(this.kac) + "</appid>\n        <appentrypage>" + a.di(this.tBk) + "</appentrypage>\n        <appusername>" + a.di(this.dia) + "</appusername>\n    ");
+    String str = n.bdc("\n        <icon>" + a.dl(this.dDH) + "</icon>\n        <title>" + a.dl(this.title) + "</title>\n        <appid>" + a.dl(this.kuy) + "</appid>\n        <appentrypage>" + a.dl(this.uDT) + "</appentrypage>\n        <appusername>" + a.dl(this.dtE) + "</appusername>\n    ");
     AppMethodBeat.o(121722);
     return str;
   }
   
-  public HandOff cSG()
+  public HandOff dbN()
   {
     AppMethodBeat.i(121724);
-    Object localObject = new HandOffMP(this.drM, this.title, this.kac, this.tBk, this.dia, this.tBa, this.dsT, this.hmj, this.key);
-    ((HandOffMP)localObject).adU(this.id);
+    Object localObject = new HandOffMP(this.dDH, this.title, this.kuy, this.uDT, this.dtE, this.uDJ, this.dET, this.hEw, this.key);
+    ((HandOffMP)localObject).setId(this.id);
     localObject = (HandOff)localObject;
     AppMethodBeat.o(121724);
     return localObject;
@@ -102,15 +102,15 @@ public class HandOffMP
   public final void j(HandOff paramHandOff)
   {
     AppMethodBeat.i(121721);
-    k.h(paramHandOff, "newHandOff");
+    p.h(paramHandOff, "newHandOff");
     super.j(paramHandOff);
     if ((paramHandOff instanceof HandOffMP))
     {
-      this.drM = ((HandOffMP)paramHandOff).drM;
+      this.dDH = ((HandOffMP)paramHandOff).dDH;
       this.title = ((HandOffMP)paramHandOff).title;
-      this.kac = ((HandOffMP)paramHandOff).kac;
-      this.tBk = ((HandOffMP)paramHandOff).tBk;
-      this.dia = ((HandOffMP)paramHandOff).dia;
+      this.kuy = ((HandOffMP)paramHandOff).kuy;
+      this.uDT = ((HandOffMP)paramHandOff).uDT;
+      this.dtE = ((HandOffMP)paramHandOff).dtE;
     }
     AppMethodBeat.o(121721);
   }
@@ -118,7 +118,7 @@ public class HandOffMP
   public String toString()
   {
     AppMethodBeat.i(121725);
-    String str = "HandOffMP(key='" + this.key + "', id='" + this.id + "', createTime='" + this.createTime + ", icon='" + this.drM + "', title='" + this.title + "', appID='" + this.kac + "', appEntryPage='" + this.tBk + "', appUserName='" + this.dia + "')";
+    String str = "HandOffMP(key='" + this.key + "', id='" + this.id + "', createTime='" + this.createTime + ", icon='" + this.dDH + "', title='" + this.title + "', appID='" + this.kuy + "', appEntryPage='" + this.uDT + "', appUserName='" + this.dtE + "')";
     AppMethodBeat.o(121725);
     return str;
   }
@@ -126,20 +126,20 @@ public class HandOffMP
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(121723);
-    k.h(paramParcel, "dest");
+    p.h(paramParcel, "dest");
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.drM);
+    paramParcel.writeString(this.dDH);
     paramParcel.writeString(this.title);
-    paramParcel.writeString(this.kac);
-    paramParcel.writeString(this.tBk);
-    paramParcel.writeString(this.dia);
+    paramParcel.writeString(this.kuy);
+    paramParcel.writeString(this.uDT);
+    paramParcel.writeString(this.dtE);
     AppMethodBeat.o(121723);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/handoff/model/HandOffMP$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
   public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/handoff/model/HandOffMP$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/handoff/model/HandOffMP$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "api-handoff_release"})
   public static final class b
     implements Parcelable.Creator<HandOffMP>
   {}

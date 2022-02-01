@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.protocal.protobuf.acw;
-import com.tencent.mm.protocal.protobuf.acx;
-import com.tencent.mm.protocal.protobuf.bve;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.protobuf.aex;
+import com.tencent.mm.protocal.protobuf.aey;
+import com.tencent.mm.protocal.protobuf.bzt;
 
 public final class l
-  extends j.b
+  extends k.b
 {
-  private bve xop;
+  private bzt yCU;
   
   public l()
   {
@@ -20,26 +20,26 @@ public final class l
   {
     super(31);
     AppMethodBeat.i(73783);
-    this.xop = new bve();
-    acw localacw = new acw();
+    this.yCU = new bzt();
+    aex localaex = new aex();
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localacw.EvB = i;
+      localaex.GcX = i;
       i = j;
       if (paramBoolean) {
         i = 0;
       }
-      localacw.EvD = i;
-      acx localacx = new acx();
-      localacx.EvF = paramInt1;
-      localacx.EvG = paramInt2;
-      localacw.EvC = localacx;
-      localacx.EvF = 0;
-      localacx.EvG = 0;
-      localacw.EvE = localacx;
-      this.xop.Fld = localacw;
-      this.uHj = this.xop;
+      localaex.GcZ = i;
+      aey localaey = new aey();
+      localaey.Gdb = paramInt1;
+      localaey.Gdc = paramInt2;
+      localaex.GcY = localaey;
+      localaey.Gdb = 0;
+      localaey.Gdc = 0;
+      localaex.Gda = localaey;
+      this.yCU.GUL = localaex;
+      this.vKm = this.yCU;
       AppMethodBeat.o(73783);
       return;
     }

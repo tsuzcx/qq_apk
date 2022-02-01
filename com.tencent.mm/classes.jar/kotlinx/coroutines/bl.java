@@ -1,36 +1,43 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
 import d.l;
-import d.y;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/InvokeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
-final class bl
-  extends h
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+public final class bl
+  implements bm
 {
-  private final b<Throwable, y> khg;
+  final ca NIJ;
   
-  public bl(b<? super Throwable, y> paramb)
+  public bl(ca paramca)
   {
-    AppMethodBeat.i(118164);
-    this.khg = paramb;
-    AppMethodBeat.o(118164);
+    AppMethodBeat.i(118136);
+    this.NIJ = paramca;
+    AppMethodBeat.o(118136);
+  }
+  
+  public final ca gvq()
+  {
+    return this.NIJ;
+  }
+  
+  public final boolean isActive()
+  {
+    return false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118163);
-    String str = "InvokeOnCancel[" + this.khg.getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
-    AppMethodBeat.o(118163);
+    AppMethodBeat.i(118135);
+    if (am.getDEBUG())
+    {
+      str = this.NIJ.getString("New");
+      AppMethodBeat.o(118135);
+      return str;
+    }
+    String str = super.toString();
+    AppMethodBeat.o(118135);
     return str;
-  }
-  
-  public final void u(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118161);
-    this.khg.ay(paramThrowable);
-    AppMethodBeat.o(118161);
   }
 }
 

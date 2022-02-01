@@ -22,31 +22,31 @@ import java.util.List;
 public class VerticalStepViewIndicator
   extends View
 {
-  private float cEZ;
-  private List<c> lgB;
-  private int lgC;
-  private final String lgF;
-  private int lgG;
-  private float lgH;
-  private float lgI;
-  private Drawable lgJ;
-  private Drawable lgK;
-  private Drawable lgL;
-  private Drawable lgM;
-  private float lgN;
-  private float lgO;
-  private float lgP;
-  private List<Float> lgQ;
-  private Paint lgR;
-  private Paint lgS;
-  private int lgT;
-  private int lgU;
-  private PathEffect lgV;
-  private a lgW;
-  private boolean lgX;
+  private float cQe;
+  private int lDA;
+  private final String lDD;
+  private int lDE;
+  private float lDF;
+  private float lDG;
+  private Drawable lDH;
+  private Drawable lDI;
+  private Drawable lDJ;
+  private Drawable lDK;
+  private float lDL;
+  private float lDM;
+  private float lDN;
+  private List<Float> lDO;
+  private Paint lDP;
+  private Paint lDQ;
+  private int lDR;
+  private int lDS;
+  private PathEffect lDT;
+  private a lDU;
+  private boolean lDV;
+  private List<c> lDz;
   private int mHeight;
   private Rect mRect;
-  private Path vU;
+  private Path xN;
   
   public VerticalStepViewIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -56,99 +56,99 @@ public class VerticalStepViewIndicator
   public VerticalStepViewIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(201055);
-    this.lgF = getClass().getSimpleName();
-    this.lgG = ((int)TypedValue.applyDimension(1, 40.0F, getResources().getDisplayMetrics()));
-    this.lgB = new ArrayList();
-    this.lgT = b.n(getContext(), 2131101193);
-    this.lgU = -1;
-    this.vU = new Path();
-    this.lgV = new DashPathEffect(new float[] { 8.0F, 8.0F, 8.0F, 8.0F }, 1.0F);
-    this.lgQ = new ArrayList();
-    this.lgR = new Paint();
-    this.lgS = new Paint();
-    this.lgR.setAntiAlias(true);
-    this.lgR.setColor(this.lgT);
-    this.lgR.setStyle(Paint.Style.STROKE);
-    this.lgR.setStrokeWidth(2.0F);
-    this.lgS.setAntiAlias(true);
-    this.lgS.setColor(this.lgU);
-    this.lgS.setStyle(Paint.Style.STROKE);
-    this.lgS.setStrokeWidth(2.0F);
-    this.lgR.setPathEffect(this.lgV);
-    this.lgS.setStyle(Paint.Style.FILL);
-    this.lgH = (0.05F * this.lgG);
-    this.lgI = (0.28F * this.lgG);
-    this.lgP = (0.85F * this.lgG);
-    this.lgJ = b.l(getContext(), 2131234846);
-    this.lgK = b.l(getContext(), 2131234843);
-    this.lgL = b.l(getContext(), 2131234847);
-    this.lgM = b.l(getContext(), 2131234845);
-    this.lgX = true;
-    AppMethodBeat.o(201055);
+    AppMethodBeat.i(187727);
+    this.lDD = getClass().getSimpleName();
+    this.lDE = ((int)TypedValue.applyDimension(1, 40.0F, getResources().getDisplayMetrics()));
+    this.lDz = new ArrayList();
+    this.lDR = b.n(getContext(), 2131101193);
+    this.lDS = -1;
+    this.xN = new Path();
+    this.lDT = new DashPathEffect(new float[] { 8.0F, 8.0F, 8.0F, 8.0F }, 1.0F);
+    this.lDO = new ArrayList();
+    this.lDP = new Paint();
+    this.lDQ = new Paint();
+    this.lDP.setAntiAlias(true);
+    this.lDP.setColor(this.lDR);
+    this.lDP.setStyle(Paint.Style.STROKE);
+    this.lDP.setStrokeWidth(2.0F);
+    this.lDQ.setAntiAlias(true);
+    this.lDQ.setColor(this.lDS);
+    this.lDQ.setStyle(Paint.Style.STROKE);
+    this.lDQ.setStrokeWidth(2.0F);
+    this.lDP.setPathEffect(this.lDT);
+    this.lDQ.setStyle(Paint.Style.FILL);
+    this.lDF = (0.05F * this.lDE);
+    this.lDG = (0.28F * this.lDE);
+    this.lDN = (0.85F * this.lDE);
+    this.lDH = b.l(getContext(), 2131234846);
+    this.lDI = b.l(getContext(), 2131234843);
+    this.lDJ = b.l(getContext(), 2131234847);
+    this.lDK = b.l(getContext(), 2131234845);
+    this.lDV = true;
+    AppMethodBeat.o(187727);
   }
   
   public List<Float> getCircleCenterPointPositionList()
   {
-    return this.lgQ;
+    return this.lDO;
   }
   
   public float getCircleRadius()
   {
-    return this.lgI;
+    return this.lDG;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int k = 0;
-    AppMethodBeat.i(201058);
+    AppMethodBeat.i(187730);
     super.onDraw(paramCanvas);
-    if (this.lgW != null) {
-      this.lgW.bmW();
+    if (this.lDU != null) {
+      this.lDU.bqH();
     }
-    this.lgR.setColor(this.lgT);
-    this.lgS.setColor(this.lgU);
+    this.lDP.setColor(this.lDR);
+    this.lDQ.setColor(this.lDS);
     int j = 0;
     int i = k;
     float f1;
-    if (j < this.lgQ.size() - 1)
+    if (j < this.lDO.size() - 1)
     {
-      f1 = ((Float)this.lgQ.get(j)).floatValue();
-      float f2 = ((Float)this.lgQ.get(j + 1)).floatValue();
-      if (j < this.lgC) {
-        if (this.lgX) {
-          paramCanvas.drawRect(this.lgN, f2 + this.lgI - 10.0F, this.lgO, f1 - this.lgI + 10.0F, this.lgS);
+      f1 = ((Float)this.lDO.get(j)).floatValue();
+      float f2 = ((Float)this.lDO.get(j + 1)).floatValue();
+      if (j < this.lDA) {
+        if (this.lDV) {
+          paramCanvas.drawRect(this.lDL, f2 + this.lDG - 10.0F, this.lDM, f1 - this.lDG + 10.0F, this.lDQ);
         }
       }
       for (;;)
       {
         j += 1;
         break;
-        paramCanvas.drawRect(this.lgN, this.lgI + f1 - 10.0F, this.lgO, f2 - this.lgI + 10.0F, this.lgS);
+        paramCanvas.drawRect(this.lDL, this.lDG + f1 - 10.0F, this.lDM, f2 - this.lDG + 10.0F, this.lDQ);
         continue;
-        if (this.lgX)
+        if (this.lDV)
         {
-          this.vU.moveTo(this.cEZ, f2 + this.lgI);
-          this.vU.lineTo(this.cEZ, f1 - this.lgI);
-          paramCanvas.drawPath(this.vU, this.lgR);
+          this.xN.moveTo(this.cQe, f2 + this.lDG);
+          this.xN.lineTo(this.cQe, f1 - this.lDG);
+          paramCanvas.drawPath(this.xN, this.lDP);
         }
         else
         {
-          this.vU.moveTo(this.cEZ, this.lgI + f1);
-          this.vU.lineTo(this.cEZ, f2 - this.lgI);
-          paramCanvas.drawPath(this.vU, this.lgR);
+          this.xN.moveTo(this.cQe, this.lDG + f1);
+          this.xN.lineTo(this.cQe, f2 - this.lDG);
+          paramCanvas.drawPath(this.xN, this.lDP);
         }
       }
     }
-    if (i < this.lgQ.size())
+    if (i < this.lDO.size())
     {
-      f1 = ((Float)this.lgQ.get(i)).floatValue();
-      this.mRect = new Rect((int)(this.cEZ - this.lgI), (int)(f1 - this.lgI), (int)(this.cEZ + this.lgI), (int)(f1 + this.lgI));
-      j = ((c)this.lgB.get(i)).mState;
+      f1 = ((Float)this.lDO.get(i)).floatValue();
+      this.mRect = new Rect((int)(this.cQe - this.lDG), (int)(f1 - this.lDG), (int)(this.cQe + this.lDG), (int)(f1 + this.lDG));
+      j = ((c)this.lDz.get(i)).mState;
       if (j == 0)
       {
-        this.lgJ.setBounds(this.mRect);
-        this.lgJ.draw(paramCanvas);
+        this.lDH.setBounds(this.mRect);
+        this.lDH.draw(paramCanvas);
       }
       for (;;)
       {
@@ -156,137 +156,137 @@ public class VerticalStepViewIndicator
         break;
         if (j == 2)
         {
-          this.lgK.setBounds(this.mRect);
-          this.lgK.draw(paramCanvas);
+          this.lDI.setBounds(this.mRect);
+          this.lDI.draw(paramCanvas);
         }
         else if (j == -2)
         {
-          this.lgL.setBounds(this.mRect);
-          this.lgL.draw(paramCanvas);
+          this.lDJ.setBounds(this.mRect);
+          this.lDJ.draw(paramCanvas);
         }
         else
         {
-          this.lgM.setBounds(this.mRect);
-          this.lgM.draw(paramCanvas);
+          this.lDK.setBounds(this.mRect);
+          this.lDK.draw(paramCanvas);
         }
       }
     }
-    AppMethodBeat.o(201058);
+    AppMethodBeat.o(187730);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(201056);
+    AppMethodBeat.i(187728);
     super.onMeasure(paramInt1, paramInt2);
-    int i = this.lgG;
+    int i = this.lDE;
     this.mHeight = 0;
-    paramInt2 = this.lgB.size();
+    paramInt2 = this.lDz.size();
     if (paramInt2 > 0)
     {
       float f1 = getPaddingTop() + getPaddingBottom();
-      float f2 = this.lgI;
+      float f2 = this.lDG;
       float f3 = paramInt2;
-      this.mHeight = ((int)((paramInt2 - 1) * this.lgP + (f1 + f2 * 2.0F * f3)));
+      this.mHeight = ((int)((paramInt2 - 1) * this.lDN + (f1 + f2 * 2.0F * f3)));
     }
     paramInt2 = i;
     if (View.MeasureSpec.getMode(paramInt1) != 0) {
       paramInt2 = Math.min(i, View.MeasureSpec.getSize(paramInt1));
     }
     setMeasuredDimension(paramInt2, this.mHeight);
-    AppMethodBeat.o(201056);
+    AppMethodBeat.o(187728);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(201057);
+    AppMethodBeat.i(187729);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.cEZ = (getWidth() / 2);
-    this.lgN = (this.cEZ - this.lgH / 2.0F);
-    this.lgO = (this.cEZ + this.lgH / 2.0F);
+    this.cQe = (getWidth() / 2);
+    this.lDL = (this.cQe - this.lDF / 2.0F);
+    this.lDM = (this.cQe + this.lDF / 2.0F);
     paramInt1 = 0;
-    if (paramInt1 < this.lgB.size())
+    if (paramInt1 < this.lDz.size())
     {
-      if (this.lgX) {
-        this.lgQ.add(Float.valueOf(this.mHeight - (this.lgI + paramInt1 * this.lgI * 2.0F + paramInt1 * this.lgP)));
+      if (this.lDV) {
+        this.lDO.add(Float.valueOf(this.mHeight - (this.lDG + paramInt1 * this.lDG * 2.0F + paramInt1 * this.lDN)));
       }
       for (;;)
       {
         paramInt1 += 1;
         break;
-        this.lgQ.add(Float.valueOf(this.lgI + paramInt1 * this.lgI * 2.0F + paramInt1 * this.lgP));
+        this.lDO.add(Float.valueOf(this.lDG + paramInt1 * this.lDG * 2.0F + paramInt1 * this.lDN));
       }
     }
-    if (this.lgW != null) {
-      this.lgW.bmW();
+    if (this.lDU != null) {
+      this.lDU.bqH();
     }
-    AppMethodBeat.o(201057);
+    AppMethodBeat.o(187729);
   }
   
   public void setAttentionIcon(Drawable paramDrawable)
   {
-    this.lgK = paramDrawable;
+    this.lDI = paramDrawable;
   }
   
   public void setComplectingPosition(int paramInt)
   {
-    AppMethodBeat.i(201060);
-    this.lgC = paramInt;
+    AppMethodBeat.i(187732);
+    this.lDA = paramInt;
     requestLayout();
-    AppMethodBeat.o(201060);
+    AppMethodBeat.o(187732);
   }
   
   public void setCompleteIcon(Drawable paramDrawable)
   {
-    this.lgJ = paramDrawable;
+    this.lDH = paramDrawable;
   }
   
   public void setCompletedLineColor(int paramInt)
   {
-    this.lgU = paramInt;
+    this.lDS = paramInt;
   }
   
   public void setDefaultIcon(Drawable paramDrawable)
   {
-    this.lgL = paramDrawable;
+    this.lDJ = paramDrawable;
   }
   
   public void setIndicatorLinePaddingProportion(float paramFloat)
   {
-    this.lgP = (this.lgG * paramFloat);
+    this.lDN = (this.lDE * paramFloat);
   }
   
   public void setOnDrawListener(a parama)
   {
-    this.lgW = parama;
+    this.lDU = parama;
   }
   
   public void setSteps(List<c> paramList)
   {
-    AppMethodBeat.i(201059);
+    AppMethodBeat.i(187731);
     if (paramList == null)
     {
-      this.lgB = new ArrayList();
-      AppMethodBeat.o(201059);
+      this.lDz = new ArrayList();
+      AppMethodBeat.o(187731);
       return;
     }
-    this.lgB = paramList;
+    this.lDz = paramList;
     requestLayout();
-    AppMethodBeat.o(201059);
+    AppMethodBeat.o(187731);
   }
   
   public void setUnCompletedLineColor(int paramInt)
   {
-    this.lgT = paramInt;
+    this.lDR = paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract void bmW();
+    public abstract void bqH();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.stepview.VerticalStepViewIndicator
  * JD-Core Version:    0.7.0.1
  */

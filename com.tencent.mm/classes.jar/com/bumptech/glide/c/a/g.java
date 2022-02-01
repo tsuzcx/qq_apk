@@ -7,10 +7,10 @@ import java.io.InputStream;
 public final class g
   extends FilterInputStream
 {
-  private static final byte[] aDx = { -1, -31, 0, 28, 69, 120, 105, 102, 0, 0, 77, 77, 0, 0, 0, 0, 0, 8, 0, 1, 1, 18, 0, 2, 0, 0, 0, 1, 0 };
-  private static final int aDy = 29;
-  private static final int aDz = 31;
-  private final byte aDA;
+  private static final byte[] aFo = { -1, -31, 0, 28, 69, 120, 105, 102, 0, 0, 77, 77, 0, 0, 0, 0, 0, 8, 0, 1, 1, 18, 0, 2, 0, 0, 0, 1, 0 };
+  private static final int aFp = 29;
+  private static final int aFq = 31;
+  private final byte aFr;
   private int position;
   
   public g(InputStream paramInputStream, int paramInt)
@@ -23,7 +23,7 @@ public final class g
       AppMethodBeat.o(76879);
       throw paramInputStream;
     }
-    this.aDA = ((byte)paramInt);
+    this.aFr = ((byte)paramInt);
     AppMethodBeat.o(76879);
   }
   
@@ -44,7 +44,7 @@ public final class g
   {
     AppMethodBeat.i(76881);
     int i;
-    if ((this.position < 2) || (this.position > aDz)) {
+    if ((this.position < 2) || (this.position > aFq)) {
       i = super.read();
     }
     for (;;)
@@ -54,10 +54,10 @@ public final class g
       }
       AppMethodBeat.o(76881);
       return i;
-      if (this.position == aDz) {
-        i = this.aDA;
+      if (this.position == aFq) {
+        i = this.aFr;
       } else {
-        i = aDx[(this.position - 2)] & 0xFF;
+        i = aFo[(this.position - 2)] & 0xFF;
       }
     }
   }
@@ -65,7 +65,7 @@ public final class g
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(76882);
-    if (this.position > aDz) {
+    if (this.position > aFq) {
       paramInt1 = super.read(paramArrayOfByte, paramInt1, paramInt2);
     }
     for (;;)
@@ -75,9 +75,9 @@ public final class g
       }
       AppMethodBeat.o(76882);
       return paramInt1;
-      if (this.position == aDz)
+      if (this.position == aFq)
       {
-        paramArrayOfByte[paramInt1] = this.aDA;
+        paramArrayOfByte[paramInt1] = this.aFr;
         paramInt1 = 1;
       }
       else if (this.position < 2)
@@ -86,8 +86,8 @@ public final class g
       }
       else
       {
-        paramInt2 = Math.min(aDz - this.position, paramInt2);
-        System.arraycopy(aDx, this.position - 2, paramArrayOfByte, paramInt1, paramInt2);
+        paramInt2 = Math.min(aFq - this.position, paramInt2);
+        System.arraycopy(aFo, this.position - 2, paramArrayOfByte, paramInt1, paramInt2);
         paramInt1 = paramInt2;
       }
     }

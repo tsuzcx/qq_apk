@@ -18,17 +18,17 @@ import com.tencent.xweb.z;
 public final class a
   implements g
 {
-  private WebView jQS;
+  private WebView klh;
   
-  public final g.a Bc()
+  public final g.a CB()
   {
     AppMethodBeat.i(45121);
     g.a local1 = new g.a()
     {
-      public final void Bd()
+      public final void CC()
       {
         AppMethodBeat.i(45114);
-        this.jQT.setJavaScriptEnabled(true);
+        this.kli.setJavaScriptEnabled(true);
         AppMethodBeat.o(45114);
       }
     };
@@ -39,15 +39,15 @@ public final class a
   public final void a(final g.b paramb)
   {
     AppMethodBeat.i(45122);
-    this.jQS.setWebViewClient(new ac()
+    this.klh.setWebViewClient(new ac()
     {
-      private WebResourceResponse Ly(String paramAnonymousString)
+      private WebResourceResponse OS(String paramAnonymousString)
       {
         AppMethodBeat.i(45118);
-        if (paramb.bT(paramAnonymousString))
+        if (paramb.cM(paramAnonymousString))
         {
-          paramAnonymousString = paramb.bW(g.b.bZh);
-          paramAnonymousString = new WebResourceResponse(paramAnonymousString.mimeType, paramAnonymousString.charset, paramAnonymousString.aDF);
+          paramAnonymousString = paramb.cQ(g.b.cjz);
+          paramAnonymousString = new WebResourceResponse(paramAnonymousString.mimeType, paramAnonymousString.charset, paramAnonymousString.aFw);
           AppMethodBeat.o(45118);
           return paramAnonymousString;
         }
@@ -58,7 +58,7 @@ public final class a
       public final WebResourceResponse a(WebView paramAnonymousWebView, WebResourceRequest paramAnonymousWebResourceRequest)
       {
         AppMethodBeat.i(45117);
-        paramAnonymousWebView = Ly(paramAnonymousWebResourceRequest.getUrl().toString());
+        paramAnonymousWebView = OS(paramAnonymousWebResourceRequest.getUrl().toString());
         AppMethodBeat.o(45117);
         return paramAnonymousWebView;
       }
@@ -66,7 +66,7 @@ public final class a
       public final WebResourceResponse a(WebView paramAnonymousWebView, WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(45116);
-        paramAnonymousWebView = Ly(paramAnonymousWebResourceRequest.getUrl().toString());
+        paramAnonymousWebView = OS(paramAnonymousWebResourceRequest.getUrl().toString());
         AppMethodBeat.o(45116);
         return paramAnonymousWebView;
       }
@@ -74,14 +74,14 @@ public final class a
       public final void b(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(45119);
-        paramb.Bb();
+        paramb.CA();
         AppMethodBeat.o(45119);
       }
       
       public final WebResourceResponse c(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(45115);
-        paramAnonymousWebView = Ly(paramAnonymousString);
+        paramAnonymousWebView = OS(paramAnonymousString);
         AppMethodBeat.o(45115);
         return paramAnonymousWebView;
       }
@@ -92,54 +92,54 @@ public final class a
   public final void av(Context paramContext)
   {
     AppMethodBeat.i(45120);
-    this.jQS = new WebView(paramContext);
+    this.klh = new WebView(paramContext);
     AppMethodBeat.o(45120);
   }
   
-  public final void bE(String paramString)
+  public final void cO(String paramString)
   {
     AppMethodBeat.i(45127);
-    this.jQS.evaluateJavascript(paramString, null);
+    this.klh.evaluateJavascript(paramString, null);
     AppMethodBeat.o(45127);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(45128);
-    this.jQS.destroy();
+    this.klh.destroy();
     AppMethodBeat.o(45128);
   }
   
   public final View getView()
   {
-    return this.jQS;
+    return this.klh;
   }
   
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(45123);
-    this.jQS.loadUrl(paramString);
+    this.klh.loadUrl(paramString);
     AppMethodBeat.o(45123);
   }
   
   public final void requestLayout()
   {
     AppMethodBeat.i(45126);
-    this.jQS.requestLayout();
+    this.klh.requestLayout();
     AppMethodBeat.o(45126);
   }
   
   public final void setTranslationY(float paramFloat)
   {
     AppMethodBeat.i(45124);
-    this.jQS.setTranslationY(paramFloat);
+    this.klh.setTranslationY(paramFloat);
     AppMethodBeat.o(45124);
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(45125);
-    this.jQS.setVisibility(paramInt);
+    this.klh.setVisibility(paramInt);
     AppMethodBeat.o(45125);
   }
 }

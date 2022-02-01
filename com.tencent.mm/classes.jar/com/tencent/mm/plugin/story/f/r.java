@@ -24,13 +24,13 @@ import com.tencent.mm.plugin.story.ui.album.StoryAlbumUI;
 import com.tencent.mm.plugin.story.ui.view.StoryHeaderTipView;
 import com.tencent.mm.plugin.story.ui.view.StoryMuteView;
 import com.tencent.mm.plugin.story.ui.view.gallery.StoryGalleryView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.cc;
 import com.tencent.mm.ui.MMFragment;
 import d.a.j;
-import d.g.b.k;
-import d.g.b.v.f;
+import d.g.b.p;
+import d.g.b.y.f;
 import d.l;
 import d.v;
 import java.util.ArrayList;
@@ -40,36 +40,36 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/StoryUIFactory;", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory;", "()V", "CONFETTI_WIDTH_DP", "", "TAG", "", "VIVO_COMPATIBLE_LIST", "", "confettiManagers", "Ljava/util/HashMap;", "Landroid/view/View;", "Lcom/tencent/mm/particles/ConfettiManager;", "Lkotlin/collections/HashMap;", "mRunningConfetti", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "printLog", "", "unreadConfettiGenerator", "Lcom/tencent/mm/particles/ConfettiGenerator;", "bindUnreadBubbleConfetti", "", "parentView", "Landroid/view/ViewGroup;", "anchor", "offsetX", "offsetY", "genCompatibleBubble", "Landroid/graphics/Bitmap;", "getStoryGallery", "Lcom/tencent/mm/plugin/story/api/AbsStoryGallery;", "context", "Landroid/content/Context;", "type", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "chatRoom", "getStoryHeaderTipView", "Lcom/tencent/mm/plugin/story/api/AbsStoryHeaderTipView;", "getStoryHintDrawable", "Landroid/graphics/drawable/Drawable;", "highLight", "getStoryHintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "getStoryMuteView", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "instantiateAlbumFragment", "Lcom/tencent/mm/ui/MMFragment;", "bundle", "Landroid/os/Bundle;", "isInCompatibleList", "lazyInit", "startUnreadBubbleConfetti", "stopUnreadBubbleConfetti", "unbindUnreadBubbleConfetti", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/StoryUIFactory;", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory;", "()V", "CONFETTI_WIDTH_DP", "", "TAG", "", "VIVO_COMPATIBLE_LIST", "", "confettiManagers", "Ljava/util/HashMap;", "Landroid/view/View;", "Lcom/tencent/mm/particles/ConfettiManager;", "Lkotlin/collections/HashMap;", "mRunningConfetti", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "printLog", "", "unreadConfettiGenerator", "Lcom/tencent/mm/particles/ConfettiGenerator;", "bindUnreadBubbleConfetti", "", "parentView", "Landroid/view/ViewGroup;", "anchor", "offsetX", "offsetY", "genCompatibleBubble", "Landroid/graphics/Bitmap;", "getStoryGallery", "Lcom/tencent/mm/plugin/story/api/AbsStoryGallery;", "context", "Landroid/content/Context;", "type", "Lcom/tencent/mm/plugin/story/api/IStoryUIFactory$GalleryType;", "chatRoom", "getStoryHeaderTipView", "Lcom/tencent/mm/plugin/story/api/AbsStoryHeaderTipView;", "getStoryHintDrawable", "Landroid/graphics/drawable/Drawable;", "highLight", "getStoryHintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "getStoryMuteView", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "instantiateAlbumFragment", "Lcom/tencent/mm/ui/MMFragment;", "bundle", "Landroid/os/Bundle;", "isInCompatibleList", "lazyInit", "startUnreadBubbleConfetti", "stopUnreadBubbleConfetti", "unbindUnreadBubbleConfetti", "plugin-story_release"})
 public final class r
   implements com.tencent.mm.plugin.story.api.n
 {
+  private static com.tencent.mm.particles.b AKU;
+  private static HashMap<View, c> AKV;
+  private static ArrayList<c> AKW;
+  private static int AKX = 0;
+  private static boolean AKY = false;
+  private static final List<String> AKZ;
+  public static final r ALa;
   private static final String TAG = "MicroMsg.StoryUIFactory";
-  private static com.tencent.mm.particles.b zta;
-  private static HashMap<View, c> ztb;
-  private static ArrayList<c> ztc;
-  private static int ztd;
-  private static boolean zte;
-  private static final List<String> ztf;
-  public static final r ztg;
   
   static
   {
     AppMethodBeat.i(118788);
-    ztg = new r();
+    ALa = new r();
     TAG = "MicroMsg.StoryUIFactory";
-    ztb = new HashMap();
-    ztc = new ArrayList();
-    zte = true;
-    ztf = j.listOf(new String[] { "y83a", "v1732a", " y83", "v1732t" });
+    AKV = new HashMap();
+    AKW = new ArrayList();
+    AKY = true;
+    AKZ = j.listOf(new String[] { "y83a", "v1732a", " y83", "v1732t" });
     AppMethodBeat.o(118788);
   }
   
   public final AbsStoryGallery a(Context paramContext, n.a parama, String paramString)
   {
     AppMethodBeat.i(118779);
-    k.h(paramContext, "context");
-    k.h(parama, "type");
+    p.h(paramContext, "context");
+    p.h(parama, "type");
     paramContext = new StoryGalleryView(paramContext, parama, 0, false, null, 28);
     paramContext.setChatRoom(paramString);
     paramContext = (AbsStoryGallery)paramContext;
@@ -77,23 +77,23 @@ public final class r
     return paramContext;
   }
   
-  public final void d(ViewGroup paramViewGroup, View paramView, int paramInt)
+  public final void b(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
     AppMethodBeat.i(174578);
-    k.h(paramView, "anchor");
-    v.f localf;
+    p.h(paramView, "anchor");
+    y.f localf;
     Object localObject1;
     int i;
-    if (zta == null)
+    if (AKU == null)
     {
-      ztd = a.fromDPToPix(ai.getContext(), 8);
-      localf = new v.f();
-      if (zte)
+      AKX = a.fromDPToPix(aj.getContext(), 8);
+      localf = new y.f();
+      if (AKY)
       {
-        ac.i(TAG, "isInCompatibleList " + Build.BRAND + "  config " + bw.fcC() + ' ');
-        zte = false;
+        ad.i(TAG, "isInCompatibleList " + Build.BRAND + "  config " + cc.fsJ() + ' ');
+        AKY = false;
       }
-      Object localObject2 = (Iterable)ztf;
+      Object localObject2 = (Iterable)AKZ;
       localObject1 = (Collection)new ArrayList();
       localObject2 = ((Iterable)localObject2).iterator();
       label221:
@@ -103,11 +103,11 @@ public final class r
         Object localObject3 = ((Iterator)localObject2).next();
         String str1 = (String)localObject3;
         String str2 = Build.MODEL;
-        k.g(str2, "Build.MODEL");
+        p.g(str2, "Build.MODEL");
         if (!d.n.n.a((CharSequence)str2, (CharSequence)str1, true))
         {
           str2 = Build.DEVICE;
-          k.g(str2, "Build.DEVICE");
+          p.g(str2, "Build.DEVICE");
           if (!d.n.n.a((CharSequence)str2, (CharSequence)str1, true)) {
             break label221;
           }
@@ -122,23 +122,23 @@ public final class r
         }
       }
       localObject1 = (List)localObject1;
-      if ((!k.g(Build.BRAND, "vivo")) || (((List)localObject1).isEmpty()) || (Build.VERSION.SDK_INT != 27)) {
+      if ((!p.i(Build.BRAND, "vivo")) || (((List)localObject1).isEmpty()) || (Build.VERSION.SDK_INT != 27)) {
         break label513;
       }
       i = 1;
       if (i == 0) {
         break label519;
       }
-      localObject1 = ai.getContext();
-      k.g(localObject1, "MMApplicationContext.getContext()");
+      localObject1 = aj.getContext();
+      p.g(localObject1, "MMApplicationContext.getContext()");
       localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), 2131234240);
-      k.g(localObject1, "BitmapFactory.decodeReso…ble.story_comment_bubble)");
+      p.g(localObject1, "BitmapFactory.decodeReso…ble.story_comment_bubble)");
     }
     for (;;)
     {
-      localf.KUQ = localObject1;
-      zta = (com.tencent.mm.particles.b)new a(localf);
-      if (!ztb.containsKey(paramView))
+      localf.MLV = localObject1;
+      AKU = (com.tencent.mm.particles.b)new a(localf);
+      if (!AKV.containsKey(paramView))
       {
         localObject1 = new int[2];
         Object tmp345_343 = localObject1;
@@ -147,13 +147,13 @@ public final class r
         tmp349_345[1] = 0;
         tmp349_345;
         paramView.getLocationOnScreen((int[])localObject1);
-        i = localObject1[0] + paramView.getWidth() / 2 - ztd / 2 + 0;
+        i = localObject1[0] + paramView.getWidth() / 2 - AKX / 2 + 0;
         paramInt = localObject1[1] + paramInt;
-        ac.d(TAG, "bindUnreadBubbleConfetti containerMiddleX=" + i + " containerMiddleY=" + paramInt);
+        ad.d(TAG, "bindUnreadBubbleConfetti containerMiddleX=" + i + " containerMiddleY=" + paramInt);
         localObject1 = new d(i, paramInt);
-        paramViewGroup = new c(ai.getContext(), zta, (d)localObject1, paramViewGroup).aMq().al(8.0F).B(0.0F, 15.0F).C(-60.0F, 10.0F).qy(1500L);
-        localObject1 = (Map)ztb;
-        k.g(paramViewGroup, "manager");
+        paramViewGroup = new c(aj.getContext(), AKU, (d)localObject1, paramViewGroup).aPD().ao(8.0F).C(0.0F, 15.0F).D(-60.0F, 10.0F).sx(1500L);
+        localObject1 = (Map)AKV;
+        p.g(paramViewGroup, "manager");
         ((Map)localObject1).put(paramView, paramViewGroup);
       }
       AppMethodBeat.o(174578);
@@ -162,37 +162,27 @@ public final class r
       i = 0;
       break;
       label519:
-      localObject1 = ai.getContext();
-      k.g(localObject1, "MMApplicationContext.getContext()");
+      localObject1 = aj.getContext();
+      p.g(localObject1, "MMApplicationContext.getContext()");
       localObject1 = BitmapFactory.decodeResource(((Context)localObject1).getResources(), 2131234240);
-      i = ztd;
+      i = AKX;
       localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject1, i, i, true);
     }
   }
   
-  public final void fm(View paramView)
-  {
-    AppMethodBeat.i(118785);
-    k.h(paramView, "anchor");
-    if (ztb.containsKey(paramView)) {
-      ztb.remove(paramView);
-    }
-    AppMethodBeat.o(118785);
-  }
-  
-  public final void fn(View paramView)
+  public final void fA(View paramView)
   {
     AppMethodBeat.i(118786);
-    k.h(paramView, "anchor");
-    ac.d(TAG, "startUnreadBubbleConfetti mRunningConfetti=" + ztc);
-    paramView = (c)ztb.get(paramView);
+    p.h(paramView, "anchor");
+    ad.d(TAG, "startUnreadBubbleConfetti mRunningConfetti=" + AKW);
+    paramView = (c)AKV.get(paramView);
     if (paramView != null)
     {
-      if (!ztc.contains(paramView))
+      if (!AKW.contains(paramView))
       {
-        ac.d(TAG, "startUnreadBubbleConfetti");
-        paramView.aMu();
-        ztc.add(paramView);
+        ad.d(TAG, "startUnreadBubbleConfetti");
+        paramView.aPH();
+        AKW.add(paramView);
       }
       AppMethodBeat.o(118786);
       return;
@@ -200,19 +190,19 @@ public final class r
     AppMethodBeat.o(118786);
   }
   
-  public final void fo(View paramView)
+  public final void fB(View paramView)
   {
     AppMethodBeat.i(118787);
-    k.h(paramView, "anchor");
-    ac.d(TAG, "stopUnreadBubbleConfetti mRunningConfetti=" + ztc);
-    paramView = (c)ztb.get(paramView);
+    p.h(paramView, "anchor");
+    ad.d(TAG, "stopUnreadBubbleConfetti mRunningConfetti=" + AKW);
+    paramView = (c)AKV.get(paramView);
     if (paramView != null)
     {
-      if (ztc.contains(paramView))
+      if (AKW.contains(paramView))
       {
-        ac.l(TAG, "stopUnreadBubbleConfetti", new Object[0]);
-        paramView.aMv();
-        ztc.remove(paramView);
+        ad.l(TAG, "stopUnreadBubbleConfetti", new Object[0]);
+        paramView.aPI();
+        AKW.remove(paramView);
       }
       AppMethodBeat.o(118787);
       return;
@@ -220,7 +210,17 @@ public final class r
     AppMethodBeat.o(118787);
   }
   
-  public final AbsStoryMuteView go(Context paramContext)
+  public final void fz(View paramView)
+  {
+    AppMethodBeat.i(118785);
+    p.h(paramView, "anchor");
+    if (AKV.containsKey(paramView)) {
+      AKV.remove(paramView);
+    }
+    AppMethodBeat.o(118785);
+  }
+  
+  public final AbsStoryMuteView gr(Context paramContext)
   {
     AppMethodBeat.i(118780);
     AbsStoryMuteView localAbsStoryMuteView = null;
@@ -231,7 +231,7 @@ public final class r
     return localAbsStoryMuteView;
   }
   
-  public final AbsStoryHeaderTipView gp(Context paramContext)
+  public final AbsStoryHeaderTipView gs(Context paramContext)
   {
     AppMethodBeat.i(118781);
     AbsStoryHeaderTipView localAbsStoryHeaderTipView = null;
@@ -242,10 +242,10 @@ public final class r
     return localAbsStoryHeaderTipView;
   }
   
-  public final i gq(Context paramContext)
+  public final i gt(Context paramContext)
   {
     AppMethodBeat.i(118778);
-    k.h(paramContext, "context");
+    p.h(paramContext, "context");
     paramContext = (i)new com.tencent.mm.plugin.story.proxy.b(paramContext);
     AppMethodBeat.o(118778);
     return paramContext;
@@ -266,28 +266,28 @@ public final class r
     return paramContext;
   }
   
-  public final Drawable rB(boolean paramBoolean)
+  public final Drawable sh(boolean paramBoolean)
   {
     AppMethodBeat.i(118783);
     if (paramBoolean) {}
     for (int i = 2131689897;; i = 2131689898)
     {
-      Object localObject = ai.getContext();
-      k.g(localObject, "MMApplicationContext.getContext()");
+      Object localObject = aj.getContext();
+      p.g(localObject, "MMApplicationContext.getContext()");
       localObject = ((Context)localObject).getResources().getDrawable(i);
-      i = a.fromDPToPix(ai.getContext(), 8);
+      i = a.fromDPToPix(aj.getContext(), 8);
       ((Drawable)localObject).setBounds(0, 0, i, i);
-      k.g(localObject, "hintDrawable");
+      p.g(localObject, "hintDrawable");
       AppMethodBeat.o(118783);
       return localObject;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/story/ui/view/CommentTipSmallConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/story/ui/view/CommentTipSmallConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
   static final class a
     implements com.tencent.mm.particles.b
   {
-    a(v.f paramf) {}
+    a(y.f paramf) {}
   }
 }
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/a2o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/gd3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/b5n" android:layout_width="fill_parent" android:layout_height="100.0dip">
+            <ImageView android:id="@id/b5m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <LinearLayout android:orientation="vertical" android:id="@id/a38" android:paddingLeft="@dimen/ha" android:paddingTop="20.0dip" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/iu" />
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/vx" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/gbv" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d" android:text="@string/uo" android:maxLines="2" android:lineSpacingExtra="@dimen/sq" />
+            </LinearLayout>
+            <ImageView android:id="@id/egz" android:background="@drawable/gh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/fj0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sl" android:layout_marginTop="@dimen/sh" android:layout_marginRight="@dimen/sl" android:layout_below="@id/b5n">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/fiy" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingExtra="@dimen/sq" />
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/jo" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/fiw" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:maxLines="2" android:lineSpacingExtra="@dimen/sq" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

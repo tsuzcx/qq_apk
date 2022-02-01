@@ -8,18 +8,18 @@ import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.Window;
 import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.d;
+import com.tencent.luggage.h.e.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.BaseActivity;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ao;
 
 public class BaseLuggageActivity
   extends BaseActivity
-  implements e.d
+  implements e.e
 {
-  private static boolean aPB(String paramString)
+  private static boolean aVr(String paramString)
   {
     AppMethodBeat.i(176011);
     String str1 = Build.MODEL;
@@ -29,7 +29,7 @@ public class BaseLuggageActivity
       AppMethodBeat.o(176011);
       return false;
     }
-    if ((lL(str1, paramString)) || (lL(str2, paramString)))
+    if ((mj(str1, paramString)) || (mj(str2, paramString)))
     {
       AppMethodBeat.o(176011);
       return true;
@@ -38,7 +38,7 @@ public class BaseLuggageActivity
     return false;
   }
   
-  private static boolean lL(String paramString1, String paramString2)
+  private static boolean mj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(176010);
     if ((paramString1 == null) || (paramString2 == null))
@@ -46,7 +46,7 @@ public class BaseLuggageActivity
       AppMethodBeat.o(176010);
       return false;
     }
-    boolean bool = bs.lr(paramString1.toLowerCase(), paramString2.toLowerCase());
+    boolean bool = bt.lQ(paramString1.toLowerCase(), paramString2.toLowerCase());
     AppMethodBeat.o(176010);
     return bool;
   }
@@ -94,14 +94,14 @@ public class BaseLuggageActivity
     View localView;
     if (Build.VERSION.SDK_INT >= 26)
     {
-      if ((!aPB("y83a")) && (!aPB("y83")) && (!aPB("v1732a")) && (!aPB("v1732t"))) {
+      if ((!aVr("y83a")) && (!aVr("y83")) && (!aVr("v1732a")) && (!aVr("v1732t"))) {
         break label100;
       }
       i = 1;
       if (i == 0)
       {
         getWindow().setNavigationBarColor(paramInt);
-        boolean bool = am.ZN(paramInt);
+        boolean bool = ao.abX(paramInt);
         localView = getWindow().getDecorView();
         paramInt = localView.getSystemUiVisibility();
         if (!bool) {
@@ -134,7 +134,7 @@ public class BaseLuggageActivity
     }
     catch (Throwable localThrowable)
     {
-      ac.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
       AppMethodBeat.o(131601);
     }
   }

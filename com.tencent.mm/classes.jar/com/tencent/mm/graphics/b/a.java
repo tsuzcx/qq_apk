@@ -2,9 +2,9 @@ package com.tencent.mm.graphics.b;
 
 public abstract interface a
 {
-  public abstract void aeq();
+  public abstract void ahc();
   
-  public abstract void aer();
+  public abstract void ahd();
 }
 
 

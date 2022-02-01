@@ -2,96 +2,98 @@ package com.tencent.mm.plugin.bbom;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.bj.d;
-import com.tencent.mm.g.a.ks;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.ar.a;
-import com.tencent.mm.model.ar.b;
-import com.tencent.mm.model.ar.b.a;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bi.b;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.bk.d;
+import com.tencent.mm.g.a.lb;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.as.a;
+import com.tencent.mm.model.as.b;
+import com.tencent.mm.model.as.b.a;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bj.b;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bl;
-import com.tencent.mm.storage.bm;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bs;
+import com.tencent.mm.storage.bu;
 
 public final class b
   implements com.tencent.mm.plugin.messenger.foundation.a.a
 {
-  static void a(cu paramcu, bi.b paramb, com.tencent.mm.storage.ai paramai)
+  static void a(cv paramcv, bj.b paramb, am paramam)
   {
     AppMethodBeat.i(22334);
-    String str1 = z.a(paramcu.DPT);
-    az.ayM();
-    c.agA().set(73729, Integer.valueOf(1));
-    String str2 = paramai.field_nickname;
-    bl localbl = new bl();
-    localbl.field_content = z.a(paramcu.DPV);
-    localbl.field_createtime = bs.aNx();
-    localbl.field_imgpath = "";
-    if (paramcu.tit == 3)
+    String str1 = z.a(paramcv.Fvi);
+    ba.aBQ();
+    c.ajl().set(73729, Integer.valueOf(1));
+    String str2 = paramam.field_nickname;
+    br localbr = new br();
+    localbr.field_content = z.a(paramcv.Fvk);
+    localbr.field_createtime = bt.aQJ();
+    localbr.field_imgpath = "";
+    if (paramcv.ugm == 3)
     {
-      paramai = com.tencent.mm.sdk.platformtools.ai.getContext().getString(2131761528);
-      localbl.field_sayhicontent = paramai;
-      localbl.field_sayhiuser = str1;
-      localbl.field_scene = 18;
-      if (paramcu.ndj <= 3) {
+      paramam = aj.getContext().getString(2131761528);
+      localbr.field_sayhicontent = paramam;
+      localbr.field_sayhiuser = str1;
+      localbr.field_scene = 18;
+      if (paramcv.nDG <= 3) {
         break label228;
       }
     }
     label228:
-    for (int i = paramcu.ndj;; i = 3)
+    for (int i = paramcv.nDG;; i = 3)
     {
-      localbl.field_status = i;
-      localbl.field_svrid = paramcu.vTQ;
-      localbl.field_talker = str2;
-      localbl.field_type = paramcu.tit;
-      localbl.field_isSend = 0;
-      localbl.field_sayhiencryptuser = str1;
-      localbl.field_ticket = paramb.hoC;
-      d.aJf().a(localbl);
-      paramcu = new ks();
-      paramcu.dmx.dmy = str1;
-      com.tencent.mm.sdk.b.a.GpY.l(paramcu);
+      localbr.field_status = i;
+      localbr.field_svrid = paramcv.xbt;
+      localbr.field_talker = str2;
+      localbr.field_type = paramcv.ugm;
+      localbr.field_isSend = 0;
+      localbr.field_sayhiencryptuser = str1;
+      localbr.field_ticket = paramb.hGU;
+      d.aMp().a(localbr);
+      paramcv = new lb();
+      paramcv.dyl.dym = str1;
+      com.tencent.mm.sdk.b.a.IbL.l(paramcv);
       AppMethodBeat.o(22334);
       return;
-      paramai = z.a(paramcu.DPV);
+      paramam = z.a(paramcv.Fvk);
       break;
     }
   }
   
-  public final void a(final f.a parama, bo parambo, final String paramString1, final String paramString2, boolean paramBoolean)
+  public final void a(final e.a parama, bu parambu, final String paramString1, final String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(22333);
-    parama = parama.fXi;
-    paramString2 = bi.yr(parama.DPY);
+    parama = parama.gqE;
+    paramString2 = bj.Bq(parama.Fvn);
     if (paramString2 != null)
     {
-      parambo.rk(paramString2.hoy);
-      parambo.kk(paramString2.hoz);
-      parambo.ri(paramString2.hox);
-      ac.i("MicroMsg.BaseMsgCallbackImpl", "bizClientMsgId = %s", new Object[] { paramString2.hox });
-      if ((paramString2.hoC != null) && (paramString2.scene == 1) && (parama.tit != 10000))
+      parambu.tW(paramString2.hGQ);
+      parambu.kH(paramString2.hGR);
+      parambu.tR(paramString2.hGP);
+      ad.i("MicroMsg.BaseMsgCallbackImpl", "bizClientMsgId = %s", new Object[] { paramString2.hGP });
+      if ((paramString2.hGU != null) && (paramString2.scene == 1) && (parama.ugm != 10000))
       {
-        az.ayM();
-        parambo = c.awB().aNt(paramString1);
-        if ((parambo == null) || ((int)parambo.fLJ <= 0))
+        ba.aBQ();
+        parambu = c.azp().Bf(paramString1);
+        if ((parambu == null) || ((int)parambu.gfj <= 0))
         {
-          ar.a.hnw.a(paramString1, null, new ar.b.a()
+          as.a.hFO.a(paramString1, null, new as.b.a()
           {
             public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
             {
               AppMethodBeat.i(22332);
-              az.ayM();
-              paramAnonymousString = c.awB().aNt(paramString1);
+              ba.aBQ();
+              paramAnonymousString = c.azp().Bf(paramString1);
               b.a(parama, paramString2, paramAnonymousString);
               AppMethodBeat.o(22332);
             }
@@ -99,13 +101,13 @@ public final class b
           AppMethodBeat.o(22333);
           return;
         }
-        a(parama, paramString2, parambo);
+        a(parama, paramString2, parambu);
       }
     }
     AppMethodBeat.o(22333);
   }
   
-  public final void b(f.a parama, bo parambo, String paramString1, String paramString2, boolean paramBoolean) {}
+  public final void b(e.a parama, bu parambu, String paramString1, String paramString2, boolean paramBoolean) {}
 }
 
 

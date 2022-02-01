@@ -6,8 +6,8 @@ import com.tencent.mm.kernel.api.a;
 import com.tencent.mm.kernel.api.f;
 import com.tencent.mm.kernel.api.h;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h.b;
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,116 +17,116 @@ import java.util.concurrent.ConcurrentHashMap;
 public class t
   implements a, com.tencent.mm.kernel.api.c, f, h, com.tencent.mm.kernel.b.c
 {
-  private static ConcurrentHashMap<String, t> hmK;
-  private volatile a hmG;
-  private volatile Class<? extends aw> hmH;
-  private volatile aw hmI;
-  private volatile boolean hmJ;
+  private static ConcurrentHashMap<String, t> hEY;
+  private volatile a hEU;
+  private volatile Class<? extends ax> hEV;
+  private volatile ax hEW;
+  private volatile boolean hEX;
   
   static
   {
     AppMethodBeat.i(42788);
-    hmK = new ConcurrentHashMap();
+    hEY = new ConcurrentHashMap();
     AppMethodBeat.o(42788);
   }
   
   public t(a parama)
   {
-    this.hmJ = false;
-    this.hmG = parama;
+    this.hEX = false;
+    this.hEU = parama;
   }
   
-  public t(Class<? extends aw> paramClass)
+  public t(Class<? extends ax> paramClass)
   {
     AppMethodBeat.i(42773);
-    this.hmJ = false;
-    this.hmH = paramClass;
-    a(this.hmH.getName(), this);
+    this.hEX = false;
+    this.hEV = paramClass;
+    a(this.hEV.getName(), this);
     AppMethodBeat.o(42773);
   }
   
   public static t a(String paramString, t paramt)
   {
     AppMethodBeat.i(42777);
-    t localt = (t)hmK.putIfAbsent(paramString, paramt);
+    t localt = (t)hEY.putIfAbsent(paramString, paramt);
     if (localt == null) {
-      com.tencent.mm.kernel.a.c.ahe().br(paramt);
+      com.tencent.mm.kernel.a.c.ajP().bt(paramt);
     }
     for (;;)
     {
-      ac.i("MicroMsg.CompatSubCore", "registerCompatSubCoreWithNameIfAbsent %s, %s %s", new Object[] { paramString, paramt, bs.eWi() });
+      ad.i("MicroMsg.CompatSubCore", "registerCompatSubCoreWithNameIfAbsent %s, %s %s", new Object[] { paramString, paramt, bt.flS() });
       AppMethodBeat.o(42777);
       return paramt;
       paramt = localt;
     }
   }
   
-  public static <T extends aw> T ap(Class<T> paramClass)
-  {
-    AppMethodBeat.i(42781);
-    t localt2 = wg(paramClass.getName());
-    t localt1 = localt2;
-    if (localt2 == null)
-    {
-      localt1 = new t(paramClass);
-      a(paramClass.getName(), localt1);
-    }
-    paramClass = localt1.axt();
-    AppMethodBeat.o(42781);
-    return paramClass;
-  }
-  
-  public static void axu()
+  public static void aAk()
   {
     AppMethodBeat.i(42779);
-    Iterator localIterator = hmK.values().iterator();
+    Iterator localIterator = hEY.values().iterator();
     while (localIterator.hasNext()) {
       ((t)localIterator.next()).reset();
     }
     AppMethodBeat.o(42779);
   }
   
-  private aw createSubCore()
+  public static <T extends ax> T ap(Class<T> paramClass)
+  {
+    AppMethodBeat.i(42781);
+    t localt2 = yZ(paramClass.getName());
+    t localt1 = localt2;
+    if (localt2 == null)
+    {
+      localt1 = new t(paramClass);
+      a(paramClass.getName(), localt1);
+    }
+    paramClass = localt1.aAj();
+    AppMethodBeat.o(42781);
+    return paramClass;
+  }
+  
+  private ax createSubCore()
   {
     AppMethodBeat.i(42776);
     try
     {
-      ac.i("MicroMsg.CompatSubCore", "createSubCore(), %s %s", new Object[] { this.hmH, this.hmG });
-      if (this.hmG != null)
+      ad.i("MicroMsg.CompatSubCore", "createSubCore(), %s %s", new Object[] { this.hEV, this.hEU });
+      if (this.hEU != null)
       {
-        localaw = this.hmG.createSubCore();
+        localax = this.hEU.createSubCore();
         AppMethodBeat.o(42776);
-        return localaw;
+        return localax;
       }
-      aw localaw = (aw)this.hmH.newInstance();
+      ax localax = (ax)this.hEV.newInstance();
       AppMethodBeat.o(42776);
-      return localaw;
+      return localax;
     }
     catch (InstantiationException localInstantiationException)
     {
-      ac.printErrStackTrace("MicroMsg.CompatSubCore", localInstantiationException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CompatSubCore", localInstantiationException, "", new Object[0]);
       IllegalAccessError localIllegalAccessError1 = new IllegalAccessError(localInstantiationException.getMessage());
       AppMethodBeat.o(42776);
       throw localIllegalAccessError1;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      ac.printErrStackTrace("MicroMsg.CompatSubCore", localIllegalAccessException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CompatSubCore", localIllegalAccessException, "", new Object[0]);
       IllegalAccessError localIllegalAccessError2 = new IllegalAccessError(localIllegalAccessException.getMessage());
       AppMethodBeat.o(42776);
       throw localIllegalAccessError2;
     }
   }
   
-  public static void nL(int paramInt)
+  public static void ol(int paramInt)
   {
     AppMethodBeat.i(42780);
-    Iterator localIterator = hmK.values().iterator();
+    Iterator localIterator = hEY.values().iterator();
     while (localIterator.hasNext())
     {
-      aw localaw = ((t)localIterator.next()).axt();
-      if (localaw != null) {
-        localaw.clearPluginData(paramInt);
+      ax localax = ((t)localIterator.next()).aAj();
+      if (localax != null) {
+        localax.clearPluginData(paramInt);
       }
     }
     AppMethodBeat.o(42780);
@@ -136,8 +136,8 @@ public class t
   {
     try
     {
-      this.hmI = null;
-      this.hmJ = false;
+      this.hEW = null;
+      this.hEX = false;
       return;
     }
     finally
@@ -147,29 +147,29 @@ public class t
     }
   }
   
-  public static t wg(String paramString)
+  public static t yZ(String paramString)
   {
     AppMethodBeat.i(42778);
-    t localt = (t)hmK.get(paramString);
+    t localt = (t)hEY.get(paramString);
     if (localt == null) {
-      ac.i("MicroMsg.CompatSubCore", "compatSubCore is null by name %s", new Object[] { paramString });
+      ad.i("MicroMsg.CompatSubCore", "compatSubCore is null by name %s", new Object[] { paramString });
     }
     for (;;)
     {
       AppMethodBeat.o(42778);
       return localt;
-      com.tencent.mm.kernel.a.c.ahe().bq(localt);
+      com.tencent.mm.kernel.a.c.ajP().bs(localt);
     }
   }
   
-  public final void a(aw paramaw)
+  public final void a(ax paramax)
   {
     AppMethodBeat.i(42775);
     try
     {
-      this.hmI = paramaw;
-      if ((this.hmH == null) && (this.hmI != null)) {
-        this.hmH = this.hmI.getClass();
+      this.hEW = paramax;
+      if ((this.hEV == null) && (this.hEW != null)) {
+        this.hEV = this.hEW.getClass();
       }
       return;
     }
@@ -179,56 +179,56 @@ public class t
     }
   }
   
-  public final void agZ()
-  {
-    AppMethodBeat.i(42785);
-    aw localaw = axt();
-    if (localaw == null)
-    {
-      AppMethodBeat.o(42785);
-      return;
-    }
-    if (!this.hmJ)
-    {
-      AppMethodBeat.o(42785);
-      return;
-    }
-    localaw.onSdcardMount(e.YD());
-    AppMethodBeat.o(42785);
-  }
-  
-  public final void aha()
-  {
-    AppMethodBeat.i(42786);
-    axt();
-    AppMethodBeat.o(42786);
-  }
-  
-  public final aw axt()
+  public final ax aAj()
   {
     try
     {
       AppMethodBeat.i(42774);
-      if (this.hmI == null) {
+      if (this.hEW == null) {
         a(createSubCore());
       }
-      aw localaw = this.hmI;
+      ax localax = this.hEW;
       AppMethodBeat.o(42774);
-      return localaw;
+      return localax;
     }
     finally {}
+  }
+  
+  public final void ajK()
+  {
+    AppMethodBeat.i(42785);
+    ax localax = aAj();
+    if (localax == null)
+    {
+      AppMethodBeat.o(42785);
+      return;
+    }
+    if (!this.hEX)
+    {
+      AppMethodBeat.o(42785);
+      return;
+    }
+    localax.onSdcardMount(e.abf());
+    AppMethodBeat.o(42785);
+  }
+  
+  public final void ajL()
+  {
+    AppMethodBeat.i(42786);
+    aAj();
+    AppMethodBeat.o(42786);
   }
   
   public HashMap<Integer, h.b> collectDatabaseFactory()
   {
     AppMethodBeat.i(42782);
-    Object localObject = axt();
+    Object localObject = aAj();
     if (localObject == null)
     {
       AppMethodBeat.o(42782);
       return null;
     }
-    localObject = ((aw)localObject).getBaseDBFactories();
+    localObject = ((ax)localObject).getBaseDBFactories();
     AppMethodBeat.o(42782);
     return localObject;
   }
@@ -236,43 +236,43 @@ public class t
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(42783);
-    aw localaw = axt();
-    if (localaw == null)
+    ax localax = aAj();
+    if (localax == null)
     {
       AppMethodBeat.o(42783);
       return;
     }
-    localaw.onAccountPostReset(paramc.ghX);
-    this.hmJ = true;
+    localax.onAccountPostReset(paramc.gBH);
+    this.hEX = true;
     AppMethodBeat.o(42783);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(42784);
-    aw localaw = axt();
-    if (localaw == null)
+    ax localax = aAj();
+    if (localax == null)
     {
       AppMethodBeat.o(42784);
       return;
     }
-    localaw.onAccountRelease();
+    localax.onAccountRelease();
     AppMethodBeat.o(42784);
   }
   
   public String toString()
   {
     AppMethodBeat.i(42787);
-    String str = super.toString() + " " + this.hmH + " " + this.hmG + " " + this.hmI;
+    String str = super.toString() + " " + this.hEV + " " + this.hEU + " " + this.hEW;
     AppMethodBeat.o(42787);
     return str;
   }
   
-  public void ul(String paramString) {}
+  public void xb(String paramString) {}
   
   public static abstract interface a
   {
-    public abstract aw createSubCore();
+    public abstract ax createSubCore();
   }
 }
 

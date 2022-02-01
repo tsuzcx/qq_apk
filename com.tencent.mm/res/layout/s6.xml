@@ -4,7 +4,7 @@
     <View android:id="@id/goq" android:background="@color/ai" android:layout_width="fill_parent" android:layout_height="7.0dip" android:layout_marginBottom="0.0dip" android:layout_alignParentTop="true" />
     <RelativeLayout android:id="@id/avr" android:background="@drawable/nu" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/goq" android:layout_centerHorizontal="true">
         <LinearLayout android:gravity="center_vertical" android:id="@id/aw_" android:background="@drawable/ahy" android:paddingLeft="@dimen/al_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="64.0dip">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/offline_collect_icon" android:scaleType="centerInside" wallet:iconColor="@color/ah" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_pay_receive_money" android:scaleType="centerInside" wallet:iconColor="@color/ah" />
             <TextView android:textSize="@dimen/ia" android:textColor="@color/ah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/e4o" android:layout_weight="1.0" />
             <RelativeLayout android:id="@id/awa" android:background="@drawable/ai1" android:layout_width="48.0dip" android:layout_height="48.0dip">
                 <ImageView android:layout_width="3.0dip" android:layout_height="19.299988dip" android:src="@raw/offline_dots_icon" android:scaleType="centerInside" android:layout_centerInParent="true" />
@@ -35,7 +35,7 @@
     </RelativeLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/h93" android:background="@drawable/c40" android:paddingTop="0.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="64.0dip" android:layout_below="@id/goq">
         <LinearLayout android:gravity="center_vertical" android:id="@id/h92" android:background="@drawable/ahy" android:paddingLeft="@dimen/al_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:minHeight="64.0dip">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/offline_collect_icon" android:scaleType="centerInside" wallet:iconColor="@color/ah" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/icons_outlined_pay_receive_money" android:scaleType="centerInside" wallet:iconColor="@color/ah" />
             <TextView android:textSize="@dimen/ia" android:textColor="@color/ah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/e4o" android:layout_weight="1.0" />
         </LinearLayout>
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="36.0dip" android:src="@raw/wcpay_security_icon" android:scaleType="centerInside" wallet:iconColor="@color/a_" />

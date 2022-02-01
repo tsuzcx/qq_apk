@@ -1,74 +1,59 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.pluginsdk.g.h;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.chatting.e.a;
 
 public final class bd$c
-  extends c
+  extends bd.a
 {
   public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(37546);
-    View localView;
+    AppMethodBeat.i(37517);
+    Object localObject;
     if (paramView != null)
     {
-      localView = paramView;
+      localObject = paramView;
       if (paramView.getTag() != null) {}
     }
     else
     {
-      localView = paramLayoutInflater.inflate(2131493513, null);
-      localView.setTag(new bd.d().gr(localView));
+      localObject = new ah(paramLayoutInflater, 2131493462);
+      ((View)localObject).setTag(new bd.i().gI((View)localObject));
     }
-    AppMethodBeat.o(37546);
-    return localView;
+    AppMethodBeat.o(37517);
+    return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bo parambo, String paramString)
+  public final void a(c.a parama, int paramInt, a parama1, bu parambu, String paramString)
   {
-    AppMethodBeat.i(37547);
-    parama.fAz.setVisibility(0);
-    parama.fAz.setText(h.t(parama1.HZF.getContext(), parambo.field_createTime));
-    AppMethodBeat.o(37547);
+    AppMethodBeat.i(37518);
+    bd.i.a((bd.i)parama, parambu, true, paramInt, parama1, o(parama1), c(parama1));
+    AppMethodBeat.o(37518);
   }
   
-  public final boolean a(ContextMenu paramContextMenu, View paramView, bo parambo)
-  {
-    return false;
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, a parama, bo parambo)
+  public final boolean a(MenuItem paramMenuItem, a parama, bu parambu)
   {
     return false;
   }
   
-  public final boolean b(View paramView, a parama, bo parambo)
+  public final boolean a(l paraml, View paramView, bu parambu)
   {
     return false;
   }
   
-  public final boolean bb(int paramInt, boolean paramBoolean)
-  {
-    return paramInt == -1879048188;
-  }
-  
-  protected final boolean fqt()
+  public final boolean b(View paramView, a parama, bu parambu)
   {
     return false;
   }
   
-  public final boolean fqu()
+  public final boolean bi(int paramInt, boolean paramBoolean)
   {
-    return false;
+    return (!paramBoolean) && (paramInt == 50);
   }
 }
 

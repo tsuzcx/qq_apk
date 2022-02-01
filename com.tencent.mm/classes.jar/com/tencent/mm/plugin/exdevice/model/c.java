@@ -4,10 +4,10 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.j.d;
 import com.tencent.mm.plugin.exdevice.service.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -16,31 +16,31 @@ import java.util.Vector;
 public final class c
   implements d
 {
-  private static c pwM;
-  private byte[] fmn;
-  private final Map<Integer, Set<d>> hwk;
-  private ao mHandler;
-  public m pwN;
-  a pwO;
-  Vector<ae> pwP;
+  private static c qar;
+  private byte[] fEu;
+  private final Map<Integer, Set<d>> hOz;
+  private ap mHandler;
+  public m qas;
+  a qat;
+  Vector<ae> qau;
   
   public c()
   {
     AppMethodBeat.i(23200);
-    this.hwk = new HashMap();
-    this.fmn = new byte[0];
-    this.pwP = new Vector();
-    this.mHandler = new ao("ExdeviceHandlerThread");
+    this.hOz = new HashMap();
+    this.fEu = new byte[0];
+    this.qau = new Vector();
+    this.mHandler = new ap("ExdeviceHandlerThread");
     AppMethodBeat.o(23200);
   }
   
-  public static c cgu()
+  public static c ckY()
   {
     AppMethodBeat.i(23202);
-    if (pwM == null) {
-      pwM = new c();
+    if (qar == null) {
+      qar = new c();
     }
-    c localc = pwM;
+    c localc = qar;
     AppMethodBeat.o(23202);
     return localc;
   }
@@ -48,10 +48,10 @@ public final class c
   public final void a(long paramLong, int paramInt1, int paramInt2, String arg5)
   {
     AppMethodBeat.i(23204);
-    ac.i("MicroMsg.exdevice.ExDeviceTaskService", "onTaskSceneEnd, taskid =%d, errType =%d, errCode = %d, errMsg =%s, wattingtask size : %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), ???, Integer.valueOf(this.pwP.size()) });
-    synchronized (this.fmn)
+    ad.i("MicroMsg.exdevice.ExDeviceTaskService", "onTaskSceneEnd, taskid =%d, errType =%d, errCode = %d, errMsg =%s, wattingtask size : %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), ???, Integer.valueOf(this.qau.size()) });
+    synchronized (this.fEu)
     {
-      cgv();
+      ckZ();
       AppMethodBeat.o(23204);
       return;
     }
@@ -68,15 +68,15 @@ public final class c
         AppMethodBeat.i(23199);
         c localc = c.this;
         ae localae = paramae;
-        if (localc.pwN == null)
+        if (localc.qas == null)
         {
-          ac.w("MicroMsg.exdevice.ExDeviceTaskService", "dispathcer is null, now try to reset it");
-          if (localc.pwO == null) {
+          ad.w("MicroMsg.exdevice.ExDeviceTaskService", "dispathcer is null, now try to reset it");
+          if (localc.qat == null) {
             break label106;
           }
-          ac.i("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is not null. not prepare it");
-          localc.pwO.cgw();
-          new au(Looper.getMainLooper(), new c.1(localc), true).au(100L, 100L);
+          ad.i("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is not null. not prepare it");
+          localc.qat.cla();
+          new av(Looper.getMainLooper(), new c.1(localc), true).az(100L, 100L);
         }
         for (;;)
         {
@@ -84,13 +84,13 @@ public final class c
           if (i == 0) {
             break;
           }
-          localae.a(localc.pwN, localc);
+          localae.a(localc.qas, localc);
           AppMethodBeat.o(23199);
           return;
           label106:
-          ac.e("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is null");
+          ad.e("MicroMsg.exdevice.ExDeviceTaskService", "prepare dispatcher is null");
         }
-        localc.pwP.add(localae);
+        localc.qau.add(localae);
         AppMethodBeat.o(23199);
       }
     });
@@ -98,24 +98,24 @@ public final class c
     return true;
   }
   
-  final void cgv()
+  final void ckZ()
   {
     AppMethodBeat.i(23203);
-    ac.i("MicroMsg.exdevice.ExDeviceTaskService", "now watting task size is %d", new Object[] { Integer.valueOf(this.pwP.size()) });
-    if (!this.pwP.isEmpty()) {
-      a((ae)this.pwP.remove(0));
+    ad.i("MicroMsg.exdevice.ExDeviceTaskService", "now watting task size is %d", new Object[] { Integer.valueOf(this.qau.size()) });
+    if (!this.qau.isEmpty()) {
+      a((ae)this.qau.remove(0));
     }
     AppMethodBeat.o(23203);
   }
   
   public static abstract interface a
   {
-    public abstract void cgw();
+    public abstract void cla();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.c
  * JD-Core Version:    0.7.0.1
  */

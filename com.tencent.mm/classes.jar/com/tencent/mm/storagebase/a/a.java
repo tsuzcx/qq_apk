@@ -2,11 +2,11 @@ package com.tencent.mm.storagebase.a;
 
 public abstract interface a<K>
 {
-  public abstract void aE(int paramInt, long paramLong);
+  public abstract void aO(int paramInt, long paramLong);
   
-  public abstract void cG(int paramInt, String paramString);
+  public abstract void cN(int paramInt, String paramString);
   
-  public abstract void eYX();
+  public abstract void foH();
   
   public abstract K getKey();
   

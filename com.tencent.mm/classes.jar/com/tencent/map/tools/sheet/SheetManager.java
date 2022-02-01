@@ -62,15 +62,15 @@ public class SheetManager
   
   public Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(191291);
+    AppMethodBeat.i(195083);
     if (this.mPluginExists)
     {
       paramClass = this.mSheetProxy.callSheetStaMth(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-      AppMethodBeat.o(191291);
+      AppMethodBeat.o(195083);
       return paramClass;
     }
     paramClass = Util.invokeStaticMethod(paramClass, paramString, paramArrayOfClass, paramArrayOfObject);
-    AppMethodBeat.o(191291);
+    AppMethodBeat.o(195083);
     return paramClass;
   }
   
@@ -132,7 +132,7 @@ public class SheetManager
   public void init(Context paramContext, Options paramOptions)
   {
     AppMethodBeat.i(180954);
-    switch (2.a[paramOptions.mAdapterType.ordinal()])
+    switch (SheetManager.2.a[paramOptions.mAdapterType.ordinal()])
     {
     default: 
       if (this.mSheetAdapter.a())
@@ -224,7 +224,7 @@ public class SheetManager
   
   public static class Options
   {
-    private AdapterType mAdapterType = AdapterType.LOC_SHEET;
+    private SheetManager.Options.AdapterType mAdapterType = SheetManager.Options.AdapterType.LOC_SHEET;
     private File mCoreLogDir;
     private String mCoreLogReportUrl;
     private String mCoreLogToken;
@@ -239,7 +239,7 @@ public class SheetManager
     private String mSoLibName;
     private SheetManager.UncaughtListener mUncaughtListener;
     
-    public AdapterType getAdapterType()
+    public SheetManager.Options.AdapterType getAdapterType()
     {
       return this.mAdapterType;
     }
@@ -309,7 +309,7 @@ public class SheetManager
       return this.mIsSheetEnable;
     }
     
-    public Options setAdapterType(AdapterType paramAdapterType)
+    public Options setAdapterType(SheetManager.Options.AdapterType paramAdapterType)
     {
       this.mAdapterType = paramAdapterType;
       return this;
@@ -390,19 +390,6 @@ public class SheetManager
     {
       this.mSdkVersionCode = paramString;
       return this;
-    }
-    
-    public static enum AdapterType
-    {
-      static
-      {
-        AppMethodBeat.i(180952);
-        LOC_SHEET = new AdapterType("LOC_SHEET", 0);
-        $VALUES = new AdapterType[] { LOC_SHEET };
-        AppMethodBeat.o(180952);
-      }
-      
-      private AdapterType() {}
     }
   }
   

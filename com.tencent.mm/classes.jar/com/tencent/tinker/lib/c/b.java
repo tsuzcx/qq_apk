@@ -10,7 +10,7 @@ import java.util.HashMap;
 public final class b
   extends c
 {
-  private static ArrayList<ShareArkHotDiffPatchInfo> KqE = new ArrayList();
+  private static ArrayList<ShareArkHotDiffPatchInfo> MgC = new ArrayList();
   
   protected static boolean a(ShareSecurityCheck paramShareSecurityCheck, Context paramContext, String paramString, File paramFile)
   {
@@ -19,8 +19,8 @@ public final class b
       return true;
     }
     paramString = paramString + "/arkHot/";
-    KqE.clear();
-    ShareArkHotDiffPatchInfo.parseDiffPatchInfo(paramShareSecurityCheck, KqE);
+    MgC.clear();
+    ShareArkHotDiffPatchInfo.parseDiffPatchInfo(paramShareSecurityCheck, MgC);
     b(paramContext, paramString, paramFile);
     return true;
   }
@@ -30,14 +30,14 @@ public final class b
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 69	com/tencent/tinker/lib/e/a:kX	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
+    //   1: invokestatic 69	com/tencent/tinker/lib/e/a:lk	(Landroid/content/Context;)Lcom/tencent/tinker/lib/e/a;
     //   4: astore 4
     //   6: new 71	java/util/zip/ZipFile
     //   9: dup
     //   10: aload_2
     //   11: invokespecial 74	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
     //   14: astore_3
-    //   15: getstatic 16	com/tencent/tinker/lib/c/b:KqE	Ljava/util/ArrayList;
+    //   15: getstatic 16	com/tencent/tinker/lib/c/b:MgC	Ljava/util/ArrayList;
     //   18: invokevirtual 78	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   21: astore 5
     //   23: aload 5
@@ -64,10 +64,10 @@ public final class b
     //   75: invokestatic 110	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:checkIfMd5Valid	(Ljava/lang/String;)Z
     //   78: ifne +56 -> 134
     //   81: aload 4
-    //   83: getfield 114	com/tencent/tinker/lib/e/a:KqV	Lcom/tencent/tinker/lib/d/d;
+    //   83: getfield 114	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
     //   86: aload_2
     //   87: bipush 8
-    //   89: invokestatic 118	com/tencent/tinker/lib/c/c:afL	(I)I
+    //   89: invokestatic 118	com/tencent/tinker/lib/c/c:ail	(I)I
     //   92: invokeinterface 124 3 0
     //   97: aload_3
     //   98: invokestatic 128	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
@@ -120,7 +120,7 @@ public final class b
     //   203: invokestatic 152	com/tencent/tinker/lib/c/b:a	(Ljava/util/zip/ZipFile;Ljava/util/zip/ZipEntry;Ljava/io/File;Ljava/lang/String;Z)Z
     //   206: ifne -183 -> 23
     //   209: aload 4
-    //   211: getfield 114	com/tencent/tinker/lib/e/a:KqV	Lcom/tencent/tinker/lib/d/d;
+    //   211: getfield 114	com/tencent/tinker/lib/e/a:MgW	Lcom/tencent/tinker/lib/d/d;
     //   214: aload_2
     //   215: aload 8
     //   217: aload 6
@@ -218,7 +218,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.lib.c.b
  * JD-Core Version:    0.7.0.1
  */

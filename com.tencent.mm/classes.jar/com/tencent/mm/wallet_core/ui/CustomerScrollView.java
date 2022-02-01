@@ -9,10 +9,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CustomerScrollView
   extends ScrollView
 {
-  private float JGp;
-  private float JGq;
-  private float JGr;
-  private float JGs;
+  private float Lzt;
+  private float Lzu;
+  private float Lzv;
+  private float Lzw;
   
   public CustomerScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,18 +37,18 @@ public class CustomerScrollView
         boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
         AppMethodBeat.o(72898);
         return bool;
-        this.JGq = 0.0F;
-        this.JGp = 0.0F;
-        this.JGr = paramMotionEvent.getX();
-        this.JGs = paramMotionEvent.getY();
+        this.Lzu = 0.0F;
+        this.Lzt = 0.0F;
+        this.Lzv = paramMotionEvent.getX();
+        this.Lzw = paramMotionEvent.getY();
       }
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      this.JGp += Math.abs(f1 - this.JGr);
-      this.JGq += Math.abs(f2 - this.JGs);
-      this.JGr = f1;
-      this.JGs = f2;
-    } while (this.JGp <= this.JGq);
+      this.Lzt += Math.abs(f1 - this.Lzv);
+      this.Lzu += Math.abs(f2 - this.Lzw);
+      this.Lzv = f1;
+      this.Lzw = f2;
+    } while (this.Lzt <= this.Lzu);
     AppMethodBeat.o(72898);
     return false;
   }

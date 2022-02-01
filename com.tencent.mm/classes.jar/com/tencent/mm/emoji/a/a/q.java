@@ -1,108 +1,65 @@
 package com.tencent.mm.emoji.a.a;
 
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.PersonalDesigner;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import d.g.b.k;
 import d.l;
+import java.util.HashMap;
+import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/GroupTitleItem;", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "designer", "Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "getDesigner", "()Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;", "setDesigner", "(Lcom/tencent/mm/protocal/protobuf/PersonalDesigner;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "hasNew", "", "getHasNew", "()Z", "setHasNew", "(Z)V", "contentEquals", "other", "", "equals", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/ExternalPanelRegister;", "", "()V", "externalPanelGroupMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelGroupViewProvider;", "Lkotlin/collections/HashMap;", "externalPanelItemList", "Landroid/util/SparseArray;", "Lcom/tencent/mm/emoji/model/panel/ExternalPanelItemViewProvider;", "addPanelGroup", "", "panelGroup", "addPanelItem", "externalPanelViewProvider", "findPanelGroup", "groupId", "findPanelItem", "viewType", "", "removePanelItem", "itemViewType", "plugin-emojisdk_release"})
 public final class q
-  extends y
 {
-  public final EmojiGroupInfo fON;
-  public PersonalDesigner fRS;
-  public boolean fRT;
+  private static final SparseArray<p> gls;
+  private static final HashMap<String, o> glt;
+  public static final q glu;
   
-  public q(EmojiGroupInfo paramEmojiGroupInfo)
+  static
   {
-    super(2);
-    AppMethodBeat.i(105562);
-    this.fON = paramEmojiGroupInfo;
-    AppMethodBeat.o(105562);
+    AppMethodBeat.i(218951);
+    glu = new q();
+    gls = new SparseArray();
+    glt = new HashMap();
+    AppMethodBeat.o(218951);
   }
   
-  public final boolean aQ(Object paramObject)
+  public static void a(o paramo)
   {
-    Object localObject3 = null;
-    AppMethodBeat.i(183956);
-    if ((super.aQ(paramObject)) && ((paramObject instanceof q)))
-    {
-      Object localObject1 = ((q)paramObject).fRS;
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        localObject1 = Integer.valueOf(((PersonalDesigner)localObject1).DesignerUin);
-        localObject2 = this.fRS;
-        if (localObject2 == null) {
-          break label178;
-        }
-        localObject2 = Integer.valueOf(((PersonalDesigner)localObject2).DesignerUin);
-        label60:
-        if (!k.g(localObject1, localObject2)) {
-          break label198;
-        }
-        localObject1 = ((q)paramObject).fRS;
-        if (localObject1 == null) {
-          break label183;
-        }
-        localObject1 = ((PersonalDesigner)localObject1).Name;
-        label85:
-        localObject2 = this.fRS;
-        if (localObject2 == null) {
-          break label188;
-        }
-        localObject2 = ((PersonalDesigner)localObject2).Name;
-        label99:
-        if (!k.g(localObject1, localObject2)) {
-          break label198;
-        }
-        localObject1 = ((q)paramObject).fRS;
-        if (localObject1 == null) {
-          break label193;
-        }
-      }
-      label178:
-      label183:
-      label188:
-      label193:
-      for (localObject1 = ((PersonalDesigner)localObject1).HeadUrl;; localObject1 = null)
-      {
-        PersonalDesigner localPersonalDesigner = this.fRS;
-        localObject2 = localObject3;
-        if (localPersonalDesigner != null) {
-          localObject2 = localPersonalDesigner.HeadUrl;
-        }
-        if ((!k.g(localObject1, localObject2)) || (((q)paramObject).fRT != this.fRT)) {
-          break label198;
-        }
-        AppMethodBeat.o(183956);
-        return true;
-        localObject1 = null;
-        break;
-        localObject2 = null;
-        break label60;
-        localObject1 = null;
-        break label85;
-        localObject2 = null;
-        break label99;
-      }
-    }
-    label198:
-    AppMethodBeat.o(183956);
-    return false;
+    AppMethodBeat.i(218949);
+    d.g.b.p.h(paramo, "panelGroup");
+    ((Map)glt).put(paramo.afw(), paramo);
+    AppMethodBeat.o(218949);
   }
   
-  public final boolean equals(Object paramObject)
+  public static void a(p paramp)
   {
-    AppMethodBeat.i(105561);
-    if ((super.equals(paramObject)) && ((paramObject instanceof q)) && (k.g(((q)paramObject).fON.fdm(), this.fON.fdm())))
-    {
-      AppMethodBeat.o(105561);
-      return true;
-    }
-    AppMethodBeat.o(105561);
-    return false;
+    AppMethodBeat.i(218947);
+    d.g.b.p.h(paramp, "externalPanelViewProvider");
+    gls.put(paramp.lQ(), paramp);
+    AppMethodBeat.o(218947);
+  }
+  
+  public static void ht(int paramInt)
+  {
+    AppMethodBeat.i(221216);
+    gls.remove(paramInt);
+    AppMethodBeat.o(221216);
+  }
+  
+  public static p lZ(int paramInt)
+  {
+    AppMethodBeat.i(218948);
+    p localp = (p)gls.get(paramInt);
+    AppMethodBeat.o(218948);
+    return localp;
+  }
+  
+  public static o vW(String paramString)
+  {
+    AppMethodBeat.i(218950);
+    d.g.b.p.h(paramString, "groupId");
+    paramString = (o)glt.get(paramString);
+    AppMethodBeat.o(218950);
+    return paramString;
   }
 }
 

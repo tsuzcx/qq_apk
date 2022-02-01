@@ -4,19 +4,19 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class b
   extends j<a>
 {
-  public static final String[] hlS;
+  public static final String[] hEf;
   private e db;
   
   static
   {
     AppMethodBeat.i(44450);
-    hlS = new String[] { j.getCreateSQLs(a.info, "AppBrandIdentifierInfo") };
+    hEf = new String[] { j.getCreateSQLs(a.info, "AppBrandIdentifierInfo") };
     AppMethodBeat.o(44450);
   }
   
@@ -26,7 +26,7 @@ public class b
     this.db = parame;
   }
   
-  public final String ID(String paramString)
+  public final String LU(String paramString)
   {
     AppMethodBeat.i(44448);
     Cursor localCursor = this.db.query("AppBrandIdentifierInfo", new String[] { "appId" }, "username=?", new String[] { paramString }, null, null, null);
@@ -36,13 +36,13 @@ public class b
       if (localCursor != null) {
         localCursor.close();
       }
-      ac.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { str, paramString });
+      ad.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { str, paramString });
       AppMethodBeat.o(44448);
       return str;
     }
   }
   
-  public final String IE(String paramString)
+  public final String LV(String paramString)
   {
     AppMethodBeat.i(44449);
     Cursor localCursor = this.db.query("AppBrandIdentifierInfo", new String[] { "username" }, "appId=?", new String[] { paramString }, null, null, null);
@@ -52,17 +52,17 @@ public class b
       if (localCursor != null) {
         localCursor.close();
       }
-      ac.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { paramString, str });
+      ad.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { paramString, str });
       AppMethodBeat.o(44449);
       return str;
     }
   }
   
-  public final boolean ch(String paramString1, String paramString2)
+  public final boolean cj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44447);
-    ac.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "addIdentifierInfo: appId = [%s], userName = [%s]", new Object[] { paramString1, paramString2 });
-    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)))
+    ad.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "addIdentifierInfo: appId = [%s], userName = [%s]", new Object[] { paramString1, paramString2 });
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(44447);
       return false;

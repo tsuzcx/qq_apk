@@ -21,75 +21,78 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.g;
 import com.tencent.mm.dynamicbackground.model.DynamicBackgroundNative;
 import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView;
 import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView.b;
 import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView.b.a;
 import com.tencent.mm.dynamicbackground.view.GradientColorBackgroundView;
 import com.tencent.mm.dynamicbackground.view.GradientColorBackgroundView.b;
-import com.tencent.mm.g.a.ja;
-import com.tencent.mm.g.a.ja.a;
+import com.tencent.mm.g.a.ji;
+import com.tencent.mm.g.a.ji.a;
+import com.tencent.mm.g.a.xk;
 import com.tencent.mm.plugin.appbrand.widget.header.GyroView;
 import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.i;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.k;
+import d.g.b.p;
 import java.util.ArrayList;
 
 public class AppBrandDesktopContainer
   extends HeaderContainer
   implements View.OnTouchListener
 {
-  private int aOy;
-  private int aOz;
-  private int aoH;
-  private View mgu;
-  private GyroView muN;
-  private boolean mvA;
-  private int mvB;
-  private int mvC;
-  private boolean mvD;
-  private boolean mvE;
-  private a mvF;
-  private Runnable mvG;
-  private com.tencent.mm.sdk.b.c mvH;
-  private com.tencent.mm.plugin.appbrand.widget.header.c mvl;
-  private AppBrandDesktopView mvm;
-  private DynamicBackgroundGLSurfaceView mvn;
-  private GradientColorBackgroundView mvo;
-  private Rect mvp;
-  private LinearLayout mvq;
-  private View mvr;
-  private TextView mvs;
-  private WeImageView mvt;
-  private WeImageView mvu;
-  private View mvv;
-  private View mvw;
-  private AppBrandDesktopBottomView mvx;
-  private View mvy;
-  private MMFragmentActivity mvz;
+  private int aYS;
+  private int aYT;
+  private int aqz;
+  private View mGU;
+  private com.tencent.mm.plugin.appbrand.widget.header.c mVS;
+  private AppBrandDesktopView mVT;
+  private DynamicBackgroundGLSurfaceView mVU;
+  private GradientColorBackgroundView mVV;
+  private Rect mVW;
+  private LinearLayout mVX;
+  private View mVY;
+  private TextView mVZ;
+  private GyroView mVu;
+  private WeImageView mWa;
+  private WeImageView mWb;
+  private View mWc;
+  private View mWd;
+  private AppBrandDesktopBottomView mWe;
+  private View mWf;
+  private MMFragmentActivity mWg;
+  private boolean mWh;
+  private int mWi;
+  private int mWj;
+  private boolean mWk;
+  private boolean mWl;
+  private e mWm;
+  private Runnable mWn;
+  private com.tencent.mm.sdk.b.c mWo;
   
   public AppBrandDesktopContainer(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(49444);
-    this.mvp = new Rect();
-    this.mvA = true;
-    this.aOy = 0;
-    this.aOz = 0;
-    this.mvB = 0;
-    this.mvC = 0;
-    this.aoH = 0;
-    this.mvD = true;
-    this.mvE = ab.eUK();
-    this.mvF = null;
-    this.mvG = null;
-    this.mvH = new AppBrandDesktopContainer.1(this);
+    this.mVW = new Rect();
+    this.mWh = true;
+    this.aYS = 0;
+    this.aYT = 0;
+    this.mWi = 0;
+    this.mWj = 0;
+    this.aqz = 0;
+    this.mWk = true;
+    this.mWl = ac.fko();
+    this.mWm = null;
+    this.mWn = null;
+    this.mWo = new com.tencent.mm.sdk.b.c() {};
     init(paramContext);
     AppMethodBeat.o(49444);
   }
@@ -98,18 +101,18 @@ public class AppBrandDesktopContainer
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(49445);
-    this.mvp = new Rect();
-    this.mvA = true;
-    this.aOy = 0;
-    this.aOz = 0;
-    this.mvB = 0;
-    this.mvC = 0;
-    this.aoH = 0;
-    this.mvD = true;
-    this.mvE = ab.eUK();
-    this.mvF = null;
-    this.mvG = null;
-    this.mvH = new AppBrandDesktopContainer.1(this);
+    this.mVW = new Rect();
+    this.mWh = true;
+    this.aYS = 0;
+    this.aYT = 0;
+    this.mWi = 0;
+    this.mWj = 0;
+    this.aqz = 0;
+    this.mWk = true;
+    this.mWl = ac.fko();
+    this.mWm = null;
+    this.mWn = null;
+    this.mWo = new com.tencent.mm.sdk.b.c() {};
     init(paramContext);
     AppMethodBeat.o(49445);
   }
@@ -118,80 +121,80 @@ public class AppBrandDesktopContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(49446);
-    this.mvp = new Rect();
-    this.mvA = true;
-    this.aOy = 0;
-    this.aOz = 0;
-    this.mvB = 0;
-    this.mvC = 0;
-    this.aoH = 0;
-    this.mvD = true;
-    this.mvE = ab.eUK();
-    this.mvF = null;
-    this.mvG = null;
-    this.mvH = new AppBrandDesktopContainer.1(this);
+    this.mVW = new Rect();
+    this.mWh = true;
+    this.aYS = 0;
+    this.aYT = 0;
+    this.mWi = 0;
+    this.mWj = 0;
+    this.aqz = 0;
+    this.mWk = true;
+    this.mWl = ac.fko();
+    this.mWm = null;
+    this.mWn = null;
+    this.mWo = new com.tencent.mm.sdk.b.c() {};
     init(paramContext);
     AppMethodBeat.o(49446);
   }
   
   private void a(DynamicBackgroundGLSurfaceView paramDynamicBackgroundGLSurfaceView, GradientColorBackgroundView paramGradientColorBackgroundView)
   {
-    AppMethodBeat.i(187069);
-    this.mvn = paramDynamicBackgroundGLSurfaceView;
-    this.mvo = paramGradientColorBackgroundView;
-    byK();
-    if (this.mvl != null) {
-      this.mvl.g(this.mvn, this.mvo);
+    AppMethodBeat.i(188948);
+    this.mVU = paramDynamicBackgroundGLSurfaceView;
+    this.mVV = paramGradientColorBackgroundView;
+    bCP();
+    if (this.mVS != null) {
+      this.mVS.g(this.mVU, this.mVV);
     }
-    AppMethodBeat.o(187069);
+    AppMethodBeat.o(188948);
   }
   
-  private void byG()
+  private void bCL()
   {
     AppMethodBeat.i(49449);
     int i = getResources().getConfiguration().orientation;
-    this.mvB = 0;
+    this.mWi = 0;
     AppMethodBeat.o(49449);
   }
   
-  private void byH()
+  private void bCM()
   {
     AppMethodBeat.i(49454);
-    ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo initViewScale measuredWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()) });
-    if (!this.mvD)
+    ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo initViewScale measuredWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()) });
+    if (!this.mWk)
     {
       AppMethodBeat.o(49454);
       return;
     }
-    if (this.mvq != null)
+    if (this.mVX != null)
     {
-      this.mvq.setScaleX(0.6F);
-      this.mvq.setScaleY(0.6F);
+      this.mVX.setScaleX(0.6F);
+      this.mVX.setScaleY(0.6F);
     }
     AppMethodBeat.o(49454);
   }
   
-  private void byJ()
+  private void bCO()
   {
     AppMethodBeat.i(49457);
     int[] arrayOfInt;
-    if ((this.mvs != null) && (this.mgu != null))
+    if ((this.mVZ != null) && (this.mGU != null))
     {
       arrayOfInt = new int[2];
-      this.mgu.getLocationOnScreen(arrayOfInt);
-      ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateFakeActionBarLeftMargin location x: %d, y: %d", new Object[] { Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]) });
+      this.mGU.getLocationOnScreen(arrayOfInt);
+      ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateFakeActionBarLeftMargin location x: %d, y: %d", new Object[] { Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]) });
       if (Build.VERSION.SDK_INT < 24) {
         break label187;
       }
     }
     label180:
     label187:
-    for (boolean bool = this.mvz.isInMultiWindowMode();; bool = false)
+    for (boolean bool = this.mWg.isInMultiWindowMode();; bool = false)
     {
       LinearLayout.LayoutParams localLayoutParams;
       if ((arrayOfInt[0] >= 0) || (bool))
       {
-        localLayoutParams = (LinearLayout.LayoutParams)this.mvs.getLayoutParams();
+        localLayoutParams = (LinearLayout.LayoutParams)this.mVZ.getLayoutParams();
         if (!bool) {
           break label180;
         }
@@ -199,149 +202,143 @@ public class AppBrandDesktopContainer
       for (int i = 0;; i = arrayOfInt[0])
       {
         localLayoutParams.leftMargin = (i + getResources().getDimensionPixelSize(2131165198));
-        ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateFakeActionBarLeftMargin leftMargin: %d", new Object[] { Integer.valueOf(localLayoutParams.leftMargin) });
-        if (this.mvs.getParent() != null) {
-          this.mvs.getParent().requestLayout();
+        ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateFakeActionBarLeftMargin leftMargin: %d", new Object[] { Integer.valueOf(localLayoutParams.leftMargin) });
+        if (this.mVZ.getParent() != null) {
+          this.mVZ.getParent().requestLayout();
         }
-        this.mvr.setVisibility(0);
+        this.mVY.setVisibility(0);
         AppMethodBeat.o(49457);
         return;
       }
     }
   }
   
-  private void byK()
+  private void bCP()
   {
-    AppMethodBeat.i(187067);
-    Object localObject1 = getBgParticlesColorConfig();
-    if (localObject1 != this.mvF)
+    AppMethodBeat.i(188947);
+    Object localObject1 = e.bDe();
+    if (localObject1 != this.mWm)
     {
-      this.mvF = ((a)localObject1);
-      if (this.mvn != null)
+      this.mWm = ((e)localObject1);
+      if (this.mVU != null)
       {
-        localObject1 = this.mvn;
-        int i = this.mvF.fMG;
-        int j = this.mvF.fMH;
-        int k = this.mvF.fMI;
-        int m = this.mvF.fMJ;
-        int n = this.mvF.fMK;
-        Object localObject2 = ((DynamicBackgroundGLSurfaceView)localObject1).fMm;
+        localObject1 = this.mVU;
+        int i = this.mWm.ggg;
+        int j = this.mWm.ggh;
+        int k = this.mWm.ggi;
+        int m = this.mWm.ggj;
+        int n = this.mWm.ggk;
+        Object localObject2 = ((DynamicBackgroundGLSurfaceView)localObject1).gfM;
         if (localObject2 != null)
         {
-          ((DynamicBackgroundGLSurfaceView.b)localObject2).fMB = new DynamicBackgroundGLSurfaceView.b.a(i, j, k, m, n);
-          if (((DynamicBackgroundGLSurfaceView.b)localObject2).fMC)
+          ((DynamicBackgroundGLSurfaceView.b)localObject2).ggb = new DynamicBackgroundGLSurfaceView.b.a(i, j, k, m, n);
+          if (((DynamicBackgroundGLSurfaceView.b)localObject2).ggc)
           {
-            localObject1 = ((DynamicBackgroundGLSurfaceView.b)localObject2).fMq;
+            localObject1 = ((DynamicBackgroundGLSurfaceView.b)localObject2).gfQ;
             if (localObject1 != null)
             {
-              DynamicBackgroundGLSurfaceView.b.a locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).fMB;
+              DynamicBackgroundGLSurfaceView.b.a locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).ggb;
               if (locala == null) {
-                k.fOy();
+                p.gfZ();
               }
-              i = locala.fMG;
-              locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).fMB;
+              i = locala.ggg;
+              locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).ggb;
               if (locala == null) {
-                k.fOy();
+                p.gfZ();
               }
-              j = locala.fMH;
-              locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).fMB;
+              j = locala.ggh;
+              locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).ggb;
               if (locala == null) {
-                k.fOy();
+                p.gfZ();
               }
-              k = locala.fMI;
-              locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).fMB;
+              k = locala.ggi;
+              locala = ((DynamicBackgroundGLSurfaceView.b)localObject2).ggb;
               if (locala == null) {
-                k.fOy();
+                p.gfZ();
               }
-              m = locala.fMJ;
-              localObject2 = ((DynamicBackgroundGLSurfaceView.b)localObject2).fMB;
+              m = locala.ggj;
+              localObject2 = ((DynamicBackgroundGLSurfaceView.b)localObject2).ggb;
               if (localObject2 == null) {
-                k.fOy();
+                p.gfZ();
               }
-              ((DynamicBackgroundNative)localObject1).setColor(i, j, k, m, ((DynamicBackgroundGLSurfaceView.b.a)localObject2).fMK);
+              ((DynamicBackgroundNative)localObject1).setColor(i, j, k, m, ((DynamicBackgroundGLSurfaceView.b.a)localObject2).ggk);
             }
           }
         }
       }
-      if (this.mvo != null)
+      if (this.mVV != null)
       {
-        localObject1 = this.mvo;
-        ((GradientColorBackgroundView)localObject1).post((Runnable)new GradientColorBackgroundView.b((GradientColorBackgroundView)localObject1, this.mvF.fMJ, this.mvF.fMK));
+        localObject1 = this.mVV;
+        ((GradientColorBackgroundView)localObject1).post((Runnable)new GradientColorBackgroundView.b((GradientColorBackgroundView)localObject1, this.mWm.ggj, this.mWm.ggk));
       }
     }
-    AppMethodBeat.o(187067);
+    AppMethodBeat.o(188947);
   }
   
   private void dW(Context paramContext)
   {
     AppMethodBeat.i(49453);
     paramContext = LayoutInflater.from(paramContext).inflate(2131492982, null);
-    this.mvq = ((LinearLayout)paramContext.findViewById(2131296708));
-    this.muN = ((GyroView)paramContext.findViewById(2131300673));
-    this.mvr = paramContext.findViewById(2131296699);
-    this.mvs = ((TextView)paramContext.findViewById(2131296694));
-    this.mvt = ((WeImageView)paramContext.findViewById(2131304422));
-    this.mvu = ((WeImageView)paramContext.findViewById(2131303323));
-    this.mvv = paramContext.findViewById(2131304423);
-    this.mvw = paramContext.findViewById(2131303324);
-    this.mvx = ((AppBrandDesktopBottomView)paramContext.findViewById(2131296695));
-    this.mvt.setOnClickListener(new View.OnClickListener()
+    this.mVX = ((LinearLayout)paramContext.findViewById(2131296708));
+    this.mVu = ((GyroView)paramContext.findViewById(2131300673));
+    this.mVY = paramContext.findViewById(2131296699);
+    this.mVZ = ((TextView)paramContext.findViewById(2131296694));
+    this.mWa = ((WeImageView)paramContext.findViewById(2131304422));
+    this.mWb = ((WeImageView)paramContext.findViewById(2131303323));
+    this.mWc = paramContext.findViewById(2131304423);
+    this.mWd = paramContext.findViewById(2131303324);
+    this.mWe = ((AppBrandDesktopBottomView)paramContext.findViewById(2131296695));
+    this.mWa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(49441);
-        if ((AppBrandDesktopContainer.a(AppBrandDesktopContainer.this) != null) && (AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).byu())) {
-          AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).vr(16);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((AppBrandDesktopContainer.a(AppBrandDesktopContainer.this) != null) && (AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).bCz())) {
+          AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).vX(16);
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopContainer$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(49441);
       }
     });
-    this.mvu.setOnClickListener(new View.OnClickListener()
+    this.mWb.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(49442);
-        if ((AppBrandDesktopContainer.a(AppBrandDesktopContainer.this) != null) && (AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).byu())) {
-          AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).vr(14);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopContainer$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((AppBrandDesktopContainer.a(AppBrandDesktopContainer.this) != null) && (AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).bCz())) {
+          AppBrandDesktopContainer.a(AppBrandDesktopContainer.this).vX(14);
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopContainer$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(49442);
       }
     });
-    byH();
-    this.mvm = ((AppBrandDesktopView)paramContext.findViewById(2131296711));
-    this.mvm.setHeaderContainer(this);
-    this.mvm.setId(2131296711);
-    int i = this.mvm.getLeftRightMargin();
-    ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktop view marginLeftRight: %d, width: %d, pivotX: %f, pivotY: %f", new Object[] { Integer.valueOf(i), Integer.valueOf(getMeasuredWidth()), Float.valueOf(this.mvq.getPivotX()), Float.valueOf(this.mvq.getPivotY()) });
-    AppBrandDesktopView localAppBrandDesktopView = this.mvm;
+    bCM();
+    this.mVT = ((AppBrandDesktopView)paramContext.findViewById(2131296711));
+    this.mVT.setHeaderContainer(this);
+    this.mVT.setId(2131296711);
+    int i = this.mVT.getLeftRightMargin();
+    ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktop view marginLeftRight: %d, width: %d, pivotX: %f, pivotY: %f", new Object[] { Integer.valueOf(i), Integer.valueOf(getMeasuredWidth()), Float.valueOf(this.mVX.getPivotX()), Float.valueOf(this.mVX.getPivotY()) });
+    AppBrandDesktopView localAppBrandDesktopView = this.mVT;
     localAppBrandDesktopView.setPadding(i, localAppBrandDesktopView.getPaddingTop(), i, 0);
     addView(paramContext, new RelativeLayout.LayoutParams(-1, -1));
     AppMethodBeat.o(49453);
   }
   
-  private a getBgParticlesColorConfig()
-  {
-    AppMethodBeat.i(187068);
-    if (aj.DT())
-    {
-      locala = a.byL();
-      AppMethodBeat.o(187068);
-      return locala;
-    }
-    a locala = a.byM();
-    AppMethodBeat.o(187068);
-    return locala;
-  }
-  
   private void init(Context paramContext)
   {
     AppMethodBeat.i(49450);
-    ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo HeaderContainer init");
-    this.aoH = com.tencent.mm.cc.a.fromDPToPix(paramContext, 16);
-    byG();
+    ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo HeaderContainer init");
+    this.aqz = com.tencent.mm.cc.a.fromDPToPix(paramContext, 16);
+    bCL();
     setBackgroundColor(getResources().getColor(2131101053));
-    com.tencent.mm.plugin.appbrand.widget.desktop.a.a locala = com.tencent.mm.plugin.appbrand.widget.desktop.a.a.myy;
-    com.tencent.mm.plugin.appbrand.widget.desktop.a.a.bzh();
+    com.tencent.mm.plugin.appbrand.widget.desktop.a.a locala = com.tencent.mm.plugin.appbrand.widget.desktop.a.a.mZg;
+    com.tencent.mm.plugin.appbrand.widget.desktop.a.a.bDl();
     dW(paramContext);
     AppMethodBeat.o(49450);
   }
@@ -349,33 +346,24 @@ public class AppBrandDesktopContainer
   private void setActionBarTitle(String paramString)
   {
     AppMethodBeat.i(180414);
-    if (this.mvs != null)
+    if (this.mVZ != null)
     {
-      this.mvs.setText(paramString);
-      float f = com.tencent.mm.cc.a.av(getContext(), 2131165184) * com.tencent.mm.cc.a.ib(getContext());
-      if (this.mvs.getTextSize() != f) {
-        this.mvs.setTextSize(0, f);
+      this.mVZ.setText(paramString);
+      float f = com.tencent.mm.cc.a.ay(getContext(), 2131165184) * com.tencent.mm.cc.a.ik(getContext());
+      if (this.mVZ.getTextSize() != f) {
+        this.mVZ.setTextSize(0, f);
       }
-      aj.a(this.mvs.getPaint(), 0.8F);
+      al.a(this.mVZ.getPaint(), 0.8F);
     }
     AppMethodBeat.o(180414);
   }
   
-  public final void byI()
-  {
-    AppMethodBeat.i(49455);
-    if (this.mvm != null) {
-      this.mvm.setPadding(this.mvm.getLeftRightMargin(), this.mvm.getPaddingTop(), this.mvm.getLeftRightMargin(), 0);
-    }
-    AppMethodBeat.o(49455);
-  }
-  
-  public final boolean byv()
+  public final boolean bCA()
   {
     AppMethodBeat.i(49461);
-    if (this.mvl != null)
+    if (this.mVS != null)
     {
-      boolean bool = this.mvl.byv();
+      boolean bool = this.mVS.bCA();
       AppMethodBeat.o(49461);
       return bool;
     }
@@ -383,15 +371,24 @@ public class AppBrandDesktopContainer
     return false;
   }
   
+  public final void bCN()
+  {
+    AppMethodBeat.i(49455);
+    if (this.mVT != null) {
+      this.mVT.setPadding(this.mVT.getLeftRightMargin(), this.mVT.getPaddingTop(), this.mVT.getLeftRightMargin(), 0);
+    }
+    AppMethodBeat.o(49455);
+  }
+  
   public final void e(Configuration paramConfiguration)
   {
     AppMethodBeat.i(49460);
     super.e(paramConfiguration);
-    ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo AppBrandDesktopContainer onCustomConfigurationChanged newConfig orientation: %d", new Object[] { Integer.valueOf(paramConfiguration.orientation) });
-    if (this.mvG != null) {
-      removeCallbacks(this.mvG);
+    ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo AppBrandDesktopContainer onCustomConfigurationChanged newConfig orientation: %d", new Object[] { Integer.valueOf(paramConfiguration.orientation) });
+    if (this.mWn != null) {
+      removeCallbacks(this.mWn);
     }
-    this.mvr.setVisibility(4);
+    this.mVY.setVisibility(4);
     Object localObject = new Runnable()
     {
       public final void run()
@@ -401,115 +398,115 @@ public class AppBrandDesktopContainer
         AppMethodBeat.o(49443);
       }
     };
-    this.mvG = ((Runnable)localObject);
+    this.mWn = ((Runnable)localObject);
     postDelayed((Runnable)localObject, 400L);
-    vu(getResources().getColor(2131100705));
-    if (this.mvm != null)
+    wa(getResources().getColor(2131100705));
+    if (this.mVT != null)
     {
-      localObject = this.mvm;
-      ac.i("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onCustomConfigurationChanged lastOrientation: %d, orientation: %d", new Object[] { Integer.valueOf(((AppBrandDesktopView)localObject).guA), Integer.valueOf(paramConfiguration.orientation) });
-      if (((AppBrandDesktopView)localObject).mtL != null)
+      localObject = this.mVT;
+      ad.i("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onCustomConfigurationChanged lastOrientation: %d, orientation: %d", new Object[] { Integer.valueOf(((AppBrandDesktopView)localObject).gOl), Integer.valueOf(paramConfiguration.orientation) });
+      if (((AppBrandDesktopView)localObject).mUr != null)
       {
-        ((AppBrandDesktopView)localObject).mww = ((AppBrandDesktopView)localObject).mtL.getViewHeight();
-        ac.i("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onCustomConfigurationChanged fixedViewHeight: %d", new Object[] { Integer.valueOf(((AppBrandDesktopView)localObject).mww) });
+        ((AppBrandDesktopView)localObject).mXb = ((AppBrandDesktopView)localObject).mUr.getViewHeight();
+        ad.i("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onCustomConfigurationChanged fixedViewHeight: %d", new Object[] { Integer.valueOf(((AppBrandDesktopView)localObject).mXb) });
       }
-      if (((AppBrandDesktopView)localObject).guA != paramConfiguration.orientation)
+      if (((AppBrandDesktopView)localObject).gOl != paramConfiguration.orientation)
       {
-        ((AppBrandDesktopView)localObject).guA = paramConfiguration.orientation;
-        if ((((AppBrandDesktopView)localObject).mtL != null) && (((AppBrandDesktopView)localObject).mtL.byv()))
+        ((AppBrandDesktopView)localObject).gOl = paramConfiguration.orientation;
+        if ((((AppBrandDesktopView)localObject).mUr != null) && (((AppBrandDesktopView)localObject).mUr.bCA()))
         {
-          ac.i("MicroMsg.AppBrandDesktopView", "alvinluo onCustomConfigurationChanged closeHeader");
-          ((AppBrandDesktopView)localObject).mtL.l(0L, 0);
+          ad.i("MicroMsg.AppBrandDesktopView", "alvinluo onCustomConfigurationChanged closeHeader");
+          ((AppBrandDesktopView)localObject).mUr.l(0L, 0);
         }
       }
     }
     AppMethodBeat.o(49460);
   }
   
-  public final void eq(int paramInt1, int paramInt2)
+  public final void es(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49458);
-    if (!this.mvD)
+    if (!this.mWk)
     {
       if (paramInt1 <= 10) {
-        this.mvD = true;
+        this.mWk = true;
       }
       AppMethodBeat.o(49458);
       return;
     }
     float f3;
     AppBrandDesktopView localAppBrandDesktopView;
-    if (this.mvq != null)
+    if (this.mVX != null)
     {
       if (paramInt1 <= 10)
       {
         AppMethodBeat.o(49458);
         return;
       }
-      this.mvq.setTranslationY(getMeasuredHeight() - getBottom());
+      this.mVX.setTranslationY(getMeasuredHeight() - getBottom());
       f3 = Math.max(Math.min(1.0F * paramInt1 / paramInt2 * 0.4F + 0.6F, 1.0F), 0.6F);
-      this.mvq.setScaleX(f3);
-      this.mvq.setScaleY(f3);
-      ac.v("MicroMsg.AppBrandDesktopContainer", "alvinluo HeaderContainer onScroll scale: %f, scrollY: %d, totalHeight: %d", new Object[] { Float.valueOf(f3), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (this.mvm != null)
+      this.mVX.setScaleX(f3);
+      this.mVX.setScaleY(f3);
+      ad.v("MicroMsg.AppBrandDesktopContainer", "alvinluo HeaderContainer onScroll scale: %f, scrollY: %d, totalHeight: %d", new Object[] { Float.valueOf(f3), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (this.mVT != null)
       {
-        localAppBrandDesktopView = this.mvm;
-        if (!localAppBrandDesktopView.dnN) {
+        localAppBrandDesktopView = this.mVT;
+        if (!localAppBrandDesktopView.dzB) {
           break label189;
         }
-        localAppBrandDesktopView.aK(1.0F);
+        localAppBrandDesktopView.aN(1.0F);
       }
     }
     for (;;)
     {
       if (paramInt1 >= paramInt2) {
-        this.mvD = false;
+        this.mWk = false;
       }
       AppMethodBeat.o(49458);
       return;
       label189:
       int i = 0;
-      if (localAppBrandDesktopView.mtL != null) {
-        i = localAppBrandDesktopView.mtL.getAnimationScrollOffset();
+      if (localAppBrandDesktopView.mUr != null) {
+        i = localAppBrandDesktopView.mUr.getAnimationScrollOffset();
       }
-      int j = localAppBrandDesktopView.mwn;
-      int k = localAppBrandDesktopView.mwn;
+      int j = localAppBrandDesktopView.mWS;
+      int k = localAppBrandDesktopView.mWS;
       k = localAppBrandDesktopView.getCollectionDataSize() + k;
-      ac.v("MicroMsg.AppBrandDesktopView", "alvinluo onScroll scrollY: %d, totalHeight: %d, startPos: %d, endPos: %d, animationOffset: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(localAppBrandDesktopView.mwn), Integer.valueOf(k), Integer.valueOf(i) });
+      ad.v("MicroMsg.AppBrandDesktopView", "alvinluo onScroll scrollY: %d, totalHeight: %d, startPos: %d, endPos: %d, animationOffset: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(localAppBrandDesktopView.mWS), Integer.valueOf(k), Integer.valueOf(i) });
       int m = paramInt2 - i;
       int n = paramInt1 - i;
       Object localObject1;
-      if ((localAppBrandDesktopView.mwo) || (localAppBrandDesktopView.mwp))
+      if ((localAppBrandDesktopView.mWT) || (localAppBrandDesktopView.mWU))
       {
-        if (m - localAppBrandDesktopView.mxc > n)
+        if (m - localAppBrandDesktopView.mXG > n)
         {
           f1 = 0.0F;
-          localAppBrandDesktopView.aK(Math.min(1.0F, Math.max(0.0F, f1)));
+          localAppBrandDesktopView.aN(Math.min(1.0F, Math.max(0.0F, f1)));
         }
       }
       else
       {
-        int i1 = (k - j) / localAppBrandDesktopView.anI;
-        int i2 = localAppBrandDesktopView.mxc;
+        int i1 = (k - j) / localAppBrandDesktopView.apA;
+        int i2 = localAppBrandDesktopView.mXG;
         float f2 = 0.0F;
         f1 = f2;
-        if (localAppBrandDesktopView.mwo)
+        if (localAppBrandDesktopView.mWT)
         {
-          i = localAppBrandDesktopView.mwD;
+          i = localAppBrandDesktopView.mXh;
           localObject1 = localAppBrandDesktopView.ci(2);
           f1 = f2;
           if (localObject1 != null)
           {
             f1 = f2;
-            if (((RecyclerView.w)localObject1).asD != null)
+            if (((RecyclerView.w)localObject1).auu != null)
             {
               f1 = Math.min(0.0F, i * f3 * n / (m - i2) - i);
-              ((RecyclerView.w)localObject1).asD.setTranslationY(f1);
+              ((RecyclerView.w)localObject1).auu.setTranslationY(f1);
               f1 = Math.abs(f1);
             }
           }
         }
-        int i3 = (int)(localAppBrandDesktopView.mwD + com.tencent.mm.cc.a.fromDPToPix(localAppBrandDesktopView.mContext, 16) + f1);
+        int i3 = (int)(localAppBrandDesktopView.mXh + com.tencent.mm.cc.a.fromDPToPix(localAppBrandDesktopView.mContext, 16) + f1);
         localObject1 = new ArrayList();
         i = 0;
         label487:
@@ -524,13 +521,13 @@ public class AppBrandDesktopContainer
       }
       for (float f1 = Math.abs(f1);; f1 = Math.abs(f1))
       {
-        ac.v("MicroMsg.AppBrandDesktopView", "alvinluo onScroll lastRowTranslationY: %f, row: %d", new Object[] { Float.valueOf(f1), Integer.valueOf(i) });
+        ad.v("MicroMsg.AppBrandDesktopView", "alvinluo onScroll lastRowTranslationY: %f, row: %d", new Object[] { Float.valueOf(f1), Integer.valueOf(i) });
         i += 1;
         break label487;
-        f1 = 1.0F * (n - (m - localAppBrandDesktopView.mxc)) / localAppBrandDesktopView.mxc;
+        f1 = 1.0F * (n - (m - localAppBrandDesktopView.mXG)) / localAppBrandDesktopView.mXG;
         break;
         label602:
-        f1 = Math.min(0.0F, (localAppBrandDesktopView.mxj + f1) * f3 * n / m - (f1 + localAppBrandDesktopView.mxj));
+        f1 = Math.min(0.0F, (localAppBrandDesktopView.mXN + f1) * f3 * n / m - (f1 + localAppBrandDesktopView.mXN));
         ((ArrayList)localObject1).add(Float.valueOf(f1));
       }
       label653:
@@ -538,33 +535,33 @@ public class AppBrandDesktopContainer
       while (i < k)
       {
         Object localObject2 = localAppBrandDesktopView.ci(i);
-        if (((localObject2 instanceof e)) && (((RecyclerView.w)localObject2).asD != null))
+        if (((localObject2 instanceof f)) && (((RecyclerView.w)localObject2).auu != null))
         {
-          localObject2 = (e)localObject2;
-          m = (i - j) / localAppBrandDesktopView.anI;
-          ((e)localObject2).asD.setTranslationY(((Float)((ArrayList)localObject1).get(m)).floatValue());
+          localObject2 = (f)localObject2;
+          m = (i - j) / localAppBrandDesktopView.apA;
+          ((f)localObject2).auu.setTranslationY(((Float)((ArrayList)localObject1).get(m)).floatValue());
         }
         i += 1;
       }
     }
   }
   
-  public final void er(int paramInt1, int paramInt2)
+  public final void et(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49470);
-    super.er(paramInt1, paramInt2);
-    if (this.mvs != null) {
-      this.mvs.setTextColor(paramInt1);
+    super.et(paramInt1, paramInt2);
+    if (this.mVZ != null) {
+      this.mVZ.setTextColor(paramInt1);
     }
-    if (this.mvt != null)
+    if (this.mWa != null)
     {
-      this.mvt.setImageResource(2131689494);
-      this.mvt.setIconColor(paramInt2);
+      this.mWa.setImageResource(2131689494);
+      this.mWa.setIconColor(paramInt2);
     }
-    if (this.mvu != null)
+    if (this.mWb != null)
     {
-      this.mvu.setImageResource(2131690510);
-      this.mvu.setIconColor(paramInt2);
+      this.mWb.setImageResource(2131690510);
+      this.mWb.setIconColor(paramInt2);
     }
     AppMethodBeat.o(49470);
   }
@@ -579,24 +576,24 @@ public class AppBrandDesktopContainer
   public int getAnimationScrollOffset()
   {
     AppMethodBeat.i(49471);
-    int i = this.mvl.getAnimationScrollOffset();
+    int i = this.mVS.getAnimationScrollOffset();
     AppMethodBeat.o(49471);
     return i;
   }
   
   public Rect getBackUpFooterRect()
   {
-    return this.mvp;
+    return this.mVW;
   }
   
   public View getBackgroundGLSurfaceView()
   {
-    return this.mvn;
+    return this.mVU;
   }
   
   public View getBackgroundGradientView()
   {
-    return this.mvo;
+    return this.mVV;
   }
   
   public View getEmptyView()
@@ -606,12 +603,12 @@ public class AppBrandDesktopContainer
   
   public int getExtraBottomHeight()
   {
-    return this.mvC;
+    return this.mWj;
   }
   
   public GyroView getGyroView()
   {
-    return this.muN;
+    return this.mVu;
   }
   
   public com.tencent.mm.plugin.appbrand.widget.header.a.a getHeaderView()
@@ -621,33 +618,33 @@ public class AppBrandDesktopContainer
   
   public View getMaskView()
   {
-    return this.mvy;
+    return this.mWf;
   }
   
   public int getViewHeight()
   {
-    return this.aOz;
+    return this.aYT;
   }
   
-  public final void hS(boolean paramBoolean)
+  public final void ic(boolean paramBoolean)
   {
     AppMethodBeat.i(49472);
-    super.hS(paramBoolean);
-    if (this.mvm != null)
+    super.ic(paramBoolean);
+    if (this.mVT != null)
     {
-      AppBrandDesktopView localAppBrandDesktopView = this.mvm;
-      ac.i("MicroMsg.AppBrandDesktopView", "alvinluo notifyMultiWindowModeChanged: %b, old: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(localAppBrandDesktopView.dnN) });
-      if (localAppBrandDesktopView.dnN != paramBoolean)
+      AppBrandDesktopView localAppBrandDesktopView = this.mVT;
+      ad.i("MicroMsg.AppBrandDesktopView", "alvinluo notifyMultiWindowModeChanged: %b, old: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(localAppBrandDesktopView.dzB) });
+      if (localAppBrandDesktopView.dzB != paramBoolean)
       {
-        localAppBrandDesktopView.dnN = paramBoolean;
-        int i = localAppBrandDesktopView.mwn;
-        int j = localAppBrandDesktopView.mwn;
+        localAppBrandDesktopView.dzB = paramBoolean;
+        int i = localAppBrandDesktopView.mWS;
+        int j = localAppBrandDesktopView.mWS;
         int k = localAppBrandDesktopView.getCollectionDataSize();
         while (i < k + j)
         {
           RecyclerView.w localw = localAppBrandDesktopView.ci(i);
-          if (((localw instanceof e)) && (localw.asD != null)) {
-            ((e)localw).asD.setTranslationY(0.0F);
+          if (((localw instanceof f)) && (localw.auu != null)) {
+            ((f)localw).auu.setTranslationY(0.0F);
           }
           i += 1;
         }
@@ -665,8 +662,8 @@ public class AppBrandDesktopContainer
   {
     AppMethodBeat.i(49462);
     super.l(paramLong, paramInt);
-    if (this.mvl != null) {
-      this.mvl.b(paramLong, paramInt, false);
+    if (this.mVS != null) {
+      this.mVS.b(paramLong, paramInt, false);
     }
     AppMethodBeat.o(49462);
   }
@@ -675,8 +672,8 @@ public class AppBrandDesktopContainer
   {
     AppMethodBeat.i(49463);
     super.m(paramLong, paramInt);
-    if (this.mvl != null) {
-      this.mvl.b(paramLong, paramInt, true);
+    if (this.mVS != null) {
+      this.mVS.b(paramLong, paramInt, true);
     }
     AppMethodBeat.o(49463);
   }
@@ -685,31 +682,36 @@ public class AppBrandDesktopContainer
   {
     AppMethodBeat.i(49451);
     super.onAttachedToWindow();
-    ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktopContainer onAttachedToWindow");
-    if (this.mvH != null) {
-      this.mvH.alive();
+    ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktopContainer onAttachedToWindow");
+    if (this.mWo != null) {
+      this.mWo.alive();
     }
-    ja localja = new ja();
-    com.tencent.mm.sdk.b.a.GpY.l(localja);
-    ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateUnReadCount unReadCount: %d", new Object[] { Integer.valueOf(localja.dks.dkt) });
+    ji localji = new ji();
+    com.tencent.mm.sdk.b.a.IbL.l(localji);
+    ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo updateUnReadCount unReadCount: %d", new Object[] { Integer.valueOf(localji.dwf.dwg) });
     Object localObject2 = getContext().getResources().getString(2131755822);
-    Object localObject1 = localObject2;
-    if (d.DIf) {
-      if (!this.mvE) {
+    if (!d.Fnm)
+    {
+      localObject1 = localObject2;
+      if (!i.IS_FLAVOR_BLUE) {}
+    }
+    else
+    {
+      if (!this.mWl) {
         break label225;
       }
     }
     label225:
-    for (localObject1 = (String)localObject2 + getContext().getResources().getString(2131755263);; localObject1 = (String)localObject2 + " " + getContext().getResources().getString(2131755263))
+    for (Object localObject1 = (String)localObject2 + g.is(getContext());; localObject1 = (String)localObject2 + " " + g.is(getContext()))
     {
       localObject2 = localObject1;
-      if (localja.dks.dkt > 0)
+      if (localji.dwf.dwg > 0)
       {
         localObject2 = localObject1;
-        if (!this.mvE) {
+        if (!this.mWl) {
           localObject2 = (String)localObject1 + " ";
         }
-        localObject2 = (String)localObject2 + "(" + localja.dks.dkt + ")";
+        localObject2 = (String)localObject2 + "(" + localji.dwf.dwg + ")";
       }
       setActionBarTitle((String)localObject2);
       AppMethodBeat.o(49451);
@@ -722,54 +724,54 @@ public class AppBrandDesktopContainer
     AppMethodBeat.i(49468);
     super.onDestroy();
     AppBrandDesktopView localAppBrandDesktopView;
-    if (this.mvm != null)
+    if (this.mVT != null)
     {
-      localAppBrandDesktopView = this.mvm;
-      ac.i("MicroMsg.AppBrandDesktopView", "alvinluo AppBrandDesktopView onDestroy %d", new Object[] { Integer.valueOf(localAppBrandDesktopView.hashCode()) });
+      localAppBrandDesktopView = this.mVT;
+      ad.i("MicroMsg.AppBrandDesktopView", "alvinluo AppBrandDesktopView onDestroy %d", new Object[] { Integer.valueOf(localAppBrandDesktopView.hashCode()) });
     }
     try
     {
-      if (localAppBrandDesktopView.mwt != null)
+      if (localAppBrandDesktopView.mWY != null)
       {
-        localObject = localAppBrandDesktopView.mwt;
-        if (((RecentAppBrandViewContainer)localObject).aal != null) {
-          ((RecentAppBrandViewContainer)localObject).removeCallbacks(((RecentAppBrandViewContainer)localObject).aal);
+        localObject = localAppBrandDesktopView.mWY;
+        if (((RecentAppBrandViewContainer)localObject).acb != null) {
+          ((RecentAppBrandViewContainer)localObject).removeCallbacks(((RecentAppBrandViewContainer)localObject).acb);
         }
       }
-      if (localAppBrandDesktopView.mwA != null)
+      if (localAppBrandDesktopView.mXf != null)
       {
-        localAppBrandDesktopView.removeCallbacks(localAppBrandDesktopView.mwA);
-        localAppBrandDesktopView.mwA = null;
+        localAppBrandDesktopView.removeCallbacks(localAppBrandDesktopView.mXf);
+        localAppBrandDesktopView.mXf = null;
       }
-      if (localAppBrandDesktopView.mwB != null)
+      if (localAppBrandDesktopView.mXg != null)
       {
-        localAppBrandDesktopView.removeCallbacks(localAppBrandDesktopView.mwB);
-        localAppBrandDesktopView.mwB = null;
+        localAppBrandDesktopView.removeCallbacks(localAppBrandDesktopView.mXg);
+        localAppBrandDesktopView.mXg = null;
       }
-      Object localObject = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.mzF.bzy();
+      Object localObject = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.nan.bDC();
       if (localObject != null) {
-        ((com.tencent.mm.plugin.appbrand.widget.desktop.b.b)localObject).remove(localAppBrandDesktopView.mwY);
+        ((com.tencent.mm.plugin.appbrand.widget.desktop.b.b)localObject).remove(localAppBrandDesktopView.mXC);
       }
-      localObject = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.mzF.bzx();
+      localObject = com.tencent.mm.plugin.appbrand.widget.desktop.b.c.nan.bDB();
       if (localObject != null) {
-        ((com.tencent.mm.plugin.appbrand.widget.desktop.b.e)localObject).remove(localAppBrandDesktopView.mwZ);
+        ((com.tencent.mm.plugin.appbrand.widget.desktop.b.e)localObject).remove(localAppBrandDesktopView.mXD);
       }
-      localAppBrandDesktopView.mxa = false;
+      localAppBrandDesktopView.mXE = false;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.AppBrandDesktopView", localException, "alvinluo onDestroy exception", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.AppBrandDesktopView", localException, "alvinluo onDestroy exception", new Object[0]);
       }
     }
-    if (this.mvH != null) {
-      this.mvH.dead();
+    if (this.mWo != null) {
+      this.mWo.dead();
     }
-    if (this.mvG != null)
+    if (this.mWn != null)
     {
-      removeCallbacks(this.mvG);
-      this.mvG = null;
+      removeCallbacks(this.mWn);
+      this.mWn = null;
     }
     AppMethodBeat.o(49468);
   }
@@ -778,9 +780,9 @@ public class AppBrandDesktopContainer
   {
     AppMethodBeat.i(49452);
     super.onDetachedFromWindow();
-    ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktopContainer onDetachedFromWindow");
-    if (this.mvH != null) {
-      this.mvH.dead();
+    ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo desktopContainer onDetachedFromWindow");
+    if (this.mWo != null) {
+      this.mWo.dead();
     }
     AppMethodBeat.o(49452);
   }
@@ -788,25 +790,25 @@ public class AppBrandDesktopContainer
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(49448);
-    byG();
-    ac.v("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure orientation: %d, closeHeight: %d, extraBottomHeight: %d", new Object[] { Integer.valueOf(getResources().getConfiguration().orientation), Integer.valueOf(this.mvB), Integer.valueOf(this.mvC) });
-    if (this.mvA)
+    bCL();
+    ad.v("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure orientation: %d, closeHeight: %d, extraBottomHeight: %d", new Object[] { Integer.valueOf(getResources().getConfiguration().orientation), Integer.valueOf(this.mWi), Integer.valueOf(this.mWj) });
+    if (this.mWh)
     {
-      int i = ((ViewGroup)getParent()).getMeasuredHeight() - this.mvB - this.mvC - this.aoH;
+      int i = ((ViewGroup)getParent()).getMeasuredHeight() - this.mWi - this.mWj - this.aqz;
       paramInt2 = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
-      this.aOz = i;
+      this.aYT = i;
     }
     for (;;)
     {
       super.onMeasure(paramInt1, paramInt2);
-      if (getMeasuredWidth() != this.aOy)
+      if (getMeasuredWidth() != this.aYS)
       {
-        ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure width new: %d, old: %d", new Object[] { Integer.valueOf(getMeasuredWidth()), Integer.valueOf(this.aOy) });
-        this.aOy = getMeasuredWidth();
-        ac.i("MicroMsg.AppBrandDesktopContainer", "alvinluo initViewPivot getMeasuredWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()) });
-        this.mvq.setPivotX(getMeasuredWidth() / 2.0F);
-        this.mvq.setPivotY(ap.dT(getContext()));
-        byH();
+        ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo onMeasure width new: %d, old: %d", new Object[] { Integer.valueOf(getMeasuredWidth()), Integer.valueOf(this.aYS) });
+        this.aYS = getMeasuredWidth();
+        ad.i("MicroMsg.AppBrandDesktopContainer", "alvinluo initViewPivot getMeasuredWidth: %d", new Object[] { Integer.valueOf(getMeasuredWidth()) });
+        this.mVX.setPivotX(getMeasuredWidth() / 2.0F);
+        this.mVX.setPivotY(ar.dT(getContext()));
+        bCM();
       }
       AppMethodBeat.o(49448);
       return;
@@ -818,16 +820,16 @@ public class AppBrandDesktopContainer
   {
     AppMethodBeat.i(49467);
     super.onPause();
-    if (this.mvm != null)
+    if (this.mVT != null)
     {
-      AppBrandDesktopView localAppBrandDesktopView = this.mvm;
+      AppBrandDesktopView localAppBrandDesktopView = this.mVT;
       localAppBrandDesktopView.isPaused = true;
-      localAppBrandDesktopView.mwT = false;
-      ac.i("MicroMsg.AppBrandDesktopView", "alvinluo onPause isHeaderOpen: %b, needProcess: %b, needRecreate: %b", new Object[] { Boolean.valueOf(localAppBrandDesktopView.mwR), Boolean.valueOf(localAppBrandDesktopView.mwU), Boolean.valueOf(localAppBrandDesktopView.mwT) });
-      if ((localAppBrandDesktopView.mwR) && (localAppBrandDesktopView.mwU))
+      localAppBrandDesktopView.mXx = false;
+      ad.i("MicroMsg.AppBrandDesktopView", "alvinluo onPause isHeaderOpen: %b, needProcess: %b, needRecreate: %b", new Object[] { Boolean.valueOf(localAppBrandDesktopView.mXv), Boolean.valueOf(localAppBrandDesktopView.mXy), Boolean.valueOf(localAppBrandDesktopView.mXx) });
+      if ((localAppBrandDesktopView.mXv) && (localAppBrandDesktopView.mXy))
       {
-        localAppBrandDesktopView.mwV = true;
-        localAppBrandDesktopView.bza();
+        localAppBrandDesktopView.mXz = true;
+        localAppBrandDesktopView.bDd();
       }
     }
     AppMethodBeat.o(49467);
@@ -837,50 +839,50 @@ public class AppBrandDesktopContainer
   {
     AppMethodBeat.i(49466);
     super.onResume();
-    if (this.mvm != null)
+    if (this.mVT != null)
     {
-      AppBrandDesktopView localAppBrandDesktopView = this.mvm;
-      ac.i("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onResume");
+      AppBrandDesktopView localAppBrandDesktopView = this.mVT;
+      ad.i("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onResume");
       localAppBrandDesktopView.isPaused = false;
-      if (localAppBrandDesktopView.aqk)
+      if (localAppBrandDesktopView.asc)
       {
-        ac.v("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onResume setLayoutFrozen false");
+        ad.v("MicroMsg.AppBrandDesktopView", "alvinluo DesktopView onResume setLayoutFrozen false");
         localAppBrandDesktopView.setLayoutFrozen(false);
       }
-      ac.i("MicroMsg.AppBrandDesktopView", "alvinluo onResume isHeaderOpen: %b, needProcessSurfaceWhenResumed: %b, needCloseWhenPaused: %b", new Object[] { Boolean.valueOf(localAppBrandDesktopView.mwR), Boolean.valueOf(localAppBrandDesktopView.mwV), Boolean.valueOf(localAppBrandDesktopView.mwW) });
-      if ((localAppBrandDesktopView.mwR) && (localAppBrandDesktopView.mwV))
+      ad.i("MicroMsg.AppBrandDesktopView", "alvinluo onResume isHeaderOpen: %b, needProcessSurfaceWhenResumed: %b, needCloseWhenPaused: %b", new Object[] { Boolean.valueOf(localAppBrandDesktopView.mXv), Boolean.valueOf(localAppBrandDesktopView.mXz), Boolean.valueOf(localAppBrandDesktopView.mXA) });
+      if ((localAppBrandDesktopView.mXv) && (localAppBrandDesktopView.mXz))
       {
-        if ((b.abe()) && (localAppBrandDesktopView.mtL != null) && (localAppBrandDesktopView.mtL.byv()))
+        if ((b.adI()) && (localAppBrandDesktopView.mUr != null) && (localAppBrandDesktopView.mUr.bCA()))
         {
-          ac.i("MicroMsg.AppBrandDesktopView", "alvinluo switchToDynamicBackgroundView");
-          ((View)localAppBrandDesktopView.mtL.getParent()).setBackgroundColor(localAppBrandDesktopView.mContext.getResources().getColor(2131101053));
-          View localView = localAppBrandDesktopView.mtL.getBackgroundGradientView();
+          ad.i("MicroMsg.AppBrandDesktopView", "alvinluo switchToDynamicBackgroundView");
+          ((View)localAppBrandDesktopView.mUr.getParent()).setBackgroundColor(localAppBrandDesktopView.mContext.getResources().getColor(2131101053));
+          View localView = localAppBrandDesktopView.mUr.getBackgroundGradientView();
           if (localView != null) {
             localView.setVisibility(0);
           }
-          localView = localAppBrandDesktopView.mtL.getBackgroundGLSurfaceView();
+          localView = localAppBrandDesktopView.mUr.getBackgroundGLSurfaceView();
           if ((localView instanceof DynamicBackgroundGLSurfaceView))
           {
             localView.setVisibility(0);
-            if (localAppBrandDesktopView.mxb)
+            if (localAppBrandDesktopView.mXF)
             {
               ((DynamicBackgroundGLSurfaceView)localView).onResume();
-              localAppBrandDesktopView.mxb = false;
+              localAppBrandDesktopView.mXF = false;
             }
-            ac.i("MicroMsg.AppBrandDesktopView", "alvinluo switchToDynamicBackgroundView show dynamicBackgroundView");
+            ad.i("MicroMsg.AppBrandDesktopView", "alvinluo switchToDynamicBackgroundView show dynamicBackgroundView");
             localAppBrandDesktopView.postDelayed(new AppBrandDesktopView.4(localAppBrandDesktopView, localView), 100L);
           }
         }
-        localAppBrandDesktopView.mwU = true;
-        localAppBrandDesktopView.mwV = true;
+        localAppBrandDesktopView.mXy = true;
+        localAppBrandDesktopView.mXz = true;
       }
-      if ((localAppBrandDesktopView.mwW) && (localAppBrandDesktopView.mtL != null))
+      if ((localAppBrandDesktopView.mXA) && (localAppBrandDesktopView.mUr != null))
       {
-        localAppBrandDesktopView.mtL.m(0L, localAppBrandDesktopView.mwX);
-        localAppBrandDesktopView.mwX = 0;
-        localAppBrandDesktopView.mwW = false;
+        localAppBrandDesktopView.mUr.m(0L, localAppBrandDesktopView.mXB);
+        localAppBrandDesktopView.mXB = 0;
+        localAppBrandDesktopView.mXA = false;
       }
-      localAppBrandDesktopView.byT();
+      localAppBrandDesktopView.bCW();
     }
     AppMethodBeat.o(49466);
   }
@@ -888,9 +890,14 @@ public class AppBrandDesktopContainer
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(49459);
-    if ((this.mvl != null) && ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))) {
-      this.mvl.onTouch(paramView, paramMotionEvent);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopContainer", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+    if ((this.mVS != null) && ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))) {
+      this.mVS.onTouch(paramView, paramMotionEvent);
     }
+    com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/appbrand/widget/desktop/AppBrandDesktopContainer", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
     AppMethodBeat.o(49459);
     return false;
   }
@@ -899,22 +906,22 @@ public class AppBrandDesktopContainer
   {
     AppMethodBeat.i(49456);
     super.setActionBar(paramView);
-    this.mgu = paramView;
-    byJ();
+    this.mGU = paramView;
+    bCO();
     AppMethodBeat.o(49456);
   }
   
   public void setActivity(MMFragmentActivity paramMMFragmentActivity)
   {
-    this.mvz = paramMMFragmentActivity;
+    this.mWg = paramMMFragmentActivity;
   }
   
   public void setAnimController(com.tencent.mm.plugin.appbrand.widget.header.c paramc)
   {
     AppMethodBeat.i(49447);
-    this.mvl = paramc;
-    if ((this.mvm != null) && (this.mvl != null)) {
-      this.mvl.a(this.mvm);
+    this.mVS = paramc;
+    if ((this.mVT != null) && (this.mVS != null)) {
+      this.mVS.a(this.mVT);
     }
     AppMethodBeat.o(49447);
   }
@@ -922,61 +929,33 @@ public class AppBrandDesktopContainer
   public void setDynamicBackgroundView(View paramView)
   {
     AppMethodBeat.i(49465);
-    a((DynamicBackgroundGLSurfaceView)paramView, this.mvo);
+    a((DynamicBackgroundGLSurfaceView)paramView, this.mVV);
     AppMethodBeat.o(49465);
   }
   
   public void setExtraBottomHeight(int paramInt)
   {
-    this.mvC = paramInt;
+    this.mWj = paramInt;
   }
   
   public void setFixedHeight(boolean paramBoolean)
   {
-    this.mvA = paramBoolean;
+    this.mWh = paramBoolean;
   }
   
-  public final void vu(int paramInt)
+  public final void wa(int paramInt)
   {
     AppMethodBeat.i(49469);
-    super.vu(paramInt);
-    if (this.mvx != null) {
-      this.mvx.setDrawColor(paramInt);
+    super.wa(paramInt);
+    if (this.mWe != null) {
+      this.mWe.setDrawColor(paramInt);
     }
     AppMethodBeat.o(49469);
-  }
-  
-  static final class a
-  {
-    private static final a mvJ;
-    private static final a mvK;
-    int fMG = 4671303;
-    int fMH = 2829099;
-    int fMI = 4671303;
-    int fMJ = 1842204;
-    int fMK = 5460819;
-    
-    static
-    {
-      AppMethodBeat.i(187066);
-      mvJ = new a(-12105913, -13948117, -12105913, -14935012, -11316397);
-      mvK = new a(-11975584, -13948609, -11975584, -15263959, -11120530);
-      AppMethodBeat.o(187066);
-    }
-    
-    private a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-    {
-      this.fMG = paramInt1;
-      this.fMH = paramInt2;
-      this.fMI = paramInt3;
-      this.fMJ = paramInt4;
-      this.fMK = paramInt5;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainer
  * JD-Core Version:    0.7.0.1
  */

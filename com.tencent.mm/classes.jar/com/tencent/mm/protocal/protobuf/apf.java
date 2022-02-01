@@ -1,67 +1,90 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class apf
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String EIi;
+  public LinkedList<FinderContact> GnK;
+  public int GnL;
+  
+  public apf()
+  {
+    AppMethodBeat.i(209333);
+    this.GnK = new LinkedList();
+    AppMethodBeat.o(209333);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152994);
+    AppMethodBeat.i(209334);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.EIi != null) {
-        paramVarArgs.d(1, this.EIi);
-      }
-      AppMethodBeat.o(152994);
+      paramVarArgs.e(1, 8, this.GnK);
+      paramVarArgs.aS(2, this.GnL);
+      AppMethodBeat.o(209334);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.EIi == null) {
-        break label213;
-      }
-    }
-    label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.EIi) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      AppMethodBeat.o(152994);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        AppMethodBeat.o(152994);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        apf localapf = (apf)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(152994);
-          return -1;
-        }
-        localapf.EIi = locala.LVo.readString();
-        AppMethodBeat.o(152994);
-        return 0;
-      }
-      AppMethodBeat.o(152994);
-      return -1;
+      paramInt = f.a.a.a.c(1, 8, this.GnK);
+      i = f.a.a.b.b.a.bz(2, this.GnL);
+      AppMethodBeat.o(209334);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.GnK.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.gxE();
+        }
+      }
+      AppMethodBeat.o(209334);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      apf localapf = (apf)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(209334);
+        return -1;
+      case 1: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new FinderContact();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localapf.GnK.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(209334);
+        return 0;
+      }
+      localapf.GnL = ((f.a.a.a.a)localObject1).NPN.zc();
+      AppMethodBeat.o(209334);
+      return 0;
+    }
+    AppMethodBeat.o(209334);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.apf
  * JD-Core Version:    0.7.0.1
  */

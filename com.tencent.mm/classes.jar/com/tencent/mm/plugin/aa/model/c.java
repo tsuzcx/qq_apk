@@ -8,8 +8,8 @@ import com.tencent.mm.vending.j.f;
 public final class c
   implements com.tencent.mm.vending.c.b<b>
 {
-  protected b izn;
-  public final a izo;
+  protected b iSw;
+  public final a iSx;
   
   public c()
   {
@@ -21,14 +21,14 @@ public final class c
   private c(b paramb)
   {
     AppMethodBeat.i(63322);
-    this.izo = new a();
-    this.izn = paramb;
+    this.iSx = new a();
+    this.iSw = paramb;
     AppMethodBeat.o(63322);
   }
   
-  public final b aNM()
+  public final b aQY()
   {
-    return this.izn;
+    return this.iSw;
   }
   
   public final class a
@@ -36,7 +36,7 @@ public final class c
   {
     public a() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -44,7 +44,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.c
  * JD-Core Version:    0.7.0.1
  */

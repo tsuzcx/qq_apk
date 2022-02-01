@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.flutter.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.g;
-import com.tencent.mm.ab.i;
+import com.tencent.mm.ac.g;
+import com.tencent.mm.ac.i;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -11,22 +11,22 @@ import java.util.Set;
 public final class c
 {
   public HashMap<String, Object> params;
-  public String slI;
-  public String slJ;
-  public HashMap<String, Object> slK;
-  public int slL = 0;
-  public boolean slM = false;
+  public String til;
+  public String tim;
+  public HashMap<String, Object> tin;
+  public int tio = 0;
+  public boolean tip = false;
   
   public c() {}
   
   public c(String paramString1, String paramString2, HashMap<String, Object> paramHashMap)
   {
-    this.slI = paramString1;
-    this.slJ = paramString2;
+    this.til = paramString1;
+    this.tim = paramString2;
     this.params = paramHashMap;
   }
   
-  public final String aUZ()
+  public final String aYt()
   {
     AppMethodBeat.i(123738);
     Object localObject = new i();
@@ -34,8 +34,8 @@ public final class c
     Map.Entry localEntry;
     try
     {
-      ((i)localObject).i("plugin", this.slI);
-      ((i)localObject).i("entry", this.slJ);
+      ((i)localObject).h("plugin", this.til);
+      ((i)localObject).h("entry", this.tim);
       if (this.params != null)
       {
         i locali1 = new i();
@@ -43,7 +43,7 @@ public final class c
         while (localIterator.hasNext())
         {
           localEntry = (Map.Entry)localIterator.next();
-          locali1.i((String)localEntry.getKey(), localEntry.getValue());
+          locali1.h((String)localEntry.getKey(), localEntry.getValue());
           continue;
           localObject = ((i)localObject).toString();
         }
@@ -54,24 +54,24 @@ public final class c
     {
       AppMethodBeat.o(123738);
       return localObject;
-      ((i)localObject).i("params", localg);
-      if (this.slK != null)
+      ((i)localObject).h("params", localg);
+      if (this.tin != null)
       {
         i locali2 = new i();
-        localIterator = this.slK.entrySet().iterator();
+        localIterator = this.tin.entrySet().iterator();
         while (localIterator.hasNext())
         {
           localEntry = (Map.Entry)localIterator.next();
-          locali2.i((String)localEntry.getKey(), localEntry.getValue());
+          locali2.h((String)localEntry.getKey(), localEntry.getValue());
         }
-        ((i)localObject).i("initParams", locali2);
+        ((i)localObject).h("initParams", locali2);
       }
-      ((i)localObject).O("parentPageType", this.slL);
-      ((i)localObject).v("isInitRoute", this.slM);
+      ((i)localObject).R("parentPageType", this.tio);
+      ((i)localObject).v("isInitRoute", this.tip);
     }
   }
   
-  public final c aeV(String paramString)
+  public final c ajt(String paramString)
   {
     AppMethodBeat.i(123737);
     i locali;
@@ -81,9 +81,9 @@ public final class c
     try
     {
       paramString = new i(paramString);
-      this.slI = paramString.optString("plugin");
-      this.slJ = paramString.optString("entry");
-      locali = paramString.tZ("params");
+      this.til = paramString.optString("plugin");
+      this.tim = paramString.optString("entry");
+      locali = paramString.wP("params");
       if (locali != null)
       {
         this.params = new HashMap();
@@ -102,34 +102,34 @@ public final class c
     for (;;)
     {
       return this;
-      locali = paramString.tZ("initParams");
+      locali = paramString.wP("initParams");
       if (locali != null)
       {
-        this.slK = new HashMap();
+        this.tin = new HashMap();
         localIterator = locali.keys();
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
           localObject = locali.opt(str);
-          this.slK.put(str, localObject);
+          this.tin.put(str, localObject);
         }
       }
-      this.slL = paramString.optInt("parentPageType");
-      this.slM = paramString.optBoolean("isInitRoute");
+      this.tio = paramString.optInt("parentPageType");
+      this.tip = paramString.optBoolean("isInitRoute");
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(123739);
-    String str = aUZ();
+    String str = aYt();
     AppMethodBeat.o(123739);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.a.c
  * JD-Core Version:    0.7.0.1
  */

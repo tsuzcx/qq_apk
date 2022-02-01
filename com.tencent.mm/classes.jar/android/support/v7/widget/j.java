@@ -19,13 +19,13 @@ import android.widget.ProgressBar;
 
 class j
 {
-  private static final int[] adN = { 16843067, 16843068 };
-  private final ProgressBar aiH;
-  Bitmap aiI;
+  private static final int[] afE = { 16843067, 16843068 };
+  private final ProgressBar aky;
+  Bitmap akz;
   
   j(ProgressBar paramProgressBar)
   {
-    this.aiH = paramProgressBar;
+    this.aky = paramProgressBar;
   }
   
   private Drawable b(Drawable paramDrawable, boolean paramBoolean)
@@ -33,7 +33,7 @@ class j
     int j = 0;
     if ((paramDrawable instanceof f))
     {
-      localObject1 = ((f)paramDrawable).ek();
+      localObject1 = ((f)paramDrawable).eB();
       if (localObject1 != null)
       {
         localObject1 = b((Drawable)localObject1, paramBoolean);
@@ -73,8 +73,8 @@ class j
     } while (!(paramDrawable instanceof BitmapDrawable));
     paramDrawable = (BitmapDrawable)paramDrawable;
     Object localObject2 = paramDrawable.getBitmap();
-    if (this.aiI == null) {
-      this.aiI = ((Bitmap)localObject2);
+    if (this.akz == null) {
+      this.akz = ((Bitmap)localObject2);
     }
     Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
     localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
@@ -88,11 +88,11 @@ class j
   
   void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    az localaz = az.a(this.aiH.getContext(), paramAttributeSet, adN, paramInt, 0);
+    az localaz = az.a(this.aky.getContext(), paramAttributeSet, afE, paramInt, 0);
     Object localObject = localaz.da(0);
     if (localObject != null)
     {
-      ProgressBar localProgressBar = this.aiH;
+      ProgressBar localProgressBar = this.aky;
       paramAttributeSet = (AttributeSet)localObject;
       if ((localObject instanceof AnimationDrawable))
       {
@@ -114,9 +114,9 @@ class j
     }
     paramAttributeSet = localaz.da(1);
     if (paramAttributeSet != null) {
-      this.aiH.setProgressDrawable(b(paramAttributeSet, false));
+      this.aky.setProgressDrawable(b(paramAttributeSet, false));
     }
-    localaz.awJ.recycle();
+    localaz.ayA.recycle();
   }
 }
 

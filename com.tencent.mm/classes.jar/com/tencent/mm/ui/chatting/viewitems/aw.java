@@ -1,66 +1,84 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.content.res.Resources;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnCreateContextMenuListener;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.bk;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.base.b;
+import com.tencent.mm.bc.b;
+import com.tencent.mm.bc.t;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.AppBrandServiceChattingUI.AppBrandServiceChattingFmUI;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.TextPreviewUI;
-import com.tencent.mm.ui.chatting.c.b.am;
-import com.tencent.mm.ui.transmit.MsgRetransmitUI;
-import com.tencent.mm.ui.widget.MMNeat7extView;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
 
-public final class aw
+final class aw
+  implements au.a
 {
-  private static final int IlF = 2131298134;
-  private static final int IlG = 2131298133;
-  
-  public static void a(Context paramContext, com.tencent.mm.ui.chatting.d.a parama, String paramString, CharSequence paramCharSequence, MMNeat7extView paramMMNeat7extView, bo parambo, int paramInt)
+  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bu parambu)
   {
-    AppMethodBeat.i(196725);
-    q.a(paramContext, parama, paramString, paramCharSequence, paramMMNeat7extView, parambo, paramInt);
-    AppMethodBeat.o(196725);
-  }
-  
-  public static void a(boolean paramBoolean, aw.f paramf, com.tencent.mm.ui.chatting.d.a parama)
-  {
-    AppMethodBeat.i(180039);
-    if (paramf == null)
+    AppMethodBeat.i(37381);
+    String str = parama1.getTalkerUserName();
+    parama = (au.b)parama;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("conv_talker_username", str);
+    if ((parama1.JOR instanceof AppBrandServiceChattingUI.AppBrandServiceChattingFmUI))
     {
-      AppMethodBeat.o(180039);
-      return;
+      paramInt = 10;
+      localBundle.putInt("scene", paramInt);
+      localBundle.putLong("msg_id", parambu.field_msgId);
+      localBundle.putLong("msg_sever_id", parambu.field_msgSvrId);
+      localBundle.putString("send_msg_username", parambu.field_talker);
+      localBundle.putString("local_session", parama1.JOW);
+      parambu = ((e)g.ab(e.class)).b(parambu.field_content, localBundle, new WeakReference(parama1.JOR.getContext()), new WeakReference(parama.KfL));
+      if ((parambu != null) && (parambu.length() != 0)) {
+        break label337;
+      }
+      parama.tPw.setVisibility(8);
+      label173:
+      parambu = t.aKa().Gb(str);
+      ba.aBQ();
+      paramInt = ((Integer)c.ajl().get(12311, Integer.valueOf(-2))).intValue();
+      if (((parambu == null) || (parambu.iiM == -2)) && ((parambu != null) || (paramInt == -2))) {
+        break label357;
+      }
+      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131100151));
+      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231583));
     }
-    if (paramBoolean)
+    for (;;)
     {
-      paramf.IjQ.setBackgroundResource(2131231647);
-      paramf.IjR.setTextColor(parama.HZF.getContext().getResources().getColor(2131099673));
-      paramf.IjR.setText(2131760124);
-      AppMethodBeat.o(180039);
+      parama.KfL.setOnClickListener(new aw.1(this));
+      parama.KfL.invalidate();
+      AppMethodBeat.o(37381);
       return;
+      if (parama1.fFv())
+      {
+        paramInt = 2;
+        break;
+      }
+      if (w.zE(str))
+      {
+        paramInt = 7;
+        break;
+      }
+      paramInt = 1;
+      break;
+      label337:
+      parama.tPw.setVisibility(0);
+      parama.KfL.ar(parambu);
+      break label173;
+      label357:
+      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131099735));
+      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231582));
     }
-    paramf.IjQ.setBackgroundResource(2131231648);
-    paramf.IjR.setTextColor(parama.HZF.getContext().getResources().getColor(2131099699));
-    paramf.IjR.setText(2131760126);
-    AppMethodBeat.o(180039);
   }
 }
 

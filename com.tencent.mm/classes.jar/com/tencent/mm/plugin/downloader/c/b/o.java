@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String fre;
-  public String oHA;
-  public String oHB;
-  public String oHC;
-  public int oHD;
-  public String oHE;
-  public String oHF;
-  public int oHy;
-  public String oHz;
+  public String fJm;
+  public int plc;
+  public String pld;
+  public String ple;
+  public String plf;
+  public String plg;
+  public int plh;
+  public String pli;
+  public String plj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -21,63 +21,63 @@ public final class o
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.oHy);
-      if (this.fre != null) {
-        paramVarArgs.d(2, this.fre);
+      paramVarArgs.aS(1, this.plc);
+      if (this.fJm != null) {
+        paramVarArgs.d(2, this.fJm);
       }
-      if (this.oHz != null) {
-        paramVarArgs.d(3, this.oHz);
+      if (this.pld != null) {
+        paramVarArgs.d(3, this.pld);
       }
-      if (this.oHA != null) {
-        paramVarArgs.d(4, this.oHA);
+      if (this.ple != null) {
+        paramVarArgs.d(4, this.ple);
       }
-      if (this.oHB != null) {
-        paramVarArgs.d(5, this.oHB);
+      if (this.plf != null) {
+        paramVarArgs.d(5, this.plf);
       }
-      if (this.oHC != null) {
-        paramVarArgs.d(6, this.oHC);
+      if (this.plg != null) {
+        paramVarArgs.d(6, this.plg);
       }
-      paramVarArgs.aR(7, this.oHD);
-      if (this.oHE != null) {
-        paramVarArgs.d(8, this.oHE);
+      paramVarArgs.aS(7, this.plh);
+      if (this.pli != null) {
+        paramVarArgs.d(8, this.pli);
       }
-      if (this.oHF != null) {
-        paramVarArgs.d(9, this.oHF);
+      if (this.plj != null) {
+        paramVarArgs.d(9, this.plj);
       }
       AppMethodBeat.o(153075);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.oHy) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.plc) + 0;
       paramInt = i;
-      if (this.fre != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.fre);
+      if (this.fJm != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.fJm);
       }
       i = paramInt;
-      if (this.oHz != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.oHz);
+      if (this.pld != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.pld);
       }
       paramInt = i;
-      if (this.oHA != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.oHA);
+      if (this.ple != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.ple);
       }
       i = paramInt;
-      if (this.oHB != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.oHB);
+      if (this.plf != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.plf);
       }
       paramInt = i;
-      if (this.oHC != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.oHC);
+      if (this.plg != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.plg);
       }
-      i = paramInt + f.a.a.b.b.a.bx(7, this.oHD);
+      i = paramInt + f.a.a.b.b.a.bz(7, this.plh);
       paramInt = i;
-      if (this.oHE != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.oHE);
+      if (this.pli != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.pli);
       }
       i = paramInt;
-      if (this.oHF != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.oHF);
+      if (this.plj != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.plj);
       }
       AppMethodBeat.o(153075);
       return i;
@@ -85,9 +85,9 @@ public final class o
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(153075);
@@ -103,39 +103,39 @@ public final class o
         AppMethodBeat.o(153075);
         return -1;
       case 1: 
-        localo.oHy = locala.LVo.xF();
+        localo.plc = locala.NPN.zc();
         AppMethodBeat.o(153075);
         return 0;
       case 2: 
-        localo.fre = locala.LVo.readString();
+        localo.fJm = locala.NPN.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 3: 
-        localo.oHz = locala.LVo.readString();
+        localo.pld = locala.NPN.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 4: 
-        localo.oHA = locala.LVo.readString();
+        localo.ple = locala.NPN.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 5: 
-        localo.oHB = locala.LVo.readString();
+        localo.plf = locala.NPN.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 6: 
-        localo.oHC = locala.LVo.readString();
+        localo.plg = locala.NPN.readString();
         AppMethodBeat.o(153075);
         return 0;
       case 7: 
-        localo.oHD = locala.LVo.xF();
+        localo.plh = locala.NPN.zc();
         AppMethodBeat.o(153075);
         return 0;
       case 8: 
-        localo.oHE = locala.LVo.readString();
+        localo.pli = locala.NPN.readString();
         AppMethodBeat.o(153075);
         return 0;
       }
-      localo.oHF = locala.LVo.readString();
+      localo.plj = locala.NPN.readString();
       AppMethodBeat.o(153075);
       return 0;
     }
@@ -145,7 +145,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.o
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.tav.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTimeRange;
-import com.tencent.tav.decoder.IDecoder;
 import java.util.List;
 
 public class EmptyReaderOutput
@@ -13,9 +13,9 @@ public class EmptyReaderOutput
   
   public CMSampleBuffer nextSampleBuffer()
   {
-    AppMethodBeat.i(197617);
-    CMSampleBuffer localCMSampleBuffer = new CMSampleBuffer(IDecoder.SAMPLE_TIME_FINISH);
-    AppMethodBeat.o(197617);
+    AppMethodBeat.i(217903);
+    CMSampleBuffer localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-1L));
+    AppMethodBeat.o(217903);
     return localCMSampleBuffer;
   }
   
@@ -27,7 +27,7 @@ public class EmptyReaderOutput
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.EmptyReaderOutput
  * JD-Core Version:    0.7.0.1
  */

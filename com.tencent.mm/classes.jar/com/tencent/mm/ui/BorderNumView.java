@@ -12,10 +12,10 @@ import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 public class BorderNumView
   extends View
 {
-  private static int HgC = 22;
-  private static int HgD = 105;
-  private static int HgE = 100;
-  private int HgB;
+  private static int ITS = 22;
+  private static int ITT = 105;
+  private static int ITU = 100;
+  private int ITR;
   private Context context;
   private Paint mPaint;
   
@@ -24,7 +24,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(32961);
     this.context = null;
-    this.HgB = 100;
+    this.ITR = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32961);
@@ -35,7 +35,7 @@ public class BorderNumView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(32962);
     this.context = null;
-    this.HgB = 100;
+    this.ITR = 100;
     this.context = paramContext;
     init();
     AppMethodBeat.o(32962);
@@ -52,22 +52,22 @@ public class BorderNumView
   {
     AppMethodBeat.i(32964);
     super.onDraw(paramCanvas);
-    if (this.HgB < 100) {
-      HgC += 15;
+    if (this.ITR < 100) {
+      ITS += 15;
     }
-    if (this.HgB >= 1000) {
-      HgE -= 20;
+    if (this.ITR >= 1000) {
+      ITU -= 20;
     }
-    float f1 = BackwardSupportUtil.b.g(this.context, HgC);
-    float f2 = BackwardSupportUtil.b.g(this.context, HgD);
-    String str = this.HgB;
+    float f1 = BackwardSupportUtil.b.g(this.context, ITS);
+    float f2 = BackwardSupportUtil.b.g(this.context, ITT);
+    String str = this.ITR;
     this.mPaint.setAntiAlias(true);
-    this.mPaint.setTextSize(HgE);
+    this.mPaint.setTextSize(ITU);
     this.mPaint.setColor(-11491572);
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setStrokeWidth(8.0F);
     paramCanvas.drawText(str, f1, f2, this.mPaint);
-    this.mPaint.setTextSize(HgE);
+    this.mPaint.setTextSize(ITU);
     this.mPaint.setColor(-1770573);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setStrokeWidth(8.0F);
@@ -77,12 +77,12 @@ public class BorderNumView
   
   public void setPaintNum(int paramInt)
   {
-    this.HgB = paramInt;
+    this.ITR = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.BorderNumView
  * JD-Core Version:    0.7.0.1
  */

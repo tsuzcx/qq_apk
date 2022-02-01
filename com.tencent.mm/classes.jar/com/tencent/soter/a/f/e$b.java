@@ -2,16 +2,16 @@ package com.tencent.soter.a.f;
 
 public final class e$b
 {
-  public boolean JXv;
+  public boolean LRq;
   
   public e$b(boolean paramBoolean)
   {
-    this.JXv = paramBoolean;
+    this.LRq = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.soter.a.f.e.b
  * JD-Core Version:    0.7.0.1
  */

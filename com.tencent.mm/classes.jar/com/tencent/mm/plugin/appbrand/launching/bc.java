@@ -1,49 +1,47 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.res.Resources;
-import android.widget.Toast;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.utils.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.n.e;
+import com.tencent.mm.n.g;
+import com.tencent.mm.plugin.appbrand.u;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
-public enum bc
+final class bc
 {
-  public static void Oq(String paramString)
+  final String appId;
+  
+  bc(String paramString)
   {
-    AppMethodBeat.i(47317);
-    ac.e("MicroMsg.AppBrand.PrepareQuickAccess", "toast: ".concat(String.valueOf(paramString)));
-    ap.f(new Runnable()
+    this.appId = paramString;
+  }
+  
+  final boolean brz()
+  {
+    AppMethodBeat.i(47307);
+    if (g.acA().getInt("WeAppForbiddenSwitch", 0) == 1)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(47313);
-        Toast.makeText(ai.getContext(), this.fLm, 0).show();
-        AppMethodBeat.o(47313);
+      ad.i("MicroMsg.AppBrand.PreLaunchCheckForOversea", "startApp, WeAppForbiddenSwitch == 1, go webview, appId %s", new Object[] { this.appId });
+      Intent localIntent = new Intent().putExtra("rawUrl", u.KH(this.appId)).putExtra("forceHideShare", true);
+      Context localContext = aj.getContext();
+      if (!(localContext instanceof Activity)) {
+        localIntent.addFlags(268435456);
       }
-    });
-    AppMethodBeat.o(47317);
-  }
-  
-  public static String getMMString(int paramInt, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(47318);
-    paramVarArgs = e.getMMString(paramInt, paramVarArgs);
-    AppMethodBeat.o(47318);
-    return paramVarArgs;
-  }
-  
-  public static void tG(int paramInt)
-  {
-    AppMethodBeat.i(47316);
-    Oq(ai.getResources().getString(paramInt));
-    AppMethodBeat.o(47316);
+      d.b(localContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(47307);
+      return true;
+    }
+    AppMethodBeat.o(47307);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.bc
  * JD-Core Version:    0.7.0.1
  */

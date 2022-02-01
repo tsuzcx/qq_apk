@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends o
 {
-  private static final char[] bJr = { 65, 66, 67, 68 };
-  private static final char[] bJs = { 84, 78, 42, 69 };
-  private static final char[] bJt = { 47, 58, 43, 46 };
-  private static final char bJu = bJr[0];
+  private static final char[] bTE = { 65, 66, 67, 68 };
+  private static final char[] bTF = { 84, 78, 42, 69 };
+  private static final char[] bTG = { 47, 58, 43, 46 };
+  private static final char bTH = bTE[0];
   
-  public final boolean[] bn(String paramString)
+  public final boolean[] cg(String paramString)
   {
     AppMethodBeat.i(12237);
     String str;
     int i;
     if (paramString.length() < 2)
     {
-      str = bJu + paramString + bJu;
+      str = bTH + paramString + bTH;
       i = 20;
       j = 1;
       label49:
@@ -36,10 +36,10 @@ public final class b
       break label49;
       char c1 = Character.toUpperCase(paramString.charAt(0));
       char c2 = Character.toUpperCase(paramString.charAt(paramString.length() - 1));
-      bool1 = a.a(bJr, c1);
-      boolean bool2 = a.a(bJr, c2);
-      boolean bool3 = a.a(bJs, c1);
-      boolean bool4 = a.a(bJs, c2);
+      bool1 = a.a(bTE, c1);
+      boolean bool2 = a.a(bTE, c2);
+      boolean bool3 = a.a(bTF, c1);
+      boolean bool4 = a.a(bTF, c2);
       if (bool1)
       {
         str = paramString;
@@ -66,10 +66,10 @@ public final class b
         AppMethodBeat.o(12237);
         throw paramString;
       }
-      str = bJu + paramString + bJu;
+      str = bTH + paramString + bTH;
       break;
       label315:
-      if (!a.a(bJt, str.charAt(j))) {
+      if (!a.a(bTG, str.charAt(j))) {
         break label341;
       }
       i += 10;
@@ -99,15 +99,15 @@ public final class b
         label496:
         m = 0;
         label499:
-        if (m < a.bJo.length) {
-          if (i != a.bJo[m]) {
+        if (m < a.bTB.length) {
+          if (i != a.bTB[m]) {
             break;
           }
         }
         break;
       }
     }
-    for (int m = a.bJp[m];; m = 0)
+    for (int m = a.bTC[m];; m = 0)
     {
       int n = 0;
       bool1 = true;

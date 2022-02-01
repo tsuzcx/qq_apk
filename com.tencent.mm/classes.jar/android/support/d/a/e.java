@@ -192,7 +192,7 @@ public final class e
       if (((String)localObject1).equals("set"))
       {
         localObject1 = new AnimatorSet();
-        localObject2 = g.a(paramResources, paramTheme, paramAttributeSet, a.uR);
+        localObject2 = g.a(paramResources, paramTheme, paramAttributeSet, a.wK);
         i = g.a((TypedArray)localObject2, paramXmlPullParser, "ordering", 0, 0);
         a(paramContext, paramResources, paramTheme, paramXmlPullParser, paramAttributeSet, (AnimatorSet)localObject1, i, paramFloat);
         ((TypedArray)localObject2).recycle();
@@ -298,8 +298,8 @@ public final class e
       {
         localObject = paramTypedArray.getString(paramInt2);
         paramTypedArray = paramTypedArray.getString(paramInt3);
-        c.b[] arrayOfb1 = c.y((String)localObject);
-        c.b[] arrayOfb2 = c.y(paramTypedArray);
+        c.b[] arrayOfb1 = c.x((String)localObject);
+        c.b[] arrayOfb2 = c.x(paramTypedArray);
         if ((arrayOfb1 == null) && (arrayOfb2 == null)) {
           break label685;
         }
@@ -342,7 +342,7 @@ public final class e
     }
     localObject = null;
     if (i == 3) {
-      localObject = f.dh();
+      localObject = f.dw();
     }
     float f1;
     label345:
@@ -452,8 +452,8 @@ public final class e
   
   private static ValueAnimator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, ValueAnimator paramValueAnimator, float paramFloat, XmlPullParser paramXmlPullParser)
   {
-    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.uQ);
-    paramTheme = g.a(paramResources, paramTheme, paramAttributeSet, a.uU);
+    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wJ);
+    paramTheme = g.a(paramResources, paramTheme, paramAttributeSet, a.wN);
     paramResources = paramValueAnimator;
     if (paramValueAnimator == null) {
       paramResources = new ValueAnimator();
@@ -548,7 +548,7 @@ public final class e
       break label131;
     }
     label354:
-    a(c.x(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
+    a(c.u(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
     label371:
     return;
     label372:
@@ -647,7 +647,7 @@ public final class e
     int j;
     if (paramXmlPullParser.getName().equals("propertyValuesHolder"))
     {
-      TypedArray localTypedArray1 = g.a(paramResources, paramTheme, paramAttributeSet, a.uS);
+      TypedArray localTypedArray1 = g.a(paramResources, paramTheme, paramAttributeSet, a.wL);
       String str = g.c(localTypedArray1, paramXmlPullParser, "propertyName", 3);
       int i1 = g.a(localTypedArray1, paramXmlPullParser, "valueType", 2, 4);
       localObject1 = null;
@@ -669,7 +669,7 @@ public final class e
           j = i;
           if (i == 4)
           {
-            localObject2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.uT);
+            localObject2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.wM);
             localObject3 = g.a((TypedArray)localObject2, paramXmlPullParser, "value");
             if (localObject3 == null) {
               break label418;
@@ -682,7 +682,7 @@ public final class e
             ((TypedArray)localObject2).recycle();
             j = i;
           }
-          localTypedArray2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.uT);
+          localTypedArray2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.wM);
           localObject3 = null;
           f = g.a(localTypedArray2, paramXmlPullParser, "fraction", 3, -1.0F);
           localObject2 = g.a(localTypedArray2, paramXmlPullParser, "value");
@@ -828,7 +828,7 @@ public final class e
             localObject1 = localObject2;
             if (i == 3)
             {
-              ((PropertyValuesHolder)localObject2).setEvaluator(f.dh());
+              ((PropertyValuesHolder)localObject2).setEvaluator(f.dw());
               localObject1 = localObject2;
             }
             label848:
@@ -889,7 +889,7 @@ public final class e
   static final class a
     implements TypeEvaluator<c.b[]>
   {
-    private c.b[] vg;
+    private c.b[] wZ;
   }
 }
 

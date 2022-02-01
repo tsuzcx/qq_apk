@@ -5,18 +5,18 @@ import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 
 public final class c
 {
-  private static c KyF;
-  public CookieInternal.ICookieManagerInternal KyG;
+  private static c Mpb;
+  public CookieInternal.ICookieManagerInternal Mpc;
   
-  public static c fJa()
+  public static c gaw()
   {
     try
     {
       AppMethodBeat.i(156717);
-      if (KyF == null) {
-        KyF = new c();
+      if (Mpb == null) {
+        Mpb = new c();
       }
-      c localc = KyF;
+      c localc = Mpb;
       AppMethodBeat.o(156717);
       return localc;
     }
@@ -28,8 +28,8 @@ public final class c
     try
     {
       AppMethodBeat.i(156722);
-      if (this.KyG != null) {
-        this.KyG.e(paramWebView);
+      if (this.Mpc != null) {
+        this.Mpc.e(paramWebView);
       }
       AppMethodBeat.o(156722);
       return;
@@ -37,13 +37,13 @@ public final class c
     finally {}
   }
   
-  public final void fJb()
+  public final void gax()
   {
     try
     {
       AppMethodBeat.i(156721);
-      if (this.KyG != null) {
-        this.KyG.fJb();
+      if (this.Mpc != null) {
+        this.Mpc.gax();
       }
       AppMethodBeat.o(156721);
       return;
@@ -54,7 +54,7 @@ public final class c
   public final String getCookie(String paramString)
   {
     AppMethodBeat.i(156719);
-    paramString = this.KyG.getCookie(paramString);
+    paramString = this.Mpc.getCookie(paramString);
     AppMethodBeat.o(156719);
     return paramString;
   }
@@ -62,7 +62,7 @@ public final class c
   public final void removeAllCookie()
   {
     AppMethodBeat.i(156718);
-    this.KyG.removeAllCookie();
+    this.Mpc.removeAllCookie();
     AppMethodBeat.o(156718);
   }
   
@@ -71,7 +71,7 @@ public final class c
     try
     {
       AppMethodBeat.i(156720);
-      this.KyG.setCookie(paramString1, paramString2);
+      this.Mpc.setCookie(paramString1, paramString2);
       AppMethodBeat.o(156720);
       return;
     }
@@ -84,7 +84,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.c
  * JD-Core Version:    0.7.0.1
  */

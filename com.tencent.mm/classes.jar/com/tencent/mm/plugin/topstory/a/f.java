@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.topstory.a;
 
 import com.tencent.mm.plugin.topstory.a.b.c;
-import com.tencent.mm.protocal.protobuf.dil;
-import com.tencent.mm.protocal.protobuf.dio;
+import com.tencent.mm.protocal.protobuf.doa;
+import com.tencent.mm.protocal.protobuf.dod;
 import java.util.HashSet;
 
 public abstract interface f
 {
-  public abstract void a(dil paramdil, dio paramdio, int paramInt1, int paramInt2, String paramString);
+  public abstract void a(doa paramdoa, dod paramdod, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void a(dil paramdil, HashSet<c> paramHashSet);
+  public abstract void a(doa paramdoa, HashSet<c> paramHashSet);
 }
 
 

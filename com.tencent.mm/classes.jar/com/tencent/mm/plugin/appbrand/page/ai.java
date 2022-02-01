@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import com.tencent.luggage.h.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @SuppressLint({"ViewConstructor"})
 public final class ai
   extends r
 {
-  private aa caw;
+  private aa ckN;
   private String mUrl;
   
   public ai(Context paramContext, u paramu)
@@ -21,67 +21,67 @@ public final class ai
     super(paramContext, paramu);
   }
   
-  protected final View BU()
+  protected final View Dt()
   {
     AppMethodBeat.i(135241);
-    if (this.caw == null)
+    if (this.ckN == null)
     {
-      this.caw = getContainer().bqi();
-      this.caw.lCC = this;
+      this.ckN = getContainer().bui();
+      this.ckN.mcd = this;
     }
-    ViewGroup localViewGroup = this.caw.jHO;
+    ViewGroup localViewGroup = this.ckN.kca;
     AppMethodBeat.o(135241);
     return localViewGroup;
   }
   
-  protected final void BV()
+  protected final void Du()
   {
     AppMethodBeat.i(135244);
-    super.BV();
-    this.caw.onDestroy();
+    super.Du();
+    this.ckN.onDestroy();
     AppMethodBeat.o(135244);
   }
   
-  public final void BW()
+  public final void Dv()
   {
     AppMethodBeat.i(135246);
-    super.BW();
-    this.caw.onForeground();
+    super.Dv();
+    this.ckN.onForeground();
     AppMethodBeat.o(135246);
   }
   
-  public final void BX()
+  public final void Dw()
   {
     AppMethodBeat.i(135247);
-    super.BX();
-    this.caw.onBackground();
+    super.Dw();
+    this.ckN.onBackground();
     AppMethodBeat.o(135247);
   }
   
-  public final void PC(String paramString)
+  public final void Tf(String paramString)
   {
-    AppMethodBeat.i(193423);
+    AppMethodBeat.i(197340);
     this.mUrl = paramString;
-    this.caw.ci(paramString);
-    AppMethodBeat.o(193423);
+    this.ckN.dk(paramString);
+    AppMethodBeat.o(197340);
   }
   
   public final void a(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(135248);
-    if (!i(paramArrayOfInt, this.caw.aUT()))
+    if (!i(paramArrayOfInt, this.ckN.aXC()))
     {
       AppMethodBeat.o(135248);
       return;
     }
-    this.caw.c(paramString1, paramString2, 0);
+    this.ckN.c(paramString1, paramString2, 0);
     AppMethodBeat.o(135248);
   }
   
-  public final boolean cb(String paramString)
+  public final boolean cV(String paramString)
   {
     AppMethodBeat.i(135243);
-    boolean bool = k.cp(this.mUrl).equals(k.cp(paramString));
+    boolean bool = k.dr(this.mUrl).equals(k.dr(paramString));
     AppMethodBeat.o(135243);
     return bool;
   }
@@ -90,13 +90,13 @@ public final class ai
   {
     AppMethodBeat.i(135245);
     super.cleanup();
-    this.caw.cleanup();
+    this.ckN.cleanup();
     AppMethodBeat.o(135245);
   }
   
   public final aa getCurrentPageView()
   {
-    return this.caw;
+    return this.ckN;
   }
   
   public final String getCurrentUrl()
@@ -107,20 +107,20 @@ public final class ai
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(135242);
-    ac.i("MicroMsg.AppBrandSinglePage", "AppBrandPageProfile| loadUrl");
+    ad.i("MicroMsg.AppBrandSinglePage", "AppBrandPageProfile| loadUrl");
     if (this.mUrl != null)
     {
       AppMethodBeat.o(135242);
       return;
     }
     this.mUrl = paramString;
-    this.caw.ci(paramString);
+    this.ckN.dk(paramString);
     AppMethodBeat.o(135242);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ai
  * JD-Core Version:    0.7.0.1
  */

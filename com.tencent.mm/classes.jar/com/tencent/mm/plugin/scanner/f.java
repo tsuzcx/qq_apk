@@ -7,22 +7,22 @@ import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class f
 {
-  private static final String[] wVA = { "http://u.wechat.com/", "https://u.wechat.com/" };
-  private static final String[] wVB = { "http://work.weixin.qq.com/u/", "http://work.weixin.qq.com/ct/", "https://work.weixin.qq.com/u/", "https://work.weixin.qq.com/ct/" };
-  private static final String[] wVC = { "https://wx.tenpay.com/f2f", "wxp://f2f", "https://payapp.weixin.qq.com/qr/" };
-  private static final String[] wVD = { "m", "n" };
-  private static final String[] wVz = { "http://weixin.qq.com/g/", "https://weixin.qq.com/g/" };
+  private static final String[] yjc = { "http://weixin.qq.com/g/", "https://weixin.qq.com/g/" };
+  private static final String[] yjd = { "http://u.wechat.com/", "https://u.wechat.com/" };
+  private static final String[] yje = { "http://work.weixin.qq.com/u/", "http://work.weixin.qq.com/ct/", "https://work.weixin.qq.com/u/", "https://work.weixin.qq.com/ct/" };
+  private static final String[] yjf = { "https://wx.tenpay.com/f2f", "wxp://f2f", "https://payapp.weixin.qq.com/qr/" };
+  private static final String[] yjg = { "m", "n" };
   
-  public static boolean bG(int paramInt, String paramString)
+  public static boolean bM(int paramInt, String paramString)
   {
     AppMethodBeat.i(151555);
     if (paramInt != 22)
@@ -30,14 +30,14 @@ public final class f
       AppMethodBeat.o(151555);
       return false;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151555);
       return false;
     }
-    if ((ai.ciE()) || ((Looper.myLooper() == Looper.getMainLooper()) && (!com.tencent.mm.ipcinvoker.c.aeI().tC("com.tencent.mm"))))
+    if ((aj.cnC()) || ((Looper.myLooper() == Looper.getMainLooper()) && (!com.tencent.mm.ipcinvoker.c.ahu().ws("com.tencent.mm"))))
     {
-      localObject = dyV();
+      localObject = dKt();
       localObject = ((Set)localObject).iterator();
     }
     HashSet localHashSet;
@@ -60,7 +60,7 @@ public final class f
       paramInt = 0;
       while (paramInt < localObject.length)
       {
-        if (!bs.isNullOrNil(localObject[paramInt])) {
+        if (!bt.isNullOrNil(localObject[paramInt])) {
           localHashSet.add(localObject[paramInt]);
         }
         paramInt += 1;
@@ -73,7 +73,7 @@ public final class f
     }
   }
   
-  public static boolean bH(int paramInt, String paramString)
+  public static boolean bN(int paramInt, String paramString)
   {
     AppMethodBeat.i(151556);
     if (paramInt != 19)
@@ -81,14 +81,14 @@ public final class f
       AppMethodBeat.o(151556);
       return false;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151556);
       return false;
     }
-    if ((ai.cin()) || ((Looper.myLooper() == Looper.getMainLooper()) && (!com.tencent.mm.ipcinvoker.c.aeI().tC("com.tencent.mm"))))
+    if ((aj.cmR()) || ((Looper.myLooper() == Looper.getMainLooper()) && (!com.tencent.mm.ipcinvoker.c.ahu().ws("com.tencent.mm"))))
     {
-      localObject = dyW();
+      localObject = dKu();
       localObject = ((Set)localObject).iterator();
     }
     HashSet localHashSet;
@@ -111,7 +111,7 @@ public final class f
       paramInt = 0;
       while (paramInt < localObject.length)
       {
-        if (!bs.isNullOrNil(localObject[paramInt])) {
+        if (!bt.isNullOrNil(localObject[paramInt])) {
           localHashSet.add(localObject[paramInt]);
         }
         paramInt += 1;
@@ -124,7 +124,7 @@ public final class f
     }
   }
   
-  public static boolean bI(int paramInt, String paramString)
+  public static boolean bO(int paramInt, String paramString)
   {
     AppMethodBeat.i(151557);
     if (paramInt != 19)
@@ -132,12 +132,12 @@ public final class f
       AppMethodBeat.o(151557);
       return false;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151557);
       return false;
     }
-    String[] arrayOfString = wVA;
+    String[] arrayOfString = yjd;
     int i = arrayOfString.length;
     paramInt = 0;
     while (paramInt < i)
@@ -153,7 +153,7 @@ public final class f
     return false;
   }
   
-  public static boolean bJ(int paramInt, String paramString)
+  public static boolean bP(int paramInt, String paramString)
   {
     AppMethodBeat.i(151558);
     if (paramInt != 19)
@@ -161,12 +161,12 @@ public final class f
       AppMethodBeat.o(151558);
       return false;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151558);
       return false;
     }
-    String[] arrayOfString = wVz;
+    String[] arrayOfString = yjc;
     int i = arrayOfString.length;
     paramInt = 0;
     while (paramInt < i)
@@ -182,7 +182,7 @@ public final class f
     return false;
   }
   
-  public static boolean bK(int paramInt, String paramString)
+  public static boolean bQ(int paramInt, String paramString)
   {
     AppMethodBeat.i(151559);
     if (paramInt != 19)
@@ -190,12 +190,12 @@ public final class f
       AppMethodBeat.o(151559);
       return false;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(151559);
       return false;
     }
-    String[] arrayOfString = wVB;
+    String[] arrayOfString = yje;
     int i = arrayOfString.length;
     paramInt = 0;
     while (paramInt < i)
@@ -211,7 +211,7 @@ public final class f
     return false;
   }
   
-  public static boolean bL(int paramInt, String paramString)
+  public static boolean bR(int paramInt, String paramString)
   {
     AppMethodBeat.i(177300);
     if (paramInt != 22)
@@ -219,12 +219,12 @@ public final class f
       AppMethodBeat.o(177300);
       return false;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(177300);
       return false;
     }
-    String[] arrayOfString = wVD;
+    String[] arrayOfString = yjg;
     int i = arrayOfString.length;
     paramInt = 0;
     while (paramInt < i)
@@ -240,7 +240,7 @@ public final class f
     return false;
   }
   
-  public static boolean bM(int paramInt, String paramString)
+  public static boolean bS(int paramInt, String paramString)
   {
     AppMethodBeat.i(177301);
     if (paramInt != 19)
@@ -248,12 +248,12 @@ public final class f
       AppMethodBeat.o(177301);
       return false;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(177301);
       return false;
     }
-    String[] arrayOfString = wVC;
+    String[] arrayOfString = yjf;
     int i = arrayOfString.length;
     paramInt = 0;
     while (paramInt < i)
@@ -269,10 +269,10 @@ public final class f
     return false;
   }
   
-  public static boolean bN(int paramInt, String paramString)
+  public static boolean bT(int paramInt, String paramString)
   {
     AppMethodBeat.i(151560);
-    if ((bG(paramInt, paramString)) || (bH(paramInt, paramString)) || (bJ(paramInt, paramString)) || (bI(paramInt, paramString)) || (bK(paramInt, paramString)) || (bM(paramInt, paramString)) || (bL(paramInt, paramString)))
+    if ((bM(paramInt, paramString)) || (bN(paramInt, paramString)) || (bP(paramInt, paramString)) || (bO(paramInt, paramString)) || (bQ(paramInt, paramString)) || (bS(paramInt, paramString)) || (bR(paramInt, paramString)))
     {
       AppMethodBeat.o(151560);
       return true;
@@ -281,40 +281,40 @@ public final class f
     return false;
   }
   
-  public static int bO(int paramInt, String paramString)
+  public static int bU(int paramInt, String paramString)
   {
     AppMethodBeat.i(151561);
-    if (bH(paramInt, paramString))
+    if (bN(paramInt, paramString))
     {
       AppMethodBeat.o(151561);
       return 3;
     }
-    if (bG(paramInt, paramString))
+    if (bM(paramInt, paramString))
     {
       AppMethodBeat.o(151561);
       return 4;
     }
-    if (bJ(paramInt, paramString))
+    if (bP(paramInt, paramString))
     {
       AppMethodBeat.o(151561);
       return 2;
     }
-    if (bI(paramInt, paramString))
+    if (bO(paramInt, paramString))
     {
       AppMethodBeat.o(151561);
       return 1;
     }
-    if (bK(paramInt, paramString))
+    if (bQ(paramInt, paramString))
     {
       AppMethodBeat.o(151561);
       return 7;
     }
-    if (bL(paramInt, paramString))
+    if (bR(paramInt, paramString))
     {
       AppMethodBeat.o(151561);
       return 5;
     }
-    if (bM(paramInt, paramString))
+    if (bS(paramInt, paramString))
     {
       AppMethodBeat.o(151561);
       return 6;
@@ -323,30 +323,30 @@ public final class f
     return -1;
   }
   
-  private static Set<String> dyV()
+  private static Set<String> dKt()
   {
     AppMethodBeat.i(151562);
     HashSet localHashSet = new HashSet();
     localHashSet.add("k");
     localHashSet.add("l");
-    if (ai.ciE())
+    if (aj.cnC())
     {
-      localObject = ((a)g.ab(a.class)).ZZ();
+      localObject = ((a)g.ab(a.class)).acB();
       if (localObject == null) {
         break label134;
       }
     }
     label134:
-    for (Object localObject = ((com.tencent.mm.m.c)localObject).ag("ScanCode", "weAppCodePrefix");; localObject = "")
+    for (Object localObject = ((com.tencent.mm.n.c)localObject).ah("ScanCode", "weAppCodePrefix");; localObject = "")
     {
-      ac.v("MicroMsg.QRCodeLogic", "getWxCodePrefix(%s)", new Object[] { localObject });
-      if (!bs.isNullOrNil((String)localObject))
+      ad.v("MicroMsg.QRCodeLogic", "getWxCodePrefix(%s)", new Object[] { localObject });
+      if (!bt.isNullOrNil((String)localObject))
       {
         localObject = ((String)localObject).split("\\|");
         int i = 0;
         while (i < localObject.length)
         {
-          if (!bs.isNullOrNil(localObject[i])) {
+          if (!bt.isNullOrNil(localObject[i])) {
             localHashSet.add(localObject[i]);
           }
           i += 1;
@@ -357,30 +357,30 @@ public final class f
     }
   }
   
-  private static Set<String> dyW()
+  private static Set<String> dKu()
   {
     AppMethodBeat.i(151563);
     HashSet localHashSet = new HashSet();
     localHashSet.add("http://weixin.qq.com/r/");
     localHashSet.add("http://weixin.qq.com/q/");
-    if (ai.cin())
+    if (aj.cmR())
     {
-      localObject = ((a)g.ab(a.class)).ZZ();
+      localObject = ((a)g.ab(a.class)).acB();
       if (localObject == null) {
         break label134;
       }
     }
     label134:
-    for (Object localObject = ((com.tencent.mm.m.c)localObject).ag("ScanCode", "brandCodePrefix");; localObject = "")
+    for (Object localObject = ((com.tencent.mm.n.c)localObject).ah("ScanCode", "brandCodePrefix");; localObject = "")
     {
-      ac.v("MicroMsg.QRCodeLogic", "getWxBrandCodePrefix(%s)", new Object[] { localObject });
-      if (!bs.isNullOrNil((String)localObject))
+      ad.v("MicroMsg.QRCodeLogic", "getWxBrandCodePrefix(%s)", new Object[] { localObject });
+      if (!bt.isNullOrNil((String)localObject))
       {
         localObject = ((String)localObject).split("\\|");
         int i = 0;
         while (i < localObject.length)
         {
-          if (!bs.isNullOrNil(localObject[i])) {
+          if (!bt.isNullOrNil(localObject[i])) {
             localHashSet.add(localObject[i]);
           }
           i += 1;

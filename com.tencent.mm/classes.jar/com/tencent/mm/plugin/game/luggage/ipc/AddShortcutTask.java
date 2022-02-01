@@ -6,16 +6,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.model.e;
 import com.tencent.mm.plugin.webview.model.e.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class AddShortcutTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<AddShortcutTask> CREATOR;
   public String appId;
-  public Runnable jWP;
+  public Runnable krg;
   public boolean success;
   public String username;
   
@@ -35,19 +35,19 @@ public class AddShortcutTask
     AppMethodBeat.o(83037);
   }
   
-  public final void aLq()
+  public final void aOA()
   {
     AppMethodBeat.i(83033);
-    if ((bs.isNullOrNil(this.appId)) || (bs.isNullOrNil(this.username)))
+    if ((bt.isNullOrNil(this.appId)) || (bt.isNullOrNil(this.username)))
     {
-      ac.e("MicroMsg.AddShortcutTask", "appid or username is null");
+      ad.e("MicroMsg.AddShortcutTask", "appid or username is null");
       this.success = false;
       AppMethodBeat.o(83033);
       return;
     }
-    e.a(ai.getContext(), this.username, this.appId, new e.a()
+    e.a(aj.getContext(), this.username, this.appId, new e.a()
     {
-      public final void mF(boolean paramAnonymousBoolean)
+      public final void mY(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(83031);
         AddShortcutTask.this.success = paramAnonymousBoolean;
@@ -58,11 +58,11 @@ public class AddShortcutTask
     AppMethodBeat.o(83033);
   }
   
-  public final void aLr()
+  public final void aOB()
   {
     AppMethodBeat.i(83034);
-    if (this.jWP != null) {
-      this.jWP.run();
+    if (this.krg != null) {
+      this.krg.run();
     }
     AppMethodBeat.o(83034);
   }

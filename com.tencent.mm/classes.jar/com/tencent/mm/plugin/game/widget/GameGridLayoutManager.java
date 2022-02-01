@@ -4,7 +4,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView.o;
 import android.support.v7.widget.RecyclerView.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class GameGridLayoutManager
   extends GridLayoutManager
@@ -30,7 +30,7 @@ public class GameGridLayoutManager
     }
     catch (IndexOutOfBoundsException paramo)
     {
-      ac.e("MicroMsg.GameGridLayoutManager", "meet a IOOBE in RecyclerView");
+      ad.e("MicroMsg.GameGridLayoutManager", "meet a IOOBE in RecyclerView");
       AppMethodBeat.o(42619);
     }
   }

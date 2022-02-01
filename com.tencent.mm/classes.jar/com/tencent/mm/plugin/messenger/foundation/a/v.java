@@ -1,12 +1,21 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.bw.a;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.modelmulti.o.c;
+import com.tencent.mm.storage.bu;
 
-public abstract interface v<T extends a>
+public abstract interface v
+  extends a
 {
-  public abstract void a(T paramT);
+  public abstract String Q(bu parambu);
   
-  public abstract void b(T paramT);
+  public abstract void a(o.c paramc);
+  
+  public abstract void a(h paramh);
+  
+  public abstract void a(o paramo);
+  
+  public abstract o aJt();
 }
 
 

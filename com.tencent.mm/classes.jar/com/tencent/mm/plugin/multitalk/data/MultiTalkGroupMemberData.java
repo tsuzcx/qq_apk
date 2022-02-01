@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 
 public class MultiTalkGroupMemberData
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiTalkGroupMemberData> CREATOR;
-  MultiTalkGroupMember uWR;
+  MultiTalkGroupMember vZZ;
   
   static
   {
@@ -22,7 +22,7 @@ public class MultiTalkGroupMemberData
   
   public MultiTalkGroupMemberData(MultiTalkGroupMember paramMultiTalkGroupMember)
   {
-    this.uWR = paramMultiTalkGroupMember;
+    this.vZZ = paramMultiTalkGroupMember;
   }
   
   public int describeContents()
@@ -33,17 +33,17 @@ public class MultiTalkGroupMemberData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(114412);
-    paramParcel.writeString(bs.bG(this.uWR.JPW, ""));
-    paramParcel.writeString(bs.bG(this.uWR.JPX, ""));
-    paramParcel.writeInt(this.uWR.status);
-    paramParcel.writeInt(this.uWR.reason);
-    paramParcel.writeInt(this.uWR.JOX);
+    paramParcel.writeString(bt.bI(this.vZZ.LJH, ""));
+    paramParcel.writeString(bt.bI(this.vZZ.LJI, ""));
+    paramParcel.writeInt(this.vZZ.status);
+    paramParcel.writeInt(this.vZZ.reason);
+    paramParcel.writeInt(this.vZZ.LIJ);
     AppMethodBeat.o(114412);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.data.MultiTalkGroupMemberData
  * JD-Core Version:    0.7.0.1
  */

@@ -2,18 +2,18 @@ package com.tencent.mm.media.widget.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.a.c.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class c$10
   implements c.b
 {
   c$10(c paramc) {}
   
-  public final void avr()
+  public final void aye()
   {
-    AppMethodBeat.i(209901);
-    ac.i("MicroMsg.Media.MediaCodecMP4MuxRecorder", "[" + hashCode() + "] aac stop finish");
-    AppMethodBeat.o(209901);
+    AppMethodBeat.i(219336);
+    ad.i("MicroMsg.Media.MediaCodecMP4MuxRecorder", "[" + hashCode() + "] aac stop finish");
+    AppMethodBeat.o(219336);
   }
 }
 

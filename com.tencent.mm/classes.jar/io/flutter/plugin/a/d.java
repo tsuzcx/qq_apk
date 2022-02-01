@@ -7,26 +7,26 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class d
 {
-  final l KOQ;
+  final l MFN;
   final String name;
-  final c uzE;
+  final c vCh;
   
   public d(c paramc, String paramString)
   {
-    this(paramc, paramString, o.KPd);
+    this(paramc, paramString, o.MGa);
   }
   
   private d(c paramc, String paramString, l paraml)
   {
-    this.uzE = paramc;
+    this.vCh = paramc;
     this.name = paramString;
-    this.KOQ = paraml;
+    this.MFN = paraml;
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(9835);
-    c localc = this.uzE;
+    c localc = this.vCh;
     String str = this.name;
     if (paramc == null) {}
     for (paramc = null;; paramc = new b(paramc))
@@ -39,38 +39,38 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void cIg();
+    public abstract void cQv();
     
-    public abstract void db(Object paramObject);
+    public abstract void de(Object paramObject);
     
-    public abstract void e(String paramString1, String paramString2, Object paramObject);
+    public abstract void f(String paramString1, String paramString2, Object paramObject);
   }
   
   final class b
     implements c.a
   {
-    private final d.c KOR;
-    final AtomicReference<d.a> KOS;
+    private final d.c MFO;
+    final AtomicReference<d.a> MFP;
     
     b(d.c paramc)
     {
       AppMethodBeat.i(9843);
-      this.KOS = new AtomicReference(null);
-      this.KOR = paramc;
+      this.MFP = new AtomicReference(null);
+      this.MFO = paramc;
       AppMethodBeat.o(9843);
     }
     
     public final void a(ByteBuffer paramByteBuffer, c.b paramb)
     {
       AppMethodBeat.i(9844);
-      paramByteBuffer = d.this.KOQ.J(paramByteBuffer);
+      paramByteBuffer = d.this.MFN.K(paramByteBuffer);
       if (paramByteBuffer.method.equals("listen"))
       {
         paramByteBuffer = new a((byte)0);
-        if ((d.a)this.KOS.getAndSet(paramByteBuffer) != null) {}
+        if ((d.a)this.MFP.getAndSet(paramByteBuffer) != null) {}
         try
         {
-          this.KOR.rr();
+          this.MFO.sQ();
         }
         catch (RuntimeException localRuntimeException)
         {
@@ -78,16 +78,16 @@ public final class d
           {
             try
             {
-              this.KOR.a(paramByteBuffer);
-              paramb.H(d.this.KOQ.eE(null));
+              this.MFO.a(paramByteBuffer);
+              paramb.I(d.this.MFN.eH(null));
               AppMethodBeat.o(9844);
               return;
             }
             catch (RuntimeException paramByteBuffer)
             {
-              this.KOS.set(null);
+              this.MFP.set(null);
               new StringBuilder("EventChannel#").append(d.this.name);
-              paramb.H(d.this.KOQ.i("error", paramByteBuffer.getMessage(), null));
+              paramb.I(d.this.MFN.k("error", paramByteBuffer.getMessage(), null));
               AppMethodBeat.o(9844);
               return;
             }
@@ -98,75 +98,75 @@ public final class d
       }
       if (paramByteBuffer.method.equals("cancel"))
       {
-        if ((d.a)this.KOS.getAndSet(null) != null) {
+        if ((d.a)this.MFP.getAndSet(null) != null) {
           try
           {
-            this.KOR.rr();
-            paramb.H(d.this.KOQ.eE(null));
+            this.MFO.sQ();
+            paramb.I(d.this.MFN.eH(null));
             AppMethodBeat.o(9844);
             return;
           }
           catch (RuntimeException paramByteBuffer)
           {
             new StringBuilder("EventChannel#").append(d.this.name);
-            paramb.H(d.this.KOQ.i("error", paramByteBuffer.getMessage(), null));
+            paramb.I(d.this.MFN.k("error", paramByteBuffer.getMessage(), null));
             AppMethodBeat.o(9844);
             return;
           }
         }
-        paramb.H(d.this.KOQ.i("error", "No active stream to cancel", null));
+        paramb.I(d.this.MFN.k("error", "No active stream to cancel", null));
         AppMethodBeat.o(9844);
         return;
       }
-      paramb.H(null);
+      paramb.I(null);
       AppMethodBeat.o(9844);
     }
     
     final class a
       implements d.a
     {
-      final AtomicBoolean KOU;
+      final AtomicBoolean MFR;
       
       private a()
       {
         AppMethodBeat.i(9831);
-        this.KOU = new AtomicBoolean(false);
+        this.MFR = new AtomicBoolean(false);
         AppMethodBeat.o(9831);
       }
       
-      public final void cIg()
+      public final void cQv()
       {
         AppMethodBeat.i(9834);
-        if ((this.KOU.getAndSet(true)) || (d.b.this.KOS.get() != this))
+        if ((this.MFR.getAndSet(true)) || (d.b.this.MFP.get() != this))
         {
           AppMethodBeat.o(9834);
           return;
         }
-        d.this.uzE.a(d.this.name, null);
+        d.this.vCh.a(d.this.name, null);
         AppMethodBeat.o(9834);
       }
       
-      public final void db(Object paramObject)
+      public final void de(Object paramObject)
       {
         AppMethodBeat.i(9832);
-        if ((this.KOU.get()) || (d.b.this.KOS.get() != this))
+        if ((this.MFR.get()) || (d.b.this.MFP.get() != this))
         {
           AppMethodBeat.o(9832);
           return;
         }
-        d.this.uzE.a(d.this.name, d.this.KOQ.eE(paramObject));
+        d.this.vCh.a(d.this.name, d.this.MFN.eH(paramObject));
         AppMethodBeat.o(9832);
       }
       
-      public final void e(String paramString1, String paramString2, Object paramObject)
+      public final void f(String paramString1, String paramString2, Object paramObject)
       {
         AppMethodBeat.i(9833);
-        if ((this.KOU.get()) || (d.b.this.KOS.get() != this))
+        if ((this.MFR.get()) || (d.b.this.MFP.get() != this))
         {
           AppMethodBeat.o(9833);
           return;
         }
-        d.this.uzE.a(d.this.name, d.this.KOQ.i(paramString1, paramString2, paramObject));
+        d.this.vCh.a(d.this.name, d.this.MFN.k(paramString1, paramString2, paramObject));
         AppMethodBeat.o(9833);
       }
     }
@@ -176,12 +176,12 @@ public final class d
   {
     public abstract void a(d.a parama);
     
-    public abstract void rr();
+    public abstract void sQ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.plugin.a.d
  * JD-Core Version:    0.7.0.1
  */

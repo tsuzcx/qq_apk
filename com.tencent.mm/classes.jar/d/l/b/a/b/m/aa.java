@@ -3,10 +3,9 @@ package d.l.b.a.b.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
 import d.a.v;
-import d.b.a;
 import d.g.a.b;
-import d.g.b.k;
-import d.g.b.l;
+import d.g.b.p;
+import d.g.b.q;
 import d.l.b.a.b.b.a.g.a;
 import d.l.b.a.b.b.as;
 import d.l.b.a.b.b.h;
@@ -22,21 +21,21 @@ import java.util.List;
 public final class aa
   implements at
 {
-  public final LinkedHashSet<ab> LLj;
-  private final int aFZ;
+  public final LinkedHashSet<ab> NCe;
+  private final int aHQ;
   
   public aa(Collection<? extends ab> paramCollection)
   {
     AppMethodBeat.i(60760);
     if (!paramCollection.isEmpty()) {}
-    for (int i = 1; (d.aa.KTq) && (i == 0); i = 0)
+    for (int i = 1; (d.ac.MKp) && (i == 0); i = 0)
     {
       paramCollection = (Throwable)new AssertionError("Attempt to create an empty intersection");
       AppMethodBeat.o(60760);
       throw paramCollection;
     }
-    this.LLj = new LinkedHashSet(paramCollection);
-    this.aFZ = this.LLj.hashCode();
+    this.NCe = new LinkedHashSet(paramCollection);
+    this.aHQ = this.NCe.hashCode();
     AppMethodBeat.o(60760);
   }
   
@@ -53,68 +52,68 @@ public final class aa
       AppMethodBeat.o(60758);
       return false;
     }
-    boolean bool = k.g(this.LLj, ((aa)paramObject).LLj);
+    boolean bool = p.i(this.NCe, ((aa)paramObject).NCe);
     AppMethodBeat.o(60758);
     return bool;
   }
   
-  public final h fQq()
+  public final List<as> getParameters()
+  {
+    return (List)v.MKE;
+  }
+  
+  public final h ghO()
   {
     return null;
   }
   
-  public final boolean fQs()
+  public final boolean ghQ()
   {
     return false;
   }
   
-  public final d.l.b.a.b.a.g fRE()
+  public final Collection<ab> gjR()
+  {
+    return (Collection)this.NCe;
+  }
+  
+  public final d.l.b.a.b.a.g gjd()
   {
     AppMethodBeat.i(60756);
-    d.l.b.a.b.a.g localg = ((ab)this.LLj.iterator().next()).gbz().fRE();
-    k.g(localg, "intersectedTypes.iterato…xt().constructor.builtIns");
+    d.l.b.a.b.a.g localg = ((ab)this.NCe.iterator().next()).gsZ().gjd();
+    p.g(localg, "intersectedTypes.iterato…xt().constructor.builtIns");
     AppMethodBeat.o(60756);
     return localg;
   }
   
-  public final Collection<ab> fSt()
-  {
-    return (Collection)this.LLj;
-  }
-  
-  public final aj gcy()
+  public final aj gtZ()
   {
     AppMethodBeat.i(60759);
-    Object localObject = d.l.b.a.b.b.a.g.LeU;
-    localObject = g.a.fSm();
+    Object localObject = d.l.b.a.b.b.a.g.MVP;
+    localObject = g.a.gjL();
     at localat = (at)this;
-    List localList = (List)v.KTF;
-    m.a locala = m.LHh;
-    localObject = ac.a((d.l.b.a.b.b.a.g)localObject, localat, localList, false, m.a.b("member scope for intersection type ".concat(String.valueOf(this)), (Collection)this.LLj), (b)new a(this));
+    List localList = (List)v.MKE;
+    m.a locala = m.Nyf;
+    localObject = ac.a((d.l.b.a.b.b.a.g)localObject, localat, localList, false, m.a.c("member scope for intersection type ".concat(String.valueOf(this)), (Collection)this.NCe), (b)new a(this));
     AppMethodBeat.o(60759);
     return localObject;
   }
   
-  public final List<as> getParameters()
-  {
-    return (List)v.KTF;
-  }
-  
   public final int hashCode()
   {
-    return this.aFZ;
+    return this.aHQ;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60757);
-    String str = j.a((Iterable)j.a((Iterable)this.LLj, (Comparator)new b()), (CharSequence)" & ", (CharSequence)"{", (CharSequence)"}", 0, null, null, 56);
+    String str = j.a((Iterable)j.a((Iterable)this.NCe, (Comparator)new aa.b()), (CharSequence)" & ", (CharSequence)"{", (CharSequence)"}", 0, null, null, 56);
     AppMethodBeat.o(60757);
     return str;
   }
   
   static final class a
-    extends l
+    extends q
     implements b<i, aj>
   {
     a(aa paramaa)
@@ -122,22 +121,10 @@ public final class aa
       super();
     }
   }
-  
-  public static final class b<T>
-    implements Comparator<T>
-  {
-    public final int compare(T paramT1, T paramT2)
-    {
-      AppMethodBeat.i(60755);
-      int i = a.a((Comparable)((ab)paramT1).toString(), (Comparable)((ab)paramT2).toString());
-      AppMethodBeat.o(60755);
-      return i;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.aa
  * JD-Core Version:    0.7.0.1
  */

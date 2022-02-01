@@ -7,31 +7,31 @@ import java.util.List;
 
 public final class b
 {
-  int aak;
-  int asn;
-  float byA;
-  float byB;
-  int byC;
-  int byD;
-  List<Integer> byE;
-  int byF;
-  int byw;
-  int byx;
-  int byy;
-  int byz;
-  int ym;
-  int yn;
-  int yo;
-  int yp;
+  int Af;
+  int Ag;
+  int Ah;
+  int Ai;
+  int aca;
+  int aue;
+  int bIK;
+  int bIL;
+  int bIM;
+  int bIN;
+  float bIO;
+  float bIP;
+  int bIQ;
+  int bIR;
+  List<Integer> bIS;
+  int bIT;
   
   b()
   {
     AppMethodBeat.i(62214);
-    this.ym = 2147483647;
-    this.yn = 2147483647;
-    this.yo = -2147483648;
-    this.yp = -2147483648;
-    this.byE = new ArrayList();
+    this.Af = 2147483647;
+    this.Ag = 2147483647;
+    this.Ah = -2147483648;
+    this.Ai = -2147483648;
+    this.bIS = new ArrayList();
     AppMethodBeat.o(62214);
   }
   
@@ -39,18 +39,18 @@ public final class b
   {
     AppMethodBeat.i(62215);
     FlexItem localFlexItem = (FlexItem)paramView.getLayoutParams();
-    this.ym = Math.min(this.ym, paramView.getLeft() - localFlexItem.wb() - paramInt1);
-    this.yn = Math.min(this.yn, paramView.getTop() - localFlexItem.wc() - paramInt2);
-    this.yo = Math.max(this.yo, paramView.getRight() + localFlexItem.wd() + paramInt3);
-    paramInt1 = this.yp;
+    this.Af = Math.min(this.Af, paramView.getLeft() - localFlexItem.xy() - paramInt1);
+    this.Ag = Math.min(this.Ag, paramView.getTop() - localFlexItem.xz() - paramInt2);
+    this.Ah = Math.max(this.Ah, paramView.getRight() + localFlexItem.xA() + paramInt3);
+    paramInt1 = this.Ai;
     paramInt2 = paramView.getBottom();
-    this.yp = Math.max(paramInt1, localFlexItem.getMarginBottom() + paramInt2 + paramInt4);
+    this.Ai = Math.max(paramInt1, localFlexItem.getMarginBottom() + paramInt2 + paramInt4);
     AppMethodBeat.o(62215);
   }
   
-  public final int we()
+  public final int xB()
   {
-    return this.asn - this.byz;
+    return this.aue - this.bIN;
   }
 }
 

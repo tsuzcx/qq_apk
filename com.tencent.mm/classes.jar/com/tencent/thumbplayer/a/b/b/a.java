@@ -9,52 +9,52 @@ public final class a
 {
   public static boolean d(b paramb)
   {
-    AppMethodBeat.i(187822);
+    AppMethodBeat.i(191843);
     if (paramb == null)
     {
-      AppMethodBeat.o(187822);
+      AppMethodBeat.o(191843);
       return true;
     }
-    if (paramb.Kcc == 0)
+    if (paramb.LVY == 0)
     {
-      AppMethodBeat.o(187822);
+      AppMethodBeat.o(191843);
       return true;
     }
     if ((g(paramb)) || (f(paramb)))
     {
-      AppMethodBeat.o(187822);
+      AppMethodBeat.o(191843);
       return true;
     }
-    AppMethodBeat.o(187822);
+    AppMethodBeat.o(191843);
     return false;
   }
   
   public static boolean e(b paramb)
   {
-    AppMethodBeat.i(187823);
-    if (paramb.Kcc == 0)
+    AppMethodBeat.i(191844);
+    if (paramb.LVY == 0)
     {
-      AppMethodBeat.o(187823);
+      AppMethodBeat.o(191844);
       return true;
     }
     boolean bool = f(paramb);
-    AppMethodBeat.o(187823);
+    AppMethodBeat.o(191844);
     return bool;
   }
   
   private static boolean f(b paramb)
   {
-    AppMethodBeat.i(187824);
-    boolean bool = TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC, paramb.Kcc, (int)paramb.aQX, (int)paramb.aQY, paramb.Kcb, paramb.Kch);
-    AppMethodBeat.o(187824);
+    AppMethodBeat.i(191845);
+    boolean bool = TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_MEDIACODEC, paramb.LVY, (int)paramb.bbs, (int)paramb.bbt, paramb.LVX, paramb.LWd);
+    AppMethodBeat.o(191845);
     return bool;
   }
   
   private static boolean g(b paramb)
   {
-    AppMethodBeat.i(187825);
-    boolean bool = TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_FFMPEG, paramb.Kcc, (int)paramb.aQX, (int)paramb.aQY, paramb.Kcb, paramb.Kch);
-    AppMethodBeat.o(187825);
+    AppMethodBeat.i(191846);
+    boolean bool = TPThumbplayerCapabilityHelper.isVCodecCapabilitySupport(TPDecoderType.TP_VIDEO_DECODER_FFMPEG, paramb.LVY, (int)paramb.bbs, (int)paramb.bbt, paramb.LVX, paramb.LWd);
+    AppMethodBeat.o(191846);
     return bool;
   }
 }

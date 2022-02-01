@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.mogic.WxViewPager;
 
 public class CustomViewPager
@@ -53,7 +53,7 @@ public class CustomViewPager
     }
     catch (Exception paramMotionEvent)
     {
-      ac.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
       AppMethodBeat.o(141621);
     }
     return false;
@@ -75,7 +75,7 @@ public class CustomViewPager
     }
     catch (Exception paramMotionEvent)
     {
-      ac.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CustomViewPager", paramMotionEvent, "get a Exception", new Object[0]);
       AppMethodBeat.o(141622);
     }
     return false;
@@ -93,7 +93,7 @@ public class CustomViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.CustomViewPager
  * JD-Core Version:    0.7.0.1
  */

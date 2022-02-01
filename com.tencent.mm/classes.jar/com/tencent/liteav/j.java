@@ -1,5 +1,6 @@
 package com.tencent.liteav;
 
+import com.tencent.liteav.basic.a.c;
 import com.tencent.liteav.basic.c.a;
 import com.tencent.liteav.basic.structs.b;
 import javax.microedition.khronos.egl.EGLContext;
@@ -13,6 +14,8 @@ public abstract interface j
   public abstract void a(float paramFloat1, float paramFloat2);
   
   public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(c paramc);
   
   public abstract void a(a parama);
   
@@ -52,11 +55,15 @@ public abstract interface j
   
   public abstract void e(int paramInt);
   
+  public abstract void e(boolean paramBoolean);
+  
   public abstract EGLContext f();
   
   public abstract void f(int paramInt);
   
   public abstract int g();
+  
+  public abstract void g(int paramInt);
   
   public abstract boolean h();
   

@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f
 {
-  private static final long[] bab = { 128L, 64L, 32L, 16L, 8L, 4L, 2L, 1L };
-  private final byte[] aYm;
+  private static final long[] bkw = { 128L, 64L, 32L, 16L, 8L, 4L, 2L, 1L };
+  private final byte[] biH;
   int length;
   private int state;
   
   public f()
   {
     AppMethodBeat.i(92032);
-    this.aYm = new byte[8];
+    this.biH = new byte[8];
     AppMethodBeat.o(92032);
   }
   
@@ -21,7 +21,7 @@ final class f
     long l2 = paramArrayOfByte[0] & 0xFF;
     long l1 = l2;
     if (paramBoolean) {
-      l1 = l2 & (bab[(paramInt - 1)] ^ 0xFFFFFFFF);
+      l1 = l2 & (bkw[(paramInt - 1)] ^ 0xFFFFFFFF);
     }
     int i = 1;
     while (i < paramInt)
@@ -32,12 +32,12 @@ final class f
     return l1;
   }
   
-  public static int ec(int paramInt)
+  public static int eg(int paramInt)
   {
     int i = 0;
-    while (i < bab.length)
+    while (i < bkw.length)
     {
-      if ((bab[i] & paramInt) != 0L) {
+      if ((bkw[i] & paramInt) != 0L) {
         return i + 1;
       }
       i += 1;
@@ -50,12 +50,12 @@ final class f
     AppMethodBeat.i(92033);
     if (this.state == 0)
     {
-      if (!paramf.a(this.aYm, 0, 1, paramBoolean1))
+      if (!paramf.a(this.biH, 0, 1, paramBoolean1))
       {
         AppMethodBeat.o(92033);
         return -1L;
       }
-      this.length = ec(this.aYm[0] & 0xFF);
+      this.length = eg(this.biH[0] & 0xFF);
       if (this.length == -1)
       {
         paramf = new IllegalStateException("No valid varint length mask found");
@@ -71,10 +71,10 @@ final class f
       return -2L;
     }
     if (this.length != 1) {
-      paramf.readFully(this.aYm, 1, this.length - 1);
+      paramf.readFully(this.biH, 1, this.length - 1);
     }
     this.state = 0;
-    long l = a(this.aYm, this.length, paramBoolean2);
+    long l = a(this.biH, this.length, paramBoolean2);
     AppMethodBeat.o(92033);
     return l;
   }
@@ -87,7 +87,7 @@ final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.b.f
  * JD-Core Version:    0.7.0.1
  */

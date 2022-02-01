@@ -22,28 +22,28 @@ import org.json.JSONObject;
 
 public final class s
 {
-  static void Ik()
+  static void JK()
   {
-    if (i.cDB != null) {
-      h localh = i.cDB;
+    if (i.cOG != null) {
+      h localh = i.cOG;
     }
   }
   
-  static void Il()
+  static void JL()
   {
-    if (i.cDB != null) {
-      h localh = i.cDB;
+    if (i.cOG != null) {
+      h localh = i.cOG;
     }
   }
   
-  public static void Im()
+  public static void JM()
   {
-    if (i.cDB != null) {
-      h localh = i.cDB;
+    if (i.cOG != null) {
+      h localh = i.cOG;
     }
   }
   
-  static String In()
+  static String JN()
   {
     AppMethodBeat.i(87650);
     try
@@ -57,7 +57,7 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      Il();
+      JL();
       AppMethodBeat.o(87650);
     }
     return "";
@@ -93,7 +93,7 @@ public final class s
   static void a(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
     AppMethodBeat.i(87640);
-    if (jdMethod_do(paramString2)) {
+    if (ek(paramString2)) {
       paramJSONObject.put(paramString1, paramString2);
     }
     AppMethodBeat.o(87640);
@@ -138,14 +138,14 @@ public final class s
       }
       else
       {
-        Ik();
+        JK();
       }
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        Il();
+        JL();
       }
     }
     AppMethodBeat.o(87643);
@@ -193,12 +193,12 @@ public final class s
       catch (Exception paramContext)
       {
         "get wifi address error".concat(String.valueOf(paramContext));
-        Ik();
+        JK();
         AppMethodBeat.o(87644);
         return "";
       }
     }
-    Ik();
+    JK();
     AppMethodBeat.o(87644);
     return "";
   }
@@ -218,7 +218,7 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      Il();
+      JL();
       AppMethodBeat.o(87646);
     }
     return null;
@@ -239,7 +239,7 @@ public final class s
     }
     catch (Throwable paramContext)
     {
-      Il();
+      JL();
       AppMethodBeat.o(87647);
     }
     return null;
@@ -282,14 +282,14 @@ public final class s
       }
       else
       {
-        Ik();
+        JK();
       }
     }
     catch (Throwable paramContext)
     {
       for (;;)
       {
-        Il();
+        JL();
       }
     }
     AppMethodBeat.o(87648);
@@ -320,14 +320,14 @@ public final class s
       }
       else
       {
-        Ik();
+        JK();
         AppMethodBeat.o(87649);
         return null;
       }
     }
     catch (Throwable paramContext)
     {
-      Im();
+      JM();
       AppMethodBeat.o(87649);
     }
     return null;
@@ -362,7 +362,7 @@ public final class s
         String str1;
         String str2;
         paramContext = null;
-        Il();
+        JL();
         continue;
         paramContext = null;
         continue;
@@ -383,7 +383,7 @@ public final class s
       {
         paramContext = "MOBILE";
         continue;
-        Ik();
+        JK();
         paramContext = null;
       }
     }
@@ -404,7 +404,7 @@ public final class s
     {
       for (;;)
       {
-        Im();
+        JM();
       }
     }
     AppMethodBeat.o(87638);
@@ -432,13 +432,13 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      Im();
+      JM();
       AppMethodBeat.o(87641);
     }
     return paramString;
   }
   
-  static boolean jdMethod_do(String paramString)
+  static boolean ek(String paramString)
   {
     AppMethodBeat.i(87634);
     if ((paramString == null) || (paramString.trim().length() == 0))
@@ -450,7 +450,7 @@ public final class s
     return true;
   }
   
-  static boolean dp(String paramString)
+  static boolean el(String paramString)
   {
     AppMethodBeat.i(87635);
     if ((paramString != null) && (paramString.trim().length() >= 40))
@@ -483,7 +483,7 @@ public final class s
     }
     catch (Throwable localThrowable)
     {
-      Im();
+      JM();
       AppMethodBeat.o(87642);
     }
     return paramString;
@@ -508,7 +508,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.b.a.a.s
  * JD-Core Version:    0.7.0.1
  */

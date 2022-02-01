@@ -4,78 +4,66 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class cse
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<csd> DXc;
+  public LinkedList<Integer> GSD;
   
   public cse()
   {
-    AppMethodBeat.i(6429);
-    this.DXc = new LinkedList();
-    AppMethodBeat.o(6429);
+    AppMethodBeat.i(215807);
+    this.GSD = new LinkedList();
+    AppMethodBeat.o(215807);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(6430);
+    AppMethodBeat.i(215808);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.DXc);
-      AppMethodBeat.o(6430);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 2, this.GSD);
+      AppMethodBeat.o(215808);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.a.c(1, 8, this.DXc);
-      AppMethodBeat.o(6430);
+      paramInt = f.a.a.a.c(1, 2, this.GSD);
+      AppMethodBeat.o(215808);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.DXc.clear();
+      this.GSD.clear();
       paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(6430);
+      AppMethodBeat.o(215808);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       cse localcse = (cse)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(6430);
+        AppMethodBeat.o(215808);
         return -1;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new csd();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((csd)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localcse.DXc.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(6430);
+      localcse.GSD.add(Integer.valueOf(locala.NPN.zc()));
+      AppMethodBeat.o(215808);
       return 0;
     }
-    AppMethodBeat.o(6430);
+    AppMethodBeat.o(215808);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cse
  * JD-Core Version:    0.7.0.1
  */

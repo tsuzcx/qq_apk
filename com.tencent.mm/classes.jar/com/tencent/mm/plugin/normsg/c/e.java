@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.normsg.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.normsg.c.p;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
 {
-  public static boolean vpF;
+  public static boolean wuX;
   
   static
   {
     AppMethodBeat.i(149091);
-    vpF = false;
+    wuX = false;
     long l = System.nanoTime();
     try
     {
-      vpF = c.p.ag();
+      wuX = c.p.ag();
       return;
     }
     catch (Throwable localThrowable)
     {
-      ac.printErrStackTrace("MicroMsg.NormalMsgSource.DADH", localThrowable, "unexpected exception.", new Object[0]);
-      vpF = false;
+      ad.printErrStackTrace("MicroMsg.NormalMsgSource.DADH", localThrowable, "unexpected exception.", new Object[0]);
+      wuX = false;
       return;
     }
     finally
     {
-      ac.i("MicroMsg.NormalMsgSource.DADH", "CDA, result: %b, time: %d ns", new Object[] { Boolean.valueOf(vpF), Long.valueOf(System.nanoTime() - l) });
+      ad.i("MicroMsg.NormalMsgSource.DADH", "CDA, result: %b, time: %d ns", new Object[] { Boolean.valueOf(wuX), Long.valueOf(System.nanoTime() - l) });
       AppMethodBeat.o(149091);
     }
   }

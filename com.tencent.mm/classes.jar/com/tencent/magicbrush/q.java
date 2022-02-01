@@ -1,35 +1,35 @@
 package com.tencent.magicbrush;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.n;
-import d.g.b.w;
+import d.g.b.t;
+import d.g.b.z;
 import d.l;
 import d.l.b;
 import d.l.d;
 import d.l.h;
 
-@l(fNY={1, 1, 13})
+@l(gfx={1, 1, 13})
 final class q
-  extends n
+  extends t
 {
-  public static final h cnf;
+  public static final h cxK;
   
   static
   {
     AppMethodBeat.i(140136);
-    cnf = new q();
+    cxK = new q();
     AppMethodBeat.o(140136);
   }
   
-  public final String FZ()
+  public final String Hu()
   {
     return "getEnable_font_batch()Z";
   }
   
-  public final d Ga()
+  public final d Hv()
   {
     AppMethodBeat.i(140137);
-    b localb = w.bn(MBRuntime.MBParams.class);
+    b localb = z.bp(MBRuntime.MBParams.class);
     AppMethodBeat.o(140137);
     return localb;
   }
@@ -56,7 +56,7 @@ final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.magicbrush.q
  * JD-Core Version:    0.7.0.1
  */

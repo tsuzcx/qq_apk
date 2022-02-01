@@ -10,9 +10,9 @@ public abstract interface i
   
   public abstract boolean a(String paramString1, int paramInt, String paramString2, j paramj);
   
-  public abstract List<x> aAD();
+  public abstract List<x> aDG();
   
-  public abstract boolean ae(String paramString, int paramInt);
+  public abstract boolean ai(String paramString, int paramInt);
 }
 
 

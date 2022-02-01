@@ -37,23 +37,23 @@ import java.util.Map;
 public final class h
   implements g
 {
-  public b KKm;
-  c KMD;
-  public final f KPF;
-  View KPG;
-  io.flutter.embedding.engine.c.g KPH;
-  final HashMap<Integer, i> KPI;
-  final HashMap<Context, View> KPJ;
-  private final g.d KPK;
+  public b MBa;
+  c MDA;
+  public final f MGE;
+  View MGF;
+  io.flutter.embedding.engine.c.g MGG;
+  final HashMap<Integer, i> MGH;
+  final HashMap<Context, View> MGI;
+  private final g.d MGJ;
   final a accessibilityEventsDelegate;
   Context context;
   
   public h()
   {
     AppMethodBeat.i(9923);
-    this.KPK = new g.d()
+    this.MGJ = new g.d()
     {
-      private static void fNP()
+      private static void gfo()
       {
         AppMethodBeat.i(9904);
         if (Build.VERSION.SDK_INT < 20)
@@ -69,36 +69,36 @@ public final class h
       public final long a(final g.a paramAnonymousa)
       {
         AppMethodBeat.i(9898);
-        fNP();
-        if (!h.qj(paramAnonymousa.direction))
+        gfo();
+        if (!h.qK(paramAnonymousa.direction))
         {
           paramAnonymousa = new IllegalStateException("Trying to create a view with unknown direction value: " + paramAnonymousa.direction + "(view id: " + paramAnonymousa.viewId + ")");
           AppMethodBeat.o(9898);
           throw paramAnonymousa;
         }
-        if (h.this.KPI.containsKey(Integer.valueOf(paramAnonymousa.viewId)))
+        if (h.this.MGH.containsKey(Integer.valueOf(paramAnonymousa.viewId)))
         {
           paramAnonymousa = new IllegalStateException("Trying to create an already created platform view, view id: " + paramAnonymousa.viewId);
           AppMethodBeat.o(9898);
           throw paramAnonymousa;
         }
-        Object localObject1 = h.this.KPF;
-        Object localObject2 = paramAnonymousa.KNQ;
-        d locald = (d)((f)localObject1).KPE.get(localObject2);
+        Object localObject1 = h.this.MGE;
+        Object localObject2 = paramAnonymousa.MEN;
+        d locald = (d)((f)localObject1).MGD.get(localObject2);
         if (locald == null)
         {
-          paramAnonymousa = new IllegalStateException("Trying to create a platform view of unregistered type: " + paramAnonymousa.KNQ);
+          paramAnonymousa = new IllegalStateException("Trying to create a platform view of unregistered type: " + paramAnonymousa.MEN);
           AppMethodBeat.o(9898);
           throw paramAnonymousa;
         }
         localObject1 = null;
-        if (paramAnonymousa.KNT != null) {
-          localObject1 = locald.KPD.I(paramAnonymousa.KNT);
+        if (paramAnonymousa.MEQ != null) {
+          localObject1 = locald.MGC.J(paramAnonymousa.MEQ);
         }
-        int i = h.a(h.this, paramAnonymousa.KNR);
-        int j = h.a(h.this, paramAnonymousa.KNS);
+        int i = h.a(h.this, paramAnonymousa.MEO);
+        int j = h.a(h.this, paramAnonymousa.MEP);
         h.a(h.this, i, j);
-        localObject2 = h.this.KMD.fNv();
+        localObject2 = h.this.MDA.geU();
         Context localContext = h.this.context;
         a locala = h.this.accessibilityEventsDelegate;
         int k = paramAnonymousa.viewId;
@@ -109,10 +109,10 @@ public final class h
             AppMethodBeat.i(9886);
             if (paramAnonymous2Boolean)
             {
-              paramAnonymous2View = h.this.KPH;
+              paramAnonymous2View = h.this.MGG;
               int i = paramAnonymousa.viewId;
-              if (paramAnonymous2View.uzK != null) {
-                paramAnonymous2View.uzK.a("viewFocused", Integer.valueOf(i), null);
+              if (paramAnonymous2View.vCn != null) {
+                paramAnonymous2View.vCn.a("viewFocused", Integer.valueOf(i), null);
               }
             }
             AppMethodBeat.o(9886);
@@ -124,18 +124,18 @@ public final class h
         if (localVirtualDisplay == null) {}
         for (localObject1 = null; localObject1 == null; localObject1 = new i(localContext, locala, localVirtualDisplay, locald, localSurface, (c.a)localObject2, local1, k, localObject1))
         {
-          paramAnonymousa = new IllegalStateException("Failed creating virtual display for a " + paramAnonymousa.KNQ + " with id: " + paramAnonymousa.viewId);
+          paramAnonymousa = new IllegalStateException("Failed creating virtual display for a " + paramAnonymousa.MEN + " with id: " + paramAnonymousa.viewId);
           AppMethodBeat.o(9898);
           throw paramAnonymousa;
         }
-        if (h.this.KPG != null) {
-          ((i)localObject1).fNQ();
+        if (h.this.MGF != null) {
+          ((i)localObject1).gfp();
         }
-        h.this.KPI.put(Integer.valueOf(paramAnonymousa.viewId), localObject1);
+        h.this.MGH.put(Integer.valueOf(paramAnonymousa.viewId), localObject1);
         localObject1 = ((i)localObject1).getView();
         ((View)localObject1).setLayoutDirection(paramAnonymousa.direction);
-        h.this.KPJ.put(((View)localObject1).getContext(), localObject1);
-        long l = ((c.a)localObject2).fNy();
+        h.this.MGI.put(((View)localObject1).getContext(), localObject1);
+        long l = ((c.a)localObject2).geX();
         AppMethodBeat.o(9898);
         return l;
       }
@@ -143,26 +143,26 @@ public final class h
       public final void a(g.b paramAnonymousb, final Runnable paramAnonymousRunnable)
       {
         AppMethodBeat.i(9900);
-        fNP();
-        final i locali = (i)h.this.KPI.get(Integer.valueOf(paramAnonymousb.viewId));
+        gfo();
+        final i locali = (i)h.this.MGH.get(Integer.valueOf(paramAnonymousb.viewId));
         if (locali == null)
         {
           paramAnonymousb = new IllegalStateException("Trying to resize a platform view with unknown id: " + paramAnonymousb.viewId);
           AppMethodBeat.o(9900);
           throw paramAnonymousb;
         }
-        int i = h.a(h.this, paramAnonymousb.KNU);
-        int j = h.a(h.this, paramAnonymousb.KNV);
+        int i = h.a(h.this, paramAnonymousb.MER);
+        int j = h.a(h.this, paramAnonymousb.MES);
         h.a(h.this, i, j);
         paramAnonymousb = h.this;
-        if (paramAnonymousb.KKm != null)
+        if (paramAnonymousb.MBa != null)
         {
-          paramAnonymousb = paramAnonymousb.KKm;
-          if (paramAnonymousb.KPl.KPs == b.a.a.KPv) {
-            paramAnonymousb.KPq = true;
+          paramAnonymousb = paramAnonymousb.MBa;
+          if (paramAnonymousb.MGk.MGr == b.a.a.MGu) {
+            paramAnonymousb.MGp = true;
           }
-          if ((locali.KPY != null) && (locali.KPY.getView() != null)) {
-            break label339;
+          if ((locali.MGX != null) && (locali.MGX.getView() != null)) {
+            break label345;
           }
         }
         for (;;)
@@ -174,10 +174,10 @@ public final class h
               AppMethodBeat.i(9931);
               h localh = h.this;
               i locali = locali;
-              if (localh.KKm != null)
+              if (localh.MBa != null)
               {
-                localh.KKm.KPq = false;
-                if ((locali.KPY != null) && (locali.KPY.getView() != null)) {
+                localh.MBa.MGp = false;
+                if ((locali.MGX != null) && (locali.MGX.getView() != null)) {
                   break label67;
                 }
               }
@@ -187,33 +187,35 @@ public final class h
                 AppMethodBeat.o(9931);
                 return;
                 label67:
-                locali.KPY.getView();
+                locali.MGX.getView();
               }
             }
           };
           boolean bool = locali.getView().isFocused();
-          paramAnonymousRunnable = locali.KPY.detachState();
-          locali.KPX.setSurface(null);
-          locali.KPX.release();
-          locali.smR.surfaceTexture().setDefaultBufferSize(i, j);
-          locali.KPX = ((DisplayManager)locali.context.getSystemService("display")).createVirtualDisplay("flutter-vd", i, j, locali.densityDpi, locali.surface, 0);
+          paramAnonymousRunnable = locali.MGX.detachState();
+          locali.MGW.setSurface(null);
+          locali.MGW.release();
+          locali.tjv.surfaceTexture().setDefaultBufferSize(i, j);
+          locali.MGW = ((DisplayManager)locali.context.getSystemService("display")).createVirtualDisplay("flutter-vd", i, j, locali.densityDpi, locali.surface, 0);
           View localView = locali.getView();
           localView.addOnAttachStateChangeListener(new i.1(locali, localView, paramAnonymousb));
-          locali.KPY = new SingleViewPresentation(locali.context, locali.KPX.getDisplay(), locali.accessibilityEventsDelegate, paramAnonymousRunnable, locali.focusChangeListener, bool);
-          locali.KPY.show();
+          paramAnonymousb = new SingleViewPresentation(locali.context, locali.MGW.getDisplay(), locali.accessibilityEventsDelegate, paramAnonymousRunnable, locali.focusChangeListener, bool);
+          paramAnonymousb.show();
+          locali.MGX.cancel();
+          locali.MGX = paramAnonymousb;
           AppMethodBeat.o(9900);
           return;
-          label339:
-          locali.KPY.getView();
+          label345:
+          locali.MGX.getView();
         }
       }
       
       public final void a(g.c paramAnonymousc)
       {
         AppMethodBeat.i(9901);
-        fNP();
+        gfo();
         float f = h.this.context.getResources().getDisplayMetrics().density;
-        Object localObject2 = (List)paramAnonymousc.KNY;
+        Object localObject2 = (List)paramAnonymousc.MEV;
         Object localObject1 = new ArrayList();
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
@@ -224,65 +226,65 @@ public final class h
           localPointerProperties.toolType = ((Integer)localList.get(1)).intValue();
           ((List)localObject1).add(localPointerProperties);
         }
-        localObject1 = (MotionEvent.PointerProperties[])((List)localObject1).toArray(new MotionEvent.PointerProperties[paramAnonymousc.jcl]);
-        localObject2 = (MotionEvent.PointerCoords[])h.a(paramAnonymousc.KNZ, f).toArray(new MotionEvent.PointerCoords[paramAnonymousc.jcl]);
-        if (!h.this.KPI.containsKey(Integer.valueOf(paramAnonymousc.viewId)))
+        localObject1 = (MotionEvent.PointerProperties[])((List)localObject1).toArray(new MotionEvent.PointerProperties[paramAnonymousc.jvu]);
+        localObject2 = (MotionEvent.PointerCoords[])h.a(paramAnonymousc.MEW, f).toArray(new MotionEvent.PointerCoords[paramAnonymousc.jvu]);
+        if (!h.this.MGH.containsKey(Integer.valueOf(paramAnonymousc.viewId)))
         {
           paramAnonymousc = new IllegalStateException("Sending touch to an unknown view with id: " + paramAnonymousc.viewId);
           AppMethodBeat.o(9901);
           throw paramAnonymousc;
         }
-        ((i)h.this.KPI.get(Integer.valueOf(paramAnonymousc.viewId))).getView().dispatchTouchEvent(MotionEvent.obtain(paramAnonymousc.KNW.longValue(), paramAnonymousc.KNX.longValue(), paramAnonymousc.action, paramAnonymousc.jcl, (MotionEvent.PointerProperties[])localObject1, (MotionEvent.PointerCoords[])localObject2, paramAnonymousc.KNd, paramAnonymousc.KOa, paramAnonymousc.KOb, paramAnonymousc.KOc, paramAnonymousc.KMY, paramAnonymousc.edgeFlags, paramAnonymousc.dbL, paramAnonymousc.flags));
+        ((i)h.this.MGH.get(Integer.valueOf(paramAnonymousc.viewId))).getView().dispatchTouchEvent(MotionEvent.obtain(paramAnonymousc.MET.longValue(), paramAnonymousc.MEU.longValue(), paramAnonymousc.action, paramAnonymousc.jvu, (MotionEvent.PointerProperties[])localObject1, (MotionEvent.PointerCoords[])localObject2, paramAnonymousc.MEa, paramAnonymousc.MEX, paramAnonymousc.MEY, paramAnonymousc.MEZ, paramAnonymousc.MDV, paramAnonymousc.edgeFlags, paramAnonymousc.dnh, paramAnonymousc.flags));
         AppMethodBeat.o(9901);
       }
       
-      public final void agA(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(9903);
-        ((i)h.this.KPI.get(Integer.valueOf(paramAnonymousInt))).getView().clearFocus();
-        AppMethodBeat.o(9903);
-      }
-      
-      public final void agz(int paramAnonymousInt)
+      public final void aja(int paramAnonymousInt)
       {
         AppMethodBeat.i(9899);
-        fNP();
-        Object localObject = (i)h.this.KPI.get(Integer.valueOf(paramAnonymousInt));
+        gfo();
+        Object localObject = (i)h.this.MGH.get(Integer.valueOf(paramAnonymousInt));
         if (localObject == null)
         {
           localObject = new IllegalStateException("Trying to dispose a platform view with unknown id: ".concat(String.valueOf(paramAnonymousInt)));
           AppMethodBeat.o(9899);
           throw ((Throwable)localObject);
         }
-        if (h.this.KKm != null)
+        if (h.this.MBa != null)
         {
-          b localb = h.this.KKm;
-          if ((localb.KPl.KPs == b.a.a.KPv) && (localb.KPl.id == paramAnonymousInt))
+          b localb = h.this.MBa;
+          if ((localb.MGk.MGr == b.a.a.MGu) && (localb.MGk.id == paramAnonymousInt))
           {
-            localb.KPl = new b.a(b.a.a.KPt, 0);
-            localb.hc(localb.mView);
-            localb.KPk.restartInput(localb.mView);
-            localb.KPn = false;
+            localb.MGk = new b.a(b.a.a.MGs, 0);
+            localb.ht(localb.mView);
+            localb.MGi.restartInput(localb.mView);
+            localb.MGm = false;
           }
         }
-        h.this.KPJ.remove(((i)localObject).getView().getContext());
+        h.this.MGI.remove(((i)localObject).getView().getContext());
         ((i)localObject).dispose();
-        h.this.KPI.remove(Integer.valueOf(paramAnonymousInt));
+        h.this.MGH.remove(Integer.valueOf(paramAnonymousInt));
         AppMethodBeat.o(9899);
       }
       
+      public final void ajb(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(9903);
+        ((i)h.this.MGH.get(Integer.valueOf(paramAnonymousInt))).getView().clearFocus();
+        AppMethodBeat.o(9903);
+      }
+      
       @TargetApi(17)
-      public final void kU(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void lj(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(9902);
-        fNP();
-        if (!h.qj(paramAnonymousInt2))
+        gfo();
+        if (!h.qK(paramAnonymousInt2))
         {
           localObject = new IllegalStateException("Trying to set unknown direction value: " + paramAnonymousInt2 + "(view id: " + paramAnonymousInt1 + ")");
           AppMethodBeat.o(9902);
           throw ((Throwable)localObject);
         }
-        Object localObject = ((i)h.this.KPI.get(Integer.valueOf(paramAnonymousInt1))).getView();
+        Object localObject = ((i)h.this.MGH.get(Integer.valueOf(paramAnonymousInt1))).getView();
         if (localObject == null)
         {
           localObject = new IllegalStateException("Sending touch to an unknown view with id: ".concat(String.valueOf(paramAnonymousInt2)));
@@ -293,10 +295,10 @@ public final class h
         AppMethodBeat.o(9902);
       }
     };
-    this.KPF = new f();
-    this.KPI = new HashMap();
+    this.MGE = new f();
+    this.MGH = new HashMap();
     this.accessibilityEventsDelegate = new a();
-    this.KPJ = new HashMap();
+    this.MGI = new HashMap();
     AppMethodBeat.o(9923);
   }
   
@@ -310,26 +312,26 @@ public final class h
       throw paramContext;
     }
     this.context = paramContext;
-    this.KMD = paramc;
-    this.KPH = new io.flutter.embedding.engine.c.g(paramDartExecutor);
-    this.KPH.KNM = this.KPK;
+    this.MDA = paramc;
+    this.MGG = new io.flutter.embedding.engine.c.g(paramDartExecutor);
+    this.MGG.MEJ = this.MGJ;
     AppMethodBeat.o(9924);
   }
   
   public final void a(io.flutter.view.a parama)
   {
-    this.accessibilityEventsDelegate.KKY = parama;
+    this.accessibilityEventsDelegate.MBQ = parama;
   }
   
   public final boolean checkInputConnectionProxy(View paramView)
   {
     AppMethodBeat.i(9925);
-    if (!this.KPJ.containsKey(paramView.getContext()))
+    if (!this.MGI.containsKey(paramView.getContext()))
     {
       AppMethodBeat.o(9925);
       return false;
     }
-    View localView = (View)this.KPJ.get(paramView.getContext());
+    View localView = (View)this.MGI.get(paramView.getContext());
     if (localView == paramView)
     {
       AppMethodBeat.o(9925);
@@ -342,58 +344,58 @@ public final class h
   
   public final void detach()
   {
-    this.KPH.KNM = null;
-    this.KPH = null;
+    this.MGG.MEJ = null;
+    this.MGG = null;
     this.context = null;
-    this.KMD = null;
+    this.MDA = null;
   }
   
-  public final void fNM()
+  public final void gfl()
   {
-    this.accessibilityEventsDelegate.KKY = null;
+    this.accessibilityEventsDelegate.MBQ = null;
   }
   
-  public final void fNN()
+  public final void gfm()
   {
-    AppMethodBeat.i(192776);
-    this.KPG = null;
-    Iterator localIterator = this.KPI.values().iterator();
+    AppMethodBeat.i(213220);
+    this.MGF = null;
+    Iterator localIterator = this.MGH.values().iterator();
     while (localIterator.hasNext())
     {
       i locali = (i)localIterator.next();
-      if ((locali.KPY != null) && (locali.KPY.getView() != null)) {
-        locali.KPY.getView();
+      if ((locali.MGX != null) && (locali.MGX.getView() != null)) {
+        locali.MGX.getView();
       }
     }
-    AppMethodBeat.o(192776);
+    AppMethodBeat.o(213220);
   }
   
-  public final void fNO()
+  public final void gfn()
   {
     AppMethodBeat.i(9927);
-    Iterator localIterator = this.KPI.values().iterator();
+    Iterator localIterator = this.MGH.values().iterator();
     while (localIterator.hasNext()) {
       ((i)localIterator.next()).dispose();
     }
-    this.KPI.clear();
+    this.MGH.clear();
     AppMethodBeat.o(9927);
   }
   
-  public final void hd(View paramView)
+  public final void hu(View paramView)
   {
-    AppMethodBeat.i(192775);
-    this.KPG = paramView;
-    paramView = this.KPI.values().iterator();
+    AppMethodBeat.i(213219);
+    this.MGF = paramView;
+    paramView = this.MGH.values().iterator();
     while (paramView.hasNext()) {
-      ((i)paramView.next()).fNQ();
+      ((i)paramView.next()).gfp();
     }
-    AppMethodBeat.o(192775);
+    AppMethodBeat.o(213219);
   }
   
-  public final View o(Integer paramInteger)
+  public final View p(Integer paramInteger)
   {
     AppMethodBeat.i(9926);
-    paramInteger = (i)this.KPI.get(paramInteger);
+    paramInteger = (i)this.MGH.get(paramInteger);
     if (paramInteger == null)
     {
       AppMethodBeat.o(9926);

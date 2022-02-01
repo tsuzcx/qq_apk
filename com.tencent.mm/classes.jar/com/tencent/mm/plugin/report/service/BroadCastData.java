@@ -10,9 +10,9 @@ class BroadCastData
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadCastData> CREATOR;
-  ArrayList<KVReportDataInfo> wTx;
-  ArrayList<StIDKeyDataInfo> wTy;
-  ArrayList<GroupIDKeyDataInfo> wTz;
+  ArrayList<KVReportDataInfo> yhh;
+  ArrayList<StIDKeyDataInfo> yhi;
+  ArrayList<GroupIDKeyDataInfo> yhj;
   
   static
   {
@@ -24,38 +24,38 @@ class BroadCastData
   public BroadCastData()
   {
     AppMethodBeat.i(143806);
-    this.wTx = new ArrayList();
-    this.wTy = new ArrayList();
-    this.wTz = new ArrayList();
+    this.yhh = new ArrayList();
+    this.yhi = new ArrayList();
+    this.yhj = new ArrayList();
     AppMethodBeat.o(143806);
   }
   
   protected BroadCastData(Parcel paramParcel)
   {
     AppMethodBeat.i(143808);
-    this.wTx = new ArrayList();
-    this.wTy = new ArrayList();
-    this.wTz = new ArrayList();
-    paramParcel.readTypedList(this.wTx, KVReportDataInfo.CREATOR);
-    paramParcel.readTypedList(this.wTy, StIDKeyDataInfo.CREATOR);
-    paramParcel.readTypedList(this.wTz, GroupIDKeyDataInfo.CREATOR);
+    this.yhh = new ArrayList();
+    this.yhi = new ArrayList();
+    this.yhj = new ArrayList();
+    paramParcel.readTypedList(this.yhh, KVReportDataInfo.CREATOR);
+    paramParcel.readTypedList(this.yhi, StIDKeyDataInfo.CREATOR);
+    paramParcel.readTypedList(this.yhj, GroupIDKeyDataInfo.CREATOR);
     AppMethodBeat.o(143808);
   }
   
   public BroadCastData(BroadCastData paramBroadCastData)
   {
     AppMethodBeat.i(143807);
-    this.wTx = new ArrayList();
-    this.wTy = new ArrayList();
-    this.wTz = new ArrayList();
+    this.yhh = new ArrayList();
+    this.yhi = new ArrayList();
+    this.yhj = new ArrayList();
     if (paramBroadCastData == null)
     {
       AppMethodBeat.o(143807);
       return;
     }
-    this.wTx = new ArrayList(paramBroadCastData.wTx);
-    this.wTy = new ArrayList(paramBroadCastData.wTy);
-    this.wTz = new ArrayList(paramBroadCastData.wTz);
+    this.yhh = new ArrayList(paramBroadCastData.yhh);
+    this.yhi = new ArrayList(paramBroadCastData.yhi);
+    this.yhj = new ArrayList(paramBroadCastData.yhj);
     AppMethodBeat.o(143807);
   }
   
@@ -67,9 +67,9 @@ class BroadCastData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143809);
-    paramParcel.writeTypedList(this.wTx);
-    paramParcel.writeTypedList(this.wTy);
-    paramParcel.writeTypedList(this.wTz);
+    paramParcel.writeTypedList(this.yhh);
+    paramParcel.writeTypedList(this.yhi);
+    paramParcel.writeTypedList(this.yhj);
     AppMethodBeat.o(143809);
   }
 }

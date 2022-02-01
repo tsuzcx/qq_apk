@@ -2,57 +2,57 @@ package com.tencent.mm.plugin.appbrand.launching.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
-import com.tencent.mm.protocal.protobuf.ebf;
-import com.tencent.mm.protocal.protobuf.ecj;
+import com.tencent.mm.protocal.protobuf.ehj;
+import com.tencent.mm.protocal.protobuf.eip;
 
 public final class d
 {
-  public static ecj b(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  public static eip b(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
   {
-    ecj localecj = null;
+    eip localeip = null;
     AppMethodBeat.i(147319);
     if (paramAppBrandLaunchReferrer == null)
     {
       AppMethodBeat.o(147319);
       return null;
     }
-    if (2 == paramAppBrandLaunchReferrer.jDQ)
+    if (2 == paramAppBrandLaunchReferrer.jXR)
     {
-      localecj = new ecj();
-      localecj.DPF = paramAppBrandLaunchReferrer.appId;
-      localecj.Url = paramAppBrandLaunchReferrer.url;
+      localeip = new eip();
+      localeip.FuU = paramAppBrandLaunchReferrer.appId;
+      localeip.Url = paramAppBrandLaunchReferrer.url;
     }
     AppMethodBeat.o(147319);
-    return localecj;
+    return localeip;
   }
   
-  public static ebf c(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
+  public static ehj c(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
   {
-    ebf localebf1 = null;
+    ehj localehj1 = null;
     AppMethodBeat.i(147320);
     if (paramAppBrandLaunchReferrer == null)
     {
       AppMethodBeat.o(147320);
       return null;
     }
-    if (1 == paramAppBrandLaunchReferrer.jDQ)
+    if (1 == paramAppBrandLaunchReferrer.jXR)
     {
-      localebf1 = new ebf();
-      localebf1.FbF = paramAppBrandLaunchReferrer.appId;
-      localebf1.Fbw = paramAppBrandLaunchReferrer.sourceType;
-      localebf1.GgQ = paramAppBrandLaunchReferrer.jDS;
+      localehj1 = new ehj();
+      localehj1.GLe = paramAppBrandLaunchReferrer.appId;
+      localehj1.GKV = paramAppBrandLaunchReferrer.sourceType;
+      localehj1.HSd = paramAppBrandLaunchReferrer.jXT;
     }
-    ebf localebf2 = localebf1;
+    ehj localehj2 = localehj1;
     if (paramAppBrandLaunchReferrer.sourceType != 0)
     {
-      localebf2 = localebf1;
-      if (localebf1 == null) {
-        localebf2 = new ebf();
+      localehj2 = localehj1;
+      if (localehj1 == null) {
+        localehj2 = new ehj();
       }
-      localebf2.Fbw = paramAppBrandLaunchReferrer.sourceType;
+      localehj2.GKV = paramAppBrandLaunchReferrer.sourceType;
     }
     AppMethodBeat.o(147320);
-    return localebf2;
+    return localehj2;
   }
 }
 

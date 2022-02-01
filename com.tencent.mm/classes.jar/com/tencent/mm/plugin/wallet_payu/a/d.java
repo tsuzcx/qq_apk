@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet_payu.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.wallet_payu.pwd.a.f;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.wallet_core.a;
 import java.util.HashMap;
 
 public class d
-  implements aw
+  implements ax
 {
-  private String BSl = null;
-  private int BSm = -1;
+  private String DsE = null;
+  private int DsF = -1;
   
   static
   {

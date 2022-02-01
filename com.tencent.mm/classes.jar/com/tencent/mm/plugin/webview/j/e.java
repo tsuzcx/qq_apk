@@ -1,174 +1,157 @@
 package com.tencent.mm.plugin.webview.j;
 
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.plugin.appbrand.z.p.a;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.j;
+import d.f;
+import d.g;
+import d.g.a.a;
+import d.g.b.ad;
+import d.g.b.p;
+import d.l;
+import d.n.n;
+import java.util.Arrays;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/util/WebPrefetchUserAgentInfo;", "Lcom/tencent/mm/plugin/appbrand/util/UserAgentUtil$Info;", "mContext", "Landroid/content/Context;", "(Landroid/content/Context;)V", "version", "", "identity", "Companion", "webview-sdk_release"})
 public final class e
+  implements p.a
 {
-  private static int We(int paramInt)
+  public static final a Etl;
+  private static final f nOP;
+  private final Context mContext;
+  private String version;
+  
+  static
   {
-    if (paramInt == 1) {
-      return 1;
-    }
-    if (paramInt == 2) {
-      return 2;
-    }
-    if (paramInt == 3) {
-      return 4;
-    }
-    if (paramInt == 4) {
-      return 6;
-    }
-    return 2;
+    AppMethodBeat.i(214377);
+    Etl = new a((byte)0);
+    nOP = g.O((a)b.Etm);
+    AppMethodBeat.o(214377);
   }
   
-  public static int a(Context paramContext, com.tencent.mm.plugin.webview.stub.e parame, String paramString)
+  public e(Context paramContext)
   {
-    AppMethodBeat.i(82379);
+    AppMethodBeat.i(214376);
+    this.mContext = paramContext;
+    this.version = "";
+    AppMethodBeat.o(214376);
+  }
+  
+  public final String DW()
+  {
+    return " MicroMessenger/";
+  }
+  
+  public final String version()
+  {
+    AppMethodBeat.i(214375);
+    Object localObject1;
+    if (!TextUtils.isEmpty((CharSequence)this.version))
+    {
+      localObject1 = this.version;
+      AppMethodBeat.o(214375);
+      return localObject1;
+    }
     try
     {
-      localaw = aw.fK("WebViewFontUtil", 2);
-      bool = localaw.getBoolean("webview_key_font_use_system", false);
-      ac.i("MicroMsg.WebViewFontUtil", "useSystemFont = %b", new Object[] { Boolean.valueOf(bool) });
-      if (bool)
+      localObject1 = b.getPackageInfo(this.mContext, aj.getPackageName());
+      if (localObject1 != null)
       {
-        i = gY(paramContext);
-        AppMethodBeat.o(82379);
-        return i;
-      }
-      bool = localaw.getBoolean("webview_key_font_has_set", false);
-      if ((!bs.isNullOrNil(paramString)) && (com.tencent.mm.plugin.webview.a.CcA.matcher(paramString).matches()))
-      {
-        j = parame.iN(16388, 2);
-        if ((j == 2) && (!bool)) {
-          i = j;
+        Object localObject2 = this.version;
+        this.version = ((String)localObject2 + j.aD(null, d.Fnj));
+        localObject2 = this.version;
+        this.version = ((String)localObject2 + "." + ((PackageInfo)localObject1).versionCode);
+        localObject1 = this.version;
+        localObject1 = new StringBuilder().append((String)localObject1).append("(");
+        localObject2 = ad.MLZ;
+        localObject2 = String.format("0x%08X", Arrays.copyOf(new Object[] { Integer.valueOf(d.Fnj) }, 1));
+        p.g(localObject2, "java.lang.String.format(format, *args)");
+        this.version = ((String)localObject2 + "; MicroMessenger/Prefetcher 2.0)");
+        localObject1 = this.version;
+        this.version = ((String)localObject1 + " Process/mm");
+        localObject1 = this.version;
+        localObject2 = new StringBuilder().append((String)localObject1).append(" WeChat/");
+        if (!com.tencent.mm.compatible.deviceinfo.q.is64BitRuntime()) {
+          break label308;
+        }
+        localObject1 = "arm64";
+        this.version = ((String)localObject1);
+        if (j.fjZ())
+        {
+          localObject1 = this.version;
+          this.version = ((String)localObject1 + " GPVersion/1");
         }
       }
+      localObject1 = this.version;
+      AppMethodBeat.o(214375);
+      return localObject1;
     }
-    catch (Exception paramContext)
+    catch (Exception localException)
     {
-      aw localaw;
-      boolean bool;
-      int j;
-      int k;
-      i = 2;
+      for (;;)
+      {
+        String str = null;
+        continue;
+        label308:
+        str = "arm32";
+      }
     }
-    try
-    {
-      j = gY(paramContext);
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    catch (Exception paramContext)
-    {
-      break label312;
-    }
-    int i = j;
-    bool = localaw.getBoolean("webview_key_has_transfer_mp", false);
-    if (bool)
-    {
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    i = j;
-    k = We(j);
-    i = j;
-    localaw.putBoolean("webview_key_has_transfer_mp", true);
-    i = j;
-    parame.iO(16388, k);
-    AppMethodBeat.o(82379);
-    return k;
-    j = parame.iN(16384, 2);
-    if ((j == 2) && (!bool))
-    {
-      i = j;
-      j = gY(paramContext);
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    i = j;
-    bool = localaw.getBoolean("webview_key_has_transfer_reader", false);
-    if (bool)
-    {
-      AppMethodBeat.o(82379);
-      return j;
-    }
-    i = j;
-    k = We(j);
-    i = j;
-    localaw.putBoolean("webview_key_has_transfer_reader", true);
-    i = j;
-    parame.iO(16384, k);
-    AppMethodBeat.o(82379);
-    return k;
-    label312:
-    ac.e("MicroMsg.WebViewFontUtil", "onLoadJsApiFinished, ex = " + paramContext.getMessage());
-    AppMethodBeat.o(82379);
-    return i;
   }
   
-  public static int gY(Context paramContext)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/util/WebPrefetchUserAgentInfo$Companion;", "", "()V", "APPEND_USER_AGENT", "", "DEFAULT_UA_PREFIX", "WEB_PRE_FETCHER_VERSION", "WEB_PRE_KEY_USER_AGENT", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMmkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mmkv$delegate", "Lkotlin/Lazy;", "updateUserAgentPrefix", "", "prefix", "webPrefetchUserAgentPrefix", "webview-sdk_release"})
+  public static final class a
   {
-    AppMethodBeat.i(82380);
-    float f = paramContext.getSharedPreferences(ai.eUX(), 0).getFloat("current_text_size_scale_key", 1.0F);
-    if (f == com.tencent.mm.cc.a.hP(paramContext))
+    public static ax bNe()
     {
-      AppMethodBeat.o(82380);
-      return 1;
+      AppMethodBeat.i(214373);
+      Object localObject = e.eVP();
+      a locala = e.Etl;
+      localObject = (ax)((f)localObject).getValue();
+      AppMethodBeat.o(214373);
+      return localObject;
     }
-    if (f == com.tencent.mm.cc.a.hQ(paramContext))
+    
+    public static String eVQ()
     {
-      AppMethodBeat.o(82380);
-      return 2;
+      AppMethodBeat.i(214374);
+      String str = bNe().getString("key_web_prefetch_ua", "Mozilla/5.0 (Linux; Android 9;) AppleWebKit/unknown (KHTML, like Gecko) Version/unknown Chrome/unknown Mobile Safari/unknown ");
+      CharSequence localCharSequence = (CharSequence)str;
+      if ((localCharSequence == null) || (n.aE(localCharSequence))) {}
+      for (int i = 1; i == 0; i = 0)
+      {
+        AppMethodBeat.o(214374);
+        return str;
+      }
+      AppMethodBeat.o(214374);
+      return "Mozilla/5.0 (Linux; Android 9;) AppleWebKit/unknown (KHTML, like Gecko) Version/unknown Chrome/unknown Mobile Safari/unknown ";
     }
-    if (f == com.tencent.mm.cc.a.hR(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 3;
-    }
-    if (f == com.tencent.mm.cc.a.hS(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 4;
-    }
-    if (f == com.tencent.mm.cc.a.hT(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 5;
-    }
-    if (f == com.tencent.mm.cc.a.hU(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 6;
-    }
-    if (f == com.tencent.mm.cc.a.hV(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 7;
-    }
-    if (f == com.tencent.mm.cc.a.hW(paramContext))
-    {
-      AppMethodBeat.o(82380);
-      return 8;
-    }
-    AppMethodBeat.o(82380);
-    return 2;
   }
   
-  public static void uJ(boolean paramBoolean)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class b
+    extends d.g.b.q
+    implements a<ax>
   {
-    AppMethodBeat.i(160473);
-    aw localaw = aw.fK("WebViewFontUtil", 2);
-    localaw.putBoolean("webview_key_font_use_system", paramBoolean);
-    localaw.apply();
-    AppMethodBeat.o(160473);
+    public static final b Etm;
+    
+    static
+    {
+      AppMethodBeat.i(214372);
+      Etm = new b();
+      AppMethodBeat.o(214372);
+    }
+    
+    b()
+    {
+      super();
+    }
   }
 }
 

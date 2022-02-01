@@ -5,11 +5,11 @@ import com.bumptech.glide.f.b;
 public abstract class a<Z>
   implements e<Z>
 {
-  private b aLX;
+  private b aNO;
   
   public final void h(b paramb)
   {
-    this.aLX = paramb;
+    this.aNO = paramb;
   }
   
   public final void onDestroy() {}
@@ -18,9 +18,9 @@ public abstract class a<Z>
   
   public final void onStop() {}
   
-  public final b pU()
+  public final b qm()
   {
-    return this.aLX;
+    return this.aNO;
   }
 }
 

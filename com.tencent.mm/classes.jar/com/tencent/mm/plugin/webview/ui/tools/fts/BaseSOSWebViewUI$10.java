@@ -6,13 +6,13 @@ import com.tencent.mm.plugin.webview.c.f;
 final class BaseSOSWebViewUI$10
   implements Runnable
 {
-  BaseSOSWebViewUI$10(BaseSOSWebViewUI paramBaseSOSWebViewUI, String paramString, int paramInt) {}
+  BaseSOSWebViewUI$10(BaseSOSWebViewUI paramBaseSOSWebViewUI, String paramString) {}
   
   public final void run()
   {
     AppMethodBeat.i(80533);
-    if (this.CCB.getJsapi() != null) {
-      this.CCB.getJsapi().fl(this.CCE, this.hXk);
+    if (this.Egk.getJsapi() != null) {
+      this.Egk.getJsapi().aGL(this.mEz);
     }
     AppMethodBeat.o(80533);
   }

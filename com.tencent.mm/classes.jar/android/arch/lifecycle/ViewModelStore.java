@@ -12,7 +12,7 @@ public class ViewModelStore
   {
     paramString = (ViewModel)this.dz.put(paramString, paramViewModel);
     if (paramString != null) {
-      paramString.ae();
+      paramString.af();
     }
   }
   
@@ -20,7 +20,7 @@ public class ViewModelStore
   {
     Iterator localIterator = this.dz.values().iterator();
     while (localIterator.hasNext()) {
-      ((ViewModel)localIterator.next()).ae();
+      ((ViewModel)localIterator.next()).af();
     }
     this.dz.clear();
   }

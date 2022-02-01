@@ -9,7 +9,7 @@ import d.l;
 import java.util.HashMap;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/component/Sample$SampleActivity;", "Lcom/tencent/mm/ui/component/UIComponentActivity;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "libmmui_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/component/Sample$SampleActivity;", "Lcom/tencent/mm/ui/component/UIComponentActivity;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "libmmui_release"})
 public final class Sample$SampleActivity
   extends UIComponentActivity
 {
@@ -17,7 +17,7 @@ public final class Sample$SampleActivity
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(197266);
+    AppMethodBeat.i(186583);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -28,15 +28,15 @@ public final class Sample$SampleActivity
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(197266);
+    AppMethodBeat.o(186583);
     return localView1;
   }
   
-  public final Set<Class<? extends UIComponent>> cwg()
+  public final Set<Class<? extends UIComponent>> cCu()
   {
-    AppMethodBeat.i(197265);
+    AppMethodBeat.i(186582);
     Set localSet = ak.setOf(new Class[] { Sample.MainUIC.class, Sample.ABizUIC.class, Sample.BBizUIC.class, Sample.CBizUIC.class });
-    AppMethodBeat.o(197265);
+    AppMethodBeat.o(186582);
     return localSet;
   }
   

@@ -23,22 +23,22 @@ import java.util.List;
 public class RadarGrid
   extends ChartGridView
 {
-  public static final Point yli;
+  public static final Point zBX;
   private Rect mRect;
-  private Path vU;
-  private int yld;
-  private int yle;
-  private float ylg;
-  private c ylh;
-  private int ylo;
-  private Point ylp;
-  private Spannable[] ylr;
-  private List<PointF> yls;
+  private Path xN;
+  private int zBS;
+  private int zBT;
+  private float zBV;
+  private c zBW;
+  private int zCd;
+  private Point zCe;
+  private Spannable[] zCg;
+  private List<PointF> zCh;
   
   static
   {
     AppMethodBeat.i(96393);
-    yli = new Point(0, 0);
+    zBX = new Point(0, 0);
     AppMethodBeat.o(96393);
   }
   
@@ -46,19 +46,19 @@ public class RadarGrid
   {
     super(paramContext);
     AppMethodBeat.i(96363);
-    this.yld = 4;
-    this.yle = 4;
-    this.ylg = 1.0F;
-    this.ylo = 80;
-    this.ylp = yli;
-    this.vU = new Path();
+    this.zBS = 4;
+    this.zBT = 4;
+    this.zBV = 1.0F;
+    this.zCd = 80;
+    this.zCe = zBX;
+    this.xN = new Path();
     this.mRect = new Rect();
-    this.ylg = paramFloat;
-    this.yld = paramInt1;
-    this.yle = paramInt2;
-    this.ylg = paramFloat;
-    this.ylr = paramArrayOfSpannable;
-    this.ylh = paramc;
+    this.zBV = paramFloat;
+    this.zBS = paramInt1;
+    this.zBT = paramInt2;
+    this.zBV = paramFloat;
+    this.zCg = paramArrayOfSpannable;
+    this.zBW = paramc;
     AppMethodBeat.o(96363);
   }
   
@@ -66,14 +66,14 @@ public class RadarGrid
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(96361);
-    this.yld = 4;
-    this.yle = 4;
-    this.ylg = 1.0F;
-    this.ylo = 80;
-    this.ylp = yli;
-    this.vU = new Path();
+    this.zBS = 4;
+    this.zBT = 4;
+    this.zBV = 1.0F;
+    this.zCd = 80;
+    this.zCe = zBX;
+    this.xN = new Path();
     this.mRect = new Rect();
-    dKh();
+    dWv();
     AppMethodBeat.o(96361);
   }
   
@@ -81,26 +81,26 @@ public class RadarGrid
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(96362);
-    this.yld = 4;
-    this.yle = 4;
-    this.ylg = 1.0F;
-    this.ylo = 80;
-    this.ylp = yli;
-    this.vU = new Path();
+    this.zBS = 4;
+    this.zBT = 4;
+    this.zBV = 1.0F;
+    this.zCd = 80;
+    this.zCe = zBX;
+    this.xN = new Path();
     this.mRect = new Rect();
-    dKh();
+    dWv();
     AppMethodBeat.o(96362);
   }
   
-  private List<PointF> by(float paramFloat)
+  private List<PointF> bB(float paramFloat)
   {
     AppMethodBeat.i(96365);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.yld)
+    while (i < this.zBS)
     {
       PointF localPointF = new PointF();
-      localPointF.set((float)(this.ylp.x - this.ylo * paramFloat * Math.sin(i * 2 * 3.141592653589793D / this.yld)), (float)(this.ylp.y - this.ylo * paramFloat * Math.cos(i * 2 * 3.141592653589793D / this.yld)));
+      localPointF.set((float)(this.zCe.x - this.zCd * paramFloat * Math.sin(i * 2 * 3.141592653589793D / this.zBS)), (float)(this.zCe.y - this.zCd * paramFloat * Math.cos(i * 2 * 3.141592653589793D / this.zBS)));
       localArrayList.add(localPointF);
       i += 1;
     }
@@ -108,7 +108,7 @@ public class RadarGrid
     return localArrayList;
   }
   
-  private void dKh()
+  private void dWv()
   {
     AppMethodBeat.i(96364);
     setMinimumHeight(160);
@@ -118,15 +118,15 @@ public class RadarGrid
   
   private int getGridDotRadius()
   {
-    return this.ylh.ykS;
+    return this.zBW.zBH;
   }
   
   private Paint getPaintGLabelFont()
   {
     AppMethodBeat.i(96372);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.ylh.ykJ);
-    localPaint.setTextSize(this.ylh.ykK);
+    localPaint.setColor(this.zBW.zBy);
+    localPaint.setTextSize(this.zBW.zBz);
     AppMethodBeat.o(96372);
     return localPaint;
   }
@@ -135,12 +135,12 @@ public class RadarGrid
   {
     AppMethodBeat.i(96374);
     Paint localPaint = new Paint();
-    c localc = this.ylh;
-    if (localc.ykM == -1) {}
-    for (int i = localc.ykJ;; i = localc.ykM)
+    c localc = this.zBW;
+    if (localc.zBB == -1) {}
+    for (int i = localc.zBy;; i = localc.zBB)
     {
       localPaint.setColor(i);
-      localPaint.setTextSize(this.ylh.ykN);
+      localPaint.setTextSize(this.zBW.zBC);
       AppMethodBeat.o(96374);
       return localPaint;
     }
@@ -150,26 +150,26 @@ public class RadarGrid
   {
     AppMethodBeat.i(96368);
     Paint localPaint = new Paint();
-    c localc = this.ylh;
+    c localc = this.zBW;
     int i;
-    if (localc.ykE == -1)
+    if (localc.zBt == -1)
     {
-      i = localc.ykF;
+      i = localc.zBu;
       localPaint.setColor(i);
       localPaint.setStyle(Paint.Style.STROKE);
-      localc = this.ylh;
-      if (localc.ykI != -1.0F) {
+      localc = this.zBW;
+      if (localc.zBx != -1.0F) {
         break label95;
       }
     }
     label95:
-    for (float f = localc.ykH;; f = localc.ykI)
+    for (float f = localc.zBw;; f = localc.zBx)
     {
       localPaint.setStrokeWidth(f);
       localPaint.setAntiAlias(true);
       AppMethodBeat.o(96368);
       return localPaint;
-      i = localc.ykE;
+      i = localc.zBt;
       break;
     }
   }
@@ -178,7 +178,7 @@ public class RadarGrid
   {
     AppMethodBeat.i(96370);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.ylh.ykR);
+    localPaint.setColor(this.zBW.zBG);
     localPaint.setStyle(Paint.Style.FILL);
     localPaint.setAntiAlias(true);
     AppMethodBeat.o(96370);
@@ -189,7 +189,7 @@ public class RadarGrid
   {
     AppMethodBeat.i(96367);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.ylh.backgroundColor);
+    localPaint.setColor(this.zBW.backgroundColor);
     localPaint.setAntiAlias(true);
     AppMethodBeat.o(96367);
     return localPaint;
@@ -199,9 +199,9 @@ public class RadarGrid
   {
     AppMethodBeat.i(96369);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.ylh.ykF);
+    localPaint.setColor(this.zBW.zBu);
     localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setStrokeWidth(this.ylh.ykH);
+    localPaint.setStrokeWidth(this.zBW.zBw);
     localPaint.setAntiAlias(true);
     AppMethodBeat.o(96369);
     return localPaint;
@@ -211,8 +211,8 @@ public class RadarGrid
   {
     AppMethodBeat.i(96371);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.ylh.ykG);
-    localPaint.setStrokeWidth(this.ylh.ykH);
+    localPaint.setColor(this.zBW.zBv);
+    localPaint.setStrokeWidth(this.zBW.zBw);
     AppMethodBeat.o(96371);
     return localPaint;
   }
@@ -221,25 +221,25 @@ public class RadarGrid
   {
     AppMethodBeat.i(96373);
     TextPaint localTextPaint = new TextPaint();
-    localTextPaint.setColor(this.ylh.ykJ);
-    localTextPaint.setTextSize(this.ylh.ykK);
+    localTextPaint.setColor(this.zBW.zBy);
+    localTextPaint.setTextSize(this.zBW.zBz);
     AppMethodBeat.o(96373);
     return localTextPaint;
   }
   
-  public final int dKe()
+  public final int dWs()
   {
-    return this.ylo * 2;
+    return this.zCd * 2;
   }
   
-  public final int dKf()
+  public final int dWt()
   {
-    return this.ylo * 2;
+    return this.zCd * 2;
   }
   
   public c getGridStyle()
   {
-    return this.ylh;
+    return this.zBW;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -248,58 +248,58 @@ public class RadarGrid
     super.onDraw(paramCanvas);
     int j = getHeight();
     int i = getWidth();
-    this.ylo = ((int)(Math.min(j, i) / 2.0F * 0.8D));
-    this.ylp.set((int)(i / 2.0F), (int)(j / 2.0F));
-    if (this.ylh.ykT != null)
+    this.zCd = ((int)(Math.min(j, i) / 2.0F * 0.8D));
+    this.zCe.set((int)(i / 2.0F), (int)(j / 2.0F));
+    if (this.zBW.zBI != null)
     {
       i = (int)(i / 2.0F);
       j = (int)(j / 2.0F);
-      int k = (int)(this.ylo * 2 + this.ylh.ykQ * 2.0F);
-      int m = this.ylh.ykT.getWidth() * k / this.ylh.ykT.getHeight();
-      if (this.ylh.ykT != null) {
-        paramCanvas.drawBitmap(Bitmap.createScaledBitmap(this.ylh.ykT, m, k, false), i - (m >>> 1), j - (k >>> 1), null);
+      int k = (int)(this.zCd * 2 + this.zBW.zBF * 2.0F);
+      int m = this.zBW.zBI.getWidth() * k / this.zBW.zBI.getHeight();
+      if (this.zBW.zBI != null) {
+        paramCanvas.drawBitmap(Bitmap.createScaledBitmap(this.zBW.zBI, m, k, false), i - (m >>> 1), j - (k >>> 1), null);
       }
     }
-    if (this.ylh.ykA) {
-      switch (this.ylh.ykz)
+    if (this.zBW.zBp) {
+      switch (this.zBW.zBo)
       {
       }
     }
     Object localObject;
-    while (this.ylh.ykB)
+    while (this.zBW.zBq)
     {
-      this.yls = by(1.0F);
+      this.zCh = bB(1.0F);
       i = 0;
-      while (i < this.yld)
+      while (i < this.zBS)
       {
-        localObject = (PointF)this.yls.get(i);
-        paramCanvas.drawLine(this.ylp.x, this.ylp.y, ((PointF)localObject).x, ((PointF)localObject).y, getPaintGridLongitude());
+        localObject = (PointF)this.zCh.get(i);
+        paramCanvas.drawLine(this.zCe.x, this.zCe.y, ((PointF)localObject).x, ((PointF)localObject).y, getPaintGridLongitude());
         i += 1;
       }
-      paramCanvas.drawCircle(this.ylp.x, this.ylp.y, this.ylo, getPaintGridFill());
+      paramCanvas.drawCircle(this.zCe.x, this.zCe.y, this.zCd, getPaintGridFill());
       continue;
-      this.yls = by(1.0F);
+      this.zCh = bB(1.0F);
       i = 0;
-      if (i < this.yld)
+      if (i < this.zBS)
       {
-        localObject = (PointF)this.yls.get(i);
+        localObject = (PointF)this.zCh.get(i);
         if (i == 0) {
-          this.vU.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
+          this.xN.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
         }
         for (;;)
         {
           i += 1;
           break;
-          this.vU.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
+          this.xN.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
         }
       }
-      this.vU.close();
-      if ((this.ylh.backgroundColor != 0) && (this.ylh.ykT == null)) {
-        paramCanvas.drawPath(this.vU, getPaintGridFill());
+      this.xN.close();
+      if ((this.zBW.backgroundColor != 0) && (this.zBW.zBI == null)) {
+        paramCanvas.drawPath(this.xN, getPaintGridFill());
       }
     }
-    if (this.ylh.ykA) {
-      switch (this.ylh.ykz)
+    if (this.zBW.zBp) {
+      switch (this.zBW.zBo)
       {
       }
     }
@@ -308,62 +308,62 @@ public class RadarGrid
     float f2;
     for (;;)
     {
-      if ((this.ylr != null) && (this.ylh.ykD)) {
-        if (this.ylr.length != this.yld)
+      if ((this.zCg != null) && (this.zBW.zBs)) {
+        if (this.zCg.length != this.zBS)
         {
           paramCanvas = new RuntimeException("Labels array length not matches longitude lines number.");
           AppMethodBeat.o(96366);
           throw paramCanvas;
-          paramCanvas.drawCircle(this.ylp.x, this.ylp.y, this.ylo, getPaintGridBorder());
+          paramCanvas.drawCircle(this.zCe.x, this.zCe.y, this.zCd, getPaintGridBorder());
           i = 1;
-          while (i < this.yle)
+          while (i < this.zBT)
           {
-            paramCanvas.drawCircle(this.ylp.x, this.ylp.y, this.ylo * (i * 1.0F / this.yle), getPaintGridLatitude());
+            paramCanvas.drawCircle(this.zCe.x, this.zCe.y, this.zCd * (i * 1.0F / this.zBT), getPaintGridLatitude());
             i += 1;
           }
-          paramCanvas.drawPath(this.vU, getPaintGridBorder());
-          this.vU.reset();
+          paramCanvas.drawPath(this.xN, getPaintGridBorder());
+          this.xN.reset();
           i = 1;
-          while (i < this.yle)
+          while (i < this.zBT)
           {
-            this.yls = by(i * 1.0F / this.yle);
+            this.zCh = bB(i * 1.0F / this.zBT);
             j = 0;
-            if (j < this.yld)
+            if (j < this.zBS)
             {
-              localObject = (PointF)this.yls.get(j);
+              localObject = (PointF)this.zCh.get(j);
               if (j == 0) {
-                this.vU.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
+                this.xN.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
               }
               for (;;)
               {
                 paramCanvas.drawCircle(((PointF)localObject).x, ((PointF)localObject).y, getGridDotRadius(), getPaintGridDot());
                 j += 1;
                 break;
-                this.vU.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
+                this.xN.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
               }
             }
-            this.vU.close();
-            paramCanvas.drawPath(this.vU, getPaintGridLatitude());
-            this.vU.reset();
+            this.xN.close();
+            paramCanvas.drawPath(this.xN, getPaintGridLatitude());
+            this.xN.reset();
             i += 1;
           }
         }
         else
         {
           i = 0;
-          if (i < this.yld)
+          if (i < this.zBS)
           {
-            localObject = this.ylr[i];
+            localObject = this.zCg[i];
             if (!localObject.equals(null))
             {
-              if ((i != 0) && (i != this.yld >>> 1)) {
+              if ((i != 0) && (i != this.zBS >>> 1)) {
                 break label1071;
               }
               f1 = 0.5F;
               if (i != 0) {
                 break label1097;
               }
-              f2 = this.ylh.ykL;
+              f2 = this.zBW.zBA;
             }
           }
         }
@@ -372,8 +372,8 @@ public class RadarGrid
     for (;;)
     {
       localObject = new StaticLayout((CharSequence)localObject, getTextPaintGLabelFont(), 1000, Layout.Alignment.ALIGN_NORMAL, 0.0F, 0.0F, false);
-      f1 = (float)(this.ylp.x - ((StaticLayout)localObject).getLineWidth(0) * f1 - (this.ylo + this.ylh.ykL) * Math.sin(6.283185307179586D - i * 2 * 3.141592653589793D / this.yld));
-      f2 = (float)(this.ylp.y - ((StaticLayout)localObject).getHeight() / 2 - (this.ylo + this.ylh.ykL) * Math.cos(6.283185307179586D - i * 2 * 3.141592653589793D / this.yld) - f2);
+      f1 = (float)(this.zCe.x - ((StaticLayout)localObject).getLineWidth(0) * f1 - (this.zCd + this.zBW.zBA) * Math.sin(6.283185307179586D - i * 2 * 3.141592653589793D / this.zBS));
+      f2 = (float)(this.zCe.y - ((StaticLayout)localObject).getHeight() / 2 - (this.zCd + this.zBW.zBA) * Math.cos(6.283185307179586D - i * 2 * 3.141592653589793D / this.zBS) - f2);
       paramCanvas.save();
       paramCanvas.translate(f1, f2);
       ((StaticLayout)localObject).draw(paramCanvas);
@@ -381,7 +381,7 @@ public class RadarGrid
       i += 1;
       break;
       label1071:
-      if ((i > 0) && (i < this.yld >>> 1))
+      if ((i > 0) && (i < this.zBS >>> 1))
       {
         f1 = 0.0F;
         break label887;
@@ -389,9 +389,9 @@ public class RadarGrid
       f1 = 1.0F;
       break label887;
       label1097:
-      if (i == this.yld >>> 1)
+      if (i == this.zBS >>> 1)
       {
-        f2 = -this.ylh.ykL;
+        f2 = -this.zBW.zBA;
         continue;
         AppMethodBeat.o(96366);
       }
@@ -405,7 +405,7 @@ public class RadarGrid
   public void setBackgroundColor(int paramInt)
   {
     AppMethodBeat.i(96381);
-    this.ylh.backgroundColor = paramInt;
+    this.zBW.backgroundColor = paramInt;
     invalidate();
     AppMethodBeat.o(96381);
   }
@@ -413,7 +413,7 @@ public class RadarGrid
   public void setGridBorderColor(int paramInt)
   {
     AppMethodBeat.i(96382);
-    this.ylh.ykE = paramInt;
+    this.zBW.zBt = paramInt;
     invalidate();
     AppMethodBeat.o(96382);
   }
@@ -421,7 +421,7 @@ public class RadarGrid
   public void setGridBorderStrokeWidth(float paramFloat)
   {
     AppMethodBeat.i(96386);
-    this.ylh.ykI = paramFloat;
+    this.zBW.zBx = paramFloat;
     invalidate();
     AppMethodBeat.o(96386);
   }
@@ -429,7 +429,7 @@ public class RadarGrid
   public void setGridChartType(int paramInt)
   {
     AppMethodBeat.i(96375);
-    this.ylh.ykz = paramInt;
+    this.zBW.zBo = paramInt;
     invalidate();
     AppMethodBeat.o(96375);
   }
@@ -437,7 +437,7 @@ public class RadarGrid
   public void setGridLabelColor(int paramInt)
   {
     AppMethodBeat.i(96387);
-    this.ylh.ykJ = paramInt;
+    this.zBW.zBy = paramInt;
     invalidate();
     AppMethodBeat.o(96387);
   }
@@ -445,7 +445,7 @@ public class RadarGrid
   public void setGridLabelPadding(float paramFloat)
   {
     AppMethodBeat.i(96389);
-    this.ylh.ykL = paramFloat;
+    this.zBW.zBA = paramFloat;
     invalidate();
     AppMethodBeat.o(96389);
   }
@@ -453,7 +453,7 @@ public class RadarGrid
   public void setGridLabelSize(float paramFloat)
   {
     AppMethodBeat.i(96388);
-    this.ylh.ykK = paramFloat;
+    this.zBW.zBz = paramFloat;
     invalidate();
     AppMethodBeat.o(96388);
   }
@@ -461,7 +461,7 @@ public class RadarGrid
   public void setGridLatitudeColor(int paramInt)
   {
     AppMethodBeat.i(96383);
-    this.ylh.ykF = paramInt;
+    this.zBW.zBu = paramInt;
     invalidate();
     AppMethodBeat.o(96383);
   }
@@ -469,7 +469,7 @@ public class RadarGrid
   public void setGridLongitudeColor(int paramInt)
   {
     AppMethodBeat.i(96384);
-    this.ylh.ykG = paramInt;
+    this.zBW.zBv = paramInt;
     invalidate();
     AppMethodBeat.o(96384);
   }
@@ -477,7 +477,7 @@ public class RadarGrid
   public void setGridScaleColor(int paramInt)
   {
     AppMethodBeat.i(96390);
-    this.ylh.ykM = paramInt;
+    this.zBW.zBB = paramInt;
     invalidate();
     AppMethodBeat.o(96390);
   }
@@ -485,7 +485,7 @@ public class RadarGrid
   public void setGridScaleLabelPadding(float paramFloat)
   {
     AppMethodBeat.i(96392);
-    this.ylh.ykO = paramFloat;
+    this.zBW.zBD = paramFloat;
     invalidate();
     AppMethodBeat.o(96392);
   }
@@ -493,7 +493,7 @@ public class RadarGrid
   public void setGridScaleSize(float paramFloat)
   {
     AppMethodBeat.i(96391);
-    this.ylh.ykN = paramFloat;
+    this.zBW.zBC = paramFloat;
     invalidate();
     AppMethodBeat.o(96391);
   }
@@ -501,7 +501,7 @@ public class RadarGrid
   public void setGridStrokeWidth(float paramFloat)
   {
     AppMethodBeat.i(96385);
-    this.ylh.ykH = paramFloat;
+    this.zBW.zBw = paramFloat;
     invalidate();
     AppMethodBeat.o(96385);
   }
@@ -509,7 +509,7 @@ public class RadarGrid
   public void setGridStyle(c paramc)
   {
     AppMethodBeat.i(96380);
-    this.ylh = paramc;
+    this.zBW = paramc;
     invalidate();
     AppMethodBeat.o(96380);
   }
@@ -517,7 +517,7 @@ public class RadarGrid
   public void setLabelsArray(Spannable[] paramArrayOfSpannable)
   {
     AppMethodBeat.i(96379);
-    this.ylr = paramArrayOfSpannable;
+    this.zCg = paramArrayOfSpannable;
     invalidate();
     AppMethodBeat.o(96379);
   }
@@ -525,7 +525,7 @@ public class RadarGrid
   public void setLatNum(int paramInt)
   {
     AppMethodBeat.i(96377);
-    this.yle = paramInt;
+    this.zBT = paramInt;
     invalidate();
     AppMethodBeat.o(96377);
   }
@@ -533,7 +533,7 @@ public class RadarGrid
   public void setLonNum(int paramInt)
   {
     AppMethodBeat.i(96376);
-    this.yld = paramInt;
+    this.zBS = paramInt;
     invalidate();
     AppMethodBeat.o(96376);
   }
@@ -541,14 +541,14 @@ public class RadarGrid
   public void setMaxValue(float paramFloat)
   {
     AppMethodBeat.i(96378);
-    this.ylg = paramFloat;
+    this.zBV = paramFloat;
     invalidate();
     AppMethodBeat.o(96378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarGrid
  * JD-Core Version:    0.7.0.1
  */

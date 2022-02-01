@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.welab.d.a;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dm;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.g.c.dw;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,221 +18,221 @@ import java.util.List;
 import java.util.Map;
 
 public class a
-  extends dm
+  extends dw
 {
-  private static final List<String> CTX;
+  private static final List<String> ExU;
   public static c.a info;
-  private Map<String, Field> CTW;
+  private Map<String, Field> ExT;
   
   static
   {
     AppMethodBeat.i(146269);
     c.a locala = new c.a();
-    locala.GvF = new Field[46];
+    locala.IhA = new Field[46];
     locala.columns = new String[47];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "LabsAppId";
-    locala.GvH.put("LabsAppId", "TEXT PRIMARY KEY ");
+    locala.IhC.put("LabsAppId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" LabsAppId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "LabsAppId";
+    locala.IhB = "LabsAppId";
     locala.columns[1] = "expId";
-    locala.GvH.put("expId", "TEXT default '' ");
+    locala.IhC.put("expId", "TEXT default '' ");
     localStringBuilder.append(" expId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "Type";
-    locala.GvH.put("Type", "INTEGER default '0' ");
+    locala.IhC.put("Type", "INTEGER default '0' ");
     localStringBuilder.append(" Type INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "BizType";
-    locala.GvH.put("BizType", "INTEGER default '0' ");
+    locala.IhC.put("BizType", "INTEGER default '0' ");
     localStringBuilder.append(" BizType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "Switch";
-    locala.GvH.put("Switch", "INTEGER default '0' ");
+    locala.IhC.put("Switch", "INTEGER default '0' ");
     localStringBuilder.append(" Switch INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "AllVer";
-    locala.GvH.put("AllVer", "INTEGER default '0' ");
+    locala.IhC.put("AllVer", "INTEGER default '0' ");
     localStringBuilder.append(" AllVer INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "DetailURL";
-    locala.GvH.put("DetailURL", "TEXT");
+    locala.IhC.put("DetailURL", "TEXT");
     localStringBuilder.append(" DetailURL TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "WeAppUser";
-    locala.GvH.put("WeAppUser", "TEXT");
+    locala.IhC.put("WeAppUser", "TEXT");
     localStringBuilder.append(" WeAppUser TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "WeAppPath";
-    locala.GvH.put("WeAppPath", "TEXT");
+    locala.IhC.put("WeAppPath", "TEXT");
     localStringBuilder.append(" WeAppPath TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "Pos";
-    locala.GvH.put("Pos", "INTEGER default '0' ");
+    locala.IhC.put("Pos", "INTEGER default '0' ");
     localStringBuilder.append(" Pos INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "TitleKey_android";
-    locala.GvH.put("TitleKey_android", "TEXT");
+    locala.IhC.put("TitleKey_android", "TEXT");
     localStringBuilder.append(" TitleKey_android TEXT");
     localStringBuilder.append(", ");
     locala.columns[11] = "Title_cn";
-    locala.GvH.put("Title_cn", "TEXT");
+    locala.IhC.put("Title_cn", "TEXT");
     localStringBuilder.append(" Title_cn TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "Title_hk";
-    locala.GvH.put("Title_hk", "TEXT");
+    locala.IhC.put("Title_hk", "TEXT");
     localStringBuilder.append(" Title_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[13] = "Title_tw";
-    locala.GvH.put("Title_tw", "TEXT");
+    locala.IhC.put("Title_tw", "TEXT");
     localStringBuilder.append(" Title_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[14] = "Title_en";
-    locala.GvH.put("Title_en", "TEXT");
+    locala.IhC.put("Title_en", "TEXT");
     localStringBuilder.append(" Title_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "Desc_cn";
-    locala.GvH.put("Desc_cn", "TEXT");
+    locala.IhC.put("Desc_cn", "TEXT");
     localStringBuilder.append(" Desc_cn TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "Desc_hk";
-    locala.GvH.put("Desc_hk", "TEXT");
+    locala.IhC.put("Desc_hk", "TEXT");
     localStringBuilder.append(" Desc_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[17] = "Desc_tw";
-    locala.GvH.put("Desc_tw", "TEXT");
+    locala.IhC.put("Desc_tw", "TEXT");
     localStringBuilder.append(" Desc_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[18] = "Desc_en";
-    locala.GvH.put("Desc_en", "TEXT");
+    locala.IhC.put("Desc_en", "TEXT");
     localStringBuilder.append(" Desc_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[19] = "Introduce_cn";
-    locala.GvH.put("Introduce_cn", "TEXT");
+    locala.IhC.put("Introduce_cn", "TEXT");
     localStringBuilder.append(" Introduce_cn TEXT");
     localStringBuilder.append(", ");
     locala.columns[20] = "Introduce_hk";
-    locala.GvH.put("Introduce_hk", "TEXT");
+    locala.IhC.put("Introduce_hk", "TEXT");
     localStringBuilder.append(" Introduce_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[21] = "Introduce_tw";
-    locala.GvH.put("Introduce_tw", "TEXT");
+    locala.IhC.put("Introduce_tw", "TEXT");
     localStringBuilder.append(" Introduce_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[22] = "Introduce_en";
-    locala.GvH.put("Introduce_en", "TEXT");
+    locala.IhC.put("Introduce_en", "TEXT");
     localStringBuilder.append(" Introduce_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[23] = "starttime";
-    locala.GvH.put("starttime", "LONG");
+    locala.IhC.put("starttime", "LONG");
     localStringBuilder.append(" starttime LONG");
     localStringBuilder.append(", ");
     locala.columns[24] = "endtime";
-    locala.GvH.put("endtime", "LONG");
+    locala.IhC.put("endtime", "LONG");
     localStringBuilder.append(" endtime LONG");
     localStringBuilder.append(", ");
     locala.columns[25] = "sequence";
-    locala.GvH.put("sequence", "LONG");
+    locala.IhC.put("sequence", "LONG");
     localStringBuilder.append(" sequence LONG");
     localStringBuilder.append(", ");
     locala.columns[26] = "prioritylevel";
-    locala.GvH.put("prioritylevel", "INTEGER");
+    locala.IhC.put("prioritylevel", "INTEGER");
     localStringBuilder.append(" prioritylevel INTEGER");
     localStringBuilder.append(", ");
     locala.columns[27] = "status";
-    locala.GvH.put("status", "INTEGER");
+    locala.IhC.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[28] = "ThumbUrl_cn";
-    locala.GvH.put("ThumbUrl_cn", "TEXT");
+    locala.IhC.put("ThumbUrl_cn", "TEXT");
     localStringBuilder.append(" ThumbUrl_cn TEXT");
     localStringBuilder.append(", ");
     locala.columns[29] = "ThumbUrl_hk";
-    locala.GvH.put("ThumbUrl_hk", "TEXT");
+    locala.IhC.put("ThumbUrl_hk", "TEXT");
     localStringBuilder.append(" ThumbUrl_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[30] = "ThumbUrl_tw";
-    locala.GvH.put("ThumbUrl_tw", "TEXT");
+    locala.IhC.put("ThumbUrl_tw", "TEXT");
     localStringBuilder.append(" ThumbUrl_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[31] = "ThumbUrl_en";
-    locala.GvH.put("ThumbUrl_en", "TEXT");
+    locala.IhC.put("ThumbUrl_en", "TEXT");
     localStringBuilder.append(" ThumbUrl_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[32] = "ImgUrl_android_cn";
-    locala.GvH.put("ImgUrl_android_cn", "TEXT");
+    locala.IhC.put("ImgUrl_android_cn", "TEXT");
     localStringBuilder.append(" ImgUrl_android_cn TEXT");
     localStringBuilder.append(", ");
     locala.columns[33] = "ImgUrl_android_hk";
-    locala.GvH.put("ImgUrl_android_hk", "TEXT");
+    locala.IhC.put("ImgUrl_android_hk", "TEXT");
     localStringBuilder.append(" ImgUrl_android_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[34] = "ImgUrl_android_tw";
-    locala.GvH.put("ImgUrl_android_tw", "TEXT");
+    locala.IhC.put("ImgUrl_android_tw", "TEXT");
     localStringBuilder.append(" ImgUrl_android_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[35] = "ImgUrl_android_en";
-    locala.GvH.put("ImgUrl_android_en", "TEXT");
+    locala.IhC.put("ImgUrl_android_en", "TEXT");
     localStringBuilder.append(" ImgUrl_android_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[36] = "RedPoint";
-    locala.GvH.put("RedPoint", "INTEGER");
+    locala.IhC.put("RedPoint", "INTEGER");
     localStringBuilder.append(" RedPoint INTEGER");
     localStringBuilder.append(", ");
     locala.columns[37] = "WeAppDebugMode";
-    locala.GvH.put("WeAppDebugMode", "INTEGER");
+    locala.IhC.put("WeAppDebugMode", "INTEGER");
     localStringBuilder.append(" WeAppDebugMode INTEGER");
     localStringBuilder.append(", ");
     locala.columns[38] = "idkey";
-    locala.GvH.put("idkey", "INTEGER");
+    locala.IhC.put("idkey", "INTEGER");
     localStringBuilder.append(" idkey INTEGER");
     localStringBuilder.append(", ");
     locala.columns[39] = "idkeyValue";
-    locala.GvH.put("idkeyValue", "INTEGER");
+    locala.IhC.put("idkeyValue", "INTEGER");
     localStringBuilder.append(" idkeyValue INTEGER");
     localStringBuilder.append(", ");
     locala.columns[40] = "Icon";
-    locala.GvH.put("Icon", "TEXT");
+    locala.IhC.put("Icon", "TEXT");
     localStringBuilder.append(" Icon TEXT");
     localStringBuilder.append(", ");
     locala.columns[41] = "ImgUrl_cn";
-    locala.GvH.put("ImgUrl_cn", "TEXT");
+    locala.IhC.put("ImgUrl_cn", "TEXT");
     localStringBuilder.append(" ImgUrl_cn TEXT");
     localStringBuilder.append(", ");
     locala.columns[42] = "ImgUrl_hk";
-    locala.GvH.put("ImgUrl_hk", "TEXT");
+    locala.IhC.put("ImgUrl_hk", "TEXT");
     localStringBuilder.append(" ImgUrl_hk TEXT");
     localStringBuilder.append(", ");
     locala.columns[43] = "ImgUrl_tw";
-    locala.GvH.put("ImgUrl_tw", "TEXT");
+    locala.IhC.put("ImgUrl_tw", "TEXT");
     localStringBuilder.append(" ImgUrl_tw TEXT");
     localStringBuilder.append(", ");
     locala.columns[44] = "ImgUrl_en";
-    locala.GvH.put("ImgUrl_en", "TEXT");
+    locala.IhC.put("ImgUrl_en", "TEXT");
     localStringBuilder.append(" ImgUrl_en TEXT");
     localStringBuilder.append(", ");
     locala.columns[45] = "bItemFromXExpt";
-    locala.GvH.put("bItemFromXExpt", "INTEGER");
+    locala.IhC.put("bItemFromXExpt", "INTEGER");
     localStringBuilder.append(" bItemFromXExpt INTEGER");
     locala.columns[46] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    CTX = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
+    ExU = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
     AppMethodBeat.o(146269);
   }
   
   public a()
   {
     AppMethodBeat.i(146255);
-    this.CTW = new HashMap();
+    this.ExT = new HashMap();
     AppMethodBeat.o(146255);
   }
   
-  private String RE(String paramString)
+  private String Vj(String paramString)
   {
     AppMethodBeat.i(146265);
-    Object localObject = (Field)this.CTW.get(paramString);
+    Object localObject = (Field)this.ExT.get(paramString);
     if (localObject == null) {
       try
       {
@@ -246,7 +246,7 @@ public class a
         {
           try
           {
-            this.CTW.put(paramString, localObject);
+            this.ExT.put(paramString, localObject);
             if (localObject == null) {
               continue;
             }
@@ -263,10 +263,10 @@ public class a
           }
           catch (IllegalAccessException paramString)
           {
-            ac.w("LabAppInfo", bs.m(paramString));
+            ad.w("LabAppInfo", bt.n(paramString));
           }
           paramString = paramString;
-          ac.w("LabAppInfo", bs.m(paramString));
+          ad.w("LabAppInfo", bt.n(paramString));
         }
         AppMethodBeat.o(146265);
         return "";
@@ -274,14 +274,14 @@ public class a
     }
   }
   
-  private String aEw(String paramString)
+  private String aJW(String paramString)
   {
     AppMethodBeat.i(146264);
-    Iterator localIterator = CTX.iterator();
+    Iterator localIterator = ExU.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      str = RE(paramString + str);
+      str = Vj(paramString + str);
       if (!TextUtils.isEmpty(str))
       {
         AppMethodBeat.o(146264);
@@ -292,60 +292,60 @@ public class a
     return "";
   }
   
-  private String kL(String paramString1, String paramString2)
+  private String li(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146263);
-    paramString2 = RE(paramString1 + paramString2);
+    paramString2 = Vj(paramString1 + paramString2);
     if (!TextUtils.isEmpty(paramString2))
     {
       AppMethodBeat.o(146263);
       return paramString2;
     }
-    paramString1 = aEw(paramString1);
+    paramString1 = aJW(paramString1);
     AppMethodBeat.o(146263);
     return paramString1;
   }
   
-  public final String aEv(String paramString)
+  public final String aJV(String paramString)
   {
     AppMethodBeat.i(146262);
-    String str1 = RE(paramString + "Key_android");
+    String str1 = Vj(paramString + "Key_android");
     if (!TextUtils.isEmpty(str1))
     {
-      String str2 = ai.getPackageName();
-      int i = ai.getResources().getIdentifier(str1, "string", str2);
-      str1 = ai.getResources().getString(i);
+      String str2 = aj.getPackageName();
+      int i = aj.getResources().getIdentifier(str1, "string", str2);
+      str1 = aj.getResources().getString(i);
       if (!TextUtils.isEmpty(str1))
       {
         AppMethodBeat.o(146262);
         return str1;
       }
     }
-    str1 = ab.iC(ai.getContext());
-    if (ab.eUL())
+    str1 = ac.iM(aj.getContext());
+    if (ac.fkp())
     {
-      paramString = kL(paramString, "_cn");
+      paramString = li(paramString, "_cn");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_HK".equals(str1))
     {
-      paramString = kL(paramString, "_hk");
+      paramString = li(paramString, "_hk");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_TW".equals(str1))
     {
-      paramString = kL(paramString, "_tw");
+      paramString = li(paramString, "_tw");
       AppMethodBeat.o(146262);
       return paramString;
     }
-    paramString = kL(paramString, "_en");
+    paramString = li(paramString, "_en");
     AppMethodBeat.o(146262);
     return paramString;
   }
   
-  public final boolean eHE()
+  public final boolean eWx()
   {
     AppMethodBeat.i(146267);
     if ((isRunning()) && ((this.field_Switch == 2) || (this.field_Switch == 1)))
@@ -357,12 +357,12 @@ public class a
     return false;
   }
   
-  public final boolean eHF()
+  public final boolean eWy()
   {
     return this.field_bItemFromXExpt == 1;
   }
   
-  public final boolean eHG()
+  public final boolean eWz()
   {
     return this.field_status == 1;
   }
@@ -450,7 +450,7 @@ public class a
   {
     AppMethodBeat.i(146268);
     if ((this.field_idkey > 0) && (this.field_idkeyValue >= 0)) {
-      h.wUl.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
+      g.yhR.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
     }
     AppMethodBeat.o(146268);
   }
@@ -465,7 +465,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d.a.a
  * JD-Core Version:    0.7.0.1
  */

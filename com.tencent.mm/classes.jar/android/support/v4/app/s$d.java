@@ -12,8 +12,8 @@ import java.util.List;
 public final class s$d
   implements s.e
 {
-  public a FY;
-  private Bitmap Fx;
+  public a HP;
+  private Bitmap Ho;
   private int mColor = 0;
   
   private static Bundle a(a parama)
@@ -22,31 +22,31 @@ public final class s$d
     Bundle localBundle1 = new Bundle();
     Parcelable[] arrayOfParcelable = null;
     Object localObject = arrayOfParcelable;
-    if (parama.Gd != null)
+    if (parama.HU != null)
     {
       localObject = arrayOfParcelable;
-      if (parama.Gd.length > 1) {
-        localObject = parama.Gd[0];
+      if (parama.HU.length > 1) {
+        localObject = parama.HU[0];
       }
     }
-    arrayOfParcelable = new Parcelable[parama.FZ.length];
+    arrayOfParcelable = new Parcelable[parama.HQ.length];
     while (i < arrayOfParcelable.length)
     {
       Bundle localBundle2 = new Bundle();
-      localBundle2.putString("text", parama.FZ[i]);
+      localBundle2.putString("text", parama.HQ[i]);
       localBundle2.putString("author", (String)localObject);
       arrayOfParcelable[i] = localBundle2;
       i += 1;
     }
     localBundle1.putParcelableArray("messages", arrayOfParcelable);
-    localObject = parama.Ga;
+    localObject = parama.HR;
     if (localObject != null) {
-      localBundle1.putParcelable("remote_input", new RemoteInput.Builder(((x)localObject).GF).setLabel(((x)localObject).GG).setChoices(((x)localObject).GH).setAllowFreeFormInput(((x)localObject).GI).addExtras(((x)localObject).mExtras).build());
+      localBundle1.putParcelable("remote_input", new RemoteInput.Builder(((x)localObject).Ix).setLabel(((x)localObject).Iy).setChoices(((x)localObject).Iz).setAllowFreeFormInput(((x)localObject).IA).addExtras(((x)localObject).mExtras).build());
     }
-    localBundle1.putParcelable("on_reply", parama.Gb);
-    localBundle1.putParcelable("on_read", parama.Gc);
-    localBundle1.putStringArray("participants", parama.Gd);
-    localBundle1.putLong("timestamp", parama.Ge);
+    localBundle1.putParcelable("on_reply", parama.HS);
+    localBundle1.putParcelable("on_read", parama.HT);
+    localBundle1.putStringArray("participants", parama.HU);
+    localBundle1.putLong("timestamp", parama.HV);
     return localBundle1;
   }
   
@@ -56,14 +56,14 @@ public final class s$d
       return paramc;
     }
     Bundle localBundle = new Bundle();
-    if (this.Fx != null) {
-      localBundle.putParcelable("large_icon", this.Fx);
+    if (this.Ho != null) {
+      localBundle.putParcelable("large_icon", this.Ho);
     }
     if (this.mColor != 0) {
       localBundle.putInt("app_color", this.mColor);
     }
-    if (this.FY != null) {
-      localBundle.putBundle("car_conversation", a(this.FY));
+    if (this.HP != null) {
+      localBundle.putBundle("car_conversation", a(this.HP));
     }
     paramc.getExtras().putBundle("android.car.EXTENSIONS", localBundle);
     return paramc;
@@ -71,35 +71,35 @@ public final class s$d
   
   public static final class a
   {
-    final String[] FZ;
-    final x Ga;
-    final PendingIntent Gb;
-    final PendingIntent Gc;
-    final String[] Gd;
-    final long Ge;
+    final String[] HQ;
+    final x HR;
+    final PendingIntent HS;
+    final PendingIntent HT;
+    final String[] HU;
+    final long HV;
     
     public a(String[] paramArrayOfString1, x paramx, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2, String[] paramArrayOfString2, long paramLong)
     {
-      this.FZ = paramArrayOfString1;
-      this.Ga = paramx;
-      this.Gc = paramPendingIntent2;
-      this.Gb = paramPendingIntent1;
-      this.Gd = paramArrayOfString2;
-      this.Ge = paramLong;
+      this.HQ = paramArrayOfString1;
+      this.HR = paramx;
+      this.HT = paramPendingIntent2;
+      this.HS = paramPendingIntent1;
+      this.HU = paramArrayOfString2;
+      this.HV = paramLong;
     }
     
     public static final class a
     {
-      public x Ga;
-      public PendingIntent Gb;
-      public PendingIntent Gc;
-      public long Ge;
-      public final List<String> Gf = new ArrayList();
-      public final String Gg;
+      public x HR;
+      public PendingIntent HS;
+      public PendingIntent HT;
+      public long HV;
+      public final List<String> HW = new ArrayList();
+      public final String HX;
       
       public a(String paramString)
       {
-        this.Gg = paramString;
+        this.HX = paramString;
       }
     }
   }

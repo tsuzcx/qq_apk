@@ -1,9 +1,20 @@
 package com.tencent.mm.plugin.finder.feed;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract;", "", "Presenter", "ViewCallback", "plugin-finder_release"})
-public abstract interface x {}
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/FinderProfileTimelineContract;", "", "()V", "IProfileTimelinePresenter", "ProfileTimelinePresenter", "ProfileTimelineViewCallback", "plugin-finder_release"})
+public final class x
+{
+  public static final x rWz;
+  
+  static
+  {
+    AppMethodBeat.i(165796);
+    rWz = new x();
+    AppMethodBeat.o(165796);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

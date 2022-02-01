@@ -3,37 +3,46 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXFileObject
   implements WXMediaMessage.IMediaObject
 {
   private static final int CONTENT_LENGTH_LIMIT = 10485760;
   private static final String TAG = "MicroMsg.SDK.WXFileObject";
-  private int contentLengthLimit = 10485760;
+  private int contentLengthLimit;
   public byte[] fileData;
   public String filePath;
   
   public WXFileObject()
   {
+    AppMethodBeat.i(196976);
+    this.contentLengthLimit = 10485760;
     this.fileData = null;
     this.filePath = null;
+    AppMethodBeat.o(196976);
   }
   
   public WXFileObject(String paramString)
   {
+    AppMethodBeat.i(196978);
+    this.contentLengthLimit = 10485760;
     this.filePath = paramString;
+    AppMethodBeat.o(196978);
   }
   
   public WXFileObject(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(196977);
+    this.contentLengthLimit = 10485760;
     this.fileData = paramArrayOfByte;
+    AppMethodBeat.o(196977);
   }
   
   private int getFileSize(String paramString)
   {
     AppMethodBeat.i(4007);
-    int i = d.getFileSize(paramString);
+    int i = b.a(paramString);
     AppMethodBeat.o(4007);
     return i;
   }
@@ -41,26 +50,34 @@ public class WXFileObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(4006);
-    if (((this.fileData == null) || (this.fileData.length == 0)) && ((this.filePath == null) || (this.filePath.length() == 0)))
+    Object localObject = this.fileData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, both arguments is null");
-      AppMethodBeat.o(4006);
-      return false;
+      localObject = this.filePath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.fileData != null) && (this.fileData.length > this.contentLengthLimit))
+    else
     {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileData is too large");
+      localObject = this.fileData;
+      if ((localObject != null) && (localObject.length > this.contentLengthLimit))
+      {
+        Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileData is too large");
+        AppMethodBeat.o(4006);
+        return false;
+      }
+      localObject = this.filePath;
+      if ((localObject != null) && (getFileSize((String)localObject) > this.contentLengthLimit))
+      {
+        Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileSize is too large");
+        AppMethodBeat.o(4006);
+        return false;
+      }
       AppMethodBeat.o(4006);
-      return false;
+      return true;
     }
-    if ((this.filePath != null) && (getFileSize(this.filePath) > this.contentLengthLimit))
-    {
-      Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, fileSize is too large");
-      AppMethodBeat.o(4006);
-      return false;
-    }
+    Log.e("MicroMsg.SDK.WXFileObject", "checkArgs fail, both arguments is null");
     AppMethodBeat.o(4006);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

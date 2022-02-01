@@ -1,16 +1,27 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import d.l;
+import com.tencent.mm.plugin.appbrand.ad.e;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplashEx;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "setCanShowHideAnimation", "", "can", "", "luggage-wxa-app_release"})
 public abstract interface w
-  extends u
+  extends v
 {
-  public abstract void setCanShowHideAnimation(boolean paramBoolean);
+  public abstract boolean aWo();
+  
+  public abstract void aYl();
+  
+  public abstract void aYn();
+  
+  public abstract void byT();
+  
+  public abstract v getInternalLoadingSplash();
+  
+  public abstract e getRuntimeAdViewContainer();
+  
+  public abstract void l(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.w
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.cdndownloader.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ar;
+import com.tencent.mm.g.c.as;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends ar
+  extends as
 {
   protected static c.a info;
   
@@ -15,44 +15,44 @@ public final class a
   {
     AppMethodBeat.i(120810);
     c.a locala = new c.a();
-    locala.GvF = new Field[9];
+    locala.IhA = new Field[9];
     locala.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "mediaId";
-    locala.GvH.put("mediaId", "TEXT");
+    locala.IhC.put("mediaId", "TEXT");
     localStringBuilder.append(" mediaId TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "downloadUrlHashCode";
-    locala.GvH.put("downloadUrlHashCode", "INTEGER PRIMARY KEY ");
+    locala.IhC.put("downloadUrlHashCode", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" downloadUrlHashCode INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "downloadUrlHashCode";
+    locala.IhB = "downloadUrlHashCode";
     locala.columns[2] = "downloadUrl";
-    locala.GvH.put("downloadUrl", "TEXT");
+    locala.IhC.put("downloadUrl", "TEXT");
     localStringBuilder.append(" downloadUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "httpsUrl";
-    locala.GvH.put("httpsUrl", "TEXT");
+    locala.IhC.put("httpsUrl", "TEXT");
     localStringBuilder.append(" httpsUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "filePath";
-    locala.GvH.put("filePath", "TEXT");
+    locala.IhC.put("filePath", "TEXT");
     localStringBuilder.append(" filePath TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "verifyHeaders";
-    locala.GvH.put("verifyHeaders", "TEXT");
+    locala.IhC.put("verifyHeaders", "TEXT");
     localStringBuilder.append(" verifyHeaders TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "game_package_download";
-    locala.GvH.put("game_package_download", "INTEGER");
+    locala.IhC.put("game_package_download", "INTEGER");
     localStringBuilder.append(" game_package_download INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "allowMobileNetDownload";
-    locala.GvH.put("allowMobileNetDownload", "INTEGER");
+    locala.IhC.put("allowMobileNetDownload", "INTEGER");
     localStringBuilder.append(" allowMobileNetDownload INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "wifiAutoDownload";
-    locala.GvH.put("wifiAutoDownload", "INTEGER");
+    locala.IhC.put("wifiAutoDownload", "INTEGER");
     localStringBuilder.append(" wifiAutoDownload INTEGER");
     locala.columns[9] = "rowid";
     locala.sql = localStringBuilder.toString();

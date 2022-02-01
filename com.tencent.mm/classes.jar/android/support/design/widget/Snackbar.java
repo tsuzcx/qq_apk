@@ -3,7 +3,7 @@ package android.support.design.widget;
 public final class Snackbar
   extends BaseTransientBottomBar<Snackbar>
 {
-  private static final int[] rD = { 2130969461 };
+  private static final int[] tx = { 2130969461 };
 }
 
 

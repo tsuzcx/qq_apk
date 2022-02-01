@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fingerprint.b.p;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class e
 {
   public int errCode = -1;
   public String errMsg = "";
   public int retryCount = 0;
-  public boolean skL = false;
-  public c skU;
+  public boolean thn = false;
+  public c thw;
   
   public static e b(c paramc)
   {
     AppMethodBeat.i(64402);
     e locale = new e();
-    locale.skU = paramc;
+    locale.thw = paramc;
     switch (paramc.errCode)
     {
     default: 
@@ -33,9 +33,9 @@ public final class e
       }
     }
     locale.errCode = 2;
-    String str = ai.getContext().getString(2131764095);
+    String str = aj.getContext().getString(2131764095);
     if (paramc.errCode == 10308) {
-      str = ai.getContext().getString(2131764096);
+      str = aj.getContext().getString(2131764096);
     }
     for (;;)
     {
@@ -43,12 +43,12 @@ public final class e
       break;
       if (paramc.errCode == 2007)
       {
-        p.skJ.skL = true;
-        locale.skL = true;
+        p.thl.thn = true;
+        locale.thn = true;
       }
       else if (paramc.errCode == 2005)
       {
-        str = ai.getContext().getString(2131764097);
+        str = aj.getContext().getString(2131764097);
       }
     }
   }

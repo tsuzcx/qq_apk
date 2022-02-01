@@ -8,13 +8,13 @@ public abstract class aa
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO = "appId".hashCode();
-  private static final int eqO = "flag".hashCode();
-  private static final int eqP = "sortId".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eHX = "flag".hashCode();
+  private static final int eHY = "sortId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  private boolean eqM = true;
-  private boolean eqN = true;
+  private boolean eED = true;
+  private boolean eHV = true;
+  private boolean eHW = true;
   public String field_appId;
   public long field_flag;
   public int field_sortId;
@@ -32,7 +32,7 @@ public abstract class aa
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eqO != k) {
+      if (eHX != k) {
         break label60;
       }
       this.field_flag = paramCursor.getLong(i);
@@ -43,9 +43,9 @@ public abstract class aa
       break label20;
       break;
       label60:
-      if (enO == k) {
+      if (eEU == k) {
         this.field_appId = paramCursor.getString(i);
-      } else if (eqP == k) {
+      } else if (eHY == k) {
         this.field_sortId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -56,16 +56,16 @@ public abstract class aa
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eqM) {
+    if (this.eHV) {
       localContentValues.put("flag", Long.valueOf(this.field_flag));
     }
     if (this.field_appId == null) {
       this.field_appId = "";
     }
-    if (this.enx) {
+    if (this.eED) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eqN) {
+    if (this.eHW) {
       localContentValues.put("sortId", Integer.valueOf(this.field_sortId));
     }
     if (this.systemRowid > 0L) {

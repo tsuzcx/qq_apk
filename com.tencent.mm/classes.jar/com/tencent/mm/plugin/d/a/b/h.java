@@ -5,65 +5,65 @@ import java.util.HashMap;
 
 public final class h
 {
-  public static String nqA;
-  public static String nqB;
-  public static String nqC;
-  public static String nqD;
-  public static HashMap<String, String> nqE;
-  public static String nqj;
-  public static String nqk;
-  public static String nql;
-  public static String nqm;
-  public static String nqn;
-  public static String nqo;
-  public static String nqp;
-  public static String nqq;
-  public static String nqr;
-  public static String nqs;
-  public static String nqt;
-  public static String nqu;
-  public static String nqv;
-  public static String nqw;
-  public static String nqx;
-  public static String nqy;
-  public static String nqz;
+  public static HashMap<String, String> nRA;
+  public static String nRf;
+  public static String nRg;
+  public static String nRh;
+  public static String nRi;
+  public static String nRj;
+  public static String nRk;
+  public static String nRl;
+  public static String nRm;
+  public static String nRn;
+  public static String nRo;
+  public static String nRp;
+  public static String nRq;
+  public static String nRr;
+  public static String nRs;
+  public static String nRt;
+  public static String nRu;
+  public static String nRv;
+  public static String nRw;
+  public static String nRx;
+  public static String nRy;
+  public static String nRz;
   
   static
   {
     AppMethodBeat.i(22567);
-    nqj = "00002902-0000-1000-8000-00805f9b34fb";
-    nqk = "0000fee7-0000-1000-8000-00805f9b34fb";
-    nql = "0000fec7-0000-1000-8000-00805f9b34fb";
-    nqm = "0000fec8-0000-1000-8000-00805f9b34fb";
-    nqn = "0000fea1-0000-1000-8000-00805f9b34fb";
-    nqo = "0000fea2-0000-1000-8000-00805f9b34fb";
-    nqp = "0000feb1-0000-1000-8000-00805f9b34fb";
-    nqq = "0000feb2-0000-1000-8000-00805f9b34fb";
-    nqr = "0000feb3-0000-1000-8000-00805f9b34fb";
-    nqs = "0000feb4-0000-1000-8000-00805f9b34fb";
-    nqt = "0000181d-0000-1000-8000-00805f9b34fb";
-    nqu = "00002a9e-0000-1000-8000-00805f9b34fb";
-    nqv = "00002a9d-0000-1000-8000-00805f9b34fb";
-    nqw = "0000180d-0000-1000-8000-00805f9b34fb";
-    nqx = "00002a37-0000-1000-8000-00805f9b34fb";
-    nqy = "00002a38-0000-1000-8000-00805f9b34fb";
-    nqz = "00002a39-0000-1000-8000-00805f9b34fb";
-    nqA = "00001810-0000-1000-8000-00805f9b34fb";
-    nqB = "00002a35-0000-1000-8000-00805f9b34fb";
-    nqC = "00002a36-0000-1000-8000-00805f9b34fb";
-    nqD = "00002a49-0000-1000-8000-00805f9b34fb";
+    nRf = "00002902-0000-1000-8000-00805f9b34fb";
+    nRg = "0000fee7-0000-1000-8000-00805f9b34fb";
+    nRh = "0000fec7-0000-1000-8000-00805f9b34fb";
+    nRi = "0000fec8-0000-1000-8000-00805f9b34fb";
+    nRj = "0000fea1-0000-1000-8000-00805f9b34fb";
+    nRk = "0000fea2-0000-1000-8000-00805f9b34fb";
+    nRl = "0000feb1-0000-1000-8000-00805f9b34fb";
+    nRm = "0000feb2-0000-1000-8000-00805f9b34fb";
+    nRn = "0000feb3-0000-1000-8000-00805f9b34fb";
+    nRo = "0000feb4-0000-1000-8000-00805f9b34fb";
+    nRp = "0000181d-0000-1000-8000-00805f9b34fb";
+    nRq = "00002a9e-0000-1000-8000-00805f9b34fb";
+    nRr = "00002a9d-0000-1000-8000-00805f9b34fb";
+    nRs = "0000180d-0000-1000-8000-00805f9b34fb";
+    nRt = "00002a37-0000-1000-8000-00805f9b34fb";
+    nRu = "00002a38-0000-1000-8000-00805f9b34fb";
+    nRv = "00002a39-0000-1000-8000-00805f9b34fb";
+    nRw = "00001810-0000-1000-8000-00805f9b34fb";
+    nRx = "00002a35-0000-1000-8000-00805f9b34fb";
+    nRy = "00002a36-0000-1000-8000-00805f9b34fb";
+    nRz = "00002a49-0000-1000-8000-00805f9b34fb";
     HashMap localHashMap = new HashMap();
-    nqE = localHashMap;
-    localHashMap.put(nql, "airsync send characteristic. permission: (write)");
-    nqE.put(nqm, "airsync recv characteristic. permission: (indicate)");
-    nqE.put(nqn, "simple step measurement characteristic. permission: ((read)(indicate|notify))");
-    nqE.put(nqo, "airsync recv characteristic. permission: [(read)[write][indicate]]");
+    nRA = localHashMap;
+    localHashMap.put(nRh, "airsync send characteristic. permission: (write)");
+    nRA.put(nRi, "airsync recv characteristic. permission: (indicate)");
+    nRA.put(nRj, "simple step measurement characteristic. permission: ((read)(indicate|notify))");
+    nRA.put(nRk, "airsync recv characteristic. permission: [(read)[write][indicate]]");
     AppMethodBeat.o(22567);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.b.h
  * JD-Core Version:    0.7.0.1
  */

@@ -11,20 +11,20 @@ import org.json.JSONObject;
 public final class NetScenePayUElementQuery
   extends a
 {
-  public String BRo;
-  public PayUBankcardElement BRq;
+  public String DrH;
+  public PayUBankcardElement DrJ;
   
   public NetScenePayUElementQuery(String paramString)
   {
     AppMethodBeat.i(71975);
-    this.BRo = paramString;
+    this.DrH = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("card_number", paramString);
     setRequestData(localHashMap);
     AppMethodBeat.o(71975);
   }
   
-  public final int eqK()
+  public final int eEK()
   {
     return 22;
   }
@@ -32,23 +32,23 @@ public final class NetScenePayUElementQuery
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(71976);
-    this.BRq = new PayUBankcardElement();
-    this.BRq.BRr = paramJSONObject.optString("bin");
-    this.BRq.vxj = paramJSONObject.optString("bank_name");
-    this.BRq.BRs = paramJSONObject.optString("issuer_type");
-    this.BRq.cardType = paramJSONObject.optString("card_type");
-    this.BRq.dnh = paramJSONObject.optString("payu_reference");
+    this.DrJ = new PayUBankcardElement();
+    this.DrJ.DrK = paramJSONObject.optString("bin");
+    this.DrJ.wCD = paramJSONObject.optString("bank_name");
+    this.DrJ.DrL = paramJSONObject.optString("issuer_type");
+    this.DrJ.cardType = paramJSONObject.optString("card_type");
+    this.DrJ.dyV = paramJSONObject.optString("payu_reference");
     AppMethodBeat.o(71976);
   }
   
   public static class PayUBankcardElement
     implements Parcelable
   {
-    public String BRr = "";
-    public String BRs = "";
+    public String DrK = "";
+    public String DrL = "";
     public String cardType = "";
-    public String dnh = "";
-    public String vxj = "";
+    public String dyV = "";
+    public String wCD = "";
     
     public int describeContents()
     {
@@ -58,11 +58,11 @@ public final class NetScenePayUElementQuery
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(71974);
-      paramParcel.writeString(this.BRr);
-      paramParcel.writeString(this.vxj);
-      paramParcel.writeString(this.BRs);
+      paramParcel.writeString(this.DrK);
+      paramParcel.writeString(this.wCD);
+      paramParcel.writeString(this.DrL);
       paramParcel.writeString(this.cardType);
-      paramParcel.writeString(this.dnh);
+      paramParcel.writeString(this.dyV);
       AppMethodBeat.o(71974);
     }
   }

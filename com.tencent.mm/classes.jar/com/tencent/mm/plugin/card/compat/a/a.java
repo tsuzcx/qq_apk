@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.card.compat.a;
 
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ai.k.b;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a

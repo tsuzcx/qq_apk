@@ -4,9 +4,9 @@ public abstract interface b
 {
   public abstract boolean a(MallFormView paramMallFormView);
   
-  public abstract String aqq(String paramString);
+  public abstract String avp(String paramString);
   
-  public abstract boolean dtE();
+  public abstract boolean dEb();
 }
 
 

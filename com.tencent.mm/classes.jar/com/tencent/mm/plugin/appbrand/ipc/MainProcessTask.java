@@ -5,53 +5,53 @@ import android.os.Messenger;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Process;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class MainProcessTask
   implements Parcelable
 {
-  private static final Set<Object> jVK = new HashSet();
-  protected String imk = Process.myPid() + hashCode();
-  Messenger jVL;
+  private static final Set<Object> kpY = new HashSet();
+  protected String iFB = Process.myPid() + hashCode();
+  Messenger kpZ;
   
-  public abstract void aLq();
+  public abstract void aOA();
   
-  public void aLr() {}
+  public void aOB() {}
   
-  public final void aLt()
+  public final void aOD()
   {
     AppBrandMainProcessService.a(this);
   }
   
-  public final void bej()
+  public final void bhN()
   {
-    jVK.add(this);
+    kpY.add(this);
   }
   
-  public final void bek()
+  public final void bhO()
   {
-    jVK.remove(this);
+    kpY.remove(this);
   }
   
-  public final boolean bet()
+  public final boolean bhX()
   {
-    if (this.jVL == null) {
+    if (this.kpZ == null) {
       return false;
     }
     Message localMessage = Message.obtain();
     localMessage.setData(AppBrandMainProcessService.a(this, false));
     try
     {
-      this.jVL.send(localMessage);
-      gg(true);
+      this.kpZ.send(localMessage);
+      gl(true);
       return true;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.MainProcessTask", "callback failed, class[%s], e=%s", new Object[] { getClass().getName(), localException });
-      gg(false);
+      ad.e("MicroMsg.MainProcessTask", "callback failed, class[%s], e=%s", new Object[] { getClass().getName(), localException });
+      gl(false);
     }
     return false;
   }
@@ -63,13 +63,13 @@ public abstract class MainProcessTask
   
   public void e(Parcel paramParcel) {}
   
-  protected void gg(boolean paramBoolean) {}
+  protected void gl(boolean paramBoolean) {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.MainProcessTask
  * JD-Core Version:    0.7.0.1
  */

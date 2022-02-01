@@ -6,45 +6,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class d
 {
-  private static d qIh = null;
+  private static d rsi = null;
   private long endTime;
-  private boolean kOL;
-  ao mHandler;
-  public ArrayList<a> qIg;
-  private Object qIi;
-  private Runnable qIj;
+  private boolean llo;
+  ap mHandler;
+  public ArrayList<a> rsh;
+  private Object rsj;
+  private Runnable rsk;
   private long startTime;
   
   private d()
   {
     AppMethodBeat.i(103365);
-    this.kOL = false;
-    this.qIg = new ArrayList();
+    this.llo = false;
+    this.rsh = new ArrayList();
     this.startTime = -1L;
     this.endTime = -1L;
-    this.qIi = new Object();
-    this.qIj = new Runnable()
+    this.rsj = new Object();
+    this.rsk = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(103363);
-        ((af)g.ad(af.class)).getFavItemInfoStorage().cpO();
+        ((af)g.ad(af.class)).getFavItemInfoStorage().cvt();
         d.a(d.this, System.currentTimeMillis());
-        ac.d("MicroMsg.FavCleanFirstLoader", "calDataBaseDataTotalLength, used: %dms", new Object[] { Long.valueOf(d.a(d.this) - d.b(d.this)) });
+        ad.d("MicroMsg.FavCleanFirstLoader", "calDataBaseDataTotalLength, used: %dms", new Object[] { Long.valueOf(d.a(d.this) - d.b(d.this)) });
         d.a(d.this, -1L);
         d.c(d.this);
         synchronized (d.d(d.this))
         {
-          g.agR().agA().set(ah.a.GGK, Boolean.TRUE);
+          g.ajC().ajl().set(al.a.Itc, Boolean.TRUE);
           d.e(d.this);
           d.this.mHandler.sendEmptyMessage(0);
           AppMethodBeat.o(103363);
@@ -52,12 +52,12 @@ public final class d
         }
       }
     };
-    this.mHandler = new ao(Looper.getMainLooper())
+    this.mHandler = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(103364);
-        paramAnonymousMessage = d.this.qIg.iterator();
+        paramAnonymousMessage = d.this.rsh.iterator();
         while (paramAnonymousMessage.hasNext())
         {
           d.a locala = (d.a)paramAnonymousMessage.next();
@@ -65,22 +65,22 @@ public final class d
             locala.onFinish();
           }
         }
-        d.this.qIg.clear();
+        d.this.rsh.clear();
         AppMethodBeat.o(103364);
       }
     };
     AppMethodBeat.o(103365);
   }
   
-  public static d cpj()
+  public static d cuO()
   {
     try
     {
       AppMethodBeat.i(103366);
-      if (qIh == null) {
-        qIh = new d();
+      if (rsi == null) {
+        rsi = new d();
       }
-      d locald = qIh;
+      d locald = rsi;
       AppMethodBeat.o(103366);
       return locald;
     }
@@ -90,9 +90,9 @@ public final class d
   public final void a(a parama)
   {
     AppMethodBeat.i(103367);
-    synchronized (this.qIi)
+    synchronized (this.rsj)
     {
-      if (((Boolean)g.agR().agA().get(ah.a.GGK, Boolean.FALSE)).booleanValue())
+      if (((Boolean)g.ajC().ajl().get(al.a.Itc, Boolean.FALSE)).booleanValue())
       {
         if (parama != null) {
           parama.onFinish();
@@ -101,17 +101,17 @@ public final class d
         return;
       }
       if (parama != null) {
-        this.qIg.add(parama);
+        this.rsh.add(parama);
       }
-      if (this.kOL)
+      if (this.llo)
       {
-        ac.i("MicroMsg.FavCleanFirstLoader", "isLoading is true, ignore");
+        ad.i("MicroMsg.FavCleanFirstLoader", "isLoading is true, ignore");
         AppMethodBeat.o(103367);
         return;
       }
-      this.kOL = true;
+      this.llo = true;
       this.startTime = System.currentTimeMillis();
-      b.c(this.qIj, "FavCleanFirstLoader_CalFavDataLength");
+      b.c(this.rsk, "FavCleanFirstLoader_CalFavDataLength");
       AppMethodBeat.o(103367);
       return;
     }
@@ -124,7 +124,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.d
  * JD-Core Version:    0.7.0.1
  */

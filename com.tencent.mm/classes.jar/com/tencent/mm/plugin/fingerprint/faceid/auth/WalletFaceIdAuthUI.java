@@ -11,15 +11,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.t;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.b.l;
-import com.tencent.mm.plugin.fingerprint.d.b;
-import com.tencent.mm.plugin.wallet_core.c.ad;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.soter.a.g.f;
@@ -29,10 +25,10 @@ public class WalletFaceIdAuthUI
   extends WalletBaseUI
 {
   int mScene;
-  Button sjx;
-  private c sjy;
+  Button tfZ;
+  private c tga;
   
-  public final void aeU(String paramString)
+  public final void ajs(String paramString)
   {
     AppMethodBeat.i(64256);
     com.tencent.mm.ui.base.h.a(this, paramString, "", getString(2131755793), false, new DialogInterface.OnClickListener()
@@ -40,7 +36,7 @@ public class WalletFaceIdAuthUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(64231);
-        WalletFaceIdAuthUI.a(WalletFaceIdAuthUI.this).cGN();
+        WalletFaceIdAuthUI.a(WalletFaceIdAuthUI.this).cPc();
         AppMethodBeat.o(64231);
       }
     });
@@ -55,13 +51,17 @@ public class WalletFaceIdAuthUI
   public void initView()
   {
     AppMethodBeat.i(64253);
-    this.sjx = ((Button)findViewById(2131300105));
-    this.sjx.setOnClickListener(new View.OnClickListener()
+    this.tfZ = ((Button)findViewById(2131300105));
+    this.tfZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(64230);
-        WalletFaceIdAuthUI.a(WalletFaceIdAuthUI.this).cGO();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/faceid/auth/WalletFaceIdAuthUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        WalletFaceIdAuthUI.a(WalletFaceIdAuthUI.this).cPd();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/faceid/auth/WalletFaceIdAuthUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(64230);
       }
     });
@@ -71,7 +71,7 @@ public class WalletFaceIdAuthUI
   public boolean isTransparent()
   {
     AppMethodBeat.i(64254);
-    boolean bool = this.sjy.isTransparent();
+    boolean bool = this.tga.isTransparent();
     AppMethodBeat.o(64254);
     return bool;
   }
@@ -80,20 +80,20 @@ public class WalletFaceIdAuthUI
   {
     AppMethodBeat.i(64252);
     this.mScene = getIntent().getIntExtra("key_scene", 1);
-    ac.i("MicroMsg.WalletFaceIdAuthUI", "scene: %s", new Object[] { Integer.valueOf(this.mScene) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "scene: %s", new Object[] { Integer.valueOf(this.mScene) });
     if (this.mScene == 0) {
-      this.sjy = new b(this);
+      this.tga = new b(this);
     }
     for (;;)
     {
       super.onCreate(paramBundle);
       setMMTitle(2131758812);
-      this.sjy.onCreate();
+      this.tga.onCreate();
       initView();
       AppMethodBeat.o(64252);
       return;
       if (this.mScene == 1) {
-        this.sjy = new a(this);
+        this.tga = new a(this);
       }
     }
   }
@@ -106,7 +106,7 @@ public class WalletFaceIdAuthUI
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(64255);
-    boolean bool = this.sjy.onSceneEnd(paramInt1, paramInt2, paramString, paramn);
+    boolean bool = this.tga.onSceneEnd(paramInt1, paramInt2, paramString, paramn);
     AppMethodBeat.o(64255);
     return bool;
   }
@@ -124,53 +124,53 @@ public class WalletFaceIdAuthUI
     {
       super();
       AppMethodBeat.i(64234);
-      com.tencent.mm.plugin.soter.d.a.Qi(0);
+      com.tencent.mm.plugin.soter.d.a.RQ(0);
       AppMethodBeat.o(64234);
     }
     
-    private void cGQ()
+    private void cPf()
     {
       AppMethodBeat.i(64239);
-      ac.i("MicroMsg.WalletFaceIdAuthUI", "do finish");
-      this.sjE.finish();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "do finish");
+      this.tgg.finish();
       AppMethodBeat.o(64239);
     }
     
-    protected final void cGM()
+    protected final void cPb()
     {
       AppMethodBeat.i(64236);
-      ac.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
-      this.sjE.showProgress();
-      this.sjD.a(this.sjE, new b()
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
+      this.tgg.showProgress();
+      this.tgf.a(this.tgg, new com.tencent.mm.plugin.fingerprint.d.b()
       {
-        public final void aZ(int paramAnonymousInt, String paramAnonymousString)
+        public final void bc(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(64232);
-          ac.i("MicroMsg.WalletFaceIdAuthUI", "prepared finish: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-          WalletFaceIdAuthUI.a.this.sjE.hideProgress();
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "prepared finish: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          WalletFaceIdAuthUI.a.this.tgg.hideProgress();
           if (paramAnonymousInt == 0)
           {
-            WalletFaceIdAuthUI.a.this.cGS();
+            WalletFaceIdAuthUI.a.this.cPh();
             AppMethodBeat.o(64232);
             return;
           }
-          WalletFaceIdAuthUI.a.this.sjE.aeU(WalletFaceIdAuthUI.a.this.sjE.getString(2131756559));
+          WalletFaceIdAuthUI.a.this.tgg.ajs(WalletFaceIdAuthUI.a.this.tgg.getString(2131756559));
           AppMethodBeat.o(64232);
         }
-      }, this.iXf);
+      }, this.jqo);
       AppMethodBeat.o(64236);
     }
     
-    protected final void cGN()
+    protected final void cPc()
     {
       AppMethodBeat.i(64238);
-      cGQ();
+      cPf();
       AppMethodBeat.o(64238);
     }
     
-    protected final void cGO() {}
+    protected final void cPd() {}
     
-    protected final int cGP()
+    protected final int cPe()
     {
       return 1;
     }
@@ -183,26 +183,26 @@ public class WalletFaceIdAuthUI
     public final void onCreate()
     {
       AppMethodBeat.i(64235);
-      this.sjE.getWindow().setDimAmount(0.0F);
+      this.tgg.getWindow().setDimAmount(0.0F);
       super.onCreate();
-      this.sjE.hideTitleView();
-      this.sjE.hideActionbarLine();
-      this.sjE.setContentViewVisibility(8);
+      this.tgg.hideTitleView();
+      this.tgg.hideActionbarLine();
+      this.tgg.setContentViewVisibility(8);
       AppMethodBeat.o(64235);
     }
     
     protected final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
       AppMethodBeat.i(64237);
-      if (this.sjD.onSceneEnd(paramInt1, paramInt2, paramString, paramn))
+      if (this.tgf.onSceneEnd(paramInt1, paramInt2, paramString, paramn))
       {
         AppMethodBeat.o(64237);
         return true;
       }
-      if ((paramn instanceof ad))
+      if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad))
       {
-        this.sjE.hideProgress();
-        com.tencent.mm.ui.base.h.a(this.sjE, this.sjE.getString(2131758811), this.sjE.getString(2131758810), this.sjE.getString(2131765649), false, new DialogInterface.OnClickListener()
+        this.tgg.hideProgress();
+        com.tencent.mm.ui.base.h.a(this.tgg, this.tgg.getString(2131758811), this.tgg.getString(2131758810), this.tgg.getString(2131765649), false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -226,59 +226,59 @@ public class WalletFaceIdAuthUI
     {
       super();
       AppMethodBeat.i(64242);
-      com.tencent.mm.plugin.soter.d.a.Qi(1);
+      com.tencent.mm.plugin.soter.d.a.RQ(1);
       AppMethodBeat.o(64242);
     }
     
-    private void cGR()
+    private void cPg()
     {
       AppMethodBeat.i(64247);
-      ac.i("MicroMsg.WalletFaceIdAuthUI", "do end process");
-      com.tencent.mm.wallet_core.a.b(this.sjE, new Bundle(), 0);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "do end process");
+      com.tencent.mm.wallet_core.a.b(this.tgg, new Bundle(), 0);
       AppMethodBeat.o(64247);
     }
     
-    protected final void cGM()
+    protected final void cPb()
     {
       AppMethodBeat.i(64243);
-      ac.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
-      this.sjE.showProgress();
-      this.sjD.a(this.sjE, new b()
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "do prepare ");
+      this.tgg.showProgress();
+      this.tgf.a(this.tgg, new com.tencent.mm.plugin.fingerprint.d.b()
       {
-        public final void aZ(int paramAnonymousInt, String paramAnonymousString)
+        public final void bc(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(64241);
-          ac.i("MicroMsg.WalletFaceIdAuthUI", "prepared finish: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-          WalletFaceIdAuthUI.b.this.sjE.hideProgress();
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "prepared finish: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          WalletFaceIdAuthUI.b.this.tgg.hideProgress();
           if (paramAnonymousInt == 0)
           {
-            WalletFaceIdAuthUI.b.this.sjE.sjx.setEnabled(true);
+            WalletFaceIdAuthUI.b.this.tgg.tfZ.setEnabled(true);
             AppMethodBeat.o(64241);
             return;
           }
-          WalletFaceIdAuthUI.b.this.sjE.aeU(WalletFaceIdAuthUI.b.this.sjE.getString(2131756559));
+          WalletFaceIdAuthUI.b.this.tgg.ajs(WalletFaceIdAuthUI.b.this.tgg.getString(2131756559));
           AppMethodBeat.o(64241);
         }
-      }, this.iXf);
+      }, this.jqo);
       AppMethodBeat.o(64243);
     }
     
-    public final void cGN()
+    public final void cPc()
     {
       AppMethodBeat.i(64246);
-      cGR();
+      cPg();
       AppMethodBeat.o(64246);
     }
     
-    public final void cGO()
+    public final void cPd()
     {
       AppMethodBeat.i(64245);
-      ac.i("MicroMsg.WalletFaceIdAuthUI", "do verify face id");
-      cGS();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "do verify face id");
+      cPh();
       AppMethodBeat.o(64245);
     }
     
-    protected final int cGP()
+    protected final int cPe()
     {
       return 0;
     }
@@ -291,16 +291,16 @@ public class WalletFaceIdAuthUI
     public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
       AppMethodBeat.i(64244);
-      if (this.sjD.onSceneEnd(paramInt1, paramInt2, paramString, paramn))
+      if (this.tgf.onSceneEnd(paramInt1, paramInt2, paramString, paramn))
       {
         AppMethodBeat.o(64244);
         return true;
       }
-      if ((paramn instanceof ad))
+      if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad))
       {
-        this.sjE.hideProgress();
-        cGR();
-        Toast.makeText(this.sjE, 2131759410, 0).show();
+        this.tgg.hideProgress();
+        cPg();
+        Toast.makeText(this.tgg, 2131759410, 0).show();
         AppMethodBeat.o(64244);
         return true;
       }
@@ -311,95 +311,95 @@ public class WalletFaceIdAuthUI
   
   public static abstract class c
   {
-    protected String iXf;
-    protected Bundle kBP;
-    protected com.tencent.mm.plugin.fingerprint.d.a sjC;
-    protected l sjD;
-    protected WalletFaceIdAuthUI sjE;
+    protected String jqo;
+    protected Bundle kXW;
+    protected com.tencent.mm.plugin.fingerprint.d.a tge;
+    protected l tgf;
+    protected WalletFaceIdAuthUI tgg;
     
     public c(WalletFaceIdAuthUI paramWalletFaceIdAuthUI)
     {
-      this.sjE = paramWalletFaceIdAuthUI;
+      this.tgg = paramWalletFaceIdAuthUI;
       if (paramWalletFaceIdAuthUI.mScene == 0) {}
-      for (paramWalletFaceIdAuthUI = paramWalletFaceIdAuthUI.getProcess().dmf;; paramWalletFaceIdAuthUI = paramWalletFaceIdAuthUI.getIntent().getExtras())
+      for (paramWalletFaceIdAuthUI = paramWalletFaceIdAuthUI.getProcess().dxT;; paramWalletFaceIdAuthUI = paramWalletFaceIdAuthUI.getIntent().getExtras())
       {
-        this.kBP = paramWalletFaceIdAuthUI;
-        this.sjD = new l();
-        this.sjC = ((com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
+        this.kXW = paramWalletFaceIdAuthUI;
+        this.tgf = new l();
+        this.tge = ((com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class));
         return;
       }
     }
     
-    protected final void Fm(int paramInt)
+    protected final void GB(int paramInt)
     {
       paramInt = 1;
-      this.sjE.showProgress();
-      if (cGP() == 1) {
+      this.tgg.showProgress();
+      if (cPe() == 1) {
         paramInt = 2;
       }
-      this.sjD.a(new b()
+      this.tgf.a(new com.tencent.mm.plugin.fingerprint.d.b()
       {
-        public final void aZ(int paramAnonymousInt, String paramAnonymousString)
+        public final void bc(int paramAnonymousInt, String paramAnonymousString)
         {
           int i = 2;
           AppMethodBeat.i(64248);
           if (paramAnonymousInt == 0)
           {
-            ac.i("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay success");
-            WalletFaceIdAuthUI.c.this.sjE.doSceneProgress(new ad(null, 19), false);
-            paramAnonymousString = com.tencent.mm.plugin.report.service.h.wUl;
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay success");
+            WalletFaceIdAuthUI.c.this.tgg.doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.ad(null, 19), false);
+            paramAnonymousString = com.tencent.mm.plugin.report.service.g.yhR;
             paramAnonymousInt = i;
-            if (WalletFaceIdAuthUI.c.this.cGP() == 1) {
+            if (WalletFaceIdAuthUI.c.this.cPe() == 1) {
               paramAnonymousInt = 1;
             }
             paramAnonymousString.f(15817, new Object[] { Integer.valueOf(paramAnonymousInt) });
-            com.tencent.mm.plugin.report.service.h.wUl.dB(916, 1);
+            com.tencent.mm.plugin.report.service.g.yhR.dD(916, 1);
             AppMethodBeat.o(64248);
             return;
           }
-          WalletFaceIdAuthUI.c.this.sjE.hideProgress();
-          ac.e("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay failed");
-          WalletFaceIdAuthUI.c.this.sjE.aeU(WalletFaceIdAuthUI.c.this.sjE.getString(2131758809));
-          com.tencent.mm.plugin.report.service.h.wUl.dB(916, 2);
+          WalletFaceIdAuthUI.c.this.tgg.hideProgress();
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay failed");
+          WalletFaceIdAuthUI.c.this.tgg.ajs(WalletFaceIdAuthUI.c.this.tgg.getString(2131758809));
+          com.tencent.mm.plugin.report.service.g.yhR.dD(916, 2);
           AppMethodBeat.o(64248);
         }
       }, paramInt);
     }
     
-    protected abstract void cGM();
+    protected abstract void cPb();
     
-    protected abstract void cGN();
+    protected abstract void cPc();
     
-    protected abstract void cGO();
+    protected abstract void cPd();
     
-    protected abstract int cGP();
+    protected abstract int cPe();
     
-    protected final void cGS()
+    protected final void cPh()
     {
-      ac.i("MicroMsg.WalletFaceIdAuthUI", "do face id auth");
-      com.tencent.mm.plugin.fingerprint.b.h localh = (com.tencent.mm.plugin.fingerprint.b.h)g.ab(com.tencent.mm.plugin.fingerprint.b.h.class);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletFaceIdAuthUI", "do face id auth");
+      com.tencent.mm.plugin.fingerprint.b.h localh = (com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.b.h.class);
       Bundle localBundle = new Bundle();
       localBundle.putInt("face_auth_scene", 0);
-      localh.a(this.sjE, new a()
+      localh.a(this.tgg, new a()
       {
         public final void onAuthCancel()
         {
           AppMethodBeat.i(64251);
-          WalletFaceIdAuthUI.c.this.sjE.finish();
+          WalletFaceIdAuthUI.c.this.tgg.finish();
           AppMethodBeat.o(64251);
         }
         
         public final void onAuthFail(int paramAnonymousInt)
         {
           AppMethodBeat.i(64250);
-          WalletFaceIdAuthUI.c.this.sjE.aeU(WalletFaceIdAuthUI.c.this.sjE.getString(2131758809));
+          WalletFaceIdAuthUI.c.this.tgg.ajs(WalletFaceIdAuthUI.c.this.tgg.getString(2131758809));
           AppMethodBeat.o(64250);
         }
         
         public final void onAuthSuccess(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(64249);
-          WalletFaceIdAuthUI.c.this.Fm(paramAnonymousInt1);
+          WalletFaceIdAuthUI.c.this.GB(paramAnonymousInt1);
           AppMethodBeat.o(64249);
         }
       }, localBundle);
@@ -410,29 +410,29 @@ public class WalletFaceIdAuthUI
     public void onCreate()
     {
       boolean bool2 = true;
-      if (this.sjC == null)
+      if (this.tge == null)
       {
-        ac.w("MicroMsg.WalletFaceIdAuthUI", "no mgr");
-        this.sjE.aeU(this.sjE.getString(2131758809));
+        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WalletFaceIdAuthUI", "no mgr");
+        this.tgg.ajs(this.tgg.getString(2131758809));
         return;
       }
-      boolean bool3 = this.sjC.cHm();
-      boolean bool4 = this.sjC.cHn();
+      boolean bool3 = this.tge.cPB();
+      boolean bool4 = this.tge.cPC();
       boolean bool1;
-      if (ae.fJh.fHy != 1)
+      if (ae.gcI.gaY != 1)
       {
         bool1 = true;
-        if ((bool3) && (bool4) && (!bool1) && (this.kBP != null)) {
+        if ((bool3) && (bool4) && (!bool1) && (this.kXW != null)) {
           break label160;
         }
-        if (this.kBP != null) {
+        if (this.kXW != null) {
           break label155;
         }
       }
       for (;;)
       {
-        ac.w("MicroMsg.WalletFaceIdAuthUI", "support: %s, enrolled: %s, forceClose: %s, data: %s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        this.sjE.aeU(this.sjE.getString(2131758809));
+        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WalletFaceIdAuthUI", "support: %s, enrolled: %s, forceClose: %s, data: %s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        this.tgg.ajs(this.tgg.getString(2131758809));
         return;
         bool1 = false;
         break;
@@ -440,15 +440,15 @@ public class WalletFaceIdAuthUI
         bool2 = false;
       }
       label160:
-      this.iXf = this.kBP.getString("pwd");
-      if (bs.isNullOrNil(this.iXf))
+      this.jqo = this.kXW.getString("pwd");
+      if (bt.isNullOrNil(this.jqo))
       {
-        ac.w("MicroMsg.WalletFaceIdAuthUI", "no pwd");
-        this.sjE.aeU(this.sjE.getString(2131758809));
+        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WalletFaceIdAuthUI", "no pwd");
+        this.tgg.ajs(this.tgg.getString(2131758809));
         return;
       }
-      f.fDM().fDN();
-      cGM();
+      f.fVe().fVf();
+      cPb();
     }
     
     protected abstract boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn);

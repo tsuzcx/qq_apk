@@ -14,6 +14,8 @@ public abstract interface i
   
   public abstract <T> d<T> a(Callable<T> paramCallable, String paramString);
   
+  public abstract d<?> aP(Runnable paramRunnable);
+  
   public abstract d<?> aQ(Runnable paramRunnable);
   
   public abstract d<?> aR(Runnable paramRunnable);
@@ -22,13 +24,11 @@ public abstract interface i
   
   public abstract d<?> aT(Runnable paramRunnable);
   
-  public abstract b aTA(String paramString);
-  
-  public abstract boolean aTz(String paramString);
-  
   public abstract d<?> aU(Runnable paramRunnable);
   
-  public abstract d<?> aV(Runnable paramRunnable);
+  public abstract b aZA(String paramString);
+  
+  public abstract boolean aZz(String paramString);
   
   public abstract d<?> b(Runnable paramRunnable, long paramLong, String paramString);
   
@@ -36,21 +36,23 @@ public abstract interface i
   
   public abstract d<?> f(Runnable paramRunnable, String paramString);
   
-  public abstract boolean fEe();
+  public abstract boolean fVw();
   
-  public abstract a fEf();
+  public abstract a fVx();
   
   public abstract d<?> g(Runnable paramRunnable, String paramString);
   
   public abstract d<?> h(Runnable paramRunnable, String paramString);
   
-  public abstract boolean isShutdown();
+  public abstract d<?> i(Runnable paramRunnable, String paramString);
   
-  public abstract d<?> p(Runnable paramRunnable, long paramLong);
+  public abstract boolean isShutdown();
   
   public abstract d<?> q(Runnable paramRunnable, long paramLong);
   
   public abstract d<?> r(Runnable paramRunnable, long paramLong);
+  
+  public abstract d<?> s(Runnable paramRunnable, long paramLong);
 }
 
 

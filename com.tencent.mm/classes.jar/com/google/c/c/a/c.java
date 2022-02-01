@@ -11,8 +11,8 @@ class c
     int i = paramStringBuilder1.length();
     paramStringBuilder1.delete(i - paramInt, i);
     paramh.pos -= 1;
-    paramInt = a(paramh.xZ(), paramStringBuilder2);
-    paramh.bIU = null;
+    paramInt = a(paramh.zw(), paramStringBuilder2);
+    paramh.bTh = null;
     AppMethodBeat.o(12355);
     return paramInt;
   }
@@ -21,7 +21,7 @@ class c
   {
     AppMethodBeat.i(12356);
     int i = paramStringBuilder.charAt(0) * 'ـ' + paramStringBuilder.charAt(1) * '(' + paramStringBuilder.charAt(2) + 1;
-    paramh.bm(new String(new char[] { (char)(i / 256), (char)(i % 256) }));
+    paramh.cf(new String(new char[] { (char)(i / 256), (char)(i % 256) }));
     paramStringBuilder.delete(0, 3);
     AppMethodBeat.o(12356);
   }
@@ -98,15 +98,15 @@ class c
   {
     AppMethodBeat.i(12354);
     StringBuilder localStringBuilder1 = new StringBuilder();
-    while (paramh.ya())
+    while (paramh.zx())
     {
-      char c = paramh.xZ();
+      char c = paramh.zw();
       paramh.pos += 1;
       int j = a(c, localStringBuilder1);
-      int i = (localStringBuilder1.length() / 3 << 1) + paramh.bIS.length();
-      paramh.fU(i);
-      int k = paramh.bIU.bJd - i;
-      if (!paramh.ya())
+      int i = (localStringBuilder1.length() / 3 << 1) + paramh.bTf.length();
+      paramh.fX(i);
+      int k = paramh.bTh.bTq - i;
+      if (!paramh.zx())
       {
         StringBuilder localStringBuilder2 = new StringBuilder();
         i = j;
@@ -124,9 +124,9 @@ class c
       }
       if (localStringBuilder1.length() % 3 == 0)
       {
-        i = j.b(paramh.bIO, paramh.pos, xW());
-        if (i != xW()) {
-          paramh.bIT = i;
+        i = j.b(paramh.msg, paramh.pos, zt());
+        if (i != zt()) {
+          paramh.bTg = i;
         }
       }
     }
@@ -139,22 +139,22 @@ class c
     AppMethodBeat.i(12357);
     int j = paramStringBuilder.length() / 3;
     int i = paramStringBuilder.length() % 3;
-    j = (j << 1) + paramh.bIS.length();
-    paramh.fU(j);
-    j = paramh.bIU.bJd - j;
+    j = (j << 1) + paramh.bTf.length();
+    paramh.fX(j);
+    j = paramh.bTh.bTq - j;
     if (i == 2)
     {
       paramStringBuilder.append('\000');
       while (paramStringBuilder.length() >= 3) {
         a(paramh, paramStringBuilder);
       }
-      if (paramh.ya()) {
-        paramh.e('þ');
+      if (paramh.zx()) {
+        paramh.g('þ');
       }
     }
     for (;;)
     {
-      paramh.bIT = 0;
+      paramh.bTg = 0;
       AppMethodBeat.o(12357);
       return;
       if ((j == 1) && (i == 1))
@@ -162,8 +162,8 @@ class c
         while (paramStringBuilder.length() >= 3) {
           a(paramh, paramStringBuilder);
         }
-        if (paramh.ya()) {
-          paramh.e('þ');
+        if (paramh.zx()) {
+          paramh.g('þ');
         }
         paramh.pos -= 1;
       }
@@ -175,8 +175,8 @@ class c
         while (paramStringBuilder.length() >= 3) {
           a(paramh, paramStringBuilder);
         }
-        if ((j > 0) || (paramh.ya())) {
-          paramh.e('þ');
+        if ((j > 0) || (paramh.zx())) {
+          paramh.g('þ');
         }
       }
     }
@@ -185,14 +185,14 @@ class c
     throw paramh;
   }
   
-  public int xW()
+  public int zt()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.c
  * JD-Core Version:    0.7.0.1
  */

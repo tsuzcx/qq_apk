@@ -5,11 +5,11 @@ import android.view.View;
 
 final class p
 {
-  int uE;
-  private int uF;
-  int uG;
-  int uH;
   private final View view;
+  int wA;
+  int wx;
+  private int wy;
+  int wz;
   
   public p(View paramView)
   {
@@ -18,26 +18,26 @@ final class p
   
   public final boolean G(int paramInt)
   {
-    if (this.uG != paramInt)
+    if (this.wz != paramInt)
     {
-      this.uG = paramInt;
-      dg();
+      this.wz = paramInt;
+      dv();
       return true;
     }
     return false;
   }
   
-  public final void df()
+  public final void du()
   {
-    this.uE = this.view.getTop();
-    this.uF = this.view.getLeft();
-    dg();
+    this.wx = this.view.getTop();
+    this.wy = this.view.getLeft();
+    dv();
   }
   
-  final void dg()
+  final void dv()
   {
-    t.s(this.view, this.uG - (this.view.getTop() - this.uE));
-    t.u(this.view, this.uH - (this.view.getLeft() - this.uF));
+    t.s(this.view, this.wz - (this.view.getTop() - this.wx));
+    t.u(this.view, this.wA - (this.view.getLeft() - this.wy));
   }
 }
 

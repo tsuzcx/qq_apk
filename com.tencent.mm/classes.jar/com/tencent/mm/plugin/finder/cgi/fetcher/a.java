@@ -1,155 +1,209 @@
 package com.tencent.mm.plugin.finder.cgi.fetcher;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.cgi.f.a;
-import com.tencent.mm.plugin.finder.cgi.l.c;
-import com.tencent.mm.plugin.finder.feed.model.i.c;
-import com.tencent.mm.plugin.finder.feed.s;
-import com.tencent.mm.protocal.protobuf.alc;
-import com.tencent.mm.protocal.protobuf.aml;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.i.a.r;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.alz;
+import com.tencent.mm.protocal.protobuf.ani;
+import com.tencent.mm.protocal.protobuf.anj;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.j;
-import d.a.v;
-import d.g.b.k;
+import d.g;
+import d.g.a.b;
+import d.g.b.q;
 import d.l;
-import java.util.ArrayList;
+import d.z;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher;", "Lcom/tencent/mm/plugin/finder/life/SupportLifecycle;", "tabType", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(ILcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "cgiSwitcher", "Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher$CgiSwitcher;", "getCgiSwitcher", "()Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher$CgiSwitcher;", "isGetHistory", "", "isHistoryFirstPage", "()Z", "setHistoryFirstPage", "(Z)V", "isShowHistoryTip", "setShowHistoryTip", "lifeCycleKeeper", "Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "getLifeCycleKeeper", "()Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;", "setLifeCycleKeeper", "(Lcom/tencent/mm/vending/lifecycle/LifeCycleKeeper;)V", "check", "", "isNeedClear", "incrementSize", "retFlag", "pullType", "fetch", "request", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLbsLoader$FinderLbsReuqest;", "callback", "Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher$Callback;", "consume", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$ConsumeCallback;", "getHistory", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderTimelineStream$Callback;", "isFirstHistoryPage", "extraList", "", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "getStream", "originPullType", "showErrorToast", "tip", "", "Callback", "CgiSwitcher", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher;", "", "()V", "fetchingSet", "Ljava/util/concurrent/ConcurrentHashMap;", "", "strangerContactStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "getStrangerContactStorage", "()Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "strangerContactStorage$delegate", "Lkotlin/Lazy;", "fetchContact", "", "req", "call", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "Lkotlin/ParameterName;", "name", "result", "fetchContact2", "Lcom/tencent/mm/protocal/protobuf/FinderContactMsgInfo;", "fetchContact3", "Lcom/tencent/mm/protocal/protobuf/FinderContactCommentInfo;", "fetchContactList", "reqList", "", "resultList", "fetchContactList2", "fetchContactList3", "Companion", "plugin-finder_release"})
 public final class a
-  extends com.tencent.mm.plugin.finder.life.a
 {
-  public static final c qZa;
-  public final anm contextObj;
-  public final int diw;
-  public com.tencent.mm.vending.e.c<com.tencent.mm.vending.e.a> qXf;
-  public final b qYW;
-  private volatile boolean qYX;
-  public boolean qYY;
-  public boolean qYZ;
+  public static final a rKq;
+  public final ConcurrentHashMap<String, Object> rKo;
+  private final d.f rKp;
   
   static
   {
-    AppMethodBeat.i(201229);
-    qZa = new c((byte)0);
-    AppMethodBeat.o(201229);
+    AppMethodBeat.i(201187);
+    rKq = new a((byte)0);
+    AppMethodBeat.o(201187);
   }
   
-  public a(anm paramanm)
+  public a()
   {
-    AppMethodBeat.i(201228);
-    this.diw = 2;
-    this.contextObj = paramanm;
-    this.qYW = new b(this.diw);
-    this.qXf = new com.tencent.mm.vending.e.c();
-    this.qYY = true;
-    this.qYZ = true;
-    AppMethodBeat.o(201228);
+    AppMethodBeat.i(201186);
+    this.rKo = new ConcurrentHashMap();
+    this.rKp = g.O((d.g.a.a)h.rKu);
+    AppMethodBeat.o(201186);
   }
   
-  private static void adn(String paramString)
+  public final void a(final alz paramalz, final b<? super r, z> paramb)
   {
-    AppMethodBeat.i(201227);
-    ac.e("Finder.FinderLbsFeedFetcher", paramString);
-    if ((h.IS_FLAVOR_PURPLE) || (h.DEBUG)) {
-      com.tencent.mm.ac.c.g((d.g.a.a)new a.h(paramString));
-    }
-    AppMethodBeat.o(201227);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher$Callback;", "", "onFetchDone", "", "info", "Lcom/tencent/mm/plugin/finder/feed/model/FinderLbsLoader$FinderLbsResponse;", "plugin-finder_release"})
-  public static abstract interface a
-  {
-    public abstract void a(i.c paramc);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher$CgiSwitcher;", "", "tabType", "", "(I)V", "curCgi", "getCurCgi", "()I", "setCurCgi", "lbsLastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLbsLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLbsLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "remainLbsData", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "getRemainLbsData", "()Ljava/util/LinkedList;", "setRemainLbsData", "(Ljava/util/LinkedList;)V", "streamLastBuffer", "getStreamLastBuffer", "setStreamLastBuffer", "getTabType", "switchToHistory", "", "switchToStream", "plugin-finder_release"})
-  public static final class b
-  {
-    private final int diw;
-    public int qZb;
-    public com.tencent.mm.bw.b qZc;
-    public com.tencent.mm.bw.b qZd;
-    LinkedList<com.tencent.mm.plugin.finder.model.b> qZe;
-    
-    public b(int paramInt)
+    AppMethodBeat.i(221448);
+    d.g.b.p.h(paramalz, "req");
+    d.g.b.p.h(paramb, "call");
+    Object localObject1 = paramalz.GlG;
+    if (!this.rKo.containsKey(localObject1))
     {
-      AppMethodBeat.i(201220);
-      this.diw = paramInt;
-      this.qZb = 1;
-      this.qZe = new LinkedList();
-      AppMethodBeat.o(201220);
+      Object localObject2 = (Map)this.rKo;
+      d.g.b.p.g(localObject1, "username");
+      ((Map)localObject2).put(localObject1, this);
+      paramalz = j.listOf(paramalz);
+      paramb = (b)new c(this, (String)localObject1, paramb);
+      d.g.b.p.h(paramalz, "reqList");
+      d.g.b.p.h(paramb, "call");
+      localObject1 = new LinkedList();
+      localObject2 = com.tencent.mm.plugin.finder.cgi.p.rIC;
+      d.g.b.p.h(paramalz, "usernameList");
+      localObject2 = new com.tencent.mm.plugin.finder.cgi.p();
+      b.a locala = new b.a();
+      Object localObject3 = new ani();
+      com.tencent.mm.plugin.finder.cgi.v localv = com.tencent.mm.plugin.finder.cgi.v.rIR;
+      ((ani)localObject3).Gle = com.tencent.mm.plugin.finder.cgi.v.cxY();
+      ((ani)localObject3).Gmy = 1;
+      ((ani)localObject3).Gmz = u.aAu();
+      ((ani)localObject3).GmA.addAll((Collection)paramalz);
+      locala.c((com.tencent.mm.bx.a)localObject3);
+      localObject3 = new anj();
+      ((anj)localObject3).setBaseResponse(new BaseResponse());
+      ((anj)localObject3).getBaseResponse().ErrMsg = new cwt();
+      locala.d((com.tencent.mm.bx.a)localObject3);
+      locala.Dl("/cgi-bin/micromsg-bin/findergetcontactlist");
+      locala.oP(3953);
+      ((com.tencent.mm.plugin.finder.cgi.p)localObject2).c(locala.aDC());
+      ((com.tencent.mm.plugin.finder.cgi.p)localObject2).aED().j((com.tencent.mm.vending.c.a)new f(this, (LinkedList)localObject1, paramalz, paramb));
+      AppMethodBeat.o(221448);
+      return;
+    }
+    ad.w("Finder.ContactFetcher", "fetchContact2[req] is loading. just return");
+    AppMethodBeat.o(221448);
+  }
+  
+  public final void a(final List<String> paramList, final b<? super List<? extends r>, z> paramb)
+  {
+    AppMethodBeat.i(201185);
+    d.g.b.p.h(paramList, "reqList");
+    d.g.b.p.h(paramb, "call");
+    final LinkedList localLinkedList = new LinkedList();
+    Object localObject1 = com.tencent.mm.plugin.finder.cgi.p.rIC;
+    d.g.b.p.h(paramList, "usernameList");
+    localObject1 = new com.tencent.mm.plugin.finder.cgi.p();
+    b.a locala = new b.a();
+    Object localObject2 = new ani();
+    com.tencent.mm.plugin.finder.cgi.v localv = com.tencent.mm.plugin.finder.cgi.v.rIR;
+    ((ani)localObject2).Gle = com.tencent.mm.plugin.finder.cgi.v.cxY();
+    ((ani)localObject2).Gmx.addAll((Collection)paramList);
+    ((ani)localObject2).Gmy = 0;
+    locala.c((com.tencent.mm.bx.a)localObject2);
+    localObject2 = new anj();
+    ((anj)localObject2).setBaseResponse(new BaseResponse());
+    ((anj)localObject2).getBaseResponse().ErrMsg = new cwt();
+    locala.d((com.tencent.mm.bx.a)localObject2);
+    locala.Dl("/cgi-bin/micromsg-bin/findergetcontactlist");
+    locala.oP(3953);
+    ((com.tencent.mm.plugin.finder.cgi.p)localObject1).c(locala.aDC());
+    ad.i("Finder.CgiGetFinderContact", "[CgiGetFinderContact] username=".concat(String.valueOf(paramList)));
+    ((com.tencent.mm.plugin.finder.cgi.p)localObject1).aED().j((com.tencent.mm.vending.c.a)new e(this, localLinkedList, paramList, paramb));
+    AppMethodBeat.o(201185);
+  }
+  
+  public final void j(final String paramString, final b<? super r, z> paramb)
+  {
+    AppMethodBeat.i(221447);
+    d.g.b.p.h(paramString, "req");
+    d.g.b.p.h(paramb, "call");
+    if (!this.rKo.containsKey(paramString))
+    {
+      ((Map)this.rKo).put(paramString, this);
+      a(j.listOf(paramString), (b)new b(this, paramString, paramb));
+      AppMethodBeat.o(221447);
+      return;
+    }
+    ad.w("Finder.ContactFetcher", "fetchContact[req] is loading. just return");
+    AppMethodBeat.o(221447);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderContactFetcher$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "resultList", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  static final class b
+    extends q
+    implements b<List<? extends r>, z>
+  {
+    b(a parama, String paramString, b paramb)
+    {
+      super();
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
-  public static final class c {}
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "resultList", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
+  static final class c
+    extends q
+    implements b<List<? extends r>, z>
+  {
+    c(a parama, String paramString, b paramb)
+    {
+      super();
+    }
+  }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/cgi/fetcher/FinderLbsFeedFetcher$fetch$1", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetNearbyList$Callback;", "onFetchDone", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderGetNearbyListResp;", "pullType", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "resultList", "", "Lcom/tencent/mm/plugin/findersdk/api/ILocalFinderContact;", "invoke"})
   public static final class d
-    implements f.a
+    extends q
+    implements b<List<? extends r>, z>
   {
-    public d(a.a parama, l.c paramc) {}
-    
-    public final void a(int paramInt1, int paramInt2, String paramString, alc paramalc, int paramInt3)
+    public d(a parama, String paramString, b paramb)
     {
-      AppMethodBeat.i(201221);
-      k.h(paramalc, "resp");
-      i.c localc = new i.c(paramInt1, paramInt2, paramString);
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        this.qZf.qYW.qZc = paramalc.lastBuffer;
-        paramString = paramalc.EEP;
-        Object localObject1;
-        if (paramString != null)
-        {
-          localObject1 = (Iterable)paramString;
-          paramString = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
-          localObject1 = ((Iterable)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (aml)((Iterator)localObject1).next();
-            s locals = s.rio;
-            k.g(localObject2, "section");
-            paramString.add(s.a((aml)localObject2));
-          }
-          paramString = (List)paramString;
-          Object localObject2 = new StringBuilder("incrementList size: ");
-          localObject1 = localc.getIncrementList();
-          if (localObject1 == null) {
-            break label263;
-          }
-          localObject1 = Integer.valueOf(((List)localObject1).size());
-          label179:
-          ac.i("Finder.FinderLbsFeedFetcher", localObject1);
-          localc.setIncrementList(paramString);
-          localc.setPullType(paramInt3);
-          localc.setLastBuffer(paramalc.lastBuffer);
-          if (paramalc.continueFlag != 1) {
-            break label269;
-          }
-        }
-        label263:
-        label269:
-        for (boolean bool = true;; bool = false)
-        {
-          localc.setHasMore(bool);
-          this.qZg.a(localc);
-          AppMethodBeat.o(201221);
-          return;
-          paramString = (List)v.KTF;
-          break;
-          localObject1 = null;
-          break label179;
-        }
-      }
-      localc.setHasMore(true);
-      AppMethodBeat.o(201221);
+      super();
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "back", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetContactListResp;", "kotlin.jvm.PlatformType", "call"})
+  static final class e<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    e(a parama, LinkedList paramLinkedList, List paramList, b paramb) {}
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "back", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetContactListResp;", "kotlin.jvm.PlatformType", "call"})
+  static final class f<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    f(a parama, LinkedList paramLinkedList, List paramList, b paramb) {}
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "back", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetContactListResp;", "kotlin.jvm.PlatformType", "call"})
+  public static final class g<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    public g(a parama, LinkedList paramLinkedList, List paramList, b paramb) {}
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/finder/storage/FinderMsgStrangerContactStorage;", "invoke"})
+  static final class h
+    extends q
+    implements d.g.a.a<com.tencent.mm.plugin.finder.storage.v>
+  {
+    public static final h rKu;
+    
+    static
+    {
+      AppMethodBeat.i(201184);
+      rKu = new h();
+      AppMethodBeat.o(201184);
+    }
+    
+    h()
+    {
+      super();
     }
   }
 }

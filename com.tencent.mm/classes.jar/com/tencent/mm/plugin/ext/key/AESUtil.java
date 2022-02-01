@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.ext.key;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.ByteArrayInputStream;
 import java.io.ObjectInputStream;
 import javax.crypto.Cipher;
@@ -9,10 +9,10 @@ import javax.crypto.SecretKey;
 
 public class AESUtil
 {
-  private static char[] hwS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  private static SecretKey qsX = null;
+  private static char[] hPk = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  private static SecretKey rcL = null;
   
-  private static byte[] SX(String paramString)
+  private static byte[] Wu(String paramString)
   {
     AppMethodBeat.i(24369);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -31,7 +31,7 @@ public class AESUtil
     return arrayOfByte;
   }
   
-  private static String SY(String paramString)
+  private static String Wv(String paramString)
   {
     AppMethodBeat.i(24367);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -39,15 +39,15 @@ public class AESUtil
       AppMethodBeat.o(24367);
       return null;
     }
-    cmz();
+    cse();
     Cipher localCipher = Cipher.getInstance("AES");
-    localCipher.init(2, qsX);
-    paramString = new String(localCipher.doFinal(SX(paramString)), "UTF8");
+    localCipher.init(2, rcL);
+    paramString = new String(localCipher.doFinal(Wu(paramString)), "UTF8");
     AppMethodBeat.o(24367);
     return paramString;
   }
   
-  private static byte[] abS(String paramString)
+  private static byte[] afH(String paramString)
   {
     AppMethodBeat.i(24365);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -55,31 +55,31 @@ public class AESUtil
       AppMethodBeat.o(24365);
       return null;
     }
-    cmz();
+    cse();
     Cipher localCipher = Cipher.getInstance("AES");
-    localCipher.init(1, qsX);
+    localCipher.init(1, rcL);
     paramString = localCipher.doFinal(paramString.getBytes("UTF8"));
     AppMethodBeat.o(24365);
     return paramString;
   }
   
-  public static long abT(String paramString)
+  public static long afI(String paramString)
   {
     AppMethodBeat.i(24368);
-    long l = Long.valueOf(SY(paramString).trim()).longValue();
+    long l = Long.valueOf(Wv(paramString).trim()).longValue();
     AppMethodBeat.o(24368);
     return l;
   }
   
-  private static void cmz()
+  private static void cse()
   {
     AppMethodBeat.i(24364);
     try
     {
-      if (qsX == null)
+      if (rcL == null)
       {
-        ObjectInputStream localObjectInputStream = new ObjectInputStream(new ByteArrayInputStream(SX("aced00057372001f6a617661782e63727970746f2e737065632e5365637265744b6579537065635b470b66e230614d0200024c0009616c676f726974686d7400124c6a6176612f6c616e672f537472696e673b5b00036b65797400025b427870740003414553757200025b42acf317f8060854e0020000787000000010402a2173bd6f2542e5e71ee414b2e1e8")));
-        qsX = (SecretKey)localObjectInputStream.readObject();
+        ObjectInputStream localObjectInputStream = new ObjectInputStream(new ByteArrayInputStream(Wu("aced00057372001f6a617661782e63727970746f2e737065632e5365637265744b6579537065635b470b66e230614d0200024c0009616c676f726974686d7400124c6a6176612f6c616e672f537472696e673b5b00036b65797400025b427870740003414553757200025b42acf317f8060854e0020000787000000010402a2173bd6f2542e5e71ee414b2e1e8")));
+        rcL = (SecretKey)localObjectInputStream.readObject();
         localObjectInputStream.close();
       }
       AppMethodBeat.o(24364);
@@ -87,15 +87,15 @@ public class AESUtil
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.AESUtil", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.AESUtil", localException, "", new Object[0]);
       AppMethodBeat.o(24364);
     }
   }
   
-  public static String tl(long paramLong)
+  public static String vi(long paramLong)
   {
     AppMethodBeat.i(24366);
-    Object localObject = abS(String.valueOf(paramLong));
+    Object localObject = afH(String.valueOf(paramLong));
     if (localObject == null)
     {
       AppMethodBeat.o(24366);
@@ -105,8 +105,8 @@ public class AESUtil
     int i = 0;
     while (i < localObject.length)
     {
-      localStringBuilder.append(hwS[((localObject[i] & 0xF0) >>> 4)]);
-      localStringBuilder.append(hwS[(localObject[i] & 0xF)]);
+      localStringBuilder.append(hPk[((localObject[i] & 0xF0) >>> 4)]);
+      localStringBuilder.append(hPk[(localObject[i] & 0xF)]);
       i += 1;
     }
     localObject = localStringBuilder.toString();
@@ -116,7 +116,7 @@ public class AESUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.key.AESUtil
  * JD-Core Version:    0.7.0.1
  */

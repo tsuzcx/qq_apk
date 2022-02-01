@@ -4,44 +4,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.ae;
 import d.f;
 import d.g.a.a;
-import d.g.b.l;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
 import java.util.Map;
 
 public final class e
 {
-  public static final e LOS;
-  public static final e LOT;
-  public static final e LOU;
-  public static final a LOV;
-  private final f LON;
-  public final g LOO;
-  public final g LOP;
-  public final Map<String, g> LOQ;
-  public final boolean LOR;
+  public static final e NFO;
+  public static final e NFP;
+  public static final e NFQ;
+  public static final a NFR;
+  private final f NFJ;
+  public final g NFK;
+  public final g NFL;
+  public final Map<String, g> NFM;
+  public final boolean NFN;
   
   static
   {
     AppMethodBeat.i(61364);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(e.class), "description", "getDescription()[Ljava/lang/String;")) };
-    LOV = new a((byte)0);
-    LOS = new e(g.LPa, null, ae.emptyMap(), (byte)0);
-    g localg = g.LOZ;
-    LOT = new e(localg, localg, ae.emptyMap(), (byte)0);
-    localg = g.LPb;
-    LOU = new e(localg, localg, ae.emptyMap(), (byte)0);
+    NFR = new a((byte)0);
+    NFO = new e(g.NFV, null, ae.emptyMap(), (byte)0);
+    g localg = g.NFU;
+    NFP = new e(localg, localg, ae.emptyMap(), (byte)0);
+    localg = g.NFW;
+    NFQ = new e(localg, localg, ae.emptyMap(), (byte)0);
     AppMethodBeat.o(61364);
   }
   
   private e(g paramg1, g paramg2, Map<String, ? extends g> paramMap)
   {
     AppMethodBeat.i(61365);
-    this.LOO = paramg1;
-    this.LOP = paramg2;
-    this.LOQ = paramMap;
-    this.LOR = true;
-    this.LON = d.g.K((a)new b(this));
+    this.NFK = paramg1;
+    this.NFL = paramg2;
+    this.NFM = paramMap;
+    this.NFN = true;
+    this.NFJ = d.g.O((a)new b(this));
     AppMethodBeat.o(61365);
   }
   
@@ -50,31 +48,24 @@ public final class e
     AppMethodBeat.i(61368);
     if (this != paramObject)
     {
-      if (!(paramObject instanceof e)) {
-        break label93;
-      }
-      paramObject = (e)paramObject;
-      if ((!d.g.b.k.g(this.LOO, paramObject.LOO)) || (!d.g.b.k.g(this.LOP, paramObject.LOP)) || (!d.g.b.k.g(this.LOQ, paramObject.LOQ))) {
-        break label93;
-      }
-      if (this.LOR != paramObject.LOR) {
-        break label88;
+      if ((paramObject instanceof e))
+      {
+        paramObject = (e)paramObject;
+        if ((!p.i(this.NFK, paramObject.NFK)) || (!p.i(this.NFL, paramObject.NFL)) || (!p.i(this.NFM, paramObject.NFM)) || (this.NFN != paramObject.NFN)) {}
       }
     }
-    label88:
-    for (int i = 1; i != 0; i = 0)
+    else
     {
       AppMethodBeat.o(61368);
       return true;
     }
-    label93:
     AppMethodBeat.o(61368);
     return false;
   }
   
-  public final boolean gcN()
+  public final boolean guo()
   {
-    return (e)this == LOT;
+    return (e)this == NFP;
   }
   
   public final int hashCode()
@@ -85,7 +76,7 @@ public final class e
   public final String toString()
   {
     AppMethodBeat.i(61366);
-    String str = "Jsr305State(global=" + this.LOO + ", migration=" + this.LOP + ", user=" + this.LOQ + ", enableCompatqualCheckerFrameworkAnnotations=" + this.LOR + ")";
+    String str = "Jsr305State(global=" + this.NFK + ", migration=" + this.NFL + ", user=" + this.NFM + ", enableCompatqualCheckerFrameworkAnnotations=" + this.NFN + ")";
     AppMethodBeat.o(61366);
     return str;
   }
@@ -93,7 +84,7 @@ public final class e
   public static final class a {}
   
   static final class b
-    extends l
+    extends q
     implements a<String[]>
   {
     b(e parame)

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.notification.b;
 
-import com.tencent.mm.model.aq;
+import com.tencent.mm.model.ar;
 
 public abstract interface a
   extends com.tencent.mm.kernel.b.a
 {
-  public abstract aq getNotification();
+  public abstract ar getNotification();
   
-  public abstract void setNotification(aq paramaq);
+  public abstract void setNotification(ar paramar);
 }
 
 

@@ -213,6 +213,18 @@ public class TXCFLVDownloader
   
   private native void nativeUninitFlvhander(long paramLong, boolean paramBoolean);
   
+  private void onRecvVideoData()
+  {
+    AppMethodBeat.i(187397);
+    if (!this.mbFirstVideo)
+    {
+      this.mbFirstVideo = true;
+      this.mStats.firstVideoTS = TXCTimeUtil.getTimeTick();
+      TXCLog.i("network.TXCFLVDownloader", "onRecvData: receive first video with ts " + this.mStats.firstVideoTS);
+    }
+    AppMethodBeat.o(187397);
+  }
+  
   private void postConnectMsg()
   {
     AppMethodBeat.i(15322);

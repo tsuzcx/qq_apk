@@ -14,35 +14,35 @@ import java.util.concurrent.TimeUnit;
 
 public final class p
 {
-  private final LinkedHashMap<String, ArrayList<n>> kRZ;
+  private final LinkedHashMap<String, ArrayList<n>> loC;
   
   p()
   {
-    AppMethodBeat.i(194318);
-    this.kRZ = new LinkedHashMap(8, 0.75F);
-    AppMethodBeat.o(194318);
+    AppMethodBeat.i(206130);
+    this.loC = new LinkedHashMap(8, 0.75F);
+    AppMethodBeat.o(206130);
   }
   
   public final void a(n paramn)
   {
     try
     {
-      AppMethodBeat.i(194320);
-      Object localObject = (ArrayList)this.kRZ.get(paramn.kRU);
+      AppMethodBeat.i(206132);
+      Object localObject = (ArrayList)this.loC.get(paramn.lox);
       if (localObject != null)
       {
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           if (paramn.equals((n)((Iterator)localObject).next()))
           {
-            if (a.bjM().cuo) {
+            if (a.bnx().cFj) {
               h.log(3, "RequestManager", "remove videoRequest:".concat(String.valueOf(paramn)));
             }
             ((Iterator)localObject).remove();
           }
         }
       }
-      AppMethodBeat.o(194320);
+      AppMethodBeat.o(206132);
     }
     finally {}
   }
@@ -51,17 +51,17 @@ public final class p
   {
     try
     {
-      AppMethodBeat.i(194319);
-      ArrayList localArrayList2 = (ArrayList)this.kRZ.get(paramString);
+      AppMethodBeat.i(206131);
+      ArrayList localArrayList2 = (ArrayList)this.loC.get(paramString);
       ArrayList localArrayList1 = localArrayList2;
       if (localArrayList2 == null)
       {
         localArrayList1 = new ArrayList();
-        this.kRZ.put(paramString, localArrayList1);
+        this.loC.put(paramString, localArrayList1);
         h.log(3, "RequestManager", "add videoRequest:".concat(String.valueOf(paramn)));
       }
       localArrayList1.add(paramn);
-      AppMethodBeat.o(194319);
+      AppMethodBeat.o(206131);
       return;
     }
     finally {}
@@ -69,19 +69,19 @@ public final class p
   
   public final void b(String paramString, n paramn)
   {
-    AppMethodBeat.i(194321);
-    Object localObject2 = bE(paramString, 10);
+    AppMethodBeat.i(206133);
+    Object localObject2 = bH(paramString, 10);
     Object localObject1 = new ArrayList();
     localObject2 = ((ArrayList)localObject2).iterator();
     Object localObject3;
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (n)((Iterator)localObject2).next();
-      if (((n)localObject3).sW(0)) {
+      if (((n)localObject3).tz(0)) {
         ((ArrayList)localObject1).add(localObject3);
       }
     }
-    paramn = "VideoProxy/" + paramn.kRO + "/RequestManager";
+    paramn = "VideoProxy/" + paramn.lor + "/RequestManager";
     h.log(4, paramn, "cancelPreloadRequestsSync, videoKey:" + paramString + ", count:" + ((ArrayList)localObject1).size());
     if (((ArrayList)localObject1).size() > 0)
     {
@@ -89,38 +89,38 @@ public final class p
       h.log(5, paramn, "start auto cancel preload requests, request count=" + ((CountDownLatch)localObject2).getCount());
       localObject3 = new o()
       {
-        public final void bka()
+        public final void bnL()
         {
-          AppMethodBeat.i(194317);
-          this.kSa.countDown();
-          AppMethodBeat.o(194317);
+          AppMethodBeat.i(206129);
+          this.loD.countDown();
+          AppMethodBeat.o(206129);
         }
       };
       localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         n localn = (n)((Iterator)localObject1).next();
-        localn.kRM = ((o)localObject3);
-        if (localn.kRG != null)
+        localn.lop = ((o)localObject3);
+        if (localn.loj != null)
         {
-          if ((localn.dS(0, 1)) && (a.bjM().cuo)) {
-            h.log(3, localn.getLogTag(), "cancel start, seq=" + localn.kRO);
+          if ((localn.dU(0, 1)) && (a.bnx().cFj)) {
+            h.log(3, localn.getLogTag(), "cancel start, seq=" + localn.lor);
           }
-          localn.sV(1);
-          localn.kRG.cancel(true);
+          localn.ty(1);
+          localn.loj.cancel(true);
         }
       }
       try
       {
         ((CountDownLatch)localObject2).await(2000L, TimeUnit.MILLISECONDS);
-        if (bE(paramString, 10).size() == 0)
+        if (bH(paramString, 10).size() == 0)
         {
           h.log(5, paramn, "auto cancel preload requests success");
-          AppMethodBeat.o(194321);
+          AppMethodBeat.o(206133);
           return;
         }
         h.log(5, paramn, "auto cancel preload requests timeout, max wait time is 2000 seconds");
-        AppMethodBeat.o(194321);
+        AppMethodBeat.o(206133);
         return;
       }
       catch (InterruptedException paramString)
@@ -128,19 +128,19 @@ public final class p
         h.log(5, paramn, "auto cancel preload requests interrupted " + paramString.toString());
       }
     }
-    AppMethodBeat.o(194321);
+    AppMethodBeat.o(206133);
   }
   
-  public final ArrayList<n> bE(String paramString, int paramInt)
+  public final ArrayList<n> bH(String paramString, int paramInt)
   {
     ArrayList localArrayList1;
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(194322);
+        AppMethodBeat.i(206134);
         localArrayList1 = new ArrayList();
-        Iterator localIterator = this.kRZ.entrySet().iterator();
+        Iterator localIterator = this.loC.entrySet().iterator();
         if (!localIterator.hasNext()) {
           break;
         }
@@ -148,7 +148,7 @@ public final class p
         if (localArrayList2.size() > 0)
         {
           n localn = (n)localArrayList2.get(0);
-          if (paramString.equals(localn.kRT)) {
+          if (paramString.equals(localn.low)) {
             if (paramInt != -1)
             {
               if (paramInt == localn.priority) {
@@ -163,7 +163,7 @@ public final class p
       }
       finally {}
     }
-    AppMethodBeat.o(194322);
+    AppMethodBeat.o(206134);
     return localArrayList1;
   }
   
@@ -171,10 +171,10 @@ public final class p
   {
     try
     {
-      AppMethodBeat.i(194323);
+      AppMethodBeat.i(206135);
       Object localObject1 = super.toString();
       Object localObject3 = (String)localObject1 + "[";
-      Iterator localIterator1 = this.kRZ.entrySet().iterator();
+      Iterator localIterator1 = this.loC.entrySet().iterator();
       if (localIterator1.hasNext())
       {
         Iterator localIterator2 = ((ArrayList)((Map.Entry)localIterator1.next()).getValue()).iterator();
@@ -189,7 +189,7 @@ public final class p
         }
       }
       localObject1 = (String)localObject3 + "]";
-      AppMethodBeat.o(194323);
+      AppMethodBeat.o(206135);
       return localObject1;
     }
     finally {}

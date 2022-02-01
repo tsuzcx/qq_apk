@@ -8,31 +8,31 @@ public abstract class a
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eQq;
-  private static final int enO = "appId".hashCode();
-  private static final int eol = "updateTime".hashCode();
-  private static final int epd;
+  private static final int eEU = "appId".hashCode();
+  private static final int eFq = "updateTime".hashCode();
+  private static final int eGm;
+  private static final int fiN;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int tWm = "signatureKey".hashCode();
-  private static final int tWn;
-  private boolean eQl = true;
-  private boolean enx = true;
-  private boolean eoY = true;
-  private boolean eoi = true;
+  private static final int uYV = "signatureKey".hashCode();
+  private static final int uYW;
+  private boolean eED = true;
+  private boolean eFn = true;
+  private boolean eGh = true;
+  private boolean fiI = true;
   public String field_appId;
   public String field_patchId;
   public String field_pkgPath;
   public String field_pkgType;
   public String field_signatureKey;
   public long field_updateTime;
-  private boolean tWk = true;
-  private boolean tWl = true;
+  private boolean uYT = true;
+  private boolean uYU = true;
   
   static
   {
-    epd = "pkgPath".hashCode();
-    eQq = "pkgType".hashCode();
-    tWn = "patchId".hashCode();
+    eGm = "pkgPath".hashCode();
+    fiN = "pkgType".hashCode();
+    uYW = "patchId".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -48,11 +48,11 @@ public abstract class a
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
+      if (eEU != k) {
         break label65;
       }
       this.field_appId = paramCursor.getString(i);
-      this.enx = true;
+      this.eED = true;
     }
     for (;;)
     {
@@ -60,15 +60,15 @@ public abstract class a
       break label20;
       break;
       label65:
-      if (tWm == k) {
+      if (uYV == k) {
         this.field_signatureKey = paramCursor.getString(i);
-      } else if (epd == k) {
+      } else if (eGm == k) {
         this.field_pkgPath = paramCursor.getString(i);
-      } else if (eQq == k) {
+      } else if (fiN == k) {
         this.field_pkgType = paramCursor.getString(i);
-      } else if (tWn == k) {
+      } else if (uYW == k) {
         this.field_patchId = paramCursor.getString(i);
-      } else if (eol == k) {
+      } else if (eFq == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -79,22 +79,22 @@ public abstract class a
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
+    if (this.eED) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.tWk) {
+    if (this.uYT) {
       localContentValues.put("signatureKey", this.field_signatureKey);
     }
-    if (this.eoY) {
+    if (this.eGh) {
       localContentValues.put("pkgPath", this.field_pkgPath);
     }
-    if (this.eQl) {
+    if (this.fiI) {
       localContentValues.put("pkgType", this.field_pkgType);
     }
-    if (this.tWl) {
+    if (this.uYU) {
       localContentValues.put("patchId", this.field_patchId);
     }
-    if (this.eoi) {
+    if (this.eFn) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {

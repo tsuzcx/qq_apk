@@ -5,54 +5,54 @@ import android.graphics.Bitmap.CompressFormat;
 import com.samsung.android.sdk.look.writingbuddy.SlookWritingBuddy.ImageWritingListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.g.a.qe;
-import com.tencent.mm.g.a.qe.a;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bz;
+import com.tencent.mm.g.a.qp;
+import com.tencent.mm.g.a.qp.a;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.ca;
 import com.tencent.mm.pluginsdk.ui.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
 
 class SubCoreExtAccessories$RegistSpenBuddyEventListener$1
   implements SlookWritingBuddy.ImageWritingListener
 {
-  SubCoreExtAccessories$RegistSpenBuddyEventListener$1(b.a parama, qe paramqe) {}
+  SubCoreExtAccessories$RegistSpenBuddyEventListener$1(b.a parama, qp paramqp) {}
   
   public void onImageReceived(Bitmap paramBitmap)
   {
     AppMethodBeat.i(24541);
-    ac.i("MicroMsg.extaccessories.SubCoreExtAccessories", "onImageReceived");
+    ad.i("MicroMsg.extaccessories.SubCoreExtAccessories", "onImageReceived");
     if (paramBitmap == null)
     {
-      ac.e("MicroMsg.extaccessories.SubCoreExtAccessories", "img is null");
-      this.qvm.dth.dti.aHa(null);
+      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "img is null");
+      this.rfc.dFj.dFk.aMD(null);
       AppMethodBeat.o(24541);
       return;
     }
-    if (!e.YD())
+    if (!e.abf())
     {
-      ac.e("MicroMsg.extaccessories.SubCoreExtAccessories", "SDCard not available");
-      this.qvm.dth.dti.aHa(null);
+      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "SDCard not available");
+      this.rfc.dFj.dFk.aMD(null);
       AppMethodBeat.o(24541);
       return;
     }
-    az.ayG();
-    Object localObject2 = (b)bz.yz("plugin.extaccessories");
+    ba.aBK();
+    Object localObject2 = (b)ca.By("plugin.extaccessories");
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      ac.w("MicroMsg.extaccessories.SubCoreExtAccessories", "not found in MMCore, new one");
+      ad.w("MicroMsg.extaccessories.SubCoreExtAccessories", "not found in MMCore, new one");
       localObject1 = new b();
-      az.ayG().a("plugin.extaccessories", (aw)localObject1);
+      ba.aBK().a("plugin.extaccessories", (ax)localObject1);
     }
     localObject2 = System.currentTimeMillis();
-    if ((az.agM()) && (!bs.isNullOrNil((String)localObject2))) {}
-    for (localObject1 = ((b)localObject1).ghC + "image/spen/spen_" + (String)localObject2; bs.isNullOrNil((String)localObject1); localObject1 = "")
+    if ((ba.ajx()) && (!bt.isNullOrNil((String)localObject2))) {}
+    for (localObject1 = ((b)localObject1).gBm + "image/spen/spen_" + (String)localObject2; bt.isNullOrNil((String)localObject1); localObject1 = "")
     {
-      ac.e("MicroMsg.extaccessories.SubCoreExtAccessories", "filePath is null");
-      this.qvm.dth.dti.aHa(null);
+      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "filePath is null");
+      this.rfc.dFj.dFk.aMD(null);
       AppMethodBeat.o(24541);
       return;
     }
@@ -65,7 +65,7 @@ class SubCoreExtAccessories$RegistSpenBuddyEventListener$1
       }
       else
       {
-        ac.d("MicroMsg.extaccessories.SubCoreExtAccessories", "spen image %d, %d, need scale", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
+        ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "spen image %d, %d, need scale", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
         Bitmap localBitmap = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 2, paramBitmap.getHeight() / 2, true);
         localObject2 = paramBitmap;
         if (paramBitmap != localBitmap)
@@ -73,23 +73,23 @@ class SubCoreExtAccessories$RegistSpenBuddyEventListener$1
           localObject2 = paramBitmap;
           if (localBitmap != null)
           {
-            ac.i("MicroMsg.extaccessories.SubCoreExtAccessories", "bitmap recycle %s", new Object[] { paramBitmap.toString() });
+            ad.i("MicroMsg.extaccessories.SubCoreExtAccessories", "bitmap recycle %s", new Object[] { paramBitmap.toString() });
             paramBitmap.recycle();
             localObject2 = localBitmap;
           }
         }
       }
-      f.a((Bitmap)localObject2, 55, Bitmap.CompressFormat.JPEG, (String)localObject1, true);
-      ac.d("MicroMsg.extaccessories.SubCoreExtAccessories", "save spen temp image : %s", new Object[] { localObject1 });
-      this.qvm.dth.dti.aHa((String)localObject1);
+      g.a((Bitmap)localObject2, 55, Bitmap.CompressFormat.JPEG, (String)localObject1, true);
+      ad.d("MicroMsg.extaccessories.SubCoreExtAccessories", "save spen temp image : %s", new Object[] { localObject1 });
+      this.rfc.dFj.dFk.aMD((String)localObject1);
       AppMethodBeat.o(24541);
       return;
     }
     catch (Exception paramBitmap)
     {
-      ac.e("MicroMsg.extaccessories.SubCoreExtAccessories", "Exception %s", new Object[] { paramBitmap.getMessage() });
-      ac.printErrStackTrace("MicroMsg.extaccessories.SubCoreExtAccessories", paramBitmap, "", new Object[0]);
-      this.qvm.dth.dti.aHa(null);
+      ad.e("MicroMsg.extaccessories.SubCoreExtAccessories", "Exception %s", new Object[] { paramBitmap.getMessage() });
+      ad.printErrStackTrace("MicroMsg.extaccessories.SubCoreExtAccessories", paramBitmap, "", new Object[0]);
+      this.rfc.dFj.dFk.aMD(null);
       AppMethodBeat.o(24541);
     }
   }

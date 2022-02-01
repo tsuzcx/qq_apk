@@ -6,46 +6,46 @@ import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.model.cb.a;
-import com.tencent.mm.modelmulti.p;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cc.a;
+import com.tencent.mm.modelmulti.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Queue;
 
 public final class b
   implements c, com.tencent.mm.plugin.zero.b.b
 {
-  private cb Hai;
-  private p Haj;
+  private cc Oeh;
+  private q Oei;
   
-  public final p aGm()
+  public final q aJx()
   {
     AppMethodBeat.i(132993);
-    g.agS();
-    g.agP().afT();
-    if (this.Haj == null)
+    g.ajD();
+    g.ajA().aiF();
+    if (this.Oei == null)
     {
-      this.Haj = new p();
-      this.Haj.appForegroundListener.alive();
+      this.Oei = new q();
+      this.Oei.appForegroundListener.alive();
     }
-    p localp = this.Haj;
+    q localq = this.Oei;
     AppMethodBeat.o(132993);
-    return localp;
+    return localq;
   }
   
-  public final cb eJO()
+  public final cc eYC()
   {
     AppMethodBeat.i(132994);
-    g.agS();
-    g.agP().afT();
-    if (this.Hai == null) {
-      this.Hai = new cb(new cb.a()
+    g.ajD();
+    g.ajA().aiF();
+    if (this.Oeh == null) {
+      this.Oeh = new cc(new cc.a()
       {
-        public final boolean azG()
+        public final boolean aCJ()
         {
           AppMethodBeat.i(132992);
-          if (b.this.aGm().hNe == null)
+          if (b.this.aJx().igt == null)
           {
             AppMethodBeat.o(132992);
             return true;
@@ -55,16 +55,16 @@ public final class b
         }
       });
     }
-    cb localcb = this.Hai;
+    cc localcc = this.Oeh;
     AppMethodBeat.o(132994);
-    return localcb;
+    return localcc;
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(176851);
-    if (ai.cin()) {
-      aGm();
+    if (aj.cmR()) {
+      aJx();
     }
     AppMethodBeat.o(176851);
   }
@@ -72,23 +72,23 @@ public final class b
   public final void onAccountRelease()
   {
     AppMethodBeat.i(132995);
-    if (this.Haj != null)
+    if (this.Oei != null)
     {
-      p localp = this.Haj;
-      ac.i("MicroMsg.SyncService", "clear synclist:%s notify:%s running:%s", new Object[] { Integer.valueOf(localp.hNb.size()), Integer.valueOf(localp.hNc.size()), localp.hNe });
-      localp.hNb.clear();
-      localp.hNc.clear();
-      this.Haj.appForegroundListener.dead();
+      q localq = this.Oei;
+      ad.i("MicroMsg.SyncService", "clear synclist:%s notify:%s running:%s", new Object[] { Integer.valueOf(localq.igq.size()), Integer.valueOf(localq.igr.size()), localq.igt });
+      localq.igq.clear();
+      localq.igr.clear();
+      this.Oei.appForegroundListener.dead();
     }
-    if (this.Hai != null) {
-      this.Hai.azB();
+    if (this.Oeh != null) {
+      this.Oeh.aCE();
     }
     AppMethodBeat.o(132995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.b
  * JD-Core Version:    0.7.0.1
  */

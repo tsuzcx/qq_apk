@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ao;
 
 public abstract interface ab
 {
-  public static final int jhK = am.o(855638016, -855310);
+  public static final int jAT = ao.v(855638016, -855310);
 }
 
 

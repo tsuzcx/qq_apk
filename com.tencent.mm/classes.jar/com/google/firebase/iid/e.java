@@ -19,7 +19,7 @@ final class e
     if (localBundle == null) {
       paramBundle = Bundle.EMPTY;
     }
-    o(paramBundle);
+    p(paramBundle);
     AppMethodBeat.o(4151);
   }
   

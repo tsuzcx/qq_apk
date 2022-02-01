@@ -35,7 +35,7 @@ public final class f
     return false;
   }
   
-  public static float fa(View paramView)
+  public static float fp(View paramView)
   {
     AppMethodBeat.i(100301);
     float f = Math.abs((paramView.getRight() - paramView.getLeft()) / 2);
@@ -43,7 +43,7 @@ public final class f
     return f;
   }
   
-  public static float fb(View paramView)
+  public static float fq(View paramView)
   {
     AppMethodBeat.i(100302);
     float f = Math.abs((paramView.getBottom() - paramView.getTop()) / 2);

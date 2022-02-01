@@ -16,6 +16,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -27,26 +28,24 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.oy;
-import com.tencent.mm.g.a.ry;
-import com.tencent.mm.g.a.rz;
-import com.tencent.mm.g.a.xh;
-import com.tencent.mm.g.b.a.im;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.ph;
+import com.tencent.mm.g.a.sk;
+import com.tencent.mm.g.a.sl;
+import com.tencent.mm.g.a.yb;
+import com.tencent.mm.g.b.a.jr;
 import com.tencent.mm.network.n;
-import com.tencent.mm.network.n.a;
 import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
 import com.tencent.mm.plugin.scanner.api.ScanGoodsRequest;
 import com.tencent.mm.plugin.scanner.box.BoxDialogView;
 import com.tencent.mm.plugin.scanner.c.a.2;
-import com.tencent.mm.plugin.scanner.c.a.c;
+import com.tencent.mm.plugin.scanner.c.a.d;
 import com.tencent.mm.plugin.scanner.d.d.a;
 import com.tencent.mm.plugin.scanner.model.aa;
-import com.tencent.mm.plugin.scanner.model.r;
+import com.tencent.mm.plugin.scanner.model.ac;
+import com.tencent.mm.plugin.scanner.model.t;
 import com.tencent.mm.plugin.scanner.model.u;
-import com.tencent.mm.plugin.scanner.model.x;
-import com.tencent.mm.plugin.scanner.model.z;
+import com.tencent.mm.plugin.scanner.model.w;
 import com.tencent.mm.plugin.scanner.ui.scangoods.widget.ScanGoodsMaskView;
 import com.tencent.mm.plugin.scanner.ui.widget.ScanCodeMaskView;
 import com.tencent.mm.plugin.scanner.ui.widget.ScanDebugView;
@@ -58,19 +57,19 @@ import com.tencent.mm.plugin.scanner.ui.widget.b.c;
 import com.tencent.mm.plugin.scanner.ui.widget.b.d;
 import com.tencent.mm.plugin.scanner.util.o;
 import com.tencent.mm.plugin.scanner.view.BaseScanMaskView;
-import com.tencent.mm.plugin.scanner.view.b.a;
+import com.tencent.mm.protocal.protobuf.mc;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.s;
 import com.tencent.qbar.ScanDecodeFrameData;
 import com.tencent.qbar.WxQBarResult;
 import com.tencent.qbar.WxQbarNative.QBarReportMsg;
 import com.tencent.qbar.e.b;
-import d.g.b.k;
+import com.tencent.qbar.e.d;
+import d.g.b.p;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -83,101 +82,105 @@ public class BaseScanUI
   implements d.a, com.tencent.mm.plugin.scanner.view.b
 {
   private FrameLayout container;
-  private Vibrator njY;
-  private com.tencent.mm.sdk.b.c<xh> oCV;
-  private boolean wWa;
-  private boolean wWb;
-  private ScanNetworkMaskView wZR;
-  private boolean wZZ;
-  private boolean xbA;
-  private boolean xbB;
-  private long xbC;
-  private int xbD;
-  private boolean xbE;
-  private boolean xbF;
-  private boolean xbG;
-  private boolean xbH;
-  private boolean xbI;
-  private int[] xbJ;
-  private int xbK;
-  private boolean xbL;
-  private boolean xbM;
-  private boolean xbN;
-  private BaseScanRequest xbO;
-  private boolean xbP;
-  private boolean xbQ;
-  private boolean xbR;
-  private boolean xbS;
-  private x xbT;
-  private im xbU;
-  private int xbV;
-  private boolean xbW;
-  private boolean xbX;
-  private ScanUIRectView.a xbY;
-  private a.c xbZ;
-  private ScanUIRectView xbn;
-  private ScannerFlashSwitcher xbo;
-  private View xbp;
-  private DialogInterface.OnCancelListener xbq;
-  private View xbr;
-  private ImageView xbs;
-  private ImageView xbt;
-  private TextView xbu;
-  private com.tencent.mm.plugin.scanner.box.e xbv;
-  private com.tencent.mm.plugin.scanner.d.e xbw;
-  private com.tencent.mm.plugin.scanner.ui.widget.b xbx;
-  private boolean xby;
-  private boolean xbz;
-  private com.tencent.mm.plugin.scanner.d.a.a xca;
-  private com.tencent.mm.plugin.scanner.box.b xcb;
-  private n xcc;
-  private com.tencent.mm.sdk.b.c xcd;
+  private com.tencent.mm.ui.widget.a.e mDL;
+  private Vibrator nKv;
+  private com.tencent.mm.modelgeo.b.a oMc;
+  private com.tencent.mm.sdk.b.c<yb> pgq;
+  private com.tencent.mm.modelgeo.d wqv;
+  private boolean yjH;
+  private boolean yjI;
+  private mc yjS;
+  private ScanNetworkMaskView ynQ;
+  private boolean ynY;
+  private boolean ypA;
+  private boolean ypB;
+  private boolean ypC;
+  private boolean ypD;
+  private long ypE;
+  private int ypF;
+  private boolean ypG;
+  private boolean ypH;
+  private boolean ypI;
+  private boolean ypJ;
+  private boolean ypK;
+  private int[] ypL;
+  private int ypM;
+  private boolean ypN;
+  private boolean ypO;
+  private boolean ypP;
+  private BaseScanRequest ypQ;
+  private boolean ypR;
+  private boolean ypS;
+  private boolean ypT;
+  private boolean ypU;
+  private aa ypV;
+  private jr ypW;
+  private int ypX;
+  private boolean ypY;
+  private boolean ypZ;
+  private ScanUIRectView ypp;
+  private ScannerFlashSwitcher ypq;
+  private View ypr;
+  private DialogInterface.OnCancelListener yps;
+  private View ypt;
+  private ImageView ypu;
+  private ImageView ypv;
+  private TextView ypw;
+  private com.tencent.mm.plugin.scanner.box.e ypx;
+  private com.tencent.mm.plugin.scanner.d.e ypy;
+  private com.tencent.mm.plugin.scanner.ui.widget.b ypz;
+  private ScanUIRectView.a yqa;
+  private a.d yqb;
+  private com.tencent.mm.plugin.scanner.d.a.a yqc;
+  private com.tencent.mm.plugin.scanner.box.b yqd;
+  private n yqe;
+  private com.tencent.mm.sdk.b.c yqf;
   
   public BaseScanUI()
   {
     AppMethodBeat.i(51728);
-    this.xbv = null;
-    this.xby = false;
-    this.xbz = true;
-    this.xbA = true;
-    this.xbB = false;
-    this.wZZ = true;
-    this.xbE = true;
-    this.xbF = true;
-    this.xbG = true;
-    this.xbH = true;
-    this.xbI = false;
-    this.xbQ = false;
-    this.xbR = true;
-    this.xbS = true;
-    this.xbT = new x();
-    this.xbU = new im();
-    this.xbW = false;
-    this.xbX = false;
-    this.xbY = new ScanUIRectView.a()
+    this.ypx = null;
+    this.ypA = false;
+    this.ypB = true;
+    this.ypC = true;
+    this.ypD = false;
+    this.ynY = true;
+    this.ypG = true;
+    this.ypH = true;
+    this.ypI = true;
+    this.ypJ = true;
+    this.ypK = false;
+    this.ypS = false;
+    this.ypT = true;
+    this.ypU = true;
+    this.ypV = new aa();
+    this.ypW = new jr();
+    this.ypY = false;
+    this.ypZ = false;
+    this.yqa = new ScanUIRectView.a()
     {
       public final void e(final long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(51682);
         if (!BaseScanUI.a(BaseScanUI.this))
         {
-          ac.w("MicroMsg.ScanUI", "alvinluo onScanSuccess can not process code result currentMode: %d", new Object[] { Integer.valueOf(BaseScanUI.b(BaseScanUI.this)) });
+          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ScanUI", "alvinluo onScanSuccess can not process code result currentMode: %d", new Object[] { Integer.valueOf(BaseScanUI.b(BaseScanUI.this)) });
           AppMethodBeat.o(51682);
           return;
         }
         if ((BaseScanUI.c(BaseScanUI.this) != null) && (paramAnonymousBundle != null))
         {
-          ac.i("MicroMsg.ScanUI", "scan code cost time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - BaseScanUI.d(BaseScanUI.this)) });
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "scan code cost time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - BaseScanUI.d(BaseScanUI.this)) });
           Object localObject2 = paramAnonymousBundle.getParcelableArrayList("result_qbar_result_list");
           if ((localObject2 == null) || (((ArrayList)localObject2).size() <= 0))
           {
-            ac.w("MicroMsg.ScanUI", "alvinluo onScanSuccess qbarResult invalid");
+            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ScanUI", "alvinluo onScanSuccess qbarResult invalid");
             AppMethodBeat.o(51682);
             return;
           }
           final int j = paramAnonymousBundle.getInt("result_code_point_count", 0);
           final long l = paramAnonymousBundle.getLong("decode_success_cost_time", 0L);
-          z.a(BaseScanUI.b(BaseScanUI.this), true, 1, j);
+          ac.a(BaseScanUI.b(BaseScanUI.this), true, 1, j);
           BaseScanUI.e(BaseScanUI.this);
           Object localObject1 = BaseScanUI.this;
           if (j > 1) {}
@@ -185,7 +188,7 @@ public class BaseScanUI
           {
             BaseScanUI.a((BaseScanUI)localObject1, bool);
             BaseScanUI.b(BaseScanUI.this, false);
-            z.a(BaseScanUI.b(BaseScanUI.this), (List)localObject2, l);
+            ac.a(BaseScanUI.b(BaseScanUI.this), (List)localObject2, l);
             localObject1 = (WxQBarResult)((ArrayList)localObject2).get(0);
             if (!BaseScanUI.f(BaseScanUI.this)) {
               break label385;
@@ -193,24 +196,24 @@ public class BaseScanUI
             if (localObject1 != null) {
               break;
             }
-            ac.w("MicroMsg.ScanUI", "first Qbar result is null");
+            com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ScanUI", "first Qbar result is null");
             AppMethodBeat.o(51682);
             return;
           }
           paramAnonymousBundle = ((WxQBarResult)localObject1).typeName;
-          Object localObject3 = new oy();
+          Object localObject3 = new ph();
           localObject2 = ((WxQBarResult)localObject1).data;
-          ((oy)localObject3).drz.scanResult = ((String)localObject2);
-          ((oy)localObject3).drz.drB = paramAnonymousBundle;
-          ((oy)localObject3).drz.drx = 0;
-          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject3);
+          ((ph)localObject3).dDr.scanResult = ((String)localObject2);
+          ((ph)localObject3).dDr.dDt = paramAnonymousBundle;
+          ((ph)localObject3).dDr.dDp = 0;
+          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject3);
           localObject3 = new Intent();
           ((Intent)localObject3).putExtra("key_scan_result", (String)localObject2);
           ((Intent)localObject3).putExtra("key_scan_result_raw", ((WxQBarResult)localObject1).rawData);
           ((Intent)localObject3).putExtra("key_scan_result_code_name", paramAnonymousBundle);
-          ((Intent)localObject3).putExtra("key_scan_result_code_version", ((WxQBarResult)localObject1).JQA);
+          ((Intent)localObject3).putExtra("key_scan_result_code_version", ((WxQBarResult)localObject1).LKn);
           BaseScanUI.this.setResult(-1, (Intent)localObject3);
-          BaseScanUI.this.bRD();
+          BaseScanUI.this.bWi();
           AppMethodBeat.o(51682);
           return;
           label385:
@@ -235,35 +238,35 @@ public class BaseScanUI
                 BaseScanUI.j(BaseScanUI.this);
               }
               BaseScanUI.d(BaseScanUI.this, true);
-              BaseScanUI.g(BaseScanUI.this).setSuccessMarkClickListener(new aa()
+              BaseScanUI.g(BaseScanUI.this).setSuccessMarkClickListener(new com.tencent.mm.plugin.scanner.model.ad()
               {
-                public final void Ne(int paramAnonymous2Int)
+                public final void OG(int paramAnonymous2Int)
                 {
                   AppMethodBeat.i(169958);
-                  ac.i("MicroMsg.ScanUI", "alvinluo onScanSuccess onClick mark index: %d", new Object[] { Integer.valueOf(paramAnonymous2Int) });
-                  if ((paramAnonymous2Int < this.xcf.size()) && (j > 1))
+                  com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onScanSuccess onClick mark index: %d", new Object[] { Integer.valueOf(paramAnonymous2Int) });
+                  if ((paramAnonymous2Int < this.yqh.size()) && (j > 1))
                   {
                     BaseScanUI.d(BaseScanUI.this, false);
                     BaseScanUI.b(BaseScanUI.this, true);
-                    BaseScanUI.a(BaseScanUI.this, paramAnonymousLong, l, (WxQBarResult)this.xcf.get(paramAnonymous2Int));
-                    z.k(2, paramAnonymous2Int, this.xch);
-                    z.dzO();
+                    BaseScanUI.a(BaseScanUI.this, paramAnonymousLong, l, (WxQBarResult)this.yqh.get(paramAnonymous2Int));
+                    ac.l(2, paramAnonymous2Int, this.yqj);
+                    ac.dLo();
                   }
                   AppMethodBeat.o(169958);
                 }
               });
               BaseScanUI.k(BaseScanUI.this);
               localObject3 = BaseScanUI.g(BaseScanUI.this);
-              if (com.tencent.mm.plugin.scanner.util.d.dBp())
+              if (com.tencent.mm.plugin.scanner.util.d.dMN())
               {
-                if (((ScanUIRectView)localObject3).xfw == null)
+                if (((ScanUIRectView)localObject3).yty == null)
                 {
-                  ((ScanUIRectView)localObject3).xfw = new ScanDebugView(((ScanUIRectView)localObject3).getContext());
-                  ((ScanUIRectView)localObject3).addView(((ScanUIRectView)localObject3).xfw);
+                  ((ScanUIRectView)localObject3).yty = new ScanDebugView(((ScanUIRectView)localObject3).getContext());
+                  ((ScanUIRectView)localObject3).addView(((ScanUIRectView)localObject3).yty);
                 }
-                if (((ScanUIRectView)localObject3).xfw != null)
+                if (((ScanUIRectView)localObject3).yty != null)
                 {
-                  localObject4 = ((ScanUIRectView)localObject3).xfw;
+                  localObject4 = ((ScanUIRectView)localObject3).yty;
                   if (paramAnonymousBundle != null)
                   {
                     localObject3 = paramAnonymousBundle.getString("decode_debug_string");
@@ -277,9 +280,9 @@ public class BaseScanUI
                       break label725;
                     }
                     ((ScanDebugView)localObject4).setVisibility(0);
-                    localObject4 = ((ScanDebugView)localObject4).xjY;
+                    localObject4 = ((ScanDebugView)localObject4).yya;
                     if (localObject4 == null) {
-                      k.aVY("debugInfo");
+                      p.bcb("debugInfo");
                     }
                     ((TextView)localObject4).setText((CharSequence)localObject3);
                   }
@@ -290,15 +293,15 @@ public class BaseScanUI
             {
               BaseScanUI.g(BaseScanUI.this).a(localObject2, new com.tencent.mm.plugin.scanner.view.c()
               {
-                public final void dAf()
+                public final void dLD()
                 {
                   AppMethodBeat.i(169959);
-                  if ((j == 1) || (this.xcf.size() == 1))
+                  if ((j == 1) || (this.yqh.size() == 1))
                   {
                     BaseScanUI.d(BaseScanUI.this, false);
                     BaseScanUI.b(BaseScanUI.this, true);
                     BaseScanUI.a(BaseScanUI.this, paramAnonymousLong, this.val$result, l);
-                    z.k(1, 0, this.xch);
+                    ac.l(1, 0, this.yqj);
                   }
                   AppMethodBeat.o(169959);
                 }
@@ -312,9 +315,9 @@ public class BaseScanUI
               break label638;
               label725:
               ((ScanDebugView)localObject4).setVisibility(8);
-              localObject3 = ((ScanDebugView)localObject4).xjY;
+              localObject3 = ((ScanDebugView)localObject4).yya;
               if (localObject3 == null) {
-                k.aVY("debugInfo");
+                p.bcb("debugInfo");
               }
               ((TextView)localObject3).setText((CharSequence)"");
             }
@@ -325,14 +328,36 @@ public class BaseScanUI
         AppMethodBeat.o(51682);
       }
     };
-    this.xbZ = new a.c()
+    this.yqb = new a.d()
     {
+      public final void A(long paramAnonymousLong, String paramAnonymousString)
+      {
+        AppMethodBeat.i(51710);
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ScanUI", "alvinluo onScanFailed session: %d, source: %d, errCode: %d, errMsg: %s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(2), Integer.valueOf(1), paramAnonymousString });
+        String str = paramAnonymousString;
+        if (bt.isNullOrNil(paramAnonymousString)) {
+          str = BaseScanUI.this.getResources().getString(2131762888);
+        }
+        com.tencent.mm.ui.base.h.a(BaseScanUI.this, str, "", BaseScanUI.this.getResources().getString(2131755835), new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(51708);
+            BaseScanUI.q(BaseScanUI.this);
+            ac.OA(BaseScanUI.b(BaseScanUI.this));
+            AppMethodBeat.o(51708);
+          }
+        });
+        ac.a(2, false, System.currentTimeMillis());
+        AppMethodBeat.o(51710);
+      }
+      
       public final void e(long paramAnonymousLong, Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(51709);
         if (BaseScanUI.l(BaseScanUI.this))
         {
-          ac.w("MicroMsg.ScanUI", "alvinluo onScanSuccess isScrolling and ignore");
+          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ScanUI", "alvinluo onScanSuccess isScrolling and ignore");
           AppMethodBeat.o(51709);
           return;
         }
@@ -340,7 +365,7 @@ public class BaseScanUI
         {
           BaseScanUI.m(BaseScanUI.this);
           int i = paramAnonymousBundle.getInt("scan_source", 0);
-          ac.i("MicroMsg.ScanUI", "alvinluo onScanSuccess cost time %d, scanImageCount: %d, source: %d, session: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - BaseScanUI.d(BaseScanUI.this)), Integer.valueOf(BaseScanUI.n(BaseScanUI.this)), Integer.valueOf(i), Long.valueOf(paramAnonymousLong) });
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onScanSuccess cost time %d, scanImageCount: %d, source: %d, session: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - BaseScanUI.d(BaseScanUI.this)), Integer.valueOf(BaseScanUI.n(BaseScanUI.this)), Integer.valueOf(i), Long.valueOf(paramAnonymousLong) });
           if ((i == 1) && (!BaseScanUI.o(BaseScanUI.this)))
           {
             if ((BaseScanUI.p(BaseScanUI.this) instanceof ScanGoodsRequest))
@@ -352,49 +377,39 @@ public class BaseScanUI
             AppMethodBeat.o(51709);
             return;
           }
-          if (i == 2) {
+          if (i == 2)
+          {
+            if ((BaseScanUI.p(BaseScanUI.this) instanceof ScanGoodsRequest)) {
+              paramAnonymousBundle.putParcelable("key_scan_request", BaseScanUI.p(BaseScanUI.this));
+            }
             BaseScanUI.c(BaseScanUI.this).c(paramAnonymousLong, paramAnonymousBundle);
           }
         }
         AppMethodBeat.o(51709);
       }
-      
-      public final void x(long paramAnonymousLong, String paramAnonymousString)
-      {
-        AppMethodBeat.i(51710);
-        ac.e("MicroMsg.ScanUI", "alvinluo onScanFailed session: %d, source: %d, errCode: %d, errMsg: %s", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(2), Integer.valueOf(1), paramAnonymousString });
-        String str = paramAnonymousString;
-        if (bs.isNullOrNil(paramAnonymousString)) {
-          str = BaseScanUI.this.getResources().getString(2131762888);
-        }
-        com.tencent.mm.ui.base.h.a(BaseScanUI.this, str, "", BaseScanUI.this.getResources().getString(2131755835), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-          {
-            AppMethodBeat.i(51708);
-            BaseScanUI.q(BaseScanUI.this);
-            z.MY(BaseScanUI.b(BaseScanUI.this));
-            AppMethodBeat.o(51708);
-          }
-        });
-        z.a(2, false, System.currentTimeMillis());
-        AppMethodBeat.o(51710);
-      }
     };
-    this.xca = new com.tencent.mm.plugin.scanner.d.a.a()
+    this.yqc = new com.tencent.mm.plugin.scanner.d.a.a()
     {
+      public final void ax(int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(186184);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "notifyEvent source: %d, session: %d, event: %d", new Object[] { Integer.valueOf(paramAnonymousInt), Long.valueOf(paramAnonymousLong), Integer.valueOf(1) });
+        BaseScanUI.s(BaseScanUI.this);
+        AppMethodBeat.o(186184);
+      }
+      
       public final void b(int paramAnonymousInt1, long paramAnonymousLong, int paramAnonymousInt2, String paramAnonymousString)
       {
         AppMethodBeat.i(161970);
         String str;
         if (paramAnonymousInt1 == 2)
         {
-          z.N(false, paramAnonymousInt1);
+          ac.O(false, paramAnonymousInt1);
           BaseScanUI.r(BaseScanUI.this);
           BaseScanUI.e(BaseScanUI.this);
           BaseScanUI.g(BaseScanUI.this).a(false, null);
           str = paramAnonymousString;
-          if (bs.isNullOrNil(paramAnonymousString)) {
+          if (bt.isNullOrNil(paramAnonymousString)) {
             str = BaseScanUI.this.getResources().getString(2131762888);
           }
           com.tencent.mm.ui.base.h.a(BaseScanUI.this, str, "", BaseScanUI.this.getResources().getString(2131755835), new DialogInterface.OnClickListener()
@@ -403,7 +418,7 @@ public class BaseScanUI
             {
               AppMethodBeat.i(51717);
               BaseScanUI.q(BaseScanUI.this);
-              z.MY(BaseScanUI.b(BaseScanUI.this));
+              ac.OA(BaseScanUI.b(BaseScanUI.this));
               AppMethodBeat.o(51717);
             }
           });
@@ -412,14 +427,14 @@ public class BaseScanUI
         }
         if ((paramAnonymousInt1 == 1) && (paramAnonymousInt2 == 1003))
         {
-          ac.e("MicroMsg.ScanUI", "alvinluo onScanResultFailed stop upload and show alert");
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ScanUI", "alvinluo onScanResultFailed stop upload and show alert");
           if (BaseScanUI.c(BaseScanUI.this) != null) {
             BaseScanUI.c(BaseScanUI.this).y(paramAnonymousLong, false);
           }
           BaseScanUI.r(BaseScanUI.this);
           BaseScanUI.e(BaseScanUI.this);
           str = paramAnonymousString;
-          if (bs.isNullOrNil(paramAnonymousString)) {
+          if (bt.isNullOrNil(paramAnonymousString)) {
             str = BaseScanUI.this.getResources().getString(2131762889);
           }
           com.tencent.mm.ui.base.h.a(BaseScanUI.this, str, "", BaseScanUI.this.getResources().getString(2131755835), new DialogInterface.OnClickListener()
@@ -428,7 +443,7 @@ public class BaseScanUI
             {
               AppMethodBeat.i(161969);
               BaseScanUI.q(BaseScanUI.this);
-              z.MY(BaseScanUI.b(BaseScanUI.this));
+              ac.OA(BaseScanUI.b(BaseScanUI.this));
               AppMethodBeat.o(161969);
             }
           });
@@ -436,248 +451,118 @@ public class BaseScanUI
         AppMethodBeat.o(161970);
       }
       
-      public final void b(u paramAnonymousu)
+      public final void b(w paramAnonymousw)
       {
         AppMethodBeat.i(51718);
         if (BaseScanUI.b(BaseScanUI.this) != 12)
         {
-          ac.i("MicroMsg.ScanUI", "alvnluo onScanResultSuccess not SELECT_SCAN_MODE_GOODS and ignore");
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvnluo onScanResultSuccess not SELECT_SCAN_MODE_GOODS and ignore");
           AppMethodBeat.o(51718);
           return;
         }
-        if ((BaseScanUI.l(BaseScanUI.this)) || ((paramAnonymousu.dbL == 1) && (BaseScanUI.o(BaseScanUI.this))))
+        if ((BaseScanUI.l(BaseScanUI.this)) || ((paramAnonymousw.dnh == 1) && (BaseScanUI.o(BaseScanUI.this))))
         {
-          ac.w("MicroMsg.ScanUI", "alvinluo onScanResultSuccess source:%d, isScrolling: %b or needPauseScan: %b and ignore", new Object[] { Integer.valueOf(paramAnonymousu.dbL), Boolean.valueOf(BaseScanUI.l(BaseScanUI.this)), Boolean.valueOf(BaseScanUI.o(BaseScanUI.this)) });
+          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ScanUI", "alvinluo onScanResultSuccess source:%d, isScrolling: %b or needPauseScan: %b and ignore", new Object[] { Integer.valueOf(paramAnonymousw.dnh), Boolean.valueOf(BaseScanUI.l(BaseScanUI.this)), Boolean.valueOf(BaseScanUI.o(BaseScanUI.this)) });
           AppMethodBeat.o(51718);
           return;
         }
-        BaseScanUI.a(BaseScanUI.this, paramAnonymousu);
+        BaseScanUI.a(BaseScanUI.this, paramAnonymousw);
         AppMethodBeat.o(51718);
       }
     };
-    this.xcb = new com.tencent.mm.plugin.scanner.box.b()
+    this.yqd = new com.tencent.mm.plugin.scanner.box.b()
     {
       public final void a(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(199520);
-        ac.i("MicroMsg.ScanUI", "alvinluo ScanBoxDialog onDismiss exitType: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        BaseScanUI.t(BaseScanUI.this);
+        AppMethodBeat.i(186186);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo ScanBoxDialog onDismiss exitType: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         BaseScanUI.u(BaseScanUI.this);
-        BaseScanUI.a(BaseScanUI.this, BaseScanUI.s(BaseScanUI.this), true);
+        BaseScanUI.v(BaseScanUI.this);
+        BaseScanUI.a(BaseScanUI.this, BaseScanUI.t(BaseScanUI.this), true);
         BaseScanUI.q(BaseScanUI.this);
         BaseScanUI.e(BaseScanUI.this, true);
-        z.wD(System.currentTimeMillis());
-        z.b(paramAnonymousInt, BaseScanUI.p(BaseScanUI.this));
-        z.MY(12);
-        AppMethodBeat.o(199520);
+        ac.za(System.currentTimeMillis());
+        ac.a(paramAnonymousInt, BaseScanUI.p(BaseScanUI.this));
+        ac.OA(12);
+        AppMethodBeat.o(186186);
       }
       
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(199521);
-        ac.i("MicroMsg.ScanUI", "alvinluo ScanBoxDialog onCancel");
+        AppMethodBeat.i(186187);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo ScanBoxDialog onCancel");
         BaseScanUI.d(BaseScanUI.this, false);
-        BaseScanUI.t(BaseScanUI.this);
         BaseScanUI.u(BaseScanUI.this);
-        AppMethodBeat.o(199521);
+        BaseScanUI.v(BaseScanUI.this);
+        AppMethodBeat.o(186187);
       }
       
       public final void onShow(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(199519);
-        ac.i("MicroMsg.ScanUI", "alvinluo ScanBoxDialog onShow");
-        BaseScanUI.a(BaseScanUI.this, BaseScanUI.s(BaseScanUI.this), false);
+        AppMethodBeat.i(186185);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo ScanBoxDialog onShow");
+        BaseScanUI.a(BaseScanUI.this, BaseScanUI.t(BaseScanUI.this), false);
         BaseScanUI.e(BaseScanUI.this, false);
-        z.wC(System.currentTimeMillis());
-        AppMethodBeat.o(199519);
+        ac.yZ(System.currentTimeMillis());
+        AppMethodBeat.o(186185);
       }
     };
-    this.xcc = new n.a()
-    {
-      public final void onNetworkChange(final int paramAnonymousInt)
-      {
-        AppMethodBeat.i(199511);
-        ap.f(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(199510);
-            ac.i("MicroMsg.ScanUI", "onNetWorkChange %d", new Object[] { Integer.valueOf(g.agi().aBK()) });
-            ScanUIRectView localScanUIRectView;
-            int i;
-            if (BaseScanUI.g(BaseScanUI.this) != null)
-            {
-              localScanUIRectView = BaseScanUI.g(BaseScanUI.this);
-              i = paramAnonymousInt;
-              if ((g.agi().aBK() != 6) && (g.agi().aBK() != 4)) {
-                break label152;
-              }
-              localScanUIRectView.xbG = true;
-              if (!o.Nu(localScanUIRectView.mode)) {
-                localScanUIRectView.onResume();
-              }
-            }
-            for (;;)
-            {
-              if (localScanUIRectView.wZP != null) {
-                localScanUIRectView.wZP.onNetworkChange(i);
-              }
-              if ((g.agi().aBK() != 6) && (g.agi().aBK() != 4)) {
-                break label202;
-              }
-              if (!BaseScanUI.H(BaseScanUI.this)) {
-                break;
-              }
-              AppMethodBeat.o(199510);
-              return;
-              label152:
-              localScanUIRectView.xbG = false;
-              if (!o.Nu(localScanUIRectView.mode)) {
-                localScanUIRectView.onPause();
-              }
-            }
-            BaseScanUI.i(BaseScanUI.this, true);
-            BaseScanUI.I(BaseScanUI.this);
-            AppMethodBeat.o(199510);
-            return;
-            label202:
-            if (!BaseScanUI.H(BaseScanUI.this))
-            {
-              AppMethodBeat.o(199510);
-              return;
-            }
-            BaseScanUI.i(BaseScanUI.this, false);
-            BaseScanUI.I(BaseScanUI.this);
-            AppMethodBeat.o(199510);
-          }
-        });
-        AppMethodBeat.o(199511);
-      }
-    };
-    this.xcd = new com.tencent.mm.sdk.b.c() {};
-    this.oCV = new com.tencent.mm.sdk.b.c() {};
+    this.yqe = new BaseScanUI.16(this);
+    this.yqf = new com.tencent.mm.sdk.b.c() {};
+    this.pgq = new BaseScanUI.18(this);
     AppMethodBeat.o(51728);
   }
   
-  private void Nf(int paramInt)
+  private void OH(int paramInt)
   {
     AppMethodBeat.i(51735);
-    ac.i("MicroMsg.ScanUI", "alvinluo operateFlash operation: %d", new Object[] { Integer.valueOf(paramInt) });
-    rz localrz = new rz();
-    localrz.duW.cZu = paramInt;
-    com.tencent.mm.sdk.b.a.GpY.l(localrz);
-    if (this.xbo != null)
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo operateFlash operation: %d", new Object[] { Integer.valueOf(paramInt) });
+    sl localsl = new sl();
+    localsl.dGX.dkM = paramInt;
+    com.tencent.mm.sdk.b.a.IbL.l(localsl);
+    if (this.ypq != null)
     {
       if (paramInt == 1)
       {
-        this.xbo.dAK();
+        this.ypq.dMi();
         AppMethodBeat.o(51735);
         return;
       }
-      this.xbo.dAL();
+      this.ypq.dMj();
     }
     AppMethodBeat.o(51735);
   }
   
-  private void Ng(int paramInt)
+  private void OI(int paramInt)
   {
-    AppMethodBeat.i(199528);
-    z.a(this.xbD, this.xbO, paramInt);
-    AppMethodBeat.o(199528);
-  }
-  
-  private void Z(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(199527);
-    ac.v("MicroMsg.ScanUI", "alvinluo reportScanPerformance success: %b, isMultiCode: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.FALSE });
-    Object localObject = this.xbU;
-    long l;
-    if (paramBoolean1)
-    {
-      l = 1L;
-      ((im)localObject).ela = l;
-      this.xbU.elb = (System.currentTimeMillis() - this.xbC);
-      localObject = this.xbU;
-      if (!this.xbn.dAy()) {
-        break label369;
-      }
-      l = 0L;
-      label83:
-      ((im)localObject).elc = l;
-      this.xbU.elh = this.xbD;
-      this.xbU.eld = com.tencent.qbar.c.JQr.JQu;
-      if (com.tencent.mm.plugin.scanner.util.i.xlZ.dBr() > 0L) {
-        this.xbU.elg = (com.tencent.mm.plugin.scanner.util.i.xlZ.dBr() - this.xbC);
-      }
-      this.xbU.aHZ();
-      if (o.Nu(this.xbD))
-      {
-        com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 0L, 1L);
-        localObject = com.tencent.mm.plugin.report.service.h.wUl;
-        if (!paramBoolean1) {
-          break label374;
-        }
-        l = 1L;
-        label184:
-        ((com.tencent.mm.plugin.report.service.h)localObject).n(1229L, 1L, l);
-        if (paramBoolean1)
-        {
-          if (!this.xbn.dAy()) {
-            break label379;
-          }
-          com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 5L, 1L);
-        }
-      }
-    }
-    for (;;)
-    {
-      com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 7L, this.xbU.elb);
-      com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 9L, this.xbU.eld);
-      if ((paramBoolean1) && (paramBoolean2))
-      {
-        ac.v("MicroMsg.ScanUI", "alvinluo reportScanPerformance scanTime: %s, totalFrames: %d", new Object[] { Long.valueOf(this.xbU.elb), Long.valueOf(this.xbU.eld) });
-        com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 11L, 1L);
-        com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 12L, this.xbU.elb);
-        com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 14L, this.xbU.eld);
-      }
-      AppMethodBeat.o(199527);
-      return;
-      l = 0L;
-      break;
-      label369:
-      l = 1L;
-      break label83;
-      label374:
-      l = 0L;
-      break label184;
-      label379:
-      com.tencent.mm.plugin.report.service.h.wUl.n(1229L, 3L, 1L);
-    }
+    AppMethodBeat.i(186197);
+    ac.b(this.ypF, this.ypQ, paramInt);
+    AppMethodBeat.o(186197);
   }
   
   private void a(View paramView, boolean paramBoolean, Animator.AnimatorListener paramAnimatorListener)
   {
     float f2 = 1.0F;
-    AppMethodBeat.i(199525);
+    AppMethodBeat.i(186192);
     if (paramView == null)
     {
-      AppMethodBeat.o(199525);
+      AppMethodBeat.o(186192);
       return;
     }
     if ((paramBoolean) && (paramView.getAlpha() != 0.0F))
     {
-      ac.w("MicroMsg.ScanUI", "alvinluo animateAlpha show ignore, view: %s", new Object[] { paramView });
-      AppMethodBeat.o(199525);
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ScanUI", "alvinluo animateAlpha show ignore, view: %s", new Object[] { paramView });
+      AppMethodBeat.o(186192);
       return;
     }
     if ((!paramBoolean) && (paramView.getAlpha() != 1.0F))
     {
-      ac.w("MicroMsg.ScanUI", "alvinluo animateAlpha hide ignore, view: %s", new Object[] { paramView });
-      AppMethodBeat.o(199525);
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.ScanUI", "alvinluo animateAlpha hide ignore, view: %s", new Object[] { paramView });
+      AppMethodBeat.o(186192);
       return;
     }
-    ac.v("MicroMsg.ScanUI", "alvinluo animateAlpha show: %b, view: %s", new Object[] { Boolean.valueOf(paramBoolean), paramView });
-    paramAnimatorListener = new BaseScanUI.10(this, paramAnimatorListener, paramView, paramBoolean);
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanUI", "alvinluo animateAlpha show: %b, view: %s", new Object[] { Boolean.valueOf(paramBoolean), paramView });
+    paramAnimatorListener = new BaseScanUI.11(this, paramAnimatorListener, paramView, paramBoolean);
     paramView.setVisibility(0);
     if (paramBoolean)
     {
@@ -692,162 +577,200 @@ public class BaseScanUI
     for (float f1 = f2;; f1 = 0.0F)
     {
       paramView.alpha(f1).setListener(paramAnimatorListener).setDuration(200L).start();
-      AppMethodBeat.o(199525);
+      AppMethodBeat.o(186192);
       return;
       f1 = 1.0F;
       break;
     }
   }
   
-  private void aa(boolean paramBoolean1, boolean paramBoolean2)
+  private void ad(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(51750);
-    ac.v("MicroMsg.ScanUI", "alvinluo showFlash show: %b, withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    AppMethodBeat.i(186194);
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanUI", "alvinluo reportScanPerformance success: %b, isMultiCode: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.FALSE });
+    Object localObject = this.ypW;
+    long l;
     if (paramBoolean1)
     {
-      if ((this.xbo != null) && (!this.xbo.isShown()))
+      l = 1L;
+      ((jr)localObject).eCc = l;
+      this.ypW.eCd = (System.currentTimeMillis() - this.ypE);
+      localObject = this.ypW;
+      if (!this.ypp.dLW()) {
+        break label369;
+      }
+      l = 0L;
+      label83:
+      ((jr)localObject).eCe = l;
+      this.ypW.eCj = this.ypF;
+      this.ypW.eCf = com.tencent.qbar.c.LKe.LKh;
+      if (com.tencent.mm.plugin.scanner.util.i.yAa.dMP() > 0L) {
+        this.ypW.eCi = (com.tencent.mm.plugin.scanner.util.i.yAa.dMP() - this.ypE);
+      }
+      this.ypW.aLk();
+      if (o.OW(this.ypF))
       {
-        this.xbn.dAD();
-        if (paramBoolean2) {
-          this.xbo.show();
+        com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 0L, 1L);
+        localObject = com.tencent.mm.plugin.report.service.g.yhR;
+        if (!paramBoolean1) {
+          break label374;
         }
-        for (;;)
+        l = 1L;
+        label184:
+        ((com.tencent.mm.plugin.report.service.g)localObject).n(1229L, 1L, l);
+        if (paramBoolean1)
         {
-          com.tencent.qbar.c.JQr.aea(1);
-          z.gW(this.xbD, 1);
-          AppMethodBeat.o(51750);
-          return;
-          this.xbo.setVisibility(0);
+          if (!this.ypp.dLW()) {
+            break label379;
+          }
+          com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 5L, 1L);
         }
       }
     }
-    else if ((this.xbo != null) && (!this.xbo.Tz))
+    for (;;)
     {
-      this.xbn.dAE();
+      com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 7L, this.ypW.eCd);
+      com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 9L, this.ypW.eCf);
+      if ((paramBoolean1) && (paramBoolean2))
+      {
+        com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanUI", "alvinluo reportScanPerformance scanTime: %s, totalFrames: %d", new Object[] { Long.valueOf(this.ypW.eCd), Long.valueOf(this.ypW.eCf) });
+        com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 11L, 1L);
+        com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 12L, this.ypW.eCd);
+        com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 14L, this.ypW.eCf);
+      }
+      AppMethodBeat.o(186194);
+      return;
+      l = 0L;
+      break;
+      label369:
+      l = 1L;
+      break label83;
+      label374:
+      l = 0L;
+      break label184;
+      label379:
+      com.tencent.mm.plugin.report.service.g.yhR.n(1229L, 3L, 1L);
+    }
+  }
+  
+  private void ae(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(51750);
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanUI", "alvinluo showFlash show: %b, withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    if (paramBoolean1)
+    {
+      if ((this.ypq != null) && (!this.ypq.isShown()))
+      {
+        this.ypp.dMb();
+        if (paramBoolean2) {
+          this.ypq.show();
+        }
+        for (;;)
+        {
+          com.tencent.qbar.c.LKe.agA(1);
+          ac.hn(this.ypF, 1);
+          AppMethodBeat.o(51750);
+          return;
+          this.ypq.setVisibility(0);
+        }
+      }
+    }
+    else if ((this.ypq != null) && (!this.ypq.Vp))
+    {
+      this.ypp.dMc();
       if (paramBoolean2)
       {
-        this.xbo.hide();
+        this.ypq.hide();
         AppMethodBeat.o(51750);
         return;
       }
-      this.xbo.setVisibility(8);
+      this.ypq.setVisibility(8);
     }
     AppMethodBeat.o(51750);
   }
   
   private void b(boolean paramBoolean, final Animator.AnimatorListener paramAnimatorListener)
   {
-    AppMethodBeat.i(199524);
-    ac.v("MicroMsg.ScanUI", "alvinluo switchCloseView isMultiCode: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(186191);
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanUI", "alvinluo switchCloseView isMultiCode: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.xbu.setAlpha(0.0F);
-      a(this.xbs, false, new AnimatorListenerAdapter()
+      this.ypw.setAlpha(0.0F);
+      a(this.ypu, false, new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(199499);
-          BaseScanUI.a(BaseScanUI.this, BaseScanUI.B(BaseScanUI.this), true);
+          AppMethodBeat.i(186171);
+          BaseScanUI.a(BaseScanUI.this, BaseScanUI.F(BaseScanUI.this), true);
           if (paramAnimatorListener != null) {
             paramAnimatorListener.onAnimationEnd(paramAnonymousAnimator);
           }
-          AppMethodBeat.o(199499);
+          AppMethodBeat.o(186171);
         }
       });
-      AppMethodBeat.o(199524);
+      AppMethodBeat.o(186191);
       return;
     }
-    a(this.xbu, false, new AnimatorListenerAdapter()
+    a(this.ypw, false, new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(199500);
-        BaseScanUI.a(BaseScanUI.this, BaseScanUI.C(BaseScanUI.this), true);
+        AppMethodBeat.i(186172);
+        BaseScanUI.a(BaseScanUI.this, BaseScanUI.G(BaseScanUI.this), true);
         if (paramAnimatorListener != null) {
           paramAnimatorListener.onAnimationEnd(paramAnonymousAnimator);
         }
-        AppMethodBeat.o(199500);
+        AppMethodBeat.o(186172);
       }
     });
-    AppMethodBeat.o(199524);
+    AppMethodBeat.o(186191);
   }
   
-  private void dAa()
-  {
-    AppMethodBeat.i(169986);
-    if ((this.xbT != null) && (this.xbn != null)) {
-      this.xbT.a(this.xbn.getScanMaskView(), this.xbn.getSharedMaskView(), this.wZR);
-    }
-    AppMethodBeat.o(169986);
-  }
-  
-  private void dAb()
-  {
-    AppMethodBeat.i(51748);
-    if ((o.Nu(this.xbD)) || (dzY()) || (dzX())) {}
-    for (int i = 0; i != 0; i = 1)
-    {
-      pX(this.xbG);
-      AppMethodBeat.o(51748);
-      return;
-    }
-    pX(true);
-    AppMethodBeat.o(51748);
-  }
-  
-  private void dAc()
+  private void dLA()
   {
     AppMethodBeat.i(169987);
     int i = 0;
-    if (o.Nu(this.xbD)) {
-      i = com.tencent.qbar.c.JQo;
+    if (o.OW(this.ypF)) {
+      i = com.tencent.qbar.c.LKb;
     }
     for (;;)
     {
-      com.tencent.qbar.c.JQr.aeb(i);
+      com.tencent.qbar.c.LKe.agB(i);
       AppMethodBeat.o(169987);
       return;
-      if (this.xbD == 12) {
-        i = com.tencent.qbar.c.JQp;
-      } else if (this.xbD == 3) {
-        i = com.tencent.qbar.c.JQq;
+      if (this.ypF == 12) {
+        i = com.tencent.qbar.c.LKc;
+      } else if (this.ypF == 3) {
+        i = com.tencent.qbar.c.LKd;
       }
     }
   }
   
-  private void dAd()
+  private void dLB()
   {
     AppMethodBeat.i(51757);
-    ac.i("MicroMsg.ScanUI", "alvinluo resumeScan");
-    this.xbQ = false;
-    if (this.xbn != null) {
-      this.xbn.onResume();
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo resumeScan");
+    this.ypS = false;
+    if (this.ypp != null) {
+      this.ypp.onResume();
     }
     setEnableSwitchTab(true);
     AppMethodBeat.o(51757);
   }
   
-  private void dzS()
+  private void dLq()
   {
     AppMethodBeat.i(51732);
-    ScanSharedMaskView localScanSharedMaskView = this.xbn.getSharedMaskView();
+    ScanSharedMaskView localScanSharedMaskView = this.ypp.getSharedMaskView();
     if (localScanSharedMaskView == null)
     {
       AppMethodBeat.o(51732);
       return;
     }
-    if (!this.wWa)
+    if (!this.yjH)
     {
       localScanSharedMaskView.getGalleryButton().setVisibility(0);
-      localScanSharedMaskView.setOnGalleryClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(169984);
-          BaseScanUI.w(BaseScanUI.this);
-          AppMethodBeat.o(169984);
-        }
-      });
+      localScanSharedMaskView.setOnGalleryClickListener(new BaseScanUI.32(this));
       AppMethodBeat.o(51732);
       return;
     }
@@ -855,146 +778,154 @@ public class BaseScanUI
     AppMethodBeat.o(51732);
   }
   
-  private void dzT()
+  private void dLr()
   {
     AppMethodBeat.i(51734);
-    ScanSharedMaskView localScanSharedMaskView = this.xbn.getSharedMaskView();
+    ScanSharedMaskView localScanSharedMaskView = this.ypp.getSharedMaskView();
     if (localScanSharedMaskView != null) {
-      this.xbo = localScanSharedMaskView.getFlashSwitcherView();
+      this.ypq = localScanSharedMaskView.getFlashSwitcherView();
     }
-    if (this.xbo != null)
+    if (this.ypq != null)
     {
-      this.xbo.setOnClickListener(new View.OnClickListener()
+      this.ypq.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(51727);
-          com.tencent.qbar.c.JQr.aea(2);
-          if (!BaseScanUI.x(BaseScanUI.this).Tz) {
+          AppMethodBeat.i(186165);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/BaseScanUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          com.tencent.qbar.c.LKe.agA(2);
+          if (!BaseScanUI.B(BaseScanUI.this).Vp) {
             BaseScanUI.a(BaseScanUI.this, 1);
           }
           for (;;)
           {
-            z.gW(BaseScanUI.b(BaseScanUI.this), 2);
-            AppMethodBeat.o(51727);
+            ac.hn(BaseScanUI.b(BaseScanUI.this), 2);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(186165);
             return;
             BaseScanUI.a(BaseScanUI.this, 2);
           }
         }
       });
-      this.xbn.setFlashStatus(this.xbo.cBT);
-      if (this.xbD == 3)
+      this.ypp.setFlashStatus(this.ypq.cMS);
+      if (this.ypF == 3)
       {
-        dzU();
-        this.xbo.hide();
+        dLs();
+        this.ypq.hide();
       }
     }
     AppMethodBeat.o(51734);
   }
   
-  private void dzU()
+  private void dLs()
   {
     AppMethodBeat.i(51736);
-    ac.d("MicroMsg.ScanUI", "alvinluo checkAndOperateFlash operation: %d", new Object[] { Integer.valueOf(2) });
-    if (this.xbo.Tz) {
-      Nf(2);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ScanUI", "alvinluo checkAndOperateFlash operation: %d", new Object[] { Integer.valueOf(2) });
+    if (this.ypq.Vp) {
+      OH(2);
     }
     AppMethodBeat.o(51736);
   }
   
-  private void dzV()
+  private void dLt()
   {
     AppMethodBeat.i(51737);
-    if (((o.Nu(this.xbD)) || (dzX()) || (dzY())) && (!this.wWb) && (!this.xbP))
+    if (((o.OW(this.ypF)) || (dLv()) || (dLw())) && (!this.yjI) && (!this.ypR))
     {
-      this.xbt.setVisibility(0);
-      this.xbt.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(51685);
-          BaseScanUI.y(BaseScanUI.this);
-          AppMethodBeat.o(51685);
-        }
-      });
+      this.ypv.setVisibility(0);
+      this.ypv.setOnClickListener(new BaseScanUI.5(this));
       AppMethodBeat.o(51737);
       return;
     }
-    this.xbt.setVisibility(8);
+    this.ypv.setVisibility(8);
     AppMethodBeat.o(51737);
   }
   
-  private void dzW()
+  private void dLu()
   {
-    AppMethodBeat.i(199523);
-    ac.i("MicroMsg.ScanUI", "alvinluo processMultiCodeCancel isShowingMultiCodeResult: %b", new Object[] { Boolean.valueOf(this.xbX) });
-    if (!this.xbX)
+    AppMethodBeat.i(186190);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo processMultiCodeCancel isShowingMultiCodeResult: %b", new Object[] { Boolean.valueOf(this.ypZ) });
+    if (!this.ypZ)
     {
-      AppMethodBeat.o(199523);
+      AppMethodBeat.o(186190);
       return;
     }
-    this.xbX = false;
-    a(this.xbt, true, null);
+    this.ypZ = false;
+    a(this.ypv, true, null);
     b(false, new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(199498);
+        AppMethodBeat.i(186170);
         BaseScanUI.a(BaseScanUI.this, System.currentTimeMillis());
         BaseScanUI.q(BaseScanUI.this);
-        AppMethodBeat.o(199498);
+        AppMethodBeat.o(186170);
       }
     });
-    pV(true);
-    if (o.Nu(this.xbD))
+    qt(true);
+    if (o.OW(this.ypF))
     {
-      z.k(3, -1, 0L);
-      z.dzN();
+      ac.l(3, -1, 0L);
+      ac.dLn();
     }
-    AppMethodBeat.o(199523);
+    AppMethodBeat.o(186190);
   }
   
-  private boolean dzX()
+  private boolean dLv()
   {
-    return this.xbD == 12;
+    return this.ypF == 12;
   }
   
-  private boolean dzY()
+  private boolean dLw()
   {
-    return this.xbD == 3;
+    return this.ypF == 3;
   }
   
-  private void dzZ()
+  private void dLx()
   {
     AppMethodBeat.i(51739);
-    switch (this.xbD)
+    switch (this.ypF)
     {
     default: 
-      this.xbn.setScanCallback(null);
+      this.ypp.setScanCallback(null);
       AppMethodBeat.o(51739);
       return;
     case 1: 
     case 4: 
     case 8: 
-      this.xbn.setScanCallback(this.xbY);
-      this.xbw = new com.tencent.mm.plugin.scanner.d.d(this.xbD, this.xbK, this.xbn, this, this);
+      this.ypp.setScanCallback(this.yqa);
+      this.ypy = new com.tencent.mm.plugin.scanner.d.d(this.ypF, this.ypM, this.ypp, this, this);
       AppMethodBeat.o(51739);
       return;
     }
-    this.xbn.setScanCallback(this.xbZ);
-    this.xbw = new com.tencent.mm.plugin.scanner.d.a(this.xbD, this.xbn, this, this.xca);
+    this.ypp.setScanCallback(this.yqb);
+    this.ypy = new com.tencent.mm.plugin.scanner.d.a(this.ypF, this.ypp, this, this.yqc);
     AppMethodBeat.o(51739);
   }
   
-  private void gX(int paramInt1, int paramInt2)
+  private void dLy()
   {
-    AppMethodBeat.i(199526);
-    ac.v("MicroMsg.ScanUI", "alvinluo reportSwitchTab %b", new Object[] { Boolean.valueOf(this.xbE) });
-    z.gV(paramInt1, paramInt2);
-    z.MR(paramInt1);
-    z.MT(paramInt1);
-    z.MY(paramInt1);
-    AppMethodBeat.o(199526);
+    AppMethodBeat.i(169986);
+    if ((this.ypV != null) && (this.ypp != null)) {
+      this.ypV.a(this.ypp.getScanMaskView(), this.ypp.getSharedMaskView(), this.ynQ);
+    }
+    AppMethodBeat.o(169986);
+  }
+  
+  private void dLz()
+  {
+    AppMethodBeat.i(51748);
+    if ((o.OW(this.ypF)) || (dLw()) || (dLv())) {}
+    for (int i = 0; i != 0; i = 1)
+    {
+      qv(this.ypI);
+      AppMethodBeat.o(51748);
+      return;
+    }
+    qv(true);
+    AppMethodBeat.o(51748);
   }
   
   private void goBack()
@@ -1008,12 +939,23 @@ public class BaseScanUI
     AppMethodBeat.o(51742);
   }
   
-  private void pU(boolean paramBoolean)
+  private void ho(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(186193);
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanUI", "alvinluo reportSwitchTab %b", new Object[] { Boolean.valueOf(this.ypG) });
+    ac.hm(paramInt1, paramInt2);
+    ac.Ot(paramInt1);
+    ac.Ov(paramInt1);
+    ac.OA(paramInt1);
+    AppMethodBeat.o(186193);
+  }
+  
+  private void qs(boolean paramBoolean)
   {
     AppMethodBeat.i(51731);
-    if ((!paramBoolean) && (!aj.DT()))
+    if ((!paramBoolean) && (!al.isDarkMode()))
     {
-      getController().setNavigationbarColor(ao.aJ(this, 2130968578));
+      getController().setNavigationbarColor(getContext().getResources().getColor(2131099649));
       AppMethodBeat.o(51731);
       return;
     }
@@ -1021,67 +963,71 @@ public class BaseScanUI
     AppMethodBeat.o(51731);
   }
   
-  private void pV(boolean paramBoolean)
+  private void qt(boolean paramBoolean)
   {
-    AppMethodBeat.i(199522);
-    if (this.xbx != null)
+    AppMethodBeat.i(186189);
+    if (this.ypz != null)
     {
-      Object localObject = this.xbx;
-      ac.i("MicroMsg.ScanScrollTabController", "alvinluo setEnable %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      Object localObject = this.ypz;
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanScrollTabController", "alvinluo setEnable %b", new Object[] { Boolean.valueOf(paramBoolean) });
       ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject).setEnableSwitchTab(paramBoolean);
-      localObject = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject).xkw;
+      localObject = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject).yyy;
       if (localObject != null)
       {
         ((ScanScrollTabView)localObject).setEnabled(paramBoolean);
-        AppMethodBeat.o(199522);
+        AppMethodBeat.o(186189);
         return;
       }
     }
-    AppMethodBeat.o(199522);
+    AppMethodBeat.o(186189);
   }
   
-  private void pW(boolean paramBoolean)
+  private void qu(boolean paramBoolean)
   {
     AppMethodBeat.i(51747);
     if (paramBoolean)
     {
-      this.xbp.setVisibility(0);
-      this.xbn.cqU();
-      this.xbp.setOnClickListener(new View.OnClickListener()
+      this.ypr.setVisibility(0);
+      this.ypp.cwE();
+      this.ypr.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(199509);
-          BaseScanUI.G(BaseScanUI.this);
+          AppMethodBeat.i(186176);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/BaseScanUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          BaseScanUI.K(BaseScanUI.this);
           BaseScanUI.h(BaseScanUI.this, false);
           BaseScanUI.q(BaseScanUI.this);
-          AppMethodBeat.o(199509);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$22", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(186176);
         }
       });
-      if (this.xbn != null) {
-        this.xbn.pZ(true);
+      if (this.ypp != null) {
+        this.ypp.qx(true);
       }
-      a(this.xbt, false, null);
-      aa(false, true);
+      a(this.ypv, false, null);
+      ae(false, true);
       AppMethodBeat.o(51747);
       return;
     }
-    this.xbp.setVisibility(8);
-    if (this.xbn != null) {
-      this.xbn.pZ(false);
+    this.ypr.setVisibility(8);
+    if (this.ypp != null) {
+      this.ypp.qx(false);
     }
-    a(this.xbt, true, null);
+    a(this.ypv, true, null);
     AppMethodBeat.o(51747);
   }
   
-  private void pX(boolean paramBoolean)
+  private void qv(boolean paramBoolean)
   {
     AppMethodBeat.i(51749);
-    ac.i("MicroMsg.ScanUI", "network change %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "network change %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (!paramBoolean)
     {
-      pW(false);
-      this.xbn.cqU();
+      qu(false);
+      this.ypp.cwE();
     }
     AppMethodBeat.o(51749);
   }
@@ -1089,52 +1035,52 @@ public class BaseScanUI
   private void setEnableSwitchTab(boolean paramBoolean)
   {
     AppMethodBeat.i(51733);
-    ac.i("MicroMsg.ScanUI", "alvinluo setEnableSwitchTab enable: %b, %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.xbz) });
-    if (this.xbx != null)
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo setEnableSwitchTab enable: %b, %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.ypB) });
+    if (this.ypz != null)
     {
       if (!paramBoolean) {
         break label95;
       }
-      if (this.xbz) {
-        this.xbx.setEnableSwitchTab(true);
+      if (this.ypB) {
+        this.ypz.setEnableSwitchTab(true);
       }
     }
-    while (this.xbn != null) {
+    while (this.ypp != null) {
       if (paramBoolean)
       {
-        if (this.xbz)
+        if (this.ypB)
         {
-          this.xbn.setEnableScrollSwitchTab(true);
+          this.ypp.setEnableScrollSwitchTab(true);
           AppMethodBeat.o(51733);
           return;
           label95:
-          this.xbx.setEnableSwitchTab(false);
+          this.ypz.setEnableSwitchTab(false);
         }
       }
       else {
-        this.xbn.setEnableScrollSwitchTab(false);
+        this.ypp.setEnableScrollSwitchTab(false);
       }
     }
     AppMethodBeat.o(51733);
   }
   
-  public final void a(boolean paramBoolean1, boolean paramBoolean2, b.a parama)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.scanner.view.b.a parama)
   {
     AppMethodBeat.i(51746);
-    if ((this.xbT != null) && (this.xbT.wZS)) {}
+    if ((this.ypV != null) && (this.ypV.ynR)) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.ScanUI", "alvinluo showLoadingView show: %b, isLoadingShow: %b, withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool), Boolean.valueOf(paramBoolean2) });
-      this.xbQ = paramBoolean1;
-      if (this.xbT != null)
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo showLoadingView show: %b, isLoadingShow: %b, withAnimation: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(bool), Boolean.valueOf(paramBoolean2) });
+      this.ypS = paramBoolean1;
+      if (this.ypV != null)
       {
-        this.xbT.wZT = parama;
-        if (this.xbT.wZS != paramBoolean1)
+        this.ypV.ynS = parama;
+        if (this.ypV.ynR != paramBoolean1)
         {
-          this.xbT.Y(paramBoolean1, paramBoolean2);
+          this.ypV.ac(paramBoolean1, paramBoolean2);
           if (paramBoolean1)
           {
-            a(this.xbt, false, null);
+            a(this.ypv, false, null);
             b(false, null);
           }
         }
@@ -1144,129 +1090,151 @@ public class BaseScanUI
     }
   }
   
-  public final void bRD()
+  public final void al(Bundle paramBundle)
+  {
+    AppMethodBeat.i(186195);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onNetworkUnconnected");
+    this.ypS = true;
+    a(this.ypv, false, null);
+    b(false, null);
+    if (this.ypV != null) {
+      if (paramBundle == null) {
+        break label253;
+      }
+    }
+    label238:
+    label246:
+    label253:
+    for (boolean bool = paramBundle.getBoolean("key_offline_scan_show_tips", true);; bool = true)
+    {
+      aa localaa = this.ypV;
+      paramBundle = localaa.ynO;
+      if (paramBundle != null) {
+        paramBundle.dMx();
+      }
+      paramBundle = localaa.ynO;
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.getTargetSuccessMarkView();
+        Object localObject = localaa.ynQ;
+        if (localObject != null) {
+          ((ScanNetworkMaskView)localObject).setSuccessMarkView(paramBundle);
+        }
+        paramBundle = localaa.ynQ;
+        if (paramBundle != null)
+        {
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanNetworkMaskView", "alvinluo showNoNetworkView showTips: %s", new Object[] { Boolean.valueOf(bool) });
+          if (paramBundle.yyc != null)
+          {
+            localObject = paramBundle.yyh;
+            if (localObject == null) {
+              p.bcb("noNetworkLayout");
+            }
+            localObject = (TextView)((View)localObject).findViewById(2131308192);
+            if (localObject != null) {
+              ((TextView)localObject).setText(2131762851);
+            }
+            paramBundle.qC(bool);
+            if ((paramBundle.yyj[0] != 0) || (paramBundle.yyj[1] != 0)) {
+              break label238;
+            }
+            paramBundle.yyl = true;
+          }
+        }
+      }
+      for (;;)
+      {
+        paramBundle = localaa.ynP;
+        if (paramBundle == null) {
+          break label246;
+        }
+        paramBundle.qI(false);
+        AppMethodBeat.o(186195);
+        return;
+        paramBundle = null;
+        break;
+        paramBundle.qD(true);
+      }
+      AppMethodBeat.o(186195);
+      return;
+    }
+  }
+  
+  public final void am(Bundle paramBundle)
+  {
+    AppMethodBeat.i(186196);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onNetworkWeak");
+    this.ypS = true;
+    a(this.ypv, false, null);
+    b(false, null);
+    if (this.ypV != null) {
+      if (paramBundle == null) {
+        break label251;
+      }
+    }
+    label236:
+    label244:
+    label251:
+    for (boolean bool = paramBundle.getBoolean("key_offline_scan_show_tips", true);; bool = true)
+    {
+      aa localaa = this.ypV;
+      paramBundle = localaa.ynO;
+      if (paramBundle != null) {
+        paramBundle.dMy();
+      }
+      paramBundle = localaa.ynO;
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.getTargetSuccessMarkView();
+        Object localObject = localaa.ynQ;
+        if (localObject != null) {
+          ((ScanNetworkMaskView)localObject).setSuccessMarkView(paramBundle);
+        }
+        paramBundle = localaa.ynQ;
+        if (paramBundle != null)
+        {
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanNetworkMaskView", "alvinluo showWeakNetworkView needAnimateWeakNetworkView: %b, showTips: %b", new Object[] { Boolean.valueOf(paramBundle.yyo), Boolean.valueOf(bool) });
+          localObject = paramBundle.yyh;
+          if (localObject == null) {
+            p.bcb("noNetworkLayout");
+          }
+          localObject = (TextView)((View)localObject).findViewById(2131308192);
+          if (localObject != null) {
+            ((TextView)localObject).setText(2131762854);
+          }
+          paramBundle.qC(bool);
+          if (paramBundle.yyo) {
+            break label236;
+          }
+          paramBundle.yyo = true;
+          paramBundle.qD(false);
+        }
+      }
+      for (;;)
+      {
+        paramBundle = localaa.ynP;
+        if (paramBundle == null) {
+          break label244;
+        }
+        paramBundle.setVisibility(8);
+        AppMethodBeat.o(186196);
+        return;
+        paramBundle = null;
+        break;
+        paramBundle.qD(true);
+      }
+      AppMethodBeat.o(186196);
+      return;
+    }
+  }
+  
+  public final void bWi()
   {
     AppMethodBeat.i(51743);
-    ac.i("MicroMsg.ScanUI", "finishUI");
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "finishUI");
     finish();
     overridePendingTransition(0, 0);
     AppMethodBeat.o(51743);
-  }
-  
-  public final void dzQ()
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(51744);
-    ac.i("MicroMsg.ScanUI", "alvinluo onNetworkUnconnected");
-    this.xbQ = true;
-    a(this.xbt, false, null);
-    b(false, null);
-    if (this.xbT != null)
-    {
-      x localx = this.xbT;
-      Object localObject2 = localx.wZP;
-      if (localObject2 != null) {
-        ((BaseScanMaskView)localObject2).dAZ();
-      }
-      localObject2 = localx.wZP;
-      if (localObject2 != null) {
-        localObject1 = ((BaseScanMaskView)localObject2).getTargetSuccessMarkView();
-      }
-      localObject2 = localx.wZR;
-      if (localObject2 != null) {
-        ((ScanNetworkMaskView)localObject2).setSuccessMarkView((View)localObject1);
-      }
-      localObject1 = localx.wZR;
-      if (localObject1 != null)
-      {
-        ac.i("MicroMsg.ScanNetworkMaskView", "alvinluo showNoNetworkView");
-        if (((ScanNetworkMaskView)localObject1).xka != null)
-        {
-          localObject2 = ((ScanNetworkMaskView)localObject1).xkf;
-          if (localObject2 == null) {
-            k.aVY("noNetworkLayout");
-          }
-          localObject2 = (TextView)((View)localObject2).findViewById(2131304326);
-          if (localObject2 != null) {
-            ((TextView)localObject2).setText(2131762851);
-          }
-          if ((localObject1.xkh[0] != 0) || (localObject1.xkh[1] != 0)) {
-            break label197;
-          }
-          ((ScanNetworkMaskView)localObject1).xkj = true;
-        }
-      }
-      for (;;)
-      {
-        localObject1 = localx.wZQ;
-        if (localObject1 == null) {
-          break;
-        }
-        ((ScanSharedMaskView)localObject1).qj(false);
-        AppMethodBeat.o(51744);
-        return;
-        label197:
-        ((ScanNetworkMaskView)localObject1).qe(true);
-      }
-    }
-    AppMethodBeat.o(51744);
-  }
-  
-  public final void dzR()
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(51745);
-    ac.i("MicroMsg.ScanUI", "alvinluo onNetworkWeak");
-    this.xbQ = true;
-    a(this.xbt, false, null);
-    b(false, null);
-    if (this.xbT != null)
-    {
-      x localx = this.xbT;
-      Object localObject2 = localx.wZP;
-      if (localObject2 != null) {
-        ((BaseScanMaskView)localObject2).dBa();
-      }
-      localObject2 = localx.wZP;
-      if (localObject2 != null) {
-        localObject1 = ((BaseScanMaskView)localObject2).getTargetSuccessMarkView();
-      }
-      localObject2 = localx.wZR;
-      if (localObject2 != null) {
-        ((ScanNetworkMaskView)localObject2).setSuccessMarkView((View)localObject1);
-      }
-      localObject1 = localx.wZR;
-      if (localObject1 != null)
-      {
-        ac.i("MicroMsg.ScanNetworkMaskView", "alvinluo showWeakNetworkView needAnimateWeakNetworkView: %b", new Object[] { Boolean.valueOf(((ScanNetworkMaskView)localObject1).xkm) });
-        localObject2 = ((ScanNetworkMaskView)localObject1).xkf;
-        if (localObject2 == null) {
-          k.aVY("noNetworkLayout");
-        }
-        localObject2 = (TextView)((View)localObject2).findViewById(2131304326);
-        if (localObject2 != null) {
-          ((TextView)localObject2).setText(2131762854);
-        }
-        if (((ScanNetworkMaskView)localObject1).xkm) {
-          break label199;
-        }
-        ((ScanNetworkMaskView)localObject1).xkm = true;
-        ((ScanNetworkMaskView)localObject1).qe(false);
-      }
-      for (;;)
-      {
-        localObject1 = localx.wZQ;
-        if (localObject1 == null) {
-          break;
-        }
-        ((ScanSharedMaskView)localObject1).setVisibility(8);
-        AppMethodBeat.o(51745);
-        return;
-        label199:
-        ((ScanNetworkMaskView)localObject1).qe(true);
-      }
-    }
-    AppMethodBeat.o(51745);
   }
   
   public int getForceOrientation()
@@ -1283,49 +1251,49 @@ public class BaseScanUI
   {
     AppMethodBeat.i(51730);
     this.container = ((FrameLayout)findViewById(2131304310));
-    this.xbx = new com.tencent.mm.plugin.scanner.ui.widget.b(this);
+    this.ypz = new com.tencent.mm.plugin.scanner.ui.widget.b(this);
     getWindow().getDecorView().setSystemUiVisibility(1280);
     Object localObject2;
     Object localObject1;
     int i;
-    if (com.tencent.mm.compatible.util.d.kZ(19))
+    if (com.tencent.mm.compatible.util.d.ly(19))
     {
       getWindow().addFlags(67109888);
       if (getSupportActionBar() != null) {
         getSupportActionBar().hide();
       }
-      this.xbp = findViewById(2131304320);
-      this.wZR = ((ScanNetworkMaskView)findViewById(2131304319));
+      this.ypr = findViewById(2131304320);
+      this.ynQ = ((ScanNetworkMaskView)findViewById(2131304319));
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(169983);
-          BaseScanUI.v(BaseScanUI.this);
+          BaseScanUI.w(BaseScanUI.this);
           AppMethodBeat.o(169983);
           return true;
         }
       });
-      this.xbr = findViewById(2131306000);
-      this.xbs = ((ImageView)findViewById(2131298365));
-      this.xbt = ((ImageView)findViewById(2131302478));
-      this.xbu = ((TextView)findViewById(2131302560));
-      this.xbn = new ScanUIRectView(this);
-      this.xbn.setScanRequest(this.xbO);
+      this.ypt = findViewById(2131306000);
+      this.ypu = ((ImageView)findViewById(2131298365));
+      this.ypv = ((ImageView)findViewById(2131302478));
+      this.ypw = ((TextView)findViewById(2131302560));
+      this.ypp = new ScanUIRectView(this);
+      this.ypp.setScanRequest(this.ypQ);
       localObject2 = (ScanScrollTabView)findViewById(2131304329);
-      localObject1 = this.xbx;
-      k.h(localObject2, "scrollTabView");
-      ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).xkw = ((ScanScrollTabView)localObject2);
-      localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).xkw;
+      localObject1 = this.ypz;
+      p.h(localObject2, "scrollTabView");
+      ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).yyy = ((ScanScrollTabView)localObject2);
+      localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).yyy;
       if (localObject2 != null) {
         ((ScanScrollTabView)localObject2).removeAllTabs();
       }
-      localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).xkw;
+      localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).yyy;
       if (localObject2 != null) {
         ((ScanScrollTabView)localObject2).setOnTabScrollListener((com.tencent.mm.plugin.scanner.ui.widget.d)new b.c());
       }
-      ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).xkx.clear();
-      localObject2 = ((Iterable)((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).xky).iterator();
+      ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).yyz.clear();
+      localObject2 = ((Iterable)((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).yyA).iterator();
       i = 0;
       label292:
       if (!((Iterator)localObject2).hasNext()) {
@@ -1345,28 +1313,28 @@ public class BaseScanUI
       getWindow().setFlags(1024, 1024);
       break;
       label344:
-      localObject1 = this.xbx;
+      localObject1 = this.ypz;
       localObject2 = new com.tencent.mm.plugin.scanner.ui.widget.e()
       {
-        public final void Ni(int paramAnonymousInt)
+        public final void OK(int paramAnonymousInt)
         {
-          AppMethodBeat.i(199506);
-          ac.i("MicroMsg.ScanUI", "alvinluo onTabUnSelected tabId: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          if (o.Nu(paramAnonymousInt)) {
+          AppMethodBeat.i(51695);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onTabUnSelected tabId: %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          if (o.OW(paramAnonymousInt)) {
             BaseScanUI.f(BaseScanUI.this, false);
           }
-          BaseScanUI.Nh(paramAnonymousInt);
+          BaseScanUI.OJ(paramAnonymousInt);
           if (paramAnonymousInt == 12) {
-            BaseScanUI.dAe();
+            BaseScanUI.dLC();
           }
-          AppMethodBeat.o(199506);
+          AppMethodBeat.o(51695);
         }
         
-        public final void gY(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void hp(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(199505);
-          ac.i("MicroMsg.ScanUI", "alvinluo onTabSelected tabId: %d, tabSelectedAction: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-          if (!BaseScanUI.D(BaseScanUI.this)) {
+          AppMethodBeat.i(51694);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onTabSelected tabId: %d, tabSelectedAction: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          if (!BaseScanUI.H(BaseScanUI.this)) {
             BaseScanUI.a(BaseScanUI.this, paramAnonymousInt1, paramAnonymousInt2);
           }
           for (;;)
@@ -1374,153 +1342,122 @@ public class BaseScanUI
             if (BaseScanUI.b(BaseScanUI.this) != paramAnonymousInt1) {
               BaseScanUI.b(BaseScanUI.this, paramAnonymousInt1);
             }
-            if (o.Nu(paramAnonymousInt1)) {
+            if (o.OW(paramAnonymousInt1)) {
               BaseScanUI.f(BaseScanUI.this, true);
             }
-            BaseScanUI.F(BaseScanUI.this);
-            AppMethodBeat.o(199505);
+            BaseScanUI.J(BaseScanUI.this);
+            AppMethodBeat.o(51694);
             return;
-            BaseScanUI.E(BaseScanUI.this);
+            BaseScanUI.I(BaseScanUI.this);
           }
         }
       };
-      k.h(localObject2, "tabOnSelectedListener");
+      p.h(localObject2, "tabOnSelectedListener");
       localObject2 = new b.d((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1, (com.tencent.mm.plugin.scanner.ui.widget.e)localObject2);
-      localObject1 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).xkw;
+      localObject1 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject1).yyy;
       if (localObject1 != null) {
         ((ScanScrollTabView)localObject1).setOnTabChangedListener((com.tencent.mm.plugin.scanner.ui.widget.e)localObject2);
       }
-      localObject2 = this.xbx;
-      localObject1 = new com.tencent.mm.plugin.scanner.ui.widget.d()
-      {
-        public final void cp(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(199508);
-          if (paramAnonymousInt == 1) {
-            BaseScanUI.g(BaseScanUI.this, false);
-          }
-          for (;;)
-          {
-            ac.v("MicroMsg.ScanUI", "alvinluo onScrollStateChanged state: %d, isScrolling: %b", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(BaseScanUI.l(BaseScanUI.this)) });
-            AppMethodBeat.o(199508);
-            return;
-            if ((paramAnonymousInt == 3) || (paramAnonymousInt == 2)) {
-              BaseScanUI.g(BaseScanUI.this, true);
-            }
-          }
-        }
-        
-        public final void s(int paramAnonymousInt, float paramAnonymousFloat)
-        {
-          AppMethodBeat.i(199507);
-          ac.v("MicroMsg.ScanUI", "alvinluo onScroll offsetX: %f", new Object[] { Float.valueOf(paramAnonymousFloat) });
-          AppMethodBeat.o(199507);
-        }
-      };
-      k.h(localObject1, "tabOnScrollListener");
-      localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).xkw;
+      localObject2 = this.ypz;
+      localObject1 = new BaseScanUI.14(this);
+      p.h(localObject1, "tabOnScrollListener");
+      localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).yyy;
       if (localObject2 != null) {
         ((ScanScrollTabView)localObject2).setOnTabScrollListener((com.tencent.mm.plugin.scanner.ui.widget.d)localObject1);
       }
-      if (this.xbn != null) {
-        this.xbn.setScrollTabController(this.xbx);
+      if (this.ypp != null) {
+        this.ypp.setScrollTabController(this.ypz);
       }
-      if ((this.xbL) || (this.xbD == 8)) {
-        this.xbN = true;
+      if ((this.ypN) || (this.ypF == 8)) {
+        this.ypP = true;
       }
       label578:
-      while (!com.tencent.mm.aw.b.aGe())
+      while (!com.tencent.mm.ax.b.aJn())
       {
-        if (this.xbO != null)
+        if (this.ypQ != null)
         {
-          if (this.xbO.wVX) {
-            this.xbN = true;
+          if (this.ypQ.yjE) {
+            this.ypP = true;
           }
-          if (this.xbO.wWa) {
-            this.wWa = true;
+          if (this.ypQ.yjH) {
+            this.yjH = true;
           }
-          if (this.xbO.wWb) {
-            this.wWb = true;
+          if (this.ypQ.yjI) {
+            this.yjI = true;
           }
         }
-        if (!this.xbN) {
+        if (!this.ypP) {
           break;
         }
-        localObject1 = this.xbx.xkw;
+        localObject1 = this.ypz.yyy;
         if (localObject1 != null) {
           ((ScanScrollTabView)localObject1).setVisibility(8);
         }
-        this.xbz = false;
-        this.xbn.setBottomExtraHeight(0);
-        setEnableSwitchTab(this.xbz);
-        ac.i("MicroMsg.ScanUI", "alvinluo initView currentMode: %d, showOnlyScanCode: %b, hideScrollTab: %b, scanRequest: %s", new Object[] { Integer.valueOf(this.xbD), Boolean.valueOf(this.xbL), Boolean.valueOf(this.xbN), this.xbO });
-        this.xbn.setActivity(this);
-        this.container.addView(this.xbn, 0, new FrameLayout.LayoutParams(-1, -1));
-        this.xbn.onCreate();
-        this.xbn.setShowScanTips(this.xbF);
-        this.xbn.setNetworkAvailable(this.xbG);
-        this.xbn.setScanMode(this.xbD);
-        this.xbn.refreshView();
-        gX(this.xbD, 0);
-        dAa();
-        z.MY(this.xbD);
-        dAc();
-        if (this.xbI) {
-          this.xbn.setBlackInterval(com.tencent.qbar.b.fCe());
+        this.ypB = false;
+        this.ypp.setBottomExtraHeight(0);
+        setEnableSwitchTab(this.ypB);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo initView currentMode: %d, showOnlyScanCode: %b, hideScrollTab: %b, scanRequest: %s", new Object[] { Integer.valueOf(this.ypF), Boolean.valueOf(this.ypN), Boolean.valueOf(this.ypP), this.ypQ });
+        this.ypp.setActivity(this);
+        this.container.addView(this.ypp, 0, new FrameLayout.LayoutParams(-1, -1));
+        this.ypp.onCreate();
+        this.ypp.setShowScanTips(this.ypH);
+        this.ypp.setNetworkAvailable(this.ypI);
+        this.ypp.setScanMode(this.ypF);
+        this.ypp.refreshView();
+        ho(this.ypF, 0);
+        dLy();
+        ac.OA(this.ypF);
+        dLA();
+        if (this.ypK) {
+          this.ypp.setBlackInterval(com.tencent.qbar.b.fTt());
         }
-        dzS();
-        dzZ();
-        if ((this.xbJ != null) && (this.xbJ.length > 0)) {
-          this.xbn.setScanCodeReaders(this.xbJ);
+        dLq();
+        dLx();
+        if ((this.ypL != null) && (this.ypL.length > 0)) {
+          this.ypp.setScanCodeReaders(this.ypL);
         }
-        if (this.xbP) {
-          this.xbn.setMyQrCodeVisible(false);
+        if (this.ypR) {
+          this.ypp.setMyQrCodeVisible(false);
         }
-        localObject2 = this.xbx;
-        i = this.xbD;
-        localObject1 = (Integer)((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).xkz.get(Integer.valueOf(i));
-        ac.i("MicroMsg.ScanScrollTabController", "alvinluo setSelectedTab tabId: %d, index: %s", new Object[] { Integer.valueOf(i), localObject1 });
+        localObject2 = this.ypz;
+        i = this.ypF;
+        localObject1 = (Integer)((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).yyB.get(Integer.valueOf(i));
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanScrollTabController", "alvinluo setSelectedTab tabId: %d, index: %s", new Object[] { Integer.valueOf(i), localObject1 });
         if (localObject1 != null)
         {
-          ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).bns = ((Integer)localObject1).intValue();
-          localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).xkw;
+          ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).bxN = ((Integer)localObject1).intValue();
+          localObject2 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).yyy;
           if (localObject2 != null) {
             ((ScanScrollTabView)localObject2).setSelectedTab(((Integer)localObject1).intValue());
           }
         }
-        dzT();
-        dzV();
-        this.xbs.setVisibility(0);
-        this.xbs.setOnClickListener(new View.OnClickListener()
+        dLr();
+        dLt();
+        this.ypu.setVisibility(0);
+        this.ypu.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(51686);
-            BaseScanUI.dAe();
+            AppMethodBeat.i(186168);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/BaseScanUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            BaseScanUI.dLC();
             BaseScanUI.e(BaseScanUI.this);
-            BaseScanUI.v(BaseScanUI.this);
-            z.k(3, -1, 0L);
-            AppMethodBeat.o(51686);
+            BaseScanUI.w(BaseScanUI.this);
+            ac.l(3, -1, 0L);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(186168);
           }
         });
-        this.xbu.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(199497);
-            if (BaseScanUI.z(BaseScanUI.this)) {
-              BaseScanUI.A(BaseScanUI.this);
-            }
-            AppMethodBeat.o(199497);
-          }
-        });
+        this.ypw.setOnClickListener(new BaseScanUI.7(this));
         AppMethodBeat.o(51730);
         return;
       }
       int j;
-      if (o.dBv())
+      if (o.dMS())
       {
-        localObject2 = this.xbx;
+        localObject2 = this.ypz;
         int[] arrayOfInt = new int[3];
         tmp970_968 = arrayOfInt;
         tmp970_968[0] = 1;
@@ -1529,24 +1466,24 @@ public class BaseScanUI
         tmp979_974 = tmp974_970;
         tmp979_974[2] = 3;
         tmp979_974;
-        k.h(arrayOfInt, "tabIdList");
-        ac.v("MicroMsg.ScanScrollTabController", "alvinluo setEnableTab tabIdList size: %d", new Object[] { Integer.valueOf(3) });
-        localObject1 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).xkw;
+        p.h(arrayOfInt, "tabIdList");
+        com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanScrollTabController", "alvinluo setEnableTab tabIdList size: %d", new Object[] { Integer.valueOf(3) });
+        localObject1 = ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).yyy;
         if (localObject1 != null) {
           ((ScanScrollTabView)localObject1).removeAllTabs();
         }
-        ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).xkx.clear();
+        ((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).yyz.clear();
         j = 0;
         i = 0;
         if (j < 3)
         {
           int k = arrayOfInt[j];
-          ac.v("MicroMsg.ScanScrollTabController", "alvinluo setEnableTab tabId: %d", new Object[] { Integer.valueOf(k) });
-          Iterator localIterator = ((Iterable)((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).xky).iterator();
+          com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanScrollTabController", "alvinluo setEnableTab tabId: %d", new Object[] { Integer.valueOf(k) });
+          Iterator localIterator = ((Iterable)((com.tencent.mm.plugin.scanner.ui.widget.b)localObject2).yyA).iterator();
           while (localIterator.hasNext())
           {
             localObject1 = (b.b)localIterator.next();
-            if (((b.b)localObject1).xkB == k)
+            if (((b.b)localObject1).yyD == k)
             {
               label1117:
               if (localObject1 == null) {
@@ -1569,14 +1506,14 @@ public class BaseScanUI
         break label1117;
         label1148:
         break;
-        this.xbN = true;
+        this.ypP = true;
         break;
-        localObject1 = this.xbx.xkw;
+        localObject1 = this.ypz.yyy;
         if (localObject1 != null) {
           ((ScanScrollTabView)localObject1).setVisibility(0);
         }
-        this.xbn.setBottomExtraHeight(getResources().getDimensionPixelSize(2131166769));
-        this.xbz = true;
+        this.ypp.setBottomExtraHeight(getResources().getDimensionPixelSize(2131166769));
+        this.ypB = true;
         break label578;
       }
     }
@@ -1597,84 +1534,93 @@ public class BaseScanUI
         return;
         if ((paramInt2 == -1) && (paramIntent != null))
         {
-          z.Nc(this.xbD);
-          paramIntent = com.tencent.mm.ui.tools.a.i(this, paramIntent, com.tencent.mm.plugin.image.d.awL());
-          ac.i("MicroMsg.ScanUI", "select: [%s]", new Object[] { paramIntent });
-          if (!bs.isNullOrNil(paramIntent))
+          ac.OE(this.ypF);
+          paramIntent = com.tencent.mm.ui.tools.a.j(this, paramIntent, com.tencent.mm.plugin.image.d.azA());
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "select: [%s]", new Object[] { paramIntent });
+          if (!bt.isNullOrNil(paramIntent))
           {
             l1 = System.currentTimeMillis();
-            com.tencent.qbar.c.JQs.adZ(com.tencent.qbar.c.JQm);
-            com.tencent.qbar.e.fCh().a(this, l1, paramIntent, new e.b()
+            com.tencent.qbar.c.LKf.agz(com.tencent.qbar.c.LJZ);
+            com.tencent.qbar.e.fTw().a(this, l1, paramIntent, new e.b()
             {
-              public final void a(final long paramAnonymousLong, final List<com.tencent.qbar.a.a> paramAnonymousList, final List<WxQbarNative.QBarReportMsg> paramAnonymousList1)
+              public final void a(final long paramAnonymousLong, e.d paramAnonymousd)
               {
-                AppMethodBeat.i(199517);
-                if ((paramAnonymousLong == l1) && (BaseScanUI.N(BaseScanUI.this))) {
-                  ap.f(new Runnable()
-                  {
-                    public final void run()
+                final List localList2 = null;
+                AppMethodBeat.i(186182);
+                if (paramAnonymousd != null) {}
+                for (final List localList1 = paramAnonymousd.yof;; localList1 = null)
+                {
+                  if (paramAnonymousd != null) {
+                    localList2 = paramAnonymousd.LKK;
+                  }
+                  if ((paramAnonymousLong == l1) && (BaseScanUI.S(BaseScanUI.this))) {
+                    aq.f(new Runnable()
                     {
-                      AppMethodBeat.i(199516);
-                      BaseScanUI.d(BaseScanUI.this, false);
-                      Bundle localBundle;
-                      Object localObject;
-                      if ((paramAnonymousList != null) && (!paramAnonymousList.isEmpty()))
+                      public final void run()
                       {
-                        localBundle = new Bundle();
-                        localBundle.putString("result_content", ((com.tencent.qbar.a.a)paramAnonymousList.get(0)).data);
-                        localBundle.putInt("result_code_format", ((com.tencent.qbar.a.a)paramAnonymousList.get(0)).typeID);
-                        localBundle.putString("result_code_name", ((com.tencent.qbar.a.a)paramAnonymousList.get(0)).typeName);
-                        localObject = ((com.tencent.qbar.a.a)paramAnonymousList.get(0)).rawData;
-                        if (localObject != null) {
-                          localBundle.putByteArray("result_raw_data", (byte[])localObject);
-                        }
-                        if ((paramAnonymousList1 == null) || (paramAnonymousList1.isEmpty())) {
-                          break label392;
-                        }
-                      }
-                      label392:
-                      for (int i = ((WxQbarNative.QBarReportMsg)paramAnonymousList1.get(0)).qrcodeVersion;; i = 0)
-                      {
-                        localBundle.putInt("result_code_version", i);
-                        z.a(BaseScanUI.b(BaseScanUI.this), true, 2, 1);
-                        if (BaseScanUI.f(BaseScanUI.this))
+                        AppMethodBeat.i(186181);
+                        BaseScanUI.d(BaseScanUI.this, false);
+                        Bundle localBundle;
+                        Object localObject;
+                        if ((localList1 != null) && (!localList1.isEmpty()))
                         {
-                          localObject = new Intent();
-                          ((Intent)localObject).putExtra("key_scan_result", localBundle.getString("result_content"));
-                          ((Intent)localObject).putExtra("key_scan_result_raw", localBundle.getByteArray("result_raw_data"));
-                          ((Intent)localObject).putExtra("key_scan_result_code_name", localBundle.getString("result_code_name"));
-                          ((Intent)localObject).putExtra("key_scan_result_code_version", i);
-                          BaseScanUI.this.setResult(-1, (Intent)localObject);
-                          BaseScanUI.this.bRD();
-                          AppMethodBeat.o(199516);
+                          localBundle = new Bundle();
+                          localBundle.putString("result_content", ((com.tencent.qbar.a.a)localList1.get(0)).data);
+                          localBundle.putInt("result_code_format", ((com.tencent.qbar.a.a)localList1.get(0)).typeID);
+                          localBundle.putString("result_code_name", ((com.tencent.qbar.a.a)localList1.get(0)).typeName);
+                          localObject = ((com.tencent.qbar.a.a)localList1.get(0)).rawData;
+                          if (localObject != null) {
+                            localBundle.putByteArray("result_raw_data", (byte[])localObject);
+                          }
+                          if ((localList2 == null) || (localList2.isEmpty())) {
+                            break label392;
+                          }
+                        }
+                        label392:
+                        for (int i = ((WxQbarNative.QBarReportMsg)localList2.get(0)).qrcodeVersion;; i = 0)
+                        {
+                          localBundle.putInt("result_code_version", i);
+                          ac.a(BaseScanUI.b(BaseScanUI.this), true, 2, 1);
+                          if (BaseScanUI.f(BaseScanUI.this))
+                          {
+                            localObject = new Intent();
+                            ((Intent)localObject).putExtra("key_scan_result", localBundle.getString("result_content"));
+                            ((Intent)localObject).putExtra("key_scan_result_raw", localBundle.getByteArray("result_raw_data"));
+                            ((Intent)localObject).putExtra("key_scan_result_code_name", localBundle.getString("result_code_name"));
+                            ((Intent)localObject).putExtra("key_scan_result_code_version", i);
+                            BaseScanUI.this.setResult(-1, (Intent)localObject);
+                            BaseScanUI.this.bWi();
+                            AppMethodBeat.o(186181);
+                            return;
+                          }
+                          localBundle.putInt("qbar_string_scan_source", 1);
+                          if (BaseScanUI.c(BaseScanUI.this) != null) {
+                            BaseScanUI.c(BaseScanUI.this).c(paramAnonymousLong, localBundle);
+                          }
+                          BaseScanUI.k(BaseScanUI.this);
+                          AppMethodBeat.o(186181);
+                          return;
+                          BaseScanUI.d(BaseScanUI.this, true);
+                          BaseScanUI.h(BaseScanUI.this, true);
+                          ac.a(BaseScanUI.b(BaseScanUI.this), false, 2, 1);
+                          AppMethodBeat.o(186181);
                           return;
                         }
-                        localBundle.putInt("qbar_string_scan_source", 1);
-                        if (BaseScanUI.c(BaseScanUI.this) != null) {
-                          BaseScanUI.c(BaseScanUI.this).c(paramAnonymousLong, localBundle);
-                        }
-                        BaseScanUI.k(BaseScanUI.this);
-                        AppMethodBeat.o(199516);
-                        return;
-                        BaseScanUI.d(BaseScanUI.this, true);
-                        BaseScanUI.h(BaseScanUI.this, true);
-                        z.a(BaseScanUI.b(BaseScanUI.this), false, 2, 1);
-                        AppMethodBeat.o(199516);
-                        return;
                       }
-                    }
-                  });
+                    });
+                  }
+                  AppMethodBeat.o(186182);
+                  return;
                 }
-                AppMethodBeat.o(199517);
               }
-            }, this.xbJ);
+            }, this.ypL);
           }
           AppMethodBeat.o(51756);
           return;
         }
-        dAd();
-      } while ((paramInt2 != 0) || (!o.Nu(this.xbD)));
-      z.Nb(this.xbD);
+        dLB();
+      } while ((paramInt2 != 0) || (!o.OW(this.ypF)));
+      ac.OD(this.ypF);
       AppMethodBeat.o(51756);
       return;
     case 1001: 
@@ -1689,67 +1635,91 @@ public class BaseScanUI
     if (paramIntent == null)
     {
       bool = true;
-      ac.i("MicroMsg.ScanUI", "alvinluo processGoodsImage resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo processGoodsImage resultCode: %d, data == null: %b", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
       if (paramInt2 != -1) {
         break label533;
       }
-      z.Nc(this.xbD);
-      z.aq(2, System.currentTimeMillis());
-      str = com.tencent.mm.ui.tools.a.i(this, paramIntent, com.tencent.mm.plugin.image.d.awL());
+      ac.OE(this.ypF);
+      ac.aw(2, System.currentTimeMillis());
+      str = com.tencent.mm.ui.tools.a.j(this, paramIntent, com.tencent.mm.plugin.image.d.azA());
       l1 = System.currentTimeMillis();
       if (paramIntent != null) {
         break label527;
       }
       bool = true;
-      ac.d("MicroMsg.ScanUI", "alvinluo processGoodsImage session: %d, resultCode: %d, filePath: %s, data == null: %b", new Object[] { Long.valueOf(l1), Integer.valueOf(paramInt2), str, Boolean.valueOf(bool) });
-      if (this.xbn != null) {
-        this.xbn.setScanSource(2);
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ScanUI", "alvinluo processGoodsImage session: %d, resultCode: %d, filePath: %s, data == null: %b", new Object[] { Long.valueOf(l1), Integer.valueOf(paramInt2), str, Boolean.valueOf(bool) });
+      if (this.ypp != null) {
+        this.ypp.setScanSource(2);
       }
-      paramInt1 = BackwardSupportUtil.ExifHelper.ce(str);
+      paramInt1 = BackwardSupportUtil.ExifHelper.cY(str);
       l2 = System.currentTimeMillis();
-      paramIntent = com.tencent.mm.sdk.platformtools.f.aKA(str);
+      paramIntent = com.tencent.mm.sdk.platformtools.g.aQg(str);
       l3 = System.currentTimeMillis();
       if ((paramInt1 != 90) && (paramInt1 != 270)) {
         break label549;
       }
-      paramIntent = com.tencent.mm.sdk.platformtools.f.a(paramIntent, paramInt1);
+      paramIntent = com.tencent.mm.sdk.platformtools.g.a(paramIntent, paramInt1);
     }
     label527:
     label533:
     label549:
     for (;;)
     {
-      ac.i("MicroMsg.ScanUI", "alvinluo processGoodsImage decode image cost: %d", new Object[] { Long.valueOf(l3 - l2) });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo processGoodsImage decode image cost: %d", new Object[] { Long.valueOf(l3 - l2) });
       if ((paramIntent != null) && (!paramIntent.isRecycled()))
       {
-        localObject = this.xbn.getScanMaskView();
+        localObject = this.ypp.getScanMaskView();
         if ((localObject instanceof ScanGoodsMaskView))
         {
           localObject = (ScanGoodsMaskView)localObject;
-          ((ScanGoodsMaskView)localObject).ByW = true;
-          ((ScanGoodsMaskView)localObject).BZo = false;
-          ((ScanGoodsMaskView)localObject).aK(paramIntent);
+          ((ScanGoodsMaskView)localObject).ywp = true;
+          ((ScanGoodsMaskView)localObject).ywq = false;
+          ((ScanGoodsMaskView)localObject).ae(paramIntent);
         }
       }
-      this.xbq = new BaseScanUI.26(this, l1);
-      if (this.xbn != null) {
-        this.xbn.a(true, this.xbq);
+      this.yps = new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(186183);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo processGoodsImage onCancel and resumeScan");
+          if ((BaseScanUI.c(BaseScanUI.this) instanceof com.tencent.mm.plugin.scanner.d.a))
+          {
+            paramAnonymousDialogInterface = (com.tencent.mm.plugin.scanner.d.a)BaseScanUI.c(BaseScanUI.this);
+            long l = l1;
+            paramAnonymousDialogInterface.yjS = null;
+            com.tencent.mm.plugin.scanner.model.c localc = paramAnonymousDialogInterface.yoX;
+            if (localc != null) {
+              localc.yX(l);
+            }
+            paramAnonymousDialogInterface = paramAnonymousDialogInterface.yoW;
+            if (paramAnonymousDialogInterface != null) {
+              paramAnonymousDialogInterface.yX(l);
+            }
+          }
+          ac.a(2, false, System.currentTimeMillis(), true);
+          BaseScanUI.q(BaseScanUI.this);
+          AppMethodBeat.o(186183);
+        }
+      };
+      if (this.ypp != null) {
+        this.ypp.a(true, this.yps);
       }
-      paramIntent = com.tencent.mm.plugin.scanner.c.a.dzp();
-      Object localObject = this.xbZ;
-      ac.v("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo addDecodeTask filePath: %s", new Object[] { str });
-      com.tencent.mm.plugin.scanner.model.s.a(new a.2(paramIntent, str, (a.c)localObject, l1));
+      paramIntent = com.tencent.mm.plugin.scanner.c.a.dKN();
+      Object localObject = this.yqb;
+      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.AiScanImageDecodeQueueNew", "alvinluo addDecodeTask filePath: %s", new Object[] { str });
+      u.a(new a.2(paramIntent, str, (a.d)localObject, l1));
       AppMethodBeat.o(51756);
       return;
       bool = false;
       break label192;
       bool = false;
       break label261;
-      dAd();
+      dLB();
       if (paramInt2 != 0) {
         break;
       }
-      z.Nb(12);
+      ac.OD(12);
       break;
     }
   }
@@ -1758,59 +1728,59 @@ public class BaseScanUI
   {
     int i = 1;
     AppMethodBeat.i(51741);
-    ac.v("MicroMsg.ScanUI", "alvinluo onBackPressed");
-    if ((this.xbv != null) && (this.xbv.isShowing()))
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.ScanUI", "alvinluo onBackPressed");
+    if ((this.ypx != null) && (this.ypx.isShowing()))
     {
-      this.xbv.dismiss();
+      this.ypx.dismiss();
       AppMethodBeat.o(51741);
       return;
     }
     Object localObject;
-    if ((this.xbT == null) || (!this.xbT.wZS))
+    if ((this.ypV == null) || (!this.ypV.ynR))
     {
       i = 0;
       if (i != 0) {
         break label253;
       }
-      if (this.xbn == null) {
+      if (this.ypp == null) {
         break label229;
       }
-      localObject = this.xbn;
-      if ((!o.Nu(((ScanUIRectView)localObject).mode)) || (((ScanUIRectView)localObject).wZP == null) || (!(((ScanUIRectView)localObject).wZP instanceof ScanCodeMaskView))) {
+      localObject = this.ypp;
+      if ((!o.OW(((ScanUIRectView)localObject).mode)) || (((ScanUIRectView)localObject).ynO == null) || (!(((ScanUIRectView)localObject).ynO instanceof ScanCodeMaskView))) {
         break label224;
       }
     }
     label224:
-    for (boolean bool = ((ScanUIRectView)localObject).wZP.onBackPressed();; bool = false)
+    for (boolean bool = ((ScanUIRectView)localObject).ynO.onBackPressed();; bool = false)
     {
       if (!bool) {
         break label229;
       }
-      dzW();
+      dLu();
       AppMethodBeat.o(51741);
       return;
-      ac.i("MicroMsg.ScanUI", "alvinluo cancelNetworkLoading isShowingMultiCodeResult: %b", new Object[] { Boolean.valueOf(this.xbX) });
-      localObject = this.xbT;
-      b.a locala = ((x)localObject).wZT;
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo cancelNetworkLoading isShowingMultiCodeResult: %b", new Object[] { Boolean.valueOf(this.ypZ) });
+      localObject = this.ypV;
+      com.tencent.mm.plugin.scanner.view.b.a locala = ((aa)localObject).ynS;
       if (locala != null) {
-        locala.dBj();
+        locala.dMH();
       }
-      ((x)localObject).wZT = null;
-      this.xbT.Y(false, false);
-      if (!this.xbX)
+      ((aa)localObject).ynS = null;
+      this.ypV.ac(false, false);
+      if (!this.ypZ)
       {
-        a(this.xbt, true, null);
-        dAd();
+        a(this.ypv, true, null);
+        dLB();
         break;
       }
-      dzW();
+      dLu();
       break;
     }
     label229:
-    if (this.xbD == 12) {
-      z.pS(false);
+    if (this.ypF == 12) {
+      ac.qq(false);
     }
-    z.MZ(this.xbD);
+    ac.OB(this.ypF);
     goBack();
     label253:
     AppMethodBeat.o(51741);
@@ -1820,7 +1790,7 @@ public class BaseScanUI
   {
     AppMethodBeat.i(51758);
     super.onConfigurationChanged(paramConfiguration);
-    ac.i("MicroMsg.ScanUI", "screen orientation %d", new Object[] { Integer.valueOf(paramConfiguration.orientation) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "screen orientation %d", new Object[] { Integer.valueOf(paramConfiguration.orientation) });
     AppMethodBeat.o(51758);
   }
   
@@ -1828,51 +1798,51 @@ public class BaseScanUI
   {
     AppMethodBeat.i(51729);
     super.onCreate(paramBundle);
-    pU(true);
-    if ((g.agi().aBK() == 6) || (g.agi().aBK() == 4))
+    qs(true);
+    if ((com.tencent.mm.kernel.g.aiU().aEN() == 6) || (com.tencent.mm.kernel.g.aiU().aEN() == 4))
     {
-      this.xbG = true;
-      this.njY = ((Vibrator)getSystemService("vibrator"));
-      this.xbJ = getIntent().getIntArrayExtra("key_support_scan_code_type");
-      this.xbK = getIntent().getIntExtra("key_scan_entry_scene", 0);
-      this.xbL = getIntent().getBooleanExtra("BaseScanUI_only_scan_qrcode_with_zbar", false);
-      this.xbM = getIntent().getBooleanExtra("key_set_result_after_scan", false);
-      this.wWb = getIntent().getBooleanExtra("key_is_hide_right_btn", false);
-      this.xbD = getIntent().getIntExtra("BaseScanUI_select_scan_mode", 1);
-      this.xbF = getIntent().getBooleanExtra("key_show_scan_tips", true);
-      this.xbI = getIntent().getBooleanExtra("key_config_black_interval", false);
-      this.xbW = getIntent().getBooleanExtra("key_config_black_interval", false);
-      this.xbP = getIntent().getBooleanExtra("key_for_jsapi_use", false);
-      this.wWa = this.wWb;
-      if (dzX()) {
-        this.xbO = ((BaseScanRequest)getIntent().getParcelableExtra("key_scan_request"));
+      this.ypI = true;
+      this.nKv = ((Vibrator)getSystemService("vibrator"));
+      this.ypL = getIntent().getIntArrayExtra("key_support_scan_code_type");
+      this.ypM = getIntent().getIntExtra("key_scan_entry_scene", 0);
+      this.ypN = getIntent().getBooleanExtra("BaseScanUI_only_scan_qrcode_with_zbar", false);
+      this.ypO = getIntent().getBooleanExtra("key_set_result_after_scan", false);
+      this.yjI = getIntent().getBooleanExtra("key_is_hide_right_btn", false);
+      this.ypF = getIntent().getIntExtra("BaseScanUI_select_scan_mode", 1);
+      this.ypH = getIntent().getBooleanExtra("key_show_scan_tips", true);
+      this.ypK = getIntent().getBooleanExtra("key_config_black_interval", false);
+      this.ypY = getIntent().getBooleanExtra("key_config_black_interval", false);
+      this.ypR = getIntent().getBooleanExtra("key_for_jsapi_use", false);
+      this.yjH = this.yjI;
+      if (dLv()) {
+        this.ypQ = ((BaseScanRequest)getIntent().getParcelableExtra("key_scan_request"));
       }
-      com.tencent.qbar.b.fCd();
-      com.tencent.qbar.f.fCj();
-      o.dBw();
+      com.tencent.qbar.b.fTs();
+      com.tencent.qbar.f.fTz();
+      o.dMT();
       com.tencent.mm.plugin.scanner.util.d.init();
-      bool = o.dBz();
-      ac.i("MicroMsg.ScanUI", "alvinluo initEnableMultiCode configEnableMultiCode: %b, entryEnableMultiCode: %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.xbW) });
-      paramBundle = com.tencent.qbar.h.fCn();
-      if ((!bool) || (!this.xbW)) {
+      bool = o.dMW();
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo initEnableMultiCode configEnableMultiCode: %b, entryEnableMultiCode: %b", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(this.ypY) });
+      paramBundle = com.tencent.qbar.h.fTD();
+      if ((!bool) || (!this.ypY)) {
         break label360;
       }
     }
     label360:
     for (boolean bool = true;; bool = false)
     {
-      paramBundle.xbW = bool;
-      com.tencent.qbar.f.yC(bool);
+      paramBundle.ypY = bool;
+      com.tencent.qbar.f.zp(bool);
       initView();
-      this.xbC = System.currentTimeMillis();
-      com.tencent.mm.sdk.b.a.GpY.c(this.oCV);
-      com.tencent.mm.cq.d.fBf();
-      z.dzH();
-      Ng(1);
-      r.eBu();
+      this.ypE = System.currentTimeMillis();
+      com.tencent.mm.sdk.b.a.IbL.c(this.pgq);
+      com.tencent.mm.cq.d.fSu();
+      ac.dLh();
+      OI(1);
+      t.dKV();
       AppMethodBeat.o(51729);
       return;
-      this.xbG = false;
+      this.ypI = false;
       break;
     }
   }
@@ -1880,21 +1850,27 @@ public class BaseScanUI
   public void onDestroy()
   {
     AppMethodBeat.i(51755);
-    ac.i("MicroMsg.ScanUI", "onDestroy()");
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "onDestroy()");
     super.onDestroy();
-    com.tencent.mm.sdk.b.a.GpY.d(this.oCV);
-    if (this.xbw != null)
+    com.tencent.mm.sdk.b.a.IbL.d(this.pgq);
+    if (this.ypy != null)
     {
-      this.xbw.destroy();
-      this.xbw = null;
+      this.ypy.destroy();
+      this.ypy = null;
     }
-    if (this.xbn != null) {
-      this.xbn.onDestroy();
+    if (this.ypp != null) {
+      this.ypp.onDestroy();
     }
-    if ((this.xbv != null) && (this.xbv.isShowing())) {
-      this.xbv.dismiss();
+    if ((this.ypx != null) && (this.ypx.isShowing())) {
+      this.ypx.dismiss();
     }
-    Ng(2);
+    if ((this.mDL != null) && (this.mDL.isShowing())) {
+      this.mDL.bpT();
+    }
+    if (this.wqv != null) {
+      this.wqv.c(this.oMc);
+    }
+    OI(2);
     AppMethodBeat.o(51755);
   }
   
@@ -1902,34 +1878,34 @@ public class BaseScanUI
   {
     AppMethodBeat.i(51753);
     super.onPause();
-    ac.i("MicroMsg.ScanUI", "alvinluo onPause needPauseScan: %b", new Object[] { Boolean.valueOf(this.xbQ) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onPause needPauseScan: %b", new Object[] { Boolean.valueOf(this.ypS) });
     com.tencent.mm.plugin.ball.f.f.e(false, true, true);
-    if (this.xbn != null)
+    if (this.ypp != null)
     {
-      this.xbn.onPause();
-      if (this.xbQ) {
-        this.xbn.stopPreview();
+      this.ypp.onPause();
+      if (this.ypS) {
+        this.ypp.stopPreview();
       }
     }
-    if (this.xbU.ela == 0L) {
-      Z(false, false);
+    if (this.ypW.eCc == 0L) {
+      ad(false, false);
     }
-    com.tencent.qbar.c.JQr.btF();
-    Object localObject = com.tencent.mm.plugin.scanner.util.i.xlZ;
-    ac.i("MicroMsg.ScanStableDetector", "stop detect scan stable");
+    com.tencent.qbar.c.LKe.bxK();
+    Object localObject = com.tencent.mm.plugin.scanner.util.i.yAa;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanStableDetector", "stop detect scan stable");
     if (((com.tencent.mm.plugin.scanner.util.i)localObject).mSensorManager != null)
     {
-      ac.i("MicroMsg.ScanStableDetector", "unregister accelerate listener");
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanStableDetector", "unregister accelerate listener");
       ((com.tencent.mm.plugin.scanner.util.i)localObject).mSensorManager.unregisterListener((SensorEventListener)localObject);
     }
     com.tencent.mm.plugin.ball.f.f.e(false, true, true);
-    if (this.xbv != null)
+    if (this.ypx != null)
     {
-      localObject = this.xbv.wXm;
+      localObject = this.ypx.ykY;
       if (localObject != null)
       {
-        ac.i("MicroMsg.BoxDialogView", "alvinluo onPause set canMeasured false");
-        ((BoxDialogView)localObject).wWF = false;
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.BoxDialogView", "alvinluo onPause set canMeasured false");
+        ((BoxDialogView)localObject).ykr = false;
         AppMethodBeat.o(51753);
         return;
       }
@@ -1940,7 +1916,7 @@ public class BaseScanUI
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(51752);
-    ac.i("MicroMsg.ScanUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults len[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt.length), Long.valueOf(Thread.currentThread().getId()) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults len[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt.length), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -1950,62 +1926,14 @@ public class BaseScanUI
       return;
       if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == -1))
       {
-        this.xbA = false;
-        com.tencent.mm.ui.base.h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(51705);
-            paramAnonymousDialogInterface = BaseScanUI.this;
-            Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-            localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/scanner/ui/BaseScanUI$27", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$27", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            BaseScanUI.L(BaseScanUI.this);
-            BaseScanUI.this.finish();
-            AppMethodBeat.o(51705);
-          }
-        }, new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(51706);
-            BaseScanUI.L(BaseScanUI.this);
-            BaseScanUI.this.finish();
-            AppMethodBeat.o(51706);
-          }
-        });
+        this.ypC = false;
+        com.tencent.mm.ui.base.h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new BaseScanUI.21(this), new BaseScanUI.22(this));
         AppMethodBeat.o(51752);
         return;
         if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == -1))
         {
-          this.xbB = false;
-          com.tencent.mm.ui.base.h.a(this, getString(2131761869), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(51707);
-              paramAnonymousDialogInterface = BaseScanUI.this;
-              Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-              localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/scanner/ui/BaseScanUI$29", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$29", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              BaseScanUI.M(BaseScanUI.this);
-              BaseScanUI.this.finish();
-              AppMethodBeat.o(51707);
-            }
-          }, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(51711);
-              BaseScanUI.M(BaseScanUI.this);
-              BaseScanUI.this.finish();
-              AppMethodBeat.o(51711);
-            }
-          });
+          this.ypD = false;
+          com.tencent.mm.ui.base.h.a(this, getString(2131761869), getString(2131761885), getString(2131760598), getString(2131755691), false, new BaseScanUI.24(this), new BaseScanUI.25(this));
         }
       }
     }
@@ -2015,62 +1943,38 @@ public class BaseScanUI
   {
     AppMethodBeat.i(51751);
     super.onResume();
-    ac.i("MicroMsg.ScanUI", "alvinluo BaseScanUI onResume needPauseScan: %b", new Object[] { Boolean.valueOf(this.xbQ) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo BaseScanUI onResume needPauseScan: %b", new Object[] { Boolean.valueOf(this.ypS) });
     com.tencent.mm.plugin.ball.f.f.e(true, true, true);
-    Object localObject = com.tencent.mm.plugin.scanner.util.i.xlZ;
-    ac.i("MicroMsg.ScanStableDetector", "start detect scan stable");
+    Object localObject = com.tencent.mm.plugin.scanner.util.i.yAa;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanStableDetector", "start detect scan stable");
     if (((com.tencent.mm.plugin.scanner.util.i)localObject).mSensorManager != null)
     {
-      ((com.tencent.mm.plugin.scanner.util.i)localObject).xlX = 0;
-      ((com.tencent.mm.plugin.scanner.util.i)localObject).xlW[0] = 0.0F;
-      ((com.tencent.mm.plugin.scanner.util.i)localObject).xlW[1] = 0.0F;
-      ((com.tencent.mm.plugin.scanner.util.i)localObject).xlW[2] = 0.0F;
-      ac.i("MicroMsg.ScanStableDetector", "register accelerate listener");
-      ((com.tencent.mm.plugin.scanner.util.i)localObject).mSensorManager.registerListener((SensorEventListener)localObject, ((com.tencent.mm.plugin.scanner.util.i)localObject).xlV, 50000);
+      ((com.tencent.mm.plugin.scanner.util.i)localObject).yzY = 0;
+      ((com.tencent.mm.plugin.scanner.util.i)localObject).yzX[0] = 0.0F;
+      ((com.tencent.mm.plugin.scanner.util.i)localObject).yzX[1] = 0.0F;
+      ((com.tencent.mm.plugin.scanner.util.i)localObject).yzX[2] = 0.0F;
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanStableDetector", "register accelerate listener");
+      ((com.tencent.mm.plugin.scanner.util.i)localObject).mSensorManager.registerListener((SensorEventListener)localObject, ((com.tencent.mm.plugin.scanner.util.i)localObject).yzW, 50000);
     }
-    ac.i("MicroMsg.ScanUI", "should check camera %s, location %s", new Object[] { Boolean.valueOf(this.xbA), Boolean.valueOf(this.xbB) });
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "should check camera %s, location %s", new Object[] { Boolean.valueOf(this.ypC), Boolean.valueOf(this.ypD) });
     boolean bool;
     int i;
-    if ((this.xbA) || (this.xbB)) {
-      if (this.xbA)
+    if ((this.ypC) || (this.ypD)) {
+      if (this.ypC)
       {
         bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.CAMERA", 16, null, null);
-        ac.i("MicroMsg.ScanUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "summerper checkPermission checkCamera[%b]", new Object[] { Boolean.valueOf(bool) });
         if (!bool)
         {
-          this.wZZ = false;
+          this.ynY = false;
           i = 0;
           if (i != 0)
           {
-            z.pT(this.wZZ);
-            if (com.tencent.mm.compatible.d.b.Yz()) {
+            ac.qr(this.ynY);
+            if (com.tencent.mm.compatible.d.b.abb()) {
               break label368;
             }
-            com.tencent.mm.ui.base.h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-            {
-              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-              {
-                AppMethodBeat.i(169978);
-                paramAnonymousDialogInterface = BaseScanUI.this;
-                Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-                localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/scanner/ui/BaseScanUI$25", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$25", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                BaseScanUI.L(BaseScanUI.this);
-                BaseScanUI.this.finish();
-                AppMethodBeat.o(169978);
-              }
-            }, new DialogInterface.OnClickListener()
-            {
-              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-              {
-                AppMethodBeat.i(169979);
-                BaseScanUI.L(BaseScanUI.this);
-                BaseScanUI.this.finish();
-                AppMethodBeat.o(169979);
-              }
-            });
+            com.tencent.mm.ui.base.h.a(this, getString(2131761860), getString(2131761885), getString(2131760598), getString(2131755691), false, new BaseScanUI.19(this), new BaseScanUI.20(this));
           }
         }
       }
@@ -2078,20 +1982,20 @@ public class BaseScanUI
     for (;;)
     {
       getWindow().addFlags(128);
-      if (this.xbv == null) {
+      if (this.ypx == null) {
         break label448;
       }
-      localObject = this.xbv.wXm;
+      localObject = this.ypx.ykY;
       if (localObject == null) {
         break label448;
       }
-      ((BoxDialogView)localObject).wWF = true;
+      ((BoxDialogView)localObject).ykr = true;
       AppMethodBeat.o(51751);
       return;
-      if (this.xbB)
+      if (this.ypD)
       {
         bool = com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 76, null, null);
-        ac.i("MicroMsg.ScanUI", "summerper checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "summerper checkPermission checkLocation [%b]", new Object[] { Boolean.valueOf(bool) });
         if (!bool)
         {
           i = 0;
@@ -2101,16 +2005,16 @@ public class BaseScanUI
       i = 1;
       break;
       label368:
-      ac.i("MicroMsg.ScanUI", "alvinluo onResumeAfterChkPermission needPauseScan: %b", new Object[] { Boolean.valueOf(this.xbQ) });
-      if (!this.xbQ)
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ScanUI", "alvinluo onResumeAfterChkPermission needPauseScan: %b", new Object[] { Boolean.valueOf(this.ypS) });
+      if (!this.ypS)
       {
-        this.xbn.onResume();
-        a(this.xbt, true, null);
-        pV(true);
+        this.ypp.onResume();
+        a(this.ypv, true, null);
+        qt(true);
       }
-      g.agQ().a(this.xcc);
-      dAb();
-      com.tencent.mm.sdk.b.a.GpY.c(this.xcd);
+      com.tencent.mm.kernel.g.ajB().a(this.yqe);
+      dLz();
+      com.tencent.mm.sdk.b.a.IbL.c(this.yqf);
     }
     label448:
     AppMethodBeat.o(51751);
@@ -2120,12 +2024,12 @@ public class BaseScanUI
   {
     AppMethodBeat.i(51754);
     super.onStop();
-    if (this.xbn != null) {
-      this.xbn.onStop();
+    if (this.ypp != null) {
+      this.ypp.onStop();
     }
-    this.xbo.dAL();
-    g.agQ().b(this.xcc);
-    com.tencent.mm.sdk.b.a.GpY.d(this.xcd);
+    this.ypq.dMj();
+    com.tencent.mm.kernel.g.ajB().b(this.yqe);
+    com.tencent.mm.sdk.b.a.IbL.d(this.yqf);
     getWindow().clearFlags(128);
     AppMethodBeat.o(51754);
   }

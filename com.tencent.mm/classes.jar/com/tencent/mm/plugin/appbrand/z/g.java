@@ -7,36 +7,36 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.luggage.h.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class g
 {
-  private static DisplayMetrics mnN;
-  private static Float mnO;
-  private static boolean mnP;
+  private static DisplayMetrics mOp;
+  private static Float mOq;
+  private static boolean mOr;
   
   static
   {
     AppMethodBeat.i(140832);
-    mnO = null;
-    mnN = ai.getContext().getResources().getDisplayMetrics();
-    mnP = true;
+    mOq = null;
+    mOp = aj.getContext().getResources().getDisplayMetrics();
+    mOr = true;
     AppMethodBeat.o(140832);
   }
   
-  public static int Rq(String paramString)
+  public static int UW(String paramString)
   {
     AppMethodBeat.i(140811);
-    int i = cd(paramString, 0);
+    int i = cg(paramString, 0);
     AppMethodBeat.o(140811);
     return i;
   }
   
-  public static int Rr(String paramString)
+  public static int UX(String paramString)
   {
     AppMethodBeat.i(140812);
     if (TextUtils.isEmpty(paramString))
@@ -45,9 +45,9 @@ public final class g
       AppMethodBeat.o(140812);
       throw paramString;
     }
-    if (f.mnM.containsKey(paramString))
+    if (f.mOo.containsKey(paramString))
     {
-      i = ((Integer)f.mnM.get(paramString)).intValue();
+      i = ((Integer)f.mOo.get(paramString)).intValue();
       AppMethodBeat.o(140812);
       return i;
     }
@@ -70,7 +70,7 @@ public final class g
         return i;
         if (((String)localObject).length() != 9)
         {
-          ac.m("MicroMsg.JsValueUtil", "hy: Unknown color, given string is %s", new Object[] { localObject });
+          ad.m("MicroMsg.JsValueUtil", "hy: Unknown color, given string is %s", new Object[] { localObject });
           paramString = new IllegalArgumentException("Unknown color");
           AppMethodBeat.o(140812);
           throw paramString;
@@ -94,7 +94,7 @@ public final class g
     try
     {
       float f1 = (float)paramJSONObject.optDouble(paramString, d);
-      float f2 = bxg();
+      float f2 = bBm();
       AppMethodBeat.o(140822);
       return f2 * f1;
     }
@@ -115,7 +115,7 @@ public final class g
     }
     try
     {
-      int i = Math.round((float)paramJSONObject.getDouble(paramString) * bxg());
+      int i = Math.round((float)paramJSONObject.getDouble(paramString) * bBm());
       AppMethodBeat.o(140819);
       return i;
     }
@@ -126,47 +126,47 @@ public final class g
     return paramInt;
   }
   
-  public static float aF(float paramFloat)
+  public static float aI(float paramFloat)
   {
     AppMethodBeat.i(140815);
-    paramFloat /= bxg();
+    paramFloat /= bBm();
     AppMethodBeat.o(140815);
     return paramFloat;
   }
   
-  public static float aG(float paramFloat)
+  public static float aJ(float paramFloat)
   {
     AppMethodBeat.i(140817);
-    float f = bxg();
+    float f = bBm();
     AppMethodBeat.o(140817);
     return f * paramFloat;
   }
   
-  public static void aH(float paramFloat)
+  public static void aK(float paramFloat)
   {
     AppMethodBeat.i(140830);
     if (paramFloat > 0.0F) {
-      mnO = Float.valueOf(paramFloat);
+      mOq = Float.valueOf(paramFloat);
     }
     AppMethodBeat.o(140830);
   }
   
-  public static void bxf()
+  public static void bBl()
   {
-    mnP = false;
+    mOr = false;
   }
   
-  public static float bxg()
+  public static float bBm()
   {
     AppMethodBeat.i(140831);
-    Object localObject = mnO;
+    Object localObject = mOq;
     if (localObject != null)
     {
       f = ((Float)localObject).floatValue();
       AppMethodBeat.o(140831);
       return f;
     }
-    localObject = mnN;
+    localObject = mOp;
     if (localObject == null)
     {
       AppMethodBeat.o(140831);
@@ -185,12 +185,12 @@ public final class g
     return paramInt;
   }
   
-  public static int cd(String paramString, int paramInt)
+  public static int cg(String paramString, int paramInt)
   {
     AppMethodBeat.i(140810);
     try
     {
-      int i = Rr(paramString);
+      int i = UX(paramString);
       AppMethodBeat.o(140810);
       return i;
     }
@@ -211,7 +211,7 @@ public final class g
     }
     try
     {
-      paramInt = Math.round((float)paramJSONArray.getDouble(paramInt) * bxg());
+      paramInt = Math.round((float)paramJSONArray.getDouble(paramInt) * bBm());
       AppMethodBeat.o(140824);
       return paramInt;
     }
@@ -226,7 +226,7 @@ public final class g
   {
     AppMethodBeat.i(140827);
     float f1 = (float)paramJSONArray.getDouble(paramInt);
-    float f2 = bxg();
+    float f2 = bBm();
     AppMethodBeat.o(140827);
     return f1 * f2;
   }
@@ -250,7 +250,7 @@ public final class g
   public static int f(JSONObject paramJSONObject, String paramString)
   {
     AppMethodBeat.i(140820);
-    int i = Math.round((float)paramJSONObject.getDouble(paramString) * bxg());
+    int i = Math.round((float)paramJSONObject.getDouble(paramString) * bBm());
     AppMethodBeat.o(140820);
     return i;
   }
@@ -266,7 +266,7 @@ public final class g
     try
     {
       float f1 = (float)paramJSONArray.getDouble(paramInt);
-      float f2 = bxg();
+      float f2 = bBm();
       AppMethodBeat.o(140829);
       return f2 * f1;
     }
@@ -289,12 +289,12 @@ public final class g
   {
     AppMethodBeat.i(140826);
     float f1 = (float)paramJSONObject.getDouble(paramString);
-    float f2 = bxg();
+    float f2 = bBm();
     AppMethodBeat.o(140826);
     return f1 * f2;
   }
   
-  public static int p(JSONArray paramJSONArray)
+  public static int q(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(140809);
     if ((paramJSONArray == null) || (paramJSONArray.length() < 3))
@@ -306,49 +306,49 @@ public final class g
     for (int i = Color.rgb(paramJSONArray.optInt(0) & 0xFF, paramJSONArray.optInt(1) & 0xFF, paramJSONArray.optInt(2) & 0xFF);; i = Color.argb(paramJSONArray.optInt(3) & 0xFF, paramJSONArray.optInt(0) & 0xFF, paramJSONArray.optInt(1) & 0xFF, paramJSONArray.optInt(2) & 0xFF))
     {
       int j = i;
-      if (mnP) {
-        j = i.cgk.gy(i);
+      if (mOr) {
+        j = i.cqA.gD(i);
       }
       AppMethodBeat.o(140809);
       return j;
     }
   }
   
-  public static int q(JSONArray paramJSONArray)
+  public static int r(JSONArray paramJSONArray)
   {
     AppMethodBeat.i(140825);
-    int i = Math.round((float)paramJSONArray.getDouble(0) * bxg());
+    int i = Math.round((float)paramJSONArray.getDouble(0) * bBm());
     AppMethodBeat.o(140825);
     return i;
   }
   
-  public static int vc(int paramInt)
+  public static int vH(int paramInt)
   {
     AppMethodBeat.i(140813);
-    paramInt = (int)Math.ceil(paramInt / bxg());
+    paramInt = (int)Math.ceil(paramInt / bBm());
     AppMethodBeat.o(140813);
     return paramInt;
   }
   
-  public static int vd(int paramInt)
+  public static int vI(int paramInt)
   {
     AppMethodBeat.i(140814);
-    paramInt = (int)(paramInt / bxg());
+    paramInt = (int)(paramInt / bBm());
     AppMethodBeat.o(140814);
     return paramInt;
   }
   
-  public static int ve(int paramInt)
+  public static int vJ(int paramInt)
   {
     AppMethodBeat.i(140816);
-    paramInt = Math.round(bxg() * paramInt);
+    paramInt = Math.round(bBm() * paramInt);
     AppMethodBeat.o(140816);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.z.g
  * JD-Core Version:    0.7.0.1
  */

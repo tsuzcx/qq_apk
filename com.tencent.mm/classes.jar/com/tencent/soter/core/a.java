@@ -20,16 +20,16 @@ import java.security.Signature;
 public final class a
   implements com.tencent.soter.core.c.b
 {
-  private static e JVS;
-  private static com.tencent.soter.core.d.b JVT;
+  private static e LPN;
+  private static com.tencent.soter.core.d.b LPO;
   
   static
   {
     boolean bool = true;
     AppMethodBeat.i(88522);
     com.tencent.soter.core.c.d.i("Soter.SoterCore", "soter: SoterCore is call static block to init SoterCore IMPL", new Object[0]);
-    JVT = fDe();
-    if (JVT == null) {}
+    LPO = fUw();
+    if (LPO == null) {}
     for (;;)
     {
       com.tencent.soter.core.c.d.i("Soter.SoterCore", "soter: SoterCore is call static block to init SoterCore IMPL, IMPL is null[%b]", new Object[] { Boolean.valueOf(bool) });
@@ -39,16 +39,16 @@ public final class a
     }
   }
   
-  public static byte[] BS(long paramLong)
+  public static byte[] EU(long paramLong)
   {
     AppMethodBeat.i(88513);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: finishSign IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88513);
       return new byte[0];
     }
-    byte[] arrayOfByte = JVT.BS(paramLong);
+    byte[] arrayOfByte = LPO.EU(paramLong);
     AppMethodBeat.o(88513);
     return arrayOfByte;
   }
@@ -56,18 +56,18 @@ public final class a
   public static void a(e parame)
   {
     AppMethodBeat.i(88499);
-    JVS = parame;
-    if (JVT == null)
+    LPN = parame;
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: setTrebleServiceListener IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88499);
       return;
     }
-    JVT.a(parame);
+    LPO.a(parame);
     AppMethodBeat.o(88499);
   }
   
-  public static boolean aQ(Context paramContext, int paramInt)
+  public static boolean aT(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(88516);
     boolean bool = BiometricManagerCompat.from(paramContext, Integer.valueOf(paramInt)).isHardwareDetected();
@@ -76,7 +76,7 @@ public final class a
     return bool;
   }
   
-  public static boolean aR(Context paramContext, int paramInt)
+  public static boolean aU(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(88518);
     boolean bool = BiometricManagerCompat.from(paramContext, Integer.valueOf(paramInt)).hasEnrolledBiometric();
@@ -84,7 +84,7 @@ public final class a
     return bool;
   }
   
-  public static boolean aS(Context paramContext, int paramInt)
+  public static boolean aV(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(88520);
     if ((!BiometricManagerCompat.from(paramContext, Integer.valueOf(paramInt)).isCurrentFailTimeAvailable()) && (!BiometricManagerCompat.from(paramContext, Integer.valueOf(paramInt)).isCurrentTweenTimeAvailable(paramContext)))
@@ -96,78 +96,78 @@ public final class a
     return false;
   }
   
-  public static f aTr(String paramString)
+  public static f aZr(String paramString)
   {
     AppMethodBeat.i(88506);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: generateAuthKey IMPL is null, not support soter", new Object[0]);
       paramString = new f(2);
       AppMethodBeat.o(88506);
       return paramString;
     }
-    paramString = JVT.aTr(paramString);
+    paramString = LPO.aZr(paramString);
     AppMethodBeat.o(88506);
     return paramString;
   }
   
-  public static boolean aTs(String paramString)
+  public static boolean aZs(String paramString)
   {
     AppMethodBeat.i(88508);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: hasAuthKey IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88508);
       return false;
     }
-    boolean bool = JVT.aTs(paramString);
+    boolean bool = LPO.aZs(paramString);
     AppMethodBeat.o(88508);
     return bool;
   }
   
-  public static boolean aTt(String paramString)
+  public static boolean aZt(String paramString)
   {
     AppMethodBeat.i(88509);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: isAuthKeyValid IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88509);
       return false;
     }
-    boolean bool = JVT.aTt(paramString);
+    boolean bool = LPO.aZt(paramString);
     AppMethodBeat.o(88509);
     return bool;
   }
   
-  public static i aTu(String paramString)
+  public static i aZu(String paramString)
   {
     AppMethodBeat.i(88510);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: getAuthKeyModel IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88510);
       return null;
     }
-    paramString = JVT.aTu(paramString);
+    paramString = LPO.aZu(paramString);
     AppMethodBeat.o(88510);
     return paramString;
   }
   
-  public static Signature aTv(String paramString)
+  public static Signature aZv(String paramString)
   {
     AppMethodBeat.i(88511);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: getAuthInitAndSign IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88511);
       return null;
     }
-    paramString = JVT.aTv(paramString);
+    paramString = LPO.aZv(paramString);
     AppMethodBeat.o(88511);
     return paramString;
   }
   
-  public static j cK(byte[] paramArrayOfByte)
+  public static j cR(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88514);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {}
@@ -207,7 +207,7 @@ public final class a
       return null;
     }
     System.arraycopy(paramArrayOfByte, 4, localObject, 0, i);
-    localObject = j.aTw(new String((byte[])localObject));
+    localObject = j.aZw(new String((byte[])localObject));
     j = paramArrayOfByte.length - (i + 4);
     com.tencent.soter.core.c.d.d("Soter.SoterCore", "soter: signature length: ".concat(String.valueOf(j)), new Object[0]);
     byte[] arrayOfByte = new byte[j];
@@ -219,38 +219,137 @@ public final class a
     return localObject;
   }
   
-  public static void cZj()
-  {
-    AppMethodBeat.i(88492);
-    c.cZj();
-    AppMethodBeat.o(88492);
-  }
-  
-  public static f db(String paramString, boolean paramBoolean)
+  public static f dg(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(88507);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: removeAuthKey IMPL is null, not support soter", new Object[0]);
       paramString = new f(2);
       AppMethodBeat.o(88507);
       return paramString;
     }
-    paramString = JVT.db(paramString, paramBoolean);
+    paramString = LPO.dg(paramString, paramBoolean);
     AppMethodBeat.o(88507);
     return paramString;
   }
   
-  public static void fDc()
+  public static void div()
+  {
+    AppMethodBeat.i(88492);
+    c.div();
+    AppMethodBeat.o(88492);
+  }
+  
+  public static f fUA()
+  {
+    AppMethodBeat.i(88501);
+    if (LPO == null)
+    {
+      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: generateAppGlobalSecureKey IMPL is null, not support soter", new Object[0]);
+      localf = new f(2);
+      AppMethodBeat.o(88501);
+      return localf;
+    }
+    f localf = LPO.fUA();
+    AppMethodBeat.o(88501);
+    return localf;
+  }
+  
+  public static f fUB()
+  {
+    AppMethodBeat.i(88502);
+    if (LPO == null)
+    {
+      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: removeAppGlobalSecureKey IMPL is null, not support soter", new Object[0]);
+      localf = new f(2);
+      AppMethodBeat.o(88502);
+      return localf;
+    }
+    f localf = LPO.fUB();
+    AppMethodBeat.o(88502);
+    return localf;
+  }
+  
+  public static boolean fUC()
+  {
+    AppMethodBeat.i(88503);
+    if (LPO == null)
+    {
+      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: hasAppGlobalSecureKey IMPL is null, not support soter", new Object[0]);
+      AppMethodBeat.o(88503);
+      return false;
+    }
+    boolean bool = LPO.fUC();
+    AppMethodBeat.o(88503);
+    return bool;
+  }
+  
+  public static boolean fUD()
+  {
+    AppMethodBeat.i(88504);
+    if (LPO == null)
+    {
+      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: isAppGlobalSecureKeyValid IMPL is null, not support soter", new Object[0]);
+      AppMethodBeat.o(88504);
+      return false;
+    }
+    boolean bool = LPO.fUD();
+    AppMethodBeat.o(88504);
+    return bool;
+  }
+  
+  public static i fUE()
+  {
+    AppMethodBeat.i(88505);
+    if (LPO == null)
+    {
+      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: getAppGlobalSecureKeyModel IMPL is null, not support soter", new Object[0]);
+      AppMethodBeat.o(88505);
+      return null;
+    }
+    i locali = LPO.fUE();
+    AppMethodBeat.o(88505);
+    return locali;
+  }
+  
+  public static String fUF()
+  {
+    AppMethodBeat.i(88521);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("<deviceinfo>");
+    ((StringBuilder)localObject).append("<MANUFACTURER name=\"");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append("\">");
+    ((StringBuilder)localObject).append("<MODEL name=\"");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    ((StringBuilder)localObject).append("\">");
+    ((StringBuilder)localObject).append("<VERSION_RELEASE name=\"");
+    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("\">");
+    ((StringBuilder)localObject).append("<VERSION_INCREMENTAL name=\"");
+    ((StringBuilder)localObject).append(Build.VERSION.INCREMENTAL);
+    ((StringBuilder)localObject).append("\">");
+    ((StringBuilder)localObject).append("<DISPLAY name=\"");
+    ((StringBuilder)localObject).append(Build.DISPLAY);
+    ((StringBuilder)localObject).append("\">");
+    ((StringBuilder)localObject).append("</DISPLAY></VERSION_INCREMENTAL></VERSION_RELEASE></MODEL></MANUFACTURER></deviceinfo>");
+    com.tencent.soter.core.c.d.d("Soter.SoterCore", "soter: getFingerprint  " + ((StringBuilder)localObject).toString(), new Object[0]);
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(88521);
+    return localObject;
+  }
+  
+  public static void fUu()
   {
     boolean bool = true;
     AppMethodBeat.i(88494);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.i("Soter.SoterCore", "soter: SoterCore IMPL is null then call getProviderSoterCore to init", new Object[0]);
-      JVT = fDe();
-      if (JVT != null) {
-        break label60;
+      LPO = fUw();
+      if (LPO != null) {
+        break label64;
       }
     }
     for (;;)
@@ -258,20 +357,20 @@ public final class a
       com.tencent.soter.core.c.d.i("Soter.SoterCore", "soter: SoterCore IMPL is null[%b], after call getProviderSoterCore to init", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(88494);
       return;
-      label60:
+      label64:
       bool = false;
     }
   }
   
-  public static int fDd()
+  public static int fUv()
   {
     AppMethodBeat.i(88495);
-    if (JVT == null)
+    if (LPO == null)
     {
       AppMethodBeat.o(88495);
       return 0;
     }
-    if ((JVT instanceof com.tencent.soter.core.d.d))
+    if ((LPO instanceof com.tencent.soter.core.d.d))
     {
       com.tencent.soter.core.c.d.d("Soter.SoterCore", "getSoterCoreType is TREBLE", new Object[0]);
       AppMethodBeat.o(88495);
@@ -282,11 +381,11 @@ public final class a
     return 0;
   }
   
-  private static com.tencent.soter.core.d.b fDe()
+  private static com.tencent.soter.core.d.b fUw()
   {
     AppMethodBeat.i(88496);
-    c.cZj();
-    if (h.fDs())
+    c.div();
+    if (h.fUK())
     {
       AppMethodBeat.o(88496);
       return null;
@@ -320,149 +419,50 @@ public final class a
     return null;
   }
   
-  public static boolean fDf()
+  public static boolean fUx()
   {
     AppMethodBeat.i(88497);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: isTrebleServiceConnected IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88497);
       return false;
     }
-    boolean bool = JVT.fDf();
+    boolean bool = LPO.fUx();
     AppMethodBeat.o(88497);
     return bool;
   }
   
-  public static void fDg()
+  public static void fUy()
   {
     AppMethodBeat.i(88498);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: triggerConnecting IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88498);
       return;
     }
-    JVT.fDg();
+    LPO.fUy();
     AppMethodBeat.o(88498);
   }
   
-  public static boolean fDh()
+  public static boolean fUz()
   {
     AppMethodBeat.i(88500);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: isNativeSupportSoter IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88500);
       return false;
     }
-    boolean bool = JVT.fDh();
+    boolean bool = LPO.fUz();
     com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: isNativeSupportSoter return[" + bool + "]", new Object[0]);
     AppMethodBeat.o(88500);
     return bool;
   }
   
-  public static f fDi()
-  {
-    AppMethodBeat.i(88501);
-    if (JVT == null)
-    {
-      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: generateAppGlobalSecureKey IMPL is null, not support soter", new Object[0]);
-      localf = new f(2);
-      AppMethodBeat.o(88501);
-      return localf;
-    }
-    f localf = JVT.fDi();
-    AppMethodBeat.o(88501);
-    return localf;
-  }
-  
-  public static f fDj()
-  {
-    AppMethodBeat.i(88502);
-    if (JVT == null)
-    {
-      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: removeAppGlobalSecureKey IMPL is null, not support soter", new Object[0]);
-      localf = new f(2);
-      AppMethodBeat.o(88502);
-      return localf;
-    }
-    f localf = JVT.fDj();
-    AppMethodBeat.o(88502);
-    return localf;
-  }
-  
-  public static boolean fDk()
-  {
-    AppMethodBeat.i(88503);
-    if (JVT == null)
-    {
-      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: hasAppGlobalSecureKey IMPL is null, not support soter", new Object[0]);
-      AppMethodBeat.o(88503);
-      return false;
-    }
-    boolean bool = JVT.fDk();
-    AppMethodBeat.o(88503);
-    return bool;
-  }
-  
-  public static boolean fDl()
-  {
-    AppMethodBeat.i(88504);
-    if (JVT == null)
-    {
-      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: isAppGlobalSecureKeyValid IMPL is null, not support soter", new Object[0]);
-      AppMethodBeat.o(88504);
-      return false;
-    }
-    boolean bool = JVT.fDl();
-    AppMethodBeat.o(88504);
-    return bool;
-  }
-  
-  public static i fDm()
-  {
-    AppMethodBeat.i(88505);
-    if (JVT == null)
-    {
-      com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: getAppGlobalSecureKeyModel IMPL is null, not support soter", new Object[0]);
-      AppMethodBeat.o(88505);
-      return null;
-    }
-    i locali = JVT.fDm();
-    AppMethodBeat.o(88505);
-    return locali;
-  }
-  
-  public static String fDn()
-  {
-    AppMethodBeat.i(88521);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("<deviceinfo>");
-    ((StringBuilder)localObject).append("<MANUFACTURER name=\"");
-    ((StringBuilder)localObject).append(Build.MANUFACTURER);
-    ((StringBuilder)localObject).append("\">");
-    ((StringBuilder)localObject).append("<MODEL name=\"");
-    ((StringBuilder)localObject).append(Build.MODEL);
-    ((StringBuilder)localObject).append("\">");
-    ((StringBuilder)localObject).append("<VERSION_RELEASE name=\"");
-    ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
-    ((StringBuilder)localObject).append("\">");
-    ((StringBuilder)localObject).append("<VERSION_INCREMENTAL name=\"");
-    ((StringBuilder)localObject).append(Build.VERSION.INCREMENTAL);
-    ((StringBuilder)localObject).append("\">");
-    ((StringBuilder)localObject).append("<DISPLAY name=\"");
-    ((StringBuilder)localObject).append(Build.DISPLAY);
-    ((StringBuilder)localObject).append("\">");
-    ((StringBuilder)localObject).append("</DISPLAY></VERSION_INCREMENTAL></VERSION_RELEASE></MODEL></MANUFACTURER></deviceinfo>");
-    com.tencent.soter.core.c.d.d("Soter.SoterCore", "soter: getFingerprint  " + ((StringBuilder)localObject).toString(), new Object[0]);
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(88521);
-    return localObject;
-  }
-  
   @Deprecated
-  public static boolean fb(Context paramContext)
+  public static boolean fe(Context paramContext)
   {
     AppMethodBeat.i(88515);
     boolean bool = BiometricManagerCompat.from(paramContext, Integer.valueOf(1)).isHardwareDetected();
@@ -472,14 +472,14 @@ public final class a
   }
   
   /* Error */
-  public static void kO(Context paramContext)
+  public static void lb(Context paramContext)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc_w 380
     //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 34	com/tencent/soter/core/a:JVT	Lcom/tencent/soter/core/d/b;
+    //   9: getstatic 34	com/tencent/soter/core/a:LPO	Lcom/tencent/soter/core/d/b;
     //   12: ifnonnull +88 -> 100
     //   15: ldc 21
     //   17: ldc_w 382
@@ -488,21 +488,21 @@ public final class a
     //   24: invokestatic 28	com/tencent/soter/core/c/d:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   27: invokestatic 385	com/tencent/soter/core/d/d:isInitializing	()Z
     //   30: ifne +58 -> 88
-    //   33: new 242	com/tencent/soter/core/d/d
+    //   33: new 315	com/tencent/soter/core/d/d
     //   36: dup
     //   37: invokespecial 386	com/tencent/soter/core/d/d:<init>	()V
     //   40: astore_1
     //   41: aload_1
-    //   42: putstatic 34	com/tencent/soter/core/a:JVT	Lcom/tencent/soter/core/d/b;
+    //   42: putstatic 34	com/tencent/soter/core/a:LPO	Lcom/tencent/soter/core/d/b;
     //   45: aload_1
-    //   46: getstatic 63	com/tencent/soter/core/a:JVS	Lcom/tencent/soter/core/d/e;
+    //   46: getstatic 63	com/tencent/soter/core/a:LPN	Lcom/tencent/soter/core/d/e;
     //   49: invokevirtual 67	com/tencent/soter/core/d/b:a	(Lcom/tencent/soter/core/d/e;)V
-    //   52: getstatic 34	com/tencent/soter/core/a:JVT	Lcom/tencent/soter/core/d/b;
+    //   52: getstatic 34	com/tencent/soter/core/a:LPO	Lcom/tencent/soter/core/d/b;
     //   55: aload_0
-    //   56: invokevirtual 389	com/tencent/soter/core/d/b:kS	(Landroid/content/Context;)Z
+    //   56: invokevirtual 389	com/tencent/soter/core/d/b:lf	(Landroid/content/Context;)Z
     //   59: ifne +41 -> 100
     //   62: aconst_null
-    //   63: putstatic 34	com/tencent/soter/core/a:JVT	Lcom/tencent/soter/core/d/b;
+    //   63: putstatic 34	com/tencent/soter/core/a:LPO	Lcom/tencent/soter/core/d/b;
     //   66: ldc 21
     //   68: ldc_w 391
     //   71: iconst_0
@@ -538,7 +538,7 @@ public final class a
   }
   
   @Deprecated
-  public static boolean kP(Context paramContext)
+  public static boolean lc(Context paramContext)
   {
     AppMethodBeat.i(88517);
     boolean bool = BiometricManagerCompat.from(paramContext, Integer.valueOf(1)).hasEnrolledBiometric();
@@ -547,7 +547,7 @@ public final class a
   }
   
   @Deprecated
-  public static boolean kQ(Context paramContext)
+  public static boolean ld(Context paramContext)
   {
     AppMethodBeat.i(88519);
     if ((!BiometricManagerCompat.from(paramContext, Integer.valueOf(1)).isCurrentFailTimeAvailable()) && (!BiometricManagerCompat.from(paramContext, Integer.valueOf(1)).isCurrentTweenTimeAvailable(paramContext)))
@@ -559,16 +559,16 @@ public final class a
     return false;
   }
   
-  public static SoterSessionResult mn(String paramString1, String paramString2)
+  public static SoterSessionResult mL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88512);
-    if (JVT == null)
+    if (LPO == null)
     {
       com.tencent.soter.core.c.d.e("Soter.SoterCore", "soter: initSigh IMPL is null, not support soter", new Object[0]);
       AppMethodBeat.o(88512);
       return null;
     }
-    paramString1 = JVT.mn(paramString1, paramString2);
+    paramString1 = LPO.mL(paramString1, paramString2);
     AppMethodBeat.o(88512);
     return paramString1;
   }

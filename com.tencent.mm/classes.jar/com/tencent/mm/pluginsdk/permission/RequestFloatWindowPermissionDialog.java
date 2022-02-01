@@ -11,9 +11,9 @@ import android.os.Bundle;
 import android.provider.Settings;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.d.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.base.y;
 import com.tencent.mm.ui.widget.a.d.a;
@@ -23,9 +23,9 @@ import java.lang.reflect.Field;
 public class RequestFloatWindowPermissionDialog
   extends MMBaseActivity
 {
-  public static int DjP = 1234;
-  private static a DjQ;
-  private com.tencent.mm.ui.widget.a.d iri = null;
+  public static int EOM = 1234;
+  private static a EON;
+  private com.tencent.mm.ui.widget.a.d iKm = null;
   
   public static void a(Context paramContext, String paramString1, a parama, String paramString2)
   {
@@ -37,7 +37,7 @@ public class RequestFloatWindowPermissionDialog
   public static void a(Context paramContext, String paramString1, a parama, boolean paramBoolean, String paramString2)
   {
     AppMethodBeat.i(151886);
-    DjQ = parama;
+    EON = parama;
     parama = new Intent(paramContext, RequestFloatWindowPermissionDialog.class);
     parama.putExtra("warning_content", paramString1);
     if (paramBoolean) {
@@ -47,60 +47,60 @@ public class RequestFloatWindowPermissionDialog
     AppMethodBeat.o(151886);
   }
   
-  private void bHO()
+  private void bLZ()
   {
     AppMethodBeat.i(151883);
     if (getIntent() == null)
     {
-      ac.e("MicroMsg.RequestFloatWindowPermissionDialog", "Intent is null");
+      ad.e("MicroMsg.RequestFloatWindowPermissionDialog", "Intent is null");
       AppMethodBeat.o(151883);
       return;
     }
     Bundle localBundle = getIntent().getExtras();
     if (localBundle == null)
     {
-      ac.e("MicroMsg.RequestFloatWindowPermissionDialog", "invalid params");
+      ad.e("MicroMsg.RequestFloatWindowPermissionDialog", "invalid params");
       AppMethodBeat.o(151883);
       return;
     }
     d.a locala = new d.a(this);
-    locala.acF(2131759463);
-    locala.aRI(localBundle.getString("warning_content"));
+    locala.afe(2131759463);
+    locala.aXG(localBundle.getString("warning_content"));
     locala.e(new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(151877);
-        if (RequestFloatWindowPermissionDialog.eLt() != null)
+        if (RequestFloatWindowPermissionDialog.fao() != null)
         {
-          RequestFloatWindowPermissionDialog.eLt().c(RequestFloatWindowPermissionDialog.this);
-          RequestFloatWindowPermissionDialog.eLu();
+          RequestFloatWindowPermissionDialog.fao().c(RequestFloatWindowPermissionDialog.this);
+          RequestFloatWindowPermissionDialog.fap();
         }
         RequestFloatWindowPermissionDialog.this.finish();
         AppMethodBeat.o(151877);
       }
     });
-    if (com.tencent.mm.compatible.util.d.kZ(23)) {}
+    if (com.tencent.mm.compatible.util.d.ly(23)) {}
     for (int i = 2131759462;; i = 2131759461)
     {
-      locala.acM(i).b(new DialogInterface.OnClickListener()
+      locala.afl(i).c(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(151878);
-          if (com.tencent.mm.compatible.util.d.kZ(23)) {
+          if (com.tencent.mm.compatible.util.d.ly(23)) {
             try
             {
-              if (!bs.isNullOrNil((String)Settings.class.getField("ACTION_MANAGE_OVERLAY_PERMISSION").get(Settings.class)))
+              if (!bt.isNullOrNil((String)Settings.class.getField("ACTION_MANAGE_OVERLAY_PERMISSION").get(Settings.class)))
               {
-                RequestFloatWindowPermissionDialog.this.startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + ai.getPackageName())), RequestFloatWindowPermissionDialog.DjP);
+                RequestFloatWindowPermissionDialog.this.startActivityForResult(new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + aj.getPackageName())), RequestFloatWindowPermissionDialog.EOM);
                 AppMethodBeat.o(151878);
                 return;
               }
             }
             catch (Exception paramAnonymousDialogInterface)
             {
-              ac.e("MicroMsg.RequestFloatWindowPermissionDialog", "getField:ACTION_MANAGE_OVERLAY_PERMISSION! Error:%s, etype:%s", new Object[] { paramAnonymousDialogInterface.getMessage(), paramAnonymousDialogInterface.getClass().getCanonicalName() });
+              ad.e("MicroMsg.RequestFloatWindowPermissionDialog", "getField:ACTION_MANAGE_OVERLAY_PERMISSION! Error:%s, etype:%s", new Object[] { paramAnonymousDialogInterface.getMessage(), paramAnonymousDialogInterface.getClass().getCanonicalName() });
             }
           }
           paramAnonymousDialogInterface = RequestFloatWindowPermissionDialog.this.getString(2131759464);
@@ -108,14 +108,14 @@ public class RequestFloatWindowPermissionDialog
           localIntent.putExtra("rawUrl", paramAnonymousDialogInterface);
           localIntent.putExtra("useJs", true);
           localIntent.putExtra("vertical_scroll", true);
-          com.tencent.mm.br.d.b(RequestFloatWindowPermissionDialog.this, "webview", ".ui.tools.WebViewUI", localIntent);
+          com.tencent.mm.bs.d.b(RequestFloatWindowPermissionDialog.this, "webview", ".ui.tools.WebViewUI", localIntent);
           RequestFloatWindowPermissionDialog.this.finish();
           AppMethodBeat.o(151878);
         }
       });
-      this.iri = locala.fvp();
-      this.iri.setCanceledOnTouchOutside(false);
-      this.iri.show();
+      this.iKm = locala.fMb();
+      this.iKm.setCanceledOnTouchOutside(false);
+      this.iKm.show();
       AppMethodBeat.o(151883);
       return;
     }
@@ -124,26 +124,26 @@ public class RequestFloatWindowPermissionDialog
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(151884);
-    if (DjQ == null)
+    if (EON == null)
     {
       finish();
       AppMethodBeat.o(151884);
       return;
     }
-    if (paramInt1 == DjP) {
-      if (b.cc(ai.getContext())) {
-        DjQ.a(this);
+    if (paramInt1 == EOM) {
+      if (b.ca(aj.getContext())) {
+        EON.a(this);
       }
     }
     for (;;)
     {
-      DjQ = null;
+      EON = null;
       finish();
       AppMethodBeat.o(151884);
       return;
-      DjQ.b(this);
+      EON.b(this);
       continue;
-      DjQ.b(this);
+      EON.b(this);
     }
   }
   
@@ -152,7 +152,7 @@ public class RequestFloatWindowPermissionDialog
     AppMethodBeat.i(151879);
     super.onCreate(paramBundle);
     requestWindowFeature(1);
-    bHO();
+    bLZ();
     AppMethodBeat.o(151879);
   }
   
@@ -161,12 +161,12 @@ public class RequestFloatWindowPermissionDialog
     AppMethodBeat.i(151881);
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    if (this.iri != null)
+    if (this.iKm != null)
     {
-      this.iri.dismiss();
-      this.iri = null;
+      this.iKm.dismiss();
+      this.iKm = null;
     }
-    bHO();
+    bLZ();
     AppMethodBeat.o(151881);
   }
   
@@ -203,7 +203,7 @@ public class RequestFloatWindowPermissionDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog
  * JD-Core Version:    0.7.0.1
  */

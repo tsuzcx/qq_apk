@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.emoji.h.a;
 import com.tencent.mm.plugin.emoji.model.e;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.storage.ax;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bd;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,16 +18,16 @@ public class c
   implements Cloneable, Iterable<f>
 {
   protected ArrayList<f> mItemList;
-  private HashMap<String, ax> oYg;
-  protected HashMap<String, ax> oYh;
-  public boolean oYi;
+  private HashMap<String, bb> pBQ;
+  protected HashMap<String, bb> pBR;
+  public boolean pBS;
   
   public c()
   {
     AppMethodBeat.i(108356);
-    this.oYg = new HashMap();
-    this.oYh = new HashMap();
-    this.oYi = u.axK();
+    this.pBQ = new HashMap();
+    this.pBR = new HashMap();
+    this.pBS = u.aAA();
     AppMethodBeat.o(108356);
   }
   
@@ -47,7 +47,7 @@ public class c
     AppMethodBeat.o(108357);
   }
   
-  public final f Bp(int paramInt)
+  public final f BX(int paramInt)
   {
     AppMethodBeat.i(108359);
     if ((this.mItemList == null) || (this.mItemList.size() <= paramInt) || (paramInt < 0))
@@ -65,7 +65,7 @@ public class c
     return localf;
   }
   
-  public final f XB(String paramString)
+  public final f abi(String paramString)
   {
     AppMethodBeat.i(108360);
     if (this.mItemList != null)
@@ -74,7 +74,7 @@ public class c
       while (localIterator.hasNext())
       {
         f localf = (f)localIterator.next();
-        EmotionSummary localEmotionSummary = localf.oYl;
+        EmotionSummary localEmotionSummary = localf.pBV;
         if ((localEmotionSummary != null) && (localEmotionSummary.ProductID != null) && (localEmotionSummary.ProductID.equals(paramString)))
         {
           AppMethodBeat.o(108360);
@@ -86,69 +86,69 @@ public class c
     return null;
   }
   
-  public final void XC(String paramString)
+  public final void abj(String paramString)
   {
     AppMethodBeat.i(108363);
-    f localf = XB(paramString);
+    f localf = abi(paramString);
     if (localf == null)
     {
       AppMethodBeat.o(108363);
       return;
     }
     localf.setStatus(-1);
-    localf.a(this.oYi, XF(paramString), XD(paramString));
+    localf.a(this.pBS, abm(paramString), abk(paramString));
     AppMethodBeat.o(108363);
   }
   
-  public final boolean XD(String paramString)
+  public final boolean abk(String paramString)
   {
     AppMethodBeat.i(108364);
-    if (this.oYh == null)
+    if (this.pBR == null)
     {
       AppMethodBeat.o(108364);
       return false;
     }
-    boolean bool = this.oYh.containsKey(paramString);
+    boolean bool = this.pBR.containsKey(paramString);
     AppMethodBeat.o(108364);
     return bool;
   }
   
-  public final ax XE(String paramString)
+  public final bb abl(String paramString)
   {
     AppMethodBeat.i(108365);
-    ax localax2 = XF(paramString);
-    ax localax1 = localax2;
-    if (localax2 == null)
+    bb localbb2 = abm(paramString);
+    bb localbb1 = localbb2;
+    if (localbb2 == null)
     {
-      localax1 = new ax(paramString);
-      this.oYg.put(paramString, localax1);
+      localbb1 = new bb(paramString);
+      this.pBQ.put(paramString, localbb1);
     }
     AppMethodBeat.o(108365);
-    return localax1;
+    return localbb1;
   }
   
-  public final ax XF(String paramString)
+  public final bb abm(String paramString)
   {
     AppMethodBeat.i(108366);
-    paramString = (ax)this.oYg.get(paramString);
+    paramString = (bb)this.pBQ.get(paramString);
     AppMethodBeat.o(108366);
     return paramString;
   }
   
-  public final void cR(String paramString, int paramInt)
+  public final void cU(String paramString, int paramInt)
   {
     AppMethodBeat.i(108368);
-    paramString = (ax)this.oYg.get(paramString);
+    paramString = (bb)this.pBQ.get(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(108368);
       return;
     }
-    paramString.YK(paramInt);
+    paramString.aaT(paramInt);
     AppMethodBeat.o(108368);
   }
   
-  public final c cbJ()
+  public final c cgn()
   {
     AppMethodBeat.i(108361);
     try
@@ -182,7 +182,7 @@ public class c
     return localc1;
   }
   
-  public void cbK()
+  public void cgo()
   {
     AppMethodBeat.i(108369);
     if (this.mItemList == null)
@@ -190,7 +190,7 @@ public class c
       AppMethodBeat.o(108369);
       return;
     }
-    if (k.ccr().pax == null)
+    if (k.cgV().pEh == null)
     {
       AppMethodBeat.o(108369);
       return;
@@ -199,19 +199,19 @@ public class c
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      Object localObject2 = localf.oYl;
+      Object localObject2 = localf.pBV;
       if (localObject2 != null)
       {
-        Object localObject1 = k.ccr();
+        Object localObject1 = k.cgV();
         localObject2 = ((EmotionSummary)localObject2).ProductID;
-        localObject1 = (Integer)((e)localObject1).pax.get(localObject2);
+        localObject1 = (Integer)((e)localObject1).pEh.get(localObject2);
         if (localObject1 == null) {}
         for (int i = -1;; i = ((Integer)localObject1).intValue())
         {
           if (i >= 0)
           {
             localf.setStatus(6);
-            localf.FG = i;
+            localf.Hx = i;
           }
           if ((i >= 0) || (localf.mStatus != 6)) {
             break;
@@ -232,15 +232,15 @@ public class c
       this.mItemList.clear();
       this.mItemList = null;
     }
-    if (this.oYg != null)
+    if (this.pBQ != null)
     {
-      this.oYg.clear();
-      this.oYg = null;
+      this.pBQ.clear();
+      this.pBQ = null;
     }
-    if (this.oYh != null)
+    if (this.pBR != null)
     {
-      this.oYh.clear();
-      this.oYh = null;
+      this.pBR.clear();
+      this.pBR = null;
     }
     AppMethodBeat.o(108354);
   }
@@ -261,17 +261,17 @@ public class c
       AppMethodBeat.o(108362);
       return;
     }
-    this.oYh = k.getEmojiStorageMgr().GYa.fcO();
+    this.pBR = k.getEmojiStorageMgr().ILo.fsV();
     Iterator localIterator = this.mItemList.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      Object localObject = localf.oYl;
+      Object localObject = localf.pBV;
       if (localObject != null)
       {
         if (a.g((EmotionSummary)localObject))
         {
-          if (a.cdF()) {}
+          if (a.cii()) {}
           for (int i = 7;; i = 3)
           {
             localf.setStatus(i);
@@ -279,10 +279,10 @@ public class c
           }
         }
         localObject = ((EmotionSummary)localObject).ProductID;
-        localf.a(this.oYi, XF((String)localObject), XD((String)localObject));
+        localf.a(this.pBS, abm((String)localObject), abk((String)localObject));
       }
     }
-    cbK();
+    cgo();
     AppMethodBeat.o(108362);
   }
   

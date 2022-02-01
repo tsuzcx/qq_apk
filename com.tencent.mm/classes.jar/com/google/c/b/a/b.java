@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  final a bIH;
-  final int[] bII;
+  final a bSV;
+  final int[] bSW;
   
   b(a parama, int[] paramArrayOfInt)
   {
@@ -16,7 +16,7 @@ final class b
       AppMethodBeat.o(12266);
       throw parama;
     }
-    this.bIH = parama;
+    this.bSV = parama;
     int j = paramArrayOfInt.length;
     if ((j > 1) && (paramArrayOfInt[0] == 0))
     {
@@ -26,23 +26,23 @@ final class b
       }
       if (i == j)
       {
-        this.bII = new int[] { 0 };
+        this.bSW = new int[] { 0 };
         AppMethodBeat.o(12266);
         return;
       }
-      this.bII = new int[j - i];
-      System.arraycopy(paramArrayOfInt, i, this.bII, 0, this.bII.length);
+      this.bSW = new int[j - i];
+      System.arraycopy(paramArrayOfInt, i, this.bSW, 0, this.bSW.length);
       AppMethodBeat.o(12266);
       return;
     }
-    this.bII = paramArrayOfInt;
+    this.bSW = paramArrayOfInt;
     AppMethodBeat.o(12266);
   }
   
   private b a(b paramb)
   {
     AppMethodBeat.i(12267);
-    if (!this.bIH.equals(paramb.bIH))
+    if (!this.bSV.equals(paramb.bSV))
     {
       paramb = new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
       AppMethodBeat.o(12267);
@@ -58,8 +58,8 @@ final class b
       AppMethodBeat.o(12267);
       return this;
     }
-    Object localObject1 = this.bII;
-    paramb = paramb.bII;
+    Object localObject1 = this.bSW;
+    paramb = paramb.bSW;
     if (localObject1.length > paramb.length) {}
     for (;;)
     {
@@ -69,10 +69,10 @@ final class b
       int i = j;
       while (i < localObject1.length)
       {
-        localObject2[i] = a.bH(paramb[(i - j)], localObject1[i]);
+        localObject2[i] = a.bJ(paramb[(i - j)], localObject1[i]);
         i += 1;
       }
-      paramb = new b(this.bIH, (int[])localObject2);
+      paramb = new b(this.bSV, (int[])localObject2);
       AppMethodBeat.o(12267);
       return paramb;
       localObject2 = paramb;
@@ -81,15 +81,15 @@ final class b
     }
   }
   
-  private int fR(int paramInt)
+  private int fU(int paramInt)
   {
-    return this.bII[(this.bII.length - 1 - paramInt)];
+    return this.bSW[(this.bSW.length - 1 - paramInt)];
   }
   
   final b[] b(b paramb)
   {
     AppMethodBeat.i(12269);
-    if (!this.bIH.equals(paramb.bIH))
+    if (!this.bSV.equals(paramb.bSV))
     {
       paramb = new IllegalArgumentException("GenericGFPolys do not have same GenericGF field");
       AppMethodBeat.o(12269);
@@ -101,23 +101,23 @@ final class b
       AppMethodBeat.o(12269);
       throw paramb;
     }
-    b localb1 = this.bIH.bID;
-    int i = paramb.fR(paramb.bII.length - 1);
-    Object localObject1 = this.bIH;
+    b localb1 = this.bSV.bSR;
+    int i = paramb.fU(paramb.bSW.length - 1);
+    Object localObject1 = this.bSV;
     if (i == 0)
     {
       paramb = new ArithmeticException();
       AppMethodBeat.o(12269);
       throw paramb;
     }
-    i = localObject1.bIB[(localObject1.size - localObject1.bIC[i] - 1)];
+    i = localObject1.bSP[(localObject1.size - localObject1.bSQ[i] - 1)];
     localObject1 = this;
-    if ((((b)localObject1).bII.length - 1 >= paramb.bII.length - 1) && (!((b)localObject1).isZero()))
+    if ((((b)localObject1).bSW.length - 1 >= paramb.bSW.length - 1) && (!((b)localObject1).isZero()))
     {
-      int j = ((b)localObject1).bII.length - 1 - (paramb.bII.length - 1);
-      int k = this.bIH.bI(((b)localObject1).fR(((b)localObject1).bII.length - 1), i);
-      b localb2 = paramb.bJ(j, k);
-      Object localObject2 = this.bIH;
+      int j = ((b)localObject1).bSW.length - 1 - (paramb.bSW.length - 1);
+      int k = this.bSV.bK(((b)localObject1).fU(((b)localObject1).bSW.length - 1), i);
+      b localb2 = paramb.bL(j, k);
+      Object localObject2 = this.bSV;
       if (j < 0)
       {
         paramb = new IllegalArgumentException();
@@ -126,7 +126,7 @@ final class b
       }
       if (k == 0) {}
       int[] arrayOfInt;
-      for (localObject2 = ((a)localObject2).bID;; localObject2 = new b((a)localObject2, arrayOfInt))
+      for (localObject2 = ((a)localObject2).bSR;; localObject2 = new b((a)localObject2, arrayOfInt))
       {
         localb1 = localb1.a((b)localObject2);
         localObject1 = ((b)localObject1).a(localb2);
@@ -139,7 +139,7 @@ final class b
     return new b[] { localb1, localObject1 };
   }
   
-  final b bJ(int paramInt1, int paramInt2)
+  final b bL(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12268);
     if (paramInt1 < 0)
@@ -150,19 +150,19 @@ final class b
     }
     if (paramInt2 == 0)
     {
-      localObject = this.bIH.bID;
+      localObject = this.bSV.bSR;
       AppMethodBeat.o(12268);
       return localObject;
     }
-    int i = this.bII.length;
+    int i = this.bSW.length;
     Object localObject = new int[i + paramInt1];
     paramInt1 = 0;
     while (paramInt1 < i)
     {
-      localObject[paramInt1] = this.bIH.bI(this.bII[paramInt1], paramInt2);
+      localObject[paramInt1] = this.bSV.bK(this.bSW[paramInt1], paramInt2);
       paramInt1 += 1;
     }
-    localObject = new b(this.bIH, (int[])localObject);
+    localObject = new b(this.bSV, (int[])localObject);
     AppMethodBeat.o(12268);
     return localObject;
   }
@@ -170,7 +170,7 @@ final class b
   final boolean isZero()
   {
     boolean bool = false;
-    if (this.bII[0] == 0) {
+    if (this.bSW[0] == 0) {
       bool = true;
     }
     return bool;
@@ -179,11 +179,11 @@ final class b
   public final String toString()
   {
     AppMethodBeat.i(12270);
-    Object localObject = new StringBuilder((this.bII.length - 1) * 8);
-    int i = this.bII.length - 1;
+    Object localObject = new StringBuilder((this.bSW.length - 1) * 8);
+    int i = this.bSW.length - 1;
     if (i >= 0)
     {
-      int k = fR(i);
+      int k = fU(i);
       int j;
       if (k != 0)
       {
@@ -194,7 +194,7 @@ final class b
         }
         while ((i == 0) || (j != 1))
         {
-          a locala = this.bIH;
+          a locala = this.bSV;
           if (j == 0)
           {
             localObject = new IllegalArgumentException();
@@ -209,7 +209,7 @@ final class b
           }
           else
           {
-            j = locala.bIC[j];
+            j = locala.bSQ[j];
             if (j != 0) {
               break label166;
             }

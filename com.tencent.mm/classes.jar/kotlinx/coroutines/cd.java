@@ -1,16 +1,13 @@
 package kotlinx.coroutines;
 
-import d.d.f;
-import d.d.f.b;
 import d.l;
+import java.util.concurrent.CancellationException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/ThreadContextElement;", "S", "Lkotlin/coroutines/CoroutineContext$Element;", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)V", "updateThreadContext", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public abstract interface cd<S>
-  extends f.b
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ParentJob;", "Lkotlinx/coroutines/Job;", "getChildJobCancellationCause", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "kotlinx-coroutines-core"})
+public abstract interface cd
+  extends br
 {
-  public abstract S b(f paramf);
-  
-  public abstract void fH(S paramS);
+  public abstract CancellationException gvF();
 }
 
 

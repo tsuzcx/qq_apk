@@ -14,12 +14,12 @@ import com.tencent.kinda.framework.widget.tools.ActivityController;
 import com.tencent.kinda.gen.VoidBoolStringI32StringCallback;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.i;
-import com.tencent.mm.g.a.ki;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.g.a.kr;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.tools.h;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.util.HashMap;
@@ -30,66 +30,66 @@ public class UIPageFragmentActivity
   extends BaseFrActivity
   implements IEventFragment, com.tencent.mm.ui.tools.g
 {
-  private static HashMap<Integer, a> fXV;
-  private boolean fXN;
-  private FrLifeController fXO;
-  public VoidBoolStringI32StringCallback fXP;
-  public VoidCallback fXQ;
-  private boolean fXR;
-  private boolean fXS;
-  private int fXT;
-  public AtomicInteger fXU;
-  private com.tencent.mm.ui.tools.h fxG;
+  private static HashMap<Integer, a> grq;
+  private h fQT;
+  private boolean grj;
+  public FrLifeController grk;
+  public VoidBoolStringI32StringCallback grl;
+  public VoidCallback grm;
+  private boolean grn;
+  private int gro;
+  public AtomicInteger grp;
+  private boolean isDarkMode;
   KindaCacheServiceImpl kindaCacheService;
   
   static
   {
-    AppMethodBeat.i(207439);
-    fXV = new HashMap();
-    AppMethodBeat.o(207439);
+    AppMethodBeat.i(199562);
+    grq = new HashMap();
+    AppMethodBeat.o(199562);
   }
   
   public UIPageFragmentActivity()
   {
-    AppMethodBeat.i(207419);
-    this.fXP = null;
-    this.fXQ = null;
+    AppMethodBeat.i(199543);
+    this.grl = null;
+    this.grm = null;
     this.kindaCacheService = new KindaCacheServiceImpl();
-    this.fXT = 0;
-    this.fXU = new AtomicInteger(4);
-    AppMethodBeat.o(207419);
+    this.gro = 0;
+    this.grp = new AtomicInteger(5);
+    AppMethodBeat.o(199543);
   }
   
   public static void a(int paramInt, a parama)
   {
-    AppMethodBeat.i(207433);
-    fXV.put(Integer.valueOf(paramInt), parama);
-    AppMethodBeat.o(207433);
-  }
-  
-  public final boolean adR()
-  {
-    AppMethodBeat.i(207436);
-    if (this.fXO == null) {
-      ac.i("MicroMsg.UIPageFragmentActivity", "shouldFinish, controller is null!");
-    }
-    while ((this.fXO != null) && (this.fXO.getFragmentListSize() == 0))
-    {
-      AppMethodBeat.o(207436);
-      return true;
-      ac.i("MicroMsg.UIPageFragmentActivity", "shouldFinish, fragment size: ", new Object[] { Integer.valueOf(this.fXO.getFragmentListSize()) });
-    }
-    AppMethodBeat.o(207436);
-    return false;
+    AppMethodBeat.i(199556);
+    grq.put(Integer.valueOf(paramInt), parama);
+    AppMethodBeat.o(199556);
   }
   
   public boolean addFragment(BaseFragment paramBaseFragment)
   {
-    AppMethodBeat.i(207428);
-    ac.i("MicroMsg.UIPageFragmentActivity", "addFragment: ".concat(String.valueOf(paramBaseFragment)));
-    boolean bool = this.fXO.addFragment(paramBaseFragment);
-    AppMethodBeat.o(207428);
+    AppMethodBeat.i(199551);
+    ad.i("MicroMsg.UIPageFragmentActivity", "addFragment: ".concat(String.valueOf(paramBaseFragment)));
+    boolean bool = this.grk.addFragment(paramBaseFragment);
+    AppMethodBeat.o(199551);
     return bool;
+  }
+  
+  public final boolean agx()
+  {
+    AppMethodBeat.i(199559);
+    if (this.grk == null) {
+      ad.i("MicroMsg.UIPageFragmentActivity", "shouldFinish, controller is null!");
+    }
+    while ((this.grk != null) && (this.grk.getFragmentListSize() == 0))
+    {
+      AppMethodBeat.o(199559);
+      return true;
+      ad.i("MicroMsg.UIPageFragmentActivity", "shouldFinish, fragment size: ", new Object[] { Integer.valueOf(this.grk.getFragmentListSize()) });
+    }
+    AppMethodBeat.o(199559);
+    return false;
   }
   
   public boolean convertActivityFromTranslucent()
@@ -109,10 +109,10 @@ public class UIPageFragmentActivity
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(207434);
+    AppMethodBeat.i(199557);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ac.i("MicroMsg.UIPageFragmentActivity", "onActivityResult requestCode: " + paramInt1 + ", resultCode: " + paramInt2 + ", data: " + paramIntent);
-    int j;
+    ad.i("MicroMsg.UIPageFragmentActivity", "onActivityResult requestCode: " + paramInt1 + ", resultCode: " + paramInt2 + ", data: " + paramIntent);
+    int j = 0;
     int i;
     Object localObject;
     if ((paramInt1 == 4) && (paramIntent != null))
@@ -122,104 +122,118 @@ public class UIPageFragmentActivity
       int k = paramIntent.getIntExtra("countFace", 0);
       long l = paramIntent.getLongExtra("totalTime", 0L);
       int m = paramIntent.getIntExtra("err_type", 6);
-      ac.i("MicroMsg.UIPageFragmentActivity", "errCode： ".concat(String.valueOf(j)));
-      ac.i("MicroMsg.UIPageFragmentActivity", "scene： ".concat(String.valueOf(i)));
-      ac.i("MicroMsg.UIPageFragmentActivity", "countFace： ".concat(String.valueOf(k)));
-      ac.i("MicroMsg.UIPageFragmentActivity", "totalTime： ".concat(String.valueOf(l)));
-      ac.i("MicroMsg.UIPageFragmentActivity", "errorType： ".concat(String.valueOf(m)));
+      ad.i("MicroMsg.UIPageFragmentActivity", "errCode： ".concat(String.valueOf(j)));
+      ad.i("MicroMsg.UIPageFragmentActivity", "scene： ".concat(String.valueOf(i)));
+      ad.i("MicroMsg.UIPageFragmentActivity", "countFace： ".concat(String.valueOf(k)));
+      ad.i("MicroMsg.UIPageFragmentActivity", "totalTime： ".concat(String.valueOf(l)));
+      ad.i("MicroMsg.UIPageFragmentActivity", "errorType： ".concat(String.valueOf(m)));
       if (paramInt2 == -1)
       {
-        ac.i("MicroMsg.UIPageFragmentActivity", "resultCode：RESULT_OK");
-        if ((this.fXP != null) && (paramIntent.getExtras() != null))
+        ad.i("MicroMsg.UIPageFragmentActivity", "resultCode：RESULT_OK");
+        if ((this.grl != null) && (paramIntent.getExtras() != null))
         {
           localObject = paramIntent.getExtras().getString("token");
-          this.fXP.call(false, (String)localObject, j, "");
-          this.fXP = null;
+          this.grl.call(false, (String)localObject, j, "");
+          this.grl = null;
         }
-        if ((this.fXO != null) && (this.fXO.getFragmentListSize() <= 0)) {
-          finish();
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if ((this.grk != null) && (this.grk.getFragmentListSize() <= 0))
+      {
+        finish();
+        AppMethodBeat.o(199557);
+        return;
+        if ((this.grl != null) && (paramIntent.getExtras() != null))
+        {
+          localObject = paramIntent.getExtras().getString("click_other_verify_btn");
+          if ((bt.isNullOrNil((String)localObject)) || (!((String)localObject).equalsIgnoreCase("yes"))) {
+            break label396;
+          }
         }
-        localObject = (a)fXV.get(Integer.valueOf(paramInt1));
-        if (localObject == null) {
-          break label471;
+        label396:
+        for (i = 1;; i = 0)
+        {
+          ad.i("MicroMsg.UIPageFragmentActivity", "isClickOtherVerify: %s", new Object[] { localObject });
+          if (i != 0)
+          {
+            ad.i("MicroMsg.UIPageFragmentActivity", "check face failed, click other verify");
+            this.grl.call(true, "", j, "");
+            this.grl = null;
+          }
+          if (paramInt2 != 0) {
+            break;
+          }
+          ad.i("MicroMsg.UIPageFragmentActivity", "resultCode：RESULT_CANCELED");
+          if (this.grm == null) {
+            break;
+          }
+          this.grm.call();
+          this.grm = null;
+          break;
         }
+        i = j;
+        if (this.grk != null)
+        {
+          i = j;
+          if (this.grk.processCallback(paramInt1))
+          {
+            i = j;
+            if (agx())
+            {
+              finish();
+              AppMethodBeat.o(199557);
+              return;
+            }
+          }
+        }
+      }
+    }
+    if (i == 0)
+    {
+      localObject = (a)grq.get(Integer.valueOf(paramInt1));
+      if (localObject != null) {
         ((a)localObject).handle(paramInt2, paramIntent);
       }
-    }
-    label433:
-    label471:
-    for (paramIntent = Boolean.TRUE;; paramIntent = Boolean.FALSE)
-    {
-      if (!paramIntent.booleanValue()) {
-        break label478;
-      }
-      AppMethodBeat.o(207434);
-      return;
-      if ((this.fXP != null) && (paramIntent.getExtras() != null))
+      for (paramIntent = Boolean.TRUE; paramIntent.booleanValue(); paramIntent = Boolean.FALSE)
       {
-        localObject = paramIntent.getExtras().getString("click_other_verify_btn");
-        if ((bs.isNullOrNil((String)localObject)) || (!((String)localObject).equalsIgnoreCase("yes"))) {
-          break label433;
-        }
+        AppMethodBeat.o(199557);
+        return;
       }
-      for (i = 1;; i = 0)
-      {
-        ac.i("MicroMsg.UIPageFragmentActivity", "isClickOtherVerify: %s", new Object[] { localObject });
-        if (i != 0)
-        {
-          ac.i("MicroMsg.UIPageFragmentActivity", "check face failed, click other verify");
-          this.fXP.call(true, "", j, "");
-          this.fXP = null;
-        }
-        if (paramInt2 != 0) {
-          break;
-        }
-        ac.i("MicroMsg.UIPageFragmentActivity", "resultCode：RESULT_CANCELED");
-        if (this.fXQ == null) {
-          break;
-        }
-        this.fXQ.call();
-        this.fXQ = null;
-        break;
-      }
-      if ((this.fXO == null) || (!this.fXO.processCallback(paramInt1)) || (!adR())) {
-        break;
-      }
-      finish();
-      break;
     }
-    label478:
-    AppMethodBeat.o(207434);
+    AppMethodBeat.o(199557);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(207431);
-    ac.i("MicroMsg.UIPageFragmentActivity", "onBackPressed");
-    if (!this.fXO.getCurrent().onBackPressed()) {
+    AppMethodBeat.i(199554);
+    ad.i("MicroMsg.UIPageFragmentActivity", "onBackPressed");
+    if (!this.grk.getCurrent().onBackPressed()) {
       popFragment();
     }
-    AppMethodBeat.o(207431);
+    AppMethodBeat.o(199554);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     boolean bool = false;
-    AppMethodBeat.i(207420);
-    this.fXR = getIntent().getBooleanExtra("check_wallet_lock", false);
-    ac.d("MicroMsg.UIPageFragmentActivity", "MainFragmentActivity oncreate %s", new Object[] { this });
-    com.tencent.mm.plugin.report.service.h.wUl.dB(782, 37);
-    this.fXS = aj.DT();
-    ac.i("MicroMsg.UIPageFragmentActivity", "isDarkMode:%s", new Object[] { Boolean.valueOf(aj.DT()) });
-    this.fXO = new FrLifeController(this);
-    this.fXN = getIntent().getBooleanExtra("key_support_swipe_back", true);
+    AppMethodBeat.i(199544);
+    this.grn = getIntent().getBooleanExtra("check_wallet_lock", false);
+    ad.d("MicroMsg.UIPageFragmentActivity", "MainFragmentActivity oncreate %s", new Object[] { this });
+    com.tencent.mm.plugin.report.service.g.yhR.dD(782, 37);
+    this.isDarkMode = al.isDarkMode();
+    ad.i("MicroMsg.UIPageFragmentActivity", "isDarkMode:%s", new Object[] { Boolean.valueOf(al.isDarkMode()) });
+    this.grk = new FrLifeController(this);
+    this.grj = getIntent().getBooleanExtra("key_support_swipe_back", true);
     super.onCreate(paramBundle);
     if (this.kindaCacheService != null)
     {
-      ac.i("MicroMsg.UIPageFragmentActivity", "force kindaShowingDialog is false");
+      ad.i("MicroMsg.UIPageFragmentActivity", "force kindaShowingDialog is false");
       this.kindaCacheService.setBool("kindaShowingDialog", false, 0L);
     }
-    if (this.fXR) {
+    if (this.grn) {
       bool = ((com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.walletlock.a.b.class)).a(this, null);
     }
     if (!bool) {
@@ -227,155 +241,141 @@ public class UIPageFragmentActivity
     }
     setTenpayKBStateCallBackListener(new BaseFrActivity.IWalletTenpayKBStateCallBackListener()
     {
-      public final void onCallBackKinda(boolean paramAnonymousBoolean)
+      public final void onCallBackKinda(boolean paramAnonymousBoolean, float paramAnonymousFloat)
       {
-        AppMethodBeat.i(207418);
+        AppMethodBeat.i(199542);
         BaseFragment localBaseFragment = UIPageFragmentActivity.a(UIPageFragmentActivity.this).getCurrent();
+        float f = paramAnonymousFloat;
+        if (paramAnonymousFloat == 0.0F) {
+          f = 230.0F;
+        }
         if (localBaseFragment != null)
         {
           if (paramAnonymousBoolean)
           {
-            localBaseFragment.onKeyboardShow(true, 230);
-            AppMethodBeat.o(207418);
+            localBaseFragment.onKeyboardShow(true, com.tencent.mm.cc.a.aA(UIPageFragmentActivity.this.getContext(), (int)f));
+            AppMethodBeat.o(199542);
             return;
           }
-          localBaseFragment.onKeyboardShow(false, 230);
+          localBaseFragment.onKeyboardShow(false, com.tencent.mm.cc.a.aA(UIPageFragmentActivity.this.getContext(), (int)f));
         }
-        AppMethodBeat.o(207418);
+        AppMethodBeat.o(199542);
       }
     });
-    this.fxG = new com.tencent.mm.ui.tools.h(getContext());
-    this.fxG.IRL = this;
-    AppMethodBeat.o(207420);
+    this.fQT = new h(getContext());
+    this.fQT.KIP = this;
+    AppMethodBeat.o(199544);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(207426);
+    AppMethodBeat.i(199549);
     super.onDestroy();
     KindaActionBarColorManager.getInstance().reset();
-    com.tencent.mm.plugin.report.service.h.wUl.dB(782, 44);
-    AppMethodBeat.o(207426);
-  }
-  
-  public void onKeyboardStateChanged()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(207421);
-    BaseFragment localBaseFragment = this.fXO.getCurrent();
-    if (localBaseFragment != null) {
-      if (keyboardState() != 1) {
-        break label54;
-      }
-    }
-    for (;;)
-    {
-      localBaseFragment.onKeyboardShow(bool, com.tencent.mm.cc.a.ax(getContext(), i.iv(getContext())));
-      AppMethodBeat.o(207421);
-      return;
-      label54:
-      bool = false;
-    }
+    this.grk.onActivityDestroy();
+    com.tencent.mm.plugin.report.service.g.yhR.dD(782, 44);
+    AppMethodBeat.o(199549);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(207425);
-    ac.i("MicroMsg.UIPageFragmentActivity", "onPause");
+    AppMethodBeat.i(199548);
+    ad.i("MicroMsg.UIPageFragmentActivity", "onPause");
     super.onPause();
-    com.tencent.mm.plugin.report.service.h.wUl.dB(782, 42);
-    com.tencent.mm.sdk.b.a.GpY.l(new ki());
-    if (this.fxG != null) {
-      this.fxG.close();
+    com.tencent.mm.plugin.report.service.g.yhR.dD(782, 42);
+    com.tencent.mm.sdk.b.a.IbL.l(new kr());
+    if (this.fQT != null) {
+      this.fQT.close();
     }
-    AppMethodBeat.o(207425);
+    AppMethodBeat.o(199548);
   }
   
   protected void onRestoreInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(207438);
+    AppMethodBeat.i(199561);
     boolean bool1 = paramBundle.getBoolean("key_dark_mode_state");
-    boolean bool2 = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.qbK, true);
-    ac.i("MicroMsg.UIPageFragmentActivity", "onRestoreInstanceState，lastDarkMode:%s  nowDarkMode:%s,svgconfig:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(aj.DT()), Boolean.valueOf(bool2) });
-    if ((bool2) && ((aj.DT() ^ bool1))) {
+    boolean bool2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qHm, true);
+    ad.i("MicroMsg.UIPageFragmentActivity", "onRestoreInstanceState，lastDarkMode:%s  nowDarkMode:%s,svgconfig:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(al.isDarkMode()), Boolean.valueOf(bool2) });
+    if ((bool2) && ((al.isDarkMode() ^ bool1))) {
       finish();
     }
     super.onRestoreInstanceState(paramBundle);
-    AppMethodBeat.o(207438);
+    AppMethodBeat.o(199561);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(207423);
-    ac.i("MicroMsg.UIPageFragmentActivity", "onResume");
+    AppMethodBeat.i(199546);
+    ad.i("MicroMsg.UIPageFragmentActivity", "onResume");
     super.onResume();
-    if (this.fXR)
+    if (this.grn)
     {
       com.tencent.mm.plugin.walletlock.a.b localb = (com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.walletlock.a.b.class);
-      localb.a(this, localb.evh(), null);
+      localb.a(this, localb.eJn(), null);
     }
-    com.tencent.mm.plugin.report.service.h.wUl.dB(782, 40);
-    if ((this.fXO != null) && (this.fXO.processCallback(3)) && (adR())) {
+    com.tencent.mm.plugin.report.service.g.yhR.dD(782, 40);
+    if ((this.grk != null) && (this.grk.processCallback(3)) && (agx())) {
       finish();
     }
     for (;;)
     {
-      if (this.fxG != null) {
-        this.fxG.start();
+      if (this.fQT != null) {
+        this.fQT.start();
       }
-      AppMethodBeat.o(207423);
+      this.grk.setTinyCallbackTag(true);
+      AppMethodBeat.o(199546);
       return;
-      TenpaySecureEditText.setSalt(e.fAR());
+      TenpaySecureEditText.setSalt(e.fSb());
     }
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(207437);
-    paramBundle.putBoolean("key_dark_mode_state", this.fXS);
-    ac.i("MicroMsg.UIPageFragmentActivity", "onSaveInstanceState，isDarkMode:%s", new Object[] { Boolean.valueOf(this.fXS) });
+    AppMethodBeat.i(199560);
+    paramBundle.putBoolean("key_dark_mode_state", this.isDarkMode);
+    ad.i("MicroMsg.UIPageFragmentActivity", "onSaveInstanceState，isDarkMode:%s", new Object[] { Boolean.valueOf(this.isDarkMode) });
     super.onSaveInstanceState(paramBundle);
-    AppMethodBeat.o(207437);
+    AppMethodBeat.o(199560);
   }
   
   public void onSwipe(float paramFloat)
   {
-    AppMethodBeat.i(207435);
-    ac.i("MicroMsg.UIPageFragmentActivity", "onSwipe %s", new Object[] { Float.valueOf(paramFloat) });
+    AppMethodBeat.i(199558);
+    ad.i("MicroMsg.UIPageFragmentActivity", "onSwipe %s", new Object[] { Float.valueOf(paramFloat) });
     super.onSwipe(paramFloat);
-    AppMethodBeat.o(207435);
+    AppMethodBeat.o(199558);
   }
   
   public void onSwipeBack()
   {
-    AppMethodBeat.i(207432);
-    ac.d("MicroMsg.UIPageFragmentActivity", "onSwipeBack onSwipeBack %s %s", new Object[] { Boolean.valueOf(this.fXN), this });
-    if (!this.fXN)
+    AppMethodBeat.i(199555);
+    ad.d("MicroMsg.UIPageFragmentActivity", "onSwipeBack onSwipeBack %s %s", new Object[] { Boolean.valueOf(this.grj), this });
+    if (!this.grj)
     {
-      AppMethodBeat.o(207432);
+      AppMethodBeat.o(199555);
       return;
     }
     super.onSwipeBack();
-    AppMethodBeat.o(207432);
+    AppMethodBeat.o(199555);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(207424);
+    AppMethodBeat.i(199547);
     super.onWindowFocusChanged(paramBoolean);
-    if (this.fxG != null) {
-      this.fxG.start();
+    if (this.fQT != null) {
+      this.fQT.start();
     }
     AppMethodBeat.at(this, paramBoolean);
-    AppMethodBeat.o(207424);
+    AppMethodBeat.o(199547);
   }
   
   public final void p(Bundle paramBundle)
   {
-    AppMethodBeat.i(207427);
+    AppMethodBeat.i(199550);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(207427);
+      AppMethodBeat.o(199550);
       return;
     }
     Object localObject = ActivityController.resolveFragment(paramBundle);
@@ -386,82 +386,82 @@ public class UIPageFragmentActivity
       if ((bool1) && ((localObject instanceof MainFragment)))
       {
         localObject = (MainFragment)localObject;
-        this.fXO.startWebViewUIPage(paramBundle, (MainFragment)localObject);
-        AppMethodBeat.o(207427);
+        this.grk.startWebViewUIPage(paramBundle, (MainFragment)localObject);
+        AppMethodBeat.o(199550);
         return;
       }
       if ((bool2) && ((localObject instanceof MainFragment)))
       {
         localObject = (MainFragment)localObject;
-        this.fXO.startTinyAppUIPage(paramBundle, (MainFragment)localObject);
-        AppMethodBeat.o(207427);
+        this.grk.startTinyAppUIPage(paramBundle, (MainFragment)localObject);
+        AppMethodBeat.o(199550);
         return;
       }
-      this.fXO.addFragment((BaseFragment)localObject);
-      AppMethodBeat.o(207427);
+      this.grk.addFragment((BaseFragment)localObject);
+      AppMethodBeat.o(199550);
       return;
     }
     super.onBackPressed();
-    AppMethodBeat.o(207427);
+    AppMethodBeat.o(199550);
   }
   
   public boolean popFragment()
   {
-    AppMethodBeat.i(207430);
-    if (this.fXO.popFragment())
+    AppMethodBeat.i(199553);
+    if (this.grk.popFragment())
     {
-      ac.i("MicroMsg.UIPageFragmentActivity", "popFragment, There is still Fragment, and UIPageFragmentActivity hold.");
-      AppMethodBeat.o(207430);
+      ad.i("MicroMsg.UIPageFragmentActivity", "popFragment, There is still Fragment, and UIPageFragmentActivity hold.");
+      AppMethodBeat.o(199553);
       return true;
     }
-    ac.i("MicroMsg.UIPageFragmentActivity", "popFragment, finish the UIPageFragmentActivity.");
+    ad.i("MicroMsg.UIPageFragmentActivity", "popFragment, finish the UIPageFragmentActivity.");
     finish();
-    AppMethodBeat.o(207430);
+    AppMethodBeat.o(199553);
     return false;
   }
   
   public boolean removeModal(BaseFragment paramBaseFragment)
   {
-    AppMethodBeat.i(207429);
-    if (this.fXO.removeModal(paramBaseFragment))
+    AppMethodBeat.i(199552);
+    if (this.grk.removeModal(paramBaseFragment))
     {
-      ac.i("MicroMsg.UIPageFragmentActivity", "removeModal, There is still Fragment, and UIPageFragmentActivity hold.");
-      AppMethodBeat.o(207429);
+      ad.i("MicroMsg.UIPageFragmentActivity", "removeModal, There is still Fragment, and UIPageFragmentActivity hold.");
+      AppMethodBeat.o(199552);
       return true;
     }
-    ac.i("MicroMsg.UIPageFragmentActivity", "removeModal, hasOpenH5OrTinyApp: %b, kindaShowingDialog: %b", new Object[] { Boolean.valueOf(this.fXO.hasOpenH5OrTinyApp()), Boolean.valueOf(this.kindaCacheService.getBool("kindaShowingDialog")) });
-    if ((!this.fXO.hasOpenH5OrTinyApp()) && (!this.kindaCacheService.getBool("kindaShowingDialog")))
+    ad.i("MicroMsg.UIPageFragmentActivity", "removeModal, hasOpenH5OrTinyApp: %b, kindaShowingDialog: %b", new Object[] { Boolean.valueOf(this.grk.hasOpenH5OrTinyApp()), Boolean.valueOf(this.kindaCacheService.getBool("kindaShowingDialog")) });
+    if ((!this.grk.hasOpenH5OrTinyApp()) && (!this.kindaCacheService.getBool("kindaShowingDialog")))
     {
-      ac.i("MicroMsg.UIPageFragmentActivity", "removeModal, finish the UIPageFragmentActivity.");
+      ad.i("MicroMsg.UIPageFragmentActivity", "removeModal, finish the UIPageFragmentActivity.");
       finish();
     }
-    AppMethodBeat.o(207429);
+    AppMethodBeat.o(199552);
     return false;
   }
   
   public final void u(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(207422);
-    ac.d("MicroMsg.UIPageFragmentActivity", "onKeyboardHeightChanged %s", new Object[] { Integer.valueOf(paramInt) });
-    BaseFragment localBaseFragment = this.fXO.getCurrent();
+    AppMethodBeat.i(199545);
+    ad.d("MicroMsg.UIPageFragmentActivity", "onKeyboardHeightChanged %s", new Object[] { Integer.valueOf(paramInt) });
+    BaseFragment localBaseFragment = this.grk.getCurrent();
     if (localBaseFragment == null)
     {
-      AppMethodBeat.o(207422);
+      AppMethodBeat.o(199545);
       return;
     }
-    if ((paramInt > 0) && (this.fXT <= 0))
+    if ((paramInt > 0) && (this.gro <= 0))
     {
-      this.fXT = paramInt;
-      localBaseFragment.onKeyboardShow(true, com.tencent.mm.cc.a.ax(getContext(), paramInt));
-      ac.d("MicroMsg.UIPageFragmentActivity", "show keyboard %s", new Object[] { Integer.valueOf(paramInt) });
+      this.gro = paramInt;
+      localBaseFragment.onKeyboardShow(true, com.tencent.mm.cc.a.aA(getContext(), paramInt));
+      ad.d("MicroMsg.UIPageFragmentActivity", "show keyboard %s", new Object[] { Integer.valueOf(paramInt) });
     }
-    if ((paramInt <= 0) && (this.fXT > 0))
+    if ((paramInt <= 0) && (this.gro > 0))
     {
-      this.fXT = paramInt;
-      localBaseFragment.onKeyboardShow(false, com.tencent.mm.cc.a.ax(getContext(), paramInt));
-      ac.d("MicroMsg.UIPageFragmentActivity", "show keyboard %s", new Object[] { Integer.valueOf(paramInt) });
+      this.gro = paramInt;
+      localBaseFragment.onKeyboardShow(false, com.tencent.mm.cc.a.aA(getContext(), paramInt));
+      ad.d("MicroMsg.UIPageFragmentActivity", "hide keyboard %s", new Object[] { Integer.valueOf(paramInt) });
     }
-    AppMethodBeat.o(207422);
+    AppMethodBeat.o(199545);
   }
   
   public static abstract interface a

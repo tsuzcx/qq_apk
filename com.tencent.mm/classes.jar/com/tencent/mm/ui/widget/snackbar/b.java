@@ -7,14 +7,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static boolean JlN = false;
+  private static boolean Ldk = false;
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, a.b paramb)
   {
     AppMethodBeat.i(159712);
     paramActivity = new a.a(paramActivity);
-    paramActivity.tAU = paramString1;
-    paramActivity.JlA = paramString2;
+    paramActivity.uDD = paramString1;
+    paramActivity.LcX = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, null);
     AppMethodBeat.o(159712);
   }
@@ -23,8 +23,8 @@ public final class b
   {
     AppMethodBeat.i(159715);
     paramActivity = new a.a(paramActivity);
-    paramActivity.tAU = paramString1;
-    paramActivity.JlA = paramString2;
+    paramActivity.uDD = paramString1;
+    paramActivity.LcX = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, paramc);
     AppMethodBeat.o(159715);
   }
@@ -33,12 +33,12 @@ public final class b
   {
     AppMethodBeat.i(159716);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.tAU = paramString;
+    paramContext.uDD = paramString;
     paramContext = paramContext.a(Short.valueOf((short)1500));
     if (paramc != null) {
       paramContext.a(paramc);
     }
-    paramContext.fwp();
+    paramContext.fNd();
     AppMethodBeat.o(159716);
   }
   
@@ -46,8 +46,8 @@ public final class b
   {
     AppMethodBeat.i(168815);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.tAU = paramString1;
-    paramContext.JlA = paramString2;
+    paramContext.uDD = paramString1;
+    paramContext.LcX = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), paramb, null);
     AppMethodBeat.o(168815);
   }
@@ -56,8 +56,8 @@ public final class b
   {
     AppMethodBeat.i(159714);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.tAU = paramString1;
-    paramContext.JlA = paramString2;
+    paramContext.uDD = paramString1;
+    paramContext.LcX = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), paramb, paramc);
     AppMethodBeat.o(159714);
   }
@@ -71,32 +71,32 @@ public final class b
     if (paramc != null) {
       parama.a(paramc);
     }
-    parama.fwp();
+    parama.fNd();
     AppMethodBeat.o(159718);
   }
   
-  public static boolean bjw()
+  public static boolean bni()
   {
-    return JlN;
+    return Ldk;
   }
   
   public static void n(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(159717);
     paramActivity = new a.a(paramActivity);
-    paramActivity.tAU = paramString;
+    paramActivity.uDD = paramString;
     a(paramActivity.a(Short.valueOf((short)1500)), null, null);
     AppMethodBeat.o(159717);
   }
   
-  public static void yk(boolean paramBoolean)
+  public static void yW(boolean paramBoolean)
   {
-    JlN = paramBoolean;
+    Ldk = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.snackbar.b
  * JD-Core Version:    0.7.0.1
  */

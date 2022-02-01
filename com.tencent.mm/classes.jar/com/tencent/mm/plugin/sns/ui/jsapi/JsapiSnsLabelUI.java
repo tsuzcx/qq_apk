@@ -17,19 +17,21 @@ import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.u;
 import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.s.b;
 import com.tencent.mm.ui.widget.listview.AnimatedExpandableListView;
 import java.util.ArrayList;
@@ -44,77 +46,67 @@ import org.json.JSONObject;
 
 public class JsapiSnsLabelUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public static int[] yMS = { 2131763871, 2131763869, 2131763865, 2131763856 };
-  private AnimatedExpandableListView yMR;
-  private ArrayList<String> yMT;
-  private String yMU;
-  private String yMV;
-  private int yMY;
-  private boolean yMZ;
-  private boolean yNa;
-  private boolean yNb;
-  private boolean yNc;
-  private int yNd;
-  private com.tencent.mm.ui.base.p yNe;
-  private String yNf;
-  private int yNg;
-  private ArrayList<String> yNh;
-  private ArrayList<String> yNi;
-  private ArrayList<Long> yNj;
-  private ArrayList<String[]> yNk;
-  public int zfT;
-  public int zfU;
-  public int zfV;
-  public int zfW;
-  private List<String> zfX;
-  a zfY;
-  List<String> zfZ;
+  public static int[] Aeo = { 2131763871, 2131763869, 2131763865, 2131763856 };
+  private com.tencent.mm.ui.base.p AeA;
+  private String AeB;
+  private int AeC;
+  private ArrayList<String> AeD;
+  private ArrayList<String> AeE;
+  private ArrayList<Long> AeF;
+  private ArrayList<String[]> AeG;
+  private AnimatedExpandableListView Aen;
+  private ArrayList<String> Aep;
+  private String Aeq;
+  private String Aer;
+  private int Aeu;
+  private boolean Aev;
+  private boolean Aew;
+  private boolean Aex;
+  private boolean Aey;
+  private int Aez;
+  public int AxS;
+  public int AxT;
+  public int AxU;
+  public int AxV;
+  private List<String> AxW;
+  a AxX;
+  List<String> AxY;
   
   public JsapiSnsLabelUI()
   {
     AppMethodBeat.i(100142);
-    this.zfT = 0;
-    this.zfU = 1;
-    this.zfV = 2;
-    this.zfW = 3;
-    this.zfX = Arrays.asList("public,private,visible,invisible".split(","));
-    this.yMY = this.zfT;
-    this.yNa = false;
-    this.yNb = false;
-    this.yNc = false;
-    this.zfZ = new ArrayList();
+    this.AxS = 0;
+    this.AxT = 1;
+    this.AxU = 2;
+    this.AxV = 3;
+    this.AxW = Arrays.asList("public,private,visible,invisible".split(","));
+    this.Aeu = this.AxS;
+    this.Aew = false;
+    this.Aex = false;
+    this.Aey = false;
+    this.AxY = new ArrayList();
     AppMethodBeat.o(100142);
   }
   
-  private String PS(int paramInt)
+  private String RB(int paramInt)
   {
     AppMethodBeat.i(100153);
-    if ((paramInt >= this.zfZ.size()) || (paramInt < 0))
+    if ((paramInt >= this.AxY.size()) || (paramInt < 0))
     {
       AppMethodBeat.o(100153);
       return "";
     }
-    String str = (String)this.zfZ.get(paramInt);
+    String str = (String)this.AxY.get(paramInt);
     AppMethodBeat.o(100153);
     return str;
   }
   
-  private void aM(Intent paramIntent)
-  {
-    AppMethodBeat.i(100152);
-    dPT();
-    paramIntent.putExtra("Klabel_name_list", avV(this.yMU));
-    paramIntent.putExtra("Kother_user_name_list", avU(this.yMV));
-    paramIntent.putExtra("k_select_group", PS(this.zfY.yNu));
-    AppMethodBeat.o(100152);
-  }
-  
-  private static String avU(String paramString)
+  private static String aBb(String paramString)
   {
     AppMethodBeat.i(100154);
-    Object localObject = bs.lp(paramString, ",");
+    Object localObject = bt.lO(paramString, ",");
     paramString = new JSONArray();
     if (localObject != null)
     {
@@ -126,13 +118,13 @@ public class JsapiSnsLabelUI
         try
         {
           localJSONObject.put("username", str);
-          localJSONObject.put("displayName", wk(str));
-          localJSONObject.put("avatar", avW(str));
+          localJSONObject.put("displayName", zf(str));
+          localJSONObject.put("avatar", aBd(str));
           paramString.put(localJSONObject);
         }
         catch (JSONException localJSONException)
         {
-          ac.printErrStackTrace("MicroMsg.SnsLabelUI", localJSONException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.SnsLabelUI", localJSONException, "", new Object[0]);
         }
       }
     }
@@ -141,12 +133,12 @@ public class JsapiSnsLabelUI
     return paramString;
   }
   
-  private static String avV(String paramString)
+  private static String aBc(String paramString)
   {
     AppMethodBeat.i(100155);
-    Object localObject1 = bs.lp(paramString, ",");
+    Object localObject1 = bt.lO(paramString, ",");
     paramString = new JSONObject();
-    com.tencent.mm.plugin.label.a.b localb = com.tencent.mm.plugin.label.a.a.cWd();
+    com.tencent.mm.plugin.label.a.b localb = com.tencent.mm.plugin.label.a.a.dfo();
     localObject1 = ((List)localObject1).iterator();
     for (;;)
     {
@@ -157,7 +149,7 @@ public class JsapiSnsLabelUI
         try
         {
           paramString.put((String)localObject2, localJSONArray);
-          localObject2 = localb.ajD(localb.ajA((String)localObject2));
+          localObject2 = localb.aop(localb.aom((String)localObject2));
           if (localObject2 != null)
           {
             localObject2 = ((List)localObject2).iterator();
@@ -166,15 +158,15 @@ public class JsapiSnsLabelUI
               String str = (String)((Iterator)localObject2).next();
               JSONObject localJSONObject = new JSONObject();
               localJSONObject.put("username", str);
-              localJSONObject.put("displayName", wk(str));
-              localJSONObject.put("avatar", avW(str));
+              localJSONObject.put("displayName", zf(str));
+              localJSONObject.put("avatar", aBd(str));
               localJSONArray.put(localJSONObject);
             }
           }
         }
         catch (JSONException localJSONException)
         {
-          ac.printErrStackTrace("MicroMsg.SnsLabelUI", localJSONException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.SnsLabelUI", localJSONException, "", new Object[0]);
         }
       }
     }
@@ -183,13 +175,13 @@ public class JsapiSnsLabelUI
     return paramString;
   }
   
-  private static String avW(String paramString)
+  private static String aBd(String paramString)
   {
     AppMethodBeat.i(100157);
-    paramString = com.tencent.mm.aj.p.aBw().Ak(paramString);
+    paramString = com.tencent.mm.ak.p.aEx().Dj(paramString);
     if (paramString != null)
     {
-      paramString = paramString.aBp();
+      paramString = paramString.aEr();
       AppMethodBeat.o(100157);
       return paramString;
     }
@@ -197,14 +189,24 @@ public class JsapiSnsLabelUI
     return "";
   }
   
-  private boolean dPM()
+  private void aR(Intent paramIntent)
+  {
+    AppMethodBeat.i(100152);
+    eck();
+    paramIntent.putExtra("Klabel_name_list", aBc(this.Aeq));
+    paramIntent.putExtra("Kother_user_name_list", aBb(this.Aer));
+    paramIntent.putExtra("k_select_group", RB(this.AxX.AeQ));
+    AppMethodBeat.o(100152);
+  }
+  
+  private boolean ecd()
   {
     AppMethodBeat.i(100148);
     boolean bool2 = false;
-    int i = this.zfY.yNu;
+    int i = this.AxX.AeQ;
     boolean bool1;
-    if (this.zfY.yNu != this.yMY) {
-      if (((i == this.zfV) && ((this.zfY.yNw.size() != 0) || (this.zfY.yNy.size() != 0))) || ((i == this.zfW) && ((this.zfY.yNx.size() != 0) || (this.zfY.yNz.size() != 0)))) {
+    if (this.AxX.AeQ != this.Aeu) {
+      if (((i == this.AxU) && ((this.AxX.AeS.size() != 0) || (this.AxX.AeU.size() != 0))) || ((i == this.AxV) && ((this.AxX.AeT.size() != 0) || (this.AxX.AeV.size() != 0)))) {
         bool1 = true;
       }
     }
@@ -212,29 +214,29 @@ public class JsapiSnsLabelUI
     {
       AppMethodBeat.o(100148);
       return bool1;
-      if (i != this.zfU)
+      if (i != this.AxT)
       {
         bool1 = bool2;
-        if (i != this.zfT) {}
+        if (i != this.AxS) {}
       }
       else
       {
         bool1 = true;
         continue;
-        if ((i != this.zfV) || (this.zfY.yNw.size() == 0) || ((bs.n(this.zfY.yNw, ",").equals(this.yMU)) && (bs.n(this.zfY.yNy, ",").equals(this.yMV))))
+        if ((i != this.AxU) || (this.AxX.AeS.size() == 0) || ((bt.m(this.AxX.AeS, ",").equals(this.Aeq)) && (bt.m(this.AxX.AeU, ",").equals(this.Aer))))
         {
           bool1 = bool2;
-          if (i != this.zfW) {
+          if (i != this.AxV) {
             continue;
           }
           bool1 = bool2;
-          if (this.zfY.yNx.size() == 0) {
+          if (this.AxX.AeT.size() == 0) {
             continue;
           }
-          if (bs.n(this.zfY.yNx, ",").equals(this.yMU))
+          if (bt.m(this.AxX.AeT, ",").equals(this.Aeq))
           {
             bool1 = bool2;
-            if (bs.n(this.zfY.yNz, ",").equals(this.yMV)) {
+            if (bt.m(this.AxX.AeV, ",").equals(this.Aer)) {
               continue;
             }
           }
@@ -244,74 +246,74 @@ public class JsapiSnsLabelUI
     }
   }
   
-  private void dPN()
+  private void ece()
   {
     AppMethodBeat.i(100150);
     Intent localIntent = new Intent();
-    localIntent.putExtra("Ktag_range_index", this.yMY);
-    aM(localIntent);
+    localIntent.putExtra("Ktag_range_index", this.Aeu);
+    aR(localIntent);
     setResult(-1, localIntent);
     finish();
     AppMethodBeat.o(100150);
   }
   
-  private static int dPP()
+  private static int ecg()
   {
     AppMethodBeat.i(100161);
-    com.tencent.mm.kernel.g.agS();
-    int i = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(335874, Integer.valueOf(0))).intValue();
+    com.tencent.mm.kernel.g.ajD();
+    int i = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(335874, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(100161);
     return i;
   }
   
-  private static void dPQ()
+  private static void ech()
   {
     AppMethodBeat.i(100162);
-    com.tencent.mm.kernel.g.agS();
-    int i = ((Integer)com.tencent.mm.kernel.g.agR().agA().get(335874, Integer.valueOf(0))).intValue();
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agR().agA().set(335874, Integer.valueOf(i + 1));
+    com.tencent.mm.kernel.g.ajD();
+    int i = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(335874, Integer.valueOf(0))).intValue();
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajC().ajl().set(335874, Integer.valueOf(i + 1));
     AppMethodBeat.o(100162);
   }
   
-  private void dPR()
+  private void eci()
   {
     AppMethodBeat.i(100163);
-    com.tencent.mm.plugin.report.service.h.wUl.f(11455, new Object[] { "", "", Integer.valueOf(this.yNg), Integer.valueOf(0) });
-    dPQ();
-    this.yNi = null;
-    this.yNc = false;
-    this.yNb = false;
-    if ((this.yNe != null) && (this.yNe.isShowing())) {
-      this.yNe.dismiss();
+    com.tencent.mm.plugin.report.service.g.yhR.f(11455, new Object[] { "", "", Integer.valueOf(this.AeC), Integer.valueOf(0) });
+    ech();
+    this.AeE = null;
+    this.Aey = false;
+    this.Aex = false;
+    if ((this.AeA != null) && (this.AeA.isShowing())) {
+      this.AeA.dismiss();
     }
-    if (this.yNa)
+    if (this.Aew)
     {
-      this.yNa = false;
+      this.Aew = false;
       AppMethodBeat.o(100163);
       return;
     }
     int i = 2131763879;
-    if (dPP() > 1) {
+    if (ecg() > 1) {
       i = 2131763878;
     }
-    com.tencent.mm.ui.base.h.a(this, i, 2131755835, new DialogInterface.OnClickListener()
+    h.a(this, i, 2131755835, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
     AppMethodBeat.o(100163);
   }
   
-  private void dPS()
+  private void ecj()
   {
     AppMethodBeat.i(100165);
-    if ((this.yMT == null) || (this.yMT.isEmpty()))
+    if ((this.Aep == null) || (this.Aep.isEmpty()))
     {
-      if (this.zfY.yNw != null) {
-        this.zfY.yNw.clear();
+      if (this.AxX.AeS != null) {
+        this.AxX.AeS.clear();
       }
-      if (this.zfY.yNx != null) {
-        this.zfY.yNx.clear();
+      if (this.AxX.AeT != null) {
+        this.AxX.AeT.clear();
       }
       AppMethodBeat.o(100165);
       return;
@@ -319,88 +321,88 @@ public class JsapiSnsLabelUI
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator;
     String str;
-    if ((this.zfZ.size() > 0) && ("visible".equals(PS(this.yMY))) && (this.zfY.yNw != null))
+    if ((this.AxY.size() > 0) && ("visible".equals(RB(this.Aeu))) && (this.AxX.AeS != null))
     {
-      localIterator = this.zfY.yNw.iterator();
+      localIterator = this.AxX.AeS.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        if (!this.yMT.contains(str)) {
+        if (!this.Aep.contains(str)) {
           localArrayList.add(str);
         }
       }
-      this.zfY.yNw.removeAll(localArrayList);
+      this.AxX.AeS.removeAll(localArrayList);
       AppMethodBeat.o(100165);
       return;
     }
-    if ((this.zfZ.size() > 0) && ("invisible".equals(PS(this.yMY))))
+    if ((this.AxY.size() > 0) && ("invisible".equals(RB(this.Aeu))))
     {
-      localIterator = this.zfY.yNx.iterator();
+      localIterator = this.AxX.AeT.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        if (!this.yMT.contains(str)) {
+        if (!this.Aep.contains(str)) {
           localArrayList.add(str);
         }
       }
-      this.zfY.yNx.removeAll(localArrayList);
+      this.AxX.AeT.removeAll(localArrayList);
     }
     AppMethodBeat.o(100165);
   }
   
-  private void dPT()
+  private void eck()
   {
     AppMethodBeat.i(100166);
-    if ((this.yMT == null) || (this.yMT.isEmpty()))
+    if ((this.Aep == null) || (this.Aep.isEmpty()))
     {
-      this.yMU = "";
+      this.Aeq = "";
       AppMethodBeat.o(100166);
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
-    if (this.yMU != null)
+    if (this.Aeq != null)
     {
-      ArrayList localArrayList2 = bs.S(this.yMU.split(","));
+      ArrayList localArrayList2 = bt.U(this.Aeq.split(","));
       if (localArrayList2 != null)
       {
         Iterator localIterator = localArrayList2.iterator();
         while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
-          if (!this.yMT.contains(str)) {
+          if (!this.Aep.contains(str)) {
             localArrayList1.add(str);
           }
         }
         localArrayList2.removeAll(localArrayList1);
-        this.yMU = bs.n(localArrayList2, ",");
+        this.Aeq = bt.m(localArrayList2, ",");
       }
     }
     AppMethodBeat.o(100166);
   }
   
-  private void fM(List<String[]> paramList)
+  private void fX(List<String[]> paramList)
   {
     AppMethodBeat.i(100164);
-    if ((this.yNi == null) || (this.yNi.size() == 0))
+    if ((this.AeE == null) || (this.AeE.size() == 0))
     {
       AppMethodBeat.o(100164);
       return;
     }
-    Iterator localIterator = this.yNi.iterator();
+    Iterator localIterator = this.AeE.iterator();
     paramList = paramList.iterator();
-    ArrayList localArrayList1 = new ArrayList(this.yNi.size());
-    ArrayList localArrayList2 = new ArrayList(this.yNi.size());
+    ArrayList localArrayList1 = new ArrayList(this.AeE.size());
+    ArrayList localArrayList2 = new ArrayList(this.AeE.size());
     while (localIterator.hasNext())
     {
-      localArrayList1.add(com.tencent.mm.plugin.label.a.a.cWd().ajA((String)localIterator.next()));
-      localArrayList2.add(bs.n(Arrays.asList((Object[])paramList.next()), ","));
-      this.yNb = true;
+      localArrayList1.add(com.tencent.mm.plugin.label.a.a.dfo().aom((String)localIterator.next()));
+      localArrayList2.add(bt.m(Arrays.asList((Object[])paramList.next()), ","));
+      this.Aex = true;
     }
-    com.tencent.mm.plugin.label.a.a.cWd().m(localArrayList1, localArrayList2);
+    com.tencent.mm.plugin.label.a.a.dfo().n(localArrayList1, localArrayList2);
     AppMethodBeat.o(100164);
   }
   
-  private static int[] fS(List<Integer> paramList)
+  private static int[] gd(List<Integer> paramList)
   {
     AppMethodBeat.i(100145);
     int[] arrayOfInt = new int[paramList.size()];
@@ -417,9 +419,9 @@ public class JsapiSnsLabelUI
   private void goBack()
   {
     AppMethodBeat.i(100149);
-    if (dPM())
+    if (ecd())
     {
-      com.tencent.mm.ui.base.h.a(this, true, getString(2131763862), "", getString(2131763861), getString(2131763860), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      h.a(this, true, getString(2131763862), "", getString(2131763861), getString(2131763860), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -439,44 +441,16 @@ public class JsapiSnsLabelUI
       AppMethodBeat.o(100149);
       return;
     }
-    dPN();
+    ece();
     AppMethodBeat.o(100149);
   }
   
-  private static String wk(String paramString)
+  private static String zf(String paramString)
   {
     AppMethodBeat.i(100156);
-    paramString = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).wk(paramString);
+    paramString = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.a.b.class)).zf(paramString);
     AppMethodBeat.o(100156);
     return paramString;
-  }
-  
-  final void dPO()
-  {
-    AppMethodBeat.i(100151);
-    Intent localIntent = new Intent();
-    if (this.zfY.yNu == this.zfV)
-    {
-      this.yMU = bs.n(this.zfY.yNw, ",");
-      this.yMV = bs.n(this.zfY.yNy, ",");
-      aM(localIntent);
-    }
-    for (;;)
-    {
-      localIntent.putExtra("k_select_group", PS(this.zfY.yNu));
-      localIntent.putExtra("k_select_index", this.zfY.yNu);
-      localIntent.putExtra("Ktag_range_index", this.zfY.yNu);
-      setResult(-1, localIntent);
-      finish();
-      AppMethodBeat.o(100151);
-      return;
-      if (this.zfY.yNu == this.zfW)
-      {
-        this.yMU = bs.n(this.zfY.yNx, ",");
-        this.yMV = bs.n(this.zfY.yNz, ",");
-        aM(localIntent);
-      }
-    }
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -493,6 +467,34 @@ public class JsapiSnsLabelUI
     return bool;
   }
   
+  final void ecf()
+  {
+    AppMethodBeat.i(100151);
+    Intent localIntent = new Intent();
+    if (this.AxX.AeQ == this.AxU)
+    {
+      this.Aeq = bt.m(this.AxX.AeS, ",");
+      this.Aer = bt.m(this.AxX.AeU, ",");
+      aR(localIntent);
+    }
+    for (;;)
+    {
+      localIntent.putExtra("k_select_group", RB(this.AxX.AeQ));
+      localIntent.putExtra("k_select_index", this.AxX.AeQ);
+      localIntent.putExtra("Ktag_range_index", this.AxX.AeQ);
+      setResult(-1, localIntent);
+      finish();
+      AppMethodBeat.o(100151);
+      return;
+      if (this.AxX.AeQ == this.AxV)
+      {
+        this.Aeq = bt.m(this.AxX.AeT, ",");
+        this.Aer = bt.m(this.AxX.AeV, ",");
+        aR(localIntent);
+      }
+    }
+  }
+  
   public int getLayoutId()
   {
     return 2131495554;
@@ -502,31 +504,31 @@ public class JsapiSnsLabelUI
   {
     AppMethodBeat.i(100146);
     boolean bool = getIntent().getBooleanExtra("KLabel_is_filter_private", false);
-    this.yMR = ((AnimatedExpandableListView)findViewById(2131304991));
-    this.yMT = ((ArrayList)com.tencent.mm.plugin.label.a.a.cWd().cVY());
-    this.zfY.yNv = bool;
-    this.zfY.aB(this.yMT);
-    dPS();
+    this.Aen = ((AnimatedExpandableListView)findViewById(2131304991));
+    this.Aep = ((ArrayList)com.tencent.mm.plugin.label.a.a.dfo().dfj());
+    this.AxX.AeR = bool;
+    this.AxX.az(this.Aep);
+    ecj();
     AbsListView.LayoutParams localLayoutParams = new AbsListView.LayoutParams(-1, -2);
     localLayoutParams.height = getResources().getDimensionPixelSize(2131165483);
     View localView = new View(this);
     localView.setLayoutParams(localLayoutParams);
-    this.yMR.addHeaderView(localView);
-    this.yMR.setAdapter(this.zfY);
-    this.yMR.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
+    this.Aen.addHeaderView(localView);
+    this.Aen.setAdapter(this.AxX);
+    this.Aen.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
     {
       public final boolean onGroupClick(ExpandableListView paramAnonymousExpandableListView, View paramAnonymousView, final int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(100134);
-        int i = JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu;
-        ac.i("MicroMsg.SnsLabelUI", "dz[previousGroup: %d    onGroupClick:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramAnonymousInt) });
+        int i = JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ;
+        ad.i("MicroMsg.SnsLabelUI", "dz[previousGroup: %d    onGroupClick:%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramAnonymousInt) });
         if ((JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, paramAnonymousInt).equals("visible")) || (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, paramAnonymousInt).equals("invisible")))
         {
-          if ((JsapiSnsLabelUI.b(JsapiSnsLabelUI.this) != null) && (JsapiSnsLabelUI.b(JsapiSnsLabelUI.this).size() != 0) && (JsapiSnsLabelUI.dRP() == 0))
+          if ((JsapiSnsLabelUI.b(JsapiSnsLabelUI.this) != null) && (JsapiSnsLabelUI.b(JsapiSnsLabelUI.this).size() != 0) && (JsapiSnsLabelUI.eej() == 0))
           {
             JsapiSnsLabelUI.b(JsapiSnsLabelUI.this, paramAnonymousInt);
             JsapiSnsLabelUI.c(JsapiSnsLabelUI.this);
-            ac.i("MicroMsg.SnsLabelUI", "dz[previousGroup: need transform]");
+            ad.i("MicroMsg.SnsLabelUI", "dz[previousGroup: need transform]");
             AppMethodBeat.o(100134);
             return true;
           }
@@ -534,37 +536,37 @@ public class JsapiSnsLabelUI
           {
             JsapiSnsLabelUI.e(JsapiSnsLabelUI.this);
             JsapiSnsLabelUI.b(JsapiSnsLabelUI.this, paramAnonymousInt);
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, com.tencent.mm.ui.base.h.b(JsapiSnsLabelUI.this, JsapiSnsLabelUI.this.getString(2131763867), false, null));
-            ac.i("MicroMsg.SnsLabelUI", "dz[previousGroup: isGettingTagInfo]");
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, h.b(JsapiSnsLabelUI.this, JsapiSnsLabelUI.this.getString(2131763867), false, null));
+            ad.i("MicroMsg.SnsLabelUI", "dz[previousGroup: isGettingTagInfo]");
             AppMethodBeat.o(100134);
             return true;
           }
-          if ((JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNt == null) || (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNt.size() == 0))
+          if ((JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeP == null) || (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeP.size() == 0))
           {
             JsapiSnsLabelUI.b(JsapiSnsLabelUI.this, paramAnonymousInt);
             JsapiSnsLabelUI.f(JsapiSnsLabelUI.this);
-            ac.i("MicroMsg.SnsLabelUI", "dz[previousGroup: gotoSelectContact]");
+            ad.i("MicroMsg.SnsLabelUI", "dz[previousGroup: gotoSelectContact]");
             AppMethodBeat.o(100134);
             return true;
           }
           if (i == paramAnonymousInt)
           {
             if (JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).isGroupExpanded(paramAnonymousInt)) {
-              JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).acW(paramAnonymousInt);
+              JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).afx(paramAnonymousInt);
             }
             for (;;)
             {
-              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu = paramAnonymousInt;
+              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ = paramAnonymousInt;
               AppMethodBeat.o(100134);
               return true;
-              JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).acV(paramAnonymousInt);
+              JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).afw(paramAnonymousInt);
             }
           }
           if (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, i).equals("visible"))
           {
             JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).collapseGroup(i);
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNw.clear();
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNy.clear();
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeS.clear();
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeU.clear();
           }
           for (;;)
           {
@@ -573,7 +575,7 @@ public class JsapiSnsLabelUI
               public final void run()
               {
                 AppMethodBeat.i(100133);
-                JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).acV(paramAnonymousInt);
+                JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).afw(paramAnonymousInt);
                 AppMethodBeat.o(100133);
               }
             });
@@ -581,20 +583,20 @@ public class JsapiSnsLabelUI
             if (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, i).equals("invisible"))
             {
               JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).collapseGroup(i);
-              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNx.clear();
-              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNz.clear();
+              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeT.clear();
+              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeV.clear();
             }
           }
         }
         if ((i >= 0) && ((JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, i).equals("visible")) || (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, i).equals("invisible")))) {
-          JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).acW(i);
+          JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).afx(i);
         }
-        JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu = paramAnonymousInt;
+        JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ = paramAnonymousInt;
         AppMethodBeat.o(100134);
         return false;
       }
     });
-    this.yMR.setOnChildClickListener(new ExpandableListView.OnChildClickListener()
+    this.Aen.setOnChildClickListener(new ExpandableListView.OnChildClickListener()
     {
       public final boolean onChildClick(ExpandableListView paramAnonymousExpandableListView, View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, long paramAnonymousLong)
       {
@@ -610,11 +612,11 @@ public class JsapiSnsLabelUI
           return false;
           paramAnonymousExpandableListView = (String)JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).getChild(paramAnonymousInt1, paramAnonymousInt2);
           JsapiSnsLabelUI.a(JsapiSnsLabelUI.this);
-          a.avI(paramAnonymousExpandableListView);
-          if (paramAnonymousInt1 == JsapiSnsLabelUI.this.zfV) {
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, 1, JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNw, paramAnonymousExpandableListView, paramAnonymousView);
-          } else if (paramAnonymousInt1 == JsapiSnsLabelUI.this.zfW) {
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, 2, JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNx, paramAnonymousExpandableListView, paramAnonymousView);
+          a.aAP(paramAnonymousExpandableListView);
+          if (paramAnonymousInt1 == JsapiSnsLabelUI.this.AxU) {
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, 1, JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeS, paramAnonymousExpandableListView, paramAnonymousView);
+          } else if (paramAnonymousInt1 == JsapiSnsLabelUI.this.AxV) {
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, 2, JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeT, paramAnonymousExpandableListView, paramAnonymousView);
           }
         }
       }
@@ -635,25 +637,25 @@ public class JsapiSnsLabelUI
       {
         AppMethodBeat.i(100137);
         paramAnonymousMenuItem = JsapiSnsLabelUI.this;
-        String str1 = bs.n(paramAnonymousMenuItem.zfY.yNw, ",");
-        String str2 = bs.n(paramAnonymousMenuItem.zfY.yNy, ",");
-        String str3 = bs.n(paramAnonymousMenuItem.zfY.yNx, ",");
-        String str4 = bs.n(paramAnonymousMenuItem.zfY.yNz, ",");
-        if (((paramAnonymousMenuItem.zfY.yNu == paramAnonymousMenuItem.zfV) && (paramAnonymousMenuItem.zfY.yNw.size() == 0) && (paramAnonymousMenuItem.zfY.yNy.size() == 0)) || ((paramAnonymousMenuItem.zfY.yNu == paramAnonymousMenuItem.zfW) && (paramAnonymousMenuItem.zfY.yNx.size() == 0) && (paramAnonymousMenuItem.zfY.yNz.size() == 0))) {
-          com.tencent.mm.ui.base.h.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(2131763868), "", paramAnonymousMenuItem.getString(2131763880), null);
+        String str1 = bt.m(paramAnonymousMenuItem.AxX.AeS, ",");
+        String str2 = bt.m(paramAnonymousMenuItem.AxX.AeU, ",");
+        String str3 = bt.m(paramAnonymousMenuItem.AxX.AeT, ",");
+        String str4 = bt.m(paramAnonymousMenuItem.AxX.AeV, ",");
+        if (((paramAnonymousMenuItem.AxX.AeQ == paramAnonymousMenuItem.AxU) && (paramAnonymousMenuItem.AxX.AeS.size() == 0) && (paramAnonymousMenuItem.AxX.AeU.size() == 0)) || ((paramAnonymousMenuItem.AxX.AeQ == paramAnonymousMenuItem.AxV) && (paramAnonymousMenuItem.AxX.AeT.size() == 0) && (paramAnonymousMenuItem.AxX.AeV.size() == 0))) {
+          h.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(2131763868), "", paramAnonymousMenuItem.getString(2131763880), null);
         }
         for (;;)
         {
           AppMethodBeat.o(100137);
           return true;
-          if (((paramAnonymousMenuItem.zfY.yNu == paramAnonymousMenuItem.zfV) && (bs.isNullOrNil(str1)) && (bs.isNullOrNil(str2))) || ((paramAnonymousMenuItem.zfY.yNu == paramAnonymousMenuItem.zfW) && (bs.isNullOrNil(str3)) && (bs.isNullOrNil(str4)))) {
-            com.tencent.mm.ui.base.h.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(2131763868), "", paramAnonymousMenuItem.getString(2131763880), null);
+          if (((paramAnonymousMenuItem.AxX.AeQ == paramAnonymousMenuItem.AxU) && (bt.isNullOrNil(str1)) && (bt.isNullOrNil(str2))) || ((paramAnonymousMenuItem.AxX.AeQ == paramAnonymousMenuItem.AxV) && (bt.isNullOrNil(str3)) && (bt.isNullOrNil(str4)))) {
+            h.a(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(2131763868), "", paramAnonymousMenuItem.getString(2131763880), null);
           } else {
-            paramAnonymousMenuItem.dPO();
+            paramAnonymousMenuItem.ecf();
           }
         }
       }
-    }, null, s.b.Hom);
+    }, null, s.b.JbS);
     AppMethodBeat.o(100146);
   }
   
@@ -664,9 +666,9 @@ public class JsapiSnsLabelUI
     Object localObject;
     if ((paramInt2 == -1) && (paramInt1 == 4003))
     {
-      ac.i("MicroMsg.SnsLabelUI", "the Activity completed");
+      ad.i("MicroMsg.SnsLabelUI", "the Activity completed");
       localObject = paramIntent.getStringExtra("Select_Contacts_To_Create_New_Label");
-      if (!bs.isNullOrNil((String)localObject))
+      if (!bt.isNullOrNil((String)localObject))
       {
         paramIntent = new Intent();
         paramIntent.putExtra("Select_Contact", (String)localObject);
@@ -675,32 +677,32 @@ public class JsapiSnsLabelUI
         return;
       }
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      this.yMV = new String(paramIntent);
-      ac.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
-      if (this.yNd == this.zfV)
+      this.Aer = new String(paramIntent);
+      ad.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
+      if (this.Aez == this.AxU)
       {
-        this.zfY.yNy.clear();
-        if (!bs.isNullOrNil(paramIntent))
+        this.AxX.AeU.clear();
+        if (!bt.isNullOrNil(paramIntent))
         {
-          paramIntent = bs.S(paramIntent.split(","));
-          this.zfY.yNy.addAll(paramIntent);
-          this.zfY.yNu = this.yNd;
+          paramIntent = bt.U(paramIntent.split(","));
+          this.AxX.AeU.addAll(paramIntent);
+          this.AxX.AeQ = this.Aez;
         }
       }
       for (;;)
       {
-        this.zfY.notifyDataSetChanged();
-        this.yMR.expandGroup(this.yNd);
+        this.AxX.notifyDataSetChanged();
+        this.Aen.expandGroup(this.Aez);
         AppMethodBeat.o(100147);
         return;
-        if (this.yNd == this.zfW)
+        if (this.Aez == this.AxV)
         {
-          this.zfY.yNz.clear();
-          if (!bs.isNullOrNil(paramIntent))
+          this.AxX.AeV.clear();
+          if (!bt.isNullOrNil(paramIntent))
           {
-            paramIntent = bs.S(paramIntent.split(","));
-            this.zfY.yNz.addAll(paramIntent);
-            this.zfY.yNu = this.yNd;
+            paramIntent = bt.U(paramIntent.split(","));
+            this.AxX.AeV.addAll(paramIntent);
+            this.AxX.AeQ = this.Aez;
           }
         }
       }
@@ -708,8 +710,8 @@ public class JsapiSnsLabelUI
     if ((paramInt2 == -1) && (paramInt1 == 4001))
     {
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      ac.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
-      if (!bs.isNullOrNil(paramIntent))
+      ad.i("MicroMsg.SnsLabelUI", "dz[onActivityResult] %s", new Object[] { String.valueOf(paramIntent) });
+      if (!bt.isNullOrNil(paramIntent))
       {
         localObject = new Intent();
         ((Intent)localObject).putExtra("Select_Contact", paramIntent);
@@ -721,33 +723,33 @@ public class JsapiSnsLabelUI
     if ((paramInt2 == 0) && (paramInt1 == 4002) && (paramIntent != null))
     {
       localObject = paramIntent.getStringExtra("k_sns_label_add_label");
-      this.yNf = paramIntent.getStringExtra("k_sns_label_add_label");
-      this.yMR.postDelayed(new Runnable()
+      this.AeB = paramIntent.getStringExtra("k_sns_label_add_label");
+      this.Aen.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(100139);
-          JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, (ArrayList)com.tencent.mm.plugin.label.a.a.cWd().cVY());
+          JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, (ArrayList)com.tencent.mm.plugin.label.a.a.dfo().dfj());
           if (JsapiSnsLabelUI.j(JsapiSnsLabelUI.this) == null) {
             JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, new ArrayList());
           }
-          if (!bs.isNullOrNil(this.yNo)) {
-            if (!JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).contains(this.yNo)) {
-              JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).add(this.yNo);
+          if (!bt.isNullOrNil(this.AeK)) {
+            if (!JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).contains(this.AeK)) {
+              JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).add(this.AeK);
             }
           }
-          for (int i = JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).indexOf(this.yNo);; i = -1)
+          for (int i = JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).indexOf(this.AeK);; i = -1)
           {
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).aB(JsapiSnsLabelUI.j(JsapiSnsLabelUI.this));
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).az(JsapiSnsLabelUI.j(JsapiSnsLabelUI.this));
             JsapiSnsLabelUI.k(JsapiSnsLabelUI.this);
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu = JsapiSnsLabelUI.l(JsapiSnsLabelUI.this);
-            if ((!bs.isNullOrNil(this.yNo)) && (i != -1))
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ = JsapiSnsLabelUI.l(JsapiSnsLabelUI.this);
+            if ((!bt.isNullOrNil(this.AeK)) && (i != -1))
             {
-              if (JsapiSnsLabelUI.l(JsapiSnsLabelUI.this) != JsapiSnsLabelUI.this.zfV) {
+              if (JsapiSnsLabelUI.l(JsapiSnsLabelUI.this) != JsapiSnsLabelUI.this.AxU) {
                 break label252;
               }
-              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNw.add(this.yNo);
-              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNy.clear();
+              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeS.add(this.AeK);
+              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeU.clear();
             }
             for (;;)
             {
@@ -757,10 +759,10 @@ public class JsapiSnsLabelUI
               AppMethodBeat.o(100139);
               return;
               label252:
-              if (JsapiSnsLabelUI.l(JsapiSnsLabelUI.this) == JsapiSnsLabelUI.this.zfW)
+              if (JsapiSnsLabelUI.l(JsapiSnsLabelUI.this) == JsapiSnsLabelUI.this.AxV)
               {
-                JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNx.add(this.yNo);
-                JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNz.clear();
+                JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeT.add(this.AeK);
+                JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeV.clear();
               }
             }
           }
@@ -775,23 +777,23 @@ public class JsapiSnsLabelUI
     AppMethodBeat.i(100144);
     super.onCreate(paramBundle);
     setMMTitle(2131764018);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(292, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(635, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(638, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(290, this);
-    this.zfY = new a(this);
-    this.zfY.zgf = false;
-    this.zfY.zge = new a.b()
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(292, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(635, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(638, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.a(290, this);
+    this.AxX = new a(this);
+    this.AxX.Aye = false;
+    this.AxX.Ayd = new a.b()
     {
       public final void a(a.c paramAnonymousc)
       {
         AppMethodBeat.i(100130);
-        int i = paramAnonymousc.yNH;
-        int j = paramAnonymousc.yNI;
+        int i = paramAnonymousc.Afd;
+        int j = paramAnonymousc.Afe;
         JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, i, j);
         AppMethodBeat.o(100130);
       }
@@ -799,22 +801,22 @@ public class JsapiSnsLabelUI
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      this.yMY = this.zfT;
-      this.zfY.style = 0;
-      this.yMU = null;
-      this.yMV = null;
-      this.zfY.yNu = this.yMY;
-      if (this.zfY.style == 1) {
+      this.Aeu = this.AxS;
+      this.AxX.style = 0;
+      this.Aeq = null;
+      this.Aer = null;
+      this.AxX.AeQ = this.Aeu;
+      if (this.AxX.style == 1) {
         findViewById(2131304992).setBackgroundResource(2131100017);
       }
-      if (this.yMY != this.zfV) {
-        break label801;
+      if (this.Aeu != this.AxU) {
+        break label802;
       }
-      if (!TextUtils.isEmpty(this.yMU)) {
-        this.zfY.yNw = bs.S(this.yMU.split(","));
+      if (!TextUtils.isEmpty(this.Aeq)) {
+        this.AxX.AeS = bt.U(this.Aeq.split(","));
       }
-      if (!TextUtils.isEmpty(this.yMV)) {
-        this.zfY.yNy = bs.S(this.yMV.split(","));
+      if (!TextUtils.isEmpty(this.Aer)) {
+        this.AxX.AeU = bt.U(this.Aer.split(","));
       }
     }
     Object localObject1;
@@ -822,22 +824,22 @@ public class JsapiSnsLabelUI
     ArrayList localArrayList;
     for (;;)
     {
-      com.tencent.mm.kernel.g.agS();
-      this.yMZ = ((Boolean)com.tencent.mm.kernel.g.agR().agA().get(335873, Boolean.TRUE)).booleanValue();
-      if (this.yMZ)
+      com.tencent.mm.kernel.g.ajD();
+      this.Aev = ((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(335873, Boolean.TRUE)).booleanValue();
+      if (this.Aev)
       {
-        this.yNb = true;
-        this.yNc = true;
-        if (dPP() > 0) {
-          this.yNa = true;
+        this.Aex = true;
+        this.Aey = true;
+        if (ecg() > 0) {
+          this.Aew = true;
         }
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agQ().ghe.a(new u(1), 0);
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajB().gAO.a(new u(1), 0);
       }
       initView();
       localObject1 = getIntent();
       if (localObject1 == null) {
-        break label1264;
+        break label1265;
       }
       paramBundle = ((Intent)localObject1).getStringExtra("k_select_group");
       boolean bool1 = ((Intent)localObject1).getBooleanExtra("k_show_public", true);
@@ -854,35 +856,35 @@ public class JsapiSnsLabelUI
       Object tmp428_423 = tmp423_418;
       tmp428_423[3] = 2131763856;
       tmp428_423;
-      this.zfZ.clear();
+      this.AxY.clear();
       localObject1 = new ArrayList();
       localArrayList = new ArrayList();
       if (bool1)
       {
         ((List)localObject1).add(Integer.valueOf(localObject2[0]));
         localArrayList.add(Integer.valueOf(localObject2[0]));
-        this.zfZ.add(this.zfX.get(0));
+        this.AxY.add(this.AxW.get(0));
       }
       if (bool2)
       {
         ((List)localObject1).add(Integer.valueOf(localObject2[1]));
         localArrayList.add(Integer.valueOf(localObject2[1]));
-        this.zfZ.add(this.zfX.get(1));
+        this.AxY.add(this.AxW.get(1));
       }
       if (bool3)
       {
         ((List)localObject1).add(Integer.valueOf(localObject2[2]));
         localArrayList.add(Integer.valueOf(localObject2[2]));
-        this.zfZ.add(this.zfX.get(2));
+        this.AxY.add(this.AxW.get(2));
       }
       if (bool4)
       {
         ((List)localObject1).add(Integer.valueOf(localObject2[3]));
         localArrayList.add(Integer.valueOf(localObject2[3]));
-        this.zfZ.add(this.zfX.get(3));
+        this.AxY.add(this.AxW.get(3));
       }
-      if (this.zfZ.size() != 0) {
-        break label873;
+      if (this.AxY.size() != 0) {
+        break label874;
       }
       finish();
       AppMethodBeat.o(100144);
@@ -890,85 +892,85 @@ public class JsapiSnsLabelUI
       if (paramBundle.hasExtra("k_title")) {
         setMMTitle(paramBundle.getStringExtra("k_title"));
       }
-      this.yMY = paramBundle.getIntExtra("KLabel_range_index", this.zfT);
-      this.zfY.style = paramBundle.getIntExtra("k_sns_label_ui_style", 0);
-      this.yMU = paramBundle.getStringExtra("Klabel_name_list");
-      this.yMV = paramBundle.getStringExtra("Kother_user_name_list");
+      this.Aeu = paramBundle.getIntExtra("KLabel_range_index", this.AxS);
+      this.AxX.style = paramBundle.getIntExtra("k_sns_label_ui_style", 0);
+      this.Aeq = paramBundle.getStringExtra("Klabel_name_list");
+      this.Aer = paramBundle.getStringExtra("Kother_user_name_list");
       if (TextUtils.isEmpty(paramBundle.getStringExtra("k_sns_label_ui_title"))) {
         break;
       }
       setMMTitle(paramBundle.getStringExtra("k_sns_label_ui_title"));
       break;
-      label801:
-      if (this.yMY == this.zfW)
+      label802:
+      if (this.Aeu == this.AxV)
       {
-        if (!TextUtils.isEmpty(this.yMU)) {
-          this.zfY.yNx = bs.S(this.yMU.split(","));
+        if (!TextUtils.isEmpty(this.Aeq)) {
+          this.AxX.AeT = bt.U(this.Aeq.split(","));
         }
-        if (!TextUtils.isEmpty(this.yMV)) {
-          this.zfY.yNz = bs.S(this.yMV.split(","));
+        if (!TextUtils.isEmpty(this.Aer)) {
+          this.AxX.AeV = bt.U(this.Aer.split(","));
         }
       }
     }
-    label873:
-    this.zfT = this.zfZ.indexOf("public");
-    this.zfU = this.zfZ.indexOf("private");
-    this.zfV = this.zfZ.indexOf("visible");
-    this.zfW = this.zfZ.indexOf("invisible");
-    if (this.zfY != null)
+    label874:
+    this.AxS = this.AxY.indexOf("public");
+    this.AxT = this.AxY.indexOf("private");
+    this.AxU = this.AxY.indexOf("visible");
+    this.AxV = this.AxY.indexOf("invisible");
+    if (this.AxX != null)
     {
-      localObject2 = this.zfY;
-      List localList = this.zfZ;
-      ((a)localObject2).zgd = localList;
-      ((a)localObject2).zfT = localList.indexOf("public");
-      ((a)localObject2).zfU = localList.indexOf("private");
-      ((a)localObject2).zfV = localList.indexOf("visible");
-      ((a)localObject2).zfW = localList.indexOf("invisible");
-      this.zfY.zgc = ((List)localObject1).size();
-      this.zfY.yMS = fS((List)localObject1);
-      this.zfY.yNs = fS(localArrayList);
+      localObject2 = this.AxX;
+      List localList = this.AxY;
+      ((a)localObject2).Ayc = localList;
+      ((a)localObject2).AxS = localList.indexOf("public");
+      ((a)localObject2).AxT = localList.indexOf("private");
+      ((a)localObject2).AxU = localList.indexOf("visible");
+      ((a)localObject2).AxV = localList.indexOf("invisible");
+      this.AxX.Ayb = ((List)localObject1).size();
+      this.AxX.Aeo = gd((List)localObject1);
+      this.AxX.AeO = gd(localArrayList);
       if (!TextUtils.isEmpty(paramBundle))
       {
-        this.zfY.yNu = this.zfZ.indexOf(paramBundle);
+        this.AxX.AeQ = this.AxY.indexOf(paramBundle);
         if (paramBundle.equals("visible"))
         {
-          if (!TextUtils.isEmpty(this.yMU)) {
-            this.zfY.yNw = bs.S(this.yMU.split(","));
+          if (!TextUtils.isEmpty(this.Aeq)) {
+            this.AxX.AeS = bt.U(this.Aeq.split(","));
           }
-          if (!TextUtils.isEmpty(this.yMV)) {
-            this.zfY.yNy = bs.S(this.yMV.split(","));
+          if (!TextUtils.isEmpty(this.Aer)) {
+            this.AxX.AeU = bt.U(this.Aer.split(","));
           }
-          this.yMR.expandGroup(this.zfZ.indexOf(paramBundle));
+          this.Aen.expandGroup(this.AxY.indexOf(paramBundle));
           AppMethodBeat.o(100144);
           return;
         }
         if (paramBundle.equals("invisible"))
         {
-          if (!TextUtils.isEmpty(this.yMU)) {
-            this.zfY.yNx = bs.S(this.yMU.split(","));
+          if (!TextUtils.isEmpty(this.Aeq)) {
+            this.AxX.AeT = bt.U(this.Aeq.split(","));
           }
-          if (!TextUtils.isEmpty(this.yMV)) {
-            this.zfY.yNz = bs.S(this.yMV.split(","));
+          if (!TextUtils.isEmpty(this.Aer)) {
+            this.AxX.AeV = bt.U(this.Aer.split(","));
           }
-          this.yMR.expandGroup(this.zfZ.indexOf(paramBundle));
+          this.Aen.expandGroup(this.AxY.indexOf(paramBundle));
         }
       }
     }
-    label1264:
+    label1265:
     AppMethodBeat.o(100144);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(100158);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(292, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(635, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(638, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(290, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(292, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(635, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(638, this);
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajB().gAO.b(290, this);
     super.onDestroy();
     AppMethodBeat.o(100158);
   }
@@ -976,18 +978,18 @@ public class JsapiSnsLabelUI
   public void onResume()
   {
     AppMethodBeat.i(100159);
-    if ((this.zfY != null) && (this.yNf == null) && (this.yMR != null)) {
-      this.yMR.postDelayed(new Runnable()
+    if ((this.AxX != null) && (this.AeB == null) && (this.Aen != null)) {
+      this.Aen.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(100131);
-          com.tencent.mm.plugin.label.a.a.cWd().alK();
-          JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, (ArrayList)com.tencent.mm.plugin.label.a.a.cWd().cVY());
-          JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).aB(JsapiSnsLabelUI.j(JsapiSnsLabelUI.this));
+          com.tencent.mm.plugin.label.a.a.dfo().aox();
+          JsapiSnsLabelUI.a(JsapiSnsLabelUI.this, (ArrayList)com.tencent.mm.plugin.label.a.a.dfo().dfj());
+          JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).az(JsapiSnsLabelUI.j(JsapiSnsLabelUI.this));
           JsapiSnsLabelUI.k(JsapiSnsLabelUI.this);
-          if (((JsapiSnsLabelUI.j(JsapiSnsLabelUI.this) == null) || (JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).size() == 0)) && ((JsapiSnsLabelUI.p(JsapiSnsLabelUI.this) == null) || (JsapiSnsLabelUI.p(JsapiSnsLabelUI.this).length() == 0)) && (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu != JsapiSnsLabelUI.this.zfT) && (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu != JsapiSnsLabelUI.this.zfU)) {
-            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu = JsapiSnsLabelUI.this.zfT;
+          if (((JsapiSnsLabelUI.j(JsapiSnsLabelUI.this) == null) || (JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).size() == 0)) && ((JsapiSnsLabelUI.p(JsapiSnsLabelUI.this) == null) || (JsapiSnsLabelUI.p(JsapiSnsLabelUI.this).length() == 0)) && (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ != JsapiSnsLabelUI.this.AxS) && (JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ != JsapiSnsLabelUI.this.AxT)) {
+            JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ = JsapiSnsLabelUI.this.AxS;
           }
           JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).notifyDataSetChanged();
           JsapiSnsLabelUI.m(JsapiSnsLabelUI.this);
@@ -1002,8 +1004,8 @@ public class JsapiSnsLabelUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(100160);
-    ac.i("MicroMsg.SnsLabelUI", "dz:[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!this.yNb)
+    ad.i("MicroMsg.SnsLabelUI", "dz:[onSceneEnd]errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (!this.Aex)
     {
       AppMethodBeat.o(100160);
       return;
@@ -1018,33 +1020,33 @@ public class JsapiSnsLabelUI
       Object localObject;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        localObject = af.dHX().getCursor();
-        this.yNg = ((Cursor)localObject).getCount();
-        if (this.yNg > 0)
+        localObject = ag.dUk().getCursor();
+        this.AeC = ((Cursor)localObject).getCount();
+        if (this.AeC > 0)
         {
           ((Cursor)localObject).moveToFirst();
           v localv = new v();
           paramInt1 = ((Cursor)localObject).getCount();
-          this.yNi = new ArrayList(paramInt1);
-          this.yNh = new ArrayList(paramInt1);
-          this.yNk = new ArrayList(paramInt1);
-          this.yNj = new ArrayList(paramInt1);
+          this.AeE = new ArrayList(paramInt1);
+          this.AeD = new ArrayList(paramInt1);
+          this.AeG = new ArrayList(paramInt1);
+          this.AeF = new ArrayList(paramInt1);
           if (!((Cursor)localObject).isAfterLast())
           {
             localv.convertFrom((Cursor)localObject);
             if ((localv.field_memberList != null) && (localv.field_memberList.length() != 0))
             {
-              this.yNk.add(localv.field_memberList.split(","));
+              this.AeG.add(localv.field_memberList.split(","));
               paramn = localv.field_tagName;
-              ArrayList localArrayList = this.yNi;
-              paramString = com.tencent.mm.plugin.label.a.a.cWd().cWa();
+              ArrayList localArrayList = this.AeE;
+              paramString = com.tencent.mm.plugin.label.a.a.dfo().dfl();
               if (paramString == null)
               {
                 paramString = paramn;
                 label297:
                 localArrayList.add(paramString);
-                this.yNh.add(paramn);
-                this.yNj.add(Long.valueOf(localv.field_tagId));
+                this.AeD.add(paramn);
+                this.AeF.add(Long.valueOf(localv.field_tagId));
               }
             }
             for (;;)
@@ -1058,82 +1060,82 @@ public class JsapiSnsLabelUI
               }
               paramString = String.format(getString(2131763859), new Object[] { paramn });
               break label297;
-              ac.e("MicroMsg.SnsLabelUI", "dz:snstaginfo memberlist is null.");
+              ad.e("MicroMsg.SnsLabelUI", "dz:snstaginfo memberlist is null.");
             }
           }
           ((Cursor)localObject).close();
-          if (this.yNh.size() != 0) {
+          if (this.AeD.size() != 0) {
             break label508;
           }
           paramInt1 = 0;
           if (paramInt1 != 0) {}
         }
-        else if (this.yNc)
+        else if (this.Aey)
         {
-          this.zfY.yNu = this.yNd;
-          this.yMR.acV(this.yNd);
-          com.tencent.mm.kernel.g.agS();
-          com.tencent.mm.kernel.g.agR().agA().set(335873, Boolean.FALSE);
+          this.AxX.AeQ = this.Aez;
+          this.Aen.afw(this.Aez);
+          com.tencent.mm.kernel.g.ajD();
+          com.tencent.mm.kernel.g.ajC().ajl().set(335873, Boolean.FALSE);
         }
         ((Cursor)localObject).close();
-        if (this.yNa)
+        if (this.Aew)
         {
-          this.yNb = true;
-          com.tencent.mm.plugin.label.a.a.cWd().dX(this.yNi);
+          this.Aex = true;
+          com.tencent.mm.plugin.label.a.a.dfo().ek(this.AeE);
         }
       }
       for (;;)
       {
-        this.yNc = false;
+        this.Aey = false;
         AppMethodBeat.o(100160);
         return;
         label508:
         paramInt1 = 1;
         break;
-        this.yNb = false;
+        this.Aex = false;
         continue;
-        dPR();
-        ac.i("MicroMsg.SnsLabelUI", "dz: error at get sns tag list!");
+        eci();
+        ad.i("MicroMsg.SnsLabelUI", "dz: error at get sns tag list!");
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        fM(this.yNk);
+        fX(this.AeG);
         AppMethodBeat.o(100160);
         return;
       }
-      dPR();
-      ac.i("MicroMsg.SnsLabelUI", "dz: error at add contact label!");
+      eci();
+      ad.i("MicroMsg.SnsLabelUI", "dz: error at add contact label!");
       AppMethodBeat.o(100160);
       return;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.yNh.iterator();
-        paramn = this.yNj.iterator();
+        paramString = this.AeD.iterator();
+        paramn = this.AeF.iterator();
         while (paramString.hasNext())
         {
           long l = ((Long)paramn.next()).longValue();
           localObject = (String)paramString.next();
           if (l != 0L)
           {
-            com.tencent.mm.kernel.g.agS();
-            com.tencent.mm.kernel.g.agQ().ghe.a(new com.tencent.mm.plugin.sns.model.w(l, (String)localObject), 0);
+            com.tencent.mm.kernel.g.ajD();
+            com.tencent.mm.kernel.g.ajB().gAO.a(new com.tencent.mm.plugin.sns.model.w(l, (String)localObject), 0);
           }
         }
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agR().agA().set(335874, Integer.valueOf(0));
-        this.yMT = ((ArrayList)com.tencent.mm.plugin.label.a.a.cWd().cVY());
-        paramString = com.tencent.mm.plugin.report.service.h.wUl;
-        paramInt2 = this.yNg;
-        if (this.yNi == null) {}
-        for (paramInt1 = 0;; paramInt1 = this.yNi.size())
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajC().ajl().set(335874, Integer.valueOf(0));
+        this.Aep = ((ArrayList)com.tencent.mm.plugin.label.a.a.dfo().dfj());
+        paramString = com.tencent.mm.plugin.report.service.g.yhR;
+        paramInt2 = this.AeC;
+        if (this.AeE == null) {}
+        for (paramInt1 = 0;; paramInt1 = this.AeE.size())
         {
           paramString.f(11455, new Object[] { "", "", Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
-          this.yMR.postDelayed(new Runnable()
+          this.Aen.postDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(100132);
-              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu = JsapiSnsLabelUI.l(JsapiSnsLabelUI.this);
+              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ = JsapiSnsLabelUI.l(JsapiSnsLabelUI.this);
               if (JsapiSnsLabelUI.b(JsapiSnsLabelUI.this) != null)
               {
                 if (JsapiSnsLabelUI.j(JsapiSnsLabelUI.this) == null) {
@@ -1145,7 +1147,7 @@ public class JsapiSnsLabelUI
                   while (((Iterator)localObject).hasNext())
                   {
                     JsapiSnsLabelUI.a(JsapiSnsLabelUI.this);
-                    a.avI((String)((Iterator)localObject).next());
+                    a.aAP((String)((Iterator)localObject).next());
                   }
                   JsapiSnsLabelUI.j(JsapiSnsLabelUI.this).addAll(JsapiSnsLabelUI.b(JsapiSnsLabelUI.this));
                 }
@@ -1156,28 +1158,28 @@ public class JsapiSnsLabelUI
                 JsapiSnsLabelUI.q(JsapiSnsLabelUI.this);
                 ((HashSet)localObject).clear();
               }
-              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).aB(JsapiSnsLabelUI.j(JsapiSnsLabelUI.this));
+              JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).az(JsapiSnsLabelUI.j(JsapiSnsLabelUI.this));
               JsapiSnsLabelUI.k(JsapiSnsLabelUI.this);
               JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).notifyDataSetChanged();
-              JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).acV(JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).yNu);
+              JsapiSnsLabelUI.g(JsapiSnsLabelUI.this).afw(JsapiSnsLabelUI.a(JsapiSnsLabelUI.this).AeQ);
               if ((JsapiSnsLabelUI.r(JsapiSnsLabelUI.this) != null) && (JsapiSnsLabelUI.r(JsapiSnsLabelUI.this).isShowing())) {
                 JsapiSnsLabelUI.r(JsapiSnsLabelUI.this).dismiss();
               }
               AppMethodBeat.o(100132);
             }
           }, 600L);
-          com.tencent.mm.kernel.g.agS();
-          com.tencent.mm.kernel.g.agR().agA().set(335873, Boolean.FALSE);
+          com.tencent.mm.kernel.g.ajD();
+          com.tencent.mm.kernel.g.ajC().ajl().set(335873, Boolean.FALSE);
           AppMethodBeat.o(100160);
           return;
         }
       }
-      dPR();
-      ac.i("MicroMsg.SnsLabelUI", "dz: error at modify label list!");
+      eci();
+      ad.i("MicroMsg.SnsLabelUI", "dz: error at modify label list!");
       AppMethodBeat.o(100160);
       return;
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        ac.i("MicroMsg.SnsLabelUI", "dz: error at delete tag list!");
+        ad.i("MicroMsg.SnsLabelUI", "dz: error at delete tag list!");
       }
     }
   }
@@ -1190,7 +1192,7 @@ public class JsapiSnsLabelUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.jsapi.JsapiSnsLabelUI
  * JD-Core Version:    0.7.0.1
  */

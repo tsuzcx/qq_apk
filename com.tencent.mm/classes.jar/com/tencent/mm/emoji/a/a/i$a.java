@@ -3,20 +3,20 @@ package com.tencent.mm.emoji.a.a;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig$Companion;", "", "()V", "convertScene", "", "panelScene", "isShowCaptureEntrance", "", "scene", "isShowCustomEntrance", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/EmojiPanelConfig$Companion;", "", "()V", "convertScene", "", "panelScene", "isShowCaptureEntrance", "", "scene", "isShowCustomEntrance", "plugin-emojisdk_release"})
 public final class i$a
 {
-  public static int ly(int paramInt)
+  public static int lX(int paramInt)
   {
-    if (paramInt != ChatFooterPanel.Dnk)
+    if (paramInt != ChatFooterPanel.ESp)
     {
-      if (paramInt == ChatFooterPanel.Dnp) {
+      if (paramInt == ChatFooterPanel.ESu) {
         return 3;
       }
-      if (paramInt == ChatFooterPanel.Dnq) {
+      if (paramInt == ChatFooterPanel.ESv) {
         return 4;
       }
-      if (paramInt == ChatFooterPanel.Dnr) {
+      if (paramInt == ChatFooterPanel.ESw) {
         return 5;
       }
     }

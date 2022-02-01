@@ -16,18 +16,18 @@ public final class b
   extends a
   implements h.a, o.a
 {
-  a Hth;
-  boolean Hti;
-  private final Runnable Htj;
-  public ViewGroup UK;
-  private boolean WK;
-  private h YO;
+  a JgX;
+  boolean JgY;
+  private final Runnable JgZ;
+  public ViewGroup WA;
+  private boolean Yz;
+  private h aaD;
   
   public b(Activity paramActivity, a parama)
   {
     super(paramActivity);
     AppMethodBeat.i(141510);
-    this.Htj = new Runnable()
+    this.JgZ = new Runnable()
     {
       public final void run()
       {
@@ -40,32 +40,32 @@ public final class b
         }
         localObject = new h((Context)localObject);
         ((h)localObject).a(localb);
-        if (b.this.Hth != null)
+        if (b.this.JgX != null)
         {
-          b.this.Hth.e((Menu)localObject);
-          b.this.Hth.d((Menu)localObject);
+          b.this.JgX.e((Menu)localObject);
+          b.this.JgX.d((Menu)localObject);
           b.a(b.this, (h)localObject);
         }
         for (;;)
         {
           ((h)localObject).r(true);
-          b.this.Hti = false;
+          b.this.JgY = false;
           AppMethodBeat.o(141509);
           return;
           b.a(b.this, null);
         }
       }
     };
-    this.Hth = parama;
+    this.JgX = parama;
     AppMethodBeat.o(141510);
   }
   
-  private void gh()
+  private void gy()
   {
     AppMethodBeat.i(141512);
-    if (!this.WK)
+    if (!this.Yz)
     {
-      this.WK = true;
+      this.Yz = true;
       supportInvalidateOptionsMenu();
     }
     AppMethodBeat.o(141512);
@@ -76,9 +76,9 @@ public final class b
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
     AppMethodBeat.i(141513);
-    if (this.Hth != null)
+    if (this.JgX != null)
     {
-      boolean bool = this.Hth.f(paramMenuItem);
+      boolean bool = this.JgX.f(paramMenuItem);
       AppMethodBeat.o(141513);
       return bool;
     }
@@ -91,8 +91,8 @@ public final class b
     AppMethodBeat.i(141514);
     if (this.mActionBar != null)
     {
-      u localu = ((d)this.mActionBar).XS;
-      if ((localu != null) && (localu.ia()))
+      u localu = ((d)this.mActionBar).ZH;
+      if ((localu != null) && (localu.is()))
       {
         if (!localu.isOverflowMenuShowing())
         {
@@ -118,12 +118,12 @@ public final class b
     return false;
   }
   
-  public final ActionBar fhQ()
+  public final ActionBar fyg()
   {
     AppMethodBeat.i(141511);
-    gh();
+    gy();
     if (this.mActionBar == null) {
-      this.mActionBar = new d(this.mActivity, this.UK);
+      this.mActionBar = new d(this.mActivity, this.WA);
     }
     ActionBar localActionBar = this.mActionBar;
     AppMethodBeat.o(141511);
@@ -133,10 +133,10 @@ public final class b
   public final void supportInvalidateOptionsMenu()
   {
     AppMethodBeat.i(141515);
-    if (!this.Hti)
+    if (!this.JgY)
     {
-      this.Hti = true;
-      this.Htj.run();
+      this.JgY = true;
+      this.JgZ.run();
     }
     AppMethodBeat.o(141515);
   }

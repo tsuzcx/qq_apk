@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsb;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class su
   extends b
 {
-  public a dvK;
+  public a dHn;
   
   public su()
   {
@@ -17,17 +16,29 @@ public final class su
   
   private su(byte paramByte)
   {
-    AppMethodBeat.i(5532);
-    this.dvK = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116047);
+    this.dHn = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(5532);
+    AppMethodBeat.o(116047);
   }
   
   public static final class a
   {
-    public String dtD;
-    public LinkedList<bsb> dvL;
+    public String appId;
+    public String appName;
+    public String dHo;
+    public String dHp;
+    public String dHq;
+    public String dHr;
+    public String dHs;
+    public String dHt;
+    public String dHu;
+    public String dHv;
+    public WXMediaMessage dtZ;
+    public int dua;
+    public String sessionId;
+    public String toUser;
   }
 }
 

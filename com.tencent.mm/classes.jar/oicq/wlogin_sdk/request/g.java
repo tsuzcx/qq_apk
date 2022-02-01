@@ -10,24 +10,24 @@ public final class g
 {
   public g(i parami)
   {
-    this.LVT = 2064;
-    this.LVU = 2;
-    this.LVW = parami;
+    this.NQs = 2064;
+    this.NQt = 2;
+    this.NQv = parami;
   }
   
-  public final byte[] db(byte[] paramArrayOfByte)
+  public final byte[] di(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88065);
-    int k = this.LVW.LWg;
-    byte[] arrayOfByte1 = this.LVW.LWb.gfw();
-    Object localObject = this.LVW.LWc;
-    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).LWO];
+    int k = this.NQv.NQF;
+    byte[] arrayOfByte1 = this.NQv.NQA.gxU();
+    Object localObject = this.NQv.NQB;
+    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).NRn];
     int i;
-    if (((oicq.wlogin_sdk.a.g)localObject).LWO <= 0)
+    if (((oicq.wlogin_sdk.a.g)localObject).NRn <= 0)
     {
       localObject = new f();
       ao localao = new ao();
-      localObject = ((f)localObject).dc(arrayOfByte1);
+      localObject = ((f)localObject).dj(arrayOfByte1);
       paramArrayOfByte = localao.r(paramArrayOfByte, arrayOfByte2);
       arrayOfByte2 = new byte[localObject.length + paramArrayOfByte.length];
       if (arrayOfByte1.length <= 0) {
@@ -39,12 +39,12 @@ public final class g
     for (int j = 1;; j = 0)
     {
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, i, paramArrayOfByte.length);
-      paramArrayOfByte = super.O(arrayOfByte2, this.LVU, j + 1);
-      a(this.LVO, this.LVT, this.LVW._uin, this.LVQ, this.LVR, k, this.LVS, paramArrayOfByte);
-      paramArrayOfByte = super.gft();
+      paramArrayOfByte = super.P(arrayOfByte2, this.NQt, j + 1);
+      a(this.NQn, this.NQs, this.NQv._uin, this.NQp, this.NQq, k, this.NQr, paramArrayOfByte);
+      paramArrayOfByte = super.gxR();
       AppMethodBeat.o(88065);
       return paramArrayOfByte;
-      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).LVN, ((oicq.wlogin_sdk.a.g)localObject).LWQ, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).LWO);
+      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).NQm, ((oicq.wlogin_sdk.a.g)localObject).NRp, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).NRn);
       break;
       label218:
       i = 0;

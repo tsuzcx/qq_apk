@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.app.Activity;
 import android.content.Context;
-import com.tencent.luggage.d.e;
+import com.tencent.luggage.d.h;
+import com.tencent.luggage.d.j;
+import com.tencent.luggage.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.ui.base.l;
 
 public final class g
@@ -15,20 +16,20 @@ public final class g
     super(27);
   }
   
-  public final void a(Context paramContext, f paramf)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78695);
-    if ((!paramf.eAn()) && (!paramf.bWW.AF().Ay())) {
-      ((Activity)paramf.mContext).finish();
+    if ((!paramg.ePd()) && (!paramg.chm.Ce().BX())) {
+      ((Activity)paramg.mContext).finish();
     }
-    com.tencent.mm.plugin.report.service.h.wUl.dB(982, 11);
+    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 11);
     AppMethodBeat.o(78695);
   }
   
-  public final void a(Context paramContext, f paramf, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78694);
-    if (paramf.isFullScreen()) {
+    if (paramg.isFullScreen()) {
       paraml.a(27, paramContext.getString(2131762172), 2131689806);
     }
     AppMethodBeat.o(78694);

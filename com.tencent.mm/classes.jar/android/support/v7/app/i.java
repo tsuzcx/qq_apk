@@ -9,24 +9,24 @@ import java.util.Calendar;
 
 final class i
 {
-  private static i Ye;
-  private final LocationManager Yf;
-  private final a Yg = new a();
+  private static i ZT;
+  private final LocationManager ZU;
+  private final a ZV = new a();
   private final Context mContext;
   
   private i(Context paramContext, LocationManager paramLocationManager)
   {
     this.mContext = paramContext;
-    this.Yf = paramLocationManager;
+    this.ZU = paramLocationManager;
   }
   
-  private Location C(String paramString)
+  private Location B(String paramString)
   {
     try
     {
-      if (this.Yf.isProviderEnabled(paramString))
+      if (this.ZU.isProviderEnabled(paramString))
       {
-        paramString = this.Yf.getLastKnownLocation(paramString);
+        paramString = this.ZU.getLastKnownLocation(paramString);
         return paramString;
       }
     }
@@ -36,21 +36,21 @@ final class i
   
   static i Y(Context paramContext)
   {
-    if (Ye == null)
+    if (ZT == null)
     {
       paramContext = paramContext.getApplicationContext();
-      Ye = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
+      ZT = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
     }
-    return Ye;
+    return ZT;
   }
   
   private void a(Location paramLocation)
   {
-    a locala = this.Yg;
+    a locala = this.ZV;
     long l1 = System.currentTimeMillis();
-    h localh = h.gu();
+    h localh = h.gL();
     localh.b(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
-    long l2 = localh.Yc;
+    long l2 = localh.ZR;
     localh.b(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
     if (localh.state == 1) {}
     long l3;
@@ -58,20 +58,20 @@ final class i
     long l5;
     for (boolean bool = true;; bool = false)
     {
-      l3 = localh.Yd;
-      l4 = localh.Yc;
+      l3 = localh.ZS;
+      l4 = localh.ZR;
       localh.b(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
-      l5 = localh.Yd;
+      l5 = localh.ZS;
       if ((l3 != -1L) && (l4 != -1L)) {
         break;
       }
       l1 = 43200000L + l1;
-      locala.Yh = bool;
-      locala.Yi = l2;
-      locala.Yj = l3;
-      locala.Yk = l4;
-      locala.Yl = l5;
-      locala.Ym = l1;
+      locala.ZW = bool;
+      locala.ZX = l2;
+      locala.ZY = l3;
+      locala.ZZ = l4;
+      locala.aaa = l5;
+      locala.aab = l1;
       return;
     }
     if (l1 > l4) {
@@ -90,14 +90,14 @@ final class i
   }
   
   @SuppressLint({"MissingPermission"})
-  private Location gw()
+  private Location gN()
   {
     Location localLocation2 = null;
     if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_COARSE_LOCATION") == 0) {}
-    for (Location localLocation1 = C("network");; localLocation1 = null)
+    for (Location localLocation1 = B("network");; localLocation1 = null)
     {
       if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_FINE_LOCATION") == 0) {
-        localLocation2 = C("gps");
+        localLocation2 = B("gps");
       }
       Location localLocation3;
       if ((localLocation2 != null) && (localLocation1 != null))
@@ -116,22 +116,22 @@ final class i
     }
   }
   
-  private boolean gx()
+  private boolean gO()
   {
-    return this.Yg.Ym > System.currentTimeMillis();
+    return this.ZV.aab > System.currentTimeMillis();
   }
   
-  final boolean gv()
+  final boolean gM()
   {
-    a locala = this.Yg;
-    if (gx()) {
-      return locala.Yh;
+    a locala = this.ZV;
+    if (gO()) {
+      return locala.ZW;
     }
-    Location localLocation = gw();
+    Location localLocation = gN();
     if (localLocation != null)
     {
       a(localLocation);
-      return locala.Yh;
+      return locala.ZW;
     }
     int i = Calendar.getInstance().get(11);
     return (i < 6) || (i >= 22);
@@ -139,12 +139,12 @@ final class i
   
   static final class a
   {
-    boolean Yh;
-    long Yi;
-    long Yj;
-    long Yk;
-    long Yl;
-    long Ym;
+    boolean ZW;
+    long ZX;
+    long ZY;
+    long ZZ;
+    long aaa;
+    long aab;
   }
 }
 

@@ -7,6 +7,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,28 +16,32 @@ import java.util.List;
 public class SwitchPhoneItemGroupView
   extends LinearLayout
 {
-  List<SwitchPhoneItemView> BLN;
-  private a BLO;
-  private View.OnClickListener BLP;
+  List<SwitchPhoneItemView> Dmf;
+  private a Dmg;
+  private View.OnClickListener Dmh;
   
   public SwitchPhoneItemGroupView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(71485);
-    this.BLN = new ArrayList();
-    this.BLP = new View.OnClickListener()
+    this.Dmf = new ArrayList();
+    this.Dmh = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71484);
-        Iterator localIterator = SwitchPhoneItemGroupView.this.BLN.iterator();
-        while (localIterator.hasNext()) {
-          ((SwitchPhoneItemView)localIterator.next()).BLT.setImageResource(2131691077);
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = SwitchPhoneItemGroupView.this.Dmf.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((SwitchPhoneItemView)((Iterator)localObject).next()).Dml.setImageResource(2131691077);
         }
-        ((SwitchPhoneItemView)paramAnonymousView).BLT.setImageResource(2131691078);
+        ((SwitchPhoneItemView)paramAnonymousView).Dml.setImageResource(2131691078);
         if (SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this) != null) {
-          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fv(paramAnonymousView);
+          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fK(paramAnonymousView);
         }
+        a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71484);
       }
     };
@@ -46,20 +52,24 @@ public class SwitchPhoneItemGroupView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(71486);
-    this.BLN = new ArrayList();
-    this.BLP = new View.OnClickListener()
+    this.Dmf = new ArrayList();
+    this.Dmh = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71484);
-        Iterator localIterator = SwitchPhoneItemGroupView.this.BLN.iterator();
-        while (localIterator.hasNext()) {
-          ((SwitchPhoneItemView)localIterator.next()).BLT.setImageResource(2131691077);
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = SwitchPhoneItemGroupView.this.Dmf.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((SwitchPhoneItemView)((Iterator)localObject).next()).Dml.setImageResource(2131691077);
         }
-        ((SwitchPhoneItemView)paramAnonymousView).BLT.setImageResource(2131691078);
+        ((SwitchPhoneItemView)paramAnonymousView).Dml.setImageResource(2131691078);
         if (SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this) != null) {
-          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fv(paramAnonymousView);
+          SwitchPhoneItemGroupView.a(SwitchPhoneItemGroupView.this).fK(paramAnonymousView);
         }
+        a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/SwitchPhoneItemGroupView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71484);
       }
     };
@@ -70,19 +80,19 @@ public class SwitchPhoneItemGroupView
   {
     AppMethodBeat.i(71487);
     addView(paramSwitchPhoneItemView, paramInt);
-    this.BLN.add(paramSwitchPhoneItemView);
-    paramSwitchPhoneItemView.setOnClickListener(this.BLP);
+    this.Dmf.add(paramSwitchPhoneItemView);
+    paramSwitchPhoneItemView.setOnClickListener(this.Dmh);
     AppMethodBeat.o(71487);
   }
   
   public void setOnItemSelectListener(a parama)
   {
-    this.BLO = parama;
+    this.Dmg = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fv(View paramView);
+    public abstract void fK(View paramView);
   }
 }
 

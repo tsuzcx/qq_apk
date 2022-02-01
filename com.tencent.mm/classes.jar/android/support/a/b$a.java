@@ -2,8 +2,8 @@ package android.support.a;
 
 final class b$a
 {
-  float ec;
-  float ed;
+  float fW;
+  float fX;
 }
 
 

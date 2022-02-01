@@ -2,7 +2,7 @@ package d.l.b.a.b.h;
 
 public abstract interface r
 {
-  public abstract q fUV();
+  public abstract q gmu();
   
   public abstract boolean isInitialized();
 }

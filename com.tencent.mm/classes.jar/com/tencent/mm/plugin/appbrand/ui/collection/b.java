@@ -3,29 +3,29 @@ package com.tencent.mm.plugin.appbrand.ui.collection;
 import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionViewHolder;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "(Ljava/util/ArrayList;)V", "getDataList", "()Ljava/util/ArrayList;", "getItemCount", "", "getItemViewType", "position", "onBindViewHolder", "", "holder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionViewHolder;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "(Ljava/util/ArrayList;)V", "getDataList", "()Ljava/util/ArrayList;", "getItemCount", "", "getItemViewType", "position", "onBindViewHolder", "", "holder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-appbrand-integration_release"})
 public final class b
   extends RecyclerView.a<n>
 {
-  final ArrayList<LocalUsageInfo> dataList;
+  final ArrayList<LocalUsageInfo> jfg;
   
   public b(ArrayList<LocalUsageInfo> paramArrayList)
   {
     AppMethodBeat.i(51241);
-    this.dataList = paramArrayList;
+    this.jfg = paramArrayList;
     AppMethodBeat.o(51241);
   }
   
   private void a(n paramn, int paramInt)
   {
     AppMethodBeat.i(51238);
-    k.h(paramn, "holder");
-    Object localObject = this.dataList.get(paramInt);
-    k.g(localObject, "dataList[position]");
+    p.h(paramn, "holder");
+    Object localObject = this.jfg.get(paramInt);
+    p.g(localObject, "dataList[position]");
     paramn.g((LocalUsageInfo)localObject);
     AppMethodBeat.o(51238);
   }
@@ -33,7 +33,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(51236);
-    int i = this.dataList.size();
+    int i = this.jfg.size();
     AppMethodBeat.o(51236);
     return i;
   }

@@ -5,24 +5,24 @@ import com.tencent.mm.i.c;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.t.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.u.b;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
-  implements com.tencent.mm.t.a
+  implements com.tencent.mm.u.a
 {
-  private static a onZ = null;
-  private g.a onW;
-  private Map<String, a> ooa;
+  private static a oRu = null;
+  private g.a oRr;
+  private Map<String, a> oRv;
   
   public a()
   {
     AppMethodBeat.i(120819);
-    this.ooa = new ConcurrentHashMap();
-    this.onW = new g.a()
+    this.oRv = new ConcurrentHashMap();
+    this.oRr = new g.a()
     {
       public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
@@ -38,11 +38,11 @@ public final class a
         label92:
         for (String str2 = "null";; str2 = paramAnonymousd.toString())
         {
-          ac.d("FileDownloaderWAGameProxy", "on cdn callback mediaId = %s, startRet = %d, keep_ProgressInfo = %s, keep_SceneResult = %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), str1, str2 });
+          ad.d("FileDownloaderWAGameProxy", "on cdn callback mediaId = %s, startRet = %d, keep_ProgressInfo = %s, keep_SceneResult = %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), str1, str2 });
           if (paramAnonymousInt != -21006) {
             break label102;
           }
-          ac.i("FileDownloaderWAGameProxy", "duplicate request, ignore this request, media id is %s", new Object[] { paramAnonymousString });
+          ad.i("FileDownloaderWAGameProxy", "duplicate request, ignore this request, media id is %s", new Object[] { paramAnonymousString });
           AppMethodBeat.o(120818);
           return 0;
           str1 = paramAnonymousc.toString();
@@ -51,7 +51,7 @@ public final class a
         label102:
         if (paramAnonymousInt != 0)
         {
-          ac.e("FileDownloaderWAGameProxy", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          ad.e("FileDownloaderWAGameProxy", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
           a.a(a.this, paramAnonymousString, 4, paramAnonymousInt, false);
           AppMethodBeat.o(120818);
           return 0;
@@ -67,7 +67,7 @@ public final class a
           if (paramAnonymousd.field_retCode == 0) {
             break label243;
           }
-          ac.e("FileDownloaderWAGameProxy", "cdntra clientid:%s sceneResult.retCode:%d sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
+          ad.e("FileDownloaderWAGameProxy", "cdntra clientid:%s sceneResult.retCode:%d sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
           a.a(a.this, paramAnonymousString, 4, paramAnonymousd.field_retCode, paramAnonymousd.field_isResume);
         }
         for (;;)
@@ -75,7 +75,7 @@ public final class a
           AppMethodBeat.o(120818);
           return 0;
           label243:
-          ac.i("FileDownloaderWAGameProxy", "cdn trans suceess, media id : %s", new Object[] { paramAnonymousString });
+          ad.i("FileDownloaderWAGameProxy", "cdn trans suceess, media id : %s", new Object[] { paramAnonymousString });
           a.a(a.this, paramAnonymousString, 3, 0, paramAnonymousd.field_isResume);
         }
       }
@@ -90,16 +90,16 @@ public final class a
     AppMethodBeat.o(120819);
   }
   
-  public static a bUx()
+  public static a bZc()
   {
     try
     {
       AppMethodBeat.i(120820);
-      if (onZ == null) {
-        onZ = new a();
+      if (oRu == null) {
+        oRu = new a();
       }
-      com.tencent.mm.plugin.cdndownloader.c.a.bUo();
-      a locala = onZ;
+      com.tencent.mm.plugin.cdndownloader.c.a.bYT();
+      a locala = oRu;
       AppMethodBeat.o(120820);
       return locala;
     }
@@ -109,37 +109,38 @@ public final class a
   public final int a(String paramString1, String paramString2, b paramb)
   {
     AppMethodBeat.i(120821);
-    ac.i("FileDownloaderWAGameProxy", "addDownloadTask: %s filepath:%s", new Object[] { paramString1, paramString2 });
+    ad.i("FileDownloaderWAGameProxy", "addDownloadTask: %s filepath:%s", new Object[] { paramString1, paramString2 });
     g localg = new g();
+    localg.fJi = "task_FileDownloaderWAGameProxy";
     localg.field_mediaId = paramString1;
     localg.field_fullpath = paramString2;
-    localg.fre = paramString1;
-    localg.field_fileType = com.tencent.mm.i.a.fqJ;
-    localg.frb = this.onW;
-    localg.frf = 60;
-    localg.frg = 600;
-    localg.fri = false;
+    localg.fJm = paramString1;
+    localg.field_fileType = com.tencent.mm.i.a.fIQ;
+    localg.fJj = this.oRr;
+    localg.fJn = 60;
+    localg.fJo = 600;
+    localg.fJq = false;
     a locala = new a((byte)0);
-    locala.ooc = paramb;
-    locala.ood = paramString2;
-    this.ooa.put(paramString1, locala);
-    int i = com.tencent.mm.plugin.cdndownloader.c.a.bUo().g(localg);
-    ac.i("FileDownloaderWAGameProxy", "addDownloadTask: ".concat(String.valueOf(i)));
+    locala.oRx = paramb;
+    locala.oRy = paramString2;
+    this.oRv.put(paramString1, locala);
+    int i = com.tencent.mm.plugin.cdndownloader.c.a.bYT().h(localg);
+    ad.i("FileDownloaderWAGameProxy", "addDownloadTask: ".concat(String.valueOf(i)));
     AppMethodBeat.o(120821);
     return i;
   }
   
   final class a
   {
-    public b ooc = null;
-    public String ood = null;
+    public b oRx = null;
+    public String oRy = null;
     
     private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.h.a
  * JD-Core Version:    0.7.0.1
  */

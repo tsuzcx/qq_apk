@@ -4,27 +4,27 @@ import android.view.View;
 
 final class bf
 {
-  final b axY;
-  a axZ;
+  final b azP;
+  a azQ;
   
   bf(b paramb)
   {
-    this.axY = paramb;
-    this.axZ = new a();
+    this.azP = paramb;
+    this.azQ = new a();
   }
   
   final boolean cf(View paramView)
   {
-    this.axZ.setBounds(this.axY.lj(), this.axY.lk(), this.axY.bO(paramView), this.axY.bP(paramView));
-    this.axZ.aya = 0;
-    this.axZ.addFlags(24579);
-    return this.axZ.mR();
+    this.azQ.setBounds(this.azP.lB(), this.azP.lC(), this.azP.bO(paramView), this.azP.bP(paramView));
+    this.azQ.azR = 0;
+    this.azQ.addFlags(24579);
+    return this.azQ.nj();
   }
   
   final View k(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int j = this.axY.lj();
-    int k = this.axY.lk();
+    int j = this.azP.lB();
+    int k = this.azP.lC();
     if (paramInt2 > paramInt1) {}
     Object localObject;
     View localView;
@@ -34,25 +34,25 @@ final class bf
       if (paramInt1 == paramInt2) {
         break label174;
       }
-      localView = this.axY.getChildAt(paramInt1);
-      int m = this.axY.bO(localView);
-      int n = this.axY.bP(localView);
-      this.axZ.setBounds(j, k, m, n);
+      localView = this.azP.getChildAt(paramInt1);
+      int m = this.azP.bO(localView);
+      int n = this.azP.bP(localView);
+      this.azQ.setBounds(j, k, m, n);
       if (paramInt3 == 0) {
         break;
       }
-      this.axZ.aya = 0;
-      this.axZ.addFlags(paramInt3);
-      if (!this.axZ.mR()) {
+      this.azQ.azR = 0;
+      this.azQ.addFlags(paramInt3);
+      if (!this.azQ.nj()) {
         break;
       }
       return localView;
     }
     if (paramInt4 != 0)
     {
-      this.axZ.aya = 0;
-      this.axZ.addFlags(paramInt4);
-      if (this.axZ.mR()) {
+      this.azQ.azR = 0;
+      this.azQ.addFlags(paramInt4);
+      if (this.azQ.nj()) {
         localObject = localView;
       }
     }
@@ -67,11 +67,11 @@ final class bf
   
   static final class a
   {
-    int aya = 0;
-    int ayb;
-    int ayc;
-    int ayd;
-    int aye;
+    int azR = 0;
+    int azS;
+    int azT;
+    int azU;
+    int azV;
     
     private static int compare(int paramInt1, int paramInt2)
     {
@@ -86,13 +86,13 @@ final class bf
     
     final void addFlags(int paramInt)
     {
-      this.aya |= paramInt;
+      this.azR |= paramInt;
     }
     
-    final boolean mR()
+    final boolean nj()
     {
-      if (((this.aya & 0x7) != 0) && ((this.aya & compare(this.ayd, this.ayb) << 0) == 0)) {}
-      while ((((this.aya & 0x70) != 0) && ((this.aya & compare(this.ayd, this.ayc) << 4) == 0)) || (((this.aya & 0x700) != 0) && ((this.aya & compare(this.aye, this.ayb) << 8) == 0)) || (((this.aya & 0x7000) != 0) && ((this.aya & compare(this.aye, this.ayc) << 12) == 0))) {
+      if (((this.azR & 0x7) != 0) && ((this.azR & compare(this.azU, this.azS) << 0) == 0)) {}
+      while ((((this.azR & 0x70) != 0) && ((this.azR & compare(this.azU, this.azT) << 4) == 0)) || (((this.azR & 0x700) != 0) && ((this.azR & compare(this.azV, this.azS) << 8) == 0)) || (((this.azR & 0x7000) != 0) && ((this.azR & compare(this.azV, this.azT) << 12) == 0))) {
         return false;
       }
       return true;
@@ -100,10 +100,10 @@ final class bf
     
     final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      this.ayb = paramInt1;
-      this.ayc = paramInt2;
-      this.ayd = paramInt3;
-      this.aye = paramInt4;
+      this.azS = paramInt1;
+      this.azT = paramInt2;
+      this.azU = paramInt3;
+      this.azV = paramInt4;
     }
   }
   
@@ -115,9 +115,9 @@ final class bf
     
     public abstract View getChildAt(int paramInt);
     
-    public abstract int lj();
+    public abstract int lB();
     
-    public abstract int lk();
+    public abstract int lC();
   }
 }
 

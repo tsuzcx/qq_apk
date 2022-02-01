@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.plugin.webview.luggage.g;
 
 public class u
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78556);
-    parama.a("fail", null);
+    paramb.a("fail", null);
     AppMethodBeat.o(78556);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }

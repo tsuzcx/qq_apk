@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ad.f;
+import com.tencent.mm.plugin.appbrand.jsapi.base.g;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
 import org.json.JSONObject;
 
 public final class aa
-  implements com.tencent.mm.plugin.appbrand.jsapi.base.f
+  implements g
 {
   public final e c(c paramc, JSONObject paramJSONObject)
   {
@@ -26,9 +28,9 @@ public final class aa
       while (i != 0)
       {
         paramc = (q)paramc;
-        if (paramc.jhd != null)
+        if (paramc.jAe != null)
         {
-          paramc = paramc.jhd;
+          paramc = paramc.jAe;
           AppMethodBeat.o(43977);
           return paramc;
           i = 0;
@@ -37,8 +39,8 @@ public final class aa
         }
         else
         {
-          paramc.jhd = new com.tencent.mm.plugin.appbrand.ad.f(paramc);
-          paramc = paramc.jhd;
+          paramc.jAe = new f(paramc);
+          paramc = paramc.jAe;
           AppMethodBeat.o(43977);
           return paramc;
         }
@@ -53,7 +55,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa
  * JD-Core Version:    0.7.0.1
  */

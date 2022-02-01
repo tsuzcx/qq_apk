@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.afh;
-import com.tencent.mm.protocal.protobuf.afi;
+import com.tencent.mm.protocal.protobuf.ahv;
+import com.tencent.mm.protocal.protobuf.ahw;
 
 public final class c
   extends n
   implements k
 {
-  private g callback;
-  private final b hEg;
+  private f callback;
+  private final b hWL;
   
   public c(String paramString)
   {
     AppMethodBeat.i(30172);
     b.a locala = new b.a();
-    afh localafh = new afh();
-    afi localafi = new afi();
-    locala.hvt = localafh;
-    locala.hvu = localafi;
+    ahv localahv = new ahv();
+    ahw localahw = new ahw();
+    locala.hNM = localahv;
+    locala.hNN = localahw;
     locala.uri = "/cgi-bin/micromsg-bin/extdeviceloginconfirmcancel";
     locala.funcId = 973;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
-    localafh.ExD = paramString;
-    this.hEg = locala.aAz();
+    localahv.Gfj = paramString;
+    this.hWL = locala.aDC();
     AppMethodBeat.o(30172);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(30173);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hEg, this);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hWL, this);
     AppMethodBeat.o(30173);
     return i;
   }
@@ -58,7 +58,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.a.c
  * JD-Core Version:    0.7.0.1
  */

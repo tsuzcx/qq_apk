@@ -1,136 +1,89 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.i.a;
-import com.tencent.mm.ak.i.b;
-import com.tencent.mm.ak.j;
+import com.tencent.mm.al.h;
+import com.tencent.mm.al.h.a;
+import com.tencent.mm.al.h.b;
+import com.tencent.mm.al.i;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.platformtools.SensorController;
 import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bj;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class n
-  implements i.a, i.b, SensorController.a
+  implements h.a, h.b, SensorController.a
 {
-  static SensorController oUL;
+  static SensorController pyv;
   private List<a> callbacks;
-  private int dhE;
+  private int dtc;
   long lastShakeTime;
-  public i oUG;
-  private boolean oUH;
-  private boolean oUI;
-  private boolean oUJ;
-  bj oUK;
   public String path;
-  boolean qJo;
-  private int qJp;
+  public h pyq;
+  private boolean pyr;
+  private boolean pys;
+  private boolean pyt;
+  bk pyu;
+  boolean rtp;
+  private int rtq;
   
   public n()
   {
     AppMethodBeat.i(103442);
-    this.oUH = true;
-    this.oUJ = false;
+    this.pyr = true;
+    this.pyt = false;
     this.lastShakeTime = -1L;
     this.callbacks = new LinkedList();
-    this.oUG = ((j)g.ab(j.class)).Lk();
-    Boolean localBoolean = (Boolean)g.agR().agA().get(26, Boolean.FALSE);
-    this.oUI = localBoolean.booleanValue();
+    this.pyq = ((i)g.ab(i.class)).MS();
+    Boolean localBoolean = (Boolean)g.ajC().ajl().get(26, Boolean.FALSE);
+    this.pys = localBoolean.booleanValue();
     boolean bool;
     if (!localBoolean.booleanValue())
     {
       bool = true;
-      this.oUH = bool;
-      if (this.oUG == null) {
+      this.pyr = bool;
+      if (this.pyq == null) {
         break label185;
       }
-      this.oUG.a(this);
-      this.oUG.a(this);
-      this.oUG.cl(this.oUH);
+      this.pyq.a(this);
+      this.pyq.a(this);
+      this.pyq.cm(this.pyr);
     }
     for (;;)
     {
-      if (oUL == null) {
-        oUL = new SensorController(ai.getContext());
+      if (pyv == null) {
+        pyv = new SensorController(aj.getContext());
       }
-      if (this.oUK == null) {
-        this.oUK = new bj(ai.getContext());
+      if (this.pyu == null) {
+        this.pyu = new bk(aj.getContext());
       }
       AppMethodBeat.o(103442);
       return;
       bool = false;
       break;
       label185:
-      ac.w("MicroMsg.FavVoiceLogic", "get voice player fail, it is null");
+      ad.w("MicroMsg.FavVoiceLogic", "get voice player fail, it is null");
     }
   }
   
-  private void caX()
+  private void cfB()
   {
     AppMethodBeat.i(103454);
-    if (oUL != null) {
-      oUL.eVS();
+    if (pyv != null) {
+      pyv.flC();
     }
-    if (this.oUK != null) {
-      this.oUK.eVT();
+    if (this.pyu != null) {
+      this.pyu.flD();
     }
     AppMethodBeat.o(103454);
-  }
-  
-  public final boolean Y(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(103447);
-    if (this.oUG == null)
-    {
-      ac.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(103447);
-      return false;
-    }
-    this.oUG.stop();
-    Object localObject = this.callbacks.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).cu(paramString, paramInt2);
-    }
-    if ((oUL != null) && (!oUL.aKH))
-    {
-      oUL.a(this);
-      localObject = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(103441);
-          n.this.lastShakeTime = bs.Gn();
-          AppMethodBeat.o(103441);
-        }
-      };
-      if (!this.oUK.aE((Runnable)localObject)) {
-        break label199;
-      }
-    }
-    label199:
-    for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
-    {
-      this.path = paramString;
-      this.dhE = paramInt1;
-      if ((bs.isNullOrNil(paramString)) || (!this.oUG.a(paramString, this.oUH, paramInt1, paramInt2))) {
-        break;
-      }
-      am.aKO("keep_app_silent");
-      com.tencent.mm.plugin.audio.c.a.bCx().cm(this.oUH);
-      AppMethodBeat.o(103447);
-      return true;
-    }
-    AppMethodBeat.o(103447);
-    return false;
   }
   
   public final void a(a parama)
@@ -148,33 +101,80 @@ public final class n
     AppMethodBeat.o(103443);
   }
   
-  public final boolean cN(String paramString, int paramInt)
+  public final boolean aa(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(103447);
+    if (this.pyq == null)
+    {
+      ad.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(103447);
+      return false;
+    }
+    this.pyq.stop();
+    Object localObject = this.callbacks.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((a)((Iterator)localObject).next()).cx(paramString, paramInt2);
+    }
+    if ((pyv != null) && (!pyv.aMy))
+    {
+      pyv.a(this);
+      localObject = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(103441);
+          n.this.lastShakeTime = bt.HI();
+          AppMethodBeat.o(103441);
+        }
+      };
+      if (!this.pyu.aD((Runnable)localObject)) {
+        break label199;
+      }
+    }
+    label199:
+    for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
+    {
+      this.path = paramString;
+      this.dtc = paramInt1;
+      if ((bt.isNullOrNil(paramString)) || (!this.pyq.a(paramString, this.pyr, paramInt1, paramInt2))) {
+        break;
+      }
+      an.aQu("keep_app_silent");
+      com.tencent.mm.plugin.audio.c.a.bGC().cn(this.pyr);
+      AppMethodBeat.o(103447);
+      return true;
+    }
+    AppMethodBeat.o(103447);
+    return false;
+  }
+  
+  public final boolean cQ(String paramString, int paramInt)
   {
     AppMethodBeat.i(103446);
-    if (this.oUG == null)
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ad.w("MicroMsg.FavVoiceLogic", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
       AppMethodBeat.o(103446);
       return false;
     }
-    this.oUG.stop();
+    this.pyq.stop();
     Object localObject = this.callbacks.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).cu(paramString, 0);
+      ((a)((Iterator)localObject).next()).cx(paramString, 0);
     }
-    if ((oUL != null) && (!oUL.aKH))
+    if ((pyv != null) && (!pyv.aMy))
     {
-      oUL.a(this);
+      pyv.a(this);
       localObject = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103440);
-          n.this.lastShakeTime = bs.Gn();
+          n.this.lastShakeTime = bt.HI();
           AppMethodBeat.o(103440);
         }
       };
-      if (!this.oUK.aE((Runnable)localObject)) {
+      if (!this.pyu.aD((Runnable)localObject)) {
         break label184;
       }
     }
@@ -182,11 +182,11 @@ public final class n
     for (this.lastShakeTime = 0L;; this.lastShakeTime = -1L)
     {
       this.path = paramString;
-      this.dhE = paramInt;
-      if ((bs.isNullOrNil(paramString)) || (!this.oUG.a(paramString, this.oUH, true, paramInt))) {
+      this.dtc = paramInt;
+      if ((bt.isNullOrNil(paramString)) || (!this.pyq.a(paramString, this.pyr, true, paramInt))) {
         break;
       }
-      am.aKO("keep_app_silent");
+      an.aQu("keep_app_silent");
       AppMethodBeat.o(103446);
       return true;
     }
@@ -194,48 +194,48 @@ public final class n
     return false;
   }
   
-  public final boolean caY()
+  public final boolean cfC()
   {
     AppMethodBeat.i(103448);
-    if (this.oUG == null)
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.FavVoiceLogic", "check is play, but player is null");
+      ad.w("MicroMsg.FavVoiceLogic", "check is play, but player is null");
       AppMethodBeat.o(103448);
       return false;
     }
-    boolean bool = this.oUG.isPlaying();
+    boolean bool = this.pyq.isPlaying();
     AppMethodBeat.o(103448);
     return bool;
   }
   
-  public final boolean cpy()
+  public final boolean cvd()
   {
     AppMethodBeat.i(103449);
-    ac.i("MicroMsg.FavVoiceLogic", "resume play");
-    am.aKO("keep_app_silent");
-    if (this.oUG == null)
+    ad.i("MicroMsg.FavVoiceLogic", "resume play");
+    an.aQu("keep_app_silent");
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.FavVoiceLogic", "resum play error, player is null");
+      ad.w("MicroMsg.FavVoiceLogic", "resum play error, player is null");
       AppMethodBeat.o(103449);
       return false;
     }
-    boolean bool = this.oUG.resume();
+    boolean bool = this.pyq.resume();
     AppMethodBeat.o(103449);
     return bool;
   }
   
-  public final boolean cpz()
+  public final boolean cve()
   {
     AppMethodBeat.i(103450);
-    ac.i("MicroMsg.FavVoiceLogic", "pause play");
-    am.aKP("keep_app_silent");
-    if (this.oUG == null)
+    ad.i("MicroMsg.FavVoiceLogic", "pause play");
+    an.aQv("keep_app_silent");
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.FavVoiceLogic", "pause play error, player is null");
+      ad.w("MicroMsg.FavVoiceLogic", "pause play error, player is null");
       AppMethodBeat.o(103450);
       return false;
     }
-    boolean bool = this.oUG.pause();
+    boolean bool = this.pyq.pause();
     AppMethodBeat.o(103450);
     return bool;
   }
@@ -244,78 +244,78 @@ public final class n
   {
     AppMethodBeat.i(103444);
     pause();
-    caX();
-    oUL = null;
+    cfB();
+    pyv = null;
     this.callbacks.clear();
     AppMethodBeat.o(103444);
   }
   
-  public final void kc(boolean paramBoolean)
+  public final void kn(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(103455);
-    if (bs.isNullOrNil(this.path))
+    if (bt.isNullOrNil(this.path))
     {
       AppMethodBeat.o(103455);
       return;
     }
-    if (this.oUJ)
+    if (this.pyt)
     {
       if (!paramBoolean) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.oUJ = paramBoolean;
+        this.pyt = paramBoolean;
         AppMethodBeat.o(103455);
         return;
       }
     }
-    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bs.aO(this.lastShakeTime) > 400L))
+    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bt.aO(this.lastShakeTime) > 400L))
     {
-      this.oUJ = true;
+      this.pyt = true;
       AppMethodBeat.o(103455);
       return;
     }
-    this.oUJ = false;
-    if ((this.oUG != null) && (this.oUG.NU()))
+    this.pyt = false;
+    if ((this.pyq != null) && (this.pyq.PD()))
     {
       AppMethodBeat.o(103455);
       return;
     }
-    if (this.oUI)
+    if (this.pys)
     {
-      if (this.oUG != null) {
-        this.oUG.cl(false);
+      if (this.pyq != null) {
+        this.pyq.cm(false);
       }
-      com.tencent.mm.plugin.audio.c.a.bCx().cm(false);
-      this.oUH = false;
+      com.tencent.mm.plugin.audio.c.a.bGC().cn(false);
+      this.pyr = false;
       AppMethodBeat.o(103455);
       return;
     }
-    if ((this.oUG != null) && (!this.oUG.isPlaying()) && (!this.qJo))
+    if ((this.pyq != null) && (!this.pyq.isPlaying()) && (!this.rtp))
     {
-      this.oUG.cl(true);
-      this.oUH = true;
+      this.pyq.cm(true);
+      this.pyr = true;
       AppMethodBeat.o(103455);
       return;
     }
-    if (com.tencent.mm.plugin.audio.c.a.bCy())
+    if (com.tencent.mm.plugin.audio.c.a.bGD())
     {
-      ac.d("MicroMsg.FavVoiceLogic", "onSensorEvent, connecting bluetooth, omit sensor event");
+      ad.d("MicroMsg.FavVoiceLogic", "onSensorEvent, connecting bluetooth, omit sensor event");
       AppMethodBeat.o(103455);
       return;
     }
-    if (this.oUG != null) {
-      this.oUG.cl(paramBoolean);
+    if (this.pyq != null) {
+      this.pyq.cm(paramBoolean);
     }
-    this.oUH = paramBoolean;
-    if ((this.qJo) && (!paramBoolean))
+    this.pyr = paramBoolean;
+    if ((this.rtp) && (!paramBoolean))
     {
-      Y(this.path, this.dhE, this.qJp);
+      aa(this.path, this.dtc, this.rtq);
       AppMethodBeat.o(103455);
       return;
     }
     if (!paramBoolean) {
-      cN(this.path, this.dhE);
+      cQ(this.path, this.dtc);
     }
     AppMethodBeat.o(103455);
   }
@@ -323,7 +323,7 @@ public final class n
   public final void onCompletion()
   {
     AppMethodBeat.i(103453);
-    ac.d("MicroMsg.FavVoiceLogic", "on completion, do stop play");
+    ad.d("MicroMsg.FavVoiceLogic", "on completion, do stop play");
     stopPlay();
     Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
@@ -335,7 +335,7 @@ public final class n
   public final void onError()
   {
     AppMethodBeat.i(103452);
-    ac.d("MicroMsg.FavVoiceLogic", "on error, do stop play");
+    ad.d("MicroMsg.FavVoiceLogic", "on error, do stop play");
     stopPlay();
     Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
@@ -347,14 +347,14 @@ public final class n
   public final void pause()
   {
     AppMethodBeat.i(103445);
-    if (this.oUG == null)
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.FavVoiceLogic", "do pause, but player is null");
+      ad.w("MicroMsg.FavVoiceLogic", "do pause, but player is null");
       AppMethodBeat.o(103445);
       return;
     }
-    if (this.oUG.isPlaying()) {
-      cpz();
+    if (this.pyq.isPlaying()) {
+      cve();
     }
     Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
@@ -366,18 +366,18 @@ public final class n
   public final void stopPlay()
   {
     AppMethodBeat.i(103451);
-    ac.d("MicroMsg.FavVoiceLogic", "stop play");
-    am.aKP("keep_app_silent");
-    if (this.oUG != null) {
-      this.oUG.stop();
+    ad.d("MicroMsg.FavVoiceLogic", "stop play");
+    an.aQv("keep_app_silent");
+    if (this.pyq != null) {
+      this.pyq.stop();
     }
-    caX();
+    cfB();
     AppMethodBeat.o(103451);
   }
   
   public static abstract interface a
   {
-    public abstract void cu(String paramString, int paramInt);
+    public abstract void cx(String paramString, int paramInt);
     
     public abstract void onFinish();
     
@@ -386,7 +386,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.n
  * JD-Core Version:    0.7.0.1
  */

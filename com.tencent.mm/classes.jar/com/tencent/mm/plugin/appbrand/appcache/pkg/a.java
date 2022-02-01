@@ -13,17 +13,17 @@ public abstract interface a
   
   public abstract boolean a(FileChannel paramFileChannel);
   
-  public abstract int aXv();
-  
-  public abstract int aXw();
-  
   public abstract boolean b(WxaPkg.Info paramInfo);
+  
+  public abstract int baT();
+  
+  public abstract int baU();
   
   public abstract int getVersion();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.pkg.a
  * JD-Core Version:    0.7.0.1
  */

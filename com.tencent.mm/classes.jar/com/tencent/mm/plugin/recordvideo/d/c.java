@@ -1,142 +1,153 @@
 package com.tencent.mm.plugin.recordvideo.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.eq;
-import com.tencent.mm.g.b.a.fb;
+import com.tencent.mm.g.b.a.fp;
+import com.tencent.mm.g.b.a.ga;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
 import com.tencent.mm.plugin.recordvideo.jumper.VideoCaptureReportInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
+import java.util.ArrayList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/report/RecordMediaReporter;", "", "()V", "info", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "lastTrace", "", "getLastTrace", "()I", "setLastTrace", "(I)V", "storyDoPublishStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryDoPublishStruct;", "storyFailTraceStruct", "Lcom/tencent/mm/plugin/recordvideo/report/BehaviorTraceData;", "storyQuitPublishStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryQuitPublishStruct;", "storyTraceStruct", "traceStruct", "addReportTrace", "", "aid", "addReportValue", "key", "", "step", "addStoryTrace", "doBehaviorReport", "scene", "doCommonReport", "doFailBehaviorReport", "getBehaviorReporter", "getFailBehaviorReporter", "getRecordMediaReportInfo", "prepareNewReport", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/VideoCaptureReportInfo;", "resetBehaviorReporter", "resetFailBehaviorReporter", "setReportValue", "value", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/report/RecordMediaReporter;", "", "()V", "info", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "lastTrace", "", "getLastTrace", "()I", "setLastTrace", "(I)V", "storyDoPublishStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryDoPublishStruct;", "storyFailTraceStruct", "Lcom/tencent/mm/plugin/recordvideo/report/BehaviorTraceData;", "storyQuitPublishStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryQuitPublishStruct;", "storyTraceStruct", "traceStruct", "addReportTrace", "", "aid", "addReportValue", "key", "", "step", "addStoryTrace", "appendReportValue", "value", "doBehaviorReport", "scene", "doCommonReport", "doFailBehaviorReport", "getBehaviorReporter", "getFailBehaviorReporter", "getRecordMediaReportInfo", "prepareNewReport", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/VideoCaptureReportInfo;", "resetBehaviorReporter", "resetFailBehaviorReporter", "setReportValue", "plugin-recordvideo_release"})
 public final class c
 {
-  private static RecordMediaReportInfo wxZ;
-  public static a wya;
-  private static eq wyb;
-  private static a wyc;
-  private static int wyd;
-  private static fb wye;
-  private static a wyf;
-  public static final c wyg;
+  private static RecordMediaReportInfo xGT;
+  public static a xGU;
+  private static fp xGV;
+  private static a xGW;
+  private static int xGX;
+  private static ga xGY;
+  private static a xGZ;
+  public static final c xHa;
   
   static
   {
     AppMethodBeat.i(75839);
-    wyg = new c();
-    wxZ = new RecordMediaReportInfo();
-    wya = new a();
-    wyb = new eq();
-    wyc = new a();
-    wyd = -1;
-    wye = new fb();
-    wyf = new a();
+    xHa = new c();
+    xGT = new RecordMediaReportInfo();
+    xGU = new a();
+    xGV = new fp();
+    xGW = new a();
+    xGX = -1;
+    xGY = new ga();
+    xGZ = new a();
     AppMethodBeat.o(75839);
   }
   
-  public static void Mn(int paramInt)
+  public static void NM(int paramInt)
   {
     AppMethodBeat.i(75834);
-    wya.Mm(paramInt);
+    xGU.NL(paramInt);
     AppMethodBeat.o(75834);
   }
   
-  public static void Mo(int paramInt)
+  public static void NN(int paramInt)
   {
     AppMethodBeat.i(75836);
-    if ((paramInt == 15) && ((wyd == 4) || (wyd == 10)))
+    if ((paramInt == 15) && ((xGX == 4) || (xGX == 10)))
     {
-      wyd = paramInt;
+      xGX = paramInt;
       AppMethodBeat.o(75836);
       return;
     }
-    wyd = paramInt;
-    wyc.Mm(paramInt);
-    wyf.Mm(paramInt);
+    xGX = paramInt;
+    xGW.NL(paramInt);
+    xGZ.NL(paramInt);
     AppMethodBeat.o(75836);
   }
   
-  public static void Mp(int paramInt)
+  public static void NO(int paramInt)
   {
     AppMethodBeat.i(75837);
     if (paramInt == 3)
     {
-      Object localObject1 = dwq();
-      wyb.mm(String.valueOf(((Number)((RecordMediaReportInfo)localObject1).x("KEY_MUSIC_ID_INT", Integer.valueOf(0))).intValue()));
-      eq localeq = wyb;
-      Object localObject2 = ((RecordMediaReportInfo)localObject1).x("KEY_MUSIC_INDEX_INT", Long.valueOf(0L));
-      k.g(localObject2, "commonRecordInfo.getRepo…e(KEY_MUSIC_INDEX_INT, 0)");
-      localeq.iE(((Number)localObject2).longValue());
-      localeq = wyb;
-      localObject2 = ((RecordMediaReportInfo)localObject1).x("KEY_MUSIC_REQ_ID_INT", Long.valueOf(0L));
-      k.g(localObject2, "commonRecordInfo.getRepo…(KEY_MUSIC_REQ_ID_INT, 0)");
-      localeq.iF(((Number)localObject2).longValue());
-      localeq = wyb;
-      localObject1 = ((RecordMediaReportInfo)localObject1).x("KEY_SEARCH_MUSIC_INT", Long.valueOf(0L));
-      k.g(localObject1, "commonRecordInfo.getRepo…(KEY_SEARCH_MUSIC_INT, 0)");
-      localeq.iH(((Number)localObject1).longValue());
-      wyb.mq(wyc.dwp());
-      wyb.aHZ();
-      wyd = -1;
+      Object localObject1 = dGK();
+      xGV.oz(String.valueOf(((Number)((RecordMediaReportInfo)localObject1).v("KEY_MUSIC_ID_INT", Integer.valueOf(0))).intValue()));
+      fp localfp = xGV;
+      Object localObject2 = ((RecordMediaReportInfo)localObject1).v("KEY_MUSIC_INDEX_INT", Long.valueOf(0L));
+      p.g(localObject2, "commonRecordInfo.getRepo…e(KEY_MUSIC_INDEX_INT, 0)");
+      localfp.kq(((Number)localObject2).longValue());
+      localfp = xGV;
+      localObject2 = ((RecordMediaReportInfo)localObject1).v("KEY_MUSIC_REQ_ID_INT", Long.valueOf(0L));
+      p.g(localObject2, "commonRecordInfo.getRepo…(KEY_MUSIC_REQ_ID_INT, 0)");
+      localfp.kr(((Number)localObject2).longValue());
+      localfp = xGV;
+      localObject1 = ((RecordMediaReportInfo)localObject1).v("KEY_SEARCH_MUSIC_INT", Long.valueOf(0L));
+      p.g(localObject1, "commonRecordInfo.getRepo…(KEY_SEARCH_MUSIC_INT, 0)");
+      localfp.kt(((Number)localObject1).longValue());
+      xGV.oD(xGW.dGJ());
+      xGV.aLk();
+      xGX = -1;
     }
-    wyb = new eq();
-    wyc = new a();
+    xGV = new fp();
+    xGW = new a();
     AppMethodBeat.o(75837);
   }
   
-  public static void Mq(int paramInt)
+  public static void NP(int paramInt)
   {
     AppMethodBeat.i(75838);
     if (paramInt == 3)
     {
-      wye.jF(System.currentTimeMillis());
-      wye.mF(wyf.dwp());
-      wye.aHZ();
+      xGY.lr(System.currentTimeMillis());
+      xGY.oS(xGZ.dGJ());
+      xGY.aLk();
     }
-    wye = new fb();
-    wyf = new a();
+    xGY = new ga();
+    xGZ = new a();
     AppMethodBeat.o(75838);
   }
   
   public static void a(VideoCaptureReportInfo paramVideoCaptureReportInfo)
   {
     AppMethodBeat.i(75831);
-    wxZ = new RecordMediaReportInfo();
-    wya = new a();
+    xGT = new RecordMediaReportInfo();
+    xGU = new a();
     if (paramVideoCaptureReportInfo != null) {}
-    for (paramVideoCaptureReportInfo = Integer.valueOf(paramVideoCaptureReportInfo.qwN);; paramVideoCaptureReportInfo = Integer.valueOf(-1))
+    for (paramVideoCaptureReportInfo = Integer.valueOf(paramVideoCaptureReportInfo.rgD);; paramVideoCaptureReportInfo = Integer.valueOf(-1))
     {
-      w("KEY_FROM_SCENE_INT", paramVideoCaptureReportInfo);
+      u("KEY_FROM_SCENE_INT", paramVideoCaptureReportInfo);
       AppMethodBeat.o(75831);
       return;
     }
   }
   
-  public static RecordMediaReportInfo dwq()
+  public static RecordMediaReportInfo dGK()
   {
     AppMethodBeat.i(75835);
-    wxZ.w("KEY_ACTION_TRACE_STRING", wya.dwp());
-    RecordMediaReportInfo localRecordMediaReportInfo = wxZ;
+    xGT.u("KEY_ACTION_TRACE_STRING", xGU.dGJ());
+    RecordMediaReportInfo localRecordMediaReportInfo = xGT;
     AppMethodBeat.o(75835);
     return localRecordMediaReportInfo;
   }
   
-  public static eq dwr()
+  public static fp dGL()
   {
-    return wyb;
+    return xGV;
   }
   
-  public static fb dws()
+  public static ga dGM()
   {
-    return wye;
+    return xGY;
   }
   
-  public static void w(String paramString, Object paramObject)
+  public static void eL(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(200402);
+    p.h(paramString, "key");
+    ArrayList localArrayList = (ArrayList)xGT.v(paramString, new ArrayList());
+    localArrayList.add(Integer.valueOf(paramInt));
+    xGT.u(paramString, localArrayList);
+    AppMethodBeat.o(200402);
+  }
+  
+  public static void u(String paramString, Object paramObject)
   {
     AppMethodBeat.i(75832);
-    k.h(paramString, "key");
-    k.h(paramObject, "value");
-    wxZ.w(paramString, paramObject);
+    p.h(paramString, "key");
+    p.h(paramObject, "value");
+    xGT.u(paramString, paramObject);
     AppMethodBeat.o(75832);
   }
 }

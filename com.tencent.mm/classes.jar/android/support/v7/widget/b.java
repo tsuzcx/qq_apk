@@ -8,28 +8,28 @@ import android.graphics.drawable.Drawable;
 final class b
   extends Drawable
 {
-  final ActionBarContainer afv;
+  final ActionBarContainer ahm;
   
   public b(ActionBarContainer paramActionBarContainer)
   {
-    this.afv = paramActionBarContainer;
+    this.ahm = paramActionBarContainer;
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (this.afv.afC) {
-      if (this.afv.afB != null) {
-        this.afv.afB.draw(paramCanvas);
+    if (this.ahm.aht) {
+      if (this.ahm.ahs != null) {
+        this.ahm.ahs.draw(paramCanvas);
       }
     }
     do
     {
       return;
-      if (this.afv.adV != null) {
-        this.afv.adV.draw(paramCanvas);
+      if (this.ahm.afM != null) {
+        this.ahm.afM.draw(paramCanvas);
       }
-    } while ((this.afv.afA == null) || (!this.afv.afD));
-    this.afv.afA.draw(paramCanvas);
+    } while ((this.ahm.ahr == null) || (!this.ahm.ahu));
+    this.ahm.ahr.draw(paramCanvas);
   }
   
   public final int getOpacity()
@@ -39,15 +39,15 @@ final class b
   
   public final void getOutline(Outline paramOutline)
   {
-    if (this.afv.afC) {
-      if (this.afv.afB != null) {
-        this.afv.afB.getOutline(paramOutline);
+    if (this.ahm.aht) {
+      if (this.ahm.ahs != null) {
+        this.ahm.ahs.getOutline(paramOutline);
       }
     }
-    while (this.afv.adV == null) {
+    while (this.ahm.afM == null) {
       return;
     }
-    this.afv.adV.getOutline(paramOutline);
+    this.ahm.afM.getOutline(paramOutline);
   }
   
   public final void setAlpha(int paramInt) {}

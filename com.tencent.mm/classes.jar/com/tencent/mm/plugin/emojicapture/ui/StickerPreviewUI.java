@@ -11,20 +11,22 @@ import com.tencent.mm.loader.g.f;
 import com.tencent.mm.plugin.emojicapture.proxy.EmojiCaptureProxy;
 import com.tencent.mm.plugin.emojicapture.proxy.EmojiCaptureProxy.a;
 import com.tencent.mm.plugin.emojicapture.ui.preview.StickerPreviewView;
+import com.tencent.mm.plugin.mmsight.model.k;
 import com.tencent.mm.pluginsdk.permission.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sticker.loader.e;
 import com.tencent.mm.ui.MMActivity;
+import d.g.b.p;
 import d.l;
 
 @com.tencent.mm.ui.base.a(3)
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/StickerPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "stickerPreview", "Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView;", "stickerUrl", "finish", "", "getLayoutId", "", "initOnCreateAfterConnected", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/StickerPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "stickerPreview", "Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView;", "stickerUrl", "finish", "", "getLayoutId", "", "initOnCreateAfterConnected", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-emojicapture_release"})
 public final class StickerPreviewUI
   extends MMActivity
 {
   private final String TAG = "MicroMsg.StickerPreviewUI";
-  private String prr;
-  private StickerPreviewView prs;
+  private String pUX;
+  private StickerPreviewView pUY;
   
   public final void finish()
   {
@@ -53,11 +55,11 @@ public final class StickerPreviewUI
     com.tencent.mm.ui.statusbar.d.b(getWindow());
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
     setMMTitle(2131764149);
-    this.prr = getIntent().getStringExtra("sticker_url");
-    com.tencent.mm.plugin.mmsight.model.k.ddz();
-    paramBundle = EmojiCaptureProxy.pqx;
-    EmojiCaptureProxy.a.cfF();
-    paramBundle = EmojiCaptureProxy.pqx;
+    this.pUX = getIntent().getStringExtra("sticker_url");
+    k.dmV();
+    paramBundle = EmojiCaptureProxy.pUd;
+    EmojiCaptureProxy.a.cki();
+    paramBundle = EmojiCaptureProxy.pUd;
     paramBundle = EmojiCaptureProxy.access$getInstance$cp().getServerProxy();
     if (paramBundle != null)
     {
@@ -72,11 +74,11 @@ public final class StickerPreviewUI
   {
     AppMethodBeat.i(515);
     super.onDestroy();
-    StickerPreviewView localStickerPreviewView = this.prs;
+    StickerPreviewView localStickerPreviewView = this.pUY;
     if (localStickerPreviewView != null)
     {
-      e locale = e.GAP;
-      e.b((f)localStickerPreviewView.pwa);
+      e locale = e.ImJ;
+      e.b((f)localStickerPreviewView.pZF);
       AppMethodBeat.o(515);
       return;
     }
@@ -87,10 +89,10 @@ public final class StickerPreviewUI
   {
     AppMethodBeat.i(513);
     super.onPause();
-    StickerPreviewView localStickerPreviewView = this.prs;
+    StickerPreviewView localStickerPreviewView = this.pUY;
     if (localStickerPreviewView != null)
     {
-      localStickerPreviewView.prU.stopPreview();
+      localStickerPreviewView.pVA.stopPreview();
       AppMethodBeat.o(513);
       return;
     }
@@ -101,7 +103,7 @@ public final class StickerPreviewUI
   {
     AppMethodBeat.i(514);
     super.onResume();
-    StickerPreviewView localStickerPreviewView = this.prs;
+    StickerPreviewView localStickerPreviewView = this.pUY;
     if (localStickerPreviewView != null)
     {
       localStickerPreviewView.onResume();
@@ -117,7 +119,7 @@ public final class StickerPreviewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "", "kotlin.jvm.PlatformType", "results", "", "onRequestPermissionsResult", "(I[Ljava/lang/String;[I)V"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "", "kotlin.jvm.PlatformType", "results", "", "onRequestPermissionsResult", "(I[Ljava/lang/String;[I)V"})
   static final class a
     implements c
   {
@@ -126,8 +128,8 @@ public final class StickerPreviewUI
     public final void b(int paramInt, int[] paramArrayOfInt)
     {
       int j = 1;
-      AppMethodBeat.i(195159);
-      d.g.b.k.g(paramArrayOfInt, "results");
+      AppMethodBeat.i(195135);
+      p.g(paramArrayOfInt, "results");
       int k = paramArrayOfInt.length;
       paramInt = 0;
       int i;
@@ -145,10 +147,10 @@ public final class StickerPreviewUI
       {
         if (paramInt != 0)
         {
-          ac.w(StickerPreviewUI.b(this.prt), "request permission: not granted");
-          this.prt.finish();
+          ad.w(StickerPreviewUI.b(this.pUZ), "request permission: not granted");
+          this.pUZ.finish();
         }
-        AppMethodBeat.o(195159);
+        AppMethodBeat.o(195135);
         return;
         i = 0;
         break label34;
@@ -159,7 +161,7 @@ public final class StickerPreviewUI
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -168,13 +170,13 @@ public final class StickerPreviewUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(510);
-      this.prt.finish();
+      this.pUZ.finish();
       AppMethodBeat.o(510);
       return true;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -183,7 +185,7 @@ public final class StickerPreviewUI
     public final void run()
     {
       AppMethodBeat.i(511);
-      StickerPreviewUI.a(this.prt);
+      StickerPreviewUI.a(this.pUZ);
       AppMethodBeat.o(511);
     }
   }

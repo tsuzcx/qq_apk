@@ -10,35 +10,35 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.game.api.d;
-import com.tencent.mm.plugin.game.d.be;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.game.d.bh;
 import com.tencent.mm.plugin.game.f.a.a;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.model.an;
 import com.tencent.mm.plugin.game.model.aw;
 import com.tencent.mm.plugin.game.model.w;
-import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public class GameCenterUI5
   extends GameCenterBaseUI
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private boolean fPJ = true;
-  private Dialog pzQ;
-  private GameNewTopBannerView tnL;
-  private GameIndexSearchView tnM;
-  private GameIndexWxagView tnN;
-  private GameMessageBubbleView tnO;
-  private GameBlockView tnP;
-  private GameRecomBlockView tnQ;
-  private GameNewClassifyView tnR;
-  private GameIndexListView tnS;
+  private boolean gjj = true;
+  private Dialog qdv;
+  private GameNewTopBannerView umj;
+  private GameIndexSearchView umk;
+  private GameIndexWxagView uml;
+  private GameMessageBubbleView umm;
+  private GameBlockView umn;
+  private GameRecomBlockView umo;
+  private GameNewClassifyView ump;
+  private GameIndexListView umq;
   
   public int getForceOrientation()
   {
@@ -64,17 +64,17 @@ public class GameCenterUI5
       }
     });
     setMMTitle(2131760012);
-    this.tnS = ((GameIndexListView)findViewById(2131300442));
-    this.tnS.setVisibility(8);
-    View localView = getLayoutInflater().inflate(2131494322, this.tnS, false);
-    this.tnS.addHeaderView(localView);
-    this.tnL = ((GameNewTopBannerView)localView.findViewById(2131300556));
-    this.tnM = ((GameIndexSearchView)localView.findViewById(2131300467));
-    this.tnN = ((GameIndexWxagView)localView.findViewById(2131300468));
-    this.tnO = ((GameMessageBubbleView)localView.findViewById(2131300517));
-    this.tnP = ((GameBlockView)localView.findViewById(2131300353));
-    this.tnQ = ((GameRecomBlockView)localView.findViewById(2131300542));
-    this.tnR = ((GameNewClassifyView)localView.findViewById(2131300525));
+    this.umq = ((GameIndexListView)findViewById(2131300442));
+    this.umq.setVisibility(8);
+    View localView = getLayoutInflater().inflate(2131494322, this.umq, false);
+    this.umq.addHeaderView(localView);
+    this.umj = ((GameNewTopBannerView)localView.findViewById(2131300556));
+    this.umk = ((GameIndexSearchView)localView.findViewById(2131300467));
+    this.uml = ((GameIndexWxagView)localView.findViewById(2131300468));
+    this.umm = ((GameMessageBubbleView)localView.findViewById(2131300517));
+    this.umn = ((GameBlockView)localView.findViewById(2131300353));
+    this.umo = ((GameRecomBlockView)localView.findViewById(2131300542));
+    this.ump = ((GameNewClassifyView)localView.findViewById(2131300525));
     AppMethodBeat.o(41964);
   }
   
@@ -82,24 +82,24 @@ public class GameCenterUI5
   {
     AppMethodBeat.i(41961);
     super.onCreate(paramBundle);
-    if (!com.tencent.mm.kernel.g.agM())
+    if (!g.ajx())
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.GameCenterUI5", "account not ready");
+      ad.e("MicroMsg.GameCenterUI5", "account not ready");
       finish();
       AppMethodBeat.o(41961);
       return;
     }
-    GameIndexListView.setSourceScene(this.tfA);
-    com.tencent.mm.kernel.g.agi().a(2994, this);
+    GameIndexListView.setSourceScene(this.udq);
+    g.aiU().a(2994, this);
     initView();
-    c.bUw().postToWorker(new Runnable()
+    c.bZb().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(41960);
-        Object localObject = ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOn().agO("pb_index_4");
+        Object localObject = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWI().all("pb_index_4");
         if (localObject == null) {
-          ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
@@ -109,7 +109,7 @@ public class GameCenterUI5
                 AppMethodBeat.o(41958);
                 return;
               }
-              GameCenterUI5.a(GameCenterUI5.this, c.fv(GameCenterUI5.this));
+              GameCenterUI5.a(GameCenterUI5.this, c.fA(GameCenterUI5.this));
               GameCenterUI5.a(GameCenterUI5.this).show();
               AppMethodBeat.o(41958);
             }
@@ -117,47 +117,47 @@ public class GameCenterUI5
         }
         for (;;)
         {
-          ((d)com.tencent.mm.kernel.g.ab(d.class)).cOk().init(GameCenterUI5.this);
-          c.aA(com.tencent.mm.plugin.game.model.e.cPV());
-          localObject = new an(ab.eUO(), com.tencent.mm.plugin.game.model.e.cPV(), GameCenterUI5.this.tnx, GameCenterUI5.this.tny, GameCenterUI5.this.tnz, GameCenterUI5.this.tnw);
-          com.tencent.mm.kernel.g.agi().a((n)localObject, 0);
-          com.tencent.mm.plugin.game.model.e.fk(GameCenterUI5.this.getContext());
-          com.tencent.mm.plugin.game.model.e.cQa();
-          a.a.cRI().cRG();
+          ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().init(GameCenterUI5.this);
+          c.aC(com.tencent.mm.plugin.game.model.e.cYA());
+          localObject = new an(com.tencent.mm.sdk.platformtools.ac.fks(), com.tencent.mm.plugin.game.model.e.cYA(), GameCenterUI5.this.ulV, GameCenterUI5.this.ulW, GameCenterUI5.this.ulX, GameCenterUI5.this.ulU);
+          g.aiU().a((n)localObject, 0);
+          com.tencent.mm.plugin.game.model.e.fo(GameCenterUI5.this.getContext());
+          com.tencent.mm.plugin.game.model.e.cYF();
+          a.a.das().daq();
           AppMethodBeat.o(41960);
           return;
-          ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(41959);
-              GameCenterUI5.a(GameCenterUI5.this, this.tnV, 1);
+              GameCenterUI5.a(GameCenterUI5.this, this.umt, 1);
               AppMethodBeat.o(41959);
             }
           });
         }
       }
     });
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.GameCenterUI5", "fromScene = %d", new Object[] { Integer.valueOf(this.tfA) });
+    ad.i("MicroMsg.GameCenterUI5", "fromScene = %d", new Object[] { Integer.valueOf(this.udq) });
     AppMethodBeat.o(41961);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(41963);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.GameCenterUI5", "onDestroy");
+    ad.i("MicroMsg.GameCenterUI5", "onDestroy");
     super.onDestroy();
-    if (!com.tencent.mm.kernel.g.agM())
+    if (!g.ajx())
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.GameCenterUI5", "account not ready");
+      ad.e("MicroMsg.GameCenterUI5", "account not ready");
       AppMethodBeat.o(41963);
       return;
     }
-    a.a.cRI().clearCache();
-    com.tencent.mm.kernel.g.agi().b(2994, this);
-    ((d)com.tencent.mm.kernel.g.ab(d.class)).cOk().clearCache();
-    aw.cRa();
-    aw.cRc();
+    a.a.das().clearCache();
+    g.aiU().b(2994, this);
+    ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().clearCache();
+    aw.cZG();
+    aw.cZI();
     AppMethodBeat.o(41963);
   }
   
@@ -165,39 +165,39 @@ public class GameCenterUI5
   {
     AppMethodBeat.i(41962);
     super.onResume();
-    if (!com.tencent.mm.kernel.g.agM())
+    if (!g.ajx())
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.GameCenterUI5", "account not ready");
+      ad.e("MicroMsg.GameCenterUI5", "account not ready");
       AppMethodBeat.o(41962);
       return;
     }
-    if (!this.fPJ)
+    if (!this.gjj)
     {
-      ((d)com.tencent.mm.kernel.g.ab(d.class)).cOk().init(this);
-      Object localObject = this.tnO;
-      ((GameMessageBubbleView)localObject).ttb.setOnClickListener(null);
+      ((com.tencent.mm.plugin.game.api.e)g.ab(com.tencent.mm.plugin.game.api.e.class)).cWF().init(this);
+      Object localObject = this.umm;
+      ((GameMessageBubbleView)localObject).urA.setOnClickListener(null);
       ((GameMessageBubbleView)localObject).setVisibility(8);
-      if (this.tnw) {
-        this.tnO.cRA();
+      if (this.ulU) {
+        this.umm.daf();
       }
-      localObject = this.tnP;
-      if (((GameBlockView)localObject).tnc != null) {
-        ((GameBlockView)localObject).tnc.tnh.refresh();
+      localObject = this.umn;
+      if (((GameBlockView)localObject).ulA != null) {
+        ((GameBlockView)localObject).ulA.ulF.refresh();
       }
-      localObject = this.tnS;
+      localObject = this.umq;
       LinearLayoutManager localLinearLayoutManager = (LinearLayoutManager)((GameIndexListView)localObject).getLayoutManager();
-      int i = localLinearLayoutManager.jW();
-      int j = localLinearLayoutManager.jY();
-      ((GameIndexListView)localObject).tre.ao(i, j - i + 1);
+      int i = localLinearLayoutManager.km();
+      int j = localLinearLayoutManager.ko();
+      ((GameIndexListView)localObject).upB.ap(i, j - i + 1);
     }
-    this.fPJ = false;
+    this.gjj = false;
     AppMethodBeat.o(41962);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
   {
     AppMethodBeat.i(41965);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.GameCenterUI5", "errType: %d errCode: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.hashCode()) });
+    ad.i("MicroMsg.GameCenterUI5", "errType: %d errCode: %d, scene: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.hashCode()) });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       switch (paramn.getType())
@@ -208,30 +208,30 @@ public class GameCenterUI5
         AppMethodBeat.o(41965);
         return;
         final long l = System.currentTimeMillis();
-        paramString = ((an)paramn).fYA.hvs.hvw;
-        c.bUw().postToWorker(new Runnable()
+        paramString = ((an)paramn).grW.hNL.hNQ;
+        c.bZb().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(41957);
-            be localbe;
+            bh localbh;
             if (paramString == null) {
-              localbe = new be();
+              localbh = new bh();
             }
             for (;;)
             {
-              ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(41956);
                   try
                   {
-                    GameCenterUI5.a(GameCenterUI5.this, this.tnV, 2);
+                    GameCenterUI5.a(GameCenterUI5.this, this.umt, 2);
                     if (GameCenterUI5.a(GameCenterUI5.this) != null) {
                       GameCenterUI5.a(GameCenterUI5.this).dismiss();
                     }
-                    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.GameCenterUI5", "Server data parsing time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - GameCenterUI5.2.this.cev) });
+                    ad.i("MicroMsg.GameCenterUI5", "Server data parsing time: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - GameCenterUI5.2.this.coM) });
                     AppMethodBeat.o(41956);
                     return;
                   }
@@ -239,7 +239,7 @@ public class GameCenterUI5
                   {
                     for (;;)
                     {
-                      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.GameCenterUI5", "GameCenter crash, %s", new Object[] { localException.getMessage() });
+                      ad.e("MicroMsg.GameCenterUI5", "GameCenter crash, %s", new Object[] { localException.getMessage() });
                       GameCenterUI5.this.finish();
                     }
                   }
@@ -247,18 +247,18 @@ public class GameCenterUI5
               });
               AppMethodBeat.o(41957);
               return;
-              localbe = (be)paramString;
-              ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOn().b("pb_index_4", localbe);
+              localbh = (bh)paramString;
+              ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cWI().b("pb_index_4", localbh);
             }
           }
         });
       }
     }
-    if (!com.tencent.mm.plugin.game.a.a.iyy.a(this, paramInt1, paramInt2, paramString)) {
+    if (!com.tencent.mm.plugin.game.a.a.iRH.a(this, paramInt1, paramInt2, paramString)) {
       Toast.makeText(this, getString(2131759916, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
     }
-    if (this.pzQ != null) {
-      this.pzQ.cancel();
+    if (this.qdv != null) {
+      this.qdv.cancel();
     }
     AppMethodBeat.o(41965);
   }
@@ -271,7 +271,7 @@ public class GameCenterUI5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameCenterUI5
  * JD-Core Version:    0.7.0.1
  */

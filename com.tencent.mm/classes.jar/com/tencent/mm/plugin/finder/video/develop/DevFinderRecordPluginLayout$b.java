@@ -2,20 +2,22 @@ package com.tencent.mm.plugin.finder.video.develop;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "succ", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "succ", "", "invoke"})
 final class DevFinderRecordPluginLayout$b
-  extends d.g.b.l
-  implements b<Boolean, y>
+  extends q
+  implements b<Boolean, z>
 {
-  public static final b rTL;
+  public static final b sQw;
   
   static
   {
-    AppMethodBeat.i(203936);
-    rTL = new b();
-    AppMethodBeat.o(203936);
+    AppMethodBeat.i(204893);
+    sQw = new b();
+    AppMethodBeat.o(204893);
   }
   
   DevFinderRecordPluginLayout$b()

@@ -12,42 +12,42 @@ import java.util.Map;
 
 public final class d
 {
-  private static final Map<String, c> aRf;
+  private static final Map<String, c> bbA;
   
   static
   {
     AppMethodBeat.i(127398);
     HashMap localHashMap = new HashMap(6);
-    aRf = localHashMap;
-    localHashMap.put("image/jpeg", c.aQP);
-    aRf.put("image/gif", c.aQS);
-    aRf.put("image/png", c.aQQ);
-    aRf.put("image/x-ms-bmp", c.aQR);
-    aRf.put("image/bmp", c.aQR);
-    aRf.put("image/webp", c.aQT);
+    bbA = localHashMap;
+    localHashMap.put("image/jpeg", c.bbj);
+    bbA.put("image/gif", c.bbm);
+    bbA.put("image/png", c.bbk);
+    bbA.put("image/x-ms-bmp", c.bbl);
+    bbA.put("image/bmp", c.bbl);
+    bbA.put("image/webp", c.bbn);
     AppMethodBeat.o(127398);
   }
   
-  public static com.github.henryye.nativeiv.bitmap.d g(InputStream paramInputStream)
+  public static com.github.henryye.nativeiv.bitmap.d k(InputStream paramInputStream)
   {
     AppMethodBeat.i(127397);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
-    InputStream localInputStream = e.h(paramInputStream);
+    InputStream localInputStream = e.l(paramInputStream);
     localInputStream.mark(8388608);
     BitmapFactory.decodeStream(localInputStream, null, localOptions);
-    Object localObject = (c)aRf.get(localOptions.outMimeType);
+    Object localObject = (c)bbA.get(localOptions.outMimeType);
     paramInputStream = (InputStream)localObject;
     if (localObject == null) {
-      paramInputStream = c.aQU;
+      paramInputStream = c.bbp;
     }
     try
     {
       localInputStream.reset();
       localObject = new com.github.henryye.nativeiv.bitmap.d();
-      ((com.github.henryye.nativeiv.bitmap.d)localObject).aQW = paramInputStream;
-      ((com.github.henryye.nativeiv.bitmap.d)localObject).aQY = localOptions.outHeight;
-      ((com.github.henryye.nativeiv.bitmap.d)localObject).aQX = localOptions.outWidth;
+      ((com.github.henryye.nativeiv.bitmap.d)localObject).bbr = paramInputStream;
+      ((com.github.henryye.nativeiv.bitmap.d)localObject).bbt = localOptions.outHeight;
+      ((com.github.henryye.nativeiv.bitmap.d)localObject).bbs = localOptions.outWidth;
       AppMethodBeat.o(127397);
       return localObject;
     }
@@ -56,14 +56,14 @@ public final class d
       for (;;)
       {
         b.printStackTrace("Ni.FormatUtil", paramInputStream, "hy: the given stream is markable, but still reset error. should not forward", new Object[0]);
-        paramInputStream = c.aQU;
+        paramInputStream = c.bbp;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.github.henryye.nativeiv.c.d
  * JD-Core Version:    0.7.0.1
  */

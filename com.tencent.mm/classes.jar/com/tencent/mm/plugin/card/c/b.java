@@ -5,15 +5,15 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract boolean bQF();
+  public abstract boolean Ap(int paramInt);
   
-  public abstract boolean bQG();
+  public abstract boolean bVk();
   
-  public abstract String bQH();
+  public abstract boolean bVl();
   
-  public abstract int bQI();
+  public abstract String bVm();
   
-  public abstract boolean zG(int paramInt);
+  public abstract int bVn();
 }
 
 

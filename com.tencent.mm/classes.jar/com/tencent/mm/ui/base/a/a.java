@@ -8,49 +8,59 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class a<T, V extends View>
   extends RecyclerView.a<b>
 {
-  public a HDz = null;
-  public List<T> bYM = new ArrayList();
-  private RecyclerView fTr;
+  public a Jrp = null;
+  public List<T> cje = new ArrayList();
+  private RecyclerView gmV;
   
   public void a(final b paramb, final int paramInt)
   {
-    paramb.asD.setOnClickListener(new View.OnClickListener()
+    paramb.auu.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164160);
-        if (a.this.HDz != null)
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (a.this.Jrp != null)
         {
-          int i = ((b)((RecyclerView)paramb.asD.getParent()).bu(paramb.asD)).lv();
+          int i = ((b)((RecyclerView)paramb.auu.getParent()).bu(paramb.auu)).lN();
           if (i < 0)
           {
-            ac.e("MicroMsg.RecyclerViewAdapterBase", "[onBindViewHolder#setOnClickListener] pos=%s", new Object[] { Integer.valueOf(i) });
+            ad.e("MicroMsg.RecyclerViewAdapterBase", "[onBindViewHolder#setOnClickListener] pos=%s", new Object[] { Integer.valueOf(i) });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(164160);
             return;
           }
-          a.this.HDz.a(i, paramAnonymousView, a.this.getItemAtPosition(i));
+          a.this.Jrp.a(i, paramAnonymousView, a.this.getItemAtPosition(i));
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(164160);
       }
     });
-    paramb.asD.setOnLongClickListener(new View.OnLongClickListener()
+    paramb.auu.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164161);
-        if (a.this.HDz != null)
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+        if (a.this.Jrp != null)
         {
-          boolean bool = a.this.HDz.a(paramAnonymousView, a.this.getItemAtPosition(paramInt));
+          boolean bool = a.this.Jrp.a(paramAnonymousView, a.this.getItemAtPosition(paramInt));
+          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(164161);
           return bool;
         }
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/base/adapter/RecyclerViewAdapterBase$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(164161);
         return false;
       }
@@ -60,50 +70,50 @@ public abstract class a<T, V extends View>
   public void a(b paramb, int paramInt, List<Object> paramList)
   {
     super.a(paramb, paramInt, paramList);
-    paramb.fTr = this.fTr;
+    paramb.gmV = this.gmV;
   }
   
   public final void c(RecyclerView paramRecyclerView)
   {
     super.c(paramRecyclerView);
-    this.fTr = paramRecyclerView;
+    this.gmV = paramRecyclerView;
   }
   
   public final void clearItems()
   {
-    int i = this.bYM.size();
-    this.bYM.clear();
-    ar(0, i);
+    int i = this.cje.size();
+    this.cje.clear();
+    as(0, i);
   }
   
   public final T getItemAtPosition(int paramInt)
   {
-    return this.bYM.get(paramInt);
+    return this.cje.get(paramInt);
   }
   
   public final int getItemCount()
   {
-    return this.bYM.size();
+    return this.cje.size();
   }
   
-  public final void hE(List<T> paramList)
+  public final void hQ(List<T> paramList)
   {
     if (paramList != null)
     {
-      int i = this.bYM.size();
-      this.bYM.addAll(paramList);
-      aq(i, paramList.size());
+      int i = this.cje.size();
+      this.cje.addAll(paramList);
+      ar(i, paramList.size());
     }
   }
   
-  protected abstract V l(ViewGroup paramViewGroup, int paramInt);
+  protected abstract V m(ViewGroup paramViewGroup, int paramInt);
   
   public final void setItems(List<T> paramList)
   {
     if (paramList != null)
     {
-      this.bYM = paramList;
-      this.arg.notifyChanged();
+      this.cje = paramList;
+      this.asY.notifyChanged();
     }
   }
   

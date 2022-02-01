@@ -11,26 +11,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class c
 {
-  private static volatile c gem;
-  Map<String, List<e>> gen;
+  private static volatile c gxW;
+  Map<String, List<e>> gxX;
   
   private c()
   {
     AppMethodBeat.i(158785);
-    this.gen = new ConcurrentHashMap();
+    this.gxX = new ConcurrentHashMap();
     AppMethodBeat.o(158785);
   }
   
-  public static c aeT()
+  public static c ahF()
   {
     AppMethodBeat.i(158784);
-    if (gem == null) {}
+    if (gxW == null) {}
     try
     {
-      if (gem == null) {
-        gem = new c();
+      if (gxW == null) {
+        gxW = new c();
       }
-      c localc = gem;
+      c localc = gxW;
       AppMethodBeat.o(158784);
       return localc;
     }
@@ -48,12 +48,12 @@ public class c
       AppMethodBeat.o(158787);
       return false;
     }
-    List localList = (List)this.gen.get(paramString);
+    List localList = (List)this.gxX.get(paramString);
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.gen.put(paramString, localObject);
+      this.gxX.put(paramString, localObject);
     }
     if (((List)localObject).contains(parame))
     {
@@ -79,7 +79,7 @@ public class c
       AppMethodBeat.o(158788);
       return false;
     }
-    List localList = (List)this.gen.get(paramString);
+    List localList = (List)this.gxX.get(paramString);
     if (localList != null) {}
     for (;;)
     {
@@ -87,7 +87,7 @@ public class c
       {
         bool = localList.remove(parame);
         if (localList.isEmpty()) {
-          this.gen.remove(paramString);
+          this.gxX.remove(paramString);
         }
         AppMethodBeat.o(158788);
         return bool;
@@ -108,7 +108,7 @@ public class c
       AppMethodBeat.o(158786);
       return false;
     }
-    paramString = (List)this.gen.get(paramString);
+    paramString = (List)this.gxX.get(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(158786);
@@ -119,7 +119,7 @@ public class c
       ArrayList localArrayList = new ArrayList(paramString);
       paramString = localArrayList.iterator();
       while (paramString.hasNext()) {
-        ((e)paramString.next()).bc(paramBundle);
+        ((e)paramString.next()).be(paramBundle);
       }
       AppMethodBeat.o(158786);
     }

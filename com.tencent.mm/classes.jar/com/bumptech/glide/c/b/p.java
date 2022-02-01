@@ -14,12 +14,12 @@ import java.util.List;
 public final class p
   extends Exception
 {
-  private static final StackTraceElement[] aGd = new StackTraceElement[0];
-  private h aDY;
-  private a aEU;
-  private Class<?> aFl;
-  private final List<Throwable> aGe;
-  private String aGf;
+  private static final StackTraceElement[] aHU = new StackTraceElement[0];
+  private h aFP;
+  private a aGL;
+  private final List<Throwable> aHV;
+  private String aHW;
+  private Class<?> aHc;
   
   public p(String paramString)
   {
@@ -38,9 +38,9 @@ public final class p
   public p(String paramString, List<Throwable> paramList)
   {
     AppMethodBeat.i(77019);
-    this.aGf = paramString;
-    setStackTrace(aGd);
-    this.aGe = paramList;
+    this.aHW = paramString;
+    setStackTrace(aHU);
+    this.aHV = paramList;
     AppMethodBeat.o(77019);
   }
   
@@ -48,7 +48,7 @@ public final class p
   {
     AppMethodBeat.i(77026);
     a(this, paramAppendable);
-    a(this.aGe, new a(paramAppendable));
+    a(this.aHV, new a(paramAppendable));
     AppMethodBeat.o(77026);
   }
   
@@ -74,7 +74,7 @@ public final class p
     AppMethodBeat.i(77022);
     if ((paramThrowable instanceof p))
     {
-      paramThrowable = ((p)paramThrowable).aGe.iterator();
+      paramThrowable = ((p)paramThrowable).aHV.iterator();
       while (paramThrowable.hasNext()) {
         a((Throwable)paramThrowable.next(), paramList);
       }
@@ -124,7 +124,7 @@ public final class p
     AppMethodBeat.o(77030);
   }
   
-  private List<Throwable> oz()
+  private List<Throwable> oR()
   {
     AppMethodBeat.i(77020);
     ArrayList localArrayList = new ArrayList();
@@ -135,9 +135,9 @@ public final class p
   
   final void a(h paramh, a parama, Class<?> paramClass)
   {
-    this.aDY = paramh;
-    this.aEU = parama;
-    this.aFl = paramClass;
+    this.aFP = paramh;
+    this.aGL = parama;
+    this.aHc = paramClass;
   }
   
   public final Throwable fillInStackTrace()
@@ -148,27 +148,27 @@ public final class p
   public final String getMessage()
   {
     AppMethodBeat.i(77027);
-    Object localObject2 = new StringBuilder(71).append(this.aGf);
-    if (this.aFl != null)
+    Object localObject2 = new StringBuilder(71).append(this.aHW);
+    if (this.aHc != null)
     {
-      localObject1 = ", " + this.aFl;
+      localObject1 = ", " + this.aHc;
       localObject2 = ((StringBuilder)localObject2).append((String)localObject1);
-      if (this.aEU == null) {
+      if (this.aGL == null) {
         break label153;
       }
-      localObject1 = ", " + this.aEU;
+      localObject1 = ", " + this.aGL;
       label82:
       localObject2 = ((StringBuilder)localObject2).append((String)localObject1);
-      if (this.aDY == null) {
+      if (this.aFP == null) {
         break label159;
       }
     }
     label153:
     label159:
-    for (Object localObject1 = ", " + this.aDY;; localObject1 = "")
+    for (Object localObject1 = ", " + this.aFP;; localObject1 = "")
     {
       localObject1 = ((StringBuilder)localObject2).append((String)localObject1);
-      localObject2 = oz();
+      localObject2 = oR();
       if (!((List)localObject2).isEmpty()) {
         break label165;
       }
@@ -200,10 +200,10 @@ public final class p
     return localObject1;
   }
   
-  public final void oA()
+  public final void oS()
   {
     AppMethodBeat.i(77021);
-    List localList = oz();
+    List localList = oR();
     int i = 0;
     int j = localList.size();
     while (i < j)
@@ -239,12 +239,12 @@ public final class p
   static final class a
     implements Appendable
   {
-    private final Appendable aGg;
-    private boolean aGh = true;
+    private final Appendable aHX;
+    private boolean aHY = true;
     
     a(Appendable paramAppendable)
     {
-      this.aGg = paramAppendable;
+      this.aHX = paramAppendable;
     }
     
     private static CharSequence s(CharSequence paramCharSequence)
@@ -260,16 +260,16 @@ public final class p
     {
       boolean bool = false;
       AppMethodBeat.i(77014);
-      if (this.aGh)
+      if (this.aHY)
       {
-        this.aGh = false;
-        this.aGg.append("  ");
+        this.aHY = false;
+        this.aHX.append("  ");
       }
       if (paramChar == '\n') {
         bool = true;
       }
-      this.aGh = bool;
-      this.aGg.append(paramChar);
+      this.aHY = bool;
+      this.aHX.append(paramChar);
       AppMethodBeat.o(77014);
       return this;
     }
@@ -288,10 +288,10 @@ public final class p
       boolean bool2 = false;
       AppMethodBeat.i(77016);
       paramCharSequence = s(paramCharSequence);
-      if (this.aGh)
+      if (this.aHY)
       {
-        this.aGh = false;
-        this.aGg.append("  ");
+        this.aHY = false;
+        this.aHX.append("  ");
       }
       boolean bool1 = bool2;
       if (paramCharSequence.length() > 0)
@@ -301,8 +301,8 @@ public final class p
           bool1 = true;
         }
       }
-      this.aGh = bool1;
-      this.aGg.append(paramCharSequence, paramInt1, paramInt2);
+      this.aHY = bool1;
+      this.aHX.append(paramCharSequence, paramInt1, paramInt2);
       AppMethodBeat.o(77016);
       return this;
     }

@@ -10,9 +10,9 @@ import java.util.concurrent.ScheduledFuture;
 public final class e
   implements Closeable
 {
-  final List<d> azU;
-  private ScheduledFuture<?> azV;
-  private boolean azW;
+  final List<d> aBL;
+  private ScheduledFuture<?> aBM;
+  private boolean aBN;
   private boolean closed;
   final Object lock;
   
@@ -26,17 +26,17 @@ public final class e
         AppMethodBeat.o(52985);
         return;
       }
-      if (this.azV != null)
+      if (this.aBM != null)
       {
-        this.azV.cancel(true);
-        this.azV = null;
+        this.aBM.cancel(true);
+        this.aBM = null;
       }
-      Iterator localIterator = this.azU.iterator();
+      Iterator localIterator = this.aBL.iterator();
       if (localIterator.hasNext()) {
         ((d)localIterator.next()).close();
       }
     }
-    this.azU.clear();
+    this.aBL.clear();
     this.closed = true;
     AppMethodBeat.o(52985);
   }
@@ -46,14 +46,14 @@ public final class e
     AppMethodBeat.i(52984);
     synchronized (this.lock)
     {
-      nl();
-      boolean bool = this.azW;
+      nD();
+      boolean bool = this.aBN;
       AppMethodBeat.o(52984);
       return bool;
     }
   }
   
-  final void nl()
+  final void nD()
   {
     AppMethodBeat.i(52987);
     if (this.closed)

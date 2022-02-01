@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.b.b;
 
 public final class ql
   extends b
 {
-  public a dtt;
+  public a dFg;
   
   public ql()
   {
@@ -16,16 +15,16 @@ public final class ql
   
   private ql(byte paramByte)
   {
-    AppMethodBeat.i(125626);
-    this.dtt = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(168780);
+    this.dFg = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125626);
+    AppMethodBeat.o(168780);
   }
   
   public static final class a
   {
-    public SnsAdClick dtu;
+    public boolean dFh = false;
   }
 }
 

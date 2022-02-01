@@ -19,15 +19,15 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.ui.i;
 import com.tencent.mm.plugin.account.friend.ui.i.a;
 import com.tencent.mm.plugin.account.friend.ui.i.b;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.aq.a;
+import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.Map;
@@ -36,56 +36,56 @@ public class BindMContactUI
   extends MMWizardActivity
 {
   private String countryCode = null;
-  private String dnz;
+  private String dzn;
   private int fromScene = 0;
-  private String hLr = null;
-  private boolean iFP = false;
-  private i iGC;
-  private EditText iGR;
-  private LinearLayout iGS;
-  private TextView iGT;
-  private TextView iGU;
-  private TextView iGV;
-  private String iGW = null;
+  private boolean iYY = false;
+  private i iZL;
+  private String iem = null;
+  private EditText jaa;
+  private LinearLayout jab;
+  private TextView jac;
+  private TextView jad;
+  private TextView jae;
+  private String jaf = null;
   
-  private void FY(final String paramString)
+  private void Jn(final String paramString)
   {
     AppMethodBeat.i(109901);
-    if (this.iGC == null)
+    if (this.iZL == null)
     {
-      i.b localb = i.b.iNQ;
+      i.b localb = i.b.jgZ;
       if (this.fromScene == 3) {
-        localb = i.b.iNR;
+        localb = i.b.jha;
       }
-      this.iGC = new i(localb, this, new i.a()
+      this.iZL = new i(localb, this, new i.a()
       {
         public final void i(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(109894);
           if (paramAnonymousInt == 1)
           {
-            ac.i("MicroMsg.BindMContactUI", "next to BindMContactVerifyUI for bind mobile");
+            ad.i("MicroMsg.BindMContactUI", "next to BindMContactVerifyUI for bind mobile");
             paramAnonymousBundle = new Intent(BindMContactUI.this, BindMContactVerifyUI.class);
             paramAnonymousBundle.putExtra("bindmcontact_mobile", paramString);
             paramAnonymousBundle.putExtra("KEnterFromBanner", BindMContactUI.i(BindMContactUI.this));
             paramAnonymousBundle.putExtra("bind_scene", BindMContactUI.j(BindMContactUI.this));
-            MMWizardActivity.aj(BindMContactUI.this, paramAnonymousBundle);
+            MMWizardActivity.al(BindMContactUI.this, paramAnonymousBundle);
           }
           AppMethodBeat.o(109894);
         }
       });
     }
-    this.iGC.GA(paramString);
+    this.iZL.JP(paramString);
     AppMethodBeat.o(109901);
   }
   
-  private void aOQ()
+  private void aSc()
   {
     AppMethodBeat.i(109898);
     if ((this.fromScene != 0) && (this.fromScene != 3))
     {
-      Hpo.clear();
-      ZA(1);
+      JcU.clear();
+      abK(1);
       AppMethodBeat.o(109898);
       return;
     }
@@ -124,53 +124,53 @@ public class BindMContactUI
   public void initView()
   {
     AppMethodBeat.i(109899);
-    this.iFP = getIntent().getBooleanExtra("KEnterFromBanner", false);
+    this.iYY = getIntent().getBooleanExtra("KEnterFromBanner", false);
     this.fromScene = getIntent().getIntExtra("bind_scene", 0);
-    ac.i("MicroMsg.BindMContactUI", "bindScene:%d", new Object[] { Integer.valueOf(this.fromScene) });
-    this.iGR = ((EditText)findViewById(2131297244));
-    this.iGS = ((LinearLayout)findViewById(2131298805));
-    this.iGU = ((TextView)findViewById(2131298807));
-    this.iGV = ((TextView)findViewById(2131298803));
-    this.iGT = ((TextView)findViewById(2131304622));
+    ad.i("MicroMsg.BindMContactUI", "bindScene:%d", new Object[] { Integer.valueOf(this.fromScene) });
+    this.jaa = ((EditText)findViewById(2131297244));
+    this.jab = ((LinearLayout)findViewById(2131298805));
+    this.jad = ((TextView)findViewById(2131298807));
+    this.jae = ((TextView)findViewById(2131298803));
+    this.jac = ((TextView)findViewById(2131304622));
     String str3;
     String str1;
     String str2;
     if (this.fromScene == 3)
     {
-      str3 = (String)g.agR().agA().get(6, null);
-      if (!bs.isNullOrNil(str3))
+      str3 = (String)g.ajC().ajl().get(6, null);
+      if (!bt.isNullOrNil(str3))
       {
         if (!str3.startsWith("+")) {
           break label435;
         }
-        String str4 = az.ajo(str3);
+        String str4 = ba.aob(str3);
         str1 = str3;
         str2 = str4;
-        if (!bs.isNullOrNil(str4))
+        if (!bt.isNullOrNil(str4))
         {
           str1 = str3.substring(str4.length() + 1);
           str2 = str4;
         }
-        new az();
-        str1 = az.formatNumber(str2, str1);
-        this.iGT.setText(getString(2131756454, new Object[] { str1 }));
+        new ba();
+        str1 = ba.formatNumber(str2, str1);
+        this.jac.setText(getString(2131756454, new Object[] { str1 }));
       }
     }
-    if (!bs.isNullOrNil(this.hLr)) {
-      this.iGU.setText(this.hLr);
+    if (!bt.isNullOrNil(this.iem)) {
+      this.jad.setText(this.iem);
     }
-    if (bs.isNullOrNil(this.countryCode))
+    if (bt.isNullOrNil(this.countryCode))
     {
       this.countryCode = getString(2131757951);
       if (this.countryCode.startsWith("+")) {
         this.countryCode = this.countryCode.substring(1);
       }
     }
-    this.iGV.setText("+" + this.countryCode);
-    if ((this.iGW != null) && (!this.iGW.equals("")))
+    this.jae.setText("+" + this.countryCode);
+    if ((this.jaf != null) && (!this.jaf.equals("")))
     {
-      this.iGR.setText(this.iGW);
-      this.iGR.setSelection(this.iGW.length());
+      this.jaa.setText(this.jaf);
+      this.jaa.setSelection(this.jaf.length());
     }
     for (;;)
     {
@@ -184,15 +184,15 @@ public class BindMContactUI
           int n = 0;
           int i = 0;
           AppMethodBeat.i(109890);
-          BindMContactUI.a(BindMContactUI.this, BindMContactUI.c(BindMContactUI.this).getText().toString().trim() + bs.ajw(BindMContactUI.b(BindMContactUI.this).getText().toString()));
-          if ((!com.tencent.mm.pluginsdk.a.aFE(BindMContactUI.d(BindMContactUI.this))) || (bs.ajw(BindMContactUI.b(BindMContactUI.this).getText().toString()).length() <= 0))
+          BindMContactUI.a(BindMContactUI.this, BindMContactUI.c(BindMContactUI.this).getText().toString().trim() + bt.aoj(BindMContactUI.b(BindMContactUI.this).getText().toString()));
+          if ((!com.tencent.mm.pluginsdk.b.aLe(BindMContactUI.d(BindMContactUI.this))) || (bt.aoj(BindMContactUI.b(BindMContactUI.this).getText().toString()).length() <= 0))
           {
             h.l(BindMContactUI.this, 2131756478, 2131755906);
             AppMethodBeat.o(109890);
             return true;
           }
           int i1 = BindMContactUI.e(BindMContactUI.this);
-          ac.i("MicroMsg.BindMContactUI", "nextStep %d", new Object[] { Integer.valueOf(i1) });
+          ad.i("MicroMsg.BindMContactUI", "nextStep %d", new Object[] { Integer.valueOf(i1) });
           switch (i1)
           {
           }
@@ -202,13 +202,13 @@ public class BindMContactUI
             return true;
             h.c(BindMContactUI.this, BindMContactUI.this.getString(2131756491), "", true);
             continue;
-            ac.i("MicroMsg.BindMContactUI", "do next, send sms to self");
+            ad.i("MicroMsg.BindMContactUI", "do next, send sms to self");
             BindMContactUI.b(BindMContactUI.this, BindMContactUI.d(BindMContactUI.this));
             continue;
-            paramAnonymousMenuItem = com.tencent.mm.aw.b.br("86", BindMContactUI.this.getString(2131757950));
-            boolean bool = ((Boolean)g.agR().agA().get(ah.a.GRc, Boolean.FALSE)).booleanValue();
+            paramAnonymousMenuItem = com.tencent.mm.ax.b.bs("86", BindMContactUI.this.getString(2131757950));
+            boolean bool = ((Boolean)g.ajC().ajl().get(al.a.IDz, Boolean.FALSE)).booleanValue();
             BindMContactUI localBindMContactUI = BindMContactUI.this;
-            String str = ab.eUO();
+            String str = ac.fks();
             if (bool) {}
             for (i = 1;; i = 0)
             {
@@ -216,20 +216,20 @@ public class BindMContactUI
               com.tencent.mm.plugin.account.a.b.a.b(BindMContactUI.this, paramAnonymousMenuItem, 30767, true);
               break;
             }
-            paramAnonymousMenuItem = com.tencent.mm.aw.b.br(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
-            bool = ((Boolean)g.agR().agA().get(ah.a.GRc, Boolean.FALSE)).booleanValue();
+            paramAnonymousMenuItem = com.tencent.mm.ax.b.bs(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
+            bool = ((Boolean)g.ajC().ajl().get(al.a.IDz, Boolean.FALSE)).booleanValue();
             localBindMContactUI = BindMContactUI.this;
-            str = ab.eUO();
+            str = ac.fks();
             if (bool) {
               i = 1;
             }
             paramAnonymousMenuItem = localBindMContactUI.getString(2131760685, new Object[] { str, paramAnonymousMenuItem, "login", Integer.valueOf(1), Integer.valueOf(i) });
             com.tencent.mm.plugin.account.a.b.a.b(BindMContactUI.this, paramAnonymousMenuItem, 30766, true);
             continue;
-            paramAnonymousMenuItem = com.tencent.mm.aw.b.br(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
-            bool = ((Boolean)g.agR().agA().get(ah.a.GRc, Boolean.FALSE)).booleanValue();
+            paramAnonymousMenuItem = com.tencent.mm.ax.b.bs(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
+            bool = ((Boolean)g.ajC().ajl().get(al.a.IDz, Boolean.FALSE)).booleanValue();
             localBindMContactUI = BindMContactUI.this;
-            str = ab.eUO();
+            str = ac.fks();
             i = j;
             if (bool) {
               i = 1;
@@ -237,10 +237,10 @@ public class BindMContactUI
             paramAnonymousMenuItem = localBindMContactUI.getString(2131760685, new Object[] { str, paramAnonymousMenuItem, "bindMobileA", Integer.valueOf(1), Integer.valueOf(i) });
             com.tencent.mm.plugin.account.a.b.a.b(BindMContactUI.this, paramAnonymousMenuItem, 30767, true);
             continue;
-            paramAnonymousMenuItem = com.tencent.mm.aw.b.br(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
-            bool = ((Boolean)g.agR().agA().get(ah.a.GRc, Boolean.FALSE)).booleanValue();
+            paramAnonymousMenuItem = com.tencent.mm.ax.b.bs(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
+            bool = ((Boolean)g.ajC().ajl().get(al.a.IDz, Boolean.FALSE)).booleanValue();
             localBindMContactUI = BindMContactUI.this;
-            str = ab.eUO();
+            str = ac.fks();
             i = k;
             if (bool) {
               i = 1;
@@ -248,10 +248,10 @@ public class BindMContactUI
             paramAnonymousMenuItem = localBindMContactUI.getString(2131760685, new Object[] { str, paramAnonymousMenuItem, "bindMobileB", Integer.valueOf(1), Integer.valueOf(i) });
             com.tencent.mm.plugin.account.a.b.a.b(BindMContactUI.this, paramAnonymousMenuItem, 30767, true);
             continue;
-            paramAnonymousMenuItem = com.tencent.mm.aw.b.br(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
-            bool = ((Boolean)g.agR().agA().get(ah.a.GRc, Boolean.FALSE)).booleanValue();
+            paramAnonymousMenuItem = com.tencent.mm.ax.b.bs(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
+            bool = ((Boolean)g.ajC().ajl().get(al.a.IDz, Boolean.FALSE)).booleanValue();
             localBindMContactUI = BindMContactUI.this;
-            str = ab.eUO();
+            str = ac.fks();
             i = m;
             if (bool) {
               i = 1;
@@ -259,10 +259,10 @@ public class BindMContactUI
             paramAnonymousMenuItem = localBindMContactUI.getString(2131760685, new Object[] { str, paramAnonymousMenuItem, "bindMobileC", Integer.valueOf(1), Integer.valueOf(i) });
             com.tencent.mm.plugin.account.a.b.a.b(BindMContactUI.this, paramAnonymousMenuItem, 30767, true);
             continue;
-            paramAnonymousMenuItem = com.tencent.mm.aw.b.br(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
-            bool = ((Boolean)g.agR().agA().get(ah.a.GRc, Boolean.FALSE)).booleanValue();
+            paramAnonymousMenuItem = com.tencent.mm.ax.b.bs(BindMContactUI.f(BindMContactUI.this), BindMContactUI.this.getString(2131757950));
+            bool = ((Boolean)g.ajC().ajl().get(al.a.IDz, Boolean.FALSE)).booleanValue();
             localBindMContactUI = BindMContactUI.this;
-            str = ab.eUO();
+            str = ac.fks();
             i = n;
             if (bool) {
               i = 1;
@@ -272,7 +272,7 @@ public class BindMContactUI
           }
         }
       });
-      this.iGR.requestFocus();
+      this.jaa.requestFocus();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -283,15 +283,19 @@ public class BindMContactUI
           return true;
         }
       });
-      this.iGS.setOnClickListener(new View.OnClickListener()
+      this.jab.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109892);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/BindMContactUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("country_name", BindMContactUI.h(BindMContactUI.this));
           paramAnonymousView.putExtra("couttry_code", BindMContactUI.f(BindMContactUI.this));
-          com.tencent.mm.plugin.account.a.a.iyx.b(paramAnonymousView, BindMContactUI.this);
+          com.tencent.mm.plugin.account.a.a.iRG.b(paramAnonymousView, BindMContactUI.this);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109892);
         }
       });
@@ -301,27 +305,27 @@ public class BindMContactUI
       str2 = "86";
       str1 = str3;
       break;
-      g.agU().a(new ap.a()
+      g.ajF().a(new aq.a()
       {
-        String fxT;
+        String fRg;
         
-        public final boolean aBj()
+        public final boolean aEm()
         {
           AppMethodBeat.i(109888);
           AppMethodBeat.o(109888);
           return true;
         }
         
-        public final boolean aBk()
+        public final boolean aEn()
         {
           AppMethodBeat.i(109887);
-          if (bs.isNullOrNil(BindMContactUI.b(BindMContactUI.this).getText().trim()))
+          if (bt.isNullOrNil(BindMContactUI.b(BindMContactUI.this).getText().trim()))
           {
-            if (bs.isNullOrNil(this.fxT)) {
+            if (bt.isNullOrNil(this.fRg)) {
               break label85;
             }
-            BindMContactUI.b(BindMContactUI.this).setText(this.fxT);
-            BindMContactUI.b(BindMContactUI.this).setSelection(this.fxT.length());
+            BindMContactUI.b(BindMContactUI.this).setText(this.fRg);
+            BindMContactUI.b(BindMContactUI.this).setSelection(this.fRg.length());
           }
           for (;;)
           {
@@ -359,21 +363,21 @@ public class BindMContactUI
     {
       AppMethodBeat.o(109900);
       return;
-      this.hLr = bs.bG(paramIntent.getStringExtra("country_name"), "");
-      this.countryCode = bs.bG(paramIntent.getStringExtra("couttry_code"), "");
-      if (!this.hLr.equals("")) {
-        this.iGU.setText(this.hLr);
+      this.iem = bt.bI(paramIntent.getStringExtra("country_name"), "");
+      this.countryCode = bt.bI(paramIntent.getStringExtra("couttry_code"), "");
+      if (!this.iem.equals("")) {
+        this.jad.setText(this.iem);
       }
       if (this.countryCode.equals("")) {
         break;
       }
-      this.iGV.setText("+" + this.countryCode);
+      this.jae.setText("+" + this.countryCode);
       break;
       if (paramIntent != null)
       {
         paramIntent = paramIntent.getBundleExtra("result_data");
         if ((paramIntent != null) && (paramIntent.getString("go_next", "").equals("agree_privacy"))) {
-          FY(this.dnz);
+          Jn(this.dzn);
         }
         AppMethodBeat.o(109900);
         return;
@@ -381,14 +385,14 @@ public class BindMContactUI
         {
           paramIntent = paramIntent.getBundleExtra("result_data");
           if ((paramIntent != null) && (paramIntent.getString("go_next", "").equals("agree_privacy"))) {
-            ap.n(new Runnable()
+            aq.o(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(109893);
-                String str = BindMContactUI.this.getString(2131760031, new Object[] { ab.eUO() });
+                String str = BindMContactUI.this.getString(2131760031, new Object[] { ac.fks() });
                 com.tencent.mm.plugin.account.a.b.a.b(BindMContactUI.this, str, 30765, true);
-                com.tencent.mm.ui.base.b.jU(BindMContactUI.this);
+                com.tencent.mm.ui.base.b.kf(BindMContactUI.this);
                 AppMethodBeat.o(109893);
               }
             }, 100L);
@@ -399,7 +403,7 @@ public class BindMContactUI
           {
             paramIntent = paramIntent.getBundleExtra("result_data");
             if ((paramIntent != null) && (paramIntent.getString("go_next", "").equals("birthdayComfirmOK"))) {
-              FY(this.dnz);
+              Jn(this.dzn);
             }
           }
         }
@@ -412,9 +416,9 @@ public class BindMContactUI
     AppMethodBeat.i(109895);
     super.onCreate(paramBundle);
     setMMTitle(2131756487);
-    this.hLr = bs.bG(getIntent().getStringExtra("country_name"), "");
-    this.countryCode = bs.bG(getIntent().getStringExtra("couttry_code"), "");
-    this.iGW = bs.bG(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
+    this.iem = bt.bI(getIntent().getStringExtra("country_name"), "");
+    this.countryCode = bt.bI(getIntent().getStringExtra("couttry_code"), "");
+    this.jaf = bt.bI(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
     initView();
     AppMethodBeat.o(109895);
   }
@@ -423,8 +427,8 @@ public class BindMContactUI
   {
     AppMethodBeat.i(109896);
     super.onDestroy();
-    if (this.iGC != null) {
-      this.iGC.recycle();
+    if (this.iZL != null) {
+      this.iZL.recycle();
     }
     AppMethodBeat.o(109896);
   }
@@ -434,7 +438,7 @@ public class BindMContactUI
     AppMethodBeat.i(109897);
     if (paramInt == 4)
     {
-      aOQ();
+      aSc();
       AppMethodBeat.o(109897);
       return true;
     }
@@ -451,7 +455,7 @@ public class BindMContactUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,253 +1,58 @@
 package com.tencent.mm.plugin.appbrand.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.f;
-import com.tencent.mm.i.d;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.i.h.a;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.io.ByteArrayOutputStream;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Vector;
+import com.tencent.mm.al.h.a;
+import com.tencent.mm.al.h.b;
+import com.tencent.mm.g.a.fv;
+import com.tencent.mm.sdk.b.a;
 
-public final class b
+public enum b
 {
-  public g.a hIz;
-  public Vector<d.b> jAN;
-  public Vector<d.a> jAO;
-  HashMap<String, Object> jAP;
-  private h.a jAQ;
-  
-  public b()
+  static
   {
-    AppMethodBeat.i(44818);
-    this.jAO = new Vector();
-    this.jAN = new Vector();
-    this.hIz = new g.a()
-    {
-      public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(44813);
-        Object localObject1;
-        Object localObject2;
-        if (paramAnonymousc == null)
-        {
-          localObject1 = "null";
-          if (paramAnonymousd != null) {
-            break label112;
-          }
-          localObject2 = "null";
-          label22:
-          ac.i("MicroMsg.AppbrandCdnService", "on cdn callback mediaId = %s, startRet = %d, keep_ProgressInfo = %s, keep_SceneResult = %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), localObject1, localObject2 });
-          localObject1 = j.aVE();
-          if (!bs.isNullOrNil(paramAnonymousString)) {
-            break label122;
-          }
-          ac.e("MicroMsg.AppbrandMediaCdnItemManager", "getItemByMediaID error, media id is null or nil");
-          label72:
-          break label137;
-          label73:
-          localObject1 = null;
-        }
-        for (;;)
-        {
-          if (localObject1 != null) {
-            break label177;
-          }
-          ac.e("MicroMsg.AppbrandCdnService", "get item by media id failed, media is : %s", new Object[] { paramAnonymousString });
-          AppMethodBeat.o(44813);
-          return 0;
-          localObject1 = paramAnonymousc.toString();
-          break;
-          label112:
-          localObject2 = paramAnonymousd.toString();
-          break label22;
-          label122:
-          localObject2 = ((c)localObject1).jAS.values().iterator();
-          label137:
-          if (!((Iterator)localObject2).hasNext()) {
-            break label73;
-          }
-          localObject1 = (a)((Iterator)localObject2).next();
-          if (!bs.nullAsNil(((a)localObject1).mediaId).equals(paramAnonymousString)) {
-            break label72;
-          }
-        }
-        label177:
-        if (paramAnonymousInt == -21005)
-        {
-          ac.i("MicroMsg.AppbrandCdnService", "duplicate request, ignore this request, media id is %s", new Object[] { paramAnonymousString });
-          AppMethodBeat.o(44813);
-          return 0;
-        }
-        if (paramAnonymousInt != 0)
-        {
-          ac.e("MicroMsg.AppbrandCdnService", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-          b.a(b.this, false, ((a)localObject1).dgl, ((a)localObject1).mediaId, null);
-          AppMethodBeat.o(44813);
-          return 0;
-        }
-        if (paramAnonymousc != null)
-        {
-          ac.i("MicroMsg.AppbrandCdnService", "progressInfo : %s", new Object[] { paramAnonymousc.toString() });
-          long l1 = 0L;
-          if (paramAnonymousc.field_toltalLength > 0L) {
-            l1 = paramAnonymousc.field_finishedLength * 100L / paramAnonymousc.field_toltalLength;
-          }
-          long l2;
-          if (l1 < 0L) {
-            l2 = 0L;
-          }
-          for (;;)
-          {
-            paramAnonymousc = b.this;
-            paramAnonymousBoolean = ((a)localObject1).jAK;
-            paramAnonymousInt = ((a)localObject1).mediaType;
-            int i = (int)l2;
-            paramAnonymousString = ((a)localObject1).dgl;
-            ac.i("MicroMsg.AppbrandCdnService", "notifyProgressCallback, upload : %b, mediaType : %d, percent : %d, localId : %s, mediaId : %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), paramAnonymousString, ((a)localObject1).mediaId });
-            if ((paramAnonymousc.jAO == null) || (paramAnonymousc.jAO.size() <= 0)) {
-              break;
-            }
-            paramAnonymousc = paramAnonymousc.jAO.iterator();
-            while (paramAnonymousc.hasNext()) {
-              ((d.a)paramAnonymousc.next()).W(i, paramAnonymousString);
-            }
-            l2 = l1;
-            if (l1 > 100L) {
-              l2 = 100L;
-            }
-          }
-          AppMethodBeat.o(44813);
-          return 0;
-        }
-        if (paramAnonymousd != null)
-        {
-          if (paramAnonymousd.field_retCode == 0) {
-            break label544;
-          }
-          ac.e("MicroMsg.AppbrandCdnService", "cdntra clientid:%s sceneResult.retCode:%d sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
-          b.a(b.this, false, ((a)localObject1).dgl, ((a)localObject1).mediaId, null);
-        }
-        label544:
-        do
-        {
-          AppMethodBeat.o(44813);
-          return 0;
-          ac.i("MicroMsg.AppbrandCdnService", "cdn trans suceess, media id : %s", new Object[] { paramAnonymousString });
-        } while (localObject1 == null);
-        if (((a)localObject1).jAJ == null) {
-          ((a)localObject1).jAJ = new a.a();
-        }
-        if (paramAnonymousd == null) {
-          ac.e("MicroMsg.AppBrandMediaCdnItem", "sceneResult info is null");
-        }
-        for (;;)
-        {
-          j.aVE().a((a)localObject1);
-          b.a(b.this, true, ((a)localObject1).dgl, ((a)localObject1).jAI, ((a)localObject1).jAJ.field_fileUrl);
-          break;
-          ((a)localObject1).jAJ.field_aesKey = paramAnonymousd.field_aesKey;
-          ((a)localObject1).jAJ.field_fileId = paramAnonymousd.field_fileId;
-          ((a)localObject1).jAJ.field_fileUrl = paramAnonymousd.field_fileUrl;
-          ((a)localObject1).jAJ.field_fileLength = ((int)paramAnonymousd.field_fileLength);
-          ((a)localObject1).jAI = ((a)localObject1).jAJ.field_fileId;
-        }
-      }
-      
-      public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream)
-      {
-        AppMethodBeat.i(44811);
-        ac.i("MicroMsg.AppbrandCdnService", "getCdnAuthInfo, mediaId = %s", new Object[] { paramAnonymousString });
-        AppMethodBeat.o(44811);
-      }
-      
-      public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
-      {
-        AppMethodBeat.i(44812);
-        ac.i("MicroMsg.AppbrandCdnService", "decodePrepareResponse, mediaId = %s", new Object[] { paramAnonymousString });
-        AppMethodBeat.o(44812);
-        return null;
-      }
-    };
-    this.jAP = new HashMap();
-    this.jAQ = new h.a()
-    {
-      public final void a(String paramAnonymousString, int paramAnonymousInt, d paramAnonymousd)
-      {
-        AppMethodBeat.i(44817);
-        ac.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on finish [%s %d]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt) });
-        b.this.jAP.get(paramAnonymousString);
-        AppMethodBeat.o(44817);
-      }
-      
-      public final void a(String paramAnonymousString1, long paramAnonymousLong1, long paramAnonymousLong2, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(186406);
-        ac.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on moov ready [%s %d %d]", new Object[] { paramAnonymousString1, Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
-        b.this.jAP.get(paramAnonymousString1);
-        AppMethodBeat.o(186406);
-      }
-      
-      public final void i(String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2)
-      {
-        AppMethodBeat.i(44816);
-        ac.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on progress [%s %d %d]", new Object[] { paramAnonymousString, Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
-        b.this.jAP.get(paramAnonymousString);
-        AppMethodBeat.o(44816);
-      }
-      
-      public final void onDataAvailable(String paramAnonymousString, long paramAnonymousLong1, long paramAnonymousLong2)
-      {
-        AppMethodBeat.i(44815);
-        ac.i("MicroMsg.AppbrandCdnService", "appbrand cdn service on data available [%s %d %d]", new Object[] { paramAnonymousString, Long.valueOf(paramAnonymousLong1), Long.valueOf(paramAnonymousLong2) });
-        b.this.jAP.get(paramAnonymousString);
-        AppMethodBeat.o(44815);
-      }
-    };
-    AppMethodBeat.o(44818);
+    AppMethodBeat.i(174719);
+    jVe = new b("INSTANCE");
+    jVf = new b[] { jVe };
+    AppMethodBeat.o(174719);
   }
   
-  public static boolean Jy(String paramString)
+  private b() {}
+  
+  public static void a(String paramString, h.a parama, h.b paramb)
   {
-    AppMethodBeat.i(44821);
-    a locala = j.aVE().Jz(paramString);
-    if (locala == null)
-    {
-      ac.e("MicroMsg.AppbrandCdnService", "cancelUploadTask get webview file chooser item  by local id failed : %s", new Object[] { paramString });
-      AppMethodBeat.o(44821);
-      return false;
-    }
-    boolean bool = f.aDD().BQ(locala.mediaId);
-    AppMethodBeat.o(44821);
-    return bool;
+    AppMethodBeat.i(102763);
+    fv localfv = new fv();
+    localfv.drj.op = 1;
+    localfv.drj.fileName = paramString;
+    localfv.drj.drl = true;
+    localfv.drj.dbL = true;
+    localfv.drj.drm = parama;
+    localfv.drj.drn = paramb;
+    a.IbL.l(localfv);
+    AppMethodBeat.o(102763);
   }
   
-  public final void a(d.a parama)
+  public static void pause()
   {
-    AppMethodBeat.i(44820);
-    if ((this.jAO != null) && (parama != null)) {
-      this.jAO.remove(parama);
-    }
-    AppMethodBeat.o(44820);
+    AppMethodBeat.i(102764);
+    fv localfv = new fv();
+    localfv.drj.op = 4;
+    a.IbL.l(localfv);
+    AppMethodBeat.o(102764);
   }
   
-  public final void a(d.b paramb)
+  public static void stop()
   {
-    AppMethodBeat.i(44819);
-    if ((this.jAN != null) && (paramb != null)) {
-      this.jAN.remove(paramb);
-    }
-    AppMethodBeat.o(44819);
+    AppMethodBeat.i(102765);
+    fv localfv = new fv();
+    localfv.drj.op = 2;
+    a.IbL.l(localfv);
+    AppMethodBeat.o(102765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.c.b
  * JD-Core Version:    0.7.0.1
  */

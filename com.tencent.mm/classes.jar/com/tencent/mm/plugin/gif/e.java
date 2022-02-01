@@ -11,55 +11,55 @@ import android.graphics.Rect;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class e
   extends b
 {
-  private final Rect Iw;
-  private ao gqT;
+  private final Rect Ko;
+  private ap gKD;
   private Context mContext;
   private int mHeight;
   boolean mIsPlaying;
   private final Paint mPaint;
   private Resources mResources;
   private int mWidth;
-  int plF;
-  private final Runnable txG;
-  private final Runnable txH;
-  private volatile boolean txN;
-  private int txO;
-  private int txP;
-  private int[] txQ;
-  private Bitmap txR;
-  private boolean txS;
-  boolean txT;
-  private String txU;
-  int txV;
-  private k txW;
-  private float txl;
-  private float txm;
-  private boolean txn;
-  private long txy;
+  int pPf;
+  private int[] uAA;
+  private Bitmap uAB;
+  private boolean uAC;
+  boolean uAD;
+  private String uAE;
+  int uAF;
+  private k uAG;
+  private long uAi;
+  private final Runnable uAq;
+  private final Runnable uAr;
+  private volatile boolean uAx;
+  private int uAy;
+  private int uAz;
+  private float uzV;
+  private float uzW;
+  private boolean uzX;
   
   public e(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt, int[] paramArrayOfInt, String paramString)
   {
     AppMethodBeat.i(104644);
-    this.txN = false;
-    this.plF = 0;
-    this.txR = null;
-    this.txS = false;
+    this.uAx = false;
+    this.pPf = 0;
+    this.uAB = null;
+    this.uAC = false;
     this.mIsPlaying = true;
-    this.txT = true;
-    this.txV = 0;
-    this.txl = 1.0F;
-    this.txm = 1.0F;
-    this.Iw = new Rect();
+    this.uAD = true;
+    this.uAF = 0;
+    this.uzV = 1.0F;
+    this.uzW = 1.0F;
+    this.Ko = new Rect();
     this.mPaint = new Paint(6);
-    this.gqT = new ao(Looper.getMainLooper());
-    this.txy = 0L;
-    this.txH = new Runnable()
+    this.gKD = new ap(Looper.getMainLooper());
+    this.uAi = 0L;
+    this.uAr = new Runnable()
     {
       public final void run()
       {
@@ -70,7 +70,7 @@ public final class e
         AppMethodBeat.o(104642);
       }
     };
-    this.txG = new Runnable()
+    this.uAq = new Runnable()
     {
       public final void run()
       {
@@ -83,33 +83,33 @@ public final class e
     };
     this.mContext = paramContext;
     this.mResources = this.mContext.getResources();
-    this.txS = false;
+    this.uAC = false;
     this.mIsPlaying = paramBoolean1;
-    this.txT = paramBoolean2;
-    this.txU = paramString;
-    this.txP = paramInt;
-    this.txQ = paramArrayOfInt;
+    this.uAD = paramBoolean2;
+    this.uAE = paramString;
+    this.uAz = paramInt;
+    this.uAA = paramArrayOfInt;
     if (!paramBoolean1)
     {
-      this.txR = GL(ahX(paramString));
-      this.mWidth = this.txR.getWidth();
-      this.mHeight = this.txR.getHeight();
-      if (this.txQ.length != 3) {
+      this.uAB = Ih(amK(paramString));
+      this.mWidth = this.uAB.getWidth();
+      this.mHeight = this.uAB.getHeight();
+      if (this.uAA.length != 3) {
         break label254;
       }
     }
     label254:
-    for (this.txO = 300;; this.txO = 100)
+    for (this.uAy = 300;; this.uAy = 100)
     {
-      this.txV = 0;
+      this.uAF = 0;
       AppMethodBeat.o(104644);
       return;
-      this.txR = GL(this.txQ[0]);
+      this.uAB = Ih(this.uAA[0]);
       break;
     }
   }
   
-  private Bitmap GL(int paramInt)
+  private Bitmap Ih(int paramInt)
   {
     AppMethodBeat.i(104651);
     Bitmap localBitmap = BitmapFactory.decodeResource(this.mResources, paramInt);
@@ -117,7 +117,7 @@ public final class e
     return localBitmap;
   }
   
-  private int ahX(String paramString)
+  private int amK(String paramString)
   {
     AppMethodBeat.i(104652);
     paramString = paramString.split("\\.")[0];
@@ -126,12 +126,12 @@ public final class e
     return i;
   }
   
-  private void l(Runnable paramRunnable, long paramLong)
+  private void m(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(104646);
-    this.txy = (SystemClock.uptimeMillis() + paramLong);
-    if (this.gqT != null) {
-      this.gqT.postDelayed(paramRunnable, paramLong);
+    this.uAi = (SystemClock.uptimeMillis() + paramLong);
+    if (this.gKD != null) {
+      this.gKD.postDelayed(paramRunnable, paramLong);
     }
     AppMethodBeat.o(104646);
   }
@@ -139,68 +139,68 @@ public final class e
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(104645);
-    if (this.txn)
+    if (this.uzX)
     {
-      this.Iw.set(getBounds());
-      this.txl = (this.Iw.width() / this.mWidth);
-      this.txm = (this.Iw.height() / this.mHeight);
-      this.txn = false;
+      this.Ko.set(getBounds());
+      this.uzV = (this.Ko.width() / this.mWidth);
+      this.uzW = (this.Ko.height() / this.mHeight);
+      this.uzX = false;
     }
     if (this.mPaint.getShader() == null)
     {
-      paramCanvas.scale(this.txl, this.txm);
-      if (this.txS)
+      paramCanvas.scale(this.uzV, this.uzW);
+      if (this.uAC)
       {
-        this.txR = GL(this.txP);
-        if ((this.txR != null) && (!this.txR.isRecycled()))
+        this.uAB = Ih(this.uAz);
+        if ((this.uAB != null) && (!this.uAB.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.txR, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.drawBitmap(this.uAB, 0.0F, 0.0F, this.mPaint);
           AppMethodBeat.o(104645);
         }
       }
       else if (!this.mIsPlaying)
       {
-        this.txR = GL(ahX(this.txU));
-        if ((this.txR != null) && (!this.txR.isRecycled()))
+        this.uAB = Ih(amK(this.uAE));
+        if ((this.uAB != null) && (!this.uAB.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.txR, 0.0F, 0.0F, this.mPaint);
+          paramCanvas.drawBitmap(this.uAB, 0.0F, 0.0F, this.mPaint);
           AppMethodBeat.o(104645);
         }
       }
       else
       {
-        this.txR = GL(this.txQ[this.plF]);
-        if ((this.txR != null) && (!this.txR.isRecycled())) {
-          paramCanvas.drawBitmap(this.txR, 0.0F, 0.0F, this.mPaint);
+        this.uAB = Ih(this.uAA[this.pPf]);
+        if ((this.uAB != null) && (!this.uAB.isRecycled())) {
+          paramCanvas.drawBitmap(this.uAB, 0.0F, 0.0F, this.mPaint);
         }
-        this.plF += 1;
-        if (this.txV < 3)
+        this.pPf += 1;
+        if (this.uAF < 3)
         {
-          if (this.plF >= this.txQ.length)
+          if (this.pPf >= this.uAA.length)
           {
-            this.plF = 0;
-            if (this.txT) {
+            this.pPf = 0;
+            if (this.uAD) {
               break label316;
             }
           }
           label316:
-          for (this.txV = 0;; this.txV += 1)
+          for (this.uAF = 0;; this.uAF += 1)
           {
-            l(this.txH, this.txO);
+            m(this.uAr, this.uAy);
             AppMethodBeat.o(104645);
             return;
           }
         }
         this.mIsPlaying = false;
-        l(this.txH, this.txO);
-        l(this.txG, 0L);
+        m(this.uAr, this.uAy);
+        m(this.uAq, 0L);
         AppMethodBeat.o(104645);
       }
     }
     else
     {
-      ac.i("MicroMsg.GIF.MMGIFGameDrawable", "shader is not null.");
-      paramCanvas.drawRect(this.Iw, this.mPaint);
+      ad.i("MicroMsg.GIF.MMGIFGameDrawable", "shader is not null.");
+      paramCanvas.drawRect(this.Ko, this.mPaint);
     }
     AppMethodBeat.o(104645);
   }
@@ -208,7 +208,7 @@ public final class e
   protected final void finalize()
   {
     AppMethodBeat.i(104653);
-    this.txW = null;
+    this.uAG = null;
     super.finalize();
     AppMethodBeat.o(104653);
   }
@@ -230,14 +230,14 @@ public final class e
   
   public final boolean isRunning()
   {
-    return this.txN;
+    return this.uAx;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
     AppMethodBeat.i(104649);
     super.onBoundsChange(paramRect);
-    this.txn = true;
+    this.uzX = true;
     AppMethodBeat.o(104649);
   }
   
@@ -266,14 +266,14 @@ public final class e
   public final void start()
   {
     AppMethodBeat.i(104650);
-    this.txN = true;
-    this.gqT.post(this.txH);
+    this.uAx = true;
+    this.gKD.post(this.uAr);
     AppMethodBeat.o(104650);
   }
   
   public final void stop()
   {
-    this.txN = false;
+    this.uAx = false;
   }
 }
 

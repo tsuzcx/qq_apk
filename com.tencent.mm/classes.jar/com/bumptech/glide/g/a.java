@@ -7,18 +7,18 @@ import java.security.MessageDigest;
 public final class a
   implements h
 {
-  private static final a aMa;
+  private static final a aNR;
   
   static
   {
     AppMethodBeat.i(77705);
-    aMa = new a();
+    aNR = new a();
     AppMethodBeat.o(77705);
   }
   
-  public static a pX()
+  public static a qp()
   {
-    return aMa;
+    return aNR;
   }
   
   public final void a(MessageDigest paramMessageDigest) {}

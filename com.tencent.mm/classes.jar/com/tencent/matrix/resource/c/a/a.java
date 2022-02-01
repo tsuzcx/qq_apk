@@ -2,15 +2,15 @@ package com.tencent.matrix.resource.c.a;
 
 public final class a
 {
-  public final int cxl;
-  public final b cxm;
-  public final Object cxn;
+  public final int cIg;
+  public final b cIh;
+  public final Object cIi;
   
   public a(int paramInt, b paramb, Object paramObject)
   {
-    this.cxl = paramInt;
-    this.cxm = paramb;
-    this.cxn = paramObject;
+    this.cIg = paramInt;
+    this.cIh = paramb;
+    this.cIi = paramObject;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,19 +23,19 @@ public final class a
         return false;
       }
       paramObject = (a)paramObject;
-      if (this.cxl != paramObject.cxl) {
+      if (this.cIg != paramObject.cIg) {
         return false;
       }
-      if (!this.cxm.equals(paramObject.cxm)) {
+      if (!this.cIh.equals(paramObject.cIh)) {
         return false;
       }
-    } while (((this.cxn == null) || (this.cxn.equals(paramObject.cxn))) && ((paramObject.cxn == null) || (paramObject.cxn.equals(this.cxn))));
+    } while (((this.cIi == null) || (this.cIi.equals(paramObject.cIi))) && ((paramObject.cIi == null) || (paramObject.cIi.equals(this.cIi))));
     return false;
   }
   
   public final int hashCode()
   {
-    return (this.cxm.hashCode() << 31) + this.cxl;
+    return (this.cIh.hashCode() << 31) + this.cIg;
   }
 }
 

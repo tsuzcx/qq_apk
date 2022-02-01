@@ -2,7 +2,7 @@ package com.davemorrissey.labs.subscaleview.a;
 
 public abstract interface b<T>
 {
-  public abstract T qf();
+  public abstract T rD();
 }
 
 

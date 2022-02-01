@@ -2,9 +2,11 @@ package com.tencent.mm.memory.a.a.a;
 
 public abstract interface d<T, V>
 {
-  public abstract void aew();
+  public abstract boolean A(T paramT1, T paramT2);
   
-  public abstract void awi();
+  public abstract void ahi();
+  
+  public abstract void ayV();
   
   public abstract void f(T paramT1, T paramT2, V paramV);
   
@@ -12,17 +14,15 @@ public abstract interface d<T, V>
   
   public abstract int size();
   
-  public abstract boolean t(T paramT1, T paramT2);
-  
   public abstract void trimToSize(int paramInt);
   
-  public abstract V v(T paramT1, T paramT2);
-  
-  public abstract V w(T paramT1, T paramT2);
+  public abstract boolean v(T paramT1, T paramT2);
   
   public abstract V x(T paramT1, T paramT2);
   
-  public abstract boolean y(T paramT1, T paramT2);
+  public abstract V y(T paramT1, T paramT2);
+  
+  public abstract V z(T paramT1, T paramT2);
 }
 
 

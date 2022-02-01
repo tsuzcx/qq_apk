@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.f;
 import com.tencent.mm.ui.contact.o;
@@ -22,40 +22,40 @@ import com.tencent.mm.ui.contact.q;
 public class CommonChatroomInfoUI
   extends MMBaseSelectContactUI
 {
-  private ai contact;
-  private a vIN;
-  private b vIO;
+  private am contact;
+  private a wPU;
+  private b wPV;
   
-  public final void WJ()
+  public final void Zd()
   {
     AppMethodBeat.i(26944);
-    super.WJ();
+    super.Zd();
     String str = getIntent().getStringExtra("Select_Talker_Name");
-    az.ayM();
-    this.contact = c.awB().aNt(str);
+    ba.aBQ();
+    this.contact = c.azp().Bf(str);
     AppMethodBeat.o(26944);
   }
   
-  public final boolean aOi()
+  public final boolean aRu()
   {
     return true;
   }
   
-  public final boolean aOj()
+  public final boolean aRv()
   {
     return false;
   }
   
-  public final String aOk()
+  public final String aRw()
   {
     AppMethodBeat.i(26946);
-    if (this.contact.exL == 1)
+    if (this.contact.ePk == 1)
     {
       str = getString(2131757634);
       AppMethodBeat.o(26946);
       return str;
     }
-    if (this.contact.exL == 2)
+    if (this.contact.ePk == 2)
     {
       str = getString(2131757633);
       AppMethodBeat.o(26946);
@@ -66,24 +66,24 @@ public class CommonChatroomInfoUI
     return str;
   }
   
-  public final q aOl()
+  public final q aRx()
   {
     AppMethodBeat.i(26947);
-    if (this.vIN == null) {
-      this.vIN = new a(this, this.scene, this.contact);
+    if (this.wPU == null) {
+      this.wPU = new a(this, this.scene, this.contact);
     }
-    a locala = this.vIN;
+    a locala = this.wPU;
     AppMethodBeat.o(26947);
     return locala;
   }
   
-  public final o aOm()
+  public final o aRy()
   {
     AppMethodBeat.i(26948);
-    if (this.vIO == null) {
-      this.vIO = new b(this, this.scene, this.contact);
+    if (this.wPV == null) {
+      this.wPV = new b(this, this.scene, this.contact);
     }
-    b localb = this.vIO;
+    b localb = this.wPV;
     AppMethodBeat.o(26948);
     return localb;
   }
@@ -92,13 +92,13 @@ public class CommonChatroomInfoUI
   {
     AppMethodBeat.i(26945);
     super.initView();
-    a locala = this.vIN;
+    a locala = this.wPU;
     j localj = new j();
     localj.query = locala.contact.field_username;
-    localj.syI = locala;
+    localj.tvj = locala;
     localj.handler = locala.handler;
-    localj.jwR = 6;
-    localj.syH = new a.a((byte)0);
+    localj.jQN = 6;
+    localj.tvi = new a.a((byte)0);
     ((n)g.ad(n.class)).search(2, localj);
     AppMethodBeat.o(26945);
   }
@@ -109,12 +109,12 @@ public class CommonChatroomInfoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void qG(int paramInt)
+  public final void rg(int paramInt)
   {
     AppMethodBeat.i(26949);
     f localf = (f)getContentLV().getAdapter().getItem(paramInt);
     if (localf != null) {
-      d.e(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", localf.contact.field_username).putExtra("finish_direct", true));
+      d.f(this, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", localf.contact.field_username).putExtra("finish_direct", true));
     }
     AppMethodBeat.o(26949);
   }

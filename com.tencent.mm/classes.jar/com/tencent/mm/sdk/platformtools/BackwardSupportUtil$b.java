@@ -21,7 +21,7 @@ public final class BackwardSupportUtil$b
   public static Bitmap b(InputStream paramInputStream, float paramFloat)
   {
     AppMethodBeat.i(156065);
-    paramInputStream = f.a(paramInputStream, paramFloat, 0, 0);
+    paramInputStream = g.a(paramInputStream, paramFloat, 0, 0);
     if (paramInputStream != null) {
       paramInputStream.setDensity((int)(160.0F * paramFloat));
     }
@@ -37,7 +37,7 @@ public final class BackwardSupportUtil$b
     return i;
   }
   
-  public static String in(Context paramContext)
+  public static String ix(Context paramContext)
   {
     AppMethodBeat.i(156066);
     Object localObject = paramContext.getResources().getDisplayMetrics();
@@ -66,7 +66,7 @@ public final class BackwardSupportUtil$b
     }
   }
   
-  public static String io(Context paramContext)
+  public static String iy(Context paramContext)
   {
     AppMethodBeat.i(175899);
     paramContext = paramContext.getResources().getDisplayMetrics();
@@ -75,10 +75,10 @@ public final class BackwardSupportUtil$b
     return paramContext;
   }
   
-  public static Bitmap n(String paramString, float paramFloat)
+  public static Bitmap o(String paramString, float paramFloat)
   {
     AppMethodBeat.i(156062);
-    paramString = f.o(paramString, paramFloat);
+    paramString = g.p(paramString, paramFloat);
     if (paramString != null) {
       paramString.setDensity((int)(160.0F * paramFloat));
     }

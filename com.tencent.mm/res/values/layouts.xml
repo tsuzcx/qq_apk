@@ -32,6 +32,7 @@
     <item type="layout" name="e9">false</item>
     <item type="layout" name="ed">false</item>
     <item type="layout" name="ek">false</item>
+    <item type="layout" name="eq">false</item>
     <item type="layout" name="es">false</item>
     <item type="layout" name="et">false</item>
     <item type="layout" name="eu">false</item>
@@ -52,6 +53,9 @@
     <item type="layout" name="hl">false</item>
     <item type="layout" name="hm">false</item>
     <item type="layout" name="i0">false</item>
+    <item type="layout" name="i9">false</item>
+    <item type="layout" name="i_">false</item>
+    <item type="layout" name="ia">false</item>
     <item type="layout" name="is">false</item>
     <item type="layout" name="jh">false</item>
     <item type="layout" name="jj">false</item>
@@ -160,6 +164,7 @@
     <item type="layout" name="a6h">false</item>
     <item type="layout" name="a6t">false</item>
     <item type="layout" name="a6w">false</item>
+    <item type="layout" name="a6y">false</item>
     <item type="layout" name="a70">false</item>
     <item type="layout" name="a7d">false</item>
     <item type="layout" name="a7k">false</item>
@@ -494,12 +499,11 @@
     <item type="layout" name="bne">false</item>
     <item type="layout" name="bnm">false</item>
     <item type="layout" name="bom">false</item>
-    <item type="layout" name="boo">false</item>
     <item type="layout" name="box">false</item>
+    <item type="layout" name="bp4">false</item>
     <item type="layout" name="bp_">false</item>
     <item type="layout" name="bpa">false</item>
     <item type="layout" name="bpb">false</item>
-    <item type="layout" name="bph">false</item>
     <item type="layout" name="bpk">false</item>
     <item type="layout" name="bpl">false</item>
     <item type="layout" name="bpn">false</item>
@@ -515,11 +519,11 @@
     <item type="layout" name="br1">false</item>
     <item type="layout" name="br2">false</item>
     <item type="layout" name="br4">false</item>
-    <item type="layout" name="bra">false</item>
     <item type="layout" name="brc">false</item>
     <item type="layout" name="brd">false</item>
     <item type="layout" name="bre">false</item>
     <item type="layout" name="brf">false</item>
+    <item type="layout" name="bri">false</item>
     <item type="layout" name="brl">false</item>
     <item type="layout" name="brm">false</item>
     <item type="layout" name="brp">false</item>
@@ -537,5 +541,9 @@
     <item type="layout" name="bt0">false</item>
     <item type="layout" name="btc">false</item>
     <item type="layout" name="btq">false</item>
-    <item type="layout" name="btr">false</item>
+    <item type="layout" name="bu1">false</item>
+    <item type="layout" name="buf">false</item>
+    <item type="layout" name="bvr">false</item>
+    <item type="layout" name="bx9">false</item>
+    <item type="layout" name="bx_">false</item>
 </resources>

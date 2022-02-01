@@ -36,34 +36,6 @@ public abstract class ActionBar
     return false;
   }
   
-  public abstract void fS();
-  
-  public abstract void fT();
-  
-  public abstract void fU();
-  
-  public abstract void fV();
-  
-  public void fW()
-  {
-    throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
-  }
-  
-  public boolean fX()
-  {
-    return false;
-  }
-  
-  public boolean fY()
-  {
-    return false;
-  }
-  
-  public boolean fZ()
-  {
-    return false;
-  }
-  
   public abstract View getCustomView();
   
   public abstract int getDisplayOptions();
@@ -76,6 +48,34 @@ public abstract class ActionBar
   }
   
   public abstract CharSequence getTitle();
+  
+  public abstract void gk();
+  
+  public abstract void gl();
+  
+  public abstract void gm();
+  
+  public abstract void gn();
+  
+  public void go()
+  {
+    throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
+  }
+  
+  public boolean gp()
+  {
+    return false;
+  }
+  
+  public boolean gq()
+  {
+    return false;
+  }
+  
+  public boolean gr()
+  {
+    return false;
+  }
   
   public abstract void hide();
   

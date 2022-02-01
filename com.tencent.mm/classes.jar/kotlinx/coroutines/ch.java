@@ -1,20 +1,16 @@
 package kotlinx.coroutines;
 
+import d.d.f;
+import d.d.f.b;
 import d.l;
-import java.util.concurrent.CancellationException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/TimeoutCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "Lkotlinx/coroutines/CopyableThrowable;", "message", "", "(Ljava/lang/String;)V", "coroutine", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Lkotlinx/coroutines/Job;)V", "createCopy", "kotlinx-coroutines-core"})
-public final class ch
-  extends CancellationException
-  implements z<ch>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ThreadContextElement;", "S", "Lkotlin/coroutines/CoroutineContext$Element;", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)V", "updateThreadContext", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
+public abstract interface ch<S>
+  extends f.b
 {
-  public final bo LSn;
+  public abstract S b(f paramf);
   
-  private ch(String paramString, bo parambo)
-  {
-    super(paramString);
-    this.LSn = parambo;
-  }
+  public abstract void fK(S paramS);
 }
 
 

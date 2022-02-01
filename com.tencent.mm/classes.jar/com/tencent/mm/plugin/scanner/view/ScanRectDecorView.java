@@ -21,12 +21,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScanRectDecorView
   extends FrameLayout
 {
-  private ImageView qOY;
-  private ValueAnimator qPb;
-  private RectView xnb;
-  private Rect xnc;
-  private int xnd;
-  private int xne;
+  private ImageView ryX;
+  private ValueAnimator rza;
+  private RectView yBc;
+  private Rect yBd;
+  private int yBe;
+  private int yBf;
   
   public ScanRectDecorView(Context paramContext)
   {
@@ -52,37 +52,37 @@ public class ScanRectDecorView
     AppMethodBeat.o(91116);
   }
   
-  private void dBB()
+  private void dMY()
   {
     AppMethodBeat.i(91119);
     Point localPoint = new Point();
     ((Activity)getContext()).getWindowManager().getDefaultDisplay().getSize(localPoint);
-    int i = localPoint.x / 2 - this.xnd / 2;
-    int j = localPoint.y / 2 - this.xne / 2;
-    this.xnc = new Rect(i, j, this.xnd + i, this.xne + j);
-    this.xnb.setRect(this.xnc);
+    int i = localPoint.x / 2 - this.yBe / 2;
+    int j = localPoint.y / 2 - this.yBf / 2;
+    this.yBd = new Rect(i, j, this.yBe + i, this.yBf + j);
+    this.yBc.setRect(this.yBd);
     AppMethodBeat.o(91119);
   }
   
   private void init()
   {
     AppMethodBeat.i(91117);
-    this.xnd = getContext().getResources().getDimensionPixelSize(2131166761);
-    this.xne = getContext().getResources().getDimensionPixelSize(2131166760);
-    this.xnb = new RectView(getContext());
-    addView(this.xnb, new FrameLayout.LayoutParams(-1, -1));
-    dBB();
+    this.yBe = getContext().getResources().getDimensionPixelSize(2131166761);
+    this.yBf = getContext().getResources().getDimensionPixelSize(2131166760);
+    this.yBc = new RectView(getContext());
+    addView(this.yBc, new FrameLayout.LayoutParams(-1, -1));
+    dMY();
     setWillNotDraw(false);
-    this.qOY = new ImageView(getContext());
-    addView(this.qOY, new FrameLayout.LayoutParams(this.xnd, -2));
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qOY.getLayoutParams();
+    this.ryX = new ImageView(getContext());
+    addView(this.ryX, new FrameLayout.LayoutParams(this.yBe, -2));
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ryX.getLayoutParams();
     localLayoutParams.gravity = 1;
-    this.qOY.setLayoutParams(localLayoutParams);
-    this.qOY.setBackgroundResource(2131233727);
-    this.qOY.setVisibility(8);
-    this.qPb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(2600L);
-    this.qPb.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.qPb.addListener(new AnimatorListenerAdapter()
+    this.ryX.setLayoutParams(localLayoutParams);
+    this.ryX.setBackgroundResource(2131233727);
+    this.ryX.setVisibility(8);
+    this.rza = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F }).setDuration(2600L);
+    this.rza.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.rza.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -101,7 +101,7 @@ public class ScanRectDecorView
         AppMethodBeat.o(91112);
       }
     });
-    this.qPb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.rza.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -114,44 +114,44 @@ public class ScanRectDecorView
         AppMethodBeat.o(91113);
       }
     });
-    this.qPb.setRepeatMode(1);
-    this.qPb.setRepeatCount(-1);
+    this.rza.setRepeatMode(1);
+    this.rza.setRepeatCount(-1);
     AppMethodBeat.o(91117);
   }
   
-  public final void cqT()
+  public final void cwD()
   {
     AppMethodBeat.i(91122);
-    if (!this.qPb.isStarted())
+    if (!this.rza.isStarted())
     {
-      this.qOY.setVisibility(0);
-      this.qPb.start();
+      this.ryX.setVisibility(0);
+      this.rza.start();
     }
     AppMethodBeat.o(91122);
   }
   
-  public final void cqU()
+  public final void cwE()
   {
     AppMethodBeat.i(91123);
-    this.qPb.cancel();
-    this.qOY.setVisibility(8);
+    this.rza.cancel();
+    this.ryX.setVisibility(8);
     AppMethodBeat.o(91123);
   }
   
   public Rect getDecorRect()
   {
-    return this.xnc;
+    return this.yBd;
   }
   
-  public final void hc(int paramInt1, int paramInt2)
+  public final void ht(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91118);
-    this.xnd = paramInt1;
-    this.xne = paramInt2;
-    dBB();
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.qOY.getLayoutParams();
+    this.yBe = paramInt1;
+    this.yBf = paramInt2;
+    dMY();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ryX.getLayoutParams();
     localLayoutParams.width = paramInt1;
-    this.qOY.setLayoutParams(localLayoutParams);
+    this.ryX.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(91118);
   }
   
@@ -159,8 +159,8 @@ public class ScanRectDecorView
   {
     AppMethodBeat.i(91120);
     super.onDetachedFromWindow();
-    if (this.qPb != null) {
-      this.qPb.cancel();
+    if (this.rza != null) {
+      this.rza.cancel();
     }
     AppMethodBeat.o(91120);
   }
@@ -170,12 +170,12 @@ public class ScanRectDecorView
     AppMethodBeat.i(91121);
     if (paramRect != null)
     {
-      this.xnd = paramRect.width();
-      this.xne = paramRect.height();
-      this.xnc = new Rect(paramRect);
+      this.yBe = paramRect.width();
+      this.yBf = paramRect.height();
+      this.yBd = new Rect(paramRect);
     }
-    this.xnb.setRect(this.xnc);
-    this.xnb.postInvalidate();
+    this.yBc.setRect(this.yBd);
+    this.yBc.postInvalidate();
     AppMethodBeat.o(91121);
   }
 }

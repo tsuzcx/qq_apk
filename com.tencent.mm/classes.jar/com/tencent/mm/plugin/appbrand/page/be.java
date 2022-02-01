@@ -7,60 +7,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPluginPkgInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaRuntimeModulePluginListMap;
-import com.tencent.mm.plugin.appbrand.appcache.bl;
-import com.tencent.mm.plugin.appbrand.appcache.bl.a;
-import com.tencent.mm.plugin.appbrand.appcache.q;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.plugin.appbrand.appcache.bm.a;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.f;
 import d.g;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.l;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "Factory", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "Factory", "luggage-wechat-full-sdk_release"})
 public abstract interface be
 {
-  public static final a lES = a.lET;
+  public static final a mew = a.mex;
   
-  public abstract void av(String paramString, boolean paramBoolean);
+  public abstract void ax(String paramString, boolean paramBoolean);
   
-  public abstract void brl();
+  public abstract void bvm();
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory;", "", "()V", "createInjector", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "IMPL", "luggage-wechat-full-sdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory;", "", "()V", "createInjector", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "IMPL", "luggage-wechat-full-sdk_release"})
   public static final class a
   {
     static
     {
       AppMethodBeat.i(183070);
-      lET = new a();
+      mex = new a();
       AppMethodBeat.o(183070);
     }
     
     public static be d(a<?> parama)
     {
       AppMethodBeat.i(183069);
-      d.g.b.k.h(parama, "renderer");
-      Object localObject = (c)parama.CM();
+      p.h(parama, "renderer");
+      Object localObject = (c)parama.El();
       if (localObject == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      localObject = ((AppBrandSysConfigLU)((c)localObject).ar(AppBrandSysConfigLU.class)).jEg;
+      localObject = ((AppBrandSysConfigLU)((c)localObject).ar(AppBrandSysConfigLU.class)).jYh;
       WxaRuntimeModulePluginListMap localWxaRuntimeModulePluginListMap;
       if (localObject != null)
       {
-        localWxaRuntimeModulePluginListMap = ((WxaPkgWrappingInfo)localObject).jpf;
+        localWxaRuntimeModulePluginListMap = ((WxaPkgWrappingInfo)localObject).jIZ;
         if (localWxaRuntimeModulePluginListMap == null) {}
       }
-      for (int i = localWxaRuntimeModulePluginListMap.jpk.size(); i > 0; i = 0)
+      for (int i = localWxaRuntimeModulePluginListMap.jJf.size(); i > 0; i = 0)
       {
-        localObject = ((WxaPkgWrappingInfo)localObject).jpf;
+        localObject = ((WxaPkgWrappingInfo)localObject).jIZ;
         if (localObject == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
-        d.g.b.k.g(localObject, "wrappingInfo.separatedPlugins!!");
+        p.g(localObject, "wrappingInfo.separatedPlugins!!");
         parama = (be)new a(parama, (WxaRuntimeModulePluginListMap)localObject);
         AppMethodBeat.o(183069);
         return parama;
@@ -70,101 +69,94 @@ public abstract interface be
       return parama;
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$IMPL;", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "separatedPluginsMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "(Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;)V", "TAG", "", "injectedScriptNames", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "pkgReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "getPkgReader", "()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "pkgReader$delegate", "Lkotlin/Lazy;", "injectPlugins", "", "moduleName", "useLazyCodeLoading", "", "onReloadURL", "evaluateScriptFile", "fileName", "luggage-wechat-full-sdk_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$IMPL;", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "renderer", "Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;", "separatedPluginsMap", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;", "(Lcom/tencent/mm/plugin/appbrand/page/AbstractMPPageViewRenderer;Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimeModulePluginListMap;)V", "TAG", "", "injectedScriptNames", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "pkgReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "getPkgReader", "()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "pkgReader$delegate", "Lkotlin/Lazy;", "injectPlugins", "", "moduleName", "useLazyCodeLoading", "", "onReloadURL", "evaluateScriptFile", "fileName", "luggage-wechat-full-sdk_release"})
     static final class a
       implements be
     {
       private final String TAG;
-      private final f lEU;
-      private final HashSet<String> lEV;
-      private final a<?> lEW;
-      private final WxaRuntimeModulePluginListMap lEX;
-      
-      static
-      {
-        AppMethodBeat.i(183063);
-        $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(a.class), "pkgReader", "getPkgReader()Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;")) };
-        AppMethodBeat.o(183063);
-      }
+      private final a<?> meA;
+      private final WxaRuntimeModulePluginListMap meB;
+      private final f mey;
+      private final HashSet<String> mez;
       
       public a(a<?> parama, WxaRuntimeModulePluginListMap paramWxaRuntimeModulePluginListMap)
       {
         AppMethodBeat.i(183067);
-        this.lEW = parama;
-        this.lEX = paramWxaRuntimeModulePluginListMap;
+        this.meA = parama;
+        this.meB = paramWxaRuntimeModulePluginListMap;
         this.TAG = "Luggage.FULL.IWxaPageSeparatedPluginsInjectHelper.IMPL";
-        this.lEU = g.K((d.g.a.a)new a(this));
-        this.lEV = new HashSet();
+        this.mey = g.O((d.g.a.a)new a(this));
+        this.mez = new HashSet();
         AppMethodBeat.o(183067);
       }
       
       private final void a(a<?> parama, String paramString)
       {
         AppMethodBeat.i(183064);
-        if (this.lEV.contains(paramString))
+        if (this.mez.contains(paramString))
         {
           AppMethodBeat.o(183064);
           return;
         }
-        ac.i(this.TAG, "inner evaluateScriptFile fileName(" + paramString + ") hash(" + hashCode() + ')');
-        parama.dX(paramString, parama.bpJ().OF(paramString));
-        this.lEV.add(paramString);
+        ad.i(this.TAG, "inner evaluateScriptFile fileName(" + paramString + ") hash(" + hashCode() + ')');
+        parama.eh(paramString, parama.btJ().Si(paramString));
+        this.mez.add(paramString);
         AppMethodBeat.o(183064);
       }
       
-      public final void av(String paramString, boolean paramBoolean)
+      public final void ax(String paramString, boolean paramBoolean)
       {
         AppMethodBeat.i(183065);
-        d.g.b.k.h(paramString, "moduleName");
-        ac.i(this.TAG, "injectPlugins moduleName(" + paramString + ") useLazyCodeLoading(" + paramBoolean + ") hash(" + hashCode() + ')');
-        Object localObject2 = this.lEX.Iw(paramString);
+        p.h(paramString, "moduleName");
+        ad.i(this.TAG, "injectPlugins moduleName(" + paramString + ") useLazyCodeLoading(" + paramBoolean + ") hash(" + hashCode() + ')');
+        Object localObject2 = this.meB.LN(paramString);
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = LaunchParcel.IZ(paramString);
-          if (!d.g.b.k.g(localObject1, paramString)) {
+          localObject1 = LaunchParcel.Mq(paramString);
+          if (!p.i(localObject1, paramString)) {
             break label140;
           }
         }
-        for (localObject1 = null; (localObject1 == null) || (((List)localObject1).isEmpty()); localObject1 = ((WxaRuntimeModulePluginListMap)localObject2).Iw((String)localObject1))
+        for (localObject1 = null; (localObject1 == null) || (((List)localObject1).isEmpty()); localObject1 = ((WxaRuntimeModulePluginListMap)localObject2).LN((String)localObject1))
         {
-          ac.i(this.TAG, "injectPlugins, try with module(" + paramString + "), get empty pluginList");
+          ad.i(this.TAG, "injectPlugins, try with module(" + paramString + "), get empty pluginList");
           AppMethodBeat.o(183065);
           return;
           label140:
-          localObject2 = this.lEX;
-          d.g.b.k.g(localObject1, "fixedName");
+          localObject2 = this.meB;
+          p.g(localObject1, "fixedName");
         }
         localObject1 = ((List)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = (WxaPluginPkgInfo)((Iterator)localObject1).next();
-          bl.a locala = bl.jpt;
-          localObject2 = bl.a.a(paramString, (WxaPluginPkgInfo)localObject2);
-          if ((!paramBoolean) || (!((q)this.lEU.getValue()).HU((String)localObject2 + "/common.app.js")))
+          bm.a locala = bm.jJo;
+          localObject2 = bm.a.a(paramString, (WxaPluginPkgInfo)localObject2);
+          if ((!paramBoolean) || (!((com.tencent.mm.plugin.appbrand.appcache.q)this.mey.getValue()).Lm((String)localObject2 + "/common.app.js")))
           {
-            a(this.lEW, (String)localObject2 + "/pageframe.js");
+            a(this.meA, (String)localObject2 + "/pageframe.js");
           }
           else
           {
-            a(this.lEW, (String)localObject2 + "/common.app.js");
-            a(this.lEW, (String)localObject2 + "/webview.app.js");
+            a(this.meA, (String)localObject2 + "/common.app.js");
+            a(this.meA, (String)localObject2 + "/webview.app.js");
           }
         }
         AppMethodBeat.o(183065);
       }
       
-      public final void brl()
+      public final void bvm()
       {
         AppMethodBeat.i(183066);
-        this.lEV.clear();
+        this.mez.clear();
         AppMethodBeat.o(183066);
       }
       
-      @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "invoke"})
+      @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "invoke"})
       static final class a
-        extends d.g.b.l
-        implements d.g.a.a<q>
+        extends d.g.b.q
+        implements d.g.a.a<com.tencent.mm.plugin.appbrand.appcache.q>
       {
         a(be.a.a parama)
         {
@@ -173,18 +165,18 @@ public abstract interface be
       }
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$createInjector$1", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "luggage-wechat-full-sdk_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper$Factory$createInjector$1", "Lcom/tencent/mm/plugin/appbrand/page/IWxaPageSeparatedPluginsInjectHelper;", "injectPlugins", "", "moduleName", "", "useLazyCodeLoading", "", "onReloadURL", "luggage-wechat-full-sdk_release"})
     public static final class b
       implements be
     {
-      public final void av(String paramString, boolean paramBoolean)
+      public final void ax(String paramString, boolean paramBoolean)
       {
         AppMethodBeat.i(183068);
-        d.g.b.k.h(paramString, "moduleName");
+        p.h(paramString, "moduleName");
         AppMethodBeat.o(183068);
       }
       
-      public final void brl() {}
+      public final void bvm() {}
     }
   }
 }

@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.flutter.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.a;
 import io.flutter.plugin.a.j;
@@ -23,37 +23,37 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public io.flutter.embedding.engine.a slN;
-  public com.tencent.mm.plugin.flutter.ui.a slO;
-  private HashMap<String, com.tencent.mm.flutter.b> slP;
-  HashMap<String, com.tencent.mm.flutter.a> slQ;
-  private HashMap<Integer, Pair<Integer, String>> slR;
-  public AtomicInteger slS;
-  private k slT;
-  private k.c slU;
-  private io.flutter.embedding.engine.b.b slV;
+  public io.flutter.embedding.engine.a tiq;
+  public com.tencent.mm.plugin.flutter.ui.a tir;
+  private HashMap<String, com.tencent.mm.flutter.b> tis;
+  HashMap<String, com.tencent.mm.flutter.a> tit;
+  private HashMap<Integer, Pair<Integer, String>> tiu;
+  public AtomicInteger tiv;
+  private k tiw;
+  private k.c tix;
+  private io.flutter.embedding.engine.b.b tiy;
   
   public a()
   {
     AppMethodBeat.i(148849);
-    this.slP = new HashMap();
-    this.slQ = new HashMap();
-    this.slR = new HashMap();
-    this.slS = new AtomicInteger(0);
-    this.slU = new k.c()
+    this.tis = new HashMap();
+    this.tit = new HashMap();
+    this.tiu = new HashMap();
+    this.tiv = new AtomicInteger(0);
+    this.tix = new k.c()
     {
       public final void a(j paramAnonymousj, final k.d paramAnonymousd)
       {
         AppMethodBeat.i(148847);
-        ac.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCall %s", new Object[] { paramAnonymousj.method });
+        ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCall %s", new Object[] { paramAnonymousj.method });
         String[] arrayOfString = paramAnonymousj.method.split(":");
         final com.tencent.mm.flutter.c localc = new com.tencent.mm.flutter.c();
-        if (a.this.slO != null) {
-          localc.context = a.this.slO.getActivity();
+        if (a.this.tir != null) {
+          localc.context = a.this.tir.getActivity();
         }
-        localc.fXH = arrayOfString[0];
-        localc.fXI = arrayOfString[1];
-        localc.fXJ = paramAnonymousj.fXJ;
+        localc.grd = arrayOfString[0];
+        localc.gre = arrayOfString[1];
+        localc.grf = paramAnonymousj.grf;
         localc.callback = new Runnable()
         {
           public final void run()
@@ -61,49 +61,49 @@ public final class a
             AppMethodBeat.i(148846);
             if (localc.result != null)
             {
-              ac.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCallback, %s", new Object[] { localc.fXI });
-              paramAnonymousd.db(localc.result);
+              ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCallback, %s", new Object[] { localc.gre });
+              paramAnonymousd.de(localc.result);
               AppMethodBeat.o(148846);
               return;
             }
-            ac.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCallback, %s null", new Object[] { localc.fXI });
-            paramAnonymousd.db(null);
+            ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCallback, %s null", new Object[] { localc.gre });
+            paramAnonymousd.de(null);
             AppMethodBeat.o(148846);
           }
         };
-        if (a.this.slQ.containsKey(localc.fXH)) {
+        if (a.this.tit.containsKey(localc.grd)) {
           try
           {
-            ((com.tencent.mm.flutter.a)a.this.slQ.get(localc.fXH)).a(localc);
+            ((com.tencent.mm.flutter.a)a.this.tit.get(localc.grd)).a(localc);
             AppMethodBeat.o(148847);
             return;
           }
           catch (com.tencent.mm.flutter.e paramAnonymousj)
           {
-            ac.printErrStackTrace("MicroMsg.Flutter.FlutterEngineMgr", paramAnonymousj, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.Flutter.FlutterEngineMgr", paramAnonymousj, "", new Object[0]);
           }
         }
         AppMethodBeat.o(148847);
       }
     };
-    this.slV = new io.flutter.embedding.engine.b.b()
+    this.tiy = new io.flutter.embedding.engine.b.b()
     {
-      public final void cHX()
+      public final void cQm()
       {
-        AppMethodBeat.i(209687);
-        ac.i("MicroMsg.Flutter.FlutterEngineMgr", "onFlutterUiDisplayed");
-        if (a.this.slO != null) {
-          a.this.slO.cIa();
+        AppMethodBeat.i(219115);
+        ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onFlutterUiDisplayed");
+        if (a.this.tir != null) {
+          a.this.tir.cQp();
         }
-        AppMethodBeat.o(209687);
+        AppMethodBeat.o(219115);
       }
       
-      public final void cHY() {}
+      public final void cQn() {}
     };
     AppMethodBeat.o(148849);
   }
   
-  private static JSONObject ac(Bundle paramBundle)
+  private static JSONObject af(Bundle paramBundle)
   {
     AppMethodBeat.i(148854);
     JSONObject localJSONObject = new JSONObject();
@@ -126,22 +126,22 @@ public final class a
     int i = 0;
     AppMethodBeat.i(148850);
     int j;
-    if (this.slN == null)
+    if (this.tiq == null)
     {
-      ac.i("MicroMsg.Flutter.FlutterEngineMgr", "InitRoute %s ", new Object[] { paramc });
-      this.slN = new io.flutter.embedding.engine.a(ai.getContext());
-      paramc.slM = true;
-      this.slN.KLp.setInitialRoute(paramc.aUZ());
+      ad.i("MicroMsg.Flutter.FlutterEngineMgr", "InitRoute %s ", new Object[] { paramc });
+      this.tiq = new io.flutter.embedding.engine.a(aj.getContext());
+      paramc.tip = true;
+      this.tiq.MCm.setInitialRoute(paramc.aYt());
       System.loadLibrary("wechatlv");
-      paramc = this.slN.KLk;
-      ai.getContext().getAssets();
-      paramc.a(new DartExecutor.a(FlutterMain.findAppBundlePath(ai.getContext()), paramString, (byte)0));
-      this.slN.KKo.addIsDisplayingFlutterUiListener(this.slV);
-      io.flutter.a.a.registerWith(new com.tencent.mm.b(this.slN, ai.getContext()));
-      this.slT = new k(this.slN.KLk, "com.tencent.mm.flutter.mmnative");
-      this.slT.a(this.slU);
-      this.slQ.clear();
-      paramc = d.fXK.iterator();
+      paramc = this.tiq.MCh;
+      aj.getContext().getAssets();
+      paramc.a(new DartExecutor.a(FlutterMain.findAppBundlePath(aj.getContext()), paramString, (byte)0));
+      this.tiq.MBc.addIsDisplayingFlutterUiListener(this.tiy);
+      io.flutter.a.a.registerWith(new com.tencent.mm.b(this.tiq, aj.getContext()));
+      this.tiw = new k(this.tiq.MCh, "com.tencent.mm.flutter.mmnative");
+      this.tiw.a(this.tix);
+      this.tit.clear();
+      paramc = d.grg.iterator();
       while (paramc.hasNext())
       {
         paramString = (Class)paramc.next();
@@ -149,12 +149,12 @@ public final class a
         {
           paramString = (com.tencent.mm.flutter.a)paramString.newInstance();
           paramString.create();
-          this.slQ.put(paramString.adQ(), paramString);
+          this.tit.put(paramString.agw(), paramString);
         }
         catch (Exception paramString) {}
       }
-      this.slP.clear();
-      paramc = com.tencent.mm.flutter.a.b.c.fXL;
+      this.tis.clear();
+      paramc = com.tencent.mm.flutter.a.b.c.grh;
       j = paramc.length;
     }
     for (;;)
@@ -165,18 +165,18 @@ public final class a
       try
       {
         com.tencent.mm.flutter.b localb = (com.tencent.mm.flutter.b)paramString.newInstance();
-        localb.fXD = this.slT;
-        this.slP.put(paramString.getName(), localb);
+        localb.gqZ = this.tiw;
+        this.tis.put(paramString.getName(), localb);
         label287:
         i += 1;
         continue;
-        this.slR.clear();
+        this.tiu.clear();
         for (boolean bool = true;; bool = false)
         {
           AppMethodBeat.o(148850);
           return bool;
-          ac.i("MicroMsg.Flutter.FlutterEngineMgr", "Push Route %s", new Object[] { paramc });
-          this.slN.KLp.aVL(paramc.aUZ());
+          ad.i("MicroMsg.Flutter.FlutterEngineMgr", "Push Route %s", new Object[] { paramc });
+          this.tiq.MCm.bbO(paramc.aYt());
         }
       }
       catch (Exception paramString)
@@ -189,9 +189,9 @@ public final class a
   public final <T> T aO(Class<T> paramClass)
   {
     AppMethodBeat.i(148855);
-    if (this.slP.containsKey(paramClass.getName()))
+    if (this.tis.containsKey(paramClass.getName()))
     {
-      paramClass = this.slP.get(paramClass.getName());
+      paramClass = this.tis.get(paramClass.getName());
       AppMethodBeat.o(148855);
       return paramClass;
     }
@@ -208,19 +208,19 @@ public final class a
     return null;
   }
   
-  public final void cHW()
+  public final void cQl()
   {
     AppMethodBeat.i(148852);
-    this.slN.KLp.cHW();
+    this.tiq.MCm.cQl();
     AppMethodBeat.o(148852);
   }
   
-  public final int dk(String paramString, int paramInt)
+  public final int dA(String paramString, int paramInt)
   {
     AppMethodBeat.i(148856);
     int i = (Math.abs(paramString.hashCode()) | paramInt) >> 16;
-    this.slR.put(Integer.valueOf(i), Pair.create(Integer.valueOf(paramInt), paramString));
-    ac.i("MicroMsg.Flutter.FlutterEngineMgr", "getRealRequestCode %s %d %d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(i) });
+    this.tiu.put(Integer.valueOf(i), Pair.create(Integer.valueOf(paramInt), paramString));
+    ad.i("MicroMsg.Flutter.FlutterEngineMgr", "getRealRequestCode %s %d %d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(i) });
     AppMethodBeat.o(148856);
     return i;
   }
@@ -232,7 +232,7 @@ public final class a
     //   0: ldc_w 307
     //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 49	com/tencent/mm/plugin/flutter/b/a:slR	Ljava/util/HashMap;
+    //   7: getfield 49	com/tencent/mm/plugin/flutter/b/a:tiu	Ljava/util/HashMap;
     //   10: iload_1
     //   11: invokestatic 297	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   14: invokevirtual 272	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
@@ -259,7 +259,7 @@ public final class a
     //   54: iload_2
     //   55: invokestatic 297	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   58: aastore
-    //   59: invokestatic 121	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   62: aload_0
     //   63: ldc_w 318
     //   66: invokevirtual 320	com/tencent/mm/plugin/flutter/b/a:aO	(Ljava/lang/Class;)Ljava/lang/Object;
@@ -276,7 +276,7 @@ public final class a
     //   95: istore_1
     //   96: aload_3
     //   97: invokevirtual 329	android/content/Intent:getExtras	()Landroid/os/Bundle;
-    //   100: invokestatic 331	com/tencent/mm/plugin/flutter/b/a:ac	(Landroid/os/Bundle;)Lorg/json/JSONObject;
+    //   100: invokestatic 331	com/tencent/mm/plugin/flutter/b/a:af	(Landroid/os/Bundle;)Lorg/json/JSONObject;
     //   103: astore 6
     //   105: new 74	org/json/JSONObject
     //   108: dup
@@ -336,27 +336,27 @@ public final class a
   public final void onDestroy()
   {
     AppMethodBeat.i(148851);
-    if (this.slS.decrementAndGet() <= 0)
+    if (this.tiv.decrementAndGet() <= 0)
     {
-      Iterator localIterator = this.slQ.values().iterator();
+      Iterator localIterator = this.tit.values().iterator();
       while (localIterator.hasNext()) {
         ((com.tencent.mm.flutter.a)localIterator.next()).destroy();
       }
-      this.slR.clear();
-      this.slQ.clear();
-      this.slP.clear();
-      if (this.slN != null) {
-        this.slN.destroy();
+      this.tiu.clear();
+      this.tit.clear();
+      this.tis.clear();
+      if (this.tiq != null) {
+        this.tiq.destroy();
       }
-      this.slN = null;
-      this.slT = null;
+      this.tiq = null;
+      this.tiw = null;
     }
     AppMethodBeat.o(148851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.b.a
  * JD-Core Version:    0.7.0.1
  */

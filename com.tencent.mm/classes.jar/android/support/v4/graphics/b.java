@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 public final class b
 {
-  private static final ThreadLocal<double[]> HN = new ThreadLocal();
+  private static final ThreadLocal<double[]> JG = new ThreadLocal();
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat)
   {
@@ -48,12 +48,12 @@ public final class b
   
   private static double aw(int paramInt)
   {
-    double[] arrayOfDouble2 = (double[])HN.get();
+    double[] arrayOfDouble2 = (double[])JG.get();
     double[] arrayOfDouble1 = arrayOfDouble2;
     if (arrayOfDouble2 == null)
     {
       arrayOfDouble1 = new double[3];
-      HN.set(arrayOfDouble1);
+      JG.set(arrayOfDouble1);
     }
     int i = Color.red(paramInt);
     int j = Color.green(paramInt);
@@ -107,7 +107,7 @@ public final class b
     return 255;
   }
   
-  private static int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  private static int c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     if (paramInt5 == 0) {
       return 0;
@@ -168,7 +168,7 @@ public final class b
     if (Color.alpha(paramInt2) != 255) {
       throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
     }
-    if (p(q(paramInt1, 255), paramInt2) < paramFloat) {
+    if (w(x(paramInt1, 255), paramInt2) < paramFloat) {
       m = -1;
     }
     int k;
@@ -185,7 +185,7 @@ public final class b
       m = i;
     } while (i - k <= 1);
     int m = (k + i) / 2;
-    if (p(q(paramInt1, m), paramInt2) < paramFloat) {
+    if (w(x(paramInt1, m), paramInt2) < paramFloat) {
       k = m;
     }
     for (;;)
@@ -215,29 +215,29 @@ public final class b
     return paramFloat1;
   }
   
-  public static int o(int paramInt1, int paramInt2)
+  public static int v(int paramInt1, int paramInt2)
   {
     int i = Color.alpha(paramInt2);
     int j = Color.alpha(paramInt1);
     int k = 255 - (255 - i) * (255 - j) / 255;
-    return Color.argb(k, b(Color.red(paramInt1), j, Color.red(paramInt2), i, k), b(Color.green(paramInt1), j, Color.green(paramInt2), i, k), b(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
+    return Color.argb(k, c(Color.red(paramInt1), j, Color.red(paramInt2), i, k), c(Color.green(paramInt1), j, Color.green(paramInt2), i, k), c(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
   }
   
-  private static double p(int paramInt1, int paramInt2)
+  private static double w(int paramInt1, int paramInt2)
   {
     if (Color.alpha(paramInt2) != 255) {
       throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
     }
     int i = paramInt1;
     if (Color.alpha(paramInt1) < 255) {
-      i = o(paramInt1, paramInt2);
+      i = v(paramInt1, paramInt2);
     }
     double d1 = aw(i) + 0.05D;
     double d2 = aw(paramInt2) + 0.05D;
     return Math.max(d1, d2) / Math.min(d1, d2);
   }
   
-  public static int q(int paramInt1, int paramInt2)
+  public static int x(int paramInt1, int paramInt2)
   {
     if ((paramInt2 < 0) || (paramInt2 > 255)) {
       throw new IllegalArgumentException("alpha must be between 0 and 255.");

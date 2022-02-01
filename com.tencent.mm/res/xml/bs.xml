@@ -7,12 +7,14 @@
     <PreferenceSmallCategory />
     <CheckBoxPreference android:key="room_notify_new_msg" android:title="@string/eqs" />
     <CheckBoxPreference android:key="room_placed_to_the_top" android:layout="@layout/aop" android:title="@string/er_" />
+    <CheckBoxPreference android:key="room_accept_message" android:layout="@layout/aop" android:title="@string/hw8" />
     <CheckBoxPreference android:key="force_notify" android:persistent="false" android:title="@string/cjj" />
-    <PreferenceSmallCategory />
+    <PreferenceSmallCategory android:key="seperate_line_between_force_notify_and_background" />
     <Preference android:key="room_set_chatting_background" android:layout="@layout/aop" android:title="@string/es9" />
-    <PreferenceSmallCategory />
+    <PreferenceSmallCategory key="seperate_line_between_background_and_clear_history" />
     <Preference android:key="room_clear_chatting_history" android:layout="@layout/aop" android:title="@string/ep8" />
     <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="room_add_blacklist" android:title="@string/hw9" />
     <Preference android:key="room_expose" android:layout="@layout/aop" android:title="@string/epw" />
     <PreferenceCategory />
 </PreferenceScreen>

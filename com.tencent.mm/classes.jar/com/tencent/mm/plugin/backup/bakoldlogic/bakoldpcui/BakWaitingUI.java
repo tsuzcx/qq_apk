@@ -9,38 +9,38 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakWaitingUI
   extends MMWizardActivity
   implements e.c
 {
-  private int CW;
-  private ao handler;
-  private boolean ncb;
+  private int EN;
+  private ap handler;
+  private boolean nCy;
   
   public BakWaitingUI()
   {
     AppMethodBeat.i(22044);
-    this.handler = new ao(Looper.getMainLooper());
+    this.handler = new ap(Looper.getMainLooper());
     AppMethodBeat.o(22044);
   }
   
-  final void bFv()
+  final void bJE()
   {
     AppMethodBeat.i(22050);
-    if ((6 == this.CW) || (1 == this.CW))
+    if ((6 == this.EN) || (1 == this.EN))
     {
       Intent localIntent = new Intent(this, BakOperatingUI.class);
-      localIntent.putExtra("cmd", this.CW);
-      MMWizardActivity.aj(this, localIntent);
+      localIntent.putExtra("cmd", this.EN);
+      MMWizardActivity.al(this, localIntent);
     }
     AppMethodBeat.o(22050);
   }
@@ -54,7 +54,7 @@ public class BakWaitingUI
   {
     AppMethodBeat.i(22046);
     setMMTitle(2131756308);
-    if (this.ncb) {
+    if (this.nCy) {
       findViewById(2131297078).setVisibility(8);
     }
     for (;;)
@@ -84,12 +84,12 @@ public class BakWaitingUI
       AppMethodBeat.o(22045);
       return;
     }
-    a.bEZ().bFa().naT = this;
-    this.CW = a.bEZ().bFa().nba;
-    this.ncb = getIntent().getBooleanExtra("from_back_finish", false);
-    ac.i("MicroMsg.BakWaitingUI", "BakWaitingUI onCreate nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.CW), Boolean.valueOf(this.ncb) });
+    a.bJi().bJj().nBq = this;
+    this.EN = a.bJi().bJj().nBx;
+    this.nCy = getIntent().getBooleanExtra("from_back_finish", false);
+    ad.i("MicroMsg.BakWaitingUI", "BakWaitingUI onCreate nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.EN), Boolean.valueOf(this.nCy) });
     initView();
-    bFv();
+    bJE();
     AppMethodBeat.o(22045);
   }
   
@@ -97,8 +97,8 @@ public class BakWaitingUI
   {
     AppMethodBeat.i(22048);
     super.onDestroy();
-    a.bEZ().bFa().naT = null;
-    ac.i("MicroMsg.BakWaitingUI", "BakWaitingUI onDestroy nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.CW), Boolean.valueOf(this.ncb) });
+    a.bJi().bJj().nBq = null;
+    ad.i("MicroMsg.BakWaitingUI", "BakWaitingUI onDestroy nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.EN), Boolean.valueOf(this.nCy) });
     AppMethodBeat.o(22048);
   }
   
@@ -110,13 +110,13 @@ public class BakWaitingUI
       public final void run()
       {
         AppMethodBeat.i(22043);
-        ac.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
+        ad.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
         if (paramInt == -1)
         {
-          ac.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
+          ad.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
           localIntent = new Intent();
           localIntent.putExtra("title", BakWaitingUI.this.getString(2131756219));
-          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(2131756178, new Object[] { ab.eUO() }));
+          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(2131756178, new Object[] { ac.fks() }));
           localIntent.putExtra("showShare", false);
           localIntent.putExtra("neverGetA8Key", true);
           d.b(BakWaitingUI.this, "webview", ".ui.tools.WebViewUI", localIntent);
@@ -124,7 +124,7 @@ public class BakWaitingUI
           return;
         }
         Intent localIntent = new Intent(BakWaitingUI.this, BakConnErrorUI.class);
-        MMWizardActivity.aj(BakWaitingUI.this, localIntent);
+        MMWizardActivity.al(BakWaitingUI.this, localIntent);
         AppMethodBeat.o(22043);
       }
     });
@@ -134,13 +134,13 @@ public class BakWaitingUI
   public final void onEvent(int paramInt)
   {
     AppMethodBeat.i(22047);
-    this.CW = paramInt;
+    this.EN = paramInt;
     this.handler.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(22041);
-        BakWaitingUI.this.bFv();
+        BakWaitingUI.this.bJE();
         AppMethodBeat.o(22041);
       }
     });
@@ -152,7 +152,7 @@ public class BakWaitingUI
     AppMethodBeat.i(22051);
     if (paramInt == 4)
     {
-      ZA(1);
+      abK(1);
       AppMethodBeat.o(22051);
       return true;
     }
@@ -167,7 +167,7 @@ public class BakWaitingUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void xh(final int paramInt)
+  public final void xN(final int paramInt)
   {
     AppMethodBeat.i(22049);
     this.handler.post(new Runnable()
@@ -175,13 +175,13 @@ public class BakWaitingUI
       public final void run()
       {
         AppMethodBeat.i(22042);
-        ac.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
+        ad.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
         if (paramInt == -1)
         {
-          ac.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
+          ad.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
           Intent localIntent = new Intent();
           localIntent.putExtra("title", BakWaitingUI.this.getString(2131756219));
-          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(2131756178, new Object[] { ab.eUO() }));
+          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(2131756178, new Object[] { ac.fks() }));
           localIntent.putExtra("showShare", false);
           localIntent.putExtra("neverGetA8Key", true);
           d.b(BakWaitingUI.this, "webview", ".ui.tools.WebViewUI", localIntent);

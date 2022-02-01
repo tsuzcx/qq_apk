@@ -9,7 +9,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class MaskImageView
   extends TagImageView
@@ -19,8 +21,8 @@ public class MaskImageView
   private boolean enable;
   private int g;
   private int r;
-  private ao yxu;
-  private Runnable yxv;
+  private ap zOG;
+  private Runnable zOH;
   
   public MaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,8 +33,8 @@ public class MaskImageView
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.yxu = new ao(Looper.getMainLooper());
-    this.yxv = new Runnable()
+    this.zOG = new ap(Looper.getMainLooper());
+    this.zOH = new Runnable()
     {
       public final void run()
       {
@@ -47,12 +49,18 @@ public class MaskImageView
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(97960);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/plugin/sns/ui/MaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         if (!MaskImageView.a(MaskImageView.this))
         {
+          a.a(false, this, "com/tencent/mm/plugin/sns/ui/MaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(97960);
           return false;
         }
         boolean bool = MaskImageView.this.e(paramAnonymousView, paramAnonymousMotionEvent);
+        a.a(bool, this, "com/tencent/mm/plugin/sns/ui/MaskImageView$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(97960);
         return bool;
       }
@@ -73,9 +81,9 @@ public class MaskImageView
       return true;
       paramView.setPressed(true);
       paramView.invalidate();
-      this.yxu.removeCallbacks(this.yxv);
+      this.zOG.removeCallbacks(this.zOH);
       continue;
-      this.yxu.post(this.yxv);
+      this.zOG.post(this.zOH);
     }
     AppMethodBeat.o(97962);
     return false;
@@ -112,7 +120,7 @@ public class MaskImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.MaskImageView
  * JD-Core Version:    0.7.0.1
  */

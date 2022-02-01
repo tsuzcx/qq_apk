@@ -16,7 +16,7 @@ public class TPNativeLog
   private static void onPrintLog(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
   {
     int i = 0;
-    AppMethodBeat.i(193678);
+    AppMethodBeat.i(220460);
     for (;;)
     {
       try
@@ -28,14 +28,14 @@ public class TPNativeLog
         {
         case 4: 
           printLog(paramInt2, paramArrayOfByte1, paramArrayOfByte2);
-          AppMethodBeat.o(193678);
+          AppMethodBeat.o(220460);
           return;
         }
       }
       catch (Exception paramArrayOfByte1)
       {
         printLog(4, paramArrayOfByte1.getMessage());
-        AppMethodBeat.o(193678);
+        AppMethodBeat.o(220460);
         return;
       }
       paramInt2 = 4;
@@ -52,22 +52,22 @@ public class TPNativeLog
   
   public static void printLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(193676);
+    AppMethodBeat.i(220458);
     printLog(paramInt, "PlayerCore", paramString);
-    AppMethodBeat.o(193676);
+    AppMethodBeat.o(220458);
   }
   
   public static void printLog(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193677);
+    AppMethodBeat.i(220459);
     if (mLogCallback != null)
     {
       mLogCallback.onPrintLog(paramInt, paramString1, paramString2);
-      AppMethodBeat.o(193677);
+      AppMethodBeat.o(220459);
       return;
     }
     printLogDefault(paramInt, paramString1, paramString2);
-    AppMethodBeat.o(193677);
+    AppMethodBeat.o(220459);
   }
   
   public static void printLogDefault(int paramInt, String paramString1, String paramString2) {}

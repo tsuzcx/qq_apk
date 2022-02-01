@@ -1,6 +1,13 @@
 package com.tencent.recovery.wx.service;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mm.recovery.b;
+import com.tencent.mm.recoveryv2.f;
+import com.tencent.mm.recoveryv2.i;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.recovery.log.RecoveryLog;
 import com.tencent.recovery.model.RecoveryHandleItem;
 import com.tencent.recovery.report.RecoveryReporter;
@@ -16,9 +23,13 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+@SuppressLint({"LongLogTag"})
 public class WXRecoveryUploadService
   extends RecoveryUploadService
 {
+  private static final String EXTRA_FETCH_BASE_ID = "extra_fetch_base_id";
+  private static final String EXTRA_PATCH_URL = "extra_patch_url";
+  private static final String RECOVERY_TAG = "MicroMsg.recovery.service";
   private static final String TAG = "Recovery.WXRecoveryUploadService";
   private static final String UNIT_REPORT_TAG = "RecoveryHandle";
   
@@ -102,6 +113,61 @@ public class WXRecoveryUploadService
     finally {}
   }
   
+  public static void fetchTinkerPatch(Context paramContext, String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setClass(paramContext, WXRecoveryUploadService.class);
+    localIntent.putExtra("extra_fetch_base_id", paramString);
+    try
+    {
+      paramContext.startService(localIntent);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      ad.w("MicroMsg.recovery.service", "start service fail", new Object[] { paramContext });
+    }
+  }
+  
+  private void fetchTinkerPatch(Intent paramIntent)
+  {
+    arrayOfInt = new int[1];
+    arrayOfInt[0] = 0;
+    for (;;)
+    {
+      try
+      {
+        localc = new com.tencent.mm.recovery.c(arrayOfInt);
+        String str2 = paramIntent.getStringExtra("extra_patch_url");
+        str1 = str2;
+        if (TextUtils.isEmpty(str2)) {
+          str1 = paramIntent.getDataString();
+        }
+        if (!TextUtils.isEmpty(str1)) {
+          continue;
+        }
+        f.i("MicroMsg.recovery.service", "#fetchTinkerPatch, fetch patch url with cgi");
+        b.a(getApplicationContext(), localc);
+      }
+      catch (Throwable paramIntent)
+      {
+        com.tencent.mm.recovery.c localc;
+        String str1;
+        f.w("MicroMsg.recovery.service", "fetch error", paramIntent);
+        arrayOfInt[0] = 10;
+        continue;
+      }
+      f.i("MicroMsg.recovery.service", "#fetchTinkerPatch done, status = " + arrayOfInt[0]);
+      paramIntent = i.hR(getApplication());
+      paramIntent.HUs = false;
+      paramIntent.HUr = arrayOfInt[0];
+      paramIntent.save();
+      return;
+      f.i("MicroMsg.recovery.service", "#fetchTinkerPatch, download patch with given url, url = ".concat(String.valueOf(str1)));
+      b.b(getApplicationContext(), str1, localc);
+    }
+  }
+  
   /* Error */
   private boolean pushData(JSONArray paramJSONArray, String paramString)
   {
@@ -113,361 +179,391 @@ public class WXRecoveryUploadService
     //   6: aload 6
     //   8: astore 4
     //   10: aload_0
-    //   11: invokestatic 83	com/tencent/recovery/wx/util/WXUtil:getWXUserName	(Landroid/content/Context;)Ljava/lang/String;
+    //   11: invokestatic 212	com/tencent/recovery/wx/util/WXUtil:getWXUserName	(Landroid/content/Context;)Ljava/lang/String;
     //   14: astore 7
     //   16: aload 6
     //   18: astore 4
-    //   20: new 48	java/lang/StringBuilder
+    //   20: new 62	java/lang/StringBuilder
     //   23: dup
-    //   24: ldc 85
-    //   26: invokespecial 88	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   29: getstatic 94	android/os/Build$VERSION:SDK_INT	I
-    //   32: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   24: ldc 214
+    //   26: invokespecial 160	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   29: getstatic 219	android/os/Build$VERSION:SDK_INT	I
+    //   32: invokevirtual 163	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   38: astore 9
     //   40: aload 6
     //   42: astore 4
-    //   44: new 99	org/json/JSONObject
+    //   44: new 221	org/json/JSONObject
     //   47: dup
-    //   48: invokespecial 100	org/json/JSONObject:<init>	()V
-    //   51: ldc 102
-    //   53: new 99	org/json/JSONObject
+    //   48: invokespecial 222	org/json/JSONObject:<init>	()V
+    //   51: ldc 224
+    //   53: new 221	org/json/JSONObject
     //   56: dup
-    //   57: invokespecial 100	org/json/JSONObject:<init>	()V
-    //   60: ldc 104
+    //   57: invokespecial 222	org/json/JSONObject:<init>	()V
+    //   60: ldc 226
     //   62: iconst_1
-    //   63: invokevirtual 108	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   66: ldc 110
-    //   68: new 48	java/lang/StringBuilder
+    //   63: invokevirtual 230	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   66: ldc 232
+    //   68: new 62	java/lang/StringBuilder
     //   71: dup
-    //   72: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   75: getstatic 115	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   78: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: ldc 117
-    //   83: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: getstatic 120	android/os/Build:MODEL	Ljava/lang/String;
-    //   89: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokevirtual 123	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   98: ldc 125
+    //   72: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   75: getstatic 237	android/os/Build:MANUFACTURER	Ljava/lang/String;
+    //   78: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: ldc 239
+    //   83: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: getstatic 242	android/os/Build:MODEL	Ljava/lang/String;
+    //   89: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokevirtual 245	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   98: ldc 247
     //   100: aload 9
-    //   102: invokevirtual 123	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   105: ldc 127
-    //   107: invokestatic 133	java/lang/System:currentTimeMillis	()J
-    //   110: invokevirtual 136	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   113: invokevirtual 123	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   116: ldc 138
-    //   118: aload_1
-    //   119: invokevirtual 123	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   122: invokevirtual 139	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   125: invokevirtual 145	java/lang/String:getBytes	()[B
-    //   128: astore 8
-    //   130: aload 6
-    //   132: astore 4
-    //   134: aload 8
-    //   136: arraylength
-    //   137: istore_3
-    //   138: aload 6
-    //   140: astore 4
-    //   142: ldc 147
-    //   144: iconst_2
-    //   145: anewarray 64	java/lang/Object
-    //   148: dup
-    //   149: iconst_0
-    //   150: aload_2
-    //   151: invokestatic 26	java/lang/Integer:decode	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   154: aastore
-    //   155: dup
-    //   156: iconst_1
-    //   157: iload_3
-    //   158: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   161: aastore
-    //   162: invokestatic 155	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   165: invokevirtual 145	java/lang/String:getBytes	()[B
-    //   168: invokestatic 161	com/tencent/recovery/wx/util/EncryptUtil:getMessageDigest	([B)Ljava/lang/String;
-    //   171: invokevirtual 164	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   174: astore_1
-    //   175: aload 6
-    //   177: astore 4
-    //   179: aload 8
-    //   181: invokestatic 168	com/tencent/recovery/wx/util/EncryptUtil:compress	([B)[B
-    //   184: astore 10
-    //   186: aload 6
-    //   188: astore 4
-    //   190: new 170	com/tencent/recovery/wx/util/PByteArray
-    //   193: dup
-    //   194: invokespecial 171	com/tencent/recovery/wx/util/PByteArray:<init>	()V
-    //   197: astore 8
-    //   199: aload 6
-    //   201: astore 4
-    //   203: aload 8
-    //   205: aload 10
-    //   207: aload_1
-    //   208: invokevirtual 145	java/lang/String:getBytes	()[B
-    //   211: invokestatic 175	com/tencent/recovery/wx/util/EncryptUtil:DESEncrypt	(Lcom/tencent/recovery/wx/util/PByteArray;[B[B)I
-    //   214: pop
-    //   215: aload 6
-    //   217: astore 4
-    //   219: new 48	java/lang/StringBuilder
-    //   222: dup
-    //   223: sipush 256
-    //   226: invokespecial 178	java/lang/StringBuilder:<init>	(I)V
-    //   229: ldc 180
-    //   231: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: aload_2
-    //   235: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: ldc 182
-    //   240: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: aload 9
-    //   245: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: ldc 184
-    //   250: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   253: iload_3
-    //   254: invokevirtual 97	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   257: ldc 186
-    //   259: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: aload_1
-    //   263: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: ldc 188
-    //   268: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: astore_1
-    //   272: aload 7
-    //   274: ifnull +31 -> 305
-    //   277: aload 6
-    //   279: astore 4
-    //   281: aload 7
-    //   283: invokevirtual 191	java/lang/String:length	()I
-    //   286: ifeq +19 -> 305
-    //   289: aload 6
-    //   291: astore 4
-    //   293: aload_1
-    //   294: ldc 193
-    //   296: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   299: aload 7
-    //   301: invokevirtual 57	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   304: pop
-    //   305: aload 6
-    //   307: astore 4
-    //   309: new 195	java/net/URL
-    //   312: dup
-    //   313: aload_1
-    //   314: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   317: invokespecial 196	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   320: invokevirtual 200	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   323: checkcast 202	java/net/HttpURLConnection
-    //   326: astore_1
-    //   327: aload_1
-    //   328: ldc 204
-    //   330: invokevirtual 207	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   333: aload_1
-    //   334: sipush 20000
-    //   337: invokevirtual 210	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   340: aload_1
-    //   341: sipush 10000
-    //   344: invokevirtual 213	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   347: aload_1
-    //   348: ldc 215
-    //   350: ldc 217
-    //   352: invokevirtual 221	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   355: aload_1
-    //   356: iconst_1
-    //   357: invokevirtual 225	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   360: aload_1
-    //   361: iconst_1
-    //   362: invokevirtual 228	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   365: aload_1
-    //   366: invokevirtual 231	java/net/HttpURLConnection:connect	()V
-    //   369: aload_1
-    //   370: invokevirtual 235	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   373: astore 4
-    //   375: aload 4
-    //   377: aload 8
-    //   379: getfield 239	com/tencent/recovery/wx/util/PByteArray:value	[B
-    //   382: invokevirtual 245	java/io/OutputStream:write	([B)V
-    //   385: aload 4
-    //   387: invokevirtual 248	java/io/OutputStream:flush	()V
-    //   390: aload 4
-    //   392: invokevirtual 249	java/io/OutputStream:close	()V
-    //   395: aload_1
-    //   396: invokevirtual 252	java/net/HttpURLConnection:getResponseCode	()I
-    //   399: sipush 200
-    //   402: if_icmpeq +90 -> 492
-    //   405: aload_1
-    //   406: invokevirtual 256	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
-    //   409: invokestatic 258	com/tencent/recovery/wx/service/WXRecoveryUploadService:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   412: astore 4
-    //   414: aload_1
-    //   415: invokevirtual 261	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   418: invokestatic 258	com/tencent/recovery/wx/service/WXRecoveryUploadService:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   421: astore 5
-    //   423: ldc 8
-    //   425: ldc_w 263
-    //   428: iconst_4
-    //   429: anewarray 64	java/lang/Object
-    //   432: dup
-    //   433: iconst_0
-    //   434: aload_1
-    //   435: invokevirtual 252	java/net/HttpURLConnection:getResponseCode	()I
-    //   438: invokestatic 151	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   441: aastore
-    //   442: dup
-    //   443: iconst_1
-    //   444: aload_2
-    //   445: aastore
-    //   446: dup
-    //   447: iconst_2
-    //   448: aload 4
-    //   450: aastore
-    //   451: dup
-    //   452: iconst_3
-    //   453: aload 5
-    //   455: aastore
-    //   456: invokestatic 267	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   459: aload_1
-    //   460: ifnull +14 -> 474
-    //   463: aload_1
-    //   464: invokevirtual 261	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   467: invokevirtual 75	java/io/InputStream:close	()V
+    //   102: invokevirtual 245	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   105: ldc 249
+    //   107: invokestatic 255	java/lang/System:currentTimeMillis	()J
+    //   110: invokevirtual 258	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   113: invokevirtual 245	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   116: ldc_w 260
+    //   119: aload_1
+    //   120: invokevirtual 245	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   123: invokevirtual 261	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   126: invokevirtual 265	java/lang/String:getBytes	()[B
+    //   129: astore 8
+    //   131: aload 6
+    //   133: astore 4
+    //   135: aload 8
+    //   137: arraylength
+    //   138: istore_3
+    //   139: aload 6
+    //   141: astore 4
+    //   143: ldc_w 267
+    //   146: iconst_2
+    //   147: anewarray 78	java/lang/Object
+    //   150: dup
+    //   151: iconst_0
+    //   152: aload_2
+    //   153: invokestatic 40	java/lang/Integer:decode	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   156: aastore
+    //   157: dup
+    //   158: iconst_1
+    //   159: iload_3
+    //   160: invokestatic 270	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   163: aastore
+    //   164: invokestatic 274	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   167: invokevirtual 265	java/lang/String:getBytes	()[B
+    //   170: invokestatic 280	com/tencent/recovery/wx/util/EncryptUtil:getMessageDigest	([B)Ljava/lang/String;
+    //   173: invokevirtual 283	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   176: astore_1
+    //   177: aload 6
+    //   179: astore 4
+    //   181: aload 8
+    //   183: invokestatic 287	com/tencent/recovery/wx/util/EncryptUtil:compress	([B)[B
+    //   186: astore 10
+    //   188: aload 6
+    //   190: astore 4
+    //   192: new 289	com/tencent/recovery/wx/util/PByteArray
+    //   195: dup
+    //   196: invokespecial 290	com/tencent/recovery/wx/util/PByteArray:<init>	()V
+    //   199: astore 8
+    //   201: aload 6
+    //   203: astore 4
+    //   205: aload 8
+    //   207: aload 10
+    //   209: aload_1
+    //   210: invokevirtual 265	java/lang/String:getBytes	()[B
+    //   213: invokestatic 294	com/tencent/recovery/wx/util/EncryptUtil:DESEncrypt	(Lcom/tencent/recovery/wx/util/PByteArray;[B[B)I
+    //   216: pop
+    //   217: aload 6
+    //   219: astore 4
+    //   221: new 62	java/lang/StringBuilder
+    //   224: dup
+    //   225: sipush 256
+    //   228: invokespecial 297	java/lang/StringBuilder:<init>	(I)V
+    //   231: ldc_w 299
+    //   234: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: aload_2
+    //   238: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: ldc_w 301
+    //   244: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: aload 9
+    //   249: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: ldc_w 303
+    //   255: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: iload_3
+    //   259: invokevirtual 163	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   262: ldc_w 305
+    //   265: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   268: aload_1
+    //   269: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   272: ldc_w 307
+    //   275: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: astore_1
+    //   279: aload 7
+    //   281: ifnull +32 -> 313
+    //   284: aload 6
+    //   286: astore 4
+    //   288: aload 7
+    //   290: invokevirtual 310	java/lang/String:length	()I
+    //   293: ifeq +20 -> 313
+    //   296: aload 6
+    //   298: astore 4
+    //   300: aload_1
+    //   301: ldc_w 312
+    //   304: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   307: aload 7
+    //   309: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   312: pop
+    //   313: aload 6
+    //   315: astore 4
+    //   317: new 314	java/net/URL
+    //   320: dup
+    //   321: aload_1
+    //   322: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   325: invokespecial 315	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   328: invokevirtual 319	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   331: checkcast 321	java/net/HttpURLConnection
+    //   334: astore_1
+    //   335: aload_1
+    //   336: ldc_w 323
+    //   339: invokevirtual 326	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   342: aload_1
+    //   343: sipush 20000
+    //   346: invokevirtual 329	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   349: aload_1
+    //   350: sipush 10000
+    //   353: invokevirtual 332	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   356: aload_1
+    //   357: ldc_w 334
+    //   360: ldc_w 336
+    //   363: invokevirtual 339	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   366: aload_1
+    //   367: iconst_1
+    //   368: invokevirtual 343	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   371: aload_1
+    //   372: iconst_1
+    //   373: invokevirtual 346	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   376: aload_1
+    //   377: invokevirtual 349	java/net/HttpURLConnection:connect	()V
+    //   380: aload_1
+    //   381: invokevirtual 353	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   384: astore 4
+    //   386: aload 4
+    //   388: aload 8
+    //   390: getfield 356	com/tencent/recovery/wx/util/PByteArray:value	[B
+    //   393: invokevirtual 362	java/io/OutputStream:write	([B)V
+    //   396: aload 4
+    //   398: invokevirtual 365	java/io/OutputStream:flush	()V
+    //   401: aload 4
+    //   403: invokevirtual 366	java/io/OutputStream:close	()V
+    //   406: aload_1
+    //   407: invokevirtual 369	java/net/HttpURLConnection:getResponseCode	()I
+    //   410: sipush 200
+    //   413: if_icmpeq +90 -> 503
+    //   416: aload_1
+    //   417: invokevirtual 373	java/net/HttpURLConnection:getErrorStream	()Ljava/io/InputStream;
+    //   420: invokestatic 375	com/tencent/recovery/wx/service/WXRecoveryUploadService:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   423: astore 4
+    //   425: aload_1
+    //   426: invokevirtual 378	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   429: invokestatic 375	com/tencent/recovery/wx/service/WXRecoveryUploadService:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   432: astore 5
+    //   434: ldc 22
+    //   436: ldc_w 380
+    //   439: iconst_4
+    //   440: anewarray 78	java/lang/Object
+    //   443: dup
+    //   444: iconst_0
+    //   445: aload_1
+    //   446: invokevirtual 369	java/net/HttpURLConnection:getResponseCode	()I
+    //   449: invokestatic 270	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   452: aastore
+    //   453: dup
+    //   454: iconst_1
+    //   455: aload_2
+    //   456: aastore
+    //   457: dup
+    //   458: iconst_2
+    //   459: aload 4
+    //   461: aastore
+    //   462: dup
+    //   463: iconst_3
+    //   464: aload 5
+    //   466: aastore
+    //   467: invokestatic 382	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   470: aload_1
-    //   471: invokevirtual 270	java/net/HttpURLConnection:disconnect	()V
-    //   474: iconst_0
-    //   475: ireturn
-    //   476: astore_2
-    //   477: ldc 8
-    //   479: aload_2
-    //   480: ldc 36
-    //   482: iconst_0
-    //   483: anewarray 64	java/lang/Object
-    //   486: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   489: goto -19 -> 470
-    //   492: ldc 8
-    //   494: ldc_w 272
-    //   497: iconst_1
-    //   498: anewarray 64	java/lang/Object
-    //   501: dup
-    //   502: iconst_0
-    //   503: aload_2
-    //   504: aastore
-    //   505: invokestatic 267	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   508: aload_1
-    //   509: ifnull +14 -> 523
-    //   512: aload_1
-    //   513: invokevirtual 261	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   516: invokevirtual 75	java/io/InputStream:close	()V
+    //   471: ifnull +14 -> 485
+    //   474: aload_1
+    //   475: invokevirtual 378	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   478: invokevirtual 89	java/io/InputStream:close	()V
+    //   481: aload_1
+    //   482: invokevirtual 385	java/net/HttpURLConnection:disconnect	()V
+    //   485: iconst_0
+    //   486: ireturn
+    //   487: astore_2
+    //   488: ldc 22
+    //   490: aload_2
+    //   491: ldc 50
+    //   493: iconst_0
+    //   494: anewarray 78	java/lang/Object
+    //   497: invokestatic 84	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   500: goto -19 -> 481
+    //   503: ldc 22
+    //   505: ldc_w 387
+    //   508: iconst_1
+    //   509: anewarray 78	java/lang/Object
+    //   512: dup
+    //   513: iconst_0
+    //   514: aload_2
+    //   515: aastore
+    //   516: invokestatic 382	com/tencent/recovery/log/RecoveryLog:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   519: aload_1
-    //   520: invokevirtual 270	java/net/HttpURLConnection:disconnect	()V
-    //   523: iconst_1
-    //   524: ireturn
-    //   525: astore_2
-    //   526: ldc 8
-    //   528: aload_2
-    //   529: ldc 36
-    //   531: iconst_0
-    //   532: anewarray 64	java/lang/Object
-    //   535: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   538: goto -19 -> 519
-    //   541: astore_2
-    //   542: aload 5
-    //   544: astore_1
-    //   545: aload_1
-    //   546: astore 4
-    //   548: ldc 8
-    //   550: aload_2
-    //   551: ldc_w 273
-    //   554: iconst_0
-    //   555: anewarray 64	java/lang/Object
-    //   558: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   561: aload_1
-    //   562: ifnull +14 -> 576
-    //   565: aload_1
-    //   566: invokevirtual 261	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   569: invokevirtual 75	java/io/InputStream:close	()V
+    //   520: ifnull +14 -> 534
+    //   523: aload_1
+    //   524: invokevirtual 378	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   527: invokevirtual 89	java/io/InputStream:close	()V
+    //   530: aload_1
+    //   531: invokevirtual 385	java/net/HttpURLConnection:disconnect	()V
+    //   534: iconst_1
+    //   535: ireturn
+    //   536: astore_2
+    //   537: ldc 22
+    //   539: aload_2
+    //   540: ldc 50
+    //   542: iconst_0
+    //   543: anewarray 78	java/lang/Object
+    //   546: invokestatic 84	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   549: goto -19 -> 530
+    //   552: astore_2
+    //   553: aload 5
+    //   555: astore_1
+    //   556: aload_1
+    //   557: astore 4
+    //   559: ldc 22
+    //   561: aload_2
+    //   562: ldc_w 388
+    //   565: iconst_0
+    //   566: anewarray 78	java/lang/Object
+    //   569: invokestatic 84	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   572: aload_1
-    //   573: invokevirtual 270	java/net/HttpURLConnection:disconnect	()V
-    //   576: iconst_0
-    //   577: ireturn
-    //   578: astore_2
-    //   579: ldc 8
-    //   581: aload_2
-    //   582: ldc 36
-    //   584: iconst_0
-    //   585: anewarray 64	java/lang/Object
-    //   588: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   591: goto -19 -> 572
-    //   594: astore_1
-    //   595: aload 4
-    //   597: ifnull +16 -> 613
-    //   600: aload 4
-    //   602: invokevirtual 261	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   605: invokevirtual 75	java/io/InputStream:close	()V
-    //   608: aload 4
-    //   610: invokevirtual 270	java/net/HttpURLConnection:disconnect	()V
-    //   613: aload_1
-    //   614: athrow
-    //   615: astore_2
-    //   616: ldc 8
-    //   618: aload_2
-    //   619: ldc 36
-    //   621: iconst_0
-    //   622: anewarray 64	java/lang/Object
-    //   625: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   628: goto -20 -> 608
-    //   631: astore_2
-    //   632: aload_1
-    //   633: astore 4
-    //   635: aload_2
-    //   636: astore_1
-    //   637: goto -42 -> 595
-    //   640: astore_2
-    //   641: goto -96 -> 545
+    //   573: ifnull +14 -> 587
+    //   576: aload_1
+    //   577: invokevirtual 378	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   580: invokevirtual 89	java/io/InputStream:close	()V
+    //   583: aload_1
+    //   584: invokevirtual 385	java/net/HttpURLConnection:disconnect	()V
+    //   587: iconst_0
+    //   588: ireturn
+    //   589: astore_2
+    //   590: ldc 22
+    //   592: aload_2
+    //   593: ldc 50
+    //   595: iconst_0
+    //   596: anewarray 78	java/lang/Object
+    //   599: invokestatic 84	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   602: goto -19 -> 583
+    //   605: astore_1
+    //   606: aload 4
+    //   608: ifnull +16 -> 624
+    //   611: aload 4
+    //   613: invokevirtual 378	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   616: invokevirtual 89	java/io/InputStream:close	()V
+    //   619: aload 4
+    //   621: invokevirtual 385	java/net/HttpURLConnection:disconnect	()V
+    //   624: aload_1
+    //   625: athrow
+    //   626: astore_2
+    //   627: ldc 22
+    //   629: aload_2
+    //   630: ldc 50
+    //   632: iconst_0
+    //   633: anewarray 78	java/lang/Object
+    //   636: invokestatic 84	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   639: goto -20 -> 619
+    //   642: astore_2
+    //   643: aload_1
+    //   644: astore 4
+    //   646: aload_2
+    //   647: astore_1
+    //   648: goto -42 -> 606
+    //   651: astore_2
+    //   652: goto -96 -> 556
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	644	0	this	WXRecoveryUploadService
-    //   0	644	1	paramJSONArray	JSONArray
-    //   0	644	2	paramString	String
-    //   137	117	3	i	int
-    //   8	626	4	localObject1	Object
-    //   4	539	5	str1	String
-    //   1	305	6	localObject2	Object
-    //   14	286	7	str2	String
-    //   128	250	8	localObject3	Object
-    //   38	206	9	str3	String
-    //   184	22	10	arrayOfByte	byte[]
+    //   0	655	0	this	WXRecoveryUploadService
+    //   0	655	1	paramJSONArray	JSONArray
+    //   0	655	2	paramString	String
+    //   138	121	3	i	int
+    //   8	637	4	localObject1	Object
+    //   4	550	5	str1	String
+    //   1	313	6	localObject2	Object
+    //   14	294	7	str2	String
+    //   129	260	8	localObject3	Object
+    //   38	210	9	str3	String
+    //   186	22	10	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   463	470	476	java/lang/Exception
-    //   512	519	525	java/lang/Exception
-    //   10	16	541	java/lang/Exception
-    //   20	40	541	java/lang/Exception
-    //   44	130	541	java/lang/Exception
-    //   134	138	541	java/lang/Exception
-    //   142	175	541	java/lang/Exception
-    //   179	186	541	java/lang/Exception
-    //   190	199	541	java/lang/Exception
-    //   203	215	541	java/lang/Exception
-    //   219	272	541	java/lang/Exception
-    //   281	289	541	java/lang/Exception
-    //   293	305	541	java/lang/Exception
-    //   309	327	541	java/lang/Exception
-    //   565	572	578	java/lang/Exception
-    //   10	16	594	finally
-    //   20	40	594	finally
-    //   44	130	594	finally
-    //   134	138	594	finally
-    //   142	175	594	finally
-    //   179	186	594	finally
-    //   190	199	594	finally
-    //   203	215	594	finally
-    //   219	272	594	finally
-    //   281	289	594	finally
-    //   293	305	594	finally
-    //   309	327	594	finally
-    //   548	561	594	finally
-    //   600	608	615	java/lang/Exception
-    //   327	459	631	finally
-    //   492	508	631	finally
-    //   327	459	640	java/lang/Exception
-    //   492	508	640	java/lang/Exception
+    //   474	481	487	java/lang/Exception
+    //   523	530	536	java/lang/Exception
+    //   10	16	552	java/lang/Exception
+    //   20	40	552	java/lang/Exception
+    //   44	131	552	java/lang/Exception
+    //   135	139	552	java/lang/Exception
+    //   143	177	552	java/lang/Exception
+    //   181	188	552	java/lang/Exception
+    //   192	201	552	java/lang/Exception
+    //   205	217	552	java/lang/Exception
+    //   221	279	552	java/lang/Exception
+    //   288	296	552	java/lang/Exception
+    //   300	313	552	java/lang/Exception
+    //   317	335	552	java/lang/Exception
+    //   576	583	589	java/lang/Exception
+    //   10	16	605	finally
+    //   20	40	605	finally
+    //   44	131	605	finally
+    //   135	139	605	finally
+    //   143	177	605	finally
+    //   181	188	605	finally
+    //   192	201	605	finally
+    //   205	217	605	finally
+    //   221	279	605	finally
+    //   288	296	605	finally
+    //   300	313	605	finally
+    //   317	335	605	finally
+    //   559	572	605	finally
+    //   611	619	626	java/lang/Exception
+    //   335	470	642	finally
+    //   503	519	642	finally
+    //   335	470	651	java/lang/Exception
+    //   503	519	651	java/lang/Exception
+  }
+  
+  public void onHandleIntent(Intent paramIntent)
+  {
+    if (paramIntent.getIntExtra("extra_crash_count", -1) == -1)
+    {
+      localObject = paramIntent.getStringExtra("extra_fetch_base_id");
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        super.onHandleIntent(paramIntent);
+        return;
+      }
+      ad.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId");
+      ad.i("MicroMsg.recovery.service", "baseId = ".concat(String.valueOf(localObject)));
+      b.a(getApplicationContext(), (String)localObject, new android.support.v4.e.c()
+      {
+        public void accept(Integer paramAnonymousInteger)
+        {
+          ad.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId callback, status = ".concat(String.valueOf(paramAnonymousInteger)));
+        }
+      });
+      ad.i("MicroMsg.recovery.service", "fetchTinkerPatchByBaseId done");
+      return;
+    }
+    Object localObject = i.hR(getApplication());
+    ((i)localObject).HUs = false;
+    ((i)localObject).HUp = true;
+    ((i)localObject).save();
+    b.fgU();
+    fetchTinkerPatch(paramIntent);
   }
   
   public boolean tryToUploadData()

@@ -17,8 +17,8 @@ import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.io.IOException;
@@ -27,23 +27,23 @@ public final class c
   extends Preference
   implements u.a
 {
-  private TextView lfN;
+  private TextView lCL;
   String mContent;
   private View mView;
-  String ooX;
-  private ImageView ozi;
+  String oSs;
+  private ImageView pcD;
   private f screen;
-  private TextView xcu;
-  String xcv;
+  private TextView yqw;
+  String yqx;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51785);
     this.mView = null;
-    this.ozi = null;
-    this.lfN = null;
-    this.xcu = null;
+    this.pcD = null;
+    this.lCL = null;
+    this.yqw = null;
     setLayoutResource(2131495110);
     u.a(this);
     AppMethodBeat.o(51785);
@@ -64,10 +64,10 @@ public final class c
   public final void k(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(51788);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(this.xcv)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(this.yqx)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.ozi.setImageBitmap(paramBitmap);
-      this.ozi.setBackgroundColor(0);
+      this.pcD.setImageBitmap(paramBitmap);
+      this.pcD.setBackgroundColor(0);
       if (this.screen != null) {
         this.screen.notifyDataSetChanged();
       }
@@ -79,33 +79,33 @@ public final class c
   {
     AppMethodBeat.i(51787);
     super.onBindView(paramView);
-    this.ozi = ((ImageView)paramView.findViewById(2131298507));
-    this.lfN = ((TextView)paramView.findViewById(2131298528));
-    this.xcu = ((TextView)paramView.findViewById(2131298510));
+    this.pcD = ((ImageView)paramView.findViewById(2131298507));
+    this.lCL = ((TextView)paramView.findViewById(2131298528));
+    this.yqw = ((TextView)paramView.findViewById(2131298510));
     Object localObject;
-    if (!bs.isNullOrNil(this.xcv))
+    if (!bt.isNullOrNil(this.yqx))
     {
-      localObject = u.a(new n(this.xcv));
+      localObject = u.a(new n(this.yqx));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        this.ozi.setImageBitmap((Bitmap)localObject);
-        this.ozi.setBackgroundColor(0);
-        if (bs.isNullOrNil(this.ooX)) {
+        this.pcD.setImageBitmap((Bitmap)localObject);
+        this.pcD.setBackgroundColor(0);
+        if (bt.isNullOrNil(this.oSs)) {
           break label289;
         }
-        this.lfN.setText(k.b(this.mContext, this.ooX, this.lfN.getTextSize()));
+        this.lCL.setText(k.b(this.mContext, this.oSs, this.lCL.getTextSize()));
         label136:
-        if (bs.isNullOrNil(this.mContent)) {
+        if (bt.isNullOrNil(this.mContent)) {
           break label301;
         }
-        this.xcu.setText(this.mContent);
+        this.yqw.setText(this.mContent);
       }
     }
     for (;;)
     {
       for (;;)
       {
-        if ((bs.isNullOrNil(this.ooX)) && (bs.isNullOrNil(this.xcv)))
+        if ((bt.isNullOrNil(this.oSs)) && (bt.isNullOrNil(this.yqx)))
         {
           paramView = (LinearLayout)paramView.findViewById(2131298509);
           localObject = paramView.getLayoutParams();
@@ -117,22 +117,22 @@ public final class c
         return;
         try
         {
-          localObject = BackwardSupportUtil.b.b(ai.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
-          this.ozi.setImageBitmap((Bitmap)localObject);
+          localObject = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          this.pcD.setImageBitmap((Bitmap)localObject);
         }
         catch (IOException localIOException)
         {
-          this.ozi.setImageBitmap(null);
+          this.pcD.setImageBitmap(null);
         }
       }
       break;
-      this.ozi.setVisibility(8);
+      this.pcD.setVisibility(8);
       break;
       label289:
-      this.lfN.setVisibility(8);
+      this.lCL.setVisibility(8);
       break label136;
       label301:
-      this.xcu.setVisibility(8);
+      this.yqw.setVisibility(8);
     }
   }
 }

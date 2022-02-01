@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class w
   extends b
 {
-  public w.a cZm;
+  public a dkE;
   
   public w()
   {
@@ -16,13 +16,13 @@ public final class w
   private w(byte paramByte)
   {
     AppMethodBeat.i(136973);
-    this.cZm = new w.a();
-    this.Gqe = false;
+    this.dkE = new a();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(136973);
   }
   
-  public static String hX(int paramInt)
+  public static String ie(int paramInt)
   {
     if (paramInt == 0) {
       return "play";
@@ -61,6 +61,18 @@ public final class w
       return "mix_play_ready";
     }
     return "";
+  }
+  
+  public static final class a
+  {
+    public int action;
+    public String appId;
+    public String dce;
+    public String ddp;
+    public long duration;
+    public int errCode;
+    public String errMsg;
+    public String state;
   }
 }
 

@@ -11,20 +11,20 @@ public abstract class bg
     super((byte)0);
   }
   
+  public abstract bg Ab(boolean paramBoolean);
+  
   public abstract bg b(g paramg);
   
   public abstract bg e(i parami);
   
-  public final bg gcz()
+  public final bg gua()
   {
     return this;
   }
-  
-  public abstract bg zn(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.bg
  * JD-Core Version:    0.7.0.1
  */

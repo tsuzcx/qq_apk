@@ -11,16 +11,14 @@ import android.os.ResultReceiver;
 import android.support.v7.d.b;
 import android.support.v7.d.b.a;
 import android.support.v7.d.b.a.1;
-import android.support.v7.d.b.c;
-import android.support.v7.d.b.d;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.service.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.al;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,29 +30,29 @@ import java.util.Vector;
 
 public final class d
 {
-  private static Map<String, Integer> nhJ;
-  private static Boolean nhK;
-  private static Integer nhL;
+  private static Map<String, Integer> nIf;
+  private static Boolean nIg;
+  private static Integer nIh;
   
   static
   {
     AppMethodBeat.i(106363);
     HashMap localHashMap = new HashMap();
-    nhJ = localHashMap;
+    nIf = localHashMap;
     localHashMap.put("doc", Integer.valueOf(2131690178));
-    nhJ.put("docx", Integer.valueOf(2131690178));
-    nhJ.put("ppt", Integer.valueOf(2131690176));
-    nhJ.put("pptx", Integer.valueOf(2131690176));
-    nhJ.put("xls", Integer.valueOf(2131690171));
-    nhJ.put("xlsx", Integer.valueOf(2131690171));
-    nhJ.put("pdf", Integer.valueOf(2131690175));
-    nhJ.put("numbers", Integer.valueOf(2131690173));
-    nhJ.put("pages", Integer.valueOf(2131690174));
-    nhJ.put("key", Integer.valueOf(2131690172));
-    nhJ.put("txt", Integer.valueOf(2131690177));
-    nhJ.put("unknown", Integer.valueOf(2131690170));
-    nhK = null;
-    nhL = null;
+    nIf.put("docx", Integer.valueOf(2131690178));
+    nIf.put("ppt", Integer.valueOf(2131690176));
+    nIf.put("pptx", Integer.valueOf(2131690176));
+    nIf.put("xls", Integer.valueOf(2131690171));
+    nIf.put("xlsx", Integer.valueOf(2131690171));
+    nIf.put("pdf", Integer.valueOf(2131690175));
+    nIf.put("numbers", Integer.valueOf(2131690173));
+    nIf.put("pages", Integer.valueOf(2131690174));
+    nIf.put("key", Integer.valueOf(2131690172));
+    nIf.put("txt", Integer.valueOf(2131690177));
+    nIf.put("unknown", Integer.valueOf(2131690170));
+    nIg = null;
+    nIh = null;
     AppMethodBeat.o(106363);
   }
   
@@ -63,88 +61,65 @@ public final class d
     return (paramLong1 != 0L) && (paramLong2 != 0L) && (paramLong2 - paramLong1 <= 1000L);
   }
   
-  public static e.a Q(int paramInt1, int paramInt2, int paramInt3)
+  public static e.a S(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(106354);
-    Object localObject = ai.getContext();
-    localObject = new Point(a.ig((Context)localObject), a.ih((Context)localObject));
+    Object localObject = aj.getContext();
+    localObject = new Point(a.ip((Context)localObject), a.iq((Context)localObject));
     int i = ((Point)localObject).x / 2;
     int j = ((Point)localObject).y / 2;
     paramInt2 = paramInt3 / 2 + paramInt2;
     if ((paramInt1 <= i) && (paramInt2 <= j))
     {
-      localObject = e.a.nie;
+      localObject = e.a.nIA;
       AppMethodBeat.o(106354);
       return localObject;
     }
     if (paramInt1 <= i)
     {
-      localObject = e.a.nig;
+      localObject = e.a.nIC;
       AppMethodBeat.o(106354);
       return localObject;
     }
     if (paramInt2 <= j)
     {
-      localObject = e.a.nif;
+      localObject = e.a.nIB;
       AppMethodBeat.o(106354);
       return localObject;
     }
-    localObject = e.a.nih;
+    localObject = e.a.nID;
     AppMethodBeat.o(106354);
     return localObject;
   }
   
-  public static Integer SU(String paramString)
+  public static Integer Wr(String paramString)
   {
     AppMethodBeat.i(106359);
-    paramString = (Integer)nhJ.get(paramString);
+    paramString = (Integer)nIf.get(paramString);
     AppMethodBeat.o(106359);
     return paramString;
   }
   
-  public static void a(Bitmap paramBitmap, a parama)
+  public static void a(Bitmap paramBitmap, d.a parama)
   {
     AppMethodBeat.i(106360);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
       paramBitmap = b.d(paramBitmap);
-      new b.a.1(paramBitmap, new b.c()
-      {
-        public final void a(b paramAnonymousb)
-        {
-          AppMethodBeat.i(106337);
-          if (paramAnonymousb != null)
-          {
-            paramAnonymousb = paramAnonymousb.Zq;
-            if (paramAnonymousb != null)
-            {
-              this.nhM.xy(paramAnonymousb.ZC);
-              AppMethodBeat.o(106337);
-              return;
-            }
-            ac.i("MicroMsg.FloatBallUtil", "getPrimaryColor, palette generated but swatch is null");
-            this.nhM.xy(this.nhN);
-            AppMethodBeat.o(106337);
-            return;
-          }
-          ac.i("MicroMsg.FloatBallUtil", "getPrimaryColor, palette generated fail");
-          this.nhM.xy(this.nhN);
-          AppMethodBeat.o(106337);
-        }
-      }).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Bitmap[] { paramBitmap.mBitmap });
+      new b.a.1(paramBitmap, new d.3(parama)).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Bitmap[] { paramBitmap.mBitmap });
       AppMethodBeat.o(106360);
       return;
     }
-    ac.i("MicroMsg.FloatBallUtil", "getPrimaryColor, bitmap is null");
-    parama.xy(0);
+    ad.i("MicroMsg.FloatBallUtil", "getPrimaryColor, bitmap is null");
+    parama.ye(0);
     AppMethodBeat.o(106360);
   }
   
   public static boolean a(BallInfo paramBallInfo, long paramLong)
   {
-    AppMethodBeat.i(208036);
-    boolean bool = H(paramBallInfo.fto, paramLong);
-    AppMethodBeat.o(208036);
+    AppMethodBeat.i(217320);
+    boolean bool = H(paramBallInfo.fMf, paramLong);
+    AppMethodBeat.o(217320);
     return bool;
   }
   
@@ -156,10 +131,10 @@ public final class d
       AppMethodBeat.o(106362);
       return 0;
     }
-    if (nhL == null) {
-      nhL = Integer.valueOf(aj.aF(paramContext));
+    if (nIh == null) {
+      nIh = Integer.valueOf(al.aF(paramContext));
     }
-    int i = nhL.intValue();
+    int i = nIh.intValue();
     AppMethodBeat.o(106362);
     return i;
   }
@@ -176,25 +151,25 @@ public final class d
     return paramResultReceiver;
   }
   
-  public static int bHj()
+  public static int bLt()
   {
     AppMethodBeat.i(106352);
-    e.bGN();
-    int i = e.bGO();
+    e.bKX();
+    int i = e.bKY();
     AppMethodBeat.o(106352);
     return i;
   }
   
-  public static int bHk()
+  public static int bLu()
   {
     AppMethodBeat.i(106353);
-    e.bGN();
-    int i = e.bGP();
+    e.bKX();
+    int i = e.bKZ();
     AppMethodBeat.o(106353);
     return i;
   }
   
-  public static List<BallInfo> bM(List<BallInfo> paramList)
+  public static List<BallInfo> bN(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106340);
     if (h(paramList))
@@ -208,7 +183,7 @@ public final class d
     return paramList;
   }
   
-  public static List<BallInfo> bN(List<BallInfo> paramList)
+  public static List<BallInfo> bO(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106341);
     if (h(paramList))
@@ -222,14 +197,14 @@ public final class d
     return paramList;
   }
   
-  public static boolean bO(List<BallInfo> paramList)
+  public static boolean bP(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106342);
     if (h(paramList))
     {
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
-        if (!((BallInfo)paramList.next()).nfB)
+        if (!((BallInfo)paramList.next()).nFX)
         {
           AppMethodBeat.o(106342);
           return true;
@@ -240,7 +215,7 @@ public final class d
     return false;
   }
   
-  public static List<BallInfo> bP(List<BallInfo> paramList)
+  public static List<BallInfo> bQ(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106343);
     if (h(paramList))
@@ -250,7 +225,7 @@ public final class d
       while (paramList.hasNext())
       {
         BallInfo localBallInfo = (BallInfo)paramList.next();
-        if (!localBallInfo.nfB) {
+        if (!localBallInfo.nFX) {
           localVector.add(localBallInfo);
         }
       }
@@ -262,7 +237,7 @@ public final class d
     return paramList;
   }
   
-  public static List<BallInfo> bQ(List<BallInfo> paramList)
+  public static List<BallInfo> bR(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106344);
     if (h(paramList))
@@ -272,7 +247,7 @@ public final class d
       while (paramList.hasNext())
       {
         BallInfo localBallInfo = (BallInfo)paramList.next();
-        if (localBallInfo.nfB) {
+        if (localBallInfo.nFX) {
           localVector.add(localBallInfo);
         }
       }
@@ -284,7 +259,7 @@ public final class d
     return paramList;
   }
   
-  public static List<BallInfo> bR(List<BallInfo> paramList)
+  public static List<BallInfo> bS(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106345);
     if (h(paramList))
@@ -294,7 +269,7 @@ public final class d
       while (paramList.hasNext())
       {
         BallInfo localBallInfo = (BallInfo)paramList.next();
-        if (!localBallInfo.nfC) {
+        if (!localBallInfo.nFY) {
           localVector.add(localBallInfo);
         }
       }
@@ -306,7 +281,7 @@ public final class d
     return paramList;
   }
   
-  public static List<BallInfo> bS(List<BallInfo> paramList)
+  public static List<BallInfo> bT(List<BallInfo> paramList)
   {
     AppMethodBeat.i(176972);
     if (h(paramList))
@@ -328,7 +303,7 @@ public final class d
     return paramList;
   }
   
-  public static BallInfo bT(List<BallInfo> paramList)
+  public static BallInfo bU(List<BallInfo> paramList)
   {
     AppMethodBeat.i(176973);
     if (h(paramList))
@@ -348,9 +323,9 @@ public final class d
     return null;
   }
   
-  public static BallInfo bU(List<BallInfo> paramList)
+  public static BallInfo bV(List<BallInfo> paramList)
   {
-    AppMethodBeat.i(208035);
+    AppMethodBeat.i(217319);
     if (h(paramList))
     {
       paramList = paramList.iterator();
@@ -359,24 +334,24 @@ public final class d
         BallInfo localBallInfo = (BallInfo)paramList.next();
         if ((localBallInfo.type == 17) || (localBallInfo.type == 19))
         {
-          AppMethodBeat.o(208035);
+          AppMethodBeat.o(217319);
           return localBallInfo;
         }
       }
     }
-    AppMethodBeat.o(208035);
+    AppMethodBeat.o(217319);
     return null;
   }
   
-  public static List<BallInfo> bV(List<BallInfo> paramList)
+  public static List<BallInfo> bW(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106346);
-    paramList = bP(bR(paramList));
+    paramList = bQ(bS(paramList));
     AppMethodBeat.o(106346);
     return paramList;
   }
   
-  public static int bW(List<BallInfo> paramList)
+  public static int bX(List<BallInfo> paramList)
   {
     AppMethodBeat.i(106357);
     paramList = paramList.iterator();
@@ -390,7 +365,7 @@ public final class d
     AppMethodBeat.i(106347);
     if (f(paramList, paramBallInfo))
     {
-      ac.i("MicroMsg.FloatBallUtil", "filterBallInfoListForFloatMenu, single ball info true");
+      ad.i("MicroMsg.FloatBallUtil", "filterBallInfoListForFloatMenu, single ball info true");
       paramList = new Vector();
       AppMethodBeat.o(106347);
       return paramList;
@@ -402,7 +377,7 @@ public final class d
       while (paramList.hasNext())
       {
         BallInfo localBallInfo = (BallInfo)paramList.next();
-        if (!localBallInfo.nfC) {
+        if (!localBallInfo.nFY) {
           paramBallInfo.add(localBallInfo);
         }
       }
@@ -432,17 +407,17 @@ public final class d
     return false;
   }
   
-  public static int eE(int paramInt1, int paramInt2)
+  public static int eH(int paramInt1, int paramInt2)
   {
     return paramInt1 | paramInt2;
   }
   
-  public static int eF(int paramInt1, int paramInt2)
+  public static int eI(int paramInt1, int paramInt2)
   {
     return (paramInt2 ^ 0xFFFFFFFF) & paramInt1;
   }
   
-  private static boolean eG(int paramInt1, int paramInt2)
+  private static boolean eJ(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) != 0;
   }
@@ -450,10 +425,10 @@ public final class d
   public static boolean ei(Context paramContext)
   {
     AppMethodBeat.i(106361);
-    if (nhK == null) {
-      nhK = Boolean.valueOf(aj.aG(paramContext));
+    if (nIg == null) {
+      nIg = Boolean.valueOf(al.aG(paramContext));
     }
-    boolean bool = nhK.booleanValue();
+    boolean bool = nIg.booleanValue();
     AppMethodBeat.o(106361);
     return bool;
   }
@@ -511,7 +486,7 @@ public final class d
     return bool;
   }
   
-  public static int xv(int paramInt)
+  public static int yb(int paramInt)
   {
     int i = 0;
     while (paramInt != 0)
@@ -522,7 +497,7 @@ public final class d
     return i;
   }
   
-  public static int xw(int paramInt)
+  public static int yc(int paramInt)
   {
     switch (paramInt)
     {
@@ -543,35 +518,35 @@ public final class d
     return 2131690216;
   }
   
-  public static int xx(int paramInt)
+  public static int yd(int paramInt)
   {
     AppMethodBeat.i(106356);
-    if (eG(paramInt, 1))
+    if (eJ(paramInt, 1))
     {
       AppMethodBeat.o(106356);
       return 2131690220;
     }
-    if ((eG(paramInt, 2)) || (eG(paramInt, 128)))
+    if ((eJ(paramInt, 2)) || (eJ(paramInt, 128)))
     {
       AppMethodBeat.o(106356);
       return 2131690223;
     }
-    if (eG(paramInt, 16))
+    if (eJ(paramInt, 16))
     {
       AppMethodBeat.o(106356);
       return 2131690219;
     }
-    if (eG(paramInt, 32))
+    if (eJ(paramInt, 32))
     {
       AppMethodBeat.o(106356);
       return 2131690222;
     }
-    if (eG(paramInt, 64))
+    if (eJ(paramInt, 64))
     {
       AppMethodBeat.o(106356);
       return 2131690221;
     }
-    if (eG(paramInt, 256))
+    if (eJ(paramInt, 256))
     {
       AppMethodBeat.o(106356);
       return 2131691464;
@@ -579,15 +554,10 @@ public final class d
     AppMethodBeat.o(106356);
     return -1;
   }
-  
-  public static abstract interface a
-  {
-    public abstract void xy(int paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.d
  * JD-Core Version:    0.7.0.1
  */

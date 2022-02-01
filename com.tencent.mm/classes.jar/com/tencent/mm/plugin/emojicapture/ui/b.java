@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.emojicapture.ui;
 import d.g.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16})
+@l(gfx={1, 1, 16})
 final class b
   implements Runnable
 {
   b(a parama)
   {
-    this.bYd = parama;
+    this.civ = parama;
   }
 }
 

@@ -9,15 +9,15 @@ public abstract interface b
 {
   public abstract byte[] a(Asset paramAsset);
   
-  public abstract void ewC();
+  public abstract void eKI();
   
-  public abstract GoogleApiClient ewD();
+  public abstract GoogleApiClient eKJ();
   
-  public abstract HashSet<String> ewE();
+  public abstract HashSet<String> eKK();
   
-  public abstract boolean ewF();
+  public abstract boolean eKL();
   
-  public abstract void ewG();
+  public abstract void eKM();
   
   public abstract void finish();
   
@@ -25,9 +25,9 @@ public abstract interface b
   
   public abstract boolean t(Uri paramUri);
   
-  public abstract b.a v(String paramString, byte[] paramArrayOfByte);
-  
   public abstract b.a w(String paramString, byte[] paramArrayOfByte);
+  
+  public abstract b.a x(String paramString, byte[] paramArrayOfByte);
 }
 
 

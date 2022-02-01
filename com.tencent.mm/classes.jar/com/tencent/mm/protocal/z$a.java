@@ -1,18 +1,18 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cud;
+import com.tencent.mm.protocal.protobuf.czn;
 
 public final class z$a
   extends l.d
   implements l.b
 {
-  public cud DJz;
+  public czn FoG;
   
   public z$a()
   {
     AppMethodBeat.i(152472);
-    this.DJz = new cud();
+    this.FoG = new czn();
     AppMethodBeat.o(152472);
   }
   
@@ -29,15 +29,15 @@ public final class z$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(152473);
-    this.DJz.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.DJz.toByteArray();
+    this.FoG.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.FoG.toByteArray();
     AppMethodBeat.o(152473);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.z.a
  * JD-Core Version:    0.7.0.1
  */

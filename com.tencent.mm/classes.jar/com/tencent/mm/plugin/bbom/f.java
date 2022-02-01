@@ -14,7 +14,7 @@ public final class f
 {
   public f()
   {
-    super(com.tencent.mm.br.c.aIo("search"));
+    super(com.tencent.mm.bs.c.aNR("search"));
     AppMethodBeat.i(22355);
     AppMethodBeat.o(22355);
   }
@@ -22,7 +22,7 @@ public final class f
   public final void parallelsDependency()
   {
     AppMethodBeat.i(22356);
-    a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(n.class));
+    a.a(this, com.tencent.mm.kernel.api.c.class).bA(g.ad(n.class));
     AppMethodBeat.o(22356);
   }
 }

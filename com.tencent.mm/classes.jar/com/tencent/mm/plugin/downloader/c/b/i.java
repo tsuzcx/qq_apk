@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int id;
   public String name;
@@ -14,7 +14,7 @@ public final class i
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.id);
+      paramVarArgs.aS(1, this.id);
       if (this.name != null) {
         paramVarArgs.d(2, this.name);
       }
@@ -23,7 +23,7 @@ public final class i
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.id) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.id) + 0;
       paramInt = i;
       if (this.name != null) {
         paramInt = i + f.a.a.b.b.a.e(2, this.name);
@@ -34,9 +34,9 @@ public final class i
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(153069);
@@ -52,11 +52,11 @@ public final class i
         AppMethodBeat.o(153069);
         return -1;
       case 1: 
-        locali.id = locala.LVo.xF();
+        locali.id = locala.NPN.zc();
         AppMethodBeat.o(153069);
         return 0;
       }
-      locali.name = locala.LVo.readString();
+      locali.name = locala.NPN.readString();
       AppMethodBeat.o(153069);
       return 0;
     }
@@ -66,7 +66,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.c.b.i
  * JD-Core Version:    0.7.0.1
  */

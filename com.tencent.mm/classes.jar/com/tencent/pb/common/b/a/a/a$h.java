@@ -6,22 +6,22 @@ import com.google.b.a.e;
 public final class a$h
   extends e
 {
-  public String fzz = "";
+  public String fSO = "";
   public String groupId = "";
   public int roomId = 0;
-  public long tIG = 0L;
   public long timestamp = 0L;
+  public long uLt = 0L;
   
   public a$h()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.bv(1, this.roomId);
-    paramb.n(2, this.tIG);
-    paramb.d(3, this.fzz);
+    paramb.bx(1, this.roomId);
+    paramb.n(2, this.uLt);
+    paramb.d(3, this.fSO);
     if (!this.groupId.equals("")) {
       paramb.d(4, this.groupId);
     }
@@ -31,9 +31,9 @@ public final class a$h
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT() + b.bx(1, this.roomId) + b.p(2, this.tIG) + b.e(3, this.fzz);
+    int j = super.zq() + b.bz(1, this.roomId) + b.p(2, this.uLt) + b.e(3, this.fSO);
     int i = j;
     if (!this.groupId.equals("")) {
       i = j + b.e(4, this.groupId);
@@ -47,7 +47,7 @@ public final class a$h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.h
  * JD-Core Version:    0.7.0.1
  */

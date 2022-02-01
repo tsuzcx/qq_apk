@@ -7,35 +7,36 @@ import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import java.io.File;
 
 public final class ac
 {
-  public static String bdS()
+  public static String bhw()
   {
     AppMethodBeat.i(47023);
-    String str = bmD();
-    i.aSh(str);
+    String str = bqo();
+    i.aYg(str);
     AppMethodBeat.o(47023);
     return str;
   }
   
-  public static String bmD()
+  public static String bqo()
   {
     AppMethodBeat.i(47024);
-    String str = b.aoZ() + "appbrand/jscache";
+    String str = b.arM() + "appbrand/jscache";
     AppMethodBeat.o(47024);
     return str;
   }
   
   @Deprecated
-  public static String bmE()
+  public static String bqp()
   {
     AppMethodBeat.i(47025);
     try
     {
-      IPCString localIPCString = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.gey, a.class);
+      IPCString localIPCString = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.gyi, a.class);
       if (localIPCString == null)
       {
         AppMethodBeat.o(47025);
@@ -46,7 +47,7 @@ public final class ac
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.V8CodeCachePathRetriever", "retrieve ipc ex = %s", new Object[] { localException });
+        ad.e("MicroMsg.V8CodeCachePathRetriever", "retrieve ipc ex = %s", new Object[] { localException });
         str = null;
       }
       String str = str.value;
@@ -56,7 +57,7 @@ public final class ac
   }
   
   @Deprecated
-  public static String bmF()
+  public static String bqq()
   {
     AppMethodBeat.i(47026);
     String str2 = Environment.getExternalStorageDirectory().getAbsolutePath();

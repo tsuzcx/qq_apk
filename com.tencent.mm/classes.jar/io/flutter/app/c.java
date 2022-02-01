@@ -24,51 +24,51 @@ import java.util.Map;
 public class c
   implements m, m.a, m.b, m.d, m.e, m.f
 {
-  private Context GX;
-  private FlutterNativeView KKa;
-  public FlutterView KKb;
-  public final h KKc;
-  private final Map<String, Object> KKd;
-  private final List<m.d> KKe;
-  private final List<m.a> KKf;
-  private final List<m.b> KKg;
-  private final List<m.e> KKh;
-  private final List<m.f> KKi;
+  private Context IR;
+  private FlutterNativeView MAM;
+  public FlutterView MAN;
+  public final h MAO;
+  private final Map<String, Object> MAQ;
+  private final List<m.d> MAR;
+  private final List<m.a> MAS;
+  private final List<m.b> MAT;
+  private final List<m.e> MAU;
+  private final List<m.f> MAV;
   public Activity mActivity;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(9596);
-    this.KKd = new LinkedHashMap(0);
-    this.KKe = new ArrayList(0);
-    this.KKf = new ArrayList(0);
-    this.KKg = new ArrayList(0);
-    this.KKh = new ArrayList(0);
-    this.KKi = new ArrayList(0);
-    this.GX = paramContext;
-    this.KKc = new h();
+    this.MAQ = new LinkedHashMap(0);
+    this.MAR = new ArrayList(0);
+    this.MAS = new ArrayList(0);
+    this.MAT = new ArrayList(0);
+    this.MAU = new ArrayList(0);
+    this.MAV = new ArrayList(0);
+    this.IR = paramContext;
+    this.MAO = new h();
     AppMethodBeat.o(9596);
   }
   
   public c(FlutterNativeView paramFlutterNativeView, Context paramContext)
   {
     AppMethodBeat.i(9595);
-    this.KKd = new LinkedHashMap(0);
-    this.KKe = new ArrayList(0);
-    this.KKf = new ArrayList(0);
-    this.KKg = new ArrayList(0);
-    this.KKh = new ArrayList(0);
-    this.KKi = new ArrayList(0);
-    this.KKa = paramFlutterNativeView;
-    this.GX = paramContext;
-    this.KKc = new h();
+    this.MAQ = new LinkedHashMap(0);
+    this.MAR = new ArrayList(0);
+    this.MAS = new ArrayList(0);
+    this.MAT = new ArrayList(0);
+    this.MAU = new ArrayList(0);
+    this.MAV = new ArrayList(0);
+    this.MAM = paramFlutterNativeView;
+    this.IR = paramContext;
+    this.MAO = new h();
     AppMethodBeat.o(9595);
   }
   
   public final boolean a(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(9599);
-    Iterator localIterator = this.KKe.iterator();
+    Iterator localIterator = this.MAR.iterator();
     while (localIterator.hasNext()) {
       if (((m.d)localIterator.next()).a(paramInt, paramArrayOfString, paramArrayOfInt))
       {
@@ -83,7 +83,7 @@ public class c
   public final boolean a(FlutterNativeView paramFlutterNativeView)
   {
     AppMethodBeat.i(9603);
-    Iterator localIterator = this.KKi.iterator();
+    Iterator localIterator = this.MAV.iterator();
     boolean bool = false;
     if (localIterator.hasNext())
     {
@@ -101,24 +101,24 @@ public class c
     }
   }
   
-  public final boolean aVE(String paramString)
+  public final boolean bbH(String paramString)
   {
     AppMethodBeat.i(9597);
-    boolean bool = this.KKd.containsKey(paramString);
+    boolean bool = this.MAQ.containsKey(paramString);
     AppMethodBeat.o(9597);
     return bool;
   }
   
-  public m.c dq(String paramString)
+  public m.c em(String paramString)
   {
     AppMethodBeat.i(9598);
-    if (this.KKd.containsKey(paramString))
+    if (this.MAQ.containsKey(paramString))
     {
       paramString = new IllegalStateException("Plugin key " + paramString + " is already in use");
       AppMethodBeat.o(9598);
       throw paramString;
     }
-    this.KKd.put(paramString, null);
+    this.MAQ.put(paramString, null);
     paramString = new a(paramString);
     AppMethodBeat.o(9598);
     return paramString;
@@ -127,7 +127,7 @@ public class c
   public final boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(9600);
-    Iterator localIterator = this.KKf.iterator();
+    Iterator localIterator = this.MAS.iterator();
     while (localIterator.hasNext()) {
       if (((m.a)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent))
       {
@@ -142,7 +142,7 @@ public class c
   public final boolean onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(9601);
-    Iterator localIterator = this.KKg.iterator();
+    Iterator localIterator = this.MAT.iterator();
     while (localIterator.hasNext()) {
       if (((m.b)localIterator.next()).onNewIntent(paramIntent))
       {
@@ -157,7 +157,7 @@ public class c
   public final void onUserLeaveHint()
   {
     AppMethodBeat.i(9602);
-    Iterator localIterator = this.KKh.iterator();
+    Iterator localIterator = this.MAU.iterator();
     while (localIterator.hasNext()) {
       ((m.e)localIterator.next()).onUserLeaveHint();
     }
@@ -167,14 +167,14 @@ public class c
   final class a
     implements m.c
   {
-    private final String KKj;
+    private final String MAW;
     
     a(String paramString)
     {
-      this.KKj = paramString;
+      this.MAW = paramString;
     }
     
-    public final Activity Iq()
+    public final Activity JQ()
     {
       AppMethodBeat.i(9624);
       Activity localActivity = c.a(c.this);
@@ -182,7 +182,7 @@ public class c
       return localActivity;
     }
     
-    public final Context Ir()
+    public final Context JR()
     {
       AppMethodBeat.i(9625);
       Context localContext = c.b(c.this);
@@ -190,7 +190,7 @@ public class c
       return localContext;
     }
     
-    public final io.flutter.plugin.a.c Is()
+    public final io.flutter.plugin.a.c JS()
     {
       AppMethodBeat.i(9626);
       FlutterNativeView localFlutterNativeView = c.c(c.this);
@@ -198,7 +198,7 @@ public class c
       return localFlutterNativeView;
     }
     
-    public final io.flutter.view.c It()
+    public final io.flutter.view.c JT()
     {
       AppMethodBeat.i(9627);
       FlutterView localFlutterView = c.d(c.this);
@@ -206,7 +206,7 @@ public class c
       return localFlutterView;
     }
     
-    public final String K(String paramString1, String paramString2)
+    public final String L(String paramString1, String paramString2)
     {
       AppMethodBeat.i(9629);
       paramString1 = FlutterMain.getLookupKeyForAsset(paramString1, paramString2);
@@ -222,7 +222,7 @@ public class c
       return this;
     }
     
-    public final String dr(String paramString)
+    public final String en(String paramString)
     {
       AppMethodBeat.i(9628);
       paramString = FlutterMain.getLookupKeyForAsset(paramString);

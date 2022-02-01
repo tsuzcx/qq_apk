@@ -17,20 +17,23 @@ public class WXWebpageObject
   
   public WXWebpageObject(String paramString)
   {
+    AppMethodBeat.i(196979);
     this.webpageUrl = paramString;
+    AppMethodBeat.o(196979);
   }
   
   public boolean checkArgs()
   {
     AppMethodBeat.i(4023);
-    if ((this.webpageUrl == null) || (this.webpageUrl.length() == 0) || (this.webpageUrl.length() > 10240))
+    String str = this.webpageUrl;
+    if ((str != null) && (str.length() != 0) && (this.webpageUrl.length() <= 10240))
     {
-      Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
       AppMethodBeat.o(4023);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
     AppMethodBeat.o(4023);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

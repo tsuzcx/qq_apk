@@ -2,31 +2,32 @@ package d.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.a.a;
+import d.d.b.a.e;
 import d.l;
 import d.p.b;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/coroutines/SafeContinuation;", "T", "Lkotlin/coroutines/Continuation;", "Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "delegate", "(Lkotlin/coroutines/Continuation;)V", "initialResult", "", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;)V", "callerFrame", "getCallerFrame", "()Lkotlin/coroutines/jvm/internal/CoroutineStackFrame;", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "result", "getOrThrow", "getStackTraceElement", "Ljava/lang/StackTraceElement;", "resumeWith", "", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "Companion", "kotlin-stdlib"})
 public final class h<T>
-  implements d.d.b.a.d, d<T>
+  implements e, d<T>
 {
-  private static final AtomicReferenceFieldUpdater<h<?>, Object> KUb;
+  private static final AtomicReferenceFieldUpdater<h<?>, Object> MLa;
   @Deprecated
-  public static final a KUc;
-  private final d<T> KUa;
+  public static final a MLb;
+  private final d<T> MKZ;
   private volatile Object result;
   
   static
   {
     AppMethodBeat.i(129640);
-    KUc = new a((byte)0);
-    KUb = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
+    MLb = new a((byte)0);
+    MLa = AtomicReferenceFieldUpdater.newUpdater(h.class, Object.class, "result");
     AppMethodBeat.o(129640);
   }
   
   public h(d<? super T> paramd)
   {
-    this(paramd, a.KUe);
+    this(paramd, a.MLd);
     AppMethodBeat.i(129639);
     AppMethodBeat.o(129639);
   }
@@ -34,12 +35,12 @@ public final class h<T>
   private h(d<? super T> paramd, Object paramObject)
   {
     AppMethodBeat.i(129638);
-    this.KUa = paramd;
+    this.MKZ = paramd;
     this.result = paramObject;
     AppMethodBeat.o(129638);
   }
   
-  public final void eK(Object paramObject)
+  public final void eN(Object paramObject)
   {
     AppMethodBeat.i(129635);
     do
@@ -48,17 +49,17 @@ public final class h<T>
       do
       {
         localObject = this.result;
-        if (localObject != a.KUe) {
+        if (localObject != a.MLd) {
           break;
         }
-      } while (!KUb.compareAndSet(this, a.KUe, paramObject));
+      } while (!MLa.compareAndSet(this, a.MLd, paramObject));
       AppMethodBeat.o(129635);
       return;
-      if (localObject != a.KUd) {
+      if (localObject != a.MLc) {
         break;
       }
-    } while (!KUb.compareAndSet(this, a.KUd, a.KUf));
-    this.KUa.eK(paramObject);
+    } while (!MLa.compareAndSet(this, a.MLc, a.MLe));
+    this.MKZ.eN(paramObject);
     AppMethodBeat.o(129635);
     return;
     paramObject = (Throwable)new IllegalStateException("Already resumed");
@@ -66,38 +67,38 @@ public final class h<T>
     throw paramObject;
   }
   
-  public final f fOf()
+  public final f gfE()
   {
     AppMethodBeat.i(129634);
-    f localf = this.KUa.fOf();
+    f localf = this.MKZ.gfE();
     AppMethodBeat.o(129634);
     return localf;
   }
   
-  public final Object fOg()
+  public final Object gfF()
   {
     AppMethodBeat.i(129636);
     Object localObject2 = this.result;
     Object localObject1 = localObject2;
-    if (localObject2 == a.KUe)
+    if (localObject2 == a.MLd)
     {
-      if (KUb.compareAndSet(this, a.KUe, a.KUd))
+      if (MLa.compareAndSet(this, a.MLd, a.MLc))
       {
-        localObject1 = a.KUd;
+        localObject1 = a.MLc;
         AppMethodBeat.o(129636);
         return localObject1;
       }
       localObject1 = this.result;
     }
-    if (localObject1 == a.KUf)
+    if (localObject1 == a.MLe)
     {
-      localObject1 = a.KUd;
+      localObject1 = a.MLc;
       AppMethodBeat.o(129636);
       return localObject1;
     }
     if ((localObject1 instanceof p.b))
     {
-      localObject1 = ((p.b)localObject1).KTh;
+      localObject1 = ((p.b)localObject1).MKf;
       AppMethodBeat.o(129636);
       throw ((Throwable)localObject1);
     }
@@ -105,17 +106,17 @@ public final class h<T>
     return localObject1;
   }
   
-  public final d.d.b.a.d fOh()
+  public final e gfG()
   {
-    d locald2 = this.KUa;
+    d locald2 = this.MKZ;
     d locald1 = locald2;
-    if (!(locald2 instanceof d.d.b.a.d)) {
+    if (!(locald2 instanceof e)) {
       locald1 = null;
     }
-    return (d.d.b.a.d)locald1;
+    return (e)locald1;
   }
   
-  public final StackTraceElement fOi()
+  public final StackTraceElement gfH()
   {
     return null;
   }
@@ -123,12 +124,12 @@ public final class h<T>
   public final String toString()
   {
     AppMethodBeat.i(129637);
-    String str = "SafeContinuation for " + this.KUa;
+    String str = "SafeContinuation for " + this.MKZ;
     AppMethodBeat.o(129637);
     return str;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/SafeContinuation$Companion;", "", "()V", "RESULT", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/coroutines/SafeContinuation;", "kotlin.jvm.PlatformType", "RESULT$annotations", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/coroutines/SafeContinuation$Companion;", "", "()V", "RESULT", "Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;", "Lkotlin/coroutines/SafeContinuation;", "kotlin.jvm.PlatformType", "RESULT$annotations", "kotlin-stdlib"})
   static final class a {}
 }
 

@@ -1,100 +1,50 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.utils.n;
-import com.tencent.mm.protocal.protobuf.ald;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.protocal.protobuf.alf;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.storage.ae;
-import d.g.b.k;
-import d.v;
-import d.y;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.ass;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetHotRelatedList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedListResp;", "feedId", "", "nonceId", "", "relatedEntranceInfo", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedEntranceInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(JLjava/lang/String;Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedEntranceInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "getFeedId", "()J", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderUtils;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsResp;", "type", "", "url", "", "(ILjava/lang/String;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsReq;", "getType", "()I", "getUrl", "()Ljava/lang/String;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class o
-  extends com.tencent.mm.ak.a<alf>
+  extends w<ast>
 {
-  private static final boolean cuo;
-  public static final a qXE;
-  final long dig;
-  private final String qXC;
-  private final ald qXD;
+  private final String TAG;
+  private ass rIB;
+  private final int type;
+  private final String url;
   
-  static
+  public o(String paramString)
   {
-    boolean bool = false;
-    AppMethodBeat.i(201147);
-    qXE = new a((byte)0);
-    if ((h.IS_FLAVOR_PURPLE) || (h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.a.b.eUk())) {
-      bool = true;
-    }
-    cuo = bool;
-    AppMethodBeat.o(201147);
-  }
-  
-  public o(long paramLong, String paramString, ald paramald, anm paramanm)
-  {
-    AppMethodBeat.i(201146);
-    this.dig = paramLong;
-    this.qXC = paramString;
-    this.qXD = paramald;
-    paramString = g.agR();
-    k.g(paramString, "MMKernel.storage()");
-    paramString = paramString.agA();
-    paramald = n.rPN;
-    paramString = paramString.get(n.EI(4), "");
-    if (paramString == null)
-    {
-      paramString = new v("null cannot be cast to non-null type kotlin.String");
-      AppMethodBeat.o(201146);
-      throw paramString;
-    }
-    paramald = com.tencent.mm.bw.b.cc(bs.aLu((String)paramString));
-    b.a locala = new b.a();
-    locala.op(3688);
-    paramString = new ale();
-    paramString.qXP = this.dig;
-    paramString.objectNonceId = this.qXC;
-    q localq = q.qXH;
-    paramString.EDu = q.a(paramanm);
-    paramString.scene = 4;
-    paramString.diw = 4;
-    paramString.qZd = paramald;
-    paramString.EEX = this.qXD;
-    locala.c((com.tencent.mm.bw.a)paramString);
-    locala.d((com.tencent.mm.bw.a)new alf());
-    locala.Am("/cgi-bin/micromsg-bin/findergetrelatedlist");
-    c(locala.aAz());
-    paramald = new StringBuilder("feedId=").append(c.pb(this.dig)).append(" objectNonceId=").append(this.qXC).append(" streamLastBuffer=").append(paramald).append(" related_entrance_info=");
-    if (paramString.EEX == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ac.i("CgiGetHotRelatedList", bool);
-      AppMethodBeat.o(201146);
-      return;
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetHotRelatedList$Companion;", "", "()V", "TAG", "", "isDebug", "", "plugin-finder_release"})
-  public static final class a {}
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class b
-    extends d.g.b.l
-    implements d.g.a.a<y>
-  {
-    b(o paramo)
-    {
-      super();
-    }
+    super(null);
+    AppMethodBeat.i(201072);
+    this.type = 1;
+    this.url = paramString;
+    this.TAG = "Finder.CgiFinderUtils";
+    this.rIB = new ass();
+    paramString = this.rIB;
+    Object localObject = v.rIR;
+    paramString.Gle = v.a(this.rIl);
+    this.rIB.username = u.aAu();
+    this.rIB.type = this.type;
+    this.rIB.url = this.url;
+    paramString = new b.a();
+    paramString.c((a)this.rIB);
+    localObject = new ast();
+    ((ast)localObject).setBaseResponse(new BaseResponse());
+    ((ast)localObject).getBaseResponse().ErrMsg = new cwt();
+    paramString.d((a)localObject);
+    paramString.Dl("/cgi-bin/micromsg-bin/finderutils");
+    paramString.oP(4046);
+    c(paramString.aDC());
+    ad.i(this.TAG, "init type:" + this.type + ", url:" + this.url);
+    AppMethodBeat.o(201072);
   }
 }
 

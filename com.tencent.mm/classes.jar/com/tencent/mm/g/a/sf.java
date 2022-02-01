@@ -2,11 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.LinkedList;
 
 public final class sf
   extends b
 {
-  public a dvj;
+  public a dGI;
+  public b dGJ;
   
   public sf()
   {
@@ -15,22 +17,27 @@ public final class sf
   
   private sf(byte paramByte)
   {
-    AppMethodBeat.i(148369);
-    this.dvj = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91218);
+    this.dGI = new a();
+    this.dGJ = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(148369);
+    AppMethodBeat.o(91218);
   }
   
   public static final class a
   {
-    public byte[] buf;
-    public int len;
+    public LinkedList dGK;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.sf
  * JD-Core Version:    0.7.0.1
  */

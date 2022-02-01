@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.facedetect.b;
 
 public abstract interface b
 {
-  public abstract long cmX();
+  public abstract long csC();
   
-  public abstract byte[] cmY();
+  public abstract byte[] csD();
 }
 
 

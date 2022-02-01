@@ -1,7 +1,7 @@
 package com.tencent.mm.memory.a.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
@@ -13,14 +13,9 @@ public final class g<T, V>
     super(paramInt);
   }
   
-  protected final T avY()
+  protected final T ayL()
   {
     return null;
-  }
-  
-  protected final V r(T paramT, V paramV)
-  {
-    return paramV;
   }
   
   public final Map<T, V> snapshot()
@@ -28,19 +23,24 @@ public final class g<T, V>
     return null;
   }
   
+  protected final V t(T paramT, V paramV)
+  {
+    return paramV;
+  }
+  
   static final class a<T>
   {
-    WeakReference<T> cnv;
+    WeakReference<T> cya;
     T obj;
     
     public a(T paramT)
     {
       AppMethodBeat.i(156519);
       this.obj = null;
-      this.cnv = null;
+      this.cya = null;
       this.obj = paramT;
-      this.cnv = new WeakReference(paramT);
-      ap.n(new Runnable()
+      this.cya = new WeakReference(paramT);
+      aq.o(new Runnable()
       {
         public final void run()
         {

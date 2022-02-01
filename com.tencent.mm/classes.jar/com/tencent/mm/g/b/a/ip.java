@@ -6,77 +6,67 @@ import com.tencent.mm.plugin.report.a;
 public final class ip
   extends a
 {
-  public String dDw = "";
-  public long dHR = 0L;
-  public String dSz = "";
-  public String eln = "";
-  public long elo = 0L;
-  public String elp = "";
-  public long elq = 0L;
-  public String elr = "";
-  public long els = 0L;
+  public String esR;
+  public long esT;
+  public String evk;
+  public long ewv;
+  public long eww;
+  public long ewx;
+  public String ewy;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(116496);
+    AppMethodBeat.i(43631);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHR);
+    ((StringBuffer)localObject).append(this.ewv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eln);
+    ((StringBuffer)localObject).append(this.eww);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elo);
+    ((StringBuffer)localObject).append(this.ewx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elp);
+    ((StringBuffer)localObject).append(this.esR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elq);
+    ((StringBuffer)localObject).append(this.esT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elr);
+    ((StringBuffer)localObject).append(this.evk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dDw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.els);
+    ((StringBuffer)localObject).append(this.ewy);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(116496);
+    awz((String)localObject);
+    AppMethodBeat.o(43631);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(116497);
+    AppMethodBeat.i(43632);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("scene:").append(this.dHR);
+    ((StringBuffer)localObject).append("visitScene:").append(this.ewv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("searchid:").append(this.eln);
+    ((StringBuffer)localObject).append("businessScene:").append(this.eww);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("businesstype:").append(this.elo);
+    ((StringBuffer)localObject).append("innerScene:").append(this.ewx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("docid:").append(this.elp);
+    ((StringBuffer)localObject).append("AppId:").append(this.esR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("timestampInMs:").append(this.elq);
+    ((StringBuffer)localObject).append("AppType:").append(this.esT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("expand2:").append(this.elr);
+    ((StringBuffer)localObject).append("path:").append(this.evk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("query:").append(this.dSz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sessionid:").append(this.dDw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("resultsubtype:").append(this.els);
+    ((StringBuffer)localObject).append("openRate:").append(this.ewy);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(116497);
+    AppMethodBeat.o(43632);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16033;
+    return 18852;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ip
  * JD-Core Version:    0.7.0.1
  */

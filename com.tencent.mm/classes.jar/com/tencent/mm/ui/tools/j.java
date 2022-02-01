@@ -10,7 +10,7 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
 {
@@ -18,7 +18,7 @@ public final class j
   public static final void a(View paramView, long paramLong, float paramFloat, a parama)
   {
     AppMethodBeat.i(143109);
-    if ((paramView == null) || (d.la(14)))
+    if ((paramView == null) || (d.lz(14)))
     {
       AppMethodBeat.o(143109);
       return;
@@ -27,7 +27,7 @@ public final class j
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    ac.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
+    ad.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
     paramView.animate().cancel();
     paramView.animate().setListener(null);
     localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772074);
@@ -42,14 +42,14 @@ public final class j
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(143106);
-        this.IRY.bdd();
+        this.KJc.bgH();
         AppMethodBeat.o(143106);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(143105);
-        this.IRY.onAnimationEnd();
+        this.KJc.onAnimationEnd();
         AppMethodBeat.o(143105);
       }
       
@@ -64,7 +64,7 @@ public final class j
   public static void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
   {
     AppMethodBeat.i(143110);
-    if ((paramView == null) || (d.la(11)))
+    if ((paramView == null) || (d.lz(11)))
     {
       AppMethodBeat.o(143110);
       return;
@@ -87,7 +87,7 @@ public final class j
   public static final void x(View paramView, float paramFloat)
   {
     AppMethodBeat.i(143107);
-    if ((paramView == null) || (d.la(11)))
+    if ((paramView == null) || (d.lz(11)))
     {
       AppMethodBeat.o(143107);
       return;
@@ -105,7 +105,7 @@ public final class j
   public static final void y(View paramView, float paramFloat)
   {
     AppMethodBeat.i(143108);
-    if ((paramView == null) || (d.la(14)))
+    if ((paramView == null) || (d.lz(14)))
     {
       AppMethodBeat.o(143108);
       return;
@@ -122,7 +122,7 @@ public final class j
   
   public static abstract interface a
   {
-    public abstract void bdd();
+    public abstract void bgH();
     
     public abstract void onAnimationEnd();
   }

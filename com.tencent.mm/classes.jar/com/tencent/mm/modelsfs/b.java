@@ -8,13 +8,13 @@ import java.io.FilterOutputStream;
 public final class b
   extends FilterOutputStream
 {
-  private a hRF;
+  private a ikT;
   
   public b(e parame, long paramLong)
   {
     super(i.d(parame, false));
     AppMethodBeat.i(155982);
-    this.hRF = new a(paramLong);
+    this.ikT = new a(paramLong);
     AppMethodBeat.o(155982);
   }
   
@@ -22,8 +22,8 @@ public final class b
   {
     AppMethodBeat.i(155984);
     super.close();
-    if (this.hRF != null) {
-      this.hRF.free();
+    if (this.ikT != null) {
+      this.ikT.free();
     }
     AppMethodBeat.o(155984);
   }
@@ -31,7 +31,7 @@ public final class b
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(155983);
-    this.hRF.z(paramArrayOfByte, paramInt2);
+    this.ikT.z(paramArrayOfByte, paramInt2);
     super.write(paramArrayOfByte, paramInt1, paramInt2);
     AppMethodBeat.o(155983);
   }

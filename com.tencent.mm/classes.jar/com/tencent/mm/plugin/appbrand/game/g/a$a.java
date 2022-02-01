@@ -6,11 +6,11 @@ import java.lang.ref.WeakReference;
 
 public abstract class a$a
 {
-  protected WeakReference<MagicBrushView> jTt;
+  protected WeakReference<MagicBrushView> knH;
   
   private a$a(MagicBrushView paramMagicBrushView)
   {
-    this.jTt = new WeakReference(paramMagicBrushView);
+    this.knH = new WeakReference(paramMagicBrushView);
   }
   
   abstract void a(b.b paramb);
@@ -21,13 +21,13 @@ public abstract class a$a
   
   abstract void b(d<String> paramd);
   
-  abstract void bdY();
+  abstract void bhC();
   
-  public abstract VideoTransPara bdZ();
+  public abstract VideoTransPara bhD();
   
-  public final MagicBrushView bea()
+  public final MagicBrushView bhE()
   {
-    return (MagicBrushView)this.jTt.get();
+    return (MagicBrushView)this.knH.get();
   }
   
   abstract void c(d<String> paramd);

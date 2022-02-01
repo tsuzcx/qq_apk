@@ -10,13 +10,13 @@ import io.flutter.view.FlutterView;
 final class a$1
   extends FlutterView
 {
-  private final b<String> KOI;
+  private final b<String> MFF;
   
   a$1(Context paramContext, FlutterNativeView paramFlutterNativeView)
   {
     super(paramContext, null, paramFlutterNativeView);
     AppMethodBeat.i(159068);
-    this.KOI = new b(this, "flutter/lifecycle", p.KPf);
+    this.MFF = new b(this, "flutter/lifecycle", p.MGc);
     AppMethodBeat.o(159068);
   }
   
@@ -31,7 +31,7 @@ final class a$1
   public final void onPostResume()
   {
     AppMethodBeat.i(159070);
-    this.KOI.eC("AppLifecycleState.resumed");
+    this.MFF.eF("AppLifecycleState.resumed");
     AppMethodBeat.o(159070);
   }
 }

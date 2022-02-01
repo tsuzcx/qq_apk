@@ -5,29 +5,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
 {
   String action;
-  String fnC;
-  int uWA;
-  byte[] uWs;
-  long uWt;
-  long uWu;
-  long uWv;
-  String uWw;
-  int uWx;
-  String uWy;
-  String uWz;
+  String fFK;
+  byte[] vZA;
+  long vZB;
+  long vZC;
+  long vZD;
+  String vZE;
+  int vZF;
+  String vZG;
+  String vZH;
+  int vZI;
   
   public d(String paramString)
   {
     AppMethodBeat.i(26522);
-    this.uWx = 1;
+    this.vZF = 1;
     this.action = new String(paramString);
     AppMethodBeat.o(26522);
   }
   
-  public final void amh(String paramString)
+  public final void aqW(String paramString)
   {
     AppMethodBeat.i(26523);
-    this.uWw = new String(paramString);
+    this.vZE = new String(paramString);
     AppMethodBeat.o(26523);
   }
 }

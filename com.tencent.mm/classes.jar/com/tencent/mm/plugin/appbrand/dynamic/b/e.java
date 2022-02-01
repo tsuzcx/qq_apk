@@ -8,17 +8,17 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class e
 {
-  private static volatile e jLO;
-  private Map<String, SoftReference<WxaPkgWrappingInfo>> gen;
+  private static volatile e kfZ;
+  private Map<String, SoftReference<WxaPkgWrappingInfo>> gxX;
   
   private e()
   {
     AppMethodBeat.i(121271);
-    this.gen = new ConcurrentHashMap();
+    this.gxX = new ConcurrentHashMap();
     AppMethodBeat.o(121271);
   }
   
-  public static WxaPkgWrappingInfo Lh(String paramString)
+  public static WxaPkgWrappingInfo OB(String paramString)
   {
     AppMethodBeat.i(121273);
     if ((paramString == null) || (paramString.length() == 0))
@@ -26,7 +26,7 @@ public class e
       AppMethodBeat.o(121273);
       return null;
     }
-    paramString = (SoftReference)bct().gen.get(paramString);
+    paramString = (SoftReference)bfX().gxX.get(paramString);
     if (paramString != null)
     {
       paramString = (WxaPkgWrappingInfo)paramString.get();
@@ -45,21 +45,21 @@ public class e
       AppMethodBeat.o(121272);
       return false;
     }
-    bct().gen.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
+    bfX().gxX.put(paramString, new SoftReference(paramWxaPkgWrappingInfo));
     AppMethodBeat.o(121272);
     return true;
   }
   
-  private static e bct()
+  private static e bfX()
   {
     AppMethodBeat.i(121270);
-    if (jLO == null) {}
+    if (kfZ == null) {}
     try
     {
-      if (jLO == null) {
-        jLO = new e();
+      if (kfZ == null) {
+        kfZ = new e();
       }
-      e locale = jLO;
+      e locale = kfZ;
       AppMethodBeat.o(121270);
       return locale;
     }
@@ -72,7 +72,7 @@ public class e
   public static void removeAll()
   {
     AppMethodBeat.i(121274);
-    bct().gen.clear();
+    bfX().gxX.clear();
     AppMethodBeat.o(121274);
   }
 }

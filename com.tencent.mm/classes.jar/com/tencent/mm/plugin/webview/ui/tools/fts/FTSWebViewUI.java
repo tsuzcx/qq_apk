@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.app.Activity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.am;
 
 public class FTSWebViewUI
   extends FTSBaseWebViewUI
 {
-  private void eFj()
+  private void eUf()
   {
     AppMethodBeat.i(80714);
     if (this.scene == 21) {
-      ai.Ut(19);
+      am.Wm(19);
     }
     AppMethodBeat.o(80714);
   }
   
-  public final void bvh()
+  public final void bzn()
   {
     AppMethodBeat.i(80708);
-    super.bvh();
-    ai.Ur(this.scene);
+    super.bzn();
+    am.Wk(this.scene);
     if (this.scene == 21) {
-      ai.Ut(17);
+      am.Wm(17);
     }
     AppMethodBeat.o(80708);
   }
   
-  public final void eEo()
+  public final void eTg()
   {
     AppMethodBeat.i(80715);
-    eFj();
-    super.eEo();
+    eUf();
+    super.eTg();
     AppMethodBeat.o(80715);
   }
   
@@ -48,7 +48,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80712);
     super.onBackPressed();
-    eFj();
+    eUf();
     AppMethodBeat.o(80712);
   }
   
@@ -64,10 +64,10 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80711);
     super.onDestroy();
-    ai.exB();
-    ai.exC();
+    am.eMs();
+    am.eMt();
     if (this.scene == 21) {
-      ai.Ut(18);
+      am.Wm(18);
     }
     AppMethodBeat.o(80711);
   }
@@ -76,7 +76,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80710);
     super.onPause();
-    ai.exA();
+    am.eMr();
     AppMethodBeat.o(80710);
   }
   
@@ -84,7 +84,7 @@ public class FTSWebViewUI
   {
     AppMethodBeat.i(80709);
     super.onResume();
-    ai.exz();
+    am.eMq();
     AppMethodBeat.o(80709);
   }
   
@@ -96,7 +96,7 @@ public class FTSWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSWebViewUI
  * JD-Core Version:    0.7.0.1
  */

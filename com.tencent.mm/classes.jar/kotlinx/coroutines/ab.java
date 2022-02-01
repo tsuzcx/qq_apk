@@ -1,109 +1,103 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a;
-import d.d.d;
 import d.d.e;
 import d.d.f;
-import d.d.f.b;
 import d.d.f.c;
-import d.d.g;
-import d.v;
+import d.l;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlinx.coroutines.b.c;
+import kotlinx.coroutines.internal.v;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/ContinuationInterceptor;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatchYield", "interceptContinuation", "Lkotlin/coroutines/Continuation;", "T", "continuation", "isDispatchNeeded", "", "plus", "other", "releaseInterceptedContinuation", "toString", "", "Key", "kotlinx-coroutines-core"})
-public abstract class ab
-  extends a
-  implements e
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"COROUTINES_SCHEDULER_PROPERTY_NAME", "", "DEBUG_THREAD_NAME_SEPARATOR", "useCoroutinesScheduler", "", "getUseCoroutinesScheduler", "()Z", "coroutineName", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineName", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/String;", "createDefaultDispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "withCoroutineContext", "T", "context", "countOrElement", "", "block", "Lkotlin/Function0;", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "newCoroutineContext", "Lkotlinx/coroutines/CoroutineScope;", "kotlinx-coroutines-core"})
+public final class ab
 {
-  public static final a LQV = new a((byte)0);
+  private static final boolean NHP;
   
-  public ab()
+  static
   {
-    super((f.c)e.KTW);
-  }
-  
-  public abstract void a(f paramf, Runnable paramRunnable);
-  
-  public final <T> d<T> b(d<? super T> paramd)
-  {
-    return (d)new at(this, paramd);
-  }
-  
-  public final void c(d<?> paramd)
-  {
-    if (paramd == null) {
-      throw new v("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<*>");
-    }
-    Object localObject = ((at)paramd)._reusableCancellableContinuation;
-    paramd = localObject;
-    if (!(localObject instanceof k)) {
-      paramd = null;
-    }
-    paramd = (k)paramd;
-    if (paramd != null) {
-      paramd.gdr();
-    }
-  }
-  
-  public boolean gdB()
-  {
-    return true;
-  }
-  
-  public <E extends f.b> E get(f.c<E> paramc)
-  {
-    d.g.b.k.h(paramc, "key");
-    if ((paramc instanceof d.d.b))
+    AppMethodBeat.i(118187);
+    Object localObject = v.bdj("kotlinx.coroutines.scheduler");
+    if (localObject == null) {}
+    for (;;)
     {
-      if (((d.d.b)paramc).a(getKey()))
+      boolean bool = true;
+      label17:
+      NHP = bool;
+      AppMethodBeat.o(118187);
+      return;
+      switch (((String)localObject).hashCode())
       {
-        f.b localb = ((d.d.b)paramc).a((f.b)this);
-        paramc = localb;
-        if ((localb instanceof f.b)) {}
       }
-      else
+      do
       {
-        paramc = null;
-      }
-      return paramc;
+        do
+        {
+          do
+          {
+            localObject = (Throwable)new IllegalStateException(("System property 'kotlinx.coroutines.scheduler' has unrecognized value '" + (String)localObject + '\'').toString());
+            AppMethodBeat.o(118187);
+            throw ((Throwable)localObject);
+          } while (!((String)localObject).equals(""));
+          break;
+        } while (!((String)localObject).equals("off"));
+        bool = false;
+        break label17;
+      } while (!((String)localObject).equals("on"));
     }
-    if (e.KTW == paramc) {
-      return (f.b)this;
-    }
-    return null;
   }
   
-  public f minusKey(f.c<?> paramc)
+  public static final f a(ah paramah, f paramf)
   {
-    d.g.b.k.h(paramc, "key");
-    if ((paramc instanceof d.d.b))
+    AppMethodBeat.i(118185);
+    paramf = paramah.guE().plus(paramf);
+    if (am.getDEBUG()) {}
+    for (paramah = paramf.plus((f)new af(am.gvf().incrementAndGet())); (paramf != az.gvn()) && (paramf.get((f.c)e.MKV) == null); paramah = paramf)
     {
-      if ((((d.d.b)paramc).a(getKey())) && (((d.d.b)paramc).a((f.b)this) != null)) {
-        return (f)g.KTZ;
-      }
-      return (f)this;
+      paramah = paramah.plus((f)az.gvn());
+      AppMethodBeat.o(118185);
+      return paramah;
     }
-    if (e.KTW == paramc) {
-      return (f)g.KTZ;
-    }
-    return (f)this;
+    AppMethodBeat.o(118185);
+    return paramah;
   }
   
-  public String toString()
+  public static final String a(f paramf)
   {
-    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlin/coroutines/ContinuationInterceptor;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    extends d.d.b<e, ab>
-  {
-    private a()
+    AppMethodBeat.i(118186);
+    if (!am.getDEBUG())
     {
-      super((d.g.a.b)1.LQW);
-      AppMethodBeat.i(191094);
-      AppMethodBeat.o(191094);
+      AppMethodBeat.o(118186);
+      return null;
     }
+    af localaf = (af)paramf.get((f.c)af.NHV);
+    if (localaf == null)
+    {
+      AppMethodBeat.o(118186);
+      return null;
+    }
+    paramf = (ag)paramf.get((f.c)ag.NHW);
+    if (paramf != null)
+    {
+      String str = paramf.name;
+      paramf = str;
+      if (str != null) {}
+    }
+    else
+    {
+      paramf = "coroutine";
+    }
+    paramf = paramf + '#' + localaf.id;
+    AppMethodBeat.o(118186);
+    return paramf;
+  }
+  
+  public static final ac gva()
+  {
+    if (NHP) {
+      return (ac)c.NKP;
+    }
+    return (ac)t.NHK;
   }
 }
 

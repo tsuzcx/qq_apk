@@ -1,6 +1,6 @@
 package com.tencent.mm.roomsdk.a;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 
 public abstract class a
   extends n

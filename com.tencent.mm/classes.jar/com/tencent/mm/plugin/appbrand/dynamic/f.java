@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.bw.a;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.bx.a;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.modelappbrand.u;
-import com.tencent.mm.protocal.protobuf.dvy;
-import com.tencent.mm.protocal.protobuf.dvz;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.eby;
+import com.tencent.mm.protocal.protobuf.ebz;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,28 +20,28 @@ import java.util.regex.Pattern;
 
 public final class f
 {
-  private static f jKP;
-  Map<String, b> jKQ;
-  private IPCRunCgi.a jKR;
+  private static f kfa;
+  Map<String, b> kfb;
+  private IPCRunCgi.a kfc;
   
   static
   {
     AppMethodBeat.i(121172);
-    jKP = new f();
+    kfa = new f();
     AppMethodBeat.o(121172);
   }
   
   public f()
   {
     AppMethodBeat.i(121166);
-    this.jKQ = new ConcurrentHashMap();
-    this.jKR = new IPCRunCgi.a()
+    this.kfb = new ConcurrentHashMap();
+    this.kfc = new IPCRunCgi.a()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb)
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.b paramAnonymousb)
       {
         AppMethodBeat.i(121163);
         if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-          ac.e("MicroMsg.DynamicPageViewStateMonitor", "widget alarm cgi fail, msg[%s]", new Object[] { paramAnonymousString });
+          ad.e("MicroMsg.DynamicPageViewStateMonitor", "widget alarm cgi fail, msg[%s]", new Object[] { paramAnonymousString });
         }
         AppMethodBeat.o(121163);
       }
@@ -49,18 +49,18 @@ public final class f
     AppMethodBeat.o(121166);
   }
   
-  public static void KY(String paramString)
+  public static void Os(String paramString)
   {
     AppMethodBeat.i(121168);
     Bundle localBundle = new Bundle();
-    paramString = KZ(paramString);
+    paramString = Ot(paramString);
     localBundle.putString("id", paramString);
     localBundle.putInt("widgetState", 2109);
-    h.a(i.bcg().La(paramString), localBundle, a.class, null);
+    h.a(i.bfK().Ou(paramString), localBundle, a.class, null);
     AppMethodBeat.o(121168);
   }
   
-  private static String KZ(String paramString)
+  private static String Ot(String paramString)
   {
     AppMethodBeat.i(121170);
     if (TextUtils.isEmpty(paramString))
@@ -83,9 +83,9 @@ public final class f
     return "";
   }
   
-  public static f bce()
+  public static f bfI()
   {
-    return jKP;
+    return kfa;
   }
   
   public static void n(int paramInt, String paramString1, String paramString2)
@@ -96,24 +96,24 @@ public final class f
     localBundle.putInt("widgetState", paramInt);
     localBundle.putString("appid", paramString1);
     localBundle.putString("sceneNote", paramString2);
-    h.a(i.bcg().La(KZ(paramString2)), localBundle, a.class, null);
+    h.a(i.bfK().Ou(Ot(paramString2)), localBundle, a.class, null);
     AppMethodBeat.o(121169);
   }
   
-  public final boolean KX(String paramString)
+  public final boolean Or(String paramString)
   {
     AppMethodBeat.i(176167);
-    if (!this.jKQ.containsKey(paramString))
+    if (!this.kfb.containsKey(paramString))
     {
-      ac.w("MicroMsg.DynamicPageViewStateMonitor", "OnDettach but no keylist found, widgetId[%s]", new Object[] { paramString });
+      ad.w("MicroMsg.DynamicPageViewStateMonitor", "OnDettach but no keylist found, widgetId[%s]", new Object[] { paramString });
       AppMethodBeat.o(176167);
       return false;
     }
-    b localb = (b)this.jKQ.get(paramString);
+    b localb = (b)this.kfb.get(paramString);
     Object localObject1 = "";
     try
     {
-      localObject2 = localb.jKU.toString();
+      localObject2 = localb.kff.toString();
       localObject1 = localObject2;
     }
     catch (NullPointerException localNullPointerException)
@@ -122,8 +122,8 @@ public final class f
       label69:
       break label69;
     }
-    ac.i("MicroMsg.DynamicPageViewStateMonitor", "OnDettach ready to report keyList[%s]", new Object[] { localObject1 });
-    if (localb.jKU.size() <= 0)
+    ad.i("MicroMsg.DynamicPageViewStateMonitor", "OnDettach ready to report keyList[%s]", new Object[] { localObject1 });
+    if (localb.kff.size() <= 0)
     {
       AppMethodBeat.o(176167);
       return true;
@@ -131,19 +131,19 @@ public final class f
     localObject1 = new b.a();
     ((b.a)localObject1).funcId = 2653;
     ((b.a)localObject1).uri = "/cgi-bin/mmux-bin/wxaapp/wxaapp_widgetalarm";
-    localObject2 = new dvy();
-    ((dvy)localObject2).djj = u.zj(paramString);
-    ((dvy)localObject2).id = localb.cFI;
-    ((dvy)localObject2).Gdo = localb.jKU;
-    ((dvy)localObject2).query = localb.query;
-    ((b.a)localObject1).hvt = ((a)localObject2);
-    ((b.a)localObject1).hvu = new dvz();
-    IPCRunCgi.a(((b.a)localObject1).aAz(), this.jKR);
+    localObject2 = new eby();
+    ((eby)localObject2).duW = u.Ci(paramString);
+    ((eby)localObject2).id = localb.cQN;
+    ((eby)localObject2).HOu = localb.kff;
+    ((eby)localObject2).query = localb.query;
+    ((b.a)localObject1).hNM = ((a)localObject2);
+    ((b.a)localObject1).hNN = new ebz();
+    IPCRunCgi.a(((b.a)localObject1).aDC(), this.kfc);
     AppMethodBeat.o(176167);
     return true;
   }
   
-  public final boolean bv(String paramString, int paramInt)
+  public final boolean bx(String paramString, int paramInt)
   {
     AppMethodBeat.i(121167);
     if (TextUtils.isEmpty(paramString))
@@ -151,9 +151,9 @@ public final class f
       AppMethodBeat.o(121167);
       return false;
     }
-    if (!this.jKQ.containsKey(paramString))
+    if (!this.kfb.containsKey(paramString))
     {
-      ac.w("MicroMsg.DynamicPageViewStateMonitor", "no keyList exists, widgetId[%s]", new Object[] { paramString });
+      ad.w("MicroMsg.DynamicPageViewStateMonitor", "no keyList exists, widgetId[%s]", new Object[] { paramString });
       AppMethodBeat.o(121167);
       return false;
     }
@@ -162,10 +162,10 @@ public final class f
     }
     for (;;)
     {
-      boolean bool = ((b)this.jKQ.get(paramString)).jKU.add(Integer.valueOf(paramInt));
+      boolean bool = ((b)this.kfb.get(paramString)).kff.add(Integer.valueOf(paramInt));
       AppMethodBeat.o(121167);
       return bool;
-      j.bci().K(paramString, 628, 9);
+      j.bfM().M(paramString, 628, 9);
     }
   }
   
@@ -176,22 +176,22 @@ public final class f
   public static final class b
   {
     String appId;
-    int cFI;
-    String jKT;
-    LinkedList<Integer> jKU;
+    int cQN;
+    String kfe;
+    LinkedList<Integer> kff;
     String query;
     
     public b(String paramString1, String paramString2, int paramInt, String paramString3)
     {
       AppMethodBeat.i(121165);
-      this.cFI = 0;
-      this.jKT = "";
+      this.cQN = 0;
+      this.kfe = "";
       this.appId = "";
       this.query = "";
-      this.jKU = new LinkedList();
-      this.jKT = paramString1;
+      this.kff = new LinkedList();
+      this.kfe = paramString1;
       this.appId = paramString2;
-      this.cFI = paramInt;
+      this.cQN = paramInt;
       this.query = paramString3;
       AppMethodBeat.o(121165);
     }

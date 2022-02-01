@@ -11,14 +11,14 @@ import java.util.PriorityQueue;
 public final class c
   implements m
 {
-  private final p aRA;
-  private int aRB;
-  private boolean aRC;
-  private final k aRv;
-  private final long aRw;
-  private final long aRx;
-  private final long aRy;
-  private final long aRz;
+  private final k bbQ;
+  private final long bbR;
+  private final long bbS;
+  private final long bbT;
+  private final long bbU;
+  private final p bbV;
+  private int bbW;
+  private boolean bbX;
   
   public c()
   {
@@ -40,25 +40,25 @@ public final class c
   private c(k paramk, int paramInt1, int paramInt2, long paramLong1, long paramLong2, byte paramByte)
   {
     AppMethodBeat.i(91858);
-    this.aRv = paramk;
-    this.aRw = (paramInt1 * 1000L);
-    this.aRx = (paramInt2 * 1000L);
-    this.aRy = (paramLong1 * 1000L);
-    this.aRz = (paramLong2 * 1000L);
-    this.aRA = null;
+    this.bbQ = paramk;
+    this.bbR = (paramInt1 * 1000L);
+    this.bbS = (paramInt2 * 1000L);
+    this.bbT = (paramLong1 * 1000L);
+    this.bbU = (paramLong2 * 1000L);
+    this.bbV = null;
     AppMethodBeat.o(91858);
   }
   
   private void reset(boolean paramBoolean)
   {
     AppMethodBeat.i(91864);
-    this.aRB = 0;
-    if ((this.aRA != null) && (this.aRC)) {
-      this.aRA.vM();
+    this.bbW = 0;
+    if ((this.bbV != null) && (this.bbX)) {
+      this.bbV.xj();
     }
-    this.aRC = false;
+    this.bbX = false;
     if (paramBoolean) {
-      this.aRv.reset();
+      this.bbQ.reset();
     }
     AppMethodBeat.o(91864);
   }
@@ -67,22 +67,22 @@ public final class c
   {
     int i = 0;
     AppMethodBeat.i(91860);
-    this.aRB = 0;
+    this.bbW = 0;
     while (i < paramArrayOfr.length)
     {
-      if (paramg.bum[i] != null) {
-        this.aRB += x.fe(paramArrayOfr[i].getTrackType());
+      if (paramg.bEB[i] != null) {
+        this.bbW += x.fh(paramArrayOfr[i].getTrackType());
       }
       i += 1;
     }
-    this.aRv.eU(this.aRB);
+    this.bbQ.eY(this.bbW);
     AppMethodBeat.o(91860);
   }
   
   public final boolean b(long paramLong, boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (long l = this.aRz; (l <= 0L) || (paramLong >= l); l = this.aRy) {
+    for (long l = this.bbU; (l <= 0L) || (paramLong >= l); l = this.bbT) {
       return true;
     }
     return false;
@@ -95,23 +95,23 @@ public final class c
     AppMethodBeat.o(91861);
   }
   
-  public final void rB()
+  public final void ta()
   {
     AppMethodBeat.i(91859);
     reset(false);
     AppMethodBeat.o(91859);
   }
   
-  public final void rC()
+  public final void tb()
   {
     AppMethodBeat.i(91862);
     reset(true);
     AppMethodBeat.o(91862);
   }
   
-  public final b rD()
+  public final b tc()
   {
-    return this.aRv;
+    return this.bbQ;
   }
   
   public final boolean x(long paramLong)
@@ -122,21 +122,21 @@ public final class c
     int j;
     boolean bool1;
     p localp;
-    if (paramLong > this.aRx)
+    if (paramLong > this.bbS)
     {
       i = 0;
-      if (this.aRv.vd() < this.aRB) {
+      if (this.bbQ.wC() < this.bbW) {
         break label187;
       }
       j = 1;
-      boolean bool3 = this.aRC;
+      boolean bool3 = this.bbX;
       if (i != 2)
       {
         bool1 = bool2;
         if (i == 1)
         {
           bool1 = bool2;
-          if (this.aRC)
+          if (this.bbX)
           {
             bool1 = bool2;
             if (j != 0) {}
@@ -147,25 +147,25 @@ public final class c
       {
         bool1 = true;
       }
-      this.aRC = bool1;
-      if ((this.aRA != null) && (this.aRC != bool3))
+      this.bbX = bool1;
+      if ((this.bbV != null) && (this.bbX != bool3))
       {
-        if (!this.aRC) {
+        if (!this.bbX) {
           break label206;
         }
-        localp = this.aRA;
+        localp = this.bbV;
       }
     }
     for (;;)
     {
       synchronized (localp.lock)
       {
-        localp.bwN.add(Integer.valueOf(0));
-        localp.bwO = Math.max(localp.bwO, 0);
-        bool1 = this.aRC;
+        localp.bHb.add(Integer.valueOf(0));
+        localp.bHc = Math.max(localp.bHc, 0);
+        bool1 = this.bbX;
         AppMethodBeat.o(91863);
         return bool1;
-        if (paramLong < this.aRw)
+        if (paramLong < this.bbR)
         {
           i = 2;
           break;
@@ -176,7 +176,7 @@ public final class c
         j = 0;
       }
       label206:
-      this.aRA.vM();
+      this.bbV.xj();
     }
   }
 }

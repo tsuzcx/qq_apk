@@ -18,6 +18,7 @@ import com.tencent.xweb.xwalk.updater.f;
 import com.tencent.xweb.y;
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 import org.xwalk.core.Log;
 import org.xwalk.core.XWalkDecompressor;
 import org.xwalk.core.XWalkEnvironment;
@@ -30,21 +31,21 @@ import org.xwalk.core.XWalkUpdater.XWalkBackgroundUpdateListener;
 public class p
   implements XWalkInitializer.XWalkInitListener, XWalkUpdater.XWalkBackgroundUpdateListener
 {
-  static p KGW;
-  XWalkInitializer KGX;
-  XWalkUpdater KGY;
+  static p Mxw;
+  XWalkInitializer Mxx;
+  XWalkUpdater Mxy;
   protected Context mContext;
   
   public p(Context paramContext)
   {
     AppMethodBeat.i(154475);
     this.mContext = paramContext;
-    this.KGX = new XWalkInitializer(this, paramContext);
-    this.KGY = new XWalkUpdater(this, paramContext);
+    this.Mxx = new XWalkInitializer(this, paramContext);
+    this.Mxy = new XWalkUpdater(this, paramContext);
     AppMethodBeat.o(154475);
   }
   
-  public static void I(Context paramContext, boolean paramBoolean)
+  public static void K(Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(154460);
     SharedPreferences localSharedPreferences = XWalkEnvironment.getSharedPreferencesForUpdateConfig();
@@ -58,7 +59,7 @@ public class p
     if ((paramBoolean) || (l2 < l1) || (l2 - l1 > 259200000L)) {}
     try
     {
-      lp(paramContext);
+      lB(paramContext);
       localSharedPreferences.edit().putLong("LAST_TRY_CLEAR_APK_TIME", l2).commit();
       AppMethodBeat.o(154460);
       return;
@@ -75,10 +76,10 @@ public class p
   public static void a(Context paramContext, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(154459);
-    if (KGW == null) {
-      KGW = new p(paramContext);
+    if (Mxw == null) {
+      Mxw = new p(paramContext);
     }
-    g.fKG();
+    g.gcb();
     if (paramHashMap != null) {}
     for (String str = (String)paramHashMap.get("UpdaterCheckType");; str = null)
     {
@@ -91,49 +92,49 @@ public class p
       }
       XWalkUpdater.tryInstallFromEmebed();
       if (!XWalkEnvironment.isTestVersion(XWalkEnvironment.getInstalledNewstVersionForCurAbi())) {
-        zd(false);
+        zQ(false);
       }
       int i;
-      if (b.c("LOAD_CORE", WebView.c.KzZ).KCU >= 6L)
+      if (b.c("LOAD_CORE", WebView.c.Mqu).Mtu >= 6L)
       {
         i = 1;
         if (i == 0) {
           break label201;
         }
-        g.Cf(252L);
-        if (!"true".equalsIgnoreCase(a.mx("enable_check_dex", "tools"))) {
+        g.Fh(252L);
+        if (!"true".equalsIgnoreCase(a.mV("enable_check_dex", "tools"))) {
           break label201;
         }
         i = 1;
       }
       for (;;)
       {
-        if ((i != 0) && (com.tencent.xweb.internal.c.ci("check_need_fix_dex", 43200000L)))
+        if ((i != 0) && (com.tencent.xweb.internal.c.co("check_need_fix_dex", 43200000L)))
         {
-          fLD();
-          if (!fLF())
+          gcZ();
+          if (!gdb())
           {
-            g.Cf(248L);
-            agd(XWalkEnvironment.getInstalledNewstVersionForCurAbi());
+            g.Fh(248L);
+            aiE(XWalkEnvironment.getInstalledNewstVersionForCurAbi());
             XWalkEnvironment.setAvailableVersion(-1, null, XWalkEnvironment.getRuntimeAbi());
           }
         }
-        I(paramContext, false);
-        lq(paramContext);
-        KGW.p(paramHashMap);
+        K(paramContext, false);
+        lC(paramContext);
+        Mxw.p(paramHashMap);
         AppMethodBeat.o(154459);
         return;
         i = 0;
         break;
         label201:
-        if (b.c("CREATE_WEBVIEW", WebView.c.KzZ).KCU >= 6L) {}
+        if (b.c("CREATE_WEBVIEW", WebView.c.Mqu).Mtu >= 6L) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
             break label256;
           }
-          g.Cf(247L);
-          if (!"true".equalsIgnoreCase(a.mx("enable_check_dex_new_web", "tools"))) {
+          g.Fh(247L);
+          if (!"true".equalsIgnoreCase(a.mV("enable_check_dex_new_web", "tools"))) {
             break label256;
           }
           i = 1;
@@ -145,7 +146,7 @@ public class p
     }
   }
   
-  public static int aT(Context paramContext, int paramInt)
+  public static int aW(Context paramContext, int paramInt)
   {
     int n = 1;
     AppMethodBeat.i(154464);
@@ -170,7 +171,7 @@ public class p
     int k;
     if (m < i3)
     {
-      int i1 = ah(paramContext[m]);
+      int i1 = aj(paramContext[m]);
       k = j;
       if (i1 < 0) {
         break label387;
@@ -204,7 +205,7 @@ public class p
       for (k = n;; k = 0)
       {
         if (j != 0) {
-          if (age(paramInt))
+          if (aiF(paramInt))
           {
             XWalkEnvironment.addXWalkInitializeLog("revertToApkVer checkApkExist targetApk exist");
             i = paramInt;
@@ -214,7 +215,7 @@ public class p
         for (;;)
         {
           if (i == paramInt) {
-            g.Cf(89L);
+            g.Fh(89L);
           }
           for (;;)
           {
@@ -222,25 +223,25 @@ public class p
             XWalkEnvironment.setAvailableVersion(i, "revert from:" + XWalkEnvironment.getInstalledNewstVersionForCurAbi() + " to:" + i, XWalkEnvironment.getRuntimeAbi());
             AppMethodBeat.o(154464);
             return i;
-            if (age(i)) {
+            if (aiF(i)) {
               break label378;
             }
             XWalkEnvironment.addXWalkInitializeLog("revertToApkVer nAvailableOldVer targetApk not exist");
             i = -1;
             break;
             XWalkEnvironment.addXWalkInitializeLog("revertToApkVer did not find target version:".concat(String.valueOf(paramInt)));
-            if (age(i)) {
+            if (aiF(i)) {
               break label378;
             }
             XWalkEnvironment.addXWalkInitializeLog("revertToApkVer nAvailableOldVer targetApk not exist");
             i = -1;
             break;
             if (i > 0) {
-              g.Cf(90L);
+              g.Fh(90L);
             } else if (k != 0) {
-              g.Cf(92L);
+              g.Fh(92L);
             } else {
-              g.Cf(91L);
+              g.Fh(91L);
             }
           }
         }
@@ -250,50 +251,7 @@ public class p
     }
   }
   
-  private static void aY(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(154467);
-    Log.i("XWalkUpdaterImp", "tryAbandonThisVersion scene  is ".concat(String.valueOf(paramString)));
-    long l1 = b.c(paramString, WebView.c.KzZ).KCU;
-    if (!"true".equalsIgnoreCase(a.mx("enable_reinstall_for_crash_at_".concat(String.valueOf(paramString)), "tools")))
-    {
-      AppMethodBeat.o(154467);
-      return;
-    }
-    if (l1 >= 15L)
-    {
-      paramString = "LAST_" + paramString + "_ABANDON_COUNT";
-      long l2 = XWalkEnvironment.getSharedPreferencesForXWEBUpdater().getLong(paramString, 100000L);
-      Log.i("XWalkUpdaterImp", "tryAbandonThisVersion try count = " + l1 + ",  last abandon count = " + l2);
-      if (l1 < l2)
-      {
-        Log.i("XWalkUpdaterImp", "tryAbandonThisVersion should abandon this version ");
-        try
-        {
-          agd(XWalkEnvironment.getInstalledNewstVersionForCurAbi());
-          XWalkEnvironment.setAvailableVersion(-1, "", XWalkEnvironment.getRuntimeAbi());
-          XWalkEnvironment.getSharedPreferencesForXWEBUpdater().edit().putLong(paramString, l1).commit();
-          g.Cf(paramInt1);
-          AppMethodBeat.o(154467);
-          return;
-        }
-        catch (Exception paramString)
-        {
-          Log.e("XWalkUpdaterImp", "clear version failed , errmsg:" + paramString.getMessage());
-          AppMethodBeat.o(154467);
-          return;
-        }
-      }
-      if (l1 - 2L > l2)
-      {
-        Log.i("XWalkUpdaterImp", "tryAbandonThisVersion cant not fix ");
-        g.Cf(paramInt2);
-      }
-    }
-    AppMethodBeat.o(154467);
-  }
-  
-  private static boolean agd(int paramInt)
+  private static boolean aiE(int paramInt)
   {
     AppMethodBeat.i(154462);
     Log.i("XWalkUpdaterImp", "clearVersion start , nVersion = ".concat(String.valueOf(paramInt)));
@@ -322,8 +280,8 @@ public class p
     while (i < j)
     {
       File localFile = localObject[i];
-      int k = ah(localFile);
-      if ((k > 0) && (k == paramInt) && (com.tencent.xweb.util.c.aVj(localFile.getAbsolutePath())))
+      int k = aj(localFile);
+      if ((k > 0) && (k == paramInt) && (com.tencent.xweb.util.c.bbn(localFile.getAbsolutePath())))
       {
         XWalkEnvironment.addXWalkInitializeLog("XWalkUpdaterImp", "cleared version = ".concat(String.valueOf(k)));
         AppMethodBeat.o(154462);
@@ -335,10 +293,10 @@ public class p
     return false;
   }
   
-  private static boolean age(int paramInt)
+  private static boolean aiF(int paramInt)
   {
     AppMethodBeat.i(154465);
-    File localFile = agg(paramInt);
+    File localFile = aiH(paramInt);
     if (localFile == null)
     {
       Log.e("XWalkUpdaterImp", "checkfiles no config file");
@@ -350,10 +308,10 @@ public class p
     return bool;
   }
   
-  private static boolean agf(int paramInt)
+  private static boolean aiG(int paramInt)
   {
     AppMethodBeat.i(154472);
-    File localFile = agg(paramInt);
+    File localFile = aiH(paramInt);
     if (localFile == null)
     {
       if (XWalkEnvironment.isTestVersion(paramInt))
@@ -362,8 +320,8 @@ public class p
         return true;
       }
       Log.e("XWalkUpdaterImp", "checkfiles no config file");
-      g.Cf(78L);
-      if ("true".equalsIgnoreCase(a.mx("dis_config_file_check", "tools")))
+      g.Fh(78L);
+      if ("true".equalsIgnoreCase(a.mV("dis_config_file_check", "tools")))
       {
         XWalkInitializer.addXWalkInitializeLog("XWalkUpdaterImp", "dis_config_file_check ");
         AppMethodBeat.o(154472);
@@ -377,7 +335,7 @@ public class p
     return bool;
   }
   
-  private static File agg(int paramInt)
+  private static File aiH(int paramInt)
   {
     AppMethodBeat.i(154473);
     try
@@ -406,7 +364,7 @@ public class p
     return null;
   }
   
-  private static int ah(File paramFile)
+  private static int aj(File paramFile)
   {
     AppMethodBeat.i(154466);
     if (paramFile == null)
@@ -433,18 +391,61 @@ public class p
     return -1;
   }
   
-  static void fLD()
+  private static void bc(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(154467);
+    Log.i("XWalkUpdaterImp", "tryAbandonThisVersion scene  is ".concat(String.valueOf(paramString)));
+    long l1 = b.c(paramString, WebView.c.Mqu).Mtu;
+    if (!"true".equalsIgnoreCase(a.mV("enable_reinstall_for_crash_at_".concat(String.valueOf(paramString)), "tools")))
+    {
+      AppMethodBeat.o(154467);
+      return;
+    }
+    if (l1 >= 15L)
+    {
+      paramString = "LAST_" + paramString + "_ABANDON_COUNT";
+      long l2 = XWalkEnvironment.getSharedPreferencesForXWEBUpdater().getLong(paramString, 100000L);
+      Log.i("XWalkUpdaterImp", "tryAbandonThisVersion try count = " + l1 + ",  last abandon count = " + l2);
+      if (l1 < l2)
+      {
+        Log.i("XWalkUpdaterImp", "tryAbandonThisVersion should abandon this version ");
+        try
+        {
+          aiE(XWalkEnvironment.getInstalledNewstVersionForCurAbi());
+          XWalkEnvironment.setAvailableVersion(-1, "", XWalkEnvironment.getRuntimeAbi());
+          XWalkEnvironment.getSharedPreferencesForXWEBUpdater().edit().putLong(paramString, l1).commit();
+          g.Fh(paramInt1);
+          AppMethodBeat.o(154467);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          Log.e("XWalkUpdaterImp", "clear version failed , errmsg:" + paramString.getMessage());
+          AppMethodBeat.o(154467);
+          return;
+        }
+      }
+      if (l1 - 2L > l2)
+      {
+        Log.i("XWalkUpdaterImp", "tryAbandonThisVersion cant not fix ");
+        g.Fh(paramInt2);
+      }
+    }
+    AppMethodBeat.o(154467);
+  }
+  
+  static void gcZ()
   {
     AppMethodBeat.i(154468);
-    aY("LOAD_CORE", 243, 244);
-    aY("CREATE_WEBVIEW", 245, 246);
+    bc("LOAD_CORE", 243, 244);
+    bc("CREATE_WEBVIEW", 245, 246);
     AppMethodBeat.o(154468);
   }
   
-  private static boolean fLE()
+  private static boolean gda()
   {
     AppMethodBeat.i(154469);
-    if (com.tencent.xweb.util.c.aVj(XWalkEnvironment.getOptimizedDexDir(XWalkEnvironment.getInstalledNewstVersionForCurAbi())))
+    if (com.tencent.xweb.util.c.bbn(XWalkEnvironment.getOptimizedDexDir(XWalkEnvironment.getInstalledNewstVersionForCurAbi())))
     {
       XWalkEnvironment.addXWalkInitializeLog("tryRemoveOptDex suc");
       AppMethodBeat.o(154469);
@@ -455,7 +456,7 @@ public class p
     return false;
   }
   
-  public static boolean fLF()
+  public static boolean gdb()
   {
     AppMethodBeat.i(154470);
     int i = XWalkEnvironment.getInstalledNewstVersionForCurAbi();
@@ -466,7 +467,7 @@ public class p
       return false;
     }
     Log.i("XWalkUpdaterImp", "doFixDex start");
-    Object localObject1 = agg(i);
+    Object localObject1 = aiH(i);
     if (localObject1 == null)
     {
       Log.e("XWalkUpdaterImp", "doFixDex checkfiles no config file");
@@ -502,18 +503,18 @@ public class p
       if (i == 0) {
         break label349;
       }
-      g.Cf(253L);
+      g.Fh(253L);
       XWalkInitializer.addXWalkInitializeLog("XWalkUpdaterImp", " doFixDex dex cruppted");
-      if (!com.tencent.xweb.util.c.aVj((String)localObject2)) {
+      if (!com.tencent.xweb.util.c.bbn((String)localObject2)) {
         break label330;
       }
-      if (!com.tencent.xweb.util.c.lm(str2, (String)localObject2)) {
+      if (!com.tencent.xweb.util.c.lL(str2, (String)localObject2)) {
         break label311;
       }
       XWalkInitializer.addXWalkInitializeLog("XWalkUpdaterImp", " doFixDex copy dex to replace suc");
       bool = true;
       label294:
-      fLE();
+      gda();
     }
     for (;;)
     {
@@ -522,32 +523,32 @@ public class p
       i = 0;
       break;
       label311:
-      g.Cf(249L);
+      g.Fh(249L);
       XWalkInitializer.addXWalkInitializeLog("XWalkUpdaterImp", " doFixDex copy dex to replace failed");
       bool = false;
       break label294;
       label330:
-      g.Cf(250L);
+      g.Fh(250L);
       XWalkInitializer.addXWalkInitializeLog("XWalkUpdaterImp", " doFixDex delete cruppted dex failed");
       bool = false;
       break label294;
       label349:
-      if (fLE())
+      if (gda())
       {
-        g.Cf(254L);
+        g.Fh(254L);
         XWalkInitializer.addXWalkInitializeLog("XWalkUpdaterImp", "doFixDex try remove  opt dex suc");
         bool = true;
       }
       else
       {
         XWalkInitializer.addXWalkInitializeLog("XWalkUpdaterImp", "doFixDex try remove  opt dex failed");
-        g.Cf(255L);
+        g.Fh(255L);
         bool = false;
       }
     }
   }
   
-  public static void gM(String paramString, int paramInt)
+  public static void hl(String paramString, int paramInt)
   {
     AppMethodBeat.i(185201);
     Intent localIntent = new Intent();
@@ -561,17 +562,17 @@ public class p
   public static boolean isBusy()
   {
     AppMethodBeat.i(154474);
-    if (KGW == null)
+    if (Mxw == null)
     {
       AppMethodBeat.o(154474);
       return false;
     }
-    boolean bool = f.fMs();
+    boolean bool = f.gdP();
     AppMethodBeat.o(154474);
     return bool;
   }
   
-  private static void lp(Context paramContext)
+  private static void lB(Context paramContext)
   {
     AppMethodBeat.i(154461);
     if ((paramContext == null) || (paramContext.getApplicationInfo() == null) || (paramContext.getApplicationInfo().dataDir == null))
@@ -587,6 +588,26 @@ public class p
       AppMethodBeat.o(154461);
       return;
     }
+    Object localObject = a.mV("KEEP_XWEB_CORE_LIST", "tools");
+    Log.i("XWalkUpdaterImp", "dump KEEP_XWEB_CORE_LIST: ".concat(String.valueOf(localObject)));
+    HashSet localHashSet = new HashSet();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split(";");
+      if (localObject != null)
+      {
+        j = localObject.length;
+        i = 0;
+        while (i < j)
+        {
+          CharSequence localCharSequence = localObject[i];
+          if ((!TextUtils.isEmpty(localCharSequence)) && (!TextUtils.isEmpty(localCharSequence.trim()))) {
+            localHashSet.add(localCharSequence.trim());
+          }
+          i += 1;
+        }
+      }
+    }
     int i = 0;
     int j = 0;
     int n = XWalkEnvironment.getInstalledNewstVersionForCurAbi();
@@ -595,9 +616,9 @@ public class p
     int m;
     if (k < i1)
     {
-      m = ah(paramContext[k]);
+      m = aj(paramContext[k]);
       if ((m < 0) || (m == n)) {
-        break label319;
+        break label444;
       }
       if (m >= i) {
         j = m;
@@ -623,14 +644,14 @@ public class p
         {
           if (i < n)
           {
-            File localFile = paramContext[i];
-            i1 = ah(localFile);
-            if ((i1 > 0) && (i1 < j) && (i1 != XWalkEnvironment.getAvailableVersion()) && (i1 != k) && (i1 != m)) {}
+            localObject = paramContext[i];
+            i1 = aj((File)localObject);
+            if ((!localHashSet.contains(String.valueOf(i1))) && (i1 > 0) && (i1 < j) && (i1 != XWalkEnvironment.getAvailableVersion()) && (i1 != k) && (i1 != m)) {}
             try
             {
-              com.tencent.xweb.util.c.aVj(localFile.getAbsolutePath());
+              com.tencent.xweb.util.c.bbn(((File)localObject).getAbsolutePath());
               XWalkEnvironment.addXWalkInitializeLog("XWalkUpdaterImp", "cleared version = ".concat(String.valueOf(i1)));
-              g.r(577L, 65L, 1L);
+              g.t(577L, 65L, 1L);
               i += 1;
             }
             catch (Exception localException)
@@ -638,7 +659,7 @@ public class p
               for (;;)
               {
                 XWalkEnvironment.addXWalkInitializeLog("XWalkUpdaterImp", " FileUtils.deleteAll failed " + localException.getMessage());
-                g.r(577L, 66L, 1L);
+                g.t(577L, 66L, 1L);
               }
             }
           }
@@ -647,7 +668,7 @@ public class p
       }
       else
       {
-        label319:
+        label444:
         m = i;
         i = j;
         j = m;
@@ -655,25 +676,25 @@ public class p
     }
   }
   
-  public static void lq(Context paramContext)
+  public static void lC(Context paramContext)
   {
     AppMethodBeat.i(154463);
     Log.i("XWalkUpdaterImp", "try clear test setings");
-    if (com.tencent.xweb.internal.c.ci("clear_test_settings", 2592000000L))
+    if (com.tencent.xweb.internal.c.co("clear_test_settings", 2592000000L))
     {
       Log.i("XWalkUpdaterImp", "do start clear test setings");
       try
       {
-        y.fJs().a("tools", WebView.c.KzY);
-        y.fJs().a("appbrand", WebView.c.KzY);
-        y.fJs().a("support", WebView.c.KzY);
-        y.fJs().a("mm", WebView.c.KzY);
-        y.fJs().a("toolsmp", WebView.c.KzY);
-        y.fJs().b("tools", WebView.c.KzY);
-        y.fJs().b("appbrand", WebView.c.KzY);
-        y.fJs().b("support", WebView.c.KzY);
-        y.fJs().b("mm", WebView.c.KzY);
-        y.fJs().b("toolsmp", WebView.c.KzY);
+        y.gaM().a("tools", WebView.c.Mqt);
+        y.gaM().a("appbrand", WebView.c.Mqt);
+        y.gaM().a("support", WebView.c.Mqt);
+        y.gaM().a("mm", WebView.c.Mqt);
+        y.gaM().a("toolsmp", WebView.c.Mqt);
+        y.gaM().b("tools", WebView.c.Mqt);
+        y.gaM().b("appbrand", WebView.c.Mqt);
+        y.gaM().b("support", WebView.c.Mqt);
+        y.gaM().b("mm", WebView.c.Mqt);
+        y.gaM().b("toolsmp", WebView.c.Mqt);
         XWalkEnvironment.setTestDownLoadUrl(paramContext, null);
         XWalkEnvironment.setPluginTestConfigUrl("");
         AppMethodBeat.o(154463);
@@ -687,7 +708,7 @@ public class p
     AppMethodBeat.o(154463);
   }
   
-  public static void zd(boolean paramBoolean)
+  public static void zQ(boolean paramBoolean)
   {
     AppMethodBeat.i(154471);
     int i = XWalkEnvironment.getAvailableVersion();
@@ -702,7 +723,7 @@ public class p
       AppMethodBeat.o(154471);
       return;
     }
-    if ((paramBoolean) || (com.tencent.xweb.internal.c.ci("CHECK_FILES_MD5_TIME_KEY", 7200000L)))
+    if ((paramBoolean) || (com.tencent.xweb.internal.c.co("CHECK_FILES_MD5_TIME_KEY", 7200000L)))
     {
       Log.i("XWalkUpdaterImp", "checkFiles start check resfiles");
       String str = XWalkEnvironment.getExtractedCoreDir(i);
@@ -715,12 +736,12 @@ public class p
         if (j == i) {
           break label265;
         }
-        g.Cf(77L);
+        g.Fh(77L);
         XWalkEnvironment.addXWalkInitializeLog("XWalkUpdaterImp", "some res corrupted at first time");
-        g.Cf(76L);
+        g.Fh(76L);
       }
       Log.i("XWalkUpdaterImp", "checkFiles start check installed files");
-      paramBoolean = agf(i);
+      paramBoolean = aiG(i);
       if (!paramBoolean)
       {
         j = localSharedPreferences.getInt("LAST_CHECK_VERSION", -1);
@@ -728,12 +749,12 @@ public class p
         if (j == i) {
           break label276;
         }
-        g.Cf(64L);
+        g.Fh(64L);
         XWalkEnvironment.addXWalkInitializeLog("XWalkUpdaterImp", "some files corrupted at first time");
         label212:
-        g.Cf(63L);
+        g.Fh(63L);
       }
-      if ("true".equalsIgnoreCase(a.mx("disable_res_check", "tools"))) {
+      if ("true".equalsIgnoreCase(a.mV("disable_res_check", "tools"))) {
         break label287;
       }
       paramBoolean &= bool;
@@ -774,11 +795,11 @@ public class p
   public void onXWalkUpdateCancelled()
   {
     AppMethodBeat.i(154479);
-    gM("finished", -2);
-    f.fMu();
-    c localc = ah.fJQ();
+    hl("finished", -2);
+    f.gdR();
+    c localc = ah.gbk();
     if (localc != null) {
-      localc.bvF();
+      localc.bzL();
     }
     AppMethodBeat.o(154479);
   }
@@ -786,11 +807,11 @@ public class p
   public void onXWalkUpdateCompleted()
   {
     AppMethodBeat.i(154481);
-    gM("finished", 0);
-    f.fMv();
-    c localc = ah.fJQ();
+    hl("finished", 0);
+    f.gdS();
+    c localc = ah.gbk();
     if (localc != null) {
-      localc.bvG();
+      localc.bzM();
     }
     AppMethodBeat.o(154481);
   }
@@ -798,11 +819,11 @@ public class p
   public void onXWalkUpdateFailed(int paramInt)
   {
     AppMethodBeat.i(154480);
-    gM("finished", -1);
-    f.agq(paramInt);
-    c localc = ah.fJQ();
+    hl("finished", -1);
+    f.aiR(paramInt);
+    c localc = ah.gbk();
     if (localc != null) {
-      localc.bvF();
+      localc.bzL();
     }
     AppMethodBeat.o(154480);
   }
@@ -810,10 +831,10 @@ public class p
   public void onXWalkUpdateProgress(int paramInt)
   {
     AppMethodBeat.i(154478);
-    gM("updating", paramInt);
-    c localc = ah.fJQ();
+    hl("updating", paramInt);
+    c localc = ah.gbk();
     if (localc != null) {
-      localc.uS(paramInt);
+      localc.vx(paramInt);
     }
     AppMethodBeat.o(154478);
   }
@@ -821,16 +842,16 @@ public class p
   public void onXWalkUpdateStarted()
   {
     AppMethodBeat.i(154477);
-    gM("start", 0);
-    f.fMt();
-    ah.fJQ();
+    hl("start", 0);
+    f.gdQ();
+    ah.gbk();
     AppMethodBeat.o(154477);
   }
   
   public final boolean p(HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(154476);
-    new f(this.KGY, paramHashMap).execute(new String[0]);
+    new f(this.Mxy, paramHashMap).execute(new String[0]);
     AppMethodBeat.o(154476);
     return false;
   }

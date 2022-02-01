@@ -1,26 +1,26 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.k.a;
+import com.tencent.mm.al.j.a;
 import com.tencent.mm.audio.b.c;
 import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.audio.b.g.a;
 import com.tencent.mm.audio.e.d;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.g.a.sf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.g.a.sr;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Arrays;
 
 public final class m
   implements com.tencent.mm.audio.b.a
 {
-  private static int idH = 100;
-  private int cUP;
-  c.a cVR;
-  public c cVe;
-  private d idI;
+  private static int ixc = 100;
+  private int dgf;
+  public c dgu;
+  c.a dhh;
+  private d ixd;
   private String mFileName;
   public int mStatus;
   
@@ -28,11 +28,11 @@ public final class m
   {
     AppMethodBeat.i(148429);
     this.mFileName = null;
-    this.cUP = 0;
+    this.dgf = 0;
     this.mStatus = 0;
-    this.cVR = new c.a()
+    this.dhh = new c.a()
     {
-      public final void cf(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
       public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
@@ -41,11 +41,11 @@ public final class m
           m.a(m.this).a(new g.a(paramAnonymousArrayOfByte, paramAnonymousInt), 0, false);
         }
         m.a(m.this, paramAnonymousArrayOfByte, paramAnonymousInt);
-        ac.d("MicroMsg.SpeexRecorder", "publish SceneVoiceRcdDataEvent, buf.len %d, len: %d.", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
-        sf localsf = new sf();
-        localsf.dvj.buf = Arrays.copyOf(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length);
-        localsf.dvj.len = paramAnonymousInt;
-        com.tencent.mm.sdk.b.a.GpY.l(localsf);
+        ad.d("MicroMsg.SpeexRecorder", "publish SceneVoiceRcdDataEvent, buf.len %d, len: %d.", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
+        sr localsr = new sr();
+        localsr.dHk.buf = Arrays.copyOf(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length);
+        localsr.dHk.len = paramAnonymousInt;
+        com.tencent.mm.sdk.b.a.IbL.l(localsr);
         AppMethodBeat.o(148428);
       }
     };
@@ -55,20 +55,20 @@ public final class m
   private void clean()
   {
     AppMethodBeat.i(148432);
-    if (this.cVe != null)
+    if (this.dgu != null)
     {
-      this.cVe.NX();
-      this.cVe = null;
+      this.dgu.PG();
+      this.dgu = null;
     }
-    if (this.idI != null)
+    if (this.ixd != null)
     {
-      this.idI.PM();
-      this.idI = null;
+      this.ixd.Ry();
+      this.ixd = null;
     }
     AppMethodBeat.o(148432);
   }
   
-  public final boolean NX()
+  public final boolean PG()
   {
     AppMethodBeat.i(148431);
     this.mFileName = null;
@@ -78,48 +78,63 @@ public final class m
     return true;
   }
   
-  public final int NY()
+  public final int PH()
   {
-    return this.cVe.cVW;
+    return this.dgu.dhm;
   }
   
-  public final void a(k.a parama) {}
+  public final void a(j.a parama) {}
   
-  public final boolean fE(String paramString)
+  public final int getMaxAmplitude()
+  {
+    int i = this.dgf;
+    this.dgf = 0;
+    if (i > ixc) {
+      ixc = i;
+    }
+    return i * 100 / ixc;
+  }
+  
+  public final int getStatus()
+  {
+    return this.mStatus;
+  }
+  
+  public final boolean gz(String paramString)
   {
     AppMethodBeat.i(148430);
-    if (!bs.isNullOrNil(this.mFileName))
+    if (!bt.isNullOrNil(this.mFileName))
     {
-      ac.e("MicroMsg.SpeexRecorder", "Duplicate Call startRecord , maybe Stop Fail Before");
+      ad.e("MicroMsg.SpeexRecorder", "Duplicate Call startRecord , maybe Stop Fail Before");
       AppMethodBeat.o(148430);
       return false;
     }
-    ac.i("MicroMsg.SpeexRecorder", "[startRecord] fileName:%s", new Object[] { paramString });
+    ad.i("MicroMsg.SpeexRecorder", "[startRecord] fileName:%s", new Object[] { paramString });
     this.mStatus = 1;
-    this.cUP = 0;
-    this.cVe = new c(16000, 1, 0);
-    this.cVe.cVG = -19;
-    if (ae.fJo.fFI > 0) {
-      this.cVe.t(ae.fJo.fFI, true);
+    this.dgf = 0;
+    this.dgu = new c(16000, 1, 0);
+    this.dgu.dgW = -19;
+    if (ae.gcP.fZh > 0) {
+      this.dgu.t(ae.gcP.fZh, true);
     }
     for (;;)
     {
-      this.cVe.cs(false);
-      this.cVe.cVR = this.cVR;
-      this.idI = new d();
-      if (this.idI.fH(paramString)) {
+      this.dgu.cu(false);
+      this.dgu.dhh = this.dhh;
+      this.ixd = new d();
+      if (this.ixd.gC(paramString)) {
         break;
       }
-      ac.e("MicroMsg.SpeexRecorder", "init speex writer failed");
+      ad.e("MicroMsg.SpeexRecorder", "init speex writer failed");
       clean();
       this.mStatus = -1;
       AppMethodBeat.o(148430);
       return false;
-      this.cVe.t(5, false);
+      this.dgu.t(5, false);
     }
-    if (!this.cVe.Og())
+    if (!this.dgu.PP())
     {
-      ac.e("MicroMsg.SpeexRecorder", "start record failed");
+      ad.e("MicroMsg.SpeexRecorder", "start record failed");
       clean();
       this.mStatus = -1;
       AppMethodBeat.o(148430);
@@ -129,25 +144,10 @@ public final class m
     AppMethodBeat.o(148430);
     return true;
   }
-  
-  public final int getMaxAmplitude()
-  {
-    int i = this.cUP;
-    this.cUP = 0;
-    if (i > idH) {
-      idH = i;
-    }
-    return i * 100 / idH;
-  }
-  
-  public final int getStatus()
-  {
-    return this.mStatus;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelvoice.m
  * JD-Core Version:    0.7.0.1
  */

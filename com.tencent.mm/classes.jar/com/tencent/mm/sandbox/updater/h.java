@@ -6,15 +6,15 @@ abstract interface h
 {
   public abstract void a(c paramc);
   
-  public abstract void asD(String paramString);
+  public abstract void axG(String paramString);
   
-  public abstract void dFC();
+  public abstract void dRW();
   
-  public abstract void eSX();
+  public abstract void eZ(int paramInt1, int paramInt2);
   
-  public abstract void eSY();
+  public abstract void fiA();
   
-  public abstract void eV(int paramInt1, int paramInt2);
+  public abstract void fiz();
 }
 
 

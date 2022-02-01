@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.game.b.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public String desc;
-  public String sVw;
+  public String tSb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,8 +17,8 @@ public final class c
       if (this.desc != null) {
         paramVarArgs.d(1, this.desc);
       }
-      if (this.sVw != null) {
-        paramVarArgs.d(2, this.sVw);
+      if (this.tSb != null) {
+        paramVarArgs.d(2, this.tSb);
       }
       AppMethodBeat.o(40866);
       return 0;
@@ -32,17 +32,17 @@ public final class c
     for (paramInt = f.a.a.b.b.a.e(1, this.desc) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.sVw != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.sVw);
+      if (this.tSb != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.tSb);
       }
       AppMethodBeat.o(40866);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(40866);
@@ -58,11 +58,11 @@ public final class c
           AppMethodBeat.o(40866);
           return -1;
         case 1: 
-          localc.desc = locala.LVo.readString();
+          localc.desc = locala.NPN.readString();
           AppMethodBeat.o(40866);
           return 0;
         }
-        localc.sVw = locala.LVo.readString();
+        localc.tSb = locala.NPN.readString();
         AppMethodBeat.o(40866);
         return 0;
       }
@@ -73,7 +73,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.b.b.c
  * JD-Core Version:    0.7.0.1
  */

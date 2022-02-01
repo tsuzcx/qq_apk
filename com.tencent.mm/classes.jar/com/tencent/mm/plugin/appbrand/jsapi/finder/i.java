@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.a;
+import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.finder.api.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import org.json.JSONObject;
 
 public final class i
@@ -17,7 +19,7 @@ public final class i
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "shareFinderEndorsementToFriend";
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(163989);
     if ((!(paramc.getContext() instanceof Activity)) || (paramJSONObject == null))
@@ -32,27 +34,27 @@ public final class i
     paramJSONObject.optInt("scene", 0);
     paramJSONObject = paramJSONObject.optString("sceneNote", "");
     k.b localb = new k.b();
-    com.tencent.mm.plugin.finder.api.c localc = new com.tencent.mm.plugin.finder.api.c();
-    localc.title = ((String)localObject);
-    localc.desc = str1;
-    localc.qWv = str2;
-    localc.cYP = paramJSONObject;
-    localc.desc = str1;
+    d locald = new d();
+    locald.title = ((String)localObject);
+    locald.desc = str1;
+    locald.rHp = str2;
+    locald.dkh = paramJSONObject;
+    locald.desc = str1;
     localb.type = 52;
-    localb.url = ai.getContext().getString(2131760810);
+    localb.url = aj.getContext().getString(2131760810);
     localb.title = ((String)localObject);
     localb.desc = str1;
-    localb.a(localc);
+    localb.a(locald);
     paramJSONObject = k.b.a(localb, null, null);
-    ac.i("MicroMsg.Finder.JsApiShareFinderEndorsementToFriend", "msgContent %s", new Object[] { paramJSONObject });
+    ad.i("MicroMsg.Finder.JsApiShareFinderEndorsementToFriend", "msgContent %s", new Object[] { paramJSONObject });
     localObject = new Intent();
-    ((Intent)localObject).setClassName(paramc.getContext(), ai.eUW() + ".ui.transmit.MsgRetransmitUI");
+    ((Intent)localObject).setClassName(paramc.getContext(), aj.fkB() + ".ui.transmit.MsgRetransmitUI");
     ((Intent)localObject).putExtra("Retr_Msg_Type", 19);
     ((Intent)localObject).putExtra("Retr_Msg_content", paramJSONObject);
     ((Intent)localObject).putExtra("Multi_Retr", true);
     ((Intent)localObject).putExtra("Retr_go_to_chattingUI", false);
     ((Intent)localObject).putExtra("Retr_show_success_tips", true);
-    e.aA(paramc.getContext()).a((Intent)localObject, new e.a()
+    e.aA(paramc.getContext()).a((Intent)localObject, new e.b()
     {
       public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
       {

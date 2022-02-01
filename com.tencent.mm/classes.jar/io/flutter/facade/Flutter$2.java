@@ -21,10 +21,10 @@ final class Flutter$2
   {
     AppMethodBeat.i(159071);
     b localb = new b();
-    localb.KSw = FlutterMain.findAppBundlePath(this.val$activity.getApplicationContext());
-    localb.KSx = "main";
-    this.KOJ.a(localb);
-    a.registerWith(this.KOJ.getPluginRegistry());
+    localb.MJv = FlutterMain.findAppBundlePath(this.val$activity.getApplicationContext());
+    localb.MJw = "main";
+    this.MFG.a(localb);
+    a.registerWith(this.MFG.getPluginRegistry());
     AppMethodBeat.o(159071);
   }
   
@@ -32,7 +32,7 @@ final class Flutter$2
   public final void onDestroy()
   {
     AppMethodBeat.i(159076);
-    this.KOJ.destroy();
+    this.MFG.destroy();
     AppMethodBeat.o(159076);
   }
   
@@ -40,7 +40,7 @@ final class Flutter$2
   public final void onPause()
   {
     AppMethodBeat.i(159074);
-    this.KOJ.KLn.fNz();
+    this.MFG.MCk.geY();
     AppMethodBeat.o(159074);
   }
   
@@ -48,7 +48,7 @@ final class Flutter$2
   public final void onResume()
   {
     AppMethodBeat.i(159073);
-    this.KOJ.onPostResume();
+    this.MFG.onPostResume();
     AppMethodBeat.o(159073);
   }
   
@@ -56,7 +56,7 @@ final class Flutter$2
   public final void onStart()
   {
     AppMethodBeat.i(159072);
-    this.KOJ.KLn.fNz();
+    this.MFG.MCk.geY();
     AppMethodBeat.o(159072);
   }
   
@@ -64,7 +64,7 @@ final class Flutter$2
   public final void onStop()
   {
     AppMethodBeat.i(159075);
-    this.KOJ.KLn.fNB();
+    this.MFG.MCk.gfa();
     AppMethodBeat.o(159075);
   }
 }

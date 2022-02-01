@@ -12,8 +12,8 @@ import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.plugin.game.model.l;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,7 +23,7 @@ public final class g
   public g(Context paramContext)
   {
     super(paramContext);
-    this.tse = 2131494273;
+    this.uqB = 2131494273;
   }
   
   protected final void a(c paramc, m.b paramb) {}
@@ -31,60 +31,60 @@ public final class g
   protected final void a(c paramc, m.b paramb, int paramInt)
   {
     AppMethodBeat.i(41927);
-    paramb.tsp.setText(paramc.position);
-    Bitmap localBitmap = ahG(paramc.field_appId);
+    paramb.uqM.setText(paramc.position);
+    Bitmap localBitmap = ami(paramc.field_appId);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      paramb.tsq.setImageBitmap(localBitmap);
-      paramb.tru.setText(paramc.field_appName);
-      if (!bs.isNullOrNil(paramc.tcL)) {
+      paramb.uqN.setImageBitmap(localBitmap);
+      paramb.upR.setText(paramc.field_appName);
+      if (!bt.isNullOrNil(paramc.uaB)) {
         break label235;
       }
-      paramb.tst.setVisibility(8);
+      paramb.uqQ.setVisibility(8);
       label91:
-      if (bs.gY(paramc.tcU)) {
+      if (bt.hj(paramc.uaK)) {
         break label257;
       }
-      paramb.tsr.setVisibility(0);
-      paramb.tsr.setText((CharSequence)paramc.tcU.get(0));
+      paramb.uqO.setVisibility(0);
+      paramb.uqO.setText((CharSequence)paramc.uaK.get(0));
     }
     for (;;)
     {
-      paramb.tsv.setTextSize(this.toL);
-      paramb.tsu.setOnClickListener(this.tpB);
-      paramb.tsv.setOnClickListener(this.tpB);
-      paramb.tsu.setTag(paramc);
-      paramb.tsv.setTag(paramc);
-      this.toQ.a(paramb.tsv, paramb.tsu, paramc, (l)this.tsj.get(paramc.field_appId));
-      paramb.tsw.setData(paramc.tcS);
+      paramb.uqS.setTextSize(this.uni);
+      paramb.uqR.setOnClickListener(this.unY);
+      paramb.uqS.setOnClickListener(this.unY);
+      paramb.uqR.setTag(paramc);
+      paramb.uqS.setTag(paramc);
+      this.unn.a(paramb.uqS, paramb.uqR, paramc, (l)this.uqG.get(paramc.field_appId));
+      paramb.uqT.setData(paramc.uaI);
       AppMethodBeat.o(41927);
       return;
-      paramb.tsq.setImageResource(2131232498);
+      paramb.uqN.setImageResource(2131232498);
       break;
       label235:
-      paramb.tst.setVisibility(0);
-      paramb.tst.setText(paramc.tcL);
+      paramb.uqQ.setVisibility(0);
+      paramb.uqQ.setText(paramc.uaB);
       break label91;
       label257:
-      if (!bs.isNullOrNil(paramc.tcX))
+      if (!bt.isNullOrNil(paramc.uaN))
       {
-        paramb.tsr.setVisibility(0);
-        paramb.tsr.setText(paramc.tcX);
+        paramb.uqO.setVisibility(0);
+        paramb.uqO.setText(paramc.uaN);
       }
       try
       {
-        paramb.tsr.setBackgroundDrawable(e.eQ(Color.parseColor(paramc.tcY), a.fromDPToPix(this.mContext, 10)));
+        paramb.uqO.setBackgroundDrawable(e.eU(Color.parseColor(paramc.uaO), a.fromDPToPix(this.mContext, 10)));
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
-        ac.e("MicroMsg.GameCenterListAdapter", localIllegalArgumentException.getMessage());
-        paramb.tsr.setVisibility(8);
+        ad.e("MicroMsg.GameCenterListAdapter", localIllegalArgumentException.getMessage());
+        paramb.uqO.setVisibility(8);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.e("MicroMsg.GameCenterListAdapter", localException.getMessage());
+          ad.e("MicroMsg.GameCenterListAdapter", localException.getMessage());
         }
       }
     }
@@ -92,7 +92,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.g
  * JD-Core Version:    0.7.0.1
  */

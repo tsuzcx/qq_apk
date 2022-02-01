@@ -7,27 +7,27 @@ public final class b
   extends a
   implements d
 {
-  private final d.l.b.a.b.b.a LHm;
+  private final d.l.b.a.b.b.a Nyk;
   
   public b(d.l.b.a.b.b.a parama, ab paramab, e parame)
   {
     super(paramab, parame);
     AppMethodBeat.i(60249);
-    this.LHm = parama;
+    this.Nyk = parama;
     AppMethodBeat.o(60249);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(60250);
-    String str = fRV() + ": Ext {" + this.LHm + "}";
+    String str = gju() + ": Ext {" + this.Nyk + "}";
     AppMethodBeat.o(60250);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.f.a.b
  * JD-Core Version:    0.7.0.1
  */

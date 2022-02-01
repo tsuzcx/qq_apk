@@ -23,31 +23,31 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.RemoteViews.RemoteView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @RemoteViews.RemoteView
 public class QImageView
   extends View
 {
-  private static final a[] JbM = { a.JbO, a.JbP, a.JbQ, a.JbR, a.JbS, a.JbT, a.JbU, a.JbV };
-  private static final Matrix.ScaleToFit[] JbN = { Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START, Matrix.ScaleToFit.CENTER, Matrix.ScaleToFit.END };
-  private int JbA;
-  private boolean JbB;
-  private int[] JbC;
-  private boolean JbD;
-  private int JbE;
-  private int JbF;
-  private Matrix JbG;
-  private final RectF JbH;
-  private final RectF JbI;
-  private boolean JbJ;
-  private PaintFlagsDrawFilter JbK;
-  private PaintFlagsDrawFilter JbL;
-  private int Jbw;
-  private a Jbx;
-  private boolean Jby;
-  private boolean Jbz;
-  private boolean aob;
+  private static final a[] KST = { a.KSV, a.KSW, a.KSX, a.KSY, a.KSZ, a.KTa, a.KTb, a.KTc };
+  private static final Matrix.ScaleToFit[] KSU = { Matrix.ScaleToFit.FILL, Matrix.ScaleToFit.START, Matrix.ScaleToFit.CENTER, Matrix.ScaleToFit.END };
+  private int KSD;
+  private a KSE;
+  private boolean KSF;
+  private boolean KSG;
+  private int KSH;
+  private boolean KSI;
+  private int[] KSJ;
+  private boolean KSK;
+  private int KSL;
+  private int KSM;
+  private Matrix KSN;
+  private final RectF KSO;
+  private final RectF KSP;
+  private boolean KSQ;
+  private PaintFlagsDrawFilter KSR;
+  private PaintFlagsDrawFilter KSS;
+  private boolean apT;
   private int mAlpha;
   private Context mContext;
   private Drawable mDrawable;
@@ -56,14 +56,14 @@ public class QImageView
   private int mMaxHeight;
   private int mMaxWidth;
   private Uri mUri;
-  private ColorFilter vo;
+  private ColorFilter xh;
   
   public QImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(156564);
     this.mContext = paramContext;
-    fuQ();
+    fLD();
     AppMethodBeat.o(156564);
   }
   
@@ -71,29 +71,29 @@ public class QImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(156565);
-    this.Jbw = 0;
-    this.Jby = false;
-    this.Jbz = false;
+    this.KSD = 0;
+    this.KSF = false;
+    this.KSG = false;
     this.mMaxWidth = 2147483647;
     this.mMaxHeight = 2147483647;
     this.mAlpha = 255;
-    this.JbA = 256;
-    this.JbB = false;
+    this.KSH = 256;
+    this.KSI = false;
     this.mDrawable = null;
-    this.JbC = null;
-    this.JbD = false;
+    this.KSJ = null;
+    this.KSK = false;
     this.mLevel = 0;
-    this.JbG = null;
-    this.JbH = new RectF();
-    this.JbI = new RectF();
-    this.aob = false;
+    this.KSN = null;
+    this.KSO = new RectF();
+    this.KSP = new RectF();
+    this.apT = false;
     this.mContext = paramContext;
-    fuQ();
-    this.aob = false;
+    fLD();
+    this.apT = false;
     setAdjustViewBounds(false);
     setMaxWidth(2147483647);
     setMaxHeight(2147483647);
-    this.JbJ = false;
+    this.KSQ = false;
     AppMethodBeat.o(156565);
   }
   
@@ -113,20 +113,20 @@ public class QImageView
         paramDrawable.setState(getDrawableState());
       }
       paramDrawable.setLevel(this.mLevel);
-      this.JbE = paramDrawable.getIntrinsicWidth();
-      this.JbF = paramDrawable.getIntrinsicHeight();
-      fuU();
-      fuT();
+      this.KSL = paramDrawable.getIntrinsicWidth();
+      this.KSM = paramDrawable.getIntrinsicHeight();
+      fLH();
+      fLG();
     }
     AppMethodBeat.o(156583);
   }
   
   private static Matrix.ScaleToFit a(a parama)
   {
-    return JbN[(parama.JbW - 1)];
+    return KSU[(parama.KTd - 1)];
   }
   
-  private static int aM(int paramInt1, int paramInt2, int paramInt3)
+  private static int aN(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(156586);
     int i = View.MeasureSpec.getMode(paramInt3);
@@ -146,17 +146,17 @@ public class QImageView
     }
   }
   
-  private void fuQ()
+  private void fLD()
   {
     AppMethodBeat.i(156566);
     this.mMatrix = new Matrix();
-    this.Jbx = a.JbR;
-    this.JbK = new PaintFlagsDrawFilter(0, 3);
-    this.JbL = new PaintFlagsDrawFilter(0, 0);
+    this.KSE = a.KSY;
+    this.KSR = new PaintFlagsDrawFilter(0, 3);
+    this.KSS = new PaintFlagsDrawFilter(0, 0);
     AppMethodBeat.o(156566);
   }
   
-  private void fuR()
+  private void fLE()
   {
     Object localObject1 = null;
     AppMethodBeat.i(156577);
@@ -171,19 +171,19 @@ public class QImageView
       AppMethodBeat.o(156577);
       return;
     }
-    if (this.Jbw != 0) {}
+    if (this.KSD != 0) {}
     while (this.mUri != null)
     {
       try
       {
-        localObject2 = ((Resources)localObject2).getDrawable(this.Jbw);
+        localObject2 = ((Resources)localObject2).getDrawable(this.KSD);
         localObject1 = localObject2;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.w("ImageView", "Unable to find resource: " + this.Jbw, new Object[] { localException });
+          ad.w("ImageView", "Unable to find resource: " + this.KSD, new Object[] { localException });
           this.mUri = null;
         }
       }
@@ -194,7 +194,7 @@ public class QImageView
     AppMethodBeat.o(156577);
   }
   
-  private void fuS()
+  private void fLF()
   {
     AppMethodBeat.i(156584);
     Drawable localDrawable = this.mDrawable;
@@ -203,75 +203,75 @@ public class QImageView
       int j = localDrawable.getIntrinsicWidth();
       int i = j;
       if (j < 0) {
-        i = this.JbE;
+        i = this.KSL;
       }
       int k = localDrawable.getIntrinsicHeight();
       j = k;
       if (k < 0) {
-        j = this.JbF;
+        j = this.KSM;
       }
-      if ((i != this.JbE) || (j != this.JbF))
+      if ((i != this.KSL) || (j != this.KSM))
       {
-        this.JbE = i;
-        this.JbF = j;
+        this.KSL = i;
+        this.KSM = j;
         requestLayout();
       }
     }
     AppMethodBeat.o(156584);
   }
   
-  private void fuT()
+  private void fLG()
   {
     AppMethodBeat.i(156588);
-    if ((this.mDrawable == null) || (!this.Jby))
+    if ((this.mDrawable == null) || (!this.KSF))
     {
       AppMethodBeat.o(156588);
       return;
     }
-    int j = this.JbE;
-    int k = this.JbF;
+    int j = this.KSL;
+    int k = this.KSM;
     int m = getWidth() - getPaddingLeft() - getPaddingRight();
     int n = getHeight() - getPaddingTop() - getPaddingBottom();
     if (((j < 0) || (m == j)) && ((k < 0) || (n == k))) {}
-    for (int i = 1; (j <= 0) || (k <= 0) || (a.JbP == this.Jbx); i = 0)
+    for (int i = 1; (j <= 0) || (k <= 0) || (a.KSW == this.KSE); i = 0)
     {
       this.mDrawable.setBounds(0, 0, m, n);
-      this.JbG = null;
+      this.KSN = null;
       AppMethodBeat.o(156588);
       return;
     }
     this.mDrawable.setBounds(0, 0, j, k);
-    if (a.JbO == this.Jbx)
+    if (a.KSV == this.KSE)
     {
       if (this.mMatrix.isIdentity())
       {
-        this.JbG = null;
+        this.KSN = null;
         AppMethodBeat.o(156588);
         return;
       }
-      this.JbG = this.mMatrix;
+      this.KSN = this.mMatrix;
       AppMethodBeat.o(156588);
       return;
     }
     if (i != 0)
     {
-      this.JbG = null;
+      this.KSN = null;
       AppMethodBeat.o(156588);
       return;
     }
-    if (a.JbT == this.Jbx)
+    if (a.KTa == this.KSE)
     {
-      this.JbG = this.mMatrix;
-      this.JbG.setTranslate((int)((m - j) * 0.5F + 0.5F), (int)((n - k) * 0.5F + 0.5F));
+      this.KSN = this.mMatrix;
+      this.KSN.setTranslate((int)((m - j) * 0.5F + 0.5F), (int)((n - k) * 0.5F + 0.5F));
       AppMethodBeat.o(156588);
       return;
     }
     float f3;
     float f2;
     float f1;
-    if (a.JbU == this.Jbx)
+    if (a.KTb == this.KSE)
     {
-      this.JbG = this.mMatrix;
+      this.KSN = this.mMatrix;
       if (j * n > m * k)
       {
         f3 = n / k;
@@ -280,8 +280,8 @@ public class QImageView
       }
       for (;;)
       {
-        this.JbG.setScale(f3, f3);
-        this.JbG.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
+        this.KSN.setScale(f3, f3);
+        this.KSN.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
         AppMethodBeat.o(156588);
         return;
         f3 = m / j;
@@ -289,35 +289,35 @@ public class QImageView
         f2 = 0.0F;
       }
     }
-    if (a.JbV == this.Jbx)
+    if (a.KTc == this.KSE)
     {
-      this.JbG = this.mMatrix;
+      this.KSN = this.mMatrix;
       if ((j <= m) && (k <= n)) {}
       for (f1 = 1.0F;; f1 = Math.min(m / j, n / k))
       {
         f2 = (int)((m - j * f1) * 0.5F + 0.5F);
         f3 = (int)((n - k * f1) * 0.5F + 0.5F);
-        this.JbG.setScale(f1, f1);
-        this.JbG.postTranslate(f2, f3);
+        this.KSN.setScale(f1, f1);
+        this.KSN.postTranslate(f2, f3);
         AppMethodBeat.o(156588);
         return;
       }
     }
-    this.JbH.set(0.0F, 0.0F, j, k);
-    this.JbI.set(0.0F, 0.0F, m, n);
-    this.JbG = this.mMatrix;
-    this.JbG.setRectToRect(this.JbH, this.JbI, a(this.Jbx));
+    this.KSO.set(0.0F, 0.0F, j, k);
+    this.KSP.set(0.0F, 0.0F, m, n);
+    this.KSN = this.mMatrix;
+    this.KSN.setRectToRect(this.KSO, this.KSP, a(this.KSE));
     AppMethodBeat.o(156588);
   }
   
-  private void fuU()
+  private void fLH()
   {
     AppMethodBeat.i(156595);
-    if ((this.mDrawable != null) && (this.JbB))
+    if ((this.mDrawable != null) && (this.KSI))
     {
       this.mDrawable = this.mDrawable.mutate();
-      this.mDrawable.setColorFilter(this.vo);
-      this.mDrawable.setAlpha(this.mAlpha * this.JbA >> 8);
+      this.mDrawable.setColorFilter(this.xh);
+      this.mDrawable.setAlpha(this.mAlpha * this.KSH >> 8);
     }
     AppMethodBeat.o(156595);
   }
@@ -336,7 +336,7 @@ public class QImageView
   public int getBaseline()
   {
     AppMethodBeat.i(156591);
-    if (this.aob)
+    if (this.apT)
     {
       int i = getMeasuredHeight();
       AppMethodBeat.o(156591);
@@ -358,7 +358,7 @@ public class QImageView
   
   public a getScaleType()
   {
-    return this.Jbx;
+    return this.KSE;
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -377,19 +377,19 @@ public class QImageView
   public int[] onCreateDrawableState(int paramInt)
   {
     AppMethodBeat.i(156582);
-    if (this.JbC == null)
+    if (this.KSJ == null)
     {
       arrayOfInt = super.onCreateDrawableState(paramInt);
       AppMethodBeat.o(156582);
       return arrayOfInt;
     }
-    if (!this.JbD)
+    if (!this.KSK)
     {
-      arrayOfInt = this.JbC;
+      arrayOfInt = this.KSJ;
       AppMethodBeat.o(156582);
       return arrayOfInt;
     }
-    int[] arrayOfInt = mergeDrawableStates(super.onCreateDrawableState(this.JbC.length + paramInt), this.JbC);
+    int[] arrayOfInt = mergeDrawableStates(super.onCreateDrawableState(this.KSJ.length + paramInt), this.KSJ);
     AppMethodBeat.o(156582);
     return arrayOfInt;
   }
@@ -404,39 +404,39 @@ public class QImageView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(156590);
-    paramCanvas.setDrawFilter(this.JbK);
+    paramCanvas.setDrawFilter(this.KSR);
     super.onDraw(paramCanvas);
     if (this.mDrawable == null)
     {
       AppMethodBeat.o(156590);
       return;
     }
-    if ((this.JbE == 0) || (this.JbF == 0))
+    if ((this.KSL == 0) || (this.KSM == 0))
     {
       AppMethodBeat.o(156590);
       return;
     }
-    if ((this.JbG == null) && (getPaddingTop() == 0) && (getPaddingLeft() == 0)) {
+    if ((this.KSN == null) && (getPaddingTop() == 0) && (getPaddingLeft() == 0)) {
       this.mDrawable.draw(paramCanvas);
     }
     for (;;)
     {
       if (Build.VERSION.SDK_INT > 28) {
-        paramCanvas.setDrawFilter(this.JbL);
+        paramCanvas.setDrawFilter(this.KSS);
       }
       AppMethodBeat.o(156590);
       return;
       int i = paramCanvas.getSaveCount();
       paramCanvas.save();
-      if (this.JbJ)
+      if (this.KSQ)
       {
         int j = getScrollX();
         int k = getScrollY();
         paramCanvas.clipRect(getPaddingLeft() + j, getPaddingTop() + k, j + getRight() - getLeft() - getPaddingRight(), k + getBottom() - getTop() - getPaddingBottom());
       }
       paramCanvas.translate(getPaddingLeft(), getPaddingTop());
-      if (this.JbG != null) {
-        paramCanvas.concat(this.JbG);
+      if (this.KSN != null) {
+        paramCanvas.concat(this.KSN);
       }
       this.mDrawable.draw(paramCanvas);
       paramCanvas.restoreToCount(i);
@@ -446,15 +446,15 @@ public class QImageView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(156587);
-    this.Jby = true;
-    fuT();
+    this.KSF = true;
+    fLG();
     AppMethodBeat.o(156587);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(156585);
-    fuR();
+    fLE();
     float f = 0.0F;
     int k = 0;
     int m = 0;
@@ -462,8 +462,8 @@ public class QImageView
     int i;
     if (this.mDrawable == null)
     {
-      this.JbE = -1;
-      this.JbF = -1;
+      this.KSL = -1;
+      this.KSM = -1;
       j = 0;
       i = 0;
     }
@@ -479,8 +479,8 @@ public class QImageView
       int i1 = getPaddingBottom();
       if ((k != 0) || (m != 0))
       {
-        paramInt1 = aM(j + i2 + i3, this.mMaxWidth, paramInt1);
-        paramInt2 = aM(i + n + i1, this.mMaxHeight, paramInt2);
+        paramInt1 = aN(j + i2 + i3, this.mMaxWidth, paramInt1);
+        paramInt2 = aN(i + n + i1, this.mMaxHeight, paramInt2);
         if ((f == 0.0F) || (Math.abs((paramInt1 - i2 - i3) / (paramInt2 - n - i1) - f) <= 1.0E-007D)) {
           break label406;
         }
@@ -510,8 +510,8 @@ public class QImageView
         setMeasuredDimension(paramInt2, paramInt1);
         AppMethodBeat.o(156585);
         return;
-        i = this.JbE;
-        n = this.JbF;
+        i = this.KSL;
+        n = this.KSM;
         j = i;
         if (i <= 0) {
           j = 1;
@@ -520,7 +520,7 @@ public class QImageView
         if (n <= 0) {
           i = 1;
         }
-        if (!this.Jbz) {
+        if (!this.KSG) {
           break label417;
         }
         k = View.MeasureSpec.getMode(paramInt1);
@@ -565,11 +565,11 @@ public class QImageView
     if (getBackground() == null)
     {
       paramInt = (paramInt >> 7) + paramInt;
-      if (this.JbA != paramInt)
+      if (this.KSH != paramInt)
       {
-        this.JbA = paramInt;
-        this.JbB = true;
-        fuU();
+        this.KSH = paramInt;
+        this.KSI = true;
+        fLH();
       }
       AppMethodBeat.o(156569);
       return true;
@@ -581,9 +581,9 @@ public class QImageView
   public void setAdjustViewBounds(boolean paramBoolean)
   {
     AppMethodBeat.i(156570);
-    this.Jbz = paramBoolean;
+    this.KSG = paramBoolean;
     if (paramBoolean) {
-      setScaleType(a.JbR);
+      setScaleType(a.KSY);
     }
     AppMethodBeat.o(156570);
   }
@@ -595,8 +595,8 @@ public class QImageView
     if (this.mAlpha != paramInt)
     {
       this.mAlpha = paramInt;
-      this.JbB = true;
-      fuU();
+      this.KSI = true;
+      fLH();
       invalidate();
     }
     AppMethodBeat.o(156594);
@@ -619,11 +619,11 @@ public class QImageView
   public void setColorFilter(ColorFilter paramColorFilter)
   {
     AppMethodBeat.i(156593);
-    if (this.vo != paramColorFilter)
+    if (this.xh != paramColorFilter)
     {
-      this.vo = paramColorFilter;
-      this.JbB = true;
-      fuU();
+      this.xh = paramColorFilter;
+      this.KSI = true;
+      fLH();
       invalidate();
     }
     AppMethodBeat.o(156593);
@@ -641,7 +641,7 @@ public class QImageView
     AppMethodBeat.i(156574);
     if (this.mDrawable != paramDrawable)
     {
-      this.Jbw = 0;
+      this.KSD = 0;
       this.mUri = null;
       G(paramDrawable);
       invalidate();
@@ -656,7 +656,7 @@ public class QImageView
     if (this.mDrawable != null)
     {
       this.mDrawable.setLevel(paramInt);
-      fuS();
+      fLF();
     }
     AppMethodBeat.o(156579);
   }
@@ -675,7 +675,7 @@ public class QImageView
     if (((localMatrix == null) && (!this.mMatrix.isIdentity())) || ((localMatrix != null) && (!this.mMatrix.equals(localMatrix))))
     {
       this.mMatrix.set(localMatrix);
-      fuT();
+      fLG();
       invalidate();
     }
     AppMethodBeat.o(156581);
@@ -684,12 +684,12 @@ public class QImageView
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(156571);
-    if ((this.mUri != null) || (this.Jbw != paramInt))
+    if ((this.mUri != null) || (this.KSD != paramInt))
     {
       G(null);
-      this.Jbw = paramInt;
+      this.KSD = paramInt;
       this.mUri = null;
-      fuR();
+      fLE();
       invalidate();
     }
     AppMethodBeat.o(156571);
@@ -698,12 +698,12 @@ public class QImageView
   public void setImageURI(Uri paramUri)
   {
     AppMethodBeat.i(156573);
-    if ((this.Jbw != 0) || ((this.mUri != paramUri) && ((paramUri == null) || (this.mUri == null) || (!paramUri.equals(this.mUri)))))
+    if ((this.KSD != 0) || ((this.mUri != paramUri) && ((paramUri == null) || (this.mUri == null) || (!paramUri.equals(this.mUri)))))
     {
       G(null);
-      this.Jbw = 0;
+      this.KSD = 0;
       this.mUri = paramUri;
-      fuR();
+      fLE();
       invalidate();
     }
     AppMethodBeat.o(156573);
@@ -741,10 +741,10 @@ public class QImageView
       AppMethodBeat.o(156580);
       throw parama;
     }
-    if (this.Jbx != parama)
+    if (this.KSE != parama)
     {
-      this.Jbx = parama;
-      if (this.Jbx != a.JbT) {
+      this.KSE = parama;
+      if (this.KSE != a.KTa) {
         break label71;
       }
     }
@@ -763,7 +763,7 @@ public class QImageView
   {
     AppMethodBeat.i(156578);
     super.setSelected(paramBoolean);
-    fuS();
+    fLF();
     AppMethodBeat.o(156578);
   }
   
@@ -781,26 +781,26 @@ public class QImageView
   
   public static enum a
   {
-    final int JbW;
+    final int KTd;
     
     static
     {
       AppMethodBeat.i(156563);
-      JbO = new a("MATRIX", 0, 0);
-      JbP = new a("FIT_XY", 1, 1);
-      JbQ = new a("FIT_START", 2, 2);
-      JbR = new a("FIT_CENTER", 3, 3);
-      JbS = new a("FIT_END", 4, 4);
-      JbT = new a("CENTER", 5, 5);
-      JbU = new a("CENTER_CROP", 6, 6);
-      JbV = new a("CENTER_INSIDE", 7, 7);
-      JbX = new a[] { JbO, JbP, JbQ, JbR, JbS, JbT, JbU, JbV };
+      KSV = new a("MATRIX", 0, 0);
+      KSW = new a("FIT_XY", 1, 1);
+      KSX = new a("FIT_START", 2, 2);
+      KSY = new a("FIT_CENTER", 3, 3);
+      KSZ = new a("FIT_END", 4, 4);
+      KTa = new a("CENTER", 5, 5);
+      KTb = new a("CENTER_CROP", 6, 6);
+      KTc = new a("CENTER_INSIDE", 7, 7);
+      KTe = new a[] { KSV, KSW, KSX, KSY, KSZ, KTa, KTb, KTc };
       AppMethodBeat.o(156563);
     }
     
     private a(int paramInt)
     {
-      this.JbW = paramInt;
+      this.KTd = paramInt;
     }
   }
 }

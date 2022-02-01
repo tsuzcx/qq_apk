@@ -76,7 +76,7 @@ public abstract class a$a
     if (paramParcel1.readInt() != 0)
     {
       localObject = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      paramParcel1 = f((Bundle)localObject, paramParcel1.readString());
+      paramParcel1 = e((Bundle)localObject, paramParcel1.readString());
       paramParcel2.writeNoException();
       if (paramParcel1 == null) {
         break label226;
@@ -186,7 +186,7 @@ public abstract class a$a
       return this.mRemote;
     }
     
-    public final Bundle f(Bundle paramBundle, String paramString)
+    public final Bundle e(Bundle paramBundle, String paramString)
     {
       AppMethodBeat.i(158782);
       Parcel localParcel1 = Parcel.obtain();

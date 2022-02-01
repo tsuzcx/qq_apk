@@ -19,11 +19,11 @@ public final class f
     try
     {
       localf.groupId = paramString;
-      localf.ADE = paramInt1;
-      localf.ADF = paramLong;
+      localf.CcE = paramInt1;
+      localf.CcF = paramLong;
       localf.reason = paramInt2;
       this.mNetType = 2;
-      this.JLH = c.fIe().aUe(paramString);
+      this.LFq = c.fZv().bac(paramString);
       c(143, localf);
       AppMethodBeat.o(62536);
       return;
@@ -37,7 +37,7 @@ public final class f
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62537);
     if (paramArrayOfByte != null) {}
@@ -59,7 +59,7 @@ public final class f
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSExitVoiceRoomReq";
   }
@@ -71,7 +71,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.f
  * JD-Core Version:    0.7.0.1
  */

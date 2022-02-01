@@ -10,12 +10,12 @@ import com.tencent.mm.plugin.editor.model.a.h;
 import com.tencent.mm.plugin.editor.model.a.j;
 import com.tencent.mm.plugin.editor.model.a.l;
 import com.tencent.mm.plugin.editor.model.a.m;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
@@ -27,21 +27,21 @@ import java.util.regex.Pattern;
 
 public class c
 {
-  private static volatile c oQJ = null;
-  public ArrayList<com.tencent.mm.plugin.editor.model.a.a> ijj = null;
-  public com.tencent.mm.plugin.editor.model.nativenote.b.a oQK = null;
-  public agx oQL = null;
-  public int oQM = 0;
-  public int oQN = 0;
-  public int oQO = 0;
+  private static volatile c put = null;
+  public ArrayList<com.tencent.mm.plugin.editor.model.a.a> mDataList = null;
+  public com.tencent.mm.plugin.editor.model.nativenote.b.a puu = null;
+  public ajn puv = null;
+  public int puw = 0;
+  public int pux = 0;
+  public int puy = 0;
   
-  private boolean AT(int paramInt)
+  private boolean BB(int paramInt)
   {
     AppMethodBeat.i(181735);
-    if ((this.ijj != null) && (paramInt >= 0) && (paramInt < this.ijj.size()))
+    if ((this.mDataList != null) && (paramInt >= 0) && (paramInt < this.mDataList.size()))
     {
-      a((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(paramInt), false);
-      this.ijj.remove(paramInt);
+      a((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(paramInt), false);
+      this.mDataList.remove(paramInt);
     }
     for (boolean bool = true;; bool = false)
     {
@@ -60,24 +60,24 @@ public class c
     }
     if (parama.getType() == 1)
     {
-      int i = com.tencent.mm.plugin.editor.b.Xf(((j)parama).content);
+      int i = com.tencent.mm.plugin.editor.b.aaM(((j)parama).content);
       if (paramBoolean)
       {
-        this.oQN = (i + this.oQN);
+        this.pux = (i + this.pux);
         AppMethodBeat.o(181757);
         return;
       }
-      this.oQN -= i;
+      this.pux -= i;
       AppMethodBeat.o(181757);
       return;
     }
     if (paramBoolean)
     {
-      this.oQO += 1;
+      this.puy += 1;
       AppMethodBeat.o(181757);
       return;
     }
-    this.oQO -= 1;
+    this.puy -= 1;
     AppMethodBeat.o(181757);
   }
   
@@ -85,9 +85,9 @@ public class c
   {
     boolean bool = true;
     AppMethodBeat.i(181733);
-    if ((parama != null) && (this.ijj != null) && (paramInt >= 0) && (paramInt <= this.ijj.size()))
+    if ((parama != null) && (this.mDataList != null) && (paramInt >= 0) && (paramInt <= this.mDataList.size()))
     {
-      this.ijj.add(paramInt, parama);
+      this.mDataList.add(paramInt, parama);
       a(parama, true);
     }
     for (;;)
@@ -98,16 +98,24 @@ public class c
     }
   }
   
-  public static c bZF()
+  private static String cP(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(181747);
+    paramString = String.format("<div><object data-type=\"%d\" id=\"%s\" name=\"%s\" class=\"item item-\"></object></div>", new Object[] { Integer.valueOf(paramInt), paramString, paramString });
+    AppMethodBeat.o(181747);
+    return paramString;
+  }
+  
+  public static c cej()
   {
     AppMethodBeat.i(181727);
-    if (oQJ == null) {}
+    if (put == null) {}
     try
     {
-      if (oQJ == null) {
-        oQJ = new c();
+      if (put == null) {
+        put = new c();
       }
-      c localc = oQJ;
+      c localc = put;
       AppMethodBeat.o(181727);
       return localc;
     }
@@ -117,58 +125,50 @@ public class c
     }
   }
   
-  private void bZJ()
+  private void cen()
   {
     AppMethodBeat.i(181741);
-    if (this.ijj != null)
+    if (this.mDataList != null)
     {
-      Iterator localIterator = this.ijj.iterator();
+      Iterator localIterator = this.mDataList.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)localIterator.next();
-        locala.oPV = false;
-        locala.oQb = false;
+        locala.ptF = false;
+        locala.ptL = false;
       }
     }
     AppMethodBeat.o(181741);
   }
   
-  private String bZM()
+  private String ceq()
   {
     AppMethodBeat.i(181745);
-    if ((this.oQM == 0) && (this.ijj != null))
+    if ((this.puw == 0) && (this.mDataList != null))
     {
-      localObject = this.ijj.iterator();
+      localObject = this.mDataList.iterator();
       while (((Iterator)localObject).hasNext())
       {
         d locald = (d)((Iterator)localObject).next();
-        if (locald.oQi.startsWith("WeNote_"))
+        if (locald.ptS.startsWith("WeNote_"))
         {
-          i = bs.getInt(locald.oQi.substring(7), -1);
-          if (i > this.oQM) {}
+          i = bt.getInt(locald.ptS.substring(7), -1);
+          if (i > this.puw) {}
           for (;;)
           {
-            this.oQM = i;
+            this.puw = i;
             break;
-            i = this.oQM;
+            i = this.puw;
           }
         }
       }
     }
     Object localObject = new StringBuilder("WeNote_");
-    int i = this.oQM + 1;
-    this.oQM = i;
+    int i = this.puw + 1;
+    this.puw = i;
     localObject = i;
     AppMethodBeat.o(181745);
     return localObject;
-  }
-  
-  private static String cM(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(181747);
-    paramString = String.format("<div><object data-type=\"%d\" id=\"%s\" name=\"%s\" class=\"item item-\"></object></div>", new Object[] { Integer.valueOf(paramInt), paramString, paramString });
-    AppMethodBeat.o(181747);
-    return paramString;
   }
   
   private void f(com.tencent.mm.plugin.editor.model.a.a parama)
@@ -180,21 +180,21 @@ public class c
       return;
     }
     d locald = (d)parama;
-    if ((locald.getType() > 1) && (bs.isNullOrNil(locald.oQi))) {
-      locald.oQi = bZM();
+    if ((locald.getType() > 1) && (bt.isNullOrNil(locald.ptS))) {
+      locald.ptS = ceq();
     }
-    if (bs.isNullOrNil(parama.dhw)) {
-      parama.dhw = com.tencent.mm.plugin.editor.model.b.Xn(parama.toString());
+    if (bt.isNullOrNil(parama.dsU)) {
+      parama.dsU = com.tencent.mm.plugin.editor.model.b.aaU(parama.toString());
     }
     AppMethodBeat.o(181752);
   }
   
-  public final com.tencent.mm.plugin.editor.model.a.a AS(int paramInt)
+  public final com.tencent.mm.plugin.editor.model.a.a BA(int paramInt)
   {
     AppMethodBeat.i(181729);
-    if ((this.ijj != null) && (paramInt >= 0) && (paramInt < this.ijj.size()))
+    if ((this.mDataList != null) && (paramInt >= 0) && (paramInt < this.mDataList.size()))
     {
-      com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(paramInt);
+      com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(paramInt);
       AppMethodBeat.o(181729);
       return locala;
     }
@@ -202,11 +202,11 @@ public class c
     return null;
   }
   
-  public final void AU(int paramInt)
+  public final void BC(int paramInt)
   {
     AppMethodBeat.i(181736);
-    if (this.oQK != null) {
-      this.oQK.AN(paramInt);
+    if (this.puu != null) {
+      this.puu.Bv(paramInt);
     }
     AppMethodBeat.o(181736);
   }
@@ -225,20 +225,20 @@ public class c
       com.tencent.mm.plugin.editor.model.a.a locala;
       try
       {
-        if (this.ijj == null) {
+        if (this.mDataList == null) {
           return;
         }
-        Iterator localIterator = this.ijj.iterator();
+        Iterator localIterator = this.mDataList.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         locala = (com.tencent.mm.plugin.editor.model.a.a)localIterator.next();
-        if (locala.oQa != null)
+        if (locala.ptK != null)
         {
-          paramArrayList.add(locala.oQa);
+          paramArrayList.add(locala.ptK);
           continue;
         }
-        if (locala.oPY == null) {
+        if (locala.ptI == null) {
           continue;
         }
       }
@@ -246,10 +246,10 @@ public class c
       {
         AppMethodBeat.o(181754);
       }
-      if (locala.oPZ != null)
+      if (locala.ptJ != null)
       {
-        paramArrayList.add(locala.oPY);
-        paramArrayList.add(locala.oPZ);
+        paramArrayList.add(locala.ptI);
+        paramArrayList.add(locala.ptJ);
       }
     }
     AppMethodBeat.o(181754);
@@ -270,7 +270,7 @@ public class c
         localStringBuilder.append(((j)locala).content);
       }
     }
-    boolean bool = fb(com.tencent.mm.plugin.editor.b.Xf(localStringBuilder.toString()), i);
+    boolean bool = ff(com.tencent.mm.plugin.editor.b.aaM(localStringBuilder.toString()), i);
     AppMethodBeat.o(181755);
     return bool;
   }
@@ -284,25 +284,25 @@ public class c
     {
       try
       {
-        if (this.ijj != null)
+        if (this.mDataList != null)
         {
           bool1 = bool2;
           if (paramInt >= 0)
           {
             bool1 = bool2;
-            if (paramInt < this.ijj.size())
+            if (paramInt < this.mDataList.size())
             {
-              a((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(paramInt), false);
-              this.ijj.remove(paramInt);
+              a((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(paramInt), false);
+              this.mDataList.remove(paramInt);
               bool1 = true;
             }
           }
         }
-        if ((bool1) && (paramBoolean) && (this.oQK != null))
+        if ((bool1) && (paramBoolean) && (this.puu != null))
         {
-          this.oQK.AP(paramInt);
+          this.puu.Bx(paramInt);
           if (paramInt > 0) {
-            this.oQK.eZ(paramInt - 1, this.ijj.size() - (paramInt - 1));
+            this.puu.fd(paramInt - 1, this.mDataList.size() - (paramInt - 1));
           }
         }
         else
@@ -315,7 +315,7 @@ public class c
       {
         AppMethodBeat.o(181734);
       }
-      this.oQK.eZ(paramInt, this.ijj.size() - paramInt);
+      this.puu.fd(paramInt, this.mDataList.size() - paramInt);
     }
   }
   
@@ -326,17 +326,17 @@ public class c
     {
       try
       {
-        if (this.ijj == null) {
+        if (this.mDataList == null) {
           return;
         }
-        if ((paramInt >= 0) && (paramInt < this.ijj.size()))
+        if ((paramInt >= 0) && (paramInt < this.mDataList.size()))
         {
-          locala = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(paramInt);
-          if ((locala != null) && (locala.oQc != paramBoolean))
+          locala = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(paramInt);
+          if ((locala != null) && (locala.ptM != paramBoolean))
           {
-            locala.oQc = paramBoolean;
-            if (this.oQK != null) {
-              this.oQK.AN(paramInt);
+            locala.ptM = paramBoolean;
+            if (this.puu != null) {
+              this.puu.Bv(paramInt);
             }
           }
           return;
@@ -345,15 +345,15 @@ public class c
           continue;
         }
         paramInt = 0;
-        if (paramInt >= this.ijj.size()) {
+        if (paramInt >= this.mDataList.size()) {
           continue;
         }
-        com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(paramInt);
-        if ((locala != null) && (locala.oQc != paramBoolean))
+        com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(paramInt);
+        if ((locala != null) && (locala.ptM != paramBoolean))
         {
-          locala.oQc = paramBoolean;
-          if (this.oQK != null) {
-            this.oQK.AN(paramInt);
+          locala.ptM = paramBoolean;
+          if (this.puu != null) {
+            this.puu.Bv(paramInt);
           }
         }
       }
@@ -365,177 +365,6 @@ public class c
     }
   }
   
-  public final ahn Xq(String paramString)
-  {
-    AppMethodBeat.i(181748);
-    if (bs.isNullOrNil(paramString))
-    {
-      ac.e("MicroMsg.EditorDataManager", "getFavProtoItem error, htmlstr is null or nil");
-      AppMethodBeat.o(181748);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
-    {
-      Object localObject1;
-      Object localObject2;
-      try
-      {
-        if (i >= this.ijj.size()) {
-          break label796;
-        }
-        localObject1 = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i);
-        if (bs.isNullOrNil(((com.tencent.mm.plugin.editor.model.a.a)localObject1).dhw)) {
-          ((com.tencent.mm.plugin.editor.model.a.a)localObject1).dhw = com.tencent.mm.plugin.editor.model.b.Xn(localObject1.toString());
-        }
-        if (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() == -1) {
-          if ((localArrayList.size() > 0) && (((d)localArrayList.get(localArrayList.size() - 1)).type == 1))
-          {
-            localObject1 = new StringBuilder();
-            localObject2 = (j)localArrayList.get(localArrayList.size() - 1);
-            ((j)localObject2).content += "\n";
-          }
-          else
-          {
-            localObject2 = new j();
-            ((j)localObject2).content = "\n";
-            ((j)localObject2).dhw = ((com.tencent.mm.plugin.editor.model.a.a)localObject1).dhw;
-            ((j)localObject2).oQi = "-1";
-            ((j)localObject2).type = 1;
-            ((j)localObject2).oQh = null;
-            localArrayList.add(localObject2);
-          }
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(181748);
-      }
-      if (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() >= -1)
-      {
-        if (((((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() == 6) || (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() == 4)) && (bs.isNullOrNil(((d)localObject1).dpK)))
-        {
-          localObject2 = new agx();
-          ((agx)localObject2).aIP(((com.tencent.mm.plugin.editor.model.a.a)localObject1).dhw);
-          ((agx)localObject2).aIM(((com.tencent.mm.plugin.editor.model.a.a)localObject1).bZx());
-          localObject2 = com.tencent.mm.plugin.editor.model.b.b((agx)localObject2);
-          if (i.eA((String)localObject2))
-          {
-            ac.e("MicroMsg.EditorDataManager", "getFavProtoItem, type = %d, localfile exist, but localpath is null or nil, set path here", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType()) });
-            ((d)localObject1).dpK = ((String)localObject2);
-          }
-        }
-        if (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() != 1)
-        {
-          localArrayList.add((d)localObject1);
-        }
-        else
-        {
-          localObject1 = (j)localObject1;
-          if (bs.isNullOrNil(((j)localObject1).content))
-          {
-            if ((localArrayList.size() > 0) && (((d)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
-            {
-              localObject1 = new StringBuilder();
-              localObject2 = (j)localArrayList.get(localArrayList.size() - 1);
-              ((j)localObject2).content += "<br/>";
-            }
-            else
-            {
-              localObject2 = new j();
-              ((j)localObject2).content = "<br/>";
-              ((j)localObject2).dhw = ((j)localObject1).dhw;
-              ((j)localObject2).oQi = ((j)localObject1).oQi;
-              ((j)localObject2).type = ((j)localObject1).type;
-              ((j)localObject2).oQh = null;
-              localArrayList.add(localObject2);
-            }
-          }
-          else
-          {
-            Object localObject3;
-            if ((localArrayList.size() > 0) && (((d)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
-            {
-              localObject2 = new StringBuilder();
-              localObject3 = (j)localArrayList.get(localArrayList.size() - 1);
-              ((j)localObject3).content += ((j)localObject1).content;
-            }
-            while ((i + 1 < this.ijj.size()) && (((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i + 1)).getType() == 1) && (!bs.isNullOrNil(((j)this.ijj.get(i + 1)).content)))
-            {
-              localObject1 = new StringBuilder();
-              localObject2 = (j)localArrayList.get(localArrayList.size() - 1);
-              ((j)localObject2).content += "<br/>";
-              break;
-              localObject2 = new j();
-              ((j)localObject2).content = ((j)localObject1).content;
-              ((j)localObject2).dhw = ((j)localObject1).dhw;
-              ((j)localObject2).oQi = ((j)localObject1).oQi;
-              ((j)localObject2).type = ((j)localObject1).type;
-              ((j)localObject2).oQh = null;
-              localArrayList.add(localObject2);
-              continue;
-              label796:
-              paramString = Pattern.compile("<wx-", 2).matcher(paramString).replaceAll("<");
-              localObject1 = Pattern.compile("</wx-", 2).matcher(paramString).replaceAll("</");
-              try
-              {
-                paramString = ((String)localObject1).getBytes("UTF-8");
-                i = 0;
-              }
-              catch (UnsupportedEncodingException paramString)
-              {
-                for (;;)
-                {
-                  try
-                  {
-                    ((e)localObject3).createNewFile();
-                    if ((i != 0) || (i.f((String)localObject2, paramString, paramString.length) != 0)) {
-                      break;
-                    }
-                    this.oQL.aIQ((String)localObject2);
-                    ac.i("MicroMsg.EditorDataManager", "do EditorBase.ConvertNote2FavProtoItem");
-                    paramString = com.tencent.mm.plugin.editor.model.a.a((String)localObject1, localArrayList, this.oQL);
-                    AppMethodBeat.o(181748);
-                    return paramString;
-                  }
-                  catch (IOException paramString)
-                  {
-                    ac.printErrStackTrace("MicroMsg.EditorDataManager", paramString, "", new Object[0]);
-                    AppMethodBeat.o(181748);
-                    return null;
-                  }
-                  paramString = paramString;
-                  ac.printErrStackTrace("MicroMsg.EditorDataManager", paramString, "", new Object[0]);
-                  ac.e("MicroMsg.EditorDataManager", "writehtmlfile, use utf-8 encoding error, use default encoding");
-                  i = 1;
-                  paramString = null;
-                }
-              }
-              this.oQL.XM(8);
-              this.oQL.aIZ("WeNoteHtmlFile");
-              this.oQL.vz(true);
-              this.oQL.aIM(".htm");
-              this.oQL.aIP(com.tencent.mm.plugin.editor.model.b.Xn(this.oQL.toString()));
-              localObject2 = com.tencent.mm.plugin.editor.model.b.b(this.oQL);
-              ac.i("MicroMsg.EditorDataManager", "getFavProtoItem: save note html file, path is %s", new Object[] { localObject2 });
-              localObject3 = new e((String)localObject2);
-              if (((e)localObject3).exists()) {
-                ((e)localObject3).delete();
-              }
-              if (!((e)localObject3).exists()) {}
-              ac.i("MicroMsg.EditorDataManager", "writefile error, return");
-              Toast.makeText(ai.getContext(), ai.getContext().getString(2131758993), 1).show();
-              AppMethodBeat.o(181748);
-              return null;
-            }
-          }
-        }
-      }
-      i += 1;
-    }
-  }
-  
   public final void Y(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(181742);
@@ -544,20 +373,20 @@ public class c
       int i;
       try
       {
-        if ((this.ijj == null) || (paramInt < 0) || (paramInt >= this.ijj.size())) {
+        if ((this.mDataList == null) || (paramInt < 0) || (paramInt >= this.mDataList.size())) {
           return;
         }
         i = 0;
-        if (i < this.ijj.size()) {
+        if (i < this.mDataList.size()) {
           if (i == paramInt)
           {
-            ((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i)).oPV = true;
-            ((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i)).oQb = paramBoolean;
+            ((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i)).ptF = true;
+            ((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i)).ptL = paramBoolean;
           }
           else
           {
-            ((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i)).oPV = false;
-            ((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i)).oQb = false;
+            ((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i)).ptF = false;
+            ((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i)).ptL = false;
           }
         }
       }
@@ -589,26 +418,26 @@ public class c
   public final int a(ArrayList<com.tencent.mm.plugin.editor.model.a.a> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(181751);
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.ijj == null) || (paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 < 0) || (paramInt4 < paramInt3))
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.mDataList == null) || (paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 < 0) || (paramInt4 < paramInt3))
     {
-      ac.e("MicroMsg.EditorDataManager", "pasteItemList,error,return");
+      ad.e("MicroMsg.EditorDataManager", "pasteItemList,error,return");
       AppMethodBeat.o(181751);
       return -1;
     }
     Object localObject1 = (com.tencent.mm.plugin.editor.model.a.a)paramArrayList.get(paramArrayList.size() - 1);
     if (localObject1 == null)
     {
-      ac.e("MicroMsg.EditorDataManager", "pasteItemList, lastInsertItem is null");
+      ad.e("MicroMsg.EditorDataManager", "pasteItemList, lastInsertItem is null");
       AppMethodBeat.o(181751);
       return -1;
     }
-    ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oPX = -1;
-    ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oPV = true;
-    ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oQb = false;
-    Object localObject3 = AS(paramInt2);
+    ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptH = -1;
+    ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptF = true;
+    ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptL = false;
+    Object localObject3 = BA(paramInt2);
     if (localObject3 == null)
     {
-      ac.e("MicroMsg.EditorDataManager", "pasteItemList, item is null");
+      ad.e("MicroMsg.EditorDataManager", "pasteItemList, item is null");
       AppMethodBeat.o(181751);
       return -1;
     }
@@ -620,17 +449,17 @@ public class c
       int i;
       try
       {
-        bZJ();
+        cen();
         if ((paramInt1 != 0) || (((com.tencent.mm.plugin.editor.model.a.a)localObject3).getType() != 1)) {
           break label875;
         }
-        Object localObject2 = com.tencent.mm.plugin.editor.model.nativenote.a.a.Xo(((j)localObject3).content);
+        Object localObject2 = com.tencent.mm.plugin.editor.model.nativenote.a.a.aaV(((j)localObject3).content);
         if ((localObject2 == null) || (paramInt3 > ((Spanned)localObject2).length()) || (paramInt4 > ((Spanned)localObject2).length()))
         {
           if (localObject2 == null)
           {
             paramInt1 = -1;
-            ac.e("MicroMsg.EditorDataManager", "pasteItemList error, oriText:%d  startOff:%d  endOff:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+            ad.e("MicroMsg.EditorDataManager", "pasteItemList error, oriText:%d  startOff:%d  endOff:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
             return -1;
           }
           paramInt1 = ((Spanned)localObject2).length();
@@ -641,7 +470,7 @@ public class c
         localObject2 = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject1);
         localObject1 = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localCharSequence);
         localObject3 = (j)localObject3;
-        if (!bs.isNullOrNil((String)localObject2))
+        if (!bt.isNullOrNil((String)localObject2))
         {
           if (!((String)localObject2).endsWith("<br/>")) {
             break label858;
@@ -650,7 +479,7 @@ public class c
           ((j)localObject3).content = ((String)localObject2);
           paramInt2 += 1;
           paramInt1 = paramInt2;
-          if (bs.isNullOrNil((String)localObject1)) {
+          if (bt.isNullOrNil((String)localObject1)) {
             break label861;
           }
           localObject3 = new j();
@@ -660,9 +489,9 @@ public class c
             localObject2 = ((String)localObject1).substring(5, ((String)localObject1).length());
           }
           ((j)localObject3).content = ((String)localObject2);
-          ((j)localObject3).oPX = 0;
-          ((j)localObject3).oPV = false;
-          ((j)localObject3).oQb = false;
+          ((j)localObject3).ptH = 0;
+          ((j)localObject3).ptF = false;
+          ((j)localObject3).ptL = false;
           b(paramInt2, (com.tencent.mm.plugin.editor.model.a.a)localObject3);
           paramInt4 = 1;
           paramInt1 = paramInt2;
@@ -686,7 +515,7 @@ public class c
         }
         else
         {
-          if (!bs.isNullOrNil((String)localObject1))
+          if (!bt.isNullOrNil((String)localObject1))
           {
             localObject2 = localObject1;
             if (((String)localObject1).startsWith("<br/>")) {
@@ -699,12 +528,12 @@ public class c
             paramInt2 = paramInt4;
             continue;
           }
-          AT(paramInt2);
+          BB(paramInt2);
           paramInt1 = paramInt2;
-          if (this.oQK == null) {
+          if (this.puu == null) {
             break label861;
           }
-          this.oQK.AP(paramInt2);
+          this.puu.Bx(paramInt2);
           paramInt1 = paramInt2;
           break label861;
           label620:
@@ -721,10 +550,10 @@ public class c
           paramInt2 += 1;
           break label887;
         }
-        if ((j - 1 >= 0) && (j - 1 < bZF().size()))
+        if ((j - 1 >= 0) && (j - 1 < cej().size()))
         {
           paramInt1 = j - 1;
-          if (this.oQK != null)
+          if (this.puu != null)
           {
             paramInt3 = j - i;
             paramInt2 = paramInt3;
@@ -732,15 +561,15 @@ public class c
               paramInt2 = paramInt3 + 1;
             }
             if ((i >= 0) && (paramInt2 > 0)) {
-              this.oQK.eY(i, paramInt2);
+              this.puu.fc(i, paramInt2);
             }
             if (i <= 0) {
               break label819;
             }
-            this.oQK.eZ(i - 1, bZF().size() - (i - 1));
-            this.oQK.AQ(paramInt1);
+            this.puu.fd(i - 1, cej().size() - (i - 1));
+            this.puu.By(paramInt1);
           }
-          bZP();
+          cet();
           AppMethodBeat.o(181751);
           return paramInt1;
         }
@@ -749,12 +578,12 @@ public class c
       {
         AppMethodBeat.o(181751);
       }
-      paramInt1 = bZF().size() - 1;
+      paramInt1 = cej().size() - 1;
       continue;
       label819:
       if (i == 0)
       {
-        this.oQK.eZ(i, bZF().size() - i);
+        this.puu.fd(i, cej().size() - i);
         continue;
         label847:
         break label887;
@@ -789,15 +618,15 @@ public class c
   public final int a(ArrayList<com.tencent.mm.plugin.editor.model.a.a> paramArrayList, WXRTEditText paramWXRTEditText, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     AppMethodBeat.i(181750);
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.ijj == null))
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.mDataList == null))
     {
-      ac.e("MicroMsg.EditorDataManager", "insertItemList,error,return");
+      ad.e("MicroMsg.EditorDataManager", "insertItemList,error,return");
       AppMethodBeat.o(181750);
       return -1;
     }
-    if ((paramBoolean2) && (N(paramArrayList)) && (this.oQK != null))
+    if ((paramBoolean2) && (N(paramArrayList)) && (this.puu != null))
     {
-      this.oQK.bYO();
+      this.puu.cds();
       AppMethodBeat.o(181750);
       return -1;
     }
@@ -805,15 +634,15 @@ public class c
     if (paramBoolean1)
     {
       localObject1 = (com.tencent.mm.plugin.editor.model.a.a)paramArrayList.get(paramArrayList.size() - 1);
-      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oPX = -1;
-      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oPV = true;
-      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oQb = false;
-      if ((paramWXRTEditText != null) && (paramWXRTEditText.oRL))
+      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptH = -1;
+      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptF = true;
+      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptL = false;
+      if ((paramWXRTEditText != null) && (paramWXRTEditText.pvv))
       {
         if (paramWXRTEditText.getEditTextType() != 2) {
           break label262;
         }
-        ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oQe = 2;
+        ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptO = 2;
       }
     }
     label170:
@@ -828,9 +657,9 @@ public class c
     int m;
     for (;;)
     {
-      paramWXRTEditText.oRL = false;
-      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oQf = paramWXRTEditText.oQf;
-      paramWXRTEditText.oQf = 0;
+      paramWXRTEditText.pvv = false;
+      ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptP = paramWXRTEditText.ptP;
+      paramWXRTEditText.ptP = 0;
       if ((paramWXRTEditText == null) || (paramWXRTEditText.getRecyclerItemPosition() != 0)) {
         if (paramWXRTEditText != null) {
           break label622;
@@ -839,7 +668,7 @@ public class c
       try
       {
         n = size();
-        bZJ();
+        cen();
         paramArrayList = paramArrayList.iterator();
         i = n;
         for (;;)
@@ -848,10 +677,10 @@ public class c
           {
             paramWXRTEditText = (com.tencent.mm.plugin.editor.model.a.a)paramArrayList.next();
             f(paramWXRTEditText);
-            if ((paramWXRTEditText == null) || (this.ijj == null)) {
+            if ((paramWXRTEditText == null) || (this.mDataList == null)) {
               break label1248;
             }
-            this.ijj.add(paramWXRTEditText);
+            this.mDataList.add(paramWXRTEditText);
             a(paramWXRTEditText, true);
             j = 1;
             if (j == 0) {
@@ -862,7 +691,7 @@ public class c
             if (paramWXRTEditText.getEditTextType() != 1) {
               break;
             }
-            ((com.tencent.mm.plugin.editor.model.a.a)localObject1).oQe = 1;
+            ((com.tencent.mm.plugin.editor.model.a.a)localObject1).ptO = 1;
             break;
             if ((paramWXRTEditText.getEditTextType() == 2) || (paramWXRTEditText.getSelectionStart() != 0) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
               break label170;
@@ -873,14 +702,14 @@ public class c
             }
             localObject1 = new j();
             ((j)localObject1).content = "";
-            ((j)localObject1).oPV = false;
-            ((j)localObject1).oQb = false;
+            ((j)localObject1).ptF = false;
+            ((j)localObject1).ptL = false;
             paramArrayList.add(0, localObject1);
             break label170;
           }
         }
         i1 = 0;
-        if ((i - 1 < 0) || (i - 1 >= bZF().size())) {
+        if ((i - 1 < 0) || (i - 1 >= cej().size())) {
           break;
         }
         j = i - 1;
@@ -890,24 +719,24 @@ public class c
         {
           j += 1;
           i += 1;
-          bZJ();
-          if (j >= bZF().size()) {
+          cen();
+          if (j >= cej().size()) {
             break label1143;
           }
-          paramArrayList = bZF().AS(j);
+          paramArrayList = cej().BA(j);
           k = j;
           m = i;
           if (paramArrayList != null)
           {
-            paramArrayList.oPX = 0;
-            paramArrayList.oPV = true;
-            paramArrayList.oQb = false;
+            paramArrayList.ptH = 0;
+            paramArrayList.ptF = true;
+            paramArrayList.ptL = false;
             m = i;
             k = j;
           }
         }
         label503:
-        if (this.oQK != null)
+        if (this.puu != null)
         {
           j = m - n;
           i = j;
@@ -915,19 +744,19 @@ public class c
             i = j + 1;
           }
           if ((n >= 0) && (i > 0)) {
-            this.oQK.eY(n, i);
+            this.puu.fc(n, i);
           }
           if (n <= 0) {
             break label1197;
           }
-          this.oQK.eZ(n - 1, bZF().size() - (n - 1));
+          this.puu.fd(n - 1, cej().size() - (n - 1));
           if (paramBoolean3) {
-            this.oQK.bYN();
+            this.puu.cdr();
           }
-          this.oQK.AQ(k);
+          this.puu.By(k);
         }
         label584:
-        bZP();
+        cet();
         AppMethodBeat.o(181750);
         return k;
       }
@@ -940,23 +769,23 @@ public class c
       }
     }
     int j = paramWXRTEditText.getRecyclerItemPosition();
-    localObject2 = AS(j);
+    localObject2 = BA(j);
     if (localObject2 == null)
     {
       AppMethodBeat.o(181750);
       return -1;
     }
-    bZJ();
+    cen();
     if ((paramWXRTEditText.getEditTextType() == 0) && (((com.tencent.mm.plugin.editor.model.a.a)localObject2).getType() == 1))
     {
       localObject1 = paramWXRTEditText.getSelection();
       localObject3 = paramWXRTEditText.getText();
-      paramWXRTEditText = ((Editable)localObject3).subSequence(0, ((g)localObject1).atr);
-      localObject3 = ((Editable)localObject3).subSequence(((g)localObject1).MZ, ((Editable)localObject3).length());
+      paramWXRTEditText = ((Editable)localObject3).subSequence(0, ((g)localObject1).avj);
+      localObject3 = ((Editable)localObject3).subSequence(((g)localObject1).OQ, ((Editable)localObject3).length());
       localObject1 = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)paramWXRTEditText);
       paramWXRTEditText = com.tencent.mm.plugin.editor.model.nativenote.a.b.a((Spanned)localObject3);
       localObject2 = (j)localObject2;
-      if (!bs.isNullOrNil((String)localObject1))
+      if (!bt.isNullOrNil((String)localObject1))
       {
         if (((String)localObject1).endsWith("<br/>"))
         {
@@ -965,7 +794,7 @@ public class c
           ((j)localObject2).content = ((String)localObject1);
           j += 1;
           i = j;
-          if (bs.isNullOrNil(paramWXRTEditText)) {
+          if (bt.isNullOrNil(paramWXRTEditText)) {
             break label1267;
           }
           localObject2 = new j();
@@ -975,9 +804,9 @@ public class c
             localObject1 = paramWXRTEditText.substring(5, paramWXRTEditText.length());
           }
           ((j)localObject2).content = ((String)localObject1);
-          ((j)localObject2).oPX = 0;
-          ((j)localObject2).oPV = false;
-          ((j)localObject2).oQb = false;
+          ((j)localObject2).ptH = 0;
+          ((j)localObject2).ptF = false;
+          ((j)localObject2).ptL = false;
           b(j, (com.tencent.mm.plugin.editor.model.a.a)localObject2);
           i = j;
           k = 1;
@@ -1007,7 +836,7 @@ public class c
           }
           i = m + 1;
           break label1257;
-          if (bs.isNullOrNil(paramWXRTEditText)) {
+          if (bt.isNullOrNil(paramWXRTEditText)) {
             break label1017;
           }
           localObject1 = paramWXRTEditText;
@@ -1022,12 +851,12 @@ public class c
           k = m;
         }
         label1017:
-        AT(j);
+        BB(j);
         i = j;
-        if (this.oQK == null) {
+        if (this.puu == null) {
           break label1267;
         }
-        this.oQK.AP(j);
+        this.puu.Bx(j);
         i = j;
         break label1267;
       }
@@ -1052,14 +881,14 @@ public class c
         }
         i += 1;
         break label1277;
-        j = bZF().size() - 1;
+        j = cej().size() - 1;
         break label419;
         paramArrayList = new j();
         paramArrayList.type = 1;
         paramArrayList.content = "";
-        paramArrayList.oPX = 0;
-        paramArrayList.oPV = true;
-        paramArrayList.oQb = false;
+        paramArrayList.ptH = 0;
+        paramArrayList.ptF = true;
+        paramArrayList.ptL = false;
         b(j, paramArrayList);
         k = j;
         m = i;
@@ -1067,7 +896,7 @@ public class c
         if (n != 0) {
           break label584;
         }
-        this.oQK.eZ(n, bZF().size() - n);
+        this.puu.fd(n, cej().size() - n);
         break label584;
       }
       i1 = 0;
@@ -1097,16 +926,16 @@ public class c
     {
       try
       {
-        if ((this.ijj == null) || (paramInt < 0) || (paramInt > this.ijj.size())) {
+        if ((this.mDataList == null) || (paramInt < 0) || (paramInt > this.mDataList.size())) {
           break label138;
         }
-        this.ijj.add(paramInt, parama);
+        this.mDataList.add(paramInt, parama);
         a(parama, true);
-        if ((bool) && (this.oQK != null))
+        if ((bool) && (this.puu != null))
         {
-          this.oQK.AO(paramInt);
+          this.puu.Bw(paramInt);
           if (paramInt > 0) {
-            this.oQK.eZ(paramInt - 1, this.ijj.size() - (paramInt - 1));
+            this.puu.fd(paramInt - 1, this.mDataList.size() - (paramInt - 1));
           }
         }
         else
@@ -1119,10 +948,181 @@ public class c
       {
         AppMethodBeat.o(181732);
       }
-      this.oQK.eZ(paramInt, this.ijj.size() - paramInt);
+      this.puu.fd(paramInt, this.mDataList.size() - paramInt);
       continue;
       label138:
       bool = false;
+    }
+  }
+  
+  public final akd aaX(String paramString)
+  {
+    AppMethodBeat.i(181748);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.EditorDataManager", "getFavProtoItem error, htmlstr is null or nil");
+      AppMethodBeat.o(181748);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    for (;;)
+    {
+      Object localObject1;
+      Object localObject2;
+      try
+      {
+        if (i >= this.mDataList.size()) {
+          break label796;
+        }
+        localObject1 = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i);
+        if (bt.isNullOrNil(((com.tencent.mm.plugin.editor.model.a.a)localObject1).dsU)) {
+          ((com.tencent.mm.plugin.editor.model.a.a)localObject1).dsU = com.tencent.mm.plugin.editor.model.b.aaU(localObject1.toString());
+        }
+        if (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() == -1) {
+          if ((localArrayList.size() > 0) && (((d)localArrayList.get(localArrayList.size() - 1)).type == 1))
+          {
+            localObject1 = new StringBuilder();
+            localObject2 = (j)localArrayList.get(localArrayList.size() - 1);
+            ((j)localObject2).content += "\n";
+          }
+          else
+          {
+            localObject2 = new j();
+            ((j)localObject2).content = "\n";
+            ((j)localObject2).dsU = ((com.tencent.mm.plugin.editor.model.a.a)localObject1).dsU;
+            ((j)localObject2).ptS = "-1";
+            ((j)localObject2).type = 1;
+            ((j)localObject2).ptR = null;
+            localArrayList.add(localObject2);
+          }
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(181748);
+      }
+      if (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() >= -1)
+      {
+        if (((((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() == 6) || (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() == 4)) && (bt.isNullOrNil(((d)localObject1).dBx)))
+        {
+          localObject2 = new ajn();
+          ((ajn)localObject2).aOs(((com.tencent.mm.plugin.editor.model.a.a)localObject1).dsU);
+          ((ajn)localObject2).aOp(((com.tencent.mm.plugin.editor.model.a.a)localObject1).ceb());
+          localObject2 = com.tencent.mm.plugin.editor.model.b.b((ajn)localObject2);
+          if (i.fv((String)localObject2))
+          {
+            ad.e("MicroMsg.EditorDataManager", "getFavProtoItem, type = %d, localfile exist, but localpath is null or nil, set path here", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType()) });
+            ((d)localObject1).dBx = ((String)localObject2);
+          }
+        }
+        if (((com.tencent.mm.plugin.editor.model.a.a)localObject1).getType() != 1)
+        {
+          localArrayList.add((d)localObject1);
+        }
+        else
+        {
+          localObject1 = (j)localObject1;
+          if (bt.isNullOrNil(((j)localObject1).content))
+          {
+            if ((localArrayList.size() > 0) && (((d)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
+            {
+              localObject1 = new StringBuilder();
+              localObject2 = (j)localArrayList.get(localArrayList.size() - 1);
+              ((j)localObject2).content += "<br/>";
+            }
+            else
+            {
+              localObject2 = new j();
+              ((j)localObject2).content = "<br/>";
+              ((j)localObject2).dsU = ((j)localObject1).dsU;
+              ((j)localObject2).ptS = ((j)localObject1).ptS;
+              ((j)localObject2).type = ((j)localObject1).type;
+              ((j)localObject2).ptR = null;
+              localArrayList.add(localObject2);
+            }
+          }
+          else
+          {
+            Object localObject3;
+            if ((localArrayList.size() > 0) && (((d)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
+            {
+              localObject2 = new StringBuilder();
+              localObject3 = (j)localArrayList.get(localArrayList.size() - 1);
+              ((j)localObject3).content += ((j)localObject1).content;
+            }
+            while ((i + 1 < this.mDataList.size()) && (((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i + 1)).getType() == 1) && (!bt.isNullOrNil(((j)this.mDataList.get(i + 1)).content)))
+            {
+              localObject1 = new StringBuilder();
+              localObject2 = (j)localArrayList.get(localArrayList.size() - 1);
+              ((j)localObject2).content += "<br/>";
+              break;
+              localObject2 = new j();
+              ((j)localObject2).content = ((j)localObject1).content;
+              ((j)localObject2).dsU = ((j)localObject1).dsU;
+              ((j)localObject2).ptS = ((j)localObject1).ptS;
+              ((j)localObject2).type = ((j)localObject1).type;
+              ((j)localObject2).ptR = null;
+              localArrayList.add(localObject2);
+              continue;
+              label796:
+              paramString = Pattern.compile("<wx-", 2).matcher(paramString).replaceAll("<");
+              localObject1 = Pattern.compile("</wx-", 2).matcher(paramString).replaceAll("</");
+              try
+              {
+                paramString = ((String)localObject1).getBytes("UTF-8");
+                i = 0;
+              }
+              catch (UnsupportedEncodingException paramString)
+              {
+                for (;;)
+                {
+                  try
+                  {
+                    ((e)localObject3).createNewFile();
+                    if ((i != 0) || (i.f((String)localObject2, paramString, paramString.length) != 0)) {
+                      break;
+                    }
+                    this.puv.aOt((String)localObject2);
+                    ad.i("MicroMsg.EditorDataManager", "do EditorBase.ConvertNote2FavProtoItem");
+                    paramString = com.tencent.mm.plugin.editor.model.a.a((String)localObject1, localArrayList, this.puv);
+                    AppMethodBeat.o(181748);
+                    return paramString;
+                  }
+                  catch (IOException paramString)
+                  {
+                    ad.printErrStackTrace("MicroMsg.EditorDataManager", paramString, "", new Object[0]);
+                    AppMethodBeat.o(181748);
+                    return null;
+                  }
+                  paramString = paramString;
+                  ad.printErrStackTrace("MicroMsg.EditorDataManager", paramString, "", new Object[0]);
+                  ad.e("MicroMsg.EditorDataManager", "writehtmlfile, use utf-8 encoding error, use default encoding");
+                  i = 1;
+                  paramString = null;
+                }
+              }
+              this.puv.ZI(8);
+              this.puv.aOC("WeNoteHtmlFile");
+              this.puv.wl(true);
+              this.puv.aOp(".htm");
+              this.puv.aOs(com.tencent.mm.plugin.editor.model.b.aaU(this.puv.toString()));
+              localObject2 = com.tencent.mm.plugin.editor.model.b.b(this.puv);
+              ad.i("MicroMsg.EditorDataManager", "getFavProtoItem: save note html file, path is %s", new Object[] { localObject2 });
+              localObject3 = new e((String)localObject2);
+              if (((e)localObject3).exists()) {
+                ((e)localObject3).delete();
+              }
+              if (!((e)localObject3).exists()) {}
+              ad.i("MicroMsg.EditorDataManager", "writefile error, return");
+              Toast.makeText(aj.getContext(), aj.getContext().getString(2131758993), 1).show();
+              AppMethodBeat.o(181748);
+              return null;
+            }
+          }
+        }
+      }
+      i += 1;
     }
   }
   
@@ -1140,14 +1140,14 @@ public class c
       int m;
       try
       {
-        if (this.ijj == null) {
+        if (this.mDataList == null) {
           break label174;
         }
         k = 0;
         j = 0;
         i = paramInt;
         paramInt = j;
-        if ((k >= paramArrayList.size()) || (i < 0) || (i > this.ijj.size())) {
+        if ((k >= paramArrayList.size()) || (i < 0) || (i > this.mDataList.size())) {
           break label203;
         }
         com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)paramArrayList.get(k);
@@ -1157,7 +1157,7 @@ public class c
           break label188;
         }
         f(locala);
-        this.ijj.add(i, locala);
+        this.mDataList.add(i, locala);
         j = paramInt + 1;
         m = i + 1;
         a(locala, true);
@@ -1166,8 +1166,8 @@ public class c
       {
         AppMethodBeat.o(181731);
       }
-      if ((bool) && (this.oQK != null)) {
-        this.oQK.eY(i - paramInt, paramInt);
+      if ((bool) && (this.puu != null)) {
+        this.puu.fc(i - paramInt, paramInt);
       }
       AppMethodBeat.o(181731);
       return bool;
@@ -1187,20 +1187,20 @@ public class c
     }
   }
   
-  public final void bZG()
+  public final void cek()
   {
     AppMethodBeat.i(181737);
-    if (this.ijj != null) {}
-    for (int i = this.ijj.size();; i = 0)
+    if (this.mDataList != null) {}
+    for (int i = this.mDataList.size();; i = 0)
     {
-      ac.i("MicroMsg.EditorDataManager", "clear mDataList, size:%d", new Object[] { Integer.valueOf(i) });
+      ad.i("MicroMsg.EditorDataManager", "clear mDataList, size:%d", new Object[] { Integer.valueOf(i) });
       try
       {
-        if (this.ijj != null) {
-          this.ijj.clear();
+        if (this.mDataList != null) {
+          this.mDataList.clear();
         }
-        this.oQO = 0;
-        this.oQN = 0;
+        this.puy = 0;
+        this.pux = 0;
         AppMethodBeat.o(181737);
         return;
       }
@@ -1211,19 +1211,19 @@ public class c
     }
   }
   
-  public final int bZH()
+  public final int cel()
   {
     AppMethodBeat.i(181739);
     for (;;)
     {
       try
       {
-        if (this.ijj != null)
+        if (this.mDataList != null)
         {
           i = 0;
-          if (i < this.ijj.size())
+          if (i < this.mDataList.size())
           {
-            if (((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i)).oPV) {
+            if (((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i)).ptF) {
               return i;
             }
             i += 1;
@@ -1239,19 +1239,19 @@ public class c
     }
   }
   
-  public final void bZI()
+  public final void cem()
   {
     AppMethodBeat.i(181740);
     try
     {
-      if (this.ijj != null)
+      if (this.mDataList != null)
       {
-        Iterator localIterator = this.ijj.iterator();
+        Iterator localIterator = this.mDataList.iterator();
         while (localIterator.hasNext())
         {
           com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)localIterator.next();
-          locala.oPV = false;
-          locala.oQb = false;
+          locala.ptF = false;
+          locala.ptL = false;
         }
       }
     }
@@ -1262,19 +1262,19 @@ public class c
     AppMethodBeat.o(181740);
   }
   
-  public final int bZK()
+  public final int ceo()
   {
     AppMethodBeat.i(181743);
     for (;;)
     {
       try
       {
-        if (this.ijj != null)
+        if (this.mDataList != null)
         {
           i = 0;
-          if (i < this.ijj.size())
+          if (i < this.mDataList.size())
           {
-            if ((((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i)).getType() == 4) && (((m)this.ijj.get(i)).oQs.booleanValue())) {
+            if ((((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i)).getType() == 4) && (((m)this.mDataList.get(i)).puc.booleanValue())) {
               return i;
             }
             i += 1;
@@ -1290,28 +1290,28 @@ public class c
     }
   }
   
-  public final String bZL()
+  public final String cep()
   {
     AppMethodBeat.i(181744);
     for (;;)
     {
       try
       {
-        if ((this.oQM != 0) || (this.ijj == null)) {
+        if ((this.puw != 0) || (this.mDataList == null)) {
           break;
         }
-        Iterator localIterator = this.ijj.iterator();
+        Iterator localIterator = this.mDataList.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         d locald = (d)localIterator.next();
-        if (locald.oQi.startsWith("WeNote_"))
+        if (locald.ptS.startsWith("WeNote_"))
         {
-          i = bs.getInt(locald.oQi.substring(7), -1);
-          if (i > this.oQM) {
-            this.oQM = i;
+          i = bt.getInt(locald.ptS.substring(7), -1);
+          if (i > this.puw) {
+            this.puw = i;
           } else {
-            i = this.oQM;
+            i = this.puw;
           }
         }
       }
@@ -1321,14 +1321,14 @@ public class c
       }
     }
     Object localObject2 = new StringBuilder("WeNote_");
-    int i = this.oQM + 1;
-    this.oQM = i;
+    int i = this.puw + 1;
+    this.puw = i;
     localObject2 = i;
     AppMethodBeat.o(181744);
     return localObject2;
   }
   
-  public final String bZN()
+  public final String cer()
   {
     AppMethodBeat.i(181746);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -1338,19 +1338,19 @@ public class c
       Object localObject3;
       try
       {
-        if ((this.ijj == null) || (this.ijj.size() <= 0)) {
+        if ((this.mDataList == null) || (this.mDataList.size() <= 0)) {
           return "";
         }
         i = 0;
-        if (i >= this.ijj.size()) {
+        if (i >= this.mDataList.size()) {
           break label301;
         }
-        localObject3 = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i);
+        localObject3 = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i);
         switch (((com.tencent.mm.plugin.editor.model.a.a)localObject3).getType())
         {
         case 1: 
           localObject3 = (j)localObject3;
-          if (bs.isNullOrNil(((j)localObject3).content)) {
+          if (bt.isNullOrNil(((j)localObject3).content)) {
             localStringBuilder.append("<br/>");
           }
           break;
@@ -1361,15 +1361,15 @@ public class c
         AppMethodBeat.o(181746);
       }
       localObject1.append(((j)localObject3).content);
-      if ((i + 1 < this.ijj.size()) && (((com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i + 1)).getType() == 1) && (!bs.isNullOrNil(((j)this.ijj.get(i + 1)).content)))
+      if ((i + 1 < this.mDataList.size()) && (((com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i + 1)).getType() == 1) && (!bt.isNullOrNil(((j)this.mDataList.get(i + 1)).content)))
       {
         localObject1.append("<br/>");
         break label337;
-        localObject1.append(cM(((h)localObject3).oQi, 2));
+        localObject1.append(cP(((h)localObject3).ptS, 2));
         break label337;
-        localObject1.append(cM(((l)localObject3).oQi, 6));
+        localObject1.append(cP(((l)localObject3).ptS, 6));
         break label337;
-        localObject1.append(cM(((m)localObject3).oQi, 4));
+        localObject1.append(cP(((m)localObject3).ptS, 4));
         break label337;
         localObject1.append("<hr/>");
         break label337;
@@ -1384,10 +1384,10 @@ public class c
     }
   }
   
-  public final ArrayList<com.tencent.mm.plugin.editor.model.a.a> bZO()
+  public final ArrayList<com.tencent.mm.plugin.editor.model.a.a> ces()
   {
     AppMethodBeat.i(181753);
-    if (this.ijj == null)
+    if (this.mDataList == null)
     {
       AppMethodBeat.o(181753);
       return null;
@@ -1395,7 +1395,7 @@ public class c
     ArrayList localArrayList = new ArrayList();
     try
     {
-      Iterator localIterator = this.ijj.iterator();
+      Iterator localIterator = this.mDataList.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(com.tencent.mm.plugin.editor.b.a((com.tencent.mm.plugin.editor.model.a.a)localIterator.next()));
       }
@@ -1408,10 +1408,10 @@ public class c
     return localArrayList1;
   }
   
-  public final void bZP()
+  public final void cet()
   {
     AppMethodBeat.i(181756);
-    com.tencent.mm.kernel.g.agU().az(new Runnable()
+    com.tencent.mm.kernel.g.ajF().ay(new Runnable()
     {
       public final void run()
       {
@@ -1437,7 +1437,7 @@ public class c
             }
           }
         }
-        c.a(c.this, com.tencent.mm.plugin.editor.b.Xf(localObject.toString()));
+        c.a(c.this, com.tencent.mm.plugin.editor.b.aaM(localObject.toString()));
         c.b(c.this, i);
         AppMethodBeat.o(181726);
       }
@@ -1445,18 +1445,18 @@ public class c
     AppMethodBeat.o(181756);
   }
   
-  public final int bZQ()
+  public final int ceu()
   {
     AppMethodBeat.i(181759);
     try
     {
-      if (this.ijj == null) {
+      if (this.mDataList == null) {
         return -1;
       }
       int i = 0;
-      while (i < this.ijj.size())
+      while (i < this.mDataList.size())
       {
-        com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i);
+        com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i);
         if ((locala != null) && (locala.getType() != -3) && (locala.getType() != -2)) {
           return i;
         }
@@ -1470,18 +1470,18 @@ public class c
     }
   }
   
-  public final int bZR()
+  public final int cev()
   {
     AppMethodBeat.i(181760);
     try
     {
-      if (this.ijj == null) {
+      if (this.mDataList == null) {
         return -1;
       }
-      int i = this.ijj.size() - 1;
+      int i = this.mDataList.size() - 1;
       while (i >= 0)
       {
-        com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(i);
+        com.tencent.mm.plugin.editor.model.a.a locala = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(i);
         if ((locala != null) && (locala.getType() != -3) && (locala.getType() != -2)) {
           return i;
         }
@@ -1504,9 +1504,9 @@ public class c
     {
       try
       {
-        if (this.ijj != null)
+        if (this.mDataList != null)
         {
-          this.ijj.add(parama);
+          this.mDataList.add(parama);
           a(parama, true);
           return bool;
         }
@@ -1519,7 +1519,7 @@ public class c
     }
   }
   
-  public final boolean fb(int paramInt1, int paramInt2)
+  public final boolean ff(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {}
     for (int i = 0;; i = 1)
@@ -1527,8 +1527,8 @@ public class c
       if (paramInt2 < 0) {}
       for (int j = 0;; j = 1)
       {
-        if ((i != 0) && (this.oQN + paramInt1 > 16384)) {}
-        while ((j != 0) && (this.oQO + paramInt2 > 30)) {
+        if ((i != 0) && (this.pux + paramInt1 > 16384)) {}
+        while ((j != 0) && (this.puy + paramInt2 > 30)) {
           return true;
         }
         return false;
@@ -1536,10 +1536,10 @@ public class c
     }
   }
   
-  public final void fc(int paramInt1, int paramInt2)
+  public final void fg(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(181758);
-    ac.i("MicroMsg.EditorDataManager", "checkMergeTextDataItem startPos: %d endPos: %d needNotify: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.TRUE });
+    ad.i("MicroMsg.EditorDataManager", "checkMergeTextDataItem startPos: %d endPos: %d needNotify: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.TRUE });
     for (;;)
     {
       Object localObject3;
@@ -1547,23 +1547,23 @@ public class c
       Spanned localSpanned2;
       try
       {
-        if (this.ijj == null) {
+        if (this.mDataList == null) {
           return;
         }
         int j = paramInt1;
         if (paramInt1 <= 0) {
           j = 0;
         }
-        if (paramInt2 < this.ijj.size()) {
+        if (paramInt2 < this.mDataList.size()) {
           break label489;
         }
-        paramInt2 = this.ijj.size() - 1;
+        paramInt2 = this.mDataList.size() - 1;
         paramInt1 = -1;
         if (paramInt2 <= j) {
           break label445;
         }
-        Object localObject1 = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(paramInt2);
-        localObject3 = (com.tencent.mm.plugin.editor.model.a.a)this.ijj.get(paramInt2 - 1);
+        Object localObject1 = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(paramInt2);
+        localObject3 = (com.tencent.mm.plugin.editor.model.a.a)this.mDataList.get(paramInt2 - 1);
         i = paramInt1;
         if (localObject1 == null) {
           break label494;
@@ -1583,34 +1583,34 @@ public class c
         paramInt1 = paramInt2 - 1;
         localObject1 = (j)localObject1;
         localObject3 = (j)localObject3;
-        if (bs.isNullOrNil(((j)localObject1).content)) {
+        if (bt.isNullOrNil(((j)localObject1).content)) {
           break label416;
         }
-        Spanned localSpanned1 = com.tencent.mm.plugin.editor.model.nativenote.a.a.Xo(((j)localObject1).content);
-        localSpanned2 = com.tencent.mm.plugin.editor.model.nativenote.a.a.Xo(((j)localObject3).content);
+        Spanned localSpanned1 = com.tencent.mm.plugin.editor.model.nativenote.a.a.aaV(((j)localObject1).content);
+        localSpanned2 = com.tencent.mm.plugin.editor.model.nativenote.a.a.aaV(((j)localObject3).content);
         ((j)localObject3).content = (((j)localObject3).content + "<br/>" + ((j)localObject1).content);
-        if (((j)localObject1).oPV)
+        if (((j)localObject1).ptF)
         {
-          ((j)localObject3).oPV = true;
-          ((j)localObject3).oQb = false;
-          if ((((j)localObject1).oPX == -1) || (((j)localObject1).oPX >= localSpanned1.length()))
+          ((j)localObject3).ptF = true;
+          ((j)localObject3).ptL = false;
+          if ((((j)localObject1).ptH == -1) || (((j)localObject1).ptH >= localSpanned1.length()))
           {
-            ((j)localObject3).oPX = -1;
-            ac.i("MicroMsg.EditorDataManager", "checkMergeTextDataItem remove position: %d", new Object[] { Integer.valueOf(paramInt2) });
-            AT(paramInt2);
+            ((j)localObject3).ptH = -1;
+            ad.i("MicroMsg.EditorDataManager", "checkMergeTextDataItem remove position: %d", new Object[] { Integer.valueOf(paramInt2) });
+            BB(paramInt2);
             i = paramInt1;
-            if (this.oQK == null) {
+            if (this.puu == null) {
               break label494;
             }
-            this.oQK.AP(paramInt2);
+            this.puu.Bx(paramInt2);
             i = paramInt1;
             break label494;
           }
           i = localSpanned2.length();
-          ((j)localObject1).oPX += i + 1;
+          ((j)localObject1).ptH += i + 1;
           continue;
         }
-        if (!((j)localObject3).oPV) {
+        if (!((j)localObject3).ptF) {
           continue;
         }
       }
@@ -1618,22 +1618,22 @@ public class c
       {
         AppMethodBeat.o(181758);
       }
-      if (((j)localObject3).oPX == -1)
+      if (((j)localObject3).ptH == -1)
       {
-        ((j)localObject3).oPX = localSpanned2.length();
+        ((j)localObject3).ptH = localSpanned2.length();
         continue;
         label416:
-        if (localObject2.oPV)
+        if (localObject2.ptF)
         {
-          ((j)localObject3).oPV = true;
-          ((j)localObject3).oQb = false;
-          ((j)localObject3).oPX = -1;
+          ((j)localObject3).ptF = true;
+          ((j)localObject3).ptL = false;
+          ((j)localObject3).ptH = -1;
           continue;
           label445:
-          if ((paramInt1 != -1) && (this.oQK != null)) {
-            this.oQK.eZ(paramInt1, this.ijj.size() - paramInt1);
+          if ((paramInt1 != -1) && (this.puu != null)) {
+            this.puu.fd(paramInt1, this.mDataList.size() - paramInt1);
           }
-          bZP();
+          cet();
           AppMethodBeat.o(181758);
           return;
           label489:
@@ -1650,9 +1650,9 @@ public class c
   public final int size()
   {
     AppMethodBeat.i(181728);
-    if (this.ijj != null)
+    if (this.mDataList != null)
     {
-      int i = this.ijj.size();
+      int i = this.mDataList.size();
       AppMethodBeat.o(181728);
       return i;
     }
@@ -1662,7 +1662,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.c
  * JD-Core Version:    0.7.0.1
  */

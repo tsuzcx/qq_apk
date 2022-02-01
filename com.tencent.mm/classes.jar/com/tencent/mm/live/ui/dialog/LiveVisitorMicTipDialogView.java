@@ -9,21 +9,21 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.g.b.k;
+import com.tencent.mm.hellhoundlib.a.a;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onButtonClickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOK", "", "setOnButtonClickListener", "listener", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "onButtonClickListener", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isOK", "", "setOnButtonClickListener", "listener", "plugin-logic_release"})
 public final class LiveVisitorMicTipDialogView
   extends RelativeLayout
 {
-  private b<? super Boolean, y> gGp;
+  private d.g.a.b<? super Boolean, z> gZZ;
   
   public LiveVisitorMicTipDialogView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(190609);
+    AppMethodBeat.i(212899);
     paramContext = (TextView)LayoutInflater.from(paramContext).inflate(2131496354, (ViewGroup)this, true).findViewById(2131307696);
     if (paramContext != null)
     {
@@ -31,29 +31,30 @@ public final class LiveVisitorMicTipDialogView
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(190607);
-          paramAnonymousView = LiveVisitorMicTipDialogView.a(this.gGq);
-          if (paramAnonymousView != null)
-          {
-            paramAnonymousView.ay(Boolean.TRUE);
-            AppMethodBeat.o(190607);
-            return;
+          AppMethodBeat.i(212897);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          paramAnonymousView = LiveVisitorMicTipDialogView.a(this.haa);
+          if (paramAnonymousView != null) {
+            paramAnonymousView.invoke(Boolean.TRUE);
           }
-          AppMethodBeat.o(190607);
+          a.a(this, "com/tencent/mm/live/ui/dialog/LiveVisitorMicTipDialogView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(212897);
         }
       });
-      AppMethodBeat.o(190609);
+      AppMethodBeat.o(212899);
       return;
     }
-    AppMethodBeat.o(190609);
+    AppMethodBeat.o(212899);
   }
   
-  public final void setOnButtonClickListener(b<? super Boolean, y> paramb)
+  public final void setOnButtonClickListener(d.g.a.b<? super Boolean, z> paramb)
   {
-    AppMethodBeat.i(190608);
-    k.h(paramb, "listener");
-    this.gGp = paramb;
-    AppMethodBeat.o(190608);
+    AppMethodBeat.i(212898);
+    p.h(paramb, "listener");
+    this.gZZ = paramb;
+    AppMethodBeat.o(212898);
   }
 }
 

@@ -1,300 +1,140 @@
 package com.tencent.mm.plugin.sns.ad.timeline.a;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.g;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.sns.data.m;
-import com.tencent.mm.plugin.sns.data.q;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.an;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.plugin.sns.storage.b.a;
-import com.tencent.mm.plugin.sns.storage.b.g;
-import com.tencent.mm.plugin.sns.ui.aq;
-import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.czp;
-import com.tencent.mm.protocal.protobuf.di;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.storage.bf;
-import com.tencent.mm.vfs.i;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
 {
-  private static Set<String> xLW;
-  
-  static
+  public static boolean a(com.tencent.mm.plugin.sns.storage.b paramb)
   {
-    AppMethodBeat.i(200016);
-    xLW = Collections.synchronizedSet(new HashSet());
-    AppMethodBeat.o(200016);
+    boolean bool = false;
+    AppMethodBeat.i(197655);
+    if (paramb != null)
+    {
+      if (paramb.zwC > 0) {
+        bool = true;
+      }
+      ad.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml return ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(197655);
+      return bool;
+    }
+    ad.d("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoFeatureInAdXml : the adxml is null, so return false");
+    AppMethodBeat.o(197655);
+    return false;
   }
   
-  public static void a(b.a parama, String paramString)
+  public static boolean a(TimeLineObject paramTimeLineObject, com.tencent.mm.plugin.sns.storage.b paramb)
   {
-    AppMethodBeat.i(210249);
-    if (parama != null)
+    AppMethodBeat.i(197653);
+    if ((c(paramTimeLineObject)) && (a(paramb)))
     {
-      ao(parama.ygD, paramString, "preloadScanRes bgImage");
-      ao(parama.nUY, paramString, "preloadScanRes descIcon");
-      ao(parama.ygE, paramString, "preloadScanRes succIcon");
+      if (dRT())
+      {
+        if ((paramb != null) && (!paramb.dVZ()) && (!paramb.dWa()) && (!paramb.dWb())) {}
+        for (int i = 1; i != 0; i = 0)
+        {
+          ad.i("SnsAd.OnlinePlayerSwitchHelper", "the normal video preload is disable, because the online normal video preload is enable!");
+          AppMethodBeat.o(197653);
+          return true;
+        }
+      }
+      if ((dRU()) && (paramb.dVZ()))
+      {
+        ad.i("SnsAd.OnlinePlayerSwitchHelper", "the base card ad video preload is disable, because the online base card prload is enable!");
+        AppMethodBeat.o(197653);
+        return true;
+      }
+      ad.i("SnsAd.OnlinePlayerSwitchHelper", "the ad video preload is not disable!");
     }
-    AppMethodBeat.o(210249);
+    AppMethodBeat.o(197653);
+    return false;
   }
   
-  private static void a(com.tencent.mm.plugin.sns.storage.b paramb, String paramString)
+  public static boolean c(TimeLineObject paramTimeLineObject)
   {
-    AppMethodBeat.i(200014);
-    if ((paramb == null) || (!paramb.dJM()) || (paramb.ygn == null))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramTimeLineObject != null)
     {
-      AppMethodBeat.o(200014);
-      return;
+      bool1 = bool2;
+      if (paramTimeLineObject.HAT != null)
+      {
+        bool1 = bool2;
+        if (paramTimeLineObject.HAT.GaP == 15) {
+          bool1 = true;
+        }
+      }
     }
-    if (paramb.ygn.yhg != null)
-    {
-      ao(paramb.ygn.yhg.yFD, paramString, "preloadFullCardImage fullcardEndView.titleImage");
-      ao(paramb.ygn.yhg.coverImgUrl, paramString, "preloadFullCardImage fullcardEndView.coverImg");
-    }
-    ao(paramb.ygn.yhc, paramString, "preloadFullCardImage fullcard.frontCover");
-    ao(paramb.ygn.yhe, paramString, "preloadFullCardImage fullcard.endCover");
-    AppMethodBeat.o(200014);
+    return bool1;
   }
   
-  public static boolean a(TimeLineObject paramTimeLineObject, com.tencent.mm.plugin.sns.storage.b paramb, int paramInt)
+  public static boolean dRT()
   {
-    AppMethodBeat.i(200009);
+    AppMethodBeat.i(197651);
     try
     {
-      if (!dFZ())
+      int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qqE, 0);
+      ad.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInNormalTimeline value is ".concat(String.valueOf(i)));
+      if (i > 0)
       {
-        ac.w("TimeLineAdPreloadHelper", "checkPreloadAdResource, network is not wifi or 4G,5G");
-        AppMethodBeat.o(200009);
-        return false;
+        AppMethodBeat.o(197651);
+        return true;
       }
-      b(paramTimeLineObject, paramb, paramInt);
+      AppMethodBeat.o(197651);
+      return false;
     }
-    catch (Throwable paramTimeLineObject)
+    catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        ac.e("TimeLineAdPreloadHelper", "checkPreloadAdResource, exp=" + paramTimeLineObject.toString());
-      }
+      AppMethodBeat.o(197651);
     }
-    AppMethodBeat.o(200009);
     return false;
   }
   
-  public static boolean a(di paramdi)
+  public static boolean dRU()
   {
-    AppMethodBeat.i(200010);
+    AppMethodBeat.i(197652);
     try
     {
-      if (!dFZ())
+      int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qqD, 0);
+      ad.i("SnsAd.OnlinePlayerSwitchHelper", "useOnlineVideoInBaseCardTimeline value is  ".concat(String.valueOf(i)));
+      if (i > 0)
       {
-        ac.w("TimeLineAdPreloadHelper", "checkPreloadAdResource, network is not wifi or 4G,5G");
-        AppMethodBeat.o(200010);
-        return false;
+        AppMethodBeat.o(197652);
+        return true;
       }
-      String str = z.b(paramdi.DQo.FIN.ObjectDesc);
-      paramdi = z.a(paramdi.DQo.FIO);
-      b(g.Ds(str), new com.tencent.mm.plugin.sns.storage.b(paramdi), 1);
+      AppMethodBeat.o(197652);
+      return false;
     }
-    catch (Throwable paramdi)
+    catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        ac.e("TimeLineAdPreloadHelper", "checkPreloadAdResource, exp2=" + paramdi.toString());
-      }
+      AppMethodBeat.o(197652);
     }
-    AppMethodBeat.o(200010);
     return false;
   }
   
-  public static String aCn(String paramString)
+  public static boolean i(p paramp)
   {
-    AppMethodBeat.i(210250);
-    paramString = h.js("adId", paramString);
-    AppMethodBeat.o(210250);
-    return paramString;
-  }
-  
-  private static void ao(final String paramString1, final String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(200015);
-    if (TextUtils.isEmpty(paramString1))
+    AppMethodBeat.i(197654);
+    if (paramp == null)
     {
-      ac.w("TimeLineAdPreloadHelper", paramString3 + " url is empty, snsid=" + paramString2);
-      AppMethodBeat.o(200015);
-      return;
+      ad.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is null!!");
+      AppMethodBeat.o(197654);
+      return false;
     }
-    String str = h.js("adId", paramString1);
-    if ((!TextUtils.isEmpty(str)) && (i.eA(str)))
+    if (!paramp.QM(32))
     {
-      ac.i("TimeLineAdPreloadHelper", paramString3 + " file exists, snsid=" + paramString2);
-      AppMethodBeat.o(200015);
-      return;
+      ad.w("SnsAd.OnlinePlayerSwitchHelper", "enableOnlineVideoPreload: the snsInfo is not ad!!");
+      AppMethodBeat.o(197654);
+      return false;
     }
-    if (xLW.contains(paramString1))
-    {
-      ac.w("TimeLineAdPreloadHelper", paramString3 + " is in downloading, snsid=" + paramString2);
-      AppMethodBeat.o(200015);
-      return;
-    }
-    xLW.add(paramString1);
-    h.a(paramString1, true, new f.a()
-    {
-      public final void asD(String paramAnonymousString)
-      {
-        AppMethodBeat.i(200008);
-        ac.i("TimeLineAdPreloadHelper", this.kRn + " succ, snsid=" + paramString2 + ", url=" + paramString1);
-        a.xLW.remove(paramString1);
-        AppMethodBeat.o(200008);
-      }
-      
-      public final void dFC() {}
-      
-      public final void dFD()
-      {
-        AppMethodBeat.i(200007);
-        ac.e("TimeLineAdPreloadHelper", this.kRn + " failed, snsid=" + paramString2 + ", url=" + paramString1);
-        a.xLW.remove(paramString1);
-        AppMethodBeat.o(200007);
-      }
-    });
-    AppMethodBeat.o(200015);
-  }
-  
-  private static void b(TimeLineObject paramTimeLineObject, com.tencent.mm.plugin.sns.storage.b paramb, int paramInt)
-  {
-    AppMethodBeat.i(200011);
-    ac.i("TimeLineAdPreloadHelper", "doPreload, scene=".concat(String.valueOf(paramInt)));
-    c(paramTimeLineObject);
-    a(paramb, paramTimeLineObject.Id);
-    if (paramb != null) {
-      a(paramb.ygA, paramTimeLineObject.Id);
-    }
-    AppMethodBeat.o(200011);
-  }
-  
-  private static boolean c(TimeLineObject paramTimeLineObject)
-  {
-    AppMethodBeat.i(200013);
-    for (;;)
-    {
-      try
-      {
-        if (paramTimeLineObject.FQo.Ety != 15)
-        {
-          ac.w("TimeLineAdPreloadHelper", "preloadAdVideo, ContentStyle is not video, snsId=" + paramTimeLineObject.Id);
-          AppMethodBeat.o(200013);
-          return false;
-        }
-        if ((paramTimeLineObject.FQo.Etz == null) || (paramTimeLineObject.FQo.Etz.isEmpty()))
-        {
-          ac.w("TimeLineAdPreloadHelper", "preloadAdVideo, MediaObjList is empty, snsId=" + paramTimeLineObject.Id);
-          AppMethodBeat.o(200013);
-          return false;
-        }
-        final btz localbtz = (btz)paramTimeLineObject.FQo.Etz.get(0);
-        String str1 = paramTimeLineObject.Id;
-        String str2 = an.jc(af.getAccSnsPath(), localbtz.Id);
-        String str3 = q.i(localbtz);
-        str2 = str2 + str3;
-        if (i.eA(str2))
-        {
-          ac.w("TimeLineAdPreloadHelper", "startPreloadVideo, file Exists, snsId=" + str1 + ", mediaId=" + localbtz.Id + ", filePath=" + str2);
-          paramTimeLineObject = paramTimeLineObject.Id;
-          str1 = an.jc(af.getAccSnsPath(), localbtz.Id);
-          str2 = q.d(localbtz);
-          if (i.eA(str1 + str2))
-          {
-            ac.w("TimeLineAdPreloadHelper", "startPreloadThumb, file Exists, snsId=" + paramTimeLineObject + ", mediaId=" + localbtz.Id);
-            AppMethodBeat.o(200013);
-            return true;
-          }
-        }
-        else
-        {
-          ap.f(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(200005);
-              try
-              {
-                ac.i("TimeLineAdPreloadHelper", "startPreloadVideo, snsId=" + this.iaf + ", mediaId=" + localbtz.Id);
-                af.dHM().a(localbtz, 4, null, bf.GYH);
-                AppMethodBeat.o(200005);
-                return;
-              }
-              catch (Throwable localThrowable)
-              {
-                ac.e("TimeLineAdPreloadHelper", "startPreloadVideo exp=" + localThrowable.toString());
-                AppMethodBeat.o(200005);
-              }
-            }
-          });
-          continue;
-        }
-        ap.f(new Runnable()
-        {
-          public final void run()
-          {
-            int i = 1;
-            AppMethodBeat.i(200006);
-            try
-            {
-              ac.i("TimeLineAdPreloadHelper", "startPreloadThumb, snsId=" + this.iaf + ", mediaId=" + localbtz.Id);
-              m localm = new m(localbtz);
-              localm.xNy = 1;
-              localm.dlj = localbtz.Id;
-              com.tencent.mm.plugin.sns.model.b localb = af.dHM();
-              btz localbtz = localbtz;
-              if (localbtz.ndI == 6) {
-                i = 5;
-              }
-              localb.a(localbtz, i, localm, bf.GYH);
-              AppMethodBeat.o(200006);
-              return;
-            }
-            catch (Throwable localThrowable)
-            {
-              ac.e("TimeLineAdPreloadHelper", "startPreloadThumb exp=" + localThrowable.toString());
-              AppMethodBeat.o(200006);
-            }
-          }
-        });
-      }
-      catch (Throwable paramTimeLineObject)
-      {
-        ac.e("TimeLineAdPreloadHelper", "preloadAdVideo, doCheckVideo  Ad exp=" + paramTimeLineObject.toString());
-        AppMethodBeat.o(200013);
-        return false;
-      }
-    }
-  }
-  
-  private static boolean dFZ()
-  {
-    AppMethodBeat.i(200012);
-    if ((ax.isWifi(ai.getContext())) || (ax.is4G(ai.getContext())) || (ax.is5G(ai.getContext())))
-    {
-      AppMethodBeat.o(200012);
-      return true;
-    }
-    AppMethodBeat.o(200012);
-    return false;
+    boolean bool = a(paramp.dYl(), paramp.dRL());
+    AppMethodBeat.o(197654);
+    return bool;
   }
 }
 

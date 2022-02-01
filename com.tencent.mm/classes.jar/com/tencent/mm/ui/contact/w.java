@@ -2,40 +2,22 @@ package com.tencent.mm.ui.contact;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class w
 {
-  static int IxB;
-  private static List<String> IxC;
-  private static List<String> IxD;
+  static int Koj;
+  private static List<String> Kok;
+  private static List<String> Kol;
   
-  public static void im(List<String> paramList)
-  {
-    AppMethodBeat.i(102917);
-    LinkedList localLinkedList = new LinkedList();
-    IxC = localLinkedList;
-    localLinkedList.addAll(paramList);
-    ac.d("MicroMsg.NewGroupRecommendDetailReporter", "preCommend: %s", new Object[] { IxC });
-    AppMethodBeat.o(102917);
-  }
-  
-  public static void in(List<String> paramList)
-  {
-    AppMethodBeat.i(102918);
-    IxD = paramList;
-    ac.d("MicroMsg.NewGroupRecommendDetailReporter", "recommend: %s", new Object[] { IxD });
-    AppMethodBeat.o(102918);
-  }
-  
-  public static void io(List<String> paramList)
+  public static void iA(List<String> paramList)
   {
     AppMethodBeat.i(102919);
-    if ((IxC != null) && (IxD != null) && (IxD.size() > 0) && (paramList != null) && (paramList.size() > 0))
+    if ((Kok != null) && (Kol != null) && (Kol.size() > 0) && (paramList != null) && (paramList.size() > 0))
     {
       LinkedList localLinkedList1 = new LinkedList();
       LinkedList localLinkedList2 = new LinkedList();
@@ -44,8 +26,8 @@ public final class w
       while (paramList.hasNext())
       {
         String str = (String)paramList.next();
-        if (!IxC.contains(str)) {
-          if (IxD.contains(str)) {
+        if (!Kok.contains(str)) {
+          if (Kol.contains(str)) {
             localLinkedList1.add(str);
           } else {
             localLinkedList2.add(str);
@@ -53,29 +35,47 @@ public final class w
         }
       }
       int i = 0;
-      while (i < IxD.size())
+      while (i < Kol.size())
       {
-        if (localLinkedList1.contains(IxD.get(i))) {
+        if (localLinkedList1.contains(Kol.get(i))) {
           localLinkedList3.add(String.valueOf(i));
         }
         i += 1;
       }
       if ((localLinkedList1.size() > 0) || (localLinkedList2.size() > 0))
       {
-        h.wUl.f(18637, new Object[] { Integer.valueOf(IxB), TextUtils.join(";", IxC), TextUtils.join(";", IxD), TextUtils.join(";", localLinkedList1), TextUtils.join(";", localLinkedList2), TextUtils.join(";", localLinkedList3) });
-        ac.d("MicroMsg.NewGroupRecommendDetailReporter", "report, selectFromRecommend: %s, selectNotFromRecommendList: %s", new Object[] { localLinkedList1, localLinkedList2 });
+        g.yhR.f(18637, new Object[] { Integer.valueOf(Koj), TextUtils.join(";", Kok), TextUtils.join(";", Kol), TextUtils.join(";", localLinkedList1), TextUtils.join(";", localLinkedList2), TextUtils.join(";", localLinkedList3) });
+        ad.d("MicroMsg.NewGroupRecommendDetailReporter", "report, selectFromRecommend: %s, selectNotFromRecommendList: %s", new Object[] { localLinkedList1, localLinkedList2 });
       }
     }
     reset();
     AppMethodBeat.o(102919);
   }
   
+  public static void iy(List<String> paramList)
+  {
+    AppMethodBeat.i(102917);
+    LinkedList localLinkedList = new LinkedList();
+    Kok = localLinkedList;
+    localLinkedList.addAll(paramList);
+    ad.d("MicroMsg.NewGroupRecommendDetailReporter", "preCommend: %s", new Object[] { Kok });
+    AppMethodBeat.o(102917);
+  }
+  
+  public static void iz(List<String> paramList)
+  {
+    AppMethodBeat.i(102918);
+    Kol = paramList;
+    ad.d("MicroMsg.NewGroupRecommendDetailReporter", "recommend: %s", new Object[] { Kol });
+    AppMethodBeat.o(102918);
+  }
+  
   public static void reset()
   {
     AppMethodBeat.i(102920);
-    IxC = null;
-    IxD = null;
-    ac.d("MicroMsg.NewGroupRecommendDetailReporter", "reset");
+    Kok = null;
+    Kol = null;
+    ad.d("MicroMsg.NewGroupRecommendDetailReporter", "reset");
     AppMethodBeat.o(102920);
   }
 }

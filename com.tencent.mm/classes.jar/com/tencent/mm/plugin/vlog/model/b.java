@@ -1,98 +1,72 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cnb;
-import com.tencent.mm.protocal.protobuf.it;
-import com.tencent.mm.protocal.protobuf.yn;
-import com.tencent.mm.protocal.protobuf.yp;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/CompositionInfoConverter;", "", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "(Lcom/tencent/mm/plugin/vlog/model/VLogComposition;)V", "TAG", "", "getComposition", "()Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "editData", "Lcom/tencent/mm/protocal/protobuf/CompositionEditInfo;", "getEditData", "()Lcom/tencent/mm/protocal/protobuf/CompositionEditInfo;", "outputConfig", "Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "getOutputConfig", "()Lcom/tencent/mm/protocal/protobuf/CompositionOutputConfig;", "abaResultToOutputConfig", "", "abaResult", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition$ABAResult;", "addEditInfo", "drawingRect", "", "editItems", "", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "chooseExportConfig", "path", "videoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "previewSize", "Landroid/util/Size;", "cropRect", "Landroid/graphics/Rect;", "enableAdaptiveBitrate", "", "getCompositionInfo", "Lcom/tencent/mm/protocal/protobuf/CompositionInfo;", "videoParamsToOutputConfig", "videoParams", "plugin-vlog_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/ABAVideoInfo;", "", "path", "", "videoStart", "", "videoEnd", "(Ljava/lang/String;JJ)V", "getPath", "()Ljava/lang/String;", "getVideoEnd", "()J", "getVideoStart", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
 public final class b
 {
-  public final yp AmP;
-  public final yn AmQ;
-  public final r AmR;
-  public final String TAG;
+  final long BEQ;
+  final long BER;
+  final String path;
   
-  public b(r paramr)
+  public b(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(207502);
-    this.AmR = paramr;
-    this.TAG = "MicroMsg.CompositionInfoConverter";
-    this.AmP = new yp();
-    this.AmQ = new yn();
-    AppMethodBeat.o(207502);
+    AppMethodBeat.i(195683);
+    this.path = paramString;
+    this.BEQ = paramLong1;
+    this.BER = paramLong2;
+    AppMethodBeat.o(195683);
   }
   
-  public final void a(r.a parama, yp paramyp)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(207501);
-    k.h(parama, "abaResult");
-    k.h(paramyp, "outputConfig");
-    if (parama.errCode == 0)
+    AppMethodBeat.i(195686);
+    if (this != paramObject)
     {
-      if ((parama.width > 0) && (parama.height > 0) && (parama.bitrate > 0))
+      if ((paramObject instanceof b))
       {
-        paramyp.gNU = parama.width;
-        paramyp.gNV = parama.height;
-        paramyp.videoBitrate = parama.bitrate;
-        ac.i(this.TAG, "video abaResult, width:" + paramyp.gNU + ", height:" + paramyp.gNV + ", " + paramyp.videoBitrate);
-      }
-      parama = parama.rMF;
-      if (parama != null)
-      {
-        parama = d.a.e.P(parama);
-        if (parama != null)
-        {
-          paramyp.Esq.addAll((Collection)parama);
-          AppMethodBeat.o(207501);
-          return;
-        }
+        paramObject = (b)paramObject;
+        if ((!p.i(this.path, paramObject.path)) || (this.BEQ != paramObject.BEQ) || (this.BER != paramObject.BER)) {}
       }
     }
-    AppMethodBeat.o(207501);
+    else
+    {
+      AppMethodBeat.o(195686);
+      return true;
+    }
+    AppMethodBeat.o(195686);
+    return false;
   }
   
-  public final void a(float[] paramArrayOfFloat, List<? extends com.tencent.mm.media.editor.a.a> paramList)
+  public final int hashCode()
   {
-    AppMethodBeat.i(207500);
-    k.h(paramArrayOfFloat, "drawingRect");
-    k.h(paramList, "editItems");
-    this.AmQ.Esh = new cnb();
-    paramArrayOfFloat = new Rect((int)paramArrayOfFloat[0], (int)paramArrayOfFloat[1], (int)paramArrayOfFloat[2], (int)paramArrayOfFloat[3]);
-    Object localObject = this.AmQ.Esh;
-    k.g(localObject, "editData.drawingRect");
-    c.a(paramArrayOfFloat, (cnb)localObject);
-    paramArrayOfFloat = this.AmQ.Esi;
-    localObject = (Iterable)paramList;
-    paramList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
-    localObject = ((Iterable)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    AppMethodBeat.i(195685);
+    String str = this.path;
+    if (str != null) {}
+    for (int i = str.hashCode();; i = 0)
     {
-      com.tencent.mm.media.editor.a.a locala = (com.tencent.mm.media.editor.a.a)((Iterator)localObject).next();
-      it localit = new it();
-      localit.dataType = locala.gPj.value;
-      localit.DWE = z.al(locala.aqw().toByteArray());
-      paramList.add(localit);
+      long l = this.BEQ;
+      int j = (int)(l ^ l >>> 32);
+      l = this.BER;
+      int k = (int)(l ^ l >>> 32);
+      AppMethodBeat.o(195685);
+      return (i * 31 + j) * 31 + k;
     }
-    paramArrayOfFloat.addAll((Collection)paramList);
-    AppMethodBeat.o(207500);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(195684);
+    String str = "ABAVideoInfo(path=" + this.path + ", videoStart=" + this.BEQ + ", videoEnd=" + this.BER + ")";
+    AppMethodBeat.o(195684);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.b
  * JD-Core Version:    0.7.0.1
  */

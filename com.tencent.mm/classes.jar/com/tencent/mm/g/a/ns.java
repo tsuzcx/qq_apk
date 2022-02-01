@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ns
   extends b
 {
-  public a dqg;
+  public a dBC;
   
   public ns()
   {
@@ -15,16 +15,18 @@ public final class ns
   
   private ns(byte paramByte)
   {
-    AppMethodBeat.i(19823);
-    this.dqg = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(131793);
+    this.dBC = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19823);
+    AppMethodBeat.o(131793);
   }
   
   public static final class a
   {
-    public String talker;
+    public int action = 0;
+    public long dBD;
+    public String username;
   }
 }
 

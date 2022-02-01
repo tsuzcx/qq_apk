@@ -3,56 +3,58 @@ package com.tencent.mm.plugin.recordvideo.model;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.ui.ar;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/model/RecordVideoManager;", "", "()V", "displayHeight", "", "getDisplayHeight", "()I", "setDisplayHeight", "(I)V", "displayWidth", "getDisplayWidth", "setDisplayWidth", "getWorkingHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/model/RecordVideoManager;", "", "()V", "displayHeight", "", "getDisplayHeight", "()I", "setDisplayHeight", "(I)V", "displayWidth", "getDisplayWidth", "setDisplayWidth", "getWorkingHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "plugin-recordvideo_release"})
 public final class a
 {
-  private static int aZC;
-  private static int aZD;
-  public static final a wra;
+  private static int bjX;
+  private static int bjY;
+  public static final a xyR;
   
   static
   {
     AppMethodBeat.i(75395);
-    wra = new a();
-    aZC = com.tencent.mm.ui.ap.cl(ai.getContext()).x;
-    aZD = com.tencent.mm.ui.ap.cl(ai.getContext()).y;
+    xyR = new a();
+    bjX = ar.ci(aj.getContext()).x;
+    bjY = ar.ci(aj.getContext()).y;
     AppMethodBeat.o(75395);
   }
   
-  public static void Mg(int paramInt)
+  public static void NF(int paramInt)
   {
-    aZC = paramInt;
+    bjX = paramInt;
   }
   
-  public static int dvp()
+  public static int dFK()
   {
-    return aZC;
+    return bjX;
   }
   
-  public static ao dvq()
+  public static ap dFL()
   {
     AppMethodBeat.i(75394);
-    Object localObject = g.agU();
-    k.g(localObject, "MMKernel.getPizzaWorkerThread()");
-    localObject = ((com.tencent.mm.sdk.platformtools.ap)localObject).cOC();
-    k.g(localObject, "MMKernel.getPizzaWorkerThread().workerHandler");
+    Object localObject = g.ajF();
+    p.g(localObject, "MMKernel.getPizzaWorkerThread()");
+    localObject = ((aq)localObject).cWY();
+    p.g(localObject, "MMKernel.getPizzaWorkerThread().workerHandler");
     AppMethodBeat.o(75394);
     return localObject;
   }
   
   public static int getDisplayHeight()
   {
-    return aZD;
+    return bjY;
   }
   
-  public static void xn(int paramInt)
+  public static void xT(int paramInt)
   {
-    aZD = paramInt;
+    bjY = paramInt;
   }
 }
 

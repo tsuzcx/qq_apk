@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c.a;
+import com.tencent.mm.al.a.a;
 import com.tencent.mm.cn.f;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bhu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.bmc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.vending.c.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.concurrent.TimeUnit;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic;", "", "()V", "Companion", "IFetchStartListCallback", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic;", "", "()V", "Companion", "IFetchStartListCallback", "plugin-appbrand-integration_release"})
 public final class ag
 {
-  private static final long jvB;
-  public static final a jvX;
+  public static final a jPR;
+  private static final long jPv;
   
   static
   {
     AppMethodBeat.i(50295);
-    jvX = new a((byte)0);
-    jvB = TimeUnit.DAYS.toSeconds(1L);
+    jPR = new a((byte)0);
+    jPv = TimeUnit.DAYS.toSeconds(1L);
     AppMethodBeat.o(50295);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$Companion;", "", "()V", "FETCH_FREQUENCY", "", "TAG", "", "fetchListFromServer", "", "reason", "", "prescene", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$Companion;", "", "()V", "FETCH_FREQUENCY", "", "TAG", "", "fetchListFromServer", "", "reason", "", "prescene", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "plugin-appbrand-integration_release"})
   public static final class a
   {
     private static void a(final int paramInt1, int paramInt2, ag.b paramb)
@@ -45,9 +45,9 @@ public final class ag
         }
         try
         {
-          Object localObject = g.agR();
-          k.g(localObject, "MMKernel.storage()");
-          localObject = ((e)localObject).agA().get(ah.a.GIW, Long.valueOf(0L));
+          Object localObject = g.ajC();
+          p.g(localObject, "MMKernel.storage()");
+          localObject = ((e)localObject).ajl().get(al.a.Ivo, Long.valueOf(0L));
           if (localObject == null)
           {
             localObject = new v("null cannot be cast to non-null type kotlin.Long");
@@ -57,18 +57,18 @@ public final class ag
         }
         catch (Exception localException)
         {
-          ac.e("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "fetchListFromServer checkFrequency by configStg fail, e=".concat(String.valueOf(localException)));
+          ad.e("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "fetchListFromServer checkFrequency by configStg fail, e=".concat(String.valueOf(localException)));
           l = 0L;
         }
       }
       for (;;)
       {
-        if (l > bs.aNx())
+        if (l > bt.aQJ())
         {
-          ac.d("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "daily fetch blocked by frequency");
+          ad.d("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "daily fetch blocked by frequency");
           if (paramb != null)
           {
-            paramb.aYn();
+            paramb.bbL();
             AppMethodBeat.o(50293);
             return;
             i = 0;
@@ -80,17 +80,17 @@ public final class ag
           return;
         }
       }
-      e locale = g.agR();
-      k.g(locale, "MMKernel.storage()");
-      locale.agA().set(ah.a.GIW, Long.valueOf(bs.aNx() + ag.aZc()));
+      e locale = g.ajC();
+      p.g(locale, "MMKernel.storage()");
+      locale.ajl().set(al.a.Ivo, Long.valueOf(bt.aQJ() + ag.bcA()));
       label190:
-      ac.i("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "fetchList reason=" + paramInt1 + ", prescene=" + paramInt2);
-      final long l = bs.eWj();
-      new aa(paramInt1, paramInt2, 2, 2147483647, 0).aBB().j((a)new a(paramb, paramInt1, l));
+      ad.i("MicroMsg.AppBrandCollectionModifyQueue[collection].FetchStarListLogic", "fetchList reason=" + paramInt1 + ", prescene=" + paramInt2);
+      final long l = bt.flT();
+      new aa(paramInt1, paramInt2, 2, 2147483647, 0).aED().j((a)new a(paramb, paramInt1, l));
       AppMethodBeat.o(50293);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "kotlin.jvm.PlatformType", "back", "call"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "kotlin.jvm.PlatformType", "back", "call"})
     static final class a<_Ret, _Var>
       implements a<_Ret, _Var>
     {
@@ -98,12 +98,12 @@ public final class ag
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "", "onCgiBack", "", "back", "Lcom/tencent/mm/modelbase/DeprecatedCgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "onHitFrequencyLimit", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/FetchStarListLogic$IFetchStartListCallback;", "", "onCgiBack", "", "back", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/GetWxaUsageRecordResponse;", "onHitFrequencyLimit", "plugin-appbrand-integration_release"})
   public static abstract interface b
   {
-    public abstract void aYn();
+    public abstract void bbL();
     
-    public abstract void c(c.a<bhu> parama);
+    public abstract void c(a.a<bmc> parama);
   }
 }
 

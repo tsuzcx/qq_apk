@@ -11,22 +11,22 @@ final class b
     AppMethodBeat.i(12384);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append('\000');
-    while (paramh.ya())
+    while (paramh.zx())
     {
-      localStringBuilder.append(paramh.xZ());
+      localStringBuilder.append(paramh.zw());
       paramh.pos += 1;
-      i = j.b(paramh.bIO, paramh.pos, 5);
+      i = j.b(paramh.msg, paramh.pos, 5);
       if (i != 5) {
-        paramh.bIT = i;
+        paramh.bTg = i;
       }
     }
     int k = localStringBuilder.length() - 1;
-    int i = paramh.bIS.length() + k + 1;
-    paramh.fU(i);
-    if (paramh.bIU.bJd - i > 0)
+    int i = paramh.bTf.length() + k + 1;
+    paramh.fX(i);
+    if (paramh.bTh.bTq - i > 0)
     {
       i = 1;
-      if ((paramh.ya()) || (i != 0))
+      if ((paramh.zx()) || (i != 0))
       {
         if (k > 249) {
           break label217;
@@ -40,7 +40,7 @@ final class b
       if (i >= k) {
         break label296;
       }
-      j = localStringBuilder.charAt(i) + ((paramh.bIS.length() + 1) * 149 % 255 + 1);
+      j = localStringBuilder.charAt(i) + ((paramh.bTf.length() + 1) * 149 % 255 + 1);
       if (j > 255) {
         break label285;
       }
@@ -48,7 +48,7 @@ final class b
     label285:
     for (char c = (char)j;; c = (char)(j - 256))
     {
-      paramh.e(c);
+      paramh.g(c);
       i += 1;
       break label154;
       i = 0;
@@ -70,7 +70,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.c.c.a.b
  * JD-Core Version:    0.7.0.1
  */

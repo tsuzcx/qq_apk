@@ -350,7 +350,7 @@ final class zzd
             ((s.c)localObject1).b((Uri)localObject2);
           }
           if (localObject4 != null) {
-            ((s.c)localObject1).Fu = ((PendingIntent)localObject4);
+            ((s.c)localObject1).Hl = ((PendingIntent)localObject4);
           }
         }
       }

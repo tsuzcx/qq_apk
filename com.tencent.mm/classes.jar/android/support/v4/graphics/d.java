@@ -13,37 +13,37 @@ import android.support.v4.content.a.f.a;
 
 public final class d
 {
-  private static final i HS;
-  private static final android.support.v4.e.h<String, Typeface> HT;
+  private static final i JL;
+  private static final android.support.v4.e.h<String, Typeface> JM;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      HS = new h();
+      JL = new h();
     }
     for (;;)
     {
-      HT = new android.support.v4.e.h(16);
+      JM = new android.support.v4.e.h(16);
       return;
       if (Build.VERSION.SDK_INT >= 26) {
-        HS = new g();
-      } else if ((Build.VERSION.SDK_INT >= 24) && (f.ea())) {
-        HS = new f();
+        JL = new g();
+      } else if ((Build.VERSION.SDK_INT >= 24) && (f.ev())) {
+        JL = new f();
       } else if (Build.VERSION.SDK_INT >= 21) {
-        HS = new e();
+        JL = new e();
       } else {
-        HS = new i();
+        JL = new i();
       }
     }
   }
   
   public static Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    paramContext = HS.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
+    paramContext = JL.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
     if (paramContext != null)
     {
       paramResources = b(paramResources, paramInt1, paramInt2);
-      HT.put(paramResources, paramContext);
+      JM.put(paramResources, paramContext);
     }
     return paramContext;
   }
@@ -56,21 +56,21 @@ public final class d
     {
       parama = (c.d)parama;
       if (paramBoolean) {
-        if (parama.HI == 0)
+        if (parama.JC == 0)
         {
           if (!paramBoolean) {
             break label94;
           }
           i = parama.mTimeoutMs;
           label38:
-          paramContext = b.a(paramContext, parama.HH, parama1, null, bool, i, paramInt2);
+          paramContext = b.a(paramContext, parama.JB, parama1, null, bool, i, paramInt2);
         }
       }
     }
     for (;;)
     {
       if (paramContext != null) {
-        HT.put(b(paramResources, paramInt1, paramInt2), paramContext);
+        JM.put(b(paramResources, paramInt1, paramInt2), paramContext);
       }
       return paramContext;
       bool = false;
@@ -83,7 +83,7 @@ public final class d
       label94:
       i = -1;
       break label38;
-      parama = HS.a(paramContext, (c.b)parama, paramResources, paramInt2);
+      parama = JL.a(paramContext, (c.b)parama, paramResources, paramInt2);
       paramContext = parama;
       if (parama1 != null) {
         if (parama != null)
@@ -102,12 +102,12 @@ public final class d
   
   public static Typeface a(Context paramContext, b.b[] paramArrayOfb, int paramInt)
   {
-    return HS.a(paramContext, paramArrayOfb, paramInt);
+    return JL.a(paramContext, paramArrayOfb, paramInt);
   }
   
   public static Typeface a(Resources paramResources, int paramInt1, int paramInt2)
   {
-    return (Typeface)HT.get(b(paramResources, paramInt1, paramInt2));
+    return (Typeface)JM.get(b(paramResources, paramInt1, paramInt2));
   }
   
   private static String b(Resources paramResources, int paramInt1, int paramInt2)

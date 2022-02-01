@@ -1,33 +1,33 @@
 package com.tencent.mm.model.gdpr;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public enum a
 {
-  public final String hqC;
-  public final int hqD;
+  public final String hIU;
+  public final int hIV;
   
   static
   {
     AppMethodBeat.i(40081);
-    hqz = new a("MINI_PROGRAM", 0, "miniProgram", 1);
-    hqA = new a("BIZ", 1, "officialAccount", 0);
-    hqB = new a("OPENSDK", 2, "OPENSDK", 2);
-    hqE = new a[] { hqz, hqA, hqB };
+    hIR = new a("MINI_PROGRAM", 0, "miniProgram", 1);
+    hIS = new a("BIZ", 1, "officialAccount", 0);
+    hIT = new a("OPENSDK", 2, "OPENSDK", 2);
+    hIW = new a[] { hIR, hIS, hIT };
     AppMethodBeat.o(40081);
   }
   
   private a(String paramString, int paramInt)
   {
-    this.hqC = paramString;
-    this.hqD = paramInt;
+    this.hIU = paramString;
+    this.hIV = paramInt;
   }
   
-  public static boolean yN(String paramString)
+  public static boolean BM(String paramString)
   {
     AppMethodBeat.i(40079);
-    if (yO(paramString) != null)
+    if (BN(paramString) != null)
     {
       AppMethodBeat.o(40079);
       return true;
@@ -36,10 +36,10 @@ public enum a
     return false;
   }
   
-  public static a yO(String paramString)
+  public static a BN(String paramString)
   {
     AppMethodBeat.i(40080);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(40080);
       return null;
@@ -50,7 +50,7 @@ public enum a
     while (i < j)
     {
       a locala = arrayOfa[i];
-      if (paramString.equals(locala.hqC))
+      if (paramString.equals(locala.hIU))
       {
         AppMethodBeat.o(40080);
         return locala;

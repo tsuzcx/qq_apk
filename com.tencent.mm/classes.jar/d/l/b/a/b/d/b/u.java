@@ -2,30 +2,30 @@ package d.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.v;
-import d.g.b.k;
+import d.g.b.p;
 import java.util.List;
 
 public abstract interface u
 {
-  public abstract List<String> aWt(String paramString);
+  public abstract List<String> bcw(String paramString);
   
   public static final class a
     implements u
   {
-    public static final a Lsi;
+    public static final a Njf;
     
     static
     {
       AppMethodBeat.i(58248);
-      Lsi = new a();
+      Njf = new a();
       AppMethodBeat.o(58248);
     }
     
-    public final List<String> aWt(String paramString)
+    public final List<String> bcw(String paramString)
     {
       AppMethodBeat.i(58247);
-      k.h(paramString, "packageFqName");
-      paramString = (List)v.KTF;
+      p.h(paramString, "packageFqName");
+      paramString = (List)v.MKE;
       AppMethodBeat.o(58247);
       return paramString;
     }

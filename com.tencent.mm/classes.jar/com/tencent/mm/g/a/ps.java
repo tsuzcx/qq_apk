@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.Set;
 
 public final class ps
   extends b
 {
-  public a dsJ;
+  public a dEd;
   
   public ps()
   {
@@ -16,23 +15,21 @@ public final class ps
   
   private ps(byte paramByte)
   {
-    AppMethodBeat.i(116040);
-    this.dsJ = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(104420);
+    this.dEd = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116040);
+    AppMethodBeat.o(104420);
   }
   
   public static final class a
   {
-    public long dao;
-    public Set dsK;
-    public String filePath;
+    public String dok;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ps
  * JD-Core Version:    0.7.0.1
  */

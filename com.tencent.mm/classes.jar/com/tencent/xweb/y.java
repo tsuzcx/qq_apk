@@ -12,64 +12,64 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class y
 {
-  private static y Kzv = null;
-  public boolean KzA = false;
-  public boolean KzB = false;
-  boolean KzC = false;
-  public boolean KzD = false;
-  public boolean KzE = false;
-  public JsRuntime.JsRuntimeType KzF = JsRuntime.JsRuntimeType.Kzb;
-  public boolean KzG = false;
-  public boolean KzH = false;
-  public Context Kzw;
-  WebView.c Kzx = WebView.c.KzY;
-  public boolean Kzy = false;
-  public boolean Kzz = false;
+  private static y MpQ = null;
+  public Context MpR;
+  WebView.c MpS = WebView.c.Mqt;
+  public boolean MpT = false;
+  public boolean MpU = false;
+  public boolean MpV = false;
+  public boolean MpW = false;
+  boolean MpX = false;
+  public boolean MpY = false;
+  public boolean MpZ = false;
+  public JsRuntime.JsRuntimeType Mqa = JsRuntime.JsRuntimeType.Mpw;
+  public boolean Mqb = false;
+  public boolean Mqc = false;
   
-  public static y fJs()
+  public static y gaM()
   {
-    return Kzv;
+    return MpQ;
   }
   
-  public static void lk(Context paramContext)
+  public static void lx(Context paramContext)
   {
     AppMethodBeat.i(156781);
-    if (Kzv != null)
+    if (MpQ != null)
     {
       AppMethodBeat.o(156781);
       return;
     }
     Object localObject = new y();
-    Kzv = (y)localObject;
-    ((y)localObject).Kzw = paramContext.getApplicationContext();
+    MpQ = (y)localObject;
+    ((y)localObject).MpR = paramContext.getApplicationContext();
     XWalkEnvironment.init(paramContext);
-    Kzv.Kzz = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowVersion", false);
-    Kzv.KzA = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowX5Version", false);
-    Kzv.KzB = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowSavePage", false);
+    MpQ.MpU = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowVersion", false);
+    MpQ.MpV = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowX5Version", false);
+    MpQ.MpW = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowSavePage", false);
     localObject = paramContext.getSharedPreferences("wcwebview", 0).getString("V8type", "RT_TYPE_AUTO");
     try
     {
-      Kzv.KzF = JsRuntime.JsRuntimeType.valueOf((String)localObject);
+      MpQ.Mqa = JsRuntime.JsRuntimeType.valueOf((String)localObject);
       label131:
-      Kzv.Kzy = XWalkEnvironment.getSharedPreferences().getBoolean("ENABLEREMOTEDEBUG", false);
+      MpQ.MpT = XWalkEnvironment.getSharedPreferences().getBoolean("ENABLEREMOTEDEBUG", false);
       localObject = XWalkEnvironment.getTestDownLoadUrl(paramContext);
-      y localy = Kzv;
+      y localy = MpQ;
       if ((localObject != null) && (!((String)localObject).isEmpty())) {}
       for (boolean bool = true;; bool = false)
       {
-        localy.KzG = bool;
-        Kzv.KzD = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bWaitforDebugger", false);
-        if (Kzv.KzD)
+        localy.Mqb = bool;
+        MpQ.MpY = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bWaitforDebugger", false);
+        if (MpQ.MpY)
         {
-          localObject = Kzv.Kzw.getSharedPreferences("wcwebview", 4).getString("strDebugProcess", "");
+          localObject = MpQ.MpR.getSharedPreferences("wcwebview", 4).getString("strDebugProcess", "");
           if ((localObject != null) && (((String)localObject).equals(XWalkEnvironment.getProcessName())))
           {
             Debug.waitForDebugger();
             Log.w("WebDebugCfg", "strDebugProcess is ".concat(String.valueOf(localObject)));
           }
         }
-        Kzv.KzE = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("ignore_crashwatch", false);
-        Kzv.KzH = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("show_fps", false);
+        MpQ.MpZ = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("ignore_crashwatch", false);
+        MpQ.Mqc = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("show_fps", false);
         AppMethodBeat.o(156781);
         return;
       }
@@ -88,7 +88,7 @@ public final class y
       AppMethodBeat.o(156789);
       return "";
     }
-    Object localObject = this.Kzw.getSharedPreferences("wcwebview", 4);
+    Object localObject = this.MpR.getSharedPreferences("wcwebview", 4);
     if (localObject == null)
     {
       AppMethodBeat.o(156789);
@@ -106,7 +106,7 @@ public final class y
     while (i < k)
     {
       String str1 = paramArrayOfString[i];
-      String[] arrayOfString = f.KyK;
+      String[] arrayOfString = f.Mpg;
       int m = arrayOfString.length;
       int j = 0;
       while (j < m)
@@ -134,20 +134,20 @@ public final class y
   public final void a(JsRuntime.JsRuntimeType paramJsRuntimeType)
   {
     AppMethodBeat.i(156792);
-    if (this.KzF == paramJsRuntimeType)
+    if (this.Mqa == paramJsRuntimeType)
     {
       AppMethodBeat.o(156792);
       return;
     }
-    this.KzF = paramJsRuntimeType;
-    this.Kzw.getSharedPreferences("wcwebview", 0).edit().putString("V8type", paramJsRuntimeType.toString()).commit();
+    this.Mqa = paramJsRuntimeType;
+    this.MpR.getSharedPreferences("wcwebview", 0).edit().putString("V8type", paramJsRuntimeType.toString()).commit();
     AppMethodBeat.o(156792);
   }
   
   public final void a(String paramString, WebView.c paramc)
   {
     AppMethodBeat.i(156783);
-    if ((this.Kzw == null) || (paramString == null) || (paramString.isEmpty()))
+    if ((this.MpR == null) || (paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(156783);
       return;
@@ -156,19 +156,31 @@ public final class y
     AppMethodBeat.o(156783);
   }
   
-  public final WebView.c aUV(String paramString)
+  public final void b(String paramString, WebView.c paramc)
+  {
+    AppMethodBeat.i(156784);
+    if ((this.MpR == null) || (paramString.isEmpty()))
+    {
+      AppMethodBeat.o(156784);
+      return;
+    }
+    XWalkEnvironment.getMMKVSharedPreferences("xweb_debug").edit().putString("ABTestWebView".concat(String.valueOf(paramString)), paramc.toString()).commit();
+    AppMethodBeat.o(156784);
+  }
+  
+  public final WebView.c baY(String paramString)
   {
     AppMethodBeat.i(156782);
-    if ((paramString == null) || (paramString.isEmpty()) || (this.Kzw == null))
+    if ((paramString == null) || (paramString.isEmpty()) || (this.MpR == null))
     {
-      paramString = WebView.c.KzY;
+      paramString = WebView.c.Mqt;
       AppMethodBeat.o(156782);
       return paramString;
     }
     SharedPreferences localSharedPreferences = XWalkEnvironment.getMMKVSharedPreferences("xweb_debug");
     if (localSharedPreferences == null)
     {
-      paramString = WebView.c.KzY;
+      paramString = WebView.c.Mqt;
       AppMethodBeat.o(156782);
       return paramString;
     }
@@ -180,7 +192,7 @@ public final class y
     if ((str2 != null) && (!str2.isEmpty()))
     {
       str1 = str2;
-      if (!str2.equals(WebView.c.KzY.toString())) {}
+      if (!str2.equals(WebView.c.Mqt.toString())) {}
     }
     else
     {
@@ -197,64 +209,52 @@ public final class y
       }
     }
     if ((str1 == null) || (str1.isEmpty())) {
-      this.Kzx = WebView.c.KzY;
+      this.MpS = WebView.c.Mqt;
     }
     for (;;)
     {
-      paramString = this.Kzx;
+      paramString = this.MpS;
       AppMethodBeat.o(156782);
       return paramString;
       try
       {
-        this.Kzx = WebView.c.valueOf(str1);
+        this.MpS = WebView.c.valueOf(str1);
       }
       catch (Exception paramString)
       {
-        this.Kzx = WebView.c.KzY;
+        this.MpS = WebView.c.Mqt;
       }
     }
   }
   
-  public final f.a aUW(String paramString)
+  public final f.a baZ(String paramString)
   {
     AppMethodBeat.i(156788);
-    SharedPreferences localSharedPreferences = this.Kzw.getSharedPreferences("wcwebview", 4);
+    SharedPreferences localSharedPreferences = this.MpR.getSharedPreferences("wcwebview", 4);
     if (localSharedPreferences == null)
     {
-      paramString = f.a.KyM;
+      paramString = f.a.Mpi;
       AppMethodBeat.o(156788);
       return paramString;
     }
-    paramString = b.aUH(localSharedPreferences.getString("force_fr_" + paramString.toLowerCase(), ""));
+    paramString = b.baK(localSharedPreferences.getString("force_fr_" + paramString.toLowerCase(), ""));
     AppMethodBeat.o(156788);
     return paramString;
   }
   
-  public final void b(String paramString, WebView.c paramc)
-  {
-    AppMethodBeat.i(156784);
-    if ((this.Kzw == null) || (paramString.isEmpty()))
-    {
-      AppMethodBeat.o(156784);
-      return;
-    }
-    XWalkEnvironment.getMMKVSharedPreferences("xweb_debug").edit().putString("ABTestWebView".concat(String.valueOf(paramString)), paramc.toString()).commit();
-    AppMethodBeat.o(156784);
-  }
-  
-  public final WebView.c df(String paramString, boolean paramBoolean)
+  public final WebView.c dk(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(175638);
-    if ((paramString == null) || (paramString.isEmpty()) || (this.Kzw == null))
+    if ((paramString == null) || (paramString.isEmpty()) || (this.MpR == null))
     {
-      paramString = WebView.c.KzY;
+      paramString = WebView.c.Mqt;
       AppMethodBeat.o(175638);
       return paramString;
     }
     SharedPreferences localSharedPreferences = XWalkEnvironment.getMMKVSharedPreferences("xweb_debug");
     if (localSharedPreferences == null)
     {
-      paramString = WebView.c.KzY;
+      paramString = WebView.c.Mqt;
       AppMethodBeat.o(175638);
       return paramString;
     }
@@ -264,11 +264,11 @@ public final class y
       if ((paramString != null) && (!paramString.isEmpty())) {
         break label132;
       }
-      this.Kzx = WebView.c.KzY;
+      this.MpS = WebView.c.Mqt;
     }
     for (;;)
     {
-      paramString = this.Kzx;
+      paramString = this.MpS;
       AppMethodBeat.o(175638);
       return paramString;
       paramString = localSharedPreferences.getString("HardCodeWebView".concat(String.valueOf(paramString)), "");
@@ -276,19 +276,19 @@ public final class y
       try
       {
         label132:
-        this.Kzx = WebView.c.valueOf(paramString);
+        this.MpS = WebView.c.valueOf(paramString);
       }
       catch (Exception paramString)
       {
-        this.Kzx = WebView.c.KzY;
+        this.MpS = WebView.c.Mqt;
       }
     }
   }
   
-  public final boolean fJt()
+  public final boolean gaN()
   {
     AppMethodBeat.i(156790);
-    SharedPreferences localSharedPreferences = this.Kzw.getSharedPreferences("wcwebview", 4);
+    SharedPreferences localSharedPreferences = this.MpR.getSharedPreferences("wcwebview", 4);
     if (localSharedPreferences == null)
     {
       AppMethodBeat.o(156790);
@@ -299,10 +299,10 @@ public final class y
     return bool;
   }
   
-  public final boolean fJu()
+  public final boolean gaO()
   {
     AppMethodBeat.i(156791);
-    SharedPreferences localSharedPreferences = this.Kzw.getSharedPreferences("wcwebview", 4);
+    SharedPreferences localSharedPreferences = this.MpR.getSharedPreferences("wcwebview", 4);
     if (localSharedPreferences == null)
     {
       AppMethodBeat.o(156791);
@@ -313,18 +313,18 @@ public final class y
     return bool;
   }
   
-  public final void fJv()
+  public final void gaP()
   {
     AppMethodBeat.i(156794);
     XWalkEnvironment.initTurnOnKVLog();
-    this.Kzw.getSharedPreferences("wcwebview", 4).edit().putBoolean("m_bEnableLocalDebug", true).commit();
+    this.MpR.getSharedPreferences("wcwebview", 4).edit().putBoolean("m_bEnableLocalDebug", true).commit();
     AppMethodBeat.o(156794);
   }
   
-  public final boolean fJw()
+  public final boolean gaQ()
   {
     AppMethodBeat.i(156795);
-    boolean bool = this.Kzw.getSharedPreferences("wcwebview", 4).getBoolean("m_bEnableLocalDebug", false);
+    boolean bool = this.MpR.getSharedPreferences("wcwebview", 4).getBoolean("m_bEnableLocalDebug", false);
     AppMethodBeat.o(156795);
     return bool;
   }
@@ -332,72 +332,72 @@ public final class y
   public final void setShowFps(boolean paramBoolean)
   {
     AppMethodBeat.i(156786);
-    if (paramBoolean == this.KzH)
+    if (paramBoolean == this.Mqc)
     {
       AppMethodBeat.o(156786);
       return;
     }
-    this.KzH = paramBoolean;
-    this.Kzw.getSharedPreferences("wcwebview", 0).edit().putBoolean("show_fps", paramBoolean).commit();
+    this.Mqc = paramBoolean;
+    this.MpR.getSharedPreferences("wcwebview", 0).edit().putBoolean("show_fps", paramBoolean).commit();
     AppMethodBeat.o(156786);
   }
   
-  public final void yR(boolean paramBoolean)
+  public final void zE(boolean paramBoolean)
   {
     AppMethodBeat.i(156785);
-    if (paramBoolean == this.Kzy)
+    if (paramBoolean == this.MpT)
     {
       AppMethodBeat.o(156785);
       return;
     }
-    this.Kzy = paramBoolean;
+    this.MpT = paramBoolean;
     XWalkEnvironment.getSharedPreferences().edit().putBoolean("ENABLEREMOTEDEBUG", paramBoolean).commit();
     AppMethodBeat.o(156785);
   }
   
-  public final void yS(boolean paramBoolean)
+  public final void zF(boolean paramBoolean)
   {
     AppMethodBeat.i(156787);
-    if (paramBoolean == this.KzB)
+    if (paramBoolean == this.MpW)
     {
       AppMethodBeat.o(156787);
       return;
     }
-    this.KzB = paramBoolean;
-    this.Kzw.getSharedPreferences("wcwebview", 0).edit().putBoolean("bShowSavePage", this.KzB).commit();
+    this.MpW = paramBoolean;
+    this.MpR.getSharedPreferences("wcwebview", 0).edit().putBoolean("bShowSavePage", this.MpW).commit();
     AppMethodBeat.o(156787);
   }
   
-  public final void yT(boolean paramBoolean)
+  public final void zG(boolean paramBoolean)
   {
     AppMethodBeat.i(156793);
-    if (paramBoolean == this.KzG)
+    if (paramBoolean == this.Mqb)
     {
       AppMethodBeat.o(156793);
       return;
     }
-    this.KzG = paramBoolean;
-    if (this.KzG)
+    this.Mqb = paramBoolean;
+    if (this.Mqb)
     {
       if (XWalkEnvironment.isIaDevice()) {
-        XWalkEnvironment.setTestDownLoadUrl(this.Kzw, "https://dldir1.qq.com/weixin/android/wxweb/updateConfig_x86_test.xml");
+        XWalkEnvironment.setTestDownLoadUrl(this.MpR, "https://dldir1.qq.com/weixin/android/wxweb/updateConfig_x86_test.xml");
       }
       for (;;)
       {
         localEditor = XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit();
         localEditor.putLong("nLastFetchConfigTime", 0L);
         localEditor.commit();
-        j.g(WebView.c.KzZ).excute("STR_CMD_CLEAR_SCHEDULER", null);
+        j.g(WebView.c.Mqu).excute("STR_CMD_CLEAR_SCHEDULER", null);
         AppMethodBeat.o(156793);
         return;
-        XWalkEnvironment.setTestDownLoadUrl(this.Kzw, "https://dldir1.qq.com/weixin/android/wxweb/updateConfig_test.xml");
+        XWalkEnvironment.setTestDownLoadUrl(this.MpR, "https://dldir1.qq.com/weixin/android/wxweb/updateConfig_test.xml");
       }
     }
-    XWalkEnvironment.setTestDownLoadUrl(this.Kzw, "");
+    XWalkEnvironment.setTestDownLoadUrl(this.MpR, "");
     SharedPreferences.Editor localEditor = XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit();
     localEditor.putLong("nLastFetchConfigTime", 0L);
     localEditor.commit();
-    j.g(WebView.c.KzZ).excute("STR_CMD_CLEAR_SCHEDULER", null);
+    j.g(WebView.c.Mqu).excute("STR_CMD_CLEAR_SCHEDULER", null);
     AppMethodBeat.o(156793);
   }
 }

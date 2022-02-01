@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class EnterpriseFullHeightListView
   extends ListView
 {
-  public boolean IEI = true;
-  private View IEJ;
-  private int it = 0;
+  public boolean KvL = true;
+  private View KvM;
+  private int kl = 0;
   
   public EnterpriseFullHeightListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,14 +31,14 @@ public class EnterpriseFullHeightListView
     int i = 0;
     AppMethodBeat.i(38588);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.IEI)
+    if (this.KvL)
     {
       AppMethodBeat.o(38588);
       return;
     }
     try
     {
-      if (this.IEI) {
+      if (this.KvL) {
         break label266;
       }
       int j = getHeaderViewsCount();
@@ -46,7 +46,7 @@ public class EnterpriseFullHeightListView
       paramInt4 = i;
       paramInt1 = k;
       paramInt3 = j;
-      if (this.IEJ != null)
+      if (this.KvM != null)
       {
         paramInt1 = k - 1;
         paramInt3 = j;
@@ -55,7 +55,7 @@ public class EnterpriseFullHeightListView
       View localView;
       while (paramInt3 < paramInt1)
       {
-        i = this.it;
+        i = this.kl;
         if (i > 0) {}
       }
       if (paramInt4 >= paramInt2) {
@@ -68,16 +68,16 @@ public class EnterpriseFullHeightListView
       {
         localView = getAdapter().getView(paramInt3, null, this);
         localView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-        this.it = localView.getMeasuredHeight();
-        i = paramInt4 + this.it;
+        this.kl = localView.getMeasuredHeight();
+        i = paramInt4 + this.kl;
         paramInt4 = i;
         if (i <= paramInt2) {
           break label193;
         }
-        if (this.IEJ != null)
+        if (this.KvM != null)
         {
-          removeFooterView(this.IEJ);
-          this.IEJ = null;
+          removeFooterView(this.KvM);
+          this.KvM = null;
         }
         AppMethodBeat.o(38588);
         return;
@@ -91,12 +91,12 @@ public class EnterpriseFullHeightListView
       return;
     }
     label193:
-    if (this.IEJ == null) {
-      this.IEJ = new View(getContext());
+    if (this.KvM == null) {
+      this.KvM = new View(getContext());
     }
-    removeFooterView(this.IEJ);
-    this.IEJ.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt2 - paramInt4));
-    addFooterView(this.IEJ, null, false);
+    removeFooterView(this.KvM);
+    this.KvM.setLayoutParams(new AbsListView.LayoutParams(-1, paramInt2 - paramInt4));
+    addFooterView(this.KvM, null, false);
     label266:
     AppMethodBeat.o(38588);
   }

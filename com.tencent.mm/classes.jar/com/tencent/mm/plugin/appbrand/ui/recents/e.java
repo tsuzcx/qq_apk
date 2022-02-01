@@ -5,31 +5,32 @@ import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.d.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.o.c;
-import com.tencent.mm.plugin.appbrand.o.c.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.plugin.appbrand.n.c;
+import com.tencent.mm.plugin.appbrand.n.c.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandLauncherDesktopReporter;
-import com.tencent.mm.plugin.appbrand.report.d;
-import com.tencent.mm.protocal.protobuf.bhs;
+import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.protocal.protobuf.bma;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.lang.ref.WeakReference;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "getTitle", "", "onAttached", "", "onClick", "v", "Landroid/view/View;", "onResume", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "updateMoreOptionEntryRedDotStatus", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "activity", "Landroid/support/v4/app/FragmentActivity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/support/v4/app/FragmentActivity;Landroid/view/ViewGroup;)V", "getTitle", "", "onAttached", "", "onClick", "v", "Landroid/view/View;", "onResume", "setIConRes", "imageView", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "updateMoreOptionEntryRedDotStatus", "Companion", "plugin-appbrand-integration_release"})
 public final class e
   extends f
 {
-  public static final a miP;
+  public static final a mJq;
   
   static
   {
     AppMethodBeat.i(180709);
-    miP = new a((byte)0);
+    mJq = new a((byte)0);
     AppMethodBeat.o(180709);
   }
   
@@ -38,35 +39,35 @@ public final class e
     super(paramFragmentActivity, paramViewGroup);
   }
   
-  private final void bws()
+  private final void bAy()
   {
     AppMethodBeat.i(180707);
-    com.tencent.d.f.h.fCP();
+    h.fUh();
     c localc = new c((c.a)new b(this, new WeakReference(this)));
-    com.tencent.mm.kernel.b localb = g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().b((com.tencent.mm.ak.n)localc);
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().b((n)localc);
     AppMethodBeat.o(180707);
   }
   
   protected final void a(WeImageView paramWeImageView)
   {
     AppMethodBeat.i(180708);
-    k.h(paramWeImageView, "imageView");
+    p.h(paramWeImageView, "imageView");
     paramWeImageView.setVisibility(0);
     paramWeImageView.setImageResource(2131690508);
     FragmentActivity localFragmentActivity = getActivity();
-    k.g(localFragmentActivity, "activity");
+    p.g(localFragmentActivity, "activity");
     paramWeImageView.setIconColor(localFragmentActivity.getResources().getColor(2131099699));
     AppMethodBeat.o(180708);
   }
   
-  public final void bwo()
+  public final void bAu()
   {
     AppMethodBeat.i(180705);
-    super.bwo();
-    com.tencent.d.f.h.fCP();
-    bws();
+    super.bAu();
+    h.fUh();
+    bAy();
     AppMethodBeat.o(180705);
   }
   
@@ -82,23 +83,23 @@ public final class e
   {
     AppMethodBeat.i(180704);
     super.onClick(paramView);
-    paramView = new com.tencent.mm.plugin.appbrand.a.f();
+    paramView = new com.tencent.mm.plugin.appbrand.api.f();
     paramView.username = "gh_af04e9bb7e91@app";
-    paramView.hxM = 0;
+    paramView.hQh = 0;
     paramView.version = 0;
     paramView.scene = 1151;
-    paramView.cYP = "";
-    ((com.tencent.mm.plugin.appbrand.service.n)g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a((Context)getActivity(), paramView);
-    paramView = new com.tencent.mm.plugin.appbrand.o.f(true);
-    com.tencent.mm.kernel.b localb = g.agQ();
-    k.g(localb, "MMKernel.network()");
-    localb.agi().b((com.tencent.mm.ak.n)paramView);
-    com.tencent.mm.plugin.report.service.h.wUl.f(18685, new Object[] { Integer.valueOf(2) });
-    paramView = d.lRj;
+    paramView.dkh = "";
+    ((o)com.tencent.mm.kernel.g.ab(o.class)).a((Context)getActivity(), paramView);
+    paramView = new com.tencent.mm.plugin.appbrand.n.f(true);
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajB();
+    p.g(localb, "MMKernel.network()");
+    localb.aiU().b((n)paramView);
+    com.tencent.mm.plugin.report.service.g.yhR.f(18685, new Object[] { Integer.valueOf(2) });
+    paramView = com.tencent.mm.plugin.appbrand.report.e.mqZ;
     paramView = getActivity();
-    k.g(paramView, "activity");
-    paramView = d.b(paramView);
-    com.tencent.mm.plugin.report.service.h.wUl.f(19468, new Object[] { Integer.valueOf(4), "", "", "", "", "", Long.valueOf(paramView.mSessionId) });
+    p.g(paramView, "activity");
+    paramView = com.tencent.mm.plugin.appbrand.report.e.b(paramView);
+    com.tencent.mm.plugin.report.service.g.yhR.f(19468, new Object[] { Integer.valueOf(4), "", "", "", "", "", Long.valueOf(paramView.mSessionId) });
     AppMethodBeat.o(180704);
   }
   
@@ -106,14 +107,14 @@ public final class e
   {
     AppMethodBeat.i(180706);
     super.onResume();
-    bws();
+    bAy();
     AppMethodBeat.o(180706);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance$updateMoreOptionEntryRedDotStatus$netSceneGetWxaOrderInfo$1", "Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;", "Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "scene", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance$updateMoreOptionEntryRedDotStatus$netSceneGetWxaOrderInfo$1", "Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;", "Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderOrderEntrance;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "scene", "plugin-appbrand-integration_release"})
   public static final class b
     extends c.a<c, e>
   {
@@ -122,7 +123,7 @@ public final class e
       super();
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -131,17 +132,17 @@ public final class e
       public final void run()
       {
         AppMethodBeat.i(180701);
-        Object localObject = (e)this.miR.lvU.get();
+        Object localObject = (e)this.mJs.lVh.get();
         if (localObject != null)
         {
-          a locala = this.miS.lvS.aBD();
+          a locala = this.mJt.lVf.aEF();
           if (locala == null)
           {
             localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetWxaOrderInfoResp");
             AppMethodBeat.o(180701);
             throw ((Throwable)localObject);
           }
-          ((e)localObject).hC(((bhs)locala).EXb);
+          ((e)localObject).hM(((bma)locala).GGy);
           AppMethodBeat.o(180701);
           return;
         }

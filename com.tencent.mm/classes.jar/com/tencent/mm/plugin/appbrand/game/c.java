@@ -18,10 +18,10 @@ public class c
   public final d getMagicBrush()
   {
     AppMethodBeat.i(45084);
-    Object localObject = this.ceD;
+    Object localObject = this.coU;
     if ((localObject instanceof a))
     {
-      localObject = ((a)localObject).bZJ.getMagicBrush();
+      localObject = ((a)localObject).ckb.getMagicBrush();
       AppMethodBeat.o(45084);
       return localObject;
     }
@@ -31,7 +31,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.c
  * JD-Core Version:    0.7.0.1
  */

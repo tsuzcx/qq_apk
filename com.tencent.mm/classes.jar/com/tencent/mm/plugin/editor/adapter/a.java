@@ -7,16 +7,16 @@ import com.tencent.mm.hellhoundlib.b.b;
 public abstract class a
   extends RecyclerView.m
 {
-  private int oOF;
+  private int psn;
   
   public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
     b localb = new b();
-    localb.bb(paramRecyclerView);
-    localb.lS(paramInt1);
-    localb.lS(paramInt2);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.aeE());
-    if (Math.abs(paramInt2) > this.oOF)
+    localb.bd(paramRecyclerView);
+    localb.mr(paramInt1);
+    localb.mr(paramInt2);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahq());
+    if (Math.abs(paramInt2) > this.psn)
     {
       paramInt1 = 1;
       if (paramInt1 != 0)
@@ -24,7 +24,7 @@ public abstract class a
         if (paramRecyclerView.canScrollVertically(-1)) {
           break label91;
         }
-        bZo();
+        cdS();
       }
     }
     for (;;)
@@ -36,9 +36,9 @@ public abstract class a
       label91:
       if (paramRecyclerView.canScrollVertically(1)) {
         if (paramInt2 < 0) {
-          bZm();
+          cdQ();
         } else if (paramInt2 > 0) {
-          bZn();
+          cdR();
         }
       }
     }
@@ -47,18 +47,18 @@ public abstract class a
   public void b(RecyclerView paramRecyclerView, int paramInt)
   {
     b localb = new b();
-    localb.bb(paramRecyclerView);
-    localb.lS(paramInt);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
+    localb.bd(paramRecyclerView);
+    localb.mr(paramInt);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
     super.b(paramRecyclerView, paramInt);
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/editor/adapter/CollectEditorRecyclerViewAbstractScroller", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
   }
   
-  public abstract void bZm();
+  public abstract void cdQ();
   
-  public abstract void bZn();
+  public abstract void cdR();
   
-  public abstract void bZo();
+  public abstract void cdS();
 }
 
 

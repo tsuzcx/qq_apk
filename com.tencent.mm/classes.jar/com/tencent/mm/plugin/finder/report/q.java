@@ -1,93 +1,72 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.event.base.b;
-import com.tencent.mm.plugin.finder.event.base.c;
-import com.tencent.mm.plugin.finder.event.base.e;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.view.recyclerview.f;
+import d.g.b.p;
 import d.l;
+import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/EventSubscriber;", "Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "getBehavior", "PlayEvent", "PlayFocusBehavior", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "", "feedId", "", "startTime", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(JJLcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "endTime", "getEndTime", "()J", "setEndTime", "(J)V", "getFeed", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedDataPos", "", "getFeedDataPos", "()I", "setFeedDataPos", "(I)V", "getFeedId", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "getStartTime", "onRelease", "", "Companion", "plugin-finder_release"})
 public final class q
-  extends e<b>
 {
-  public q(c paramc)
+  private static final String TAG = "Finder.FinderTwoFeedRecord";
+  public static final a sqI;
+  final long dtq;
+  long endTime;
+  final FinderItem feed;
+  f rRb;
+  int soY;
+  final long startTime;
+  
+  static
   {
-    super(paramc);
-    AppMethodBeat.i(166719);
-    AppMethodBeat.o(166719);
+    AppMethodBeat.i(203360);
+    sqI = new a((byte)0);
+    TAG = "Finder.FinderTwoFeedRecord";
+    AppMethodBeat.o(203360);
   }
   
-  public final b cxF()
+  public q(long paramLong1, long paramLong2, FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(166718);
-    b localb = (b)new c(this);
-    AppMethodBeat.o(166718);
-    return localb;
+    this.dtq = paramLong1;
+    this.startTime = paramLong2;
+    this.feed = paramFinderItem;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayEvent;", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "initPos", "", "(I)V", "getInitPos", "()I", "component1", "copy", "equals", "", "other", "", "hashCode", "toString", "", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "printStats", "", "stats", "Lcom/tencent/mm/protocal/protobuf/Stats;", "tag", "toIndexInfo", "record", "Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "trans2Stats", "fastSlip", "", "plugin-finder_release"})
   public static final class a
-    extends b
   {
-    private final int rht;
-    
-    public a(int paramInt)
+    public static String a(q paramq)
     {
-      this.rht = paramInt;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      if (this != paramObject)
+      AppMethodBeat.i(203359);
+      p.h(paramq, "record");
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        if ((paramObject instanceof a))
+        paramq = paramq.rRb;
+        if (paramq != null)
         {
-          paramObject = (a)paramObject;
-          if (this.rht != paramObject.rht) {}
+          localJSONObject.put("x", paramq.LvF + 1);
+          localJSONObject.put("width", paramq.width);
+          localJSONObject.put("height", paramq.height);
         }
       }
-      else {
-        return true;
+      catch (Exception paramq)
+      {
+        label63:
+        break label63;
       }
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      return this.rht;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(166716);
-      String str = "PlayEvent(initPos=" + this.rht + ")";
-      AppMethodBeat.o(166716);
-      return str;
-    }
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "", "onPlay", "", "initPos", "", "plugin-finder_release"})
-  public static abstract interface b
-  {
-    public abstract void DY(int paramInt);
-  }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/finder/report/PlayFocusSubscriber$getBehavior$1", "Lcom/tencent/mm/plugin/finder/report/PlayFocusSubscriber$PlayFocusBehavior;", "onPlay", "", "initPos", "", "plugin-finder_release"})
-  public static final class c
-    implements q.b
-  {
-    public final void DY(int paramInt)
-    {
-      AppMethodBeat.i(166717);
-      q.a locala = new q.a(paramInt);
-      this.rAt.c((b)locala);
-      AppMethodBeat.o(166717);
+      paramq = localJSONObject.toString();
+      p.g(paramq, "jsonObj.toString()");
+      AppMethodBeat.o(203359);
+      return paramq;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.q
  * JD-Core Version:    0.7.0.1
  */

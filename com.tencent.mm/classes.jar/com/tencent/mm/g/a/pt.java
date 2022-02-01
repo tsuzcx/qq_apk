@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class pt
   extends b
 {
-  public a dsL;
+  public a dEe;
+  public b dEf;
   
   public pt()
   {
@@ -15,17 +16,26 @@ public final class pt
   
   private pt(byte paramByte)
   {
-    AppMethodBeat.i(116041);
-    this.dsL = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(123933);
+    this.dEe = new a();
+    this.dEf = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116041);
+    AppMethodBeat.o(123933);
   }
   
   public static final class a
   {
-    public String filePath;
-    public String result;
+    public cv dEg;
+    public int dEh = -1;
+    public String dEi;
+    public int dEj = 0;
+    public int opType = 1;
+  }
+  
+  public static final class b
+  {
+    public boolean dno;
   }
 }
 

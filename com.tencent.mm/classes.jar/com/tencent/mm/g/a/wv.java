@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class wv
   extends b
 {
-  public a dzE;
-  public b dzF;
+  public a dLi;
   
   public wv()
   {
@@ -18,23 +15,21 @@ public final class wv
   
   private wv(byte paramByte)
   {
-    AppMethodBeat.i(125651);
-    this.dzE = new a();
-    this.dzF = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116052);
+    this.dLi = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125651);
+    AppMethodBeat.o(116052);
   }
   
   public static final class a
   {
-    public n dzG;
-  }
-  
-  public static final class b
-  {
-    public List dzH;
-    public int state = 0;
+    public String dLj;
+    public boolean dLk;
+    public byte[] dLl;
+    public String id;
+    public String source;
+    public int type;
   }
 }
 

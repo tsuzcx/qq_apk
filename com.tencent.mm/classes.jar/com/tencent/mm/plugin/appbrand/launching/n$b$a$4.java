@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.g.d.b;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "invoke"})
 final class n$b$a$4<T>
   implements d.b<Object>
 {
-  public static final 4 ljT;
+  public static final 4 lHb;
   
   static
   {
     AppMethodBeat.i(180500);
-    ljT = new 4();
+    lHb = new 4();
     AppMethodBeat.o(180500);
   }
 }

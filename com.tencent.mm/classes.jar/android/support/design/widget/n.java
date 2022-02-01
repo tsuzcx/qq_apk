@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 
 final class n
 {
-  private static n rH;
+  private static n tB;
   private final Handler handler = new Handler(Looper.getMainLooper(), new Handler.Callback()
   {
     public final boolean handleMessage(Message arg1)
@@ -22,7 +22,7 @@ final class n
       n.b localb = (n.b)???.obj;
       synchronized (localn.lock)
       {
-        if ((localn.rI == localb) || (localn.rJ == localb)) {
+        if ((localn.tC == localb) || (localn.tD == localb)) {
           localn.a(localb);
         }
         return true;
@@ -30,8 +30,8 @@ final class n
     }
   });
   final Object lock = new Object();
-  b rI;
-  b rJ;
+  b tC;
+  b tD;
   
   private void b(b paramb)
   {
@@ -53,12 +53,12 @@ final class n
     }
   }
   
-  static n cD()
+  static n cT()
   {
-    if (rH == null) {
-      rH = new n();
+    if (tB == null) {
+      tB = new n();
     }
-    return rH;
+    return tB;
   }
   
   public final void a(a parama)
@@ -66,7 +66,7 @@ final class n
     synchronized (this.lock)
     {
       if (e(parama)) {
-        b(this.rI);
+        b(this.tC);
       }
       return;
     }
@@ -74,7 +74,7 @@ final class n
   
   final boolean a(b paramb)
   {
-    if ((a)paramb.rL.get() != null)
+    if ((a)paramb.tF.get() != null)
     {
       this.handler.removeCallbacksAndMessages(paramb);
       return true;
@@ -86,10 +86,10 @@ final class n
   {
     synchronized (this.lock)
     {
-      if ((e(parama)) && (!this.rI.rM))
+      if ((e(parama)) && (!this.tC.tG))
       {
-        this.rI.rM = true;
-        this.handler.removeCallbacksAndMessages(this.rI);
+        this.tC.tG = true;
+        this.handler.removeCallbacksAndMessages(this.tC);
       }
       return;
     }
@@ -99,10 +99,10 @@ final class n
   {
     synchronized (this.lock)
     {
-      if ((e(parama)) && (this.rI.rM))
+      if ((e(parama)) && (this.tC.tG))
       {
-        this.rI.rM = false;
-        b(this.rI);
+        this.tC.tG = false;
+        b(this.tC);
       }
       return;
     }
@@ -133,12 +133,12 @@ final class n
   
   final boolean e(a parama)
   {
-    return (this.rI != null) && (this.rI.g(parama));
+    return (this.tC != null) && (this.tC.g(parama));
   }
   
   final boolean f(a parama)
   {
-    return (this.rJ != null) && (this.rJ.g(parama));
+    return (this.tD != null) && (this.tD.g(parama));
   }
   
   static abstract interface a {}
@@ -146,12 +146,12 @@ final class n
   static final class b
   {
     int duration;
-    final WeakReference<n.a> rL;
-    boolean rM;
+    final WeakReference<n.a> tF;
+    boolean tG;
     
     final boolean g(n.a parama)
     {
-      return (parama != null) && (this.rL.get() == parama);
+      return (parama != null) && (this.tF.get() == parama);
     }
   }
 }

@@ -18,7 +18,7 @@ public abstract class FolderActivityContextWithLifecycle
     super(paramMMActivity);
   }
   
-  public void R(Intent paramIntent) {}
+  public void T(Intent paramIntent) {}
   
   protected final MMActivity getActivity()
   {
@@ -28,7 +28,7 @@ public abstract class FolderActivityContextWithLifecycle
   @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
   public final void onActivityDidCreateCall()
   {
-    R(((MMActivity)getBaseContext()).getIntent());
+    T(((MMActivity)getBaseContext()).getIntent());
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)

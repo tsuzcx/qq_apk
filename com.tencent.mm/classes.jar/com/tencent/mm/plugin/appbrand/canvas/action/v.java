@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetGlobalAlphaActionArg;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -16,8 +16,8 @@ public final class v
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, int paramInt)
   {
     AppMethodBeat.i(144935);
-    paramd.jzb.at(paramInt / 255.0F);
-    paramd.jzc.at(paramInt / 255.0F);
+    paramd.jSY.aw(paramInt / 255.0F);
+    paramd.jSZ.aw(paramInt / 255.0F);
     AppMethodBeat.o(144935);
     return true;
   }
@@ -48,13 +48,13 @@ public final class v
     }
     catch (JSONException paramd)
     {
-      ac.e("MicroMsg.SetGlobalAlphaAction", "getGlobalAlpha value error. exception : %s", new Object[] { paramd });
+      ad.e("MicroMsg.SetGlobalAlphaAction", "getGlobalAlpha value error. exception : %s", new Object[] { paramd });
       AppMethodBeat.o(144934);
     }
     return false;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144933);
     SetGlobalAlphaActionArg localSetGlobalAlphaActionArg = new SetGlobalAlphaActionArg();

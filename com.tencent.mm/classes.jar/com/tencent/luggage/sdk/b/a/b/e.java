@@ -12,51 +12,51 @@ import com.tencent.mm.plugin.appbrand.page.b.d;
 import com.tencent.mm.plugin.appbrand.r.a.a.o;
 import com.tencent.mm.plugin.appbrand.r.a.c;
 import com.tencent.mm.plugin.appbrand.r.a.e.b;
-import com.tencent.mm.plugin.appbrand.utils.ad;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.utils.af;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.commons.b.a;
 
 public final class e
 {
-  public final aa caw;
-  public boolean ceb;
-  private int cec;
-  private int ced;
-  public final Map<String, Object> cee;
-  public boolean cef;
-  private final x ceg;
+  public final aa ckN;
+  public boolean cor;
+  private int cos;
+  private int cot;
+  public final Map<String, Object> cou;
+  public boolean cov;
+  private final x cow;
   public boolean foreground;
   
   public e(aa paramaa)
   {
     AppMethodBeat.i(146782);
-    this.ceb = false;
+    this.cor = false;
     this.foreground = false;
-    this.cee = new HashMap();
-    this.cef = false;
-    this.ceg = new x();
-    this.caw = paramaa;
+    this.cou = new HashMap();
+    this.cov = false;
+    this.cow = new x();
+    this.ckN = paramaa;
     AppMethodBeat.o(146782);
   }
   
-  private Map<String, Object> Db()
+  private Map<String, Object> EA()
   {
     AppMethodBeat.i(146783);
-    HashMap localHashMap = new HashMap(this.cee);
-    this.cee.clear();
+    HashMap localHashMap = new HashMap(this.cou);
+    this.cou.clear();
     AppMethodBeat.o(146783);
     return localHashMap;
   }
   
-  private String Dc()
+  private String EB()
   {
     AppMethodBeat.i(146784);
-    Object localObject = (d)this.caw.Q(d.class);
+    Object localObject = (d)this.ckN.Q(d.class);
     if (localObject != null)
     {
-      localObject = ((d)localObject).Ca();
+      localObject = ((d)localObject).Dz();
       AppMethodBeat.o(146784);
       return localObject;
     }
@@ -67,29 +67,29 @@ public final class e
   private <EVENT extends x> void a(EVENT paramEVENT)
   {
     AppMethodBeat.i(146787);
-    a.d locald = this.caw.getPageConfig();
+    a.d locald = this.ckN.getPageConfig();
     if (locald == null)
     {
       AppMethodBeat.o(146787);
       return;
     }
-    int[] arrayOfInt = ad.g(this.caw.CX());
-    Map localMap = Db();
-    localMap.put("originalPageOrientation", locald.jCo);
-    localMap.put("lastPageOrientation", Dc());
-    paramEVENT.a(this.caw, this.caw.aUT(), this.caw.lAi.getWidth(), this.caw.lAi.getHeight(), arrayOfInt[0], arrayOfInt[1], this.caw.jgX.getOrientationHandler().aUB(), localMap);
+    int[] arrayOfInt = af.f(this.ckN.Ew());
+    Map localMap = EA();
+    localMap.put("originalPageOrientation", locald.jWk);
+    localMap.put("lastPageOrientation", EB());
+    paramEVENT.a(this.ckN, this.ckN.aXC(), this.ckN.lZG.getWidth(), this.ckN.lZG.getHeight(), arrayOfInt[0], arrayOfInt[1], this.ckN.jzX.getOrientationHandler().aXN(), localMap);
     AppMethodBeat.o(146787);
   }
   
-  private boolean bR(int paramInt1, int paramInt2)
+  private boolean bT(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(146785);
-    e.b localb2 = e.b.Qz(Dc());
+    e.b localb2 = e.b.Uf(EB());
     e.b localb1 = localb2;
     if (localb2 == null) {
-      localb1 = e.b.lOQ;
+      localb1 = e.b.moG;
     }
-    if (a.contains(e.b.lOX, localb1))
+    if (a.contains(e.b.moN, localb1))
     {
       if (paramInt1 > paramInt2)
       {
@@ -99,7 +99,7 @@ public final class e
       AppMethodBeat.o(146785);
       return false;
     }
-    if (e.b.lOQ == localb1)
+    if (e.b.moG == localb1)
     {
       if (paramInt2 > paramInt1) {}
       for (int i = 1; i != 0; i = 0)
@@ -110,14 +110,14 @@ public final class e
       label178:
       label188:
       int j;
-      if ((this.caw.jgX instanceof o)) {
-        if ((Build.VERSION.SDK_INT >= 24) && (this.caw.getActivity() != null) && (this.caw.getActivity().isInMultiWindowMode()))
+      if ((this.ckN.jzX instanceof o)) {
+        if ((Build.VERSION.SDK_INT >= 24) && (this.ckN.getActivity() != null) && (this.ckN.getActivity().isInMultiWindowMode()))
         {
           i = 1;
           if (i == 0) {
             break label278;
           }
-          if ((this.caw.jgX.getOrientationHandler().aUB() != e.b.lOQ) && (this.caw.getActivity().getRequestedOrientation() != 1)) {
+          if ((this.ckN.jzX.getOrientationHandler().aXN() != e.b.moG) && (this.ckN.getActivity().getRequestedOrientation() != 1)) {
             break label256;
           }
           i = 1;
@@ -144,7 +144,7 @@ public final class e
       label272:
       for (boolean bool = true;; bool = false)
       {
-        ac.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "isViewSizeMatchedByRequestedOrientation, activityInMultiWindowMode width[%d] height[%d] ret[%b]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+        ad.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "isViewSizeMatchedByRequestedOrientation, activityInMultiWindowMode width[%d] height[%d] ret[%b]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
         AppMethodBeat.o(146785);
         return bool;
         i = 0;
@@ -166,14 +166,14 @@ public final class e
     return true;
   }
   
-  public final void Dd()
+  public final void EC()
   {
     AppMethodBeat.i(185218);
-    int i = this.caw.lAi.getWidth();
-    int j = this.caw.lAi.getHeight();
+    int i = this.ckN.lZG.getWidth();
+    int j = this.ckN.lZG.getHeight();
     if ((i <= 0) || (j <= 0))
     {
-      ac.e("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "onPageLayout wtf invalid window size [%d %d], appId[%s], url[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.caw.getAppId(), this.caw.jZJ });
+      ad.e("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "onPageLayout wtf invalid window size [%d %d], appId[%s], url[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), this.ckN.getAppId(), this.ckN.kuf });
       AppMethodBeat.o(185218);
       return;
     }
@@ -181,23 +181,23 @@ public final class e
     boolean bool2;
     label150:
     boolean bool3;
-    if ((i != this.cec) || (j != this.ced))
+    if ((i != this.cos) || (j != this.cot))
     {
       bool1 = true;
-      this.cec = i;
-      this.ced = j;
-      int[] arrayOfInt = ad.g(this.caw);
-      if ((!bR(i, j)) || (!bR(arrayOfInt[0], arrayOfInt[1]))) {
+      this.cos = i;
+      this.cot = j;
+      int[] arrayOfInt = af.f(this.ckN);
+      if ((!bT(i, j)) || (!bT(arrayOfInt[0], arrayOfInt[1]))) {
         break label297;
       }
       bool2 = true;
-      if ((this.cec == 0) || (this.ced == 0)) {
+      if ((this.cos == 0) || (this.cot == 0)) {
         break label303;
       }
       bool3 = true;
       label167:
-      ac.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "onPageLayout appId[%s], url[%s], hadInit[%b], winSizeChanged[%b], winSizeMatched[%b], foreground[%b], needDispatch[%b]", new Object[] { this.caw.getAppId(), this.caw.jZJ, Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(this.foreground), Boolean.valueOf(this.ceb) });
-      if (((!bool3) || (!bool1) || (!bool2)) && ((!this.cef) || (!bool2))) {
+      ad.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "onPageLayout appId[%s], url[%s], hadInit[%b], winSizeChanged[%b], winSizeMatched[%b], foreground[%b], needDispatch[%b]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, Boolean.valueOf(bool3), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(this.foreground), Boolean.valueOf(this.cor) });
+      if (((!bool3) || (!bool1) || (!bool2)) && ((!this.cov) || (!bool2))) {
         break label309;
       }
       i = 1;
@@ -208,7 +208,7 @@ public final class e
       {
         if (this.foreground)
         {
-          De();
+          ED();
           AppMethodBeat.o(185218);
           return;
           bool1 = false;
@@ -223,32 +223,32 @@ public final class e
           i = 0;
           continue;
         }
-        this.ceb = true;
+        this.cor = true;
         AppMethodBeat.o(185218);
         return;
       }
     }
-    this.ceb = false;
+    this.cor = false;
     AppMethodBeat.o(185218);
   }
   
-  public final void De()
+  public final void ED()
   {
     AppMethodBeat.i(146786);
-    if (!this.caw.isRunning())
+    if (!this.ckN.isRunning())
     {
       AppMethodBeat.o(146786);
       return;
     }
-    if (this.cef)
+    if (this.cov)
     {
       a(new a((byte)0));
-      this.cef = false;
-      ac.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "tryDispatchViewDidResize, appId[%s], url[%s], now_orientation[%s], send onAppRouteResized instead", new Object[] { this.caw.getAppId(), this.caw.jZJ, Dc() });
+      this.cov = false;
+      ad.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "tryDispatchViewDidResize, appId[%s], url[%s], now_orientation[%s], send onAppRouteResized instead", new Object[] { this.ckN.getAppId(), this.ckN.kuf, EB() });
       AppMethodBeat.o(146786);
       return;
     }
-    a(this.ceg);
+    a(this.cow);
     AppMethodBeat.o(146786);
   }
   
@@ -261,7 +261,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.b.e
  * JD-Core Version:    0.7.0.1
  */

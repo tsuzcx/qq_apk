@@ -5,83 +5,85 @@ import com.tencent.mm.cn.a;
 import com.tencent.mm.cn.a.a;
 import com.tencent.mm.cn.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelmulti.p.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.u;
-import com.tencent.mm.plugin.messenger.foundation.a.u.a;
+import com.tencent.mm.modelmulti.k;
+import com.tencent.mm.modelmulti.q.c;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.aa;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.w;
-import com.tencent.mm.plugin.messenger.foundation.a.x;
+import com.tencent.mm.plugin.messenger.foundation.a.w.a;
 import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.protocal.protobuf.xv;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.plugin.messenger.foundation.a.z;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.protocal.protobuf.zu;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
 import java.io.IOException;
 
 public final class f
   implements com.tencent.mm.plugin.zero.a.f
 {
-  private static final b uGN;
-  private x uGO;
+  private static final b vJK;
+  private z vJL;
   
   static
   {
     AppMethodBeat.i(116928);
-    uGN = new b((byte)0);
+    vJK = new b((byte)0);
     AppMethodBeat.o(116928);
   }
   
-  public static void addSyncDoCmdCallback(w paramw)
+  public static void addSyncDoCmdCallback(y paramy)
   {
     AppMethodBeat.i(116921);
-    uGN.bs(paramw);
+    vJK.bu(paramy);
     AppMethodBeat.o(116921);
   }
   
-  public static void removeSyncDoCmdCallback(w paramw)
+  public static void removeSyncDoCmdCallback(y paramy)
   {
     AppMethodBeat.i(116922);
-    uGN.remove(paramw);
+    vJK.remove(paramy);
     AppMethodBeat.o(116922);
   }
   
-  public final void a(xv paramxv, byte[] paramArrayOfByte, boolean paramBoolean)
+  public final void a(zu paramzu, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     AppMethodBeat.i(116924);
-    u localu = u.a.Ip(paramxv.ErL);
-    if (localu != null) {
+    w localw = w.a.JM(paramzu.FYU);
+    if (localw != null) {
       try
       {
-        localu.a(paramxv, paramArrayOfByte, paramBoolean, this.uGO);
+        localw.a(paramzu, paramArrayOfByte, paramBoolean, this.vJL);
         AppMethodBeat.o(116924);
         return;
       }
-      catch (IOException paramxv)
+      catch (IOException paramzu)
       {
-        ac.e("MicroMsg.SyncDoCmdExtensions", "docmd: parse protobuf error, " + paramxv.getMessage());
-        paramxv = new RuntimeException("docmd: parse protobuf error");
+        ad.e("MicroMsg.SyncDoCmdExtensions", "docmd: parse protobuf error, " + paramzu.getMessage());
+        paramzu = new RuntimeException("docmd: parse protobuf error");
         AppMethodBeat.o(116924);
-        throw paramxv;
+        throw paramzu;
       }
     }
-    ac.w("MicroMsg.SyncDoCmdExtensions", "SyncDoCmdExtension for cmd id [%s] is null.", new Object[] { Integer.valueOf(paramxv.ErL) });
+    ad.w("MicroMsg.SyncDoCmdExtensions", "SyncDoCmdExtension for cmd id [%s] is null.", new Object[] { Integer.valueOf(paramzu.FYU) });
     AppMethodBeat.o(116924);
   }
   
-  public final void jdMethod_do(Object paramObject)
+  public final void dr(Object paramObject)
   {
     AppMethodBeat.i(116923);
-    c localc = y.dct();
+    c localc = aa.dlL();
     if (localc != null) {
-      this.uGO = ((x)localc.get());
+      this.vJL = ((z)localc.get());
     }
-    if (this.uGO == null) {
-      this.uGO = new a((byte)0);
+    if (this.vJL == null) {
+      this.vJL = new a((byte)0);
     }
-    if ((paramObject instanceof com.tencent.mm.modelmulti.k))
+    if ((paramObject instanceof k))
     {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().alf(((com.tencent.mm.modelmulti.k)paramObject).TAG);
-      uGN.aG(paramObject);
+      ((l)g.ab(l.class)).dlK().apS(((k)paramObject).TAG);
+      vJK.aI(paramObject);
       AppMethodBeat.o(116923);
       return;
     }
@@ -89,92 +91,92 @@ public final class f
     {
       if (paramObject.equals("NetSceneInit"))
       {
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().alf((String)paramObject);
-        uGN.aG(paramObject);
+        ((l)g.ab(l.class)).dlK().apS((String)paramObject);
+        vJK.aI(paramObject);
         AppMethodBeat.o(116923);
       }
     }
-    else if ((paramObject instanceof p.c))
+    else if ((paramObject instanceof q.c))
     {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().alf(paramObject.toString());
-      uGN.aG(paramObject);
+      ((l)g.ab(l.class)).dlK().apS(paramObject.toString());
+      vJK.aI(paramObject);
     }
     AppMethodBeat.o(116923);
   }
   
-  public final void dp(Object paramObject)
+  public final void ds(Object paramObject)
   {
     AppMethodBeat.i(116925);
-    if ((paramObject instanceof com.tencent.mm.modelmulti.k))
+    if ((paramObject instanceof k))
     {
-      this.uGO.dcs();
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().alg(((com.tencent.mm.modelmulti.k)paramObject).TAG);
-      uGN.aH(paramObject);
+      this.vJL.cCF();
+      ((l)g.ab(l.class)).dlK().apT(((k)paramObject).TAG);
+      vJK.aJ(paramObject);
       AppMethodBeat.o(116925);
       return;
     }
     if (((paramObject instanceof String)) && (paramObject.equals("NetSceneInit")))
     {
-      this.uGO.dcs();
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().alg((String)paramObject);
-      uGN.aH(paramObject);
+      this.vJL.cCF();
+      ((l)g.ab(l.class)).dlK().apT((String)paramObject);
+      vJK.aJ(paramObject);
       AppMethodBeat.o(116925);
       return;
     }
-    if ((paramObject instanceof p.c))
+    if ((paramObject instanceof q.c))
     {
-      this.uGO.dcs();
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().alg(paramObject.toString());
-      uGN.aH(paramObject);
+      this.vJL.cCF();
+      ((l)g.ab(l.class)).dlK().apT(paramObject.toString());
+      vJK.aJ(paramObject);
     }
     AppMethodBeat.o(116925);
   }
   
-  public final void dq(Object paramObject)
+  public final void dt(Object paramObject)
   {
     AppMethodBeat.i(116926);
-    if ((paramObject instanceof com.tencent.mm.modelmulti.k)) {
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().alg(((com.tencent.mm.modelmulti.k)paramObject).TAG);
+    if ((paramObject instanceof k)) {
+      ((l)g.ab(l.class)).dlK().apT(((k)paramObject).TAG);
     }
     AppMethodBeat.o(116926);
   }
   
-  public final void dr(Object paramObject)
+  public final void du(Object paramObject)
   {
     AppMethodBeat.i(116927);
-    if ((paramObject instanceof p.c)) {
-      uGN.aI(paramObject);
+    if ((paramObject instanceof q.c)) {
+      vJK.aK(paramObject);
     }
     AppMethodBeat.o(116927);
   }
   
   static final class a
-    implements x
+    implements z
   {
-    public final void a(bo parambo, cu paramcu) {}
+    public final void a(bu parambu, cv paramcv) {}
     
-    public final void dcs() {}
+    public final void cCF() {}
   }
   
   static final class b
-    extends a<w>
-    implements w
+    extends a<y>
+    implements y
   {
-    public final void aG(final Object paramObject)
+    public final void aI(final Object paramObject)
     {
       AppMethodBeat.i(116918);
       a(new a.a() {});
       AppMethodBeat.o(116918);
     }
     
-    public final void aH(final Object paramObject)
+    public final void aJ(final Object paramObject)
     {
       AppMethodBeat.i(116919);
       a(new a.a() {});
       AppMethodBeat.o(116919);
     }
     
-    public final void aI(final Object paramObject)
+    public final void aK(final Object paramObject)
     {
       AppMethodBeat.i(116920);
       a(new a.a() {});

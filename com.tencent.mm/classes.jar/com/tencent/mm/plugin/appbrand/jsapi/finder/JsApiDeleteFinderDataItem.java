@@ -3,11 +3,13 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.finder.cgi.v;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.finder.cgi.aa;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public final class JsApiDeleteFinderDataItem
@@ -18,14 +20,14 @@ public final class JsApiDeleteFinderDataItem
   
   static class DeleteFinderTask
     extends MainProcessTask
-    implements com.tencent.mm.ak.g
+    implements f
   {
     public static final Parcelable.Creator<DeleteFinderTask> CREATOR;
-    private int jOT;
-    private com.tencent.mm.plugin.appbrand.q krP;
-    private String krQ;
-    private String krR;
-    private String krS;
+    private com.tencent.mm.plugin.appbrand.q kNl;
+    private String kNm;
+    private String kNn;
+    private String kNo;
+    private int kje;
     
     static
     {
@@ -43,48 +45,48 @@ public final class JsApiDeleteFinderDataItem
     
     public DeleteFinderTask(com.tencent.mm.plugin.appbrand.q paramq, int paramInt, String paramString1, String paramString2)
     {
-      this.krP = paramq;
-      this.jOT = paramInt;
-      this.krQ = paramString1;
-      this.krR = paramString2;
+      this.kNl = paramq;
+      this.kje = paramInt;
+      this.kNm = paramString1;
+      this.kNn = paramString2;
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(163923);
-      v localv = new v(u.axE(), Long.valueOf(this.krQ).longValue(), this.krR);
-      com.tencent.mm.kernel.g.agi().a(3627, this);
-      com.tencent.mm.kernel.g.agi().a(localv, 0);
+      aa localaa = new aa(u.aAu(), Long.valueOf(this.kNm).longValue(), this.kNn);
+      g.aiU().a(3627, this);
+      g.aiU().a(localaa, 0);
       AppMethodBeat.o(163923);
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(163922);
-      ac.i("MicroMsg.Finder.JsApiDeleteFinderDataItem", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.krP.getAppId(), this.krS, Integer.valueOf(this.jOT), Boolean.valueOf(this.krP.isRunning()) });
-      this.krP.h(this.jOT, this.krS);
-      bek();
+      ad.i("MicroMsg.Finder.JsApiDeleteFinderDataItem", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.kNl.getAppId(), this.kNo, Integer.valueOf(this.kje), Boolean.valueOf(this.kNl.isRunning()) });
+      this.kNl.h(this.kje, this.kNo);
+      bhO();
       AppMethodBeat.o(163922);
     }
     
     public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(163920);
-      this.krQ = paramParcel.readString();
-      this.krR = paramParcel.readString();
-      this.krS = paramParcel.readString();
+      this.kNm = paramParcel.readString();
+      this.kNn = paramParcel.readString();
+      this.kNo = paramParcel.readString();
       AppMethodBeat.o(163920);
     }
     
     public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
     {
       AppMethodBeat.i(163924);
-      com.tencent.mm.kernel.g.agi().b(3627, this);
+      g.aiU().b(3627, this);
       paramn = new JSONObject();
       if ((paramInt1 == 0) && (paramInt2 == 0)) {}
-      for (this.krS = a.a("", 0, paramn);; this.krS = a.a(paramString, paramInt2, paramn))
+      for (this.kNo = a.a("", 0, paramn);; this.kNo = a.a(paramString, paramInt2, paramn))
       {
-        bet();
+        bhX();
         AppMethodBeat.o(163924);
         return;
       }
@@ -93,9 +95,9 @@ public final class JsApiDeleteFinderDataItem
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(163921);
-      paramParcel.writeString(this.krQ);
-      paramParcel.writeString(this.krR);
-      paramParcel.writeString(this.krS);
+      paramParcel.writeString(this.kNm);
+      paramParcel.writeString(this.kNn);
+      paramParcel.writeString(this.kNo);
       AppMethodBeat.o(163921);
     }
   }

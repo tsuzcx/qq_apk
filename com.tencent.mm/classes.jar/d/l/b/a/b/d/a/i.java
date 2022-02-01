@@ -1,7 +1,7 @@
 package d.l.b.a.b.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.a.g;
 import d.l.b.a.b.a.g.a;
 import d.l.b.a.b.f.b;
@@ -14,25 +14,25 @@ import java.util.Map;
 
 public final class i
 {
-  private static final HashMap<b, b> Llo;
-  public static final i Llp;
+  private static final HashMap<b, b> Ncl;
+  public static final i Ncm;
   
   static
   {
     AppMethodBeat.i(57579);
-    Llp = new i();
-    Llo = new HashMap();
-    b localb = g.KZg.Lag;
-    k.g(localb, "FQ_NAMES.mutableList");
-    a(localb, af(new String[] { "java.util.ArrayList", "java.util.LinkedList" }));
-    localb = g.KZg.Lai;
-    k.g(localb, "FQ_NAMES.mutableSet");
-    a(localb, af(new String[] { "java.util.HashSet", "java.util.TreeSet", "java.util.LinkedHashSet" }));
-    localb = g.KZg.Laj;
-    k.g(localb, "FQ_NAMES.mutableMap");
-    a(localb, af(new String[] { "java.util.HashMap", "java.util.TreeMap", "java.util.LinkedHashMap", "java.util.concurrent.ConcurrentHashMap", "java.util.concurrent.ConcurrentSkipListMap" }));
-    a(new b("java.util.function.Function"), af(new String[] { "java.util.function.UnaryOperator" }));
-    a(new b("java.util.function.BiFunction"), af(new String[] { "java.util.function.BinaryOperator" }));
+    Ncm = new i();
+    Ncl = new HashMap();
+    b localb = g.MQb.MRb;
+    p.g(localb, "FQ_NAMES.mutableList");
+    a(localb, am(new String[] { "java.util.ArrayList", "java.util.LinkedList" }));
+    localb = g.MQb.MRd;
+    p.g(localb, "FQ_NAMES.mutableSet");
+    a(localb, am(new String[] { "java.util.HashSet", "java.util.TreeSet", "java.util.LinkedHashSet" }));
+    localb = g.MQb.MRe;
+    p.g(localb, "FQ_NAMES.mutableMap");
+    a(localb, am(new String[] { "java.util.HashMap", "java.util.TreeMap", "java.util.LinkedHashMap", "java.util.concurrent.ConcurrentHashMap", "java.util.concurrent.ConcurrentSkipListMap" }));
+    a(new b("java.util.function.Function"), am(new String[] { "java.util.function.UnaryOperator" }));
+    a(new b("java.util.function.BiFunction"), am(new String[] { "java.util.function.BinaryOperator" }));
     AppMethodBeat.o(57579);
   }
   
@@ -40,7 +40,7 @@ public final class i
   {
     AppMethodBeat.i(57577);
     Object localObject = (Iterable)paramList;
-    paramList = (Map)Llo;
+    paramList = (Map)Ncl;
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       paramList.put(((Iterator)localObject).next(), paramb);
@@ -48,7 +48,7 @@ public final class i
     AppMethodBeat.o(57577);
   }
   
-  private static List<b> af(String... paramVarArgs)
+  private static List<b> am(String... paramVarArgs)
   {
     AppMethodBeat.i(57578);
     Collection localCollection = (Collection)new ArrayList(paramVarArgs.length);
@@ -67,15 +67,15 @@ public final class i
   public static b m(b paramb)
   {
     AppMethodBeat.i(57576);
-    k.h(paramb, "classFqName");
-    paramb = (b)Llo.get(paramb);
+    p.h(paramb, "classFqName");
+    paramb = (b)Ncl.get(paramb);
     AppMethodBeat.o(57576);
     return paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.i
  * JD-Core Version:    0.7.0.1
  */

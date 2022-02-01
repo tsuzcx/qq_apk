@@ -15,19 +15,19 @@ public final class j
   {
     AppMethodBeat.i(32817);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "deviceId";
-    locala.GvH.put("deviceId", "TEXT default '' ");
+    locala.IhC.put("deviceId", "TEXT default '' ");
     localStringBuilder.append(" deviceId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "sessionName";
-    locala.GvH.put("sessionName", "TEXT default '' ");
+    locala.IhC.put("sessionName", "TEXT default '' ");
     localStringBuilder.append(" sessionName TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "moveTime";
-    locala.GvH.put("moveTime", "BLOB default '' ");
+    locala.IhC.put("moveTime", "BLOB default '' ");
     localStringBuilder.append(" moveTime BLOB default '' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

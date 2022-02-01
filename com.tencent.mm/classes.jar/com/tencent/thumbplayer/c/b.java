@@ -10,58 +10,58 @@ import java.util.Map;
 public final class b
   implements com.tencent.thumbplayer.a.a.a, a.a
 {
-  private Map<Integer, d> CZX;
-  private FileDescriptor KgJ;
+  private Map<Integer, d> EDW;
+  private FileDescriptor LZZ;
   private String mUrl;
   
   public b(FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(187846);
-    this.CZX = new HashMap();
-    this.KgJ = paramFileDescriptor;
-    AppMethodBeat.o(187846);
+    AppMethodBeat.i(191867);
+    this.EDW = new HashMap();
+    this.LZZ = paramFileDescriptor;
+    AppMethodBeat.o(191867);
   }
   
   public b(String paramString)
   {
-    AppMethodBeat.i(187845);
-    this.CZX = new HashMap();
+    AppMethodBeat.i(191866);
+    this.EDW = new HashMap();
     this.mUrl = paramString;
-    AppMethodBeat.o(187845);
+    AppMethodBeat.o(191866);
   }
   
   public final void a(long paramLong, TPImageGeneratorParams paramTPImageGeneratorParams, d paramd)
   {
-    AppMethodBeat.i(187847);
-    int i = a.fFv().a(this.mUrl, this.KgJ, paramLong, paramTPImageGeneratorParams.width, paramTPImageGeneratorParams.height, this);
-    this.CZX.put(Integer.valueOf(i), paramd);
-    AppMethodBeat.o(187847);
+    AppMethodBeat.i(191868);
+    int i = a.fWK().a(this.mUrl, this.LZZ, paramLong, paramTPImageGeneratorParams.width, paramTPImageGeneratorParams.height, this);
+    this.EDW.put(Integer.valueOf(i), paramd);
+    AppMethodBeat.o(191868);
   }
   
-  public final void aeJ(int paramInt)
+  public final void ahj(int paramInt)
   {
-    AppMethodBeat.i(187849);
-    this.CZX.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(187849);
+    AppMethodBeat.i(191870);
+    this.EDW.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(191870);
   }
   
-  public final void aeK(int paramInt)
+  public final void ahk(int paramInt)
   {
-    AppMethodBeat.i(187850);
-    this.CZX.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(187850);
+    AppMethodBeat.i(191871);
+    this.EDW.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(191871);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(187848);
-    this.CZX.clear();
-    AppMethodBeat.o(187848);
+    AppMethodBeat.i(191869);
+    this.EDW.clear();
+    AppMethodBeat.o(191869);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.c.b
  * JD-Core Version:    0.7.0.1
  */

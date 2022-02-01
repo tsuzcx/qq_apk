@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,8 +22,8 @@ public class MaskLinearLayout
 {
   private boolean enable;
   private List<MaskImageView> list;
-  private ao yxu;
-  private Runnable yxv;
+  private ap zOG;
+  private Runnable zOH;
   
   public MaskLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +31,8 @@ public class MaskLinearLayout
     AppMethodBeat.i(97968);
     this.enable = false;
     this.list = new LinkedList();
-    this.yxu = new ao();
-    this.yxv = new Runnable()
+    this.zOG = new ap();
+    this.zOH = new Runnable()
     {
       public final void run()
       {
@@ -46,9 +48,14 @@ public class MaskLinearLayout
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(97967);
-        ac.e("test", "touch: " + paramAnonymousMotionEvent.getAction());
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        ((b)localObject).bd(paramAnonymousMotionEvent);
+        a.b("com/tencent/mm/plugin/sns/ui/MaskLinearLayout$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((b)localObject).ahq());
+        ad.e("test", "touch: " + paramAnonymousMotionEvent.getAction());
         if (!MaskLinearLayout.b(MaskLinearLayout.this))
         {
+          a.a(false, this, "com/tencent/mm/plugin/sns/ui/MaskLinearLayout$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(97967);
           return false;
         }
@@ -60,8 +67,8 @@ public class MaskLinearLayout
           paramAnonymousView = MaskLinearLayout.e(MaskLinearLayout.this).iterator();
           while (paramAnonymousView.hasNext())
           {
-            MaskImageView localMaskImageView = (MaskImageView)paramAnonymousView.next();
-            localMaskImageView.e(localMaskImageView, paramAnonymousMotionEvent);
+            localObject = (MaskImageView)paramAnonymousView.next();
+            ((MaskImageView)localObject).e((View)localObject, paramAnonymousMotionEvent);
           }
           paramAnonymousView.setPressed(true);
           MaskLinearLayout.a(MaskLinearLayout.this);
@@ -70,6 +77,7 @@ public class MaskLinearLayout
           continue;
           MaskLinearLayout.d(MaskLinearLayout.this).post(MaskLinearLayout.c(MaskLinearLayout.this));
         }
+        a.a(false, this, "com/tencent/mm/plugin/sns/ui/MaskLinearLayout$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(97967);
         return false;
       }

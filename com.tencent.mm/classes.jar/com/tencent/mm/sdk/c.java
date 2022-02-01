@@ -1,10 +1,10 @@
 package com.tencent.mm.sdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bl;
 
 public class c<T>
-  extends bk<T>
+  extends bl<T>
 {
   private final Object mLock;
   
@@ -40,7 +40,7 @@ public class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.c
  * JD-Core Version:    0.7.0.1
  */

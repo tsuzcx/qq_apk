@@ -7,22 +7,22 @@ import com.tencent.mm.modelstat.q;
 public final class a
   extends t
 {
-  private static a iyw;
+  private static a iRF;
   
   private a()
   {
     super(q.class);
   }
   
-  public static a aNI()
+  public static a aQU()
   {
     try
     {
       AppMethodBeat.i(151419);
-      if (iyw == null) {
-        iyw = new a();
+      if (iRF == null) {
+        iRF = new a();
       }
-      a locala = iyw;
+      a locala = iRF;
       AppMethodBeat.o(151419);
       return locala;
     }

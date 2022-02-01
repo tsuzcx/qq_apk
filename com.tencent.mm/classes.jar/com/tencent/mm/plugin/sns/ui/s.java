@@ -4,21 +4,21 @@ import com.tencent.mm.protocal.protobuf.TimeLineObject;
 
 public final class s
 {
-  public String ddB;
-  public TimeLineObject yyZ;
-  public boolean yza;
+  public String doX;
+  public TimeLineObject zQl;
+  public boolean zQm;
   
   public s(TimeLineObject paramTimeLineObject, String paramString)
   {
-    this.yyZ = paramTimeLineObject;
-    this.ddB = paramString;
+    this.zQl = paramTimeLineObject;
+    this.doX = paramString;
   }
   
   public s(TimeLineObject paramTimeLineObject, String paramString, boolean paramBoolean)
   {
-    this.yyZ = paramTimeLineObject;
-    this.ddB = paramString;
-    this.yza = paramBoolean;
+    this.zQl = paramTimeLineObject;
+    this.doX = paramString;
+    this.zQm = paramBoolean;
   }
 }
 

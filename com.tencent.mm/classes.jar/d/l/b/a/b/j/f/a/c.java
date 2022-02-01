@@ -1,31 +1,31 @@
 package d.l.b.a.b.j.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.e;
 import d.l.b.a.b.m.aj;
 
 public final class c
   implements d, g
 {
-  private final c LHn;
-  private final e LHo;
-  private final e LdX;
+  private final e MUS;
+  private final c Nyl;
+  private final e Nym;
   
   public c(e parame)
   {
     AppMethodBeat.i(60257);
-    this.LdX = parame;
-    this.LHn = this;
-    this.LHo = this.LdX;
+    this.MUS = parame;
+    this.Nyl = this;
+    this.Nym = this.MUS;
     AppMethodBeat.o(60257);
   }
   
-  private aj fUk()
+  private aj glJ()
   {
     AppMethodBeat.i(60252);
-    aj localaj = this.LdX.fRe();
-    k.g(localaj, "classDescriptor.defaultType");
+    aj localaj = this.MUS.giC();
+    p.g(localaj, "classDescriptor.defaultType");
     AppMethodBeat.o(60252);
     return localaj;
   }
@@ -34,7 +34,7 @@ public final class c
   {
     Object localObject = null;
     AppMethodBeat.i(60254);
-    e locale = this.LdX;
+    e locale = this.MUS;
     if (!(paramObject instanceof c)) {
       paramObject = null;
     }
@@ -43,23 +43,23 @@ public final class c
       c localc = (c)paramObject;
       paramObject = localObject;
       if (localc != null) {
-        paramObject = localc.LdX;
+        paramObject = localc.MUS;
       }
-      boolean bool = k.g(locale, paramObject);
+      boolean bool = p.i(locale, paramObject);
       AppMethodBeat.o(60254);
       return bool;
     }
   }
   
-  public final e fRU()
+  public final e gjt()
   {
-    return this.LdX;
+    return this.MUS;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(60255);
-    int i = this.LdX.hashCode();
+    int i = this.MUS.hashCode();
     AppMethodBeat.o(60255);
     return i;
   }
@@ -67,14 +67,14 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(60256);
-    String str = "Class{" + fUk() + '}';
+    String str = "Class{" + glJ() + '}';
     AppMethodBeat.o(60256);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.f.a.c
  * JD-Core Version:    0.7.0.1
  */

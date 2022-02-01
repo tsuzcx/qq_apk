@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 
 public abstract interface p
 {
-  public abstract String JC();
+  public abstract String Lb();
   
   public abstract Bitmap z(Context paramContext, int paramInt);
 }

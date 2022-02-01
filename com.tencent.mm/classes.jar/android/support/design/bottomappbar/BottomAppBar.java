@@ -41,16 +41,16 @@ public class BottomAppBar
   extends Toolbar
   implements CoordinatorLayout.a
 {
-  private final int fk;
-  private final c fl;
-  private final a fn;
-  private Animator fo;
-  private Animator fp;
-  private Animator fq;
-  private int fr;
-  private boolean fs;
-  private boolean ft = true;
-  AnimatorListenerAdapter fu = new AnimatorListenerAdapter()
+  private final int hc;
+  private final c hd;
+  private final a he;
+  private Animator hf;
+  private Animator hg;
+  private Animator hh;
+  private int hi;
+  private boolean hj;
+  private boolean hk = true;
+  AnimatorListenerAdapter hl = new AnimatorListenerAdapter()
   {
     public final void onAnimationStart(Animator paramAnonymousAnimator)
     {
@@ -72,22 +72,22 @@ public class BottomAppBar
     float f1 = paramAttributeSet.getDimensionPixelOffset(2, 0);
     float f2 = paramAttributeSet.getDimensionPixelOffset(3, 0);
     float f3 = paramAttributeSet.getDimensionPixelOffset(4, 0);
-    this.fr = paramAttributeSet.getInt(1, 0);
-    this.fs = paramAttributeSet.getBoolean(5, false);
+    this.hi = paramAttributeSet.getInt(1, 0);
+    this.hj = paramAttributeSet.getBoolean(5, false);
     paramAttributeSet.recycle();
-    this.fk = getResources().getDimensionPixelOffset(2131166605);
-    this.fn = new a(f1, f2, f3);
+    this.hc = getResources().getDimensionPixelOffset(2131166605);
+    this.he = new a(f1, f2, f3);
     paramAttributeSet = new e();
-    paramAttributeSet.kz = this.fn;
-    this.fl = new c(paramAttributeSet);
-    paramAttributeSet = this.fl;
-    paramAttributeSet.kg = true;
+    paramAttributeSet.mp = this.he;
+    this.hd = new c(paramAttributeSet);
+    paramAttributeSet = this.hd;
+    paramAttributeSet.lW = true;
     paramAttributeSet.invalidateSelf();
-    paramAttributeSet = this.fl;
-    paramAttributeSet.kk = Paint.Style.FILL;
+    paramAttributeSet = this.hd;
+    paramAttributeSet.ma = Paint.Style.FILL;
     paramAttributeSet.invalidateSelf();
-    android.support.v4.graphics.drawable.a.a(this.fl, paramContext);
-    t.a(this, this.fl);
+    android.support.v4.graphics.drawable.a.a(this.hd, paramContext);
+    t.a(this, this.hd);
   }
   
   private int C(int paramInt)
@@ -97,7 +97,7 @@ public class BottomAppBar
     for (int i = 1; paramInt == 1; i = 0)
     {
       int k = getMeasuredWidth() / 2;
-      int m = this.fk;
+      int m = this.hc;
       paramInt = j;
       if (i != 0) {
         paramInt = -1;
@@ -116,7 +116,7 @@ public class BottomAppBar
     {
       return;
       localObjectAnimator1 = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 1.0F });
-      if (((this.ft) || ((paramBoolean) && (aD()))) && ((this.fr == 1) || (paramInt == 1)))
+      if (((this.hk) || ((paramBoolean) && (aT()))) && ((this.hi == 1) || (paramInt == 1)))
       {
         ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(localObject, "alpha", new float[] { 0.0F });
         localObjectAnimator2.addListener(new AnimatorListenerAdapter()
@@ -131,7 +131,7 @@ public class BottomAppBar
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
             if (!this.cancelled) {
-              BottomAppBar.a(BottomAppBar.this, this.fw, paramInt, paramBoolean);
+              BottomAppBar.a(BottomAppBar.this, this.hn, paramInt, paramBoolean);
             }
           }
         });
@@ -205,7 +205,7 @@ public class BottomAppBar
     }
   }
   
-  private FloatingActionButton aC()
+  private FloatingActionButton aS()
   {
     if (!(getParent() instanceof CoordinatorLayout)) {
       return null;
@@ -221,21 +221,21 @@ public class BottomAppBar
     return null;
   }
   
-  private boolean aD()
+  private boolean aT()
   {
-    FloatingActionButton localFloatingActionButton = aC();
-    return (localFloatingActionButton != null) && (localFloatingActionButton.getImpl().cs());
+    FloatingActionButton localFloatingActionButton = aS();
+    return (localFloatingActionButton != null) && (localFloatingActionButton.getImpl().cI());
   }
   
-  private void aE()
+  private void aU()
   {
-    this.fn.fE = getFabTranslationX();
-    Object localObject = aC();
-    c localc = this.fl;
-    if ((this.ft) && (aD())) {}
+    this.he.hv = getFabTranslationX();
+    Object localObject = aS();
+    c localc = this.hd;
+    if ((this.hk) && (aT())) {}
     for (float f = 1.0F;; f = 0.0F)
     {
-      localc.j(f);
+      localc.i(f);
       if (localObject != null)
       {
         ((FloatingActionButton)localObject).setTranslationY(getFabTranslationY());
@@ -245,14 +245,14 @@ public class BottomAppBar
       if (localObject != null)
       {
         ((ActionMenuView)localObject).setAlpha(1.0F);
-        if (aD()) {
+        if (aT()) {
           break;
         }
         a((ActionMenuView)localObject, 0, false);
       }
       return;
     }
-    a((ActionMenuView)localObject, this.fr, this.ft);
+    a((ActionMenuView)localObject, this.hi, this.hk);
   }
   
   private void b(int paramInt, boolean paramBoolean)
@@ -260,11 +260,11 @@ public class BottomAppBar
     if (!t.ay(this)) {
       return;
     }
-    if (this.fq != null) {
-      this.fq.cancel();
+    if (this.hh != null) {
+      this.hh.cancel();
     }
     ArrayList localArrayList = new ArrayList();
-    if (!aD())
+    if (!aT())
     {
       paramBoolean = false;
       paramInt = 0;
@@ -272,15 +272,15 @@ public class BottomAppBar
     a(paramInt, paramBoolean, localArrayList);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(localArrayList);
-    this.fq = localAnimatorSet;
-    this.fq.addListener(new AnimatorListenerAdapter()
+    this.hh = localAnimatorSet;
+    this.hh.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         BottomAppBar.d(BottomAppBar.this);
       }
     });
-    this.fq.start();
+    this.hh.start();
   }
   
   private ActionMenuView getActionMenuView()
@@ -299,17 +299,17 @@ public class BottomAppBar
   
   private float getFabTranslationX()
   {
-    return C(this.fr);
+    return C(this.hi);
   }
   
   private float getFabTranslationY()
   {
-    return m(this.ft);
+    return m(this.hk);
   }
   
   private float m(boolean paramBoolean)
   {
-    FloatingActionButton localFloatingActionButton = aC();
+    FloatingActionButton localFloatingActionButton = aS();
     if (localFloatingActionButton == null) {
       return 0.0F;
     }
@@ -336,7 +336,7 @@ public class BottomAppBar
   
   public ColorStateList getBackgroundTint()
   {
-    return this.fl.kl;
+    return this.hd.mb;
   }
   
   public CoordinatorLayout.Behavior<BottomAppBar> getBehavior()
@@ -346,42 +346,42 @@ public class BottomAppBar
   
   public float getCradleVerticalOffset()
   {
-    return this.fn.fD;
+    return this.he.hu;
   }
   
   public int getFabAlignmentMode()
   {
-    return this.fr;
+    return this.hi;
   }
   
   public float getFabCradleMargin()
   {
-    return this.fn.fB;
+    return this.he.hs;
   }
   
   public float getFabCradleRoundedCornerRadius()
   {
-    return this.fn.fA;
+    return this.he.hr;
   }
   
   public boolean getHideOnScroll()
   {
-    return this.fs;
+    return this.hj;
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.fo != null) {
-      this.fo.cancel();
+    if (this.hf != null) {
+      this.hf.cancel();
     }
-    if (this.fq != null) {
-      this.fq.cancel();
+    if (this.hh != null) {
+      this.hh.cancel();
     }
-    if (this.fp != null) {
-      this.fp.cancel();
+    if (this.hg != null) {
+      this.hg.cancel();
     }
-    aE();
+    aU();
   }
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
@@ -392,73 +392,73 @@ public class BottomAppBar
       return;
     }
     paramParcelable = (SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Nj);
-    this.fr = paramParcelable.fr;
-    this.ft = paramParcelable.ft;
+    super.onRestoreInstanceState(paramParcelable.Pa);
+    this.hi = paramParcelable.hi;
+    this.hk = paramParcelable.hk;
   }
   
   public Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    localSavedState.fr = this.fr;
-    localSavedState.ft = this.ft;
+    localSavedState.hi = this.hi;
+    localSavedState.hk = this.hk;
     return localSavedState;
   }
   
   public void setBackgroundTint(ColorStateList paramColorStateList)
   {
-    android.support.v4.graphics.drawable.a.a(this.fl, paramColorStateList);
+    android.support.v4.graphics.drawable.a.a(this.hd, paramColorStateList);
   }
   
   public void setCradleVerticalOffset(float paramFloat)
   {
     if (paramFloat != getCradleVerticalOffset())
     {
-      this.fn.fD = paramFloat;
-      this.fl.invalidateSelf();
+      this.he.hu = paramFloat;
+      this.hd.invalidateSelf();
     }
   }
   
   public void setFabAlignmentMode(int paramInt)
   {
-    if ((this.fr == paramInt) || (!t.ay(this))) {}
+    if ((this.hi == paramInt) || (!t.ay(this))) {}
     for (;;)
     {
-      b(paramInt, this.ft);
-      this.fr = paramInt;
+      b(paramInt, this.hk);
+      this.hi = paramInt;
       return;
-      if (this.fp != null) {
-        this.fp.cancel();
+      if (this.hg != null) {
+        this.hg.cancel();
       }
       ArrayList localArrayList = new ArrayList();
-      if (this.ft)
+      if (this.hk)
       {
-        localObject = ValueAnimator.ofFloat(new float[] { this.fn.fE, C(paramInt) });
+        localObject = ValueAnimator.ofFloat(new float[] { this.he.hv, C(paramInt) });
         ((ValueAnimator)localObject).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            BottomAppBar.b(BottomAppBar.this).fE = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+            BottomAppBar.b(BottomAppBar.this).hv = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
             BottomAppBar.c(BottomAppBar.this).invalidateSelf();
           }
         });
         ((ValueAnimator)localObject).setDuration(300L);
         localArrayList.add(localObject);
       }
-      Object localObject = ObjectAnimator.ofFloat(aC(), "translationX", new float[] { C(paramInt) });
+      Object localObject = ObjectAnimator.ofFloat(aS(), "translationX", new float[] { C(paramInt) });
       ((ObjectAnimator)localObject).setDuration(300L);
       localArrayList.add(localObject);
       localObject = new AnimatorSet();
       ((AnimatorSet)localObject).playTogether(localArrayList);
-      this.fp = ((Animator)localObject);
-      this.fp.addListener(new AnimatorListenerAdapter()
+      this.hg = ((Animator)localObject);
+      this.hg.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           BottomAppBar.a(BottomAppBar.this);
         }
       });
-      this.fp.start();
+      this.hg.start();
     }
   }
   
@@ -466,8 +466,8 @@ public class BottomAppBar
   {
     if (paramFloat != getFabCradleMargin())
     {
-      this.fn.fB = paramFloat;
-      this.fl.invalidateSelf();
+      this.he.hs = paramFloat;
+      this.hd.invalidateSelf();
     }
   }
   
@@ -475,23 +475,23 @@ public class BottomAppBar
   {
     if (paramFloat != getFabCradleRoundedCornerRadius())
     {
-      this.fn.fA = paramFloat;
-      this.fl.invalidateSelf();
+      this.he.hr = paramFloat;
+      this.hd.invalidateSelf();
     }
   }
   
   void setFabDiameter(int paramInt)
   {
-    if (paramInt != this.fn.fC)
+    if (paramInt != this.he.ht)
     {
-      this.fn.fC = paramInt;
-      this.fl.invalidateSelf();
+      this.he.ht = paramInt;
+      this.hd.invalidateSelf();
     }
   }
   
   public void setHideOnScroll(boolean paramBoolean)
   {
-    this.fs = paramBoolean;
+    this.hj = paramBoolean;
   }
   
   public void setSubtitle(CharSequence paramCharSequence) {}
@@ -501,7 +501,7 @@ public class BottomAppBar
   public static class Behavior
     extends HideBottomViewOnScrollBehavior<BottomAppBar>
   {
-    private final Rect fz = new Rect();
+    private final Rect hq = new Rect();
     
     public Behavior() {}
     
@@ -515,17 +515,17 @@ public class BottomAppBar
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-    int fr;
-    boolean ft;
+    int hi;
+    boolean hk;
     
     public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
       super(paramClassLoader);
-      this.fr = paramParcel.readInt();
+      this.hi = paramParcel.readInt();
       if (paramParcel.readInt() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.ft = bool;
+        this.hk = bool;
         return;
       }
     }
@@ -538,8 +538,8 @@ public class BottomAppBar
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.fr);
-      if (this.ft) {}
+      paramParcel.writeInt(this.hi);
+      if (this.hk) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);

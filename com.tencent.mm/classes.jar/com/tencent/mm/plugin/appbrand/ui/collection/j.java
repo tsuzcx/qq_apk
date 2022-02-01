@@ -7,23 +7,23 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "canShowLongClickTestMenu", "", "getCanShowLongClickTestMenu", "()Z", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "canShowLongClickTestMenu", "", "getCanShowLongClickTestMenu", "()Z", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"})
 final class j
   extends m
 {
-  private final View miw;
-  final View mix;
-  final View miy;
-  private final boolean miz;
+  private final View mIX;
+  final View mIY;
+  final View mIZ;
+  private final boolean mJa;
   
   public j(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(51269);
-    this.miw = paramView.findViewById(2131296691);
-    this.mix = paramView.findViewById(2131296692);
-    this.miy = paramView.findViewById(2131299635);
-    ViewGroup.LayoutParams localLayoutParams = this.miD.getLayoutParams();
+    this.mIX = paramView.findViewById(2131296691);
+    this.mIY = paramView.findViewById(2131296692);
+    this.mIZ = paramView.findViewById(2131299635);
+    ViewGroup.LayoutParams localLayoutParams = this.mJe.getLayoutParams();
     paramView = localLayoutParams;
     if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
       paramView = null;
@@ -32,13 +32,13 @@ final class j
     if (paramView != null) {
       paramView.leftMargin = 0;
     }
-    this.miD.requestLayout();
+    this.mJe.requestLayout();
     AppMethodBeat.o(51269);
   }
   
-  public final boolean bwk()
+  public final boolean bAq()
   {
-    return this.miz;
+    return this.mJa;
   }
 }
 

@@ -8,13 +8,13 @@ public abstract interface a
 {
   public abstract void a(Context paramContext, Bundle paramBundle, a parama);
   
-  public abstract boolean dzy();
+  public abstract boolean dfC();
   
   public static abstract interface a
   {
-    public abstract void cOF();
+    public abstract void cXe();
     
-    public abstract void cOG();
+    public abstract void cXf();
   }
 }
 

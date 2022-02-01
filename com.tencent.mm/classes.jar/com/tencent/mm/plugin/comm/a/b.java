@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.comm.a;
 
 import android.util.Pair;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 import java.util.List;
 
 public abstract interface b
   extends a
 {
-  public abstract void T(String paramString, long paramLong);
+  public abstract void ZT(String paramString);
   
-  public abstract void Wm(String paramString);
-  
-  public abstract void a(bo parambo, Runnable paramRunnable);
+  public abstract void a(bu parambu, Runnable paramRunnable);
   
   public abstract void a(boolean paramBoolean1, String paramString, long paramLong, boolean paramBoolean2);
   
-  public abstract void af(bo parambo);
+  public abstract void aa(String paramString, long paramLong);
   
-  public abstract void ag(bo parambo);
+  public abstract void ai(bu parambu);
   
-  public abstract void ah(bo parambo);
+  public abstract void aj(bu parambu);
+  
+  public abstract void ak(bu parambu);
   
   public abstract void b(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract List<Pair<String, String>> bWY();
+  public abstract void cM(String paramString, int paramInt);
   
-  public abstract void cJ(String paramString, int paramInt);
+  public abstract List<Pair<String, String>> cbB();
   
-  public abstract List<Pair<String, String>> rN(long paramLong);
+  public abstract List<Pair<String, String>> tM(long paramLong);
   
-  public abstract List<Pair<String, String>> rO(long paramLong);
+  public abstract List<Pair<String, String>> tN(long paramLong);
 }
 
 

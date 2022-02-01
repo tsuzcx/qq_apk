@@ -7,33 +7,33 @@ import com.tencent.thumbplayer.b.f.b;
 
 public final class a
 {
-  public int KeL;
-  public int KeM;
+  public int LYH;
+  public int LYI;
   
   public a(c paramc)
   {
-    AppMethodBeat.i(187821);
-    this.KeL = 2;
-    this.KeM = 2;
+    AppMethodBeat.i(191842);
+    this.LYH = 2;
+    this.LYI = 2;
     if (paramc != null)
     {
-      f localf = paramc.aev(202);
+      f localf = paramc.agV(202);
       long l;
-      if ((localf != null) && (localf.KeQ == 2))
+      if ((localf != null) && (localf.LYM == 2))
       {
-        l = localf.KeS.value;
+        l = localf.LYO.value;
         if ((l <= 0L) || (l >= 5L)) {
           break label193;
         }
         i = 1;
         if (i != 0) {
-          this.KeM = ((int)localf.KeS.value);
+          this.LYI = ((int)localf.LYO.value);
         }
       }
-      paramc = paramc.aev(203);
-      if ((paramc != null) && (paramc.KeQ == 2))
+      paramc = paramc.agV(203);
+      if ((paramc != null) && (paramc.LYM == 2))
       {
-        l = paramc.KeS.value;
+        l = paramc.LYO.value;
         if ((l <= 0L) || (l >= 5L)) {
           break label198;
         }
@@ -43,22 +43,22 @@ public final class a
       for (int i = j;; i = 0)
       {
         if (i != 0) {
-          this.KeL = ((int)paramc.KeS.value);
+          this.LYH = ((int)paramc.LYO.value);
         }
-        i = this.KeM;
-        j = this.KeL;
+        i = this.LYI;
+        j = this.LYH;
         if ((i != 3) || (j != 3)) {
           break label203;
         }
         paramc = new IllegalArgumentException("can not soft with systemplayer");
-        AppMethodBeat.o(187821);
+        AppMethodBeat.o(191842);
         throw paramc;
         i = 0;
         break;
       }
     }
     label203:
-    AppMethodBeat.o(187821);
+    AppMethodBeat.o(191842);
   }
 }
 

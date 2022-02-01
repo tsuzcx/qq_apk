@@ -17,44 +17,44 @@ import java.util.ArrayList;
 public abstract class ViewPagerLayoutManager
   extends LinearLayoutManager
 {
-  private boolean aoa = false;
-  private boolean aoq = false;
-  private boolean aor = false;
-  private boolean aot = true;
-  private int aou = -1;
-  private boolean aow;
+  private boolean apS = false;
+  private boolean aqi = false;
+  private boolean aqj = false;
+  private boolean aql = true;
+  private int aqm = -1;
+  private boolean aqo;
   public int mOrientation;
-  private SparseArray<View> uoD = new SparseArray();
-  protected int uoE;
-  protected int uoF;
-  protected int uoG;
-  protected int uoH;
-  protected float uoI;
-  protected b uoJ;
-  private SavedState uoK = null;
-  protected float uoL;
-  private boolean uoM;
-  private int uoN;
-  private int uoO;
-  int uoP = -1;
-  private Interpolator uoQ;
-  int uoR = 2147483647;
-  private View uoS;
+  private SparseArray<View> vrh = new SparseArray();
+  protected int vri;
+  protected int vrj;
+  protected int vrk;
+  protected int vrl;
+  protected float vrm;
+  protected b vrn;
+  private SavedState vro = null;
+  protected float vrp;
+  private boolean vrq;
+  private int vrr;
+  private int vrs;
+  int vrt = -1;
+  private Interpolator vru;
+  int vrv = 2147483647;
+  private View vrw;
   
   public ViewPagerLayoutManager(int paramInt, boolean paramBoolean)
   {
     setOrientation(paramInt);
     ap(paramBoolean);
-    this.arw = true;
+    this.atn = true;
     aw(false);
   }
   
-  private float HO(int paramInt)
+  private float Jk(int paramInt)
   {
-    if (this.aor) {
-      return paramInt * -this.uoL;
+    if (this.aqj) {
+      return paramInt * -this.vrp;
     }
-    return paramInt * this.uoL;
+    return paramInt * this.vrp;
   }
   
   private int b(int paramInt, RecyclerView.o paramo)
@@ -62,38 +62,38 @@ public abstract class ViewPagerLayoutManager
     if ((getChildCount() == 0) || (paramInt == 0)) {
       return 0;
     }
-    jP();
-    float f = paramInt / cZi();
+    kf();
+    float f = paramInt / diu();
     if (Math.abs(f) < 1.0E-008F) {
       return 0;
     }
-    f = this.uoI + f;
+    f = this.vrm + f;
     int i;
-    if ((!this.aoa) && (f < cZp())) {
-      i = (int)(paramInt - (f - cZp()) * cZi());
+    if ((!this.apS) && (f < diB())) {
+      i = (int)(paramInt - (f - diB()) * diu());
     }
     for (;;)
     {
-      this.uoI = (i / cZi() + this.uoI);
+      this.vrm = (i / diu() + this.vrm);
       e(paramo);
       return i;
       i = paramInt;
-      if (!this.aoa)
+      if (!this.apS)
       {
         i = paramInt;
-        if (f > cZo()) {
-          i = (int)((cZo() - this.uoI) * cZi());
+        if (f > diA()) {
+          i = (int)((diA() - this.vrm) * diu());
         }
       }
     }
   }
   
-  private boolean be(float paramFloat)
+  private boolean bh(float paramFloat)
   {
-    return (paramFloat > cZq()) || (paramFloat < cZr());
+    return (paramFloat > diC()) || (paramFloat < diD());
   }
   
-  private int bf(float paramFloat)
+  private int bi(float paramFloat)
   {
     if (this.mOrientation == 1) {
       return 0;
@@ -101,115 +101,12 @@ public abstract class ViewPagerLayoutManager
     return (int)paramFloat;
   }
   
-  private int bg(float paramFloat)
+  private int bj(float paramFloat)
   {
     if (this.mOrientation == 1) {
       return (int)paramFloat;
     }
     return 0;
-  }
-  
-  private int cZk()
-  {
-    if (getChildCount() == 0) {
-      return 0;
-    }
-    if (!this.aot)
-    {
-      if (!this.aor) {
-        return getCurrentPosition();
-      }
-      return getItemCount() - getCurrentPosition() - 1;
-    }
-    float f = cZt();
-    if (!this.aor) {
-      return (int)f;
-    }
-    return (int)(f + (getItemCount() - 1) * this.uoL);
-  }
-  
-  private int cZl()
-  {
-    if (getChildCount() == 0) {
-      return 0;
-    }
-    if (!this.aot) {
-      return 1;
-    }
-    return (int)this.uoL;
-  }
-  
-  private int cZm()
-  {
-    if (getChildCount() == 0) {
-      return 0;
-    }
-    if (!this.aot) {
-      return getItemCount();
-    }
-    return (int)(getItemCount() * this.uoL);
-  }
-  
-  private boolean cZn()
-  {
-    return this.uoP != -1;
-  }
-  
-  private float cZo()
-  {
-    if (!this.aor) {
-      return (getItemCount() - 1) * this.uoL;
-    }
-    return 0.0F;
-  }
-  
-  private float cZp()
-  {
-    if (!this.aor) {
-      return 0.0F;
-    }
-    return -(getItemCount() - 1) * this.uoL;
-  }
-  
-  private float cZq()
-  {
-    return this.uoJ.kn() - this.uoG;
-  }
-  
-  private float cZr()
-  {
-    return -this.uoE - this.uoJ.kl() - this.uoG;
-  }
-  
-  private int cZs()
-  {
-    if (this.uoL == 0.0F) {
-      return 0;
-    }
-    return Math.round(this.uoI / this.uoL);
-  }
-  
-  private float cZt()
-  {
-    if (this.aor)
-    {
-      if (this.aoa)
-      {
-        if (this.uoI <= 0.0F) {
-          return this.uoI % (this.uoL * getItemCount());
-        }
-        return getItemCount() * -this.uoL + this.uoI % (this.uoL * getItemCount());
-      }
-      return this.uoI;
-    }
-    if (this.aoa)
-    {
-      if (this.uoI >= 0.0F) {
-        return this.uoI % (this.uoL * getItemCount());
-      }
-      return getItemCount() * this.uoL + this.uoI % (this.uoL * getItemCount());
-    }
-    return this.uoI;
   }
   
   private static View d(RecyclerView.o paramo, RecyclerView.t paramt, int paramInt)
@@ -231,10 +128,113 @@ public abstract class ViewPagerLayoutManager
     }
   }
   
+  private float diA()
+  {
+    if (!this.aqj) {
+      return (getItemCount() - 1) * this.vrp;
+    }
+    return 0.0F;
+  }
+  
+  private float diB()
+  {
+    if (!this.aqj) {
+      return 0.0F;
+    }
+    return -(getItemCount() - 1) * this.vrp;
+  }
+  
+  private float diC()
+  {
+    return this.vrn.kD() - this.vrk;
+  }
+  
+  private float diD()
+  {
+    return -this.vri - this.vrn.kB() - this.vrk;
+  }
+  
+  private int diE()
+  {
+    if (this.vrp == 0.0F) {
+      return 0;
+    }
+    return Math.round(this.vrm / this.vrp);
+  }
+  
+  private float diF()
+  {
+    if (this.aqj)
+    {
+      if (this.apS)
+      {
+        if (this.vrm <= 0.0F) {
+          return this.vrm % (this.vrp * getItemCount());
+        }
+        return getItemCount() * -this.vrp + this.vrm % (this.vrp * getItemCount());
+      }
+      return this.vrm;
+    }
+    if (this.apS)
+    {
+      if (this.vrm >= 0.0F) {
+        return this.vrm % (this.vrp * getItemCount());
+      }
+      return getItemCount() * this.vrp + this.vrm % (this.vrp * getItemCount());
+    }
+    return this.vrm;
+  }
+  
+  private int diw()
+  {
+    if (getChildCount() == 0) {
+      return 0;
+    }
+    if (!this.aql)
+    {
+      if (!this.aqj) {
+        return getCurrentPosition();
+      }
+      return getItemCount() - getCurrentPosition() - 1;
+    }
+    float f = diF();
+    if (!this.aqj) {
+      return (int)f;
+    }
+    return (int)(f + (getItemCount() - 1) * this.vrp);
+  }
+  
+  private int dix()
+  {
+    if (getChildCount() == 0) {
+      return 0;
+    }
+    if (!this.aql) {
+      return 1;
+    }
+    return (int)this.vrp;
+  }
+  
+  private int diy()
+  {
+    if (getChildCount() == 0) {
+      return 0;
+    }
+    if (!this.aql) {
+      return getItemCount();
+    }
+    return (int)(getItemCount() * this.vrp);
+  }
+  
+  private boolean diz()
+  {
+    return this.vrt != -1;
+  }
+  
   private void e(RecyclerView.o paramo)
   {
     b(paramo);
-    this.uoD.clear();
+    this.vrh.clear();
     int i2 = getItemCount();
     if (i2 == 0) {
       return;
@@ -248,36 +248,36 @@ public abstract class ViewPagerLayoutManager
     int i1;
     int n;
     int k;
-    if (this.aor)
+    if (this.aqj)
     {
-      i3 = -cZs();
-      j = i3 - this.uoN;
-      i = this.uoO + i3;
-      if (cZn())
+      i3 = -diE();
+      j = i3 - this.vrr;
+      i = this.vrs + i3;
+      if (diz())
       {
-        if (this.uoP % 2 != 0) {
+        if (this.vrt % 2 != 0) {
           break label327;
         }
         i = 1;
         if (i == 0) {
           break label333;
         }
-        i = this.uoP / 2;
+        i = this.vrt / 2;
         j = i3 - i + 1;
         i = i + i3 + 1;
       }
       m = i;
       i1 = j;
-      if (!this.aoa)
+      if (!this.apS)
       {
         n = i;
         k = j;
         if (j < 0)
         {
-          if (!cZn()) {
+          if (!diz()) {
             break label436;
           }
-          n = this.uoP;
+          n = this.vrt;
           k = 0;
         }
       }
@@ -296,7 +296,7 @@ public abstract class ViewPagerLayoutManager
       label180:
       if (i < m)
       {
-        if ((!cZn()) && (be(HO(i) - this.uoI))) {
+        if ((!diz()) && (bh(Jk(i) - this.vrm))) {
           break label424;
         }
         if (i >= i2) {
@@ -308,10 +308,10 @@ public abstract class ViewPagerLayoutManager
         label226:
         View localView = paramo.cu(j);
         bD(localView);
-        ej(localView);
-        r(localView, HO(i) - this.uoI);
+        er(localView);
+        r(localView, Jk(i) - this.vrm);
         float f2;
-        if (this.uoM)
+        if (this.vrq)
         {
           f2 = 0.0F;
           label271:
@@ -321,22 +321,22 @@ public abstract class ViewPagerLayoutManager
           addView(localView);
           label283:
           if (i == i3) {
-            this.uoS = localView;
+            this.vrw = localView;
           }
-          this.uoD.put(i, localView);
+          this.vrh.put(i, localView);
         }
         for (;;)
         {
           i += 1;
           f1 = f2;
           break label180;
-          i3 = cZs();
+          i3 = diE();
           break;
           label327:
           i = 0;
           break label75;
           label333:
-          i = (this.uoP - 1) / 2;
+          i = (this.vrt - 1) / 2;
           j = i3 - i;
           i = i + i3 + 1;
           break label106;
@@ -355,7 +355,7 @@ public abstract class ViewPagerLayoutManager
           label405:
           addView(localView, 0);
           break label283;
-          this.uoS.requestFocus();
+          this.vrw.requestFocus();
           return;
           label424:
           f2 = f1;
@@ -369,7 +369,7 @@ public abstract class ViewPagerLayoutManager
     }
   }
   
-  private static void ej(View paramView)
+  private static void er(View paramView)
   {
     paramView.setRotation(0.0F);
     paramView.setRotationY(0.0F);
@@ -387,11 +387,11 @@ public abstract class ViewPagerLayoutManager
       j = 0;
       return j;
     }
-    int i = cZs();
-    if (!this.aoa) {
+    int i = diE();
+    if (!this.apS) {
       return Math.abs(i);
     }
-    if (!this.aor) {
+    if (!this.aqj) {
       if (i >= 0) {
         i %= getItemCount();
       }
@@ -416,16 +416,16 @@ public abstract class ViewPagerLayoutManager
   
   private void r(View paramView, float paramFloat)
   {
-    int i = bf(paramFloat);
-    int j = bg(paramFloat);
+    int i = bi(paramFloat);
+    int j = bj(paramFloat);
     if (this.mOrientation == 1) {
-      j(paramView, this.uoH + i, this.uoG + j, i + this.uoH + this.uoF, j + this.uoG + this.uoE);
+      j(paramView, this.vrl + i, this.vrk + j, i + this.vrl + this.vrj, j + this.vrk + this.vri);
     }
     for (;;)
     {
       q(paramView, paramFloat);
       return;
-      j(paramView, this.uoG + i, this.uoH + j, i + this.uoG + this.uoE, j + this.uoH + this.uoF);
+      j(paramView, this.vrk + i, this.vrl + j, i + this.vrk + this.vri, j + this.vrl + this.vrj);
     }
   }
   
@@ -445,14 +445,14 @@ public abstract class ViewPagerLayoutManager
   public final void a(RecyclerView.t paramt)
   {
     super.a(paramt);
-    this.uoK = null;
-    this.aou = -1;
+    this.vro = null;
+    this.aqm = -1;
   }
   
   public final void a(RecyclerView paramRecyclerView, RecyclerView.o paramo)
   {
     super.a(paramRecyclerView, paramo);
-    if (this.aow)
+    if (this.aqo)
     {
       d(paramo);
       paramo.clear();
@@ -464,7 +464,7 @@ public abstract class ViewPagerLayoutManager
     int i;
     int j;
     int k;
-    if (this.aoa)
+    if (this.apS)
     {
       i = getCurrentPosition();
       j = getItemCount();
@@ -477,12 +477,12 @@ public abstract class ViewPagerLayoutManager
         }
       }
     }
-    for (paramInt = wm(paramInt);; paramInt = wm(paramInt))
+    for (paramInt = wR(paramInt);; paramInt = wR(paramInt))
     {
       if (this.mOrientation != 1) {
         break label130;
       }
-      paramRecyclerView.a(0, paramInt, this.uoQ);
+      paramRecyclerView.a(0, paramInt, this.vru);
       return;
       paramInt = i + paramInt;
       break;
@@ -497,7 +497,7 @@ public abstract class ViewPagerLayoutManager
       break;
     }
     label130:
-    paramRecyclerView.a(paramInt, 0, this.uoQ);
+    paramRecyclerView.a(paramInt, 0, this.vru);
   }
   
   public final boolean a(RecyclerView paramRecyclerView, ArrayList<View> paramArrayList, int paramInt1, int paramInt2)
@@ -511,7 +511,7 @@ public abstract class ViewPagerLayoutManager
     {
       if (this.mOrientation == 1) {
         if (paramInt1 == 33) {
-          if (this.aor)
+          if (this.aqj)
           {
             paramInt1 = 0;
             label51:
@@ -528,7 +528,7 @@ public abstract class ViewPagerLayoutManager
       label174:
       for (paramInt1 = i - 1;; paramInt1 = i + 1)
       {
-        paramInt1 = wm(paramInt1);
+        paramInt1 = wR(paramInt1);
         if (this.mOrientation != 1) {
           break label182;
         }
@@ -538,7 +538,7 @@ public abstract class ViewPagerLayoutManager
         break label51;
         if (paramInt1 == 130)
         {
-          if (this.aor)
+          if (this.aqj)
           {
             paramInt1 = 1;
             break label51;
@@ -550,7 +550,7 @@ public abstract class ViewPagerLayoutManager
         break label51;
         if (paramInt1 == 17)
         {
-          if (this.aor)
+          if (this.aqj)
           {
             paramInt1 = 0;
             break label51;
@@ -560,7 +560,7 @@ public abstract class ViewPagerLayoutManager
         }
         if (paramInt1 == 66)
         {
-          if (this.aor)
+          if (this.aqj)
           {
             paramInt1 = 1;
             break label51;
@@ -582,11 +582,11 @@ public abstract class ViewPagerLayoutManager
   
   public final void ap(boolean paramBoolean)
   {
-    G(null);
-    if (paramBoolean == this.aoq) {
+    F(null);
+    if (paramBoolean == this.aqi) {
       return;
     }
-    this.aoq = paramBoolean;
+    this.aqi = paramBoolean;
     removeAllViews();
   }
   
@@ -605,13 +605,13 @@ public abstract class ViewPagerLayoutManager
       return null;
     }
     int i = 0;
-    while (i < this.uoD.size())
+    while (i < this.vrh.size())
     {
-      int j = this.uoD.keyAt(i);
+      int j = this.vrh.keyAt(i);
       if (j >= 0)
       {
         if (paramInt == j % m) {
-          return (View)this.uoD.valueAt(i);
+          return (View)this.vrh.valueAt(i);
         }
       }
       else
@@ -622,7 +622,7 @@ public abstract class ViewPagerLayoutManager
           j = -m;
         }
         if (j + m == paramInt) {
-          return (View)this.uoD.valueAt(i);
+          return (View)this.vrh.valueAt(i);
         }
       }
       i += 1;
@@ -635,91 +635,82 @@ public abstract class ViewPagerLayoutManager
     if (paramt.getItemCount() == 0)
     {
       d(paramo);
-      this.uoI = 0.0F;
+      this.vrm = 0.0F;
       return;
     }
-    jP();
+    kf();
     boolean bool;
-    if ((this.mOrientation == 1) || (!ji())) {
-      bool = this.aoq;
+    if ((this.mOrientation == 1) || (!jy())) {
+      bool = this.aqi;
     }
     for (;;)
     {
-      this.aor = bool;
+      this.aqj = bool;
       paramt = d(paramo, paramt, 0);
       if (paramt != null) {
         break;
       }
       d(paramo);
-      this.uoI = 0.0F;
+      this.vrm = 0.0F;
       return;
-      if (!this.aoq) {
+      if (!this.aqi) {
         bool = true;
       } else {
         bool = false;
       }
     }
     bD(paramt);
-    this.uoE = this.uoJ.br(paramt);
-    this.uoF = this.uoJ.bs(paramt);
-    this.uoG = ((this.uoJ.kn() - this.uoE) / 2);
-    if (this.uoR == 2147483647)
+    this.vri = this.vrn.br(paramt);
+    this.vrj = this.vrn.bs(paramt);
+    this.vrk = ((this.vrn.kD() - this.vri) / 2);
+    if (this.vrv == 2147483647)
     {
-      this.uoH = ((this.uoJ.cZg() - this.uoF) / 2);
-      this.uoL = cZh();
-      cZj();
-      if (this.uoL != 0.0F) {
+      this.vrl = ((this.vrn.dis() - this.vrj) / 2);
+      this.vrp = dit();
+      div();
+      if (this.vrp != 0.0F) {
         break label297;
       }
-      this.uoN = 1;
-      this.uoO = 1;
+      this.vrr = 1;
+      this.vrs = 1;
       label195:
-      if (this.uoK != null)
+      if (this.vro != null)
       {
-        this.aor = this.uoK.uoT;
-        this.aou = this.uoK.position;
-        this.uoI = this.uoK.offset;
+        this.aqj = this.vro.vrx;
+        this.aqm = this.vro.position;
+        this.vrm = this.vro.offset;
       }
-      if (this.aou != -1) {
-        if (!this.aor) {
+      if (this.aqm != -1) {
+        if (!this.aqj) {
           break label338;
         }
       }
     }
     label297:
     label338:
-    for (float f = this.aou * -this.uoL;; f = this.aou * this.uoL)
+    for (float f = this.aqm * -this.vrp;; f = this.aqm * this.vrp)
     {
-      this.uoI = f;
+      this.vrm = f;
       e(paramo);
       return;
-      this.uoH = (this.uoJ.cZg() - this.uoF - this.uoR);
+      this.vrl = (this.vrn.dis() - this.vrj - this.vrv);
       break;
-      this.uoN = ((int)Math.abs(cZr() / this.uoL) + 1);
-      this.uoO = ((int)Math.abs(cZq() / this.uoL) + 1);
+      this.vrr = ((int)Math.abs(diD() / this.vrp) + 1);
+      this.vrs = ((int)Math.abs(diC() / this.vrp) + 1);
       break label195;
     }
   }
   
-  protected abstract float cZh();
-  
-  protected float cZi()
-  {
-    return 1.0F;
-  }
-  
-  protected void cZj() {}
-  
   public final void ca(int paramInt)
   {
-    if ((!this.aoa) && ((paramInt < 0) || (paramInt >= getItemCount()))) {
+    if ((!this.apS) && ((paramInt < 0) || (paramInt >= getItemCount()))) {
       return;
     }
-    this.aou = paramInt;
-    if (this.aor) {}
-    for (float f = paramInt * -this.uoL;; f = paramInt * this.uoL)
+    this.aqm = paramInt;
+    if (this.aqj) {}
+    for (float f = paramInt * -this.vrp;; f = paramInt * this.vrp)
     {
-      this.uoI = f;
+      this.vrm = f;
       requestLayout();
       return;
     }
@@ -727,22 +718,31 @@ public abstract class ViewPagerLayoutManager
   
   public final int d(RecyclerView.t paramt)
   {
-    return cZk();
+    return diw();
   }
+  
+  protected abstract float dit();
+  
+  protected float diu()
+  {
+    return 1.0F;
+  }
+  
+  protected void div() {}
   
   public final int e(RecyclerView.t paramt)
   {
-    return cZk();
+    return diw();
   }
   
   public final int f(RecyclerView.t paramt)
   {
-    return cZl();
+    return dix();
   }
   
   public final int g(RecyclerView.t paramt)
   {
-    return cZl();
+    return dix();
   }
   
   public final int getOrientation()
@@ -752,60 +752,60 @@ public abstract class ViewPagerLayoutManager
   
   public final int h(RecyclerView.t paramt)
   {
-    return cZm();
+    return diy();
   }
   
   public final int i(RecyclerView.t paramt)
   {
-    return cZm();
+    return diy();
   }
   
-  public final RecyclerView.LayoutParams jG()
+  public final RecyclerView.LayoutParams jW()
   {
     return new RecyclerView.LayoutParams(-2, -2);
   }
   
-  public final boolean jM()
+  public final boolean kc()
   {
     return this.mOrientation == 0;
   }
   
-  public final boolean jN()
+  public final boolean kd()
   {
     return this.mOrientation == 1;
   }
   
-  public final void jP()
+  public final void kf()
   {
-    if (this.uoJ == null) {
-      this.uoJ = b.b(this, this.mOrientation);
+    if (this.vrn == null) {
+      this.vrn = b.b(this, this.mOrientation);
     }
   }
   
-  public final void lg()
+  public final void ly()
   {
     removeAllViews();
-    this.uoI = 0.0F;
+    this.vrm = 0.0F;
   }
   
   public final void onRestoreInstanceState(Parcelable paramParcelable)
   {
     if ((paramParcelable instanceof SavedState))
     {
-      this.uoK = new SavedState((SavedState)paramParcelable);
+      this.vro = new SavedState((SavedState)paramParcelable);
       requestLayout();
     }
   }
   
   public final Parcelable onSaveInstanceState()
   {
-    if (this.uoK != null) {
-      return new SavedState(this.uoK);
+    if (this.vro != null) {
+      return new SavedState(this.vro);
     }
     SavedState localSavedState = new SavedState();
-    localSavedState.position = this.aou;
-    localSavedState.offset = this.uoI;
-    localSavedState.uoT = this.aor;
+    localSavedState.position = this.aqm;
+    localSavedState.offset = this.vrm;
+    localSavedState.vrx = this.aqj;
     return localSavedState;
   }
   
@@ -816,34 +816,34 @@ public abstract class ViewPagerLayoutManager
     if ((paramInt != 0) && (paramInt != 1)) {
       throw new IllegalArgumentException("invalid orientation:".concat(String.valueOf(paramInt)));
     }
-    G(null);
+    F(null);
     if (paramInt == this.mOrientation) {
       return;
     }
     this.mOrientation = paramInt;
-    this.uoJ = null;
-    this.uoR = 2147483647;
+    this.vrn = null;
+    this.vrv = 2147483647;
     removeAllViews();
   }
   
-  public final int wm(int paramInt)
+  public final int wR(int paramInt)
   {
-    if (this.aoa)
+    if (this.apS)
     {
-      int i = cZs();
-      if (!this.aor) {
-        paramInt -= cZs();
+      int i = diE();
+      if (!this.aqj) {
+        paramInt -= diE();
       }
       for (;;)
       {
-        return (int)(((paramInt + i) * this.uoL - this.uoI) * cZi());
-        paramInt = -cZs() - paramInt;
+        return (int)(((paramInt + i) * this.vrp - this.vrm) * diu());
+        paramInt = -diE() - paramInt;
       }
     }
     float f2 = paramInt;
-    if (!this.aor) {}
-    for (float f1 = this.uoL;; f1 = -this.uoL) {
-      return (int)((f1 * f2 - this.uoI) * cZi());
+    if (!this.aqj) {}
+    for (float f1 = this.vrp;; f1 = -this.vrp) {
+      return (int)((f1 * f2 - this.vrm) * diu());
     }
   }
   
@@ -853,7 +853,7 @@ public abstract class ViewPagerLayoutManager
     public static final Parcelable.Creator<SavedState> CREATOR;
     float offset;
     int position;
-    boolean uoT;
+    boolean vrx;
     
     static
     {
@@ -872,7 +872,7 @@ public abstract class ViewPagerLayoutManager
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.uoT = bool;
+        this.vrx = bool;
         AppMethodBeat.o(65341);
         return;
         bool = false;
@@ -883,7 +883,7 @@ public abstract class ViewPagerLayoutManager
     {
       this.position = paramSavedState.position;
       this.offset = paramSavedState.offset;
-      this.uoT = paramSavedState.uoT;
+      this.vrx = paramSavedState.vrx;
     }
     
     public int describeContents()
@@ -896,7 +896,7 @@ public abstract class ViewPagerLayoutManager
       AppMethodBeat.i(65342);
       paramParcel.writeInt(this.position);
       paramParcel.writeFloat(this.offset);
-      if (this.uoT) {}
+      if (this.vrx) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);

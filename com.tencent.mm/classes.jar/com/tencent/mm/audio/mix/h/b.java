@@ -3,13 +3,13 @@ package com.tencent.mm.audio.mix.h;
 import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
   private static final String SYS_INFO;
-  private static b.a cUw;
-  private static b.a cUx;
+  private static b.a dfM;
+  private static b.a dfN;
   private static int level;
   
   static
@@ -17,8 +17,8 @@ public final class b
     AppMethodBeat.i(136967);
     level = 6;
     Object localObject = new b.1();
-    cUw = (b.a)localObject;
-    cUx = (b.a)localObject;
+    dfM = (b.a)localObject;
+    dfN = (b.a)localObject;
     localObject = new StringBuilder();
     try
     {
@@ -44,7 +44,7 @@ public final class b
     {
       for (;;)
       {
-        ac.printErrStackTrace("mix.Log", localThrowable, "", new Object[0]);
+        ad.printErrStackTrace("mix.Log", localThrowable, "", new Object[0]);
       }
     }
   }
@@ -52,42 +52,42 @@ public final class b
   public static void d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(136963);
-    ac.d(paramString1, paramString2, null);
+    ad.d(paramString1, paramString2, null);
     AppMethodBeat.o(136963);
   }
   
   public static void e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(136961);
-    ac.e(paramString1, paramString2, null);
+    ad.e(paramString1, paramString2, null);
     AppMethodBeat.o(136961);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(136964);
-    ac.e(paramString1, paramString2, paramVarArgs);
+    ad.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(136964);
   }
   
   public static void i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(136962);
-    ac.i(paramString1, paramString2, null);
+    ad.i(paramString1, paramString2, null);
     AppMethodBeat.o(136962);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(136965);
-    ac.i(paramString1, paramString2, paramVarArgs);
+    ad.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(136965);
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(136966);
-    ac.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    ad.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     AppMethodBeat.o(136966);
   }
 }

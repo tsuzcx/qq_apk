@@ -19,16 +19,16 @@ import java.util.LinkedList;
 public final class c
   extends RecyclerView.h
 {
-  private static final int[] Ox = { 16843284 };
-  public a.a Ksm;
+  private static final int[] Qo = { 16843284 };
+  public a.a Min;
+  private final Rect mBounds;
   private int mOrientation;
-  private final Rect ya;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(159929);
-    this.ya = new Rect();
-    paramContext.obtainStyledAttributes(Ox).recycle();
+    this.mBounds = new Rect();
+    paramContext.obtainStyledAttributes(Qo).recycle();
     this.mOrientation = 1;
     AppMethodBeat.o(159929);
   }
@@ -36,7 +36,7 @@ public final class c
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(159931);
-    if (this.Ksm.Ktk == null)
+    if (this.Min.Mjl == null)
     {
       paramRect.set(0, 0, 0, 0);
       AppMethodBeat.o(159931);
@@ -44,11 +44,11 @@ public final class c
     }
     if (this.mOrientation == 1)
     {
-      paramRect.set(0, 0, 0, this.Ksm.Ktk.getIntrinsicHeight());
+      paramRect.set(0, 0, 0, this.Min.Mjl.getIntrinsicHeight());
       AppMethodBeat.o(159931);
       return;
     }
-    paramRect.set(0, 0, this.Ksm.Ktk.getIntrinsicWidth(), 0);
+    paramRect.set(0, 0, this.Min.Mjl.getIntrinsicWidth(), 0);
     AppMethodBeat.o(159931);
   }
   
@@ -56,7 +56,7 @@ public final class c
   {
     int k = 0;
     AppMethodBeat.i(168816);
-    if ((paramRecyclerView.getLayoutManager() == null) || (this.Ksm.Ktk == null))
+    if ((paramRecyclerView.getLayoutManager() == null) || (this.Min.Mjl == null))
     {
       AppMethodBeat.o(168816);
       return;
@@ -68,7 +68,7 @@ public final class c
     int i1;
     if (this.mOrientation == 1)
     {
-      if (this.Ksm.Ktj)
+      if (this.Min.Mjk)
       {
         paramCanvas.save();
         j = paramRecyclerView.getChildCount();
@@ -76,21 +76,21 @@ public final class c
         while (i < j)
         {
           paramt = paramRecyclerView.getChildAt(i);
-          k = paramRecyclerView.bu(paramt).lv();
+          k = paramRecyclerView.bu(paramt).lN();
           if (k >= 0)
           {
-            g localg = ((b)paramRecyclerView.getAdapter()).afN(k);
-            if (localg.KsY)
+            g localg = ((b)paramRecyclerView.getAdapter()).ain(k);
+            if (localg.MiZ)
             {
-              k = localg.gZ(paramt)[0];
+              k = localg.hq(paramt)[0];
               m = paramRecyclerView.getWidth();
-              n = localg.gZ(paramt)[1];
-              RecyclerView.c(paramt, this.ya);
-              i1 = this.ya.bottom;
+              n = localg.hq(paramt)[1];
+              RecyclerView.c(paramt, this.mBounds);
+              i1 = this.mBounds.bottom;
               i1 = Math.round(paramt.getTranslationY()) + i1;
-              int i2 = this.Ksm.Ktk.getIntrinsicHeight();
-              this.Ksm.Ktk.setBounds(k, i1 - i2, m - n, i1);
-              this.Ksm.Ktk.draw(paramCanvas);
+              int i2 = this.Min.Mjl.getIntrinsicHeight();
+              this.Min.Mjl.setBounds(k, i1 - i2, m - n, i1);
+              this.Min.Mjl.draw(paramCanvas);
             }
           }
           i += 1;
@@ -100,7 +100,7 @@ public final class c
       AppMethodBeat.o(168816);
       return;
     }
-    if (this.Ksm.Ktj)
+    if (this.Min.Mjk)
     {
       paramCanvas.save();
       if (paramRecyclerView.getClipToPadding())
@@ -115,14 +115,14 @@ public final class c
         while (k < m)
         {
           paramt = paramRecyclerView.getChildAt(k);
-          if (((g)this.Ksm.Kti.get(paramRecyclerView.bu(paramt).lv())).KsY)
+          if (((g)this.Min.Mjj.get(paramRecyclerView.bu(paramt).lN())).MiZ)
           {
             paramRecyclerView.getLayoutManager();
-            RecyclerView.i.c(paramt, this.ya);
-            n = this.ya.right + Math.round(paramt.getTranslationX());
-            i1 = this.Ksm.Ktk.getIntrinsicWidth();
-            this.Ksm.Ktk.setBounds(n - i1, j, n, i);
-            this.Ksm.Ktk.draw(paramCanvas);
+            RecyclerView.i.c(paramt, this.mBounds);
+            n = this.mBounds.right + Math.round(paramt.getTranslationX());
+            i1 = this.Min.Mjl.getIntrinsicWidth();
+            this.Min.Mjl.setBounds(n - i1, j, n, i);
+            this.Min.Mjl.draw(paramCanvas);
           }
           k += 1;
         }

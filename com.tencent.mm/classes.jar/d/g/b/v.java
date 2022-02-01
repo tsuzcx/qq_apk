@@ -1,64 +1,47 @@
 package d.g.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Serializable;
+import d.l.a;
+import d.l.k;
 
-public final class v
+public abstract class v
+  extends e
+  implements k
 {
-  public static final class a
-    implements Serializable
+  public boolean equals(Object paramObject)
   {
-    public boolean KUL;
-    
-    public final String toString()
+    if (paramObject == this) {}
+    do
     {
-      AppMethodBeat.i(128956);
-      boolean bool = this.KUL;
-      AppMethodBeat.o(128956);
-      return String.valueOf(bool);
+      return true;
+      if (!(paramObject instanceof v)) {
+        break;
+      }
+      paramObject = (v)paramObject;
+    } while ((Hv().equals(paramObject.Hv())) && (getName().equals(paramObject.getName())) && (Hu().equals(paramObject.Hu())) && (p.i(gfP(), paramObject.gfP())));
+    return false;
+    if ((paramObject instanceof k)) {
+      return paramObject.equals(gfQ());
     }
+    return false;
   }
   
-  public static final class d
-    implements Serializable
+  protected final k ggc()
   {
-    public int KUO;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128942);
-      int i = this.KUO;
-      AppMethodBeat.o(128942);
-      return String.valueOf(i);
-    }
+    return (k)super.gfR();
   }
   
-  public static final class e
-    implements Serializable
+  public int hashCode()
   {
-    public long KUP;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128957);
-      long l = this.KUP;
-      AppMethodBeat.o(128957);
-      return String.valueOf(l);
-    }
+    return (Hv().hashCode() * 31 + getName().hashCode()) * 31 + Hu().hashCode();
   }
   
-  public static final class f<T>
-    implements Serializable
+  public String toString()
   {
-    public T KUQ;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(128972);
-      String str = String.valueOf(this.KUQ);
-      AppMethodBeat.o(128972);
-      return str;
+    a locala = gfQ();
+    if (locala != this) {
+      return locala.toString();
     }
+    return "property " + getName() + " (Kotlin reflection is not available)";
   }
 }
 

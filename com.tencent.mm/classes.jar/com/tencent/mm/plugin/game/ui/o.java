@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.e;
+import com.tencent.mm.game.report.f;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class o
   extends b
@@ -14,7 +14,7 @@ public final class o
   public o(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.tfA = paramInt;
+    this.udq = paramInt;
   }
   
   public final void onClick(View paramView)
@@ -33,23 +33,23 @@ public final class o
       ((Bundle)localObject).putCharSequence("game_app_id", paramView.field_appId);
       ((Bundle)localObject).putInt("game_report_from_scene", 1301);
       i = c.a(this.mContext, paramView.field_appId, null, (Bundle)localObject);
-      localObject = e.a(null, null, paramView.teK, null);
-      e.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, (String)localObject);
+      localObject = f.a(null, null, paramView.ucB, null);
+      f.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.udq, paramView.field_msgType, paramView.field_gameMsgId, paramView.ucA, (String)localObject);
     }
     do
     {
       AppMethodBeat.o(42277);
       return;
-    } while (bs.isNullOrNil(paramView.tdT));
-    int i = c.ay(this.mContext, paramView.tdT);
-    Object localObject = e.a(null, null, paramView.teK, null);
-    e.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.tfA, paramView.field_msgType, paramView.field_gameMsgId, paramView.teJ, (String)localObject);
+    } while (bt.isNullOrNil(paramView.ubJ));
+    int i = c.aB(this.mContext, paramView.ubJ);
+    Object localObject = f.a(null, null, paramView.ucB, null);
+    f.a(this.mContext, 13, 1301, 5, i, 0, paramView.field_appId, this.udq, paramView.field_msgType, paramView.field_gameMsgId, paramView.ucA, (String)localObject);
     AppMethodBeat.o(42277);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.o
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.model.am;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class af
-  extends al
+  extends am
 {
   public final String getTag()
   {
     return "MicroMsg.AppBrand.DuplicateUsageUsernameSetFlagDataTransfer";
   }
   
-  public final boolean nP(int paramInt)
+  public final boolean op(int paramInt)
   {
     int j = 1;
     int i;
@@ -38,10 +38,10 @@ public final class af
   public final void transfer(int paramInt)
   {
     AppMethodBeat.i(44648);
-    if (nP(paramInt))
+    if (op(paramInt))
     {
-      ah.a locala = ah.a.GJz;
-      g.agR().agA().set(locala, Boolean.FALSE);
+      al.a locala = al.a.IvR;
+      g.ajC().ajl().set(locala, Boolean.FALSE);
     }
     AppMethodBeat.o(44648);
   }

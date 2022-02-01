@@ -3,7 +3,7 @@ package com.tencent.mm.ui.a;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.OnInitListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Locale;
 
 final class a$1
@@ -15,10 +15,10 @@ final class a$1
   {
     AppMethodBeat.i(141492);
     TextToSpeech localTextToSpeech;
-    if (this.Htc.HsZ != null)
+    if (this.JgS.JgP != null)
     {
-      localTextToSpeech = this.Htc.HsZ;
-      if (!ab.eUK()) {
+      localTextToSpeech = this.JgS.JgP;
+      if (!ac.fko()) {
         break label62;
       }
     }
@@ -26,7 +26,7 @@ final class a$1
     for (Locale localLocale = Locale.CHINESE;; localLocale = Locale.ENGLISH)
     {
       localTextToSpeech.setLanguage(localLocale);
-      this.Htc.HsZ.speak(this.hSd, 0, null);
+      this.JgS.JgP.speak(this.ilu, 0, null);
       AppMethodBeat.o(141492);
       return;
     }

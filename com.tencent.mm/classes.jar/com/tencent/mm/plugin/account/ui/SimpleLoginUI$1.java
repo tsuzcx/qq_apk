@@ -12,7 +12,7 @@ final class SimpleLoginUI$1
   public final void afterTextChanged(Editable paramEditable)
   {
     AppMethodBeat.i(128758);
-    SimpleLoginUI.a(this.iYc);
+    SimpleLoginUI.a(this.jrl);
     AppMethodBeat.o(128758);
   }
   
@@ -22,7 +22,7 @@ final class SimpleLoginUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.SimpleLoginUI.1
  * JD-Core Version:    0.7.0.1
  */

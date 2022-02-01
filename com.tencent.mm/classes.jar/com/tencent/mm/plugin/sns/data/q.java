@@ -20,19 +20,22 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.g.a.ql;
-import com.tencent.mm.g.a.ti;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.g.a.qw;
+import com.tencent.mm.g.a.ua;
+import com.tencent.mm.memory.n;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.modelsfs.e;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.plugin.sns.j.d;
+import com.tencent.mm.plugin.appbrand.api.f;
+import com.tencent.mm.plugin.appbrand.service.o;
+import com.tencent.mm.plugin.sns.j.c;
 import com.tencent.mm.plugin.sns.storage.a.b;
 import com.tencent.mm.plugin.sns.storage.b.b;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.e.m;
 import java.math.BigInteger;
 import java.net.URLEncoder;
@@ -40,35 +43,35 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.List<Lcom.tencent.mm.protocal.protobuf.btz;>;
+import java.util.List<Lcom.tencent.mm.protocal.protobuf.byn;>;
 import java.util.TimeZone;
 
 public final class q
 {
   public static int MAX_SIZE = 4194304;
-  public static String mSF;
-  public static String mSG;
-  private static Vibrator njY;
-  public static int xNM = 2147483647;
-  public static String xNN;
-  private static String xNO;
-  private static int xNP;
-  private static int xNQ;
-  public static int xNR;
-  public static int xNS = 1048576;
-  private static String xNT = "";
-  private static String xNU = "";
-  private static String xNV = "mp.weixin.qq.com";
+  private static Vibrator nKv;
+  public static String ntd;
+  public static String nte;
+  public static int zdG = 2147483647;
+  public static String zdH;
+  private static String zdI;
+  private static int zdJ;
+  private static int zdK;
+  public static int zdL;
+  public static int zdM = 1048576;
+  private static String zdN = "";
+  private static String zdO = "";
+  private static String zdP = "mp.weixin.qq.com";
   
   static
   {
-    mSF = "<TimelineObject>";
-    mSG = "</TimelineObject>";
-    xNN = "/";
-    xNO = "snsb";
-    xNP = -1;
-    xNQ = -1;
-    xNR = 3200;
+    ntd = "<TimelineObject>";
+    nte = "</TimelineObject>";
+    zdH = "/";
+    zdI = "snsb";
+    zdJ = -1;
+    zdK = -1;
+    zdL = 3200;
   }
   
   public static boolean I(Bitmap paramBitmap)
@@ -83,23 +86,7 @@ public final class q
     return true;
   }
   
-  public static boolean Oc(int paramInt)
-  {
-    AppMethodBeat.i(95137);
-    ai.getContext().getSharedPreferences(ai.eUX(), 0).edit().putInt("sns_control_flag", paramInt).commit();
-    AppMethodBeat.o(95137);
-    return true;
-  }
-  
-  public static boolean Od(int paramInt)
-  {
-    AppMethodBeat.i(95139);
-    ai.getContext().getSharedPreferences(ai.eUX(), 0).edit().putInt("sns_respone_count", paramInt).commit();
-    AppMethodBeat.o(95139);
-    return true;
-  }
-  
-  public static String P(CharSequence paramCharSequence)
+  public static String O(CharSequence paramCharSequence)
   {
     int i = 0;
     AppMethodBeat.i(95141);
@@ -110,7 +97,7 @@ public final class q
     }
     paramCharSequence = new SpannableString(paramCharSequence);
     com.tencent.mm.pluginsdk.ui.span.p[] arrayOfp = (com.tencent.mm.pluginsdk.ui.span.p[])paramCharSequence.getSpans(0, paramCharSequence.length(), com.tencent.mm.pluginsdk.ui.span.p.class);
-    ac.d("MicroMsg.SnsUtil", "removeClickSpanInString, clickSpans.length:%d", new Object[] { Integer.valueOf(arrayOfp.length) });
+    ad.d("MicroMsg.SnsUtil", "removeClickSpanInString, clickSpans.length:%d", new Object[] { Integer.valueOf(arrayOfp.length) });
     while (i < arrayOfp.length)
     {
       paramCharSequence.removeSpan(arrayOfp[i]);
@@ -121,10 +108,26 @@ public final class q
     return paramCharSequence;
   }
   
+  public static boolean PJ(int paramInt)
+  {
+    AppMethodBeat.i(95137);
+    aj.getContext().getSharedPreferences(aj.fkC(), 0).edit().putInt("sns_control_flag", paramInt).commit();
+    AppMethodBeat.o(95137);
+    return true;
+  }
+  
+  public static boolean PK(int paramInt)
+  {
+    AppMethodBeat.i(95139);
+    aj.getContext().getSharedPreferences(aj.fkC(), 0).edit().putInt("sns_respone_count", paramInt).commit();
+    AppMethodBeat.o(95139);
+    return true;
+  }
+  
   public static SpannableString a(String paramString, Context paramContext, TextView paramTextView)
   {
     AppMethodBeat.i(95145);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(95145);
       return null;
@@ -139,9 +142,9 @@ public final class q
   public static void a(SnsAdClick paramSnsAdClick)
   {
     AppMethodBeat.i(95149);
-    ql localql = new ql();
-    localql.dtt.dtu = paramSnsAdClick;
-    com.tencent.mm.sdk.b.a.GpY.l(localql);
+    qw localqw = new qw();
+    localqw.dFu.dFv = paramSnsAdClick;
+    com.tencent.mm.sdk.b.a.IbL.l(localqw);
     AppMethodBeat.o(95149);
   }
   
@@ -149,23 +152,23 @@ public final class q
   {
     AppMethodBeat.i(95156);
     String str = paramString2;
-    if (!bs.isNullOrNil(paramString2)) {
+    if (!bt.isNullOrNil(paramString2)) {
       str = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.o(paramString2, new String[] { String.format("gdt_vid=%s", new Object[] { paramString5 }), String.format("weixinadinfo=%s.%s.0.0", new Object[] { paramString4, paramString5 }) });
     }
-    paramString2 = new com.tencent.mm.plugin.appbrand.a.f();
-    paramString2.cYP = paramString6;
+    paramString2 = new f();
+    paramString2.dkh = paramString6;
     paramString2.username = paramString1;
-    paramString2.version = bs.aLy(paramString3);
-    paramString2.jjf = str;
+    paramString2.version = bt.aRe(paramString3);
+    paramString2.jCN = str;
     paramString2.scene = paramInt;
-    paramString2.jjh = new PersistableBundle();
-    paramString2.jjh.putString("adUxInfo", paramString7);
-    ((com.tencent.mm.plugin.appbrand.service.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.n.class)).a(ai.getContext(), paramString2);
-    ac.i("MicroMsg.SnsUtil", "jumpWeApp userName=" + paramString1 + ", path=" + str + ", ver=" + paramString3 + ", scene=" + paramString2.scene + ", uxinfo=" + paramString7);
+    paramString2.jCP = new PersistableBundle();
+    paramString2.jCP.putString("adUxInfo", paramString7);
+    ((o)com.tencent.mm.kernel.g.ab(o.class)).a(aj.getContext(), paramString2);
+    ad.i("MicroMsg.SnsUtil", "jumpWeApp userName=" + paramString1 + ", path=" + str + ", ver=" + paramString3 + ", scene=" + paramString2.scene + ", uxinfo=" + paramString7);
     AppMethodBeat.o(95156);
   }
   
-  public static long aDH()
+  public static long aGM()
   {
     AppMethodBeat.i(95144);
     long l = (int)(TimeZone.getDefault().getRawOffset() / 60000L) / 60L;
@@ -173,7 +176,7 @@ public final class q
     return l;
   }
   
-  private static Rect ah(Bitmap paramBitmap)
+  private static Rect aj(Bitmap paramBitmap)
   {
     AppMethodBeat.i(95131);
     int i = paramBitmap.getWidth();
@@ -183,7 +186,7 @@ public final class q
     return paramBitmap;
   }
   
-  private static Rect ai(Bitmap paramBitmap)
+  private static Rect ak(Bitmap paramBitmap)
   {
     AppMethodBeat.i(95132);
     paramBitmap = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
@@ -191,10 +194,10 @@ public final class q
     return paramBitmap;
   }
   
-  public static int aiF(String paramString)
+  public static int ans(String paramString)
   {
-    AppMethodBeat.i(200057);
-    int i = asU(paramString);
+    AppMethodBeat.i(197782);
+    int i = axZ(paramString);
     if (paramString.indexOf("png") >= 0) {
       i = 1;
     }
@@ -202,7 +205,7 @@ public final class q
     {
       for (;;)
       {
-        AppMethodBeat.o(200057);
+        AppMethodBeat.o(197782);
         return i;
         if ((paramString.indexOf("jpg") >= 0) || (paramString.indexOf("jpeg") >= 0))
         {
@@ -221,11 +224,131 @@ public final class q
         }
       }
     } while (paramString.indexOf("vcodec") < 0);
-    AppMethodBeat.o(200057);
+    AppMethodBeat.o(197782);
     return 5;
   }
   
-  private static String ar(String paramString1, String paramString2, String paramString3)
+  public static String axR(String paramString)
+  {
+    AppMethodBeat.i(95097);
+    paramString = "snst_" + aye(paramString);
+    AppMethodBeat.o(95097);
+    return paramString;
+  }
+  
+  public static String axS(String paramString)
+  {
+    AppMethodBeat.i(95098);
+    paramString = "snsu_" + aye(paramString);
+    AppMethodBeat.o(95098);
+    return paramString;
+  }
+  
+  public static String axT(String paramString)
+  {
+    AppMethodBeat.i(95099);
+    paramString = "snsb_" + aye(paramString);
+    AppMethodBeat.o(95099);
+    return paramString;
+  }
+  
+  public static String axU(String paramString)
+  {
+    AppMethodBeat.i(95102);
+    paramString = "snsu_" + aye(paramString);
+    AppMethodBeat.o(95102);
+    return paramString;
+  }
+  
+  public static String axV(String paramString)
+  {
+    AppMethodBeat.i(95111);
+    paramString = "sns_tmpb_" + aye(paramString);
+    AppMethodBeat.o(95111);
+    return paramString;
+  }
+  
+  public static String axW(String paramString)
+  {
+    AppMethodBeat.i(95113);
+    paramString = "sns_tmpt_" + aye(paramString);
+    AppMethodBeat.o(95113);
+    return paramString;
+  }
+  
+  public static String axX(String paramString)
+  {
+    AppMethodBeat.i(95116);
+    paramString = "sns_tmps_" + aye(paramString);
+    AppMethodBeat.o(95116);
+    return paramString;
+  }
+  
+  public static String axY(String paramString)
+  {
+    AppMethodBeat.i(95119);
+    paramString = "9_".concat(String.valueOf(paramString));
+    AppMethodBeat.o(95119);
+    return paramString;
+  }
+  
+  private static int axZ(String paramString)
+  {
+    AppMethodBeat.i(197783);
+    try
+    {
+      paramString = com.tencent.mm.sdk.platformtools.g.aQc(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(197783);
+        return 0;
+      }
+      paramString = paramString.outMimeType;
+      if (paramString == null)
+      {
+        AppMethodBeat.o(197783);
+        return 0;
+      }
+      paramString = paramString.toLowerCase();
+      int i = paramString.indexOf("png");
+      if (i >= 0)
+      {
+        AppMethodBeat.o(197783);
+        return 1;
+      }
+      if (paramString.indexOf("jpg") < 0)
+      {
+        i = paramString.indexOf("jpeg");
+        if (i < 0) {}
+      }
+      else
+      {
+        AppMethodBeat.o(197783);
+        return 2;
+      }
+      i = paramString.indexOf("wxam");
+      if (i >= 0)
+      {
+        AppMethodBeat.o(197783);
+        return 4;
+      }
+      i = paramString.indexOf("vcodec");
+      if (i >= 0)
+      {
+        AppMethodBeat.o(197783);
+        return 5;
+      }
+      AppMethodBeat.o(197783);
+      return 0;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(197783);
+    }
+    return 0;
+  }
+  
+  private static String ay(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95157);
     for (;;)
@@ -251,7 +374,7 @@ public final class q
       }
       catch (Exception paramString2)
       {
-        ac.e("MicroMsg.SnsUtil", "appendUrlParams exp:" + paramString2.toString());
+        ad.e("MicroMsg.SnsUtil", "appendUrlParams exp:" + paramString2.toString());
         AppMethodBeat.o(95157);
         return paramString1;
       }
@@ -259,160 +382,38 @@ public final class q
     }
   }
   
-  public static String asM(String paramString)
-  {
-    AppMethodBeat.i(95097);
-    paramString = "snst_" + asZ(paramString);
-    AppMethodBeat.o(95097);
-    return paramString;
-  }
-  
-  public static String asN(String paramString)
-  {
-    AppMethodBeat.i(95098);
-    paramString = "snsu_" + asZ(paramString);
-    AppMethodBeat.o(95098);
-    return paramString;
-  }
-  
-  public static String asO(String paramString)
-  {
-    AppMethodBeat.i(95099);
-    paramString = "snsb_" + asZ(paramString);
-    AppMethodBeat.o(95099);
-    return paramString;
-  }
-  
-  public static String asP(String paramString)
-  {
-    AppMethodBeat.i(95102);
-    paramString = "snsu_" + asZ(paramString);
-    AppMethodBeat.o(95102);
-    return paramString;
-  }
-  
-  public static String asQ(String paramString)
-  {
-    AppMethodBeat.i(95111);
-    paramString = "sns_tmpb_" + asZ(paramString);
-    AppMethodBeat.o(95111);
-    return paramString;
-  }
-  
-  public static String asR(String paramString)
-  {
-    AppMethodBeat.i(95113);
-    paramString = "sns_tmpt_" + asZ(paramString);
-    AppMethodBeat.o(95113);
-    return paramString;
-  }
-  
-  public static String asS(String paramString)
-  {
-    AppMethodBeat.i(95116);
-    paramString = "sns_tmps_" + asZ(paramString);
-    AppMethodBeat.o(95116);
-    return paramString;
-  }
-  
-  public static String asT(String paramString)
-  {
-    AppMethodBeat.i(95119);
-    paramString = "9_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(95119);
-    return paramString;
-  }
-  
-  private static int asU(String paramString)
-  {
-    AppMethodBeat.i(200058);
-    try
-    {
-      paramString = com.tencent.mm.sdk.platformtools.f.aKw(paramString);
-      if (paramString == null)
-      {
-        AppMethodBeat.o(200058);
-        return 0;
-      }
-      paramString = paramString.outMimeType;
-      if (paramString == null)
-      {
-        AppMethodBeat.o(200058);
-        return 0;
-      }
-      paramString = paramString.toLowerCase();
-      int i = paramString.indexOf("png");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(200058);
-        return 1;
-      }
-      i = paramString.indexOf("jpg");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(200058);
-        return 2;
-      }
-      i = paramString.indexOf("jpeg");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(200058);
-        return 2;
-      }
-      i = paramString.indexOf("wxam");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(200058);
-        return 4;
-      }
-      i = paramString.indexOf("vcodec");
-      if (i >= 0)
-      {
-        AppMethodBeat.o(200058);
-        return 5;
-      }
-      AppMethodBeat.o(200058);
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(200058);
-    }
-    return 0;
-  }
-  
-  public static com.tencent.mm.memory.n asV(String paramString)
+  public static n aya(String paramString)
   {
     AppMethodBeat.i(95124);
     try
     {
-      ac.i("MicroMsg.SnsUtil", "decodeFileToBlurThumbBitmap " + com.tencent.mm.vfs.i.eA(paramString));
-      boolean bool = com.tencent.mm.vfs.i.eA(paramString);
+      ad.i("MicroMsg.SnsUtil", "decodeFileToBlurThumbBitmap " + com.tencent.mm.vfs.i.fv(paramString));
+      boolean bool = com.tencent.mm.vfs.i.fv(paramString);
       if (!bool)
       {
         AppMethodBeat.o(95124);
         return null;
       }
-      paramString = asX(paramString);
+      paramString = ayc(paramString);
       AppMethodBeat.o(95124);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MicroMsg.SnsUtil", paramString, "snsdecode error", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SnsUtil", paramString, "snsdecode error", new Object[0]);
       AppMethodBeat.o(95124);
     }
     return null;
   }
   
   /* Error */
-  public static Bitmap asW(String paramString)
+  public static Bitmap ayb(String paramString)
   {
     // Byte code:
     //   0: ldc_w 471
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 452	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
+    //   7: invokestatic 452	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
     //   10: istore 10
     //   12: iload 10
     //   14: ifne +11 -> 25
@@ -421,7 +422,7 @@ public final class q
     //   23: aconst_null
     //   24: areturn
     //   25: aload_0
-    //   26: invokestatic 434	com/tencent/mm/sdk/platformtools/f:aKw	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
+    //   26: invokestatic 406	com/tencent/mm/sdk/platformtools/g:aQc	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
     //   29: astore 13
     //   31: aload 13
     //   33: ifnull +667 -> 700
@@ -432,7 +433,7 @@ public final class q
     //   45: getfield 477	android/graphics/BitmapFactory$Options:outHeight	I
     //   48: istore 6
     //   50: aload_0
-    //   51: invokestatic 482	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$ExifHelper:ce	(Ljava/lang/String;)I
+    //   51: invokestatic 482	com/tencent/mm/sdk/platformtools/BackwardSupportUtil$ExifHelper:cY	(Ljava/lang/String;)I
     //   54: istore 7
     //   56: bipush 90
     //   58: iload 7
@@ -441,7 +442,7 @@ public final class q
     //   66: iload 7
     //   68: if_icmpne +621 -> 689
     //   71: goto +635 -> 706
-    //   74: getstatic 48	com/tencent/mm/plugin/sns/data/q:xNR	I
+    //   74: getstatic 48	com/tencent/mm/plugin/sns/data/q:zdL	I
     //   77: istore 5
     //   79: iload 7
     //   81: iload 8
@@ -455,9 +456,9 @@ public final class q
     //   96: iconst_2
     //   97: imul
     //   98: if_icmple +430 -> 528
-    //   101: ldc 145
+    //   101: ldc 105
     //   103: ldc_w 484
-    //   106: invokestatic 486	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   106: invokestatic 486	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   109: iload 8
     //   111: iload 7
     //   113: idiv
@@ -465,11 +466,11 @@ public final class q
     //   116: iload 9
     //   118: iconst_4
     //   119: if_icmpge +274 -> 393
-    //   122: getstatic 492	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   122: getstatic 492	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   125: sipush 1198
     //   128: iconst_0
-    //   129: invokevirtual 496	com/tencent/mm/plugin/report/service/h:dB	(II)V
-    //   132: getstatic 48	com/tencent/mm/plugin/sns/data/q:xNR	I
+    //   129: invokevirtual 496	com/tencent/mm/plugin/report/service/g:dD	(II)V
+    //   132: getstatic 48	com/tencent/mm/plugin/sns/data/q:zdL	I
     //   135: istore 5
     //   137: iload 5
     //   139: iload 5
@@ -515,40 +516,40 @@ public final class q
     //   201: iload 6
     //   203: iconst_1
     //   204: if_icmple +361 -> 565
-    //   207: ldc 145
+    //   207: ldc 105
     //   209: ldc_w 504
     //   212: iconst_3
     //   213: anewarray 4	java/lang/Object
     //   216: dup
     //   217: iconst_0
     //   218: iload 7
-    //   220: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   220: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   223: aastore
     //   224: dup
     //   225: iconst_1
     //   226: iload 8
-    //   228: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   228: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   231: aastore
     //   232: dup
     //   233: iconst_2
     //   234: iload 6
-    //   236: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   236: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   239: aastore
-    //   240: invokestatic 506	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   243: new 436	android/graphics/BitmapFactory$Options
+    //   240: invokestatic 506	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   243: new 408	android/graphics/BitmapFactory$Options
     //   246: dup
     //   247: invokespecial 507	android/graphics/BitmapFactory$Options:<init>	()V
     //   250: astore 16
-    //   252: invokestatic 510	com/tencent/mm/sdk/platformtools/f:eUu	()V
+    //   252: invokestatic 510	com/tencent/mm/sdk/platformtools/g:fjY	()V
     //   255: aload 16
     //   257: iload 6
     //   259: putfield 513	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   262: aload_0
     //   263: invokestatic 517	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   266: astore 13
-    //   268: invokestatic 520	com/tencent/mm/sdk/platformtools/bs:Gn	()J
+    //   268: invokestatic 520	com/tencent/mm/sdk/platformtools/bt:HI	()J
     //   271: lstore 11
-    //   273: ldc 145
+    //   273: ldc 105
     //   275: ldc_w 522
     //   278: iconst_1
     //   279: anewarray 4	java/lang/Object
@@ -556,22 +557,22 @@ public final class q
     //   283: iconst_0
     //   284: aload 16
     //   286: getfield 513	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   289: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   289: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   292: aastore
-    //   293: invokestatic 159	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   293: invokestatic 119	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   296: aload 13
     //   298: aconst_null
     //   299: aload 16
     //   301: invokestatic 528	com/tencent/mm/graphics/MMBitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   304: astore 15
     //   306: lload 11
-    //   308: invokestatic 532	com/tencent/mm/sdk/platformtools/bs:aO	(J)J
+    //   308: invokestatic 532	com/tencent/mm/sdk/platformtools/bt:aO	(J)J
     //   311: lstore 11
     //   313: aload 16
     //   315: getfield 513	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   318: iconst_1
     //   319: if_icmple +29 -> 348
-    //   322: ldc 145
+    //   322: ldc 105
     //   324: new 177	java/lang/StringBuilder
     //   327: dup
     //   328: ldc_w 534
@@ -580,7 +581,7 @@ public final class q
     //   336: getfield 513	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   339: invokevirtual 299	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   342: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   345: invokestatic 537	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   345: invokestatic 537	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   348: aload 15
     //   350: astore 14
     //   352: aload 15
@@ -592,7 +593,7 @@ public final class q
     //   366: astore 14
     //   368: aload_0
     //   369: lload 11
-    //   371: invokestatic 549	com/tencent/mm/plugin/sns/j/d:bh	(Ljava/lang/String;J)V
+    //   371: invokestatic 549	com/tencent/mm/plugin/sns/j/c:bk	(Ljava/lang/String;J)V
     //   374: aload 13
     //   376: ifnull +8 -> 384
     //   379: aload 13
@@ -604,18 +605,18 @@ public final class q
     //   393: iload 9
     //   395: iconst_5
     //   396: if_icmpge +38 -> 434
-    //   399: getstatic 492	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   399: getstatic 492	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   402: sipush 1198
     //   405: iconst_1
-    //   406: invokevirtual 496	com/tencent/mm/plugin/report/service/h:dB	(II)V
+    //   406: invokevirtual 496	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   409: goto -277 -> 132
     //   412: astore_0
-    //   413: ldc 145
+    //   413: ldc 105
     //   415: aload_0
     //   416: ldc_w 460
     //   419: iconst_0
     //   420: anewarray 4	java/lang/Object
-    //   423: invokestatic 464	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   423: invokestatic 464	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   426: ldc_w 471
     //   429: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   432: aconst_null
@@ -623,75 +624,75 @@ public final class q
     //   434: iload 9
     //   436: bipush 6
     //   438: if_icmpge +16 -> 454
-    //   441: getstatic 492	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   441: getstatic 492	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   444: sipush 1198
     //   447: iconst_2
-    //   448: invokevirtual 496	com/tencent/mm/plugin/report/service/h:dB	(II)V
+    //   448: invokevirtual 496	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   451: goto -319 -> 132
     //   454: iload 9
     //   456: bipush 7
     //   458: if_icmpge +16 -> 474
-    //   461: getstatic 492	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   461: getstatic 492	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   464: sipush 1198
     //   467: iconst_3
-    //   468: invokevirtual 496	com/tencent/mm/plugin/report/service/h:dB	(II)V
+    //   468: invokevirtual 496	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   471: goto -339 -> 132
     //   474: iload 9
     //   476: bipush 8
     //   478: if_icmpge +16 -> 494
-    //   481: getstatic 492	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   481: getstatic 492	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   484: sipush 1198
     //   487: iconst_4
-    //   488: invokevirtual 496	com/tencent/mm/plugin/report/service/h:dB	(II)V
+    //   488: invokevirtual 496	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   491: goto -359 -> 132
     //   494: iload 9
     //   496: bipush 9
     //   498: if_icmpge +16 -> 514
-    //   501: getstatic 492	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   501: getstatic 492	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   504: sipush 1198
     //   507: iconst_5
-    //   508: invokevirtual 496	com/tencent/mm/plugin/report/service/h:dB	(II)V
+    //   508: invokevirtual 496	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   511: goto -379 -> 132
-    //   514: getstatic 492	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   514: getstatic 492	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   517: sipush 1198
     //   520: bipush 6
-    //   522: invokevirtual 496	com/tencent/mm/plugin/report/service/h:dB	(II)V
+    //   522: invokevirtual 496	com/tencent/mm/plugin/report/service/g:dD	(II)V
     //   525: goto -393 -> 132
     //   528: iload 7
-    //   530: getstatic 48	com/tencent/mm/plugin/sns/data/q:xNR	I
+    //   530: getstatic 48	com/tencent/mm/plugin/sns/data/q:zdL	I
     //   533: if_icmpgt +11 -> 544
     //   536: iload 8
-    //   538: getstatic 48	com/tencent/mm/plugin/sns/data/q:xNR	I
+    //   538: getstatic 48	com/tencent/mm/plugin/sns/data/q:zdL	I
     //   541: if_icmple +142 -> 683
-    //   544: getstatic 48	com/tencent/mm/plugin/sns/data/q:xNR	I
+    //   544: getstatic 48	com/tencent/mm/plugin/sns/data/q:zdL	I
     //   547: istore 5
     //   549: iload 7
     //   551: iload 8
     //   553: iload 5
     //   555: iload 5
-    //   557: invokestatic 558	com/tencent/mm/sdk/platformtools/f:O	(IIII)I
+    //   557: invokestatic 557	com/tencent/mm/sdk/platformtools/g:O	(IIII)I
     //   560: istore 5
     //   562: goto +159 -> 721
-    //   565: ldc 145
+    //   565: ldc 105
     //   567: ldc_w 504
     //   570: iconst_3
     //   571: anewarray 4	java/lang/Object
     //   574: dup
     //   575: iconst_0
     //   576: iload 7
-    //   578: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   578: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   581: aastore
     //   582: dup
     //   583: iconst_1
     //   584: iload 8
-    //   586: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   586: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   589: aastore
     //   590: dup
     //   591: iconst_2
     //   592: iload 6
-    //   594: invokestatic 153	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   594: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   597: aastore
-    //   598: invokestatic 159	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   598: invokestatic 119	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   601: goto -358 -> 243
     //   604: astore 14
     //   606: aload 16
@@ -821,19 +822,19 @@ public final class q
     //   262	268	675	java/lang/OutOfMemoryError
   }
   
-  public static com.tencent.mm.memory.n asX(String paramString)
+  public static n ayc(String paramString)
   {
     AppMethodBeat.i(95126);
     try
     {
-      boolean bool = com.tencent.mm.vfs.i.eA(paramString);
+      boolean bool = com.tencent.mm.vfs.i.fv(paramString);
       if (!bool)
       {
         AppMethodBeat.o(95126);
         return null;
       }
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      com.tencent.mm.sdk.platformtools.f.eUu();
+      com.tencent.mm.sdk.platformtools.g.fjY();
       localOptions.inSampleSize = 1;
       for (;;)
       {
@@ -845,11 +846,12 @@ public final class q
         }
         try
         {
-          long l = bs.Gn();
-          com.tencent.mm.memory.n localn = com.tencent.mm.plugin.sns.d.a.c(paramString, localOptions);
-          l = bs.aO(l);
+          ad.i("MicroMsg.SnsUtil", "decodeFileToBitmap %s", new Object[] { Integer.valueOf(localOptions.inSampleSize) });
+          long l = bt.HI();
+          n localn = com.tencent.mm.plugin.sns.d.a.c(paramString, localOptions);
+          l = bt.aO(l);
           if (localn != null) {
-            d.bh(paramString, l);
+            c.bk(paramString, l);
           }
           AppMethodBeat.o(95126);
           return localn;
@@ -863,12 +865,12 @@ public final class q
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MicroMsg.SnsUtil", paramString, "snsdecode error", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SnsUtil", paramString, "snsdecode error", new Object[0]);
       AppMethodBeat.o(95126);
     }
   }
   
-  public static String asY(String paramString)
+  public static String ayd(String paramString)
   {
     AppMethodBeat.i(95127);
     paramString = new StringBuffer(paramString);
@@ -880,7 +882,7 @@ public final class q
     return paramString;
   }
   
-  private static String asZ(String paramString)
+  private static String aye(String paramString)
   {
     AppMethodBeat.i(95130);
     if (paramString == null)
@@ -898,22 +900,22 @@ public final class q
     return paramString;
   }
   
-  public static boolean ata(String paramString)
+  public static boolean ayf(String paramString)
   {
     AppMethodBeat.i(95134);
-    boolean bool = paramString.startsWith(com.tencent.mm.loader.j.b.apb());
+    boolean bool = paramString.startsWith(com.tencent.mm.loader.j.b.arO());
     AppMethodBeat.o(95134);
     return bool;
   }
   
-  public static boolean atb(String paramString)
+  public static boolean ayg(String paramString)
   {
     AppMethodBeat.i(95135);
     try
     {
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
-      com.tencent.mm.sdk.platformtools.f.decodeFile(paramString, localOptions);
+      com.tencent.mm.sdk.platformtools.g.decodeFile(paramString, localOptions);
       int i = localOptions.outWidth;
       int j = localOptions.outHeight;
       if ((j >= i * 2) || (i >= j * 2))
@@ -924,7 +926,7 @@ public final class q
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.SnsUtil", "get error setImageExtInfo");
+      ad.e("MicroMsg.SnsUtil", "get error setImageExtInfo");
       AppMethodBeat.o(95135);
       return false;
     }
@@ -932,7 +934,7 @@ public final class q
     return false;
   }
   
-  public static boolean atc(String paramString)
+  public static boolean ayh(String paramString)
   {
     AppMethodBeat.i(95136);
     int i = MAX_SIZE;
@@ -940,7 +942,7 @@ public final class q
     int k;
     try
     {
-      paramString = com.tencent.mm.sdk.platformtools.f.aKw(paramString);
+      paramString = com.tencent.mm.sdk.platformtools.g.aQc(paramString);
       j = paramString.outWidth;
       k = paramString.outHeight;
       if ((k <= 0) && (j <= 0))
@@ -951,7 +953,7 @@ public final class q
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.SnsUtil", "get error setImageExtInfo");
+      ad.e("MicroMsg.SnsUtil", "get error setImageExtInfo");
       AppMethodBeat.o(95136);
       return false;
     }
@@ -969,7 +971,7 @@ public final class q
     return false;
   }
   
-  public static long atd(String paramString)
+  public static long ayi(String paramString)
   {
     long l1 = 0L;
     AppMethodBeat.i(163071);
@@ -982,7 +984,7 @@ public final class q
     {
       long l2 = new BigInteger(paramString).longValue();
       l1 = l2;
-      ac.i("MicroMsg.SnsUtil", "seq %s to snsId %d ", new Object[] { paramString, Long.valueOf(l2) });
+      ad.i("MicroMsg.SnsUtil", "seq %s to snsId %d ", new Object[] { paramString, Long.valueOf(l2) });
       l1 = l2;
     }
     catch (Exception paramString)
@@ -995,51 +997,51 @@ public final class q
   }
   
   /* Error */
-  public static int ate(String paramString)
+  public static int ayj(String paramString)
   {
     // Byte code:
-    //   0: ldc_w 633
+    //   0: ldc_w 634
     //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 175	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   7: invokestatic 175	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   10: istore_2
     //   11: iload_2
     //   12: ifeq +11 -> 23
-    //   15: ldc_w 633
+    //   15: ldc_w 634
     //   18: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: iconst_0
     //   22: ireturn
-    //   23: ldc 145
-    //   25: ldc_w 635
+    //   23: ldc 105
+    //   25: ldc_w 636
     //   28: iconst_1
     //   29: anewarray 4	java/lang/Object
     //   32: dup
     //   33: iconst_0
     //   34: aload_0
     //   35: aastore
-    //   36: invokestatic 506	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   39: new 637	com/tencent/mm/compatible/h/d
+    //   36: invokestatic 506	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: new 638	com/tencent/mm/compatible/h/d
     //   42: dup
-    //   43: invokespecial 638	com/tencent/mm/compatible/h/d:<init>	()V
+    //   43: invokespecial 639	com/tencent/mm/compatible/h/d:<init>	()V
     //   46: astore 4
     //   48: aload 4
     //   50: astore_3
     //   51: aload 4
     //   53: aload_0
-    //   54: invokevirtual 643	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   54: invokevirtual 644	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
     //   57: aload 4
     //   59: astore_3
     //   60: aload 4
     //   62: bipush 9
-    //   64: invokevirtual 646	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
+    //   64: invokevirtual 647	android/media/MediaMetadataRetriever:extractMetadata	(I)Ljava/lang/String;
     //   67: iconst_0
-    //   68: invokestatic 650	com/tencent/mm/sdk/platformtools/bs:getInt	(Ljava/lang/String;I)I
+    //   68: invokestatic 651	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
     //   71: i2l
-    //   72: invokestatic 654	com/tencent/mm/sdk/platformtools/bs:Aq	(J)I
+    //   72: invokestatic 655	com/tencent/mm/sdk/platformtools/bt:Dg	(J)I
     //   75: istore_1
     //   76: aload 4
-    //   78: invokevirtual 657	android/media/MediaMetadataRetriever:release	()V
-    //   81: ldc_w 633
+    //   78: invokevirtual 658	android/media/MediaMetadataRetriever:release	()V
+    //   81: ldc_w 634
     //   84: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   87: iload_1
     //   88: ireturn
@@ -1048,20 +1050,20 @@ public final class q
     //   91: astore 4
     //   93: aload 4
     //   95: astore_3
-    //   96: ldc 145
-    //   98: ldc_w 659
+    //   96: ldc 105
+    //   98: ldc_w 660
     //   101: iconst_1
     //   102: anewarray 4	java/lang/Object
     //   105: dup
     //   106: iconst_0
     //   107: aload_0
     //   108: aastore
-    //   109: invokestatic 661	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: invokestatic 662	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   112: aload 4
     //   114: ifnull +8 -> 122
     //   117: aload 4
-    //   119: invokevirtual 657	android/media/MediaMetadataRetriever:release	()V
-    //   122: ldc_w 633
+    //   119: invokevirtual 658	android/media/MediaMetadataRetriever:release	()V
+    //   122: ldc_w 634
     //   125: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: iconst_0
     //   129: ireturn
@@ -1071,8 +1073,8 @@ public final class q
     //   133: aload_3
     //   134: ifnull +7 -> 141
     //   137: aload_3
-    //   138: invokevirtual 657	android/media/MediaMetadataRetriever:release	()V
-    //   141: ldc_w 633
+    //   138: invokevirtual 658	android/media/MediaMetadataRetriever:release	()V
+    //   141: ldc_w 634
     //   144: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: aload_0
     //   148: athrow
@@ -1103,14 +1105,14 @@ public final class q
     //   60	76	153	java/lang/Throwable
   }
   
-  public static List<PointF> atf(String paramString)
+  public static List<PointF> ayk(String paramString)
   {
     AppMethodBeat.i(95150);
     ArrayList localArrayList = new ArrayList();
     int i;
     float f1;
     float f2;
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
       String[] arrayOfString1 = paramString.split("[|]");
       int j = arrayOfString1.length;
@@ -1121,12 +1123,12 @@ public final class q
         if (arrayOfString2.length != 2) {
           break label157;
         }
-        f1 = bs.getFloat(arrayOfString2[0], -1.0F);
-        f2 = bs.getFloat(arrayOfString2[1], -1.0F);
+        f1 = bt.getFloat(arrayOfString2[0], -1.0F);
+        f2 = bt.getFloat(arrayOfString2[1], -1.0F);
         if ((f1 != -1.0F) && (f2 != -1.0F)) {
           break label133;
         }
-        ac.e("MicroMsg.SnsUtil", "invalid gesture str! %s", new Object[] { paramString });
+        ad.e("MicroMsg.SnsUtil", "invalid gesture str! %s", new Object[] { paramString });
         localArrayList.clear();
       }
     }
@@ -1139,12 +1141,12 @@ public final class q
       i += 1;
       break;
       label157:
-      ac.e("MicroMsg.SnsUtil", "invalid gesture str! %s", new Object[] { paramString });
+      ad.e("MicroMsg.SnsUtil", "invalid gesture str! %s", new Object[] { paramString });
       localArrayList.clear();
     }
   }
   
-  public static void atg(String paramString)
+  public static void ayl(String paramString)
   {
     AppMethodBeat.i(95162);
     if (TextUtils.isEmpty(paramString))
@@ -1152,24 +1154,24 @@ public final class q
       AppMethodBeat.o(95162);
       return;
     }
-    xNU = xNU + paramString + ";";
+    zdO = zdO + paramString + ";";
     AppMethodBeat.o(95162);
   }
   
-  public static String ath(String paramString)
+  public static String aym(String paramString)
   {
     AppMethodBeat.i(176243);
     Object localObject;
     String str;
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
       localObject = Uri.parse(paramString);
       if (localObject != null) {
-        if (bs.lr(((Uri)localObject).getHost(), xNV))
+        if (bt.lQ(((Uri)localObject).getHost(), zdP))
         {
-          paramString = bs.bG(((Uri)localObject).getQueryParameter("__biz"), "");
-          str = bs.bG(((Uri)localObject).getQueryParameter("mid"), "");
-          localObject = bs.bG(((Uri)localObject).getQueryParameter("idx"), "");
+          paramString = bt.bI(((Uri)localObject).getQueryParameter("__biz"), "");
+          str = bt.bI(((Uri)localObject).getQueryParameter("mid"), "");
+          localObject = bt.bI(((Uri)localObject).getQueryParameter("idx"), "");
         }
       }
     }
@@ -1180,27 +1182,27 @@ public final class q
     }
   }
   
-  private static String b(btz parambtz)
+  private static String b(byn parambyn)
   {
     AppMethodBeat.i(95096);
-    if (!bs.isNullOrNil(parambtz.Fjv))
+    if (!bt.isNullOrNil(parambyn.GSW))
     {
-      parambtz = parambtz.Fjv;
+      parambyn = parambyn.GSW;
       AppMethodBeat.o(95096);
-      return parambtz;
+      return parambyn;
     }
     String str = "";
     try
     {
-      parambtz = com.tencent.mm.b.g.getMessageDigest(parambtz.toByteArray());
+      parambyn = com.tencent.mm.b.g.getMessageDigest(parambyn.toByteArray());
       AppMethodBeat.o(95096);
-      return parambtz;
+      return parambyn;
     }
-    catch (Exception parambtz)
+    catch (Exception parambyn)
     {
       for (;;)
       {
-        parambtz = str;
+        parambyn = str;
       }
     }
   }
@@ -1241,7 +1243,7 @@ public final class q
     }
   }
   
-  public static boolean b(com.tencent.mm.memory.n paramn)
+  public static boolean b(n paramn)
   {
     AppMethodBeat.i(95122);
     if ((paramn == null) || (paramn.isRecycled()))
@@ -1253,7 +1255,7 @@ public final class q
     return true;
   }
   
-  public static String bS(int paramInt, String paramString)
+  public static String bZ(int paramInt, String paramString)
   {
     AppMethodBeat.i(95094);
     paramString = paramInt + "-" + paramString;
@@ -1261,7 +1263,29 @@ public final class q
     return paramString;
   }
   
-  public static String bT(int paramInt, String paramString)
+  public static void bj(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(95120);
+    long l = System.currentTimeMillis();
+    ad.d("MicroMsg.SnsUtil", " name " + paramString + " allTime " + (l - paramLong));
+    AppMethodBeat.o(95120);
+  }
+  
+  public static String c(byn parambyn)
+  {
+    AppMethodBeat.i(95100);
+    String str = "snsb_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
+    {
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
+      AppMethodBeat.o(95100);
+      return parambyn;
+    }
+    AppMethodBeat.o(95100);
+    return str;
+  }
+  
+  public static String ca(int paramInt, String paramString)
   {
     AppMethodBeat.i(95118);
     paramString = paramInt + "-" + paramString;
@@ -1269,37 +1293,15 @@ public final class q
     return paramString;
   }
   
-  public static void bg(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(95120);
-    long l = System.currentTimeMillis();
-    ac.d("MicroMsg.SnsUtil", " name " + paramString + " allTime " + (l - paramLong));
-    AppMethodBeat.o(95120);
-  }
-  
-  public static String c(btz parambtz)
-  {
-    AppMethodBeat.i(95100);
-    String str = "snsb_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
-    {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
-      AppMethodBeat.o(95100);
-      return parambtz;
-    }
-    AppMethodBeat.o(95100);
-    return str;
-  }
-  
-  public static String d(btz parambtz)
+  public static String d(byn parambyn)
   {
     AppMethodBeat.i(95101);
-    String str = "snst_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "snst_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95101);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95101);
     return str;
@@ -1310,48 +1312,56 @@ public final class q
     AppMethodBeat.i(95153);
     try
     {
-      if (njY == null) {
-        njY = (Vibrator)ai.getContext().getSystemService("vibrator");
+      if (nKv == null) {
+        nKv = (Vibrator)aj.getContext().getSystemService("vibrator");
       }
-      njY.vibrate(paramArrayOfLong, -1);
+      nKv.vibrate(paramArrayOfLong, -1);
       AppMethodBeat.o(95153);
       return;
     }
     catch (Exception paramArrayOfLong)
     {
-      ac.printErrStackTrace("MicroMsg.SnsUtil", paramArrayOfLong, "vibrate error!", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SnsUtil", paramArrayOfLong, "vibrate error!", new Object[0]);
       AppMethodBeat.o(95153);
     }
   }
   
-  public static int dGA()
+  public static int dSM()
+  {
+    AppMethodBeat.i(95138);
+    int i = aj.getContext().getSharedPreferences(aj.fkC(), 0).getInt("sns_control_flag", 0);
+    AppMethodBeat.o(95138);
+    return i;
+  }
+  
+  public static int dSN()
   {
     AppMethodBeat.i(95140);
-    int i = ai.getContext().getSharedPreferences(ai.eUX(), 0).getInt("sns_respone_count", 20);
+    int i = aj.getContext().getSharedPreferences(aj.fkC(), 0).getInt("sns_respone_count", 20);
     AppMethodBeat.o(95140);
     return i;
   }
   
-  public static int dGB()
+  public static int dSO()
   {
     AppMethodBeat.i(95143);
-    Context localContext = ai.getContext();
-    if (ax.is2G(localContext))
+    Context localContext = aj.getContext();
+    if (ay.is2G(localContext))
     {
       AppMethodBeat.o(95143);
       return 1;
     }
-    if (ax.is3G(localContext))
+    if (ay.is3G(localContext))
     {
       AppMethodBeat.o(95143);
       return 2;
     }
-    if (ax.is4G(localContext))
+    if (ay.is4G(localContext))
     {
       AppMethodBeat.o(95143);
       return 3;
     }
-    if (ax.isWifi(localContext))
+    if (ay.isWifi(localContext))
     {
       AppMethodBeat.o(95143);
       return 4;
@@ -1360,70 +1370,62 @@ public final class q
     return 0;
   }
   
-  public static String dGC()
+  public static String dSP()
   {
     AppMethodBeat.i(95161);
-    if (bs.isNullOrNil(xNT))
+    if (bt.isNullOrNil(zdN))
     {
-      long l = ce.azI();
+      long l = cf.aCL();
       localObject = new StringBuilder();
-      com.tencent.mm.kernel.g.agP();
-      xNT = com.tencent.mm.kernel.a.afE() + "_" + l;
+      com.tencent.mm.kernel.g.ajA();
+      zdN = com.tencent.mm.kernel.a.aiq() + "_" + l;
     }
-    Object localObject = xNT;
+    Object localObject = zdN;
     AppMethodBeat.o(95161);
     return localObject;
   }
   
-  public static void dGD()
+  public static void dSQ()
   {
-    xNT = "";
+    zdN = "";
   }
   
-  public static String dGE()
+  public static String dSR()
   {
-    String str = xNU;
-    xNU = "";
+    String str = zdO;
+    zdO = "";
     return str;
   }
   
-  public static int dGz()
-  {
-    AppMethodBeat.i(95138);
-    int i = ai.getContext().getSharedPreferences(ai.eUX(), 0).getInt("sns_control_flag", 0);
-    AppMethodBeat.o(95138);
-    return i;
-  }
-  
-  public static String e(btz parambtz)
+  public static String e(byn parambyn)
   {
     AppMethodBeat.i(95103);
-    String str = "snsu_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "snsu_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95103);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95103);
     return str;
   }
   
-  public static String f(btz parambtz)
+  public static String f(byn parambyn)
   {
     AppMethodBeat.i(95104);
-    String str = "snsblurt_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "snsblurt_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95104);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95104);
     return str;
   }
   
-  public static String fs(List<btz> paramList)
+  public static String fF(List<byn> paramList)
   {
     AppMethodBeat.i(95095);
     if ((paramList == null) || (paramList.size() == 0))
@@ -1434,18 +1436,18 @@ public final class q
     Object localObject = "";
     Iterator localIterator = paramList.iterator();
     int i = 0;
-    paramList = (List<btz>)localObject;
+    paramList = (List<byn>)localObject;
     for (;;)
     {
       localObject = paramList;
       if (localIterator.hasNext())
       {
-        btz localbtz = (btz)localIterator.next();
+        byn localbyn = (byn)localIterator.next();
         localObject = paramList;
         if (paramList.length() > 0) {
           localObject = paramList + "-";
         }
-        paramList = (String)localObject + localbtz.Id;
+        paramList = (String)localObject + localbyn.Id;
         i += 1;
         if (i >= 4) {
           localObject = paramList;
@@ -1459,7 +1461,7 @@ public final class q
     }
   }
   
-  public static String ft(List<PointF> paramList)
+  public static String fG(List<PointF> paramList)
   {
     AppMethodBeat.i(95152);
     StringBuilder localStringBuilder = new StringBuilder("");
@@ -1480,7 +1482,7 @@ public final class q
     return paramList;
   }
   
-  public static boolean fu(List<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k> paramList)
+  public static boolean fH(List<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.k> paramList)
   {
     AppMethodBeat.i(95159);
     ArrayList localArrayList = new ArrayList();
@@ -1494,23 +1496,23 @@ public final class q
     }
     if (!localArrayList.isEmpty())
     {
-      fv(localArrayList);
+      fI(localArrayList);
       AppMethodBeat.o(95159);
       return true;
     }
-    ac.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForNativeLandingPage, no weapp btn");
+    ad.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForNativeLandingPage, no weapp btn");
     AppMethodBeat.o(95159);
     return false;
   }
   
-  private static void fv(List<String> paramList)
+  private static void fI(List<String> paramList)
   {
     AppMethodBeat.i(95160);
     try
     {
       l = System.currentTimeMillis();
-      ((com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.i.class)).HK("");
-      ac.i("MicroMsg.SnsUtil", "preloadWeAppEnv->preloadEnv, timeCost=" + (System.currentTimeMillis() - l));
+      ((com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.i.class)).Lc("");
+      ad.i("MicroMsg.SnsUtil", "preloadWeAppEnv->preloadEnv, timeCost=" + (System.currentTimeMillis() - l));
     }
     catch (Exception localException)
     {
@@ -1519,31 +1521,31 @@ public final class q
         try
         {
           long l = System.currentTimeMillis();
-          ((com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.i.class)).aR(paramList);
-          ac.i("MicroMsg.SnsUtil", "preloadWeAppEnv->batchSyncWxaAttr, list.size=" + paramList.size() + ", timeCost=" + (System.currentTimeMillis() - l));
+          ((com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.i.class)).aS(paramList);
+          ad.i("MicroMsg.SnsUtil", "preloadWeAppEnv->batchSyncWxaAttr, list.size=" + paramList.size() + ", timeCost=" + (System.currentTimeMillis() - l));
           AppMethodBeat.o(95160);
           return;
         }
         catch (Exception paramList)
         {
-          ac.e("MicroMsg.SnsUtil", "preloadWeAppEnv->batchSyncWxaAttr, exp=" + paramList.toString());
+          ad.e("MicroMsg.SnsUtil", "preloadWeAppEnv->batchSyncWxaAttr, exp=" + paramList.toString());
           AppMethodBeat.o(95160);
         }
         localException = localException;
-        ac.e("MicroMsg.SnsUtil", "preloadWeAppEnv->preloadEnv, exp=" + localException.toString());
+        ad.e("MicroMsg.SnsUtil", "preloadWeAppEnv->preloadEnv, exp=" + localException.toString());
       }
     }
   }
   
-  public static String g(btz parambtz)
+  public static String g(byn parambyn)
   {
     AppMethodBeat.i(95105);
-    String str = "snsblurs_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "snsblurs_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95105);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95105);
     return str;
@@ -1552,51 +1554,65 @@ public final class q
   public static void g(Intent paramIntent, String paramString)
   {
     AppMethodBeat.i(95155);
-    String str2 = e.m.HhJ;
+    String str2 = e.m.IUZ;
     if (paramString == null) {}
     for (String str1 = "";; str1 = paramString)
     {
       paramIntent.putExtra(str2, str1);
-      ac.i("MicroMsg.SnsUtil", "appendAdUxInfoForAdPay, uxInfo=".concat(String.valueOf(paramString)));
+      ad.i("MicroMsg.SnsUtil", "appendAdUxInfoForAdPay, uxInfo=".concat(String.valueOf(paramString)));
       AppMethodBeat.o(95155);
       return;
     }
   }
   
-  public static String h(btz parambtz)
+  public static String h(byn parambyn)
   {
     AppMethodBeat.i(95106);
-    String str = "snstblur_src_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "snstblur_src_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95106);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95106);
     return str;
   }
   
-  public static String i(btz parambtz)
+  public static String i(byn parambyn)
   {
     AppMethodBeat.i(95107);
-    String str = "sight_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "sight_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95107);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95107);
     return str;
   }
   
-  public static String iV(String paramString1, String paramString2)
+  public static String j(byn parambyn)
+  {
+    AppMethodBeat.i(95108);
+    String str = "sightad_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
+    {
+      parambyn = e.H(str, parambyn.GSV);
+      AppMethodBeat.o(95108);
+      return parambyn;
+    }
+    AppMethodBeat.o(95108);
+    return str;
+  }
+  
+  public static String jh(String paramString1, String paramString2)
   {
     AppMethodBeat.i(95154);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      ac.e("MicroMsg.SnsUtil", "appendAdUxInfo empty:" + paramString1 + ", " + paramString2);
+      ad.e("MicroMsg.SnsUtil", "appendAdUxInfo empty:" + paramString1 + ", " + paramString2);
       AppMethodBeat.o(95154);
       return paramString1;
     }
@@ -1610,85 +1626,53 @@ public final class q
     {
       for (;;)
       {
-        ac.e("MicroMsg.SnsUtil", "appendAdUxInfo exp:" + localException.toString() + ", " + paramString2);
+        ad.e("MicroMsg.SnsUtil", "appendAdUxInfo exp:" + localException.toString() + ", " + paramString2);
         paramString2 = str1;
       }
     }
-    paramString1 = ar(paramString1, "uxinfo", paramString2);
-    ac.i("MicroMsg.SnsUtil", "appendAdUxInfo, ret=".concat(String.valueOf(paramString1)));
+    paramString1 = ay(paramString1, "uxinfo", paramString2);
+    ad.i("MicroMsg.SnsUtil", "appendAdUxInfo, ret=".concat(String.valueOf(paramString1)));
     AppMethodBeat.o(95154);
     return paramString1;
   }
   
-  public static String j(btz parambtz)
-  {
-    AppMethodBeat.i(95108);
-    String str = "sightad_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
-    {
-      parambtz = e.C(str, parambtz.Fju);
-      AppMethodBeat.o(95108);
-      return parambtz;
-    }
-    AppMethodBeat.o(95108);
-    return str;
-  }
-  
-  public static String k(btz parambtz)
+  public static String k(byn parambyn)
   {
     AppMethodBeat.i(95109);
-    String str = "snsb_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "snsb_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95109);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95109);
     return str;
   }
   
-  public static boolean k(com.tencent.mm.plugin.sns.storage.p paramp)
-  {
-    return (paramp.field_type == 3) || (paramp.field_type == 4) || (paramp.field_type == 5) || (paramp.field_type == 6) || (paramp.field_type == 9) || (paramp.field_type == 10) || (paramp.field_type == 11) || (paramp.field_type == 12) || (paramp.field_type == 13) || (paramp.field_type == 14) || (paramp.field_type == 17) || (paramp.field_type == 22) || (paramp.field_type == 23);
-  }
-  
-  public static String l(com.tencent.mm.plugin.sns.storage.p paramp)
-  {
-    AppMethodBeat.i(95146);
-    if (paramp == null)
-    {
-      AppMethodBeat.o(95146);
-      return "0";
-    }
-    paramp = wW(paramp.field_snsId);
-    AppMethodBeat.o(95146);
-    return paramp;
-  }
-  
-  public static String l(btz parambtz)
+  public static String l(byn parambyn)
   {
     AppMethodBeat.i(95110);
-    String str = "sns_tmpb_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "sns_tmpb_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95110);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95110);
     return str;
   }
   
-  public static String m(btz parambtz)
+  public static String m(byn parambyn)
   {
     AppMethodBeat.i(95112);
-    String str = "sns_tmpt_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "sns_tmpt_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95112);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95112);
     return str;
@@ -1696,88 +1680,170 @@ public final class q
   
   public static boolean m(com.tencent.mm.plugin.sns.storage.p paramp)
   {
-    AppMethodBeat.i(95158);
-    ArrayList localArrayList = new ArrayList();
-    com.tencent.mm.plugin.sns.storage.a locala = paramp.dFQ();
-    paramp = paramp.dFR();
-    if ((locala != null) && (locala.yeR != null) && (!TextUtils.isEmpty(locala.yeR.dia)))
-    {
-      localArrayList.add(locala.yeR.dia);
-      ac.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForTimeLine, has actionExtWeApp");
-    }
-    if ((paramp != null) && (paramp.ygw != null) && (!TextUtils.isEmpty(paramp.ygw.pis)) && (!localArrayList.contains(paramp.ygw.pis)))
-    {
-      localArrayList.add(paramp.ygw.pis);
-      ac.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForTimeLine, has adCardActionBtnInfo");
-    }
-    if (!localArrayList.isEmpty())
-    {
-      fv(localArrayList);
-      AppMethodBeat.o(95158);
-      return true;
-    }
-    ac.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForTimeLine, no weapp");
-    AppMethodBeat.o(95158);
-    return false;
+    return (paramp.field_type == 3) || (paramp.field_type == 4) || (paramp.field_type == 5) || (paramp.field_type == 6) || (paramp.field_type == 9) || (paramp.field_type == 10) || (paramp.field_type == 11) || (paramp.field_type == 12) || (paramp.field_type == 13) || (paramp.field_type == 14) || (paramp.field_type == 17) || (paramp.field_type == 22) || (paramp.field_type == 23);
   }
   
-  public static String n(btz parambtz)
+  public static String n(com.tencent.mm.plugin.sns.storage.p paramp)
+  {
+    AppMethodBeat.i(95146);
+    if (paramp == null)
+    {
+      AppMethodBeat.o(95146);
+      return "0";
+    }
+    paramp = zw(paramp.field_snsId);
+    AppMethodBeat.o(95146);
+    return paramp;
+  }
+  
+  public static String n(byn parambyn)
   {
     AppMethodBeat.i(95114);
-    String str = "sns_tmpu_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "sns_tmpu_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95114);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95114);
     return str;
   }
   
-  public static String o(btz parambtz)
+  public static String o(byn parambyn)
   {
     AppMethodBeat.i(95115);
-    String str = "sns_tmps_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "sns_tmps_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95115);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95115);
     return str;
   }
   
-  public static String p(btz parambtz)
+  public static boolean o(com.tencent.mm.plugin.sns.storage.p paramp)
+  {
+    AppMethodBeat.i(95158);
+    ArrayList localArrayList = new ArrayList();
+    com.tencent.mm.plugin.sns.storage.a locala = paramp.dRK();
+    paramp = paramp.dRL();
+    if ((locala != null) && (locala.zuS != null) && (!TextUtils.isEmpty(locala.zuS.dtE)))
+    {
+      localArrayList.add(locala.zuS.dtE);
+      ad.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForTimeLine, has actionExtWeApp");
+    }
+    if ((paramp != null) && (paramp.zcl != null) && (!TextUtils.isEmpty(paramp.zcl.pLS)) && (!localArrayList.contains(paramp.zcl.pLS)))
+    {
+      localArrayList.add(paramp.zcl.pLS);
+      ad.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForTimeLine, has adCardActionBtnInfo");
+    }
+    if (!localArrayList.isEmpty())
+    {
+      fI(localArrayList);
+      AppMethodBeat.o(95158);
+      return true;
+    }
+    ad.i("MicroMsg.SnsUtil", "checkPreloadWeAppEnvForTimeLine, no weapp");
+    AppMethodBeat.o(95158);
+    return false;
+  }
+  
+  public static String p(byn parambyn)
   {
     AppMethodBeat.i(95117);
-    String str = "sns_tmpsad_" + asZ(parambtz.Id);
-    if (parambtz.Fjt == 1)
+    String str = "sns_tmpsad_" + aye(parambyn.Id);
+    if (parambyn.GSU == 1)
     {
-      parambtz = e.C(str + b(parambtz), parambtz.Fju);
+      parambyn = e.H(str + b(parambyn), parambyn.GSV);
       AppMethodBeat.o(95117);
-      return parambtz;
+      return parambyn;
     }
     AppMethodBeat.o(95117);
     return str;
   }
   
-  public static void qH(boolean paramBoolean)
+  public static void rk(boolean paramBoolean)
   {
     AppMethodBeat.i(95151);
-    ti localti = new ti();
-    localti.dwo.enable = paramBoolean;
-    com.tencent.mm.sdk.b.a.GpY.l(localti);
+    ua localua = new ua();
+    localua.dIy.enable = paramBoolean;
+    com.tencent.mm.sdk.b.a.IbL.l(localua);
     AppMethodBeat.o(95151);
   }
   
-  public static Bitmap s(List<com.tencent.mm.memory.n> paramList, int paramInt)
+  public static Bitmap t(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(95123);
+    if (paramBitmap == null)
+    {
+      AppMethodBeat.o(95123);
+      return null;
+    }
+    String str;
+    if (bt.isNullOrNil(paramString)) {
+      str = "";
+    }
+    int i;
+    while (bt.isNullOrNil(str))
+    {
+      AppMethodBeat.o(95123);
+      return paramBitmap;
+      i = paramString.lastIndexOf(zdH);
+      if ((i > 0) && (i + 1 < paramString.length()))
+      {
+        str = paramString.substring(i + 1);
+        if ((str.startsWith(zdI)) || (str.startsWith("sns_tmpb_")))
+        {
+          str = paramString;
+          continue;
+        }
+        if ((str.startsWith("snst_")) || (str.startsWith("snsu_")))
+        {
+          str = "";
+          continue;
+        }
+      }
+      str = paramString;
+    }
+    for (;;)
+    {
+      try
+      {
+        ad.i("MicroMsg.SnsUtil", "[changes below by tomys]parsing jpg, path: %s, size: %s", new Object[] { paramString, Long.valueOf(com.tencent.mm.vfs.i.aYo(paramString)) });
+        paramString = Exif.fromFile(paramString);
+        if (paramString == null) {
+          break label246;
+        }
+        i = paramString.getOrientationInDegree() % 360;
+      }
+      catch (Exception paramString)
+      {
+        ad.printErrStackTrace("MicroMsg.SnsUtil", paramString, "Failed parsing JPEG file: ".concat(String.valueOf(str)), new Object[0]);
+        i = 0;
+        continue;
+      }
+      finally
+      {
+        AppMethodBeat.o(95123);
+      }
+      ad.d("MicroMsg.SnsUtil", "exifPath : %s degree : %d", new Object[] { str, Integer.valueOf(i) });
+      paramString = com.tencent.mm.sdk.platformtools.g.a(paramBitmap, i);
+      AppMethodBeat.o(95123);
+      return paramString;
+      label246:
+      i = 0;
+    }
+  }
+  
+  public static Bitmap u(List<n> paramList, int paramInt)
   {
     AppMethodBeat.i(95133);
     Object localObject1 = paramList.iterator();
     while (((Iterator)localObject1).hasNext()) {
-      if (!b((com.tencent.mm.memory.n)((Iterator)localObject1).next()))
+      if (!b((n)((Iterator)localObject1).next()))
       {
         AppMethodBeat.o(95133);
         return null;
@@ -1811,12 +1877,12 @@ public final class q
       if ((paramInt >= paramList.size()) || (i >= 4)) {
         break label509;
       }
-      localObject3 = ((com.tencent.mm.memory.n)paramList.get(paramInt)).avT();
+      localObject3 = ((n)paramList.get(paramInt)).ayG();
       localRect = (Rect)localLinkedList.get(paramInt);
       switch (paramList.size())
       {
       default: 
-        localObject1 = ai((Bitmap)localObject3);
+        localObject1 = ak((Bitmap)localObject3);
       }
     }
     for (;;)
@@ -1847,14 +1913,14 @@ public final class q
       localLinkedList.add(localObject3);
       localLinkedList.add(localRect);
       break;
-      localObject1 = ai((Bitmap)localObject3);
+      localObject1 = ak((Bitmap)localObject3);
       continue;
-      localObject1 = ah((Bitmap)localObject3);
+      localObject1 = aj((Bitmap)localObject3);
       continue;
       if (paramInt == 0) {
-        localObject1 = ah((Bitmap)localObject3);
+        localObject1 = aj((Bitmap)localObject3);
       } else {
-        localObject1 = ai((Bitmap)localObject3);
+        localObject1 = ak((Bitmap)localObject3);
       }
     }
     label509:
@@ -1864,71 +1930,7 @@ public final class q
     return localBitmap;
   }
   
-  public static Bitmap t(String paramString, Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(95123);
-    if (paramBitmap == null)
-    {
-      AppMethodBeat.o(95123);
-      return null;
-    }
-    String str;
-    if (bs.isNullOrNil(paramString)) {
-      str = "";
-    }
-    int i;
-    while (bs.isNullOrNil(str))
-    {
-      AppMethodBeat.o(95123);
-      return paramBitmap;
-      i = paramString.lastIndexOf(xNN);
-      if ((i > 0) && (i + 1 < paramString.length()))
-      {
-        str = paramString.substring(i + 1);
-        if ((str.startsWith(xNO)) || (str.startsWith("sns_tmpb_")))
-        {
-          str = paramString;
-          continue;
-        }
-        if ((str.startsWith("snst_")) || (str.startsWith("snsu_")))
-        {
-          str = "";
-          continue;
-        }
-      }
-      str = paramString;
-    }
-    for (;;)
-    {
-      try
-      {
-        ac.i("MicroMsg.SnsUtil", "[changes below by tomys]parsing jpg, path: %s, size: %s", new Object[] { paramString, Long.valueOf(com.tencent.mm.vfs.i.aSp(paramString)) });
-        paramString = Exif.fromFile(paramString);
-        if (paramString == null) {
-          break label246;
-        }
-        i = paramString.getOrientationInDegree() % 360;
-      }
-      catch (Exception paramString)
-      {
-        ac.printErrStackTrace("MicroMsg.SnsUtil", paramString, "Failed parsing JPEG file: ".concat(String.valueOf(str)), new Object[0]);
-        i = 0;
-        continue;
-      }
-      finally
-      {
-        AppMethodBeat.o(95123);
-      }
-      ac.d("MicroMsg.SnsUtil", "exifPath : %s degree : %d", new Object[] { str, Integer.valueOf(i) });
-      paramString = com.tencent.mm.sdk.platformtools.f.a(paramBitmap, i);
-      AppMethodBeat.o(95123);
-      return paramString;
-      label246:
-      i = 0;
-    }
-  }
-  
-  public static String wW(long paramLong)
+  public static String zw(long paramLong)
   {
     AppMethodBeat.i(95128);
     String str = new BigInteger(Long.toBinaryString(paramLong), 2).toString();
@@ -1936,7 +1938,7 @@ public final class q
     return str;
   }
   
-  public static String wX(long paramLong)
+  public static String zx(long paramLong)
   {
     AppMethodBeat.i(95129);
     if (paramLong == 0L)
@@ -1944,7 +1946,7 @@ public final class q
       AppMethodBeat.o(95129);
       return "";
     }
-    String str = asY(new BigInteger(Long.toBinaryString(paramLong), 2).toString());
+    String str = ayd(new BigInteger(Long.toBinaryString(paramLong), 2).toString());
     AppMethodBeat.o(95129);
     return str;
   }

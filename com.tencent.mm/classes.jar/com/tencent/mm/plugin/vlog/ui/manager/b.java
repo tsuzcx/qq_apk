@@ -3,62 +3,62 @@ package com.tencent.mm.plugin.vlog.ui.manager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
 import com.tencent.mm.plugin.recordvideo.model.audio.i;
 import com.tencent.mm.plugin.recordvideo.model.audio.i.a;
 import d.g.a.m;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager;", "", "()V", "downloadManager", "Lcom/tencent/mm/plugin/recordvideo/model/audio/StoryAudioManager;", "loadMusic", "", "path", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "filePath", "packageAudioInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "release", "Companion", "plugin-vlog_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager;", "", "()V", "downloadManager", "Lcom/tencent/mm/plugin/recordvideo/model/audio/StoryAudioManager;", "loadMusic", "", "path", "", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "filePath", "packageAudioInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "release", "Companion", "plugin-vlog_release"})
 public final class b
 {
-  private static String AsE;
-  public static final a AsF;
-  private i AsD;
+  private static String BMr;
+  public static final a BMs;
+  private i BMq;
   
   static
   {
     AppMethodBeat.i(111154);
-    AsF = new a((byte)0);
+    BMs = new a((byte)0);
     StringBuilder localStringBuilder = new StringBuilder();
-    e locale = g.agR();
-    k.g(locale, "MMKernel.storage()");
-    AsE = locale.getAccPath() + "vlog/coming/";
+    e locale = g.ajC();
+    p.g(locale, "MMKernel.storage()");
+    BMr = locale.getAccPath() + "vlog/coming/";
     AppMethodBeat.o(111154);
   }
   
   public b()
   {
     AppMethodBeat.i(111153);
-    i.a locala = i.wrV;
-    this.AsD = i.dvK();
+    i.a locala = i.xzM;
+    this.BMq = i.dGi();
     AppMethodBeat.o(111153);
   }
   
-  private static AudioCacheInfo ayo(String paramString)
+  private static AudioCacheInfo aDu(String paramString)
   {
     AppMethodBeat.i(111152);
     AudioCacheInfo localAudioCacheInfo = new AudioCacheInfo();
     localAudioCacheInfo.musicUrl = paramString;
-    localAudioCacheInfo.wri = paramString.hashCode();
-    localAudioCacheInfo.cachePath = (AsE + paramString.hashCode() + '_' + ce.azI() + ".a");
+    localAudioCacheInfo.xyZ = paramString.hashCode();
+    localAudioCacheInfo.cachePath = (BMr + paramString.hashCode() + '_' + cf.aCL() + ".a");
     AppMethodBeat.o(111152);
     return localAudioCacheInfo;
   }
   
-  public final void b(String paramString, m<? super Boolean, ? super String, y> paramm)
+  public final void b(String paramString, m<? super Boolean, ? super String, z> paramm)
   {
     AppMethodBeat.i(111151);
-    k.h(paramString, "path");
-    k.h(paramm, "callback");
-    this.AsD.a(ayo(paramString), paramm);
+    p.h(paramString, "path");
+    p.h(paramm, "callback");
+    this.BMq.a(aDu(paramString), paramm);
     AppMethodBeat.o(111151);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager$Companion;", "", "()V", "AAC_PATH", "", "getAAC_PATH", "()Ljava/lang/String;", "setAAC_PATH", "(Ljava/lang/String;)V", "getAudioCachePath", "path", "plugin-vlog_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager$Companion;", "", "()V", "AAC_PATH", "", "getAAC_PATH", "()Ljava/lang/String;", "setAAC_PATH", "(Ljava/lang/String;)V", "getAudioCachePath", "path", "plugin-vlog_release"})
   public static final class a {}
 }
 

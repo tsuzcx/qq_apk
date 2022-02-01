@@ -12,8 +12,8 @@ import java.net.URLConnection;
 
 public final class e
 {
-  public static final String LQw;
-  public static final char LYb;
+  public static final String NHr;
+  public static final char NSA;
   
   /* Error */
   static
@@ -24,7 +24,7 @@ public final class e
     //   2: sipush 10310
     //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: getstatic 23	java/io/File:separatorChar	C
-    //   11: putstatic 25	org/apache/commons/a/e:LYb	C
+    //   11: putstatic 25	org/apache/commons/a/e:NSA	C
     //   14: new 27	org/apache/commons/a/a/b
     //   17: dup
     //   18: iconst_0
@@ -39,7 +39,7 @@ public final class e
     //   35: invokevirtual 39	java/io/PrintWriter:println	()V
     //   38: aload_3
     //   39: invokevirtual 43	org/apache/commons/a/a/b:toString	()Ljava/lang/String;
-    //   42: putstatic 45	org/apache/commons/a/e:LQw	Ljava/lang/String;
+    //   42: putstatic 45	org/apache/commons/a/e:NHr	Ljava/lang/String;
     //   45: aload 4
     //   47: invokevirtual 48	java/io/PrintWriter:close	()V
     //   50: aload_3
@@ -135,7 +135,7 @@ public final class e
   }
   
   @Deprecated
-  public static void W(InputStream paramInputStream)
+  public static void Z(InputStream paramInputStream)
   {
     AppMethodBeat.i(10304);
     closeQuietly(paramInputStream);
@@ -144,7 +144,7 @@ public final class e
   
   public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
   {
-    AppMethodBeat.i(192458);
+    AppMethodBeat.i(189790);
     byte[] arrayOfByte = new byte[paramInt];
     for (long l = 0L;; l += paramInt)
     {
@@ -154,7 +154,7 @@ public final class e
       }
       paramOutputStream.write(arrayOfByte, 0, paramInt);
     }
-    AppMethodBeat.o(192458);
+    AppMethodBeat.o(189790);
     return l;
   }
   
@@ -250,25 +250,25 @@ public final class e
   @Deprecated
   public static void a(Reader paramReader)
   {
-    AppMethodBeat.i(192457);
+    AppMethodBeat.i(189789);
     closeQuietly(paramReader);
-    AppMethodBeat.o(192457);
+    AppMethodBeat.o(189789);
   }
   
   public static void a(URLConnection paramURLConnection)
   {
-    AppMethodBeat.i(192456);
+    AppMethodBeat.i(189788);
     if ((paramURLConnection instanceof HttpURLConnection)) {
       ((HttpURLConnection)paramURLConnection).disconnect();
     }
-    AppMethodBeat.o(192456);
+    AppMethodBeat.o(189788);
   }
   
   private static long c(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(192459);
+    AppMethodBeat.i(189791);
     long l = a(paramInputStream, paramOutputStream, 4096);
-    AppMethodBeat.o(192459);
+    AppMethodBeat.o(189791);
     return l;
   }
   
@@ -377,7 +377,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.a.e
  * JD-Core Version:    0.7.0.1
  */

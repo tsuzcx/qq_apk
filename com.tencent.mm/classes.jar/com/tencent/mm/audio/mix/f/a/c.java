@@ -10,8 +10,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class c
   extends a
 {
-  private static long cUt = 0L;
-  private static long cUu = 0L;
+  private static long dfJ = 0L;
+  private static long dfK = 0L;
   
   public c(int paramInt1, int paramInt2, d paramd, f paramf)
   {
@@ -21,13 +21,13 @@ public final class c
   public final void K(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(136952);
-    if (this.aUW == null)
+    if (this.bfq == null)
     {
       b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack before");
       if (!createAudioTrack())
       {
-        if (this.cUp != null) {
-          this.cUp.onError(707);
+        if (this.dfF != null) {
+          this.dfF.onError(707);
         }
         b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack fail");
         AppMethodBeat.o(136952);
@@ -37,15 +37,15 @@ public final class c
     }
     try
     {
-      i(this.cUo);
-      this.aUW.play();
-      this.aUW.setStereoVolume(this.volume, this.volume);
+      i(this.dfE);
+      this.bfq.play();
+      this.bfq.setStereoVolume(this.volume, this.volume);
       b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "create AudioTrack after");
-      if (this.cUp != null) {
-        this.cUp.Nh();
+      if (this.dfF != null) {
+        this.dfF.OQ();
       }
-      this.aUW.setStereoVolume(this.volume, this.volume);
-      this.aUW.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      this.bfq.setStereoVolume(this.volume, this.volume);
+      this.bfq.write(paramArrayOfByte, 0, paramArrayOfByte.length);
       AppMethodBeat.o(136952);
       return;
     }
@@ -58,10 +58,10 @@ public final class c
     }
   }
   
-  public final void NS()
+  public final void PB()
   {
     AppMethodBeat.i(136953);
-    super.NS();
+    super.PB();
     b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "playFlush");
     AppMethodBeat.o(136953);
   }
@@ -70,7 +70,7 @@ public final class c
   {
     AppMethodBeat.i(136951);
     b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "createAudioTrack");
-    if (this.cUm > 1)
+    if (this.dfC > 1)
     {
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "createAudioTrack fail count reach MAX COUNT");
       AppMethodBeat.o(136951);
@@ -89,29 +89,29 @@ public final class c
       return false;
     }
     int j = k;
-    if (this.cUo > 1.0D) {
-      j = (int)(this.cUo * k);
+    if (this.dfE > 1.0D) {
+      j = (int)(this.dfE * k);
     }
-    if (this.aUW == null)
+    if (this.bfq == null)
     {
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "new AudioTrack");
       System.currentTimeMillis();
-      this.aUW = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
-      this.cUm += 1;
-      cUs.incrementAndGet();
+      this.bfq = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
+      this.dfC += 1;
+      dfI.incrementAndGet();
     }
-    if ((this.aUW == null) || (this.aUW.getState() != 1))
+    if ((this.bfq == null) || (this.bfq.getState() != 1))
     {
-      cUr.incrementAndGet();
-      b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(cUs.get()), Integer.valueOf(cUr.get()) });
+      dfH.incrementAndGet();
+      b.i("MicroMsg.Mix.AudioPcmStreamPlayComponent", "play_count:%d, fail_count:%d", new Object[] { Integer.valueOf(dfI.get()), Integer.valueOf(dfH.get()) });
       b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "audio track not initialized");
-      if (this.aUW != null) {
-        b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.aUW.getState()) });
+      if (this.bfq != null) {
+        b.e("MicroMsg.Mix.AudioPcmStreamPlayComponent", "AudioTrack getState:%d", new Object[] { Integer.valueOf(this.bfq.getState()) });
       }
       try
       {
-        this.aUW.release();
-        this.aUW = null;
+        this.bfq.release();
+        this.bfq = null;
         AppMethodBeat.o(136951);
         return false;
       }

@@ -2,19 +2,21 @@ package com.tencent.mm.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class RefreshLoadMoreLayout$e
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
-  public static final e Jyk;
+  public static final e Lrr;
   
   static
   {
     AppMethodBeat.i(164577);
-    Jyk = new e();
+    Lrr = new e();
     AppMethodBeat.o(164577);
   }
   

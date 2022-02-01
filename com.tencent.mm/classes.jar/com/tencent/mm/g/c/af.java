@@ -8,43 +8,43 @@ public abstract class af
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elV;
-  private static final int eng;
-  private static final int eqO = "flag".hashCode();
-  private static final int erA;
-  private static final int erB;
-  private static final int erC;
-  private static final int erD;
-  private static final int erE;
-  private static final int erF;
-  private static final int erG;
-  private static final int erH;
-  private static final int erI;
-  private static final int erJ = "atAll".hashCode();
-  private static final int erv = "bizChatId".hashCode();
-  private static final int erw = "brandUserName".hashCode();
-  private static final int erx = "unReadCount".hashCode();
-  private static final int ery = "newUnReadCount".hashCode();
-  private static final int erz = "lastMsgID".hashCode();
+  private static final int eDc;
+  private static final int eEm;
+  private static final int eHX = "flag".hashCode();
+  private static final int eIE = "bizChatId".hashCode();
+  private static final int eIF = "brandUserName".hashCode();
+  private static final int eIG = "unReadCount".hashCode();
+  private static final int eIH = "newUnReadCount".hashCode();
+  private static final int eII = "lastMsgID".hashCode();
+  private static final int eIJ = "lastMsgTime".hashCode();
+  private static final int eIK;
+  private static final int eIL;
+  private static final int eIM;
+  private static final int eIN;
+  private static final int eIO;
+  private static final int eIP;
+  private static final int eIQ;
+  private static final int eIR;
+  private static final int eIS = "atAll".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean elS = true;
-  private boolean emI = true;
-  private boolean eqM = true;
-  private boolean erg = true;
-  private boolean erh = true;
-  private boolean eri = true;
-  private boolean erj = true;
-  private boolean erk = true;
-  private boolean erl = true;
-  private boolean erm = true;
-  private boolean ern = true;
-  private boolean ero = true;
-  private boolean erp = true;
-  private boolean erq = true;
-  private boolean err = true;
-  private boolean ers = true;
-  private boolean ert = true;
-  private boolean eru = true;
+  private boolean eCZ = true;
+  private boolean eDP = true;
+  private boolean eHV = true;
+  private boolean eIA = true;
+  private boolean eIB = true;
+  private boolean eIC = true;
+  private boolean eID = true;
+  private boolean eIp = true;
+  private boolean eIq = true;
+  private boolean eIr = true;
+  private boolean eIs = true;
+  private boolean eIt = true;
+  private boolean eIu = true;
+  private boolean eIv = true;
+  private boolean eIw = true;
+  private boolean eIx = true;
+  private boolean eIy = true;
+  private boolean eIz = true;
   public int field_atAll;
   public int field_atCount;
   public long field_bizChatId;
@@ -66,17 +66,16 @@ public abstract class af
   
   static
   {
-    erA = "lastMsgTime".hashCode();
-    eng = "content".hashCode();
-    erB = "digest".hashCode();
-    erC = "digestUser".hashCode();
-    erD = "atCount".hashCode();
-    erE = "editingMsg".hashCode();
-    erF = "chatType".hashCode();
-    elV = "status".hashCode();
-    erG = "isSend".hashCode();
-    erH = "msgType".hashCode();
-    erI = "msgCount".hashCode();
+    eEm = "content".hashCode();
+    eIK = "digest".hashCode();
+    eIL = "digestUser".hashCode();
+    eIM = "atCount".hashCode();
+    eIN = "editingMsg".hashCode();
+    eIO = "chatType".hashCode();
+    eDc = "status".hashCode();
+    eIP = "isSend".hashCode();
+    eIQ = "msgType".hashCode();
+    eIR = "msgCount".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -92,11 +91,11 @@ public abstract class af
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (erv != k) {
+      if (eIE != k) {
         break label65;
       }
       this.field_bizChatId = paramCursor.getLong(i);
-      this.erg = true;
+      this.eIp = true;
     }
     for (;;)
     {
@@ -104,39 +103,39 @@ public abstract class af
       break label20;
       break;
       label65:
-      if (erw == k) {
+      if (eIF == k) {
         this.field_brandUserName = paramCursor.getString(i);
-      } else if (erx == k) {
+      } else if (eIG == k) {
         this.field_unReadCount = paramCursor.getInt(i);
-      } else if (ery == k) {
+      } else if (eIH == k) {
         this.field_newUnReadCount = paramCursor.getInt(i);
-      } else if (erz == k) {
+      } else if (eII == k) {
         this.field_lastMsgID = paramCursor.getLong(i);
-      } else if (erA == k) {
+      } else if (eIJ == k) {
         this.field_lastMsgTime = paramCursor.getLong(i);
-      } else if (eng == k) {
+      } else if (eEm == k) {
         this.field_content = paramCursor.getString(i);
-      } else if (erB == k) {
+      } else if (eIK == k) {
         this.field_digest = paramCursor.getString(i);
-      } else if (erC == k) {
+      } else if (eIL == k) {
         this.field_digestUser = paramCursor.getString(i);
-      } else if (erD == k) {
+      } else if (eIM == k) {
         this.field_atCount = paramCursor.getInt(i);
-      } else if (erE == k) {
+      } else if (eIN == k) {
         this.field_editingMsg = paramCursor.getString(i);
-      } else if (erF == k) {
+      } else if (eIO == k) {
         this.field_chatType = paramCursor.getInt(i);
-      } else if (elV == k) {
+      } else if (eDc == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (erG == k) {
+      } else if (eIP == k) {
         this.field_isSend = paramCursor.getInt(i);
-      } else if (erH == k) {
+      } else if (eIQ == k) {
         this.field_msgType = paramCursor.getString(i);
-      } else if (erI == k) {
+      } else if (eIR == k) {
         this.field_msgCount = paramCursor.getInt(i);
-      } else if (eqO == k) {
+      } else if (eHX == k) {
         this.field_flag = paramCursor.getLong(i);
-      } else if (erJ == k) {
+      } else if (eIS == k) {
         this.field_atAll = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -147,67 +146,67 @@ public abstract class af
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.erg) {
+    if (this.eIp) {
       localContentValues.put("bizChatId", Long.valueOf(this.field_bizChatId));
     }
-    if (this.erh) {
+    if (this.eIq) {
       localContentValues.put("brandUserName", this.field_brandUserName);
     }
-    if (this.eri) {
+    if (this.eIr) {
       localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
     }
-    if (this.erj) {
+    if (this.eIs) {
       localContentValues.put("newUnReadCount", Integer.valueOf(this.field_newUnReadCount));
     }
-    if (this.erk) {
+    if (this.eIt) {
       localContentValues.put("lastMsgID", Long.valueOf(this.field_lastMsgID));
     }
-    if (this.erl) {
+    if (this.eIu) {
       localContentValues.put("lastMsgTime", Long.valueOf(this.field_lastMsgTime));
     }
-    if (this.emI) {
+    if (this.eDP) {
       localContentValues.put("content", this.field_content);
     }
     if (this.field_digest == null) {
       this.field_digest = "";
     }
-    if (this.erm) {
+    if (this.eIv) {
       localContentValues.put("digest", this.field_digest);
     }
     if (this.field_digestUser == null) {
       this.field_digestUser = "";
     }
-    if (this.ern) {
+    if (this.eIw) {
       localContentValues.put("digestUser", this.field_digestUser);
     }
-    if (this.ero) {
+    if (this.eIx) {
       localContentValues.put("atCount", Integer.valueOf(this.field_atCount));
     }
-    if (this.erp) {
+    if (this.eIy) {
       localContentValues.put("editingMsg", this.field_editingMsg);
     }
-    if (this.erq) {
+    if (this.eIz) {
       localContentValues.put("chatType", Integer.valueOf(this.field_chatType));
     }
-    if (this.elS) {
+    if (this.eCZ) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.err) {
+    if (this.eIA) {
       localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
     }
     if (this.field_msgType == null) {
       this.field_msgType = "";
     }
-    if (this.ers) {
+    if (this.eIB) {
       localContentValues.put("msgType", this.field_msgType);
     }
-    if (this.ert) {
+    if (this.eIC) {
       localContentValues.put("msgCount", Integer.valueOf(this.field_msgCount));
     }
-    if (this.eqM) {
+    if (this.eHV) {
       localContentValues.put("flag", Long.valueOf(this.field_flag));
     }
-    if (this.eru) {
+    if (this.eID) {
       localContentValues.put("atAll", Integer.valueOf(this.field_atAll));
     }
     if (this.systemRowid > 0L) {
@@ -218,7 +217,7 @@ public abstract class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.af
  * JD-Core Version:    0.7.0.1
  */

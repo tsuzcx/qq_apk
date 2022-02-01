@@ -12,41 +12,11 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class ah
 {
-  static c KAt;
-  private static boolean KAu = false;
-  static boolean KAv = false;
+  static c MqO;
+  private static boolean MqP = false;
+  static boolean MqQ = false;
   
-  public static boolean Cc(long paramLong)
-  {
-    AppMethodBeat.i(205077);
-    if (!WebView.isXWalk())
-    {
-      Log.e("XWebSdk", "bind_native_trans is  not xwalk now");
-      AppMethodBeat.o(205077);
-      return false;
-    }
-    try
-    {
-      j.a locala = j.g(WebView.c.KzZ);
-      if (locala == null)
-      {
-        AppMethodBeat.o(205077);
-        return false;
-      }
-      locala.excute("STR_CMD_NATIVE_TRANS_INIT", new Object[] { Long.valueOf(paramLong) });
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("XWebSdk", "invokeExtension failed");
-      }
-    }
-    AppMethodBeat.o(205077);
-    return true;
-  }
-  
-  public static a D(String paramString, Object paramObject)
+  public static a B(String paramString, Object paramObject)
   {
     int i = 0;
     AppMethodBeat.i(156937);
@@ -89,7 +59,7 @@ public final class ah
       continue;
       try
       {
-        paramString = j.g(WebView.c.KzZ);
+        paramString = j.g(WebView.c.Mqu);
         if (paramString != null)
         {
           paramString.excute("BASE_CONTEXT_CHANGED", new Object[] { paramObject });
@@ -103,11 +73,41 @@ public final class ah
     }
   }
   
+  public static boolean Fe(long paramLong)
+  {
+    AppMethodBeat.i(197088);
+    if (!WebView.isXWalk())
+    {
+      Log.e("XWebSdk", "bind_native_trans is  not xwalk now");
+      AppMethodBeat.o(197088);
+      return false;
+    }
+    try
+    {
+      j.a locala = j.g(WebView.c.Mqu);
+      if (locala == null)
+      {
+        AppMethodBeat.o(197088);
+        return false;
+      }
+      locala.excute("STR_CMD_NATIVE_TRANS_INIT", new Object[] { Long.valueOf(paramLong) });
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("XWebSdk", "invokeExtension failed");
+      }
+    }
+    AppMethodBeat.o(197088);
+    return true;
+  }
+  
   public static void a(c paramc)
   {
     try
     {
-      KAt = paramc;
+      MqO = paramc;
       return;
     }
     finally
@@ -141,31 +141,31 @@ public final class ah
     }
   }
   
-  public static boolean fJP()
+  public static boolean gbj()
   {
-    AppMethodBeat.i(205076);
+    AppMethodBeat.i(197087);
     if (!WebView.isXWalk())
     {
       Log.e("XWebSdk", "hasXWebFeature not xwalk now");
-      AppMethodBeat.o(205076);
+      AppMethodBeat.o(197087);
       return false;
     }
     Object localObject = l(80003, new Object[] { Integer.valueOf(2009) });
     if ((localObject instanceof Boolean))
     {
       boolean bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(205076);
+      AppMethodBeat.o(197087);
       return bool;
     }
-    AppMethodBeat.o(205076);
+    AppMethodBeat.o(197087);
     return false;
   }
   
-  public static c fJQ()
+  public static c gbk()
   {
     try
     {
-      c localc = KAt;
+      c localc = MqO;
       return localc;
     }
     finally
@@ -176,7 +176,7 @@ public final class ah
   }
   
   /* Error */
-  public static void fJR()
+  public static void gbl()
   {
     // Byte code:
     //   0: iconst_0
@@ -185,20 +185,20 @@ public final class ah
     //   4: monitorenter
     //   5: ldc 170
     //   7: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 16	com/tencent/xweb/ah:KAu	Z
+    //   10: getstatic 16	com/tencent/xweb/ah:MqP	Z
     //   13: ifeq +12 -> 25
     //   16: ldc 170
-    //   18: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: ldc 2
     //   23: monitorexit
     //   24: return
     //   25: invokestatic 123	org/xwalk/core/XWalkEnvironment:getApplicationContext	()Landroid/content/Context;
     //   28: ifnonnull +26 -> 54
-    //   31: ldc 38
+    //   31: ldc 84
     //   33: ldc 172
-    //   35: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   35: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   38: ldc 170
-    //   40: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   40: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: goto -22 -> 21
     //   46: astore 4
     //   48: ldc 2
@@ -213,16 +213,16 @@ public final class ah
     //   69: getfield 183	android/content/pm/ApplicationInfo:targetSdkVersion	I
     //   72: bipush 28
     //   74: if_icmpge +18 -> 92
-    //   77: ldc 38
+    //   77: ldc 84
     //   79: ldc 185
     //   81: invokestatic 187	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   84: ldc 170
-    //   86: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: goto -68 -> 21
     //   92: getstatic 192	android/os/Build$VERSION:SDK_INT	I
     //   95: bipush 28
     //   97: if_icmplt +543 -> 640
-    //   100: ldc 38
+    //   100: ldc 84
     //   102: ldc 194
     //   104: invokestatic 187	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   107: aconst_null
@@ -245,7 +245,7 @@ public final class ah
     //   143: astore 5
     //   145: aload 5
     //   147: astore 4
-    //   149: ldc 38
+    //   149: ldc 84
     //   151: ldc 209
     //   153: aload 5
     //   155: invokestatic 212	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
@@ -269,9 +269,9 @@ public final class ah
     //   199: aload 5
     //   201: invokevirtual 234	java/io/File:exists	()Z
     //   204: ifne +161 -> 365
-    //   207: ldc 38
+    //   207: ldc 84
     //   209: ldc 236
-    //   211: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   211: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   214: aconst_null
     //   215: astore 5
     //   217: iconst_0
@@ -299,23 +299,23 @@ public final class ah
     //   261: invokevirtual 251	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   264: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   267: astore 5
-    //   269: ldc 38
+    //   269: ldc 84
     //   271: ldc 253
     //   273: aload 5
     //   275: invokestatic 212	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   278: invokevirtual 216	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   281: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   281: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   284: ldc2_w 254
     //   287: ldc2_w 256
     //   290: lconst_1
-    //   291: invokestatic 263	com/tencent/xweb/util/g:r	(JJJ)V
+    //   291: invokestatic 263	com/tencent/xweb/util/g:t	(JJJ)V
     //   294: ldc_w 265
     //   297: ldc_w 267
     //   300: iconst_1
     //   301: anewarray 269	java/lang/Class
     //   304: dup
     //   305: iconst_0
-    //   306: ldc 89
+    //   306: ldc 39
     //   308: aastore
     //   309: iconst_1
     //   310: anewarray 4	java/lang/Object
@@ -326,12 +326,12 @@ public final class ah
     //   318: invokestatic 275	com/tencent/xweb/util/f:b	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   321: pop
     //   322: iconst_1
-    //   323: putstatic 16	com/tencent/xweb/ah:KAu	Z
+    //   323: putstatic 16	com/tencent/xweb/ah:MqP	Z
     //   326: ldc 170
-    //   328: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   328: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   331: goto -310 -> 21
     //   334: astore 5
-    //   336: ldc 38
+    //   336: ldc 84
     //   338: new 131	java/lang/StringBuilder
     //   341: dup
     //   342: ldc_w 277
@@ -340,7 +340,7 @@ public final class ah
     //   350: invokevirtual 140	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   353: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   356: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   359: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   362: goto -194 -> 168
     //   365: new 279	java/io/RandomAccessFile
     //   368: dup
@@ -361,7 +361,7 @@ public final class ah
     //   398: istore_0
     //   399: goto -7 -> 392
     //   402: astore 5
-    //   404: ldc 38
+    //   404: ldc 84
     //   406: new 131	java/lang/StringBuilder
     //   409: dup
     //   410: ldc_w 296
@@ -370,14 +370,14 @@ public final class ah
     //   418: invokevirtual 140	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   421: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   424: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   427: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   427: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   430: iload_1
     //   431: istore_2
     //   432: goto -194 -> 238
     //   435: astore 5
     //   437: iconst_0
     //   438: istore_1
-    //   439: ldc 38
+    //   439: ldc 84
     //   441: new 131	java/lang/StringBuilder
     //   444: dup
     //   445: ldc_w 298
@@ -386,11 +386,11 @@ public final class ah
     //   453: invokevirtual 140	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   456: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   459: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   462: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   462: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   465: ldc2_w 254
     //   468: ldc2_w 299
     //   471: lconst_1
-    //   472: invokestatic 263	com/tencent/xweb/util/g:r	(JJJ)V
+    //   472: invokestatic 263	com/tencent/xweb/util/g:t	(JJJ)V
     //   475: iload_3
     //   476: istore_0
     //   477: iload_1
@@ -402,7 +402,7 @@ public final class ah
     //   487: invokespecial 303	java/lang/NullPointerException:<init>	()V
     //   490: athrow
     //   491: astore 5
-    //   493: ldc 38
+    //   493: ldc 84
     //   495: new 131	java/lang/StringBuilder
     //   498: dup
     //   499: ldc_w 296
@@ -411,13 +411,13 @@ public final class ah
     //   507: invokevirtual 140	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   510: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   513: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   516: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   516: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   519: iload_3
     //   520: istore_0
     //   521: iload_1
     //   522: istore_2
     //   523: goto -285 -> 238
-    //   526: astore 4
+    //   526: astore 5
     //   528: iconst_0
     //   529: ifeq +11 -> 540
     //   532: new 302	java/lang/NullPointerException
@@ -425,33 +425,33 @@ public final class ah
     //   536: invokespecial 303	java/lang/NullPointerException:<init>	()V
     //   539: athrow
     //   540: ldc 170
-    //   542: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   545: aload 4
+    //   542: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   545: aload 5
     //   547: athrow
-    //   548: astore 5
-    //   550: ldc 38
+    //   548: astore 4
+    //   550: ldc 84
     //   552: new 131	java/lang/StringBuilder
     //   555: dup
     //   556: ldc_w 296
     //   559: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   562: aload 5
+    //   562: aload 4
     //   564: invokevirtual 140	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   567: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   570: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   573: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   573: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   576: goto -36 -> 540
     //   579: aload 4
     //   581: astore 5
     //   583: iload_0
     //   584: ifeq -290 -> 294
-    //   587: ldc 38
+    //   587: ldc 84
     //   589: ldc_w 305
     //   592: invokestatic 187	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   595: aload 4
     //   597: astore 5
     //   599: goto -305 -> 294
     //   602: astore 4
-    //   604: ldc 38
+    //   604: ldc 84
     //   606: new 131	java/lang/StringBuilder
     //   609: dup
     //   610: ldc_w 307
@@ -460,13 +460,13 @@ public final class ah
     //   618: invokevirtual 140	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   621: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   624: invokevirtual 147	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   627: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   627: invokestatic 92	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   630: ldc2_w 254
     //   633: ldc2_w 308
     //   636: lconst_1
-    //   637: invokestatic 263	com/tencent/xweb/util/g:r	(JJJ)V
+    //   637: invokestatic 263	com/tencent/xweb/util/g:t	(JJJ)V
     //   640: ldc 170
-    //   642: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   642: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   645: goto -624 -> 21
     //   648: astore 5
     //   650: iconst_1
@@ -483,17 +483,17 @@ public final class ah
     //   1	519	3	m	int
     //   46	6	4	localObject1	Object
     //   108	146	4	localObject2	Object
-    //   526	70	4	localObject3	Object
-    //   602	15	4	localException1	Exception
-    //   113	203	5	localObject4	Object
-    //   334	36	5	localException2	Exception
+    //   548	48	4	localException1	Exception
+    //   602	15	4	localException2	Exception
+    //   113	203	5	localObject3	Object
+    //   334	36	5	localException3	Exception
     //   383	3	5	localFileLock	java.nio.channels.FileLock
-    //   402	15	5	localException3	Exception
-    //   435	17	5	localException4	Exception
-    //   491	15	5	localException5	Exception
-    //   548	15	5	localException6	Exception
-    //   581	17	5	localObject5	Object
-    //   648	1	5	localException7	Exception
+    //   402	15	5	localException4	Exception
+    //   435	17	5	localException5	Exception
+    //   491	15	5	localException6	Exception
+    //   526	20	5	localObject4	Object
+    //   581	17	5	localException7	Exception
+    //   648	1	5	localException8	Exception
     // Exception table:
     //   from	to	target	type
     //   5	21	46	finally
@@ -533,36 +533,36 @@ public final class ah
     //   365	385	648	java/lang/Exception
   }
   
-  public static void fJS()
+  public static void gbm()
   {
     AppMethodBeat.i(185176);
     Log.i("XWebSdk", "set wati for xweb = true");
-    KAv = true;
+    MqQ = true;
     AppMethodBeat.o(185176);
   }
   
-  public static boolean fJT()
+  public static boolean gbn()
   {
-    return KAv;
+    return MqQ;
   }
   
   public static Object l(int paramInt, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(205075);
+    AppMethodBeat.i(197086);
     try
     {
-      j.a locala = j.g(WebView.c.KzZ);
+      j.a locala = j.g(WebView.c.Mqu);
       if (locala != null)
       {
         paramArrayOfObject = locala.excute("STR_CMD_INVOKE_TO_RUNTIME", new Object[] { Integer.valueOf(paramInt), paramArrayOfObject });
-        AppMethodBeat.o(205075);
+        AppMethodBeat.o(197086);
         return paramArrayOfObject;
       }
     }
     catch (Exception paramArrayOfObject)
     {
       Log.e("XWebSdk", "invokeExtension failed");
-      AppMethodBeat.o(205075);
+      AppMethodBeat.o(197086);
     }
     return null;
   }

@@ -10,23 +10,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.game.model.ai;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class j
   extends BitmapDrawable
   implements u.a
 {
-  private static Bitmap cIi;
-  private static ao hfE;
-  private Runnable hfG;
+  private static Bitmap cTq;
+  private static ap hxM;
+  private Runnable hxO;
   private String mUrl;
-  private Bitmap tqa;
+  private Bitmap uox;
   
   static
   {
     AppMethodBeat.i(42083);
-    hfE = new ao(Looper.getMainLooper());
+    hxM = new ap(Looper.getMainLooper());
     AppMethodBeat.o(42083);
   }
   
@@ -36,7 +36,15 @@ public final class j
   {
     super(paramBitmap);
     AppMethodBeat.i(42079);
-    this.hfG = new j.1(this);
+    this.hxO = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(42076);
+        j.this.invalidateSelf();
+        AppMethodBeat.o(42076);
+      }
+    };
     paramBitmap = getPaint();
     paramBitmap.setAntiAlias(true);
     paramBitmap.setFilterBitmap(true);
@@ -48,11 +56,11 @@ public final class j
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(42081);
-    if ((this.tqa != null) && (!this.tqa.isRecycled()))
+    if ((this.uox != null) && (!this.uox.isRecycled()))
     {
       Rect localRect1 = getBounds();
-      Rect localRect2 = new Rect(0, 0, this.tqa.getWidth(), this.tqa.getHeight());
-      paramCanvas.drawBitmap(this.tqa, localRect2, localRect1, getPaint());
+      Rect localRect2 = new Rect(0, 0, this.uox.getWidth(), this.uox.getHeight());
+      paramCanvas.drawBitmap(this.uox, localRect2, localRect1, getPaint());
       AppMethodBeat.o(42081);
       return;
     }
@@ -65,9 +73,9 @@ public final class j
     AppMethodBeat.i(42080);
     if ((this.mUrl != null) && (this.mUrl.hashCode().equals(paramString)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      ac.i("MicroMsg.GameDrawable", "onGerPictureFinish() function has been invoke.");
-      this.tqa = paramBitmap;
-      hfE.post(this.hfG);
+      ad.i("MicroMsg.GameDrawable", "onGerPictureFinish() function has been invoke.");
+      this.uox = paramBitmap;
+      hxM.post(this.hxO);
     }
     AppMethodBeat.o(42080);
   }
@@ -77,13 +85,13 @@ public final class j
     AppMethodBeat.i(42082);
     if ((paramString != null) && (!paramString.equals(this.mUrl)))
     {
-      ac.i("MicroMsg.GameDrawable", "set a new url for the drawable,url:[%s]", new Object[] { paramString });
+      ad.i("MicroMsg.GameDrawable", "set a new url for the drawable,url:[%s]", new Object[] { paramString });
       this.mUrl = paramString;
       paramString = u.a(new ai(this.mUrl));
       if ((paramString != null) && (!paramString.isRecycled())) {
-        this.tqa = paramString;
+        this.uox = paramString;
       }
-      hfE.post(this.hfG);
+      hxM.post(this.hxO);
     }
     AppMethodBeat.o(42082);
   }

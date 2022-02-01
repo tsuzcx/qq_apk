@@ -4,7 +4,7 @@ public abstract interface c
 {
   public abstract String getNonce();
   
-  public abstract String gge();
+  public abstract String gyI();
 }
 
 

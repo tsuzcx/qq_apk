@@ -4,7 +4,7 @@ import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/activity/ToolsRecordUI;", "Lcom/tencent/mm/plugin/recordvideo/activity/MMRecordUI;", "()V", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/activity/ToolsRecordUI;", "Lcom/tencent/mm/plugin/recordvideo/activity/MMRecordUI;", "()V", "plugin-recordvideo_release"})
 public final class ToolsRecordUI
   extends MMRecordUI
 {
@@ -16,7 +16,7 @@ public final class ToolsRecordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.activity.ToolsRecordUI
  * JD-Core Version:    0.7.0.1
  */

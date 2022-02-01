@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class aa
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String ncJ;
-  public long ndT;
-  public long ndU;
-  public String ndV;
+  public String nDg;
+  public long nEq;
+  public long nEr;
+  public String nEs;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -17,59 +17,59 @@ public final class aa
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ncJ == null)
+      if (this.nDg == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22133);
         throw paramVarArgs;
       }
-      if (this.ndV == null)
+      if (this.nEs == null)
       {
         paramVarArgs = new b("Not all required fields were included: MsgDataID");
         AppMethodBeat.o(22133);
         throw paramVarArgs;
       }
-      if (this.ncJ != null) {
-        paramVarArgs.d(1, this.ncJ);
+      if (this.nDg != null) {
+        paramVarArgs.d(1, this.nDg);
       }
-      paramVarArgs.aO(2, this.ndT);
-      paramVarArgs.aO(3, this.ndU);
-      if (this.ndV != null) {
-        paramVarArgs.d(4, this.ndV);
+      paramVarArgs.aY(2, this.nEq);
+      paramVarArgs.aY(3, this.nEr);
+      if (this.nEs != null) {
+        paramVarArgs.d(4, this.nEs);
       }
       AppMethodBeat.o(22133);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ncJ == null) {
+      if (this.nDg == null) {
         break label472;
       }
     }
     label472:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ncJ) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.nDg) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.p(2, this.ndT) + f.a.a.b.b.a.p(3, this.ndU);
+      int i = paramInt + f.a.a.b.b.a.p(2, this.nEq) + f.a.a.b.b.a.p(3, this.nEr);
       paramInt = i;
-      if (this.ndV != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.ndV);
+      if (this.nEs != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.nEs);
       }
       AppMethodBeat.o(22133);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.ncJ == null)
+        if (this.nDg == null)
         {
           paramVarArgs = new b("Not all required fields were included: BakChatName");
           AppMethodBeat.o(22133);
           throw paramVarArgs;
         }
-        if (this.ndV == null)
+        if (this.nEs == null)
         {
           paramVarArgs = new b("Not all required fields were included: MsgDataID");
           AppMethodBeat.o(22133);
@@ -88,19 +88,19 @@ public final class aa
           AppMethodBeat.o(22133);
           return -1;
         case 1: 
-          localaa.ncJ = locala.LVo.readString();
+          localaa.nDg = locala.NPN.readString();
           AppMethodBeat.o(22133);
           return 0;
         case 2: 
-          localaa.ndT = locala.LVo.xG();
+          localaa.nEq = locala.NPN.zd();
           AppMethodBeat.o(22133);
           return 0;
         case 3: 
-          localaa.ndU = locala.LVo.xG();
+          localaa.nEr = locala.NPN.zd();
           AppMethodBeat.o(22133);
           return 0;
         }
-        localaa.ndV = locala.LVo.readString();
+        localaa.nEs = locala.NPN.readString();
         AppMethodBeat.o(22133);
         return 0;
       }

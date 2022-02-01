@@ -16,15 +16,15 @@ public class d<T extends a>
   public d(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
     this(new a(paramDouble1, paramDouble2, paramDouble3, paramDouble4));
-    AppMethodBeat.i(192342);
-    AppMethodBeat.o(192342);
+    AppMethodBeat.i(193053);
+    AppMethodBeat.o(193053);
   }
   
   private d(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, int paramInt)
   {
     this(new a(paramDouble1, paramDouble2, paramDouble3, paramDouble4), paramInt);
-    AppMethodBeat.i(192343);
-    AppMethodBeat.o(192343);
+    AppMethodBeat.i(193054);
+    AppMethodBeat.o(193054);
   }
   
   public d(a parama)
@@ -40,7 +40,7 @@ public class d<T extends a>
   
   private void a(double paramDouble1, double paramDouble2, T paramT)
   {
-    AppMethodBeat.i(192345);
+    AppMethodBeat.i(193056);
     d locald = this;
     while (locald.d != null) {
       if (paramDouble2 < locald.a.f)
@@ -64,15 +64,15 @@ public class d<T extends a>
     if ((locald.c.size() > 50) && (locald.b < 40)) {
       locald.b();
     }
-    AppMethodBeat.o(192345);
+    AppMethodBeat.o(193056);
   }
   
   private void a(a parama, Collection<T> paramCollection)
   {
-    AppMethodBeat.i(192351);
+    AppMethodBeat.i(193062);
     if (!this.a.a(parama))
     {
-      AppMethodBeat.o(192351);
+      AppMethodBeat.o(193062);
       return;
     }
     Iterator localIterator;
@@ -82,7 +82,7 @@ public class d<T extends a>
       while (localIterator.hasNext()) {
         ((d)localIterator.next()).a(parama, paramCollection);
       }
-      AppMethodBeat.o(192351);
+      AppMethodBeat.o(193062);
       return;
     }
     if (this.c != null)
@@ -90,7 +90,7 @@ public class d<T extends a>
       if (parama.b(this.a))
       {
         paramCollection.addAll(this.c);
-        AppMethodBeat.o(192351);
+        AppMethodBeat.o(193062);
         return;
       }
       localIterator = this.c.iterator();
@@ -102,12 +102,12 @@ public class d<T extends a>
         }
       }
     }
-    AppMethodBeat.o(192351);
+    AppMethodBeat.o(193062);
   }
   
   private void b()
   {
-    AppMethodBeat.i(192346);
+    AppMethodBeat.i(193057);
     this.d = new ArrayList(4);
     this.d.add(new d(this.a.a, this.a.e, this.a.b, this.a.f, this.b + 1));
     this.d.add(new d(this.a.e, this.a.c, this.a.b, this.a.f, this.b + 1));
@@ -121,12 +121,12 @@ public class d<T extends a>
       a locala = (a)((Iterator)localObject).next();
       a(locala.getPoint().a, locala.getPoint().b, locala);
     }
-    AppMethodBeat.o(192346);
+    AppMethodBeat.o(193057);
   }
   
   private boolean b(double paramDouble1, double paramDouble2, T paramT)
   {
-    AppMethodBeat.i(192348);
+    AppMethodBeat.i(193059);
     d locald = this;
     while (locald.d != null) {
       if (paramDouble2 < locald.a.f)
@@ -144,50 +144,50 @@ public class d<T extends a>
       }
     }
     boolean bool = locald.c.remove(paramT);
-    AppMethodBeat.o(192348);
+    AppMethodBeat.o(193059);
     return bool;
   }
   
   public Collection<T> a(a parama)
   {
-    AppMethodBeat.i(192350);
+    AppMethodBeat.i(193061);
     ArrayList localArrayList = new ArrayList();
     a(parama, localArrayList);
-    AppMethodBeat.o(192350);
+    AppMethodBeat.o(193061);
     return localArrayList;
   }
   
   public void a()
   {
-    AppMethodBeat.i(192349);
+    AppMethodBeat.i(193060);
     this.d = null;
     if (this.c != null) {
       this.c.clear();
     }
-    AppMethodBeat.o(192349);
+    AppMethodBeat.o(193060);
   }
   
   public void a(T paramT)
   {
-    AppMethodBeat.i(192344);
+    AppMethodBeat.i(193055);
     b localb = paramT.getPoint();
     if (this.a.a(localb.a, localb.b)) {
       a(localb.a, localb.b, paramT);
     }
-    AppMethodBeat.o(192344);
+    AppMethodBeat.o(193055);
   }
   
   public boolean b(T paramT)
   {
-    AppMethodBeat.i(192347);
+    AppMethodBeat.i(193058);
     b localb = paramT.getPoint();
     if (this.a.a(localb.a, localb.b))
     {
       boolean bool = b(localb.a, localb.b, paramT);
-      AppMethodBeat.o(192347);
+      AppMethodBeat.o(193058);
       return bool;
     }
-    AppMethodBeat.o(192347);
+    AppMethodBeat.o(193058);
     return false;
   }
   
@@ -198,7 +198,7 @@ public class d<T extends a>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.a.d
  * JD-Core Version:    0.7.0.1
  */

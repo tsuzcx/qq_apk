@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cqa;
-import com.tencent.mm.protocal.protobuf.cqb;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cvf;
+import com.tencent.mm.protocal.protobuf.cvg;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
-  extends a<cqa, cqb>
+  extends a<cvf, cvg>
 {
-  public e(cqa paramcqa)
+  public e(cvf paramcvf)
   {
-    this.ugo = paramcqa;
+    this.viY = paramcvf;
   }
   
-  protected final void cYA()
+  protected final void dhM()
   {
     AppMethodBeat.i(64879);
-    ac.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiStart ");
+    ad.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiStart ");
     AppMethodBeat.o(64879);
   }
   
-  protected final void cYB()
+  protected final void dhN()
   {
     AppMethodBeat.i(64880);
-    ac.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiEnd ");
+    ad.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiEnd ");
     AppMethodBeat.o(64880);
   }
   
@@ -39,7 +39,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.a.e
  * JD-Core Version:    0.7.0.1
  */

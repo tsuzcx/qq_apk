@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gallery.picker.view;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/gallery/picker/view/ImageCropUI$Companion;", "", "()V", "BMP_HEIGHT", "", "BMP_WIDTH", "CHATTING_FOOT_HEIGHT_DP", "", "COMPRESS_QUALITY", "CUSTOM_EMOJI_TYPE_GIF", "CUSTOM_EMOJI_TYPE_PNG", "LONG_IMAGE_LIMIT", "LONG_IMAGE_MAX_MULTIPLE", "MAT_BMP_HEIGHT", "MAT_BMP_WIDTH", "TAG", "", "plugin-gallery_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/view/ImageCropUI$Companion;", "", "()V", "BMP_HEIGHT", "", "BMP_WIDTH", "CHATTING_FOOT_HEIGHT_DP", "", "COMPRESS_QUALITY", "CUSTOM_EMOJI_TYPE_GIF", "CUSTOM_EMOJI_TYPE_PNG", "LONG_IMAGE_LIMIT", "LONG_IMAGE_MAX_MULTIPLE", "MAT_BMP_HEIGHT", "MAT_BMP_WIDTH", "TAG", "", "plugin-gallery_release"})
 public final class ImageCropUI$a {}
 
 

@@ -5,63 +5,63 @@ import android.webkit.JavascriptInterface;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ut;
+import com.tencent.mm.g.a.vm;
 import com.tencent.mm.plugin.box.c.c;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class d
 {
-  c nua;
+  c nVq;
   
   public d(c paramc)
   {
-    this.nua = paramc;
+    this.nVq = paramc;
   }
   
   @JavascriptInterface
   public void closePage()
   {
     AppMethodBeat.i(76362);
-    ac.i("MicroMsg.Box.BoxWebViewJSApi", "closePage");
-    this.nua.dismiss();
+    ad.i("MicroMsg.Box.BoxWebViewJSApi", "closePage");
+    this.nVq.dismiss();
     AppMethodBeat.o(76362);
   }
   
   public final void f(String paramString1, int paramInt, final String paramString2, String paramString3)
   {
     AppMethodBeat.i(76363);
-    ac.i("MicroMsg.Box.BoxWebViewJSApi", "onDataReady %s %s %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    ad.i("MicroMsg.Box.BoxWebViewJSApi", "onDataReady %s %s %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     try
     {
       paramString2 = new JSONObject();
       paramString2.put("requestId", paramString1);
       paramString2.put("ret", paramInt);
       paramString2.put("data", paramString3);
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         @TargetApi(7)
         public final void run()
         {
           AppMethodBeat.i(76356);
           Object localObject = paramString2.toString();
-          c localc = d.this.nua;
+          c localc = d.this.nVq;
           try
           {
-            boolean bool = bs.isNullOrNil("requestCompleted");
+            boolean bool = bt.isNullOrNil("requestCompleted");
             if (bool)
             {
               AppMethodBeat.o(76356);
               return;
             }
-            String str = bs.nullAsNil((String)localObject);
-            if ((!bs.isNullOrNil(str)) && (str.length() > 50)) {}
+            String str = bt.nullAsNil((String)localObject);
+            if ((!bt.isNullOrNil(str)) && (str.length() > 50)) {}
             for (localObject = str.substring(0, 50);; localObject = str)
             {
-              ac.i("MicroMsg.Box.BoxJsEventNotifier", "notifyJsEvent %s %s", new Object[] { "requestCompleted", localObject });
+              ad.i("MicroMsg.Box.BoxJsEventNotifier", "notifyJsEvent %s %s", new Object[] { "requestCompleted", localObject });
               localObject = String.format("javascript:boxJSApi['%s'] && boxJSApi.%s(%s)", new Object[] { "requestCompleted", "requestCompleted", str });
               localc.getBoxWebView().evaluateJavascript((String)localObject, null);
               AppMethodBeat.o(76356);
@@ -71,7 +71,7 @@ public class d
           }
           catch (Exception localException)
           {
-            ac.printErrStackTrace("MicroMsg.Box.BoxJsEventNotifier", localException, "notifyJsEvent", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.Box.BoxJsEventNotifier", localException, "notifyJsEvent", new Object[0]);
             AppMethodBeat.o(76356);
           }
         }
@@ -92,7 +92,7 @@ public class d
     try
     {
       paramString = new JSONObject(paramString);
-      ac.i("MicroMsg.Box.BoxWebViewJSApi", "[%s][%s]", new Object[] { paramString.optString("level", ""), paramString.optString("msg", "") });
+      ad.i("MicroMsg.Box.BoxWebViewJSApi", "[%s][%s]", new Object[] { paramString.optString("level", ""), paramString.optString("msg", "") });
       AppMethodBeat.o(76361);
       return;
     }
@@ -106,17 +106,17 @@ public class d
   public void openWeAppPage(String paramString)
   {
     AppMethodBeat.i(76359);
-    ac.i("MicroMsg.Box.BoxWebViewJSApi", "openWeAppPage %s", new Object[] { paramString });
+    ad.i("MicroMsg.Box.BoxWebViewJSApi", "openWeAppPage %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
       String str1 = paramString.optString("userName", "");
       String str2 = paramString.optString("relativeURL", "");
-      ut localut = new ut();
-      localut.dxt.userName = str1;
-      localut.dxt.dxv = str2;
-      localut.dxt.scene = paramString.optInt("scene", 1000);
-      a.GpY.l(localut);
+      vm localvm = new vm();
+      localvm.dJF.userName = str1;
+      localvm.dJF.dJH = str2;
+      localvm.dJF.scene = paramString.optInt("scene", 1000);
+      a.IbL.l(localvm);
       AppMethodBeat.o(76359);
       return;
     }
@@ -130,13 +130,13 @@ public class d
   public void reportKV(String paramString)
   {
     AppMethodBeat.i(76360);
-    ac.i("MicroMsg.Box.BoxWebViewJSApi", "reportKV %s", new Object[] { paramString });
+    ad.i("MicroMsg.Box.BoxWebViewJSApi", "reportKV %s", new Object[] { paramString });
     try
     {
       paramString = new JSONObject(paramString);
       int i = paramString.optInt("logid", 0);
       paramString = paramString.optString("msg", "");
-      com.tencent.mm.plugin.report.e.wTc.kvStat(i, paramString);
+      com.tencent.mm.plugin.report.e.ygI.kvStat(i, paramString);
       AppMethodBeat.o(76360);
       return;
     }
@@ -150,13 +150,13 @@ public class d
   public void request(String paramString)
   {
     AppMethodBeat.i(76357);
-    ac.i("MicroMsg.Box.BoxWebViewJSApi", "request %s", new Object[] { paramString });
+    ad.i("MicroMsg.Box.BoxWebViewJSApi", "request %s", new Object[] { paramString });
     try
     {
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("requestId", "");
       localObject = ((JSONObject)localObject).optString("data", "");
-      this.nua.bIK().ey(paramString, (String)localObject);
+      this.nVq.bNa().eH(paramString, (String)localObject);
       AppMethodBeat.o(76357);
       return;
     }
@@ -170,8 +170,8 @@ public class d
   public void webviewUIReady()
   {
     AppMethodBeat.i(76358);
-    ac.i("MicroMsg.Box.BoxWebViewJSApi", "webviewUIReady");
-    h.JZN.aQ(new Runnable()
+    ad.i("MicroMsg.Box.BoxWebViewJSApi", "webviewUIReady");
+    h.LTJ.aP(new Runnable()
     {
       public final void run()
       {
@@ -184,7 +184,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.box.webview.d
  * JD-Core Version:    0.7.0.1
  */

@@ -16,30 +16,18 @@ import java.util.HashMap;
 public final class d
   implements Cursor, com.tencent.mm.storagebase.a.d
 {
-  private static Cursor Hbn;
+  private static Cursor IOC;
   
-  public static Cursor fdy()
+  public static Cursor ftG()
   {
     AppMethodBeat.i(133330);
-    if (Hbn == null) {
-      Hbn = new d();
+    if (IOC == null) {
+      IOC = new d();
     }
-    Cursor localCursor = Hbn;
+    Cursor localCursor = IOC;
     AppMethodBeat.o(133330);
     return localCursor;
   }
-  
-  public final boolean YZ(int paramInt)
-  {
-    return false;
-  }
-  
-  public final a Za(int paramInt)
-  {
-    return null;
-  }
-  
-  public final void Zb(int paramInt) {}
   
   public final void a(f.a parama) {}
   
@@ -48,35 +36,47 @@ public final class d
     return false;
   }
   
-  public final void close() {}
-  
-  public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
-  
-  public final boolean dU(Object paramObject)
+  public final boolean abi(int paramInt)
   {
     return false;
   }
   
-  public final a dV(Object paramObject)
+  public final a abj(int paramInt)
+  {
+    return null;
+  }
+  
+  public final void abk(int paramInt) {}
+  
+  public final void close() {}
+  
+  public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
+  
+  public final boolean dX(Object paramObject)
+  {
+    return false;
+  }
+  
+  public final a dY(Object paramObject)
   {
     return null;
   }
   
   public final void deactivate() {}
   
-  public final HashMap fdA()
+  public final SparseArray[] ftH()
   {
     return null;
   }
   
-  public final boolean fdB()
+  public final HashMap ftI()
+  {
+    return null;
+  }
+  
+  public final boolean ftJ()
   {
     return false;
-  }
-  
-  public final SparseArray[] fdz()
-  {
-    return null;
   }
   
   public final byte[] getBlob(int paramInt)
@@ -251,7 +251,7 @@ public final class d
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
   
-  public final void wg(boolean paramBoolean) {}
+  public final void wS(boolean paramBoolean) {}
 }
 
 

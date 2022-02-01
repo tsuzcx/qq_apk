@@ -13,7 +13,7 @@ import com.tencent.kinda.gen.KMoneyInputText;
 import com.tencent.kinda.gen.KMoneyInputTextOnTextChangedCallback;
 import com.tencent.kinda.gen.KMoneyInputTextOnkeyBoardVisibleAnchorCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.ui.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public class MMMoneyInputText
@@ -37,12 +37,18 @@ public class MMMoneyInputText
     this.contentTv.setBackgroundResource(2131233299);
     this.contentTv.setOnClickListener(new View.OnClickListener()
     {
+      private byte _hellAccFlag_;
+      
       public void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(19286);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if ((paramContext instanceof BaseFrActivity)) {
           ((BaseFrActivity)paramContext).hideTenpayKB();
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/kinda/framework/widget/base/MMMoneyInputText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(19286);
       }
     });
@@ -73,7 +79,7 @@ public class MMMoneyInputText
     if ((paramContext instanceof BaseFrActivity))
     {
       ((BaseFrActivity)paramContext).setEditFocusListener(this.contentView, 2, false);
-      ((BaseFrActivity)paramContext).setTenpayKBStateListener(new a()
+      ((BaseFrActivity)paramContext).setTenpayKBStateListener(new com.tencent.mm.wallet_core.ui.a()
       {
         public void onVisibleStateChange(boolean paramAnonymousBoolean)
         {

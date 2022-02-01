@@ -5,43 +5,43 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public JSONObject bVY;
-  String bWk;
-  public int bWl;
-  private boolean bWm;
-  private f bWp;
-  boolean bWq;
-  public String bWr;
-  public JSONObject bWs;
+  public int cgA;
+  private boolean cgB;
+  private f cgE;
+  boolean cgF;
+  public String cgG;
+  public JSONObject cgH;
+  public JSONObject cgn;
+  String cgz;
   
   k(f paramf, m paramm, boolean paramBoolean)
   {
     AppMethodBeat.i(140325);
-    this.bWp = paramf;
-    paramf = paramm.Ak();
-    this.bWk = paramf.getString("method");
-    this.bVY = paramf.optJSONObject("data");
-    if (this.bVY == null) {
-      this.bVY = new JSONObject("{}");
+    this.cgE = paramf;
+    paramf = paramm.BH();
+    this.cgz = paramf.getString("method");
+    this.cgn = paramf.optJSONObject("data");
+    if (this.cgn == null) {
+      this.cgn = new JSONObject("{}");
     }
-    this.bWq = paramBoolean;
-    this.bWl = paramf.optInt("callbackId", 0);
-    this.bWm = false;
-    this.bWs = new JSONObject();
+    this.cgF = paramBoolean;
+    this.cgA = paramf.optInt("callbackId", 0);
+    this.cgB = false;
+    this.cgH = new JSONObject();
     AppMethodBeat.o(140325);
   }
   
-  public final void Am()
+  public final void BJ()
   {
     AppMethodBeat.i(140327);
-    this.bWp.a(An());
+    this.cgE.a(BK());
     AppMethodBeat.o(140327);
   }
   
-  final e An()
+  final e BK()
   {
     AppMethodBeat.i(140328);
-    c localc = new c(this.bWl, this.bWr, this.bWs, this.bWm);
+    c localc = new c(this.cgA, this.cgG, this.cgH, this.cgB);
     AppMethodBeat.o(140328);
     return localc;
   }
@@ -53,13 +53,13 @@ public final class k
     if (paramString == null) {
       str = "";
     }
-    this.bWr = str;
+    this.cgG = str;
     if (paramJSONObject != null) {}
     for (;;)
     {
-      this.bWs = paramJSONObject;
-      if (this.bWl != 0) {
-        Am();
+      this.cgH = paramJSONObject;
+      if (this.cgA != 0) {
+        BJ();
       }
       AppMethodBeat.o(140326);
       return;

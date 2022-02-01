@@ -1,126 +1,15 @@
 package com.tencent.mm.plugin.scanner.model;
 
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.scanner.api.BaseScanRequest;
-import com.tencent.mm.plugin.scanner.ui.widget.ScanNetworkMaskView;
-import com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView;
-import com.tencent.mm.plugin.scanner.view.BaseScanMaskView;
-import com.tencent.mm.plugin.scanner.view.b.a;
-import d.g.b.k;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/model/ScanNetworkViewHelper;", "", "()V", "isLoadingShow", "", "loadingCancelListener", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "networkMaskView", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanNetworkMaskView;", "scanMaskView", "Lcom/tencent/mm/plugin/scanner/view/BaseScanMaskView;", "Lcom/tencent/mm/plugin/scanner/api/BaseScanRequest;", "sharedMaskView", "Lcom/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView;", "cancelLoading", "", "setOnCancelListener", "cancelListener", "setScanMaskView", "showLoadingView", "show", "withAnimation", "showNetworkUnconnectedView", "showNetworkWeakView", "Companion", "plugin-scan_release"})
-public final class x
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/model/ScanGoodsResourceLoadCallback;", "", "onLoadResult", "", "errCode", "", "errMsg", "", "plugin-scan_release"})
+public abstract interface x
 {
-  public static final x.a wZU;
-  public BaseScanMaskView<BaseScanRequest> wZP;
-  public ScanSharedMaskView wZQ;
-  public ScanNetworkMaskView wZR;
-  public boolean wZS;
-  public b.a wZT;
-  
-  static
-  {
-    AppMethodBeat.i(170035);
-    wZU = new x.a((byte)0);
-    AppMethodBeat.o(170035);
-  }
-  
-  public final void Y(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(170034);
-    Object localObject1;
-    Object localObject2;
-    if (paramBoolean1)
-    {
-      localObject1 = this.wZP;
-      if (localObject1 == null) {
-        break label153;
-      }
-      localObject1 = ((BaseScanMaskView)localObject1).getTargetSuccessMarkView();
-      localObject2 = this.wZR;
-      if (localObject2 != null) {
-        ((ScanNetworkMaskView)localObject2).setSuccessMarkView((View)localObject1);
-      }
-    }
-    if (this.wZS != paramBoolean1)
-    {
-      this.wZS = paramBoolean1;
-      localObject1 = this.wZQ;
-      boolean bool;
-      if (localObject1 != null)
-      {
-        if (!paramBoolean1)
-        {
-          bool = true;
-          label75:
-          ((ScanSharedMaskView)localObject1).qj(bool);
-        }
-      }
-      else
-      {
-        localObject1 = this.wZR;
-        if (localObject1 != null)
-        {
-          if (!paramBoolean1) {
-            break label173;
-          }
-          if (((ScanNetworkMaskView)localObject1).xka != null)
-          {
-            if ((localObject1.xkc[0] != 0) || (localObject1.xkc[1] != 0)) {
-              break label164;
-            }
-            ((ScanNetworkMaskView)localObject1).xkl = true;
-          }
-        }
-      }
-      for (;;)
-      {
-        localObject1 = this.wZP;
-        if (localObject1 == null) {
-          break label230;
-        }
-        ((BaseScanMaskView)localObject1).qd(paramBoolean1);
-        AppMethodBeat.o(170034);
-        return;
-        label153:
-        localObject1 = null;
-        break;
-        bool = false;
-        break label75;
-        label164:
-        ((ScanNetworkMaskView)localObject1).qf(paramBoolean2);
-        continue;
-        label173:
-        ((ScanNetworkMaskView)localObject1).setVisibility(8);
-        ((ScanNetworkMaskView)localObject1).wZS = false;
-        localObject2 = ((ScanNetworkMaskView)localObject1).sDw;
-        if (localObject2 == null) {
-          k.aVY("loadingLayout");
-        }
-        ((View)localObject2).setVisibility(8);
-        localObject1 = ((ScanNetworkMaskView)localObject1).xkd;
-        if (localObject1 != null) {
-          ((Animation)localObject1).cancel();
-        }
-      }
-    }
-    label230:
-    AppMethodBeat.o(170034);
-  }
-  
-  public final void a(BaseScanMaskView<BaseScanRequest> paramBaseScanMaskView, ScanSharedMaskView paramScanSharedMaskView, ScanNetworkMaskView paramScanNetworkMaskView)
-  {
-    this.wZP = paramBaseScanMaskView;
-    this.wZQ = paramScanSharedMaskView;
-    this.wZR = paramScanNetworkMaskView;
-  }
+  public abstract void bX(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.x
  * JD-Core Version:    0.7.0.1
  */

@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.fav.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.i.a.e;
-import com.tencent.mm.protocal.protobuf.agv;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.agy;
-import com.tencent.mm.protocal.protobuf.agz;
-import com.tencent.mm.protocal.protobuf.aha;
-import com.tencent.mm.protocal.protobuf.ahe;
-import com.tencent.mm.protocal.protobuf.ahf;
-import com.tencent.mm.protocal.protobuf.ahm;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.protocal.protobuf.ahw;
-import com.tencent.mm.protocal.protobuf.aic;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.protocal.protobuf.ajl;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajo;
+import com.tencent.mm.protocal.protobuf.ajp;
+import com.tencent.mm.protocal.protobuf.ajq;
+import com.tencent.mm.protocal.protobuf.aju;
+import com.tencent.mm.protocal.protobuf.ajv;
+import com.tencent.mm.protocal.protobuf.akc;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akm;
+import com.tencent.mm.protocal.protobuf.aks;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.io.ByteArrayInputStream;
 import java.util.LinkedList;
 import java.util.Map;
@@ -29,10 +29,10 @@ import org.xml.sax.InputSource;
 
 public final class c
 {
-  public static void a(String paramString, ahn paramahn)
+  public static void a(String paramString, akd paramakd)
   {
     AppMethodBeat.i(103499);
-    paramahn.nxC.clear();
+    paramakd.nZa.clear();
     Object localObject1 = DocumentBuilderFactory.newInstance();
     for (;;)
     {
@@ -56,228 +56,228 @@ public final class c
           break label4268;
         }
         localObject1 = localNodeList.item(i);
-        paramString = bv.b((Node)localObject1);
+        paramString = bw.b((Node)localObject1);
         localObject1 = ((Element)localObject1).getElementsByTagName("recordxml");
         if ((localObject1 == null) || (((NodeList)localObject1).getLength() <= 0)) {
           break label4279;
         }
-        localObject1 = bv.b(((NodeList)localObject1).item(0).getFirstChild());
+        localObject1 = bw.b(((NodeList)localObject1).item(0).getFirstChild());
         if (!paramString.trim().startsWith("<dataitem")) {
           break label4274;
         }
-        paramString = bv.L(paramString, "dataitem");
+        paramString = bw.M(paramString, "dataitem");
         if (paramString == null) {
           break label4285;
         }
-        agx localagx = new agx();
-        localagx.XM(bs.getInt((String)paramString.get(".dataitem" + ".$datatype"), 0));
-        localagx.aIU((String)paramString.get(".dataitem" + ".$datasourceid"));
-        localagx.XN(bs.getInt((String)paramString.get(".dataitem" + ".$datastatus"), 0));
-        localagx.aIM((String)paramString.get(".dataitem" + ".datafmt"));
-        localagx.aIC((String)paramString.get(".dataitem" + ".datatitle"));
-        localagx.aID((String)paramString.get(".dataitem" + ".datadesc"));
-        localagx.aIE((String)paramString.get(".dataitem" + ".cdn_thumburl"));
-        localagx.aIF((String)paramString.get(".dataitem" + ".cdn_thumbkey"));
-        localagx.XJ(bs.getInt((String)paramString.get(".dataitem" + ".thumb_width"), 0));
-        localagx.XK(bs.getInt((String)paramString.get(".dataitem" + ".thumb_height"), 0));
-        localagx.aIG((String)paramString.get(".dataitem" + ".cdn_dataurl"));
-        localagx.aIH((String)paramString.get(".dataitem" + ".cdn_datakey"));
+        ajn localajn = new ajn();
+        localajn.ZI(bt.getInt((String)paramString.get(".dataitem" + ".$datatype"), 0));
+        localajn.aOx((String)paramString.get(".dataitem" + ".$datasourceid"));
+        localajn.ZJ(bt.getInt((String)paramString.get(".dataitem" + ".$datastatus"), 0));
+        localajn.aOp((String)paramString.get(".dataitem" + ".datafmt"));
+        localajn.aOf((String)paramString.get(".dataitem" + ".datatitle"));
+        localajn.aOg((String)paramString.get(".dataitem" + ".datadesc"));
+        localajn.aOh((String)paramString.get(".dataitem" + ".cdn_thumburl"));
+        localajn.aOi((String)paramString.get(".dataitem" + ".cdn_thumbkey"));
+        localajn.ZF(bt.getInt((String)paramString.get(".dataitem" + ".thumb_width"), 0));
+        localajn.ZG(bt.getInt((String)paramString.get(".dataitem" + ".thumb_height"), 0));
+        localajn.aOj((String)paramString.get(".dataitem" + ".cdn_dataurl"));
+        localajn.aOk((String)paramString.get(".dataitem" + ".cdn_datakey"));
         localObject2 = (String)paramString.get(".dataitem" + ".duration");
         if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
-          localagx.XL(bs.getInt((String)localObject2, 0));
+          localajn.ZH(bt.getInt((String)localObject2, 0));
         }
-        localagx.aIJ((String)paramString.get(".dataitem" + ".stream_dataurl"));
-        localagx.aIK((String)paramString.get(".dataitem" + ".stream_lowbandurl"));
-        localagx.aII((String)paramString.get(".dataitem" + ".stream_weburl"));
-        localagx.aJi((String)paramString.get(".dataitem" + ".songalbumurl"));
-        localagx.aJj((String)paramString.get(".dataitem" + ".songlyric"));
-        localagx.aJb((String)paramString.get(".dataitem" + ".canvasPageXml"));
-        localagx.aIN((String)paramString.get(".dataitem" + ".fullmd5"));
-        localagx.aIO((String)paramString.get(".dataitem" + ".head256md5"));
+        localajn.aOm((String)paramString.get(".dataitem" + ".stream_dataurl"));
+        localajn.aOn((String)paramString.get(".dataitem" + ".stream_lowbandurl"));
+        localajn.aOl((String)paramString.get(".dataitem" + ".stream_weburl"));
+        localajn.aOL((String)paramString.get(".dataitem" + ".songalbumurl"));
+        localajn.aOM((String)paramString.get(".dataitem" + ".songlyric"));
+        localajn.aOE((String)paramString.get(".dataitem" + ".canvasPageXml"));
+        localajn.aOq((String)paramString.get(".dataitem" + ".fullmd5"));
+        localajn.aOr((String)paramString.get(".dataitem" + ".head256md5"));
         localObject2 = (String)paramString.get(".dataitem" + ".fullsize");
-        if (!bs.isNullOrNil((String)localObject2)) {
-          localagx.zS(bs.getInt((String)localObject2, 0));
+        if (!bt.isNullOrNil((String)localObject2)) {
+          localajn.CG(bt.getInt((String)localObject2, 0));
         }
-        localagx.aIL((String)paramString.get(".dataitem" + ".dataext"));
-        localagx.aIS((String)paramString.get(".dataitem" + ".thumbfullmd5"));
-        localagx.aIT((String)paramString.get(".dataitem" + ".thumbhead256md5"));
+        localajn.aOo((String)paramString.get(".dataitem" + ".dataext"));
+        localajn.aOv((String)paramString.get(".dataitem" + ".thumbfullmd5"));
+        localajn.aOw((String)paramString.get(".dataitem" + ".thumbhead256md5"));
         localObject2 = (String)paramString.get(".dataitem" + ".thumbfullsize");
-        if (!bs.isNullOrNil((String)localObject2)) {
-          localagx.zT(bs.getInt((String)localObject2, 0));
+        if (!bt.isNullOrNil((String)localObject2)) {
+          localajn.CH(bt.getInt((String)localObject2, 0));
         }
-        localagx.aIV((String)paramString.get(".dataitem" + ".stream_videoid"));
+        localajn.aOy((String)paramString.get(".dataitem" + ".stream_videoid"));
         localObject3 = (String)paramString.get(".dataitem" + ".$dataid");
-        if (!bs.isNullOrNil((String)localObject3))
+        if (!bt.isNullOrNil((String)localObject3))
         {
           localObject2 = localObject3;
           if (((String)localObject3).length() >= 32) {}
         }
         else
         {
-          localObject2 = com.tencent.mm.plugin.fav.a.b.cY(localagx.toString(), localagx.dataType);
+          localObject2 = com.tencent.mm.plugin.fav.a.b.di(localajn.toString(), localajn.dataType);
         }
-        localagx.aIP((String)localObject2);
-        localagx.aIW((String)paramString.get(".dataitem" + ".datasrctitle"));
-        localagx.aIX((String)paramString.get(".dataitem" + ".datasrcname"));
-        localagx.aIY((String)paramString.get(".dataitem" + ".datasrctime"));
-        localagx.aJa((String)paramString.get(".dataitem" + ".statextstr"));
-        localagx.aIZ((String)paramString.get(".dataitem" + ".$htmlid"));
-        localagx.XO(bs.getInt((String)paramString.get(".dataitem" + ".$dataillegaltype"), 0));
-        localagx.aJk((String)paramString.get(".dataitem" + ".messageuuid"));
+        localajn.aOs((String)localObject2);
+        localajn.aOz((String)paramString.get(".dataitem" + ".datasrctitle"));
+        localajn.aOA((String)paramString.get(".dataitem" + ".datasrcname"));
+        localajn.aOB((String)paramString.get(".dataitem" + ".datasrctime"));
+        localajn.aOD((String)paramString.get(".dataitem" + ".statextstr"));
+        localajn.aOC((String)paramString.get(".dataitem" + ".$htmlid"));
+        localajn.ZK(bt.getInt((String)paramString.get(".dataitem" + ".$dataillegaltype"), 0));
+        localajn.aON((String)paramString.get(".dataitem" + ".messageuuid"));
         if (localObject1 != null) {
-          localagx.aJc((String)localObject1);
+          localajn.aOF((String)localObject1);
         }
-        localObject1 = new aha();
-        ((aha)localObject1).hjV = bs.bG((String)paramString.get(".dataitem" + ".streamvideo.streamvideourl"), "");
-        ((aha)localObject1).EBs = bs.aLy((String)paramString.get(".dataitem" + ".streamvideo.streamvideototaltime"));
-        ((aha)localObject1).hjX = bs.bG((String)paramString.get(".dataitem" + ".streamvideo.streamvideotitle"), "");
-        ((aha)localObject1).hjY = bs.bG((String)paramString.get(".dataitem" + ".streamvideo.streamvideowording"), "");
-        ((aha)localObject1).hjZ = bs.bG((String)paramString.get(".dataitem" + ".streamvideo.streamvideoweburl"), "");
-        ((aha)localObject1).hkb = bs.bG((String)paramString.get(".dataitem" + ".streamvideo.streamvideoaduxinfo"), "");
-        ((aha)localObject1).hkc = bs.bG((String)paramString.get(".dataitem" + ".streamvideo.streamvideopublishid"), "");
-        localagx.a((aha)localObject1);
-        localObject1 = new agy();
+        localObject1 = new ajq();
+        ((ajq)localObject1).hCe = bt.bI((String)paramString.get(".dataitem" + ".streamvideo.streamvideourl"), "");
+        ((ajq)localObject1).Gje = bt.aRe((String)paramString.get(".dataitem" + ".streamvideo.streamvideototaltime"));
+        ((ajq)localObject1).hCg = bt.bI((String)paramString.get(".dataitem" + ".streamvideo.streamvideotitle"), "");
+        ((ajq)localObject1).hCh = bt.bI((String)paramString.get(".dataitem" + ".streamvideo.streamvideowording"), "");
+        ((ajq)localObject1).hCi = bt.bI((String)paramString.get(".dataitem" + ".streamvideo.streamvideoweburl"), "");
+        ((ajq)localObject1).hCk = bt.bI((String)paramString.get(".dataitem" + ".streamvideo.streamvideoaduxinfo"), "");
+        ((ajq)localObject1).hCl = bt.bI((String)paramString.get(".dataitem" + ".streamvideo.streamvideopublishid"), "");
+        localajn.a((ajq)localObject1);
+        localObject1 = new ajo();
         localObject2 = ".dataitem" + ".dataitemsource";
         if (!paramString.containsKey(localObject2))
         {
-          ac.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
+          ad.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
           localObject3 = ".dataitem" + ".locitem";
           if (!paramString.containsKey(localObject3))
           {
-            ac.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject3 });
+            ad.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject3 });
             localObject2 = ".dataitem" + ".weburlitem";
             if (paramString.containsKey(localObject2)) {
               break label3121;
             }
-            ac.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
-            ((agy)localObject1).c(e.t(".dataitem", paramString));
+            ad.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
+            ((ajo)localObject1).c(e.v(".dataitem", paramString));
             localObject2 = ".dataitem" + ".productitem";
             if (paramString.containsKey(localObject2)) {
               break label3436;
             }
-            ac.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
+            ad.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
             localObject2 = ".dataitem" + ".tvitem";
             if (paramString.containsKey(localObject2)) {
               break label3640;
             }
-            ac.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
+            ad.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
             localObject2 = ".dataitem" + ".appbranditem";
             if (paramString.containsKey(localObject2)) {
               break label3804;
             }
-            ac.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
-            localObject2 = b.r(".dataitem" + ".weburlitem.appmsgshareitem", paramString);
+            ad.v("MicroMsg.FavDataItemParser", "cur fav not contains %s", new Object[] { localObject2 });
+            localObject2 = b.t(".dataitem" + ".weburlitem.appmsgshareitem", paramString);
             if (localObject2 != null) {
-              ((agy)localObject1).d((ahf)localObject2);
+              ((ajo)localObject1).d((ajv)localObject2);
             }
-            paramString = b.s(".dataitem" + ".favbrandmpvideo", paramString);
+            paramString = b.u(".dataitem" + ".favbrandmpvideo", paramString);
             if (paramString != null) {
-              ((agy)localObject1).e(paramString);
+              ((ajo)localObject1).e(paramString);
             }
-            localagx.a((agy)localObject1);
-            paramahn.nxC.add(localagx);
+            localajn.a((ajo)localObject1);
+            paramakd.nZa.add(localajn);
             break label4285;
           }
         }
         else
         {
-          localObject3 = new agz();
-          ((agz)localObject3).XQ(bs.getInt((String)paramString.get((String)localObject2 + ".$sourcetype"), 0));
-          ((agz)localObject3).aJn((String)paramString.get((String)localObject2 + ".$sourceid"));
-          ((agz)localObject3).aJl((String)paramString.get((String)localObject2 + ".fromusr"));
-          ((agz)localObject3).aJm((String)paramString.get((String)localObject2 + ".tousr"));
-          ((agz)localObject3).aJo((String)paramString.get((String)localObject2 + ".realchatname"));
-          ((agz)localObject3).zV(bs.getLong((String)paramString.get((String)localObject2 + ".createtime"), 0L));
-          ((agz)localObject3).aJp((String)paramString.get((String)localObject2 + ".msgid"));
-          ((agz)localObject3).dym = ((String)paramString.get((String)localObject2 + ".eventid"));
-          ((agz)localObject3).EBm = true;
-          ((agz)localObject3).aJq((String)paramString.get((String)localObject2 + ".appid"));
-          ((agz)localObject3).aJr((String)paramString.get((String)localObject2 + ".link"));
-          ((agz)localObject3).aJs((String)paramString.get((String)localObject2 + ".brandid"));
-          ((agy)localObject1).c((agz)localObject3);
+          localObject3 = new ajp();
+          ((ajp)localObject3).ZM(bt.getInt((String)paramString.get((String)localObject2 + ".$sourcetype"), 0));
+          ((ajp)localObject3).aOQ((String)paramString.get((String)localObject2 + ".$sourceid"));
+          ((ajp)localObject3).aOO((String)paramString.get((String)localObject2 + ".fromusr"));
+          ((ajp)localObject3).aOP((String)paramString.get((String)localObject2 + ".tousr"));
+          ((ajp)localObject3).aOR((String)paramString.get((String)localObject2 + ".realchatname"));
+          ((ajp)localObject3).CJ(bt.getLong((String)paramString.get((String)localObject2 + ".createtime"), 0L));
+          ((ajp)localObject3).aOS((String)paramString.get((String)localObject2 + ".msgid"));
+          ((ajp)localObject3).dKz = ((String)paramString.get((String)localObject2 + ".eventid"));
+          ((ajp)localObject3).GiY = true;
+          ((ajp)localObject3).aOT((String)paramString.get((String)localObject2 + ".appid"));
+          ((ajp)localObject3).aOU((String)paramString.get((String)localObject2 + ".link"));
+          ((ajp)localObject3).aOV((String)paramString.get((String)localObject2 + ".brandid"));
+          ((ajo)localObject1).c((ajp)localObject3);
           continue;
         }
-        localObject2 = new ahe();
+        localObject2 = new aju();
       }
       catch (Exception paramString)
       {
-        ac.e("MicroMsg.FavProtoItemParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
+        ad.e("MicroMsg.FavProtoItemParser", "[parser] parseXML exception:%s", new Object[] { paramString.toString() });
         AppMethodBeat.o(103499);
         return;
       }
-      if (!bs.isNullOrNil((String)paramString.get((String)localObject3 + ".label"))) {
-        ((ahe)localObject2).aJt((String)paramString.get((String)localObject3 + ".label"));
+      if (!bt.isNullOrNil((String)paramString.get((String)localObject3 + ".label"))) {
+        ((aju)localObject2).aOW((String)paramString.get((String)localObject3 + ".label"));
       }
-      if (!bs.isNullOrNil((String)paramString.get((String)localObject3 + ".poiname"))) {
-        ((ahe)localObject2).aJu((String)paramString.get((String)localObject3 + ".poiname"));
+      if (!bt.isNullOrNil((String)paramString.get((String)localObject3 + ".poiname"))) {
+        ((aju)localObject2).aOX((String)paramString.get((String)localObject3 + ".poiname"));
       }
       String str = (String)paramString.get((String)localObject3 + ".lng");
-      if (!bs.isNullOrNil(str)) {
-        ((ahe)localObject2).A(bs.getDouble(str, 0.0D));
+      if (!bt.isNullOrNil(str)) {
+        ((aju)localObject2).A(bt.getDouble(str, 0.0D));
       }
       str = (String)paramString.get((String)localObject3 + ".lat");
-      if (!bs.isNullOrNil(str)) {
-        ((ahe)localObject2).B(bs.getDouble(str, 0.0D));
+      if (!bt.isNullOrNil(str)) {
+        ((aju)localObject2).B(bt.getDouble(str, 0.0D));
       }
       Object localObject3 = (String)paramString.get((String)localObject3 + ".scale");
-      if (!bs.isNullOrNil((String)localObject3))
+      if (!bt.isNullOrNil((String)localObject3))
       {
         if (((String)localObject3).indexOf('.') == -1) {
           break label3106;
         }
-        ((ahe)localObject2).XR(bs.getInt(((String)localObject3).substring(0, ((String)localObject3).indexOf('.')), -1));
+        ((aju)localObject2).ZN(bt.getInt(((String)localObject3).substring(0, ((String)localObject3).indexOf('.')), -1));
       }
       for (;;)
       {
-        ((agy)localObject1).c((ahe)localObject2);
+        ((ajo)localObject1).c((aju)localObject2);
         break;
         label3106:
-        ((ahe)localObject2).XR(bs.getInt((String)localObject3, -1));
+        ((aju)localObject2).ZN(bt.getInt((String)localObject3, -1));
       }
       label3121:
-      localObject3 = new aic();
-      ((aic)localObject3).aJR((String)paramString.get((String)localObject2 + ".clean_url"));
-      ((aic)localObject3).aJQ((String)paramString.get((String)localObject2 + ".pagedesc"));
-      ((aic)localObject3).aJS((String)paramString.get((String)localObject2 + ".pagethumb_url"));
-      ((aic)localObject3).aJP((String)paramString.get((String)localObject2 + ".pagetitle"));
-      ((aic)localObject3).XW(bs.getInt((String)paramString.get((String)localObject2 + ".opencache"), 0));
-      ((aic)localObject3).XX(bs.getInt((String)paramString.get((String)localObject2 + ".contentattr"), 0));
-      ((aic)localObject3).aJT((String)paramString.get((String)localObject2 + ".canvasPageXml"));
-      ((aic)localObject3).aJU((String)paramString.get((String)localObject2 + ".wsVideoFlowXml"));
-      ((agy)localObject1).a((aic)localObject3);
+      localObject3 = new aks();
+      ((aks)localObject3).aPu((String)paramString.get((String)localObject2 + ".clean_url"));
+      ((aks)localObject3).aPt((String)paramString.get((String)localObject2 + ".pagedesc"));
+      ((aks)localObject3).aPv((String)paramString.get((String)localObject2 + ".pagethumb_url"));
+      ((aks)localObject3).aPs((String)paramString.get((String)localObject2 + ".pagetitle"));
+      ((aks)localObject3).ZS(bt.getInt((String)paramString.get((String)localObject2 + ".opencache"), 0));
+      ((aks)localObject3).ZT(bt.getInt((String)paramString.get((String)localObject2 + ".contentattr"), 0));
+      ((aks)localObject3).aPw((String)paramString.get((String)localObject2 + ".canvasPageXml"));
+      ((aks)localObject3).aPx((String)paramString.get((String)localObject2 + ".wsVideoFlowXml"));
+      ((ajo)localObject1).a((aks)localObject3);
       continue;
       label3436:
-      localObject3 = new ahm();
-      ((ahm)localObject3).aJv((String)paramString.get((String)localObject2 + ".producttitle"));
-      ((ahm)localObject3).aJw((String)paramString.get((String)localObject2 + ".productdesc"));
-      ((ahm)localObject3).aJx((String)paramString.get((String)localObject2 + ".productthumb_url"));
-      ((ahm)localObject3).aJy((String)paramString.get((String)localObject2 + ".productinfo"));
-      ((ahm)localObject3).XS(bs.getInt((String)paramString.get((String)localObject2 + ".$type"), 0));
-      ((agy)localObject1).a((ahm)localObject3);
+      localObject3 = new akc();
+      ((akc)localObject3).aOY((String)paramString.get((String)localObject2 + ".producttitle"));
+      ((akc)localObject3).aOZ((String)paramString.get((String)localObject2 + ".productdesc"));
+      ((akc)localObject3).aPa((String)paramString.get((String)localObject2 + ".productthumb_url"));
+      ((akc)localObject3).aPb((String)paramString.get((String)localObject2 + ".productinfo"));
+      ((akc)localObject3).ZO(bt.getInt((String)paramString.get((String)localObject2 + ".$type"), 0));
+      ((ajo)localObject1).a((akc)localObject3);
       continue;
       label3640:
-      localObject3 = new ahw();
-      ((ahw)localObject3).aJL((String)paramString.get((String)localObject2 + ".tvtitle"));
-      ((ahw)localObject3).aJM((String)paramString.get((String)localObject2 + ".tvdesc"));
-      ((ahw)localObject3).aJN((String)paramString.get((String)localObject2 + ".tvthumb_url"));
-      ((ahw)localObject3).aJO((String)paramString.get((String)localObject2 + ".tvinfo"));
-      ((agy)localObject1).a((ahw)localObject3);
+      localObject3 = new akm();
+      ((akm)localObject3).aPo((String)paramString.get((String)localObject2 + ".tvtitle"));
+      ((akm)localObject3).aPp((String)paramString.get((String)localObject2 + ".tvdesc"));
+      ((akm)localObject3).aPq((String)paramString.get((String)localObject2 + ".tvthumb_url"));
+      ((akm)localObject3).aPr((String)paramString.get((String)localObject2 + ".tvinfo"));
+      ((ajo)localObject1).a((akm)localObject3);
       continue;
       label3804:
-      localObject3 = new agv();
-      ((agv)localObject3).username = ((String)paramString.get((String)localObject2 + ".username"));
-      ((agv)localObject3).appId = ((String)paramString.get((String)localObject2 + ".appid"));
-      ((agv)localObject3).dib = bs.getInt((String)paramString.get((String)localObject2 + ".pkgtype"), 0);
-      ((agv)localObject3).iconUrl = ((String)paramString.get((String)localObject2 + ".iconurl"));
-      ((agv)localObject3).type = bs.getInt((String)paramString.get((String)localObject2 + ".type"), 0);
-      ((agv)localObject3).cYQ = ((String)paramString.get((String)localObject2 + ".pagepath"));
-      ((agv)localObject3).EyV = ((String)paramString.get((String)localObject2 + ".sourcedisplayname"));
-      ((agv)localObject3).version = bs.getInt((String)paramString.get((String)localObject2 + ".version"), 0);
-      ((agv)localObject3).jWX = bs.getInt((String)paramString.get((String)localObject2 + ".disableforward"), 0);
-      ((agv)localObject3).ccR = bs.getInt((String)paramString.get((String)localObject2 + ".tradingguaranteeflag"), 0);
-      ((agv)localObject3).dxK = ((String)paramString.get((String)localObject2 + ".messageextradata"));
-      ((agv)localObject3).subType = bs.getInt((String)paramString.get((String)localObject2 + ".subtype"), 0);
-      ((agy)localObject1).b((agv)localObject3);
+      localObject3 = new ajl();
+      ((ajl)localObject3).username = ((String)paramString.get((String)localObject2 + ".username"));
+      ((ajl)localObject3).appId = ((String)paramString.get((String)localObject2 + ".appid"));
+      ((ajl)localObject3).dtF = bt.getInt((String)paramString.get((String)localObject2 + ".pkgtype"), 0);
+      ((ajl)localObject3).iconUrl = ((String)paramString.get((String)localObject2 + ".iconurl"));
+      ((ajl)localObject3).type = bt.getInt((String)paramString.get((String)localObject2 + ".type"), 0);
+      ((ajl)localObject3).dki = ((String)paramString.get((String)localObject2 + ".pagepath"));
+      ((ajl)localObject3).GgH = ((String)paramString.get((String)localObject2 + ".sourcedisplayname"));
+      ((ajl)localObject3).version = bt.getInt((String)paramString.get((String)localObject2 + ".version"), 0);
+      ((ajl)localObject3).kro = bt.getInt((String)paramString.get((String)localObject2 + ".disableforward"), 0);
+      ((ajl)localObject3).jXI = bt.getInt((String)paramString.get((String)localObject2 + ".tradingguaranteeflag"), 0);
+      ((ajl)localObject3).dJW = ((String)paramString.get((String)localObject2 + ".messageextradata"));
+      ((ajl)localObject3).subType = bt.getInt((String)paramString.get((String)localObject2 + ".subtype"), 0);
+      ((ajo)localObject1).b((ajl)localObject3);
       continue;
       label4268:
       AppMethodBeat.o(103499);
@@ -293,73 +293,73 @@ public final class c
     }
   }
   
-  public static ahn c(ahn paramahn)
+  public static akd c(akd paramakd)
   {
     AppMethodBeat.i(103500);
-    if (paramahn == null)
+    if (paramakd == null)
     {
       AppMethodBeat.o(103500);
       return null;
     }
-    ahn localahn = new ahn();
-    if (paramahn.EBK) {
-      localahn.a(paramahn.EBJ);
+    akd localakd = new akd();
+    if (paramakd.Gjw) {
+      localakd.a(paramakd.Gjv);
     }
-    if (paramahn.EBL) {
-      localahn.bk(paramahn.nxC);
+    if (paramakd.Gjx) {
+      localakd.bl(paramakd.nZa);
     }
-    if (paramahn.EAJ) {
-      localahn.d(paramahn.EAI);
+    if (paramakd.Giv) {
+      localakd.d(paramakd.Giu);
     }
-    if (paramahn.EAL) {
-      localahn.b(paramahn.EAK);
+    if (paramakd.Gix) {
+      localakd.b(paramakd.Giw);
     }
-    if (paramahn.EAQ) {
-      localahn.aJz(paramahn.iAC);
+    if (paramakd.GiC) {
+      localakd.aPc(paramakd.iTM);
     }
-    if (paramahn.EyY) {
-      localahn.aJA(paramahn.title);
+    if (paramakd.GgK) {
+      localakd.aPd(paramakd.title);
     }
-    if (paramahn.EyZ) {
-      localahn.aJB(paramahn.desc);
+    if (paramakd.GgL) {
+      localakd.aPe(paramakd.desc);
     }
-    if (paramahn.EAS) {
-      localahn.zW(paramahn.EAR);
+    if (paramakd.GiE) {
+      localakd.CK(paramakd.GiD);
     }
-    if (paramahn.EAU) {
-      localahn.XT(paramahn.EAT);
+    if (paramakd.GiG) {
+      localakd.ZP(paramakd.GiF);
     }
-    if (paramahn.EAN) {
-      localahn.b(paramahn.EAM);
+    if (paramakd.Giz) {
+      localakd.b(paramakd.Giy);
     }
-    if (paramahn.EAV) {
-      localahn.zX(paramahn.pmI);
+    if (paramakd.GiH) {
+      localakd.CL(paramakd.pQi);
     }
-    if (paramahn.EAP) {
-      localahn.b(paramahn.EAO);
+    if (paramakd.GiB) {
+      localakd.b(paramakd.GiA);
     }
-    if (paramahn.EBM) {
-      localahn.XU(paramahn.version);
+    if (paramakd.Gjy) {
+      localakd.ZQ(paramakd.version);
     }
-    if (paramahn.EAW) {
-      localahn.a(paramahn.DKz);
+    if (paramakd.GiI) {
+      localakd.a(paramakd.FpF);
     }
-    if (paramahn.EAY) {
-      localahn.c(paramahn.EAX);
+    if (paramakd.GiK) {
+      localakd.c(paramakd.GiJ);
     }
-    if (paramahn.EAZ) {
-      localahn.f(paramahn.CoY);
+    if (paramakd.GiL) {
+      localakd.f(paramakd.DSw);
     }
-    if (paramahn.EBd) {
-      localahn.d(paramahn.EBc);
+    if (paramakd.GiP) {
+      localakd.d(paramakd.GiO);
     }
     AppMethodBeat.o(103500);
-    return localahn;
+    return localakd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.a.c
  * JD-Core Version:    0.7.0.1
  */

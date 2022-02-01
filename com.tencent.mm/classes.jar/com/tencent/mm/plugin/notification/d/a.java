@@ -13,7 +13,7 @@ public final class a
 {
   public a()
   {
-    super(com.tencent.mm.br.c.aIo("notification"));
+    super(com.tencent.mm.bs.c.aNR("notification"));
     AppMethodBeat.i(26743);
     AppMethodBeat.o(26743);
   }
@@ -21,7 +21,7 @@ public final class a
   public final void parallelsDependency()
   {
     AppMethodBeat.i(26744);
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).by(g.ad(n.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(g.ad(n.class));
     AppMethodBeat.o(26744);
   }
 }

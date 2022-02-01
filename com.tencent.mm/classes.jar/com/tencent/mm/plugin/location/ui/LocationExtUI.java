@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.s.b;
 import java.util.ArrayList;
@@ -19,15 +19,15 @@ import java.util.ArrayList;
 public class LocationExtUI
   extends MMActivity
 {
-  private ArrayList<String> plo;
-  private TextView tYM;
-  private TextView tYN;
-  private String tYO;
+  private ArrayList<String> pOO;
+  private TextView vbv;
+  private TextView vbw;
+  private String vbx;
   
   public LocationExtUI()
   {
     AppMethodBeat.i(55812);
-    this.plo = new ArrayList();
+    this.pOO = new ArrayList();
     AppMethodBeat.o(55812);
   }
   
@@ -50,8 +50,8 @@ public class LocationExtUI
       if (paramIntent == null) {}
       for (paramIntent = "";; paramIntent = paramIntent.toString())
       {
-        this.tYO = paramIntent;
-        this.tYN.setText(this.tYO);
+        this.vbx = paramIntent;
+        this.vbw.setText(this.vbx);
         AppMethodBeat.o(55814);
         return;
       }
@@ -63,7 +63,7 @@ public class LocationExtUI
         AppMethodBeat.o(55814);
         return;
       }
-      this.plo.clear();
+      this.pOO.clear();
       String[] arrayOfString = paramIntent.getStringArrayExtra("key_fav_result_array");
       if ((arrayOfString == null) || (arrayOfString.length <= 0))
       {
@@ -71,16 +71,16 @@ public class LocationExtUI
         return;
       }
       paramIntent = arrayOfString[0];
-      this.plo.add(arrayOfString[0]);
+      this.pOO.add(arrayOfString[0]);
       String str = getResources().getString(2131759020);
       paramInt1 = 1;
       while (paramInt1 < arrayOfString.length)
       {
-        this.plo.add(arrayOfString[paramInt1]);
+        this.pOO.add(arrayOfString[paramInt1]);
         paramIntent = paramIntent + str + arrayOfString[paramInt1];
         paramInt1 += 1;
       }
-      this.tYM.setText(paramIntent);
+      this.vbv.setText(paramIntent);
       AppMethodBeat.o(55814);
       return;
     }
@@ -93,29 +93,36 @@ public class LocationExtUI
     AppMethodBeat.i(55813);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("Kwebmap_locaion");
-    if (bs.isNullOrNil(paramBundle)) {
+    if (bt.isNullOrNil(paramBundle)) {
       findViewById(2131301528).setVisibility(8);
     }
     for (;;)
     {
-      this.tYM = ((TextView)findViewById(2131305635));
-      this.tYN = ((TextView)findViewById(2131303977));
-      this.tYM.setOnClickListener(new View.OnClickListener()
+      this.vbv = ((TextView)findViewById(2131305635));
+      this.vbw = ((TextView)findViewById(2131303977));
+      this.vbv.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(55808);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/location/ui/LocationExtUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           paramAnonymousView = new Intent();
           paramAnonymousView.putExtra("key_fav_result_list", LocationExtUI.a(LocationExtUI.this));
-          b.a(LocationExtUI.this.getContext(), ".ui.FavTagEditUI", paramAnonymousView, 4098);
+          com.tencent.mm.plugin.fav.a.b.a(LocationExtUI.this.getContext(), ".ui.FavTagEditUI", paramAnonymousView, 4098);
+          a.a(this, "com/tencent/mm/plugin/location/ui/LocationExtUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(55808);
         }
       });
-      this.tYN.setOnClickListener(new View.OnClickListener()
+      this.vbw.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(55809);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/location/ui/LocationExtUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           paramAnonymousView = new Intent(LocationExtUI.this.getContext(), RemarkUI.class);
           paramAnonymousView.putExtra("key_nullable", true);
           paramAnonymousView.putExtra("key_value", LocationExtUI.this.getIntent().getStringExtra("key_value"));
@@ -126,6 +133,7 @@ public class LocationExtUI
           paramAnonymousView.putExtra("kFavInfoLocalId", LocationExtUI.this.getIntent().getLongExtra("kFavInfoLocalId", -1L));
           paramAnonymousView.putExtra("kRemark", LocationExtUI.this.getIntent().getStringExtra("kRemark"));
           LocationExtUI.this.startActivityForResult(paramAnonymousView, 4097);
+          a.a(this, "com/tencent/mm/plugin/location/ui/LocationExtUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(55809);
         }
       });
@@ -142,7 +150,7 @@ public class LocationExtUI
           AppMethodBeat.o(55810);
           return true;
         }
-      }, null, s.b.Hom);
+      }, null, s.b.JbS);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -167,7 +175,7 @@ public class LocationExtUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.LocationExtUI
  * JD-Core Version:    0.7.0.1
  */

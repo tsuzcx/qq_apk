@@ -9,67 +9,67 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class VoiceTipInfoView
   extends LinearLayout
 {
-  boolean AxE;
-  private boolean AxF;
-  private TextView AxG;
-  private boolean AxH;
-  private float AxI;
-  public ProgressBar iXo;
-  TextView lfN;
-  TextView vLT;
+  boolean BWZ;
+  private boolean BXa;
+  private TextView BXb;
+  private boolean BXc;
+  private float BXd;
+  public ProgressBar jqx;
+  TextView lCL;
+  TextView wTc;
   
   public VoiceTipInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(29910);
-    this.AxE = false;
-    this.AxF = false;
-    this.AxH = false;
-    this.AxI = 0.0F;
+    this.BWZ = false;
+    this.BXa = false;
+    this.BXc = false;
+    this.BXd = 0.0F;
     paramContext = LayoutInflater.from(paramContext).inflate(2131495874, this, true);
-    this.iXo = ((ProgressBar)paramContext.findViewById(2131301489));
-    der();
-    this.lfN = ((TextView)paramContext.findViewById(2131306514));
-    this.vLT = ((TextView)paramContext.findViewById(2131306516));
-    this.AxG = ((TextView)paramContext.findViewById(2131306515));
+    this.jqx = ((ProgressBar)paramContext.findViewById(2131301489));
+    dnP();
+    this.lCL = ((TextView)paramContext.findViewById(2131306514));
+    this.wTc = ((TextView)paramContext.findViewById(2131306516));
+    this.BXb = ((TextView)paramContext.findViewById(2131306515));
     reset();
     AppMethodBeat.o(29910);
   }
   
-  public final void der()
+  public final void dnP()
   {
     AppMethodBeat.i(29913);
-    ac.d("MicroMsg.VoiceTipInfoView", "mProgressBar hide");
-    this.iXo.setVisibility(8);
+    ad.d("MicroMsg.VoiceTipInfoView", "mProgressBar hide");
+    this.jqx.setVisibility(8);
     AppMethodBeat.o(29913);
   }
   
-  public final void egP()
+  public final void euA()
   {
     AppMethodBeat.i(29912);
-    ac.d("MicroMsg.VoiceTipInfoView", "mProgressBar show");
-    this.iXo.setVisibility(0);
+    ad.d("MicroMsg.VoiceTipInfoView", "mProgressBar show");
+    this.jqx.setVisibility(0);
     AppMethodBeat.o(29912);
   }
   
-  public final void egQ()
+  public final void euB()
   {
     AppMethodBeat.i(29918);
-    ac.d("MicroMsg.VoiceTipInfoView", "showTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(this.lfN.getVisibility()), Boolean.valueOf(this.AxE) });
-    if (((this.lfN.getVisibility() == 4) || (this.lfN.getVisibility() == 8)) && (!this.AxE))
+    ad.d("MicroMsg.VoiceTipInfoView", "showTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(this.lCL.getVisibility()), Boolean.valueOf(this.BWZ) });
+    if (((this.lCL.getVisibility() == 4) || (this.lCL.getVisibility() == 8)) && (!this.BWZ))
     {
-      this.lfN.clearAnimation();
-      this.AxE = true;
-      a.b(this.lfN, getContext(), new a.a()
+      this.lCL.clearAnimation();
+      this.BWZ = true;
+      a.b(this.lCL, getContext(), new a.a()
       {
-        public final void egG() {}
+        public final void eur() {}
         
-        public final void egH()
+        public final void eus()
         {
           AppMethodBeat.i(29906);
           VoiceTipInfoView.a(VoiceTipInfoView.this).setVisibility(0);
@@ -80,34 +80,34 @@ public class VoiceTipInfoView
       AppMethodBeat.o(29918);
       return;
     }
-    ac.d("MicroMsg.VoiceTipInfoView", "showTitle, directly set to VISIBLE");
-    this.lfN.clearAnimation();
-    this.lfN.setVisibility(0);
-    this.lfN.invalidate();
+    ad.d("MicroMsg.VoiceTipInfoView", "showTitle, directly set to VISIBLE");
+    this.lCL.clearAnimation();
+    this.lCL.setVisibility(0);
+    this.lCL.invalidate();
     AppMethodBeat.o(29918);
   }
   
-  public final void egR()
+  public final void euC()
   {
     AppMethodBeat.i(29919);
-    this.vLT.setVisibility(8);
+    this.wTc.setVisibility(8);
     AppMethodBeat.o(29919);
   }
   
-  public final void egS()
+  public final void euD()
   {
     AppMethodBeat.i(29920);
-    if ((this.AxG.getVisibility() == 4) && (!this.AxH))
+    if ((this.BXb.getVisibility() == 4) && (!this.BXc))
     {
-      this.AxG.clearAnimation();
-      this.AxH = true;
-      TextView localTextView = this.AxG;
+      this.BXb.clearAnimation();
+      this.BXc = true;
+      TextView localTextView = this.BXb;
       getContext();
       a.b(localTextView, new a.a()
       {
-        public final void egG() {}
+        public final void eur() {}
         
-        public final void egH()
+        public final void eus()
         {
           AppMethodBeat.i(29908);
           VoiceTipInfoView.c(VoiceTipInfoView.this).setVisibility(0);
@@ -118,23 +118,23 @@ public class VoiceTipInfoView
       AppMethodBeat.o(29920);
       return;
     }
-    this.AxG.clearAnimation();
-    this.AxG.setVisibility(0);
+    this.BXb.clearAnimation();
+    this.BXb.setVisibility(0);
     AppMethodBeat.o(29920);
   }
   
-  public final void egT()
+  public final void euE()
   {
     AppMethodBeat.i(29921);
-    if ((this.AxG.getVisibility() == 0) && (!this.AxH))
+    if ((this.BXb.getVisibility() == 0) && (!this.BXc))
     {
-      this.AxG.clearAnimation();
-      this.AxH = true;
-      a.a(this.AxG, getContext(), new a.a()
+      this.BXb.clearAnimation();
+      this.BXc = true;
+      a.a(this.BXb, getContext(), new a.a()
       {
-        public final void egG() {}
+        public final void eur() {}
         
-        public final void egH()
+        public final void eus()
         {
           AppMethodBeat.i(29909);
           VoiceTipInfoView.c(VoiceTipInfoView.this).setVisibility(4);
@@ -145,64 +145,64 @@ public class VoiceTipInfoView
       AppMethodBeat.o(29921);
       return;
     }
-    this.AxG.clearAnimation();
-    this.AxG.setVisibility(4);
+    this.BXb.clearAnimation();
+    this.BXb.setVisibility(4);
     AppMethodBeat.o(29921);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(29911);
-    this.vLT.setTextSize(0, getContext().getResources().getDimension(2131166993));
-    this.AxI = this.vLT.getTextSize();
-    this.vLT.clearAnimation();
-    ac.d("MicroMsg.VoiceTipInfoView", "mTipSize %f", new Object[] { Float.valueOf(this.AxI) });
+    this.wTc.setTextSize(0, getContext().getResources().getDimension(2131166993));
+    this.BXd = this.wTc.getTextSize();
+    this.wTc.clearAnimation();
+    ad.d("MicroMsg.VoiceTipInfoView", "mTipSize %f", new Object[] { Float.valueOf(this.BXd) });
     AppMethodBeat.o(29911);
   }
   
   public void setErr(int paramInt)
   {
     AppMethodBeat.i(29923);
-    this.AxG.setText(paramInt);
+    this.BXb.setText(paramInt);
     AppMethodBeat.o(29923);
   }
   
   public void setErr(String paramString)
   {
     AppMethodBeat.i(29922);
-    this.AxG.setText(paramString);
+    this.BXb.setText(paramString);
     AppMethodBeat.o(29922);
   }
   
   public void setTipText(int paramInt)
   {
     AppMethodBeat.i(29915);
-    this.vLT.setText(paramInt);
-    this.vLT.setVisibility(0);
+    this.wTc.setText(paramInt);
+    this.wTc.setVisibility(0);
     AppMethodBeat.o(29915);
   }
   
   public void setTipText(String paramString)
   {
     AppMethodBeat.i(29914);
-    this.vLT.setText(paramString);
-    this.vLT.setVisibility(0);
+    this.wTc.setText(paramString);
+    this.wTc.setVisibility(0);
     AppMethodBeat.o(29914);
   }
   
   public void setTitleText(int paramInt)
   {
     AppMethodBeat.i(29917);
-    this.lfN.setText(paramInt);
-    this.lfN.setVisibility(0);
+    this.lCL.setText(paramInt);
+    this.lCL.setVisibility(0);
     AppMethodBeat.o(29917);
   }
   
   public void setTitleText(String paramString)
   {
     AppMethodBeat.i(29916);
-    this.lfN.setText(paramString);
-    this.lfN.setVisibility(0);
+    this.lCL.setText(paramString);
+    this.lCL.setVisibility(0);
     AppMethodBeat.o(29916);
   }
 }

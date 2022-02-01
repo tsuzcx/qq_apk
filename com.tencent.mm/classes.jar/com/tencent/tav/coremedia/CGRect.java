@@ -11,22 +11,22 @@ public class CGRect
   
   public CGRect()
   {
-    AppMethodBeat.i(195684);
+    AppMethodBeat.i(219386);
     this.origin = new PointF();
     this.size = new CGSize();
-    AppMethodBeat.o(195684);
+    AppMethodBeat.o(219386);
   }
   
   public CGRect(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     this(new PointF(paramFloat1, paramFloat2), new CGSize(paramFloat3, paramFloat4));
-    AppMethodBeat.i(195682);
-    AppMethodBeat.o(195682);
+    AppMethodBeat.i(219384);
+    AppMethodBeat.o(219384);
   }
   
   public CGRect(PointF paramPointF, CGSize paramCGSize)
   {
-    AppMethodBeat.i(195683);
+    AppMethodBeat.i(219385);
     PointF localPointF = paramPointF;
     if (paramPointF == null) {
       localPointF = new PointF();
@@ -37,51 +37,51 @@ public class CGRect
     }
     this.origin = localPointF;
     this.size = paramPointF;
-    AppMethodBeat.o(195683);
+    AppMethodBeat.o(219385);
   }
   
   public CGRect clone()
   {
-    AppMethodBeat.i(195687);
+    AppMethodBeat.i(219389);
     CGRect localCGRect = new CGRect(this.origin.x, this.origin.y, this.size.width, this.size.height);
-    AppMethodBeat.o(195687);
+    AppMethodBeat.o(219389);
     return localCGRect;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(195685);
+    AppMethodBeat.i(219387);
     if (this == paramObject)
     {
-      AppMethodBeat.o(195685);
+      AppMethodBeat.o(219387);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(195685);
+      AppMethodBeat.o(219387);
       return false;
     }
     paramObject = (CGRect)paramObject;
     if ((this.origin.equals(paramObject.origin)) && (this.size.equals(paramObject.size)))
     {
-      AppMethodBeat.o(195685);
+      AppMethodBeat.o(219387);
       return true;
     }
-    AppMethodBeat.o(195685);
+    AppMethodBeat.o(219387);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(195686);
+    AppMethodBeat.i(219388);
     String str = "[" + this.origin + "," + this.size + "]";
-    AppMethodBeat.o(195686);
+    AppMethodBeat.o(219388);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.coremedia.CGRect
  * JD-Core Version:    0.7.0.1
  */

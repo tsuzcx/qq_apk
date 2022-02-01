@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xf
   extends b
 {
-  public a dzY;
+  public a dLA;
   
   public xf()
   {
@@ -15,21 +15,21 @@ public final class xf
   
   private xf(byte paramByte)
   {
-    AppMethodBeat.i(140993);
-    this.dzY = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19843);
+    this.dLA = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(140993);
+    AppMethodBeat.o(19843);
   }
   
   public static final class a
   {
-    public boolean cUz;
+    public String countryCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.xf
  * JD-Core Version:    0.7.0.1
  */

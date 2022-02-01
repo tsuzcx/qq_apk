@@ -1,7 +1,7 @@
 package d.l.b.a.b.k.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.an;
 import d.l.b.a.b.e.a.b;
 import d.l.b.a.b.e.b.a;
@@ -9,18 +9,18 @@ import d.l.b.a.b.e.b.c;
 
 public final class h
 {
-  final c KVO;
-  final a LHA;
-  final an LHB;
-  final a.b LHz;
+  final c MMU;
+  final a.b Nyx;
+  final a Nyy;
+  final an Nyz;
   
   public h(c paramc, a.b paramb, a parama, an paraman)
   {
     AppMethodBeat.i(60288);
-    this.KVO = paramc;
-    this.LHz = paramb;
-    this.LHA = parama;
-    this.LHB = paraman;
+    this.MMU = paramc;
+    this.Nyx = paramb;
+    this.Nyy = parama;
+    this.Nyz = paraman;
     AppMethodBeat.o(60288);
   }
   
@@ -32,7 +32,7 @@ public final class h
       if ((paramObject instanceof h))
       {
         paramObject = (h)paramObject;
-        if ((!k.g(this.KVO, paramObject.KVO)) || (!k.g(this.LHz, paramObject.LHz)) || (!k.g(this.LHA, paramObject.LHA)) || (!k.g(this.LHB, paramObject.LHB))) {}
+        if ((!p.i(this.MMU, paramObject.MMU)) || (!p.i(this.Nyx, paramObject.Nyx)) || (!p.i(this.Nyy, paramObject.Nyy)) || (!p.i(this.Nyz, paramObject.Nyz))) {}
       }
     }
     else
@@ -48,19 +48,19 @@ public final class h
   {
     int m = 0;
     AppMethodBeat.i(60290);
-    Object localObject = this.KVO;
+    Object localObject = this.MMU;
     int i;
     int j;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      localObject = this.LHz;
+      localObject = this.Nyx;
       if (localObject == null) {
         break label105;
       }
       j = localObject.hashCode();
       label42:
-      localObject = this.LHA;
+      localObject = this.Nyy;
       if (localObject == null) {
         break label110;
       }
@@ -69,7 +69,7 @@ public final class h
     label110:
     for (int k = localObject.hashCode();; k = 0)
     {
-      localObject = this.LHB;
+      localObject = this.Nyz;
       if (localObject != null) {
         m = localObject.hashCode();
       }
@@ -85,14 +85,14 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(60289);
-    String str = "ClassData(nameResolver=" + this.KVO + ", classProto=" + this.LHz + ", metadataVersion=" + this.LHA + ", sourceElement=" + this.LHB + ")";
+    String str = "ClassData(nameResolver=" + this.MMU + ", classProto=" + this.Nyx + ", metadataVersion=" + this.Nyy + ", sourceElement=" + this.Nyz + ")";
     AppMethodBeat.o(60289);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.k.a.h
  * JD-Core Version:    0.7.0.1
  */

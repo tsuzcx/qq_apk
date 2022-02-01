@@ -5,26 +5,26 @@ import java.io.InputStream;
 
 public abstract class g$b
 {
-  public static String bZh = "WAGameVConsole.html";
+  public static String cjz = "WAGameVConsole.html";
   
-  public abstract void Bb();
+  public abstract void CA();
   
-  public abstract boolean bT(String paramString);
+  public abstract boolean cM(String paramString);
   
-  public abstract InputStream bU(String paramString);
+  public abstract InputStream cN(String paramString);
   
-  public final a bW(String paramString)
+  public final a cQ(String paramString)
   {
-    InputStream localInputStream = bU(paramString);
+    InputStream localInputStream = cN(paramString);
     if (localInputStream == null) {
       return null;
     }
-    return new a(d.aIh(paramString), "UTF-8", localInputStream);
+    return new a(d.aNJ(paramString), "UTF-8", localInputStream);
   }
   
   public final class a
   {
-    public InputStream aDF;
+    public InputStream aFw;
     public String charset;
     public String mimeType;
     
@@ -32,7 +32,7 @@ public abstract class g$b
     {
       this.mimeType = paramString1;
       this.charset = paramString2;
-      this.aDF = paramInputStream;
+      this.aFw = paramInputStream;
     }
   }
 }

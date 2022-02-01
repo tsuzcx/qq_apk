@@ -1,159 +1,51 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.os.Build.VERSION;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.d;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.plugin.sight.base.a;
-import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.vfs.i;
-import d.g.b.k;
-import d.n.n;
-import java.io.IOException;
+import com.tencent.mm.protocal.protobuf.dpv;
+import com.tencent.mm.protocal.protobuf.efk;
+import d.g.b.p;
+import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker;", "", "()V", "getVideoFrameRate", "", "path", "", "getVideoInfo", "Lcom/tencent/mm/plugin/vlog/model/MultiMediaVideoChecker$VideoInfo;", "getVideoInfoH264", "getVideoInfoH265", "isH265Video", "", "VideoInfo", "plugin-vlog_release"})
-public final class l
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/Material;", "", "scaleType", "Lcom/tencent/mm/plugin/vlog/model/ScaleType;", "filter", "Lcom/tencent/mm/plugin/vlog/model/Filter;", "transition", "Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "startTime", "", "endTime", "duration", "path", "", "keyTrace", "", "Lcom/tencent/mm/protocal/protobuf/WindowMeta;", "transitionParams", "Lcom/tencent/mm/protocal/protobuf/TransitionParam;", "(Lcom/tencent/mm/plugin/vlog/model/ScaleType;Lcom/tencent/mm/plugin/vlog/model/Filter;Lcom/tencent/mm/plugin/vlog/model/TransitionType;JJJLjava/lang/String;Ljava/util/List;Ljava/util/List;)V", "getDuration", "()J", "setDuration", "(J)V", "getEndTime", "setEndTime", "getFilter", "()Lcom/tencent/mm/plugin/vlog/model/Filter;", "setFilter", "(Lcom/tencent/mm/plugin/vlog/model/Filter;)V", "getKeyTrace", "()Ljava/util/List;", "setKeyTrace", "(Ljava/util/List;)V", "getPath", "()Ljava/lang/String;", "setPath", "(Ljava/lang/String;)V", "getScaleType", "()Lcom/tencent/mm/plugin/vlog/model/ScaleType;", "setScaleType", "(Lcom/tencent/mm/plugin/vlog/model/ScaleType;)V", "getStartTime", "setStartTime", "getTransition", "()Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "setTransition", "(Lcom/tencent/mm/plugin/vlog/model/TransitionType;)V", "getTransitionParams", "setTransitionParams", "plugin-vlog_release"})
+public abstract class l
 {
-  public static final l AnC;
+  private r BFl;
+  private h BFm;
+  private u BFn;
+  List<? extends efk> BFo;
+  List<? extends dpv> BFp;
+  private long duration;
+  public long endTime;
+  public String path;
+  public long startTime;
   
-  static
+  private l(r paramr, h paramh, u paramu, long paramLong1, long paramLong2, long paramLong3, String paramString)
   {
-    AppMethodBeat.i(207542);
-    AnC = new l();
-    AppMethodBeat.o(207542);
+    this.BFl = paramr;
+    this.BFm = paramh;
+    this.BFn = paramu;
+    this.startTime = paramLong1;
+    this.endTime = paramLong2;
+    this.duration = paramLong3;
+    this.path = paramString;
+    this.BFo = null;
+    this.BFp = null;
   }
   
-  private static float MH(String paramString)
+  public final void a(r paramr)
   {
-    k = 0;
-    int m = 0;
-    AppMethodBeat.i(207541);
-    localMediaExtractor = new MediaExtractor();
-    for (;;)
-    {
-      try
-      {
-        localMediaExtractor.setDataSource(paramString);
-        int n = localMediaExtractor.getTrackCount();
-        j = 0;
-        i = m;
-        if (j < n)
-        {
-          paramString = localMediaExtractor.getTrackFormat(j);
-          String str = paramString.getString("mime");
-          k.g(str, "mime");
-          if ((!n.nb(str, "video/")) || (!paramString.containsKey("frame-rate"))) {
-            continue;
-          }
-          i = paramString.getInteger("frame-rate");
-        }
-        localMediaExtractor.release();
-      }
-      catch (IOException paramString)
-      {
-        int j;
-        float f;
-        localMediaExtractor.release();
-        int i = k;
-        continue;
-      }
-      finally
-      {
-        localMediaExtractor.release();
-        AppMethodBeat.o(207541);
-      }
-      f = i;
-      AppMethodBeat.o(207541);
-      return f * 1.0F;
-      j += 1;
-    }
+    p.h(paramr, "<set-?>");
+    this.BFl = paramr;
   }
   
-  public static l.a aye(String paramString)
+  public final void a(u paramu)
   {
-    AppMethodBeat.i(207538);
-    k.h(paramString, "path");
-    if (i.eA(paramString))
-    {
-      k.h(paramString, "path");
-      if (SightVideoJNI.isH265VideoVFS(paramString))
-      {
-        paramString = ayf(paramString);
-        AppMethodBeat.o(207538);
-        return paramString;
-      }
-      paramString = ayg(paramString);
-      AppMethodBeat.o(207538);
-      return paramString;
-    }
-    AppMethodBeat.o(207538);
-    return null;
-  }
-  
-  private static l.a ayf(String paramString)
-  {
-    AppMethodBeat.i(207539);
-    d locald = new d();
-    for (;;)
-    {
-      try
-      {
-        locald.setDataSource(paramString);
-        int i = bs.getInt(locald.extractMetadata(18), 0);
-        int j = bs.getInt(locald.extractMetadata(19), 0);
-        long l = bs.getLong(locald.extractMetadata(9), 0L);
-        int k = SightVideoJNI.getMp4RotateVFS(paramString);
-        if (Build.VERSION.SDK_INT >= 23)
-        {
-          f1 = bs.getFloat(locald.extractMetadata(25), 0.0F);
-          float f2 = f1;
-          if (f1 == 0.0F) {
-            f2 = MH(paramString);
-          }
-          paramString = new l.a(i, j, f2, l, bs.getInt(locald.extractMetadata(20), 0), k, true);
-          return paramString;
-        }
-      }
-      catch (Exception paramString)
-      {
-        return null;
-      }
-      finally
-      {
-        locald.release();
-        AppMethodBeat.o(207539);
-      }
-      float f1 = 0.0F;
-    }
-  }
-  
-  private static l.a ayg(String paramString)
-  {
-    AppMethodBeat.i(207540);
-    try
-    {
-      a locala = e.asx(paramString);
-      if (locala != null)
-      {
-        int i = SightVideoJNI.getMp4RotateVFS(paramString);
-        paramString = new l.a(locala.width, locala.height, locala.frameRate, locala.videoDuration, locala.videoBitrate, i);
-        AppMethodBeat.o(207540);
-        return paramString;
-      }
-    }
-    catch (Exception paramString)
-    {
-      AppMethodBeat.o(207540);
-    }
-    return null;
+    p.h(paramu, "<set-?>");
+    this.BFn = paramu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.l
  * JD-Core Version:    0.7.0.1
  */

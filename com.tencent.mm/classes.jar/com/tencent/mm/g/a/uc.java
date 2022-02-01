@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uc
   extends b
 {
-  public a dwN;
+  public a dIA;
   
   public uc()
   {
@@ -15,16 +15,16 @@ public final class uc
   
   private uc(byte paramByte)
   {
-    AppMethodBeat.i(125644);
-    this.dwN = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(197542);
+    this.dIA = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125644);
+    AppMethodBeat.o(197542);
   }
   
   public static final class a
   {
-    public long dwO = -1L;
+    public int dIB = 0;
   }
 }
 

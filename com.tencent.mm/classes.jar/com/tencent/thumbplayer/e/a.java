@@ -5,106 +5,116 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.thumbplayer.utils.f;
+import com.tencent.thumbplayer.utils.d;
 
 public final class a
 {
-  private static String Khe = "";
-  private static String Khf;
-  private static String Khg;
-  private static String Khh;
-  private static int Khi = -1;
-  private static String Khj;
-  private static boolean Khk;
-  private static String Khl = "";
-  private static int Khm = 0;
-  private static boolean Khn = true;
-  private static int Kho = -1;
-  private static String Khp = "\\.";
-  private static long Khq = -1L;
-  private static String appVersion = "";
+  private static boolean MaA;
+  private static String MaB;
+  private static int MaC;
+  private static boolean MaD;
+  private static int MaE;
+  private static String MaF;
+  private static long MaG = -1L;
+  private static String Mau = "";
+  private static String Mav;
+  private static String Maw;
+  private static String Max;
+  private static int May = -1;
+  private static String Maz;
+  private static String appVersion;
   private static String appVersionName;
   
-  public static void aTL(String paramString)
+  static
   {
-    Khe = paramString;
+    MaB = "";
+    MaC = 0;
+    MaD = true;
+    MaE = -1;
+    MaF = "\\.";
+    appVersion = "";
   }
   
-  public static String fFA()
+  public static void aZL(String paramString)
   {
-    return Khg;
+    Mau = paramString;
   }
   
-  public static String fFB()
+  public static void fWM()
   {
-    return Khh;
+    MaD = true;
   }
   
-  public static String fFC()
+  public static boolean fWN()
   {
-    return Khj;
+    return MaD;
   }
   
-  public static String fFD()
+  public static String fWO()
   {
-    return Khl;
+    return Mav;
   }
   
-  public static int fFE()
+  public static String fWP()
   {
-    return Khm;
+    return Maw;
   }
   
-  public static boolean fFF()
+  public static String fWQ()
   {
-    return Khk;
+    return Max;
   }
   
-  public static int fFG()
+  public static String fWR()
   {
-    if ((Khi == -1) && (Kho != -1)) {
-      return Kho;
+    return Maz;
+  }
+  
+  public static String fWS()
+  {
+    return MaB;
+  }
+  
+  public static int fWT()
+  {
+    return MaC;
+  }
+  
+  public static boolean fWU()
+  {
+    return MaA;
+  }
+  
+  public static int fWV()
+  {
+    if ((May == -1) && (MaE != -1)) {
+      return MaE;
     }
-    return Khi;
+    return May;
   }
   
-  public static void fFH()
+  public static void fWW()
   {
-    Kho = 1;
+    MaE = 1;
   }
   
-  public static void fFf()
+  public static void fWw()
   {
-    Khi = 100;
-  }
-  
-  public static void fFx()
-  {
-    Khn = true;
-  }
-  
-  public static boolean fFy()
-  {
-    return Khn;
-  }
-  
-  public static String fFz()
-  {
-    return Khf;
+    May = 100;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    AppMethodBeat.i(187869);
+    AppMethodBeat.i(191890);
     if (!TextUtils.isEmpty(appVersionName))
     {
       paramContext = appVersionName;
-      AppMethodBeat.o(187869);
+      AppMethodBeat.o(191890);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(187869);
+      AppMethodBeat.o(191890);
       return "";
     }
     try
@@ -115,48 +125,48 @@ public final class a
       if (str == null) {
         paramContext = "";
       }
-      AppMethodBeat.o(187869);
+      AppMethodBeat.o(191890);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(187869);
+      AppMethodBeat.o(191890);
     }
     return "";
   }
   
   public static String getGuid()
   {
-    return Khe;
+    return Mau;
   }
   
   public static int getPlatform()
   {
-    return Kho;
+    return MaE;
   }
   
-  public static long kV(Context paramContext)
+  public static long li(Context paramContext)
   {
-    AppMethodBeat.i(187870);
+    AppMethodBeat.i(191891);
     long l;
-    if (-1L != Khq)
+    if (-1L != MaG)
     {
-      l = Khq;
-      AppMethodBeat.o(187870);
+      l = MaG;
+      AppMethodBeat.o(191891);
       return l;
     }
     try
     {
       l = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).getLongVersionCode();
-      Khq = l;
-      AppMethodBeat.o(187870);
+      MaG = l;
+      AppMethodBeat.o(191891);
       return l;
     }
     catch (Throwable paramContext)
     {
-      f.e("TPPlayerConfig", "getLongVersionCode less api 28");
-      l = Khq;
-      AppMethodBeat.o(187870);
+      d.e("TPPlayerConfig", "getLongVersionCode less api 28");
+      l = MaG;
+      AppMethodBeat.o(191891);
     }
     return l;
   }

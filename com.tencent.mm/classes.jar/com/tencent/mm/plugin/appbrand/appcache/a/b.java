@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.appcache.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.h.a.c.k;
+import com.tencent.mm.pluginsdk.j.a.c.k;
 
 public abstract interface b<_Request extends a, _Response, _Progress extends k>
 {
@@ -9,7 +9,7 @@ public abstract interface b<_Request extends a, _Response, _Progress extends k>
   {
     public abstract void a(String paramString, a parama, _Response param_Response);
     
-    public abstract void cg(_Progress param_Progress);
+    public abstract void ci(_Progress param_Progress);
     
     public static enum a
     {
@@ -18,15 +18,15 @@ public abstract interface b<_Request extends a, _Response, _Progress extends k>
       static
       {
         AppMethodBeat.i(90674);
-        jpC = new a("OK", 0, 0);
-        jpD = new a("FAILED", 1, 101);
-        jpE = new a("LOCAL_FILE_NOT_FOUND", 2, 102);
-        jpF = new a("PKG_INTEGRITY_FAILED", 3, 104);
-        jpG = new a("PKG_INVALID", 4, 105);
-        jpH = new a("SEVER_FILE_NOT_FOUND", 5, 106);
-        jpI = new a("DISK_FULL", 6, 110);
-        jpJ = new a("ENV_ERR", 7, 200);
-        jpK = new a[] { jpC, jpD, jpE, jpF, jpG, jpH, jpI, jpJ };
+        jJw = new a("OK", 0, 0);
+        jJx = new a("FAILED", 1, 101);
+        jJy = new a("LOCAL_FILE_NOT_FOUND", 2, 102);
+        jJz = new a("PKG_INTEGRITY_FAILED", 3, 104);
+        jJA = new a("PKG_INVALID", 4, 105);
+        jJB = new a("SEVER_FILE_NOT_FOUND", 5, 106);
+        jJC = new a("DISK_FULL", 6, 110);
+        jJD = new a("ENV_ERR", 7, 200);
+        jJE = new a[] { jJw, jJx, jJy, jJz, jJA, jJB, jJC, jJD };
         AppMethodBeat.o(90674);
       }
       
@@ -35,7 +35,7 @@ public abstract interface b<_Request extends a, _Response, _Progress extends k>
         this.code = paramInt;
       }
       
-      public final int aXk()
+      public final int baI()
       {
         return this.code;
       }
@@ -44,12 +44,12 @@ public abstract interface b<_Request extends a, _Response, _Progress extends k>
   
   public static abstract interface b
   {
-    public abstract void aXt();
+    public abstract void baR();
   }
   
   public static abstract interface c
   {
-    public abstract void aXu();
+    public abstract void baS();
   }
 }
 

@@ -1,90 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class ahy
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int EBU;
-  public LinkedList<ahx> EBV;
-  
-  public ahy()
-  {
-    AppMethodBeat.i(127486);
-    this.EBV = new LinkedList();
-    AppMethodBeat.o(127486);
-  }
+  public int Gfk;
+  public String Gfl;
+  public String Gfm;
+  public String Gfn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127487);
+    AppMethodBeat.i(32200);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.EBU);
-      paramVarArgs.e(2, 8, this.EBV);
-      AppMethodBeat.o(127487);
+      paramVarArgs.aS(1, this.Gfk);
+      if (this.Gfl != null) {
+        paramVarArgs.d(2, this.Gfl);
+      }
+      if (this.Gfn != null) {
+        paramVarArgs.d(3, this.Gfn);
+      }
+      if (this.Gfm != null) {
+        paramVarArgs.d(4, this.Gfm);
+      }
+      AppMethodBeat.o(32200);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.EBU);
-      i = f.a.a.a.c(2, 8, this.EBV);
-      AppMethodBeat.o(127487);
-      return paramInt + 0 + i;
+      int i = f.a.a.b.b.a.bz(1, this.Gfk) + 0;
+      paramInt = i;
+      if (this.Gfl != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Gfl);
+      }
+      i = paramInt;
+      if (this.Gfn != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Gfn);
+      }
+      paramInt = i;
+      if (this.Gfm != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Gfm);
+      }
+      AppMethodBeat.o(32200);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.EBV.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(127487);
+      AppMethodBeat.o(32200);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       ahy localahy = (ahy)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(127487);
+        AppMethodBeat.o(32200);
         return -1;
       case 1: 
-        localahy.EBU = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(127487);
+        localahy.Gfk = locala.NPN.zc();
+        AppMethodBeat.o(32200);
+        return 0;
+      case 2: 
+        localahy.Gfl = locala.NPN.readString();
+        AppMethodBeat.o(32200);
+        return 0;
+      case 3: 
+        localahy.Gfn = locala.NPN.readString();
+        AppMethodBeat.o(32200);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new ahx();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((ahx)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localahy.EBV.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(127487);
+      localahy.Gfm = locala.NPN.readString();
+      AppMethodBeat.o(32200);
       return 0;
     }
-    AppMethodBeat.o(127487);
+    AppMethodBeat.o(32200);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ahy
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,18 @@ package com.tencent.mm.plugin.account.model;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.lp;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.ly;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.t;
-import com.tencent.mm.plugin.account.friend.a.ad;
+import com.tencent.mm.plugin.account.friend.a.ao;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -19,21 +21,21 @@ import java.util.List;
 import java.util.Set;
 
 public final class a
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  com.tencent.mm.plugin.account.a.a.b hEl;
-  boolean hTo;
-  Set<String> iOc;
-  c iOd;
-  com.tencent.mm.sdk.platformtools.ao iOe;
+  com.tencent.mm.plugin.account.a.a.b hWQ;
+  boolean imJ;
+  Set<String> jhl;
+  c jhm;
+  ap jhn;
   
   public a()
   {
     AppMethodBeat.i(127810);
-    this.iOc = Collections.synchronizedSet(new HashSet());
-    this.hTo = false;
-    this.iOd = new c() {};
-    this.iOe = new com.tencent.mm.sdk.platformtools.ao()
+    this.jhl = Collections.synchronizedSet(new HashSet());
+    this.imJ = false;
+    this.jhm = new c() {};
+    this.jhn = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -45,75 +47,75 @@ public final class a
         {
           AppMethodBeat.o(127808);
           return;
-          a.this.hTo = true;
-          boolean bool = com.tencent.mm.platformtools.a.syncAddrBook(a.this.hEl);
+          a.this.imJ = true;
+          boolean bool = com.tencent.mm.platformtools.a.syncAddrBook(a.this.hWQ);
           if (!bool) {
-            a.this.hTo = false;
+            a.this.imJ = false;
           }
-          ac.i("MicroMsg.ContactsAutoSyncLogic ", "sync result %b", new Object[] { Boolean.valueOf(bool) });
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "sync result %b", new Object[] { Boolean.valueOf(bool) });
         }
       }
     };
-    this.hEl = new com.tencent.mm.plugin.account.a.a.b()
+    this.hWQ = new com.tencent.mm.plugin.account.a.a.b()
     {
-      public final void eM(boolean paramAnonymousBoolean)
+      public final void eO(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(127809);
-        ac.i("MicroMsg.ContactsAutoSyncLogic ", "performSync end, succ:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "performSync end, succ:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (!paramAnonymousBoolean)
         {
           AppMethodBeat.o(127809);
           return;
         }
-        if (l.aPL().size() > 0)
+        if (l.aSX().size() > 0)
         {
-          ac.i("MicroMsg.ContactsAutoSyncLogic ", "start to upload mobile list");
-          com.tencent.mm.kernel.g.agi().a(133, a.this);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "start to upload mobile list");
+          g.aiU().a(133, a.this);
           System.currentTimeMillis();
-          l.aPH();
-          localObject = new com.tencent.mm.plugin.account.friend.a.ao(l.aPL(), l.aPK());
-          com.tencent.mm.kernel.g.agi().a((n)localObject, 0);
+          l.aST();
+          localObject = new ao(l.aSX(), l.aSW());
+          g.aiU().a((n)localObject, 0);
           AppMethodBeat.o(127809);
           return;
         }
-        ac.i("MicroMsg.ContactsAutoSyncLogic ", "update mobile friend list");
-        Object localObject = (String[])a.this.iOc.toArray(new String[0]);
-        a.this.iOc.clear();
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "update mobile friend list");
+        Object localObject = (String[])a.this.jhl.toArray(new String[0]);
+        a.this.jhl.clear();
         ArrayList localArrayList = new ArrayList();
         int j = localObject.length;
         int i = 0;
         if (i < j)
         {
           String str = localObject[i];
-          com.tencent.mm.plugin.account.friend.a.a locala = com.tencent.mm.plugin.account.a.getAddrUploadStg().Gf(str);
-          if ((locala != null) && (!bs.isNullOrNil(locala.aPr())))
+          com.tencent.mm.plugin.account.friend.a.a locala = com.tencent.mm.plugin.account.a.getAddrUploadStg().Ju(str);
+          if ((locala != null) && (!bt.isNullOrNil(locala.aSD())))
           {
-            localArrayList.add(locala.aPr());
-            ac.i("MicroMsg.ContactsAutoSyncLogic ", "find mobile %s username %s", new Object[] { locala.aPr(), str });
+            localArrayList.add(locala.aSD());
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "find mobile %s username %s", new Object[] { locala.aSD(), str });
           }
           for (;;)
           {
             i += 1;
             break;
-            ac.i("MicroMsg.ContactsAutoSyncLogic ", "not find mobile username %s", new Object[] { str });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "not find mobile username %s", new Object[] { str });
           }
         }
-        com.tencent.mm.kernel.g.agi().a(32, a.this);
+        g.aiU().a(32, a.this);
         if (localArrayList.size() == 0)
         {
-          ac.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is zero");
-          localObject = new ad();
-          com.tencent.mm.kernel.g.agi().a((n)localObject, 0);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is zero");
+          localObject = new com.tencent.mm.plugin.account.friend.a.ad();
+          g.aiU().a((n)localObject, 0);
           AppMethodBeat.o(127809);
           return;
         }
-        ac.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is %d", new Object[] { Integer.valueOf(localArrayList.size()) });
-        localObject = new ad(localArrayList, null);
-        com.tencent.mm.kernel.g.agi().a((n)localObject, 0);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "sync mobile list is %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+        localObject = new com.tencent.mm.plugin.account.friend.a.ad(localArrayList, null);
+        g.aiU().a((n)localObject, 0);
         AppMethodBeat.o(127809);
       }
     };
-    com.tencent.mm.sdk.b.a.GpY.c(this.iOd);
+    com.tencent.mm.sdk.b.a.IbL.c(this.jhm);
     AppMethodBeat.o(127810);
   }
   
@@ -122,32 +124,32 @@ public final class a
     AppMethodBeat.i(127811);
     if (paramn.getType() == 133)
     {
-      com.tencent.mm.kernel.g.agi().b(133, this);
+      g.aiU().b(133, this);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         break label137;
       }
-      ac.e("MicroMsg.ContactsAutoSyncLogic ", "MMFunc_UploadMContact onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
-      this.hTo = false;
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsAutoSyncLogic ", "MMFunc_UploadMContact onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
+      this.imJ = false;
     }
     while (paramn.getType() == 32)
     {
-      this.hTo = false;
-      com.tencent.mm.kernel.g.agi().b(32, this);
+      this.imJ = false;
+      g.aiU().b(32, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ac.e("MicroMsg.ContactsAutoSyncLogic ", "rtGETMFRIEND onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.ContactsAutoSyncLogic ", "rtGETMFRIEND onSceneEnd: errType = " + paramInt1 + ", errCode = " + paramInt2);
         AppMethodBeat.o(127811);
         return;
         label137:
-        com.tencent.mm.kernel.g.agi().a(32, this);
-        paramString = (com.tencent.mm.plugin.account.friend.a.ao)paramn;
-        paramString = new ad(paramString.iLv, paramString.iLw);
-        com.tencent.mm.kernel.g.agi().a(paramString, 0);
+        g.aiU().a(32, this);
+        paramString = (ao)paramn;
+        paramString = new com.tencent.mm.plugin.account.friend.a.ad(paramString.jeE, paramString.jeF);
+        g.aiU().a(paramString, 0);
       }
       else
       {
-        ac.i("MicroMsg.ContactsAutoSyncLogic ", "update All Contact");
-        t.cY(ai.getContext());
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ContactsAutoSyncLogic ", "update All Contact");
+        t.cW(aj.getContext());
       }
     }
     AppMethodBeat.o(127811);

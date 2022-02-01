@@ -11,56 +11,56 @@ import android.widget.FrameLayout;
 import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.f.d;
+import com.tencent.mm.media.g.d;
 import com.tencent.mm.plugin.voip.ui.c;
 import com.tencent.mm.plugin.voip.video.CaptureView;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.lang.ref.WeakReference;
 
 public abstract class BaseSmallView
   extends FrameLayout
 {
-  protected WeakReference<c> AJQ;
-  public d AKY;
-  Runnable ATg = new Runnable()
+  protected int BYM = -1;
+  protected long BYN;
+  protected WeakReference<c> CiR;
+  public d Cka;
+  Runnable Cto = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(115757);
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(184093);
-          BaseSmallView.this.elz();
+          BaseSmallView.this.ezj();
           AppMethodBeat.o(184093);
         }
       });
       AppMethodBeat.o(115757);
     }
   };
-  protected int AzM = -1;
-  protected long AzN;
-  private PointF gqN = new PointF();
-  private Point gqO = new Point();
-  private Point gqP = new Point();
-  private Point gqQ = new Point();
-  private Point gqR;
-  private WindowManager gqS;
-  protected ao gqT;
+  private Point gKA = new Point();
+  private Point gKB;
+  private WindowManager gKC;
+  protected ap gKD;
+  private PointF gKx = new PointF();
+  private Point gKy = new Point();
+  private Point gKz = new Point();
   @Deprecated
-  CaptureView otK;
+  CaptureView oXg;
   public SurfaceTexture surfaceTexture;
   
   public BaseSmallView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.gqS = ((WindowManager)paramContext.getSystemService("window"));
-    this.gqT = new ao();
-    this.gqR = new Point(this.gqS.getDefaultDisplay().getWidth(), this.gqS.getDefaultDisplay().getHeight());
+    this.gKC = ((WindowManager)paramContext.getSystemService("window"));
+    this.gKD = new ap();
+    this.gKB = new Point(this.gKC.getDefaultDisplay().getWidth(), this.gKC.getDefaultDisplay().getHeight());
   }
   
   @Deprecated
@@ -69,35 +69,35 @@ public abstract class BaseSmallView
   @Deprecated
   public void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
-  public void ayB(String paramString) {}
+  public void aDJ(String paramString) {}
   
-  public void ayC(String paramString) {}
+  public void aDK(String paramString) {}
   
-  public void dgi()
+  public void dqh()
   {
-    h.JZN.aTz("resumeIcon");
-    h.JZN.a(this.ATg, 2000L, "resumeIcon");
+    h.LTJ.aZz("resumeIcon");
+    h.LTJ.a(this.Cto, 2000L, "resumeIcon");
   }
   
   @Deprecated
   public void e(int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public void ekY() {}
+  public void eBp() {}
   
-  public void elA() {}
+  public void eyJ() {}
   
   @Deprecated
-  public void elk() {}
+  public void eyU() {}
   
-  public boolean ely()
+  public boolean ezi()
   {
-    h.JZN.aTz("resumeIcon");
+    h.LTJ.aZz("resumeIcon");
     return true;
   }
   
-  public void elz() {}
+  public void ezj() {}
   
-  public void enq() {}
+  public void ezk() {}
   
   @Deprecated
   public OpenGlRender getBeautyData()
@@ -106,7 +106,7 @@ public abstract class BaseSmallView
   }
   
   @Deprecated
-  public void ie(int paramInt1, int paramInt2) {}
+  public void ir(int paramInt1, int paramInt2) {}
   
   @Deprecated
   protected void onAnimationEnd() {}
@@ -117,18 +117,12 @@ public abstract class BaseSmallView
   @Deprecated
   public void requestRender() {}
   
-  public void sM(boolean paramBoolean)
-  {
-    h.JZN.aTz("resumeIcon");
-    h.JZN.a(this.ATg, 2000L, "resumeIcon");
-  }
-  
   @Deprecated
   public void setCaptureView(CaptureView paramCaptureView) {}
   
   public void setConnectSec(long paramLong)
   {
-    this.AzN = paramLong;
+    this.BYN = paramLong;
   }
   
   @Deprecated
@@ -138,8 +132,8 @@ public abstract class BaseSmallView
   
   public void setVoicePlayDevice(int paramInt)
   {
-    h.JZN.aTz("resumeIcon");
-    h.JZN.a(this.ATg, 2000L, "resumeIcon");
+    h.LTJ.aZz("resumeIcon");
+    h.LTJ.a(this.Cto, 2000L, "resumeIcon");
   }
   
   @Deprecated
@@ -147,18 +141,24 @@ public abstract class BaseSmallView
   
   public void setVoipUIListener(c paramc)
   {
-    ac.i("MicroMsg.Voip.BaseSmallView", "hwViewSmall setVoipUIListener, before initHWView");
-    this.AJQ = new WeakReference(paramc);
+    ad.i("MicroMsg.Voip.BaseSmallView", "hwViewSmall setVoipUIListener, before initHWView");
+    this.CiR = new WeakReference(paramc);
+  }
+  
+  public void tv(boolean paramBoolean)
+  {
+    h.LTJ.aZz("resumeIcon");
+    h.LTJ.a(this.Cto, 2000L, "resumeIcon");
   }
   
   public void uninit()
   {
-    this.gqS = null;
+    this.gKC = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.BaseSmallView
  * JD-Core Version:    0.7.0.1
  */

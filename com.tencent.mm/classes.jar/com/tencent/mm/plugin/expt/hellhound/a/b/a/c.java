@@ -4,46 +4,46 @@ import android.app.Activity;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.a.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 
 final class c
   implements o
 {
   WeakReference<Activity> mActivityRef;
-  private a qlD;
-  com.tencent.mm.plugin.expt.hellhound.a.a.a qlE;
-  private final e qlm;
-  private final p qlo;
+  private a qUA;
+  com.tencent.mm.plugin.expt.hellhound.a.a.a qUB;
+  private final e qUj;
+  private final p qUl;
   
   c()
   {
-    AppMethodBeat.i(195238);
-    this.qlm = new e()
+    AppMethodBeat.i(210385);
+    this.qUj = new e()
     {
       public final void a(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(195236);
+        AppMethodBeat.i(210383);
         if (c.this.mActivityRef == null)
         {
-          AppMethodBeat.o(195236);
+          AppMethodBeat.o(210383);
           return;
         }
         Activity localActivity = (Activity)c.this.mActivityRef.get();
         if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed()))
         {
-          ac.m("HABBYGE-MALI.FinderDetailMonitor", "FinderDetailMonitor, onScroll, is NULL or finishing", new Object[0]);
-          AppMethodBeat.o(195236);
+          ad.m("HABBYGE-MALI.FinderDetailMonitor", "FinderDetailMonitor, onScroll, is NULL or finishing", new Object[0]);
+          AppMethodBeat.o(210383);
           return;
         }
-        c.this.qlE.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
-        AppMethodBeat.o(195236);
+        c.this.qUB.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
+        AppMethodBeat.o(210383);
       }
       
-      public final void k(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
+      public final void l(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
-        AppMethodBeat.i(195235);
-        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = c.this.qlE;
+        AppMethodBeat.i(210382);
+        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = c.this.qUB;
         switch (paramAnonymousInt)
         {
         default: 
@@ -51,8 +51,8 @@ final class c
         }
         for (;;)
         {
-          locala.g(paramAnonymousViewGroup, paramAnonymousInt);
-          AppMethodBeat.o(195235);
+          locala.h(paramAnonymousViewGroup, paramAnonymousInt);
+          AppMethodBeat.o(210382);
           return;
           paramAnonymousInt = 0;
           continue;
@@ -62,89 +62,89 @@ final class c
         }
       }
     };
-    this.qlo = new p()
+    this.qUl = new p()
     {
-      public final void kH(boolean paramAnonymousBoolean)
+      public final void kZ(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(195237);
-        if (c.this.qlE != null) {
-          c.this.qlE.kG(paramAnonymousBoolean);
+        AppMethodBeat.i(210384);
+        if (c.this.qUB != null) {
+          c.this.qUB.kY(paramAnonymousBoolean);
         }
-        AppMethodBeat.o(195237);
+        AppMethodBeat.o(210384);
       }
     };
-    this.qlD = new a();
-    this.qlE = new com.tencent.mm.plugin.expt.hellhound.a.a.a(6, "18260", "1006");
-    AppMethodBeat.o(195238);
+    this.qUA = new a();
+    this.qUB = new com.tencent.mm.plugin.expt.hellhound.a.a.a(6, "18260", "1006");
+    AppMethodBeat.o(210385);
   }
   
   final void a(int paramInt, String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(195239);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.ciw()) || (!com.tencent.mm.plugin.expt.hellhound.a.ciz())) {}
+    AppMethodBeat.i(210386);
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.cnt()) || (!com.tencent.mm.plugin.expt.hellhound.a.cnw())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ac.e("HABBYGE-MALI.FinderDetailMonitor", "FinderDetailMonitor, monitor, dontNeedMonitorFinder true !!");
-      AppMethodBeat.o(195239);
+      ad.e("HABBYGE-MALI.FinderDetailMonitor", "FinderDetailMonitor, monitor, dontNeedMonitorFinder true !!");
+      AppMethodBeat.o(210386);
       return;
     }
-    ac.i("HABBYGE-MALI.FinderDetailMonitor", "FinderDetailMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ad.i("HABBYGE-MALI.FinderDetailMonitor", "FinderDetailMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(195239);
+      AppMethodBeat.o(210386);
       return;
       this.mActivityRef = new WeakReference(paramActivity);
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(720, paramString);
-      AppMethodBeat.o(195239);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().l(720, paramString);
+      AppMethodBeat.o(210386);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(721, paramString);
-      AppMethodBeat.o(195239);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().l(721, paramString);
+      AppMethodBeat.o(210386);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(722, paramString);
-      AppMethodBeat.o(195239);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().l(722, paramString);
+      AppMethodBeat.o(210386);
       return;
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.ciO().l(723, paramString);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cnO().l(723, paramString);
     }
   }
   
-  public final void cjq()
+  public final void coC()
   {
-    AppMethodBeat.i(195241);
-    this.qlD.cjq();
-    this.qlE.a(1, null);
-    AppMethodBeat.o(195241);
+    AppMethodBeat.i(210388);
+    this.qUA.coC();
+    this.qUB.a(1, null);
+    AppMethodBeat.o(210388);
   }
   
-  public final void cjz()
+  public final void coL()
   {
-    AppMethodBeat.i(195240);
+    AppMethodBeat.i(210387);
     if (this.mActivityRef != null) {
-      this.qlE.a(0, (Activity)this.mActivityRef.get());
+      this.qUB.a(0, (Activity)this.mActivityRef.get());
     }
-    this.qlD.a(this.qlm, this.qlo);
-    AppMethodBeat.o(195240);
+    this.qUA.a(this.qUj, this.qUl);
+    AppMethodBeat.o(210387);
   }
   
   public final void free()
   {
-    AppMethodBeat.i(195242);
-    this.qlE.a(2, null);
+    AppMethodBeat.i(210389);
+    this.qUB.a(2, null);
     if (this.mActivityRef != null)
     {
       this.mActivityRef.clear();
       this.mActivityRef = null;
     }
-    AppMethodBeat.o(195242);
+    AppMethodBeat.o(210389);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(195243);
-    this.qlE.a(3, null);
-    AppMethodBeat.o(195243);
+    AppMethodBeat.i(210390);
+    this.qUB.a(3, null);
+    AppMethodBeat.o(210390);
   }
 }
 

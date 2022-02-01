@@ -30,7 +30,7 @@ public final class c
     if (paramXmlPullParser.getName().equals("font-family")) {
       return b(paramXmlPullParser, paramResources);
     }
-    a(paramXmlPullParser);
+    skip(paramXmlPullParser);
     return null;
   }
   
@@ -91,23 +91,6 @@ public final class c
     }
   }
   
-  private static void a(XmlPullParser paramXmlPullParser)
-  {
-    int i = 1;
-    while (i > 0) {
-      switch (paramXmlPullParser.next())
-      {
-      default: 
-        break;
-      case 2: 
-        i += 1;
-        break;
-      case 3: 
-        i -= 1;
-      }
-    }
-  }
-  
   private static a b(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
     Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), a.a.FontFamily);
@@ -121,7 +104,7 @@ public final class c
     if ((str1 != null) && (str2 != null) && (str3 != null))
     {
       while (paramXmlPullParser.next() != 3) {
-        a(paramXmlPullParser);
+        skip(paramXmlPullParser);
       }
       return new d(new a(str1, str2, str3, a(paramResources, i)), j, k);
     }
@@ -131,7 +114,7 @@ public final class c
         if (paramXmlPullParser.getName().equals("font")) {
           ((List)localObject).add(c(paramXmlPullParser, paramResources));
         } else {
-          a(paramXmlPullParser);
+          skip(paramXmlPullParser);
         }
       }
     }
@@ -204,7 +187,7 @@ public final class c
       str2 = paramResources.getString(i);
       paramResources.recycle();
       while (paramXmlPullParser.next() != 3) {
-        a(paramXmlPullParser);
+        skip(paramXmlPullParser);
       }
       i = 1;
       break;
@@ -220,50 +203,67 @@ public final class c
     return new c(str2, k, bool, str1, j, m);
   }
   
+  private static void skip(XmlPullParser paramXmlPullParser)
+  {
+    int i = 1;
+    while (i > 0) {
+      switch (paramXmlPullParser.next())
+      {
+      default: 
+        break;
+      case 2: 
+        i += 1;
+        break;
+      case 3: 
+        i -= 1;
+      }
+    }
+  }
+  
   public static abstract interface a {}
   
   public static final class b
     implements c.a
   {
-    public final c.c[] HB;
+    public final c.c[] Jv;
     
     public b(c.c[] paramArrayOfc)
     {
-      this.HB = paramArrayOfc;
+      this.Jv = paramArrayOfc;
     }
   }
   
   public static final class c
   {
-    public int HC;
-    public boolean HD;
-    public String HE;
-    public int HF;
-    public int HG;
+    public int JA;
+    public int Jw;
+    public boolean Jx;
+    public String Jy;
+    public int Jz;
     public final String mFileName;
     
     public c(String paramString1, int paramInt1, boolean paramBoolean, String paramString2, int paramInt2, int paramInt3)
     {
       this.mFileName = paramString1;
-      this.HC = paramInt1;
-      this.HD = paramBoolean;
-      this.HE = paramString2;
-      this.HF = paramInt2;
-      this.HG = paramInt3;
+      this.Jw = paramInt1;
+      this.Jx = paramBoolean;
+      this.Jy = paramString2;
+      this.Jz = paramInt2;
+      this.JA = paramInt3;
     }
   }
   
   public static final class d
     implements c.a
   {
-    public final a HH;
-    public final int HI;
+    public final a JB;
+    public final int JC;
     public final int mTimeoutMs;
     
     public d(a parama, int paramInt1, int paramInt2)
     {
-      this.HH = parama;
-      this.HI = paramInt1;
+      this.JB = parama;
+      this.JC = paramInt1;
       this.mTimeoutMs = paramInt2;
     }
   }

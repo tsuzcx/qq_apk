@@ -1,297 +1,171 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.plugin.newtips.a.l.a;
-import com.tencent.mm.plugin.newtips.b.c;
-import com.tencent.mm.protocal.protobuf.ani;
-import com.tencent.mm.protocal.protobuf.aoj;
-import com.tencent.mm.protocal.protobuf.aok;
-import com.tencent.mm.protocal.protobuf.aom;
-import com.tencent.mm.protocal.protobuf.aon;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import d.a.j;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.storage.d;
+import com.tencent.mm.protocal.protobuf.aqu;
+import com.tencent.mm.protocal.protobuf.ase;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import d.l;
-import d.n.n;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform;", "Lcom/tencent/mm/plugin/newtips/model/NewTipsXMLConsumer$NewTipsHandleCallback;", "redDotManager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "changeNewTipsPathToCtrInfoPath", "", "pathId", "", "checkValidClientVersion", "", "tipsId", "", "values", "", "findCtrInfoType", "tipsList", "", "Lcom/tencent/mm/plugin/newtips/storage/NewTipsInfo;", "getFinderNewTips", "handleAdd", "uniqueId", "handleCancel", "parseFinderExtInfo", "prepare", "", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler;", "", "manager", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;", "(Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotManager;)V", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "lastUpdateWxMessageSessionId", "", "getLastUpdateWxMessageSessionId", "()Ljava/lang/String;", "setLastUpdateWxMessageSessionId", "(Ljava/lang/String;)V", "addFinderHelloMessageRedDot", "", "addFinderMessageRedDot", "addWxMessageRedDot", "checkMsgRedDot", "clearAllFinderMsgRedDot", "clearAllWxMsgRedDot", "clearWxMsgBubbleRedDot", "isEnableMessageEntrance", "", "sendClearFinderMsgRedDotPath", "sendClearWxMsgBubbleRedDotPath", "sendClearWxMsgRedDotPath", "sendInsertFinderMsgRedDot", "sendInsertHelloMsgRedDot", "sendInsertWxMsgRedDot", "sendUpdateFinderMsgRedDot", "sendUpdateWxMsgRedDot", "updateFinderMessageRedDot", "updateWxMessageRedDot", "Companion", "plugin-finder_release"})
 public final class a
-  implements l.a
 {
-  public static final a reg;
-  private final d qVO;
+  public static final a rRH;
+  public final ap handler;
+  public String rRF;
+  private final e rRG;
   
   static
   {
-    AppMethodBeat.i(201440);
-    reg = new a((byte)0);
-    AppMethodBeat.o(201440);
+    AppMethodBeat.i(201581);
+    rRH = new a((byte)0);
+    AppMethodBeat.o(201581);
   }
   
-  public a(d paramd)
+  public a(e parame)
   {
-    AppMethodBeat.i(201439);
-    this.qVO = paramd;
-    AppMethodBeat.o(201439);
+    AppMethodBeat.i(201580);
+    this.rRG = parame;
+    this.rRF = "";
+    parame = new ap("FinderMsgRedDotHandler", (ap.a)new c(this));
+    parame.setLogging(false);
+    this.handler = parame;
+    AppMethodBeat.o(201580);
   }
   
-  private static boolean a(long paramLong, Map<String, String> paramMap)
+  public final void czD()
   {
-    AppMethodBeat.i(201438);
-    if (paramMap.containsKey(".sysmsg.newtips.control.android_min_clientversion")) {}
-    for (int i = bs.getInt((String)paramMap.get(".sysmsg.newtips.control.android_min_clientversion"), 0);; i = 0)
+    AppMethodBeat.i(201578);
+    this.handler.removeMessages(8);
+    this.handler.sendEmptyMessage(8);
+    AppMethodBeat.o(201578);
+  }
+  
+  public final void czE()
+  {
+    AppMethodBeat.i(201579);
+    this.handler.removeMessages(7);
+    this.handler.sendEmptyMessage(7);
+    AppMethodBeat.o(201579);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderMsgRedDotHandler$Companion;", "", "()V", "MSG_CLEAR_ALL_FINDER_MSG", "", "MSG_CLEAR_ALL_WX_MSG", "MSG_CLEAR_WX_MSG_BUBBLE", "MSG_INSERT_GREET", "MSG_INSERT_NORMAL", "MSG_INSERT_WX_NORMAL", "MSG_UPDATE_NORMAL", "MSG_UPDATE_WX_NORMAL", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
+  public static final class b
+    implements Runnable
+  {
+    public b(a parama) {}
+    
+    public final void run()
     {
-      if (paramMap.containsKey(".sysmsg.newtips.control.android_max_clientversion")) {}
-      for (int j = bs.getInt((String)paramMap.get(".sysmsg.newtips.control.android_max_clientversion"), 2147483647);; j = 0)
-      {
-        if ((com.tencent.mm.protocal.d.DIc < i) || (com.tencent.mm.protocal.d.DIc > j))
-        {
-          ac.w("Finder.NewTipsTransform", "tipsId=%s, checkValidClientVersion client not match(%s, %s) %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(com.tencent.mm.protocal.d.DIc) });
-          AppMethodBeat.o(201438);
-          return false;
-        }
-        AppMethodBeat.o(201438);
-        return true;
-      }
-    }
-  }
-  
-  private static Map<String, String> b(Map<String, String> paramMap, long paramLong)
-  {
-    AppMethodBeat.i(201435);
-    paramMap = (String)paramMap.get(".sysmsg.newtips.ext_info");
-    int i;
-    label39:
-    label67:
-    label71:
-    Object localObject;
-    if (paramMap != null) {
-      if (((CharSequence)paramMap).length() > 0)
-      {
-        i = 1;
-        if (i == 0) {
-          break label117;
-        }
-        if (paramMap == null) {
-          break label127;
-        }
-        paramMap = bv.L(paramMap, "finder");
-        d.g.b.k.g(paramMap, "extValues");
-        if (paramMap.isEmpty()) {
-          break label122;
-        }
-        i = 1;
-        if (i == 0) {
-          break label127;
-        }
-        if (paramMap != null)
-        {
-          localObject = (String)paramMap.get(".finder.reddot_type");
-          if (localObject == null) {
-            break label132;
-          }
-          localObject = n.aXe((String)localObject);
-          label100:
-          if (localObject != null) {
-            break label138;
-          }
-        }
-      }
-    }
-    label117:
-    label122:
-    label127:
-    while ((((Integer)localObject).intValue() != 1) || ((paramLong != 40001001L) && (paramLong != 40001002L)))
-    {
-      AppMethodBeat.o(201435);
-      return null;
-      i = 0;
-      break;
-      paramMap = null;
-      break label39;
-      i = 0;
-      break label67;
-      paramMap = null;
-      break label71;
-      localObject = null;
-      break label100;
-    }
-    label132:
-    label138:
-    AppMethodBeat.o(201435);
-    return paramMap;
-  }
-  
-  public final boolean a(long paramLong, String paramString, List<c> paramList, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(201437);
-    d.g.b.k.h(paramList, "tipsList");
-    d.g.b.k.h(paramMap, "values");
-    if (b(paramMap, paramLong) != null)
-    {
-      if (!a(paramLong, paramMap))
-      {
-        AppMethodBeat.o(201437);
-        return true;
-      }
-      paramMap = (c)j.iP(paramList);
+      AppMethodBeat.i(201576);
+      long l = System.currentTimeMillis();
+      int k = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().fQ(2, 2);
+      int m = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().fQ(2, 1);
+      Object localObject1 = a.a(this.rRI).ahn("finder_private_msg_entrance");
       int i;
-      Iterator localIterator;
-      if (paramMap != null)
+      Object localObject2;
+      if ((localObject1 != null) && (((i)localObject1).field_ctrInfo.type == 1007))
       {
-        i = paramMap.field_priority;
-        paramMap = new ani();
-        localIterator = ((Iterable)paramList).iterator();
+        if (m <= 0)
+        {
+          com.tencent.mm.plugin.report.service.g.yhR.f(20492, new Object[] { Long.valueOf(2L), Long.valueOf(1L), Long.valueOf(l) });
+          com.tencent.mm.plugin.report.service.g.yhR.n(1473L, 2L, 1L);
+        }
+        i = 1;
+        localObject2 = new StringBuilder("[checkMsgRedDot] token=").append(l).append(" cost=").append(System.currentTimeMillis() - l).append("ms, [normalUnReadCount:redDotCount]=[").append(k).append(':').append(i).append("] greetUnReadCount=").append(m).append(" ctrlType=[");
+        if (localObject1 == null) {
+          break label349;
+        }
+      }
+      label349:
+      for (localObject1 = Integer.valueOf(((i)localObject1).field_ctrInfo.type);; localObject1 = null)
+      {
+        ad.i("Finder.MsgRedDotHandler", localObject1 + ']');
+        AppMethodBeat.o(201576);
+        return;
+        if ((localObject1 != null) && (((i)localObject1).field_ctrInfo.type == 1006))
+        {
+          localObject2 = ((i)localObject1).ahq("finder_private_msg_entrance");
+          if (localObject2 != null) {}
+          for (int j = ((ase)localObject2).count;; j = 0)
+          {
+            i = j;
+            if (j == k) {
+              break;
+            }
+            com.tencent.mm.plugin.report.service.g.yhR.f(20492, new Object[] { Long.valueOf(1L), Long.valueOf(1L), Long.valueOf(l) });
+            com.tencent.mm.plugin.report.service.g.yhR.n(1473L, 1L, 1L);
+            i = j;
+            break;
+          }
+        }
+        i = 0;
+        break;
+      }
+    }
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/os/Message;", "kotlin.jvm.PlatformType", "handleMessage"})
+  static final class c
+    implements ap.a
+  {
+    c(a parama) {}
+    
+    public final boolean handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(201577);
+      ad.i("Finder.MsgRedDotHandler", "[Callback] What=" + paramMessage.what);
+      switch (paramMessage.what)
+      {
       }
       for (;;)
       {
-        label87:
-        if (!localIterator.hasNext()) {
-          break label490;
-        }
-        paramList = (c)localIterator.next();
-        aon localaon = new aon();
-        if (paramList.field_showType != com.tencent.mm.plugin.newtips.a.k.vns.value)
-        {
-          paramMap.EGs.add(localaon);
-          int j = paramList.field_showType;
-          if (j == com.tencent.mm.plugin.newtips.a.k.vnv.value)
-          {
-            localaon.title = paramList.field_title;
-            localaon.tfk = 3;
-            label177:
-            switch (paramList.field_path)
-            {
-            default: 
-              paramList = "";
-            }
-          }
-          for (;;)
-          {
-            localaon.path = paramList;
-            localaon.EHC = 1;
-            if (paramLong != 40001002L) {
-              break label433;
-            }
-            paramList = new aom();
-            paramList.EHv = 2;
-            localaon.EHD = 1;
-            localaon.EHE = new b(paramList.toByteArray());
-            paramMap.type = 1003;
-            break label87;
-            i = 0;
-            break;
-            if (j == com.tencent.mm.plugin.newtips.a.k.vny.value)
-            {
-              localaon.count = 1;
-              localaon.tfk = 2;
-              break label177;
-            }
-            if (j == com.tencent.mm.plugin.newtips.a.k.vnw.value)
-            {
-              localaon.oGN = paramList.field_icon_url;
-              localaon.tfk = 4;
-              break label177;
-            }
-            if (j == com.tencent.mm.plugin.newtips.a.k.vnt.value)
-            {
-              localaon.tfk = 1;
-              break label177;
-            }
-            if (j != com.tencent.mm.plugin.newtips.a.k.vnu.value) {
-              break label177;
-            }
-            localaon.tfk = 100;
-            break label177;
-            paramList = "Discovery";
-            continue;
-            paramList = "FinderEntrance";
-            continue;
-            paramList = "TLMachineTab";
-            continue;
-            paramList = "TLLbsTab";
-          }
-          label433:
-          if (paramLong == 40001001L)
-          {
-            paramList = new aom();
-            paramList.EHv = 4;
-            localaon.EHD = 1;
-            localaon.EHE = new b(paramList.toByteArray());
-            paramMap.type = 1004;
-          }
-        }
-      }
-      label490:
-      paramMap.EGt = paramString;
-      paramMap.priority = i;
-      paramString = new aoj();
-      paramList = new aok();
-      paramString.EHx.add(paramList);
-      paramList.EHy = paramMap;
-      this.qVO.a(paramString, "FinderNewTipsTransform");
-      AppMethodBeat.o(201437);
-      return true;
-    }
-    AppMethodBeat.o(201437);
-    return false;
-  }
-  
-  public final boolean a(long paramLong, List<c> paramList, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(201436);
-    d.g.b.k.h(paramList, "tipsList");
-    d.g.b.k.h(paramMap, "values");
-    int i;
-    if (b(paramMap, paramLong) != null)
-    {
-      if (!a(paramLong, paramMap))
-      {
-        AppMethodBeat.o(201436);
+        AppMethodBeat.o(201577);
         return true;
-      }
-      paramList = ((Iterable)paramList).iterator();
-      i = 0;
-      while (paramList.hasNext())
-      {
-        paramMap = (c)paramList.next();
-        if (paramMap.field_tipId == 40001002L)
+        if (a.czF())
         {
-          i = 1003;
-        }
-        else
-        {
-          if (paramMap.field_tipId != 40001001L) {
-            break label146;
+          a.b(this.rRI);
+          continue;
+          if (a.czF())
+          {
+            a.c(this.rRI);
+            continue;
+            if (a.czF())
+            {
+              a.d(this.rRI);
+              continue;
+              if (a.czF())
+              {
+                a.e(this.rRI);
+                continue;
+                if (a.czF())
+                {
+                  a.f(this.rRI);
+                  continue;
+                  a.g(this.rRI);
+                  continue;
+                  a.h(this.rRI);
+                  continue;
+                  a.i(this.rRI);
+                }
+              }
+            }
           }
-          i = 1004;
         }
       }
-    }
-    label146:
-    for (;;)
-    {
-      break;
-      this.qVO.Dy(i);
-      AppMethodBeat.o(201436);
-      return true;
-      AppMethodBeat.o(201436);
-      return false;
     }
   }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderNewTipsTransform$Companion;", "", "()V", "NEW_TIPS_TIPS_ID_FINDER_TL_HOT_TAB", "", "NEW_TIPS_TIPS_ID_FINDER_TL_NEARBY_TAB", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER", "", "NEW_XML_PATH_TYPE_TIPS_EXT_INFO_FINDER_RED_DOT_TYPE", "TAG", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.a
  * JD-Core Version:    0.7.0.1
  */

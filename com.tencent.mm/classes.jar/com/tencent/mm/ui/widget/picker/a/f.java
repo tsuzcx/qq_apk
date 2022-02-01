@@ -6,74 +6,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends d
 {
-  private c JkH;
-  public boolean JkJ;
-  private int irm;
-  private int irn;
+  private c Lce;
+  public boolean Lcg;
+  private int iKq;
+  private int iKr;
   private Context mContext;
   
   public f(int paramInt1, int paramInt2, Context paramContext)
   {
     super(paramInt1, paramInt2);
-    AppMethodBeat.i(199831);
+    AppMethodBeat.i(192777);
     this.mContext = paramContext;
-    this.JkH = this.JkH;
-    if (this.JkH == null) {
-      this.JkH = new a();
+    this.Lce = this.Lce;
+    if (this.Lce == null) {
+      this.Lce = new a();
     }
-    this.irm = paramInt1;
-    this.irn = paramInt2;
-    AppMethodBeat.o(199831);
+    this.iKq = paramInt1;
+    this.iKr = paramInt2;
+    AppMethodBeat.o(192777);
   }
   
   public final int getItemsCount()
   {
-    if (this.JkJ) {
-      return this.irn - this.irm + 1 + 1;
+    if (this.Lcg) {
+      return this.iKr - this.iKq + 1 + 1;
     }
-    return this.irn - this.irm + 1;
+    return this.iKr - this.iKq + 1;
   }
   
   public final int getMaxValue()
   {
-    return this.irn;
+    return this.iKr;
   }
   
   public final int getMinValue()
   {
-    return this.irm;
+    return this.iKq;
   }
   
-  public final String qk(int paramInt)
+  public final String qL(int paramInt)
   {
-    AppMethodBeat.i(199833);
-    if ((paramInt == 0) && (this.JkJ))
+    AppMethodBeat.i(192779);
+    if ((paramInt == 0) && (this.Lcg))
     {
       str = this.mContext.getString(2131766375);
-      AppMethodBeat.o(199833);
+      AppMethodBeat.o(192779);
       return str;
     }
-    String str = super.qk(paramInt);
-    AppMethodBeat.o(199833);
+    String str = super.qL(paramInt);
+    AppMethodBeat.o(192779);
     return str;
   }
   
-  public final Integer ql(int paramInt)
+  public final Integer qM(int paramInt)
   {
-    AppMethodBeat.i(199832);
+    AppMethodBeat.i(192778);
     if ((paramInt >= 0) && (paramInt < getItemsCount()))
     {
-      if (this.JkJ)
+      if (this.Lcg)
       {
-        i = this.irm;
-        AppMethodBeat.o(199832);
+        i = this.iKq;
+        AppMethodBeat.o(192778);
         return Integer.valueOf(i + paramInt - 1);
       }
-      int i = this.irm;
-      AppMethodBeat.o(199832);
+      int i = this.iKq;
+      AppMethodBeat.o(192778);
       return Integer.valueOf(i + paramInt);
     }
-    AppMethodBeat.o(199832);
+    AppMethodBeat.o(192778);
     return null;
   }
   
@@ -82,7 +82,7 @@ public final class f
   {
     a() {}
     
-    public final String Ft(String paramString)
+    public final String IJ(String paramString)
     {
       return paramString;
     }
@@ -90,7 +90,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 import android.view.ViewGroup;
-import com.tencent.luggage.a.b;
 
 public abstract interface bc
   extends ah.b, an, aq
@@ -13,14 +12,10 @@ public abstract interface bc
   public abstract ViewGroup getContainer();
   
   public abstract void setupWebViewTouchInterceptor(ay paramay);
-  
-  public static abstract interface a
-    extends b
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi.container;
 
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.base.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
 import com.tencent.mm.plugin.appbrand.z.g;
 import org.json.JSONObject;
 
 public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.base.a
+  extends b
 {
   public static final int CTRL_INDEX = 509;
   public static final String NAME = "insertPositioningContainer";
@@ -22,7 +21,7 @@ public final class a
     return i;
   }
   
-  public final View a(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject)
+  public final View a(e parame, JSONObject paramJSONObject)
   {
     int i = 0;
     AppMethodBeat.i(137505);
@@ -48,27 +47,16 @@ public final class a
     }
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137507);
-    paramView.setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(137504);
-        if (paramAnonymousMotionEvent.getAction() != 0) {
-          com.tencent.mm.plugin.appbrand.jsapi.w.e.a((ViewGroup)paramAnonymousView, paramAnonymousMotionEvent);
-        }
-        AppMethodBeat.o(137504);
-        return false;
-      }
-    });
+    paramView.setOnTouchListener(new a.1(this));
     AppMethodBeat.o(137507);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.container.a
  * JD-Core Version:    0.7.0.1
  */

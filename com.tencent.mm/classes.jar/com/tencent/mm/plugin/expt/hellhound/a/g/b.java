@@ -12,36 +12,38 @@ import java.util.Map;
 
 public final class b
 {
-  public Map<String, Map<String, List<Pair<String, String>>>> qjT;
-  public List<Pair<String, String>> qll;
-  public e qlm;
-  public Map<String, List<Pair<String, String>>> qqA;
-  public c qqB;
-  public com.tencent.mm.hellhoundlib.a.b qqC;
-  public a qqy;
-  public Map<String, List<Pair<String, String>>> qqz;
+  public final Map<String, List<Pair<String, String>>> qPk;
+  public final Map<String, Map<String, List<Pair<String, String>>>> qSa;
+  public final List<Pair<String, String>> qUi;
+  public e qUj;
+  public a qZD;
+  public final Map<String, List<Pair<String, String>>> qZE;
+  public c qZF;
+  public com.tencent.mm.hellhoundlib.a.b qZG;
   
   b()
   {
     AppMethodBeat.i(177410);
-    this.qqB = new c()
+    this.qZF = new c()
     {
-      public final void b(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
+      public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject1, Object paramAnonymousObject2) {}
+      
+      public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
       {
         AppMethodBeat.i(184393);
         if (("onScrollStateChanged".equals(paramAnonymousString2)) && ("(Landroid/widget/AbsListView;I)V".equals(paramAnonymousString3)))
         {
-          if ((paramAnonymousArrayOfObject.length >= 2) && (b.this.qlm != null))
+          if ((paramAnonymousArrayOfObject.length >= 2) && (b.this.qUj != null))
           {
-            b.this.qlm.k((ViewGroup)paramAnonymousArrayOfObject[0], ((Integer)paramAnonymousArrayOfObject[1]).intValue());
+            b.this.qUj.l((ViewGroup)paramAnonymousArrayOfObject[0], ((Integer)paramAnonymousArrayOfObject[1]).intValue());
             AppMethodBeat.o(184393);
           }
         }
         else if (("onScroll".equals(paramAnonymousString2)) && ("(Landroid/widget/AbsListView;III)V".equals(paramAnonymousString3)))
         {
-          if ((paramAnonymousArrayOfObject.length >= 4) && (b.this.qlm != null))
+          if ((paramAnonymousArrayOfObject.length >= 4) && (b.this.qUj != null))
           {
-            paramAnonymousString1 = b.this.qlm;
+            paramAnonymousString1 = b.this.qUj;
             paramAnonymousString2 = (ViewGroup)paramAnonymousArrayOfObject[0];
             int i = ((Integer)paramAnonymousArrayOfObject[1]).intValue();
             int j = ((Integer)paramAnonymousArrayOfObject[2]).intValue();
@@ -50,72 +52,70 @@ public final class b
             AppMethodBeat.o(184393);
           }
         }
-        else if (("resetStoryHeader".equals(paramAnonymousString2)) && ("()V".equals(paramAnonymousString3)) && (b.this.qqy != null)) {
-          b.this.qqy.clu();
+        else if (("resetStoryHeader".equals(paramAnonymousString2)) && ("()V".equals(paramAnonymousString3)) && (b.this.qZD != null)) {
+          b.this.qZD.cqJ();
         }
         AppMethodBeat.o(184393);
       }
-      
-      public final void f(String paramAnonymousString, Object paramAnonymousObject) {}
     };
-    this.qqC = new com.tencent.mm.hellhoundlib.a.b()
+    this.qZG = new com.tencent.mm.hellhoundlib.a.b()
     {
-      public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
+      public final void a(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, Object paramAnonymousObject) {}
+      
+      public final void c(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, String paramAnonymousString4, Object paramAnonymousObject, Object[] paramAnonymousArrayOfObject)
       {
-        AppMethodBeat.i(184394);
+        AppMethodBeat.i(210500);
         if (paramAnonymousString1.startsWith("com/tencent/mm/plugin/sns/ui/SnsTimeLineUI"))
         {
-          if (b.this.qqy == null)
+          if (b.this.qZD == null)
           {
-            AppMethodBeat.o(184394);
+            AppMethodBeat.o(210500);
             return;
           }
-          if (paramAnonymousString3.equals("smoothScrollToPosition"))
+          if (paramAnonymousString4.equals("smoothScrollToPosition"))
           {
             if ((paramAnonymousArrayOfObject != null) && (paramAnonymousArrayOfObject.length > 0))
             {
-              b.this.qqy.smoothScrollToPosition(((Integer)paramAnonymousArrayOfObject[0]).intValue());
-              AppMethodBeat.o(184394);
+              b.this.qZD.smoothScrollToPosition(((Integer)paramAnonymousArrayOfObject[0]).intValue());
+              AppMethodBeat.o(210500);
             }
           }
-          else if (paramAnonymousString3.equals("smoothScrollToPositionFromTop"))
+          else if (paramAnonymousString4.equals("smoothScrollToPositionFromTop"))
           {
             if ((paramAnonymousArrayOfObject != null) && (paramAnonymousArrayOfObject.length >= 2))
             {
-              paramAnonymousString1 = b.this.qqy;
+              paramAnonymousString1 = b.this.qZD;
               int i = ((Integer)paramAnonymousArrayOfObject[0]).intValue();
               ((Integer)paramAnonymousArrayOfObject[1]).intValue();
-              paramAnonymousString1.CE(i);
-              AppMethodBeat.o(184394);
+              paramAnonymousString1.Dr(i);
+              AppMethodBeat.o(210500);
             }
           }
-          else if ((paramAnonymousString3.equals("scrollToTop")) && (paramAnonymousArrayOfObject != null) && (paramAnonymousArrayOfObject.length > 0)) {
-            b.this.qqy.clt();
+          else if ((paramAnonymousString4.equals("scrollToTop")) && (paramAnonymousArrayOfObject != null) && (paramAnonymousArrayOfObject.length > 0)) {
+            b.this.qZD.cqI();
           }
         }
-        AppMethodBeat.o(184394);
+        AppMethodBeat.o(210500);
       }
-      
-      public final void l(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3) {}
     };
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("onScrollStateChanged", "(Landroid/widget/AbsListView;I)V"));
     localArrayList.add(Pair.create("onScroll", "(Landroid/widget/AbsListView;III)V"));
     HashMap localHashMap = new HashMap();
     localHashMap.put("android/widget/AbsListView$OnScrollListener", localArrayList);
-    this.qjT = new HashMap();
-    this.qjT.put("com/tencent/mm/plugin/sns/ui/SnsUIAction$", localHashMap);
-    this.qqA = new HashMap();
+    this.qSa = new HashMap();
+    this.qSa.put("com/tencent/mm/plugin/sns/ui/SnsUIAction$", localHashMap);
+    this.qZE = new HashMap();
     localArrayList = new ArrayList();
     localArrayList.add(Pair.create("resetStoryHeader", "()V"));
-    this.qqA.put("com/tencent/mm/plugin/sns/ui/SnsUIAction", localArrayList);
-    this.qll = new ArrayList();
-    this.qll.add(Pair.create("smoothScrollToPosition", "(I)V"));
-    this.qll.add(Pair.create("smoothScrollToPositionFromTop", "(II)V"));
-    this.qqz = new HashMap();
+    this.qZE.put("com/tencent/mm/plugin/sns/ui/SnsUIAction", localArrayList);
+    this.qUi = new ArrayList();
+    this.qUi.add(Pair.create("smoothScrollToPosition", "(I)V"));
+    this.qUi.add(Pair.create("smoothScrollToPositionFromTop", "(II)V"));
+    this.qPk = new HashMap();
     localArrayList = new ArrayList();
     localArrayList.add(Pair.create("scrollToTop", "(Landroid/widget/ListView;)V"));
-    this.qqz.put("com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory", localArrayList);
+    this.qPk.put("com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory", localArrayList);
     AppMethodBeat.o(177410);
   }
 }

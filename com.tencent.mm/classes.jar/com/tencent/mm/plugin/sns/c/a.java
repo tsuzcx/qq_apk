@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.sns.c;
 
-import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class a
-  implements m
+  implements n
 {
-  public static l iyx;
-  public static k iyy;
-  public static int xMh = 2147483647;
-  public static String xMi = "";
-  
-  public final void a(k paramk)
-  {
-    iyy = paramk;
-  }
+  public static m iRG;
+  public static l iRH;
+  public static int zbZ = 2147483647;
+  public static String zca = "";
   
   public final void a(l paraml)
   {
-    iyx = paraml;
+    iRH = paraml;
+  }
+  
+  public final void a(m paramm)
+  {
+    iRG = paramm;
   }
 }
 

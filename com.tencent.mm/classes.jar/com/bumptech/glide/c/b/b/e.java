@@ -11,9 +11,9 @@ import java.util.concurrent.locks.Lock;
 public final class e
   implements a
 {
-  private final j aHm;
-  private final c aHn;
-  private com.bumptech.glide.a.a aHo;
+  private final j aJd;
+  private final c aJe;
+  private com.bumptech.glide.a.a aJf;
   private final File directory;
   private final long maxSize;
   
@@ -21,22 +21,22 @@ public final class e
   e(File paramFile, long paramLong)
   {
     AppMethodBeat.i(77150);
-    this.aHn = new c();
+    this.aJe = new c();
     this.directory = paramFile;
     this.maxSize = paramLong;
-    this.aHm = new j();
+    this.aJd = new j();
     AppMethodBeat.o(77150);
   }
   
-  private com.bumptech.glide.a.a oL()
+  private com.bumptech.glide.a.a pd()
   {
     try
     {
       AppMethodBeat.i(77151);
-      if (this.aHo == null) {
-        this.aHo = com.bumptech.glide.a.a.b(this.directory, this.maxSize);
+      if (this.aJf == null) {
+        this.aJf = com.bumptech.glide.a.a.b(this.directory, this.maxSize);
       }
-      com.bumptech.glide.a.a locala = this.aHo;
+      com.bumptech.glide.a.a locala = this.aJf;
       AppMethodBeat.o(77151);
       return locala;
     }
@@ -46,17 +46,17 @@ public final class e
   public final File a(h paramh)
   {
     AppMethodBeat.i(77152);
-    Object localObject2 = this.aHm.c(paramh);
+    Object localObject2 = this.aJd.c(paramh);
     if (Log.isLoggable("DiskLruCacheWrapper", 2)) {
       new StringBuilder("Get: Obtained: ").append((String)localObject2).append(" for for Key: ").append(paramh);
     }
     localObject1 = null;
     try
     {
-      localObject2 = oL().O((String)localObject2);
+      localObject2 = pd().N((String)localObject2);
       paramh = localObject1;
       if (localObject2 != null) {
-        paramh = localObject2.aCd[0];
+        paramh = localObject2.aDU[0];
       }
     }
     catch (IOException paramh)
@@ -74,19 +74,19 @@ public final class e
   public final void a(h paramh, a.b paramb)
   {
     AppMethodBeat.i(77153);
-    str = this.aHm.c(paramh);
+    str = this.aJd.c(paramh);
     Object localObject;
-    synchronized (this.aHn)
+    synchronized (this.aJe)
     {
-      c.a locala = (c.a)???.aHf.get(str);
+      c.a locala = (c.a)???.aIW.get(str);
       localObject = locala;
       if (locala == null)
       {
-        localObject = ???.aHg.oJ();
-        ???.aHf.put(str, localObject);
+        localObject = ???.aIX.pb();
+        ???.aIW.put(str, localObject);
       }
-      ((c.a)localObject).aHi += 1;
-      ((c.a)localObject).aHh.lock();
+      ((c.a)localObject).aIZ += 1;
+      ((c.a)localObject).aIY.lock();
     }
     for (;;)
     {
@@ -100,37 +100,37 @@ public final class e
       {
         try
         {
-          if (paramb.s(paramh.nD()))
+          if (paramb.s(paramh.nV()))
           {
-            com.bumptech.glide.a.a.a(paramh.aBU, paramh, true);
-            paramh.aBX = true;
+            com.bumptech.glide.a.a.a(paramh.aDL, paramh, true);
+            paramh.aDO = true;
           }
-          paramh.nE();
+          paramh.nW();
           continue;
         }
         finally
         {
-          paramh.nE();
+          paramh.nW();
           AppMethodBeat.o(77153);
         }
         paramh = finally;
-        this.aHn.release(str);
+        this.aJe.release(str);
         AppMethodBeat.o(77153);
       }
       try
       {
-        paramh = oL();
-        localObject = paramh.O(str);
+        paramh = pd();
+        localObject = paramh.N(str);
         if (localObject != null)
         {
-          this.aHn.release(str);
+          this.aJe.release(str);
           AppMethodBeat.o(77153);
           return;
           paramh = finally;
           AppMethodBeat.o(77153);
           throw paramh;
         }
-        paramh = paramh.P(str);
+        paramh = paramh.O(str);
         if (paramh == null)
         {
           paramh = new IllegalStateException("Had two simultaneous puts for: ".concat(String.valueOf(str)));
@@ -141,7 +141,7 @@ public final class e
       catch (IOException paramh)
       {
         Log.isLoggable("DiskLruCacheWrapper", 5);
-        this.aHn.release(str);
+        this.aJe.release(str);
         AppMethodBeat.o(77153);
         return;
       }

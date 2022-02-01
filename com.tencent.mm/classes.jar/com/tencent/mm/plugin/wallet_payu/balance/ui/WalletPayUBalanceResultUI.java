@@ -12,7 +12,7 @@ public class WalletPayUBalanceResultUI
   {
     AppMethodBeat.i(71969);
     super.initView();
-    this.AZI.setVisibility(8);
+    this.CzU.setVisibility(8);
     AppMethodBeat.o(71969);
   }
   
@@ -24,7 +24,7 @@ public class WalletPayUBalanceResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.balance.ui.WalletPayUBalanceResultUI
  * JD-Core Version:    0.7.0.1
  */

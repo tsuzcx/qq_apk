@@ -1,57 +1,57 @@
 package d.l.b.a.b.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class j
 {
-  private static final Object KXT;
-  public static volatile boolean LPm;
+  private static final Object MOQ;
+  public static volatile boolean NGh;
   
   static
   {
     AppMethodBeat.i(61411);
-    KXT = new Object()
+    MOQ = new Object()
     {
       public final String toString()
       {
         return "NULL_VALUE";
       }
     };
-    LPm = false;
+    NGh = false;
     AppMethodBeat.o(61411);
   }
   
-  public static <V> Object fx(V paramV)
+  public static <V> Object fA(V paramV)
   {
     AppMethodBeat.i(61407);
     if (paramV == null)
     {
-      paramV = KXT;
+      paramV = MOQ;
       if (paramV == null) {
-        agL(1);
+        ajm(1);
       }
       AppMethodBeat.o(61407);
       return paramV;
     }
     if (paramV == null) {
-      agL(2);
+      ajm(2);
     }
     AppMethodBeat.o(61407);
     return paramV;
   }
   
-  public static <V> V fy(Object paramObject)
+  public static <V> V fB(Object paramObject)
   {
     AppMethodBeat.i(61409);
     if (paramObject == null) {
-      agL(4);
+      ajm(4);
     }
-    paramObject = fz(paramObject);
+    paramObject = fC(paramObject);
     if (paramObject == null) {
-      agL(0);
+      ajm(0);
     }
-    if (paramObject == KXT)
+    if (paramObject == MOQ)
     {
       AppMethodBeat.o(61409);
       return null;
@@ -60,19 +60,19 @@ public final class j
     return paramObject;
   }
   
-  public static <V> V fz(Object paramObject)
+  public static <V> V fC(Object paramObject)
   {
     AppMethodBeat.i(61410);
     if ((paramObject instanceof a))
     {
-      paramObject = ((a)paramObject).gcU();
-      if ((LPm) && (c.r(paramObject)))
+      paramObject = ((a)paramObject).getThrowable();
+      if ((NGh) && (c.s(paramObject)))
       {
         paramObject = new b(paramObject);
         AppMethodBeat.o(61410);
         throw paramObject;
       }
-      k.h(paramObject, "e");
+      p.h(paramObject, "e");
       AppMethodBeat.o(61410);
       throw paramObject;
     }
@@ -80,7 +80,7 @@ public final class j
     return paramObject;
   }
   
-  public static Object s(Throwable paramThrowable)
+  public static Object t(Throwable paramThrowable)
   {
     AppMethodBeat.i(61408);
     paramThrowable = new a(paramThrowable, (byte)0);
@@ -90,21 +90,21 @@ public final class j
   
   static final class a
   {
-    private final Throwable KbB;
+    private final Throwable throwable;
     
     private a(Throwable paramThrowable)
     {
       AppMethodBeat.i(61403);
-      this.KbB = paramThrowable;
+      this.throwable = paramThrowable;
       AppMethodBeat.o(61403);
     }
     
-    public final Throwable gcU()
+    public final Throwable getThrowable()
     {
       AppMethodBeat.i(61404);
-      Throwable localThrowable = this.KbB;
+      Throwable localThrowable = this.throwable;
       if (localThrowable == null) {
-        agL(1);
+        ajm(1);
       }
       AppMethodBeat.o(61404);
       return localThrowable;
@@ -113,7 +113,7 @@ public final class j
     public final String toString()
     {
       AppMethodBeat.i(61405);
-      String str = this.KbB.toString();
+      String str = this.throwable.toString();
       AppMethodBeat.o(61405);
       return str;
     }

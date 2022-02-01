@@ -7,7 +7,7 @@ import org.json.JSONObject;
 public final class m
   extends b
 {
-  public a cYH;
+  public a djZ;
   
   public m()
   {
@@ -17,22 +17,22 @@ public final class m
   private m(byte paramByte)
   {
     AppMethodBeat.i(144177);
-    this.cYH = new a();
-    this.Gqe = false;
+    this.djZ = new a();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(144177);
   }
   
   public static final class a
   {
-    public String cYI;
-    public String cYJ;
-    public JSONObject cYK;
+    public String dka;
+    public String dkb;
+    public JSONObject dkc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.m
  * JD-Core Version:    0.7.0.1
  */

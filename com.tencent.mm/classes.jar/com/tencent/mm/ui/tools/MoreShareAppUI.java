@@ -21,9 +21,9 @@ import java.util.List;
 public class MoreShareAppUI
   extends MMActivity
 {
-  private List<g> Hse;
-  private a ISS;
-  private DragSortListView pga;
+  private List<g> JfQ;
+  private a KJW;
+  private DragSortListView pJC;
   
   public int getLayoutId()
   {
@@ -34,10 +34,10 @@ public class MoreShareAppUI
   {
     AppMethodBeat.i(39083);
     setMMTitle(2131756732);
-    this.pga = ((DragSortListView)findViewById(2131301457));
-    this.pga.setDropListener(new DragSortListView.h()
+    this.pJC = ((DragSortListView)findViewById(2131301457));
+    this.pJC.setDropListener(new DragSortListView.h()
     {
-      public final void ei(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void ek(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(39078);
         g localg = (g)MoreShareAppUI.a(MoreShareAppUI.this).getItem(paramAnonymousInt1);
@@ -72,8 +72,8 @@ public class MoreShareAppUI
         return false;
       }
     });
-    this.ISS = new a(this, this.Hse);
-    this.pga.setAdapter(this.ISS);
+    this.KJW = new a(this, this.JfQ);
+    this.pJC.setAdapter(this.KJW);
     AppMethodBeat.o(39082);
   }
   
@@ -87,13 +87,13 @@ public class MoreShareAppUI
     extends ArrayAdapter<g>
   {
     private Context mContext;
-    private List<g> oXp;
+    private List<g> pAZ;
     
     public a(Context paramContext, List<g> paramList)
     {
       super(2131494943, paramList);
       this.mContext = paramContext;
-      this.oXp = paramList;
+      this.pAZ = paramList;
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -108,7 +108,7 @@ public class MoreShareAppUI
       for (;;)
       {
         g localg = (g)getItem(paramInt);
-        paramViewGroup.iCg.setText(localg.field_appName);
+        paramViewGroup.iVq.setText(localg.field_appName);
         paramView.setVisibility(0);
         AppMethodBeat.o(39081);
         return paramView;
@@ -118,20 +118,20 @@ public class MoreShareAppUI
     
     static final class a
     {
-      TextView iCg;
-      ImageView lzC;
-      View oXq;
-      ImageView oXr;
-      MMSwitchBtn tTm;
+      TextView iVq;
+      ImageView lZa;
+      View pBa;
+      ImageView pBb;
+      MMSwitchBtn rck;
       
       public a(View paramView)
       {
         AppMethodBeat.i(39080);
-        this.oXr = ((ImageView)paramView.findViewById(2131300760));
-        this.lzC = ((ImageView)paramView.findViewById(2131300880));
-        this.iCg = ((TextView)paramView.findViewById(2131305905));
-        this.tTm = ((MMSwitchBtn)paramView.findViewById(2131305590));
-        this.oXq = paramView.findViewById(2131298736);
+        this.pBb = ((ImageView)paramView.findViewById(2131300760));
+        this.lZa = ((ImageView)paramView.findViewById(2131300880));
+        this.iVq = ((TextView)paramView.findViewById(2131305905));
+        this.rck = ((MMSwitchBtn)paramView.findViewById(2131305590));
+        this.pBa = paramView.findViewById(2131298736);
         AppMethodBeat.o(39080);
       }
     }
@@ -139,7 +139,7 @@ public class MoreShareAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MoreShareAppUI
  * JD-Core Version:    0.7.0.1
  */

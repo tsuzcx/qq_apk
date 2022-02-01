@@ -1,17 +1,60 @@
 package com.tencent.mm.plugin.sns.j;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Iterator;
+import java.util.Vector;
 
-public final class i
-  extends j
+public abstract class i
 {
-  public static j yes;
+  private Vector<e> zut = new Vector();
   
-  static
+  public final e b(e parame)
   {
-    AppMethodBeat.i(96250);
-    yes = new i();
-    AppMethodBeat.o(96250);
+    this.zut.add(parame);
+    return parame;
+  }
+  
+  public final boolean c(e parame)
+  {
+    Iterator localIterator = this.zut.iterator();
+    while (localIterator.hasNext())
+    {
+      e locale = (e)localIterator.next();
+      if (locale.inh == parame.inh) {
+        this.zut.remove(locale);
+      }
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      this.zut.add(parame);
+      return bool;
+    }
+  }
+  
+  public final e dH(Object paramObject)
+  {
+    if (paramObject == null) {
+      return null;
+    }
+    try
+    {
+      Iterator localIterator = this.zut.iterator();
+      while (localIterator.hasNext())
+      {
+        e locale = (e)localIterator.next();
+        if (paramObject.equals(locale.inf))
+        {
+          this.zut.remove(locale);
+          return locale;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.Ss_log_base_helper", "report by key " + localException.getMessage() + " " + paramObject);
+    }
+    return null;
   }
 }
 

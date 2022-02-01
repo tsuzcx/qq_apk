@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.messenger.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 
 public final class c
 {
-  public static ArrayList<a> alO(String paramString)
+  public static ArrayList<a> aqD(String paramString)
   {
     AppMethodBeat.i(90772);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.w("MicroMsg.SysMsgTemplateParser", "hy: null text!!");
+      ad.w("MicroMsg.SysMsgTemplateParser", "hy: null text!!");
       AppMethodBeat.o(90772);
       return null;
     }
@@ -47,7 +47,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.d.c
  * JD-Core Version:    0.7.0.1
  */

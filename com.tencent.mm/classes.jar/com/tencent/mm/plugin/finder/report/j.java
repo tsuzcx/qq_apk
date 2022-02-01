@@ -1,101 +1,107 @@
 package com.tencent.mm.plugin.finder.report;
 
+import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.event.base.b;
 import com.tencent.mm.plugin.finder.event.base.c;
 import com.tencent.mm.plugin.finder.event.base.f;
-import com.tencent.mm.plugin.finder.utils.n;
-import d.g.b.k;
+import com.tencent.mm.plugin.finder.event.base.h;
+import com.tencent.mm.plugin.finder.event.base.i;
+import com.tencent.mm.plugin.finder.utils.p.b;
+import d.l;
 import d.v;
+import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/FinderFeedFlowEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/TwoFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowEventSubscriber;", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEventSubscriber;", "eventDispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "(Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;)V", "TAG", "", "lastCenterFeedId", "", "getLastCenterFeedId", "()J", "setLastCenterFeedId", "(J)V", "createEvent", "Lcom/tencent/mm/plugin/finder/event/base/SingleFeedFlowScrollEvent;", "newState", "", "handleEvent", "Lcom/tencent/mm/plugin/finder/event/base/ScrollEvent;", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onInvisible", "", "plugin-finder_release"})
 public final class j
-  extends f
+  extends i
 {
-  private final String TAG = "Finder.FinderTwoFeedFlowEventSubscriber";
+  private final String TAG = "Finder.FinderSingleFeedFlowEventSubscriber";
+  private long rNl = -1L;
   
   public j(c paramc)
   {
     super(paramc);
   }
   
-  public final b h(RecyclerView paramRecyclerView, int paramInt)
+  private static com.tencent.mm.plugin.finder.event.base.j Fb(int paramInt)
   {
-    AppMethodBeat.i(202797);
-    k.h(paramRecyclerView, "recyclerView");
-    Object localObject1 = super.h(paramRecyclerView, paramInt);
+    AppMethodBeat.i(203299);
+    com.tencent.mm.plugin.finder.event.base.j localj = new com.tencent.mm.plugin.finder.event.base.j(paramInt);
+    AppMethodBeat.o(203299);
+    return localj;
+  }
+  
+  public final h i(RecyclerView paramRecyclerView, int paramInt)
+  {
+    AppMethodBeat.i(203297);
+    d.g.b.p.h(paramRecyclerView, "recyclerView");
+    Object localObject1 = super.i(paramRecyclerView, paramInt);
     if (localObject1 == null)
     {
-      paramRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.TwoFeedFlowScrollEvent");
-      AppMethodBeat.o(202797);
+      paramRecyclerView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.event.base.SingleFeedFlowScrollEvent");
+      AppMethodBeat.o(203297);
       throw paramRecyclerView;
     }
-    localObject1 = (com.tencent.mm.plugin.finder.event.base.l)localObject1;
-    Object localObject2 = paramRecyclerView.getLayoutManager();
-    if (localObject2 == null)
-    {
-      paramRecyclerView = new v("null cannot be cast to non-null type android.support.v7.widget.StaggeredGridLayoutManager");
-      AppMethodBeat.o(202797);
-      throw paramRecyclerView;
-    }
-    Object localObject3 = (StaggeredGridLayoutManager)localObject2;
-    localObject2 = ((StaggeredGridLayoutManager)localObject3).n(null);
-    localObject3 = ((StaggeredGridLayoutManager)localObject3).mi();
+    localObject1 = (com.tencent.mm.plugin.finder.event.base.j)localObject1;
+    ((com.tencent.mm.plugin.finder.event.base.j)localObject1).rNl = this.rNl;
+    ((com.tencent.mm.plugin.finder.event.base.j)localObject1).obN = this.obN;
+    ((com.tencent.mm.plugin.finder.event.base.j)localObject1).obO = this.obO;
+    Object localObject2 = this.rQL;
     int i;
     if (localObject2 != null)
     {
-      paramInt = localObject2[0];
-      if (localObject2 == null) {
-        break label274;
-      }
-      i = localObject2[1];
-      label118:
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH = Math.min(paramInt, i);
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ = Math.max(localObject3[0], localObject3[1]);
-      localObject2 = n.rPN;
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdQ = n.a(((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH, ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ, paramRecyclerView);
-      if ((this.nAG != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH) || (this.nAH != ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ))
+      com.tencent.mm.plugin.finder.utils.p localp = com.tencent.mm.plugin.finder.utils.p.sMo;
+      localObject2 = com.tencent.mm.plugin.finder.utils.p.a(paramRecyclerView, (Rect)localObject2);
+      ((com.tencent.mm.plugin.finder.event.base.j)localObject1).rRq = ((List)((p.b)localObject2).sMr);
+      ((com.tencent.mm.plugin.finder.event.base.j)localObject1).rRr = ((p.b)localObject2).sMs;
+      if ((this.obN != ((h)localObject1).rRd) || (this.obO != ((h)localObject1).rRf))
       {
-        if ((this.nAG != 2147483647) && (this.nAH != 2147483647)) {
-          break label279;
+        if ((this.obN != 2147483647) && (this.obO != 2147483647)) {
+          break label259;
         }
-        i = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH;
-        paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ;
+        i = ((h)localObject1).rRd;
+        paramInt = ((h)localObject1).rRf;
       }
     }
     for (;;)
     {
-      localObject2 = n.rPN;
-      ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdP = n.a(i, paramInt, paramRecyclerView);
-      this.nAG = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH;
-      this.nAH = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ;
-      paramRecyclerView = (b)localObject1;
-      AppMethodBeat.o(202797);
+      localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      ((com.tencent.mm.plugin.finder.event.base.j)localObject1).rRp = com.tencent.mm.plugin.finder.utils.p.a(i, paramInt, paramRecyclerView);
+      this.rNl = ((h)localObject1).rRj;
+      this.obN = ((h)localObject1).rRd;
+      this.obO = ((h)localObject1).rRf;
+      paramRecyclerView = (h)localObject1;
+      AppMethodBeat.o(203297);
       return paramRecyclerView;
-      paramInt = 0;
+      localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      ((com.tencent.mm.plugin.finder.event.base.j)localObject1).rRq = com.tencent.mm.plugin.finder.utils.p.a(((h)localObject1).rRd, ((h)localObject1).rRf, paramRecyclerView);
       break;
-      label274:
-      i = 0;
-      break label118;
-      label279:
-      if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH < this.nAG) {}
-      for (paramInt = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdH;; paramInt = this.nAG)
+      label259:
+      if (((h)localObject1).rRd < this.obN) {}
+      for (paramInt = ((h)localObject1).rRd;; paramInt = this.obN)
       {
-        if (((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ <= this.nAH) {
-          break label332;
+        if (((h)localObject1).rRf <= this.obO) {
+          break label312;
         }
-        j = ((com.tencent.mm.plugin.finder.event.base.l)localObject1).rdJ;
+        j = ((h)localObject1).rRf;
         i = paramInt;
         paramInt = j;
         break;
       }
-      label332:
-      int j = this.nAH;
+      label312:
+      int j = this.obO;
       i = paramInt;
       paramInt = j;
     }
+  }
+  
+  public final void onInvisible()
+  {
+    AppMethodBeat.i(203302);
+    super.onInvisible();
+    this.rNl = -1L;
+    AppMethodBeat.o(203302);
   }
 }
 

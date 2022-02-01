@@ -16,8 +16,8 @@ import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.IUIModal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.s;
 
 public class ModalFragment
@@ -31,7 +31,7 @@ public class ModalFragment
   private int getBlackMaskColorRes()
   {
     AppMethodBeat.i(178766);
-    if (aj.DT())
+    if (al.isDarkMode())
     {
       AppMethodBeat.o(178766);
       return 2131101096;
@@ -46,7 +46,7 @@ public class ModalFragment
     if (paramView != null)
     {
       this.mViewCenterPadding = paramView.findViewById(2131306427);
-      int i = aj.ji(getContext());
+      int i = al.jG(getContext());
       this.mViewCenterPadding.setVisibility(0);
       paramView = this.mViewCenterPadding.getLayoutParams();
       paramView.height = i;
@@ -62,7 +62,7 @@ public class ModalFragment
     {
       this.page.setPlatformDelegate(this.pagePlatformDelegate);
       covertPlatformData(getActivity().getIntent().getBundleExtra("key_platform_data"));
-      ac.i("MicroMsg.ModalFragment", "finish init page");
+      ad.i("MicroMsg.ModalFragment", "finish init page");
     }
     AppMethodBeat.o(18545);
   }
@@ -91,7 +91,7 @@ public class ModalFragment
     }
     if ((this.mPreFragment instanceof ModalFragment))
     {
-      i = ((ModalFragment)this.mPreFragment).getController().fgE();
+      i = ((ModalFragment)this.mPreFragment).getController().fwQ();
       setCenterPaddingColor(getContext().getResources().getColor(2131101053));
       setActionBarColor(i);
       AppMethodBeat.o(178764);
@@ -105,7 +105,7 @@ public class ModalFragment
         AppMethodBeat.o(178764);
         return;
       }
-      i = ((MainFragment)this.mPreFragment).getController().fgE();
+      i = ((MainFragment)this.mPreFragment).getController().fwQ();
       int j = getContext().getResources().getColor(getBlackMaskColorRes());
       setActionBarColor((int)ColorUtil.MergeColors(i, j));
       setCenterPaddingColor(j);
@@ -122,7 +122,7 @@ public class ModalFragment
   {
     AppMethodBeat.i(18554);
     super.finalize();
-    ac.i("MicroMsg.ModalFragment", "finalize " + this.page);
+    ad.i("MicroMsg.ModalFragment", "finalize " + this.page);
     AppMethodBeat.o(18554);
   }
   
@@ -208,11 +208,11 @@ public class ModalFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(207377);
+    AppMethodBeat.i(199429);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(207377);
+    AppMethodBeat.o(199429);
   }
   
   public void onStart()

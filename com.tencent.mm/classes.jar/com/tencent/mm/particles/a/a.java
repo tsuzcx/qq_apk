@@ -10,15 +10,15 @@ public final class a
   extends b
 {
   private final Bitmap bitmap;
-  private final float iqc;
-  private final float iqd;
+  private final float iJA;
+  private final float iJz;
   
   public a(Bitmap paramBitmap)
   {
     AppMethodBeat.i(151371);
     this.bitmap = paramBitmap;
-    this.iqc = (paramBitmap.getWidth() / 2.0F);
-    this.iqd = (paramBitmap.getHeight() / 2.0F);
+    this.iJz = (paramBitmap.getWidth() / 2.0F);
+    this.iJA = (paramBitmap.getHeight() / 2.0F);
     AppMethodBeat.o(151371);
   }
   
@@ -26,7 +26,7 @@ public final class a
   {
     AppMethodBeat.i(151374);
     paramMatrix.preTranslate(paramFloat1, paramFloat2);
-    paramMatrix.preRotate(paramFloat3, this.iqc, this.iqd);
+    paramMatrix.preRotate(paramFloat3, this.iJz, this.iJA);
     paramCanvas.drawBitmap(this.bitmap, paramMatrix, paramPaint);
     AppMethodBeat.o(151374);
   }

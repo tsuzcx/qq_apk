@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.z.i;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import java.nio.ByteBuffer;
 import java.util.Locale;
@@ -30,11 +30,11 @@ final class aw
     paramJSONObject = paramJSONObject.optString("destPath");
     String str1 = String.format(Locale.US, "fail no such file or directory, copyFile \"%s\" -> \"%s\"", new Object[] { paramString, paramJSONObject });
     String str2 = String.format(Locale.US, "fail permission denied, copyFile \"%s\" -> \"%s\"", new Object[] { paramString, paramJSONObject });
-    Object localObject = paramc.DH().IS(paramString);
+    Object localObject = paramc.Fg().Mj(paramString);
     if ((localObject == null) || (!((e)localObject).exists()) || (!((e)localObject).isFile()))
     {
       localObject = new i();
-      paramc.DH().b(paramString, (i)localObject);
+      paramc.Fg().b(paramString, (i)localObject);
       if (((i)localObject).value == null)
       {
         paramc = new i.a(str1, new Object[0]);
@@ -42,12 +42,12 @@ final class aw
         return paramc;
       }
       paramString = new a((ByteBuffer)((i)localObject).value);
-      paramc = paramc.DH().a(paramJSONObject, paramString, false);
-      bs.d(paramString);
+      paramc = paramc.Fg().a(paramJSONObject, paramString, false);
+      bt.d(paramString);
     }
     for (;;)
     {
-      switch (1.krw[paramc.ordinal()])
+      switch (1.kMS[paramc.ordinal()])
       {
       default: 
         paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -59,7 +59,7 @@ final class aw
           AppMethodBeat.o(128910);
           return paramc;
         }
-        paramc = paramc.DH().a(paramJSONObject, (e)localObject, false);
+        paramc = paramc.Fg().a(paramJSONObject, (e)localObject, false);
       }
     }
     paramc = new i.a(str2, new Object[0]);
@@ -87,7 +87,7 @@ final class aw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.aw
  * JD-Core Version:    0.7.0.1
  */

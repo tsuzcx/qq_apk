@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.messenger;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.a.f.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.messenger.a.e.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Map;
 
 final class PluginMessenger$2
-  implements f.a
+  implements e.a
 {
   PluginMessenger$2(PluginMessenger paramPluginMessenger) {}
   
   public final String e(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(198557);
+    AppMethodBeat.i(211821);
     if (paramMap == null)
     {
-      AppMethodBeat.o(198557);
+      AppMethodBeat.o(211821);
       return null;
     }
-    paramMap = bs.nullAsNil((String)paramMap.get(paramString + ".title"));
-    AppMethodBeat.o(198557);
+    paramMap = bt.nullAsNil((String)paramMap.get(paramString + ".title"));
+    AppMethodBeat.o(211821);
     return paramMap;
   }
 }

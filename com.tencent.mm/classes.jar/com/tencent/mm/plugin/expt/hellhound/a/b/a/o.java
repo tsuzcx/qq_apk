@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "", "free", "", "report", "startMonitor", "stopMonitor", "plugin-expt_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "", "free", "", "report", "startMonitor", "stopMonitor", "plugin-expt_release"})
 public abstract interface o
 {
-  public abstract void cjq();
+  public abstract void coC();
   
-  public abstract void cjz();
+  public abstract void coL();
   
   public abstract void free();
   

@@ -11,15 +11,15 @@ final class WalletLqtSaveFetchUI$9
   
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AppMethodBeat.i(207209);
+    AppMethodBeat.i(199237);
     if (!paramBoolean)
     {
-      WalletLqtSaveFetchUI.a(this.Beu, false);
-      AppMethodBeat.o(207209);
+      WalletLqtSaveFetchUI.a(this.CEJ, false);
+      AppMethodBeat.o(199237);
       return;
     }
-    WalletLqtSaveFetchUI.a(this.Beu, true);
-    AppMethodBeat.o(207209);
+    WalletLqtSaveFetchUI.a(this.CEJ, true);
+    AppMethodBeat.o(199237);
   }
 }
 

@@ -7,23 +7,23 @@ import java.lang.reflect.Proxy;
 
 public final class a
 {
-  private static volatile Object ctd;
-  public volatile boolean ctc;
-  private final d.a cte;
+  private static volatile Object cDZ;
+  public volatile boolean cDY;
+  private final d.a cEa;
   
   public a(d.a parama)
   {
-    this.cte = parama;
+    this.cEa = parama;
   }
   
-  public static boolean GY()
+  public static boolean It()
   {
     try
     {
       Object localObject = Class.forName("dalvik.system.CloseGuard");
       Method localMethod = ((Class)localObject).getDeclaredMethod("setReporter", new Class[] { Class.forName("dalvik.system.CloseGuard$Reporter") });
       localObject = ((Class)localObject).getDeclaredMethod("setEnabled", new Class[] { Boolean.TYPE });
-      localMethod.invoke(null, new Object[] { ctd });
+      localMethod.invoke(null, new Object[] { cDZ });
       ((Method)localObject).invoke(null, new Object[] { Boolean.FALSE });
       c.setEnabled(false);
       return true;
@@ -35,7 +35,7 @@ public final class a
     return false;
   }
   
-  public final boolean GX()
+  public final boolean Is()
   {
     try
     {
@@ -44,14 +44,14 @@ public final class a
       Object localObject1 = ((Class)localObject2).getDeclaredMethod("getReporter", new Class[0]);
       Method localMethod = ((Class)localObject2).getDeclaredMethod("setReporter", new Class[] { localClass });
       localObject2 = ((Class)localObject2).getDeclaredMethod("setEnabled", new Class[] { Boolean.TYPE });
-      ctd = ((Method)localObject1).invoke(null, new Object[0]);
+      cDZ = ((Method)localObject1).invoke(null, new Object[0]);
       ((Method)localObject2).invoke(null, new Object[] { Boolean.TRUE });
       c.setEnabled(true);
       localObject1 = localClass.getClassLoader();
       if (localObject1 == null) {
         return false;
       }
-      localObject2 = new b(this.cte, ctd);
+      localObject2 = new b(this.cEa, cDZ);
       localMethod.invoke(null, new Object[] { Proxy.newProxyInstance((ClassLoader)localObject1, new Class[] { localClass }, (InvocationHandler)localObject2) });
       return true;
     }

@@ -1,29 +1,24 @@
 package d.l.b.a.b.l;
 
-import d.g.a.b;
-import d.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
+import d.l.k;
 
-public abstract interface i
+public final class i
 {
-  public abstract <K, V> c<K, V> I(b<? super K, ? extends V> paramb);
-  
-  public abstract <K, V> d<K, V> J(b<? super K, ? extends V> paramb);
-  
-  public abstract <T> f<T> O(d.g.a.a<? extends T> parama);
-  
-  public abstract <T> g<T> P(d.g.a.a<? extends T> parama);
-  
-  public abstract <T> T Q(d.g.a.a<? extends T> parama);
-  
-  public abstract <T> f<T> a(d.g.a.a<? extends T> parama, b<? super Boolean, ? extends T> paramb, b<? super T, y> paramb1);
-  
-  public abstract <T> f<T> a(d.g.a.a<? extends T> parama, T paramT);
-  
-  public abstract <K, V> a<K, V> gco();
+  public static final <T> T a(f<? extends T> paramf, k<?> paramk)
+  {
+    AppMethodBeat.i(60556);
+    p.h(paramf, "$this$getValue");
+    p.h(paramk, "p");
+    paramf = paramf.invoke();
+    AppMethodBeat.o(60556);
+    return paramf;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.l.i
  * JD-Core Version:    0.7.0.1
  */

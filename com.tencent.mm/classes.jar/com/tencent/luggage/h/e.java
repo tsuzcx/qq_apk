@@ -10,7 +10,7 @@ import android.support.v4.content.b;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
@@ -22,31 +22,32 @@ import junit.framework.Assert;
 
 public final class e
 {
-  private static final WeakHashMap<Activity, e> cgd;
+  private static final WeakHashMap<Activity, e> cqu;
   @SuppressLint({"StaticFieldLeak"})
-  private static final e cge;
-  private final SparseArray<a> cfZ;
-  private final SparseArray<e> cga;
-  final Set<b> cgb;
-  private Random cgc;
+  private static final e cqv;
+  private final SparseArray<b> cqp;
+  private final SparseArray<f> cqq;
+  final Set<c> cqr;
+  public a cqs;
+  private Random cqt;
   private Activity mActivity;
   
   static
   {
     AppMethodBeat.i(140516);
-    cgd = new WeakHashMap();
-    cge = new e(null);
+    cqu = new WeakHashMap();
+    cqv = new e(null);
     AppMethodBeat.o(140516);
   }
   
   private e(Activity paramActivity)
   {
     AppMethodBeat.i(140506);
-    this.cfZ = new SparseArray();
-    this.cga = new SparseArray();
-    this.cgb = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.cqp = new SparseArray();
+    this.cqq = new SparseArray();
+    this.cqr = Collections.newSetFromMap(new ConcurrentHashMap());
     this.mActivity = paramActivity;
-    this.cgc = new Random();
+    this.cqt = new Random();
     AppMethodBeat.o(140506);
   }
   
@@ -59,20 +60,20 @@ public final class e
       Activity localActivity = (Activity)paramContext;
       if ((localActivity.isFinishing()) || (localActivity.isDestroyed()))
       {
-        ac.e("Luggage.LuggageActivityHelper", "FOR(%s) instance destroyed, return DUMMY", new Object[] { localActivity });
-        paramContext = cge;
+        ad.e("Luggage.LuggageActivityHelper", "FOR(%s) instance destroyed, return DUMMY", new Object[] { localActivity });
+        paramContext = cqv;
         AppMethodBeat.o(140514);
         return paramContext;
       }
-      if (!cgd.containsKey(localActivity)) {
-        cgd.put(localActivity, new e(localActivity));
+      if (!cqu.containsKey(localActivity)) {
+        cqu.put(localActivity, new e(localActivity));
       }
-      paramContext = (e)cgd.get(paramContext);
+      paramContext = (e)cqu.get(paramContext);
       AppMethodBeat.o(140514);
       return paramContext;
     }
     Assert.assertFalse(false);
-    paramContext = cge;
+    paramContext = cqv;
     AppMethodBeat.o(140514);
     return paramContext;
   }
@@ -82,12 +83,12 @@ public final class e
     AppMethodBeat.i(140515);
     if ((paramContext instanceof Activity))
     {
-      paramContext = (e)cgd.remove(paramContext);
+      paramContext = (e)cqu.remove(paramContext);
       if (paramContext != null)
       {
-        paramContext.cfZ.clear();
-        paramContext.cgb.clear();
-        paramContext.cga.clear();
+        paramContext.cqp.clear();
+        paramContext.cqr.clear();
+        paramContext.cqq.clear();
       }
     }
     AppMethodBeat.o(140515);
@@ -108,12 +109,12 @@ public final class e
   private int rand()
   {
     AppMethodBeat.i(140513);
-    int i = this.cgc.nextInt(2147483646);
+    int i = this.cqt.nextInt(2147483646);
     AppMethodBeat.o(140513);
     return i + 1 & 0xFFFF;
   }
   
-  public final void a(Intent paramIntent, a parama)
+  public final void a(Intent paramIntent, b paramb)
   {
     AppMethodBeat.i(140509);
     if (this.mActivity == null)
@@ -121,21 +122,21 @@ public final class e
       AppMethodBeat.o(140509);
       return;
     }
-    int i = b(this.cfZ);
-    this.cfZ.put(i, parama);
+    int i = b(this.cqp);
+    this.cqp.put(i, paramb);
     this.mActivity.startActivityForResult(paramIntent, i);
     AppMethodBeat.o(140509);
   }
   
-  public final void a(b paramb)
+  public final void a(c paramc)
   {
     AppMethodBeat.i(174618);
-    this.cgb.add(paramb);
+    this.cqr.add(paramc);
     AppMethodBeat.o(174618);
   }
   
   @TargetApi(23)
-  public final void a(String[] paramArrayOfString, e parame)
+  public final void a(String[] paramArrayOfString, f paramf)
   {
     AppMethodBeat.i(140511);
     if (this.mActivity == null)
@@ -147,21 +148,21 @@ public final class e
     {
       paramArrayOfString = new int[paramArrayOfString.length];
       Arrays.fill(paramArrayOfString, 0);
-      parame.p(paramArrayOfString);
+      paramf.p(paramArrayOfString);
       AppMethodBeat.o(140511);
       return;
     }
-    int i = b(this.cga);
-    this.cga.put(i, parame);
-    parame = this.mActivity;
-    paramArrayOfString = c.a(i, new com.tencent.mm.hellhoundlib.b.a()).ba(paramArrayOfString);
-    com.tencent.mm.hellhoundlib.a.a.a(parame, paramArrayOfString.aeD(), "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
-    parame.requestPermissions((String[])paramArrayOfString.lR(0), ((Integer)paramArrayOfString.lR(1)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(parame, "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+    int i = b(this.cqq);
+    this.cqq.put(i, paramf);
+    paramf = this.mActivity;
+    paramArrayOfString = c.a(i, new com.tencent.mm.hellhoundlib.b.a()).bc(paramArrayOfString);
+    com.tencent.mm.hellhoundlib.a.a.a(paramf, paramArrayOfString.ahp(), "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
+    paramf.requestPermissions((String[])paramArrayOfString.mq(0), ((Integer)paramArrayOfString.mq(1)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(paramf, "com/tencent/luggage/util/LuggageActivityHelper", "requestPermissions", "([Ljava/lang/String;Lcom/tencent/luggage/util/LuggageActivityHelper$PermissionResultCallback;)V", "Undefined", "requestPermissions", "([Ljava/lang/String;I)V");
     AppMethodBeat.o(140511);
   }
   
-  public final boolean a(String paramString, e parame)
+  public final boolean a(String paramString, f paramf)
   {
     AppMethodBeat.i(140510);
     if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
@@ -185,11 +186,11 @@ public final class e
     }
     catch (Exception paramString)
     {
-      ac.e("Luggage.LuggageActivityHelper", "check mpermission exception:%s.", new Object[] { paramString });
+      ad.e("Luggage.LuggageActivityHelper", "check mpermission exception:%s.", new Object[] { paramString });
       AppMethodBeat.o(140510);
       return true;
     }
-    a(new String[] { paramString }, parame);
+    a(new String[] { paramString }, paramf);
     AppMethodBeat.o(140510);
     return false;
   }
@@ -197,31 +198,31 @@ public final class e
   public final void b(int paramInt, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(140508);
-    c localc = (c)this.cga.get(paramInt);
-    this.cga.delete(paramInt);
-    if (localc != null) {
-      ((e)localc).p(paramArrayOfInt);
+    d locald = (d)this.cqq.get(paramInt);
+    this.cqq.delete(paramInt);
+    if (locald != null) {
+      ((f)locald).p(paramArrayOfInt);
     }
     AppMethodBeat.o(140508);
   }
   
-  public final void b(Intent paramIntent, a parama)
+  public final void b(Intent paramIntent, b paramb)
   {
     AppMethodBeat.i(174617);
-    a(paramIntent, parama);
+    a(paramIntent, paramb);
     AppMethodBeat.o(174617);
   }
   
-  public final void b(final b paramb)
+  public final void b(final c paramc)
   {
     AppMethodBeat.i(174619);
-    a(new b()
+    a(new c()
     {
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174616);
-        e.this.cgb.remove(this);
-        boolean bool = paramb.b(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+        e.this.cqr.remove(this);
+        boolean bool = paramc.b(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
         AppMethodBeat.o(174616);
         return bool;
       }
@@ -229,43 +230,61 @@ public final class e
     AppMethodBeat.o(174619);
   }
   
+  public final void finish()
+  {
+    AppMethodBeat.i(187600);
+    if ((this.mActivity != null) && (!this.mActivity.isFinishing()) && (!this.mActivity.isDestroyed()))
+    {
+      if (this.cqs != null) {
+        this.cqs.Fr();
+      }
+      this.mActivity.finish();
+    }
+    AppMethodBeat.o(187600);
+  }
+  
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(140507);
-    Object localObject = this.cgb.iterator();
+    Object localObject = this.cqr.iterator();
     while (((Iterator)localObject).hasNext()) {
-      if (((b)((Iterator)localObject).next()).b(paramInt1, paramInt2, paramIntent))
+      if (((c)((Iterator)localObject).next()).b(paramInt1, paramInt2, paramIntent))
       {
         AppMethodBeat.o(140507);
         return;
       }
     }
-    localObject = (c)this.cfZ.get(paramInt1);
-    this.cfZ.delete(paramInt1);
+    localObject = (d)this.cqp.get(paramInt1);
+    this.cqp.delete(paramInt1);
     if (localObject != null) {
-      ((a)localObject).a(paramInt2, paramIntent);
+      ((b)localObject).a(paramInt2, paramIntent);
     }
     AppMethodBeat.o(140507);
   }
   
   public static abstract interface a
-    extends e.c
+  {
+    public abstract boolean Fr();
+  }
+  
+  public static abstract interface b
+    extends e.d
   {
     public abstract void a(int paramInt, Intent paramIntent);
   }
   
-  public static abstract interface b
-    extends e.c
+  public static abstract interface c
+    extends e.d
   {
     public abstract boolean b(int paramInt1, int paramInt2, Intent paramIntent);
   }
   
-  static abstract interface c {}
+  static abstract interface d {}
   
-  public static abstract interface d {}
+  public static abstract interface e {}
   
-  public static abstract interface e
-    extends e.c
+  public static abstract interface f
+    extends e.d
   {
     public abstract void p(int[] paramArrayOfInt);
   }

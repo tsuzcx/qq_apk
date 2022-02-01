@@ -6,36 +6,36 @@ import java.lang.ref.WeakReference;
 
 public final class g<T>
 {
-  private WeakReference<T> gLf;
-  private a gLg = new a("");
-  final int gLh;
+  private WeakReference<T> heU;
+  private a heV = new a("");
+  final int heW;
   public int height = 0;
   public int width = 0;
   
   public g(T paramT)
   {
-    this.gLf = new WeakReference(paramT);
+    this.heU = new WeakReference(paramT);
     if (paramT != null)
     {
-      this.gLh = paramT.hashCode();
+      this.heW = paramT.hashCode();
       return;
     }
-    this.gLh = hashCode();
+    this.heW = hashCode();
   }
   
   public final T get()
   {
-    if (this.gLf == null) {
+    if (this.heU == null) {
       return null;
     }
-    return this.gLf.get();
+    return this.heU.get();
   }
   
   public final View getView()
   {
-    if (this.gLf != null)
+    if (this.heU != null)
     {
-      Object localObject = this.gLf.get();
+      Object localObject = this.heU.get();
       if ((localObject != null) && ((localObject instanceof View))) {
         return (View)localObject;
       }

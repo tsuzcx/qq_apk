@@ -12,13 +12,13 @@ public final class e
   {
     AppMethodBeat.i(40506);
     org.b.g.d.j(paramc, "Cannot extract a header from a null object");
-    if ((paramc.Mbg == null) || (paramc.Mbg.size() <= 0))
+    if ((paramc.NWi == null) || (paramc.NWi.size() <= 0))
     {
       paramc = new org.b.b.c(paramc);
       AppMethodBeat.o(40506);
       throw paramc;
     }
-    paramc = paramc.Mbg;
+    paramc = paramc.NWi;
     StringBuffer localStringBuffer = new StringBuffer(paramc.size() * 20);
     localStringBuffer.append("OAuth ");
     Iterator localIterator = paramc.keySet().iterator();

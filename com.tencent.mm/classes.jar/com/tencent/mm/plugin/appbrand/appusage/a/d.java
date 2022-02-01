@@ -1,129 +1,128 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bdh;
-import com.tencent.mm.protocal.protobuf.bic;
-import com.tencent.mm.protocal.protobuf.cmp;
-import com.tencent.mm.protocal.protobuf.xc;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.protocal.protobuf.bhn;
+import com.tencent.mm.protocal.protobuf.bmk;
+import com.tencent.mm.protocal.protobuf.crr;
+import com.tencent.mm.protocal.protobuf.zb;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.i;
 import d.a.e;
 import d.f;
 import d.g.a.a;
-import d.g.a.q;
-import d.g.b.u;
-import d.g.b.w;
-import d.y;
+import d.g.b.p;
+import d.l;
+import d.z;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "", "()V", "cache_seconds", "", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "getCallback", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "setCallback", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;)V", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getDataList", "()Ljava/util/LinkedList;", "dataList$delegate", "Lkotlin/Lazy;", "lastUpdateTime", "lastVisiblePos", "", "listener", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "result", "recommendCardList", "remainCount", "", "getListener", "()Lkotlin/jvm/functions/Function3;", "setListener", "(Lkotlin/jvm/functions/Function3;)V", "loadFromMemory", "", "locationGet", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLocationGet;", "mockData", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "pageNum", "rList", "getRList", "rList$delegate", "remain_count", "sessionId", "strategy", "testData", "delAllDB", "doGetRecommendCard", "fLongitude", "", "fLatitude", "fetchFromDB", "kotlin.jvm.PlatformType", "fetchPageData", "fetchPageDataFromMemory", "forceRefreshPageData", "getLastVisiblePos", "getPageNum", "getRemainCount", "getSessionId", "handleResponse", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "isDataEmpty", "isDataTimeOut", "needStoreToDB", "onFetchFinish", "list", "removeListener", "resetStrategy", "setLastVisiblePos", "pos", "setLoadFromMemory", "fromMemory", "shouldLoadFromMemory", "storeToDB", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "", "()V", "cache_seconds", "", "callback", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "getCallback", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "setCallback", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;)V", "dataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getDataList", "()Ljava/util/LinkedList;", "dataList$delegate", "Lkotlin/Lazy;", "lastUpdateTime", "lastVisiblePos", "", "listener", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "result", "recommendCardList", "remainCount", "", "getListener", "()Lkotlin/jvm/functions/Function3;", "setListener", "(Lkotlin/jvm/functions/Function3;)V", "loadFromMemory", "", "locationGet", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLocationGet;", "mockData", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "pageNum", "rList", "getRList", "rList$delegate", "remain_count", "sessionId", "strategy", "testData", "delAllDB", "doGetRecommendCard", "fLongitude", "", "fLatitude", "fetchFromDB", "kotlin.jvm.PlatformType", "fetchPageData", "fetchPageDataFromMemory", "forceRefreshPageData", "getLastVisiblePos", "getPageNum", "getRemainCount", "getSessionId", "handleResponse", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "isDataEmpty", "isDataTimeOut", "needStoreToDB", "onFetchFinish", "list", "removeListener", "resetStrategy", "setLastVisiblePos", "pos", "setLoadFromMemory", "fromMemory", "shouldLoadFromMemory", "storeToDB", "Companion", "plugin-appbrand-integration_release"})
 public final class d
 {
-  private static d jwW;
-  public static final a jwX;
-  public int dzl;
-  private final k jwK;
-  public final c jwL;
-  private final f jwM;
-  long jwN;
-  public int jwO;
-  public int jwP;
-  public boolean jwQ;
-  public int jwR;
-  private final f jwS;
-  private boolean jwT;
-  private h.a jwU;
-  public q<? super Integer, ? super LinkedList<cmp>, ? super Integer, y> jwV;
+  private static d jQS;
+  public static final a jQT;
+  public int dLx;
+  private final k jQG;
+  public final c jQH;
+  private final f jQI;
+  long jQJ;
+  public int jQK;
+  public int jQL;
+  public boolean jQM;
+  public int jQN;
+  private final f jQO;
+  private boolean jQP;
+  private h.a jQQ;
+  public d.g.a.q<? super Integer, ? super LinkedList<crr>, ? super Integer, z> jQR;
   long lastUpdateTime;
   public long sessionId;
   
   static
   {
     AppMethodBeat.i(50317);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(d.class), "rList", "getRList()Ljava/util/LinkedList;")), (d.l.k)w.a(new u(w.bn(d.class), "dataList", "getDataList()Ljava/util/LinkedList;")) };
-    jwX = new a((byte)0);
+    jQT = new a((byte)0);
     AppMethodBeat.o(50317);
   }
   
   private d()
   {
     AppMethodBeat.i(50323);
-    this.jwK = new k();
-    this.jwL = new c();
-    this.jwM = d.g.K((a)d.h.jxc);
-    this.jwR = 1;
-    this.jwS = d.g.K((a)d.c.jwZ);
-    this.jwU = ((h.a)new b(this));
-    this.jwV = ((q)d.g.jxb);
+    this.jQG = new k();
+    this.jQH = new c();
+    this.jQI = d.g.O((a)d.h.jQY);
+    this.jQN = 1;
+    this.jQO = d.g.O((a)d.c.jQV);
+    this.jQQ = ((h.a)new b(this));
+    this.jQR = ((d.g.a.q)d.g.jQX);
     AppMethodBeat.o(50323);
   }
   
   private final void a(int paramInt, float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(50322);
-    if (!com.tencent.mm.kernel.g.agM())
+    if (!com.tencent.mm.kernel.g.ajx())
     {
       AppMethodBeat.o(50322);
       return;
     }
-    Object localObject1 = new xc();
-    ((xc)localObject1).Erw = ax.getNetTypeString(ai.getContext());
-    ((xc)localObject1).longitude = paramFloat1;
-    ((xc)localObject1).latitude = paramFloat2;
-    if ((com.tencent.mm.sdk.platformtools.h.DEBUG) && (paramInt != 0) && (this.jwT))
+    Object localObject1 = new zb();
+    ((zb)localObject1).FYG = ay.getNetTypeString(aj.getContext());
+    ((zb)localObject1).longitude = paramFloat1;
+    ((zb)localObject1).latitude = paramFloat2;
+    if ((i.DEBUG) && (paramInt != 0) && (this.jQP))
     {
-      localObject1 = this.jwK;
+      localObject1 = this.jQG;
       LinkedList localLinkedList = new LinkedList();
-      Object localObject2 = new cmp();
-      ((k)localObject1).a((cmp)localObject2);
-      ((cmp)localObject2).oGU = "####客户端mock数据####大视频";
-      ((cmp)localObject2).lRv = 6;
-      ((cmp)localObject2).FzQ = "http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4";
-      ((cmp)localObject2).FzS = "http://ent.chinadaily.com.cn/att/site1/20140818/0023ae72898c155ba5db5b.jpeg";
+      Object localObject2 = new crr();
+      ((k)localObject1).a((crr)localObject2);
+      ((crr)localObject2).pky = "####客户端mock数据####大视频";
+      ((crr)localObject2).mrl = 6;
+      ((crr)localObject2).Hkb = "http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4";
+      ((crr)localObject2).Hkd = "http://ent.chinadaily.com.cn/att/site1/20140818/0023ae72898c155ba5db5b.jpeg";
       localLinkedList.addLast(localObject2);
       localObject2 = (Collection)localLinkedList;
-      cmp[] arrayOfcmp = new cmp[4];
+      crr[] arrayOfcrr = new crr[4];
       int i = 0;
       if (i < 4)
       {
-        cmp localcmp = new cmp();
-        ((k)localObject1).a(localcmp);
-        localcmp.FzU = new bic();
-        localcmp.FzU.EXr = 1500;
-        localcmp.FzU.EXq = 1750;
-        localcmp.lRv = 5;
+        crr localcrr = new crr();
+        ((k)localObject1).a(localcrr);
+        localcrr.Hkf = new bmk();
+        localcrr.Hkf.GGN = 1500;
+        localcrr.Hkf.GGM = 1750;
+        localcrr.mrl = 5;
         switch (i)
         {
         default: 
-          localcmp.oGU = "####客户端mock数据####商品ft";
-          localcmp.FzU.EXt = false;
-          localcmp.FzU.EXs = true;
+          localcrr.pky = "####客户端mock数据####商品ft";
+          localcrr.Hkf.GGP = false;
+          localcrr.Hkf.GGO = true;
         }
         for (;;)
         {
-          String str = localcmp.oGU;
-          localcmp.oGU = (str + paramInt);
-          arrayOfcmp[i] = localcmp;
+          String str = localcrr.pky;
+          localcrr.pky = (str + paramInt);
+          arrayOfcrr[i] = localcrr;
           i += 1;
           break;
-          localcmp.oGU = "####客户端mock数据####商品tt";
-          localcmp.FzU.EXt = true;
-          localcmp.FzU.EXs = true;
+          localcrr.pky = "####客户端mock数据####商品tt";
+          localcrr.Hkf.GGP = true;
+          localcrr.Hkf.GGO = true;
           continue;
-          localcmp.oGU = "####客户端mock数据####商品tf";
-          localcmp.FzU.EXt = true;
-          localcmp.FzU.EXs = false;
+          localcrr.pky = "####客户端mock数据####商品tf";
+          localcrr.Hkf.GGP = true;
+          localcrr.Hkf.GGO = false;
           continue;
-          localcmp.oGU = "####客户端mock数据####商品ff";
-          localcmp.FzU.EXt = false;
-          localcmp.FzU.EXs = false;
+          localcrr.pky = "####客户端mock数据####商品ff";
+          localcrr.Hkf.GGP = false;
+          localcrr.Hkf.GGO = false;
         }
       }
-      d.g.b.k.h(localObject2, "$this$addAll");
-      d.g.b.k.h(arrayOfcmp, "elements");
-      ((Collection)localObject2).addAll((Collection)e.asList(arrayOfcmp));
+      p.h(localObject2, "$this$addAll");
+      p.h(arrayOfcrr, "elements");
+      ((Collection)localObject2).addAll((Collection)e.asList(arrayOfcrr));
       if (paramInt == 2) {}
       for (paramInt = 0;; paramInt = localLinkedList.size())
       {
@@ -133,14 +132,14 @@ public final class d
         return;
       }
     }
-    h.a(paramInt, (xc)localObject1, this.sessionId, this.jwU, this.jwR);
+    h.a(paramInt, (zb)localObject1, this.sessionId, this.jQQ, this.jQN);
     AppMethodBeat.o(50322);
   }
   
-  private final void a(int paramInt1, LinkedList<cmp> paramLinkedList, int paramInt2)
+  private final void a(int paramInt1, LinkedList<crr> paramLinkedList, int paramInt2)
   {
     AppMethodBeat.i(50320);
-    q localq = this.jwV;
+    d.g.a.q localq = this.jQR;
     if (localq != null)
     {
       localq.d(Integer.valueOf(paramInt1), paramLinkedList, Integer.valueOf(paramInt2));
@@ -150,36 +149,36 @@ public final class d
     AppMethodBeat.o(50320);
   }
   
-  private final LinkedList<Integer> aZo()
+  private final LinkedList<Integer> bcM()
   {
     AppMethodBeat.i(50318);
-    LinkedList localLinkedList = (LinkedList)this.jwM.getValue();
+    LinkedList localLinkedList = (LinkedList)this.jQI.getValue();
     AppMethodBeat.o(50318);
     return localLinkedList;
   }
   
-  public final LinkedList<cmp> aZp()
+  public final LinkedList<crr> bcN()
   {
     AppMethodBeat.i(50319);
-    LinkedList localLinkedList = (LinkedList)this.jwS.getValue();
+    LinkedList localLinkedList = (LinkedList)this.jQO.getValue();
     AppMethodBeat.o(50319);
     return localLinkedList;
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$Companion;", "", "()V", "RESULT_FAIL", "", "RESULT_FROM_DB", "RESULT_FROM_MEMORY_CACHE", "RESULT_SUCCESS", "TAG", "", "instance", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "getInstance", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "setInstance", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;)V", "get", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$Companion;", "", "()V", "RESULT_FAIL", "", "RESULT_FROM_DB", "RESULT_FROM_MEMORY_CACHE", "RESULT_SUCCESS", "TAG", "", "instance", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "getInstance", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "setInstance", "(Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;)V", "get", "plugin-appbrand-integration_release"})
   public static final class a
   {
-    public final d aZr()
+    public final d bcP()
     {
       try
       {
         AppMethodBeat.i(50305);
-        if (d.aZq() == null) {
+        if (d.bcO() == null) {
           d.h(new d((byte)0));
         }
-        d locald = d.aZq();
+        d locald = d.bcO();
         if (locald == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
         AppMethodBeat.o(50305);
         return locald;
@@ -188,52 +187,52 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$callback$1", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "onFail", "", "onSuccess", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic$callback$1", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/CgiGetRecommendWxa$IGetRecommendWxaCallback;", "onFail", "", "onSuccess", "response", "Lcom/tencent/mm/protocal/protobuf/GetRecommendWxaResponse;", "plugin-appbrand-integration_release"})
   public static final class b
     implements h.a
   {
-    public final void a(bdh parambdh)
+    public final void a(bhn parambhn)
     {
       AppMethodBeat.i(50306);
-      d.g.b.k.h(parambdh, "response");
-      d.a(this.jwY, parambdh);
+      p.h(parambhn, "response");
+      d.a(this.jQU, parambhn);
       AppMethodBeat.o(50306);
     }
     
-    public final void aZs()
+    public final void bcQ()
     {
       AppMethodBeat.i(50307);
-      d.a(this.jwY, 1, null, 6);
+      d.a(this.jQU, 1, null, 6);
       AppMethodBeat.o(50307);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "fLongitude", "", "fLatitude", "onCallbackLocation"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "fLongitude", "", "fLatitude", "onCallbackLocation"})
   static final class d
     implements c.a
   {
     d(d paramd) {}
     
-    public final void E(float paramFloat1, float paramFloat2)
+    public final void F(float paramFloat1, float paramFloat2)
     {
       AppMethodBeat.i(50310);
-      Iterator localIterator = d.g(this.jwY).iterator();
+      Iterator localIterator = d.g(this.jQU).iterator();
       while (localIterator.hasNext())
       {
         Integer localInteger = (Integer)localIterator.next();
-        d locald = this.jwY;
-        d.g.b.k.g(localInteger, "item");
+        d locald = this.jQU;
+        p.g(localInteger, "item");
         d.a(locald, localInteger.intValue(), paramFloat1, paramFloat2);
       }
-      d.g(this.jwY).clear();
+      d.g(this.jQU).clear();
       AppMethodBeat.o(50310);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   public static final class e
-    extends d.g.b.l
-    implements a<y>
+    extends d.g.b.q
+    implements a<z>
   {
     public e(d paramd, int paramInt)
     {
@@ -241,10 +240,10 @@ public final class d
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   public static final class f
-    extends d.g.b.l
-    implements a<y>
+    extends d.g.b.q
+    implements a<z>
   {
     public f(d paramd)
     {

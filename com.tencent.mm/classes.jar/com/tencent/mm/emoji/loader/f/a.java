@@ -3,16 +3,16 @@ package com.tencent.mm.emoji.loader.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.vfs.i;
 import com.tencent.tmassistantsdk.util.Base64;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.n.n;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/verify/EmojiFileVerify;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "reportDecrypt", "", "verifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "success", "", "reportVerify", "verify", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/verify/EmojiFileVerify;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "reportDecrypt", "", "verifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "success", "", "reportVerify", "verify", "plugin-emojisdk_release"})
 public final class a
 {
   private final String TAG = "MicroMsg.EmojiLoader.EmojiFileVerify";
@@ -22,41 +22,42 @@ public final class a
     AppMethodBeat.i(105486);
     if (paramBoolean)
     {
-      switch (paramb.fPD)
+      switch (paramb.gjd)
       {
-      }
-      for (;;)
-      {
+      default: 
         AppMethodBeat.o(105486);
         return;
-        c.sr(7L);
+      case 1: 
+        c.up(7L);
         AppMethodBeat.o(105486);
         return;
-        c.sr(11L);
       }
+      c.up(11L);
+      AppMethodBeat.o(105486);
+      return;
     }
-    EmojiInfo localEmojiInfo = paramb.fPB;
-    switch (paramb.fPD)
+    EmojiInfo localEmojiInfo = paramb.gjb;
+    switch (paramb.gjd)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(105486);
       return;
-      c.sr(8L);
-      c.a(localEmojiInfo.JC(), 3, 0, 1, localEmojiInfo.azp(), 1, localEmojiInfo.field_designerID);
+      c.up(8L);
+      c.a(localEmojiInfo.Lb(), 3, 0, 1, localEmojiInfo.afw(), 1, localEmojiInfo.field_designerID);
       AppMethodBeat.o(105486);
       return;
-      c.sr(12L);
-      c.a(localEmojiInfo.JC(), 4, 0, 1, localEmojiInfo.azp(), 1, localEmojiInfo.field_designerID);
+      c.up(12L);
+      c.a(localEmojiInfo.Lb(), 4, 0, 1, localEmojiInfo.afw(), 1, localEmojiInfo.field_designerID);
     }
   }
   
   public final boolean a(b paramb)
   {
     AppMethodBeat.i(105485);
-    k.h(paramb, "verifyConfig");
-    if (paramb.fQh) {}
+    p.h(paramb, "verifyConfig");
+    if (paramb.gjH) {}
     label273:
     label479:
     label486:
@@ -64,13 +65,13 @@ public final class a
     {
       try
       {
-        Object localObject = Base64.encodeToString(bs.aLu(paramb.fQi), 0);
-        localObject = com.tencent.mm.b.a.c(i.aU(paramb.fQj, 0, -1), (String)localObject);
-        if ((localObject == null) || (i.B(paramb.path, (byte[])localObject) != 0)) {
+        Object localObject = Base64.encodeToString(bt.aRa(paramb.gjI), 0);
+        localObject = com.tencent.mm.b.a.c(i.aY(paramb.gjJ, 0, -1), (String)localObject);
+        if ((localObject == null) || (i.C(paramb.path, (byte[])localObject) != 0)) {
           break label486;
         }
         i = 1;
-        i.deleteFile(paramb.fQj);
+        i.deleteFile(paramb.gjJ);
         if (i == 0)
         {
           a(paramb, false);
@@ -78,65 +79,65 @@ public final class a
           return false;
         }
         a(paramb, true);
-        localObject = i.aKe(paramb.path);
-        ac.i(this.TAG, "file md5 ".concat(String.valueOf(localObject)));
-        if ((bs.isNullOrNil((String)localObject)) || (!n.I((String)localObject, paramb.fQg, true))) {
+        localObject = i.aPK(paramb.path);
+        ad.i(this.TAG, "file md5 ".concat(String.valueOf(localObject)));
+        if ((bt.isNullOrNil((String)localObject)) || (!n.H((String)localObject, paramb.gjG, true))) {
           break label273;
         }
         i = 1;
-        localObject = paramb.fPB;
+        localObject = paramb.gjb;
         if (i == 0) {
           break label362;
         }
-        switch (paramb.fPD)
+        switch (paramb.gjd)
         {
         default: 
-          if ((i == 0) || (!g.agP().afY())) {
+          if ((i == 0) || (!g.ajA().aiK())) {
             break label479;
           }
           localObject = g.ad(com.tencent.mm.plugin.emoji.b.d.class);
-          k.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-          ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr().a(paramb.fPB, true);
+          p.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
+          ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr().a(paramb.gjb, true);
           AppMethodBeat.o(105485);
           return true;
         }
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
+        ad.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
         a(paramb, false);
         AppMethodBeat.o(105485);
         return false;
       }
-      i.ma(paramb.fQj, paramb.path);
+      i.mA(paramb.gjJ, paramb.path);
       continue;
       int i = 0;
       continue;
-      c.a(localException.JC(), 4, 0, 0, localException.azp(), 0, localException.field_designerID);
-      c.sr(4L);
+      c.a(localException.Lb(), 4, 0, 0, localException.afw(), 0, localException.field_designerID);
+      c.up(4L);
       continue;
-      c.a(localException.JC(), 2, 0, 0, localException.azp(), 0, localException.field_designerID);
-      c.sr(4L);
+      c.a(localException.Lb(), 2, 0, 0, localException.afw(), 0, localException.field_designerID);
+      c.up(4L);
       continue;
-      c.a(localException.JC(), 4, 0, 0, localException.azp(), 1, localException.field_designerID);
-      c.sr(13L);
+      c.a(localException.Lb(), 4, 0, 0, localException.afw(), 1, localException.field_designerID);
+      c.up(13L);
       continue;
       label362:
-      switch (paramb.fPD)
+      switch (paramb.gjd)
       {
       default: 
         break;
       case 0: 
-        c.a(localException.JC(), 4, 1, 1, localException.azp(), 1, localException.field_designerID);
-        c.sr(5L);
+        c.a(localException.Lb(), 4, 1, 1, localException.afw(), 1, localException.field_designerID);
+        c.up(5L);
         break;
       case 1: 
-        c.a(localException.JC(), 2, 1, 1, localException.azp(), 1, localException.field_designerID);
-        c.sr(5L);
+        c.a(localException.Lb(), 2, 1, 1, localException.afw(), 1, localException.field_designerID);
+        c.up(5L);
         break;
       case 2: 
-        c.a(localException.JC(), 4, 1, 1, localException.azp(), 1, localException.field_designerID);
-        c.sr(14L);
+        c.a(localException.Lb(), 4, 1, 1, localException.afw(), 1, localException.field_designerID);
+        c.up(14L);
         continue;
         AppMethodBeat.o(105485);
         return false;

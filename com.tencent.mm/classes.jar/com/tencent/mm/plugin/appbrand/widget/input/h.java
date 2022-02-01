@@ -8,26 +8,26 @@ import com.tencent.mm.plugin.appbrand.page.ay;
 
 public final class h
 {
-  private static final h mCL;
-  private final a mCK;
+  private static final h ndl;
+  private final a ndk;
   
   static
   {
     AppMethodBeat.i(136358);
-    mCL = new h();
+    ndl = new h();
     AppMethodBeat.o(136358);
   }
   
   public h()
   {
     AppMethodBeat.i(136354);
-    this.mCK = new a((byte)0);
+    this.ndk = new a((byte)0);
     AppMethodBeat.o(136354);
   }
   
-  public static h bzW()
+  public static h bDY()
   {
-    return mCL;
+    return ndl;
   }
   
   final void c(ay paramay)
@@ -38,7 +38,7 @@ public final class h
       AppMethodBeat.o(136355);
       return;
     }
-    this.mCK.mCM.delete(paramay.hashCode());
+    this.ndk.ndm.delete(paramay.hashCode());
     try
     {
       paramay.getWrapperView().setFocusable(true);
@@ -62,8 +62,8 @@ public final class h
       AppMethodBeat.o(136356);
       return;
     }
-    int i = this.mCK.f(paramay);
-    this.mCK.a(paramay, i + 1);
+    int i = this.ndk.f(paramay);
+    this.ndk.a(paramay, i + 1);
     try
     {
       paramay.getWrapperView().setFocusable(false);
@@ -90,39 +90,39 @@ public final class h
       AppMethodBeat.o(136357);
       return;
     }
-    int i = this.mCK.f(paramay) - 1;
+    int i = this.ndk.f(paramay) - 1;
     if (i <= 0)
     {
       c(paramay);
       AppMethodBeat.o(136357);
       return;
     }
-    this.mCK.a(paramay, i);
+    this.ndk.a(paramay, i);
     AppMethodBeat.o(136357);
   }
   
   static final class a
   {
-    final SparseIntArray mCM;
+    final SparseIntArray ndm;
     
     private a()
     {
       AppMethodBeat.i(136351);
-      this.mCM = new SparseIntArray();
+      this.ndm = new SparseIntArray();
       AppMethodBeat.o(136351);
     }
     
     final void a(ay paramay, int paramInt)
     {
       AppMethodBeat.i(136353);
-      this.mCM.put(paramay.hashCode(), paramInt);
+      this.ndm.put(paramay.hashCode(), paramInt);
       AppMethodBeat.o(136353);
     }
     
     final int f(ay paramay)
     {
       AppMethodBeat.i(136352);
-      int i = this.mCM.get(paramay.hashCode(), 0);
+      int i = this.ndm.get(paramay.hashCode(), 0);
       AppMethodBeat.o(136352);
       return i;
     }
@@ -130,7 +130,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.h
  * JD-Core Version:    0.7.0.1
  */

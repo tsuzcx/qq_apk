@@ -1,85 +1,88 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Parcelable;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.lite.logic.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.webview.luggage.u;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.bt;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class k
-  extends bo<f>
+  extends bq<a>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  
+  public final void b(final com.tencent.luggage.d.b<a>.a paramb)
   {
-    AppMethodBeat.i(195141);
-    boolean bool2 = ((com.tencent.mm.plugin.lite.a.a)g.ab(com.tencent.mm.plugin.lite.a.a.class)).dzy();
-    ac.i("MicroMsg.JsApiGetLiteAppSwitch", "isLiteAppCanOpen value: %s", new Object[] { Boolean.valueOf(bool2) });
-    paramContext = new JSONObject();
-    try
+    AppMethodBeat.i(83069);
+    ad.i("MicroMsg.JsApiGetGameData", "invokeInOwn");
+    Object localObject2 = paramb.chh.cgn;
+    if (localObject2 == null)
     {
-      if (bt.eWm()) {
-        break label228;
+      ad.e("MicroMsg.JsApiGetGameData", "data is null");
+      paramb.a("null_data", null);
+      AppMethodBeat.o(83069);
+      return;
+    }
+    Object localObject3 = (a)paramb.chg;
+    if ((localObject3 instanceof com.tencent.mm.plugin.game.luggage.f.g))
+    {
+      localObject1 = ((com.tencent.mm.plugin.game.luggage.f.g)localObject3).DOL.getAppId();
+      if (!bt.isNullOrNil((String)localObject1)) {
+        break label221;
       }
-      if (!bool2) {
-        break label197;
+      localObject1 = Uri.parse(bt.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)localObject3).bQm()));
+      if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals("game.weixin.qq.com")))
+      {
+        ad.i("MicroMsg.JsApiGetGameData", "appId is null");
+        paramb.a("appid_null", null);
+        AppMethodBeat.o(83069);
+        return;
       }
     }
-    catch (JSONException paramString)
+    Object localObject1 = "wx62d9035fd4fd2059";
+    label221:
+    for (;;)
     {
-      for (;;)
+      localObject2 = ((JSONObject)localObject2).optString("key");
+      if (bt.isNullOrNil((String)localObject2))
       {
-        StringBuilder localStringBuilder;
-        label197:
-        ac.printErrStackTrace("MicroMsg.JsApiGetLiteAppSwitch", paramString, "", new Object[0]);
-        continue;
-        continue;
-        boolean bool1 = true;
+        ad.i("MicroMsg.JsApiGetGameData", "key is null");
+        paramb.a("null_key", null);
+        AppMethodBeat.o(83069);
+        return;
       }
-    }
-    c.cWu();
-    paramString = c.ajL("wxalited0d6cb88ac866bcdf3b738f1f3df8872");
-    h.wUl.n(11293L, 80L, 1L);
-    if (bool1)
-    {
-      h.wUl.n(1293L, 81L, 1L);
-      if (paramString == null)
-      {
-        h.wUl.n(1293L, 82L, 1L);
-        bool1 = false;
-        localStringBuilder = new StringBuilder("debug:false, coolassist:").append(bt.eWm()).append(", enable:").append(bool2).append(",info:");
-        if (paramString == null) {}
-        for (bool2 = true;; bool2 = false)
-        {
-          ac.i("MicroMsg.JsApiGetLiteAppSwitch", bool2);
-          paramContext.put("switch", bool1);
-          parama.f(null, paramContext);
-          AppMethodBeat.o(195141);
-          return;
-          bool1 = false;
-          break;
-        }
-      }
+      localObject3 = new Bundle();
+      ((Bundle)localObject3).putString("appId", (String)localObject1);
+      ((Bundle)localObject3).putString("key", (String)localObject2);
+      h.a("com.tencent.mm", (Parcelable)localObject3, a.class, new d() {});
+      AppMethodBeat.o(83069);
+      return;
     }
   }
   
-  public final void b(com.tencent.luggage.d.a<f>.a parama) {}
-  
-  public final int bYk()
+  public final int ccO()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "getLiteAppSwitch";
+    return "getGameData";
   }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
+  {}
 }
 
 

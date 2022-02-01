@@ -5,12 +5,12 @@ import rx.internal.c.b;
 
 public class g
 {
-  private static final g Mgp;
+  private static final g Obr;
   
   static
   {
     AppMethodBeat.i(90499);
-    Mgp = new g();
+    Obr = new g();
     AppMethodBeat.o(90499);
   }
   
@@ -20,7 +20,7 @@ public class g
     return parama;
   }
   
-  public static rx.g ggO()
+  public static rx.g gzs()
   {
     AppMethodBeat.i(90496);
     b localb = new b(new rx.internal.util.g("RxComputationScheduler-"));
@@ -28,7 +28,7 @@ public class g
     return localb;
   }
   
-  public static rx.g ggP()
+  public static rx.g gzt()
   {
     AppMethodBeat.i(90497);
     rx.internal.c.a locala = new rx.internal.c.a(new rx.internal.util.g("RxIoScheduler-"));
@@ -36,7 +36,7 @@ public class g
     return locala;
   }
   
-  public static rx.g ggQ()
+  public static rx.g gzu()
   {
     AppMethodBeat.i(90498);
     rx.internal.c.g localg = new rx.internal.c.g(new rx.internal.util.g("RxNewThreadScheduler-"));
@@ -44,9 +44,9 @@ public class g
     return localg;
   }
   
-  public static g ggR()
+  public static g gzv()
   {
-    return Mgp;
+    return Obr;
   }
 }
 

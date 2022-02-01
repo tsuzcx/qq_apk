@@ -12,10 +12,10 @@ public class c
 {
   public static void a(Intent paramIntent, d<IPCVoid> paramd)
   {
-    AppMethodBeat.i(186981);
+    AppMethodBeat.i(188792);
     AppBrandTaskPreloadReceiver.c("PreloadIPCTaskImpl", paramIntent);
-    paramd.bc(IPCVoid.gey);
-    AppMethodBeat.o(186981);
+    paramd.be(IPCVoid.gyi);
+    AppMethodBeat.o(188792);
   }
 }
 

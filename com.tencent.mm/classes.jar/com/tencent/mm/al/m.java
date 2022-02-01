@@ -1,57 +1,53 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.dva;
-import com.tencent.mm.protocal.protobuf.dvb;
-import com.tencent.mm.protocal.protobuf.dvd;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.t.a;
+import com.tencent.mm.protocal.t.b;
 
 public final class m
+  extends l
 {
-  public static dvd Be(String paramString)
+  private final t.a hOf;
+  private final t.b hOg;
+  
+  public m()
   {
-    AppMethodBeat.i(209534);
-    try
-    {
-      paramString = aw.fK("brandService", 1).decodeBytes(Bg(paramString));
-      dvd localdvd = new dvd();
-      localdvd.parseFrom(paramString);
-      AppMethodBeat.o(209534);
-      return localdvd;
-    }
-    catch (Throwable paramString)
-    {
-      AppMethodBeat.o(209534);
-    }
-    return null;
+    AppMethodBeat.i(132307);
+    this.hOf = new t.a();
+    this.hOg = new t.b();
+    AppMethodBeat.o(132307);
   }
   
-  public static void Bf(final String paramString)
+  public final int getOptions()
   {
-    AppMethodBeat.i(209535);
-    dva localdva = new dva();
-    localdva.GcF = 0;
-    g.agQ().ghe.a(new u(paramString, localdva, new u.a(new dvb()) {}), 0);
-    AppMethodBeat.o(209535);
+    return 1;
   }
   
-  static String Bg(String paramString)
+  protected final l.d getReqObjImp()
   {
-    AppMethodBeat.i(209536);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mmkv_biztransfer").append(paramString);
-    localStringBuilder.append("_2");
-    paramString = localStringBuilder.toString();
-    AppMethodBeat.o(209536);
-    return paramString;
+    return this.hOf;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.hOg;
+  }
+  
+  public final int getType()
+  {
+    return 381;
+  }
+  
+  public final String getUri()
+  {
+    return "/cgi-bin/micromsg-bin/getcert";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.al.m
  * JD-Core Version:    0.7.0.1
  */

@@ -11,18 +11,18 @@ import org.json.JSONObject;
 public final class i
   extends m
 {
-  public String dnz;
-  public String vsO;
-  private String vsP;
-  private boolean vsQ;
+  public String dzn;
+  public String wyg;
+  private String wyh;
+  private boolean wyi;
   
   public i(Bankcard paramBankcard, String paramString1, String paramString2, int paramInt, String paramString3)
   {
     AppMethodBeat.i(66296);
-    this.vsO = "0";
-    this.vsP = "0";
-    this.dnz = "";
-    this.vsQ = false;
+    this.wyg = "0";
+    this.wyh = "0";
+    this.dzn = "";
+    this.wyi = false;
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString1);
     localHashMap.put("oper", paramString2);
@@ -39,7 +39,7 @@ public final class i
       localHashMap.put("bind_serialno", paramBankcard.field_bindSerial);
       localHashMap.put("bank_type", paramBankcard.field_bankcardType);
       localHashMap.put("card_tail", paramBankcard.field_bankcardTail);
-      this.dnz = paramBankcard.field_mobile;
+      this.dzn = paramBankcard.field_mobile;
       setRequestData(localHashMap);
       AppMethodBeat.o(66296);
       return;
@@ -58,8 +58,8 @@ public final class i
     AppMethodBeat.i(66297);
     if (paramJSONObject != null)
     {
-      this.vsO = paramJSONObject.optString("verify_flag");
-      this.vsP = paramJSONObject.optString("limit_fee");
+      this.wyg = paramJSONObject.optString("verify_flag");
+      this.wyh = paramJSONObject.optString("limit_fee");
     }
     AppMethodBeat.o(66297);
   }

@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.emojicapture.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.g.d;
-import com.tencent.mm.media.g.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.recordvideo.ui.editor.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixFrameSyncMgr;", "Lcom/tencent/mm/media/mix/MixFrameSyncMgr;", "videoPath", "", "emojiFrameRetriever", "Lcom/tencent/mm/media/mix/FrameRetriever;", "videoPlayRate", "", "(Ljava/lang/String;Lcom/tencent/mm/media/mix/FrameRetriever;I)V", "TAG", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiMixFrameSyncMgr;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/MixFrameSyncMgr;", "videoPath", "", "emojiFrameRetriever", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "videoPlayRate", "", "(Ljava/lang/String;Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;I)V", "TAG", "plugin-emojicapture_release"})
 public final class b
-  extends f
+  extends g
 {
   private final String TAG;
   
-  public b(String paramString, d paramd, int paramInt)
+  public b(String paramString, com.tencent.mm.plugin.recordvideo.ui.editor.b.b paramb, int paramInt)
   {
-    super(paramString, paramd);
-    AppMethodBeat.i(263);
+    super(paramString, paramb);
+    AppMethodBeat.i(195131);
     this.TAG = "MicroMsg.EmojiMixFrameSyncMgr";
-    this.gSG = (paramInt * 20);
-    if (this.gSG > 30) {
-      this.gSG = 30;
+    this.xMZ = (paramInt * 20);
+    if (this.xMZ > 30) {
+      this.xMZ = 30;
     }
-    this.gSH /= paramInt;
-    this.gSJ = (1000.0F / this.gSG);
-    if (this.gSJ < this.gSH) {
-      this.gSJ = this.gSH;
+    this.xNa /= paramInt;
+    this.xNc = (1000.0F / this.xMZ);
+    if (this.xNc < this.xNa) {
+      this.xNc = this.xNa;
     }
-    this.gSE = ((int)(this.videoDuration / paramInt / this.gSJ));
-    this.gSF = 0;
-    ac.i(this.TAG, "init MixFrameSyncMgr,videoPath:" + paramString + ", videoPlayRate:" + paramInt + ", fps:" + this.gSz + ", duration:" + this.videoDuration + ", frameCount:" + this.gSy + ", frameDuration:" + this.gSH + ", targetFrameRate:" + this.gSG + ", targetFrameCount:" + this.gSE + ", targetFrameDuration:" + this.gSJ);
-    AppMethodBeat.o(263);
+    this.xMX = ((int)(this.videoDuration / paramInt / this.xNc));
+    this.xMY = 0;
+    ad.i(this.TAG, "init MixFrameSyncMgr,videoPath:" + paramString + ", videoPlayRate:" + paramInt + ", fps:" + this.xMS + ", duration:" + this.videoDuration + ", frameCount:" + this.videoFrameCount + ", frameDuration:" + this.xNa + ", targetFrameRate:" + this.xMZ + ", targetFrameCount:" + this.xMX + ", targetFrameDuration:" + this.xNc);
+    AppMethodBeat.o(195131);
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract class a
 {
-  public static a fYF;
+  public static a gsb;
   
   public abstract void a(int paramInt, String paramString1, String paramString2, long paramLong);
   
@@ -26,9 +26,9 @@ public abstract class a
   
   public abstract void j(Context paramContext, String paramString1, String paramString2);
   
-  public abstract void k(String paramString, int paramInt1, int paramInt2);
-  
   public abstract void k(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void m(String paramString, int paramInt1, int paramInt2);
 }
 
 

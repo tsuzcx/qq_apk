@@ -8,48 +8,48 @@ import java.security.MessageDigest;
 public class g
   implements com.bumptech.glide.c.h
 {
-  private int aFZ;
-  public final h aIh;
-  public final String aIi;
-  public String aIj;
-  public URL aIk;
-  private volatile byte[] aIl;
+  private int aHQ;
+  public final h aJY;
+  public final String aJZ;
+  public String aKa;
+  public URL aKb;
+  private volatile byte[] aKc;
   public final URL url;
   
   public g(String paramString)
   {
-    this(paramString, h.aIn);
+    this(paramString, h.aKe);
   }
   
   private g(String paramString, h paramh)
   {
     AppMethodBeat.i(77238);
     this.url = null;
-    this.aIi = i.checkNotEmpty(paramString);
-    this.aIh = ((h)i.checkNotNull(paramh, "Argument must not be null"));
+    this.aJZ = i.checkNotEmpty(paramString);
+    this.aJY = ((h)i.checkNotNull(paramh, "Argument must not be null"));
     AppMethodBeat.o(77238);
   }
   
   public g(URL paramURL)
   {
-    this(paramURL, h.aIn);
+    this(paramURL, h.aKe);
   }
   
   private g(URL paramURL, h paramh)
   {
     AppMethodBeat.i(77237);
     this.url = ((URL)i.checkNotNull(paramURL, "Argument must not be null"));
-    this.aIi = null;
-    this.aIh = ((h)i.checkNotNull(paramh, "Argument must not be null"));
+    this.aJZ = null;
+    this.aJY = ((h)i.checkNotNull(paramh, "Argument must not be null"));
     AppMethodBeat.o(77237);
   }
   
   private String getCacheKey()
   {
     AppMethodBeat.i(77239);
-    if (this.aIi != null)
+    if (this.aJZ != null)
     {
-      str = this.aIi;
+      str = this.aJZ;
       AppMethodBeat.o(77239);
       return str;
     }
@@ -61,10 +61,10 @@ public class g
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77241);
-    if (this.aIl == null) {
-      this.aIl = getCacheKey().getBytes(aDo);
+    if (this.aKc == null) {
+      this.aKc = getCacheKey().getBytes(aFf);
     }
-    paramMessageDigest.update(this.aIl);
+    paramMessageDigest.update(this.aKc);
     AppMethodBeat.o(77241);
   }
   
@@ -74,7 +74,7 @@ public class g
     if ((paramObject instanceof g))
     {
       paramObject = (g)paramObject;
-      if ((getCacheKey().equals(paramObject.getCacheKey())) && (this.aIh.equals(paramObject.aIh)))
+      if ((getCacheKey().equals(paramObject.getCacheKey())) && (this.aJY.equals(paramObject.aJY)))
       {
         AppMethodBeat.o(77242);
         return true;
@@ -89,12 +89,12 @@ public class g
   public int hashCode()
   {
     AppMethodBeat.i(77243);
-    if (this.aFZ == 0)
+    if (this.aHQ == 0)
     {
-      this.aFZ = getCacheKey().hashCode();
-      this.aFZ = (this.aFZ * 31 + this.aIh.hashCode());
+      this.aHQ = getCacheKey().hashCode();
+      this.aHQ = (this.aHQ * 31 + this.aJY.hashCode());
     }
-    int i = this.aFZ;
+    int i = this.aHQ;
     AppMethodBeat.o(77243);
     return i;
   }

@@ -2,17 +2,16 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.f;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.du;
+import com.tencent.mm.g.b.a.ep;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.b;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.e;
-import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.protocal.protobuf.bjt;
-import com.tencent.mm.protocal.protobuf.bju;
-import com.tencent.mm.protocal.protobuf.bjw;
-import com.tencent.mm.protocal.protobuf.cco;
-import com.tencent.mm.protocal.protobuf.ccs;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.protocal.protobuf.boe;
+import com.tencent.mm.protocal.protobuf.chg;
+import com.tencent.mm.protocal.protobuf.chk;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,21 +22,21 @@ import org.json.JSONObject;
 
 final class k
 {
-  private static JSONArray a(Map<String, List<bju>> paramMap, cco paramcco)
+  private static JSONArray a(Map<String, List<boc>> paramMap, chg paramchg)
   {
     AppMethodBeat.i(184383);
     JSONArray localJSONArray = new JSONArray();
-    if ((paramcco.qoi == null) || (paramcco.qoi.isEmpty()))
+    if ((paramchg.dtL == null) || (paramchg.dtL.isEmpty()))
     {
       AppMethodBeat.o(184383);
       return localJSONArray;
     }
-    Object localObject = paramcco.qoi + "_" + paramcco.startTime;
-    ac.i("HellSessionUBAReport", "HABBYGE-MALI, pagePathJsonArrayForUnknowPage, unknonwSessionId: %s", new Object[] { localObject });
+    Object localObject = paramchg.dtL + "_" + paramchg.startTime;
+    ad.i("HABBYGE-MALI.HellSessionUBAReport", "pagePathJsonArrayForUnknowPage, unknonwSessionId: %s", new Object[] { localObject });
     localObject = (List)paramMap.get(localObject);
     if ((localObject == null) || (((List)localObject).isEmpty()))
     {
-      ac.e("HellSessionUBAReport", "HABBYGE-MALI, pagePathJsonArrayForUnknowPage, unknowPageFlow NULL");
+      ad.e("HABBYGE-MALI.HellSessionUBAReport", "pagePathJsonArrayForUnknowPage, unknowPageFlow NULL");
       AppMethodBeat.o(184383);
       return localJSONArray;
     }
@@ -51,31 +50,31 @@ final class k
         i = 0;
         if (((Iterator)localObject).hasNext())
         {
-          bju localbju = (bju)((Iterator)localObject).next();
-          if (localbju == null) {
+          boc localboc = (boc)((Iterator)localObject).next();
+          if (localboc == null) {
             continue;
           }
           paramMap = new JSONObject();
-          paramMap.put("pageName", localbju.qoi);
-          paramMap.put("tbe", localbju.startTime);
-          paramMap.put("in", localbju.duration);
-          l1 += localbju.duration;
+          paramMap.put("pageName", localboc.dtL);
+          paramMap.put("tbe", localboc.startTime);
+          paramMap.put("in", localboc.duration);
+          l1 += localboc.duration;
           localJSONArray.put(paramMap);
           i += 1;
           continue;
         }
-        l2 = paramcco.endTime - paramcco.startTime;
+        l2 = paramchg.endTime - paramchg.startTime;
         if (l2 >= 5000L) {
           continue;
         }
-        paramcco.endTime = (l1 + paramcco.startTime);
-        ac.i("HellSessionUBAReport", "HABBYGE-MALI, pagePathJsonArrayForUnknowPage: %s", new Object[] { localJSONArray.toString() });
+        paramchg.endTime = (l1 + paramchg.startTime);
+        ad.i("HABBYGE-MALI.HellSessionUBAReport", "pagePathJsonArrayForUnknowPage: %s", new Object[] { localJSONArray.toString() });
       }
       catch (JSONException paramMap)
       {
         int i;
         long l2;
-        ac.printErrStackTrace("HellSessionUBAReport", paramMap, "HABBYGE-MALI, pagePathJsonArrayForUnknowPage json crash", new Object[0]);
+        ad.printErrStackTrace("HABBYGE-MALI.HellSessionUBAReport", paramMap, "pagePathJsonArrayForUnknowPage json crash", new Object[0]);
         continue;
       }
       AppMethodBeat.o(184383);
@@ -86,44 +85,52 @@ final class k
     }
   }
   
-  static void a(bjw parambjw, bjt parambjt)
+  static void a(boe paramboe, bob parambob)
   {
     AppMethodBeat.i(122260);
-    e.ckH();
-    boolean bool = e.ckD();
-    ac.e("HellSessionUBAReport", "HABBYGE-MALI, HellSessionUBAReport: %b", new Object[] { Boolean.valueOf(bool) });
+    paramboe = b(paramboe, parambob);
+    if (org.apache.commons.b.g.ea(paramboe))
+    {
+      AppMethodBeat.o(122260);
+      return;
+    }
+    com.tencent.mm.plugin.expt.d.a.cng().qPn.adm(paramboe);
+    e.cpW();
+    boolean bool = e.cpS();
+    ad.e("HABBYGE-MALI.HellSessionUBAReport", "HellSessionUBAReport: %b", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
       AppMethodBeat.o(122260);
       return;
     }
-    abE(b(parambjw, parambjt));
+    afs(paramboe);
+    com.tencent.mm.plugin.expt.d.a.cng().qPn.adl(paramboe);
     AppMethodBeat.o(122260);
   }
   
-  private static void abE(String paramString)
+  private static void afs(String paramString)
   {
     AppMethodBeat.i(184384);
-    long l = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.abo(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.ckX());
-    ac.i("HellSessionUBAReport", "HABBYGE-MALI, HellSessionUBAReport, lastReportTime: %s", new Object[] { Long.valueOf(l) });
+    long l = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.afb(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.cql());
+    ad.i("HABBYGE-MALI.HellSessionUBAReport", "HellSessionUBAReport, lastReportTime: %s", new Object[] { Long.valueOf(l) });
     if (l == -1L)
     {
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.g.abq(paramString);
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.g.afd(paramString);
       AppMethodBeat.o(184384);
       return;
     }
     if (l == 0L)
     {
-      if (abF(paramString)) {
-        com.tencent.mm.plugin.expt.hellhound.a.f.c.g.abr(String.valueOf(System.currentTimeMillis()));
+      if (aft(paramString)) {
+        com.tencent.mm.plugin.expt.hellhound.a.f.c.g.afe(String.valueOf(System.currentTimeMillis()));
       }
       AppMethodBeat.o(184384);
       return;
     }
-    String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.abp(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.ckX());
+    String str2 = com.tencent.mm.plugin.expt.hellhound.a.f.c.d.afc(com.tencent.mm.plugin.expt.hellhound.a.f.c.g.cql());
     if ("-1".equals(str2))
     {
-      com.tencent.mm.plugin.expt.hellhound.a.f.c.g.abq(paramString);
+      com.tencent.mm.plugin.expt.hellhound.a.f.c.g.afd(paramString);
       AppMethodBeat.o(184384);
       return;
     }
@@ -131,10 +138,10 @@ final class k
     if ((str2 == null) || (str2.isEmpty())) {
       str1 = paramString;
     }
-    while (i.ao(str1, l))
+    while (i.ar(str1, l))
     {
-      if (abF(str1)) {
-        com.tencent.mm.plugin.expt.hellhound.a.f.c.g.abr(String.valueOf(System.currentTimeMillis()));
+      if (aft(str1)) {
+        com.tencent.mm.plugin.expt.hellhound.a.f.c.g.afe(String.valueOf(System.currentTimeMillis()));
       }
       AppMethodBeat.o(184384);
       return;
@@ -147,11 +154,11 @@ final class k
         }
       }
     }
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.g.abq(paramString);
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.g.afd(paramString);
     AppMethodBeat.o(184384);
   }
   
-  private static boolean abF(String paramString)
+  private static boolean aft(String paramString)
   {
     boolean bool = false;
     int i = 0;
@@ -161,19 +168,19 @@ final class k
       AppMethodBeat.o(184385);
       return false;
     }
-    ac.i("HellSessionUBAReport", "HABBYGE-MALI, HellSessionUBAReport, reportSessionUBA: %s", new Object[] { paramString });
-    paramString = a.arA(paramString.replace(',', '#'));
+    ad.i("HABBYGE-MALI.HellSessionUBAReport", "HellSessionUBAReport, reportSessionUBA: %s", new Object[] { paramString });
+    paramString = com.tencent.mm.plugin.report.a.awA(paramString.replace(',', '#'));
     if (paramString != null)
     {
-      du localdu1 = new du();
-      localdu1.dSD = Process.myPid();
-      du localdu2 = localdu1.lM(((h)com.tencent.mm.kernel.g.agO().agp()).mProcessName);
-      localdu2.dRy = a.dyH();
-      localdu2.dSF = paramString.size();
+      ep localep1 = new ep();
+      localep1.eij = Process.myPid();
+      ep localep2 = localep1.nU(((h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName);
+      localep2.egV = com.tencent.mm.plugin.report.a.dJZ();
+      localep2.eil = paramString.size();
       while (i < paramString.size())
       {
-        localdu1.dSE = i;
-        localdu1.lN((String)paramString.get(i)).aHZ();
+        localep1.eik = i;
+        localep1.nV((String)paramString.get(i)).aLk();
         i += 1;
       }
       bool = true;
@@ -182,10 +189,10 @@ final class k
     return bool;
   }
   
-  private static String b(bjw parambjw, bjt parambjt)
+  private static String b(boe paramboe, bob parambob)
   {
     AppMethodBeat.i(122261);
-    parambjt = j.c(parambjt);
+    parambob = j.c(parambob);
     JSONObject localJSONObject;
     long l;
     JSONArray localJSONArray;
@@ -197,24 +204,24 @@ final class k
       try
       {
         localJSONObject = new JSONObject();
-        localJSONObject.put("tbe", parambjw.EZm);
-        l = parambjw.EZn - parambjw.EZm;
+        localJSONObject.put("tbe", paramboe.GIK);
+        l = paramboe.GIL - paramboe.GIK;
         if (l > 0L)
         {
           localJSONObject.put("in", l);
           localJSONObject.put("vv", "2.0");
           localJSONArray = new JSONArray();
-          localObject1 = parambjw.EZo.iterator();
+          localObject1 = paramboe.GIM.iterator();
           if (!((Iterator)localObject1).hasNext()) {
             break;
           }
-          localObject2 = (ccs)((Iterator)localObject1).next();
-          ac.i("HellSessionUBAReport", "HABBYGE-MALI, toJsonOfSessionUBA, session: %s", new Object[] { ((ccs)localObject2).sessionId });
+          localObject2 = (chk)((Iterator)localObject1).next();
+          ad.i("HABBYGE-MALI.HellSessionUBAReport", "toJsonOfSessionUBA, session: %s", new Object[] { ((chk)localObject2).sessionId });
           localObject3 = new JSONObject();
-          ((JSONObject)localObject3).put("sessionId", ((ccs)localObject2).sessionId);
-          ((JSONObject)localObject3).put("tbe", ((ccs)localObject2).startTime);
-          ((JSONObject)localObject3).put("pagePath", b(parambjt, (ccs)localObject2));
-          l = ((ccs)localObject2).endTime - ((ccs)localObject2).startTime;
+          ((JSONObject)localObject3).put("sessionId", ((chk)localObject2).sessionId);
+          ((JSONObject)localObject3).put("tbe", ((chk)localObject2).startTime);
+          ((JSONObject)localObject3).put("pagePath", b(parambob, (chk)localObject2));
+          l = ((chk)localObject2).endTime - ((chk)localObject2).startTime;
           if (l <= 0L) {
             break label252;
           }
@@ -224,9 +231,9 @@ final class k
         }
         l = 0L;
       }
-      catch (JSONException parambjw)
+      catch (JSONException paramboe)
       {
-        ac.printErrStackTrace("HellSessionUBAReport", parambjw, "HABBYGE-MALI, HellSessionUBAReport, crash: %s", new Object[] { parambjw.getMessage() });
+        ad.printErrStackTrace("HABBYGE-MALI.HellSessionUBAReport", paramboe, "HellSessionUBAReport, crash: %s", new Object[] { paramboe.getMessage() });
         AppMethodBeat.o(122261);
         return null;
       }
@@ -234,16 +241,16 @@ final class k
       label252:
       l = 0L;
     }
-    parambjw = parambjw.EZq.iterator();
-    if (parambjw.hasNext())
+    paramboe = paramboe.GIO.iterator();
+    if (paramboe.hasNext())
     {
-      localObject1 = (cco)parambjw.next();
+      localObject1 = (chg)paramboe.next();
       localObject2 = new JSONObject();
-      localObject3 = b.abe(((cco)localObject1).qoi);
-      ((JSONObject)localObject2).put("sessionId", (String)localObject3 + "_" + ((cco)localObject1).startTime);
-      ((JSONObject)localObject2).put("tbe", ((cco)localObject1).startTime);
-      ((JSONObject)localObject2).put("pagePath", a(parambjt, (cco)localObject1));
-      l = ((cco)localObject1).endTime - ((cco)localObject1).startTime;
+      localObject3 = b.aeR(((chg)localObject1).dtL);
+      ((JSONObject)localObject2).put("sessionId", (String)localObject3 + "_" + ((chg)localObject1).startTime);
+      ((JSONObject)localObject2).put("tbe", ((chg)localObject1).startTime);
+      ((JSONObject)localObject2).put("pagePath", a(parambob, (chg)localObject1));
+      l = ((chg)localObject1).endTime - ((chg)localObject1).startTime;
       if (l <= 0L) {
         break label456;
       }
@@ -255,27 +262,27 @@ final class k
       break;
       if (localJSONArray.length() <= 0)
       {
-        ac.e("HellSessionUBAReport", "HABBYGE-MALI, HellSessionUBAReport content is NULL");
+        ad.e("HABBYGE-MALI.HellSessionUBAReport", "HellSessionUBAReport content is NULL");
         AppMethodBeat.o(122261);
         return null;
       }
       localJSONObject.put("content", localJSONArray);
-      parambjw = localJSONObject.toString();
+      paramboe = localJSONObject.toString();
       AppMethodBeat.o(122261);
-      return parambjw;
+      return paramboe;
       label456:
       l = 0L;
     }
   }
   
-  private static JSONArray b(Map<String, List<bju>> paramMap, ccs paramccs)
+  private static JSONArray b(Map<String, List<boc>> paramMap, chk paramchk)
   {
     AppMethodBeat.i(184382);
     JSONArray localJSONArray = new JSONArray();
-    Object localObject = (List)paramMap.get(paramccs.sessionId);
+    Object localObject = (List)paramMap.get(paramchk.sessionId);
     if ((localObject == null) || (((List)localObject).isEmpty()))
     {
-      ac.e("HellSessionUBAReport", "HABBYGE-MALI, pagePathJsonArrayForSession: NULL");
+      ad.e("HABBYGE-MALI.HellSessionUBAReport", "pagePathJsonArrayForSession: NULL");
       AppMethodBeat.o(184382);
       return localJSONArray;
     }
@@ -288,16 +295,16 @@ final class k
       i = 0;
       while (((Iterator)localObject).hasNext())
       {
-        bju localbju = (bju)((Iterator)localObject).next();
-        if (localbju != null)
+        boc localboc = (boc)((Iterator)localObject).next();
+        if (localboc != null)
         {
           paramMap = new JSONObject();
-          paramMap.put("pageName", localbju.qoi);
-          paramMap.put("tbe", localbju.startTime);
-          paramMap.put("in", localbju.duration);
-          l1 += localbju.duration;
+          paramMap.put("pageName", localboc.dtL);
+          paramMap.put("tbe", localboc.startTime);
+          paramMap.put("in", localboc.duration);
+          l1 += localboc.duration;
           i += 1;
-          j.a(paramMap, localbju, true);
+          j.a(paramMap, localboc, true, -1L);
           localJSONArray.put(paramMap);
           continue;
           AppMethodBeat.o(184382);
@@ -306,14 +313,14 @@ final class k
     }
     catch (JSONException paramMap)
     {
-      ac.printErrStackTrace("HellSessionUBAReport", paramMap, "HABBYGE-MALI, pagePathJsonArrayForSession json crash", new Object[0]);
+      ad.printErrStackTrace("HABBYGE-MALI.HellSessionUBAReport", paramMap, "pagePathJsonArrayForSession json crash", new Object[0]);
     }
     for (;;)
     {
       return localJSONArray;
-      long l2 = paramccs.endTime - paramccs.startTime;
+      long l2 = paramchk.endTime - paramchk.startTime;
       if (l2 < 5000L) {
-        paramccs.endTime = (l1 + paramccs.startTime);
+        paramchk.endTime = (l1 + paramchk.startTime);
       } else if (i == 1) {
         paramMap.put("in", l2);
       }

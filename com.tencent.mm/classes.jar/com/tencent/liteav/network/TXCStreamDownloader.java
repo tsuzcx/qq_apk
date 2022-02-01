@@ -44,7 +44,7 @@ public class TXCStreamDownloader
   static
   {
     AppMethodBeat.i(15307);
-    com.tencent.liteav.basic.util.d.f();
+    com.tencent.liteav.basic.util.f.f();
     AppMethodBeat.o(15307);
   }
   

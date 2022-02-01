@@ -1,36 +1,59 @@
 package com.tencent.mm.plugin.appbrand.jsapi.x;
 
+import android.content.Context;
+import android.view.accessibility.AccessibilityManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.m.a;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class c
-  extends m.a
+  extends a
 {
-  public static final c kXa;
+  private static final int CTRL_INDEX = 851;
+  private static final String NAME = "checkIsOpenAccessibility";
   
-  static
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137894);
-    kXa = new c("ok", new Object[0]);
-    AppMethodBeat.o(137894);
-  }
-  
-  public c(String paramString, Object... paramVarArgs)
-  {
-    super(paramString, paramVarArgs);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(137893);
-    String str = "VoiceCallResult{errMsg='" + this.errMsg + '\'' + '}';
-    AppMethodBeat.o(137893);
-    return str;
+    AppMethodBeat.i(195024);
+    paramJSONObject = (AccessibilityManager)paramc.getContext().getSystemService("accessibility");
+    if (paramJSONObject == null)
+    {
+      ad.w("MicroMsg.AppBrand.Accessibility.ViewAccessibilityHelper", "isTalkBackAccessibilityEnabled, accessibilityManager is null");
+      paramJSONObject = null;
+    }
+    while (paramJSONObject == null)
+    {
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(195024);
+      return;
+      paramJSONObject = paramJSONObject.getEnabledAccessibilityServiceList(1);
+      if ((paramJSONObject != null) && (!paramJSONObject.isEmpty())) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label104;
+        }
+        ad.i("MicroMsg.AppBrand.Accessibility.ViewAccessibilityHelper", "isTalkBackAccessibilityEnabled, isTalkBackAccessibilityEnabled: false");
+        paramJSONObject = Boolean.FALSE;
+        break;
+      }
+      label104:
+      paramJSONObject = Boolean.TRUE;
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("open", paramJSONObject);
+    paramc.h(paramInt, m("ok", localHashMap));
+    AppMethodBeat.o(195024);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.x.c
  * JD-Core Version:    0.7.0.1
  */

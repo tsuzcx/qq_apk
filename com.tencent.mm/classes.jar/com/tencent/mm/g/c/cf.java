@@ -2,12 +2,15 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.alz;
-import com.tencent.mm.protocal.protobuf.amo;
+import com.tencent.mm.protocal.protobuf.FinderFeedReportObject;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.amh;
+import com.tencent.mm.protocal.protobuf.aqi;
+import com.tencent.mm.protocal.protobuf.bvg;
+import com.tencent.mm.protocal.protobuf.bvl;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -15,204 +18,124 @@ import java.util.Map;
 public abstract class cf
   extends c
 {
-  private static final int eBH;
-  private static final int eDF;
-  private static final int eGq;
-  private static final int eHD;
-  private static final int eHE;
-  private static final int eHF;
-  private static final int eHG;
-  private static final int eHH;
-  private static final int eHI;
-  private static final int eHJ;
-  private static final int eHK;
-  private static final int eHL;
-  private static final int eHM = "contact".hashCode();
-  private static final int eHN = "replyContact".hashCode();
-  private static final int eHO = "aggregatedContacts".hashCode();
-  public static String eHp = "FinderIdentityMsg";
-  public static String eHq = "WxIdentityMsg";
-  private static final int emY;
-  private static final int eng;
-  private static final int eok;
-  private static final int eqL;
-  private static final int eqO;
-  private static final int etG;
-  private static final int ewX;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderFeedItem_local_index ON FinderFeedItem(localId)", "CREATE INDEX IF NOT EXISTS FinderFeedItem_Id ON FinderFeedItem(id)", "CREATE INDEX IF NOT EXISTS FinderFeedItem_create_time ON FinderFeedItem(createTime)", "CREATE INDEX IF NOT EXISTS FinderFeedItem__Local_Flag ON FinderFeedItem(localFlag)" };
+  private static final int eEe = "localFlag".hashCode();
+  private static final int eEf;
+  private static final int eFp;
+  private static final int eFq;
+  private static final int eOw;
+  private static final int eVj = "localId".hashCode();
+  private static final int eYE;
+  private static final int eYF;
+  private static final int eYG = "postinfo".hashCode();
+  private static final int eYH = "mediaExtList".hashCode();
+  private static final int eYI = "reportObject".hashCode();
+  private static final int eYJ = "postExtraData".hashCode();
+  private static final int eYK = "customData".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eAV = true;
-  private boolean eDA = true;
-  private boolean eGg = true;
-  private boolean eHA = true;
-  private boolean eHB = true;
-  private boolean eHC = true;
-  private boolean eHr = true;
-  private boolean eHs = true;
-  private boolean eHt = true;
-  private boolean eHu = true;
-  private boolean eHv = true;
-  private boolean eHw = true;
-  private boolean eHx = true;
-  private boolean eHy = true;
-  private boolean eHz = true;
-  private boolean emB = true;
-  private boolean emI = true;
-  private boolean eoh = true;
-  private boolean eqI = true;
-  private boolean eqM = true;
-  private boolean etC = true;
-  private boolean ewT = true;
-  public alz field_aggregatedContacts;
-  public long field_commentId;
-  public FinderContact field_contact;
-  public String field_content;
-  public int field_createTime;
-  public String field_description;
-  public int field_extFlag;
-  public int field_flag;
-  public String field_headUrl;
+  private boolean eDH = true;
+  private boolean eDI = true;
+  private boolean eFm = true;
+  private boolean eFn = true;
+  private boolean eOs = true;
+  private boolean eVh = true;
+  private boolean eYA = true;
+  private boolean eYB = true;
+  private boolean eYC = true;
+  private boolean eYD = true;
+  private boolean eYx = true;
+  private boolean eYy = true;
+  private boolean eYz = true;
+  public long field_createTime;
+  public amh field_customData;
+  public FinderObject field_finderObject;
   public long field_id;
-  public int field_mediaType;
-  public String field_nickname;
-  public amo field_notify;
-  public long field_objectId;
-  public String field_objectNonceId;
-  public String field_refContent;
-  public String field_replayNickname;
-  public String field_replayUsername;
-  public FinderContact field_replyContact;
-  public String field_thumbUrl;
-  public int field_type;
-  public int field_userVersion;
+  public int field_localFlag;
+  public long field_localId;
+  public bvl field_mediaExtList;
+  public aqi field_postExtraData;
+  public bvg field_postinfo;
+  public FinderFeedReportObject field_reportObject;
+  public int field_sourceFlag;
+  public long field_updateTime;
   public String field_username;
   
   static
   {
-    eHD = "headUrl".hashCode();
-    etG = "nickname".hashCode();
-    type_HASHCODE = "type".hashCode();
-    eng = "content".hashCode();
-    emY = "createTime".hashCode();
-    eBH = "thumbUrl".hashCode();
-    ewX = "id".hashCode();
-    eHE = "objectId".hashCode();
-    eHF = "commentId".hashCode();
-    eqO = "flag".hashCode();
-    eHG = "refContent".hashCode();
-    eDF = "extFlag".hashCode();
-    eHH = "mediaType".hashCode();
-    eqL = "description".hashCode();
-    eHI = "notify".hashCode();
-    eHJ = "replayUsername".hashCode();
-    eHK = "replayNickname".hashCode();
-    eGq = "objectNonceId".hashCode();
-    eHL = "userVersion".hashCode();
-    eok = "username".hashCode();
+    eOw = "id".hashCode();
+    eEf = "createTime".hashCode();
+    eFp = "username".hashCode();
+    eYE = "sourceFlag".hashCode();
+    eFq = "updateTime".hashCode();
+    eYF = "finderObject".hashCode();
   }
   
-  public static c.a Th()
+  private final void buildBuff() {}
+  
+  public static c.a initAutoDBInfo(Class<?> paramClass)
   {
-    c.a locala = new c.a();
-    locala.GvF = new Field[23];
-    locala.columns = new String[24];
+    paramClass = new c.a();
+    paramClass.IhA = new Field[13];
+    paramClass.columns = new String[14];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "headUrl";
-    locala.GvH.put("headUrl", "TEXT");
-    localStringBuilder.append(" headUrl TEXT");
+    paramClass.columns[0] = "localId";
+    paramClass.IhC.put("localId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" localId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.columns[1] = "nickname";
-    locala.GvH.put("nickname", "TEXT");
-    localStringBuilder.append(" nickname TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.GvH.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "content";
-    locala.GvH.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "createTime";
-    locala.GvH.put("createTime", "INTEGER");
-    localStringBuilder.append(" createTime INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "thumbUrl";
-    locala.GvH.put("thumbUrl", "TEXT");
-    localStringBuilder.append(" thumbUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "id";
-    locala.GvH.put("id", "LONG");
+    paramClass.IhB = "localId";
+    paramClass.columns[1] = "id";
+    paramClass.IhC.put("id", "LONG");
     localStringBuilder.append(" id LONG");
     localStringBuilder.append(", ");
-    locala.columns[7] = "objectId";
-    locala.GvH.put("objectId", "LONG");
-    localStringBuilder.append(" objectId LONG");
+    paramClass.columns[2] = "createTime";
+    paramClass.IhC.put("createTime", "LONG");
+    localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[8] = "commentId";
-    locala.GvH.put("commentId", "LONG");
-    localStringBuilder.append(" commentId LONG");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "flag";
-    locala.GvH.put("flag", "INTEGER");
-    localStringBuilder.append(" flag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "refContent";
-    locala.GvH.put("refContent", "TEXT");
-    localStringBuilder.append(" refContent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "extFlag";
-    locala.GvH.put("extFlag", "INTEGER");
-    localStringBuilder.append(" extFlag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "mediaType";
-    locala.GvH.put("mediaType", "INTEGER");
-    localStringBuilder.append(" mediaType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "description";
-    locala.GvH.put("description", "TEXT");
-    localStringBuilder.append(" description TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[14] = "notify";
-    locala.GvH.put("notify", "BLOB");
-    localStringBuilder.append(" notify BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[15] = "replayUsername";
-    locala.GvH.put("replayUsername", "TEXT");
-    localStringBuilder.append(" replayUsername TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[16] = "replayNickname";
-    locala.GvH.put("replayNickname", "TEXT");
-    localStringBuilder.append(" replayNickname TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[17] = "objectNonceId";
-    locala.GvH.put("objectNonceId", "TEXT");
-    localStringBuilder.append(" objectNonceId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[18] = "userVersion";
-    locala.GvH.put("userVersion", "INTEGER");
-    localStringBuilder.append(" userVersion INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[19] = "username";
-    locala.GvH.put("username", "TEXT");
+    paramClass.columns[3] = "username";
+    paramClass.IhC.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[20] = "contact";
-    locala.GvH.put("contact", "BLOB");
-    localStringBuilder.append(" contact BLOB");
+    paramClass.columns[4] = "sourceFlag";
+    paramClass.IhC.put("sourceFlag", "INTEGER");
+    localStringBuilder.append(" sourceFlag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[21] = "replyContact";
-    locala.GvH.put("replyContact", "BLOB");
-    localStringBuilder.append(" replyContact BLOB");
+    paramClass.columns[5] = "updateTime";
+    paramClass.IhC.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[22] = "aggregatedContacts";
-    locala.GvH.put("aggregatedContacts", "BLOB");
-    localStringBuilder.append(" aggregatedContacts BLOB");
-    locala.columns[23] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    paramClass.columns[6] = "finderObject";
+    paramClass.IhC.put("finderObject", "BLOB");
+    localStringBuilder.append(" finderObject BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[7] = "localFlag";
+    paramClass.IhC.put("localFlag", "INTEGER");
+    localStringBuilder.append(" localFlag INTEGER");
+    localStringBuilder.append(", ");
+    paramClass.columns[8] = "postinfo";
+    paramClass.IhC.put("postinfo", "BLOB");
+    localStringBuilder.append(" postinfo BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[9] = "mediaExtList";
+    paramClass.IhC.put("mediaExtList", "BLOB");
+    localStringBuilder.append(" mediaExtList BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[10] = "reportObject";
+    paramClass.IhC.put("reportObject", "BLOB");
+    localStringBuilder.append(" reportObject BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[11] = "postExtraData";
+    paramClass.IhC.put("postExtraData", "BLOB");
+    localStringBuilder.append(" postExtraData BLOB");
+    localStringBuilder.append(", ");
+    paramClass.columns[12] = "customData";
+    paramClass.IhC.put("customData", "BLOB");
+    localStringBuilder.append(" customData BLOB");
+    paramClass.columns[13] = "rowid";
+    paramClass.sql = localStringBuilder.toString();
+    return paramClass;
   }
+  
+  private final void parseBuff() {}
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -227,104 +150,107 @@ public abstract class cf
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eHD != k) {
-        break label60;
+      if (eVj != k) {
+        break label65;
       }
-      this.field_headUrl = paramCursor.getString(i);
+      this.field_localId = paramCursor.getLong(i);
+      this.eVh = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (etG == k) {
-        this.field_nickname = paramCursor.getString(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eng == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (emY == k) {
-        this.field_createTime = paramCursor.getInt(i);
-      } else if (eBH == k) {
-        this.field_thumbUrl = paramCursor.getString(i);
-      } else if (ewX == k) {
+      label65:
+      if (eOw == k) {
         this.field_id = paramCursor.getLong(i);
-      } else if (eHE == k) {
-        this.field_objectId = paramCursor.getLong(i);
-      } else if (eHF == k) {
-        this.field_commentId = paramCursor.getLong(i);
-      } else if (eqO == k) {
-        this.field_flag = paramCursor.getInt(i);
-      } else if (eHG == k) {
-        this.field_refContent = paramCursor.getString(i);
-      } else if (eDF == k) {
-        this.field_extFlag = paramCursor.getInt(i);
-      } else if (eHH == k) {
-        this.field_mediaType = paramCursor.getInt(i);
-      } else if (eqL == k) {
-        this.field_description = paramCursor.getString(i);
-      } else if (eHI == k) {
+      } else if (eEf == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (eFp == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eYE == k) {
+        this.field_sourceFlag = paramCursor.getInt(i);
+      } else if (eFq == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (eYF == k) {
         try
         {
           byte[] arrayOfByte1 = paramCursor.getBlob(i);
           if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
             continue;
           }
-          this.field_notify = ((amo)new amo().parseFrom(arrayOfByte1));
+          this.field_finderObject = ((FinderObject)new FinderObject().parseFrom(arrayOfByte1));
         }
         catch (IOException localIOException1)
         {
-          ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException1.getMessage());
+          ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException1.getMessage());
         }
-      } else if (eHJ == k) {
-        this.field_replayUsername = paramCursor.getString(i);
-      } else if (eHK == k) {
-        this.field_replayNickname = paramCursor.getString(i);
-      } else if (eGq == k) {
-        this.field_objectNonceId = paramCursor.getString(i);
-      } else if (eHL == k) {
-        this.field_userVersion = paramCursor.getInt(i);
-      } else if (eok == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (eHM == k) {
+      } else if (eEe == k) {
+        this.field_localFlag = paramCursor.getInt(i);
+      } else if (eYG == k) {
         try
         {
           byte[] arrayOfByte2 = paramCursor.getBlob(i);
           if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
             continue;
           }
-          this.field_contact = ((FinderContact)new FinderContact().parseFrom(arrayOfByte2));
+          this.field_postinfo = ((bvg)new bvg().parseFrom(arrayOfByte2));
         }
         catch (IOException localIOException2)
         {
-          ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException2.getMessage());
+          ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException2.getMessage());
         }
-      } else if (eHN == k) {
+      } else if (eYH == k) {
         try
         {
           byte[] arrayOfByte3 = paramCursor.getBlob(i);
           if ((arrayOfByte3 == null) || (arrayOfByte3.length <= 0)) {
             continue;
           }
-          this.field_replyContact = ((FinderContact)new FinderContact().parseFrom(arrayOfByte3));
+          this.field_mediaExtList = ((bvl)new bvl().parseFrom(arrayOfByte3));
         }
         catch (IOException localIOException3)
         {
-          ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException3.getMessage());
+          ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException3.getMessage());
         }
-      } else if (eHO == k) {
+      } else if (eYI == k) {
         try
         {
           byte[] arrayOfByte4 = paramCursor.getBlob(i);
           if ((arrayOfByte4 == null) || (arrayOfByte4.length <= 0)) {
             continue;
           }
-          this.field_aggregatedContacts = ((alz)new alz().parseFrom(arrayOfByte4));
+          this.field_reportObject = ((FinderFeedReportObject)new FinderFeedReportObject().parseFrom(arrayOfByte4));
         }
         catch (IOException localIOException4)
         {
-          ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException4.getMessage());
+          ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException4.getMessage());
+        }
+      } else if (eYJ == k) {
+        try
+        {
+          byte[] arrayOfByte5 = paramCursor.getBlob(i);
+          if ((arrayOfByte5 == null) || (arrayOfByte5.length <= 0)) {
+            continue;
+          }
+          this.field_postExtraData = ((aqi)new aqi().parseFrom(arrayOfByte5));
+        }
+        catch (IOException localIOException5)
+        {
+          ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException5.getMessage());
+        }
+      } else if (eYK == k) {
+        try
+        {
+          byte[] arrayOfByte6 = paramCursor.getBlob(i);
+          if ((arrayOfByte6 == null) || (arrayOfByte6.length <= 0)) {
+            continue;
+          }
+          this.field_customData = ((amh)new amh().parseFrom(arrayOfByte6));
+        }
+        catch (IOException localIOException6)
+        {
+          ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException6.getMessage());
         }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -334,119 +260,108 @@ public abstract class cf
   
   public ContentValues convertTo()
   {
+    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.eHr) {
-      localContentValues.put("headUrl", this.field_headUrl);
+    if (this.eVh) {
+      localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.etC) {
-      localContentValues.put("nickname", this.field_nickname);
-    }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
-    }
-    if (this.emI) {
-      localContentValues.put("content", this.field_content);
-    }
-    if (this.emB) {
-      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
-    }
-    if (this.eAV) {
-      localContentValues.put("thumbUrl", this.field_thumbUrl);
-    }
-    if (this.ewT) {
+    if (this.eOs) {
       localContentValues.put("id", Long.valueOf(this.field_id));
     }
-    if (this.eHs) {
-      localContentValues.put("objectId", Long.valueOf(this.field_objectId));
+    if (this.eDI) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.eHt) {
-      localContentValues.put("commentId", Long.valueOf(this.field_commentId));
+    if (this.eFm) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.eqM) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    if (this.eYx) {
+      localContentValues.put("sourceFlag", Integer.valueOf(this.field_sourceFlag));
     }
-    if (this.eHu) {
-      localContentValues.put("refContent", this.field_refContent);
+    if (this.eFn) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eDA) {
-      localContentValues.put("extFlag", Integer.valueOf(this.field_extFlag));
-    }
-    if (this.eHv) {
-      localContentValues.put("mediaType", Integer.valueOf(this.field_mediaType));
-    }
-    if (this.eqI) {
-      localContentValues.put("description", this.field_description);
-    }
-    if ((this.eHw) && (this.field_notify != null)) {}
+    if ((this.eYy) && (this.field_finderObject != null)) {}
     try
     {
-      localContentValues.put("notify", this.field_notify.toByteArray());
-      if (this.eHx) {
-        localContentValues.put("replayUsername", this.field_replayUsername);
+      localContentValues.put("finderObject", this.field_finderObject.toByteArray());
+      if (this.eDH) {
+        localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
       }
-      if (this.eHy) {
-        localContentValues.put("replayNickname", this.field_replayNickname);
-      }
-      if (this.eGg) {
-        localContentValues.put("objectNonceId", this.field_objectNonceId);
-      }
-      if (this.eHz) {
-        localContentValues.put("userVersion", Integer.valueOf(this.field_userVersion));
-      }
-      if (this.eoh) {
-        localContentValues.put("username", this.field_username);
-      }
-      if ((!this.eHA) || (this.field_contact == null)) {}
+      if ((!this.eYz) || (this.field_postinfo == null)) {}
     }
-    catch (IOException localIOException3)
+    catch (IOException localIOException5)
     {
       try
       {
-        localContentValues.put("contact", this.field_contact.toByteArray());
-        if ((!this.eHB) || (this.field_replyContact == null)) {}
+        localContentValues.put("postinfo", this.field_postinfo.toByteArray());
+        if ((!this.eYA) || (this.field_mediaExtList == null)) {}
       }
-      catch (IOException localIOException3)
+      catch (IOException localIOException5)
       {
         try
         {
-          localContentValues.put("replyContact", this.field_replyContact.toByteArray());
-          if ((!this.eHC) || (this.field_aggregatedContacts == null)) {}
+          localContentValues.put("mediaExtList", this.field_mediaExtList.toByteArray());
+          if ((!this.eYB) || (this.field_reportObject == null)) {}
         }
-        catch (IOException localIOException3)
+        catch (IOException localIOException5)
         {
           try
           {
-            for (;;)
-            {
-              localContentValues.put("aggregatedContacts", this.field_aggregatedContacts.toByteArray());
-              if (this.systemRowid > 0L) {
-                localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-              }
-              return localContentValues;
-              localIOException1 = localIOException1;
-              ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException1.getMessage());
-              continue;
-              localIOException2 = localIOException2;
-              ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException2.getMessage());
-            }
-            localIOException3 = localIOException3;
-            ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException3.getMessage());
+            localContentValues.put("reportObject", this.field_reportObject.toByteArray());
+            if ((!this.eYC) || (this.field_postExtraData == null)) {}
           }
-          catch (IOException localIOException4)
+          catch (IOException localIOException5)
           {
-            for (;;)
+            try
             {
-              ac.e("MicroMsg.SDK.BaseFinderFinderMention", localIOException4.getMessage());
+              localContentValues.put("postExtraData", this.field_postExtraData.toByteArray());
+              if ((!this.eYD) || (this.field_customData == null)) {}
+            }
+            catch (IOException localIOException5)
+            {
+              try
+              {
+                for (;;)
+                {
+                  localContentValues.put("customData", this.field_customData.toByteArray());
+                  if (this.systemRowid > 0L) {
+                    localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+                  }
+                  return localContentValues;
+                  localIOException1 = localIOException1;
+                  ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException1.getMessage());
+                  continue;
+                  localIOException2 = localIOException2;
+                  ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException2.getMessage());
+                  continue;
+                  localIOException3 = localIOException3;
+                  ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException3.getMessage());
+                  continue;
+                  localIOException4 = localIOException4;
+                  ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException4.getMessage());
+                }
+                localIOException5 = localIOException5;
+                ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException5.getMessage());
+              }
+              catch (IOException localIOException6)
+              {
+                for (;;)
+                {
+                  ad.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException6.getMessage());
+                }
+              }
             }
           }
         }
       }
     }
   }
+  
+  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.cf
  * JD-Core Version:    0.7.0.1
  */

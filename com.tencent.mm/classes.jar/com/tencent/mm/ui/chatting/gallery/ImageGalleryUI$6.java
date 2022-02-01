@@ -1,31 +1,27 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImageGalleryUI$6
-  implements ValueAnimator.AnimatorUpdateListener
+  extends AnimatorListenerAdapter
 {
-  ImageGalleryUI$6(ImageGalleryUI paramImageGalleryUI, int paramInt) {}
+  ImageGalleryUI$6(ImageGalleryUI paramImageGalleryUI) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(196557);
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f <= 0.1F) {
-      ImageGalleryUI.r(this.IcP).setAlpha(f * 10.0F);
-    }
-    for (;;)
-    {
-      ImageGalleryUI.r(this.IcP).setTranslationY(f * (this.qDI - ImageGalleryUI.r(this.IcP).getHeight()));
-      AppMethodBeat.o(196557);
-      return;
-      if (f >= 0.9F) {
-        ImageGalleryUI.r(this.IcP).setAlpha((1.0F - f) * 10.0F);
-      }
-    }
+    AppMethodBeat.i(36107);
+    ImageGalleryUI.v(this.JSq).setAlpha(0.0F);
+    AppMethodBeat.o(36107);
+  }
+  
+  public final void onAnimationStart(Animator paramAnimator)
+  {
+    AppMethodBeat.i(36106);
+    ImageGalleryUI.v(this.JSq).setAlpha(0.0F);
+    AppMethodBeat.o(36106);
   }
 }
 

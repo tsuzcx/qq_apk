@@ -2,8 +2,8 @@ package android.support.design.a;
 
 public final class j
 {
-  public final float fg = 0.0F;
-  public final float fh = 0.0F;
+  public final float gY = 0.0F;
+  public final float gZ = 0.0F;
   public final int gravity = 17;
 }
 

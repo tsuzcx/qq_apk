@@ -8,25 +8,16 @@ public abstract class gm
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eKB = "receiveTime".hashCode();
-  private static final int eXs = "receiveStatus".hashCode();
-  private static final int fgu = "mNativeUrl".hashCode();
-  private static final int fgv = "hbType".hashCode();
-  private static final int fgw = "receiveAmount".hashCode();
-  private static final int fgx = "hbStatus".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eFp = "username".hashCode();
+  private static final int eHi = "openId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eKq = true;
-  private boolean eXp = true;
-  private boolean fgq = true;
-  private boolean fgr = true;
-  private boolean fgs = true;
-  private boolean fgt = true;
-  public int field_hbStatus;
-  public int field_hbType;
-  public String field_mNativeUrl;
-  public long field_receiveAmount;
-  public int field_receiveStatus;
-  public long field_receiveTime;
+  private boolean eED = true;
+  private boolean eFm = true;
+  private boolean eGM = true;
+  public String field_appId;
+  public String field_openId;
+  public String field_username;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,11 +32,11 @@ public abstract class gm
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fgu != k) {
+      if (eHi != k) {
         break label65;
       }
-      this.field_mNativeUrl = paramCursor.getString(i);
-      this.fgq = true;
+      this.field_openId = paramCursor.getString(i);
+      this.eGM = true;
     }
     for (;;)
     {
@@ -53,16 +44,10 @@ public abstract class gm
       break label20;
       break;
       label65:
-      if (fgv == k) {
-        this.field_hbType = paramCursor.getInt(i);
-      } else if (fgw == k) {
-        this.field_receiveAmount = paramCursor.getLong(i);
-      } else if (eKB == k) {
-        this.field_receiveTime = paramCursor.getLong(i);
-      } else if (eXs == k) {
-        this.field_receiveStatus = paramCursor.getInt(i);
-      } else if (fgx == k) {
-        this.field_hbStatus = paramCursor.getInt(i);
+      if (eEU == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eFp == k) {
+        this.field_username = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,23 +57,14 @@ public abstract class gm
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fgq) {
-      localContentValues.put("mNativeUrl", this.field_mNativeUrl);
+    if (this.eGM) {
+      localContentValues.put("openId", this.field_openId);
     }
-    if (this.fgr) {
-      localContentValues.put("hbType", Integer.valueOf(this.field_hbType));
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.fgs) {
-      localContentValues.put("receiveAmount", Long.valueOf(this.field_receiveAmount));
-    }
-    if (this.eKq) {
-      localContentValues.put("receiveTime", Long.valueOf(this.field_receiveTime));
-    }
-    if (this.eXp) {
-      localContentValues.put("receiveStatus", Integer.valueOf(this.field_receiveStatus));
-    }
-    if (this.fgt) {
-      localContentValues.put("hbStatus", Integer.valueOf(this.field_hbStatus));
+    if (this.eFm) {
+      localContentValues.put("username", this.field_username);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

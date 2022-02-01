@@ -1,96 +1,97 @@
 package com.tencent.mm.ui;
 
 import android.arch.lifecycle.MutableLiveData;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kd;
-import com.tencent.mm.g.a.sg;
-import com.tencent.mm.g.a.wk;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.a.kl;
+import com.tencent.mm.g.a.st;
+import com.tencent.mm.g.a.xd;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.extension.reddot.f.a;
+import com.tencent.mm.plugin.finder.extension.reddot.g.a;
 import com.tencent.mm.plugin.newtips.a.i.a;
-import com.tencent.mm.plugin.websearch.api.ah;
+import com.tencent.mm.plugin.websearch.api.al;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bm;
-import com.tencent.mm.y.a.a;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bs;
+import com.tencent.mm.z.a.a;
 
 public final class aa
   implements n.b
 {
-  com.tencent.mm.sdk.b.c<sg> HiJ;
-  com.tencent.mm.sdk.b.c HiK;
-  MMFragmentActivity Hjt;
-  LauncherUI.c HpD;
-  c HpE;
-  boolean HpF;
-  Runnable HpG;
-  a HpH;
-  a.a HpI;
-  n.b HpJ;
-  com.tencent.mm.sdk.b.c HpK;
+  com.tencent.mm.sdk.b.c<st> IWc;
+  com.tencent.mm.sdk.b.c IWd;
+  MMFragmentActivity IXa;
+  LauncherUI.c Jdj;
+  c Jdk;
+  boolean Jdl;
+  Runnable Jdm;
+  a Jdn;
+  a.a Jdo;
+  n.b Jdp;
+  com.tencent.mm.sdk.b.c Jdq;
   
   public aa()
   {
     AppMethodBeat.i(33506);
-    this.HpG = new Runnable()
+    this.Jdm = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(33490);
-        if (!com.tencent.mm.kernel.g.agP().afY())
+        if (!com.tencent.mm.kernel.g.ajA().aiK())
         {
-          ac.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "Account not Ready!!!");
+          ad.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "Account not Ready!!!");
           AppMethodBeat.o(33490);
           return;
         }
-        if (aa.this.HpE == null)
+        if (aa.this.Jdk == null)
         {
-          ac.w("MicroMsg.LauncherUI.MainTabUnreadMgr", "set tag job, but tab view is null");
+          ad.w("MicroMsg.LauncherUI.MainTabUnreadMgr", "set tag job, but tab view is null");
           AppMethodBeat.o(33490);
           return;
         }
-        com.tencent.mm.vending.g.g.fxs().d(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a()
+        com.tencent.mm.vending.g.g.fOf().d(new com.tencent.mm.vending.c.a() {}).f(new com.tencent.mm.vending.c.a()
         {
-          private Void n(Integer paramAnonymous2Integer)
+          private Void o(Integer paramAnonymous2Integer)
           {
             AppMethodBeat.i(33487);
-            aa.this.HpE.wl(false);
-            aa.this.HpE.Zl(paramAnonymous2Integer.intValue());
-            if ((paramAnonymous2Integer.intValue() <= 0) && ((u.axI() & 0x200) == 0) && (com.tencent.mm.bp.a.eJP()) && (com.tencent.mm.bj.d.aJf().bQe() > 0)) {
-              aa.this.HpE.wl(true);
+            aa.this.Jdk.wX(false);
+            aa.this.Jdk.abu(paramAnonymous2Integer.intValue());
+            if ((paramAnonymous2Integer.intValue() <= 0) && ((u.aAy() & 0x200) == 0) && (com.tencent.mm.bq.a.eYD()) && (com.tencent.mm.bk.d.aMp().bUJ() > 0)) {
+              aa.this.Jdk.wX(true);
             }
-            if ((paramAnonymous2Integer.intValue() <= 0) && ((u.axI() & 0x8000) == 0))
+            if ((paramAnonymous2Integer.intValue() <= 0) && ((u.aAy() & 0x8000) == 0))
             {
-              az.ayM();
-              if (bs.a((Boolean)com.tencent.mm.model.c.agA().get(68384, null), true))
+              ba.aBQ();
+              if (bt.a((Boolean)com.tencent.mm.model.c.ajl().get(68384, null), true))
               {
-                az.ayM();
-                if (!bs.isNullOrNil((String)com.tencent.mm.model.c.agA().get(68377, null)))
+                ba.aBQ();
+                if (!bt.isNullOrNil((String)com.tencent.mm.model.c.ajl().get(68377, null)))
                 {
-                  aa.this.HpE.wl(true);
-                  paramAnonymous2Integer = Jql;
+                  aa.this.Jdk.wX(true);
+                  paramAnonymous2Integer = LhQ;
                   AppMethodBeat.o(33487);
                   return paramAnonymous2Integer;
                 }
-                az.ayM();
-                if (((Boolean)com.tencent.mm.model.c.agA().get(589825, Boolean.FALSE)).booleanValue())
+                ba.aBQ();
+                if (((Boolean)com.tencent.mm.model.c.ajl().get(589825, Boolean.FALSE)).booleanValue())
                 {
-                  aa.this.HpE.wl(true);
-                  paramAnonymous2Integer = Jql;
+                  aa.this.Jdk.wX(true);
+                  paramAnonymous2Integer = LhQ;
                   AppMethodBeat.o(33487);
                   return paramAnonymous2Integer;
                 }
-                Object localObject = com.tencent.mm.kernel.g.agR().agA().get(com.tencent.mm.storage.ah.a.GRs, null);
+                Object localObject = com.tencent.mm.kernel.g.ajC().ajl().get(com.tencent.mm.storage.al.a.IDW, null);
                 if (localObject == null) {}
-                for (long l = 0L; (l != 0L) && (((com.tencent.mm.plugin.sns.b.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.sns.b.n.class)).wK(l)); l = ((Long)localObject).longValue())
+                for (long l = 0L; (l != 0L) && (((com.tencent.mm.plugin.sns.b.n)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.sns.b.n.class)).zk(l)); l = ((Long)localObject).longValue())
                 {
-                  aa.this.HpE.wl(true);
-                  paramAnonymous2Integer = Jql;
+                  aa.this.Jdk.wX(true);
+                  paramAnonymous2Integer = LhQ;
                   AppMethodBeat.o(33487);
                   return paramAnonymous2Integer;
                 }
@@ -99,97 +100,97 @@ public final class aa
             boolean bool1;
             if (paramAnonymous2Integer.intValue() <= 0)
             {
-              if ((u.axB() & 0x400000) != 0L) {
+              if ((u.aAr() & 0x400000) != 0L) {
                 i = 1;
               }
-              while ((i == 0) && (!com.tencent.mm.plugin.subapp.jdbiz.d.eat().eaB()) && (com.tencent.mm.pluginsdk.g.f.DjX != null))
+              while ((i == 0) && (!com.tencent.mm.plugin.subapp.jdbiz.d.emI().emQ()) && (com.tencent.mm.pluginsdk.i.g.EPa != null))
               {
-                com.tencent.mm.plugin.subapp.jdbiz.d.eat();
-                bool1 = com.tencent.mm.plugin.subapp.jdbiz.d.eav();
-                ac.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "jdshowFriend ".concat(String.valueOf(bool1)));
+                com.tencent.mm.plugin.subapp.jdbiz.d.emI();
+                bool1 = com.tencent.mm.plugin.subapp.jdbiz.d.emK();
+                ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "jdshowFriend ".concat(String.valueOf(bool1)));
                 if (bool1)
                 {
-                  paramAnonymous2Integer = com.tencent.mm.plugin.subapp.jdbiz.d.eat().eay();
-                  if ((paramAnonymous2Integer.isStart()) && (!paramAnonymous2Integer.cIm()))
+                  paramAnonymous2Integer = com.tencent.mm.plugin.subapp.jdbiz.d.emI().emN();
+                  if ((paramAnonymous2Integer.isStart()) && (!paramAnonymous2Integer.cQB()))
                   {
-                    aa.this.HpE.wl(true);
-                    paramAnonymous2Integer = Jql;
+                    aa.this.Jdk.wX(true);
+                    paramAnonymous2Integer = LhQ;
                     AppMethodBeat.o(33487);
                     return paramAnonymous2Integer;
                     i = 0;
                   }
                   else
                   {
-                    ac.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "jd time is not start or jd time isExpire");
+                    ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "jd time is not start or jd time isExpire");
                   }
                 }
               }
               paramAnonymous2Integer = ((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr();
-              if (!com.tencent.mm.aw.b.CQ((String)com.tencent.mm.kernel.g.agR().agA().get(274436, null))) {
+              if (!com.tencent.mm.ax.b.FU((String)com.tencent.mm.kernel.g.ajC().ajl().get(274436, null))) {
                 break label975;
               }
-              ac.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "checkLookVisibility EuropeanUnionCountry");
-              if ((((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.welab.a.a.a.class)).aEs("labs_nearbylife")) && (((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.welab.a.a.a.class)).HA("labs_nearbylife")) && (((Boolean)com.tencent.mm.kernel.g.agR().agA().get(com.tencent.mm.storage.ah.a.GRY, Boolean.TRUE)).booleanValue())) {
-                aa.this.HpE.wl(true);
+              ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "checkLookVisibility EuropeanUnionCountry");
+              if ((((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.welab.a.a.a.class)).aJS("labs_nearbylife")) && (((com.tencent.mm.plugin.welab.a.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.welab.a.a.a.class)).KN("labs_nearbylife")) && (((Boolean)com.tencent.mm.kernel.g.ajC().ajl().get(com.tencent.mm.storage.al.a.IEC, Boolean.TRUE)).booleanValue())) {
+                aa.this.Jdk.wX(true);
               }
-              if ((u.axB() & 0x200000) == 0L) {
+              if ((u.aAr() & 0x200000) == 0L) {
                 break label1037;
               }
               i = 1;
               label572:
               if (i == 0)
               {
-                paramAnonymous2Integer = ah.exx();
-                if ((paramAnonymous2Integer.BZw == null) || (!paramAnonymous2Integer.BZw.isValid()) || (paramAnonymous2Integer.BZw.BZB != 1)) {
+                paramAnonymous2Integer = al.eMo();
+                if ((paramAnonymous2Integer.DCs == null) || (!paramAnonymous2Integer.DCs.isValid()) || (paramAnonymous2Integer.DCs.DCx != 1)) {
                   break label1042;
                 }
                 i = 1;
                 label610:
                 if (i != 0) {
-                  aa.this.HpE.wl(true);
+                  aa.this.Jdk.wX(true);
                 }
               }
-              if ((u.axB() & 0x2000000) == 0L) {
+              if ((u.aAr() & 0x2000000) == 0L) {
                 break label1047;
               }
               i = 1;
               label644:
-              if (!com.tencent.mm.plugin.ipcall.d.cTZ()) {
+              if (!com.tencent.mm.plugin.ipcall.d.ddk()) {
                 break label1052;
               }
-              if ((i == 0) && (!aa.this.HpE.getShowFriendPoint()))
+              if ((i == 0) && (!aa.this.Jdk.getShowFriendPoint()))
               {
-                az.ayM();
-                if (((Integer)com.tencent.mm.model.c.agA().get(com.tencent.mm.storage.ah.a.GGB, Integer.valueOf(0))).intValue() >= com.tencent.mm.m.g.ZY().getInt("WCOEntranceRedDot", 0))
+                ba.aBQ();
+                if (((Integer)com.tencent.mm.model.c.ajl().get(com.tencent.mm.storage.al.a.IsT, Integer.valueOf(0))).intValue() >= com.tencent.mm.n.g.acA().getInt("WCOEntranceRedDot", 0))
                 {
-                  az.ayM();
-                  if (((Boolean)com.tencent.mm.model.c.agA().get(com.tencent.mm.storage.ah.a.GGD, Boolean.FALSE)).booleanValue() != true) {}
+                  ba.aBQ();
+                  if (((Boolean)com.tencent.mm.model.c.ajl().get(com.tencent.mm.storage.al.a.IsV, Boolean.FALSE)).booleanValue() != true) {}
                 }
                 else
                 {
-                  aa.this.HpE.wl(true);
+                  aa.this.Jdk.wX(true);
                 }
               }
             }
             label750:
             label765:
             boolean bool2;
-            if ((u.axB() & 0x0) == 0L)
+            if ((u.aAr() & 0x0) == 0L)
             {
               bool1 = true;
-              paramAnonymous2Integer = com.tencent.mm.plugin.finder.extension.reddot.f.rfl;
-              paramAnonymous2Integer = (f.a)com.tencent.mm.plugin.finder.extension.reddot.f.ctL().getValue();
-              if ((paramAnonymous2Integer == null) || (!paramAnonymous2Integer.daU)) {
+              paramAnonymous2Integer = com.tencent.mm.plugin.finder.extension.reddot.g.rSU;
+              paramAnonymous2Integer = (g.a)com.tencent.mm.plugin.finder.extension.reddot.g.czT().getValue();
+              if ((paramAnonymous2Integer == null) || (!paramAnonymous2Integer.dmo)) {
                 break label1077;
               }
               bool2 = true;
               label793:
-              ac.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "[FinderDiscoveryTab] open=%s result=%s isShow=%s", new Object[] { Boolean.valueOf(bool1), paramAnonymous2Integer, Boolean.valueOf(bool2) });
-              if ((bool1) && (paramAnonymous2Integer != null) && (paramAnonymous2Integer.daU)) {
-                aa.this.HpE.wl(true);
+              ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "[FinderDiscoveryTab] open=%s result=%s isShow=%s", new Object[] { Boolean.valueOf(bool1), paramAnonymous2Integer, Boolean.valueOf(bool2) });
+              if ((bool1) && (paramAnonymous2Integer != null) && (paramAnonymous2Integer.dmo)) {
+                aa.this.Jdk.wX(true);
               }
-              az.ayM();
-              if ((com.tencent.mm.model.c.agA().getInt(40, 0) & 0x20000) != 0) {
+              ba.aBQ();
+              if ((com.tencent.mm.model.c.ajl().getInt(40, 0) & 0x20000) != 0) {
                 break label1089;
               }
             }
@@ -201,25 +202,25 @@ public final class aa
             label1089:
             for (int i = 1;; i = 0)
             {
-              if (bs.getInt(com.tencent.mm.m.g.ZY().getValue("VoiceprintEntry"), 0) == 1) {
-                az.ayM();
+              if (bt.getInt(com.tencent.mm.n.g.acA().getValue("VoiceprintEntry"), 0) == 1) {
+                ba.aBQ();
               }
-              for (bool1 = ((Boolean)com.tencent.mm.model.c.agA().get(com.tencent.mm.storage.ah.a.GEz, Boolean.TRUE)).booleanValue();; bool1 = false)
+              for (bool1 = ((Boolean)com.tencent.mm.model.c.ajl().get(com.tencent.mm.storage.al.a.IqS, Boolean.TRUE)).booleanValue();; bool1 = false)
               {
                 if ((bool1) && (i != 0))
                 {
-                  ac.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "show voiceprint dot");
-                  aa.this.HpE.wm(true);
+                  ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "show voiceprint dot");
+                  aa.this.Jdk.wY(true);
                 }
-                aa.this.HpF = false;
-                paramAnonymous2Integer = Jql;
+                aa.this.Jdl = false;
+                paramAnonymous2Integer = LhQ;
                 AppMethodBeat.o(33487);
                 return paramAnonymous2Integer;
                 label975:
-                if ((paramAnonymous2Integer == null) || (!paramAnonymous2Integer.eco()) || (!paramAnonymous2Integer.ecp()) || (!((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().ebZ())) {
+                if ((paramAnonymous2Integer == null) || (!paramAnonymous2Integer.eoF()) || (!paramAnonymous2Integer.eoG()) || (!((com.tencent.mm.plugin.topstory.a.b)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getRedDotMgr().eoq())) {
                   break;
                 }
-                aa.this.HpE.wl(true);
+                aa.this.Jdk.wX(true);
                 break;
                 i = 0;
                 break label572;
@@ -227,8 +228,8 @@ public final class aa
                 break label610;
                 i = 0;
                 break label644;
-                az.ayM();
-                com.tencent.mm.model.c.agA().set(com.tencent.mm.storage.ah.a.GGA, Boolean.FALSE);
+                ba.aBQ();
+                com.tencent.mm.model.c.ajl().set(com.tencent.mm.storage.al.a.IsS, Boolean.FALSE);
                 break label750;
                 bool1 = false;
                 break label765;
@@ -237,7 +238,10 @@ public final class aa
               }
             }
           }
-        }).b(aa.this.Hjt);
+        }).b(aa.this.IXa);
+        if (((com.tencent.mm.plugin.updater.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.updater.a.a.class)).hasBottomTabRedDot()) {
+          aa.this.Jdk.wY(true);
+        }
         AppMethodBeat.o(33490);
       }
       
@@ -249,9 +253,9 @@ public final class aa
         return str;
       }
     };
-    this.HiK = new com.tencent.mm.sdk.b.c() {};
-    this.HiJ = new com.tencent.mm.sdk.b.c() {};
-    this.HpI = new a.a()
+    this.IWd = new com.tencent.mm.sdk.b.c() {};
+    this.IWc = new com.tencent.mm.sdk.b.c() {};
+    this.Jdo = new a.a()
     {
       public final void B(int paramAnonymousInt, String paramAnonymousString)
       {
@@ -265,30 +269,30 @@ public final class aa
         AppMethodBeat.o(33502);
       }
       
-      public final void b(com.tencent.mm.storage.ah.a paramAnonymousa)
+      public final void b(com.tencent.mm.storage.al.a paramAnonymousa)
       {
         AppMethodBeat.i(33503);
-        if (paramAnonymousa == com.tencent.mm.storage.ah.a.GPM) {
+        if (paramAnonymousa == com.tencent.mm.storage.al.a.ICh) {
           aa.b(aa.this);
         }
         AppMethodBeat.o(33503);
       }
     };
-    this.HpJ = new n.b()
+    this.Jdp = new n.b()
     {
       public final void a(int paramAnonymousInt, com.tencent.mm.sdk.e.n paramAnonymousn, Object paramAnonymousObject)
       {
         AppMethodBeat.i(33504);
-        int i = bs.l(paramAnonymousObject, 0);
-        ac.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), paramAnonymousn });
-        az.ayM();
-        if ((paramAnonymousn != com.tencent.mm.model.c.agA()) || (i <= 0))
+        int i = bt.m(paramAnonymousObject, 0);
+        ad.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i), paramAnonymousn });
+        ba.aBQ();
+        if ((paramAnonymousn != com.tencent.mm.model.c.ajl()) || (i <= 0))
         {
-          ac.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramAnonymousn });
+          ad.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramAnonymousn });
           AppMethodBeat.o(33504);
           return;
         }
-        aa.this.fgV();
+        aa.this.fxh();
         if (i == 143618)
         {
           aa.a(aa.this);
@@ -301,17 +305,8 @@ public final class aa
         AppMethodBeat.o(33504);
       }
     };
-    this.HpK = new com.tencent.mm.sdk.b.c() {};
+    this.Jdq = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(33506);
-  }
-  
-  public final void ZG(int paramInt)
-  {
-    AppMethodBeat.i(33513);
-    if (this.HpE != null) {
-      this.HpE.setTo(paramInt);
-    }
-    AppMethodBeat.o(33513);
   }
   
   public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
@@ -319,16 +314,16 @@ public final class aa
     AppMethodBeat.i(33512);
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      ac.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ad.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
       AppMethodBeat.o(33512);
       return;
     }
-    az.ayM();
-    if (paramn == com.tencent.mm.model.c.awG())
+    ba.aBQ();
+    if (paramn == com.tencent.mm.model.c.azv())
     {
-      ac.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "Launcherui onNotifyChange event type %d, username %s", new Object[] { Integer.valueOf(paramInt), paramObject });
-      if (ai.ww((String)paramObject)) {
-        fgV();
+      ad.d("MicroMsg.LauncherUI.MainTabUnreadMgr", "Launcherui onNotifyChange event type %d, username %s", new Object[] { Integer.valueOf(paramInt), paramObject });
+      if (am.zs((String)paramObject)) {
+        fxh();
       }
       AppMethodBeat.o(33512);
       return;
@@ -336,18 +331,27 @@ public final class aa
     AppMethodBeat.o(33512);
   }
   
-  protected final void fgT()
+  public final void abQ(int paramInt)
+  {
+    AppMethodBeat.i(33513);
+    if (this.Jdk != null) {
+      this.Jdk.setTo(paramInt);
+    }
+    AppMethodBeat.o(33513);
+  }
+  
+  protected final void fxf()
   {
     AppMethodBeat.i(33509);
-    com.tencent.mm.blink.b.TR().w(new Runnable()
+    com.tencent.mm.blink.b.Wi().w(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(33501);
-        if (aa.this.HpF)
+        if (aa.this.Jdl)
         {
-          ac.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "remove setTagRunnable");
-          ap.aB(aa.this.HpG);
+          ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "remove setTagRunnable");
+          aq.aA(aa.this.Jdm);
         }
         AppMethodBeat.o(33501);
       }
@@ -355,61 +359,61 @@ public final class aa
     AppMethodBeat.o(33509);
   }
   
-  protected final void fgU()
+  protected final void fxg()
   {
     AppMethodBeat.i(33510);
-    if (this.HpF)
+    if (this.Jdl)
     {
-      ac.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "start  setAppTagUnreadNow");
-      fgZ();
+      ad.i("MicroMsg.LauncherUI.MainTabUnreadMgr", "start  setAppTagUnreadNow");
+      fxl();
     }
     AppMethodBeat.o(33510);
   }
   
-  protected final void fgV()
+  protected final void fxh()
   {
     AppMethodBeat.i(33508);
-    com.tencent.mm.blink.b.TR().w(new Runnable()
+    com.tencent.mm.blink.b.Wi().w(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(33500);
-        aa.this.HpF = true;
-        ap.aB(aa.this.HpG);
-        ap.n(aa.this.HpG, 300L);
+        aa.this.Jdl = true;
+        aq.aA(aa.this.Jdm);
+        aq.o(aa.this.Jdm, 300L);
         AppMethodBeat.o(33500);
       }
     });
     AppMethodBeat.o(33508);
   }
   
-  protected final void fgZ()
+  protected final void fxl()
   {
     AppMethodBeat.i(33507);
-    com.tencent.mm.blink.b.TR().w(new Runnable()
+    com.tencent.mm.blink.b.Wi().w(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(33499);
-        aa.this.HpF = true;
-        ap.aB(aa.this.HpG);
-        ap.f(aa.this.HpG);
+        aa.this.Jdl = true;
+        aq.aA(aa.this.Jdm);
+        aq.f(aa.this.Jdm);
         AppMethodBeat.o(33499);
       }
     });
     AppMethodBeat.o(33507);
   }
   
-  public final int fha()
+  public final int fxm()
   {
     AppMethodBeat.i(33514);
     int j = 0;
     int i = j;
-    if (this.HpE != null)
+    if (this.Jdk != null)
     {
       i = j;
-      if (this.HpE.getMainTabUnread() > 0) {
-        i = this.HpE.getMainTabUnread();
+      if (this.Jdk.getMainTabUnread() > 0) {
+        i = this.Jdk.getMainTabUnread();
       }
     }
     AppMethodBeat.o(33514);
@@ -419,21 +423,21 @@ public final class aa
   static final class a
     implements i.a
   {
-    c HpE;
+    c Jdk;
     
     public a(c paramc)
     {
-      this.HpE = paramc;
+      this.Jdk = paramc;
     }
     
     public final void e(com.tencent.mm.plugin.newtips.b.a parama)
     {
       AppMethodBeat.i(33505);
-      if ((parama != null) && (parama.field_tipId == com.tencent.mm.plugin.newtips.a.d.vmQ))
+      if ((parama != null) && (parama.field_tipId == com.tencent.mm.plugin.newtips.a.d.wsi))
       {
-        com.tencent.mm.plugin.newtips.a.dke();
-        if (com.tencent.mm.plugin.newtips.a.e.Kk(com.tencent.mm.plugin.newtips.a.d.vmQ)) {
-          this.HpE.wm(true);
+        com.tencent.mm.plugin.newtips.a.duq();
+        if (com.tencent.mm.plugin.newtips.a.e.LM(com.tencent.mm.plugin.newtips.a.d.wsi)) {
+          this.Jdk.wY(true);
         }
       }
       AppMethodBeat.o(33505);

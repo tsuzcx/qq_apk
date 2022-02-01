@@ -115,7 +115,7 @@ public class WorkQueue
     AppMethodBeat.o(18042);
   }
   
-  public WorkItem addActiveWorkItem(Runnable paramRunnable)
+  public WorkQueue.WorkItem addActiveWorkItem(Runnable paramRunnable)
   {
     AppMethodBeat.i(18039);
     paramRunnable = addActiveWorkItem(paramRunnable, true);
@@ -123,7 +123,7 @@ public class WorkQueue
     return paramRunnable;
   }
   
-  public WorkItem addActiveWorkItem(Runnable arg1, boolean paramBoolean)
+  public WorkQueue.WorkItem addActiveWorkItem(Runnable arg1, boolean paramBoolean)
   {
     AppMethodBeat.i(18040);
     WorkNode localWorkNode = new WorkNode(???);
@@ -170,15 +170,6 @@ public class WorkQueue
       AppMethodBeat.o(18041);
     }
     AppMethodBeat.o(18041);
-  }
-  
-  public static abstract interface WorkItem
-  {
-    public abstract boolean cancel();
-    
-    public abstract boolean isRunning();
-    
-    public abstract void moveToFront();
   }
   
   class WorkNode
@@ -353,7 +344,7 @@ public class WorkQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.internal.WorkQueue
  * JD-Core Version:    0.7.0.1
  */

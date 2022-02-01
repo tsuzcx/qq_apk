@@ -1,11 +1,14 @@
 package d.g.b;
 
-import d.l.f;
+import d.c;
+import d.l;
 
-public abstract class m
-  extends q
-  implements f
-{}
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/internal/FunctionBase;", "R", "Lkotlin/Function;", "arity", "", "getArity", "()I", "kotlin-stdlib"})
+public abstract interface m<R>
+  extends c<R>
+{
+  public abstract int getArity();
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

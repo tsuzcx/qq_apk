@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMLoadScrollView
   extends ScrollView
 {
-  private a IZY;
+  private a KRk;
   
   public MMLoadScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,8 +23,8 @@ public class MMLoadScrollView
   protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(143362);
-    if ((paramBoolean2) && (paramInt2 > 0) && (this.IZY != null)) {
-      this.IZY.cek();
+    if ((paramBoolean2) && (paramInt2 > 0) && (this.KRk != null)) {
+      this.KRk.ciN();
     }
     super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
     AppMethodBeat.o(143362);
@@ -32,17 +32,17 @@ public class MMLoadScrollView
   
   public void setOnTopOrBottomListerner(a parama)
   {
-    this.IZY = parama;
+    this.KRk = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cek();
+    public abstract void ciN();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMLoadScrollView
  * JD-Core Version:    0.7.0.1
  */

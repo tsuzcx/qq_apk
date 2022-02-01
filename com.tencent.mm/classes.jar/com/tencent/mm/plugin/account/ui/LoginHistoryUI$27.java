@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.account.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.m;
 import java.util.List;
 
@@ -14,7 +16,11 @@ final class LoginHistoryUI$27
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(128108);
-    LoginHistoryUI.a(this.iSi, ((m)this.iSl.get(0)).getItemId());
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/account/ui/LoginHistoryUI$34", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    LoginHistoryUI.a(this.jlq, ((m)this.jlt.get(0)).getItemId());
+    a.a(this, "com/tencent/mm/plugin/account/ui/LoginHistoryUI$34", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128108);
   }
 }

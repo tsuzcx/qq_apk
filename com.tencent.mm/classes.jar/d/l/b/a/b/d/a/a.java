@@ -2,9 +2,8 @@ package d.l.b.a.b.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.v;
-import d.g.b.k;
+import d.g.b.n;
 import d.l.b.a.b.b.a.c;
-import d.l.b.a.b.l.i;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -15,16 +14,16 @@ import java.util.Set;
 
 public final class a
 {
-  public final boolean Bky;
-  private final d.l.b.a.b.l.d<d.l.b.a.b.b.e, c> Lkq;
-  public final d.l.b.a.b.o.e Lkr;
+  public final boolean CKM;
+  private final d.l.b.a.b.l.d<d.l.b.a.b.b.e, c> Nbn;
+  public final d.l.b.a.b.o.e Nbo;
   
-  public a(i parami, d.l.b.a.b.o.e parame)
+  public a(d.l.b.a.b.l.j paramj, d.l.b.a.b.o.e parame)
   {
     AppMethodBeat.i(57541);
-    this.Lkr = parame;
-    this.Lkq = parami.J((d.g.a.b)new c((a)this));
-    this.Bky = this.Lkr.gcN();
+    this.Nbo = parame;
+    this.Nbn = paramj.J((d.g.a.b)new c((a)this));
+    this.CKM = this.Nbo.guo();
     AppMethodBeat.o(57541);
   }
   
@@ -45,7 +44,7 @@ public final class a
     }
     if ((paramg instanceof d.l.b.a.b.j.b.j))
     {
-      paramg = ((d.l.b.a.b.j.b.j)paramg).LFy.getIdentifier();
+      paramg = ((d.l.b.a.b.j.b.j)paramg).Nww.getIdentifier();
       switch (paramg.hashCode())
       {
       default: 
@@ -53,31 +52,31 @@ public final class a
       }
       for (;;)
       {
-        paramg = d.a.j.eJ(paramg);
+        paramg = d.a.j.eM(paramg);
         AppMethodBeat.o(57540);
         return paramg;
         if (!paramg.equals("FIELD")) {
           break;
         }
-        paramg = a.Lku;
+        paramg = a.Nbr;
         continue;
         if (!paramg.equals("METHOD")) {
           break;
         }
-        paramg = a.Lks;
+        paramg = a.Nbp;
         continue;
         if (!paramg.equals("TYPE_USE")) {
           break;
         }
-        paramg = a.Lkv;
+        paramg = a.Nbs;
         continue;
         if (!paramg.equals("PARAMETER")) {
           break;
         }
-        paramg = a.Lkt;
+        paramg = a.Nbq;
       }
     }
-    paramg = (List)v.KTF;
+    paramg = (List)v.MKE;
     AppMethodBeat.o(57540);
     return paramg;
   }
@@ -85,7 +84,7 @@ public final class a
   private final d.l.b.a.b.o.g q(d.l.b.a.b.b.e parame)
   {
     AppMethodBeat.i(57539);
-    parame = parame.fQj().g(b.fTM());
+    parame = parame.ghH().g(b.gll());
     if (parame != null) {}
     for (parame = d.l.b.a.b.j.d.a.m(parame);; parame = null)
     {
@@ -100,13 +99,13 @@ public final class a
       AppMethodBeat.o(57539);
       return null;
     }
-    Object localObject = this.Lkr.LOP;
+    Object localObject = this.Nbo.NFL;
     if (localObject != null)
     {
       AppMethodBeat.o(57539);
       return localObject;
     }
-    parame = parame.LFy.rf();
+    parame = parame.Nww.sD();
     switch (parame.hashCode())
     {
     }
@@ -119,15 +118,15 @@ public final class a
           AppMethodBeat.o(57539);
           return null;
         } while (!parame.equals("STRICT"));
-        parame = d.l.b.a.b.o.g.LPb;
+        parame = d.l.b.a.b.o.g.NFW;
         AppMethodBeat.o(57539);
         return parame;
       } while (!parame.equals("IGNORE"));
-      parame = d.l.b.a.b.o.g.LOZ;
+      parame = d.l.b.a.b.o.g.NFU;
       AppMethodBeat.o(57539);
       return parame;
     } while (!parame.equals("WARN"));
-    parame = d.l.b.a.b.o.g.LPa;
+    parame = d.l.b.a.b.o.g.NFV;
     AppMethodBeat.o(57539);
     return parame;
   }
@@ -135,8 +134,8 @@ public final class a
   public final c d(c paramc)
   {
     AppMethodBeat.i(57535);
-    k.h(paramc, "annotationDescriptor");
-    if (this.Lkr.gcN())
+    d.g.b.p.h(paramc, "annotationDescriptor");
+    if (this.Nbo.guo())
     {
       AppMethodBeat.o(57535);
       return null;
@@ -152,12 +151,12 @@ public final class a
       AppMethodBeat.o(57535);
       return paramc;
     }
-    if (locale.fPY() != d.l.b.a.b.b.f.LdA)
+    if (locale.ghw() != d.l.b.a.b.b.f.MUv)
     {
       AppMethodBeat.o(57535);
       return null;
     }
-    paramc = (c)this.Lkq.ay(locale);
+    paramc = (c)this.Nbn.invoke(locale);
     AppMethodBeat.o(57535);
     return paramc;
   }
@@ -165,15 +164,15 @@ public final class a
   public final b e(c paramc)
   {
     AppMethodBeat.i(57536);
-    k.h(paramc, "annotationDescriptor");
-    if (this.Lkr.gcN())
+    d.g.b.p.h(paramc, "annotationDescriptor");
+    if (this.Nbo.guo())
     {
       AppMethodBeat.o(57536);
       return null;
     }
     Object localObject1 = d.l.b.a.b.j.d.a.l(paramc);
     if (localObject1 != null) {
-      if (!((d.l.b.a.b.b.e)localObject1).fQj().h(b.fTL())) {
+      if (!((d.l.b.a.b.b.e)localObject1).ghH().h(b.glk())) {
         break label72;
       }
     }
@@ -186,13 +185,13 @@ public final class a
     }
     paramc = d.l.b.a.b.j.d.a.l(paramc);
     if (paramc == null) {
-      k.fOy();
+      d.g.b.p.gfZ();
     }
-    paramc = paramc.fQj().g(b.fTL());
+    paramc = paramc.ghH().g(b.glk());
     if (paramc == null) {
-      k.fOy();
+      d.g.b.p.gfZ();
     }
-    paramc = paramc.fSl();
+    paramc = paramc.gjK();
     Collection localCollection = (Collection)new ArrayList();
     Iterator localIterator = paramc.entrySet().iterator();
     if (localIterator.hasNext())
@@ -200,8 +199,8 @@ public final class a
       Object localObject2 = (Map.Entry)localIterator.next();
       paramc = (d.l.b.a.b.f.f)((Map.Entry)localObject2).getKey();
       localObject2 = (d.l.b.a.b.j.b.g)((Map.Entry)localObject2).getValue();
-      if (k.g(paramc, p.LlB)) {}
-      for (paramc = a((d.l.b.a.b.j.b.g)localObject2);; paramc = (List)v.KTF)
+      if (d.g.b.p.i(paramc, p.Ncy)) {}
+      for (paramc = a((d.l.b.a.b.j.b.g)localObject2);; paramc = (List)v.MKE)
       {
         d.a.j.a(localCollection, (Iterable)paramc);
         break;
@@ -209,7 +208,7 @@ public final class a
     }
     paramc = ((Iterable)localCollection).iterator();
     for (int i = 0; paramc.hasNext(); i = 1 << ((a)paramc.next()).ordinal() | i) {}
-    localObject1 = ((Iterable)((d.l.b.a.b.b.e)localObject1).fQj()).iterator();
+    localObject1 = ((Iterable)((d.l.b.a.b.b.e)localObject1).ghH()).iterator();
     int j;
     if (((Iterator)localObject1).hasNext())
     {
@@ -246,14 +245,14 @@ public final class a
   public final d.l.b.a.b.o.g f(c paramc)
   {
     AppMethodBeat.i(57537);
-    k.h(paramc, "annotationDescriptor");
+    d.g.b.p.h(paramc, "annotationDescriptor");
     paramc = g(paramc);
     if (paramc != null)
     {
       AppMethodBeat.o(57537);
       return paramc;
     }
-    paramc = this.Lkr.LOO;
+    paramc = this.Nbo.NFK;
     AppMethodBeat.o(57537);
     return paramc;
   }
@@ -261,11 +260,11 @@ public final class a
   public final d.l.b.a.b.o.g g(c paramc)
   {
     AppMethodBeat.i(57538);
-    k.h(paramc, "annotationDescriptor");
-    Map localMap = this.Lkr.LOQ;
-    Object localObject = paramc.fRH();
+    d.g.b.p.h(paramc, "annotationDescriptor");
+    Map localMap = this.Nbo.NFM;
+    Object localObject = paramc.gjg();
     if (localObject != null) {}
-    for (localObject = ((d.l.b.a.b.f.b)localObject).rf();; localObject = null)
+    for (localObject = ((d.l.b.a.b.f.b)localObject).sD();; localObject = null)
     {
       localObject = (d.l.b.a.b.o.g)localMap.get(localObject);
       if (localObject == null) {
@@ -291,14 +290,14 @@ public final class a
     {
       AppMethodBeat.i(57527);
       a locala1 = new a("METHOD_RETURN_TYPE", 0);
-      Lks = locala1;
+      Nbp = locala1;
       a locala2 = new a("VALUE_PARAMETER", 1);
-      Lkt = locala2;
+      Nbq = locala2;
       a locala3 = new a("FIELD", 2);
-      Lku = locala3;
+      Nbr = locala3;
       a locala4 = new a("TYPE_USE", 3);
-      Lkv = locala4;
-      Lkw = new a[] { locala1, locala2, locala3, locala4 };
+      Nbs = locala4;
+      Nbt = new a[] { locala1, locala2, locala3, locala4 };
       AppMethodBeat.o(57527);
     }
     
@@ -307,21 +306,21 @@ public final class a
   
   public static final class b
   {
-    public final c Lkx;
-    private final int Lky;
+    public final c Nbu;
+    private final int Nbv;
     
     public b(c paramc, int paramInt)
     {
       AppMethodBeat.i(57532);
-      this.Lkx = paramc;
-      this.Lky = paramInt;
+      this.Nbu = paramc;
+      this.Nbv = paramInt;
       AppMethodBeat.o(57532);
     }
     
     private final boolean a(a.a parama)
     {
       AppMethodBeat.i(57531);
-      if ((this.Lky & 1 << parama.ordinal()) != 0)
+      if ((this.Nbv & 1 << parama.ordinal()) != 0)
       {
         AppMethodBeat.o(57531);
         return true;
@@ -330,7 +329,7 @@ public final class a
       return false;
     }
     
-    public final List<a.a> fTJ()
+    public final List<a.a> gli()
     {
       AppMethodBeat.i(57530);
       Object localObject = a.a.values();
@@ -341,7 +340,7 @@ public final class a
       {
         a.a locala = localObject[i];
         b localb = (b)this;
-        if ((localb.a(a.a.Lkv)) || (localb.a(locala))) {}
+        if ((localb.a(a.a.Nbs)) || (localb.a(locala))) {}
         for (int j = 1;; j = 0)
         {
           if (j != 0) {
@@ -359,7 +358,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.a
  * JD-Core Version:    0.7.0.1
  */

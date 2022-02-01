@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ic
   extends b
 {
-  public a dji;
+  public ic.a duF;
   
   public ic()
   {
@@ -15,16 +15,11 @@ public final class ic
   
   private ic(byte paramByte)
   {
-    AppMethodBeat.i(123476);
-    this.dji = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116030);
+    this.duF = new ic.a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(123476);
-  }
-  
-  public static final class a
-  {
-    public String djj;
+    AppMethodBeat.o(116030);
   }
 }
 

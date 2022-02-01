@@ -2,43 +2,47 @@ package com.tencent.mm.sandbox;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
 {
-  private static c GkJ;
-  private static Map<Integer, Boolean> GkK;
+  private static c HWv;
+  private static Map<Integer, Boolean> HWw;
   
   static
   {
     AppMethodBeat.i(32577);
-    GkJ = null;
-    GkK = new HashMap();
+    HWv = null;
+    HWw = new HashMap();
     AppMethodBeat.o(32577);
+  }
+  
+  public static void n(int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(32575);
+    ad.i("MicroMsg.SandBoxCore", "regLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
+    HWw.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    ad.i("MicroMsg.SandBoxCore", "regLifeCycle, map size=" + HWw.size());
+    AppMethodBeat.o(32575);
   }
   
   public static void o(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(32575);
-    ac.i("MicroMsg.SandBoxCore", "regLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
-    GkK.put(Integer.valueOf(paramInt), Boolean.TRUE);
-    ac.i("MicroMsg.SandBoxCore", "regLifeCycle, map size=" + GkK.size());
-    AppMethodBeat.o(32575);
-  }
-  
-  public static void p(int paramInt, Object paramObject)
-  {
     AppMethodBeat.i(32576);
-    ac.i("MicroMsg.SandBoxCore", "unregLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
-    GkK.remove(Integer.valueOf(paramInt));
-    ac.i("MicroMsg.SandBoxCore", "unregLifeCycle, map size=" + GkK.size());
-    if (GkK.size() == 0)
+    ad.i("MicroMsg.SandBoxCore", "unregLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
+    HWw.remove(Integer.valueOf(paramInt));
+    ad.i("MicroMsg.SandBoxCore", "unregLifeCycle, map size=" + HWw.size());
+    if (HWw.size() == 0)
     {
-      Process.killProcess(Process.myPid());
-      ac.w("MicroMsg.SandBoxCore", "Sandbox exit Now.");
-      ac.eUR();
+      paramObject = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+      Object localObject = new Object();
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramObject.ahp(), "com/tencent/mm/sandbox/SandBoxCore", "unregLifeCycle", "(ILjava/lang/Object;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)paramObject.mq(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/sandbox/SandBoxCore", "unregLifeCycle", "(ILjava/lang/Object;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      ad.w("MicroMsg.SandBoxCore", "Sandbox exit Now.");
+      ad.fkv();
     }
     AppMethodBeat.o(32576);
   }

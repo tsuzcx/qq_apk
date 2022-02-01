@@ -10,16 +10,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.d.i.a;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.protocal.protobuf.cvp;
 import com.tencent.mm.sandbox.b.a;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,90 +28,98 @@ import java.util.Map;
 public final class k
   implements a, h
 {
-  public int DhK;
-  public int GkX;
-  public String[] Gly;
-  long GmA;
-  g GmB;
-  private long GmC;
-  private b.a GmD;
-  com.tencent.mm.sandbox.monitor.c Gmo;
-  ArrayList<h> Gmp;
-  public String[] Gmq;
-  public String Gmr;
-  public com.tencent.mm.d.i Gms;
-  public i.a Gmt;
-  public boolean Gmu;
-  public boolean Gmv;
-  public boolean Gmw;
-  public String Gmx;
-  public boolean Gmy;
-  boolean Gmz;
-  public int cHa;
-  public String cHc;
+  public int EMv;
+  public int HWJ;
+  public String[] HXl;
+  com.tencent.mm.sandbox.monitor.c HYb;
+  ArrayList<h> HYc;
+  public String[] HYd;
+  public String HYe;
+  public com.tencent.mm.d.i HYf;
+  public i.a HYg;
+  public boolean HYh;
+  public boolean HYi;
+  public boolean HYj;
+  public String HYk;
+  public boolean HYl;
+  boolean HYm;
+  long HYn;
+  g HYo;
+  private long HYp;
+  private b.a HYq;
+  public int cSe;
+  public String cSg;
+  public byte[] dLl;
   public String desc;
-  public byte[] dyZ;
-  public byte[] ikV;
-  public byte[] ikZ;
+  public byte[] iEm;
+  public byte[] iEq;
   private Intent intent;
-  private Notification jyo;
+  private Notification jSl;
   protected Context mContext;
   public String md5;
   public int size;
   public int uin;
-  public int yCt;
+  public int zTO;
   
   private k()
   {
     AppMethodBeat.i(32771);
-    this.Gmo = null;
-    this.Gmp = new ArrayList(1);
-    this.DhK = d.DIc;
-    this.Gmu = false;
-    this.Gmv = false;
-    this.Gmw = false;
-    this.Gmy = false;
-    this.Gmz = false;
+    this.HYb = null;
+    this.HYc = new ArrayList(1);
+    this.EMv = d.Fnj;
+    this.HYh = false;
+    this.HYi = false;
+    this.HYj = false;
+    this.HYl = false;
+    this.HYm = false;
     this.intent = null;
-    this.jyo = null;
+    this.jSl = null;
     this.mContext = null;
-    this.GmB = new g(this);
-    this.GmC = -1L;
-    this.GmD = new b.a()
+    this.HYo = new g(this);
+    this.HYp = -1L;
+    this.HYq = new b.a()
     {
-      public final void Aa(long paramAnonymousLong)
+      public final void CO(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(32768);
+        g localg = k.this.HYo;
+        localg.cXg.post(new g.2(localg, paramAnonymousLong));
+        AppMethodBeat.o(32768);
+      }
+      
+      public final void CP(long paramAnonymousLong)
       {
         AppMethodBeat.i(32769);
-        g localg = k.this.GmB;
-        localg.cLS.post(new g.3(localg, paramAnonymousLong));
+        g localg = k.this.HYo;
+        localg.cXg.post(new g.3(localg, paramAnonymousLong));
         AppMethodBeat.o(32769);
       }
       
-      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, cqk paramAnonymouscqk)
+      public final void b(int paramAnonymousInt1, int paramAnonymousInt2, cvp paramAnonymouscvp)
       {
         AppMethodBeat.i(32767);
-        k.this.Gmz = false;
-        k.this.GmB.stop();
-        k.this.GmA = System.currentTimeMillis();
-        if (k.this.Gmo == null)
+        k.this.HYm = false;
+        k.this.HYo.stop();
+        k.this.HYn = System.currentTimeMillis();
+        if (k.this.HYb == null)
         {
-          k.this.aV(2, true);
+          k.this.bc(2, true);
           AppMethodBeat.o(32767);
           return;
         }
         if ((paramAnonymousInt1 == 200) && (paramAnonymousInt2 == 0))
         {
-          ac.i("MicroMsg.UpdaterManager", "packCallback onSceneEnd ok");
-          if (k.this.yCt != 2) {
+          ad.i("MicroMsg.UpdaterManager", "packCallback onSceneEnd ok");
+          if (k.this.zTO != 2) {
             k.a(k.this, 100, 100);
           }
-          if (k.this.Gmu)
+          if (k.this.HYh)
           {
-            j.ay(k.this.mContext, 0);
-            paramAnonymouscqk = MultiProcessSharedPreferences.getSharedPreferences(ai.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.YK());
-            k.this.Gmr = paramAnonymouscqk.getString(ai.getPackageName(), "");
-            ac.i("MicroMsg.UpdaterManager", "summertoken downloadsuccess onSceneEnd sig[%s], path[%s]", new Object[] { k.this.Gmr, k.this.Gmo.eSR() });
-            if ((bs.isNullOrNil(k.this.Gmr)) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED)) {
+            j.aB(k.this.mContext, 0);
+            paramAnonymouscvp = MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "yyb_pkg_sig_prefs", com.tencent.mm.compatible.util.g.abm());
+            k.this.HYe = paramAnonymouscvp.getString(aj.getPackageName(), "");
+            ad.i("MicroMsg.UpdaterManager", "summertoken downloadsuccess onSceneEnd sig[%s], path[%s]", new Object[] { k.this.HYe, k.this.HYb.fit() });
+            if ((bt.isNullOrNil(k.this.HYe)) || (com.tencent.mm.sdk.platformtools.i.IS_FLAVOR_RED)) {
               break label462;
             }
           }
@@ -119,71 +127,71 @@ public final class k
           {
             try
             {
-              com.tencent.mm.d.c.g(new File(com.tencent.mm.vfs.i.k(k.this.Gmo.eSR(), true)), k.this.Gmr);
-              ac.i("MicroMsg.UpdaterManager", "summertoken downloadsuccess writeSecurityCode done");
-              com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(322L, 6L, 1L, false);
-              com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(4006), k.this.Gmr });
-              if (k.this.yCt != 1) {
+              com.tencent.mm.d.c.g(new File(com.tencent.mm.vfs.i.k(k.this.HYb.fit(), true)), k.this.HYe);
+              ad.i("MicroMsg.UpdaterManager", "summertoken downloadsuccess writeSecurityCode done");
+              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(322L, 6L, 1L, false);
+              com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(4006), k.this.HYe });
+              if (k.this.zTO != 1) {
                 break label501;
               }
-              j.az(k.this.mContext, 8);
+              j.aC(k.this.mContext, 8);
               k.a(k.this);
-              k.this.asD(k.this.Gmo.eSR());
-              if (k.this.Gmy)
+              k.this.axG(k.this.HYb.fit());
+              if (k.this.HYl)
               {
-                com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(614L, 58L, 1L, false);
-                ac.d("MicroMsg.UpdaterManager", "boots download success.");
+                com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(614L, 58L, 1L, false);
+                ad.d("MicroMsg.UpdaterManager", "boots download success.");
               }
-              j.eTn();
+              j.fiP();
               AppMethodBeat.o(32767);
               return;
-              j.ay(k.this.mContext, 9);
+              j.aB(k.this.mContext, 9);
             }
-            catch (Exception paramAnonymouscqk)
+            catch (Exception paramAnonymouscvp)
             {
-              ac.w("MicroMsg.UpdaterManager", "summertoken downloadsuccess writeSecurityCode e: " + paramAnonymouscqk.getMessage());
-              com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(322L, 7L, 1L, false);
-              com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(4007), paramAnonymouscqk.getMessage() });
+              ad.w("MicroMsg.UpdaterManager", "summertoken downloadsuccess writeSecurityCode e: " + paramAnonymouscvp.getMessage());
+              com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(322L, 7L, 1L, false);
+              com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(4007), paramAnonymouscvp.getMessage() });
               continue;
             }
             label462:
-            com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(322L, 8L, 1L, false);
-            com.tencent.mm.plugin.report.service.h.wUl.f(11098, new Object[] { Integer.valueOf(4008) });
+            com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(322L, 8L, 1L, false);
+            com.tencent.mm.plugin.report.service.g.yhR.f(11098, new Object[] { Integer.valueOf(4008) });
             continue;
             label501:
-            if (k.this.yCt == 0)
+            if (k.this.zTO == 0)
             {
-              k.this.asD(k.this.Gmo.eSR());
+              k.this.axG(k.this.HYb.fit());
             }
-            else if (k.this.yCt == 2)
+            else if (k.this.zTO == 2)
             {
-              j.az(k.this.mContext, 1);
+              j.aC(k.this.mContext, 1);
               k.a(k.this);
             }
           }
         }
         if (paramAnonymousInt2 == -13)
         {
-          ac.e("MicroMsg.UpdaterManager", "session timeout, killself and restart");
-          UpdaterService.fm();
-          AppUpdaterUI.eSV();
-          j.eTm();
+          ad.e("MicroMsg.UpdaterManager", "session timeout, killself and restart");
+          UpdaterService.fD();
+          AppUpdaterUI.fix();
+          j.fiO();
           AppMethodBeat.o(32767);
           return;
         }
-        if (((k.this.Gmo instanceof c)) && (k.this.GkX != 4))
+        if (((k.this.HYb instanceof c)) && (k.this.HWJ != 4))
         {
-          ac.e("MicroMsg.UpdaterManager", "download package from cdn error.");
-          if (k.this.Gmu)
+          ad.e("MicroMsg.UpdaterManager", "download package from cdn error.");
+          if (k.this.HYh)
           {
             if ((paramAnonymousInt1 == 3) || (paramAnonymousInt1 == 4) || (paramAnonymousInt1 == 2) || (paramAnonymousInt1 == 1) || (paramAnonymousInt1 == 13)) {
-              j.ay(k.this.mContext, paramAnonymousInt1);
+              j.aB(k.this.mContext, paramAnonymousInt1);
             }
-            k.this.Gmu = false;
-            if (k.this.yCt == 1) {
-              if (k.this.Gmy)
+            k.this.HYh = false;
+            if (k.this.zTO == 1) {
+              if (k.this.HYl)
               {
-                ac.d("MicroMsg.UpdaterManager", "boots download failed. %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+                ad.d("MicroMsg.UpdaterManager", "boots download failed. %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
                 switch (paramAnonymousInt1)
                 {
                 }
@@ -193,161 +201,153 @@ public final class k
         }
         for (;;)
         {
-          k.this.a(k.this.Gmo);
+          k.this.a(k.this.HYb);
           AppMethodBeat.o(32767);
           return;
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(614L, 52L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(614L, 52L, 1L, false);
           continue;
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(614L, 53L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(614L, 53L, 1L, false);
           continue;
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(614L, 54L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(614L, 54L, 1L, false);
           continue;
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(614L, 51L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(614L, 51L, 1L, false);
           continue;
-          com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(614L, 55L, 1L, false);
+          com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(614L, 55L, 1L, false);
           continue;
           k.b(k.this);
           continue;
-          if (k.this.yCt == 0)
+          if (k.this.zTO == 0)
           {
-            k.this.aV(1, true);
+            k.this.bc(1, true);
           }
-          else if (k.this.yCt == 2)
+          else if (k.this.zTO == 2)
           {
             k.c(k.this);
             continue;
-            paramAnonymouscqk = k.this;
+            paramAnonymouscvp = k.this;
             paramAnonymousInt1 = k.this.size;
             String str = k.this.md5;
-            paramAnonymousInt2 = k.this.GkX;
+            paramAnonymousInt2 = k.this.HWJ;
             int i = k.this.uin;
-            byte[] arrayOfByte1 = k.this.ikV;
-            byte[] arrayOfByte2 = k.this.dyZ;
-            String[] arrayOfString = k.this.Gmq;
-            if (k.this.yCt == 2) {}
+            byte[] arrayOfByte1 = k.this.iEm;
+            byte[] arrayOfByte2 = k.this.dLl;
+            String[] arrayOfString = k.this.HYd;
+            if (k.this.zTO == 2) {}
             for (boolean bool = true;; bool = false)
             {
-              paramAnonymouscqk.Gmo = new b(paramAnonymousInt1, str, paramAnonymousInt2, i, arrayOfByte1, arrayOfByte2, arrayOfString, bool);
+              paramAnonymouscvp.HYb = new b(paramAnonymousInt1, str, paramAnonymousInt2, i, arrayOfByte1, arrayOfByte2, arrayOfString, bool);
               k.d(k.this);
               break;
             }
-            ac.e("MicroMsg.UpdaterManager", "update failed");
-            j.ay(k.this.mContext, 10);
-            if (k.this.yCt == 1) {
+            ad.e("MicroMsg.UpdaterManager", "update failed");
+            j.aB(k.this.mContext, 10);
+            if (k.this.zTO == 1) {
               k.e(k.this);
-            } else if (k.this.yCt == 0) {
-              k.this.aV(1, true);
+            } else if (k.this.zTO == 0) {
+              k.this.bc(1, true);
             }
           }
         }
       }
       
-      public final void eV(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void eZ(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(32766);
-        ac.i("MicroMsg.UpdaterManager", "total=%d, offset=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        if (k.this.yCt != 2) {
+        ad.i("MicroMsg.UpdaterManager", "total=%d, offset=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        if (k.this.zTO != 2) {
           k.a(k.this, paramAnonymousInt2, paramAnonymousInt1);
         }
-        k.this.eV(paramAnonymousInt1, paramAnonymousInt2);
+        k.this.eZ(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(32766);
       }
-      
-      public final void zZ(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(32768);
-        g localg = k.this.GmB;
-        localg.cLS.post(new g.2(localg, paramAnonymousLong));
-        AppMethodBeat.o(32768);
-      }
     };
-    this.mContext = ai.getContext();
+    this.mContext = aj.getContext();
     AppMethodBeat.o(32771);
   }
   
-  private void eTp()
+  private void fiR()
   {
     AppMethodBeat.i(32780);
-    MultiProcessSharedPreferences.getSharedPreferences(ai.getContext(), "system_config_prefs", 0).edit().putLong("recomended_update_ignore", bs.aNx() - 86400L).commit();
-    aV(2, true);
-    eSX();
+    MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "system_config_prefs", 0).edit().putLong("recomended_update_ignore", bt.aQJ() - 86400L).commit();
+    bc(2, true);
+    fiz();
     AppMethodBeat.o(32780);
   }
   
-  private void eTq()
+  private void fiS()
   {
     AppMethodBeat.i(32781);
-    MultiProcessSharedPreferences.getSharedPreferences(ai.getContext(), "system_config_prefs", 0).edit().putLong("recomended_update_ignore", bs.aNx() - 86400L).commit();
-    aV(2, true);
-    eSY();
+    MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "system_config_prefs", 0).edit().putLong("recomended_update_ignore", bt.aQJ() - 86400L).commit();
+    bc(2, true);
+    fiA();
     AppMethodBeat.o(32781);
   }
   
-  private void eTr()
+  private void fiT()
   {
     AppMethodBeat.i(32782);
-    if ((this.yCt == 2) && (!ax.isWifi(this.mContext)))
+    if ((this.zTO == 2) && (!ay.isWifi(this.mContext)))
     {
-      j.eTl();
-      ac.i("MicroMsg.UpdaterManager", "we stop download, when silence and not wifi!");
+      j.fiN();
+      ad.i("MicroMsg.UpdaterManager", "we stop download, when silence and not wifi!");
       AppMethodBeat.o(32782);
       return;
     }
-    if ((this.yCt == 2) && (g.aKf(this.md5)))
+    if ((this.zTO == 2) && (g.aPL(this.md5)))
     {
-      ac.e("MicroMsg.UpdaterManager", "the traffice is overload, not download anymore in silence mode!");
-      this.GmB.stop();
+      ad.e("MicroMsg.UpdaterManager", "the traffice is overload, not download anymore in silence mode!");
+      this.HYo.stop();
       AppMethodBeat.o(32782);
       return;
     }
-    this.GmB.fI(this.md5, this.size);
-    if (this.Gmo != null)
+    this.HYo.gf(this.md5, this.size);
+    if (this.HYb != null)
     {
-      aV(1, false);
-      this.Gmz = true;
-      this.Gmo.a(this.GmD);
-      dFC();
-      if (this.yCt == 2) {
-        j.eTl();
+      bc(1, false);
+      this.HYm = true;
+      this.HYb.a(this.HYq);
+      dRW();
+      if (this.zTO == 2) {
+        j.fiN();
       }
     }
     AppMethodBeat.o(32782);
   }
   
-  private void eTs()
+  private void fiU()
   {
     AppMethodBeat.i(32783);
     cancel();
-    ac.i("MicroMsg.UpdaterManager", "downloadFullPack");
-    j.ay(this.mContext, 7);
-    if ((this.Gly != null) && (this.Gly.length > 0))
+    ad.i("MicroMsg.UpdaterManager", "downloadFullPack");
+    j.aB(this.mContext, 7);
+    if ((this.HXl != null) && (this.HXl.length > 0))
     {
       i = this.size;
       str = this.md5;
-      j = this.GkX;
-      localObject = this.Gly;
-      if (this.yCt == 2) {}
+      j = this.HWJ;
+      localObject = this.HXl;
+      if (this.zTO == 2) {}
       for (bool = true;; bool = false)
       {
-        this.Gmo = new c(i, str, j, (String[])localObject, bool);
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(405L, 76L, 1L, true);
-        eTr();
+        this.HYb = new c(i, str, j, (String[])localObject, bool);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(405L, 76L, 1L, true);
+        fiT();
         AppMethodBeat.o(32783);
         return;
       }
     }
     int i = this.size;
     String str = this.md5;
-    int j = this.GkX;
+    int j = this.HWJ;
     int k = this.uin;
-    Object localObject = this.ikV;
-    byte[] arrayOfByte = this.dyZ;
-    String[] arrayOfString = this.Gmq;
-    if (this.yCt == 2) {}
+    Object localObject = this.iEm;
+    byte[] arrayOfByte = this.dLl;
+    String[] arrayOfString = this.HYd;
+    if (this.zTO == 2) {}
     for (boolean bool = true;; bool = false)
     {
-      this.Gmo = new b(i, str, j, k, (byte[])localObject, arrayOfByte, arrayOfString, bool);
-      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(405L, 77L, 1L, true);
+      this.HYb = new b(i, str, j, k, (byte[])localObject, arrayOfByte, arrayOfString, bool);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(405L, 77L, 1L, true);
       break;
     }
   }
@@ -356,139 +356,149 @@ public final class k
   {
     AppMethodBeat.i(32779);
     cancel();
-    this.cHa = 0;
-    this.cHc = null;
-    this.Gmq = null;
-    this.DhK = d.DIc;
-    this.GkX = 0;
-    this.ikV = null;
-    this.dyZ = null;
-    this.ikZ = null;
+    this.cSe = 0;
+    this.cSg = null;
+    this.HYd = null;
+    this.EMv = d.Fnj;
+    this.HWJ = 0;
+    this.iEm = null;
+    this.dLl = null;
+    this.iEq = null;
     this.uin = 0;
     this.md5 = null;
     this.size = 0;
     this.desc = null;
-    this.Gly = null;
-    this.Gms = null;
-    this.Gmt = null;
-    this.Gmu = false;
-    this.Gmv = false;
-    this.yCt = 0;
-    this.Gmw = false;
+    this.HXl = null;
+    this.HYf = null;
+    this.HYg = null;
+    this.HYh = false;
+    this.HYi = false;
+    this.zTO = 0;
+    this.HYj = false;
     this.intent = null;
-    this.Gmz = false;
-    this.jyo = null;
-    this.GmC = 0L;
+    this.HYm = false;
+    this.jSl = null;
+    this.HYp = 0L;
     AppMethodBeat.o(32779);
   }
   
-  private void vG(boolean paramBoolean)
+  private void ws(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(32776);
-    ac.i("MicroMsg.UpdaterManager", "download() isWifiRetry %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    ac.i("MicroMsg.UpdaterManager", "summerupdate download() downloadMode %s downloading %s", new Object[] { Integer.valueOf(this.yCt), Boolean.valueOf(this.Gmz) });
+    ad.i("MicroMsg.UpdaterManager", "download() isWifiRetry %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.UpdaterManager", "summerupdate download() downloadMode %s downloading %s", new Object[] { Integer.valueOf(this.zTO), Boolean.valueOf(this.HYm) });
     if (this.intent == null)
     {
-      ac.e("MicroMsg.UpdaterManager", "download() haven't handleCommand");
+      ad.e("MicroMsg.UpdaterManager", "download() haven't handleCommand");
       AppMethodBeat.o(32776);
       return;
     }
-    if (this.Gmz)
+    if (this.HYm)
     {
-      ac.i("MicroMsg.UpdaterManager", "download() downloading, duplicate download request");
+      ad.i("MicroMsg.UpdaterManager", "download() downloading, duplicate download request");
       AppMethodBeat.o(32776);
       return;
     }
     if (!com.tencent.mm.compatible.util.g.getExternalStorageState().equals("mounted"))
     {
-      ac.e("MicroMsg.UpdaterManager", "no sdcard.");
-      eTp();
+      ad.e("MicroMsg.UpdaterManager", "no sdcard.");
+      fiR();
       AppMethodBeat.o(32776);
       return;
     }
-    if ((this.yCt == 2) && (!paramBoolean)) {
-      j.az(this.mContext, 0);
+    if ((this.zTO == 2) && (!paramBoolean)) {
+      j.aC(this.mContext, 0);
     }
-    String str1 = com.tencent.mm.sandbox.monitor.c.amd(this.md5);
-    ac.i("MicroMsg.UpdaterManager", str1);
+    String str1 = com.tencent.mm.sandbox.monitor.c.aqS(this.md5);
+    ad.i("MicroMsg.UpdaterManager", str1);
     if (str1 != null)
     {
-      ac.i("MicroMsg.UpdaterManager", "update package already exist.");
-      aV(1, true);
-      asD(str1);
-      if ((this.yCt == 2) && (!j.aKg(this.md5))) {
-        j.a(this.md5, this.Gmr, this.desc, this.size, this.yCt, this.GkX, this.Gmx);
+      ad.i("MicroMsg.UpdaterManager", "update package already exist.");
+      bc(1, true);
+      axG(str1);
+      if ((this.zTO == 2) && (!j.aPM(this.md5))) {
+        j.a(this.md5, this.HYe, this.desc, this.size, this.zTO, this.HWJ, this.HYk);
       }
       AppMethodBeat.o(32776);
       return;
     }
-    if (this.Gmw)
+    if (this.HYj)
     {
-      if (this.Gmo != null) {
-        this.Gmo.deleteTempFile();
+      if (this.HYb != null) {
+        this.HYb.deleteTempFile();
       }
-      j.ay(this.mContext, 11);
+      j.aB(this.mContext, 11);
     }
-    if ((!this.Gmw) && (this.Gmu) && (this.Gms != null) && (this.Gmt != null))
+    if ((!this.HYj) && (this.HYh) && (this.HYf != null) && (this.HYg != null))
     {
-      ac.i("MicroMsg.UpdaterManager", "Incresment Update");
-      j.ay(this.mContext, 5);
-      if (!e.oR(this.size + this.Gmt.size))
+      ad.i("MicroMsg.UpdaterManager", "Incresment Update");
+      j.aB(this.mContext, 5);
+      if (!e.qR(this.size + this.HYg.size))
       {
-        eTq();
+        fiS();
         AppMethodBeat.o(32776);
         return;
       }
       cancel();
-      int i = this.Gmt.size;
+      int i = this.HYg.size;
       str1 = this.md5;
-      int j = this.GkX;
-      String str2 = this.Gms.cHn + this.Gmt.url;
-      String str3 = this.Gmt.patchMd5;
-      String str4 = this.Gmt.cHq;
-      if (this.yCt == 2) {}
+      int j = this.HWJ;
+      String str2 = this.HYf.cSr + this.HYg.url;
+      String str3 = this.HYg.patchMd5;
+      String str4 = this.HYg.cSu;
+      if (this.zTO == 2) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.Gmo = new c(i, str1, j, str2, str3, str4, paramBoolean);
-        eTr();
+        this.HYb = new c(i, str1, j, str2, str3, str4, paramBoolean);
+        fiT();
         AppMethodBeat.o(32776);
         return;
       }
     }
-    if (!e.oR(this.size))
+    if (!e.qR(this.size))
     {
-      ac.e("MicroMsg.UpdaterManager", "SDCard is full");
-      eTq();
+      ad.e("MicroMsg.UpdaterManager", "SDCard is full");
+      fiS();
       AppMethodBeat.o(32776);
       return;
     }
-    eTs();
+    fiU();
     AppMethodBeat.o(32776);
   }
   
   public final void a(com.tencent.mm.sandbox.monitor.c paramc)
   {
     AppMethodBeat.i(32787);
-    Iterator localIterator = this.Gmp.iterator();
+    Iterator localIterator = this.HYc.iterator();
     while (localIterator.hasNext()) {
       ((h)localIterator.next()).a(paramc);
     }
     AppMethodBeat.o(32787);
   }
   
-  public final void aV(final int paramInt, boolean paramBoolean)
+  public final void axG(String paramString)
+  {
+    AppMethodBeat.i(32786);
+    Iterator localIterator = this.HYc.iterator();
+    while (localIterator.hasNext()) {
+      ((h)localIterator.next()).axG(paramString);
+    }
+    AppMethodBeat.o(32786);
+  }
+  
+  public final void bc(final int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(32777);
-    this.Gmv = paramBoolean;
-    new ao().postDelayed(new Runnable()
+    this.HYi = paramBoolean;
+    new ap().postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(32765);
         ((NotificationManager)k.this.mContext.getSystemService("notification")).cancel(99);
-        ac.d("MicroMsg.UpdaterManager", "finishType == " + paramInt);
-        if ((paramInt == 2) && (k.this.GkX == 1))
+        ad.d("MicroMsg.UpdaterManager", "finishType == " + paramInt);
+        if ((paramInt == 2) && (k.this.HWJ == 1))
         {
           Intent localIntent = new Intent();
           localIntent.setAction("com.tencent.mm.sandbox.updater.intent.ACTION_EXIT_APP");
@@ -500,104 +510,94 @@ public final class k
     AppMethodBeat.o(32777);
   }
   
-  public final void asD(String paramString)
-  {
-    AppMethodBeat.i(32786);
-    Iterator localIterator = this.Gmp.iterator();
-    while (localIterator.hasNext()) {
-      ((h)localIterator.next()).asD(paramString);
-    }
-    AppMethodBeat.o(32786);
-  }
-  
-  public final boolean bc(Intent paramIntent)
+  public final boolean bh(Intent paramIntent)
   {
     AppMethodBeat.i(32773);
-    boolean bool = bd(paramIntent);
-    ac.i("MicroMsg.UpdaterManager", "summerupdate handleCommand(Intent intent) ret need download[%b]", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = bi(paramIntent);
+    ad.i("MicroMsg.UpdaterManager", "summerupdate handleCommand(Intent intent) ret need download[%b]", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
-      vG(false);
+      ws(false);
     }
     AppMethodBeat.o(32773);
     return bool;
   }
   
-  public final boolean bd(Intent paramIntent)
+  public final boolean bi(Intent paramIntent)
   {
     AppMethodBeat.i(32774);
-    ac.i("MicroMsg.UpdaterManager", "handleCommand(Intent intent)");
+    ad.i("MicroMsg.UpdaterManager", "handleCommand(Intent intent)");
     if (paramIntent == null)
     {
-      ac.i("MicroMsg.UpdaterManager", "intent == null");
+      ad.i("MicroMsg.UpdaterManager", "intent == null");
       AppMethodBeat.o(32774);
       return false;
     }
     int j = paramIntent.getIntExtra("intent_update_type", 3);
     int i = paramIntent.getIntExtra("intent_extra_download_mode", 1);
     String str = paramIntent.getStringExtra("intent_extra_md5");
-    if ((this.Gmz) && (!str.equalsIgnoreCase(this.md5)) && (this.yCt == 2)) {
+    if ((this.HYm) && (!str.equalsIgnoreCase(this.md5)) && (this.zTO == 2)) {
       cancel();
     }
     Object localObject;
-    while (!this.Gmz)
+    while (!this.HYm)
     {
-      j.eTn();
+      j.fiP();
       reset();
       this.intent = paramIntent;
-      this.cHa = paramIntent.getIntExtra("intent_extra_updateMode", 0);
-      this.cHc = paramIntent.getStringExtra("intent_extra_marketUrl");
-      this.Gmq = paramIntent.getStringArrayExtra("intent_short_ips");
-      this.DhK = paramIntent.getIntExtra("intent_client_version", d.DIc);
-      d.DIc = this.DhK;
-      this.GkX = j;
-      this.ikV = paramIntent.getByteArrayExtra("intent_extra_session");
-      this.dyZ = paramIntent.getByteArrayExtra("intent_extra_cookie");
-      this.ikZ = paramIntent.getByteArrayExtra("intent_extra_ecdhkey");
+      this.cSe = paramIntent.getIntExtra("intent_extra_updateMode", 0);
+      this.cSg = paramIntent.getStringExtra("intent_extra_marketUrl");
+      this.HYd = paramIntent.getStringArrayExtra("intent_short_ips");
+      this.EMv = paramIntent.getIntExtra("intent_client_version", d.Fnj);
+      d.Fnj = this.EMv;
+      this.HWJ = j;
+      this.iEm = paramIntent.getByteArrayExtra("intent_extra_session");
+      this.dLl = paramIntent.getByteArrayExtra("intent_extra_cookie");
+      this.iEq = paramIntent.getByteArrayExtra("intent_extra_ecdhkey");
       this.uin = paramIntent.getIntExtra("intent_extra_uin", 0);
       this.md5 = str;
       this.desc = paramIntent.getStringExtra("intent_extra_desc");
       this.size = paramIntent.getIntExtra("intent_extra_size", 0);
-      this.Gly = paramIntent.getStringArrayExtra("intent_extra_download_url");
-      this.yCt = i;
-      this.Gmw = paramIntent.getBooleanExtra("intent_extra_force_download_full", false);
+      this.HXl = paramIntent.getStringArrayExtra("intent_extra_download_url");
+      this.zTO = i;
+      this.HYj = paramIntent.getBooleanExtra("intent_extra_force_download_full", false);
       localObject = paramIntent.getStringExtra("intent_extra_patchInfo");
       if (localObject != null)
       {
-        ac.i("MicroMsg.UpdaterManager", "patchXml != null");
-        this.Gms = com.tencent.mm.d.i.ed((String)localObject);
+        ad.i("MicroMsg.UpdaterManager", "patchXml != null");
+        this.HYf = com.tencent.mm.d.i.eY((String)localObject);
       }
       localObject = paramIntent.getStringExtra("intent_extra_extinfo");
-      ac.d("MicroMsg.UpdaterManager", "summerupdate extInfo[%s]", new Object[] { localObject });
-      if (!bs.isNullOrNil((String)localObject))
+      ad.d("MicroMsg.UpdaterManager", "summerupdate extInfo[%s]", new Object[] { localObject });
+      if (!bt.isNullOrNil((String)localObject))
       {
-        this.Gmx = ((String)bv.L((String)localObject, "extinfo").get(".extinfo.notautodownloadrange"));
-        ac.i("MicroMsg.UpdaterManager", "summerupdate notAutoDownloadRange[%s]", new Object[] { this.Gmx });
+        this.HYk = ((String)bw.M((String)localObject, "extinfo").get(".extinfo.notautodownloadrange"));
+        ad.i("MicroMsg.UpdaterManager", "summerupdate notAutoDownloadRange[%s]", new Object[] { this.HYk });
       }
-      ac.i("MicroMsg.UpdaterManager", "summerupdate handleCommand() downloadMode %s downloading %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.Gmz) });
-      if ((j != 999) || (this.Gly == null) || (this.Gly.length <= 0)) {
+      ad.i("MicroMsg.UpdaterManager", "summerupdate handleCommand() downloadMode %s downloading %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.HYm) });
+      if ((j != 999) || (this.HXl == null) || (this.HXl.length <= 0)) {
         break;
       }
       if (i == 2) {
-        ac.e("MicroMsg.UpdaterManager", "error! DOWNLOAD_MODE_SLIENCE download don't go here! we must process it before start download");
+        ad.e("MicroMsg.UpdaterManager", "error! DOWNLOAD_MODE_SLIENCE download don't go here! we must process it before start download");
       }
       AppMethodBeat.o(32774);
       return true;
     }
-    ac.i("MicroMsg.UpdaterManager", "downloading, duplicate download request");
+    ad.i("MicroMsg.UpdaterManager", "downloading, duplicate download request");
     AppMethodBeat.o(32774);
     return true;
-    if (this.Gly != null)
+    if (this.HXl != null)
     {
-      localObject = this.Gly;
+      localObject = this.HXl;
       int k = localObject.length;
       i = 0;
       while (i < k)
       {
-        ac.i("MicroMsg.UpdaterManager", "download url : ".concat(String.valueOf(localObject[i])));
+        ad.i("MicroMsg.UpdaterManager", "download url : ".concat(String.valueOf(localObject[i])));
         i += 1;
       }
     }
-    ac.i("MicroMsg.UpdaterManager", "md5 = %s , size = %s", new Object[] { str, Integer.valueOf(this.size) });
+    ad.i("MicroMsg.UpdaterManager", "md5 = %s , size = %s", new Object[] { str, Integer.valueOf(this.size) });
     if ((str == null) || (this.size == 0))
     {
       AppMethodBeat.o(32774);
@@ -605,123 +605,123 @@ public final class k
     }
     if (j == 2)
     {
-      boolean bool = com.tencent.mm.modelcontrol.b.BU(this.Gmx);
-      ac.i("MicroMsg.UpdaterManager", "summerupdate handleCommandWithoutDownload recommended control[%b]", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = com.tencent.mm.modelcontrol.b.ET(this.HYk);
+      ad.i("MicroMsg.UpdaterManager", "summerupdate handleCommandWithoutDownload recommended control[%b]", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(405L, 78L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(405L, 78L, 1L, true);
         AppMethodBeat.o(32774);
         return false;
       }
     }
-    if (this.Gms != null)
+    if (this.HYf != null)
     {
-      ac.i("MicroMsg.UpdaterManager", "patchInfo != null");
-      localObject = com.tencent.mm.pluginsdk.g.i.hr(this.mContext);
-      this.Gmt = this.Gms.ec((String)localObject);
+      ad.i("MicroMsg.UpdaterManager", "patchInfo != null");
+      localObject = com.tencent.mm.pluginsdk.i.j.hw(this.mContext);
+      this.HYg = this.HYf.eX((String)localObject);
       StringBuilder localStringBuilder = new StringBuilder("increase apkMD5 = ").append((String)localObject).append(" : ");
-      if (this.Gmt == null)
+      if (this.HYg == null)
       {
         localObject = "not match";
-        ac.i("MicroMsg.UpdaterManager", (String)localObject);
+        ad.i("MicroMsg.UpdaterManager", (String)localObject);
       }
     }
     else
     {
-      ac.i("MicroMsg.UpdaterManager", "forceDownloadFull : %s", new Object[] { Boolean.valueOf(this.Gmw) });
-      this.Gmy = paramIntent.getBooleanExtra("intent_extra_tinker_patch", false);
-      if (((this.Gmt == null) || (com.tencent.mm.sandbox.monitor.c.aKa(str))) && (!this.Gmy)) {
+      ad.i("MicroMsg.UpdaterManager", "forceDownloadFull : %s", new Object[] { Boolean.valueOf(this.HYj) });
+      this.HYl = paramIntent.getBooleanExtra("intent_extra_tinker_patch", false);
+      if (((this.HYg == null) || (com.tencent.mm.sandbox.monitor.c.aPG(str))) && (!this.HYl)) {
         break label837;
       }
-      ac.i("MicroMsg.UpdaterManager", "isIncresmentUpdate");
-      this.Gmu = true;
+      ad.i("MicroMsg.UpdaterManager", "isIncresmentUpdate");
+      this.HYh = true;
     }
     for (;;)
     {
-      paramIntent = j.eLy();
-      if ((!bs.isNullOrNil(paramIntent)) && (!paramIntent.equals(str))) {
-        j.eTo();
+      paramIntent = j.fav();
+      if ((!bt.isNullOrNil(paramIntent)) && (!paramIntent.equals(str))) {
+        j.fiQ();
       }
       AppMethodBeat.o(32774);
       return true;
       localObject = "match";
       break;
       label837:
-      ac.i("MicroMsg.UpdaterManager", "had try to download full pack.");
+      ad.i("MicroMsg.UpdaterManager", "had try to download full pack.");
     }
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(32778);
-    if (this.Gmo != null)
+    if (this.HYb != null)
     {
-      this.Gmz = false;
-      this.Gmo.cancel();
-      this.Gmo = null;
-      this.GmA = System.currentTimeMillis();
-      this.GmB.stop();
+      this.HYm = false;
+      this.HYb.cancel();
+      this.HYb = null;
+      this.HYn = System.currentTimeMillis();
+      this.HYo.stop();
     }
     AppMethodBeat.o(32778);
   }
   
-  public final void ceI()
+  public final void cjl()
   {
-    AppMethodBeat.i(210120);
-    vG(false);
-    AppMethodBeat.o(210120);
+    AppMethodBeat.i(221387);
+    ws(false);
+    AppMethodBeat.o(221387);
   }
   
-  public final void dFC()
+  public final void dRW()
   {
     AppMethodBeat.i(32785);
-    Iterator localIterator = this.Gmp.iterator();
+    Iterator localIterator = this.HYc.iterator();
     while (localIterator.hasNext()) {
-      ((h)localIterator.next()).dFC();
+      ((h)localIterator.next()).dRW();
     }
     AppMethodBeat.o(32785);
   }
   
-  public final void eSX()
+  public final void eZ(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(32788);
-    Iterator localIterator = this.Gmp.iterator();
+    AppMethodBeat.i(32784);
+    Iterator localIterator = this.HYc.iterator();
     while (localIterator.hasNext()) {
-      ((h)localIterator.next()).eSX();
+      ((h)localIterator.next()).eZ(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(32788);
+    AppMethodBeat.o(32784);
   }
   
-  public final void eSY()
+  public final void fiA()
   {
     AppMethodBeat.i(32789);
-    Iterator localIterator = this.Gmp.iterator();
+    Iterator localIterator = this.HYc.iterator();
     while (localIterator.hasNext()) {
-      ((h)localIterator.next()).eSY();
+      ((h)localIterator.next()).fiA();
     }
     AppMethodBeat.o(32789);
   }
   
-  public final void eV(int paramInt1, int paramInt2)
+  public final void fiz()
   {
-    AppMethodBeat.i(32784);
-    Iterator localIterator = this.Gmp.iterator();
+    AppMethodBeat.i(32788);
+    Iterator localIterator = this.HYc.iterator();
     while (localIterator.hasNext()) {
-      ((h)localIterator.next()).eV(paramInt1, paramInt2);
+      ((h)localIterator.next()).fiz();
     }
-    AppMethodBeat.o(32784);
+    AppMethodBeat.o(32788);
   }
   
   public final boolean isBusy()
   {
     AppMethodBeat.i(32790);
-    if ((this.Gmz) || (System.currentTimeMillis() - this.GmA <= UpdaterService.GmJ))
+    if ((this.HYm) || (System.currentTimeMillis() - this.HYn <= UpdaterService.HYw))
     {
-      ac.i("MicroMsg.UpdaterManager", "dont stop, because of updateManager.isDownloading() %s / updateManager.getIdleTimestamp() %s / System.currentTimeMillis() - updateManager.getIdleTimestamp() %s", new Object[] { Boolean.valueOf(this.Gmz), Long.valueOf(this.GmA), Long.valueOf(System.currentTimeMillis() - this.GmA) });
+      ad.i("MicroMsg.UpdaterManager", "dont stop, because of updateManager.isDownloading() %s / updateManager.getIdleTimestamp() %s / System.currentTimeMillis() - updateManager.getIdleTimestamp() %s", new Object[] { Boolean.valueOf(this.HYm), Long.valueOf(this.HYn), Long.valueOf(System.currentTimeMillis() - this.HYn) });
       AppMethodBeat.o(32790);
       return true;
     }
-    ac.i("MicroMsg.UpdaterManager", "not busy");
+    ad.i("MicroMsg.UpdaterManager", "not busy");
     AppMethodBeat.o(32790);
     return false;
   }
@@ -729,40 +729,40 @@ public final class k
   public final void onDestroy()
   {
     AppMethodBeat.i(32791);
-    ac.i("MicroMsg.UpdaterManager", "onDestroy");
-    if (!this.Gmz)
+    ad.i("MicroMsg.UpdaterManager", "onDestroy");
+    if (!this.HYm)
     {
       reset();
-      aV(1, true);
+      bc(1, true);
     }
     AppMethodBeat.o(32791);
   }
   
-  public final void vE(boolean paramBoolean)
+  public final void wq(boolean paramBoolean)
   {
     AppMethodBeat.i(32772);
-    ac.i("MicroMsg.UpdaterManager", "summerupdate setNetStatChanged isWifi %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    g localg = this.GmB;
-    if (localg.qKm != paramBoolean)
+    ad.i("MicroMsg.UpdaterManager", "summerupdate setNetStatChanged isWifi %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    g localg = this.HYo;
+    if (localg.ruo != paramBoolean)
     {
-      localg.vF(true);
-      localg.qKm = paramBoolean;
+      localg.wr(true);
+      localg.ruo = paramBoolean;
     }
-    if ((this.yCt != 2) || (this.Gmz))
+    if ((this.zTO != 2) || (this.HYm))
     {
-      ac.i("MicroMsg.UpdaterManager", "downloadMode %s downloading %s", new Object[] { Integer.valueOf(this.yCt), Boolean.valueOf(this.Gmz) });
+      ad.i("MicroMsg.UpdaterManager", "downloadMode %s downloading %s", new Object[] { Integer.valueOf(this.zTO), Boolean.valueOf(this.HYm) });
       AppMethodBeat.o(32772);
       return;
     }
     if (paramBoolean)
     {
-      if (bd(this.intent))
+      if (bi(this.intent))
       {
-        vG(true);
+        ws(true);
         AppMethodBeat.o(32772);
       }
     }
-    else if (this.Gmz) {
+    else if (this.HYm) {
       cancel();
     }
     AppMethodBeat.o(32772);
@@ -770,12 +770,12 @@ public final class k
   
   static final class a
   {
-    public static final k GmG;
+    public static final k HYt;
     
     static
     {
       AppMethodBeat.i(32770);
-      GmG = new k((byte)0);
+      HYt = new k((byte)0);
       AppMethodBeat.o(32770);
     }
   }

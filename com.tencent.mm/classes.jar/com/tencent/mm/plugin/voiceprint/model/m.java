@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.al;
 import com.tencent.mm.vfs.e;
 
 public final class m
 {
-  public static String bW(String paramString, boolean paramBoolean)
+  public static String cd(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(29794);
-    String str = ah.GDu;
-    ac.i("MicroMsg.VoicePrintLogic", "dbCachePath ".concat(String.valueOf(str)));
+    String str = al.IpN;
+    ad.i("MicroMsg.VoicePrintLogic", "dbCachePath ".concat(String.valueOf(str)));
     if (str.endsWith("/")) {}
     for (paramString = str + paramString;; paramString = str + "/" + paramString)
     {
-      ac.i("MicroMsg.VoicePrintLogic", "genpath ".concat(String.valueOf(paramString)));
-      if (!bs.isNullOrNil(paramString)) {
+      ad.i("MicroMsg.VoicePrintLogic", "genpath ".concat(String.valueOf(paramString)));
+      if (!bt.isNullOrNil(paramString)) {
         break;
       }
       AppMethodBeat.o(29794);

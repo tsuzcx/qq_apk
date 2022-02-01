@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vb
   extends b
 {
-  public a dxY;
+  public a dJl;
   
   public vb()
   {
@@ -15,19 +15,16 @@ public final class vb
   
   private vb(byte paramByte)
   {
-    AppMethodBeat.i(116050);
-    this.dxY = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(94816);
+    this.dJl = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116050);
+    AppMethodBeat.o(94816);
   }
   
   public static final class a
   {
-    public int dgm;
-    public String dxZ;
-    public long dya;
-    public String dyb;
+    public boolean dJm;
   }
 }
 

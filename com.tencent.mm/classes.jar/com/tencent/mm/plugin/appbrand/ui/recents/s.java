@@ -15,7 +15,7 @@ abstract class s<_Data, _ViewHolder extends RecyclerView.w>
   
   public abstract void c(_ViewHolder param_ViewHolder, _Data param_Data);
   
-  public abstract long cB(_Data param_Data);
+  public abstract long cD(_Data param_Data);
 }
 
 

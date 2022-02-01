@@ -3,46 +3,46 @@ package com.tencent.mm.plugin.expt.roomexpt;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelmulti.k;
-import com.tencent.mm.modelmulti.q;
-import com.tencent.mm.plugin.messenger.foundation.a.w;
-import com.tencent.mm.protocal.protobuf.byb;
-import com.tencent.mm.protocal.protobuf.xw;
+import com.tencent.mm.modelmulti.r;
+import com.tencent.mm.plugin.messenger.foundation.a.y;
+import com.tencent.mm.protocal.protobuf.ccs;
+import com.tencent.mm.protocal.protobuf.zv;
 import com.tencent.mm.protocal.v.b;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 
 final class a$5
-  implements w
+  implements y
 {
   a$5(a parama) {}
   
-  public final void aG(Object paramObject) {}
+  public final void aI(Object paramObject) {}
   
-  public final void aH(Object paramObject)
+  public final void aJ(Object paramObject)
   {
     AppMethodBeat.i(122398);
-    ap localap;
+    aq localaq;
     String str;
-    q localq;
+    r localr;
     if ((paramObject instanceof k))
     {
-      localap = g.agU();
+      localaq = g.ajF();
       str = ((k)paramObject).TAG;
-      localq = ((k)paramObject).hMs;
+      localr = ((k)paramObject).ifm;
       paramObject = (k)paramObject;
-      if ((paramObject.hMA != null) && (paramObject.hMA.DJr.Ekl != null)) {
+      if ((paramObject.ifu != null) && (paramObject.ifu.Foy.FRu != null)) {
         break label82;
       }
     }
     label82:
-    for (paramObject = null;; paramObject = paramObject.hMA.DJr.Ekl.ncM)
+    for (paramObject = null;; paramObject = paramObject.ifu.Foy.FRu.nDj)
     {
-      localap.az(new a.a(str, localq, paramObject));
+      localaq.ay(new a.a(str, localr, paramObject));
       AppMethodBeat.o(122398);
       return;
     }
   }
   
-  public final void aI(Object paramObject) {}
+  public final void aK(Object paramObject) {}
 }
 
 

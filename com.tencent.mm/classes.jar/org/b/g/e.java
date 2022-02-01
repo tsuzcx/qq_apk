@@ -8,7 +8,7 @@ import java.io.Reader;
 
 public final class e
 {
-  public static String X(InputStream paramInputStream)
+  public static String aa(InputStream paramInputStream)
   {
     AppMethodBeat.i(40583);
     d.j(paramInputStream, "Cannot get String from a null object");

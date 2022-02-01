@@ -7,33 +7,33 @@ public abstract class z
 {
   public abstract void enableCustomizedLongPressTimeout(int paramInt);
   
-  @Deprecated
-  public abstract void fJA();
+  public abstract void gaR();
   
-  public abstract void fJB();
+  public abstract void gaS();
   
-  public abstract void fJC();
-  
-  public abstract void fJD();
-  
-  public abstract void fJE();
+  public abstract void gaT();
   
   @Deprecated
-  public abstract void fJF();
+  public abstract void gaU();
   
-  public abstract void fJG();
+  public abstract void gaV();
   
-  public abstract void fJH();
+  public abstract void gaW();
   
-  public abstract void fJI();
+  public abstract void gaX();
   
-  public abstract void fJJ();
+  public abstract void gaY();
   
-  public abstract void fJx();
+  @Deprecated
+  public abstract void gaZ();
   
-  public abstract void fJy();
+  public abstract void gba();
   
-  public abstract void fJz();
+  public abstract void gbb();
+  
+  public abstract void gbc();
+  
+  public abstract void gbd();
   
   public abstract boolean getBlockNetworkImage();
   

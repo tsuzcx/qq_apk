@@ -8,41 +8,41 @@ public abstract class aj
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int emW = "userName".hashCode();
-  private static final int esI = "qyUin".hashCode();
-  private static final int esJ = "userUin".hashCode();
-  private static final int esK = "userFlag".hashCode();
-  private static final int esL = "wwExposeTimes".hashCode();
-  private static final int esM = "wwMaxExposeTimes".hashCode();
-  private static final int esN = "wwCorpId".hashCode();
-  private static final int esO = "wwUserVid".hashCode();
-  private static final int esP = "userType".hashCode();
-  private static final int esQ = "chatOpen".hashCode();
-  private static final int esR = "wwUnreadCnt".hashCode();
-  private static final int esS = "show_confirm".hashCode();
-  private static final int esT = "use_preset_banner_tips".hashCode();
-  private static final int esU = "hide_create_chat".hashCode();
-  private static final int esV = "hide_mod_chat_member".hashCode();
-  private static final int esW = "hide_colleage_invite".hashCode();
-  private static final int esX = "raw_attrs".hashCode();
+  private static final int eEd = "userName".hashCode();
+  private static final int eJR = "qyUin".hashCode();
+  private static final int eJS = "userUin".hashCode();
+  private static final int eJT = "userFlag".hashCode();
+  private static final int eJU = "wwExposeTimes".hashCode();
+  private static final int eJV = "wwMaxExposeTimes".hashCode();
+  private static final int eJW = "wwCorpId".hashCode();
+  private static final int eJX = "wwUserVid".hashCode();
+  private static final int eJY = "userType".hashCode();
+  private static final int eJZ = "chatOpen".hashCode();
+  private static final int eKa = "wwUnreadCnt".hashCode();
+  private static final int eKb = "show_confirm".hashCode();
+  private static final int eKc = "use_preset_banner_tips".hashCode();
+  private static final int eKd = "hide_create_chat".hashCode();
+  private static final int eKe = "hide_mod_chat_member".hashCode();
+  private static final int eKf = "hide_colleage_invite".hashCode();
+  private static final int eKg = "raw_attrs".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean emz = true;
-  private boolean esA = true;
-  private boolean esB = true;
-  private boolean esC = true;
-  private boolean esD = true;
-  private boolean esE = true;
-  private boolean esF = true;
-  private boolean esG = true;
-  private boolean esH = true;
-  private boolean ess = true;
-  private boolean est = true;
-  private boolean esu = true;
-  private boolean esv = true;
-  private boolean esw = true;
-  private boolean esx = true;
-  private boolean esy = true;
-  private boolean esz = true;
+  private boolean eDG = true;
+  private boolean eJB = true;
+  private boolean eJC = true;
+  private boolean eJD = true;
+  private boolean eJE = true;
+  private boolean eJF = true;
+  private boolean eJG = true;
+  private boolean eJH = true;
+  private boolean eJI = true;
+  private boolean eJJ = true;
+  private boolean eJK = true;
+  private boolean eJL = true;
+  private boolean eJM = true;
+  private boolean eJN = true;
+  private boolean eJO = true;
+  private boolean eJP = true;
+  private boolean eJQ = true;
   public boolean field_chatOpen;
   public boolean field_hide_colleage_invite;
   public boolean field_hide_create_chat;
@@ -74,11 +74,11 @@ public abstract class aj
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (emW != k) {
+      if (eEd != k) {
         break label65;
       }
       this.field_userName = paramCursor.getString(i);
-      this.emz = true;
+      this.eDG = true;
     }
     for (;;)
     {
@@ -86,42 +86,42 @@ public abstract class aj
       break label20;
       break;
       label65:
-      if (esI == k)
+      if (eJR == k)
       {
         this.field_qyUin = paramCursor.getInt(i);
       }
-      else if (esJ == k)
+      else if (eJS == k)
       {
         this.field_userUin = paramCursor.getInt(i);
       }
-      else if (esK == k)
+      else if (eJT == k)
       {
         this.field_userFlag = paramCursor.getInt(i);
       }
-      else if (esL == k)
+      else if (eJU == k)
       {
         this.field_wwExposeTimes = paramCursor.getInt(i);
       }
-      else if (esM == k)
+      else if (eJV == k)
       {
         this.field_wwMaxExposeTimes = paramCursor.getInt(i);
       }
-      else if (esN == k)
+      else if (eJW == k)
       {
         this.field_wwCorpId = paramCursor.getLong(i);
       }
-      else if (esO == k)
+      else if (eJX == k)
       {
         this.field_wwUserVid = paramCursor.getLong(i);
       }
-      else if (esP == k)
+      else if (eJY == k)
       {
         this.field_userType = paramCursor.getInt(i);
       }
       else
       {
         boolean bool;
-        if (esQ == k)
+        if (eJZ == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
@@ -130,13 +130,13 @@ public abstract class aj
             break;
           }
         }
-        if (esR == k)
+        if (eKa == k)
         {
           this.field_wwUnreadCnt = paramCursor.getInt(i);
         }
         else
         {
-          if (esS == k)
+          if (eKb == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -145,7 +145,7 @@ public abstract class aj
               break;
             }
           }
-          if (esT == k)
+          if (eKc == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -154,7 +154,7 @@ public abstract class aj
               break;
             }
           }
-          if (esU == k)
+          if (eKd == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -163,7 +163,7 @@ public abstract class aj
               break;
             }
           }
-          if (esV == k)
+          if (eKe == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -172,7 +172,7 @@ public abstract class aj
               break;
             }
           }
-          if (esW == k)
+          if (eKf == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
@@ -181,7 +181,7 @@ public abstract class aj
               break;
             }
           }
-          if (esX == k) {
+          if (eKg == k) {
             this.field_raw_attrs = paramCursor.getBlob(i);
           } else if (rowid_HASHCODE == k) {
             this.systemRowid = paramCursor.getLong(i);
@@ -194,55 +194,55 @@ public abstract class aj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.emz) {
+    if (this.eDG) {
       localContentValues.put("userName", this.field_userName);
     }
-    if (this.ess) {
+    if (this.eJB) {
       localContentValues.put("qyUin", Integer.valueOf(this.field_qyUin));
     }
-    if (this.est) {
+    if (this.eJC) {
       localContentValues.put("userUin", Integer.valueOf(this.field_userUin));
     }
-    if (this.esu) {
+    if (this.eJD) {
       localContentValues.put("userFlag", Integer.valueOf(this.field_userFlag));
     }
-    if (this.esv) {
+    if (this.eJE) {
       localContentValues.put("wwExposeTimes", Integer.valueOf(this.field_wwExposeTimes));
     }
-    if (this.esw) {
+    if (this.eJF) {
       localContentValues.put("wwMaxExposeTimes", Integer.valueOf(this.field_wwMaxExposeTimes));
     }
-    if (this.esx) {
+    if (this.eJG) {
       localContentValues.put("wwCorpId", Long.valueOf(this.field_wwCorpId));
     }
-    if (this.esy) {
+    if (this.eJH) {
       localContentValues.put("wwUserVid", Long.valueOf(this.field_wwUserVid));
     }
-    if (this.esz) {
+    if (this.eJI) {
       localContentValues.put("userType", Integer.valueOf(this.field_userType));
     }
-    if (this.esA) {
+    if (this.eJJ) {
       localContentValues.put("chatOpen", Boolean.valueOf(this.field_chatOpen));
     }
-    if (this.esB) {
+    if (this.eJK) {
       localContentValues.put("wwUnreadCnt", Integer.valueOf(this.field_wwUnreadCnt));
     }
-    if (this.esC) {
+    if (this.eJL) {
       localContentValues.put("show_confirm", Boolean.valueOf(this.field_show_confirm));
     }
-    if (this.esD) {
+    if (this.eJM) {
       localContentValues.put("use_preset_banner_tips", Boolean.valueOf(this.field_use_preset_banner_tips));
     }
-    if (this.esE) {
+    if (this.eJN) {
       localContentValues.put("hide_create_chat", Boolean.valueOf(this.field_hide_create_chat));
     }
-    if (this.esF) {
+    if (this.eJO) {
       localContentValues.put("hide_mod_chat_member", Boolean.valueOf(this.field_hide_mod_chat_member));
     }
-    if (this.esG) {
+    if (this.eJP) {
       localContentValues.put("hide_colleage_invite", Boolean.valueOf(this.field_hide_colleage_invite));
     }
-    if (this.esH) {
+    if (this.eJQ) {
       localContentValues.put("raw_attrs", this.field_raw_attrs);
     }
     if (this.systemRowid > 0L) {
@@ -253,7 +253,7 @@ public abstract class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.aj
  * JD-Core Version:    0.7.0.1
  */

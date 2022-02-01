@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionBannerImg
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int Height;
   public String ImgUrl;
@@ -19,8 +19,8 @@ public class EmotionBannerImg
       if (this.ImgUrl != null) {
         paramVarArgs.d(1, this.ImgUrl);
       }
-      paramVarArgs.aR(2, this.Width);
-      paramVarArgs.aR(3, this.Height);
+      paramVarArgs.aS(2, this.Width);
+      paramVarArgs.aS(3, this.Height);
       if (this.StripUrl != null) {
         paramVarArgs.d(4, this.StripUrl);
       }
@@ -35,7 +35,7 @@ public class EmotionBannerImg
     label362:
     for (paramInt = f.a.a.b.b.a.e(1, this.ImgUrl) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bx(2, this.Width) + f.a.a.b.b.a.bx(3, this.Height);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.Width) + f.a.a.b.b.a.bz(3, this.Height);
       paramInt = i;
       if (this.StripUrl != null) {
         paramInt = i + f.a.a.b.b.a.e(4, this.StripUrl);
@@ -45,9 +45,9 @@ public class EmotionBannerImg
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(104769);
@@ -63,19 +63,19 @@ public class EmotionBannerImg
           AppMethodBeat.o(104769);
           return -1;
         case 1: 
-          localEmotionBannerImg.ImgUrl = locala.LVo.readString();
+          localEmotionBannerImg.ImgUrl = locala.NPN.readString();
           AppMethodBeat.o(104769);
           return 0;
         case 2: 
-          localEmotionBannerImg.Width = locala.LVo.xF();
+          localEmotionBannerImg.Width = locala.NPN.zc();
           AppMethodBeat.o(104769);
           return 0;
         case 3: 
-          localEmotionBannerImg.Height = locala.LVo.xF();
+          localEmotionBannerImg.Height = locala.NPN.zc();
           AppMethodBeat.o(104769);
           return 0;
         }
-        localEmotionBannerImg.StripUrl = locala.LVo.readString();
+        localEmotionBannerImg.StripUrl = locala.NPN.readString();
         AppMethodBeat.o(104769);
         return 0;
       }
@@ -86,7 +86,7 @@ public class EmotionBannerImg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionBannerImg
  * JD-Core Version:    0.7.0.1
  */

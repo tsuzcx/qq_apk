@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.soter.core.c.c;
 
 public final class h
@@ -10,42 +10,42 @@ public final class h
   public final void b(String paramString1, Throwable paramThrowable, String paramString2)
   {
     AppMethodBeat.i(130849);
-    ac.printErrStackTrace(paramString1, paramThrowable, paramString2, new Object[0]);
+    ad.printErrStackTrace(paramString1, paramThrowable, paramString2, new Object[0]);
     AppMethodBeat.o(130849);
   }
   
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130845);
-    ac.d(paramString1, paramString2, paramVarArgs);
+    ad.d(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130845);
   }
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130848);
-    ac.e(paramString1, paramString2, paramVarArgs);
+    ad.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130848);
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130846);
-    ac.i(paramString1, paramString2, paramVarArgs);
+    ad.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130846);
   }
   
   public final void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130844);
-    ac.v(paramString1, paramString2, paramVarArgs);
+    ad.v(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130844);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(130847);
-    ac.w(paramString1, paramString2, paramVarArgs);
+    ad.w(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(130847);
   }
 }

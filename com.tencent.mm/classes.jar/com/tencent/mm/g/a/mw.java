@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class mw
   extends b
 {
-  public a dpr;
+  public a dAO;
   
   public mw()
   {
@@ -15,18 +15,17 @@ public final class mw
   
   private mw(byte paramByte)
   {
-    AppMethodBeat.i(42654);
-    this.dpr = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19822);
+    this.dAO = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(42654);
+    AppMethodBeat.o(19822);
   }
   
   public static final class a
   {
-    public String bLs;
-    public int type;
-    public String userName;
+    public int dAP = 0;
+    public int dAQ = 0;
   }
 }
 

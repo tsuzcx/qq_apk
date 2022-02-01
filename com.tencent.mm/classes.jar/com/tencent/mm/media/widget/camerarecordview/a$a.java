@@ -2,7 +2,7 @@ package com.tencent.mm.media.widget.camerarecordview;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camerarecordview/CameraPreviewContainer$Companion;", "", "()V", "STATE_IN_PAUSE", "", "STATE_IN_PREVIEW", "SWITCH_BLOCK_TIME", "TAG", "", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camerarecordview/CameraPreviewContainer$Companion;", "", "()V", "STATE_IN_PAUSE", "", "STATE_IN_PREVIEW", "SWITCH_BLOCK_TIME", "TAG", "", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 

@@ -11,88 +11,88 @@ final class BackStackState
   implements Parcelable
 {
   public static final Parcelable.Creator<BackStackState> CREATOR = new Parcelable.Creator() {};
-  final int CI;
-  final int CJ;
-  final int CN;
-  final CharSequence CO;
-  final int CQ;
-  final CharSequence CR;
-  final ArrayList<String> CS;
-  final ArrayList<String> CT;
-  final boolean CU;
-  final int[] Db;
+  final int EA;
+  final int EB;
+  final int EF;
+  final CharSequence EG;
+  final int EH;
+  final CharSequence EI;
+  final ArrayList<String> EJ;
+  final ArrayList<String> EK;
+  final boolean EL;
+  final int[] ES;
   final int mIndex;
   final String mName;
   
   public BackStackState(Parcel paramParcel)
   {
-    this.Db = paramParcel.createIntArray();
-    this.CI = paramParcel.readInt();
-    this.CJ = paramParcel.readInt();
+    this.ES = paramParcel.createIntArray();
+    this.EA = paramParcel.readInt();
+    this.EB = paramParcel.readInt();
     this.mName = paramParcel.readString();
     this.mIndex = paramParcel.readInt();
-    this.CN = paramParcel.readInt();
-    this.CO = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.CQ = paramParcel.readInt();
-    this.CR = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.CS = paramParcel.createStringArrayList();
-    this.CT = paramParcel.createStringArrayList();
+    this.EF = paramParcel.readInt();
+    this.EG = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.EH = paramParcel.readInt();
+    this.EI = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.EJ = paramParcel.createStringArrayList();
+    this.EK = paramParcel.createStringArrayList();
     if (paramParcel.readInt() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.CU = bool;
+      this.EL = bool;
       return;
     }
   }
   
   public BackStackState(b paramb)
   {
-    int k = paramb.CD.size();
-    this.Db = new int[k * 6];
-    if (!paramb.CK) {
+    int k = paramb.Ev.size();
+    this.ES = new int[k * 6];
+    if (!paramb.EC) {
       throw new IllegalStateException("Not on back stack");
     }
     int i = 0;
     int j = 0;
     if (i < k)
     {
-      b.a locala = (b.a)paramb.CD.get(i);
-      int[] arrayOfInt = this.Db;
+      b.a locala = (b.a)paramb.Ev.get(i);
+      int[] arrayOfInt = this.ES;
       int m = j + 1;
-      arrayOfInt[j] = locala.CW;
-      arrayOfInt = this.Db;
+      arrayOfInt[j] = locala.EN;
+      arrayOfInt = this.ES;
       int n = m + 1;
       if (locala.fragment != null) {}
       for (j = locala.fragment.mIndex;; j = -1)
       {
         arrayOfInt[m] = j;
-        arrayOfInt = this.Db;
+        arrayOfInt = this.ES;
         j = n + 1;
-        arrayOfInt[n] = locala.CX;
-        arrayOfInt = this.Db;
+        arrayOfInt[n] = locala.EO;
+        arrayOfInt = this.ES;
         m = j + 1;
-        arrayOfInt[j] = locala.CY;
-        arrayOfInt = this.Db;
+        arrayOfInt[j] = locala.EP;
+        arrayOfInt = this.ES;
         n = m + 1;
-        arrayOfInt[m] = locala.CZ;
-        arrayOfInt = this.Db;
+        arrayOfInt[m] = locala.EQ;
+        arrayOfInt = this.ES;
         j = n + 1;
-        arrayOfInt[n] = locala.Da;
+        arrayOfInt[n] = locala.ER;
         i += 1;
         break;
       }
     }
-    this.CI = paramb.CI;
-    this.CJ = paramb.CJ;
+    this.EA = paramb.EA;
+    this.EB = paramb.EB;
     this.mName = paramb.mName;
     this.mIndex = paramb.mIndex;
-    this.CN = paramb.CN;
-    this.CO = paramb.CO;
-    this.CQ = paramb.CQ;
-    this.CR = paramb.CR;
-    this.CS = paramb.CS;
-    this.CT = paramb.CT;
-    this.CU = paramb.CU;
+    this.EF = paramb.EF;
+    this.EG = paramb.EG;
+    this.EH = paramb.EH;
+    this.EI = paramb.EI;
+    this.EJ = paramb.EJ;
+    this.EK = paramb.EK;
+    this.EL = paramb.EL;
   }
   
   public final b a(FragmentManagerImpl paramFragmentManagerImpl)
@@ -100,54 +100,54 @@ final class BackStackState
     b localb = new b(paramFragmentManagerImpl);
     int i = 0;
     int j = 0;
-    if (j < this.Db.length)
+    if (j < this.ES.length)
     {
       b.a locala = new b.a();
-      int[] arrayOfInt = this.Db;
+      int[] arrayOfInt = this.ES;
       int k = j + 1;
-      locala.CW = arrayOfInt[j];
+      locala.EN = arrayOfInt[j];
       if (FragmentManagerImpl.DEBUG) {
-        new StringBuilder("Instantiate ").append(localb).append(" op #").append(i).append(" base fragment #").append(this.Db[k]);
+        new StringBuilder("Instantiate ").append(localb).append(" op #").append(i).append(" base fragment #").append(this.ES[k]);
       }
-      arrayOfInt = this.Db;
+      arrayOfInt = this.ES;
       j = k + 1;
       k = arrayOfInt[k];
       if (k >= 0) {}
       for (locala.fragment = ((Fragment)paramFragmentManagerImpl.mActive.get(k));; locala.fragment = null)
       {
-        arrayOfInt = this.Db;
+        arrayOfInt = this.ES;
         k = j + 1;
-        locala.CX = arrayOfInt[j];
-        arrayOfInt = this.Db;
+        locala.EO = arrayOfInt[j];
+        arrayOfInt = this.ES;
         j = k + 1;
-        locala.CY = arrayOfInt[k];
-        arrayOfInt = this.Db;
+        locala.EP = arrayOfInt[k];
+        arrayOfInt = this.ES;
         k = j + 1;
-        locala.CZ = arrayOfInt[j];
-        arrayOfInt = this.Db;
+        locala.EQ = arrayOfInt[j];
+        arrayOfInt = this.ES;
         j = k + 1;
-        locala.Da = arrayOfInt[k];
-        localb.CE = locala.CX;
-        localb.CF = locala.CY;
-        localb.CG = locala.CZ;
-        localb.CH = locala.Da;
+        locala.ER = arrayOfInt[k];
+        localb.Ew = locala.EO;
+        localb.Ex = locala.EP;
+        localb.Ey = locala.EQ;
+        localb.Ez = locala.ER;
         localb.a(locala);
         i += 1;
         break;
       }
     }
-    localb.CI = this.CI;
-    localb.CJ = this.CJ;
+    localb.EA = this.EA;
+    localb.EB = this.EB;
     localb.mName = this.mName;
     localb.mIndex = this.mIndex;
-    localb.CK = true;
-    localb.CN = this.CN;
-    localb.CO = this.CO;
-    localb.CQ = this.CQ;
-    localb.CR = this.CR;
-    localb.CS = this.CS;
-    localb.CT = this.CT;
-    localb.CU = this.CU;
+    localb.EC = true;
+    localb.EF = this.EF;
+    localb.EG = this.EG;
+    localb.EH = this.EH;
+    localb.EI = this.EI;
+    localb.EJ = this.EJ;
+    localb.EK = this.EK;
+    localb.EL = this.EL;
     localb.aq(1);
     return localb;
   }
@@ -160,18 +160,18 @@ final class BackStackState
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramInt = 0;
-    paramParcel.writeIntArray(this.Db);
-    paramParcel.writeInt(this.CI);
-    paramParcel.writeInt(this.CJ);
+    paramParcel.writeIntArray(this.ES);
+    paramParcel.writeInt(this.EA);
+    paramParcel.writeInt(this.EB);
     paramParcel.writeString(this.mName);
     paramParcel.writeInt(this.mIndex);
-    paramParcel.writeInt(this.CN);
-    TextUtils.writeToParcel(this.CO, paramParcel, 0);
-    paramParcel.writeInt(this.CQ);
-    TextUtils.writeToParcel(this.CR, paramParcel, 0);
-    paramParcel.writeStringList(this.CS);
-    paramParcel.writeStringList(this.CT);
-    if (this.CU) {
+    paramParcel.writeInt(this.EF);
+    TextUtils.writeToParcel(this.EG, paramParcel, 0);
+    paramParcel.writeInt(this.EH);
+    TextUtils.writeToParcel(this.EI, paramParcel, 0);
+    paramParcel.writeStringList(this.EJ);
+    paramParcel.writeStringList(this.EK);
+    if (this.EL) {
       paramInt = 1;
     }
     paramParcel.writeInt(paramInt);

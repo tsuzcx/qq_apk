@@ -3,70 +3,70 @@ package com.tencent.mm.live.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.storage.x;
-import d.g.b.k;
+import com.tencent.mm.storage.ab;
+import d.g.b.p;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/report/LiveKvStatReportHelper$Companion;", "", "()V", "GROUP_CHATTING_ROLE_MANAGER", "", "GROUP_CHATTING_ROLE_NORMAL", "GROUP_CHATTING_ROLE_OWNER", "LIVE_COMPLAINT_SENCE_LIVE", "LIVE_COMPLAINT_SENCE_OTHER", "LIVE_ENTRANCE_SCENE_OTHER", "LIVE_ENTRANCE_SCENE_TOOLBAR", "LIVE_NOTIFICATION_SCENE_APPMSG", "LIVE_NOTIFICATION_SCENE_NAV_TIP", "LIVE_NOTIFICATION_SCENE_OTHER", "LIVE_ROLE_ANCHOR", "LIVE_ROLE_VISITOR", "REPORT_CAMERA_STATUS_BACK", "REPORT_CAMERA_STATUS_FRONT", "REPORT_CAMERA_STATUS_OTHER", "REPORT_SCREEN_ORIENTATION_LANDSCAPE", "REPORT_SCREEN_ORIENTATION_OTHER", "REPORT_SCREEN_ORIENTATION_PORTRAIT", "TAG", "", "getGroupChattingMemberCount", "roomId", "getGroupChattingRole", "userName", "getLiveRole", "anchorName", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/report/LiveKvStatReportHelper$Companion;", "", "()V", "GROUP_CHATTING_ROLE_MANAGER", "", "GROUP_CHATTING_ROLE_NORMAL", "GROUP_CHATTING_ROLE_OWNER", "LIVE_COMPLAINT_SENCE_LIVE", "LIVE_COMPLAINT_SENCE_OTHER", "LIVE_ENTRANCE_SCENE_OTHER", "LIVE_ENTRANCE_SCENE_TOOLBAR", "LIVE_NOTIFICATION_SCENE_APPMSG", "LIVE_NOTIFICATION_SCENE_NAV_TIP", "LIVE_NOTIFICATION_SCENE_OTHER", "LIVE_ROLE_ANCHOR", "LIVE_ROLE_VISITOR", "REPORT_CAMERA_STATUS_BACK", "REPORT_CAMERA_STATUS_FRONT", "REPORT_CAMERA_STATUS_OTHER", "REPORT_SCREEN_ORIENTATION_LANDSCAPE", "REPORT_SCREEN_ORIENTATION_OTHER", "REPORT_SCREEN_ORIENTATION_PORTRAIT", "TAG", "", "getGroupChattingMemberCount", "roomId", "getGroupChattingRole", "userName", "getLiveRole", "anchorName", "plugin-logic_release"})
 public final class b$a
 {
-  public static int at(String paramString1, String paramString2)
+  public static int au(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190423);
-    k.h(paramString1, "userName");
-    k.h(paramString2, "roomId");
+    AppMethodBeat.i(212713);
+    p.h(paramString1, "userName");
+    p.h(paramString2, "roomId");
     a locala = g.ab(c.class);
-    k.g(locala, "MMKernel.service(IChatroomService::class.java)");
-    paramString2 = ((c)locala).awK().xN(paramString2);
-    if ((paramString2 != null) && (paramString2.aMU(paramString1) == true))
+    p.g(locala, "MMKernel.service(IChatroomService::class.java)");
+    paramString2 = ((c)locala).azz().AN(paramString2);
+    if ((paramString2 != null) && (paramString2.aSH(paramString1) == true))
     {
-      AppMethodBeat.o(190423);
+      AppMethodBeat.o(212713);
       return 2;
     }
-    if ((paramString2 != null) && (paramString2.xB(paramString1) == true))
+    if ((paramString2 != null) && (paramString2.Az(paramString1) == true))
     {
-      AppMethodBeat.o(190423);
+      AppMethodBeat.o(212713);
       return 1;
     }
-    AppMethodBeat.o(190423);
+    AppMethodBeat.o(212713);
     return 3;
   }
   
-  public static int au(String paramString1, String paramString2)
+  public static int av(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(190424);
-    k.h(paramString1, "userName");
-    k.h(paramString2, "anchorName");
-    if (k.g(paramString1, paramString2))
+    AppMethodBeat.i(212714);
+    p.h(paramString1, "userName");
+    p.h(paramString2, "anchorName");
+    if (p.i(paramString1, paramString2))
     {
-      AppMethodBeat.o(190424);
+      AppMethodBeat.o(212714);
       return 1;
     }
-    AppMethodBeat.o(190424);
+    AppMethodBeat.o(212714);
     return 2;
   }
   
-  public static int ve(String paramString)
+  public static int xU(String paramString)
   {
-    AppMethodBeat.i(190425);
-    k.h(paramString, "roomId");
+    AppMethodBeat.i(212715);
+    p.h(paramString, "roomId");
     a locala = g.ab(c.class);
-    k.g(locala, "MMKernel.service(IChatroomService::class.java)");
-    paramString = ((c)locala).awK().xN(paramString);
+    p.g(locala, "MMKernel.service(IChatroomService::class.java)");
+    paramString = ((c)locala).azz().AN(paramString);
     if (paramString != null)
     {
-      paramString = paramString.aDl();
+      paramString = paramString.aGo();
       if (paramString != null)
       {
         int i = paramString.size();
-        AppMethodBeat.o(190425);
+        AppMethodBeat.o(212715);
         return i;
       }
     }
-    AppMethodBeat.o(190425);
+    AppMethodBeat.o(212715);
     return 0;
   }
 }

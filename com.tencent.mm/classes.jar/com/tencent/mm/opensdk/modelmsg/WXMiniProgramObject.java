@@ -3,7 +3,8 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
+import java.util.HashMap;
 
 public class WXMiniProgramObject
   implements WXMediaMessage.IMediaObject
@@ -12,36 +13,85 @@ public class WXMiniProgramObject
   public static final int MINIPROGRAM_TYPE_TEST = 1;
   public static final int MINIPTOGRAM_TYPE_RELEASE = 0;
   private static final String TAG = "MicroMsg.SDK.WXMiniProgramObject";
-  public int disableforward = 0;
-  public int miniprogramType = 0;
+  public int disableforward;
+  private HashMap<String, String> extraInfoMap;
+  public boolean isSecretMessage;
+  public boolean isUpdatableMessage;
+  public int miniprogramType;
   public String path;
   public String userName;
   public String webpageUrl;
   public boolean withShareTicket;
   
+  public WXMiniProgramObject()
+  {
+    AppMethodBeat.i(196939);
+    this.miniprogramType = 0;
+    this.disableforward = 0;
+    this.isUpdatableMessage = false;
+    this.isSecretMessage = false;
+    this.extraInfoMap = null;
+    AppMethodBeat.o(196939);
+  }
+  
   public boolean checkArgs()
   {
     AppMethodBeat.i(3948);
-    if (d.b(this.webpageUrl))
+    if (b.b(this.webpageUrl))
     {
       Log.e("MicroMsg.SDK.WXMiniProgramObject", "webPageUrl is null");
       AppMethodBeat.o(3948);
       return false;
     }
-    if (d.b(this.userName))
+    if (b.b(this.userName))
     {
       Log.e("MicroMsg.SDK.WXMiniProgramObject", "userName is null");
       AppMethodBeat.o(3948);
       return false;
     }
-    if ((this.miniprogramType < 0) || (this.miniprogramType > 2))
+    int i = this.miniprogramType;
+    if ((i >= 0) && (i <= 2))
     {
-      Log.e("MicroMsg.SDK.WXMiniProgramObject", "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW");
       AppMethodBeat.o(3948);
-      return false;
+      return true;
     }
+    Log.e("MicroMsg.SDK.WXMiniProgramObject", "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW");
     AppMethodBeat.o(3948);
-    return true;
+    return false;
+  }
+  
+  public String getExtra(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(196941);
+    HashMap localHashMap = this.extraInfoMap;
+    if (localHashMap != null)
+    {
+      paramString1 = (String)localHashMap.get(paramString1);
+      if (paramString1 != null) {
+        break label41;
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(196941);
+      return paramString2;
+      AppMethodBeat.o(196941);
+      return null;
+      label41:
+      paramString2 = paramString1;
+    }
+  }
+  
+  public void putExtra(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(196940);
+    if (this.extraInfoMap == null) {
+      this.extraInfoMap = new HashMap();
+    }
+    if (!b.b(paramString1)) {
+      this.extraInfoMap.put(paramString1, paramString2);
+    }
+    AppMethodBeat.o(196940);
   }
   
   public void serialize(Bundle paramBundle)
@@ -53,6 +103,12 @@ public class WXMiniProgramObject
     paramBundle.putBoolean("_wxminiprogram_withsharetiket", this.withShareTicket);
     paramBundle.putInt("_wxminiprogram_type", this.miniprogramType);
     paramBundle.putInt("_wxminiprogram_disableforward", this.disableforward);
+    paramBundle.putBoolean("_wxminiprogram_isupdatablemsg", this.isUpdatableMessage);
+    paramBundle.putBoolean("_wxminiprogram_issecretmsg", this.isSecretMessage);
+    HashMap localHashMap = this.extraInfoMap;
+    if (localHashMap != null) {
+      paramBundle.putSerializable("_wxminiprogram_extrainfo", localHashMap);
+    }
     AppMethodBeat.o(3946);
   }
   
@@ -70,12 +126,15 @@ public class WXMiniProgramObject
     this.withShareTicket = paramBundle.getBoolean("_wxminiprogram_withsharetiket");
     this.miniprogramType = paramBundle.getInt("_wxminiprogram_type");
     this.disableforward = paramBundle.getInt("_wxminiprogram_disableforward");
+    this.isUpdatableMessage = paramBundle.getBoolean("_wxminiprogram_isupdatablemsg");
+    this.isSecretMessage = paramBundle.getBoolean("_wxminiprogram_issecretmsg");
+    this.extraInfoMap = ((HashMap)paramBundle.getSerializable("_wxminiprogram_extrainfo"));
     AppMethodBeat.o(3947);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject
  * JD-Core Version:    0.7.0.1
  */

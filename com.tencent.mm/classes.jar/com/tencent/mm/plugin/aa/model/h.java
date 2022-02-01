@@ -7,8 +7,8 @@ import com.tencent.mm.vending.j.c;
 public final class h
   implements b<g>
 {
-  protected g izF;
-  public final a izG;
+  protected g iSO;
+  public final a iSP;
   
   public h()
   {
@@ -20,14 +20,14 @@ public final class h
   private h(g paramg)
   {
     AppMethodBeat.i(63337);
-    this.izG = new a();
-    this.izF = paramg;
+    this.iSP = new a();
+    this.iSO = paramg;
     AppMethodBeat.o(63337);
   }
   
-  public final g aNU()
+  public final g aRg()
   {
-    return this.izF;
+    return this.iSO;
   }
   
   public final class a
@@ -35,7 +35,7 @@ public final class h
   {
     public a() {}
     
-    public final String Ua()
+    public final String Wr()
     {
       return "Vending.LOGIC";
     }
@@ -43,7 +43,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.h
  * JD-Core Version:    0.7.0.1
  */

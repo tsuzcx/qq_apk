@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d
   implements b.a
 {
-  private final long aTs;
-  private final long bap;
-  private final long[] baq;
-  private final long bar;
-  private final int bas;
+  private final long bdM;
+  private final long bkK;
+  private final long[] bkL;
+  private final long bkM;
+  private final int bkN;
   private final long firstFramePosition;
   
   d(long paramLong1, long paramLong2, long paramLong3)
@@ -21,16 +21,16 @@ final class d
   d(long paramLong1, long paramLong2, long paramLong3, long[] paramArrayOfLong, long paramLong4, int paramInt)
   {
     this.firstFramePosition = paramLong1;
-    this.aTs = paramLong2;
-    this.bap = paramLong3;
-    this.baq = paramArrayOfLong;
-    this.bar = paramLong4;
-    this.bas = paramInt;
+    this.bdM = paramLong2;
+    this.bkK = paramLong3;
+    this.bkL = paramArrayOfLong;
+    this.bkM = paramLong4;
+    this.bkN = paramInt;
   }
   
-  private long ed(int paramInt)
+  private long eh(int paramInt)
   {
-    return this.aTs * paramInt / 100L;
+    return this.bdM * paramInt / 100L;
   }
   
   public final long L(long paramLong)
@@ -38,27 +38,27 @@ final class d
     float f2 = 256.0F;
     float f3 = 0.0F;
     AppMethodBeat.i(92048);
-    if (!sQ())
+    if (!up())
     {
       paramLong = this.firstFramePosition;
       AppMethodBeat.o(92048);
       return paramLong;
     }
-    float f4 = (float)paramLong * 100.0F / (float)this.aTs;
+    float f4 = (float)paramLong * 100.0F / (float)this.bdM;
     float f1;
     long l1;
     long l2;
     if (f4 <= 0.0F)
     {
       f1 = 0.0F;
-      l1 = Math.round(f1 * 0.00390625D * this.bar);
+      l1 = Math.round(f1 * 0.00390625D * this.bkM);
       l2 = this.firstFramePosition;
-      if (this.bap == -1L) {
+      if (this.bkK == -1L) {
         break label183;
       }
     }
     label183:
-    for (paramLong = this.bap - 1L;; paramLong = this.firstFramePosition - this.bas + this.bar - 1L)
+    for (paramLong = this.bkK - 1L;; paramLong = this.firstFramePosition - this.bkN + this.bkM - 1L)
     {
       paramLong = Math.min(l2 + l1, paramLong);
       AppMethodBeat.o(92048);
@@ -69,10 +69,10 @@ final class d
       }
       int i = (int)f4;
       if (i == 0) {}
-      for (f1 = f3;; f1 = (float)this.baq[(i - 1)])
+      for (f1 = f3;; f1 = (float)this.bkL[(i - 1)])
       {
         if (i < 99) {
-          f2 = (float)this.baq[i];
+          f2 = (float)this.bkL[i];
         }
         f1 = (f2 - f1) * (f4 - i) + f1;
         break;
@@ -83,14 +83,14 @@ final class d
   public final long N(long paramLong)
   {
     AppMethodBeat.i(92049);
-    if ((!sQ()) || (paramLong < this.firstFramePosition))
+    if ((!up()) || (paramLong < this.firstFramePosition))
     {
       AppMethodBeat.o(92049);
       return 0L;
     }
-    double d1 = 256.0D * (paramLong - this.firstFramePosition) / this.bar;
-    int i = x.a(this.baq, d1, false) + 1;
-    long l2 = ed(i);
+    double d1 = 256.0D * (paramLong - this.firstFramePosition) / this.bkM;
+    int i = x.a(this.bkL, d1, false) + 1;
+    long l2 = eh(i);
     long l1;
     label87:
     long l3;
@@ -101,7 +101,7 @@ final class d
         break label129;
       }
       l1 = 256L;
-      l3 = ed(i + 1);
+      l3 = eh(i + 1);
       if (l1 != paramLong) {
         break label141;
       }
@@ -113,9 +113,9 @@ final class d
     {
       AppMethodBeat.o(92049);
       return paramLong + l2;
-      paramLong = this.baq[(i - 1)];
+      paramLong = this.bkL[(i - 1)];
       break;
-      l1 = this.baq[i];
+      l1 = this.bkL[i];
       break label87;
       d2 = l3 - l2;
     }
@@ -123,12 +123,12 @@ final class d
   
   public final long getDurationUs()
   {
-    return this.aTs;
+    return this.bdM;
   }
   
-  public final boolean sQ()
+  public final boolean up()
   {
-    return this.baq != null;
+    return this.bkL != null;
   }
 }
 

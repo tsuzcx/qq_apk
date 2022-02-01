@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class ag
 {
-  public static String aN(Context paramContext, int paramInt)
+  public static String aQ(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(163886);
     switch (paramInt)
@@ -22,35 +22,35 @@ public final class ag
     {
       AppMethodBeat.o(163886);
       return paramContext;
-      paramContext = a.aw(paramContext, 2131765506);
+      paramContext = a.az(paramContext, 2131765506);
       continue;
-      paramContext = a.aw(paramContext, 2131765511);
+      paramContext = a.az(paramContext, 2131765511);
       continue;
-      paramContext = a.aw(paramContext, 2131765512);
+      paramContext = a.az(paramContext, 2131765512);
       continue;
-      paramContext = a.aw(paramContext, 2131765513);
+      paramContext = a.az(paramContext, 2131765513);
       continue;
-      paramContext = a.aw(paramContext, 2131765514);
+      paramContext = a.az(paramContext, 2131765514);
       continue;
-      paramContext = a.aw(paramContext, 2131765515);
+      paramContext = a.az(paramContext, 2131765515);
       continue;
-      paramContext = a.aw(paramContext, 2131765516);
+      paramContext = a.az(paramContext, 2131765516);
       continue;
-      paramContext = a.aw(paramContext, 2131765517);
+      paramContext = a.az(paramContext, 2131765517);
       continue;
-      paramContext = a.aw(paramContext, 2131765518);
+      paramContext = a.az(paramContext, 2131765518);
       continue;
-      paramContext = a.aw(paramContext, 2131765507);
+      paramContext = a.az(paramContext, 2131765507);
       continue;
-      paramContext = a.aw(paramContext, 2131765508);
+      paramContext = a.az(paramContext, 2131765508);
       continue;
-      paramContext = a.aw(paramContext, 2131765509);
+      paramContext = a.az(paramContext, 2131765509);
       continue;
-      paramContext = a.aw(paramContext, 2131765510);
+      paramContext = a.az(paramContext, 2131765510);
     }
   }
   
-  public static int adO(int paramInt)
+  public static int ago(int paramInt)
   {
     switch (paramInt)
     {
@@ -65,7 +65,7 @@ public final class ag
     return 2;
   }
   
-  public static boolean br(Intent paramIntent)
+  public static boolean bw(Intent paramIntent)
   {
     AppMethodBeat.i(163884);
     if (paramIntent == null)
@@ -76,7 +76,7 @@ public final class ag
     int i = paramIntent.getIntExtra("key_pay_reslut_type", 0);
     if (i == 1000)
     {
-      ac.i("MicroMsg.WalletPayUtil", "onActivityResult isCanFinish %s %s", new Object[] { Integer.valueOf(i), bs.eWi().toString() });
+      ad.i("MicroMsg.WalletPayUtil", "onActivityResult isCanFinish %s %s", new Object[] { Integer.valueOf(i), bt.flS().toString() });
       AppMethodBeat.o(163884);
       return true;
     }
@@ -84,7 +84,7 @@ public final class ag
     return false;
   }
   
-  public static boolean bs(Intent paramIntent)
+  public static boolean bx(Intent paramIntent)
   {
     AppMethodBeat.i(163885);
     if (paramIntent == null)
@@ -95,7 +95,7 @@ public final class ag
     int i = paramIntent.getIntExtra("key_pay_reslut_type", 0);
     if (i == 1001)
     {
-      ac.i("MicroMsg.WalletPayUtil", "onActivityResult isCanIgnore %s %s", new Object[] { Integer.valueOf(i), bs.eWi().toString() });
+      ad.i("MicroMsg.WalletPayUtil", "onActivityResult isCanIgnore %s %s", new Object[] { Integer.valueOf(i), bt.flS().toString() });
       AppMethodBeat.o(163885);
       return true;
     }

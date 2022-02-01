@@ -7,17 +7,17 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ProfileDescribeView;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.cf;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ProfileDescribePreference
   extends Preference
 {
-  private ProfileDescribeView DBB;
-  public ai piT;
-  private View uCg;
-  public bz wbZ;
+  private ProfileDescribeView FgI;
+  public am pMt;
+  private View vET;
+  public cf xjI;
   
   public ProfileDescribePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,30 +33,30 @@ public class ProfileDescribePreference
   {
     AppMethodBeat.i(31905);
     super.onBindView(paramView);
-    if (this.piT == null)
+    if (this.pMt == null)
     {
       AppMethodBeat.o(31905);
       return;
     }
-    this.DBB.dqG();
+    this.FgI.dBj();
     AppMethodBeat.o(31905);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31904);
-    if (this.uCg == null)
+    if (this.vET == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
       ProfileDescribeView localProfileDescribeView = new ProfileDescribeView(paramViewGroup.getContext());
-      this.DBB = localProfileDescribeView;
+      this.FgI = localProfileDescribeView;
       localViewGroup.addView(localProfileDescribeView, new AbsListView.LayoutParams(-1, -2));
-      this.DBB.aa(this.piT);
-      this.uCg = paramViewGroup;
+      this.FgI.aa(this.pMt);
+      this.vET = paramViewGroup;
     }
-    paramViewGroup = this.uCg;
+    paramViewGroup = this.vET;
     AppMethodBeat.o(31904);
     return paramViewGroup;
   }

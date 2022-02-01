@@ -1,87 +1,57 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import android.app.ActivityManager;
-import android.content.Context;
+import android.annotation.TargetApi;
+import android.media.MediaFormat;
+import android.media.MediaMuxer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
 
+@Deprecated
+@TargetApi(18)
 public final class j
-  extends a<byte[]>
+  extends p
 {
-  private static int ibB;
-  public static final j uMV;
-  
-  static
+  public j(String paramString)
   {
-    AppMethodBeat.i(148835);
-    uMV = new j();
-    ibB = 0;
-    AppMethodBeat.o(148835);
+    super(paramString);
   }
   
-  public final long avH()
-  {
-    AppMethodBeat.i(148828);
-    if (ibB <= 0) {
-      ibB = ((ActivityManager)ai.getContext().getSystemService("activity")).getLargeMemoryClass();
-    }
-    if (ibB >= 512)
-    {
-      AppMethodBeat.o(148828);
-      return 41943040L;
-    }
-    AppMethodBeat.o(148828);
-    return 20971520L;
-  }
-  
-  public final long avI()
-  {
-    return 10485760L;
-  }
-  
-  public final void avJ()
-  {
-    AppMethodBeat.i(148829);
-    super.avJ();
-    AppMethodBeat.o(148829);
-  }
-  
-  public final byte[] g(Integer paramInteger)
+  public final void f(MediaFormat paramMediaFormat)
   {
     try
     {
-      AppMethodBeat.i(148827);
-      byte[] arrayOfByte2 = (byte[])super.d(paramInteger);
-      byte[] arrayOfByte1 = arrayOfByte2;
-      if (arrayOfByte2 == null) {
-        arrayOfByte1 = new byte[paramInteger.intValue()];
+      AppMethodBeat.i(213679);
+      try
+      {
+        if ((this.vQp != null) && (this.vQr == -1))
+        {
+          this.vQr = this.vQp.addTrack(paramMediaFormat);
+          ad.i("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack, aacTrackIndex: %s", new Object[] { Integer.valueOf(this.vQr) });
+          if ((!this.isStart) && (this.vQr != -1))
+          {
+            ad.i("MicroMsg.MMSightAACSystemMediaMuxer", "start!");
+            this.vQp.start();
+            this.isStart = true;
+          }
+        }
+        AppMethodBeat.o(213679);
       }
-      AppMethodBeat.o(148827);
-      return arrayOfByte1;
-    }
-    finally {}
-  }
-  
-  public final void k(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      AppMethodBeat.i(148826);
-      super.bJ(paramArrayOfByte);
-      AppMethodBeat.o(148826);
+      catch (Exception paramMediaFormat)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.MMSightAACSystemMediaMuxer", "addAACTrack error: %s", new Object[] { paramMediaFormat.getMessage() });
+          AppMethodBeat.o(213679);
+        }
+      }
       return;
     }
-    finally
-    {
-      paramArrayOfByte = finally;
-      throw paramArrayOfByte;
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.j
  * JD-Core Version:    0.7.0.1
  */

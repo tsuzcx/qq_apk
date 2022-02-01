@@ -5,16 +5,16 @@ import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
 final class AppBrandUserInfoAuthorizeUI$g$a
   implements DialogInterface.OnCancelListener
 {
-  public static final a mfs;
+  public static final a mFT;
   
   static
   {
     AppMethodBeat.i(180668);
-    mfs = new a();
+    mFT = new a();
     AppMethodBeat.o(180668);
   }
   

@@ -6,12 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.as;
 import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ay;
 import d.g.a.b;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.Arrays;
@@ -19,10 +19,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
 public final class d
 {
-  private static final String N(Bundle paramBundle)
+  private static final String P(Bundle paramBundle)
   {
     AppMethodBeat.i(6581);
     StringBuilder localStringBuilder = new StringBuilder("Bundle[");
@@ -31,7 +31,7 @@ public final class d
       localStringBuilder.append("null");
       localStringBuilder.append("]");
       paramBundle = localStringBuilder.toString();
-      k.g(paramBundle, "out.toString()");
+      p.g(paramBundle, "out.toString()");
       AppMethodBeat.o(6581);
       return paramBundle;
     }
@@ -54,7 +54,7 @@ public final class d
         if ((localObject instanceof Object[])) {
           localStringBuilder.append(Arrays.toString((Object[])localObject));
         } else if ((localObject instanceof Bundle)) {
-          localStringBuilder.append(N((Bundle)localObject));
+          localStringBuilder.append(P((Bundle)localObject));
         }
       }
       catch (Exception paramBundle)
@@ -67,39 +67,72 @@ public final class d
     }
   }
   
-  public static final boolean a(aw paramaw, String paramString, long paramLong)
+  public static final boolean a(ax paramax, String paramString, long paramLong)
   {
     AppMethodBeat.i(6577);
-    k.h(paramaw, "$this$isExpire");
-    k.h(paramString, "key");
-    boolean bool = ar.at(paramaw.getLong(paramString, 0L), paramLong);
+    p.h(paramax, "$this$isExpire");
+    p.h(paramString, "key");
+    boolean bool = as.ay(paramax.getLong(paramString, 0L), paramLong);
     AppMethodBeat.o(6577);
     return bool;
   }
   
-  public static final String ae(Intent paramIntent)
+  public static final String ag(Intent paramIntent)
   {
     AppMethodBeat.i(6580);
-    k.h(paramIntent, "$this$toDebugString");
-    paramIntent = paramIntent.toString() + " " + N(paramIntent.getExtras());
+    p.h(paramIntent, "$this$toDebugString");
+    paramIntent = paramIntent.toString() + " " + P(paramIntent.getExtras());
     AppMethodBeat.o(6580);
     return paramIntent;
   }
   
-  public static final void b(aw paramaw, String paramString)
+  public static final void b(ax paramax, String paramString)
   {
     AppMethodBeat.i(6576);
-    k.h(paramaw, "$this$putNow");
-    k.h(paramString, "key");
-    paramaw.putLong(paramString, System.currentTimeMillis());
+    p.h(paramax, "$this$putNow");
+    p.h(paramString, "key");
+    paramax.putLong(paramString, System.currentTimeMillis());
     AppMethodBeat.o(6576);
   }
   
-  public static final boolean b(Context paramContext, b<? super ActivityManager.RunningAppProcessInfo, Boolean> paramb)
+  public static final String bPd()
+  {
+    AppMethodBeat.i(6579);
+    Context localContext = aj.getContext();
+    if (ay.isWifi(localContext))
+    {
+      AppMethodBeat.o(6579);
+      return "wifi";
+    }
+    if (ay.is5G(localContext))
+    {
+      AppMethodBeat.o(6579);
+      return "5g";
+    }
+    if (ay.is4G(localContext))
+    {
+      AppMethodBeat.o(6579);
+      return "4g";
+    }
+    if (ay.is3G(localContext))
+    {
+      AppMethodBeat.o(6579);
+      return "3g";
+    }
+    if (ay.is2G(localContext))
+    {
+      AppMethodBeat.o(6579);
+      return "2g";
+    }
+    AppMethodBeat.o(6579);
+    return "none";
+  }
+  
+  public static final boolean c(Context paramContext, b<? super ActivityManager.RunningAppProcessInfo, Boolean> paramb)
   {
     AppMethodBeat.i(6578);
-    k.h(paramContext, "context");
-    k.h(paramb, "predicate");
+    p.h(paramContext, "context");
+    p.h(paramb, "predicate");
     paramContext = paramContext.getSystemService("activity");
     if (paramContext == null)
     {
@@ -111,8 +144,8 @@ public final class d
     while (paramContext.hasNext())
     {
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      k.g(localRunningAppProcessInfo, "info");
-      if (((Boolean)paramb.ay(localRunningAppProcessInfo)).booleanValue())
+      p.g(localRunningAppProcessInfo, "info");
+      if (((Boolean)paramb.invoke(localRunningAppProcessInfo)).booleanValue())
       {
         AppMethodBeat.o(6578);
         return true;
@@ -120,34 +153,6 @@ public final class d
     }
     AppMethodBeat.o(6578);
     return false;
-  }
-  
-  public static final String bKC()
-  {
-    AppMethodBeat.i(6579);
-    Context localContext = ai.getContext();
-    if (ax.isWifi(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "wifi";
-    }
-    if (ax.is4G(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "4g";
-    }
-    if (ax.is3G(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "3g";
-    }
-    if (ax.is2G(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "2g";
-    }
-    AppMethodBeat.o(6579);
-    return "none";
   }
 }
 

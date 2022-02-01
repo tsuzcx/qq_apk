@@ -7,14 +7,14 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.protocal.protobuf.aqc;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.protocal.protobuf.aty;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ai;
 
 public final class f
 {
-  public static String aQs()
+  public static String aTE()
   {
     AppMethodBeat.i(125529);
     String str = Build.MANUFACTURER + "-" + Build.MODEL;
@@ -22,22 +22,22 @@ public final class f
     return str;
   }
   
-  public static String di(Context paramContext)
+  public static String dg(Context paramContext)
   {
     AppMethodBeat.i(125528);
     if (paramContext == null)
     {
-      if (com.tencent.mm.sdk.platformtools.i.GqM)
+      if (com.tencent.mm.sdk.platformtools.j.IcA)
       {
-        paramContext = ai.getContext().getString(2131762749);
+        paramContext = aj.getContext().getString(2131762749);
         AppMethodBeat.o(125528);
         return paramContext;
       }
-      paramContext = ai.getContext().getString(2131762748);
+      paramContext = aj.getContext().getString(2131762748);
       AppMethodBeat.o(125528);
       return paramContext;
     }
-    if (com.tencent.mm.sdk.platformtools.i.GqM)
+    if (com.tencent.mm.sdk.platformtools.j.IcA)
     {
       paramContext = paramContext.getString(2131762749);
       AppMethodBeat.o(125528);
@@ -51,21 +51,21 @@ public final class f
   public static void p(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(125527);
-    if (!g.agM())
+    if (!g.ajx())
     {
       AppMethodBeat.o(125527);
       return;
     }
-    int i = u.axC();
-    aqc localaqc;
+    int i = u.aAs();
+    aty localaty;
     if (paramBoolean1)
     {
       i |= 0x4000;
-      g.agR().agA().set(40, Integer.valueOf(i));
+      g.ajC().ajl().set(40, Integer.valueOf(i));
       if (paramBoolean2)
       {
-        localaqc = new aqc();
-        localaqc.EIY = 28;
+        localaty = new aty();
+        localaty.GrZ = 28;
         if (!paramBoolean1) {
           break label126;
         }
@@ -74,9 +74,9 @@ public final class f
     label126:
     for (i = 1;; i = 2)
     {
-      localaqc.vVH = i;
-      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awA().c(new j.a(23, localaqc));
-      a.iyy.Lj();
+      localaty.xcI = i;
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azo().c(new k.a(23, localaty));
+      a.iRH.MR();
       AppMethodBeat.o(125527);
       return;
       i &= 0xFFFFBFFF;
@@ -86,7 +86,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -9,25 +9,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.o;
-import com.tencent.mm.protocal.protobuf.agx;
-import com.tencent.mm.protocal.protobuf.ahn;
-import com.tencent.mm.protocal.protobuf.ahp;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.akd;
+import com.tencent.mm.protocal.protobuf.akf;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashSet;
 import java.util.LinkedList;
 
 public final class m
   extends b
 {
-  private HashSet<Long> qTT;
-  final int qTc;
+  private HashSet<Long> rDW;
+  final int rDf;
   
   public m(o paramo)
   {
     super(paramo);
     AppMethodBeat.i(107483);
-    this.qTc = a.au(paramo.context, 2131165359);
-    this.qTT = new HashSet();
+    this.rDf = a.ax(paramo.context, 2131165359);
+    this.rDW = new HashSet();
     AppMethodBeat.o(107483);
   }
   
@@ -39,35 +39,35 @@ public final class m
     {
       paramViewGroup = new a();
       paramView = a(View.inflate((Context)localObject, 2131493963, null), paramViewGroup, paramg);
-      paramViewGroup.qTo = ((ImageView)paramView.findViewById(2131299801));
-      paramViewGroup.qTV = ((TextView)paramView.findViewById(2131299855));
-      LinkedList localLinkedList = paramg.field_favProto.nxC;
+      paramViewGroup.rDr = ((ImageView)paramView.findViewById(2131299801));
+      paramViewGroup.rDY = ((TextView)paramView.findViewById(2131299855));
+      LinkedList localLinkedList = paramg.field_favProto.nZa;
       if (localLinkedList.size() <= 0) {
         break label231;
       }
-      int i = ((agx)localLinkedList.getFirst()).duration;
-      paramViewGroup.qTV.setText(com.tencent.mm.plugin.fav.ui.m.F((Context)localObject, i));
+      int i = ((ajn)localLinkedList.getFirst()).duration;
+      paramViewGroup.rDY.setText(com.tencent.mm.plugin.fav.ui.m.G((Context)localObject, i));
       if ((paramg != null) && (i <= 1)) {
         break label180;
       }
       label118:
-      paramViewGroup.qTV.setVisibility(0);
+      paramViewGroup.rDY.setVisibility(0);
     }
     for (;;)
     {
       a(paramViewGroup, paramg);
       localObject = com.tencent.mm.plugin.fav.a.b.c(paramg);
-      this.qLn.a(paramViewGroup.qTo, (agx)localObject, paramg, 2131689581, this.qTc, this.qTc);
+      this.rvp.a(paramViewGroup.rDr, (ajn)localObject, paramg, 2131689581, this.rDf, this.rDf);
       AppMethodBeat.o(107484);
       return paramView;
       paramViewGroup = (a)paramView.getTag();
       break;
       label180:
-      if (this.qTT.contains(Long.valueOf(paramg.field_localId))) {
+      if (this.rDW.contains(Long.valueOf(paramg.field_localId))) {
         break label118;
       }
-      this.qTT.add(Long.valueOf(paramg.field_localId));
-      com.tencent.mm.kernel.g.agU().az(new Runnable()
+      this.rDW.add(Long.valueOf(paramg.field_localId));
+      com.tencent.mm.kernel.g.ajF().ay(new Runnable()
       {
         public final void run()
         {
@@ -78,29 +78,29 @@ public final class m
       });
       break label118;
       label231:
-      paramViewGroup.qTV.setVisibility(8);
+      paramViewGroup.rDY.setVisibility(8);
     }
   }
   
-  public final void a(View paramView, ahp paramahp)
+  public final void a(View paramView, akf paramakf)
   {
     AppMethodBeat.i(107485);
     a locala = (a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.qJy, paramahp);
+    ((y)com.tencent.mm.kernel.g.ab(y.class)).a(paramView, locala.rtA, paramakf);
     AppMethodBeat.o(107485);
   }
   
   public static final class a
     extends b.b
   {
-    TextView qTV;
-    ImageView qTo;
+    TextView rDY;
+    ImageView rDr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.e.m
  * JD-Core Version:    0.7.0.1
  */

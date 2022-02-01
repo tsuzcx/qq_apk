@@ -11,9 +11,9 @@ import com.tencent.wecall.talkroom.model.c;
 public final class l
   extends d
 {
-  public long AMc;
-  public int tOL;
-  public String tmu;
+  public long Clq;
+  public int uRy;
+  public String ukT;
   
   public l(String paramString1, int paramInt, long paramLong, String paramString2)
   {
@@ -23,16 +23,16 @@ public final class l
     try
     {
       localh.groupId = paramString1;
-      this.tmu = paramString1;
+      this.ukT = paramString1;
       localh.roomId = paramInt;
-      this.tOL = paramInt;
-      localh.tIG = paramLong;
-      this.AMc = paramLong;
-      localh.fzz = paramString2;
+      this.uRy = paramInt;
+      localh.uLt = paramLong;
+      this.Clq = paramLong;
+      localh.fSO = paramString2;
       localh.timestamp = System.currentTimeMillis();
-      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.tIG), localh.groupId, localh.fzz, Long.valueOf(localh.timestamp) });
+      b.i("MicroMsg.Voip", new Object[] { "roomId: %d, roomKey: %d, groupId: %s, ownerUserName: %s, timestamp: %d", Integer.valueOf(localh.roomId), Long.valueOf(localh.uLt), localh.groupId, localh.fSO, Long.valueOf(localh.timestamp) });
       this.mNetType = 3;
-      this.JLH = c.fIe().aUe(paramString1);
+      this.LFq = c.fZv().bac(paramString1);
       c(245, localh);
       AppMethodBeat.o(62540);
       return;
@@ -46,7 +46,7 @@ public final class l
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62541);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -69,7 +69,7 @@ public final class l
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSSubscribeLargeVideoReq";
   }
@@ -81,7 +81,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.l
  * JD-Core Version:    0.7.0.1
  */

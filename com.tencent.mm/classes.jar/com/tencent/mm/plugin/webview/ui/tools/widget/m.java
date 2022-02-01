@@ -9,7 +9,7 @@ import com.tencent.mm.protocal.c;
 public class m
   extends f.a
 {
-  public boolean Vr(int paramInt)
+  public boolean VX(int paramInt)
   {
     return false;
   }
@@ -24,45 +24,45 @@ public class m
     return false;
   }
   
-  public void aCM(String paramString) {}
+  public void aFG(String paramString) {}
   
-  public void aD(Bundle paramBundle) {}
+  public void ay(Bundle paramBundle) {}
   
-  public void aE(Bundle paramBundle) {}
+  public void az(Bundle paramBundle) {}
   
-  public final String dKq()
+  public final String dWD()
   {
     return null;
   }
   
   public void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public String eCA()
+  public void eLu() {}
+  
+  public String eLv()
   {
     return null;
   }
   
-  public String eCy()
+  public String eLw()
   {
     return null;
   }
   
-  public final int eCz()
+  public final int eLx()
   {
     return 0;
   }
   
-  public Bundle eH(String paramString1, String paramString2)
+  public void eLy() {}
+  
+  public Bundle eR(String paramString1, String paramString2)
   {
     AppMethodBeat.i(82235);
-    paramString1 = c.aIx(null);
+    paramString1 = c.aOa(null);
     AppMethodBeat.o(82235);
     return paramString1;
   }
-  
-  public void ezP() {}
-  
-  public void ezQ() {}
   
   public boolean g(int paramInt, Bundle paramBundle)
   {
@@ -85,11 +85,11 @@ public class m
   
   public void u(int paramInt, Bundle paramBundle) {}
   
-  public void uq(boolean paramBoolean) {}
+  public void uO(boolean paramBoolean) {}
   
-  public void ur(boolean paramBoolean) {}
+  public void uP(boolean paramBoolean) {}
   
-  public void us(boolean paramBoolean) {}
+  public void uQ(boolean paramBoolean) {}
 }
 
 

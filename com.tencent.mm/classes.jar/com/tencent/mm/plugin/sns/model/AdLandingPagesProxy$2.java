@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class AdLandingPagesProxy$2
   implements a.b
@@ -12,43 +12,43 @@ final class AdLandingPagesProxy$2
   public final void failed(long paramLong)
   {
     AppMethodBeat.i(95214);
-    this.xPx.CLIENT_CALL("failed", new Object[] { Long.valueOf(paramLong) });
+    this.zfr.CLIENT_CALL("failed", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(95214);
   }
   
   public final void paused(long paramLong)
   {
     AppMethodBeat.i(95211);
-    this.xPx.CLIENT_CALL("paused", new Object[] { Long.valueOf(paramLong) });
+    this.zfr.CLIENT_CALL("paused", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(95211);
   }
   
   public final void progress(long paramLong, int paramInt)
   {
     AppMethodBeat.i(95210);
-    ac.v("AdLandingPagesProxy", "progress %d", new Object[] { Integer.valueOf(paramInt) });
-    this.xPx.CLIENT_CALL("progress", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    ad.v("AdLandingPagesProxy", "progress %d", new Object[] { Integer.valueOf(paramInt) });
+    this.zfr.CLIENT_CALL("progress", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     AppMethodBeat.o(95210);
   }
   
   public final void resumed(long paramLong)
   {
     AppMethodBeat.i(95215);
-    this.xPx.CLIENT_CALL("resumed", new Object[] { Long.valueOf(paramLong) });
+    this.zfr.CLIENT_CALL("resumed", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(95215);
   }
   
   public final void stopped(long paramLong)
   {
     AppMethodBeat.i(95212);
-    this.xPx.CLIENT_CALL("stopped", new Object[] { Long.valueOf(paramLong) });
+    this.zfr.CLIENT_CALL("stopped", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(95212);
   }
   
   public final void succeed(long paramLong)
   {
     AppMethodBeat.i(95213);
-    this.xPx.CLIENT_CALL("succeed", new Object[] { Long.valueOf(paramLong) });
+    this.zfr.CLIENT_CALL("succeed", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(95213);
   }
 }

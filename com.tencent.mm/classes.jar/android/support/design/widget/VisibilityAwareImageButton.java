@@ -7,7 +7,7 @@ import android.widget.ImageButton;
 public class VisibilityAwareImageButton
   extends ImageButton
 {
-  private int uJ = getVisibility();
+  private int wC = getVisibility();
   
   public VisibilityAwareImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,13 +23,13 @@ public class VisibilityAwareImageButton
   {
     super.setVisibility(paramInt);
     if (paramBoolean) {
-      this.uJ = paramInt;
+      this.wC = paramInt;
     }
   }
   
   public final int getUserSetVisibility()
   {
-    return this.uJ;
+    return this.wC;
   }
   
   public void setVisibility(int paramInt)

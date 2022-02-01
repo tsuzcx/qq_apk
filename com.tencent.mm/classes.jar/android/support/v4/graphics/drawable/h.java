@@ -16,37 +16,37 @@ import java.lang.reflect.Method;
 final class h
   extends g
 {
-  private static Method IG;
+  private static Method Kx;
   
   h(Drawable paramDrawable)
   {
     super(paramDrawable);
-    en();
+    eE();
   }
   
   h(g.a parama, Resources paramResources)
   {
     super(parama, paramResources);
-    en();
+    eE();
   }
   
-  private static void en()
+  private static void eE()
   {
-    if (IG == null) {}
+    if (Kx == null) {}
     try
     {
-      IG = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+      Kx = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
       return;
     }
     catch (Exception localException) {}
   }
   
-  final g.a el()
+  final g.a eC()
   {
-    return new a(this.IE);
+    return new a(this.Kv);
   }
   
-  protected final boolean em()
+  protected final boolean eD()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -98,7 +98,7 @@ final class h
   
   public final void setTint(int paramInt)
   {
-    if (em())
+    if (eD())
     {
       super.setTint(paramInt);
       return;
@@ -108,7 +108,7 @@ final class h
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    if (em())
+    if (eD())
     {
       super.setTintList(paramColorStateList);
       return;
@@ -118,7 +118,7 @@ final class h
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    if (em())
+    if (eD())
     {
       super.setTintMode(paramMode);
       return;

@@ -14,7 +14,7 @@ import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.CustomViewPager;
 import com.tencent.mm.ui.base.d;
 import java.util.ArrayList;
@@ -24,14 +24,14 @@ public class MultiTabView
   extends LinearLayout
   implements n
 {
-  private List<View> Jbp;
-  private View Jbq;
-  private GridLayout Jbr;
-  private CustomViewPager Jbs;
-  private o Jbt;
-  private a Jbu;
-  private int bns;
-  private q sP;
+  private o KSA;
+  private a KSB;
+  private List<View> KSw;
+  private View KSx;
+  private GridLayout KSy;
+  private CustomViewPager KSz;
+  private int bxN;
+  private q uI;
   
   public MultiTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,16 +42,16 @@ public class MultiTabView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164227);
-    this.Jbp = new ArrayList();
-    this.Jbt = new o(this);
-    this.bns = -1;
-    this.Jbr = new GridLayout(getContext());
-    this.Jbr.setRowCount(1);
+    this.KSw = new ArrayList();
+    this.KSA = new o(this);
+    this.bxN = -1;
+    this.KSy = new GridLayout(getContext());
+    this.KSy.setRowCount(1);
     setOrientation(1);
-    this.Jbs = new CustomViewPager(getContext());
-    this.sP = new d(getContext())
+    this.KSz = new CustomViewPager(getContext());
+    this.uI = new d(getContext())
     {
-      public final void Ka(int paramAnonymousInt) {}
+      public final void LC(int paramAnonymousInt) {}
       
       public final View a(View paramAnonymousView, ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
@@ -61,7 +61,7 @@ public class MultiTabView
         return paramAnonymousView;
       }
       
-      public final int djx()
+      public final int dtJ()
       {
         AppMethodBeat.i(164224);
         int i = MultiTabView.a(MultiTabView.this).size();
@@ -77,8 +77,8 @@ public class MultiTabView
         return i;
       }
     };
-    this.Jbs.setAdapter(this.sP);
-    this.Jbs.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+    this.KSz.setAdapter(this.uI);
+    this.KSz.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
     {
       public final void onPageScrollStateChanged(int paramAnonymousInt) {}
       
@@ -97,19 +97,19 @@ public class MultiTabView
         AppMethodBeat.o(164226);
       }
     });
-    addView(this.Jbr, new LinearLayout.LayoutParams(-1, -2));
-    addView(this.Jbs, new LinearLayout.LayoutParams(-1, -2));
+    addView(this.KSy, new LinearLayout.LayoutParams(-1, -2));
+    addView(this.KSz, new LinearLayout.LayoutParams(-1, -2));
     AppMethodBeat.o(164227);
   }
   
-  private void acC(int paramInt)
+  private void aeZ(int paramInt)
   {
     AppMethodBeat.i(164231);
-    ViewGroup.LayoutParams localLayoutParams = this.Jbs.getLayoutParams();
+    ViewGroup.LayoutParams localLayoutParams = this.KSz.getLayoutParams();
     if (localLayoutParams.height == -2) {}
-    for (localLayoutParams.height = (this.Jbs.getHeight() + paramInt);; localLayoutParams.height += paramInt)
+    for (localLayoutParams.height = (this.KSz.getHeight() + paramInt);; localLayoutParams.height += paramInt)
     {
-      this.Jbs.setLayoutParams(localLayoutParams);
+      this.KSz.setLayoutParams(localLayoutParams);
       AppMethodBeat.o(164231);
       return;
     }
@@ -120,10 +120,10 @@ public class MultiTabView
   public final void a(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
     AppMethodBeat.i(164232);
-    if (this.Jbq != null)
+    if (this.KSx != null)
     {
       Rect localRect = new Rect();
-      this.Jbq.getLocalVisibleRect(localRect);
+      this.KSx.getLocalVisibleRect(localRect);
       if (Math.abs(paramInt1) - Math.abs(paramInt2) > 0)
       {
         paramArrayOfInt[1] = paramInt2;
@@ -132,16 +132,16 @@ public class MultiTabView
       }
       if ((paramInt2 > 0) && (!paramView.canScrollVertically(-1)) && (localRect.bottom > 0))
       {
-        ac.d("MicroMsg.MultiTabView", "scrollUp topBar, dy %d topBar visible rect %s", new Object[] { Integer.valueOf(paramInt2), localRect });
+        ad.d("MicroMsg.MultiTabView", "scrollUp topBar, dy %d topBar visible rect %s", new Object[] { Integer.valueOf(paramInt2), localRect });
         paramArrayOfInt[1] = Math.min(paramInt2, localRect.height());
-        acC(paramArrayOfInt[1]);
+        aeZ(paramArrayOfInt[1]);
         scrollBy(0, paramArrayOfInt[1]);
       }
       if ((paramInt2 < 0) && (!paramView.canScrollVertically(-1)) && (localRect.top != 0))
       {
-        ac.d("MicroMsg.MultiTabView", "scrollDown topBar, dy %d topBar visible rect %s", new Object[] { Integer.valueOf(paramInt2), localRect });
+        ad.d("MicroMsg.MultiTabView", "scrollDown topBar, dy %d topBar visible rect %s", new Object[] { Integer.valueOf(paramInt2), localRect });
         paramArrayOfInt[1] = Math.max(paramInt2, -Math.abs(localRect.top));
-        acC(paramArrayOfInt[1]);
+        aeZ(paramArrayOfInt[1]);
         scrollBy(0, paramArrayOfInt[1]);
       }
     }
@@ -155,22 +155,22 @@ public class MultiTabView
   
   public final void b(View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    this.Jbt.NY = paramInt1;
+    this.KSA.PP = paramInt1;
   }
   
   public int getSelectedIndex()
   {
-    return this.bns;
+    return this.bxN;
   }
   
   public final void j(View paramView, int paramInt)
   {
-    this.Jbt.NY = 0;
+    this.KSA.PP = 0;
   }
   
   public void setTabListener(a parama)
   {
-    this.Jbu = parama;
+    this.KSB = parama;
   }
   
   public static abstract interface a {}

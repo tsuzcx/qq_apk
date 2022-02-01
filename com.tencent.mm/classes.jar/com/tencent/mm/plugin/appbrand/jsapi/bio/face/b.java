@@ -6,19 +6,19 @@ public final class b
   public static final int CTRL_INDEX = 477;
   public static final String NAME = "startCustomFacialRecognitionVerify";
   
-  protected final boolean bfA()
+  protected final boolean bjb()
   {
     return false;
   }
   
-  protected final boolean bfy()
-  {
-    return false;
-  }
-  
-  protected final String bfz()
+  protected final String bjc()
   {
     return "startCustomFacialRecognitionVerify";
+  }
+  
+  protected final boolean bjd()
+  {
+    return false;
   }
 }
 

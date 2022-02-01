@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.ipcall.model.b;
 
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.az;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class a
-  implements g
+  implements f
 {
   protected int errCode = 0;
   protected int errType = 0;
-  protected c tHV;
-  protected a tID;
+  protected c uKI;
+  protected a uLq;
   
-  public abstract void BE();
+  public abstract void Dd();
   
   public final void a(a parama)
   {
-    this.tID = parama;
+    this.uLq = parama;
   }
   
   public void a(c paramc)
   {
-    ac.d("MicroMsg.BaseIPCallService", "start service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
-    this.tHV = paramc;
-    b(this.tHV);
+    ad.d("MicroMsg.BaseIPCallService", "start service, type: %d", new Object[] { Integer.valueOf(getServiceType()) });
+    this.uKI = paramc;
+    b(this.uKI);
   }
   
   public abstract void b(c paramc);
   
-  public abstract int[] cUI();
+  public abstract int[] ddT();
   
   public void destroy()
   {
-    int[] arrayOfInt = cUI();
+    int[] arrayOfInt = ddT();
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = arrayOfInt[i];
-      az.agi().b(k, this);
+      ba.aiU().b(k, this);
       i += 1;
     }
-    this.tID = null;
+    this.uLq = null;
     onDestroy();
   }
   
@@ -51,34 +51,34 @@ public abstract class a
   
   public void init()
   {
-    int[] arrayOfInt = cUI();
+    int[] arrayOfInt = ddT();
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
     {
       int k = arrayOfInt[i];
-      az.agi().a(k, this);
+      ba.aiU().a(k, this);
       i += 1;
     }
-    BE();
+    Dd();
   }
   
   public abstract void onDestroy();
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    ac.d("MicroMsg.BaseIPCallService", "onSceneEnd, errType: %d, errCode: %d, scene.getType: %d, serviceType: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.getType()), Integer.valueOf(getServiceType()) });
+    ad.d("MicroMsg.BaseIPCallService", "onSceneEnd, errType: %d, errCode: %d, scene.getType: %d, serviceType: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramn.getType()), Integer.valueOf(getServiceType()) });
     this.errType = paramInt1;
     this.errCode = paramInt2;
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (this.tID != null) {
-        this.tID.a(getServiceType(), paramn, paramInt1, paramInt2);
+      if (this.uLq != null) {
+        this.uLq.a(getServiceType(), paramn, paramInt1, paramInt2);
       }
     }
-    while (this.tID == null) {
+    while (this.uLq == null) {
       return;
     }
-    this.tID.b(getServiceType(), paramn, paramInt1, paramInt2);
+    this.uLq.b(getServiceType(), paramn, paramInt1, paramInt2);
   }
   
   public static abstract interface a
@@ -90,7 +90,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.b.a
  * JD-Core Version:    0.7.0.1
  */

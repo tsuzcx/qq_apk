@@ -18,11 +18,11 @@ import org.xwalk.core.XWalkInitializer;
 public final class j
   implements w.a
 {
-  private String KHm = "";
-  private i KHn = null;
-  private k KHo = null;
+  private String MxM = "";
+  private i MxN = null;
+  private k MxO = null;
   
-  public static void Cn(long paramLong)
+  public static void Fp(long paramLong)
   {
     AppMethodBeat.i(154509);
     Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -38,7 +38,7 @@ public final class j
     AppMethodBeat.o(154509);
   }
   
-  public static boolean fLU()
+  public static boolean gdp()
   {
     AppMethodBeat.i(154510);
     Object localObject1 = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -90,13 +90,13 @@ public final class j
         Object localObject2 = null;
       }
       XWalkInitializer.addXWalkInitializeLog("XWalkPluginUp", "plugin update process pid invalid, clear");
-      fLV();
+      gdq();
       AppMethodBeat.o(154510);
     }
     return false;
   }
   
-  public static void fLV()
+  public static void gdq()
   {
     AppMethodBeat.i(154511);
     Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
@@ -115,37 +115,37 @@ public final class j
   public final void a(Context paramContext, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(154508);
-    this.KHo = new k();
-    this.KHo.a(paramHashMap, this.KHm, this.KHn);
-    this.KHo.execute(new String[0]);
-    this.KHm = "";
-    this.KHn = null;
+    this.MxO = new k();
+    this.MxO.a(paramHashMap, this.MxM, this.MxN);
+    this.MxO.execute(new String[0]);
+    this.MxM = "";
+    this.MxN = null;
     AppMethodBeat.o(154508);
   }
   
   public final void a(String paramString, i parami)
   {
-    this.KHm = paramString;
-    this.KHn = parami;
+    this.MxM = paramString;
+    this.MxN = parami;
   }
   
-  public final void fJr()
+  public final void gaL()
   {
-    AppMethodBeat.i(208947);
-    if (this.KHo != null) {
-      this.KHo.b(4, -1, null);
+    AppMethodBeat.i(195587);
+    if (this.MxO != null) {
+      this.MxO.b(4, -1, null);
     }
-    AppMethodBeat.o(208947);
+    AppMethodBeat.o(195587);
   }
   
   public final boolean isBusy()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.KHo != null)
+    if (this.MxO != null)
     {
       bool1 = bool2;
-      if (!this.KHo.KHx) {
+      if (!this.MxO.MxX) {
         bool1 = true;
       }
     }

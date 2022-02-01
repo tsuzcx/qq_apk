@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.notification.ui;
 
 public abstract interface a
 {
-  public abstract void dly();
+  public abstract void dvP();
   
-  public abstract void dlz();
+  public abstract void dvQ();
 }
 
 

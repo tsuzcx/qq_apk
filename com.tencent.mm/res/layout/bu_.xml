@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="30.0dip" android:layout_height="18.0dip" android:src="@drawable/c93" android:scaleType="fitCenter" />
+</FrameLayout>

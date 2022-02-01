@@ -5,27 +5,27 @@ import java.util.Stack;
 
 final class f
 {
-  private static f Jrd;
-  ThreadLocal<Stack<c>> Jre;
+  private static f LiI;
+  ThreadLocal<Stack<c>> LiJ;
   
   static
   {
     AppMethodBeat.i(177492);
-    Jrd = null;
-    Jrd = new f();
+    LiI = null;
+    LiI = new f();
     AppMethodBeat.o(177492);
   }
   
   private f()
   {
     AppMethodBeat.i(177491);
-    this.Jre = new ThreadLocal();
+    this.LiJ = new ThreadLocal();
     AppMethodBeat.o(177491);
   }
   
-  public static f fxr()
+  public static f fOe()
   {
-    return Jrd;
+    return LiI;
   }
 }
 

@@ -26,7 +26,7 @@ public final class d
       try
       {
         paramg = com.bumptech.glide.h.a.v(this.file);
-        parama.R(paramg);
+        parama.S(paramg);
         AppMethodBeat.o(77214);
         return;
       }
@@ -42,14 +42,14 @@ public final class d
     
     public final void cleanup() {}
     
-    public final Class<ByteBuffer> nU()
+    public final Class<ByteBuffer> om()
     {
       return ByteBuffer.class;
     }
     
-    public final com.bumptech.glide.c.a nV()
+    public final com.bumptech.glide.c.a on()
     {
-      return com.bumptech.glide.c.a.aCP;
+      return com.bumptech.glide.c.a.aEG;
     }
   }
   

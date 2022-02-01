@@ -8,63 +8,25 @@ public abstract class gv
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBr;
-  private static final int emY = "createTime".hashCode();
-  private static final int eoH;
-  private static final int epb;
-  private static final int evD;
-  private static final int evF;
-  private static final int fiA;
-  private static final int fiB;
-  private static final int fiC;
-  private static final int fiD = "autoDownloadCount".hashCode();
-  private static final int fiE = "fileDownloadCount".hashCode();
-  private static final int fid;
-  private static final int fih;
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int fys = "wallet_tpa_country".hashCode();
+  private static final int fyt = "wallet_type".hashCode();
+  private static final int fyu = "wallet_name".hashCode();
+  private static final int fyv = "wallet_selected".hashCode();
+  private static final int fyw = "wallet_balance".hashCode();
+  private static final int fyx = "wallet_tpa_country_mask".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean eAF = true;
-  private boolean emB = true;
-  private boolean eoF = true;
-  private boolean eoW = true;
-  private boolean evv = true;
-  private boolean evx = true;
-  private boolean fhY = true;
-  private boolean fic = true;
-  public int field_autoDownloadCount;
-  public boolean field_completeDownload;
-  public long field_createTime;
-  public int field_downloadNetType;
-  public String field_downloadUrl;
-  public int field_fileDownloadCount;
-  public String field_filePath;
-  public String field_key;
-  public String field_md5;
-  public String field_mimeType;
-  public String field_pkgId;
-  public String field_rid;
-  public int field_size;
-  public String field_version;
-  private boolean fiv = true;
-  private boolean fiw = true;
-  private boolean fix = true;
-  private boolean fiy = true;
-  private boolean fiz = true;
-  
-  static
-  {
-    fid = "pkgId".hashCode();
-    epb = "version".hashCode();
-    evF = "filePath".hashCode();
-    fiA = "rid".hashCode();
-    fiB = "mimeType".hashCode();
-    eBr = "md5".hashCode();
-    evD = "downloadUrl".hashCode();
-    eoH = "size".hashCode();
-    fih = "downloadNetType".hashCode();
-    fiC = "completeDownload".hashCode();
-  }
+  public int field_wallet_balance;
+  public String field_wallet_name;
+  public int field_wallet_selected;
+  public String field_wallet_tpa_country;
+  public int field_wallet_tpa_country_mask;
+  public int field_wallet_type;
+  private boolean fym = true;
+  private boolean fyn = true;
+  private boolean fyo = true;
+  private boolean fyp = true;
+  private boolean fyq = true;
+  private boolean fyr = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -72,18 +34,18 @@ public abstract class gv
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
+      if (fys != k) {
         break label65;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_wallet_tpa_country = paramCursor.getString(i);
+      this.fym = true;
     }
     for (;;)
     {
@@ -91,62 +53,18 @@ public abstract class gv
       break label20;
       break;
       label65:
-      if (fid == k)
-      {
-        this.field_pkgId = paramCursor.getString(i);
-      }
-      else if (epb == k)
-      {
-        this.field_version = paramCursor.getString(i);
-      }
-      else if (evF == k)
-      {
-        this.field_filePath = paramCursor.getString(i);
-      }
-      else if (fiA == k)
-      {
-        this.field_rid = paramCursor.getString(i);
-      }
-      else if (fiB == k)
-      {
-        this.field_mimeType = paramCursor.getString(i);
-      }
-      else if (eBr == k)
-      {
-        this.field_md5 = paramCursor.getString(i);
-      }
-      else if (evD == k)
-      {
-        this.field_downloadUrl = paramCursor.getString(i);
-      }
-      else if (eoH == k)
-      {
-        this.field_size = paramCursor.getInt(i);
-      }
-      else if (fih == k)
-      {
-        this.field_downloadNetType = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (fiC == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_completeDownload = bool;
-            break;
-          }
-        }
-        if (emY == k) {
-          this.field_createTime = paramCursor.getLong(i);
-        } else if (fiD == k) {
-          this.field_autoDownloadCount = paramCursor.getInt(i);
-        } else if (fiE == k) {
-          this.field_fileDownloadCount = paramCursor.getInt(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (fyt == k) {
+        this.field_wallet_type = paramCursor.getInt(i);
+      } else if (fyu == k) {
+        this.field_wallet_name = paramCursor.getString(i);
+      } else if (fyv == k) {
+        this.field_wallet_selected = paramCursor.getInt(i);
+      } else if (fyw == k) {
+        this.field_wallet_balance = paramCursor.getInt(i);
+      } else if (fyx == k) {
+        this.field_wallet_tpa_country_mask = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -154,47 +72,23 @@ public abstract class gv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.fym) {
+      localContentValues.put("wallet_tpa_country", this.field_wallet_tpa_country);
     }
-    if (this.fhY) {
-      localContentValues.put("pkgId", this.field_pkgId);
+    if (this.fyn) {
+      localContentValues.put("wallet_type", Integer.valueOf(this.field_wallet_type));
     }
-    if (this.eoW) {
-      localContentValues.put("version", this.field_version);
+    if (this.fyo) {
+      localContentValues.put("wallet_name", this.field_wallet_name);
     }
-    if (this.evx) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.fyp) {
+      localContentValues.put("wallet_selected", Integer.valueOf(this.field_wallet_selected));
     }
-    if (this.fiv) {
-      localContentValues.put("rid", this.field_rid);
+    if (this.fyq) {
+      localContentValues.put("wallet_balance", Integer.valueOf(this.field_wallet_balance));
     }
-    if (this.fiw) {
-      localContentValues.put("mimeType", this.field_mimeType);
-    }
-    if (this.eAF) {
-      localContentValues.put("md5", this.field_md5);
-    }
-    if (this.evv) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
-    }
-    if (this.eoF) {
-      localContentValues.put("size", Integer.valueOf(this.field_size));
-    }
-    if (this.fic) {
-      localContentValues.put("downloadNetType", Integer.valueOf(this.field_downloadNetType));
-    }
-    if (this.fix) {
-      localContentValues.put("completeDownload", Boolean.valueOf(this.field_completeDownload));
-    }
-    if (this.emB) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.fiy) {
-      localContentValues.put("autoDownloadCount", Integer.valueOf(this.field_autoDownloadCount));
-    }
-    if (this.fiz) {
-      localContentValues.put("fileDownloadCount", Integer.valueOf(this.field_fileDownloadCount));
+    if (this.fyr) {
+      localContentValues.put("wallet_tpa_country_mask", Integer.valueOf(this.field_wallet_tpa_country_mask));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -204,7 +98,7 @@ public abstract class gv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.gv
  * JD-Core Version:    0.7.0.1
  */

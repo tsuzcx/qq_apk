@@ -7,36 +7,36 @@ import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.b.c.a;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.w;
-import com.tencent.mm.plugin.appbrand.config.w.b;
+import com.tencent.mm.plugin.appbrand.config.x;
+import com.tencent.mm.plugin.appbrand.config.x.b;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class p
 {
   final int enterScene;
-  final QualitySession jDH;
-  final int jnw;
-  final WxaAttributes.WxaVersionInfo liI;
-  final AppBrandPrepareTask.PrepareParams ljX;
-  final a ljY;
+  final int jHt;
+  final QualitySession jXD;
+  final WxaAttributes.WxaVersionInfo lFN;
+  final AppBrandPrepareTask.PrepareParams lHf;
+  final a lHg;
   
   p(AppBrandPrepareTask.PrepareParams paramPrepareParams, a parama)
   {
     AppMethodBeat.i(180300);
-    this.ljX = paramPrepareParams;
-    this.enterScene = paramPrepareParams.iFE;
-    this.liI = paramPrepareParams.lhP;
-    this.jnw = this.liI.aBM;
-    this.ljY = parama;
-    this.jDH = paramPrepareParams.lhS;
+    this.lHf = paramPrepareParams;
+    this.enterScene = paramPrepareParams.iYN;
+    this.lFN = paramPrepareParams.lEQ;
+    this.jHt = this.lFN.aDD;
+    this.lHg = parama;
+    this.jXD = paramPrepareParams.lET;
     AppMethodBeat.o(180300);
   }
   
   public static abstract interface a
   {
-    public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.v.b paramb);
+    public abstract void a(com.tencent.mm.plugin.appbrand.jsapi.y.b paramb);
   }
 }
 

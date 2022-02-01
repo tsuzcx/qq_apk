@@ -3,7 +3,7 @@ package com.tencent.mm.cf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public int max;
   public int min;
@@ -14,24 +14,24 @@ public final class d
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.min);
-      paramVarArgs.aR(2, this.max);
+      paramVarArgs.aS(1, this.min);
+      paramVarArgs.aS(2, this.max);
       AppMethodBeat.o(104919);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bx(1, this.min);
-      int i = f.a.a.b.b.a.bx(2, this.max);
+      paramInt = f.a.a.b.b.a.bz(1, this.min);
+      int i = f.a.a.b.b.a.bz(2, this.max);
       AppMethodBeat.o(104919);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(104919);
@@ -47,11 +47,11 @@ public final class d
         AppMethodBeat.o(104919);
         return -1;
       case 1: 
-        locald.min = locala.LVo.xF();
+        locald.min = locala.NPN.zc();
         AppMethodBeat.o(104919);
         return 0;
       }
-      locald.max = locala.LVo.xF();
+      locald.max = locala.NPN.zc();
       AppMethodBeat.o(104919);
       return 0;
     }
@@ -61,7 +61,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.cf.d
  * JD-Core Version:    0.7.0.1
  */

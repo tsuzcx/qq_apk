@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.pwd;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet.pwd.a.t;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
@@ -26,7 +26,7 @@ final class a$2
     if (paramVarArgs.length == 3)
     {
       paramVarArgs = new t(paramVarArgs[0].toString(), ((Integer)paramVarArgs[1]).intValue(), (String)paramVarArgs[2]);
-      this.JFQ.b(paramVarArgs, true);
+      this.LyU.b(paramVarArgs, true);
     }
     AppMethodBeat.o(69484);
     return true;

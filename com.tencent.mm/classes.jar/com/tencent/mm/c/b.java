@@ -2,12 +2,12 @@ package com.tencent.mm.c;
 
 public abstract class b
 {
-  public boolean aKd = false;
-  public boolean cEQ = true;
+  public boolean aLU = false;
+  public boolean cPV = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.c.b
  * JD-Core Version:    0.7.0.1
  */

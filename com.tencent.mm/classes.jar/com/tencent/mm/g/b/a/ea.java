@@ -6,57 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class ea
   extends a
 {
-  public String dTm;
-  public String dTn;
-  public String dTo;
-  public String dTp;
-  public String dTq;
+  public long dPH;
+  public long ehl;
+  public long ehm;
+  public long ehn = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(94834);
+    AppMethodBeat.i(88783);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTm);
+    ((StringBuffer)localObject).append(this.dPH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTn);
+    ((StringBuffer)localObject).append(this.ehl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTo);
+    ((StringBuffer)localObject).append(this.ehm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTp);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTq);
+    ((StringBuffer)localObject).append(this.ehn);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(94834);
+    awz((String)localObject);
+    AppMethodBeat.o(88783);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(94835);
+    AppMethodBeat.i(88784);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PublishId:").append(this.dTm);
+    ((StringBuffer)localObject).append("action:").append(this.dPH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentIdList:").append(this.dTn);
+    ((StringBuffer)localObject).append("msgid:").append(this.ehl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EmojiIdList:").append(this.dTo);
+    ((StringBuffer)localObject).append("msgType:").append(this.ehm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickEmojiIconIdList:").append(this.dTp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickEmojiIdList:").append(this.dTq);
+    ((StringBuffer)localObject).append("appMsgType:").append(this.ehn);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94835);
+    AppMethodBeat.o(88784);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18670;
+    return 18754;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ea
  * JD-Core Version:    0.7.0.1
  */

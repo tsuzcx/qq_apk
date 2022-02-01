@@ -15,7 +15,7 @@ public class MultiSummaryPreference
 {
   private Context context;
   public String title;
-  public String[] vLz;
+  public String[] wSI;
   
   public MultiSummaryPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,11 +44,11 @@ public class MultiSummaryPreference
     LinearLayout localLinearLayout2 = (LinearLayout)paramView.findViewById(2131305548);
     localLinearLayout1.setVisibility(8);
     localLinearLayout2.setVisibility(8);
-    if ((this.vLz != null) && (this.vLz.length > 0))
+    if ((this.wSI != null) && (this.wSI.length > 0))
     {
-      if (this.vLz.length == 1)
+      if (this.wSI.length == 1)
       {
-        ((TextView)localLinearLayout2.findViewById(2131305555)).setText(this.vLz[0]);
+        ((TextView)localLinearLayout2.findViewById(2131305555)).setText(this.wSI[0]);
         localLinearLayout2.setVisibility(0);
       }
       for (;;)
@@ -56,11 +56,11 @@ public class MultiSummaryPreference
         ((View)paramView.findViewById(2131304172).getParent()).setVisibility(8);
         AppMethodBeat.o(27268);
         return;
-        if (this.vLz.length == 2)
+        if (this.wSI.length == 2)
         {
-          ((TextView)localLinearLayout1.findViewById(2131305554)).setText(this.vLz[0]);
+          ((TextView)localLinearLayout1.findViewById(2131305554)).setText(this.wSI[0]);
           localLinearLayout1.setVisibility(0);
-          ((TextView)localLinearLayout2.findViewById(2131305555)).setText(this.vLz[1]);
+          ((TextView)localLinearLayout2.findViewById(2131305555)).setText(this.wSI[1]);
           localLinearLayout2.setVisibility(0);
         }
       }

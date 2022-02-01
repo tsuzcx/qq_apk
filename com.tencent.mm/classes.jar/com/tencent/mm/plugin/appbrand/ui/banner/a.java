@@ -19,18 +19,18 @@ public final class a
     AppMethodBeat.o(48982);
   }
   
-  public final BannerModel bvQ()
+  public final BannerModel bzW()
   {
     AppMethodBeat.i(48980);
-    BannerModel localBannerModel = b.bvT();
+    BannerModel localBannerModel = b.bzZ();
     AppMethodBeat.o(48980);
     return localBannerModel;
   }
   
-  public final void bvR()
+  public final void bzX()
   {
     AppMethodBeat.i(48983);
-    AppBrandStickyBannerLogic.b.bvR();
+    AppBrandStickyBannerLogic.b.bzX();
     AppMethodBeat.o(48983);
   }
 }

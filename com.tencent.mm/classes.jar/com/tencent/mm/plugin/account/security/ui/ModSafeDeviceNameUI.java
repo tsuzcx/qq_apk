@@ -10,14 +10,15 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.plugin.account.security.a.c;
 import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.e;
-import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMEditText.b;
@@ -25,15 +26,15 @@ import com.tencent.mm.ui.widget.MMEditText.c;
 
 public class ModSafeDeviceNameUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements f
 {
   private long createTime;
-  private String dda;
-  private ProgressDialog fts = null;
-  private EditText iOR;
-  private String iOS;
-  private String iOT;
-  private String iOU;
+  private String dow;
+  private ProgressDialog fMu = null;
+  private EditText jia;
+  private String jib;
+  private String jic;
+  private String jid;
   
   public int getLayoutId()
   {
@@ -43,10 +44,10 @@ public class ModSafeDeviceNameUI
   public void initView()
   {
     AppMethodBeat.i(125552);
-    this.iOS = getIntent().getStringExtra("safe_device_name");
-    this.iOU = getIntent().getStringExtra("safe_device_uid");
-    this.dda = getIntent().getStringExtra("safe_device_type");
-    setMMTitle(com.tencent.mm.cc.a.aw(this, 2131762759));
+    this.jib = getIntent().getStringExtra("safe_device_name");
+    this.jid = getIntent().getStringExtra("safe_device_uid");
+    this.dow = getIntent().getStringExtra("safe_device_type");
+    setMMTitle(com.tencent.mm.cc.a.az(this, 2131762759));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -63,20 +64,20 @@ public class ModSafeDeviceNameUI
       {
         AppMethodBeat.i(125546);
         ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this, ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this).getText().toString());
-        if (bs.isNullOrNil(ModSafeDeviceNameUI.b(ModSafeDeviceNameUI.this)))
+        if (bt.isNullOrNil(ModSafeDeviceNameUI.b(ModSafeDeviceNameUI.this)))
         {
           AppMethodBeat.o(125546);
           return true;
         }
         ModSafeDeviceNameUI.this.hideVKB();
         paramAnonymousMenuItem = new c(ModSafeDeviceNameUI.c(ModSafeDeviceNameUI.this), ModSafeDeviceNameUI.b(ModSafeDeviceNameUI.this), ModSafeDeviceNameUI.d(ModSafeDeviceNameUI.this));
-        com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem, 0);
-        ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this, h.b(ModSafeDeviceNameUI.this, com.tencent.mm.cc.a.aw(ModSafeDeviceNameUI.this, 2131755936), true, new DialogInterface.OnCancelListener()
+        com.tencent.mm.kernel.g.aiU().a(paramAnonymousMenuItem, 0);
+        ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this, h.b(ModSafeDeviceNameUI.this, com.tencent.mm.cc.a.az(ModSafeDeviceNameUI.this, 2131755936), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(125545);
-            com.tencent.mm.kernel.g.agi().a(paramAnonymousMenuItem);
+            com.tencent.mm.kernel.g.aiU().a(paramAnonymousMenuItem);
             AppMethodBeat.o(125545);
           }
         }));
@@ -86,7 +87,7 @@ public class ModSafeDeviceNameUI
     });
     MMEditText.b local3 = new MMEditText.b()
     {
-      public final void aQv()
+      public final void aTH()
       {
         AppMethodBeat.i(125547);
         if (ModSafeDeviceNameUI.a(ModSafeDeviceNameUI.this).getText().toString().trim().length() > 0)
@@ -99,13 +100,13 @@ public class ModSafeDeviceNameUI
         AppMethodBeat.o(125547);
       }
     };
-    this.iOR = ((EditText)findViewById(2131302423));
-    MMEditText.c localc = new MMEditText.c(this.iOR, null, 32);
-    localc.IZW = local3;
-    this.iOR.addTextChangedListener(localc);
-    if (!bs.isNullOrNil(this.iOS))
+    this.jia = ((EditText)findViewById(2131302423));
+    MMEditText.c localc = new MMEditText.c(this.jia, null, 32);
+    localc.KRi = local3;
+    this.jia.addTextChangedListener(localc);
+    if (!bt.isNullOrNil(this.jib))
     {
-      this.iOR.setText(this.iOS);
+      this.jia.setText(this.jib);
       AppMethodBeat.o(125552);
       return;
     }
@@ -124,7 +125,7 @@ public class ModSafeDeviceNameUI
   public void onPause()
   {
     AppMethodBeat.i(125551);
-    com.tencent.mm.kernel.g.agi().b(361, this);
+    com.tencent.mm.kernel.g.aiU().b(361, this);
     super.onPause();
     AppMethodBeat.o(125551);
   }
@@ -132,7 +133,7 @@ public class ModSafeDeviceNameUI
   public void onResume()
   {
     AppMethodBeat.i(125550);
-    com.tencent.mm.kernel.g.agi().a(361, this);
+    com.tencent.mm.kernel.g.aiU().a(361, this);
     super.onResume();
     AppMethodBeat.o(125550);
   }
@@ -140,21 +141,21 @@ public class ModSafeDeviceNameUI
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(125553);
-    if ((this.fts != null) && (this.fts.isShowing()))
+    if ((this.fMu != null) && (this.fMu.isShowing()))
     {
-      this.fts.dismiss();
-      this.fts = null;
+      this.fMu.dismiss();
+      this.fMu = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = new d();
-      paramString.field_devicetype = this.dda;
-      paramString.field_name = this.iOT;
-      paramString.field_uid = this.iOU;
+      paramString.field_devicetype = this.dow;
+      paramString.field_name = this.jic;
+      paramString.field_uid = this.jid;
       paramString.field_createtime = this.createTime;
-      com.tencent.mm.plugin.account.security.a.g.aQu().update(paramString, new String[0]);
-      h.cg(this, com.tencent.mm.cc.a.aw(this, 2131762763));
-      new ao().postDelayed(new Runnable()
+      com.tencent.mm.plugin.account.security.a.g.aTG().update(paramString, new String[0]);
+      h.cl(this, com.tencent.mm.cc.a.az(this, 2131762763));
+      new ap().postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -166,7 +167,7 @@ public class ModSafeDeviceNameUI
       AppMethodBeat.o(125553);
       return;
     }
-    if (com.tencent.mm.plugin.account.a.a.iyy.a(this, paramInt1, paramInt2, paramString))
+    if (com.tencent.mm.plugin.account.a.a.iRH.a(this, paramInt1, paramInt2, paramString))
     {
       AppMethodBeat.o(125553);
       return;
@@ -182,7 +183,7 @@ public class ModSafeDeviceNameUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.ModSafeDeviceNameUI
  * JD-Core Version:    0.7.0.1
  */

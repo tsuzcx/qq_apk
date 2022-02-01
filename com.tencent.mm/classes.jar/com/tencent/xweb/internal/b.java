@@ -10,47 +10,47 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class b
 {
-  public static HashMap<String, b> KCX;
-  static String KCY;
-  private String KCP;
-  private String KCQ;
-  private String KCR;
-  private long KCS;
-  private long KCT;
-  public long KCU;
-  private String KCV;
-  boolean KCW;
-  SharedPreferences zmp;
+  public static HashMap<String, b> Mtx;
+  static String Mty;
+  SharedPreferences Mto;
+  private String Mtp;
+  private String Mtq;
+  private String Mtr;
+  private long Mts;
+  private long Mtt;
+  public long Mtu;
+  private String Mtv;
+  boolean Mtw;
   
   static
   {
     AppMethodBeat.i(156967);
-    KCX = new HashMap();
-    KCY = "";
+    Mtx = new HashMap();
+    Mty = "";
     AppMethodBeat.o(156967);
   }
   
   private b(String paramString, WebView.c paramc)
   {
     AppMethodBeat.i(156958);
-    this.KCW = false;
-    this.zmp = e(paramString, paramc);
-    this.KCP = "INIT_START_TIME".concat(String.valueOf(paramString));
-    this.KCQ = "INIT_END_TIME".concat(String.valueOf(paramString));
-    this.KCR = "INIT_TRY_COUNT".concat(String.valueOf(paramString));
-    this.KCV = paramString;
-    if (this.zmp == null)
+    this.Mtw = false;
+    this.Mto = e(paramString, paramc);
+    this.Mtp = "INIT_START_TIME".concat(String.valueOf(paramString));
+    this.Mtq = "INIT_END_TIME".concat(String.valueOf(paramString));
+    this.Mtr = "INIT_TRY_COUNT".concat(String.valueOf(paramString));
+    this.Mtv = paramString;
+    if (this.Mto == null)
     {
       AppMethodBeat.o(156958);
       return;
     }
-    this.KCS = this.zmp.getLong(this.KCP, 0L);
-    this.KCT = this.zmp.getLong(this.KCQ, 0L);
-    this.KCU = this.zmp.getLong(this.KCR, 0L);
+    this.Mts = this.Mto.getLong(this.Mtp, 0L);
+    this.Mtt = this.Mto.getLong(this.Mtq, 0L);
+    this.Mtu = this.Mto.getLong(this.Mtr, 0L);
     AppMethodBeat.o(156958);
   }
   
-  private boolean Cd(long paramLong)
+  private boolean Ff(long paramLong)
   {
     boolean bool = false;
     for (;;)
@@ -58,17 +58,17 @@ public final class b
       try
       {
         AppMethodBeat.i(156963);
-        if (0L == this.KCS)
+        if (0L == this.Mts)
         {
           AppMethodBeat.o(156963);
           return bool;
         }
-        if ((this.KCT - this.KCS >= 0L) || (Math.abs(paramLong - this.KCS) > 10800000L))
+        if ((this.Mtt - this.Mts >= 0L) || (Math.abs(paramLong - this.Mts) > 10800000L))
         {
           AppMethodBeat.o(156963);
           continue;
         }
-        if (this.KCT >= this.KCS) {
+        if (this.Mtt >= this.Mts) {
           break label94;
         }
       }
@@ -87,12 +87,12 @@ public final class b
     {
       AppMethodBeat.i(156959);
       String str = d(paramString, paramc);
-      b localb2 = (b)KCX.get(str);
+      b localb2 = (b)Mtx.get(str);
       b localb1 = localb2;
       if (localb2 == null)
       {
         localb1 = new b(paramString, paramc);
-        KCX.put(str, localb1);
+        Mtx.put(str, localb1);
       }
       AppMethodBeat.o(156959);
       return localb1;
@@ -110,8 +110,8 @@ public final class b
     //   4: monitorenter
     //   5: ldc 122
     //   7: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 128	com/tencent/xweb/y:fJs	()Lcom/tencent/xweb/y;
-    //   13: getfield 131	com/tencent/xweb/y:KzE	Z
+    //   10: invokestatic 128	com/tencent/xweb/y:gaM	()Lcom/tencent/xweb/y;
+    //   13: getfield 131	com/tencent/xweb/y:MpZ	Z
     //   16: ifeq +13 -> 29
     //   19: ldc 122
     //   21: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -122,10 +122,10 @@ public final class b
     //   29: ldc 133
     //   31: aload_0
     //   32: invokestatic 135	com/tencent/xweb/internal/b:c	(Ljava/lang/String;Lcom/tencent/xweb/WebView$c;)Lcom/tencent/xweb/internal/b;
-    //   35: invokespecial 139	com/tencent/xweb/internal/b:fKn	()Z
+    //   35: invokespecial 139	com/tencent/xweb/internal/b:gbI	()Z
     //   38: ifeq +20 -> 58
     //   41: aload_0
-    //   42: getstatic 145	com/tencent/xweb/util/g$b$a:KEe	I
+    //   42: getstatic 145	com/tencent/xweb/util/g$b$a:MuE	I
     //   45: invokestatic 151	com/tencent/xweb/util/g:a	(Lcom/tencent/xweb/WebView$c;I)V
     //   48: ldc 122
     //   50: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -137,10 +137,10 @@ public final class b
     //   62: ldc 153
     //   64: aload_0
     //   65: invokespecial 116	com/tencent/xweb/internal/b:<init>	(Ljava/lang/String;Lcom/tencent/xweb/WebView$c;)V
-    //   68: invokespecial 139	com/tencent/xweb/internal/b:fKn	()Z
+    //   68: invokespecial 139	com/tencent/xweb/internal/b:gbI	()Z
     //   71: ifeq +20 -> 91
     //   74: aload_0
-    //   75: getstatic 156	com/tencent/xweb/util/g$b$a:KEf	I
+    //   75: getstatic 156	com/tencent/xweb/util/g$b$a:MuF	I
     //   78: invokestatic 151	com/tencent/xweb/util/g:a	(Lcom/tencent/xweb/WebView$c;I)V
     //   81: ldc 122
     //   83: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -184,10 +184,10 @@ public final class b
     //   3: ldc 176
     //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: getstatic 180	com/tencent/xweb/WebView$c:KzZ	Lcom/tencent/xweb/WebView$c;
+    //   9: getstatic 180	com/tencent/xweb/WebView$c:Mqu	Lcom/tencent/xweb/WebView$c;
     //   12: if_acmpeq +22 -> 34
     //   15: aload_1
-    //   16: getstatic 183	com/tencent/xweb/WebView$c:KAb	Lcom/tencent/xweb/WebView$c;
+    //   16: getstatic 183	com/tencent/xweb/WebView$c:Mqw	Lcom/tencent/xweb/WebView$c;
     //   19: if_acmpeq +15 -> 34
     //   22: aconst_null
     //   23: astore_0
@@ -202,7 +202,7 @@ public final class b
     //   36: invokestatic 110	com/tencent/xweb/internal/b:d	(Ljava/lang/String;Lcom/tencent/xweb/WebView$c;)Ljava/lang/String;
     //   39: astore_0
     //   40: aload_0
-    //   41: putstatic 41	com/tencent/xweb/internal/b:KCY	Ljava/lang/String;
+    //   41: putstatic 41	com/tencent/xweb/internal/b:Mty	Ljava/lang/String;
     //   44: aload_0
     //   45: invokestatic 189	org/xwalk/core/XWalkEnvironment:getMMKVSharedTransportOld	(Ljava/lang/String;)Landroid/content/SharedPreferences;
     //   48: astore_0
@@ -225,7 +225,7 @@ public final class b
     //   34	54	57	finally
   }
   
-  private boolean fKn()
+  private boolean gbI()
   {
     boolean bool = false;
     for (;;)
@@ -234,23 +234,23 @@ public final class b
       try
       {
         AppMethodBeat.i(156964);
-        if (this.zmp == null)
+        if (this.Mto == null)
         {
           AppMethodBeat.o(156964);
           return bool;
         }
         l = new Date().getTime();
-        if (!Cd(l))
+        if (!Ff(l))
         {
           AppMethodBeat.o(156964);
           continue;
         }
-        if (this.KCU <= 4L) {
+        if (this.Mtu <= 4L) {
           break label132;
         }
       }
       finally {}
-      XWalkEnvironment.addXWalkInitializeLog("Scene " + this.KCV + " crashed " + (l - this.KCS) / 60000L + " minutes ago, try count = " + this.KCU);
+      XWalkEnvironment.addXWalkInitializeLog("Scene " + this.Mtv + " crashed " + (l - this.Mts) / 60000L + " minutes ago, try count = " + this.Mtu);
       bool = true;
       AppMethodBeat.o(156964);
       continue;
@@ -259,38 +259,38 @@ public final class b
     }
   }
   
-  public final void fKl()
+  public final void gbG()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(156960);
-        if (this.KCW)
+        if (this.Mtw)
         {
           AppMethodBeat.o(156960);
           return;
         }
-        this.KCW = true;
-        if (this.zmp == null)
+        this.Mtw = true;
+        if (this.Mto == null)
         {
           AppMethodBeat.o(156960);
           continue;
         }
-        localEditor = this.zmp.edit();
+        localEditor = this.Mto.edit();
       }
       finally {}
       SharedPreferences.Editor localEditor;
-      localEditor.putLong(this.KCR, this.KCU + 1L);
+      localEditor.putLong(this.Mtr, this.Mtu + 1L);
       long l = new Date().getTime();
-      if (Cd(l))
+      if (Ff(l))
       {
         localEditor.commit();
         AppMethodBeat.o(156960);
       }
       else
       {
-        localEditor.putLong(this.KCP, l);
+        localEditor.putLong(this.Mtp, l);
         localEditor.commit();
         AppMethodBeat.o(156960);
       }
@@ -298,7 +298,7 @@ public final class b
   }
   
   /* Error */
-  public final void fKm()
+  public final void gbH()
   {
     // Byte code:
     //   0: aload_0
@@ -306,7 +306,7 @@ public final class b
     //   2: ldc 232
     //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 56	com/tencent/xweb/internal/b:zmp	Landroid/content/SharedPreferences;
+    //   8: getfield 56	com/tencent/xweb/internal/b:Mto	Landroid/content/SharedPreferences;
     //   11: ifnonnull +11 -> 22
     //   14: ldc 232
     //   16: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -314,12 +314,12 @@ public final class b
     //   20: monitorexit
     //   21: return
     //   22: aload_0
-    //   23: getfield 56	com/tencent/xweb/internal/b:zmp	Landroid/content/SharedPreferences;
+    //   23: getfield 56	com/tencent/xweb/internal/b:Mto	Landroid/content/SharedPreferences;
     //   26: invokeinterface 221 1 0
     //   31: astore_1
     //   32: aload_1
     //   33: aload_0
-    //   34: getfield 74	com/tencent/xweb/internal/b:KCQ	Ljava/lang/String;
+    //   34: getfield 74	com/tencent/xweb/internal/b:Mtq	Ljava/lang/String;
     //   37: new 192	java/util/Date
     //   40: dup
     //   41: invokespecial 193	java/util/Date:<init>	()V
@@ -328,7 +328,7 @@ public final class b
     //   52: pop
     //   53: aload_1
     //   54: aload_0
-    //   55: getfield 78	com/tencent/xweb/internal/b:KCR	Ljava/lang/String;
+    //   55: getfield 78	com/tencent/xweb/internal/b:Mtr	Ljava/lang/String;
     //   58: lconst_0
     //   59: invokeinterface 227 4 0
     //   64: pop
@@ -337,7 +337,7 @@ public final class b
     //   71: pop
     //   72: aload_0
     //   73: aconst_null
-    //   74: putfield 56	com/tencent/xweb/internal/b:zmp	Landroid/content/SharedPreferences;
+    //   74: putfield 56	com/tencent/xweb/internal/b:Mto	Landroid/content/SharedPreferences;
     //   77: ldc 232
     //   79: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: goto -63 -> 19

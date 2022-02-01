@@ -1868,4 +1868,12 @@
     </attr>
     <attr name="a3z" format="float" />
     <attr name="a40" format="reference" />
+    <attr name="a41" format="boolean" />
+    <attr name="a42" format="reference|color" />
+    <attr name="a43" format="boolean" />
+    <attr name="a44" format="dimension" />
+    <attr name="a45" format="dimension" />
+    <attr name="a46" format="dimension" />
+    <attr name="a47" format="dimension" />
+    <attr name="a48" format="dimension" />
 </resources>

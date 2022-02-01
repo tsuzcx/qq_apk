@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.performance.diagnostic.a;
 
 public abstract interface a<TContainer, TResult>
 {
-  public abstract TResult dB(TContainer paramTContainer);
+  public abstract TResult dE(TContainer paramTContainer);
 }
 
 

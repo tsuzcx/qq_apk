@@ -1,532 +1,534 @@
 package d.l.b.a.b.m.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l.b.a.b.a.h;
+import d.g.b.p;
 import d.l.b.a.b.m.c.d;
 import d.l.b.a.b.m.c.e;
 import d.l.b.a.b.m.c.f;
 import d.l.b.a.b.m.c.g;
-import d.l.b.a.b.m.c.i;
+import d.l.b.a.b.m.c.j;
 import d.l.b.a.b.m.c.l;
 import d.l.b.a.b.m.c.m;
 import d.l.b.a.b.m.c.n;
+import d.l.b.a.b.m.c.o;
+import d.l.b.a.b.m.c.t;
 import java.util.Collection;
 import java.util.List;
 
 public final class s
   implements c
 {
-  public static final s LMz;
+  public static final s NDu;
   
   static
   {
     AppMethodBeat.i(61092);
-    LMz = new s();
+    NDu = new s();
     AppMethodBeat.o(61092);
   }
   
-  public final int a(d.l.b.a.b.m.c.k paramk)
+  public final int a(l paraml)
   {
     AppMethodBeat.i(61145);
-    d.g.b.k.h(paramk, "$this$size");
-    int i = c.a.a(this, paramk);
+    p.h(paraml, "$this$size");
+    int i = c.a.a(this, paraml);
     AppMethodBeat.o(61145);
     return i;
   }
   
-  public final e a(f paramf)
+  public final f a(g paramg)
   {
     AppMethodBeat.i(61104);
-    d.g.b.k.h(paramf, "$this$asDynamicType");
-    paramf = c.a.d(paramf);
+    p.h(paramg, "$this$asDynamicType");
+    paramg = c.a.d(paramg);
     AppMethodBeat.o(61104);
-    return paramf;
-  }
-  
-  public final g a(d.l.b.a.b.m.c.c paramc)
-  {
-    AppMethodBeat.i(61099);
-    d.g.b.k.h(paramc, "$this$lowerType");
-    paramc = c.a.b(paramc);
-    AppMethodBeat.o(61099);
-    return paramc;
-  }
-  
-  public final g a(n paramn)
-  {
-    AppMethodBeat.i(61137);
-    d.g.b.k.h(paramn, "$this$getRepresentativeUpperBound");
-    paramn = c.a.d(paramn);
-    AppMethodBeat.o(61137);
-    return paramn;
-  }
-  
-  public final i a(i parami, d.l.b.a.b.m.c.b paramb)
-  {
-    AppMethodBeat.i(61126);
-    d.g.b.k.h(parami, "type");
-    d.g.b.k.h(paramb, "status");
-    parami = c.a.b(parami, paramb);
-    AppMethodBeat.o(61126);
-    return parami;
-  }
-  
-  public final i a(i parami, boolean paramBoolean)
-  {
-    AppMethodBeat.i(61096);
-    d.g.b.k.h(parami, "$this$withNullability");
-    parami = c.a.b(parami, paramBoolean);
-    AppMethodBeat.o(61096);
-    return parami;
-  }
-  
-  public final l a(g paramg, int paramInt)
-  {
-    AppMethodBeat.i(61114);
-    d.g.b.k.h(paramg, "$this$getArgument");
-    paramg = c.a.b(paramg, paramInt);
-    AppMethodBeat.o(61114);
     return paramg;
   }
   
-  public final l a(d.l.b.a.b.m.c.k paramk, int paramInt)
+  public final d.l.b.a.b.m.c.h a(d paramd)
+  {
+    AppMethodBeat.i(61099);
+    p.h(paramd, "$this$lowerType");
+    paramd = c.a.b(paramd);
+    AppMethodBeat.o(61099);
+    return paramd;
+  }
+  
+  public final d.l.b.a.b.m.c.h a(o paramo)
+  {
+    AppMethodBeat.i(61137);
+    p.h(paramo, "$this$getRepresentativeUpperBound");
+    paramo = c.a.d(paramo);
+    AppMethodBeat.o(61137);
+    return paramo;
+  }
+  
+  public final j a(j paramj, d.l.b.a.b.m.c.b paramb)
+  {
+    AppMethodBeat.i(61126);
+    p.h(paramj, "type");
+    p.h(paramb, "status");
+    paramj = c.a.b(paramj, paramb);
+    AppMethodBeat.o(61126);
+    return paramj;
+  }
+  
+  public final j a(j paramj, boolean paramBoolean)
+  {
+    AppMethodBeat.i(61096);
+    p.h(paramj, "$this$withNullability");
+    paramj = c.a.b(paramj, paramBoolean);
+    AppMethodBeat.o(61096);
+    return paramj;
+  }
+  
+  public final m a(d.l.b.a.b.m.c.h paramh, int paramInt)
+  {
+    AppMethodBeat.i(61114);
+    p.h(paramh, "$this$getArgument");
+    paramh = c.a.b(paramh, paramInt);
+    AppMethodBeat.o(61114);
+    return paramh;
+  }
+  
+  public final m a(l paraml, int paramInt)
   {
     AppMethodBeat.i(61143);
-    d.g.b.k.h(paramk, "$this$get");
-    paramk = c.a.a(this, paramk, paramInt);
+    p.h(paraml, "$this$get");
+    paraml = c.a.a(this, paraml, paramInt);
     AppMethodBeat.o(61143);
-    return paramk;
+    return paraml;
   }
   
-  public final n a(m paramm)
+  public final o a(n paramn)
   {
     AppMethodBeat.i(61135);
-    d.g.b.k.h(paramm, "$this$getTypeParameterClassifier");
-    paramm = c.a.y(paramm);
+    p.h(paramn, "$this$getTypeParameterClassifier");
+    paramn = c.a.y(paramn);
     AppMethodBeat.o(61135);
-    return paramm;
+    return paramn;
   }
   
-  public final n a(m paramm, int paramInt)
+  public final o a(n paramn, int paramInt)
   {
     AppMethodBeat.i(61120);
-    d.g.b.k.h(paramm, "$this$getParameter");
-    paramm = c.a.b(paramm, paramInt);
+    p.h(paramn, "$this$getParameter");
+    paramn = c.a.b(paramn, paramInt);
     AppMethodBeat.o(61120);
-    return paramm;
+    return paramn;
   }
   
-  public final boolean a(g paramg, d.l.b.a.b.f.b paramb)
+  public final boolean a(d.l.b.a.b.m.c.h paramh, d.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(61134);
-    d.g.b.k.h(paramg, "$this$hasAnnotation");
-    d.g.b.k.h(paramb, "fqName");
-    boolean bool = c.a.b(paramg, paramb);
+    p.h(paramh, "$this$hasAnnotation");
+    p.h(paramb, "fqName");
+    boolean bool = c.a.b(paramh, paramb);
     AppMethodBeat.o(61134);
     return bool;
   }
   
-  public final boolean a(l paraml)
-  {
-    AppMethodBeat.i(61115);
-    d.g.b.k.h(paraml, "$this$isStarProjection");
-    boolean bool = c.a.d(paraml);
-    AppMethodBeat.o(61115);
-    return bool;
-  }
-  
-  public final i b(f paramf)
-  {
-    AppMethodBeat.i(61105);
-    d.g.b.k.h(paramf, "$this$upperBound");
-    paramf = c.a.e(paramf);
-    AppMethodBeat.o(61105);
-    return paramf;
-  }
-  
-  public final d.l.b.a.b.m.c.s b(l paraml)
-  {
-    AppMethodBeat.i(61116);
-    d.g.b.k.h(paraml, "$this$getVariance");
-    paraml = c.a.e(paraml);
-    AppMethodBeat.o(61116);
-    return paraml;
-  }
-  
-  public final d.l.b.a.b.m.c.s b(n paramn)
-  {
-    AppMethodBeat.i(61117);
-    d.g.b.k.h(paramn, "$this$getVariance");
-    paramn = c.a.c(paramn);
-    AppMethodBeat.o(61117);
-    return paramn;
-  }
-  
-  public final boolean b(i parami1, i parami2)
+  public final boolean a(j paramj1, j paramj2)
   {
     AppMethodBeat.i(61101);
-    d.g.b.k.h(parami1, "a");
-    d.g.b.k.h(parami2, "b");
-    boolean bool = c.a.c(parami1, parami2);
+    p.h(paramj1, "a");
+    p.h(paramj2, "b");
+    boolean bool = c.a.b(paramj1, paramj2);
     AppMethodBeat.o(61101);
     return bool;
   }
   
-  public final boolean b(m paramm)
+  public final boolean a(m paramm)
+  {
+    AppMethodBeat.i(61115);
+    p.h(paramm, "$this$isStarProjection");
+    boolean bool = c.a.d(paramm);
+    AppMethodBeat.o(61115);
+    return bool;
+  }
+  
+  public final j b(g paramg)
+  {
+    AppMethodBeat.i(61105);
+    p.h(paramg, "$this$upperBound");
+    paramg = c.a.e(paramg);
+    AppMethodBeat.o(61105);
+    return paramg;
+  }
+  
+  public final t b(m paramm)
+  {
+    AppMethodBeat.i(61116);
+    p.h(paramm, "$this$getVariance");
+    paramm = c.a.e(paramm);
+    AppMethodBeat.o(61116);
+    return paramm;
+  }
+  
+  public final t b(o paramo)
+  {
+    AppMethodBeat.i(61117);
+    p.h(paramo, "$this$getVariance");
+    paramo = c.a.c(paramo);
+    AppMethodBeat.o(61117);
+    return paramo;
+  }
+  
+  public final boolean b(n paramn)
   {
     AppMethodBeat.i(61136);
-    d.g.b.k.h(paramm, "$this$isInlineClass");
-    boolean bool = c.a.z(paramm);
+    p.h(paramn, "$this$isInlineClass");
+    boolean bool = c.a.z(paramn);
     AppMethodBeat.o(61136);
     return bool;
   }
   
-  public final boolean b(m paramm1, m paramm2)
+  public final boolean b(n paramn1, n paramn2)
   {
     AppMethodBeat.i(61122);
-    d.g.b.k.h(paramm1, "c1");
-    d.g.b.k.h(paramm2, "c2");
-    boolean bool = c.a.c(paramm1, paramm2);
+    p.h(paramn1, "c1");
+    p.h(paramn2, "c2");
+    boolean bool = c.a.c(paramn1, paramn2);
     AppMethodBeat.o(61122);
     return bool;
   }
   
-  public final h c(m paramm)
+  public final d.l.b.a.b.a.h c(n paramn)
   {
     AppMethodBeat.i(61139);
-    d.g.b.k.h(paramm, "$this$getPrimitiveType");
-    paramm = c.a.A(paramm);
+    p.h(paramn, "$this$getPrimitiveType");
+    paramn = c.a.A(paramn);
     AppMethodBeat.o(61139);
-    return paramm;
+    return paramn;
   }
   
-  public final g c(l paraml)
+  public final d.l.b.a.b.m.c.h c(m paramm)
   {
     AppMethodBeat.i(61118);
-    d.g.b.k.h(paraml, "$this$getType");
-    paraml = c.a.f(paraml);
+    p.h(paramm, "$this$getType");
+    paramm = c.a.f(paramm);
     AppMethodBeat.o(61118);
-    return paraml;
-  }
-  
-  public final i c(f paramf)
-  {
-    AppMethodBeat.i(61106);
-    d.g.b.k.h(paramf, "$this$lowerBound");
-    paramf = c.a.f(paramf);
-    AppMethodBeat.o(61106);
-    return paramf;
-  }
-  
-  public final h d(m paramm)
-  {
-    AppMethodBeat.i(61140);
-    d.g.b.k.h(paramm, "$this$getPrimitiveArrayType");
-    paramm = c.a.B(paramm);
-    AppMethodBeat.o(61140);
     return paramm;
   }
   
-  public final m d(g paramg)
+  public final j c(g paramg)
+  {
+    AppMethodBeat.i(61106);
+    p.h(paramg, "$this$lowerBound");
+    paramg = c.a.f(paramg);
+    AppMethodBeat.o(61106);
+    return paramg;
+  }
+  
+  public final d.l.b.a.b.a.h d(n paramn)
+  {
+    AppMethodBeat.i(61140);
+    p.h(paramn, "$this$getPrimitiveArrayType");
+    paramn = c.a.B(paramn);
+    AppMethodBeat.o(61140);
+    return paramn;
+  }
+  
+  public final n d(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61112);
-    d.g.b.k.h(paramg, "$this$typeConstructor");
-    paramg = c.a.b(this, paramg);
+    p.h(paramh, "$this$typeConstructor");
+    paramh = c.a.b(this, paramh);
     AppMethodBeat.o(61112);
-    return paramg;
+    return paramh;
   }
   
-  public final Collection<g> d(i parami)
+  public final Collection<d.l.b.a.b.m.c.h> d(j paramj)
   {
     AppMethodBeat.i(61095);
-    d.g.b.k.h(parami, "$this$possibleIntegerTypes");
-    parami = c.a.a(this, parami);
+    p.h(paramj, "$this$possibleIntegerTypes");
+    paramj = c.a.a(this, paramj);
     AppMethodBeat.o(61095);
-    return parami;
+    return paramj;
   }
   
-  public final i e(g paramg)
+  public final j e(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61144);
-    d.g.b.k.h(paramg, "$this$lowerBoundIfFlexible");
-    paramg = c.a.c(this, paramg);
+    p.h(paramh, "$this$lowerBoundIfFlexible");
+    paramh = c.a.c(this, paramh);
     AppMethodBeat.o(61144);
-    return paramg;
+    return paramh;
   }
   
-  public final boolean e(i parami)
+  public final boolean e(j paramj)
   {
     AppMethodBeat.i(61098);
-    d.g.b.k.h(parami, "$this$isStubType");
-    boolean bool = c.a.m(parami);
+    p.h(paramj, "$this$isStubType");
+    boolean bool = c.a.m(paramj);
     AppMethodBeat.o(61098);
     return bool;
   }
   
-  public final boolean e(m paramm)
+  public final boolean e(n paramn)
   {
     AppMethodBeat.i(61141);
-    d.g.b.k.h(paramm, "$this$isUnderKotlinPackage");
-    boolean bool = c.a.C(paramm);
+    p.h(paramn, "$this$isUnderKotlinPackage");
+    boolean bool = c.a.C(paramn);
     AppMethodBeat.o(61141);
     return bool;
   }
   
-  public final d.l.b.a.b.f.c f(m paramm)
+  public final d.l.b.a.b.f.c f(n paramn)
   {
     AppMethodBeat.i(61142);
-    d.g.b.k.h(paramm, "$this$getClassFqNameUnsafe");
-    paramm = c.a.D(paramm);
+    p.h(paramn, "$this$getClassFqNameUnsafe");
+    paramn = c.a.D(paramn);
     AppMethodBeat.o(61142);
-    return paramm;
+    return paramn;
   }
   
-  public final d.l.b.a.b.m.c.c f(i parami)
+  public final d f(j paramj)
   {
     AppMethodBeat.i(61107);
-    d.g.b.k.h(parami, "$this$asCapturedType");
-    parami = c.a.n(parami);
+    p.h(paramj, "$this$asCapturedType");
+    paramj = c.a.n(paramj);
     AppMethodBeat.o(61107);
-    return parami;
+    return paramj;
   }
   
-  public final i f(g paramg)
+  public final j f(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61146);
-    d.g.b.k.h(paramg, "$this$upperBoundIfFlexible");
-    paramg = c.a.d(this, paramg);
+    p.h(paramh, "$this$upperBoundIfFlexible");
+    paramh = c.a.d(this, paramh);
     AppMethodBeat.o(61146);
-    return paramg;
+    return paramh;
   }
   
-  public final d g(i parami)
+  public final e g(j paramj)
   {
     AppMethodBeat.i(61108);
-    d.g.b.k.h(parami, "$this$asDefinitelyNotNullType");
-    parami = c.a.o(parami);
+    p.h(paramj, "$this$asDefinitelyNotNullType");
+    paramj = c.a.o(paramj);
     AppMethodBeat.o(61108);
-    return parami;
+    return paramj;
   }
   
-  public final boolean g(m paramm)
+  public final boolean g(n paramn)
   {
     AppMethodBeat.i(61093);
-    d.g.b.k.h(paramm, "$this$isDenotable");
-    boolean bool = c.a.p(paramm);
+    p.h(paramn, "$this$isDenotable");
+    boolean bool = c.a.p(paramn);
     AppMethodBeat.o(61093);
     return bool;
   }
   
-  public final boolean h(i parami)
+  public final boolean h(j paramj)
   {
     AppMethodBeat.i(61109);
-    d.g.b.k.h(parami, "$this$isMarkedNullable");
-    boolean bool = c.a.p(parami);
+    p.h(paramj, "$this$isMarkedNullable");
+    boolean bool = c.a.p(paramj);
     AppMethodBeat.o(61109);
     return bool;
   }
   
-  public final boolean h(m paramm)
+  public final boolean h(n paramn)
   {
     AppMethodBeat.i(61094);
-    d.g.b.k.h(paramm, "$this$isIntegerLiteralTypeConstructor");
-    boolean bool = c.a.q(paramm);
+    p.h(paramn, "$this$isIntegerLiteralTypeConstructor");
+    boolean bool = c.a.q(paramn);
     AppMethodBeat.o(61094);
     return bool;
   }
   
-  public final m i(i parami)
+  public final n i(j paramj)
   {
     AppMethodBeat.i(61111);
-    d.g.b.k.h(parami, "$this$typeConstructor");
-    parami = c.a.q(parami);
+    p.h(paramj, "$this$typeConstructor");
+    paramj = c.a.q(paramj);
     AppMethodBeat.o(61111);
-    return parami;
+    return paramj;
   }
   
-  public final boolean i(m paramm)
+  public final boolean i(n paramn)
   {
     AppMethodBeat.i(61100);
-    d.g.b.k.h(paramm, "$this$isIntersection");
-    boolean bool = c.a.r(paramm);
+    p.h(paramn, "$this$isIntersection");
+    boolean bool = c.a.r(paramn);
     AppMethodBeat.o(61100);
     return bool;
   }
   
-  public final int j(m paramm)
+  public final int j(n paramn)
   {
     AppMethodBeat.i(61119);
-    d.g.b.k.h(paramm, "$this$parametersCount");
-    int i = c.a.s(paramm);
+    p.h(paramn, "$this$parametersCount");
+    int i = c.a.s(paramn);
     AppMethodBeat.o(61119);
     return i;
   }
   
-  public final d.l.b.a.b.m.c.k j(i parami)
+  public final l j(j paramj)
   {
     AppMethodBeat.i(61125);
-    d.g.b.k.h(parami, "$this$asArgumentList");
-    parami = c.a.r(parami);
+    p.h(paramj, "$this$asArgumentList");
+    paramj = c.a.r(paramj);
     AppMethodBeat.o(61125);
-    return parami;
+    return paramj;
   }
   
-  public final g jg(List<? extends g> paramList)
+  public final d.l.b.a.b.m.c.h ju(List<? extends d.l.b.a.b.m.c.h> paramList)
   {
     AppMethodBeat.i(61131);
-    d.g.b.k.h(paramList, "types");
-    paramList = c.a.jh(paramList);
+    p.h(paramList, "types");
+    paramList = c.a.jv(paramList);
     AppMethodBeat.o(61131);
     return paramList;
   }
   
-  public final g k(g paramg)
+  public final d.l.b.a.b.m.c.h k(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61138);
-    d.g.b.k.h(paramg, "$this$getSubstitutedUnderlyingType");
-    paramg = c.a.z(paramg);
+    p.h(paramh, "$this$getSubstitutedUnderlyingType");
+    paramh = c.a.z(paramh);
     AppMethodBeat.o(61138);
-    return paramg;
+    return paramh;
   }
   
-  public final Collection<g> k(m paramm)
+  public final Collection<d.l.b.a.b.m.c.h> k(n paramn)
   {
     AppMethodBeat.i(61121);
-    d.g.b.k.h(paramm, "$this$supertypes");
-    paramm = c.a.t(paramm);
+    p.h(paramn, "$this$supertypes");
+    paramn = c.a.t(paramn);
     AppMethodBeat.o(61121);
-    return paramm;
+    return paramn;
   }
   
-  public final boolean k(i parami)
+  public final boolean k(j paramj)
   {
     AppMethodBeat.i(61130);
-    d.g.b.k.h(parami, "$this$isSingleClassifierType");
-    boolean bool = c.a.s(parami);
+    p.h(paramj, "$this$isSingleClassifierType");
+    boolean bool = c.a.s(paramj);
     AppMethodBeat.o(61130);
     return bool;
   }
   
-  public final boolean l(g paramg)
+  public final boolean l(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61110);
-    d.g.b.k.h(paramg, "$this$isMarkedNullable");
-    boolean bool = c.a.a(this, paramg);
+    p.h(paramh, "$this$isMarkedNullable");
+    boolean bool = c.a.a(this, paramh);
     AppMethodBeat.o(61110);
     return bool;
   }
   
-  public final boolean l(i parami)
+  public final boolean l(j paramj)
   {
     AppMethodBeat.i(61133);
-    d.g.b.k.h(parami, "$this$isPrimitiveType");
-    boolean bool = c.a.t(parami);
+    p.h(paramj, "$this$isPrimitiveType");
+    boolean bool = c.a.t(paramj);
     AppMethodBeat.o(61133);
     return bool;
   }
   
-  public final boolean l(m paramm)
+  public final boolean l(n paramn)
   {
     AppMethodBeat.i(61123);
-    d.g.b.k.h(paramm, "$this$isClassTypeConstructor");
-    boolean bool = c.a.u(paramm);
+    p.h(paramn, "$this$isClassTypeConstructor");
+    boolean bool = c.a.u(paramn);
     AppMethodBeat.o(61123);
     return bool;
   }
   
-  public final g m(g paramg)
+  public final d.l.b.a.b.m.c.h m(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61147);
-    d.g.b.k.h(paramg, "$this$makeNullable");
-    paramg = c.a.e(this, paramg);
+    p.h(paramh, "$this$makeNullable");
+    paramh = c.a.e(this, paramh);
     AppMethodBeat.o(61147);
-    return paramg;
+    return paramh;
   }
   
-  public final boolean m(m paramm)
+  public final boolean m(n paramn)
   {
     AppMethodBeat.i(61124);
-    d.g.b.k.h(paramm, "$this$isCommonFinalClassConstructor");
-    boolean bool = c.a.v(paramm);
+    p.h(paramn, "$this$isCommonFinalClassConstructor");
+    boolean bool = c.a.v(paramn);
     AppMethodBeat.o(61124);
     return bool;
   }
   
-  public final boolean n(g paramg)
+  public final boolean n(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61097);
-    d.g.b.k.h(paramg, "$this$isError");
-    boolean bool = c.a.t(paramg);
+    p.h(paramh, "$this$isError");
+    boolean bool = c.a.t(paramh);
     AppMethodBeat.o(61097);
     return bool;
   }
   
-  public final boolean n(m paramm)
+  public final boolean n(n paramn)
   {
     AppMethodBeat.i(61127);
-    d.g.b.k.h(paramm, "$this$isAnyConstructor");
-    boolean bool = c.a.w(paramm);
+    p.h(paramn, "$this$isAnyConstructor");
+    boolean bool = c.a.w(paramn);
     AppMethodBeat.o(61127);
     return bool;
   }
   
-  public final i o(g paramg)
+  public final j o(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61102);
-    d.g.b.k.h(paramg, "$this$asSimpleType");
-    paramg = c.a.u(paramg);
+    p.h(paramh, "$this$asSimpleType");
+    paramh = c.a.u(paramh);
     AppMethodBeat.o(61102);
-    return paramg;
+    return paramh;
   }
   
-  public final boolean o(m paramm)
+  public final boolean o(n paramn)
   {
     AppMethodBeat.i(61128);
-    d.g.b.k.h(paramm, "$this$isNothingConstructor");
-    boolean bool = c.a.x(paramm);
+    p.h(paramn, "$this$isNothingConstructor");
+    boolean bool = c.a.x(paramn);
     AppMethodBeat.o(61128);
     return bool;
   }
   
-  public final f p(g paramg)
+  public final g p(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61103);
-    d.g.b.k.h(paramg, "$this$asFlexibleType");
-    paramg = c.a.v(paramg);
+    p.h(paramh, "$this$asFlexibleType");
+    paramh = c.a.v(paramh);
     AppMethodBeat.o(61103);
-    return paramg;
+    return paramh;
   }
   
-  public final int q(g paramg)
+  public final int q(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61113);
-    d.g.b.k.h(paramg, "$this$argumentsCount");
-    int i = c.a.w(paramg);
+    p.h(paramh, "$this$argumentsCount");
+    int i = c.a.w(paramh);
     AppMethodBeat.o(61113);
     return i;
   }
   
-  public final l r(g paramg)
+  public final m r(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61129);
-    d.g.b.k.h(paramg, "$this$asTypeArgument");
-    paramg = c.a.x(paramg);
+    p.h(paramh, "$this$asTypeArgument");
+    paramh = c.a.x(paramh);
     AppMethodBeat.o(61129);
-    return paramg;
+    return paramh;
   }
   
-  public final boolean s(g paramg)
+  public final boolean s(d.l.b.a.b.m.c.h paramh)
   {
     AppMethodBeat.i(61132);
-    d.g.b.k.h(paramg, "$this$isNullableType");
-    boolean bool = c.a.y(paramg);
+    p.h(paramh, "$this$isNullableType");
+    boolean bool = c.a.y(paramh);
     AppMethodBeat.o(61132);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.a.s
  * JD-Core Version:    0.7.0.1
  */

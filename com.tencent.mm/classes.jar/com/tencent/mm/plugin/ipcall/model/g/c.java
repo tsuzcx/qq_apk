@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.ipcall.model.b.b;
 import com.tencent.mm.plugin.ipcall.model.e.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
   extends b
 {
-  private h tLx;
+  private h uOk;
   
-  public final void BE() {}
+  public final void Dd() {}
   
   public final void b(com.tencent.mm.plugin.ipcall.model.b.c paramc)
   {
     AppMethodBeat.i(25516);
-    if (this.tHV != null)
+    if (this.uKI != null)
     {
-      this.tLx = new h(this.tHV.roomId, this.tHV.tIG, this.tHV.tIH);
-      az.agi().a(this.tLx, 0);
+      this.uOk = new h(this.uKI.roomId, this.uKI.uLt, this.uKI.uLu);
+      ba.aiU().a(this.uOk, 0);
     }
     AppMethodBeat.o(25516);
   }
   
-  public final int[] cUI()
+  public final int[] ddT()
   {
     return new int[] { 824 };
   }
   
-  public final void cUJ()
+  public final void ddU()
   {
     AppMethodBeat.i(25517);
-    ac.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopSuccess");
+    ad.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopSuccess");
     AppMethodBeat.o(25517);
   }
   
-  public final void cUK()
+  public final void ddV()
   {
     AppMethodBeat.i(25518);
-    ac.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopFailed");
+    ad.d("MicroMsg.IPCallHeartBeatService", "heartbeat, onLoopFailed");
     AppMethodBeat.o(25518);
   }
   
@@ -59,15 +59,15 @@ public final class c
   public final void onStop()
   {
     AppMethodBeat.i(25515);
-    if (this.tLx != null) {
-      az.agi().a(this.tLx);
+    if (this.uOk != null) {
+      ba.aiU().a(this.uOk);
     }
     AppMethodBeat.o(25515);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g.c
  * JD-Core Version:    0.7.0.1
  */

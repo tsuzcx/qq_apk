@@ -2,8 +2,6 @@ package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter;
 import com.tencent.mm.ui.base.l;
 
@@ -15,20 +13,20 @@ public final class k
     super(31);
   }
   
-  public final void a(Context paramContext, f paramf)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78704);
-    if (!paramf.Cln.isShown())
+    if (!paramg.DOy.isShown())
     {
-      paramf.Cln.reset();
-      paramf.Cln.eGK();
-      paramf.Cln.show();
+      paramg.DOy.reset();
+      paramg.DOy.eVK();
+      paramg.DOy.show();
     }
-    h.wUl.dB(982, 8);
+    com.tencent.mm.plugin.report.service.g.yhR.dD(982, 8);
     AppMethodBeat.o(78704);
   }
   
-  public final void a(Context paramContext, f paramf, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78703);
     paraml.a(31, paramContext.getString(2131766282), 2131689827);

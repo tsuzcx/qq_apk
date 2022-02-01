@@ -3,7 +3,7 @@ package com.tencent.liteav.audio;
 import android.content.Context;
 import com.tencent.liteav.audio.impl.TXCTraeJNI;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
@@ -16,7 +16,7 @@ public class TXCSoundEffectPlayer
   static
   {
     AppMethodBeat.i(16342);
-    d.f();
+    f.f();
     nativeCacheClassForNative();
     AppMethodBeat.o(16342);
   }

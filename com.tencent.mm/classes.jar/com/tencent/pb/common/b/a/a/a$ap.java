@@ -7,71 +7,87 @@ import com.google.b.a.e;
 public final class a$ap
   extends e
 {
-  private static volatile ap[] JOe;
-  public int DKi = 0;
-  public int JOf = 0;
-  public String dhV = "";
-  public int osF = 0;
+  private static volatile ap[] LHO;
+  public int Fpp = 0;
+  public int LHP = 0;
+  public int LHQ = 0;
+  public int LHR = 0;
+  public String dtx = "";
+  public int oWb = 0;
   
   public a$ap()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static ap[] fBM()
+  public static ap[] fTb()
   {
-    if (JOe == null) {}
-    synchronized (c.bGz)
+    if (LHO == null) {}
+    synchronized (c.bQN)
     {
-      if (JOe == null) {
-        JOe = new ap[0];
+      if (LHO == null) {
+        LHO = new ap[0];
       }
-      return JOe;
+      return LHO;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.osF != 0) {
-      paramb.bw(1, this.osF);
+    if (this.oWb != 0) {
+      paramb.by(1, this.oWb);
     }
-    if (!this.dhV.equals("")) {
-      paramb.d(2, this.dhV);
+    if (!this.dtx.equals("")) {
+      paramb.d(2, this.dtx);
     }
-    if (this.DKi != 0) {
-      paramb.bw(3, this.DKi);
+    if (this.Fpp != 0) {
+      paramb.by(3, this.Fpp);
     }
-    if (this.JOf != 0) {
-      paramb.bw(4, this.JOf);
+    if (this.LHP != 0) {
+      paramb.by(4, this.LHP);
+    }
+    if (this.LHQ != 0) {
+      paramb.by(5, this.LHQ);
+    }
+    if (this.LHR != 0) {
+      paramb.by(6, this.LHR);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.osF != 0) {
-      i = j + b.by(1, this.osF);
+    if (this.oWb != 0) {
+      i = j + b.bA(1, this.oWb);
     }
     j = i;
-    if (!this.dhV.equals("")) {
-      j = i + b.e(2, this.dhV);
+    if (!this.dtx.equals("")) {
+      j = i + b.e(2, this.dtx);
     }
     i = j;
-    if (this.DKi != 0) {
-      i = j + b.by(3, this.DKi);
+    if (this.Fpp != 0) {
+      i = j + b.bA(3, this.Fpp);
     }
     j = i;
-    if (this.JOf != 0) {
-      j = i + b.by(4, this.JOf);
+    if (this.LHP != 0) {
+      j = i + b.bA(4, this.LHP);
+    }
+    i = j;
+    if (this.LHQ != 0) {
+      i = j + b.bA(5, this.LHQ);
+    }
+    j = i;
+    if (this.LHR != 0) {
+      j = i + b.bA(6, this.LHR);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ap
  * JD-Core Version:    0.7.0.1
  */

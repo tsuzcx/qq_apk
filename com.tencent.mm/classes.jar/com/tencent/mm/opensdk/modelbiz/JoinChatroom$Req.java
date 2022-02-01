@@ -1,0 +1,55 @@
+package com.tencent.mm.opensdk.modelbiz;
+
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.modelbase.BaseReq;
+import com.tencent.mm.opensdk.utils.b;
+
+public class JoinChatroom$Req
+  extends BaseReq
+{
+  public String chatroomNickName;
+  public String extMsg;
+  public String groupId;
+  
+  public JoinChatroom$Req()
+  {
+    AppMethodBeat.i(196961);
+    this.groupId = "";
+    AppMethodBeat.o(196961);
+  }
+  
+  public boolean checkArgs()
+  {
+    AppMethodBeat.i(3867);
+    if (b.b(this.groupId))
+    {
+      AppMethodBeat.o(3867);
+      return false;
+    }
+    AppMethodBeat.o(3867);
+    return true;
+  }
+  
+  public int getType()
+  {
+    return 15;
+  }
+  
+  public void toBundle(Bundle paramBundle)
+  {
+    AppMethodBeat.i(3868);
+    super.toBundle(paramBundle);
+    paramBundle.putString("_wxapi_join_chatroom_group_id", this.groupId);
+    paramBundle.putString("_wxapi_join_chatroom_chatroom_nickname", this.chatroomNickName);
+    paramBundle.putString("_wxapi_join_chatroom_ext_msg", this.extMsg);
+    paramBundle.putString("_wxapi_basereq_openid", this.openId);
+    AppMethodBeat.o(3868);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.opensdk.modelbiz.JoinChatroom.Req
+ * JD-Core Version:    0.7.0.1
+ */

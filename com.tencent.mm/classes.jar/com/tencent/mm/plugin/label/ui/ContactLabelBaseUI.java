@@ -6,17 +6,17 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
 public class ContactLabelBaseUI
   extends MMActivity
 {
-  private ProgressDialog iFC;
+  private ProgressDialog iYL;
   
-  public final void Ys(String paramString)
+  public final void abY(String paramString)
   {
     AppMethodBeat.i(26161);
     h.d(this, paramString, "", new DialogInterface.OnClickListener()
@@ -26,16 +26,16 @@ public class ContactLabelBaseUI
     AppMethodBeat.o(26161);
   }
   
-  public final void ajE(String paramString)
+  public final void aoq(String paramString)
   {
     AppMethodBeat.i(26159);
     getString(2131755906);
-    this.iFC = h.b(this, paramString, true, new DialogInterface.OnCancelListener()
+    this.iYL = h.b(this, paramString, true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(26158);
-        az.agi().cancel(636);
+        ba.aiU().cancel(636);
         AppMethodBeat.o(26158);
       }
     });
@@ -50,8 +50,8 @@ public class ContactLabelBaseUI
   public final void hideLoading()
   {
     AppMethodBeat.i(26160);
-    if ((this.iFC != null) && (this.iFC.isShowing())) {
-      this.iFC.dismiss();
+    if ((this.iYL != null) && (this.iYL.isShowing())) {
+      this.iYL.dismiss();
     }
     AppMethodBeat.o(26160);
   }

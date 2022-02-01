@@ -23,7 +23,7 @@ final class bb
   final i.a a(c paramc, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(128921);
-    Object localObject = paramc.DH();
+    Object localObject = paramc.Fg();
     if (localObject == null)
     {
       paramc = new i.a("fail:internal error", new Object[0]);
@@ -33,13 +33,13 @@ final class bb
     String str2 = paramJSONObject.optString("newPath");
     paramJSONObject = String.format(Locale.US, "fail no such file or directory, rename \"%s\" -> \"%s\"", new Object[] { paramString, str2 });
     String str1 = String.format(Locale.US, "fail permission denied, rename \"%s\" -> \"%s\"", new Object[] { paramString, str2 });
-    if (!((p)localObject).IT(paramString))
+    if (!((p)localObject).Mk(paramString))
     {
       paramc = new i.a(str1, new Object[0]);
       AppMethodBeat.o(128921);
       return paramc;
     }
-    localObject = paramc.DH().ae(paramString, true);
+    localObject = paramc.Fg().ae(paramString, true);
     if ((localObject == null) || (!((e)localObject).exists()))
     {
       paramc = new i.a(paramJSONObject, new Object[0]);
@@ -52,8 +52,8 @@ final class bb
       AppMethodBeat.o(128921);
       return paramc;
     }
-    paramc = paramc.DH().a(str2, (e)localObject, true);
-    switch (1.krw[paramc.ordinal()])
+    paramc = paramc.Fg().a(str2, (e)localObject, true);
+    switch (1.kMS[paramc.ordinal()])
     {
     default: 
       paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -79,7 +79,7 @@ final class bb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.bb
  * JD-Core Version:    0.7.0.1
  */

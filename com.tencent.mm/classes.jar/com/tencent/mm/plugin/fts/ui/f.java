@@ -1,121 +1,158 @@
 package com.tencent.mm.plugin.fts.ui;
 
+import android.content.Context;
+import android.os.Looper;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.k;
-import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.plugin.fts.a.l;
+import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.protocal.protobuf.aix;
+import com.tencent.mm.protocal.protobuf.cie;
+import com.tencent.mm.protocal.protobuf.dla;
+import com.tencent.mm.sdk.platformtools.ap;
+import d.g.b.p;
+import d.l;
+import d.v;
 import java.util.HashSet;
-import java.util.List;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/fts/ui/FTSBizDetailAdapter;", "Lcom/tencent/mm/plugin/fts/ui/FTSBaseAdapter;", "Lcom/tencent/mm/plugin/fts/api/ui/IFTSUIUnit$UIUnitDataReadyCallback;", "ftsBaseUIComponent", "Lcom/tencent/mm/plugin/fts/ui/FTSBaseUIComponent;", "searchScene", "", "(Lcom/tencent/mm/plugin/fts/ui/FTSBaseUIComponent;I)V", "TAG", "", "bizUIUnit", "Lcom/tencent/mm/plugin/fts/api/ui/IFTSUIUnit;", "searchHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getSearchScene", "()I", "createDataItem", "Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;", "position", "doSearch", "", "handleItemClick", "", "view", "Landroid/view/View;", "ftsDataItem", "isHandled", "onDataReady", "unit", "query", "isSuccess", "onScroll", "Landroid/widget/AbsListView;", "firstVisibleItem", "visibleItemCount", "totalItemCount", "ui-fts_release"})
 public final class f
   extends d
-  implements l
+  implements e.b
 {
-  private ao lso;
-  private x sCD;
-  private String syB;
-  private com.tencent.mm.plugin.fts.a.a.a syJ;
-  private k syy;
+  private final String TAG;
+  private final int ljZ;
+  private final ap tyn;
+  private com.tencent.mm.plugin.fts.a.d.e tze;
   
-  public f(e parame, String paramString)
+  public f(e parame)
   {
     super(parame);
-    AppMethodBeat.i(111878);
-    this.lso = new ao();
-    this.syB = paramString;
-    if (w.wo(paramString)) {
-      this.sCD = ((c)g.ab(c.class)).awK().xN(paramString);
-    }
-    AppMethodBeat.o(111878);
+    AppMethodBeat.i(219355);
+    this.ljZ = 5;
+    this.TAG = "MicroMsg.FTS.FTSBizDetailAdapter";
+    parame = ((n)g.ad(n.class)).createFTSUIUnit(4208, getContext(), (e.b)this, this.ljZ);
+    p.g(parame, "MMKernel.plugin(IPluginF…ntext, this, searchScene)");
+    this.tze = parame;
+    this.tyn = new ap(Looper.getMainLooper());
+    AppMethodBeat.o(219355);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a FC(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a GR(int paramInt)
   {
-    AppMethodBeat.i(111879);
-    com.tencent.mm.plugin.fts.ui.a.d locald = new com.tencent.mm.plugin.fts.ui.a.d(paramInt);
-    locald.jPN = ((m)this.syy.syK.get(paramInt));
-    locald.sxM = this.syy.sxM;
-    locald.pil = -14;
-    locald.sCD = this.sCD;
-    locald.szu = paramInt;
-    locald.pageType = 6;
-    if (locald.position == getCount() - 1) {
-      locald.szt = true;
-    }
-    AppMethodBeat.o(111879);
-    return locald;
+    AppMethodBeat.i(219350);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tze.GR(paramInt);
+    p.g(locala, "bizUIUnit.createDataItem(position)");
+    AppMethodBeat.o(219350);
+    return locala;
+  }
+  
+  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
+  {
+    AppMethodBeat.i(219353);
+    setCount(this.tze.GQ(0));
+    notifyDataSetChanged();
+    al(getCount(), true);
+    AppMethodBeat.o(219353);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
-    return false;
+    AppMethodBeat.i(219352);
+    paramBoolean = this.tze.a(paramView, parama, paramBoolean);
+    AppMethodBeat.o(219352);
+    return paramBoolean;
   }
   
-  public final void b(k paramk)
+  protected final void cTn()
   {
-    AppMethodBeat.i(111881);
-    switch (paramk.bPH)
+    AppMethodBeat.i(219351);
+    this.tze.a(getQuery(), this.tyn, new HashSet(), 0L);
+    AppMethodBeat.o(219351);
+  }
+  
+  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(219354);
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if ((cTs() instanceof FTSBizDetailUI))
     {
+      Object localObject1 = cTs();
+      if (localObject1 == null)
+      {
+        paramAbsListView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.fts.ui.FTSBizDetailUI");
+        AppMethodBeat.o(219354);
+        throw paramAbsListView;
+      }
+      localObject1 = (FTSBizDetailUI)localObject1;
+      if (paramAbsListView == null)
+      {
+        paramAbsListView = new v("null cannot be cast to non-null type android.widget.ListView");
+        AppMethodBeat.o(219354);
+        throw paramAbsListView;
+      }
+      paramInt1 = ((ListView)paramAbsListView).getHeaderViewsCount();
+      Object localObject3 = ((FTSBizDetailUI)localObject1).tzf;
+      cie localcie = ((FTSBizDetailUI)localObject1).tzn;
+      if ((localObject3 != null) && (localcie != null))
+      {
+        Object localObject2 = ((FTSBizDetailUI)localObject1).tzi;
+        if ((localObject2 != null) && (paramAbsListView.getLastVisiblePosition() >= ((f)localObject3).getCount() + paramInt1) && (((View)localObject2).getVisibility() == 0) && (((FTSBizDetailUI)localObject1).tyD == 1))
+        {
+          paramInt2 = com.tencent.mm.cc.a.iq((Context)localObject1);
+          int[] arrayOfInt = new int[2];
+          ((View)localObject2).getLocationOnScreen(arrayOfInt);
+          if (((View)localObject2).getMeasuredHeight() + arrayOfInt[1] <= paramInt2)
+          {
+            ((FTSBizDetailUI)localObject1).tyD = 2;
+            ((FTSBizDetailUI)localObject1).a(localcie, 2);
+          }
+        }
+        localObject2 = ((FTSBizDetailUI)localObject1).tzk;
+        if (localObject2 != null)
+        {
+          if ((paramAbsListView.getLastVisiblePosition() >= paramInt1 + ((f)localObject3).getCount()) && (((LinearLayout)localObject2).getVisibility() == 0))
+          {
+            paramInt2 = com.tencent.mm.cc.a.iq((Context)localObject1);
+            paramInt3 = ((LinearLayout)localObject2).getChildCount();
+            paramInt1 = 0;
+            while (paramInt1 < paramInt3)
+            {
+              paramAbsListView = ((LinearLayout)localObject2).getChildAt(paramInt1);
+              localObject3 = new int[2];
+              paramAbsListView.getLocationOnScreen((int[])localObject3);
+              p.g(paramAbsListView, "childView");
+              int i = paramAbsListView.getMeasuredHeight();
+              int j = localObject3[1];
+              paramAbsListView = paramAbsListView.getTag();
+              if (paramAbsListView == null)
+              {
+                paramAbsListView = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FTSRelatedSugItem");
+                AppMethodBeat.o(219354);
+                throw paramAbsListView;
+              }
+              paramAbsListView = (aix)paramAbsListView;
+              if ((j + i <= paramInt2) && (((FTSBizDetailUI)localObject1).tzq.add(paramAbsListView.Gga.HbR))) {
+                ((FTSBizDetailUI)localObject1).a(paramAbsListView, localcie, 2);
+              }
+              paramInt1 += 1;
+            }
+          }
+          AppMethodBeat.o(219354);
+          return;
+        }
+      }
     }
-    for (;;)
-    {
-      AppMethodBeat.o(111881);
-      return;
-      this.syy = paramk;
-      setCount(paramk.syK.size());
-      notifyDataSetChanged();
-      ah(getCount(), true);
-      AppMethodBeat.o(111881);
-      return;
-      setCount(0);
-      notifyDataSetChanged();
-      ah(getCount(), true);
-    }
-  }
-  
-  protected final void cKY()
-  {
-    AppMethodBeat.i(111880);
-    clearCache();
-    if (this.syJ != null) {
-      ((n)g.ad(n.class)).cancelSearchTask(this.syJ);
-    }
-    j localj = new j();
-    localj.query = this.query;
-    localj.syB = this.syB;
-    localj.syH = com.tencent.mm.plugin.fts.a.c.e.szk;
-    localj.syG.add("create_talker_message​");
-    localj.syI = this;
-    localj.handler = this.lso;
-    localj.jwR = 3;
-    this.syJ = ((n)g.ad(n.class)).search(3, localj);
-    ac.i("MicroMSsg.FTS.FTSChattingConvAdapter", "do search %s", new Object[] { this.query });
-    AppMethodBeat.o(111880);
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(111882);
-    super.finish();
-    if (this.syJ != null) {
-      ((n)g.ad(n.class)).cancelSearchTask(this.syJ);
-    }
-    AppMethodBeat.o(111882);
+    AppMethodBeat.o(219354);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.f
  * JD-Core Version:    0.7.0.1
  */

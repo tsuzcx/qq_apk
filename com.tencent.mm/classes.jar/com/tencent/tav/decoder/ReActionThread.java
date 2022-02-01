@@ -5,7 +5,6 @@ import com.tencent.tav.decoder.logger.Logger;
 public abstract class ReActionThread
   extends Thread
 {
-  public static boolean LOG_VERBOSE = false;
   private static final String TAG = "ReActionThread";
   private boolean hasAction = false;
   private boolean release = false;
@@ -21,9 +20,7 @@ public abstract class ReActionThread
     try
     {
       notifyAll();
-      if (LOG_VERBOSE) {
-        Logger.d("ReActionThread", "action: " + this + " " + hashCode());
-      }
+      Logger.v("ReActionThread", "action: " + this + " " + hashCode());
       return;
     }
     finally {}
@@ -38,22 +35,22 @@ public abstract class ReActionThread
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 24	com/tencent/tav/decoder/ReActionThread:release	Z
+    //   3: getfield 17	com/tencent/tav/decoder/ReActionThread:release	Z
     //   6: ifne +27 -> 33
     //   9: aload_0
     //   10: iconst_1
-    //   11: putfield 24	com/tencent/tav/decoder/ReActionThread:release	Z
+    //   11: putfield 17	com/tencent/tav/decoder/ReActionThread:release	Z
     //   14: aload_0
     //   15: monitorenter
     //   16: aload_0
-    //   17: invokevirtual 32	java/lang/Object:notifyAll	()V
+    //   17: invokevirtual 27	java/lang/Object:notifyAll	()V
     //   20: aload_0
     //   21: monitorexit
     //   22: aload_0
     //   23: monitorenter
     //   24: aload_0
-    //   25: ldc2_w 67
-    //   28: invokevirtual 72	java/lang/Object:wait	(J)V
+    //   25: ldc2_w 62
+    //   28: invokevirtual 67	java/lang/Object:wait	(J)V
     //   31: aload_0
     //   32: monitorexit
     //   33: aload_0
@@ -101,34 +98,34 @@ public abstract class ReActionThread
   public void run()
   {
     // Byte code:
-    //   0: ldc 11
-    //   2: new 34	java/lang/StringBuilder
+    //   0: ldc 8
+    //   2: new 29	java/lang/StringBuilder
     //   5: dup
-    //   6: ldc 75
-    //   8: invokespecial 37	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   6: ldc 70
+    //   8: invokespecial 32	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   11: aload_0
-    //   12: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   15: ldc 43
-    //   17: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   12: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   15: ldc 38
+    //   17: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   20: aload_0
-    //   21: invokevirtual 50	java/lang/Object:hashCode	()I
-    //   24: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 63	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: invokevirtual 45	java/lang/Object:hashCode	()I
+    //   24: invokevirtual 48	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 73	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload_0
-    //   34: getfield 24	com/tencent/tav/decoder/ReActionThread:release	Z
+    //   34: getfield 17	com/tencent/tav/decoder/ReActionThread:release	Z
     //   37: ifne +68 -> 105
     //   40: aload_0
-    //   41: getfield 26	com/tencent/tav/decoder/ReActionThread:hasAction	Z
+    //   41: getfield 19	com/tencent/tav/decoder/ReActionThread:hasAction	Z
     //   44: ifne +29 -> 73
     //   47: aload_0
-    //   48: getfield 24	com/tencent/tav/decoder/ReActionThread:release	Z
+    //   48: getfield 17	com/tencent/tav/decoder/ReActionThread:release	Z
     //   51: ifne +22 -> 73
     //   54: aload_0
     //   55: monitorenter
     //   56: aload_0
-    //   57: ldc2_w 76
-    //   60: invokevirtual 72	java/lang/Object:wait	(J)V
+    //   57: ldc2_w 74
+    //   60: invokevirtual 67	java/lang/Object:wait	(J)V
     //   63: aload_0
     //   64: monitorexit
     //   65: goto -25 -> 40
@@ -139,16 +136,16 @@ public abstract class ReActionThread
     //   72: athrow
     //   73: aload_0
     //   74: iconst_0
-    //   75: putfield 26	com/tencent/tav/decoder/ReActionThread:hasAction	Z
+    //   75: putfield 19	com/tencent/tav/decoder/ReActionThread:hasAction	Z
     //   78: aload_0
-    //   79: getfield 24	com/tencent/tav/decoder/ReActionThread:release	Z
+    //   79: getfield 17	com/tencent/tav/decoder/ReActionThread:release	Z
     //   82: ifne +7 -> 89
     //   85: aload_0
-    //   86: invokevirtual 79	com/tencent/tav/decoder/ReActionThread:doAction	()V
+    //   86: invokevirtual 77	com/tencent/tav/decoder/ReActionThread:doAction	()V
     //   89: aload_0
     //   90: monitorenter
     //   91: aload_0
-    //   92: invokevirtual 32	java/lang/Object:notifyAll	()V
+    //   92: invokevirtual 27	java/lang/Object:notifyAll	()V
     //   95: aload_0
     //   96: monitorexit
     //   97: goto -64 -> 33
@@ -157,20 +154,20 @@ public abstract class ReActionThread
     //   102: monitorexit
     //   103: aload_1
     //   104: athrow
-    //   105: ldc 11
-    //   107: new 34	java/lang/StringBuilder
+    //   105: ldc 8
+    //   107: new 29	java/lang/StringBuilder
     //   110: dup
-    //   111: ldc 81
-    //   113: invokespecial 37	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   111: ldc 79
+    //   113: invokespecial 32	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   116: aload_0
-    //   117: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   120: ldc 43
-    //   122: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   120: ldc 38
+    //   122: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: aload_0
-    //   126: invokevirtual 50	java/lang/Object:hashCode	()I
-    //   129: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: invokestatic 63	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: invokevirtual 45	java/lang/Object:hashCode	()I
+    //   129: invokevirtual 48	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokestatic 73	com/tencent/tav/decoder/logger/Logger:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: return
     //   139: astore_1
     //   140: goto -77 -> 63

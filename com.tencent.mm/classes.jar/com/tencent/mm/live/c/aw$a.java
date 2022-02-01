@@ -1,12 +1,14 @@
 package com.tencent.mm.live.c;
 
 import d.g.a.b;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "success", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "invoke"})
 final class aw$a
-  extends d.g.b.l
-  implements b<Boolean, y>
+  extends q
+  implements b<Boolean, z>
 {
   aw$a(b paramb)
   {

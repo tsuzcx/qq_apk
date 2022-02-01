@@ -12,7 +12,7 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
@@ -169,7 +169,7 @@ public class GlobalUtil
     {
       for (;;)
       {
-        ac.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+        ad.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
         localObject = str;
       }
     }
@@ -182,7 +182,7 @@ public class GlobalUtil
     AppMethodBeat.i(102499);
     if (getInstance().getContext() != null)
     {
-      paramString = e.U(getInstance().getContext().getDatabasePath(paramString));
+      paramString = e.X(getInstance().getContext().getDatabasePath(paramString));
       if (paramString.exists() == true) {
         try
         {
@@ -227,7 +227,7 @@ public class GlobalUtil
       }
       catch (PackageManager.NameNotFoundException paramContext)
       {
-        ac.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
+        ad.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
         AppMethodBeat.o(102488);
         return 0;
       }
@@ -269,7 +269,7 @@ public class GlobalUtil
   public static boolean isDBExist(String paramString)
   {
     AppMethodBeat.i(102498);
-    if ((getInstance().getContext() != null) && (e.U(getInstance().getContext().getDatabasePath(paramString)).exists()))
+    if ((getInstance().getContext() != null) && (e.X(getInstance().getContext().getDatabasePath(paramString)).exists()))
     {
       AppMethodBeat.o(102498);
       return true;
@@ -287,7 +287,7 @@ public class GlobalUtil
     paramString = new e(str1).getParent();
     try
     {
-      localObject = "chmod 777 " + q.B(((e)localObject).fxV());
+      localObject = "chmod 777 " + q.B(((e)localObject).fOK());
       Runtime.getRuntime().exec((String)localObject);
       str2 = "chmod 777 ".concat(String.valueOf(str2));
       Runtime.getRuntime().exec(str2);
@@ -300,7 +300,7 @@ public class GlobalUtil
     }
     catch (IOException paramString)
     {
-      ac.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+      ad.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
       AppMethodBeat.o(102497);
     }
   }
@@ -432,7 +432,7 @@ public class GlobalUtil
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
+      ad.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
       AppMethodBeat.o(102495);
     }
     return 0;
@@ -462,7 +462,7 @@ public class GlobalUtil
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        ac.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
+        ad.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
         AppMethodBeat.o(102496);
         return 0;
       }

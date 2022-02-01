@@ -1,181 +1,46 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.GradientDrawable;
-import android.util.DisplayMetrics;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
-import com.tencent.mm.plugin.appbrand.widget.b;
-import com.tencent.mm.plugin.appbrand.z.l;
-import com.tencent.mm.ui.statusbar.c.a;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import d.l;
 
-@SuppressLint({"ViewConstructor"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify;", "", "()V", "doNotify", "", "processName", "", "appBrandUiName", "IPC_Notify", "plugin-appbrand-integration_release"})
 public final class o
-  extends LinearLayout
-  implements c.a
 {
-  public final com.tencent.luggage.sdk.d.c ceP;
-  private final a[] mfb;
-  private final SparseArray<b> mfc;
-  private final SparseArray<b> mfd;
-  private int mfe;
+  public static final o mFs;
   
-  public o(Context paramContext, com.tencent.luggage.sdk.d.c paramc)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(147701);
-    this.ceP = paramc;
-    this.mfc = new SparseArray();
-    this.mfd = new SparseArray();
-    this.mfb = new a[4];
-    setClickable(false);
-    int i = getContext().getResources().getDisplayMetrics().widthPixels;
-    int j = a.fromDPToPix(getContext(), 10);
-    int k = a.fromDPToPix(getContext(), 4);
-    paramContext = new FrameLayout.LayoutParams(i * 3 / 5, -2);
-    paramContext.gravity = 53;
-    setLayoutParams(paramContext);
-    bvy();
-    setPadding(j, j, j, j);
-    setOrientation(1);
-    paramContext = new GradientDrawable();
-    paramContext.setCornerRadius(k);
-    paramContext.setColor(-652403418);
-    setBackground(paramContext);
-    paramContext = new LinearLayout.LayoutParams(-1, -2);
-    paramc = new LinearLayout.LayoutParams(-1, 2);
-    TextView localTextView = new TextView(getContext());
-    View localView = new View(getContext());
-    localTextView.setTextColor(-1);
-    localTextView.setLayoutParams(paramContext);
-    localTextView.setTextSize(1, 14.0F);
-    localTextView.setText(getContext().getString(2131755562));
-    addView(localTextView);
-    paramc.setMargins(0, a.fromDPToPix(getContext(), 10), 0, 0);
-    localView.setLayoutParams(paramc);
-    localView.setBackgroundColor(1728053247);
-    addView(localView);
-    bvz();
-    com.tencent.mm.ui.statusbar.c.bm((Activity)getContext()).a(this);
-    AppMethodBeat.o(147701);
+    AppMethodBeat.i(51152);
+    mFs = new o();
+    AppMethodBeat.o(51152);
   }
   
-  private void bvy()
+  public static void ep(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(147702);
-    if ((getLayoutParams() != null) && ((getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+    AppMethodBeat.i(51151);
+    Object localObject = (CharSequence)paramString1;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (b.dT(getContext()) + this.mfe);
-      requestLayout();
+      AppMethodBeat.o(51151);
+      return;
     }
-    AppMethodBeat.o(147702);
-  }
-  
-  private void bvz()
-  {
-    AppMethodBeat.i(147703);
-    int i = 0;
-    while (i < 4)
-    {
-      a locala = new a(getContext());
-      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.lHG[i]));
-      this.mfb[i] = locala;
-      addView(locala);
-      i += 1;
+    localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = "null";
     }
-    AppMethodBeat.o(147703);
+    XIPCInvoker.a(paramString1, new IPCString((String)localObject), a.class, null);
+    AppMethodBeat.o(51151);
   }
   
-  public final void as(final int paramInt, final String paramString)
-  {
-    AppMethodBeat.i(147704);
-    l.runOnUiThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(147692);
-        o.a(o.this, paramInt, paramString);
-        AppMethodBeat.o(147692);
-      }
-    });
-    AppMethodBeat.o(147704);
-  }
-  
-  public final void eh(final String paramString1, final String paramString2)
-  {
-    AppMethodBeat.i(147705);
-    l.runOnUiThread(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(147693);
-        o.a(o.this, paramString1, paramString2);
-        AppMethodBeat.o(147693);
-      }
-    });
-    AppMethodBeat.o(147705);
-  }
-  
-  public final void tx(int paramInt)
-  {
-    AppMethodBeat.i(147706);
-    this.mfe = paramInt;
-    bvy();
-    AppMethodBeat.o(147706);
-  }
-  
-  @SuppressLint({"AppCompatCustomView"})
-  final class a
-    extends TextView
-  {
-    public a(Context paramContext)
-    {
-      super();
-      AppMethodBeat.i(147694);
-      this$1 = new LinearLayout.LayoutParams(-1, -2);
-      int i = a.fromDPToPix(getContext(), 5);
-      o.this.setMargins(0, i, 0, i);
-      setLayoutParams(o.this);
-      setTextSize(1, 12.0F);
-      setTextColor(getContext().getResources().getColor(2131100212));
-      AppMethodBeat.o(147694);
-    }
-  }
-  
-  @SuppressLint({"AppCompatCustomView"})
-  final class b
-    extends TextView
-  {
-    private String mTitle;
-    private String mValue;
-    
-    public b(Context paramContext)
-    {
-      super();
-      AppMethodBeat.i(147696);
-      setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-      setTextSize(1, 12.0F);
-      setTextColor(getContext().getResources().getColor(2131099674));
-      AppMethodBeat.o(147696);
-    }
-    
-    private void update()
-    {
-      AppMethodBeat.i(147697);
-      setText(String.format("%s: %s", new Object[] { this.mTitle, this.mValue }));
-      AppMethodBeat.o(147697);
-    }
-  }
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify$IPC_Notify;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  static final class a
+    implements b<IPCString, IPCVoid>
+  {}
 }
 
 

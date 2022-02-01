@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.g;
@@ -19,11 +19,11 @@ import com.tencent.mm.wallet_core.ui.g;
 public abstract class MallBaseUI
   extends MMActivity
 {
-  protected String jYB;
+  protected String ksX;
   
-  protected final void apv(String paramString)
+  protected final void auB(String paramString)
   {
-    this.jYB = paramString;
+    this.ksX = paramString;
     showDialog(-10001);
   }
   
@@ -49,10 +49,10 @@ public abstract class MallBaseUI
     default: 
       return super.onCreateDialog(paramInt);
     case -10001: 
-      if (bs.isNullOrNil(this.jYB)) {
-        this.jYB = getString(2131761118);
+      if (bt.isNullOrNil(this.ksX)) {
+        this.ksX = getString(2131761118);
       }
-      h.a(this, this.jYB, null, false, new DialogInterface.OnClickListener()
+      h.a(this, this.ksX, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {

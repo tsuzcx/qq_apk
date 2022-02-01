@@ -5,35 +5,35 @@ import com.tencent.mm.memory.a.c;
 
 public final class f
 {
-  private static f hWu = null;
-  public com.tencent.mm.b.f<String, Long> hWv;
-  public String hWw;
+  private static f ipP = null;
+  public com.tencent.mm.b.f<String, Long> ipQ;
+  public String ipR;
   
   private f()
   {
     AppMethodBeat.i(151076);
-    this.hWv = new c(10);
+    this.ipQ = new c(10);
     AppMethodBeat.o(151076);
   }
   
-  public static f aIw()
+  public static f aLG()
   {
     AppMethodBeat.i(151075);
-    if (hWu == null) {
-      hWu = new f();
+    if (ipP == null) {
+      ipP = new f();
     }
-    f localf = hWu;
+    f localf = ipP;
     AppMethodBeat.o(151075);
     return localf;
   }
   
-  public final void D(String paramString, long paramLong)
+  public final void I(String paramString, long paramLong)
   {
     AppMethodBeat.i(151077);
-    if (this.hWv != null)
+    if (this.ipQ != null)
     {
-      this.hWw = paramString;
-      this.hWv.put(paramString, Long.valueOf(paramLong));
+      this.ipR = paramString;
+      this.ipQ.put(paramString, Long.valueOf(paramLong));
     }
     AppMethodBeat.o(151077);
   }

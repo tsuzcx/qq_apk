@@ -9,9 +9,9 @@ public final class RepresentationKey
   implements Parcelable, Comparable<RepresentationKey>
 {
   public static final Parcelable.Creator<RepresentationKey> CREATOR;
-  public final int bmU;
-  public final int bmV;
-  public final int bmb;
+  public final int bww;
+  public final int bxp;
+  public final int bxq;
   
   static
   {
@@ -22,9 +22,9 @@ public final class RepresentationKey
   
   public RepresentationKey(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.bmb = paramInt1;
-    this.bmU = paramInt2;
-    this.bmV = paramInt3;
+    this.bww = paramInt1;
+    this.bxp = paramInt2;
+    this.bxq = paramInt3;
   }
   
   public final int describeContents()
@@ -35,7 +35,7 @@ public final class RepresentationKey
   public final String toString()
   {
     AppMethodBeat.i(10568);
-    String str = this.bmb + "." + this.bmU + "." + this.bmV;
+    String str = this.bww + "." + this.bxp + "." + this.bxq;
     AppMethodBeat.o(10568);
     return str;
   }
@@ -43,9 +43,9 @@ public final class RepresentationKey
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(10569);
-    paramParcel.writeInt(this.bmb);
-    paramParcel.writeInt(this.bmU);
-    paramParcel.writeInt(this.bmV);
+    paramParcel.writeInt(this.bww);
+    paramParcel.writeInt(this.bxp);
+    paramParcel.writeInt(this.bxq);
     AppMethodBeat.o(10569);
   }
 }

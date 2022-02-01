@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aci;
-import com.tencent.mm.protocal.protobuf.acj;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.aei;
+import com.tencent.mm.protocal.protobuf.aej;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private b rr;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(20765);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new aci();
-    ((b.a)localObject).hvu = new acj();
+    ((b.a)localObject).hNM = new aei();
+    ((b.a)localObject).hNN = new aej();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/autofill/deleteinfo";
     ((b.a)localObject).funcId = 1194;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (aci)this.rr.hvr.hvw;
-    ((aci)localObject).EuS = "invoice_info";
-    ((aci)localObject).EuT = paramInt;
-    ((aci)localObject).dbL = 2;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (aei)this.rr.hNK.hNQ;
+    ((aei)localObject).Gcm = "invoice_info";
+    ((aei)localObject).Gcn = paramInt;
+    ((aei)localObject).dnh = 2;
     AppMethodBeat.o(20765);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(20767);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(20767);
     return i;
@@ -53,9 +53,9 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20766);
-    ac.d("MicroMsg.NetSceneDeleteUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    ad.d("MicroMsg.NetSceneDeleteUserAutoFillInfo", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      ac.i("MicroMsg.NetSceneDeleteUserAutoFillInfo", "");
+      ad.i("MicroMsg.NetSceneDeleteUserAutoFillInfo", "");
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(20766);

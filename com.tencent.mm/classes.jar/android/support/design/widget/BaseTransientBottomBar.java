@@ -29,23 +29,23 @@ import java.util.List;
 public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>>
 {
   static final Handler handler;
-  private static final boolean lB;
-  private static final int[] lC;
+  private static final boolean nu;
+  private static final int[] nv;
   private List<Object<B>> callbacks;
-  private final ViewGroup lD;
-  protected final d lE;
-  private final android.support.design.g.a lF;
-  private Behavior lG;
-  private final AccessibilityManager lH;
-  final n.a lI;
+  private final AccessibilityManager nA;
+  final n.a nB;
+  private final ViewGroup nw;
+  protected final d nx;
+  private final android.support.design.g.a ny;
+  private Behavior nz;
   
   static
   {
     if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT <= 19)) {}
     for (boolean bool = true;; bool = false)
     {
-      lB = bool;
-      lC = new int[] { 2130969462 };
+      nu = bool;
+      nv = new int[] { 2130969462 };
       handler = new Handler(Looper.getMainLooper(), new Handler.Callback()
       {
         public final boolean handleMessage(Message paramAnonymousMessage)
@@ -55,7 +55,7 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
           default: 
             return false;
           case 0: 
-            ((BaseTransientBottomBar)paramAnonymousMessage.obj).bD();
+            ((BaseTransientBottomBar)paramAnonymousMessage.obj).bS();
             return true;
           }
           ((BaseTransientBottomBar)paramAnonymousMessage.obj).H(paramAnonymousMessage.arg1);
@@ -66,10 +66,10 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     }
   }
   
-  private int bF()
+  private int bU()
   {
-    int i = this.lE.getHeight();
-    ViewGroup.LayoutParams localLayoutParams = this.lE.getLayoutParams();
+    int i = this.nx.getHeight();
+    ViewGroup.LayoutParams localLayoutParams = this.nx.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
       return ((ViewGroup.MarginLayoutParams)localLayoutParams).bottomMargin + i;
     }
@@ -78,69 +78,69 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
   
   final void H(final int paramInt)
   {
-    if ((bI()) && (this.lE.getVisibility() == 0))
+    if ((bX()) && (this.nx.getVisibility() == 0))
     {
       ValueAnimator localValueAnimator = new ValueAnimator();
-      localValueAnimator.setIntValues(new int[] { 0, bF() });
-      localValueAnimator.setInterpolator(android.support.design.a.a.eQ);
+      localValueAnimator.setIntValues(new int[] { 0, bU() });
+      localValueAnimator.setInterpolator(android.support.design.a.a.gJ);
       localValueAnimator.setDuration(250L);
       localValueAnimator.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          BaseTransientBottomBar.this.bH();
+          BaseTransientBottomBar.this.bW();
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          BaseTransientBottomBar.a(BaseTransientBottomBar.this).bv();
+          BaseTransientBottomBar.a(BaseTransientBottomBar.this).bK();
         }
       });
       localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
-        private int lK = 0;
+        private int nD = 0;
         
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-          if (BaseTransientBottomBar.lB) {
-            t.s(BaseTransientBottomBar.this.lE, i - this.lK);
+          if (BaseTransientBottomBar.nu) {
+            t.s(BaseTransientBottomBar.this.nx, i - this.nD);
           }
           for (;;)
           {
-            this.lK = i;
+            this.nD = i;
             return;
-            BaseTransientBottomBar.this.lE.setTranslationY(i);
+            BaseTransientBottomBar.this.nx.setTranslationY(i);
           }
         }
       });
       localValueAnimator.start();
       return;
     }
-    bH();
+    bW();
   }
   
-  final void bD()
+  final void bS()
   {
     CoordinatorLayout.d locald;
-    if (this.lE.getParent() == null)
+    if (this.nx.getParent() == null)
     {
-      localObject = this.lE.getLayoutParams();
+      localObject = this.nx.getLayoutParams();
       if ((localObject instanceof CoordinatorLayout.d))
       {
         locald = (CoordinatorLayout.d)localObject;
-        if (this.lG != null) {
+        if (this.nz != null) {
           break label131;
         }
       }
     }
     label131:
-    for (Object localObject = new Behavior();; localObject = this.lG)
+    for (Object localObject = new Behavior();; localObject = this.nz)
     {
       if ((localObject instanceof Behavior)) {
         Behavior.a((Behavior)localObject, this);
       }
-      ((SwipeDismissBehavior)localObject).rU = new SwipeDismissBehavior.a()
+      ((SwipeDismissBehavior)localObject).tN = new SwipeDismissBehavior.a()
       {
         public final void I(int paramAnonymousInt)
         {
@@ -150,127 +150,127 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
             return;
           case 1: 
           case 2: 
-            n.cD().b(BaseTransientBottomBar.this.lI);
+            n.cT().b(BaseTransientBottomBar.this.nB);
             return;
           }
-          n.cD().c(BaseTransientBottomBar.this.lI);
+          n.cT().c(BaseTransientBottomBar.this.nB);
         }
         
         public final void onDismiss(View paramAnonymousView)
         {
           paramAnonymousView.setVisibility(8);
           ??? = BaseTransientBottomBar.this;
-          paramAnonymousView = n.cD();
-          n.a locala = ((BaseTransientBottomBar)???).lI;
+          paramAnonymousView = n.cT();
+          n.a locala = ((BaseTransientBottomBar)???).nB;
           synchronized (paramAnonymousView.lock)
           {
             if (paramAnonymousView.e(locala)) {
-              paramAnonymousView.a(paramAnonymousView.rI);
+              paramAnonymousView.a(paramAnonymousView.tC);
             }
             while (!paramAnonymousView.f(locala)) {
               return;
             }
-            paramAnonymousView.a(paramAnonymousView.rJ);
+            paramAnonymousView.a(paramAnonymousView.tD);
           }
         }
       };
       locald.a((CoordinatorLayout.Behavior)localObject);
-      locald.oL = 80;
-      this.lD.addView(this.lE);
-      this.lE.setOnAttachStateChangeListener(new b()
+      locald.qE = 80;
+      this.nw.addView(this.nx);
+      this.nx.setOnAttachStateChangeListener(new b()
       {
-        public final void bJ()
+        public final void bY()
         {
           BaseTransientBottomBar localBaseTransientBottomBar = BaseTransientBottomBar.this;
-          if (n.cD().d(localBaseTransientBottomBar.lI)) {
+          if (n.cT().d(localBaseTransientBottomBar.nB)) {
             BaseTransientBottomBar.handler.post(new Runnable()
             {
               public final void run()
               {
-                BaseTransientBottomBar.this.bH();
+                BaseTransientBottomBar.this.bW();
               }
             });
           }
         }
       });
-      if (!t.ay(this.lE)) {
+      if (!t.ay(this.nx)) {
         break label144;
       }
-      if (!bI()) {
+      if (!bX()) {
         break;
       }
-      bE();
+      bT();
       return;
     }
-    bG();
+    bV();
     return;
     label144:
-    this.lE.setOnLayoutChangeListener(new c()
+    this.nx.setOnLayoutChangeListener(new c()
     {
-      public final void bK()
+      public final void bZ()
       {
-        BaseTransientBottomBar.this.lE.setOnLayoutChangeListener(null);
-        if (BaseTransientBottomBar.this.bI())
+        BaseTransientBottomBar.this.nx.setOnLayoutChangeListener(null);
+        if (BaseTransientBottomBar.this.bX())
         {
-          BaseTransientBottomBar.this.bE();
+          BaseTransientBottomBar.this.bT();
           return;
         }
-        BaseTransientBottomBar.this.bG();
+        BaseTransientBottomBar.this.bV();
       }
     });
   }
   
-  final void bE()
+  final void bT()
   {
-    final int i = bF();
-    if (lB) {
-      t.s(this.lE, i);
+    final int i = bU();
+    if (nu) {
+      t.s(this.nx, i);
     }
     for (;;)
     {
       ValueAnimator localValueAnimator = new ValueAnimator();
       localValueAnimator.setIntValues(new int[] { i, 0 });
-      localValueAnimator.setInterpolator(android.support.design.a.a.eQ);
+      localValueAnimator.setInterpolator(android.support.design.a.a.gJ);
       localValueAnimator.setDuration(250L);
       localValueAnimator.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          BaseTransientBottomBar.this.bG();
+          BaseTransientBottomBar.this.bV();
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          BaseTransientBottomBar.a(BaseTransientBottomBar.this).bu();
+          BaseTransientBottomBar.a(BaseTransientBottomBar.this).bJ();
         }
       });
       localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
-        private int lK = i;
+        private int nD = i;
         
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           int i = ((Integer)paramAnonymousValueAnimator.getAnimatedValue()).intValue();
-          if (BaseTransientBottomBar.lB) {
-            t.s(BaseTransientBottomBar.this.lE, i - this.lK);
+          if (BaseTransientBottomBar.nu) {
+            t.s(BaseTransientBottomBar.this.nx, i - this.nD);
           }
           for (;;)
           {
-            this.lK = i;
+            this.nD = i;
             return;
-            BaseTransientBottomBar.this.lE.setTranslationY(i);
+            BaseTransientBottomBar.this.nx.setTranslationY(i);
           }
         }
       });
       localValueAnimator.start();
       return;
-      this.lE.setTranslationY(i);
+      this.nx.setTranslationY(i);
     }
   }
   
-  final void bG()
+  final void bV()
   {
-    n.cD().a(this.lI);
+    n.cT().a(this.nB);
     if (this.callbacks != null)
     {
       int i = this.callbacks.size() - 1;
@@ -282,21 +282,21 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     }
   }
   
-  final void bH()
+  final void bW()
   {
-    n localn = n.cD();
-    n.a locala = this.lI;
+    n localn = n.cT();
+    n.a locala = this.nB;
     synchronized (localn.lock)
     {
       if (localn.e(locala))
       {
-        localn.rI = null;
-        if ((localn.rJ != null) && (localn.rJ != null))
+        localn.tC = null;
+        if ((localn.tD != null) && (localn.tD != null))
         {
-          localn.rI = localn.rJ;
-          localn.rJ = null;
-          if ((n.a)localn.rI.rL.get() == null) {
-            localn.rI = null;
+          localn.tC = localn.tD;
+          localn.tD = null;
+          if ((n.a)localn.tC.tF.get() == null) {
+            localn.tC = null;
           }
         }
       }
@@ -310,26 +310,26 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         }
       }
     }
-    ??? = this.lE.getParent();
+    ??? = this.nx.getParent();
     if ((??? instanceof ViewGroup)) {
-      ((ViewGroup)???).removeView(this.lE);
+      ((ViewGroup)???).removeView(this.nx);
     }
   }
   
-  final boolean bI()
+  final boolean bX()
   {
-    List localList = this.lH.getEnabledAccessibilityServiceList(1);
+    List localList = this.nA.getEnabledAccessibilityServiceList(1);
     return (localList != null) && (localList.isEmpty());
   }
   
   public static class Behavior
     extends SwipeDismissBehavior<View>
   {
-    private final BaseTransientBottomBar.a lN = new BaseTransientBottomBar.a(this);
+    private final BaseTransientBottomBar.a nG = new BaseTransientBottomBar.a(this);
     
     public final boolean b(CoordinatorLayout paramCoordinatorLayout, View paramView, MotionEvent paramMotionEvent)
     {
-      BaseTransientBottomBar.a locala = this.lN;
+      BaseTransientBottomBar.a locala = this.nG;
       switch (paramMotionEvent.getActionMasked())
       {
       }
@@ -338,9 +338,9 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         return super.b(paramCoordinatorLayout, paramView, paramMotionEvent);
         if (paramCoordinatorLayout.d(paramView, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
         {
-          n.cD().b(locala.lI);
+          n.cT().b(locala.nB);
           continue;
-          n.cD().c(locala.lI);
+          n.cT().c(locala.nB);
         }
       }
     }
@@ -353,33 +353,33 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
   
   public static final class a
   {
-    n.a lI;
+    n.a nB;
     
     public a(SwipeDismissBehavior<?> paramSwipeDismissBehavior)
     {
-      paramSwipeDismissBehavior.sa = SwipeDismissBehavior.w(0.1F);
-      paramSwipeDismissBehavior.sc = SwipeDismissBehavior.w(0.6F);
-      paramSwipeDismissBehavior.rY = 0;
+      paramSwipeDismissBehavior.tT = SwipeDismissBehavior.u(0.1F);
+      paramSwipeDismissBehavior.tU = SwipeDismissBehavior.u(0.6F);
+      paramSwipeDismissBehavior.tR = 0;
     }
   }
   
   protected static abstract interface b
   {
-    public abstract void bJ();
+    public abstract void bY();
   }
   
   protected static abstract interface c
   {
-    public abstract void bK();
+    public abstract void bZ();
   }
   
   protected static class d
     extends FrameLayout
   {
-    private final AccessibilityManager lH;
-    private final b.a lO;
-    private BaseTransientBottomBar.c lP;
-    private BaseTransientBottomBar.b lQ;
+    private final AccessibilityManager nA;
+    private final b.a nH;
+    private BaseTransientBottomBar.c nI;
+    private BaseTransientBottomBar.b nJ;
     
     protected d(Context paramContext, AttributeSet paramAttributeSet)
     {
@@ -389,20 +389,20 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
         t.k(this, paramAttributeSet.getDimensionPixelSize(1, 0));
       }
       paramAttributeSet.recycle();
-      this.lH = ((AccessibilityManager)paramContext.getSystemService("accessibility"));
-      this.lO = new b.a()
+      this.nA = ((AccessibilityManager)paramContext.getSystemService("accessibility"));
+      this.nH = new b.a()
       {
         public final void onTouchExplorationStateChanged(boolean paramAnonymousBoolean)
         {
           BaseTransientBottomBar.d.a(BaseTransientBottomBar.d.this, paramAnonymousBoolean);
         }
       };
-      paramContext = this.lH;
-      paramAttributeSet = this.lO;
+      paramContext = this.nA;
+      paramAttributeSet = this.nH;
       if ((Build.VERSION.SDK_INT >= 19) && (paramAttributeSet != null)) {
         paramContext.addTouchExplorationStateChangeListener(new b.b(paramAttributeSet));
       }
-      setClickableOrFocusableBasedOnAccessibility(this.lH.isTouchExplorationEnabled());
+      setClickableOrFocusableBasedOnAccessibility(this.nA.isTouchExplorationEnabled());
     }
     
     private void setClickableOrFocusableBasedOnAccessibility(boolean paramBoolean)
@@ -425,11 +425,11 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     protected void onDetachedFromWindow()
     {
       super.onDetachedFromWindow();
-      if (this.lQ != null) {
-        this.lQ.bJ();
+      if (this.nJ != null) {
+        this.nJ.bY();
       }
-      AccessibilityManager localAccessibilityManager = this.lH;
-      b.a locala = this.lO;
+      AccessibilityManager localAccessibilityManager = this.nA;
+      b.a locala = this.nH;
       if ((Build.VERSION.SDK_INT >= 19) && (locala != null)) {
         localAccessibilityManager.removeTouchExplorationStateChangeListener(new b.b(locala));
       }
@@ -438,19 +438,19 @@ public abstract class BaseTransientBottomBar<B extends BaseTransientBottomBar<B>
     protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      if (this.lP != null) {
-        this.lP.bK();
+      if (this.nI != null) {
+        this.nI.bZ();
       }
     }
     
     void setOnAttachStateChangeListener(BaseTransientBottomBar.b paramb)
     {
-      this.lQ = paramb;
+      this.nJ = paramb;
     }
     
     void setOnLayoutChangeListener(BaseTransientBottomBar.c paramc)
     {
-      this.lP = paramc;
+      this.nI = paramc;
     }
   }
 }

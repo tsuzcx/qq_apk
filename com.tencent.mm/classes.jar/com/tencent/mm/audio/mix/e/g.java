@@ -13,34 +13,34 @@ import java.io.OutputStream;
 
 public final class g
 {
-  private static Object cRu;
-  private static g cTp;
-  private String cRr;
-  private boolean cTq;
-  private boolean cqf;
+  private static Object dcK;
+  private static g deF;
+  private boolean cAX;
+  private String dcH;
+  private boolean deG;
   private OutputStream outputStream;
   
   static
   {
     AppMethodBeat.i(136876);
-    cRu = new Object();
+    dcK = new Object();
     AppMethodBeat.o(136876);
   }
   
   private g()
   {
     AppMethodBeat.i(136875);
-    this.cqf = false;
-    this.cTq = true;
-    if (!this.cqf)
+    this.cAX = false;
+    this.deG = true;
+    if (!this.cAX)
     {
-      this.cqf = true;
-      this.cRr = NE();
-      b.i("MicroMsg.Mix.ExportMixAudioPcmFile", "outFile:%s", new Object[] { this.cRr });
-      i.deleteFile(this.cRr);
+      this.cAX = true;
+      this.dcH = Pn();
+      b.i("MicroMsg.Mix.ExportMixAudioPcmFile", "outFile:%s", new Object[] { this.dcH });
+      i.deleteFile(this.dcH);
       try
       {
-        this.outputStream = i.cS(q.B(a.fB(this.cRr).mUri), false);
+        this.outputStream = i.cX(q.B(a.gw(this.dcH).mUri), false);
         AppMethodBeat.o(136875);
         return;
       }
@@ -58,22 +58,22 @@ public final class g
     AppMethodBeat.o(136875);
   }
   
-  private static g ND()
+  private static g Pm()
   {
     AppMethodBeat.i(136872);
-    if (cTp == null) {}
-    synchronized (cRu)
+    if (deF == null) {}
+    synchronized (dcK)
     {
-      if (cTp == null) {
-        cTp = new g();
+      if (deF == null) {
+        deF = new g();
       }
-      ??? = cTp;
+      ??? = deF;
       AppMethodBeat.o(136872);
       return ???;
     }
   }
   
-  private static String NE()
+  private static String Pn()
   {
     AppMethodBeat.i(136873);
     Object localObject = new e(Environment.getExternalStorageDirectory().getAbsolutePath());
@@ -85,12 +85,12 @@ public final class g
     return localObject;
   }
   
-  public static void NF()
+  public static void Po()
   {
     AppMethodBeat.i(136874);
-    new e(NE()).delete();
-    g localg = ND();
-    if (localg.cqf) {
+    new e(Pn()).delete();
+    g localg = Pm();
+    if (localg.cAX) {
       b.i("MicroMsg.Mix.ExportMixAudioPcmFile", "finishProcess");
     }
     try
@@ -101,7 +101,7 @@ public final class g
         localg.outputStream.close();
         localg.outputStream = null;
       }
-      localg.cqf = false;
+      localg.cAX = false;
       AppMethodBeat.o(136874);
       return;
     }
@@ -116,7 +116,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.g
  * JD-Core Version:    0.7.0.1
  */

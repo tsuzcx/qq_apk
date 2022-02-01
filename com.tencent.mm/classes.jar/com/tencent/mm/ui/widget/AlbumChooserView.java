@@ -9,20 +9,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class AlbumChooserView
   extends LinearLayout
 {
-  public TextView IYP;
-  public ImageView IYQ;
-  public boolean IYR;
-  private a IYS;
+  public TextView KPU;
+  public ImageView KPV;
+  public boolean KPW;
+  private a KPX;
   
   public AlbumChooserView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159261);
-    this.IYR = false;
+    this.KPW = false;
     init(paramContext);
     AppMethodBeat.o(159261);
   }
@@ -31,7 +33,7 @@ public class AlbumChooserView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159262);
-    this.IYR = false;
+    this.KPW = false;
     init(paramContext);
     AppMethodBeat.o(159262);
   }
@@ -40,17 +42,21 @@ public class AlbumChooserView
   {
     AppMethodBeat.i(159263);
     paramContext = LayoutInflater.from(paramContext).inflate(2131492954, this, true);
-    this.IYP = ((TextView)paramContext.findViewById(2131296544));
-    this.IYQ = ((ImageView)paramContext.findViewById(2131296543));
-    this.IYQ.setRotation(90.0F);
+    this.KPU = ((TextView)paramContext.findViewById(2131296544));
+    this.KPV = ((ImageView)paramContext.findViewById(2131296543));
+    this.KPV.setRotation(90.0F);
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159258);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/ui/widget/AlbumChooserView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (AlbumChooserView.a(AlbumChooserView.this) != null) {
-          AlbumChooserView.a(AlbumChooserView.this).cNJ();
+          AlbumChooserView.a(AlbumChooserView.this).cWb();
         }
+        a.a(this, "com/tencent/mm/ui/widget/AlbumChooserView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(159258);
       }
     });
@@ -59,12 +65,12 @@ public class AlbumChooserView
   
   public void setOnAlbumChooserViewClick(a parama)
   {
-    this.IYS = parama;
+    this.KPX = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cNJ();
+    public abstract void cWb();
   }
 }
 

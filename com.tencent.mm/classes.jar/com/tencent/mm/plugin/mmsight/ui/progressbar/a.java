@@ -4,16 +4,16 @@ public final class a
 {
   int color = -1;
   int index = 0;
-  float uUA;
-  float uUB;
-  int uUC;
-  int uUD;
+  float mAM;
+  float mAN;
+  int vXK;
+  int vXL;
   
   public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.index = paramInt1;
-    this.uUC = paramInt2;
-    this.uUD = paramInt3;
+    this.vXK = paramInt2;
+    this.vXL = paramInt3;
     this.color = paramInt4;
   }
 }

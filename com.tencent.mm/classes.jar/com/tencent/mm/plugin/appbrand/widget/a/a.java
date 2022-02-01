@@ -1,17 +1,12 @@
 package com.tencent.mm.plugin.appbrand.widget.a;
 
-import com.tencent.mm.plugin.appbrand.widget.g;
-import com.tencent.mm.plugin.appbrand.widget.j;
-import com.tencent.mm.plugin.appbrand.widget.o;
+import com.tencent.luggage.a.b;
+import com.tencent.mm.protocal.protobuf.blq;
 
 public abstract interface a
-  extends com.tencent.mm.kernel.c.a
+  extends b
 {
-  public abstract g aVD();
-  
-  public abstract j aVw();
-  
-  public abstract o aVy();
+  public abstract com.tencent.mm.al.a<blq> a(String paramString1, int paramInt1, String paramString2, int paramInt2);
 }
 
 

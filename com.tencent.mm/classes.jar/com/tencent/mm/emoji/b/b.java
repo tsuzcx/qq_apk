@@ -1,25 +1,25 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  private static b fUW;
-  public boolean fSq;
-  public long fUX;
-  public int fUY;
-  public int fUZ;
+  private static b goz;
+  public boolean glU;
+  public long goA;
+  public int goB;
+  public int goC;
   public int scene;
   
-  public static b ads()
+  public static b afY()
   {
     AppMethodBeat.i(104481);
-    if (fUW == null) {
-      fUW = new b();
+    if (goz == null) {
+      goz = new b();
     }
-    b localb = fUW;
+    b localb = goz;
     AppMethodBeat.o(104481);
     return localb;
   }
@@ -29,21 +29,21 @@ public final class b
     int j = 1;
     AppMethodBeat.i(104483);
     long l1 = System.currentTimeMillis();
-    long l2 = this.fUX;
-    h localh = h.wUl;
+    long l2 = this.goA;
+    g localg = g.yhR;
     int k = this.scene;
     int i;
     if (paramBoolean)
     {
       i = 1;
-      if (!this.fSq) {
+      if (!this.glU) {
         break label183;
       }
     }
     for (;;)
     {
-      localh.f(13470, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(this.fUZ), Integer.valueOf(this.fUY), Long.valueOf(l1 - l2), Long.valueOf(l1), Long.valueOf(this.fUX) });
-      this.fUY += 1;
+      localg.f(13470, new Object[] { paramString, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(j), Integer.valueOf(this.goC), Integer.valueOf(this.goB), Long.valueOf(l1 - l2), Long.valueOf(l1), Long.valueOf(this.goA) });
+      this.goB += 1;
       AppMethodBeat.o(104483);
       return;
       i = 0;
@@ -53,12 +53,12 @@ public final class b
     }
   }
   
-  public final void oT(long paramLong)
+  public final void qT(long paramLong)
   {
     AppMethodBeat.i(104482);
-    ac.i("EmojiClickReport", "panelShow");
-    this.fUX = paramLong;
-    this.fUY = 1;
+    ad.i("EmojiClickReport", "panelShow");
+    this.goA = paramLong;
+    this.goB = 1;
     AppMethodBeat.o(104482);
   }
 }

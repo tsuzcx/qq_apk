@@ -6,30 +6,30 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.product.b.n.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class m
   implements u.a
 {
-  public ImageView fBA;
+  public ImageView fUN;
   public TextView titleTv;
-  public n.a vHp;
+  public n.a wOw;
   
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(67045);
-    if ((this.vHp == null) || (bs.isNullOrNil(this.vHp.iconUrl)))
+    if ((this.wOw == null) || (bt.isNullOrNil(this.wOw.iconUrl)))
     {
       AppMethodBeat.o(67045);
       return;
     }
-    if (paramString.equals(this.vHp.iconUrl)) {
-      this.fBA.post(new Runnable()
+    if (paramString.equals(this.wOw.iconUrl)) {
+      this.fUN.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(67044);
-          m.this.fBA.setImageBitmap(paramBitmap);
+          m.this.fUN.setImageBitmap(paramBitmap);
           AppMethodBeat.o(67044);
         }
       });
@@ -39,7 +39,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.m
  * JD-Core Version:    0.7.0.1
  */

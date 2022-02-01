@@ -10,31 +10,30 @@ import android.os.IBinder;
 import android.support.v4.app.s.c;
 import android.widget.RemoteViews;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.m.f;
-import com.tencent.mm.model.as;
+import com.tencent.mm.model.at;
+import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.notification.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/util/FullScreenIntentService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "onTaskRemoved", "rootIntent", "onUnbind", "", "prepareCallingIntent", "stopService", "name", "Companion", "FullScreenOperationReceiver", "plugin-comm_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/util/FullScreenIntentService;", "Landroid/app/Service;", "()V", "getNotificationIconRs", "", "onBind", "Landroid/os/IBinder;", "intent", "Landroid/content/Intent;", "onCreate", "", "onDestroy", "onStartCommand", "flags", "startId", "onTaskRemoved", "rootIntent", "onUnbind", "", "prepareCallingIntent", "stopService", "name", "Companion", "FullScreenOperationReceiver", "plugin-comm_release"})
 public final class FullScreenIntentService
   extends Service
 {
-  public static final FullScreenIntentService.a Jpa;
+  public static final FullScreenIntentService.a LgE;
   private static final String TAG = "MicroMsg.FullScreenIntentService";
   
   static
   {
     AppMethodBeat.i(149840);
-    Jpa = new FullScreenIntentService.a((byte)0);
+    LgE = new FullScreenIntentService.a((byte)0);
     TAG = "MicroMsg.FullScreenIntentService";
     AppMethodBeat.o(149840);
   }
   
-  private static int dlN()
+  private static int dwe()
   {
     if (Build.VERSION.SDK_INT < 19) {
       return 2131233500;
@@ -45,7 +44,7 @@ public final class FullScreenIntentService
   public final IBinder onBind(Intent paramIntent)
   {
     AppMethodBeat.i(149836);
-    k.h(paramIntent, "intent");
+    p.h(paramIntent, "intent");
     AppMethodBeat.o(149836);
     return null;
   }
@@ -53,15 +52,15 @@ public final class FullScreenIntentService
   public final void onCreate()
   {
     AppMethodBeat.i(149834);
-    ac.i(TAG, "FullScreenIntentService onCreate");
+    ad.i(TAG, "FullScreenIntentService onCreate");
     AppMethodBeat.o(149834);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(149835);
-    ac.i(TAG, "FullScreenIntentService service onDestroy");
-    c.dlf().cancel(41);
+    ad.i(TAG, "FullScreenIntentService service onDestroy");
+    c.dvw().cancel(41);
     stopForeground(true);
     AppMethodBeat.o(149835);
   }
@@ -75,33 +74,33 @@ public final class FullScreenIntentService
     String str1;
     boolean bool;
     PendingIntent localPendingIntent;
-    if ((d.lb(28)) || (k.g(Build.VERSION.CODENAME, "Q")))
+    if ((com.tencent.mm.compatible.util.d.lA(28)) || (p.i(Build.VERSION.CODENAME, "Q")))
     {
       i = 1;
       if ((i != 0) && (paramIntent != null))
       {
-        ac.i(TAG, "FullScreenIntentService calling service is on bind " + TAG + paramIntent.hasFileDescriptors());
-        if ((!d.lb(28)) && (!k.g(Build.VERSION.CODENAME, "Q"))) {
+        ad.i(TAG, "FullScreenIntentService calling service is on bind " + TAG + paramIntent.hasFileDescriptors());
+        if ((!com.tencent.mm.compatible.util.d.lA(28)) && (!p.i(Build.VERSION.CODENAME, "Q"))) {
           break label380;
         }
         i = 1;
         if ((i != 0) && (paramIntent != null))
         {
-          ac.i(TAG, "FullScreenIntentService calling  service is on bind " + TAG + paramIntent.hasFileDescriptors());
-          paramIntent.setClassName(getPackageName(), paramIntent.getStringExtra(b.Jpd));
-          localObject = (RemoteViews)paramIntent.getParcelableExtra(b.Jpb);
-          str1 = paramIntent.getStringExtra(b.Jpc);
+          ad.i(TAG, "FullScreenIntentService calling  service is on bind " + TAG + paramIntent.hasFileDescriptors());
+          paramIntent.setClassName(getPackageName(), paramIntent.getStringExtra(d.LgH));
+          localObject = (RemoteViews)paramIntent.getParcelableExtra(d.LgF);
+          str1 = paramIntent.getStringExtra(d.LgG);
           paramIntent.setFlags(268435456);
-          String str2 = paramIntent.getStringExtra(b.Jpe);
-          bool = paramIntent.getBooleanExtra(b.Jpf, false);
+          String str2 = paramIntent.getStringExtra(d.LgI);
+          bool = paramIntent.getBooleanExtra(d.LgJ, false);
           localPendingIntent = PendingIntent.getActivity((Context)this, 0, paramIntent, 134217728);
           if (Build.VERSION.SDK_INT >= 26)
           {
             if (localObject == null) {
               break label386;
             }
-            localObject = new s.c((Context)this, str2).dV().u("call").i(System.currentTimeMillis()).c((RemoteViews)localObject).d((RemoteViews)localObject).as(dlN()).a(localPendingIntent).f((CharSequence)getString(2131755866)).g((CharSequence)str1).c(localPendingIntent).dU().F(true);
-            k.g(localObject, "NotificationCompat.Build…     .setAutoCancel(true)");
+            localObject = new s.c((Context)this, str2).eq().t("call").i(System.currentTimeMillis()).c((RemoteViews)localObject).d((RemoteViews)localObject).as(dwe()).a(localPendingIntent).f((CharSequence)getString(2131755866)).g((CharSequence)str1).c(localPendingIntent).ep().F(true);
+            p.g(localObject, "NotificationCompat.Build…     .setAutoCancel(true)");
           }
         }
       }
@@ -114,16 +113,16 @@ public final class FullScreenIntentService
       }
       try
       {
-        if (ai.eVi()) {
-          ac.i(TAG, "current mmprocess is exits");
+        if (aj.fkO()) {
+          ad.i(TAG, "current mmprocess is exits");
         }
-        c.dlf().notify(41, (Notification)localObject);
+        c.dvw().notify(41, (Notification)localObject);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ac.i(TAG, "start foreground service happened error %s", new Object[] { localException.getMessage() });
+          ad.i(TAG, "start foreground service happened error %s", new Object[] { localException.getMessage() });
         }
       }
       paramInt1 = super.onStartCommand(paramIntent, paramInt1, paramInt2);
@@ -135,18 +134,18 @@ public final class FullScreenIntentService
       i = 0;
       break label89;
       label386:
-      localObject = new s.c((Context)this, f.Zb()).dV().u("reminder").i(System.currentTimeMillis()).g((CharSequence)str1).f((CharSequence)getString(2131755866)).as(dlN()).a(localPendingIntent).c(localPendingIntent).dU().F(true);
-      k.g(localObject, "NotificationCompat.Build…     .setAutoCancel(true)");
+      localObject = new s.c((Context)this, f.abB()).eq().t("reminder").i(System.currentTimeMillis()).g((CharSequence)str1).f((CharSequence)getString(2131755866)).as(dwe()).a(localPendingIntent).c(localPendingIntent).ep().F(true);
+      p.g(localObject, "NotificationCompat.Build…     .setAutoCancel(true)");
     }
   }
   
   public final void onTaskRemoved(Intent paramIntent)
   {
     AppMethodBeat.i(149839);
-    k.h(paramIntent, "rootIntent");
-    ac.i(TAG, "onTaskRemoved: %s", new Object[] { paramIntent });
+    p.h(paramIntent, "rootIntent");
+    ad.i(TAG, "onTaskRemoved: %s", new Object[] { paramIntent });
     super.onTaskRemoved(paramIntent);
-    c.dlf().cancel(41);
+    c.dvw().cancel(41);
     stopSelf();
     AppMethodBeat.o(149839);
   }
@@ -154,8 +153,8 @@ public final class FullScreenIntentService
   public final boolean onUnbind(Intent paramIntent)
   {
     AppMethodBeat.i(149837);
-    k.h(paramIntent, "intent");
-    ac.i(TAG, "FullScreenIntentService service onUnbind");
+    p.h(paramIntent, "intent");
+    ad.i(TAG, "FullScreenIntentService service onUnbind");
     boolean bool = super.onUnbind(paramIntent);
     AppMethodBeat.o(149837);
     return bool;
@@ -164,8 +163,8 @@ public final class FullScreenIntentService
   public final boolean stopService(Intent paramIntent)
   {
     AppMethodBeat.i(149838);
-    k.h(paramIntent, "name");
-    c.dlf().cancel(41);
+    p.h(paramIntent, "name");
+    c.dvw().cancel(41);
     stopForeground(true);
     boolean bool = super.stopService(paramIntent);
     AppMethodBeat.o(149838);

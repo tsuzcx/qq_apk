@@ -6,21 +6,21 @@ import com.google.b.a.e;
 public final class a$s
   extends e
 {
-  public a.ap[] JNd = a.ap.fBM();
+  public a.ap[] LGM = a.ap.fTb();
   
   public a$s()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if ((this.JNd != null) && (this.JNd.length > 0))
+    if ((this.LGM != null) && (this.LGM.length > 0))
     {
       int i = 0;
-      while (i < this.JNd.length)
+      while (i < this.LGM.length)
       {
-        a.ap localap = this.JNd[i];
+        a.ap localap = this.LGM[i];
         if (localap != null) {
           paramb.a(1, localap);
         }
@@ -30,23 +30,23 @@ public final class a$s
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int i = super.xT();
+    int i = super.zq();
     int k = i;
-    if (this.JNd != null)
+    if (this.LGM != null)
     {
       k = i;
-      if (this.JNd.length > 0)
+      if (this.LGM.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.JNd.length) {
+          if (j >= this.LGM.length) {
             break;
           }
-          a.ap localap = this.JNd[j];
+          a.ap localap = this.LGM[j];
           k = i;
           if (localap != null) {
             k = i + b.b(1, localap);
@@ -61,7 +61,7 @@ public final class a$s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.s
  * JD-Core Version:    0.7.0.1
  */

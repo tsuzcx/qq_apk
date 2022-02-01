@@ -2,7 +2,7 @@ package com.tencent.mm.media.widget.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/widget/camera2/Camera2Handler$Companion;", "", "()V", "STATE_PICTURE_TAKEN", "", "STATE_PREVIEW", "STATE_TOUCH_CAF_WAITING", "STATE_TOUCH_FOCUSING", "STATE_WAITING_LOCK", "STATE_WAITING_NON_PRECAPTURE", "STATE_WAITING_PRECAPTURE", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/widget/camera2/Camera2Handler$Companion;", "", "()V", "STATE_PICTURE_TAKEN", "", "STATE_PREVIEW", "STATE_TOUCH_CAF_WAITING", "STATE_TOUCH_FOCUSING", "STATE_WAITING_LOCK", "STATE_WAITING_NON_PRECAPTURE", "STATE_WAITING_PRECAPTURE", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 

@@ -18,15 +18,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AnimationLayout
   extends FrameLayout
 {
-  private RectF AuU;
-  private Rect JuD;
+  public RectF BUo;
+  public Rect LnF;
   
   public AnimationLayout(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(164237);
-    this.AuU = new RectF();
-    this.JuD = new Rect();
+    this.BUo = new RectF();
+    this.LnF = new Rect();
     AppMethodBeat.o(164237);
   }
   
@@ -34,8 +34,8 @@ public class AnimationLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143605);
-    this.AuU = new RectF();
-    this.JuD = new Rect();
+    this.BUo = new RectF();
+    this.LnF = new Rect();
     AppMethodBeat.o(143605);
   }
   
@@ -43,8 +43,8 @@ public class AnimationLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143606);
-    this.AuU = new RectF();
-    this.JuD = new Rect();
+    this.BUo = new RectF();
+    this.LnF = new Rect();
     AppMethodBeat.o(143606);
   }
   
@@ -56,9 +56,9 @@ public class AnimationLayout
       public final void run()
       {
         AppMethodBeat.i(164235);
-        Object localObject = ViewAnimHelper.n(AnimationLayout.this, paramView2);
-        final float f3 = ((ViewAnimHelper.ViewInfo)localObject).JdI.width() * 1.0F / paramViewInfo.JdI.width();
-        final float f4 = ((ViewAnimHelper.ViewInfo)localObject).JdI.height() * 1.0F / paramViewInfo.JdI.height();
+        Object localObject = ViewAnimHelper.o(AnimationLayout.this, paramView2);
+        final float f3 = ((ViewAnimHelper.ViewInfo)localObject).KUQ.width() * 1.0F / paramViewInfo.KUQ.width();
+        final float f4 = ((ViewAnimHelper.ViewInfo)localObject).KUQ.height() * 1.0F / paramViewInfo.KUQ.height();
         final float f1;
         final float f2;
         label86:
@@ -85,32 +85,32 @@ public class AnimationLayout
         label166:
         for (localObject = new ValueAnimator.AnimatorUpdateListener()
             {
-              Matrix eY;
+              Matrix gR;
               
               public final void onAnimationUpdate(ValueAnimator paramAnonymous2ValueAnimator)
               {
                 AppMethodBeat.i(164234);
                 float f = ((Float)paramAnonymous2ValueAnimator.getAnimatedValue()).floatValue();
                 if (f1 > 1.0F) {
-                  this.eY.setScale(1.0F - f + f4 * f / f3, 1.0F, AnimationLayout.a(AnimationLayout.this).centerX(), AnimationLayout.a(AnimationLayout.this).centerY());
+                  this.gR.setScale(1.0F - f + f4 * f / f3, 1.0F, AnimationLayout.this.LnF.centerX(), AnimationLayout.this.LnF.centerY());
                 }
                 for (;;)
                 {
-                  this.eY.mapRect(AnimationLayout.b(AnimationLayout.this), new RectF(AnimationLayout.a(AnimationLayout.this)));
-                  if (AnimationLayout.1.this.JuH != null) {
-                    AnimationLayout.1.this.JuH.onAnimationUpdate(paramAnonymous2ValueAnimator);
+                  this.gR.mapRect(AnimationLayout.this.BUo, new RectF(AnimationLayout.this.LnF));
+                  if (AnimationLayout.1.this.LnJ != null) {
+                    AnimationLayout.1.this.LnJ.onAnimationUpdate(paramAnonymous2ValueAnimator);
                   }
                   AnimationLayout.this.invalidate();
                   AppMethodBeat.o(164234);
                   return;
                   if (f2 > 1.0F) {
-                    this.eY.setScale(1.0F, 1.0F - f + f3 * f / f4, AnimationLayout.a(AnimationLayout.this).centerX(), AnimationLayout.a(AnimationLayout.this).centerY());
+                    this.gR.setScale(1.0F, 1.0F - f + f3 * f / f4, AnimationLayout.this.LnF.centerX(), AnimationLayout.this.LnF.centerY());
                   }
                 }
               }
             };; localObject = null)
         {
-          ViewAnimHelper.b(localAnimationLayout, localView, localViewInfo, localAnimatorListener, (ValueAnimator.AnimatorUpdateListener)localObject);
+          ViewAnimHelper.c(localAnimationLayout, localView, localViewInfo, localAnimatorListener, (ValueAnimator.AnimatorUpdateListener)localObject);
           AppMethodBeat.o(164235);
           return;
           f1 = 1.0F;
@@ -144,9 +144,9 @@ public class AnimationLayout
   {
     final float f2 = 1.0F;
     AppMethodBeat.i(143610);
-    paramView2 = ViewAnimHelper.n(this, paramView2);
-    final float f3 = paramView2.JdI.width() * 1.0F / paramViewInfo.JdI.width();
-    final float f4 = paramView2.JdI.height() * 1.0F / paramViewInfo.JdI.height();
+    paramView2 = ViewAnimHelper.o(this, paramView2);
+    final float f3 = paramView2.KUQ.width() * 1.0F / paramViewInfo.KUQ.width();
+    final float f4 = paramView2.KUQ.height() * 1.0F / paramViewInfo.KUQ.height();
     if (f3 > f4) {}
     for (final float f1 = f3;; f1 = 1.0F)
     {
@@ -155,7 +155,7 @@ public class AnimationLayout
       }
       ViewAnimHelper.a(this, paramView1, paramViewInfo, paramAnimatorListener, new ValueAnimator.AnimatorUpdateListener()
       {
-        Matrix eY;
+        Matrix gR;
         
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -167,11 +167,11 @@ public class AnimationLayout
             if (f1 <= 1.0F) {
               break label147;
             }
-            this.eY.setScale(1.0F - f + f4 * f / f3, 1.0F, AnimationLayout.a(AnimationLayout.this).centerX(), AnimationLayout.a(AnimationLayout.this).centerY());
+            this.gR.setScale(1.0F - f + f4 * f / f3, 1.0F, AnimationLayout.this.LnF.centerX(), AnimationLayout.this.LnF.centerY());
           }
           for (;;)
           {
-            this.eY.mapRect(AnimationLayout.b(AnimationLayout.this), new RectF(AnimationLayout.a(AnimationLayout.this)));
+            this.gR.mapRect(AnimationLayout.this.BUo, new RectF(AnimationLayout.this.LnF));
             AnimationLayout.this.invalidate();
             if (paramAnimatorUpdateListener != null) {
               paramAnimatorUpdateListener.onAnimationUpdate(paramAnonymousValueAnimator);
@@ -180,7 +180,7 @@ public class AnimationLayout
             return;
             label147:
             if (f2 > 1.0F) {
-              this.eY.setScale(1.0F, 1.0F - f + f3 * f / f4, AnimationLayout.a(AnimationLayout.this).centerX(), AnimationLayout.a(AnimationLayout.this).centerY());
+              this.gR.setScale(1.0F, 1.0F - f + f3 * f / f4, AnimationLayout.this.LnF.centerX(), AnimationLayout.this.LnF.centerY());
             }
           }
         }
@@ -190,20 +190,112 @@ public class AnimationLayout
     }
   }
   
+  public final void b(final View paramView1, final View paramView2, final ViewAnimHelper.ViewInfo paramViewInfo, final Animator.AnimatorListener paramAnimatorListener, final ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
+  {
+    AppMethodBeat.i(186548);
+    paramView1 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(186546);
+        Object localObject = ViewAnimHelper.o(AnimationLayout.this, paramView2);
+        final float f3 = ((ViewAnimHelper.ViewInfo)localObject).KUQ.width() * 1.0F / paramViewInfo.KUQ.width();
+        final float f4 = ((ViewAnimHelper.ViewInfo)localObject).KUQ.height() * 1.0F / paramViewInfo.KUQ.height();
+        final float f1;
+        final float f2;
+        label86:
+        AnimationLayout localAnimationLayout;
+        View localView;
+        ViewAnimHelper.ViewInfo localViewInfo;
+        Animator.AnimatorListener localAnimatorListener;
+        if (f3 > f4)
+        {
+          f1 = f3;
+          if (f4 <= f3) {
+            break label161;
+          }
+          f2 = f4;
+          localAnimationLayout = AnimationLayout.this;
+          localView = paramView1;
+          localViewInfo = paramViewInfo;
+          localAnimatorListener = paramAnimatorListener;
+          if ((f1 <= 1.0F) && (f2 <= 1.0F)) {
+            break label166;
+          }
+        }
+        label161:
+        label166:
+        for (localObject = new ValueAnimator.AnimatorUpdateListener()
+            {
+              Matrix gR;
+              
+              public final void onAnimationUpdate(ValueAnimator paramAnonymous2ValueAnimator)
+              {
+                AppMethodBeat.i(186545);
+                float f = ((Float)paramAnonymous2ValueAnimator.getAnimatedValue()).floatValue();
+                if (f1 > 1.0F) {
+                  this.gR.setScale(f + f4 / f3 * (1.0F - f), 1.0F, AnimationLayout.this.LnF.centerX(), AnimationLayout.this.LnF.centerY());
+                }
+                for (;;)
+                {
+                  this.gR.mapRect(AnimationLayout.this.BUo, new RectF(AnimationLayout.this.LnF));
+                  if (AnimationLayout.4.this.LnJ != null) {
+                    AnimationLayout.4.this.LnJ.onAnimationUpdate(paramAnonymous2ValueAnimator);
+                  }
+                  AnimationLayout.this.invalidate();
+                  AppMethodBeat.o(186545);
+                  return;
+                  if (f2 > 1.0F) {
+                    this.gR.setScale(1.0F, f + f3 / f4 * (1.0F - f), AnimationLayout.this.LnF.centerX(), AnimationLayout.this.LnF.centerY());
+                  }
+                }
+              }
+            };; localObject = null)
+        {
+          ViewAnimHelper.c(localAnimationLayout, localView, localViewInfo, localAnimatorListener, (ValueAnimator.AnimatorUpdateListener)localObject);
+          AppMethodBeat.o(186546);
+          return;
+          f1 = 1.0F;
+          break;
+          f2 = 1.0F;
+          break label86;
+        }
+      }
+    };
+    if ((getMeasuredState() & 0xFF000000) > 0)
+    {
+      paramView1.run();
+      AppMethodBeat.o(186548);
+      return;
+    }
+    getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+    {
+      public final boolean onPreDraw()
+      {
+        AppMethodBeat.i(186547);
+        AnimationLayout.this.getViewTreeObserver().removeOnPreDrawListener(this);
+        paramView1.run();
+        AppMethodBeat.o(186547);
+        return true;
+      }
+    });
+    AppMethodBeat.o(186548);
+  }
+  
   public void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(143608);
-    if (this.JuD.isEmpty()) {
-      paramCanvas.getClipBounds(this.JuD);
+    if (this.LnF.isEmpty()) {
+      paramCanvas.getClipBounds(this.LnF);
     }
-    if (this.AuU.isEmpty())
+    if (this.BUo.isEmpty())
     {
       super.draw(paramCanvas);
       AppMethodBeat.o(143608);
       return;
     }
     paramCanvas.save();
-    paramCanvas.clipRect(this.AuU);
+    paramCanvas.clipRect(this.BUo);
     super.draw(paramCanvas);
     paramCanvas.restore();
     AppMethodBeat.o(143608);
@@ -223,13 +315,13 @@ public class AnimationLayout
   {
     AppMethodBeat.i(143609);
     super.onDetachedFromWindow();
-    this.AuU.setEmpty();
+    this.BUo.setEmpty();
     AppMethodBeat.o(143609);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.view.AnimationLayout
  * JD-Core Version:    0.7.0.1
  */

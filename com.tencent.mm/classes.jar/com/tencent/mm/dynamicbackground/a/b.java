@@ -2,31 +2,31 @@ package com.tencent.mm.dynamicbackground.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.io.File;
 
-@l(fNY={1, 1, 11}, fNZ={""}, fOa={"Lcom/tencent/mm/dynamicbackground/util/DynamicBgAssetsManager;", "", "()V", "TAG", "", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getSavedFileDirectory", "init", "dynamicbg_release"})
+@l(gfx={1, 1, 11}, gfy={""}, gfz={"Lcom/tencent/mm/dynamicbackground/util/DynamicBgAssetsManager;", "", "()V", "TAG", "", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getSavedFileDirectory", "init", "dynamicbg_release"})
 public final class b
 {
   private static final String TAG = "DynamicBgAssetsManager";
-  public static final b fMj;
+  public static final b gfJ;
   
   static
   {
     AppMethodBeat.i(103093);
-    fMj = new b();
+    gfJ = new b();
     TAG = "DynamicBgAssetsManager";
     AppMethodBeat.o(103093);
   }
   
-  public static String cm(Context paramContext)
+  public static String cj(Context paramContext)
   {
     AppMethodBeat.i(103092);
-    k.h(paramContext, "context");
+    p.h(paramContext, "context");
     StringBuilder localStringBuilder = new StringBuilder();
     paramContext = paramContext.getFilesDir();
-    k.g(paramContext, "context.filesDir");
+    p.g(paramContext, "context.filesDir");
     paramContext = paramContext.getParent() + File.separator + "appbrand/glsl/";
     AppMethodBeat.o(103092);
     return paramContext;
@@ -40,13 +40,13 @@ public final class b
     //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: ldc 53
-    //   8: invokestatic 59	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   8: invokestatic 59	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   11: aload_1
     //   12: ldc 96
-    //   14: invokestatic 59	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   14: invokestatic 59	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   17: aload_2
     //   18: ldc 97
-    //   20: invokestatic 59	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   20: invokestatic 59	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   23: getstatic 44	com/tencent/mm/dynamicbackground/a/b:TAG	Ljava/lang/String;
     //   26: ldc 99
     //   28: iconst_2
@@ -87,7 +87,7 @@ public final class b
     //   94: astore 5
     //   96: aload_2
     //   97: ifnonnull +6 -> 103
-    //   100: invokestatic 134	d/g/b/k:fOy	()V
+    //   100: invokestatic 134	d/g/b/p:gfZ	()V
     //   103: aload_2
     //   104: aload 5
     //   106: invokevirtual 140	java/io/InputStream:read	([B)I
@@ -228,7 +228,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.dynamicbackground.a.b
  * JD-Core Version:    0.7.0.1
  */

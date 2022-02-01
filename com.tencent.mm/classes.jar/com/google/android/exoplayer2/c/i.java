@@ -9,22 +9,22 @@ import java.util.regex.Pattern;
 
 public final class i
 {
-  public static final a.a aXE;
-  private static final Pattern aXF;
-  public int aTi = -1;
-  public int aTj = -1;
+  public static final a.a bhZ;
+  private static final Pattern bia;
+  public int bdD = -1;
+  public int bdE = -1;
   
   static
   {
     AppMethodBeat.i(91998);
-    aXE = new a.a()
+    bhZ = new a.a()
     {
-      public final boolean f(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5)
+      public final boolean g(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5)
       {
         return (paramAnonymousInt2 == 67) && (paramAnonymousInt3 == 79) && (paramAnonymousInt4 == 77) && ((paramAnonymousInt5 == 77) || (paramAnonymousInt1 == 2));
       }
     };
-    aXF = Pattern.compile("^ [0-9a-fA-F]{8} ([0-9a-fA-F]{8}) ([0-9a-fA-F]{8})");
+    bia = Pattern.compile("^ [0-9a-fA-F]{8} ([0-9a-fA-F]{8}) ([0-9a-fA-F]{8})");
     AppMethodBeat.o(91998);
   }
   
@@ -36,7 +36,7 @@ public final class i
       AppMethodBeat.o(91997);
       return false;
     }
-    paramString1 = aXF.matcher(paramString2);
+    paramString1 = bia.matcher(paramString2);
     if (paramString1.find()) {
       try
       {
@@ -44,8 +44,8 @@ public final class i
         int j = Integer.parseInt(paramString1.group(2), 16);
         if ((i > 0) || (j > 0))
         {
-          this.aTi = i;
-          this.aTj = j;
+          this.bdD = i;
+          this.bdE = j;
           AppMethodBeat.o(91997);
           return true;
         }
@@ -60,9 +60,9 @@ public final class i
   {
     AppMethodBeat.i(91996);
     int i = 0;
-    while (i < paramMetadata.bjI.length)
+    while (i < paramMetadata.buc.length)
     {
-      Object localObject = paramMetadata.bjI[i];
+      Object localObject = paramMetadata.buc[i];
       if ((localObject instanceof CommentFrame))
       {
         localObject = (CommentFrame)localObject;
@@ -78,14 +78,14 @@ public final class i
     return false;
   }
   
-  public final boolean sV()
+  public final boolean uu()
   {
-    return (this.aTi != -1) && (this.aTj != -1);
+    return (this.bdD != -1) && (this.bdE != -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.i
  * JD-Core Version:    0.7.0.1
  */

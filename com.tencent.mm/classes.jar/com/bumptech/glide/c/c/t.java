@@ -7,11 +7,11 @@ import java.io.InputStream;
 public final class t
   implements d<InputStream>
 {
-  private final b aDH;
+  private final b aFy;
   
   public t(b paramb)
   {
-    this.aDH = paramb;
+    this.aFy = paramb;
   }
   
   /* Error */
@@ -21,7 +21,7 @@ public final class t
     //   0: ldc 22
     //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 16	com/bumptech/glide/c/c/t:aDH	Lcom/bumptech/glide/c/b/a/b;
+    //   6: getfield 16	com/bumptech/glide/c/c/t:aFy	Lcom/bumptech/glide/c/b/a/b;
     //   9: ldc 29
     //   11: ldc 31
     //   13: invokeinterface 36 3 0
@@ -63,7 +63,7 @@ public final class t
     //   80: aload_1
     //   81: invokevirtual 64	java/io/OutputStream:close	()V
     //   84: aload_0
-    //   85: getfield 16	com/bumptech/glide/c/c/t:aDH	Lcom/bumptech/glide/c/b/a/b;
+    //   85: getfield 16	com/bumptech/glide/c/c/t:aFy	Lcom/bumptech/glide/c/b/a/b;
     //   88: aload 6
     //   90: invokeinterface 68 2 0
     //   95: iconst_0
@@ -79,7 +79,7 @@ public final class t
     //   114: aload 5
     //   116: invokevirtual 64	java/io/OutputStream:close	()V
     //   119: aload_0
-    //   120: getfield 16	com/bumptech/glide/c/c/t:aDH	Lcom/bumptech/glide/c/b/a/b;
+    //   120: getfield 16	com/bumptech/glide/c/c/t:aFy	Lcom/bumptech/glide/c/b/a/b;
     //   123: aload 6
     //   125: invokeinterface 68 2 0
     //   130: iconst_1
@@ -93,7 +93,7 @@ public final class t
     //   143: aload_2
     //   144: invokevirtual 64	java/io/OutputStream:close	()V
     //   147: aload_0
-    //   148: getfield 16	com/bumptech/glide/c/c/t:aDH	Lcom/bumptech/glide/c/b/a/b;
+    //   148: getfield 16	com/bumptech/glide/c/c/t:aFy	Lcom/bumptech/glide/c/b/a/b;
     //   151: aload 6
     //   153: invokeinterface 68 2 0
     //   158: ldc 22

@@ -16,46 +16,46 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.AlbumItem;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem;
 import com.tencent.mm.plugin.gallery.model.e;
 import com.tencent.mm.plugin.gallery.model.g;
 import com.tencent.mm.plugin.gallery.model.i.a;
 import com.tencent.mm.plugin.gallery.model.o;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.a;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-@a(19)
+@com.tencent.mm.ui.base.a(19)
 public class SelectAlbumPreviewFolderUI
   extends MMActivity
   implements i.a
 {
-  ArrayList<GalleryItem.AlbumItem> sSU;
-  private a sSV;
-  private RecyclerView sSW;
-  GalleryItem.AlbumItem sSX;
-  private String sSY;
+  private RecyclerView tPA;
+  GalleryItem.AlbumItem tPB;
+  private String tPC;
+  ArrayList<GalleryItem.AlbumItem> tPy;
+  private a tPz;
   
   public SelectAlbumPreviewFolderUI()
   {
     AppMethodBeat.i(111665);
-    this.sSU = new ArrayList(10);
+    this.tPy = new ArrayList(10);
     AppMethodBeat.o(111665);
   }
   
-  public final void ao(final LinkedList<GalleryItem.AlbumItem> paramLinkedList)
+  public final void aq(final LinkedList<GalleryItem.AlbumItem> paramLinkedList)
   {
     AppMethodBeat.i(111669);
-    e.cMu().f(new Runnable()
+    e.cUN().f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(111659);
         SelectAlbumPreviewFolderUI.a(SelectAlbumPreviewFolderUI.this).addAll(paramLinkedList);
-        SelectAlbumPreviewFolderUI.b(SelectAlbumPreviewFolderUI.this).arg.notifyChanged();
+        SelectAlbumPreviewFolderUI.b(SelectAlbumPreviewFolderUI.this).asY.notifyChanged();
         AppMethodBeat.o(111659);
       }
     });
@@ -79,17 +79,17 @@ public class SelectAlbumPreviewFolderUI
   {
     AppMethodBeat.i(111666);
     super.onCreate(paramBundle);
-    e.cMt().b(this);
-    e.cMt().a(this);
-    e.cMt().cNb();
-    this.sSW = ((RecyclerView)findViewById(2131300184));
-    this.sSV = new a(this);
-    this.sSW.setLayoutManager(new LinearLayoutManager());
-    this.sSW.setAdapter(this.sSV);
-    this.sSY = getIntent().getStringExtra("select_folder_name");
-    this.sSX = new GalleryItem.AlbumItem("", 0);
-    this.sSX.xIb = new GalleryItem.ImageMediaItem();
-    setMMTitle(bs.nullAsNil(getString(2131755750)));
+    e.cUM().b(this);
+    e.cUM().a(this);
+    e.cUM().cVt();
+    this.tPA = ((RecyclerView)findViewById(2131300184));
+    this.tPz = new a(this);
+    this.tPA.setLayoutManager(new LinearLayoutManager());
+    this.tPA.setAdapter(this.tPz);
+    this.tPC = getIntent().getStringExtra("select_folder_name");
+    this.tPB = new GalleryItem.AlbumItem("", 0);
+    this.tPB.Odn = new GalleryItem.ImageMediaItem();
+    setMMTitle(bt.nullAsNil(getString(2131755750)));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -107,7 +107,7 @@ public class SelectAlbumPreviewFolderUI
   {
     AppMethodBeat.i(111667);
     super.onDestroy();
-    e.cMt().b(this);
+    e.cUM().b(this);
     AppMethodBeat.o(111667);
   }
   
@@ -139,11 +139,15 @@ public class SelectAlbumPreviewFolderUI
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(111661);
-      Intent localIntent = new Intent(SelectAlbumPreviewFolderUI.this, AlbumPreviewUI.class);
-      localIntent.putExtra("select_folder_name", (GalleryItem.AlbumItem)paramView.getTag());
-      localIntent.setFlags(67108864);
-      SelectAlbumPreviewFolderUI.this.setResult(-1, localIntent);
+      Object localObject = new b();
+      ((b)localObject).bd(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SelectAlbumPreviewFolderUI$SelectImageFolderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+      localObject = new Intent(SelectAlbumPreviewFolderUI.this, AlbumPreviewUI.class);
+      ((Intent)localObject).putExtra("select_folder_name", (GalleryItem.AlbumItem)paramView.getTag());
+      ((Intent)localObject).setFlags(67108864);
+      SelectAlbumPreviewFolderUI.this.setResult(-1, (Intent)localObject);
       SelectAlbumPreviewFolderUI.this.finish();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gallery/ui/SelectAlbumPreviewFolderUI$SelectImageFolderAdapter", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(111661);
     }
   }
@@ -151,30 +155,30 @@ public class SelectAlbumPreviewFolderUI
   final class b
     extends RecyclerView.w
   {
-    public TextView ijE;
-    public ImageView qTB;
-    public ImageView sFo;
-    public TextView sQI;
-    public ImageView sQJ;
-    public View sSS;
+    public TextView iCV;
+    public ImageView rDE;
+    public ImageView tCh;
+    public TextView tNm;
+    public ImageView tNn;
+    public View tPw;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(111664);
-      this.sSS = paramView;
-      this.sFo = ((ImageView)this.sSS.findViewById(2131300187));
-      this.ijE = ((TextView)this.sSS.findViewById(2131300182));
-      this.qTB = ((ImageView)this.sSS.findViewById(2131306355));
-      this.sQI = ((TextView)this.sSS.findViewById(2131300178));
-      this.sQJ = ((ImageView)this.sSS.findViewById(2131300186));
+      this.tPw = paramView;
+      this.tCh = ((ImageView)this.tPw.findViewById(2131300187));
+      this.iCV = ((TextView)this.tPw.findViewById(2131300182));
+      this.rDE = ((ImageView)this.tPw.findViewById(2131306355));
+      this.tNm = ((TextView)this.tPw.findViewById(2131300178));
+      this.tNn = ((ImageView)this.tPw.findViewById(2131300186));
       AppMethodBeat.o(111664);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.SelectAlbumPreviewFolderUI
  * JD-Core Version:    0.7.0.1
  */

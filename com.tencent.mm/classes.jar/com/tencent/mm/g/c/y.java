@@ -3,90 +3,90 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class y
   extends c
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS appInfo_status_Index ON AppInfo(status)" };
-  private static final int elV = "status".hashCode();
-  private static final int enO = "appId".hashCode();
-  private static final int eoB;
-  private static final int eoc = "signature".hashCode();
-  private static final int epM = "appName".hashCode();
-  private static final int epN = "appDiscription".hashCode();
-  private static final int epO = "appIconUrl".hashCode();
-  private static final int epP = "appStoreUrl".hashCode();
-  private static final int epQ;
-  private static final int epR;
-  private static final int epS = "modifyTime".hashCode();
-  private static final int epT = "appName_en".hashCode();
-  private static final int epU = "appName_tw".hashCode();
-  private static final int epV = "appName_hk".hashCode();
-  private static final int epW = "appDiscription_en".hashCode();
-  private static final int epX = "appDiscription_tw".hashCode();
-  private static final int epY = "appType".hashCode();
-  private static final int epZ = "openId".hashCode();
-  private static final int eqa = "authFlag".hashCode();
-  private static final int eqb = "appInfoFlag".hashCode();
-  private static final int eqc = "lvbuff".hashCode();
-  private static final int eqd = "serviceAppType".hashCode();
-  private static final int eqe = "serviceAppInfoFlag".hashCode();
-  private static final int eqf = "serviceShowFlag".hashCode();
-  private static final int eqg = "appSupportContentType".hashCode();
-  private static final int eqh = "svrAppSupportContentType".hashCode();
+  private static final int eDc = "status".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eFG;
+  private static final int eFi = "signature".hashCode();
+  private static final int eGV = "appName".hashCode();
+  private static final int eGW = "appDiscription".hashCode();
+  private static final int eGX = "appIconUrl".hashCode();
+  private static final int eGY = "appStoreUrl".hashCode();
+  private static final int eGZ;
+  private static final int eHa;
+  private static final int eHb = "modifyTime".hashCode();
+  private static final int eHc = "appName_en".hashCode();
+  private static final int eHd = "appName_tw".hashCode();
+  private static final int eHe = "appName_hk".hashCode();
+  private static final int eHf = "appDiscription_en".hashCode();
+  private static final int eHg = "appDiscription_tw".hashCode();
+  private static final int eHh = "appType".hashCode();
+  private static final int eHi = "openId".hashCode();
+  private static final int eHj = "authFlag".hashCode();
+  private static final int eHk = "appInfoFlag".hashCode();
+  private static final int eHl = "lvbuff".hashCode();
+  private static final int eHm = "serviceAppType".hashCode();
+  private static final int eHn = "serviceAppInfoFlag".hashCode();
+  private static final int eHo = "serviceShowFlag".hashCode();
+  private static final int eHp = "appSupportContentType".hashCode();
+  private static final int eHq = "svrAppSupportContentType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean elS = true;
-  private boolean enL = true;
-  private boolean enx = true;
-  private boolean eox = true;
-  private boolean epA = true;
-  private boolean epB = true;
-  private boolean epC = true;
-  private boolean epD = true;
-  private boolean epE = true;
-  private boolean epF = true;
-  public boolean epG = true;
-  private boolean epH = true;
-  private boolean epI = true;
-  private boolean epJ = true;
-  private boolean epK = true;
-  private boolean epL = true;
-  private boolean epq = true;
-  private boolean epr = true;
-  private boolean eps = true;
-  private boolean ept = true;
-  private boolean epu = true;
-  private boolean epv = true;
-  private boolean epw = true;
-  private boolean epx = true;
-  private boolean epy = true;
-  private boolean epz = true;
-  private String eqA;
-  private int eqB;
-  public String eqC;
-  public String eqD;
-  public String eqE;
-  public int eqF;
-  protected String eqi;
-  private String eqj;
-  public String eqk;
-  public int eql;
-  public int eqm;
-  public String eqn;
-  public String eqo;
-  public String eqp;
-  public String eqq;
-  public String eqr;
-  public String eqs;
-  public int eqt;
-  public String equ;
-  public String eqv;
-  public String eqw;
-  public String eqx;
-  private String eqy;
-  public int eqz;
+  private boolean eCZ = true;
+  private boolean eED = true;
+  private boolean eER = true;
+  private boolean eFC = true;
+  private boolean eGA = true;
+  private boolean eGB = true;
+  private boolean eGC = true;
+  private boolean eGD = true;
+  private boolean eGE = true;
+  private boolean eGF = true;
+  private boolean eGG = true;
+  private boolean eGH = true;
+  private boolean eGI = true;
+  private boolean eGJ = true;
+  private boolean eGK = true;
+  private boolean eGL = true;
+  private boolean eGM = true;
+  private boolean eGN = true;
+  private boolean eGO = true;
+  public boolean eGP = true;
+  private boolean eGQ = true;
+  private boolean eGR = true;
+  private boolean eGS = true;
+  private boolean eGT = true;
+  private boolean eGU = true;
+  private boolean eGz = true;
+  public String eHA;
+  public String eHB;
+  public int eHC;
+  public String eHD;
+  public String eHE;
+  public String eHF;
+  public String eHG;
+  private String eHH;
+  public int eHI;
+  private String eHJ;
+  private int eHK;
+  public String eHL;
+  public String eHM;
+  public String eHN;
+  public int eHO;
+  protected String eHr;
+  private String eHs;
+  public String eHt;
+  public int eHu;
+  public int eHv;
+  public String eHw;
+  public String eHx;
+  public String eHy;
+  public String eHz;
   public String field_appDiscription;
   public String field_appDiscription_en;
   public String field_appDiscription_tw;
@@ -116,24 +116,24 @@ public abstract class y
   
   static
   {
-    eoB = "appVersion".hashCode();
-    epQ = "appWatermarkUrl".hashCode();
-    epR = "packageName".hashCode();
+    eFG = "appVersion".hashCode();
+    eGZ = "appWatermarkUrl".hashCode();
+    eHa = "packageName".hashCode();
   }
   
-  public final String Ti()
+  public final String Vw()
   {
-    return this.eqk;
+    return this.eHt;
   }
   
-  public final String Tj()
+  public final String Vx()
   {
-    return this.eqp;
+    return this.eHy;
   }
   
-  public final String Tk()
+  public final String Vy()
   {
-    return this.eqq;
+    return this.eHz;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -150,64 +150,64 @@ public abstract class y
         if (i < j)
         {
           int k = arrayOfString[i].hashCode();
-          if (enO == k)
+          if (eEU == k)
           {
             this.field_appId = paramCursor.getString(i);
-            this.enx = true;
+            this.eED = true;
           }
           for (;;)
           {
             i += 1;
             break;
-            if (epM == k) {
+            if (eGV == k) {
               this.field_appName = paramCursor.getString(i);
-            } else if (epN == k) {
+            } else if (eGW == k) {
               this.field_appDiscription = paramCursor.getString(i);
-            } else if (epO == k) {
+            } else if (eGX == k) {
               this.field_appIconUrl = paramCursor.getString(i);
-            } else if (epP == k) {
+            } else if (eGY == k) {
               this.field_appStoreUrl = paramCursor.getString(i);
-            } else if (eoB == k) {
+            } else if (eFG == k) {
               this.field_appVersion = paramCursor.getInt(i);
-            } else if (epQ == k) {
+            } else if (eGZ == k) {
               this.field_appWatermarkUrl = paramCursor.getString(i);
-            } else if (epR == k) {
+            } else if (eHa == k) {
               this.field_packageName = paramCursor.getString(i);
-            } else if (elV == k) {
+            } else if (eDc == k) {
               this.field_status = paramCursor.getInt(i);
-            } else if (eoc == k) {
+            } else if (eFi == k) {
               this.field_signature = paramCursor.getString(i);
-            } else if (epS == k) {
+            } else if (eHb == k) {
               this.field_modifyTime = paramCursor.getLong(i);
-            } else if (epT == k) {
+            } else if (eHc == k) {
               this.field_appName_en = paramCursor.getString(i);
-            } else if (epU == k) {
+            } else if (eHd == k) {
               this.field_appName_tw = paramCursor.getString(i);
-            } else if (epV == k) {
+            } else if (eHe == k) {
               this.field_appName_hk = paramCursor.getString(i);
-            } else if (epW == k) {
+            } else if (eHf == k) {
               this.field_appDiscription_en = paramCursor.getString(i);
-            } else if (epX == k) {
+            } else if (eHg == k) {
               this.field_appDiscription_tw = paramCursor.getString(i);
-            } else if (epY == k) {
+            } else if (eHh == k) {
               this.field_appType = paramCursor.getString(i);
-            } else if (epZ == k) {
+            } else if (eHi == k) {
               this.field_openId = paramCursor.getString(i);
-            } else if (eqa == k) {
+            } else if (eHj == k) {
               this.field_authFlag = paramCursor.getInt(i);
-            } else if (eqb == k) {
+            } else if (eHk == k) {
               this.field_appInfoFlag = paramCursor.getInt(i);
-            } else if (eqc == k) {
+            } else if (eHl == k) {
               this.field_lvbuff = paramCursor.getBlob(i);
-            } else if (eqd == k) {
+            } else if (eHm == k) {
               this.field_serviceAppType = paramCursor.getInt(i);
-            } else if (eqe == k) {
+            } else if (eHn == k) {
               this.field_serviceAppInfoFlag = paramCursor.getInt(i);
-            } else if (eqf == k) {
+            } else if (eHo == k) {
               this.field_serviceShowFlag = paramCursor.getInt(i);
-            } else if (eqg == k) {
+            } else if (eHp == k) {
               this.field_appSupportContentType = paramCursor.getLong(i);
-            } else if (eqh == k) {
+            } else if (eHq == k) {
               this.field_svrAppSupportContentType = paramCursor.getLong(i);
             } else if (rowid_HASHCODE == k) {
               this.systemRowid = paramCursor.getLong(i);
@@ -218,190 +218,190 @@ public abstract class y
         {
           if ((this.field_lvbuff != null) && (this.field_lvbuff.length != 0))
           {
-            paramCursor = new z();
-            i = paramCursor.cr(this.field_lvbuff);
+            paramCursor = new aa();
+            i = paramCursor.cy(this.field_lvbuff);
             if (i != 0)
             {
-              ac.e("MicroMsg.SDK.BaseAppInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
+              ad.e("MicroMsg.SDK.BaseAppInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
               return;
             }
           }
         }
         catch (Exception paramCursor)
         {
-          ac.e("MicroMsg.SDK.BaseAppInfo", "get value failed");
+          ad.e("MicroMsg.SDK.BaseAppInfo", "get value failed");
           return;
         }
       }
-      this.eqi = paramCursor.getString();
-      this.eqj = paramCursor.getString();
-      this.eqk = paramCursor.getString();
-      this.eql = paramCursor.getInt();
-      this.eqm = paramCursor.getInt();
-      this.eqn = paramCursor.getString();
-      this.eqo = paramCursor.getString();
-      this.eqp = paramCursor.getString();
-      this.eqq = paramCursor.getString();
-      if (!paramCursor.eUE()) {
-        this.eqr = paramCursor.getString();
+      this.eHr = paramCursor.getString();
+      this.eHs = paramCursor.getString();
+      this.eHt = paramCursor.getString();
+      this.eHu = paramCursor.getInt();
+      this.eHv = paramCursor.getInt();
+      this.eHw = paramCursor.getString();
+      this.eHx = paramCursor.getString();
+      this.eHy = paramCursor.getString();
+      this.eHz = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHA = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqs = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHB = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqt = paramCursor.getInt();
+      if (!paramCursor.fki()) {
+        this.eHC = paramCursor.getInt();
       }
-      if (!paramCursor.eUE()) {
-        this.equ = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHD = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqv = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHE = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqw = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHF = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqx = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHG = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqy = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHH = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqz = paramCursor.getInt();
+      if (!paramCursor.fki()) {
+        this.eHI = paramCursor.getInt();
       }
-      if (!paramCursor.eUE()) {
-        this.eqA = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHJ = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqB = paramCursor.getInt();
+      if (!paramCursor.fki()) {
+        this.eHK = paramCursor.getInt();
       }
-      if (!paramCursor.eUE()) {
-        this.eqC = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHL = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqD = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHM = paramCursor.getString();
       }
-      if (!paramCursor.eUE()) {
-        this.eqE = paramCursor.getString();
+      if (!paramCursor.fki()) {
+        this.eHN = paramCursor.getString();
       }
-    } while (paramCursor.eUE());
-    this.eqF = paramCursor.getInt();
+    } while (paramCursor.fki());
+    this.eHO = paramCursor.getInt();
   }
   
   public ContentValues convertTo()
   {
     try
     {
-      if (this.epG)
+      if (this.eGP)
       {
-        localObject = new z();
-        ((z)localObject).eUF();
-        ((z)localObject).aKJ(this.eqi);
-        ((z)localObject).aKJ(this.eqj);
-        ((z)localObject).aKJ(this.eqk);
-        ((z)localObject).Yr(this.eql);
-        ((z)localObject).Yr(this.eqm);
-        ((z)localObject).aKJ(this.eqn);
-        ((z)localObject).aKJ(this.eqo);
-        ((z)localObject).aKJ(this.eqp);
-        ((z)localObject).aKJ(this.eqq);
-        ((z)localObject).aKJ(this.eqr);
-        ((z)localObject).aKJ(this.eqs);
-        ((z)localObject).Yr(this.eqt);
-        ((z)localObject).aKJ(this.equ);
-        ((z)localObject).aKJ(this.eqv);
-        ((z)localObject).aKJ(this.eqw);
-        ((z)localObject).aKJ(this.eqx);
-        ((z)localObject).aKJ(this.eqy);
-        ((z)localObject).Yr(this.eqz);
-        ((z)localObject).aKJ(this.eqA);
-        ((z)localObject).Yr(this.eqB);
-        ((z)localObject).aKJ(this.eqC);
-        ((z)localObject).aKJ(this.eqD);
-        ((z)localObject).aKJ(this.eqE);
-        ((z)localObject).Yr(this.eqF);
-        this.field_lvbuff = ((z)localObject).eUG();
+        localObject = new aa();
+        ((aa)localObject).fkj();
+        ((aa)localObject).aQp(this.eHr);
+        ((aa)localObject).aQp(this.eHs);
+        ((aa)localObject).aQp(this.eHt);
+        ((aa)localObject).aaw(this.eHu);
+        ((aa)localObject).aaw(this.eHv);
+        ((aa)localObject).aQp(this.eHw);
+        ((aa)localObject).aQp(this.eHx);
+        ((aa)localObject).aQp(this.eHy);
+        ((aa)localObject).aQp(this.eHz);
+        ((aa)localObject).aQp(this.eHA);
+        ((aa)localObject).aQp(this.eHB);
+        ((aa)localObject).aaw(this.eHC);
+        ((aa)localObject).aQp(this.eHD);
+        ((aa)localObject).aQp(this.eHE);
+        ((aa)localObject).aQp(this.eHF);
+        ((aa)localObject).aQp(this.eHG);
+        ((aa)localObject).aQp(this.eHH);
+        ((aa)localObject).aaw(this.eHI);
+        ((aa)localObject).aQp(this.eHJ);
+        ((aa)localObject).aaw(this.eHK);
+        ((aa)localObject).aQp(this.eHL);
+        ((aa)localObject).aQp(this.eHM);
+        ((aa)localObject).aQp(this.eHN);
+        ((aa)localObject).aaw(this.eHO);
+        this.field_lvbuff = ((aa)localObject).fkk();
       }
       Object localObject = new ContentValues();
       if (this.field_appId == null) {
         this.field_appId = "";
       }
-      if (this.enx) {
+      if (this.eED) {
         ((ContentValues)localObject).put("appId", this.field_appId);
       }
-      if (this.epq) {
+      if (this.eGz) {
         ((ContentValues)localObject).put("appName", this.field_appName);
       }
-      if (this.epr) {
+      if (this.eGA) {
         ((ContentValues)localObject).put("appDiscription", this.field_appDiscription);
       }
-      if (this.eps) {
+      if (this.eGB) {
         ((ContentValues)localObject).put("appIconUrl", this.field_appIconUrl);
       }
-      if (this.ept) {
+      if (this.eGC) {
         ((ContentValues)localObject).put("appStoreUrl", this.field_appStoreUrl);
       }
-      if (this.eox) {
+      if (this.eFC) {
         ((ContentValues)localObject).put("appVersion", Integer.valueOf(this.field_appVersion));
       }
-      if (this.epu) {
+      if (this.eGD) {
         ((ContentValues)localObject).put("appWatermarkUrl", this.field_appWatermarkUrl);
       }
-      if (this.epv) {
+      if (this.eGE) {
         ((ContentValues)localObject).put("packageName", this.field_packageName);
       }
-      if (this.elS) {
+      if (this.eCZ) {
         ((ContentValues)localObject).put("status", Integer.valueOf(this.field_status));
       }
-      if (this.enL) {
+      if (this.eER) {
         ((ContentValues)localObject).put("signature", this.field_signature);
       }
-      if (this.epw) {
+      if (this.eGF) {
         ((ContentValues)localObject).put("modifyTime", Long.valueOf(this.field_modifyTime));
       }
-      if (this.epx) {
+      if (this.eGG) {
         ((ContentValues)localObject).put("appName_en", this.field_appName_en);
       }
-      if (this.epy) {
+      if (this.eGH) {
         ((ContentValues)localObject).put("appName_tw", this.field_appName_tw);
       }
-      if (this.epz) {
+      if (this.eGI) {
         ((ContentValues)localObject).put("appName_hk", this.field_appName_hk);
       }
-      if (this.epA) {
+      if (this.eGJ) {
         ((ContentValues)localObject).put("appDiscription_en", this.field_appDiscription_en);
       }
-      if (this.epB) {
+      if (this.eGK) {
         ((ContentValues)localObject).put("appDiscription_tw", this.field_appDiscription_tw);
       }
-      if (this.epC) {
+      if (this.eGL) {
         ((ContentValues)localObject).put("appType", this.field_appType);
       }
-      if (this.epD) {
+      if (this.eGM) {
         ((ContentValues)localObject).put("openId", this.field_openId);
       }
-      if (this.epE) {
+      if (this.eGN) {
         ((ContentValues)localObject).put("authFlag", Integer.valueOf(this.field_authFlag));
       }
-      if (this.epF) {
+      if (this.eGO) {
         ((ContentValues)localObject).put("appInfoFlag", Integer.valueOf(this.field_appInfoFlag));
       }
-      if (this.epG) {
+      if (this.eGP) {
         ((ContentValues)localObject).put("lvbuff", this.field_lvbuff);
       }
-      if (this.epH) {
+      if (this.eGQ) {
         ((ContentValues)localObject).put("serviceAppType", Integer.valueOf(this.field_serviceAppType));
       }
-      if (this.epI) {
+      if (this.eGR) {
         ((ContentValues)localObject).put("serviceAppInfoFlag", Integer.valueOf(this.field_serviceAppInfoFlag));
       }
-      if (this.epJ) {
+      if (this.eGS) {
         ((ContentValues)localObject).put("serviceShowFlag", Integer.valueOf(this.field_serviceShowFlag));
       }
-      if (this.epK) {
+      if (this.eGT) {
         ((ContentValues)localObject).put("appSupportContentType", Long.valueOf(this.field_appSupportContentType));
       }
-      if (this.epL) {
+      if (this.eGU) {
         ((ContentValues)localObject).put("svrAppSupportContentType", Long.valueOf(this.field_svrAppSupportContentType));
       }
       if (this.systemRowid > 0L) {
@@ -413,129 +413,129 @@ public abstract class y
     {
       for (;;)
       {
-        ac.e("MicroMsg.SDK.BaseAppInfo", "get value failed, %s", new Object[] { localException.getMessage() });
+        ad.e("MicroMsg.SDK.BaseAppInfo", "get value failed, %s", new Object[] { localException.getMessage() });
       }
     }
   }
   
-  public final void jx(int paramInt)
+  public final void jV(int paramInt)
   {
-    this.eqt = paramInt;
-    this.epG = true;
+    this.eHC = paramInt;
+    this.eGP = true;
   }
   
-  public final void jy(int paramInt)
+  public final void jW(int paramInt)
   {
-    this.eqz = paramInt;
-    this.epG = true;
+    this.eHI = paramInt;
+    this.eGP = true;
   }
   
-  public final void jz(int paramInt)
+  public final void jX(int paramInt)
   {
-    this.eqF = paramInt;
-    this.epG = true;
+    this.eHO = paramInt;
+    this.eGP = true;
   }
   
-  public final void pO(String paramString)
+  public final void sA(String paramString)
   {
-    this.eqj = paramString;
-    this.epG = true;
+    this.eHw = paramString;
+    this.eGP = true;
   }
   
-  public final void pP(String paramString)
+  public final void sB(String paramString)
   {
-    this.eqk = paramString;
-    this.epG = true;
+    this.eHx = paramString;
+    this.eGP = true;
   }
   
-  public final void pQ(String paramString)
+  public final void sC(String paramString)
   {
-    this.eqn = paramString;
-    this.epG = true;
+    this.eHy = paramString;
+    this.eGP = true;
   }
   
-  public final void pR(String paramString)
+  public final void sD(String paramString)
   {
-    this.eqo = paramString;
-    this.epG = true;
+    this.eHz = paramString;
+    this.eGP = true;
   }
   
-  public final void pS(String paramString)
+  public final void sE(String paramString)
   {
-    this.eqp = paramString;
-    this.epG = true;
+    this.eHA = paramString;
+    this.eGP = true;
   }
   
-  public final void pT(String paramString)
+  public final void sF(String paramString)
   {
-    this.eqq = paramString;
-    this.epG = true;
+    this.eHB = paramString;
+    this.eGP = true;
   }
   
-  public final void pU(String paramString)
+  public final void sG(String paramString)
   {
-    this.eqr = paramString;
-    this.epG = true;
+    this.eHD = paramString;
+    this.eGP = true;
   }
   
-  public final void pV(String paramString)
+  public final void sH(String paramString)
   {
-    this.eqs = paramString;
-    this.epG = true;
+    this.eHE = paramString;
+    this.eGP = true;
   }
   
-  public final void pW(String paramString)
+  public final void sI(String paramString)
   {
-    this.equ = paramString;
-    this.epG = true;
+    this.eHF = paramString;
+    this.eGP = true;
   }
   
-  public final void pX(String paramString)
+  public final void sJ(String paramString)
   {
-    this.eqv = paramString;
-    this.epG = true;
+    this.eHG = paramString;
+    this.eGP = true;
   }
   
-  public final void pY(String paramString)
+  public final void sK(String paramString)
   {
-    this.eqw = paramString;
-    this.epG = true;
+    this.eHH = paramString;
+    this.eGP = true;
   }
   
-  public final void pZ(String paramString)
+  public final void sL(String paramString)
   {
-    this.eqx = paramString;
-    this.epG = true;
+    this.eHJ = paramString;
+    this.eGP = true;
   }
   
-  public final void qa(String paramString)
+  public final void sM(String paramString)
   {
-    this.eqy = paramString;
-    this.epG = true;
+    this.eHL = paramString;
+    this.eGP = true;
   }
   
-  public final void qb(String paramString)
+  public final void sN(String paramString)
   {
-    this.eqA = paramString;
-    this.epG = true;
+    this.eHM = paramString;
+    this.eGP = true;
   }
   
-  public final void qc(String paramString)
+  public final void sO(String paramString)
   {
-    this.eqC = paramString;
-    this.epG = true;
+    this.eHN = paramString;
+    this.eGP = true;
   }
   
-  public final void qd(String paramString)
+  public final void sy(String paramString)
   {
-    this.eqD = paramString;
-    this.epG = true;
+    this.eHs = paramString;
+    this.eGP = true;
   }
   
-  public final void qe(String paramString)
+  public final void sz(String paramString)
   {
-    this.eqE = paramString;
-    this.epG = true;
+    this.eHt = paramString;
+    this.eGP = true;
   }
 }
 

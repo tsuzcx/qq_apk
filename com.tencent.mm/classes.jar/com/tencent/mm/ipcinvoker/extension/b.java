@@ -16,7 +16,7 @@ public final class b
     AppMethodBeat.o(158790);
   }
   
-  public final boolean be(Object paramObject)
+  public final boolean bg(Object paramObject)
   {
     return paramObject instanceof com.tencent.mm.ipcinvoker.d.a;
   }

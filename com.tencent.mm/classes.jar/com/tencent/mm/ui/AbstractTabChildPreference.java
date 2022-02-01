@@ -2,90 +2,90 @@ package com.tencent.mm.ui;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.preference.MMPreferenceFragment;
 
 public abstract class AbstractTabChildPreference
   extends MMPreferenceFragment
   implements m
 {
-  private boolean HeD;
-  private boolean HeE;
-  private boolean HeF;
-  private boolean HeG;
-  protected boolean HeH = false;
-  protected boolean HeI = false;
-  protected boolean HeJ;
-  private Bundle yGj;
+  private boolean IRT;
+  private boolean IRU;
+  private boolean IRV;
+  private boolean IRW;
+  protected boolean IRX = false;
+  protected boolean IRY = false;
+  protected boolean IRZ;
+  private Bundle zXB;
   
-  private void feK()
+  private void fuR()
   {
-    if (this.HeE)
+    if (this.IRU)
     {
-      fey();
-      this.HeE = false;
+      fuF();
+      this.IRU = false;
     }
-    while (!this.HeD) {
+    while (!this.IRT) {
       return;
     }
-    feD();
-    fey();
-    ac.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
-    this.HeD = false;
+    fuK();
+    fuF();
+    ad.v("MicroMsg.INIT", "KEVIN tab onRecreate ");
+    this.IRT = false;
   }
   
-  protected abstract void feA();
+  protected abstract void fuF();
   
-  protected abstract void feB();
+  protected abstract void fuG();
   
-  protected abstract void feC();
+  protected abstract void fuH();
   
-  protected abstract void feD();
+  protected abstract void fuI();
   
-  public final void feH()
+  protected abstract void fuJ();
+  
+  protected abstract void fuK();
+  
+  public final void fuO()
   {
-    feF();
-    this.HeF = true;
+    fuM();
+    this.IRV = true;
   }
   
-  public final void feJ()
+  public final void fuQ()
   {
-    this.HeI = true;
+    this.IRY = true;
   }
   
-  public final void feL()
+  public final void fuS()
   {
-    if (!this.HeH) {
+    if (!this.IRX) {
       return;
     }
-    feK();
+    fuR();
     long l = System.currentTimeMillis();
-    if (this.HeF)
+    if (this.IRV)
     {
-      feG();
-      this.HeF = false;
+      fuN();
+      this.IRV = false;
     }
-    fjr();
-    fez();
-    ac.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.HeG = true;
-    this.HeH = false;
+    fzG();
+    fuG();
+    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
+    this.IRW = true;
+    this.IRX = false;
   }
-  
-  protected abstract void fey();
-  
-  protected abstract void fez();
   
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.yGj = paramBundle;
-    this.HeE = true;
+    this.zXB = paramBundle;
+    this.IRU = true;
   }
   
   public void onDestroy()
   {
-    feD();
+    fuK();
     super.onDestroy();
   }
   
@@ -100,52 +100,52 @@ public abstract class AbstractTabChildPreference
   public void onPause()
   {
     super.onPause();
-    this.HeJ = true;
-    if (this.HeJ)
+    this.IRZ = true;
+    if (this.IRZ)
     {
-      if (!this.HeG) {
-        this.HeJ = false;
+      if (!this.IRW) {
+        this.IRZ = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    feB();
-    ac.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.HeG = false;
-    this.HeJ = false;
+    fuI();
+    ad.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
+    this.IRW = false;
+    this.IRZ = false;
   }
   
   public void onResume()
   {
     super.onResume();
-    feI();
+    fuP();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.Hlm)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.IYT)) {}
     do
     {
       return;
-      this.HeH = true;
-    } while (!this.HeI);
-    feL();
-    this.HeI = false;
+      this.IRX = true;
+    } while (!this.IRY);
+    fuS();
+    this.IRY = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.Hlm)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.IYT)) {
       return;
     }
-    feA();
+    fuH();
   }
   
   public void onStop()
   {
     super.onStop();
-    feC();
+    fuJ();
   }
 }
 

@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.appbrand.page.b;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract interface f
 {
-  public abstract void PS(String paramString);
+  public abstract void Tw(String paramString);
   
   public abstract void a(a parama, int paramInt);
   
-  public abstract void brn();
+  public abstract void bvo();
   
-  public abstract void bro();
+  public abstract void bvp();
   
-  public abstract void dY(String paramString1, String paramString2);
+  public abstract void ei(String paramString1, String paramString2);
   
-  public abstract void gZ(boolean paramBoolean);
+  public abstract void hh(boolean paramBoolean);
   
-  public abstract void hb(boolean paramBoolean);
+  public abstract void hj(boolean paramBoolean);
   
   public abstract void requestDisallowInterceptTouchEvent(boolean paramBoolean);
   
@@ -29,28 +29,28 @@ public abstract interface f
     static
     {
       AppMethodBeat.i(135307);
-      lGD = new a("LIGHT", 0);
-      lGE = new a("DARK", 1);
-      lGF = new a("IGNORE", 2);
-      lGG = new a[] { lGD, lGE, lGF };
+      mgg = new a("LIGHT", 0);
+      mgh = new a("DARK", 1);
+      mgi = new a("IGNORE", 2);
+      mgj = new a[] { mgg, mgh, mgi };
       AppMethodBeat.o(135307);
     }
     
     private a() {}
     
-    public static a aw(String paramString, boolean paramBoolean)
+    public static a ay(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(193428);
+      AppMethodBeat.i(197345);
       if (TextUtils.isEmpty(paramString))
       {
         if (paramBoolean)
         {
-          paramString = lGD;
-          AppMethodBeat.o(193428);
+          paramString = mgg;
+          AppMethodBeat.o(197345);
           return paramString;
         }
-        paramString = lGE;
-        AppMethodBeat.o(193428);
+        paramString = mgh;
+        AppMethodBeat.o(197345);
         return paramString;
       }
       a[] arrayOfa = values();
@@ -68,7 +68,7 @@ public abstract interface f
         }
         while (bool)
         {
-          AppMethodBeat.o(193428);
+          AppMethodBeat.o(197345);
           return locala;
           bool = false;
           continue;
@@ -76,23 +76,23 @@ public abstract interface f
         }
         i += 1;
       }
-      ac.e("Luggage.AppBrandPageViewPullDownExtension.BackgroundTextStyle", "fromString(%s), unrecognized", new Object[] { paramString });
+      ad.e("Luggage.AppBrandPageViewPullDownExtension.BackgroundTextStyle", "fromString(%s), unrecognized", new Object[] { paramString });
       if (paramBoolean)
       {
-        paramString = lGD;
-        AppMethodBeat.o(193428);
+        paramString = mgg;
+        AppMethodBeat.o(197345);
         return paramString;
       }
-      paramString = lGE;
-      AppMethodBeat.o(193428);
+      paramString = mgh;
+      AppMethodBeat.o(197345);
       return paramString;
     }
     
-    public final String brB()
+    public final String bvD()
     {
-      AppMethodBeat.i(210521);
+      AppMethodBeat.i(221149);
       String str = name().toLowerCase();
-      AppMethodBeat.o(210521);
+      AppMethodBeat.o(221149);
       return str;
     }
   }

@@ -1,27 +1,34 @@
 package com.tencent.mm.plugin.voip.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bk;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bj;
+import com.tencent.mm.model.bl;
 import com.tencent.mm.model.s;
 import com.tencent.mm.model.u;
 import com.tencent.mm.network.e;
-import com.tencent.mm.protocal.protobuf.buj;
-import com.tencent.mm.protocal.protobuf.buk;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.cul;
-import com.tencent.mm.protocal.protobuf.cum;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.r;
+import com.tencent.mm.protocal.protobuf.byy;
+import com.tencent.mm.protocal.protobuf.byz;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.czv;
+import com.tencent.mm.protocal.protobuf.czw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bu;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -32,47 +39,47 @@ import junit.framework.Assert;
 
 public final class h
   extends n
-  implements com.tencent.mm.network.k
+  implements k
 {
-  private static final Set<Long> Azw;
-  private static final List<Object> hMg;
-  private com.tencent.mm.ak.g callback;
-  private final List<bo> hMh;
+  private static final Set<Long> BYw;
+  private static final List<Object> ifa;
+  private f callback;
+  private final List<bu> ifb;
   private long msgId;
   private b rr;
   
   static
   {
     AppMethodBeat.i(114860);
-    hMg = new ArrayList();
-    Azw = new HashSet();
+    ifa = new ArrayList();
+    BYw = new HashSet();
     AppMethodBeat.o(114860);
   }
   
   public h()
   {
     AppMethodBeat.i(114854);
-    this.hMh = new LinkedList();
-    ac.d("MicroMsg.NetSceneSendMsg", "dktext :" + bs.eWi());
-    ac.i("MicroMsg.NetSceneSendMsg", "empty msg sender created");
+    this.ifb = new LinkedList();
+    ad.d("MicroMsg.NetSceneSendMsg", "dktext :" + bt.flS());
+    ad.i("MicroMsg.NetSceneSendMsg", "empty msg sender created");
     AppMethodBeat.o(114854);
   }
   
   public h(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(114853);
-    this.hMh = new LinkedList();
-    ac.d("MicroMsg.NetSceneSendMsg", "dktext :" + bs.eWi());
-    if (!bs.isNullOrNil(paramString1))
+    this.ifb = new LinkedList();
+    ad.d("MicroMsg.NetSceneSendMsg", "dktext :" + bt.flS());
+    if (!bt.isNullOrNil(paramString1))
     {
-      bo localbo = new bo();
-      localbo.setStatus(1);
-      localbo.re(paramString1);
-      localbo.oA(bi.yp(paramString1));
-      localbo.jT(1);
-      localbo.setContent(paramString2);
-      localbo.setType(paramInt);
-      this.msgId = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().ap(localbo);
+      bu localbu = new bu();
+      localbu.setStatus(1);
+      localbu.tN(paramString1);
+      localbu.qA(bj.Bo(paramString1));
+      localbu.kr(1);
+      localbu.setContent(paramString2);
+      localbu.setType(paramInt);
+      this.msgId = ((l)g.ab(l.class)).dlK().as(localbu);
       if (this.msgId == -1L) {
         break label171;
       }
@@ -81,83 +88,83 @@ public final class h
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ac.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.msgId);
+      ad.i("MicroMsg.NetSceneSendMsg", "new msg inserted to db , local id = " + this.msgId);
       AppMethodBeat.o(114853);
       return;
     }
   }
   
-  private void aGg()
+  private void aJp()
   {
     AppMethodBeat.i(114858);
     int i = 0;
-    while (i < this.hMh.size())
+    while (i < this.ifb.size())
     {
-      pi(i);
+      pL(i);
       i += 1;
     }
     AppMethodBeat.o(114858);
   }
   
-  private void pi(int paramInt)
+  private void pL(int paramInt)
   {
     AppMethodBeat.i(114859);
-    Object localObject = (bo)this.hMh.get(paramInt);
-    ((bo)localObject).setStatus(5);
-    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().a(((dy)localObject).field_msgId, (bo)localObject);
-    localObject = hMg.iterator();
+    Object localObject = (bu)this.ifb.get(paramInt);
+    ((bu)localObject).setStatus(5);
+    ((l)g.ab(l.class)).dlK().a(((ei)localObject).field_msgId, (bu)localObject);
+    localObject = ifa.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((Iterator)localObject).next();
     }
     AppMethodBeat.o(114859);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(114856);
-    this.callback = paramg;
-    paramg = new b.a();
-    paramg.hvt = new cul();
-    paramg.hvu = new cum();
-    paramg.uri = "/cgi-bin/micromsg-bin/newsendmsg";
-    paramg.funcId = 522;
-    paramg.reqCmdId = 237;
-    paramg.respCmdId = 1000000237;
-    this.rr = paramg.aAz();
-    paramg = (cul)this.rr.hvr.hvw;
-    List localList = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().dcD();
+    this.callback = paramf;
+    paramf = new b.a();
+    paramf.hNM = new czv();
+    paramf.hNN = new czw();
+    paramf.uri = "/cgi-bin/micromsg-bin/newsendmsg";
+    paramf.funcId = 522;
+    paramf.hNO = 237;
+    paramf.respCmdId = 1000000237;
+    this.rr = paramf.aDC();
+    paramf = (czv)this.rr.hNK.hNQ;
+    List localList = ((l)g.ab(l.class)).dlK().dlX();
     if (localList.size() == 0)
     {
-      ac.i("MicroMsg.NetSceneSendMsg", "no sending message");
+      ad.i("MicroMsg.NetSceneSendMsg", "no sending message");
       AppMethodBeat.o(114856);
       return -2;
     }
-    this.hMh.clear();
+    this.ifb.clear();
     int i = 0;
     while (i < localList.size())
     {
-      bo localbo = (bo)localList.get(i);
-      if (localbo.field_isSend == 1)
+      bu localbu = (bu)localList.get(i);
+      if (localbu.field_isSend == 1)
       {
-        buj localbuj = new buj();
-        localbuj.DPU = new crm().aJV(localbo.field_talker);
-        localbuj.CreateTime = ((int)(localbo.field_createTime / 1000L));
-        localbuj.ndI = localbo.getType();
-        localbuj.hkR = localbo.field_content;
-        localbuj.Fkw = s.u(u.axw(), localbo.field_createTime).hashCode();
-        localbuj.DPY = bk.aze();
-        if (((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).ifAddTicketByActionFlag(localbo.field_talker)) {
-          localbuj.EhE = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aND(localbo.field_talker);
+        byy localbyy = new byy();
+        localbyy.Fvj = new cwt().aPy(localbu.field_talker);
+        localbyy.CreateTime = ((int)(localbu.field_createTime / 1000L));
+        localbyy.nEf = localbu.getType();
+        localbyy.hDa = localbu.field_content;
+        localbyy.GUe = s.w(u.aAm(), localbu.field_createTime).hashCode();
+        localbyy.Fvn = bl.aCi();
+        if (((r)g.ad(r.class)).ifAddTicketByActionFlag(localbu.field_talker)) {
+          localbyy.FOL = ((l)g.ab(l.class)).azp().aTu(localbu.field_talker);
         }
-        paramg.ncM.add(localbuj);
-        paramg.ncL = paramg.ncM.size();
-        this.hMh.add(localbo);
+        paramf.nDj.add(localbyy);
+        paramf.nDi = paramf.nDj.size();
+        this.ifb.add(localbu);
       }
       i += 1;
     }
     i = dispatch(parame, this.rr, this);
     if (i < 0) {
-      aGg();
+      aJp();
     }
     AppMethodBeat.o(114856);
     return i;
@@ -168,45 +175,45 @@ public final class h
     return 522;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(114857);
-    ac.i("MicroMsg.NetSceneSendMsg", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3);
-    paramq = (cum)this.rr.hvs.hvw;
+    ad.i("MicroMsg.NetSceneSendMsg", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3);
+    paramq = (czw)this.rr.hNL.hNQ;
     if ((paramq != null) && ((paramInt2 == 4) || ((paramInt2 == 0) && (paramInt3 == 0)))) {
-      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).setEnSendMsgActionFlag(paramq.EhF);
+      ((r)g.ad(r.class)).setEnSendMsgActionFlag(paramq.FOM);
     }
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      aGg();
+      aJp();
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(114857);
       return;
     }
-    paramq = paramq.ncM;
-    if (this.hMh.size() == paramq.size())
+    paramq = paramq.nDj;
+    if (this.ifb.size() == paramq.size())
     {
       paramInt1 = 0;
       while (paramInt1 < paramq.size())
       {
-        paramArrayOfByte = (buk)paramq.get(paramInt1);
+        paramArrayOfByte = (byz)paramq.get(paramInt1);
         if (paramArrayOfByte.Ret != 0)
         {
-          ac.e("MicroMsg.NetSceneSendMsg", "send msg failed: item ret code=" + paramArrayOfByte.Ret);
-          pi(paramInt1);
+          ad.e("MicroMsg.NetSceneSendMsg", "send msg failed: item ret code=" + paramArrayOfByte.Ret);
+          pL(paramInt1);
           this.callback.onSceneEnd(4, paramArrayOfByte.Ret, paramString, this);
           AppMethodBeat.o(114857);
           return;
         }
-        long l = ((bo)this.hMh.get(paramInt1)).field_msgId;
-        ac.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + paramArrayOfByte.vTQ + " sent successfully!");
-        bo localbo = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().vP(l);
-        localbo.oz(paramArrayOfByte.vTQ);
-        localbo.setStatus(2);
-        ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).dcr().a(l, localbo);
+        long l = ((bu)this.ifb.get(paramInt1)).field_msgId;
+        ad.i("MicroMsg.NetSceneSendMsg", "msg local id = " + l + ", SvrId = " + paramArrayOfByte.xbt + " sent successfully!");
+        bu localbu = ((l)g.ab(l.class)).dlK().xY(l);
+        localbu.qz(paramArrayOfByte.xbt);
+        localbu.setStatus(2);
+        ((l)g.ab(l.class)).dlK().a(l, localbu);
         paramInt1 += 1;
       }
-      ac.i("MicroMsg.NetSceneSendMsg", "total " + paramInt1 + " msgs sent successfully");
+      ad.i("MicroMsg.NetSceneSendMsg", "total " + paramInt1 + " msgs sent successfully");
     }
     paramInt1 = doScene(dispatcher(), this.callback);
     if (paramInt1 == -2)
@@ -226,16 +233,16 @@ public final class h
     return 10;
   }
   
-  public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
+  public final n.b securityVerificationChecked(q paramq)
   {
     AppMethodBeat.i(114855);
-    if (this.hMh.size() > 0)
+    if (this.ifb.size() > 0)
     {
-      paramq = n.b.hwa;
+      paramq = n.b.hOp;
       AppMethodBeat.o(114855);
       return paramq;
     }
-    paramq = n.b.hwb;
+    paramq = n.b.hOq;
     AppMethodBeat.o(114855);
     return paramq;
   }

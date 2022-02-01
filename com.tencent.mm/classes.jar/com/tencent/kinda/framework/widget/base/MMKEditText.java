@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,10 +16,14 @@ import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
+import com.tencent.kinda.framework.widget.tools.KindaWcKeyboardHelpr;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.ClearButtonMode;
 import com.tencent.kinda.gen.DynamicColor;
+import com.tencent.kinda.gen.EditTextRestrictType;
 import com.tencent.kinda.gen.KEditText;
 import com.tencent.kinda.gen.KEditTextOnTextBeginChangeCallback;
 import com.tencent.kinda.gen.KEditTextOnTextChangedCallback;
@@ -27,12 +32,16 @@ import com.tencent.kinda.gen.KViewOnClickCallback;
 import com.tencent.kinda.gen.KeyboardType;
 import com.tencent.kinda.gen.TextAlign;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.framework.app.UIPageFragmentActivity;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.wallet_core.ui.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.aq;
+import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.ISecureEncrypt;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import com.tenpay.android.wechat.TenpaySecureEncrypt;
@@ -48,6 +57,7 @@ public class MMKEditText
   private KeyboardType keyboardType;
   protected BaseFrActivity mBaseFrActivity;
   protected KEditTextOnTextEndEditingCallback mKEditTextOnTextEndEditingCallback;
+  private EditTextRestrictType mRestriceType;
   private int maxLength;
   protected KEditTextOnTextBeginChangeCallback onTextBeginChangeCallback;
   protected KEditTextOnTextChangedCallback onTextChangedCallback;
@@ -85,7 +95,7 @@ public class MMKEditText
     this.editText = new TenpaySecureEditText(paramContext);
     this.editText.setSingleLine();
     this.editText.setBackground(null);
-    this.editText.setTextSize(16.0F);
+    this.editText.setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), 17.0F));
     this.editText.setTag(this);
     this.editText.setCursorStyle(2131232606);
     this.editText.setPadding(0, 0, 0, 0);
@@ -96,16 +106,22 @@ public class MMKEditText
     this.iconImageView.setClearBtnDrawableId$255f295(paramContext.getResources().getColor(2131099982));
     this.iconImageView.setToClearState(new View.OnClickListener()
     {
+      private byte _hellAccFlag_;
+      
       public void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(19015);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         MMKEditText.this.editText.setText("");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/kinda/framework/widget/base/MMKEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(19015);
       }
     });
     this.iconImageView.setVisibility(8);
-    localLayoutParams = new LinearLayout.LayoutParams(ao.fromDPToPix(paramContext, 16), ao.fromDPToPix(paramContext, 16));
-    localLayoutParams.setMargins(0, 0, ao.fromDPToPix(paramContext, 4), 0);
+    localLayoutParams = new LinearLayout.LayoutParams(aq.fromDPToPix(paramContext, 16), aq.fromDPToPix(paramContext, 16));
+    localLayoutParams.setMargins(0, 0, aq.fromDPToPix(paramContext, 4), 0);
     localLinearLayout.addView(this.iconImageView, localLayoutParams);
     if ((paramContext instanceof BaseFrActivity)) {
       this.mBaseFrActivity = ((BaseFrActivity)paramContext);
@@ -154,7 +170,8 @@ public class MMKEditText
       public void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(170122);
-        if ((paramAnonymousBoolean) && (MMKEditText.this.editText.getText().length() > 0))
+        if ((MMKEditText.this.clearButtonMode == ClearButtonMode.WHILEEDITING) || (MMKEditText.this.clearButtonMode == ClearButtonMode.ALWAYS) || (MMKEditText.this.clearButtonMode == ClearButtonMode.UNLESSEDITING)) {}
+        for (int i = 1; (paramAnonymousBoolean) && (MMKEditText.this.editText.getText().length() > 0) && (i != 0); i = 0)
         {
           MMKEditText.this.iconImageView.setVisibility(0);
           AppMethodBeat.o(170122);
@@ -171,11 +188,18 @@ public class MMKEditText
     }
     this.editText.setOnTouchListener(new View.OnTouchListener()
     {
+      private byte _hellAccFlag_;
+      
       public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(184745);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
         if (MMKEditText.this.editText.isFocused())
         {
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(184745);
           return false;
         }
@@ -185,12 +209,15 @@ public class MMKEditText
           if (paramAnonymousView != null)
           {
             paramAnonymousView.onClick(MMKEditText.this);
+            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(184745);
             return true;
           }
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(184745);
           return false;
         }
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/kinda/framework/widget/base/MMKEditText$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(184745);
         return false;
       }
@@ -205,7 +232,7 @@ public class MMKEditText
   public String encryptWith3Des()
   {
     AppMethodBeat.i(19039);
-    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(ce.azH() / 1000L));
+    String str = new TenpaySecureEncrypt().desedeVerifyCode(this.editText.getText().toString(), Long.toString(cf.aCK() / 1000L));
     AppMethodBeat.o(19039);
     return str;
   }
@@ -260,6 +287,11 @@ public class MMKEditText
     return this.maxLength;
   }
   
+  public EditTextRestrictType getRestrictType()
+  {
+    return this.mRestriceType;
+  }
+  
   public int getSelection()
   {
     AppMethodBeat.i(19035);
@@ -271,7 +303,7 @@ public class MMKEditText
   public String getText()
   {
     AppMethodBeat.i(19024);
-    ac.d("base_MMKView", "MMKLabelView getText ");
+    ad.d("base_MMKView", "MMKLabelView getText ");
     Object localObject = this.editText.getText();
     if (localObject != null)
     {
@@ -350,12 +382,12 @@ public class MMKEditText
       {
         public void run()
         {
-          AppMethodBeat.i(184747);
+          AppMethodBeat.i(199504);
           MMKEditText.this.editText.requestFocus();
           if ((MMKEditText.this.keyboardType != KeyboardType.ID) && (MMKEditText.this.keyboardType != KeyboardType.CRETAIL)) {
             ((InputMethodManager)MMKEditText.this.mContext.getSystemService("input_method")).showSoftInput(MMKEditText.this.editText, 0);
           }
-          AppMethodBeat.o(184747);
+          AppMethodBeat.o(199504);
         }
       }, 50L);
       AppMethodBeat.o(19036);
@@ -388,7 +420,7 @@ public class MMKEditText
   {
     AppMethodBeat.i(19033);
     this.keyboardType = paramKeyboardType;
-    switch (7.$SwitchMap$com$tencent$kinda$gen$KeyboardType[paramKeyboardType.ordinal()])
+    switch (9.$SwitchMap$com$tencent$kinda$gen$KeyboardType[paramKeyboardType.ordinal()])
     {
     }
     for (;;)
@@ -413,7 +445,7 @@ public class MMKEditText
       if (this.mBaseFrActivity != null)
       {
         this.mBaseFrActivity.setEditFocusListener(this.editText, 1, false);
-        this.mBaseFrActivity.setTenpayKBStateListener(new a()
+        this.mBaseFrActivity.setTenpayKBStateListener(new com.tencent.mm.wallet_core.ui.a()
         {
           public void onVisibleStateChange(boolean paramAnonymousBoolean)
           {
@@ -422,6 +454,24 @@ public class MMKEditText
               MMKEditText.this.editText.clearFocus();
             }
             AppMethodBeat.o(184746);
+          }
+        });
+        AppMethodBeat.o(19033);
+        return;
+        this.editText.setImeOptions(6);
+        this.editText.setInputType(524289);
+        KindaWcKeyboardHelpr.bind((UIPageFragmentActivity)this.mBaseFrActivity, this.editText, aj.getContext().getString(2131755835), this.mBaseFrActivity.mTenpayKBStateCallBackListener);
+        this.editText.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+          public boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
+          {
+            AppMethodBeat.i(199503);
+            ad.d("MMKEditText", "on eidtor action: %s", new Object[] { paramAnonymousKeyEvent });
+            if ((paramAnonymousKeyEvent.getAction() == 1) && (paramAnonymousKeyEvent.getKeyCode() == 66)) {
+              MMKEditText.this.editText.clearFocus();
+            }
+            AppMethodBeat.o(199503);
+            return true;
           }
         });
       }
@@ -454,6 +504,48 @@ public class MMKEditText
     this.mKEditTextOnTextEndEditingCallback = paramKEditTextOnTextEndEditingCallback;
   }
   
+  public void setRestrictType(EditTextRestrictType paramEditTextRestrictType)
+  {
+    AppMethodBeat.i(199508);
+    this.mRestriceType = paramEditTextRestrictType;
+    if (this.mRestriceType == EditTextRestrictType.MONEY) {
+      this.editText.addTextChangedListener(new TextWatcher()
+      {
+        public void afterTextChanged(Editable paramAnonymousEditable)
+        {
+          AppMethodBeat.i(199505);
+          if (paramAnonymousEditable.toString().startsWith(".")) {
+            paramAnonymousEditable.insert(0, "0");
+          }
+          paramAnonymousEditable = paramAnonymousEditable.toString();
+          int i = paramAnonymousEditable.indexOf(".");
+          int j = paramAnonymousEditable.length();
+          if ((i >= 0) && (j - i > 3))
+          {
+            WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, i + 3, j);
+            AppMethodBeat.o(199505);
+            return;
+          }
+          if (i > 12)
+          {
+            WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, 12, i);
+            AppMethodBeat.o(199505);
+            return;
+          }
+          if ((i == -1) && (j > 12)) {
+            WalletFormView.a(MMKEditText.this.editText, paramAnonymousEditable, 12, j);
+          }
+          AppMethodBeat.o(199505);
+        }
+        
+        public void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+        
+        public void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      });
+    }
+    AppMethodBeat.o(199508);
+  }
+  
   public void setSelection(int paramInt)
   {
     AppMethodBeat.i(19034);
@@ -464,7 +556,7 @@ public class MMKEditText
   public void setText(String paramString)
   {
     AppMethodBeat.i(19023);
-    ac.d("base_MMKView", "MMKLabelView setText ".concat(String.valueOf(paramString)));
+    ad.d("base_MMKView", "MMKLabelView setText ".concat(String.valueOf(paramString)));
     if ((paramString != null) && (!getText().equals(paramString))) {
       this.editText.setText(paramString);
     }
@@ -477,7 +569,7 @@ public class MMKEditText
     if (paramTextAlign != null)
     {
       this.textAlign = paramTextAlign;
-      switch (7.$SwitchMap$com$tencent$kinda$gen$TextAlign[this.textAlign.ordinal()])
+      switch (9.$SwitchMap$com$tencent$kinda$gen$TextAlign[this.textAlign.ordinal()])
       {
       }
     }
@@ -505,13 +597,49 @@ public class MMKEditText
   public void setTextFont(String paramString)
   {
     AppMethodBeat.i(19027);
-    if (paramString != null)
-    {
-      this.textFontName = paramString;
-      this.editText.setTypeface(Typeface.createFromAsset(ai.getContext().getAssets(), paramString));
-      notifyChanged();
+    int i;
+    if (!bt.isNullOrNil(paramString)) {
+      if (paramString.equalsIgnoreCase("WeChat-Sans-SS-Light")) {
+        i = 2;
+      }
     }
-    AppMethodBeat.o(19027);
+    for (;;)
+    {
+      if (i != -1)
+      {
+        paramString = e.agp(i);
+        try
+        {
+          this.editText.setTypeface(Typeface.createFromAsset(aj.getContext().getAssets(), paramString));
+          notifyChanged();
+          AppMethodBeat.o(19027);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          ad.e("base_MMKView", "setTypeface() Exception:%s %s", new Object[] { paramString.getClass().getSimpleName(), paramString.getMessage() });
+        }
+        if (paramString.equalsIgnoreCase("WeChat-Sans-SS-Medium"))
+        {
+          i = 0;
+          continue;
+        }
+        if (paramString.equalsIgnoreCase("WeChat-Sans-SS-Regular"))
+        {
+          i = 3;
+          continue;
+        }
+        if (!paramString.equalsIgnoreCase("WeChat-Sans-SS-Bold")) {
+          break label146;
+        }
+        i = 1;
+        continue;
+      }
+      AppMethodBeat.o(19027);
+      return;
+      label146:
+      i = -1;
+    }
   }
   
   public void setTextSize(float paramFloat)
@@ -520,7 +648,7 @@ public class MMKEditText
     if (paramFloat > 0.0F)
     {
       this.textSize = paramFloat;
-      this.editText.setTextSize(0, MMKViewUtil.dpToPx(ai.getContext(), paramFloat));
+      this.editText.setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), paramFloat));
       notifyChanged();
     }
     AppMethodBeat.o(19025);
@@ -530,12 +658,12 @@ public class MMKEditText
   
   public void setViewId(String paramString)
   {
-    AppMethodBeat.i(207407);
+    AppMethodBeat.i(199507);
     super.setViewId(paramString);
     if (this.iconImageView != null) {
       MMKViewUtil.setId4KindaImplView(this.mContext, paramString + "_btn", this.iconImageView);
     }
-    AppMethodBeat.o(207407);
+    AppMethodBeat.o(199507);
   }
   
   public void setVisibleClearIcon(boolean paramBoolean)

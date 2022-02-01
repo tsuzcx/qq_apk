@@ -12,38 +12,38 @@ import com.tencent.pb.common.c.b;
 public final class a
   extends d
 {
-  public long AMc;
-  public int JLH;
-  public int Kya;
-  public int tOL;
-  public String tmu;
+  public long Clq;
+  public int LFq;
+  public int Mob;
+  public int uRy;
+  public String ukT;
   
   public a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62531);
-    this.tmu = null;
-    this.tOL = 0;
-    this.AMc = 0L;
+    this.ukT = null;
+    this.uRy = 0;
+    this.Clq = 0L;
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneAckVoiceGroup" });
     a.k localk = new a.k();
     try
     {
       localk.groupId = paramString;
-      this.tmu = paramString;
-      localk.ADE = paramInt1;
-      this.tOL = paramInt1;
-      localk.ADF = paramLong;
-      this.AMc = paramLong;
-      this.Kya = paramInt3;
-      this.JLH = paramInt2;
+      this.ukT = paramString;
+      localk.CcE = paramInt1;
+      this.uRy = paramInt1;
+      localk.CcF = paramLong;
+      this.Clq = paramLong;
+      this.Mob = paramInt3;
+      this.LFq = paramInt2;
       paramString = new a.an();
       paramString.iLen = 0;
       a.bd localbd = new a.bd();
       localbd.type = 3;
-      localbd.JPB = paramString;
-      localk.JMq = localbd;
+      localbd.LJn = paramString;
+      localk.LFZ = localbd;
       this.mNetType = 3;
-      this.JLH = paramInt2;
+      this.LFq = paramInt2;
       c(189, localk);
       AppMethodBeat.o(62531);
       return;
@@ -57,7 +57,7 @@ public final class a
     }
   }
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62532);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -80,7 +80,7 @@ public final class a
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSVoiceAckReq";
   }
@@ -92,7 +92,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.a
  * JD-Core Version:    0.7.0.1
  */

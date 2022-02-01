@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.cc;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.ca;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.model.cd.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class h
-  implements aw
+  implements ax
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private cc.a uAS;
-  private b uEl;
-  private c uEm;
-  private i uEn;
-  private g uEo;
+  private cd.a vDx;
+  private b vHl;
+  private c vHm;
+  private i vHn;
+  private g vHo;
   
   static
   {
@@ -43,66 +43,66 @@ public final class h
   public h()
   {
     AppMethodBeat.i(26366);
-    this.uEn = new i();
-    this.uEo = new g();
-    this.uAS = new cc.a()
+    this.vHn = new i();
+    this.vHo = new g();
+    this.vDx = new cd.a()
     {
-      public final void a(f.a paramAnonymousa)
+      public final void a(e.a paramAnonymousa)
       {
         AppMethodBeat.i(26365);
-        paramAnonymousa = z.a(paramAnonymousa.fXi.DPV);
-        ac.i("MicroMsg.SubCoreMassSend", "MassSendTopConfXml:".concat(String.valueOf(paramAnonymousa)));
-        h.dbA().akz(paramAnonymousa);
-        h.dbA().dbv();
-        h.dbA();
-        c.vN(bs.eWj());
+        paramAnonymousa = z.a(paramAnonymousa.gqE.Fvk);
+        ad.i("MicroMsg.SubCoreMassSend", "MassSendTopConfXml:".concat(String.valueOf(paramAnonymousa)));
+        h.dkU().apm(paramAnonymousa);
+        h.dkU().dkP();
+        h.dkU();
+        c.xX(bt.flT());
         AppMethodBeat.o(26365);
       }
       
-      public final void a(f.c paramAnonymousc) {}
+      public final void a(e.c paramAnonymousc) {}
     };
     AppMethodBeat.o(26366);
   }
   
-  public static c dbA()
-  {
-    AppMethodBeat.i(26369);
-    if (dby().uEm == null) {
-      dby().uEm = new c();
-    }
-    c localc = dby().uEm;
-    AppMethodBeat.o(26369);
-    return localc;
-  }
-  
-  private static h dby()
+  private static h dkS()
   {
     AppMethodBeat.i(26367);
-    az.ayG();
-    h localh2 = (h)bz.yz("plugin.masssend");
+    ba.aBK();
+    h localh2 = (h)ca.By("plugin.masssend");
     h localh1 = localh2;
     if (localh2 == null)
     {
       localh1 = new h();
-      az.ayG().a("plugin.favorite", localh1);
+      ba.aBK().a("plugin.favorite", localh1);
     }
     AppMethodBeat.o(26367);
     return localh1;
   }
   
-  public static b dbz()
+  public static b dkT()
   {
     AppMethodBeat.i(26368);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (dby().uEl == null)
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (dkS().vHl == null)
     {
-      localObject = dby();
-      az.ayM();
-      ((h)localObject).uEl = new b(com.tencent.mm.model.c.agw());
+      localObject = dkS();
+      ba.aBQ();
+      ((h)localObject).vHl = new b(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = dby().uEl;
+    Object localObject = dkS().vHl;
     AppMethodBeat.o(26368);
     return localObject;
+  }
+  
+  public static c dkU()
+  {
+    AppMethodBeat.i(26369);
+    if (dkS().vHm == null) {
+      dkS().vHm = new c();
+    }
+    c localc = dkS().vHm;
+    AppMethodBeat.o(26369);
+    return localc;
   }
   
   public final void clearPluginData(int paramInt) {}
@@ -115,18 +115,18 @@ public final class h
   public final void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(26371);
-    az.getSysCmdMsgExtension().a("masssendapp", this.uAS, false);
-    com.tencent.mm.sdk.b.a.GpY.c(this.uEn);
-    com.tencent.mm.sdk.b.a.GpY.c(this.uEo);
+    ba.getSysCmdMsgExtension().a("masssendapp", this.vDx, false);
+    com.tencent.mm.sdk.b.a.IbL.c(this.vHn);
+    com.tencent.mm.sdk.b.a.IbL.c(this.vHo);
     AppMethodBeat.o(26371);
   }
   
   public final void onAccountRelease()
   {
     AppMethodBeat.i(26370);
-    az.getSysCmdMsgExtension().b("masssendapp", this.uAS, false);
-    com.tencent.mm.sdk.b.a.GpY.d(this.uEn);
-    com.tencent.mm.sdk.b.a.GpY.d(this.uEo);
+    ba.getSysCmdMsgExtension().b("masssendapp", this.vDx, false);
+    com.tencent.mm.sdk.b.a.IbL.d(this.vHn);
+    com.tencent.mm.sdk.b.a.IbL.d(this.vHo);
     AppMethodBeat.o(26370);
   }
   

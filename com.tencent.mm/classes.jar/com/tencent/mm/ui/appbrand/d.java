@@ -8,56 +8,55 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.p;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.compatible.util.q;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams.a;
-import com.tencent.mm.plugin.appbrand.service.m;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.widget.a.e.a;
 import com.tencent.mm.ui.z;
 import java.io.UnsupportedEncodingException;
 
 public final class d
 {
-  h HtC;
-  public String HtD;
+  h Jhs;
+  public String Jht;
   public String appId;
   Context context;
-  com.tencent.mm.ui.widget.a.e jiS;
-  public boolean mNF;
-  public WxaExposedParams mdC;
+  com.tencent.mm.ui.widget.a.e jCA;
+  public WxaExposedParams mDM;
+  public boolean nob;
   public int scene;
   public String username;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(33802);
-    this.mdC = new WxaExposedParams.a().baT();
+    this.mDM = new WxaExposedParams.a().bet();
     this.appId = "";
-    this.HtD = "";
+    this.Jht = "";
     this.context = paramContext;
     AppMethodBeat.o(33802);
   }
   
-  public static String aZ(String paramString1, String paramString2, String paramString3)
+  public static String bi(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(33806);
     try
     {
-      paramString1 = String.format("https://mp.weixin.qq.com/mp/wacomplain?action=show&appid=%s&pageid=%s&from=%d&&business_appid=%s#wechat_redirect", new Object[] { p.encode(bs.nullAsNil(paramString1), "UTF-8"), p.encode(bs.nullAsNil(paramString2), "UTF-8"), Integer.valueOf(10), p.encode(bs.nullAsNil(paramString3), "UTF-8") });
+      paramString1 = String.format("https://mp.weixin.qq.com/mp/wacomplain?action=show&appid=%s&pageid=%s&from=%d&&business_appid=%s#wechat_redirect", new Object[] { q.encode(bt.nullAsNil(paramString1), "UTF-8"), q.encode(bt.nullAsNil(paramString2), "UTF-8"), Integer.valueOf(10), q.encode(bt.nullAsNil(paramString3), "UTF-8") });
       AppMethodBeat.o(33806);
       return paramString1;
     }
     catch (UnsupportedEncodingException paramString1)
     {
-      ac.e("MicroMsg.AppBrandServiceActionSheet", "buildExposeUrl encode fail, invalid arguments");
+      ad.e("MicroMsg.AppBrandServiceActionSheet", "buildExposeUrl encode fail, invalid arguments");
       AppMethodBeat.o(33806);
     }
     return "";
@@ -66,14 +65,14 @@ public final class d
   final String getAppId()
   {
     AppMethodBeat.i(33804);
-    if (bs.isNullOrNil(this.username))
+    if (bt.isNullOrNil(this.username))
     {
       AppMethodBeat.o(33804);
       return null;
     }
-    if (bs.isNullOrNil(this.appId))
+    if (bt.isNullOrNil(this.appId))
     {
-      localObject = ((m)g.ab(m.class)).Ka(this.username);
+      localObject = ((n)com.tencent.mm.kernel.g.ab(n.class)).Nt(this.username);
       if (localObject != null) {
         this.appId = ((WxaAttributes)localObject).field_appId;
       }
@@ -83,83 +82,92 @@ public final class d
     return localObject;
   }
   
-  final void js(int paramInt1, int paramInt2)
+  final void jE(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(33805);
-    if (bs.isNullOrNil(getAppId()))
+    if (bt.isNullOrNil(getAppId()))
     {
       AppMethodBeat.o(33805);
       return;
     }
-    ac.d("MicroMsg.AppBrandServiceActionSheet", "stev report(%s), appId : %s, scene %s, sceneId %s, action %s", new Object[] { Integer.valueOf(13918), this.appId, Integer.valueOf(paramInt1), this.HtD, Integer.valueOf(paramInt2) });
-    h.wUl.f(13918, new Object[] { getAppId(), Integer.valueOf(paramInt1), this.HtD, Integer.valueOf(paramInt2), Long.valueOf(bs.aNx()) });
+    ad.d("MicroMsg.AppBrandServiceActionSheet", "stev report(%s), appId : %s, scene %s, sceneId %s, action %s", new Object[] { Integer.valueOf(13918), this.appId, Integer.valueOf(paramInt1), this.Jht, Integer.valueOf(paramInt2) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(13918, new Object[] { getAppId(), Integer.valueOf(paramInt1), this.Jht, Integer.valueOf(paramInt2), Long.valueOf(bt.aQJ()) });
     AppMethodBeat.o(33805);
   }
   
   public final void show(int paramInt)
   {
     AppMethodBeat.i(33803);
-    this.jiS = new com.tencent.mm.ui.widget.a.e(this.context, 1, true);
+    this.jCA = new com.tencent.mm.ui.widget.a.e(this.context, 1, true);
     switch (paramInt)
     {
     default: 
       AppMethodBeat.o(33803);
       return;
     case 1: 
-      this.HtC = new a();
-      if (this.HtC == null) {
-        ac.e("MicroMsg.AppBrandServiceActionSheet", "resetTitleView, state is null");
+      this.Jhs = new a();
+      if (this.Jhs == null) {
+        ad.e("MicroMsg.AppBrandServiceActionSheet", "resetTitleView, state is null");
       }
       break;
     }
     for (;;)
     {
-      this.jiS.ISu = new n.c()
+      this.jCA.KJy = new n.d()
       {
         public final void onCreateMMMenu(l paramAnonymousl)
         {
-          AppMethodBeat.i(33784);
-          if (d.this.HtC == null)
+          AppMethodBeat.i(193779);
+          if (d.this.Jhs == null)
           {
-            ac.e("MicroMsg.AppBrandServiceActionSheet", "resetOnCreateMenuListener, state is null");
-            AppMethodBeat.o(33784);
+            ad.e("MicroMsg.AppBrandServiceActionSheet", "resetOnCreateMenuListener, state is null");
+            AppMethodBeat.o(193779);
             return;
           }
-          d.this.HtC.onCreateMMMenu(paramAnonymousl);
-          AppMethodBeat.o(33784);
+          d.this.Jhs.onCreateMMMenu(paramAnonymousl);
+          AppMethodBeat.o(193779);
         }
       };
-      this.jiS.ISv = new n.d()
+      this.jCA.KJz = new n.e()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          AppMethodBeat.i(33783);
-          if (d.this.HtC == null)
+          AppMethodBeat.i(193778);
+          if (d.this.Jhs == null)
           {
-            ac.e("MicroMsg.AppBrandServiceActionSheet", "resetOnCreateMenuListener, state is null");
-            AppMethodBeat.o(33783);
+            ad.e("MicroMsg.AppBrandServiceActionSheet", "resetOnCreateMenuListener, state is null");
+            AppMethodBeat.o(193778);
             return;
           }
-          d.this.HtC.onMMMenuItemSelected(paramAnonymousMenuItem, paramAnonymousInt);
-          AppMethodBeat.o(33783);
+          d.this.Jhs.onMMMenuItemSelected(paramAnonymousMenuItem, paramAnonymousInt);
+          AppMethodBeat.o(193778);
         }
       };
-      this.jiS.cED();
+      this.jCA.KWx = new e.a()
+      {
+        public final void onClick()
+        {
+          AppMethodBeat.i(193777);
+          d.this.jCA.bpT();
+          AppMethodBeat.o(193777);
+        }
+      };
+      this.jCA.cMW();
       AppMethodBeat.o(33803);
       return;
-      this.HtC = new b();
+      this.Jhs = new b();
       break;
-      this.HtC = new f();
+      this.Jhs = new f();
       break;
-      this.HtC = new g();
+      this.Jhs = new g();
       break;
-      this.HtC = new d();
+      this.Jhs = new d();
       break;
-      this.HtC = new e();
+      this.Jhs = new e();
       break;
-      View localView = this.HtC.fhV();
+      View localView = this.Jhs.fyl();
       if (localView != null) {
-        this.jiS.J(localView, false);
+        this.jCA.K(localView, false);
       }
     }
   }
@@ -221,7 +229,7 @@ public final class d
   {
     public c() {}
     
-    public View fhV()
+    public View fyl()
     {
       return null;
     }
@@ -238,11 +246,11 @@ public final class d
       for (;;)
       {
         if (paramInt != 0) {
-          d.this.jiS.bmi();
+          d.this.jCA.bpT();
         }
         AppMethodBeat.o(33791);
         return;
-        ap.n(new Runnable()
+        aq.o(new Runnable()
         {
           public final void run()
           {
@@ -253,7 +261,7 @@ public final class d
         }, 100L);
         paramInt = 1;
         continue;
-        ap.n(new Runnable()
+        aq.o(new Runnable()
         {
           public final void run()
           {
@@ -264,66 +272,66 @@ public final class d
         }, 100L);
         paramInt = 1;
         continue;
-        d.this.jiS.bmi();
+        d.this.jCA.bpT();
         paramInt = 1;
         continue;
-        if (!bs.isNullOrNil(d.this.username))
+        if (!bt.isNullOrNil(d.this.username))
         {
           e.k(d.this.context, d.this.username, true);
-          if (d.this.mNF)
+          if (d.this.nob)
           {
             d.a(d.this, 6);
             paramInt = 1;
             continue;
           }
-          d.this.js(d.this.scene, 4);
+          d.this.jE(d.this.scene, 4);
           paramInt = 1;
           continue;
-          if (!bs.isNullOrNil(d.this.username))
+          if (!bt.isNullOrNil(d.this.username))
           {
             e.k(d.this.context, d.this.username, false);
-            if (d.this.mNF)
+            if (d.this.nob)
             {
               d.a(d.this, 1);
               paramInt = 1;
               continue;
             }
-            d.this.js(d.this.scene, 2);
+            d.this.jE(d.this.scene, 2);
             paramInt = 1;
             continue;
             paramMenuItem = d.this;
             Object localObject1 = d.this.context;
-            Object localObject2 = d.this.mdC;
+            Object localObject2 = d.this.mDM;
             if (localObject2 == null)
             {
-              ac.e("MicroMsg.AppBrandServiceActionSheet", "exportUrlParams is null");
+              ad.e("MicroMsg.AppBrandServiceActionSheet", "exportUrlParams is null");
               paramInt = 1;
               continue;
             }
-            ac.i("MicroMsg.AppBrandServiceActionSheet", "exportUrlParams : %s", new Object[] { ((WxaExposedParams)localObject2).toString() });
-            if (!bs.isNullOrNil(((WxaExposedParams)localObject2).username))
+            ad.i("MicroMsg.AppBrandServiceActionSheet", "exportUrlParams : %s", new Object[] { ((WxaExposedParams)localObject2).toString() });
+            if (!bt.isNullOrNil(((WxaExposedParams)localObject2).username))
             {
               localObject3 = new Intent();
               ((Intent)localObject3).putExtra("key_username", ((WxaExposedParams)localObject2).username);
               ((Intent)localObject3).putExtra("key_from_scene", 4);
               ((Intent)localObject3).putExtra("key_scene_exposed_params", (Parcelable)localObject2);
-              com.tencent.mm.br.d.b((Context)localObject1, "appbrand", ".ui.AppBrandProfileUI", (Intent)localObject3);
-              paramMenuItem.js(paramMenuItem.scene, 1);
+              com.tencent.mm.bs.d.b((Context)localObject1, "appbrand", ".ui.AppBrandProfileUI", (Intent)localObject3);
+              paramMenuItem.jE(paramMenuItem.scene, 1);
             }
             paramInt = 1;
             continue;
             localObject1 = d.this;
             localObject2 = new Intent();
-            Object localObject3 = ((d)localObject1).mdC.appId;
-            String str = ((d)localObject1).mdC.pageId;
-            if ((((d)localObject1).mdC.appId != null) && (((d)localObject1).mdC.appId.equals(((d)localObject1).getAppId()))) {}
+            Object localObject3 = ((d)localObject1).mDM.appId;
+            String str = ((d)localObject1).mDM.pageId;
+            if ((((d)localObject1).mDM.appId != null) && (((d)localObject1).mDM.appId.equals(((d)localObject1).getAppId()))) {}
             for (paramMenuItem = "";; paramMenuItem = ((d)localObject1).getAppId())
             {
-              paramMenuItem = d.aZ((String)localObject3, str, paramMenuItem);
-              ac.v("MicroMsg.AppBrandServiceActionSheet", "KRawUrl ".concat(String.valueOf(paramMenuItem)));
+              paramMenuItem = d.bi((String)localObject3, str, paramMenuItem);
+              ad.v("MicroMsg.AppBrandServiceActionSheet", "KRawUrl ".concat(String.valueOf(paramMenuItem)));
               ((Intent)localObject2).putExtra("rawUrl", paramMenuItem);
               ((Intent)localObject2).putExtra("forceHideShare", true);
-              com.tencent.mm.br.d.b(((d)localObject1).context, "webview", ".ui.tools.WebViewUI", (Intent)localObject2);
+              com.tencent.mm.bs.d.b(((d)localObject1).context, "webview", ".ui.tools.WebViewUI", (Intent)localObject2);
               paramInt = 1;
               break;
             }
@@ -394,10 +402,10 @@ public final class d
       super();
     }
     
-    public final View fhV()
+    public final View fyl()
     {
       AppMethodBeat.i(33796);
-      View localView = z.jD(d.this.context).inflate(2131493384, null);
+      View localView = z.jO(d.this.context).inflate(2131493384, null);
       ((TextView)localView.findViewById(2131296902)).setText(d.this.context.getString(2131755650));
       AppMethodBeat.o(33796);
       return localView;
@@ -408,7 +416,6 @@ public final class d
       AppMethodBeat.i(33797);
       super.onCreateMMMenu(paraml);
       paraml.c(5, d.this.context.getString(2131755514));
-      paraml.c(4, d.this.context.getString(2131755648));
       AppMethodBeat.o(33797);
     }
     
@@ -428,10 +435,10 @@ public final class d
       super();
     }
     
-    public final View fhV()
+    public final View fyl()
     {
       AppMethodBeat.i(33799);
-      View localView = z.jD(d.this.context).inflate(2131493384, null);
+      View localView = z.jO(d.this.context).inflate(2131493384, null);
       ((TextView)localView.findViewById(2131296902)).setText(d.this.context.getString(2131755652));
       AppMethodBeat.o(33799);
       return localView;
@@ -442,7 +449,6 @@ public final class d
       AppMethodBeat.i(33800);
       super.onCreateMMMenu(paraml);
       paraml.c(6, d.this.context.getString(2131755516));
-      paraml.c(4, d.this.context.getString(2131755648));
       AppMethodBeat.o(33800);
     }
     
@@ -456,7 +462,7 @@ public final class d
   
   public static abstract interface h
   {
-    public abstract View fhV();
+    public abstract View fyl();
     
     public abstract void onCreateMMMenu(l paraml);
     
@@ -465,7 +471,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.appbrand.d
  * JD-Core Version:    0.7.0.1
  */

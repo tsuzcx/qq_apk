@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.appbrand.appstorage.l;
 import com.tencent.mm.plugin.appbrand.appstorage.m;
 import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
@@ -30,22 +30,22 @@ final class bf
   {
     AppMethodBeat.i(128932);
     String str = paramJSONObject.optString("targetDirectory", "");
-    paramJSONObject = paramc.DH().Ih(str);
-    switch (1.krw[paramJSONObject.ordinal()])
+    paramJSONObject = paramc.Fg().Lz(str);
+    switch (1.kMS[paramJSONObject.ordinal()])
     {
     default: 
-      paramJSONObject = paramc.DH().IS(paramString);
+      paramJSONObject = paramc.Fg().Mj(paramString);
       if ((paramJSONObject == null) || (!paramJSONObject.exists()))
       {
-        if (paramc.DH().If(paramString) != l.jsB) {
+        if (paramc.Fg().Lx(paramString) != l.jMv) {
           break label647;
         }
-        localObject = paramc.DH().IU(URLEncoder.encode(paramString));
+        localObject = paramc.Fg().Ml(URLEncoder.encode(paramString));
         if (localObject == null) {
           break label647;
         }
         paramJSONObject = new com.tencent.mm.plugin.appbrand.z.i();
-        paramc.DH().b(paramString, paramJSONObject);
+        paramc.Fg().b(paramString, paramJSONObject);
       }
       break;
     case 1: 
@@ -53,15 +53,15 @@ final class bf
     case 3: 
       try
       {
-        Channels.newChannel(com.tencent.mm.vfs.i.ah((e)localObject)).write((ByteBuffer)paramJSONObject.value);
-        paramJSONObject = new e(q.B(((e)localObject).fxV()));
+        Channels.newChannel(com.tencent.mm.vfs.i.aj((e)localObject)).write((ByteBuffer)paramJSONObject.value);
+        paramJSONObject = new e(q.B(((e)localObject).fOK()));
         i = 1;
       }
       catch (IOException paramJSONObject)
       {
         for (;;)
         {
-          ac.e("MicroMsg.AppBrand.FileSystem.UnitUnzip", "copy ByteBuffer failed e = %s", new Object[] { paramJSONObject });
+          ad.e("MicroMsg.AppBrand.FileSystem.UnitUnzip", "copy ByteBuffer failed e = %s", new Object[] { paramJSONObject });
           paramJSONObject = null;
           i = 0;
         }
@@ -90,11 +90,11 @@ final class bf
       try
       {
         label324:
-        paramc = paramc.DH().a(str, (e)localObject);
+        paramc = paramc.Fg().a(str, (e)localObject);
         if (i != 0) {
-          com.tencent.mm.vfs.i.deleteFile(q.B(((e)localObject).fxV()));
+          com.tencent.mm.vfs.i.deleteFile(q.B(((e)localObject).fOK()));
         }
-        switch (1.krw[paramc.ordinal()])
+        switch (1.kMS[paramc.ordinal()])
         {
         case 2: 
         case 3: 
@@ -105,7 +105,7 @@ final class bf
       }
       catch (Exception paramc)
       {
-        ac.printErrStackTrace("MicroMsg.AppBrand.FileSystem.UnitUnzip", paramc, "write zip stream", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.AppBrand.FileSystem.UnitUnzip", paramc, "write zip stream", new Object[0]);
         paramc = new i.a("fail read zip data", new Object[0]);
         AppMethodBeat.o(128932);
         return paramc;
@@ -139,7 +139,7 @@ final class bf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.bf
  * JD-Core Version:    0.7.0.1
  */

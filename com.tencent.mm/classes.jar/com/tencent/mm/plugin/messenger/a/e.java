@@ -1,23 +1,44 @@
 package com.tencent.mm.plugin.messenger.a;
 
 import android.content.Context;
-import com.tencent.mm.protocal.protobuf.dev;
+import android.os.Bundle;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public abstract interface e
+  extends a
 {
-  public abstract void X(String paramString1, String paramString2, int paramInt);
+  public abstract void a(String paramString, e.a parama);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, long paramLong, String paramString5);
+  public abstract void a(String paramString, b paramb);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, dev paramdev, String paramString4, String paramString5);
+  public abstract void a(String paramString, c paramc);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5);
+  public abstract void a(String paramString, Map<String, String> paramMap, Bundle paramBundle);
   
-  public abstract void a(String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3);
+  public abstract void apu(String paramString);
   
-  public abstract void hF(String paramString1, String paramString2);
+  public abstract void apv(String paramString);
   
-  public abstract void q(String paramString1, String paramString2, boolean paramBoolean);
+  public abstract CharSequence apw(String paramString);
+  
+  public abstract CharSequence b(String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
+  
+  public abstract void b(String paramString, c paramc);
+  
+  public static abstract interface b
+  {
+    public abstract CharSequence a(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference, WeakReference<NeatTextView> paramWeakReference1);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void a(Map<String, String> paramMap, com.tencent.mm.al.e.a parama);
+    
+    public abstract void b(String paramString, Map<String, String> paramMap, Bundle paramBundle);
+  }
 }
 
 

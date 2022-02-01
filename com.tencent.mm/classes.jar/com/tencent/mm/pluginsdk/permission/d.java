@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.permission;
 
 public abstract interface d
 {
-  public abstract void ND(int paramInt);
+  public abstract void Pg(int paramInt);
 }
 
 

@@ -9,34 +9,34 @@ import java.lang.reflect.Method;
 final class f
   implements g
 {
-  static Class<?> zp;
-  private static boolean zq;
-  private static Method zr;
-  private static boolean zt;
-  static Method zu;
-  static boolean zv;
-  private final View zw;
+  static Class<?> Bh;
+  private static boolean Bi;
+  private static Method Bj;
+  private static boolean Bk;
+  static Method Bl;
+  static boolean Bm;
+  private final View Bn;
   
   private f(View paramView)
   {
-    this.zw = paramView;
+    this.Bn = paramView;
   }
   
   static g a(View paramView, ViewGroup paramViewGroup, Matrix paramMatrix)
   {
-    if (!zt) {}
+    if (!Bk) {}
     try
     {
-      dt();
-      Method localMethod = zp.getDeclaredMethod("addGhost", new Class[] { View.class, ViewGroup.class, Matrix.class });
-      zr = localMethod;
+      dI();
+      Method localMethod = Bh.getDeclaredMethod("addGhost", new Class[] { View.class, ViewGroup.class, Matrix.class });
+      Bj = localMethod;
       localMethod.setAccessible(true);
       label46:
-      zt = true;
-      if (zr != null) {
+      Bk = true;
+      if (Bj != null) {
         try
         {
-          paramView = new f((View)zr.invoke(null, new Object[] { paramView, paramViewGroup, paramMatrix }));
+          paramView = new f((View)Bj.invoke(null, new Object[] { paramView, paramViewGroup, paramMatrix }));
           return paramView;
         }
         catch (InvocationTargetException paramView)
@@ -53,14 +53,14 @@ final class f
     }
   }
   
-  static void dt()
+  static void dI()
   {
-    if (!zq) {}
+    if (!Bi) {}
     try
     {
-      zp = Class.forName("android.view.GhostView");
+      Bh = Class.forName("android.view.GhostView");
       label14:
-      zq = true;
+      Bi = true;
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -73,7 +73,7 @@ final class f
   
   public final void setVisibility(int paramInt)
   {
-    this.zw.setVisibility(paramInt);
+    this.Bn.setVisibility(paramInt);
   }
 }
 

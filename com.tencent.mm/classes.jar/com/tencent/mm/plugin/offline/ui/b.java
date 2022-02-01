@@ -6,8 +6,8 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.e;
 
@@ -16,14 +16,14 @@ public final class b
   public static void av(Activity paramActivity)
   {
     AppMethodBeat.i(66371);
-    ac.e("MicroMsg.OfflineErrorHelper", "offline code size is 0, show check network error dialog");
+    ad.e("MicroMsg.OfflineErrorHelper", "offline code size is 0, show check network error dialog");
     h.a(paramActivity, paramActivity.getString(2131765951), null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(66368);
         if ((this.val$activity instanceof WalletOfflineCoinPurseUI)) {
-          ((WalletOfflineCoinPurseUI)this.val$activity).vvu = false;
+          ((WalletOfflineCoinPurseUI)this.val$activity).wAO = false;
         }
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(66368);
@@ -59,16 +59,16 @@ public final class b
     }
     for (;;)
     {
-      if (!bs.isNullOrNil(paramString2))
+      if (!bt.isNullOrNil(paramString2))
       {
-        ac.i("MicroMsg.OfflineErrorHelper", "error_detail_url is not null ");
+        ad.i("MicroMsg.OfflineErrorHelper", "error_detail_url is not null ");
         h.a(paramActivity, paramString1, null, paramActivity.getResources().getString(2131765249), paramActivity.getResources().getString(2131755835), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(66366);
-            e.aT(this.val$activity, paramString2);
-            e.adR(3);
+            e.aW(this.val$activity, paramString2);
+            e.agr(3);
             paramAnonymousDialogInterface.dismiss();
             AppMethodBeat.o(66366);
           }
@@ -92,7 +92,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.b
  * JD-Core Version:    0.7.0.1
  */

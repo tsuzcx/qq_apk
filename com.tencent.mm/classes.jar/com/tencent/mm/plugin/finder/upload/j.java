@@ -1,335 +1,221 @@
 package com.tencent.mm.plugin.finder.upload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.i.a;
+import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.loader.g.c;
-import com.tencent.mm.loader.g.h;
-import com.tencent.mm.model.ce;
-import com.tencent.mm.modelvideo.r;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.report.i.b;
-import com.tencent.mm.plugin.finder.report.i.c;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.utils.p;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.plugin.sight.base.e;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.protocal.protobuf.bqt;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.plugin.finder.api.c.a;
+import com.tencent.mm.plugin.finder.cgi.at;
+import com.tencent.mm.plugin.finder.cgi.at.a;
+import com.tencent.mm.protocal.protobuf.alo;
+import com.tencent.mm.protocal.protobuf.alp;
+import com.tencent.mm.protocal.protobuf.aps;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
+import d.v;
+import java.io.ByteArrayOutputStream;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/FinderUploadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "finderObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "cdnCallback", "com/tencent/mm/plugin/finder/upload/FinderUploadTask$cdnCallback$1", "Lcom/tencent/mm/plugin/finder/upload/FinderUploadTask$cdnCallback$1;", "getFinderObj", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFinderObj", "isMarkFail", "", "()Z", "setMarkFail", "(Z)V", "itemProgress", "", "", "", "getItemProgress", "()Ljava/util/Map;", "postinfo", "Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "kotlin.jvm.PlatformType", "getPostinfo", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderPostInfo;", "startTime", "", "uploadingFeed", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "call", "", "invokeCallbackFun", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "prefixMediaId", "mediaId", "resetUploadInfo", "revertMediaId", "uniqueId", "updatePostInfo", "isOk", "updatePostReportMediaInfo", "retCode", "", "updateMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "updateProgress", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "uploadFinderContent", "mediaObjList", "Ljava/util/LinkedList;", "uploadLocalMedia", "mediaObject", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/upload/FinderUploadCoverImageTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "path", "", "userName", "(Ljava/lang/String;Ljava/lang/String;)V", "TAG", "cdnCallback", "com/tencent/mm/plugin/finder/upload/FinderUploadCoverImageTask$cdnCallback$1", "Lcom/tencent/mm/plugin/finder/upload/FinderUploadCoverImageTask$cdnCallback$1;", "getPath", "()Ljava/lang/String;", "getUserName", "call", "", "invokeCallbackFun", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "uniqueId", "updateContact", "url", "succ", "", "plugin-finder_release"})
 public final class j
-  extends c
+  extends com.tencent.mm.loader.g.c
 {
-  private static final String TAG = "Finder.FinderUploadTask";
-  private static boolean rNB;
-  public static final a rNC;
-  FinderItem rMD;
-  private final j.b rNA;
-  private boolean rNw;
-  private final bqt rNx;
-  private final Map<String, Float> rNy;
-  private final ConcurrentLinkedQueue<String> rNz;
-  private long startTime;
+  final String TAG;
+  private final String path;
+  private final a sJu;
+  final String userName;
   
-  static
+  public j(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(167797);
-    rNC = new a((byte)0);
-    TAG = "Finder.FinderUploadTask";
-    AppMethodBeat.o(167797);
+    AppMethodBeat.i(167789);
+    this.path = paramString1;
+    this.userName = paramString2;
+    this.TAG = "Finder.FinderUploadCoverImageTask";
+    this.sJu = new a(this);
+    AppMethodBeat.o(167789);
   }
   
-  public j(FinderItem paramFinderItem)
+  public final String aeK()
   {
-    AppMethodBeat.i(167796);
-    this.rMD = paramFinderItem;
-    this.rNx = this.rMD.field_postinfo;
-    this.rNy = ((Map)new LinkedHashMap());
-    this.rNz = new ConcurrentLinkedQueue();
-    this.rNA = new j.b(this);
-    AppMethodBeat.o(167796);
-  }
-  
-  private static String aew(String paramString)
-  {
-    AppMethodBeat.i(203511);
-    paramString = "upload_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(203511);
-    return paramString;
-  }
-  
-  private final void d(h paramh)
-  {
-    AppMethodBeat.i(167793);
-    if (this.rNw)
-    {
-      ac.i(TAG, "invoke_CallbackFun isMarkFail " + this.rNw);
-      AppMethodBeat.o(167793);
-      return;
-    }
-    a(paramh);
-    AppMethodBeat.o(167793);
-  }
-  
-  private final void lP(boolean paramBoolean)
-  {
-    AppMethodBeat.i(167794);
-    if (!paramBoolean) {}
-    try
-    {
-      this.rNw = false;
-      if (!paramBoolean) {}
-      for (this.rNx.FfT = 2;; this.rNx.FfT = 1)
-      {
-        this.rNx.fWs = (ce.azH() - this.startTime);
-        Object localObject = this.rMD;
-        bqt localbqt = this.rNx;
-        k.g(localbqt, "postinfo");
-        ((FinderItem)localObject).setPostInfo(localbqt);
-        localObject = i.b.ryD;
-        i.b.uD(this.rNx.fWs);
-        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFeedStorage().a(this.rMD.getLocalId(), this.rMD);
-        AppMethodBeat.o(167794);
-        return;
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      ac.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
-      AppMethodBeat.o(167794);
-    }
-  }
-  
-  public final String acg()
-  {
-    AppMethodBeat.i(167795);
-    String str = "upload_" + this.rMD.getLocalId();
-    AppMethodBeat.o(167795);
-    return str;
+    return this.path;
   }
   
   public final void call()
   {
-    AppMethodBeat.i(167792);
-    this.rMD.trackPost("upload");
-    this.startTime = ce.azJ();
-    Object localObject1 = this.rMD.getMediaList();
-    if (localObject1 != null)
+    AppMethodBeat.i(167788);
+    if (!i.fv(this.path))
     {
-      try
-      {
-        this.rNx.FfT = 0;
-        Object localObject2 = this.rMD;
-        localObject3 = this.rNx;
-        k.g(localObject3, "postinfo");
-        ((FinderItem)localObject2).setPostInfo((bqt)localObject3);
-        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFeedStorage().a(this.rMD.getLocalId(), this.rMD);
-        if ((rNB) && (ac.getLogLevel() <= 1))
-        {
-          ac.i(TAG, "debugDeleteFileWhenUpload");
-          localObject2 = p.rQw;
-          i.cU(p.cDw(), true);
-        }
-        localObject1 = ((LinkedList)localObject1).iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (bqs)((Iterator)localObject1).next();
-            if (!bs.isNullOrNil(((bqs)localObject2).url))
-            {
-              localObject3 = ((bqs)localObject2).mediaId;
-              ac.i(TAG, "uploading media " + (String)localObject3 + ", " + ((bqs)localObject2).url + " size:" + bs.qz(i.aSp(((bqs)localObject2).url)) + " thumb: " + ((bqs)localObject2).thumbUrl + " size:" + bs.qz(i.aSp(((bqs)localObject2).thumbUrl)));
-              k.g(localObject2, "media");
-              if (!i.eA(((bqs)localObject2).url))
-              {
-                ac.i(TAG, "mediaObject.url " + ((bqs)localObject2).url + " is not file");
-                i = 0;
-                if (i != 0) {
-                  continue;
-                }
-                lP(false);
-                d(h.gLO);
-                AppMethodBeat.o(167792);
-                return;
-              }
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        label404:
-        label926:
-        Map localMap;
-        label1048:
-        label1054:
-        do
-        {
-          Object localObject3;
-          int i;
-          for (;;)
-          {
-            ac.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
-          }
-          if ((!bs.isNullOrNil(localException.FfN)) && (!bs.isNullOrNil(localException.FfO))) {
-            ac.i(TAG, "mediaObject svr_url and svr_thumbUrl exist");
-          }
-          for (;;)
-          {
-            i = 1;
-            break;
-            localObject3 = new com.tencent.mm.i.g();
-            ((com.tencent.mm.i.g)localObject3).frb = ((g.a)this.rNA);
-            Object localObject4 = ah.dg(localException.url);
-            k.g(localObject4, "MD5Util.getMD5String(mediaObject.url)");
-            ((com.tencent.mm.i.g)localObject3).field_mediaId = aew((String)localObject4);
-            ((com.tencent.mm.i.g)localObject3).field_fullpath = localException.url;
-            ((com.tencent.mm.i.g)localObject3).field_thumbpath = localException.thumbUrl;
-            ((com.tencent.mm.i.g)localObject3).field_talker = "";
-            ((com.tencent.mm.i.g)localObject3).field_needStorage = true;
-            ac.i(TAG, "upload file length " + i.aSp(localException.url) + " mediaId: " + ((com.tencent.mm.i.g)localObject3).field_mediaId + " localId:" + this.rMD.getLocalId());
-            switch (localException.mediaType)
-            {
-            case 3: 
-            case 5: 
-            case 6: 
-            default: 
-              ac.e(TAG, "unknown media type %d, quit upload", new Object[] { Integer.valueOf(localException.mediaType) });
-              break;
-            case 2: 
-            case 7: 
-              ((com.tencent.mm.i.g)localObject3).field_fileType = 20304;
-              ((com.tencent.mm.i.g)localObject3).field_appType = 251;
-              ((com.tencent.mm.i.g)localObject3).field_bzScene = 2;
-              ((com.tencent.mm.i.g)localObject3).frf = 60;
-              ((com.tencent.mm.i.g)localObject3).frg = 300;
-            case 4: 
-              String str;
-              long l;
-              do
-              {
-                do
-                {
-                  ((com.tencent.mm.i.g)localObject3).field_priority = com.tencent.mm.i.a.fqp;
-                  this.rNz.add(((com.tencent.mm.i.g)localObject3).field_mediaId);
-                  localObject4 = this.rNy;
-                  str = ((com.tencent.mm.i.g)localObject3).field_mediaId;
-                  k.g(str, "info.field_mediaId");
-                  ((Map)localObject4).put(str, Float.valueOf(0.0F));
-                  com.tencent.mm.an.f.aDD().f((com.tencent.mm.i.g)localObject3);
-                  if ((localException.mediaType != 4) || (bs.isNullOrNil(localException.coverUrl))) {
-                    break label404;
-                  }
-                  if (i.eA(localException.coverUrl)) {
-                    break label1054;
-                  }
-                  ac.w(TAG, "upload failed, coverUrl not exist, " + localException.coverUrl);
-                  i = 0;
-                  break;
-                  SightVideoJNI.optimizeMP4VFS(((com.tencent.mm.i.g)localObject3).field_fullpath);
-                  ((com.tencent.mm.i.g)localObject3).field_fileType = 20302;
-                  ((com.tencent.mm.i.g)localObject3).field_appType = 251;
-                  ((com.tencent.mm.i.g)localObject3).frr = 8;
-                  ((com.tencent.mm.i.g)localObject3).field_bzScene = 2;
-                  ((com.tencent.mm.i.g)localObject3).frf = 60;
-                  ((com.tencent.mm.i.g)localObject3).frg = 600;
-                  localObject4 = com.tencent.mm.plugin.finder.storage.b.rCU;
-                  i = com.tencent.mm.plugin.finder.storage.b.cyc();
-                  localObject4 = com.tencent.mm.plugin.finder.storage.b.rCU;
-                } while (i <= com.tencent.mm.plugin.finder.storage.b.cyd());
-                l = i.aSp(((com.tencent.mm.i.g)localObject3).field_fullpath);
-                localObject4 = com.tencent.mm.plugin.finder.storage.b.rCU;
-              } while (l <= com.tencent.mm.plugin.finder.storage.b.cyd());
-              ((com.tencent.mm.i.g)localObject3).snsVersion = 1;
-              localObject4 = e.asx(((com.tencent.mm.i.g)localObject3).field_fullpath);
-              StringBuilder localStringBuilder;
-              if (localObject4 != null)
-              {
-                int j = ((com.tencent.mm.plugin.sight.base.a)localObject4).videoBitrate;
-                if (r.isH265Video(((com.tencent.mm.i.g)localObject3).field_fullpath))
-                {
-                  i = 174;
-                  str = "videobitrate:" + j + "\r\nvideoformat:" + i + "\r\n";
-                  ac.i(TAG, "customHeader ".concat(String.valueOf(str)));
-                  ((com.tencent.mm.i.g)localObject3).customHeader = str;
-                }
-              }
-              else
-              {
-                str = TAG;
-                localStringBuilder = new StringBuilder("MultiBitrate_Video_Enable, mediaInfo null?");
-                if (localObject4 != null) {
-                  break label1048;
-                }
-              }
-              for (boolean bool = true;; bool = false)
-              {
-                ac.i(str, bool + ", path:" + ((com.tencent.mm.i.g)localObject3).field_fullpath);
-                break;
-                i = 28;
-                break label926;
-              }
-              localObject3 = new com.tencent.mm.i.g();
-              ((com.tencent.mm.i.g)localObject3).frb = ((g.a)this.rNA);
-              localObject4 = ah.dg(localException.coverUrl);
-              k.g(localObject4, "MD5Util.getMD5String(mediaObject.coverUrl)");
-              ((com.tencent.mm.i.g)localObject3).field_mediaId = aew((String)localObject4);
-              ((com.tencent.mm.i.g)localObject3).field_fullpath = localException.coverUrl;
-              ((com.tencent.mm.i.g)localObject3).field_thumbpath = localException.coverUrl;
-              ((com.tencent.mm.i.g)localObject3).field_talker = "";
-              ((com.tencent.mm.i.g)localObject3).field_needStorage = true;
-              ac.i(TAG, "upload cover file length " + i.aSp(localException.coverUrl));
-              ((com.tencent.mm.i.g)localObject3).field_fileType = 20304;
-              ((com.tencent.mm.i.g)localObject3).field_appType = 251;
-              ((com.tencent.mm.i.g)localObject3).field_bzScene = 2;
-              ((com.tencent.mm.i.g)localObject3).frf = 60;
-              ((com.tencent.mm.i.g)localObject3).frg = 300;
-              ((com.tencent.mm.i.g)localObject3).field_priority = com.tencent.mm.i.a.fqp;
-              this.rNz.add(((com.tencent.mm.i.g)localObject3).field_mediaId);
-              localMap = this.rNy;
-              localObject4 = ((com.tencent.mm.i.g)localObject3).field_mediaId;
-              k.g(localObject4, "info.field_mediaId");
-              localMap.put(localObject4, Float.valueOf(0.0F));
-              com.tencent.mm.an.f.aDD().f((com.tencent.mm.i.g)localObject3);
-            }
-          }
-        } while ((localMap.mediaType != 2) && (localMap.mediaType != 7) && (localMap.mediaType != 4));
-        ac.i(TAG, "uploadFinderContent media.url invalid, url:" + localMap.url + ", type:" + localMap.mediaType);
-        lP(false);
-        d(h.gLO);
-        AppMethodBeat.o(167792);
-        return;
-      }
-      if (this.rNz.size() == 0)
-      {
-        lP(true);
-        d(h.gLN);
-        AppMethodBeat.o(167792);
-        return;
-      }
-      localObject1 = i.c.ryP;
-      i.c.cxj();
-      AppMethodBeat.o(167792);
+      ad.d(this.TAG, "path " + this.path + " is not file");
+      a(com.tencent.mm.loader.g.j.hfL);
+      AppMethodBeat.o(167788);
       return;
     }
-    AppMethodBeat.o(167792);
+    com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
+    localg.fJi = "task_FinderUploadCoverImageTask";
+    localg.fJj = ((g.a)this.sJu);
+    localg.field_mediaId = com.tencent.mm.sdk.platformtools.ai.ee(this.path);
+    localg.field_fullpath = this.path;
+    f localf = f.sJc;
+    localg.field_thumbpath = f.aiL(this.path);
+    localg.field_talker = "";
+    localg.field_needStorage = true;
+    localg.field_fileType = a.MediaType_FRIENDS;
+    localg.field_appType = 100;
+    localg.field_bzScene = 1;
+    localg.fJn = 60;
+    localg.fJo = 300;
+    localg.field_priority = a.fIw;
+    com.tencent.mm.ao.f.aGI().f(localg);
+    AppMethodBeat.o(167788);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/upload/FinderUploadTask$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "debugDeleteFileWhenUpload", "", "getDebugDeleteFileWhenUpload", "()Z", "setDebugDeleteFileWhenUpload", "(Z)V", "plugin-finder_release"})
-  public static final class a {}
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/upload/FinderUploadCoverImageTask$cdnCallback$1", "Lcom/tencent/mm/cdn/keep_TaskInfo$TaskCallback;", "callback", "", "mediaId", "", "startRet", "progressInfo", "Lcom/tencent/mm/cdn/keep_ProgressInfo;", "sceneResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "onlyCheckExist", "", "decodePrepareResponse", "", "inbuf", "getCdnAuthInfo", "", "buff", "Ljava/io/ByteArrayOutputStream;", "plugin-finder_release"})
+  public static final class a
+    implements g.a
+  {
+    public final int a(String paramString, int paramInt, com.tencent.mm.i.c paramc, final d paramd, boolean paramBoolean)
+    {
+      AppMethodBeat.i(167787);
+      String str = this.sJv.TAG;
+      Object localObject;
+      if (paramd != null)
+      {
+        localObject = paramd.toString();
+        paramc = (com.tencent.mm.i.c)localObject;
+        if (localObject != null) {}
+      }
+      else
+      {
+        paramc = "null";
+      }
+      ad.i(str, "on cdn callback mediaId = %s, startRet = %d, sceneResult %s", new Object[] { paramString, Integer.valueOf(paramInt), paramc });
+      if (paramInt != 0)
+      {
+        ad.e(this.sJv.TAG, "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramInt), paramString });
+        if (paramInt != -21005)
+        {
+          j.a(this.sJv, "", false);
+          this.sJv.a(com.tencent.mm.loader.g.j.hfL);
+        }
+        AppMethodBeat.o(167787);
+        return 0;
+      }
+      if ((!bt.isNullOrNil(paramString)) && (paramd != null))
+      {
+        ad.i(this.sJv.TAG, "retCode %d, fileId %s, url %s", new Object[] { Integer.valueOf(paramd.field_retCode), paramd.field_fileId, paramd.field_fileUrl });
+        if (paramd.field_retCode != 0)
+        {
+          j.a(this.sJv, "", false);
+          this.sJv.a(com.tencent.mm.loader.g.j.hfL);
+          AppMethodBeat.o(167787);
+          return 0;
+        }
+        paramString = com.tencent.mm.plugin.finder.api.c.rHn;
+        if (c.a.agW(this.sJv.userName) != null)
+        {
+          paramString = com.tencent.mm.kernel.g.ajC();
+          p.g(paramString, "MMKernel.storage()");
+          paramString.ajl().set(al.a.IGC, paramd.field_fileUrl);
+          paramString = new aps();
+          paramString.coverImgUrl = paramd.field_fileUrl;
+          paramc = new alo();
+          localObject = at.rJK;
+          paramc.cmdId = at.cyz();
+          paramc.Glr = com.tencent.mm.bx.b.cj(paramString.toByteArray());
+          paramString = d.a.j.listOf(paramc);
+          paramc = new at(this.sJv.userName, paramString);
+          com.tencent.mm.kernel.g.aiU().a(3870, (com.tencent.mm.al.f)new a(paramString, this, paramd));
+          com.tencent.mm.kernel.g.aiU().b((n)paramc);
+        }
+      }
+      AppMethodBeat.o(167787);
+      return 0;
+    }
+    
+    public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream) {}
+    
+    public final byte[] f(String paramString, byte[] paramArrayOfByte)
+    {
+      return null;
+    }
+    
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/finder/upload/FinderUploadCoverImageTask$cdnCallback$1$callback$1$1", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "onSceneEnd", "", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+    public static final class a
+      implements com.tencent.mm.al.f
+    {
+      a(List paramList, j.a parama, d paramd) {}
+      
+      public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+      {
+        AppMethodBeat.i(167786);
+        com.tencent.mm.kernel.g.aiU().b(3870, (com.tencent.mm.al.f)this);
+        ad.i(jdField_this.sJv.TAG, "errType " + paramInt1 + " , errCode " + paramInt2 + ", errMsg " + paramString);
+        if (paramn == null)
+        {
+          paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.cgi.NetSceneFinderOplog");
+          AppMethodBeat.o(167786);
+          throw paramString;
+        }
+        paramString = ((at)paramn).cyy();
+        paramn = ((at)paramn).cyx();
+        if ((paramInt1 == 0) && (paramInt2 == 0) && (p.i(this.sJw, paramn)))
+        {
+          paramString = paramString.iterator();
+          paramInt1 = 0;
+          if (paramString.hasNext())
+          {
+            paramn = (alp)paramString.next();
+            paramInt2 = paramn.cmdId;
+            at.a locala = at.rJK;
+            if ((paramInt2 == at.cyz()) && (paramn.retCode == 0))
+            {
+              paramInt2 = 1;
+              label183:
+              if (paramInt2 == 0) {
+                break label262;
+              }
+            }
+          }
+          for (;;)
+          {
+            if (paramInt1 == -1) {
+              break label274;
+            }
+            ad.i(jdField_this.sJv.TAG, "update coverImg succ");
+            paramString = jdField_this.sJv;
+            paramn = paramd.field_fileUrl;
+            p.g(paramn, "sceneResult.field_fileUrl");
+            j.a(paramString, paramn, true);
+            jdField_this.sJv.a(com.tencent.mm.loader.g.j.hfK);
+            AppMethodBeat.o(167786);
+            return;
+            paramInt2 = 0;
+            break label183;
+            label262:
+            paramInt1 += 1;
+            break;
+            paramInt1 = -1;
+          }
+          label274:
+          ad.i(jdField_this.sJv.TAG, "update coverImg failed");
+          paramString = jdField_this.sJv;
+          paramn = paramd.field_fileUrl;
+          p.g(paramn, "sceneResult.field_fileUrl");
+          j.a(paramString, paramn, false);
+          jdField_this.sJv.a(com.tencent.mm.loader.g.j.hfL);
+        }
+        AppMethodBeat.o(167786);
+      }
+    }
+  }
 }
 
 

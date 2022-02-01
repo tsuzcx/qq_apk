@@ -4,10 +4,10 @@ import com.google.c.b.b;
 
 public final class a
 {
-  boolean bHr;
-  int bHs;
-  int bHt;
-  public b bHu;
+  boolean bRF;
+  int bRG;
+  int bRH;
+  public b bRI;
   int size;
 }
 

@@ -1,41 +1,41 @@
 package com.tencent.mm.cp;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
-  public static void adU(int paramInt)
+  public static void agu(int paramInt)
   {
     AppMethodBeat.i(152890);
-    ac.i("BigImageReporter", "alvinluo reportMTKPlatform apiLevel: %d", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("BigImageReporter", "alvinluo reportMTKPlatform apiLevel: %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 24)
     {
-      h.wUl.n(896L, 0L, 1L);
+      g.yhR.n(896L, 0L, 1L);
       AppMethodBeat.o(152890);
       return;
     }
     if (paramInt == 25) {
-      h.wUl.n(896L, 1L, 1L);
+      g.yhR.n(896L, 1L, 1L);
     }
     AppMethodBeat.o(152890);
   }
   
-  public static void adV(int paramInt)
+  public static void agv(int paramInt)
   {
-    AppMethodBeat.i(192721);
-    ac.i("BigImageReporter", "alvinluo reportLoadError errCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(195487);
+    ad.i("BigImageReporter", "alvinluo reportLoadError errCode: %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 4)
     {
-      h.wUl.n(896L, 2L, 1L);
-      AppMethodBeat.o(192721);
+      g.yhR.n(896L, 2L, 1L);
+      AppMethodBeat.o(195487);
       return;
     }
     if (paramInt == 5) {
-      h.wUl.n(896L, 3L, 1L);
+      g.yhR.n(896L, 3L, 1L);
     }
-    AppMethodBeat.o(192721);
+    AppMethodBeat.o(195487);
   }
 }
 

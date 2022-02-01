@@ -5,21 +5,21 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bs;
+import com.tencent.mm.plugin.appbrand.page.br;
 import com.tencent.mm.plugin.appbrand.page.v;
 
 public final class c
   extends v
 {
-  private final bs lrk;
+  private final br lQu;
   
   public c(Context paramContext, o paramo)
   {
     super(paramContext, paramo);
     AppMethodBeat.i(47554);
-    this.lrk = new bs()
+    this.lQu = new br()
     {
-      private final bs lrl;
+      private final br lQv;
       
       public final <WIDGET extends View> WIDGET c(Context paramAnonymousContext, Class<WIDGET> paramAnonymousClass)
       {
@@ -30,19 +30,19 @@ public final class c
           AppMethodBeat.o(47553);
           return paramAnonymousContext;
         }
-        paramAnonymousContext = this.lrl.c(paramAnonymousContext, paramAnonymousClass);
+        paramAnonymousContext = this.lQv.c(paramAnonymousContext, paramAnonymousClass);
         AppMethodBeat.o(47553);
         return paramAnonymousContext;
       }
     };
-    super.setDecorWidgetFactory(this.lrk);
+    super.setDecorWidgetFactory(this.lQu);
     AppMethodBeat.o(47554);
   }
   
-  public final ae boq()
+  public final ae bsi()
   {
     AppMethodBeat.i(175010);
-    d locald = e.OH(getAppId());
+    d locald = e.Sk(getAppId());
     if (locald != null)
     {
       AppMethodBeat.o(175010);
@@ -55,7 +55,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.c
  * JD-Core Version:    0.7.0.1
  */

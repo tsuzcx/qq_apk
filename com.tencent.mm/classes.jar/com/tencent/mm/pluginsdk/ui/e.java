@@ -1,68 +1,92 @@
 package com.tencent.mm.pluginsdk.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import java.util.Map;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public final class e
+  implements AbsListView.OnScrollListener
 {
-  public int DmY;
-  public boolean DmZ;
-  public int Dna;
-  public boolean Dnb;
-  public boolean Dnc;
-  private int Dnd;
-  public boolean Dne;
-  public int Dnf;
-  public boolean Dng;
-  private int version;
+  private AbsListView.OnScrollListener ERY;
+  private ArrayList<WeakReference<a>> ERZ;
   
-  public e(String paramString, Context paramContext)
+  public e()
   {
-    AppMethodBeat.i(141159);
-    this.version = 0;
-    this.DmY = -7829368;
-    this.DmZ = false;
-    this.Dna = -1593835521;
-    this.Dnb = false;
-    this.Dnc = false;
-    this.Dnd = -16777216;
-    this.Dne = false;
-    this.Dnf = 0;
-    this.Dng = false;
-    paramString = bv.L(paramString, "chatbg");
-    if (paramString == null)
+    this(null);
+  }
+  
+  public e(AbsListView.OnScrollListener paramOnScrollListener)
+  {
+    AppMethodBeat.i(152123);
+    this.ERZ = new ArrayList();
+    this.ERY = paramOnScrollListener;
+    AppMethodBeat.o(152123);
+  }
+  
+  private void vH(boolean paramBoolean)
+  {
+    AppMethodBeat.i(152127);
+    int i = 0;
+    if (i < this.ERZ.size())
     {
-      ac.e("MicroMsg.ChatBgAttr", "parse chatbgattr failed, values is null");
-      AppMethodBeat.o(141159);
+      Object localObject = (WeakReference)this.ERZ.get(i);
+      if (localObject != null)
+      {
+        localObject = (a)((WeakReference)localObject).get();
+        if (localObject != null) {
+          ((a)localObject).onScrollStateChanged(paramBoolean);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.ERZ.remove(i);
+        continue;
+        this.ERZ.remove(i);
+      }
+    }
+    AppMethodBeat.o(152127);
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(152126);
+    this.ERZ.add(new WeakReference(parama));
+    AppMethodBeat.o(152126);
+  }
+  
+  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(152124);
+    if (this.ERY != null) {
+      this.ERY.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    AppMethodBeat.o(152124);
+  }
+  
+  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    AppMethodBeat.i(152125);
+    if (paramInt == 2) {
+      vH(true);
+    }
+    for (;;)
+    {
+      if (this.ERY != null) {
+        this.ERY.onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      AppMethodBeat.o(152125);
       return;
+      vH(false);
     }
-    String str = ".".concat(String.valueOf("chatbg"));
-    try
-    {
-      this.version = bs.m(Integer.valueOf((String)paramString.get(str + ".$version")));
-      this.DmY = ((int)bs.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$time_color"), 16)), paramContext.getResources().getColor(2131099735)));
-      this.DmZ = bs.l(Boolean.valueOf((String)paramString.get(str + ".$time_show_shadow_color")));
-      this.Dna = ((int)bs.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$time_shadow_color"), 16)), 0L));
-      this.Dnb = bs.l(Boolean.valueOf((String)paramString.get(str + ".$time_show_background")));
-      this.Dnc = bs.l(Boolean.valueOf((String)paramString.get(str + ".$time_light_background")));
-      this.Dnd = ((int)bs.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$voice_second_color"), 16)), -16777216L));
-      this.Dne = bs.l(Boolean.valueOf((String)paramString.get(str + ".$voice_second_show_shadow_color")));
-      this.Dnf = ((int)bs.a(Long.valueOf(Long.parseLong((String)paramString.get(str + ".$voice_second_shadow_color"), 16)), 0L));
-      this.Dng = bs.l(Boolean.valueOf((String)paramString.get(str + ".$voice_second_show_background")));
-      AppMethodBeat.o(141159);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ac.e("MicroMsg.ChatBgAttr", "parse chatbgattr failed");
-      ac.printErrStackTrace("MicroMsg.ChatBgAttr", paramString, "", new Object[0]);
-      AppMethodBeat.o(141159);
-    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onScrollStateChanged(boolean paramBoolean);
   }
 }
 

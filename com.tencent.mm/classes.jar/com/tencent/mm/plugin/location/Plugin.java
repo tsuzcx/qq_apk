@@ -1,16 +1,14 @@
 package com.tencent.mm.plugin.location;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.location.model.n;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
   implements d
 {
-  public m createApplication()
+  public com.tencent.mm.pluginsdk.n createApplication()
   {
     AppMethodBeat.i(55666);
     a locala = new a();
@@ -18,10 +16,10 @@ public class Plugin
     return locala;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     AppMethodBeat.i(55667);
-    n localn = new n();
+    com.tencent.mm.plugin.location.model.n localn = new com.tencent.mm.plugin.location.model.n();
     AppMethodBeat.o(55667);
     return localn;
   }

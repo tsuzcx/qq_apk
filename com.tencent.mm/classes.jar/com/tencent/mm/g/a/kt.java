@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bi.b;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bo;
 
 public final class kt
   extends b
 {
-  public a dmz;
+  public a dxQ;
   
   public kt()
   {
@@ -17,17 +15,18 @@ public final class kt
   
   private kt(byte paramByte)
   {
-    AppMethodBeat.i(123464);
-    this.dmz = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(128845);
+    this.dxQ = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(123464);
+    AppMethodBeat.o(128845);
   }
   
   public static final class a
   {
-    public bo cZc;
-    public bi.b dmA;
+    public int dqI;
+    public String duW;
+    public String returnKey;
   }
 }
 

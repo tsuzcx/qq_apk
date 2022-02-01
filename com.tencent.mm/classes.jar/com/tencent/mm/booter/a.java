@@ -1,32 +1,33 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ah;
+import com.tencent.mm.g.a.qi;
+import com.tencent.mm.model.ai;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bb;
-import com.tencent.mm.sdk.platformtools.bb.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bc;
+import com.tencent.mm.sdk.platformtools.bc.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class a
-  implements ah
+  implements ai
 {
-  private static volatile a flD;
-  private List<com.tencent.mm.model.ai> callbacks;
-  private bb flB;
-  private bb.a flC;
-  private c flE;
+  private static volatile a fDK;
+  private List<com.tencent.mm.model.aj> callbacks;
+  private bc fDI;
+  private bc.a fDJ;
+  private c fDL;
   
   private a()
   {
     AppMethodBeat.i(149955);
     this.callbacks = new ArrayList();
-    this.flB = new bb();
-    this.flC = new bb.a()
+    this.fDI = new bc();
+    this.fDJ = new bc.a()
     {
-      public final void kn(int paramAnonymousInt)
+      public final void kK(int paramAnonymousInt)
       {
         AppMethodBeat.i(149953);
         switch (paramAnonymousInt)
@@ -36,34 +37,34 @@ public class a
         {
           AppMethodBeat.o(149953);
           return;
-          ac.v("MicroMsg.BackgroundPlayer", "call end");
-          a.this.Ud();
+          ad.v("MicroMsg.BackgroundPlayer", "call end");
+          a.this.Wu();
           AppMethodBeat.o(149953);
           return;
-          ac.v("MicroMsg.BackgroundPlayer", "call start");
-          a.this.Ue();
+          ad.v("MicroMsg.BackgroundPlayer", "call start");
+          a.this.Wv();
         }
       }
     };
-    this.flB.a(this.flC);
-    this.flB.iR(com.tencent.mm.sdk.platformtools.ai.getContext());
-    if (this.flE == null) {
-      this.flE = new a.2(this);
+    this.fDI.a(this.fDJ);
+    this.fDI.jb(com.tencent.mm.sdk.platformtools.aj.getContext());
+    if (this.fDL == null) {
+      this.fDL = new c() {};
     }
-    com.tencent.mm.sdk.b.a.GpY.c(this.flE);
+    com.tencent.mm.sdk.b.a.IbL.c(this.fDL);
     AppMethodBeat.o(149955);
   }
   
-  public static a Uc()
+  public static a Wt()
   {
     AppMethodBeat.i(149956);
-    if (flD == null) {}
+    if (fDK == null) {}
     try
     {
-      if (flD == null) {
-        flD = new a();
+      if (fDK == null) {
+        fDK = new a();
       }
-      a locala = flD;
+      a locala = fDK;
       AppMethodBeat.o(149956);
       return locala;
     }
@@ -73,7 +74,7 @@ public class a
     }
   }
   
-  public final void Ud()
+  public final void Wu()
   {
     AppMethodBeat.i(149959);
     if (this.callbacks == null)
@@ -83,12 +84,12 @@ public class a
     }
     Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.model.ai)localIterator.next()).ayt();
+      ((com.tencent.mm.model.aj)localIterator.next()).aBx();
     }
     AppMethodBeat.o(149959);
   }
   
-  public final void Ue()
+  public final void Wv()
   {
     AppMethodBeat.i(149960);
     if (this.callbacks == null)
@@ -98,29 +99,29 @@ public class a
     }
     Iterator localIterator = this.callbacks.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.model.ai)localIterator.next()).ayu();
+      ((com.tencent.mm.model.aj)localIterator.next()).aBy();
     }
     AppMethodBeat.o(149960);
   }
   
-  public final void a(com.tencent.mm.model.ai paramai)
+  public final void a(com.tencent.mm.model.aj paramaj)
   {
     AppMethodBeat.i(149957);
-    ac.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramai.toString() });
-    this.callbacks.add(paramai);
+    ad.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramaj.toString() });
+    this.callbacks.add(paramaj);
     AppMethodBeat.o(149957);
   }
   
-  public final void b(com.tencent.mm.model.ai paramai)
+  public final void b(com.tencent.mm.model.aj paramaj)
   {
     AppMethodBeat.i(149958);
-    this.callbacks.remove(paramai);
+    this.callbacks.remove(paramaj);
     AppMethodBeat.o(149958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.booter.a
  * JD-Core Version:    0.7.0.1
  */

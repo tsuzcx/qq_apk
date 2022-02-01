@@ -1,16 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bo;
 
 public final class ji
   extends b
 {
-  public a dkJ;
-  public b dkK;
+  public a dwf;
   
   public ji()
   {
@@ -19,26 +15,17 @@ public final class ji
   
   private ji(byte paramByte)
   {
-    AppMethodBeat.i(55663);
-    this.dkJ = new a();
-    this.dkK = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(184504);
+    this.dwf = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(55663);
+    AppMethodBeat.o(184504);
   }
   
   public static final class a
   {
-    public bo cZc;
-    public ImageView dkL;
-    public ImageView dkM;
-    public ProgressBar dkN;
-    public int dkO;
-    public int h;
-    public int w;
+    public int dwg;
   }
-  
-  public static final class b {}
 }
 
 

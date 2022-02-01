@@ -2,8 +2,7 @@ package d.l.b.a.b.d.a.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.ak;
-import d.aa;
-import d.g.b.k;
+import d.g.b.q;
 import d.l.b.a.b.b.a.g.a;
 import d.l.b.a.b.b.aa.b;
 import d.l.b.a.b.b.al;
@@ -17,9 +16,7 @@ import d.l.b.a.b.b.w;
 import d.l.b.a.b.b.w.a;
 import d.l.b.a.b.b.y;
 import d.l.b.a.b.d.a.e.x;
-import d.l.b.a.b.d.a.p;
 import d.l.b.a.b.k.a.r;
-import d.l.b.a.b.m.ac;
 import d.l.b.a.b.m.at;
 import d.l.b.a.b.m.au;
 import d.l.b.a.b.m.ax;
@@ -35,63 +32,63 @@ public final class f
   extends d.l.b.a.b.b.c.g
   implements d.l.b.a.b.d.a.b.d
 {
-  private static final Set<String> Lot;
-  public static final a Lou;
-  private final boolean LdR;
-  private final d.l.b.a.b.b.a.g Lez;
-  private final w LgG;
-  private final d.l.b.a.b.b.f LgH;
-  private final d.l.b.a.b.b.ba Lhb;
-  public final d.l.b.a.b.d.a.c.h LnD;
-  public final d.l.b.a.b.d.a.e.g LnZ;
-  final b Lol;
-  private final g Lom;
-  private final al<g> Lon;
-  private final d.l.b.a.b.j.f.f Loo;
-  private final l Lop;
-  private final d.l.b.a.b.l.f<List<as>> Loq;
-  private final d.l.b.a.b.d.a.c.h Lor;
-  private final e Los;
+  private static final Set<String> Nfq;
+  public static final a Nfr;
+  private final boolean MUM;
+  private final d.l.b.a.b.b.a.g MVu;
+  private final w MXC;
+  private final d.l.b.a.b.b.f MXD;
+  private final d.l.b.a.b.b.ba MXX;
+  public final d.l.b.a.b.d.a.c.h NeA;
+  public final d.l.b.a.b.d.a.e.g NeW;
+  final b Nfi;
+  private final g Nfj;
+  private final al<g> Nfk;
+  private final d.l.b.a.b.j.f.f Nfl;
+  private final l Nfm;
+  private final d.l.b.a.b.l.f<List<as>> Nfn;
+  private final d.l.b.a.b.d.a.c.h Nfo;
+  private final e Nfp;
   
   static
   {
     AppMethodBeat.i(57824);
-    Lou = new a((byte)0);
-    Lot = ak.setOf(new String[] { "equals", "hashCode", "getClass", "wait", "notify", "notifyAll", "toString" });
+    Nfr = new a((byte)0);
+    Nfq = ak.setOf(new String[] { "equals", "hashCode", "getClass", "wait", "notify", "notifyAll", "toString" });
     AppMethodBeat.o(57824);
   }
   
   public f(d.l.b.a.b.d.a.c.h paramh, d.l.b.a.b.b.l paraml, d.l.b.a.b.d.a.e.g paramg, e parame)
   {
-    super(paramh.LnL.KZf, paraml, paramg.fRf(), (an)paramh.LnL.Lno.a((d.l.b.a.b.d.a.e.l)paramg));
+    super(paramh.NeI.MQa, paraml, paramg.giD(), (an)paramh.NeI.Nel.a((d.l.b.a.b.d.a.e.l)paramg));
     AppMethodBeat.i(57823);
-    this.Lor = paramh;
-    this.LnZ = paramg;
-    this.Los = parame;
-    this.LnD = d.l.b.a.b.d.a.c.a.a(this.Lor, (d.l.b.a.b.b.g)this, (x)this.LnZ, 4);
-    this.LnD.LnL.Lnl.b(this.LnZ);
-    boolean bool1 = aa.KTq;
-    if (this.LnZ.fTl())
+    this.Nfo = paramh;
+    this.NeW = paramg;
+    this.Nfp = parame;
+    this.NeA = d.l.b.a.b.d.a.c.a.a(this.Nfo, (d.l.b.a.b.b.g)this, (x)this.NeW, 4);
+    this.NeA.NeI.Nei.b(this.NeW);
+    boolean bool1 = d.ac.MKp;
+    if (this.NeW.gkK())
     {
-      paramh = d.l.b.a.b.b.f.LdA;
-      this.LgH = paramh;
-      if ((!this.LnZ.fTl()) && (!this.LnZ.isEnum())) {
+      paramh = d.l.b.a.b.b.f.MUv;
+      this.MXD = paramh;
+      if ((!this.NeW.gkK()) && (!this.NeW.isEnum())) {
         break label468;
       }
-      paramh = w.LdG;
-      this.LgG = paramh;
-      this.Lhb = this.LnZ.fQb();
-      if ((this.LnZ.fTi() == null) || (this.LnZ.fzr())) {
+      paramh = w.MUB;
+      this.MXC = paramh;
+      this.MXX = this.NeW.ghz();
+      if ((this.NeW.gkH() == null) || (this.NeW.fQB())) {
         break label537;
       }
       bool1 = true;
       label220:
-      this.LdR = bool1;
-      this.Lol = new b();
-      paramh = this.LnD;
+      this.MUM = bool1;
+      this.Nfi = new b();
+      paramh = this.NeA;
       paraml = (e)this;
-      paramg = this.LnZ;
-      if (this.Los == null) {
+      paramg = this.NeW;
+      if (this.Nfp == null) {
         break label543;
       }
     }
@@ -100,40 +97,40 @@ public final class f
     label543:
     for (bool1 = bool3;; bool1 = false)
     {
-      this.Lom = new g(paramh, paraml, paramg, bool1);
-      paramh = al.Lea;
-      this.Lon = al.a.a((e)this, this.LnD.LnL.KZf, this.LnD.LnL.Lnx.gcG(), (d.g.a.b)new d(this));
-      this.Loo = new d.l.b.a.b.j.f.f((d.l.b.a.b.j.f.h)this.Lom);
-      this.Lop = new l(this.LnD, this.LnZ, this);
-      this.Lez = d.l.b.a.b.d.a.c.f.a(this.LnD, (d.l.b.a.b.d.a.e.d)this.LnZ);
-      this.Loq = this.LnD.LnL.KZf.O((d.g.a.a)new c(this));
+      this.Nfj = new g(paramh, paraml, paramg, bool1);
+      paramh = al.MUV;
+      this.Nfk = al.a.a((e)this, this.NeA.NeI.MQa, this.NeA.NeI.Neu.guh(), (d.g.a.b)new d(this));
+      this.Nfl = new d.l.b.a.b.j.f.f((d.l.b.a.b.j.f.h)this.Nfj);
+      this.Nfm = new l(this.NeA, this.NeW, this);
+      this.MVu = d.l.b.a.b.d.a.c.f.a(this.NeA, (d.l.b.a.b.d.a.e.d)this.NeW);
+      this.Nfn = this.NeA.NeI.MQa.S((d.g.a.a)new c(this));
       AppMethodBeat.o(57823);
       return;
-      if (this.LnZ.isInterface())
+      if (this.NeW.isInterface())
       {
-        paramh = d.l.b.a.b.b.f.Ldx;
+        paramh = d.l.b.a.b.b.f.MUs;
         break;
       }
-      if (this.LnZ.isEnum())
+      if (this.NeW.isEnum())
       {
-        paramh = d.l.b.a.b.b.f.Ldy;
+        paramh = d.l.b.a.b.b.f.MUt;
         break;
       }
-      paramh = d.l.b.a.b.b.f.Ldw;
+      paramh = d.l.b.a.b.b.f.MUr;
       break;
       label468:
-      paramh = w.LdL;
-      if ((this.LnZ.fTn()) || (this.LnZ.isInterface()))
+      paramh = w.MUG;
+      if ((this.NeW.gkM()) || (this.NeW.isInterface()))
       {
         bool1 = true;
         label499:
-        if (this.LnZ.fTo()) {
+        if (this.NeW.gkN()) {
           break label531;
         }
       }
       for (boolean bool2 = true;; bool2 = false)
       {
-        paramh = w.a.aW(bool1, bool2);
+        paramh = w.a.be(bool1, bool2);
         break;
         bool1 = false;
         break label499;
@@ -143,105 +140,105 @@ public final class f
     }
   }
   
-  public final d.l.b.a.b.j.f.h fPV()
+  public final boolean ghA()
   {
-    return (d.l.b.a.b.j.f.h)this.Lop;
+    return false;
   }
   
-  public final at fPW()
+  public final boolean ghB()
   {
-    return (at)this.Lol;
+    return this.MUM;
   }
   
-  public final e fPX()
+  public final boolean ghC()
+  {
+    return false;
+  }
+  
+  public final boolean ghD()
+  {
+    return false;
+  }
+  
+  public final boolean ghE()
+  {
+    return false;
+  }
+  
+  public final boolean ghF()
+  {
+    return false;
+  }
+  
+  public final d.l.b.a.b.b.a.g ghH()
+  {
+    return this.MVu;
+  }
+  
+  public final Collection<e> ghJ()
+  {
+    return (Collection)d.a.v.MKE;
+  }
+  
+  public final List<as> ghK()
+  {
+    AppMethodBeat.i(57821);
+    List localList = (List)this.Nfn.invoke();
+    AppMethodBeat.o(57821);
+    return localList;
+  }
+  
+  public final d.l.b.a.b.j.f.h ght()
+  {
+    return (d.l.b.a.b.j.f.h)this.Nfm;
+  }
+  
+  public final at ghu()
+  {
+    return (at)this.Nfi;
+  }
+  
+  public final e ghv()
   {
     return null;
   }
   
-  public final d.l.b.a.b.b.f fPY()
+  public final d.l.b.a.b.b.f ghw()
   {
-    return this.LgH;
+    return this.MXD;
   }
   
-  public final w fPZ()
+  public final w ghx()
   {
-    return this.LgG;
+    return this.MXC;
   }
   
-  public final d.l.b.a.b.b.d fQa()
+  public final d.l.b.a.b.b.d ghy()
   {
     return null;
   }
   
-  public final d.l.b.a.b.b.ba fQb()
+  public final d.l.b.a.b.b.ba ghz()
   {
     AppMethodBeat.i(57815);
-    if ((k.g(this.Lhb, az.Lei)) && (this.LnZ.fTi() == null)) {}
-    for (d.l.b.a.b.b.ba localba = d.l.b.a.b.d.a.n.Llu;; localba = this.Lhb)
+    if ((d.g.b.p.i(this.MXX, az.MVd)) && (this.NeW.gkH() == null)) {}
+    for (d.l.b.a.b.b.ba localba = d.l.b.a.b.d.a.n.Ncr;; localba = this.MXX)
     {
-      k.g(localba, "if (visibility == Visibi…ISIBILITY else visibility");
+      d.g.b.p.g(localba, "if (visibility == Visibi…ISIBILITY else visibility");
       AppMethodBeat.o(57815);
       return localba;
     }
   }
   
-  public final boolean fQc()
+  public final d.l.b.a.b.j.f.h giJ()
   {
-    return false;
+    return (d.l.b.a.b.j.f.h)this.Nfl;
   }
   
-  public final boolean fQd()
-  {
-    return this.LdR;
-  }
-  
-  public final boolean fQe()
-  {
-    return false;
-  }
-  
-  public final boolean fQf()
-  {
-    return false;
-  }
-  
-  public final boolean fQg()
-  {
-    return false;
-  }
-  
-  public final boolean fQh()
-  {
-    return false;
-  }
-  
-  public final d.l.b.a.b.b.a.g fQj()
-  {
-    return this.Lez;
-  }
-  
-  public final Collection<e> fQl()
-  {
-    return (Collection)d.a.v.KTF;
-  }
-  
-  public final List<as> fQm()
-  {
-    AppMethodBeat.i(57821);
-    List localList = (List)this.Loq.invoke();
-    AppMethodBeat.o(57821);
-    return localList;
-  }
-  
-  public final d.l.b.a.b.j.f.h fRk()
-  {
-    return (d.l.b.a.b.j.f.h)this.Loo;
-  }
-  
-  public final g fUl()
+  public final g glK()
   {
     AppMethodBeat.i(57817);
-    Object localObject = super.fRj();
+    Object localObject = super.giI();
     if (localObject == null)
     {
       localObject = new d.v("null cannot be cast to non-null type org.jetbrains.kotlin.load.java.lazy.descriptors.LazyJavaClassMemberScope");
@@ -253,10 +250,10 @@ public final class f
     return localObject;
   }
   
-  public final List<d.l.b.a.b.b.d> fUm()
+  public final List<d.l.b.a.b.b.d> glL()
   {
     AppMethodBeat.i(57819);
-    List localList = (List)this.Lom.Loy.invoke();
+    List localList = (List)this.Nfj.Nfv.invoke();
     AppMethodBeat.o(57819);
     return localList;
   }
@@ -274,22 +271,22 @@ public final class f
   final class b
     extends d.l.b.a.b.m.b
   {
-    private final d.l.b.a.b.l.f<List<as>> Lov;
+    private final d.l.b.a.b.l.f<List<as>> Nfs;
     
     public b()
     {
       super();
       AppMethodBeat.i(57812);
-      this.Lov = f.a(this$1).LnL.KZf.O((d.g.a.a)new a(this));
+      this.Nfs = f.a(this$1).NeI.MQa.S((d.g.a.a)new a(this));
       AppMethodBeat.o(57812);
     }
     
-    private final d.l.b.a.b.m.ab fUn()
+    private final d.l.b.a.b.m.ab glM()
     {
       AppMethodBeat.i(57809);
-      Object localObject1 = this.Low.fQj();
-      Object localObject2 = p.LlI;
-      k.g(localObject2, "JvmAnnotationNames.PURELY_IMPLEMENTS_ANNOTATION");
+      Object localObject1 = this.Nft.ghH();
+      Object localObject2 = d.l.b.a.b.d.a.p.NcF;
+      d.g.b.p.g(localObject2, "JvmAnnotationNames.PURELY_IMPLEMENTS_ANNOTATION");
       localObject1 = ((d.l.b.a.b.b.a.g)localObject1).g((d.l.b.a.b.f.b)localObject2);
       int i;
       if (localObject1 == null)
@@ -298,7 +295,7 @@ public final class f
         if (localObject1 == null) {
           break label341;
         }
-        if ((((d.l.b.a.b.f.b)localObject1).Lzj.Lzo.isEmpty()) || (!((d.l.b.a.b.f.b)localObject1).q(d.l.b.a.b.a.g.KYU))) {
+        if ((((d.l.b.a.b.f.b)localObject1).Nqg.Nql.isEmpty()) || (!((d.l.b.a.b.f.b)localObject1).q(d.l.b.a.b.a.g.MPP))) {
           break label330;
         }
         i = 1;
@@ -310,7 +307,7 @@ public final class f
         if (localObject1 != null) {
           break label736;
         }
-        localObject2 = d.l.b.a.b.d.a.i.Llp;
+        localObject2 = d.l.b.a.b.d.a.i.Ncm;
       }
       label284:
       label291:
@@ -320,13 +317,13 @@ public final class f
       label335:
       label341:
       label736:
-      for (localObject2 = d.l.b.a.b.d.a.i.m(d.l.b.a.b.j.d.a.o(this.Low));; localObject2 = localObject1)
+      for (localObject2 = d.l.b.a.b.d.a.i.m(d.l.b.a.b.j.d.a.o(this.Nft));; localObject2 = localObject1)
       {
         if (localObject2 == null)
         {
           AppMethodBeat.o(57809);
           return null;
-          localObject2 = d.a.j.g((Iterable)((d.l.b.a.b.b.a.c)localObject1).fSl().values());
+          localObject2 = d.a.j.g((Iterable)((d.l.b.a.b.b.a.c)localObject1).gjK().values());
           localObject1 = localObject2;
           if (!(localObject2 instanceof d.l.b.a.b.j.b.v)) {
             localObject1 = null;
@@ -344,14 +341,14 @@ public final class f
           }
           if (localObject2 != null)
           {
-            localObject1 = d.l.b.a.b.f.i.LzA;
+            localObject1 = d.l.b.a.b.f.i.Nqx;
             j = ((String)localObject2).length();
             i = 0;
             if (i >= j) {
               break label303;
             }
             char c = ((String)localObject2).charAt(i);
-            switch (d.l.b.a.b.f.e.cfA[localObject1.ordinal()])
+            switch (d.l.b.a.b.f.e.cpQ[localObject1.ordinal()])
             {
             }
             do
@@ -363,12 +360,12 @@ public final class f
                 if (!Character.isJavaIdentifierPart(c)) {
                   break label291;
                 }
-                localObject1 = d.l.b.a.b.f.i.LzB;
+                localObject1 = d.l.b.a.b.f.i.Nqy;
                 continue;
                 if (c != '.') {
                   break label284;
                 }
-                localObject1 = d.l.b.a.b.f.i.LzC;
+                localObject1 = d.l.b.a.b.f.i.Nqz;
               }
             } while (Character.isJavaIdentifierPart(c));
           }
@@ -379,7 +376,7 @@ public final class f
             }
             localObject1 = null;
             break;
-            if (localObject1 == d.l.b.a.b.f.i.LzC) {
+            if (localObject1 == d.l.b.a.b.f.i.Nqz) {
               break label291;
             }
           }
@@ -392,17 +389,17 @@ public final class f
           localObject1 = null;
           break label81;
         }
-        localObject2 = d.l.b.a.b.j.d.a.b(f.a(this.Low).LnL.LbH, (d.l.b.a.b.f.b)localObject2, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.Lkk);
+        localObject2 = d.l.b.a.b.j.d.a.b(f.a(this.Nft).NeI.MSC, (d.l.b.a.b.f.b)localObject2, (d.l.b.a.b.c.a.a)d.l.b.a.b.c.a.c.Nbh);
         if (localObject2 == null)
         {
           AppMethodBeat.o(57809);
           return null;
         }
-        Object localObject3 = ((e)localObject2).fPW();
-        k.g(localObject3, "classDescriptor.typeConstructor");
+        Object localObject3 = ((e)localObject2).ghu();
+        d.g.b.p.g(localObject3, "classDescriptor.typeConstructor");
         i = ((at)localObject3).getParameters().size();
-        localObject3 = ((at)this.Low.Lol).getParameters();
-        k.g(localObject3, "getTypeConstructor().parameters");
+        localObject3 = ((at)this.Nft.Nfi).getParameters();
+        d.g.b.p.g(localObject3, "getTypeConstructor().parameters");
         int j = ((List)localObject3).size();
         Object localObject4;
         if (j == i)
@@ -413,24 +410,24 @@ public final class f
           while (((Iterator)localObject3).hasNext())
           {
             localObject4 = (as)((Iterator)localObject3).next();
-            bh localbh = bh.LLV;
-            k.g(localObject4, "parameter");
-            ((Collection)localObject1).add(new ax(localbh, (d.l.b.a.b.m.ab)((as)localObject4).fRe()));
+            bh localbh = bh.NCP;
+            d.g.b.p.g(localObject4, "parameter");
+            ((Collection)localObject1).add(new ax(localbh, (d.l.b.a.b.m.ab)((as)localObject4).giC()));
           }
         }
         for (localObject1 = (List)localObject1;; localObject1 = (List)localObject3)
         {
-          localObject3 = d.l.b.a.b.b.a.g.LeU;
-          localObject1 = (d.l.b.a.b.m.ab)ac.a(g.a.fSm(), (e)localObject2, (List)localObject1);
+          localObject3 = d.l.b.a.b.b.a.g.MVP;
+          localObject1 = (d.l.b.a.b.m.ab)d.l.b.a.b.m.ac.a(g.a.gjL(), (e)localObject2, (List)localObject1);
           AppMethodBeat.o(57809);
           return localObject1;
           if ((j != 1) || (i <= 1) || (localObject1 != null)) {
             break;
           }
-          localObject1 = bh.LLV;
-          localObject3 = d.a.j.iS((List)localObject3);
-          k.g(localObject3, "typeParameters.single()");
-          localObject1 = new ax((bh)localObject1, (d.l.b.a.b.m.ab)((as)localObject3).fRe());
+          localObject1 = bh.NCP;
+          localObject3 = d.a.j.jg((List)localObject3);
+          d.g.b.p.g(localObject3, "typeParameters.single()");
+          localObject1 = new ax((bh)localObject1, (d.l.b.a.b.m.ab)((as)localObject3).giC());
           localObject4 = (Iterable)new d.k.d(1, i);
           localObject3 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject4, 10));
           localObject4 = ((Iterable)localObject4).iterator();
@@ -445,28 +442,36 @@ public final class f
       }
     }
     
-    public final Collection<d.l.b.a.b.m.ab> fQp()
+    public final List<as> getParameters()
+    {
+      AppMethodBeat.i(57807);
+      List localList = (List)this.Nfs.invoke();
+      AppMethodBeat.o(57807);
+      return localList;
+    }
+    
+    public final Collection<d.l.b.a.b.m.ab> ghN()
     {
       e locale = null;
       AppMethodBeat.i(57808);
-      Object localObject1 = this.Low.LnZ.fSt();
+      Object localObject1 = this.Nft.NeW.gjR();
       ArrayList localArrayList = new ArrayList(((Collection)localObject1).size());
       Object localObject2 = new ArrayList(0);
-      Object localObject3 = fUn();
+      Object localObject3 = glM();
       Object localObject4 = ((Collection)localObject1).iterator();
       label181:
       while (((Iterator)localObject4).hasNext())
       {
         localObject1 = (d.l.b.a.b.d.a.e.j)((Iterator)localObject4).next();
-        localObject5 = f.a(this.Low).LnK.a((d.l.b.a.b.d.a.e.v)localObject1, d.l.b.a.b.d.a.c.b.d.a(d.l.b.a.b.d.a.a.l.LmK, false, null, 3));
-        if ((((d.l.b.a.b.m.ab)localObject5).gbz().fQq() instanceof aa.b)) {
+        localObject5 = f.a(this.Nft).NeH.a((d.l.b.a.b.d.a.e.v)localObject1, d.l.b.a.b.d.a.c.b.d.a(d.l.b.a.b.d.a.a.l.NdH, false, null, 3));
+        if ((((d.l.b.a.b.m.ab)localObject5).gsZ().ghO() instanceof aa.b)) {
           ((ArrayList)localObject2).add(localObject1);
         }
-        at localat = ((d.l.b.a.b.m.ab)localObject5).gbz();
+        at localat = ((d.l.b.a.b.m.ab)localObject5).gsZ();
         if (localObject3 != null) {}
-        for (localObject1 = ((d.l.b.a.b.m.ab)localObject3).gbz();; localObject1 = null)
+        for (localObject1 = ((d.l.b.a.b.m.ab)localObject3).gsZ();; localObject1 = null)
         {
-          if ((k.g(localat, localObject1)) || (d.l.b.a.b.a.g.z((d.l.b.a.b.m.ab)localObject5))) {
+          if ((d.g.b.p.i(localat, localObject1)) || (d.l.b.a.b.a.g.z((d.l.b.a.b.m.ab)localObject5))) {
             break label181;
           }
           localArrayList.add(localObject5);
@@ -474,10 +479,10 @@ public final class f
         }
       }
       localObject4 = (Collection)localArrayList;
-      Object localObject5 = f.b(this.Low);
+      Object localObject5 = f.b(this.Nft);
       localObject1 = locale;
       if (localObject5 != null) {
-        localObject1 = d.l.b.a.b.a.b.j.a((e)localObject5, (e)this.Low).gcD().c((d.l.b.a.b.m.ab)((e)localObject5).fRe(), bh.LLV);
+        localObject1 = d.l.b.a.b.a.b.j.a((e)localObject5, (e)this.Nft).gue().c((d.l.b.a.b.m.ab)((e)localObject5).giC(), bh.NCP);
       }
       d.l.b.a.b.o.a.c((Collection)localObject4, localObject1);
       d.l.b.a.b.o.a.c((Collection)localArrayList, localObject3);
@@ -486,8 +491,8 @@ public final class f
         i = 1;
         if (i != 0)
         {
-          localObject1 = f.a(this.Low).LnL.Lnk;
-          locale = (e)this.Low;
+          localObject1 = f.a(this.Nft).NeI.Neh;
+          locale = (e)this.Nft;
           localObject3 = (Iterable)localObject2;
           localObject2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
           localObject3 = ((Iterable)localObject3).iterator();
@@ -509,7 +514,7 @@ public final class f
             i = 0;
             break;
           }
-          ((Collection)localObject2).add(((d.l.b.a.b.d.a.e.j)localObject4).fTs());
+          ((Collection)localObject2).add(((d.l.b.a.b.d.a.e.j)localObject4).gkR());
         }
         label402:
         ((r)localObject1).a(locale, (List)localObject2);
@@ -521,48 +526,40 @@ public final class f
         AppMethodBeat.o(57808);
         return localObject1;
       }
-      localObject1 = (Collection)d.a.j.listOf(f.a(this.Low).LnL.LbH.fRE().fPF());
+      localObject1 = (Collection)d.a.j.listOf(f.a(this.Nft).NeI.MSC.gjd().ghd());
       AppMethodBeat.o(57808);
       return localObject1;
     }
     
-    public final e fQr()
+    public final e ghP()
     {
-      return (e)this.Low;
+      return (e)this.Nft;
     }
     
-    public final boolean fQs()
+    public final boolean ghQ()
     {
       return true;
     }
     
-    public final aq fQt()
+    public final aq ghR()
     {
       AppMethodBeat.i(57810);
-      aq localaq = f.a(this.Low).LnL.LgC;
+      aq localaq = f.a(this.Nft).NeI.MXy;
       AppMethodBeat.o(57810);
       return localaq;
-    }
-    
-    public final List<as> getParameters()
-    {
-      AppMethodBeat.i(57807);
-      List localList = (List)this.Lov.invoke();
-      AppMethodBeat.o(57807);
-      return localList;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(57811);
-      String str = this.Low.fRf().rf();
-      k.g(str, "name.asString()");
+      String str = this.Nft.giD().sD();
+      d.g.b.p.g(str, "name.asString()");
       AppMethodBeat.o(57811);
       return str;
     }
     
     static final class a
-      extends d.g.b.l
+      extends q
       implements d.g.a.a<List<? extends as>>
     {
       a(f.b paramb)
@@ -573,7 +570,7 @@ public final class f
   }
   
   static final class c
-    extends d.g.b.l
+    extends q
     implements d.g.a.a<List<? extends as>>
   {
     c(f paramf)
@@ -583,7 +580,7 @@ public final class f
   }
   
   static final class d
-    extends d.g.b.l
+    extends q
     implements d.g.a.b<d.l.b.a.b.m.a.i, g>
   {
     d(f paramf)
@@ -594,7 +591,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.c.a.f
  * JD-Core Version:    0.7.0.1
  */

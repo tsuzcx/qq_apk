@@ -8,16 +8,36 @@ public abstract class el
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eVD = "msgContentXml".hashCode();
-  private static final int elP = "msgId".hashCode();
-  private static final int eug = "isRead".hashCode();
+  private static final int eDc = "status".hashCode();
+  private static final int eEd;
+  private static final int eEf = "createTime".hashCode();
+  private static final int fkO;
+  private static final int fkS;
+  private static final int fkV = "memberUuid".hashCode();
+  private static final int fkW;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eVC = true;
-  private boolean elL = true;
-  private boolean etS = true;
-  public String field_isRead;
-  public String field_msgContentXml;
-  public String field_msgId;
+  private boolean eCZ = true;
+  private boolean eDG = true;
+  private boolean eDI = true;
+  public long field_createTime;
+  public String field_inviteUserName;
+  public long field_memberId;
+  public long field_memberUuid;
+  public int field_status;
+  public String field_userName;
+  public String field_wxGroupId;
+  private boolean fkJ = true;
+  private boolean fkN = true;
+  private boolean fkT = true;
+  private boolean fkU = true;
+  
+  static
+  {
+    fkO = "wxGroupId".hashCode();
+    eEd = "userName".hashCode();
+    fkS = "inviteUserName".hashCode();
+    fkW = "memberId".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,22 +52,29 @@ public abstract class el
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (elP != k) {
-        break label65;
+      if (fkV != k) {
+        break label60;
       }
-      this.field_msgId = paramCursor.getString(i);
-      this.elL = true;
+      this.field_memberUuid = paramCursor.getLong(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eVD == k) {
-        this.field_msgContentXml = paramCursor.getString(i);
-      } else if (eug == k) {
-        this.field_isRead = paramCursor.getString(i);
+      label60:
+      if (fkO == k) {
+        this.field_wxGroupId = paramCursor.getString(i);
+      } else if (eEd == k) {
+        this.field_userName = paramCursor.getString(i);
+      } else if (fkS == k) {
+        this.field_inviteUserName = paramCursor.getString(i);
+      } else if (fkW == k) {
+        this.field_memberId = paramCursor.getLong(i);
+      } else if (eDc == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eEf == k) {
+        this.field_createTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +84,26 @@ public abstract class el
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.elL) {
-      localContentValues.put("msgId", this.field_msgId);
+    if (this.fkT) {
+      localContentValues.put("memberUuid", Long.valueOf(this.field_memberUuid));
     }
-    if (this.eVC) {
-      localContentValues.put("msgContentXml", this.field_msgContentXml);
+    if (this.fkJ) {
+      localContentValues.put("wxGroupId", this.field_wxGroupId);
     }
-    if (this.etS) {
-      localContentValues.put("isRead", this.field_isRead);
+    if (this.eDG) {
+      localContentValues.put("userName", this.field_userName);
+    }
+    if (this.fkN) {
+      localContentValues.put("inviteUserName", this.field_inviteUserName);
+    }
+    if (this.fkU) {
+      localContentValues.put("memberId", Long.valueOf(this.field_memberId));
+    }
+    if (this.eCZ) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.eDI) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -3,13 +3,13 @@ package com.tencent.thumbplayer.b.a;
 public abstract interface c
   extends a
 {
-  public abstract void aTK(String paramString);
+  public abstract void aZK(String paramString);
   
-  public abstract String fFl();
+  public abstract String fWC();
   
-  public abstract int fFm();
+  public abstract int fWD();
   
-  public abstract String mr(String paramString1, String paramString2);
+  public abstract String mP(String paramString1, String paramString2);
 }
 
 

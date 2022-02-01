@@ -2,40 +2,35 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.em;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
 
 public abstract class es
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
-  private static final int eVW = "sceneList".hashCode();
-  private static final int eVX = "cgiList".hashCode();
-  private static final int emh;
-  private static final int emi;
-  private static final int enO;
-  private static final int eok = "username".hashCode();
-  private static final int epp = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eFq = "updateTime".hashCode();
+  private static final int fnB = "appid".hashCode();
+  private static final int fnC;
+  private static final int fnw = "acctTypeId".hashCode();
+  private static final int fnx = "language".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eVU = true;
-  private boolean eVV = true;
-  private boolean ema = true;
-  private boolean emb = true;
-  private boolean enx = true;
-  private boolean eoh = true;
-  private boolean epk = true;
-  public String field_appId;
-  public String field_cgiList;
-  public long field_endTime;
-  public int field_reportId;
-  public String field_sceneList;
-  public long field_startTime;
-  public String field_username;
+  private boolean eFn = true;
+  public String field_acctTypeId;
+  public em field_appRec;
+  public String field_appid;
+  public String field_language;
+  public long field_updateTime;
+  private boolean fnA = true;
+  private boolean fnt = true;
+  private boolean fnu = true;
+  private boolean fnz = true;
   
   static
   {
-    enO = "appId".hashCode();
-    emh = "startTime".hashCode();
-    emi = "endTime".hashCode();
+    fnC = "appRec".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -44,37 +39,43 @@ public abstract class es
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eok != k) {
-        break label65;
+      if (fnB != k) {
+        break label60;
       }
-      this.field_username = paramCursor.getString(i);
-      this.eoh = true;
+      this.field_appid = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (enO == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (emh == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (emi == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (eVW == k) {
-        this.field_sceneList = paramCursor.getString(i);
-      } else if (eVX == k) {
-        this.field_cgiList = paramCursor.getString(i);
-      } else if (epp == k) {
-        this.field_reportId = paramCursor.getInt(i);
+      label60:
+      if (fnx == k) {
+        this.field_language = paramCursor.getString(i);
+      } else if (fnC == k) {
+        try
+        {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
+          }
+          this.field_appRec = ((em)new em().parseFrom(arrayOfByte));
+        }
+        catch (IOException localIOException)
+        {
+          ad.e("MicroMsg.SDK.BaseOpenIMAppIdInfo", localIOException.getMessage());
+        }
+      } else if (eFq == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (fnw == k) {
+        this.field_acctTypeId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -84,36 +85,39 @@ public abstract class es
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eoh) {
-      localContentValues.put("username", this.field_username);
+    if (this.fnz) {
+      localContentValues.put("appid", this.field_appid);
     }
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fnu) {
+      localContentValues.put("language", this.field_language);
     }
-    if (this.ema) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
+    if ((this.fnA) && (this.field_appRec != null)) {}
+    try
+    {
+      localContentValues.put("appRec", this.field_appRec.toByteArray());
+      if (this.eFn) {
+        localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+      }
+      if (this.fnt) {
+        localContentValues.put("acctTypeId", this.field_acctTypeId);
+      }
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.emb) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.SDK.BaseOpenIMAppIdInfo", localIOException.getMessage());
+      }
     }
-    if (this.eVU) {
-      localContentValues.put("sceneList", this.field_sceneList);
-    }
-    if (this.eVV) {
-      localContentValues.put("cgiList", this.field_cgiList);
-    }
-    if (this.epk) {
-      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.es
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,54 @@ package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.a.e;
+import com.tencent.mm.plugin.appbrand.api.e;
 import com.tencent.mm.plugin.appbrand.appcache.a.b.a.a;
 import com.tencent.mm.plugin.appbrand.appcache.a.b.b;
-import com.tencent.mm.pluginsdk.h.a.c.l;
-import com.tencent.mm.pluginsdk.h.a.c.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.z.i;
+import com.tencent.mm.pluginsdk.j.a.c.l;
+import com.tencent.mm.pluginsdk.j.a.c.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Collection;
 
 public final class s
 {
-  static int A(String paramString1, String paramString2, String paramString3)
+  static void a(av paramav, m paramm, ad.a parama)
+  {
+    AppMethodBeat.i(90553);
+    ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, request(%s %d->%d)", new Object[] { paramav.appId, Integer.valueOf(paramav.jHt), Integer.valueOf(paramav.jHu) });
+    parama.a(paramm);
+    paramm = ((e)g.ab(e.class)).aYu();
+    if (paramm == null)
+    {
+      ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil storage");
+      bi.a(paramav.EPe, paramav.appId, b.a.a.jJD, null);
+      AppMethodBeat.o(90553);
+      return;
+    }
+    bi.LI(paramav.EPe);
+    paramm = paramm.a(paramav.appId, paramav.jHu, 0, new String[] { "downloadURL" });
+    if (paramm == null)
+    {
+      ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { paramav.appId, Integer.valueOf(paramav.jHu) });
+      AppMethodBeat.o(90553);
+      return;
+    }
+    if ((paramav.jHv instanceof b.b)) {
+      ((b.b)paramav.jHv).baR();
+    }
+    bi.b(paramav.appId, 0, paramav.jHu, paramm.field_downloadURL, paramav.jHv);
+    AppMethodBeat.o(90553);
+  }
+  
+  public static boolean a(String paramString1, int paramInt1, int paramInt2, String paramString2, bi.a parama)
+  {
+    AppMethodBeat.i(90552);
+    boolean bool = bi.a(new av(paramString1, paramInt1, paramInt2, paramString2, parama), parama);
+    AppMethodBeat.o(90552);
+    return bool;
+  }
+  
+  static int z(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(90554);
     try
@@ -22,46 +60,10 @@ public final class s
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "mergeDiffPkg e = %s, old[%s], new[%s], diff[%s]", new Object[] { localException, paramString1, paramString2, paramString3 });
+      ad.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "mergeDiffPkg e = %s, old[%s], new[%s], diff[%s]", new Object[] { localException, paramString1, paramString2, paramString3 });
       AppMethodBeat.o(90554);
     }
     return 1;
-  }
-  
-  static void a(au paramau, m paramm, ac.a parama)
-  {
-    AppMethodBeat.i(90553);
-    ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, request(%s %d->%d)", new Object[] { paramau.appId, Integer.valueOf(paramau.jnw), Integer.valueOf(paramau.jnx) });
-    parama.a(paramm);
-    paramm = ((e)g.ab(e.class)).aVa();
-    if (paramm == null)
-    {
-      ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil storage");
-      bh.a(paramau.Dkb, paramau.appId, b.a.a.jpJ, null);
-      AppMethodBeat.o(90553);
-      return;
-    }
-    bh.Iq(paramau.Dkb);
-    paramm = paramm.a(paramau.appId, paramau.jnx, 0, new String[] { "downloadURL" });
-    if (paramm == null)
-    {
-      ac.e("MicroMsg.AppBrand.IncrementalPkgLogic[incremental]", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { paramau.appId, Integer.valueOf(paramau.jnx) });
-      AppMethodBeat.o(90553);
-      return;
-    }
-    if ((paramau.jny instanceof b.b)) {
-      ((b.b)paramau.jny).aXt();
-    }
-    bh.b(paramau.appId, 0, paramau.jnx, paramm.field_downloadURL, paramau.jny);
-    AppMethodBeat.o(90553);
-  }
-  
-  public static boolean a(String paramString1, int paramInt1, int paramInt2, String paramString2, bh.a parama)
-  {
-    AppMethodBeat.i(90552);
-    boolean bool = bh.a(new au(paramString1, paramInt1, paramInt2, paramString2, parama), parama);
-    AppMethodBeat.o(90552);
-    return bool;
   }
 }
 

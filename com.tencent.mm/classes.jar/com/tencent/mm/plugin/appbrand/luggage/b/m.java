@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.p.c;
+import com.tencent.mm.plugin.appbrand.jsapi.s.c;
 import com.tencent.mm.plugin.appbrand.widget.b.a;
 import com.tencent.mm.plugin.appbrand.widget.b.b;
 import com.tencent.mm.plugin.gif.MMAnimateView;
@@ -16,7 +16,7 @@ import com.tencent.mm.plugin.gif.MMAnimateView;
 public final class m
   implements b
 {
-  public final a dG(Context paramContext)
+  public final a dE(Context paramContext)
   {
     AppMethodBeat.i(47492);
     paramContext = new a(paramContext);
@@ -28,33 +28,33 @@ public final class m
     extends FrameLayout
     implements a
   {
-    private c chC;
-    private ImageView lqK;
-    private MMAnimateView lqL;
-    private boolean lqM;
+    private c crU;
+    private ImageView cum;
+    private MMAnimateView lOi;
+    private boolean lOj;
     
     public a(Context paramContext)
     {
       super();
       AppMethodBeat.i(47486);
-      this.chC = null;
-      this.lqL = new MMAnimateView(paramContext);
-      addView(this.lqL, new ViewGroup.LayoutParams(-1, -1));
-      this.lqL.setVisibility(8);
-      this.lqK = new ImageView(paramContext);
-      addView(this.lqK, new ViewGroup.LayoutParams(-1, -1));
-      this.lqK.setVisibility(8);
+      this.crU = null;
+      this.lOi = new MMAnimateView(paramContext);
+      addView(this.lOi, new ViewGroup.LayoutParams(-1, -1));
+      this.lOi.setVisibility(8);
+      this.cum = new ImageView(paramContext);
+      addView(this.cum, new ViewGroup.LayoutParams(-1, -1));
+      this.cum.setVisibility(8);
       AppMethodBeat.o(47486);
     }
     
-    public final boolean bfw()
+    public final boolean biZ()
     {
-      return this.lqM;
+      return this.lOj;
     }
     
     public final c getReferrerPolicy()
     {
-      return this.chC;
+      return this.crU;
     }
     
     public final View getView()
@@ -65,52 +65,52 @@ public final class m
     public final void setImageBitmap(Bitmap paramBitmap)
     {
       AppMethodBeat.i(47489);
-      this.lqL.setVisibility(8);
-      this.lqK.setVisibility(0);
-      this.lqK.setImageBitmap(paramBitmap);
+      this.lOi.setVisibility(8);
+      this.cum.setVisibility(0);
+      this.cum.setImageBitmap(paramBitmap);
       AppMethodBeat.o(47489);
     }
     
     public final void setImageByteArray(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(47488);
-      this.lqL.setVisibility(0);
-      this.lqK.setVisibility(8);
-      this.lqL.g(paramArrayOfByte, "");
+      this.lOi.setVisibility(0);
+      this.cum.setVisibility(8);
+      this.lOi.g(paramArrayOfByte, "");
       AppMethodBeat.o(47488);
     }
     
     public final void setImageFilePath(String paramString)
     {
       AppMethodBeat.i(47487);
-      this.lqL.setVisibility(0);
-      this.lqK.setVisibility(8);
-      this.lqL.setImageFilePath(paramString);
+      this.lOi.setVisibility(0);
+      this.cum.setVisibility(8);
+      this.lOi.setImageFilePath(paramString);
       AppMethodBeat.o(47487);
     }
     
     public final void setInterceptEvent(boolean paramBoolean)
     {
-      this.lqM = paramBoolean;
+      this.lOj = paramBoolean;
     }
     
     public final void setReferrerPolicy(c paramc)
     {
-      this.chC = paramc;
+      this.crU = paramc;
     }
     
     public final void setScaleType(ImageView.ScaleType paramScaleType)
     {
       AppMethodBeat.i(47490);
-      this.lqK.setScaleType(paramScaleType);
-      this.lqL.setScaleType(paramScaleType);
+      this.cum.setScaleType(paramScaleType);
+      this.lOi.setScaleType(paramScaleType);
       AppMethodBeat.o(47490);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.m
  * JD-Core Version:    0.7.0.1
  */

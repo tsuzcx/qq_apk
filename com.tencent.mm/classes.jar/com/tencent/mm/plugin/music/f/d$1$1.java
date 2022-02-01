@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.music.f;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class d$1$1
   implements Runnable
@@ -13,10 +13,10 @@ final class d$1$1
   public final void run()
   {
     AppMethodBeat.i(137327);
-    if (System.currentTimeMillis() - this.vgM.vgK > 10000L)
+    if (System.currentTimeMillis() - this.wmh.wmf > 10000L)
     {
-      this.vgM.vgK = System.currentTimeMillis();
-      Toast.makeText(ai.getContext(), ai.getContext().getString(2131761469), 0).show();
+      this.wmh.wmf = System.currentTimeMillis();
+      Toast.makeText(aj.getContext(), aj.getContext().getString(2131761469), 0).show();
     }
     AppMethodBeat.o(137327);
   }

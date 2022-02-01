@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.welab;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.aex;
-import com.tencent.mm.protocal.protobuf.arp;
-import com.tencent.mm.protocal.protobuf.arq;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.ahg;
+import com.tencent.mm.protocal.protobuf.avl;
+import com.tencent.mm.protocal.protobuf.avm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,36 +24,36 @@ import java.util.Random;
 public final class e
 {
   private static boolean DEBUG = false;
-  private static boolean eg = false;
+  private static boolean ga = false;
   
-  private static void aAj()
+  private static void aDm()
   {
     AppMethodBeat.i(146220);
     long l = System.currentTimeMillis() / 1000L;
-    g.agR().agA().set(ah.a.GMZ, Long.valueOf(l));
+    g.ajC().ajl().set(al.a.Izq, Long.valueOf(l));
     AppMethodBeat.o(146220);
   }
   
-  private static void aAl()
+  private static void aDo()
   {
     AppMethodBeat.i(146222);
-    g.agR().agA().faa();
+    g.ajC().ajl().fqc();
     AppMethodBeat.o(146222);
   }
   
-  static void aE(boolean paramBoolean1, boolean paramBoolean2)
+  static void aL(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(146217);
-    ac.i("MicroMsg.WelabUpdater", "tryToUpdate isUpgrade %s, isManualAuth %s ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    if (!g.agP().afY())
+    ad.i("MicroMsg.WelabUpdater", "tryToUpdate isUpgrade %s, isManualAuth %s ", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    if (!g.ajA().aiK())
     {
-      ac.i("MicroMsg.WelabUpdater", "Update aborted, Account not ready.");
+      ad.i("MicroMsg.WelabUpdater", "Update aborted, Account not ready.");
       AppMethodBeat.o(146217);
       return;
     }
     if ((!DEBUG) && (!paramBoolean1) && (!paramBoolean2))
     {
-      localObject = (Long)g.agR().agA().get(ah.a.GMZ, null);
+      localObject = (Long)g.ajC().ajl().get(al.a.Izq, null);
       long l1;
       if (localObject == null)
       {
@@ -62,10 +62,10 @@ public final class e
           break label169;
         }
         i = new Random().nextInt(86400);
-        oh(i);
-        aAj();
-        aAl();
-        ac.i("MicroMsg.WelabUpdater", "First update ignored. Next update: %d", new Object[] { Integer.valueOf(i) });
+        oH(i);
+        aDm();
+        aDo();
+        ad.i("MicroMsg.WelabUpdater", "First update ignored. Next update: %d", new Object[] { Integer.valueOf(i) });
         i = 1;
       }
       for (;;)
@@ -73,13 +73,13 @@ public final class e
         if (i != 0) {
           break label306;
         }
-        ac.v("MicroMsg.WelabUpdater", "No need to update");
+        ad.v("MicroMsg.WelabUpdater", "No need to update");
         AppMethodBeat.o(146217);
         return;
         l1 = ((Long)localObject).longValue();
         break;
         label169:
-        localObject = (Integer)g.agR().agA().get(ah.a.GNa, null);
+        localObject = (Integer)g.ajC().ajl().get(al.a.Izr, null);
         label203:
         long l2;
         long l3;
@@ -95,7 +95,7 @@ public final class e
         label296:
         for (boolean bool = true;; bool = false)
         {
-          ac.i("MicroMsg.WelabUpdater", "Need Update: %b, Last Update Time: %d, Update Interval: %d, Current Time: %d", new Object[] { Boolean.valueOf(bool), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
+          ad.i("MicroMsg.WelabUpdater", "Need Update: %b, Last Update Time: %d, Update Interval: %d, Current Time: %d", new Object[] { Boolean.valueOf(bool), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
           if (l3 <= l1 + l2) {
             break label301;
           }
@@ -109,57 +109,57 @@ public final class e
       }
     }
     label306:
-    if (eg)
+    if (ga)
     {
-      ac.i("MicroMsg.WelabUpdater", "Updating");
+      ad.i("MicroMsg.WelabUpdater", "Updating");
       AppMethodBeat.o(146217);
       return;
     }
-    eg = true;
+    ga = true;
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new arp();
-    ((b.a)localObject).hvu = new arq();
+    ((b.a)localObject).hNM = new avl();
+    ((b.a)localObject).hNN = new avm();
     ((b.a)localObject).uri = "/cgi-bin/mmux-bin/getlabsinfo";
     ((b.a)localObject).funcId = 1816;
-    localObject = ((b.a)localObject).aAz();
-    arp localarp = (arp)((b)localObject).hvr.hvw;
-    Integer localInteger = (Integer)g.agR().agA().get(ah.a.GNb, null);
+    localObject = ((b.a)localObject).aDC();
+    avl localavl = (avl)((b)localObject).hNK.hNQ;
+    Integer localInteger = (Integer)g.ajC().ajl().get(al.a.Izs, null);
     if (localInteger == null) {}
     for (int i = 0;; i = localInteger.intValue())
     {
-      localarp.ELo = i;
-      localarp.ELp = eHx();
-      localarp.ELq = ((int)bs.aNx());
+      localavl.Gur = i;
+      localavl.Gus = eWq();
+      localavl.Gut = ((int)bt.aQJ());
       if (paramBoolean1) {
-        localarp.drx |= 0x1;
+        localavl.dDp |= 0x1;
       }
       if (paramBoolean2) {
-        localarp.drx |= 0x2;
+        localavl.dDp |= 0x2;
       }
-      ac.i("MicroMsg.WelabUpdater", "update abtest: %s", new Object[] { c(localarp.ELp) });
+      ad.i("MicroMsg.WelabUpdater", "update abtest: %s", new Object[] { c(localavl.Gus) });
       x.a((b)localObject, new x.a()
       {
         public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, n paramAnonymousn)
         {
           AppMethodBeat.i(146216);
-          e.adZ();
+          e.Jy();
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
-            ac.e("MicroMsg.WelabUpdater", "Update Error: %d, %d, next update will be performed %d(s) later", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(86400) });
+            ad.e("MicroMsg.WelabUpdater", "Update Error: %d, %d, next update will be performed %d(s) later", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(86400) });
             e.access$100();
-            e.oi(86400);
+            e.oI(86400);
             e.access$300();
             AppMethodBeat.o(146216);
             return 0;
           }
-          paramAnonymousString = (arq)paramAnonymousb.hvs.hvw;
+          paramAnonymousString = (avm)paramAnonymousb.hNL.hNQ;
           e.access$100();
-          e.oj(paramAnonymousString.Timestamp);
-          e.oi(paramAnonymousString.ELs);
-          e.aj(paramAnonymousString.ELt);
-          e.ak(paramAnonymousString.ELr);
+          e.oJ(paramAnonymousString.Timestamp);
+          e.oI(paramAnonymousString.Guv);
+          e.ak(paramAnonymousString.Guw);
+          e.al(paramAnonymousString.Guu);
           e.access$300();
-          ac.i("MicroMsg.WelabUpdater", "Update Interval: %d", new Object[] { Integer.valueOf(paramAnonymousString.ELs) });
+          ad.i("MicroMsg.WelabUpdater", "Update Interval: %d", new Object[] { Integer.valueOf(paramAnonymousString.Guv) });
           AppMethodBeat.o(146216);
           return 0;
         }
@@ -169,46 +169,46 @@ public final class e
     }
   }
   
-  private static String c(LinkedList<aex> paramLinkedList)
+  private static String c(LinkedList<ahg> paramLinkedList)
   {
     AppMethodBeat.i(146218);
     Iterator localIterator = paramLinkedList.iterator();
-    aex localaex;
-    for (paramLinkedList = ""; localIterator.hasNext(); paramLinkedList = paramLinkedList + localaex.EuO + ":" + localaex.priority + "|") {
-      localaex = (aex)localIterator.next();
+    ahg localahg;
+    for (paramLinkedList = ""; localIterator.hasNext(); paramLinkedList = paramLinkedList + localahg.Gci + ":" + localahg.priority + "|") {
+      localahg = (ahg)localIterator.next();
     }
     AppMethodBeat.o(146218);
     return paramLinkedList;
   }
   
-  private static LinkedList<aex> eHx()
+  private static LinkedList<ahg> eWq()
   {
     AppMethodBeat.i(146219);
     localLinkedList = new LinkedList();
     try
     {
-      Iterator localIterator = a.eHv().CTI.eHD().iterator();
+      Iterator localIterator = a.eWo().ExI.eWw().iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.welab.d.a.a locala = (com.tencent.mm.plugin.welab.d.a.a)localIterator.next();
-        if (!locala.eHF())
+        if (!locala.eWy())
         {
-          aex localaex = new aex();
-          localaex.EuO = bs.getInt(locala.field_expId, 0);
-          localaex.priority = locala.field_prioritylevel;
-          localLinkedList.add(localaex);
+          ahg localahg = new ahg();
+          localahg.Gci = bt.getInt(locala.field_expId, 0);
+          localahg.priority = locala.field_prioritylevel;
+          localLinkedList.add(localahg);
         }
       }
       return localLinkedList;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.WelabUpdater", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.WelabUpdater", localException, "", new Object[0]);
       AppMethodBeat.o(146219);
     }
   }
   
-  private static void oh(int paramInt)
+  private static void oH(int paramInt)
   {
     AppMethodBeat.i(146221);
     int i = 0;
@@ -216,7 +216,7 @@ public final class e
     for (i = 86400;; i = new Random().nextInt(126000) + 3600) {
       do
       {
-        g.agR().agA().set(ah.a.GNa, Integer.valueOf(i));
+        g.ajC().ajl().set(al.a.Izr, Integer.valueOf(i));
         AppMethodBeat.o(146221);
         return;
       } while ((paramInt >= 3600) && (paramInt <= 129600));
@@ -225,7 +225,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.e
  * JD-Core Version:    0.7.0.1
  */

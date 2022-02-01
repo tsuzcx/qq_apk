@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aid;
-import com.tencent.mm.protocal.protobuf.aie;
-import com.tencent.mm.protocal.protobuf.dj;
-import com.tencent.mm.protocal.protobuf.ou;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.akt;
+import com.tencent.mm.protocal.protobuf.aku;
+import com.tencent.mm.protocal.protobuf.dk;
+import com.tencent.mm.protocal.protobuf.pz;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,145 +14,145 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static JSONObject a(aid paramaid)
+  public static JSONObject a(akt paramakt)
   {
     AppMethodBeat.i(67828);
-    if (paramaid == null)
+    if (paramakt == null)
     {
-      paramaid = new JSONObject();
+      paramakt = new JSONObject();
       AppMethodBeat.o(67828);
-      return paramaid;
+      return paramakt;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("favor_compose_id", paramaid.ECs);
-      LinkedList localLinkedList = paramaid.EeI;
-      new aie();
-      localJSONObject.put("favor_info_list,", fb(localLinkedList));
-      localJSONObject.put("show_favor_amount,", paramaid.ECt);
-      localJSONObject.put("show_pay_amount,", paramaid.ECu);
-      localJSONObject.put("total_favor_amount,", paramaid.ECv);
-      localJSONObject.put("favor_desc", paramaid.wJS);
-      localJSONObject.put("compose_sort_flag", paramaid.ECw);
-      localJSONObject.put("extend_str", paramaid.Enm);
+      localJSONObject.put("favor_compose_id", paramakt.Gke);
+      LinkedList localLinkedList = paramakt.FLh;
+      new aku();
+      localJSONObject.put("favor_info_list,", fo(localLinkedList));
+      localJSONObject.put("show_favor_amount,", paramakt.Gkf);
+      localJSONObject.put("show_pay_amount,", paramakt.Gkg);
+      localJSONObject.put("total_favor_amount,", paramakt.Gkh);
+      localJSONObject.put("favor_desc", paramakt.xXz);
+      localJSONObject.put("compose_sort_flag", paramakt.Gki);
+      localJSONObject.put("extend_str", paramakt.FUv);
       AppMethodBeat.o(67828);
       return localJSONObject;
     }
-    catch (Exception paramaid)
+    catch (Exception paramakt)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramaid, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramakt, "", new Object[0]);
       }
     }
   }
   
-  private static JSONObject a(aie paramaie)
+  private static JSONObject a(aku paramaku)
   {
     AppMethodBeat.i(67826);
-    if (paramaie == null)
+    if (paramaku == null)
     {
-      paramaie = new JSONObject();
+      paramaku = new JSONObject();
       AppMethodBeat.o(67826);
-      return paramaie;
+      return paramaku;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("fav_type", paramaie.ECx);
-      localJSONObject.put("fav_sub_type", paramaie.ECy);
-      localJSONObject.put("fav_property", paramaie.ECz);
-      localJSONObject.put("favor_type_desc", paramaie.ECA);
-      localJSONObject.put("fav_id", paramaie.ECB);
-      localJSONObject.put("fav_name", paramaie.ECC);
-      localJSONObject.put("fav_desc", paramaie.ECD);
-      localJSONObject.put("favor_use_manual", paramaie.ECE);
-      localJSONObject.put("favor_remarks", paramaie.ECF);
-      localJSONObject.put("fav_price", paramaie.ECG);
-      localJSONObject.put("real_fav_fee", paramaie.ECH);
-      localJSONObject.put("fav_scope_type", paramaie.ECI);
-      localJSONObject.put("business_receipt_no", paramaie.ECJ);
-      localJSONObject.put("unavailable", paramaie.ECK);
+      localJSONObject.put("fav_type", paramaku.Gkj);
+      localJSONObject.put("fav_sub_type", paramaku.Gkk);
+      localJSONObject.put("fav_property", paramaku.Gkl);
+      localJSONObject.put("favor_type_desc", paramaku.Gkm);
+      localJSONObject.put("fav_id", paramaku.Gkn);
+      localJSONObject.put("fav_name", paramaku.Gko);
+      localJSONObject.put("fav_desc", paramaku.Gkp);
+      localJSONObject.put("favor_use_manual", paramaku.Gkq);
+      localJSONObject.put("favor_remarks", paramaku.Gkr);
+      localJSONObject.put("fav_price", paramaku.Gks);
+      localJSONObject.put("real_fav_fee", paramaku.Gkt);
+      localJSONObject.put("fav_scope_type", paramaku.Gku);
+      localJSONObject.put("business_receipt_no", paramaku.Gkv);
+      localJSONObject.put("unavailable", paramaku.Gkw);
       AppMethodBeat.o(67826);
       return localJSONObject;
     }
-    catch (Exception paramaie)
+    catch (Exception paramaku)
     {
-      ac.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramaie, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramaku, "", new Object[0]);
       AppMethodBeat.o(67826);
     }
     return localJSONObject;
   }
   
-  public static JSONObject a(dj paramdj)
+  public static JSONObject a(dk paramdk)
   {
     AppMethodBeat.i(67829);
-    if (paramdj == null)
+    if (paramdk == null)
     {
-      paramdj = new JSONObject();
+      paramdk = new JSONObject();
       AppMethodBeat.o(67829);
-      return paramdj;
+      return paramdk;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("channel", paramdj.channel);
-      localJSONObject.put("favor_compose_info", a(paramdj.DQv));
-      localJSONObject.put("f2f_id", paramdj.DQs);
-      localJSONObject.put("payok_checksign", paramdj.DQu);
-      localJSONObject.put("receiver_openid", paramdj.wLu);
-      localJSONObject.put("receiver_username", paramdj.iAz);
-      localJSONObject.put("scan_scene", paramdj.wJT);
-      localJSONObject.put("scene", paramdj.scene);
-      localJSONObject.put("total_amount", paramdj.DQw);
-      localJSONObject.put("trans_id", paramdj.DQt);
+      localJSONObject.put("channel", paramdk.channel);
+      localJSONObject.put("favor_compose_info", a(paramdk.FvK));
+      localJSONObject.put("f2f_id", paramdk.FvH);
+      localJSONObject.put("payok_checksign", paramdk.FvJ);
+      localJSONObject.put("receiver_openid", paramdk.xZb);
+      localJSONObject.put("receiver_username", paramdk.iTJ);
+      localJSONObject.put("scan_scene", paramdk.xXA);
+      localJSONObject.put("scene", paramdk.scene);
+      localJSONObject.put("total_amount", paramdk.FvL);
+      localJSONObject.put("trans_id", paramdk.FvI);
       AppMethodBeat.o(67829);
       return localJSONObject;
     }
-    catch (Exception paramdj)
+    catch (Exception paramdk)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramdj, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramdk, "", new Object[0]);
       }
     }
   }
   
-  public static JSONObject a(ou paramou)
+  public static JSONObject a(pz parampz)
   {
     AppMethodBeat.i(67824);
-    if (paramou == null)
+    if (parampz == null)
     {
-      paramou = new JSONObject();
+      parampz = new JSONObject();
       AppMethodBeat.o(67824);
-      return paramou;
+      return parampz;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      LinkedList localLinkedList = paramou.EeI;
-      new aie();
-      localJSONObject.put("favor_info_list", fb(localLinkedList));
-      localLinkedList = paramou.EeJ;
-      new aid();
-      localJSONObject.put("favor_compose_result_list", fc(localLinkedList));
-      localJSONObject.put("default_fav_compose_id", paramou.EeK);
-      localJSONObject.put("favor_resp_sign", paramou.EeL);
-      localJSONObject.put("no_compose_wording", paramou.EeM);
+      LinkedList localLinkedList = parampz.FLh;
+      new aku();
+      localJSONObject.put("favor_info_list", fo(localLinkedList));
+      localLinkedList = parampz.FLi;
+      new akt();
+      localJSONObject.put("favor_compose_result_list", fp(localLinkedList));
+      localJSONObject.put("default_fav_compose_id", parampz.FLj);
+      localJSONObject.put("favor_resp_sign", parampz.FLk);
+      localJSONObject.put("no_compose_wording", parampz.FLl);
       AppMethodBeat.o(67824);
       return localJSONObject;
     }
-    catch (Exception paramou)
+    catch (Exception parampz)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramou, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", parampz, "", new Object[0]);
       }
     }
   }
   
-  private static JSONArray fb(List<aie> paramList)
+  private static JSONArray fo(List<aku> paramList)
   {
     AppMethodBeat.i(67825);
     if (paramList == null)
@@ -168,19 +168,19 @@ public final class a
       int i = 0;
       while (paramList.hasNext())
       {
-        localJSONArray.put(i, a((aie)paramList.next()));
+        localJSONArray.put(i, a((aku)paramList.next()));
         i += 1;
       }
       return localJSONArray;
     }
     catch (Exception paramList)
     {
-      ac.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
       AppMethodBeat.o(67825);
     }
   }
   
-  private static JSONArray fc(List<aid> paramList)
+  private static JSONArray fp(List<akt> paramList)
   {
     AppMethodBeat.i(67827);
     if (paramList == null)
@@ -196,14 +196,14 @@ public final class a
       int i = 0;
       while (paramList.hasNext())
       {
-        localJSONArray.put(i, a((aid)paramList.next()));
+        localJSONArray.put(i, a((akt)paramList.next()));
         i += 1;
       }
       return localJSONArray;
     }
     catch (Exception paramList)
     {
-      ac.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
       AppMethodBeat.o(67827);
     }
   }

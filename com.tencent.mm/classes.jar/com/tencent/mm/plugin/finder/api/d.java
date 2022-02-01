@@ -1,26 +1,82 @@
 package com.tencent.mm.plugin.finder.api;
 
-import com.tencent.mm.plugin.finder.ui.MMFinderUI;
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/api/IFinderSyncExtension;", "", "addSyncHandler", "", "cmdId", "", "handler", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "doSync", "selector", "scene", "register", "activity", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "removeSyncHandler", "unregister", "Companion", "plugin-finder_release"})
-public abstract interface d
+public class d
+  extends f
 {
-  public static final d.a qWw = d.a.qWy;
+  public String desc;
+  public String dkh;
+  public String rHp;
+  public int scene;
+  public String title;
   
-  public abstract void a(int paramInt, e parame);
+  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, com.tencent.mm.i.d paramd, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(168706);
+    paramStringBuilder.append("<finderEndorsement>");
+    if (!bt.isNullOrNil(this.title))
+    {
+      paramStringBuilder.append("<username>");
+      paramStringBuilder.append(k.b.ys(this.title));
+      paramStringBuilder.append("</username>");
+    }
+    if (!bt.isNullOrNil(this.desc))
+    {
+      paramStringBuilder.append("<nickname>");
+      paramStringBuilder.append(k.b.ys(this.desc));
+      paramStringBuilder.append("</nickname>");
+    }
+    if (!bt.isNullOrNil(this.rHp))
+    {
+      paramStringBuilder.append("<relativePath>");
+      paramStringBuilder.append(k.b.ys(this.rHp));
+      paramStringBuilder.append("</relativePath>");
+    }
+    if (!bt.isNullOrNil(this.dkh))
+    {
+      paramStringBuilder.append("<sceneNote>");
+      paramStringBuilder.append(k.b.ys(this.dkh));
+      paramStringBuilder.append("</sceneNote>");
+    }
+    paramStringBuilder.append("<scene>");
+    paramStringBuilder.append(k.b.ys(String.valueOf(this.scene)));
+    paramStringBuilder.append("</scene>");
+    paramStringBuilder.append("</finderEndorsement>");
+    AppMethodBeat.o(168706);
+  }
   
-  public abstract void a(MMFinderUI paramMMFinderUI);
+  public final void a(Map<String, String> paramMap, k.b paramb)
+  {
+    AppMethodBeat.i(168707);
+    this.title = ((String)paramMap.get(".msg.appmsg.finderEndorsement.username"));
+    this.desc = ((String)paramMap.get(".msg.appmsg.finderEndorsement.nickname"));
+    this.rHp = ((String)paramMap.get(".msg.appmsg.finderEndorsement.relativePath"));
+    this.dkh = ((String)paramMap.get(".msg.appmsg.finderEndorsement.sceneNote"));
+    this.scene = bt.getInt((String)paramMap.get(".msg.appmsg.finderEndorsement.scene"), 0);
+    AppMethodBeat.o(168707);
+  }
   
-  public abstract void b(int paramInt, e parame);
-  
-  public abstract void b(MMFinderUI paramMMFinderUI);
-  
-  public abstract void fx(int paramInt1, int paramInt2);
+  public final f aot()
+  {
+    AppMethodBeat.i(168705);
+    d locald = new d();
+    locald.title = this.title;
+    locald.desc = this.desc;
+    locald.rHp = this.rHp;
+    locald.dkh = this.dkh;
+    locald.scene = this.scene;
+    AppMethodBeat.o(168705);
+    return locald;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.api.d
  * JD-Core Version:    0.7.0.1
  */

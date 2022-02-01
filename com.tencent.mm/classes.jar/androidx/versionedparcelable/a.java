@@ -81,13 +81,13 @@ public abstract class a
     return Class.forName(String.format("%s.%sParcelizer", new Object[] { paramClass.getPackage().getName(), paramClass.getSimpleName() }), false, paramClass.getClassLoader());
   }
   
-  public final void M(String paramString)
+  public final void L(String paramString)
   {
     dj(7);
     writeString(paramString);
   }
   
-  public final String N(String paramString)
+  public final String M(String paramString)
   {
     if (!di(7)) {
       return paramString;
@@ -100,7 +100,7 @@ public abstract class a
     if (!di(paramInt)) {
       return paramT;
     }
-    return nf();
+    return nx();
   }
   
   protected abstract void a(Parcelable paramParcelable);
@@ -111,13 +111,13 @@ public abstract class a
     b(paramc);
   }
   
-  public final void aR(int paramInt1, int paramInt2)
+  public final void aS(int paramInt1, int paramInt2)
   {
     dj(paramInt2);
     writeInt(paramInt1);
   }
   
-  public final int aS(int paramInt1, int paramInt2)
+  public final int aT(int paramInt1, int paramInt2)
   {
     if (!di(paramInt2)) {
       return paramInt1;
@@ -133,9 +133,9 @@ public abstract class a
       return;
     }
     c(paramc);
-    a locala = nd();
+    a locala = nv();
     a(paramc, locala);
-    locala.nc();
+    locala.nu();
   }
   
   public final <T extends c> T d(T paramT)
@@ -143,7 +143,7 @@ public abstract class a
     if (!di(1)) {
       return paramT;
     }
-    return ng();
+    return ny();
   }
   
   protected abstract boolean di(int paramInt);
@@ -161,24 +161,24 @@ public abstract class a
     if (!di(2)) {
       return paramArrayOfByte;
     }
-    return ne();
+    return nw();
   }
   
-  protected abstract void nc();
+  protected abstract void nu();
   
-  protected abstract a nd();
+  protected abstract a nv();
   
-  protected abstract byte[] ne();
+  protected abstract byte[] nw();
   
-  protected abstract <T extends Parcelable> T nf();
+  protected abstract <T extends Parcelable> T nx();
   
-  protected final <T extends c> T ng()
+  protected final <T extends c> T ny()
   {
     String str = readString();
     if (str == null) {
       return null;
     }
-    return a(str, nd());
+    return a(str, nv());
   }
   
   protected abstract int readInt();
@@ -199,7 +199,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     androidx.versionedparcelable.a
  * JD-Core Version:    0.7.0.1
  */

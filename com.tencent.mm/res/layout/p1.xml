@@ -14,7 +14,7 @@
         </LinearLayout>
         <RelativeLayout android:id="@id/c5p" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="4.5dip" android:minHeight="20.0dip">
             <ImageView android:id="@id/bdj" android:layout_marginLeft="@dimen/c0" android:layout_marginRight="@dimen/c0" style="@style/hp" />
-            <TextView android:textSize="@dimen/k4" android:textColor="?k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginRight="@dimen/c0" android:text="@string/au7" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/k4" android:textColor="@color/FG_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginRight="@dimen/c0" android:text="@string/au7" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

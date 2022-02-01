@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   extends d
 {
-  private static final e Mgg;
+  private static final e Obi;
   
   static
   {
     AppMethodBeat.i(90487);
-    Mgg = new e();
+    Obi = new e();
     AppMethodBeat.o(90487);
   }
   
-  public static d ggH()
+  public static d gzl()
   {
-    return Mgg;
+    return Obi;
   }
 }
 

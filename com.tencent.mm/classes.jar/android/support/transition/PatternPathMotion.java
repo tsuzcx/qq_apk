@@ -13,19 +13,19 @@ import org.xmlpull.v1.XmlPullParser;
 public class PatternPathMotion
   extends PathMotion
 {
-  private final Matrix yC = new Matrix();
-  private Path zF;
-  private final Path zG = new Path();
+  private final Matrix Av = new Matrix();
+  private Path Bw;
+  private final Path Bx = new Path();
   
   public PatternPathMotion()
   {
-    this.zG.lineTo(1.0F, 0.0F);
-    this.zF = this.zG;
+    this.Bx.lineTo(1.0F, 0.0F);
+    this.Bw = this.Bx;
   }
   
   public PatternPathMotion(Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.Ac);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.BT);
     try
     {
       paramAttributeSet = g.c(paramContext, (XmlPullParser)paramAttributeSet, "patternPathData", 0);
@@ -37,7 +37,7 @@ public class PatternPathMotion
     {
       paramContext.recycle();
     }
-    paramAttributeSet = c.x(paramAttributeSet);
+    paramAttributeSet = c.u(paramAttributeSet);
     PathMeasure localPathMeasure = new PathMeasure(paramAttributeSet, false);
     float f1 = localPathMeasure.getLength();
     float[] arrayOfFloat = new float[2];
@@ -50,15 +50,15 @@ public class PatternPathMotion
     if ((f4 == f3) && (f2 == f1)) {
       throw new IllegalArgumentException("pattern must not end at the starting point");
     }
-    this.yC.setTranslate(-f4, -f2);
+    this.Av.setTranslate(-f4, -f2);
     f3 -= f4;
     f1 -= f2;
     f2 = 1.0F / h(f3, f1);
-    this.yC.postScale(f2, f2);
+    this.Av.postScale(f2, f2);
     double d = Math.atan2(f1, f3);
-    this.yC.postRotate((float)Math.toDegrees(-d));
-    paramAttributeSet.transform(this.yC, this.zG);
-    this.zF = paramAttributeSet;
+    this.Av.postRotate((float)Math.toDegrees(-d));
+    paramAttributeSet.transform(this.Av, this.Bx);
+    this.Bw = paramAttributeSet;
     paramContext.recycle();
   }
   
@@ -73,17 +73,17 @@ public class PatternPathMotion
     paramFloat4 -= paramFloat2;
     float f = h(paramFloat3, paramFloat4);
     double d = Math.atan2(paramFloat4, paramFloat3);
-    this.yC.setScale(f, f);
-    this.yC.postRotate((float)Math.toDegrees(d));
-    this.yC.postTranslate(paramFloat1, paramFloat2);
+    this.Av.setScale(f, f);
+    this.Av.postRotate((float)Math.toDegrees(d));
+    this.Av.postTranslate(paramFloat1, paramFloat2);
     Path localPath = new Path();
-    this.zG.transform(this.yC, localPath);
+    this.Bx.transform(this.Av, localPath);
     return localPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.PatternPathMotion
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.loader.h.b;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.vfs.i;
 import java.io.ByteArrayInputStream;
 import java.io.Closeable;
@@ -12,22 +12,22 @@ import java.io.InputStream;
 public final class a
   implements Closeable
 {
-  byte[] gMD = null;
-  d gME;
-  c gMF;
-  Object gMG;
+  byte[] hgA = null;
+  d hgB;
+  c hgC;
+  Object hgD;
   InputStream inputStream = null;
   
   private a(d paramd, c paramc, Object paramObject)
   {
-    this.gME = paramd;
-    this.gMF = paramc;
-    this.gMG = paramObject;
+    this.hgB = paramd;
+    this.hgC = paramc;
+    this.hgD = paramObject;
   }
   
-  public static a R(byte[] paramArrayOfByte)
+  public static a Q(byte[] paramArrayOfByte)
   {
-    return new a(new d(paramArrayOfByte), new a.b(paramArrayOfByte), null);
+    return new a(new d(paramArrayOfByte), new b(paramArrayOfByte), null);
   }
   
   private static <T extends d,  extends c> a a(T paramT, Object paramObject)
@@ -40,29 +40,29 @@ public final class a
     return new a(new e(paramInputStream1), new c(paramInputStream2), null);
   }
   
-  public static a k(String paramString, Object paramObject)
+  public static a j(String paramString, Object paramObject)
   {
     return a(new a(paramString), paramObject);
   }
   
-  public static a vk(String paramString)
+  public static a yb(String paramString)
   {
-    return k(paramString, null);
+    return j(paramString, null);
   }
   
-  public static a vl(String paramString)
+  public static a yc(String paramString)
   {
-    return a(ai.getContext().getAssets().open(paramString), ai.getContext().getAssets().open(paramString));
+    return a(aj.getContext().getAssets().open(paramString), aj.getContext().getAssets().open(paramString));
   }
   
-  public final InputStream aoS()
+  public final InputStream arF()
   {
     if (this.inputStream != null) {
       return this.inputStream;
     }
-    if (this.gME != null)
+    if (this.hgB != null)
     {
-      this.inputStream = this.gME.aoS();
+      this.inputStream = this.hgB.arF();
       return this.inputStream;
     }
     return null;
@@ -70,25 +70,25 @@ public final class a
   
   public final void close()
   {
-    if (this.gME != null)
+    if (this.hgB != null)
     {
-      this.gME.close();
-      this.gME = null;
+      this.hgB.close();
+      this.hgB = null;
     }
-    if (this.gMF != null) {
-      this.gMF.close();
+    if (this.hgC != null) {
+      this.hgC.close();
     }
   }
   
   public final Object getTag()
   {
-    return this.gMG;
+    return this.hgD;
   }
   
   static final class a
     implements c, d
   {
-    InputStream aDF = null;
+    InputStream aFw = null;
     String mFilePath;
     
     public a(String paramString)
@@ -96,12 +96,12 @@ public final class a
       this.mFilePath = paramString;
     }
     
-    public final InputStream aoS()
+    public final InputStream arF()
     {
       try
       {
-        this.aDF = i.openRead(this.mFilePath);
-        InputStream localInputStream = this.aDF;
+        this.aFw = i.openRead(this.mFilePath);
+        InputStream localInputStream = this.aFw;
         return localInputStream;
       }
       catch (FileNotFoundException localFileNotFoundException) {}
@@ -110,69 +110,82 @@ public final class a
     
     public final void close()
     {
-      a.q(this.aDF);
+      a.u(this.aFw);
     }
+  }
+  
+  static final class b
+    implements c
+  {
+    byte[] hgE;
+    
+    public b(byte[] paramArrayOfByte)
+    {
+      this.hgE = paramArrayOfByte;
+    }
+    
+    public final void close() {}
   }
   
   static final class c
     implements c
   {
-    InputStream gMI;
+    InputStream hgF;
     
     public c(InputStream paramInputStream)
     {
-      this.gMI = paramInputStream;
+      this.hgF = paramInputStream;
     }
     
     public final void close()
     {
-      a.q(this.gMI);
+      a.u(this.hgF);
     }
   }
   
   static final class d
     implements d
   {
-    InputStream aDF = null;
-    byte[] gMH;
+    InputStream aFw = null;
+    byte[] hgE;
     
     public d(byte[] paramArrayOfByte)
     {
-      this.gMH = paramArrayOfByte;
+      this.hgE = paramArrayOfByte;
     }
     
-    public final InputStream aoS()
+    public final InputStream arF()
     {
-      if (this.aDF == null) {
-        this.aDF = new ByteArrayInputStream(this.gMH);
+      if (this.aFw == null) {
+        this.aFw = new ByteArrayInputStream(this.hgE);
       }
-      return this.aDF;
+      return this.aFw;
     }
     
     public final void close()
     {
-      a.q(this.aDF);
+      a.u(this.aFw);
     }
   }
   
   static final class e
     implements d
   {
-    InputStream gMI;
+    InputStream hgF;
     
     public e(InputStream paramInputStream)
     {
-      this.gMI = paramInputStream;
+      this.hgF = paramInputStream;
     }
     
-    public final InputStream aoS()
+    public final InputStream arF()
     {
-      return this.gMI;
+      return this.hgF;
     }
     
     public final void close()
     {
-      a.q(this.gMI);
+      a.u(this.hgF);
     }
   }
 }

@@ -5,32 +5,33 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelsimple.k;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h;
 
 public final class ac
-  implements g
+  implements f
 {
-  private String DrZ;
+  private String EXd;
   Context context;
-  com.tencent.mm.ui.base.p sue;
-  private au vNQ;
-  k xho;
+  com.tencent.mm.ui.base.p tqG;
+  private av wUZ;
+  k yvp;
   
   public ac(Context paramContext)
   {
     AppMethodBeat.i(31429);
-    this.vNQ = new au(new au.a()
+    this.wUZ = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -38,13 +39,13 @@ public final class ac
         ac localac = ac.this;
         Context localContext = ac.this.context;
         ac.this.context.getString(2131755906);
-        localac.sue = h.b(localContext, ac.this.context.getString(2131755936), true, new DialogInterface.OnCancelListener()
+        localac.tqG = h.b(localContext, ac.this.context.getString(2131755936), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
           {
             AppMethodBeat.i(31427);
-            az.agi().a(ac.this.xho);
-            ac.this.sue = null;
+            ba.aiU().a(ac.this.yvp);
+            ac.this.tqG = null;
             AppMethodBeat.o(31427);
           }
         });
@@ -56,7 +57,7 @@ public final class ac
     AppMethodBeat.o(31429);
   }
   
-  private void aHu(String paramString)
+  private void aMX(String paramString)
   {
     AppMethodBeat.i(31431);
     Intent localIntent = new Intent();
@@ -68,49 +69,49 @@ public final class ac
     AppMethodBeat.o(31431);
   }
   
-  public final void aHt(String paramString)
+  public final void aMW(String paramString)
   {
     AppMethodBeat.i(31430);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ViewQZone", "go fail, qqNum is null");
+      ad.e("MicroMsg.ViewQZone", "go fail, qqNum is null");
       AppMethodBeat.o(31430);
       return;
     }
-    this.DrZ = paramString;
-    az.ayM();
-    String str1 = (String)c.agA().get(46, null);
-    az.ayM();
-    String str2 = bs.nullAsNil((String)c.agA().get(72, null));
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.ViewQZone", "get a2key:[%s], get new a2key:[%s]", new Object[] { str1, str2 });
-    if ((bs.isNullOrNil(str1)) && (bs.isNullOrNil(str2)))
+    this.EXd = paramString;
+    ba.aBQ();
+    String str1 = (String)c.ajl().get(46, null);
+    ba.aBQ();
+    String str2 = bt.nullAsNil((String)c.ajl().get(72, null));
+    ad.i("MicroMsg.ViewQZone", "get a2key:[%s], get new a2key:[%s]", new Object[] { str1, str2 });
+    if ((bt.isNullOrNil(str1)) && (bt.isNullOrNil(str2)))
     {
-      aHu(paramString);
+      aMX(paramString);
       AppMethodBeat.o(31430);
       return;
     }
-    az.agi().a(233, this);
-    this.xho = new k(com.tencent.mm.b.p.dv(paramString), (int)System.currentTimeMillis());
-    az.agi().a(this.xho, 0);
-    this.vNQ.au(3000L, 3000L);
+    ba.aiU().a(233, this);
+    this.yvp = new k(com.tencent.mm.b.p.er(paramString), (int)System.currentTimeMillis());
+    ba.aiU().a(this.yvp, 0);
+    this.wUZ.az(3000L, 3000L);
     AppMethodBeat.o(31430);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(31432);
-    this.vNQ.stopTimer();
-    if (this.sue != null) {
-      this.sue.dismiss();
+    this.wUZ.stopTimer();
+    if (this.tqG != null) {
+      this.tqG.dismiss();
     }
-    az.agi().b(233, this);
+    ba.aiU().b(233, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = (k)paramn;
-      paramn = paramString.aHg();
+      paramn = paramString.aKr();
       if ((paramn == null) || (paramn.length() == 0))
       {
-        aHu(this.DrZ);
+        aMX(this.EXd);
         AppMethodBeat.o(31432);
         return;
       }
@@ -119,13 +120,13 @@ public final class ac
       localIntent.putExtra("useJs", true);
       localIntent.putExtra("vertical_scroll", true);
       localIntent.putExtra("neverGetA8Key", true);
-      localIntent.putExtra("geta8key_session_id", paramString.aHo());
+      localIntent.putExtra("geta8key_session_id", paramString.aKz());
       d.b(this.context, "webview", ".ui.tools.ContactQZoneWebView", localIntent);
       AppMethodBeat.o(31432);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ac.e("MicroMsg.ViewQZone", "getA8Key fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    aHu(this.DrZ);
+    ad.e("MicroMsg.ViewQZone", "getA8Key fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    aMX(this.EXd);
     AppMethodBeat.o(31432);
   }
 }

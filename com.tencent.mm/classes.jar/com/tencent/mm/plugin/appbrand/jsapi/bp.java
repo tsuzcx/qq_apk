@@ -1,25 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.luggage.h.e.b;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.plugin.appbrand.q;
 
 public final class bp
-  extends a<h>
+  extends a<q>
 {
-  public static final int CTRL_INDEX = 616;
-  public static final String NAME = "openWCPayLQTDetail";
-  final int jZb;
-  
-  public bp()
-  {
-    AppMethodBeat.i(174765);
-    this.jZb = com.tencent.luggage.sdk.g.a.aA(this);
-    AppMethodBeat.o(174765);
-  }
+  public static final int CTRL_INDEX = 201;
+  public static final String NAME = "openUrl";
 }
 
 

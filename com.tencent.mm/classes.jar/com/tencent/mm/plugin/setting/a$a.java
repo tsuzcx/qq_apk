@@ -51,8 +51,9 @@ public final class a$a
   public static final int[] DialogPreference = { 2130968909, 2130968910, 2130968911, 2130968914, 2130969319, 2130969384 };
   public static final int[] DragSortListView = { 2130968785, 2130968800, 2130968928, 2130968929, 2130968930, 2130968931, 2130968939, 2130969008, 2130969009, 2130969010, 2130969305, 2130969409, 2130969410, 2130969411, 2130969459, 2130969464, 2130969614, 2130969619 };
   public static final int[] DrawerArrowToggle = { 2130968656, 2130968657, 2130968673, 2130968801, 2130968936, 2130969035, 2130969467, 2130969571 };
+  public static final int[] EllipsizeLayout = { 2130969713 };
   public static final int[] FaceDetectView = { 2130969407 };
-  public static final int[] FixAspectRatioImageView = { 2130969005 };
+  public static final int[] FixAspectRatioImageView = { 2130969005, 2130969716, 2130969717, 2130969718, 2130969719, 2130969720 };
   public static final int[] FlexboxLayout = { 2130968645, 2130968646, 2130968919, 2130968920, 2130968921, 2130969006, 2130969007, 2130969127, 2130969302, 2130969447, 2130969448, 2130969449 };
   public static final int[] FlexboxLayout_Layout = { 2130969150, 2130969203, 2130969204, 2130969205, 2130969215, 2130969216, 2130969217, 2130969218, 2130969220, 2130969226 };
   public static final int[] FloatingActionButton = { 2130968671, 2130968672, 2130968683, 2130968952, 2130968995, 2130968996, 2130969049, 2130969061, 2130969300, 2130969389, 2130969416, 2130969452, 2130969617 };
@@ -140,7 +141,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.a.a
  * JD-Core Version:    0.7.0.1
  */

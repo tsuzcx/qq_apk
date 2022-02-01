@@ -20,7 +20,7 @@ public abstract class l
     }
   }
   
-  public static l xp()
+  public static l yM()
   {
     try
     {
@@ -34,7 +34,7 @@ public abstract class l
         {
           AppMethodBeat.i(108105);
           I(paramAnonymousClass);
-          paramAnonymousClass = this.bEj.invoke(localObject4, new Object[] { paramAnonymousClass });
+          paramAnonymousClass = this.bOx.invoke(localObject4, new Object[] { paramAnonymousClass });
           AppMethodBeat.o(108105);
           return paramAnonymousClass;
         }
@@ -56,7 +56,7 @@ public abstract class l
           {
             AppMethodBeat.i(107970);
             I(paramAnonymousClass);
-            paramAnonymousClass = this.bEl.invoke(null, new Object[] { paramAnonymousClass, Integer.valueOf(i) });
+            paramAnonymousClass = this.bOz.invoke(null, new Object[] { paramAnonymousClass, Integer.valueOf(i) });
             AppMethodBeat.o(107970);
             return paramAnonymousClass;
           }
@@ -75,7 +75,7 @@ public abstract class l
             {
               AppMethodBeat.i(108090);
               I(paramAnonymousClass);
-              paramAnonymousClass = this.bEl.invoke(null, new Object[] { paramAnonymousClass, Object.class });
+              paramAnonymousClass = this.bOz.invoke(null, new Object[] { paramAnonymousClass, Object.class });
               AppMethodBeat.o(108090);
               return paramAnonymousClass;
             }
@@ -101,7 +101,7 @@ public abstract class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.b.l
  * JD-Core Version:    0.7.0.1
  */

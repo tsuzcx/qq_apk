@@ -7,25 +7,25 @@ import java.util.TreeSet;
 public final class k
   implements f, Comparator<g>
 {
-  private long aGT;
-  private final long bvX;
-  private final TreeSet<g> bvY;
+  private long aIK;
+  private final long bGl;
+  private final TreeSet<g> bGm;
   
   public k()
   {
     AppMethodBeat.i(92998);
-    this.bvX = 536870912L;
-    this.bvY = new TreeSet(this);
+    this.bGl = 536870912L;
+    this.bGm = new TreeSet(this);
     AppMethodBeat.o(92998);
   }
   
   private void b(a parama, long paramLong)
   {
     AppMethodBeat.i(93003);
-    while ((this.aGT + paramLong > this.bvX) && (!this.bvY.isEmpty())) {
+    while ((this.aIK + paramLong > this.bGl) && (!this.bGm.isEmpty())) {
       try
       {
-        parama.b((g)this.bvY.first());
+        parama.b((g)this.bGm.first());
       }
       catch (a.a locala) {}
     }
@@ -42,8 +42,8 @@ public final class k
   public final void a(a parama, g paramg)
   {
     AppMethodBeat.i(93000);
-    this.bvY.add(paramg);
-    this.aGT += paramg.length;
+    this.bGm.add(paramg);
+    this.aIK += paramg.length;
     b(parama, 0L);
     AppMethodBeat.o(93000);
   }
@@ -59,8 +59,8 @@ public final class k
   public final void c(g paramg)
   {
     AppMethodBeat.i(93001);
-    this.bvY.remove(paramg);
-    this.aGT -= paramg.length;
+    this.bGm.remove(paramg);
+    this.aIK -= paramg.length;
     AppMethodBeat.o(93001);
   }
 }

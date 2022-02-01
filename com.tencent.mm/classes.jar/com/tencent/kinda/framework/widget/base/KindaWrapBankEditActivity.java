@@ -10,12 +10,12 @@ import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankCardSelectUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankCardTypeSelectUI;
 import com.tencent.mm.plugin.wallet_core.ui.view.BankCardSelectSortView.a;
-import com.tencent.mm.protocal.protobuf.ii;
-import com.tencent.mm.protocal.protobuf.ij;
+import com.tencent.mm.protocal.protobuf.ip;
+import com.tencent.mm.protocal.protobuf.iq;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.sortview.d;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -48,30 +48,30 @@ public class KindaWrapBankEditActivity
     {
       ElementQuery localElementQuery = (ElementQuery)localIterator.next();
       localObject2 = localObject1;
-      if (localElementQuery.tGS.equals(paramString1))
+      if (localElementQuery.uJF.equals(paramString1))
       {
         localObject2 = localObject1;
-        if (localElementQuery.BvZ.equals(paramString2))
+        if (localElementQuery.CWp.equals(paramString2))
         {
-          localObject2 = localElementQuery.cZz;
-          ac.i("KindaBank.KindaWrapBankEditActivity", "Ktemp.bank_type：" + localElementQuery.cZz);
+          localObject2 = localElementQuery.dkR;
+          ad.i("KindaBank.KindaWrapBankEditActivity", "Ktemp.bank_type：" + localElementQuery.dkR);
         }
       }
       localObject1 = localObject2;
     }
     Object localObject2 = new ag();
-    ((ag)localObject2).cZx.cZy = paramString1;
-    ((ag)localObject2).cZx.cZA = paramString2;
-    ((ag)localObject2).cZx.cZz = ((String)localObject1);
-    a.GpY.l((b)localObject2);
-    ac.i("KindaBank.KindaWrapBankEditActivity", "sendDataToKinda：bankName：" + paramString1 + "  bankAccName：" + paramString2 + "  BankType：" + (String)localObject1);
-    ac.i("KindaBank.KindaWrapBankEditActivity", "KindaWrapBankEditActivity.onItemSelect，发送事件，当前线程：" + Thread.currentThread().getId());
+    ((ag)localObject2).dkP.dkQ = paramString1;
+    ((ag)localObject2).dkP.dkS = paramString2;
+    ((ag)localObject2).dkP.dkR = ((String)localObject1);
+    a.IbL.l((b)localObject2);
+    ad.i("KindaBank.KindaWrapBankEditActivity", "sendDataToKinda：bankName：" + paramString1 + "  bankAccName：" + paramString2 + "  BankType：" + (String)localObject1);
+    ad.i("KindaBank.KindaWrapBankEditActivity", "KindaWrapBankEditActivity.onItemSelect，发送事件，当前线程：" + Thread.currentThread().getId());
     finish();
     if (isFinishing())
     {
       paramString1 = new ag();
-      paramString1.cZx.cZy = "flag_activity_close_KindaWrapBankEditActivity";
-      a.GpY.l(paramString1);
+      paramString1.dkP.dkQ = "flag_activity_close_KindaWrapBankEditActivity";
+      a.IbL.l(paramString1);
     }
     AppMethodBeat.o(18985);
   }
@@ -79,18 +79,18 @@ public class KindaWrapBankEditActivity
   public void fetchData()
   {
     AppMethodBeat.i(18982);
-    Object localObject = new ij();
+    Object localObject = new iq();
     try
     {
-      ((ij)localObject).parseFrom(getIntent().getByteArrayExtra("bank_list"));
+      ((iq)localObject).parseFrom(getIntent().getByteArrayExtra("bank_list"));
       this.bankcardList = new ArrayList();
-      localObject = ((ij)localObject).DWg.iterator();
+      localObject = ((iq)localObject).FBC.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ii localii1 = (ii)((Iterator)localObject).next();
+        ip localip1 = (ip)((Iterator)localObject).next();
         localElementQuery = new ElementQuery();
-        localElementQuery.tGS = localii1.tGS;
-        localElementQuery.cZz = localii1.cZz;
+        localElementQuery.uJF = localip1.uJF;
+        localElementQuery.dkR = localip1.dkR;
         this.bankcardList.add(localElementQuery);
       }
     }
@@ -99,21 +99,21 @@ public class KindaWrapBankEditActivity
       ElementQuery localElementQuery;
       for (;;)
       {
-        ac.e("KindaBank.KindaWrapBankEditActivity", "bank list parse failed");
+        ad.e("KindaBank.KindaWrapBankEditActivity", "bank list parse failed");
       }
-      localObject = new ij();
+      localObject = new iq();
       try
       {
-        ((ij)localObject).parseFrom(getIntent().getByteArrayExtra("bank_type_list"));
+        ((iq)localObject).parseFrom(getIntent().getByteArrayExtra("bank_type_list"));
         this.bankcardTypeList = new ArrayList();
-        localObject = ((ij)localObject).DWg.iterator();
+        localObject = ((iq)localObject).FBC.iterator();
         while (((Iterator)localObject).hasNext())
         {
-          ii localii2 = (ii)((Iterator)localObject).next();
+          ip localip2 = (ip)((Iterator)localObject).next();
           localElementQuery = new ElementQuery();
-          localElementQuery.tGS = localii2.tGS;
-          localElementQuery.cZz = localii2.cZz;
-          localElementQuery.BvZ = localii2.DVU;
+          localElementQuery.uJF = localip2.uJF;
+          localElementQuery.dkR = localip2.dkR;
+          localElementQuery.CWp = localip2.FBq;
           this.bankcardTypeList.add(localElementQuery);
         }
       }
@@ -121,7 +121,7 @@ public class KindaWrapBankEditActivity
       {
         for (;;)
         {
-          ac.e("KindaBank.KindaWrapBankEditActivity", "bank type list parse failed");
+          ad.e("KindaBank.KindaWrapBankEditActivity", "bank type list parse failed");
         }
         runOnUiThread(new Runnable()
         {
@@ -147,11 +147,11 @@ public class KindaWrapBankEditActivity
             {
               AppMethodBeat.o(170118);
               return true;
-              if (!bs.gY(KindaWrapBankEditActivity.this.bankcardTypeList))
+              if (!bt.hj(KindaWrapBankEditActivity.this.bankcardTypeList))
               {
                 paramAnonymousMenuItem = new ag();
-                paramAnonymousMenuItem.cZx.cZy = "flag_activity_back_KindaWrapBankEditActivity";
-                a.GpY.l(paramAnonymousMenuItem);
+                paramAnonymousMenuItem.dkP.dkQ = "flag_activity_back_KindaWrapBankEditActivity";
+                a.IbL.l(paramAnonymousMenuItem);
               }
               KindaWrapBankEditActivity.this.finish();
             }
@@ -183,7 +183,7 @@ public class KindaWrapBankEditActivity
       return;
     }
     hideVKB();
-    this.mSelectBankName = ((BankCardSelectSortView.a)localObject).vxj;
+    this.mSelectBankName = ((BankCardSelectSortView.a)localObject).wCD;
     if (this.bankcardTypeList.size() == 0)
     {
       sendDatatoKinda(this.mSelectBankName, "");
@@ -194,8 +194,8 @@ public class KindaWrapBankEditActivity
     while (((Iterator)localObject).hasNext())
     {
       ElementQuery localElementQuery = (ElementQuery)((Iterator)localObject).next();
-      if (localElementQuery.tGS.equals(this.mSelectBankName)) {
-        paramObject.add(localElementQuery.BvZ);
+      if (localElementQuery.uJF.equals(this.mSelectBankName)) {
+        paramObject.add(localElementQuery.CWp);
       }
     }
     if (paramObject.size() == 1)
@@ -217,8 +217,8 @@ public class KindaWrapBankEditActivity
     if (isFinishing())
     {
       ag localag = new ag();
-      localag.cZx.cZy = "flag_activity_close_KindaWrapBankEditActivity";
-      a.GpY.l(localag);
+      localag.dkP.dkQ = "flag_activity_close_KindaWrapBankEditActivity";
+      a.IbL.l(localag);
     }
     AppMethodBeat.o(18981);
   }

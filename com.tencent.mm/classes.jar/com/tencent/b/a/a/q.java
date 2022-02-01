@@ -11,27 +11,27 @@ public abstract class q
     this.context = paramContext;
   }
   
-  protected abstract boolean Ib();
+  protected abstract boolean JB();
   
-  protected abstract a Ic();
+  protected abstract a JC();
   
-  public final g Ii()
+  public final g JI()
   {
     g localg = null;
-    if (Ib()) {}
+    if (JB()) {}
     for (String str = s.decode(read());; str = null)
     {
       if (str != null) {
-        localg = g.dn(str);
+        localg = g.ej(str);
       }
       return localg;
     }
   }
   
-  public final a Ij()
+  public final a JJ()
   {
-    if (Ib()) {
-      return Ic();
+    if (JB()) {
+      return JC();
     }
     return null;
   }
@@ -41,7 +41,7 @@ public abstract class q
   public final void b(a parama)
   {
     if (parama == null) {}
-    while (!Ib()) {
+    while (!JB()) {
       return;
     }
     a(parama);
@@ -54,7 +54,7 @@ public abstract class q
     {
       return;
       paramg = paramg.toString();
-    } while (!Ib());
+    } while (!JB());
     write(s.encode(paramg));
   }
   
@@ -64,7 +64,7 @@ public abstract class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.b.a.a.q
  * JD-Core Version:    0.7.0.1
  */

@@ -8,22 +8,22 @@ import d.l;
 import d.o;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/text/DelimitedRangesSequence;", "Lkotlin/sequences/Sequence;", "Lkotlin/ranges/IntRange;", "input", "", "startIndex", "", "limit", "getNextMatch", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "currentIndex", "Lkotlin/Pair;", "Lkotlin/ExtensionFunctionType;", "(Ljava/lang/CharSequence;IILkotlin/jvm/functions/Function2;)V", "iterator", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/text/DelimitedRangesSequence;", "Lkotlin/sequences/Sequence;", "Lkotlin/ranges/IntRange;", "input", "", "startIndex", "", "limit", "getNextMatch", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "currentIndex", "Lkotlin/Pair;", "Lkotlin/ExtensionFunctionType;", "(Ljava/lang/CharSequence;IILkotlin/jvm/functions/Function2;)V", "iterator", "", "kotlin-stdlib"})
 final class e
   implements d.m.h<d>
 {
-  final CharSequence LPY;
-  final m<CharSequence, Integer, o<Integer, Integer>> LPZ;
+  final CharSequence NGT;
+  final m<CharSequence, Integer, o<Integer, Integer>> NGU;
   final int limit;
   final int startIndex;
   
   public e(CharSequence paramCharSequence, m<? super CharSequence, ? super Integer, o<Integer, Integer>> paramm)
   {
     AppMethodBeat.i(129456);
-    this.LPY = paramCharSequence;
+    this.NGT = paramCharSequence;
     this.startIndex = 0;
     this.limit = 0;
-    this.LPZ = paramm;
+    this.NGU = paramm;
     AppMethodBeat.o(129456);
   }
   
@@ -35,69 +35,69 @@ final class e
     return localIterator;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/text/DelimitedRangesSequence$iterator$1", "", "Lkotlin/ranges/IntRange;", "counter", "", "getCounter", "()I", "setCounter", "(I)V", "currentStartIndex", "getCurrentStartIndex", "setCurrentStartIndex", "nextItem", "getNextItem", "()Lkotlin/ranges/IntRange;", "setNextItem", "(Lkotlin/ranges/IntRange;)V", "nextSearchIndex", "getNextSearchIndex", "setNextSearchIndex", "nextState", "getNextState", "setNextState", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/text/DelimitedRangesSequence$iterator$1", "", "Lkotlin/ranges/IntRange;", "counter", "", "getCounter", "()I", "setCounter", "(I)V", "currentStartIndex", "getCurrentStartIndex", "setCurrentStartIndex", "nextItem", "getNextItem", "()Lkotlin/ranges/IntRange;", "setNextItem", "(Lkotlin/ranges/IntRange;)V", "nextSearchIndex", "getNextSearchIndex", "setNextSearchIndex", "nextState", "getNextState", "setNextState", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<d>
   {
-    private int LPD;
-    private int LQa;
-    private int LQb;
-    private d LQc;
-    private int fqZ;
+    private int NGV;
+    private int NGW;
+    private d NGX;
+    private int NGy;
+    private int fJg;
     
     a()
     {
       AppMethodBeat.i(129463);
-      this.LPD = -1;
-      this.LQa = d.k.h.aZ(localObject.startIndex, 0, localObject.LPY.length());
-      this.LQb = this.LQa;
+      this.NGy = -1;
+      this.NGV = d.k.h.ba(localObject.startIndex, 0, localObject.NGT.length());
+      this.NGW = this.NGV;
       AppMethodBeat.o(129463);
     }
     
-    private final void gcZ()
+    private final void guz()
     {
       AppMethodBeat.i(129460);
-      if (this.LQb < 0)
+      if (this.NGW < 0)
       {
-        this.LPD = 0;
-        this.LQc = null;
+        this.NGy = 0;
+        this.NGX = null;
         AppMethodBeat.o(129460);
         return;
       }
-      if (this.LQd.limit > 0)
+      if (this.NGY.limit > 0)
       {
-        this.fqZ += 1;
-        if (this.fqZ >= this.LQd.limit) {}
+        this.fJg += 1;
+        if (this.fJg >= this.NGY.limit) {}
       }
       else
       {
-        if (this.LQb <= this.LQd.LPY.length()) {
+        if (this.NGW <= this.NGY.NGT.length()) {
           break label122;
         }
       }
-      this.LQc = new d(this.LQa, n.aG(this.LQd.LPY));
+      this.NGX = new d(this.NGV, n.aH(this.NGY.NGT));
       label122:
       o localo;
-      for (this.LQb = -1;; this.LQb = -1)
+      for (this.NGW = -1;; this.NGW = -1)
       {
-        this.LPD = 1;
+        this.NGy = 1;
         AppMethodBeat.o(129460);
         return;
-        localo = (o)this.LQd.LPZ.n(this.LQd.LPY, Integer.valueOf(this.LQb));
+        localo = (o)this.NGY.NGU.p(this.NGY.NGT, Integer.valueOf(this.NGW));
         if (localo != null) {
           break;
         }
-        this.LQc = new d(this.LQa, n.aG(this.LQd.LPY));
+        this.NGX = new d(this.NGV, n.aH(this.NGY.NGT));
       }
       int j = ((Number)localo.first).intValue();
       int i = ((Number)localo.second).intValue();
-      this.LQc = d.k.h.kZ(this.LQa, j);
-      this.LQa = (j + i);
-      j = this.LQa;
+      this.NGX = d.k.h.lo(this.NGV, j);
+      this.NGV = (j + i);
+      j = this.NGV;
       if (i == 0) {}
       for (i = 1;; i = 0)
       {
-        this.LQb = (i + j);
+        this.NGW = (i + j);
         break;
       }
     }
@@ -105,10 +105,10 @@ final class e
     public final boolean hasNext()
     {
       AppMethodBeat.i(129462);
-      if (this.LPD == -1) {
-        gcZ();
+      if (this.NGy == -1) {
+        guz();
       }
-      if (this.LPD == 1)
+      if (this.NGy == 1)
       {
         AppMethodBeat.o(129462);
         return true;

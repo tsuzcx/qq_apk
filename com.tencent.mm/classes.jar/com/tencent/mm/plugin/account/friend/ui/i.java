@@ -7,19 +7,21 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.ca;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.cb;
 import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.friend.a.z;
-import com.tencent.mm.protocal.protobuf.lh;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.lr;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import java.util.Iterator;
@@ -27,26 +29,26 @@ import java.util.Set;
 import junit.framework.Assert;
 
 public final class i
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public String dnz;
-  public boolean gRx = false;
-  private final a iNK;
-  public z iNL;
-  private z iNM;
-  public boolean iNN = true;
-  public i.b iNO;
+  public String dzn;
+  public boolean hjP = false;
+  private final a jgT;
+  public z jgU;
+  private z jgV;
+  public boolean jgW = true;
+  public i.b jgX;
   public Context mContext;
   public p tipDialog = null;
   
   public i(i.b paramb, Context paramContext, a parama)
   {
-    this.iNO = paramb;
+    this.jgX = paramb;
     this.mContext = paramContext;
-    this.iNK = parama;
+    this.jgT = parama;
   }
   
-  private boolean P(int paramInt, String paramString)
+  private boolean R(int paramInt, String paramString)
   {
     AppMethodBeat.i(131323);
     boolean bool;
@@ -65,33 +67,33 @@ public final class i
       Toast.makeText(this.mContext, 2131756462, 0).show();
       bool = true;
       continue;
-      ac.e("MicroMsg.SmsBindMobileObserver", "dealErrCodeBindMobile");
-      if ((i.b.iNQ == this.iNO) || (this.iNO == i.b.iNR))
+      ad.e("MicroMsg.SmsBindMobileObserver", "dealErrCodeBindMobile");
+      if ((i.b.jgZ == this.jgX) || (this.jgX == i.b.jha))
       {
-        com.tencent.mm.kernel.g.agR().agA().set(4097, "");
-        paramString = (String)com.tencent.mm.kernel.g.agR().agA().get(6, "");
-        com.tencent.mm.kernel.g.agR().agA().set(6, this.dnz);
-        if (!bs.isNullOrNil(paramString))
+        g.ajC().ajl().set(4097, "");
+        paramString = (String)g.ajC().ajl().get(6, "");
+        g.ajC().ajl().set(6, this.dzn);
+        if (!bt.isNullOrNil(paramString))
         {
-          if (com.tencent.mm.kernel.g.agR().agA().get(ah.a.GQW, "").equals(paramString)) {
-            com.tencent.mm.kernel.g.agR().agA().set(ah.a.GQW, u.axw());
+          if (g.ajC().ajl().get(al.a.IDt, "").equals(paramString)) {
+            g.ajC().ajl().set(al.a.IDt, u.aAm());
           }
-          Iterator localIterator = ca.hpQ.azx().iterator();
+          Iterator localIterator = cb.hIi.aCA().iterator();
           while (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
-            if (paramString.equals(ca.hpQ.getString(str, "login_user_name"))) {
-              ca.hpQ.m(str, "login_user_name", str);
+            if (paramString.equals(cb.hIi.getString(str, "login_user_name"))) {
+              cb.hIi.l(str, "login_user_name", str);
             }
           }
         }
-        ((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).syncAddrBookAndUpload();
+        ((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).syncAddrBookAndUpload();
       }
       i(2, new Bundle());
       Toast.makeText(this.mContext, 2131756459, 0).show();
       bool = true;
       continue;
-      paramString = com.tencent.mm.h.a.rM(paramString);
+      paramString = com.tencent.mm.h.a.uz(paramString);
       if (paramString != null) {
         paramString.a(this.mContext, null, null);
       }
@@ -119,17 +121,17 @@ public final class i
     }
   }
   
-  private void aQo()
+  private void aTA()
   {
     AppMethodBeat.i(131326);
-    if ((this.iNO == i.b.iNQ) || (this.iNO == i.b.iNR))
+    if ((this.jgX == i.b.jgZ) || (this.jgX == i.b.jha))
     {
       int i = 1;
-      if (this.iNO == i.b.iNR) {
+      if (this.jgX == i.b.jha) {
         i = 18;
       }
-      this.iNM = new z(this.dnz, i, "", 0, "");
-      com.tencent.mm.kernel.g.agi().a(this.iNM, 0);
+      this.jgV = new z(this.dzn, i, "", 0, "");
+      g.aiU().a(this.jgV, 0);
     }
     AppMethodBeat.o(131326);
   }
@@ -137,24 +139,24 @@ public final class i
   private void i(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(131324);
-    if ((this.iNO == i.b.iNQ) || (this.iNO == i.b.iNR)) {
-      com.tencent.mm.kernel.g.agi().b(132, this);
+    if ((this.jgX == i.b.jgZ) || (this.jgX == i.b.jha)) {
+      g.aiU().b(132, this);
     }
-    if (this.iNK != null) {
-      this.iNK.i(paramInt, paramBundle);
+    if (this.jgT != null) {
+      this.jgT.i(paramInt, paramBundle);
     }
     AppMethodBeat.o(131324);
   }
   
-  public final void GA(String paramString)
+  public final void JP(String paramString)
   {
     AppMethodBeat.i(131321);
-    if ((this.iNO == i.b.iNQ) || (this.iNO == i.b.iNR)) {
-      com.tencent.mm.kernel.g.agi().a(132, this);
+    if ((this.jgX == i.b.jgZ) || (this.jgX == i.b.jha)) {
+      g.aiU().a(132, this);
     }
-    this.dnz = paramString;
-    this.gRx = false;
-    aQo();
+    this.dzn = paramString;
+    this.hjP = false;
+    aTA();
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
@@ -162,7 +164,7 @@ public final class i
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        i.this.gRx = true;
+        i.this.hjP = true;
       }
     });
     AppMethodBeat.o(131321);
@@ -171,24 +173,24 @@ public final class i
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(131325);
-    ac.i("MicroMsg.SmsBindMobileObserver", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    ad.i("MicroMsg.SmsBindMobileObserver", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    if ((paramn != this.iNL) && (paramn != this.iNM))
+    if ((paramn != this.jgU) && (paramn != this.jgV))
     {
-      ac.i("MicroMsg.SmsBindMobileObserver", "onSceneEnd, doScene is not called by this class");
+      ad.i("MicroMsg.SmsBindMobileObserver", "onSceneEnd, doScene is not called by this class");
       AppMethodBeat.o(131325);
       return;
     }
-    if (this.gRx)
+    if (this.hjP)
     {
       AppMethodBeat.o(131325);
       return;
     }
-    if (((i.b.iNQ == this.iNO) || (i.b.iNR == this.iNO)) && (paramn.getType() == 132))
+    if (((i.b.jgZ == this.jgX) || (i.b.jha == this.jgX)) && (paramn.getType() == 132))
     {
-      switch (((z)paramn).Js())
+      switch (((z)paramn).KR())
       {
       default: 
         AppMethodBeat.o(131325);
@@ -196,18 +198,18 @@ public final class i
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if ((((z)paramn).Js() == 2) || (((z)paramn).Js() == 19))
+        if ((((z)paramn).KR() == 2) || (((z)paramn).KR() == 19))
         {
-          if (this.iNN) {
-            ((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).syncAddrBookAndUpload();
+          if (this.jgW) {
+            ((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).syncAddrBookAndUpload();
           }
           paramString = new Bundle();
-          if (((z)paramn).Js() == 2)
+          if (((z)paramn).KR() == 2)
           {
-            ac.i("MicroMsg.SmsBindMobileObserver", "bind mobile check, ticket %s", new Object[] { ((z)paramn).aEr() });
-            paramString.putString("setpwd_ticket", ((z)paramn).aEr());
+            ad.i("MicroMsg.SmsBindMobileObserver", "bind mobile check, ticket %s", new Object[] { ((z)paramn).aHw() });
+            paramString.putString("setpwd_ticket", ((z)paramn).aHw());
           }
-          if (((lh)((z)paramn).rr.hvs.hvw).DYQ != 0) {}
+          if (((lr)((z)paramn).rr.hNL.hNQ).FEm != 0) {}
           for (paramInt1 = 1;; paramInt1 = 0)
           {
             if (paramInt1 != 0) {
@@ -222,9 +224,9 @@ public final class i
         AppMethodBeat.o(131325);
         return;
       }
-      if (!P(paramInt2, paramString))
+      if (!R(paramInt2, paramString))
       {
-        paramString = com.tencent.mm.h.a.rM(paramString);
+        paramString = com.tencent.mm.h.a.uz(paramString);
         if (paramString != null)
         {
           paramString.a(this.mContext, null, null);
@@ -243,9 +245,9 @@ public final class i
   public final void recycle()
   {
     AppMethodBeat.i(131322);
-    com.tencent.mm.kernel.g.agi().b(132, this);
+    g.aiU().b(132, this);
     this.mContext = null;
-    this.gRx = true;
+    this.hjP = true;
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }

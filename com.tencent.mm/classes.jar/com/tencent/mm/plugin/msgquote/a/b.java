@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.msgquote.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dz;
+import com.tencent.mm.g.c.ej;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends dz
+  extends ej
 {
   protected static c.a info;
   
@@ -16,27 +16,27 @@ public final class b
   {
     AppMethodBeat.i(88813);
     c.a locala = new c.a();
-    locala.GvF = new Field[5];
+    locala.IhA = new Field[5];
     locala.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.GvH.put("msgId", "LONG");
+    locala.IhC.put("msgId", "LONG");
     localStringBuilder.append(" msgId LONG");
     localStringBuilder.append(", ");
     locala.columns[1] = "msgSvrId";
-    locala.GvH.put("msgSvrId", "LONG");
+    locala.IhC.put("msgSvrId", "LONG");
     localStringBuilder.append(" msgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[2] = "quotedMsgId";
-    locala.GvH.put("quotedMsgId", "LONG");
+    locala.IhC.put("quotedMsgId", "LONG");
     localStringBuilder.append(" quotedMsgId LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "quotedMsgSvrId";
-    locala.GvH.put("quotedMsgSvrId", "LONG");
+    locala.IhC.put("quotedMsgSvrId", "LONG");
     localStringBuilder.append(" quotedMsgSvrId LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "status";
-    locala.GvH.put("status", "INTEGER");
+    locala.IhC.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     locala.columns[5] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -44,7 +44,7 @@ public final class b
     AppMethodBeat.o(88813);
   }
   
-  private b dfc()
+  private b doA()
   {
     AppMethodBeat.i(88811);
     b localb = new b();
@@ -63,7 +63,7 @@ public final class b
     {
       for (;;)
       {
-        ac.i("MicroMsg.msgquote.MsgQute", "clone() Exception:%s %s", new Object[] { localException.getClass(), localException.getMessage() });
+        ad.i("MicroMsg.msgquote.MsgQute", "clone() Exception:%s %s", new Object[] { localException.getClass(), localException.getMessage() });
       }
     }
   }
@@ -83,7 +83,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.a.b
  * JD-Core Version:    0.7.0.1
  */

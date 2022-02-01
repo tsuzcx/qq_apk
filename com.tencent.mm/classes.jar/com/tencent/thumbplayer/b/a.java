@@ -20,15 +20,19 @@ public abstract interface a
   
   public abstract void a(p paramp);
   
-  public abstract void cd(float paramFloat);
+  public abstract void b(f paramf);
   
-  public abstract j fEJ();
+  public abstract void ci(float paramFloat);
   
-  public abstract void fFd();
+  public abstract j fWb();
+  
+  public abstract void fWu();
   
   public abstract long getCurrentPositionMs();
   
   public abstract long getDurationMs();
+  
+  public abstract long getPropertyLong(int paramInt);
   
   public abstract int getVideoHeight();
   
@@ -54,9 +58,9 @@ public abstract interface a
   
   public abstract void stop();
   
-  public abstract void yI(boolean paramBoolean);
+  public abstract void zv(boolean paramBoolean);
   
-  public abstract void yJ(boolean paramBoolean);
+  public abstract void zw(boolean paramBoolean);
 }
 
 

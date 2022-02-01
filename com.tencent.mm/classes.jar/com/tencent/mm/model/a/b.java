@@ -5,25 +5,25 @@ import java.util.HashMap;
 
 public final class b
 {
-  public String fQg;
-  public String hqi;
-  public String hqj;
-  public String hqk;
-  public HashMap<String, e> hql;
+  public String gjG;
+  public String hIA;
+  public String hIB;
+  public String hIC;
+  public HashMap<String, e> hID;
   
   public b()
   {
     AppMethodBeat.i(153089);
-    this.hql = new HashMap();
+    this.hID = new HashMap();
     AppMethodBeat.o(153089);
   }
   
-  public final e yF(String paramString)
+  public final e BE(String paramString)
   {
     AppMethodBeat.i(153090);
-    if ((this.hql != null) && (this.hql.containsKey(paramString)))
+    if ((this.hID != null) && (this.hID.containsKey(paramString)))
     {
-      paramString = (e)this.hql.get(paramString);
+      paramString = (e)this.hID.get(paramString);
       AppMethodBeat.o(153090);
       return paramString;
     }
@@ -33,7 +33,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.a.b
  * JD-Core Version:    0.7.0.1
  */

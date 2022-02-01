@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,47 +22,47 @@ public final class d
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144498);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(151);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(151);
     if (paramJSONObject == null)
     {
-      ac.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "getBLEDeviceCharacteristics data is null");
+      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "getBLEDeviceCharacteristics data is null");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10013));
-      paramc.h(paramInt, k("fail:invalid data", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(153, 154);
+      paramc.h(paramInt, m("fail:invalid data", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 154);
       AppMethodBeat.o(144498);
       return;
     }
-    ac.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "appId:%s getBLEDeviceCharacteristics data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
-    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.LX(paramc.getAppId());
+    ad.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "appId:%s getBLEDeviceCharacteristics data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
+    Object localObject = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Pt(paramc.getAppId());
     if (localObject == null)
     {
-      ac.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "bleWorker is null, may not open ble");
+      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
-      paramc.h(paramInt, k("fail:not init", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(153, 156);
+      paramc.h(paramInt, m("fail:not init", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 156);
       AppMethodBeat.o(144498);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfV())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjz())
     {
-      ac.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "adapter is null or not enabled!");
+      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "adapter is null or not enabled!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramc.h(paramInt, k("fail:not available", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(153, 158);
+      paramc.h(paramInt, m("fail:not available", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 158);
       AppMethodBeat.o(144498);
       return;
     }
-    localObject = ((b)localObject).cT(paramJSONObject.optString("deviceId"), paramJSONObject.optString("serviceId"));
+    localObject = ((b)localObject).cV(paramJSONObject.optString("deviceId"), paramJSONObject.optString("serviceId"));
     paramJSONObject = new HashMap();
     if ((localObject == null) || (((List)localObject).size() <= 0))
     {
-      ac.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "not found characteristic");
+      ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "not found characteristic");
       paramJSONObject.put("errCode", Integer.valueOf(10005));
-      paramc.h(paramInt, k("fail:no characteristic", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(153, 159);
+      paramc.h(paramInt, m("fail:no characteristic", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(153, 159);
       AppMethodBeat.o(144498);
       return;
     }
@@ -81,24 +81,24 @@ public final class d
           localc.jsonObject = new JSONObject();
           localc.jsonObject.put("uuid", localc.uuid);
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("read", localc.kkr);
-          if (localc.kks) {
+          localJSONObject.put("read", localc.kFr);
+          if (localc.kFs) {
             break label658;
           }
-          if (!localc.kkt) {
+          if (!localc.kFt) {
             break label536;
           }
           break label658;
           localJSONObject.put("write", bool);
-          localJSONObject.put("notify", localc.hnr);
-          localJSONObject.put("indicate", localc.kku);
+          localJSONObject.put("notify", localc.hFJ);
+          localJSONObject.put("indicate", localc.kFu);
           localc.jsonObject.put("properties", localJSONObject);
         }
         paramJSONObject.put(localc.jsonObject);
       }
       catch (JSONException localJSONException)
       {
-        ac.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "JSONException %s", new Object[] { localJSONException.getMessage() });
+        ad.e("MicroMsg.JsApiGetBLEDeviceCharacteristics", "JSONException %s", new Object[] { localJSONException.getMessage() });
       }
       break;
       label536:
@@ -110,9 +110,9 @@ public final class d
         ((JSONObject)localObject).put("errMsg", getName() + ":ok");
         ((JSONObject)localObject).put("characteristics", paramJSONObject);
         ((JSONObject)localObject).put("errCode", 0);
-        ac.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "retJson %s", new Object[] { ((JSONObject)localObject).toString() });
+        ad.i("MicroMsg.JsApiGetBLEDeviceCharacteristics", "retJson %s", new Object[] { ((JSONObject)localObject).toString() });
         paramc.h(paramInt, ((JSONObject)localObject).toString());
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(152);
+        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(152);
         AppMethodBeat.o(144498);
         return;
       }
@@ -120,7 +120,7 @@ public final class d
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.JsApiGetBLEDeviceCharacteristics", paramJSONObject, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.JsApiGetBLEDeviceCharacteristics", paramJSONObject, "", new Object[0]);
         }
       }
       label658:
@@ -130,7 +130,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.d
  * JD-Core Version:    0.7.0.1
  */

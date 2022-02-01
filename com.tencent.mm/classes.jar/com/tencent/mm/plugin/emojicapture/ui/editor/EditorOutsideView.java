@@ -10,16 +10,16 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorOutsideView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clipPath", "Landroid/graphics/Path;", "outsidePaint", "Landroid/graphics/Paint;", "outsidePath", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/EditorOutsideView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "clipPath", "Landroid/graphics/Path;", "outsidePaint", "Landroid/graphics/Paint;", "outsidePath", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "setValidArea", "bounds", "Landroid/graphics/RectF;", "radius", "", "plugin-emojicapture_release"})
 public final class EditorOutsideView
   extends View
 {
-  private final Path ppS;
-  private final Paint ptT;
-  private final Path ptU;
+  private final Path pTt;
+  private final Paint pXx;
+  private final Path pXy;
   
   public EditorOutsideView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,21 +32,21 @@ public final class EditorOutsideView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(766);
-    this.ppS = new Path();
-    this.ptT = new Paint();
-    this.ptU = new Path();
-    this.ptT.setAntiAlias(true);
-    this.ptT.setColor(getResources().getColor(2131099679));
-    this.ptT.setAlpha(127);
+    this.pTt = new Path();
+    this.pXx = new Paint();
+    this.pXy = new Path();
+    this.pXx.setAntiAlias(true);
+    this.pXx.setColor(getResources().getColor(2131099679));
+    this.pXx.setAlpha(127);
     AppMethodBeat.o(766);
   }
   
   public final void a(RectF paramRectF, float paramFloat)
   {
     AppMethodBeat.i(764);
-    k.h(paramRectF, "bounds");
-    this.ppS.reset();
-    this.ppS.addRoundRect(new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom), paramFloat, paramFloat, Path.Direction.CW);
+    p.h(paramRectF, "bounds");
+    this.pTt.reset();
+    this.pTt.addRoundRect(new RectF(paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.bottom), paramFloat, paramFloat, Path.Direction.CW);
     postInvalidate();
     AppMethodBeat.o(764);
   }
@@ -54,12 +54,12 @@ public final class EditorOutsideView
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(765);
-    k.h(paramCanvas, "canvas");
+    p.h(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    this.ptU.reset();
-    this.ptU.addPath(this.ppS);
-    this.ptU.addRect(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), Path.Direction.CCW);
-    paramCanvas.drawPath(this.ptU, this.ptT);
+    this.pXy.reset();
+    this.pXy.addPath(this.pTt);
+    this.pXy.addRect(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), Path.Direction.CCW);
+    paramCanvas.drawPath(this.pXy, this.pXx);
     AppMethodBeat.o(765);
   }
 }

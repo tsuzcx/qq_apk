@@ -18,6 +18,12 @@ public final class b
     catch (IOException paramCloseable)
     {
       AppMethodBeat.o(127394);
+      return;
+    }
+    catch (IllegalStateException paramCloseable)
+    {
+      label18:
+      break label18;
     }
   }
 }

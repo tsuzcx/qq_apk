@@ -15,8 +15,8 @@ public final class s
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, int paramInt)
   {
     AppMethodBeat.i(144923);
-    paramd.jzc.setTextSize(paramInt);
-    paramd.jzb.setTextSize(paramInt);
+    paramd.jSZ.setTextSize(paramInt);
+    paramd.jSY.setTextSize(paramInt);
     AppMethodBeat.o(144923);
     return true;
   }
@@ -48,7 +48,7 @@ public final class s
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144921);
     SetFontSizeActionArg localSetFontSizeActionArg = new SetFontSizeActionArg();

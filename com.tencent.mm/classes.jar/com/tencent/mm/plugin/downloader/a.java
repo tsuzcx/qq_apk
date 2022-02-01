@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.downloader;
 
 import android.os.FileObserver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
   extends FileObserver
 {
-  private String oFm;
+  private String piQ;
   
   public a(String paramString)
   {
     super(paramString, 618);
-    this.oFm = paramString;
+    this.piQ = paramString;
   }
   
   public final void onEvent(int paramInt, String paramString)
@@ -20,11 +20,11 @@ public final class a
     AppMethodBeat.i(88814);
     if (paramString == null)
     {
-      ac.e("DownloadsObserver", "path should be null");
+      ad.e("DownloadsObserver", "path should be null");
       AppMethodBeat.o(88814);
       return;
     }
-    paramString = this.oFm + paramString;
+    paramString = this.piQ + paramString;
     switch (paramInt)
     {
     }
@@ -32,16 +32,16 @@ public final class a
     {
       AppMethodBeat.o(88814);
       return;
-      ac.i("DownloadsObserver", "close write file: %s", new Object[] { paramString });
+      ad.i("DownloadsObserver", "close write file: %s", new Object[] { paramString });
       AppMethodBeat.o(88814);
       return;
-      ac.i("DownloadsObserver", "open file: %s", new Object[] { paramString });
+      ad.i("DownloadsObserver", "open file: %s", new Object[] { paramString });
       AppMethodBeat.o(88814);
       return;
-      ac.i("DownloadsObserver", "delete file: %s", new Object[] { paramString });
+      ad.i("DownloadsObserver", "delete file: %s", new Object[] { paramString });
       AppMethodBeat.o(88814);
       return;
-      ac.i("DownloadsObserver", "move from file: %s", new Object[] { paramString });
+      ad.i("DownloadsObserver", "move from file: %s", new Object[] { paramString });
     }
   }
 }

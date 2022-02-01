@@ -8,15 +8,15 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String dac;
-  public double daf;
-  public String dbI;
+  public String dlu;
+  public double dlx;
+  public String dne;
   
   public a(double paramDouble, String paramString)
   {
     AppMethodBeat.i(71961);
-    this.daf = paramDouble;
-    this.dbI = paramString;
+    this.dlx = paramDouble;
+    this.dne = paramString;
     HashMap localHashMap = new HashMap();
     localHashMap.put("total_fee", Math.round(100.0D * paramDouble));
     localHashMap.put("fee_type", paramString);
@@ -24,7 +24,7 @@ public final class a
     AppMethodBeat.o(71961);
   }
   
-  public final int eqK()
+  public final int eEK()
   {
     return 20;
   }
@@ -32,7 +32,7 @@ public final class a
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(71962);
-    this.dac = paramJSONObject.optString("prepayid");
+    this.dlu = paramJSONObject.optString("prepayid");
     AppMethodBeat.o(71962);
   }
 }

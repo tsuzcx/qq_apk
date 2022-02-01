@@ -35,7 +35,7 @@ public final class f
     }
   }
   
-  public static c fA(View paramView)
+  public static c fP(View paramView)
   {
     AppMethodBeat.i(30623);
     if (paramView == null)
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.c.f
  * JD-Core Version:    0.7.0.1
  */

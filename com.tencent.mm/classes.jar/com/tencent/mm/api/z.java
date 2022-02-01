@@ -5,11 +5,11 @@ import com.tencent.mm.pluginsdk.ui.chat.f;
 public class z
   implements f
 {
-  public a cGS;
+  public a cRW;
   
   public final void a(a parama)
   {
-    this.cGS = parama;
+    this.cRW = parama;
   }
   
   public static abstract interface a

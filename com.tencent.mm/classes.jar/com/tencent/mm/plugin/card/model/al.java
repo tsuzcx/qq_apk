@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public final class al
     this.db = parame;
   }
   
-  public final List<ak> bQg()
+  public final List<ak> bUL()
   {
     AppMethodBeat.i(112870);
     ArrayList localArrayList = new ArrayList();
@@ -39,7 +39,7 @@ public final class al
       localArrayList.add(localak);
     }
     localCursor.close();
-    ac.d("MicroMsg.PendingCardIdInfoStorage", "getAll, count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    ad.d("MicroMsg.PendingCardIdInfoStorage", "getAll, count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
     AppMethodBeat.o(112870);
     return localArrayList;
   }

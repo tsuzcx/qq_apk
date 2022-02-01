@@ -1,11 +1,11 @@
 package kotlinx.coroutines.b;
 
 import d.l;
-import kotlinx.coroutines.internal.j;
+import kotlinx.coroutines.internal.k;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/scheduling/GlobalQueue;", "Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "Lkotlinx/coroutines/scheduling/Task;", "()V", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/scheduling/GlobalQueue;", "Lkotlinx/coroutines/internal/LockFreeTaskQueue;", "Lkotlinx/coroutines/scheduling/Task;", "()V", "kotlinx-coroutines-core"})
 public final class e
-  extends j<i>
+  extends k<i>
 {}
 
 

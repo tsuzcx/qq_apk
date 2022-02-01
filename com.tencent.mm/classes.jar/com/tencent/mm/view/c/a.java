@@ -2,10 +2,10 @@ package com.tencent.mm.view.c;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.c.o;
+import com.tencent.mm.aw.a.c.o;
 import com.tencent.mm.b.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,12 +14,12 @@ import java.util.Set;
 public final class a
   implements o
 {
-  private com.tencent.mm.av.a.d.a<String, Bitmap> JAW;
+  private com.tencent.mm.aw.a.d.a<String, Bitmap> Lud;
   
   public a()
   {
     AppMethodBeat.i(105276);
-    this.JAW = new com.tencent.mm.av.a.d.a(150);
+    this.Lud = new com.tencent.mm.aw.a.d.a(150);
     AppMethodBeat.o(105276);
   }
   
@@ -28,10 +28,10 @@ public final class a
     AppMethodBeat.i(105279);
     try
     {
-      if (this.JAW == null) {
+      if (this.Lud == null) {
         break label160;
       }
-      Object localObject1 = this.JAW.snapshot();
+      Object localObject1 = this.Lud.snapshot();
       if ((!((Map)localObject1).isEmpty()) && (((Map)localObject1).size() > 0))
       {
         localObject1 = ((Map)localObject1).entrySet().iterator();
@@ -39,24 +39,24 @@ public final class a
         {
           Bitmap localBitmap = (Bitmap)((Map.Entry)((Iterator)localObject1).next()).getValue();
           if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-            ac.i("MicroMsg.emoji.EmojiLoaderMemoryCache", "recycle bitmap:%s, not need", new Object[] { localBitmap.toString() });
+            ad.i("MicroMsg.emoji.EmojiLoaderMemoryCache", "recycle bitmap:%s, not need", new Object[] { localBitmap.toString() });
           }
         }
       }
-      localObject3 = this.JAW;
+      localObject3 = this.Lud;
     }
     finally
     {
       AppMethodBeat.o(105279);
     }
     Object localObject3;
-    if (((com.tencent.mm.av.a.d.a)localObject3).gMv == null)
+    if (((com.tencent.mm.aw.a.d.a)localObject3).hgs == null)
     {
       localObject3 = new NullPointerException("mData == null");
       AppMethodBeat.o(105279);
       throw ((Throwable)localObject3);
     }
-    ((com.tencent.mm.av.a.d.a)localObject3).gMv.trimToSize(-1);
+    ((com.tencent.mm.aw.a.d.a)localObject3).hgs.trimToSize(-1);
     label160:
     AppMethodBeat.o(105279);
   }
@@ -64,28 +64,28 @@ public final class a
   public final void put(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(105278);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.w("MicroMsg.emoji.EmojiLoaderMemoryCache", "[cpan] put failed. key is null.");
+      ad.w("MicroMsg.emoji.EmojiLoaderMemoryCache", "[cpan] put failed. key is null.");
       AppMethodBeat.o(105278);
       return;
     }
     if (paramBitmap == null)
     {
-      ac.w("MicroMsg.emoji.EmojiLoaderMemoryCache", "[cpan] put failed.value is null.");
+      ad.w("MicroMsg.emoji.EmojiLoaderMemoryCache", "[cpan] put failed.value is null.");
       AppMethodBeat.o(105278);
       return;
     }
-    this.JAW.put(paramString, paramBitmap);
+    this.Lud.put(paramString, paramBitmap);
     AppMethodBeat.o(105278);
   }
   
-  public final Bitmap te(String paramString)
+  public final Bitmap vT(String paramString)
   {
     AppMethodBeat.i(105277);
-    if (!bs.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      paramString = (Bitmap)this.JAW.get(paramString);
+      paramString = (Bitmap)this.Lud.get(paramString);
       AppMethodBeat.o(105277);
       return paramString;
     }

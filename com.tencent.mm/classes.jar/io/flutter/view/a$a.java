@@ -9,10 +9,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(9824);
-    KQB = new a("ACCESSIBLE_NAVIGATION", 0, 1);
-    KQC = new a("INVERT_COLORS", 1, 2);
-    KQD = new a("DISABLE_ANIMATIONS", 2, 4);
-    KQE = new a[] { KQB, KQC, KQD };
+    MHA = new a("ACCESSIBLE_NAVIGATION", 0, 1);
+    MHB = new a("INVERT_COLORS", 1, 2);
+    MHC = new a("DISABLE_ANIMATIONS", 2, 4);
+    MHD = new a[] { MHA, MHB, MHC };
     AppMethodBeat.o(9824);
   }
   

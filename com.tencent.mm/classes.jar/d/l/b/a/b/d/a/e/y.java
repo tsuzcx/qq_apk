@@ -5,15 +5,15 @@ import d.l.b.a.b.f.f;
 public abstract interface y
   extends d
 {
-  public abstract f fRf();
+  public abstract f giD();
   
-  public abstract boolean fTG();
+  public abstract v gkX();
   
-  public abstract v fTy();
+  public abstract boolean glf();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.y
  * JD-Core Version:    0.7.0.1
  */

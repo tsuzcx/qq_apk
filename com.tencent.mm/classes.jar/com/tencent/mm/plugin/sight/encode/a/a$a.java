@@ -7,17 +7,17 @@ public enum a$a
   static
   {
     AppMethodBeat.i(28704);
-    xFj = new a("WaitStart", 0);
-    xFk = new a("Start", 1);
-    xFl = new a("PrepareStop", 2);
-    xFm = new a("WaitStop", 3);
-    xFn = new a("Stop", 4);
-    xFo = new a("WaitSend", 5);
-    xFp = new a("Sent", 6);
-    xFq = new a("Error", 7);
-    xFr = new a("Initialized", 8);
-    xFs = new a("Pause", 9);
-    xFt = new a[] { xFj, xFk, xFl, xFm, xFn, xFo, xFp, xFq, xFr, xFs };
+    yTT = new a("WaitStart", 0);
+    yTU = new a("Start", 1);
+    yTV = new a("PrepareStop", 2);
+    yTW = new a("WaitStop", 3);
+    yTX = new a("Stop", 4);
+    yTY = new a("WaitSend", 5);
+    yTZ = new a("Sent", 6);
+    yUa = new a("Error", 7);
+    yUb = new a("Initialized", 8);
+    yUc = new a("Pause", 9);
+    yUd = new a[] { yTT, yTU, yTV, yTW, yTX, yTY, yTZ, yUa, yUb, yUc };
     AppMethodBeat.o(28704);
   }
   
@@ -25,7 +25,7 @@ public enum a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.a.a.a
  * JD-Core Version:    0.7.0.1
  */

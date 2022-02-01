@@ -6,19 +6,19 @@ public final class c
   public static final int CTRL_INDEX = 478;
   public static final String NAME = "startCustomFacialRecognitionVerifyAndUploadVideo";
   
-  protected final boolean bfA()
-  {
-    return false;
-  }
-  
-  protected final boolean bfy()
+  protected final boolean bjb()
   {
     return true;
   }
   
-  protected final String bfz()
+  protected final String bjc()
   {
     return "startCustomFacialRecognitionVerifyAndUploadVideo";
+  }
+  
+  protected final boolean bjd()
+  {
+    return false;
   }
 }
 

@@ -21,52 +21,52 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.Transformation;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cl.a.a;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.aq;
 
 public class MMSwitchBtn
   extends View
 {
-  private int JaA;
-  private int JaB;
-  private int JaC;
-  private int JaD;
-  public boolean JaE;
-  private RectF JaF;
-  private RectF JaG;
-  private int JaH;
-  private int JaI;
-  private int JaJ;
-  private String JaK;
-  private String JaL;
-  private b JaM;
-  private a JaN;
-  private long Jas;
-  private int Jat;
-  private int Jau;
-  private int Jav;
-  private boolean Jaw;
-  private boolean Jax;
-  private float Jay;
-  private float Jaz;
+  private float AAy;
+  private float AAz;
+  private long KRD;
+  private int KRE;
+  private int KRF;
+  private int KRG;
+  private boolean KRH;
+  private boolean KRI;
+  private float KRJ;
+  private float KRK;
+  private int KRL;
+  private int KRM;
+  private int KRN;
+  private int KRO;
+  public boolean KRP;
+  private RectF KRQ;
+  private RectF KRR;
+  private int KRS;
+  private int KRT;
+  private int KRU;
+  private String KRV;
+  private String KRW;
+  private b KRX;
+  private a KRY;
   private int edgePadding;
   private int maxHeight;
   private int maxWidth;
-  private Paint owg;
-  private int qc;
-  private float ziA;
-  private float ziz;
+  private Paint oZB;
+  private int rW;
   
   public MMSwitchBtn(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(159271);
-    this.Jaw = false;
-    this.Jax = false;
-    this.JaE = false;
-    this.owg = new Paint(1);
-    this.JaF = new RectF();
-    this.JaG = new RectF();
-    this.JaM = new b((byte)0);
+    this.KRH = false;
+    this.KRI = false;
+    this.KRP = false;
+    this.oZB = new Paint(1);
+    this.KRQ = new RectF();
+    this.KRR = new RectF();
+    this.KRX = new b((byte)0);
     init();
     AppMethodBeat.o(159271);
   }
@@ -75,13 +75,13 @@ public class MMSwitchBtn
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159270);
-    this.Jaw = false;
-    this.Jax = false;
-    this.JaE = false;
-    this.owg = new Paint(1);
-    this.JaF = new RectF();
-    this.JaG = new RectF();
-    this.JaM = new b((byte)0);
+    this.KRH = false;
+    this.KRI = false;
+    this.KRP = false;
+    this.oZB = new Paint(1);
+    this.KRQ = new RectF();
+    this.KRR = new RectF();
+    this.KRX = new b((byte)0);
     init();
     d(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMSwitchBtn));
     AppMethodBeat.o(159270);
@@ -91,13 +91,13 @@ public class MMSwitchBtn
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159269);
-    this.Jaw = false;
-    this.Jax = false;
-    this.JaE = false;
-    this.owg = new Paint(1);
-    this.JaF = new RectF();
-    this.JaG = new RectF();
-    this.JaM = new b((byte)0);
+    this.KRH = false;
+    this.KRI = false;
+    this.KRP = false;
+    this.oZB = new Paint(1);
+    this.KRQ = new RectF();
+    this.KRR = new RectF();
+    this.KRX = new b((byte)0);
     init();
     d(paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MMSwitchBtn));
     AppMethodBeat.o(159269);
@@ -106,73 +106,73 @@ public class MMSwitchBtn
   private void d(TypedArray paramTypedArray)
   {
     AppMethodBeat.i(159273);
-    this.JaI = paramTypedArray.getColor(2, this.JaC);
-    this.JaH = paramTypedArray.getColor(0, this.JaB);
-    this.JaJ = paramTypedArray.getColor(4, this.JaA);
-    this.JaK = paramTypedArray.getString(3);
-    this.JaL = paramTypedArray.getString(1);
+    this.KRT = paramTypedArray.getColor(2, this.KRN);
+    this.KRS = paramTypedArray.getColor(0, this.KRM);
+    this.KRU = paramTypedArray.getColor(4, this.KRL);
+    this.KRV = paramTypedArray.getString(3);
+    this.KRW = paramTypedArray.getString(1);
     paramTypedArray.recycle();
     AppMethodBeat.o(159273);
   }
   
-  private void fuJ()
-  {
-    if (this.Jav < this.maxHeight) {
-      this.JaG.top = ((this.maxHeight - this.Jav) / 2 + this.edgePadding);
-    }
-    for (this.JaG.bottom = (this.JaG.top + this.Jav - this.edgePadding * 2); this.JaE; this.JaG.bottom = (this.maxHeight - this.edgePadding))
-    {
-      this.JaG.left = (this.Jau + this.edgePadding);
-      this.JaG.right = (this.maxWidth - this.edgePadding);
-      return;
-      this.JaG.top = this.edgePadding;
-    }
-    this.JaG.left = this.edgePadding;
-    this.JaG.right = ((int)(this.Jaz * 2.0F) + this.edgePadding);
-  }
-  
-  private void fuK()
-  {
-    if (this.JaG.left < this.edgePadding) {
-      this.JaG.left = this.edgePadding;
-    }
-    if (this.JaG.left > this.Jau + this.edgePadding) {
-      this.JaG.left = (this.Jau + this.edgePadding);
-    }
-    this.JaG.right = (this.JaG.left + (int)(this.Jaz * 2.0F));
-  }
-  
-  private void fua()
+  private void fKN()
   {
     AppMethodBeat.i(159278);
-    if (this.JaG.left > this.Jat)
+    if (this.KRR.left > this.KRE)
     {
-      xV(true);
+      yJ(true);
       AppMethodBeat.o(159278);
       return;
     }
-    xV(false);
+    yJ(false);
     AppMethodBeat.o(159278);
+  }
+  
+  private void fLw()
+  {
+    if (this.KRG < this.maxHeight) {
+      this.KRR.top = ((this.maxHeight - this.KRG) / 2 + this.edgePadding);
+    }
+    for (this.KRR.bottom = (this.KRR.top + this.KRG - this.edgePadding * 2); this.KRP; this.KRR.bottom = (this.maxHeight - this.edgePadding))
+    {
+      this.KRR.left = (this.KRF + this.edgePadding);
+      this.KRR.right = (this.maxWidth - this.edgePadding);
+      return;
+      this.KRR.top = this.edgePadding;
+    }
+    this.KRR.left = this.edgePadding;
+    this.KRR.right = ((int)(this.KRK * 2.0F) + this.edgePadding);
+  }
+  
+  private void fLx()
+  {
+    if (this.KRR.left < this.edgePadding) {
+      this.KRR.left = this.edgePadding;
+    }
+    if (this.KRR.left > this.KRF + this.edgePadding) {
+      this.KRR.left = (this.KRF + this.edgePadding);
+    }
+    this.KRR.right = (this.KRR.left + (int)(this.KRK * 2.0F));
   }
   
   private void init()
   {
     AppMethodBeat.i(159272);
     this.edgePadding = getResources().getDimensionPixelSize(2131165575);
-    this.Jay = getResources().getDimensionPixelSize(2131165582);
-    this.Jaz = getResources().getDimensionPixelSize(2131165581);
-    this.JaA = getResources().getColor(2131099828);
-    this.JaB = getResources().getColor(2131101001);
-    this.JaC = getResources().getColor(2131101002);
-    this.JaD = getResources().getColor(2131100022);
-    this.JaI = this.JaC;
-    this.JaH = this.JaB;
-    this.JaJ = this.JaA;
-    this.qc = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+    this.KRJ = getResources().getDimensionPixelSize(2131165582);
+    this.KRK = getResources().getDimensionPixelSize(2131165581);
+    this.KRL = getResources().getColor(2131099828);
+    this.KRM = getResources().getColor(2131101001);
+    this.KRN = getResources().getColor(2131101002);
+    this.KRO = getResources().getColor(2131100022);
+    this.KRT = this.KRN;
+    this.KRS = this.KRM;
+    this.KRU = this.KRL;
+    this.rW = ViewConfiguration.get(getContext()).getScaledTouchSlop();
     AppMethodBeat.o(159272);
   }
   
-  private void ki(boolean paramBoolean)
+  private void kt(boolean paramBoolean)
   {
     AppMethodBeat.i(159277);
     ViewParent localViewParent = getParent();
@@ -182,28 +182,28 @@ public class MMSwitchBtn
     AppMethodBeat.o(159277);
   }
   
-  private void xV(boolean paramBoolean)
+  private void yJ(boolean paramBoolean)
   {
     AppMethodBeat.i(159276);
-    this.Jaw = true;
-    this.JaM.reset();
+    this.KRH = true;
+    this.KRX.reset();
     if (paramBoolean) {
-      this.JaM.JaO = (this.Jau - this.JaG.left + this.edgePadding);
+      this.KRX.KRZ = (this.KRF - this.KRR.left + this.edgePadding);
     }
-    for (this.JaM.direction = 1;; this.JaM.direction = 0)
+    for (this.KRX.direction = 1;; this.KRX.direction = 0)
     {
-      this.JaM.km = this.JaG.left;
-      this.JaM.setDuration(80L * this.JaM.JaO / this.Jau);
-      startAnimation(this.JaM);
+      this.KRX.mc = this.KRR.left;
+      this.KRX.setDuration(80L * this.KRX.KRZ / this.KRF);
+      startAnimation(this.KRX);
       AppMethodBeat.o(159276);
       return;
-      this.JaM.JaO = (this.JaG.left);
+      this.KRX.KRZ = (this.KRR.left);
     }
   }
   
-  public final boolean fuI()
+  public final boolean fLv()
   {
-    return this.JaE;
+    return this.KRP;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -212,45 +212,45 @@ public class MMSwitchBtn
     int i;
     if (!isEnabled())
     {
-      i = this.JaD;
-      this.owg.setAlpha(38);
+      i = this.KRO;
+      this.oZB.setAlpha(38);
     }
     for (;;)
     {
-      this.owg.setColor(i);
-      paramCanvas.drawRoundRect(this.JaF, this.Jay, this.Jay, this.owg);
-      this.owg.setColor(this.JaI);
-      this.owg.setAlpha(Math.min(255, (int)((this.JaG.left - this.edgePadding) / this.Jau * 255.0F)));
-      paramCanvas.drawRoundRect(this.JaF, this.Jay, this.Jay, this.owg);
-      this.owg.setColor(this.JaJ);
-      paramCanvas.drawRoundRect(this.JaG, this.Jaz, this.Jaz, this.owg);
-      if ((this.JaK != null) && (this.JaL != null))
+      this.oZB.setColor(i);
+      paramCanvas.drawRoundRect(this.KRQ, this.KRJ, this.KRJ, this.oZB);
+      this.oZB.setColor(this.KRT);
+      this.oZB.setAlpha(Math.min(255, (int)((this.KRR.left - this.edgePadding) / this.KRF * 255.0F)));
+      paramCanvas.drawRoundRect(this.KRQ, this.KRJ, this.KRJ, this.oZB);
+      this.oZB.setColor(this.KRU);
+      paramCanvas.drawRoundRect(this.KRR, this.KRK, this.KRK, this.oZB);
+      if ((this.KRV != null) && (this.KRW != null))
       {
         Paint localPaint = new Paint();
         localPaint.setTextSize(getResources().getDimension(2131165569));
         localPaint.setTextAlign(Paint.Align.CENTER);
         localPaint.setColor(getResources().getColor(2131101182));
         localPaint.setAntiAlias(true);
-        i = Math.min(255, (int)((this.JaG.left - this.edgePadding) / this.Jau * 255.0F));
+        i = Math.min(255, (int)((this.KRR.left - this.edgePadding) / this.KRF * 255.0F));
         Rect localRect = new Rect();
-        localPaint.getTextBounds(this.JaK, 0, this.JaK.length(), localRect);
+        localPaint.getTextBounds(this.KRV, 0, this.KRV.length(), localRect);
         localPaint.setAlpha(i);
-        float f2 = (this.JaF.left + this.JaF.right) / 2.0F;
-        float f3 = this.Jaz;
-        float f4 = ao.fromDPToPix(getContext(), 1);
-        float f1 = (this.JaF.top + this.JaF.bottom) / 2.0F;
-        f1 = localRect.height() / 2.0F + f1 - ao.fromDPToPix(getContext(), 1);
-        paramCanvas.drawText(this.JaK, f2 - f3 + f4, f1, localPaint);
-        f2 = (this.JaF.left + this.JaF.right) / 2.0F;
-        f3 = this.Jaz;
-        f4 = ao.fromDPToPix(getContext(), 1);
+        float f2 = (this.KRQ.left + this.KRQ.right) / 2.0F;
+        float f3 = this.KRK;
+        float f4 = aq.fromDPToPix(getContext(), 1);
+        float f1 = (this.KRQ.top + this.KRQ.bottom) / 2.0F;
+        f1 = localRect.height() / 2.0F + f1 - aq.fromDPToPix(getContext(), 1);
+        paramCanvas.drawText(this.KRV, f2 - f3 + f4, f1, localPaint);
+        f2 = (this.KRQ.left + this.KRQ.right) / 2.0F;
+        f3 = this.KRK;
+        f4 = aq.fromDPToPix(getContext(), 1);
         localPaint.setAlpha(255 - i);
-        paramCanvas.drawText(this.JaL, f2 + f3 - f4, f1, localPaint);
+        paramCanvas.drawText(this.KRW, f2 + f3 - f4, f1, localPaint);
       }
       AppMethodBeat.o(159280);
       return;
-      i = this.JaH;
-      this.owg.setAlpha(255);
+      i = this.KRS;
+      this.oZB.setAlpha(255);
     }
   }
   
@@ -260,22 +260,22 @@ public class MMSwitchBtn
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.maxWidth = (paramInt3 - paramInt1);
     this.maxHeight = (paramInt4 - paramInt2);
-    this.Jau = (this.maxWidth - (int)(this.Jaz * 2.0F) - this.edgePadding * 2);
-    this.Jat = (this.Jau / 2);
-    this.Jav = getResources().getDimensionPixelSize(2131165580);
-    if (this.Jav < this.maxHeight) {
-      this.JaF.top = ((this.maxHeight - this.Jav) / 2);
+    this.KRF = (this.maxWidth - (int)(this.KRK * 2.0F) - this.edgePadding * 2);
+    this.KRE = (this.KRF / 2);
+    this.KRG = getResources().getDimensionPixelSize(2131165580);
+    if (this.KRG < this.maxHeight) {
+      this.KRQ.top = ((this.maxHeight - this.KRG) / 2);
     }
-    for (this.JaF.bottom = (this.JaF.top + this.Jav);; this.JaF.bottom = this.maxHeight)
+    for (this.KRQ.bottom = (this.KRQ.top + this.KRG);; this.KRQ.bottom = this.maxHeight)
     {
-      this.JaF.left = 0.0F;
-      this.JaF.right = this.maxWidth;
-      fuJ();
-      this.owg.setStyle(Paint.Style.FILL);
-      this.owg.setColor(this.JaB);
+      this.KRQ.left = 0.0F;
+      this.KRQ.right = this.maxWidth;
+      fLw();
+      this.oZB.setStyle(Paint.Style.FILL);
+      this.oZB.setColor(this.KRM);
       AppMethodBeat.o(159275);
       return;
-      this.JaF.top = 0.0F;
+      this.KRQ.top = 0.0F;
     }
   }
   
@@ -283,7 +283,7 @@ public class MMSwitchBtn
   {
     int j = 0;
     AppMethodBeat.i(159279);
-    if (this.Jaw)
+    if (this.KRH)
     {
       AppMethodBeat.o(159279);
       return true;
@@ -298,37 +298,37 @@ public class MMSwitchBtn
     }
     for (;;)
     {
-      if (this.Jax) {
+      if (this.KRI) {
         invalidate();
       }
       AppMethodBeat.o(159279);
       return true;
       clearAnimation();
-      this.ziz = paramMotionEvent.getX();
-      this.ziA = paramMotionEvent.getY();
-      this.Jas = SystemClock.elapsedRealtime();
-      this.Jax = false;
+      this.AAy = paramMotionEvent.getX();
+      this.AAz = paramMotionEvent.getY();
+      this.KRD = SystemClock.elapsedRealtime();
+      this.KRI = false;
       continue;
       float f1;
       float f2;
-      if (this.Jax)
+      if (this.KRI)
       {
-        ki(true);
+        kt(true);
         f1 = paramMotionEvent.getX();
-        f2 = this.ziz;
-        RectF localRectF = this.JaG;
+        f2 = this.AAy;
+        RectF localRectF = this.KRR;
         localRectF.left = (f1 - f2 + localRectF.left);
-        fuK();
+        fLx();
       }
       for (;;)
       {
-        this.ziz = paramMotionEvent.getX();
-        this.ziA = paramMotionEvent.getY();
+        this.AAy = paramMotionEvent.getX();
+        this.AAz = paramMotionEvent.getY();
         break;
-        float f3 = paramMotionEvent.getX() - this.ziz;
-        f2 = paramMotionEvent.getY() - this.ziA;
+        float f3 = paramMotionEvent.getX() - this.AAy;
+        f2 = paramMotionEvent.getY() - this.AAz;
         int i = j;
-        if (Math.abs(f3) >= this.qc / 10.0F)
+        if (Math.abs(f3) >= this.rW / 10.0F)
         {
           f1 = f2;
           if (f2 == 0.0F) {
@@ -341,45 +341,45 @@ public class MMSwitchBtn
         }
         if (i != 0)
         {
-          this.Jax = true;
-          ki(true);
+          this.KRI = true;
+          kt(true);
         }
       }
       boolean bool;
-      if (SystemClock.elapsedRealtime() - this.Jas < 300L) {
-        if (!this.JaE)
+      if (SystemClock.elapsedRealtime() - this.KRD < 300L) {
+        if (!this.KRP)
         {
           bool = true;
           label308:
-          xV(bool);
+          yJ(bool);
         }
       }
       for (;;)
       {
-        ki(false);
-        this.Jax = false;
+        kt(false);
+        this.KRI = false;
         break;
         bool = false;
         break label308;
-        fua();
+        fKN();
       }
-      if (this.Jax) {
-        fua();
+      if (this.KRI) {
+        fKN();
       }
-      ki(false);
-      this.Jax = false;
+      kt(false);
+      this.KRI = false;
     }
   }
   
   public void setCheck(boolean paramBoolean)
   {
     AppMethodBeat.i(159274);
-    if (this.JaE != paramBoolean)
+    if (this.KRP != paramBoolean)
     {
       clearAnimation();
-      this.JaE = paramBoolean;
-      fuJ();
-      this.Jaw = false;
+      this.KRP = paramBoolean;
+      fLw();
+      this.KRH = false;
       invalidate();
     }
     if (paramBoolean) {}
@@ -393,7 +393,7 @@ public class MMSwitchBtn
   
   public void setSwitchListener(a parama)
   {
-    this.JaN = parama;
+    this.KRY = parama;
   }
   
   public static abstract interface a
@@ -404,16 +404,16 @@ public class MMSwitchBtn
   final class b
     extends Animation
   {
-    long JaO;
+    long KRZ;
     int direction;
-    float km;
+    float mc;
     
     private b()
     {
       AppMethodBeat.i(159267);
       this.direction = 0;
-      this.km = 0.0F;
-      this.JaO = 0L;
+      this.mc = 0.0F;
+      this.KRZ = 0L;
       setInterpolator(new AccelerateDecelerateInterpolator());
       setAnimationListener(new Animation.AnimationListener()
       {
@@ -467,7 +467,7 @@ public class MMSwitchBtn
     {
       AppMethodBeat.i(159268);
       if (this.direction == 0) {}
-      for (MMSwitchBtn.d(MMSwitchBtn.this).left = (this.km - (float)this.JaO * paramFloat);; MMSwitchBtn.d(MMSwitchBtn.this).left = (this.km + (float)this.JaO * paramFloat))
+      for (MMSwitchBtn.d(MMSwitchBtn.this).left = (this.mc - (float)this.KRZ * paramFloat);; MMSwitchBtn.d(MMSwitchBtn.this).left = (this.mc + (float)this.KRZ * paramFloat))
       {
         MMSwitchBtn.e(MMSwitchBtn.this);
         MMSwitchBtn.this.invalidate();

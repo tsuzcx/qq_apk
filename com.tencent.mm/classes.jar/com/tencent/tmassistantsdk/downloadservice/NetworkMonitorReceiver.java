@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
@@ -21,14 +21,14 @@ public class NetworkMonitorReceiver
   protected static final String TAG = "NetworkMonitorReceiver";
   protected static NetworkMonitorReceiver mInstance = null;
   protected boolean isRegisterReceiver;
-  protected final ao mNetworkChangedHandler;
+  protected final ap mNetworkChangedHandler;
   ArrayList<INetworkChangedObserver> mObs;
   
   public NetworkMonitorReceiver()
   {
     AppMethodBeat.i(102017);
     this.isRegisterReceiver = false;
-    this.mNetworkChangedHandler = new ao()
+    this.mNetworkChangedHandler = new ap()
     {
       public void handleMessage(Message paramAnonymousMessage)
       {
@@ -115,7 +115,7 @@ public class NetworkMonitorReceiver
     catch (Throwable localThrowable)
     {
       this.isRegisterReceiver = false;
-      ac.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
+      ad.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
       AppMethodBeat.o(102020);
     }
   }
@@ -155,7 +155,7 @@ public class NetworkMonitorReceiver
     }
     catch (Throwable localThrowable)
     {
-      ac.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
+      ad.printErrStackTrace("NetworkMonitorReceiver", localThrowable, "", new Object[0]);
       AppMethodBeat.o(102021);
     }
   }

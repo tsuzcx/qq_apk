@@ -15,68 +15,76 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   extends RecyclerView.h
 {
+  private static int ogY = 0;
+  private float ogX;
   int padding;
   Paint paint;
   
   public c(int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(198739);
+    AppMethodBeat.i(209553);
     this.paint = new Paint();
+    ogY = com.tencent.mm.cc.a.fromDPToPix(paramContext, 4);
     this.padding = paramInt;
     this.paint.setColor(paramContext.getResources().getColor(2131099736));
     this.paint.setStyle(Paint.Style.FILL);
     this.paint.setFlags(1);
-    AppMethodBeat.o(198739);
+    this.ogX = (com.tencent.mm.cc.a.fromDPToPix(paramContext, 32) * a.eb(paramContext));
+    AppMethodBeat.o(209553);
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
-    AppMethodBeat.i(198740);
+    AppMethodBeat.i(209554);
     super.a(paramCanvas, paramRecyclerView, paramt);
     paramt = (BizTimeLineHotListView)paramRecyclerView;
-    if ((!paramt.nDT) || (paramt.getDataCount() <= 2))
+    if ((!paramt.ogp) || (paramt.getDataCount() <= 2))
     {
-      AppMethodBeat.o(198740);
+      AppMethodBeat.o(209554);
       return;
     }
     int j = paramRecyclerView.getChildCount();
     int i = 0;
     while (i < j - 1)
     {
-      View localView1 = paramt.getChildAt(i);
-      int k = RecyclerView.bx(localView1);
+      paramRecyclerView = paramt.getChildAt(i);
+      int k = RecyclerView.bx(paramRecyclerView);
       if ((k == 1) || ((k == 0) && (i == 1)))
       {
-        View localView2 = localView1.findViewById(2131297336);
-        if (localView2 == null)
+        View localView = paramRecyclerView.findViewById(2131297336);
+        if (localView == null)
         {
-          AppMethodBeat.o(198740);
+          AppMethodBeat.o(209554);
           return;
         }
-        localView2.getLayoutParams();
-        i = localView1.getRight();
-        float f1 = paramt.getItemPadding() / 2 + i;
-        float f2 = BizTimeLineHotListView.nzi * a.eb(paramRecyclerView.getContext());
-        paramCanvas.drawRect(f1 - 0.35F, localView2.getTop() + f2 + f2 / 2.0F, 1.0F + f1, localView2.getBottom() - f2 / 2.0F, this.paint);
-        AppMethodBeat.o(198740);
+        float f1 = Math.max(0.0F, (localView.getBottom() - localView.getTop() - this.ogX) / 2.0F);
+        float f2 = paramRecyclerView.getRight();
+        f2 = paramt.getItemPadding() / 2.0F + f2;
+        paramCanvas.drawRect(f2 - 0.35F, localView.getTop() + ogY + f1, 1.0F + f2, localView.getBottom() + ogY - f1, this.paint);
+        AppMethodBeat.o(209554);
         return;
       }
       i += 1;
     }
-    AppMethodBeat.o(198740);
+    AppMethodBeat.o(209554);
   }
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
+    int j = 0;
     AppMethodBeat.i(6133);
-    int i = RecyclerView.bx(paramView);
+    int k = RecyclerView.bx(paramView);
     paramRect.top = 0;
     paramRect.bottom = 0;
-    if (i == 0) {}
-    for (i = 0;; i = this.padding)
+    if (k != 0) {}
+    for (int i = this.padding / 2;; i = 0)
     {
       paramRect.left = i;
-      paramRect.right = 0;
+      i = j;
+      if (k != 0) {
+        i = this.padding / 2;
+      }
+      paramRect.right = i;
       AppMethodBeat.o(6133);
       return;
     }
@@ -84,7 +92,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.c
  * JD-Core Version:    0.7.0.1
  */

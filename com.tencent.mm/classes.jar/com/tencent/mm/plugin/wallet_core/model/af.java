@@ -1,73 +1,68 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gn;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class af
-  extends gn
 {
-  public static c.a info;
-  
-  static
+  public static List<Bankcard> eFJ()
   {
-    AppMethodBeat.i(70435);
-    c.a locala = new c.a();
-    locala.GvF = new Field[9];
-    locala.columns = new String[10];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "pref_key";
-    locala.GvH.put("pref_key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" pref_key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "pref_key";
-    locala.columns[1] = "pref_title";
-    locala.GvH.put("pref_title", "TEXT");
-    localStringBuilder.append(" pref_title TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "pref_url";
-    locala.GvH.put("pref_url", "TEXT");
-    localStringBuilder.append(" pref_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "is_show";
-    locala.GvH.put("is_show", "INTEGER default '1' ");
-    localStringBuilder.append(" is_show INTEGER default '1' ");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "pref_desc";
-    locala.GvH.put("pref_desc", "TEXT");
-    localStringBuilder.append(" pref_desc TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "logo_url";
-    locala.GvH.put("logo_url", "TEXT");
-    localStringBuilder.append(" logo_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "jump_type";
-    locala.GvH.put("jump_type", "INTEGER");
-    localStringBuilder.append(" jump_type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "tinyapp_username";
-    locala.GvH.put("tinyapp_username", "TEXT");
-    localStringBuilder.append(" tinyapp_username TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "tinyapp_path";
-    locala.GvH.put("tinyapp_path", "TEXT");
-    localStringBuilder.append(" tinyapp_path TEXT");
-    locala.columns[9] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(70435);
+    AppMethodBeat.i(221334);
+    ArrayList localArrayList = um(false);
+    AppMethodBeat.o(221334);
+    return localArrayList;
   }
   
-  public final c.a getDBInfo()
+  public static ArrayList<Bankcard> um(boolean paramBoolean)
   {
-    return info;
+    AppMethodBeat.i(70433);
+    ad.i("MicroMsg.WalletPayOrderMgr", "sort bankcard isPos: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean) {}
+    for (ArrayList localArrayList1 = t.eFy().eGx();; localArrayList1 = t.eFy().un(true))
+    {
+      localObject = t.eFy().eGv();
+      if (localObject != null) {
+        break;
+      }
+      ad.w("MicroMsg.WalletPayOrderMgr", "empty bankinfo list");
+      AppMethodBeat.o(70433);
+      return localArrayList1;
+    }
+    ArrayList localArrayList2 = new ArrayList();
+    Object localObject = ((List)localObject).iterator();
+    for (;;)
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break label166;
+      }
+      c localc = (c)((Iterator)localObject).next();
+      Iterator localIterator = localArrayList1.iterator();
+      if (localIterator.hasNext())
+      {
+        Bankcard localBankcard = (Bankcard)localIterator.next();
+        if (!localBankcard.field_bindSerial.equals(localc.wBI)) {
+          break;
+        }
+        localArrayList1.remove(localBankcard);
+        localArrayList2.add(localBankcard);
+      }
+    }
+    label166:
+    if (!localArrayList1.isEmpty())
+    {
+      ad.w("MicroMsg.WalletPayOrderMgr", "has unsort bankcard");
+      localArrayList2.addAll(localArrayList1);
+    }
+    AppMethodBeat.o(70433);
+    return localArrayList2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.af
  * JD-Core Version:    0.7.0.1
  */

@@ -12,24 +12,24 @@ public final class n
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(187837);
+    AppMethodBeat.i(191858);
     if ((paramObject == null) || (!(paramObject instanceof n)))
     {
-      AppMethodBeat.o(187837);
+      AppMethodBeat.o(191858);
       return false;
     }
     if ((this.name.equals(((n)paramObject).name)) && (this.trackType == ((n)paramObject).trackType))
     {
-      AppMethodBeat.o(187837);
+      AppMethodBeat.o(191858);
       return true;
     }
-    AppMethodBeat.o(187837);
+    AppMethodBeat.o(191858);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.b.n
  * JD-Core Version:    0.7.0.1
  */

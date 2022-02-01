@@ -1,62 +1,76 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.h.b;
-import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.utils.p;
-import com.tencent.mm.protocal.protobuf.bqs;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.bvf;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/loader/FinderVideoCover;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;Ljava/lang/String;)V", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "uniqueValue", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "mediaObj", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "type", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "codingFormat", "", "username", "", "(Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;ILjava/lang/String;)V", "getCodingFormat", "()I", "getMediaObj", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "uniqueValue", "getDecodeKey", "getMediaType", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "toString", "plugin-finder_release"})
 public final class m
-  implements j
+  implements k
 {
-  public static final m.a rtX;
-  private bqs rtl;
-  private com.tencent.mm.plugin.finder.storage.m rtm;
-  private String username;
+  public final bvf siC;
+  public final com.tencent.mm.plugin.finder.storage.r siD;
+  private String sis;
+  public final int sjm;
+  private final String username;
   
-  static
+  private m(bvf parambvf, com.tencent.mm.plugin.finder.storage.r paramr, int paramInt, String paramString)
   {
-    AppMethodBeat.i(202538);
-    rtX = new m.a((byte)0);
-    AppMethodBeat.o(202538);
-  }
-  
-  private m(bqs parambqs, com.tencent.mm.plugin.finder.storage.m paramm, String paramString)
-  {
-    AppMethodBeat.i(202536);
-    String str = u.axw();
-    k.g(str, "ConfigStorageLogic.getUsernameFromUserInfo()");
-    this.username = str;
-    this.rtl = parambqs;
-    this.rtm = paramm;
+    AppMethodBeat.i(202918);
+    this.siC = parambvf;
+    this.siD = paramr;
+    this.sjm = paramInt;
     this.username = paramString;
-    if (parambqs.url == null) {
-      b.e("FinderVideoCover", "mediaObj.url == null " + bs.eWi());
-    }
-    AppMethodBeat.o(202536);
+    AppMethodBeat.o(202918);
   }
   
-  public final String abW()
+  public final String aeA()
   {
-    AppMethodBeat.i(202535);
-    StringBuilder localStringBuilder = new StringBuilder("finder_video_cover_").append(this.rtm.detail).append('_');
-    if (bs.isNullOrNil(this.rtl.mediaId)) {}
-    for (String str = ah.dg(bs.bG(this.rtl.url, ""));; str = this.rtl.mediaId)
+    AppMethodBeat.i(166334);
+    String str2 = this.sis;
+    String str1 = str2;
+    m localm;
+    StringBuilder localStringBuilder;
+    if (str2 == null)
     {
-      str = str;
-      AppMethodBeat.o(202535);
-      return str;
+      localm = (m)this;
+      localStringBuilder = new StringBuilder("finder_video_").append(localm.siD.detail).append('_');
+      if (!bt.isNullOrNil(localm.siC.mediaId)) {
+        break label104;
+      }
+      str2 = localm.siC.url;
+      str1 = str2;
+      if (str2 == null) {
+        str1 = "";
+      }
+    }
+    label104:
+    for (str1 = ai.ee(str1);; str1 = localm.siC.mediaId)
+    {
+      str1 = str1;
+      localm.sis = str1;
+      AppMethodBeat.o(166334);
+      return str1;
     }
   }
   
-  public final String aik()
+  public final String akW()
   {
-    String str2 = this.rtl.coverUrl;
+    AppMethodBeat.i(166336);
+    String str2 = this.siC.thumbUrl;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    AppMethodBeat.o(166336);
+    return str1;
+  }
+  
+  public final String cCA()
+  {
+    String str2 = this.siC.thumb_url_token;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -64,14 +78,14 @@ public final class m
     return str1;
   }
   
-  public final com.tencent.mm.plugin.finder.storage.m cwj()
+  public final com.tencent.mm.plugin.finder.storage.r cCx()
   {
-    return this.rtm;
+    return this.siD;
   }
   
-  public final String cwk()
+  public final String cCy()
   {
-    String str2 = this.rtl.decodeKey;
+    String str2 = this.siC.decodeKey;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -79,19 +93,9 @@ public final class m
     return str1;
   }
   
-  public final String cwl()
+  public final String cCz()
   {
-    String str2 = this.rtl.cover_url_token;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  public final String cwm()
-  {
-    String str2 = this.rtl.cover_url_token;
+    String str2 = this.siC.url_token;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
@@ -101,21 +105,31 @@ public final class m
   
   public final String getPath()
   {
-    AppMethodBeat.i(202534);
-    Object localObject = p.rQw;
-    localObject = p.a(this);
-    AppMethodBeat.o(202534);
+    AppMethodBeat.i(166333);
+    Object localObject = com.tencent.mm.plugin.finder.utils.r.sNc;
+    localObject = com.tencent.mm.plugin.finder.utils.r.a(this);
+    AppMethodBeat.o(166333);
     return localObject;
   }
   
   public final String getUrl()
   {
-    String str2 = this.rtl.coverUrl;
+    AppMethodBeat.i(166335);
+    String str2 = this.siC.url;
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
+    AppMethodBeat.o(166335);
     return str1;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(166337);
+    String str = this.siC.mediaId + " url=" + this.siC.url;
+    AppMethodBeat.o(166337);
+    return str;
   }
 }
 

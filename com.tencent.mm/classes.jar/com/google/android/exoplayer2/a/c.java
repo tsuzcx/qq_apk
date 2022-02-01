@@ -10,14 +10,14 @@ import java.util.Arrays;
 @TargetApi(21)
 public final class c
 {
-  public static final c aUw;
+  public static final c beQ;
   private final int maxChannelCount;
   final int[] supportedEncodings;
   
   static
   {
     AppMethodBeat.i(91761);
-    aUw = new c(new int[] { 2 }, 2);
+    beQ = new c(new int[] { 2 }, 2);
     AppMethodBeat.o(91761);
   }
   
@@ -44,7 +44,7 @@ public final class c
     paramContext = paramContext.registerReceiver(null, new IntentFilter("android.media.action.HDMI_AUDIO_PLUG"));
     if ((paramContext == null) || (paramContext.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) == 0))
     {
-      paramContext = aUw;
+      paramContext = beQ;
       AppMethodBeat.o(91756);
       return paramContext;
     }

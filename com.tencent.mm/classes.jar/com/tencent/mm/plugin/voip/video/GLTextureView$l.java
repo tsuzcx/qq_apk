@@ -6,20 +6,20 @@ import java.io.Writer;
 final class GLTextureView$l
   extends Writer
 {
-  private StringBuilder ytj;
+  private StringBuilder zKr;
   
   GLTextureView$l()
   {
     AppMethodBeat.i(115608);
-    this.ytj = new StringBuilder();
+    this.zKr = new StringBuilder();
     AppMethodBeat.o(115608);
   }
   
-  private void eZ()
+  private void fq()
   {
     AppMethodBeat.i(115612);
-    if (this.ytj.length() > 0) {
-      this.ytj.delete(0, this.ytj.length());
+    if (this.zKr.length() > 0) {
+      this.zKr.delete(0, this.zKr.length());
     }
     AppMethodBeat.o(115612);
   }
@@ -27,14 +27,14 @@ final class GLTextureView$l
   public final void close()
   {
     AppMethodBeat.i(115609);
-    eZ();
+    fq();
     AppMethodBeat.o(115609);
   }
   
   public final void flush()
   {
     AppMethodBeat.i(115610);
-    eZ();
+    fq();
     AppMethodBeat.o(115610);
   }
   
@@ -46,13 +46,13 @@ final class GLTextureView$l
     {
       char c = paramArrayOfChar[(paramInt1 + i)];
       if (c == '\n') {
-        eZ();
+        fq();
       }
       for (;;)
       {
         i += 1;
         break;
-        this.ytj.append(c);
+        this.zKr.append(c);
       }
     }
     AppMethodBeat.o(115611);
@@ -60,7 +60,7 @@ final class GLTextureView$l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.GLTextureView.l
  * JD-Core Version:    0.7.0.1
  */

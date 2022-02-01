@@ -15,27 +15,27 @@ import com.tencent.mm.plugin.fts.a.n;
 public final class p
   extends m
 {
-  public int cZX;
-  private a sEX;
-  public com.tencent.mm.plugin.fts.a.a.m sEg;
+  public int dlp;
+  public com.tencent.mm.plugin.fts.a.a.m tAX;
+  private a tBP;
   
   public p(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112112);
-    this.sEX = new a();
+    this.tBP = new a();
     AppMethodBeat.o(112112);
   }
   
-  public final a.b adW()
+  public final a.b agC()
   {
-    return this.sEX;
+    return this.tBP;
   }
   
-  public final int cKJ()
+  public final int cSY()
   {
     int i = 2;
-    if (this.sEN < 2) {
+    if (this.tBF < 2) {
       i = 0;
     }
     return i;
@@ -53,14 +53,14 @@ public final class p
     {
       AppMethodBeat.i(112110);
       paramViewGroup = LayoutInflater.from(paramContext).inflate(2131494215, paramViewGroup, false);
-      m.a locala = (m.a)p.this.sEQ;
-      locala.fuY = ((ImageView)paramViewGroup.findViewById(2131297008));
-      locala.fuZ = ((TextView)paramViewGroup.findViewById(2131302867));
-      locala.fAy = ((TextView)paramViewGroup.findViewById(2131302555));
-      locala.jPT = paramViewGroup.findViewById(2131299154);
-      locala.fAz = ((TextView)paramViewGroup.findViewById(2131305822));
-      locala.fuY.getLayoutParams().width = com.tencent.mm.cc.a.au(paramContext, 2131165558);
-      locala.fuY.getLayoutParams().height = com.tencent.mm.cc.a.au(paramContext, 2131165558);
+      m.a locala = (m.a)p.this.tBI;
+      locala.fOf = ((ImageView)paramViewGroup.findViewById(2131297008));
+      locala.fOg = ((TextView)paramViewGroup.findViewById(2131302867));
+      locala.fTO = ((TextView)paramViewGroup.findViewById(2131302555));
+      locala.kke = paramViewGroup.findViewById(2131299154);
+      locala.fTP = ((TextView)paramViewGroup.findViewById(2131305822));
+      locala.fOf.getLayoutParams().width = com.tencent.mm.cc.a.ax(paramContext, 2131165558);
+      locala.fOf.getLayoutParams().height = com.tencent.mm.cc.a.ax(paramContext, 2131165558);
       paramViewGroup.setTag(locala);
       AppMethodBeat.o(112110);
       return paramViewGroup;
@@ -69,7 +69,7 @@ public final class p
     public final boolean a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
     {
       AppMethodBeat.i(112111);
-      boolean bool = ((n)g.ad(n.class)).getItemClickHandler(p.this.oeH).a(paramContext, paramVarArgs);
+      boolean bool = ((n)g.ad(n.class)).getItemClickHandler(p.this.oIb).a(paramContext, paramVarArgs);
       AppMethodBeat.o(112111);
       return bool;
     }

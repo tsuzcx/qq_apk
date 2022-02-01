@@ -8,56 +8,56 @@ import java.util.TimerTask;
 public final class c
   extends TimerTask
 {
-  private final WheelView irq;
-  private int irv;
-  private int irw;
+  private final WheelView iKu;
+  private int iKy;
+  private int iKz;
   private int offset;
   
   public c(WheelView paramWheelView, int paramInt)
   {
-    this.irq = paramWheelView;
+    this.iKu = paramWheelView;
     this.offset = paramInt;
-    this.irv = 2147483647;
-    this.irw = 0;
+    this.iKy = 2147483647;
+    this.iKz = 0;
   }
   
   public final void run()
   {
     AppMethodBeat.i(175298);
-    if (this.irv == 2147483647) {
-      this.irv = this.offset;
+    if (this.iKy == 2147483647) {
+      this.iKy = this.offset;
     }
-    this.irw = ((int)(this.irv * 0.1F));
-    if (this.irw == 0) {
-      if (this.irv >= 0) {
+    this.iKz = ((int)(this.iKy * 0.1F));
+    if (this.iKz == 0) {
+      if (this.iKy >= 0) {
         break label92;
       }
     }
     label92:
-    for (this.irw = -1; Math.abs(this.irv) <= 1; this.irw = 1)
+    for (this.iKz = -1; Math.abs(this.iKy) <= 1; this.iKz = 1)
     {
-      this.irq.aMF();
-      this.irq.getHandler().sendEmptyMessage(3000);
+      this.iKu.aPQ();
+      this.iKu.getHandler().sendEmptyMessage(3000);
       AppMethodBeat.o(175298);
       return;
     }
-    this.irq.setTotalScrollY(this.irq.getTotalScrollY() + this.irw);
-    if (!this.irq.hYH)
+    this.iKu.setTotalScrollY(this.iKu.getTotalScrollY() + this.iKz);
+    if (!this.iKu.isd)
     {
-      float f1 = this.irq.getItemHeight();
-      float f2 = -this.irq.getInitPosition();
-      float f3 = this.irq.getItemsCount() - 1 - this.irq.getInitPosition();
-      if ((this.irq.getTotalScrollY() <= f2 * f1) || (this.irq.getTotalScrollY() >= f1 * f3))
+      float f1 = this.iKu.getItemHeight();
+      float f2 = -this.iKu.getInitPosition();
+      float f3 = this.iKu.getItemsCount() - 1 - this.iKu.getInitPosition();
+      if ((this.iKu.getTotalScrollY() <= f2 * f1) || (this.iKu.getTotalScrollY() >= f1 * f3))
       {
-        this.irq.setTotalScrollY(this.irq.getTotalScrollY() - this.irw);
-        this.irq.aMF();
-        this.irq.getHandler().sendEmptyMessage(3000);
+        this.iKu.setTotalScrollY(this.iKu.getTotalScrollY() - this.iKz);
+        this.iKu.aPQ();
+        this.iKu.getHandler().sendEmptyMessage(3000);
         AppMethodBeat.o(175298);
         return;
       }
     }
-    this.irq.getHandler().sendEmptyMessage(1000);
-    this.irv -= this.irw;
+    this.iKu.getHandler().sendEmptyMessage(1000);
+    this.iKy -= this.iKz;
     AppMethodBeat.o(175298);
   }
 }

@@ -1,28 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.c.f;
+import java.util.Map;
 
 final class FTSBaseWebViewUI$13
   implements Runnable
 {
-  FTSBaseWebViewUI$13(FTSBaseWebViewUI paramFTSBaseWebViewUI, Bundle paramBundle, String paramString1, boolean paramBoolean, String paramString2) {}
+  FTSBaseWebViewUI$13(FTSBaseWebViewUI paramFTSBaseWebViewUI, Map paramMap) {}
   
   public final void run()
   {
-    AppMethodBeat.i(80592);
-    if (this.CDb.Cjc != null)
-    {
-      if ((this.Abi != null) && (this.Abi.getInt("isRefresh") == 1) && (this.Abi.getString("widgetId") != null))
-      {
-        this.CDb.Cjc.kr(this.Abi.getString("widgetId"), this.meg);
-        AppMethodBeat.o(80592);
-        return;
-      }
-      this.CDb.Cjc.j(this.meg, this.CCC, this.Chz);
+    AppMethodBeat.i(80591);
+    if (this.EgM.DzP != null) {
+      this.EgM.DzP.bA(this.Daw);
     }
-    AppMethodBeat.o(80592);
+    AppMethodBeat.o(80591);
   }
 }
 

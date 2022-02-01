@@ -10,78 +10,78 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "latitude", "", "getLatitude", "()F", "setLatitude", "(F)V", "locationPermissionGrant", "", "getLocationPermissionGrant", "()Z", "setLocationPermissionGrant", "(Z)V", "longitude", "getLongitude", "setLongitude", "onLocationGet", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "getOnLocationGet", "()Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "setOnLocationGet", "(Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;)V", "overtimeTask", "Ljava/lang/Runnable;", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "requestLocation", "showGpsAlert", "stopLocation", "Companion", "plugin-card_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/card/ui/v2/CardNewBaseUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "latitude", "", "getLatitude", "()F", "setLatitude", "(F)V", "locationPermissionGrant", "", "getLocationPermissionGrant", "()Z", "setLocationPermissionGrant", "(Z)V", "longitude", "getLongitude", "setLongitude", "onLocationGet", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "getOnLocationGet", "()Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "setOnLocationGet", "(Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;)V", "overtimeTask", "Ljava/lang/Runnable;", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onFinishLocationThings", "ret", "isLocationOk", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "requestLocation", "showGpsAlert", "stopLocation", "Companion", "plugin-card_release"})
 public abstract class CardNewBaseUI
   extends MMActivity
 {
-  public static final CardNewBaseUI.a oiK = new CardNewBaseUI.a((byte)0);
-  protected float dmL = -85.0F;
-  protected float doB = -1000.0F;
-  public boolean oiH;
-  private b.a oiI = (b.a)new b(this);
-  private final Runnable oiJ = (Runnable)new d(this);
+  public static final CardNewBaseUI.a oMe = new CardNewBaseUI.a((byte)0);
+  protected float dAp = -1000.0F;
+  protected float dyz = -85.0F;
+  public boolean oMb;
+  private b.a oMc = (b.a)new b(this);
+  private final Runnable oMd = (Runnable)new d(this);
   
-  private void bTx()
+  private void bYc()
   {
-    ac.i("MicroMsg.CardNewBaseUI", "request location: %s", new Object[] { Boolean.valueOf(this.oiH) });
-    if (this.oiH)
+    ad.i("MicroMsg.CardNewBaseUI", "request location: %s", new Object[] { Boolean.valueOf(this.oMb) });
+    if (this.oMb)
     {
-      d.aEL().a(this.oiI, false);
-      ap.n(this.oiJ, 4000L);
+      d.aHQ().a(this.oMc, false);
+      aq.o(this.oMd, 4000L);
     }
   }
   
   public abstract void V(int paramInt, boolean paramBoolean);
   
-  public final void bTy()
+  public final void bYd()
   {
-    ac.i("MicroMsg.CardNewBaseUI", "stop location");
-    d.aEL().c(this.oiI);
-    ap.aB(this.oiJ);
+    ad.i("MicroMsg.CardNewBaseUI", "stop location");
+    d.aHQ().c(this.oMc);
+    aq.aA(this.oMd);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    ac.i("MicroMsg.CardNewBaseUI", "requestCode: %s, resultCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.CardNewBaseUI", "requestCode: %s, resultCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     switch (paramInt1)
     {
     default: 
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
       return;
     case 563: 
-      bTx();
+      bYc();
       return;
     }
-    this.oiH = b.j((Context)getContext(), "android.permission.ACCESS_COARSE_LOCATION", false);
+    this.oMb = b.j((Context)getContext(), "android.permission.ACCESS_COARSE_LOCATION", false);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.oiH = b.a((Activity)this, "android.permission.ACCESS_COARSE_LOCATION", 69, null, null);
-    if (this.oiH) {
-      bTx();
+    this.oMb = b.a((Activity)this, "android.permission.ACCESS_COARSE_LOCATION", 69, null, null);
+    if (this.oMb) {
+      bYc();
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ap.aB(this.oiJ);
-    bTy();
+    aq.aA(this.oMd);
+    bYd();
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    k.h(paramArrayOfString, "permissions");
-    k.h(paramArrayOfInt, "grantResults");
+    p.h(paramArrayOfString, "permissions");
+    p.h(paramArrayOfInt, "grantResults");
     if (paramInt == 69)
     {
       if (paramArrayOfInt.length == 0)
@@ -97,14 +97,14 @@ public abstract class CardNewBaseUI
         if ((paramInt == 0) || (paramArrayOfInt[0] != 0)) {
           break label61;
         }
-        this.oiH = true;
-        bTx();
+        this.oMb = true;
+        bYc();
         return;
         paramInt = 0;
         break;
       }
       label61:
-      this.oiH = false;
+      this.oMb = false;
       h.a((Context)this, getString(2131756893), getString(2131761885), getString(2131760598), getString(2131757558), false, (DialogInterface.OnClickListener)new c(this), null);
       V(-2, false);
       return;
@@ -118,7 +118,7 @@ public abstract class CardNewBaseUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "onGetLocation"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "speed", "", "accuracy", "altitude", "onGetLocation"})
   static final class b
     implements b.a
   {
@@ -129,17 +129,17 @@ public abstract class CardNewBaseUI
       AppMethodBeat.i(112510);
       if (paramBoolean)
       {
-        this.oiL.dmL = paramFloat2;
-        this.oiL.doB = paramFloat1;
-        this.oiL.bTy();
+        this.oMf.dyz = paramFloat2;
+        this.oMf.dAp = paramFloat1;
+        this.oMf.bYd();
       }
-      this.oiL.V(0, paramBoolean);
+      this.oMf.V(0, paramBoolean);
       AppMethodBeat.o(112510);
       return false;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
   static final class c
     implements DialogInterface.OnClickListener
   {
@@ -148,12 +148,12 @@ public abstract class CardNewBaseUI
     public final void onClick(DialogInterface paramDialogInterface, int paramInt)
     {
       AppMethodBeat.i(112511);
-      this.oiL.startActivityForResult(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"), 564);
+      this.oMf.startActivityForResult(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"), 564);
       AppMethodBeat.o(112511);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -162,15 +162,15 @@ public abstract class CardNewBaseUI
     public final void run()
     {
       AppMethodBeat.i(112512);
-      ac.i("MicroMsg.CardNewBaseUI", "remove location in task");
-      CardNewBaseUI.a(this.oiL);
+      ad.i("MicroMsg.CardNewBaseUI", "remove location in task");
+      CardNewBaseUI.a(this.oMf);
       AppMethodBeat.o(112512);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.CardNewBaseUI
  * JD-Core Version:    0.7.0.1
  */

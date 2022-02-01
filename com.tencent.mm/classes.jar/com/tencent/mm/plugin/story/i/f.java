@@ -2,37 +2,37 @@ package com.tencent.mm.plugin.story.i;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fw;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.g.c.gg;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.plugin.story.f.i;
 import com.tencent.mm.plugin.story.f.i.a;
 import com.tencent.mm.plugin.story.f.j;
 import com.tencent.mm.plugin.story.f.j.b;
-import com.tencent.mm.protocal.protobuf.deq;
+import com.tencent.mm.protocal.protobuf.dkd;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.g.a.m;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "Lcom/tencent/mm/autogen/table/BaseStoryExtItem;", "()V", "value", "", "duration", "getDuration", "()J", "setDuration", "(J)V", "interactTime", "getInteractTime", "setInteractTime", "isContact", "", "()Ljava/lang/Boolean;", "setContact", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "localId", "", "getLocalId", "()I", "setLocalId", "(I)V", "oneDayCount", "getOneDayCount", "setOneDayCount", "postTime", "getPostTime", "setPostTime", "preLoadCache", "getPreLoadCache", "setPreLoadCache", "", "preloadMediaId", "getPreloadMediaId", "()Ljava/lang/String;", "setPreloadMediaId", "(Ljava/lang/String;)V", "preloadStoryId", "getPreloadStoryId", "setPreloadStoryId", "readId", "getReadId", "setReadId", "readTime", "getReadTime", "setReadTime", "syncId", "getSyncId", "setSyncId", "thumbUrl", "getThumbUrl", "setThumbUrl", "updateTime", "getUpdateTime", "setUpdateTime", "Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "userInfo", "getUserInfo", "()Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "setUserInfo", "(Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;)V", "userName", "getUserName", "setUserName", "videoUrl", "getVideoUrl", "setVideoUrl", "convertFrom", "", "cu", "Landroid/database/Cursor;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "hasUnread", "haslocalUnread", "isDeprecated", "isEmpty", "isFriendly", "isValid", "markPreloadCompleted", "storyId", "mediaId", "cacheSize", "resetPreLoad", "Companion", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "Lcom/tencent/mm/autogen/table/BaseStoryExtItem;", "()V", "value", "", "duration", "getDuration", "()J", "setDuration", "(J)V", "interactTime", "getInteractTime", "setInteractTime", "isContact", "", "()Ljava/lang/Boolean;", "setContact", "(Ljava/lang/Boolean;)V", "Ljava/lang/Boolean;", "localId", "", "getLocalId", "()I", "setLocalId", "(I)V", "oneDayCount", "getOneDayCount", "setOneDayCount", "postTime", "getPostTime", "setPostTime", "preLoadCache", "getPreLoadCache", "setPreLoadCache", "", "preloadMediaId", "getPreloadMediaId", "()Ljava/lang/String;", "setPreloadMediaId", "(Ljava/lang/String;)V", "preloadStoryId", "getPreloadStoryId", "setPreloadStoryId", "readId", "getReadId", "setReadId", "readTime", "getReadTime", "setReadTime", "syncId", "getSyncId", "setSyncId", "thumbUrl", "getThumbUrl", "setThumbUrl", "updateTime", "getUpdateTime", "setUpdateTime", "Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "userInfo", "getUserInfo", "()Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;", "setUserInfo", "(Lcom/tencent/mm/protocal/protobuf/StoryUserInfo;)V", "userName", "getUserName", "setUserName", "videoUrl", "getVideoUrl", "setVideoUrl", "convertFrom", "", "cu", "Landroid/database/Cursor;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "hasUnread", "haslocalUnread", "isDeprecated", "isEmpty", "isFriendly", "isValid", "markPreloadCompleted", "storyId", "mediaId", "cacheSize", "resetPreLoad", "Companion", "plugin-story_release"})
 public final class f
-  extends fw
+  extends gg
 {
+  private static final m<Long, Long, Boolean> ATP;
+  public static final f.a ATQ;
   private static final String TAG = "MicroMsg.StoryExtInfo";
   private static final c.a info;
-  private static final m<Long, Long, Boolean> zCq;
-  public static final f.a zCr;
-  private int dwR;
+  private int dJd;
   
   static
   {
     AppMethodBeat.i(119500);
-    zCr = new f.a((byte)0);
+    ATQ = new f.a((byte)0);
     TAG = "MicroMsg.StoryExtInfo";
-    info = fw.Th();
-    zCq = (m)f.b.zCs;
+    info = gg.Vv();
+    ATP = (m)f.b.ATR;
     AppMethodBeat.o(119500);
   }
   
@@ -46,11 +46,11 @@ public final class f
   public final boolean a(long paramLong, String paramString, int paramInt)
   {
     AppMethodBeat.i(119494);
-    k.h(paramString, "mediaId");
+    p.h(paramString, "mediaId");
     if (paramLong == this.field_syncId)
     {
       this.field_preloadStoryId = paramLong;
-      axa(paramString);
+      aCe(paramString);
       this.field_preLoadResource = paramInt;
       AppMethodBeat.o(119494);
       return true;
@@ -59,7 +59,15 @@ public final class f
     return false;
   }
   
-  public final String aik()
+  public final void aCe(String paramString)
+  {
+    AppMethodBeat.i(119492);
+    p.h(paramString, "value");
+    this.field_preloadMediaId = paramString;
+    AppMethodBeat.o(119492);
+  }
+  
+  public final String akW()
   {
     String str2 = this.field_newThumbUrl;
     String str1 = str2;
@@ -69,24 +77,16 @@ public final class f
     return str1;
   }
   
-  public final void axa(String paramString)
-  {
-    AppMethodBeat.i(119492);
-    k.h(paramString, "value");
-    this.field_preloadMediaId = paramString;
-    AppMethodBeat.o(119492);
-  }
-  
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(119495);
-    k.h(paramCursor, "cu");
+    p.h(paramCursor, "cu");
     super.convertFrom(paramCursor);
-    this.dwR = ((int)this.systemRowid);
+    this.dJd = ((int)this.systemRowid);
     AppMethodBeat.o(119495);
   }
   
-  public final String dYZ()
+  public final String elo()
   {
     String str2 = this.field_newVideoUrl;
     String str1 = str2;
@@ -96,7 +96,7 @@ public final class f
     return str1;
   }
   
-  public final long dZa()
+  public final long elp()
   {
     if (this.field_preloadStoryId == this.field_syncId) {
       return this.field_preLoadResource;
@@ -104,20 +104,20 @@ public final class f
     return 0L;
   }
   
-  public final deq dZb()
+  public final dkd elq()
   {
     AppMethodBeat.i(119493);
     Object localObject;
     if (this.field_userInfo == null)
     {
-      localObject = new deq();
+      localObject = new dkd();
       AppMethodBeat.o(119493);
       return localObject;
     }
-    deq localdeq;
+    dkd localdkd;
     try
     {
-      localObject = new deq().parseFrom(this.field_userInfo);
+      localObject = new dkd().parseFrom(this.field_userInfo);
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.StoryUserInfo");
@@ -127,25 +127,25 @@ public final class f
     }
     catch (Exception localException)
     {
-      ac.e(TAG, "error get storyUserInfo!");
-      localdeq = new deq();
+      ad.e(TAG, "error get storyUserInfo!");
+      localdkd = new dkd();
     }
     for (;;)
     {
       AppMethodBeat.o(119493);
-      return localdeq;
-      localdeq = (deq)localdeq;
+      return localdkd;
+      localdkd = (dkd)localdkd;
     }
   }
   
-  public final boolean dZc()
+  public final boolean elr()
   {
     AppMethodBeat.i(119496);
-    if ((isValid()) && (((Boolean)zCq.n(Long.valueOf(this.field_readId), Long.valueOf(this.field_syncId))).booleanValue()))
+    if ((isValid()) && (((Boolean)ATP.p(Long.valueOf(this.field_readId), Long.valueOf(this.field_syncId))).booleanValue()))
     {
-      m localm = zCq;
-      j.b localb = j.zsh;
-      if (((Boolean)localm.n(Long.valueOf(j.b.dVR()), Long.valueOf(this.field_updateTime))).booleanValue())
+      m localm = ATP;
+      j.b localb = j.AKb;
+      if (((Boolean)localm.p(Long.valueOf(j.b.eig()), Long.valueOf(this.field_updateTime))).booleanValue())
       {
         AppMethodBeat.o(119496);
         return true;
@@ -159,7 +159,7 @@ public final class f
   {
     AppMethodBeat.i(119498);
     c.a locala = info;
-    k.g(locala, "StoryExtInfo.info");
+    p.g(locala, "StoryExtInfo.info");
     AppMethodBeat.o(119498);
     return locala;
   }
@@ -168,7 +168,7 @@ public final class f
   {
     AppMethodBeat.i(119490);
     String str = this.field_userName;
-    k.g(str, "field_userName");
+    p.g(str, "field_userName");
     AppMethodBeat.o(119490);
     return str;
   }
@@ -179,8 +179,8 @@ public final class f
     if (this.field_syncId != 0L)
     {
       int i = this.field_storyPostTime;
-      i.a locala = i.zrK;
-      if (i + i.dVv() >= ce.azK())
+      i.a locala = i.AJE;
+      if (i + i.ehK() >= cf.aCN())
       {
         AppMethodBeat.o(119497);
         return true;
@@ -193,7 +193,7 @@ public final class f
   public final void setUserName(String paramString)
   {
     AppMethodBeat.i(119491);
-    k.h(paramString, "value");
+    p.h(paramString, "value");
     this.field_userName = paramString;
     AppMethodBeat.o(119491);
   }

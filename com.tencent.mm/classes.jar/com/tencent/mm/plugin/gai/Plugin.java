@@ -6,13 +6,13 @@ import android.content.SharedPreferences.Editor;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class Plugin
   implements d
@@ -20,15 +20,15 @@ public class Plugin
   public Plugin()
   {
     AppMethodBeat.i(25273);
-    boolean bool = ai.getContext().getSharedPreferences(ai.eUX() + "_google_aid", g.YK()).getBoolean("already_report_googleaid", false);
-    ac.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = aj.getContext().getSharedPreferences(aj.fkC() + "_google_aid", g.abm()).getBoolean("already_report_googleaid", false);
+    ad.i("MicroMsg.Plugin.gai", "gai Plugin! %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool) {
       try
       {
-        i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(ai.getContext());
+        i = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(aj.getContext());
         if ((i != 1) && (i != 9))
         {
-          ai.getContext();
+          aj.getContext();
           new Object() {};
           b.c(new Runnable()
           {
@@ -46,17 +46,17 @@ public class Plugin
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.Plugin.gai", localException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Plugin.gai", localException, "", new Object[0]);
           int i = 9;
         }
-        ac.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
-        ai.getContext().getSharedPreferences(ai.eUX() + "_google_aid", g.YK()).edit().putBoolean("already_report_googleaid", true).commit();
+        ad.w("MicroMsg.Plugin.gai", "gp service invalid, just ignore");
+        aj.getContext().getSharedPreferences(aj.fkC() + "_google_aid", g.abm()).edit().putBoolean("already_report_googleaid", true).commit();
       }
     }
     AppMethodBeat.o(25273);
   }
   
-  public m createApplication()
+  public n createApplication()
   {
     AppMethodBeat.i(25274);
     com.tencent.mm.plugin.gai.a.a locala = new com.tencent.mm.plugin.gai.a.a();
@@ -64,7 +64,7 @@ public class Plugin
     return locala;
   }
   
-  public aw createSubCore()
+  public ax createSubCore()
   {
     AppMethodBeat.i(25275);
     com.tencent.mm.plugin.gai.b.a locala = new com.tencent.mm.plugin.gai.b.a();
@@ -79,7 +79,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gai.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -4,19 +4,19 @@ import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
 
 public abstract interface c
 {
-  public abstract void dlC();
+  public abstract void dvD();
   
-  public abstract void dlD();
+  public abstract void dvI();
   
-  public abstract void dlE();
+  public abstract FailSendMsgNotification dvK();
   
-  public abstract void dlF();
+  public abstract void dvT();
   
-  public abstract void dlm();
+  public abstract void dvU();
   
-  public abstract void dlr();
+  public abstract void dvV();
   
-  public abstract FailSendMsgNotification dlt();
+  public abstract void dvW();
 }
 
 

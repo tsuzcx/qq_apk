@@ -13,10 +13,11 @@ public class FlutterTextureView
   extends TextureView
   implements c
 {
-  private boolean KKM;
-  private boolean KKN;
-  private io.flutter.embedding.engine.b.a KKO;
-  private final TextureView.SurfaceTextureListener KKR;
+  private boolean MBB;
+  private boolean MBC;
+  private io.flutter.embedding.engine.b.a MBD;
+  private Surface MBG;
+  private final TextureView.SurfaceTextureListener MBH;
   
   public FlutterTextureView(Context paramContext)
   {
@@ -27,14 +28,14 @@ public class FlutterTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9970);
-    this.KKM = false;
-    this.KKN = false;
-    this.KKR = new TextureView.SurfaceTextureListener()
+    this.MBB = false;
+    this.MBC = false;
+    this.MBH = new TextureView.SurfaceTextureListener()
     {
       public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(10019);
-        io.flutter.a.fMD();
+        io.flutter.a.gea();
         FlutterTextureView.a(FlutterTextureView.this, true);
         if (FlutterTextureView.a(FlutterTextureView.this)) {
           FlutterTextureView.b(FlutterTextureView.this);
@@ -45,7 +46,7 @@ public class FlutterTextureView
       public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
       {
         AppMethodBeat.i(10021);
-        io.flutter.a.fMD();
+        io.flutter.a.gea();
         FlutterTextureView.a(FlutterTextureView.this, false);
         if (FlutterTextureView.a(FlutterTextureView.this)) {
           FlutterTextureView.c(FlutterTextureView.this);
@@ -57,7 +58,7 @@ public class FlutterTextureView
       public final void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(10020);
-        io.flutter.a.fMD();
+        io.flutter.a.gea();
         if (FlutterTextureView.a(FlutterTextureView.this)) {
           FlutterTextureView.a(FlutterTextureView.this, paramAnonymousInt1, paramAnonymousInt2);
         }
@@ -66,77 +67,80 @@ public class FlutterTextureView
       
       public final void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture) {}
     };
-    setSurfaceTextureListener(this.KKR);
+    setSurfaceTextureListener(this.MBH);
     AppMethodBeat.o(9970);
   }
   
-  private void fMV()
+  private void gev()
   {
     AppMethodBeat.i(9973);
-    if ((this.KKO == null) || (getSurfaceTexture() == null))
+    if ((this.MBD == null) || (getSurfaceTexture() == null))
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("connectSurfaceToRenderer() should only be called when flutterRenderer and getSurfaceTexture() are non-null.");
       AppMethodBeat.o(9973);
       throw localIllegalStateException;
     }
-    this.KKO.m(new Surface(getSurfaceTexture()));
+    this.MBG = new Surface(getSurfaceTexture());
+    this.MBD.m(this.MBG);
     AppMethodBeat.o(9973);
   }
   
-  private void fMW()
+  private void gew()
   {
     AppMethodBeat.i(9974);
-    if (this.KKO == null)
+    if (this.MBD == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
       AppMethodBeat.o(9974);
       throw localIllegalStateException;
     }
-    this.KKO.fNw();
+    this.MBD.geV();
+    this.MBG.release();
+    this.MBG = null;
     AppMethodBeat.o(9974);
   }
   
   public final void a(io.flutter.embedding.engine.b.a parama)
   {
     AppMethodBeat.i(9971);
-    io.flutter.a.fMD();
-    if (this.KKO != null)
+    io.flutter.a.gea();
+    if (this.MBD != null)
     {
-      io.flutter.a.fMD();
-      this.KKO.fNw();
+      io.flutter.a.gea();
+      this.MBD.geV();
     }
-    this.KKO = parama;
-    this.KKN = true;
-    if (this.KKM)
+    this.MBD = parama;
+    this.MBC = true;
+    if (this.MBB)
     {
-      io.flutter.a.fMD();
-      fMV();
+      io.flutter.a.gea();
+      gev();
     }
     AppMethodBeat.o(9971);
   }
   
-  public final void fMU()
+  public io.flutter.embedding.engine.b.a getAttachedRenderer()
+  {
+    return this.MBD;
+  }
+  
+  public final void geu()
   {
     AppMethodBeat.i(9972);
-    if (this.KKO != null)
+    if (this.MBD != null)
     {
       if (getWindowToken() != null)
       {
-        io.flutter.a.fMD();
-        fMW();
+        io.flutter.a.gea();
+        gew();
       }
-      this.KKO = null;
-      this.KKN = false;
+      this.MBD = null;
+      this.MBC = false;
       AppMethodBeat.o(9972);
       return;
     }
-    io.flutter.a.fMG();
+    io.flutter.a.ged();
     AppMethodBeat.o(9972);
-  }
-  
-  public io.flutter.embedding.engine.b.a getAttachedRenderer()
-  {
-    return this.KKO;
   }
 }
 

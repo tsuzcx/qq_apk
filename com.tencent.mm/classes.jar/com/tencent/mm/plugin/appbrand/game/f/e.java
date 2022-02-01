@@ -10,100 +10,97 @@ import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.magicbrush.ui.MagicBrushView.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ao;
+import com.tencent.mm.plugin.appbrand.ap;
 import com.tencent.mm.plugin.appbrand.g;
 import com.tencent.mm.plugin.appbrand.g.d;
-import com.tencent.mm.plugin.appbrand.game.a.n;
+import com.tencent.mm.plugin.appbrand.game.a.q;
 import com.tencent.mm.plugin.appbrand.game.e.b.b.a;
 import com.tencent.mm.plugin.appbrand.ipc.MMToClientEvent;
 import com.tencent.mm.plugin.appbrand.page.aj;
 import com.tencent.mm.plugin.appbrand.r.a.d;
-import com.tencent.mm.protocal.protobuf.eba;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ehe;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ar;
 
 public class e<PAGE extends com.tencent.mm.plugin.appbrand.page.ae>
   extends com.tencent.luggage.game.page.h<PAGE>
   implements a
 {
-  private MagicBrushView jRW = null;
-  private b jRX = null;
+  private MagicBrushView kmk = null;
+  private b kml = null;
   
   public e(PAGE paramPAGE)
   {
     super(paramPAGE);
   }
   
-  private boolean bdO()
+  private boolean bhs()
   {
-    AppMethodBeat.i(186526);
-    boolean bool = ao.w(((com.tencent.mm.plugin.appbrand.page.ae)CM()).getRuntime());
-    AppMethodBeat.o(186526);
+    AppMethodBeat.i(188225);
+    boolean bool = ap.n(((com.tencent.mm.plugin.appbrand.page.ae)El()).getRuntime());
+    AppMethodBeat.o(188225);
     return bool;
   }
   
-  public final MagicBrushView BR()
-  {
-    return this.jRW;
-  }
-  
-  public final void Cc()
+  public final void DB()
   {
     AppMethodBeat.i(45192);
     b(a.class, this);
     AppMethodBeat.o(45192);
   }
   
-  public final void Cg()
+  public final void DF()
   {
     AppMethodBeat.i(45189);
-    if ((g.Hg(((com.tencent.mm.plugin.appbrand.page.ae)CM()).getAppId()) == g.d.jdc) && (this.jRX != null) && (this.jRX.bdJ())) {
-      new com.tencent.mm.plugin.appbrand.game.e.b.b().a(((com.tencent.mm.plugin.appbrand.page.ae)CM()).aTU(), b.a.jRJ, 0);
+    if ((g.Kv(((com.tencent.mm.plugin.appbrand.page.ae)El()).getAppId()) == g.d.jwl) && (this.kml != null) && (this.kml.bhn())) {
+      new com.tencent.mm.plugin.appbrand.game.e.b.b().a(((com.tencent.mm.plugin.appbrand.page.ae)El()).aXe(), b.a.klX, 0);
     }
-    super.Cg();
+    super.DF();
     AppMethodBeat.o(45189);
   }
   
   public final void a(com.tencent.mm.plugin.appbrand.report.b paramb)
   {
     AppMethodBeat.i(45191);
-    paramb = paramb.lQC;
-    this.jRX = new b(paramb, CO());
-    if ((paramb != null) && (paramb.GgA))
+    paramb = paramb.mqs;
+    this.kml = new b(paramb, En());
+    if ((paramb != null) && (paramb.HRN))
     {
-      ac.i("MicroMsg.WAGamePageViewRendererWC", "hy: should do server sample");
-      paramb = this.jRX;
-      if ((paramb.jRM == null) || (paramb.bdK() == null) || (bs.isNullOrNil(paramb.jRM.GgI)) || (!paramb.jRM.GgA) || (paramb.jRO == null))
+      ad.i("MicroMsg.WAGamePageViewRendererWC", "hy: should do server sample");
+      paramb = this.kml;
+      if ((paramb.kma == null) || (paramb.bho() == null) || (bt.isNullOrNil(paramb.kma.HRV)) || (!paramb.kma.HRN) || (paramb.kmc == null))
       {
-        ac.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: should not do server config!");
+        ad.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: should not do server config!");
         AppMethodBeat.o(45191);
         return;
       }
-      if (paramb.bdL())
+      if (paramb.bhp())
       {
-        ac.d("MicroMsg.WAGameCanvasSecurityGuard", "hy: running, trigger send event after 1 sec");
-        com.tencent.mm.sdk.platformtools.ap.n(new b.1(paramb), 1000L);
+        ad.d("MicroMsg.WAGameCanvasSecurityGuard", "hy: running, trigger send event after 1 sec");
+        aq.o(new b.1(paramb), 1000L);
         AppMethodBeat.o(45191);
         return;
       }
-      ac.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: not running!");
+      ad.w("MicroMsg.WAGameCanvasSecurityGuard", "hy: not running!");
       AppMethodBeat.o(45191);
       return;
     }
-    ac.w("MicroMsg.WAGamePageViewRendererWC", "hy: no server config or do not need sample. do not do anything");
+    ad.w("MicroMsg.WAGamePageViewRendererWC", "hy: no server config or do not need sample. do not do anything");
     AppMethodBeat.o(45191);
   }
   
   public final MagicBrushView ax(Context paramContext)
   {
     AppMethodBeat.i(45188);
-    boolean bool = ((Boolean)n.jQG.aqp()).booleanValue();
-    ac.i("MicroMsg.WAGamePageViewRendererWC", "hy: create magicbrush view in wc, use texture view: %b", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = ((Boolean)q.kkV.ate()).booleanValue();
+    ad.i("MicroMsg.WAGamePageViewRendererWC", "hy: create magicbrush view in wc, use texture view: %b", new Object[] { Boolean.valueOf(bool) });
     if (bool) {}
     for (Object localObject = new com.tencent.mm.plugin.appbrand.game.f.a.c(paramContext);; localObject = new com.tencent.mm.plugin.appbrand.game.f.a.b(paramContext))
     {
-      this.jRW = new MagicBrushView(paramContext, (MagicBrushView.b)localObject);
-      paramContext = this.jRW;
+      this.kmk = new MagicBrushView(paramContext, (MagicBrushView.b)localObject);
+      paramContext = this.kmk;
       AppMethodBeat.o(45188);
       return paramContext;
     }
@@ -111,86 +108,86 @@ public class e<PAGE extends com.tencent.mm.plugin.appbrand.page.ae>
   
   public final void b(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
   {
-    AppMethodBeat.i(186524);
-    if (bdO())
+    AppMethodBeat.i(188223);
+    if (bhs())
     {
       paramb.setFullscreenMode(false);
       paramb.setBackgroundAlpha(0.0D);
       paramb.setForegroundColor(-1);
-      paramb.setMainTitle(CO().DC().ddh);
-      AppMethodBeat.o(186524);
+      paramb.setMainTitle(En().Fb().doD);
+      AppMethodBeat.o(188223);
       return;
     }
     super.b(paramb);
-    AppMethodBeat.o(186524);
+    AppMethodBeat.o(188223);
   }
   
-  public final b bdI()
+  public final b bhm()
   {
-    return this.jRX;
+    return this.kml;
   }
   
   public final void cl(View paramView)
   {
-    AppMethodBeat.i(186527);
-    if (!com.tencent.mm.plugin.appbrand.ae.v(((com.tencent.mm.plugin.appbrand.page.ae)CM()).getRuntime()))
+    AppMethodBeat.i(188226);
+    if (!com.tencent.mm.plugin.appbrand.ae.m(((com.tencent.mm.plugin.appbrand.page.ae)El()).getRuntime()))
     {
-      AppMethodBeat.o(186527);
+      AppMethodBeat.o(188226);
       return;
     }
     super.cl(paramView);
-    AppMethodBeat.o(186527);
+    AppMethodBeat.o(188226);
   }
   
   public final void cm(View paramView)
   {
-    AppMethodBeat.i(186523);
+    AppMethodBeat.i(188222);
     super.cm(paramView);
     int i;
     FrameLayout.LayoutParams localLayoutParams;
-    if (bdO())
+    if (bhs())
     {
       paramView = new View(getContext());
       paramView.setBackgroundResource(2131099726);
-      this.caK.addView(paramView, this.caK.indexOfChild(this.caN), new FrameLayout.LayoutParams(-1, -1));
+      this.clb.addView(paramView, this.clb.indexOfChild(this.cle), new FrameLayout.LayoutParams(-1, -1));
       paramView = new View(getContext());
       paramView.setBackgroundDrawable(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { -2147483648, 0 }));
-      i = com.tencent.mm.ui.ap.ji(getContext()) + com.tencent.mm.cc.a.av(getContext(), 2131165742);
+      i = ar.jG(getContext()) + com.tencent.mm.cc.a.ay(getContext(), 2131165742);
       localLayoutParams = new FrameLayout.LayoutParams(-1, i);
-      this.caK.addView(paramView, localLayoutParams);
-      paramView = (com.tencent.luggage.game.d.a.a.b)((com.tencent.mm.plugin.appbrand.page.ae)CM()).aTU().Q(com.tencent.luggage.game.d.a.a.b.class);
+      this.clb.addView(paramView, localLayoutParams);
+      paramView = (com.tencent.luggage.game.d.a.a.b)((com.tencent.mm.plugin.appbrand.page.ae)El()).aXe().Q(com.tencent.luggage.game.d.a.a.b.class);
       if (paramView != null)
       {
-        paramView = paramView.Bi();
-        if ((paramView.bYR != null) && (paramView.bYR.getView() != null)) {
+        paramView = paramView.CH();
+        if ((paramView.cjj != null) && (paramView.cjj.getView() != null)) {
           break label220;
         }
       }
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.appbrand.page.ae)CM()).getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
+      ((com.tencent.mm.plugin.appbrand.page.ae)El()).getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
       {
-        public final void Cb()
+        public final void DA()
         {
-          AppMethodBeat.i(186522);
-          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.CM()).bqy().setVisibility(0);
-          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.CM()).lDc.setVisibility(0);
-          AppMethodBeat.o(186522);
+          AppMethodBeat.i(188221);
+          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.El()).bux().setVisibility(0);
+          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.El()).mcE.setVisibility(0);
+          AppMethodBeat.o(188221);
         }
         
-        public final void bdP()
+        public final void bht()
         {
-          AppMethodBeat.i(186521);
-          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.CM()).bqy().setVisibility(4);
-          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.CM()).lDc.setVisibility(4);
-          AppMethodBeat.o(186521);
+          AppMethodBeat.i(188220);
+          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.El()).bux().setVisibility(4);
+          ((com.tencent.mm.plugin.appbrand.page.ae)e.this.El()).mcE.setVisibility(4);
+          AppMethodBeat.o(188220);
         }
       });
-      AppMethodBeat.o(186523);
+      AppMethodBeat.o(188222);
       return;
       label220:
-      paramView = paramView.bYR.getView();
+      paramView = paramView.cjj.getView();
       localLayoutParams = (FrameLayout.LayoutParams)paramView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localLayoutParams.bottomMargin = 52;
@@ -201,12 +198,12 @@ public class e<PAGE extends com.tencent.mm.plugin.appbrand.page.ae>
   public final void dispatchDestroy()
   {
     AppMethodBeat.i(45190);
-    String str = ((com.tencent.mm.plugin.appbrand.page.ae)CM()).getAppId();
-    ac.i("MicroMsg.OnStartReportCanvasDataEvent", "stopListeningOperationEvent, appId:%s", new Object[] { str });
-    if (com.tencent.mm.plugin.appbrand.game.e.b.b.jya != null)
+    String str = ((com.tencent.mm.plugin.appbrand.page.ae)El()).getAppId();
+    ad.i("MicroMsg.OnStartReportCanvasDataEvent", "stopListeningOperationEvent, appId:%s", new Object[] { str });
+    if (com.tencent.mm.plugin.appbrand.game.e.b.b.jRW != null)
     {
-      MMToClientEvent.b(str, com.tencent.mm.plugin.appbrand.game.e.b.b.jya);
-      com.tencent.mm.plugin.appbrand.game.e.b.b.jya = null;
+      MMToClientEvent.b(str, com.tencent.mm.plugin.appbrand.game.e.b.b.jRW);
+      com.tencent.mm.plugin.appbrand.game.e.b.b.jRW = null;
     }
     super.dispatchDestroy();
     AppMethodBeat.o(45190);
@@ -214,17 +211,22 @@ public class e<PAGE extends com.tencent.mm.plugin.appbrand.page.ae>
   
   public final void dispatchStart()
   {
-    AppMethodBeat.i(186525);
+    AppMethodBeat.i(188224);
     super.dispatchStart();
-    if (bdO()) {
-      ((com.tencent.mm.plugin.appbrand.page.b.h)Q(com.tencent.mm.plugin.appbrand.page.b.h.class)).Cl();
+    if (bhs()) {
+      ((com.tencent.mm.plugin.appbrand.page.b.h)Q(com.tencent.mm.plugin.appbrand.page.b.h.class)).DK();
     }
-    AppMethodBeat.o(186525);
+    AppMethodBeat.o(188224);
+  }
+  
+  public final MagicBrushView getMagicBrushView()
+  {
+    return this.kmk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.e
  * JD-Core Version:    0.7.0.1
  */

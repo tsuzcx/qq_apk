@@ -3,7 +3,7 @@ package com.tencent.mm.ui.chatting.gallery;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,21 +18,21 @@ final class b$1
     boolean bool1;
     int i;
     label33:
-    bo localbo;
+    bu localbu;
     boolean bool2;
-    if (this.Iai.size() <= 1)
+    if (this.JPx.size() <= 1)
     {
       bool1 = true;
-      Iterator localIterator = this.Iai.iterator();
+      Iterator localIterator = this.JPx.iterator();
       i = 0;
       if (!localIterator.hasNext()) {
         break label106;
       }
-      localbo = (bo)localIterator.next();
-      if (!b.m(localbo)) {
+      localbu = (bu)localIterator.next();
+      if (!b.m(localbu)) {
         break label92;
       }
-      bool2 = b.b(this.val$context, localbo, bool1);
+      bool2 = b.b(this.val$context, localbu, bool1);
       label74:
       if ((i != 0) || (!bool2)) {
         break label184;
@@ -46,7 +46,7 @@ final class b$1
       bool1 = false;
       break;
       label92:
-      bool2 = b.d(this.val$context, localbo, bool1);
+      bool2 = b.d(this.val$context, localbu, bool1);
       break label74;
       label106:
       if ((i == 0) && (!bool1))
@@ -56,7 +56,7 @@ final class b$1
         return;
       }
       if ((i != 0) && (!bool1)) {
-        Toast.makeText(this.val$context, this.val$context.getString(2131758631, new Object[] { com.tencent.mm.loader.j.b.aps() }), 1).show();
+        Toast.makeText(this.val$context, this.val$context.getString(2131758631, new Object[] { com.tencent.mm.loader.j.b.asg() }), 1).show();
       }
       AppMethodBeat.o(35876);
       return;

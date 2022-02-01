@@ -1,18 +1,18 @@
 package d.l.b.a.b.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 
 public final class f
 {
-  public final String BRN;
-  public final int LOY;
+  public final String Dsg;
+  public final int NFT;
   
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(61369);
-    this.BRN = paramString;
-    this.LOY = paramInt;
+    this.Dsg = paramString;
+    this.NFT = paramInt;
     AppMethodBeat.o(61369);
   }
   
@@ -21,24 +21,17 @@ public final class f
     AppMethodBeat.i(61372);
     if (this != paramObject)
     {
-      if (!(paramObject instanceof f)) {
-        break label65;
-      }
-      paramObject = (f)paramObject;
-      if (!k.g(this.BRN, paramObject.BRN)) {
-        break label65;
-      }
-      if (this.LOY != paramObject.LOY) {
-        break label60;
+      if ((paramObject instanceof f))
+      {
+        paramObject = (f)paramObject;
+        if ((!p.i(this.Dsg, paramObject.Dsg)) || (this.NFT != paramObject.NFT)) {}
       }
     }
-    label60:
-    for (int i = 1; i != 0; i = 0)
+    else
     {
       AppMethodBeat.o(61372);
       return true;
     }
-    label65:
     AppMethodBeat.o(61372);
     return false;
   }
@@ -46,11 +39,11 @@ public final class f
   public final int hashCode()
   {
     AppMethodBeat.i(61371);
-    String str = this.BRN;
+    String str = this.Dsg;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
-      int j = this.LOY;
+      int j = this.NFT;
       AppMethodBeat.o(61371);
       return i * 31 + j;
     }
@@ -59,7 +52,7 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(61370);
-    String str = "NumberWithRadix(number=" + this.BRN + ", radix=" + this.LOY + ")";
+    String str = "NumberWithRadix(number=" + this.Dsg + ", radix=" + this.NFT + ")";
     AppMethodBeat.o(61370);
     return str;
   }

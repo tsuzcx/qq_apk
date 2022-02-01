@@ -1,7 +1,7 @@
 package d.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.l;
 
 public abstract interface g
@@ -11,20 +11,20 @@ public abstract interface g
   public static final class a
     implements g
   {
-    public static final a LNv;
+    public static final a NEq;
     
     static
     {
       AppMethodBeat.i(61302);
-      LNv = new a();
+      NEq = new a();
       AppMethodBeat.o(61302);
     }
     
     public final boolean g(l paraml1, l paraml2)
     {
       AppMethodBeat.i(61301);
-      k.h(paraml1, "what");
-      k.h(paraml2, "from");
+      p.h(paraml1, "what");
+      p.h(paraml2, "from");
       AppMethodBeat.o(61301);
       return true;
     }

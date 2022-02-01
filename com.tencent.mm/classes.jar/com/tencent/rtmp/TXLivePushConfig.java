@@ -1,6 +1,7 @@
 package com.tencent.rtmp;
 
 import android.graphics.Bitmap;
+import com.tencent.liteav.basic.a.c;
 import java.util.HashMap;
 
 public class TXLivePushConfig
@@ -50,7 +51,7 @@ public class TXLivePushConfig
   int mVideoFPS = 20;
   String mVideoPreProcessFuncName;
   String mVideoPreProcessLibrary;
-  int mVideoResolution = 1;
+  c mVideoResolution = c.c;
   int mVolumeType = 0;
   Bitmap mWatermark;
   float mWatermarkWidth = -1.0F;
@@ -277,7 +278,85 @@ public class TXLivePushConfig
   
   public void setVideoResolution(int paramInt)
   {
-    this.mVideoResolution = paramInt;
+    switch (paramInt)
+    {
+    case 20: 
+    case 21: 
+    case 22: 
+    case 23: 
+    case 24: 
+    case 25: 
+    case 26: 
+    case 27: 
+    case 28: 
+    case 29: 
+    default: 
+      return;
+    case 0: 
+      this.mVideoResolution = c.b;
+      return;
+    case 1: 
+      this.mVideoResolution = c.c;
+      return;
+    case 2: 
+      this.mVideoResolution = c.d;
+      return;
+    case 3: 
+      this.mVideoResolution = c.e;
+      return;
+    case 4: 
+      this.mVideoResolution = c.f;
+      return;
+    case 5: 
+      this.mVideoResolution = c.g;
+      return;
+    case 6: 
+      this.mVideoResolution = c.h;
+      return;
+    case 7: 
+      this.mVideoResolution = c.i;
+      return;
+    case 8: 
+      this.mVideoResolution = c.j;
+      return;
+    case 9: 
+      this.mVideoResolution = c.k;
+      return;
+    case 10: 
+      this.mVideoResolution = c.l;
+      return;
+    case 11: 
+      this.mVideoResolution = c.m;
+      return;
+    case 12: 
+      this.mVideoResolution = c.n;
+      return;
+    case 13: 
+      this.mVideoResolution = c.o;
+      return;
+    case 14: 
+      this.mVideoResolution = c.p;
+      return;
+    case 15: 
+      this.mVideoResolution = c.q;
+      return;
+    case 16: 
+      this.mVideoResolution = c.r;
+      return;
+    case 17: 
+      this.mVideoResolution = c.s;
+      return;
+    case 18: 
+      this.mVideoResolution = c.t;
+      return;
+    case 19: 
+      this.mVideoResolution = c.u;
+      return;
+    case 30: 
+      this.mVideoResolution = c.w;
+      return;
+    }
+    this.mVideoResolution = c.x;
   }
   
   public void setVolumeType(int paramInt)

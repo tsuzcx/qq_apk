@@ -34,7 +34,7 @@ public class RealSetStrokeStyleActionNormalArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145093);
-    paramd.jzb.setColor(this.color);
+    paramd.jSY.setColor(this.color);
     AppMethodBeat.o(145093);
     return true;
   }
@@ -82,7 +82,7 @@ public class RealSetStrokeStyleActionNormalArg
       AppMethodBeat.o(145098);
       return;
     }
-    this.color = g.p(paramJSONArray);
+    this.color = g.q(paramJSONArray);
     AppMethodBeat.o(145098);
   }
   

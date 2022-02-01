@@ -6,52 +6,86 @@ import com.tencent.mm.plugin.report.a;
 public final class y
   extends a
 {
-  public long dHH;
-  public long dHI;
-  public long dHJ;
-  public long dHK = 0L;
-  public long dHL = 0L;
+  private int dPT;
+  private int dSg;
+  private String dUA;
+  private int dUy;
+  private String dUz;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(73526);
+    AppMethodBeat.i(183918);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHH);
+    ((StringBuffer)localObject).append(this.dPT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHI);
+    ((StringBuffer)localObject).append(this.dSg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHJ);
+    ((StringBuffer)localObject).append(this.dUz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHK);
+    ((StringBuffer)localObject).append(this.dUA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHL);
+    ((StringBuffer)localObject).append(this.dUy);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(73526);
+    awz((String)localObject);
+    AppMethodBeat.o(183918);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(73527);
+    AppMethodBeat.i(183919);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("favid:").append(this.dHH);
+    ((StringBuffer)localObject).append("Action:").append(this.dPT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("favsize:").append(this.dHI);
+    ((StringBuffer)localObject).append("Scene:").append(this.dSg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachecnt:").append(this.dHJ);
+    ((StringBuffer)localObject).append("Pid:").append(this.dUz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachelsize:").append(this.dHK);
+    ((StringBuffer)localObject).append("Md5:").append(this.dUA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachesuccess:").append(this.dHL);
+    ((StringBuffer)localObject).append("Index:").append(this.dUy);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(73527);
+    AppMethodBeat.o(183919);
     return localObject;
+  }
+  
+  public final y gS(String paramString)
+  {
+    AppMethodBeat.i(183916);
+    this.dUz = t("Pid", paramString, true);
+    AppMethodBeat.o(183916);
+    return this;
+  }
+  
+  public final y gT(String paramString)
+  {
+    AppMethodBeat.i(183917);
+    this.dUA = t("Md5", paramString, true);
+    AppMethodBeat.o(183917);
+    return this;
   }
   
   public final int getId()
   {
-    return 18053;
+    return 19434;
+  }
+  
+  public final y ik(int paramInt)
+  {
+    this.dPT = paramInt;
+    return this;
+  }
+  
+  public final y il(int paramInt)
+  {
+    this.dSg = paramInt;
+    return this;
+  }
+  
+  public final y im(int paramInt)
+  {
+    this.dUy = paramInt;
+    return this;
   }
 }
 

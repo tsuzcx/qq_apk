@@ -1,131 +1,176 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
-import android.database.MergeCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bj;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.caq;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.storage.RegionCodeDecoder;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.vfs.i;
 
 public final class bt
 {
-  private e db;
-  private bj hpF;
+  public String cityCode = "";
+  public String countryCode = "";
+  public int ePk = 0;
+  public int ePt = 0;
+  public String ePy = "";
+  private String hHV = "";
+  private String hHW = "";
+  public String provinceCode = "";
+  public String signature = "";
   
-  public bt(e parame, bj parambj)
+  public static caq a(bt parambt)
   {
-    this.db = parame;
-    this.hpF = parambj;
-  }
-  
-  private static String a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
-  {
-    AppMethodBeat.i(20390);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(" and (username in (");
-    localStringBuffer.append("select chatroomname from chatroom where ");
-    if ((paramArrayList2 != null) && (paramArrayList2.size() != 0))
+    AppMethodBeat.i(42985);
+    g.ajC().ajl().set(12289, Integer.valueOf(parambt.ePt));
+    g.ajC().ajl().set(12290, Integer.valueOf(parambt.ePk));
+    if (bt.a.aO((String)g.ajC().ajl().get(12293, null), parambt.getProvince())) {
+      g.ajC().ajl().set(12293, parambt.getProvince());
+    }
+    if (bt.a.aO((String)g.ajC().ajl().get(12292, null), parambt.getCity())) {
+      g.ajC().ajl().set(12292, parambt.getCity());
+    }
+    if (bt.a.aO((String)g.ajC().ajl().get(12291, null), parambt.signature)) {
+      g.ajC().ajl().set(12291, parambt.signature);
+    }
+    if (bt.a.aO((String)g.ajC().ajl().get(12307, null), parambt.ePy)) {
+      g.ajC().ajl().set(12307, parambt.ePy);
+    }
+    if (bt.a.aO((String)g.ajC().ajl().get(12324, null), parambt.countryCode)) {
+      g.ajC().ajl().set(12324, parambt.countryCode);
+    }
+    if (bt.a.aO((String)g.ajC().ajl().get(12325, null), parambt.provinceCode)) {
+      g.ajC().ajl().set(12325, parambt.provinceCode);
+    }
+    if (bt.a.aO((String)g.ajC().ajl().get(12326, null), parambt.cityCode)) {
+      g.ajC().ajl().set(12326, parambt.cityCode);
+    }
+    caq localcaq = new caq();
+    localcaq.GVj = 128;
+    localcaq.GbY = new cwt().aPy("");
+    localcaq.GKC = new cwt().aPy("");
+    localcaq.Fsf = 0;
+    localcaq.GVk = new cwt().aPy("");
+    localcaq.GVl = new cwt().aPy("");
+    localcaq.nDG = 0;
+    byte[] arrayOfByte2 = i.aY("", 0, -1);
+    byte[] arrayOfByte1;
+    if (arrayOfByte2 == null)
     {
-      paramArrayList2 = paramArrayList2.iterator();
-      while (paramArrayList2.hasNext())
-      {
-        String str = (String)paramArrayList2.next();
-        localStringBuffer.append("chatroomname != '" + str + "' and ");
+      arrayOfByte1 = new byte[0];
+      localcaq.GVh = new b(arrayOfByte1);
+      if (arrayOfByte2 != null) {
+        break label598;
       }
     }
-    localStringBuffer.append("(memberlist like '%" + paramString + "%'");
-    paramString = paramArrayList1.iterator();
-    while (paramString.hasNext())
+    label598:
+    for (int i = 0;; i = arrayOfByte2.length)
     {
-      paramArrayList1 = (String)paramString.next();
-      localStringBuffer.append(" or memberlist like '%" + paramArrayList1 + "%'");
+      localcaq.GVg = i;
+      localcaq.jdc = parambt.ePk;
+      localcaq.jdg = parambt.ePt;
+      localcaq.jdf = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.signature);
+      localcaq.jde = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.cityCode);
+      localcaq.jdd = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.provinceCode);
+      localcaq.Fsi = 0;
+      localcaq.GNW = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.ePy);
+      localcaq.GVq = 0;
+      localcaq.jdh = "";
+      localcaq.GNY = 0;
+      localcaq.GNX = "";
+      localcaq.jdl = com.tencent.mm.sdk.platformtools.bt.nullAsNil(parambt.countryCode);
+      AppMethodBeat.o(42985);
+      return localcaq;
+      arrayOfByte1 = arrayOfByte2;
+      break;
     }
-    if ((paramArrayList3 != null) && (paramArrayList3.size() != 0))
+  }
+  
+  public static bt aCv()
+  {
+    AppMethodBeat.i(42983);
+    bt localbt = new bt();
+    localbt.ePt = 1;
+    localbt.ePk = com.tencent.mm.sdk.platformtools.bt.a((Integer)g.ajC().ajl().get(12290, null), 0);
+    localbt.hHV = ((String)g.ajC().ajl().get(12293, null));
+    localbt.hHW = ((String)g.ajC().ajl().get(12292, null));
+    localbt.signature = ((String)g.ajC().ajl().get(12291, null));
+    localbt.ePy = ((String)g.ajC().ajl().get(12307, null));
+    localbt.countryCode = ((String)g.ajC().ajl().get(12324, null));
+    localbt.provinceCode = ((String)g.ajC().ajl().get(12325, null));
+    localbt.cityCode = ((String)g.ajC().ajl().get(12326, null));
+    AppMethodBeat.o(42983);
+    return localbt;
+  }
+  
+  public static bt aCw()
+  {
+    AppMethodBeat.i(42984);
+    if (com.tencent.mm.sdk.platformtools.bt.a((Integer)g.ajC().ajl().get(12289, null), 0) == 0)
     {
-      paramString = paramArrayList3.iterator();
-      while (paramString.hasNext())
-      {
-        paramArrayList1 = (String)paramString.next();
-        localStringBuffer.append(" or chatroomname = '" + paramArrayList1 + "'");
+      AppMethodBeat.o(42984);
+      return null;
+    }
+    bt localbt = aCv();
+    AppMethodBeat.o(42984);
+    return localbt;
+  }
+  
+  public final String getCity()
+  {
+    AppMethodBeat.i(42986);
+    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.countryCode))
+    {
+      if (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.provinceCode)) {
+        break label105;
       }
-    }
-    localStringBuffer.append(")))");
-    paramString = localStringBuffer.toString();
-    AppMethodBeat.o(20390);
-    return paramString;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
-  {
-    AppMethodBeat.i(20386);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(20386);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(20385);
-    paramString1 = a(paramString1, paramString2, paramList, paramBoolean, 1, null);
-    AppMethodBeat.o(20385);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, boolean paramBoolean, int paramInt, List<String> paramList2)
-  {
-    AppMethodBeat.i(20388);
-    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid  from rcontact ";
-    if (paramInt == 2) {
-      localObject = "select 2, *,rowid from rcontact ";
-    }
-    paramString2 = (String)localObject + this.hpF.f(paramString2, null, paramList1) + this.hpF.aNB(paramString1) + this.hpF.aCs();
-    ac.v("Micro.SimpleSearchConversationModel", paramString2);
-    paramString2 = this.db.rawQuery(paramString2, null);
-    ArrayList localArrayList;
-    if (paramBoolean)
-    {
-      localObject = new ArrayList();
-      localArrayList = new ArrayList();
-      while (paramString2.moveToNext())
-      {
-        String str = paramString2.getString(paramString2.getColumnIndex("username"));
-        if (!w.sQ(str)) {
-          ((ArrayList)localObject).add(str);
-        } else {
-          localArrayList.add(str);
-        }
+      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.cityCode)) {
+        break label79;
       }
-      if ((paramList2 != null) && (paramList2.size() != 0)) {
-        ((ArrayList)localObject).addAll(paramList2);
-      }
-      if (((ArrayList)localObject).size() == 0) {}
+      RegionCodeDecoder.fsz();
+      this.hHW = RegionCodeDecoder.mb(this.countryCode, this.provinceCode);
     }
-    for (paramString1 = new MergeCursor(new Cursor[] { paramString2, a(paramString1, (ArrayList)localObject, localArrayList, null, paramList1) });; paramString1 = paramString2)
+    while (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.hHW))
     {
-      AppMethodBeat.o(20388);
-      return paramString1;
+      str = com.tencent.mm.sdk.platformtools.bt.nullAsNil(this.cityCode);
+      AppMethodBeat.o(42986);
+      return str;
+      label79:
+      RegionCodeDecoder.fsz();
+      this.hHW = RegionCodeDecoder.bh(this.countryCode, this.provinceCode, this.cityCode);
+      continue;
+      label105:
+      this.hHW = "";
     }
+    String str = this.hHW;
+    AppMethodBeat.o(42986);
+    return str;
   }
   
-  public final Cursor a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, List<String> paramList)
+  public final String getProvince()
   {
-    AppMethodBeat.i(20389);
-    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid  from rcontact " + this.hpF.f("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.hpF.aCs();
-    ac.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
-    paramString = this.db.rawQuery(paramString, null);
-    AppMethodBeat.o(20389);
-    return paramString;
-  }
-  
-  public final Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
-  {
-    AppMethodBeat.i(20387);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(20387);
-    return paramString1;
+    AppMethodBeat.i(42987);
+    if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.countryCode))
+    {
+      if ((com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.provinceCode)) || (com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.cityCode)) || (!RegionCodeDecoder.aUp(this.countryCode))) {
+        break label89;
+      }
+      RegionCodeDecoder.fsz();
+    }
+    for (this.hHV = RegionCodeDecoder.mb(this.countryCode, this.provinceCode); com.tencent.mm.sdk.platformtools.bt.isNullOrNil(this.hHV); this.hHV = RegionCodeDecoder.aUq(this.countryCode))
+    {
+      str = com.tencent.mm.sdk.platformtools.bt.nullAsNil(this.provinceCode);
+      AppMethodBeat.o(42987);
+      return str;
+      label89:
+      RegionCodeDecoder.fsz();
+    }
+    String str = this.hHV;
+    AppMethodBeat.o(42987);
+    return str;
   }
 }
 

@@ -3,13 +3,15 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
+import com.tencent.mm.model.am;
 import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.jsruntime.ac;
 import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.util.ArrayList;
@@ -17,33 +19,33 @@ import java.util.Iterator;
 import java.util.List;
 
 public final class r
-  extends al
+  extends am
 {
   public final String getTag()
   {
     return "AppBrandPluginCodeCodeCacheTransfer";
   }
   
-  public final boolean nP(int paramInt)
+  public final boolean op(int paramInt)
   {
-    AppMethodBeat.i(186341);
-    boolean bool = g.agR().agA().getBoolean(ah.a.GJv, false);
-    com.tencent.mm.sdk.platformtools.ac.d("AppBrandPluginCodeCodeCacheTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.i(188033);
+    boolean bool = g.ajC().ajl().getBoolean(al.a.IvN, false);
+    ad.d("AppBrandPluginCodeCodeCacheTransfer", "needTransfer doneIssue %b", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      AppMethodBeat.o(186341);
+      AppMethodBeat.o(188033);
       return true;
     }
-    AppMethodBeat.o(186341);
+    AppMethodBeat.o(188033);
     return false;
   }
   
   public final void transfer(int paramInt)
   {
-    AppMethodBeat.i(186340);
+    AppMethodBeat.i(188032);
     try
     {
-      localObject1 = j.aVC().joN.a(String.format("select distinct %s from %s where %s like '%%$%s' ", new Object[] { "appId", "AppBrandWxaPkgManifestRecord", "appId", "__PLUGINCODE__" }), null, 2);
+      localObject1 = j.aYX().jIJ.a(String.format("select distinct %s from %s where %s like '%%$%s' ", new Object[] { "appId", "AppBrandWxaPkgManifestRecord", "appId", "__PLUGINCODE__" }), null, 2);
       ArrayList localArrayList = new ArrayList();
       while (((Cursor)localObject1).moveToNext()) {
         localArrayList.add(((Cursor)localObject1).getString(0));
@@ -52,18 +54,18 @@ public final class r
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ac.printErrStackTrace("AppBrandPluginCodeCodeCacheTransfer", localException, "transfer failed", new Object[0]);
-      AppMethodBeat.o(186340);
+      ad.printErrStackTrace("AppBrandPluginCodeCodeCacheTransfer", localException, "transfer failed", new Object[0]);
+      AppMethodBeat.o(188032);
       return;
     }
-    if ((bs.gY(localException)) || (localException.size() <= 0))
+    if ((bt.hj(localException)) || (localException.size() <= 0))
     {
-      com.tencent.mm.sdk.platformtools.ac.i("AppBrandPluginCodeCodeCacheTransfer", "no need to transfer pluginAppIdList :%d", new Object[] { Integer.valueOf(localException.size()) });
-      g.agR().agA().set(ah.a.GJv, Boolean.TRUE);
-      AppMethodBeat.o(186340);
+      ad.i("AppBrandPluginCodeCodeCacheTransfer", "no need to transfer pluginAppIdList :%d", new Object[] { Integer.valueOf(localException.size()) });
+      g.ajC().ajl().set(al.a.IvN, Boolean.TRUE);
+      AppMethodBeat.o(188032);
       return;
     }
-    Object localObject1 = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.appbrand.jsruntime.ac.bdS()).fxX();
+    Object localObject1 = new com.tencent.mm.vfs.e(ac.bhw()).fOM();
     int i = localObject1.length;
     paramInt = 0;
     for (;;)
@@ -74,8 +76,8 @@ public final class r
         if (localObject2.isDirectory())
         {
           String str1 = localObject2.getName();
-          com.tencent.mm.sdk.platformtools.ac.d("AppBrandPluginCodeCodeCacheTransfer", "fileName:%s", new Object[] { str1 });
-          if (!bs.isNullOrNil(str1))
+          ad.d("AppBrandPluginCodeCodeCacheTransfer", "fileName:%s", new Object[] { str1 });
+          if (!bt.isNullOrNil(str1))
           {
             Iterator localIterator = localException.iterator();
             String str2;
@@ -88,11 +90,11 @@ public final class r
             } while (!str1.startsWith(str2.substring(0, str2.indexOf("$"))));
             boolean bool = localObject2.delete();
             if (localObject2.isDirectory()) {
-              bool = i.cU(q.B(localObject2.mUri), true);
+              bool = i.cZ(q.B(localObject2.mUri), true);
             }
             for (;;)
             {
-              com.tencent.mm.sdk.platformtools.ac.d("AppBrandPluginCodeCodeCacheTransfer", "delete file:%s ret:%b", new Object[] { str1, Boolean.valueOf(bool) });
+              ad.d("AppBrandPluginCodeCodeCacheTransfer", "delete file:%s ret:%b", new Object[] { str1, Boolean.valueOf(bool) });
               break;
               if (localObject2.isFile()) {
                 bool = localObject2.delete();
@@ -103,8 +105,8 @@ public final class r
       }
       else
       {
-        g.agR().agA().set(ah.a.GJv, Boolean.TRUE);
-        AppMethodBeat.o(186340);
+        g.ajC().ajl().set(al.a.IvN, Boolean.TRUE);
+        AppMethodBeat.o(188032);
         return;
       }
       paramInt += 1;

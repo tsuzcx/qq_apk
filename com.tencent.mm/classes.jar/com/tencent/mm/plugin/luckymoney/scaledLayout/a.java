@@ -11,14 +11,14 @@ import android.support.v7.widget.ak;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
   extends ak
 {
   public Context context;
-  public View uos;
-  public boolean uot = false;
+  public View vqW;
+  public boolean vqX = false;
   
   public static View h(RecyclerView.i parami)
   {
@@ -35,7 +35,7 @@ public final class a
     int k;
     if (parami.getClipToPadding())
     {
-      j = localaj.kl() + localaj.kn() / 2;
+      j = localaj.kB() + localaj.kD() / 2;
       int i = 2147483647;
       k = 0;
       label58:
@@ -78,15 +78,15 @@ public final class a
       return -1;
     }
     View localView1 = localView2;
-    if (this.uos != null)
+    if (this.vqW != null)
     {
       localView1 = localView2;
-      if (this.uos != localView2) {
-        localView1 = this.uos;
+      if (this.vqW != localView2) {
+        localView1 = this.vqW;
       }
     }
     paramInt2 = RecyclerView.i.bB(localView1);
-    ac.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
+    ad.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
     if ((paramInt1 >= 100) && (paramInt2 + 1 < parami.getItemCount()))
     {
       AppMethodBeat.o(65322);
@@ -120,7 +120,7 @@ public final class a
     label118:
     for (;;)
     {
-      if (localView2 == this.uos) {
+      if (localView2 == this.vqW) {
         k = i;
       }
       i += 1;
@@ -145,7 +145,7 @@ public final class a
   public final RecyclerView.s g(final RecyclerView.i parami)
   {
     AppMethodBeat.i(65324);
-    if (this.uot)
+    if (this.vqX)
     {
       parami = super.g(parami);
       AppMethodBeat.o(65324);
@@ -166,7 +166,7 @@ public final class a
         int j = paramAnonymousView[1];
         int k = cd(Math.max(Math.abs(i), Math.abs(j)));
         if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.TN);
+          paramAnonymousa.a(i, j, k, this.VD);
         }
         AppMethodBeat.o(65319);
       }

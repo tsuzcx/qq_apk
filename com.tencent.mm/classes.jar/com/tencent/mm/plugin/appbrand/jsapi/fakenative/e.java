@@ -8,86 +8,88 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.appbrand.ui.c.a.b.a;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiSaveSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiSaveSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class e
   extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "saveSplashScreenshot";
-  public static final a kqH;
+  public static final a kMd;
   
   static
   {
-    AppMethodBeat.i(187211);
-    kqH = new a((byte)0);
-    AppMethodBeat.o(187211);
+    AppMethodBeat.i(189144);
+    kMd = new a((byte)0);
+    AppMethodBeat.o(189144);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiSaveSplashScreenshot$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "checkCanInvoke", "", "env", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "data", "Lorg/json/JSONObject;", "callbackId", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiSaveSplashScreenshot$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "checkCanInvoke", "", "env", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "data", "Lorg/json/JSONObject;", "callbackId", "plugin-appbrand-integration_release"})
   public static final class a
   {
     public static boolean a(c paramc)
     {
-      AppMethodBeat.i(187203);
-      k.h(paramc, "env");
-      b.a locala = com.tencent.mm.plugin.appbrand.ui.c.a.b.mnu;
-      if (b.a.bxd())
+      AppMethodBeat.i(189136);
+      p.h(paramc, "env");
+      b.a locala = com.tencent.mm.plugin.appbrand.ui.c.a.b.mNW;
+      if (b.a.bBj())
       {
         paramc = paramc.getRuntime();
-        k.g(paramc, "env.runtime");
-        if (paramc.aTS().jDy)
+        p.g(paramc, "env.runtime");
+        if (paramc.aXc().jXu)
         {
-          AppMethodBeat.o(187203);
+          AppMethodBeat.o(189136);
           return true;
         }
       }
-      AppMethodBeat.o(187203);
+      AppMethodBeat.o(189136);
       return false;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Landroid/graphics/Bitmap;", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Landroid/graphics/Bitmap;", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
   static final class b<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     b(e parame, o paramo, c paramc, int paramInt) {}
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bmp", "Landroid/graphics/Bitmap;", "call"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "bmp", "Landroid/graphics/Bitmap;", "call"})
   static final class c<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     c(e parame, o paramo, c paramc, int paramInt) {}
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback", "com/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiSaveSplashScreenshot$invoke$2$1$2"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "onCallback", "com/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiSaveSplashScreenshot$invoke$2$1$2"})
     static final class a<T>
       implements d<IPCVoid>
     {
       a(String paramString, e.c paramc, Bitmap paramBitmap) {}
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "info", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "info", "Lcom/tencent/mm/plugin/appbrand/ui/splash/screenshot/SplashScreenshotInfo;", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
     static final class b<InputType, ResultType>
       implements com.tencent.mm.ipcinvoker.b<com.tencent.mm.plugin.appbrand.ui.c.a.a, IPCVoid>
     {
-      public static final b kqL;
+      public static final b kMh;
       
       static
       {
-        AppMethodBeat.i(187207);
-        kqL = new b();
-        AppMethodBeat.o(187207);
+        AppMethodBeat.i(189140);
+        kMh = new b();
+        AppMethodBeat.o(189140);
       }
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class d
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     d(e parame, c paramc, int paramInt)
     {

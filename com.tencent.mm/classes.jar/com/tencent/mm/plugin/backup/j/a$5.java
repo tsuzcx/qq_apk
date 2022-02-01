@@ -2,50 +2,50 @@ package com.tencent.mm.plugin.backup.j;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.cd.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 final class a$5
-  implements cc.a
+  implements cd.a
 {
   a$5(a parama) {}
   
-  public final void a(f.a parama)
+  public final void a(e.a parama)
   {
     AppMethodBeat.i(22147);
-    ac.i("MicroMsg.BackupCore.BackupToPc", "sysMsgListener onreceive sysmsg");
-    h.wUl.idkeyStat(400L, 0L, 1L, false);
-    String str = (String)bv.L(z.a(parama.fXi.DPV), "sysmsg").get(".sysmsg.MMBakChatNotify.url");
-    if (bs.isNullOrNil(str))
+    ad.i("MicroMsg.BackupCore.BackupToPc", "sysMsgListener onreceive sysmsg");
+    g.yhR.idkeyStat(400L, 0L, 1L, false);
+    String str = (String)bw.M(z.a(parama.gqE.Fvk), "sysmsg").get(".sysmsg.MMBakChatNotify.url");
+    if (bt.isNullOrNil(str))
     {
-      ac.e("MicroMsg.BackupCore.BackupToPc", "MMBakChatNotify url is null");
+      ad.e("MicroMsg.BackupCore.BackupToPc", "MMBakChatNotify url is null");
       AppMethodBeat.o(22147);
       return;
     }
-    parama = new Intent().setClassName(ai.getContext(), "com.tencent.mm.plugin.backup.backuppcmodel.BackupPcService");
-    Intent localIntent = bs.ai(ai.getContext(), parama);
+    parama = new Intent().setClassName(aj.getContext(), "com.tencent.mm.plugin.backup.backuppcmodel.BackupPcService");
+    Intent localIntent = bt.ak(aj.getContext(), parama);
     if (localIntent != null) {
       parama = localIntent;
     }
     for (;;)
     {
-      d.aZ(parama.putExtra("url", str).putExtra("isFromWifi", true));
+      d.be(parama.putExtra("url", str).putExtra("isFromWifi", true));
       AppMethodBeat.o(22147);
       return;
     }
   }
   
-  public final void a(f.c paramc) {}
+  public final void a(e.c paramc) {}
 }
 
 

@@ -14,8 +14,8 @@ final class SnsMsgUI$6
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(98858);
-    g.agS();
-    g.agQ().ghe.a(this.yOl);
+    g.ajD();
+    g.ajB().gAO.a(this.AfH);
     AppMethodBeat.o(98858);
   }
 }

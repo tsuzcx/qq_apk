@@ -1,164 +1,503 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.d;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXTextObject;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.plugin.sns.j.h;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ba;
-import com.tencent.mm.plugin.sns.model.bb;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.brd;
-import com.tencent.mm.protocal.protobuf.dbw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.MMActivity;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
-import org.b.d.i;
+import java.util.Map;
 
 public final class bj
-  implements ab
 {
-  private String appName = "";
-  private String djj = "";
-  private MMActivity iMV;
-  private int xXU = 1;
-  private boolean yAm = false;
-  private boolean yAn = false;
-  private WXMediaMessage yAo = null;
-  private String yCj = "";
-  private int yyR;
-  private d yyX = null;
-  private String yyY = "";
+  private static HashMap<Long, Long> osk;
+  private static HashMap<Long, String> osl;
+  private static Map<String, List<String>> sLk;
+  private static Map<String, List<String>> sLl;
   
-  public bj(MMActivity paramMMActivity)
+  static
   {
-    this.iMV = paramMMActivity;
+    AppMethodBeat.i(99442);
+    sLk = new HashMap();
+    sLl = new HashMap();
+    osk = new HashMap();
+    osl = new HashMap();
+    AppMethodBeat.o(99442);
   }
   
-  public final boolean a(int paramInt1, int paramInt2, i parami, String paramString1, List<String> paramList1, brd parambrd, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public static CharSequence Ar(long paramLong)
   {
-    AppMethodBeat.i(99716);
-    if (this.yAo != null)
+    AppMethodBeat.i(99440);
+    Object localObject = new GregorianCalendar();
+    long l1 = paramLong - new GregorianCalendar(((GregorianCalendar)localObject).get(1), ((GregorianCalendar)localObject).get(2), ((GregorianCalendar)localObject).get(5)).getTimeInMillis();
+    if ((l1 > 0L) && (l1 <= 86400000L)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      this.yAo.description = paramString1;
-      if ((this.yAo.mediaObject != null) && ((this.yAo.mediaObject instanceof WXTextObject))) {
-        ((WXTextObject)this.yAo.mediaObject).text = paramString1;
-      }
+      localObject = aj.getContext().getResources().getString(2131759542);
+      AppMethodBeat.o(99440);
+      return localObject;
     }
-    af.dHN();
-    paramString1 = ba.b(this.yAo, paramString1, this.djj, this.appName);
-    if (paramString1 == null)
+    localObject = new GregorianCalendar();
+    GregorianCalendar localGregorianCalendar = new GregorianCalendar(((GregorianCalendar)localObject).get(1), ((GregorianCalendar)localObject).get(2), ((GregorianCalendar)localObject).get(5));
+    int j = ((GregorianCalendar)localObject).get(7) - 1;
+    i = j;
+    if (j == 0) {
+      i = 7;
+    }
+    l1 = localGregorianCalendar.getTimeInMillis();
+    long l2 = i;
+    long l3 = localGregorianCalendar.getTimeInMillis();
+    long l4 = 7 - i;
+    if ((paramLong >= l1 - l2 * 86400000L) && (paramLong < l3 + l4 * 86400000L)) {}
+    for (i = 1; i != 0; i = 0)
     {
-      ac.e("MicroMsg.TextWidget", "packHelper == null, %s, %s", new Object[] { this.djj, this.appName });
-      AppMethodBeat.o(99716);
-      return false;
+      localObject = aj.getContext().getResources().getString(2131759508);
+      AppMethodBeat.o(99440);
+      return localObject;
     }
-    paramPInt.value = paramString1.aUt;
-    if (paramInt3 > a.xMh) {
-      paramString1.Ou(4);
+    localObject = DateFormat.format(aj.getContext().getString(2131759580), paramLong);
+    AppMethodBeat.o(99440);
+    return localObject;
+  }
+  
+  public static String G(Context paramContext, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(99438);
+    if (sLl.get(paramString2) == null) {
+      bh(paramContext, paramString2);
     }
-    paramString1.Oy(this.yyR);
-    if (this.yAm) {
-      paramString1.Oy(5);
+    int i = bt.getInt(paramString1, 0);
+    paramString1 = (List)sLl.get(paramString2);
+    if ((i >= paramString1.size()) || (paramString1.get(i) == null) || (((String)paramString1.get(i)).equals(""))) {
+      bh(paramContext, paramString2);
     }
-    paramLinkedList = new LinkedList();
-    if (paramList1 != null)
+    paramContext = (List)sLl.get(paramString2);
+    if (i < paramContext.size())
     {
-      new LinkedList();
-      paramPInt = com.tencent.mm.pluginsdk.g.j.fdk();
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
+      paramContext = (String)paramContext.get(i);
+      AppMethodBeat.o(99438);
+      return paramContext;
+    }
+    AppMethodBeat.o(99438);
+    return "";
+  }
+  
+  public static CharSequence a(Context paramContext, long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(99439);
+    GregorianCalendar localGregorianCalendar = new GregorianCalendar();
+    if (paramLong < 3600000L)
+    {
+      AppMethodBeat.o(99439);
+      return "";
+    }
+    localGregorianCalendar = new GregorianCalendar(localGregorianCalendar.get(1), localGregorianCalendar.get(2), localGregorianCalendar.get(5));
+    long l = paramLong - localGregorianCalendar.getTimeInMillis();
+    if ((l > 0L) && (l <= 86400000L) && (paramBoolean))
+    {
+      paramContext = paramContext.getString(2131759542);
+      AppMethodBeat.o(99439);
+      return paramContext;
+    }
+    l = paramLong - localGregorianCalendar.getTimeInMillis() + 86400000L;
+    if ((l > 0L) && (l <= 86400000L) && (paramBoolean))
+    {
+      paramContext = paramContext.getString(2131759551);
+      AppMethodBeat.o(99439);
+      return paramContext;
+    }
+    new GregorianCalendar().setTimeInMillis(paramLong);
+    paramContext = DateFormat.format(paramContext.getString(2131759499), paramLong);
+    AppMethodBeat.o(99439);
+    return paramContext;
+  }
+  
+  private static String ai(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(99437);
+    paramContext = paramContext.getResources().getStringArray(2130903094);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("");
+    int i = 0;
+    while (i < paramContext.length)
+    {
+      localArrayList.add(paramContext[i]);
+      i += 1;
+    }
+    if (paramInt >= localArrayList.size())
+    {
+      AppMethodBeat.o(99437);
+      return "";
+    }
+    paramContext = (String)localArrayList.get(paramInt);
+    AppMethodBeat.o(99437);
+    return paramContext;
+  }
+  
+  private static void bh(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(99436);
+    paramContext = paramContext.getResources().getStringArray(2130903094);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add("");
+    int i = 0;
+    while (i < paramContext.length)
+    {
+      localArrayList.add(paramContext[i]);
+      i += 1;
+    }
+    sLl.put(paramString, localArrayList);
+    AppMethodBeat.o(99436);
+  }
+  
+  public static void clean()
+  {
+    try
+    {
+      AppMethodBeat.i(99434);
+      osk.clear();
+      osl.clear();
+      AppMethodBeat.o(99434);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static int getYear()
+  {
+    AppMethodBeat.i(99441);
+    int i = new GregorianCalendar().get(1);
+    AppMethodBeat.o(99441);
+    return i;
+  }
+  
+  public static String l(Context paramContext, long paramLong)
+  {
+    for (;;)
+    {
+      GregorianCalendar localGregorianCalendar;
+      long l1;
+      try
       {
-        paramString2 = (String)paramList1.next();
-        if (!paramPInt.contains(paramString2))
+        AppMethodBeat.i(99435);
+        localGregorianCalendar = new GregorianCalendar();
+        if (paramLong < 3600000L)
         {
-          dbw localdbw = new dbw();
-          localdbw.ncR = paramString2;
-          paramLinkedList.add(localdbw);
+          paramContext = "";
+          AppMethodBeat.o(99435);
+          return paramContext;
+        }
+        l1 = localGregorianCalendar.getTimeInMillis();
+        if (osk.containsKey(Long.valueOf(paramLong))) {
+          if (l1 - ((Long)osk.get(Long.valueOf(paramLong))).longValue() < 60000L)
+          {
+            if (osl.containsKey(Long.valueOf(paramLong)))
+            {
+              paramContext = (String)osl.get(Long.valueOf(paramLong));
+              AppMethodBeat.o(99435);
+            }
+          }
+          else {
+            osk.remove(Long.valueOf(paramLong));
+          }
+        }
+      }
+      finally {}
+      int j;
+      int i;
+      if ((l1 - paramLong) / 3600000L == 0L)
+      {
+        j = (int)((l1 - paramLong) / 60000L);
+        i = j;
+        if (j <= 0) {
+          i = 1;
+        }
+        paramContext = paramContext.getResources().getQuantityString(2131623946, i, new Object[] { Integer.valueOf(i) });
+        osl.put(Long.valueOf(paramLong), paramContext);
+        osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+        AppMethodBeat.o(99435);
+      }
+      else
+      {
+        localGregorianCalendar = new GregorianCalendar(localGregorianCalendar.get(1), localGregorianCalendar.get(2), localGregorianCalendar.get(5));
+        long l2 = paramLong - localGregorianCalendar.getTimeInMillis();
+        if ((l2 > 0L) && (l2 <= 86400000L))
+        {
+          j = (int)((l1 - paramLong) / 3600000L);
+          i = j;
+          if (j <= 0) {
+            i = 1;
+          }
+          paramContext = paramContext.getResources().getQuantityString(2131623945, i, new Object[] { Integer.valueOf(i) });
+          osl.put(Long.valueOf(paramLong), paramContext);
+          osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+          AppMethodBeat.o(99435);
+        }
+        else
+        {
+          l2 = paramLong - localGregorianCalendar.getTimeInMillis() + 86400000L;
+          if ((l2 > 0L) && (l2 <= 86400000L))
+          {
+            paramContext = paramContext.getString(2131759551);
+            osl.put(Long.valueOf(paramLong), paramContext);
+            osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            AppMethodBeat.o(99435);
+          }
+          else
+          {
+            j = (int)((localGregorianCalendar.getTimeInMillis() + 86400000L - paramLong) / 86400000L);
+            i = j;
+            if (j <= 0) {
+              i = 1;
+            }
+            paramContext = paramContext.getResources().getQuantityString(2131623947, i, new Object[] { Integer.valueOf(i) });
+            osl.put(Long.valueOf(paramLong), paramContext);
+            osk.put(Long.valueOf(paramLong), Long.valueOf(l1));
+            AppMethodBeat.o(99435);
+          }
         }
       }
     }
-    paramString1.aT(paramLinkedList);
-    if (parami != null) {
-      paramString1.jf(parami.token, parami.FjO);
+  }
+  
+  private static CharSequence m(Context paramContext, long paramLong)
+  {
+    AppMethodBeat.i(99431);
+    paramContext = DateFormat.format(paramContext.getString(2131759529), paramLong);
+    AppMethodBeat.o(99431);
+    return paramContext;
+  }
+  
+  public static String p(Context paramContext, long paramLong)
+  {
+    int n = 0;
+    AppMethodBeat.i(99432);
+    Object localObject = Calendar.getInstance();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong);
+    int k;
+    int i;
+    label64:
+    int m;
+    label91:
+    label119:
+    int j;
+    if (((Calendar)localObject).get(1) == localCalendar.get(1))
+    {
+      k = 1;
+      if ((k == 0) || (((Calendar)localObject).get(2) != localCalendar.get(2))) {
+        break label243;
+      }
+      i = 1;
+      if ((k == 0) || (i == 0) || (((Calendar)localObject).get(5) != localCalendar.get(5))) {
+        break label248;
+      }
+      m = 1;
+      if ((k == 0) || (i == 0) || (((Calendar)localObject).get(5) - 1 != localCalendar.get(5))) {
+        break label254;
+      }
+      i = 1;
+      if (i != 0) {
+        break label511;
+      }
+      if ((k == 0) || (((Calendar)localObject).get(2) - 1 != localCalendar.get(2))) {
+        break label259;
+      }
+      j = 1;
     }
-    paramString1.a(parambrd);
-    if (paramBoolean) {
-      paramString1.Oz(1);
+    label514:
+    for (;;)
+    {
+      label148:
+      if (j != 0)
+      {
+        ((Calendar)localObject).add(5, -1);
+        i = n;
+        if (((Calendar)localObject).get(1) == localCalendar.get(1))
+        {
+          i = n;
+          if (((Calendar)localObject).get(2) == localCalendar.get(2))
+          {
+            i = n;
+            if (((Calendar)localObject).get(5) == localCalendar.get(5)) {
+              i = 1;
+            }
+          }
+        }
+      }
+      label243:
+      label248:
+      label254:
+      label511:
+      for (;;)
+      {
+        if (m != 0)
+        {
+          paramContext = (String)m(paramContext, paramLong);
+          AppMethodBeat.o(99432);
+          return paramContext;
+          k = 0;
+          break;
+          i = 0;
+          break label64;
+          m = 0;
+          break label91;
+          i = 0;
+          break label119;
+          if (((Calendar)localObject).get(1) - localCalendar.get(1) != 1) {
+            break label514;
+          }
+          j = 1;
+          break label148;
+        }
+        if (i != 0)
+        {
+          paramContext = paramContext.getString(2131759551) + " " + (String)m(paramContext, paramLong);
+          AppMethodBeat.o(99432);
+          return paramContext;
+        }
+        if (k != 0) {}
+        for (String str = (String)DateFormat.format(paramContext.getString(2131759498), paramLong);; str = (String)DateFormat.format(paramContext.getString(2131759517), paramLong))
+        {
+          localObject = str;
+          if (str.indexOf("-") > 0)
+          {
+            i = localCalendar.get(2);
+            j = localCalendar.get(5);
+            localObject = ai(paramContext, i + 1);
+            str = j + " " + (String)localObject;
+            localObject = str;
+            if (k == 0) {
+              localObject = str + " " + localCalendar.get(1);
+            }
+          }
+          paramContext = (String)localObject + " " + (String)m(paramContext, paramLong);
+          AppMethodBeat.o(99432);
+          return paramContext;
+        }
+      }
+      label259:
+      j = 0;
+    }
+  }
+  
+  public static String q(Context paramContext, long paramLong)
+  {
+    int n = 0;
+    AppMethodBeat.i(99433);
+    Object localObject = Calendar.getInstance();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(paramLong);
+    int k;
+    int i;
+    label64:
+    int m;
+    label91:
+    label119:
+    int j;
+    if (((Calendar)localObject).get(1) == localCalendar.get(1))
+    {
+      k = 1;
+      if ((k == 0) || (((Calendar)localObject).get(2) != localCalendar.get(2))) {
+        break label243;
+      }
+      i = 1;
+      if ((k == 0) || (i == 0) || (((Calendar)localObject).get(5) != localCalendar.get(5))) {
+        break label248;
+      }
+      m = 1;
+      if ((k == 0) || (i == 0) || (((Calendar)localObject).get(5) - 1 != localCalendar.get(5))) {
+        break label254;
+      }
+      i = 1;
+      if (i != 0) {
+        break label488;
+      }
+      if ((k == 0) || (((Calendar)localObject).get(2) - 1 != localCalendar.get(2))) {
+        break label259;
+      }
+      j = 1;
     }
     for (;;)
     {
-      paramString1.fy(paramList2).Ow(paramInt1);
-      paramString1.g(null, null, null, paramInt4, paramInt5);
-      paramString1.bV(this.xXU, this.yyY);
-      if ((this.yAn) && (this.yAo != null))
+      label148:
+      if (j != 0)
       {
-        paramString1.auf(this.yAo.mediaTagName);
-        paramString1.aw(this.djj, this.yAo.messageExt, this.yAo.messageAction);
+        ((Calendar)localObject).add(5, -1);
+        i = n;
+        if (((Calendar)localObject).get(1) == localCalendar.get(1))
+        {
+          i = n;
+          if (((Calendar)localObject).get(2) == localCalendar.get(2))
+          {
+            i = n;
+            if (((Calendar)localObject).get(5) == localCalendar.get(5)) {
+              i = 1;
+            }
+          }
+        }
       }
-      paramInt1 = paramString1.commit();
-      if (this.yyX != null)
+      label259:
+      label488:
+      for (;;)
       {
-        this.yyX.pu(paramInt1);
-        h.yes.c(this.yyX);
+        if (m != 0)
+        {
+          paramContext = (String)m(paramContext, paramLong);
+          AppMethodBeat.o(99433);
+          return paramContext;
+          k = 0;
+          break;
+          label243:
+          i = 0;
+          break label64;
+          label248:
+          m = 0;
+          break label91;
+          label254:
+          i = 0;
+          break label119;
+          if (((Calendar)localObject).get(1) - localCalendar.get(1) != 1) {
+            break label491;
+          }
+          j = 1;
+          break label148;
+        }
+        if (i != 0)
+        {
+          paramContext = paramContext.getString(2131759551) + " " + (String)m(paramContext, paramLong);
+          AppMethodBeat.o(99433);
+          return paramContext;
+        }
+        String str = (String)DateFormat.format(paramContext.getString(2131759517), paramLong);
+        localObject = str;
+        if (str.indexOf("-") > 0)
+        {
+          i = localCalendar.get(2);
+          j = localCalendar.get(5);
+          localObject = ai(paramContext, i + 1);
+          str = j + " " + (String)localObject;
+          localObject = str;
+          if (k == 0) {
+            localObject = str + " " + localCalendar.get(1);
+          }
+        }
+        paramContext = (String)localObject + " " + (String)m(paramContext, paramLong);
+        AppMethodBeat.o(99433);
+        return paramContext;
       }
-      af.dHN().dGr();
-      this.iMV.finish();
-      AppMethodBeat.o(99716);
-      return false;
-      paramString1.Oz(0);
+      label491:
+      j = 0;
     }
-  }
-  
-  public final void ak(Bundle paramBundle)
-  {
-    AppMethodBeat.i(99715);
-    this.yyX = d.w(this.iMV.getIntent());
-    this.yCj = this.iMV.getIntent().getStringExtra("Kdescription");
-    this.djj = bs.bG(this.iMV.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bs.bG(this.iMV.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.yAm = this.iMV.getIntent().getBooleanExtra("KThrid_app", false);
-    this.yAn = this.iMV.getIntent().getBooleanExtra("KSnsAction", false);
-    this.yyR = this.iMV.getIntent().getIntExtra("Ksnsupload_source", 0);
-    this.yAo = new SendMessageToWX.Req(this.iMV.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
-    if (this.iMV.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
-    for (this.xXU = 1;; this.xXU = 0)
-    {
-      this.yyY = bs.bG(this.iMV.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
-      AppMethodBeat.o(99715);
-      return;
-    }
-  }
-  
-  public final void al(Bundle paramBundle) {}
-  
-  public final boolean dNr()
-  {
-    return true;
-  }
-  
-  public final View dNs()
-  {
-    return null;
-  }
-  
-  public final boolean dNt()
-  {
-    return false;
-  }
-  
-  public final boolean k(int paramInt, Intent paramIntent)
-  {
-    return false;
   }
 }
 

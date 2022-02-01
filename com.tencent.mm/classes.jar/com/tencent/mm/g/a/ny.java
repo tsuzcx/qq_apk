@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ny
   extends b
 {
-  public a dqs;
+  public a dBN;
   
   public ny()
   {
@@ -15,16 +15,21 @@ public final class ny
   
   private ny(byte paramByte)
   {
-    AppMethodBeat.i(149876);
-    this.dqs = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116038);
+    this.dBN = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149876);
+    AppMethodBeat.o(116038);
   }
   
   public static final class a
   {
-    public String dqt;
+    public String cUi;
+    public int dpw;
+    public String dyL;
+    public int op = 0;
+    public int reason;
+    public String url;
   }
 }
 

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:background="@drawable/c_s" android:layout_width="22.0dip" android:layout_height="22.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_gravity="center" android:id="@id/i6x" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+</FrameLayout>

@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.cgv;
-import com.tencent.mm.protocal.protobuf.cgw;
-import com.tencent.mm.protocal.protobuf.ig;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.protocal.protobuf.clu;
+import com.tencent.mm.protocal.protobuf.clv;
+import com.tencent.mm.protocal.protobuf.in;
 
 public final class l
-  extends c<cgw>
+  extends a<clv>
 {
-  public l(int paramInt1, ig paramig, int paramInt2, int paramInt3, String paramString)
+  public l(int paramInt1, in paramin, int paramInt2, int paramInt3, String paramString)
   {
     AppMethodBeat.i(68448);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new cgv();
-    ((b.a)localObject).hvu = new cgw();
+    ((b.a)localObject).hNM = new clu();
+    ((b.a)localObject).hNN = new clv();
     ((b.a)localObject).funcId = 1324;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/preredeemfund";
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aAz();
-    cgv localcgv = (cgv)((b)localObject).hvr.hvw;
-    localcgv.FuS = paramInt1;
-    if (paramig != null) {
-      localcgv.FuT = 1;
+    localObject = ((b.a)localObject).aDC();
+    clu localclu = (clu)((b)localObject).hNK.hNQ;
+    localclu.HeX = paramInt1;
+    if (paramin != null) {
+      localclu.HeY = 1;
     }
-    for (localcgv.FuU = paramig;; localcgv.FuU = null)
+    for (localclu.HeZ = paramin;; localclu.HeZ = null)
     {
-      localcgv.ErG = paramInt2;
-      localcgv.FuV = paramInt3;
-      localcgv.FuW = paramString;
-      localcgv.AYl = ae.eon();
-      this.rr = ((b)localObject);
+      localclu.uxm = paramInt2;
+      localclu.Hfa = paramInt3;
+      localclu.Hfb = paramString;
+      localclu.Cyu = ae.eCl();
+      c((b)localObject);
       AppMethodBeat.o(68448);
       return;
-      localcgv.FuT = 0;
+      localclu.HeY = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.l
  * JD-Core Version:    0.7.0.1
  */

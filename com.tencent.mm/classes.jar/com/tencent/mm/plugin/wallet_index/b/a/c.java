@@ -6,57 +6,57 @@ import org.json.JSONObject;
 
 public final class c
 {
-  String BPq;
-  public String BPr;
-  long BPs;
-  int BPt;
-  public String BPu;
-  public String BPv;
-  public String BPw;
-  public String BPx;
-  public String bUS;
+  String DpI;
+  public String DpJ;
+  long DpK;
+  int DpL;
+  public String DpM;
+  public String DpN;
+  public String DpO;
+  public String DpP;
+  public String cff;
   String mPackageName;
   public String mToken;
-  public String pbW;
+  public String pFG;
   
   public c(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(71806);
-    this.BPq = paramString1;
-    this.BPv = paramString2;
-    paramString1 = new JSONObject(this.BPv);
-    this.BPr = paramString1.optString("orderId");
+    this.DpI = paramString1;
+    this.DpN = paramString2;
+    paramString1 = new JSONObject(this.DpN);
+    this.DpJ = paramString1.optString("orderId");
     this.mPackageName = paramString1.optString("packageName");
-    this.pbW = paramString1.optString("productId");
-    this.BPs = paramString1.optLong("purchaseTime");
-    this.BPt = paramString1.optInt("purchaseState");
+    this.pFG = paramString1.optString("productId");
+    this.DpK = paramString1.optLong("purchaseTime");
+    this.DpL = paramString1.optInt("purchaseState");
     paramString2 = paramString1.optString("developerPayload");
-    ArrayList localArrayList = azS(paramString2);
+    ArrayList localArrayList = aFc(paramString2);
     if (localArrayList.size() == 3)
     {
-      this.BPu = ((String)localArrayList.get(0));
-      this.BPx = ((String)localArrayList.get(1));
-      this.BPw = ((String)localArrayList.get(2));
+      this.DpM = ((String)localArrayList.get(0));
+      this.DpP = ((String)localArrayList.get(1));
+      this.DpO = ((String)localArrayList.get(2));
     }
     for (;;)
     {
       this.mToken = paramString1.optString("token", paramString1.optString("purchaseToken"));
-      this.bUS = paramString3;
+      this.cff = paramString3;
       AppMethodBeat.o(71806);
       return;
-      this.BPu = paramString2;
+      this.DpM = paramString2;
     }
   }
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.pbW = paramString1;
-    this.BPu = paramString2;
-    this.BPw = paramString3;
-    this.BPx = paramString4;
+    this.pFG = paramString1;
+    this.DpM = paramString2;
+    this.DpO = paramString3;
+    this.DpP = paramString4;
   }
   
-  private static ArrayList<String> azS(String paramString)
+  private static ArrayList<String> aFc(String paramString)
   {
     AppMethodBeat.i(71807);
     ArrayList localArrayList = new ArrayList();
@@ -74,7 +74,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(71808);
-    String str = "PurchaseInfo(type:" + this.BPq + "):" + this.BPv;
+    String str = "PurchaseInfo(type:" + this.DpI + "):" + this.DpN;
     AppMethodBeat.o(71808);
     return str;
   }

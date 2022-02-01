@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class x
 {
-  private boolean aGt;
+  private boolean aIk;
   private final Handler handler;
   
   x()
@@ -22,16 +22,16 @@ final class x
   final void e(u<?> paramu)
   {
     AppMethodBeat.i(77058);
-    j.qa();
-    if (this.aGt)
+    j.qs();
+    if (this.aIk)
     {
       this.handler.obtainMessage(1, paramu).sendToTarget();
       AppMethodBeat.o(77058);
       return;
     }
-    this.aGt = true;
+    this.aIk = true;
     paramu.recycle();
-    this.aGt = false;
+    this.aIk = false;
     AppMethodBeat.o(77058);
   }
   

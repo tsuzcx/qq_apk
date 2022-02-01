@@ -7,7 +7,7 @@ import android.view.View.OnCreateContextMenuListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "<anonymous parameter 2>", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/View;", "<anonymous parameter 2>", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu"})
 final class m$b
   implements View.OnCreateContextMenuListener
 {
@@ -16,7 +16,7 @@ final class m$b
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
     AppMethodBeat.i(175227);
-    paramContextMenu.add(0, 0, 0, (CharSequence)("打开小程序且path=" + this.kaI));
+    paramContextMenu.add(0, 0, 0, (CharSequence)("打开小程序且path=" + this.kve));
     AppMethodBeat.o(175227);
   }
 }

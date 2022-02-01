@@ -1,173 +1,103 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
-import android.app.Activity;
-import android.support.v4.app.a.a;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.b.a;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.22;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class h
-  extends a<c>
+public final class h
+  extends c
 {
-  private static c.a kco;
-  private aa caw = null;
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "join1v1VoIPChat";
+  private static String TAG = "MicroMsg.OpenVoice.JsApiJoin1v1VoIPChat";
   
-  abstract void a(c paramc, JSONObject paramJSONObject, int paramInt);
-  
-  public final void b(final c paramc, final JSONObject paramJSONObject, final int paramInt)
+  public h()
   {
-    if (paramc.au(Activity.class) == null)
-    {
-      ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "hy: no page context");
-      return;
-    }
-    com.tencent.mm.plugin.appbrand.permission.o.b(paramc.getAppId(), new a.a()
-    {
-      public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
-      {
-        AppMethodBeat.i(186733);
-        if (paramAnonymousInt != 121)
-        {
-          ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission requestCode is not for open voice api");
-          AppMethodBeat.o(186733);
-          return;
-        }
-        if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
-        {
-          ac.i("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission permission is grant for open voice api");
-          h.this.b(paramc, paramJSONObject, paramInt);
-          AppMethodBeat.o(186733);
-          return;
-        }
-        ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission sys perm denied for open voice api");
-        paramc.h(paramInt, h.this.e("fail:system permission denied", null));
-        AppMethodBeat.o(186733);
-      }
-    });
-    Object localObject = paramc.getContext();
-    int i;
-    if ((localObject == null) || (!(localObject instanceof Activity)))
-    {
-      ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "fail, requestAudioPermission pageContext is null");
-      paramc.h(paramInt, e("fail: context is null", null));
-      i = 0;
-    }
-    boolean bool;
-    while (i == 0)
-    {
-      ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestAudioPermission is fail");
-      ac.w("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "hy: no record audio permission");
-      paramc.h(paramInt, e("fail: no record audio permission", null));
-      return;
-      bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)localObject, "android.permission.RECORD_AUDIO", 121, "", "");
-      i = bool;
-      if (bool)
-      {
-        com.tencent.mm.plugin.appbrand.permission.o.Qo(paramc.getAppId());
-        i = bool;
-      }
-    }
-    com.tencent.mm.plugin.appbrand.permission.o.b(paramc.getAppId(), new a.a()
-    {
-      public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
-      {
-        AppMethodBeat.i(186734);
-        if (paramAnonymousInt != 122)
-        {
-          ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission requestCode is not for open voice api");
-          AppMethodBeat.o(186734);
-          return;
-        }
-        if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
-        {
-          ac.i("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission permission is grant for open voice api");
-          h.this.b(paramc, paramJSONObject, paramInt);
-          AppMethodBeat.o(186734);
-          return;
-        }
-        ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission sys perm denied for open voice api");
-        paramc.h(paramInt, h.this.e("fail:system permission denied", null));
-        AppMethodBeat.o(186734);
-      }
-    });
-    localObject = paramc.getContext();
-    if ((localObject == null) || (!(localObject instanceof Activity)))
-    {
-      ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "fail, requestCameraPermission pageContext is null");
-      paramc.h(paramInt, e("fail: context is null", null));
-      i = 0;
-    }
-    while (i == 0)
-    {
-      ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "requestCameraPermission is fail");
-      ac.w("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "hy: no record video permission");
-      paramc.h(paramInt, e("fail: no record video permission", null));
-      return;
-      bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)localObject, "android.permission.CAMERA", 122, "", "");
-      i = bool;
-      if (bool)
-      {
-        com.tencent.mm.plugin.appbrand.permission.o.Qo(paramc.getAppId());
-        i = bool;
-      }
-    }
-    localObject = paramc.getRuntime().aTT();
-    if ((((u)localObject).getCurrentPage() != null) || (((u)localObject).getCurrentPage().getCurrentPageView() != null)) {
-      this.caw = ((u)localObject).getCurrentPage().getCurrentPageView();
-    }
-    a(paramc, paramJSONObject, paramInt);
+    AppMethodBeat.i(188477);
+    com.tencent.mm.plugin.appbrand.permission.c.TP("join1v1VoIPChat");
+    AppMethodBeat.o(188477);
   }
   
-  public final void gl(final boolean paramBoolean)
+  public final void a(final com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, final int paramInt)
   {
-    try
+    AppMethodBeat.i(188478);
+    if (paramJSONObject == null)
     {
-      if (!ap.isMainThread())
+      paramc.h(paramInt, e("fail:data is null or nil", null));
+      AppMethodBeat.o(188478);
+      return;
+    }
+    Object localObject1 = (com.tencent.mm.plugin.appbrand.jsapi.ac.c.b.c)paramc.getRuntime().as(com.tencent.mm.plugin.appbrand.jsapi.ac.c.b.c.class);
+    if (localObject1 != null)
+    {
+      localObject1 = ((com.tencent.mm.plugin.appbrand.jsapi.ac.c.b.c)localObject1).bpL();
+      if (!bt.isNullOrNil((String)localObject1))
       {
-        ap.f(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(46692);
-            h.this.gl(paramBoolean);
-            AppMethodBeat.o(46692);
-          }
-        });
+        ad.e(TAG, "can not join voip chat now, message:%s", new Object[] { localObject1 });
+        paramc.h(paramInt, "fail: can not join voip chat now");
+        Toast.makeText(paramc.getContext(), (CharSequence)localObject1, 0).show();
+        AppMethodBeat.o(188478);
         return;
       }
-      if ((this.caw != null) && (this.caw.getRuntime() != null))
-      {
-        if (kco != null)
-        {
-          kco.dismiss();
-          kco = null;
-        }
-        if (paramBoolean)
-        {
-          kco = com.tencent.mm.plugin.appbrand.page.b.ai(this.caw.getRuntime()).a(b.a.lzn);
-          return;
-        }
-      }
     }
-    catch (Exception localException)
+    this.mAppId = paramc.getAppId();
+    b(paramc);
+    localObject1 = paramc.getAppId();
+    ad.i(TAG, "hy: appId:" + (String)localObject1 + ", data:" + paramJSONObject.toString());
+    try
     {
-      ac.e("MicroMsg.OpenVoice.JsApiOpenVoiceBase", "setSubTitle error:" + localException.toString());
+      long l = paramJSONObject.getLong("roomId");
+      ad.i(TAG, "hy:roomId:".concat(String.valueOf(l)));
+      int j = paramJSONObject.optInt("roomType", 2);
+      int k = paramJSONObject.optInt("lifespan", 86400);
+      String str1 = paramJSONObject.optString("sessionKey", "");
+      String str2 = paramJSONObject.optString("privateData", "");
+      Object localObject2 = paramJSONObject.getJSONObject("muteConfig");
+      final boolean bool1 = ((JSONObject)localObject2).optBoolean("muteMicrophone");
+      final boolean bool2 = ((JSONObject)localObject2).optBoolean("muteEarphone");
+      final boolean bool3 = paramJSONObject.optBoolean("handsFree", false);
+      this.laU = 0;
+      this.laT = bt.HI();
+      if ((paramc.getRuntime() != null) && (paramc.getRuntime().Eb())) {}
+      for (int i = 0;; i = 1)
+      {
+        gq(false);
+        paramJSONObject = p.oXv;
+        localObject2 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
+        com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local2 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
+        com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local3 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
+        com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local4 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
+        com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b local5 = new com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b() {};
+        ad.i("MicroMsg.OpenVoice.OpenVoiceService", "jd: trigger join room. %s, %s, %d, %d, %d", new Object[] { localObject1, "wx766655dab8fe851b", Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(j) });
+        paramJSONObject.af(new p.22(paramJSONObject, (String)localObject1, "wx766655dab8fe851b", i, j, str2, l, str1, k, (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b)localObject2, local2, local3, local4, local5));
+        ad.i(TAG, "hy: JsApiJoin1v1VoIPChat callbackId:".concat(String.valueOf(paramInt)));
+        AppMethodBeat.o(188478);
+        return;
+      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      ad.printErrStackTrace(TAG, paramJSONObject, "handle join voip 1v1 data exception", new Object[0]);
+      paramc.h(paramInt, e("fail: param error!", null));
+      AppMethodBeat.o(188478);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.h
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import android.view.animation.Interpolator;
 public final class e
   implements Interpolator
 {
-  private final float[] vi;
-  private final float[] vj;
+  private final float[] xb;
+  private final float[] xc;
   
   public e()
   {
@@ -20,15 +20,15 @@ public final class e
     paramPath = new PathMeasure(paramPath, false);
     float f = paramPath.getLength();
     int j = (int)(f / 0.002F) + 1;
-    this.vi = new float[j];
-    this.vj = new float[j];
+    this.xb = new float[j];
+    this.xc = new float[j];
     float[] arrayOfFloat = new float[2];
     int i = 0;
     while (i < j)
     {
       paramPath.getPosTan(i * f / (j - 1), arrayOfFloat, null);
-      this.vi[i] = arrayOfFloat[0];
-      this.vj[i] = arrayOfFloat[1];
+      this.xb[i] = arrayOfFloat[0];
+      this.xc[i] = arrayOfFloat[1];
       i += 1;
     }
   }
@@ -41,29 +41,29 @@ public final class e
     if (paramFloat >= 1.0F) {
       return 1.0F;
     }
-    int j = this.vi.length - 1;
+    int j = this.xb.length - 1;
     int i = 0;
     while (j - i > 1)
     {
       int k = (i + j) / 2;
-      if (paramFloat < this.vi[k]) {
+      if (paramFloat < this.xb[k]) {
         j = k;
       } else {
         i = k;
       }
     }
-    float f = this.vi[j] - this.vi[i];
+    float f = this.xb[j] - this.xb[i];
     if (f == 0.0F) {
-      return this.vj[i];
+      return this.xc[i];
     }
-    paramFloat = (paramFloat - this.vi[i]) / f;
-    f = this.vj[i];
-    return paramFloat * (this.vj[j] - f) + f;
+    paramFloat = (paramFloat - this.xb[i]) / f;
+    f = this.xc[i];
+    return paramFloat * (this.xc[j] - f) + f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.view.b.e
  * JD-Core Version:    0.7.0.1
  */

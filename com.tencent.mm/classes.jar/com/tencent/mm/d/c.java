@@ -16,18 +16,18 @@ import java.util.zip.ZipException;
 
 public final class c
 {
-  private static final k cHg;
-  private static final k cHh;
-  private static int cHi;
-  private static final k cHj;
+  private static final k cSk;
+  private static final k cSl;
+  private static int cSm;
+  private static final k cSn;
   
   static
   {
     AppMethodBeat.i(973);
-    cHg = new k(84298576L);
-    cHh = new k(50613072L);
-    cHi = 0;
-    cHj = new k(101010256L);
+    cSk = new k(84298576L);
+    cSl = new k(50613072L);
+    cSm = 0;
+    cSn = new k(101010256L);
     AppMethodBeat.o(973);
   }
   
@@ -60,7 +60,7 @@ public final class c
         }
         locala = new a((byte)0);
         locala.I(paramFile);
-        paramFile = locala.cHk.getProperty("apkSecurityCode");
+        paramFile = locala.cSo.getProperty("apkSecurityCode");
         localRandomAccessFile.close();
         System.err.println("exit getSecurityCode");
         AppMethodBeat.o(976);
@@ -107,7 +107,7 @@ public final class c
     AppMethodBeat.i(974);
     long l = paramRandomAccessFile.length() - 22L;
     paramRandomAccessFile.seek(l);
-    byte[] arrayOfByte = cHj.getBytes();
+    byte[] arrayOfByte = cSn.getBytes();
     for (int i = paramRandomAccessFile.read();; i = paramRandomAccessFile.read())
     {
       if (i == -1) {
@@ -132,8 +132,8 @@ public final class c
     }
     label132:
     paramRandomAccessFile.seek(l + 16L + 4L);
-    if (cHi != l + 16L + 4L) {
-      cHi = (int)(l + 16L + 4L);
+    if (cSm != l + 16L + 4L) {
+      cSm = (int)(l + 16L + 4L);
     }
     arrayOfByte = new byte[2];
     paramRandomAccessFile.readFully(arrayOfByte);
@@ -180,16 +180,16 @@ public final class c
     //   44: aload_0
     //   45: invokevirtual 106	com/tencent/mm/d/c$a:I	([B)V
     //   48: aload 4
-    //   50: getfield 110	com/tencent/mm/d/c$a:cHk	Ljava/util/Properties;
+    //   50: getfield 110	com/tencent/mm/d/c$a:cSo	Ljava/util/Properties;
     //   53: ldc 112
     //   55: aload_1
     //   56: invokevirtual 180	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   59: pop
     //   60: aload 4
-    //   62: invokevirtual 183	com/tencent/mm/d/c$a:JT	()[B
+    //   62: invokevirtual 183	com/tencent/mm/d/c$a:Ls	()[B
     //   65: astore_0
     //   66: aload_3
-    //   67: getstatic 37	com/tencent/mm/d/c:cHi	I
+    //   67: getstatic 37	com/tencent/mm/d/c:cSm	I
     //   70: i2l
     //   71: invokevirtual 139	java/io/RandomAccessFile:seek	(J)V
     //   74: aload_3
@@ -203,7 +203,7 @@ public final class c
     //   90: aload_3
     //   91: aload_0
     //   92: invokevirtual 189	java/io/RandomAccessFile:write	([B)V
-    //   95: getstatic 37	com/tencent/mm/d/c:cHi	I
+    //   95: getstatic 37	com/tencent/mm/d/c:cSm	I
     //   98: istore_2
     //   99: aload_3
     //   100: aload_0
@@ -242,7 +242,7 @@ public final class c
     //   167: aload 5
     //   169: invokevirtual 208	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
     //   172: pop
-    //   173: getstatic 31	com/tencent/mm/d/c:cHg	Lcom/tencent/mm/d/k;
+    //   173: getstatic 31	com/tencent/mm/d/c:cSk	Lcom/tencent/mm/d/k;
     //   176: new 23	com/tencent/mm/d/k
     //   179: dup
     //   180: aload 5
@@ -250,7 +250,7 @@ public final class c
     //   185: invokevirtual 213	com/tencent/mm/d/k:equals	(Ljava/lang/Object;)Z
     //   188: ifeq +6 -> 194
     //   191: goto -159 -> 32
-    //   194: getstatic 35	com/tencent/mm/d/c:cHh	Lcom/tencent/mm/d/k;
+    //   194: getstatic 35	com/tencent/mm/d/c:cSl	Lcom/tencent/mm/d/k;
     //   197: new 23	com/tencent/mm/d/k
     //   200: dup
     //   201: aload 5
@@ -263,7 +263,7 @@ public final class c
     //   219: invokespecial 216	java/io/ByteArrayOutputStream:<init>	()V
     //   222: astore 4
     //   224: aload 4
-    //   226: getstatic 35	com/tencent/mm/d/c:cHh	Lcom/tencent/mm/d/k;
+    //   226: getstatic 35	com/tencent/mm/d/c:cSl	Lcom/tencent/mm/d/k;
     //   229: invokevirtual 143	com/tencent/mm/d/k:getBytes	()[B
     //   232: invokevirtual 217	java/io/ByteArrayOutputStream:write	([B)V
     //   235: aload 4
@@ -319,13 +319,13 @@ public final class c
   
   static final class a
   {
-    Properties cHk;
-    byte[] cHl;
+    Properties cSo;
+    byte[] cSp;
     
     private a()
     {
       AppMethodBeat.i(970);
-      this.cHk = new Properties();
+      this.cSo = new Properties();
       AppMethodBeat.o(970);
     }
     
@@ -338,12 +338,12 @@ public final class c
         return;
       }
       ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-      c.JR();
+      c.Lq();
       byte[] arrayOfByte = new byte[4];
       localByteBuffer.get(arrayOfByte);
       System.out.println("securityPart: " + new k(arrayOfByte).value);
       int i;
-      if (c.JR().equals(new k(arrayOfByte)))
+      if (c.Lq().equals(new k(arrayOfByte)))
       {
         if (paramArrayOfByte.length - 4 <= 2)
         {
@@ -363,14 +363,14 @@ public final class c
         }
         arrayOfByte = new byte[i];
         localByteBuffer.get(arrayOfByte);
-        this.cHk.load(new ByteArrayInputStream(arrayOfByte));
+        this.cSo.load(new ByteArrayInputStream(arrayOfByte));
         i = paramArrayOfByte.length - 4 - i - 2;
         if (i > 0)
         {
-          c.JS();
+          c.Lr();
           paramArrayOfByte = new byte[4];
           localByteBuffer.get(paramArrayOfByte);
-          if (c.JS().equals(new k(paramArrayOfByte)))
+          if (c.Lr().equals(new k(paramArrayOfByte)))
           {
             if (i - 4 <= 2)
             {
@@ -388,17 +388,17 @@ public final class c
               AppMethodBeat.o(971);
               return;
             }
-            this.cHl = new byte[j];
-            localByteBuffer.get(this.cHl);
+            this.cSp = new byte[j];
+            localByteBuffer.get(this.cSp);
             AppMethodBeat.o(971);
           }
         }
       }
       else
       {
-        if (c.JS().equals(new k(arrayOfByte)))
+        if (c.Lr().equals(new k(arrayOfByte)))
         {
-          c.JS();
+          c.Lr();
           if (paramArrayOfByte.length - 4 <= 2)
           {
             System.err.println("data.length - oriMarkLength <= 2");
@@ -415,8 +415,8 @@ public final class c
             AppMethodBeat.o(971);
             return;
           }
-          this.cHl = new byte[i];
-          localByteBuffer.get(this.cHl);
+          this.cSp = new byte[i];
+          localByteBuffer.get(this.cSp);
           AppMethodBeat.o(971);
           return;
         }
@@ -427,29 +427,29 @@ public final class c
       AppMethodBeat.o(971);
     }
     
-    final byte[] JT()
+    final byte[] Ls()
     {
       AppMethodBeat.i(972);
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       Iterator localIterator;
-      if (this.cHk.size() > 0)
+      if (this.cSo.size() > 0)
       {
-        localByteArrayOutputStream.write(c.JR().getBytes());
-        localIterator = this.cHk.keySet().iterator();
+        localByteArrayOutputStream.write(c.Lq().getBytes());
+        localIterator = this.cSo.keySet().iterator();
       }
       Object localObject2;
-      for (Object localObject1 = "";; localObject1 = localObject1 + localObject2 + "=" + this.cHk.getProperty((String)localObject2) + "\r\n")
+      for (Object localObject1 = "";; localObject1 = localObject1 + localObject2 + "=" + this.cSo.getProperty((String)localObject2) + "\r\n")
       {
         if (!localIterator.hasNext())
         {
           localObject1 = ((String)localObject1).getBytes();
           localByteArrayOutputStream.write(new l(localObject1.length).getBytes());
           localByteArrayOutputStream.write((byte[])localObject1);
-          if ((this.cHl != null) && (this.cHl.length > 0))
+          if ((this.cSp != null) && (this.cSp.length > 0))
           {
-            localByteArrayOutputStream.write(c.JS().getBytes());
-            localByteArrayOutputStream.write(new l(this.cHl.length).getBytes());
-            localByteArrayOutputStream.write(this.cHl);
+            localByteArrayOutputStream.write(c.Lr().getBytes());
+            localByteArrayOutputStream.write(new l(this.cSp.length).getBytes());
+            localByteArrayOutputStream.write(this.cSp);
           }
           localObject1 = localByteArrayOutputStream.toByteArray();
           AppMethodBeat.o(972);

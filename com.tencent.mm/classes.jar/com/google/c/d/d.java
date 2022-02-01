@@ -16,7 +16,7 @@ public final class d
   {
     AppMethodBeat.i(12381);
     a locala2 = d(paramCharSequence, paramInt1);
-    if ((locala2 == a.bJw) || (locala2 == a.bJx))
+    if ((locala2 == a.bTJ) || (locala2 == a.bTK))
     {
       AppMethodBeat.o(12381);
       return 100;
@@ -28,20 +28,20 @@ public final class d
     }
     if (paramInt2 == 100)
     {
-      if (locala2 == a.bJz)
+      if (locala2 == a.bTM)
       {
         AppMethodBeat.o(12381);
         return paramInt2;
       }
       locala1 = d(paramCharSequence, paramInt1 + 2);
-      if ((locala1 == a.bJw) || (locala1 == a.bJx))
+      if ((locala1 == a.bTJ) || (locala1 == a.bTK))
       {
         AppMethodBeat.o(12381);
         return paramInt2;
       }
-      if (locala1 == a.bJz)
+      if (locala1 == a.bTM)
       {
-        if (d(paramCharSequence, paramInt1 + 3) == a.bJy)
+        if (d(paramCharSequence, paramInt1 + 3) == a.bTL)
         {
           AppMethodBeat.o(12381);
           return 99;
@@ -53,12 +53,12 @@ public final class d
       for (;;)
       {
         locala1 = d(paramCharSequence, paramInt1);
-        if (locala1 != a.bJy) {
+        if (locala1 != a.bTL) {
           break;
         }
         paramInt1 += 2;
       }
-      if (locala1 == a.bJx)
+      if (locala1 == a.bTK)
       {
         AppMethodBeat.o(12381);
         return 100;
@@ -67,10 +67,10 @@ public final class d
       return 99;
     }
     a locala1 = locala2;
-    if (locala2 == a.bJz) {
+    if (locala2 == a.bTM) {
       locala1 = d(paramCharSequence, paramInt1 + 1);
     }
-    if (locala1 == a.bJy)
+    if (locala1 == a.bTL)
     {
       AppMethodBeat.o(12381);
       return 99;
@@ -85,37 +85,37 @@ public final class d
     int i = paramCharSequence.length();
     if (paramInt >= i)
     {
-      paramCharSequence = a.bJw;
+      paramCharSequence = a.bTJ;
       AppMethodBeat.o(12380);
       return paramCharSequence;
     }
     int j = paramCharSequence.charAt(paramInt);
     if (j == 241)
     {
-      paramCharSequence = a.bJz;
+      paramCharSequence = a.bTM;
       AppMethodBeat.o(12380);
       return paramCharSequence;
     }
     if ((j < 48) || (j > 57))
     {
-      paramCharSequence = a.bJw;
+      paramCharSequence = a.bTJ;
       AppMethodBeat.o(12380);
       return paramCharSequence;
     }
     if (paramInt + 1 >= i)
     {
-      paramCharSequence = a.bJx;
+      paramCharSequence = a.bTK;
       AppMethodBeat.o(12380);
       return paramCharSequence;
     }
     paramInt = paramCharSequence.charAt(paramInt + 1);
     if ((paramInt < 48) || (paramInt > 57))
     {
-      paramCharSequence = a.bJx;
+      paramCharSequence = a.bTK;
       AppMethodBeat.o(12380);
       return paramCharSequence;
     }
-    paramCharSequence = a.bJy;
+    paramCharSequence = a.bTL;
     AppMethodBeat.o(12380);
     return paramCharSequence;
   }
@@ -123,7 +123,7 @@ public final class d
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12378);
-    if (parama != a.bGM)
+    if (parama != a.bRa)
     {
       paramString = new IllegalArgumentException("Can only encode CODE_128, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12378);
@@ -134,7 +134,7 @@ public final class d
     return paramString;
   }
   
-  public final boolean[] bn(String paramString)
+  public final boolean[] cg(String paramString)
   {
     int i2 = 0;
     AppMethodBeat.i(12379);
@@ -181,7 +181,7 @@ public final class d
             k = m;
             m = i1;
             label255:
-            ((Collection)localObject).add(c.bJv[i]);
+            ((Collection)localObject).add(c.bTI[i]);
             n += i * j;
             if (m == 0) {
               break label563;
@@ -228,8 +228,8 @@ public final class d
       m = k;
       k = i1;
       break label255;
-      ((Collection)localObject).add(c.bJv[(n % 103)]);
-      ((Collection)localObject).add(c.bJv[106]);
+      ((Collection)localObject).add(c.bTI[(n % 103)]);
+      ((Collection)localObject).add(c.bTI[106]);
       paramString = ((Collection)localObject).iterator();
       i = 0;
       if (paramString.hasNext())
@@ -264,11 +264,11 @@ public final class d
     static
     {
       AppMethodBeat.i(12219);
-      bJw = new a("UNCODABLE", 0);
-      bJx = new a("ONE_DIGIT", 1);
-      bJy = new a("TWO_DIGITS", 2);
-      bJz = new a("FNC_1", 3);
-      bJA = new a[] { bJw, bJx, bJy, bJz };
+      bTJ = new a("UNCODABLE", 0);
+      bTK = new a("ONE_DIGIT", 1);
+      bTL = new a("TWO_DIGITS", 2);
+      bTM = new a("FNC_1", 3);
+      bTN = new a[] { bTJ, bTK, bTL, bTM };
       AppMethodBeat.o(12219);
     }
     

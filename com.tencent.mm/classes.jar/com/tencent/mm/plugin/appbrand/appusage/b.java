@@ -9,36 +9,36 @@ import java.util.Map;
 public final class b
   extends i
 {
-  static final c.a hlR;
+  static final c.a hEe;
   
   static
   {
     AppMethodBeat.i(44463);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "usernameHash";
-    locala.GvH.put("usernameHash", "INTEGER PRIMARY KEY ");
+    locala.IhC.put("usernameHash", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" usernameHash INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "usernameHash";
+    locala.IhB = "usernameHash";
     locala.columns[1] = "username";
-    locala.GvH.put("username", "TEXT");
+    locala.IhC.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "updateTime";
-    locala.GvH.put("updateTime", "LONG");
+    locala.IhC.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(44463);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
 }
 

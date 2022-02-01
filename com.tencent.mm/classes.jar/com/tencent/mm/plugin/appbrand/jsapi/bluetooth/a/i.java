@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.d;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -25,27 +25,27 @@ public final class i
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144502);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(191);
-    ac.i("MicroMsg.JsApiGetConnectedBluetoothDevices", "getConnectedBluetoothDevices!");
-    ac.i("MicroMsg.JsApiGetConnectedBluetoothDevices", "appId:%s getConnectedBluetoothDevices data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
-    Object localObject2 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.LX(paramc.getAppId());
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(191);
+    ad.i("MicroMsg.JsApiGetConnectedBluetoothDevices", "getConnectedBluetoothDevices!");
+    ad.i("MicroMsg.JsApiGetConnectedBluetoothDevices", "appId:%s getConnectedBluetoothDevices data %s", new Object[] { paramc.getAppId(), paramJSONObject.toString() });
+    Object localObject2 = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Pt(paramc.getAppId());
     if (localObject2 == null)
     {
-      ac.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "bleWorker is null, may not open ble");
+      ad.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
-      paramc.h(paramInt, k("fail:not init", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(193, 195);
+      paramc.h(paramInt, m("fail:not init", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(193, 195);
       AppMethodBeat.o(144502);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bfV())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bjz())
     {
-      ac.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "adapter is null or not enabled!");
+      ad.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "adapter is null or not enabled!");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramc.h(paramInt, k("fail:not available", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(193, 197);
+      paramc.h(paramInt, m("fail:not available", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(193, 197);
       AppMethodBeat.o(144502);
       return;
     }
@@ -69,12 +69,12 @@ public final class i
       }
     }
     paramJSONObject = null;
-    Object localObject1 = ((b)localObject2).bk(paramJSONObject);
+    Object localObject1 = ((b)localObject2).bm(paramJSONObject);
     if (localObject1 == null)
     {
-      ac.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "bluetoothDevices is empty!");
+      ad.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "bluetoothDevices is empty!");
       paramc.h(paramInt, e("fail:internal error", null));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dL(193, 198);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(193, 198);
       AppMethodBeat.o(144502);
       return;
     }
@@ -83,7 +83,7 @@ public final class i
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (d)((Iterator)localObject1).next();
-      localObject2 = ((d)localObject3).cIZ;
+      localObject2 = ((d)localObject3).cUi;
       localObject3 = ((d)localObject3).name;
       JSONObject localJSONObject = new JSONObject();
       try
@@ -94,7 +94,7 @@ public final class i
       }
       catch (JSONException localJSONException)
       {
-        ac.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "put JSON data error : %s", new Object[] { localJSONException });
+        ad.e("MicroMsg.JsApiGetConnectedBluetoothDevices", "put JSON data error : %s", new Object[] { localJSONException });
       }
     }
     localObject1 = new JSONObject();
@@ -102,9 +102,9 @@ public final class i
     {
       ((JSONObject)localObject1).put("errMsg", getName() + ":ok");
       ((JSONObject)localObject1).put("devices", paramJSONObject);
-      ac.i("MicroMsg.JsApiGetConnectedBluetoothDevices", "retJson %s", new Object[] { ((JSONObject)localObject1).toString() });
+      ad.i("MicroMsg.JsApiGetConnectedBluetoothDevices", "retJson %s", new Object[] { ((JSONObject)localObject1).toString() });
       paramc.h(paramInt, ((JSONObject)localObject1).toString());
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.lA(192);
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.ma(192);
       AppMethodBeat.o(144502);
       return;
     }
@@ -112,14 +112,14 @@ public final class i
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.JsApiGetConnectedBluetoothDevices", paramJSONObject, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.JsApiGetConnectedBluetoothDevices", paramJSONObject, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.i
  * JD-Core Version:    0.7.0.1
  */

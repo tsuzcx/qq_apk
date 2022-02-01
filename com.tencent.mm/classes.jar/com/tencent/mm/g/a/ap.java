@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ap
   extends b
 {
-  public a cZT;
-  public b cZU;
+  public a dll;
+  public b dlm;
   
   public ap()
   {
@@ -17,16 +17,16 @@ public final class ap
   private ap(byte paramByte)
   {
     AppMethodBeat.i(155543);
-    this.cZT = new a();
-    this.cZU = new b();
-    this.Gqe = false;
+    this.dll = new a();
+    this.dlm = new b();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(155543);
   }
   
   public static final class a
   {
-    public String cZV;
+    public String dln;
     public int position = 0;
     public int type;
   }
@@ -34,12 +34,12 @@ public final class ap
   public static final class b
   {
     public String Title;
-    public int cZW = 0;
-    public int cZX = 0;
-    public int cZY = 0;
-    public int cZZ = 0;
-    public String daa;
     public String desc;
+    public int dlo = 0;
+    public int dlp = 0;
+    public int dlq = 0;
+    public int dlr = 0;
+    public String dls;
     public int position = 0;
     public String url;
     public boolean visible = false;

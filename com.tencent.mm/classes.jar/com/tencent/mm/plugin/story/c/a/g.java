@@ -6,51 +6,51 @@ import com.tencent.mm.compatible.deviceinfo.x;
 import com.tencent.mm.plugin.story.c.a.a;
 import com.tencent.mm.plugin.story.c.a.b;
 import com.tencent.mm.plugin.story.c.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "()V", "DEFAULT_VALUE", "TAG", "", "getTAG", "()Ljava/lang/String;", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "loadDebugConfig", "", "loadServerConfig", "update", "parse", "StoryProcessType", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig;", "Lcom/tencent/mm/plugin/story/config/StoryElementConfig;", "Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "()V", "DEFAULT_VALUE", "TAG", "", "getTAG", "()Ljava/lang/String;", "getElementName", "Lcom/tencent/mm/plugin/story/config/StoryConfigConstant$ElementName;", "initDefaultConfig", "loadConfig", "", "loadDebugConfig", "", "loadServerConfig", "update", "parse", "StoryProcessType", "plugin-story_release"})
 public final class g
   extends b<a>
 {
+  private static final a AIQ;
+  public static final g AIR;
   private static final String TAG = "MicroMsg.StoryProcessElementConfig";
-  private static final a zqW;
-  public static final g zqX;
   
   static
   {
     AppMethodBeat.i(118617);
-    zqX = new g();
+    AIR = new g();
     TAG = "MicroMsg.StoryProcessElementConfig";
-    zqW = a.zqZ;
+    AIQ = a.AIT;
     AppMethodBeat.o(118617);
   }
   
-  public final void aqo()
+  public final void atd()
   {
     AppMethodBeat.i(118616);
-    ac.i(TAG, "loadDebugConfig false ");
-    Object localObject = aw.aKT(a.b.zqz.name()).getString(a.a.zqt.name(), zqW.name());
+    ad.i(TAG, "loadDebugConfig false ");
+    Object localObject = ax.aQz(a.b.AIt.name()).getString(a.a.AIn.name(), AIQ.name());
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
-    k.g(localObject, "mmkv.getString(getElemen…me, DEFAULT_VALUE.name)!!");
-    bH(a.valueOf((String)localObject));
-    int i = U("StoryBackgroundRemux", 0);
+    p.g(localObject, "mmkv.getString(getElemen…me, DEFAULT_VALUE.name)!!");
+    bJ(a.valueOf((String)localObject));
+    int i = Y("StoryBackgroundRemux", 0);
     int j;
     if (i != 0)
     {
       if (i == 1)
       {
-        localObject = a.zqZ;
-        bH(localObject);
+        localObject = a.AIT;
+        bJ(localObject);
       }
     }
     else
     {
-      j = ae.fJl.fHV;
+      j = ae.gcM.gbv;
       if (j != -1) {
         if (j != 1) {
           break label170;
@@ -58,18 +58,18 @@ public final class g
       }
     }
     label170:
-    for (localObject = a.zqZ;; localObject = a.zqY)
+    for (localObject = a.AIT;; localObject = a.AIS)
     {
-      bH(localObject);
-      ac.i(TAG, "loadServerConfig : " + (a)aqm() + ", serverConfig:" + i + ", deviceConfig:" + j);
+      bJ(localObject);
+      ad.i(TAG, "loadServerConfig : " + (a)atb() + ", serverConfig:" + i + ", deviceConfig:" + j);
       AppMethodBeat.o(118616);
       return;
-      localObject = a.zqY;
+      localObject = a.AIS;
       break;
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "FORWARD", "BACKGROUND", "plugin-story_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/config/moduleconfig/StoryProcessElementConfig$StoryProcessType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "FORWARD", "BACKGROUND", "plugin-story_release"})
   public static enum a
   {
     public final int value;
@@ -78,10 +78,10 @@ public final class g
     {
       AppMethodBeat.i(118613);
       a locala1 = new a("FORWARD", 0, 0);
-      zqY = locala1;
+      AIS = locala1;
       a locala2 = new a("BACKGROUND", 1, 1);
-      zqZ = locala2;
-      zra = new a[] { locala1, locala2 };
+      AIT = locala2;
+      AIU = new a[] { locala1, locala2 };
       AppMethodBeat.o(118613);
     }
     
@@ -93,7 +93,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.c.a.g
  * JD-Core Version:    0.7.0.1
  */

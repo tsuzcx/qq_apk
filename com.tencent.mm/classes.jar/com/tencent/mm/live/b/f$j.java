@@ -3,31 +3,31 @@ package com.tencent.mm.live.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LiveConstants$UIRouter;", "", "()V", "ROUTER_TO_ANCHOR_LIVE", "", "getROUTER_TO_ANCHOR_LIVE", "()I", "ROUTER_TO_REPLAY_LIVE", "getROUTER_TO_REPLAY_LIVE", "ROUTER_TO_VISITOR_LIVE", "getROUTER_TO_VISITOR_LIVE", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveConstants$UIRouter;", "", "()V", "ROUTER_TO_ANCHOR_LIVE", "", "getROUTER_TO_ANCHOR_LIVE", "()I", "ROUTER_TO_REPLAY_LIVE", "getROUTER_TO_REPLAY_LIVE", "ROUTER_TO_VISITOR_LIVE", "getROUTER_TO_VISITOR_LIVE", "plugin-logic_release"})
 public final class f$j
 {
-  private static final int gtN = 0;
-  private static final int gtO = 1;
-  private static final int gtP = 2;
-  public static final j gtQ;
+  private static final int gNA = 2;
+  public static final j gNB;
+  private static final int gNy = 0;
+  private static final int gNz = 1;
   
   static
   {
-    AppMethodBeat.i(189762);
-    gtQ = new j();
-    gtO = 1;
-    gtP = 2;
-    AppMethodBeat.o(189762);
+    AppMethodBeat.i(212048);
+    gNB = new j();
+    gNz = 1;
+    gNA = 2;
+    AppMethodBeat.o(212048);
   }
   
-  public static int aky()
+  public static int ank()
   {
-    return gtN;
+    return gNy;
   }
   
-  public static int akz()
+  public static int anl()
   {
-    return gtO;
+    return gNz;
   }
 }
 

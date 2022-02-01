@@ -6,13 +6,15 @@ import java.nio.ByteBuffer;
 
 public abstract interface AudioTapProcessor
 {
+  public abstract AudioInfo getDestAudioInfo();
+  
   public abstract ByteBuffer processAudioPCM(CMTime paramCMTime, ByteBuffer paramByteBuffer, AudioInfo paramAudioInfo);
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.AudioTapProcessor
  * JD-Core Version:    0.7.0.1
  */

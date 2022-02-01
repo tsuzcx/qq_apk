@@ -6,11 +6,11 @@ public abstract interface b
 {
   public abstract void a(c paramc);
   
-  public abstract void cE(int paramInt, String paramString);
+  public abstract void cL(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public final class b
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77710);
-    paramMessageDigest.update(this.object.toString().getBytes(aDo));
+    paramMessageDigest.update(this.object.toString().getBytes(aFf));
     AppMethodBeat.o(77710);
   }
   

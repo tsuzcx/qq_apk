@@ -6,28 +6,28 @@ import org.xwalk.core.Log;
 
 public final class e
 {
-  public static double Ce(long paramLong)
+  public static double Fg(long paramLong)
   {
-    AppMethodBeat.i(205093);
+    AppMethodBeat.i(197105);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong);
     int i = localCalendar.get(11);
     double d2 = localCalendar.get(12);
     double d1 = i;
     d2 /= 60.0D;
-    AppMethodBeat.o(205093);
+    AppMethodBeat.o(197105);
     return d1 + d2;
   }
   
-  public static a aVl(String paramString)
+  public static a bbo(String paramString)
   {
-    AppMethodBeat.i(205090);
+    AppMethodBeat.i(197101);
     a locala = new a();
     try
     {
-      locala.KDY = Double.valueOf(Double.parseDouble(paramString));
-      locala.KDX = true;
-      AppMethodBeat.o(205090);
+      locala.Muy = Double.valueOf(Double.parseDouble(paramString));
+      locala.Mux = true;
+      AppMethodBeat.o(197101);
       return locala;
     }
     catch (Exception paramString)
@@ -39,15 +39,15 @@ public final class e
     }
   }
   
-  public static a aVm(String paramString)
+  public static a bbp(String paramString)
   {
-    AppMethodBeat.i(205091);
+    AppMethodBeat.i(197102);
     a locala = new a();
     try
     {
       for (paramString = paramString.trim(); (paramString.startsWith("0")) && (paramString.length() > 1); paramString = paramString.substring(1)) {}
-      locala.KDY = Integer.valueOf(Integer.parseInt(paramString));
-      locala.KDX = true;
+      locala.Muy = Integer.valueOf(Integer.parseInt(paramString));
+      locala.Mux = true;
     }
     catch (Exception paramString)
     {
@@ -56,75 +56,86 @@ public final class e
         Log.e("NumberUtil", "safeParseInt failed : " + paramString.getMessage());
       }
     }
-    AppMethodBeat.o(205091);
+    AppMethodBeat.o(197102);
     return locala;
   }
   
   public static long c(Calendar paramCalendar)
   {
-    AppMethodBeat.i(210394);
+    AppMethodBeat.i(197104);
     int i = paramCalendar.get(11);
     int j = paramCalendar.get(12);
     int k = paramCalendar.get(13);
     long l1 = 24 - i;
     long l2 = j;
     long l3 = k * 1000;
-    AppMethodBeat.o(210394);
+    AppMethodBeat.o(197104);
     return l1 * 3600000L - l2 * 60000L - l3;
   }
   
-  public static long fKC()
+  public static double d(Calendar paramCalendar)
   {
-    AppMethodBeat.i(205092);
+    AppMethodBeat.i(197107);
+    int i = paramCalendar.get(11);
+    double d2 = paramCalendar.get(12);
+    double d1 = i;
+    d2 /= 60.0D;
+    AppMethodBeat.o(197107);
+    return d1 + d2;
+  }
+  
+  public static long gbX()
+  {
+    AppMethodBeat.i(197103);
     Calendar localCalendar = Calendar.getInstance();
     int i = localCalendar.get(11);
     int j = localCalendar.get(12);
     long l1 = 24 - i;
     long l2 = j;
-    AppMethodBeat.o(205092);
+    AppMethodBeat.o(197103);
     return l1 * 3600000L - l2 * 60000L;
   }
   
-  public static double fKD()
+  public static double gbY()
   {
-    AppMethodBeat.i(205094);
+    AppMethodBeat.i(197106);
     Calendar localCalendar = Calendar.getInstance();
     int i = localCalendar.get(11);
     double d2 = localCalendar.get(12);
     double d1 = i;
     d2 /= 60.0D;
-    AppMethodBeat.o(205094);
+    AppMethodBeat.o(197106);
     return d1 + d2;
   }
   
   public static final class a
   {
-    public boolean KDX = false;
-    public Object KDY;
+    public boolean Mux = false;
+    public Object Muy;
     
     public final double doubleValue()
     {
-      AppMethodBeat.i(205088);
-      if (this.KDY == null)
+      AppMethodBeat.i(197099);
+      if (this.Muy == null)
       {
-        AppMethodBeat.o(205088);
+        AppMethodBeat.o(197099);
         return 0.0D;
       }
-      double d = ((Double)this.KDY).doubleValue();
-      AppMethodBeat.o(205088);
+      double d = ((Double)this.Muy).doubleValue();
+      AppMethodBeat.o(197099);
       return d;
     }
     
     public final int intValue()
     {
-      AppMethodBeat.i(205089);
-      if (this.KDY == null)
+      AppMethodBeat.i(197100);
+      if (this.Muy == null)
       {
-        AppMethodBeat.o(205089);
+        AppMethodBeat.o(197100);
         return 0;
       }
-      int i = ((Integer)this.KDY).intValue();
-      AppMethodBeat.o(205089);
+      int i = ((Integer)this.Muy).intValue();
+      AppMethodBeat.o(197100);
       return i;
     }
   }

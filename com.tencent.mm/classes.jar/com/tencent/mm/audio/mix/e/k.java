@@ -7,26 +7,26 @@ public final class k
 {
   private float A;
   private float B;
-  private float cTt;
-  private float cTu;
-  private float cTv;
-  private int cTw;
-  private int cTx;
+  private float deJ;
+  private float deK;
+  private float deL;
+  private int deM;
+  private int deN;
   
   public k()
   {
     AppMethodBeat.i(136878);
-    this.cTt = 128.0F;
-    this.cTu = 128.0F;
-    this.cTv = 128.0F;
-    this.cTw = 44100;
-    this.cTx = ((int)(0.02F * this.cTw * 2.0F * 16.0F / 8.0F));
-    this.A = (this.cTw / this.cTx);
+    this.deJ = 128.0F;
+    this.deK = 128.0F;
+    this.deL = 128.0F;
+    this.deM = 44100;
+    this.deN = ((int)(0.02F * this.deM * 2.0F * 16.0F / 8.0F));
+    this.A = (this.deM / this.deN);
     this.B = 1.0F;
     AppMethodBeat.o(136878);
   }
   
-  protected final byte[] G(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(136879);
     int j = 0;
@@ -36,33 +36,33 @@ public final class k
       int k = 0;
       if (k < paramInt1)
       {
-        i += this.cTj[k][j];
+        i += this.dez[k][j];
         if (i > this.MAX_VALUE) {
-          this.cTt *= 32768.0F / i;
+          this.deJ *= 32768.0F / i;
         }
         for (;;)
         {
           k += 1;
           break;
           if (i < this.MIN_VALUE) {
-            this.cTt *= 32768.0F / i;
+            this.deJ *= 32768.0F / i;
           }
         }
       }
-      if (this.cTt >= this.cTu) {}
-      for (this.cTt = ((this.A * (this.cTu + 1.0F) + this.B * this.cTt) / (this.A + this.B));; this.cTt = ((this.cTu + this.cTt) / 2.0F))
+      if (this.deJ >= this.deK) {}
+      for (this.deJ = ((this.A * (this.deK + 1.0F) + this.B * this.deJ) / (this.A + this.B));; this.deJ = ((this.deK + this.deJ) / 2.0F))
       {
-        this.cTu = this.cTt;
+        this.deK = this.deJ;
         k = i;
-        if ((int)(this.cTt * 128.0F) >> 7 != 128) {
-          k = (int)(this.cTv * this.cTt / 128.0F * i) / 128;
+        if ((int)(this.deJ * 128.0F) >> 7 != 128) {
+          k = (int)(this.deL * this.deJ / 128.0F * i) / 128;
         }
-        this.cTm[j] = hC(k);
+        this.deC[j] = hJ(k);
         j += 1;
         break;
       }
     }
-    byte[] arrayOfByte = ce(paramInt3, paramInt2);
+    byte[] arrayOfByte = cg(paramInt3, paramInt2);
     AppMethodBeat.o(136879);
     return arrayOfByte;
   }

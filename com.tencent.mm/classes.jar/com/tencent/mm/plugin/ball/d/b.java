@@ -4,23 +4,23 @@ import android.view.MotionEvent;
 
 public abstract interface b
 {
-  public abstract void N(MotionEvent paramMotionEvent);
+  public abstract void L(MotionEvent paramMotionEvent);
   
   public abstract void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract void bFW();
+  public abstract void bKh();
   
-  public abstract void bFX();
+  public abstract void bKi();
   
-  public abstract void bFY();
+  public abstract void bKj();
   
-  public abstract void bFZ();
+  public abstract void bKk();
   
-  public abstract void nm(int paramInt);
+  public abstract void nL(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.d.b
  * JD-Core Version:    0.7.0.1
  */

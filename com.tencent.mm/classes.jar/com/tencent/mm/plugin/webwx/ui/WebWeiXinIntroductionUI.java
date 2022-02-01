@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMActivity;
 
 public class WebWeiXinIntroductionUI
   extends MMActivity
 {
-  private Button CTC;
+  private Button ExC;
   
   public int getLayoutId()
   {
@@ -26,12 +28,15 @@ public class WebWeiXinIntroductionUI
   {
     AppMethodBeat.i(30247);
     setMMTitle("");
-    this.CTC = ((Button)findViewById(2131306934));
-    this.CTC.setOnClickListener(new View.OnClickListener()
+    this.ExC = ((Button)findViewById(2131306934));
+    this.ExC.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30244);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/webwx/ui/WebWeiXinIntroductionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("BaseScanUI_select_scan_mode", 1);
         paramAnonymousView.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
@@ -40,6 +45,7 @@ public class WebWeiXinIntroductionUI
         paramAnonymousView.putExtra("show_intro", false);
         paramAnonymousView.setFlags(65536);
         d.b(WebWeiXinIntroductionUI.this, "scanner", ".ui.BaseScanUI", paramAnonymousView);
+        a.a(this, "com/tencent/mm/plugin/webwx/ui/WebWeiXinIntroductionUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30244);
       }
     });
@@ -72,7 +78,7 @@ public class WebWeiXinIntroductionUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.WebWeiXinIntroductionUI
  * JD-Core Version:    0.7.0.1
  */

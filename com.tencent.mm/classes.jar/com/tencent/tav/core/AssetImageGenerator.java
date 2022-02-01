@@ -51,13 +51,13 @@ public class AssetImageGenerator
   public AssetImageGenerator(Asset paramAsset)
   {
     this(paramAsset, new AssetExtension("thumbnail"));
-    AppMethodBeat.i(197502);
-    AppMethodBeat.o(197502);
+    AppMethodBeat.i(217781);
+    AppMethodBeat.o(217781);
   }
   
   public AssetImageGenerator(Asset paramAsset, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(197503);
+    AppMethodBeat.i(217782);
     this.TAG = ("AssetImageGenerator@" + Integer.toHexString(hashCode()));
     this.generatorThreadId = -1L;
     this.asset = paramAsset;
@@ -66,16 +66,16 @@ public class AssetImageGenerator
     this.generatorThread = new ImageGeneratorThread("image_generator");
     this.generatorThread.start();
     ImageGeneratorThread.access$000(this.generatorThread);
-    AppMethodBeat.o(197503);
+    AppMethodBeat.o(217782);
   }
   
   private Bitmap bitmapFromFBO(RenderContext paramRenderContext, CMSampleBuffer paramCMSampleBuffer)
   {
-    AppMethodBeat.i(197515);
+    AppMethodBeat.i(217794);
     TextureInfo localTextureInfo = paramCMSampleBuffer.getTextureInfo();
     if (localTextureInfo == null)
     {
-      AppMethodBeat.o(197515);
+      AppMethodBeat.o(217794);
       return null;
     }
     Bitmap localBitmap = readBitmapFromTexture(paramRenderContext, localTextureInfo);
@@ -94,7 +94,7 @@ public class AssetImageGenerator
     for (paramCMSampleBuffer = this.maximumSize;; paramCMSampleBuffer = new CGSize(localTextureInfo.width, localTextureInfo.height))
     {
       paramRenderContext = Bitmap.createBitmap(localBitmap, 0, 0, (int)paramCMSampleBuffer.width, (int)paramCMSampleBuffer.height, paramRenderContext, true);
-      AppMethodBeat.o(197515);
+      AppMethodBeat.o(217794);
       return paramRenderContext;
       paramRenderContext = paramCMSampleBuffer;
       break;
@@ -103,23 +103,23 @@ public class AssetImageGenerator
   
   private Bitmap doGenerator(CMTime paramCMTime)
   {
-    AppMethodBeat.i(197509);
+    AppMethodBeat.i(217788);
     RenderContext localRenderContext = initRenderContext();
     paramCMTime = getCmSampleBuffer(paramCMTime, localRenderContext);
     if (!localRenderContext.isPBufferEnable())
     {
       paramCMTime = bitmapFromFBO(localRenderContext, paramCMTime);
-      AppMethodBeat.o(197509);
+      AppMethodBeat.o(217788);
       return paramCMTime;
     }
     paramCMTime = readBitmap(renderToMaximumSizeBox(localRenderContext, paramCMTime));
-    AppMethodBeat.o(197509);
+    AppMethodBeat.o(217788);
     return paramCMTime;
   }
   
   private void doRelease()
   {
-    AppMethodBeat.i(197508);
+    AppMethodBeat.i(217787);
     Logger.d(this.TAG, "doRelease: start, thread = " + Thread.currentThread().getName());
     if (this.videoCompositionDecoderTrack != null)
     {
@@ -138,12 +138,12 @@ public class AssetImageGenerator
     }
     this.videoComposition = null;
     Logger.d(this.TAG, "doRelease: end, thread = " + Thread.currentThread().getName());
-    AppMethodBeat.o(197508);
+    AppMethodBeat.o(217787);
   }
   
   private CMSampleBuffer getCmSampleBuffer(CMTime paramCMTime, RenderContext paramRenderContext)
   {
-    AppMethodBeat.i(197511);
+    AppMethodBeat.i(217790);
     if (this.videoCompositionDecoderTrack == null)
     {
       this.videoCompositionDecoderTrack = new VideoCompositionDecoderTrack(this.asset, this.assetExtension, 1);
@@ -168,17 +168,17 @@ public class AssetImageGenerator
       this.videoCompositionDecoderTrack.start(paramRenderContext);
       this.videoCompositionDecoderTrack.seekTo(paramCMTime, false, true);
       paramCMTime = this.videoCompositionDecoderTrack.readSample(paramCMTime);
-      AppMethodBeat.o(197511);
+      AppMethodBeat.o(217790);
       return paramCMTime;
     }
   }
   
   private Matrix getMatrix(CGSize paramCGSize1, CGSize paramCGSize2)
   {
-    AppMethodBeat.i(197513);
+    AppMethodBeat.i(217792);
     if ((paramCGSize1 == null) || (paramCGSize2 == null) || (this.apertureMode == null))
     {
-      AppMethodBeat.o(197513);
+      AppMethodBeat.o(217792);
       return null;
     }
     paramCGSize2 = new CGRect(new PointF(), paramCGSize2);
@@ -186,25 +186,25 @@ public class AssetImageGenerator
     switch (1.$SwitchMap$com$tencent$tav$core$AssetImageGenerator$ApertureMode[this.apertureMode.ordinal()])
     {
     default: 
-      AppMethodBeat.o(197513);
+      AppMethodBeat.o(217792);
       return null;
     case 1: 
       paramCGSize1 = CGMathFunctions.transformBySourceRectFit(paramCGSize2, paramCGSize1);
-      AppMethodBeat.o(197513);
+      AppMethodBeat.o(217792);
       return paramCGSize1;
     case 2: 
       paramCGSize1 = CGMathFunctions.transformBySourceRectFill(paramCGSize2, paramCGSize1);
-      AppMethodBeat.o(197513);
+      AppMethodBeat.o(217792);
       return paramCGSize1;
     }
     paramCGSize1 = CGMathFunctions.transformByScaleFitRect(paramCGSize2, paramCGSize1);
-    AppMethodBeat.o(197513);
+    AppMethodBeat.o(217792);
     return paramCGSize1;
   }
   
   private RenderContext initRenderContext()
   {
-    AppMethodBeat.i(197510);
+    AppMethodBeat.i(217789);
     this.generatorThreadId = Thread.currentThread().getId();
     if (this.renderContext == null) {
       if (this.maximumSize == null) {
@@ -218,21 +218,21 @@ public class AssetImageGenerator
       this.renderContext.setParams(this.renderContextParams);
       this.renderContext.makeCurrent();
       localObject = this.renderContext;
-      AppMethodBeat.o(197510);
+      AppMethodBeat.o(217789);
       return localObject;
     }
   }
   
   private Bitmap readBitmap(CGSize paramCGSize)
   {
-    AppMethodBeat.i(197514);
+    AppMethodBeat.i(217793);
     if (this.outputBitmapFactory == null) {
       this.outputBitmapFactory = new DefaultBitmapFactory(null);
     }
     paramCGSize = this.outputBitmapFactory.getOutputBitmap((int)paramCGSize.width, (int)paramCGSize.height);
     if ((paramCGSize.getConfig() != Bitmap.Config.ARGB_8888) && (paramCGSize.getConfig() != Bitmap.Config.ARGB_4444))
     {
-      AppMethodBeat.o(197514);
+      AppMethodBeat.o(217793);
       return paramCGSize;
     }
     int i = paramCGSize.getWidth() * paramCGSize.getHeight() * 4;
@@ -247,13 +247,13 @@ public class AssetImageGenerator
     this.outBitmapReaderBuffer.rewind();
     paramCGSize.copyPixelsFromBuffer(this.outBitmapReaderBuffer);
     this.outBitmapReaderBuffer.clear();
-    AppMethodBeat.o(197514);
+    AppMethodBeat.o(217793);
     return paramCGSize;
   }
   
   private Bitmap readBitmapFromTexture(RenderContext paramRenderContext, TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(197516);
+    AppMethodBeat.i(217795);
     paramRenderContext.makeCurrent();
     paramRenderContext = new int[1];
     GLES20.glGenFramebuffers(1, paramRenderContext, 0);
@@ -268,13 +268,13 @@ public class AssetImageGenerator
     paramTextureInfo.copyPixelsFromBuffer(localByteBuffer);
     GLES20.glBindFramebuffer(36160, 0);
     GLES20.glDeleteFramebuffers(1, paramRenderContext, 0);
-    AppMethodBeat.o(197516);
+    AppMethodBeat.o(217795);
     return paramTextureInfo;
   }
   
   private CGSize renderToMaximumSizeBox(RenderContext paramRenderContext, CMSampleBuffer paramCMSampleBuffer)
   {
-    AppMethodBeat.i(197512);
+    AppMethodBeat.i(217791);
     TextureInfo localTextureInfo = paramCMSampleBuffer.getTextureInfo();
     if (this.maximumSize != null) {}
     for (CGSize localCGSize = this.maximumSize;; localCGSize = new CGSize(localTextureInfo.width, localTextureInfo.height))
@@ -297,32 +297,32 @@ public class AssetImageGenerator
         paramRenderContext.swapBuffers();
         GLES20.glViewport(arrayOfInt[0], arrayOfInt[1], arrayOfInt[2], arrayOfInt[3]);
       }
-      AppMethodBeat.o(197512);
+      AppMethodBeat.o(217791);
       return localCGSize;
     }
   }
   
   public Bitmap copyCGImageAtTimeAndActualTime(CMTime paramCMTime1, CMTime paramCMTime2)
   {
-    AppMethodBeat.i(197505);
+    AppMethodBeat.i(217784);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
       paramCMTime1 = new Exception("cannot process in the main thread");
-      AppMethodBeat.o(197505);
+      AppMethodBeat.o(217784);
       throw paramCMTime1;
     }
     paramCMTime1 = doGenerator(paramCMTime1);
-    AppMethodBeat.o(197505);
+    AppMethodBeat.o(217784);
     return paramCMTime1;
   }
   
-  public void generateCGImagesAsynchronouslyForTimes(List<CMTime> paramList, AssetImageGenerator.ImageGeneratorListener paramImageGeneratorListener)
+  public void generateCGImagesAsynchronouslyForTimes(List<CMTime> paramList, ImageGeneratorListener paramImageGeneratorListener)
   {
-    AppMethodBeat.i(197506);
+    AppMethodBeat.i(217785);
     this.generatorThread.setRequestedTimes(paramList);
     this.generatorThread.setGeneratorListener(paramImageGeneratorListener);
     ImageGeneratorThread.access$100(this.generatorThread);
-    AppMethodBeat.o(197506);
+    AppMethodBeat.o(217785);
   }
   
   public AssetExtension getAssetExtension()
@@ -337,17 +337,17 @@ public class AssetImageGenerator
   
   public void release()
   {
-    AppMethodBeat.i(197507);
+    AppMethodBeat.i(217786);
     if (Thread.currentThread().getId() != this.generatorThreadId)
     {
       ImageGeneratorThread.access$200(this.generatorThread);
       this.videoComposition = null;
-      AppMethodBeat.o(197507);
+      AppMethodBeat.o(217786);
       return;
     }
     doRelease();
     this.generatorThread.quit();
-    AppMethodBeat.o(197507);
+    AppMethodBeat.o(217786);
   }
   
   public void setApertureMode(ApertureMode paramApertureMode)
@@ -377,12 +377,12 @@ public class AssetImageGenerator
   
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(197504);
+    AppMethodBeat.i(217783);
     this.renderContextParams = paramRenderContextParams;
     if (this.renderContext != null) {
       this.renderContext.setParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(197504);
+    AppMethodBeat.o(217783);
   }
   
   public void setVideoComposition(VideoComposition paramVideoComposition)
@@ -394,12 +394,12 @@ public class AssetImageGenerator
   {
     static
     {
-      AppMethodBeat.i(197489);
+      AppMethodBeat.i(217768);
       aspectFit = new ApertureMode("aspectFit", 0);
       aspectFill = new ApertureMode("aspectFill", 1);
       scaleToFit = new ApertureMode("scaleToFit", 2);
       $VALUES = new ApertureMode[] { aspectFit, aspectFill, scaleToFit };
-      AppMethodBeat.o(197489);
+      AppMethodBeat.o(217768);
     }
     
     private ApertureMode() {}
@@ -410,11 +410,16 @@ public class AssetImageGenerator
   {
     public Bitmap getOutputBitmap(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(197493);
+      AppMethodBeat.i(217772);
       Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      AppMethodBeat.o(197493);
+      AppMethodBeat.o(217772);
       return localBitmap;
     }
+  }
+  
+  public static abstract interface ImageGeneratorListener
+  {
+    public abstract void onCompletion(CMTime paramCMTime1, Bitmap paramBitmap, CMTime paramCMTime2, AssetImageGenerator.AssetImageGeneratorResult paramAssetImageGeneratorResult);
   }
   
   class ImageGeneratorThread
@@ -435,7 +440,7 @@ public class AssetImageGenerator
     
     private void generatorCover()
     {
-      AppMethodBeat.i(197497);
+      AppMethodBeat.i(217776);
       Iterator localIterator = this.requestedTimes.iterator();
       while (localIterator.hasNext())
       {
@@ -445,34 +450,34 @@ public class AssetImageGenerator
         localMessage.obj = localCMTime;
         this.handler.sendMessage(localMessage);
       }
-      AppMethodBeat.o(197497);
+      AppMethodBeat.o(217776);
     }
     
     private void initHandler()
     {
-      AppMethodBeat.i(197495);
+      AppMethodBeat.i(217774);
       this.handler = new Handler(getLooper(), this);
-      AppMethodBeat.o(197495);
+      AppMethodBeat.o(217774);
     }
     
     private void release()
     {
-      AppMethodBeat.i(197498);
+      AppMethodBeat.i(217777);
       Message localMessage = Message.obtain();
       localMessage.what = 2;
       this.handler.sendMessage(localMessage);
-      AppMethodBeat.o(197498);
+      AppMethodBeat.o(217777);
     }
     
     public boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(197496);
+      AppMethodBeat.i(217775);
       switch (paramMessage.what)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(197496);
+        AppMethodBeat.o(217775);
         return false;
         try
         {
@@ -506,9 +511,9 @@ public class AssetImageGenerator
     
     protected void onLooperPrepared()
     {
-      AppMethodBeat.i(197494);
+      AppMethodBeat.i(217773);
       super.onLooperPrepared();
-      AppMethodBeat.o(197494);
+      AppMethodBeat.o(217773);
     }
     
     public void setGeneratorListener(AssetImageGenerator.ImageGeneratorListener paramImageGeneratorListener)
@@ -529,7 +534,7 @@ public class AssetImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.AssetImageGenerator
  * JD-Core Version:    0.7.0.1
  */

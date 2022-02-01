@@ -5,73 +5,29 @@ import com.bumptech.glide.c.c;
 
 public abstract class i
 {
-  public static final i aFq = new i()
+  public static final i aHh = new i()
   {
     public final boolean a(a paramAnonymousa)
     {
-      return paramAnonymousa == a.aCQ;
+      return paramAnonymousa == a.aEH;
     }
     
     public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
     {
-      return (paramAnonymousa != a.aCS) && (paramAnonymousa != a.aCT);
+      return (paramAnonymousa != a.aEJ) && (paramAnonymousa != a.aEK);
     }
     
-    public final boolean os()
+    public final boolean oK()
     {
       return true;
     }
     
-    public final boolean ot()
-    {
-      return true;
-    }
-  };
-  public static final i aFr = new i()
-  {
-    public final boolean a(a paramAnonymousa)
-    {
-      return false;
-    }
-    
-    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
-    {
-      return false;
-    }
-    
-    public final boolean os()
-    {
-      return false;
-    }
-    
-    public final boolean ot()
-    {
-      return false;
-    }
-  };
-  public static final i aFs = new i()
-  {
-    public final boolean a(a paramAnonymousa)
-    {
-      return (paramAnonymousa != a.aCR) && (paramAnonymousa != a.aCT);
-    }
-    
-    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
-    {
-      return false;
-    }
-    
-    public final boolean os()
-    {
-      return false;
-    }
-    
-    public final boolean ot()
+    public final boolean oL()
     {
       return true;
     }
   };
-  public static final i aFt = new i()
+  public static final i aHi = new i()
   {
     public final boolean a(a paramAnonymousa)
     {
@@ -80,37 +36,81 @@ public abstract class i
     
     public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
     {
-      return (paramAnonymousa != a.aCS) && (paramAnonymousa != a.aCT);
+      return false;
     }
     
-    public final boolean os()
+    public final boolean oK()
     {
-      return true;
+      return false;
     }
     
-    public final boolean ot()
+    public final boolean oL()
     {
       return false;
     }
   };
-  public static final i aFu = new i()
+  public static final i aHj = new i()
   {
     public final boolean a(a paramAnonymousa)
     {
-      return paramAnonymousa == a.aCQ;
+      return (paramAnonymousa != a.aEI) && (paramAnonymousa != a.aEK);
     }
     
     public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
     {
-      return ((paramAnonymousBoolean) && (paramAnonymousa == a.aCR)) || ((paramAnonymousa == a.aCP) && (paramAnonymousc == c.aDb));
+      return false;
     }
     
-    public final boolean os()
+    public final boolean oK()
+    {
+      return false;
+    }
+    
+    public final boolean oL()
+    {
+      return true;
+    }
+  };
+  public static final i aHk = new i()
+  {
+    public final boolean a(a paramAnonymousa)
+    {
+      return false;
+    }
+    
+    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
+    {
+      return (paramAnonymousa != a.aEJ) && (paramAnonymousa != a.aEK);
+    }
+    
+    public final boolean oK()
     {
       return true;
     }
     
-    public final boolean ot()
+    public final boolean oL()
+    {
+      return false;
+    }
+  };
+  public static final i aHl = new i()
+  {
+    public final boolean a(a paramAnonymousa)
+    {
+      return paramAnonymousa == a.aEH;
+    }
+    
+    public final boolean a(boolean paramAnonymousBoolean, a paramAnonymousa, c paramAnonymousc)
+    {
+      return ((paramAnonymousBoolean) && (paramAnonymousa == a.aEI)) || ((paramAnonymousa == a.aEG) && (paramAnonymousc == c.aES));
+    }
+    
+    public final boolean oK()
+    {
+      return true;
+    }
+    
+    public final boolean oL()
     {
       return true;
     }
@@ -120,9 +120,9 @@ public abstract class i
   
   public abstract boolean a(boolean paramBoolean, a parama, c paramc);
   
-  public abstract boolean os();
+  public abstract boolean oK();
   
-  public abstract boolean ot();
+  public abstract boolean oL();
 }
 
 

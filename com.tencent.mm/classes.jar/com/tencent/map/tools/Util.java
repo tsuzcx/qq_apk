@@ -486,10 +486,10 @@ public class Util
   
   public static Object invokeStaticMethod(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(191283);
+    AppMethodBeat.i(195075);
     if (paramClass == null)
     {
-      AppMethodBeat.o(191283);
+      AppMethodBeat.o(195075);
       return null;
     }
     try
@@ -499,19 +499,19 @@ public class Util
       {
         paramString.setAccessible(true);
         paramClass = paramString.invoke(paramClass, paramArrayOfObject);
-        AppMethodBeat.o(191283);
+        AppMethodBeat.o(195075);
         return paramClass;
       }
     }
     catch (InvocationTargetException paramClass)
     {
       paramClass = new RuntimeException(paramClass.getTargetException());
-      AppMethodBeat.o(191283);
+      AppMethodBeat.o(195075);
       throw paramClass;
     }
     catch (IllegalAccessException paramClass)
     {
-      AppMethodBeat.o(191283);
+      AppMethodBeat.o(195075);
     }
     return null;
   }
@@ -633,7 +633,7 @@ public class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.tools.Util
  * JD-Core Version:    0.7.0.1
  */

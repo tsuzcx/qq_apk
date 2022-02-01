@@ -4,12 +4,12 @@ import com.tencent.mm.sticker.c;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "", "updateData", "", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "updateSelection", "position", "", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerRecommendCallback;", "", "updateData", "", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "updateSelection", "position", "", "plugin-emojicapture_release"})
 public abstract interface h
 {
-  public abstract void BI(int paramInt);
+  public abstract void Cq(int paramInt);
   
-  public abstract void U(List<c> paramList);
+  public abstract void V(List<c> paramList);
 }
 
 

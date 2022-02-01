@@ -1,54 +1,27 @@
 package com.tencent.mm.ac;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.vending.h.d;
-import d.l;
+import org.json.JSONException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/kt/ThreadScheduler;", "Lcom/tencent/mm/vending/scheduler/Scheduler;", "()V", "arrange", "", "p0", "Ljava/lang/Runnable;", "arrangeInterval", "p1", "", "cancel", "getType", "", "libktcomm_release"})
 public final class g
-  extends d
+  extends JSONException
 {
-  public static final g gmk;
-  
-  static
+  public g(String paramString)
   {
-    AppMethodBeat.i(168839);
-    gmk = new g();
-    AppMethodBeat.o(168839);
+    super(paramString);
   }
   
-  public final void cancel()
+  public g(Throwable paramThrowable)
   {
-    AppMethodBeat.i(168837);
-    ac.e("ThreadScheduler", "can not support");
-    AppMethodBeat.o(168837);
-  }
-  
-  public final void f(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(168836);
-    h.JZN.q(paramRunnable, paramLong);
-    AppMethodBeat.o(168836);
-  }
-  
-  public final String getType()
-  {
-    return "ThreadScheduler";
-  }
-  
-  public final void w(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(168838);
-    h.JZN.aS(paramRunnable);
-    AppMethodBeat.o(168838);
+    super(Log.getStackTraceString(paramThrowable));
+    AppMethodBeat.i(158564);
+    AppMethodBeat.o(158564);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ac.g
  * JD-Core Version:    0.7.0.1
  */

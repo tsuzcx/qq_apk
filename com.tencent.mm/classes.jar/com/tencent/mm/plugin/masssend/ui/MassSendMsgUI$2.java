@@ -5,8 +5,8 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelcontrol.d;
 import com.tencent.mm.plugin.mmsight.model.e;
 import com.tencent.mm.plugin.mmsight.model.m;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.bxm;
+import com.tencent.mm.sdk.platformtools.aq;
 
 final class MassSendMsgUI$2
   implements Runnable
@@ -16,30 +16,30 @@ final class MassSendMsgUI$2
   public final void run()
   {
     AppMethodBeat.i(26448);
-    VideoTransPara localVideoTransPara = d.aDL().aDM();
-    bsz localbsz = new bsz();
-    localbsz.FhZ = true;
-    if (m.a(this.qVb, localVideoTransPara, localbsz, new e()
+    VideoTransPara localVideoTransPara = d.aGQ().aGR();
+    bxm localbxm = new bxm();
+    localbxm.GRA = true;
+    if (m.a(this.rFp, localVideoTransPara, localbxm, new e()
     {
-      public final boolean dbM()
+      public final boolean dlg()
       {
         return false;
       }
     })) {
-      m.b(this.qVb, localVideoTransPara, localbsz, new e()
+      m.b(this.rFp, localVideoTransPara, localbxm, new e()
       {
-        public final boolean dbM()
+        public final boolean dlg()
         {
           return false;
         }
       });
     }
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(26447);
-        MassSendMsgUI.a(MassSendMsgUI.2.this.uFe, MassSendMsgUI.2.this.qVb, MassSendMsgUI.2.this.kIx);
+        MassSendMsgUI.a(MassSendMsgUI.2.this.vIe, MassSendMsgUI.2.this.rFp, MassSendMsgUI.2.this.leQ);
         AppMethodBeat.o(26447);
       }
     });

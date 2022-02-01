@@ -3,10 +3,11 @@ package com.tencent.luggage.webview;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import com.tencent.luggage.bridge.s;
-import com.tencent.luggage.d.k;
+import com.tencent.luggage.d.p;
 import java.util.Map;
 
 public abstract interface a
@@ -17,6 +18,8 @@ public abstract interface a
   public abstract boolean canGoBack();
   
   public abstract void destroy();
+  
+  public abstract void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback);
   
   public abstract View getView();
   
@@ -30,7 +33,7 @@ public abstract interface a
   
   public abstract void setContext(Context paramContext);
   
-  public abstract void setWebCore(k paramk);
+  public abstract void setWebCore(p paramp);
   
   public abstract void stopLoading();
   
@@ -38,15 +41,15 @@ public abstract interface a
   {
     public abstract WebResourceResponse a(WebResourceRequest paramWebResourceRequest, Bundle paramBundle);
     
-    public abstract boolean bJ(String paramString);
+    public abstract boolean cC(String paramString);
     
-    public abstract void bK(String paramString);
+    public abstract void cD(String paramString);
     
-    public abstract void bL(String paramString);
+    public abstract void cE(String paramString);
     
-    public abstract WebResourceResponse bM(String paramString);
+    public abstract WebResourceResponse cF(String paramString);
     
-    public abstract String bN(String paramString);
+    public abstract String cG(String paramString);
   }
 }
 

@@ -9,9 +9,9 @@ import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ax;
 
 @SuppressLint({"NewApi"})
 public final class c
@@ -19,9 +19,9 @@ public final class c
 {
   static
   {
-    AppMethodBeat.i(195853);
+    AppMethodBeat.i(211088);
     b.a(new c(), new String[] { "//extmig" });
-    AppMethodBeat.o(195853);
+    AppMethodBeat.o(211088);
   }
   
   public static void init() {}
@@ -29,10 +29,10 @@ public final class c
   public final boolean a(final Context paramContext, String[] paramArrayOfString, String paramString)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(195852);
+    AppMethodBeat.i(211087);
     if ((paramArrayOfString == null) || (paramArrayOfString.length < 2))
     {
-      AppMethodBeat.o(195852);
+      AppMethodBeat.o(211087);
       return false;
     }
     paramString = paramArrayOfString[1];
@@ -45,7 +45,7 @@ public final class c
       switch (i)
       {
       default: 
-        AppMethodBeat.o(195852);
+        AppMethodBeat.o(211087);
         return false;
         if (paramString.equals("start"))
         {
@@ -80,64 +80,64 @@ public final class c
         }
       }
     }
-    paramArrayOfString = new ExtStorageMigrateConfig.a(ExtStorageMigrateConfig.Gns);
-    paramArrayOfString.Gnv = bool1;
-    ExtStorageMigrateRoutine.startMigration(paramContext, paramArrayOfString.eTB(), new ExtStorageMigrateTestCommand.1(this, paramContext));
-    AppMethodBeat.o(195852);
+    paramArrayOfString = new ExtStorageMigrateConfig.a(ExtStorageMigrateConfig.HZf);
+    paramArrayOfString.HZi = bool1;
+    ExtStorageMigrateRoutine.startMigration(paramContext, paramArrayOfString.fje(), new ExtStorageMigrateTestCommand.1(this, paramContext));
+    AppMethodBeat.o(211087);
     return true;
     new CancellationSignal();
-    h.JZN.aV(new Runnable()
+    h.LTJ.aU(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(195851);
+        AppMethodBeat.i(211086);
         try
         {
-          com.tencent.mm.vfs.a.ghk().ax(0L, 0L);
-          ap.f(new Runnable()
+          com.tencent.mm.vfs.a.gzU().aC(0L, 0L);
+          aq.f(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(195849);
+              AppMethodBeat.i(211084);
               Toast.makeText(c.1.this.val$context, "Done.", 1).show();
-              AppMethodBeat.o(195849);
+              AppMethodBeat.o(211084);
             }
           });
-          AppMethodBeat.o(195851);
+          AppMethodBeat.o(211086);
           return;
         }
         catch (Throwable localThrowable)
         {
-          ac.printErrStackTrace("MicroMsg.ExtStorageMigrateTestCommand", localThrowable, "[-] Error happened.", new Object[0]);
-          ap.f(new Runnable()
+          ad.printErrStackTrace("MicroMsg.ExtStorageMigrateTestCommand", localThrowable, "[-] Error happened.", new Object[0]);
+          aq.f(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(195850);
+              AppMethodBeat.i(211085);
               Toast.makeText(c.1.this.val$context, "Error happened.", 1).show();
-              AppMethodBeat.o(195850);
+              AppMethodBeat.o(211085);
             }
           });
-          AppMethodBeat.o(195851);
+          AppMethodBeat.o(211086);
         }
       }
     });
-    AppMethodBeat.o(195852);
+    AppMethodBeat.o(211087);
     return true;
-    aw.aKT("extmig_switch_storage").encode("is_routine_enabled", true);
+    ax.aQz("extmig_switch_storage").encode("is_routine_enabled", true);
     Toast.makeText(paramContext, "Switch on done.", 1).show();
-    AppMethodBeat.o(195852);
+    AppMethodBeat.o(211087);
     return true;
-    aw.aKT("extmig_status_memo_storage").clear().commit();
-    aw.aKT("extmig_switch_storage").clear().commit();
+    ax.aQz("extmig_status_memo_storage").clear().commit();
+    ax.aQz("extmig_switch_storage").clear().commit();
     Toast.makeText(paramContext, "Reset done.", 1).show();
-    AppMethodBeat.o(195852);
+    AppMethodBeat.o(211087);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
 import d.l.b.a.b.b.a.g.a;
 import d.l.b.a.b.j.f.h;
@@ -12,68 +12,90 @@ import java.util.List;
 public class t
   extends aj
 {
-  private final boolean LFm;
-  private final at LKP;
-  private final List<av> LdU;
-  private final h LhO;
+  private final List<av> MUP;
+  private final h MYK;
+  private final at NBJ;
+  private final String NBK;
+  private final boolean Nwk;
   
-  public t(at paramat, h paramh, byte paramByte)
+  public t(at paramat, h paramh)
   {
-    this(paramat, paramh);
+    this(paramat, paramh, null, false, null, 28);
+    AppMethodBeat.i(60665);
+    AppMethodBeat.o(60665);
   }
   
-  public t(at paramat, h paramh, List<? extends av> paramList, boolean paramBoolean)
+  public t(at paramat, h paramh, List<? extends av> paramList)
   {
-    AppMethodBeat.i(60664);
-    this.LKP = paramat;
-    this.LhO = paramh;
-    this.LdU = paramList;
-    this.LFm = paramBoolean;
-    AppMethodBeat.o(60664);
+    this(paramat, paramh, paramList, false, null, 16);
+  }
+  
+  private t(at paramat, h paramh, List<? extends av> paramList, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(187792);
+    this.NBJ = paramat;
+    this.MYK = paramh;
+    this.MUP = paramList;
+    this.Nwk = paramBoolean;
+    this.NBK = paramString;
+    AppMethodBeat.o(187792);
+  }
+  
+  public aj Ac(boolean paramBoolean)
+  {
+    AppMethodBeat.i(60659);
+    aj localaj = (aj)new t(this.NBJ, this.MYK, this.MUP, paramBoolean, null, 16);
+    AppMethodBeat.o(60659);
+    return localaj;
   }
   
   public final aj d(g paramg)
   {
     AppMethodBeat.i(60657);
-    k.h(paramg, "newAnnotations");
+    p.h(paramg, "newAnnotations");
     paramg = (aj)this;
     AppMethodBeat.o(60657);
     return paramg;
   }
   
-  public final h fQN()
-  {
-    return this.LhO;
-  }
-  
-  public final g fQj()
+  public final g ghH()
   {
     AppMethodBeat.i(60655);
-    Object localObject = g.LeU;
-    localObject = g.a.fSm();
+    Object localObject = g.MVP;
+    localObject = g.a.gjL();
     AppMethodBeat.o(60655);
     return localObject;
   }
   
-  public final boolean fUx()
+  public final h gil()
   {
-    return this.LFm;
+    return this.MYK;
   }
   
-  public final List<av> gbw()
+  public final boolean glW()
   {
-    return this.LdU;
+    return this.Nwk;
   }
   
-  public final at gbz()
+  public final List<av> gsW()
   {
-    return this.LKP;
+    return this.MUP;
+  }
+  
+  public final at gsZ()
+  {
+    return this.NBJ;
+  }
+  
+  public String gtU()
+  {
+    return this.NBK;
   }
   
   public t j(i parami)
   {
     AppMethodBeat.i(60661);
-    k.h(parami, "kotlinTypeRefiner");
+    p.h(parami, "kotlinTypeRefiner");
     AppMethodBeat.o(60661);
     return this;
   }
@@ -81,27 +103,19 @@ public class t
   public String toString()
   {
     AppMethodBeat.i(60656);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.LKP.toString());
-    if (this.LdU.isEmpty()) {}
-    for (String str = "";; str = j.a((Iterable)this.LdU, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
+    StringBuilder localStringBuilder = new StringBuilder().append(this.NBJ.toString());
+    if (this.MUP.isEmpty()) {}
+    for (String str = "";; str = j.a((Iterable)this.MUP, (CharSequence)", ", (CharSequence)"<", (CharSequence)">", -1, (CharSequence)"...", null))
     {
       str = str;
       AppMethodBeat.o(60656);
       return str;
     }
   }
-  
-  public aj zo(boolean paramBoolean)
-  {
-    AppMethodBeat.i(60659);
-    aj localaj = (aj)new t(this.LKP, this.LhO, this.LdU, paramBoolean);
-    AppMethodBeat.o(60659);
-    return localaj;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.t
  * JD-Core Version:    0.7.0.1
  */

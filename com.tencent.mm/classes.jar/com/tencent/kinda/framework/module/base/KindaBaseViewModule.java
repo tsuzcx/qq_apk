@@ -18,6 +18,7 @@ import com.tencent.kinda.framework.widget.base.KindaQRCodeViewImpl;
 import com.tencent.kinda.framework.widget.base.KindaRegionEditViewImpl;
 import com.tencent.kinda.framework.widget.base.KindaSecureEditTextImpl;
 import com.tencent.kinda.framework.widget.base.KindaSwitchViewImpl;
+import com.tencent.kinda.framework.widget.base.KindaTableViewImpl;
 import com.tencent.kinda.framework.widget.base.KindaValidDatePickerView;
 import com.tencent.kinda.framework.widget.base.MMInputTipAlert;
 import com.tencent.kinda.framework.widget.base.MMKAvatarImageView;
@@ -31,6 +32,7 @@ import com.tencent.kinda.framework.widget.base.MMKListView;
 import com.tencent.kinda.framework.widget.base.MMKLoadingImage;
 import com.tencent.kinda.framework.widget.base.MMKOnePxLineView;
 import com.tencent.kinda.framework.widget.base.MMKOptionsPicker;
+import com.tencent.kinda.framework.widget.base.MMKPickerView;
 import com.tencent.kinda.framework.widget.base.MMKProgressDialogImpl;
 import com.tencent.kinda.framework.widget.base.MMKRichLabelView;
 import com.tencent.kinda.framework.widget.base.MMKRichText;
@@ -39,6 +41,7 @@ import com.tencent.kinda.framework.widget.base.MMKScrollView;
 import com.tencent.kinda.framework.widget.base.MMKView;
 import com.tencent.kinda.framework.widget.base.MMKViewLayout;
 import com.tencent.kinda.framework.widget.base.MMMoneyInputText;
+import com.tencent.kinda.framework.widget.base.MMToastDialog;
 import com.tencent.kinda.modularize.KindaModule;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -87,6 +90,9 @@ public class KindaBaseViewModule
     registerView("KQRCodeView", KindaQRCodeViewImpl.class);
     registerView("KBarCodeView", KindaBarCodeViewImpl.class);
     registerView("kBankCardTypePickerView", KindaBankCardTypePickerViewImpl.class);
+    registerView("kTableView", KindaTableViewImpl.class);
+    registerView("kPickerView", MMKPickerView.class);
+    registerView("kToastDialog", MMToastDialog.class);
     AppMethodBeat.o(18619);
   }
   

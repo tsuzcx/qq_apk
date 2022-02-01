@@ -8,22 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bz;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.cf;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.ArrayList;
 
 public class LabelPreference
   extends Preference
 {
-  private TextView Doz;
-  public ai piT;
-  private View uCg;
-  private TextView vJT;
-  public bz wbZ;
+  private TextView ETF;
+  public am pMt;
+  private View vET;
+  private TextView wRc;
+  public cf xjI;
   
   public LabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,43 +39,43 @@ public class LabelPreference
   {
     AppMethodBeat.i(31857);
     super.onBindView(paramView);
-    if (this.piT == null)
+    if (this.pMt == null)
     {
       paramView.setVisibility(8);
       AppMethodBeat.o(31857);
       return;
     }
     paramView.setVisibility(0);
-    if (this.vJT == null) {
-      this.vJT = ((TextView)paramView.findViewById(2131298619));
+    if (this.wRc == null) {
+      this.wRc = ((TextView)paramView.findViewById(2131298619));
     }
-    if (this.Doz == null) {
-      this.Doz = ((TextView)paramView.findViewById(2131298620));
+    if (this.ETF == null) {
+      this.ETF = ((TextView)paramView.findViewById(2131298620));
     }
-    if (this.Doz != null)
+    if (this.ETF != null)
     {
-      paramView = this.Doz.getLayoutParams();
-      paramView.width = com.tencent.mm.cc.a.au(this.mContext, 2131165370);
-      this.Doz.setLayoutParams(paramView);
+      paramView = this.ETF.getLayoutParams();
+      paramView.width = com.tencent.mm.cc.a.ax(this.mContext, 2131165370);
+      this.ETF.setLayoutParams(paramView);
     }
-    this.vJT.setVisibility(0);
+    this.wRc.setVisibility(0);
     ArrayList localArrayList;
-    if (com.tencent.mm.n.b.ln(this.piT.field_type))
+    if (com.tencent.mm.o.b.lM(this.pMt.field_type))
     {
-      paramView = this.piT.field_contactLabelIds;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cWd().ajC(paramView);
-      if ((!bs.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
-        this.vJT.setText(k.c(this.mContext, bs.n(localArrayList, this.mContext.getResources().getString(2131757526))));
+      paramView = this.pMt.field_contactLabelIds;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.dfo().aoo(paramView);
+      if ((!bt.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
+        this.wRc.setText(k.c(this.mContext, bt.m(localArrayList, this.mContext.getResources().getString(2131757526))));
       }
       AppMethodBeat.o(31857);
       return;
     }
-    if (this.wbZ != null)
+    if (this.xjI != null)
     {
-      paramView = this.wbZ.field_contactLabels;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cWd().ajB(paramView);
-      if ((!bs.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
-        this.vJT.setText(k.c(this.mContext, bs.n(localArrayList, this.mContext.getResources().getString(2131757526))));
+      paramView = this.xjI.field_contactLabels;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.dfo().aon(paramView);
+      if ((!bt.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
+        this.wRc.setText(k.c(this.mContext, bt.m(localArrayList, this.mContext.getResources().getString(2131757526))));
       }
     }
     AppMethodBeat.o(31857);
@@ -84,15 +84,15 @@ public class LabelPreference
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31856);
-    if (this.uCg == null)
+    if (this.vET == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
       LayoutInflater.from(this.mContext).inflate(2131495138, localViewGroup);
-      this.uCg = paramViewGroup;
+      this.vET = paramViewGroup;
     }
-    paramViewGroup = this.uCg;
+    paramViewGroup = this.vET;
     AppMethodBeat.o(31856);
     return paramViewGroup;
   }

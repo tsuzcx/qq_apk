@@ -2,33 +2,35 @@ package com.tencent.mm.chatroom.plugin;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ai.k.b;
 import com.tencent.mm.chatroom.c.c.a;
 import com.tencent.mm.chatroom.d.aa;
 import com.tencent.mm.chatroom.storage.GroupToolItem;
 import com.tencent.mm.chatroom.storage.d;
-import com.tencent.mm.g.a.il;
-import com.tencent.mm.g.a.mt;
-import com.tencent.mm.g.a.mv;
-import com.tencent.mm.g.a.rn;
-import com.tencent.mm.g.a.ro;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.g.a.it;
+import com.tencent.mm.g.a.nb;
+import com.tencent.mm.g.a.nd;
+import com.tencent.mm.g.a.rz;
+import com.tencent.mm.g.a.sa;
+import com.tencent.mm.g.c.ba;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cd;
+import com.tencent.mm.model.q;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.r;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,19 +41,20 @@ public class PluginChatroomUI
   implements a, com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.c
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private com.tencent.mm.chatroom.e.c fsZ;
-  private com.tencent.mm.chatroom.e.b fta;
-  private com.tencent.mm.sdk.b.c<mt> ftb;
-  private com.tencent.mm.sdk.b.c ftc;
-  private com.tencent.mm.sdk.b.c ftd;
-  private com.tencent.mm.sdk.b.c fte;
-  private com.tencent.mm.sdk.b.c ftf;
-  private h.a ftg;
-  private com.tencent.mm.chatroom.storage.b fth;
-  private c.a fti;
-  private d ftj;
-  private com.tencent.mm.chatroom.c.b ftk;
-  private com.tencent.mm.plugin.messenger.foundation.a.f iOx;
+  private com.tencent.mm.chatroom.e.b fLA;
+  private com.tencent.mm.sdk.b.c<nb> fLB;
+  private com.tencent.mm.sdk.b.c fLC;
+  private com.tencent.mm.sdk.b.c fLD;
+  private com.tencent.mm.sdk.b.c fLE;
+  private com.tencent.mm.sdk.b.c fLF;
+  private i.a fLG;
+  private com.tencent.mm.plugin.messenger.foundation.a.g fLH;
+  private d fLI;
+  private c.a fLJ;
+  private com.tencent.mm.chatroom.storage.f fLK;
+  private com.tencent.mm.chatroom.c.b fLL;
+  private com.tencent.mm.chatroom.storage.b fLM;
+  private com.tencent.mm.chatroom.e.c fLz;
   
   static
   {
@@ -62,82 +65,100 @@ public class PluginChatroomUI
     {
       public final String[] getSQLs()
       {
-        return com.tencent.mm.chatroom.storage.b.SQL_CREATE;
+        return d.SQL_CREATE;
       }
     });
     baseDBFactories.put(Integer.valueOf("GROUPTOOLS_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return d.SQL_CREATE;
+        return com.tencent.mm.chatroom.storage.f.SQL_CREATE;
       }
     });
+    baseDBFactories.put(Integer.valueOf("GROUPBNINDAPP_TABLE".hashCode()), new PluginChatroomUI.4());
     AppMethodBeat.o(182131);
   }
   
   public PluginChatroomUI()
   {
     AppMethodBeat.i(182125);
-    this.fsZ = new com.tencent.mm.chatroom.e.c();
-    this.fta = new com.tencent.mm.chatroom.e.b();
-    this.ftb = new com.tencent.mm.sdk.b.c() {};
-    this.ftc = new com.tencent.mm.sdk.b.c() {};
-    this.ftd = new com.tencent.mm.sdk.b.c() {};
-    this.fte = new com.tencent.mm.sdk.b.c() {};
-    this.ftf = new com.tencent.mm.sdk.b.c() {};
-    this.ftg = new h.a()
+    this.fLz = new com.tencent.mm.chatroom.e.c();
+    this.fLA = new com.tencent.mm.chatroom.e.b();
+    this.fLB = new com.tencent.mm.sdk.b.c() {};
+    this.fLC = new com.tencent.mm.sdk.b.c() {};
+    this.fLD = new com.tencent.mm.sdk.b.c() {};
+    this.fLE = new com.tencent.mm.sdk.b.c() {};
+    this.fLF = new com.tencent.mm.sdk.b.c() {};
+    this.fLG = new i.a()
     {
-      public final void a(h paramAnonymoush, h.c paramAnonymousc)
+      public final void a(i paramAnonymousi, i.c paramAnonymousc)
       {
-        AppMethodBeat.i(185970);
-        if ((paramAnonymoush == null) || (paramAnonymousc == null))
+        AppMethodBeat.i(213420);
+        if ((paramAnonymousi == null) || (paramAnonymousc == null))
         {
-          AppMethodBeat.o(185970);
+          AppMethodBeat.o(213420);
           return;
         }
-        if (("delete".equals(paramAnonymousc.uHb)) && (paramAnonymousc.gtT != null))
+        if (("delete".equals(paramAnonymousc.vKe)) && (paramAnonymousc.gNE != null))
         {
-          paramAnonymoush = paramAnonymousc.gtT.iterator();
+          paramAnonymousi = paramAnonymousc.gNE.iterator();
           do
           {
-            if (!paramAnonymoush.hasNext()) {
+            if (!paramAnonymousi.hasNext()) {
               break;
             }
-          } while (!aa.i((bo)paramAnonymoush.next()));
+          } while (!aa.i((bu)paramAnonymousi.next()));
         }
         for (int i = 1;; i = 0)
         {
           if (i != 0)
           {
-            paramAnonymoush = ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().sb(paramAnonymousc.talker);
-            if ((paramAnonymoush == null) || (paramAnonymoush.field_queryState == 0)) {
+            paramAnonymousi = ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().uR(paramAnonymousc.talker);
+            if ((paramAnonymousi == null) || (paramAnonymousi.field_queryState == 0)) {
               break label201;
             }
-            paramAnonymoush.field_queryState = 0;
+            paramAnonymousi.field_queryState = 0;
           }
           label201:
-          for (boolean bool = ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramAnonymoush, new String[0]);; bool = false)
+          for (boolean bool = ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramAnonymousi, new String[0]);; bool = false)
           {
-            paramAnonymousc = bs.bG(paramAnonymousc.talker, "");
-            if (paramAnonymoush == null) {}
-            for (paramAnonymoush = "null";; paramAnonymoush = "not_null")
+            paramAnonymousc = bt.bI(paramAnonymousc.talker, "");
+            if (paramAnonymousi == null) {}
+            for (paramAnonymousi = "null";; paramAnonymousi = "not_null")
             {
-              ac.i("MicroMsg.roomtools.PluginChatroomUI", "onNotifyChange roomName:%s groupTools:%s result:%s", new Object[] { paramAnonymousc, paramAnonymoush, Boolean.valueOf(bool) });
-              AppMethodBeat.o(185970);
+              ad.i("MicroMsg.roomtools.PluginChatroomUI", "onNotifyChange roomName:%s groupTools:%s result:%s", new Object[] { paramAnonymousc, paramAnonymousi, Boolean.valueOf(bool) });
+              AppMethodBeat.o(213420);
               return;
             }
-            ac.d("MicroMsg.roomtools.PluginChatroomUI", "no need reset");
-            AppMethodBeat.o(185970);
+            ad.d("MicroMsg.roomtools.PluginChatroomUI", "no need reset");
+            AppMethodBeat.o(213420);
             return;
           }
         }
       }
     };
-    this.iOx = new PluginChatroomUI.9(this);
-    this.fth = null;
-    this.fti = null;
-    this.ftj = null;
-    this.ftk = null;
+    this.fLH = new com.tencent.mm.plugin.messenger.foundation.a.g()
+    {
+      public final void a(bu paramAnonymousbu, i.c paramAnonymousc, boolean[] paramAnonymousArrayOfBoolean) {}
+      
+      public final void a(bu paramAnonymousbu, at paramAnonymousat, boolean paramAnonymousBoolean, i.c paramAnonymousc)
+      {
+        AppMethodBeat.i(213417);
+        if (paramAnonymousBoolean)
+        {
+          ad.i("MicroMsg.PluginChatroomUI", "new conversation %s", new Object[] { paramAnonymousat.field_username });
+          q.yY(paramAnonymousat.field_username);
+        }
+        AppMethodBeat.o(213417);
+      }
+      
+      public final void b(bu paramAnonymousbu, at paramAnonymousat, boolean paramAnonymousBoolean, i.c paramAnonymousc) {}
+    };
+    this.fLI = null;
+    this.fLJ = null;
+    this.fLK = null;
+    this.fLL = null;
+    this.fLM = null;
     AppMethodBeat.o(182125);
   }
   
@@ -149,61 +170,78 @@ public class PluginChatroomUI
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(12506);
-    ac.i("MicroMsg.PluginChatroomUI", "[execute]");
-    pin(b.VS());
-    if (paramg.ahL())
+    ad.i("MicroMsg.PluginChatroomUI", "[execute]");
+    pin(b.Yj());
+    if (paramg.akw())
     {
-      com.tencent.mm.kernel.g.b(r.class, new com.tencent.mm.chatroom.b.a());
       com.tencent.mm.kernel.g.b(s.class, new com.tencent.mm.chatroom.b.b());
+      com.tencent.mm.kernel.g.b(t.class, new com.tencent.mm.chatroom.b.c());
+    }
+    if ((paramg.akw()) || (paramg.xf(":tools")) || (paramg.xf(":toolsmp")) || (paramg.xg(":appbrand"))) {
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.messenger.foundation.a.c.class, new com.tencent.mm.chatroom.b.a());
     }
     AppMethodBeat.o(12506);
   }
   
-  public com.tencent.mm.chatroom.storage.b getGroupTodoStorage()
+  public com.tencent.mm.chatroom.storage.b getGroupBindAppStorage()
   {
-    AppMethodBeat.i(182128);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (this.fth == null)
+    AppMethodBeat.i(213422);
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (this.fLM == null)
     {
-      com.tencent.mm.kernel.g.agS();
-      this.fth = new com.tencent.mm.chatroom.storage.b(com.tencent.mm.kernel.g.agR().ghG);
+      com.tencent.mm.kernel.g.ajD();
+      this.fLM = new com.tencent.mm.chatroom.storage.b(com.tencent.mm.kernel.g.ajC().gBq);
     }
-    com.tencent.mm.chatroom.storage.b localb = this.fth;
-    AppMethodBeat.o(182128);
+    com.tencent.mm.chatroom.storage.b localb = this.fLM;
+    AppMethodBeat.o(213422);
     return localb;
   }
   
-  public d getGroupToolsStorage()
+  public d getGroupTodoStorage()
+  {
+    AppMethodBeat.i(182128);
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (this.fLI == null)
+    {
+      com.tencent.mm.kernel.g.ajD();
+      this.fLI = new d(com.tencent.mm.kernel.g.ajC().gBq);
+    }
+    d locald = this.fLI;
+    AppMethodBeat.o(182128);
+    return locald;
+  }
+  
+  public com.tencent.mm.chatroom.storage.f getGroupToolsStorage()
   {
     AppMethodBeat.i(182130);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (this.ftj == null)
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (this.fLK == null)
     {
-      com.tencent.mm.kernel.g.agS();
-      this.ftj = new d(com.tencent.mm.kernel.g.agR().ghG);
+      com.tencent.mm.kernel.g.ajD();
+      this.fLK = new com.tencent.mm.chatroom.storage.f(com.tencent.mm.kernel.g.ajC().gBq);
     }
-    d locald = this.ftj;
+    com.tencent.mm.chatroom.storage.f localf = this.fLK;
     AppMethodBeat.o(182130);
-    return locald;
+    return localf;
   }
   
   public com.tencent.mm.chatroom.c.b getOpenImMigrateService()
   {
-    AppMethodBeat.i(197045);
-    com.tencent.mm.kernel.g.agP().afT();
-    com.tencent.mm.chatroom.c.b localb = this.ftk;
-    AppMethodBeat.o(197045);
+    AppMethodBeat.i(213421);
+    com.tencent.mm.kernel.g.ajA().aiF();
+    com.tencent.mm.chatroom.c.b localb = this.fLL;
+    AppMethodBeat.o(213421);
     return localb;
   }
   
   public c.a getRoomTodoMsgService()
   {
     AppMethodBeat.i(182129);
-    com.tencent.mm.kernel.g.agP().afT();
-    if (this.fti == null) {
-      this.fti = new c.a();
+    com.tencent.mm.kernel.g.ajA().aiF();
+    if (this.fLJ == null) {
+      this.fLJ = new c.a();
     }
-    c.a locala = this.fti;
+    c.a locala = this.fLJ;
     AppMethodBeat.o(182129);
     return locala;
   }
@@ -211,93 +249,93 @@ public class PluginChatroomUI
   public void handleChatroomBackup(String paramString)
   {
     AppMethodBeat.i(185972);
-    if ((aa.VQ()) && (w.wp(paramString)))
+    if ((aa.Yh()) && (w.zk(paramString)))
     {
-      ac.i("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup talker:%s", new Object[] { paramString });
-      paramString = aa.rZ(paramString);
+      ad.i("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup talker:%s", new Object[] { paramString });
+      paramString = aa.uN(paramString);
       if (paramString == null)
       {
-        ac.d("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup groupTools is null");
+        ad.d("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup groupTools is null");
         AppMethodBeat.o(185972);
         return;
       }
       if (paramString.field_queryState == 0)
       {
-        ac.d("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup groupTools is COL_STATE_NEED_QUERY");
+        ad.d("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup groupTools is COL_STATE_NEED_QUERY");
         AppMethodBeat.o(185972);
         return;
       }
       paramString.field_queryState = 0;
-      ac.i("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup result:%s", new Object[] { Boolean.valueOf(((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramString, new String[0])) });
+      ad.i("MicroMsg.roomtools.PluginChatroomUI", "handleChatroomBackup result:%s", new Object[] { Boolean.valueOf(((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(paramString, new String[0])) });
     }
     AppMethodBeat.o(185972);
   }
   
-  public void handleGroupTodoByReceiverAppMsg(bo parambo)
+  public void handleGroupTodoByReceiverAppMsg(bu parambu)
   {
     AppMethodBeat.i(184788);
-    if (w.wp(parambo.field_talker))
+    if (w.zk(parambu.field_talker))
     {
-      Object localObject = k.b.vA(parambo.field_content);
+      Object localObject = k.b.yr(parambu.field_content);
       if (localObject == null)
       {
-        ac.d("MicroMsg.roomTodo.PluginChatroomUI", "content is null");
+        ad.d("MicroMsg.roomTodo.PluginChatroomUI", "content is null");
         AppMethodBeat.o(184788);
         return;
       }
-      localObject = (com.tencent.mm.ah.a)((k.b)localObject).ao(com.tencent.mm.ah.a.class);
-      if (bs.isNullOrNil(((com.tencent.mm.ah.a)localObject).hga)) {}
-      for (localObject = "related_msgid_" + parambo.field_msgSvrId; ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupTodoStorage().af(parambo.field_talker, (String)localObject) == null; localObject = ((com.tencent.mm.ah.a)localObject).hga)
+      localObject = (com.tencent.mm.ai.a)((k.b)localObject).ao(com.tencent.mm.ai.a.class);
+      if (bt.isNullOrNil(((com.tencent.mm.ai.a)localObject).hyi)) {}
+      for (localObject = "related_msgid_" + parambu.field_msgSvrId; ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupTodoStorage().ag(parambu.field_talker, (String)localObject) == null; localObject = ((com.tencent.mm.ai.a)localObject).hyi)
       {
-        ac.d("MicroMsg.roomTodo.PluginChatroomUI", "groupTodo is null");
+        ad.d("MicroMsg.roomTodo.PluginChatroomUI", "groupTodo is null");
         AppMethodBeat.o(184788);
         return;
       }
-      bo localbo = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().vP(parambo.field_msgId);
-      localbo.rn((String)localObject);
-      ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().a(localbo.field_msgId, localbo);
-      ac.d("MicroMsg.roomTodo.PluginChatroomUI", "update msgSvrid:%s msgId:%s", new Object[] { Long.valueOf(parambo.field_msgSvrId), Long.valueOf(localbo.field_msgId) });
+      bu localbu = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(parambu.field_msgId);
+      localbu.tZ((String)localObject);
+      ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().a(localbu.field_msgId, localbu);
+      ad.d("MicroMsg.roomTodo.PluginChatroomUI", "update msgSvrid:%s msgId:%s", new Object[] { Long.valueOf(parambu.field_msgSvrId), Long.valueOf(localbu.field_msgId) });
     }
     AppMethodBeat.o(184788);
   }
   
-  public void handleGroupToolByReceiverAppMsg(bo parambo)
+  public void handleGroupToolByReceiverAppMsg(bu parambu)
   {
     AppMethodBeat.i(185971);
-    if ((aa.VQ()) && (w.wp(parambo.field_talker)))
+    if ((aa.Yh()) && (w.zk(parambu.field_talker)))
     {
-      k.b localb = k.b.vA(parambo.field_content);
+      k.b localb = k.b.yr(parambu.field_content);
       if (localb == null)
       {
-        ac.d("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg(room:%s) content is null", new Object[] { parambo.field_talker });
+        ad.d("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg(room:%s) content is null", new Object[] { parambu.field_talker });
         AppMethodBeat.o(185971);
         return;
       }
-      com.tencent.mm.chatroom.storage.c localc = aa.rZ(parambo.field_talker);
-      if (localc == null)
+      com.tencent.mm.chatroom.storage.e locale = aa.uN(parambu.field_talker);
+      if (locale == null)
       {
-        ac.d("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg(room:%s) groupTools is null", new Object[] { parambo.field_talker });
+        ad.d("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg(room:%s) groupTools is null", new Object[] { parambu.field_talker });
         AppMethodBeat.o(185971);
         return;
       }
-      if (localc.field_queryState == 0)
+      if (locale.field_queryState == 0)
       {
-        ac.d("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg(room:%s) groupTools is COL_STATE_NEED_QUERY", new Object[] { parambo.field_talker });
+        ad.d("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg(room:%s) groupTools is COL_STATE_NEED_QUERY", new Object[] { parambu.field_talker });
         AppMethodBeat.o(185971);
         return;
       }
       GroupToolItem localGroupToolItem = null;
       if ((com.tencent.mm.modelappbrand.a.b(localb)) || (com.tencent.mm.modelappbrand.a.c(localb))) {
-        localGroupToolItem = aa.g(parambo);
+        localGroupToolItem = aa.g(parambu);
       }
-      if (aa.h(parambo)) {
-        localGroupToolItem = new GroupToolItem("roomaa@app.origin", "", parambo.field_createTime);
+      if (aa.h(parambu)) {
+        localGroupToolItem = new GroupToolItem("roomaa@app.origin", "", parambu.field_createTime);
       }
       if (localGroupToolItem != null)
       {
-        localc.b(localGroupToolItem);
-        boolean bool = ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(localc, new String[0]);
-        ac.i("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg room:%s result:%s", new Object[] { parambo.field_talker, Boolean.valueOf(bool) });
+        locale.a(localGroupToolItem);
+        boolean bool = ((PluginChatroomUI)com.tencent.mm.kernel.g.ad(PluginChatroomUI.class)).getGroupToolsStorage().a(locale, new String[0]);
+        ad.i("MicroMsg.roomtools.PluginChatroomUI", "handleGroupToolByReceiverAppMsg room:%s result:%s", new Object[] { parambu.field_talker, Boolean.valueOf(bool) });
       }
     }
     AppMethodBeat.o(185971);
@@ -311,35 +349,35 @@ public class PluginChatroomUI
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(182126);
-    ac.d("MicroMsg.PluginChatroomUI", "onAccountInitialized");
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().a(this.ftg, Looper.getMainLooper());
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("roomtoolstips", this.fsZ);
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().a("IMUnionRoom2AssociateRoom", this.fta);
-    this.ftb.alive();
-    this.ftc.alive();
-    this.ftd.alive();
-    this.fte.alive();
-    this.ftf.alive();
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().a(getGroupToolsStorage());
-    this.ftk = new com.tencent.mm.chatroom.c.b();
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).awG().a(this.iOx);
+    ad.d("MicroMsg.PluginChatroomUI", "onAccountInitialized");
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().a(this.fLG, Looper.getMainLooper());
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("roomtoolstips", this.fLz);
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().a("IMUnionRoom2AssociateRoom", this.fLA);
+    this.fLB.alive();
+    this.fLC.alive();
+    this.fLD.alive();
+    this.fLE.alive();
+    this.fLF.alive();
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().a(getGroupToolsStorage());
+    this.fLL = new com.tencent.mm.chatroom.c.b();
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().a(this.fLH);
     AppMethodBeat.o(182126);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(182127);
-    ac.d("MicroMsg.PluginChatroomUI", "onAccountRelease");
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().a(this.ftg);
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("roomtoolstips", this.fsZ);
-    ((q)com.tencent.mm.kernel.g.ad(q.class)).getSysCmdMsgExtension().b("IMUnionRoom2AssociateRoom", this.fta);
-    this.ftb.dead();
-    this.ftc.dead();
-    this.ftd.dead();
-    this.fte.dead();
-    this.ftf.dead();
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().b(getGroupToolsStorage());
-    ((k)com.tencent.mm.kernel.g.ab(k.class)).awG().b(this.iOx);
+    ad.d("MicroMsg.PluginChatroomUI", "onAccountRelease");
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().a(this.fLG);
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("roomtoolstips", this.fLz);
+    ((r)com.tencent.mm.kernel.g.ad(r.class)).getSysCmdMsgExtension().b("IMUnionRoom2AssociateRoom", this.fLA);
+    this.fLB.dead();
+    this.fLC.dead();
+    this.fLD.dead();
+    this.fLE.dead();
+    this.fLF.dead();
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().b(getGroupToolsStorage());
+    ((l)com.tencent.mm.kernel.g.ab(l.class)).azv().b(this.fLH);
     AppMethodBeat.o(182127);
   }
 }

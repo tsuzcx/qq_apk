@@ -120,8 +120,11 @@ public class SkiaCanvasExternalTextureManager
   {
     AppMethodBeat.i(174310);
     SkiaCanvasExternalTexturePlugin localSkiaCanvasExternalTexturePlugin = findPlugin(paramString1);
-    if (localSkiaCanvasExternalTexturePlugin != null) {
-      localSkiaCanvasExternalTexturePlugin.updateImage(paramISkiaCanvasExternalTextureHandler, paramInt1, paramString1, paramInt2, paramString2);
+    if (localSkiaCanvasExternalTexturePlugin != null)
+    {
+      paramISkiaCanvasExternalTextureHandler = localSkiaCanvasExternalTexturePlugin.updateImage(paramISkiaCanvasExternalTextureHandler, paramInt1, paramString1, paramInt2, paramString2);
+      AppMethodBeat.o(174310);
+      return paramISkiaCanvasExternalTextureHandler;
     }
     AppMethodBeat.o(174310);
     return new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };

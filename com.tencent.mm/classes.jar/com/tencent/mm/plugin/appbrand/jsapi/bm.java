@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.page.aa;
 
 public final class bm
-  extends a<q>
+  extends a<aa>
 {
-  public static final int CTRL_INDEX = 201;
-  public static final String NAME = "openUrl";
+  public static final int CTRL_INDEX = 0;
+  public static final String NAME = "openLink";
 }
 
 

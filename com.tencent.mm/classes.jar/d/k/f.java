@@ -5,32 +5,32 @@ import d.a.ac;
 import d.l;
 import java.util.NoSuchElementException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/ranges/LongProgressionIterator;", "Lkotlin/collections/LongIterator;", "first", "", "last", "step", "(JJJ)V", "finalElement", "hasNext", "", "next", "getStep", "()J", "nextLong", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/ranges/LongProgressionIterator;", "Lkotlin/collections/LongIterator;", "first", "", "last", "step", "(JJJ)V", "finalElement", "hasNext", "", "next", "getStep", "()J", "nextLong", "kotlin-stdlib"})
 public final class f
   extends ac
 {
-  private boolean KVf;
-  private final long KVl;
-  private long KVm;
-  private final long woo;
+  private boolean MMl;
+  private final long MMr;
+  private long MMs;
+  private final long xwe;
   
   public f(long paramLong1, long paramLong2, long paramLong3)
   {
     AppMethodBeat.i(129314);
-    this.woo = paramLong3;
-    this.KVl = paramLong2;
-    if (this.woo > 0L) {
+    this.xwe = paramLong3;
+    this.MMr = paramLong2;
+    if (this.xwe > 0L) {
       if (paramLong1 <= paramLong2)
       {
-        this.KVf = bool;
-        if (!this.KVf) {
+        this.MMl = bool;
+        if (!this.MMl) {
           break label80;
         }
       }
     }
     for (;;)
     {
-      this.KVm = paramLong1;
+      this.MMs = paramLong1;
       AppMethodBeat.o(129314);
       return;
       bool = false;
@@ -41,34 +41,34 @@ public final class f
       bool = false;
       break;
       label80:
-      paramLong1 = this.KVl;
+      paramLong1 = this.MMr;
     }
   }
   
   public final boolean hasNext()
   {
-    return this.KVf;
+    return this.MMl;
   }
   
   public final long nextLong()
   {
     AppMethodBeat.i(129313);
-    long l = this.KVm;
-    if (l == this.KVl)
+    long l = this.MMs;
+    if (l == this.MMr)
     {
-      if (!this.KVf)
+      if (!this.MMl)
       {
         Throwable localThrowable = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129313);
         throw localThrowable;
       }
-      this.KVf = false;
+      this.MMl = false;
     }
     for (;;)
     {
       AppMethodBeat.o(129313);
       return l;
-      this.KVm += this.woo;
+      this.MMs += this.xwe;
     }
   }
 }

@@ -10,23 +10,23 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.q;
 import java.lang.reflect.Method;
 
 public final class a
 {
-  public static final boolean mCh;
+  public static final boolean ncH;
   public final Activity activity;
-  public boolean mCi = false;
-  public int mCj = 0;
+  public boolean ncI = false;
+  public int ncJ = 0;
   
   static
   {
     if (Build.VERSION.SDK_INT < 20) {}
     for (boolean bool = true;; bool = false)
     {
-      mCh = bool;
+      ncH = bool;
       return;
     }
   }
@@ -36,7 +36,7 @@ public final class a
     this.activity = paramActivity;
   }
   
-  private boolean bzG()
+  private boolean bDJ()
   {
     AppMethodBeat.i(136300);
     if ((this.activity.getWindow() != null) && ((this.activity.getWindow().getAttributes().flags & 0x400) > 0))
@@ -48,18 +48,18 @@ public final class a
     return false;
   }
   
-  public static boolean bzH()
+  public static boolean bDK()
   {
     AppMethodBeat.i(136302);
     try
     {
-      boolean bool = ((Boolean)org.a.a.gc(org.a.a.bD(org.a.a.forName("android.view.WindowManagerGlobal")).aXD("getWindowManagerService").object).aXD("hasNavigationBar").object).booleanValue();
+      boolean bool = ((Boolean)org.a.a.gy(org.a.a.bF(org.a.a.forName("android.view.WindowManagerGlobal")).bdZ("getWindowManagerService").object).bdZ("hasNavigationBar").object).booleanValue();
       AppMethodBeat.o(136302);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      ac.e("MicroMsg.AppBrandFixInputIssuesActivityHelper", "checkDeviceHasNavigationBar2 e=%s", new Object[] { localThrowable });
+      ad.e("MicroMsg.AppBrandFixInputIssuesActivityHelper", "checkDeviceHasNavigationBar2 e=%s", new Object[] { localThrowable });
       AppMethodBeat.o(136302);
     }
     return false;
@@ -100,47 +100,47 @@ public final class a
     }
   }
   
-  public final void bzE()
+  public final void bDH()
   {
     AppMethodBeat.i(136298);
-    if ((!this.mCi) || (this.activity.isFinishing()))
+    if ((!this.ncI) || (this.activity.isFinishing()))
     {
       AppMethodBeat.o(136298);
       return;
     }
-    if (mCh)
+    if (ncH)
     {
       if (n.H(this.activity) == null)
       {
-        ac.w("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightIfNeed get null rootLayout");
+        ad.w("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightIfNeed get null rootLayout");
         AppMethodBeat.o(136298);
         return;
       }
-      bzF();
+      bDI();
     }
     AppMethodBeat.o(136298);
   }
   
-  public final void bzF()
+  public final void bDI()
   {
     AppMethodBeat.i(183096);
     n localn = n.H(this.activity);
     Point localPoint = new Point();
     this.activity.getWindowManager().getDefaultDisplay().getSize(localPoint);
-    int i = q.jw(this.activity);
+    int i = q.jH(this.activity);
     int j = localPoint.y;
-    if (bzG()) {
+    if (bDJ()) {
       i = 0;
     }
     i = j - i;
-    ac.i("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightBelow20 forceHeight %d", new Object[] { Integer.valueOf(i) });
+    ad.i("MicroMsg.AppBrandFixInputIssuesActivityHelper", "fixLayoutHeightBelow20 forceHeight %d", new Object[] { Integer.valueOf(i) });
     localn.setForceHeight(i);
     AppMethodBeat.o(183096);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.a
  * JD-Core Version:    0.7.0.1
  */

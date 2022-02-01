@@ -10,16 +10,16 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.z;
 
 public final class p
   extends q
 {
-  private TextView Gpj;
+  private TextView IaW;
   private View mContentView;
   private Context mContext;
-  public ProgressBar msX;
+  public ProgressBar mTD;
   private int style;
   
   private p(Context paramContext, int paramInt1, int paramInt2)
@@ -34,9 +34,9 @@ public final class p
     }
     for (paramInt1 = i;; paramInt1 = 2131494897)
     {
-      this.mContentView = z.jD(this.mContext).inflate(paramInt1, null);
-      this.Gpj = ((TextView)this.mContentView.findViewById(2131302339));
-      this.msX = ((ProgressBar)this.mContentView.findViewById(2131302338));
+      this.mContentView = z.jO(this.mContext).inflate(paramInt1, null);
+      this.IaW = ((TextView)this.mContentView.findViewById(2131302339));
+      this.mTD = ((ProgressBar)this.mContentView.findViewById(2131302338));
       setCanceledOnTouchOutside(true);
       AppMethodBeat.o(142066);
       return;
@@ -109,7 +109,7 @@ public final class p
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      ad.e("MicroMsg.MMProgressDialog", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(142075);
     }
   }
@@ -120,7 +120,7 @@ public final class p
     super.onCreate(paramBundle);
     setContentView(this.mContentView, new LinearLayout.LayoutParams(-1, -1));
     paramBundle = getWindow().getAttributes();
-    paramBundle.width = -1;
+    paramBundle.width = -2;
     paramBundle.height = -2;
     if (this.style == 2)
     {
@@ -142,7 +142,7 @@ public final class p
   public final void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142069);
-    this.Gpj.setText(paramCharSequence);
+    this.IaW.setText(paramCharSequence);
     AppMethodBeat.o(142069);
   }
   
@@ -157,7 +157,7 @@ public final class p
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMProgressDialog", localException, "", new Object[0]);
       AppMethodBeat.o(142074);
     }
   }

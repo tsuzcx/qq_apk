@@ -15,20 +15,20 @@ public class TPDownloadProxyHelper
   
   public static String checkVideoStatus(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191425);
+    AppMethodBeat.i(190065);
     if (!TPDownloadProxyFactory.canUseService())
     {
-      AppMethodBeat.o(191425);
+      AppMethodBeat.o(190065);
       return "";
     }
     if (offlineVinfoAdapter != null)
     {
       paramString1 = offlineVinfoAdapter.checkVideoStatus(paramString1, paramString2);
-      AppMethodBeat.o(191425);
+      AppMethodBeat.o(190065);
       return paramString1;
     }
     paramString1 = TPProxyAdapterManager.getInstance().checkVideoStatus(paramString1, paramString2);
-    AppMethodBeat.o(191425);
+    AppMethodBeat.o(190065);
     return paramString1;
   }
   
@@ -39,59 +39,59 @@ public class TPDownloadProxyHelper
   
   public static String getHLSOfflineExttag(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(191429);
+    AppMethodBeat.i(190069);
     try
     {
       if (TPDownloadProxyNative.getInstance().isNativeLoaded())
       {
         paramString1 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getHLSOfflineExttag(paramString1, paramString2, paramInt, paramLong));
-        AppMethodBeat.o(191429);
+        AppMethodBeat.o(190069);
         return paramString1;
       }
     }
     catch (Throwable paramString1)
     {
       TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", "get exttag failed, error:" + paramString1.toString());
-      AppMethodBeat.o(191429);
+      AppMethodBeat.o(190069);
     }
     return "";
   }
   
   public static String getNativeLibVersion()
   {
-    AppMethodBeat.i(191422);
+    AppMethodBeat.i(190062);
     String str = TPDownloadProxyFactory.getNativeVersion();
-    AppMethodBeat.o(191422);
+    AppMethodBeat.o(190062);
     return str;
   }
   
   public static int getRecordDuration(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191426);
+    AppMethodBeat.i(190066);
     if (offlineVinfoAdapter != null)
     {
       i = offlineVinfoAdapter.getRecordDuration(paramString1, paramString2);
-      AppMethodBeat.o(191426);
+      AppMethodBeat.o(190066);
       return i;
     }
     int i = TPProxyAdapterManager.getInstance().getRecordDuration(paramString1, paramString2);
-    AppMethodBeat.o(191426);
+    AppMethodBeat.o(190066);
     return i;
   }
   
   public static boolean isReadyForDownload()
   {
-    AppMethodBeat.i(191424);
+    AppMethodBeat.i(190064);
     boolean bool = TPDownloadProxyFactory.isReadyForDownload();
-    AppMethodBeat.o(191424);
+    AppMethodBeat.o(190064);
     return bool;
   }
   
   public static boolean isReadyForPlay()
   {
-    AppMethodBeat.i(191423);
+    AppMethodBeat.i(190063);
     boolean bool = TPDownloadProxyFactory.isReadyForPlay();
-    AppMethodBeat.o(191423);
+    AppMethodBeat.o(190063);
     return bool;
   }
   
@@ -102,9 +102,9 @@ public class TPDownloadProxyHelper
   
   public static void setNativeLibLoader(ITPDLProxyNativeLibLoader paramITPDLProxyNativeLibLoader)
   {
-    AppMethodBeat.i(191421);
+    AppMethodBeat.i(190061);
     TPDownloadProxyNative.getInstance().setLibLoader(paramITPDLProxyNativeLibLoader);
-    AppMethodBeat.o(191421);
+    AppMethodBeat.o(190061);
   }
   
   public static void setTPOfflineVinfoAdapter(ITPOfflineVinfoAdapter paramITPOfflineVinfoAdapter)
@@ -114,41 +114,41 @@ public class TPDownloadProxyHelper
   
   public static void setTPProxyAdapter(ITPProxyAdapter paramITPProxyAdapter)
   {
-    AppMethodBeat.i(191427);
+    AppMethodBeat.i(190067);
     TPProxyAdapterManager.getInstance().setProxyAdapter(paramITPProxyAdapter);
-    AppMethodBeat.o(191427);
+    AppMethodBeat.o(190067);
   }
   
   public static void setUseService(boolean paramBoolean)
   {
-    AppMethodBeat.i(191420);
+    AppMethodBeat.i(190060);
     TPDownloadProxyFactory.setUseService(paramBoolean);
-    AppMethodBeat.o(191420);
+    AppMethodBeat.o(190060);
   }
   
   public static void updateProxyMessage(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    AppMethodBeat.i(191428);
+    AppMethodBeat.i(190068);
     TPProxyAdapterManager.getInstance().updateProxyMessage(paramInt, paramObject1, paramObject2, paramObject3, paramObject4);
-    AppMethodBeat.o(191428);
+    AppMethodBeat.o(190068);
   }
   
   public static long verifyOfflineCacheSync(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(191430);
+    AppMethodBeat.i(190070);
     try
     {
       if (TPDownloadProxyNative.getInstance().isNativeLoaded())
       {
         long l = TPDownloadProxyNative.getInstance().verifyOfflineCacheSync(paramString1, paramInt, paramString2, paramString3);
-        AppMethodBeat.o(191430);
+        AppMethodBeat.o(190070);
         return l;
       }
     }
     catch (Throwable paramString1)
     {
       TPDLProxyLog.e("TPDownloadProxyHelper", 0, "tpdlnative", "verify offline cache failed, error:" + paramString1.toString());
-      AppMethodBeat.o(191430);
+      AppMethodBeat.o(190070);
     }
     return -1L;
   }

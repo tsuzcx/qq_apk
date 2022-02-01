@@ -20,40 +20,41 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.pa;
-import com.tencent.mm.g.a.pa.b;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.pj;
+import com.tencent.mm.g.a.pj.b;
 import com.tencent.mm.model.a.c;
 import com.tencent.mm.plugin.account.friend.a.af;
 import com.tencent.mm.plugin.account.friend.a.as;
 import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.account.friend.a.j;
-import com.tencent.mm.protocal.protobuf.bcm;
+import com.tencent.mm.plugin.account.friend.a.k;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.protocal.protobuf.bgq;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.r;
 import com.tencent.mm.ui.tools.r.b;
 
 public class QQFriendUI
   extends MMActivity
-  implements com.tencent.mm.ak.g
+  implements com.tencent.mm.al.f
 {
-  private int abP;
-  private ProgressDialog fts = null;
-  private r fzp;
-  private ListView iIZ;
-  String iJd;
-  private TextView iJe = null;
-  d iNm;
-  private boolean iNn = false;
+  private int adG;
+  private ProgressDialog fMu = null;
+  private r fSC;
+  private ListView jci;
+  String jcm;
+  private TextView jcn = null;
+  d jgv;
+  private boolean jgw = false;
   
   public int getLayoutId()
   {
@@ -63,57 +64,57 @@ public class QQFriendUI
   public void initView()
   {
     AppMethodBeat.i(131285);
-    this.iIZ = ((ListView)findViewById(2131303560));
-    this.iJe = ((TextView)findViewById(2131299469));
-    this.iJe.setText(2131762082);
-    this.fzp = new r((byte)0);
-    this.fzp.ITM = new r.b()
+    this.jci = ((ListView)findViewById(2131303560));
+    this.jcn = ((TextView)findViewById(2131299469));
+    this.jcn.setText(2131762082);
+    this.fSC = new r((byte)0);
+    this.fSC.KKQ = new r.b()
     {
-      public final boolean Ga(String paramAnonymousString)
+      public final boolean Jp(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void Gb(String paramAnonymousString)
+      public final void Jq(String paramAnonymousString)
       {
         AppMethodBeat.i(131275);
-        QQFriendUI.a(QQFriendUI.this, bs.aLh(paramAnonymousString));
+        QQFriendUI.a(QQFriendUI.this, bt.aQN(paramAnonymousString));
         QQFriendUI.a(QQFriendUI.this, true);
         paramAnonymousString = QQFriendUI.this;
-        if (paramAnonymousString.iNm != null) {
-          paramAnonymousString.iNm.FZ(paramAnonymousString.iJd);
+        if (paramAnonymousString.jgv != null) {
+          paramAnonymousString.jgv.Jo(paramAnonymousString.jcm);
         }
         AppMethodBeat.o(131275);
       }
       
-      public final void aPa() {}
+      public final void aSm() {}
       
-      public final void aPb() {}
+      public final void aSn() {}
       
-      public final void aPc() {}
+      public final void aSo() {}
       
-      public final void aPd() {}
+      public final void aSp() {}
     };
-    addSearchMenu(true, this.fzp);
+    addSearchMenu(true, this.fSC);
     String str;
     int i;
-    if (com.tencent.mm.model.a.g.azO().yF("2") != null)
+    if (com.tencent.mm.model.a.g.aCR().BE("2") != null)
     {
-      str = com.tencent.mm.model.a.g.azO().yF("2").value;
+      str = com.tencent.mm.model.a.g.aCR().BE("2").value;
       if (str.equals("0"))
       {
         i = 0;
-        com.tencent.mm.model.a.f.yJ("2");
+        com.tencent.mm.model.a.f.BI("2");
       }
     }
     for (;;)
     {
       if (i == 0) {}
-      for (this.iNm = new e(this, this.abP);; this.iNm = new f(this, this.abP))
+      for (this.jgv = new e(this, this.adG);; this.jgv = new f(this, this.adG))
       {
-        this.iNm.a(new d.a()
+        this.jgv.a(new d.a()
         {
-          public final void qL(int paramAnonymousInt)
+          public final void rl(int paramAnonymousInt)
           {
             AppMethodBeat.i(131276);
             if (QQFriendUI.a(QQFriendUI.this))
@@ -133,105 +134,114 @@ public class QQFriendUI
             }
           }
         });
-        this.iIZ.setAdapter(this.iNm);
-        this.iIZ.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        this.jci.setAdapter(this.jgv);
+        this.jci.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
           public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
             AppMethodBeat.i(131277);
+            Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousAdapterView);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject1).mr(paramAnonymousInt);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject1).qY(paramAnonymousLong);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
             if (paramAnonymousInt < QQFriendUI.c(QQFriendUI.this).getHeaderViewsCount())
             {
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(131277);
               return;
             }
             paramAnonymousInt -= QQFriendUI.c(QQFriendUI.this).getHeaderViewsCount();
-            ac.i("MicroMsg.QQFriendUI", "realpostion is:%d headerViewscount:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(QQFriendUI.c(QQFriendUI.this).getHeaderViewsCount()) });
+            ad.i("MicroMsg.QQFriendUI", "realpostion is:%d headerViewscount:%d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(QQFriendUI.c(QQFriendUI.this).getHeaderViewsCount()) });
             paramAnonymousView = (as)QQFriendUI.d(QQFriendUI.this).getItem(paramAnonymousInt);
             if (QQFriendUI.this.getIntent().getBooleanExtra("qqgroup_sendmessage", false))
             {
-              paramAnonymousAdapterView = new pa();
-              paramAnonymousAdapterView.drC.opType = 0;
-              paramAnonymousAdapterView.drC.drE = (paramAnonymousView.iLI + "@qqim");
-              paramAnonymousAdapterView.drC.drF = paramAnonymousView.getDisplayName();
-              com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousAdapterView);
-              if (paramAnonymousAdapterView.drD.dbS)
+              paramAnonymousAdapterView = new pj();
+              paramAnonymousAdapterView.dDu.opType = 0;
+              paramAnonymousAdapterView.dDu.dDw = (paramAnonymousView.jeR + "@qqim");
+              paramAnonymousAdapterView.dDu.dDx = paramAnonymousView.getDisplayName();
+              com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousAdapterView);
+              if (paramAnonymousAdapterView.dDv.dno)
               {
                 paramAnonymousAdapterView = new Intent();
-                paramAnonymousAdapterView.putExtra("Chat_User", paramAnonymousView.iLI + "@qqim");
+                paramAnonymousAdapterView.putExtra("Chat_User", paramAnonymousView.jeR + "@qqim");
                 paramAnonymousAdapterView.putExtra("key_need_send_video", false);
-                com.tencent.mm.plugin.account.a.a.iyx.d(paramAnonymousAdapterView, QQFriendUI.this);
+                com.tencent.mm.plugin.account.a.a.iRG.d(paramAnonymousAdapterView, QQFriendUI.this);
               }
+            }
+            for (;;)
+            {
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
               AppMethodBeat.o(131277);
               return;
-            }
-            if ((paramAnonymousView.iLJ == 1) || (paramAnonymousView.iLJ == 2))
-            {
-              paramAnonymousAdapterView = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(paramAnonymousView.getUsername());
-              if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.fad())) {
-                com.tencent.mm.plugin.report.service.h.wUl.kvStat(10298, paramAnonymousView.getUsername() + ",12");
-              }
-              Intent localIntent = new Intent();
-              localIntent.putExtra("Contact_User", paramAnonymousView.getUsername());
-              localIntent.putExtra("Contact_Nick", paramAnonymousView.Tn());
-              localIntent.putExtra("Contact_Uin", paramAnonymousView.iLI);
-              localIntent.putExtra("Contact_QQNick", paramAnonymousView.getDisplayName());
-              localIntent.putExtra("Contact_Scene", 12);
-              localIntent.putExtra("Contact_RemarkName", paramAnonymousView.aQc());
-              paramAnonymousAdapterView = (com.tencent.mm.plugin.account.friend.a.k)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getFrdExtStg();
-              Object localObject = paramAnonymousView.getUsername();
-              localObject = "select friend_ext.username,friend_ext.sex,friend_ext.personalcard,friend_ext.province,friend_ext.city,friend_ext.signature from friend_ext   where friend_ext.username = \"" + bs.aLh(String.valueOf(localObject)) + "\"";
-              localObject = paramAnonymousAdapterView.hpA.a((String)localObject, null, 2);
-              if (localObject == null) {
-                paramAnonymousAdapterView = null;
-              }
-              for (;;)
+              if ((paramAnonymousView.jeS == 1) || (paramAnonymousView.jeS == 2))
               {
-                if (paramAnonymousAdapterView != null) {
-                  localIntent.putExtra("Contact_Sex", paramAnonymousAdapterView.exL);
+                paramAnonymousAdapterView = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azp().Bf(paramAnonymousView.getUsername());
+                if ((paramAnonymousAdapterView != null) && (paramAnonymousAdapterView.fqg())) {
+                  com.tencent.mm.plugin.report.service.g.yhR.kvStat(10298, paramAnonymousView.getUsername() + ",12");
                 }
-                localIntent.putExtra("Contact_ShowUserName", false);
-                if (!bs.isNullOrNil(paramAnonymousView.getUsername())) {
-                  break;
+                localObject1 = new Intent();
+                ((Intent)localObject1).putExtra("Contact_User", paramAnonymousView.getUsername());
+                ((Intent)localObject1).putExtra("Contact_Nick", paramAnonymousView.VC());
+                ((Intent)localObject1).putExtra("Contact_Uin", paramAnonymousView.jeR);
+                ((Intent)localObject1).putExtra("Contact_QQNick", paramAnonymousView.getDisplayName());
+                ((Intent)localObject1).putExtra("Contact_Scene", 12);
+                ((Intent)localObject1).putExtra("Contact_RemarkName", paramAnonymousView.aTo());
+                paramAnonymousAdapterView = (k)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getFrdExtStg();
+                Object localObject2 = paramAnonymousView.getUsername();
+                localObject2 = "select friend_ext.username,friend_ext.sex,friend_ext.personalcard,friend_ext.province,friend_ext.city,friend_ext.signature from friend_ext   where friend_ext.username = \"" + bt.aQN(String.valueOf(localObject2)) + "\"";
+                localObject2 = paramAnonymousAdapterView.hHS.a((String)localObject2, null, 2);
+                if (localObject2 == null) {
+                  paramAnonymousAdapterView = null;
                 }
-                ac.e("MicroMsg.QQFriendUI", "username is null. can't start contact ui. friend is:%s", new Object[] { paramAnonymousView.toString() });
-                AppMethodBeat.o(131277);
-                return;
-                paramAnonymousAdapterView = null;
-                if (((Cursor)localObject).moveToFirst())
+                for (;;)
                 {
-                  paramAnonymousAdapterView = new j();
-                  paramAnonymousAdapterView.username = ((Cursor)localObject).getString(0);
-                  paramAnonymousAdapterView.exL = ((Cursor)localObject).getInt(1);
-                  paramAnonymousAdapterView.exU = ((Cursor)localObject).getInt(2);
-                  paramAnonymousAdapterView.exV = ((Cursor)localObject).getString(3);
-                  paramAnonymousAdapterView.exW = ((Cursor)localObject).getString(4);
-                  paramAnonymousAdapterView.signature = ((Cursor)localObject).getString(5);
+                  if (paramAnonymousAdapterView != null) {
+                    ((Intent)localObject1).putExtra("Contact_Sex", paramAnonymousAdapterView.ePk);
+                  }
+                  ((Intent)localObject1).putExtra("Contact_ShowUserName", false);
+                  if (!bt.isNullOrNil(paramAnonymousView.getUsername())) {
+                    break;
+                  }
+                  ad.e("MicroMsg.QQFriendUI", "username is null. can't start contact ui. friend is:%s", new Object[] { paramAnonymousView.toString() });
+                  com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+                  AppMethodBeat.o(131277);
+                  return;
+                  paramAnonymousAdapterView = null;
+                  if (((Cursor)localObject2).moveToFirst())
+                  {
+                    paramAnonymousAdapterView = new j();
+                    paramAnonymousAdapterView.username = ((Cursor)localObject2).getString(0);
+                    paramAnonymousAdapterView.ePk = ((Cursor)localObject2).getInt(1);
+                    paramAnonymousAdapterView.ePt = ((Cursor)localObject2).getInt(2);
+                    paramAnonymousAdapterView.ePu = ((Cursor)localObject2).getString(3);
+                    paramAnonymousAdapterView.ePv = ((Cursor)localObject2).getString(4);
+                    paramAnonymousAdapterView.signature = ((Cursor)localObject2).getString(5);
+                  }
+                  ((Cursor)localObject2).close();
                 }
-                ((Cursor)localObject).close();
+                com.tencent.mm.plugin.account.a.a.iRG.c((Intent)localObject1, QQFriendUI.this);
               }
-              com.tencent.mm.plugin.account.a.a.iyx.c(localIntent, QQFriendUI.this);
-              AppMethodBeat.o(131277);
-              return;
+              else if (paramAnonymousView.jeS == 0)
+              {
+                paramAnonymousAdapterView = new Intent(QQFriendUI.this, InviteFriendUI.class);
+                paramAnonymousAdapterView.putExtra("friend_type", 0);
+                paramAnonymousAdapterView.putExtra("friend_user_name", paramAnonymousView.getUsername());
+                paramAnonymousAdapterView.putExtra("friend_num", paramAnonymousView.jeR);
+                paramAnonymousAdapterView.putExtra("friend_nick", paramAnonymousView.getDisplayName());
+                paramAnonymousAdapterView.putExtra("friend_weixin_nick", paramAnonymousView.VC());
+                paramAnonymousAdapterView.putExtra("friend_scene", 12);
+                paramAnonymousView = QQFriendUI.this;
+                paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahp(), "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mq(0));
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              }
             }
-            if (paramAnonymousView.iLJ == 0)
-            {
-              paramAnonymousAdapterView = new Intent(QQFriendUI.this, InviteFriendUI.class);
-              paramAnonymousAdapterView.putExtra("friend_type", 0);
-              paramAnonymousAdapterView.putExtra("friend_user_name", paramAnonymousView.getUsername());
-              paramAnonymousAdapterView.putExtra("friend_num", paramAnonymousView.iLI);
-              paramAnonymousAdapterView.putExtra("friend_nick", paramAnonymousView.getDisplayName());
-              paramAnonymousAdapterView.putExtra("friend_weixin_nick", paramAnonymousView.Tn());
-              paramAnonymousAdapterView.putExtra("friend_scene", 12);
-              paramAnonymousView = QQFriendUI.this;
-              paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
-              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$4", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            }
-            AppMethodBeat.o(131277);
           }
         });
-        ((at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(this.iNm);
+        ((at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).a(this.jgv);
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -248,12 +258,16 @@ public class QQFriendUI
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(131279);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/QQFriendUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
             paramAnonymousView = QQFriendUI.c(QQFriendUI.this);
-            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
-            Object localObject = new Object();
-            com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-            BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
+            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+            localObject = new Object();
+            com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+            BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
             com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$6", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/QQFriendUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(131279);
           }
         });
@@ -275,7 +289,7 @@ public class QQFriendUI
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(131286);
-    ac.d("MicroMsg.QQFriendUI", "onConfigurationChanged: orientation = " + paramConfiguration.orientation);
+    ad.d("MicroMsg.QQFriendUI", "onConfigurationChanged: orientation = " + paramConfiguration.orientation);
     super.onConfigurationChanged(paramConfiguration);
     AppMethodBeat.o(131286);
   }
@@ -284,26 +298,26 @@ public class QQFriendUI
   {
     AppMethodBeat.i(131280);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.agi().a(143, this);
+    com.tencent.mm.kernel.g.aiU().a(143, this);
     paramBundle = getIntent().getStringExtra("qqgroup_name");
-    this.abP = getIntent().getIntExtra("qqgroup_id", -1);
+    this.adG = getIntent().getIntExtra("qqgroup_id", -1);
     Object localObject1 = (at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg();
-    int i = this.abP;
-    ac.d("MicroMsg.QQListStorage", "delete: GroupID:".concat(String.valueOf(i)));
+    int i = this.adG;
+    ad.d("MicroMsg.QQListStorage", "delete: GroupID:".concat(String.valueOf(i)));
     Object localObject2 = "update qqlist set reserved4=0 where groupid=".concat(String.valueOf(i));
-    ((at)localObject1).hpA.execSQL("qqlist", (String)localObject2);
-    if (com.tencent.mm.plugin.account.friend.a.l.qO(this.abP))
+    ((at)localObject1).hHS.execSQL("qqlist", (String)localObject2);
+    if (com.tencent.mm.plugin.account.friend.a.l.ro(this.adG))
     {
-      localObject1 = new af(this.abP);
-      com.tencent.mm.kernel.g.agi().a((n)localObject1, 0);
+      localObject1 = new af(this.adG);
+      com.tencent.mm.kernel.g.aiU().a((n)localObject1, 0);
       localObject2 = getContext();
       getString(2131755906);
-      this.fts = com.tencent.mm.ui.base.h.b((Context)localObject2, getString(2131762072), true, new DialogInterface.OnCancelListener()
+      this.fMu = com.tencent.mm.ui.base.h.b((Context)localObject2, getString(2131762072), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(131274);
-          com.tencent.mm.kernel.g.agi().a(this.iNo);
+          com.tencent.mm.kernel.g.aiU().a(this.jgx);
           AppMethodBeat.o(131274);
         }
       });
@@ -316,11 +330,11 @@ public class QQFriendUI
   public void onDestroy()
   {
     AppMethodBeat.i(131282);
-    com.tencent.mm.model.a.f.yK("2");
-    ((at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).b(this.iNm);
-    com.tencent.mm.kernel.g.agi().b(143, this);
-    this.iNm.cVi();
-    p.aBy().cancel();
+    com.tencent.mm.model.a.f.BJ("2");
+    ((at)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getQQListStg()).b(this.jgv);
+    com.tencent.mm.kernel.g.aiU().b(143, this);
+    this.jgv.det();
+    p.aEz().cancel();
     super.onDestroy();
     AppMethodBeat.o(131282);
   }
@@ -328,7 +342,7 @@ public class QQFriendUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(131284);
-    ac.v("MicroMsg.QQFriendUI", "qq friend onKeyDown");
+    ad.v("MicroMsg.QQFriendUI", "qq friend onKeyDown");
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(131284);
     return bool;
@@ -337,7 +351,7 @@ public class QQFriendUI
   public void onPause()
   {
     AppMethodBeat.i(131283);
-    p.aBh().e(this.iNm);
+    p.aEk().e(this.jgv);
     super.onPause();
     AppMethodBeat.o(131283);
   }
@@ -346,28 +360,28 @@ public class QQFriendUI
   {
     AppMethodBeat.i(131281);
     super.onResume();
-    p.aBh().d(this.iNm);
-    this.iNm.notifyDataSetChanged();
+    p.aEk().d(this.jgv);
+    this.jgv.notifyDataSetChanged();
     AppMethodBeat.o(131281);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     AppMethodBeat.i(131287);
-    ac.i("MicroMsg.QQFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (((bcm)((af)paramn).rr.hvr.hvw).fZz != 1)
+    ad.i("MicroMsg.QQFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (((bgq)((af)paramn).rr.hNK.hNQ).gsV != 1)
     {
       AppMethodBeat.o(131287);
       return;
     }
-    if (this.fts != null)
+    if (this.fMu != null)
     {
-      this.fts.dismiss();
-      this.fts = null;
+      this.fMu.dismiss();
+      this.fMu = null;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.iNm.Xb();
+      this.jgv.Zu();
       AppMethodBeat.o(131287);
       return;
     }

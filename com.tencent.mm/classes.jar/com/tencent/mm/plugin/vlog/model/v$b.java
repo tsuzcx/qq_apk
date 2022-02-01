@@ -1,17 +1,28 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import d.g.a.a;
-import d.y;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.a.b;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "", "invoke"})
 final class v$b
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements b<String, z>
 {
-  v$b(v paramv, List paramList)
+  public static final b OdH;
+  
+  static
   {
-    super(0);
+    AppMethodBeat.i(221624);
+    OdH = new b();
+    AppMethodBeat.o(221624);
+  }
+  
+  v$b()
+  {
+    super(1);
   }
 }
 

@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.chb;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cma;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.e;
 import d.a.j;
+import d.g.b.p;
 import d.l;
 import d.n.i;
+import d.n.k;
 import d.n.n;
 import d.v;
 import java.util.ArrayList;
@@ -15,47 +17,47 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"isMpArticleUrl", "", "", "(Ljava/lang/String;)Z", "isMpUrl", "withProtocol", "getWithProtocol", "(Ljava/lang/String;)Ljava/lang/String;", "clearShortUrl", "rawUrl", "appendStats", "session", "Lcom/tencent/mm/protocal/protobuf/PreloadSession;", "appendUrlParam", "param", "value", "clearUrlParam", "clearUrlParams", "", "(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;", "getUrlParam", "getUrlParamPairRegex", "Lkotlin/text/Regex;", "getUrlParamRegex", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"isMpArticleUrl", "", "", "(Ljava/lang/String;)Z", "isMpUrl", "withProtocol", "getWithProtocol", "(Ljava/lang/String;)Ljava/lang/String;", "clearShortUrl", "rawUrl", "appendStats", "session", "Lcom/tencent/mm/protocal/protobuf/PreloadSession;", "appendUrlParam", "param", "value", "clearUrlParam", "clearUrlParams", "", "(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;", "getUrlParam", "getUrlParamPairRegex", "Lkotlin/text/Regex;", "getUrlParamRegex", "plugin-brandservice_release"})
 public final class UrlExKt
 {
-  public static final String appendStats(String paramString, chb paramchb)
+  public static final String appendStats(String paramString, cma paramcma)
   {
-    AppMethodBeat.i(198900);
-    d.g.b.k.h(paramString, "$this$appendStats");
-    d.g.b.k.h(paramchb, "session");
+    AppMethodBeat.i(209846);
+    p.h(paramString, "$this$appendStats");
+    p.h(paramcma, "session");
     if (!n.a((CharSequence)paramString, (CharSequence)"mp.weixin.qq.com", false))
     {
-      AppMethodBeat.o(198900);
+      AppMethodBeat.o(209846);
       return paramString;
     }
-    if (paramchb.Fvf) {}
+    if (paramcma.Hfk) {}
     for (int j = 1;; j = 0)
     {
       int i = j;
-      if (paramchb.Fvg) {
+      if (paramcma.Hfl) {
         i = j | 0x2;
       }
       j = i;
-      if (paramchb.Fvh) {
+      if (paramcma.Hfm) {
         j = i | 0x4;
       }
       i = j;
-      if (paramchb.Fvi) {
+      if (paramcma.Hfn) {
         i = j | 0x8;
       }
       j = i;
-      if (paramchb.Fvj) {
+      if (paramcma.Hfo) {
         j = i | 0x10;
       }
       i = j;
-      if (paramchb.Fvk) {
+      if (paramcma.Hfp) {
         i = j | 0x20;
       }
-      paramString = appendUrlParam(appendUrlParam(appendUrlParam(appendUrlParam(appendUrlParam(paramString, "sessionid", String.valueOf(paramchb.id)), "subscene", String.valueOf(paramchb.nLC)), "scene", String.valueOf(paramchb.nuJ)), "ascene", String.valueOf(paramchb.Fve)), "fasttmpl_type", String.valueOf(paramchb.nGQ));
-      paramchb = paramchb.znF;
-      d.g.b.k.g(paramchb, "session.uid");
-      paramString = appendUrlParam(appendUrlParam(appendUrlParam(paramString, "fasttmpl_fullversion", paramchb), "fasttmpl_flag", String.valueOf(i)), "realreporttime", String.valueOf(System.currentTimeMillis()));
-      AppMethodBeat.o(198900);
+      paramString = appendUrlParam(appendUrlParam(appendUrlParam(appendUrlParam(appendUrlParam(paramString, "sessionid", String.valueOf(paramcma.id)), "subscene", String.valueOf(paramcma.ooi)), "scene", String.valueOf(paramcma.nWh)), "ascene", String.valueOf(paramcma.Hfj)), "fasttmpl_type", String.valueOf(paramcma.ojt));
+      paramcma = paramcma.AFz;
+      p.g(paramcma, "session.uid");
+      paramString = appendUrlParam(appendUrlParam(appendUrlParam(paramString, "fasttmpl_fullversion", paramcma), "fasttmpl_flag", String.valueOf(i)), "realreporttime", String.valueOf(System.currentTimeMillis()));
+      AppMethodBeat.o(209846);
       return paramString;
     }
   }
@@ -63,9 +65,9 @@ public final class UrlExKt
   public static final String appendUrlParam(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(6763);
-    d.g.b.k.h(paramString1, "$this$appendUrlParam");
-    d.g.b.k.h(paramString2, "param");
-    d.g.b.k.h(paramString3, "value");
+    p.h(paramString1, "$this$appendUrlParam");
+    p.h(paramString2, "param");
+    p.h(paramString3, "value");
     List localList = n.a((CharSequence)paramString1, new String[] { "#" });
     paramString1 = (String)localList.get(0);
     if (!n.a((CharSequence)paramString1, (CharSequence)"?", false)) {
@@ -76,7 +78,7 @@ public final class UrlExKt
       if (n.e((CharSequence)paramString1, (CharSequence)(paramString2 + '=')))
       {
         paramString1 = (CharSequence)paramString1;
-        paramString1 = getUrlParamRegex(paramString2).e(paramString1, paramString3);
+        paramString1 = getUrlParamRegex(paramString2).f(paramString1, paramString3);
         if (localList.size() > 1)
         {
           paramString1 = paramString1 + '#' + (String)localList.get(1);
@@ -87,7 +89,7 @@ public final class UrlExKt
       else
       {
         StringBuilder localStringBuilder = new StringBuilder().append(paramString1);
-        if (n.nc(paramString1, "?")) {}
+        if (n.nA(paramString1, "?")) {}
         for (paramString1 = "";; paramString1 = "&")
         {
           paramString1 = paramString1 + paramString2 + '=' + paramString3;
@@ -103,7 +105,7 @@ public final class UrlExKt
   {
     int i = 0;
     AppMethodBeat.i(6756);
-    d.g.b.k.h(paramString, "rawUrl");
+    p.h(paramString, "rawUrl");
     while (i < 11)
     {
       paramString = clearUrlParam(paramString, new String[] { "sessionid", "subscene", "scene", "ascene", "enterid", "clicktime", "fasttmpl_type", "fasttmpl_fullversion", "fasttmpl_flag", "realreporttime", "reporttime" }[i]);
@@ -117,12 +119,12 @@ public final class UrlExKt
   public static final String clearUrlParam(String paramString1, String paramString2)
   {
     AppMethodBeat.i(6764);
-    d.g.b.k.h(paramString1, "$this$clearUrlParam");
-    d.g.b.k.h(paramString2, "param");
+    p.h(paramString1, "$this$clearUrlParam");
+    p.h(paramString2, "param");
     paramString1 = (String)n.a((CharSequence)paramString1, new String[] { "#" }).get(0);
     CharSequence localCharSequence = (CharSequence)paramString1;
-    paramString2 = getUrlParamPairRegex(paramString2).e(localCharSequence, "");
-    if ((n.nc(paramString2, "&")) && (!n.nc(paramString1, "&")))
+    paramString2 = getUrlParamPairRegex(paramString2).f(localCharSequence, "");
+    if ((n.nA(paramString2, "&")) && (!n.nA(paramString1, "&")))
     {
       paramString1 = n.a(paramString2, new char[] { '&' });
       AppMethodBeat.o(6764);
@@ -134,15 +136,15 @@ public final class UrlExKt
   
   public static final String clearUrlParams(String paramString, String... paramVarArgs)
   {
-    AppMethodBeat.i(198901);
-    d.g.b.k.h(paramString, "$this$clearUrlParams");
-    d.g.b.k.h(paramVarArgs, "param");
+    AppMethodBeat.i(209847);
+    p.h(paramString, "$this$clearUrlParams");
+    p.h(paramVarArgs, "param");
     try
     {
       Uri localUri = Uri.parse(paramString);
-      d.g.b.k.g(localUri, "uri");
+      p.g(localUri, "uri");
       Object localObject1 = localUri.getQueryParameterNames();
-      d.g.b.k.g(localObject1, "uri.queryParameterNames");
+      p.g(localObject1, "uri.queryParameterNames");
       Object localObject2 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList();
       localObject2 = ((Iterable)localObject2).iterator();
@@ -159,11 +161,11 @@ public final class UrlExKt
     }
     catch (Exception localException)
     {
-      ac.e("String", "clearUrlParams:" + localException.getMessage() + ", " + paramVarArgs + ", " + paramString);
+      ad.e("String", "clearUrlParams:" + localException.getMessage() + ", " + paramVarArgs + ", " + paramString);
       while (paramString == null)
       {
         paramString = new v("null cannot be cast to non-null type kotlin.String");
-        AppMethodBeat.o(198901);
+        AppMethodBeat.o(209847);
         throw paramString;
         localObject2 = (Iterable)j.j((Iterable)localObject1);
         localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -177,16 +179,16 @@ public final class UrlExKt
         str = localException.getScheme() + "://" + localException.getHost() + localException.getPath() + '?' + (String)localObject1;
         paramString = str;
       }
-      AppMethodBeat.o(198901);
+      AppMethodBeat.o(209847);
     }
   }
   
   public static final String getUrlParam(String paramString1, String paramString2)
   {
     AppMethodBeat.i(6760);
-    d.g.b.k.h(paramString1, "$this$getUrlParam");
-    d.g.b.k.h(paramString2, "param");
-    paramString1 = d.n.k.a(getUrlParamRegex(paramString2), (CharSequence)paramString1);
+    p.h(paramString1, "$this$getUrlParam");
+    p.h(paramString2, "param");
+    paramString1 = k.a(getUrlParamRegex(paramString2), (CharSequence)paramString1);
     if (paramString1 != null)
     {
       paramString1 = paramString1.getValue();
@@ -197,18 +199,18 @@ public final class UrlExKt
     return null;
   }
   
-  private static final d.n.k getUrlParamPairRegex(String paramString)
+  private static final k getUrlParamPairRegex(String paramString)
   {
     AppMethodBeat.i(6759);
-    paramString = new d.n.k("(?<=[?|&])" + paramString + "=.+?(?:&|$)");
+    paramString = new k("(?<=[?|&])" + paramString + "=.+?(?:&|$)");
     AppMethodBeat.o(6759);
     return paramString;
   }
   
-  private static final d.n.k getUrlParamRegex(String paramString)
+  private static final k getUrlParamRegex(String paramString)
   {
     AppMethodBeat.i(6758);
-    paramString = new d.n.k("(?<=" + paramString + "=).+?(?=&)");
+    paramString = new k("(?<=" + paramString + "=).+?(?=&)");
     AppMethodBeat.o(6758);
     return paramString;
   }
@@ -216,8 +218,8 @@ public final class UrlExKt
   public static final String getWithProtocol(String paramString)
   {
     AppMethodBeat.i(6765);
-    d.g.b.k.h(paramString, "$this$withProtocol");
-    if (!n.nb(paramString, "http"))
+    p.h(paramString, "$this$withProtocol");
+    if (!n.nz(paramString, "http"))
     {
       if (n.a((CharSequence)paramString, (CharSequence)"view.inews.qq.com", false))
       {
@@ -236,8 +238,8 @@ public final class UrlExKt
   public static final boolean isMpArticleUrl(String paramString)
   {
     AppMethodBeat.i(6762);
-    d.g.b.k.h(paramString, "$this$isMpArticleUrl");
-    if ((n.nb(paramString, "https://mp.weixin.qq.com/s?")) || (n.nb(paramString, "http://mp.weixin.qq.com/s?")) || (n.nb(paramString, "https://mp.weixin.qq.com/s/")) || (n.nb(paramString, "http://mp.weixin.qq.com/s/")))
+    p.h(paramString, "$this$isMpArticleUrl");
+    if ((n.nz(paramString, "https://mp.weixin.qq.com/s?")) || (n.nz(paramString, "http://mp.weixin.qq.com/s?")) || (n.nz(paramString, "https://mp.weixin.qq.com/s/")) || (n.nz(paramString, "http://mp.weixin.qq.com/s/")))
     {
       AppMethodBeat.o(6762);
       return true;
@@ -249,8 +251,8 @@ public final class UrlExKt
   public static final boolean isMpUrl(String paramString)
   {
     AppMethodBeat.i(6761);
-    d.g.b.k.h(paramString, "$this$isMpUrl");
-    if ((n.nb(paramString, "https://mp.weixin.qq.com/")) || (n.nb(paramString, "http://mp.weixin.qq.com/")))
+    p.h(paramString, "$this$isMpUrl");
+    if ((n.nz(paramString, "https://mp.weixin.qq.com/")) || (n.nz(paramString, "http://mp.weixin.qq.com/")))
     {
       AppMethodBeat.o(6761);
       return true;

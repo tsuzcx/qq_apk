@@ -1,49 +1,44 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.facebook.device.yearclass.DeviceInfo;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.plugin.webview.luggage.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.aj;
+import java.util.HashMap;
+import java.util.Map;
 
 public class y
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78561);
-    ac.i("MicroMsg.JsApiHideMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = parama.bWS.bVY.optJSONArray("menuList");
-    if (localJSONArray == null)
-    {
-      ac.i("MicroMsg.JsApiHideMenuItems", "data is null");
-      parama.a("invalid_data", null);
-      AppMethodBeat.o(78561);
-      return;
-    }
-    l locall = ((f)parama.bWR).eAo();
-    if (locall != null) {
-      locall.M(localJSONArray);
-    }
-    parama.a("", null);
-    AppMethodBeat.o(78561);
+    AppMethodBeat.i(78560);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("osVersion", Integer.valueOf(Build.VERSION.SDK_INT));
+    localHashMap.put("cpuCores", Integer.valueOf(DeviceInfo.getNumberOfCPUCores()));
+    localHashMap.put("cpuFreqHz", Integer.valueOf(DeviceInfo.getCPUMaxFreqKHz()));
+    localHashMap.put("memory", Long.valueOf(DeviceInfo.getTotalMemory(aj.getContext())));
+    localHashMap.put("brand", Build.BRAND);
+    localHashMap.put("model", Build.MODEL);
+    paramb.d("", localHashMap);
+    AppMethodBeat.o(78560);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "hideMenuItems";
+    return "getSystemInfo";
   }
 }
 

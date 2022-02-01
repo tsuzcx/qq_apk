@@ -6,10 +6,10 @@ import android.view.ViewParent;
 
 public final class l
 {
-  private ViewParent NT;
-  private ViewParent NU;
-  public boolean NV;
-  private int[] NW;
+  private ViewParent PK;
+  private ViewParent PL;
+  public boolean PM;
+  private int[] PN;
   private final View mView;
   
   public l(View paramView)
@@ -24,10 +24,10 @@ public final class l
     default: 
       return;
     case 0: 
-      this.NT = paramViewParent;
+      this.PK = paramViewParent;
       return;
     }
-    this.NU = paramViewParent;
+    this.PL = paramViewParent;
   }
   
   private ViewParent aO(int paramInt)
@@ -37,9 +37,55 @@ public final class l
     default: 
       return null;
     case 0: 
-      return this.NT;
+      return this.PK;
     }
-    return this.NU;
+    return this.PL;
+  }
+  
+  public final boolean A(int paramInt1, int paramInt2)
+  {
+    if (aN(paramInt2)) {
+      return true;
+    }
+    if (this.PM)
+    {
+      ViewParent localViewParent = this.mView.getParent();
+      View localView1 = this.mView;
+      while (localViewParent != null)
+      {
+        if (w.a(localViewParent, localView1, this.mView, paramInt1, paramInt2))
+        {
+          a(paramInt2, localViewParent);
+          View localView3 = this.mView;
+          if ((localViewParent instanceof n)) {
+            ((n)localViewParent).b(localView1, localView3, paramInt1, paramInt2);
+          }
+          for (;;)
+          {
+            return true;
+            if (paramInt2 == 0) {
+              if (Build.VERSION.SDK_INT >= 21) {
+                try
+                {
+                  localViewParent.onNestedScrollAccepted(localView1, localView3, paramInt1);
+                }
+                catch (AbstractMethodError localAbstractMethodError)
+                {
+                  new StringBuilder("ViewParent ").append(localViewParent).append(" does not implement interface method onNestedScrollAccepted");
+                }
+              } else if ((localViewParent instanceof m)) {
+                ((m)localViewParent).onNestedScrollAccepted(localAbstractMethodError, localView3, paramInt1);
+              }
+            }
+          }
+        }
+        if ((localViewParent instanceof View)) {
+          View localView2 = (View)localViewParent;
+        }
+        localViewParent = localViewParent.getParent();
+      }
+    }
+    return false;
   }
   
   public final boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt, int paramInt5)
@@ -47,7 +93,7 @@ public final class l
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.NV)
+    if (this.PM)
     {
       localViewParent = aO(paramInt5);
       if (localViewParent == null) {
@@ -90,7 +136,7 @@ public final class l
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.NV)
+    if (this.PM)
     {
       localViewParent = aO(paramInt3);
       if (localViewParent == null) {
@@ -110,10 +156,10 @@ public final class l
     {
       if (paramArrayOfInt1 == null)
       {
-        if (this.NW == null) {
-          this.NW = new int[2];
+        if (this.PN == null) {
+          this.PN = new int[2];
         }
-        paramArrayOfInt1 = this.NW;
+        paramArrayOfInt1 = this.PN;
       }
       for (;;)
       {
@@ -183,7 +229,7 @@ public final class l
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.NV)
+    if (this.PM)
     {
       ViewParent localViewParent = aO(0);
       bool1 = bool2;
@@ -198,7 +244,7 @@ public final class l
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.NV)
+    if (this.PM)
     {
       ViewParent localViewParent = aO(0);
       bool1 = bool2;
@@ -221,56 +267,10 @@ public final class l
   
   public final void setNestedScrollingEnabled(boolean paramBoolean)
   {
-    if (this.NV) {
+    if (this.PM) {
       t.aw(this.mView);
     }
-    this.NV = paramBoolean;
-  }
-  
-  public final boolean t(int paramInt1, int paramInt2)
-  {
-    if (aN(paramInt2)) {
-      return true;
-    }
-    if (this.NV)
-    {
-      ViewParent localViewParent = this.mView.getParent();
-      View localView1 = this.mView;
-      while (localViewParent != null)
-      {
-        if (w.a(localViewParent, localView1, this.mView, paramInt1, paramInt2))
-        {
-          a(paramInt2, localViewParent);
-          View localView3 = this.mView;
-          if ((localViewParent instanceof n)) {
-            ((n)localViewParent).b(localView1, localView3, paramInt1, paramInt2);
-          }
-          for (;;)
-          {
-            return true;
-            if (paramInt2 == 0) {
-              if (Build.VERSION.SDK_INT >= 21) {
-                try
-                {
-                  localViewParent.onNestedScrollAccepted(localView1, localView3, paramInt1);
-                }
-                catch (AbstractMethodError localAbstractMethodError)
-                {
-                  new StringBuilder("ViewParent ").append(localViewParent).append(" does not implement interface method onNestedScrollAccepted");
-                }
-              } else if ((localViewParent instanceof m)) {
-                ((m)localViewParent).onNestedScrollAccepted(localAbstractMethodError, localView3, paramInt1);
-              }
-            }
-          }
-        }
-        if ((localViewParent instanceof View)) {
-          View localView2 = (View)localViewParent;
-        }
-        localViewParent = localViewParent.getParent();
-      }
-    }
-    return false;
+    this.PM = paramBoolean;
   }
 }
 

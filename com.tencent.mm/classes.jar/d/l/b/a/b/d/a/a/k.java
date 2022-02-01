@@ -12,25 +12,25 @@ import java.util.List;
 
 public abstract interface k
 {
-  public static final k LmG = new k()
+  public static final k NdD = new k()
   {
     public final k.a a(q paramAnonymousq, e paramAnonymouse, ab paramAnonymousab, List<av> paramAnonymousList, List<as> paramAnonymousList1)
     {
       AppMethodBeat.i(57688);
       if (paramAnonymousq == null) {
-        agL(0);
+        ajm(0);
       }
       if (paramAnonymouse == null) {
-        agL(1);
+        ajm(1);
       }
       if (paramAnonymousab == null) {
-        agL(2);
+        ajm(2);
       }
       if (paramAnonymousList == null) {
-        agL(3);
+        ajm(3);
       }
       if (paramAnonymousList1 == null) {
-        agL(4);
+        ajm(4);
       }
       paramAnonymousq = new k.a(paramAnonymousab, paramAnonymousList, paramAnonymousList1, Collections.emptyList());
       AppMethodBeat.o(57688);
@@ -41,10 +41,10 @@ public abstract interface k
     {
       AppMethodBeat.i(57689);
       if (paramAnonymousb == null) {
-        agL(5);
+        ajm(5);
       }
       if (paramAnonymousList == null) {
-        agL(6);
+        ajm(6);
       }
       paramAnonymousb = new UnsupportedOperationException("Should not be called");
       AppMethodBeat.o(57689);
@@ -58,29 +58,29 @@ public abstract interface k
   
   public static final class a
   {
-    public final List<as> LdP;
-    public final boolean Lhl;
-    public final ab Liw;
-    public final ab LmH;
-    public final List<av> LmI;
-    public final List<String> LmJ;
+    public final List<as> MUK;
+    public final boolean MYh;
+    public final ab MZs;
+    public final ab NdE;
+    public final List<av> NdF;
+    public final List<String> NdG;
     
     public a(ab paramab, List<av> paramList, List<as> paramList1, List<String> paramList2)
     {
       AppMethodBeat.i(57691);
-      this.Liw = paramab;
-      this.LmH = null;
-      this.LmI = paramList;
-      this.LdP = paramList1;
-      this.LmJ = paramList2;
-      this.Lhl = false;
+      this.MZs = paramab;
+      this.NdE = null;
+      this.NdF = paramList;
+      this.MUK = paramList1;
+      this.NdG = paramList2;
+      this.MYh = false;
       AppMethodBeat.o(57691);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.a.k
  * JD-Core Version:    0.7.0.1
  */

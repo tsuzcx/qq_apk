@@ -10,13 +10,13 @@ public final class AssetReader
   extends AbsReader
 {
   public static final Parcelable.Creator<AssetReader> CREATOR;
-  public static final AssetReader jly;
-  private final WxaPkgWrappingInfo jlx;
+  public static final AssetReader jFo;
+  private final WxaPkgWrappingInfo jFn;
   
   static
   {
     AppMethodBeat.i(139824);
-    jly = new AssetReader();
+    jFo = new AssetReader();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(139824);
   }
@@ -24,11 +24,11 @@ public final class AssetReader
   public AssetReader()
   {
     AppMethodBeat.i(139822);
-    this.jlx = new WxaPkgWrappingInfo();
-    this.jlx.jpc = true;
-    this.jlx.jpa = 0;
-    this.jlx.pkgVersion = aw.VERSION;
-    this.jlx.md5 = "";
+    this.jFn = new WxaPkgWrappingInfo();
+    this.jFn.jIW = true;
+    this.jFn.jIU = 0;
+    this.jFn.pkgVersion = ax.VERSION;
+    this.jFn.md5 = "";
     AppMethodBeat.o(139822);
   }
   
@@ -45,7 +45,7 @@ public final class AssetReader
   public final InputStream openRead(String paramString)
   {
     AppMethodBeat.i(139821);
-    paramString = aw.openRead(paramString);
+    paramString = ax.openRead(paramString);
     AppMethodBeat.o(139821);
     return paramString;
   }
@@ -53,7 +53,7 @@ public final class AssetReader
   public final String toString()
   {
     AppMethodBeat.i(139823);
-    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(aVU()), aVS() });
+    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(aZp()), aZn() });
     AppMethodBeat.o(139823);
     return str;
   }

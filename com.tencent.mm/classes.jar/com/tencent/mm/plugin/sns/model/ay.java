@@ -1,21 +1,68 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.j.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ui.bn;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class ay
-  implements ae
+  implements d
 {
-  private int scene = 0;
-  public c xUQ;
+  public List<WeakReference<d>> znc;
   
-  public final c dHw()
+  public ay()
   {
-    return this.xUQ;
+    AppMethodBeat.i(95990);
+    this.znc = new LinkedList();
+    AppMethodBeat.o(95990);
   }
   
-  public final int getScene()
+  public final void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean)
   {
-    return this.scene;
+    AppMethodBeat.i(95993);
+    Iterator localIterator = this.znc.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((d)localWeakReference.get()).a(paramInt, paramString, paramLong, paramTimeLineObject, paramBoolean);
+      }
+    }
+    AppMethodBeat.o(95993);
+  }
+  
+  public final void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean, bn parambn)
+  {
+    AppMethodBeat.i(95992);
+    Iterator localIterator = this.znc.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((d)localWeakReference.get()).a(paramInt, paramString, paramLong, paramTimeLineObject, paramBoolean, parambn);
+      }
+    }
+    AppMethodBeat.o(95992);
+  }
+  
+  public final void a(d paramd)
+  {
+    AppMethodBeat.i(95991);
+    Iterator localIterator = this.znc.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((d)localWeakReference.get()).equals(paramd)))
+      {
+        AppMethodBeat.o(95991);
+        return;
+      }
+    }
+    this.znc.add(new WeakReference(paramd));
+    AppMethodBeat.o(95991);
   }
 }
 

@@ -2,28 +2,28 @@ package com.tencent.mm.sdk.h;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
 {
-  private static Boolean Gwh = null;
+  private static Boolean Iib = null;
   private static String TAG = "MicroMsg.Vendor.OnePlus";
   
-  public static boolean eWN()
+  public static boolean fmx()
   {
     AppMethodBeat.i(177603);
-    if (Gwh == null)
+    if (Iib == null)
     {
       String str = Build.BRAND;
-      ac.i(TAG, "Build.BRAND = %s", new Object[] { str });
+      ad.i(TAG, "Build.BRAND = %s", new Object[] { str });
       if (!str.toLowerCase().contains("oneplus")) {
         break label63;
       }
     }
     label63:
-    for (Gwh = Boolean.TRUE;; Gwh = Boolean.FALSE)
+    for (Iib = Boolean.TRUE;; Iib = Boolean.FALSE)
     {
-      boolean bool = Gwh.booleanValue();
+      boolean bool = Iib.booleanValue();
       AppMethodBeat.o(177603);
       return bool;
     }

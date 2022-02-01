@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.ipcall.model.b.a.a;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.h;
 import com.tencent.mm.plugin.ipcall.model.h.a;
-import com.tencent.mm.protocal.protobuf.chz;
+import com.tencent.mm.protocal.protobuf.cmz;
 
 public final class e
   extends com.tencent.mm.plugin.ipcall.model.b.a
   implements h.a
 {
-  private h tLy = null;
+  private h uOl = null;
   
-  public final void BE()
+  public final void Dd()
   {
     AppMethodBeat.i(25520);
-    this.tLy = new h();
-    this.tLy.tIa = this;
-    com.tencent.mm.sdk.b.a.GpY.c(this.tLy);
+    this.uOl = new h();
+    this.uOl.uKN = this;
+    com.tencent.mm.sdk.b.a.IbL.c(this.uOl);
     AppMethodBeat.o(25520);
   }
   
-  public final void a(chz paramchz)
+  public final void a(cmz paramcmz)
   {
     AppMethodBeat.i(25522);
-    this.tID.a(8, paramchz, 0, 0);
+    this.uLq.a(8, paramcmz, 0, 0);
     AppMethodBeat.o(25522);
   }
   
   public final void b(c paramc) {}
   
-  public final int[] cUI()
+  public final int[] ddT()
   {
     return new int[0];
   }
@@ -45,7 +45,7 @@ public final class e
   public final void onDestroy()
   {
     AppMethodBeat.i(25521);
-    com.tencent.mm.sdk.b.a.GpY.d(this.tLy);
+    com.tencent.mm.sdk.b.a.IbL.d(this.uOl);
     AppMethodBeat.o(25521);
   }
   
@@ -53,7 +53,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.g.e
  * JD-Core Version:    0.7.0.1
  */

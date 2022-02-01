@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.fav.b.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahd;
-import com.tencent.mm.protocal.protobuf.ahq;
-import com.tencent.mm.protocal.protobuf.ux;
-import com.tencent.mm.protocal.protobuf.uy;
-import com.tencent.mm.protocal.protobuf.uz;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ajt;
+import com.tencent.mm.protocal.protobuf.akg;
+import com.tencent.mm.protocal.protobuf.ww;
+import com.tencent.mm.protocal.protobuf.wx;
+import com.tencent.mm.protocal.protobuf.wy;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,53 +25,53 @@ public final class a
   extends n
   implements k
 {
-  private g callback;
-  private b hEg;
+  private f callback;
+  private b hWL;
   
-  public a(ahq paramahq)
+  public a(akg paramakg)
   {
     AppMethodBeat.i(101581);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new ux();
-    ((b.a)localObject).hvu = new uy();
+    ((b.a)localObject).hNM = new ww();
+    ((b.a)localObject).hNN = new wx();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkfavitem";
     ((b.a)localObject).funcId = 405;
-    ((b.a)localObject).reqCmdId = 196;
+    ((b.a)localObject).hNO = 196;
     ((b.a)localObject).respCmdId = 1000000196;
-    this.hEg = ((b.a)localObject).aAz();
-    localObject = (ux)this.hEg.hvr.hvw;
-    ((ux)localObject).Epc = paramahq;
-    ((ux)localObject).Scene = 2;
-    ac.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem CHECK_FAV_ITEM_SCENE_FIX_DATA %s", new Object[] { Integer.valueOf(paramahq.DPH) });
+    this.hWL = ((b.a)localObject).aDC();
+    localObject = (ww)this.hWL.hNK.hNQ;
+    ((ww)localObject).FWo = paramakg;
+    ((ww)localObject).Scene = 2;
+    ad.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem CHECK_FAV_ITEM_SCENE_FIX_DATA %s", new Object[] { Integer.valueOf(paramakg.FuW) });
     AppMethodBeat.o(101581);
   }
   
-  public a(List<ahd> paramList)
+  public a(List<ajt> paramList)
   {
     AppMethodBeat.i(101580);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new ux();
-    ((b.a)localObject).hvu = new uy();
+    ((b.a)localObject).hNM = new ww();
+    ((b.a)localObject).hNN = new wx();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkfavitem";
     ((b.a)localObject).funcId = 405;
-    ((b.a)localObject).reqCmdId = 196;
+    ((b.a)localObject).hNO = 196;
     ((b.a)localObject).respCmdId = 1000000196;
-    this.hEg = ((b.a)localObject).aAz();
-    localObject = (ux)this.hEg.hvr.hvw;
-    ((ux)localObject).Epb = new LinkedList();
-    ((ux)localObject).Epb.addAll(paramList);
-    ((ux)localObject).Scene = 1;
-    ac.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem CHECK_FAV_ITEM_SCENE_FIX_OBJECT %s", new Object[] { Integer.valueOf(paramList.size()) });
+    this.hWL = ((b.a)localObject).aDC();
+    localObject = (ww)this.hWL.hNK.hNQ;
+    ((ww)localObject).FWn = new LinkedList();
+    ((ww)localObject).FWn.addAll(paramList);
+    ((ww)localObject).Scene = 1;
+    ad.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem CHECK_FAV_ITEM_SCENE_FIX_OBJECT %s", new Object[] { Integer.valueOf(paramList.size()) });
     AppMethodBeat.o(101580);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(101582);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hEg, this);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hWL, this);
     AppMethodBeat.o(101582);
     return i;
   }
@@ -84,20 +84,20 @@ public final class a
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(101583);
-    ac.i("MicroMsg.Fav.NetSceneCheckFavItem", "netId %d errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (uy)((b)paramq).hvs.hvw;
+    ad.i("MicroMsg.Fav.NetSceneCheckFavItem", "netId %d errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (wx)((b)paramq).hNL.hNQ;
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ac.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem,cgi return error,errcode:%d,errType:%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt2) });
+      ad.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem,cgi return error,errcode:%d,errType:%d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt2) });
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(101583);
       return;
     }
-    paramq = paramq.Epd.iterator();
+    paramq = paramq.FWp.iterator();
     while (paramq.hasNext())
     {
-      paramArrayOfByte = (uz)paramq.next();
-      ac.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem, onGYNetEnd,favid: %d, ret: %d", new Object[] { Integer.valueOf(paramArrayOfByte.DPH), Integer.valueOf(paramArrayOfByte.Ret) });
+      paramArrayOfByte = (wy)paramq.next();
+      ad.i("MicroMsg.Fav.NetSceneCheckFavItem", "NetSceneCheckFavItem, onGYNetEnd,favid: %d, ret: %d", new Object[] { Integer.valueOf(paramArrayOfByte.FuW), Integer.valueOf(paramArrayOfByte.Ret) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(101583);
@@ -110,12 +110,12 @@ public final class a
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hwa;
+    return n.b.hOp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.d.a
  * JD-Core Version:    0.7.0.1
  */

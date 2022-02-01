@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -21,11 +21,11 @@ import java.util.List;
 public class SnsDrawGestureView
   extends ImageView
 {
+  private a ADo;
+  private int ADp;
+  private Paint ADq;
+  private Paint ADr;
   private List<PointF> points;
-  private a zlj;
-  private int zlk;
-  private Paint zll;
-  private Paint zlm;
   
   public SnsDrawGestureView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,24 +37,24 @@ public class SnsDrawGestureView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(100540);
     this.points = new ArrayList();
-    this.zlk = -1;
-    this.zll = new Paint();
-    this.zlm = new Paint();
-    this.zll.setColor(this.zlk);
-    this.zll.setStyle(Paint.Style.STROKE);
-    this.zll.setStrokeWidth(a.fromDPToPix(getContext(), 8));
-    this.zll.setPathEffect(new CornerPathEffect(a.fromDPToPix(getContext(), 4)));
-    this.zll.setAntiAlias(true);
-    this.zlm.setColor(this.zlk);
-    this.zlm.setStyle(Paint.Style.FILL);
-    this.zlm.setAntiAlias(true);
-    if (d.la(21)) {
+    this.ADp = -1;
+    this.ADq = new Paint();
+    this.ADr = new Paint();
+    this.ADq.setColor(this.ADp);
+    this.ADq.setStyle(Paint.Style.STROKE);
+    this.ADq.setStrokeWidth(a.fromDPToPix(getContext(), 8));
+    this.ADq.setPathEffect(new CornerPathEffect(a.fromDPToPix(getContext(), 4)));
+    this.ADq.setAntiAlias(true);
+    this.ADr.setColor(this.ADp);
+    this.ADr.setStyle(Paint.Style.FILL);
+    this.ADr.setAntiAlias(true);
+    if (d.lz(21)) {
       setLayerType(1, null);
     }
     AppMethodBeat.o(100540);
   }
   
-  private List<PointF> dSJ()
+  private List<PointF> efc()
   {
     AppMethodBeat.i(100543);
     ArrayList localArrayList = new ArrayList();
@@ -68,7 +68,7 @@ public class SnsDrawGestureView
     return localArrayList;
   }
   
-  public final void dSK()
+  public final void efd()
   {
     AppMethodBeat.i(100545);
     this.points.clear();
@@ -78,7 +78,7 @@ public class SnsDrawGestureView
   
   public a getOnGestureListener()
   {
-    return this.zlj;
+    return this.ADo;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -89,15 +89,15 @@ public class SnsDrawGestureView
     {
       Path localPath = new Path();
       localPath.moveTo(((PointF)this.points.get(0)).x, ((PointF)this.points.get(0)).y);
-      paramCanvas.drawCircle(((PointF)this.points.get(0)).x, ((PointF)this.points.get(0)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.zlm);
+      paramCanvas.drawCircle(((PointF)this.points.get(0)).x, ((PointF)this.points.get(0)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.ADr);
       int i = 1;
       while (i < this.points.size())
       {
         localPath.lineTo(((PointF)this.points.get(i)).x, ((PointF)this.points.get(i)).y);
         i += 1;
       }
-      paramCanvas.drawPath(localPath, this.zll);
-      paramCanvas.drawCircle(((PointF)this.points.get(this.points.size() - 1)).x, ((PointF)this.points.get(this.points.size() - 1)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.zlm);
+      paramCanvas.drawPath(localPath, this.ADq);
+      paramCanvas.drawCircle(((PointF)this.points.get(this.points.size() - 1)).x, ((PointF)this.points.get(this.points.size() - 1)).y, a.fromDPToPix(getContext(), 8) / 2.0F, this.ADr);
     }
     AppMethodBeat.o(100542);
   }
@@ -107,8 +107,8 @@ public class SnsDrawGestureView
     AppMethodBeat.i(100541);
     if (paramMotionEvent.getActionMasked() == 0)
     {
-      if (this.zlj != null) {
-        this.zlj.dRJ();
+      if (this.ADo != null) {
+        this.ADo.eed();
       }
       this.points.clear();
       paramMotionEvent = new PointF(paramMotionEvent.getX(), paramMotionEvent.getY());
@@ -126,45 +126,45 @@ public class SnsDrawGestureView
       }
       else if (paramMotionEvent.getActionMasked() == 1)
       {
-        ac.i("MicroMsg.SnsDrawGestureViewView", "point count %d", new Object[] { Integer.valueOf(this.points.size()) });
+        ad.i("MicroMsg.SnsDrawGestureViewView", "point count %d", new Object[] { Integer.valueOf(this.points.size()) });
         if (this.points.size() < 6)
         {
           this.points.clear();
-          if (this.zlj != null) {
-            this.zlj.onClick();
+          if (this.ADo != null) {
+            this.ADo.onClick();
           }
         }
-        else if (this.zlj != null)
+        else if (this.ADo != null)
         {
-          this.zlj.fR(dSJ());
+          this.ADo.gc(efc());
         }
       }
-      else if (this.zlj != null)
+      else if (this.ADo != null)
       {
-        this.zlj.fR(dSJ());
+        this.ADo.gc(efc());
       }
     }
   }
   
   public void setOnGestureListener(a parama)
   {
-    this.zlj = parama;
+    this.ADo = parama;
   }
   
   public void setPaintColor(int paramInt)
   {
     AppMethodBeat.i(100544);
-    this.zlk = paramInt;
-    this.zll.setColor(this.zlk);
-    this.zlm.setColor(this.zlk);
+    this.ADp = paramInt;
+    this.ADq.setColor(this.ADp);
+    this.ADr.setColor(this.ADp);
     AppMethodBeat.o(100544);
   }
   
   public static abstract interface a
   {
-    public abstract void dRJ();
+    public abstract void eed();
     
-    public abstract void fR(List<PointF> paramList);
+    public abstract void gc(List<PointF> paramList);
     
     public abstract void onClick();
   }

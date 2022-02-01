@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class hw
   extends b
 {
-  public a diU;
-  public b diV;
-  
   public hw()
   {
     this((byte)0);
@@ -17,24 +12,8 @@ public final class hw
   
   private hw(byte paramByte)
   {
-    AppMethodBeat.i(89640);
-    this.diU = new a();
-    this.diV = new b();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(89640);
-  }
-  
-  public static final class a
-  {
-    public int CW = 0;
-    public Context context;
-    public String param;
-  }
-  
-  public static final class b
-  {
-    public String result;
   }
 }
 

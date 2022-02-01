@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ap;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class i
-  extends ap
+  extends aq
 {
   public static c.a info;
   
@@ -15,36 +15,36 @@ public final class i
   {
     AppMethodBeat.i(112781);
     c.a locala = new c.a();
-    locala.GvF = new Field[7];
+    locala.IhA = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "card_id";
-    locala.GvH.put("card_id", "TEXT PRIMARY KEY ");
+    locala.IhC.put("card_id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" card_id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "card_id";
+    locala.IhB = "card_id";
     locala.columns[1] = "lower_bound";
-    locala.GvH.put("lower_bound", "INTEGER");
+    locala.IhC.put("lower_bound", "INTEGER");
     localStringBuilder.append(" lower_bound INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "need_insert_show_timestamp";
-    locala.GvH.put("need_insert_show_timestamp", "INTEGER default 'false' ");
+    locala.IhC.put("need_insert_show_timestamp", "INTEGER default 'false' ");
     localStringBuilder.append(" need_insert_show_timestamp INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "show_timestamp_encrypt_key";
-    locala.GvH.put("show_timestamp_encrypt_key", "TEXT");
+    locala.IhC.put("show_timestamp_encrypt_key", "TEXT");
     localStringBuilder.append(" show_timestamp_encrypt_key TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "expire_time_interval";
-    locala.GvH.put("expire_time_interval", "INTEGER");
+    locala.IhC.put("expire_time_interval", "INTEGER");
     localStringBuilder.append(" expire_time_interval INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "show_expire_interval";
-    locala.GvH.put("show_expire_interval", "INTEGER");
+    locala.IhC.put("show_expire_interval", "INTEGER");
     localStringBuilder.append(" show_expire_interval INTEGER");
     localStringBuilder.append(", ");
     locala.columns[6] = "fetch_time";
-    locala.GvH.put("fetch_time", "LONG");
+    locala.IhC.put("fetch_time", "LONG");
     localStringBuilder.append(" fetch_time LONG");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -59,7 +59,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.i
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ import java.nio.ShortBuffer;
 public final class l
   implements d
 {
-  float aTw;
-  private int aVX;
-  private k aWH;
-  private ShortBuffer aWI;
-  long aWJ;
-  long aWK;
-  private boolean aWa;
+  float bdQ;
+  private int bgs;
+  private boolean bgv;
+  private k bhc;
+  private ShortBuffer bhd;
+  long bhe;
+  long bhf;
   private ByteBuffer buffer;
   private int channelCount;
   private ByteBuffer outputBuffer;
@@ -23,13 +23,13 @@ public final class l
   public l()
   {
     AppMethodBeat.i(91839);
-    this.aTw = 1.0F;
+    this.bdQ = 1.0F;
     this.pitch = 1.0F;
     this.channelCount = -1;
-    this.aVX = -1;
-    this.buffer = aUx;
-    this.aWI = this.buffer.asShortBuffer();
-    this.outputBuffer = aUx;
+    this.bgs = -1;
+    this.buffer = beR;
+    this.bhd = this.buffer.asShortBuffer();
+    this.outputBuffer = beR;
     AppMethodBeat.o(91839);
   }
   
@@ -44,65 +44,65 @@ public final class l
     {
       localObject1 = paramByteBuffer.asShortBuffer();
       i = paramByteBuffer.remaining();
-      this.aWJ += i;
-      localObject2 = this.aWH;
-      j = ((ShortBuffer)localObject1).remaining() / ((k)localObject2).aWm;
-      k = ((k)localObject2).aWm;
-      ((k)localObject2).dK(j);
-      ((ShortBuffer)localObject1).get(((k)localObject2).aWs, ((k)localObject2).aWz * ((k)localObject2).aWm, k * j * 2 / 2);
-      ((k)localObject2).aWz += j;
-      ((k)localObject2).sx();
+      this.bhe += i;
+      localObject2 = this.bhc;
+      j = ((ShortBuffer)localObject1).remaining() / ((k)localObject2).bgH;
+      k = ((k)localObject2).bgH;
+      ((k)localObject2).dO(j);
+      ((ShortBuffer)localObject1).get(((k)localObject2).bgN, ((k)localObject2).bgU * ((k)localObject2).bgH, k * j * 2 / 2);
+      ((k)localObject2).bgU += j;
+      ((k)localObject2).tW();
       paramByteBuffer.position(paramByteBuffer.position() + i);
     }
-    int i = this.aWH.aWA * this.channelCount * 2;
+    int i = this.bhc.bgV * this.channelCount * 2;
     if (i > 0)
     {
       if (this.buffer.capacity() >= i) {
         break label311;
       }
       this.buffer = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder());
-      this.aWI = this.buffer.asShortBuffer();
+      this.bhd = this.buffer.asShortBuffer();
     }
     for (;;)
     {
-      paramByteBuffer = this.aWH;
-      localObject1 = this.aWI;
-      j = Math.min(((ShortBuffer)localObject1).remaining() / paramByteBuffer.aWm, paramByteBuffer.aWA);
-      ((ShortBuffer)localObject1).put(paramByteBuffer.aWu, 0, paramByteBuffer.aWm * j);
-      paramByteBuffer.aWA -= j;
-      localObject1 = paramByteBuffer.aWu;
-      k = paramByteBuffer.aWm;
-      localObject2 = paramByteBuffer.aWu;
-      int m = paramByteBuffer.aWA;
-      System.arraycopy(localObject1, j * k, localObject2, 0, paramByteBuffer.aWm * m);
-      this.aWK += i;
+      paramByteBuffer = this.bhc;
+      localObject1 = this.bhd;
+      j = Math.min(((ShortBuffer)localObject1).remaining() / paramByteBuffer.bgH, paramByteBuffer.bgV);
+      ((ShortBuffer)localObject1).put(paramByteBuffer.bgP, 0, paramByteBuffer.bgH * j);
+      paramByteBuffer.bgV -= j;
+      localObject1 = paramByteBuffer.bgP;
+      k = paramByteBuffer.bgH;
+      localObject2 = paramByteBuffer.bgP;
+      int m = paramByteBuffer.bgV;
+      System.arraycopy(localObject1, j * k, localObject2, 0, paramByteBuffer.bgH * m);
+      this.bhf += i;
       this.buffer.limit(i);
       this.outputBuffer = this.buffer;
       AppMethodBeat.o(91842);
       return;
       label311:
       this.buffer.clear();
-      this.aWI.clear();
+      this.bhd.clear();
     }
   }
   
   public final void flush()
   {
     AppMethodBeat.i(91844);
-    this.aWH = new k(this.aVX, this.channelCount);
-    this.aWH.aTw = this.aTw;
-    this.aWH.pitch = this.pitch;
-    this.outputBuffer = aUx;
-    this.aWJ = 0L;
-    this.aWK = 0L;
-    this.aWa = false;
+    this.bhc = new k(this.bgs, this.channelCount);
+    this.bhc.bdQ = this.bdQ;
+    this.bhc.pitch = this.pitch;
+    this.outputBuffer = beR;
+    this.bhe = 0L;
+    this.bhf = 0L;
+    this.bgv = false;
     AppMethodBeat.o(91844);
   }
   
   public final boolean isActive()
   {
     AppMethodBeat.i(91841);
-    if ((Math.abs(this.aTw - 1.0F) >= 0.01F) || (Math.abs(this.pitch - 1.0F) >= 0.01F))
+    if ((Math.abs(this.bdQ - 1.0F) >= 0.01F) || (Math.abs(this.pitch - 1.0F) >= 0.01F))
     {
       AppMethodBeat.o(91841);
       return true;
@@ -111,23 +111,18 @@ public final class l
     return false;
   }
   
-  public final boolean rX()
-  {
-    return (this.aWa) && ((this.aWH == null) || (this.aWH.aWA == 0));
-  }
-  
   public final void reset()
   {
     AppMethodBeat.i(91845);
-    this.aWH = null;
-    this.buffer = aUx;
-    this.aWI = this.buffer.asShortBuffer();
-    this.outputBuffer = aUx;
+    this.bhc = null;
+    this.buffer = beR;
+    this.bhd = this.buffer.asShortBuffer();
+    this.outputBuffer = beR;
     this.channelCount = -1;
-    this.aVX = -1;
-    this.aWJ = 0L;
-    this.aWK = 0L;
-    this.aWa = false;
+    this.bgs = -1;
+    this.bhe = 0L;
+    this.bhf = 0L;
+    this.bgv = false;
     AppMethodBeat.o(91845);
   }
   
@@ -140,53 +135,58 @@ public final class l
       AppMethodBeat.o(91840);
       throw locala;
     }
-    if ((this.aVX == paramInt1) && (this.channelCount == paramInt2))
+    if ((this.bgs == paramInt1) && (this.channelCount == paramInt2))
     {
       AppMethodBeat.o(91840);
       return false;
     }
-    this.aVX = paramInt1;
+    this.bgs = paramInt1;
     this.channelCount = paramInt2;
     AppMethodBeat.o(91840);
     return true;
   }
   
-  public final int sd()
+  public final int tC()
   {
     return this.channelCount;
   }
   
-  public final void se()
+  public final void tD()
   {
     AppMethodBeat.i(91843);
-    k localk = this.aWH;
-    int j = localk.aWz;
-    float f = localk.aTw / localk.pitch;
-    int k = localk.aWA + (int)((j / f + localk.aWB) / localk.pitch + 0.5F);
-    localk.dK(localk.aWp * 2 + j);
+    k localk = this.bhc;
+    int j = localk.bgU;
+    float f = localk.bdQ / localk.pitch;
+    int k = localk.bgV + (int)((j / f + localk.bgW) / localk.pitch + 0.5F);
+    localk.dO(localk.bgK * 2 + j);
     int i = 0;
-    while (i < localk.aWp * 2 * localk.aWm)
+    while (i < localk.bgK * 2 * localk.bgH)
     {
-      localk.aWs[(localk.aWm * j + i)] = 0;
+      localk.bgN[(localk.bgH * j + i)] = 0;
       i += 1;
     }
-    localk.aWz += localk.aWp * 2;
-    localk.sx();
-    if (localk.aWA > k) {
-      localk.aWA = k;
+    localk.bgU += localk.bgK * 2;
+    localk.tW();
+    if (localk.bgV > k) {
+      localk.bgV = k;
     }
-    localk.aWz = 0;
-    localk.aWC = 0;
-    localk.aWB = 0;
-    this.aWa = true;
+    localk.bgU = 0;
+    localk.bgX = 0;
+    localk.bgW = 0;
+    this.bgv = true;
     AppMethodBeat.o(91843);
   }
   
-  public final ByteBuffer sf()
+  public final ByteBuffer tE()
   {
     ByteBuffer localByteBuffer = this.outputBuffer;
-    this.outputBuffer = aUx;
+    this.outputBuffer = beR;
     return localByteBuffer;
+  }
+  
+  public final boolean tw()
+  {
+    return (this.bgv) && ((this.bhc == null) || (this.bhc.bgV == 0));
   }
 }
 

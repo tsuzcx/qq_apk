@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class eq
   extends b
 {
-  public a dev;
-  public b dew;
+  public a dpK;
+  public b dpL;
   
   public eq()
   {
@@ -16,24 +16,24 @@ public final class eq
   
   private eq(byte paramByte)
   {
-    AppMethodBeat.i(116007);
-    this.dev = new a();
-    this.dew = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116004);
+    this.dpK = new a();
+    this.dpL = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116007);
+    AppMethodBeat.o(116004);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public String data;
-    public String ddh;
+    public String doD;
+    public boolean doE = false;
+    public int dpM = -1;
   }
   
   public static final class b
   {
-    public boolean ddj;
+    public boolean doF;
   }
 }
 

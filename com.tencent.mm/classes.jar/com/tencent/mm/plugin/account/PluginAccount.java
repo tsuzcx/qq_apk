@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.bs.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.platformtools.y;
 import com.tencent.mm.plugin.account.friend.a.ap;
@@ -13,9 +13,9 @@ import com.tencent.mm.plugin.account.friend.a.k;
 import com.tencent.mm.plugin.account.friend.a.o;
 import com.tencent.mm.plugin.account.friend.a.q;
 import com.tencent.mm.plugin.account.model.l;
-import com.tencent.mm.protocal.protobuf.bpw;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.protocal.protobuf.buj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.LinkedList;
 
 public class PluginAccount
@@ -32,11 +32,11 @@ public class PluginAccount
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(127754);
-    c.aIn("account");
+    c.aNQ("account");
     pin(new com.tencent.mm.model.t(l.class));
     pin(new com.tencent.mm.model.t(a.class));
     pin(new com.tencent.mm.model.t(com.tencent.mm.plugin.account.security.a.g.class));
-    ac.i("MicroMsg.PluginAccount", "execute PluginAccount");
+    ad.i("MicroMsg.PluginAccount", "execute PluginAccount");
     AppMethodBeat.o(127754);
   }
   
@@ -64,7 +64,7 @@ public class PluginAccount
     return localk;
   }
   
-  public LinkedList<bpw> getFriendData()
+  public LinkedList<buj> getFriendData()
   {
     AppMethodBeat.i(127763);
     LinkedList localLinkedList = a.getFriendData();
@@ -123,7 +123,7 @@ public class PluginAccount
   public void removeSelfAccount(Context paramContext)
   {
     AppMethodBeat.i(127767);
-    com.tencent.mm.platformtools.t.cX(paramContext);
+    com.tencent.mm.platformtools.t.cV(paramContext);
     AppMethodBeat.o(127767);
   }
   
@@ -152,8 +152,8 @@ public class PluginAccount
   public void syncAddrBookAndUpload()
   {
     AppMethodBeat.i(127765);
-    ai.getContext();
-    com.tencent.mm.platformtools.a.aMY();
+    aj.getContext();
+    com.tencent.mm.platformtools.a.aQj();
     AppMethodBeat.o(127765);
   }
   
@@ -167,7 +167,7 @@ public class PluginAccount
   public void updateAllContact()
   {
     AppMethodBeat.i(127771);
-    com.tencent.mm.platformtools.t.cY(ai.getContext());
+    com.tencent.mm.platformtools.t.cW(aj.getContext());
     AppMethodBeat.o(127771);
   }
 }

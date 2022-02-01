@@ -14,12 +14,12 @@ import java.io.RandomAccessFile;
 public class k
   implements t
 {
-  private long bus;
+  private long bEH;
   private RandomAccessFile file;
-  private String kPQ = "";
-  private String kQE;
-  private final s kQh = null;
-  private long kQj = -1L;
+  private final s lmH = null;
+  private long lmJ = -1L;
+  private String lmq = "";
+  private String lne;
   private boolean opened;
   private Uri uri;
   
@@ -30,14 +30,14 @@ public class k
   
   private k(byte paramByte) {}
   
-  public final void No(String paramString)
+  public final void QL(String paramString)
   {
-    this.kPQ = paramString;
+    this.lmq = paramString;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(194243);
+    AppMethodBeat.i(206055);
     for (;;)
     {
       try
@@ -48,36 +48,41 @@ public class k
         if (paramg.length == -1L)
         {
           l = this.file.length() - paramg.position;
-          this.bus = l;
-          this.kQj = (this.file.length() - paramg.position);
-          if (this.bus >= 0L) {
+          this.bEH = l;
+          this.lmJ = (this.file.length() - paramg.position);
+          if (this.bEH >= 0L) {
             break;
           }
           paramg = new EOFException();
-          AppMethodBeat.o(194243);
+          AppMethodBeat.o(206055);
           throw paramg;
         }
       }
       catch (IOException paramg)
       {
         paramg = new a(paramg);
-        AppMethodBeat.o(194243);
+        AppMethodBeat.o(206055);
         throw paramg;
       }
       l = paramg.length;
     }
     this.opened = true;
-    if (this.kQh != null) {
-      this.kQh.onTransferStart();
+    if (this.lmH != null) {
+      this.lmH.onTransferStart();
     }
-    long l = this.bus;
-    AppMethodBeat.o(194243);
+    long l = this.bEH;
+    AppMethodBeat.o(206055);
     return l;
   }
   
-  public final long aXm()
+  public final long available()
   {
-    AppMethodBeat.i(194248);
+    return this.lmJ;
+  }
+  
+  public final long baK()
+  {
+    AppMethodBeat.i(206060);
     long l1 = 0L;
     try
     {
@@ -89,34 +94,29 @@ public class k
       label17:
       break label17;
     }
-    AppMethodBeat.o(194248);
+    AppMethodBeat.o(206060);
     return l1;
   }
   
-  public final long available()
+  public c bnC()
   {
-    return this.kQj;
-  }
-  
-  public c bjR()
-  {
-    AppMethodBeat.i(194247);
-    Object localObject = a.bjM().appContext.getContentResolver().getType(this.uri);
+    AppMethodBeat.i(206059);
+    Object localObject = a.bnx().appContext.getContentResolver().getType(this.uri);
     if (localObject == null)
     {
-      localObject = c.kQQ;
-      AppMethodBeat.o(194247);
+      localObject = c.lnr;
+      AppMethodBeat.o(206059);
       return localObject;
     }
-    localObject = c.Nr((String)localObject);
-    AppMethodBeat.o(194247);
+    localObject = c.QO((String)localObject);
+    AppMethodBeat.o(206059);
     return localObject;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(194246);
-    this.kQE = null;
+    AppMethodBeat.i(206058);
+    this.lne = null;
     if (this.file != null) {
       try
       {
@@ -126,7 +126,7 @@ public class k
       catch (IOException localIOException)
       {
         a locala = new a(localIOException);
-        AppMethodBeat.o(194246);
+        AppMethodBeat.o(206058);
         throw locala;
       }
       finally
@@ -135,52 +135,52 @@ public class k
         if (this.opened)
         {
           this.opened = false;
-          if (this.kQh != null) {
-            this.kQh.onTransferEnd();
+          if (this.lmH != null) {
+            this.lmH.onTransferEnd();
           }
         }
-        AppMethodBeat.o(194246);
+        AppMethodBeat.o(206058);
       }
     }
-    AppMethodBeat.o(194246);
+    AppMethodBeat.o(206058);
   }
   
   public final String getUri()
   {
-    AppMethodBeat.i(194245);
-    if ((TextUtils.isEmpty(this.kQE)) && (this.uri != null)) {
-      this.kQE = this.uri.toString();
+    AppMethodBeat.i(206057);
+    if ((TextUtils.isEmpty(this.lne)) && (this.uri != null)) {
+      this.lne = this.uri.toString();
     }
-    String str = this.kQE;
-    AppMethodBeat.o(194245);
+    String str = this.lne;
+    AppMethodBeat.o(206057);
     return str;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(194244);
-    if (this.bus == 0L)
+    AppMethodBeat.i(206056);
+    if (this.bEH == 0L)
     {
-      AppMethodBeat.o(194244);
+      AppMethodBeat.o(206056);
       return -1;
     }
     try
     {
-      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bus, paramInt2));
+      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEH, paramInt2));
       if (paramInt1 > 0)
       {
-        this.bus -= paramInt1;
-        if (this.kQh != null) {
-          this.kQh.sS(paramInt1);
+        this.bEH -= paramInt1;
+        if (this.lmH != null) {
+          this.lmH.tv(paramInt1);
         }
       }
-      AppMethodBeat.o(194244);
+      AppMethodBeat.o(206056);
       return paramInt1;
     }
     catch (IOException paramArrayOfByte)
     {
       paramArrayOfByte = new a(paramArrayOfByte);
-      AppMethodBeat.o(194244);
+      AppMethodBeat.o(206056);
       throw paramArrayOfByte;
     }
   }

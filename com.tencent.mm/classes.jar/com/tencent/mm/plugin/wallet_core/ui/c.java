@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.wallet_core.ui;
 class c
   implements WalletCheckPwdNewUI.a
 {
-  protected WalletCheckPwdNewUI BBF;
+  protected WalletCheckPwdNewUI DbX;
   
   public c(WalletCheckPwdNewUI paramWalletCheckPwdNewUI)
   {
-    this.BBF = paramWalletCheckPwdNewUI;
+    this.DbX = paramWalletCheckPwdNewUI;
   }
   
-  public void azA(String paramString) {}
+  public void aEK(String paramString) {}
   
   public void onCreate() {}
 }

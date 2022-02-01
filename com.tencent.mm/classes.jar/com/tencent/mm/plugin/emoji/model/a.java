@@ -5,15 +5,15 @@ import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 
 public final class a
 {
-  public EmotionBannerSet pae;
-  public EmotionBanner paf;
-  public boolean pag = false;
+  public EmotionBannerSet pDO;
+  public EmotionBanner pDP;
+  public boolean pDQ = false;
   
   public a(EmotionBanner paramEmotionBanner, EmotionBannerSet paramEmotionBannerSet, boolean paramBoolean)
   {
-    this.paf = paramEmotionBanner;
-    this.pae = paramEmotionBannerSet;
-    this.pag = paramBoolean;
+    this.pDP = paramEmotionBanner;
+    this.pDO = paramEmotionBannerSet;
+    this.pDQ = paramBoolean;
   }
 }
 

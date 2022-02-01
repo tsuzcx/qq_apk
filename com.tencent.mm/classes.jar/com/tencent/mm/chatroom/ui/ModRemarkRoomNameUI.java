@@ -20,17 +20,18 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.model.u;
-import com.tencent.mm.n.b;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.roomsdk.a.b.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMClearEditText;
 import com.tencent.mm.ui.widget.InputPanelLinearLayout;
@@ -40,67 +41,67 @@ public class ModRemarkRoomNameUI
   extends MMActivity
   implements b.a
 {
-  private MMClearEditText fwS;
-  private TextView fwT;
-  private Button fwU;
-  private TextView fwV;
-  private ScrollView fwW;
-  private InputPanelLinearLayout fwX;
-  private String fwY;
-  private String fwZ;
+  private MMClearEditText fQf;
+  private TextView fQg;
+  private Button fQh;
+  private TextView fQi;
+  private ScrollView fQj;
+  private InputPanelLinearLayout fQk;
+  private String fQl;
+  private String fQm;
   private String roomId;
   private int scene;
   private TextView titleView;
   
-  private void sg(String paramString)
+  private void uV(String paramString)
   {
-    AppMethodBeat.i(197136);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(213543);
+    if (bt.isNullOrNil(paramString))
     {
-      this.fwV.setVisibility(8);
-      AppMethodBeat.o(197136);
+      this.fQi.setVisibility(8);
+      AppMethodBeat.o(213543);
       return;
     }
-    this.fwV.setVisibility(0);
-    this.fwV.setText(paramString);
-    AppMethodBeat.o(197136);
+    this.fQi.setVisibility(0);
+    this.fQi.setText(paramString);
+    AppMethodBeat.o(213543);
   }
   
   public final void g(boolean paramBoolean, final int paramInt)
   {
-    AppMethodBeat.i(197135);
-    ac.i("MicroMsg.RemarkRoomNameUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(213542);
+    ad.i("MicroMsg.RemarkRoomNameUI", "keyboard show %s, keyboardHeight %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
     if (paramBoolean)
     {
-      localLayoutParams = (LinearLayout.LayoutParams)this.fwU.getLayoutParams();
+      localLayoutParams = (LinearLayout.LayoutParams)this.fQh.getLayoutParams();
       localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165289);
       localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131165289);
-      this.fwU.setLayoutParams(localLayoutParams);
-      this.fwX.setPadding(this.fwX.getPaddingLeft(), this.fwX.getPaddingTop(), this.fwX.getPaddingRight(), paramInt);
-      paramInt = this.fwW.getHeight();
-      this.fwX.requestLayout();
-      this.fwX.post(new Runnable()
+      this.fQh.setLayoutParams(localLayoutParams);
+      this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), paramInt);
+      paramInt = this.fQj.getHeight();
+      this.fQk.requestLayout();
+      this.fQk.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(197130);
-          ac.i("MicroMsg.RemarkRoomNameUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(ModRemarkRoomNameUI.e(ModRemarkRoomNameUI.this).getHeight()), Integer.valueOf(paramInt) });
+          AppMethodBeat.i(213537);
+          ad.i("MicroMsg.RemarkRoomNameUI", "inputContainer.height: %d, screenHeight: %d", new Object[] { Integer.valueOf(ModRemarkRoomNameUI.e(ModRemarkRoomNameUI.this).getHeight()), Integer.valueOf(paramInt) });
           if (ModRemarkRoomNameUI.e(ModRemarkRoomNameUI.this).getHeight() > paramInt) {
             ModRemarkRoomNameUI.f(ModRemarkRoomNameUI.this).scrollBy(0, ModRemarkRoomNameUI.e(ModRemarkRoomNameUI.this).getHeight() - paramInt);
           }
-          AppMethodBeat.o(197130);
+          AppMethodBeat.o(213537);
         }
       });
-      AppMethodBeat.o(197135);
+      AppMethodBeat.o(213542);
       return;
     }
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.fwU.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.fQh.getLayoutParams();
     localLayoutParams.bottomMargin = getResources().getDimensionPixelSize(2131165277);
     localLayoutParams.topMargin = 0;
-    this.fwU.setLayoutParams(localLayoutParams);
-    this.fwX.setPadding(this.fwX.getPaddingLeft(), this.fwX.getPaddingTop(), this.fwX.getPaddingRight(), 0);
-    this.fwW.scrollBy(0, 0);
-    AppMethodBeat.o(197135);
+    this.fQh.setLayoutParams(localLayoutParams);
+    this.fQk.setPadding(this.fQk.getPaddingLeft(), this.fQk.getPaddingTop(), this.fQk.getPaddingRight(), 0);
+    this.fQj.scrollBy(0, 0);
+    AppMethodBeat.o(213542);
   }
   
   public int getLayoutId()
@@ -114,67 +115,67 @@ public class ModRemarkRoomNameUI
     setMMTitle("");
     hideActionbarLine();
     setActionbarColor(getResources().getColor(2131101179));
-    this.fwW = ((ScrollView)findViewById(2131304376));
-    this.fwX = ((InputPanelLinearLayout)findViewById(2131301024));
-    this.fwX.setExternalListener(this);
-    this.fwS = ((MMClearEditText)findViewById(2131302434));
+    this.fQj = ((ScrollView)findViewById(2131304376));
+    this.fQk = ((InputPanelLinearLayout)findViewById(2131301024));
+    this.fQk.setExternalListener(this);
+    this.fQf = ((MMClearEditText)findViewById(2131302434));
     this.titleView = ((TextView)findViewById(2131302436));
-    this.fwT = ((TextView)findViewById(2131302435));
-    this.fwU = ((Button)findViewById(2131302852));
-    this.fwV = ((TextView)findViewById(2131299523));
+    this.fQg = ((TextView)findViewById(2131302435));
+    this.fQh = ((Button)findViewById(2131302852));
+    this.fQi = ((TextView)findViewById(2131299523));
     Object localObject2 = (ImageView)findViewById(2131297960);
     Object localObject3 = findViewById(2131297969);
     this.scene = getIntent().getIntExtra("Key_Scenen", 0);
     this.roomId = getIntent().getStringExtra("Key_Room_Id");
-    ac.i("MicroMsg.RemarkRoomNameUI", "scene %d, roomId %s", new Object[] { Integer.valueOf(this.scene), this.roomId });
-    if (bs.isNullOrNil(this.roomId)) {
+    ad.i("MicroMsg.RemarkRoomNameUI", "scene %d, roomId %s", new Object[] { Integer.valueOf(this.scene), this.roomId });
+    if (bt.isNullOrNil(this.roomId)) {
       finish();
     }
-    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.roomId);
-    if ((int)((b)localObject1).fLJ > 0) {
-      com.tencent.mm.ui.f.a.a.c((ImageView)localObject2, ((av)localObject1).field_username);
+    Object localObject1 = ((l)g.ab(l.class)).azp().Bf(this.roomId);
+    if ((int)((com.tencent.mm.o.b)localObject1).gfj > 0) {
+      com.tencent.mm.ui.f.a.a.c((ImageView)localObject2, ((aw)localObject1).field_username);
     }
-    localObject2 = com.tencent.mm.pluginsdk.ui.span.k.c(this, bs.nullAsNil(((av)localObject1).field_nickname));
-    localObject1 = com.tencent.mm.pluginsdk.ui.span.k.c(this, bs.nullAsNil(((av)localObject1).field_conRemark));
-    ac.i("MicroMsg.RemarkRoomNameUI", "roomName %s, remarkName %s", new Object[] { localObject2, localObject1 });
+    localObject2 = k.c(this, bt.nullAsNil(((aw)localObject1).field_nickname));
+    localObject1 = k.c(this, bt.nullAsNil(((aw)localObject1).field_conRemark));
+    ad.i("MicroMsg.RemarkRoomNameUI", "roomName %s, remarkName %s", new Object[] { localObject2, localObject1 });
     switch (this.scene)
     {
     default: 
-      ac.w("MicroMsg.RemarkRoomNameUI", "unknown scene %d, finish()", new Object[] { Integer.valueOf(this.scene) });
+      ad.w("MicroMsg.RemarkRoomNameUI", "unknown scene %d, finish()", new Object[] { Integer.valueOf(this.scene) });
       finish();
     case 1: 
     case 3: 
       for (;;)
       {
-        this.fwS.setSelection(this.fwS.getText().length());
-        this.fwS.addTextChangedListener(new TextWatcher()
+        this.fQf.setSelection(this.fQf.getText().length());
+        this.fQf.addTextChangedListener(new TextWatcher()
         {
           public final void afterTextChanged(Editable paramAnonymousEditable)
           {
-            AppMethodBeat.i(197128);
+            AppMethodBeat.i(213535);
             ModRemarkRoomNameUI.c(ModRemarkRoomNameUI.this).setEnabled(ModRemarkRoomNameUI.b(ModRemarkRoomNameUI.this));
-            AppMethodBeat.o(197128);
+            AppMethodBeat.o(213535);
           }
           
           public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
           
           public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
           {
-            AppMethodBeat.i(197127);
+            AppMethodBeat.i(213534);
             if (paramAnonymousCharSequence.length() > 0)
             {
               ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setEllipsize(null);
-              AppMethodBeat.o(197127);
+              AppMethodBeat.o(213534);
               return;
             }
             ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setEllipsize(TextUtils.TruncateAt.END);
-            AppMethodBeat.o(197127);
+            AppMethodBeat.o(213534);
           }
         });
-        localObject1 = com.tencent.mm.ui.tools.b.c.d(this.fwS).acw(32);
-        ((com.tencent.mm.ui.tools.b.c)localObject1).IVj = false;
+        localObject1 = com.tencent.mm.ui.tools.b.c.d(this.fQf).aeU(32);
+        ((com.tencent.mm.ui.tools.b.c)localObject1).KMn = false;
         ((com.tencent.mm.ui.tools.b.c)localObject1).a(null);
-        this.fwS.requestFocus();
+        this.fQf.requestFocus();
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -185,69 +186,77 @@ public class ModRemarkRoomNameUI
             return true;
           }
         });
-        this.fwU.setOnClickListener(new View.OnClickListener()
+        this.fQh.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(197129);
+            AppMethodBeat.i(213536);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
             ModRemarkRoomNameUI.d(ModRemarkRoomNameUI.this);
-            AppMethodBeat.o(197129);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(213536);
           }
         });
         AppMethodBeat.o(12668);
         return;
         this.titleView.setText(2131762577);
-        this.fwT.setText(2131761317);
-        this.fwS.setText((CharSequence)localObject2);
-        if (bs.aj((CharSequence)localObject2)) {
-          this.fwS.setHint(getString(2131762622));
+        this.fQg.setText(2131761317);
+        this.fQf.setText((CharSequence)localObject2);
+        if (bt.ai((CharSequence)localObject2)) {
+          this.fQf.setHint(getString(2131762622));
         }
-        this.fwZ = getString(2131762586);
-        this.fwY = getString(2131762588);
+        this.fQm = getString(2131762586);
+        this.fQl = getString(2131762588);
         continue;
         this.titleView.setText(2131762651);
-        this.fwT.setText(2131761315);
-        localObject3 = this.fwS;
-        localObject2 = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(this.roomId);
+        this.fQg.setText(2131761315);
+        localObject3 = this.fQf;
+        localObject2 = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azz().AN(this.roomId);
         localObject1 = "";
         if (localObject2 != null) {
-          localObject1 = ((x)localObject2).field_selfDisplayName;
+          localObject1 = ((ab)localObject2).field_selfDisplayName;
         }
         localObject2 = localObject1;
-        if (bs.isNullOrNil((String)localObject1)) {
-          localObject2 = u.axy();
+        if (bt.isNullOrNil((String)localObject1)) {
+          localObject2 = u.aAo();
         }
-        ((MMClearEditText)localObject3).setText(com.tencent.mm.pluginsdk.ui.span.k.c(this, com.tencent.mm.pluginsdk.ui.span.k.c(this, (CharSequence)localObject2)));
-        this.fwZ = getString(2131762587);
-        this.fwY = getString(2131762585);
+        ((MMClearEditText)localObject3).setText(k.c(this, k.c(this, (CharSequence)localObject2)));
+        this.fQm = getString(2131762587);
+        this.fQl = getString(2131762585);
       }
     }
     this.titleView.setText(2131762676);
-    this.fwT.setText(2131761318);
-    this.fwS.setText((CharSequence)localObject1);
-    this.fwS.setHint(2131762676);
-    if (bs.aj((CharSequence)localObject2)) {}
+    this.fQg.setText(2131761318);
+    this.fQf.setText((CharSequence)localObject1);
+    this.fQf.setHint(2131762676);
+    if (bt.ai((CharSequence)localObject2)) {}
     for (localObject1 = getString(2131762622);; localObject1 = localObject2)
     {
       ((View)localObject3).setVisibility(0);
-      ((TextView)findViewById(2131297970)).setText(com.tencent.mm.pluginsdk.ui.span.k.c(this, getString(2131761316, new Object[] { localObject1 })));
+      ((TextView)findViewById(2131297970)).setText(k.c(this, getString(2131761316, new Object[] { localObject1 })));
       localObject1 = (TextView)findViewById(2131297971);
-      if (!bs.aj((CharSequence)localObject2)) {
+      if (!bt.ai((CharSequence)localObject2)) {
         ((TextView)localObject1).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(197126);
-            ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setText(this.fxa);
+            AppMethodBeat.i(213533);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setText(this.fQn);
             ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).setSelection(ModRemarkRoomNameUI.a(ModRemarkRoomNameUI.this).getText().length());
-            this.fxb.setVisibility(8);
-            AppMethodBeat.o(197126);
+            this.fQo.setVisibility(8);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/ModRemarkRoomNameUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(213533);
           }
         });
       }
       for (;;)
       {
-        this.fwZ = getString(2131763304);
+        this.fQm = getString(2131763304);
         break;
         ((TextView)localObject1).setVisibility(8);
       }

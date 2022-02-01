@@ -9,11 +9,11 @@ import android.os.Build;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.performance.diagnostic.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.g;
 import com.tencent.mm.vfs.q;
@@ -28,44 +28,44 @@ public final class c
 {
   private static final String PACKAGE_NAME;
   private static final String TAG;
-  private static final String vAA;
-  private static final String vAB;
-  private static final String vAC;
-  private static final String vAD;
-  private static Map<String, d<Boolean>> vAE;
-  private static Map<String, d<Void>> vAF;
-  private static ao vAG;
-  private static final String vAw;
-  private static final String vAx;
-  private static final String vAy;
-  private static final String vAz;
+  private static final String wGP;
+  private static final String wGQ;
+  private static final String wGR;
+  private static final String wGS;
+  private static final String wGT;
+  private static final String wGU;
+  private static final String wGV;
+  private static final String wGW;
+  private static Map<String, d<Boolean>> wGX;
+  private static Map<String, d<Void>> wGY;
+  private static ap wGZ;
   
   static
   {
     AppMethodBeat.i(124950);
-    TAG = com.tencent.mm.plugin.performance.a.b.apj("¿´¢¾ «ãª¼ª¢¥±§¯¦« ");
-    vAw = com.tencent.mm.plugin.performance.a.b.apj("ù³¼¶ý¨¤¯¨¦¦¹¿­¦è¡¥µ¡«");
-    vAx = vAw + com.tencent.mm.plugin.performance.a.b.apj("êá²¦²¦§·");
-    vAy = vAw + com.tencent.mm.plugin.performance.a.b.apj("åà«£³·®°¨");
-    vAz = vAw + com.tencent.mm.plugin.performance.a.b.apj("æí¤ª© µ¥¦§»");
-    vAA = vAw + com.tencent.mm.plugin.performance.a.b.apj("åàµ´¨£¤±°");
-    vAB = vAw + com.tencent.mm.plugin.performance.a.b.apj("çî­­©£° ¶«");
-    vAC = com.tencent.mm.plugin.performance.a.b.apj("·¨¤ª");
-    vAD = com.tencent.mm.plugin.performance.a.b.apj(" ¬º");
-    vAE = new TreeMap(String.CASE_INSENSITIVE_ORDER);
-    vAF = new TreeMap(String.CASE_INSENSITIVE_ORDER);
-    vAG = new ao(com.tencent.mm.plugin.performance.a.b.apj("©§¨¦¦¹¿­¦ë¡¥µ¡«"));
-    PACKAGE_NAME = ai.getContext().getPackageName();
-    vAE.put(vAC, new d() {});
-    vAE.put(vAD, new d() {});
-    vAF.put(com.tencent.mm.plugin.performance.a.b.apj("¦¤µ¢í ²¨"), new d()
+    TAG = com.tencent.mm.plugin.performance.a.b.auo("¿´¢¾ «ãª¼ª¢¥±§¯¦« ");
+    wGP = com.tencent.mm.plugin.performance.a.b.auo("ù³¼¶ý¨¤¯¨¦¦¹¿­¦è¡¥µ¡«");
+    wGQ = wGP + com.tencent.mm.plugin.performance.a.b.auo("êá²¦²¦§·");
+    wGR = wGP + com.tencent.mm.plugin.performance.a.b.auo("åà«£³·®°¨");
+    wGS = wGP + com.tencent.mm.plugin.performance.a.b.auo("æí¤ª© µ¥¦§»");
+    wGT = wGP + com.tencent.mm.plugin.performance.a.b.auo("åàµ´¨£¤±°");
+    wGU = wGP + com.tencent.mm.plugin.performance.a.b.auo("çî­­©£° ¶«");
+    wGV = com.tencent.mm.plugin.performance.a.b.auo("·¨¤ª");
+    wGW = com.tencent.mm.plugin.performance.a.b.auo(" ¬º");
+    wGX = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+    wGY = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+    wGZ = new ap(com.tencent.mm.plugin.performance.a.b.auo("©§¨¦¦¹¿­¦ë¡¥µ¡«"));
+    PACKAGE_NAME = aj.getContext().getPackageName();
+    wGX.put(wGV, new d() {});
+    wGX.put(wGW, new d() {});
+    wGY.put(com.tencent.mm.plugin.performance.a.b.auo("¦¤µ¢í ²¨"), new d()
     {
-      private static Void dof()
+      private static Void dyB()
       {
         AppMethodBeat.i(124920);
         try
         {
-          c.P(b.O(new e(ai.getContext().getApplicationInfo().sourceDir)));
+          c.Q(b.P(new e(aj.getContext().getApplicationInfo().sourceDir)));
           AppMethodBeat.o(124920);
           return null;
         }
@@ -73,22 +73,22 @@ public final class c
         {
           for (;;)
           {
-            ac.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 2.", new Object[0]);
+            ad.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 2.", new Object[0]);
           }
         }
       }
     });
-    vAF.put(com.tencent.mm.plugin.performance.a.b.apj("©¥¶£ê¯¥§»"), new d()
+    wGY.put(com.tencent.mm.plugin.performance.a.b.auo("©¥¶£ê¯¥§»"), new d()
     {
-      private static Void dof()
+      private static Void dyB()
       {
         AppMethodBeat.i(124922);
         for (;;)
         {
           try
           {
-            localObject1 = c.ii(com.tencent.mm.plugin.performance.a.b.apj("©¥¶£ê¯¥§»"), ".zip");
-            e locale = new e(ai.getContext().getApplicationInfo().sourceDir);
+            localObject1 = c.iw(com.tencent.mm.plugin.performance.a.b.auo("©¥¶£ê¯¥§»"), ".zip");
+            e locale = new e(aj.getContext().getApplicationInfo().sourceDir);
             String[] arrayOfString = Build.SUPPORTED_ABIS;
             int j = arrayOfString.length;
             i = 0;
@@ -96,19 +96,19 @@ public final class c
               continue;
             }
             Object localObject2 = arrayOfString[i];
-            localObject2 = "oat/" + b.apk((String)localObject2) + "/base.odex";
-            localObject2 = new e(locale.fxU(), (String)localObject2);
+            localObject2 = "oat/" + b.aup((String)localObject2) + "/base.odex";
+            localObject2 = new e(locale.fOJ(), (String)localObject2);
             if (!((e)localObject2).canRead()) {
               continue;
             }
             b.a((e)localObject2, (e)localObject1, null);
-            c.P((e)localObject1);
+            c.Q((e)localObject1);
           }
           catch (Throwable localThrowable)
           {
             Object localObject1;
             int i;
-            ac.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 3.", new Object[0]);
+            ad.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 3.", new Object[0]);
             continue;
           }
           AppMethodBeat.o(124922);
@@ -120,17 +120,17 @@ public final class c
         throw ((Throwable)localObject1);
       }
     });
-    vAF.put(com.tencent.mm.plugin.performance.a.b.apj("©¥¶£ê¶¥§»"), new d()
+    wGY.put(com.tencent.mm.plugin.performance.a.b.auo("©¥¶£ê¶¥§»"), new d()
     {
-      private static Void dof()
+      private static Void dyB()
       {
         AppMethodBeat.i(124924);
         for (;;)
         {
           try
           {
-            localObject1 = c.ii(com.tencent.mm.plugin.performance.a.b.apj("©¥¶£ê¶¥§»"), ".zip");
-            e locale = new e(ai.getContext().getApplicationInfo().sourceDir);
+            localObject1 = c.iw(com.tencent.mm.plugin.performance.a.b.auo("©¥¶£ê¶¥§»"), ".zip");
+            e locale = new e(aj.getContext().getApplicationInfo().sourceDir);
             String[] arrayOfString = Build.SUPPORTED_ABIS;
             int j = arrayOfString.length;
             i = 0;
@@ -138,19 +138,19 @@ public final class c
               continue;
             }
             Object localObject2 = arrayOfString[i];
-            localObject2 = "oat/" + b.apk((String)localObject2) + "/base.vdex";
-            localObject2 = new e(locale.fxU(), (String)localObject2);
+            localObject2 = "oat/" + b.aup((String)localObject2) + "/base.vdex";
+            localObject2 = new e(locale.fOJ(), (String)localObject2);
             if (!((e)localObject2).canRead()) {
               continue;
             }
             b.a((e)localObject2, (e)localObject1, null);
-            c.P((e)localObject1);
+            c.Q((e)localObject1);
           }
           catch (Throwable localThrowable)
           {
             Object localObject1;
             int i;
-            ac.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 4.", new Object[0]);
+            ad.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 4.", new Object[0]);
             continue;
           }
           AppMethodBeat.o(124924);
@@ -162,15 +162,15 @@ public final class c
         throw ((Throwable)localObject1);
       }
     });
-    vAF.put(com.tencent.mm.plugin.performance.a.b.apj("§§´¥ì±¬"), new d()
+    wGY.put(com.tencent.mm.plugin.performance.a.b.auo("§§´¥ì±¬"), new d()
     {
-      private Void ar(Map<String, String> paramAnonymousMap)
+      private Void aw(Map<String, String> paramAnonymousMap)
       {
         AppMethodBeat.i(124927);
-        paramAnonymousMap = (String)paramAnonymousMap.get(c.aXZ());
+        paramAnonymousMap = (String)paramAnonymousMap.get(c.bbx());
         if (TextUtils.isEmpty(paramAnonymousMap))
         {
-          ac.e(c.TAG, "[-] Explained by src 5.");
+          ad.e(c.TAG, "[-] Explained by src 5.");
           AppMethodBeat.o(124927);
           return null;
         }
@@ -178,8 +178,8 @@ public final class c
         {
           try
           {
-            localObject1 = c.ii(com.tencent.mm.plugin.performance.a.b.apj("§§´¥ì±¬"), ".zip");
-            e locale = new e(ai.getContext().getApplicationInfo().sourceDir);
+            localObject1 = c.iw(com.tencent.mm.plugin.performance.a.b.auo("§§´¥ì±¬"), ".zip");
+            e locale = new e(aj.getContext().getApplicationInfo().sourceDir);
             String[] arrayOfString = Build.SUPPORTED_ABIS;
             int j = arrayOfString.length;
             i = 0;
@@ -187,8 +187,8 @@ public final class c
               continue;
             }
             Object localObject2 = arrayOfString[i];
-            localObject2 = "lib/" + b.apk((String)localObject2);
-            localObject2 = new e(locale.fxU(), (String)localObject2);
+            localObject2 = "lib/" + b.aup((String)localObject2);
+            localObject2 = new e(locale.fOJ(), (String)localObject2);
             if (!((e)localObject2).canRead()) {
               continue;
             }
@@ -197,18 +197,18 @@ public final class c
               public final boolean accept(e paramAnonymous2e)
               {
                 AppMethodBeat.i(176899);
-                boolean bool = this.vAK.matcher(paramAnonymous2e.getName()).matches();
+                boolean bool = this.wHd.matcher(paramAnonymous2e.getName()).matches();
                 AppMethodBeat.o(176899);
                 return bool;
               }
             });
-            c.P((e)localObject1);
+            c.Q((e)localObject1);
           }
           catch (Throwable localThrowable)
           {
             Object localObject1;
             int i;
-            ac.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 6: %s", new Object[] { paramAnonymousMap });
+            ad.printErrStackTrace(c.TAG, localThrowable, "[-] Explained by src 6: %s", new Object[] { paramAnonymousMap });
             continue;
           }
           AppMethodBeat.o(124927);
@@ -220,12 +220,12 @@ public final class c
         throw ((Throwable)localObject1);
       }
     });
-    vAF.put(com.tencent.mm.plugin.performance.a.b.apj("­ ²°"), new d()
+    wGY.put(com.tencent.mm.plugin.performance.a.b.auo("­ ²°"), new d()
     {
-      private static Void ar(Map<String, String> paramAnonymousMap)
+      private static Void aw(Map<String, String> paramAnonymousMap)
       {
         AppMethodBeat.i(124929);
-        str = c.apm(c.c(paramAnonymousMap, c.dcS(), ""));
+        str = c.aur(c.c(paramAnonymousMap, c.dmm(), ""));
         for (;;)
         {
           try
@@ -233,26 +233,26 @@ public final class c
             if (!TextUtils.isEmpty(str)) {
               continue;
             }
-            paramAnonymousMap = c.bYj();
-            c.a.aU(ai.getContext(), paramAnonymousMap);
+            paramAnonymousMap = c.ccN();
+            c.a.aX(aj.getContext(), paramAnonymousMap);
           }
           catch (Throwable paramAnonymousMap)
           {
-            ac.printErrStackTrace(c.TAG, paramAnonymousMap, "[-] Explained by src 7: %s", new Object[] { str });
+            ad.printErrStackTrace(c.TAG, paramAnonymousMap, "[-] Explained by src 7: %s", new Object[] { str });
             continue;
           }
           AppMethodBeat.o(124929);
           return null;
-          paramAnonymousMap = c.bYj() + ":" + str;
+          paramAnonymousMap = c.ccN() + ":" + str;
         }
       }
     });
-    vAF.put(com.tencent.mm.plugin.performance.a.b.apj("´­ ²°"), new d()
+    wGY.put(com.tencent.mm.plugin.performance.a.b.auo("´­ ²°"), new d()
     {
-      private static Void ar(Map<String, String> paramAnonymousMap)
+      private static Void aw(Map<String, String> paramAnonymousMap)
       {
         AppMethodBeat.i(124931);
-        str = c.apm(c.c(paramAnonymousMap, c.dcS(), ""));
+        str = c.aur(c.c(paramAnonymousMap, c.dmm(), ""));
         for (;;)
         {
           try
@@ -260,45 +260,45 @@ public final class c
             if (!TextUtils.isEmpty(str)) {
               continue;
             }
-            paramAnonymousMap = c.bYj();
-            c.a.aV(ai.getContext(), paramAnonymousMap);
+            paramAnonymousMap = c.ccN();
+            c.a.aY(aj.getContext(), paramAnonymousMap);
           }
           catch (Throwable paramAnonymousMap)
           {
-            ac.printErrStackTrace(c.TAG, paramAnonymousMap, "[-] Explained by src 8: %s", new Object[] { str });
+            ad.printErrStackTrace(c.TAG, paramAnonymousMap, "[-] Explained by src 8: %s", new Object[] { str });
             continue;
           }
           AppMethodBeat.o(124931);
           return null;
-          paramAnonymousMap = c.bYj() + ":" + str;
+          paramAnonymousMap = c.ccN() + ":" + str;
         }
       }
     });
-    vAF.put(com.tencent.mm.plugin.performance.a.b.apj("µ¾³ì±¬"), new d()
+    wGY.put(com.tencent.mm.plugin.performance.a.b.auo("µ¾³ì±¬"), new d()
     {
-      private static Void ar(Map<String, String> paramAnonymousMap)
+      private static Void aw(Map<String, String> paramAnonymousMap)
       {
-        AppMethodBeat.i(206476);
-        paramAnonymousMap = (String)paramAnonymousMap.get(c.dod());
+        AppMethodBeat.i(211742);
+        paramAnonymousMap = (String)paramAnonymousMap.get(c.dyz());
         if (TextUtils.isEmpty(paramAnonymousMap))
         {
-          ac.e(c.TAG, "filePath NULL");
-          AppMethodBeat.o(206476);
+          ad.e(c.TAG, "filePath NULL");
+          AppMethodBeat.o(211742);
           return null;
         }
         try
         {
-          e locale = c.ii(com.tencent.mm.plugin.performance.a.b.apj("µ¾³ì±¬"), ".zip");
+          e locale = c.iw(com.tencent.mm.plugin.performance.a.b.auo("µ¾³ì±¬"), ".zip");
           b.a(new e(paramAnonymousMap), locale, null);
-          c.P(locale);
-          AppMethodBeat.o(206476);
+          c.Q(locale);
+          AppMethodBeat.o(211742);
           return null;
         }
         catch (Throwable localThrowable)
         {
           for (;;)
           {
-            ac.printErrStackTrace(c.TAG, localThrowable, "[-] faild op %s", new Object[] { paramAnonymousMap });
+            ad.printErrStackTrace(c.TAG, localThrowable, "[-] faild op %s", new Object[] { paramAnonymousMap });
           }
         }
       }
@@ -309,7 +309,7 @@ public final class c
   public c()
   {
     AppMethodBeat.i(124943);
-    a.J(ai.getContext());
+    a.J(aj.getContext());
     AppMethodBeat.o(124943);
   }
   
@@ -326,82 +326,82 @@ public final class c
     return paramString2;
   }
   
-  private static String doc()
+  private static String bxa()
   {
     AppMethodBeat.i(124942);
-    if (ax.isWifi(ai.getContext()))
+    if (ay.isWifi(aj.getContext()))
     {
-      str = vAC;
+      str = wGV;
       AppMethodBeat.o(124942);
       return str;
     }
-    String str = vAD;
+    String str = wGW;
     AppMethodBeat.o(124942);
     return str;
   }
   
-  public final void aq(final Map<String, String> paramMap)
+  public final void av(final Map<String, String> paramMap)
   {
     AppMethodBeat.i(124944);
-    final String str1 = (String)paramMap.get(vAx);
-    if (bs.isNullOrNil(str1))
+    final String str1 = (String)paramMap.get(wGQ);
+    if (bt.isNullOrNil(str1))
     {
-      ac.e(TAG, "[-] Target is null or empty!");
+      ad.e(TAG, "[-] Target is null or empty!");
       AppMethodBeat.o(124944);
       return;
     }
-    if (!vAF.containsKey(str1))
+    if (!wGY.containsKey(str1))
     {
-      ac.e(TAG, "[-] Target is absent.");
+      ad.e(TAG, "[-] Target is absent.");
       AppMethodBeat.o(124944);
       return;
     }
-    String str2 = b(paramMap, vAy, vAC);
-    if (!vAE.containsKey(str2))
+    String str2 = b(paramMap, wGR, wGV);
+    if (!wGX.containsKey(str2))
     {
-      ac.e(TAG, "[-] Explained by src 9: %s", new Object[] { str2 });
+      ad.e(TAG, "[-] Explained by src 9: %s", new Object[] { str2 });
       AppMethodBeat.o(124944);
       return;
     }
-    if (!((Boolean)((d)vAE.get(str2)).dB(paramMap)).booleanValue())
+    if (!((Boolean)((d)wGX.get(str2)).dE(paramMap)).booleanValue())
     {
-      ac.w(TAG, "[!] Explained by src 10: %s, %s", new Object[] { doc(), str2 });
+      ad.w(TAG, "[!] Explained by src 10: %s, %s", new Object[] { bxa(), str2 });
       AppMethodBeat.o(124944);
       return;
     }
-    ac.i(TAG, "[+] Explained by src 11: %s, %s, %s", new Object[] { str1, str2, doc() });
-    vAG.post(new Runnable()
+    ad.i(TAG, "[+] Explained by src 11: %s, %s, %s", new Object[] { str1, str2, bxa() });
+    wGZ.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(206475);
-        ((d)c.doe().get(str1)).dB(paramMap);
-        AppMethodBeat.o(206475);
+        AppMethodBeat.i(211741);
+        ((d)c.dyA().get(str1)).dE(paramMap);
+        AppMethodBeat.o(211741);
       }
     });
     AppMethodBeat.o(124944);
   }
   
-  public final String dob()
+  public final String dyy()
   {
-    return vAw;
+    return wGP;
   }
   
   static final class a
     extends BroadcastReceiver
   {
     private static final String ACTION;
-    private static final String vAM;
-    private static final String vAN;
-    private static a vAO;
+    private static final String wHf;
+    private static final String wHg;
+    private static a wHh;
     
     static
     {
       AppMethodBeat.i(124940);
-      ACTION = "action" + c.dkS();
-      vAM = com.tencent.mm.plugin.performance.a.b.apj("µ´¨£¤±°");
-      vAN = com.tencent.mm.plugin.performance.a.b.apj("­­©£° ¶«");
-      vAO = null;
+      ACTION = "action" + c.dvj();
+      wHf = com.tencent.mm.plugin.performance.a.b.auo("µ´¨£¤±°");
+      wHg = com.tencent.mm.plugin.performance.a.b.auo("­­©£° ¶«");
+      wHh = null;
       AppMethodBeat.o(124940);
     }
     
@@ -412,12 +412,12 @@ public final class c
         try
         {
           AppMethodBeat.i(124934);
-          if (vAO != null)
+          if (wHh != null)
           {
             AppMethodBeat.o(124934);
             return;
           }
-          vAO = new a();
+          wHh = new a();
           localIntentFilter = new IntentFilter(ACTION);
         }
         finally
@@ -425,13 +425,13 @@ public final class c
           try
           {
             IntentFilter localIntentFilter;
-            paramContext.registerReceiver(vAO, localIntentFilter, "com.tencent.mm.permission.MM_MESSAGE", null);
+            paramContext.registerReceiver(wHh, localIntentFilter, "com.tencent.mm.permission.MM_MESSAGE", null);
             AppMethodBeat.o(124934);
           }
           catch (Throwable paramContext)
           {
-            ac.printErrStackTrace(c.TAG, paramContext, "[-] Fail to register receiver.", new Object[0]);
-            ac.eUQ();
+            ad.printErrStackTrace(c.TAG, paramContext, "[-] Fail to register receiver.", new Object[0]);
+            ad.fku();
             AppMethodBeat.o(124934);
           }
           paramContext = finally;
@@ -439,32 +439,32 @@ public final class c
       }
     }
     
-    static void aU(Context paramContext, String paramString)
+    static void aX(Context paramContext, String paramString)
     {
       AppMethodBeat.i(124935);
       Intent localIntent = new Intent(ACTION);
       localIntent.putExtra("op", 1);
-      localIntent.putExtra(vAM, paramString);
+      localIntent.putExtra(wHf, paramString);
       paramContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
       AppMethodBeat.o(124935);
     }
     
-    static void aV(Context paramContext, String paramString)
+    static void aY(Context paramContext, String paramString)
     {
       AppMethodBeat.i(124936);
       Intent localIntent = new Intent(ACTION);
       localIntent.putExtra("op", 2);
-      localIntent.putExtra(vAM, paramString);
+      localIntent.putExtra(wHf, paramString);
       paramContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
       AppMethodBeat.o(124936);
     }
     
-    private static void aW(Context paramContext, String paramString)
+    private static void aZ(Context paramContext, String paramString)
     {
       AppMethodBeat.i(124937);
       Intent localIntent = new Intent(ACTION);
       localIntent.putExtra("op", 3);
-      localIntent.putExtra(vAN, paramString);
+      localIntent.putExtra(wHg, paramString);
       paramContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
       AppMethodBeat.o(124937);
     }
@@ -474,7 +474,7 @@ public final class c
       AppMethodBeat.i(124939);
       try
       {
-        ai.getContext().unregisterReceiver(this);
+        aj.getContext().unregisterReceiver(this);
         label12:
         super.finalize();
         AppMethodBeat.o(124939);
@@ -492,7 +492,7 @@ public final class c
       Object localObject = paramIntent.getAction();
       if (!ACTION.equals(localObject))
       {
-        ac.e(c.TAG, "[-] Explained by src 12: %s", new Object[] { localObject });
+        ad.e(c.TAG, "[-] Explained by src 12: %s", new Object[] { localObject });
         AppMethodBeat.o(124938);
         return;
       }
@@ -501,25 +501,25 @@ public final class c
       switch (i)
       {
       default: 
-        ac.e(c.TAG, "[-] Unknown op: %s", new Object[] { Integer.valueOf(i) });
+        ad.e(c.TAG, "[-] Unknown op: %s", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(124938);
         return;
       case 1: 
-        paramIntent = paramIntent.getStringExtra(vAM);
+        paramIntent = paramIntent.getStringExtra(wHf);
         if (TextUtils.isEmpty(paramIntent))
         {
-          ac.e(c.TAG, "[-] Explained by src 13.");
+          ad.e(c.TAG, "[-] Explained by src 13.");
           AppMethodBeat.o(124938);
           return;
         }
-        if (!paramIntent.equals(ai.getProcessName()))
+        if (!paramIntent.equals(aj.getProcessName()))
         {
           AppMethodBeat.o(124938);
           return;
         }
         try
         {
-          i = b.apl(paramIntent);
+          i = b.auq(paramIntent);
           if (i == 0)
           {
             paramContext = new IOException("cannot find process: ".concat(String.valueOf(paramIntent)));
@@ -529,32 +529,32 @@ public final class c
         }
         catch (Throwable paramContext)
         {
-          ac.printErrStackTrace(c.TAG, paramContext, "[-] Explained by src 14: %s", new Object[] { paramIntent });
+          ad.printErrStackTrace(c.TAG, paramContext, "[-] Explained by src 14: %s", new Object[] { paramIntent });
           AppMethodBeat.o(124938);
           return;
         }
-        localObject = b.O(new e("/proc/" + i + "/maps"));
-        locale = c.ii(paramIntent.replace(':', '-') + "-" + com.tencent.mm.plugin.performance.a.b.apj("­ ²°"), ".zip");
+        localObject = b.P(new e("/proc/" + i + "/maps"));
+        locale = c.iw(paramIntent.replace(':', '-') + "-" + com.tencent.mm.plugin.performance.a.b.auo("­ ²°"), ".zip");
         b.a((e)localObject, locale, null);
-        aW(paramContext, q.B(locale.fxV()));
+        aZ(paramContext, q.B(locale.fOK()));
         AppMethodBeat.o(124938);
         return;
       case 2: 
-        paramIntent = paramIntent.getStringExtra(vAM);
+        paramIntent = paramIntent.getStringExtra(wHf);
         if (TextUtils.isEmpty(paramIntent))
         {
-          ac.e(c.TAG, "[-] Explained by src 15.");
+          ad.e(c.TAG, "[-] Explained by src 15.");
           AppMethodBeat.o(124938);
           return;
         }
-        if (!paramIntent.equals(ai.getProcessName()))
+        if (!paramIntent.equals(aj.getProcessName()))
         {
           AppMethodBeat.o(124938);
           return;
         }
         try
         {
-          i = b.apl(paramIntent);
+          i = b.auq(paramIntent);
           if (i == 0)
           {
             paramContext = new IOException("cannot find process: ".concat(String.valueOf(paramIntent)));
@@ -564,38 +564,38 @@ public final class c
         }
         catch (Throwable paramContext)
         {
-          ac.printErrStackTrace(c.TAG, paramContext, "[-] Explained by src 16: %s", new Object[] { paramIntent });
+          ad.printErrStackTrace(c.TAG, paramContext, "[-] Explained by src 16: %s", new Object[] { paramIntent });
           AppMethodBeat.o(124938);
           return;
         }
-        localObject = b.O(new e("/proc/" + i + "/smaps"));
-        locale = c.ii(paramIntent.replace(':', '-') + "-" + com.tencent.mm.plugin.performance.a.b.apj("´­ ²°"), ".zip");
+        localObject = b.P(new e("/proc/" + i + "/smaps"));
+        locale = c.iw(paramIntent.replace(':', '-') + "-" + com.tencent.mm.plugin.performance.a.b.auo("´­ ²°"), ".zip");
         b.a((e)localObject, locale, null);
-        aW(paramContext, q.B(locale.fxV()));
+        aZ(paramContext, q.B(locale.fOK()));
         AppMethodBeat.o(124938);
         return;
       }
-      if (!ai.cin())
+      if (!aj.cmR())
       {
         AppMethodBeat.o(124938);
         return;
       }
-      paramContext = paramIntent.getStringExtra(vAN);
+      paramContext = paramIntent.getStringExtra(wHg);
       if ((paramContext == null) || (paramContext.isEmpty()))
       {
-        ac.e(c.TAG, "[-] Explained by src 17: %s", new Object[] { paramContext });
+        ad.e(c.TAG, "[-] Explained by src 17: %s", new Object[] { paramContext });
         AppMethodBeat.o(124938);
         return;
       }
       try
       {
-        c.P(new e(paramContext));
+        c.Q(new e(paramContext));
         AppMethodBeat.o(124938);
         return;
       }
       catch (Throwable paramContext)
       {
-        ac.printErrStackTrace(c.TAG, paramContext, "[-] Explained by src 18.", new Object[0]);
+        ad.printErrStackTrace(c.TAG, paramContext, "[-] Explained by src 18.", new Object[0]);
         AppMethodBeat.o(124938);
       }
     }

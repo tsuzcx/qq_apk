@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class yb
   extends b
 {
-  public a dBC;
-  public b dBD;
+  public a dMo;
+  public b dMp;
   
   public yb()
   {
@@ -16,23 +17,29 @@ public final class yb
   
   private yb(byte paramByte)
   {
-    AppMethodBeat.i(116059);
-    this.dBC = new a();
-    this.dBD = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(149895);
+    this.dMo = new a();
+    this.dMp = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116059);
+    AppMethodBeat.o(149895);
   }
   
   public static final class a
   {
-    public String dlI;
+    public String content;
+    public Context context;
+    public byte[] dMj;
+    public int dMk = 0;
+    public int dsi = 0;
+    public String talker;
   }
   
   public static final class b
   {
-    public boolean dBE;
-    public int status;
+    public boolean dMq = false;
+    public boolean dMr = false;
+    public int type = 0;
   }
 }
 

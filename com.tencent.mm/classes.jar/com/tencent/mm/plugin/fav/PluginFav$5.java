@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.uu;
+import com.tencent.mm.g.a.vn;
 import com.tencent.mm.kernel.g;
 
 final class PluginFav$5
@@ -13,10 +13,10 @@ final class PluginFav$5
   public final void onAppBackground(String paramString)
   {
     AppMethodBeat.i(101538);
-    if ((g.agM()) && (g.agP().ggT))
+    if ((g.ajx()) && (g.ajA().gAD))
     {
-      g.agP();
-      com.tencent.mm.kernel.a.afS();
+      g.ajA();
+      com.tencent.mm.kernel.a.aiE();
     }
     AppMethodBeat.o(101538);
   }
@@ -24,11 +24,11 @@ final class PluginFav$5
   public final void onAppForeground(String paramString)
   {
     AppMethodBeat.i(101537);
-    if ((g.agM()) && (g.agP().ggT))
+    if ((g.ajx()) && (g.ajA().gAD))
     {
-      g.agP();
-      if (!com.tencent.mm.kernel.a.afS()) {
-        com.tencent.mm.sdk.b.a.GpY.l(new uu());
+      g.ajA();
+      if (!com.tencent.mm.kernel.a.aiE()) {
+        com.tencent.mm.sdk.b.a.IbL.l(new vn());
       }
     }
     AppMethodBeat.o(101537);

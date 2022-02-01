@@ -6,21 +6,21 @@ import java.util.Map;
 
 public final class b
 {
-  public Map<String, c> BPp;
+  public Map<String, c> DpH;
   
   b()
   {
     AppMethodBeat.i(71804);
-    this.BPp = new HashMap();
+    this.DpH = new HashMap();
     AppMethodBeat.o(71804);
   }
   
   b(String paramString, c paramc)
   {
     AppMethodBeat.i(71805);
-    this.BPp = new HashMap();
-    this.BPp.clear();
-    this.BPp.put(paramString, paramc);
+    this.DpH = new HashMap();
+    this.DpH.clear();
+    this.DpH.put(paramString, paramc);
     AppMethodBeat.o(71805);
   }
 }

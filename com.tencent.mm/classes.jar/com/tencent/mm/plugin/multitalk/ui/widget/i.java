@@ -7,12 +7,12 @@ public enum i
   static
   {
     AppMethodBeat.i(114733);
-    vbj = new i("Init", 0);
-    vbk = new i("Inviting", 1);
-    vbl = new i("Creating", 2);
-    vbm = new i("Starting", 3);
-    vbn = new i("Talking", 4);
-    vbo = new i[] { vbj, vbk, vbl, vbm, vbn };
+    wgs = new i("Init", 0);
+    wgt = new i("Inviting", 1);
+    wgu = new i("Creating", 2);
+    wgv = new i("Starting", 3);
+    wgw = new i("Talking", 4);
+    wgx = new i[] { wgs, wgt, wgu, wgv, wgw };
     AppMethodBeat.o(114733);
   }
   
@@ -20,7 +20,7 @@ public enum i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.i
  * JD-Core Version:    0.7.0.1
  */

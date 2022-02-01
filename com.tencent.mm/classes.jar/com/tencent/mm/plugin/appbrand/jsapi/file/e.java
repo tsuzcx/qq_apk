@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -14,18 +14,18 @@ import org.json.JSONObject;
 abstract class e<T extends g>
   extends a
 {
-  static final ThreadPoolExecutor kqZ = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
-  private final T kqY;
+  static final ThreadPoolExecutor kMv = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+  private final T kMu;
   
   public e(T paramT)
   {
-    this.kqY = paramT;
-    this.kqY.krc = this;
+    this.kMu = paramT;
+    this.kMu.kMy = this;
   }
   
   public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
-    kqZ.submit(new Runnable()
+    kMv.submit(new Runnable()
     {
       public final void run()
       {
@@ -44,8 +44,8 @@ abstract class e<T extends g>
         }
         catch (Throwable localThrowable)
         {
-          ac.printErrStackTrace("Luggage.BaseNFSApiAsync", localThrowable, "%s.invoke, appId=%s, callbackId=%d", new Object[] { e.a(e.this).getClass().getName(), paramc.getAppId(), Integer.valueOf(paramInt) });
-          ap.f(new Runnable()
+          ad.printErrStackTrace("Luggage.BaseNFSApiAsync", localThrowable, "%s.invoke, appId=%s, callbackId=%d", new Object[] { e.a(e.this).getClass().getName(), paramc.getAppId(), Integer.valueOf(paramInt) });
+          aq.f(new Runnable()
           {
             public final void run()
             {
@@ -59,14 +59,14 @@ abstract class e<T extends g>
     });
   }
   
-  public final boolean bex()
+  public final boolean bib()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,120 +4,146 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 
 public final class i
   extends com.tencent.mm.pluginsdk.ui.b.b
   implements k.a
 {
-  private TextView IHk;
-  private TextView IHl;
-  private View mZW;
-  private View mZX;
-  private View zSj;
+  View BjO;
+  TextView Kyq;
+  TextView Kyr;
+  View nAt;
+  View nAu;
   
   public i(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38786);
-    ac.i("MicroMsg.ForceNotifyBanner", "[initialize]");
-    this.mZX = this.view.findViewById(2131297183);
-    this.mZW = this.view.findViewById(2131297178);
-    this.zSj = this.view.findViewById(2131299521);
-    this.IHk = ((TextView)this.view.findViewById(2131302978));
-    this.IHl = ((TextView)this.view.findViewById(2131299522));
+    ad.i("MicroMsg.ForceNotifyBanner", "[initialize]");
+    this.nAu = this.view.findViewById(2131297183);
+    this.nAt = this.view.findViewById(2131297178);
+    this.BjO = this.view.findViewById(2131299521);
+    this.Kyq = ((TextView)this.view.findViewById(2131302978));
+    this.Kyr = ((TextView)this.view.findViewById(2131299522));
     paramContext = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(38785);
-        boolean bool = i.this.fsK();
-        ac.i("MicroMsg.ForceNotifyBanner", "[onClick] isShow=%s", new Object[] { Boolean.valueOf(bool) });
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/ui/conversation/banner/ForceNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        boolean bool = i.this.fJy();
+        ad.i("MicroMsg.ForceNotifyBanner", "[onClick] isShow=%s", new Object[] { Boolean.valueOf(bool) });
         if (bool)
         {
           paramAnonymousView = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
           if (paramAnonymousView != null) {
-            paramAnonymousView.fd((Context)i.this.Dsc.get());
+            paramAnonymousView.fg((Context)i.this.EXg.get());
           }
+        }
+        for (;;)
+        {
+          a.a(this, "com/tencent/mm/ui/conversation/banner/ForceNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(38785);
           return;
+          i.this.setVisibility(8);
         }
-        i.this.setVisibility(8);
-        AppMethodBeat.o(38785);
       }
     };
     this.view.setOnClickListener(paramContext);
     paramContext = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
     if (paramContext != null) {
-      paramContext.cIj().add(this);
+      paramContext.cQy().add(this);
     }
-    fsK();
+    fJy();
     AppMethodBeat.o(38786);
   }
   
   public final void a(String paramString, m paramm)
   {
     AppMethodBeat.i(38790);
-    fsK();
+    fJy();
     AppMethodBeat.o(38790);
   }
   
-  public final boolean bvU()
+  public final boolean bAa()
   {
     AppMethodBeat.i(38789);
-    boolean bool = ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class)).hasError();
-    com.tencent.mm.plugin.forcenotify.a.b localb;
-    if ((this.isFirst) && (this.gRm)) {
-      if (bool)
+    h.LTJ.aP(new Runnable()
+    {
+      public final void run()
       {
-        this.zSj.setBackgroundResource(2131234376);
-        localb = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
-        if (localb == null) {
-          break label225;
-        }
+        AppMethodBeat.i(194760);
+        final boolean bool = ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class)).hasError();
+        h.LTJ.aP(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(194759);
+            if ((i.this.isFirst) && (i.this.hjE))
+            {
+              if (bool)
+              {
+                i.this.BjO.setBackgroundResource(2131234376);
+                AppMethodBeat.o(194759);
+                return;
+              }
+              i.this.nAt.setBackgroundResource(2131234377);
+              AppMethodBeat.o(194759);
+              return;
+            }
+            if (i.this.isFirst)
+            {
+              if (bool)
+              {
+                i.this.nAu.setBackgroundResource(2131233815);
+                i.this.BjO.setBackgroundResource(2131232870);
+                i.this.Kyr.setBackgroundResource(2131232867);
+                AppMethodBeat.o(194759);
+                return;
+              }
+              i.this.nAu.setBackgroundResource(2131232872);
+              i.this.nAt.setBackgroundResource(2131232870);
+              i.this.Kyq.setBackgroundResource(2131232867);
+              AppMethodBeat.o(194759);
+              return;
+            }
+            if (i.this.hjE)
+            {
+              if (bool)
+              {
+                i.this.nAu.setBackgroundResource(2131233815);
+                i.this.BjO.setBackgroundResource(2131232867);
+                i.this.Kyr.setBackground(null);
+                AppMethodBeat.o(194759);
+                return;
+              }
+              i.this.nAu.setBackgroundResource(2131232872);
+              i.this.nAt.setBackgroundResource(2131232867);
+              i.this.Kyq.setBackground(null);
+            }
+            AppMethodBeat.o(194759);
+          }
+        });
+        AppMethodBeat.o(194760);
       }
-    }
-    label225:
-    for (bool = localb.cIi();; bool = false)
+    });
+    com.tencent.mm.plugin.forcenotify.a.b localb = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
+    if (localb != null) {}
+    for (boolean bool = localb.cQx();; bool = false)
     {
       AppMethodBeat.o(38789);
       return bool;
-      this.mZW.setBackgroundResource(2131234377);
-      break;
-      if (this.isFirst)
-      {
-        if (bool)
-        {
-          this.mZX.setBackgroundResource(2131233815);
-          this.zSj.setBackgroundResource(2131232870);
-          this.IHl.setBackgroundResource(2131232867);
-          break;
-        }
-        this.mZX.setBackgroundResource(2131232872);
-        this.mZW.setBackgroundResource(2131232870);
-        this.IHk.setBackgroundResource(2131232867);
-        break;
-      }
-      if (!this.gRm) {
-        break;
-      }
-      if (bool)
-      {
-        this.mZX.setBackgroundResource(2131233815);
-        this.zSj.setBackgroundResource(2131232867);
-        this.IHl.setBackground(null);
-        break;
-      }
-      this.mZX.setBackgroundResource(2131232872);
-      this.mZW.setBackgroundResource(2131232867);
-      this.IHk.setBackground(null);
-      break;
     }
   }
   
@@ -126,7 +152,7 @@ public final class i
     AppMethodBeat.i(38787);
     if ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class) != null)
     {
-      j localj = ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class)).cIj();
+      j localj = ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class)).cQy();
       if (localj != null) {
         localj.remove(this);
       }
@@ -134,7 +160,7 @@ public final class i
     AppMethodBeat.o(38787);
   }
   
-  public final boolean fsK()
+  public final boolean fJy()
   {
     int j = 8;
     AppMethodBeat.i(38788);
@@ -144,9 +170,9 @@ public final class i
       AppMethodBeat.o(38788);
       return false;
     }
-    boolean bool2 = ((com.tencent.mm.plugin.forcenotify.a.b)localObject).cIi();
+    boolean bool2 = ((com.tencent.mm.plugin.forcenotify.a.b)localObject).cQx();
     boolean bool3 = ((com.tencent.mm.plugin.forcenotify.a.b)localObject).hasError();
-    if ((this.zSj == null) || (this.mZW == null))
+    if ((this.BjO == null) || (this.nAt == null))
     {
       AppMethodBeat.o(38788);
       return false;
@@ -154,12 +180,12 @@ public final class i
     int i;
     if (bool3)
     {
-      localObject = this.zSj;
+      localObject = this.BjO;
       if (bool2)
       {
         i = 0;
         ((View)localObject).setVisibility(i);
-        localObject = this.mZW;
+        localObject = this.nAt;
         i = j;
         label101:
         ((View)localObject).setVisibility(i);
@@ -171,13 +197,13 @@ public final class i
     label194:
     for (boolean bool1 = true;; bool1 = false)
     {
-      ac.i("MicroMsg.ForceNotifyBanner", "[checkShow] isShow:%s hasError:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
+      ad.i("MicroMsg.ForceNotifyBanner", "[checkShow] isShow:%s hasError:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
       AppMethodBeat.o(38788);
       return bool2;
       i = 8;
       break;
-      this.zSj.setVisibility(8);
-      View localView = this.mZW;
+      this.BjO.setVisibility(8);
+      View localView = this.nAt;
       localObject = localView;
       i = j;
       if (!bool2) {
@@ -196,7 +222,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -30,30 +30,30 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class h
   implements a
 {
-  private static final int[] aej = { 1, 4, 5, 3, 2, 0 };
-  boolean aeA = false;
-  private boolean aeB = false;
-  private ArrayList<j> aeC = new ArrayList();
-  private CopyOnWriteArrayList<WeakReference<o>> aeD = new CopyOnWriteArrayList();
-  j aeE;
-  private boolean aeF = false;
-  public boolean aeG;
-  private boolean aek;
-  private boolean ael;
-  public a aem;
-  private ArrayList<j> aen;
-  private boolean aeo;
-  public ArrayList<j> aep;
-  private ArrayList<j> aeq;
-  private boolean aer;
-  public int aes = 0;
-  private ContextMenu.ContextMenuInfo aet;
-  CharSequence aeu;
-  Drawable aev;
-  View aew;
-  private boolean aex = false;
-  private boolean aey = false;
-  private boolean aez = false;
+  private static final int[] aga = { 1, 4, 5, 3, 2, 0 };
+  private boolean agb;
+  private boolean agc;
+  public a agd;
+  private ArrayList<j> age;
+  private boolean agf;
+  public ArrayList<j> agg;
+  private ArrayList<j> agh;
+  private boolean agi;
+  public int agj = 0;
+  private ContextMenu.ContextMenuInfo agk;
+  CharSequence agl;
+  Drawable agm;
+  View agn;
+  private boolean ago = false;
+  private boolean agp = false;
+  private boolean agq = false;
+  boolean agr = false;
+  private boolean ags = false;
+  private ArrayList<j> agt = new ArrayList();
+  private CopyOnWriteArrayList<WeakReference<o>> agu = new CopyOnWriteArrayList();
+  j agv;
+  private boolean agw = false;
+  public boolean agx;
   protected final Context mContext;
   ArrayList<j> mItems;
   private final Resources mResources;
@@ -63,15 +63,15 @@ public class h
     this.mContext = paramContext;
     this.mResources = paramContext.getResources();
     this.mItems = new ArrayList();
-    this.aen = new ArrayList();
-    this.aeo = true;
-    this.aep = new ArrayList();
-    this.aeq = new ArrayList();
-    this.aer = true;
+    this.age = new ArrayList();
+    this.agf = true;
+    this.agg = new ArrayList();
+    this.agh = new ArrayList();
+    this.agi = true;
     if ((this.mResources.getConfiguration().keyboard != 1) && (android.support.v4.view.u.d(ViewConfiguration.get(this.mContext), this.mContext))) {}
     for (;;)
     {
-      this.ael = bool;
+      this.agc = bool;
       return;
       bool = false;
     }
@@ -79,7 +79,7 @@ public class h
   
   private j a(int paramInt, KeyEvent paramKeyEvent)
   {
-    ArrayList localArrayList = this.aeC;
+    ArrayList localArrayList = this.agt;
     localArrayList.clear();
     a(localArrayList, paramInt, paramKeyEvent);
     if (localArrayList.isEmpty())
@@ -94,7 +94,7 @@ public class h
     if (m == 1) {
       return (j)localArrayList.get(0);
     }
-    boolean bool = hz();
+    boolean bool = hP();
     int i = 0;
     label84:
     if (i < m)
@@ -133,7 +133,7 @@ public class h
   
   private void a(List<j> paramList, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool = hz();
+    boolean bool = hP();
     int m = paramKeyEvent.getModifiers();
     KeyCharacterMap.KeyData localKeyData = new KeyCharacterMap.KeyData();
     if ((!paramKeyEvent.getKeyData(localKeyData)) && (paramInt != 67)) {
@@ -185,20 +185,20 @@ public class h
   private boolean a(u paramu, o paramo)
   {
     boolean bool = false;
-    if (this.aeD.isEmpty()) {
+    if (this.agu.isEmpty()) {
       return false;
     }
     if (paramo != null) {
       bool = paramo.a(paramu);
     }
-    paramo = this.aeD.iterator();
+    paramo = this.agu.iterator();
     while (paramo.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)paramo.next();
       o localo = (o)localWeakReference.get();
       if (localo == null)
       {
-        this.aeD.remove(localWeakReference);
+        this.agu.remove(localWeakReference);
       }
       else
       {
@@ -221,7 +221,7 @@ public class h
     int i = paramArrayList.size() - 1;
     while (i >= 0)
     {
-      if (((j)paramArrayList.get(i)).acC <= paramInt) {
+      if (((j)paramArrayList.get(i)).aet <= paramInt) {
         return i + 1;
       }
       i -= 1;
@@ -231,18 +231,18 @@ public class h
   
   private void dispatchSaveInstanceState(Bundle paramBundle)
   {
-    if (this.aeD.isEmpty()) {
+    if (this.agu.isEmpty()) {
       return;
     }
     SparseArray localSparseArray = new SparseArray();
-    Iterator localIterator = this.aeD.iterator();
+    Iterator localIterator = this.agu.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (WeakReference)localIterator.next();
       o localo = (o)((WeakReference)localObject).get();
       if (localo == null)
       {
-        this.aeD.remove(localObject);
+        this.agu.remove(localObject);
       }
       else
       {
@@ -273,13 +273,13 @@ public class h
   protected MenuItem a(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
   {
     int i = (0xFFFF0000 & paramInt3) >> 16;
-    if ((i < 0) || (i >= aej.length)) {
+    if ((i < 0) || (i >= aga.length)) {
       throw new IllegalArgumentException("order does not contain a valid category.");
     }
-    i = aej[i] << 16 | 0xFFFF & paramInt3;
-    paramCharSequence = new j(this, paramInt1, paramInt2, paramInt3, i, paramCharSequence, this.aes);
-    if (this.aet != null) {
-      paramCharSequence.aeR = this.aet;
+    i = aga[i] << 16 | 0xFFFF & paramInt3;
+    paramCharSequence = new j(this, paramInt1, paramInt2, paramInt3, i, paramCharSequence, this.agj);
+    if (this.agk != null) {
+      paramCharSequence.agI = this.agk;
     }
     this.mItems.add(b(this.mItems, i), paramCharSequence);
     r(true);
@@ -291,40 +291,40 @@ public class h
     Resources localResources = this.mResources;
     if (paramView != null)
     {
-      this.aew = paramView;
-      this.aeu = null;
-      this.aev = null;
+      this.agn = paramView;
+      this.agl = null;
+      this.agm = null;
       r(false);
       return;
     }
     if (paramInt1 > 0)
     {
-      this.aeu = localResources.getText(paramInt1);
+      this.agl = localResources.getText(paramInt1);
       label47:
       if (paramInt2 <= 0) {
         break label83;
       }
-      this.aev = android.support.v4.content.b.l(this.mContext, paramInt2);
+      this.agm = android.support.v4.content.b.l(this.mContext, paramInt2);
     }
     for (;;)
     {
-      this.aew = null;
+      this.agn = null;
       break;
       if (paramCharSequence == null) {
         break label47;
       }
-      this.aeu = paramCharSequence;
+      this.agl = paramCharSequence;
       break label47;
       label83:
       if (paramDrawable != null) {
-        this.aev = paramDrawable;
+        this.agm = paramDrawable;
       }
     }
   }
   
   public void a(a parama)
   {
-    this.aem = parama;
+    this.agd = parama;
   }
   
   public final void a(o paramo)
@@ -334,9 +334,9 @@ public class h
   
   public final void a(o paramo, Context paramContext)
   {
-    this.aeD.add(new WeakReference(paramo));
+    this.agu.add(new WeakReference(paramo));
     paramo.a(paramContext, this);
-    this.aer = true;
+    this.agi = true;
   }
   
   public final boolean a(MenuItem paramMenuItem, o paramo, int paramInt)
@@ -356,12 +356,12 @@ public class h
     do
     {
       return bool1;
-      bool1 = ((j)localObject).hJ();
-      paramMenuItem = ((j)localObject).aeO;
+      bool1 = ((j)localObject).hZ();
+      paramMenuItem = ((j)localObject).agF;
       if ((paramMenuItem != null) && (paramMenuItem.hasSubMenu())) {}
       for (int i = 1;; i = 0)
       {
-        if (!((j)localObject).hS()) {
+        if (!((j)localObject).ij()) {
           break label101;
         }
         bool2 = ((j)localObject).expandActionView() | bool1;
@@ -398,22 +398,22 @@ public class h
   
   public final void ab(boolean paramBoolean)
   {
-    if (this.aeB) {
+    if (this.ags) {
       return;
     }
-    this.aeB = true;
-    Iterator localIterator = this.aeD.iterator();
+    this.ags = true;
+    Iterator localIterator = this.agu.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       o localo = (o)localWeakReference.get();
       if (localo == null) {
-        this.aeD.remove(localWeakReference);
+        this.agu.remove(localWeakReference);
       } else {
         localo.a(this, paramBoolean);
       }
     }
-    this.aeB = false;
+    this.ags = false;
   }
   
   public MenuItem add(int paramInt)
@@ -501,21 +501,21 @@ public class h
   
   public final void b(o paramo)
   {
-    Iterator localIterator = this.aeD.iterator();
+    Iterator localIterator = this.agu.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       o localo = (o)localWeakReference.get();
       if ((localo == null) || (localo == paramo)) {
-        this.aeD.remove(localWeakReference);
+        this.agu.remove(localWeakReference);
       }
     }
   }
   
   public void clear()
   {
-    if (this.aeE != null) {
-      h(this.aeE);
+    if (this.agv != null) {
+      h(this.agv);
     }
     this.mItems.clear();
     r(true);
@@ -523,9 +523,9 @@ public class h
   
   public void clearHeader()
   {
-    this.aev = null;
-    this.aeu = null;
-    this.aew = null;
+    this.agm = null;
+    this.agl = null;
+    this.agn = null;
     r(false);
   }
   
@@ -536,24 +536,24 @@ public class h
   
   boolean d(h paramh, MenuItem paramMenuItem)
   {
-    return (this.aem != null) && (this.aem.a(paramh, paramMenuItem));
+    return (this.agd != null) && (this.agd.a(paramh, paramMenuItem));
   }
   
   public final void dispatchRestoreInstanceState(Bundle paramBundle)
   {
     paramBundle = paramBundle.getSparseParcelableArray("android:menu:presenters");
-    if ((paramBundle == null) || (this.aeD.isEmpty())) {}
+    if ((paramBundle == null) || (this.agu.isEmpty())) {}
     for (;;)
     {
       return;
-      Iterator localIterator = this.aeD.iterator();
+      Iterator localIterator = this.agu.iterator();
       while (localIterator.hasNext())
       {
         Object localObject = (WeakReference)localIterator.next();
         o localo = (o)((WeakReference)localObject).get();
         if (localo == null)
         {
-          this.aeD.remove(localObject);
+          this.agu.remove(localObject);
         }
         else
         {
@@ -610,7 +610,7 @@ public class h
       localObject1 = localObject3;
     }
     if (localObject1 != null) {
-      paramBundle.putSparseParcelableArray(hx(), localObject1);
+      paramBundle.putSparseParcelableArray(hN(), localObject1);
     }
   }
   
@@ -646,7 +646,7 @@ public class h
       do
       {
         return;
-        SparseArray localSparseArray = paramBundle.getSparseParcelableArray(hx());
+        SparseArray localSparseArray = paramBundle.getSparseParcelableArray(hN());
         int j = size();
         i = 0;
         while (i < j)
@@ -671,11 +671,11 @@ public class h
   public boolean g(j paramj)
   {
     boolean bool2 = false;
-    if (this.aeD.isEmpty()) {
+    if (this.agu.isEmpty()) {
       return bool2;
     }
-    hB();
-    Iterator localIterator = this.aeD.iterator();
+    hR();
+    Iterator localIterator = this.agu.iterator();
     boolean bool1 = false;
     for (;;)
     {
@@ -686,7 +686,7 @@ public class h
         o localo = (o)localWeakReference.get();
         if (localo == null)
         {
-          this.aeD.remove(localWeakReference);
+          this.agu.remove(localWeakReference);
         }
         else
         {
@@ -699,12 +699,12 @@ public class h
     }
     for (;;)
     {
-      hC();
+      hS();
       bool2 = bool1;
       if (!bool1) {
         break;
       }
-      this.aeE = paramj;
+      this.agv = paramj;
       return bool1;
       break label29;
     }
@@ -719,17 +719,17 @@ public class h
   {
     boolean bool1 = false;
     boolean bool2 = bool1;
-    if (!this.aeD.isEmpty())
+    if (!this.agu.isEmpty())
     {
-      if (this.aeE != paramj) {
+      if (this.agv != paramj) {
         bool2 = bool1;
       }
     }
     else {
       return bool2;
     }
-    hB();
-    Iterator localIterator = this.aeD.iterator();
+    hR();
+    Iterator localIterator = this.agu.iterator();
     bool1 = false;
     for (;;)
     {
@@ -740,7 +740,7 @@ public class h
         o localo = (o)localWeakReference.get();
         if (localo == null)
         {
-          this.aeD.remove(localWeakReference);
+          this.agu.remove(localWeakReference);
         }
         else
         {
@@ -753,137 +753,152 @@ public class h
     }
     for (;;)
     {
-      hC();
+      hS();
       bool2 = bool1;
       if (!bool1) {
         break;
       }
-      this.aeE = null;
+      this.agv = null;
       return bool1;
       break label41;
     }
   }
   
-  public boolean hA()
+  protected String hN()
   {
-    return this.ael;
+    return "android:menu:actionviewstates";
   }
   
-  public final void hB()
+  public boolean hO()
   {
-    if (!this.aex)
+    return this.agw;
+  }
+  
+  boolean hP()
+  {
+    return this.agb;
+  }
+  
+  public boolean hQ()
+  {
+    return this.agc;
+  }
+  
+  public final void hR()
+  {
+    if (!this.ago)
     {
-      this.aex = true;
-      this.aey = false;
-      this.aez = false;
+      this.ago = true;
+      this.agp = false;
+      this.agq = false;
     }
   }
   
-  public final void hC()
+  public final void hS()
   {
-    this.aex = false;
-    if (this.aey)
+    this.ago = false;
+    if (this.agp)
     {
-      this.aey = false;
-      r(this.aez);
+      this.agp = false;
+      r(this.agq);
     }
   }
   
-  final void hD()
+  final void hT()
   {
-    this.aeo = true;
+    this.agf = true;
     r(true);
   }
   
-  final void hE()
+  final void hU()
   {
-    this.aer = true;
+    this.agi = true;
     r(true);
   }
   
-  public final ArrayList<j> hF()
+  public final ArrayList<j> hV()
   {
-    if (!this.aeo) {
-      return this.aen;
+    if (!this.agf) {
+      return this.age;
     }
-    this.aen.clear();
+    this.age.clear();
     int j = this.mItems.size();
     int i = 0;
     while (i < j)
     {
       j localj = (j)this.mItems.get(i);
       if (localj.isVisible()) {
-        this.aen.add(localj);
+        this.age.add(localj);
       }
       i += 1;
     }
-    this.aeo = false;
-    this.aer = true;
-    return this.aen;
+    this.agf = false;
+    this.agi = true;
+    return this.age;
   }
   
-  public final void hG()
+  public final void hW()
   {
-    ArrayList localArrayList = hF();
-    if (!this.aer) {
+    ArrayList localArrayList = hV();
+    if (!this.agi) {
       return;
     }
-    Object localObject = this.aeD.iterator();
+    Object localObject = this.agu.iterator();
     int i = 0;
     while (((Iterator)localObject).hasNext())
     {
       WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
       o localo = (o)localWeakReference.get();
       if (localo == null) {
-        this.aeD.remove(localWeakReference);
+        this.agu.remove(localWeakReference);
       } else {
-        i = localo.bo() | i;
+        i = localo.bD() | i;
       }
     }
     if (i != 0)
     {
-      this.aep.clear();
-      this.aeq.clear();
+      this.agg.clear();
+      this.agh.clear();
       int k = localArrayList.size();
       i = 0;
       if (i < k)
       {
         localObject = (j)localArrayList.get(i);
-        if (((j)localObject).hO()) {
-          this.aep.add(localObject);
+        if (((j)localObject).jdMethod_if()) {
+          this.agg.add(localObject);
         }
         for (;;)
         {
           int j;
           i += 1;
           break;
-          this.aeq.add(localObject);
+          this.agh.add(localObject);
         }
       }
     }
     else
     {
-      this.aep.clear();
-      this.aeq.clear();
-      this.aeq.addAll(hF());
+      this.agg.clear();
+      this.agh.clear();
+      this.agh.addAll(hV());
     }
-    this.aer = false;
+    this.agi = false;
   }
   
-  public final ArrayList<j> hH()
+  public final ArrayList<j> hX()
   {
-    hG();
-    return this.aeq;
+    hW();
+    return this.agh;
   }
   
-  public h hI()
+  public h hY()
   {
     return this;
   }
   
   public boolean hasVisibleItems()
   {
-    if (this.aeG) {
+    if (this.agx) {
       return true;
     }
     int j = size();
@@ -896,21 +911,6 @@ public class h
       i += 1;
     }
     return false;
-  }
-  
-  protected String hx()
-  {
-    return "android:menu:actionviewstates";
-  }
-  
-  public boolean hy()
-  {
-    return this.aeF;
-  }
-  
-  boolean hz()
-  {
-    return this.aek;
   }
   
   public boolean isShortcutKey(int paramInt, KeyEvent paramKeyEvent)
@@ -938,36 +938,36 @@ public class h
   
   public void r(boolean paramBoolean)
   {
-    if (!this.aex)
+    if (!this.ago)
     {
       if (paramBoolean)
       {
-        this.aeo = true;
-        this.aer = true;
+        this.agf = true;
+        this.agi = true;
       }
-      if (!this.aeD.isEmpty())
+      if (!this.agu.isEmpty())
       {
-        hB();
-        Iterator localIterator = this.aeD.iterator();
+        hR();
+        Iterator localIterator = this.agu.iterator();
         while (localIterator.hasNext())
         {
           WeakReference localWeakReference = (WeakReference)localIterator.next();
           o localo = (o)localWeakReference.get();
           if (localo == null) {
-            this.aeD.remove(localWeakReference);
+            this.agu.remove(localWeakReference);
           } else {
             localo.p(paramBoolean);
           }
         }
-        hC();
+        hS();
       }
     }
     do
     {
       return;
-      this.aey = true;
+      this.agp = true;
     } while (!paramBoolean);
-    this.aez = true;
+    this.agq = true;
   }
   
   public void removeGroup(int paramInt)
@@ -1037,7 +1037,7 @@ public class h
   
   public void setGroupDividerEnabled(boolean paramBoolean)
   {
-    this.aeF = paramBoolean;
+    this.agw = paramBoolean;
   }
   
   public void setGroupEnabled(int paramInt, boolean paramBoolean)
@@ -1081,7 +1081,7 @@ public class h
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    this.aek = paramBoolean;
+    this.agb = paramBoolean;
     r(false);
   }
   

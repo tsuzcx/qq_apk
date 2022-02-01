@@ -9,9 +9,9 @@ import com.tencent.mm.kiss.widget.textview.a.a;
 public class SnsCommentPreloadTextView
   extends PLTextView
 {
-  private static a zkT = null;
-  private static int zkU = 0;
-  private boolean zkV = false;
+  private static a ACX = null;
+  private static int ACY = 0;
+  private boolean ACZ = false;
   
   public SnsCommentPreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,10 +26,10 @@ public class SnsCommentPreloadTextView
   public static a getTextViewConfig()
   {
     AppMethodBeat.i(100524);
-    if (zkT == null) {
-      zkT = d.dSI().getTextViewConfig();
+    if (ACX == null) {
+      ACX = d.efb().getTextViewConfig();
     }
-    a locala = zkT;
+    a locala = ACX;
     AppMethodBeat.o(100524);
     return locala;
   }
@@ -37,21 +37,21 @@ public class SnsCommentPreloadTextView
   public static int getViewWidth()
   {
     AppMethodBeat.i(100527);
-    if (zkU == 0) {
-      zkU = d.dSI().getViewWidth();
+    if (ACY == 0) {
+      ACY = d.efb().getViewWidth();
     }
-    int i = zkU;
+    int i = ACY;
     AppMethodBeat.o(100527);
     return i;
   }
   
-  public final a ahW()
+  public final a akH()
   {
     AppMethodBeat.i(100523);
-    if (zkT == null) {
-      zkT = d.dSI().getTextViewConfig();
+    if (ACX == null) {
+      ACX = d.efb().getTextViewConfig();
     }
-    a locala = zkT;
+    a locala = ACX;
     AppMethodBeat.o(100523);
     return locala;
   }

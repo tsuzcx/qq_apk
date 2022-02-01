@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kh
   extends b
 {
-  public a dlP;
+  public a dxn;
   
   public kh()
   {
@@ -15,17 +15,16 @@ public final class kh
   
   private kh(byte paramByte)
   {
-    AppMethodBeat.i(19816);
-    this.dlP = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19814);
+    this.dxn = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19816);
+    AppMethodBeat.o(19814);
   }
   
   public static final class a
   {
-    public String dlQ;
-    public String url;
+    public byte[] dxo;
   }
 }
 

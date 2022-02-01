@@ -5,26 +5,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
 {
   public int path;
-  public String vnE = "";
-  public boolean vnF = false;
+  public String wsW = "";
+  public boolean wsX = false;
   
   public e(int paramInt)
   {
     this.path = paramInt;
-    this.vnF = false;
+    this.wsX = false;
   }
   
   public e(String paramString)
   {
-    this.vnE = paramString;
-    this.vnF = true;
+    this.wsW = paramString;
+    this.wsX = true;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(204975);
-    String str = "NewTipsPath{dynamicPath='" + this.vnE + '\'' + ", path=" + this.path + ", isDynamicPtch=" + this.vnF + '}';
-    AppMethodBeat.o(204975);
+    AppMethodBeat.i(214434);
+    String str = "NewTipsPath{dynamicPath='" + this.wsW + '\'' + ", path=" + this.path + ", isDynamicPtch=" + this.wsX + '}';
+    AppMethodBeat.o(214434);
     return str;
   }
 }

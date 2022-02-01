@@ -8,39 +8,39 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.a.a;
 import com.tencent.mm.plugin.emoji.model.d;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
   extends f
 {
-  private int oXA = 0;
-  private int oXB = 0;
-  private int oXz = 0;
+  private int pBj = 0;
+  private int pBk = 0;
+  private int pBl = 0;
   
   public g(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final void Bh(int paramInt)
+  public final void BP(int paramInt)
   {
-    this.oXz = paramInt;
+    this.pBj = paramInt;
   }
   
-  public final void Bi(int paramInt)
+  public final void BQ(int paramInt)
   {
-    this.oXA = paramInt;
+    this.pBk = paramInt;
   }
   
-  public final void Bj(int paramInt)
+  public final void BR(int paramInt)
   {
-    this.oXB = paramInt;
+    this.pBl = paramInt;
   }
   
-  public final com.tencent.mm.plugin.emoji.a.a.f Bk(int paramInt)
+  public final com.tencent.mm.plugin.emoji.a.a.f BS(int paramInt)
   {
     AppMethodBeat.i(108329);
-    com.tencent.mm.plugin.emoji.a.a.f localf = super.Bk(paramInt);
+    com.tencent.mm.plugin.emoji.a.a.f localf = super.BS(paramInt);
     AppMethodBeat.o(108329);
     return localf;
   }
@@ -49,22 +49,22 @@ public final class g
   {
     AppMethodBeat.i(108328);
     final f.a locala = (f.a)paramView.getTag();
-    if (this.oXz > 0) {
+    if (this.pBj > 0) {
       if (paramInt == 0)
       {
-        locala.oWY.setVisibility(0);
-        locala.oWY.setText(this.mContext.getString(2131758329));
+        locala.pAI.setVisibility(0);
+        locala.pAI.setText(this.mContext.getString(2131758329));
       }
     }
     for (;;)
     {
-      if (locala.oXa != null) {
-        locala.oXa.postDelayed(new Runnable()
+      if (locala.pAK != null) {
+        locala.pAK.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(108326);
-            locala.oXa.setPressed(false);
+            locala.pAK.setPressed(false);
             AppMethodBeat.o(108326);
           }
         }, 100L);
@@ -72,81 +72,81 @@ public final class g
       paramView = super.b(paramInt, paramView, paramViewGroup);
       AppMethodBeat.o(108328);
       return paramView;
-      if ((this.oXA > 0) && (paramInt == this.oXz))
+      if ((this.pBk > 0) && (paramInt == this.pBj))
       {
-        locala.oWY.setVisibility(0);
-        locala.oWY.setText(this.mContext.getString(2131758350));
+        locala.pAI.setVisibility(0);
+        locala.pAI.setText(this.mContext.getString(2131758350));
       }
-      else if (paramInt == this.oXz + this.oXA)
+      else if (paramInt == this.pBj + this.pBk)
       {
-        locala.oWY.setVisibility(0);
-        if (!bs.isNullOrNil(d.cce().pav)) {
-          locala.oWY.setText(d.cce().pav);
-        } else if (d.cce().pat) {
-          locala.oWY.setText(2131758349);
+        locala.pAI.setVisibility(0);
+        if (!bt.isNullOrNil(d.cgI().pEf)) {
+          locala.pAI.setText(d.cgI().pEf);
+        } else if (d.cgI().pEd) {
+          locala.pAI.setText(2131758349);
         } else {
-          locala.oWY.setText(this.mContext.getString(2131758309));
+          locala.pAI.setText(this.mContext.getString(2131758309));
         }
       }
       else
       {
-        locala.oWY.setVisibility(8);
+        locala.pAI.setVisibility(8);
         continue;
-        if (this.oXA > 0)
+        if (this.pBk > 0)
         {
           if (paramInt == 0)
           {
-            locala.oWY.setVisibility(0);
-            locala.oWY.setText(this.mContext.getString(2131758350));
+            locala.pAI.setVisibility(0);
+            locala.pAI.setText(this.mContext.getString(2131758350));
           }
-          else if (paramInt == this.oXz + this.oXA)
+          else if (paramInt == this.pBj + this.pBk)
           {
-            locala.oWY.setVisibility(0);
-            if (!bs.isNullOrNil(d.cce().pav)) {
-              locala.oWY.setText(d.cce().pav);
-            } else if (d.cce().pat) {
-              locala.oWY.setText(2131758349);
+            locala.pAI.setVisibility(0);
+            if (!bt.isNullOrNil(d.cgI().pEf)) {
+              locala.pAI.setText(d.cgI().pEf);
+            } else if (d.cgI().pEd) {
+              locala.pAI.setText(2131758349);
             } else {
-              locala.oWY.setText(this.mContext.getString(2131758309));
+              locala.pAI.setText(this.mContext.getString(2131758309));
             }
           }
           else
           {
-            locala.oWY.setVisibility(8);
+            locala.pAI.setVisibility(8);
           }
         }
         else if (paramInt == 0)
         {
-          locala.oWY.setVisibility(0);
-          if (!bs.isNullOrNil(d.cce().pav)) {
-            locala.oWY.setText(d.cce().pav);
-          } else if (d.cce().pat) {
-            locala.oWY.setText(2131758349);
+          locala.pAI.setVisibility(0);
+          if (!bt.isNullOrNil(d.cgI().pEf)) {
+            locala.pAI.setText(d.cgI().pEf);
+          } else if (d.cgI().pEd) {
+            locala.pAI.setText(2131758349);
           } else {
-            locala.oWY.setText(this.mContext.getString(2131758309));
+            locala.pAI.setText(this.mContext.getString(2131758309));
           }
         }
         else
         {
-          locala.oWY.setVisibility(8);
+          locala.pAI.setVisibility(8);
         }
       }
     }
   }
   
-  public final int cbE()
+  public final int cgi()
   {
-    return this.oXz;
+    return this.pBj;
   }
   
-  public final int cbF()
+  public final int cgj()
   {
-    return this.oXA;
+    return this.pBk;
   }
   
-  public final int cbG()
+  public final int cgk()
   {
-    return this.oXB;
+    return this.pBl;
   }
   
   public final int getCount()

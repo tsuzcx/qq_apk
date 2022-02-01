@@ -6,16 +6,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends e
 {
-  public static final g htk;
+  public static final g hLC;
   
   static
   {
     AppMethodBeat.i(131406);
-    htk = new g();
+    hLC = new g();
     AppMethodBeat.o(131406);
   }
   
-  public final String Ap()
+  public final String BM()
   {
     return "WxaIcon";
   }
@@ -30,7 +30,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.g
  * JD-Core Version:    0.7.0.1
  */

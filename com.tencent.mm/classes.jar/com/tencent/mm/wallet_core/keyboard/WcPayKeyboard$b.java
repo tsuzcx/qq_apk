@@ -7,10 +7,10 @@ public enum WcPayKeyboard$b
   static
   {
     AppMethodBeat.i(72670);
-    JDQ = new b("NORMAL_STATE", 0);
-    JDR = new b("SINGLE_ACTION_STATE", 1);
-    JDS = new b("INIT_STATE", 2);
-    JDT = new b[] { JDQ, JDR, JDS };
+    LwW = new b("NORMAL_STATE", 0);
+    LwX = new b("SINGLE_ACTION_STATE", 1);
+    LwY = new b("INIT_STATE", 2);
+    LwZ = new b[] { LwW, LwX, LwY };
     AppMethodBeat.o(72670);
   }
   

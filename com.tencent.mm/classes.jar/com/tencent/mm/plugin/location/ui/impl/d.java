@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.a;
 import com.tencent.mm.plugin.location_soso.SoSoProxyUI;
 import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
   implements com.tencent.mm.plugin.k.c
@@ -21,7 +21,7 @@ public final class d
     return paramActivity;
   }
   
-  public static View fB(Context paramContext)
+  public static View fG(Context paramContext)
   {
     AppMethodBeat.i(56078);
     paramContext = new SoSoMapView(paramContext);
@@ -48,14 +48,14 @@ public final class d
       return paramActivity;
       paramActivity = new j(paramActivity);
       continue;
-      ac.i("MicroMsg.MapFactoryImp", "share map");
+      ad.i("MicroMsg.MapFactoryImp", "share map");
       paramActivity = new h(paramActivity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.d
  * JD-Core Version:    0.7.0.1
  */

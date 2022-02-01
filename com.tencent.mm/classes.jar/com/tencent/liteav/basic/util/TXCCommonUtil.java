@@ -21,7 +21,7 @@ public class TXCCommonUtil
     mStrAppVersion = "";
     pituLicencePath = "YTFaceSDK.licence";
     sApplicationContext = null;
-    d.f();
+    f.f();
     AppMethodBeat.o(14697);
   }
   
@@ -80,7 +80,7 @@ public class TXCCommonUtil
   public static String getAppPackageName()
   {
     AppMethodBeat.i(14696);
-    String str = d.c(sApplicationContext);
+    String str = f.c(sApplicationContext);
     AppMethodBeat.o(14696);
     return str;
   }
@@ -638,7 +638,7 @@ public class TXCCommonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.util.TXCCommonUtil
  * JD-Core Version:    0.7.0.1
  */

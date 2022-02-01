@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wepkg.downloader;
 
 import com.tencent.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.RunnableFuture;
@@ -21,13 +21,13 @@ public final class h
     if ((paramRunnable instanceof e))
     {
       e locale = (e)paramRunnable;
-      if ((locale.Dak != null) && (locale.Dak.CZL != null))
+      if ((locale.EEj != null) && (locale.EEj.EDK != null))
       {
-        d.eIZ().aFh(locale.Dak.CZL.Dal);
-        ac.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
+        d.eXT().aKG(locale.EEj.EDK.EEk);
+        ad.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "remove download task");
       }
     }
-    ac.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
+    ad.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "afterExecute");
     super.afterExecute(paramRunnable, paramThrowable);
     AppMethodBeat.o(110623);
   }
@@ -36,7 +36,7 @@ public final class h
   {
     AppMethodBeat.i(110622);
     super.beforeExecute(paramThread, paramRunnable);
-    ac.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
+    ad.i("MicroMsg.Wepkg.WePkgThreadPoolExecutor", "beforeExecute");
     AppMethodBeat.o(110622);
   }
   
@@ -57,9 +57,9 @@ public final class h
   public final void terminated()
   {
     AppMethodBeat.i(110621);
-    d locald = d.eIZ();
-    if (locald.CZV != null) {
-      locald.CZV.clear();
+    d locald = d.eXT();
+    if (locald.EDU != null) {
+      locald.EDU.clear();
     }
     super.terminated();
     AppMethodBeat.o(110621);
@@ -67,7 +67,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.h
  * JD-Core Version:    0.7.0.1
  */

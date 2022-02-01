@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
 import com.tencent.mm.plugin.appbrand.jsapi.y;
 import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -26,26 +26,26 @@ public final class i
     AppMethodBeat.i(145541);
     if (paramJSONObject == null)
     {
-      ac.e("MicroMsg.JsApiMeasureText", "measureText, data is null");
+      ad.e("MicroMsg.JsApiMeasureText", "measureText, data is null");
       paramc = e("fail:data is null", null);
       AppMethodBeat.o(145541);
       return paramc;
     }
     paramc = paramJSONObject.optString("text");
     float f1 = (float)paramJSONObject.optDouble("fontSize", 16.0D);
-    ac.i("MicroMsg.JsApiMeasureText", "measureText data:%s", new Object[] { paramJSONObject.toString() });
+    ad.i("MicroMsg.JsApiMeasureText", "measureText data:%s", new Object[] { paramJSONObject.toString() });
     if ((TextUtils.isEmpty(paramc)) || (f1 <= 0.0F))
     {
-      ac.e("MicroMsg.JsApiMeasureText", "measureText, param is illegal");
+      ad.e("MicroMsg.JsApiMeasureText", "measureText, param is illegal");
       paramc = e("fail:param is illegal", null);
       AppMethodBeat.o(145541);
       return paramc;
     }
     locala = new a();
-    locala.setTextSize(g.aG(f1));
+    locala.setTextSize(g.aJ(f1));
     try
     {
-      locala.Jx(paramJSONObject.getString("fontFamily"));
+      locala.MQ(paramJSONObject.getString("fontFamily"));
       try
       {
         String str = paramJSONObject.getString("fontStyle");
@@ -66,11 +66,11 @@ public final class i
         {
           label284:
           float f2;
-          ac.i("MicroMsg.JsApiMeasureText", "get 'fontStyle' error.");
+          ad.i("MicroMsg.JsApiMeasureText", "get 'fontStyle' error.");
           continue;
-          locala.rF(2);
+          locala.sf(2);
           continue;
-          locala.rF(0);
+          locala.sf(0);
           continue;
           int i = j;
           if (paramJSONObject.equals("bold"))
@@ -103,7 +103,7 @@ public final class i
       }
       catch (JSONException paramJSONObject)
       {
-        ac.i("MicroMsg.JsApiMeasureText", "get 'fontWeight' error.");
+        ad.i("MicroMsg.JsApiMeasureText", "get 'fontWeight' error.");
         break label284;
         locala.setFakeBoldText(false);
         break label284;
@@ -111,14 +111,14 @@ public final class i
       f2 = locala.measureText(paramc);
       paramc = locala.getFontMetrics();
       f1 = Math.abs(paramc.bottom - paramc.top);
-      ac.i("MicroMsg.JsApiMeasureText", "fontMetrics.bottom : %f, fontMetrics.top : %f, width : %f, height : %f", new Object[] { Float.valueOf(paramc.bottom), Float.valueOf(paramc.top), Float.valueOf(f2), Float.valueOf(f1) });
-      f2 = g.aF(f2);
-      f1 = g.aF(f1);
+      ad.i("MicroMsg.JsApiMeasureText", "fontMetrics.bottom : %f, fontMetrics.top : %f, width : %f, height : %f", new Object[] { Float.valueOf(paramc.bottom), Float.valueOf(paramc.top), Float.valueOf(f2), Float.valueOf(f1) });
+      f2 = g.aI(f2);
+      f1 = g.aI(f1);
       paramc = new HashMap();
       paramc.put("width", Float.valueOf(f2));
       paramc.put("height", Float.valueOf(f1));
-      ac.i("MicroMsg.JsApiMeasureText", "map:%s", new Object[] { paramc.toString() });
-      paramc = k("ok", paramc);
+      ad.i("MicroMsg.JsApiMeasureText", "map:%s", new Object[] { paramc.toString() });
+      paramc = m("ok", paramc);
       AppMethodBeat.o(145541);
       return paramc;
     }
@@ -126,7 +126,7 @@ public final class i
     {
       for (;;)
       {
-        ac.i("MicroMsg.JsApiMeasureText", "get 'fontFamily' error");
+        ad.i("MicroMsg.JsApiMeasureText", "get 'fontFamily' error");
         continue;
         if (localJSONException1.equals("oblique"))
         {
@@ -140,7 +140,7 @@ public final class i
             {
               i = 2;
               continue;
-              locala.rF(2);
+              locala.sf(2);
             }
           }
         }
@@ -150,7 +150,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.i
  * JD-Core Version:    0.7.0.1
  */

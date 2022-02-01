@@ -6,122 +6,122 @@ import com.google.b.a.e;
 public final class a$av
   extends e
 {
-  public int JOp = 0;
-  public int JOq = 0;
-  public int JOr = 0;
-  public int JOs = 0;
-  public int JOt = 0;
-  public int JOu = 0;
-  public int JOv = 0;
-  public int JOw = 0;
-  public int JOx = 0;
-  public int JOy = 0;
-  public int hCF = 0;
-  public int hCG = 0;
+  public int LIb = 0;
+  public int LIc = 0;
+  public int LId = 0;
+  public int LIe = 0;
+  public int LIf = 0;
+  public int LIg = 0;
+  public int LIh = 0;
+  public int LIi = 0;
+  public int LIj = 0;
+  public int LIk = 0;
+  public int hVk = 0;
+  public int hVl = 0;
   
   public a$av()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.JOp != 0) {
-      paramb.bv(1, this.JOp);
+    if (this.LIb != 0) {
+      paramb.bx(1, this.LIb);
     }
-    if (this.hCF != 0) {
-      paramb.bv(2, this.hCF);
+    if (this.hVk != 0) {
+      paramb.bx(2, this.hVk);
     }
-    if (this.hCG != 0) {
-      paramb.bv(3, this.hCG);
+    if (this.hVl != 0) {
+      paramb.bx(3, this.hVl);
     }
-    if (this.JOq != 0) {
-      paramb.bv(4, this.JOq);
+    if (this.LIc != 0) {
+      paramb.bx(4, this.LIc);
     }
-    if (this.JOr != 0) {
-      paramb.bv(5, this.JOr);
+    if (this.LId != 0) {
+      paramb.bx(5, this.LId);
     }
-    if (this.JOs != 0) {
-      paramb.bv(6, this.JOs);
+    if (this.LIe != 0) {
+      paramb.bx(6, this.LIe);
     }
-    if (this.JOt != 0) {
-      paramb.bv(7, this.JOt);
+    if (this.LIf != 0) {
+      paramb.bx(7, this.LIf);
     }
-    if (this.JOu != 0) {
-      paramb.bv(8, this.JOu);
+    if (this.LIg != 0) {
+      paramb.bx(8, this.LIg);
     }
-    if (this.JOv != 0) {
-      paramb.bv(9, this.JOv);
+    if (this.LIh != 0) {
+      paramb.bx(9, this.LIh);
     }
-    if (this.JOw != 0) {
-      paramb.bv(10, this.JOw);
+    if (this.LIi != 0) {
+      paramb.bx(10, this.LIi);
     }
-    if (this.JOx != 0) {
-      paramb.bv(11, this.JOx);
+    if (this.LIj != 0) {
+      paramb.bx(11, this.LIj);
     }
-    if (this.JOy != 0) {
-      paramb.bv(12, this.JOy);
+    if (this.LIk != 0) {
+      paramb.bx(12, this.LIk);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.JOp != 0) {
-      i = j + b.bx(1, this.JOp);
+    if (this.LIb != 0) {
+      i = j + b.bz(1, this.LIb);
     }
     j = i;
-    if (this.hCF != 0) {
-      j = i + b.bx(2, this.hCF);
+    if (this.hVk != 0) {
+      j = i + b.bz(2, this.hVk);
     }
     i = j;
-    if (this.hCG != 0) {
-      i = j + b.bx(3, this.hCG);
+    if (this.hVl != 0) {
+      i = j + b.bz(3, this.hVl);
     }
     j = i;
-    if (this.JOq != 0) {
-      j = i + b.bx(4, this.JOq);
+    if (this.LIc != 0) {
+      j = i + b.bz(4, this.LIc);
     }
     i = j;
-    if (this.JOr != 0) {
-      i = j + b.bx(5, this.JOr);
+    if (this.LId != 0) {
+      i = j + b.bz(5, this.LId);
     }
     j = i;
-    if (this.JOs != 0) {
-      j = i + b.bx(6, this.JOs);
+    if (this.LIe != 0) {
+      j = i + b.bz(6, this.LIe);
     }
     i = j;
-    if (this.JOt != 0) {
-      i = j + b.bx(7, this.JOt);
+    if (this.LIf != 0) {
+      i = j + b.bz(7, this.LIf);
     }
     j = i;
-    if (this.JOu != 0) {
-      j = i + b.bx(8, this.JOu);
+    if (this.LIg != 0) {
+      j = i + b.bz(8, this.LIg);
     }
     i = j;
-    if (this.JOv != 0) {
-      i = j + b.bx(9, this.JOv);
+    if (this.LIh != 0) {
+      i = j + b.bz(9, this.LIh);
     }
     j = i;
-    if (this.JOw != 0) {
-      j = i + b.bx(10, this.JOw);
+    if (this.LIi != 0) {
+      j = i + b.bz(10, this.LIi);
     }
     i = j;
-    if (this.JOx != 0) {
-      i = j + b.bx(11, this.JOx);
+    if (this.LIj != 0) {
+      i = j + b.bz(11, this.LIj);
     }
     j = i;
-    if (this.JOy != 0) {
-      j = i + b.bx(12, this.JOy);
+    if (this.LIk != 0) {
+      j = i + b.bz(12, this.LIk);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.av
  * JD-Core Version:    0.7.0.1
  */

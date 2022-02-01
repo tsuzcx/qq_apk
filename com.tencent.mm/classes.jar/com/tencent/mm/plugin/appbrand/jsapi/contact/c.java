@@ -9,16 +9,16 @@ public final class c
 {
   public static final int CTRL_INDEX = 72;
   public static final String NAME = "chooseContact";
-  private final d koR;
+  private final d kJR;
   
   public c()
   {
     AppMethodBeat.i(137497);
-    this.koR = new d();
+    this.kJR = new d();
     AppMethodBeat.o(137497);
   }
   
-  public static String GG(String paramString)
+  public static String JV(String paramString)
   {
     AppMethodBeat.i(137499);
     if (paramString == null)
@@ -38,7 +38,7 @@ public final class c
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137498);
-    this.koR.a(paramc, paramJSONObject, paramInt);
+    this.kJR.a(paramc, paramJSONObject, paramInt);
     AppMethodBeat.o(137498);
   }
 }

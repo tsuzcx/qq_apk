@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.ui.span;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,9 +23,9 @@ public final class a
     AppMethodBeat.i(152261);
     Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = ai.getContext();
+      localContext = aj.getContext();
     }
-    paramContext = c.a.DBW.x(localContext, paramString);
+    paramContext = c.a.Fhd.w(localContext, paramString);
     if (paramContext != null)
     {
       paramContext.start = paramInt1;
@@ -37,11 +37,11 @@ public final class a
     return paramContext;
   }
   
-  public static ArrayList<u> bO(Context paramContext, String paramString)
+  public static ArrayList<u> bS(Context paramContext, String paramString)
   {
     AppMethodBeat.i(152259);
     ArrayList localArrayList = new ArrayList();
-    paramString = j.a.DCh.matcher(paramString);
+    paramString = j.a.Fho.matcher(paramString);
     while (paramString.find())
     {
       int i = paramString.start();

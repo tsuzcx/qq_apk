@@ -8,29 +8,29 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class FaceHeaderPreference
   extends Preference
 {
-  private ImageView fBA;
-  private MMActivity iMV;
+  private MMActivity fLP;
+  private ImageView fUN;
   private String mTitle;
-  private int qBD;
-  private Button qBE;
-  private View qBF;
-  private View.OnClickListener qBG;
-  private String qBH;
-  private String qBI;
+  private int rlt;
+  private Button rlu;
+  private View rlv;
+  private View.OnClickListener rlw;
+  private String rlx;
+  private String rly;
   private TextView titleTv;
   
   public FaceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(104019);
-    this.iMV = ((MMActivity)paramContext);
+    this.fLP = ((MMActivity)paramContext);
     AppMethodBeat.o(104019);
   }
   
@@ -39,47 +39,47 @@ public final class FaceHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104020);
     this.mTitle = "";
-    this.qBD = 255;
-    this.qBG = null;
-    this.qBH = "";
-    this.qBI = "";
-    this.iMV = ((MMActivity)paramContext);
+    this.rlt = 255;
+    this.rlw = null;
+    this.rlx = "";
+    this.rly = "";
+    this.fLP = ((MMActivity)paramContext);
     setLayoutResource(2131493918);
     AppMethodBeat.o(104020);
   }
   
-  public final void c(View.OnClickListener paramOnClickListener)
+  public final void b(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(104022);
-    this.qBG = paramOnClickListener;
-    if ((this.qBE == null) || (this.qBF == null))
+    this.rlw = paramOnClickListener;
+    if ((this.rlu == null) || (this.rlv == null))
     {
       AppMethodBeat.o(104022);
       return;
     }
-    if ((this.qBE != null) && (this.qBG != null))
+    if ((this.rlu != null) && (this.rlw != null))
     {
-      this.qBE.setOnClickListener(paramOnClickListener);
-      this.qBE.setVisibility(0);
-      this.qBF.setVisibility(0);
+      this.rlu.setOnClickListener(paramOnClickListener);
+      this.rlu.setVisibility(0);
+      this.rlv.setVisibility(0);
       AppMethodBeat.o(104022);
       return;
     }
-    this.qBE.setVisibility(8);
-    this.qBF.setVisibility(8);
+    this.rlu.setVisibility(8);
+    this.rlv.setVisibility(8);
     AppMethodBeat.o(104022);
   }
   
-  public final void fX(String paramString1, String paramString2)
+  public final void gg(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104021);
-    this.qBH = paramString1;
-    this.qBI = paramString2;
+    this.rlx = paramString1;
+    this.rly = paramString2;
     if (this.titleTv != null)
     {
-      if (!bs.isNullOrNil(this.qBH))
+      if (!bt.isNullOrNil(this.rlx))
       {
-        this.titleTv.setText(this.qBH);
+        this.titleTv.setText(this.rlx);
         this.titleTv.setVisibility(0);
         AppMethodBeat.o(104021);
         return;
@@ -93,28 +93,28 @@ public final class FaceHeaderPreference
   {
     AppMethodBeat.i(104023);
     super.onBindView(paramView);
-    this.fBA = ((ImageView)paramView.findViewById(2131299700));
+    this.fUN = ((ImageView)paramView.findViewById(2131299700));
     this.titleTv = ((TextView)paramView.findViewById(2131299701));
-    this.qBE = ((Button)paramView.findViewById(2131304179));
-    this.qBF = paramView.findViewById(2131297656);
-    if (!bs.isNullOrNil(this.qBH))
+    this.rlu = ((Button)paramView.findViewById(2131304179));
+    this.rlv = paramView.findViewById(2131297656);
+    if (!bt.isNullOrNil(this.rlx))
     {
-      this.titleTv.setText(this.qBH);
+      this.titleTv.setText(this.rlx);
       this.titleTv.setVisibility(0);
     }
-    while ((this.qBE != null) && (this.qBG != null))
+    while ((this.rlu != null) && (this.rlw != null))
     {
-      this.qBE.setOnClickListener(this.qBG);
-      this.qBE.setVisibility(0);
-      this.qBF.setVisibility(0);
+      this.rlu.setOnClickListener(this.rlw);
+      this.rlu.setVisibility(0);
+      this.rlv.setVisibility(0);
       AppMethodBeat.o(104023);
       return;
       this.titleTv.setVisibility(8);
     }
-    if (this.qBE != null) {
-      this.qBE.setVisibility(8);
+    if (this.rlu != null) {
+      this.rlu.setVisibility(8);
     }
-    this.qBF.setVisibility(8);
+    this.rlv.setVisibility(8);
     AppMethodBeat.o(104023);
   }
 }

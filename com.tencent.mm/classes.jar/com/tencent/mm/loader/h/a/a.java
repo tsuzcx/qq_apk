@@ -2,25 +2,25 @@ package com.tencent.mm.loader.h.a;
 
 public final class a<T>
 {
-  protected b gMx;
+  protected b hgu;
   protected T value;
   
   public a(c paramc)
   {
     this.value = paramc;
-    this.gMx = b.gMB;
+    this.hgu = b.hgy;
   }
   
   public a(String paramString)
   {
     this.value = paramString;
-    this.gMx = b.gMB;
+    this.hgu = b.hgy;
   }
   
   private a(String paramString, b paramb)
   {
     this.value = paramString;
-    this.gMx = paramb;
+    this.hgu = paramb;
   }
   
   public static <T extends String> a<T> a(T paramT, b paramb)
@@ -28,12 +28,12 @@ public final class a<T>
     return new a(paramT, paramb);
   }
   
-  public final b aoQ()
+  public final b arD()
   {
-    return this.gMx;
+    return this.hgu;
   }
   
-  public final String aoR()
+  public final String arE()
   {
     return this.value.toString();
   }
@@ -43,7 +43,7 @@ public final class a<T>
     if (this.value != null)
     {
       if (((this.value instanceof c)) && ((paramObject instanceof a)) && ((((a)paramObject).value instanceof c))) {
-        return ((c)this.value).abW().equals(((c)((a)paramObject).value).abW());
+        return ((c)this.value).aeA().equals(((c)((a)paramObject).value).aeA());
       }
       if ((paramObject instanceof a)) {
         return this.value.equals(((a)paramObject).value);
@@ -71,7 +71,7 @@ public final class a<T>
       return "";
     }
     if ((this.value instanceof c)) {
-      return ((c)this.value).abW();
+      return ((c)this.value).aeA();
     }
     return this.value.toString();
   }

@@ -5,24 +5,24 @@ import android.media.AudioTrack;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.plugin.music.f.a.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @TargetApi(16)
 public final class c
   extends com.tencent.mm.plugin.music.f.a.b
 {
-  AudioTrack aUW;
-  int cRY;
-  com.tencent.mm.compatible.h.c cSi;
-  z cSj;
+  AudioTrack bfq;
   int channels;
+  int ddo;
+  com.tencent.mm.compatible.h.c ddy;
+  z ddz;
   long duration;
   String mime;
   long presentationTimeUs;
   int sampleRate;
   String sourcePath;
   private boolean stop;
-  private Runnable vgE;
+  private Runnable wlZ;
   
   public c()
   {
@@ -33,8 +33,8 @@ public final class c
     this.channels = 0;
     this.presentationTimeUs = 0L;
     this.duration = 0L;
-    this.cRY = 0;
-    this.vgE = new Runnable()
+    this.ddo = 0;
+    this.wlZ = new Runnable()
     {
       /* Error */
       public final void run()
@@ -44,37 +44,37 @@ public final class c
         //   2: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: ldc 30
         //   7: ldc 32
-        //   9: invokestatic 37	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   9: invokestatic 37	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   12: bipush 237
         //   14: invokestatic 42	android/os/Process:setThreadPriority	(I)V
         //   17: aload_0
-        //   18: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   18: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   21: getfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
-        //   24: invokestatic 52	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+        //   24: invokestatic 52	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
         //   27: ifeq +24 -> 51
         //   30: ldc 30
         //   32: ldc 54
-        //   34: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   34: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   37: aload_0
-        //   38: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   38: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   41: iconst_0
-        //   42: invokevirtual 61	com/tencent/mm/plugin/music/f/c:oE	(Z)V
+        //   42: invokevirtual 61	com/tencent/mm/plugin/music/f/c:pd	(Z)V
         //   45: ldc 22
         //   47: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   50: return
         //   51: aload_0
-        //   52: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   52: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   55: new 66	com/tencent/mm/compatible/h/c
         //   58: dup
         //   59: invokespecial 67	com/tencent/mm/compatible/h/c:<init>	()V
-        //   62: putfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
+        //   62: putfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
         //   65: aload_0
-        //   66: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   69: getfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
+        //   66: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   69: getfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
         //   72: aload_0
-        //   73: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   73: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   76: getfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
-        //   79: invokevirtual 75	com/tencent/mm/compatible/h/c:sI	(Ljava/lang/String;)V
+        //   79: invokevirtual 75	com/tencent/mm/compatible/h/c:vx	(Ljava/lang/String;)V
         //   82: aconst_null
         //   83: astore 13
         //   85: aconst_null
@@ -82,9 +82,9 @@ public final class c
         //   88: aload 13
         //   90: astore 11
         //   92: aload_0
-        //   93: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   96: getfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
-        //   99: getfield 79	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
+        //   93: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   96: getfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
+        //   99: getfield 79	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
         //   102: invokevirtual 85	android/media/MediaExtractor:getTrackCount	()I
         //   105: istore_2
         //   106: aload 13
@@ -98,7 +98,7 @@ public final class c
         //   120: iload_2
         //   121: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   124: aastore
-        //   125: invokestatic 96	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   125: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   128: iconst_0
         //   129: istore_1
         //   130: aload 12
@@ -109,15 +109,15 @@ public final class c
         //   139: aload 13
         //   141: astore 11
         //   143: aload_0
-        //   144: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   147: getfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
+        //   144: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   147: getfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
         //   150: iload_1
         //   151: invokevirtual 100	com/tencent/mm/compatible/h/c:getTrackFormat	(I)Landroid/media/MediaFormat;
         //   154: astore 10
         //   156: aload 13
         //   158: astore 11
         //   160: aload_0
-        //   161: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   161: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   164: aload 10
         //   166: ldc 102
         //   168: invokevirtual 108	android/media/MediaFormat:getString	(Ljava/lang/String;)Ljava/lang/String;
@@ -125,14 +125,14 @@ public final class c
         //   174: aload 13
         //   176: astore 11
         //   178: aload_0
-        //   179: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   179: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   182: getfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
-        //   185: invokestatic 52	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+        //   185: invokestatic 52	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
         //   188: ifne +120 -> 308
         //   191: aload 13
         //   193: astore 11
         //   195: aload_0
-        //   196: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   196: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   199: getfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
         //   202: ldc 112
         //   204: invokevirtual 117	java/lang/String:startsWith	(Ljava/lang/String;)Z
@@ -143,23 +143,23 @@ public final class c
         //   217: astore 11
         //   219: ldc 30
         //   221: ldc 119
-        //   223: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   223: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
         //   226: aload 10
         //   228: astore 11
         //   230: aload_0
-        //   231: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   231: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   234: sipush 703
-        //   237: putfield 123	com/tencent/mm/plugin/music/f/c:cRY	I
+        //   237: putfield 123	com/tencent/mm/plugin/music/f/c:ddo	I
         //   240: aload 10
         //   242: astore 11
         //   244: aload_0
-        //   245: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   245: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   248: iconst_1
-        //   249: invokevirtual 61	com/tencent/mm/plugin/music/f/c:oE	(Z)V
+        //   249: invokevirtual 61	com/tencent/mm/plugin/music/f/c:pd	(Z)V
         //   252: aload 10
         //   254: astore 11
         //   256: aload_0
-        //   257: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   257: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   260: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
         //   263: ldc 22
         //   265: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -170,15 +170,15 @@ public final class c
         //   275: ldc 128
         //   277: iconst_0
         //   278: anewarray 4	java/lang/Object
-        //   281: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   281: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   284: aload_0
-        //   285: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   285: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   288: sipush 702
-        //   291: putfield 123	com/tencent/mm/plugin/music/f/c:cRY	I
+        //   291: putfield 123	com/tencent/mm/plugin/music/f/c:ddo	I
         //   294: aload_0
-        //   295: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   295: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   298: iconst_1
-        //   299: invokevirtual 61	com/tencent/mm/plugin/music/f/c:oE	(Z)V
+        //   299: invokevirtual 61	com/tencent/mm/plugin/music/f/c:pd	(Z)V
         //   302: ldc 22
         //   304: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   307: return
@@ -197,11 +197,11 @@ public final class c
         //   328: iconst_0
         //   329: aload 10
         //   331: aastore
-        //   332: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   332: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   335: aload 10
         //   337: astore 11
         //   339: aload_0
-        //   340: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   340: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   343: aload 10
         //   345: ldc 138
         //   347: invokevirtual 142	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
@@ -209,7 +209,7 @@ public final class c
         //   353: aload 10
         //   355: astore 11
         //   357: aload_0
-        //   358: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   358: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   361: aload 10
         //   363: ldc 147
         //   365: invokevirtual 142	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
@@ -217,37 +217,37 @@ public final class c
         //   371: aload 10
         //   373: astore 11
         //   375: aload_0
-        //   376: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   376: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   379: aload 10
         //   381: ldc 152
         //   383: invokevirtual 156	android/media/MediaFormat:getLong	(Ljava/lang/String;)J
         //   386: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
         //   389: aload_0
-        //   390: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   390: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   393: aload_0
-        //   394: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   394: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   397: getfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
-        //   400: invokestatic 166	com/tencent/mm/compatible/deviceinfo/z:sx	(Ljava/lang/String;)Lcom/tencent/mm/compatible/deviceinfo/z;
-        //   403: putfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   400: invokestatic 166	com/tencent/mm/compatible/deviceinfo/z:vm	(Ljava/lang/String;)Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   403: putfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
         //   406: aload_0
-        //   407: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   410: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   407: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   410: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
         //   413: aload 10
         //   415: aconst_null
         //   416: iconst_0
         //   417: invokevirtual 173	com/tencent/mm/compatible/deviceinfo/z:a	(Landroid/media/MediaFormat;Landroid/view/Surface;I)V
         //   420: aload_0
-        //   421: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   424: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   421: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   424: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
         //   427: invokevirtual 176	com/tencent/mm/compatible/deviceinfo/z:start	()V
         //   430: aload_0
-        //   431: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   434: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   431: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   434: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
         //   437: invokevirtual 180	com/tencent/mm/compatible/deviceinfo/z:getInputBuffers	()[Ljava/nio/ByteBuffer;
         //   440: astore 12
         //   442: aload_0
-        //   443: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   446: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   443: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   446: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
         //   449: invokevirtual 183	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
         //   452: astore 11
         //   454: ldc 30
@@ -261,34 +261,34 @@ public final class c
         //   467: dup
         //   468: iconst_1
         //   469: aload_0
-        //   470: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   470: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   473: getfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
         //   476: aastore
         //   477: dup
         //   478: iconst_2
         //   479: aload_0
-        //   480: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   480: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   483: getfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
         //   486: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   489: aastore
         //   490: dup
         //   491: iconst_3
         //   492: aload_0
-        //   493: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   493: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   496: getfield 150	com/tencent/mm/plugin/music/f/c:channels	I
         //   499: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
         //   502: aastore
         //   503: dup
         //   504: iconst_4
         //   505: aload_0
-        //   506: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   506: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   509: getfield 160	com/tencent/mm/plugin/music/f/c:duration	J
         //   512: invokestatic 190	java/lang/Long:valueOf	(J)Ljava/lang/Long;
         //   515: aastore
-        //   516: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   516: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   519: aload_0
-        //   520: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   523: getfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
+        //   520: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   523: getfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
         //   526: iconst_0
         //   527: invokevirtual 193	com/tencent/mm/compatible/h/c:selectTrack	(I)V
         //   530: new 195	android/media/MediaCodec$BufferInfo
@@ -300,625 +300,626 @@ public final class c
         //   541: iconst_0
         //   542: istore_2
         //   543: aload_0
-        //   544: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   547: getfield 200	com/tencent/mm/plugin/music/f/c:vgX	Lcom/tencent/mm/plugin/music/f/a/g;
+        //   544: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   547: getfield 200	com/tencent/mm/plugin/music/f/c:wms	Lcom/tencent/mm/plugin/music/f/a/g;
         //   550: iconst_3
-        //   551: putfield 205	com/tencent/mm/plugin/music/f/a/g:smv	I
+        //   551: putfield 205	com/tencent/mm/plugin/music/f/a/g:tiZ	I
         //   554: aload_0
-        //   555: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
+        //   555: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
         //   558: invokevirtual 208	com/tencent/mm/plugin/music/f/c:onStart	()V
         //   561: iconst_0
         //   562: istore_1
         //   563: aload 11
         //   565: astore 10
         //   567: iload_3
-        //   568: ifne +707 -> 1275
+        //   568: ifne +708 -> 1276
         //   571: iload_2
         //   572: bipush 50
-        //   574: if_icmpge +701 -> 1275
+        //   574: if_icmpge +702 -> 1276
         //   577: aload_0
-        //   578: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   581: invokevirtual 211	com/tencent/mm/plugin/music/f/c:djl	()V
+        //   578: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   581: invokevirtual 211	com/tencent/mm/plugin/music/f/c:dtx	()V
         //   584: aload_0
-        //   585: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   588: invokevirtual 215	com/tencent/mm/plugin/music/f/c:dji	()Z
-        //   591: ifeq +684 -> 1275
+        //   585: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   588: invokevirtual 215	com/tencent/mm/plugin/music/f/c:dtu	()Z
+        //   591: ifeq +685 -> 1276
         //   594: iload_2
         //   595: iconst_1
         //   596: iadd
         //   597: istore_2
         //   598: iload_1
-        //   599: ifne +1070 -> 1669
+        //   599: ifne +1071 -> 1670
         //   602: aload_0
-        //   603: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   606: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   603: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   606: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
         //   609: ldc2_w 216
         //   612: invokevirtual 221	com/tencent/mm/compatible/deviceinfo/z:dequeueInputBuffer	(J)I
         //   615: istore 6
         //   617: iload 6
-        //   619: iflt +452 -> 1071
+        //   619: iflt +453 -> 1072
         //   622: aload 12
         //   624: iload 6
         //   626: aaload
         //   627: astore 11
         //   629: aload_0
-        //   630: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   633: getfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
+        //   630: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   633: getfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
         //   636: aload 11
-        //   638: invokevirtual 225	com/tencent/mm/compatible/h/c:j	(Ljava/nio/ByteBuffer;)I
-        //   641: istore 5
-        //   643: iload 5
-        //   645: ifge +350 -> 995
-        //   648: ldc 30
-        //   650: ldc 227
-        //   652: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-        //   655: iconst_1
-        //   656: istore_1
-        //   657: iconst_0
-        //   658: istore 4
-        //   660: aload_0
-        //   661: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   664: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
-        //   667: astore 11
-        //   669: aload_0
-        //   670: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   673: getfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   676: lstore 7
-        //   678: iload_1
-        //   679: ifeq +984 -> 1663
-        //   682: iconst_4
-        //   683: istore 5
-        //   685: aload 11
-        //   687: iload 6
-        //   689: iload 4
-        //   691: lload 7
-        //   693: iload 5
-        //   695: invokevirtual 233	com/tencent/mm/compatible/deviceinfo/z:a	(IIJI)V
-        //   698: iload_1
-        //   699: ifne +961 -> 1660
-        //   702: aload_0
-        //   703: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   706: getfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
-        //   709: getfield 79	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
-        //   712: invokevirtual 236	android/media/MediaExtractor:advance	()Z
-        //   715: pop
-        //   716: goto +944 -> 1660
-        //   719: aload_0
-        //   720: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   723: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
-        //   726: aload 13
-        //   728: ldc2_w 216
-        //   731: invokevirtual 240	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
-        //   734: istore 4
-        //   736: iload 4
-        //   738: iflt +415 -> 1153
-        //   741: aload 13
-        //   743: getfield 243	android/media/MediaCodec$BufferInfo:size	I
-        //   746: ifle +911 -> 1657
-        //   749: iconst_0
-        //   750: istore_2
-        //   751: aload 10
-        //   753: iload 4
-        //   755: aaload
-        //   756: astore 11
-        //   758: aload 13
-        //   760: getfield 243	android/media/MediaCodec$BufferInfo:size	I
-        //   763: newarray byte
-        //   765: astore 14
-        //   767: aload 11
-        //   769: aload 14
-        //   771: invokevirtual 249	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
-        //   774: pop
-        //   775: aload 11
-        //   777: invokevirtual 253	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-        //   780: pop
-        //   781: aload 14
-        //   783: arraylength
-        //   784: ifle +333 -> 1117
-        //   787: aload_0
-        //   788: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   791: getfield 257	com/tencent/mm/plugin/music/f/c:aUW	Landroid/media/AudioTrack;
-        //   794: ifnonnull +306 -> 1100
-        //   797: aload_0
-        //   798: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   801: invokevirtual 260	com/tencent/mm/plugin/music/f/c:createAudioTrack	()Z
-        //   804: ifne +286 -> 1090
-        //   807: ldc 30
-        //   809: ldc_w 262
-        //   812: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-        //   815: aload_0
-        //   816: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   819: sipush 707
-        //   822: putfield 123	com/tencent/mm/plugin/music/f/c:cRY	I
-        //   825: aload_0
-        //   826: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   829: iconst_1
-        //   830: invokevirtual 61	com/tencent/mm/plugin/music/f/c:oE	(Z)V
-        //   833: aload_0
-        //   834: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   837: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   840: aload_0
-        //   841: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   844: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   847: aload_0
-        //   848: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   851: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   854: aload_0
-        //   855: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   858: aconst_null
-        //   859: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
-        //   862: aload_0
-        //   863: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   866: aconst_null
-        //   867: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
-        //   870: aload_0
-        //   871: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   874: iconst_0
-        //   875: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
-        //   878: aload_0
-        //   879: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   882: iconst_0
-        //   883: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
-        //   886: aload_0
-        //   887: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   890: lconst_0
-        //   891: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   894: aload_0
-        //   895: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   898: lconst_0
-        //   899: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
-        //   902: ldc 22
-        //   904: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   907: return
-        //   908: astore 10
-        //   910: ldc 30
-        //   912: aload 10
-        //   914: ldc_w 270
-        //   917: iconst_0
-        //   918: anewarray 4	java/lang/Object
-        //   921: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   924: aload_0
-        //   925: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   928: sipush 705
-        //   931: putfield 123	com/tencent/mm/plugin/music/f/c:cRY	I
-        //   934: aload 11
-        //   936: astore 10
-        //   938: goto -549 -> 389
-        //   941: astore 10
-        //   943: ldc 30
-        //   945: aload 10
-        //   947: ldc_w 272
-        //   950: iconst_0
-        //   951: anewarray 4	java/lang/Object
-        //   954: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   957: aload_0
-        //   958: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   961: sipush 704
-        //   964: putfield 123	com/tencent/mm/plugin/music/f/c:cRY	I
-        //   967: aload_0
-        //   968: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   971: iconst_1
-        //   972: invokevirtual 61	com/tencent/mm/plugin/music/f/c:oE	(Z)V
-        //   975: aload_0
-        //   976: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   979: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   982: aload_0
-        //   983: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   986: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   989: ldc 22
-        //   991: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   994: return
-        //   995: aload_0
-        //   996: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   999: aload_0
-        //   1000: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1003: getfield 71	com/tencent/mm/plugin/music/f/c:cSi	Lcom/tencent/mm/compatible/h/c;
-        //   1006: getfield 79	com/tencent/mm/compatible/h/c:fKr	Landroid/media/MediaExtractor;
-        //   1009: invokevirtual 276	android/media/MediaExtractor:getSampleTime	()J
-        //   1012: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   1015: aload_0
-        //   1016: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1019: getfield 160	com/tencent/mm/plugin/music/f/c:duration	J
-        //   1022: lconst_0
-        //   1023: lcmp
-        //   1024: ifne +22 -> 1046
-        //   1027: iconst_0
-        //   1028: istore 4
-        //   1030: aload_0
-        //   1031: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1034: iload 4
-        //   1036: invokevirtual 279	com/tencent/mm/plugin/music/f/c:JX	(I)V
-        //   1039: iload 5
-        //   1041: istore 4
-        //   1043: goto -383 -> 660
-        //   1046: ldc2_w 280
-        //   1049: aload_0
-        //   1050: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1053: getfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   1056: lmul
-        //   1057: aload_0
-        //   1058: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1061: getfield 160	com/tencent/mm/plugin/music/f/c:duration	J
-        //   1064: ldiv
-        //   1065: l2i
-        //   1066: istore 4
-        //   1068: goto -38 -> 1030
-        //   1071: ldc 30
-        //   1073: ldc_w 283
-        //   1076: iload 6
-        //   1078: invokestatic 286	java/lang/String:valueOf	(I)Ljava/lang/String;
-        //   1081: invokevirtual 289	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   1084: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1087: goto +582 -> 1669
-        //   1090: aload_0
-        //   1091: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1094: getfield 257	com/tencent/mm/plugin/music/f/c:aUW	Landroid/media/AudioTrack;
-        //   1097: invokevirtual 294	android/media/AudioTrack:play	()V
-        //   1100: aload_0
-        //   1101: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1104: getfield 257	com/tencent/mm/plugin/music/f/c:aUW	Landroid/media/AudioTrack;
-        //   1107: aload 14
-        //   1109: iconst_0
-        //   1110: aload 14
-        //   1112: arraylength
-        //   1113: invokevirtual 298	android/media/AudioTrack:write	([BII)I
-        //   1116: pop
-        //   1117: aload_0
-        //   1118: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1121: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
-        //   1124: iload 4
-        //   1126: iconst_0
-        //   1127: invokevirtual 302	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
-        //   1130: aload 13
-        //   1132: getfield 305	android/media/MediaCodec$BufferInfo:flags	I
-        //   1135: iconst_4
-        //   1136: iand
-        //   1137: ifeq +535 -> 1672
-        //   1140: ldc 30
-        //   1142: ldc_w 307
-        //   1145: invokestatic 57	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1148: iconst_1
-        //   1149: istore_3
-        //   1150: goto +522 -> 1672
-        //   1153: iload 4
-        //   1155: bipush 253
-        //   1157: if_icmpne +26 -> 1183
-        //   1160: aload_0
-        //   1161: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1164: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
-        //   1167: invokevirtual 183	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
-        //   1170: astore 10
-        //   1172: ldc 30
-        //   1174: ldc_w 309
-        //   1177: invokestatic 37	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1180: goto -613 -> 567
-        //   1183: iload 4
-        //   1185: bipush 254
-        //   1187: if_icmpne +69 -> 1256
-        //   1190: aload_0
-        //   1191: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1194: getfield 170	com/tencent/mm/plugin/music/f/c:cSj	Lcom/tencent/mm/compatible/deviceinfo/z;
-        //   1197: invokevirtual 313	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
-        //   1200: astore 11
-        //   1202: ldc 30
-        //   1204: ldc_w 315
-        //   1207: aload 11
-        //   1209: invokestatic 318	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-        //   1212: invokevirtual 289	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   1215: invokestatic 37	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1218: aload_0
-        //   1219: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1222: aload 11
-        //   1224: ldc 138
-        //   1226: invokevirtual 142	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-        //   1229: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
-        //   1232: aload_0
-        //   1233: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1236: aload 11
-        //   1238: ldc 147
-        //   1240: invokevirtual 142	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
-        //   1243: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
-        //   1246: aload_0
-        //   1247: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1250: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1253: goto -686 -> 567
-        //   1256: ldc 30
-        //   1258: ldc_w 320
-        //   1261: iload 4
-        //   1263: invokestatic 286	java/lang/String:valueOf	(I)Ljava/lang/String;
-        //   1266: invokevirtual 289	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-        //   1269: invokestatic 37	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1272: goto -705 -> 567
-        //   1275: aload_0
-        //   1276: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1279: getfield 160	com/tencent/mm/plugin/music/f/c:duration	J
-        //   1282: ldc2_w 216
-        //   1285: ldiv
-        //   1286: aload_0
-        //   1287: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1290: getfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   1293: ldc2_w 216
-        //   1296: ldiv
-        //   1297: lsub
-        //   1298: ldc2_w 321
-        //   1301: lcmp
-        //   1302: ifge +132 -> 1434
-        //   1305: iconst_1
-        //   1306: istore 9
-        //   1308: iload_2
-        //   1309: bipush 50
-        //   1311: if_icmplt +129 -> 1440
-        //   1314: ldc 30
-        //   1316: ldc_w 324
-        //   1319: iconst_1
-        //   1320: anewarray 4	java/lang/Object
-        //   1323: dup
-        //   1324: iconst_0
-        //   1325: iload_2
-        //   1326: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-        //   1329: aastore
-        //   1330: invokestatic 96	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   1333: aload_0
-        //   1334: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1337: sipush 706
-        //   1340: putfield 123	com/tencent/mm/plugin/music/f/c:cRY	I
-        //   1343: aload_0
-        //   1344: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1347: iconst_1
-        //   1348: invokevirtual 61	com/tencent/mm/plugin/music/f/c:oE	(Z)V
-        //   1351: aload_0
-        //   1352: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1355: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1358: aload_0
-        //   1359: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1362: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1365: aload_0
-        //   1366: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1369: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1372: aload_0
-        //   1373: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1376: aconst_null
-        //   1377: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
-        //   1380: aload_0
-        //   1381: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1384: aconst_null
-        //   1385: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
-        //   1388: aload_0
-        //   1389: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1392: iconst_0
-        //   1393: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
-        //   1396: aload_0
-        //   1397: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1400: iconst_0
-        //   1401: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
-        //   1404: aload_0
-        //   1405: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1408: lconst_0
-        //   1409: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   1412: aload_0
-        //   1413: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1416: lconst_0
-        //   1417: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
-        //   1420: ldc 30
-        //   1422: ldc_w 326
-        //   1425: invokestatic 37	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
-        //   1428: ldc 22
-        //   1430: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   1433: return
-        //   1434: iconst_0
-        //   1435: istore 9
-        //   1437: goto -129 -> 1308
-        //   1440: ldc 30
-        //   1442: ldc_w 328
-        //   1445: iconst_1
-        //   1446: anewarray 4	java/lang/Object
-        //   1449: dup
-        //   1450: iconst_0
-        //   1451: iload 9
-        //   1453: invokestatic 333	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-        //   1456: aastore
-        //   1457: invokestatic 136	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   1460: aload_0
-        //   1461: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1464: iload 9
-        //   1466: invokevirtual 336	com/tencent/mm/plugin/music/f/c:oF	(Z)V
-        //   1469: goto -118 -> 1351
-        //   1472: astore 10
-        //   1474: ldc 30
-        //   1476: aload 10
-        //   1478: ldc_w 338
-        //   1481: iconst_0
-        //   1482: anewarray 4	java/lang/Object
-        //   1485: invokestatic 132	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   1488: aload_0
-        //   1489: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1492: sipush 706
-        //   1495: putfield 123	com/tencent/mm/plugin/music/f/c:cRY	I
-        //   1498: aload_0
-        //   1499: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1502: iconst_1
-        //   1503: invokevirtual 61	com/tencent/mm/plugin/music/f/c:oE	(Z)V
-        //   1506: aload_0
-        //   1507: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1510: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1513: aload_0
-        //   1514: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1517: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1520: aload_0
-        //   1521: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1524: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1527: aload_0
-        //   1528: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1531: aconst_null
-        //   1532: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
-        //   1535: aload_0
-        //   1536: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1539: aconst_null
-        //   1540: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
-        //   1543: aload_0
-        //   1544: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1547: iconst_0
-        //   1548: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
-        //   1551: aload_0
-        //   1552: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1555: iconst_0
-        //   1556: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
-        //   1559: aload_0
-        //   1560: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1563: lconst_0
-        //   1564: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   1567: aload_0
-        //   1568: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1571: lconst_0
-        //   1572: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
-        //   1575: goto -155 -> 1420
-        //   1578: astore 10
-        //   1580: aload_0
-        //   1581: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1584: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1587: aload_0
-        //   1588: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1591: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1594: aload_0
-        //   1595: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1598: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
-        //   1601: aload_0
-        //   1602: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1605: aconst_null
-        //   1606: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
-        //   1609: aload_0
-        //   1610: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1613: aconst_null
-        //   1614: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
-        //   1617: aload_0
-        //   1618: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1621: iconst_0
-        //   1622: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
-        //   1625: aload_0
-        //   1626: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1629: iconst_0
-        //   1630: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
-        //   1633: aload_0
-        //   1634: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1637: lconst_0
-        //   1638: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
-        //   1641: aload_0
-        //   1642: getfield 14	com/tencent/mm/plugin/music/f/c$1:vgF	Lcom/tencent/mm/plugin/music/f/c;
-        //   1645: lconst_0
-        //   1646: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
-        //   1649: ldc 22
-        //   1651: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   1654: aload 10
-        //   1656: athrow
-        //   1657: goto -906 -> 751
-        //   1660: goto -941 -> 719
-        //   1663: iconst_0
-        //   1664: istore 5
-        //   1666: goto -981 -> 685
-        //   1669: goto -950 -> 719
-        //   1672: goto -1105 -> 567
+        //   638: iconst_0
+        //   639: invokevirtual 225	com/tencent/mm/compatible/h/c:readSampleData	(Ljava/nio/ByteBuffer;I)I
+        //   642: istore 5
+        //   644: iload 5
+        //   646: ifge +350 -> 996
+        //   649: ldc 30
+        //   651: ldc 227
+        //   653: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   656: iconst_1
+        //   657: istore_1
+        //   658: iconst_0
+        //   659: istore 4
+        //   661: aload_0
+        //   662: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   665: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   668: astore 11
+        //   670: aload_0
+        //   671: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   674: getfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   677: lstore 7
+        //   679: iload_1
+        //   680: ifeq +984 -> 1664
+        //   683: iconst_4
+        //   684: istore 5
+        //   686: aload 11
+        //   688: iload 6
+        //   690: iload 4
+        //   692: lload 7
+        //   694: iload 5
+        //   696: invokevirtual 233	com/tencent/mm/compatible/deviceinfo/z:a	(IIJI)V
+        //   699: iload_1
+        //   700: ifne +961 -> 1661
+        //   703: aload_0
+        //   704: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   707: getfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
+        //   710: getfield 79	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+        //   713: invokevirtual 236	android/media/MediaExtractor:advance	()Z
+        //   716: pop
+        //   717: goto +944 -> 1661
+        //   720: aload_0
+        //   721: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   724: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   727: aload 13
+        //   729: ldc2_w 216
+        //   732: invokevirtual 240	com/tencent/mm/compatible/deviceinfo/z:dequeueOutputBuffer	(Landroid/media/MediaCodec$BufferInfo;J)I
+        //   735: istore 4
+        //   737: iload 4
+        //   739: iflt +415 -> 1154
+        //   742: aload 13
+        //   744: getfield 243	android/media/MediaCodec$BufferInfo:size	I
+        //   747: ifle +911 -> 1658
+        //   750: iconst_0
+        //   751: istore_2
+        //   752: aload 10
+        //   754: iload 4
+        //   756: aaload
+        //   757: astore 11
+        //   759: aload 13
+        //   761: getfield 243	android/media/MediaCodec$BufferInfo:size	I
+        //   764: newarray byte
+        //   766: astore 14
+        //   768: aload 11
+        //   770: aload 14
+        //   772: invokevirtual 249	java/nio/ByteBuffer:get	([B)Ljava/nio/ByteBuffer;
+        //   775: pop
+        //   776: aload 11
+        //   778: invokevirtual 253	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+        //   781: pop
+        //   782: aload 14
+        //   784: arraylength
+        //   785: ifle +333 -> 1118
+        //   788: aload_0
+        //   789: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   792: getfield 257	com/tencent/mm/plugin/music/f/c:bfq	Landroid/media/AudioTrack;
+        //   795: ifnonnull +306 -> 1101
+        //   798: aload_0
+        //   799: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   802: invokevirtual 260	com/tencent/mm/plugin/music/f/c:createAudioTrack	()Z
+        //   805: ifne +286 -> 1091
+        //   808: ldc 30
+        //   810: ldc_w 262
+        //   813: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   816: aload_0
+        //   817: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   820: sipush 707
+        //   823: putfield 123	com/tencent/mm/plugin/music/f/c:ddo	I
+        //   826: aload_0
+        //   827: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   830: iconst_1
+        //   831: invokevirtual 61	com/tencent/mm/plugin/music/f/c:pd	(Z)V
+        //   834: aload_0
+        //   835: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   838: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   841: aload_0
+        //   842: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   845: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   848: aload_0
+        //   849: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   852: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   855: aload_0
+        //   856: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   859: aconst_null
+        //   860: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
+        //   863: aload_0
+        //   864: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   867: aconst_null
+        //   868: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
+        //   871: aload_0
+        //   872: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   875: iconst_0
+        //   876: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
+        //   879: aload_0
+        //   880: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   883: iconst_0
+        //   884: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
+        //   887: aload_0
+        //   888: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   891: lconst_0
+        //   892: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   895: aload_0
+        //   896: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   899: lconst_0
+        //   900: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
+        //   903: ldc 22
+        //   905: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   908: return
+        //   909: astore 10
+        //   911: ldc 30
+        //   913: aload 10
+        //   915: ldc_w 270
+        //   918: iconst_0
+        //   919: anewarray 4	java/lang/Object
+        //   922: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   925: aload_0
+        //   926: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   929: sipush 705
+        //   932: putfield 123	com/tencent/mm/plugin/music/f/c:ddo	I
+        //   935: aload 11
+        //   937: astore 10
+        //   939: goto -550 -> 389
+        //   942: astore 10
+        //   944: ldc 30
+        //   946: aload 10
+        //   948: ldc_w 272
+        //   951: iconst_0
+        //   952: anewarray 4	java/lang/Object
+        //   955: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   958: aload_0
+        //   959: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   962: sipush 704
+        //   965: putfield 123	com/tencent/mm/plugin/music/f/c:ddo	I
+        //   968: aload_0
+        //   969: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   972: iconst_1
+        //   973: invokevirtual 61	com/tencent/mm/plugin/music/f/c:pd	(Z)V
+        //   976: aload_0
+        //   977: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   980: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   983: aload_0
+        //   984: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   987: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   990: ldc 22
+        //   992: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   995: return
+        //   996: aload_0
+        //   997: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1000: aload_0
+        //   1001: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1004: getfield 71	com/tencent/mm/plugin/music/f/c:ddy	Lcom/tencent/mm/compatible/h/c;
+        //   1007: getfield 79	com/tencent/mm/compatible/h/c:gdS	Landroid/media/MediaExtractor;
+        //   1010: invokevirtual 276	android/media/MediaExtractor:getSampleTime	()J
+        //   1013: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   1016: aload_0
+        //   1017: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1020: getfield 160	com/tencent/mm/plugin/music/f/c:duration	J
+        //   1023: lconst_0
+        //   1024: lcmp
+        //   1025: ifne +22 -> 1047
+        //   1028: iconst_0
+        //   1029: istore 4
+        //   1031: aload_0
+        //   1032: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1035: iload 4
+        //   1037: invokevirtual 279	com/tencent/mm/plugin/music/f/c:Lz	(I)V
+        //   1040: iload 5
+        //   1042: istore 4
+        //   1044: goto -383 -> 661
+        //   1047: ldc2_w 280
+        //   1050: aload_0
+        //   1051: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1054: getfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   1057: lmul
+        //   1058: aload_0
+        //   1059: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1062: getfield 160	com/tencent/mm/plugin/music/f/c:duration	J
+        //   1065: ldiv
+        //   1066: l2i
+        //   1067: istore 4
+        //   1069: goto -38 -> 1031
+        //   1072: ldc 30
+        //   1074: ldc_w 283
+        //   1077: iload 6
+        //   1079: invokestatic 286	java/lang/String:valueOf	(I)Ljava/lang/String;
+        //   1082: invokevirtual 289	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+        //   1085: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1088: goto +582 -> 1670
+        //   1091: aload_0
+        //   1092: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1095: getfield 257	com/tencent/mm/plugin/music/f/c:bfq	Landroid/media/AudioTrack;
+        //   1098: invokevirtual 294	android/media/AudioTrack:play	()V
+        //   1101: aload_0
+        //   1102: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1105: getfield 257	com/tencent/mm/plugin/music/f/c:bfq	Landroid/media/AudioTrack;
+        //   1108: aload 14
+        //   1110: iconst_0
+        //   1111: aload 14
+        //   1113: arraylength
+        //   1114: invokevirtual 298	android/media/AudioTrack:write	([BII)I
+        //   1117: pop
+        //   1118: aload_0
+        //   1119: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1122: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   1125: iload 4
+        //   1127: iconst_0
+        //   1128: invokevirtual 302	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
+        //   1131: aload 13
+        //   1133: getfield 305	android/media/MediaCodec$BufferInfo:flags	I
+        //   1136: iconst_4
+        //   1137: iand
+        //   1138: ifeq +535 -> 1673
+        //   1141: ldc 30
+        //   1143: ldc_w 307
+        //   1146: invokestatic 57	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1149: iconst_1
+        //   1150: istore_3
+        //   1151: goto +522 -> 1673
+        //   1154: iload 4
+        //   1156: bipush 253
+        //   1158: if_icmpne +26 -> 1184
+        //   1161: aload_0
+        //   1162: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1165: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   1168: invokevirtual 183	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
+        //   1171: astore 10
+        //   1173: ldc 30
+        //   1175: ldc_w 309
+        //   1178: invokestatic 37	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1181: goto -614 -> 567
+        //   1184: iload 4
+        //   1186: bipush 254
+        //   1188: if_icmpne +69 -> 1257
+        //   1191: aload_0
+        //   1192: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1195: getfield 170	com/tencent/mm/plugin/music/f/c:ddz	Lcom/tencent/mm/compatible/deviceinfo/z;
+        //   1198: invokevirtual 313	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
+        //   1201: astore 11
+        //   1203: ldc 30
+        //   1205: ldc_w 315
+        //   1208: aload 11
+        //   1210: invokestatic 318	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+        //   1213: invokevirtual 289	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+        //   1216: invokestatic 37	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1219: aload_0
+        //   1220: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1223: aload 11
+        //   1225: ldc 138
+        //   1227: invokevirtual 142	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+        //   1230: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
+        //   1233: aload_0
+        //   1234: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1237: aload 11
+        //   1239: ldc 147
+        //   1241: invokevirtual 142	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+        //   1244: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
+        //   1247: aload_0
+        //   1248: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1251: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1254: goto -687 -> 567
+        //   1257: ldc 30
+        //   1259: ldc_w 320
+        //   1262: iload 4
+        //   1264: invokestatic 286	java/lang/String:valueOf	(I)Ljava/lang/String;
+        //   1267: invokevirtual 289	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+        //   1270: invokestatic 37	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1273: goto -706 -> 567
+        //   1276: aload_0
+        //   1277: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1280: getfield 160	com/tencent/mm/plugin/music/f/c:duration	J
+        //   1283: ldc2_w 216
+        //   1286: ldiv
+        //   1287: aload_0
+        //   1288: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1291: getfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   1294: ldc2_w 216
+        //   1297: ldiv
+        //   1298: lsub
+        //   1299: ldc2_w 321
+        //   1302: lcmp
+        //   1303: ifge +132 -> 1435
+        //   1306: iconst_1
+        //   1307: istore 9
+        //   1309: iload_2
+        //   1310: bipush 50
+        //   1312: if_icmplt +129 -> 1441
+        //   1315: ldc 30
+        //   1317: ldc_w 324
+        //   1320: iconst_1
+        //   1321: anewarray 4	java/lang/Object
+        //   1324: dup
+        //   1325: iconst_0
+        //   1326: iload_2
+        //   1327: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+        //   1330: aastore
+        //   1331: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   1334: aload_0
+        //   1335: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1338: sipush 706
+        //   1341: putfield 123	com/tencent/mm/plugin/music/f/c:ddo	I
+        //   1344: aload_0
+        //   1345: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1348: iconst_1
+        //   1349: invokevirtual 61	com/tencent/mm/plugin/music/f/c:pd	(Z)V
+        //   1352: aload_0
+        //   1353: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1356: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1359: aload_0
+        //   1360: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1363: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1366: aload_0
+        //   1367: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1370: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1373: aload_0
+        //   1374: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1377: aconst_null
+        //   1378: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
+        //   1381: aload_0
+        //   1382: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1385: aconst_null
+        //   1386: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
+        //   1389: aload_0
+        //   1390: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1393: iconst_0
+        //   1394: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
+        //   1397: aload_0
+        //   1398: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1401: iconst_0
+        //   1402: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
+        //   1405: aload_0
+        //   1406: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1409: lconst_0
+        //   1410: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   1413: aload_0
+        //   1414: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1417: lconst_0
+        //   1418: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
+        //   1421: ldc 30
+        //   1423: ldc_w 326
+        //   1426: invokestatic 37	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   1429: ldc 22
+        //   1431: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1434: return
+        //   1435: iconst_0
+        //   1436: istore 9
+        //   1438: goto -129 -> 1309
+        //   1441: ldc 30
+        //   1443: ldc_w 328
+        //   1446: iconst_1
+        //   1447: anewarray 4	java/lang/Object
+        //   1450: dup
+        //   1451: iconst_0
+        //   1452: iload 9
+        //   1454: invokestatic 333	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+        //   1457: aastore
+        //   1458: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   1461: aload_0
+        //   1462: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1465: iload 9
+        //   1467: invokevirtual 336	com/tencent/mm/plugin/music/f/c:pe	(Z)V
+        //   1470: goto -118 -> 1352
+        //   1473: astore 10
+        //   1475: ldc 30
+        //   1477: aload 10
+        //   1479: ldc_w 338
+        //   1482: iconst_0
+        //   1483: anewarray 4	java/lang/Object
+        //   1486: invokestatic 132	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   1489: aload_0
+        //   1490: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1493: sipush 706
+        //   1496: putfield 123	com/tencent/mm/plugin/music/f/c:ddo	I
+        //   1499: aload_0
+        //   1500: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1503: iconst_1
+        //   1504: invokevirtual 61	com/tencent/mm/plugin/music/f/c:pd	(Z)V
+        //   1507: aload_0
+        //   1508: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1511: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1514: aload_0
+        //   1515: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1518: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1521: aload_0
+        //   1522: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1525: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1528: aload_0
+        //   1529: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1532: aconst_null
+        //   1533: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
+        //   1536: aload_0
+        //   1537: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1540: aconst_null
+        //   1541: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
+        //   1544: aload_0
+        //   1545: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1548: iconst_0
+        //   1549: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
+        //   1552: aload_0
+        //   1553: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1556: iconst_0
+        //   1557: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
+        //   1560: aload_0
+        //   1561: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1564: lconst_0
+        //   1565: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   1568: aload_0
+        //   1569: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1572: lconst_0
+        //   1573: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
+        //   1576: goto -155 -> 1421
+        //   1579: astore 10
+        //   1581: aload_0
+        //   1582: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1585: invokestatic 126	com/tencent/mm/plugin/music/f/c:a	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1588: aload_0
+        //   1589: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1592: invokestatic 265	com/tencent/mm/plugin/music/f/c:b	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1595: aload_0
+        //   1596: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1599: invokestatic 268	com/tencent/mm/plugin/music/f/c:c	(Lcom/tencent/mm/plugin/music/f/c;)V
+        //   1602: aload_0
+        //   1603: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1606: aconst_null
+        //   1607: putfield 46	com/tencent/mm/plugin/music/f/c:sourcePath	Ljava/lang/String;
+        //   1610: aload_0
+        //   1611: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1614: aconst_null
+        //   1615: putfield 110	com/tencent/mm/plugin/music/f/c:mime	Ljava/lang/String;
+        //   1618: aload_0
+        //   1619: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1622: iconst_0
+        //   1623: putfield 145	com/tencent/mm/plugin/music/f/c:sampleRate	I
+        //   1626: aload_0
+        //   1627: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1630: iconst_0
+        //   1631: putfield 150	com/tencent/mm/plugin/music/f/c:channels	I
+        //   1634: aload_0
+        //   1635: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1638: lconst_0
+        //   1639: putfield 230	com/tencent/mm/plugin/music/f/c:presentationTimeUs	J
+        //   1642: aload_0
+        //   1643: getfield 14	com/tencent/mm/plugin/music/f/c$1:wma	Lcom/tencent/mm/plugin/music/f/c;
+        //   1646: lconst_0
+        //   1647: putfield 160	com/tencent/mm/plugin/music/f/c:duration	J
+        //   1650: ldc 22
+        //   1652: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   1655: aload 10
+        //   1657: athrow
+        //   1658: goto -906 -> 752
+        //   1661: goto -941 -> 720
+        //   1664: iconst_0
+        //   1665: istore 5
+        //   1667: goto -981 -> 686
+        //   1670: goto -950 -> 720
+        //   1673: goto -1106 -> 567
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	1675	0	this	1
-        //   129	570	1	i	int
-        //   105	1221	2	j	int
-        //   540	610	3	k	int
-        //   658	604	4	m	int
-        //   641	1024	5	n	int
-        //   615	462	6	i1	int
-        //   676	16	7	l	long
-        //   1306	159	9	bool	boolean
+        //   0	1676	0	this	1
+        //   129	571	1	i	int
+        //   105	1222	2	j	int
+        //   540	611	3	k	int
+        //   659	604	4	m	int
+        //   642	1024	5	n	int
+        //   615	463	6	i1	int
+        //   677	16	7	l	long
+        //   1307	159	9	bool	boolean
         //   132	121	10	localObject1	Object
         //   269	196	10	localException1	Exception
-        //   565	187	10	localObject2	Object
-        //   908	5	10	localException2	Exception
-        //   936	1	10	localObject3	Object
-        //   941	5	10	localException3	Exception
-        //   1170	1	10	arrayOfByteBuffer1	java.nio.ByteBuffer[]
-        //   1472	5	10	localException4	Exception
-        //   1578	77	10	localObject4	Object
-        //   90	1147	11	localObject5	Object
+        //   565	188	10	localObject2	Object
+        //   909	5	10	localException2	Exception
+        //   937	1	10	localObject3	Object
+        //   942	5	10	localException3	Exception
+        //   1171	1	10	arrayOfByteBuffer1	java.nio.ByteBuffer[]
+        //   1473	5	10	localException4	Exception
+        //   1579	77	10	localObject4	Object
+        //   90	1148	11	localObject5	Object
         //   86	537	12	arrayOfByteBuffer2	java.nio.ByteBuffer[]
-        //   83	1048	13	localBufferInfo	android.media.MediaCodec.BufferInfo
-        //   765	346	14	arrayOfByte	byte[]
+        //   83	1049	13	localBufferInfo	android.media.MediaCodec.BufferInfo
+        //   766	346	14	arrayOfByte	byte[]
         // Exception table:
         //   from	to	target	type
         //   65	82	269	java/lang/Exception
-        //   92	106	908	java/lang/Exception
-        //   110	128	908	java/lang/Exception
-        //   143	156	908	java/lang/Exception
-        //   160	174	908	java/lang/Exception
-        //   178	191	908	java/lang/Exception
-        //   195	210	908	java/lang/Exception
-        //   219	226	908	java/lang/Exception
-        //   230	240	908	java/lang/Exception
-        //   244	252	908	java/lang/Exception
-        //   256	263	908	java/lang/Exception
-        //   319	335	908	java/lang/Exception
-        //   339	353	908	java/lang/Exception
-        //   357	371	908	java/lang/Exception
-        //   375	389	908	java/lang/Exception
-        //   389	430	941	java/lang/Exception
-        //   577	594	1472	java/lang/Exception
-        //   602	617	1472	java/lang/Exception
-        //   629	643	1472	java/lang/Exception
-        //   648	655	1472	java/lang/Exception
-        //   660	678	1472	java/lang/Exception
-        //   685	698	1472	java/lang/Exception
-        //   702	716	1472	java/lang/Exception
-        //   719	736	1472	java/lang/Exception
-        //   741	749	1472	java/lang/Exception
-        //   758	833	1472	java/lang/Exception
-        //   995	1027	1472	java/lang/Exception
-        //   1030	1039	1472	java/lang/Exception
-        //   1046	1068	1472	java/lang/Exception
-        //   1071	1087	1472	java/lang/Exception
-        //   1090	1100	1472	java/lang/Exception
-        //   1100	1117	1472	java/lang/Exception
-        //   1117	1130	1472	java/lang/Exception
-        //   1130	1148	1472	java/lang/Exception
-        //   1160	1180	1472	java/lang/Exception
-        //   1190	1253	1472	java/lang/Exception
-        //   1256	1272	1472	java/lang/Exception
-        //   1275	1305	1472	java/lang/Exception
-        //   1314	1351	1472	java/lang/Exception
-        //   1440	1469	1472	java/lang/Exception
-        //   577	594	1578	finally
-        //   602	617	1578	finally
-        //   629	643	1578	finally
-        //   648	655	1578	finally
-        //   660	678	1578	finally
-        //   685	698	1578	finally
-        //   702	716	1578	finally
-        //   719	736	1578	finally
-        //   741	749	1578	finally
-        //   758	833	1578	finally
-        //   995	1027	1578	finally
-        //   1030	1039	1578	finally
-        //   1046	1068	1578	finally
-        //   1071	1087	1578	finally
-        //   1090	1100	1578	finally
-        //   1100	1117	1578	finally
-        //   1117	1130	1578	finally
-        //   1130	1148	1578	finally
-        //   1160	1180	1578	finally
-        //   1190	1253	1578	finally
-        //   1256	1272	1578	finally
-        //   1275	1305	1578	finally
-        //   1314	1351	1578	finally
-        //   1440	1469	1578	finally
-        //   1474	1506	1578	finally
+        //   92	106	909	java/lang/Exception
+        //   110	128	909	java/lang/Exception
+        //   143	156	909	java/lang/Exception
+        //   160	174	909	java/lang/Exception
+        //   178	191	909	java/lang/Exception
+        //   195	210	909	java/lang/Exception
+        //   219	226	909	java/lang/Exception
+        //   230	240	909	java/lang/Exception
+        //   244	252	909	java/lang/Exception
+        //   256	263	909	java/lang/Exception
+        //   319	335	909	java/lang/Exception
+        //   339	353	909	java/lang/Exception
+        //   357	371	909	java/lang/Exception
+        //   375	389	909	java/lang/Exception
+        //   389	430	942	java/lang/Exception
+        //   577	594	1473	java/lang/Exception
+        //   602	617	1473	java/lang/Exception
+        //   629	644	1473	java/lang/Exception
+        //   649	656	1473	java/lang/Exception
+        //   661	679	1473	java/lang/Exception
+        //   686	699	1473	java/lang/Exception
+        //   703	717	1473	java/lang/Exception
+        //   720	737	1473	java/lang/Exception
+        //   742	750	1473	java/lang/Exception
+        //   759	834	1473	java/lang/Exception
+        //   996	1028	1473	java/lang/Exception
+        //   1031	1040	1473	java/lang/Exception
+        //   1047	1069	1473	java/lang/Exception
+        //   1072	1088	1473	java/lang/Exception
+        //   1091	1101	1473	java/lang/Exception
+        //   1101	1118	1473	java/lang/Exception
+        //   1118	1131	1473	java/lang/Exception
+        //   1131	1149	1473	java/lang/Exception
+        //   1161	1181	1473	java/lang/Exception
+        //   1191	1254	1473	java/lang/Exception
+        //   1257	1273	1473	java/lang/Exception
+        //   1276	1306	1473	java/lang/Exception
+        //   1315	1352	1473	java/lang/Exception
+        //   1441	1470	1473	java/lang/Exception
+        //   577	594	1579	finally
+        //   602	617	1579	finally
+        //   629	644	1579	finally
+        //   649	656	1579	finally
+        //   661	679	1579	finally
+        //   686	699	1579	finally
+        //   703	717	1579	finally
+        //   720	737	1579	finally
+        //   742	750	1579	finally
+        //   759	834	1579	finally
+        //   996	1028	1579	finally
+        //   1031	1040	1579	finally
+        //   1047	1069	1579	finally
+        //   1072	1088	1579	finally
+        //   1091	1101	1579	finally
+        //   1101	1118	1579	finally
+        //   1118	1131	1579	finally
+        //   1131	1149	1579	finally
+        //   1161	1181	1579	finally
+        //   1191	1254	1579	finally
+        //   1257	1273	1579	finally
+        //   1276	1306	1579	finally
+        //   1315	1352	1579	finally
+        //   1441	1470	1579	finally
+        //   1475	1507	1579	finally
       }
     };
     AppMethodBeat.o(137313);
   }
   
-  private void NP()
+  private void Py()
   {
     try
     {
       AppMethodBeat.i(137316);
-      ac.i("MicroMsg.Music.MMPlayer", "sync notify");
+      ad.i("MicroMsg.Music.MMPlayer", "sync notify");
       try
       {
         notify();
@@ -928,7 +929,7 @@ public final class c
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.Music.MMPlayer", localException, "syncNotify", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Music.MMPlayer", localException, "syncNotify", new Object[0]);
           AppMethodBeat.o(137316);
         }
       }
@@ -937,7 +938,7 @@ public final class c
     finally {}
   }
   
-  public final void anM(String paramString)
+  public final void asL(String paramString)
   {
     this.sourcePath = paramString;
   }
@@ -945,7 +946,7 @@ public final class c
   final boolean createAudioTrack()
   {
     AppMethodBeat.i(137314);
-    ac.i("MicroMsg.Music.MMPlayer", "createAudioTrack");
+    ad.i("MicroMsg.Music.MMPlayer", "createAudioTrack");
     int i;
     if (this.channels == 1) {
       i = 4;
@@ -956,28 +957,28 @@ public final class c
       com.tencent.mm.plugin.music.e.b localb = (com.tencent.mm.plugin.music.e.b)com.tencent.mm.plugin.music.f.c.b.aQ(com.tencent.mm.plugin.music.e.b.class);
       if (localb != null)
       {
-        this.aUW = localb.am(this.sampleRate, i, j);
+        this.bfq = localb.am(this.sampleRate, i, j);
         label61:
-        if (this.aUW == null)
+        if (this.bfq == null)
         {
-          ac.e("MicroMsg.Music.MMPlayer", "audioTrack is null, new AudioTrack");
-          this.aUW = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
+          ad.e("MicroMsg.Music.MMPlayer", "audioTrack is null, new AudioTrack");
+          this.bfq = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
         }
-        if ((this.aUW != null) && (this.aUW.getState() == 1)) {
+        if ((this.bfq != null) && (this.bfq.getState() == 1)) {
           break label157;
         }
-        ac.e("MicroMsg.Music.MMPlayer", "audio track not initialized");
-        if (this.aUW == null) {}
+        ad.e("MicroMsg.Music.MMPlayer", "audio track not initialized");
+        if (this.bfq == null) {}
       }
       try
       {
-        this.aUW.release();
+        this.bfq.release();
         label134:
         AppMethodBeat.o(137314);
         return false;
         i = 12;
         continue;
-        ac.e("MicroMsg.Music.MMPlayer", "mediaResService null");
+        ad.e("MicroMsg.Music.MMPlayer", "mediaResService null");
         break label61;
         label157:
         AppMethodBeat.o(137314);
@@ -990,40 +991,40 @@ public final class c
     }
   }
   
-  public final boolean dji()
+  public final boolean dtu()
   {
     return !this.stop;
   }
   
-  public final int djj()
+  public final int dtv()
   {
     return (int)(this.presentationTimeUs / 1000L);
   }
   
-  public final String djk()
+  public final String dtw()
   {
     return this.mime;
   }
   
-  public final void djl()
+  public final void dtx()
   {
     try
     {
       AppMethodBeat.i(137320);
-      while (dji())
+      while (dtu())
       {
-        boolean bool = this.vgX.djr();
+        boolean bool = this.wms.dtD();
         if (!bool) {
           break;
         }
         try
         {
-          ac.i("MicroMsg.Music.MMPlayer", "wait play");
+          ad.i("MicroMsg.Music.MMPlayer", "wait play");
           wait();
         }
         catch (InterruptedException localInterruptedException)
         {
-          ac.printErrStackTrace("MicroMsg.Music.MMPlayer", localInterruptedException, "waitPlay", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Music.MMPlayer", localInterruptedException, "waitPlay", new Object[0]);
         }
       }
       AppMethodBeat.o(137320);
@@ -1039,57 +1040,57 @@ public final class c
   public final boolean isPlaying()
   {
     AppMethodBeat.i(137321);
-    boolean bool = this.vgX.isPlaying();
+    boolean bool = this.wms.isPlaying();
     AppMethodBeat.o(137321);
     return bool;
-  }
-  
-  public final void oE(boolean paramBoolean)
-  {
-    AppMethodBeat.i(137322);
-    this.vgX.smv = 4;
-    this.stop = true;
-    super.oE(paramBoolean);
-    AppMethodBeat.o(137322);
-  }
-  
-  public final void oF(boolean paramBoolean)
-  {
-    AppMethodBeat.i(137323);
-    this.vgX.smv = 4;
-    this.stop = true;
-    super.oF(paramBoolean);
-    AppMethodBeat.o(137323);
   }
   
   public final void pause()
   {
     AppMethodBeat.i(137318);
-    ac.i("MicroMsg.Music.MMPlayer", "pause");
-    if (!dji())
+    ad.i("MicroMsg.Music.MMPlayer", "pause");
+    if (!dtu())
     {
       AppMethodBeat.o(137318);
       return;
     }
-    this.vgX.smv = 2;
+    this.wms.tiZ = 2;
     AppMethodBeat.o(137318);
+  }
+  
+  public final void pd(boolean paramBoolean)
+  {
+    AppMethodBeat.i(137322);
+    this.wms.tiZ = 4;
+    this.stop = true;
+    super.pd(paramBoolean);
+    AppMethodBeat.o(137322);
+  }
+  
+  public final void pe(boolean paramBoolean)
+  {
+    AppMethodBeat.i(137323);
+    this.wms.tiZ = 4;
+    this.stop = true;
+    super.pe(paramBoolean);
+    AppMethodBeat.o(137323);
   }
   
   public final void play()
   {
     AppMethodBeat.i(137315);
-    ac.i("MicroMsg.Music.MMPlayer", "play");
-    if (!dji())
+    ad.i("MicroMsg.Music.MMPlayer", "play");
+    if (!dtu())
     {
       this.stop = false;
-      com.tencent.mm.sdk.g.b.c(this.vgE, "music_player");
+      com.tencent.mm.sdk.g.b.c(this.wlZ, "music_player");
       AppMethodBeat.o(137315);
       return;
     }
-    if ((dji()) && (this.vgX.djr()))
+    if ((dtu()) && (this.wms.dtD()))
     {
-      this.vgX.smv = 3;
-      NP();
+      this.wms.tiZ = 3;
+      Py();
     }
     AppMethodBeat.o(137315);
   }
@@ -1097,17 +1098,17 @@ public final class c
   public final void seek(long paramLong)
   {
     AppMethodBeat.i(137319);
-    this.cSi.seekTo(1000L * paramLong, 2);
+    this.ddy.seekTo(1000L * paramLong, 2);
     AppMethodBeat.o(137319);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(137317);
-    ac.i("MicroMsg.Music.MMPlayer", "stop");
+    ad.i("MicroMsg.Music.MMPlayer", "stop");
     this.stop = true;
-    if (this.vgX.djr()) {
-      NP();
+    if (this.wms.dtD()) {
+      Py();
     }
     AppMethodBeat.o(137317);
   }

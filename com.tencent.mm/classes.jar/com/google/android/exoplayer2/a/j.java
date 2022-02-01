@@ -7,12 +7,12 @@ import java.nio.ByteOrder;
 final class j
   implements d
 {
-  private int aVX = -1;
-  private boolean aWa;
-  private ByteBuffer buffer = aUx;
+  private int bgs = -1;
+  private boolean bgv;
+  private ByteBuffer buffer = beR;
   private int channelCount = -1;
   private int encoding = 0;
-  private ByteBuffer outputBuffer = aUx;
+  private ByteBuffer outputBuffer = beR;
   
   public final void f(ByteBuffer paramByteBuffer)
   {
@@ -86,8 +86,8 @@ final class j
   
   public final void flush()
   {
-    this.outputBuffer = aUx;
-    this.aWa = false;
+    this.outputBuffer = beR;
+    this.bgv = false;
   }
   
   public final boolean isActive()
@@ -95,17 +95,12 @@ final class j
     return (this.encoding != 0) && (this.encoding != 2);
   }
   
-  public final boolean rX()
-  {
-    return (this.aWa) && (this.outputBuffer == aUx);
-  }
-  
   public final void reset()
   {
     AppMethodBeat.i(91832);
     flush();
-    this.buffer = aUx;
-    this.aVX = -1;
+    this.buffer = beR;
+    this.bgs = -1;
     this.channelCount = -1;
     this.encoding = 0;
     AppMethodBeat.o(91832);
@@ -120,41 +115,46 @@ final class j
       AppMethodBeat.o(91830);
       throw locala;
     }
-    if ((this.aVX == paramInt1) && (this.channelCount == paramInt2) && (this.encoding == paramInt3))
+    if ((this.bgs == paramInt1) && (this.channelCount == paramInt2) && (this.encoding == paramInt3))
     {
       AppMethodBeat.o(91830);
       return false;
     }
-    this.aVX = paramInt1;
+    this.bgs = paramInt1;
     this.channelCount = paramInt2;
     this.encoding = paramInt3;
     if (paramInt3 == 2) {
-      this.buffer = aUx;
+      this.buffer = beR;
     }
     AppMethodBeat.o(91830);
     return true;
   }
   
-  public final int sd()
+  public final int tC()
   {
     return this.channelCount;
   }
   
-  public final void se()
+  public final void tD()
   {
-    this.aWa = true;
+    this.bgv = true;
   }
   
-  public final ByteBuffer sf()
+  public final ByteBuffer tE()
   {
     ByteBuffer localByteBuffer = this.outputBuffer;
-    this.outputBuffer = aUx;
+    this.outputBuffer = beR;
     return localByteBuffer;
+  }
+  
+  public final boolean tw()
+  {
+    return (this.bgv) && (this.outputBuffer == beR);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package rx;
 
 public abstract interface f
 {
-  public abstract void CI(long paramLong);
+  public abstract void FO(long paramLong);
 }
 
 

@@ -68,9 +68,7 @@ public class TPSystemInfo
     mCpuArchitecture = 0;
     mCpuHWProducter = -1;
     mCpuHWProductIdx = -1;
-    String[] arrayOfString1 = { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro" };
-    String[] arrayOfString2 = { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" };
-    cpuPerfList = new String[][] { arrayOfString1, { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" }, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960" }, arrayOfString2 };
+    cpuPerfList = new String[][] { { "MSM7227", "MSM7627", "MSM7227T", "MSM7627T", "MSM7227A", "MSM7627A", "QSD8250", "QSD8650", "MSM7230", "MSM7630", "APQ8055", "MSM8255", "MSM8655", "MSM8255T", "MSM8655T", "MSM8225", "MSM8625", "MSM8260", "MSM8660", "MSM8x25Q", "MSM8x26", "MSM8x10", "MSM8x12", "MSM8x30", "MSM8260A", "MSM8660A", "MSM8960", "MSM8208", "MSM8916", "MSM8960T", "MSM8909", "MSM8916v2", "MSM8936", "MSM8909v2", "MSM8917", "APQ8064", "APQ8064T", "MSM8920", "MSM8939", "MSM8937", "MSM8939v2", "MSM8940", "MSM8952", "MSM8974", "MSM8x74AA", "MSM8x74AB", "MSM8x74AC", "MSM8953", "APQ8084", "MSM8953Pro", "MSM8992", "MSM8956", "MSM8976", "MSM8976Pro", "MSM8994", "MSM8996", "MSM8996Pro" }, { "MT6516", "MT6513", "MT6573", "MT6515M", "MT6515", "MT6575", "MT6572", "MT6577", "MT6589", "MT6582", "MT6592", "MT6595", "MT6735", "MT6750", "MT6753", "MT6752", "MT6755", "MT6755", "MT6755T", "MT6795", "MT6757", "MT675x", "MT6797", "MT6797T" }, { "K3V2", "K3V2E", "K3V2+", "Kirin910", "Kirin920", "Kirin925", "Kirin928", "Kirin620", "Kirin650", "Kirin655", "Kirin930", "Kirin935", "Kirin950", "Kirin955", "Kirin960" }, { "S5L8900", "S5PC100", "Exynos3110", "Exynos3475", "Exynos4210", "Exynos4212", "SMDK4x12", "Exynos4412", "Exynos5250", "Exynos5260", "Exynos5410", "Exynos5420", "Exynos5422", "Exynos5430", "Exynos5800", "Exynos5433", "Exynos7580", "Exynos7870", "Exynos7870", "Exynos7420", "Exynos8890" } };
     maxCpuFreq = -1L;
     currentCpuFreq = -1L;
     numOfCores = -1;
@@ -78,7 +76,7 @@ public class TPSystemInfo
   
   private static String _getDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(193709);
+    AppMethodBeat.i(220491);
     String str = "";
     if (hasMarshmallow()) {
       paramContext = getWlanName();
@@ -119,7 +117,7 @@ public class TPSystemInfo
         paramContext = str;
         continue;
       }
-      AppMethodBeat.o(193709);
+      AppMethodBeat.o(220491);
       return paramContext;
       paramContext = getLowerMarshmallowDeviceMacAddr(paramContext);
       continue;
@@ -176,7 +174,7 @@ public class TPSystemInfo
     //   72: ifle +15 -> 87
     //   75: aload_1
     //   76: astore_2
-    //   77: new 76	java/lang/String
+    //   77: new 78	java/lang/String
     //   80: dup
     //   81: aload 6
     //   83: invokespecial 436	java/lang/String:<init>	([C)V
@@ -272,15 +270,15 @@ public class TPSystemInfo
   private static boolean checkPermission(Context paramContext, String paramString)
   {
     boolean bool = true;
-    AppMethodBeat.i(193704);
+    AppMethodBeat.i(220486);
     if (!hasMarshmallow())
     {
-      AppMethodBeat.o(193704);
+      AppMethodBeat.o(220486);
       return true;
     }
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(193704);
+      AppMethodBeat.o(220486);
       return false;
     }
     if ("android.permission.WRITE_SETTINGS".equals(paramString)) {
@@ -288,7 +286,7 @@ public class TPSystemInfo
     }
     for (;;)
     {
-      AppMethodBeat.o(193704);
+      AppMethodBeat.o(220486);
       return bool;
       try
       {
@@ -331,12 +329,12 @@ public class TPSystemInfo
   
   public static int getCpuArchitecture()
   {
-    AppMethodBeat.i(193703);
+    AppMethodBeat.i(220485);
     int i;
     if (-1 != cpuArch)
     {
       i = cpuArch;
-      AppMethodBeat.o(193703);
+      AppMethodBeat.o(220485);
       return i;
     }
     if ((Build.CPU_ABI != null) && ((Build.CPU_ABI.contains("x86")) || (Build.CPU_ABI.contains("X86")))) {
@@ -345,7 +343,7 @@ public class TPSystemInfo
     for (;;)
     {
       i = cpuArch;
-      AppMethodBeat.o(193703);
+      AppMethodBeat.o(220485);
       return i;
       if ((Build.CPU_ABI != null) && ((Build.CPU_ABI.contains("mips")) || (Build.CPU_ABI.contains("Mips"))))
       {
@@ -356,34 +354,35 @@ public class TPSystemInfo
         if (mCpuArchitecture == 0) {
           getCpuInfo();
         }
+        TPNativeLog.printLog(2, "getCpuArchitecture mCpuArchitecture:" + mCpuArchitecture);
         if ((!TextUtils.isEmpty(mCpuHardware)) && (mCpuHardware.contains("MSM8994")))
         {
           cpuArch = 7;
-          AppMethodBeat.o(193703);
+          AppMethodBeat.o(220485);
           return 7;
         }
         if (isARMV5Whitelist())
         {
           cpuArch = 3;
-          AppMethodBeat.o(193703);
+          AppMethodBeat.o(220485);
           return 3;
         }
         if ((!TextUtils.isEmpty(mProcessorName)) && (mProcessorName.contains("ARMv6")))
         {
           cpuArch = 4;
-          AppMethodBeat.o(193703);
+          AppMethodBeat.o(220485);
           return 4;
         }
         if ((!TextUtils.isEmpty(mProcessorName)) && (mProcessorName.contains("AArch64")))
         {
           cpuArch = 7;
-          AppMethodBeat.o(193703);
+          AppMethodBeat.o(220485);
           return 7;
         }
-        if ((!TextUtils.isEmpty(mFeature)) && (!mFeature.contains("neon")))
+        if ((mCpuArchitecture == 7) && (!TextUtils.isEmpty(mFeature)) && (!mFeature.contains("neon")))
         {
           cpuArch = 4;
-          AppMethodBeat.o(193703);
+          AppMethodBeat.o(220485);
           return 4;
         }
         cpuArch = getCpuArchFromId(mCpuArchitecture);
@@ -393,39 +392,39 @@ public class TPSystemInfo
   
   private static int getCpuHWProducer(String paramString)
   {
-    AppMethodBeat.i(193695);
+    AppMethodBeat.i(220477);
     if (paramString.isEmpty())
     {
-      AppMethodBeat.o(193695);
+      AppMethodBeat.o(220477);
       return -1;
     }
     if ((paramString.contains("Exynos")) || (paramString.contains("SMDK")) || (paramString.contains("S5L8900")) || (paramString.contains("S5PC100")))
     {
-      AppMethodBeat.o(193695);
+      AppMethodBeat.o(220477);
       return 3;
     }
     if ((paramString.contains("Kirin")) || (paramString.contains("K3V")))
     {
-      AppMethodBeat.o(193695);
+      AppMethodBeat.o(220477);
       return 2;
     }
     if ((paramString.contains("MSM")) || (paramString.contains("APQ")) || (paramString.contains("QSD")) || (paramString.contains("SDM")))
     {
-      AppMethodBeat.o(193695);
+      AppMethodBeat.o(220477);
       return 0;
     }
     if (paramString.contains("MT6"))
     {
-      AppMethodBeat.o(193695);
+      AppMethodBeat.o(220477);
       return 1;
     }
-    AppMethodBeat.o(193695);
+    AppMethodBeat.o(220477);
     return -1;
   }
   
   public static int getCpuHWProductIndex(String paramString)
   {
-    AppMethodBeat.i(193697);
+    AppMethodBeat.i(220479);
     if (mCpuHWProducter < 0) {
       mCpuHWProducter = getCpuHWProducer(paramString);
     }
@@ -459,29 +458,29 @@ public class TPSystemInfo
       mCpuHWProductIdx = k;
     }
     int i = mCpuHWProductIdx;
-    AppMethodBeat.o(193697);
+    AppMethodBeat.o(220479);
     return i;
   }
   
   public static int getCpuHWProducter(String paramString)
   {
-    AppMethodBeat.i(193696);
+    AppMethodBeat.i(220478);
     if (mCpuHWProducter < 0) {
       mCpuHWProducter = getCpuHWProducer(paramString);
     }
     int i = mCpuHWProducter;
-    AppMethodBeat.o(193696);
+    AppMethodBeat.o(220478);
     return i;
   }
   
   public static String getCpuHarewareName()
   {
-    AppMethodBeat.i(193701);
+    AppMethodBeat.i(220483);
     if (TextUtils.isEmpty(mCpuHardware)) {
       getCpuInfo();
     }
     String str = mCpuHardware;
-    AppMethodBeat.o(193701);
+    AppMethodBeat.o(220483);
     return str;
   }
   
@@ -489,16 +488,16 @@ public class TPSystemInfo
   public static void getCpuInfo()
   {
     // Byte code:
-    //   0: ldc_w 542
+    //   0: ldc_w 550
     //   3: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 544	java/io/InputStreamReader
+    //   6: new 552	java/io/InputStreamReader
     //   9: dup
-    //   10: new 546	java/io/FileInputStream
+    //   10: new 554	java/io/FileInputStream
     //   13: dup
-    //   14: ldc_w 548
-    //   17: invokespecial 551	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   20: ldc_w 553
-    //   23: invokespecial 556	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   14: ldc_w 556
+    //   17: invokespecial 557	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   20: ldc_w 559
+    //   23: invokespecial 562	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   26: astore_1
     //   27: new 414	java/io/BufferedReader
     //   30: dup
@@ -510,7 +509,7 @@ public class TPSystemInfo
     //   38: aload_1
     //   39: astore_2
     //   40: aload_0
-    //   41: invokevirtual 559	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   41: invokevirtual 565	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   44: astore 4
     //   46: aload 4
     //   48: ifnull +57 -> 105
@@ -519,14 +518,14 @@ public class TPSystemInfo
     //   53: aload_1
     //   54: astore_2
     //   55: aload 4
-    //   57: invokestatic 562	com/tencent/thumbplayer/core/common/TPSystemInfo:parseCpuInfoLine	(Ljava/lang/String;)V
+    //   57: invokestatic 568	com/tencent/thumbplayer/core/common/TPSystemInfo:parseCpuInfoLine	(Ljava/lang/String;)V
     //   60: goto -24 -> 36
     //   63: astore_2
     //   64: aload_0
     //   65: astore_3
     //   66: aload_1
     //   67: astore_2
-    //   68: ldc_w 564
+    //   68: ldc_w 570
     //   71: putstatic 68	com/tencent/thumbplayer/core/common/TPSystemInfo:mCpuHardware	Ljava/lang/String;
     //   74: aload_0
     //   75: astore_3
@@ -537,35 +536,35 @@ public class TPSystemInfo
     //   82: aload_1
     //   83: ifnull +7 -> 90
     //   86: aload_1
-    //   87: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   87: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   90: aload_0
     //   91: ifnull +7 -> 98
     //   94: aload_0
     //   95: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   98: ldc_w 542
+    //   98: ldc_w 550
     //   101: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: return
     //   105: aload_1
-    //   106: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   106: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   109: aload_0
     //   110: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   113: ldc_w 542
+    //   113: ldc_w 550
     //   116: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   119: return
     //   120: astore_0
     //   121: iconst_4
     //   122: aload_0
-    //   123: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   123: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   126: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   129: ldc_w 542
+    //   129: ldc_w 550
     //   132: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: return
     //   136: astore_0
     //   137: iconst_4
     //   138: aload_0
-    //   139: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   139: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   142: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   145: ldc_w 542
+    //   145: ldc_w 550
     //   148: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: return
     //   152: astore_0
@@ -576,19 +575,19 @@ public class TPSystemInfo
     //   157: aload_1
     //   158: ifnull +7 -> 165
     //   161: aload_1
-    //   162: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   162: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   165: aload_2
     //   166: ifnull +7 -> 173
     //   169: aload_2
     //   170: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   173: ldc_w 542
+    //   173: ldc_w 550
     //   176: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: aload_0
     //   180: athrow
     //   181: astore_1
     //   182: iconst_4
     //   183: aload_1
-    //   184: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   184: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   187: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   190: goto -17 -> 173
     //   193: astore_0
@@ -654,7 +653,7 @@ public class TPSystemInfo
   public static long getCurrentCpuFreq()
   {
     // Byte code:
-    //   0: ldc_w 568
+    //   0: ldc_w 574
     //   3: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: getstatic 316	com/tencent/thumbplayer/core/common/TPSystemInfo:currentCpuFreq	J
     //   9: lconst_0
@@ -662,20 +661,20 @@ public class TPSystemInfo
     //   11: ifle +15 -> 26
     //   14: getstatic 316	com/tencent/thumbplayer/core/common/TPSystemInfo:currentCpuFreq	J
     //   17: lstore_0
-    //   18: ldc_w 568
+    //   18: ldc_w 574
     //   21: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: lload_0
     //   25: lreturn
-    //   26: ldc2_w 569
+    //   26: ldc2_w 575
     //   29: lstore_0
-    //   30: new 544	java/io/InputStreamReader
+    //   30: new 552	java/io/InputStreamReader
     //   33: dup
-    //   34: new 546	java/io/FileInputStream
+    //   34: new 554	java/io/FileInputStream
     //   37: dup
-    //   38: ldc_w 572
-    //   41: invokespecial 551	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   44: ldc_w 553
-    //   47: invokespecial 556	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   38: ldc_w 578
+    //   41: invokespecial 557	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   44: ldc_w 559
+    //   47: invokespecial 562	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   50: astore 12
     //   52: new 414	java/io/BufferedReader
     //   55: dup
@@ -695,7 +694,7 @@ public class TPSystemInfo
     //   80: lload_0
     //   81: lstore 10
     //   83: aload 15
-    //   85: invokevirtual 559	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   85: invokevirtual 565	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   88: astore 16
     //   90: aload 16
     //   92: ifnonnull +90 -> 182
@@ -712,7 +711,7 @@ public class TPSystemInfo
     //   112: lload_0
     //   113: lstore 10
     //   115: aload 12
-    //   117: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   117: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   120: aload 15
     //   122: astore 14
     //   124: aload 12
@@ -728,10 +727,10 @@ public class TPSystemInfo
     //   140: aload 15
     //   142: invokevirtual 439	java/io/BufferedReader:close	()V
     //   145: aload 12
-    //   147: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   147: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   150: aload 15
     //   152: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   155: ldc_w 568
+    //   155: ldc_w 574
     //   158: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   161: lconst_0
     //   162: lreturn
@@ -740,7 +739,7 @@ public class TPSystemInfo
     //   166: aload 12
     //   168: invokevirtual 398	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   171: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   174: ldc_w 568
+    //   174: ldc_w 574
     //   177: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   180: lconst_0
     //   181: lreturn
@@ -757,7 +756,7 @@ public class TPSystemInfo
     //   199: lload_0
     //   200: lstore 10
     //   202: aload 16
-    //   204: invokevirtual 575	java/lang/String:trim	()Ljava/lang/String;
+    //   204: invokevirtual 581	java/lang/String:trim	()Ljava/lang/String;
     //   207: astore 16
     //   209: lload_0
     //   210: lstore_2
@@ -789,7 +788,7 @@ public class TPSystemInfo
     //   256: lload_0
     //   257: lstore 10
     //   259: aload 16
-    //   261: invokestatic 581	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   261: invokestatic 587	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   264: lstore_2
     //   265: aload 15
     //   267: astore 14
@@ -806,10 +805,10 @@ public class TPSystemInfo
     //   285: lload_2
     //   286: putstatic 316	com/tencent/thumbplayer/core/common/TPSystemInfo:currentCpuFreq	J
     //   289: aload 12
-    //   291: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   291: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   294: aload 15
     //   296: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   299: ldc_w 568
+    //   299: ldc_w 574
     //   302: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   305: lload_2
     //   306: lreturn
@@ -818,7 +817,7 @@ public class TPSystemInfo
     //   310: aload 12
     //   312: invokevirtual 398	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   315: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   318: ldc_w 568
+    //   318: ldc_w 574
     //   321: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   324: lconst_0
     //   325: lreturn
@@ -833,12 +832,12 @@ public class TPSystemInfo
     //   340: astore 13
     //   342: iconst_4
     //   343: aload 16
-    //   345: invokevirtual 582	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   345: invokevirtual 588	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
     //   348: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   351: aload 12
     //   353: ifnull +8 -> 361
     //   356: aload 12
-    //   358: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   358: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   361: lload_0
     //   362: lstore_2
     //   363: aload 15
@@ -853,7 +852,7 @@ public class TPSystemInfo
     //   381: aload 12
     //   383: invokevirtual 398	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   386: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   389: ldc_w 568
+    //   389: ldc_w 574
     //   392: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   395: lconst_0
     //   396: lreturn
@@ -868,12 +867,12 @@ public class TPSystemInfo
     //   411: astore 13
     //   413: iconst_4
     //   414: aload 16
-    //   416: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   416: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   419: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   422: aload 12
     //   424: ifnull +8 -> 432
     //   427: aload 12
-    //   429: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   429: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   432: lload_0
     //   433: lstore_2
     //   434: aload 15
@@ -888,7 +887,7 @@ public class TPSystemInfo
     //   452: aload 12
     //   454: invokevirtual 398	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   457: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   460: ldc_w 568
+    //   460: ldc_w 574
     //   463: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   466: lconst_0
     //   467: lreturn
@@ -903,12 +902,12 @@ public class TPSystemInfo
     //   482: astore 13
     //   484: iconst_4
     //   485: aload 16
-    //   487: invokevirtual 583	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   487: invokevirtual 589	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   490: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   493: aload 12
     //   495: ifnull +8 -> 503
     //   498: aload 12
-    //   500: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   500: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   503: lload_0
     //   504: lstore_2
     //   505: aload 15
@@ -923,7 +922,7 @@ public class TPSystemInfo
     //   523: aload 12
     //   525: invokevirtual 398	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   528: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   531: ldc_w 568
+    //   531: ldc_w 574
     //   534: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   537: lconst_0
     //   538: lreturn
@@ -943,7 +942,7 @@ public class TPSystemInfo
     //   564: aload 12
     //   566: ifnull +8 -> 574
     //   569: aload 12
-    //   571: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   571: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   574: lload_0
     //   575: lstore_2
     //   576: aload 15
@@ -958,7 +957,7 @@ public class TPSystemInfo
     //   594: aload 12
     //   596: invokevirtual 398	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   599: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   602: ldc_w 568
+    //   602: ldc_w 574
     //   605: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   608: lconst_0
     //   609: lreturn
@@ -970,12 +969,12 @@ public class TPSystemInfo
     //   618: aload 12
     //   620: ifnull +8 -> 628
     //   623: aload 12
-    //   625: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   625: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   628: aload 14
     //   630: ifnull +8 -> 638
     //   633: aload 14
     //   635: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   638: ldc_w 568
+    //   638: ldc_w 574
     //   641: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   644: aload 15
     //   646: athrow
@@ -984,7 +983,7 @@ public class TPSystemInfo
     //   650: aload 12
     //   652: invokevirtual 398	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   655: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   658: ldc_w 568
+    //   658: ldc_w 574
     //   661: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   664: lconst_0
     //   665: lreturn
@@ -1137,16 +1136,16 @@ public class TPSystemInfo
   
   public static String getDeviceID(Context paramContext)
   {
-    AppMethodBeat.i(193707);
+    AppMethodBeat.i(220489);
     if (!TextUtils.isEmpty(deviceID))
     {
       paramContext = deviceID;
-      AppMethodBeat.o(193707);
+      AppMethodBeat.o(220489);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(193707);
+      AppMethodBeat.o(220489);
       return "";
     }
     try
@@ -1157,7 +1156,7 @@ public class TPSystemInfo
         deviceID = "NONE";
       }
       paramContext = deviceID;
-      AppMethodBeat.o(193707);
+      AppMethodBeat.o(220489);
       return paramContext;
     }
     catch (Throwable paramContext)
@@ -1171,22 +1170,22 @@ public class TPSystemInfo
   
   public static String getDeviceIMEI(Context paramContext)
   {
-    AppMethodBeat.i(193705);
+    AppMethodBeat.i(220487);
     if (!TextUtils.isEmpty(deviceIMEI))
     {
       paramContext = deviceIMEI;
-      AppMethodBeat.o(193705);
+      AppMethodBeat.o(220487);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(193705);
+      AppMethodBeat.o(220487);
       return "";
     }
     if (!checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
     {
       deviceIMEI = "NONE";
-      AppMethodBeat.o(193705);
+      AppMethodBeat.o(220487);
       return "NONE";
     }
     try
@@ -1200,36 +1199,36 @@ public class TPSystemInfo
           deviceIMEI = "NONE";
         }
         paramContext = deviceIMEI;
-        AppMethodBeat.o(193705);
+        AppMethodBeat.o(220487);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
       deviceIMEI = "NONE";
-      AppMethodBeat.o(193705);
+      AppMethodBeat.o(220487);
     }
     return "NONE";
   }
   
   public static String getDeviceIMSI(Context paramContext)
   {
-    AppMethodBeat.i(193706);
+    AppMethodBeat.i(220488);
     if (!TextUtils.isEmpty(deviceIMSI))
     {
       paramContext = deviceIMSI;
-      AppMethodBeat.o(193706);
+      AppMethodBeat.o(220488);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(193706);
+      AppMethodBeat.o(220488);
       return "";
     }
     if (!checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))
     {
       deviceIMSI = "NONE";
-      AppMethodBeat.o(193706);
+      AppMethodBeat.o(220488);
       return "NONE";
     }
     try
@@ -1243,31 +1242,31 @@ public class TPSystemInfo
           deviceIMSI = "";
         }
         paramContext = deviceIMSI;
-        AppMethodBeat.o(193706);
+        AppMethodBeat.o(220488);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(193706);
+      AppMethodBeat.o(220488);
       return "";
     }
-    AppMethodBeat.o(193706);
+    AppMethodBeat.o(220488);
     return "";
   }
   
   public static String getDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(193708);
+    AppMethodBeat.i(220490);
     if (!TextUtils.isEmpty(deviceMacAddr))
     {
       paramContext = deviceMacAddr;
-      AppMethodBeat.o(193708);
+      AppMethodBeat.o(220490);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(193708);
+      AppMethodBeat.o(220490);
       return "";
     }
     paramContext = _getDeviceMacAddr(paramContext);
@@ -1276,7 +1275,7 @@ public class TPSystemInfo
       deviceMacAddr = "NONE";
     }
     paramContext = deviceMacAddr;
-    AppMethodBeat.o(193708);
+    AppMethodBeat.o(220490);
     return paramContext;
   }
   
@@ -1287,27 +1286,27 @@ public class TPSystemInfo
   
   private static String getLowerMarshmallowDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(193710);
+    AppMethodBeat.i(220492);
     try
     {
       paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
       if (paramContext == null)
       {
-        AppMethodBeat.o(193710);
+        AppMethodBeat.o(220492);
         return "";
       }
       paramContext = paramContext.getConnectionInfo();
       if (paramContext != null)
       {
         paramContext = paramContext.getMacAddress();
-        AppMethodBeat.o(193710);
+        AppMethodBeat.o(220492);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
       TPNativeLog.printLog(4, paramContext.getMessage());
-      AppMethodBeat.o(193710);
+      AppMethodBeat.o(220492);
     }
     return "";
   }
@@ -1318,7 +1317,7 @@ public class TPSystemInfo
     // Byte code:
     //   0: lconst_0
     //   1: lstore_2
-    //   2: ldc_w 655
+    //   2: ldc_w 661
     //   5: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: ldc2_w 311
     //   11: getstatic 314	com/tencent/thumbplayer/core/common/TPSystemInfo:maxCpuFreq	J
@@ -1326,18 +1325,18 @@ public class TPSystemInfo
     //   15: ifeq +15 -> 30
     //   18: getstatic 314	com/tencent/thumbplayer/core/common/TPSystemInfo:maxCpuFreq	J
     //   21: lstore_0
-    //   22: ldc_w 655
+    //   22: ldc_w 661
     //   25: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: lload_0
     //   29: lreturn
-    //   30: new 544	java/io/InputStreamReader
+    //   30: new 552	java/io/InputStreamReader
     //   33: dup
-    //   34: new 546	java/io/FileInputStream
+    //   34: new 554	java/io/FileInputStream
     //   37: dup
-    //   38: ldc_w 657
-    //   41: invokespecial 551	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   44: ldc_w 553
-    //   47: invokespecial 556	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   38: ldc_w 663
+    //   41: invokespecial 557	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   44: ldc_w 559
+    //   47: invokespecial 562	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   50: astore 4
     //   52: new 414	java/io/BufferedReader
     //   55: dup
@@ -1345,30 +1344,30 @@ public class TPSystemInfo
     //   58: invokespecial 422	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   61: astore 5
     //   63: aload 5
-    //   65: invokevirtual 559	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   65: invokevirtual 565	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   68: astore 6
     //   70: aload 6
     //   72: ifnonnull +45 -> 117
     //   75: aload 4
-    //   77: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   77: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   80: aload 5
     //   82: invokevirtual 439	java/io/BufferedReader:close	()V
     //   85: aload 4
-    //   87: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   87: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   90: aload 5
     //   92: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   95: ldc_w 655
+    //   95: ldc_w 661
     //   98: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: lconst_0
     //   102: lreturn
     //   103: astore 4
     //   105: iconst_4
     //   106: aload 4
-    //   108: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   108: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   111: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   114: goto -19 -> 95
     //   117: aload 6
-    //   119: invokevirtual 575	java/lang/String:trim	()Ljava/lang/String;
+    //   119: invokevirtual 581	java/lang/String:trim	()Ljava/lang/String;
     //   122: astore 6
     //   124: lload_2
     //   125: lstore_0
@@ -1376,10 +1375,10 @@ public class TPSystemInfo
     //   128: invokevirtual 370	java/lang/String:length	()I
     //   131: ifle +9 -> 140
     //   134: aload 6
-    //   136: invokestatic 581	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   136: invokestatic 587	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   139: lstore_0
     //   140: aload 4
-    //   142: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   142: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   145: aload 5
     //   147: invokevirtual 439	java/io/BufferedReader:close	()V
     //   150: lload_0
@@ -1387,20 +1386,20 @@ public class TPSystemInfo
     //   154: iconst_2
     //   155: new 359	java/lang/StringBuilder
     //   158: dup
-    //   159: ldc_w 659
-    //   162: invokespecial 660	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   159: ldc_w 665
+    //   162: invokespecial 502	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   165: getstatic 314	com/tencent/thumbplayer/core/common/TPSystemInfo:maxCpuFreq	J
-    //   168: invokevirtual 663	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   168: invokevirtual 668	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   171: invokevirtual 389	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   174: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
-    //   177: ldc_w 655
+    //   177: ldc_w 661
     //   180: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   183: lload_0
     //   184: lreturn
     //   185: astore 4
     //   187: iconst_4
     //   188: aload 4
-    //   190: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   190: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   193: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   196: goto -46 -> 150
     //   199: astore 4
@@ -1411,7 +1410,7 @@ public class TPSystemInfo
     //   207: aload 4
     //   209: ifnull +8 -> 217
     //   212: aload 4
-    //   214: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   214: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   217: lload_2
     //   218: lstore_0
     //   219: aload 5
@@ -1424,7 +1423,7 @@ public class TPSystemInfo
     //   234: astore 4
     //   236: iconst_4
     //   237: aload 4
-    //   239: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   239: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   242: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   245: lload_2
     //   246: lstore_0
@@ -1437,7 +1436,7 @@ public class TPSystemInfo
     //   258: aload 4
     //   260: ifnull +8 -> 268
     //   263: aload 4
-    //   265: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   265: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   268: lload_2
     //   269: lstore_0
     //   270: aload 5
@@ -1450,7 +1449,7 @@ public class TPSystemInfo
     //   285: astore 4
     //   287: iconst_4
     //   288: aload 4
-    //   290: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   290: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   293: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   296: lload_2
     //   297: lstore_0
@@ -1463,19 +1462,19 @@ public class TPSystemInfo
     //   309: aload 4
     //   311: ifnull +8 -> 319
     //   314: aload 4
-    //   316: invokevirtual 565	java/io/InputStreamReader:close	()V
+    //   316: invokevirtual 571	java/io/InputStreamReader:close	()V
     //   319: aload 5
     //   321: ifnull +8 -> 329
     //   324: aload 5
     //   326: invokevirtual 439	java/io/BufferedReader:close	()V
-    //   329: ldc_w 655
+    //   329: ldc_w 661
     //   332: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   335: aload 6
     //   337: athrow
     //   338: astore 4
     //   340: iconst_4
     //   341: aload 4
-    //   343: invokevirtual 566	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   343: invokevirtual 572	java/io/IOException:getMessage	()Ljava/lang/String;
     //   346: invokestatic 404	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   349: goto -20 -> 329
     //   352: astore 6
@@ -1554,12 +1553,12 @@ public class TPSystemInfo
   
   public static int getNumCores()
   {
-    AppMethodBeat.i(193700);
+    AppMethodBeat.i(220482);
     int i;
     if (-1 != numOfCores)
     {
       i = numOfCores;
-      AppMethodBeat.o(193700);
+      AppMethodBeat.o(220482);
       return i;
     }
     try
@@ -1568,36 +1567,36 @@ public class TPSystemInfo
       {
         public boolean accept(File paramAnonymousFile)
         {
-          AppMethodBeat.i(193692);
+          AppMethodBeat.i(220474);
           boolean bool = Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
-          AppMethodBeat.o(193692);
+          AppMethodBeat.o(220474);
           return bool;
         }
       });
       if (arrayOfFile == null)
       {
         numOfCores = 1;
-        AppMethodBeat.o(193700);
+        AppMethodBeat.o(220482);
         return 1;
       }
       numOfCores = arrayOfFile.length;
       TPNativeLog.printLog(2, "core num " + numOfCores);
       i = numOfCores;
-      AppMethodBeat.o(193700);
+      AppMethodBeat.o(220482);
       return i;
     }
     catch (Exception localException)
     {
       TPNativeLog.printLog(4, localException.getMessage());
       numOfCores = 1;
-      AppMethodBeat.o(193700);
+      AppMethodBeat.o(220482);
     }
     return 1;
   }
   
   public static int getOpenGLSupportVersion(Context paramContext)
   {
-    AppMethodBeat.i(193720);
+    AppMethodBeat.i(220502);
     if (mOpenGLVersion == 0) {}
     try
     {
@@ -1605,7 +1604,7 @@ public class TPSystemInfo
       if (paramContext == null)
       {
         i = mOpenGLVersion;
-        AppMethodBeat.o(193720);
+        AppMethodBeat.o(220502);
         return i;
       }
       mOpenGLVersion = paramContext.getDeviceConfigurationInfo().reqGlEsVersion;
@@ -1619,7 +1618,7 @@ public class TPSystemInfo
       }
     }
     i = mOpenGLVersion;
-    AppMethodBeat.o(193720);
+    AppMethodBeat.o(220502);
     return i;
   }
   
@@ -1630,24 +1629,24 @@ public class TPSystemInfo
   
   public static int getScreenHeight(Context paramContext)
   {
-    AppMethodBeat.i(193713);
+    AppMethodBeat.i(220495);
     if (paramContext == null)
     {
-      AppMethodBeat.o(193713);
+      AppMethodBeat.o(220495);
       return 0;
     }
     int i;
     if (mScreenHeight != 0)
     {
       i = mScreenHeight;
-      AppMethodBeat.o(193713);
+      AppMethodBeat.o(220495);
       return i;
     }
     try
     {
       mScreenHeight = paramContext.getResources().getDisplayMetrics().heightPixels;
       i = mScreenHeight;
-      AppMethodBeat.o(193713);
+      AppMethodBeat.o(220495);
       return i;
     }
     catch (Throwable paramContext)
@@ -1661,24 +1660,24 @@ public class TPSystemInfo
   
   public static int getScreenWidth(Context paramContext)
   {
-    AppMethodBeat.i(193712);
+    AppMethodBeat.i(220494);
     if (paramContext == null)
     {
-      AppMethodBeat.o(193712);
+      AppMethodBeat.o(220494);
       return 0;
     }
     int i;
     if (mScreenWidth != 0)
     {
       i = mScreenWidth;
-      AppMethodBeat.o(193712);
+      AppMethodBeat.o(220494);
       return i;
     }
     try
     {
       mScreenWidth = paramContext.getResources().getDisplayMetrics().widthPixels;
       i = mScreenWidth;
-      AppMethodBeat.o(193712);
+      AppMethodBeat.o(220494);
       return i;
     }
     catch (Throwable paramContext)
@@ -1692,10 +1691,10 @@ public class TPSystemInfo
   
   public static int getSystemCpuUsage(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193717);
+    AppMethodBeat.i(220499);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(193717);
+      AppMethodBeat.o(220499);
       return -1;
     }
     float f2 = -1.0F;
@@ -1742,29 +1741,29 @@ public class TPSystemInfo
       }
     }
     i = (int)f1;
-    AppMethodBeat.o(193717);
+    AppMethodBeat.o(220499);
     return i;
   }
   
   public static long getSystemIdleTime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(193719);
+    AppMethodBeat.i(220501);
     try
     {
       long l = Long.parseLong(paramArrayOfString[4]);
-      AppMethodBeat.o(193719);
+      AppMethodBeat.o(220501);
       return l;
     }
     catch (Throwable paramArrayOfString)
     {
-      AppMethodBeat.o(193719);
+      AppMethodBeat.o(220501);
     }
     return -1L;
   }
   
   public static long getSystemUptime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(193718);
+    AppMethodBeat.i(220500);
     long l1 = 0L;
     int i = 1;
     while (i < paramArrayOfString.length)
@@ -1780,17 +1779,17 @@ public class TPSystemInfo
       }
       catch (Throwable paramArrayOfString)
       {
-        AppMethodBeat.o(193718);
+        AppMethodBeat.o(220500);
         return -1L;
       }
     }
-    AppMethodBeat.o(193718);
+    AppMethodBeat.o(220500);
     return l1;
   }
   
   private static String getWlanName()
   {
-    AppMethodBeat.i(193711);
+    AppMethodBeat.i(220493);
     try
     {
       if (getWlanMethod == null) {
@@ -1807,7 +1806,7 @@ public class TPSystemInfo
         String str2 = "wlan0";
       }
     }
-    AppMethodBeat.o(193711);
+    AppMethodBeat.o(220493);
     return str1;
   }
   
@@ -1818,19 +1817,19 @@ public class TPSystemInfo
   
   public static boolean isARMV5Whitelist()
   {
-    AppMethodBeat.i(193702);
+    AppMethodBeat.i(220484);
     if ((getDeviceName().equals("XT882")) || (getDeviceName().equals("ME860")) || (getDeviceName().equals("MB860")) || (getDeviceName().equals("Lenovo P70")) || (getDeviceName().equals("Lenovo A60")) || (getDeviceName().equals("Lenovo A366t")))
     {
-      AppMethodBeat.o(193702);
+      AppMethodBeat.o(220484);
       return true;
     }
-    AppMethodBeat.o(193702);
+    AppMethodBeat.o(220484);
     return false;
   }
   
   private static void parseCpuInfoLine(String paramString)
   {
-    AppMethodBeat.i(193693);
+    AppMethodBeat.i(220475);
     if ((paramString.contains("aarch64")) || (paramString.contains("AArch64"))) {
       mCpuArchitecture = 64;
     }
@@ -1844,7 +1843,7 @@ public class TPSystemInfo
         mProcessorName = paramString;
         mProcessorName = paramString.trim();
       }
-      AppMethodBeat.o(193693);
+      AppMethodBeat.o(220475);
       return;
     }
     if (paramString.startsWith("CPU architecture"))
@@ -1858,14 +1857,14 @@ public class TPSystemInfo
           if ((paramString.length() > 0) && (paramString.length() < 2))
           {
             mCpuArchitecture = (int)Long.parseLong(paramString);
-            AppMethodBeat.o(193693);
+            AppMethodBeat.o(220475);
             return;
           }
           if (paramString.length() > 1) {
             mCpuArchitecture = (int)Long.parseLong(paramString.substring(0, 1));
           }
         }
-        AppMethodBeat.o(193693);
+        AppMethodBeat.o(220475);
       }
     }
     else
@@ -1876,7 +1875,7 @@ public class TPSystemInfo
         if (i > 1) {
           mFeature = paramString.substring(i + 1, paramString.length()).trim();
         }
-        AppMethodBeat.o(193693);
+        AppMethodBeat.o(220475);
         return;
       }
       if (paramString.startsWith("Hardware"))
@@ -1890,7 +1889,7 @@ public class TPSystemInfo
         }
       }
     }
-    AppMethodBeat.o(193693);
+    AppMethodBeat.o(220475);
   }
   
   /* Error */
@@ -1899,20 +1898,20 @@ public class TPSystemInfo
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc_w 820
+    //   2: ldc_w 822
     //   5: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 822	java/io/RandomAccessFile
+    //   8: new 824	java/io/RandomAccessFile
     //   11: dup
-    //   12: ldc_w 824
-    //   15: ldc_w 826
-    //   18: invokespecial 829	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   12: ldc_w 826
+    //   15: ldc_w 828
+    //   18: invokespecial 831	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: astore_0
     //   22: aload_0
-    //   23: invokevirtual 830	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
+    //   23: invokevirtual 832	java/io/RandomAccessFile:readLine	()Ljava/lang/String;
     //   26: astore_1
     //   27: aload_0
-    //   28: invokevirtual 831	java/io/RandomAccessFile:close	()V
-    //   31: ldc_w 820
+    //   28: invokevirtual 833	java/io/RandomAccessFile:close	()V
+    //   31: ldc_w 822
     //   34: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aload_1
     //   38: areturn
@@ -1930,7 +1929,7 @@ public class TPSystemInfo
     //   56: aload_0
     //   57: ifnull -26 -> 31
     //   60: aload_0
-    //   61: invokevirtual 831	java/io/RandomAccessFile:close	()V
+    //   61: invokevirtual 833	java/io/RandomAccessFile:close	()V
     //   64: aload_2
     //   65: astore_1
     //   66: goto -35 -> 31
@@ -1948,8 +1947,8 @@ public class TPSystemInfo
     //   86: aload_1
     //   87: ifnull +7 -> 94
     //   90: aload_1
-    //   91: invokevirtual 831	java/io/RandomAccessFile:close	()V
-    //   94: ldc_w 820
+    //   91: invokevirtual 833	java/io/RandomAccessFile:close	()V
+    //   94: ldc_w 822
     //   97: invokestatic 395	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   100: aload_0
     //   101: athrow
@@ -1997,7 +1996,7 @@ public class TPSystemInfo
   
   public static boolean supportInDeviceDolbyAudioEffect()
   {
-    AppMethodBeat.i(193721);
+    AppMethodBeat.i(220503);
     try
     {
       arrayOfDescriptor = AudioEffect.queryEffects();
@@ -2034,13 +2033,13 @@ public class TPSystemInfo
       TPNativeLog.printLog(4, localException1.getMessage());
       bool2 = bool1;
     }
-    AppMethodBeat.o(193721);
+    AppMethodBeat.o(220503);
     return bool2;
   }
   
   private static void writeStringToFile(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(193714);
+    AppMethodBeat.i(220496);
     Object localObject = null;
     try
     {
@@ -2050,7 +2049,7 @@ public class TPSystemInfo
         boolean bool = paramString1.createNewFile();
         if (bool)
         {
-          AppMethodBeat.o(193714);
+          AppMethodBeat.o(220496);
           return;
         }
       }
@@ -2066,7 +2065,7 @@ public class TPSystemInfo
         paramString1.write(paramString2);
         paramString1.flush();
         paramString1.close();
-        AppMethodBeat.o(193714);
+        AppMethodBeat.o(220496);
         return;
       }
       catch (Throwable paramString2)
@@ -2080,12 +2079,12 @@ public class TPSystemInfo
     {
       label73:
       paramString1.close();
-      AppMethodBeat.o(193714);
+      AppMethodBeat.o(220496);
       return;
     }
     catch (IOException paramString1) {}
     label89:
-    AppMethodBeat.o(193714);
+    AppMethodBeat.o(220496);
   }
 }
 

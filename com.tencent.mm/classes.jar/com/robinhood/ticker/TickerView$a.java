@@ -7,10 +7,10 @@ public enum TickerView$a
   static
   {
     AppMethodBeat.i(39863);
-    bMo = new a("ANY", 0);
-    bMp = new a("UP", 1);
-    bMq = new a("DOWN", 2);
-    bMr = new a[] { bMo, bMp, bMq };
+    bWB = new a("ANY", 0);
+    bWC = new a("UP", 1);
+    bWD = new a("DOWN", 2);
+    bWE = new a[] { bWB, bWC, bWD };
     AppMethodBeat.o(39863);
   }
   

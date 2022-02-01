@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.protocal.protobuf.buj;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 
+@Deprecated
 public abstract interface n
 {
-  public abstract void a(buj parambuj, bo parambo);
+  public abstract String ac(bu parambu);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.n
  * JD-Core Version:    0.7.0.1
  */

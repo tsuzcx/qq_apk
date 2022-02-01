@@ -1,42 +1,41 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.uq;
-import com.tencent.mm.protocal.protobuf.ur;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.wp;
+import com.tencent.mm.protocal.protobuf.wq;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class f
   extends n
   implements k
 {
-  private g callback;
-  public b hEg;
+  private com.tencent.mm.al.f callback;
+  public b hWL;
   
   public f()
   {
-    AppMethodBeat.i(193209);
+    AppMethodBeat.i(207105);
     b.a locala = new b.a();
-    locala.hvt = new uq();
-    locala.hvu = new ur();
+    locala.hNM = new wp();
+    locala.hNN = new wq();
     locala.uri = "/cgi-bin/micromsg-bin/checkcansetalias";
     locala.funcId = getType();
-    this.hEg = locala.aAz();
-    AppMethodBeat.o(193209);
+    this.hWL = locala.aDC();
+    AppMethodBeat.o(207105);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, com.tencent.mm.al.f paramf)
   {
-    AppMethodBeat.i(193210);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hEg, this);
-    AppMethodBeat.o(193210);
+    AppMethodBeat.i(207106);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hWL, this);
+    AppMethodBeat.o(207106);
     return i;
   }
   
@@ -47,15 +46,15 @@ public final class f
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(193211);
-    ac.i("MicroMsg.NetSceneCheckModifyAlias", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(207107);
+    ad.i("MicroMsg.NetSceneCheckModifyAlias", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(193211);
+    AppMethodBeat.o(207107);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bv;
+import com.tencent.mm.g.c.bw;
 import com.tencent.mm.sdk.e.c.a;
 
 public final class f
-  extends bv
+  extends bw
 {
   public static c.a info;
   
   static
   {
     AppMethodBeat.i(103369);
-    info = bv.Th();
+    info = bw.Vv();
     AppMethodBeat.o(103369);
   }
   

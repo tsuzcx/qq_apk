@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ou
   extends b
 {
-  public a drl;
+  public a dCM;
   
   public ou()
   {
@@ -15,21 +15,16 @@ public final class ou
   
   private ou(byte paramByte)
   {
-    AppMethodBeat.i(168630);
-    this.drl = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(91037);
+    this.dCM = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(168630);
+    AppMethodBeat.o(91037);
   }
   
   public static final class a
   {
-    public boolean drm;
-    public String drn;
-    public String mediaId;
-    public int process;
-    public int size;
-    public int type;
+    public int action = 0;
   }
 }
 

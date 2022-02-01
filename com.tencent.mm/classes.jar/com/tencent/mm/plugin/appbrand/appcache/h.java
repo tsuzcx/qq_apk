@@ -1,38 +1,37 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.c.a;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
 import com.tencent.mm.cn.f;
-import com.tencent.mm.protocal.protobuf.bhh;
-import com.tencent.mm.protocal.protobuf.bhi;
-import com.tencent.mm.vending.c.a;
+import com.tencent.mm.protocal.protobuf.blp;
+import com.tencent.mm.protocal.protobuf.blq;
 
 public class h
-  extends c<bhi>
+  extends com.tencent.mm.plugin.appbrand.networking.a<blq>
 {
-  private static a jlG = null;
+  private static a jFw = null;
   public final b rr;
   
-  public h(bhh parambhh)
+  public h(blp paramblp)
   {
-    this(parambhh, 1139, "/cgi-bin/mmbiz-bin/wxaapp/getwxacdndownloadurl");
+    this(paramblp, 1139, "/cgi-bin/mmbiz-bin/wxaapp/getwxacdndownloadurl");
   }
   
-  public h(bhh parambhh, int paramInt, String paramString)
+  public h(blp paramblp, int paramInt, String paramString)
   {
+    super(paramblp.duW, null);
     AppMethodBeat.i(90542);
     b.a locala = new b.a();
     locala.funcId = paramInt;
     locala.uri = paramString;
-    locala.hvt = parambhh;
-    locala.hvu = new bhi();
-    parambhh = locala.aAz();
-    this.rr = parambhh;
-    this.rr = parambhh;
+    locala.hNM = paramblp;
+    locala.hNN = new blq();
+    paramblp = locala.aDC();
+    this.rr = paramblp;
+    c(paramblp);
     AppMethodBeat.o(90542);
   }
   
@@ -48,59 +47,59 @@ public class h
     this(paramString1, paramInt1, paramString2, paramInt2);
   }
   
-  public static bhh a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
+  public static blp a(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(90540);
-    bhh localbhh = new bhh();
-    localbhh.Eeo = paramInt1;
-    localbhh.djj = paramString1;
-    localbhh.lmu = paramString2;
-    localbhh.EUq = paramInt2;
-    localbhh.EWh = paramInt3;
+    blp localblp = new blp();
+    localblp.FKN = paramInt1;
+    localblp.duW = paramString1;
+    localblp.lJC = paramString2;
+    localblp.GDN = paramInt2;
+    localblp.GFE = paramInt3;
     AppMethodBeat.o(90540);
-    return localbhh;
+    return localblp;
   }
   
   public static void a(a parama)
   {
-    jlG = parama;
+    jFw = parama;
   }
   
   /* Error */
-  public final f<c.a<bhi>> aBB()
+  public final f<a.a<blq>> aED()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 99
-    //   4: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 105	com/tencent/mm/sdk/platformtools/bs:eWj	()J
+    //   2: ldc 104
+    //   4: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: invokestatic 110	com/tencent/mm/sdk/platformtools/bt:flT	()J
     //   10: lstore_1
-    //   11: getstatic 18	com/tencent/mm/plugin/appbrand/appcache/h:jlG	Lcom/tencent/mm/plugin/appbrand/appcache/h$a;
+    //   11: getstatic 18	com/tencent/mm/plugin/appbrand/appcache/h:jFw	Lcom/tencent/mm/plugin/appbrand/appcache/h$a;
     //   14: astore_3
     //   15: aload_3
     //   16: ifnull +48 -> 64
     //   19: aload_3
     //   20: aload_0
-    //   21: invokeinterface 108 2 0
+    //   21: invokeinterface 113 2 0
     //   26: astore_3
     //   27: aload_3
     //   28: astore 4
     //   30: aload_3
     //   31: ifnonnull +9 -> 40
     //   34: aload_0
-    //   35: invokespecial 110	com/tencent/mm/ak/c:aBB	()Lcom/tencent/mm/cn/f;
+    //   35: invokespecial 115	com/tencent/mm/plugin/appbrand/networking/a:aED	()Lcom/tencent/mm/cn/f;
     //   38: astore 4
     //   40: aload 4
     //   42: new 7	com/tencent/mm/plugin/appbrand/appcache/h$1
     //   45: dup
     //   46: aload_0
     //   47: lload_1
-    //   48: invokespecial 113	com/tencent/mm/plugin/appbrand/appcache/h$1:<init>	(Lcom/tencent/mm/plugin/appbrand/appcache/h;J)V
-    //   51: invokevirtual 119	com/tencent/mm/cn/f:b	(Lcom/tencent/mm/vending/c/a;)Lcom/tencent/mm/cn/f;
+    //   48: invokespecial 118	com/tencent/mm/plugin/appbrand/appcache/h$1:<init>	(Lcom/tencent/mm/plugin/appbrand/appcache/h;J)V
+    //   51: invokevirtual 124	com/tencent/mm/cn/f:b	(Lcom/tencent/mm/vending/c/a;)Lcom/tencent/mm/cn/f;
     //   54: astore_3
-    //   55: ldc 99
-    //   57: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: ldc 104
+    //   57: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: aload_0
     //   61: monitorexit
     //   62: aload_3
@@ -128,19 +127,19 @@ public class h
     //   40	60	69	finally
   }
   
-  public final bhh aVX()
+  public final blp aZs()
   {
-    return (bhh)this.rr.hvr.hvw;
+    return (blp)this.rr.hNK.hNQ;
   }
   
-  public final int aVY()
+  public final int aZt()
   {
-    return ((bhh)this.rr.hvr.hvw).EUq;
+    return ((blp)this.rr.hNK.hNQ).GDN;
   }
   
   public static abstract interface a
   {
-    public abstract f<c.a<bhi>> a(h paramh);
+    public abstract f<a.a<blq>> a(h paramh);
   }
 }
 

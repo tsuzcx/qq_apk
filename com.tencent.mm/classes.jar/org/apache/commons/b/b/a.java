@@ -12,11 +12,11 @@ import org.apache.commons.b.h;
 
 public final class a
 {
-  private static final Object MaM = new Object();
-  private static String[] MaN = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
-  private static final Method MaO;
-  private static final Method MaP;
-  static Class MaQ;
+  private static final Object NVm = new Object();
+  private static String[] NVn = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
+  private static final Method NVo;
+  private static final Method NVp;
+  static Class NVq;
   
   static
   {
@@ -26,11 +26,11 @@ public final class a
     {
       try
       {
-        if (MaQ != null) {
+        if (NVq != null) {
           continue;
         }
-        localObject1 = aXo("java.lang.Throwable");
-        MaQ = (Class)localObject1;
+        localObject1 = bdI("java.lang.Throwable");
+        NVq = (Class)localObject1;
         localObject1 = ((Class)localObject1).getMethod("getCause", null);
       }
       catch (Exception localException1)
@@ -38,24 +38,24 @@ public final class a
         Object localObject1;
         localClass1 = null;
         continue;
-        localClass1 = MaQ;
+        localClass1 = NVq;
         continue;
-        localClass2 = MaQ;
+        localClass2 = NVq;
         continue;
       }
-      MaO = (Method)localObject1;
+      NVo = (Method)localObject1;
       try
       {
-        if (MaQ != null) {
+        if (NVq != null) {
           continue;
         }
-        localObject1 = aXo("java.lang.Throwable");
-        MaQ = (Class)localObject1;
-        if (MaQ != null) {
+        localObject1 = bdI("java.lang.Throwable");
+        NVq = (Class)localObject1;
+        if (NVq != null) {
           continue;
         }
-        localClass2 = aXo("java.lang.Throwable");
-        MaQ = localClass2;
+        localClass2 = bdI("java.lang.Throwable");
+        NVq = localClass2;
         localObject1 = ((Class)localObject1).getMethod("initCause", new Class[] { localClass2 });
       }
       catch (Exception localException2)
@@ -65,25 +65,25 @@ public final class a
         Object localObject2 = localObject3;
         continue;
       }
-      MaP = (Method)localObject1;
+      NVp = (Method)localObject1;
       AppMethodBeat.o(40719);
       return;
-      localObject1 = MaQ;
+      localObject1 = NVq;
     }
   }
   
-  public static Throwable F(Throwable paramThrowable)
+  public static Throwable G(Throwable paramThrowable)
   {
     AppMethodBeat.i(40712);
-    synchronized (MaM)
+    synchronized (NVm)
     {
-      paramThrowable = a(paramThrowable, MaN);
+      paramThrowable = a(paramThrowable, NVn);
       AppMethodBeat.o(40712);
       return paramThrowable;
     }
   }
   
-  public static void M(List paramList1, List paramList2)
+  public static void O(List paramList1, List paramList2)
   {
     AppMethodBeat.i(40716);
     int i = paramList1.size();
@@ -120,9 +120,9 @@ public final class a
       }
       localObject2 = ???;
       if (??? == null) {}
-      synchronized (MaM)
+      synchronized (NVm)
       {
-        localObject2 = MaN;
+        localObject2 = NVn;
         int i = 0;
         for (;;)
         {
@@ -157,7 +157,7 @@ public final class a
     return localObject2;
   }
   
-  private static Class aXo(String paramString)
+  private static Class bdI(String paramString)
   {
     AppMethodBeat.i(40718);
     try
@@ -174,10 +174,10 @@ public final class a
     }
   }
   
-  static String[] aXz(String paramString)
+  static String[] bdT(String paramString)
   {
     AppMethodBeat.i(40717);
-    paramString = new StringTokenizer(paramString, h.LQw);
+    paramString = new StringTokenizer(paramString, h.NHr);
     ArrayList localArrayList = new ArrayList();
     while (paramString.hasMoreTokens()) {
       localArrayList.add(paramString.nextToken());
@@ -194,10 +194,10 @@ public final class a
     {
       paramString = paramThrowable.getClass().getMethod(paramString, null);
       if (paramString != null) {
-        if (MaQ == null)
+        if (NVq == null)
         {
-          localClass = aXo("java.lang.Throwable");
-          MaQ = localClass;
+          localClass = bdI("java.lang.Throwable");
+          NVq = localClass;
           if (!localClass.isAssignableFrom(paramString.getReturnType())) {
             break label85;
           }
@@ -210,7 +210,7 @@ public final class a
       {
         try
         {
-          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.LYh);
+          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.NSG);
           AppMethodBeat.o(40714);
           return paramThrowable;
         }
@@ -238,7 +238,7 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = MaQ;
+        localClass = NVq;
       }
     }
   }
@@ -250,10 +250,10 @@ public final class a
     {
       paramString = paramThrowable.getClass().getField(paramString);
       if (paramString != null) {
-        if (MaQ == null)
+        if (NVq == null)
         {
-          localClass = aXo("java.lang.Throwable");
-          MaQ = localClass;
+          localClass = bdI("java.lang.Throwable");
+          NVq = localClass;
           if (!localClass.isAssignableFrom(paramString.getType())) {
             break label81;
           }
@@ -290,19 +290,19 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = MaQ;
+        localClass = NVq;
       }
     }
   }
   
-  public static boolean gfK()
+  public static boolean gyi()
   {
-    return MaO != null;
+    return NVo != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.b.a
  * JD-Core Version:    0.7.0.1
  */

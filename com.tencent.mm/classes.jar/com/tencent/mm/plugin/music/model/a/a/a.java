@@ -9,28 +9,28 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class a
 {
   public static final class b
     implements k<IPCVoid, IPCString>
   {
-    private static IPCString boG()
+    private static IPCString bsF()
     {
       AppMethodBeat.i(63068);
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getAccPath task");
-        IPCString localIPCString1 = new IPCString(g.agR().ghC);
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getAccPath task");
+        IPCString localIPCString1 = new IPCString(g.ajC().gBm);
         AppMethodBeat.o(63068);
         return localIPCString1;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getAccPath task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getAccPath task", new Object[0]);
         IPCString localIPCString2 = new IPCString("");
         AppMethodBeat.o(63068);
         return localIPCString2;
@@ -41,19 +41,19 @@ public final class a
   public static final class c
     implements k<IPCVoid, IPCLong>
   {
-    private static IPCLong diY()
+    private static IPCLong dtk()
     {
       AppMethodBeat.i(63070);
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getLastScanMusicPieceFileTime task");
-        IPCLong localIPCLong1 = new IPCLong(((Long)g.agR().agA().get(ah.a.GMe, Long.valueOf(0L))).longValue());
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getLastScanMusicPieceFileTime task");
+        IPCLong localIPCLong1 = new IPCLong(((Long)g.ajC().ajl().get(al.a.Iyw, Long.valueOf(0L))).longValue());
         AppMethodBeat.o(63070);
         return localIPCLong1;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getLastScanMusicPieceFileTime task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getLastScanMusicPieceFileTime task", new Object[0]);
         IPCLong localIPCLong2 = new IPCLong(0L);
         AppMethodBeat.o(63070);
         return localIPCLong2;
@@ -69,15 +69,15 @@ public final class a
       AppMethodBeat.i(63076);
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getRemovePlayingAudioPlayerGroupCount task");
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getRemovePlayingAudioPlayerGroupCount task");
         int i = paramIPCInteger.value;
-        IPCInteger localIPCInteger = new IPCInteger(((Integer)g.agR().agA().get(ah.a.GMi, Integer.valueOf(i))).intValue());
+        IPCInteger localIPCInteger = new IPCInteger(((Integer)g.ajC().ajl().get(al.a.IyA, Integer.valueOf(i))).intValue());
         AppMethodBeat.o(63076);
         return localIPCInteger;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getRemovePlayingAudioPlayerGroupCount task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getRemovePlayingAudioPlayerGroupCount task", new Object[0]);
         paramIPCInteger = new IPCInteger(paramIPCInteger.value);
         AppMethodBeat.o(63076);
       }
@@ -88,19 +88,19 @@ public final class a
   public static final class g
     implements k<IPCVoid, IPCBoolean>
   {
-    private static IPCBoolean diZ()
+    private static IPCBoolean dtl()
     {
       AppMethodBeat.i(63078);
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc isSupportMixAudioByCP task");
-        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.agR().agA().get(ah.a.GMk, Boolean.FALSE)).booleanValue());
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc isSupportMixAudioByCP task");
+        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.ajC().ajl().get(al.a.IyC, Boolean.FALSE)).booleanValue());
         AppMethodBeat.o(63078);
         return localIPCBoolean1;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc isSupportMixAudioByCP task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc isSupportMixAudioByCP task", new Object[0]);
         IPCBoolean localIPCBoolean2 = new IPCBoolean(false);
         AppMethodBeat.o(63078);
         return localIPCBoolean2;
@@ -116,9 +116,9 @@ public final class a
       AppMethodBeat.i(63080);
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setLastScanMusicPieceFileTime task");
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setLastScanMusicPieceFileTime task");
         long l = paramIPCLong.value;
-        g.agR().agA().set(ah.a.GMe, Long.valueOf(l));
+        g.ajC().ajl().set(al.a.Iyw, Long.valueOf(l));
         paramIPCLong = new IPCVoid();
         AppMethodBeat.o(63080);
         return paramIPCLong;
@@ -127,7 +127,7 @@ public final class a
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCLong, "ipc setLastScanMusicPieceFileTime task", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCLong, "ipc setLastScanMusicPieceFileTime task", new Object[0]);
         }
       }
     }
@@ -136,19 +136,19 @@ public final class a
   public static final class j
     implements k<IPCVoid, IPCBoolean>
   {
-    private static IPCBoolean diZ()
+    private static IPCBoolean dtl()
     {
       AppMethodBeat.i(63084);
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc showAudioToast");
-        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.agR().agA().get(ah.a.GMj, Boolean.FALSE)).booleanValue());
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc showAudioToast");
+        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.ajC().ajl().get(al.a.IyB, Boolean.FALSE)).booleanValue());
         AppMethodBeat.o(63084);
         return localIPCBoolean1;
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc showAudioToast task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc showAudioToast task", new Object[0]);
         IPCBoolean localIPCBoolean2 = new IPCBoolean(false);
         AppMethodBeat.o(63084);
         return localIPCBoolean2;

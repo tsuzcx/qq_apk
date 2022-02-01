@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j
 {
-  h<?> aAp;
+  h<?> aCg;
   
   public j(h<?> paramh)
   {
-    this.aAp = paramh;
+    this.aCg = paramh;
   }
   
   protected final void finalize()
@@ -16,8 +16,8 @@ final class j
     AppMethodBeat.i(53011);
     try
     {
-      h localh = this.aAp;
-      if ((localh != null) && (h.nm() != null)) {
+      h localh = this.aCg;
+      if ((localh != null) && (h.nE() != null)) {
         new k(localh.getError());
       }
       return;
@@ -31,7 +31,7 @@ final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     a.j
  * JD-Core Version:    0.7.0.1
  */

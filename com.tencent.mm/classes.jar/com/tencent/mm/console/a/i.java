@@ -16,7 +16,7 @@ public final class i
   static
   {
     AppMethodBeat.i(20186);
-    b.a(new i(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert" });
+    b.a(new i(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert", "//anrassert" });
     AppMethodBeat.o(20186);
   }
   
@@ -26,7 +26,7 @@ public final class i
   {
     AppMethodBeat.i(20185);
     paramContext = paramArrayOfString[0];
-    label64:
+    label72:
     int i;
     switch (paramContext.hashCode())
     {
@@ -41,29 +41,34 @@ public final class i
         AppMethodBeat.o(20185);
         return false;
         if (!paramContext.equals("//assert")) {
-          break label64;
+          break label72;
         }
         i = 0;
         continue;
         if (!paramContext.equals("//netassert")) {
-          break label64;
+          break label72;
         }
         i = 1;
         continue;
         if (!paramContext.equals("//jniassert")) {
-          break label64;
+          break label72;
         }
         i = 2;
         continue;
         if (!paramContext.equals("//jnipushassert")) {
-          break label64;
+          break label72;
         }
         i = 3;
         continue;
         if (!paramContext.equals("//pushassert")) {
-          break label64;
+          break label72;
         }
         i = 4;
+        continue;
+        if (!paramContext.equals("//anrassert")) {
+          break label72;
+        }
+        i = 5;
       }
     }
     Assert.assertTrue("test errlog " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), false);
@@ -75,12 +80,23 @@ public final class i
     MMProtocalJni.setClientPackVersion(-1);
     AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.pE(2);
+    WatchDogPushReceiver.qg(2);
     AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.pE(1);
+    WatchDogPushReceiver.qg(1);
     AppMethodBeat.o(20185);
     return true;
+    try
+    {
+      Thread.sleep(10000L);
+      label317:
+      AppMethodBeat.o(20185);
+      return true;
+    }
+    catch (InterruptedException paramContext)
+    {
+      break label317;
+    }
   }
 }
 

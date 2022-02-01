@@ -9,48 +9,49 @@ import android.content.res.Resources;
 import android.os.Vibrator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.xv;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.yp;
 import com.tencent.mm.plugin.offline.a.e;
 import com.tencent.mm.plugin.offline.a.s.b;
 import com.tencent.mm.plugin.offline.a.s.g;
 import com.tencent.mm.plugin.offline.k;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
-import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.ui.s.a;
 import com.tencent.mm.plugin.wallet_core.ui.s.c;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public final class c
 {
   Activity mActivity;
-  Vibrator njY;
-  a vtX;
-  com.tencent.mm.plugin.wallet_core.ui.s vtY;
-  float vtZ = 0.0F;
-  int vua = 20000;
+  Vibrator nKv;
+  a wzq;
+  com.tencent.mm.plugin.wallet_core.ui.s wzr;
+  float wzs = 0.0F;
+  int wzt = 20000;
   
   public c(Activity paramActivity, a parama)
   {
     this.mActivity = paramActivity;
-    this.vtX = parama;
+    this.wzq = parama;
   }
   
-  private void aoF(String paramString)
+  private void atF(String paramString)
   {
     AppMethodBeat.i(66391);
-    ac.i("MicroMsg.OfflineLogicMgr", "showBindNewBankcardDialog msg:".concat(String.valueOf(paramString)));
-    com.tencent.mm.ui.base.h.d(this.mActivity, paramString, "", getString(2131765660), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    ad.i("MicroMsg.OfflineLogicMgr", "showBindNewBankcardDialog msg:".concat(String.valueOf(paramString)));
+    com.tencent.mm.ui.base.h.e(this.mActivity, paramString, "", getString(2131765660), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(66385);
-        f.as(c.this.mActivity, 0);
-        ac.i("MicroMsg.OfflineLogicMgr", "do startBindBankcard");
+        f.av(c.this.mActivity, 0);
+        ad.i("MicroMsg.OfflineLogicMgr", "do startBindBankcard");
         AppMethodBeat.o(66385);
       }
     }, new DialogInterface.OnClickListener()
@@ -60,17 +61,17 @@ public final class c
     AppMethodBeat.o(66391);
   }
   
-  private void aoG(String paramString)
+  private void atG(String paramString)
   {
     AppMethodBeat.i(66392);
-    ac.i("MicroMsg.OfflineLogicMgr", "goLimitChangeUI msg:".concat(String.valueOf(paramString)));
-    com.tencent.mm.ui.base.h.d(this.mActivity, paramString, "", getString(2131765973), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    ad.i("MicroMsg.OfflineLogicMgr", "goLimitChangeUI msg:".concat(String.valueOf(paramString)));
+    com.tencent.mm.ui.base.h.e(this.mActivity, paramString, "", getString(2131765973), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(66386);
-        f.as(c.this.mActivity, 0);
-        ac.i("MicroMsg.OfflineLogicMgr", "do startBindBankcard");
+        f.av(c.this.mActivity, 0);
+        ad.i("MicroMsg.OfflineLogicMgr", "do startBindBankcard");
         AppMethodBeat.o(66386);
       }
     }, new DialogInterface.OnClickListener()
@@ -80,17 +81,17 @@ public final class c
     AppMethodBeat.o(66392);
   }
   
-  private void aoH(String paramString)
+  private void atH(String paramString)
   {
     AppMethodBeat.i(66393);
-    ac.i("MicroMsg.OfflineLogicMgr", "goChangeBankcard msg:".concat(String.valueOf(paramString)));
-    com.tencent.mm.ui.base.h.d(this.mActivity, paramString, "", getString(2131765949), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    ad.i("MicroMsg.OfflineLogicMgr", "goChangeBankcard msg:".concat(String.valueOf(paramString)));
+    com.tencent.mm.ui.base.h.e(this.mActivity, paramString, "", getString(2131765949), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(66373);
-        c.this.vtX.dmi();
-        ac.i("MicroMsg.OfflineLogicMgr", "do changeBankcard");
+        c.this.wzq.dwz();
+        ad.i("MicroMsg.OfflineLogicMgr", "do changeBankcard");
         AppMethodBeat.o(66373);
       }
     }, new DialogInterface.OnClickListener()
@@ -100,11 +101,11 @@ public final class c
     AppMethodBeat.o(66393);
   }
   
-  public static boolean dmn()
+  public static boolean dwE()
   {
     AppMethodBeat.i(66395);
-    k.dlZ();
-    if (k.dma().vtr != null)
+    k.dwq();
+    if (k.dwr().wyJ != null)
     {
       AppMethodBeat.o(66395);
       return true;
@@ -123,40 +124,40 @@ public final class c
   public final void a(n paramn, int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(66388);
-    ac.i("MicroMsg.OfflineLogicMgr", "handleErrorEvent errCode :" + paramInt + " msg:" + paramString1);
-    dmm();
+    ad.i("MicroMsg.OfflineLogicMgr", "handleErrorEvent errCode :" + paramInt + " msg:" + paramString1);
+    dwD();
     if (paramInt == 409)
     {
-      aoG(paramString1);
+      atG(paramString1);
       AppMethodBeat.o(66388);
       return;
     }
     if (paramInt == 410)
     {
-      aoF(paramString1);
+      atF(paramString1);
       AppMethodBeat.o(66388);
       return;
     }
     if (paramInt == 413)
     {
-      aoH(paramString1);
+      atH(paramString1);
       AppMethodBeat.o(66388);
       return;
     }
     if (paramInt == 411)
     {
-      if ((com.tencent.mm.plugin.wallet_core.model.s.ery().esc()) || (com.tencent.mm.plugin.wallet_core.model.s.ery().esb()))
+      if ((t.eFy().eGc()) || (t.eFy().eGb()))
       {
-        ac.i("MicroMsg.OfflineLogicMgr", "is unreg or simplereg");
+        ad.i("MicroMsg.OfflineLogicMgr", "is unreg or simplereg");
         AppMethodBeat.o(66388);
         return;
       }
-      if ((k.vso) && ((this.mActivity instanceof WalletOfflineCoinPurseUI))) {
-        ((WalletOfflineCoinPurseUI)this.mActivity).dmH();
+      if ((k.wxG) && ((this.mActivity instanceof WalletOfflineCoinPurseUI))) {
+        ((WalletOfflineCoinPurseUI)this.mActivity).dwY();
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(135L, 1L, 1L, true);
+        com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(135L, 1L, 1L, true);
         AppMethodBeat.o(66388);
         return;
         com.tencent.mm.plugin.offline.c.a.e(this.mActivity, paramString1);
@@ -182,16 +183,16 @@ public final class c
       AppMethodBeat.o(66394);
       return;
     }
-    ac.i("MicroMsg.OfflineLogicMgr", "showFreeMsg");
-    if ("1".equals(paramb.vtv)) {
-      com.tencent.mm.ui.base.h.a(this.mActivity, false, paramb.vtx, "", getString(2131765963), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    ad.i("MicroMsg.OfflineLogicMgr", "showFreeMsg");
+    if ("1".equals(paramb.wyN)) {
+      com.tencent.mm.ui.base.h.a(this.mActivity, false, paramb.wyP, "", getString(2131765963), getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(66374);
           paramAnonymousDialogInterface.dismiss();
           com.tencent.mm.plugin.offline.c.a.aw(c.this.mActivity);
-          ac.i("MicroMsg.OfflineLogicMgr", "doFreezeOffline");
+          ad.i("MicroMsg.OfflineLogicMgr", "doFreezeOffline");
           AppMethodBeat.o(66374);
         }
       }, new DialogInterface.OnClickListener()
@@ -208,13 +209,13 @@ public final class c
     AppMethodBeat.o(66394);
   }
   
-  public final void dmm()
+  public final void dwD()
   {
     AppMethodBeat.i(66390);
-    if (this.vtY != null)
+    if (this.wzr != null)
     {
-      this.vtY.dismiss();
-      this.vtY = null;
+      this.wzr.dismiss();
+      this.wzr = null;
     }
     AppMethodBeat.o(66390);
   }
@@ -231,15 +232,15 @@ public final class c
   {
     boolean bool = false;
     AppMethodBeat.i(66389);
-    ac.i("MicroMsg.OfflineLogicMgr", "errType:" + paramInt1 + "  errCode" + paramInt2 + " errMsg:" + paramString + " cgi type:" + paramn.getType());
+    ad.i("MicroMsg.OfflineLogicMgr", "errType:" + paramInt1 + "  errCode" + paramInt2 + " errMsg:" + paramString + " cgi type:" + paramn.getType());
     Object localObject;
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
       if ((paramn instanceof e))
       {
         paramString = (e)paramn;
-        localObject = paramString.vsE;
-        dmm();
-        if ((paramString.vsF != 0) || (TextUtils.isEmpty((CharSequence)localObject))) {
+        localObject = paramString.wxW;
+        dwD();
+        if ((paramString.wxX != 0) || (TextUtils.isEmpty((CharSequence)localObject))) {
           break label150;
         }
         com.tencent.mm.plugin.offline.c.a.a(this.mActivity, (String)localObject, paramn);
@@ -253,20 +254,20 @@ public final class c
       AppMethodBeat.o(66389);
       return bool;
       label150:
-      if ((paramString.vsF != 0) && (paramString.dae != 0) && (paramString.vsH == 1))
+      if ((paramString.wxX != 0) && (paramString.dlw != 0) && (paramString.wxZ == 1))
       {
-        ac.i("MicroMsg.OfflineLogicMgr", "input pwd, but respon exist error!");
-        a(paramString, paramString.vsF, paramString.vsG);
+        ad.i("MicroMsg.OfflineLogicMgr", "input pwd, but respon exist error!");
+        a(paramString, paramString.wxX, paramString.wxY);
       }
       bool = true;
       continue;
       if ((paramn instanceof e))
       {
         localObject = (e)paramn;
-        dmm();
-        if (((e)localObject).vsH == 1)
+        dwD();
+        if (((e)localObject).wxZ == 1)
         {
-          ac.i("MicroMsg.OfflineLogicMgr", "input pwd, but respon exist error!");
+          ad.i("MicroMsg.OfflineLogicMgr", "input pwd, but respon exist error!");
           a(paramn, paramInt2, paramString);
         }
         bool = true;

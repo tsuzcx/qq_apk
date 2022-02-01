@@ -4,21 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.e;
-import com.tencent.mm.av.o;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.s;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -26,7 +25,7 @@ public class SendImgProxyUI
   extends MMBaseActivity
 {
   private static boolean isRunning = false;
-  private p mcf = null;
+  private p mCn = null;
   
   private static ArrayList<String> a(ArrayList<String> paramArrayList1, int paramInt, ArrayList<String> paramArrayList2, boolean paramBoolean)
   {
@@ -38,9 +37,9 @@ public class SendImgProxyUI
       while (paramArrayList1.hasNext())
       {
         String str = (String)paramArrayList1.next();
-        if (s.aKC(str))
+        if (t.aQi(str))
         {
-          long l = i.aSp(str);
+          long l = com.tencent.mm.vfs.i.aYo(str);
           if ((!paramBoolean) && (l > paramInt)) {
             paramArrayList2.add(str);
           } else {
@@ -58,7 +57,7 @@ public class SendImgProxyUI
     AppMethodBeat.i(34894);
     if (paramArrayList.size() != paramArrayList1.size())
     {
-      ac.e("MicroMsg.SendImgProxyUI", "[insertErrMsg] WTF");
+      ad.e("MicroMsg.SendImgProxyUI", "[insertErrMsg] WTF");
       AppMethodBeat.o(34894);
       return;
     }
@@ -66,18 +65,18 @@ public class SendImgProxyUI
     while (i < paramArrayList1.size())
     {
       int j = ((Integer)paramArrayList.get(i)).intValue();
-      Object localObject = o.aFx().oR(j);
-      int k = (int)i.aSp((String)paramArrayList1.get(i));
-      ((e)localObject).setOffset(k);
-      ((e)localObject).oL(k);
-      o.aFx().a(j, (e)localObject);
-      long l = ((e)localObject).hGV;
-      ac.i("MicroMsg.SendImgProxyUI", "[insertErrMsg] msgLocalId:%s oriImgLocalId:%s", new Object[] { Long.valueOf(l), Integer.valueOf(j) });
-      localObject = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().vP(l);
-      ((bo)localObject).setStatus(5);
-      ((bo)localObject).jA(256);
-      ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().a(l, (bo)localObject);
-      ac.i("MicroMsg.SendImgProxyUI", "after update msgInfo, localId[%d] svrId[%d] talker[%s] type[%d] isSend[%d] imgPath[%s], status[%d] createTime[%d]", new Object[] { Long.valueOf(((dy)localObject).field_msgId), Long.valueOf(((dy)localObject).field_msgSvrId), ((dy)localObject).field_talker, Integer.valueOf(((bo)localObject).getType()), Integer.valueOf(((dy)localObject).field_isSend), ((dy)localObject).field_imgPath, Integer.valueOf(((dy)localObject).field_status), Long.valueOf(((dy)localObject).field_createTime) });
+      Object localObject = q.aIF().pt(j);
+      int k = (int)com.tencent.mm.vfs.i.aYo((String)paramArrayList1.get(i));
+      ((com.tencent.mm.aw.g)localObject).setOffset(k);
+      ((com.tencent.mm.aw.g)localObject).pn(k);
+      q.aIF().a(j, (com.tencent.mm.aw.g)localObject);
+      long l = ((com.tencent.mm.aw.g)localObject).hZF;
+      ad.i("MicroMsg.SendImgProxyUI", "[insertErrMsg] msgLocalId:%s oriImgLocalId:%s", new Object[] { Long.valueOf(l), Integer.valueOf(j) });
+      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(l);
+      ((bu)localObject).setStatus(5);
+      ((bu)localObject).jY(256);
+      ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().a(l, (bu)localObject);
+      ad.i("MicroMsg.SendImgProxyUI", "after update msgInfo, localId[%d] svrId[%d] talker[%s] type[%d] isSend[%d] imgPath[%s], status[%d] createTime[%d]", new Object[] { Long.valueOf(((ei)localObject).field_msgId), Long.valueOf(((ei)localObject).field_msgSvrId), ((ei)localObject).field_talker, Integer.valueOf(((bu)localObject).getType()), Integer.valueOf(((ei)localObject).field_isSend), ((ei)localObject).field_imgPath, Integer.valueOf(((ei)localObject).field_status), Long.valueOf(((ei)localObject).field_createTime) });
       i += 1;
     }
     AppMethodBeat.o(34894);
@@ -89,43 +88,43 @@ public class SendImgProxyUI
     AppMethodBeat.i(34890);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    aj.b(getWindow());
-    ac.i("MicroMsg.SendImgProxyUI", "onCreate isRunning:%b ,%d", new Object[] { Boolean.valueOf(isRunning), Integer.valueOf(hashCode()) });
+    al.b(getWindow());
+    ad.i("MicroMsg.SendImgProxyUI", "onCreate isRunning:%b ,%d", new Object[] { Boolean.valueOf(isRunning), Integer.valueOf(hashCode()) });
     if (isRunning)
     {
-      ac.w("MicroMsg.SendImgProxyUI", "duplicate instance");
+      ad.w("MicroMsg.SendImgProxyUI", "duplicate instance");
       finish();
       AppMethodBeat.o(34890);
       return;
     }
     isRunning = true;
     setContentView(2131493128);
-    this.mcf = com.tencent.mm.ui.base.h.b(this, getString(2131761075), false, null);
-    final boolean bool1 = ax.isWifi(this);
+    this.mCn = h.b(this, getString(2131761075), false, null);
+    final boolean bool1 = ay.isWifi(this);
     boolean bool2 = WXHardCoderJNI.hcSendPicMsgEnable;
     int j = WXHardCoderJNI.hcSendPicMsgDelay;
     int k = WXHardCoderJNI.hcSendPicMsgCPU;
     int m = WXHardCoderJNI.hcSendPicMsgIO;
     if (WXHardCoderJNI.hcSendPicMsgThr) {
-      i = com.tencent.mm.kernel.g.agU().eVl();
+      i = com.tencent.mm.kernel.g.ajF().fkS();
     }
     i = WXHardCoderJNI.startPerformance(bool2, j, k, m, i, WXHardCoderJNI.hcSendPicMsgTimeout, 203, WXHardCoderJNI.hcSendPicMsgAction, "MicroMsg.SendImgProxyUI");
-    az.agU().az(new Runnable()
+    ba.ajF().ay(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34889);
-        ac.i("MicroMsg.SendImgProxyUI", "test before sendMutiImage");
+        ad.i("MicroMsg.SendImgProxyUI", "test before sendMutiImage");
         SendImgProxyUI.a(SendImgProxyUI.this, SendImgProxyUI.this.getIntent());
         ArrayList localArrayList = new ArrayList();
         localArrayList.add(Integer.valueOf(-1));
-        az.agU().eVm();
-        ac.i("MicroMsg.SendImgProxyUI", "test before finish");
+        ba.ajF().fkT();
+        ad.i("MicroMsg.SendImgProxyUI", "test before finish");
         SendImgProxyUI.a(SendImgProxyUI.this).dismiss();
         SendImgProxyUI.this.setResult(-1, SendImgProxyUI.this.getIntent().putIntegerArrayListExtra("GalleryUI_ImgIdList", localArrayList));
-        SendImgProxyUI.bvu();
+        SendImgProxyUI.bzA();
         SendImgProxyUI.this.finish();
-        if (ax.isWifi(SendImgProxyUI.this) == bool1) {
+        if (ay.isWifi(SendImgProxyUI.this) == bool1) {
           WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcSendPicMsgEnable, i);
         }
         AppMethodBeat.o(34889);
@@ -137,7 +136,7 @@ public class SendImgProxyUI
   public void onDestroy()
   {
     AppMethodBeat.i(34891);
-    ac.i("MicroMsg.SendImgProxyUI", "onDestroy isRunning:%b , %d", new Object[] { Boolean.valueOf(isRunning), Integer.valueOf(hashCode()) });
+    ad.i("MicroMsg.SendImgProxyUI", "onDestroy isRunning:%b , %d", new Object[] { Boolean.valueOf(isRunning), Integer.valueOf(hashCode()) });
     super.onDestroy();
     AppMethodBeat.o(34891);
   }
@@ -145,7 +144,7 @@ public class SendImgProxyUI
   public void onResume()
   {
     AppMethodBeat.i(34892);
-    ac.i("MicroMsg.SendImgProxyUI", "onResume isRunning:%b ,%d", new Object[] { Boolean.valueOf(isRunning), Integer.valueOf(hashCode()) });
+    ad.i("MicroMsg.SendImgProxyUI", "onResume isRunning:%b ,%d", new Object[] { Boolean.valueOf(isRunning), Integer.valueOf(hashCode()) });
     super.onResume();
     AppMethodBeat.o(34892);
   }

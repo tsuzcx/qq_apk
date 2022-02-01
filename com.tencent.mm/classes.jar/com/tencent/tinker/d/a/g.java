@@ -9,31 +9,31 @@ import java.util.zip.ZipException;
 public final class g
   implements Cloneable
 {
-  String DSo;
-  long KrN = -1L;
-  int KrO = -1;
-  int KrP = -1;
-  byte[] KrQ;
-  long KrR = -1L;
-  long KrS = -1L;
+  String FxH;
+  long MhO = -1L;
+  int MhP = -1;
+  int MhQ = -1;
+  byte[] MhR;
+  long MhS = -1L;
+  long MhT = -1L;
   public long crc = -1L;
-  int gIh = -1;
+  int hbR = -1;
   public String name;
   long size = -1L;
   
   public g(g paramg)
   {
     this.name = paramg.name;
-    this.DSo = paramg.DSo;
-    this.gIh = paramg.gIh;
+    this.FxH = paramg.FxH;
+    this.hbR = paramg.hbR;
     this.size = paramg.size;
-    this.KrN = paramg.KrN;
+    this.MhO = paramg.MhO;
     this.crc = paramg.crc;
-    this.KrO = paramg.KrO;
-    this.KrP = paramg.KrP;
-    this.KrQ = paramg.KrQ;
-    this.KrR = paramg.KrR;
-    this.KrS = paramg.KrS;
+    this.MhP = paramg.MhP;
+    this.MhQ = paramg.MhQ;
+    this.MhR = paramg.MhR;
+    this.MhS = paramg.MhS;
+    this.MhT = paramg.MhT;
   }
   
   public g(String paramString)
@@ -64,37 +64,37 @@ public final class g
     if ((i & 0x800) != 0) {
       paramCharset = Charset.forName("UTF-8");
     }
-    this.KrO = (paramArrayOfByte.readShort() & 0xFFFF);
-    this.gIh = (paramArrayOfByte.readShort() & 0xFFFF);
-    this.KrP = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.MhP = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.hbR = (paramArrayOfByte.readShort() & 0xFFFF);
+    this.MhQ = (paramArrayOfByte.readShort() & 0xFFFF);
     this.crc = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
-    this.KrN = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.MhO = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     this.size = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     i = paramArrayOfByte.readShort();
     int j = paramArrayOfByte.readShort() & 0xFFFF;
     int k = paramArrayOfByte.readShort() & 0xFFFF;
     paramArrayOfByte.seek(42);
-    this.KrR = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
+    this.MhS = (paramArrayOfByte.readInt() & 0xFFFFFFFF);
     paramArrayOfByte = new byte[i & 0xFFFF];
     f.b(paramInputStream, paramArrayOfByte, 0, paramArrayOfByte.length);
-    if (cN(paramArrayOfByte)) {
+    if (cT(paramArrayOfByte)) {
       throw new ZipException("Filename contains NUL byte: " + Arrays.toString(paramArrayOfByte));
     }
     this.name = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
     if (j > 0)
     {
-      this.KrQ = new byte[j];
-      f.b(paramInputStream, this.KrQ, 0, j);
+      this.MhR = new byte[j];
+      f.b(paramInputStream, this.MhR, 0, j);
     }
     if (k > 0)
     {
       paramArrayOfByte = new byte[k];
       f.b(paramInputStream, paramArrayOfByte, 0, k);
-      this.DSo = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
+      this.FxH = new String(paramArrayOfByte, 0, paramArrayOfByte.length, paramCharset);
     }
   }
   
-  private static boolean cN(byte[] paramArrayOfByte)
+  private static boolean cT(byte[] paramArrayOfByte)
   {
     boolean bool2 = false;
     int j = paramArrayOfByte.length;
@@ -124,16 +124,16 @@ public final class g
     //   4: checkcast 2	com/tencent/tinker/d/a/g
     //   7: astore_2
     //   8: aload_0
-    //   9: getfield 50	com/tencent/tinker/d/a/g:KrQ	[B
+    //   9: getfield 50	com/tencent/tinker/d/a/g:MhR	[B
     //   12: ifnull +21 -> 33
     //   15: aload_0
-    //   16: getfield 50	com/tencent/tinker/d/a/g:KrQ	[B
+    //   16: getfield 50	com/tencent/tinker/d/a/g:MhR	[B
     //   19: invokevirtual 181	[B:clone	()Ljava/lang/Object;
     //   22: checkcast 180	[B
     //   25: astore_1
     //   26: aload_2
     //   27: aload_1
-    //   28: putfield 50	com/tencent/tinker/d/a/g:KrQ	[B
+    //   28: putfield 50	com/tencent/tinker/d/a/g:MhR	[B
     //   31: aload_2
     //   32: areturn
     //   33: aconst_null
@@ -175,7 +175,7 @@ public final class g
     if ((paramInt != 0) && (paramInt != 8)) {
       throw new IllegalArgumentException("Bad method: ".concat(String.valueOf(paramInt)));
     }
-    this.KrO = paramInt;
+    this.MhP = paramInt;
   }
   
   public final void setSize(long paramLong)
@@ -190,22 +190,22 @@ public final class g
   {
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("name:" + this.name);
-    localStringBuffer.append("\ncomment:" + this.DSo);
-    localStringBuffer.append("\ntime:" + this.gIh);
+    localStringBuffer.append("\ncomment:" + this.FxH);
+    localStringBuffer.append("\ntime:" + this.hbR);
     localStringBuffer.append("\nsize:" + this.size);
-    localStringBuffer.append("\ncompressedSize:" + this.KrN);
+    localStringBuffer.append("\ncompressedSize:" + this.MhO);
     localStringBuffer.append("\ncrc:" + this.crc);
-    localStringBuffer.append("\ncompressionMethod:" + this.KrO);
-    localStringBuffer.append("\nmodDate:" + this.KrP);
-    localStringBuffer.append("\nextra length:" + this.KrQ.length);
-    localStringBuffer.append("\nlocalHeaderRelOffset:" + this.KrR);
-    localStringBuffer.append("\ndataOffset:" + this.KrS);
+    localStringBuffer.append("\ncompressionMethod:" + this.MhP);
+    localStringBuffer.append("\nmodDate:" + this.MhQ);
+    localStringBuffer.append("\nextra length:" + this.MhR.length);
+    localStringBuffer.append("\nlocalHeaderRelOffset:" + this.MhS);
+    localStringBuffer.append("\ndataOffset:" + this.MhT);
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.d.a.g
  * JD-Core Version:    0.7.0.1
  */

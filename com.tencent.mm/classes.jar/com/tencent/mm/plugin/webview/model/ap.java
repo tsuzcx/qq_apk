@@ -1,32 +1,52 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.g.c.he;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class ap
-  extends j<ao>
+  extends he
 {
-  public static final String[] SQL_CREATE;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(79031);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ao.info, "WebviewLocalData") };
-    AppMethodBeat.o(79031);
+    AppMethodBeat.i(79029);
+    c.a locala = new c.a();
+    locala.IhA = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "recordId";
+    locala.IhC.put("recordId", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" recordId INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IhB = "recordId";
+    locala.columns[1] = "appId";
+    locala.IhC.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "domin";
+    locala.IhC.put("domin", "TEXT");
+    localStringBuilder.append(" domin TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "key";
+    locala.IhC.put("key", "TEXT");
+    localStringBuilder.append(" key TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "value";
+    locala.IhC.put("value", "TEXT");
+    localStringBuilder.append(" value TEXT");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(79029);
   }
   
-  public ap(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, ao.info, "WebviewLocalData", null);
-  }
-  
-  public static int aL(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(79030);
-    int i = (paramString1 + paramString2 + paramString3).hashCode();
-    AppMethodBeat.o(79030);
-    return i;
+    return info;
   }
 }
 

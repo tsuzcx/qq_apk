@@ -19,6 +19,8 @@ public abstract interface KEditText
   
   public abstract int getMaxLength();
   
+  public abstract EditTextRestrictType getRestrictType();
+  
   public abstract int getSelection();
   
   public abstract String getText();
@@ -52,6 +54,8 @@ public abstract interface KEditText
   public abstract void setOnTextChangedCallback(KEditTextOnTextChangedCallback paramKEditTextOnTextChangedCallback);
   
   public abstract void setOnTextEndEditingCallback(KEditTextOnTextEndEditingCallback paramKEditTextOnTextEndEditingCallback);
+  
+  public abstract void setRestrictType(EditTextRestrictType paramEditTextRestrictType);
   
   public abstract void setSelection(int paramInt);
   

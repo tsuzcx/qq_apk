@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +31,12 @@ public final class b
     this.db = parame;
   }
   
-  public final boolean acP(String paramString)
+  public final boolean agE(String paramString)
   {
     AppMethodBeat.i(73569);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
-      ac.i("MicroMsg.offline.FavOfflineStorage", "url is null!");
+      ad.i("MicroMsg.offline.FavOfflineStorage", "url is null!");
       AppMethodBeat.o(73569);
       return true;
     }
@@ -53,7 +53,7 @@ public final class b
     {
       for (;;)
       {
-        ac.e("MicroMsg.offline.FavOfflineStorage", "deleteByUrl url:%s Exception:%s %s", new Object[] { paramString, localException.getClass().getSimpleName(), localException.getMessage() });
+        ad.e("MicroMsg.offline.FavOfflineStorage", "deleteByUrl url:%s Exception:%s %s", new Object[] { paramString, localException.getClass().getSimpleName(), localException.getMessage() });
         int i = 0;
       }
       AppMethodBeat.o(73569);
@@ -61,10 +61,10 @@ public final class b
     return false;
   }
   
-  public final a acQ(String paramString)
+  public final a agF(String paramString)
   {
     AppMethodBeat.i(73570);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73570);
       return null;
@@ -99,7 +99,7 @@ public final class b
     AppMethodBeat.i(73568);
     if (parama == null)
     {
-      ac.e("MicroMsg.offline.FavOfflineStorage", "update() item is null");
+      ad.e("MicroMsg.offline.FavOfflineStorage", "update() item is null");
       AppMethodBeat.o(73568);
       return false;
     }
@@ -108,7 +108,7 @@ public final class b
     return bool;
   }
   
-  public final List<a> cqn()
+  public final List<a> cvS()
   {
     AppMethodBeat.i(73567);
     ArrayList localArrayList = new ArrayList();
@@ -128,7 +128,7 @@ public final class b
     return localArrayList;
   }
   
-  public final List<a> cqo()
+  public final List<a> cvT()
   {
     AppMethodBeat.i(73571);
     Cursor localCursor = this.db.query("FavOffline", a.info.columns, "status!=? and failNum<?", new String[] { "2", "5" }, null, null, "rowid");

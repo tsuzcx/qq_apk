@@ -7,18 +7,18 @@ import java.util.List;
 
 public final class c
 {
-  private static com.tencent.d.b.a JRA = null;
+  private static com.tencent.d.b.a LLs = null;
   
-  public static void a(Context paramContext, c.a parama)
+  public static void a(Context paramContext, a parama)
   {
     AppMethodBeat.i(138305);
-    if (JRA == null) {
-      JRA = new com.tencent.d.b.a(paramContext);
+    if (LLs == null) {
+      LLs = new com.tencent.d.b.a(paramContext);
     }
-    paramContext = JRA;
+    paramContext = LLs;
     try
     {
-      List localList = com.tencent.d.f.a.kI(paramContext.mContext);
+      List localList = com.tencent.d.f.a.kV(paramContext.mContext);
       if (localList.size() == 0)
       {
         parama.g(-10, null);
@@ -26,25 +26,25 @@ public final class c
         return;
       }
       com.tencent.d.c.b.a locala = new com.tencent.d.c.b.a();
-      locala.JSh = com.tencent.d.b.a.fCs();
-      locala.JSf = new com.tencent.d.c.b.c();
-      locala.JSf.JSI = 6;
-      locala.JSf.JSa = 1;
-      locala.JSf.requestType = 0;
-      locala.JSf.JSJ = 0;
-      locala.JSf.JSK = 0;
-      locala.JSf.JSL = null;
-      locala.JSf.JSM = 0;
-      locala.JSf.JSQ = 1;
-      locala.JSg = new ArrayList();
+      locala.LLY = com.tencent.d.b.a.fTI();
+      locala.LLW = new com.tencent.d.c.b.c();
+      locala.LLW.LMz = 6;
+      locala.LLW.LLR = 1;
+      locala.LLW.requestType = 0;
+      locala.LLW.LMA = 0;
+      locala.LLW.LMB = 0;
+      locala.LLW.LMC = null;
+      locala.LLW.LMD = 0;
+      locala.LLW.LMH = 1;
+      locala.LLX = new ArrayList();
       int i = 0;
       while (i < localList.size())
       {
         com.tencent.d.c.b.b localb = com.tencent.d.b.a.a(paramContext.mContext, (a)localList.get(i), i);
-        locala.JSg.add(localb);
+        locala.LLX.add(localb);
         i += 1;
       }
-      paramContext = paramContext.JRD.a(locala);
+      paramContext = paramContext.LLv.a(locala);
       if (paramContext == null)
       {
         parama.g(-20, null);
@@ -60,6 +60,11 @@ public final class c
     }
     parama.g(0, paramContext);
     AppMethodBeat.o(138305);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void g(int paramInt, byte[] paramArrayOfByte);
   }
 }
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
@@ -16,39 +17,39 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.ar;
 
 public class b
   extends Dialog
 {
-  private a JgA;
-  private a[] JgB;
-  private a JgC;
-  private boolean JgD;
-  private int[] JgE;
-  private BubbleLayout Jgv;
-  private View Jgw;
-  private View Jgx;
-  private int Jgy;
-  private boolean Jgz;
-  private ViewTreeObserver.OnGlobalLayoutListener ahC;
+  private BubbleLayout KXJ;
+  private View KXK;
+  private View KXL;
+  private int KXM;
+  private boolean KXN;
+  private a KXO;
+  private a[] KXP;
+  private a KXQ;
+  private boolean KXR;
+  private int[] KXS;
+  private ViewTreeObserver.OnGlobalLayoutListener ajt;
   private Activity mActivity;
   private boolean mCancelable;
+  private int mFF;
   private int mHeight;
   private int mMargin;
   private int mOffsetX;
   private int mOffsetY;
   private int mWidth;
-  private int mfe;
   
-  public b(Context paramContext)
+  public b(final Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(143532);
-    this.JgA = a.JgL;
-    this.JgB = new a[4];
-    this.JgD = false;
-    this.JgE = new int[2];
+    this.KXO = a.KXZ;
+    this.KXP = new a[4];
+    this.KXR = false;
+    this.KXS = new int[2];
     setCancelable(true);
     this.mActivity = ((Activity)paramContext);
     paramContext = getWindow();
@@ -58,31 +59,77 @@ public class b
       return;
     }
     paramContext = paramContext.getAttributes();
-    int i = c.eB(getContext())[0];
-    this.mfe = ap.ji(getContext());
-    getWindow().getDecorView().setOnTouchListener(new b.1(this, paramContext, i));
+    final int i = c.eB(getContext())[0];
+    this.mFF = ar.jG(getContext());
+    getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(143525);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/happybubble/BubbleDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        if (b.a(b.this))
+        {
+          if (paramContext.x < 0) {}
+          for (float f1 = 0.0F;; f1 = paramContext.x)
+          {
+            float f2 = f1;
+            if (paramAnonymousView.getWidth() + f1 > i) {
+              f2 = i - paramAnonymousView.getWidth();
+            }
+            paramAnonymousMotionEvent.setLocation(f2 + paramAnonymousMotionEvent.getX(), paramContext.y + paramAnonymousMotionEvent.getY());
+            b.b(b.this).getWindow().getDecorView().dispatchTouchEvent(paramAnonymousMotionEvent);
+            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/happybubble/BubbleDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+            AppMethodBeat.o(143525);
+            return true;
+          }
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/widget/happybubble/BubbleDialog$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(143525);
+        return false;
+      }
+    });
     AppMethodBeat.o(143532);
   }
   
-  private void fvA()
+  private boolean fMn()
+  {
+    a[] arrayOfa = this.KXP;
+    int m = arrayOfa.length;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
+    {
+      k = j;
+      if (arrayOfa[i] != null) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    return j > 0;
+  }
+  
+  private void fMo()
   {
     AppMethodBeat.i(143535);
-    if ((this.Jgx == null) || ((this.JgC == null) && (!fvz())))
+    if ((this.KXL == null) || ((this.KXQ == null) && (!fMn())))
     {
       AppMethodBeat.o(143535);
       return;
     }
     Object localObject = new int[4];
-    localObject[0] = this.JgE[0];
-    localObject[1] = this.JgE[1];
-    localObject[2] = (c.eB(getContext())[0] - this.JgE[0] - this.Jgx.getWidth());
-    localObject[3] = (c.eB(getContext())[1] - this.JgE[1] - this.Jgx.getHeight() - this.Jgv.getLookLength() - com.tencent.mm.cc.a.fromDPToPix(this.Jgx.getContext(), 30));
+    localObject[0] = this.KXS[0];
+    localObject[1] = this.KXS[1];
+    localObject[2] = (c.eB(getContext())[0] - this.KXS[0] - this.KXL.getWidth());
+    localObject[3] = (c.eB(getContext())[1] - this.KXS[1] - this.KXL.getHeight() - this.KXJ.getLookLength() - com.tencent.mm.cc.a.fromDPToPix(this.KXL.getContext(), 30));
     int j;
     int i;
-    if (fvz())
+    if (fMn())
     {
-      this.Jgw.measure(0, 0);
-      a[] arrayOfa = this.JgB;
+      this.KXK.measure(0, 0);
+      a[] arrayOfa = this.KXP;
       j = arrayOfa.length;
       i = 0;
       if (i < j)
@@ -93,7 +140,7 @@ public class b
           AppMethodBeat.o(143535);
           return;
         }
-        switch (4.JgI[locala.ordinal()])
+        switch (4.KXW[locala.ordinal()])
         {
         }
         do
@@ -106,29 +153,29 @@ public class b
               {
                 i += 1;
                 break;
-              } while (localObject[0] <= this.Jgw.getMeasuredWidth());
-              this.JgA = a.JgK;
+              } while (localObject[0] <= this.KXK.getMeasuredWidth());
+              this.KXO = a.KXY;
               AppMethodBeat.o(143535);
               return;
-            } while (localObject[1] <= this.Jgw.getMeasuredHeight());
-            this.JgA = a.JgL;
+            } while (localObject[1] <= this.KXK.getMeasuredHeight());
+            this.KXO = a.KXZ;
             AppMethodBeat.o(143535);
             return;
-          } while (localObject[2] <= this.Jgw.getMeasuredWidth());
-          this.JgA = a.JgM;
+          } while (localObject[2] <= this.KXK.getMeasuredWidth());
+          this.KXO = a.KYa;
           AppMethodBeat.o(143535);
           return;
-        } while (localObject[3] <= this.Jgw.getMeasuredHeight());
-        this.JgA = a.JgN;
+        } while (localObject[3] <= this.KXK.getMeasuredHeight());
+        this.KXO = a.KYb;
         AppMethodBeat.o(143535);
         return;
       }
-      this.JgA = this.JgB[0];
+      this.KXO = this.KXP[0];
       AppMethodBeat.o(143535);
       return;
     }
-    if (this.JgC != null) {}
-    switch (4.JgJ[this.JgC.ordinal()])
+    if (this.KXQ != null) {}
+    switch (4.KXX[this.KXQ.ordinal()])
     {
     case 1: 
     default: 
@@ -150,70 +197,70 @@ public class b
       j += 1;
       break;
       if (localObject[1] > localObject[3]) {}
-      for (localObject = a.JgL;; localObject = a.JgN)
+      for (localObject = a.KXZ;; localObject = a.KYb)
       {
-        this.JgA = ((a)localObject);
+        this.KXO = ((a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (localObject[0] > localObject[2]) {}
-      for (localObject = a.JgK;; localObject = a.JgM)
+      for (localObject = a.KXY;; localObject = a.KYa)
       {
-        this.JgA = ((a)localObject);
+        this.KXO = ((a)localObject);
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[0])
       {
-        this.JgA = a.JgK;
+        this.KXO = a.KXY;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[1])
       {
-        this.JgA = a.JgL;
+        this.KXO = a.KXZ;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[2])
       {
-        this.JgA = a.JgM;
+        this.KXO = a.KYa;
         AppMethodBeat.o(143535);
         return;
       }
       if (i == localObject[3]) {
-        this.JgA = a.JgN;
+        this.KXO = a.KYb;
       }
       AppMethodBeat.o(143535);
       return;
     }
   }
   
-  private void fvB()
+  private void fMp()
   {
     AppMethodBeat.i(143536);
-    switch (4.JgI[this.JgA.ordinal()])
+    switch (4.KXW[this.KXO.ordinal()])
     {
     }
     for (;;)
     {
-      this.Jgv.fvE();
+      this.KXJ.fMs();
       AppMethodBeat.o(143536);
       return;
-      this.Jgv.setLook(BubbleLayout.a.Jhf);
+      this.KXJ.setLook(BubbleLayout.a.KYt);
       continue;
-      this.Jgv.setLook(BubbleLayout.a.Jhg);
+      this.KXJ.setLook(BubbleLayout.a.KYu);
       continue;
-      this.Jgv.setLook(BubbleLayout.a.Jhd);
+      this.KXJ.setLook(BubbleLayout.a.KYr);
       continue;
-      this.Jgv.setLook(BubbleLayout.a.Jhe);
+      this.KXJ.setLook(BubbleLayout.a.KYs);
     }
   }
   
-  private void fvC()
+  private void fMq()
   {
     AppMethodBeat.i(143538);
-    if (this.Jgx == null)
+    if (this.KXL == null)
     {
       AppMethodBeat.o(143538);
       return;
@@ -235,151 +282,134 @@ public class b
     FrameLayout.LayoutParams localLayoutParams1;
     if (this.mMargin != 0)
     {
-      localLayoutParams1 = (FrameLayout.LayoutParams)this.Jgv.getLayoutParams();
-      if ((this.JgA == a.JgL) || (this.JgA == a.JgN))
+      localLayoutParams1 = (FrameLayout.LayoutParams)this.KXJ.getLayoutParams();
+      if ((this.KXO == a.KXZ) || (this.KXO == a.KYb))
       {
         localLayoutParams1.leftMargin = this.mMargin;
         localLayoutParams1.rightMargin = this.mMargin;
-        this.Jgv.setLayoutParams(localLayoutParams1);
+        this.KXJ.setLayoutParams(localLayoutParams1);
       }
     }
     else
     {
-      switch (4.JgI[this.JgA.ordinal()])
+      switch (4.KXW[this.KXO.ordinal()])
       {
       }
     }
     for (;;)
     {
-      this.Jgv.invalidate();
+      this.KXJ.invalidate();
       localWindow.setAttributes(localLayoutParams);
       AppMethodBeat.o(143538);
       return;
       localLayoutParams1.topMargin = this.mMargin;
       localLayoutParams1.bottomMargin = this.mMargin;
       break;
-      localLayoutParams.x = (this.JgE[0] + this.Jgx.getWidth() / 2 - this.Jgv.getWidth() / 2 + this.mOffsetX);
+      localLayoutParams.x = (this.KXS[0] + this.KXL.getWidth() / 2 - this.KXJ.getWidth() / 2 + this.mOffsetX);
       if ((this.mMargin != 0) && (this.mWidth == -1)) {
-        this.Jgv.setLookPosition(this.JgE[0] - this.mMargin + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
+        this.KXJ.setLookPosition(this.KXS[0] - this.mMargin + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
       }
       for (;;)
       {
-        if (this.JgA != a.JgN) {
+        if (this.KXO != a.KYb) {
           break label519;
         }
-        if (this.Jgy != 0) {
-          this.mOffsetY = this.Jgy;
+        if (this.KXM != 0) {
+          this.mOffsetY = this.KXM;
         }
-        localLayoutParams.y = (this.JgE[1] + this.Jgx.getHeight() + this.mOffsetY - this.mfe);
+        localLayoutParams.y = (this.KXS[1] + this.KXL.getHeight() + this.mOffsetY - this.mFF);
         break;
         if (localLayoutParams.x <= 0) {
-          this.Jgv.setLookPosition(this.JgE[0] + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
-        } else if (localLayoutParams.x + this.Jgv.getWidth() > c.eB(getContext())[0]) {
-          this.Jgv.setLookPosition(this.JgE[0] - (c.eB(getContext())[0] - this.Jgv.getWidth()) + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
+          this.KXJ.setLookPosition(this.KXS[0] + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
+        } else if (localLayoutParams.x + this.KXJ.getWidth() > c.eB(getContext())[0]) {
+          this.KXJ.setLookPosition(this.KXS[0] - (c.eB(getContext())[0] - this.KXJ.getWidth()) + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
         } else {
-          this.Jgv.setLookPosition(this.JgE[0] - localLayoutParams.x + this.Jgx.getWidth() / 2 - this.Jgv.getLookWidth() / 2);
+          this.KXJ.setLookPosition(this.KXS[0] - localLayoutParams.x + this.KXL.getWidth() / 2 - this.KXJ.getLookWidth() / 2);
         }
       }
       label519:
-      if (this.Jgy != 0) {
-        this.mOffsetY = (-this.Jgy);
+      if (this.KXM != 0) {
+        this.mOffsetY = (-this.KXM);
       }
-      localLayoutParams.y = (this.JgE[1] - this.Jgv.getHeight() + this.mOffsetY - this.mfe);
+      localLayoutParams.y = (this.KXS[1] - this.KXJ.getHeight() + this.mOffsetY - this.mFF);
       continue;
-      localLayoutParams.y = (this.JgE[1] + this.mOffsetY + this.Jgx.getHeight() / 2 - this.Jgv.getHeight() / 2 - this.mfe);
+      localLayoutParams.y = (this.KXS[1] + this.mOffsetY + this.KXL.getHeight() / 2 - this.KXJ.getHeight() / 2 - this.mFF);
       if ((this.mMargin != 0) && (this.mHeight == -1)) {
-        this.Jgv.setLookPosition(this.JgE[1] - this.mMargin + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2 - this.mfe);
+        this.KXJ.setLookPosition(this.KXS[1] - this.mMargin + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2 - this.mFF);
       }
       for (;;)
       {
-        if (this.JgA != a.JgM) {
+        if (this.KXO != a.KYa) {
           break label887;
         }
-        if (this.Jgy != 0) {
-          this.mOffsetX = this.Jgy;
+        if (this.KXM != 0) {
+          this.mOffsetX = this.KXM;
         }
-        localLayoutParams.x = (this.JgE[0] + this.Jgx.getWidth() + this.mOffsetX);
+        localLayoutParams.x = (this.KXS[0] + this.KXL.getWidth() + this.mOffsetX);
         break;
         if (localLayoutParams.y <= 0) {
-          this.Jgv.setLookPosition(this.JgE[1] + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2 - this.mfe);
-        } else if (localLayoutParams.y + this.Jgv.getHeight() > c.eB(getContext())[1]) {
-          this.Jgv.setLookPosition(this.JgE[1] - (c.eB(getContext())[1] - this.Jgv.getHeight()) + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2);
+          this.KXJ.setLookPosition(this.KXS[1] + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2 - this.mFF);
+        } else if (localLayoutParams.y + this.KXJ.getHeight() > c.eB(getContext())[1]) {
+          this.KXJ.setLookPosition(this.KXS[1] - (c.eB(getContext())[1] - this.KXJ.getHeight()) + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2);
         } else {
-          this.Jgv.setLookPosition(this.JgE[1] - localLayoutParams.y + this.Jgx.getHeight() / 2 - this.Jgv.getLookWidth() / 2 - this.mfe);
+          this.KXJ.setLookPosition(this.KXS[1] - localLayoutParams.y + this.KXL.getHeight() / 2 - this.KXJ.getLookWidth() / 2 - this.mFF);
         }
       }
       label887:
-      if (this.Jgy != 0) {
-        this.mOffsetX = (-this.Jgy);
+      if (this.KXM != 0) {
+        this.mOffsetX = (-this.KXM);
       }
-      localLayoutParams.x = (this.JgE[0] - this.Jgv.getWidth() + this.mOffsetX);
+      localLayoutParams.x = (this.KXS[0] - this.KXJ.getWidth() + this.mOffsetX);
     }
-  }
-  
-  private boolean fvz()
-  {
-    a[] arrayOfa = this.JgB;
-    int m = arrayOfa.length;
-    int i = 0;
-    int k;
-    for (int j = 0; i < m; j = k)
-    {
-      k = j;
-      if (arrayOfa[i] != null) {
-        k = j + 1;
-      }
-      i += 1;
-    }
-    return j > 0;
   }
   
   public final <T extends b> T a(BubbleLayout paramBubbleLayout)
   {
-    this.Jgv = paramBubbleLayout;
+    this.KXJ = paramBubbleLayout;
     return this;
   }
   
   public final <T extends b> T a(a... paramVarArgs)
   {
-    this.JgB = paramVarArgs;
+    this.KXP = paramVarArgs;
     return this;
   }
   
   public void dismiss()
   {
     AppMethodBeat.i(143537);
-    if (this.Jgz)
+    if (this.KXN)
     {
       View localView = getCurrentFocus();
       if ((localView instanceof TextView)) {
         ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(localView.getWindowToken(), 0);
       }
     }
-    if ((this.Jgv != null) && (Build.VERSION.SDK_INT >= 16)) {
-      this.Jgv.getViewTreeObserver().removeOnGlobalLayoutListener(this.ahC);
+    if ((this.KXJ != null) && (Build.VERSION.SDK_INT >= 16)) {
+      this.KXJ.getViewTreeObserver().removeOnGlobalLayoutListener(this.ajt);
     }
     super.dismiss();
     AppMethodBeat.o(143537);
   }
   
-  public final <T extends b> T gL(View paramView)
+  public final <T extends b> T hc(View paramView)
   {
-    AppMethodBeat.i(197235);
-    this.Jgx = paramView;
-    this.Jgx.getLocationOnScreen(this.JgE);
-    if (this.ahC != null)
+    AppMethodBeat.i(186543);
+    this.KXL = paramView;
+    this.KXL.getLocationOnScreen(this.KXS);
+    if (this.ajt != null)
     {
-      fvA();
-      fvB();
-      fvC();
+      fMo();
+      fMp();
+      fMq();
     }
-    AppMethodBeat.o(197235);
+    AppMethodBeat.o(186543);
     return this;
   }
   
-  public final <T extends b> T gM(View paramView)
+  public final <T extends b> T hd(View paramView)
   {
-    this.Jgw = paramView;
+    this.KXK = paramView;
     return this;
   }
   
@@ -387,48 +417,48 @@ public class b
   {
     AppMethodBeat.i(143534);
     super.onCreate(paramBundle);
-    if (this.Jgv == null) {
-      this.Jgv = new BubbleLayout(getContext());
+    if (this.KXJ == null) {
+      this.KXJ = new BubbleLayout(getContext());
     }
-    if (this.Jgw != null) {
-      this.Jgv.addView(this.Jgw);
+    if (this.KXK != null) {
+      this.KXJ.addView(this.KXK);
     }
-    setContentView(this.Jgv);
+    setContentView(this.KXJ);
     paramBundle = getWindow();
     if (paramBundle == null)
     {
       AppMethodBeat.o(143534);
       return;
     }
-    if (this.Jgz) {
+    if (this.KXN) {
       paramBundle.setSoftInputMode(18);
     }
     paramBundle.setLayout(-2, -2);
-    fvA();
-    fvB();
-    this.ahC = new ViewTreeObserver.OnGlobalLayoutListener()
+    fMo();
+    fMp();
+    this.ajt = new ViewTreeObserver.OnGlobalLayoutListener()
     {
-      int mGv;
-      int mGw;
+      int ngT;
+      int ngU;
       
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(143526);
-        if ((this.mGv == b.c(b.this).getWidth()) && (this.mGw == b.c(b.this).getHeight()))
+        if ((this.ngT == b.c(b.this).getWidth()) && (this.ngU == b.c(b.this).getHeight()))
         {
           AppMethodBeat.o(143526);
           return;
         }
         b.d(b.this);
-        this.mGv = b.c(b.this).getWidth();
-        this.mGw = b.c(b.this).getHeight();
+        this.ngT = b.c(b.this).getWidth();
+        this.ngU = b.c(b.this).getHeight();
         AppMethodBeat.o(143526);
       }
     };
-    this.Jgv.getViewTreeObserver().addOnGlobalLayoutListener(this.ahC);
-    this.Jgv.setOnClickEdgeListener(new BubbleLayout.b()
+    this.KXJ.getViewTreeObserver().addOnGlobalLayoutListener(this.ajt);
+    this.KXJ.setOnClickEdgeListener(new BubbleLayout.b()
     {
-      public final void fvD()
+      public final void fMr()
       {
         AppMethodBeat.i(143527);
         if (b.e(b.this)) {
@@ -443,7 +473,7 @@ public class b
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(143533);
-    if ((this.JgD) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
+    if ((this.KXR) && (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       dismiss();
       this.mActivity.onBackPressed();
@@ -495,11 +525,11 @@ public class b
     static
     {
       AppMethodBeat.i(143531);
-      JgK = new a("LEFT", 0);
-      JgL = new a("TOP", 1);
-      JgM = new a("RIGHT", 2);
-      JgN = new a("BOTTOM", 3);
-      JgO = new a[] { JgK, JgL, JgM, JgN };
+      KXY = new a("LEFT", 0);
+      KXZ = new a("TOP", 1);
+      KYa = new a("RIGHT", 2);
+      KYb = new a("BOTTOM", 3);
+      KYc = new a[] { KXY, KXZ, KYa, KYb };
       AppMethodBeat.o(143531);
     }
     
@@ -508,7 +538,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.happybubble.b
  * JD-Core Version:    0.7.0.1
  */

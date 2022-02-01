@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(136672);
-    mHm = new f("SCREEN", 0);
-    mHn = new f("VIEW", 1);
-    mHo = new f[] { mHm, mHn };
+    nhK = new f("SCREEN", 0);
+    nhL = new f("VIEW", 1);
+    nhM = new f[] { nhK, nhL };
     AppMethodBeat.o(136672);
   }
   
@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.f
  * JD-Core Version:    0.7.0.1
  */

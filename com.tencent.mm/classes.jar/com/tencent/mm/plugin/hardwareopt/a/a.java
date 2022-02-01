@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.hardwareopt.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hardwareopt.c.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.vending.g.c;
 import com.tencent.mm.vending.g.d;
 import com.tencent.mm.vending.g.d.a;
@@ -13,15 +13,15 @@ import com.tencent.mm.vending.g.e;
 public final class a
   implements com.tencent.mm.plugin.hardwareopt.a.a.a
 {
-  public final void mX(boolean paramBoolean)
+  public final void nr(boolean paramBoolean)
   {
     AppMethodBeat.i(55554);
-    new e().G(new Object[] { ai.getContext() }).e(new com.tencent.mm.plugin.hardwareopt.c.a()).d(new b(paramBoolean)).a(new d.a()
+    new e().H(new Object[] { aj.getContext() }).e(new com.tencent.mm.plugin.hardwareopt.c.a()).d(new b(paramBoolean)).a(new d.a()
     {
-      public final void cc(Object paramAnonymousObject)
+      public final void ce(Object paramAnonymousObject)
       {
         AppMethodBeat.i(55553);
-        ac.w("MicroMsg.HardwareProvider", "hy: on interrupt.");
+        ad.w("MicroMsg.HardwareProvider", "hy: on interrupt.");
         AppMethodBeat.o(55553);
       }
     }).a(new d.b() {});
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.a.a
  * JD-Core Version:    0.7.0.1
  */

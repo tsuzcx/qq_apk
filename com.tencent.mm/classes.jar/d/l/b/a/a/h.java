@@ -1,32 +1,34 @@
 package d.l.b.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l.b.a.af;
+import d.g.b.p;
+import d.l.b.a.ae;
 import d.l.b.a.b.b.ah;
 import d.l.b.a.b.b.ak;
 import d.l.b.a.b.b.av;
 import d.l.b.a.b.b.ax;
 import d.l.b.a.b.b.b;
+import d.l.b.a.b.b.k;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.at;
-import d.l.b.a.x;
+import d.l.b.a.w;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Iterator;
 
-@d.l(fNY={1, 1, 15}, fNZ={""}, fOa={"expectedReceiverType", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableMemberDescriptor;", "getExpectedReceiverType", "(Lorg/jetbrains/kotlin/descriptors/CallableMemberDescriptor;)Lorg/jetbrains/kotlin/types/KotlinType;", "coerceToExpectedReceiverType", "", "descriptor", "createInlineClassAwareCallerIfNeeded", "Lkotlin/reflect/jvm/internal/calls/Caller;", "M", "Ljava/lang/reflect/Member;", "isDefault", "", "getBoxMethod", "Ljava/lang/reflect/Method;", "Ljava/lang/Class;", "getUnboxMethod", "hasInlineClassReceiver", "toInlineClass", "Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;", "kotlin-reflection"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"expectedReceiverType", "Lkotlin/reflect/jvm/internal/impl/types/KotlinType;", "Lkotlin/reflect/jvm/internal/impl/descriptors/CallableMemberDescriptor;", "getExpectedReceiverType", "(Lorg/jetbrains/kotlin/descriptors/CallableMemberDescriptor;)Lorg/jetbrains/kotlin/types/KotlinType;", "coerceToExpectedReceiverType", "", "descriptor", "createInlineClassAwareCallerIfNeeded", "Lkotlin/reflect/jvm/internal/calls/Caller;", "M", "Ljava/lang/reflect/Member;", "isDefault", "", "getBoxMethod", "Ljava/lang/reflect/Method;", "Ljava/lang/Class;", "getUnboxMethod", "hasInlineClassReceiver", "toInlineClass", "Lkotlin/reflect/jvm/internal/impl/descriptors/DeclarationDescriptor;", "kotlin-reflection"})
 public final class h
 {
   public static final <M extends Member> d<M> a(d<? extends M> paramd, b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(56632);
-    d.g.b.k.h(paramd, "$this$createInlineClassAwareCallerIfNeeded");
-    d.g.b.k.h(paramb, "descriptor");
+    p.h(paramd, "$this$createInlineClassAwareCallerIfNeeded");
+    p.h(paramb, "descriptor");
     if (!d.l.b.a.b.j.e.f((d.l.b.a.b.b.a)paramb))
     {
-      Object localObject1 = paramb.fQU();
-      d.g.b.k.g(localObject1, "descriptor.valueParameters");
+      Object localObject1 = paramb.gis();
+      p.g(localObject1, "descriptor.valueParameters");
       localObject1 = (Iterable)localObject1;
       if (((localObject1 instanceof Collection)) && (((Collection)localObject1).isEmpty())) {
         break label220;
@@ -37,15 +39,15 @@ public final class h
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = (av)((Iterator)localObject1).next();
-          d.g.b.k.g(localObject2, "it");
-          localObject2 = ((av)localObject2).fRV();
-          d.g.b.k.g(localObject2, "it.type");
+          p.g(localObject2, "it");
+          localObject2 = ((av)localObject2).gju();
+          p.g(localObject2, "it.type");
           if (d.l.b.a.b.j.e.ab((ab)localObject2))
           {
             i = 1;
             if (i == 0)
             {
-              localObject1 = paramb.fQS();
+              localObject1 = paramb.giq();
               if ((localObject1 == null) || (d.l.b.a.b.j.e.ab((ab)localObject1) != true))
               {
                 if ((paramd instanceof c)) {
@@ -91,13 +93,13 @@ public final class h
   {
     AppMethodBeat.i(56637);
     Class localClass1;
-    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).fQf()))
+    if (((paraml instanceof d.l.b.a.b.b.e)) && (((d.l.b.a.b.b.e)paraml).ghD()))
     {
-      Class localClass2 = af.a((d.l.b.a.b.b.e)paraml);
+      Class localClass2 = ae.a((d.l.b.a.b.b.e)paraml);
       localClass1 = localClass2;
       if (localClass2 == null)
       {
-        paraml = (Throwable)new x("Class object for the class " + ((d.l.b.a.b.b.e)paraml).fRf() + " cannot be found (classId=" + d.l.b.a.b.j.d.a.c((d.l.b.a.b.b.h)paraml) + ')');
+        paraml = (Throwable)new w("Class object for the class " + ((d.l.b.a.b.b.e)paraml).giD() + " cannot be found (classId=" + d.l.b.a.b.j.d.a.c((d.l.b.a.b.b.h)paraml) + ')');
         AppMethodBeat.o(56637);
         throw paraml;
       }
@@ -113,7 +115,7 @@ public final class h
   public static final Object a(Object paramObject, b paramb)
   {
     AppMethodBeat.i(56639);
-    d.g.b.k.h(paramb, "descriptor");
+    p.h(paramb, "descriptor");
     if (((paramb instanceof ah)) && (d.l.b.a.b.j.e.a((ax)paramb)))
     {
       AppMethodBeat.o(56639);
@@ -142,18 +144,18 @@ public final class h
   public static final Method a(Class<?> paramClass, b paramb)
   {
     AppMethodBeat.i(56634);
-    d.g.b.k.h(paramClass, "$this$getUnboxMethod");
-    d.g.b.k.h(paramb, "descriptor");
+    p.h(paramClass, "$this$getUnboxMethod");
+    p.h(paramb, "descriptor");
     try
     {
       Method localMethod = paramClass.getDeclaredMethod("unbox-impl", new Class[0]);
-      d.g.b.k.g(localMethod, "getDeclaredMethod(\"unbox…FOR_INLINE_CLASS_MEMBERS)");
+      p.g(localMethod, "getDeclaredMethod(\"unbox…FOR_INLINE_CLASS_MEMBERS)");
       AppMethodBeat.o(56634);
       return localMethod;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      paramClass = (Throwable)new x("No unbox method found in inline class: " + paramClass + " (calling " + paramb + ')');
+      paramClass = (Throwable)new w("No unbox method found in inline class: " + paramClass + " (calling " + paramb + ')');
       AppMethodBeat.o(56634);
       throw paramClass;
     }
@@ -162,18 +164,18 @@ public final class h
   public static final Method b(Class<?> paramClass, b paramb)
   {
     AppMethodBeat.i(56635);
-    d.g.b.k.h(paramClass, "$this$getBoxMethod");
-    d.g.b.k.h(paramb, "descriptor");
+    p.h(paramClass, "$this$getBoxMethod");
+    p.h(paramb, "descriptor");
     try
     {
       Method localMethod = paramClass.getDeclaredMethod("box-impl", new Class[] { a(paramClass, paramb).getReturnType() });
-      d.g.b.k.g(localMethod, "getDeclaredMethod(\"box\" …d(descriptor).returnType)");
+      p.g(localMethod, "getDeclaredMethod(\"box\" …d(descriptor).returnType)");
       AppMethodBeat.o(56635);
       return localMethod;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      paramClass = (Throwable)new x("No box method found in inline class: " + paramClass + " (calling " + paramb + ')');
+      paramClass = (Throwable)new w("No box method found in inline class: " + paramClass + " (calling " + paramb + ')');
       AppMethodBeat.o(56635);
       throw paramClass;
     }
@@ -182,11 +184,11 @@ public final class h
   private static final ab c(b paramb)
   {
     AppMethodBeat.i(56638);
-    Object localObject = paramb.fQP();
-    ak localak = paramb.fQQ();
+    Object localObject = paramb.gin();
+    ak localak = paramb.gio();
     if (localObject != null)
     {
-      paramb = ((ak)localObject).fRV();
+      paramb = ((ak)localObject).gju();
       AppMethodBeat.o(56638);
       return paramb;
     }
@@ -195,20 +197,20 @@ public final class h
       AppMethodBeat.o(56638);
       return null;
     }
-    if ((paramb instanceof d.l.b.a.b.b.k))
+    if ((paramb instanceof k))
     {
-      paramb = localak.fRV();
+      paramb = localak.gju();
       AppMethodBeat.o(56638);
       return paramb;
     }
-    localObject = paramb.fPU();
+    localObject = paramb.ghs();
     paramb = (b)localObject;
     if (!(localObject instanceof d.l.b.a.b.b.e)) {
       paramb = null;
     }
     paramb = (d.l.b.a.b.b.e)paramb;
     if (paramb != null) {}
-    for (paramb = paramb.fRe();; paramb = null)
+    for (paramb = paramb.giC();; paramb = null)
     {
       paramb = (ab)paramb;
       AppMethodBeat.o(56638);
@@ -219,15 +221,15 @@ public final class h
   public static final Class<?> c(ab paramab)
   {
     AppMethodBeat.i(56636);
-    d.g.b.k.h(paramab, "$this$toInlineClass");
-    paramab = a((d.l.b.a.b.b.l)paramab.gbz().fQq());
+    p.h(paramab, "$this$toInlineClass");
+    paramab = a((d.l.b.a.b.b.l)paramab.gsZ().ghO());
     AppMethodBeat.o(56636);
     return paramab;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.a.h
  * JD-Core Version:    0.7.0.1
  */

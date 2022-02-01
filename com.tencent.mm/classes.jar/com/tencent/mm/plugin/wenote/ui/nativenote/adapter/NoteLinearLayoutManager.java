@@ -8,21 +8,21 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class NoteLinearLayoutManager
   extends LinearLayoutManager
 {
-  private final int CYy;
-  public int oOD;
-  public boolean oOE;
+  private final int ECu;
+  public int psl;
+  public boolean psm;
   
   public NoteLinearLayoutManager()
   {
     AppMethodBeat.i(30837);
-    this.CYy = i.iw(ai.getContext());
-    this.oOD = -1;
-    this.oOE = false;
+    this.ECu = i.iG(aj.getContext());
+    this.psl = -1;
+    this.psm = false;
     AppMethodBeat.o(30837);
   }
   
@@ -30,9 +30,9 @@ public class NoteLinearLayoutManager
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
     AppMethodBeat.i(30838);
-    this.CYy = i.iw(ai.getContext());
-    this.oOD = -1;
-    this.oOE = false;
+    this.ECu = i.iG(aj.getContext());
+    this.psl = -1;
+    this.psm = false;
     AppMethodBeat.o(30838);
   }
   
@@ -40,7 +40,7 @@ public class NoteLinearLayoutManager
   {
     int j = 1;
     AppMethodBeat.i(30839);
-    if (!this.oOE)
+    if (!this.psm)
     {
       paramInt = super.b(paramInt, paramo, paramt);
       AppMethodBeat.o(30839);
@@ -48,20 +48,20 @@ public class NoteLinearLayoutManager
     }
     int i;
     if (paramInt < 0) {
-      if (k.aU(49.0F) <= Math.abs(paramInt)) {
+      if (k.aX(49.0F) <= Math.abs(paramInt)) {
         i = 1;
       }
     }
     for (;;)
     {
       if (paramInt > 0) {
-        if (this.CYy + k.aU(49.0F) < paramInt) {
+        if (this.ECu + k.aX(49.0F) < paramInt) {
           i = j;
         }
       }
       for (;;)
       {
-        if ((i != 0) && (this.oOE))
+        if ((i != 0) && (this.psm))
         {
           AppMethodBeat.o(30839);
           return 0;
@@ -88,8 +88,8 @@ public class NoteLinearLayoutManager
   
   public final int c(RecyclerView.t paramt)
   {
-    if (this.oOD > 0) {
-      return this.oOD;
+    if (this.psl > 0) {
+      return this.psl;
     }
     return 900;
   }
@@ -111,7 +111,7 @@ public class NoteLinearLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.adapter.NoteLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

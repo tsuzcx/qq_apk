@@ -8,18 +8,18 @@ import com.tencent.mm.plugin.appbrand.z.g;
 public final class i
   extends b
 {
-  public static final i jzZ;
+  public static final i jTU;
   
   static
   {
     AppMethodBeat.i(145332);
-    jzZ = new i();
+    jTU = new i();
     AppMethodBeat.o(145332);
   }
   
-  public static i aZY()
+  public static i bdx()
   {
-    return jzZ;
+    return jTU;
   }
   
   public final void a(a parama)
@@ -29,18 +29,18 @@ public final class i
     parama.release();
     parama.setStyle(Paint.Style.STROKE);
     parama.setAntiAlias(true);
-    parama.setStrokeWidth(g.ve(1));
+    parama.setStrokeWidth(g.vJ(1));
     super.a(parama);
     AppMethodBeat.o(145330);
   }
   
-  public final a aZR()
+  public final a bdq()
   {
     AppMethodBeat.i(145331);
     a locala = new a();
     locala.setStyle(Paint.Style.STROKE);
     locala.setAntiAlias(true);
-    locala.setStrokeWidth(g.ve(1));
+    locala.setStrokeWidth(g.vJ(1));
     AppMethodBeat.o(145331);
     return locala;
   }

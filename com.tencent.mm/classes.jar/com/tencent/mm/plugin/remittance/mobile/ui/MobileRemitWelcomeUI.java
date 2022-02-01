@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.br.d;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import org.xwalk.core.Log;
 
 public class MobileRemitWelcomeUI
@@ -40,10 +42,14 @@ public class MobileRemitWelcomeUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(67754);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitWelcomeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         Log.i("MicroMsg.mobileRemit.MobileRemitWelcomeUI", "goto MobileRemitNumberInputUI");
-        g.agR().agA().set(ah.a.GTC, Boolean.FALSE);
+        g.ajC().ajl().set(al.a.IGh, Boolean.FALSE);
         d.b(MobileRemitWelcomeUI.this.getContext(), "remittance", ".mobile.ui.MobileRemitNumberInputUI", MobileRemitWelcomeUI.this.getIntent());
         MobileRemitWelcomeUI.this.finish();
+        a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitWelcomeUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(67754);
       }
     });

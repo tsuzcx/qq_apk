@@ -4,8 +4,8 @@ import java.io.PrintWriter;
 
 public final class p
 {
-  private static final Object Ng = new Object();
-  private static char[] Nh = new char[24];
+  private static final Object OX = new Object();
+  private static char[] OY = new char[24];
   
   private static int a(char[] paramArrayOfChar, int paramInt1, char paramChar, int paramInt2, boolean paramBoolean)
   {
@@ -70,17 +70,17 @@ public final class p
     {
       int i;
       boolean bool1;
-      synchronized (Ng)
+      synchronized (OX)
       {
-        if (Nh.length < 0) {
-          Nh = new char[0];
+        if (OY.length < 0) {
+          OY = new char[0];
         }
-        char[] arrayOfChar = Nh;
+        char[] arrayOfChar = OY;
         if (paramLong != 0L) {
           break label301;
         }
         arrayOfChar[0] = '0';
-        paramPrintWriter.print(new String(Nh, 0, j));
+        paramPrintWriter.print(new String(OY, 0, j));
         return;
         int i1 = (int)(paramLong % 1000L);
         j = (int)Math.floor(paramLong / 1000L);

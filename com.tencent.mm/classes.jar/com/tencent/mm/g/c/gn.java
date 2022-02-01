@@ -8,34 +8,19 @@ public abstract class gn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int euM = "logo_url".hashCode();
-  private static final int euS = "jump_type".hashCode();
-  private static final int fgF = "pref_key".hashCode();
-  private static final int fgG = "pref_title".hashCode();
-  private static final int fgH = "pref_url".hashCode();
-  private static final int fgI = "is_show".hashCode();
-  private static final int fgJ = "pref_desc".hashCode();
-  private static final int fgK = "tinyapp_username".hashCode();
-  private static final int fgL = "tinyapp_path".hashCode();
+  private static final int eEf = "createTime".hashCode();
+  private static final int eLN = "canvasId".hashCode();
+  private static final int eLO = "canvasXml".hashCode();
+  private static final int fvr = "canvasExt".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eut = true;
-  private boolean euz = true;
-  private boolean fgA = true;
-  private boolean fgB = true;
-  private boolean fgC = true;
-  private boolean fgD = true;
-  private boolean fgE = true;
-  private boolean fgy = true;
-  private boolean fgz = true;
-  public int field_is_show;
-  public int field_jump_type;
-  public String field_logo_url;
-  public String field_pref_desc;
-  public String field_pref_key;
-  public String field_pref_title;
-  public String field_pref_url;
-  public String field_tinyapp_path;
-  public String field_tinyapp_username;
+  private boolean eDI = true;
+  private boolean eLL = true;
+  private boolean eLM = true;
+  public String field_canvasExt;
+  public String field_canvasId;
+  public String field_canvasXml;
+  public long field_createTime;
+  private boolean fvq = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -50,11 +35,11 @@ public abstract class gn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fgF != k) {
+      if (eLN != k) {
         break label65;
       }
-      this.field_pref_key = paramCursor.getString(i);
-      this.fgy = true;
+      this.field_canvasId = paramCursor.getString(i);
+      this.eLL = true;
     }
     for (;;)
     {
@@ -62,22 +47,12 @@ public abstract class gn
       break label20;
       break;
       label65:
-      if (fgG == k) {
-        this.field_pref_title = paramCursor.getString(i);
-      } else if (fgH == k) {
-        this.field_pref_url = paramCursor.getString(i);
-      } else if (fgI == k) {
-        this.field_is_show = paramCursor.getInt(i);
-      } else if (fgJ == k) {
-        this.field_pref_desc = paramCursor.getString(i);
-      } else if (euM == k) {
-        this.field_logo_url = paramCursor.getString(i);
-      } else if (euS == k) {
-        this.field_jump_type = paramCursor.getInt(i);
-      } else if (fgK == k) {
-        this.field_tinyapp_username = paramCursor.getString(i);
-      } else if (fgL == k) {
-        this.field_tinyapp_path = paramCursor.getString(i);
+      if (eLO == k) {
+        this.field_canvasXml = paramCursor.getString(i);
+      } else if (eEf == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (fvr == k) {
+        this.field_canvasExt = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -87,32 +62,17 @@ public abstract class gn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fgy) {
-      localContentValues.put("pref_key", this.field_pref_key);
+    if (this.eLL) {
+      localContentValues.put("canvasId", this.field_canvasId);
     }
-    if (this.fgz) {
-      localContentValues.put("pref_title", this.field_pref_title);
+    if (this.eLM) {
+      localContentValues.put("canvasXml", this.field_canvasXml);
     }
-    if (this.fgA) {
-      localContentValues.put("pref_url", this.field_pref_url);
+    if (this.eDI) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.fgB) {
-      localContentValues.put("is_show", Integer.valueOf(this.field_is_show));
-    }
-    if (this.fgC) {
-      localContentValues.put("pref_desc", this.field_pref_desc);
-    }
-    if (this.eut) {
-      localContentValues.put("logo_url", this.field_logo_url);
-    }
-    if (this.euz) {
-      localContentValues.put("jump_type", Integer.valueOf(this.field_jump_type));
-    }
-    if (this.fgD) {
-      localContentValues.put("tinyapp_username", this.field_tinyapp_username);
-    }
-    if (this.fgE) {
-      localContentValues.put("tinyapp_path", this.field_tinyapp_path);
+    if (this.fvq) {
+      localContentValues.put("canvasExt", this.field_canvasExt);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -122,7 +82,7 @@ public abstract class gn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.gn
  * JD-Core Version:    0.7.0.1
  */

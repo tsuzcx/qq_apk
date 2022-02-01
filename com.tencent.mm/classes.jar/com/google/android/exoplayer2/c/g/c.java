@@ -14,14 +14,14 @@ final class c
     AppMethodBeat.i(92313);
     a.checkNotNull(paramf);
     m localm = new m(16);
-    if (a.a(paramf, localm).id != x.aQ("RIFF"))
+    if (a.a(paramf, localm).id != x.bJ("RIFF"))
     {
       AppMethodBeat.o(92313);
       return null;
     }
     paramf.b(localm.data, 0, 4);
     localm.setPosition(0);
-    if (localm.readInt() != x.aQ("WAVE"))
+    if (localm.readInt() != x.bJ("WAVE"))
     {
       AppMethodBeat.o(92313);
       return null;
@@ -30,10 +30,10 @@ final class c
     for (;;)
     {
       locala = a.a(paramf, localm);
-      if (locala.id == x.aQ("fmt ")) {
+      if (locala.id == x.bJ("fmt ")) {
         break;
       }
-      paramf.dR((int)locala.size);
+      paramf.dV((int)locala.size);
     }
     if (locala.size >= 16L) {}
     int i;
@@ -47,12 +47,12 @@ final class c
       a.checkState(bool);
       paramf.b(localm.data, 0, 16);
       localm.setPosition(0);
-      i = localm.vz();
-      j = localm.vz();
-      k = localm.vG();
-      m = localm.vG();
-      n = localm.vz();
-      i1 = localm.vz();
+      i = localm.wW();
+      j = localm.wW();
+      k = localm.xd();
+      m = localm.xd();
+      n = localm.wW();
+      i1 = localm.wW();
       i2 = j * i1 / 8;
       if (n == i2) {
         break;
@@ -61,7 +61,7 @@ final class c
       AppMethodBeat.o(92313);
       throw paramf;
     }
-    int i2 = x.fc(i1);
+    int i2 = x.ff(i1);
     if (i2 == 0)
     {
       AppMethodBeat.o(92313);
@@ -72,7 +72,7 @@ final class c
       AppMethodBeat.o(92313);
       return null;
     }
-    paramf.dR((int)locala.size - 16);
+    paramf.dV((int)locala.size - 16);
     paramf = new b(j, k, m, n, i1, i2);
     AppMethodBeat.o(92313);
     return paramf;
@@ -94,7 +94,7 @@ final class c
       AppMethodBeat.i(92312);
       paramf.b(paramm.data, 0, 8);
       paramm.setPosition(0);
-      paramf = new a(paramm.readInt(), paramm.vB());
+      paramf = new a(paramm.readInt(), paramm.wY());
       AppMethodBeat.o(92312);
       return paramf;
     }
@@ -102,7 +102,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.g.c
  * JD-Core Version:    0.7.0.1
  */

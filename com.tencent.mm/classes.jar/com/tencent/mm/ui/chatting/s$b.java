@@ -1,137 +1,205 @@
 package com.tencent.mm.ui.chatting;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.a.h;
-import com.tencent.mm.al.a.k;
-import com.tencent.mm.al.af;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.az;
+import com.tencent.mm.am.ag;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
-import com.tencent.mm.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.x;
-import com.tencent.mm.ui.chatting.c.b.y;
-import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.plugin.finder.report.b.d;
+import com.tencent.mm.plugin.finder.view.k.a;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.plugin.i.a.f;
+import com.tencent.mm.plugin.i.a.p;
+import com.tencent.mm.plugin.i.a.t;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.d.b.aa;
+import com.tencent.mm.ui.chatting.d.b.i;
+import com.tencent.mm.ui.chatting.viewitems.bk;
 import com.tencent.mm.ui.contact.e;
 
 public class s$b
   implements View.OnClickListener
 {
-  private a HNS;
+  private com.tencent.mm.ui.chatting.e.a JBI;
   
-  public s$b(a parama)
+  public s$b(com.tencent.mm.ui.chatting.e.a parama)
   {
-    this.HNS = parama;
+    this.JBI = parama;
   }
   
-  public void a(Intent paramIntent, com.tencent.mm.ui.chatting.viewitems.bj parambj) {}
+  public void a(Intent paramIntent, bk parambk) {}
   
   public void onClick(View paramView)
   {
     boolean bool = false;
     AppMethodBeat.i(34590);
-    Object localObject1 = (com.tencent.mm.ui.chatting.viewitems.bj)paramView.getTag();
-    if (localObject1 == null)
+    Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
+    Object localObject2 = (bk)paramView.getTag();
+    if (localObject2 == null)
     {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(34590);
       return;
     }
-    paramView = ((com.tencent.mm.ui.chatting.viewitems.bj)localObject1).userName;
-    if ((paramView == null) || (paramView.equals("")))
+    localObject1 = ((bk)localObject2).userName;
+    if ((localObject1 == null) || (((String)localObject1).equals("")))
     {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(34590);
       return;
     }
-    if (((y)this.HNS.bf(y.class)).fnV())
+    if (((aa)this.JBI.bh(aa.class)).fEs())
     {
-      localObject1 = this.HNS.HZF.getContext();
+      paramView = this.JBI.JOR.getContext();
       localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("Contact_User", paramView);
+      ((Intent)localObject2).putExtra("Contact_User", (String)localObject1);
       ((Intent)localObject2).putExtra("Contact_Encryptusername", true);
       ((Intent)localObject2).putExtra("Contact_IsLBSFriend", true);
       ((Intent)localObject2).putExtra("Contact_IsLbsChattingProfile", true);
-      com.tencent.mm.br.d.b((Context)localObject1, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
+      com.tencent.mm.bs.d.b(paramView, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(34590);
       return;
     }
-    Object localObject2 = (com.tencent.mm.ui.chatting.c.b.d)this.HNS.bf(com.tencent.mm.ui.chatting.c.b.d.class);
-    if (((com.tencent.mm.ui.chatting.c.b.d)localObject2).fmo())
+    if (((com.tencent.mm.ui.chatting.d.b.h)this.JBI.bh(com.tencent.mm.ui.chatting.d.b.h.class)).fDl())
     {
-      paramView = ((com.tencent.mm.ui.chatting.c.b.d)localObject2).fmm().Bn(paramView);
+      paramView = "";
+      if (((com.tencent.mm.ui.chatting.d.b.h)this.JBI.bh(com.tencent.mm.ui.chatting.d.b.h.class)).aSU((String)localObject1)) {
+        paramView = (View)localObject1;
+      }
+      for (;;)
+      {
+        localObject3 = com.tencent.mm.plugin.finder.report.b.snk;
+        localObject3 = com.tencent.mm.plugin.finder.report.b.cDn();
+        ((b.d)localObject3).snD += 1L;
+        if (!((com.tencent.mm.ui.chatting.d.b.h)this.JBI.bh(com.tencent.mm.ui.chatting.d.b.h.class)).aSU(paramView)) {
+          break;
+        }
+        if (((String)localObject1).equals(u.aAu())) {
+          paramView = (View)localObject1;
+        }
+        localObject2 = new Intent();
+        ((Intent)localObject2).putExtra("finder_username", paramView);
+        paramView = FinderReporterUIC.tcM;
+        FinderReporterUIC.a.a(this.JBI.JOR.getContext(), (Intent)localObject2, 0L, 10, false);
+        ((Intent)localObject2).putExtra("KEY_FINDER_SELF_FLAG", ((String)localObject1).equals(u.aAu()));
+        ((t)g.ad(t.class)).enterFinderProfileUI(this.JBI.JOR.getContext(), (Intent)localObject2);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(34590);
+        return;
+        if (am.ail((String)localObject1)) {
+          paramView = ((p)g.ab(p.class)).aii((String)localObject1);
+        }
+      }
+      if (((com.tencent.mm.ui.chatting.d.b.h)this.JBI.bh(com.tencent.mm.ui.chatting.d.b.h.class)).aWc(paramView))
+      {
+        ((p)g.ab(p.class)).aij(paramView);
+        localObject1 = new Intent();
+        paramView = ((f)g.ab(f.class)).aia(paramView);
+        localObject2 = com.tencent.mm.plugin.finder.view.k.sWA;
+        k.a.a(paramView, (Intent)localObject1);
+        paramView = com.tencent.mm.plugin.finder.view.k.sWA;
+        k.a.X(this.JBI.JOR.getContext(), (Intent)localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(34590);
+        return;
+      }
+    }
+    if (((i)this.JBI.bh(i.class)).fDn())
+    {
+      ((com.tencent.mm.plugin.gamelife.c)g.ad(com.tencent.mm.plugin.gamelife.c.class)).enterGameLifeProfileUI(this.JBI.JOR.getContext(), (String)localObject1, com.tencent.mm.plugin.gamelife.a.uwn);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(34590);
+      return;
+    }
+    paramView = (com.tencent.mm.ui.chatting.d.b.d)this.JBI.bh(com.tencent.mm.ui.chatting.d.b.d.class);
+    if (paramView.fCH())
+    {
+      paramView = paramView.fCF().Em((String)localObject1);
       if (paramView != null)
       {
-        if ((paramView == null) || (bs.isNullOrNil(paramView.field_profileUrl)))
+        if ((paramView == null) || (bt.isNullOrNil(paramView.field_profileUrl)))
         {
           if (paramView == null) {}
           for (bool = true;; bool = false)
           {
-            ac.w("MicroMsg.ChattingListAvatarListener", "onClick userInfo == null:%s", new Object[] { Boolean.valueOf(bool) });
+            ad.w("MicroMsg.ChattingListAvatarListener", "onClick userInfo == null:%s", new Object[] { Boolean.valueOf(bool) });
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(34590);
             return;
           }
         }
-        ac.i("MicroMsg.ChattingListAvatarListener", "onClick Url:%s", new Object[] { paramView.field_profileUrl });
-        af.aDe().bh(paramView.field_userId, paramView.field_brandUserName);
+        ad.i("MicroMsg.ChattingListAvatarListener", "onClick Url:%s", new Object[] { paramView.field_profileUrl });
+        ag.aGh().bi(paramView.field_userId, paramView.field_brandUserName);
         localObject1 = new Intent();
         ((Intent)localObject1).putExtra("rawUrl", paramView.field_profileUrl);
         ((Intent)localObject1).putExtra("useJs", true);
-        com.tencent.mm.br.d.b(this.HNS.HZF.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+        com.tencent.mm.bs.d.b(this.JBI.JOR.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
       }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(34590);
       return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("Contact_User", paramView);
-    a(localIntent, (com.tencent.mm.ui.chatting.viewitems.bj)localObject1);
-    az.ayM();
-    Object localObject3 = com.tencent.mm.model.c.awB().aNt(paramView);
-    if ((localObject3 != null) && ((int)((b)localObject3).fLJ > 0) && (b.ln(((av)localObject3).field_type))) {
-      e.a(localIntent, paramView);
+    Object localObject3 = new Intent();
+    ((Intent)localObject3).putExtra("Contact_User", (String)localObject1);
+    a((Intent)localObject3, (bk)localObject2);
+    ba.aBQ();
+    Object localObject4 = com.tencent.mm.model.c.azp().Bf((String)localObject1);
+    if ((localObject4 != null) && ((int)((com.tencent.mm.o.b)localObject4).gfj > 0) && (com.tencent.mm.o.b.lM(((aw)localObject4).field_type))) {
+      e.a((Intent)localObject3, (String)localObject1);
     }
-    if (w.sQ(this.HNS.getTalkerUserName()))
+    if (w.vF(this.JBI.getTalkerUserName()))
     {
-      az.ayM();
-      localObject3 = com.tencent.mm.model.c.awK().xO(this.HNS.getTalkerUserName());
-      localIntent.putExtra("Contact_RoomNickname", ((x)localObject3).wk(paramView));
-      localIntent.putExtra("Contact_Scene", 14);
-      localIntent.putExtra("Contact_ChatRoomId", this.HNS.getTalkerUserName());
-      localIntent.putExtra("room_name", this.HNS.getTalkerUserName());
-      if (((x)localObject3).field_roomowner == null) {
-        localIntent.putExtra("Is_RoomOwner", bool);
+      ba.aBQ();
+      localObject4 = com.tencent.mm.model.c.azz().AO(this.JBI.getTalkerUserName());
+      ((Intent)localObject3).putExtra("Contact_RoomNickname", ((ab)localObject4).zf((String)localObject1));
+      ((Intent)localObject3).putExtra("Contact_Scene", 14);
+      ((Intent)localObject3).putExtra("Contact_ChatRoomId", this.JBI.getTalkerUserName());
+      ((Intent)localObject3).putExtra("room_name", this.JBI.getTalkerUserName());
+      if (((ab)localObject4).field_roomowner == null) {
+        ((Intent)localObject3).putExtra("Is_RoomOwner", bool);
       }
     }
-    else if (((com.tencent.mm.ui.chatting.viewitems.bj)localObject1).dpq != null)
+    else if (((bk)localObject2).dBd != null)
     {
-      switch (((com.tencent.mm.ui.chatting.viewitems.bj)localObject1).dpq.getType())
+      switch (((bk)localObject2).dBd.getType())
       {
       }
     }
     for (;;)
     {
-      if (!((com.tencent.mm.ui.chatting.c.b.d)localObject2).a(this.HNS, (com.tencent.mm.ui.chatting.viewitems.bj)localObject1)) {
-        break label603;
+      if (!paramView.a(this.JBI, (bk)localObject2)) {
+        break label1127;
       }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(34590);
       return;
-      bool = ((x)localObject3).field_roomowner.equals(u.axw());
+      bool = ((ab)localObject4).field_roomowner.equals(u.aAm());
       break;
-      localIntent.putExtra("Contact_Scene", 34);
-      localIntent.putExtra("Contact_IsLBSFriend", true);
+      ((Intent)localObject3).putExtra("Contact_Scene", 34);
+      ((Intent)localObject3).putExtra("Contact_IsLBSFriend", true);
     }
-    label603:
-    if (this.HNS.foQ()) {}
+    label1127:
+    if (this.JBI.fFv()) {}
     for (int i = 3;; i = 2)
     {
-      localIntent.putExtra("CONTACT_INFO_UI_SOURCE", i);
-      com.tencent.mm.br.d.b(this.HNS.HZF.getContext(), "profile", ".ui.ContactInfoUI", localIntent, 213);
+      ((Intent)localObject3).putExtra("CONTACT_INFO_UI_SOURCE", i);
+      com.tencent.mm.bs.d.b(this.JBI.JOR.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject3, 213);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingListEventListener$AvatarClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(34590);
       return;
     }

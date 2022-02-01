@@ -5,26 +5,24 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vending.g.d.b;
 import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public final class r
 {
-  public static boolean Nb(String paramString)
+  public static boolean Qy(String paramString)
   {
     AppMethodBeat.i(46813);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(46813);
       return true;
@@ -33,7 +31,7 @@ public final class r
     return false;
   }
   
-  public static String Nc(String paramString)
+  public static String Qz(String paramString)
   {
     AppMethodBeat.i(46814);
     if (paramString == null)
@@ -67,44 +65,44 @@ public final class r
       return null;
     }
     String str = paramc.getAppId();
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       if (!paramBoolean)
       {
         AppMethodBeat.o(46812);
         return null;
       }
-      paramc.CV();
-      if (paramc.DH() == null)
+      paramc.Eu();
+      if (paramc.Fg() == null)
       {
-        ac.e("MicroMsg.ShareHelper", "tryToGetLocalFilePath NULL fs with appId(%s)", new Object[] { paramc.getAppId() });
+        ad.e("MicroMsg.ShareHelper", "tryToGetLocalFilePath NULL fs with appId(%s)", new Object[] { paramc.getAppId() });
         AppMethodBeat.o(46812);
         return null;
       }
-      paramString = paramc.DH().IU("share_" + System.nanoTime());
+      paramString = paramc.Fg().Ml("share_" + System.nanoTime());
       if (paramString == null)
       {
         AppMethodBeat.o(46812);
         return null;
       }
-      paramString = q.B(paramString.fxV());
+      paramString = com.tencent.mm.vfs.q.B(paramString.fOK());
       if (paramc.Q(com.tencent.luggage.game.page.d.class) != null)
       {
-        a(paramc, paramString, paramc.bqN());
+        a(paramc, paramString, paramc.buN());
         AppMethodBeat.o(46812);
         return paramString;
       }
       localObject = new Bundle();
       ((Bundle)localObject).putInt("action", 1);
-      com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)localObject, a.class, null);
-      paramc.CT().a(com.tencent.mm.vending.h.d.Jri, new d.b() {});
+      h.a("com.tencent.mm", (Parcelable)localObject, a.class, null);
+      paramc.Es().a(com.tencent.mm.vending.h.d.LiN, new d.b() {});
       paramc = "delayLoadFile://".concat(String.valueOf(paramString));
       AppMethodBeat.o(46812);
       return paramc;
     }
     if (paramString.startsWith("wxfile://"))
     {
-      paramString = paramc.DH().IS(paramString);
+      paramString = paramc.Fg().Mj(paramString);
       paramc = (com.tencent.luggage.sdk.b.a.c)localObject;
       if (paramString != null) {
         if (paramString.exists()) {
@@ -112,7 +110,7 @@ public final class r
         }
       }
       label256:
-      for (paramc = (com.tencent.luggage.sdk.b.a.c)localObject;; paramc = "file://" + q.B(paramString.fxV()))
+      for (paramc = (com.tencent.luggage.sdk.b.a.c)localObject;; paramc = "file://" + com.tencent.mm.vfs.q.B(paramString.fOK()))
       {
         AppMethodBeat.o(46812);
         return paramc;
@@ -121,15 +119,15 @@ public final class r
     if ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
     {
       localObject = AppBrandLocalMediaObjectManager.genMediaFilePath(str, "share_" + System.nanoTime());
-      paramc = x.k(paramc.CO(), paramString);
+      paramc = x.k(paramc.En(), paramString);
       if ((paramc != null) && (!paramc.isRecycled()))
       {
         try
         {
-          f.a(paramc, 100, Bitmap.CompressFormat.PNG, (String)localObject, true);
+          com.tencent.mm.sdk.platformtools.g.a(paramc, 100, Bitmap.CompressFormat.PNG, (String)localObject, true);
           if ((paramc != null) && (!paramc.isRecycled()))
           {
-            ac.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramc });
+            ad.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramc });
             paramc.recycle();
           }
         }
@@ -137,10 +135,10 @@ public final class r
         {
           for (;;)
           {
-            ac.w("MicroMsg.ShareHelper", "save temp bitmap to file failed, . exception : %s", new Object[] { paramString });
+            ad.w("MicroMsg.ShareHelper", "save temp bitmap to file failed, . exception : %s", new Object[] { paramString });
             if ((paramc != null) && (!paramc.isRecycled()))
             {
-              ac.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramc });
+              ad.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramc });
               paramc.recycle();
             }
           }
@@ -150,7 +148,7 @@ public final class r
           if ((paramc == null) || (paramc.isRecycled())) {
             break label483;
           }
-          ac.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramc });
+          ad.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramc });
           paramc.recycle();
           AppMethodBeat.o(46812);
         }
@@ -168,15 +166,15 @@ public final class r
   
   static void a(aa paramaa, String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(186767);
+    AppMethodBeat.i(188528);
     if (paramBitmap != null) {}
     try
     {
       if (!paramBitmap.isRecycled())
       {
         long l = System.currentTimeMillis();
-        f.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, paramString, true);
-        ac.i("MicroMsg.ShareHelper", "saveFile(appId : %s, pageView : %s, saveFileCost : %sms)", new Object[] { paramaa.getAppId(), Integer.valueOf(paramaa.hashCode()), Long.valueOf(System.currentTimeMillis() - l) });
+        com.tencent.mm.sdk.platformtools.g.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, paramString, true);
+        ad.i("MicroMsg.ShareHelper", "saveFile(appId : %s, pageView : %s, saveFileCost : %sms)", new Object[] { paramaa.getAppId(), Integer.valueOf(paramaa.hashCode()), Long.valueOf(System.currentTimeMillis() - l) });
         paramaa = new Bundle();
         paramaa.putString("delay_load_img_path", "file://".concat(String.valueOf(paramString)));
         new r.1(l, paramaa).run();
@@ -185,92 +183,112 @@ public final class r
     }
     catch (Exception paramaa)
     {
-      ac.w("MicroMsg.ShareHelper", "save temp bitmap to file failed, . exception : %s", new Object[] { paramaa });
+      ad.w("MicroMsg.ShareHelper", "save temp bitmap to file failed, . exception : %s", new Object[] { paramaa });
       return;
     }
     finally
     {
       if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
       {
-        ac.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramBitmap });
+        ad.i("MicroMsg.ShareHelper", "bitmap recycle %s", new Object[] { paramBitmap });
         paramBitmap.recycle();
       }
-      AppMethodBeat.o(186767);
+      AppMethodBeat.o(188528);
     }
-    AppMethodBeat.o(186767);
+    AppMethodBeat.o(188528);
   }
   
-  public static void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, String paramString9, String paramString10, int paramInt3, String paramString11, int paramInt4, int paramInt5)
+  public static void a(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt2, String paramString9, String paramString10, int paramInt3, String paramString11, int paramInt4, int paramInt5, String paramString12)
   {
-    AppMethodBeat.i(180276);
-    if (bs.isNullOrNil(paramString1))
+    AppMethodBeat.i(188529);
+    if (bt.isNullOrNil(paramString1))
     {
-      ac.e("MicroMsg.ShareHelper", "appId is Null!");
-      AppMethodBeat.o(180276);
+      ad.e("MicroMsg.ShareHelper", "appId is Null!");
+      AppMethodBeat.o(188529);
       return;
     }
     localObject1 = "";
     try
     {
-      localObject2 = com.tencent.mm.compatible.util.p.encode(bs.nullAsNil(paramString6), "UTF-8");
+      localObject2 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString6), "UTF-8");
       localObject1 = localObject2;
     }
     catch (UnsupportedEncodingException paramString10)
     {
       try
       {
-        str = com.tencent.mm.compatible.util.p.encode(bs.nullAsNil(paramString7), "UTF-8");
-        localObject2 = str;
+        str1 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString7), "UTF-8");
+        localObject2 = str1;
       }
       catch (UnsupportedEncodingException paramString10)
       {
         try
         {
-          paramString10 = com.tencent.mm.compatible.util.p.encode(bs.nullAsNil(paramString10), "UTF-8");
+          str1 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString10), "UTF-8");
         }
         catch (UnsupportedEncodingException paramString10)
         {
           try
           {
-            for (;;)
-            {
-              Object localObject2;
-              String str;
-              paramString11 = com.tencent.mm.compatible.util.p.encode(bs.nullAsNil(paramString11), "UTF-8");
-              try
-              {
-                str = com.tencent.mm.compatible.util.p.encode(bs.nullAsNil(paramString5), "UTF-8");
-                paramString5 = str;
-              }
-              catch (UnsupportedEncodingException localUnsupportedEncodingException3)
-              {
-                for (;;)
-                {
-                  ac.e("MicroMsg.ShareHelper", "encode shareTitle error!");
-                }
-              }
-              paramInt3 += 1000;
-              ac.d("MicroMsg.ShareHelper", "stev report(%s), appId %s, scene %s, sceneNote %s, sessionId %s, currentPath %s, currentTitle %s,shareTitle %s, sharePath %s, shareActionId %s, destinationUserCount %s, destinationUserName %s, appServiceType %s, thumbIconUrl %s, appVersion %d , destinationType %d", new Object[] { Integer.valueOf(14077), paramString1, Integer.valueOf(paramInt1), paramString2, paramString3, paramString7, paramString8, paramString5, paramString6, paramString9, Integer.valueOf(paramInt2), paramString4, Integer.valueOf(paramInt3), paramString11, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
-              com.tencent.mm.plugin.report.service.h.wUl.f(14077, new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, paramString3, localObject2, paramString8, paramString5, localObject1, paramString9, "", Integer.valueOf(paramInt2), paramString4, paramString10, Integer.valueOf(paramInt3), paramString11, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5) });
-              AppMethodBeat.o(180276);
-              return;
-              localUnsupportedEncodingException1 = localUnsupportedEncodingException1;
-              ac.e("MicroMsg.ShareHelper", "encode share page path error!");
-              continue;
-              localUnsupportedEncodingException2 = localUnsupportedEncodingException2;
-              ac.e("MicroMsg.ShareHelper", "encode current page path error!");
-              continue;
-              paramString10 = paramString10;
-              ac.e("MicroMsg.ShareHelper", "encode current html url error!");
-              paramString10 = "";
-            }
+            paramString11 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString11), "UTF-8");
           }
-          catch (UnsupportedEncodingException paramString11)
+          catch (UnsupportedEncodingException paramString10)
           {
-            for (;;)
+            try
             {
-              ac.e("MicroMsg.ShareHelper", "encode thumb Icon url error!");
-              paramString11 = "";
+              for (;;)
+              {
+                Object localObject2;
+                String str1;
+                str3 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString5), "UTF-8");
+                paramInt3 += 1000;
+                paramString5 = "";
+                try
+                {
+                  String str4 = com.tencent.mm.compatible.util.q.encode(bt.nullAsNil(paramString12), "UTF-8");
+                  paramString10 = str4;
+                  paramString5 = str4;
+                  if (str4.length() >= 1024)
+                  {
+                    paramString5 = str4;
+                    paramString10 = str4.substring(0, 1024);
+                  }
+                }
+                catch (UnsupportedEncodingException paramString10)
+                {
+                  for (;;)
+                  {
+                    String str2;
+                    ad.e("MicroMsg.ShareHelper", "encode messageExtraData error!");
+                    paramString10 = paramString5;
+                  }
+                }
+                ad.d("MicroMsg.ShareHelper", "stev report(%s), appId %s, scene %s, sceneNote %s, sessionId %s, currentPath %s, currentTitle %s,shareTitle %s, sharePath %s, shareActionId %s, destinationUserCount %s, destinationUserName %s, appServiceType %s, thumbIconUrl %s, appVersion %d , destinationType %d, messageExtraData %s", new Object[] { Integer.valueOf(14077), paramString1, Integer.valueOf(paramInt1), paramString2, paramString3, paramString7, paramString8, str3, paramString6, paramString9, Integer.valueOf(paramInt2), paramString4, Integer.valueOf(paramInt3), paramString11, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString12 });
+                com.tencent.mm.plugin.report.service.g.yhR.f(14077, new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, paramString3, localObject2, paramString8, str3, localObject1, paramString9, "", Integer.valueOf(paramInt2), paramString4, str1, Integer.valueOf(paramInt3), paramString11, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString10 });
+                AppMethodBeat.o(188529);
+                return;
+                localUnsupportedEncodingException1 = localUnsupportedEncodingException1;
+                ad.e("MicroMsg.ShareHelper", "encode share page path error!");
+                continue;
+                localUnsupportedEncodingException2 = localUnsupportedEncodingException2;
+                ad.e("MicroMsg.ShareHelper", "encode current page path error!");
+                continue;
+                paramString10 = paramString10;
+                ad.e("MicroMsg.ShareHelper", "encode current html url error!");
+                str2 = "";
+                continue;
+                paramString10 = paramString10;
+                ad.e("MicroMsg.ShareHelper", "encode thumb Icon url error!");
+                paramString11 = "";
+              }
+            }
+            catch (UnsupportedEncodingException paramString10)
+            {
+              for (;;)
+              {
+                ad.e("MicroMsg.ShareHelper", "encode shareTitle error!");
+                String str3 = paramString5;
+              }
             }
           }
         }
@@ -279,16 +297,16 @@ public final class r
     localObject2 = "";
   }
   
-  public static StringBuilder bC(String paramString, int paramInt)
+  public static StringBuilder bF(String paramString, int paramInt)
   {
     AppMethodBeat.i(180275);
-    int i = ((com.tencent.mm.plugin.appbrand.appstorage.a.a)g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Ji(paramString);
+    int i = ((com.tencent.mm.plugin.appbrand.appstorage.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.appstorage.a.a.class)).Mz(paramString);
     StringBuilder localStringBuilder = new StringBuilder("1_");
     localStringBuilder.append(paramString);
     localStringBuilder.append("_");
-    localStringBuilder.append(ah.dg(com.tencent.mm.b.p.getString(i)));
+    localStringBuilder.append(ai.ee(com.tencent.mm.b.p.getString(i)));
     localStringBuilder.append("_");
-    localStringBuilder.append(bs.aNx());
+    localStringBuilder.append(bt.aQJ());
     localStringBuilder.append("_");
     localStringBuilder.append(paramInt);
     AppMethodBeat.o(180275);
@@ -297,7 +315,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.r
  * JD-Core Version:    0.7.0.1
  */

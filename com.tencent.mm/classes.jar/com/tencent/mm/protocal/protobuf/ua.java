@@ -1,122 +1,170 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
-public final class ua
-  extends com.tencent.mm.bw.a
+public class ua
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<ub> Eob;
-  public int Eoc;
-  public crm Eod;
-  public int fsB;
-  
-  public ua()
-  {
-    AppMethodBeat.i(43085);
-    this.Eob = new LinkedList();
-    AppMethodBeat.o(43085);
-  }
+  public String FRk;
+  public String FRl;
+  public long FSA;
+  public String FSB;
+  public String FSC;
+  public String oBP;
+  public String oxN;
+  public String pkr;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(43086);
+    AppMethodBeat.i(113980);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.fsB);
-      paramVarArgs.e(2, 8, this.Eob);
-      paramVarArgs.aR(3, this.Eoc);
-      if (this.Eod != null)
-      {
-        paramVarArgs.ln(4, this.Eod.computeSize());
-        this.Eod.writeFields(paramVarArgs);
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      AppMethodBeat.o(43086);
+      if (this.oxN != null) {
+        paramVarArgs.d(2, this.oxN);
+      }
+      if (this.oBP != null) {
+        paramVarArgs.d(3, this.oBP);
+      }
+      if (this.url != null) {
+        paramVarArgs.d(4, this.url);
+      }
+      paramVarArgs.aY(5, this.FSA);
+      if (this.FSB != null) {
+        paramVarArgs.d(6, this.FSB);
+      }
+      if (this.FSC != null) {
+        paramVarArgs.d(7, this.FSC);
+      }
+      if (this.pkr != null) {
+        paramVarArgs.d(8, this.pkr);
+      }
+      if (this.FRk != null) {
+        paramVarArgs.d(9, this.FRk);
+      }
+      if (this.FRl != null) {
+        paramVarArgs.d(10, this.FRl);
+      }
+      AppMethodBeat.o(113980);
       return 0;
     }
-    int i;
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.title == null) {
+        break label750;
+      }
+    }
+    label750:
+    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
     {
-      i = f.a.a.b.b.a.bx(1, this.fsB) + 0 + f.a.a.a.c(2, 8, this.Eob) + f.a.a.b.b.a.bx(3, this.Eoc);
       paramInt = i;
-      if (this.Eod != null) {
-        paramInt = i + f.a.a.a.lm(4, this.Eod.computeSize());
+      if (this.oxN != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.oxN);
       }
-      AppMethodBeat.o(43086);
+      i = paramInt;
+      if (this.oBP != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.oBP);
+      }
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.url);
+      }
+      i = paramInt + f.a.a.b.b.a.p(5, this.FSA);
+      paramInt = i;
+      if (this.FSB != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.FSB);
+      }
+      i = paramInt;
+      if (this.FSC != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.FSC);
+      }
+      paramInt = i;
+      if (this.pkr != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.pkr);
+      }
+      i = paramInt;
+      if (this.FRk != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.FRk);
+      }
+      paramInt = i;
+      if (this.FRl != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.FRl);
+      }
+      AppMethodBeat.o(113980);
       return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.Eob.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(43086);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      ua localua = (ua)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      Object localObject2;
-      boolean bool;
-      switch (paramInt)
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(43086);
-        return -1;
-      case 1: 
-        localua.fsB = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(43086);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(113980);
         return 0;
-      case 2: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
+      }
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        ua localua = (ua)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new ub();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((ub)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localua.Eob.add(localObject1);
-          paramInt += 1;
+        default: 
+          AppMethodBeat.o(113980);
+          return -1;
+        case 1: 
+          localua.title = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 2: 
+          localua.oxN = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 3: 
+          localua.oBP = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 4: 
+          localua.url = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 5: 
+          localua.FSA = locala.NPN.zd();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 6: 
+          localua.FSB = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 7: 
+          localua.FSC = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 8: 
+          localua.pkr = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
+        case 9: 
+          localua.FRk = locala.NPN.readString();
+          AppMethodBeat.o(113980);
+          return 0;
         }
-        AppMethodBeat.o(43086);
-        return 0;
-      case 3: 
-        localua.Eoc = ((f.a.a.a.a)localObject1).LVo.xF();
-        AppMethodBeat.o(43086);
+        localua.FRl = locala.NPN.readString();
+        AppMethodBeat.o(113980);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new crm();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((crm)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localua.Eod = ((crm)localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(43086);
-      return 0;
+      AppMethodBeat.o(113980);
+      return -1;
     }
-    AppMethodBeat.o(43086);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ua
  * JD-Core Version:    0.7.0.1
  */

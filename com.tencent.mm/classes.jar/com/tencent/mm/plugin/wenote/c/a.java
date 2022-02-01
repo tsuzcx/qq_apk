@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.wenote.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class a
 {
-  public static boolean eIs()
+  public static boolean eXl()
   {
     AppMethodBeat.i(30670);
-    String str = (String)com.tencent.mm.model.c.d.aAp().tJ("100352").eYV().get("Close");
-    if (!bs.isNullOrNil(str)) {}
-    for (int i = bs.getInt(str, 0);; i = 0)
+    String str = (String)com.tencent.mm.model.c.d.aDs().wz("100352").foF().get("Close");
+    if (!bt.isNullOrNil(str)) {}
+    for (int i = bt.getInt(str, 0);; i = 0)
     {
       if (i == 0)
       {

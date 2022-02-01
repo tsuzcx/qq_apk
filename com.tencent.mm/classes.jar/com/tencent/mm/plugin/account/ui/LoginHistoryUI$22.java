@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class LoginHistoryUI$22
   implements DialogInterface.OnClickListener
@@ -13,8 +13,8 @@ final class LoginHistoryUI$22
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(128104);
-    ac.i("MicroMsg.LoginHistoryUI", "db dangerous and auto logout");
-    LoginHistoryUI.a(this.iSi);
+    ad.i("MicroMsg.LoginHistoryUI", "db dangerous and auto logout");
+    LoginHistoryUI.a(this.jlq);
     AppMethodBeat.o(128104);
   }
 }

@@ -43,7 +43,7 @@ public final class fg
       localPaint2.setPathEffect(null);
       c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, -560.0F, 0.0F, 1.0F, -666.0F);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, -460.0F, 0.0F, 1.0F, -666.0F);
       localMatrix.reset();
       localMatrix.setValues(arrayOfFloat);
       localCanvas.concat(localMatrix);
@@ -54,7 +54,7 @@ public final class fg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.fg
  * JD-Core Version:    0.7.0.1
  */

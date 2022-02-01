@@ -4,40 +4,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class AdLandingPagesProxy$b
   implements a.c
 {
-  private String JG;
+  private String Lw;
   private String appId;
-  private boolean oKT;
+  private boolean poB;
   
   public AdLandingPagesProxy$b(AdLandingPagesProxy paramAdLandingPagesProxy, String paramString1, String paramString2, boolean paramBoolean)
   {
-    this.JG = paramString2;
+    this.Lw = paramString2;
     this.appId = paramString1;
-    this.oKT = paramBoolean;
+    this.poB = paramBoolean;
   }
   
-  public final void atq(String paramString)
+  public final void ayv(String paramString)
   {
     AppMethodBeat.i(95219);
-    ac.i("AdLandingPagesProxy", "pkg %s installed", new Object[] { paramString });
-    if (this.oKT) {
-      a.e.yhL.reportDownloadInfo(4, this.appId);
+    ad.i("AdLandingPagesProxy", "pkg %s installed", new Object[] { paramString });
+    if (this.poB) {
+      a.e.zxS.reportDownloadInfo(4, this.appId);
     }
-    a.e.yhL.reportDownloadInfo(5, this.appId);
+    a.e.zxS.reportDownloadInfo(5, this.appId);
     AppMethodBeat.o(95219);
   }
   
-  public final void atr(String paramString)
+  public final void ayw(String paramString)
   {
     AppMethodBeat.i(95220);
-    ac.i("AdLandingPagesProxy", "pkg %s removed", new Object[] { paramString });
-    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(this.JG))) {
-      this.xPx.deleteDeferredDeepLinkMM(paramString);
+    ad.i("AdLandingPagesProxy", "pkg %s removed", new Object[] { paramString });
+    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(this.Lw))) {
+      this.zfr.deleteDeferredDeepLinkMM(paramString);
     }
     AppMethodBeat.o(95220);
   }

@@ -5,13 +5,13 @@ import android.view.animation.Interpolator;
 abstract class d
   implements Interpolator
 {
-  private final float Qb;
-  private final float[] yJ;
+  private final float[] AC;
+  private final float RQ;
   
   protected d(float[] paramArrayOfFloat)
   {
-    this.yJ = paramArrayOfFloat;
-    this.Qb = (1.0F / (this.yJ.length - 1));
+    this.AC = paramArrayOfFloat;
+    this.RQ = (1.0F / (this.AC.length - 1));
   }
   
   public float getInterpolation(float paramFloat)
@@ -22,10 +22,10 @@ abstract class d
     if (paramFloat <= 0.0F) {
       return 0.0F;
     }
-    int i = Math.min((int)((this.yJ.length - 1) * paramFloat), this.yJ.length - 2);
-    paramFloat = (paramFloat - i * this.Qb) / this.Qb;
-    float f = this.yJ[i];
-    return (this.yJ[(i + 1)] - this.yJ[i]) * paramFloat + f;
+    int i = Math.min((int)((this.AC.length - 1) * paramFloat), this.AC.length - 2);
+    paramFloat = (paramFloat - i * this.RQ) / this.RQ;
+    float f = this.AC[i];
+    return (this.AC[(i + 1)] - this.AC[i]) * paramFloat + f;
   }
 }
 

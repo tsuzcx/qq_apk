@@ -7,8 +7,8 @@ import android.text.TextUtils;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,22 +18,22 @@ public class MMToClientEvent
   extends MainProcessTask
 {
   public static final Parcelable.Creator<MMToClientEvent> CREATOR;
-  private static final HashMap<String, MMToClientEvent> jVD;
-  private static final com.tencent.mm.plugin.appbrand.z.h<String, c> jVE;
+  private static final HashMap<String, MMToClientEvent> kpR;
+  private static final com.tencent.mm.plugin.appbrand.z.h<String, c> kpS;
   public String appId;
-  int cYG;
-  String dgg;
-  private com.tencent.mm.plugin.appbrand.jsapi.c jOV;
-  public int jVA;
-  String jVB;
-  Object jVC;
+  int djY;
+  String drC;
+  private com.tencent.mm.plugin.appbrand.jsapi.c kjg;
+  public int kpO;
+  String kpP;
+  Object kpQ;
   public int type;
   
   static
   {
     AppMethodBeat.i(134851);
-    jVD = new HashMap();
-    jVE = new com.tencent.mm.plugin.appbrand.z.h();
+    kpR = new HashMap();
+    kpS = new com.tencent.mm.plugin.appbrand.z.h();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(134851);
   }
@@ -47,7 +47,7 @@ public class MMToClientEvent
     AppMethodBeat.o(134842);
   }
   
-  public static void LH(String paramString)
+  public static void Pb(String paramString)
   {
     AppMethodBeat.i(174746);
     if (TextUtils.isEmpty(paramString))
@@ -56,8 +56,8 @@ public class MMToClientEvent
       return;
     }
     MMToClientEvent localMMToClientEvent = new MMToClientEvent();
-    jVD.put(paramString, localMMToClientEvent);
-    localMMToClientEvent.jVA = 1;
+    kpR.put(paramString, localMMToClientEvent);
+    localMMToClientEvent.kpO = 1;
     localMMToClientEvent.appId = paramString;
     AppBrandMainProcessService.a(localMMToClientEvent);
     AppMethodBeat.o(174746);
@@ -67,7 +67,7 @@ public class MMToClientEvent
   {
     AppMethodBeat.i(134846);
     if (paramc != null) {
-      jVE.h(paramString, paramc);
+      kpS.j(paramString, paramc);
     }
     AppMethodBeat.o(134846);
   }
@@ -76,7 +76,7 @@ public class MMToClientEvent
   {
     AppMethodBeat.i(134847);
     if (paramc != null) {
-      jVE.B(paramString, paramc);
+      kpS.D(paramString, paramc);
     }
     AppMethodBeat.o(134847);
   }
@@ -90,10 +90,10 @@ public class MMToClientEvent
       return;
     }
     MMToClientEvent localMMToClientEvent = new MMToClientEvent();
-    jVD.put(paramc.getAppId(), localMMToClientEvent);
-    localMMToClientEvent.jVA = 1;
+    kpR.put(paramc.getAppId(), localMMToClientEvent);
+    localMMToClientEvent.kpO = 1;
     localMMToClientEvent.appId = paramc.getAppId();
-    localMMToClientEvent.jOV = paramc;
+    localMMToClientEvent.kjg = paramc;
     AppBrandMainProcessService.a(localMMToClientEvent);
     AppMethodBeat.o(134844);
   }
@@ -106,16 +106,16 @@ public class MMToClientEvent
       AppMethodBeat.o(134845);
       return;
     }
-    MMToClientEvent localMMToClientEvent = (MMToClientEvent)jVD.remove(paramc.getAppId());
+    MMToClientEvent localMMToClientEvent = (MMToClientEvent)kpR.remove(paramc.getAppId());
     if (localMMToClientEvent == null)
     {
       AppMethodBeat.o(134845);
       return;
     }
-    jVE.cD(paramc.getAppId());
-    localMMToClientEvent.jVA = 2;
+    kpS.cF(paramc.getAppId());
+    localMMToClientEvent.kpO = 2;
     localMMToClientEvent.appId = paramc.getAppId();
-    localMMToClientEvent.jOV = null;
+    localMMToClientEvent.kjg = null;
     AppBrandMainProcessService.b(localMMToClientEvent);
     AppMethodBeat.o(134845);
   }
@@ -128,7 +128,7 @@ public class MMToClientEvent
       AppMethodBeat.o(174745);
       return false;
     }
-    if (jVD.get(paramString) != null)
+    if (kpR.get(paramString) != null)
     {
       AppMethodBeat.o(174745);
       return true;
@@ -137,10 +137,10 @@ public class MMToClientEvent
     return false;
   }
   
-  public final void aLq()
+  public final void aOA()
   {
     AppMethodBeat.i(134843);
-    switch (this.jVA)
+    switch (this.kpO)
     {
     }
     for (;;)
@@ -154,53 +154,53 @@ public class MMToClientEvent
     }
   }
   
-  public final void aLr()
+  public final void aOB()
   {
     AppMethodBeat.i(134848);
-    switch (this.jVA)
+    switch (this.kpO)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(134848);
       return;
-      if (this.jOV != null)
+      if (this.kjg != null)
       {
         Object localObject1 = new a();
         final Object localObject2 = new HashMap();
         ((HashMap)localObject2).put("type", Integer.valueOf(this.type));
-        ((HashMap)localObject2).put("data", this.dgg);
-        ((a)localObject1).g(this.jOV).A((Map)localObject2).beN();
+        ((HashMap)localObject2).put("data", this.drC);
+        ((a)localObject1).g(this.kjg).A((Map)localObject2).bir();
         AppMethodBeat.o(134848);
         return;
         localObject1 = new b();
         localObject2 = new HashMap();
-        ((HashMap)localObject2).put("count", Integer.valueOf(this.cYG));
-        ((HashMap)localObject2).put("data", this.dgg);
-        ((b)localObject1).g(this.jOV).A((Map)localObject2).beN();
+        ((HashMap)localObject2).put("count", Integer.valueOf(this.djY));
+        ((HashMap)localObject2).put("data", this.drC);
+        ((b)localObject1).g(this.kjg).A((Map)localObject2).bir();
         AppMethodBeat.o(134848);
         return;
-        if ((this.appId == null) || (this.jVC == null))
+        if ((this.appId == null) || (this.kpQ == null))
         {
           AppMethodBeat.o(134848);
           return;
         }
         localObject1 = this.appId;
-        localObject2 = this.jVC;
-        com.tencent.e.h.JZN.f(new Runnable()
+        localObject2 = this.kpQ;
+        com.tencent.e.h.LTJ.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(134840);
-            Object localObject = MMToClientEvent.bes();
-            String str = this.jVF;
+            Object localObject = MMToClientEvent.bhW();
+            String str = this.kpT;
             android.support.v4.e.c local1 = new android.support.v4.e.c() {};
             if (str == null)
             {
               AppMethodBeat.o(134840);
               return;
             }
-            localObject = ((com.tencent.mm.plugin.appbrand.z.h)localObject).cC(str).iterator();
+            localObject = ((com.tencent.mm.plugin.appbrand.z.h)localObject).cE(str).iterator();
             while (((Iterator)localObject).hasNext()) {
               local1.accept(((Iterator)localObject).next());
             }
@@ -214,19 +214,19 @@ public class MMToClientEvent
   public final void e(Parcel paramParcel)
   {
     AppMethodBeat.i(134849);
-    this.jVA = paramParcel.readInt();
+    this.kpO = paramParcel.readInt();
     this.appId = paramParcel.readString();
     this.type = paramParcel.readInt();
-    this.dgg = paramParcel.readString();
-    this.cYG = paramParcel.readInt();
+    this.drC = paramParcel.readString();
+    this.djY = paramParcel.readInt();
     try
     {
-      this.jVB = paramParcel.readString();
-      if (!bs.isNullOrNil(this.jVB))
+      this.kpP = paramParcel.readString();
+      if (!bt.isNullOrNil(this.kpP))
       {
-        Class localClass = Class.forName(this.jVB);
+        Class localClass = Class.forName(this.kpP);
         if (localClass != null) {
-          this.jVC = paramParcel.readParcelable(localClass.getClassLoader());
+          this.kpQ = paramParcel.readParcelable(localClass.getClassLoader());
         }
       }
       AppMethodBeat.o(134849);
@@ -234,7 +234,7 @@ public class MMToClientEvent
     }
     catch (Exception paramParcel)
     {
-      ac.v("MicroMsg.MMToClientEvent", "unparcel custom data e %s", new Object[] { paramParcel });
+      ad.v("MicroMsg.MMToClientEvent", "unparcel custom data e %s", new Object[] { paramParcel });
       AppMethodBeat.o(134849);
     }
   }
@@ -242,15 +242,15 @@ public class MMToClientEvent
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134850);
-    paramParcel.writeInt(this.jVA);
+    paramParcel.writeInt(this.kpO);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.dgg);
-    paramParcel.writeInt(this.cYG);
-    if ((!bs.isNullOrNil(this.jVB)) && (this.jVC != null))
+    paramParcel.writeString(this.drC);
+    paramParcel.writeInt(this.djY);
+    if ((!bt.isNullOrNil(this.kpP)) && (this.kpQ != null))
     {
-      paramParcel.writeString(this.jVB);
-      paramParcel.writeParcelable((Parcelable)this.jVC, paramInt);
+      paramParcel.writeString(this.kpP);
+      paramParcel.writeParcelable((Parcelable)this.kpQ, paramInt);
     }
     AppMethodBeat.o(134850);
   }
@@ -271,7 +271,7 @@ public class MMToClientEvent
   
   public static abstract interface c
   {
-    public abstract void cf(Object paramObject);
+    public abstract void ch(Object paramObject);
   }
 }
 

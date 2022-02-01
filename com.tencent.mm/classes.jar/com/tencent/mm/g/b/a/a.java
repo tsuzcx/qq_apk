@@ -5,39 +5,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends com.tencent.mm.plugin.report.a
 {
-  public long dCO;
-  public String dCP;
-  public long dCQ = 0L;
-  public String dCR;
+  public long dPj;
+  public String dPk;
+  public long dPl = 0L;
+  public String dPm;
   
-  public final String PR()
+  public final String RD()
   {
     AppMethodBeat.i(185997);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dCO);
+    ((StringBuffer)localObject).append(this.dPj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dCP);
+    ((StringBuffer)localObject).append(this.dPk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dCQ);
+    ((StringBuffer)localObject).append(this.dPl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dCR);
+    ((StringBuffer)localObject).append(this.dPm);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
+    awz((String)localObject);
     AppMethodBeat.o(185997);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
     AppMethodBeat.i(185998);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Requestcode:").append(this.dCO);
+    ((StringBuffer)localObject).append("Requestcode:").append(this.dPj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProcessName:").append(this.dCP);
+    ((StringBuffer)localObject).append("ProcessName:").append(this.dPk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dCQ);
+    ((StringBuffer)localObject).append("Action:").append(this.dPl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Stack:").append(this.dCR);
+    ((StringBuffer)localObject).append("Stack:").append(this.dPm);
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(185998);
     return localObject;
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.a
  * JD-Core Version:    0.7.0.1
  */

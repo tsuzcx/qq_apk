@@ -10,40 +10,40 @@ import com.tencent.toybrick.f.a;
 public final class e
   extends g<e, a>
 {
-  public static final int Ksp = 2131495638;
-  private int zlx;
+  public static final int Miq = 2131495638;
+  private int ADI;
   
   public final void a(a parama)
   {
     AppMethodBeat.i(159952);
-    if (this.zlx == 0) {
-      this.zlx = ((int)this.KsS.getResources().getDimension(2131165289));
+    if (this.ADI == 0) {
+      this.ADI = ((int)this.MiT.getResources().getDimension(2131165289));
     }
-    parama.asD.setLayoutParams(new RecyclerView.LayoutParams(-1, this.zlx));
+    parama.auu.setLayoutParams(new RecyclerView.LayoutParams(-1, this.ADI));
     AppMethodBeat.o(159952);
   }
   
-  public final g.b fHq()
+  public final g.b fYH()
   {
-    return g.b.Ktg;
+    return g.b.Mjh;
   }
   
-  public final a gY(View paramView)
+  public final int getLayoutResource()
+  {
+    return Miq;
+  }
+  
+  public final a hp(View paramView)
   {
     AppMethodBeat.i(159953);
     paramView = new a(paramView);
     AppMethodBeat.o(159953);
     return paramView;
   }
-  
-  public final int getLayoutResource()
-  {
-    return Ksp;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.toybrick.c.e
  * JD-Core Version:    0.7.0.1
  */

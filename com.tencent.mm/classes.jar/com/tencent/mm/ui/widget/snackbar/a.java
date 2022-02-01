@@ -18,16 +18,16 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
 import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.ar;
 import java.util.Queue;
 
 public final class a
 {
-  SnackContainer JlF;
-  b JlG;
-  c JlH;
-  private final View.OnClickListener JlI;
+  SnackContainer Ldc;
+  b Ldd;
+  c Lde;
+  private final View.OnClickListener Ldf;
   Handler mHandler;
   View mParentView;
   
@@ -35,23 +35,27 @@ public final class a
   {
     AppMethodBeat.i(159708);
     this.mHandler = new Handler();
-    this.JlI = new View.OnClickListener()
+    this.Ldf = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159701);
-        if ((a.this.JlG != null) && (a.this.JlF.isShowing())) {
-          a.this.JlG.beL();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/snackbar/SnackBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((a.this.Ldd != null) && (a.this.Ldc.isShowing())) {
+          a.this.Ldd.bip();
         }
         a.this.mHandler.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(159700);
-            a.this.JlF.hide();
+            a.this.Ldc.hide();
             AppMethodBeat.o(159700);
           }
         }, 100L);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/snackbar/SnackBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(159701);
       }
     };
@@ -67,23 +71,27 @@ public final class a
   {
     AppMethodBeat.i(159709);
     this.mHandler = new Handler();
-    this.JlI = new View.OnClickListener()
+    this.Ldf = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159701);
-        if ((a.this.JlG != null) && (a.this.JlF.isShowing())) {
-          a.this.JlG.beL();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/snackbar/SnackBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((a.this.Ldd != null) && (a.this.Ldc.isShowing())) {
+          a.this.Ldd.bip();
         }
         a.this.mHandler.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(159700);
-            a.this.JlF.hide();
+            a.this.Ldc.hide();
             AppMethodBeat.o(159700);
           }
         }, 100L);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/snackbar/SnackBar$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(159701);
       }
     };
@@ -109,41 +117,46 @@ public final class a
       AppMethodBeat.o(159710);
       return;
     }
-    this.JlF = ((SnackContainer)paramViewGroup.findViewById(2131304882));
-    if (this.JlF == null) {
-      this.JlF = new SnackContainer(paramViewGroup);
+    this.Ldc = ((SnackContainer)paramViewGroup.findViewById(2131304882));
+    if (this.Ldc == null) {
+      this.Ldc = new SnackContainer(paramViewGroup);
     }
     this.mParentView = paramView;
     if (paramInt == 36) {
-      this.JlF.setOnTouchListener(new View.OnTouchListener()
+      this.Ldc.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(159703);
-          if ((b.bjw()) && (a.this.JlF.isShowing()))
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/snackbar/SnackBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+          if ((b.bni()) && (a.this.Ldc.isShowing()))
           {
-            b.yk(false);
+            b.yW(false);
             a.this.mHandler.postDelayed(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(159702);
-                a.this.JlF.hide();
+                a.this.Ldc.hide();
                 AppMethodBeat.o(159702);
               }
             }, 100L);
           }
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/widget/snackbar/SnackBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(159703);
           return true;
         }
       });
     }
-    ((TextView)paramView.findViewById(2131304881)).setOnClickListener(this.JlI);
-    boolean bool1 = ap.jF(paramContext);
-    paramInt = ap.ej(paramContext);
-    an.i("MicroMsg.SnackBar", "snackbar:isNavBarVisibility : %B,navBarHeightd:%d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(paramInt) });
+    ((TextView)paramView.findViewById(2131304881)).setOnClickListener(this.Ldf);
+    boolean bool1 = ar.jR(paramContext);
+    paramInt = ar.ej(paramContext);
+    ap.i("MicroMsg.SnackBar", "snackbar:isNavBarVisibility : %B,navBarHeightd:%d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(paramInt) });
     boolean bool2 = bn((Activity)paramContext);
-    an.i("MicroMsg.SnackBar", "snackbar:isNavBarTranslucent : %B", new Object[] { Boolean.valueOf(bool2) });
+    ap.i("MicroMsg.SnackBar", "snackbar:isNavBarTranslucent : %B", new Object[] { Boolean.valueOf(bool2) });
     if ((bool2) && (bool1))
     {
       paramViewGroup = (LinearLayout)paramView.findViewById(2131304880);
@@ -172,74 +185,74 @@ public final class a
   
   public static final class a
   {
-    String JlA;
-    private int JlB;
-    private Parcelable JlC;
-    private short JlD;
-    private a JlM;
-    private int kwO;
+    String LcX;
+    private int LcY;
+    private Parcelable LcZ;
+    private short Lda;
+    private a Ldj;
+    private int kSU;
     private Context mContext;
     private int mTextColor;
-    String tAU;
+    String uDD;
     
     public a(Activity paramActivity)
     {
       AppMethodBeat.i(159704);
-      this.JlB = 0;
-      this.JlD = 3500;
+      this.LcY = 0;
+      this.Lda = 3500;
       this.mTextColor = -1;
-      this.kwO = 0;
+      this.kSU = 0;
       this.mContext = paramActivity.getApplicationContext();
-      this.JlM = new a(paramActivity, this.kwO);
+      this.Ldj = new a(paramActivity, this.kSU);
       AppMethodBeat.o(159704);
     }
     
     public a(Context paramContext, View paramView)
     {
       AppMethodBeat.i(159705);
-      this.JlB = 0;
-      this.JlD = 3500;
+      this.LcY = 0;
+      this.Lda = 3500;
       this.mTextColor = -1;
-      this.kwO = 0;
+      this.kSU = 0;
       this.mContext = paramContext;
-      this.JlM = new a(paramContext, paramView, this.kwO);
+      this.Ldj = new a(paramContext, paramView, this.kSU);
       AppMethodBeat.o(159705);
     }
     
     public final a a(a.b paramb)
     {
-      this.JlM.JlG = paramb;
+      this.Ldj.Ldd = paramb;
       return this;
     }
     
     public final a a(a.c paramc)
     {
-      this.JlM.JlH = paramc;
+      this.Ldj.Lde = paramc;
       return this;
     }
     
     public final a a(Short paramShort)
     {
       AppMethodBeat.i(159706);
-      this.JlD = paramShort.shortValue();
+      this.Lda = paramShort.shortValue();
       AppMethodBeat.o(159706);
       return this;
     }
     
-    public final a fwp()
+    public final a fNd()
     {
       AppMethodBeat.i(159707);
-      Object localObject2 = this.tAU;
+      Object localObject2 = this.uDD;
       Object localObject1;
       int j;
       Object localObject3;
       short s;
-      if (this.JlA != null)
+      if (this.LcX != null)
       {
-        localObject1 = this.JlA.toUpperCase();
-        j = this.JlB;
-        localObject3 = this.JlC;
-        s = this.JlD;
+        localObject1 = this.LcX.toUpperCase();
+        j = this.LcY;
+        localObject3 = this.LcZ;
+        s = this.Lda;
         if (this.mTextColor == -1) {
           break label210;
         }
@@ -248,22 +261,22 @@ public final class a
       for (int i = this.mTextColor;; i = this.mContext.getResources().getColor(2131101171))
       {
         localObject2 = new Snack((String)localObject2, (String)localObject1, j, (Parcelable)localObject3, s, i);
-        Object localObject4 = this.JlM;
-        if (((a)localObject4).JlF != null)
+        Object localObject4 = this.Ldj;
+        if (((a)localObject4).Ldc != null)
         {
-          localObject1 = ((a)localObject4).JlF;
+          localObject1 = ((a)localObject4).Ldc;
           localObject3 = ((a)localObject4).mParentView;
-          localObject4 = ((a)localObject4).JlH;
+          localObject4 = ((a)localObject4).Lde;
           if ((((View)localObject3).getParent() != null) && (((View)localObject3).getParent() != localObject1)) {
             ((ViewGroup)((View)localObject3).getParent()).removeView((View)localObject3);
           }
           localObject2 = new SnackContainer.a((Snack)localObject2, (View)localObject3, (a.c)localObject4, (byte)0);
-          ((SnackContainer)localObject1).JlO.offer(localObject2);
-          if (((SnackContainer)localObject1).JlO.size() == 1) {
+          ((SnackContainer)localObject1).Ldl.offer(localObject2);
+          if (((SnackContainer)localObject1).Ldl.size() == 1) {
             ((SnackContainer)localObject1).a((SnackContainer.a)localObject2);
           }
         }
-        localObject1 = this.JlM;
+        localObject1 = this.Ldj;
         AppMethodBeat.o(159707);
         return localObject1;
         localObject1 = null;
@@ -274,12 +287,12 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract void beL();
+    public abstract void bip();
   }
   
   public static abstract interface c
   {
-    public abstract void beK();
+    public abstract void bio();
     
     public abstract void onHide();
     
@@ -288,7 +301,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.snackbar.a
  * JD-Core Version:    0.7.0.1
  */

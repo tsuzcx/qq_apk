@@ -2,71 +2,95 @@ package com.tencent.mm.plugin.fts.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.b.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 
 public final class g
 {
-  public static HashMap<String, String> iuR;
-  public static final a sxc;
-  public static final a sxd;
-  public static final a sxe;
-  public static final a sxf;
-  public static final a sxg;
-  public static final a sxh;
-  public static final a sxi;
-  public static final a sxj;
-  public static final a sxk;
-  public static final a sxl;
-  public static final a sxm;
-  public static final a sxn;
-  public static final a sxo;
-  public static final a sxp;
-  public static final a sxq;
-  public static final a sxr;
-  public static final a sxs;
-  public static final a sxt;
-  public static final a sxu;
-  public static b sxv;
-  public static HashMap<String, String[]> sxw;
+  public static HashMap<String, String> iNU;
+  public static final a ttD;
+  public static final a ttE;
+  public static final a ttF;
+  public static final a ttG;
+  public static final a ttH;
+  public static final a ttI;
+  public static final a ttJ;
+  public static final a ttK;
+  public static final a ttL;
+  public static final a ttM;
+  public static final a ttN;
+  public static final a ttO;
+  public static final a ttP;
+  public static final a ttQ;
+  public static final a ttR;
+  public static final a ttS;
+  public static final a ttT;
+  public static final a ttU;
+  public static final a ttV;
+  public static b ttW;
+  public static HashMap<String, String[]> ttX;
   
   static
   {
     AppMethodBeat.i(131669);
-    sxc = new a(19968, 40869);
-    sxd = new a(40870, 40907);
-    sxe = new a(13312, 19893);
-    sxf = new a(131072, 173782);
-    sxg = new a(173824, 177972);
-    sxh = new a(177984, 178205);
-    sxi = new a(12032, 12245);
-    sxj = new a(63744, 64217);
-    sxk = new a(194560, 195101);
-    sxl = new a(59413, 59503);
-    sxm = new a(58368, 58856);
-    sxn = new a(58880, 59087);
-    sxo = new a(12736, 12771);
-    sxp = new a(12272, 12283);
-    sxq = new a(12549, 12576);
-    sxr = new a(12704, 12730);
-    sxs = new a(65, 90);
-    sxt = new a(97, 122);
-    sxu = new a(48, 57);
-    sxv = new b();
-    iuR = new HashMap();
-    sxw = new HashMap();
+    ttD = new a(19968, 40869);
+    ttE = new a(40870, 40907);
+    ttF = new a(13312, 19893);
+    ttG = new a(131072, 173782);
+    ttH = new a(173824, 177972);
+    ttI = new a(177984, 178205);
+    ttJ = new a(12032, 12245);
+    ttK = new a(63744, 64217);
+    ttL = new a(194560, 195101);
+    ttM = new a(59413, 59503);
+    ttN = new a(58368, 58856);
+    ttO = new a(58880, 59087);
+    ttP = new a(12736, 12771);
+    ttQ = new a(12272, 12283);
+    ttR = new a(12549, 12576);
+    ttS = new a(12704, 12730);
+    ttT = new a(65, 90);
+    ttU = new a(97, 122);
+    ttV = new a(48, 57);
+    ttW = new b();
+    iNU = new HashMap();
+    ttX = new HashMap();
     AppMethodBeat.o(131669);
   }
   
   public static boolean A(char paramChar)
   {
+    AppMethodBeat.i(131665);
+    if ((ttD.GP(paramChar)) || (ttE.GP(paramChar)) || (ttF.GP(paramChar)) || (ttG.GP(paramChar)) || (ttH.GP(paramChar)) || (ttI.GP(paramChar)))
+    {
+      AppMethodBeat.o(131665);
+      return true;
+    }
+    AppMethodBeat.o(131665);
+    return false;
+  }
+  
+  public static boolean B(char paramChar)
+  {
+    AppMethodBeat.i(131666);
+    if ((ttT.GP(paramChar)) || (ttU.GP(paramChar)))
+    {
+      AppMethodBeat.o(131666);
+      return true;
+    }
+    AppMethodBeat.o(131666);
+    return false;
+  }
+  
+  public static boolean C(char paramChar)
+  {
     AppMethodBeat.i(131667);
-    boolean bool = sxu.FA(paramChar);
+    boolean bool = ttV.GP(paramChar);
     AppMethodBeat.o(131667);
     return bool;
   }
   
-  public static final String afW(String paramString)
+  public static final String aku(String paramString)
   {
     AppMethodBeat.i(131668);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -76,10 +100,10 @@ public final class g
     if (i < j)
     {
       char c = paramString[i];
-      if (y(c))
+      if (A(c))
       {
-        String str = (String)iuR.get(String.valueOf(c));
-        if (!bs.isNullOrNil(str)) {
+        String str = (String)iNU.get(String.valueOf(c));
+        if (!bt.isNullOrNil(str)) {
           localStringBuffer.append(str);
         }
       }
@@ -95,50 +119,26 @@ public final class g
     return paramString;
   }
   
-  public static boolean y(char paramChar)
-  {
-    AppMethodBeat.i(131665);
-    if ((sxc.FA(paramChar)) || (sxd.FA(paramChar)) || (sxe.FA(paramChar)) || (sxf.FA(paramChar)) || (sxg.FA(paramChar)) || (sxh.FA(paramChar)))
-    {
-      AppMethodBeat.o(131665);
-      return true;
-    }
-    AppMethodBeat.o(131665);
-    return false;
-  }
-  
-  public static boolean z(char paramChar)
-  {
-    AppMethodBeat.i(131666);
-    if ((sxs.FA(paramChar)) || (sxt.FA(paramChar)))
-    {
-      AppMethodBeat.o(131666);
-      return true;
-    }
-    AppMethodBeat.o(131666);
-    return false;
-  }
-  
   public static final class a
   {
     int bottom;
-    int sxx;
+    int ttY;
     
     public a(int paramInt1, int paramInt2)
     {
       this.bottom = paramInt1;
-      this.sxx = paramInt2;
+      this.ttY = paramInt2;
     }
     
-    public final boolean FA(int paramInt)
+    public final boolean GP(int paramInt)
     {
-      return (paramInt >= this.bottom) && (paramInt <= this.sxx);
+      return (paramInt >= this.bottom) && (paramInt <= this.ttY);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.g
  * JD-Core Version:    0.7.0.1
  */

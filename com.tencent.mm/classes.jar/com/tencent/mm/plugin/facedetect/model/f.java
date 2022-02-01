@@ -6,28 +6,28 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.e;
+import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.facedetect.FaceProNative;
 import com.tencent.mm.plugin.facedetect.PluginFace;
 import com.tencent.mm.plugin.facedetect.service.FaceDetectProcessService;
 import com.tencent.mm.plugin.facedetect.ui.FaceDetectPrepareUI;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public enum f
 {
-  private static ao qxw;
-  public FaceDetectProcessService qxv = null;
+  private static ap rhm;
+  public FaceDetectProcessService rhl = null;
   
   static
   {
     AppMethodBeat.i(103738);
-    qxu = new f("INSTANCE");
-    qxx = new f[] { qxu };
-    qxw = new ao("face_process");
+    rhk = new f("INSTANCE");
+    rhn = new f[] { rhk };
+    rhm = new ap("face_process");
     AppMethodBeat.o(103738);
   }
   
@@ -36,7 +36,7 @@ public enum f
   public static boolean a(Context paramContext, Bundle paramBundle, int paramInt)
   {
     AppMethodBeat.i(103733);
-    ac.i("MicroMsg.FaceDetectManager", "start wx internal face verify");
+    ad.i("MicroMsg.FaceDetectManager", "start wx internal face verify");
     if ((paramContext == null) || (paramBundle == null))
     {
       AppMethodBeat.o(103733);
@@ -49,37 +49,37 @@ public enum f
     return true;
   }
   
-  public static void al(Runnable paramRunnable)
+  public static void ak(Runnable paramRunnable)
   {
     AppMethodBeat.i(103727);
-    qxw.postToWorker(paramRunnable);
+    rhm.postToWorker(paramRunnable);
     AppMethodBeat.o(103727);
   }
   
-  public static void cns()
+  public static void csX()
   {
     AppMethodBeat.i(103728);
-    qxw.removeCallbacksAndMessages(null);
+    rhm.removeCallbacksAndMessages(null);
     AppMethodBeat.o(103728);
   }
   
-  public static ao cnt()
+  public static ap csY()
   {
     AppMethodBeat.i(103729);
-    ao localao = qxw;
+    ap localap = rhm;
     AppMethodBeat.o(103729);
-    return localao;
+    return localap;
   }
   
-  public static boolean cnu()
+  public static boolean csZ()
   {
-    AppMethodBeat.i(210515);
-    boolean bool = p.cnF();
-    AppMethodBeat.o(210515);
+    AppMethodBeat.i(221164);
+    boolean bool = p.ctk();
+    AppMethodBeat.o(221164);
     return bool;
   }
   
-  public static int cnx()
+  public static int ctc()
   {
     AppMethodBeat.i(103736);
     if (!PluginFace.isEnabled())
@@ -100,19 +100,19 @@ public enum f
     return bool;
   }
   
-  public static boolean kY(boolean paramBoolean)
+  public static boolean lr(boolean paramBoolean)
   {
     AppMethodBeat.i(103730);
-    ac.i("MicroMsg.FaceDetectManager", "alvinluo: face detect isCheckDynCfg: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    boolean bool1 = eI(ai.getContext());
-    boolean bool2 = p.cnF();
+    ad.i("MicroMsg.FaceDetectManager", "alvinluo: face detect isCheckDynCfg: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    boolean bool1 = eI(aj.getContext());
+    boolean bool2 = p.ctk();
     boolean bool3 = PluginFace.isEnabled();
     if (paramBoolean)
     {
-      if (bs.getInt(((a)com.tencent.mm.kernel.g.ab(a.class)).ZY().getValue("BioSigFaceEntry"), 0) == 1) {}
+      if (bt.getInt(((a)com.tencent.mm.kernel.g.ab(a.class)).acA().getValue("BioSigFaceEntry"), 0) == 1) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
-        ac.i("MicroMsg.FaceDetectManager", "hy: face config support: %b, hardware support: %b, isModelFileValid: %b, isPluginFaceEnabled: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+        ad.i("MicroMsg.FaceDetectManager", "hy: face config support: %b, hardware support: %b, isModelFileValid: %b, isPluginFaceEnabled: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
         if ((!paramBoolean) || (!(bool1 & bool2)) || (!bool3)) {
           break;
         }
@@ -122,7 +122,7 @@ public enum f
       AppMethodBeat.o(103730);
       return false;
     }
-    ac.i("MicroMsg.FaceDetectManager", "hy: hardware support: %b, isModelFileValid: %b, isPluginFaceEnabled: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+    ad.i("MicroMsg.FaceDetectManager", "hy: hardware support: %b, isModelFileValid: %b, isPluginFaceEnabled: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
     if ((bool2) && (bool1) && (bool3))
     {
       AppMethodBeat.o(103730);
@@ -132,54 +132,54 @@ public enum f
     return false;
   }
   
-  public final int cnv()
+  public final int cta()
   {
     AppMethodBeat.i(103734);
-    g localg = this.qxv.qzy;
-    if (localg.qxy == null)
+    g localg = this.rhl.rjn;
+    if (localg.rho == null)
     {
-      ac.e("MicroMsg.FaceDetectNativeManager", "hy: init motion no instance");
+      ad.e("MicroMsg.FaceDetectNativeManager", "hy: init motion no instance");
       AppMethodBeat.o(103734);
       return -3;
     }
-    int i = localg.qxy.engineReleaseCurrMotion();
+    int i = localg.rho.engineReleaseCurrMotion();
     AppMethodBeat.o(103734);
     return i;
   }
   
-  public final int cnw()
+  public final int ctb()
   {
     AppMethodBeat.i(103735);
-    g localg = this.qxv.qzy;
-    if (localg.qxy == null)
+    g localg = this.rhl.rjn;
+    if (localg.rho == null)
     {
-      ac.e("MicroMsg.FaceDetectNativeManager", "hy: getCurrentMotion not init");
+      ad.e("MicroMsg.FaceDetectNativeManager", "hy: getCurrentMotion not init");
       AppMethodBeat.o(103735);
       return -1;
     }
-    int i = localg.qxy.engineGetCurrMotion();
+    int i = localg.rho.engineGetCurrMotion();
     AppMethodBeat.o(103735);
     return i;
   }
   
-  public final int cny()
+  public final int ctd()
   {
     AppMethodBeat.i(103737);
-    g localg = this.qxv.qzy;
-    if (localg.qxy == null)
+    g localg = this.rhl.rjn;
+    if (localg.rho == null)
     {
-      ac.e("MicroMsg.FaceDetectNativeManager", "hy: startRecord not init");
+      ad.e("MicroMsg.FaceDetectNativeManager", "hy: startRecord not init");
       AppMethodBeat.o(103737);
       return -1;
     }
-    int i = localg.qxy.engineGroupChange();
+    int i = localg.rho.engineGroupChange();
     AppMethodBeat.o(103737);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.f
  * JD-Core Version:    0.7.0.1
  */

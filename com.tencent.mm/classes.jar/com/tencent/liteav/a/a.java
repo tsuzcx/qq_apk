@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import com.tencent.liteav.audio.e;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.muxer.c;
 import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -18,7 +19,6 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.microedition.khronos.egl.EGLContext;
 
 public class a
   implements e, com.tencent.liteav.videoencoder.d
@@ -57,7 +57,7 @@ public class a
           AppMethodBeat.o(16670);
           return;
           TXCLog.d("TXCStreamRecord", "record complete. errcode = " + paramAnonymousMessage.arg1 + ", errmsg = " + (String)paramAnonymousMessage.obj + ", outputPath = " + a.b(a.this).f + ", coverImage = " + a.b(a.this).g);
-          if ((paramAnonymousMessage.arg1 == 0) && (a.b(a.this).g != null) && (!a.b(a.this).g.isEmpty()) && (!com.tencent.liteav.basic.util.d.a(a.b(a.this).f, a.b(a.this).g))) {
+          if ((paramAnonymousMessage.arg1 == 0) && (a.b(a.this).g != null) && (!a.b(a.this).g.isEmpty()) && (!f.a(a.b(a.this).f, a.b(a.this).g))) {
             TXCLog.e("TXCStreamRecord", "saveVideoThumb error. sourcePath = " + a.b(a.this).f + ", coverImagePath = " + a.b(a.this).g);
           }
           if (paramAnonymousMessage.arg1 != 0) {}
@@ -209,7 +209,7 @@ public class a
     if ((parama.h > 0) && (parama.i > 0) && (parama.j > 0))
     {
       this.a.a(10, parama.i, parama.h, parama.j, new WeakReference(this));
-      parama = com.tencent.liteav.basic.util.d.a(this.d.i, this.d.h, 2);
+      parama = f.a(this.d.i, this.d.h, 2);
       this.c.b(parama);
       this.h = true;
     }
@@ -286,7 +286,7 @@ public class a
     public int b = 960;
     public int c = 20;
     public int d = 1000;
-    public EGLContext e;
+    public Object e;
     public String f;
     public String g;
     public int h = 0;

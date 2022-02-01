@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.topstory.a;
 
-import com.tencent.mm.protocal.protobuf.dii;
+import com.tencent.mm.protocal.protobuf.dnx;
 
 public abstract interface e
 {
-  public abstract void Ri(int paramInt);
+  public abstract void Bc(long paramLong);
+  
+  public abstract void SS(int paramInt);
   
   public abstract void a(a parama);
   
   public abstract void b(a parama);
   
-  public abstract boolean ebR();
+  public abstract void eoA();
   
-  public abstract boolean ebS();
+  public abstract String eoB();
   
-  public abstract dii ebT();
+  public abstract long eoC();
   
-  public abstract void ebU();
+  public abstract String eoD();
   
-  public abstract dii ebX();
+  public abstract void eoE();
   
-  public abstract boolean ebZ();
+  public abstract boolean eoF();
   
-  public abstract int eca();
+  public abstract boolean eoG();
   
-  public abstract dii ecc();
+  public abstract boolean eoi();
   
-  public abstract dii ecd();
+  public abstract boolean eoj();
   
-  public abstract boolean ece();
+  public abstract dnx eok();
   
-  public abstract boolean ech();
+  public abstract void eol();
   
-  public abstract String eci();
+  public abstract dnx eoo();
   
-  public abstract void ecj();
+  public abstract boolean eoq();
   
-  public abstract String eck();
+  public abstract int eor();
   
-  public abstract long ecl();
+  public abstract dnx eot();
   
-  public abstract String ecm();
+  public abstract dnx eou();
   
-  public abstract void ecn();
+  public abstract boolean eov();
   
-  public abstract boolean eco();
+  public abstract boolean eoy();
   
-  public abstract boolean ecp();
+  public abstract String eoz();
   
   public abstract void h(long paramLong, int paramInt, boolean paramBoolean);
-  
-  public abstract void yE(long paramLong);
   
   public static abstract interface a
   {
@@ -58,13 +58,13 @@ public abstract interface e
     
     public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean);
     
-    public abstract void axG(String paramString);
+    public abstract void aCL(String paramString);
     
-    public abstract void bn(String paramString, long paramLong);
+    public abstract void bq(String paramString, long paramLong);
     
-    public abstract void bo(String paramString, long paramLong);
+    public abstract void br(String paramString, long paramLong);
     
-    public abstract void ecq();
+    public abstract void eoH();
   }
 }
 

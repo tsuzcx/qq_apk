@@ -3,12 +3,12 @@ package com.tencent.mm.modelappbrand;
 public abstract class aa
   implements o
 {
+  public abstract void Cm(String paramString);
+  
   public final String getName()
   {
     return "onWxaWidgetJsError";
   }
-  
-  public abstract void zn(String paramString);
 }
 
 

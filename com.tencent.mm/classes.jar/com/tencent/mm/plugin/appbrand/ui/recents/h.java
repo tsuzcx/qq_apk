@@ -18,8 +18,8 @@ import com.tencent.mm.plugin.appbrand.appusage.ap;
 import com.tencent.mm.plugin.appbrand.appusage.ap.c;
 import com.tencent.mm.plugin.appbrand.appusage.ap.e;
 import com.tencent.mm.plugin.appbrand.appusage.v;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,40 +30,40 @@ public class h
   extends a
   implements a.a
 {
-  ViewGroup lyD;
-  private final List<a> mkL;
-  private final List<Class<? extends a>> mkM;
-  private boolean mkN;
-  private boolean mkO;
-  private int mkP;
-  private final ap mkQ;
-  private final b mkR;
+  ViewGroup lYb;
+  private final List<a> mLn;
+  private final List<Class<? extends a>> mLo;
+  private boolean mLp;
+  private boolean mLq;
+  private int mLr;
+  private final ap mLs;
+  private final b mLt;
   
   public h(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup, boolean paramBoolean)
   {
     AppMethodBeat.i(180403);
-    this.mkM = new LinkedList();
-    this.mkO = false;
-    this.mkP = 2;
+    this.mLo = new LinkedList();
+    this.mLq = false;
+    this.mLr = 2;
     if ((paramFragmentActivity == null) || (paramViewGroup == null))
     {
       paramFragmentActivity = new IllegalStateException("Unexpected parameters");
       AppMethodBeat.o(180403);
       throw paramFragmentActivity;
     }
-    this.mkR = new b(paramFragmentActivity, (byte)0);
-    this.mkN = paramBoolean;
+    this.mLt = new b(paramFragmentActivity, (byte)0);
+    this.mLp = paramBoolean;
     paramViewGroup = new LinearLayout(paramViewGroup.getContext());
     paramViewGroup.setOrientation(1);
-    this.lyD = paramViewGroup;
-    this.mkL = a(paramFragmentActivity, this.lyD);
-    a(this.mkL, this.lyD);
-    bD(this.mkL);
-    uV(0);
-    this.mkQ = new ap();
-    bwG();
-    paramFragmentActivity = (ap.e)com.tencent.mm.plugin.appbrand.utils.e.cF(new ap.e(this.mkQ));
-    com.tencent.mm.modelgeo.d.aEL().b((b.a)paramFragmentActivity, false);
+    this.lYb = paramViewGroup;
+    this.mLn = a(paramFragmentActivity, this.lYb);
+    a(this.mLn, this.lYb);
+    bF(this.mLn);
+    vA(0);
+    this.mLs = new ap();
+    bAM();
+    paramFragmentActivity = (ap.e)com.tencent.mm.plugin.appbrand.utils.e.cH(new ap.e(this.mLs));
+    com.tencent.mm.modelgeo.d.aHQ().b((b.a)paramFragmentActivity, false);
     AppMethodBeat.o(180403);
   }
   
@@ -84,9 +84,9 @@ public class h
     if (i < paramList.size())
     {
       localObject1 = (a)paramList.get(i);
-      paramViewGroup.addView(((a)localObject1).bwp());
-      if (i == this.mkP) {
-        paramViewGroup.addView(new a(paramViewGroup.getContext()), -1, this.mkR.mkV);
+      paramViewGroup.addView(((a)localObject1).bAv());
+      if (i == this.mLr) {
+        paramViewGroup.addView(new a(paramViewGroup.getContext()), -1, this.mLt.mLx);
       }
       for (;;)
       {
@@ -98,7 +98,7 @@ public class h
             paramList.get(i - 1);
           }
           localObject2 = (a)paramList.get(i + 1);
-          if ((this.mkM.contains(localObject1.getClass())) || (this.mkM.contains(localObject2.getClass())))
+          if ((this.mLo.contains(localObject1.getClass())) || (this.mLo.contains(localObject2.getClass())))
           {
             localObject1 = new LinearLayout(paramViewGroup.getContext());
             ((LinearLayout)localObject1).setOrientation(1);
@@ -108,7 +108,7 @@ public class h
           else
           {
             Object localObject3;
-            if (this.mkN)
+            if (this.mLp)
             {
               int j = paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131165850);
               int k = paramViewGroup.getContext().getResources().getDimensionPixelOffset(2131165840);
@@ -137,11 +137,11 @@ public class h
               localObject1 = paramViewGroup.getContext();
               localObject2 = new View((Context)localObject1);
               localObject3 = new LinearLayout((Context)localObject1);
-              ((LinearLayout)localObject3).setPadding(this.mkR.mkT, 0, 0, 0);
+              ((LinearLayout)localObject3).setPadding(this.mLt.mLv, 0, 0, 0);
               ((LinearLayout)localObject3).setBackgroundResource(2131099650);
-              ((LinearLayout)localObject3).addView((View)localObject2, new LinearLayout.LayoutParams(-1, this.mkR.mkS));
+              ((LinearLayout)localObject3).addView((View)localObject2, new LinearLayout.LayoutParams(-1, this.mLt.mLu));
               ((View)localObject2).setBackgroundColor(((Context)localObject1).getResources().getColor(2131099736));
-              new LinearLayout.LayoutParams(this.mkR.mkT, this.mkR.mkS).gravity = 3;
+              new LinearLayout.LayoutParams(this.mLt.mLv, this.mLt.mLu).gravity = 3;
               paramViewGroup.addView((View)localObject3, new LinearLayout.LayoutParams(-1, -2));
             }
           }
@@ -149,14 +149,14 @@ public class h
       }
     }
     paramList = paramViewGroup.getContext();
-    Object localObject1 = new ColorDrawable(this.mkR.mkW);
+    Object localObject1 = new ColorDrawable(this.mLt.mLy);
     Object localObject2 = new ImageView(paramList);
-    if ((this.mkN) || (!this.mkO)) {
+    if ((this.mLp) || (!this.mLq)) {
       ((ImageView)localObject2).setBackgroundColor(0);
     }
     for (;;)
     {
-      paramViewGroup.addView((View)localObject2, 0, new LinearLayout.LayoutParams(-1, this.mkR.mkX));
+      paramViewGroup.addView((View)localObject2, 0, new LinearLayout.LayoutParams(-1, this.mLt.mLz));
       l(paramViewGroup);
       AppMethodBeat.o(49150);
       return;
@@ -174,41 +174,26 @@ public class h
     AppMethodBeat.o(49145);
   }
   
-  private static void bD(List<a> paramList)
-  {
-    AppMethodBeat.i(49151);
-    if (paramList == null)
-    {
-      AppMethodBeat.o(49151);
-      return;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      ((a)paramList.next()).hB(false);
-    }
-    AppMethodBeat.o(49151);
-  }
-  
-  private void bwG()
+  private void bAM()
   {
     AppMethodBeat.i(180404);
-    Iterator localIterator = this.mkL.iterator();
+    Iterator localIterator = this.mLn.iterator();
     while (localIterator.hasNext())
     {
       Object localObject1 = (a)localIterator.next();
       if ((localObject1 instanceof ap.c))
       {
-        ap localap = this.mkQ;
+        ap localap = this.mLs;
         ap.c localc = (ap.c)localObject1;
-        k.h(localc, "receiver");
-        synchronized (localap.jwk)
+        p.h(localc, "receiver");
+        synchronized (localap.jQg)
         {
-          List localList = (List)localap.jwk.get(localc.aZe());
+          List localList = (List)localap.jQg.get(localc.bcC());
           localObject1 = localList;
           if (localList == null)
           {
             localObject1 = (List)new ArrayList();
-            localap.jwk.put(localc.aZe(), localObject1);
+            localap.jQg.put(localc.bcC(), localObject1);
           }
           ((List)localObject1).add(localc);
         }
@@ -217,15 +202,15 @@ public class h
     AppMethodBeat.o(180404);
   }
   
-  private void bwH()
+  private void bAN()
   {
     int j = 0;
     AppMethodBeat.i(49158);
-    Iterator localIterator = this.mkL.iterator();
+    Iterator localIterator = this.mLn.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
-      if (!((a)localIterator.next()).bwq()) {
+      if (!((a)localIterator.next()).bAw()) {
         break label159;
       }
       i += 1;
@@ -234,23 +219,23 @@ public class h
     for (;;)
     {
       break;
-      localIterator = this.mkL.iterator();
+      localIterator = this.mLn.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
-        if (locala.bwq())
+        if (locala.bAw())
         {
           if (j == 0) {
-            locala.uW(2131231015);
+            locala.vB(2131231015);
           }
           for (;;)
           {
             j += 1;
             break;
-            if ((j == this.mkL.size() - 1) || (j == i - 1)) {
-              locala.uW(2131231013);
+            if ((j == this.mLn.size() - 1) || (j == i - 1)) {
+              locala.vB(2131231013);
             } else {
-              locala.uW(2131231014);
+              locala.vB(2131231014);
             }
           }
         }
@@ -260,27 +245,42 @@ public class h
     }
   }
   
+  private static void bF(List<a> paramList)
+  {
+    AppMethodBeat.i(49151);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(49151);
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      ((a)paramList.next()).hL(false);
+    }
+    AppMethodBeat.o(49151);
+  }
+  
   private void l(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(49152);
     FrameLayout localFrameLayout = new FrameLayout(paramViewGroup.getContext());
     Context localContext = localFrameLayout.getContext();
-    ColorDrawable localColorDrawable = new ColorDrawable(this.mkR.mkW);
+    ColorDrawable localColorDrawable = new ColorDrawable(this.mLt.mLy);
     ImageView localImageView = new ImageView(localContext);
-    if ((this.mkN) || (!this.mkO))
+    if ((this.mLp) || (!this.mLq))
     {
       localImageView.setBackgroundColor(0);
-      localFrameLayout.addView(localImageView, -1, this.mkR.mkX);
-      localFrameLayout.addView(new View(localContext), -1, this.mkR.mkV);
+      localFrameLayout.addView(localImageView, -1, this.mLt.mLz);
+      localFrameLayout.addView(new View(localContext), -1, this.mLt.mLx);
       localImageView = new ImageView(localContext);
-      if ((!this.mkN) && (this.mkO)) {
+      if ((!this.mLp) && (this.mLq)) {
         break label194;
       }
       localImageView.setBackgroundColor(0);
     }
     for (;;)
     {
-      localFrameLayout.addView(localImageView, -1, this.mkR.mkX);
+      localFrameLayout.addView(localImageView, -1, this.mLt.mLz);
       localFrameLayout.setId(2131296764);
       paramViewGroup.addView(localFrameLayout, -1, -2);
       AppMethodBeat.o(49152);
@@ -299,14 +299,14 @@ public class h
     AppMethodBeat.i(180405);
     ArrayList localArrayList = new ArrayList(2);
     Object localObject = new d(paramFragmentActivity, paramViewGroup);
-    ((a)localObject).miJ = this;
+    ((a)localObject).mJk = this;
     a(localArrayList, (a)localObject);
     a(localArrayList, c(paramFragmentActivity, paramViewGroup));
     localObject = new c(paramFragmentActivity, paramViewGroup);
-    ((a)localObject).miJ = this;
+    ((a)localObject).mJk = this;
     a(localArrayList, (a)localObject);
     localObject = new e(paramFragmentActivity, paramViewGroup);
-    ((a)localObject).miJ = this;
+    ((a)localObject).mJk = this;
     a(localArrayList, (a)localObject);
     a(localArrayList, b(paramFragmentActivity, paramViewGroup));
     AppMethodBeat.o(180405);
@@ -316,14 +316,14 @@ public class h
   public final void a(a parama, View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(49159);
-    if (this.lyD == null)
+    if (this.lYb == null)
     {
       AppMethodBeat.o(49159);
       return;
     }
-    ac.i("AppBrandLauncherRecentsListHeaderController", "onViewEnabledChanged [%s] [%s] [%b]", new Object[] { parama, paramView, Boolean.valueOf(paramBoolean) });
-    if ((this.lyD == null) || (this.mkL == null)) {
-      paramView = this.mkL.iterator();
+    ad.i("AppBrandLauncherRecentsListHeaderController", "onViewEnabledChanged [%s] [%s] [%b]", new Object[] { parama, paramView, Boolean.valueOf(paramBoolean) });
+    if ((this.lYb == null) || (this.mLn == null)) {
+      paramView = this.mLn.iterator();
     }
     Object localObject;
     int i;
@@ -335,31 +335,31 @@ public class h
     {
       if (paramView.hasNext())
       {
-        localObject = ((a)paramView.next()).bwp();
+        localObject = ((a)paramView.next()).bAv();
         if ((localObject != null) && (((View)localObject).getVisibility() == 0))
         {
-          ac.i("AppBrandLauncherRecentsListHeaderController", "hasValidHeader %s", new Object[] { parama });
+          ad.i("AppBrandLauncherRecentsListHeaderController", "hasValidHeader %s", new Object[] { parama });
           i = 1;
           if (i != 0)
           {
-            this.lyD.setVisibility(0);
-            if (this.mkN) {
-              bwH();
+            this.lYb.setVisibility(0);
+            if (this.mLp) {
+              bAN();
             }
             AppMethodBeat.o(49159);
             return;
             i = 0;
             paramBoolean = false;
-            if (i < this.mkL.size() - 1)
+            if (i < this.mLn.size() - 1)
             {
-              paramView = (a)this.mkL.get(i);
+              paramView = (a)this.mLn.get(i);
               bool = paramBoolean;
               if (paramView != null)
               {
                 if (paramBoolean) {
                   break label399;
                 }
-                paramBoolean = paramView.bwq();
+                paramBoolean = paramView.bAw();
               }
             }
           }
@@ -370,9 +370,9 @@ public class h
     label399:
     for (;;)
     {
-      if (!paramView.bwq())
+      if (!paramView.bAw())
       {
-        localObject = this.lyD.getChildAt(this.lyD.indexOfChild(paramView.bwp()) + 1);
+        localObject = this.lYb.getChildAt(this.lYb.indexOfChild(paramView.bAv()) + 1);
         if (localObject != null) {
           ((View)localObject).setVisibility(8);
         }
@@ -381,11 +381,11 @@ public class h
       else
       {
         j = i + 1;
-        if (j >= this.mkL.size()) {
+        if (j >= this.mLn.size()) {
           break label393;
         }
-        localObject = (a)this.mkL.get(j);
-        if ((localObject == null) || (!((a)localObject).bwq())) {
+        localObject = (a)this.mLn.get(j);
+        if ((localObject == null) || (!((a)localObject).bAw())) {
           break label366;
         }
       }
@@ -393,7 +393,7 @@ public class h
       {
         if (j != 0)
         {
-          paramView = this.lyD.getChildAt(this.lyD.indexOfChild(paramView.bwp()) + 1);
+          paramView = this.lYb.getChildAt(this.lYb.indexOfChild(paramView.bAv()) + 1);
           if (paramView != null) {
             paramView.setVisibility(0);
           }
@@ -406,7 +406,7 @@ public class h
         label366:
         j += 1;
         break label270;
-        this.lyD.setVisibility(8);
+        this.lYb.setVisibility(8);
         break label141;
         i = 0;
         break label128;
@@ -417,33 +417,33 @@ public class h
   protected a b(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(180406);
-    v.aYV();
+    v.bct();
     paramFragmentActivity = new b(paramFragmentActivity, paramViewGroup);
-    paramFragmentActivity.miJ = this;
+    paramFragmentActivity.mJk = this;
     AppMethodBeat.o(180406);
     return paramFragmentActivity;
   }
   
-  public final void bwo()
+  public final void bAu()
   {
     AppMethodBeat.i(49153);
-    Iterator localIterator = this.mkL.iterator();
+    Iterator localIterator = this.mLn.iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).bwo();
+      ((a)localIterator.next()).bAu();
     }
     AppMethodBeat.o(49153);
   }
   
-  public final View bwp()
+  public final View bAv()
   {
-    return this.lyD;
+    return this.lYb;
   }
   
   protected a c(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(180407);
     paramFragmentActivity = new j(paramFragmentActivity, paramViewGroup);
-    paramFragmentActivity.miJ = this;
+    paramFragmentActivity.mJk = this;
     AppMethodBeat.o(180407);
     return paramFragmentActivity;
   }
@@ -451,19 +451,19 @@ public class h
   public final void onDetached()
   {
     AppMethodBeat.i(49154);
-    Iterator localIterator = this.mkL.iterator();
+    Iterator localIterator = this.mLn.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onDetached();
     }
-    this.mkL.clear();
-    this.mkQ.jwk.clear();
+    this.mLn.clear();
+    this.mLs.jQg.clear();
     AppMethodBeat.o(49154);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(180408);
-    Iterator localIterator = this.mkL.iterator();
+    Iterator localIterator = this.mLn.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onPause();
     }
@@ -473,27 +473,27 @@ public class h
   public final void onResume()
   {
     AppMethodBeat.i(49155);
-    Iterator localIterator = this.mkL.iterator();
+    Iterator localIterator = this.mLn.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).onResume();
     }
     AppMethodBeat.o(49155);
   }
   
-  public final void uV(int paramInt)
+  public final void vA(int paramInt)
   {
     AppMethodBeat.i(49156);
-    Iterator localIterator = this.mkL.iterator();
+    Iterator localIterator = this.mLn.iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).uV(paramInt);
+      ((a)localIterator.next()).vA(paramInt);
     }
     AppMethodBeat.o(49156);
   }
   
-  public final void uW(int paramInt)
+  public final void vB(int paramInt)
   {
     AppMethodBeat.i(49157);
-    bwH();
+    bAN();
     AppMethodBeat.o(49157);
   }
   
@@ -508,22 +508,22 @@ public class h
   
   final class b
   {
-    final int mkS;
-    final int mkT;
-    private final int mkU;
-    final int mkV;
-    final int mkW;
-    final int mkX;
+    final int mLu;
+    final int mLv;
+    private final int mLw;
+    final int mLx;
+    final int mLy;
+    final int mLz;
     
     private b(Context paramContext)
     {
       AppMethodBeat.i(49142);
-      this.mkS = paramContext.getResources().getDimensionPixelSize(2131165923);
-      this.mkT = com.tencent.mm.cc.a.fromDPToPix(paramContext, 56);
-      this.mkU = 0;
-      this.mkV = com.tencent.mm.cc.a.fromDPToPix(paramContext, 8);
-      this.mkW = com.tencent.mm.cc.a.n(paramContext, 2131099950);
-      this.mkX = 2;
+      this.mLu = paramContext.getResources().getDimensionPixelSize(2131165923);
+      this.mLv = com.tencent.mm.cc.a.fromDPToPix(paramContext, 56);
+      this.mLw = 0;
+      this.mLx = com.tencent.mm.cc.a.fromDPToPix(paramContext, 8);
+      this.mLy = com.tencent.mm.cc.a.n(paramContext, 2131099950);
+      this.mLz = 2;
       AppMethodBeat.o(49142);
     }
   }

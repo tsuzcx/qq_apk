@@ -6,73 +6,72 @@ import java.util.AbstractList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.RandomAccess;
 
 public final class h<E>
   extends AbstractList<E>
   implements RandomAccess
 {
-  private int LPe;
-  private Object LPf;
+  private int NFZ;
+  private Object NGa;
   
   public final void add(int paramInt, E paramE)
   {
     AppMethodBeat.i(61385);
-    if ((paramInt < 0) || (paramInt > this.LPe))
+    if ((paramInt < 0) || (paramInt > this.NFZ))
     {
-      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.LPe);
+      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.NFZ);
       AppMethodBeat.o(61385);
       throw paramE;
     }
-    if (this.LPe == 0) {}
-    for (this.LPf = paramE;; this.LPf = new Object[] { paramE, this.LPf })
+    if (this.NFZ == 0) {}
+    for (this.NGa = paramE;; this.NGa = new Object[] { paramE, this.NGa })
     {
-      this.LPe += 1;
+      this.NFZ += 1;
       this.modCount += 1;
       AppMethodBeat.o(61385);
       return;
-      if ((this.LPe != 1) || (paramInt != 0)) {
+      if ((this.NFZ != 1) || (paramInt != 0)) {
         break;
       }
     }
-    Object[] arrayOfObject1 = new Object[this.LPe + 1];
-    if (this.LPe == 1) {
-      arrayOfObject1[0] = this.LPf;
+    Object[] arrayOfObject1 = new Object[this.NFZ + 1];
+    if (this.NFZ == 1) {
+      arrayOfObject1[0] = this.NGa;
     }
     for (;;)
     {
       arrayOfObject1[paramInt] = paramE;
-      this.LPf = arrayOfObject1;
+      this.NGa = arrayOfObject1;
       break;
-      Object[] arrayOfObject2 = (Object[])this.LPf;
+      Object[] arrayOfObject2 = (Object[])this.NGa;
       System.arraycopy(arrayOfObject2, 0, arrayOfObject1, 0, paramInt);
-      System.arraycopy(arrayOfObject2, paramInt, arrayOfObject1, paramInt + 1, this.LPe - paramInt);
+      System.arraycopy(arrayOfObject2, paramInt, arrayOfObject1, paramInt + 1, this.NFZ - paramInt);
     }
   }
   
   public final boolean add(E paramE)
   {
     AppMethodBeat.i(61384);
-    if (this.LPe == 0) {}
-    for (this.LPf = paramE;; this.LPf = new Object[] { this.LPf, paramE })
+    if (this.NFZ == 0) {}
+    for (this.NGa = paramE;; this.NGa = new Object[] { this.NGa, paramE })
     {
-      this.LPe += 1;
+      this.NFZ += 1;
       this.modCount += 1;
       AppMethodBeat.o(61384);
       return true;
-      if (this.LPe != 1) {
+      if (this.NFZ != 1) {
         break;
       }
     }
-    Object[] arrayOfObject2 = (Object[])this.LPf;
+    Object[] arrayOfObject2 = (Object[])this.NGa;
     int k = arrayOfObject2.length;
     Object[] arrayOfObject1 = arrayOfObject2;
     int i;
-    if (this.LPe >= k)
+    if (this.NFZ >= k)
     {
       i = k * 3 / 2 + 1;
-      int j = this.LPe + 1;
+      int j = this.NFZ + 1;
       if (i >= j) {
         break label161;
       }
@@ -82,36 +81,36 @@ public final class h<E>
     for (;;)
     {
       arrayOfObject1 = new Object[i];
-      this.LPf = arrayOfObject1;
+      this.NGa = arrayOfObject1;
       System.arraycopy(arrayOfObject2, 0, arrayOfObject1, 0, k);
-      arrayOfObject1[this.LPe] = paramE;
+      arrayOfObject1[this.NFZ] = paramE;
       break;
     }
   }
   
   public final void clear()
   {
-    this.LPf = null;
-    this.LPe = 0;
+    this.NGa = null;
+    this.NFZ = 0;
     this.modCount += 1;
   }
   
   public final E get(int paramInt)
   {
     AppMethodBeat.i(61383);
-    if ((paramInt < 0) || (paramInt >= this.LPe))
+    if ((paramInt < 0) || (paramInt >= this.NFZ))
     {
-      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.LPe);
+      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.NFZ);
       AppMethodBeat.o(61383);
       throw ((Throwable)localObject);
     }
-    if (this.LPe == 1)
+    if (this.NFZ == 1)
     {
-      localObject = this.LPf;
+      localObject = this.NGa;
       AppMethodBeat.o(61383);
       return localObject;
     }
-    Object localObject = ((Object[])(Object[])this.LPf)[paramInt];
+    Object localObject = ((Object[])(Object[])this.NGa)[paramInt];
     AppMethodBeat.o(61383);
     return localObject;
   }
@@ -119,16 +118,16 @@ public final class h<E>
   public final Iterator<E> iterator()
   {
     AppMethodBeat.i(61388);
-    if (this.LPe == 0)
+    if (this.NFZ == 0)
     {
-      localObject = a.gcQ();
+      localObject = h.a.gur();
       if (localObject == null) {
-        agL(2);
+        ajm(2);
       }
       AppMethodBeat.o(61388);
       return localObject;
     }
-    if (this.LPe == 1)
+    if (this.NFZ == 1)
     {
       localObject = new b();
       AppMethodBeat.o(61388);
@@ -136,7 +135,7 @@ public final class h<E>
     }
     Object localObject = super.iterator();
     if (localObject == null) {
-      agL(3);
+      ajm(3);
     }
     AppMethodBeat.o(61388);
     return localObject;
@@ -146,36 +145,36 @@ public final class h<E>
   {
     AppMethodBeat.i(61387);
     Object localObject;
-    if ((paramInt < 0) || (paramInt >= this.LPe))
+    if ((paramInt < 0) || (paramInt >= this.NFZ))
     {
-      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.LPe);
+      localObject = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.NFZ);
       AppMethodBeat.o(61387);
       throw ((Throwable)localObject);
     }
-    if (this.LPe == 1)
+    if (this.NFZ == 1)
     {
-      localObject = this.LPf;
-      this.LPf = null;
+      localObject = this.NGa;
+      this.NGa = null;
     }
     for (;;)
     {
-      this.LPe -= 1;
+      this.NFZ -= 1;
       this.modCount += 1;
       AppMethodBeat.o(61387);
       return localObject;
-      Object[] arrayOfObject = (Object[])this.LPf;
+      Object[] arrayOfObject = (Object[])this.NGa;
       localObject = arrayOfObject[paramInt];
-      if (this.LPe == 2)
+      if (this.NFZ == 2)
       {
-        this.LPf = arrayOfObject[(1 - paramInt)];
+        this.NGa = arrayOfObject[(1 - paramInt)];
       }
       else
       {
-        int i = this.LPe - paramInt - 1;
+        int i = this.NFZ - paramInt - 1;
         if (i > 0) {
           System.arraycopy(arrayOfObject, paramInt + 1, arrayOfObject, paramInt, i);
         }
-        arrayOfObject[(this.LPe - 1)] = null;
+        arrayOfObject[(this.NFZ - 1)] = null;
       }
     }
   }
@@ -183,23 +182,23 @@ public final class h<E>
   public final E set(int paramInt, E paramE)
   {
     AppMethodBeat.i(61386);
-    if ((paramInt < 0) || (paramInt >= this.LPe))
+    if ((paramInt < 0) || (paramInt >= this.NFZ))
     {
-      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.LPe);
+      paramE = new IndexOutOfBoundsException("Index: " + paramInt + ", Size: " + this.NFZ);
       AppMethodBeat.o(61386);
       throw paramE;
     }
     Object localObject;
-    if (this.LPe == 1)
+    if (this.NFZ == 1)
     {
-      localObject = this.LPf;
-      this.LPf = paramE;
+      localObject = this.NGa;
+      this.NGa = paramE;
     }
     for (paramE = localObject;; paramE = localObject)
     {
       AppMethodBeat.o(61386);
       return paramE;
-      Object[] arrayOfObject = (Object[])this.LPf;
+      Object[] arrayOfObject = (Object[])this.NGa;
       localObject = arrayOfObject[paramInt];
       arrayOfObject[paramInt] = paramE;
     }
@@ -207,106 +206,67 @@ public final class h<E>
   
   public final int size()
   {
-    return this.LPe;
+    return this.NFZ;
   }
   
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(61389);
     if (paramArrayOfT == null) {
-      agL(4);
+      ajm(4);
     }
     int i = paramArrayOfT.length;
-    if (this.LPe == 1) {
+    if (this.NFZ == 1) {
       if (i != 0) {
-        paramArrayOfT[0] = this.LPf;
+        paramArrayOfT[0] = this.NGa;
       }
     }
     for (;;)
     {
-      if (i > this.LPe) {
-        paramArrayOfT[this.LPe] = null;
+      if (i > this.NFZ) {
+        paramArrayOfT[this.NFZ] = null;
       }
       if (paramArrayOfT == null) {
-        agL(7);
+        ajm(7);
       }
       AppMethodBeat.o(61389);
       return paramArrayOfT;
       paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), 1);
-      paramArrayOfT[0] = this.LPf;
+      paramArrayOfT[0] = this.NGa;
       if (paramArrayOfT == null) {
-        agL(5);
+        ajm(5);
       }
       AppMethodBeat.o(61389);
       return paramArrayOfT;
-      if (i < this.LPe)
+      if (i < this.NFZ)
       {
-        paramArrayOfT = (Object[])Arrays.copyOf((Object[])this.LPf, this.LPe, paramArrayOfT.getClass());
+        paramArrayOfT = (Object[])Arrays.copyOf((Object[])this.NGa, this.NFZ, paramArrayOfT.getClass());
         if (paramArrayOfT == null) {
-          agL(6);
+          ajm(6);
         }
         AppMethodBeat.o(61389);
         return paramArrayOfT;
       }
-      if (this.LPe != 0) {
-        System.arraycopy(this.LPf, 0, paramArrayOfT, 0, this.LPe);
+      if (this.NFZ != 0) {
+        System.arraycopy(this.NGa, 0, paramArrayOfT, 0, this.NFZ);
       }
-    }
-  }
-  
-  static final class a<T>
-    implements Iterator<T>
-  {
-    private static final a LPg;
-    
-    static
-    {
-      AppMethodBeat.i(61378);
-      LPg = new a();
-      AppMethodBeat.o(61378);
-    }
-    
-    public static <T> a<T> gcQ()
-    {
-      return LPg;
-    }
-    
-    public final boolean hasNext()
-    {
-      return false;
-    }
-    
-    public final T next()
-    {
-      AppMethodBeat.i(61376);
-      NoSuchElementException localNoSuchElementException = new NoSuchElementException();
-      AppMethodBeat.o(61376);
-      throw localNoSuchElementException;
-    }
-    
-    public final void remove()
-    {
-      AppMethodBeat.i(61377);
-      IllegalStateException localIllegalStateException = new IllegalStateException();
-      AppMethodBeat.o(61377);
-      throw localIllegalStateException;
     }
   }
   
   final class b
     extends h.c<E>
   {
-    private final int LPh;
+    private final int NGc;
     
     public b()
     {
       super();
       AppMethodBeat.i(61379);
-      this.LPh = h.a(h.this);
+      this.NGc = h.a(h.this);
       AppMethodBeat.o(61379);
     }
     
-    protected final E gcR()
+    protected final E gus()
     {
       AppMethodBeat.i(61380);
       Object localObject = h.b(h.this);
@@ -314,12 +274,12 @@ public final class h<E>
       return localObject;
     }
     
-    protected final void gcS()
+    protected final void gut()
     {
       AppMethodBeat.i(61381);
-      if (h.c(h.this) != this.LPh)
+      if (h.c(h.this) != this.NGc)
       {
-        ConcurrentModificationException localConcurrentModificationException = new ConcurrentModificationException("ModCount: " + h.d(h.this) + "; expected: " + this.LPh);
+        ConcurrentModificationException localConcurrentModificationException = new ConcurrentModificationException("ModCount: " + h.d(h.this) + "; expected: " + this.NGc);
         AppMethodBeat.o(61381);
         throw localConcurrentModificationException;
       }
@@ -329,40 +289,15 @@ public final class h<E>
     public final void remove()
     {
       AppMethodBeat.i(61382);
-      gcS();
+      gut();
       h.this.clear();
       AppMethodBeat.o(61382);
-    }
-  }
-  
-  static abstract class c<T>
-    implements Iterator<T>
-  {
-    private boolean LPj;
-    
-    protected abstract T gcR();
-    
-    protected abstract void gcS();
-    
-    public final boolean hasNext()
-    {
-      return !this.LPj;
-    }
-    
-    public final T next()
-    {
-      if (this.LPj) {
-        throw new NoSuchElementException();
-      }
-      this.LPj = true;
-      gcS();
-      return gcR();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.o.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.widget.input.ad;
+import com.tencent.mm.plugin.appbrand.widget.input.o;
+import java.lang.ref.WeakReference;
 
 public final class e
-  extends b
+  extends a<aa>
 {
-  public static final int CTRL_INDEX = 785;
-  public static final String NAME = "addMapCustomLayer";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    AppMethodBeat.i(183551);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
-    {
-      ac.e("MicroMsg.JsApiAddMapCustomLayer", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(183551);
-      return;
-    }
-    ac.i("MicroMsg.JsApiAddMapCustomLayer", "data:%s", new Object[] { paramJSONObject });
-    com.tencent.mm.plugin.appbrand.jsapi.f.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
-    {
-      ac.e("MicroMsg.JsApiAddMapCustomLayer", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(183551);
-      return;
-    }
-    localb.Mm(paramJSONObject.optString("layerId", ""));
-    a(paramc, paramInt, e("ok", null), true, localb.bhm());
-    AppMethodBeat.o(183551);
-  }
+  private static final int CTRL_INDEX = 119;
+  private static final String NAME = "removeTextArea";
 }
 
 

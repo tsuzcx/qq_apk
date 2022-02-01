@@ -5,26 +5,26 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.scanner.model.y;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.plugin.scanner.model.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animationType", "controller", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "viewHeight", "viewWidth", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "refreshView", "release", "setDuration", "duration", "", "show", "visible", "", "startAnimation", "stopAnimation", "Companion", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/ScanAnimationDotsView;", "Landroid/view/View;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "animationType", "controller", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanDotsAnimationController;", "viewHeight", "viewWidth", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "init", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "refreshView", "release", "setDuration", "duration", "", "show", "visible", "", "startAnimation", "stopAnimation", "Companion", "plugin-scan_release"})
 public final class ScanAnimationDotsView
   extends View
   implements d
 {
-  public static final ScanAnimationDotsView.a xhQ;
-  private int fMt;
-  private int fMu;
-  private int xhO;
-  private e xhP;
+  public static final ScanAnimationDotsView.a yvR;
+  private int gfT;
+  private int gfU;
+  private int yvP;
+  private e yvQ;
   
   static
   {
     AppMethodBeat.i(52285);
-    xhQ = new ScanAnimationDotsView.a((byte)0);
+    yvR = new ScanAnimationDotsView.a((byte)0);
     AppMethodBeat.o(52285);
   }
   
@@ -39,20 +39,20 @@ public final class ScanAnimationDotsView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52284);
-    this.xhO = 1;
-    this.xhP = i.a(this.xhO, paramContext, (d)this);
+    this.yvP = 1;
+    this.yvQ = i.a(this.yvP, paramContext, (d)this);
     AppMethodBeat.o(52284);
   }
   
-  public final void b(y paramy)
+  public final void b(ab paramab)
   {
     AppMethodBeat.i(52280);
-    k.h(paramy, "pointsResult");
-    ac.v("MicroMsg.ScanAnimationDotsView", "alvinluo addAnimationDots size: %d", new Object[] { Integer.valueOf(paramy.pointCount) });
-    e locale = this.xhP;
+    p.h(paramab, "pointsResult");
+    ad.v("MicroMsg.ScanAnimationDotsView", "alvinluo addAnimationDots size: %d", new Object[] { Integer.valueOf(paramab.pointCount) });
+    e locale = this.yvQ;
     if (locale != null)
     {
-      locale.b(paramy);
+      locale.b(paramab);
       AppMethodBeat.o(52280);
       return;
     }
@@ -63,7 +63,7 @@ public final class ScanAnimationDotsView
   {
     AppMethodBeat.i(52275);
     super.onDraw(paramCanvas);
-    e locale = this.xhP;
+    e locale = this.yvQ;
     if (locale != null)
     {
       locale.draw(paramCanvas);
@@ -77,14 +77,14 @@ public final class ScanAnimationDotsView
   {
     AppMethodBeat.i(52276);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.fMt != getMeasuredWidth()) || (this.fMu != getMeasuredHeight()))
+    if ((this.gfT != getMeasuredWidth()) || (this.gfU != getMeasuredHeight()))
     {
-      this.fMt = getMeasuredWidth();
-      this.fMu = getMeasuredHeight();
-      e locale = this.xhP;
+      this.gfT = getMeasuredWidth();
+      this.gfU = getMeasuredHeight();
+      e locale = this.yvQ;
       if (locale != null)
       {
-        locale.ha(this.fMt, this.fMu);
+        locale.hr(this.gfT, this.gfU);
         AppMethodBeat.o(52276);
         return;
       }
@@ -95,7 +95,7 @@ public final class ScanAnimationDotsView
   public final void refreshView()
   {
     AppMethodBeat.i(52278);
-    e locale = this.xhP;
+    e locale = this.yvQ;
     if (locale != null) {
       locale.refreshView();
     }
@@ -106,7 +106,7 @@ public final class ScanAnimationDotsView
   public final void release()
   {
     AppMethodBeat.i(52282);
-    e locale = this.xhP;
+    e locale = this.yvQ;
     if (locale != null)
     {
       locale.release();
@@ -119,7 +119,7 @@ public final class ScanAnimationDotsView
   public final void setDuration(long paramLong)
   {
     AppMethodBeat.i(52277);
-    e locale = this.xhP;
+    e locale = this.yvQ;
     if (locale != null)
     {
       locale.setDuration(paramLong);
@@ -132,8 +132,8 @@ public final class ScanAnimationDotsView
   public final void startAnimation()
   {
     AppMethodBeat.i(52279);
-    ac.v("MicroMsg.ScanAnimationDotsView", "alvinluo startAnimation type: %d", new Object[] { Integer.valueOf(this.xhO) });
-    e locale = this.xhP;
+    ad.v("MicroMsg.ScanAnimationDotsView", "alvinluo startAnimation type: %d", new Object[] { Integer.valueOf(this.yvP) });
+    e locale = this.yvQ;
     if (locale != null)
     {
       locale.startAnimation();
@@ -146,8 +146,8 @@ public final class ScanAnimationDotsView
   public final void stopAnimation()
   {
     AppMethodBeat.i(52281);
-    ac.v("MicroMsg.ScanAnimationDotsView", "alvinluo stopAnimation");
-    e locale = this.xhP;
+    ad.v("MicroMsg.ScanAnimationDotsView", "alvinluo stopAnimation");
+    e locale = this.yvQ;
     if (locale != null)
     {
       locale.stopAnimation();

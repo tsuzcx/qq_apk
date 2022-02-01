@@ -13,18 +13,18 @@ import com.tencent.mm.ui.widget.MMWebView;
 public class TransparentWebViewUI
   extends GameWebViewUI
 {
-  public final boolean bMn()
+  public final boolean bQO()
   {
     return false;
   }
   
-  protected final void eDd()
+  protected final void eRV()
   {
     AppMethodBeat.i(79798);
     setBackGroundColorResource(0);
     getContentView().setBackgroundResource(0);
-    this.nKq.setBackgroundResource(17170445);
-    this.nKq.setBackgroundColor(0);
+    this.omW.setBackgroundResource(17170445);
+    this.omW.setBackgroundColor(0);
     findViewById(2131306921).setBackgroundResource(17170445);
     findViewById(2131304241).setBackgroundResource(17170445);
     AppMethodBeat.o(79798);
@@ -35,15 +35,15 @@ public class TransparentWebViewUI
     int i = 1;
     AppMethodBeat.i(79797);
     super.initView();
-    this.CAF.CxX = true;
-    this.CAF.jCl = false;
-    this.CAF.ut(true);
-    this.CAF.VH(0);
+    this.Een.EbG = true;
+    this.Een.jWh = false;
+    this.Een.ve(true);
+    this.Een.Xw(0);
     if ((getIntent() != null) && (getIntent().hasExtra("show_full_screen")) && (getIntent().getBooleanExtra("show_full_screen", false))) {}
     for (;;)
     {
-      if ((i != 0) && (this.Czb != null)) {
-        this.Czb.setCanMove(false);
+      if ((i != 0) && (this.EcK != null)) {
+        this.EcK.setCanMove(false);
       }
       AppMethodBeat.o(79797);
       return;
@@ -58,17 +58,17 @@ public class TransparentWebViewUI
     if (this.screenOrientation == 1001)
     {
       this.screenOrientation = 0;
-      if (this.Cze != null)
+      if (this.EcN != null)
       {
-        this.Cze.enable();
+        this.EcN.enable();
         AppMethodBeat.o(79796);
       }
     }
     else if (this.screenOrientation == 1002)
     {
       this.screenOrientation = 1;
-      if (this.Cze != null) {
-        this.Cze.enable();
+      if (this.EcN != null) {
+        this.EcN.enable();
       }
     }
     AppMethodBeat.o(79796);

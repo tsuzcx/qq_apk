@@ -9,32 +9,32 @@ import java.util.HashMap;
 public final class d
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.plugin.game.commlib.a.a
 {
-  private b sWf;
+  private b tSL;
   
-  public final void a(String paramString, com.tencent.mm.bw.a parama)
+  public final void a(String paramString, com.tencent.mm.bx.a parama)
   {
     AppMethodBeat.i(89937);
-    this.sWf.b(paramString, parama);
+    this.tSL.b(paramString, parama);
     AppMethodBeat.o(89937);
   }
   
-  public final byte[] agO(String paramString)
+  public final byte[] all(String paramString)
   {
     AppMethodBeat.i(89938);
-    if (this.sWf == null)
+    if (this.tSL == null)
     {
       AppMethodBeat.o(89938);
       return null;
     }
-    paramString = this.sWf.agO(paramString);
+    paramString = this.tSL.all(paramString);
     AppMethodBeat.o(89938);
     return paramString;
   }
   
-  public final void agP(String paramString)
+  public final void alm(String paramString)
   {
     AppMethodBeat.i(184538);
-    this.sWf.agP(paramString);
+    this.tSL.alm(paramString);
     AppMethodBeat.o(184538);
   }
   
@@ -58,14 +58,14 @@ public final class d
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
     AppMethodBeat.i(89940);
-    this.sWf = new b(paramh1);
+    this.tSL = new b(paramh1);
     AppMethodBeat.o(89940);
   }
   
-  public final void p(String paramString, byte[] paramArrayOfByte)
+  public final void q(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(184537);
-    this.sWf.q(paramString, paramArrayOfByte);
+    this.tSL.r(paramString, paramArrayOfByte);
     AppMethodBeat.o(184537);
   }
 }

@@ -8,20 +8,20 @@ import java.lang.ref.WeakReference;
 public final class b
   implements n.b
 {
-  private WeakReference<n.b> cnv;
+  private WeakReference<n.b> cya;
   
   public b(n.b paramb)
   {
     AppMethodBeat.i(27601);
-    this.cnv = new WeakReference(paramb);
+    this.cya = new WeakReference(paramb);
     AppMethodBeat.o(27601);
   }
   
   public final void a(int paramInt, n paramn, Object paramObject)
   {
     AppMethodBeat.i(27602);
-    if (this.cnv.get() != null) {
-      ((n.b)this.cnv.get()).a(paramInt, paramn, paramObject);
+    if (this.cya.get() != null) {
+      ((n.b)this.cya.get()).a(paramInt, paramn, paramObject);
     }
     AppMethodBeat.o(27602);
   }

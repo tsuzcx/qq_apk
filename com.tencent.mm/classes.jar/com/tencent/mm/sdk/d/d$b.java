@@ -5,20 +5,20 @@ import java.util.Vector;
 
 final class d$b
 {
-  private Vector<d.a> Gvi;
-  private int Gvj;
-  private boolean Gvk;
+  private Vector<d.a> Ihd;
+  private int Ihe;
+  private boolean Ihf;
   private int mCount;
-  private int zlZ;
+  private int zbE;
   
   private d$b()
   {
     AppMethodBeat.i(158014);
-    this.Gvi = new Vector();
-    this.zlZ = 20;
-    this.Gvj = 0;
+    this.Ihd = new Vector();
+    this.zbE = 20;
+    this.Ihe = 0;
     this.mCount = 0;
-    this.Gvk = false;
+    this.Ihf = false;
     AppMethodBeat.o(158014);
   }
   
@@ -37,13 +37,13 @@ final class d$b
     //   13: iadd
     //   14: putfield 38	com/tencent/mm/sdk/d/d$b:mCount	I
     //   17: aload_0
-    //   18: getfield 32	com/tencent/mm/sdk/d/d$b:Gvi	Ljava/util/Vector;
+    //   18: getfield 32	com/tencent/mm/sdk/d/d$b:Ihd	Ljava/util/Vector;
     //   21: invokevirtual 52	java/util/Vector:size	()I
     //   24: aload_0
-    //   25: getfield 34	com/tencent/mm/sdk/d/d$b:zlZ	I
+    //   25: getfield 34	com/tencent/mm/sdk/d/d$b:zbE	I
     //   28: if_icmpge +35 -> 63
     //   31: aload_0
-    //   32: getfield 32	com/tencent/mm/sdk/d/d$b:Gvi	Ljava/util/Vector;
+    //   32: getfield 32	com/tencent/mm/sdk/d/d$b:Ihd	Ljava/util/Vector;
     //   35: new 54	com/tencent/mm/sdk/d/d$a
     //   38: dup
     //   39: aload_1
@@ -61,26 +61,26 @@ final class d$b
     //   61: monitorexit
     //   62: return
     //   63: aload_0
-    //   64: getfield 32	com/tencent/mm/sdk/d/d$b:Gvi	Ljava/util/Vector;
+    //   64: getfield 32	com/tencent/mm/sdk/d/d$b:Ihd	Ljava/util/Vector;
     //   67: aload_0
-    //   68: getfield 36	com/tencent/mm/sdk/d/d$b:Gvj	I
+    //   68: getfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
     //   71: invokevirtual 64	java/util/Vector:get	(I)Ljava/lang/Object;
     //   74: checkcast 54	com/tencent/mm/sdk/d/d$a
     //   77: astore 7
     //   79: aload_0
     //   80: aload_0
-    //   81: getfield 36	com/tencent/mm/sdk/d/d$b:Gvj	I
+    //   81: getfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
     //   84: iconst_1
     //   85: iadd
-    //   86: putfield 36	com/tencent/mm/sdk/d/d$b:Gvj	I
+    //   86: putfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
     //   89: aload_0
-    //   90: getfield 36	com/tencent/mm/sdk/d/d$b:Gvj	I
+    //   90: getfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
     //   93: aload_0
-    //   94: getfield 34	com/tencent/mm/sdk/d/d$b:zlZ	I
+    //   94: getfield 34	com/tencent/mm/sdk/d/d$b:zbE	I
     //   97: if_icmplt +8 -> 105
     //   100: aload_0
     //   101: iconst_0
-    //   102: putfield 36	com/tencent/mm/sdk/d/d$b:Gvj	I
+    //   102: putfield 36	com/tencent/mm/sdk/d/d$b:Ihe	I
     //   105: aload 7
     //   107: aload_1
     //   108: aload_2
@@ -119,7 +119,7 @@ final class d$b
     try
     {
       AppMethodBeat.i(158015);
-      this.Gvi.clear();
+      this.Ihd.clear();
       AppMethodBeat.o(158015);
       return;
     }
@@ -130,11 +130,11 @@ final class d$b
     }
   }
   
-  final boolean eWw()
+  final boolean fmg()
   {
     try
     {
-      boolean bool = this.Gvk;
+      boolean bool = this.Ihf;
       return bool;
     }
     finally

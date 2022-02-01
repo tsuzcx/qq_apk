@@ -8,38 +8,16 @@ public abstract class gq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eBr = "md5".hashCode();
-  private static final int epb;
-  private static final int evD = "downloadUrl".hashCode();
-  private static final int fid = "pkgId".hashCode();
-  private static final int fie;
-  private static final int fif;
-  private static final int fig = "pkgSize".hashCode();
-  private static final int fih = "downloadNetType".hashCode();
+  private static final int eCW = "msgId".hashCode();
+  private static final int eEm = "content".hashCode();
+  private static final int fwn = "cmsgId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eAF = true;
-  private boolean eoW = true;
-  private boolean evv = true;
-  private boolean fhY = true;
-  private boolean fhZ = true;
-  private boolean fia = true;
-  private boolean fib = true;
-  private boolean fic = true;
-  public int field_downloadNetType;
-  public String field_downloadUrl;
-  public String field_md5;
-  public String field_oldPath;
-  public String field_oldVersion;
-  public String field_pkgId;
-  public int field_pkgSize;
-  public String field_version;
-  
-  static
-  {
-    epb = "version".hashCode();
-    fie = "oldVersion".hashCode();
-    fif = "oldPath".hashCode();
-  }
+  private boolean eCS = true;
+  private boolean eDP = true;
+  public String field_cmsgId;
+  public String field_content;
+  public long field_msgId;
+  private boolean fwm = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -54,11 +32,11 @@ public abstract class gq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fid != k) {
+      if (eCW != k) {
         break label65;
       }
-      this.field_pkgId = paramCursor.getString(i);
-      this.fhY = true;
+      this.field_msgId = paramCursor.getLong(i);
+      this.eCS = true;
     }
     for (;;)
     {
@@ -66,20 +44,10 @@ public abstract class gq
       break label20;
       break;
       label65:
-      if (epb == k) {
-        this.field_version = paramCursor.getString(i);
-      } else if (fie == k) {
-        this.field_oldVersion = paramCursor.getString(i);
-      } else if (fif == k) {
-        this.field_oldPath = paramCursor.getString(i);
-      } else if (eBr == k) {
-        this.field_md5 = paramCursor.getString(i);
-      } else if (evD == k) {
-        this.field_downloadUrl = paramCursor.getString(i);
-      } else if (fig == k) {
-        this.field_pkgSize = paramCursor.getInt(i);
-      } else if (fih == k) {
-        this.field_downloadNetType = paramCursor.getInt(i);
+      if (fwn == k) {
+        this.field_cmsgId = paramCursor.getString(i);
+      } else if (eEm == k) {
+        this.field_content = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -89,29 +57,17 @@ public abstract class gq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fhY) {
-      localContentValues.put("pkgId", this.field_pkgId);
+    if (this.eCS) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eoW) {
-      localContentValues.put("version", this.field_version);
+    if (this.fwm) {
+      localContentValues.put("cmsgId", this.field_cmsgId);
     }
-    if (this.fhZ) {
-      localContentValues.put("oldVersion", this.field_oldVersion);
+    if (this.field_content == null) {
+      this.field_content = "";
     }
-    if (this.fia) {
-      localContentValues.put("oldPath", this.field_oldPath);
-    }
-    if (this.eAF) {
-      localContentValues.put("md5", this.field_md5);
-    }
-    if (this.evv) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
-    }
-    if (this.fib) {
-      localContentValues.put("pkgSize", Integer.valueOf(this.field_pkgSize));
-    }
-    if (this.fic) {
-      localContentValues.put("downloadNetType", Integer.valueOf(this.field_downloadNetType));
+    if (this.eDP) {
+      localContentValues.put("content", this.field_content);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -16,18 +16,18 @@ import com.tencent.mm.ui.MMFragment;
 public abstract class MMPreferenceFragment
   extends MMFragment
 {
-  private int HFu = 0;
-  private int HFv = 0;
-  protected boolean HFw;
+  private int Jtl = 0;
+  private int Jtm = 0;
+  protected boolean Jtn;
   protected h adapter;
   private boolean dirty = false;
   private boolean isRefreshing = false;
   protected ListView list;
   private SharedPreferences sp;
   
-  public final void fjr()
+  public final void fzG()
   {
-    if (this.HFw) {}
+    if (this.Jtn) {}
     int i;
     do
     {
@@ -35,7 +35,7 @@ public abstract class MMPreferenceFragment
       i = getResourceId();
     } while (i == -1);
     this.adapter.addPreferencesFromResource(i);
-    this.HFw = true;
+    this.Jtn = true;
   }
   
   public int getLayoutId()
@@ -45,7 +45,7 @@ public abstract class MMPreferenceFragment
   
   public View getLayoutView()
   {
-    b.ahR();
+    b.akC();
     return b.c(getContext(), 2131494856);
   }
   
@@ -54,7 +54,7 @@ public abstract class MMPreferenceFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.HFw = false;
+    this.Jtn = false;
     this.sp = getSharedPreferences(getPackageName() + "_preferences", 0);
     this.list = ((ListView)findViewById(16908298));
     this.adapter = new h(getContext(), this.list, this.sp);
@@ -63,15 +63,15 @@ public abstract class MMPreferenceFragment
       public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
         AppMethodBeat.i(142614);
-        if ((!MMPreferenceFragment.a(MMPreferenceFragment.this)) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.HFI))
+        if ((!MMPreferenceFragment.a(MMPreferenceFragment.this)) && (paramAnonymousPreference.isEnabled()) && (paramAnonymousPreference.Jtz))
         {
           MMPreferenceFragment.a(MMPreferenceFragment.this, true);
           if (!(paramAnonymousPreference instanceof CheckBoxPreference)) {
             break label170;
           }
           paramAnonymousObject = (CheckBoxPreference)paramAnonymousPreference;
-          paramAnonymousObject.mF = paramAnonymousObject.isChecked();
-          if (paramAnonymousObject.HFK) {
+          paramAnonymousObject.oB = paramAnonymousObject.isChecked();
+          if (paramAnonymousObject.JtB) {
             MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putBoolean(paramAnonymousPreference.mKey, paramAnonymousObject.isChecked()).commit();
           }
           MMPreferenceFragment.c(MMPreferenceFragment.this);
@@ -109,7 +109,7 @@ public abstract class MMPreferenceFragment
         }
         int i = MMPreferenceFragment.e(MMPreferenceFragment.this).getHeaderViewsCount();
         paramAnonymousAdapterView = (Preference)MMPreferenceFragment.d(MMPreferenceFragment.this).getItem(paramAnonymousInt - i);
-        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.HFI))
+        if ((paramAnonymousAdapterView.isEnabled()) && (paramAnonymousAdapterView.Jtz))
         {
           if ((paramAnonymousAdapterView instanceof CheckBoxPreference))
           {
@@ -120,13 +120,13 @@ public abstract class MMPreferenceFragment
           {
             paramAnonymousView = (DialogPreference)paramAnonymousAdapterView;
             paramAnonymousView.showDialog();
-            paramAnonymousView.HDW = new DialogPreference.a()
+            paramAnonymousView.JrM = new DialogPreference.a()
             {
-              public final void fjj()
+              public final void fzy()
               {
                 AppMethodBeat.i(142615);
                 MMPreferenceFragment.c(MMPreferenceFragment.this);
-                if (paramAnonymousView.HFK) {
+                if (paramAnonymousView.JtB) {
                   MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.getValue()).commit();
                 }
                 MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
@@ -138,13 +138,13 @@ public abstract class MMPreferenceFragment
           {
             paramAnonymousView = (EditPreference)paramAnonymousAdapterView;
             paramAnonymousView.showDialog();
-            paramAnonymousView.HDY = new EditPreference.a()
+            paramAnonymousView.JrO = new EditPreference.a()
             {
-              public final void fjj()
+              public final void fzy()
               {
                 AppMethodBeat.i(142616);
                 MMPreferenceFragment.c(MMPreferenceFragment.this);
-                if (paramAnonymousView.HFK) {
+                if (paramAnonymousView.JtB) {
                   MMPreferenceFragment.b(MMPreferenceFragment.this).edit().putString(paramAnonymousAdapterView.mKey, paramAnonymousView.value).commit();
                 }
                 MMPreferenceFragment.d(MMPreferenceFragment.this).notifyDataSetChanged();
@@ -176,8 +176,8 @@ public abstract class MMPreferenceFragment
         return bool;
       }
     });
-    if (this.HFv != 0) {
-      this.list.setSelectionFromTop(0, this.HFv);
+    if (this.Jtm != 0) {
+      this.list.setSelectionFromTop(0, this.Jtm);
     }
   }
   

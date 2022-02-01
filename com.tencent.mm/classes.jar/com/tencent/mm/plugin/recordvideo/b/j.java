@@ -4,30 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class j
 {
-  public static boolean wpR = false;
+  public static boolean xxH = false;
   
   public static boolean isEnable()
   {
     AppMethodBeat.i(75022);
-    if (wpR)
+    if (xxH)
     {
       AppMethodBeat.o(75022);
       return true;
     }
-    if (((b)g.ab(b.class)).a(b.a.pRz, 0L) > 0L)
+    if (((b)g.ab(b.class)).a(b.a.qvW, 0L) > 0L)
     {
       i = 1;
-      if ((i == 0) || (!d.kZ(28))) {
+      if ((i == 0) || (!d.ly(28))) {
         break label97;
       }
-      if (g.agR().agA().a(ah.a.GTn, 0L) < 3L) {
+      if (g.ajC().ajl().a(al.a.IFS, 0L) < 3L) {
         break label92;
       }
     }
@@ -49,7 +49,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.b.j
  * JD-Core Version:    0.7.0.1
  */

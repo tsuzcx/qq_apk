@@ -10,39 +10,39 @@ import android.view.animation.Interpolator;
 public abstract class b
 {
   public int alpha;
-  private final Matrix eY = new Matrix();
-  public float ipA;
-  public float ipC;
-  public Float ipE;
-  public Float ipG;
-  public float ipM;
-  public Float ipO;
-  public long ipQ;
-  public Interpolator ipu;
-  public Rect ipv;
-  private final Paint iqe = new Paint(1);
-  public long iqf;
-  public float iqg;
-  public float iqh;
-  public float iqi;
-  public float iqj;
-  public Long iqk;
-  public Long iql;
-  public float iqm;
-  public float iqn;
-  public Long iqo;
-  public float iqp;
-  public float iqq;
-  public float iqr;
-  public float iqs;
-  public float iqt;
-  public boolean iqu;
-  public boolean iqv;
-  public float iqw;
-  public float iqx;
-  public float iqy;
-  public float iqz;
-  public VelocityTracker mq;
+  private final Matrix gR = new Matrix();
+  public Interpolator iIR;
+  public Rect iIS;
+  public float iIX;
+  public float iIZ;
+  private final Paint iJB = new Paint(1);
+  public long iJC;
+  public float iJD;
+  public float iJE;
+  public float iJF;
+  public float iJG;
+  public Long iJH;
+  public Long iJI;
+  public float iJJ;
+  public float iJK;
+  public Long iJL;
+  public float iJM;
+  public float iJN;
+  public float iJO;
+  public float iJP;
+  public float iJQ;
+  public boolean iJR;
+  public boolean iJS;
+  public float iJT;
+  public float iJU;
+  public float iJV;
+  public float iJW;
+  public Float iJb;
+  public Float iJd;
+  public float iJj;
+  public Float iJl;
+  public long iJn;
+  public VelocityTracker oj;
   public boolean terminated;
   
   public static float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, Long paramLong1, Float paramFloat)
@@ -139,10 +139,10 @@ public abstract class b
   public final void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramCanvas.save();
-    paramCanvas.clipRect(this.ipv);
-    this.eY.reset();
-    this.iqe.setAlpha(this.alpha);
-    a(paramCanvas, this.eY, this.iqe, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    paramCanvas.clipRect(this.iIS);
+    this.gR.reset();
+    this.iJB.setAlpha(this.alpha);
+    a(paramCanvas, this.gR, this.iJB, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     paramCanvas.restore();
   }
   
@@ -154,59 +154,59 @@ public abstract class b
   
   public final void j(Rect paramRect)
   {
-    this.ipv = paramRect;
-    this.iqk = a(this.ipE, this.iqi, this.ipA);
-    this.iql = a(this.ipG, this.iqj, this.ipC);
-    this.iqo = a(this.ipO, this.iqn, this.ipM);
-    if (this.iqp == 0.0F) {
-      if (this.ipQ < 0L) {
+    this.iIS = paramRect;
+    this.iJH = a(this.iJb, this.iJF, this.iIX);
+    this.iJI = a(this.iJd, this.iJG, this.iIZ);
+    this.iJL = a(this.iJl, this.iJK, this.iJj);
+    if (this.iJM == 0.0F) {
+      if (this.iJn < 0L) {
         break label199;
       }
     }
     label199:
-    for (float f = (float)this.ipQ;; f = 9.223372E+018F)
+    for (float f = (float)this.iJn;; f = 9.223372E+018F)
     {
-      this.iqp = f;
-      this.iqp = Math.min((float)a(this.iqg, this.iqi, this.ipA, this.iqk, this.ipE, paramRect.left - getWidth(), paramRect.right), this.iqp);
-      this.iqp = Math.min((float)a(this.iqh, this.iqj, this.ipC, this.iql, this.ipG, paramRect.top - getHeight(), paramRect.bottom), this.iqp);
-      this.iqe.setAlpha(this.alpha);
+      this.iJM = f;
+      this.iJM = Math.min((float)a(this.iJD, this.iJF, this.iIX, this.iJH, this.iJb, paramRect.left - getWidth(), paramRect.right), this.iJM);
+      this.iJM = Math.min((float)a(this.iJE, this.iJG, this.iIZ, this.iJI, this.iJd, paramRect.top - getHeight(), paramRect.bottom), this.iJM);
+      this.iJB.setAlpha(this.alpha);
       return;
     }
   }
   
   public void reset()
   {
-    this.iqf = 0L;
-    this.iqh = 0.0F;
-    this.iqg = 0.0F;
-    this.iqj = 0.0F;
-    this.iqi = 0.0F;
-    this.ipC = 0.0F;
-    this.ipA = 0.0F;
-    this.ipG = null;
-    this.ipE = null;
-    this.iql = null;
-    this.iqk = null;
-    this.iqm = 0.0F;
-    this.iqn = 0.0F;
-    this.ipM = 0.0F;
-    this.ipO = null;
-    this.iqo = null;
-    this.ipQ = 0L;
-    this.iqp = 0.0F;
-    this.iqq = 0.0F;
-    this.ipu = null;
-    this.iqs = 0.0F;
-    this.iqr = 0.0F;
-    this.iqt = 0.0F;
+    this.iJC = 0L;
+    this.iJE = 0.0F;
+    this.iJD = 0.0F;
+    this.iJG = 0.0F;
+    this.iJF = 0.0F;
+    this.iIZ = 0.0F;
+    this.iIX = 0.0F;
+    this.iJd = null;
+    this.iJb = null;
+    this.iJI = null;
+    this.iJH = null;
+    this.iJJ = 0.0F;
+    this.iJK = 0.0F;
+    this.iJj = 0.0F;
+    this.iJl = null;
+    this.iJL = null;
+    this.iJn = 0L;
+    this.iJM = 0.0F;
+    this.iJN = 0.0F;
+    this.iIR = null;
+    this.iJP = 0.0F;
+    this.iJO = 0.0F;
+    this.iJQ = 0.0F;
     this.alpha = 255;
-    this.iqu = false;
+    this.iJR = false;
     this.terminated = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.particles.a.b
  * JD-Core Version:    0.7.0.1
  */

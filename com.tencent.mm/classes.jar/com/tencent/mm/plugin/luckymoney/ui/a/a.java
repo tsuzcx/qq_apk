@@ -22,8 +22,8 @@ public final class a
     localLayoutParams.gravity = 80;
     paramViewGroup.removeAllViews();
     paramViewGroup.addView(paramChatFooterPanel, localLayoutParams);
-    paramViewGroup = aa.JP();
-    paramViewGroup.cGS = parama;
+    paramViewGroup = aa.Lo();
+    paramViewGroup.cRW = parama;
     paramChatFooterPanel.setCallback(paramViewGroup);
     AppMethodBeat.o(65985);
   }
@@ -46,10 +46,10 @@ public final class a
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(65983);
-          if (this.uzc != null)
+          if (this.vBF != null)
           {
-            this.uzc.onPause();
-            this.uzc.setVisibility(8);
+            this.vBF.onPause();
+            this.vBF.setVisibility(8);
           }
           AppMethodBeat.o(65983);
         }
@@ -59,8 +59,8 @@ public final class a
         public final void onAnimationStart(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(65982);
-          if (this.uzc != null) {
-            this.uzc.setVisibility(0);
+          if (this.vBF != null) {
+            this.vBF.setVisibility(0);
           }
           AppMethodBeat.o(65982);
         }
@@ -75,7 +75,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

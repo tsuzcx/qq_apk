@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,8 +14,8 @@ public class SetTransformActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTransformActionArg> CREATOR;
-  public float jzK;
-  public float jzL;
+  public float jTF;
+  public float jTG;
   public float scaleX;
   public float scaleY;
   public float translateX;
@@ -59,7 +59,7 @@ public class SetTransformActionArg
       return false;
     }
     paramObject = (SetTransformActionArg)paramObject;
-    if ((Float.compare(paramObject.scaleX, this.scaleX) == 0) && (Float.compare(paramObject.jzK, this.jzK) == 0) && (Float.compare(paramObject.jzL, this.jzL) == 0) && (Float.compare(paramObject.scaleY, this.scaleY) == 0) && (Float.compare(paramObject.translateX, this.translateX) == 0) && (Float.compare(paramObject.translateY, this.translateY) == 0))
+    if ((Float.compare(paramObject.scaleX, this.scaleX) == 0) && (Float.compare(paramObject.jTF, this.jTF) == 0) && (Float.compare(paramObject.jTG, this.jTG) == 0) && (Float.compare(paramObject.scaleY, this.scaleY) == 0) && (Float.compare(paramObject.translateX, this.translateX) == 0) && (Float.compare(paramObject.translateY, this.translateY) == 0))
     {
       AppMethodBeat.o(145258);
       return true;
@@ -73,8 +73,8 @@ public class SetTransformActionArg
     AppMethodBeat.i(145255);
     super.h(paramParcel);
     this.scaleX = paramParcel.readFloat();
-    this.jzK = paramParcel.readFloat();
-    this.jzL = paramParcel.readFloat();
+    this.jTF = paramParcel.readFloat();
+    this.jTG = paramParcel.readFloat();
     this.scaleY = paramParcel.readFloat();
     this.translateX = paramParcel.readFloat();
     this.translateY = paramParcel.readFloat();
@@ -84,7 +84,7 @@ public class SetTransformActionArg
   public int hashCode()
   {
     AppMethodBeat.i(145259);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.scaleX), Float.valueOf(this.jzK), Float.valueOf(this.jzL), Float.valueOf(this.scaleY), Float.valueOf(this.translateX), Float.valueOf(this.translateY) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.scaleX), Float.valueOf(this.jTF), Float.valueOf(this.jTG), Float.valueOf(this.scaleY), Float.valueOf(this.translateX), Float.valueOf(this.translateY) });
     AppMethodBeat.o(145259);
     return i;
   }
@@ -97,8 +97,8 @@ public class SetTransformActionArg
     try
     {
       this.scaleX = ((float)paramJSONObject.getDouble(0));
-      this.jzK = ((float)paramJSONObject.getDouble(1));
-      this.jzL = ((float)paramJSONObject.getDouble(2));
+      this.jTF = ((float)paramJSONObject.getDouble(1));
+      this.jTG = ((float)paramJSONObject.getDouble(2));
       this.scaleY = ((float)paramJSONObject.getDouble(3));
       this.translateX = g.e(paramJSONObject, 4);
       this.translateY = g.e(paramJSONObject, 5);
@@ -107,7 +107,7 @@ public class SetTransformActionArg
     }
     catch (JSONException paramJSONObject)
     {
-      ac.printErrStackTrace("SetTransformActionArg", paramJSONObject, "", new Object[0]);
+      ad.printErrStackTrace("SetTransformActionArg", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(145256);
     }
   }
@@ -117,8 +117,8 @@ public class SetTransformActionArg
     AppMethodBeat.i(145257);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeFloat(this.scaleY);
-    paramParcel.writeFloat(this.jzK);
-    paramParcel.writeFloat(this.jzL);
+    paramParcel.writeFloat(this.jTF);
+    paramParcel.writeFloat(this.jTG);
     paramParcel.writeFloat(this.scaleY);
     paramParcel.writeFloat(this.translateX);
     paramParcel.writeFloat(this.translateY);

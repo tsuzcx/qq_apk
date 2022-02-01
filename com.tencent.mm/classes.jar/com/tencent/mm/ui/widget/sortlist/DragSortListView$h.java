@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.sortlist;
 
 public abstract interface DragSortListView$h
 {
-  public abstract void ei(int paramInt1, int paramInt2);
+  public abstract void ek(int paramInt1, int paramInt2);
 }
 
 

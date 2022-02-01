@@ -10,23 +10,23 @@ public abstract class j
   extends b
   implements l
 {
-  private final f Lgj;
+  private final f MXf;
   
   public j(g paramg, f paramf)
   {
     super(paramg);
-    this.Lgj = paramf;
+    this.MXf = paramf;
   }
   
   public static String i(l paraml)
   {
     try
     {
-      String str1 = c.LCi.k(paraml) + "[" + paraml.getClass().getSimpleName() + "@" + Integer.toHexString(System.identityHashCode(paraml)) + "]";
+      String str1 = c.Ntf.k(paraml) + "[" + paraml.getClass().getSimpleName() + "@" + Integer.toHexString(System.identityHashCode(paraml)) + "]";
       paraml = str1;
       if (str1 == null)
       {
-        agL(5);
+        ajm(5);
         paraml = str1;
       }
     }
@@ -35,28 +35,28 @@ public abstract class j
       String str2;
       do
       {
-        str2 = paraml.getClass().getSimpleName() + " " + paraml.fRf();
+        str2 = paraml.getClass().getSimpleName() + " " + paraml.giD();
         paraml = str2;
       } while (str2 != null);
-      agL(6);
+      ajm(6);
       return str2;
     }
     return paraml;
   }
   
-  public l fRc()
+  public l giA()
   {
     if (this == null) {
-      agL(3);
+      ajm(3);
     }
     return this;
   }
   
-  public final f fRf()
+  public final f giD()
   {
-    f localf = this.Lgj;
+    f localf = this.MXf;
     if (localf == null) {
-      agL(2);
+      ajm(2);
     }
     return localf;
   }
@@ -68,7 +68,7 @@ public abstract class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.c.j
  * JD-Core Version:    0.7.0.1
  */

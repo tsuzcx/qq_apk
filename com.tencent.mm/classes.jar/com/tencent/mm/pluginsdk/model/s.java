@@ -12,24 +12,24 @@ public abstract class s
     return paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager()).toString();
   }
   
-  public abstract boolean aFV(String paramString);
+  public abstract boolean aLv(String paramString);
   
-  public abstract String aNm();
+  public abstract String aQx();
   
-  public boolean af(Context paramContext, Intent paramIntent)
+  public boolean ah(Context paramContext, Intent paramIntent)
   {
     return false;
   }
   
-  public abstract String eKy();
+  public abstract String eZs();
   
-  public abstract t.a eKz();
+  public abstract t.a eZt();
   
-  public abstract boolean hi(Context paramContext);
+  public abstract boolean hn(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.s
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public class ProxyCacheUtils
   static void assertBuffer(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(192538);
+    AppMethodBeat.i(215885);
     Preconditions.checkNotNull(paramArrayOfByte, "Buffer must be not null!");
     if (paramLong >= 0L)
     {
@@ -34,7 +34,7 @@ public class ProxyCacheUtils
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Preconditions.checkArgument(bool1, "Length must be in range [0..buffer.length]");
-      AppMethodBeat.o(192538);
+      AppMethodBeat.o(215885);
       return;
       bool1 = false;
       break;
@@ -43,7 +43,7 @@ public class ProxyCacheUtils
   
   private static String bytesToHexString(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(192540);
+    AppMethodBeat.i(215887);
     StringBuffer localStringBuffer = new StringBuffer();
     int j = paramArrayOfByte.length;
     int i = 0;
@@ -53,7 +53,7 @@ public class ProxyCacheUtils
       i += 1;
     }
     paramArrayOfByte = localStringBuffer.toString();
-    AppMethodBeat.o(192540);
+    AppMethodBeat.o(215887);
     return paramArrayOfByte;
   }
   
@@ -128,29 +128,29 @@ public class ProxyCacheUtils
   
   static String getSupposablyMime(String paramString)
   {
-    AppMethodBeat.i(192537);
+    AppMethodBeat.i(215884);
     MimeTypeMap localMimeTypeMap = MimeTypeMap.getSingleton();
     paramString = MimeTypeMap.getFileExtensionFromUrl(paramString);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(192537);
+      AppMethodBeat.o(215884);
       return null;
     }
     paramString = localMimeTypeMap.getMimeTypeFromExtension(paramString);
-    AppMethodBeat.o(192537);
+    AppMethodBeat.o(215884);
     return paramString;
   }
   
   static String preview(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(192539);
+    AppMethodBeat.i(215886);
     int i = Math.min(16, Math.max(paramInt, 0));
     String str = Arrays.toString(Arrays.copyOfRange(paramArrayOfByte, 0, i));
     paramArrayOfByte = str;
     if (i < paramInt) {
       paramArrayOfByte = str.substring(0, str.length() - 1) + ", ...]";
     }
-    AppMethodBeat.o(192539);
+    AppMethodBeat.o(215886);
     return paramArrayOfByte;
   }
 }

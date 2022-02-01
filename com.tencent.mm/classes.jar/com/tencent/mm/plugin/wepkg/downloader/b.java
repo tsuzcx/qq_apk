@@ -5,9 +5,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public final class b
 {
-  private static volatile b CZJ;
+  private static volatile b EDI;
   public static Object lock;
-  h CZK;
+  h EDJ;
   
   static
   {
@@ -19,20 +19,20 @@ public final class b
   private b()
   {
     AppMethodBeat.i(110590);
-    this.CZK = new h("WePkgDownloadExcutor", new LinkedBlockingQueue(24));
+    this.EDJ = new h("WePkgDownloadExcutor", new LinkedBlockingQueue(24));
     AppMethodBeat.o(110590);
   }
   
-  public static b eIX()
+  public static b eXR()
   {
     AppMethodBeat.i(110589);
-    if (CZJ == null) {}
+    if (EDI == null) {}
     synchronized (lock)
     {
-      if (CZJ == null) {
-        CZJ = new b();
+      if (EDI == null) {
+        EDI = new b();
       }
-      ??? = CZJ;
+      ??? = EDI;
       AppMethodBeat.o(110589);
       return ???;
     }
@@ -40,7 +40,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.b
  * JD-Core Version:    0.7.0.1
  */

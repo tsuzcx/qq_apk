@@ -20,12 +20,17 @@ import java.net.URL;
 public final class a
   implements ay
 {
-  private ViewGroup cat;
-  private ViewGroup cau;
+  private ViewGroup ckK;
+  private ViewGroup ckL;
   
-  public final void BO() {}
+  public final void Dn() {}
   
-  public final boolean BP()
+  public final boolean Do()
+  {
+    return false;
+  }
+  
+  public final boolean Dp()
   {
     return false;
   }
@@ -44,11 +49,11 @@ public final class a
   public final void aw(Context paramContext)
   {
     AppMethodBeat.i(130625);
-    if (this.cat == null) {
-      this.cat = new FrameLayout(paramContext);
+    if (this.ckK == null) {
+      this.ckK = new FrameLayout(paramContext);
     }
-    if (this.cau == null) {
-      this.cau = new FrameLayout(paramContext);
+    if (this.ckL == null) {
+      this.ckL = new FrameLayout(paramContext);
     }
     AppMethodBeat.o(130625);
   }
@@ -60,8 +65,8 @@ public final class a
   
   public final void destroy()
   {
-    this.cat = null;
-    this.cau = null;
+    this.ckK = null;
+    this.ckL = null;
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback) {}
@@ -73,7 +78,7 @@ public final class a
   
   public final View getContentView()
   {
-    return this.cau;
+    return this.ckL;
   }
   
   public final d getFullscreenImpl()
@@ -113,16 +118,16 @@ public final class a
   
   public final View getWrapperView()
   {
-    return this.cat;
+    return this.ckK;
   }
   
   public final void j(Runnable paramRunnable)
   {
-    AppMethodBeat.i(206105);
+    AppMethodBeat.i(190413);
     if (paramRunnable != null) {
       paramRunnable.run();
     }
-    AppMethodBeat.o(206105);
+    AppMethodBeat.o(190413);
   }
   
   public final void onBackground() {}
@@ -151,7 +156,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.game.page.a
  * JD-Core Version:    0.7.0.1
  */

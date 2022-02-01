@@ -25,24 +25,24 @@ import javax.annotation.concurrent.GuardedBy;
 
 public class FirebaseInstanceId
 {
-  private static final long bAB;
-  static p bAC;
+  private static final long bKP;
+  static p bKQ;
   @VisibleForTesting
   @GuardedBy("FirebaseInstanceId.class")
-  private static ScheduledThreadPoolExecutor bAD;
-  final a bAE;
-  final f bAF;
-  final ae bAG;
-  final i bAH;
+  private static ScheduledThreadPoolExecutor bKR;
+  final a bKS;
+  final f bKT;
+  final ae bKU;
+  final i bKV;
   @GuardedBy("this")
-  private boolean bAI;
+  private boolean bKW;
   @GuardedBy("this")
-  private boolean bAJ;
+  private boolean bKX;
   
   static
   {
     AppMethodBeat.i(4142);
-    bAB = TimeUnit.HOURS.toSeconds(8L);
+    bKP = TimeUnit.HOURS.toSeconds(8L);
     AppMethodBeat.o(4142);
   }
   
@@ -56,8 +56,8 @@ public class FirebaseInstanceId
   private FirebaseInstanceId(a parama, f paramf)
   {
     AppMethodBeat.i(4127);
-    this.bAH = new i();
-    this.bAI = false;
+    this.bKV = new i();
+    this.bKW = false;
     if (f.b(parama) == null)
     {
       parama = new IllegalStateException("FirebaseInstanceId failed to initialize, FirebaseApp is missing project ID");
@@ -66,15 +66,15 @@ public class FirebaseInstanceId
     }
     try
     {
-      if (bAC == null) {
-        bAC = new p(parama.getApplicationContext());
+      if (bKQ == null) {
+        bKQ = new p(parama.getApplicationContext());
       }
-      this.bAE = parama;
-      this.bAF = paramf;
-      this.bAG = new ab(parama, this, paramf);
-      this.bAJ = wD();
-      if (wF()) {
-        wy();
+      this.bKS = parama;
+      this.bKT = paramf;
+      this.bKU = new ab(parama, this, paramf);
+      this.bKX = ya();
+      if (yc()) {
+        xV();
       }
       AppMethodBeat.o(4127);
       return;
@@ -126,10 +126,10 @@ public class FirebaseInstanceId
     AppMethodBeat.i(4131);
     try
     {
-      if (bAD == null) {
-        bAD = new ScheduledThreadPoolExecutor(1);
+      if (bKR == null) {
+        bKR = new ScheduledThreadPoolExecutor(1);
       }
-      bAD.schedule(paramRunnable, paramLong, TimeUnit.SECONDS);
+      bKR.schedule(paramRunnable, paramLong, TimeUnit.SECONDS);
       return;
     }
     finally
@@ -155,12 +155,20 @@ public class FirebaseInstanceId
     }
   }
   
-  static p wA()
+  public static FirebaseInstanceId xU()
   {
-    return bAC;
+    AppMethodBeat.i(4124);
+    FirebaseInstanceId localFirebaseInstanceId = getInstance(a.xK());
+    AppMethodBeat.o(4124);
+    return localFirebaseInstanceId;
   }
   
-  static boolean wB()
+  static p xX()
+  {
+    return bKQ;
+  }
+  
+  static boolean xY()
   {
     AppMethodBeat.i(4137);
     if ((Log.isLoggable("FirebaseInstanceId", 3)) || ((Build.VERSION.SDK_INT == 23) && (Log.isLoggable("FirebaseInstanceId", 3))))
@@ -172,10 +180,10 @@ public class FirebaseInstanceId
     return false;
   }
   
-  private final boolean wD()
+  private final boolean ya()
   {
     AppMethodBeat.i(4139);
-    Object localObject1 = this.bAE.getApplicationContext();
+    Object localObject1 = this.bKS.getApplicationContext();
     Object localObject2 = ((Context)localObject1).getSharedPreferences("com.google.firebase.messaging", 0);
     boolean bool;
     if (((SharedPreferences)localObject2).contains("auto_init"))
@@ -200,13 +208,13 @@ public class FirebaseInstanceId
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      bool = wE();
+      bool = yb();
       AppMethodBeat.o(4139);
     }
     return bool;
   }
   
-  private final boolean wE()
+  private final boolean yb()
   {
     AppMethodBeat.i(4140);
     try
@@ -217,7 +225,7 @@ public class FirebaseInstanceId
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      Object localObject = this.bAE.getApplicationContext();
+      Object localObject = this.bKS.getApplicationContext();
       Intent localIntent = new Intent("com.google.firebase.MESSAGING_EVENT");
       localIntent.setPackage(((Context)localObject).getPackageName());
       localObject = ((Context)localObject).getPackageManager().resolveService(localIntent, 0);
@@ -232,11 +240,11 @@ public class FirebaseInstanceId
   }
   
   @VisibleForTesting
-  private boolean wF()
+  private boolean yc()
   {
     try
     {
-      boolean bool = this.bAJ;
+      boolean bool = this.bKX;
       return bool;
     }
     finally
@@ -246,18 +254,10 @@ public class FirebaseInstanceId
     }
   }
   
-  public static FirebaseInstanceId wx()
-  {
-    AppMethodBeat.i(4124);
-    FirebaseInstanceId localFirebaseInstanceId = getInstance(a.wn());
-    AppMethodBeat.o(4124);
-    return localFirebaseInstanceId;
-  }
-  
   public static String zzf()
   {
     AppMethodBeat.i(4132);
-    String str = f.a(bAC.aW("").bBY);
+    String str = f.a(bKQ.bP("").bMm);
     AppMethodBeat.o(4132);
     return str;
   }
@@ -265,9 +265,9 @@ public class FirebaseInstanceId
   final String b(String paramString1, String paramString2, Bundle paramBundle)
   {
     AppMethodBeat.i(4136);
-    ab localab = (ab)this.bAG;
+    ab localab = (ab)this.bKU;
     localab.c(paramString1, paramString2, paramBundle);
-    paramString1 = localab.j(localab.bBT.h(paramBundle));
+    paramString1 = localab.j(localab.bMh.h(paramBundle));
     AppMethodBeat.o(4136);
     return paramString1;
   }
@@ -275,13 +275,13 @@ public class FirebaseInstanceId
   public final String getToken()
   {
     AppMethodBeat.i(4133);
-    Object localObject = wz();
-    if ((localObject == null) || (((q)localObject).aZ(this.bAF.wI()))) {
+    Object localObject = xW();
+    if ((localObject == null) || (((q)localObject).bS(this.bKT.yf()))) {
       startSync();
     }
     if (localObject != null)
     {
-      localObject = ((q)localObject).bBq;
+      localObject = ((q)localObject).bLE;
       AppMethodBeat.o(4133);
       return localObject;
     }
@@ -294,7 +294,7 @@ public class FirebaseInstanceId
     try
     {
       AppMethodBeat.i(4129);
-      if (!this.bAI) {
+      if (!this.bKW) {
         zza(0L);
       }
       AppMethodBeat.o(4129);
@@ -303,13 +303,31 @@ public class FirebaseInstanceId
     finally {}
   }
   
-  final void wC()
+  public final void xV()
+  {
+    AppMethodBeat.i(4128);
+    q localq = xW();
+    if ((localq == null) || (localq.bS(this.bKT.yf())) || (bKQ.yk() != null)) {
+      startSync();
+    }
+    AppMethodBeat.o(4128);
+  }
+  
+  final q xW()
+  {
+    AppMethodBeat.i(4134);
+    q localq = bKQ.c("", f.b(this.bKS), "*");
+    AppMethodBeat.o(4134);
+    return localq;
+  }
+  
+  final void xZ()
   {
     try
     {
       AppMethodBeat.i(4138);
-      bAC.zzag();
-      if (wF()) {
+      bKQ.zzag();
+      if (yc()) {
         startSync();
       }
       AppMethodBeat.o(4138);
@@ -319,40 +337,22 @@ public class FirebaseInstanceId
   }
   
   @VisibleForTesting
-  public final void wG()
+  public final void yd()
   {
     try
     {
       AppMethodBeat.i(4141);
-      SharedPreferences.Editor localEditor = this.bAE.getApplicationContext().getSharedPreferences("com.google.firebase.messaging", 0).edit();
+      SharedPreferences.Editor localEditor = this.bKS.getApplicationContext().getSharedPreferences("com.google.firebase.messaging", 0).edit();
       localEditor.putBoolean("auto_init", true);
       localEditor.apply();
-      if (!this.bAJ) {
-        wy();
+      if (!this.bKX) {
+        xV();
       }
-      this.bAJ = true;
+      this.bKX = true;
       AppMethodBeat.o(4141);
       return;
     }
     finally {}
-  }
-  
-  public final void wy()
-  {
-    AppMethodBeat.i(4128);
-    q localq = wz();
-    if ((localq == null) || (localq.aZ(this.bAF.wI())) || (bAC.wN() != null)) {
-      startSync();
-    }
-    AppMethodBeat.o(4128);
-  }
-  
-  final q wz()
-  {
-    AppMethodBeat.i(4134);
-    q localq = bAC.c("", f.b(this.bAE), "*");
-    AppMethodBeat.o(4134);
-    return localq;
   }
   
   final void zza(long paramLong)
@@ -360,9 +360,9 @@ public class FirebaseInstanceId
     try
     {
       AppMethodBeat.i(4130);
-      long l = Math.min(Math.max(30L, paramLong << 1), bAB);
-      b(new r(this, this.bAF, l), paramLong);
-      this.bAI = true;
+      long l = Math.min(Math.max(30L, paramLong << 1), bKP);
+      b(new r(this, this.bKT, l), paramLong);
+      this.bKW = true;
       AppMethodBeat.o(4130);
       return;
     }
@@ -377,7 +377,7 @@ public class FirebaseInstanceId
   {
     try
     {
-      this.bAI = paramBoolean;
+      this.bKW = paramBoolean;
       return;
     }
     finally

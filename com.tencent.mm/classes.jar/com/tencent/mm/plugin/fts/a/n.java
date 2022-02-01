@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.fts.a;
 
 import android.content.Context;
-import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.b;
 import com.tencent.mm.plugin.fts.a.d.c;
+import com.tencent.mm.plugin.fts.a.d.d;
 import com.tencent.mm.plugin.fts.a.d.e;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import java.util.HashSet;
 import java.util.LinkedList;
 
 public abstract interface n
-  extends com.tencent.mm.kernel.b.d
+  extends com.tencent.mm.kernel.b.a
 {
   public abstract void addSOSHistory(String paramString1, String paramString2);
   
-  public abstract void cancelSearchTask(a parama);
+  public abstract void cancelSearchTask(com.tencent.mm.plugin.fts.a.a.a parama);
   
   public abstract e createFTSUIUnit(int paramInt1, Context paramContext, e.b paramb, int paramInt2);
   
@@ -40,7 +40,7 @@ public abstract interface n
   
   public abstract boolean isFTSIndexReady();
   
-  public abstract void registerFTSUILogic(com.tencent.mm.plugin.fts.a.d.d paramd);
+  public abstract void registerFTSUILogic(d paramd);
   
   public abstract void registerIndexStorage(i parami);
   
@@ -48,7 +48,7 @@ public abstract interface n
   
   public abstract void registerNativeLogic(int paramInt, k paramk);
   
-  public abstract a search(int paramInt, com.tencent.mm.plugin.fts.a.a.j paramj);
+  public abstract com.tencent.mm.plugin.fts.a.a.a search(int paramInt, com.tencent.mm.plugin.fts.a.a.j paramj);
   
   public abstract int stringCompareUtfBinary(String paramString1, String paramString2);
   
@@ -64,7 +64,7 @@ public abstract interface n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.n
  * JD-Core Version:    0.7.0.1
  */

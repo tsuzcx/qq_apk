@@ -10,8 +10,8 @@ public class WxQBarResult
   implements Parcelable
 {
   public static final Parcelable.Creator<WxQBarResult> CREATOR;
-  public int JQA;
-  public WxQBarPoint JQY;
+  public WxQBarPoint LKP;
+  public int LKn;
   
   static
   {
@@ -22,7 +22,7 @@ public class WxQBarResult
   
   public WxQBarResult(int paramInt1, String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3, int paramInt2)
   {
-    this.JQA = 0;
+    this.LKn = 0;
     this.typeID = paramInt1;
     this.typeName = paramString1;
     this.data = paramString2;
@@ -34,14 +34,14 @@ public class WxQBarResult
   public WxQBarResult(Parcel paramParcel)
   {
     AppMethodBeat.i(176210);
-    this.JQA = 0;
+    this.LKn = 0;
     this.typeID = paramParcel.readInt();
     this.typeName = paramParcel.readString();
     this.data = paramParcel.readString();
     paramParcel.readByteArray(this.rawData);
     this.charset = paramParcel.readString();
-    this.JQA = paramParcel.readInt();
-    this.JQY = ((WxQBarPoint)paramParcel.readParcelable(WxQBarPoint.class.getClassLoader()));
+    this.LKn = paramParcel.readInt();
+    this.LKP = ((WxQBarPoint)paramParcel.readParcelable(WxQBarPoint.class.getClassLoader()));
     this.priorityLevel = paramParcel.readInt();
     AppMethodBeat.o(176210);
   }
@@ -59,8 +59,8 @@ public class WxQBarResult
     paramParcel.writeString(this.data);
     paramParcel.writeByteArray(this.rawData);
     paramParcel.writeString(this.charset);
-    paramParcel.writeInt(this.JQA);
-    paramParcel.writeParcelable(this.JQY, paramInt);
+    paramParcel.writeInt(this.LKn);
+    paramParcel.writeParcelable(this.LKP, paramInt);
     paramParcel.writeInt(this.priorityLevel);
     AppMethodBeat.o(176211);
   }

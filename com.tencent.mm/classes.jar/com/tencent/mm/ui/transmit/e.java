@@ -13,42 +13,48 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends Dialog
   implements DialogInterface
 {
-  private LinearLayout Gph;
-  private a IXP;
-  private Button IXQ;
+  private LinearLayout IaU;
+  private a KOU;
+  private Button KOV;
   private Context mContext;
   
   private e(Context paramContext)
   {
     super(paramContext, 2131821723);
     AppMethodBeat.i(180117);
-    this.IXP = null;
+    this.KOU = null;
     this.mContext = paramContext;
-    this.Gph = ((LinearLayout)View.inflate(this.mContext, 2131495767, null));
-    this.IXQ = ((Button)this.Gph.findViewById(2131305966));
-    paramContext = (ImageView)this.Gph.findViewById(2131305961);
-    if (ab.eUK()) {
+    this.IaU = ((LinearLayout)View.inflate(this.mContext, 2131495767, null));
+    this.KOV = ((Button)this.IaU.findViewById(2131305966));
+    paramContext = (ImageView)this.IaU.findViewById(2131305961);
+    if (ac.fko()) {
       paramContext.setImageResource(2131234395);
     }
     for (;;)
     {
-      this.IXQ.setOnClickListener(new View.OnClickListener()
+      this.KOV.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(180115);
-          ac.i("MicroMsg.grouptodo.TodoIntroduceView", "click i know");
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          ad.i("MicroMsg.grouptodo.TodoIntroduceView", "click i know");
           e.this.dismiss();
           if (e.a(e.this) != null) {
-            e.a(e.this).fqB();
+            e.a(e.this).fHo();
           }
+          a.a(this, "com/tencent/mm/ui/transmit/TodoIntroduceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(180115);
         }
       });
@@ -62,7 +68,7 @@ public final class e
   {
     AppMethodBeat.i(180121);
     paramContext = new e(paramContext);
-    paramContext.IXP = parama;
+    paramContext.KOU = parama;
     paramContext.setCancelable(false);
     paramContext.show();
     AppMethodBeat.o(180121);
@@ -82,7 +88,7 @@ public final class e
           AppMethodBeat.o(180116);
         }
       });
-      ac.e("MicroMsg.grouptodo.TodoIntroduceView", "dialog dismiss error!");
+      ad.e("MicroMsg.grouptodo.TodoIntroduceView", "dialog dismiss error!");
       AppMethodBeat.o(180120);
       return;
     }
@@ -100,7 +106,7 @@ public final class e
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.grouptodo.TodoIntroduceView", "dismiss exception, e = " + localException.getMessage());
+      ad.e("MicroMsg.grouptodo.TodoIntroduceView", "dismiss exception, e = " + localException.getMessage());
       AppMethodBeat.o(180120);
       return;
     }
@@ -113,7 +119,7 @@ public final class e
   {
     AppMethodBeat.i(180118);
     super.onCreate(paramBundle);
-    setContentView(this.Gph);
+    setContentView(this.IaU);
     AppMethodBeat.o(180118);
   }
   
@@ -128,14 +134,14 @@ public final class e
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.grouptodo.TodoIntroduceView", "%s:%s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+      ad.e("MicroMsg.grouptodo.TodoIntroduceView", "%s:%s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
       AppMethodBeat.o(180119);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void fqB();
+    public abstract void fHo();
   }
 }
 

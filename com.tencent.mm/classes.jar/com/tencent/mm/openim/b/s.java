@@ -1,117 +1,117 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.openim.a.b;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.protocal.protobuf.baz;
-import com.tencent.mm.protocal.protobuf.cae;
-import com.tencent.mm.protocal.protobuf.caf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.protocal.protobuf.bfd;
+import com.tencent.mm.protocal.protobuf.cev;
+import com.tencent.mm.protocal.protobuf.cew;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 
 public final class s
 {
-  public static int a(baz parambaz)
+  public static int a(bfd parambfd)
   {
     AppMethodBeat.i(151231);
-    int i = parambaz.ret;
-    parambaz = parambaz.ERI;
-    ai localai = a(parambaz);
-    ac.i("MicroMsg.OpenIMContactLogic", "onGYNetEnd openim_processModContact user:%s nick:%s remark:%s, source:%d, sex%d, appId:%s, customDetail:%s, customDetailVisible:%d， type:%d, wordingId:%s", new Object[] { localai.field_username, localai.field_nickname, localai.field_conRemark, Integer.valueOf(localai.getSource()), Integer.valueOf(localai.exL), localai.field_openImAppid, localai.eyp, Integer.valueOf(localai.eyo), Integer.valueOf(localai.field_type), localai.field_descWordingId });
-    ((k)g.ab(k.class)).awB().af(localai);
-    ((b)g.ab(b.class)).bA(parambaz.app_id, parambaz.Fpg);
-    b(parambaz);
+    int i = parambfd.ret;
+    parambfd = parambfd.GBa;
+    am localam = a(parambfd);
+    ad.i("MicroMsg.OpenIMContactLogic", "onGYNetEnd openim_processModContact user:%s nick:%s remark:%s, source:%d, sex%d, appId:%s, customDetail:%s, customDetailVisible:%d， type:%d, wordingId:%s", new Object[] { localam.field_username, localam.field_nickname, localam.field_conRemark, Integer.valueOf(localam.getSource()), Integer.valueOf(localam.ePk), localam.field_openImAppid, localam.ePN, Integer.valueOf(localam.ePM), Integer.valueOf(localam.field_type), localam.field_descWordingId });
+    ((l)g.ab(l.class)).azp().af(localam);
+    ((b)g.ab(b.class)).bB(parambfd.app_id, parambfd.GYR);
+    b(parambfd);
     AppMethodBeat.o(151231);
     return i;
   }
   
-  public static ai a(cae paramcae)
+  public static am a(cev paramcev)
   {
     AppMethodBeat.i(151232);
-    Object localObject2 = ((k)g.ab(k.class)).awB().aNt(paramcae.iod);
+    Object localObject2 = ((l)g.ab(l.class)).azp().Bf(paramcev.iHA);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new ai();
+      localObject1 = new am();
     }
-    ((ai)localObject1).setUsername(paramcae.iod);
-    ((ai)localObject1).qj(paramcae.nickname);
-    ((ai)localObject1).setType(paramcae.type);
-    ((ai)localObject1).qh(paramcae.iAC);
-    ((ai)localObject1).setSource(paramcae.dbL);
-    ((ai)localObject1).qk(paramcae.Fpi);
-    ((ai)localObject1).ql(paramcae.Fpj);
-    ((ai)localObject1).qo(paramcae.Fpk);
-    ((ai)localObject1).qn(paramcae.Fpl);
-    if (paramcae.Fpm == null)
+    ((am)localObject1).setUsername(paramcev.iHA);
+    ((am)localObject1).sT(paramcev.nickname);
+    ((am)localObject1).setType(paramcev.type);
+    ((am)localObject1).sR(paramcev.iTM);
+    ((am)localObject1).setSource(paramcev.dnh);
+    ((am)localObject1).sU(paramcev.GYT);
+    ((am)localObject1).sV(paramcev.GYU);
+    ((am)localObject1).sY(paramcev.GYV);
+    ((am)localObject1).sX(paramcev.GYW);
+    if (paramcev.GYX == null)
     {
       localObject2 = "";
-      ((ai)localObject1).qP((String)localObject2);
-      if (paramcae.Fpm != null) {
+      ((am)localObject1).tz((String)localObject2);
+      if (paramcev.GYX != null) {
         break label201;
       }
     }
     label201:
-    for (int i = 0;; i = paramcae.Fpm.Fpn)
+    for (int i = 0;; i = paramcev.GYX.GYY)
     {
-      ((ai)localObject1).jP(i);
-      ((ai)localObject1).qO(paramcae.DQi);
-      ((ai)localObject1).qs(paramcae.app_id);
-      ((ai)localObject1).jH(paramcae.exL);
-      ((ai)localObject1).qr(paramcae.Fpg);
-      ((ai)localObject1).jM((int)bs.aNx());
+      ((am)localObject1).kn(i);
+      ((am)localObject1).ty(paramcev.Fvw);
+      ((am)localObject1).tc(paramcev.app_id);
+      ((am)localObject1).kf(paramcev.ePk);
+      ((am)localObject1).tb(paramcev.GYR);
+      ((am)localObject1).kk((int)bt.aQJ());
       AppMethodBeat.o(151232);
       return localObject1;
-      localObject2 = paramcae.Fpm.tiv;
+      localObject2 = paramcev.GYX.ugo;
       break;
     }
   }
   
-  public static void b(cae paramcae)
+  public static void b(cev paramcev)
   {
     int j = 1;
     AppMethodBeat.i(151233);
     String str2 = "";
     String str1 = "";
-    i locali = p.aBw().Ak(paramcae.iod);
+    i locali = p.aEx().Dj(paramcev.iHA);
     if (locali != null)
     {
-      str2 = locali.aBo();
-      str1 = locali.aBp();
+      str2 = locali.aEq();
+      str1 = locali.aEr();
     }
     locali = new i();
-    locali.drx = -1;
-    locali.username = paramcae.iod;
-    locali.huE = paramcae.FoV;
-    locali.huF = paramcae.FoU;
-    ac.i("MicroMsg.OpenIMContactLogic", "dealwithAvatarFromModContact contact %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aBo(), locali.aBp() });
-    if (!locali.aBo().equals(str2))
+    locali.dDp = -1;
+    locali.username = paramcev.iHA;
+    locali.hMW = paramcev.GYG;
+    locali.hMX = paramcev.GYF;
+    ad.i("MicroMsg.OpenIMContactLogic", "dealwithAvatarFromModContact contact %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEq(), locali.aEr() });
+    if (!locali.aEq().equals(str2))
     {
-      p.aBh();
-      e.L(paramcae.iod, true);
+      p.aEk();
+      e.L(paramcev.iHA, true);
     }
     for (int i = 1;; i = 0)
     {
-      if (!locali.aBp().equals(str1))
+      if (!locali.aEr().equals(str1))
       {
-        p.aBh();
-        e.L(paramcae.iod, false);
+        p.aEk();
+        e.L(paramcev.iHA, false);
         i = j;
       }
       for (;;)
       {
         if (i != 0)
         {
-          p.aBy().zV(paramcae.iod);
-          p.aBw().b(locali);
+          p.aEz().CU(paramcev.iHA);
+          p.aEx().b(locali);
         }
         AppMethodBeat.o(151233);
         return;

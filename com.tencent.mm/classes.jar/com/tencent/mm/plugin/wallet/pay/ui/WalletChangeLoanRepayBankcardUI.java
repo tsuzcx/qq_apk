@@ -8,8 +8,8 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.aj;
-import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.plugin.wallet_core.model.ak;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.ui.k;
 import com.tencent.mm.ui.base.a;
 import java.util.ArrayList;
@@ -19,22 +19,22 @@ import java.util.Collections;
 public class WalletChangeLoanRepayBankcardUI
   extends WalletChangeBankcardUI
 {
-  protected final void Tw(int paramInt)
+  protected final void Vo(int paramInt)
   {
     AppMethodBeat.i(69339);
     int i;
     Object localObject;
-    if (this.AYt != null)
+    if (this.CyC != null)
     {
-      i = this.AYt.size();
-      if ((this.AYt == null) || (paramInt >= i)) {
+      i = this.CyC.size();
+      if ((this.CyC == null) || (paramInt >= i)) {
         break label127;
       }
-      localObject = (Bankcard)this.AYt.get(paramInt);
-      this.AYu = ((Bankcard)localObject);
-      this.Biv.BEP = ((Bankcard)localObject).field_bindSerial;
-      this.wRL.setEnabled(true);
-      this.Biv.notifyDataSetChanged();
+      localObject = (Bankcard)this.CyC.get(paramInt);
+      this.CyD = ((Bankcard)localObject);
+      this.CIJ.Dfh = ((Bankcard)localObject).field_bindSerial;
+      this.yft.setEnabled(true);
+      this.CIJ.notifyDataSetChanged();
       Intent localIntent = new Intent();
       localIntent.putExtra("bindSerial", ((Bankcard)localObject).field_bindSerial);
       localIntent.putExtra("ret", 0);
@@ -57,14 +57,14 @@ public class WalletChangeLoanRepayBankcardUI
     }
   }
   
-  protected final k epA()
+  protected final k eDA()
   {
     AppMethodBeat.i(69338);
-    this.AYt = s.erz().BAv;
-    if (this.AYt != null) {
-      Collections.sort(this.AYt, new WalletChangeBankcardUI.2(this));
+    this.CyC = t.eFz().DaN;
+    if (this.CyC != null) {
+      Collections.sort(this.CyC, new WalletChangeBankcardUI.2(this));
     }
-    k localk = new k(this, this.AYt, this.Biu, this.wSu);
+    k localk = new k(this, this.CyC, this.CII, this.ygb);
     AppMethodBeat.o(69338);
     return localk;
   }

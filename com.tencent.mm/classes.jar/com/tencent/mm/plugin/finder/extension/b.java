@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.finder.extension;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.api.c;
+import com.tencent.mm.plugin.finder.api.c.a;
 import com.tencent.mm.plugin.finder.api.f;
-import com.tencent.mm.plugin.finder.extension.reddot.d;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.finder.storage.i;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.aiy;
-import com.tencent.mm.protocal.protobuf.ajj;
-import com.tencent.mm.protocal.protobuf.ajt;
-import com.tencent.mm.protocal.protobuf.aka;
-import com.tencent.mm.protocal.protobuf.akd;
-import com.tencent.mm.protocal.protobuf.amn;
-import com.tencent.mm.protocal.protobuf.amz;
-import com.tencent.mm.protocal.protobuf.anf;
-import com.tencent.mm.protocal.protobuf.anh;
-import com.tencent.mm.protocal.protobuf.ann;
-import com.tencent.mm.protocal.protobuf.anz;
-import com.tencent.mm.protocal.protobuf.aoj;
-import com.tencent.mm.protocal.protobuf.apb;
-import com.tencent.mm.protocal.protobuf.dcf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.alo;
+import com.tencent.mm.protocal.protobuf.ame;
+import com.tencent.mm.protocal.protobuf.amq;
+import com.tencent.mm.protocal.protobuf.amy;
+import com.tencent.mm.protocal.protobuf.anc;
+import com.tencent.mm.protocal.protobuf.apy;
+import com.tencent.mm.protocal.protobuf.aql;
+import com.tencent.mm.protocal.protobuf.aqr;
+import com.tencent.mm.protocal.protobuf.aqt;
+import com.tencent.mm.protocal.protobuf.aqz;
+import com.tencent.mm.protocal.protobuf.arl;
+import com.tencent.mm.protocal.protobuf.ary;
+import com.tencent.mm.protocal.protobuf.asw;
+import com.tencent.mm.protocal.protobuf.dhs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,86 +34,90 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncHandler;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "()V", "TAG", "", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "processFansCount", "processFollowCount", "processGetFollower", "processGetMentionCount", "processGetRedDot", "processGetWxMentionCount", "processNotInterestedConfig", "processPreFetch", "processReInit", "processRevokeRedDot", "processSpamObj", "processTabRedDot", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/extension/FinderSyncHandler;", "Lcom/tencent/mm/plugin/finder/api/IFinderSyncHandler;", "()V", "TAG", "", "handleCmd", "", "cmdItem", "Lcom/tencent/mm/protocal/protobuf/FinderCmdItem;", "processFansCount", "processFollowCount", "processGetFollower", "processGetMentionCount", "processGetRedDot", "processGetWxMentionCount", "processNotInterestedConfig", "processPreFetch", "processReInit", "processRevokeRedDot", "processSpamObj", "processTabRedDot", "plugin-finder_release"})
 public final class b
-  implements com.tencent.mm.plugin.finder.api.e
+  implements f
 {
   private final String TAG = "Finder.SyncFinderSyncHandler";
   
-  private final void b(aiy paramaiy)
+  private final void b(alo paramalo)
   {
     AppMethodBeat.i(165598);
-    ajt localajt = new ajt();
-    localajt.parseFrom(paramaiy.EDH.toByteArray());
-    ac.i(this.TAG, "redDotEvent save svr_fans count " + localajt.EDY + " svr_fans_add_count:" + localajt.EDZ);
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GVo, Integer.valueOf(localajt.EDZ));
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GVn, Integer.valueOf(localajt.EDY));
+    amq localamq = new amq();
+    localamq.parseFrom(paramalo.Glr.toByteArray());
+    ad.i(this.TAG, "redDotEvent save svr_fans count " + localamq.GlN + " svr_fans_add_count:" + localamq.GlO);
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHW, Integer.valueOf(localamq.GlO));
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHV, Integer.valueOf(localamq.GlN));
+    paramalo = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+    p.g(paramalo, "MMKernel.plugin(PluginFinder::class.java)");
+    ((PluginFinder)paramalo).getRedDotManager().Eq(localamq.GlO);
     AppMethodBeat.o(165598);
   }
   
-  private final void c(aiy paramaiy)
+  private final void c(alo paramalo)
   {
     AppMethodBeat.i(165599);
-    aka localaka = new aka();
-    localaka.parseFrom(paramaiy.EDH.toByteArray());
-    ac.i(this.TAG, "save svr_follow count " + localaka.EDX);
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GVm, Integer.valueOf(localaka.EDX));
+    amy localamy = new amy();
+    localamy.parseFrom(paramalo.Glr.toByteArray());
+    ad.i(this.TAG, "save svr_follow count " + localamy.GlM);
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHU, Integer.valueOf(localamy.GlM));
     AppMethodBeat.o(165599);
   }
   
-  private final void d(aiy paramaiy)
+  private final void d(alo paramalo)
   {
     AppMethodBeat.i(165600);
-    ajj localajj = new ajj();
-    localajj.parseFrom(paramaiy.EDH.toByteArray());
-    ac.i(this.TAG, "redDotEvent new count info, msg count:" + localajj.count + ", normalCount:" + localajj.hQB + ", systemCount:" + localajj.EEa);
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GVL, Integer.valueOf(localajj.hQB));
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GVM, Integer.valueOf(localajj.EEa));
+    ame localame = new ame();
+    localame.parseFrom(paramalo.Glr.toByteArray());
+    ad.i(this.TAG, "redDotEvent new count info, msg count:" + localame.count + ", normalCount:" + localame.ijP + ", systemCount:" + localame.GlP);
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IIB, Integer.valueOf(localame.ijP));
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IIC, Integer.valueOf(localame.GlP));
+    paramalo = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+    p.g(paramalo, "MMKernel.plugin(PluginFinder::class.java)");
+    ((PluginFinder)paramalo).getRedDotManager().fJ(localame.ijP, localame.GlP);
     AppMethodBeat.o(165600);
   }
   
-  private final void e(aiy paramaiy)
+  private final void e(alo paramalo)
   {
     AppMethodBeat.i(165601);
-    akd localakd = new akd();
-    paramaiy = paramaiy.EDH;
-    if (paramaiy != null)
+    anc localanc = new anc();
+    paramalo = paramalo.Glr;
+    if (paramalo != null)
     {
-      localakd.parseFrom(paramaiy.toByteArray());
-      paramaiy = localakd.EEx;
-      k.g(paramaiy, "follower.followers");
-      paramaiy = ((Iterable)paramaiy).iterator();
-      while (paramaiy.hasNext())
+      localanc.parseFrom(paramalo.toByteArray());
+      paramalo = localanc.Gmo;
+      p.g(paramalo, "follower.followers");
+      paramalo = ((Iterable)paramalo).iterator();
+      while (paramalo.hasNext())
       {
-        Object localObject1 = (FinderContact)paramaiy.next();
-        Object localObject2 = com.tencent.mm.plugin.finder.api.b.qWt;
+        Object localObject1 = (FinderContact)paramalo.next();
+        Object localObject2 = c.rHn;
         localObject2 = ((FinderContact)localObject1).username;
-        k.g(localObject2, "follow.username");
-        localObject2 = com.tencent.mm.plugin.finder.api.b.a.adh((String)localObject2);
-        ac.i(this.TAG, "sync follow contact " + localakd.EEx.size() + "  username=" + ((FinderContact)localObject1).username + " nickname=" + ((FinderContact)localObject1).nickname + " followFlag=" + ((FinderContact)localObject1).followFlag + ' ');
+        p.g(localObject2, "follow.username");
+        localObject2 = c.a.agW((String)localObject2);
+        ad.i(this.TAG, "sync follow contact " + localanc.Gmo.size() + "  username=" + ((FinderContact)localObject1).username + " nickname=" + ((FinderContact)localObject1).nickname + " followFlag=" + ((FinderContact)localObject1).followFlag + ' ');
         if (localObject2 != null)
         {
-          ((f)localObject2).field_follow_Flag = ((FinderContact)localObject1).followFlag;
-          localObject1 = com.tencent.mm.plugin.finder.api.b.qWt;
-          k.h(localObject2, "contact");
-          com.tencent.mm.plugin.finder.api.b.a.c((f)localObject2);
-          com.tencent.mm.plugin.finder.api.b.a.a((f)localObject2);
+          ((com.tencent.mm.plugin.finder.api.g)localObject2).field_follow_Flag = ((FinderContact)localObject1).followFlag;
+          localObject1 = c.rHn;
+          c.a.c((com.tencent.mm.plugin.finder.api.g)localObject2);
         }
         else
         {
-          localObject2 = com.tencent.mm.plugin.finder.api.b.qWt;
-          k.g(localObject1, "follow");
-          com.tencent.mm.plugin.finder.api.b.a.a((FinderContact)localObject1);
+          localObject2 = c.rHn;
+          p.g(localObject1, "follow");
+          c.a.a((FinderContact)localObject1);
         }
       }
       AppMethodBeat.o(165601);
@@ -122,74 +126,81 @@ public final class b
     AppMethodBeat.o(165601);
   }
   
-  private final void f(aiy paramaiy)
+  private final void f(alo paramalo)
   {
     AppMethodBeat.i(165602);
-    apb localapb = new apb();
-    localapb.parseFrom(paramaiy.EDH.toByteArray());
-    int i = localapb.EDV + localapb.EDU + localapb.EHX + localapb.EHY;
-    ac.i(this.TAG, "redDotEvent new wx count info, msg count:" + localapb.count + ", comment:" + localapb.EDV + ", like:" + localapb.EDU + ", objectlike_like:" + localapb.EHX + ", objectrecommend_like:" + localapb.EHY + ", headUrl:" + localapb.hlG + " totalCount=" + i);
+    asw localasw = new asw();
+    localasw.parseFrom(paramalo.Glr.toByteArray());
+    int i = localasw.GlK + localasw.GlJ + localasw.GqQ + localasw.GqR + localasw.GqS;
+    ad.i(this.TAG, "redDotEvent new wx count info, msg count:" + localasw.count + ", comment:" + localasw.GlK + ", like:" + localasw.GlJ + ", objectlike_like:" + localasw.GqQ + ", objectrecommend_like:" + localasw.GqR + ", follow_accepted_count:" + localasw.GqS + ", headUrl:" + localasw.hDQ + " totalCount=" + i);
     if (i > 0)
     {
-      paramaiy = g.agR();
-      k.g(paramaiy, "MMKernel.storage()");
-      paramaiy.agA().set(ah.a.GVs, Boolean.TRUE);
+      paramalo = com.tencent.mm.kernel.g.ajC();
+      p.g(paramalo, "MMKernel.storage()");
+      paramalo.ajl().set(al.a.IIa, Boolean.TRUE);
     }
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GUV, Integer.valueOf(localapb.EDV));
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GUW, Integer.valueOf(localapb.EDU));
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GUX, Integer.valueOf(localapb.EHX));
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GUY, Integer.valueOf(localapb.EHY));
-    paramaiy = g.agR();
-    k.g(paramaiy, "MMKernel.storage()");
-    paramaiy.agA().set(ah.a.GUZ, localapb.hlG);
-    paramaiy = g.ad(PluginFinder.class);
-    k.g(paramaiy, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)paramaiy).getRedDotManager().a(localapb);
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHC, Integer.valueOf(localasw.GlK));
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHD, Integer.valueOf(localasw.GlJ));
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHE, Integer.valueOf(localasw.GqQ));
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHF, Integer.valueOf(localasw.GqR));
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHG, Integer.valueOf(localasw.GqS));
+    paramalo = com.tencent.mm.kernel.g.ajC();
+    p.g(paramalo, "MMKernel.storage()");
+    paramalo.ajl().set(al.a.IHH, localasw.hDQ);
+    paramalo = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+    p.g(paramalo, "MMKernel.plugin(PluginFinder::class.java)");
+    ((PluginFinder)paramalo).getRedDotManager().a(localasw);
     AppMethodBeat.o(165602);
   }
   
-  private final void g(aiy paramaiy)
+  private final void g(alo paramalo)
   {
     AppMethodBeat.i(165603);
-    Object localObject = new anz();
-    paramaiy = paramaiy.EDH;
-    if (paramaiy != null)
+    Object localObject = new arl();
+    paramalo = paramalo.Glr;
+    if (paramalo != null)
     {
-      ((anz)localObject).parseFrom(paramaiy.toByteArray());
-      paramaiy = ((anz)localObject).object;
-      k.g(paramaiy, "spamObj.`object`");
+      ((arl)localObject).parseFrom(paramalo.toByteArray());
+      paramalo = ((arl)localObject).object;
+      p.g(paramalo, "spamObj.`object`");
       int i;
-      if (!((Collection)paramaiy).isEmpty()) {
+      if (!((Collection)paramalo).isEmpty()) {
         i = 1;
       }
       while (i != 0)
       {
-        ac.i(this.TAG, "sync spam obj %s", new Object[] { Integer.valueOf(((anz)localObject).object.size()) });
-        paramaiy = com.tencent.mm.plugin.finder.storage.logic.b.rFl;
-        paramaiy = ((anz)localObject).object;
-        k.g(paramaiy, "spamObj.`object`");
-        localObject = (Iterable)paramaiy;
-        paramaiy = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+        ad.i(this.TAG, "sync spam obj %s", new Object[] { Integer.valueOf(((arl)localObject).object.size()) });
+        paramalo = com.tencent.mm.plugin.finder.storage.logic.b.sAs;
+        paramalo = ((arl)localObject).object;
+        p.g(paramalo, "spamObj.`object`");
+        localObject = (Iterable)paramalo;
+        paramalo = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
         localObject = ((Iterable)localObject).iterator();
         for (;;)
         {
           if (((Iterator)localObject).hasNext())
           {
-            paramaiy.add(Long.valueOf(((dcf)((Iterator)localObject).next()).EFE));
+            paramalo.add(Long.valueOf(((dhs)((Iterator)localObject).next()).GnU));
             continue;
             i = 0;
             break;
           }
         }
-        com.tencent.mm.plugin.finder.storage.logic.b.a.dB((List)paramaiy);
+        paramalo = (List)paramalo;
+        p.h(paramalo, "objectId");
+        long l = System.currentTimeMillis();
+        ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFeedStorage().dI(paramalo);
+        ad.i(com.tencent.mm.plugin.finder.storage.logic.b.access$getTAG$cp(), "delete feed size=$" + paramalo.size() + " cost=" + (System.currentTimeMillis() - l) + "ms");
       }
       AppMethodBeat.o(165603);
       return;
@@ -197,128 +208,135 @@ public final class b
     AppMethodBeat.o(165603);
   }
   
-  private final void h(aiy paramaiy)
+  private final void h(alo paramalo)
   {
     AppMethodBeat.i(165604);
-    amn localamn = new amn();
-    if (paramaiy.EDH != null)
+    apy localapy = new apy();
+    if (paramalo.Glr != null)
     {
-      localamn.parseFrom(paramaiy.EDH.toByteArray());
-      ac.i(this.TAG, "processNotInterestedConfig config:" + localamn.EtR);
-      paramaiy = g.agR();
-      k.g(paramaiy, "MMKernel.storage()");
-      paramaiy.agA().set(ah.a.GVj, bs.cx(localamn.toByteArray()));
+      localapy.parseFrom(paramalo.Glr.toByteArray());
+      ad.i(this.TAG, "processNotInterestedConfig config:" + localapy.Gbj);
+      paramalo = com.tencent.mm.kernel.g.ajC();
+      p.g(paramalo, "MMKernel.storage()");
+      paramalo.ajl().set(al.a.IHR, bt.cE(localapy.toByteArray()));
     }
     AppMethodBeat.o(165604);
   }
   
-  private final void i(aiy paramaiy)
+  private final void i(alo paramalo)
   {
     AppMethodBeat.i(165605);
-    ac.i(this.TAG, "process reInit");
-    anf localanf = new anf();
-    paramaiy = paramaiy.EDH;
-    if (paramaiy != null)
+    ad.i(this.TAG, "[processReInit] ...");
+    aqr localaqr = new aqr();
+    paramalo = paramalo.Glr;
+    if (paramalo != null)
     {
-      localanf.parseFrom(paramaiy.toByteArray());
+      localaqr.parseFrom(paramalo.toByteArray());
       int i;
-      if (localanf.EGn != 0)
+      if (localaqr.GoK != 0)
       {
-        h.wUl.n(1279L, 20L, 1L);
-        paramaiy = localanf.EGm;
-        k.g(paramaiy, "newSelf.self");
-        if (((Collection)paramaiy).isEmpty()) {
-          break label191;
+        com.tencent.mm.plugin.report.service.g.yhR.n(1279L, 20L, 1L);
+        paramalo = localaqr.GoJ;
+        p.g(paramalo, "newSelf.self");
+        if (((Collection)paramalo).isEmpty()) {
+          break label289;
         }
         i = 1;
         if (i == 0) {
-          break label196;
+          break label294;
         }
-        ac.i(this.TAG, "replace new finder username %s", new Object[] { ((FinderContact)localanf.EGm.get(0)).username });
-        paramaiy = g.agR();
-        k.g(paramaiy, "MMKernel.storage()");
-        paramaiy.agA().set(ah.a.GVv, ((FinderContact)localanf.EGm.get(0)).username);
+        ad.i(this.TAG, "replace new finder username %s", new Object[] { ((FinderContact)localaqr.GoJ.get(0)).username });
+        paramalo = com.tencent.mm.kernel.g.ajC();
+        p.g(paramalo, "MMKernel.storage()");
+        paramalo.ajl().set(al.a.IId, ((FinderContact)localaqr.GoJ.get(0)).username);
       }
       for (;;)
       {
-        paramaiy = g.agR();
-        k.g(paramaiy, "MMKernel.storage()");
-        paramaiy.agA().set(ah.a.GVu, Integer.valueOf(localanf.EDy));
+        paramalo = com.tencent.mm.kernel.g.ajC();
+        p.g(paramalo, "MMKernel.storage()");
+        paramalo.ajl().set(al.a.IIc, Integer.valueOf(localaqr.Gli));
+        paramalo = com.tencent.mm.kernel.g.ajC();
+        p.g(paramalo, "MMKernel.storage()");
+        i = paramalo.ajl().getInt(al.a.IIe, 0);
+        ad.i(this.TAG, "[processReInit] userVersion=" + i + " userVersion=" + localaqr.Gli);
+        if ((i != localaqr.Gli) && (localaqr.Gli != 0))
+        {
+          paramalo = com.tencent.mm.kernel.g.ajC();
+          p.g(paramalo, "MMKernel.storage()");
+          paramalo.ajl().set(al.a.IIf, Integer.valueOf(1));
+        }
         AppMethodBeat.o(165605);
         return;
-        label191:
+        label289:
         i = 0;
         break;
-        label196:
-        paramaiy = g.agR();
-        k.g(paramaiy, "MMKernel.storage()");
-        paramaiy.agA().set(ah.a.GVv, "");
+        label294:
+        paramalo = com.tencent.mm.kernel.g.ajC();
+        p.g(paramalo, "MMKernel.storage()");
+        paramalo.ajl().set(al.a.IId, "");
       }
     }
     AppMethodBeat.o(165605);
   }
   
-  private final void j(aiy paramaiy)
+  private final void j(alo paramalo)
   {
     AppMethodBeat.i(165606);
-    anh localanh = new anh();
-    localanh.parseFrom(paramaiy.EDH.toByteArray());
-    ac.i(this.TAG, "redDotEvent get red dot, showRed:" + localanh.EGp);
-    paramaiy = g.ad(PluginFinder.class);
-    k.g(paramaiy, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)paramaiy).getRedDotManager().a(localanh);
+    aqt localaqt = new aqt();
+    localaqt.parseFrom(paramalo.Glr.toByteArray());
+    ad.i(this.TAG, "redDotEvent get red dot, showRed:" + localaqt.GoM);
+    paramalo = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+    p.g(paramalo, "MMKernel.plugin(PluginFinder::class.java)");
+    ((PluginFinder)paramalo).getRedDotManager().a(localaqt);
     AppMethodBeat.o(165606);
   }
   
-  private final void k(aiy paramaiy)
+  private final void k(alo paramalo)
   {
     AppMethodBeat.i(178142);
-    amz localamz = new amz();
-    localamz.parseFrom(paramaiy.EDH.toByteArray());
-    ac.i(this.TAG, "processPreFetch needPrefetch:" + localamz.EGb + " needShowRedDot:" + localamz.EGc);
-    paramaiy = g.ad(PluginFinder.class);
-    k.g(paramaiy, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)paramaiy).getRedDotManager().a(localamz);
+    aql localaql = new aql();
+    localaql.parseFrom(paramalo.Glr.toByteArray());
+    ad.i(this.TAG, "processPreFetch needPrefetch:" + localaql.Gox + " needShowRedDot:" + localaql.Goy);
     AppMethodBeat.o(178142);
   }
   
-  private static void l(aiy paramaiy)
+  private static void l(alo paramalo)
   {
-    AppMethodBeat.i(201433);
-    aoj localaoj = new aoj();
-    localaoj.parseFrom(paramaiy.EDH.toByteArray());
-    paramaiy = g.ad(PluginFinder.class);
-    k.g(paramaiy, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)paramaiy).getRedDotManager().a(localaoj, "processTabRedDot");
-    AppMethodBeat.o(201433);
+    AppMethodBeat.i(201574);
+    ary localary = new ary();
+    localary.parseFrom(paramalo.Glr.toByteArray());
+    paramalo = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+    p.g(paramalo, "MMKernel.plugin(PluginFinder::class.java)");
+    ((PluginFinder)paramalo).getRedDotManager().a(localary, "processTabRedDot");
+    AppMethodBeat.o(201574);
   }
   
-  private final void m(aiy paramaiy)
+  private final void m(alo paramalo)
   {
-    AppMethodBeat.i(201434);
+    AppMethodBeat.i(201575);
     try
     {
-      ann localann = new ann();
-      localann.parseFrom(paramaiy.EDH.toByteArray());
-      paramaiy = g.ad(PluginFinder.class);
-      k.g(paramaiy, "MMKernel.plugin(PluginFinder::class.java)");
-      ((PluginFinder)paramaiy).getRedDotManager().a(localann);
-      AppMethodBeat.o(201434);
+      aqz localaqz = new aqz();
+      localaqz.parseFrom(paramalo.Glr.toByteArray());
+      paramalo = com.tencent.mm.kernel.g.ad(PluginFinder.class);
+      p.g(paramalo, "MMKernel.plugin(PluginFinder::class.java)");
+      ((PluginFinder)paramalo).getRedDotManager().a(localaqz);
+      AppMethodBeat.o(201575);
       return;
     }
-    catch (Exception paramaiy)
+    catch (Exception paramalo)
     {
-      ac.l(this.TAG, "", new Object[] { paramaiy });
-      AppMethodBeat.o(201434);
+      ad.l(this.TAG, "", new Object[] { paramalo });
+      AppMethodBeat.o(201575);
     }
   }
   
-  public final void a(aiy paramaiy)
+  public final void a(alo paramalo)
   {
     AppMethodBeat.i(165597);
-    k.h(paramaiy, "cmdItem");
-    int i = paramaiy.cmdId;
-    ac.i(this.TAG, "cmdId ".concat(String.valueOf(i)));
+    p.h(paramalo, "cmdItem");
+    int i = paramalo.cmdId;
+    ad.i(this.TAG, "cmdId ".concat(String.valueOf(i)));
     switch (i)
     {
     }
@@ -326,40 +344,40 @@ public final class b
     {
       AppMethodBeat.o(165597);
       return;
-      d(paramaiy);
+      d(paramalo);
       AppMethodBeat.o(165597);
       return;
-      e(paramaiy);
+      e(paramalo);
       AppMethodBeat.o(165597);
       return;
-      f(paramaiy);
+      f(paramalo);
       AppMethodBeat.o(165597);
       return;
-      g(paramaiy);
+      g(paramalo);
       AppMethodBeat.o(165597);
       return;
-      b(paramaiy);
+      b(paramalo);
       AppMethodBeat.o(165597);
       return;
-      c(paramaiy);
+      c(paramalo);
       AppMethodBeat.o(165597);
       return;
-      h(paramaiy);
+      h(paramalo);
       AppMethodBeat.o(165597);
       return;
-      j(paramaiy);
+      j(paramalo);
       AppMethodBeat.o(165597);
       return;
-      i(paramaiy);
+      i(paramalo);
       AppMethodBeat.o(165597);
       return;
-      k(paramaiy);
+      k(paramalo);
       AppMethodBeat.o(165597);
       return;
-      l(paramaiy);
+      l(paramalo);
       AppMethodBeat.o(165597);
       return;
-      m(paramaiy);
+      m(paramalo);
     }
   }
 }

@@ -18,6 +18,7 @@
                 <ImageView android:gravity="center" android:id="@id/f2o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:layout_marginRight="-4.0dip" android:src="@drawable/afx" android:layout_alignTop="@id/cpc" android:layout_alignRight="@id/cpc" />
             </RelativeLayout>
             <ImageView android:gravity="center" android:id="@id/f2f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afx" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/b_" android:ellipsize="end" android:id="@id/g7e" android:background="@null" android:visibility="gone" android:maxWidth="130.0dip" android:singleLine="true" style="@style/qq" />
             <TextView android:id="@android:id/summary" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i0" android:paddingBottom="@dimen/jn" android:singleLine="true" style="@style/lz" />
         </LinearLayout>
     </LinearLayout>

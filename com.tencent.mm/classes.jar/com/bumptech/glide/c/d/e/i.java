@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public static final com.bumptech.glide.c.i<b> aJt;
-  public static final com.bumptech.glide.c.i<Boolean> aKu;
+  public static final com.bumptech.glide.c.i<b> aLk;
+  public static final com.bumptech.glide.c.i<Boolean> aMl;
   
   static
   {
     AppMethodBeat.i(77525);
-    aJt = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.gif.GifOptions.DecodeFormat", b.aCY);
-    aKu = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.gif.GifOptions.DisableAnimation", Boolean.FALSE);
+    aLk = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.gif.GifOptions.DecodeFormat", b.aEP);
+    aMl = com.bumptech.glide.c.i.b("com.bumptech.glide.load.resource.gif.GifOptions.DisableAnimation", Boolean.FALSE);
     AppMethodBeat.o(77525);
   }
 }

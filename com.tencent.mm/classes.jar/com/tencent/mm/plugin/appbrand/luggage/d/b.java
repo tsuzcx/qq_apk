@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.luggage.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 
 public final class b
   implements com.tencent.mm.plugin.appbrand.t.b
@@ -9,14 +9,14 @@ public final class b
   public final void f(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(47580);
-    h.wUl.f(paramInt, paramVarArgs);
+    g.yhR.f(paramInt, paramVarArgs);
     AppMethodBeat.o(47580);
   }
   
   public final void kvStat(int paramInt, String paramString)
   {
     AppMethodBeat.i(47581);
-    h.wUl.kvStat(paramInt, paramString);
+    g.yhR.kvStat(paramInt, paramString);
     AppMethodBeat.o(47581);
   }
 }

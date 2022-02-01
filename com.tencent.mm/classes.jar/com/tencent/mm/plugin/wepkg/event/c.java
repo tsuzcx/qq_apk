@@ -11,12 +11,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class c
 {
-  private static ConcurrentLinkedQueue<WeakReference<a>> DaC;
+  private static ConcurrentLinkedQueue<WeakReference<a>> EEB;
   
   static
   {
     AppMethodBeat.i(110644);
-    DaC = new ConcurrentLinkedQueue();
+    EEB = new ConcurrentLinkedQueue();
     AppMethodBeat.o(110644);
   }
   
@@ -25,11 +25,11 @@ public final class c
     AppMethodBeat.i(110643);
     ToolsProcessIPCService.a(paramT, b.class, new d()
     {
-      public final void bc(Object paramAnonymousObject)
+      public final void be(Object paramAnonymousObject)
       {
         AppMethodBeat.i(110638);
-        if (this.DaD != null) {
-          this.DaD.dkf();
+        if (this.EEC != null) {
+          this.EEC.dur();
         }
         AppMethodBeat.o(110638);
       }
@@ -40,19 +40,19 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(110640);
-    DaC.add(new WeakReference(parama));
+    EEB.add(new WeakReference(parama));
     AppMethodBeat.o(110640);
   }
   
   public static void b(a parama)
   {
     AppMethodBeat.i(110641);
-    Iterator localIterator = DaC.iterator();
+    Iterator localIterator = EEB.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() == parama) {
-        DaC.remove(localWeakReference);
+        EEB.remove(localWeakReference);
       }
     }
     AppMethodBeat.o(110641);
@@ -61,13 +61,13 @@ public final class c
   public static void clear()
   {
     AppMethodBeat.i(110642);
-    DaC.clear();
+    EEB.clear();
     AppMethodBeat.o(110642);
   }
   
   public static abstract interface a
   {
-    public abstract void dkf();
+    public abstract void dur();
   }
   
   static class b
@@ -76,22 +76,22 @@ public final class c
     public void invoke(Object paramObject, d paramd)
     {
       AppMethodBeat.i(110639);
-      Iterator localIterator = c.eJb().iterator();
+      Iterator localIterator = c.aBt().iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          ((a)localWeakReference.get()).dI(paramObject);
+          ((a)localWeakReference.get()).dL(paramObject);
         }
       }
-      paramd.bc(null);
+      paramd.be(null);
       AppMethodBeat.o(110639);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.event.c
  * JD-Core Version:    0.7.0.1
  */

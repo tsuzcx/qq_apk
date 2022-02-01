@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.sdk.b.b;
 
 public final class jm
-  extends com.tencent.mm.sdk.b.b
+  extends b
 {
-  public a dkX;
+  public a dwo;
+  public b dwp;
   
   public jm()
   {
@@ -15,19 +17,22 @@ public final class jm
   
   private jm(byte paramByte)
   {
-    AppMethodBeat.i(123714);
-    this.dkX = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125618);
+    this.dwo = new a();
+    this.dwp = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(123714);
+    AppMethodBeat.o(125618);
   }
   
   public static final class a
   {
-    public com.tencent.mm.protocal.b.a.b dkY;
-    public DialogInterface.OnClickListener dkZ;
-    public DialogInterface.OnClickListener dla;
-    public int type = 0;
+    public int dqR;
+  }
+  
+  public static final class b
+  {
+    public SnsObject dwq;
   }
 }
 

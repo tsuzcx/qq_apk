@@ -66,7 +66,7 @@ public class s
   
   public void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(193039);
+    AppMethodBeat.i(187060);
     paramk = l.a(paramk, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
@@ -78,7 +78,7 @@ public class s
     localFloatBuffer.put(paramk);
     localFloatBuffer.flip();
     this.y = localByteBuffer;
-    AppMethodBeat.o(193039);
+    AppMethodBeat.o(187060);
   }
   
   public boolean b()

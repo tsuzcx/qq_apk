@@ -5,55 +5,55 @@ import d.a.e;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/internal/ArrayQueue;", "T", "", "()V", "elements", "", "[Ljava/lang/Object;", "head", "", "isEmpty", "", "()Z", "tail", "addLast", "", "element", "(Ljava/lang/Object;)V", "clear", "ensureCapacity", "removeFirstOrNull", "()Ljava/lang/Object;", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/internal/ArrayQueue;", "T", "", "()V", "elements", "", "[Ljava/lang/Object;", "head", "", "isEmpty", "", "()Z", "tail", "addLast", "", "element", "(Ljava/lang/Object;)V", "clear", "ensureCapacity", "removeFirstOrNull", "()Ljava/lang/Object;", "kotlinx-coroutines-core"})
 public final class a<T>
 {
-  private Object[] LSx;
-  private int LSy;
-  private int LSz;
+  private Object[] NJt;
+  private int NJu;
+  private int NJv;
   
   public a()
   {
     AppMethodBeat.i(118120);
-    this.LSx = new Object[16];
+    this.NJt = new Object[16];
     AppMethodBeat.o(118120);
   }
   
-  private final void gev()
+  private final void gvU()
   {
     AppMethodBeat.i(118119);
-    int i = this.LSx.length;
+    int i = this.NJt.length;
     Object[] arrayOfObject = new Object[i << 1];
-    e.a(this.LSx, arrayOfObject, 0, this.LSy, 0, 10);
-    e.a(this.LSx, arrayOfObject, this.LSx.length - this.LSy, 0, this.LSy, 4);
-    this.LSx = arrayOfObject;
-    this.LSy = 0;
-    this.LSz = i;
+    e.a(this.NJt, arrayOfObject, 0, this.NJu, 0, 10);
+    e.a(this.NJt, arrayOfObject, this.NJt.length - this.NJu, 0, this.NJu, 4);
+    this.NJt = arrayOfObject;
+    this.NJu = 0;
+    this.NJv = i;
     AppMethodBeat.o(118119);
   }
   
   public final void addLast(T paramT)
   {
     AppMethodBeat.i(118117);
-    this.LSx[this.LSz] = paramT;
-    this.LSz = (this.LSz + 1 & this.LSx.length - 1);
-    if (this.LSz == this.LSy) {
-      gev();
+    this.NJt[this.NJv] = paramT;
+    this.NJv = (this.NJv + 1 & this.NJt.length - 1);
+    if (this.NJv == this.NJu) {
+      gvU();
     }
     AppMethodBeat.o(118117);
   }
   
-  public final T geu()
+  public final T gvT()
   {
     AppMethodBeat.i(118118);
-    if (this.LSy == this.LSz)
+    if (this.NJu == this.NJv)
     {
       AppMethodBeat.o(118118);
       return null;
     }
-    Object localObject = this.LSx[this.LSy];
-    this.LSx[this.LSy] = null;
-    this.LSy = (this.LSy + 1 & this.LSx.length - 1);
+    Object localObject = this.NJt[this.NJu];
+    this.NJt[this.NJu] = null;
+    this.NJu = (this.NJu + 1 & this.NJt.length - 1);
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type T");
@@ -66,7 +66,7 @@ public final class a<T>
   
   public final boolean isEmpty()
   {
-    return this.LSy == this.LSz;
+    return this.NJu == this.NJv;
   }
 }
 

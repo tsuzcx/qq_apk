@@ -9,22 +9,24 @@ import android.os.Process;
 import android.os.SystemClock;
 import android.provider.Settings.Secure;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
 import com.tencent.mm.booter.z;
 import com.tencent.mm.booter.z.a;
 import com.tencent.mm.g.a.k;
-import com.tencent.mm.g.a.vn;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.by;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.g.a.wg;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.bz;
+import com.tencent.mm.modelmulti.o.b;
+import com.tencent.mm.modelmulti.o.d;
+import com.tencent.mm.modelmulti.o.e;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.widget.a.f.a;
 import com.tencent.mm.ui.widget.a.f.c;
 
@@ -32,19 +34,19 @@ import com.tencent.mm.ui.widget.a.f.c;
 public final class ae
   extends n.a
 {
-  private static int cJN = -1;
-  public boolean cJM;
-  private boolean cJO;
-  private final au cJP;
+  private static int cVa = -1;
+  public boolean cUZ;
+  private boolean cVb;
+  private final av cVc;
   private Handler handler;
   
   public ae()
   {
     AppMethodBeat.i(19482);
-    this.cJM = true;
-    this.cJO = false;
+    this.cUZ = true;
+    this.cVb = false;
     this.handler = new Handler(Looper.getMainLooper());
-    this.cJP = new au(new ae.1(this), true);
+    this.cVc = new av(new ae.1(this), true);
     AppMethodBeat.o(19482);
   }
   
@@ -57,94 +59,94 @@ public final class ae
   {
     AppMethodBeat.i(19484);
     boolean bool;
-    if ((az.agM()) && (g.agP().ggT) && (!az.afS()))
+    if ((ba.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD) && (!ba.aiE()))
     {
-      com.tencent.mm.modelsimple.e.eO(false);
-      com.tencent.mm.ap.a.eK(false);
-      com.tencent.mm.modelstat.o.eR(false);
-      com.tencent.mm.bs.a.aIu(com.tencent.mm.bs.a.eQE());
-      if (!this.cJP.eVs()) {
-        this.cJP.stopTimer();
+      com.tencent.mm.modelsimple.e.eQ(false);
+      com.tencent.mm.aq.a.eM(false);
+      com.tencent.mm.modelstat.o.eT(false);
+      com.tencent.mm.bt.a.aNX(com.tencent.mm.bt.a.ffI());
+      if (!this.cVc.fkZ()) {
+        this.cVc.stopTimer();
       }
-      if ((!bs.isProcessRunning(ai.getContext(), ai.getPackageName() + ":tools")) && (!bs.isProcessRunning(ai.getContext(), ai.getPackageName() + ":toolsmp"))) {
+      if ((!bt.isProcessRunning(aj.getContext(), aj.getPackageName() + ":tools")) && (!bt.isProcessRunning(aj.getContext(), aj.getPackageName() + ":toolsmp"))) {
         break label713;
       }
       bool = true;
     }
     for (;;)
     {
-      ac.i("MicroMsg.TempAppForegroundNotifyDeprecated", "before kill tools, tools is running : %b", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.TempAppForegroundNotifyDeprecated", "before kill tools, tools is running : %b", new Object[] { Boolean.valueOf(bool) });
       if (bool) {
-        this.cJP.au(1800000L, 1800000L);
+        this.cVc.az(1800000L, 1800000L);
       }
-      ac.d("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][statInputMethod]");
+      ad.d("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][statInputMethod]");
       bool = false;
-      az.ayM();
-      Object localObject1 = com.tencent.mm.model.c.agA().get(327808, null);
+      ba.aBQ();
+      Object localObject1 = com.tencent.mm.model.c.ajl().get(327808, null);
       if (localObject1 == null)
       {
         bool = true;
         label190:
-        ac.d("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][statInputMethod] needToStat:%s", new Object[] { String.valueOf(bool) });
+        ad.d("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][statInputMethod] needToStat:%s", new Object[] { String.valueOf(bool) });
         if (!bool) {}
       }
       try
       {
-        localObject1 = Settings.Secure.getString(ai.getContext().getContentResolver(), "default_input_method");
-        h.wUl.kvStat(11375, bs.nullAsNil((String)localObject1));
-        az.ayM();
-        com.tencent.mm.model.c.agA().set(327808, Long.valueOf(System.currentTimeMillis()));
+        localObject1 = Settings.Secure.getString(aj.getContext().getContentResolver(), "default_input_method");
+        com.tencent.mm.plugin.report.service.g.yhR.kvStat(11375, bt.nullAsNil((String)localObject1));
+        ba.aBQ();
+        com.tencent.mm.model.c.ajl().set(327808, Long.valueOf(System.currentTimeMillis()));
         localObject1 = new k();
-        ((k)localObject1).cYC.isActive = false;
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+        ((k)localObject1).djU.isActive = false;
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
         localObject1 = new com.tencent.mm.g.a.d();
-        ((com.tencent.mm.g.a.d)localObject1).cYl.cYm = false;
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-        localObject1 = z.fns;
-        if (((z)localObject1).fnD != -1L)
+        ((com.tencent.mm.g.a.d)localObject1).djD.djE = false;
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+        localObject1 = z.fFA;
+        if (((z)localObject1).fFL != -1L)
         {
-          l = bs.aNx();
-          Object localObject2 = (String)((z)localObject1).fnt.get(2, "");
-          localObject2 = (String)localObject2 + ((z)localObject1).fnD + "|" + l + "#";
-          ((z)localObject1).fnt.set(2, localObject2);
-          int i = ((z)localObject1).fnt.YF(3) + 1;
-          ((z)localObject1).fnt.setInt(3, i);
-          ac.i("MicroMsg.StayTimeReport", "onAppPause,appReportCnt:%d app(%d-%d)", new Object[] { Integer.valueOf(i), Long.valueOf(((z)localObject1).fnD), Long.valueOf(l) });
-          ((z)localObject1).fnD = -1L;
-          if ((bs.pN(((z)localObject1).fnt.getLong(1, 0L)) > 3600L * ((z)localObject1).fnF) || (i > ((z)localObject1).fnE))
+          l = bt.aQJ();
+          Object localObject2 = (String)((z)localObject1).fFB.get(2, "");
+          localObject2 = (String)localObject2 + ((z)localObject1).fFL + "|" + l + "#";
+          ((z)localObject1).fFB.set(2, localObject2);
+          int i = ((z)localObject1).fFB.aaO(3) + 1;
+          ((z)localObject1).fFB.setInt(3, i);
+          ad.i("MicroMsg.StayTimeReport", "onAppPause,appReportCnt:%d app(%d-%d)", new Object[] { Integer.valueOf(i), Long.valueOf(((z)localObject1).fFL), Long.valueOf(l) });
+          ((z)localObject1).fFL = -1L;
+          if ((bt.rM(((z)localObject1).fFB.getLong(1, 0L)) > 3600L * ((z)localObject1).fFN) || (i > ((z)localObject1).fFM))
           {
-            h.wUl.kvStat(13110, (String)localObject2);
-            ac.i("MicroMsg.StayTimeReport", "report appStayTime:%s", new Object[] { localObject2 });
-            ((z)localObject1).fnt.set(2, "");
-            ((z)localObject1).fnt.setInt(3, 0);
+            com.tencent.mm.plugin.report.service.g.yhR.kvStat(13110, (String)localObject2);
+            ad.i("MicroMsg.StayTimeReport", "report appStayTime:%s", new Object[] { localObject2 });
+            ((z)localObject1).fFB.set(2, "");
+            ((z)localObject1).fFB.setInt(3, 0);
           }
-          if (((z)localObject1).fnw != null)
+          if (((z)localObject1).fFE != null)
           {
-            localObject2 = ((z)localObject1).fnw;
-            ((z.a)localObject2).time += bs.aO(((z)localObject1).fnA) / 1000L;
+            localObject2 = ((z)localObject1).fFE;
+            ((z.a)localObject2).time += bt.aO(((z)localObject1).fFI) / 1000L;
             if ((paramString != null) && (paramString.contains("WebViewUI")))
             {
-              localObject2 = ((z)localObject1).fnw;
-              ((z.a)localObject2).fnM = ((int)(((z.a)localObject2).fnM + bs.aO(((z)localObject1).fnB) / 1000L));
+              localObject2 = ((z)localObject1).fFE;
+              ((z.a)localObject2).fFU = ((int)(((z.a)localObject2).fFU + bt.aO(((z)localObject1).fFJ) / 1000L));
             }
-            ac.i("MicroMsg.StayTimeReport", "onAppPause, chatting:totalTime:%d", new Object[] { Long.valueOf(((z)localObject1).fnw.time) });
+            ad.i("MicroMsg.StayTimeReport", "onAppPause, chatting:totalTime:%d", new Object[] { Long.valueOf(((z)localObject1).fFE.time) });
           }
         }
         localObject1 = new com.tencent.mm.g.a.e();
-        ((com.tencent.mm.g.a.e)localObject1).cYn.active = false;
-        ((com.tencent.mm.g.a.e)localObject1).cYn.className = paramString;
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
+        ((com.tencent.mm.g.a.e)localObject1).djF.active = false;
+        ((com.tencent.mm.g.a.e)localObject1).djF.className = paramString;
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
         AppMethodBeat.o(19484);
         return;
         label713:
         bool = false;
         continue;
-        if (bs.isNullOrNil(localObject1.toString()))
+        if (bt.isNullOrNil(localObject1.toString()))
         {
           bool = true;
           break label190;
         }
-        long l = bs.aLz(localObject1.toString());
+        long l = bt.aRf(localObject1.toString());
         if (System.currentTimeMillis() - l < 604800000L) {
           break label190;
         }
@@ -154,7 +156,7 @@ public final class ae
       {
         for (;;)
         {
-          ac.e("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][inputMethodStat]exception:" + localException.getMessage());
+          ad.e("MicroMsg.TempAppForegroundNotifyDeprecated", "[oneliang][inputMethodStat]exception:" + localException.getMessage());
         }
       }
     }
@@ -164,75 +166,75 @@ public final class ae
   {
     AppMethodBeat.i(19483);
     long l1 = SystemClock.uptimeMillis();
-    if (!this.cJP.eVs()) {
-      this.cJP.stopTimer();
+    if (!this.cVc.fkZ()) {
+      this.cVc.stopTimer();
     }
-    if ((az.agM()) && (g.agP().ggT) && (!az.afS()))
+    if ((ba.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD) && (!ba.aiE()))
     {
-      com.tencent.mm.modelsimple.e.eO(true);
-      com.tencent.mm.ap.a.eK(true);
-      az.agi().a(new com.tencent.mm.modelmulti.i(), 0);
-      az.ayM();
-      com.tencent.mm.model.c.awA().c(null);
+      com.tencent.mm.modelsimple.e.eQ(true);
+      com.tencent.mm.aq.a.eM(true);
+      com.tencent.mm.modelmulti.o.a(o.d.ifW).aJv().execute();
+      ba.aBQ();
+      com.tencent.mm.model.c.azo().c(null);
       com.tencent.mm.modelstat.o.run(4);
       com.tencent.mm.modelstat.o.run(3);
-      com.tencent.mm.modelstat.o.eR(true);
-      Object localObject = new vn();
-      ((vn)localObject).dyn.dyo = true;
-      ((vn)localObject).dyn.scene = 1;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
-      com.tencent.mm.aj.o.aBs();
-      by.azu().d(19, new Object[] { Integer.valueOf(1) });
+      com.tencent.mm.modelstat.o.eT(true);
+      Object localObject = new wg();
+      ((wg)localObject).dKA.dKB = true;
+      ((wg)localObject).dKA.scene = 1;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      com.tencent.mm.ak.o.aEu();
+      bz.aCx().d(19, new Object[] { Integer.valueOf(1) });
       localObject = new k();
-      ((k)localObject).cYC.isActive = true;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+      ((k)localObject).djU.isActive = true;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
       localObject = new com.tencent.mm.g.a.d();
-      ((com.tencent.mm.g.a.d)localObject).cYl.cYm = true;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
-      z localz = z.fns;
-      if (localz.fnD == -1L)
+      ((com.tencent.mm.g.a.d)localObject).djD.djE = true;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      z localz = z.fFA;
+      if (localz.fFL == -1L)
       {
-        if (localz.fnt.YF(3) == 0) {
-          localz.fnt.setLong(1, bs.aNx());
+        if (localz.fFB.aaO(3) == 0) {
+          localz.fFB.setLong(1, bt.aQJ());
         }
-        localz.fnD = bs.aNx();
-        if (localz.fnw != null) {
-          break label590;
+        localz.fFL = bt.aQJ();
+        if (localz.fFE != null) {
+          break label588;
         }
         localObject = "null";
-        ac.i("MicroMsg.StayTimeReport", "onAppResume chatUser:%s, class:%s", new Object[] { localObject, paramString });
-        if (localz.fnw != null)
+        ad.i("MicroMsg.StayTimeReport", "onAppResume chatUser:%s, class:%s", new Object[] { localObject, paramString });
+        if (localz.fFE != null)
         {
-          localz.fnA = bs.Gn();
+          localz.fFI = bt.HI();
           if ((paramString != null) && (paramString.contains("WebViewUI"))) {
-            localz.fnB = bs.Gn();
+            localz.fFJ = bt.HI();
           }
         }
       }
       localObject = new com.tencent.mm.g.a.e();
-      ((com.tencent.mm.g.a.e)localObject).cYn.active = true;
-      ((com.tencent.mm.g.a.e)localObject).cYn.className = paramString;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
-      if (this.cJM)
+      ((com.tencent.mm.g.a.e)localObject).djF.active = true;
+      ((com.tencent.mm.g.a.e)localObject).djF.className = paramString;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      if (this.cUZ)
       {
         int m;
         int k;
-        if (com.tencent.mm.compatible.util.d.kZ(23))
+        if (com.tencent.mm.compatible.util.d.ly(23))
         {
-          paramString = ai.getContext();
-          i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pTo, 0);
-          m = aw.aKT("sdcard_usable_report").getInt("ignore_battery_dialog_time", 0);
-          ac.i("MicroMsg.BatteryUtil", "getIgnoreBatteryOptimizationsDialogTime() time=%s", new Object[] { Integer.valueOf(m) });
-          if ((bs.jl(i, 1)) && (m < 3) && (!com.tencent.mm.booter.c.bJ(paramString)))
+          paramString = aj.getContext();
+          i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxT, 0);
+          m = ax.aQz("sdcard_usable_report").getInt("ignore_battery_dialog_time", 0);
+          ad.i("MicroMsg.BatteryUtil", "getIgnoreBatteryOptimizationsDialogTime() time=%s", new Object[] { Integer.valueOf(m) });
+          if ((bt.jx(i, 1)) && (m < 3) && (!com.tencent.mm.booter.c.bI(paramString)))
           {
-            ac.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations()");
-            paramString = aw.aKT("sdcard_usable_report").edit();
+            ad.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations()");
+            paramString = ax.aQz("sdcard_usable_report").edit();
             l1 = System.currentTimeMillis();
             j = 0;
             k = 0;
             i = 0;
             if (m != 0) {
-              break label642;
+              break label640;
             }
           }
         }
@@ -240,36 +242,36 @@ public final class ae
         {
           try
           {
-            com.tencent.mm.booter.c.Ul();
+            com.tencent.mm.booter.c.WC();
             if (i == 0)
             {
               paramString.putLong("last_ignore_battery_dialog_time", l1);
               paramString.putInt("ignore_battery_dialog_time", 1);
             }
             paramString.commit();
-            if ((com.tencent.mm.pluginsdk.j.c.eMo()) || (this.cJO)) {
-              break label1070;
+            if ((com.tencent.mm.pluginsdk.l.c.fbl()) || (this.cVb)) {
+              break label1066;
             }
-            cJN += 1;
-            ac.i("MicroMsg.TempAppForegroundNotifyDeprecated", "tipCountAboutSdcardDisable:%d", new Object[] { Integer.valueOf(cJN) });
-            if (cJN > 0) {
-              break label873;
+            cVa += 1;
+            ad.i("MicroMsg.TempAppForegroundNotifyDeprecated", "tipCountAboutSdcardDisable:%d", new Object[] { Integer.valueOf(cVa) });
+            if (cVa > 0) {
+              break label871;
             }
             AppMethodBeat.o(19483);
             return;
-            label590:
-            localObject = localz.fnw.fnJ;
+            label588:
+            localObject = localz.fFE.fFR;
           }
           catch (Exception localException1)
           {
             i = 1;
-            ac.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException1.getClass().toString(), localException1.getMessage() });
+            ad.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException1.getClass().toString(), localException1.getMessage() });
             continue;
           }
-          label642:
-          long l2 = aw.aKT("sdcard_usable_report").getLong("last_ignore_battery_dialog_time", l1);
+          label640:
+          long l2 = ax.aQz("sdcard_usable_report").getLong("last_ignore_battery_dialog_time", l1);
           long l3 = l1 - l2;
-          ac.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() last:%s diff:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
+          ad.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() last:%s diff:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
           if (m == 1)
           {
             if (l3 < 86400000L) {
@@ -277,7 +279,7 @@ public final class ae
             }
             try
             {
-              com.tencent.mm.booter.c.Ul();
+              com.tencent.mm.booter.c.WC();
               i = j;
             }
             catch (Exception localException2)
@@ -285,7 +287,7 @@ public final class ae
               for (;;)
               {
                 i = 1;
-                ac.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException2.getClass().toString(), localException2.getMessage() });
+                ad.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException2.getClass().toString(), localException2.getMessage() });
               }
             }
             if (i != 0) {
@@ -298,7 +300,7 @@ public final class ae
           if ((m == 2) && (l3 >= 604800000L)) {}
           try
           {
-            com.tencent.mm.booter.c.Ul();
+            com.tencent.mm.booter.c.WC();
             i = k;
           }
           catch (Exception localException3)
@@ -306,7 +308,7 @@ public final class ae
             for (;;)
             {
               i = 1;
-              ac.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException3.getClass().toString(), localException3.getMessage() });
+              ad.i("MicroMsg.BatteryUtil", "checkIgnoreBatteryOptimizations() Exception:%s %s", new Object[] { localException3.getClass().toString(), localException3.getMessage() });
             }
           }
           if (i == 0)
@@ -315,55 +317,55 @@ public final class ae
             paramString.putInt("ignore_battery_dialog_time", 3);
           }
         }
-        label873:
-        this.cJO = true;
-        switch (cJN)
+        label871:
+        this.cVb = true;
+        switch (cVa)
         {
         }
         for (;;)
         {
-          new f.a(ai.getContext()).aRQ(ai.getContext().getString(2131762894)).av(ai.getContext().getString(2131755906)).yi(false).b(new f.c()
+          new f.a(aj.getContext()).aXO(aj.getContext().getString(2131762894)).av(aj.getContext().getString(2131755906)).yU(false).b(new f.c()
           {
             public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
             {
               AppMethodBeat.i(19481);
-              ae.this.cJM = false;
+              ae.this.cUZ = false;
               ae.a(ae.this);
               AppMethodBeat.o(19481);
             }
           }).show();
           AppMethodBeat.o(19483);
           return;
-          h.wUl.dB(951, 0);
-          paramString = ai.getContext().getSharedPreferences("sdcard_usable_report", 4).edit();
+          com.tencent.mm.plugin.report.service.g.yhR.dD(951, 0);
+          paramString = aj.getContext().getSharedPreferences("sdcard_usable_report", 4).edit();
           paramString.putInt("mm_process_pid", Process.myPid());
           paramString.apply();
           continue;
-          h.wUl.dB(951, 1);
+          com.tencent.mm.plugin.report.service.g.yhR.dD(951, 1);
           continue;
-          h.wUl.dB(951, 2);
+          com.tencent.mm.plugin.report.service.g.yhR.dD(951, 2);
           continue;
-          h.wUl.dB(951, 3);
+          com.tencent.mm.plugin.report.service.g.yhR.dD(951, 3);
         }
-        label1070:
-        ac.i("MicroMsg.TempAppForegroundNotifyDeprecated", "SdcardUsableDetectionEvent pass tipCountAboutSdcardDisable=%s ifSdcardDialogShow=%s", new Object[] { Integer.valueOf(cJN), Boolean.valueOf(this.cJO) });
-        cJN = -1;
-        if (this.cJO)
+        label1066:
+        ad.i("MicroMsg.TempAppForegroundNotifyDeprecated", "SdcardUsableDetectionEvent pass tipCountAboutSdcardDisable=%s ifSdcardDialogShow=%s", new Object[] { Integer.valueOf(cVa), Boolean.valueOf(this.cVb) });
+        cVa = -1;
+        if (this.cVb)
         {
           AppMethodBeat.o(19483);
           return;
         }
-        paramString = ai.getContext().getSharedPreferences("sdcard_usable_report", 4);
+        paramString = aj.getContext().getSharedPreferences("sdcard_usable_report", 4);
         int i = paramString.getInt("mm_process_pid", -1);
         int j = Process.myPid();
-        ac.i("MicroMsg.TempAppForegroundNotifyDeprecated", "SdcardUsableDetectionEvent pass mmPid=%s mmCurPid=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-        if (bs.jl(i, -1))
+        ad.i("MicroMsg.TempAppForegroundNotifyDeprecated", "SdcardUsableDetectionEvent pass mmPid=%s mmCurPid=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+        if (bt.jx(i, -1))
         {
           AppMethodBeat.o(19483);
           return;
         }
-        if (bs.jl(i, j)) {
-          h.wUl.dB(951, 22);
+        if (bt.jx(i, j)) {
+          com.tencent.mm.plugin.report.service.g.yhR.dD(951, 22);
         }
         for (;;)
         {
@@ -372,14 +374,14 @@ public final class ae
           paramString.apply();
           AppMethodBeat.o(19483);
           return;
-          if (!bs.jl(i, j)) {
-            h.wUl.dB(951, 21);
+          if (!bt.jx(i, j)) {
+            com.tencent.mm.plugin.report.service.g.yhR.dD(951, 21);
           }
         }
       }
-      this.cJM = true;
+      this.cUZ = true;
     }
-    ac.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l1) });
+    ad.i("MicroMsg.TempAppForegroundNotifyDeprecated", "[onAppForeground] cost:%s", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l1) });
     AppMethodBeat.o(19483);
   }
 }

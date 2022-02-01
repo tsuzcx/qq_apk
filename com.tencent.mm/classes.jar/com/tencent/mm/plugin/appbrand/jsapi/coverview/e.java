@@ -8,16 +8,15 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.y.b;
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
-import com.tencent.mm.plugin.appbrand.jsapi.w.c;
-import com.tencent.mm.plugin.appbrand.jsapi.w.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.z.c;
+import com.tencent.mm.plugin.appbrand.jsapi.z.f;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class e
-  extends com.tencent.mm.plugin.appbrand.jsapi.base.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.base.b
 {
   private static final int CTRL_INDEX = 253;
   public static final String NAME = "insertImageView";
@@ -36,12 +35,12 @@ public final class e
     Context localContext = parame.getContext();
     parame = null;
     if (com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.widget.b.b.class) != null) {
-      parame = ((com.tencent.mm.plugin.appbrand.widget.b.b)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.widget.b.b.class)).dG(localContext);
+      parame = ((com.tencent.mm.plugin.appbrand.widget.b.b)com.tencent.luggage.a.e.K(com.tencent.mm.plugin.appbrand.widget.b.b.class)).dE(localContext);
     }
     paramJSONObject = parame;
     if (parame == null)
     {
-      ac.e("MicroMsg.JsApiInsertImageView", "view is null, may not support IGifCoverViewFactory.");
+      ad.e("MicroMsg.JsApiInsertImageView", "view is null, may not support IGifCoverViewFactory.");
       paramJSONObject = new com.tencent.mm.plugin.appbrand.widget.b.e(localContext);
     }
     paramJSONObject.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -50,14 +49,14 @@ public final class e
     return parame;
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.e parame, final int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(137525);
-    ac.d("MicroMsg.JsApiInsertImageView", "onInsertView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
+    ad.d("MicroMsg.JsApiInsertImageView", "onInsertView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
     com.tencent.mm.plugin.appbrand.widget.b.a locala = (com.tencent.mm.plugin.appbrand.widget.b.a)((CoverViewContainer)paramView).ax(com.tencent.mm.plugin.appbrand.widget.b.a.class);
     if (locala == null)
     {
-      ac.w("MicroMsg.JsApiInsertImageView", "onInsertView(viewId : %d) failed, targetView is null", new Object[] { Integer.valueOf(paramInt) });
+      ad.w("MicroMsg.JsApiInsertImageView", "onInsertView(viewId : %d) failed, targetView is null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(137525);
       return;
     }
@@ -69,78 +68,84 @@ public final class e
     String str2 = paramJSONObject.optString("data", "");
     f.b(paramView, paramJSONObject.optJSONObject("style"));
     c.a(parame, locala, paramJSONObject);
-    com.tencent.mm.plugin.appbrand.jsapi.w.b.a(locala.getView(), paramJSONObject);
-    final y.b localb = parame.fC(paramJSONObject.optBoolean("independent", false)).H(paramInt, true);
-    localb.l("data", str2);
-    localb.l("sendTo", str1);
-    localb.l("transEvt", Boolean.valueOf(bool1));
-    localb.l("clickable", Boolean.valueOf(bool2));
+    com.tencent.mm.plugin.appbrand.jsapi.z.b.a(locala.getView(), paramJSONObject);
+    final y.b localb = parame.fG(paramJSONObject.optBoolean("independent", false)).H(paramInt, true);
+    localb.k("data", str2);
+    localb.k("sendTo", str1);
+    localb.k("transEvt", Boolean.valueOf(bool1));
+    localb.k("clickable", Boolean.valueOf(bool2));
     boolean bool5 = paramJSONObject.optBoolean("independent", false);
     bool1 = false;
     if (bool5)
     {
       i = paramJSONObject.optInt("parentId", 0);
       if (i != 0) {
-        bool1 = parame.fC(bool5).sh(i);
+        bool1 = parame.fG(bool5).sJ(i);
       }
     }
-    for (int i = parame.fC(bool5).si(i);; i = -1)
+    for (int i = parame.fG(bool5).sK(i);; i = -1)
     {
-      ac.i("MicroMsg.JsApiInsertImageView", "clickable:%b, gesture:%b, draggable:%b， independent:%b, isParentCanDrag:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
+      ad.i("MicroMsg.JsApiInsertImageView", "clickable:%b, gesture:%b, draggable:%b， independent:%b, isParentCanDrag:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
       if ((bool5) && ((bool1) || (bool4)))
       {
-        ac.i("MicroMsg.JsApiInsertImageView", "CoverViewContainer setOnClickListener");
+        ad.i("MicroMsg.JsApiInsertImageView", "CoverViewContainer setOnClickListener");
         if (bool2)
         {
-          ((CoverViewContainer)paramView).dN(paramInt, i);
+          ((CoverViewContainer)paramView).dP(paramInt, i);
           ((CoverViewContainer)paramView).setIsInterceptEvent(true);
           ((CoverViewContainer)paramView).setOnCustomerClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(137521);
-              ac.i("MicroMsg.JsApiInsertImageView", "onClick");
+              Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+              ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/coverview/JsApiInsertImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+              ad.i("MicroMsg.JsApiInsertImageView", "onClick");
               paramAnonymousView = new e.a((byte)0);
-              HashMap localHashMap = new HashMap();
-              localHashMap.put("data", localb.getString("data", ""));
-              paramAnonymousView.B(localHashMap);
-              if ("webview".equals(localb.getString("sendTo", null)))
-              {
+              localObject = new HashMap();
+              ((Map)localObject).put("data", localb.getString("data", ""));
+              paramAnonymousView.B((Map)localObject);
+              if ("webview".equals(localb.getString("sendTo", null))) {
                 parame.a(paramAnonymousView);
+              }
+              for (;;)
+              {
+                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/coverview/JsApiInsertImageView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(137521);
                 return;
+                parame.b(paramAnonymousView);
               }
-              parame.b(paramAnonymousView);
-              AppMethodBeat.o(137521);
             }
           });
         }
         ((CoverViewContainer)paramView).setDragEventCallback(new CoverViewContainer.a()
         {
-          public final void b(String paramAnonymousString1, String paramAnonymousString2, JSONObject paramAnonymousJSONObject)
+          public final void a(String paramAnonymousString1, String paramAnonymousString2, JSONObject paramAnonymousJSONObject1, JSONObject paramAnonymousJSONObject2)
           {
-            AppMethodBeat.i(206796);
+            AppMethodBeat.i(195002);
             g.b localb = new g.b();
             HashMap localHashMap = new HashMap();
             localHashMap.put("data", paramAnonymousString2);
             localHashMap.put("stage", paramAnonymousString1);
-            localHashMap.put("drag", paramAnonymousJSONObject);
+            localHashMap.put("drag", paramAnonymousJSONObject1);
+            localHashMap.put("target", paramAnonymousJSONObject2);
             localb.B(localHashMap);
-            ac.i("MicroMsg.JsApiInsertImageView", "callback stage:%s, drag:%s, data:%s", new Object[] { paramAnonymousString1, paramAnonymousJSONObject, paramAnonymousString2 });
+            ad.i("MicroMsg.JsApiInsertImageView", "callback stage:%s, drag:%s, data:%s, target:%s", new Object[] { paramAnonymousString1, paramAnonymousJSONObject1, paramAnonymousString2, paramAnonymousJSONObject2 });
             if ("webview".equals(localb.getString("sendTo", null)))
             {
               parame.a(localb);
-              AppMethodBeat.o(206796);
+              AppMethodBeat.o(195002);
               return;
             }
             parame.b(localb);
-            AppMethodBeat.o(206796);
+            AppMethodBeat.o(195002);
           }
         });
       }
       for (;;)
       {
-        ac.i("MicroMsg.JsApiInsertImageView", "clickable:%b, gesture:%b, draggable:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4) });
+        ad.i("MicroMsg.JsApiInsertImageView", "clickable:%b, gesture:%b, draggable:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4) });
         if ((!bool2) && (bool3) && (!bool4))
         {
           paramView.setDuplicateParentStateEnabled(true);
@@ -149,57 +154,61 @@ public final class e
           {
             public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
             {
-              AppMethodBeat.i(206798);
+              AppMethodBeat.i(195004);
+              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+              localb.bd(paramAnonymousView);
+              localb.bd(paramAnonymousMotionEvent);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/coverview/JsApiInsertImageView$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
               boolean bool = "webview".equals(localb.getString("sendTo", null));
-              b.a(parame, paramAnonymousMotionEvent, localb.getString("data", ""), bool);
-              AppMethodBeat.o(206798);
+              b.a(parame, paramInt, paramAnonymousMotionEvent, localb.getString("data", ""), bool);
+              com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/appbrand/jsapi/coverview/JsApiInsertImageView$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+              AppMethodBeat.o(195004);
               return true;
             }
           });
         }
         AppMethodBeat.o(137525);
         return;
-        ac.i("MicroMsg.JsApiInsertImageView", "targetView setOnClickListener");
+        ad.i("MicroMsg.JsApiInsertImageView", "targetView setOnClickListener");
         locala.getView().setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(206797);
-            if (!localb.xK("clickable"))
+            AppMethodBeat.i(195003);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/jsapi/coverview/JsApiInsertImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+            if (!localb.AI("clickable"))
             {
-              AppMethodBeat.o(206797);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/coverview/JsApiInsertImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(195003);
               return;
             }
             paramAnonymousView = new e.a((byte)0);
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("data", localb.getString("data", ""));
-            paramAnonymousView.B(localHashMap);
+            localObject = new HashMap();
+            ((Map)localObject).put("data", localb.getString("data", ""));
+            paramAnonymousView.B((Map)localObject);
             paramAnonymousView.h(parame);
-            if ("webview".equals(localb.getString("sendTo", null)))
-            {
+            if ("webview".equals(localb.getString("sendTo", null))) {
               parame.a(paramAnonymousView);
-              AppMethodBeat.o(206797);
-              return;
             }
-            parame.b(paramAnonymousView);
-            AppMethodBeat.o(206797);
+            for (;;)
+            {
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/jsapi/coverview/JsApiInsertImageView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(195003);
+              return;
+              parame.b(paramAnonymousView);
+            }
           }
         });
         locala.getView().setClickable(bool2);
       }
     }
   }
-  
-  static final class a
-    extends ar
-  {
-    private static final int CTRL_INDEX = 256;
-    private static final String NAME = "onImageViewClick";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,16 +4,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public static final b aCY;
+  public static final b aEP;
   
   static
   {
     AppMethodBeat.i(76838);
-    aCV = new b("PREFER_ARGB_8888", 0);
-    aCW = new b("PREFER_ARGB_8888_DISALLOW_HARDWARE", 1);
-    aCX = new b("PREFER_RGB_565", 2);
-    aCZ = new b[] { aCV, aCW, aCX };
-    aCY = aCW;
+    aEM = new b("PREFER_ARGB_8888", 0);
+    aEN = new b("PREFER_ARGB_8888_DISALLOW_HARDWARE", 1);
+    aEO = new b("PREFER_RGB_565", 2);
+    aEQ = new b[] { aEM, aEN, aEO };
+    aEP = aEN;
     AppMethodBeat.o(76838);
   }
   

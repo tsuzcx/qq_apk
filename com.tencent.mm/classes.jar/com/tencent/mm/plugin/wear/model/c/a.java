@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.wear.model.c;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.wear.model.d;
 import com.tencent.mm.plugin.wear.model.e.i;
-import com.tencent.mm.protocal.protobuf.dwt;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ect;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 
 public final class a
 {
-  public static final void Ua(int paramInt)
+  public static final void VS(int paramInt)
   {
     AppMethodBeat.i(30052);
-    h.wUl.idkeyStat(249L, paramInt, 1L, false);
+    g.yhR.idkeyStat(249L, paramInt, 1L, false);
     AppMethodBeat.o(30052);
   }
   
-  public static final void iC(int paramInt1, int paramInt2)
+  public static final void iP(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30051);
-    dwt localdwt = com.tencent.mm.plugin.wear.model.a.ewp().BWt.BXg;
-    if (localdwt != null)
+    ect localect = com.tencent.mm.plugin.wear.model.a.eKv().DwN.Dxz;
+    if (localect != null)
     {
-      ac.v("MicroMsg.Wear.ReportKVUtil", "report kv operation=%d scene=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      h.wUl.f(11632, new Object[] { Integer.valueOf(paramInt1), localdwt.ncW, localdwt.Gdz, Integer.valueOf(paramInt2) });
+      ad.v("MicroMsg.Wear.ReportKVUtil", "report kv operation=%d scene=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      g.yhR.f(11632, new Object[] { Integer.valueOf(paramInt1), localect.nDt, localect.HOF, Integer.valueOf(paramInt2) });
     }
     AppMethodBeat.o(30051);
   }
   
-  public static final void uc(boolean paramBoolean)
+  public static final void uM(boolean paramBoolean)
   {
     AppMethodBeat.i(30053);
     ArrayList localArrayList = new ArrayList();
@@ -47,7 +47,7 @@ public final class a
       localIDKey.SetValue(1L);
       localArrayList.add(localIDKey);
     }
-    h.wUl.b(localArrayList, false);
+    g.yhR.b(localArrayList, false);
     AppMethodBeat.o(30053);
   }
 }

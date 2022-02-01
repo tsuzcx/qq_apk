@@ -8,7 +8,7 @@
         </LinearLayout>
         <RelativeLayout android:id="@id/fa5" android:paddingRight="@dimen/jn" android:layout_width="64.0dip" android:layout_height="fill_parent">
             <View android:background="@color/FG_4" android:layout_width="1.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
-            <CheckBox android:id="@id/fa4" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ao" android:layout_height="@dimen/ao" android:layout_centerInParent="true" />
+            <CheckBox android:id="@id/fa4" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:layout_centerInParent="true" />
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

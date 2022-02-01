@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.emojicapture.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.i.b.e;
+import com.tencent.mm.media.j.b.e;
 import com.tencent.mm.plugin.emojicapture.model.d;
 import com.tencent.mm.plugin.emojicapture.model.d.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRecorderRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "()V", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "mirror", "", "", "setRotate", "degree", "", "updateDrawViewSize", "width", "height", "updateTextureSize", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRecorderRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "()V", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "mirror", "", "", "setRotate", "degree", "", "updateDrawViewSize", "width", "height", "updateTextureSize", "plugin-emojicapture_release"})
 public final class g
-  extends com.tencent.mm.media.i.a
+  extends com.tencent.mm.media.j.a
 {
   public g()
   {
-    super(i, j, k, d.ceL(), 1, 1);
+    super(i, j, k, d.cjo(), 1, 1);
     AppMethodBeat.i(861);
     AppMethodBeat.o(861);
   }
   
-  public final com.tencent.mm.media.i.b.a ajF()
+  public final com.tencent.mm.media.j.b.a amr()
   {
     AppMethodBeat.i(858);
-    com.tencent.mm.media.i.b.a locala = (com.tencent.mm.media.i.b.a)new e(this.gqZ, this.gra, this.grV, this.grW, this.gVm, this.scaleType);
+    com.tencent.mm.media.j.b.a locala = (com.tencent.mm.media.j.b.a)new e(this.gKJ, this.gKK, this.gLD, this.gLE, this.hnp, this.scaleType);
     AppMethodBeat.o(858);
     return locala;
   }
   
-  public final void cR(int paramInt1, int paramInt2)
+  public final void cT(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(860);
-    d.a locala = d.pnw;
-    paramInt1 = d.ceL();
-    locala = d.pnw;
-    super.cR(paramInt1, d.ceL());
+    d.a locala = d.pQW;
+    paramInt1 = d.cjo();
+    locala = d.pQW;
+    super.cT(paramInt1, d.cjo());
     AppMethodBeat.o(860);
   }
   
-  public final void cS(int paramInt1, int paramInt2)
+  public final void cU(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(859);
-    d.a locala = d.pnw;
-    paramInt1 = d.ceL();
-    locala = d.pnw;
-    super.cS(paramInt1, d.ceL());
+    d.a locala = d.pQW;
+    paramInt1 = d.cjo();
+    locala = d.pQW;
+    super.cU(paramInt1, d.cjo());
     AppMethodBeat.o(859);
   }
   
-  public final void ee(boolean paramBoolean) {}
+  public final void eg(boolean paramBoolean) {}
   
-  public final void mE(int paramInt) {}
+  public final void nd(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.b.g
  * JD-Core Version:    0.7.0.1
  */

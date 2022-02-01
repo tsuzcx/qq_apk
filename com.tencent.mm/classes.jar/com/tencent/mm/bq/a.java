@@ -1,91 +1,47 @@
 package com.tencent.mm.bq;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.support.v4.app.s.c;
-import android.text.format.Time;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.n.e;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  private static String DeX = "";
-  private static String fKK = "";
-  
-  public static String Zb()
+  public static boolean eYD()
   {
-    AppMethodBeat.i(116804);
-    if (bs.isNullOrNil(fKK)) {
-      fKK = com.tencent.mm.kernel.a.Zc().getString("message_channel_id", "message_channel_new_id");
+    AppMethodBeat.i(89923);
+    String str2 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acA().getValue("EnableStrangerChat");
+    String str1 = str2;
+    if (bt.isNullOrNil(str2)) {
+      str1 = "0";
     }
-    String str = fKK;
-    AppMethodBeat.o(116804);
-    return str;
+    boolean bool = "1".equals(str1);
+    AppMethodBeat.o(89923);
+    return bool;
   }
   
-  public static void aFD(String paramString)
+  public static void hh(Context paramContext)
   {
-    fKK = paramString;
-  }
-  
-  public static s.c bE(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(116806);
-    paramContext = new s.c(paramContext, paramString);
-    AppMethodBeat.o(116806);
-    return paramContext;
-  }
-  
-  public static int dlN()
-  {
-    if (Build.VERSION.SDK_INT < 19) {
-      return 2131233500;
-    }
-    return 2131233502;
-  }
-  
-  public static String eJQ()
-  {
-    AppMethodBeat.i(116805);
-    if (bs.isNullOrNil(DeX)) {
-      DeX = com.tencent.mm.kernel.a.Zc().getString("voip_notify_channel_new_id", "voip_notify_channel_new_id");
-    }
-    String str = DeX;
-    AppMethodBeat.o(116805);
-    return str;
-  }
-  
-  public static String eJR()
-  {
-    AppMethodBeat.i(116807);
-    if (d.kZ(26))
+    AppMethodBeat.i(89924);
+    if (!eYD())
     {
-      localObject = new Time();
-      ((Time)localObject).setToNow();
-      int i = ((Time)localObject).hour;
-      int j = ((Time)localObject).minute;
-      ai.getContext();
-      if (!com.tencent.mm.m.a.cp(i, j)) {
-        ac.w("MicroMsg.NotificationHelper", "no shake & sound notification during background deactive time");
-      }
-      for (i = 1; i != 0; i = 0)
+      com.tencent.mm.kernel.g.ajA().aiF();
+      if (((l)com.tencent.mm.kernel.g.ab(l.class)).dlH().bUJ() > 0)
       {
-        AppMethodBeat.o(116807);
-        return "message_dnd_mode_channel_id";
+        d.Q(paramContext, "nearby", ".ui.NearbyFriendShowSayHiUI");
+        AppMethodBeat.o(89924);
+        return;
       }
     }
-    Object localObject = Zb();
-    AppMethodBeat.o(116807);
-    return localObject;
+    d.Q(paramContext, "nearby", ".ui.NearbyFriendsUI");
+    AppMethodBeat.o(89924);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.bq.a
  * JD-Core Version:    0.7.0.1
  */

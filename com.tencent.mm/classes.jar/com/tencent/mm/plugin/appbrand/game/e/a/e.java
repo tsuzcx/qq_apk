@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.game.e.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.b.c.a;
+import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.game.g.b.b;
 import com.tencent.mm.plugin.appbrand.game.g.b.f;
 import com.tencent.mm.plugin.appbrand.game.g.d;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,16 +18,16 @@ public final class e
 {
   public static final int CTRL_INDEX = 666;
   public static final String NAME = "operateGameRecorder";
-  a jRx;
-  c.a jRy;
-  String jRz;
+  a klL;
+  c.a klM;
+  String klN;
   
   public e()
   {
     AppMethodBeat.i(45155);
-    this.jRx = new a();
-    this.jRy = null;
-    this.jRz = null;
+    this.klL = new a();
+    this.klM = null;
+    this.klN = null;
     AppMethodBeat.o(45155);
   }
   
@@ -37,15 +37,15 @@ public final class e
     Object localObject = String.format("fail: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     HashMap localHashMap = new HashMap(1);
     localHashMap.put("errCode", Integer.valueOf(paramInt3));
-    paramq.h(paramInt1, k((String)localObject, localHashMap));
-    localObject = this.jRx;
+    paramq.h(paramInt1, m((String)localObject, localHashMap));
+    localObject = this.klL;
     ((a)localObject).g(paramq);
-    ac.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch error: %d, %s", new Object[] { Integer.valueOf(paramInt3), paramString });
+    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch error: %d, %s", new Object[] { Integer.valueOf(paramInt3), paramString });
     paramq = new HashMap(3);
     paramq.put("state", "error");
     paramq.put("errCode", Integer.valueOf(paramInt3));
     paramq.put("errMsg", paramString);
-    ((a)localObject).A(paramq).beN();
+    ((a)localObject).A(paramq).bir();
     AppMethodBeat.o(45156);
   }
   
@@ -57,7 +57,7 @@ public final class e
     if (paramMap != null) {
       localHashMap.putAll(paramMap);
     }
-    paramq.h(paramInt, k("ok", localHashMap));
+    paramq.h(paramInt, m("ok", localHashMap));
     AppMethodBeat.o(45157);
   }
 }

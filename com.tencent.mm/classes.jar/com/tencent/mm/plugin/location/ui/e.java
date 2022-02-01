@@ -7,76 +7,76 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   implements c
 {
-  public boolean dfZ;
-  public String gPy;
+  public boolean drv;
   private boolean isVisible;
-  private String tWE;
-  private double tWI;
-  private double tWJ;
-  private String tYL;
-  private boolean tZe;
-  private View tZf;
-  private d tZg;
-  private TextView tZh;
-  private TextView tZi;
-  public ImageButton tZj;
+  public String jDf;
+  private String uZn;
+  private double uZr;
+  private double uZs;
+  private boolean vbN;
+  private View vbO;
+  private d vbP;
+  private TextView vbQ;
+  private TextView vbR;
+  public ImageButton vbS;
+  private String vbu;
   
   public e(d paramd, Context paramContext)
   {
     AppMethodBeat.i(55842);
-    this.dfZ = false;
-    this.tZe = true;
-    this.tWI = 1000000.0D;
-    this.tWJ = 1000000.0D;
+    this.drv = false;
+    this.vbN = true;
+    this.uZr = 1000000.0D;
+    this.uZs = 1000000.0D;
     this.isVisible = true;
-    this.tYL = "";
+    this.vbu = "";
     paramContext = ((Activity)paramContext).findViewById(2131301527);
-    this.tZh = ((TextView)paramContext.findViewById(2131301525));
-    this.tZi = ((TextView)paramContext.findViewById(2131301526));
-    this.tZj = ((ImageButton)paramContext.findViewById(2131301534));
-    this.tZg = paramd;
-    this.tZf = paramContext;
+    this.vbQ = ((TextView)paramContext.findViewById(2131301525));
+    this.vbR = ((TextView)paramContext.findViewById(2131301526));
+    this.vbS = ((ImageButton)paramContext.findViewById(2131301534));
+    this.vbP = paramd;
+    this.vbO = paramContext;
     AppMethodBeat.o(55842);
   }
   
   public final String getPreText()
   {
-    return this.tYL;
+    return this.vbu;
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(55843);
-    this.tWE = paramString;
-    paramString = this.tWE;
-    ac.d("NewItemOverlay", "popView " + this.tZf.getWidth() + " " + this.tZf.getHeight());
+    this.uZn = paramString;
+    paramString = this.uZn;
+    ad.d("NewItemOverlay", "popView " + this.vbO.getWidth() + " " + this.vbO.getHeight());
     if ((paramString != null) && (!paramString.equals(""))) {
-      this.tZi.setText(paramString);
+      this.vbR.setText(paramString);
     }
-    if ((this.gPy != null) && (!this.gPy.equals(""))) {
-      this.tZh.setText(this.gPy);
+    if ((this.jDf != null) && (!this.jDf.equals(""))) {
+      this.vbQ.setText(this.jDf);
     }
     for (;;)
     {
-      if (this.tZe)
+      if (this.vbN)
       {
-        this.tZf.setVisibility(0);
-        this.tZf.invalidate();
+        this.vbO.setVisibility(0);
+        this.vbO.invalidate();
       }
       AppMethodBeat.o(55843);
       return;
-      this.tZh.setText(2131760712);
+      this.vbQ.setText(2131760712);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.e
  * JD-Core Version:    0.7.0.1
  */

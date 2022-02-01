@@ -8,26 +8,26 @@ import java.lang.reflect.Method;
 
 final class ab
 {
-  private static LayoutTransition Bt;
-  private static Field Bu;
-  private static boolean Bv;
-  private static Method Bw;
-  private static boolean Bx;
+  private static LayoutTransition Dl;
+  private static Field Dm;
+  private static boolean Dn;
+  private static Method Do;
+  private static boolean Dp;
   
   private static void a(LayoutTransition paramLayoutTransition)
   {
-    if (!Bx) {}
+    if (!Dp) {}
     try
     {
       Method localMethod = LayoutTransition.class.getDeclaredMethod("cancel", new Class[0]);
-      Bw = localMethod;
+      Do = localMethod;
       localMethod.setAccessible(true);
       label27:
-      Bx = true;
-      if (Bw != null) {}
+      Dp = true;
+      if (Do != null) {}
       try
       {
-        Bw.invoke(paramLayoutTransition, new Object[0]);
+        Do.invoke(paramLayoutTransition, new Object[0]);
         return;
       }
       catch (InvocationTargetException paramLayoutTransition) {}catch (IllegalAccessException paramLayoutTransition) {}
@@ -43,7 +43,7 @@ final class ab
     boolean bool1 = false;
     boolean bool2 = false;
     Object localObject;
-    if (Bt == null)
+    if (Dl == null)
     {
       localObject = new LayoutTransition()
       {
@@ -52,12 +52,12 @@ final class ab
           return true;
         }
       };
-      Bt = (LayoutTransition)localObject;
+      Dl = (LayoutTransition)localObject;
       ((LayoutTransition)localObject).setAnimator(2, null);
-      Bt.setAnimator(0, null);
-      Bt.setAnimator(1, null);
-      Bt.setAnimator(3, null);
-      Bt.setAnimator(4, null);
+      Dl.setAnimator(0, null);
+      Dl.setAnimator(1, null);
+      Dl.setAnimator(3, null);
+      Dl.setAnimator(4, null);
     }
     if (paramBoolean)
     {
@@ -67,36 +67,36 @@ final class ab
         if (((LayoutTransition)localObject).isRunning()) {
           a((LayoutTransition)localObject);
         }
-        if (localObject != Bt) {
+        if (localObject != Dl) {
           paramViewGroup.setTag(2131306067, localObject);
         }
       }
-      paramViewGroup.setLayoutTransition(Bt);
+      paramViewGroup.setLayoutTransition(Dl);
     }
     for (;;)
     {
       return;
       paramViewGroup.setLayoutTransition(null);
-      if (!Bv) {}
+      if (!Dn) {}
       try
       {
         localObject = ViewGroup.class.getDeclaredField("mLayoutSuppressed");
-        Bu = (Field)localObject;
+        Dm = (Field)localObject;
         ((Field)localObject).setAccessible(true);
         label146:
-        Bv = true;
+        Dn = true;
         paramBoolean = bool2;
-        if (Bu != null) {
+        if (Dm != null) {
           paramBoolean = bool1;
         }
         try
         {
-          bool1 = Bu.getBoolean(paramViewGroup);
+          bool1 = Dm.getBoolean(paramViewGroup);
           paramBoolean = bool1;
           if (bool1)
           {
             paramBoolean = bool1;
-            Bu.setBoolean(paramViewGroup, false);
+            Dm.setBoolean(paramViewGroup, false);
             paramBoolean = bool1;
           }
         }
@@ -125,7 +125,7 @@ final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.transition.ab
  * JD-Core Version:    0.7.0.1
  */

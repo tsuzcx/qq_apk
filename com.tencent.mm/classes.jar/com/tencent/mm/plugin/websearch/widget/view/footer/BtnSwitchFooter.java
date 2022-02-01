@@ -11,30 +11,31 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.z;
 
 public class BtnSwitchFooter
   extends LinearLayout
   implements a
 {
-  private c CbH;
-  private TextView Ccp;
-  private View Ccq;
-  private View Ccr;
-  private a.a Ccs;
+  private c DEF;
+  private TextView DFo;
+  private View DFp;
+  private View DFq;
+  private a.a DFr;
   private Context context;
-  private ImageView mmk;
+  private ImageView mMM;
   
   public BtnSwitchFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116733);
     c.a locala = new c.a();
-    locala.hKx = true;
-    locala.hKw = true;
-    this.CbH = locala.aFT();
+    locala.idr = true;
+    locala.idq = true;
+    this.DEF = locala.aJc();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116733);
@@ -45,9 +46,9 @@ public class BtnSwitchFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116734);
     paramAttributeSet = new c.a();
-    paramAttributeSet.hKx = true;
-    paramAttributeSet.hKw = true;
-    this.CbH = paramAttributeSet.aFT();
+    paramAttributeSet.idr = true;
+    paramAttributeSet.idq = true;
+    this.DEF = paramAttributeSet.aJc();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116734);
@@ -56,20 +57,24 @@ public class BtnSwitchFooter
   private void init()
   {
     AppMethodBeat.i(116735);
-    ViewGroup localViewGroup = (ViewGroup)z.jD(this.context).inflate(2131496109, this);
-    this.Ccr = localViewGroup.findViewById(2131300200);
-    this.Ccq = localViewGroup.findViewById(2131300210);
-    this.Ccp = ((TextView)localViewGroup.findViewById(2131300214));
-    this.mmk = ((ImageView)localViewGroup.findViewById(2131300201));
-    this.Ccr.setVisibility(8);
-    this.Ccq.setOnClickListener(new View.OnClickListener()
+    ViewGroup localViewGroup = (ViewGroup)z.jO(this.context).inflate(2131496109, this);
+    this.DFq = localViewGroup.findViewById(2131300200);
+    this.DFp = localViewGroup.findViewById(2131300210);
+    this.DFo = ((TextView)localViewGroup.findViewById(2131300214));
+    this.mMM = ((ImageView)localViewGroup.findViewById(2131300201));
+    this.DFq.setVisibility(8);
+    this.DFp.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116732);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (BtnSwitchFooter.a(BtnSwitchFooter.this) != null) {
-          BtnSwitchFooter.a(BtnSwitchFooter.this).eyj();
+          BtnSwitchFooter.a(BtnSwitchFooter.this).eNa();
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/BtnSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116732);
       }
     });
@@ -79,16 +84,16 @@ public class BtnSwitchFooter
   public void setCallback(a.a parama)
   {
     AppMethodBeat.i(116740);
-    this.Ccs = parama;
+    this.DFr = parama;
     if (parama != null)
     {
       if (parama.getItemCount() > 1)
       {
-        this.Ccq.setVisibility(0);
+        this.DFp.setVisibility(0);
         AppMethodBeat.o(116740);
         return;
       }
-      this.Ccq.setVisibility(8);
+      this.DFp.setVisibility(8);
     }
     AppMethodBeat.o(116740);
   }
@@ -98,33 +103,33 @@ public class BtnSwitchFooter
     AppMethodBeat.i(116739);
     if (TextUtils.isEmpty(paramString))
     {
-      this.mmk.setVisibility(8);
+      this.mMM.setVisibility(8);
       AppMethodBeat.o(116739);
       return;
     }
-    this.mmk.setVisibility(0);
-    com.tencent.mm.av.a.a.aFG().a(paramString, this.mmk, this.CbH);
+    this.mMM.setVisibility(0);
+    com.tencent.mm.aw.a.a.aIP().a(paramString, this.mMM, this.DEF);
     AppMethodBeat.o(116739);
   }
   
   public void setSwitchClickLsn(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(116736);
-    this.Ccq.setOnClickListener(paramOnClickListener);
+    this.DFp.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(116736);
   }
   
   public void setSwitchVisible(int paramInt)
   {
     AppMethodBeat.i(116737);
-    this.Ccq.setVisibility(paramInt);
+    this.DFp.setVisibility(paramInt);
     AppMethodBeat.o(116737);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116738);
-    this.Ccp.setText(paramString);
+    this.DFo.setText(paramString);
     AppMethodBeat.o(116738);
   }
 }

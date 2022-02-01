@@ -198,19 +198,35 @@ public class SQLiteCursor
     return localSQLiteDatabase;
   }
   
+  public boolean moveToPosition(int paramInt)
+  {
+    AppMethodBeat.i(186404);
+    if (!super.moveToPosition(paramInt))
+    {
+      AppMethodBeat.o(186404);
+      return false;
+    }
+    int i = getCount();
+    if (paramInt >= i)
+    {
+      this.mPos = i;
+      AppMethodBeat.o(186404);
+      return false;
+    }
+    AppMethodBeat.o(186404);
+    return true;
+  }
+  
   public boolean onMove(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(3093);
     if ((this.mWindow == null) || (paramInt2 < this.mWindow.getStartPosition()) || (paramInt2 >= this.mWindow.getStartPosition() + this.mWindow.getNumRows()))
     {
       fillWindow(paramInt2);
-      if ((paramInt2 >= this.mWindow.getStartPosition()) && (paramInt2 < this.mWindow.getStartPosition() + this.mWindow.getNumRows()))
-      {
-        AppMethodBeat.o(3093);
-        return true;
+      paramInt1 = this.mWindow.getStartPosition() + this.mWindow.getNumRows();
+      if (paramInt2 >= paramInt1) {
+        this.mCount = paramInt1;
       }
-      AppMethodBeat.o(3093);
-      return false;
     }
     AppMethodBeat.o(3093);
     return true;
@@ -223,7 +239,7 @@ public class SQLiteCursor
     //   0: sipush 3099
     //   3: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 211	com/tencent/wcdb/database/SQLiteCursor:isClosed	()Z
+    //   7: invokevirtual 221	com/tencent/wcdb/database/SQLiteCursor:isClosed	()Z
     //   10: ifeq +11 -> 21
     //   13: sipush 3099
     //   16: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -234,7 +250,7 @@ public class SQLiteCursor
     //   23: aload_0
     //   24: getfield 60	com/tencent/wcdb/database/SQLiteCursor:mQuery	Lcom/tencent/wcdb/database/SQLiteQuery;
     //   27: invokevirtual 199	com/tencent/wcdb/database/SQLiteQuery:getDatabase	()Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   30: invokevirtual 214	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
+    //   30: invokevirtual 224	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
     //   33: ifne +13 -> 46
     //   36: aload_0
     //   37: monitorexit
@@ -247,21 +263,21 @@ public class SQLiteCursor
     //   50: ifnull +10 -> 60
     //   53: aload_0
     //   54: getfield 106	com/tencent/wcdb/database/SQLiteCursor:mWindow	Lcom/tencent/wcdb/CursorWindow;
-    //   57: invokevirtual 217	com/tencent/wcdb/CursorWindow:clear	()V
+    //   57: invokevirtual 227	com/tencent/wcdb/CursorWindow:clear	()V
     //   60: aload_0
     //   61: iconst_m1
-    //   62: putfield 220	com/tencent/wcdb/database/SQLiteCursor:mPos	I
+    //   62: putfield 209	com/tencent/wcdb/database/SQLiteCursor:mPos	I
     //   65: aload_0
     //   66: iconst_m1
     //   67: putfield 47	com/tencent/wcdb/database/SQLiteCursor:mCount	I
     //   70: aload_0
     //   71: getfield 56	com/tencent/wcdb/database/SQLiteCursor:mDriver	Lcom/tencent/wcdb/database/SQLiteCursorDriver;
     //   74: aload_0
-    //   75: invokeinterface 224 2 0
+    //   75: invokeinterface 231 2 0
     //   80: aload_0
     //   81: monitorexit
     //   82: aload_0
-    //   83: invokespecial 226	com/tencent/wcdb/AbstractWindowedCursor:requery	()Z
+    //   83: invokespecial 233	com/tencent/wcdb/AbstractWindowedCursor:requery	()Z
     //   86: istore_1
     //   87: sipush 3099
     //   90: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -276,21 +292,21 @@ public class SQLiteCursor
     //   105: athrow
     //   106: astore_2
     //   107: ldc 15
-    //   109: new 228	java/lang/StringBuilder
+    //   109: new 235	java/lang/StringBuilder
     //   112: dup
-    //   113: ldc 230
-    //   115: invokespecial 231	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   113: ldc 237
+    //   115: invokespecial 238	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   118: aload_2
-    //   119: invokevirtual 234	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
-    //   122: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: invokevirtual 241	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   122: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   128: iconst_1
     //   129: anewarray 176	java/lang/Object
     //   132: dup
     //   133: iconst_0
     //   134: aload_2
     //   135: aastore
-    //   136: invokestatic 244	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   136: invokestatic 251	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   139: sipush 3099
     //   142: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: iconst_0

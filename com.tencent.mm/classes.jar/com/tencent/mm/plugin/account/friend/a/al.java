@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.cuy;
-import com.tencent.mm.protocal.protobuf.cuz;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.dai;
+import com.tencent.mm.protocal.protobuf.daj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,7 +21,7 @@ public final class al
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private final b rr;
   
   public al(String paramString, List<String> paramList)
@@ -29,32 +29,32 @@ public final class al
     AppMethodBeat.i(131139);
     this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new cuy();
-    ((b.a)localObject).hvu = new cuz();
+    ((b.a)localObject).hNM = new dai();
+    ((b.a)localObject).hNN = new daj();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendsmstomfriend";
     ((b.a)localObject).funcId = 432;
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (cuy)this.rr.hvr.hvw;
-    ((cuy)localObject).Ewu = paramString;
-    ((cuy)localObject).FeQ = new LinkedList();
-    ((cuy)localObject).FeP = paramList.size();
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (dai)this.rr.hNK.hNQ;
+    ((dai)localObject).xbo = paramString;
+    ((dai)localObject).GOu = new LinkedList();
+    ((dai)localObject).GOt = paramList.size();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
       paramList = (String)paramString.next();
-      if (!bs.isNullOrNil(paramList)) {
-        ((cuy)localObject).FeQ.add(new crm().aJV(paramList));
+      if (!bt.isNullOrNil(paramList)) {
+        ((dai)localObject).GOu.add(new cwt().aPy(paramList));
       }
     }
     AppMethodBeat.o(131139);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(131140);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(131140);
     return i;
@@ -74,7 +74,7 @@ public final class al
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.al
  * JD-Core Version:    0.7.0.1
  */

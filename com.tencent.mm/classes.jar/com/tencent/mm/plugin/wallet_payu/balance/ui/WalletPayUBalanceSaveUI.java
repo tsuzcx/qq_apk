@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceSaveUI;
 import com.tencent.mm.plugin.wallet_payu.balance.a.a;
 import com.tencent.mm.pluginsdk.wallet.f;
@@ -12,10 +12,10 @@ import com.tencent.mm.pluginsdk.wallet.f;
 public class WalletPayUBalanceSaveUI
   extends WalletBalanceSaveUI
 {
-  public final void eoE()
+  public final void eCE()
   {
     AppMethodBeat.i(71971);
-    doSceneProgress(new a(this.wJu, "ZAR"));
+    doSceneProgress(new a(this.xXb, "ZAR"));
     AppMethodBeat.o(71971);
   }
   
@@ -23,7 +23,7 @@ public class WalletPayUBalanceSaveUI
   {
     AppMethodBeat.i(71970);
     super.onCreate(paramBundle);
-    this.AYx.setVisibility(8);
+    this.CyG.setVisibility(8);
     AppMethodBeat.o(71970);
   }
   
@@ -31,7 +31,7 @@ public class WalletPayUBalanceSaveUI
   {
     AppMethodBeat.i(71972);
     if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof a))) {
-      f.a(this, ((a)paramn).dac, "", 11, 1);
+      f.a(this, ((a)paramn).dlu, "", 11, 1);
     }
     AppMethodBeat.o(71972);
     return false;

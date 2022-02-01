@@ -7,12 +7,12 @@ public enum a
   static
   {
     AppMethodBeat.i(76835);
-    aCP = new a("LOCAL", 0);
-    aCQ = new a("REMOTE", 1);
-    aCR = new a("DATA_DISK_CACHE", 2);
-    aCS = new a("RESOURCE_DISK_CACHE", 3);
-    aCT = new a("MEMORY_CACHE", 4);
-    aCU = new a[] { aCP, aCQ, aCR, aCS, aCT };
+    aEG = new a("LOCAL", 0);
+    aEH = new a("REMOTE", 1);
+    aEI = new a("DATA_DISK_CACHE", 2);
+    aEJ = new a("RESOURCE_DISK_CACHE", 3);
+    aEK = new a("MEMORY_CACHE", 4);
+    aEL = new a[] { aEG, aEH, aEI, aEJ, aEK };
     AppMethodBeat.o(76835);
   }
   

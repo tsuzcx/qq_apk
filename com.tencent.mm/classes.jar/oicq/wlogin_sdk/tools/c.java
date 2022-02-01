@@ -98,7 +98,16 @@ public final class c
     }
   }
   
-  public static byte[] aXi(String paramString)
+  private static long b2iu(byte paramByte)
+  {
+    int i = paramByte;
+    if (paramByte < 0) {
+      i = paramByte & 0xFF;
+    }
+    return i;
+  }
+  
+  public static byte[] bdC(String paramString)
   {
     AppMethodBeat.i(88151);
     try
@@ -118,16 +127,7 @@ public final class c
     return paramString;
   }
   
-  private static long b2iu(byte paramByte)
-  {
-    int i = paramByte;
-    if (paramByte < 0) {
-      i = paramByte & 0xFF;
-    }
-    return i;
-  }
-  
-  public static byte[] di(byte[] paramArrayOfByte)
+  public static byte[] dp(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88150);
     paramArrayOfByte = new c().getMD5(paramArrayOfByte);

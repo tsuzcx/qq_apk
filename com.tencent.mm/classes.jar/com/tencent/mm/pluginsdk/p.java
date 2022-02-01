@@ -1,23 +1,21 @@
 package com.tencent.mm.pluginsdk;
 
 import android.content.Context;
-import android.os.Bundle;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mm.kernel.c.a;
 
 public abstract interface p
+  extends a
 {
-  public abstract boolean a(Context paramContext, String paramString, boolean paramBoolean);
+  public abstract boolean a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener);
   
-  public abstract boolean a(Context paramContext, String paramString, boolean paramBoolean, Bundle paramBundle);
+  public abstract boolean fE(String paramString);
   
-  public abstract boolean a(Context paramContext, String paramString, boolean paramBoolean, t paramt);
-  
-  public abstract boolean b(Context paramContext, String paramString, boolean paramBoolean, t paramt);
-  
-  public abstract boolean b(Context paramContext, String paramString, Object... paramVarArgs);
+  public abstract String v(Context paramContext, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.p
  * JD-Core Version:    0.7.0.1
  */

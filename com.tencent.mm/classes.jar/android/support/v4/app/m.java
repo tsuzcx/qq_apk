@@ -268,12 +268,12 @@ final class m
     }
   }
   
-  public final boolean h(Object paramObject)
+  public final boolean i(Object paramObject)
   {
     return paramObject instanceof Transition;
   }
   
-  public final Object i(Object paramObject)
+  public final Object j(Object paramObject)
   {
     Transition localTransition = null;
     if (paramObject != null) {
@@ -282,7 +282,7 @@ final class m
     return localTransition;
   }
   
-  public final Object j(Object paramObject)
+  public final Object k(Object paramObject)
   {
     if (paramObject == null) {
       return null;

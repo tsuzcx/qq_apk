@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
 
 final class LoginHistoryUI$34
-  implements n.c
+  implements n.d
 {
   LoginHistoryUI$34(LoginHistoryUI paramLoginHistoryUI) {}
   
@@ -15,11 +15,11 @@ final class LoginHistoryUI$34
     AppMethodBeat.i(128116);
     if (paraml.size() == 0)
     {
-      paraml.jw(7002, 2131760759);
-      paraml.jw(7003, 2131760345);
-      paraml.jw(7004, 2131766192);
-      if (!ab.eUL()) {
-        paraml.jw(7009, 2131766189);
+      paraml.jI(7002, 2131760759);
+      paraml.jI(7003, 2131760345);
+      paraml.jI(7004, 2131766192);
+      if (!ac.fkp()) {
+        paraml.jI(7009, 2131766189);
       }
     }
     AppMethodBeat.o(128116);

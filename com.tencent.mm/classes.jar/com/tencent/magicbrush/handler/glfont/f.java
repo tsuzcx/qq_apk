@@ -1,344 +1,165 @@
 package com.tencent.magicbrush.handler.glfont;
 
-import android.annotation.SuppressLint;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
 import android.graphics.Typeface;
-import com.tencent.magicbrush.a.a;
-import com.tencent.magicbrush.a.a.a;
-import com.tencent.magicbrush.a.c.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.FloatBuffer;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
-@SuppressLint({"LongLogTag"})
-final class f
+public final class f
 {
-  g cnG;
-  private HashMap<String, j> cnH;
-  a cnI;
-  private FloatBuffer cnJ;
-  private List<j> cnK;
-  private i cnL;
-  private StringBuilder cnM;
+  HashMap<String, Typeface> cyj;
+  HashMap<String, Integer> cyk;
+  public b cyl;
   
-  f(d paramd)
+  f(b paramb)
   {
-    AppMethodBeat.i(140021);
-    this.cnM = new StringBuilder();
-    this.cnG = new g(paramd, this);
-    this.cnH = new HashMap();
-    this.cnI = new a();
-    this.cnK = new ArrayList();
-    AppMethodBeat.o(140021);
+    AppMethodBeat.i(140017);
+    this.cyj = new HashMap();
+    this.cyk = new f.1(this);
+    this.cyl = paramb;
+    AppMethodBeat.o(140017);
   }
   
-  private List<j> cB(String paramString)
+  /* Error */
+  static String dC(String paramString)
   {
-    AppMethodBeat.i(140023);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(140023);
-      return null;
-    }
-    this.cnK.clear();
-    int i = 0;
-    while (i < paramString.length())
-    {
-      int j = p(paramString, i);
-      j localj;
-      if (j > 0)
-      {
-        localj = g(paramString, i, j);
-        i += j;
-      }
-      while (localj == null)
-      {
-        this.cnK.clear();
-        AppMethodBeat.o(140023);
-        return null;
-        localj = q(paramString.charAt(i));
-        i += 1;
-      }
-      this.cnK.add(localj);
-    }
-    paramString = this.cnK;
-    AppMethodBeat.o(140023);
-    return paramString;
-  }
-  
-  private j g(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(140025);
-    String str = h(paramString, paramInt1, paramInt2);
-    j localj = (j)this.cnH.get(str);
-    if (localj != null)
-    {
-      AppMethodBeat.o(140025);
-      return localj;
-    }
-    if (a.Gb() == null)
-    {
-      paramString = new IllegalStateException("FontDrawableProvider must support");
-      AppMethodBeat.o(140025);
-      throw paramString;
-    }
-    paramString = a.Gb().o(paramString, paramInt1);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(140025);
-      return null;
-    }
-    paramInt1 = (int)this.cnL.bsJ;
-    int i = (int)this.cnL.bsJ;
-    if ((paramInt1 <= 0) || (i <= 0))
-    {
-      AppMethodBeat.o(140025);
-      return null;
-    }
-    paramString = this.cnG.a(paramString, paramInt1, i);
-    if (paramString == null)
-    {
-      c.c.d("MagicBrush.MBFontGlyphManager", "Load font drawable glyph failed.", new Object[0]);
-      AppMethodBeat.o(140025);
-      return null;
-    }
-    paramString.cop = paramInt2;
-    this.cnH.put(str, paramString);
-    AppMethodBeat.o(140025);
-    return paramString;
-  }
-  
-  private String h(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(140027);
-    if (paramInt2 <= 0)
-    {
-      paramString = new IllegalStateException("There is no font drawable");
-      AppMethodBeat.o(140027);
-      throw paramString;
-    }
-    this.cnM.setLength(0);
-    while (paramInt2 > 0)
-    {
-      this.cnM.append(paramString.charAt(paramInt1));
-      paramInt1 += 1;
-      paramInt2 -= 1;
-    }
-    this.cnM.append("|").append(this.cnL.bsJ);
-    paramString = this.cnM.toString();
-    AppMethodBeat.o(140027);
-    return paramString;
-  }
-  
-  private static int p(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(140026);
-    if (a.Gb() == null)
-    {
-      AppMethodBeat.o(140026);
-      return 0;
-    }
-    paramInt = a.Gb().n(paramString, paramInt);
-    AppMethodBeat.o(140026);
-    return paramInt;
-  }
-  
-  private j q(char paramChar)
-  {
-    AppMethodBeat.i(140024);
-    if (this.cnL == null)
-    {
-      AppMethodBeat.o(140024);
-      return null;
-    }
-    String str = r(paramChar);
-    j localj = (j)this.cnH.get(str);
-    if (localj != null)
-    {
-      AppMethodBeat.o(140024);
-      return localj;
-    }
-    localj = this.cnG.s(paramChar);
-    if (localj == null)
-    {
-      c.c.d("MagicBrush.MBFontGlyphManager", "Load glyph failed. glyph == null [" + paramChar + "]", new Object[0]);
-      AppMethodBeat.o(140024);
-      return null;
-    }
-    this.cnH.put(str, localj);
-    AppMethodBeat.o(140024);
-    return localj;
-  }
-  
-  private String r(char paramChar)
-  {
-    AppMethodBeat.i(140028);
-    if (this.cnL == null)
-    {
-      AppMethodBeat.o(140028);
-      return null;
-    }
-    this.cnM.setLength(0);
-    StringBuilder localStringBuilder = this.cnM.append(paramChar).append("|").append(this.cnL.bsJ).append("|");
-    if (this.cnL.qC == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.cnL.qC.hashCode()))
-    {
-      localObject = localStringBuilder.append(localObject);
-      if (this.cnL.cnZ) {
-        ((StringBuilder)localObject).append("|").append(this.cnL.strokeWidth);
-      }
-      if (this.cnL.coa != null) {
-        ((StringBuilder)localObject).append("|").append(this.cnL.coa.cof);
-      }
-      localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(140028);
-      return localObject;
-    }
-  }
-  
-  final void a(i parami)
-  {
-    AppMethodBeat.i(140029);
-    this.cnL = parami;
-    g localg = this.cnG;
-    localg.cnR = parami;
-    localg.cnS.setTypeface(parami.qC);
-    localg.cnS.setTextSize(parami.bsJ);
-    if (parami.cnZ)
-    {
-      localg.cnS.setStyle(Paint.Style.STROKE);
-      localg.cnS.setStrokeWidth(parami.strokeWidth);
-    }
-    for (;;)
-    {
-      localg.cnS.setTextSkewX(0.0F);
-      localg.cnS.setFakeBoldText(false);
-      if (parami.coa != null)
-      {
-        if ((parami.qC == null) || (parami.qC.getStyle() != parami.coa.cof))
-        {
-          if ((parami.coa == i.a.cod) || (parami.coa == i.a.coe)) {
-            localg.cnS.setTextSkewX(-0.25F);
-          }
-          if ((parami.coa == i.a.coc) || (parami.coa == i.a.coe)) {
-            localg.cnS.setFakeBoldText(true);
-          }
-        }
-        if (parami.coa.isBold()) {
-          localg.cnS.setFakeBoldText(true);
-        }
-      }
-      localg.cnS.getFontMetrics(localg.cnV);
-      AppMethodBeat.o(140029);
-      return;
-      localg.cnS.setStyle(Paint.Style.FILL);
-    }
-  }
-  
-  final FloatBuffer cA(String paramString)
-  {
-    AppMethodBeat.i(140022);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(140022);
-      return null;
-    }
-    List localList = cB(paramString);
-    if ((localList == null) || (localList.size() == 0))
-    {
-      AppMethodBeat.o(140022);
-      return null;
-    }
-    int i = Math.max(paramString.length(), 10) * 40 + 16;
-    if ((this.cnJ == null) || (this.cnJ.capacity() * 4 < i)) {
-      this.cnJ = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    }
-    this.cnJ.clear();
-    paramString = this.cnJ;
-    float f = g.E(localList);
-    Paint.FontMetrics localFontMetrics = this.cnG.cnV;
-    paramString.put(f).put(localFontMetrics.ascent).put(localFontMetrics.descent).put(localFontMetrics.descent - localFontMetrics.ascent);
-    j.a(paramString, localList);
-    paramString.flip();
-    this.cnK.clear();
-    AppMethodBeat.o(140022);
-    return paramString;
-  }
-  
-  final float cC(String paramString)
-  {
-    AppMethodBeat.i(140030);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(140030);
-      return 0.0F;
-    }
-    paramString = cB(paramString);
-    if ((paramString == null) || (paramString.size() == 0))
-    {
-      AppMethodBeat.o(140030);
-      return -1.0F;
-    }
-    float f = g.E(paramString);
-    AppMethodBeat.o(140030);
-    return f;
-  }
-  
-  final void clear()
-  {
-    AppMethodBeat.i(140031);
-    if (this.cnH != null)
-    {
-      Iterator localIterator = this.cnH.values().iterator();
-      while (localIterator.hasNext())
-      {
-        j localj = (j)localIterator.next();
-        a locala = this.cnI;
-        if (localj != null)
-        {
-          localj.setEmpty();
-          locala.cnN.offer(localj);
-        }
-      }
-      this.cnH.clear();
-    }
-    AppMethodBeat.o(140031);
-  }
-  
-  static final class a
-  {
-    Queue<j> cnN;
-    
-    a()
-    {
-      AppMethodBeat.i(140019);
-      this.cnN = new LinkedList();
-      AppMethodBeat.o(140019);
-    }
-    
-    final j Gh()
-    {
-      AppMethodBeat.i(140020);
-      j localj = (j)this.cnN.poll();
-      if (localj == null)
-      {
-        localj = new j();
-        AppMethodBeat.o(140020);
-        return localj;
-      }
-      AppMethodBeat.o(140020);
-      return localj;
-    }
+    // Byte code:
+    //   0: ldc 46
+    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokestatic 52	com/tencent/magicbrush/utils/h:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: ifeq +10 -> 19
+    //   12: ldc 46
+    //   14: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: aconst_null
+    //   18: areturn
+    //   19: aload_0
+    //   20: ldc 54
+    //   22: invokevirtual 59	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   25: ifne +18 -> 43
+    //   28: invokestatic 65	com/tencent/magicbrush/handler/glfont/a:HA	()Lcom/tencent/magicbrush/a/d$a;
+    //   31: ifnull +12 -> 43
+    //   34: invokestatic 65	com/tencent/magicbrush/handler/glfont/a:HA	()Lcom/tencent/magicbrush/a/d$a;
+    //   37: iconst_1
+    //   38: invokeinterface 70 2 0
+    //   43: new 72	com/tencent/magicbrush/handler/glfont/m
+    //   46: dup
+    //   47: invokespecial 73	com/tencent/magicbrush/handler/glfont/m:<init>	()V
+    //   50: astore_1
+    //   51: aload_1
+    //   52: getfield 77	com/tencent/magicbrush/handler/glfont/m:czj	Ljava/util/Map;
+    //   55: invokeinterface 82 1 0
+    //   60: new 84	java/io/RandomAccessFile
+    //   63: dup
+    //   64: aload_0
+    //   65: ldc 86
+    //   67: invokespecial 89	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   70: astore_2
+    //   71: aload_1
+    //   72: aload_2
+    //   73: invokevirtual 93	com/tencent/magicbrush/handler/glfont/m:c	(Ljava/io/RandomAccessFile;)V
+    //   76: aload_2
+    //   77: invokevirtual 96	java/io/RandomAccessFile:close	()V
+    //   80: aload_1
+    //   81: getfield 77	com/tencent/magicbrush/handler/glfont/m:czj	Ljava/util/Map;
+    //   84: getstatic 100	com/tencent/magicbrush/handler/glfont/m:cze	I
+    //   87: invokestatic 106	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   90: invokeinterface 110 2 0
+    //   95: ifeq +99 -> 194
+    //   98: aload_1
+    //   99: getfield 77	com/tencent/magicbrush/handler/glfont/m:czj	Ljava/util/Map;
+    //   102: getstatic 100	com/tencent/magicbrush/handler/glfont/m:cze	I
+    //   105: invokestatic 106	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   108: invokeinterface 114 2 0
+    //   113: checkcast 56	java/lang/String
+    //   116: astore_0
+    //   117: ldc 46
+    //   119: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: aload_0
+    //   123: areturn
+    //   124: astore_2
+    //   125: ldc 116
+    //   127: aload_2
+    //   128: ldc 118
+    //   130: iconst_0
+    //   131: anewarray 4	java/lang/Object
+    //   134: invokestatic 124	com/tencent/magicbrush/a/c$c:printStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   137: goto -57 -> 80
+    //   140: astore_1
+    //   141: ldc 126
+    //   143: aload_1
+    //   144: ldc 128
+    //   146: iconst_1
+    //   147: anewarray 4	java/lang/Object
+    //   150: dup
+    //   151: iconst_0
+    //   152: aload_0
+    //   153: aastore
+    //   154: invokestatic 124	com/tencent/magicbrush/a/c$c:printStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   157: ldc 46
+    //   159: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: aconst_null
+    //   163: areturn
+    //   164: astore_1
+    //   165: aconst_null
+    //   166: astore_2
+    //   167: aload_2
+    //   168: invokevirtual 96	java/io/RandomAccessFile:close	()V
+    //   171: ldc 46
+    //   173: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   176: aload_1
+    //   177: athrow
+    //   178: astore_2
+    //   179: ldc 116
+    //   181: aload_2
+    //   182: ldc 118
+    //   184: iconst_0
+    //   185: anewarray 4	java/lang/Object
+    //   188: invokestatic 124	com/tencent/magicbrush/a/c$c:printStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   191: goto -20 -> 171
+    //   194: aload_1
+    //   195: getfield 77	com/tencent/magicbrush/handler/glfont/m:czj	Ljava/util/Map;
+    //   198: getstatic 131	com/tencent/magicbrush/handler/glfont/m:czi	I
+    //   201: invokestatic 106	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   204: invokeinterface 110 2 0
+    //   209: ifeq +29 -> 238
+    //   212: aload_1
+    //   213: getfield 77	com/tencent/magicbrush/handler/glfont/m:czj	Ljava/util/Map;
+    //   216: getstatic 131	com/tencent/magicbrush/handler/glfont/m:czi	I
+    //   219: invokestatic 106	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   222: invokeinterface 114 2 0
+    //   227: checkcast 56	java/lang/String
+    //   230: astore_0
+    //   231: ldc 46
+    //   233: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   236: aload_0
+    //   237: areturn
+    //   238: ldc 46
+    //   240: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   243: aconst_null
+    //   244: areturn
+    //   245: astore_1
+    //   246: goto -79 -> 167
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	249	0	paramString	String
+    //   50	49	1	localm	m
+    //   140	4	1	localException1	java.lang.Exception
+    //   164	49	1	localObject1	Object
+    //   245	1	1	localObject2	Object
+    //   70	7	2	localRandomAccessFile	java.io.RandomAccessFile
+    //   124	4	2	localException2	java.lang.Exception
+    //   166	2	2	localObject3	Object
+    //   178	4	2	localException3	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   76	80	124	java/lang/Exception
+    //   51	60	140	java/lang/Exception
+    //   125	137	140	java/lang/Exception
+    //   171	178	140	java/lang/Exception
+    //   179	191	140	java/lang/Exception
+    //   60	71	164	finally
+    //   167	171	178	java/lang/Exception
+    //   71	76	245	finally
   }
 }
 

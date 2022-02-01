@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.m.a.c;
 public final class a
 {
   /* Error */
-  public static java.lang.String aP(android.content.Context paramContext, java.lang.String paramString)
+  public static java.lang.String aS(android.content.Context paramContext, java.lang.String paramString)
   {
     // Byte code:
     //   0: ldc 11
@@ -51,7 +51,7 @@ public final class a
     //   70: ldc 62
     //   72: iconst_0
     //   73: anewarray 4	java/lang/Object
-    //   76: invokestatic 68	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   76: invokestatic 68	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   79: goto -20 -> 59
     //   82: astore_2
     //   83: aconst_null
@@ -63,7 +63,7 @@ public final class a
     //   90: ldc 70
     //   92: iconst_0
     //   93: anewarray 4	java/lang/Object
-    //   96: invokestatic 68	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   96: invokestatic 68	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   99: aload_1
     //   100: ifnull +7 -> 107
     //   103: aload_1
@@ -78,7 +78,7 @@ public final class a
     //   118: ldc 62
     //   120: iconst_0
     //   121: anewarray 4	java/lang/Object
-    //   124: invokestatic 68	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: invokestatic 68	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   127: goto -20 -> 107
     //   130: astore_1
     //   131: aconst_null
@@ -97,7 +97,7 @@ public final class a
     //   152: ldc 62
     //   154: iconst_0
     //   155: anewarray 4	java/lang/Object
-    //   158: invokestatic 68	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   158: invokestatic 68	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   161: goto -20 -> 141
     //   164: astore_1
     //   165: goto -32 -> 133

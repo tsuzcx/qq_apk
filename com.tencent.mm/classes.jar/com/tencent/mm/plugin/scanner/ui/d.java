@@ -10,8 +10,10 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class d
@@ -20,24 +22,24 @@ public final class d
   private Context context;
   String mTitle;
   private View mView;
-  private View.OnTouchListener sGX;
+  private View.OnTouchListener tDQ;
   private TextView titleTv;
-  private TextView vLf;
-  private final int xcB;
-  private TextView xcC;
-  public boolean xcD;
-  public boolean xcE;
-  private Boolean xcF;
-  private ViewTreeObserver.OnGlobalLayoutListener xcG;
-  a xcH;
+  private TextView wSo;
+  private final int yqD;
+  private TextView yqE;
+  public boolean yqF;
+  public boolean yqG;
+  private Boolean yqH;
+  private ViewTreeObserver.OnGlobalLayoutListener yqI;
+  a yqJ;
   
   public d(Activity paramActivity)
   {
     super(paramActivity);
     AppMethodBeat.i(51791);
-    this.xcB = 5;
-    this.xcD = false;
-    this.xcE = false;
+    this.yqD = 5;
+    this.yqF = false;
+    this.yqG = false;
     setLayoutResource(2131494852);
     this.context = paramActivity;
     AppMethodBeat.o(51791);
@@ -62,93 +64,98 @@ public final class d
     if (this.titleTv == null) {
       this.titleTv = ((TextView)paramView.findViewById(16908310));
     }
-    if (this.vLf == null) {
-      this.vLf = ((TextView)paramView.findViewById(16908304));
+    if (this.wSo == null) {
+      this.wSo = ((TextView)paramView.findViewById(16908304));
     }
-    if (this.xcC == null) {
-      this.xcC = ((TextView)paramView.findViewById(2131302452));
+    if (this.yqE == null) {
+      this.yqE = ((TextView)paramView.findViewById(2131302452));
     }
-    if (this.sGX == null)
+    if (this.tDQ == null)
     {
-      this.sGX = new View.OnTouchListener()
+      this.tDQ = new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(51789);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          localb.bd(paramAnonymousMotionEvent);
+          a.b("com/tencent/mm/plugin/scanner/ui/DescriptionTextPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
           if (paramAnonymousMotionEvent.getAction() == 0)
           {
-            ac.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
+            ad.d("MicroMsg.scanner.PlainTextPreference", "moreTv onTouch");
             d.a(d.this).setVisibility(4);
             d.b(d.this).setMaxLines(2000);
-            d.this.xcD = true;
+            d.this.yqF = true;
             if (d.c(d.this) != null)
             {
               d.c(d.this).a(d.this.mKey, Boolean.TRUE);
-              d.c(d.this).dAh();
+              d.c(d.this).dLF();
             }
           }
+          a.a(false, this, "com/tencent/mm/plugin/scanner/ui/DescriptionTextPreference$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(51789);
           return false;
         }
       };
-      this.xcC.setOnTouchListener(this.sGX);
+      this.yqE.setOnTouchListener(this.tDQ);
     }
-    if (this.xcH != null)
+    if (this.yqJ != null)
     {
-      this.xcF = this.xcH.arM(this.mKey);
-      if (this.xcF != null) {
-        if (this.xcF.booleanValue())
+      this.yqH = this.yqJ.awN(this.mKey);
+      if (this.yqH != null) {
+        if (this.yqH.booleanValue())
         {
-          this.xcC.setVisibility(8);
-          this.vLf.setMaxLines(2000);
+          this.yqE.setVisibility(8);
+          this.wSo.setMaxLines(2000);
         }
       }
     }
     for (;;)
     {
-      if (this.xcG == null)
+      if (this.yqI == null)
       {
-        this.xcG = new ViewTreeObserver.OnGlobalLayoutListener()
+        this.yqI = new ViewTreeObserver.OnGlobalLayoutListener()
         {
           public final void onGlobalLayout()
           {
             AppMethodBeat.i(51790);
-            ac.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + d.b(d.this).getHeight() + ", summaryTv.getLineHeight() = " + d.b(d.this).getLineHeight());
+            ad.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() = " + d.b(d.this).getHeight() + ", summaryTv.getLineHeight() = " + d.b(d.this).getLineHeight());
             if ((d.b(d.this).getText() != null) && (d.b(d.this).getHeight() > 0) && (d.b(d.this).getLineHeight() > 0) && (d.d(d.this) == null))
             {
-              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.xcE) && (!d.this.xcD))
+              if ((d.b(d.this).getHeight() / d.b(d.this).getLineHeight() > 5) && (!d.this.yqG) && (!d.this.yqF))
               {
                 d.a(d.this).setVisibility(0);
                 d.b(d.this).setMaxLines(5);
-                d.this.xcE = true;
-                if ((d.c(d.this) != null) && (d.c(d.this).arM(d.this.mKey) == null))
+                d.this.yqG = true;
+                if ((d.c(d.this) != null) && (d.c(d.this).awN(d.this.mKey) == null))
                 {
                   d.c(d.this).a(d.this.mKey, Boolean.FALSE);
-                  d.c(d.this).dAh();
+                  d.c(d.this).dLF();
                 }
               }
-              ac.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + d.b(d.this).getHeight() / d.b(d.this).getLineHeight());
+              ad.d("MicroMsg.scanner.PlainTextPreference", "summaryTv.getHeight() / summaryTv.getLineHeight() = " + d.b(d.this).getHeight() / d.b(d.this).getLineHeight());
             }
             d.b(d.this).getViewTreeObserver().removeGlobalOnLayoutListener(this);
             AppMethodBeat.o(51790);
           }
         };
-        this.vLf.getViewTreeObserver().addOnGlobalLayoutListener(this.xcG);
+        this.wSo.getViewTreeObserver().addOnGlobalLayoutListener(this.yqI);
       }
-      if (!bs.isNullOrNil(this.mTitle)) {
+      if (!bt.isNullOrNil(this.mTitle)) {
         break;
       }
       this.titleTv.setVisibility(8);
       AppMethodBeat.o(51793);
       return;
-      this.xcC.setVisibility(0);
-      this.vLf.setMaxLines(5);
+      this.yqE.setVisibility(0);
+      this.wSo.setMaxLines(5);
       continue;
-      this.xcC.setVisibility(8);
-      this.vLf.setMaxLines(6);
+      this.yqE.setVisibility(8);
+      this.wSo.setMaxLines(6);
       continue;
-      this.xcC.setVisibility(8);
-      this.vLf.setMaxLines(6);
+      this.yqE.setVisibility(8);
+      this.wSo.setMaxLines(6);
     }
     this.titleTv.setText(this.mTitle);
     this.titleTv.setVisibility(0);
@@ -159,14 +166,14 @@ public final class d
   {
     public abstract void a(String paramString, Boolean paramBoolean);
     
-    public abstract Boolean arM(String paramString);
+    public abstract Boolean awN(String paramString);
     
-    public abstract void dAh();
+    public abstract void dLF();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.d
  * JD-Core Version:    0.7.0.1
  */

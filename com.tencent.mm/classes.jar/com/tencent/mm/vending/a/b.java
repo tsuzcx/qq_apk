@@ -8,55 +8,55 @@ import junit.framework.Assert;
 public abstract class b<_Struct, _Item>
   extends com.tencent.mm.vending.base.b<_Struct, Cursor>
 {
-  public a Jpk;
-  protected _Item KR;
-  protected Cursor Rn = null;
+  public a LgP;
+  protected _Item MJ;
+  protected Cursor Tc = null;
   protected int mCount;
-  protected Map<Integer, _Item> nTs = null;
+  protected Map<Integer, _Item> owN = null;
   
   public b(_Item param_Item)
   {
-    this.KR = param_Item;
+    this.MJ = param_Item;
     this.mCount = -1;
-    fxa();
+    fNN();
   }
   
   private Cursor getCursor()
   {
-    if ((this.Rn == null) || (this.Rn.isClosed())) {
-      Assert.assertNotNull(this.Rn);
+    if ((this.Tc == null) || (this.Tc.isClosed())) {
+      Assert.assertNotNull(this.Tc);
     }
-    return this.Rn;
+    return this.Tc;
   }
   
   public abstract _Item a(_Item param_Item, Cursor paramCursor);
   
-  public final void cVi()
+  public void destroyAsynchronous()
   {
-    if (this.nTs != null) {
-      this.nTs.clear();
+    det();
+  }
+  
+  public final void det()
+  {
+    if (this.owN != null) {
+      this.owN.clear();
     }
-    if (this.Rn != null) {
-      this.Rn.close();
+    if (this.Tc != null) {
+      this.Tc.close();
     }
     this.mCount = -1;
   }
   
-  protected abstract Cursor dRF();
+  protected abstract Cursor edZ();
   
-  public void destroyAsynchronous()
+  public final void fNN()
   {
-    cVi();
-  }
-  
-  public final void fxa()
-  {
-    if (this.nTs == null) {
-      this.nTs = new HashMap();
+    if (this.owN == null) {
+      this.owN = new HashMap();
     }
   }
   
-  public final int fxb()
+  public final int fNO()
   {
     if (this.mCount < 0) {
       this.mCount = getCursor().getCount();
@@ -66,9 +66,9 @@ public abstract class b<_Struct, _Item>
   
   public final _Item getItem(int paramInt)
   {
-    if (this.nTs != null)
+    if (this.owN != null)
     {
-      localObject = this.nTs.get(Integer.valueOf(paramInt));
+      localObject = this.owN.get(Integer.valueOf(paramInt));
       if (localObject != null) {
         return localObject;
       }
@@ -76,19 +76,19 @@ public abstract class b<_Struct, _Item>
     if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
       return null;
     }
-    if (this.nTs == null) {
-      return a(this.KR, getCursor());
+    if (this.owN == null) {
+      return a(this.MJ, getCursor());
     }
     Object localObject = a(null, getCursor());
-    this.nTs.put(Integer.valueOf(paramInt), localObject);
+    this.owN.put(Integer.valueOf(paramInt), localObject);
     return localObject;
   }
   
   public static abstract interface a
   {
-    public abstract void dQO();
+    public abstract void edg();
     
-    public abstract void dQP();
+    public abstract void edh();
   }
 }
 

@@ -3,6 +3,8 @@ package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class e$1
   implements View.OnClickListener
@@ -12,9 +14,13 @@ final class e$1
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(80989);
-    if (this.CGS.isShowing()) {
-      this.CGS.cancel();
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    if (this.EkE.isShowing()) {
+      this.EkE.cancel();
     }
+    a.a(this, "com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(80989);
   }
 }

@@ -13,9 +13,8 @@ import android.widget.FrameLayout.LayoutParams;
 import com.tencent.luggage.natives.LuggageNativeViewJni;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.c.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.f.h.a;
 import com.tencent.mm.plugin.appbrand.jsapi.l;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.jsruntime.h;
 import com.tencent.mm.plugin.appbrand.jsruntime.i;
 import com.tencent.mm.plugin.appbrand.jsruntime.j;
@@ -34,9 +33,8 @@ import com.tencent.mm.plugin.appbrand.widget.input.u.c;
 import com.tencent.mm.plugin.m.a.a.a.a.a;
 import com.tencent.mm.plugin.m.a.a.a.a.b;
 import com.tencent.mm.plugin.m.a.b.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.a.ae;
-import d.g.b.k;
 import d.o;
 import java.net.URL;
 import java.util.HashMap;
@@ -49,23 +47,23 @@ public final class a
   extends FrameLayout
   implements ay
 {
-  private aa caw;
+  private aa ckN;
   public Context mContext;
-  private i uzd;
-  private l uze;
-  public LuggageNativeViewJni uzf;
-  private com.tencent.mm.plugin.appbrand.r.a.d uzg;
-  public com.tencent.mm.plugin.m.a.a.a uzh;
-  public com.tencent.mm.plugin.m.a.a.b.a uzi;
-  private boolean uzj;
-  private final View.OnLayoutChangeListener uzk;
+  private i vBG;
+  private l vBH;
+  public LuggageNativeViewJni vBI;
+  private com.tencent.mm.plugin.appbrand.r.a.d vBJ;
+  public com.tencent.mm.plugin.m.a.a.a vBK;
+  public com.tencent.mm.plugin.m.a.a.b.a vBL;
+  private boolean vBM;
+  private final View.OnLayoutChangeListener vBN;
   
   public a(Context paramContext, aa paramaa, i parami)
   {
     super(paramContext);
     AppMethodBeat.i(123753);
-    this.uzj = true;
-    this.uzk = new View.OnLayoutChangeListener()
+    this.vBM = true;
+    this.vBN = new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
@@ -76,27 +74,27 @@ public final class a
         AppMethodBeat.o(123740);
       }
     };
-    c localc = c.lQe;
-    c.a locala = c.a.lQi;
+    c localc = c.mpU;
+    c.a locala = c.a.mpY;
     long l;
-    if (localc.lQg.containsKey(locala))
+    if (localc.mpW.containsKey(locala))
     {
-      l = ((Long)localc.lQg.get(locala)).longValue();
-      localc.lQg.put(locala, Long.valueOf(c.bsS()));
-      if (!localc.lQf.containsKey(locala)) {
+      l = ((Long)localc.mpW.get(locala)).longValue();
+      localc.mpW.put(locala, Long.valueOf(c.bwW()));
+      if (!localc.mpV.containsKey(locala)) {
         break label351;
       }
-      ac.w("LuggageNativeViewProfileCore", "luggage view performance (LuProfile, " + locala.toString() + ", " + (((Long)localc.lQg.get(locala)).longValue() - l) + ", " + (((Long)localc.lQg.get(locala)).longValue() - ((Long)localc.lQf.get(locala)).longValue()) + "), desc: " + "construct LuggageNative");
+      ad.w("LuggageNativeViewProfileCore", "luggage view performance (LuProfile, " + locala.toString() + ", " + (((Long)localc.mpW.get(locala)).longValue() - l) + ", " + (((Long)localc.mpW.get(locala)).longValue() - ((Long)localc.mpV.get(locala)).longValue()) + "), desc: " + "construct LuggageNative");
     }
     for (;;)
     {
       this.mContext = paramContext;
-      this.caw = paramaa;
-      this.uzd = parami;
-      this.uzf = new LuggageNativeViewJni();
-      paramContext = this.uzf;
-      paramContext.cbN = paramContext.createNativeRender();
-      paramContext = (q)this.uzd.P(q.class);
+      this.ckN = paramaa;
+      this.vBG = parami;
+      this.vBI = new LuggageNativeViewJni();
+      paramContext = this.vBI;
+      paramContext.cme = paramContext.createNativeRender();
+      paramContext = (q)this.vBG.P(q.class);
       if (paramContext != null) {
         paramContext.post(new Runnable()
         {
@@ -106,21 +104,21 @@ public final class a
             v localv = (v)a.a(a.this).P(v.class);
             LuggageNativeViewJni localLuggageNativeViewJni = a.b(a.this);
             long l1 = localv.getIsolatePtr();
-            long l2 = localv.LS();
-            if (localLuggageNativeViewJni.cbN <= 0L)
+            long l2 = localv.NB();
+            if (localLuggageNativeViewJni.cme <= 0L)
             {
-              ac.e(LuggageNativeViewJni.TAG, "mRenderPtr <= 0");
+              ad.e(LuggageNativeViewJni.TAG, "mRenderPtr <= 0");
               AppMethodBeat.o(123741);
               return;
             }
-            localLuggageNativeViewJni.initJsBinding(localLuggageNativeViewJni.cbN, l1, l2);
+            localLuggageNativeViewJni.initJsBinding(localLuggageNativeViewJni.cme, l1, l2);
             AppMethodBeat.o(123741);
           }
         });
       }
-      ac.d("MicroMsg.Luggage.LuggageNativeView", "init");
-      if (this.uze == null) {
-        this.uze = new l(this.caw);
+      ad.d("MicroMsg.Luggage.LuggageNativeView", "init");
+      if (this.vBH == null) {
+        this.vBH = new l(this.ckN);
       }
       setHorizontalFadingEdgeEnabled(false);
       setVerticalScrollBarEnabled(false);
@@ -130,30 +128,35 @@ public final class a
       l = 0L;
       break;
       label351:
-      ac.w("LuggageNativeViewProfileCore", "luggage view performance (LuProfile, " + locala.toString() + ", start not yet, desc:" + "construct LuggageNative");
+      ad.w("LuggageNativeViewProfileCore", "luggage view performance (LuProfile, " + locala.toString() + ", start not yet, desc:" + "construct LuggageNative");
     }
   }
   
-  public final void BO()
+  public final void Dn()
   {
     AppMethodBeat.i(123767);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "scrollToTop");
-    Object localObject2 = this.uzh;
-    Object localObject1 = this.uzi;
-    k.h(localObject1, "view");
-    localObject2 = ((com.tencent.mm.plugin.m.a.a.a)localObject2).uzs;
-    k.h(localObject1, "view");
-    localObject1 = ae.b(d.u.Q("viewId", Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject1).getViewId())));
-    localObject2 = ((com.tencent.mm.plugin.m.a.a.b.b)localObject2).uzr;
-    k.h(localObject1, "arguments");
-    a.b localb = com.tencent.mm.plugin.m.a.a.a.a.uzG;
-    com.tencent.mm.plugin.m.a.a.a.a.daD().f(((com.tencent.mm.plugin.m.a.a.a.a.d)localObject2).uzv, "scrollToTop", localObject1);
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "scrollToTop");
+    Object localObject2 = this.vBK;
+    Object localObject1 = this.vBL;
+    d.g.b.p.h(localObject1, "view");
+    localObject2 = ((com.tencent.mm.plugin.m.a.a.a)localObject2).vBV;
+    d.g.b.p.h(localObject1, "view");
+    localObject1 = ae.c(d.u.S("viewId", Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject1).getViewId())));
+    localObject2 = ((com.tencent.mm.plugin.m.a.a.b.b)localObject2).vBU;
+    d.g.b.p.h(localObject1, "arguments");
+    a.b localb = com.tencent.mm.plugin.m.a.a.a.a.vCj;
+    com.tencent.mm.plugin.m.a.a.a.a.djQ().g(((com.tencent.mm.plugin.m.a.a.a.a.d)localObject2).vBY, "scrollToTop", localObject1);
     AppMethodBeat.o(123767);
   }
   
-  public final boolean BP()
+  public final boolean Do()
   {
-    return this.uzj;
+    return this.vBM;
+  }
+  
+  public final boolean Dp()
+  {
+    return false;
   }
   
   public final <T extends j> T P(Class<T> paramClass)
@@ -164,42 +167,42 @@ public final class a
   public final void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(123773);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript URL:%s script:%s ValueCallback:%s", new Object[] { paramURL.toString(), paramString, paramValueCallback.toString() });
-    if (this.uzd != null)
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript URL:%s script:%s ValueCallback:%s", new Object[] { paramURL.toString(), paramString, paramValueCallback.toString() });
+    if (this.vBG != null)
     {
-      this.uzd.a(paramURL, paramString, paramValueCallback);
+      this.vBG.a(paramURL, paramString, paramValueCallback);
       AppMethodBeat.o(123773);
       return;
     }
-    ac.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
+    ad.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
     AppMethodBeat.o(123773);
   }
   
   public final void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(123777);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript");
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript");
     AppMethodBeat.o(123777);
   }
   
   public final void addJavascriptInterface(Object paramObject, String paramString)
   {
     AppMethodBeat.i(123772);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "addJavascriptInterface name:%s obj:%s", new Object[] { paramString, paramObject.toString() });
-    if ((this.uzd != null) && (paramObject != null))
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "addJavascriptInterface name:%s obj:%s", new Object[] { paramString, paramObject.toString() });
+    if ((this.vBG != null) && (paramObject != null))
     {
-      this.uzd.addJavascriptInterface(paramObject, paramString);
+      this.vBG.addJavascriptInterface(paramObject, paramString);
       AppMethodBeat.o(123772);
       return;
     }
-    ac.e("MicroMsg.Luggage.LuggageNativeView", "addJavascriptInterface failed. runtime is null.");
+    ad.e("MicroMsg.Luggage.LuggageNativeView", "addJavascriptInterface failed. runtime is null.");
     AppMethodBeat.o(123772);
   }
   
   public final void aw(Context paramContext)
   {
     AppMethodBeat.i(123754);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "resetContext");
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "resetContext");
     this.mContext = paramContext;
     AppMethodBeat.o(123754);
   }
@@ -207,13 +210,13 @@ public final class a
   final void b(String paramString, ValueCallback<String> paramValueCallback)
   {
     AppMethodBeat.i(123771);
-    if (this.uzd != null)
+    if (this.vBG != null)
     {
-      this.uzd.evaluateJavascript(paramString, paramValueCallback);
+      this.vBG.evaluateJavascript(paramString, paramValueCallback);
       AppMethodBeat.o(123771);
       return;
     }
-    ac.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
+    ad.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
     AppMethodBeat.o(123771);
   }
   
@@ -228,29 +231,29 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(123775);
-    LuggageNativeViewJni localLuggageNativeViewJni = this.uzf;
-    if (localLuggageNativeViewJni.cbN > 0L)
+    LuggageNativeViewJni localLuggageNativeViewJni = this.vBI;
+    if (localLuggageNativeViewJni.cme > 0L)
     {
-      localLuggageNativeViewJni.destroyNativeRender(localLuggageNativeViewJni.cbN);
-      localLuggageNativeViewJni.cbN = -1L;
+      localLuggageNativeViewJni.destroyNativeRender(localLuggageNativeViewJni.cme);
+      localLuggageNativeViewJni.cme = -1L;
     }
-    if (this.uzd != null)
+    if (this.vBG != null)
     {
-      this.uzd.destroy();
-      this.uzd = null;
+      this.vBG.destroy();
+      this.vBG = null;
     }
     for (;;)
     {
-      if (this.uzh != null) {
-        com.tencent.mm.plugin.m.a.a.a.a(this.uzi);
+      if (this.vBK != null) {
+        com.tencent.mm.plugin.m.a.a.a.a(this.vBL);
       }
       removeAllViewsInLayout();
-      this.uzh = null;
-      this.caw = null;
-      this.uze = null;
+      this.vBK = null;
+      this.ckN = null;
+      this.vBH = null;
       AppMethodBeat.o(123775);
       return;
-      ac.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
+      ad.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
     }
   }
   
@@ -327,23 +330,23 @@ public final class a
   
   public final com.tencent.mm.plugin.appbrand.r.a.d getFullscreenImpl()
   {
-    return this.uzg;
+    return this.vBJ;
   }
   
   public final l getJsWebViewInterface()
   {
-    return this.uze;
+    return this.vBH;
   }
   
   public final aa getPageView()
   {
-    return this.caw;
+    return this.ckN;
   }
   
   public final String getUrl()
   {
     AppMethodBeat.i(123759);
-    String str = ((ay)this.uzd).getUrl();
+    String str = ((ay)this.vBG).getUrl();
     AppMethodBeat.o(123759);
     return str;
   }
@@ -351,7 +354,7 @@ public final class a
   public final String getUserAgentString()
   {
     AppMethodBeat.i(123758);
-    String str = ((ay)this.uzd).getUserAgentString();
+    String str = ((ay)this.vBG).getUserAgentString();
     AppMethodBeat.o(123758);
     return str;
   }
@@ -392,148 +395,148 @@ public final class a
   public final void onBackground()
   {
     AppMethodBeat.i(123763);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "onBackground");
-    if (this.uzh != null)
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "onBackground");
+    if (this.vBK != null)
     {
-      com.tencent.mm.plugin.m.a.a.a locala = this.uzh;
-      Object localObject = this.uzi;
-      k.h(localObject, "view");
-      locala.uzq -= 1;
-      locala.uzs.c((com.tencent.mm.plugin.m.a.a.b.a)localObject);
-      if (locala.uzq <= 0)
+      com.tencent.mm.plugin.m.a.a.a locala = this.vBK;
+      Object localObject = this.vBL;
+      d.g.b.p.h(localObject, "view");
+      locala.vBT -= 1;
+      locala.vBV.c((com.tencent.mm.plugin.m.a.a.b.a)localObject);
+      if (locala.vBT <= 0)
       {
-        localObject = locala.cdO;
+        localObject = locala.coe;
         if (localObject != null) {
           ((com.tencent.mm.plugin.appbrand.widget.input.u)localObject).b((u.c)locala);
         }
       }
     }
-    this.uzi.b(this.uzk);
+    this.vBL.b(this.vBN);
     AppMethodBeat.o(123763);
   }
   
   public final void onForeground()
   {
     AppMethodBeat.i(123762);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "onForeground");
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "onForeground");
     com.tencent.mm.plugin.m.a.a.a locala;
     Object localObject1;
     com.tencent.mm.plugin.m.a.a.b.b localb;
     Object localObject2;
-    if (this.uzh != null)
+    if (this.vBK != null)
     {
-      locala = this.uzh;
-      localObject1 = this.uzi;
-      k.h(localObject1, "view");
-      k.h(this, "parent");
-      locala.uzq += 1;
-      localb = locala.uzs;
-      k.h(localObject1, "view");
-      k.h(this, "parent");
+      locala = this.vBK;
+      localObject1 = this.vBL;
+      d.g.b.p.h(localObject1, "view");
+      d.g.b.p.h(this, "parent");
+      locala.vBT += 1;
+      localb = locala.vBV;
+      d.g.b.p.h(localObject1, "view");
+      d.g.b.p.h(this, "parent");
       localb.d((com.tencent.mm.plugin.m.a.a.b.a)localObject1);
-      if (localb.uzW.contains(localObject1)) {
+      if (localb.vCz.contains(localObject1)) {
         break label254;
       }
-      if (!localb.uzW.empty())
+      if (!localb.vCz.empty())
       {
-        localObject2 = localb.uzW.peek();
-        k.g(localObject2, "viewStack.peek()");
+        localObject2 = localb.vCz.peek();
+        d.g.b.p.g(localObject2, "viewStack.peek()");
         localb.c((com.tencent.mm.plugin.m.a.a.b.a)localObject2);
       }
-      localb.uzW.push(localObject1);
-      ((com.tencent.mm.plugin.m.a.a.b.a)localObject1).daI();
+      localb.vCz.push(localObject1);
+      ((com.tencent.mm.plugin.m.a.a.b.a)localObject1).djV();
     }
     for (;;)
     {
       ((com.tencent.mm.plugin.m.a.a.b.a)localObject1).onForeground();
-      localObject2 = ae.b(d.u.Q("viewId", Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject1).getViewId())));
-      Object localObject3 = localb.uzr;
-      Object localObject4 = com.tencent.mm.plugin.m.a.a.a.a.uzG;
-      com.tencent.mm.plugin.m.a.a.a.a.daD().f(((com.tencent.mm.plugin.m.a.a.a.a.d)localObject3).uzv, "onForeground", localObject2);
+      localObject2 = ae.c(d.u.S("viewId", Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject1).getViewId())));
+      Object localObject3 = localb.vBU;
+      Object localObject4 = com.tencent.mm.plugin.m.a.a.a.a.vCj;
+      com.tencent.mm.plugin.m.a.a.a.a.djQ().g(((com.tencent.mm.plugin.m.a.a.a.a.d)localObject3).vBY, "onForeground", localObject2);
       localb.a((com.tencent.mm.plugin.m.a.a.b.a)localObject1, this, true);
-      localb.uzV = ((com.tencent.mm.plugin.m.a.a.b.a)localObject1);
-      locala.cdO = n.dd((View)this);
-      localObject1 = locala.cdO;
+      localb.vCy = ((com.tencent.mm.plugin.m.a.a.b.a)localObject1);
+      locala.coe = n.df((View)this);
+      localObject1 = locala.coe;
       if (localObject1 != null) {
         ((com.tencent.mm.plugin.appbrand.widget.input.u)localObject1).a((u.c)locala);
       }
-      this.uzi.a(this.uzk);
+      this.vBL.a(this.vBN);
       AppMethodBeat.o(123762);
       return;
       label254:
       do
       {
-        localObject2 = (com.tencent.mm.plugin.m.a.a.b.a)localb.uzW.peek();
-        if ((k.g(localObject2, localObject1) ^ true))
+        localObject2 = (com.tencent.mm.plugin.m.a.a.b.a)localb.vCz.peek();
+        if ((d.g.b.p.i(localObject2, localObject1) ^ true))
         {
-          ((com.tencent.mm.plugin.m.a.a.b.a)localObject2).daH();
-          k.g(localObject2, "top");
+          ((com.tencent.mm.plugin.m.a.a.b.a)localObject2).djU();
+          d.g.b.p.g(localObject2, "top");
           localb.c((com.tencent.mm.plugin.m.a.a.b.a)localObject2);
-          k.h(localObject2, "view");
+          d.g.b.p.h(localObject2, "view");
           ((com.tencent.mm.plugin.m.a.a.b.a)localObject2).onDestroy();
-          localObject3 = ae.b(d.u.Q("viewId", Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject2).getViewId())));
-          localObject4 = localb.uzr;
-          a.b localb1 = com.tencent.mm.plugin.m.a.a.a.a.uzG;
-          com.tencent.mm.plugin.m.a.a.a.a.daD().f(((com.tencent.mm.plugin.m.a.a.a.a.d)localObject4).uzv, "onDestroy", localObject3);
-          localb.uzU.remove(Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject2).getViewId()));
-          localb.uzW.pop();
+          localObject3 = ae.c(d.u.S("viewId", Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject2).getViewId())));
+          localObject4 = localb.vBU;
+          a.b localb1 = com.tencent.mm.plugin.m.a.a.a.a.vCj;
+          com.tencent.mm.plugin.m.a.a.a.a.djQ().g(((com.tencent.mm.plugin.m.a.a.a.a.d)localObject4).vBY, "onDestroy", localObject3);
+          localb.vCx.remove(Long.valueOf(((com.tencent.mm.plugin.m.a.a.b.a)localObject2).getViewId()));
+          localb.vCz.pop();
         }
-      } while ((k.g(localObject2, localObject1) ^ true));
+      } while ((d.g.b.p.i(localObject2, localObject1) ^ true));
     }
   }
   
   public final void q(int paramInt, long paramLong)
   {
     AppMethodBeat.i(123768);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "smoothScrollTo");
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "smoothScrollTo");
     AppMethodBeat.o(123768);
   }
   
   public final void setFlutterRenderEngine(com.tencent.mm.plugin.m.a.a.a parama)
   {
-    this.uzh = parama;
+    this.vBK = parama;
   }
   
   public final void setFullscreenImpl(com.tencent.mm.plugin.appbrand.r.a.d paramd)
   {
     AppMethodBeat.i(176022);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "setFullscreenImpl");
-    this.uzg = paramd;
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "setFullscreenImpl");
+    this.vBJ = paramd;
     AppMethodBeat.o(176022);
   }
   
   public final void setJsExceptionHandler(h paramh)
   {
     AppMethodBeat.i(123774);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "setJsExceptionHandler");
-    if (this.uzd != null)
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "setJsExceptionHandler");
+    if (this.vBG != null)
     {
-      this.uzd.setJsExceptionHandler(paramh);
+      this.vBG.setJsExceptionHandler(paramh);
       AppMethodBeat.o(123774);
       return;
     }
-    ac.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
+    ad.e("MicroMsg.Luggage.LuggageNativeView", "evaluateJavascript failed. runtime is null.");
     AppMethodBeat.o(123774);
   }
   
   public final void setOnScrollChangedListener(aq paramaq)
   {
     AppMethodBeat.i(123764);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "setOnScrollChangedListener");
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "setOnScrollChangedListener");
     AppMethodBeat.o(123764);
   }
   
   public final void setOnTrimListener(ao paramao)
   {
     AppMethodBeat.i(123766);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "setOnTrimListener");
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "setOnTrimListener");
     AppMethodBeat.o(123766);
   }
   
   public final void setWebViewLayoutListener(an paraman)
   {
     AppMethodBeat.i(123765);
-    ac.d("MicroMsg.Luggage.LuggageNativeView", "setWebViewLayoutListener");
+    ad.d("MicroMsg.Luggage.LuggageNativeView", "setWebViewLayoutListener");
     AppMethodBeat.o(123765);
   }
   
@@ -542,13 +545,13 @@ public final class a
   public final void x(String paramString1, String paramString2)
   {
     AppMethodBeat.i(123757);
-    ac.i("MicroMsg.Luggage.LuggageNativeView", paramString1);
+    ad.i("MicroMsg.Luggage.LuggageNativeView", paramString1);
     AppMethodBeat.o(123757);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.m.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,23 @@ import com.tencent.mm.audio.mix.d.i;
 public final class e
   extends i
 {
-  private f cRe;
+  private f dcu;
   
   public e(f paramf, String paramString)
   {
     super(paramString);
-    this.cRe = paramf;
+    this.dcu = paramf;
   }
   
   public final void run()
   {
     AppMethodBeat.i(136755);
-    if (this.cRe != null)
+    if (this.dcu != null)
     {
-      this.cRe.MO();
-      this.cRe.end();
+      this.dcu.Ox();
+      this.dcu.end();
     }
-    this.cRe = null;
+    this.dcu = null;
     h.b(this);
     AppMethodBeat.o(136755);
   }

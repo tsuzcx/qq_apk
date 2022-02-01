@@ -11,38 +11,38 @@ import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
 import com.tencent.mm.plugin.appbrand.widget.input.u;
 import com.tencent.mm.plugin.appbrand.widget.input.u.c;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/jsapi/component/page/AppBrandPageViewKeyboardHeightEmitter;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener$OnKeyboardStateChangedListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnForegroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnBackgroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnDestroyListener;", "mPageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "mEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/EventOnKeyboardHeightChange;", "mRegistry", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener;", "mSavedKeyboardHeight", "", "getHeight", "onBackground", "", "onDestroy", "onForeground", "onKeyboardStateChanged", "shown", "", "refreshHeight", "height", "Companion", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/jsapi/component/page/AppBrandPageViewKeyboardHeightEmitter;", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener$OnKeyboardStateChangedListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnForegroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnBackgroundListener;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentViewLifecycleStore$OnDestroyListener;", "mPageView", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "(Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;)V", "mEvent", "Lcom/tencent/mm/plugin/appbrand/jsapi/EventOnKeyboardHeightChange;", "mRegistry", "Lcom/tencent/mm/plugin/appbrand/widget/input/AppBrandKeyboardListener;", "mSavedKeyboardHeight", "", "getHeight", "onBackground", "", "onDestroy", "onForeground", "onKeyboardStateChanged", "shown", "", "refreshHeight", "height", "Companion", "luggage-wechat-full-sdk_release"})
 public final class b
   implements f.b, f.c, f.d, u.c
 {
-  public static final a cdP;
-  private final aa caw;
-  private final ab cdM;
-  private int cdN;
-  private u cdO;
+  public static final b.a cof;
+  private final aa ckN;
+  private final ab coc;
+  private int cod;
+  private u coe;
   
   static
   {
     AppMethodBeat.i(147831);
-    cdP = new a((byte)0);
+    cof = new b.a((byte)0);
     AppMethodBeat.o(147831);
   }
   
   private b(aa paramaa)
   {
     AppMethodBeat.i(147830);
-    this.caw = paramaa;
-    this.cdM = new ab();
+    this.ckN = paramaa;
+    this.coc = new ab();
     AppMethodBeat.o(147830);
   }
   
   public static final void a(aa paramaa)
   {
     AppMethodBeat.i(147832);
-    k.h(paramaa, "pv");
+    p.h(paramaa, "pv");
     b localb = new b(paramaa, (byte)0);
     paramaa.a((f.d)localb);
     paramaa.a((f.b)localb);
@@ -50,35 +50,35 @@ public final class b
     AppMethodBeat.o(147832);
   }
   
-  public final void bt(boolean paramBoolean)
+  public final void bu(boolean paramBoolean)
   {
     AppMethodBeat.i(147826);
-    ab localab = this.cdM;
+    ab localab = this.coc;
     if (paramBoolean) {}
-    for (int i = this.cdN;; i = 0)
+    for (int i = this.cod;; i = 0)
     {
-      q localq = this.caw.CX();
-      k.g(localq, "mPageView.service");
-      ab.a(localab, i, localq, this.caw);
+      q localq = this.ckN.Ew();
+      p.g(localq, "mPageView.service");
+      ab.a(localab, i, localq, this.ckN);
       AppMethodBeat.o(147826);
       return;
     }
   }
   
-  public final int getHeight()
+  public final void gB(int paramInt)
   {
-    return this.cdN;
+    this.cod = paramInt;
   }
   
-  public final void gw(int paramInt)
+  public final int getHeight()
   {
-    this.cdN = paramInt;
+    return this.cod;
   }
   
   public final void onBackground()
   {
     AppMethodBeat.i(147828);
-    u localu = this.cdO;
+    u localu = this.coe;
     if (localu != null)
     {
       localu.b((u.c)this);
@@ -91,7 +91,7 @@ public final class b
   public final void onDestroy()
   {
     AppMethodBeat.i(147827);
-    u localu = this.cdO;
+    u localu = this.coe;
     if (localu != null)
     {
       localu.b((u.c)this);
@@ -104,17 +104,17 @@ public final class b
   public final void onForeground()
   {
     AppMethodBeat.i(147829);
-    if (this.caw.getContentView() == null)
+    if (this.ckN.getContentView() == null)
     {
       AppMethodBeat.o(147829);
       return;
     }
-    Object localObject = this.caw.getContentView();
+    Object localObject = this.ckN.getContentView();
     if (localObject == null) {
-      k.fOy();
+      p.gfZ();
     }
-    this.cdO = n.dd((View)localObject);
-    localObject = this.cdO;
+    this.coe = n.df((View)localObject);
+    localObject = this.coe;
     if (localObject != null)
     {
       ((u)localObject).a((u.c)this);
@@ -123,13 +123,10 @@ public final class b
     }
     AppMethodBeat.o(147829);
   }
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/jsapi/component/page/AppBrandPageViewKeyboardHeightEmitter$Companion;", "", "()V", "install", "", "pv", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageView;", "luggage-wechat-full-sdk_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.b.b
  * JD-Core Version:    0.7.0.1
  */

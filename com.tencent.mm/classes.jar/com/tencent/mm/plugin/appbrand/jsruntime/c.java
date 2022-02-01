@@ -6,6 +6,7 @@ import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
 import com.tencent.mm.appbrand.v8.f;
 import com.tencent.mm.appbrand.v8.m;
 import com.tencent.mm.appbrand.v8.m.9;
+import java.nio.ByteBuffer;
 
 public class c
   extends a
@@ -30,7 +31,7 @@ public class c
   protected final m a(IJSRuntime paramIJSRuntime, int paramInt)
   {
     AppMethodBeat.i(144161);
-    paramIJSRuntime = paramIJSRuntime.ho(paramInt);
+    paramIJSRuntime = paramIJSRuntime.hv(paramInt);
     AppMethodBeat.o(144161);
     return paramIJSRuntime;
   }
@@ -38,10 +39,10 @@ public class c
   public final void a(y paramy)
   {
     AppMethodBeat.i(144159);
-    if (this.lev != null)
+    if (this.lBu != null)
     {
-      m localm = this.lev;
-      localm.cMX.r(new m.9(localm, paramy));
+      m localm = this.lBu;
+      localm.cYn.r(new m.9(localm, paramy));
     }
     AppMethodBeat.o(144159);
   }
@@ -53,10 +54,12 @@ public class c
     AppMethodBeat.o(144160);
     return paramConfig;
   }
+  
+  public final void releaseDirectByteBuffer(ByteBuffer paramByteBuffer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.c
  * JD-Core Version:    0.7.0.1
  */

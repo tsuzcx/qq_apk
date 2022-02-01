@@ -1,11 +1,18 @@
 package kotlinx.coroutines;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/CopyableThrowable;", "T", "", "", "createCopy", "()Ljava/lang/Throwable;", "kotlinx-coroutines-core"})
-public abstract interface z<T extends Throwable,  extends z<T>>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/CompletionHandlerException;", "Ljava/lang/RuntimeException;", "Lkotlin/RuntimeException;", "message", "", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "kotlinx-coroutines-core"})
+public final class z
+  extends RuntimeException
 {
-  public abstract T gdz();
+  public z(String paramString, Throwable paramThrowable)
+  {
+    super(paramString, paramThrowable);
+    AppMethodBeat.i(118265);
+    AppMethodBeat.o(118265);
+  }
 }
 
 

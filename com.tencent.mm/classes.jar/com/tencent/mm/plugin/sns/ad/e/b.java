@@ -6,51 +6,51 @@ import java.util.Map;
 
 public final class b
 {
-  public static <K, V> boolean aA(Map<K, V> paramMap)
+  public static <K, V> boolean aD(Map<K, V> paramMap)
   {
-    AppMethodBeat.i(200024);
+    AppMethodBeat.i(197703);
     if (!isEmpty(paramMap))
     {
-      AppMethodBeat.o(200024);
+      AppMethodBeat.o(197703);
       return true;
     }
-    AppMethodBeat.o(200024);
+    AppMethodBeat.o(197703);
     return false;
   }
   
   public static <T> boolean isEmpty(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(200021);
+    AppMethodBeat.i(197700);
     if ((paramCollection == null) || (paramCollection.isEmpty()))
     {
-      AppMethodBeat.o(200021);
+      AppMethodBeat.o(197700);
       return true;
     }
-    AppMethodBeat.o(200021);
+    AppMethodBeat.o(197700);
     return false;
   }
   
-  private static <K, V> boolean isEmpty(Map<K, V> paramMap)
+  public static <K, V> boolean isEmpty(Map<K, V> paramMap)
   {
-    AppMethodBeat.i(200023);
+    AppMethodBeat.i(197702);
     if ((paramMap == null) || (paramMap.isEmpty()))
     {
-      AppMethodBeat.o(200023);
+      AppMethodBeat.o(197702);
       return true;
     }
-    AppMethodBeat.o(200023);
+    AppMethodBeat.o(197702);
     return false;
   }
   
   public static <T> boolean m(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(200022);
+    AppMethodBeat.i(197701);
     if (!isEmpty(paramCollection))
     {
-      AppMethodBeat.o(200022);
+      AppMethodBeat.o(197701);
       return true;
     }
-    AppMethodBeat.o(200022);
+    AppMethodBeat.o(197701);
     return false;
   }
 }

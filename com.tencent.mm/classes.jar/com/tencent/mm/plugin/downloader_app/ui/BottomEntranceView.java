@@ -12,21 +12,21 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
 import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.plugin.downloader_app.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ar;
 
 public class BottomEntranceView
   extends RelativeLayout
 {
-  private f oMo;
-  private TextView oMp;
-  private int oMq;
-  private int oMr;
+  private f ppW;
+  private TextView ppX;
+  private int ppY;
+  private int ppZ;
   
   public BottomEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,7 +36,7 @@ public class BottomEntranceView
   private int getDisplayHeight()
   {
     AppMethodBeat.i(8975);
-    int i = ap.cl(getContext()).y;
+    int i = ar.ci(getContext()).y;
     AppMethodBeat.o(8975);
     return i;
   }
@@ -45,10 +45,10 @@ public class BottomEntranceView
   {
     AppMethodBeat.i(8973);
     super.onFinishInflate();
-    this.oMp = ((TextView)findViewById(2131299510));
-    this.oMr = (getDisplayHeight() - ap.dT(getContext()) - ap.ji(getContext()) - ap.ej(getContext()));
-    this.oMq = getResources().getDimensionPixelSize(2131165922);
-    ac.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.oMr) });
+    this.ppX = ((TextView)findViewById(2131299510));
+    this.ppZ = (getDisplayHeight() - ar.dT(getContext()) - ar.jG(getContext()) - ar.ej(getContext()));
+    this.ppY = getResources().getDimensionPixelSize(2131165922);
+    ad.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.ppZ) });
     getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
@@ -63,13 +63,17 @@ public class BottomEntranceView
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(8972);
-        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bs.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).nWj)))
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bt.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).ozD)))
         {
           paramAnonymousView = new Bundle();
-          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).nWj);
+          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).ozD);
           ((c)g.ab(c.class)).e(BottomEntranceView.this.getContext(), paramAnonymousView);
-          a.a(10, 1005, 1, 40, "", "", "");
+          com.tencent.mm.plugin.downloader_app.b.a.a(10, 1005, 1, 40, "", "", "");
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/ui/BottomEntranceView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(8972);
       }
     });
@@ -79,15 +83,15 @@ public class BottomEntranceView
   public void setData(f paramf)
   {
     AppMethodBeat.i(8974);
-    if ((paramf == null) || (bs.isNullOrNil(paramf.desc)) || (bs.isNullOrNil(paramf.nWj)))
+    if ((paramf == null) || (bt.isNullOrNil(paramf.desc)) || (bt.isNullOrNil(paramf.ozD)))
     {
       setVisibility(8);
       AppMethodBeat.o(8974);
       return;
     }
-    this.oMo = paramf;
+    this.ppW = paramf;
     setVisibility(0);
-    this.oMp.setText(this.oMo.desc);
+    this.ppX.setText(this.ppW.desc);
     AppMethodBeat.o(8974);
   }
 }

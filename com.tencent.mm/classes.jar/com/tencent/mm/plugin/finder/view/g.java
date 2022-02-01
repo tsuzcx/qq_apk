@@ -1,73 +1,126 @@
 package com.tencent.mm.plugin.finder.view;
 
-import android.graphics.Paint;
-import android.text.TextPaint;
-import android.view.View;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.ui.aj;
-import d.g.a.b;
-import d.g.b.k;
+import com.tencent.mm.model.cf;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.utils.a;
+import com.tencent.mm.protocal.protobuf.amx;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.l;
-import d.y;
+import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderTextClickSpan;", "Lcom/tencent/mm/pluginsdk/ui/span/PressableClickSpan;", "text", "", "textColor", "", "clickBgColor", "bold", "", "onClick", "Lkotlin/Function1;", "", "(Ljava/lang/String;IIZLkotlin/jvm/functions/Function1;)V", "getBold", "()Z", "setBold", "(Z)V", "canClick", "getCanClick", "setCanClick", "getClickBgColor", "()I", "setClickBgColor", "(I)V", "getOnClick", "()Lkotlin/jvm/functions/Function1;", "setOnClick", "(Lkotlin/jvm/functions/Function1;)V", "getText", "()Ljava/lang/String;", "getTextColor", "setTextColor", "widget", "Landroid/view/View;", "setColor", "linkColor", "backgroundColor", "updateDrawState", "ds", "Landroid/text/TextPaint;", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/FinderFoldedPresenter;", "Lcom/tencent/mm/plugin/finder/view/FoldedScrollPresenter;", "foldedLayout", "Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "parent", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "(Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;)V", "getFoldedLayout", "()Lcom/tencent/mm/protocal/protobuf/FinderFoldedLayout;", "getParent", "()Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "getLayoutType", "", "getList", "", "getParentFeed", "hasMore", "", "jumpFoldedUI", "", "context", "Landroid/content/Context;", "jumpPos", "onItemClick", "pos", "plugin-finder_release"})
 public final class g
-  extends o
+  implements m
 {
-  public boolean rZg;
-  private int rZh;
-  private boolean rZi;
-  private b<? super String, y> rZj;
-  private final String text;
-  private int textColor;
+  private final amx foldedLayout;
+  private final BaseFinderFeed sUk;
   
-  public g(String paramString, int paramInt1, int paramInt2, boolean paramBoolean, b<? super String, y> paramb)
+  public g(amx paramamx, BaseFinderFeed paramBaseFinderFeed)
   {
-    super(paramInt1, paramInt2);
-    AppMethodBeat.i(204233);
-    this.text = paramString;
-    this.textColor = paramInt1;
-    this.rZh = paramInt2;
-    this.rZi = paramBoolean;
-    this.rZj = paramb;
-    this.rZg = true;
-    AppMethodBeat.o(204233);
+    AppMethodBeat.i(205137);
+    this.foldedLayout = paramamx;
+    this.sUk = paramBaseFinderFeed;
+    AppMethodBeat.o(205137);
   }
   
-  public final void onClick(View paramView)
+  public final void Z(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(168418);
-    k.h(paramView, "widget");
-    if (this.rZg) {
-      this.rZj.ay(this.text);
+    AppMethodBeat.i(205136);
+    d.g.b.p.h(paramContext, "context");
+    Object localObject2 = this.foldedLayout;
+    Object localObject4 = this.sUk;
+    Object localObject1 = this.sUk.feedObject.getFoldedFeedList();
+    int i;
+    Object localObject3;
+    if (!bt.hj((List)localObject1))
+    {
+      if (paramInt < ((List)localObject1).size()) {
+        break label241;
+      }
+      i = ((List)localObject1).size() - 1;
+      ad.i("Finder.FinderFoldedScrollLayout", "jumpFoldedUI item " + localObject4 + " jumpPos " + paramInt);
+      localObject3 = FinderFoldedScrollLayout.sUv;
+      FinderFoldedScrollLayout.xu(((BaseFinderFeed)((List)localObject1).get(i)).lP());
+      localObject3 = FinderFoldedScrollLayout.sUv;
+      FinderFoldedScrollLayout.xv(cf.aCM());
+      localObject3 = new Intent();
+      ((Intent)localObject3).putExtra("FEED_ID", ((BaseFinderFeed)localObject4).feedObject.getId());
+      ((Intent)localObject3).putExtra("FEED_NONCE_ID", ((BaseFinderFeed)localObject4).feedObject.getObjectNonceId());
+      if (((amx)localObject2).sUo != 1) {
+        break label255;
+      }
+      localObject4 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      ((Intent)localObject3).putExtra("NICKNAME", com.tencent.mm.plugin.finder.utils.p.gx(((amx)localObject2).username, ""));
+      ((Intent)localObject3).putExtra("FOLED_TYPE", 1);
     }
-    AppMethodBeat.o(168418);
-  }
-  
-  public final void setColor(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(168419);
-    super.setColor(paramInt1, paramInt2);
-    this.textColor = paramInt1;
-    this.rZh = paramInt2;
-    AppMethodBeat.o(168419);
-  }
-  
-  public final void updateDrawState(TextPaint paramTextPaint)
-  {
-    AppMethodBeat.i(204232);
-    k.h(paramTextPaint, "ds");
-    super.updateDrawState(paramTextPaint);
-    if (this.rZi) {
-      aj.a((Paint)paramTextPaint, 0.8F);
+    for (;;)
+    {
+      localObject2 = com.tencent.mm.plugin.finder.utils.p.sMo;
+      com.tencent.mm.plugin.finder.utils.p.a(i, (List)localObject1, null, (Intent)localObject3);
+      localObject1 = a.sKD;
+      a.R(paramContext, (Intent)localObject3);
+      AppMethodBeat.o(205136);
+      return;
+      label241:
+      if (paramInt < 0)
+      {
+        i = 0;
+        break;
+      }
+      i = paramInt;
+      break;
+      label255:
+      if (((amx)localObject2).sUo == 2)
+      {
+        ((Intent)localObject3).putExtra("NICKNAME", ((BaseFinderFeed)localObject4).feedObject.getNickName());
+        ((Intent)localObject3).putExtra("FOLED_TYPE", 2);
+      }
     }
-    AppMethodBeat.o(204232);
+  }
+  
+  public final BaseFinderFeed cNl()
+  {
+    return this.sUk;
+  }
+  
+  public final List<BaseFinderFeed> cNm()
+  {
+    AppMethodBeat.i(205134);
+    List localList = this.sUk.feedObject.getFoldedFeedList();
+    AppMethodBeat.o(205134);
+    return localList;
+  }
+  
+  public final int cNn()
+  {
+    if (this.foldedLayout.sUo == 1) {
+      return 1;
+    }
+    return 2;
+  }
+  
+  public final boolean cNo()
+  {
+    AppMethodBeat.i(205135);
+    int i = this.foldedLayout.fTM;
+    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sxa;
+    if (i >= ((Number)com.tencent.mm.plugin.finder.storage.b.cGP().value()).intValue())
+    {
+      AppMethodBeat.o(205135);
+      return true;
+    }
+    AppMethodBeat.o(205135);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.g
  * JD-Core Version:    0.7.0.1
  */

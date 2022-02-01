@@ -4,21 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GalleryItem$AlbumItem
   implements Parcelable, Comparable<AlbumItem>
 {
   public static final Parcelable.Creator<AlbumItem> CREATOR;
-  public String bLs;
-  public int dfy;
-  public String sJZ;
-  public int sKb;
-  public GalleryItem.MediaItem xIb;
-  public boolean xIc;
-  public boolean xNm;
-  String xiC;
+  String Odm;
+  public GalleryItem.MediaItem Odn;
+  public boolean Odo;
+  public boolean Odp;
+  public String bVF;
+  public int dqU;
+  public String tGK;
+  public int tGM;
   
   static
   {
@@ -30,91 +30,86 @@ public class GalleryItem$AlbumItem
   protected GalleryItem$AlbumItem(Parcel paramParcel)
   {
     AppMethodBeat.i(111311);
-    this.sKb = 0;
-    this.xIc = false;
-    this.xNm = false;
-    this.sJZ = paramParcel.readString();
-    this.dfy = paramParcel.readInt();
-    this.xIb = ((GalleryItem.MediaItem)paramParcel.readParcelable(GalleryItem.MediaItem.class.getClassLoader()));
+    this.tGM = 0;
+    this.Odo = false;
+    this.Odp = false;
+    this.tGK = paramParcel.readString();
+    this.dqU = paramParcel.readInt();
+    this.Odn = ((GalleryItem.MediaItem)paramParcel.readParcelable(GalleryItem.MediaItem.class.getClassLoader()));
     AppMethodBeat.o(111311);
   }
   
   public GalleryItem$AlbumItem(String paramString, int paramInt)
   {
     AppMethodBeat.i(111310);
-    this.sKb = 0;
-    this.xIc = false;
-    this.xNm = false;
-    this.sJZ = bs.nullAsNil(paramString);
-    this.dfy = paramInt;
-    this.bLs = this.sJZ;
+    this.tGM = 0;
+    this.Odo = false;
+    this.Odp = false;
+    this.tGK = bt.nullAsNil(paramString);
+    this.dqU = paramInt;
+    this.bVF = this.tGK;
     AppMethodBeat.o(111310);
   }
   
-  public String auN()
+  public String axA()
   {
     AppMethodBeat.i(111312);
-    if (this.xIb == null)
+    if (this.Odn == null)
     {
-      ac.e("MicroMsg.AlbumItem", "getThumbPath mediaItem is null");
+      ad.e("MicroMsg.AlbumItem", "getThumbPath mediaItem is null");
       AppMethodBeat.o(111312);
       return null;
     }
-    String str = this.xIb.auN();
+    String str = this.Odn.axA();
     AppMethodBeat.o(111312);
     return str;
   }
   
   public final void b(GalleryItem.MediaItem paramMediaItem)
   {
-    this.xIb = paramMediaItem;
+    this.Odn = paramMediaItem;
   }
   
-  public String cMQ()
+  public String cVj()
   {
     AppMethodBeat.i(173734);
-    if (this.xIb == null)
+    if (this.Odn == null)
     {
-      ac.e("MicroMsg.AlbumItem", "getOriginalPath mediaItem is null");
+      ad.e("MicroMsg.AlbumItem", "getOriginalPath mediaItem is null");
       AppMethodBeat.o(173734);
       return null;
     }
-    String str = this.xIb.sKh;
+    String str = this.Odn.tGS;
     AppMethodBeat.o(173734);
     return str;
   }
   
-  public long cMR()
+  public long cVk()
   {
     AppMethodBeat.i(173735);
-    if (this.xIb == null)
+    if (this.Odn == null)
     {
-      ac.e("MicroMsg.AlbumItem", "getThumbMediaOrigId mediaItem is null");
+      ad.e("MicroMsg.AlbumItem", "getThumbMediaOrigId mediaItem is null");
       AppMethodBeat.o(173735);
       return -1L;
     }
-    long l = this.xIb.sKk;
+    long l = this.Odn.tGV;
     AppMethodBeat.o(173735);
     return l;
   }
   
-  public int cMS()
+  public int cVl()
   {
     AppMethodBeat.i(173736);
-    if (this.xIb == null)
+    if (this.Odn == null)
     {
-      ac.e("MicroMsg.AlbumItem", "getThumbType mediaItem is null");
+      ad.e("MicroMsg.AlbumItem", "getThumbType mediaItem is null");
       AppMethodBeat.o(173736);
       return -1;
     }
-    int i = this.xIb.getType();
+    int i = this.Odn.getType();
     AppMethodBeat.o(173736);
     return i;
-  }
-  
-  public final GalleryItem.MediaItem cWr()
-  {
-    return this.xIb;
   }
   
   public int describeContents()
@@ -122,16 +117,21 @@ public class GalleryItem$AlbumItem
     return 0;
   }
   
-  public final long dzx()
+  public final GalleryItem.MediaItem fsN()
+  {
+    return this.Odn;
+  }
+  
+  public final long fsO()
   {
     AppMethodBeat.i(179454);
-    if (this.xIb == null)
+    if (this.Odn == null)
     {
-      ac.e("MicroMsg.AlbumItem", "getThumbModifyDate mediaItem is null");
+      ad.e("MicroMsg.AlbumItem", "getThumbModifyDate mediaItem is null");
       AppMethodBeat.o(179454);
       return -1L;
     }
-    long l = this.xIb.sKl;
+    long l = this.Odn.tGW;
     AppMethodBeat.o(179454);
     return l;
   }
@@ -139,9 +139,9 @@ public class GalleryItem$AlbumItem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(111313);
-    paramParcel.writeString(this.sJZ);
-    paramParcel.writeInt(this.dfy);
-    paramParcel.writeParcelable(this.xIb, paramInt);
+    paramParcel.writeString(this.tGK);
+    paramParcel.writeInt(this.dqU);
+    paramParcel.writeParcelable(this.Odn, paramInt);
     AppMethodBeat.o(111313);
   }
 }

@@ -29,6 +29,10 @@ public abstract interface a
   
   public abstract void startJsApiComponentUseCase(Context paramContext, WalletJsapiData paramWalletJsapiData, MMActivity.a parama, int paramInt);
   
+  public abstract void startLqtFixedDepositMakePlanUseCase(Context paramContext, Bundle paramBundle);
+  
+  public abstract void startLqtFixedDepositPlanListUseCase(Context paramContext, Bundle paramBundle);
+  
   public abstract void startOfflinePay(Context paramContext, String paramString1, String paramString2, int paramInt);
   
   public abstract void startResetPwdUseCase(Context paramContext, Bundle paramBundle);
@@ -49,7 +53,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.wallet.a
  * JD-Core Version:    0.7.0.1
  */

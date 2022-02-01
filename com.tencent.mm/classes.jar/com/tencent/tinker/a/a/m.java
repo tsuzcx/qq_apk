@@ -4,14 +4,14 @@ import com.tencent.tinker.a.a.b.a;
 
 public final class m
 {
-  private int KnA;
-  protected final a Kny;
-  public int Knz;
+  protected final a Mdw;
+  public int Mdx;
+  private int Mdy;
   private int type = -1;
   
   public m(a parama, int paramInt)
   {
-    this.Kny = parama;
+    this.Mdw = parama;
     this.type = paramInt;
   }
   
@@ -20,101 +20,101 @@ public final class m
     this(new k.1(paramk), paramInt);
   }
   
-  private void afa(int paramInt)
+  private void ahA(int paramInt)
   {
-    if (xz() != paramInt) {
-      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(xz()) }));
+    if (yW() != paramInt) {
+      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(yW()) }));
     }
   }
   
-  public final int fGP()
+  public final int fYb()
   {
-    afa(28);
+    ahA(28);
     this.type = -1;
-    return o.b(this.Kny);
+    return o.b(this.Mdw);
   }
   
-  public final int fGQ()
+  public final int fYc()
   {
-    afa(29);
+    ahA(29);
     this.type = -1;
-    this.Knz = o.b(this.Kny);
-    return o.b(this.Kny);
+    this.Mdx = o.b(this.Mdw);
+    return o.b(this.Mdw);
   }
   
-  public final int fGR()
+  public final int fYd()
   {
-    return o.b(this.Kny);
+    return o.b(this.Mdw);
   }
   
-  public final int fGS()
+  public final int fYe()
   {
-    afa(23);
+    ahA(23);
     this.type = -1;
-    return l.a(this.Kny, this.KnA, false);
+    return l.a(this.Mdw, this.Mdy, false);
   }
   
-  public final int fGT()
+  public final int fYf()
   {
-    afa(24);
+    ahA(24);
     this.type = -1;
-    return l.a(this.Kny, this.KnA, false);
+    return l.a(this.Mdw, this.Mdy, false);
   }
   
-  public final int fGU()
+  public final int fYg()
   {
-    afa(25);
+    ahA(25);
     this.type = -1;
-    return l.a(this.Kny, this.KnA, false);
+    return l.a(this.Mdw, this.Mdy, false);
   }
   
-  public final int fGV()
+  public final int fYh()
   {
-    afa(27);
+    ahA(27);
     this.type = -1;
-    return l.a(this.Kny, this.KnA, false);
+    return l.a(this.Mdw, this.Mdy, false);
   }
   
-  public final int fGW()
+  public final int fYi()
   {
-    afa(26);
+    ahA(26);
     this.type = -1;
-    return l.a(this.Kny, this.KnA, false);
+    return l.a(this.Mdw, this.Mdy, false);
   }
   
-  public final void fGX()
+  public final void fYj()
   {
-    afa(30);
+    ahA(30);
     this.type = -1;
   }
   
   public final boolean readBoolean()
   {
-    afa(31);
+    ahA(31);
     this.type = -1;
-    return this.KnA != 0;
+    return this.Mdy != 0;
   }
   
   public final byte readByte()
   {
-    afa(0);
+    ahA(0);
     this.type = -1;
-    return (byte)l.a(this.Kny, this.KnA);
+    return (byte)l.a(this.Mdw, this.Mdy);
   }
   
   public final char readChar()
   {
-    afa(3);
+    ahA(3);
     this.type = -1;
-    return (char)l.a(this.Kny, this.KnA, false);
+    return (char)l.a(this.Mdw, this.Mdy, false);
   }
   
   public final double readDouble()
   {
-    afa(17);
+    ahA(17);
     this.type = -1;
-    a locala = this.Kny;
-    int i = this.KnA;
+    a locala = this.Mdw;
+    int i = this.Mdy;
     long l = 0L;
     while (i >= 0)
     {
@@ -126,24 +126,24 @@ public final class m
   
   public final float readFloat()
   {
-    afa(16);
+    ahA(16);
     this.type = -1;
-    return Float.intBitsToFloat(l.a(this.Kny, this.KnA, true));
+    return Float.intBitsToFloat(l.a(this.Mdw, this.Mdy, true));
   }
   
   public final int readInt()
   {
-    afa(4);
+    ahA(4);
     this.type = -1;
-    return l.a(this.Kny, this.KnA);
+    return l.a(this.Mdw, this.Mdy);
   }
   
   public final long readLong()
   {
-    afa(6);
+    ahA(6);
     this.type = -1;
-    a locala = this.Kny;
-    int j = this.KnA;
+    a locala = this.Mdw;
+    int j = this.Mdy;
     long l = 0L;
     int i = j;
     while (i >= 0)
@@ -156,16 +156,16 @@ public final class m
   
   public final short readShort()
   {
-    afa(2);
+    ahA(2);
     this.type = -1;
-    return (short)l.a(this.Kny, this.KnA);
+    return (short)l.a(this.Mdw, this.Mdy);
   }
   
   public final void skipValue()
   {
     int j = 0;
     int i = 0;
-    switch (xz())
+    switch (yW())
     {
     case 1: 
     case 5: 
@@ -207,57 +207,57 @@ public final class m
       readDouble();
       return;
     case 23: 
-      fGS();
+      fYe();
       return;
     case 24: 
-      fGT();
+      fYf();
       return;
     case 25: 
-      fGU();
+      fYg();
       return;
     case 27: 
-      fGV();
+      fYh();
       return;
     case 26: 
-      fGW();
+      fYi();
       return;
     case 28: 
-      j = fGP();
+      j = fYb();
       while (i < j)
       {
         skipValue();
         i += 1;
       }
     case 29: 
-      int k = fGQ();
+      int k = fYc();
       i = j;
       while (i < k)
       {
-        o.b(this.Kny);
+        o.b(this.Mdw);
         skipValue();
         i += 1;
       }
     case 30: 
-      fGX();
+      fYj();
       return;
     }
     readBoolean();
   }
   
-  public final int xz()
+  public final int yW()
   {
     if (this.type == -1)
     {
-      int i = this.Kny.readByte() & 0xFF;
+      int i = this.Mdw.readByte() & 0xFF;
       this.type = (i & 0x1F);
-      this.KnA = ((i & 0xE0) >> 5);
+      this.Mdy = ((i & 0xE0) >> 5);
     }
     return this.type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tinker.a.a.m
  * JD-Core Version:    0.7.0.1
  */

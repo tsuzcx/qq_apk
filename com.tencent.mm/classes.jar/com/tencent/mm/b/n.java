@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 
 public final class n
 {
-  private static String bytesToHex(byte[] paramArrayOfByte)
+  public static String bytesToHex(byte[] paramArrayOfByte)
   {
     char[] arrayOfChar1 = new char[16];
     char[] tmp8_6 = arrayOfChar1;
@@ -56,7 +56,7 @@ public final class n
     return new String(arrayOfChar2);
   }
   
-  public static String du(String paramString)
+  public static String eq(String paramString)
   {
     MessageDigest localMessageDigest = MessageDigest.getInstance("SHA1");
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
@@ -66,7 +66,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.b.n
  * JD-Core Version:    0.7.0.1
  */

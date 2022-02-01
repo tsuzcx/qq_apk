@@ -9,7 +9,7 @@ import java.util.List;
 
 public final class c
 {
-  public static WifiManager bMH;
+  public static WifiManager bWU;
   
   public static int addNetwork(WifiConfiguration paramWifiConfiguration)
   {
@@ -17,13 +17,13 @@ public final class c
     int i;
     try
     {
-      i = bMH.addNetwork(paramWifiConfiguration);
+      i = bWU.addNetwork(paramWifiConfiguration);
       AppMethodBeat.o(144719);
       return i;
     }
     catch (Throwable paramWifiConfiguration)
     {
-      i = d.kZG;
+      i = d.lwI;
       AppMethodBeat.o(144719);
     }
     return i;
@@ -34,7 +34,7 @@ public final class c
     AppMethodBeat.i(144722);
     try
     {
-      boolean bool = bMH.disableNetwork(paramInt);
+      boolean bool = bWU.disableNetwork(paramInt);
       AppMethodBeat.o(144722);
       return bool;
     }
@@ -50,7 +50,7 @@ public final class c
     AppMethodBeat.i(144718);
     try
     {
-      List localList = bMH.getConfiguredNetworks();
+      List localList = bWU.getConfiguredNetworks();
       AppMethodBeat.o(144718);
       return localList;
     }
@@ -66,7 +66,7 @@ public final class c
     AppMethodBeat.i(144724);
     try
     {
-      WifiInfo localWifiInfo = bMH.getConnectionInfo();
+      WifiInfo localWifiInfo = bWU.getConnectionInfo();
       AppMethodBeat.o(144724);
       return localWifiInfo;
     }
@@ -82,7 +82,7 @@ public final class c
     AppMethodBeat.i(144725);
     try
     {
-      List localList = bMH.getScanResults();
+      List localList = bWU.getScanResults();
       AppMethodBeat.o(144725);
       return localList;
     }
@@ -98,7 +98,7 @@ public final class c
     AppMethodBeat.i(144727);
     try
     {
-      boolean bool = bMH.isWifiEnabled();
+      boolean bool = bWU.isWifiEnabled();
       AppMethodBeat.o(144727);
       return bool;
     }
@@ -114,7 +114,7 @@ public final class c
     AppMethodBeat.i(144720);
     try
     {
-      boolean bool = bMH.removeNetwork(paramInt);
+      boolean bool = bWU.removeNetwork(paramInt);
       AppMethodBeat.o(144720);
       return bool;
     }
@@ -130,7 +130,7 @@ public final class c
     AppMethodBeat.i(144726);
     try
     {
-      boolean bool = bMH.saveConfiguration();
+      boolean bool = bWU.saveConfiguration();
       AppMethodBeat.o(144726);
       return bool;
     }
@@ -146,7 +146,7 @@ public final class c
     AppMethodBeat.i(144723);
     try
     {
-      boolean bool = bMH.startScan();
+      boolean bool = bWU.startScan();
       AppMethodBeat.o(144723);
       return bool;
     }
@@ -157,12 +157,12 @@ public final class c
     return false;
   }
   
-  public static boolean tj(int paramInt)
+  public static boolean tN(int paramInt)
   {
     AppMethodBeat.i(144721);
     try
     {
-      boolean bool = bMH.enableNetwork(paramInt, true);
+      boolean bool = bWU.enableNetwork(paramInt, true);
       AppMethodBeat.o(144721);
       return bool;
     }
@@ -173,7 +173,7 @@ public final class c
     return false;
   }
   
-  public static int tk(int paramInt)
+  public static int tO(int paramInt)
   {
     if (paramInt <= -100) {
       return 0;
@@ -186,7 +186,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c
  * JD-Core Version:    0.7.0.1
  */

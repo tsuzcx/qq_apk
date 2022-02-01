@@ -7,22 +7,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.msgsubscription.SubscribeMsgRequestResult;
 import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.msgsubscription.WordingInfo;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "Landroid/os/Parcelable;", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "filter", "", "(Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;Z)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "exampleTitle", "", "getExampleTitle", "()Ljava/lang/String;", "setExampleTitle", "(Ljava/lang/String;)V", "items", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "getItems", "()Ljava/util/List;", "setItems", "(Ljava/util/List;)V", "originalData", "showEntry", "getShowEntry", "()Z", "setShowEntry", "(Z)V", "subscribeSwitch", "getSubscribeSwitch", "setSubscribeSwitch", "copyItem", "", "Ljava/util/ArrayList;", "describeContents", "", "getItemChanged", "isSubscribeMsgTmpItemChanged", "a", "b", "refresh", "", "writeToParcel", "flags", "CREATOR", "plugin-comm_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "Landroid/os/Parcelable;", "result", "Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;", "filter", "", "(Lcom/tencent/mm/msgsubscription/SubscribeMsgRequestResult;Z)V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "exampleTitle", "", "getExampleTitle", "()Ljava/lang/String;", "setExampleTitle", "(Ljava/lang/String;)V", "items", "", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "getItems", "()Ljava/util/List;", "setItems", "(Ljava/util/List;)V", "originalData", "showEntry", "getShowEntry", "()Z", "setShowEntry", "(Z)V", "subscribeSwitch", "getSubscribeSwitch", "setSubscribeSwitch", "copyItem", "", "Ljava/util/ArrayList;", "describeContents", "", "getItemChanged", "isSubscribeMsgTmpItemChanged", "a", "b", "refresh", "", "writeToParcel", "flags", "CREATOR", "plugin-comm_release"})
 public final class SubscribeMsgSettingData
   implements Parcelable
 {
   public static final a CREATOR;
-  public boolean hAd;
-  public List<SubscribeMsgTmpItem> hqR;
-  public boolean igM;
-  public String ihE;
-  public SubscribeMsgRequestResult ihF;
+  public List<SubscribeMsgTmpItem> hJj;
+  public boolean hSy;
+  public String iAY;
+  public SubscribeMsgRequestResult iAZ;
+  public boolean iAg;
   
   static
   {
@@ -37,7 +37,7 @@ public final class SubscribeMsgSettingData
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.igM = bool1;
+      this.iAg = bool1;
       if (paramParcel.readByte() == 0) {
         break label124;
       }
@@ -45,16 +45,16 @@ public final class SubscribeMsgSettingData
     label124:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.hAd = bool1;
+      this.hSy = bool1;
       Object localObject = paramParcel.createTypedArrayList(SubscribeMsgTmpItem.CREATOR);
-      k.g(localObject, "parcel.createTypedArrayL…scribeMsgTmpItem.CREATOR)");
-      this.hqR = ((List)localObject);
+      p.g(localObject, "parcel.createTypedArrayL…scribeMsgTmpItem.CREATOR)");
+      this.hJj = ((List)localObject);
       localObject = paramParcel.readString();
-      k.g(localObject, "parcel.readString()");
-      this.ihE = ((String)localObject);
+      p.g(localObject, "parcel.readString()");
+      this.iAY = ((String)localObject);
       paramParcel = paramParcel.readParcelable(SubscribeMsgRequestResult.class.getClassLoader());
-      k.g(paramParcel, "parcel.readParcelable(Su…::class.java.classLoader)");
-      this.ihF = ((SubscribeMsgRequestResult)paramParcel);
+      p.g(paramParcel, "parcel.readParcelable(Su…::class.java.classLoader)");
+      this.iAZ = ((SubscribeMsgRequestResult)paramParcel);
       AppMethodBeat.o(149577);
       return;
       bool1 = false;
@@ -65,14 +65,14 @@ public final class SubscribeMsgSettingData
   public SubscribeMsgSettingData(SubscribeMsgRequestResult paramSubscribeMsgRequestResult)
   {
     AppMethodBeat.i(149576);
-    this.ihF = paramSubscribeMsgRequestResult;
-    this.igM = paramSubscribeMsgRequestResult.igM;
-    this.hAd = paramSubscribeMsgRequestResult.igL;
-    Object localObject1 = paramSubscribeMsgRequestResult.igK;
+    this.iAZ = paramSubscribeMsgRequestResult;
+    this.iAg = paramSubscribeMsgRequestResult.iAg;
+    this.hSy = paramSubscribeMsgRequestResult.iAf;
+    Object localObject1 = paramSubscribeMsgRequestResult.iAe;
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject2 = ((WordingInfo)localObject1).ihi;
+      localObject2 = ((WordingInfo)localObject1).iAC;
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -80,20 +80,20 @@ public final class SubscribeMsgSettingData
     {
       localObject1 = "";
     }
-    this.ihE = ((String)localObject1);
+    this.iAY = ((String)localObject1);
     localObject1 = (List)new ArrayList();
-    paramSubscribeMsgRequestResult = ((Iterable)paramSubscribeMsgRequestResult.igI).iterator();
+    paramSubscribeMsgRequestResult = ((Iterable)paramSubscribeMsgRequestResult.iAc).iterator();
     while (paramSubscribeMsgRequestResult.hasNext())
     {
       localObject2 = (SubscribeMsgTmpItem)paramSubscribeMsgRequestResult.next();
       Parcel localParcel = Parcel.obtain();
       ((SubscribeMsgTmpItem)localObject2).writeToParcel(localParcel, 0);
       localParcel.setDataPosition(0);
-      k.g(localParcel, "parcel");
+      p.g(localParcel, "parcel");
       ((List)localObject1).add(new SubscribeMsgTmpItem(localParcel));
       localParcel.recycle();
     }
-    this.hqR = ((List)localObject1);
+    this.hJj = ((List)localObject1);
     AppMethodBeat.o(149576);
   }
   
@@ -106,12 +106,12 @@ public final class SubscribeMsgSettingData
   {
     byte b2 = 1;
     AppMethodBeat.i(149575);
-    k.h(paramParcel, "parcel");
-    if (this.igM)
+    p.h(paramParcel, "parcel");
+    if (this.iAg)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.hAd) {
+      if (!this.hSy) {
         break label82;
       }
     }
@@ -119,9 +119,9 @@ public final class SubscribeMsgSettingData
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      paramParcel.writeTypedList(this.hqR);
-      paramParcel.writeString(this.ihE);
-      paramParcel.writeParcelable((Parcelable)this.ihF, paramInt);
+      paramParcel.writeTypedList(this.hJj);
+      paramParcel.writeString(this.iAY);
+      paramParcel.writeParcelable((Parcelable)this.iAZ, paramInt);
       AppMethodBeat.o(149575);
       return;
       b1 = 0;
@@ -129,7 +129,7 @@ public final class SubscribeMsgSettingData
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "plugin-comm_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "plugin-comm_release"})
   public static final class a
     implements Parcelable.Creator<SubscribeMsgSettingData>
   {}

@@ -13,31 +13,29 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tr;
-import com.tencent.mm.g.b.a.bo;
+import com.tencent.mm.g.a.uk;
+import com.tencent.mm.g.b.a.ce;
 import com.tencent.mm.model.y;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.network.ae;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.an;
-import com.tencent.mm.plugin.sns.model.au;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
+import com.tencent.mm.plugin.sns.model.ao;
+import com.tencent.mm.plugin.sns.model.av;
+import com.tencent.mm.plugin.sns.model.f;
 import com.tencent.mm.plugin.sns.model.f.e;
-import com.tencent.mm.plugin.sns.storage.x;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.bub;
-import com.tencent.mm.protocal.protobuf.zf;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.protocal.protobuf.byp;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bf;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.MMPageControlView;
 import com.tencent.mm.ui.base.MMViewPager;
 import com.tencent.mm.ui.base.MMViewPager.c;
@@ -58,66 +56,66 @@ import java.util.Map;
 public class SnsInfoFlip
   extends FlipView
 {
+  private boolean Aae;
+  private boolean Aag;
+  private boolean AdA;
+  HashMap<Integer, Integer> AdB;
+  HashMap<Integer, Long> AdC;
+  HashMap<Integer, Long> AdD;
+  private boolean AdE;
+  private boolean AdF;
+  private boolean AdG;
+  private boolean AdH;
+  private boolean AdI;
+  private float AdJ;
+  MMPageControlView AdK;
+  private Runnable AdL;
+  private String AdM;
+  private int AdN;
+  long AdO;
+  private b AdP;
+  private HashMap<String, com.tencent.mm.plugin.sns.storage.p> AdQ;
+  private HashSet<String> AdR;
+  public int AdS;
+  private HashMap<String, a> AdT;
+  c Adz;
   private Context context;
-  private ao handler;
-  List<com.tencent.mm.plugin.sns.i.b> hqR;
+  List<com.tencent.mm.plugin.sns.i.b> hJj;
+  private ap handler;
   boolean isAd;
-  MMViewPager sRJ;
+  MMViewPager tOn;
   public String username;
-  private int yFi;
-  int yIE;
-  private boolean yIK;
-  private boolean yIM;
-  c yMd;
-  private boolean yMe;
-  HashMap<Integer, Integer> yMf;
-  HashMap<Integer, Long> yMg;
-  HashMap<Integer, Long> yMh;
-  private boolean yMi;
-  private boolean yMj;
-  private boolean yMk;
-  private boolean yMl;
-  private boolean yMm;
-  private float yMn;
-  MMPageControlView yMo;
-  private Runnable yMp;
-  private String yMq;
-  private int yMr;
-  long yMs;
-  private b yMt;
-  private HashMap<String, com.tencent.mm.plugin.sns.storage.p> yMu;
-  private HashSet<String> yMv;
-  public int yMw;
-  private HashMap<String, a> yMx;
+  private int zWD;
+  int zZY;
   
   public SnsInfoFlip(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(98759);
     this.isAd = false;
-    this.yMe = true;
-    this.yMf = new HashMap();
-    this.yMg = new HashMap();
-    this.yMh = new HashMap();
-    this.yMi = false;
-    this.yMj = false;
-    this.yMk = false;
-    this.yMl = false;
-    this.yMm = true;
-    this.yMn = 1.0F;
-    this.yMp = null;
-    this.handler = new ao();
-    this.yMq = "";
-    this.yMr = -1;
-    this.yIE = -1;
-    this.yIK = false;
-    this.yIM = false;
-    this.yMs = 0L;
-    this.yFi = 0;
-    this.yMu = new HashMap();
-    this.yMv = new HashSet();
-    this.yMw = 0;
-    this.yMx = new HashMap();
+    this.AdA = true;
+    this.AdB = new HashMap();
+    this.AdC = new HashMap();
+    this.AdD = new HashMap();
+    this.AdE = false;
+    this.AdF = false;
+    this.AdG = false;
+    this.AdH = false;
+    this.AdI = true;
+    this.AdJ = 1.0F;
+    this.AdL = null;
+    this.handler = new ap();
+    this.AdM = "";
+    this.AdN = -1;
+    this.zZY = -1;
+    this.Aae = false;
+    this.Aag = false;
+    this.AdO = 0L;
+    this.zWD = 0;
+    this.AdQ = new HashMap();
+    this.AdR = new HashSet();
+    this.AdS = 0;
+    this.AdT = new HashMap();
     init(paramContext);
     AppMethodBeat.o(98759);
   }
@@ -127,147 +125,147 @@ public class SnsInfoFlip
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98758);
     this.isAd = false;
-    this.yMe = true;
-    this.yMf = new HashMap();
-    this.yMg = new HashMap();
-    this.yMh = new HashMap();
-    this.yMi = false;
-    this.yMj = false;
-    this.yMk = false;
-    this.yMl = false;
-    this.yMm = true;
-    this.yMn = 1.0F;
-    this.yMp = null;
-    this.handler = new ao();
-    this.yMq = "";
-    this.yMr = -1;
-    this.yIE = -1;
-    this.yIK = false;
-    this.yIM = false;
-    this.yMs = 0L;
-    this.yFi = 0;
-    this.yMu = new HashMap();
-    this.yMv = new HashSet();
-    this.yMw = 0;
-    this.yMx = new HashMap();
+    this.AdA = true;
+    this.AdB = new HashMap();
+    this.AdC = new HashMap();
+    this.AdD = new HashMap();
+    this.AdE = false;
+    this.AdF = false;
+    this.AdG = false;
+    this.AdH = false;
+    this.AdI = true;
+    this.AdJ = 1.0F;
+    this.AdL = null;
+    this.handler = new ap();
+    this.AdM = "";
+    this.AdN = -1;
+    this.zZY = -1;
+    this.Aae = false;
+    this.Aag = false;
+    this.AdO = 0L;
+    this.zWD = 0;
+    this.AdQ = new HashMap();
+    this.AdR = new HashSet();
+    this.AdS = 0;
+    this.AdT = new HashMap();
     init(paramContext);
     AppMethodBeat.o(98758);
   }
   
-  private void b(btz parambtz, int paramInt, String paramString)
+  private void b(byn parambyn, int paramInt, String paramString)
   {
     long l2 = 0L;
     AppMethodBeat.i(98764);
-    if (this.yMt != null) {
-      this.yMt.a(parambtz, paramInt, paramString);
+    if (this.AdP != null) {
+      this.AdP.a(parambyn, paramInt, paramString);
     }
-    Object localObject = af.dHR().auT(paramString);
+    Object localObject = ag.dUe().aAa(paramString);
     if (localObject != null) {
-      com.tencent.mm.plugin.sns.ui.a.c.g((com.tencent.mm.plugin.sns.storage.p)localObject, paramInt);
+      com.tencent.mm.plugin.sns.ui.a.c.h((com.tencent.mm.plugin.sns.storage.p)localObject, paramInt);
     }
-    if (this.yMr == -1) {
-      this.yMr = paramInt;
+    if (this.AdN == -1) {
+      this.AdN = paramInt;
     }
-    if ((bs.isNullOrNil(paramString)) && (this.yMd != null))
+    if ((bt.isNullOrNil(paramString)) && (this.Adz != null))
     {
-      i = this.yMd.getCount();
-      parambtz = paramInt + 1 + " / " + i;
-      this.yze.jI(parambtz, null);
+      i = this.Adz.getCount();
+      parambyn = paramInt + 1 + " / " + i;
+      this.zQv.jV(parambyn, null);
       AppMethodBeat.o(98764);
       return;
     }
-    com.tencent.mm.plugin.sns.storage.p localp = (com.tencent.mm.plugin.sns.storage.p)this.yMu.get(paramString);
+    com.tencent.mm.plugin.sns.storage.p localp = (com.tencent.mm.plugin.sns.storage.p)this.AdQ.get(paramString);
     localObject = localp;
     if (localp == null)
     {
-      localObject = af.dHR().auT(paramString);
-      this.yMu.put(paramString, localObject);
+      localObject = ag.dUe().aAa(paramString);
+      this.AdQ.put(paramString, localObject);
     }
     if (localObject == null)
     {
       AppMethodBeat.o(98764);
       return;
     }
-    if (parambtz.ndI != 6) {
-      af.cMM().post(new Runnable()
+    if (parambyn.nEf != 6) {
+      ag.cVf().post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(98735);
           if (SnsInfoFlip.c(SnsInfoFlip.this) != null) {
-            SnsInfoFlip.c(SnsInfoFlip.this).dPL();
+            SnsInfoFlip.c(SnsInfoFlip.this).ecc();
           }
           AppMethodBeat.o(98735);
         }
       });
     }
-    ac.d("MicroMsg.SnsInfoFlip", "onItemSelected " + paramInt + " localId " + paramString);
+    ad.d("MicroMsg.SnsInfoFlip", "onItemSelected " + paramInt + " localId " + paramString);
     long l1;
-    if (this.yIE != paramInt)
+    if (this.zZY != paramInt)
     {
-      if (!this.yMf.containsKey(Integer.valueOf(paramInt))) {
+      if (!this.AdB.containsKey(Integer.valueOf(paramInt))) {
         break label832;
       }
-      i = ((Integer)this.yMf.get(Integer.valueOf(paramInt))).intValue();
-      this.yMf.put(Integer.valueOf(paramInt), Integer.valueOf(i + 1));
-      this.yMg.put(Integer.valueOf(paramInt), Long.valueOf(bs.Gn()));
-      if (this.yIE >= 0)
+      i = ((Integer)this.AdB.get(Integer.valueOf(paramInt))).intValue();
+      this.AdB.put(Integer.valueOf(paramInt), Integer.valueOf(i + 1));
+      this.AdC.put(Integer.valueOf(paramInt), Long.valueOf(bt.HI()));
+      if (this.zZY >= 0)
       {
-        if (!this.yMg.containsKey(Integer.valueOf(this.yIE))) {
+        if (!this.AdC.containsKey(Integer.valueOf(this.zZY))) {
           break label838;
         }
-        l1 = ((Long)this.yMg.get(Integer.valueOf(this.yIE))).longValue();
+        l1 = ((Long)this.AdC.get(Integer.valueOf(this.zZY))).longValue();
         label364:
         if (l1 > 0L)
         {
-          this.yMg.put(Integer.valueOf(this.yIE), Long.valueOf(0L));
-          if (this.yMh.containsKey(Integer.valueOf(this.yIE))) {
-            l2 = ((Long)this.yMh.get(Integer.valueOf(this.yIE))).longValue();
+          this.AdC.put(Integer.valueOf(this.zZY), Long.valueOf(0L));
+          if (this.AdD.containsKey(Integer.valueOf(this.zZY))) {
+            l2 = ((Long)this.AdD.get(Integer.valueOf(this.zZY))).longValue();
           }
-          l1 = bs.aO(l1);
+          l1 = bt.aO(l1);
           l2 += l1;
-          this.yMh.put(Integer.valueOf(this.yIE), Long.valueOf(l2));
-          ac.i("MicroMsg.SnsInfoFlip", "curSelectPosition " + this.yIE + " curtime " + l2 + " passtime " + l1 / 1000.0D);
+          this.AdD.put(Integer.valueOf(this.zZY), Long.valueOf(l2));
+          ad.i("MicroMsg.SnsInfoFlip", "curSelectPosition " + this.zZY + " curtime " + l2 + " passtime " + l1 / 1000.0D);
         }
       }
-      if ((this.yIK) && (this.yMd != null))
+      if ((this.Aae) && (this.Adz != null))
       {
-        parambtz = this.yMd.PB(this.yIE);
-        if (parambtz != null)
+        parambyn = this.Adz.Rk(this.zZY);
+        if (parambyn != null)
         {
-          parambtz = parambtz.dwE.Id;
-          ac.d("MicroMsg.SnsInfoFlip", "recordMediaScrollOver, bigPicId:%s", new Object[] { parambtz });
-          if (this.yMx.containsKey(parambtz))
+          parambyn = parambyn.dIQ.Id;
+          ad.d("MicroMsg.SnsInfoFlip", "recordMediaScrollOver, bigPicId:%s", new Object[] { parambyn });
+          if (this.AdT.containsKey(parambyn))
           {
-            parambtz = (a)this.yMx.get(parambtz);
-            parambtz.networkType = getReportNetworkType();
-            if (parambtz.yMB == -1L) {
+            parambyn = (a)this.AdT.get(parambyn);
+            parambyn.networkType = getReportNetworkType();
+            if (parambyn.AdX == -1L) {
               break label844;
             }
-            parambtz.yMz = 1;
-            parambtz.xXj = (parambtz.yMB - parambtz.yMA);
-            ac.d("MicroMsg.SnsInfoFlip", "recordMediaScrollOver, load success, costTime:%d", new Object[] { Long.valueOf(parambtz.xXj) });
+            parambyn.AdV = 1;
+            parambyn.zni = (parambyn.AdX - parambyn.AdW);
+            ad.d("MicroMsg.SnsInfoFlip", "recordMediaScrollOver, load success, costTime:%d", new Object[] { Long.valueOf(parambyn.zni) });
           }
         }
       }
     }
     label651:
-    this.yIE = paramInt;
-    if (this.yzd != null) {
-      this.yzd.avx(paramString);
+    this.zZY = paramInt;
+    if (this.zQu != null) {
+      this.zQu.aAE(paramString);
     }
     int i = ((com.tencent.mm.plugin.sns.storage.p)localObject).field_createTime;
-    parambtz = ((com.tencent.mm.plugin.sns.storage.p)localObject).dLV();
-    localObject = bg.q(this.context, i * 1000L);
-    if ((parambtz != null) && (parambtz.FQo != null) && (parambtz.FQo.Etz.size() > 1) && (this.yMd != null)) {
-      i = parambtz.FQo.Etz.size();
+    parambyn = ((com.tencent.mm.plugin.sns.storage.p)localObject).dYl();
+    localObject = bj.q(this.context, i * 1000L);
+    if ((parambyn != null) && (parambyn.HAT != null) && (parambyn.HAT.GaQ.size() > 1) && (this.Adz != null)) {
+      i = parambyn.HAT.GaQ.size();
     }
-    for (parambtz = this.yMd.PB(paramInt).yax + 1 + " / " + i;; parambtz = null)
+    for (parambyn = this.Adz.Rk(paramInt).zqt + 1 + " / " + i;; parambyn = null)
     {
-      this.yze.jI(String.valueOf(localObject), parambtz);
-      this.yze.eJ(paramString, paramInt);
-      if (this.yMd != null) {
-        this.yMd.Px(paramInt);
+      this.zQv.jV(String.valueOf(localObject), parambyn);
+      this.zQv.fb(paramString, paramInt);
+      if (this.Adz != null) {
+        this.Adz.Rg(paramInt);
       }
       AppMethodBeat.o(98764);
       return;
@@ -278,59 +276,59 @@ public class SnsInfoFlip
       l1 = 0L;
       break label364;
       label844:
-      parambtz.yMz = 2;
-      parambtz.yMB = System.currentTimeMillis();
-      parambtz.xXj = (parambtz.yMB - parambtz.yMA);
-      ac.d("MicroMsg.SnsInfoFlip", "recordMediaScrollOver, load failed, costTime:%d", new Object[] { Long.valueOf(parambtz.xXj) });
+      parambyn.AdV = 2;
+      parambyn.AdX = System.currentTimeMillis();
+      parambyn.zni = (parambyn.AdX - parambyn.AdW);
+      ad.d("MicroMsg.SnsInfoFlip", "recordMediaScrollOver, load failed, costTime:%d", new Object[] { Long.valueOf(parambyn.zni) });
       break label651;
     }
   }
   
-  private void dPI()
+  private void ebZ()
   {
     AppMethodBeat.i(98767);
-    if ((this.yMd == null) || (this.yMd.PB(this.sRJ.getCurrentItem()) == null))
+    if ((this.Adz == null) || (this.Adz.Rk(this.tOn.getCurrentItem()) == null))
     {
       AppMethodBeat.o(98767);
       return;
     }
-    int i = this.sRJ.getCurrentItem();
-    if ((this.yMi) && (this.yMd.getCount() > 1))
+    int i = this.tOn.getCurrentItem();
+    if ((this.AdE) && (this.Adz.getCount() > 1))
     {
-      this.yMo.setVisibility(0);
-      this.yMo.setPage(i);
+      this.AdK.setVisibility(0);
+      this.AdK.setPage(i);
     }
-    btz localbtz = this.yMd.PB(this.sRJ.getCurrentItem()).dwE;
-    this.yMv.add(localbtz.Id);
-    String str1 = this.yMd.PB(this.sRJ.getCurrentItem()).yav;
-    String str2 = localbtz.Id;
-    if ((bs.isNullOrNil(this.yMq)) || (!this.yMq.equals(str2))) {
-      this.yMq = "";
+    byn localbyn = this.Adz.Rk(this.tOn.getCurrentItem()).dIQ;
+    this.AdR.add(localbyn.Id);
+    String str1 = this.Adz.Rk(this.tOn.getCurrentItem()).parentId;
+    String str2 = localbyn.Id;
+    if ((bt.isNullOrNil(this.AdM)) || (!this.AdM.equals(str2))) {
+      this.AdM = "";
     }
-    b(localbtz, i, str1);
+    b(localbyn, i, str1);
     AppMethodBeat.o(98767);
   }
   
   private int getReportNetworkType()
   {
     AppMethodBeat.i(98777);
-    Context localContext = ai.getContext();
-    if (ax.is2G(localContext))
+    Context localContext = aj.getContext();
+    if (ay.is2G(localContext))
     {
       AppMethodBeat.o(98777);
       return 1;
     }
-    if (ax.is3G(localContext))
+    if (ay.is3G(localContext))
     {
       AppMethodBeat.o(98777);
       return 2;
     }
-    if (ax.is4G(localContext))
+    if (ay.is4G(localContext))
     {
       AppMethodBeat.o(98777);
       return 3;
     }
-    if (ax.isWifi(localContext))
+    if (ay.isWifi(localContext))
     {
       AppMethodBeat.o(98777);
       return 4;
@@ -342,64 +340,64 @@ public class SnsInfoFlip
   private void init(Context paramContext)
   {
     AppMethodBeat.i(98760);
-    this.yMs = System.currentTimeMillis();
+    this.AdO = System.currentTimeMillis();
     this.context = paramContext;
-    this.sRJ = ((MMViewPager)inflate(paramContext, 2131495553, this).findViewById(2131300335));
-    this.sRJ.setVerticalFadingEdgeEnabled(false);
-    this.sRJ.setHorizontalFadingEdgeEnabled(false);
-    this.sRJ.setOffscreenPageLimit(1);
-    this.sRJ.setSingleClickOverListener(new MMViewPager.e()
+    this.tOn = ((MMViewPager)inflate(paramContext, 2131495553, this).findViewById(2131300335));
+    this.tOn.setVerticalFadingEdgeEnabled(false);
+    this.tOn.setHorizontalFadingEdgeEnabled(false);
+    this.tOn.setOffscreenPageLimit(1);
+    this.tOn.setSingleClickOverListener(new MMViewPager.e()
     {
-      public final void aOd()
+      public final void aRp()
       {
         AppMethodBeat.i(98733);
         SnsInfoFlip.b(SnsInfoFlip.this);
         AppMethodBeat.o(98733);
       }
       
-      public final void cNW()
+      public final void cWo()
       {
         AppMethodBeat.i(98734);
         SnsInfoFlip.b(SnsInfoFlip.this);
         AppMethodBeat.o(98734);
       }
     });
-    this.yMo = ((MMPageControlView)findViewById(2131306987));
-    this.yMo.setIndicatorLayoutRes(2131495626);
-    paramContext = (LinearLayout.LayoutParams)this.yMo.getLayoutParams();
-    paramContext.bottomMargin += ap.ej(getContext());
-    this.yMo.setLayoutParams(paramContext);
-    com.tencent.mm.plugin.sns.data.q.xNR = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pZR, 3200);
+    this.AdK = ((MMPageControlView)findViewById(2131306987));
+    this.AdK.setIndicatorLayoutRes(2131495626);
+    paramContext = (LinearLayout.LayoutParams)this.AdK.getLayoutParams();
+    paramContext.bottomMargin += ar.ej(getContext());
+    this.AdK.setLayoutParams(paramContext);
+    com.tencent.mm.plugin.sns.data.q.zdL = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFm, 3200);
     AppMethodBeat.o(98760);
   }
   
-  public final void a(List<com.tencent.mm.plugin.sns.i.b> paramList, String paramString, int paramInt, w paramw, u.a parama)
+  public final void a(List<com.tencent.mm.plugin.sns.i.b> paramList, String paramString, int paramInt, x paramx, v.a parama)
   {
     AppMethodBeat.i(98765);
-    af.dHM().a(this);
-    this.hqR = paramList;
-    aj.aeD(paramString);
-    this.yzd = paramw;
-    this.yze = parama;
-    this.yMd = new c(this.context);
-    this.sRJ.setAdapter(this.yMd);
-    if ((paramInt >= 0) && (paramInt < this.hqR.size()))
+    ag.dTZ().a(this);
+    this.hJj = paramList;
+    ak.aiX(paramString);
+    this.zQu = paramx;
+    this.zQv = parama;
+    this.Adz = new c(this.context);
+    this.tOn.setAdapter(this.Adz);
+    if ((paramInt >= 0) && (paramInt < this.hJj.size()))
     {
-      this.sRJ.setCurrentItem(paramInt);
-      if (this.yMm)
+      this.tOn.setCurrentItem(paramInt);
+      if (this.AdI)
       {
-        this.yMm = false;
-        paramList = this.yMd.PB(paramInt).dwE;
-        if ((paramList == null) || (paramList.Fjk == null) || (paramList.Fjk.FjZ <= 0.0F)) {
+        this.AdI = false;
+        paramList = this.Adz.Rk(paramInt).dIQ;
+        if ((paramList == null) || (paramList.GSL == null) || (paramList.GSL.GTA <= 0.0F)) {
           break label326;
         }
       }
     }
     label326:
-    for (this.yMn = (paramList.Fjk.FjY / paramList.Fjk.FjZ);; this.yMn = 1.0F)
+    for (this.AdJ = (paramList.GSL.GTz / paramList.GSL.GTA);; this.AdJ = 1.0F)
     {
-      this.sRJ.setFadingEdgeLength(0);
-      this.sRJ.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+      this.tOn.setFadingEdgeLength(0);
+      this.tOn.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
       {
         public final void onPageScrollStateChanged(int paramAnonymousInt) {}
         
@@ -415,29 +413,29 @@ public class SnsInfoFlip
               SnsInfoFlip.e(SnsInfoFlip.this).setVisibility(0);
               SnsInfoFlip.e(SnsInfoFlip.this).setPage(paramAnonymousInt);
             }
-            Object localObject1 = SnsInfoFlip.c(SnsInfoFlip.this).PB(paramAnonymousInt).dwE;
-            Object localObject2 = SnsInfoFlip.c(SnsInfoFlip.this).PB(paramAnonymousInt).yav;
-            SnsInfoFlip.a(SnsInfoFlip.this, (btz)localObject1, paramAnonymousInt, (String)localObject2);
-            localObject2 = SnsInfoFlip.c(SnsInfoFlip.this).Gb(paramAnonymousInt);
+            Object localObject1 = SnsInfoFlip.c(SnsInfoFlip.this).Rk(paramAnonymousInt).dIQ;
+            Object localObject2 = SnsInfoFlip.c(SnsInfoFlip.this).Rk(paramAnonymousInt).parentId;
+            SnsInfoFlip.a(SnsInfoFlip.this, (byn)localObject1, paramAnonymousInt, (String)localObject2);
+            localObject2 = SnsInfoFlip.c(SnsInfoFlip.this).Hq(paramAnonymousInt);
             localObject1 = localObject2;
             if (localObject2 == null) {
-              localObject1 = SnsInfoFlip.c(SnsInfoFlip.this).Gc(paramAnonymousInt);
+              localObject1 = SnsInfoFlip.c(SnsInfoFlip.this).Hr(paramAnonymousInt);
             }
             if (localObject1 != null) {
-              ((com.tencent.mm.ui.base.g)localObject1).fij();
+              ((com.tencent.mm.ui.base.g)localObject1).fyy();
             }
             if ((SnsInfoFlip.f(SnsInfoFlip.this) instanceof SnsBrowseUI)) {
-              ((SnsBrowseUI)SnsInfoFlip.f(SnsInfoFlip.this)).dPq();
+              ((SnsBrowseUI)SnsInfoFlip.f(SnsInfoFlip.this)).ebH();
             }
-            SnsInfoFlip.c(SnsInfoFlip.this).Py(paramAnonymousInt);
+            SnsInfoFlip.c(SnsInfoFlip.this).Rh(paramAnonymousInt);
           }
           AppMethodBeat.o(98736);
         }
       });
-      if (this.yMe) {
-        this.sRJ.setLongClickOverListener(new MMViewPager.c()
+      if (this.AdA) {
+        this.tOn.setLongClickOverListener(new MMViewPager.c()
         {
-          public final void aOe()
+          public final void aRq()
           {
             AppMethodBeat.i(98737);
             if (!SnsInfoFlip.g(SnsInfoFlip.this))
@@ -445,112 +443,112 @@ public class SnsInfoFlip
               AppMethodBeat.o(98737);
               return;
             }
-            Object localObject1 = y.ayq().F("basescanui@datacenter", true);
-            ((y.b)localObject1).l("key_basescanui_screen_x", Integer.valueOf(SnsInfoFlip.h(SnsInfoFlip.this).getXDown()));
-            ((y.b)localObject1).l("key_basescanui_screen_y", Integer.valueOf(SnsInfoFlip.h(SnsInfoFlip.this).getYDown()));
+            Object localObject1 = y.aBq().F("basescanui@datacenter", true);
+            ((y.b)localObject1).k("key_basescanui_screen_x", Integer.valueOf(SnsInfoFlip.h(SnsInfoFlip.this).getXDown()));
+            ((y.b)localObject1).k("key_basescanui_screen_y", Integer.valueOf(SnsInfoFlip.h(SnsInfoFlip.this).getYDown()));
             if (SnsInfoFlip.c(SnsInfoFlip.this) == null)
             {
-              ac.e("MicroMsg.SnsInfoFlip", "longClickOver, adapter is null.");
+              ad.e("MicroMsg.SnsInfoFlip", "longClickOver, adapter is null.");
               AppMethodBeat.o(98737);
               return;
             }
-            localObject1 = SnsInfoFlip.c(SnsInfoFlip.this).PB(SnsInfoFlip.h(SnsInfoFlip.this).getCurrentItem());
-            if ((localObject1 == null) || (bs.isNullOrNil(((com.tencent.mm.plugin.sns.i.b)localObject1).yav)))
+            localObject1 = SnsInfoFlip.c(SnsInfoFlip.this).Rk(SnsInfoFlip.h(SnsInfoFlip.this).getCurrentItem());
+            if ((localObject1 == null) || (bt.isNullOrNil(((com.tencent.mm.plugin.sns.i.b)localObject1).parentId)))
             {
               AppMethodBeat.o(98737);
               return;
             }
-            Object localObject2 = new bo();
-            ((bo)localObject2).dCQ = 1L;
+            Object localObject2 = new ce();
+            ((ce)localObject2).dPl = 1L;
             if (SnsInfoFlip.i(SnsInfoFlip.this)) {}
-            for (((bo)localObject2).dNc = 6L;; ((bo)localObject2).dNc = 7L)
+            for (((ce)localObject2).eca = 6L;; ((ce)localObject2).eca = 7L)
             {
-              ((bo)localObject2).aHZ();
-              localObject2 = SnsInfoFlip.c(SnsInfoFlip.this).PB(SnsInfoFlip.h(SnsInfoFlip.this).getCurrentItem()).dwE.Id;
-              String str = an.jc(af.getAccSnsPath(), (String)localObject2) + com.tencent.mm.plugin.sns.data.q.k(SnsInfoFlip.c(SnsInfoFlip.this).PB(SnsInfoFlip.h(SnsInfoFlip.this).getCurrentItem()).dwE);
-              SnsInfoFlip.this.e(str, ((com.tencent.mm.plugin.sns.i.b)localObject1).yav, (String)localObject2, true);
+              ((ce)localObject2).aLk();
+              localObject2 = SnsInfoFlip.c(SnsInfoFlip.this).Rk(SnsInfoFlip.h(SnsInfoFlip.this).getCurrentItem()).dIQ.Id;
+              String str = ao.jo(ag.getAccSnsPath(), (String)localObject2) + com.tencent.mm.plugin.sns.data.q.k(SnsInfoFlip.c(SnsInfoFlip.this).Rk(SnsInfoFlip.h(SnsInfoFlip.this).getCurrentItem()).dIQ);
+              SnsInfoFlip.this.e(str, ((com.tencent.mm.plugin.sns.i.b)localObject1).parentId, (String)localObject2, true);
               AppMethodBeat.o(98737);
               return;
             }
           }
         });
       }
-      if ((this.yMi) && (this.yMd.getCount() > 1))
+      if ((this.AdE) && (this.Adz.getCount() > 1))
       {
-        this.yMo.setVisibility(0);
-        this.yMo.jy(this.yMd.getCount(), paramInt);
+        this.AdK.setVisibility(0);
+        this.AdK.jK(this.Adz.getCount(), paramInt);
       }
-      if ((this.yIM) && (!bs.isNullOrNil(this.yMd.PB(paramInt).yav)))
+      if ((this.Aag) && (!bt.isNullOrNil(this.Adz.Rk(paramInt).parentId)))
       {
-        paramList = this.yMd.PB(paramInt).dwE.Id;
-        avu(an.jc(af.getAccSnsPath(), paramList) + com.tencent.mm.plugin.sns.data.q.k(this.yMd.PB(paramInt).dwE));
+        paramList = this.Adz.Rk(paramInt).dIQ.Id;
+        aAB(ao.jo(ag.getAccSnsPath(), paramList) + com.tencent.mm.plugin.sns.data.q.k(this.Adz.Rk(paramInt).dIQ));
       }
       AppMethodBeat.o(98765);
       return;
     }
   }
   
-  public final void bF(String paramString, boolean paramBoolean)
+  public final void bM(String paramString, boolean paramBoolean)
   {
     int i = 0;
     AppMethodBeat.i(98775);
-    if (this.yMd == null) {}
+    if (this.Adz == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.SnsInfoFlip", "onImageFinish, mediaId: %s, isOK: %s, null == adapter: %s.", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
-      if (this.yMd != null) {
+      ad.i("MicroMsg.SnsInfoFlip", "onImageFinish, mediaId: %s, isOK: %s, null == adapter: %s.", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
+      if (this.Adz != null) {
         break;
       }
       AppMethodBeat.o(98775);
       return;
     }
     Object localObject;
-    if ((!paramBoolean) && (this.yMd.PB(this.sRJ.getCurrentItem()) != null))
+    if ((!paramBoolean) && (this.Adz.Rk(this.tOn.getCurrentItem()) != null))
     {
-      localObject = this.yMd.PB(this.sRJ.getCurrentItem()).dwE;
-      if ((localObject != null) && (((btz)localObject).Id != null) && (((btz)localObject).Id.equals(paramString)))
+      localObject = this.Adz.Rk(this.tOn.getCurrentItem()).dIQ;
+      if ((localObject != null) && (((byn)localObject).Id != null) && (((byn)localObject).Id.equals(paramString)))
       {
         Toast.makeText(this.context, this.context.getString(2131763806), 0).show();
-        this.yMq = paramString;
+        this.AdM = paramString;
       }
     }
-    this.yMw += 1;
-    if (this.yIK)
+    this.AdS += 1;
+    if (this.Aae)
     {
-      ac.d("MicroMsg.SnsInfoFlip", "recordLoadEnd, bigPicId:%s, suceess:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-      if ((paramBoolean) && (this.yMx.containsKey(paramString)))
+      ad.d("MicroMsg.SnsInfoFlip", "recordLoadEnd, bigPicId:%s, suceess:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+      if ((paramBoolean) && (this.AdT.containsKey(paramString)))
       {
-        localObject = (a)this.yMx.get(paramString);
-        ((a)localObject).yMB = System.currentTimeMillis();
+        localObject = (a)this.AdT.get(paramString);
+        ((a)localObject).AdX = System.currentTimeMillis();
         ((a)localObject).networkType = getReportNetworkType();
-        ac.d("MicroMsg.SnsInfoFlip", "recordLoadEnd, update map");
+        ad.d("MicroMsg.SnsInfoFlip", "recordLoadEnd, update map");
       }
     }
     c localc;
     int j;
-    if (this.yMd.PB(this.sRJ.getCurrentItem()) != null)
+    if (this.Adz.Rk(this.tOn.getCurrentItem()) != null)
     {
-      localObject = this.yMd.PB(this.sRJ.getCurrentItem()).dwE;
-      if ((localObject != null) && (((btz)localObject).Id != null) && (((btz)localObject).Id.equals(paramString)))
+      localObject = this.Adz.Rk(this.tOn.getCurrentItem()).dIQ;
+      if ((localObject != null) && (((byn)localObject).Id != null) && (((byn)localObject).Id.equals(paramString)))
       {
-        ac.i("MicroMsg.SnsInfoFlip", "img download finish, refresh ui, media id: %s. and mediaLocal id %s", new Object[] { ((btz)localObject).Id, Integer.valueOf(((btz)localObject).dwR) });
-        localc = this.yMd;
-        j = localc.yMy.hqR.size();
+        ad.i("MicroMsg.SnsInfoFlip", "img download finish, refresh ui, media id: %s. and mediaLocal id %s", new Object[] { ((byn)localObject).Id, Integer.valueOf(((byn)localObject).dJd) });
+        localc = this.Adz;
+        j = localc.AdU.hJj.size();
       }
     }
     for (;;)
     {
       if (i < j)
       {
-        com.tencent.mm.plugin.sns.i.b localb = localc.PB(i);
-        if ((localb != null) && (localb.dwE.Id.equals(paramString))) {
-          localc.Py(i);
+        com.tencent.mm.plugin.sns.i.b localb = localc.Rk(i);
+        if ((localb != null) && (localb.dIQ.Id.equals(paramString))) {
+          localc.Rh(i);
         }
       }
       else
       {
-        if (this.yIM) {
-          E((btz)localObject);
+        if (this.Aag) {
+          E((byn)localObject);
         }
         AppMethodBeat.o(98775);
         return;
@@ -559,62 +557,62 @@ public class SnsInfoFlip
     }
   }
   
-  public final void bG(String paramString, boolean paramBoolean)
+  public final void bN(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(98776);
     Object localObject = new StringBuilder("onSightFinish ").append(paramString).append(" ").append(paramBoolean).append(" ");
-    if (this.yMd == null) {}
+    if (this.Adz == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.SnsInfoFlip", bool);
-      if (this.yMd != null) {
+      ad.i("MicroMsg.SnsInfoFlip", bool);
+      if (this.Adz != null) {
         break;
       }
       AppMethodBeat.o(98776);
       return;
     }
-    if ((!paramBoolean) && (this.yMd.PB(this.sRJ.getCurrentItem()) != null))
+    if ((!paramBoolean) && (this.Adz.Rk(this.tOn.getCurrentItem()) != null))
     {
-      localObject = this.yMd.PB(this.sRJ.getCurrentItem()).dwE;
-      if ((localObject != null) && (((btz)localObject).Id != null) && (((btz)localObject).Id.equals(paramString)))
+      localObject = this.Adz.Rk(this.tOn.getCurrentItem()).dIQ;
+      if ((localObject != null) && (((byn)localObject).Id != null) && (((byn)localObject).Id.equals(paramString)))
       {
         Toast.makeText(this.context, this.context.getString(2131763807), 0).show();
-        this.yMq = paramString;
+        this.AdM = paramString;
       }
     }
-    this.yMd.notifyDataSetChanged();
+    this.Adz.notifyDataSetChanged();
     AppMethodBeat.o(98776);
   }
   
-  public final boolean dNv()
+  public final boolean dZK()
   {
-    return this.yIK;
+    return this.Aae;
   }
   
-  public final int dPJ()
+  public final int eca()
   {
     AppMethodBeat.i(98770);
-    if ((this.sRJ == null) || (this.yMd == null))
+    if ((this.tOn == null) || (this.Adz == null))
     {
       AppMethodBeat.o(98770);
       return -1;
     }
-    int i = this.sRJ.getCurrentItem();
-    if ((i >= 0) && (this.hqR.size() > i))
+    int i = this.tOn.getCurrentItem();
+    if ((i >= 0) && (this.hJj.size() > i))
     {
-      this.hqR.remove(i);
-      this.yMd.notifyDataSetChanged();
-      dPI();
+      this.hJj.remove(i);
+      this.Adz.notifyDataSetChanged();
+      ebZ();
     }
-    i = this.yMd.getCount();
+    i = this.Adz.getCount();
     AppMethodBeat.o(98770);
     return i;
   }
   
-  public final void dPK()
+  public final void ecb()
   {
     AppMethodBeat.i(98778);
-    Iterator localIterator = this.yMx.values().iterator();
+    Iterator localIterator = this.AdT.values().iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -625,74 +623,80 @@ public class SnsInfoFlip
       int j;
       int i;
       int m;
-      if (locala.yMz != -1)
+      if (locala.AdV != -1)
       {
-        localp = af.dHR().auT(locala.dgl);
-        str = an.jc(af.getAccSnsPath(), locala.yMD) + com.tencent.mm.plugin.sns.data.q.k(locala.xRy);
-        localOptions = com.tencent.mm.sdk.platformtools.f.aKw(str);
+        localp = ag.dUe().aAa(locala.drH);
+        str = ao.jo(ag.getAccSnsPath(), locala.AdZ) + com.tencent.mm.plugin.sns.data.q.k(locala.zhs);
+        localOptions = com.tencent.mm.sdk.platformtools.g.aQc(str);
         k = 0;
         j = 0;
-        i = (int)i.aSp(str);
+        i = (int)i.aYo(str);
         if (localOptions != null)
         {
           k = localOptions.outWidth;
           j = localOptions.outHeight;
-          i = (int)i.aSp(str);
+          i = (int)i.aYo(str);
         }
-        m = com.tencent.mm.plugin.sns.data.q.aiF(str);
-        if (locala.xRy.mediaType != 0) {
-          m = locala.xRy.mediaType;
+        m = com.tencent.mm.plugin.sns.data.q.ans(str);
+        if (locala.zhs.mediaType != 0) {
+          m = locala.zhs.mediaType;
         }
-        h.wUl.f(11601, new Object[] { Integer.valueOf(locala.hlt), Integer.valueOf(locala.yMz), Long.valueOf(locala.xXj), Integer.valueOf(locala.networkType), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(localp.field_snsId), Long.valueOf(locala.yMA), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(m) });
-        ac.d("MicroMsg.SnsInfoFlip", "report big pic load, picNum:%d, loadResult:%d, loadCostTime:%d, networkType:%d ,publishid:%d,startTimes:%d,width:%d,height:%d,size:%d,mediaType:%d,path:%s", new Object[] { Integer.valueOf(locala.hlt), Integer.valueOf(locala.yMz), Long.valueOf(locala.xXj), Integer.valueOf(locala.networkType), Long.valueOf(localp.field_snsId), Long.valueOf(locala.yMA), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.sns.data.q.aiF(str)), str });
+        if (localp != null)
+        {
+          com.tencent.mm.plugin.report.service.g.yhR.f(11601, new Object[] { Integer.valueOf(locala.hDC), Integer.valueOf(locala.AdV), Long.valueOf(locala.zni), Integer.valueOf(locala.networkType), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(localp.field_snsId), Long.valueOf(locala.AdW), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(m) });
+          ad.d("MicroMsg.SnsInfoFlip", "report big pic load, picNum:%d, loadResult:%d, loadCostTime:%d, networkType:%d ,publishid:%d,startTimes:%d,width:%d,height:%d,size:%d,mediaType:%d,path:%s", new Object[] { Integer.valueOf(locala.hDC), Integer.valueOf(locala.AdV), Long.valueOf(locala.zni), Integer.valueOf(locala.networkType), Long.valueOf(localp.field_snsId), Long.valueOf(locala.AdW), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.sns.data.q.ans(str)), str });
+        }
       }
-      else if (locala.yMA != -1L)
+      else if (locala.AdW != -1L)
       {
-        if (locala.yMB != -1L) {
-          locala.yMz = 1;
+        if (locala.AdX != -1L) {
+          locala.AdV = 1;
         }
         for (;;)
         {
-          locala.xXj = (locala.yMB - locala.yMA);
-          localp = af.dHR().auT(locala.dgl);
-          str = an.jc(af.getAccSnsPath(), locala.yMD) + com.tencent.mm.plugin.sns.data.q.k(locala.xRy);
-          localOptions = com.tencent.mm.sdk.platformtools.f.aKw(str);
+          locala.zni = (locala.AdX - locala.AdW);
+          localp = ag.dUe().aAa(locala.drH);
+          str = ao.jo(ag.getAccSnsPath(), locala.AdZ) + com.tencent.mm.plugin.sns.data.q.k(locala.zhs);
+          localOptions = com.tencent.mm.sdk.platformtools.g.aQc(str);
           k = 0;
           j = 0;
-          i = (int)i.aSp(str);
+          i = (int)i.aYo(str);
           if (localOptions != null)
           {
             k = localOptions.outWidth;
             j = localOptions.outHeight;
-            i = (int)i.aSp(str);
+            i = (int)i.aYo(str);
           }
-          m = com.tencent.mm.plugin.sns.data.q.aiF(str);
-          if (locala.xRy.mediaType != 0) {
-            m = locala.xRy.mediaType;
+          m = com.tencent.mm.plugin.sns.data.q.ans(str);
+          if (locala.zhs.mediaType != 0) {
+            m = locala.zhs.mediaType;
           }
-          h.wUl.f(11601, new Object[] { Integer.valueOf(locala.hlt), Integer.valueOf(locala.yMz), Long.valueOf(locala.xXj), Integer.valueOf(locala.networkType), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(localp.field_snsId), Long.valueOf(locala.yMA), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(m) });
-          ac.d("MicroMsg.SnsInfoFlip", "report big pic load, picNum:%d, loadResult:%d, loadCostTime:%d, networkType:%d ,publishid:%d,startTimes:%d,width:%d,height:%d,size:%d,mediaType:%d,path:%s", new Object[] { Integer.valueOf(locala.hlt), Integer.valueOf(locala.yMz), Long.valueOf(locala.xXj), Integer.valueOf(locala.networkType), Long.valueOf(localp.field_snsId), Long.valueOf(locala.yMA), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.sns.data.q.aiF(str)), str });
+          if (localp == null) {
+            break;
+          }
+          com.tencent.mm.plugin.report.service.g.yhR.f(11601, new Object[] { Integer.valueOf(locala.hDC), Integer.valueOf(locala.AdV), Long.valueOf(locala.zni), Integer.valueOf(locala.networkType), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(localp.field_snsId), Long.valueOf(locala.AdW), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(m) });
+          ad.d("MicroMsg.SnsInfoFlip", "report big pic load, picNum:%d, loadResult:%d, loadCostTime:%d, networkType:%d ,publishid:%d,startTimes:%d,width:%d,height:%d,size:%d,mediaType:%d,path:%s", new Object[] { Integer.valueOf(locala.hDC), Integer.valueOf(locala.AdV), Long.valueOf(locala.zni), Integer.valueOf(locala.networkType), Long.valueOf(localp.field_snsId), Long.valueOf(locala.AdW), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.sns.data.q.ans(str)), str });
           break;
-          locala.yMz = 2;
-          locala.yMB = System.currentTimeMillis();
+          locala.AdV = 2;
+          locala.AdX = System.currentTimeMillis();
         }
       }
     }
-    this.yMx.clear();
+    this.AdT.clear();
     AppMethodBeat.o(98778);
   }
   
-  public btz getCntMedia()
+  public byn getCntMedia()
   {
     AppMethodBeat.i(98772);
-    if (this.yMd != null)
+    if (this.Adz != null)
     {
-      int i = this.sRJ.getCurrentItem();
-      if ((this.hqR != null) && (i < this.hqR.size()))
+      int i = this.tOn.getCurrentItem();
+      if ((this.hJj != null) && (i < this.hJj.size()))
       {
-        btz localbtz = this.yMd.PB(i).dwE;
+        byn localbyn = this.Adz.Rk(i).dIQ;
         AppMethodBeat.o(98772);
-        return localbtz;
+        return localbyn;
       }
     }
     AppMethodBeat.o(98772);
@@ -702,9 +706,9 @@ public class SnsInfoFlip
   public int getCount()
   {
     AppMethodBeat.i(98771);
-    if (this.yMd != null)
+    if (this.Adz != null)
     {
-      int i = this.yMd.getCount();
+      int i = this.Adz.getCount();
       AppMethodBeat.o(98771);
       return i;
     }
@@ -714,23 +718,23 @@ public class SnsInfoFlip
   
   public List<com.tencent.mm.plugin.sns.i.b> getFlipList()
   {
-    return this.hqR;
+    return this.hJj;
   }
   
-  public bf getFromScene()
+  public com.tencent.mm.storage.bj getFromScene()
   {
-    return this.xNB;
+    return this.zdv;
   }
   
   public MMViewPager getGallery()
   {
-    return this.sRJ;
+    return this.tOn;
   }
   
   public int getNumOfFileExist()
   {
     AppMethodBeat.i(98774);
-    Iterator localIterator = this.hqR.iterator();
+    Iterator localIterator = this.hJj.iterator();
     int k = 0;
     int j;
     for (int i = 0;; i = j)
@@ -739,9 +743,9 @@ public class SnsInfoFlip
       if (localIterator.hasNext())
       {
         com.tencent.mm.plugin.sns.i.b localb = (com.tencent.mm.plugin.sns.i.b)localIterator.next();
-        af.dHO();
+        ag.dUb();
         j = i;
-        if (i.eA(com.tencent.mm.plugin.sns.model.f.C(localb.dwE))) {
+        if (i.fv(f.C(localb.dIQ))) {
           j = i + 1;
         }
         k += 1;
@@ -757,13 +761,13 @@ public class SnsInfoFlip
   
   public int getPosition()
   {
-    return this.yIE;
+    return this.zZY;
   }
   
   public int getSelectCount()
   {
     AppMethodBeat.i(98773);
-    int i = this.yMv.size();
+    int i = this.AdR.size();
     AppMethodBeat.o(98773);
     return i;
   }
@@ -777,7 +781,7 @@ public class SnsInfoFlip
       AppMethodBeat.o(98763);
       return null;
     }
-    localObject = ((com.tencent.mm.plugin.sns.i.b)localObject).yav;
+    localObject = ((com.tencent.mm.plugin.sns.i.b)localObject).parentId;
     AppMethodBeat.o(98763);
     return localObject;
   }
@@ -785,10 +789,10 @@ public class SnsInfoFlip
   public com.tencent.mm.plugin.sns.i.b getSelectItem()
   {
     AppMethodBeat.i(98761);
-    if ((this.sRJ != null) && (this.yMd != null))
+    if ((this.tOn != null) && (this.Adz != null))
     {
-      int i = this.sRJ.getCurrentItem();
-      com.tencent.mm.plugin.sns.i.b localb = this.yMd.PB(i);
+      int i = this.tOn.getCurrentItem();
+      com.tencent.mm.plugin.sns.i.b localb = this.Adz.Rk(i);
       AppMethodBeat.o(98761);
       return localb;
     }
@@ -802,7 +806,7 @@ public class SnsInfoFlip
     Object localObject = getCntMedia();
     if (localObject != null)
     {
-      localObject = ((btz)localObject).Id;
+      localObject = ((byn)localObject).Id;
       AppMethodBeat.o(98762);
       return localObject;
     }
@@ -813,23 +817,23 @@ public class SnsInfoFlip
   public long getSnsId()
   {
     AppMethodBeat.i(98766);
-    if (this.yMd == null)
+    if (this.Adz == null)
     {
       AppMethodBeat.o(98766);
       return 0L;
     }
-    Object localObject = this.yMd.PB(this.sRJ.getCurrentItem());
+    Object localObject = this.Adz.Rk(this.tOn.getCurrentItem());
     if (localObject == null) {
       localObject = "";
     }
-    while (!bs.isNullOrNil((String)localObject))
+    while (!bt.isNullOrNil((String)localObject))
     {
-      localObject = af.dHR().auT((String)localObject);
+      localObject = ag.dUe().aAa((String)localObject);
       if (localObject == null)
       {
         AppMethodBeat.o(98766);
         return 0L;
-        localObject = ((com.tencent.mm.plugin.sns.i.b)localObject).yav;
+        localObject = ((com.tencent.mm.plugin.sns.i.b)localObject).parentId;
       }
       else
       {
@@ -844,17 +848,17 @@ public class SnsInfoFlip
   
   public float getWidthModHeight()
   {
-    return this.yMn;
+    return this.AdJ;
   }
   
   protected final void onDestroy()
   {
     AppMethodBeat.i(98779);
     super.onDestroy();
-    if (this.yMd != null)
+    if (this.Adz != null)
     {
-      this.yMd.detach();
-      this.yMd = null;
+      this.Adz.detach();
+      this.Adz = null;
     }
     AppMethodBeat.o(98779);
   }
@@ -863,36 +867,36 @@ public class SnsInfoFlip
   {
     AppMethodBeat.i(98769);
     super.onPause();
-    if (this.yMd != null)
+    if (this.Adz != null)
     {
-      this.yMd.dPL();
-      this.yMd.clear();
+      this.Adz.ecc();
+      this.Adz.clear();
     }
     AppMethodBeat.o(98769);
   }
   
-  public final void rn(boolean paramBoolean)
+  public final void rR(boolean paramBoolean)
   {
     AppMethodBeat.i(179207);
-    if (this.yMd != null)
+    if (this.Adz != null)
     {
-      ac.d("MicroMsg.SnsInfoFlip", "onRefresh ");
+      ad.d("MicroMsg.SnsInfoFlip", "onRefresh ");
       if (paramBoolean) {
-        this.yMd.notifyDataSetChanged();
+        this.Adz.notifyDataSetChanged();
       }
-      dPI();
+      ebZ();
     }
     AppMethodBeat.o(179207);
   }
   
   public void setEnableHorLongBmpMode(boolean paramBoolean)
   {
-    this.yMl = paramBoolean;
+    this.AdH = paramBoolean;
   }
   
-  public void setFromScene(bf parambf)
+  public void setFromScene(com.tencent.mm.storage.bj parambj)
   {
-    this.xNB = parambf;
+    this.zdv = parambj;
   }
   
   public void setInfoType(int paramInt)
@@ -907,120 +911,101 @@ public class SnsInfoFlip
   
   public void setIsFromMainTimeline(boolean paramBoolean)
   {
-    this.yIK = paramBoolean;
+    this.Aae = paramBoolean;
   }
   
   public void setIsSoonEnterPhotoEditUI(boolean paramBoolean)
   {
-    this.yIM = paramBoolean;
+    this.Aag = paramBoolean;
   }
   
   public void setItems(List<com.tencent.mm.plugin.sns.i.b> paramList)
   {
-    this.hqR = paramList;
+    this.hJj = paramList;
   }
   
   public void setOnDeleteAllAction(Runnable paramRunnable)
   {
-    this.yMp = paramRunnable;
+    this.AdL = paramRunnable;
   }
   
   public void setOnPageSelectListener(b paramb)
   {
-    this.yMt = paramb;
+    this.AdP = paramb;
   }
   
   public void setShowLongClickMenu(boolean paramBoolean)
   {
-    this.yMe = paramBoolean;
+    this.AdA = paramBoolean;
   }
   
   public void setShowPageControl(boolean paramBoolean)
   {
-    this.yMi = paramBoolean;
+    this.AdE = paramBoolean;
   }
   
   public void setShowTitle(boolean paramBoolean)
   {
-    this.yMk = paramBoolean;
+    this.AdG = paramBoolean;
   }
   
   public void setTouchFinish(boolean paramBoolean)
   {
-    this.yMj = paramBoolean;
+    this.AdF = paramBoolean;
   }
   
   public void setVideoScene(int paramInt)
   {
-    this.yFi = paramInt;
+    this.zWD = paramInt;
   }
   
   final class a
   {
-    String dgl = "";
-    int hlt;
+    int AdV = -1;
+    long AdW = -1L;
+    long AdX = -1L;
+    byp AdY;
+    String AdZ;
+    String drH = "";
+    int hDC;
     int networkType;
-    btz xRy;
-    long xXj = -1L;
-    long yMA = -1L;
-    long yMB = -1L;
-    bub yMC;
-    String yMD;
-    int yMz = -1;
+    byn zhs;
+    long zni = -1L;
     
     a() {}
   }
   
   public static abstract interface b
   {
-    public abstract void a(btz parambtz, int paramInt, String paramString);
+    public abstract void a(byn parambyn, int paramInt, String paramString);
   }
   
   final class c
     extends u
   {
+    private int Aea;
+    private String Aeb;
+    Map<String, WeakReference<View>> Aec;
+    private boolean Aed;
     Context context;
-    private boolean oJn;
-    private int yME;
-    private String yMF;
-    Map<String, WeakReference<View>> yMG;
-    private boolean yMH;
+    private boolean pmU;
     
     c(Context paramContext)
     {
       AppMethodBeat.i(98742);
-      this.yMG = new HashMap();
-      this.yMH = false;
+      this.Aec = new HashMap();
+      this.Aed = false;
       this.context = paramContext;
-      this.yME = SnsInfoFlip.j(SnsInfoFlip.this).size();
-      com.tencent.mm.modelcontrol.c.aDI();
-      this.oJn = com.tencent.mm.modelcontrol.c.aDK();
+      this.Aea = SnsInfoFlip.j(SnsInfoFlip.this).size();
+      com.tencent.mm.modelcontrol.c.aGN();
+      this.pmU = com.tencent.mm.modelcontrol.c.aGP();
       AppMethodBeat.o(98742);
     }
     
-    private void PA(int paramInt)
-    {
-      AppMethodBeat.i(98754);
-      btz localbtz = PB(paramInt).dwE;
-      bf localbf = bf.a(SnsInfoFlip.this.xNB, PB(paramInt).hGU);
-      if (localbtz.ndI != 2)
-      {
-        AppMethodBeat.o(98754);
-        return;
-      }
-      boolean bool = x.avo(PB(paramInt).yav);
-      af.dHO();
-      bool = com.tencent.mm.plugin.sns.model.f.a(localbtz, localbf, bool);
-      if ((SnsInfoFlip.i(SnsInfoFlip.this)) && (!bool)) {
-        SnsInfoFlip.a(SnsInfoFlip.this, localbtz.Id, SnsInfoFlip.this.getSelectItem().yav, localbtz.Fjk, localbtz);
-      }
-      AppMethodBeat.o(98754);
-    }
-    
-    private void Pz(int paramInt)
+    private void Ri(int paramInt)
     {
       AppMethodBeat.i(98753);
-      if (!this.oJn)
+      if (!this.pmU)
       {
         AppMethodBeat.o(98753);
         return;
@@ -1030,69 +1015,88 @@ public class SnsInfoFlip
         AppMethodBeat.o(98753);
         return;
       }
-      if (!ae.cS(this.context))
+      if (!ae.cP(this.context))
       {
         AppMethodBeat.o(98753);
         return;
       }
       if (paramInt - 1 >= 0) {
-        PA(paramInt - 1);
+        Rj(paramInt - 1);
       }
       if (paramInt + 1 < SnsInfoFlip.c(SnsInfoFlip.this).getCount()) {
-        PA(paramInt + 1);
+        Rj(paramInt + 1);
       }
       AppMethodBeat.o(98753);
     }
     
-    private void a(final SnsInfoFlip.d paramd, final int paramInt, final btz parambtz, final boolean paramBoolean)
+    private void Rj(int paramInt)
     {
-      AppMethodBeat.i(200515);
-      final bf localbf = bf.a(SnsInfoFlip.this.xNB, PB(paramInt).hGU);
-      com.tencent.mm.plugin.sns.model.f localf = af.dHO();
-      MultiTouchImageView localMultiTouchImageView = paramd.yMQ;
+      AppMethodBeat.i(98754);
+      byn localbyn = Rk(paramInt).dIQ;
+      com.tencent.mm.storage.bj localbj = com.tencent.mm.storage.bj.a(SnsInfoFlip.this.zdv, Rk(paramInt).hZE);
+      if (localbyn.nEf != 2)
+      {
+        AppMethodBeat.o(98754);
+        return;
+      }
+      boolean bool = com.tencent.mm.plugin.sns.storage.x.aAv(Rk(paramInt).parentId);
+      ag.dUb();
+      bool = f.a(localbyn, localbj, bool);
+      if ((SnsInfoFlip.i(SnsInfoFlip.this)) && (!bool)) {
+        SnsInfoFlip.a(SnsInfoFlip.this, localbyn.Id, SnsInfoFlip.this.getSelectItem().parentId, localbyn.GSL, localbyn);
+      }
+      AppMethodBeat.o(98754);
+    }
+    
+    private void a(final SnsInfoFlip.d paramd, final int paramInt, final byn parambyn, final boolean paramBoolean)
+    {
+      AppMethodBeat.i(198358);
+      final com.tencent.mm.storage.bj localbj = com.tencent.mm.storage.bj.a(SnsInfoFlip.this.zdv, Rk(paramInt).hZE);
+      f localf = ag.dUb();
+      MultiTouchImageView localMultiTouchImageView = paramd.Aem;
       int i = this.context.hashCode();
       if (!paramBoolean) {}
       for (boolean bool = true;; bool = false)
       {
-        localf.a(parambtz, localMultiTouchImageView, i, bool, localbf, x.avo(PB(paramInt).yav), new f.e()
+        localf.a(parambyn, localMultiTouchImageView, i, bool, localbj, com.tencent.mm.plugin.sns.storage.x.aAv(Rk(paramInt).parentId), new f.e()
         {
-          public final void aj(Bitmap paramAnonymousBitmap)
+          public final void al(Bitmap paramAnonymousBitmap)
           {
             AppMethodBeat.i(98741);
             if ((!com.tencent.mm.plugin.sns.data.q.I(paramAnonymousBitmap)) && (SnsInfoFlip.i(SnsInfoFlip.this)) && (SnsInfoFlip.this.getSelectItem() != null)) {
-              SnsInfoFlip.a(SnsInfoFlip.this, parambtz.Id, SnsInfoFlip.this.getSelectItem().yav, parambtz.Fjk, parambtz);
+              SnsInfoFlip.a(SnsInfoFlip.this, parambyn.Id, SnsInfoFlip.this.getSelectItem().parentId, parambyn.GSL, parambyn);
             }
-            if ((!com.tencent.mm.plugin.sns.data.q.I(paramAnonymousBitmap)) && (parambtz.Id != null) && (!parambtz.Id.startsWith("pre_temp_extend_pic")))
+            if ((!com.tencent.mm.plugin.sns.data.q.I(paramAnonymousBitmap)) && (parambyn.Id != null) && (!parambyn.Id.startsWith("pre_temp_extend_pic")))
             {
-              ac.i("MicroMsg.SnsGalleryAdapter", "big image not ready, set loading img. position: %d, media id: %s.", new Object[] { Integer.valueOf(paramInt), parambtz.Id });
-              paramd.stH.setVisibility(0);
-              paramd.iIW.setVisibility(0);
-              paramd.yMQ.setVisibility(8);
-              paramd.sRg.setVisibility(8);
-              af.dHO().eB(paramd.stH);
-              af.dHO().b(parambtz, paramd.stH, 2131231318, SnsInfoFlip.c.this.context.hashCode(), localbf);
+              ad.i("MicroMsg.SnsGalleryAdapter", "big image not ready, set loading img. position: %d, media id: %s.", new Object[] { Integer.valueOf(paramInt), parambyn.Id });
+              paramd.tqj.setVisibility(0);
+              paramd.jcf.setVisibility(0);
+              paramd.Aem.setVisibility(8);
+              paramd.tNK.setVisibility(8);
+              ag.dUb().eR(paramd.tqj);
+              ag.dUb().b(parambyn, paramd.tqj, 2131231318, SnsInfoFlip.c.this.context.hashCode(), localbj);
               if (paramBoolean)
               {
-                paramd.iIW.setVisibility(8);
+                paramd.jcf.setVisibility(8);
                 AppMethodBeat.o(98741);
               }
             }
             else if (com.tencent.mm.plugin.sns.data.q.I(paramAnonymousBitmap))
             {
-              ac.i("MicroMsg.SnsGalleryAdapter", "pennqin, use multiTouchImageView, %s.", new Object[] { paramd.yMQ });
-              paramd.yMQ.setVisibility(0);
-              paramd.sRg.setVisibility(8);
-              paramd.yMQ.setEnableHorLongBmpMode(SnsInfoFlip.n(SnsInfoFlip.this));
-              paramd.yMQ.cF(paramAnonymousBitmap.getWidth(), paramAnonymousBitmap.getHeight());
-              paramd.yMQ.setImageBitmap(null);
-              paramd.yMQ.setImageBitmap(paramAnonymousBitmap);
-              paramd.yMQ.post(new Runnable()
+              ad.i("MicroMsg.SnsGalleryAdapter", "pennqin, use multiTouchImageView, %s.", new Object[] { paramd.Aem });
+              paramd.Aem.setVisibility(0);
+              paramd.tNK.setVisibility(8);
+              paramd.Aem.setEnableHorLongBmpMode(SnsInfoFlip.n(SnsInfoFlip.this));
+              paramd.Aem.cH(paramAnonymousBitmap.getWidth(), paramAnonymousBitmap.getHeight());
+              paramd.Aem.setImageBitmap(null);
+              paramd.Aem.setImageBitmap(paramAnonymousBitmap);
+              paramd.Aem.post(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(98740);
-                  SnsInfoFlip.c.2.this.yMI.stH.setVisibility(8);
-                  SnsInfoFlip.c.2.this.yMI.iIW.setVisibility(8);
+                  SnsInfoFlip.c.2.this.Aee.tqj.setVisibility(8);
+                  SnsInfoFlip.c.2.this.Aee.jcf.setVisibility(8);
                   AppMethodBeat.o(98740);
                 }
               });
@@ -1100,7 +1104,7 @@ public class SnsInfoFlip
             AppMethodBeat.o(98741);
           }
         });
-        AppMethodBeat.o(200515);
+        AppMethodBeat.o(198358);
         return;
       }
     }
@@ -1109,40 +1113,40 @@ public class SnsInfoFlip
     {
       final boolean bool = true;
       AppMethodBeat.i(98750);
-      Object localObject2 = PB(paramInt).dwE;
+      Object localObject2 = Rk(paramInt).dIQ;
       final SnsInfoFlip.d locald;
       if ((paramView == null) || (paramView.getTag() == null))
       {
         locald = new SnsInfoFlip.d();
         paramView = View.inflate(this.context, 2131495549, null);
-        locald.yMP = paramView.findViewById(2131300341);
-        locald.stH = ((ImageView)paramView.findViewById(2131301501));
-        locald.iIW = ((ProgressBar)paramView.findViewById(2131301506));
-        locald.yMQ = ((MultiTouchImageView)paramView.findViewById(2131302559));
-        locald.sRg = ((WxImageView)paramView.findViewById(2131307106));
+        locald.Ael = paramView.findViewById(2131300341);
+        locald.tqj = ((ImageView)paramView.findViewById(2131301501));
+        locald.jcf = ((ProgressBar)paramView.findViewById(2131301506));
+        locald.Aem = ((MultiTouchImageView)paramView.findViewById(2131302559));
+        locald.tNK = ((WxImageView)paramView.findViewById(2131307106));
         paramView.setTag(locald);
-        ac.d("MicroMsg.SnsGalleryAdapter", "gallery position %d, media id: %s, %s.", new Object[] { Integer.valueOf(paramInt), ((btz)localObject2).Id, locald.yMQ });
+        ad.d("MicroMsg.SnsGalleryAdapter", "gallery position %d, media id: %s, %s.", new Object[] { Integer.valueOf(paramInt), ((byn)localObject2).Id, locald.Aem });
         locald.position = paramInt;
-        if ((bs.isNullOrNil(SnsInfoFlip.l(SnsInfoFlip.this))) || (!SnsInfoFlip.l(SnsInfoFlip.this).equals(((btz)localObject2).Id))) {
+        if ((bt.isNullOrNil(SnsInfoFlip.l(SnsInfoFlip.this))) || (!SnsInfoFlip.l(SnsInfoFlip.this).equals(((byn)localObject2).Id))) {
           break label322;
         }
       }
       for (;;)
       {
         localObject1 = localObject2;
-        if (!((btz)localObject2).Id.startsWith("Locall_path")) {
+        if (!((byn)localObject2).Id.startsWith("Locall_path")) {
           break label385;
         }
         localObject1 = localObject2;
-        if (bs.isNullOrNil(PB(paramInt).yav)) {
+        if (bt.isNullOrNil(Rk(paramInt).parentId)) {
           break label385;
         }
-        localObject3 = (com.tencent.mm.plugin.sns.storage.p)SnsInfoFlip.m(SnsInfoFlip.this).get(PB(paramInt).yav);
+        localObject3 = (com.tencent.mm.plugin.sns.storage.p)SnsInfoFlip.m(SnsInfoFlip.this).get(Rk(paramInt).parentId);
         localObject1 = localObject3;
         if (localObject3 == null)
         {
-          localObject1 = af.dHR().auT(PB(paramInt).yav);
-          SnsInfoFlip.m(SnsInfoFlip.this).put(PB(paramInt).yav, localObject1);
+          localObject1 = ag.dUe().aAa(Rk(paramInt).parentId);
+          SnsInfoFlip.m(SnsInfoFlip.this).put(Rk(paramInt).parentId, localObject1);
         }
         if (localObject1 != null) {
           break label328;
@@ -1155,35 +1159,35 @@ public class SnsInfoFlip
         bool = false;
       }
       label328:
-      Object localObject3 = ((com.tencent.mm.plugin.sns.storage.p)localObject1).dLV();
+      Object localObject3 = ((com.tencent.mm.plugin.sns.storage.p)localObject1).dYl();
       Object localObject1 = localObject2;
-      if (((TimeLineObject)localObject3).FQo.Etz.size() > PB(paramInt).yax) {
-        localObject1 = (btz)((TimeLineObject)localObject3).FQo.Etz.get(PB(paramInt).yax);
+      if (((TimeLineObject)localObject3).HAT.GaQ.size() > Rk(paramInt).zqt) {
+        localObject1 = (byn)((TimeLineObject)localObject3).HAT.GaQ.get(Rk(paramInt).zqt);
       }
       label385:
-      localObject2 = com.tencent.mm.plugin.sns.model.f.C((btz)localObject1);
-      if ((!bs.isNullOrNil((String)localObject2)) && (SnsInfoFlip.avH((String)localObject2)))
+      localObject2 = f.C((byn)localObject1);
+      if ((!bt.isNullOrNil((String)localObject2)) && (SnsInfoFlip.aAO((String)localObject2)))
       {
-        ac.i("MicroMsg.SnsGalleryAdapter", "pennqin, use wxImageView.");
-        locald.yMQ.setVisibility(8);
-        locald.sRg.setVisibility(0);
-        localObject3 = com.tencent.mm.sdk.platformtools.f.aKw((String)localObject2);
+        ad.i("MicroMsg.SnsGalleryAdapter", "pennqin, use wxImageView.");
+        locald.Aem.setVisibility(8);
+        locald.tNK.setVisibility(0);
+        localObject3 = com.tencent.mm.sdk.platformtools.g.aQc((String)localObject2);
         if (localObject3 != null)
         {
-          int i = BackwardSupportUtil.ExifHelper.ce((String)localObject2);
-          locald.sRg.setOrientation(i);
-          locald.sRg.cF(((BitmapFactory.Options)localObject3).outWidth, ((BitmapFactory.Options)localObject3).outHeight);
-          locald.sRg.fij();
-          locald.sRg.setOnImageLoadEventListener(new com.tencent.mm.graphics.a.b()
+          int i = BackwardSupportUtil.ExifHelper.cY((String)localObject2);
+          locald.tNK.setOrientation(i);
+          locald.tNK.cH(((BitmapFactory.Options)localObject3).outWidth, ((BitmapFactory.Options)localObject3).outHeight);
+          locald.tNK.fyy();
+          locald.tNK.setOnImageLoadEventListener(new com.tencent.mm.graphics.a.b()
           {
             public final void a(com.davemorrissey.labs.subscaleview.a.c paramAnonymousc) {}
             
             public final void b(com.davemorrissey.labs.subscaleview.a.c paramAnonymousc)
             {
-              AppMethodBeat.i(200514);
-              ac.w("MicroMsg.SnsGalleryAdapter", "onImageLoadError, switch to multiTouchImageView");
-              SnsInfoFlip.c.a(SnsInfoFlip.c.this, locald, paramInt, this.yMJ, bool);
-              AppMethodBeat.o(200514);
+              AppMethodBeat.i(198357);
+              ad.w("MicroMsg.SnsGalleryAdapter", "onImageLoadError, switch to multiTouchImageView");
+              SnsInfoFlip.c.a(SnsInfoFlip.c.this, locald, paramInt, this.Aef, bool);
+              AppMethodBeat.o(198357);
             }
             
             public final void c(com.davemorrissey.labs.subscaleview.a.c paramAnonymousc) {}
@@ -1191,91 +1195,150 @@ public class SnsInfoFlip
             public final void m(Bitmap paramAnonymousBitmap)
             {
               AppMethodBeat.i(98739);
-              ac.d("MicroMsg.SnsGalleryAdapter", "pennqin, wxImageView, on image loaded.");
-              locald.stH.setVisibility(8);
-              locald.iIW.setVisibility(8);
+              ad.d("MicroMsg.SnsGalleryAdapter", "pennqin, wxImageView, on image loaded.");
+              locald.tqj.setVisibility(8);
+              locald.jcf.setVisibility(8);
               AppMethodBeat.o(98739);
             }
             
-            public final void qA()
+            public final void rY()
             {
               AppMethodBeat.i(98738);
-              ac.d("MicroMsg.SnsGalleryAdapter", "pennqin, wxImageView, on preview loaded.");
+              ad.d("MicroMsg.SnsGalleryAdapter", "pennqin, wxImageView, on preview loaded.");
               AppMethodBeat.o(98738);
             }
             
-            public final void qB() {}
+            public final void rZ() {}
           });
-          localObject1 = Uri.encode(i.k(com.tencent.mm.plugin.sns.model.f.q((btz)localObject1), false));
-          if (!bs.isNullOrNil((String)localObject1)) {
-            locald.sRg.a(i.k((String)localObject2, false), com.davemorrissey.labs.subscaleview.view.a.W((String)localObject1));
+          localObject1 = Uri.encode(i.k(f.q((byn)localObject1), false));
+          if (!bt.isNullOrNil((String)localObject1)) {
+            locald.tNK.a(i.k((String)localObject2, false), com.davemorrissey.labs.subscaleview.view.a.aP((String)localObject1));
           }
         }
       }
       for (;;)
       {
-        Pz(paramInt);
+        Ri(paramInt);
         AppMethodBeat.o(98750);
         return paramView;
-        a(locald, paramInt, (btz)localObject1, bool);
+        a(locald, paramInt, (byn)localObject1, bool);
       }
     }
     
-    public final MultiTouchImageView Gb(int paramInt)
+    public final MultiTouchImageView Hq(int paramInt)
     {
       AppMethodBeat.i(98743);
-      Object localObject = super.QZ(paramInt);
+      Object localObject = super.SJ(paramInt);
       if (localObject == null)
       {
-        ac.e("MicroMsg.SnsGalleryAdapter", "position : %d getMultiTouchImageViewByPosition view is null.", new Object[] { Integer.valueOf(paramInt) });
+        ad.e("MicroMsg.SnsGalleryAdapter", "position : %d getMultiTouchImageViewByPosition view is null.", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(98743);
         return null;
       }
       localObject = (SnsInfoFlip.d)((View)localObject).getTag();
       if (localObject == null)
       {
-        ac.e("MicroMsg.SnsGalleryAdapter", "position : %d getMultiTouchImageViewByPosition holder is null.", new Object[] { Integer.valueOf(paramInt) });
+        ad.e("MicroMsg.SnsGalleryAdapter", "position : %d getMultiTouchImageViewByPosition holder is null.", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(98743);
         return null;
       }
-      if (((SnsInfoFlip.d)localObject).yMQ.getVisibility() == 8)
+      if (((SnsInfoFlip.d)localObject).Aem.getVisibility() == 8)
       {
         AppMethodBeat.o(98743);
         return null;
       }
-      localObject = ((SnsInfoFlip.d)localObject).yMQ;
+      localObject = ((SnsInfoFlip.d)localObject).Aem;
       AppMethodBeat.o(98743);
       return localObject;
     }
     
-    public final WxImageView Gc(int paramInt)
+    public final WxImageView Hr(int paramInt)
     {
       AppMethodBeat.i(98744);
-      Object localObject = super.QZ(paramInt);
+      Object localObject = super.SJ(paramInt);
       if (localObject == null)
       {
-        ac.e("MicroMsg.SnsGalleryAdapter", "position : %d getWxImageViewByPosition view is null.", new Object[] { Integer.valueOf(paramInt) });
+        ad.e("MicroMsg.SnsGalleryAdapter", "position : %d getWxImageViewByPosition view is null.", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(98744);
         return null;
       }
       localObject = (SnsInfoFlip.d)((View)localObject).getTag();
       if (localObject == null)
       {
-        ac.e("MicroMsg.SnsGalleryAdapter", "position : %d getWxImageViewByPosition holder is null.", new Object[] { Integer.valueOf(paramInt) });
+        ad.e("MicroMsg.SnsGalleryAdapter", "position : %d getWxImageViewByPosition holder is null.", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(98744);
         return null;
       }
-      if (((SnsInfoFlip.d)localObject).sRg.getVisibility() == 8)
+      if (((SnsInfoFlip.d)localObject).tNK.getVisibility() == 8)
       {
         AppMethodBeat.o(98744);
         return null;
       }
-      localObject = ((SnsInfoFlip.d)localObject).sRg;
+      localObject = ((SnsInfoFlip.d)localObject).tNK;
       AppMethodBeat.o(98744);
       return localObject;
     }
     
-    public final com.tencent.mm.plugin.sns.i.b PB(int paramInt)
+    final void Rg(int paramInt)
+    {
+      AppMethodBeat.i(98746);
+      Object localObject1 = Rk(paramInt);
+      if (localObject1 == null)
+      {
+        ad.w("MicroMsg.SnsGalleryAdapter", "notify online sight play, but flip item is null.");
+        AppMethodBeat.o(98746);
+        return;
+      }
+      String str = ((com.tencent.mm.plugin.sns.i.b)localObject1).parentId;
+      if (bt.isNullOrNil(str))
+      {
+        ad.w("MicroMsg.SnsGalleryAdapter", "notify online sight play, but sns local id is null.");
+        AppMethodBeat.o(98746);
+        return;
+      }
+      ad.i("MicroMsg.SnsGalleryAdapter", "notify online sight play pos %s sns local id %s.", new Object[] { Integer.valueOf(paramInt), str });
+      Object localObject2 = (WeakReference)this.Aec.get(str);
+      if (localObject2 == null)
+      {
+        ad.w("MicroMsg.SnsGalleryAdapter", "notify online sight play, but view cache is null.");
+        this.Aeb = str;
+        AppMethodBeat.o(98746);
+        return;
+      }
+      localObject2 = (OnlineVideoView)((WeakReference)localObject2).get();
+      if (localObject2 == null)
+      {
+        ad.w("MicroMsg.SnsGalleryAdapter", "online sight view is null, do nothing. snsLocalId %s.", new Object[] { str });
+        this.Aeb = str;
+        AppMethodBeat.o(98746);
+        return;
+      }
+      ad.i("MicroMsg.SnsGalleryAdapter", "%d notify online sight play video %s.", new Object[] { Integer.valueOf(localObject2.hashCode()), str });
+      this.Aeb = null;
+      ((OnlineVideoView)localObject2).eaj();
+      ((OnlineVideoView)localObject2).a(((com.tencent.mm.plugin.sns.i.b)localObject1).dIQ, ((com.tencent.mm.plugin.sns.i.b)localObject1).parentId, ((com.tencent.mm.plugin.sns.i.b)localObject1).hZE);
+      localObject1 = new uk();
+      ((uk)localObject1).dII.dsi = 1;
+      ((uk)localObject1).dII.drH = str;
+      com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject1);
+      AppMethodBeat.o(98746);
+    }
+    
+    final boolean Rh(int paramInt)
+    {
+      AppMethodBeat.i(98752);
+      View localView = SJ(paramInt);
+      if ((localView != null) && (Hq(paramInt) == null) && (Hr(paramInt) == null))
+      {
+        j(paramInt, localView);
+        AppMethodBeat.o(98752);
+        return true;
+      }
+      AppMethodBeat.o(98752);
+      return false;
+    }
+    
+    public final com.tencent.mm.plugin.sns.i.b Rk(int paramInt)
     {
       AppMethodBeat.i(98756);
       if ((paramInt < SnsInfoFlip.j(SnsInfoFlip.this).size()) && (paramInt >= 0))
@@ -1288,84 +1351,12 @@ public class SnsInfoFlip
       return null;
     }
     
-    final void Px(int paramInt)
-    {
-      AppMethodBeat.i(98746);
-      Object localObject1 = PB(paramInt);
-      if (localObject1 == null)
-      {
-        ac.w("MicroMsg.SnsGalleryAdapter", "notify online sight play, but flip item is null.");
-        AppMethodBeat.o(98746);
-        return;
-      }
-      String str = ((com.tencent.mm.plugin.sns.i.b)localObject1).yav;
-      if (bs.isNullOrNil(str))
-      {
-        ac.w("MicroMsg.SnsGalleryAdapter", "notify online sight play, but sns local id is null.");
-        AppMethodBeat.o(98746);
-        return;
-      }
-      ac.i("MicroMsg.SnsGalleryAdapter", "notify online sight play pos %s sns local id %s.", new Object[] { Integer.valueOf(paramInt), str });
-      Object localObject2 = (WeakReference)this.yMG.get(str);
-      if (localObject2 == null)
-      {
-        ac.w("MicroMsg.SnsGalleryAdapter", "notify online sight play, but view cache is null.");
-        this.yMF = str;
-        AppMethodBeat.o(98746);
-        return;
-      }
-      localObject2 = (OnlineVideoView)((WeakReference)localObject2).get();
-      if (localObject2 == null)
-      {
-        ac.w("MicroMsg.SnsGalleryAdapter", "online sight view is null, do nothing. snsLocalId %s.", new Object[] { str });
-        this.yMF = str;
-        AppMethodBeat.o(98746);
-        return;
-      }
-      ac.i("MicroMsg.SnsGalleryAdapter", "%d notify online sight play video %s.", new Object[] { Integer.valueOf(localObject2.hashCode()), str });
-      this.yMF = null;
-      ((OnlineVideoView)localObject2).dNW();
-      ((OnlineVideoView)localObject2).a(((com.tencent.mm.plugin.sns.i.b)localObject1).dwE, ((com.tencent.mm.plugin.sns.i.b)localObject1).yav, ((com.tencent.mm.plugin.sns.i.b)localObject1).hGU);
-      localObject1 = new tr();
-      ((tr)localObject1).dww.dgL = 1;
-      ((tr)localObject1).dww.dgl = str;
-      com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject1);
-      AppMethodBeat.o(98746);
-    }
-    
-    final boolean Py(int paramInt)
-    {
-      AppMethodBeat.i(98752);
-      View localView = QZ(paramInt);
-      if ((localView != null) && (Gb(paramInt) == null) && (Gc(paramInt) == null))
-      {
-        j(paramInt, localView);
-        AppMethodBeat.o(98752);
-        return true;
-      }
-      AppMethodBeat.o(98752);
-      return false;
-    }
-    
     public final void clear()
     {
       AppMethodBeat.i(98747);
-      ac.i("MicroMsg.SnsGalleryAdapter", "adapter clear.");
-      this.yMG.clear();
+      ad.i("MicroMsg.SnsGalleryAdapter", "adapter clear.");
+      this.Aec.clear();
       AppMethodBeat.o(98747);
-    }
-    
-    public final void dPL()
-    {
-      AppMethodBeat.i(98749);
-      ac.i("MicroMsg.SnsGalleryAdapter", "notify online sight stop %s", new Object[] { bs.eWi() });
-      tr localtr = new tr();
-      localtr.dww.context = this.context;
-      localtr.dww.dgl = this.yMF;
-      localtr.dww.dgL = 2;
-      com.tencent.mm.sdk.b.a.GpY.l(localtr);
-      this.yMF = null;
-      AppMethodBeat.o(98749);
     }
     
     public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -1376,22 +1367,35 @@ public class SnsInfoFlip
       AppMethodBeat.o(98751);
     }
     
+    public final void ecc()
+    {
+      AppMethodBeat.i(98749);
+      ad.i("MicroMsg.SnsGalleryAdapter", "notify online sight stop %s", new Object[] { bt.flS() });
+      uk localuk = new uk();
+      localuk.dII.context = this.context;
+      localuk.dII.drH = this.Aeb;
+      localuk.dII.dsi = 2;
+      com.tencent.mm.sdk.b.a.IbL.l(localuk);
+      this.Aeb = null;
+      AppMethodBeat.o(98749);
+    }
+    
     public final Object g(int paramInt, View paramView)
     {
       AppMethodBeat.i(98745);
-      if (PB(paramInt).dwE.ndI == 6)
+      if (Rk(paramInt).dIQ.nEf == 6)
       {
         boolean bool;
         com.tencent.mm.plugin.sns.i.b localb;
         if (paramView == null)
         {
           bool = true;
-          ac.d("MicroMsg.SnsGalleryAdapter", "fill view online sight %d convert view is null %b.", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-          localb = PB(paramInt);
+          ad.d("MicroMsg.SnsGalleryAdapter", "fill view online sight %d convert view is null %b.", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+          localb = Rk(paramInt);
           if (localb != null) {
             break label87;
           }
-          ac.w("MicroMsg.SnsGalleryAdapter", "fill online sight view, but flip item is null.");
+          ad.w("MicroMsg.SnsGalleryAdapter", "fill online sight view, but flip item is null.");
         }
         label87:
         Object localObject;
@@ -1401,38 +1405,38 @@ public class SnsInfoFlip
           return paramView;
           bool = false;
           break;
-          localObject = localb.yav;
-          if (!bs.isNullOrNil((String)localObject)) {
+          localObject = localb.parentId;
+          if (!bt.isNullOrNil((String)localObject)) {
             break label113;
           }
-          ac.w("MicroMsg.SnsGalleryAdapter", "fill online sight view, but sns local id is null.");
+          ad.w("MicroMsg.SnsGalleryAdapter", "fill online sight view, but sns local id is null.");
         }
         label113:
-        paramView = (WeakReference)this.yMG.get(localObject);
+        paramView = (WeakReference)this.Aec.get(localObject);
         if ((paramView != null) && (paramView.get() != null)) {
           paramView = (OnlineVideoView)paramView.get();
         }
         for (;;)
         {
           paramView.aH(null);
-          if (bs.lr((String)localObject, this.yMF)) {
-            Px(paramInt);
+          if (bt.lQ((String)localObject, this.Aeb)) {
+            Rg(paramInt);
           }
-          ac.i("MicroMsg.SnsGalleryAdapter", "return online sight view %d parent id %s.", new Object[] { Integer.valueOf(paramView.hashCode()), localb.yav });
-          localObject = af.dHR().auT((String)localObject);
+          ad.i("MicroMsg.SnsGalleryAdapter", "return online sight view %d parent id %s.", new Object[] { Integer.valueOf(paramView.hashCode()), localb.parentId });
+          localObject = ag.dUe().aAa((String)localObject);
           if (localObject != null)
           {
             paramView.setScene(SnsInfoFlip.k(SnsInfoFlip.this));
             StringBuilder localStringBuilder = new StringBuilder();
-            com.tencent.mm.kernel.g.agP();
-            paramView.setSessionId(new com.tencent.mm.b.p(com.tencent.mm.kernel.a.getUin()).toString() + "_" + bs.eWj());
-            paramView.setSessionTimestamp(bs.eWj());
-            paramView.setSnsId(com.tencent.mm.plugin.sns.data.q.wW(((com.tencent.mm.plugin.sns.storage.p)localObject).field_snsId));
-            paramView.setFilePath(au.D(localb.dwE));
+            com.tencent.mm.kernel.g.ajA();
+            paramView.setSessionId(new com.tencent.mm.b.p(com.tencent.mm.kernel.a.getUin()).toString() + "_" + bt.flT());
+            paramView.setSessionTimestamp(bt.flT());
+            paramView.setSnsId(com.tencent.mm.plugin.sns.data.q.zw(((com.tencent.mm.plugin.sns.storage.p)localObject).field_snsId));
+            paramView.setFilePath(av.D(localb.dIQ));
           }
           break;
           paramView = new OnlineVideoView(this.context);
-          this.yMG.put(localObject, new WeakReference(paramView));
+          this.Aec.put(localObject, new WeakReference(paramView));
         }
       }
       paramView = j(paramInt, paramView);
@@ -1456,7 +1460,7 @@ public class SnsInfoFlip
     public final int getItemPosition(Object paramObject)
     {
       AppMethodBeat.i(98757);
-      if (this.yMH)
+      if (this.Aed)
       {
         AppMethodBeat.o(98757);
         return -2;
@@ -1469,12 +1473,12 @@ public class SnsInfoFlip
     public final void notifyDataSetChanged()
     {
       AppMethodBeat.i(98755);
-      this.yMH = true;
+      this.Aed = true;
       super.notifyDataSetChanged();
-      this.yMH = false;
-      this.yME = SnsInfoFlip.j(SnsInfoFlip.this).size();
-      ac.d("MicroMsg.SnsGalleryAdapter", "items.size: %d.", new Object[] { Integer.valueOf(this.yME) });
-      if ((this.yME <= 0) && (SnsInfoFlip.o(SnsInfoFlip.this) != null)) {
+      this.Aed = false;
+      this.Aea = SnsInfoFlip.j(SnsInfoFlip.this).size();
+      ad.d("MicroMsg.SnsGalleryAdapter", "items.size: %d.", new Object[] { Integer.valueOf(this.Aea) });
+      if ((this.Aea <= 0) && (SnsInfoFlip.o(SnsInfoFlip.this) != null)) {
         SnsInfoFlip.o(SnsInfoFlip.this).run();
       }
       AppMethodBeat.o(98755);
@@ -1483,13 +1487,13 @@ public class SnsInfoFlip
   
   static final class d
   {
-    ProgressBar iIW;
+    View Ael;
+    MultiTouchImageView Aem;
+    ProgressBar jcf;
     int position;
-    WxImageView sRg;
-    ImageView stH;
+    WxImageView tNK;
+    ImageView tqj;
     String videoPath = "";
-    View yMP;
-    MultiTouchImageView yMQ;
   }
 }
 

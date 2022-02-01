@@ -10,6 +10,7 @@ import com.google.android.gms.common.BlockingServiceConnection;
 import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.annotation.KeepForSdk;
+import com.google.android.gms.common.annotation.KeepForSdkWithMembers;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.stats.ConnectionTracker;
 import com.google.android.gms.common.util.VisibleForTesting;
@@ -74,7 +75,7 @@ public class AdvertisingIdClient
   }
   
   @KeepForSdk
-  public static AdvertisingIdClient.Info getAdvertisingIdInfo(Context paramContext)
+  public static Info getAdvertisingIdInfo(Context paramContext)
   {
     AppMethodBeat.i(53025);
     Object localObject2 = new zzb(paramContext);
@@ -87,7 +88,7 @@ public class AdvertisingIdClient
       long l = SystemClock.elapsedRealtime();
       paramContext.zza(false);
       localObject2 = paramContext.getInfo();
-      paramContext.zza((AdvertisingIdClient.Info)localObject2, bool, f, SystemClock.elapsedRealtime() - l, str, null);
+      paramContext.zza((Info)localObject2, bool, f, SystemClock.elapsedRealtime() - l, str, null);
       return localObject2;
     }
     catch (Throwable localThrowable)
@@ -250,7 +251,7 @@ public class AdvertisingIdClient
   }
   
   @VisibleForTesting
-  private final boolean zza(AdvertisingIdClient.Info paramInfo, boolean paramBoolean, float paramFloat, long paramLong, String paramString, Throwable paramThrowable)
+  private final boolean zza(Info paramInfo, boolean paramBoolean, float paramFloat, long paramLong, String paramString, Throwable paramThrowable)
   {
     AppMethodBeat.i(53027);
     if (Math.random() > paramFloat)
@@ -361,51 +362,51 @@ public class AdvertisingIdClient
   public final void finish()
   {
     // Byte code:
-    //   0: ldc_w 367
-    //   3: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 247
-    //   8: invokestatic 250	com/google/android/gms/common/internal/Preconditions:checkNotMainThread	(Ljava/lang/String;)V
+    //   0: ldc_w 368
+    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 248
+    //   8: invokestatic 251	com/google/android/gms/common/internal/Preconditions:checkNotMainThread	(Ljava/lang/String;)V
     //   11: aload_0
     //   12: monitorenter
     //   13: aload_0
-    //   14: getfield 66	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
+    //   14: getfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
     //   17: ifnull +10 -> 27
     //   20: aload_0
-    //   21: getfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   21: getfield 255	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
     //   24: ifnonnull +12 -> 36
     //   27: aload_0
     //   28: monitorexit
-    //   29: ldc_w 367
-    //   32: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: ldc_w 368
+    //   32: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: return
     //   36: aload_0
-    //   37: getfield 68	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
+    //   37: getfield 69	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
     //   40: ifeq +17 -> 57
-    //   43: invokestatic 192	com/google/android/gms/common/stats/ConnectionTracker:getInstance	()Lcom/google/android/gms/common/stats/ConnectionTracker;
+    //   43: invokestatic 193	com/google/android/gms/common/stats/ConnectionTracker:getInstance	()Lcom/google/android/gms/common/stats/ConnectionTracker;
     //   46: aload_0
-    //   47: getfield 66	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
+    //   47: getfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
     //   50: aload_0
-    //   51: getfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
-    //   54: invokevirtual 371	com/google/android/gms/common/stats/ConnectionTracker:unbindService	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
+    //   51: getfield 255	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   54: invokevirtual 372	com/google/android/gms/common/stats/ConnectionTracker:unbindService	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
     //   57: aload_0
     //   58: iconst_0
-    //   59: putfield 68	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
+    //   59: putfield 69	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
     //   62: aload_0
     //   63: aconst_null
-    //   64: putfield 258	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzf	Lcom/google/android/gms/internal/ads_identifier/zze;
+    //   64: putfield 259	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzf	Lcom/google/android/gms/internal/ads_identifier/zze;
     //   67: aload_0
     //   68: aconst_null
-    //   69: putfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   69: putfield 255	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
     //   72: aload_0
     //   73: monitorexit
-    //   74: ldc_w 367
-    //   77: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   74: ldc_w 368
+    //   77: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: return
     //   81: astore_1
     //   82: aload_0
     //   83: monitorexit
-    //   84: ldc_w 367
-    //   87: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: ldc_w 368
+    //   87: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   90: aload_1
     //   91: athrow
     //   92: astore_1
@@ -426,7 +427,7 @@ public class AdvertisingIdClient
   }
   
   @KeepForSdk
-  public AdvertisingIdClient.Info getInfo()
+  public Info getInfo()
   {
     AppMethodBeat.i(53020);
     Preconditions.checkNotMainThread("Calling this from your main thread can lead to deadlock");
@@ -471,7 +472,7 @@ public class AdvertisingIdClient
     Preconditions.checkNotNull(this.zzf);
     try
     {
-      localObject3 = new AdvertisingIdClient.Info(this.zzf.getId(), this.zzf.zzb(true));
+      localObject3 = new Info(this.zzf.getId(), this.zzf.zzb(true));
       zza();
       AppMethodBeat.o(53020);
       return localObject3;
@@ -490,6 +491,39 @@ public class AdvertisingIdClient
     AppMethodBeat.i(53017);
     zza(true);
     AppMethodBeat.o(53017);
+  }
+  
+  @KeepForSdkWithMembers
+  public static final class Info
+  {
+    private final String zzq;
+    private final boolean zzr;
+    
+    public Info(String paramString, boolean paramBoolean)
+    {
+      this.zzq = paramString;
+      this.zzr = paramBoolean;
+    }
+    
+    public final String getId()
+    {
+      return this.zzq;
+    }
+    
+    public final boolean isLimitAdTrackingEnabled()
+    {
+      return this.zzr;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(53012);
+      String str = this.zzq;
+      boolean bool = this.zzr;
+      str = String.valueOf(str).length() + 7 + "{" + str + "}" + bool;
+      AppMethodBeat.o(53012);
+      return str;
+    }
   }
   
   @VisibleForTesting

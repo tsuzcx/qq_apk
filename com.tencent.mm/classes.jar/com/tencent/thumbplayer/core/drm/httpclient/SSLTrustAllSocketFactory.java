@@ -17,25 +17,25 @@ public class SSLTrustAllSocketFactory
   
   public SSLTrustAllSocketFactory()
   {
-    AppMethodBeat.i(193874);
+    AppMethodBeat.i(220656);
     try
     {
       this.mCtx = SSLContext.getInstance("TLS");
       this.mCtx.init(null, new TrustManager[] { new SSLTrustAllManager() }, null);
-      AppMethodBeat.o(193874);
+      AppMethodBeat.o(220656);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(193874);
+      AppMethodBeat.o(220656);
     }
   }
   
   public Socket createSocket()
   {
-    AppMethodBeat.i(193875);
+    AppMethodBeat.i(220657);
     Socket localSocket = this.mCtx.getSocketFactory().createSocket();
-    AppMethodBeat.o(193875);
+    AppMethodBeat.o(220657);
     return localSocket;
   }
   
@@ -61,9 +61,9 @@ public class SSLTrustAllSocketFactory
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(193876);
+    AppMethodBeat.i(220658);
     paramSocket = this.mCtx.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
-    AppMethodBeat.o(193876);
+    AppMethodBeat.o(220658);
     return paramSocket;
   }
   
@@ -94,7 +94,7 @@ public class SSLTrustAllSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.drm.httpclient.SSLTrustAllSocketFactory
  * JD-Core Version:    0.7.0.1
  */

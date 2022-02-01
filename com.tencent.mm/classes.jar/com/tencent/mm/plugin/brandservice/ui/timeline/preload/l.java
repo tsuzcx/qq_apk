@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ew;
+import com.tencent.mm.protocal.protobuf.fa;
+import d.g.b.p;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"DELAY_TIME", "", "getBuffSize", "", "", "getContent", "hasContent", "", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "plugin-brandservice_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"DELAY_TIME", "", "getBuffSize", "", "", "getContent", "hasContent", "", "Lcom/tencent/mm/protocal/protobuf/AppMsgContext;", "plugin-brandservice_release"})
 public final class l
 {
-  public static final boolean b(ew paramew)
+  public static final boolean b(fa paramfa)
   {
     AppMethodBeat.i(6725);
-    d.g.b.k.h(paramew, "$this$hasContent");
-    k localk = k.nGP;
-    boolean bool = b.c(k.bKX(), b.a(paramew));
+    p.h(paramfa, "$this$hasContent");
+    k localk = k.ojs;
+    boolean bool = b.c(k.bPy(), b.a(paramfa));
     AppMethodBeat.o(6725);
     return bool;
   }

@@ -24,24 +24,24 @@ import org.xmlpull.v1.XmlPullParser;
 public class ChangeTransform
   extends Transition
 {
-  private static final String[] xP;
-  private static final boolean yA;
-  private static final Property<b, float[]> yy;
-  private static final Property<b, PointF> yz;
-  private boolean xY = true;
-  boolean yB = true;
-  private Matrix yC = new Matrix();
+  private static final Property<b, float[]> Ar;
+  private static final Property<b, PointF> As;
+  private static final boolean At;
+  private static final String[] zJ;
+  boolean Au = true;
+  private Matrix Av = new Matrix();
+  private boolean zS = true;
   
   static
   {
     boolean bool = true;
-    xP = new String[] { "android:changeTransform:matrix", "android:changeTransform:transforms", "android:changeTransform:parentMatrix" };
-    yy = new Property([F.class, "nonTranslations") {};
-    yz = new Property(PointF.class, "translations") {};
+    zJ = new String[] { "android:changeTransform:matrix", "android:changeTransform:transforms", "android:changeTransform:parentMatrix" };
+    Ar = new Property([F.class, "nonTranslations") {};
+    As = new Property(PointF.class, "translations") {};
     if (Build.VERSION.SDK_INT >= 21) {}
     for (;;)
     {
-      yA = bool;
+      At = bool;
       return;
       bool = false;
     }
@@ -52,9 +52,9 @@ public class ChangeTransform
   public ChangeTransform(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.zY);
-    this.yB = android.support.v4.content.a.g.a(paramContext, (XmlPullParser)paramAttributeSet, "reparentWithOverlay", 1, true);
-    this.xY = android.support.v4.content.a.g.a(paramContext, (XmlPullParser)paramAttributeSet, "reparent", 0, true);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.BP);
+    this.Au = android.support.v4.content.a.g.a(paramContext, (XmlPullParser)paramAttributeSet, "reparentWithOverlay", 1, true);
+    this.zS = android.support.v4.content.a.g.a(paramContext, (XmlPullParser)paramAttributeSet, "reparent", 0, true);
     paramContext.recycle();
   }
   
@@ -94,9 +94,9 @@ public class ChangeTransform
       paramViewGroup = e.a(localView, paramViewGroup);
       break;
       paramViewGroup.a((ViewGroup)paramu1.values.get("android:changeTransform:parent"), paramu1.view);
-      for (localObject = this; ((Transition)localObject).Au != null; localObject = ((Transition)localObject).Au) {}
+      for (localObject = this; ((Transition)localObject).Cl != null; localObject = ((Transition)localObject).Cl) {}
       ((Transition)localObject).a(new a(localView, paramViewGroup));
-    } while (!yA);
+    } while (!At);
     if (paramu1.view != paramu2.view) {
       ag.d(paramu1.view, 0.0F);
     }
@@ -117,7 +117,7 @@ public class ChangeTransform
     for (localObject = null;; localObject = new Matrix((Matrix)localObject))
     {
       paramu.values.put("android:changeTransform:matrix", localObject);
-      if (!this.xY) {
+      if (!this.zS) {
         break;
       }
       localObject = new Matrix();
@@ -141,7 +141,7 @@ public class ChangeTransform
     ViewGroup localViewGroup = (ViewGroup)paramu1.values.get("android:changeTransform:parent");
     Object localObject1 = (ViewGroup)paramu2.values.get("android:changeTransform:parent");
     int i;
-    if (this.xY) {
+    if (this.zS) {
       if ((!G(localViewGroup)) || (!G((View)localObject1))) {
         if (localViewGroup == localObject1) {
           i = 1;
@@ -168,7 +168,7 @@ public class ChangeTransform
         {
           localObject1 = (Matrix)paramu2.values.get("android:changeTransform:parentMatrix");
           paramu2.view.setTag(2131303140, localObject1);
-          localObject2 = this.yC;
+          localObject2 = this.Av;
           ((Matrix)localObject2).reset();
           ((Matrix)localObject1).invert((Matrix)localObject2);
           localObject1 = (Matrix)paramu1.values.get("android:changeTransform:matrix");
@@ -189,17 +189,17 @@ public class ChangeTransform
         localObject1 = (Matrix)paramu2.values.get("android:changeTransform:matrix");
         localObject2 = localObject3;
         if (localObject3 == null) {
-          localObject2 = i.vW;
+          localObject2 = i.xP;
         }
         if (localObject1 == null) {
-          localObject1 = i.vW;
+          localObject1 = i.xP;
         }
         for (;;)
         {
           if (((Matrix)localObject2).equals(localObject1)) {}
           for (localObject1 = null;; localObject1 = localObject2)
           {
-            if ((!bool) || (localObject1 == null) || (!this.yB)) {
+            if ((!bool) || (localObject1 == null) || (!this.Au)) {
               break label644;
             }
             b(paramViewGroup, paramu1, paramu2);
@@ -227,19 +227,19 @@ public class ChangeTransform
             float[] arrayOfFloat = new float[9];
             ((Matrix)localObject1).getValues(arrayOfFloat);
             final b localb = new b(localView, (float[])localObject4);
-            localObject2 = PropertyValuesHolder.ofObject(yy, new c(new float[9]), new float[][] { localObject4, arrayOfFloat });
-            localObject4 = this.AH.getPath(localObject4[2], localObject4[5], arrayOfFloat[2], arrayOfFloat[5]);
-            localObject2 = ObjectAnimator.ofPropertyValuesHolder(localb, new PropertyValuesHolder[] { localObject2, l.a(yz, (Path)localObject4) });
+            localObject2 = PropertyValuesHolder.ofObject(Ar, new c(new float[9]), new float[][] { localObject4, arrayOfFloat });
+            localObject4 = this.Cy.getPath(localObject4[2], localObject4[5], arrayOfFloat[2], arrayOfFloat[5]);
+            localObject2 = ObjectAnimator.ofPropertyValuesHolder(localb, new PropertyValuesHolder[] { localObject2, l.a(As, (Path)localObject4) });
             localObject1 = new AnimatorListenerAdapter()
             {
+              private Matrix Av = new Matrix();
               private boolean mIsCanceled;
-              private Matrix yC = new Matrix();
               
               private void a(Matrix paramAnonymousMatrix)
               {
-                this.yC.set(paramAnonymousMatrix);
-                localView.setTag(2131306070, this.yC);
-                this.yF.C(localView);
+                this.Av.set(paramAnonymousMatrix);
+                localView.setTag(2131306070, this.Av);
+                this.Ay.C(localView);
               }
               
               public final void onAnimationCancel(Animator paramAnonymousAnimator)
@@ -251,15 +251,15 @@ public class ChangeTransform
               {
                 if (!this.mIsCanceled)
                 {
-                  if ((!bool) || (!ChangeTransform.this.yB)) {
+                  if ((!bool) || (!ChangeTransform.this.Au)) {
                     break label52;
                   }
-                  a(this.yE);
+                  a(this.Ax);
                 }
                 for (;;)
                 {
                   ag.c(localView, null);
-                  this.yF.C(localView);
+                  this.Ay.C(localView);
                   return;
                   label52:
                   localView.setTag(2131306070, null);
@@ -281,7 +281,7 @@ public class ChangeTransform
             a.a((Animator)localObject2, (AnimatorListenerAdapter)localObject1);
           }
           paramViewGroup = (ViewGroup)localObject1;
-          if (yA) {
+          if (At) {
             break;
           }
           localViewGroup.endViewTransition(paramu1.view);
@@ -296,7 +296,7 @@ public class ChangeTransform
   public final void a(u paramu)
   {
     c(paramu);
-    if (!yA) {
+    if (!At) {
       ((ViewGroup)paramu.view.getParent()).startViewTransition(paramu.view);
     }
   }
@@ -308,38 +308,38 @@ public class ChangeTransform
   
   public final String[] getTransitionProperties()
   {
-    return xP;
+    return zJ;
   }
   
   static final class a
     extends q
   {
+    private g AB;
     private View mView;
-    private g yI;
     
     a(View paramView, g paramg)
     {
       this.mView = paramView;
-      this.yI = paramg;
+      this.AB = paramg;
     }
     
     public final void a(Transition paramTransition)
     {
       paramTransition.b(this);
       paramTransition = this.mView;
-      if ((Build.VERSION.SDK_INT < 21) || (!f.zv)) {}
+      if ((Build.VERSION.SDK_INT < 21) || (!f.Bm)) {}
       try
       {
-        f.dt();
-        Method localMethod = f.zp.getDeclaredMethod("removeGhost", new Class[] { View.class });
-        f.zu = localMethod;
+        f.dI();
+        Method localMethod = f.Bh.getDeclaredMethod("removeGhost", new Class[] { View.class });
+        f.Bl = localMethod;
         localMethod.setAccessible(true);
         label55:
-        f.zv = true;
-        if (f.zu != null) {}
+        f.Bm = true;
+        if (f.Bl != null) {}
         try
         {
-          f.zu.invoke(null, new Object[] { paramTransition });
+          f.Bl.invoke(null, new Object[] { paramTransition });
           label81:
           this.mView.setTag(2131306070, null);
           this.mView.setTag(2131303140, null);
@@ -364,69 +364,69 @@ public class ChangeTransform
       }
     }
     
-    public final void dn()
+    public final void dC()
     {
-      this.yI.setVisibility(4);
+      this.AB.setVisibility(4);
     }
     
-    public final void jdMethod_do()
+    public final void dD()
     {
-      this.yI.setVisibility(0);
+      this.AB.setVisibility(0);
     }
   }
   
   static final class b
   {
+    final float[] AC;
+    float AD;
+    float AE;
     final Matrix mMatrix = new Matrix();
     private final View mView;
-    final float[] yJ;
-    float yK;
-    float yL;
     
     b(View paramView, float[] paramArrayOfFloat)
     {
       this.mView = paramView;
-      this.yJ = ((float[])paramArrayOfFloat.clone());
-      this.yK = this.yJ[2];
-      this.yL = this.yJ[5];
-      dq();
+      this.AC = ((float[])paramArrayOfFloat.clone());
+      this.AD = this.AC[2];
+      this.AE = this.AC[5];
+      dF();
     }
     
-    final void dq()
+    final void dF()
     {
-      this.yJ[2] = this.yK;
-      this.yJ[5] = this.yL;
-      this.mMatrix.setValues(this.yJ);
+      this.AC[2] = this.AD;
+      this.AC[5] = this.AE;
+      this.mMatrix.setValues(this.AC);
       ag.c(this.mView, this.mMatrix);
     }
   }
   
   static final class c
   {
-    final float vM;
-    final float vN;
-    final float yK;
-    final float yL;
-    final float yM;
-    final float yN;
-    final float yO;
-    final float yP;
+    final float AD;
+    final float AE;
+    final float AF;
+    final float AG;
+    final float AH;
+    final float AI;
+    final float xF;
+    final float xG;
     
     c(View paramView)
     {
-      this.yK = paramView.getTranslationX();
-      this.yL = paramView.getTranslationY();
-      this.yM = t.am(paramView);
-      this.vM = paramView.getScaleX();
-      this.vN = paramView.getScaleY();
-      this.yN = paramView.getRotationX();
-      this.yO = paramView.getRotationY();
-      this.yP = paramView.getRotation();
+      this.AD = paramView.getTranslationX();
+      this.AE = paramView.getTranslationY();
+      this.AF = t.am(paramView);
+      this.xF = paramView.getScaleX();
+      this.xG = paramView.getScaleY();
+      this.AG = paramView.getRotationX();
+      this.AH = paramView.getRotationY();
+      this.AI = paramView.getRotation();
     }
     
     public final void C(View paramView)
     {
-      ChangeTransform.a(paramView, this.yK, this.yL, this.yM, this.vM, this.vN, this.yN, this.yO, this.yP);
+      ChangeTransform.a(paramView, this.AD, this.AE, this.AF, this.xF, this.xG, this.AG, this.AH, this.AI);
     }
     
     public final boolean equals(Object paramObject)
@@ -436,7 +436,7 @@ public class ChangeTransform
       {
         return false;
         paramObject = (c)paramObject;
-      } while ((paramObject.yK != this.yK) || (paramObject.yL != this.yL) || (paramObject.yM != this.yM) || (paramObject.vM != this.vM) || (paramObject.vN != this.vN) || (paramObject.yN != this.yN) || (paramObject.yO != this.yO) || (paramObject.yP != this.yP));
+      } while ((paramObject.AD != this.AD) || (paramObject.AE != this.AE) || (paramObject.AF != this.AF) || (paramObject.xF != this.xF) || (paramObject.xG != this.xG) || (paramObject.AG != this.AG) || (paramObject.AH != this.AH) || (paramObject.AI != this.AI));
       return true;
     }
     
@@ -453,31 +453,31 @@ public class ChangeTransform
       int n;
       label90:
       int i1;
-      if (this.yK != 0.0F)
+      if (this.AD != 0.0F)
       {
-        i = Float.floatToIntBits(this.yK);
-        if (this.yL == 0.0F) {
+        i = Float.floatToIntBits(this.AD);
+        if (this.AE == 0.0F) {
           break label191;
         }
-        j = Float.floatToIntBits(this.yL);
-        if (this.yM == 0.0F) {
+        j = Float.floatToIntBits(this.AE);
+        if (this.AF == 0.0F) {
           break label196;
         }
-        k = Float.floatToIntBits(this.yM);
-        if (this.vM == 0.0F) {
+        k = Float.floatToIntBits(this.AF);
+        if (this.xF == 0.0F) {
           break label201;
         }
-        m = Float.floatToIntBits(this.vM);
-        if (this.vN == 0.0F) {
+        m = Float.floatToIntBits(this.xF);
+        if (this.xG == 0.0F) {
           break label207;
         }
-        n = Float.floatToIntBits(this.vN);
-        if (this.yN == 0.0F) {
+        n = Float.floatToIntBits(this.xG);
+        if (this.AG == 0.0F) {
           break label213;
         }
-        i1 = Float.floatToIntBits(this.yN);
+        i1 = Float.floatToIntBits(this.AG);
         label108:
-        if (this.yO == 0.0F) {
+        if (this.AH == 0.0F) {
           break label219;
         }
       }
@@ -487,10 +487,10 @@ public class ChangeTransform
       label207:
       label213:
       label219:
-      for (int i2 = Float.floatToIntBits(this.yO);; i2 = 0)
+      for (int i2 = Float.floatToIntBits(this.AH);; i2 = 0)
       {
-        if (this.yP != 0.0F) {
-          i3 = Float.floatToIntBits(this.yP);
+        if (this.AI != 0.0F) {
+          i3 = Float.floatToIntBits(this.AI);
         }
         return (i2 + (i1 + (n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i3;
         i = 0;

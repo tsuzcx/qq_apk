@@ -5,7 +5,7 @@ import com.google.android.exoplayer2.b.e;
 public final class d
   extends e
 {
-  public long aTk;
+  public long bdF;
   
   public d()
   {
@@ -14,7 +14,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bf;
+import com.tencent.mm.g.c.bg;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends bf
+  extends bg
 {
   protected static c.a info;
   
@@ -15,19 +15,19 @@ public final class a
   {
     AppMethodBeat.i(183925);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "designerUin";
-    locala.GvH.put("designerUin", "INTEGER");
+    locala.IhC.put("designerUin", "INTEGER");
     localStringBuilder.append(" designerUin INTEGER");
     localStringBuilder.append(", ");
     locala.columns[1] = "productId";
-    locala.GvH.put("productId", "TEXT");
+    locala.IhC.put("productId", "TEXT");
     localStringBuilder.append(" productId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "syncTime";
-    locala.GvH.put("syncTime", "INTEGER");
+    locala.IhC.put("syncTime", "INTEGER");
     localStringBuilder.append(" syncTime INTEGER");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

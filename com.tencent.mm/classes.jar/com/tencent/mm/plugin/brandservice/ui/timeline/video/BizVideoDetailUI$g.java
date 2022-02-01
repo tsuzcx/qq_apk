@@ -3,19 +3,21 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
 import d.g.a.m;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
 final class BizVideoDetailUI$g
-  extends d.g.b.l
-  implements m<WebView, String, y>
+  extends q
+  implements m<WebView, String, z>
 {
-  public static final g nMD;
+  public static final g opj;
   
   static
   {
     AppMethodBeat.i(7091);
-    nMD = new g();
+    opj = new g();
     AppMethodBeat.o(7091);
   }
   

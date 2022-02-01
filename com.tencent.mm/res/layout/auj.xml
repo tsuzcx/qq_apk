@@ -18,14 +18,14 @@
             </RelativeLayout>
             <FrameLayout android:id="@id/e2h" android:layout_width="fill_parent" android:layout_height="@dimen/aje" android:layout_above="@id/e3_">
                 <RelativeLayout android:gravity="bottom" android:id="@id/e37" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/c5">
-                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="@dimen/ajj" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/ajh" android:layout_alignParentStart="true">
+                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/ajh" android:layout_alignParentStart="true">
                         <TextView android:textSize="@dimen/ajl" android:textColor="@color/xv" android:id="@id/e2_" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dyx" />
                         <FrameLayout android:layout_width="@dimen/aji" android:layout_height="@dimen/aji" android:layout_marginTop="@dimen/ajg">
                             <FrameLayout android:layout_gravity="center" android:id="@id/e28" android:background="@drawable/a58" android:layout_width="@dimen/ajk" android:layout_height="@dimen/ajk" />
                             <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/e29" android:layout_width="@dimen/abw" android:layout_height="@dimen/abw" android:src="@raw/new_voice2txt_cancel" app:iconAlpha="0.5" app:iconColor="@color/aj" />
                         </FrameLayout>
                     </LinearLayout>
-                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="@dimen/ajj" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/ajh" android:layout_alignParentEnd="true">
+                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_marginEnd="@dimen/ajh" android:layout_alignParentEnd="true">
                         <TextView android:textSize="@dimen/ajl" android:textColor="@color/xv" android:id="@id/e39" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dz5" />
                         <FrameLayout android:layout_width="@dimen/aji" android:layout_height="@dimen/aji" android:layout_marginTop="@dimen/ajg">
                             <FrameLayout android:layout_gravity="center" android:id="@id/e35" android:background="@drawable/a58" android:layout_width="@dimen/ajk" android:layout_height="@dimen/ajk" />
@@ -44,7 +44,7 @@
                     </LinearLayout>
                     <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/ajh" android:layout_alignParentEnd="true">
                         <FrameLayout android:layout_gravity="center" android:id="@id/e2z" android:background="@drawable/a54" android:layout_width="@dimen/aji" android:layout_height="@dimen/aji">
-                            <ProgressBar android:layout_gravity="center" android:id="@id/e31" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4p" />
+                            <ProgressBar android:layout_gravity="center" android:id="@id/e31" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" style="@style/a6y" />
                             <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/e30" android:visibility="gone" android:layout_width="@dimen/akd" android:layout_height="@dimen/akc" android:src="@raw/icons_filled_done" android:contentDescription="@string/hgg" app:iconColor="@color/Brand" />
                         </FrameLayout>
                     </FrameLayout>

@@ -20,7 +20,7 @@ public enum c
       if (localc.m(paramInt, paramString))
       {
         localc.a(localb);
-        ((d.b)localb).cV(localc.name());
+        ((d.b)localb).dY(localc.name());
       }
     }
     return localb;
@@ -28,7 +28,7 @@ public enum c
   
   public static d.a k(int paramInt, String paramString)
   {
-    return a(EnumSet.of(cvG, cvH, cvI, cvJ), paramInt, paramString);
+    return a(EnumSet.of(cGB, cGC, cGD, cGE), paramInt, paramString);
   }
   
   public static d.a l(int paramInt, String paramString)
@@ -45,7 +45,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.matrix.resource.analyzer.model.c
  * JD-Core Version:    0.7.0.1
  */

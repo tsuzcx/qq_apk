@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.clq;
-import com.tencent.mm.protocal.protobuf.cls;
-import com.tencent.mm.protocal.protobuf.clt;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.cqq;
+import com.tencent.mm.protocal.protobuf.cqs;
+import com.tencent.mm.protocal.protobuf.cqt;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class e
   extends n
   implements k
 {
-  private g callback;
-  public boolean iYz;
+  private f callback;
+  public boolean jrI;
   public String nickname;
   private b rr;
   public String username;
@@ -30,25 +30,25 @@ public final class e
   {
     AppMethodBeat.i(20777);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new cls();
-    ((b.a)localObject).hvu = new clt();
+    ((b.a)localObject).hNM = new cqs();
+    ((b.a)localObject).hNN = new cqt();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoquery";
     ((b.a)localObject).funcId = 417;
-    ((b.a)localObject).reqCmdId = 202;
+    ((b.a)localObject).hNO = 202;
     ((b.a)localObject).respCmdId = 1000000202;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (cls)this.rr.hvr.hvw;
-    ((cls)localObject).oxC = 0;
-    ((cls)localObject).Fzm = paramString1;
-    ((cls)localObject).djj = paramString2;
-    ((cls)localObject).scene = paramInt;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (cqs)this.rr.hNK.hNQ;
+    ((cqs)localObject).paX = 0;
+    ((cqs)localObject).Hjr = paramString1;
+    ((cqs)localObject).duW = paramString2;
+    ((cqs)localObject).scene = paramInt;
     AppMethodBeat.o(20777);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(20779);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(20779);
     return i;
@@ -63,26 +63,26 @@ public final class e
   {
     boolean bool = true;
     AppMethodBeat.i(20778);
-    ac.d("MicroMsg.NetSceneRcptInfoQuery", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    ad.d("MicroMsg.NetSceneRcptInfoQuery", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (clt)((b)paramq).hvs.hvw;
-      this.username = paramq.pIw;
-      this.nickname = paramq.Fzp;
-      if (paramq.Fzo != 1) {
+      paramq = (cqt)((b)paramq).hNL.hNQ;
+      this.username = paramq.qmb;
+      this.nickname = paramq.Hju;
+      if (paramq.Hjt != 1) {
         break label198;
       }
     }
     for (;;)
     {
-      this.iYz = bool;
-      if (paramq.FyZ.Fzc != null)
+      this.jrI = bool;
+      if (paramq.Hje.Hjh != null)
       {
-        ac.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.FyZ.Fzc.size());
-        a.aRF();
-        a.aRH().t(paramq.FyZ.Fzc);
-        a.aRF();
-        a.aRH().aRJ();
+        ad.d("MicroMsg.NetSceneRcptInfoQuery", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.Hje.Hjh.size());
+        a.aUR();
+        a.aUT().t(paramq.Hje.Hjh);
+        a.aUR();
+        a.aUT().aUV();
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(20778);
@@ -94,7 +94,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.e
  * JD-Core Version:    0.7.0.1
  */

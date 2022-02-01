@@ -12,15 +12,15 @@ import android.text.Layout;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoEditText;", "Landroid/support/v7/widget/AppCompatEditText;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBgColor", "", "paint", "Landroid/graphics/Paint;", "path", "Landroid/graphics/Path;", "radius", "", "rectF", "Landroid/graphics/RectF;", "drawBg", "", "canvas", "Landroid/graphics/Canvas;", "onDraw", "setTextBackground", "color", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/PhotoEditText;", "Landroid/support/v7/widget/AppCompatEditText;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mBgColor", "", "paint", "Landroid/graphics/Paint;", "path", "Landroid/graphics/Path;", "radius", "", "rectF", "Landroid/graphics/RectF;", "drawBg", "", "canvas", "Landroid/graphics/Canvas;", "onDraw", "setTextBackground", "color", "plugin-recordvideo_release"})
 public final class PhotoEditText
   extends AppCompatEditText
 {
-  private final RectF fV;
-  private final Path jZ;
+  private final RectF hM;
+  private final Path lP;
   private int mBgColor;
   private final Paint paint;
   private final float radius;
@@ -36,9 +36,9 @@ public final class PhotoEditText
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(76046);
-    this.jZ = new Path();
+    this.lP = new Path();
     this.paint = new Paint();
-    this.fV = new RectF();
+    this.hM = new RectF();
     this.radius = a.fromDPToPix(paramContext, 12);
     this.paint.setStyle(Paint.Style.FILL);
     this.paint.setAntiAlias(true);
@@ -48,7 +48,7 @@ public final class PhotoEditText
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(76045);
-    k.h(paramCanvas, "canvas");
+    p.h(paramCanvas, "canvas");
     int i;
     float f2;
     float f1;
@@ -65,7 +65,7 @@ public final class PhotoEditText
       {
         this.paint.setColor(this.mBgColor);
         f2 = this.radius * 2.0F;
-        this.jZ.reset();
+        this.lP.reset();
         if (getLineCount() != 0)
         {
           f1 = getLayout().getLineBottom(getLineCount() - 1) + getPaddingTop() + getPaddingBottom();
@@ -75,15 +75,15 @@ public final class PhotoEditText
           f2 = getLayout().getLineWidth(0);
           f3 = getPaddingLeft();
           f4 = getPaddingRight();
-          this.fV.set(0.0F, 0.0F, f2 + f3 + f4, f1);
-          this.jZ.addRoundRect(this.fV, this.radius, this.radius, Path.Direction.CW);
+          this.hM.set(0.0F, 0.0F, f2 + f3 + f4, f1);
+          this.lP.addRoundRect(this.hM, this.radius, this.radius, Path.Direction.CW);
         }
       }
     }
     for (;;)
     {
-      this.jZ.close();
-      paramCanvas.drawPath(this.jZ, this.paint);
+      this.lP.close();
+      paramCanvas.drawPath(this.lP, this.paint);
       super.onDraw(paramCanvas);
       AppMethodBeat.o(76045);
       return;
@@ -95,32 +95,32 @@ public final class PhotoEditText
       float f5 = getLayout().getLineWidth(getLineCount() - 1);
       if (f5 >= f3 - f2 - getPaddingLeft() - getPaddingRight())
       {
-        this.fV.set(0.0F, 0.0F, f3, f1);
-        this.jZ.addRoundRect(this.fV, this.radius, this.radius, Path.Direction.CW);
+        this.hM.set(0.0F, 0.0F, f3, f1);
+        this.lP.addRoundRect(this.hM, this.radius, this.radius, Path.Direction.CW);
       }
       else
       {
         f4 = getLayout().getLineTop(getLineCount() - 1) + getPaddingTop() + getPaddingBottom();
         f5 = f5 + getPaddingRight() + getPaddingLeft();
-        this.jZ.moveTo(0.0F, this.radius);
-        this.fV.set(0.0F, 0.0F, f2, f2);
-        this.jZ.arcTo(this.fV, 180.0F, 90.0F);
-        this.jZ.lineTo(f3 - f2, 0.0F);
-        this.fV.set(f3 - f2, 0.0F, f3, f2);
-        this.jZ.arcTo(this.fV, 270.0F, 90.0F);
-        this.jZ.lineTo(f3, f4 - this.radius);
-        this.fV.set(f3 - f2, f4 - f2, f3, f4);
-        this.jZ.arcTo(this.fV, 0.0F, 90.0F);
-        this.jZ.lineTo(this.radius + f5, f4);
-        this.fV.set(f5, f4, f5 + f2, f4 + f2);
-        this.jZ.arcTo(this.fV, 270.0F, -90.0F);
-        this.jZ.lineTo(f5, f1 - this.radius);
-        this.fV.set(f5 - f2, f1 - f2, f5, f1);
-        this.jZ.arcTo(this.fV, 0.0F, 90.0F);
-        this.jZ.lineTo(this.radius, f1);
-        this.fV.set(0.0F, f1 - f2, f2, f1);
-        this.jZ.arcTo(this.fV, 90.0F, 90.0F);
-        this.jZ.lineTo(0.0F, this.radius);
+        this.lP.moveTo(0.0F, this.radius);
+        this.hM.set(0.0F, 0.0F, f2, f2);
+        this.lP.arcTo(this.hM, 180.0F, 90.0F);
+        this.lP.lineTo(f3 - f2, 0.0F);
+        this.hM.set(f3 - f2, 0.0F, f3, f2);
+        this.lP.arcTo(this.hM, 270.0F, 90.0F);
+        this.lP.lineTo(f3, f4 - this.radius);
+        this.hM.set(f3 - f2, f4 - f2, f3, f4);
+        this.lP.arcTo(this.hM, 0.0F, 90.0F);
+        this.lP.lineTo(this.radius + f5, f4);
+        this.hM.set(f5, f4, f5 + f2, f4 + f2);
+        this.lP.arcTo(this.hM, 270.0F, -90.0F);
+        this.lP.lineTo(f5, f1 - this.radius);
+        this.hM.set(f5 - f2, f1 - f2, f5, f1);
+        this.lP.arcTo(this.hM, 0.0F, 90.0F);
+        this.lP.lineTo(this.radius, f1);
+        this.hM.set(0.0F, f1 - f2, f2, f1);
+        this.lP.arcTo(this.hM, 90.0F, 90.0F);
+        this.lP.lineTo(0.0F, this.radius);
       }
     }
   }

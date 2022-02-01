@@ -11,19 +11,19 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class h
   extends Preference
 {
-  boolean mLw;
   private View mView;
-  boolean vzM;
-  boolean vzN;
+  boolean nlS;
+  boolean wFg;
+  boolean wFh;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66824);
     this.mView = null;
-    this.vzM = false;
-    this.vzN = false;
-    this.mLw = true;
+    this.wFg = false;
+    this.wFh = false;
+    this.nlS = true;
     setLayoutResource(2131494712);
     AppMethodBeat.o(66824);
   }
@@ -47,15 +47,15 @@ public final class h
     paramView = paramView.findViewById(2131302042);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     int i = BackwardSupportUtil.b.g(this.mContext, 10.0F);
-    if (this.vzM) {}
+    if (this.wFg) {}
     for (int j = i;; j = 0)
     {
-      if (this.vzN) {}
+      if (this.wFh) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.mLw)
+        if (!this.nlS)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(66826);

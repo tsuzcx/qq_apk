@@ -2,7 +2,7 @@ package com.tencent.mm.app;
 
 public abstract interface h$a
 {
-  public abstract void hl(int paramInt);
+  public abstract void hs(int paramInt);
 }
 
 

@@ -1,60 +1,24 @@
 package com.tencent.mm.plugin.appbrand.service;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.z.d;
-import com.tencent.mm.sdk.platformtools.h;
-import d.g.b.k;
-import d.l;
+import com.tencent.mm.kernel.c.a;
+import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/service/WXNativeInjector;", "", "()V", "WXNATIVE", "", "getWXNATIVE", "()Ljava/lang/String;", "WXNATIVEFILE", "getWXNATIVEFILE", "enableWxNative", "", "component", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "getWXNativeJSRet", "getWXNativeJSScript", "getWXNativeJSScriptName", "plugin-appbrand-integration_release"})
-public final class s
+public abstract interface s
+  extends a
 {
-  private static final String lWE = "WxNative";
-  private static final String lWF = "wxNative.js";
-  public static final s lWG;
+  public abstract a bcB();
   
-  static
+  public static final class a
   {
-    AppMethodBeat.i(51061);
-    lWG = new s();
-    lWE = "WxNative";
-    lWF = "wxNative.js";
-    AppMethodBeat.o(51061);
+    public String dxD;
+    public List<s.b> hJj;
+    public int mws;
   }
   
-  public static String buc()
+  public static final class b
   {
-    return lWE;
-  }
-  
-  public static String bud()
-  {
-    AppMethodBeat.i(51060);
-    String str = d.Rn(lWF);
-    k.g(str, "AppBrandIOUtil.getAssetAsString(WXNATIVEFILE)");
-    AppMethodBeat.o(51060);
-    return str;
-  }
-  
-  public static String bue()
-  {
-    return ";injectNativateRet";
-  }
-  
-  public static boolean d(c paramc)
-  {
-    AppMethodBeat.i(51059);
-    k.h(paramc, "component");
-    paramc = paramc.getRuntime();
-    k.g(paramc, "component.runtime");
-    if ((paramc.aTJ()) || (h.DEBUG) || (h.IS_FLAVOR_RED))
-    {
-      AppMethodBeat.o(51059);
-      return true;
-    }
-    AppMethodBeat.o(51059);
-    return false;
+    public String jPZ;
+    public String username;
   }
 }
 

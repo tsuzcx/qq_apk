@@ -1,874 +1,670 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.text.TextUtils;
-import com.tencent.mars.smc.IDKey;
+import android.content.Context;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.az;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsns.f;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.fts.a.a.m;
-import com.tencent.mm.plugin.fts.ui.a.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.g.a.tt;
+import com.tencent.mm.g.a.tt.b;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.fts.a.d.e.a;
+import com.tencent.mm.plugin.fts.a.d.e.b;
+import com.tencent.mm.plugin.fts.ui.a.i;
+import com.tencent.mm.plugin.sns.b.o;
+import com.tencent.mm.protocal.protobuf.aix;
+import com.tencent.mm.protocal.protobuf.dla;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.util.c;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public final class k
+  extends d
+  implements e.b
 {
-  private static int FH(int paramInt)
-  {
-    int i = 6;
-    switch (paramInt)
-    {
-    case 33: 
-    default: 
-      i = 0;
-    case 35: 
-    case 36: 
-      return i;
-    case 37: 
-      return 16;
-    case 32: 
-      return 4;
-    case 34: 
-      return 5;
-    case 29: 
-      return 1;
-    case 30: 
-      return 2;
-    }
-    return 3;
-  }
+  private boolean mVn;
+  private boolean sXJ;
+  private ap tyn;
+  public boolean tzH;
+  List<com.tencent.mm.plugin.fts.a.d.e> tzK;
+  private com.tencent.mm.plugin.fts.ui.d.n tzL;
+  public com.tencent.mm.plugin.fts.ui.c.b tzM;
+  com.tencent.mm.plugin.fts.ui.widget.d tzN;
+  private long tzO;
+  private long tzP;
+  private long tzQ;
+  private long tzR;
+  private ap tzS;
+  private int tzT;
+  private boolean tzU;
+  boolean tzV;
+  public boolean tzy;
   
-  public static void K(long paramLong, int paramInt)
+  public k(e parame, int paramInt, com.tencent.mm.plugin.fts.ui.widget.d paramd)
   {
-    AppMethodBeat.i(112023);
-    ac.d("MicroMsg.FTS.FTSReportLogic", "reportWebSearchPardusStatus 18201 %s %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    com.tencent.mm.plugin.report.e.wTc.f(18201, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()) });
-    AppMethodBeat.o(112023);
-  }
-  
-  public static final int a(com.tencent.mm.plugin.fts.a.d.a.a parama)
-  {
-    int i = 3;
-    int j = parama.pil;
-    if (j == -8)
+    super(parame);
+    AppMethodBeat.i(184530);
+    this.tzS = new ap(Looper.getMainLooper())
     {
-      if (parama.pil == -8) {}
-      switch (parama.oeH)
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-      default: 
-        i = 0;
-      }
-      while (i != 0)
-      {
-        return 2;
-        i = 4;
-        continue;
-        i = 5;
-        continue;
-        i = 10;
-        continue;
-        i = 19;
-      }
-    }
-    switch (parama.oeH)
-    {
-    case 11: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-    case 3: 
-    case 5: 
-    case 6: 
-    case 10: 
-    case 8: 
-      do
-      {
-        return 0;
-        return 3;
-        return 4;
-        return 5;
-        return 10;
-        return 11;
-        return 12;
-        return 20;
-        if (j == -5) {
-          return 16;
-        }
-        if (j == -3) {
-          return 4;
-        }
-        if (j == -4) {
-          return 3;
-        }
-        if (j == -1) {
-          return 12;
-        }
-        if (j == -2) {
-          return 11;
-        }
-        if (j == -15) {
-          return 21;
-        }
-        if (j == -6) {
-          return 10;
-        }
-        if (j == -13) {
-          return 19;
-        }
-        if (j == -7) {
-          return 5;
-        }
-      } while (j != -20);
-      if (parama.szz == 2) {
-        return 26;
-      }
-      return 25;
-    case 7: 
-      if (parama.szy) {
-        return 8;
-      }
-      return 9;
-    case 9: 
-      return 19;
-    case 13: 
-      return 21;
-    case 12: 
-      return 22;
-    }
-    if (parama.szz == 2) {
-      return 26;
-    }
-    return 25;
-  }
-  
-  public static void a(com.tencent.mm.plugin.fts.a.d.a.a parama, com.tencent.mm.plugin.fts.ui.c.a parama1)
-  {
-    AppMethodBeat.i(112018);
-    int m = parama.szu;
-    String str2 = parama.szw;
-    long l2 = parama.szx;
-    int n = s(parama.szz, parama.szA, parama.cKI());
-    int i;
-    long l1;
-    long l3;
-    int j;
-    label205:
-    int k;
-    switch (parama.oeH)
-    {
-    case 7: 
-    case 8: 
-    case 11: 
-    case 12: 
-    default: 
-      AppMethodBeat.o(112018);
-      return;
-    case 1: 
-      i = 3;
-      if ((parama instanceof q))
-      {
-        localObject = (q)parama;
-        boolean bool = ((q)localObject).contact.Nw();
-        l1 = ((q)localObject).jPN.timestamp / 1000L;
-        l3 = ((q)localObject).jPN.syN;
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNI(((q)localObject).username);
-        j = 0;
-        if (localObject != null)
+        AppMethodBeat.i(111945);
+        switch (paramAnonymousMessage.what)
         {
-          j = ((az)localObject).field_unReadCount;
-          if (!bool) {
-            break label774;
-          }
-          k = 1;
         }
-      }
-      break;
-    }
-    label213:
-    for (Object localObject = String.format("%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l1), Integer.valueOf(0), Long.valueOf(l3), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(0) });; localObject = "0,0,0,0,0,0")
-    {
-      l1 = System.currentTimeMillis() - parama1.sFw;
-      if ((l1 < 0L) || (parama1.sFw == 0L)) {
-        l1 = 0L;
-      }
-      parama = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(parama.kNw), Integer.valueOf(i), Integer.valueOf(m), bs.bG(str2, ""), Long.valueOf(l2), Integer.valueOf(n), Integer.valueOf(parama.bds()), Integer.valueOf(FH(parama.cKH())), parama.bdr(), Long.valueOf(l1), Integer.valueOf(parama1.sFx), localObject, "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(parama1.sFy) });
-      ac.d("MicroMsg.FTS.FTSReportLogic", "report detail page click 11310: %s", new Object[] { parama });
-      com.tencent.mm.plugin.report.service.h.wUl.kvStat(11310, parama);
-      AppMethodBeat.o(112018);
-      return;
-      i = 4;
-      break;
-      i = 5;
-      break;
-      i = 10;
-      break;
-      i = 11;
-      break;
-      i = 12;
-      break;
-      i = 20;
-      break;
-      f localf = new f();
-      String str1 = parama.sxM.syk;
-      localObject = str1;
-      if (str1 != null) {
-        localObject = str1.replaceAll(",", " ");
-      }
-      localf.n("20KeyWordId", (String)localObject + ",");
-      localf.n("21ViewType", "2,");
-      localf.n("22OpType", "2,");
-      localf.n("23ResultCount", ",");
-      localf.n("24ClickPos", parama.szv + ",");
-      localf.n("25ClickAppUserName", parama.info + ",");
-      ac.i("MicroMsg.FTS.FTSReportLogic", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PS() });
-      com.tencent.mm.plugin.report.service.h.wUl.f(13963, new Object[] { localf });
-      i = 19;
-      break;
-      i = 21;
-      break;
-      ac.w("MicroMsg.FTS.FTSReportLogic", "11310 conv null");
-      break label205;
-      k = 0;
-      break label213;
-    }
-  }
-  
-  public static void a(com.tencent.mm.plugin.fts.a.d.a.a parama, com.tencent.mm.plugin.fts.ui.c.b paramb)
-  {
-    AppMethodBeat.i(112016);
-    int j = 1;
-    int n = parama.szu;
-    int i1 = parama.szv;
-    String str2 = parama.szw;
-    long l2 = parama.szx;
-    Object localObject2 = parama.bdr();
-    int i2 = s(parama.szz, parama.szA, parama.cKI());
-    int i;
-    Object localObject1;
-    long l1;
-    long l3;
-    label243:
-    int m;
-    label251:
-    String str1;
-    label309:
-    label358:
-    int i3;
-    int i4;
-    int i5;
-    int i6;
-    int i7;
-    int i8;
-    int i9;
-    int i10;
-    int i11;
-    int i12;
-    int i13;
-    if (parama.pil == -8)
-    {
-      k = 0;
-      i = k;
-      switch (parama.oeH)
-      {
-      default: 
-        i = k;
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-        localObject1 = i + "$" + (String)localObject2;
-        i = 2;
-        if ((parama instanceof q))
+        for (;;)
         {
-          localObject2 = (q)parama;
-          boolean bool = ((q)localObject2).contact.Nw();
-          l1 = ((q)localObject2).jPN.timestamp / 1000L;
-          l3 = ((q)localObject2).jPN.syN;
-          localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awG().aNI(((q)localObject2).username);
-          k = 0;
-          if (localObject2 != null)
+          AppMethodBeat.o(111945);
+          return;
+          if ((!k.h(k.this)) && (k.this.getCount() > 0))
           {
-            k = ((az)localObject2).field_unReadCount;
-            if (!bool) {
-              break label1567;
+            ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().cSz();
+            o.zbS.start();
+            k.this.notifyDataSetChanged();
+          }
+        }
+      }
+    };
+    this.tyn = new ap(Looper.getMainLooper());
+    this.tzT = -1;
+    this.tzN = paramd;
+    this.tzM = new com.tencent.mm.plugin.fts.ui.c.b();
+    parame = new HashSet();
+    parame.add(Integer.valueOf(16));
+    parame.add(Integer.valueOf(32));
+    parame.add(Integer.valueOf(48));
+    parame.add(Integer.valueOf(64));
+    parame.add(Integer.valueOf(128));
+    parame.add(Integer.valueOf(96));
+    parame.add(Integer.valueOf(112));
+    if (com.tencent.mm.kernel.g.ajx())
+    {
+      paramd = new tt();
+      com.tencent.mm.sdk.b.a.IbL.l(paramd);
+      com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aDs().wz("100193");
+      if ((!localc.isValid()) || (!"1".equals(localc.foF().get("isOpenLocalSearch"))) || (!paramd.dIe.dIg)) {}
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        parame.add(Integer.valueOf(144));
+      }
+      this.tzK = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).createFTSUIUnitList(parame, getContext(), this, paramInt);
+      this.tzL = ((com.tencent.mm.plugin.fts.ui.d.n)new com.tencent.mm.plugin.fts.ui.b.l().a(getContext(), this, paramInt));
+      AppMethodBeat.o(184530);
+      return;
+    }
+  }
+  
+  private void c(HashSet<String> paramHashSet)
+  {
+    AppMethodBeat.i(111956);
+    this.tzT += 1;
+    if (this.tzT < this.tzK.size()) {
+      ((com.tencent.mm.plugin.fts.a.d.e)this.tzK.get(this.tzT)).a(this.query, this.tyn, paramHashSet, com.tencent.mm.plugin.fts.a.e.ttx);
+    }
+    AppMethodBeat.o(111956);
+  }
+  
+  protected final com.tencent.mm.plugin.fts.a.d.a.a GR(int paramInt)
+  {
+    AppMethodBeat.i(111948);
+    long l = 0L;
+    com.tencent.mm.plugin.fts.a.d.a.a locala = null;
+    Object localObject1 = this.tzK.iterator();
+    for (;;)
+    {
+      Object localObject2;
+      if (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (com.tencent.mm.plugin.fts.a.d.e)((Iterator)localObject1).next();
+        locala = ((com.tencent.mm.plugin.fts.a.d.e)localObject2).GR(paramInt);
+        l = ((com.tencent.mm.plugin.fts.a.d.e)localObject2).cSV();
+        if (locala == null) {}
+      }
+      else
+      {
+        for (;;)
+        {
+          if (locala == null)
+          {
+            locala = this.tzL.GR(paramInt);
+            l = this.tzL.twc;
+          }
+          for (;;)
+          {
+            if (locala != null)
+            {
+              localObject1 = new LinkedList();
+              localObject2 = this.tzK.iterator();
+              while (((Iterator)localObject2).hasNext()) {
+                ((LinkedList)localObject1).addAll(((com.tencent.mm.plugin.fts.a.d.e)((Iterator)localObject2).next()).cST());
+              }
+              i = ((LinkedList)localObject1).size() - 1;
+              if (i < 0) {
+                break label248;
+              }
+              if (paramInt <= ((Integer)((LinkedList)localObject1).get(i)).intValue()) {
+                break label241;
+              }
             }
-            m = 1;
-            localObject2 = String.format("%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l1), Integer.valueOf(0), Long.valueOf(l3), Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(0) });
-            l1 = System.currentTimeMillis() - paramb.sFw;
-            if ((l1 < 0L) || (paramb.sFw == 0L)) {
-              l1 = 0L;
-            }
-            if (paramb.sFR.equals(parama.sxM.syk)) {
-              break label1581;
-            }
-            k = 1;
-            m = parama.kNw;
-            str1 = bs.bG(str2, "");
-            i3 = parama.bds();
-            i4 = FH(parama.cKH());
-            i5 = paramb.sFA;
-            i6 = paramb.sFB;
-            i7 = paramb.sFC;
-            i8 = paramb.sFD;
-            i9 = paramb.sFE;
-            i10 = paramb.favCount;
-            i11 = paramb.sFF;
-            i12 = paramb.sFG;
-            l3 = com.tencent.mm.plugin.fts.a.e.swV;
-            str2 = parama.sxM.syk;
-            i13 = paramb.cLr();
-            if (k == 0) {
-              break label1587;
+            label241:
+            label248:
+            for (int i = paramInt - i;; i = paramInt)
+            {
+              locala.tvV = i;
+              locala.pageType = 1;
+              locala.twc = l;
+              if (locala == null) {
+                ad.e("MicroMsg.FTS.FTSMainAdapter", "Create Data Item Error: getCount-%d position-%d", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
+              }
+              AppMethodBeat.o(111948);
+              return locala;
+              i -= 1;
+              break;
             }
           }
         }
-        break;
       }
     }
-    label1567:
-    label1581:
-    label1587:
-    for (int k = 1;; k = 0)
+  }
+  
+  public final void GU(int paramInt)
+  {
+    this.tzM.tCK = paramInt;
+  }
+  
+  public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
+  {
+    AppMethodBeat.i(111955);
+    if ((parame instanceof a))
     {
-      parama = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), str1, Long.valueOf(l2), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), localObject1, Long.valueOf(l1), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(0), Integer.valueOf(i11), Integer.valueOf(i12), Long.valueOf(l3), str2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i13), "", "", "", Integer.valueOf(1), Integer.valueOf(k), localObject2, "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swW), "", parama.getAppId() });
-      ac.d("MicroMsg.FTS.FTSReportLogic", "10991 report home page click: %d, %s", new Object[] { Integer.valueOf(10991), parama });
-      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10991, parama);
-      AppMethodBeat.o(112016);
-      return;
-      i = 3;
-      break;
-      i = 4;
-      break;
-      i = 5;
-      break;
-      i = 10;
-      break;
-      i = 19;
-      break;
-      switch (parama.oeH)
+      Object localObject = (a)parame;
+      if (paramString.equals(this.query)) {
+        c(((a)localObject).tvh);
+      }
+      if ((((a)localObject).cTm() > 0) && (this.tzO == 0L))
       {
-      case 11: 
+        this.tzO = (System.currentTimeMillis() - this.tyS);
+        l.ai(9, this.tzO);
+        ad.i("MicroMsg.FTS.FTSMainAdapter", "firstItemTime=%d", new Object[] { Long.valueOf(this.tzO) });
+      }
+      switch (((a)localObject).getType())
+      {
       default: 
-        AppMethodBeat.o(112016);
-        return;
-      case 1: 
-        i = 3;
-        localObject1 = localObject2;
-        break;
-      case 2: 
-        i = 4;
-        localObject1 = localObject2;
-        break;
-      case 4: 
-        i = 5;
-        localObject1 = localObject2;
-        break;
-      case 3: 
-        i = 10;
-        localObject1 = localObject2;
-        break;
-      case 5: 
-        i = 11;
-        localObject1 = localObject2;
-        break;
-      case 6: 
-        i = 12;
-        localObject1 = localObject2;
-        break;
-      case 10: 
-        i = 20;
-        localObject1 = localObject2;
-        break;
-      case 8: 
-        if (parama.pil == -5)
-        {
-          i = 16;
-          j = 2;
-          localObject1 = localObject2;
-          break;
+        label140:
+        localb = this.tzM;
+        localObject = ((a)localObject).txY.iterator();
+      }
+      for (;;)
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break label571;
         }
-        if (parama.pil == -3)
+        e.a locala = (e.a)((Iterator)localObject).next();
+        int j = locala.lKC.size();
+        if (locala.rKf) {}
+        for (int i = 1;; i = 0)
         {
-          i = 4;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -4)
-        {
-          i = 3;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -1)
-        {
-          i = 12;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -2)
-        {
-          i = 11;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -15)
-        {
-          i = 21;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -6)
-        {
-          i = 10;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -13)
-        {
-          i = 19;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -7)
-        {
-          i = 5;
-          j = 2;
-          localObject1 = localObject2;
-          break;
-        }
-        if (parama.pil == -20)
-        {
-          if (parama.szz == 2)
+          i += j;
+          switch (locala.businessType)
           {
-            i = 26;
-            j = 2;
-            localObject1 = localObject2;
+          case -12: 
+          case -10: 
+          case -9: 
+          case -5: 
+          default: 
             break;
+          case -13: 
+            localb.tCA = i;
+            break;
+            if (this.tzP != 0L) {
+              break label140;
+            }
+            this.tzP = (System.currentTimeMillis() - this.tyS);
+            ad.i("MicroMsg.FTS.FTSMainAdapter", "firstGetTopHitsTime=%d", new Object[] { Long.valueOf(this.tzP) });
+            l.ai(0, this.tzP);
+            break label140;
+            if (this.tzQ != 0L) {
+              break label140;
+            }
+            this.tzQ = (System.currentTimeMillis() - this.tyS);
+            ad.i("MicroMsg.FTS.FTSMainAdapter", "firstGetContactTime=%d", new Object[] { Long.valueOf(this.tzQ) });
+            l.ai(3, this.tzQ);
+            break label140;
+            if (this.tzR != 0L) {
+              break label140;
+            }
+            this.tzR = (System.currentTimeMillis() - this.tyS);
+            ad.i("MicroMsg.FTS.FTSMainAdapter", "firstGetChatroomTime=%d", new Object[] { Long.valueOf(this.tzR) });
+            l.ai(6, this.tzR);
+            break label140;
           }
-          i = 25;
-          j = 2;
-          localObject1 = localObject2;
-          break;
         }
-        AppMethodBeat.o(112016);
-        return;
-      case 7: 
-        if (parama.szy)
-        {
-          i = 8;
-          localObject1 = localObject2;
-          break;
-        }
-        i = 9;
-        localObject1 = localObject2;
-        break;
-      case 9: 
-        f localf = new f();
-        str1 = parama.sxM.syk;
-        localObject1 = str1;
-        if (str1 != null) {
-          localObject1 = str1.replaceAll(",", " ");
-        }
-        localf.n("20KeyWordId", (String)localObject1 + ",");
-        localf.n("21ViewType", "1,");
-        localf.n("22OpType", "2,");
-        localf.n("23ResultCount", ",");
-        localf.n("24ClickPos", parama.szv + ",");
-        localf.n("25ClickAppUserName", parama.info + ",");
-        ac.i("MicroMsg.FTS.FTSReportLogic", "report oreh LocalSearchWeApp(13963), %s", new Object[] { localf.PS() });
-        com.tencent.mm.plugin.report.service.h.wUl.f(13963, new Object[] { localf });
-        i = 19;
-        localObject1 = localObject2;
-        break;
-      case 13: 
-        i = 21;
-        localObject1 = localObject2;
-        break;
-      case 12: 
-        i = 22;
-        localObject1 = localObject2;
-        break;
-      case 14: 
-        if (parama.szz == 2)
-        {
-          i = 26;
-          localObject1 = localObject2;
-          break;
-        }
-        i = 25;
-        localObject1 = localObject2;
-        break;
-        ac.w("MicroMsg.FTS.FTSReportLogic", "10991 conv null");
-        break label243;
-        m = 0;
-        break label251;
-        localObject2 = "0,0,0,0,0,0";
-        break label309;
-        k = 0;
-        break label358;
+        localb.tCx = i;
+        continue;
+        localb.tCu = i;
+        continue;
+        localb.tCy = i;
+        continue;
+        localb.tCv = i;
+        continue;
+        localb.favCount = i;
+        continue;
+        localb.tCz = i;
+        continue;
+        localb.tCw = i;
+        continue;
+        localb.tCt = i;
       }
     }
-  }
-  
-  public static void a(com.tencent.mm.plugin.fts.ui.c.b paramb)
-  {
-    AppMethodBeat.i(112011);
-    if (bs.isNullOrNil(paramb.query))
+    com.tencent.mm.plugin.fts.ui.c.b localb = this.tzM;
+    if (parame.cSU() > 0)
     {
-      AppMethodBeat.o(112011);
-      return;
-    }
-    int k = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pUO, c.fwV());
-    long l2 = paramb.sFw - paramb.sCr;
-    long l1 = l2;
-    if (l2 < 0L) {
-      l1 = 0L;
-    }
-    l2 = paramb.sFy;
-    long l3 = com.tencent.mm.plugin.fts.a.e.swV;
-    String str1 = paramb.query;
-    String str2 = paramb.cLu();
-    int i;
-    if (paramb.sFS)
-    {
-      i = 2;
-      if (paramb.sFT <= 0) {
-        break label269;
+      if (parame.cSR() != 2) {
+        break label602;
       }
-    }
-    label269:
-    for (int j = 1;; j = 0)
-    {
-      paramb = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3), str1, str2, Integer.valueOf(i), Integer.valueOf(j), paramb.cLt(), paramb.cLx(), Long.valueOf(l1), Integer.valueOf(k), Integer.valueOf(paramb.sFQ), paramb.cLv(), paramb.cLw() });
-      ac.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(17510), paramb });
-      com.tencent.mm.plugin.report.service.h.wUl.kvStat(17510, paramb);
-      AppMethodBeat.o(112011);
-      return;
-      i = 1;
-      break;
-    }
-  }
-  
-  public static final void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, com.tencent.mm.plugin.fts.ui.c.b paramb, int paramInt4, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(112020);
-    long l1 = System.currentTimeMillis() - paramb.sFw;
-    if ((l1 < 0L) || (paramb.sFw == 0L)) {
-      l1 = 0L;
-    }
-    int j;
-    int k;
-    int m;
-    int n;
-    int i1;
-    int i2;
-    int i3;
-    int i4;
-    long l2;
-    int i5;
-    if (!paramb.sFR.equals(paramString1))
-    {
-      i = 1;
-      j = paramb.sFA;
-      k = paramb.sFB;
-      m = paramb.sFC;
-      n = paramb.sFD;
-      i1 = paramb.sFE;
-      i2 = paramb.favCount;
-      i3 = paramb.sFF;
-      i4 = paramb.sFG;
-      l2 = com.tencent.mm.plugin.fts.a.e.swV;
-      i5 = paramb.cLr();
-      if (i == 0) {
-        break label531;
-      }
-    }
-    label531:
-    for (int i = 1;; i = 0)
-    {
-      paramString1 = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), paramString2, Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l2), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i5), "", "", "", Integer.valueOf(1), Integer.valueOf(i), "0,0,0,0,0,0", "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(paramb.sFy), paramString3, paramString4 });
-      ac.d("MicroMsg.FTS.FTSReportLogic", "10991 reportPardusResultClick click: %d, %s", new Object[] { Integer.valueOf(10991), paramString1 });
-      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10991, paramString1);
-      AppMethodBeat.o(112020);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  private static void a(String paramString, int paramInt1, int paramInt2, com.tencent.mm.plugin.fts.ui.c.b paramb)
-  {
-    AppMethodBeat.i(112014);
-    switch (paramInt2)
-    {
-    case -14: 
-    case -13: 
-    case -12: 
-    case -11: 
-    case -10: 
-    case -9: 
-    case -8: 
-    case -7: 
-    case -6: 
-    default: 
-      paramInt2 = 0;
+      localb.tCC = parame.cSU();
     }
     for (;;)
     {
-      paramString = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d,%s,%s,%s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramb.sFz), Integer.valueOf(paramb.sFC), Integer.valueOf(paramb.sFG), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Integer.valueOf(paramb.sFB), Integer.valueOf(paramb.sFD), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(paramb.sFy) });
-      ac.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(11062), paramString });
-      com.tencent.mm.plugin.report.service.h.wUl.kvStat(11062, paramString);
-      AppMethodBeat.o(112014);
+      label571:
+      this.tzM.tCN = cSU();
+      new a(parame, paramString).run();
+      AppMethodBeat.o(111955);
       return;
-      paramInt2 = 2;
-      continue;
-      paramInt2 = 1;
+      label602:
+      localb.tCB = parame.cSU();
     }
   }
   
-  public static void a(String paramString, int paramInt1, int paramInt2, com.tencent.mm.plugin.fts.ui.c.b paramb, int paramInt3)
+  protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(112017);
-    long l1 = System.currentTimeMillis() - paramb.sFw;
-    if ((l1 < 0L) || (paramb.sFw == 0L)) {
-      l1 = 0L;
-    }
-    int j;
-    int k;
-    int m;
-    int n;
-    int i1;
-    int i2;
-    int i3;
-    int i4;
-    long l2;
-    int i5;
-    if (!paramb.sFR.equals(paramString))
-    {
-      i = 1;
-      j = paramb.sFA;
-      k = paramb.sFB;
-      m = paramb.sFC;
-      n = paramb.sFD;
-      i1 = paramb.sFE;
-      i2 = paramb.favCount;
-      i3 = paramb.sFF;
-      i4 = paramb.sFG;
-      l2 = com.tencent.mm.plugin.fts.a.e.swV;
-      i5 = paramb.cLr();
-      if (i == 0) {
-        break label520;
-      }
-    }
-    label520:
-    for (int i = 1;; i = 0)
-    {
-      paramString = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1 + 1), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(0), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l2), paramString, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i5), "", "", "", Integer.valueOf(1), Integer.valueOf(i), "0,0,0,0,0,0", "", "", "", "", "", "", "", "", "", Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Long.valueOf(paramb.sFy), "", "" });
-      ac.d("MicroMsg.FTS.FTSReportLogic", "10991 reportWebSearch click: %d, %s", new Object[] { Integer.valueOf(10991), paramString });
-      com.tencent.mm.plugin.report.service.h.wUl.kvStat(10991, paramString);
-      AppMethodBeat.o(112017);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public static void a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2, com.tencent.mm.plugin.fts.ui.c.b paramb)
-  {
-    AppMethodBeat.i(112013);
-    if (paramBoolean) {
-      paramInt1 = 3;
-    }
-    for (;;)
-    {
-      a(paramString, paramInt1, paramInt2, paramb);
-      AppMethodBeat.o(112013);
-      return;
-      if (paramInt1 > 0) {
-        paramInt1 = 2;
-      } else {
-        paramInt1 = 1;
-      }
-    }
-  }
-  
-  public static void ae(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(112010);
-    ac.v("MicroMsg.FTS.FTSReportLogic", "reportIDKey: type=%d time=%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(112010);
-      return;
-      IDKey localIDKey1 = new IDKey();
-      localIDKey1.SetID(79);
-      localIDKey1.SetKey(paramInt + 1);
-      localIDKey1.SetValue((int)paramLong);
-      IDKey localIDKey2 = new IDKey();
-      localIDKey2.SetID(79);
-      localIDKey2.SetKey(paramInt + 2);
-      localIDKey2.SetValue(1L);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(localIDKey1);
-      localArrayList.add(localIDKey2);
-      com.tencent.mm.plugin.report.service.h.wUl.b(localArrayList, false);
-    }
-  }
-  
-  public static String agq(String paramString)
-  {
-    AppMethodBeat.i(112022);
-    if (bs.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(112022);
-      return "";
-    }
-    paramString = paramString.replaceAll("<em class=\"highlight\">", "").replaceAll("</em>", "");
-    AppMethodBeat.o(112022);
-    return paramString;
-  }
-  
-  public static void b(com.tencent.mm.plugin.fts.ui.c.b paramb)
-  {
-    AppMethodBeat.i(112015);
-    String str = paramb.query;
-    if (TextUtils.isEmpty(str))
-    {
-      AppMethodBeat.o(112015);
-      return;
-    }
-    paramb = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%d,%s,%s", new Object[] { str, Integer.valueOf(3), Integer.valueOf(1), Integer.valueOf(paramb.sFz), Integer.valueOf(paramb.sFC), Integer.valueOf(paramb.sFG), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV), Integer.valueOf(paramb.sFB), Integer.valueOf(paramb.sFD), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(0), Long.valueOf(com.tencent.mm.plugin.fts.a.e.swV) });
-    ac.i("MicroMsg.FTS.FTSReportLogic", "reportKvQuery %d %s", new Object[] { Integer.valueOf(16050), paramb });
-    com.tencent.mm.plugin.report.service.h.wUl.kvStat(16050, paramb);
-    AppMethodBeat.o(112015);
-  }
-  
-  public static void c(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(112012);
-    a(paramString, paramBoolean, paramInt1, paramInt2, new com.tencent.mm.plugin.fts.ui.c.b());
-    AppMethodBeat.o(112012);
-  }
-  
-  public static final void mt(boolean paramBoolean)
-  {
-    int j = 1;
-    AppMethodBeat.i(112019);
-    com.tencent.mm.plugin.report.service.h localh;
-    if (paramBoolean)
-    {
-      i = 1;
-      ac.v("MicroMsg.FTS.FTSReportLogic", "reportFTSCreateChatroom: %d %d", new Object[] { Integer.valueOf(13970), Integer.valueOf(i) });
-      localh = com.tencent.mm.plugin.report.service.h.wUl;
-      if (!paramBoolean) {
-        break label82;
-      }
-    }
-    label82:
-    for (int i = j;; i = 0)
-    {
-      localh.f(13970, new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(112019);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  private static int s(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    int i = 0;
-    if (paramBoolean) {
-      paramInt2 = 15;
-    }
+    AppMethodBeat.i(111954);
+    Iterator localIterator = this.tzK.iterator();
+    boolean bool;
     do
     {
-      return paramInt2;
-      if (paramInt1 == 131072)
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      bool = ((com.tencent.mm.plugin.fts.a.d.e)localIterator.next()).a(paramView, parama, paramBoolean);
+      paramBoolean = bool;
+    } while (!bool);
+    if ((!this.tzy) && (!(parama instanceof com.tencent.mm.plugin.fts.ui.a.n)))
+    {
+      l.a(this.query, true, cSU(), 0, this.tzM);
+      this.tzy = true;
+    }
+    if (parama.twd)
+    {
+      ad.d("MicroMsg.FTS.FTSMainAdapter", "searchType=%d | searchScene=%d | kvPosition=%d | kvSubPosition=%d | kvSearchId=%s | kvDocId=%d", new Object[] { Integer.valueOf(parama.pLM), Integer.valueOf(parama.ljZ), Integer.valueOf(parama.tvV), Integer.valueOf(parama.tvW), parama.tvX, Long.valueOf(parama.tvY) });
+      this.tzN.Hc(1);
+      this.tzM.b(parama);
+      l.a(parama, this.tzM);
+      AppMethodBeat.o(111954);
+      return true;
+    }
+    if ((parama instanceof com.tencent.mm.plugin.fts.ui.a.h))
+    {
+      this.tzH = true;
+      this.tzN.Hc(1);
+      this.tzM.b(parama);
+      l.a(parama, this.tzM);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(111954);
+      return false;
+      if ((parama instanceof i))
       {
-        switch (paramInt2)
-        {
-        case 8: 
-        case 9: 
-        case 10: 
-        case 12: 
-        case 13: 
-        case 14: 
-        default: 
-          return 0;
-        case 1: 
-          return 1;
-        case 2: 
-          return 2;
-        case 3: 
-          return 3;
-        case 4: 
-          return 4;
-        case 5: 
-          return 5;
-        case 6: 
-          return 6;
-        case 7: 
-          return 7;
-        case 11: 
-          return 8;
-        case 16: 
-          return 10;
-        case 17: 
-        case 18: 
-          return 9;
-        }
-        return 16;
+        l.a(parama, this.tzM);
+        this.tzM.b(parama);
       }
-      if (paramInt1 == 131075)
+    }
+  }
+  
+  protected final void b(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a parama)
+  {
+    AppMethodBeat.i(111949);
+    super.b(paramContext, parama);
+    paramContext = this.tzM;
+    Iterator localIterator;
+    switch (parama.oIb)
+    {
+    default: 
+      localIterator = paramContext.tCP.iterator();
+    }
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.plugin.fts.a.a.c localc = (com.tencent.mm.plugin.fts.a.a.c)localIterator.next();
+      if (localc.position == parama.position)
       {
-        switch (paramInt2)
-        {
-        default: 
-          return 0;
-        case 1: 
-        case 5: 
-          return 12;
-        case 2: 
-        case 6: 
-          return 13;
-        case 3: 
-        case 7: 
-          return 14;
+        localc.tui = (System.currentTimeMillis() - paramContext.tyS);
+        AppMethodBeat.o(111949);
+        return;
+        AppMethodBeat.o(111949);
+        return;
+      }
+    }
+    AppMethodBeat.o(111949);
+  }
+  
+  protected final int cSU()
+  {
+    AppMethodBeat.i(111959);
+    Iterator localIterator = this.tzK.iterator();
+    for (int i = 0; localIterator.hasNext(); i = ((com.tencent.mm.plugin.fts.a.d.e)localIterator.next()).cSU() + i) {}
+    int j = this.tzL.cSU();
+    AppMethodBeat.o(111959);
+    return j + i;
+  }
+  
+  public final boolean cTF()
+  {
+    return (this.tzV) && (this.tzU);
+  }
+  
+  protected final void cTn()
+  {
+    int i = 1;
+    AppMethodBeat.i(111950);
+    if ((!bt.isNullOrNil(this.tzM.query)) && (!this.sXJ) && (this.tzM.tCs != 0L))
+    {
+      l.a(this.tzM);
+      l.b(this.tzM);
+      this.sXJ = true;
+    }
+    this.sXJ = false;
+    this.tzy = false;
+    this.tzH = false;
+    this.tzT = -1;
+    this.tzV = false;
+    this.tzU = false;
+    this.tzM.reset();
+    com.tencent.mm.plugin.fts.a.e.ttx = com.tencent.mm.plugin.fts.a.d.GM(3);
+    this.tzM.tCs = com.tencent.mm.plugin.fts.a.e.ttx;
+    this.tzM.query = this.query;
+    this.tzM.tyS = System.currentTimeMillis();
+    this.tzO = 0L;
+    this.tzP = 0L;
+    this.tzQ = 0L;
+    this.tzR = 0L;
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("filehelper");
+    boolean bool = u.aAZ();
+    if (!bool) {
+      if (bt.getInt(com.tencent.mm.n.g.acA().getValue("BindQQSwitch"), 1) != 1) {}
+    }
+    for (;;)
+    {
+      if (i == 0)
+      {
+        ad.i("MicroMsg.FTS.FTSMainAdapter", "summerqq BindQQSwitch off");
+        localHashSet.add("22");
+        localHashSet.add("23");
+      }
+      localHashSet.add("62");
+      if (com.tencent.mm.ax.b.FU((String)com.tencent.mm.kernel.g.ajC().ajl().get(274436, null)))
+      {
+        ad.i("MicroMsg.FTS.FTSMainAdapter", "checkLookVisibility EuropeanUnionCountry");
+        localHashSet.add("65");
+      }
+      if (((com.tencent.mm.plugin.brandservice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).bNf()) {
+        localHashSet.add("63");
+      }
+      for (;;)
+      {
+        if (!((com.tencent.mm.plugin.appbrand.service.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.e.class)).bye()) {
+          localHashSet.add("69");
         }
-        return 11;
+        if (!((com.tencent.mm.plugin.appbrand.service.h)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.h.class)).bye()) {
+          localHashSet.add("71");
+        }
+        c(localHashSet);
+        this.tzL.a(this.query, this.tyn, null, com.tencent.mm.plugin.fts.a.e.ttx);
+        AppMethodBeat.o(111950);
+        return;
+        i = 0;
+        break;
+        localHashSet.add("67");
       }
-      if (paramInt1 == 131081) {
-        return 19;
+      i = bool;
+    }
+  }
+  
+  protected final void clearCache()
+  {
+    AppMethodBeat.i(111952);
+    super.clearCache();
+    Iterator localIterator = this.tzK.iterator();
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.plugin.fts.a.d.e locale = (com.tencent.mm.plugin.fts.a.d.e)localIterator.next();
+      locale.cSS();
+      locale.clearData();
+    }
+    this.tzL.cSS();
+    this.tzL.clearData();
+    AppMethodBeat.o(111952);
+  }
+  
+  public final void finish()
+  {
+    AppMethodBeat.i(111951);
+    if (!this.tzy)
+    {
+      this.tzy = true;
+      if (!this.tzH) {
+        l.a(this.query, false, cSU(), 0, this.tzM);
       }
-      paramInt2 = i;
-    } while (paramInt1 != 65536);
-    return 17;
+    }
+    if (!this.sXJ)
+    {
+      this.sXJ = true;
+      l.a(this.tzM);
+      l.b(this.tzM);
+    }
+    this.tzM.reset();
+    super.finish();
+    AppMethodBeat.o(111951);
+  }
+  
+  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(111957);
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    Object localObject1 = (FTSMainUI)this.tyQ;
+    paramInt1 = ((ListView)paramAbsListView).getHeaderViewsCount();
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    if ((((FTSMainUI)localObject1).tAp == 1) && (paramAbsListView.getLastVisiblePosition() >= paramInt1 + ((FTSMainUI)localObject1).tAf.getCount()) && (((FTSMainUI)localObject1).tAf.cTF()) && (((FTSMainUI)localObject1).tAh.getVisibility() == 0))
+    {
+      ((FTSMainUI)localObject1).tAp = 2;
+      localObject2 = ((FTSMainUI)localObject1).tAf.tzM;
+      localObject3 = ((com.tencent.mm.plugin.fts.ui.c.b)localObject2).tCP.iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (com.tencent.mm.plugin.fts.a.a.c)((Iterator)localObject3).next();
+        if ("SearchContactBar".equals(((com.tencent.mm.plugin.fts.a.a.c)localObject4).dBg)) {
+          ((com.tencent.mm.plugin.fts.a.a.c)localObject4).tui = (System.currentTimeMillis() - ((com.tencent.mm.plugin.fts.ui.c.b)localObject2).tyS);
+        }
+      }
+    }
+    localObject1 = ((FTSMainUI)localObject1).tAd;
+    paramInt1 = ((ListView)paramAbsListView).getHeaderViewsCount();
+    if ((paramAbsListView.getLastVisiblePosition() >= ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tDV.tAf.getCount() + paramInt1) && (((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tDV.tAf.cTF()) && (((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tyD == 1) && (((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tzi.getVisibility() == 0))
+    {
+      ad.i("MicroMsg.FTS.PardusSearchLogic", "onScroll webEntry hasResult:%s hasSug:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).dlh), Boolean.valueOf(((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tED) });
+      if (!((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).dlh)
+      {
+        ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tyD = 2;
+        localObject2 = ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tDV.tAf.tzM;
+        localObject3 = ((com.tencent.mm.plugin.fts.ui.c.b)localObject2).tCP.iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (com.tencent.mm.plugin.fts.a.a.c)((Iterator)localObject3).next();
+          if ("SOSBar".equals(((com.tencent.mm.plugin.fts.a.a.c)localObject4).dBg)) {
+            ((com.tencent.mm.plugin.fts.a.a.c)localObject4).tui = (System.currentTimeMillis() - ((com.tencent.mm.plugin.fts.ui.c.b)localObject2).tyS);
+          }
+        }
+      }
+    }
+    if ((paramAbsListView.getLastVisiblePosition() >= paramInt1 + ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tDV.tAf.getCount()) && (((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tDV.tAf.cTF()) && (((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tzk.getVisibility() == 0) && (!((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tED))
+    {
+      paramInt3 = com.tencent.mm.cc.a.iq(((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tDV);
+      paramInt1 = 0;
+      if (paramInt1 < ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tzk.getChildCount())
+      {
+        paramAbsListView = ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tzk.getChildAt(paramInt1);
+        localObject2 = new int[2];
+        paramAbsListView.getLocationOnScreen((int[])localObject2);
+        paramInt2 = paramAbsListView.getMeasuredHeight();
+        int i = localObject2[1];
+        paramAbsListView = (aix)paramAbsListView.getTag();
+        if (i + paramInt2 <= paramInt3)
+        {
+          localObject2 = ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).tDV.tAf.tzM;
+          localObject3 = paramAbsListView.Gga;
+          localObject3 = "SOSRelevant-" + ((dla)localObject3).HbR;
+          localObject4 = ((com.tencent.mm.plugin.fts.ui.c.b)localObject2).tCP.iterator();
+          while (((Iterator)localObject4).hasNext())
+          {
+            com.tencent.mm.plugin.fts.a.a.c localc = (com.tencent.mm.plugin.fts.a.a.c)((Iterator)localObject4).next();
+            if ((((String)localObject3).equals(localc.dBg)) && (localc.tui == 0L)) {
+              localc.tui = (System.currentTimeMillis() - ((com.tencent.mm.plugin.fts.ui.c.b)localObject2).tyS);
+            }
+          }
+        }
+        for (paramInt2 = 1;; paramInt2 = 0)
+        {
+          if (paramInt2 != 0) {
+            ((com.tencent.mm.plugin.fts.ui.widget.d)localObject1).e(0, "", "", "", paramAbsListView.Gga.HbR);
+          }
+          paramInt1 += 1;
+          break;
+        }
+      }
+    }
+    AppMethodBeat.o(111957);
+  }
+  
+  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    AppMethodBeat.i(111958);
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 2)
+    {
+      this.mVn = true;
+      ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().cSx();
+      o.zbS.pause();
+      AppMethodBeat.o(111958);
+      return;
+    }
+    this.mVn = false;
+    if (!((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSImageLoader().cSy())
+    {
+      this.tzS.removeMessages(1);
+      this.tzS.sendEmptyMessageDelayed(1, 200L);
+    }
+    AppMethodBeat.o(111958);
+  }
+  
+  public final void stopSearch()
+  {
+    AppMethodBeat.i(111953);
+    this.tzS.removeMessages(1);
+    super.stopSearch();
+    AppMethodBeat.o(111953);
+  }
+  
+  final class a
+    implements Runnable
+  {
+    private String query;
+    private com.tencent.mm.plugin.fts.a.d.e tzX;
+    
+    a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
+    {
+      this.query = paramString;
+      this.tzX = parame;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(111946);
+      if ((!k.a(k.this)) && (((com.tencent.mm.plugin.fts.a.d.e)k.b(k.this).get(k.b(k.this).size() - 1)).getType() == this.tzX.getType())) {
+        k.c(k.this);
+      }
+      if ((!k.d(k.this)) && (this.tzX.getType() == 256)) {
+        k.e(k.this);
+      }
+      k.f(k.this).tCM = k.this.cTF();
+      Object localObject1 = k.b(k.this).iterator();
+      for (int i = 0; ((Iterator)localObject1).hasNext(); i = ((com.tencent.mm.plugin.fts.a.d.e)((Iterator)localObject1).next()).GQ(i)) {}
+      i = k.g(k.this).GQ(i);
+      k.this.setCount(i);
+      k.this.notifyDataSetChanged();
+      localObject1 = k.this;
+      ((k)localObject1).al(i, ((k)localObject1).cTF());
+      if (k.this.cTF()) {
+        k.f(k.this).tCq = System.currentTimeMillis();
+      }
+      localObject1 = k.f(k.this);
+      Object localObject2 = this.tzX;
+      ((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCP.addAll(((com.tencent.mm.plugin.fts.a.d.e)localObject2).xA(((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tyS));
+      localObject1 = k.f(k.this);
+      ((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCJ = i;
+      localObject2 = ((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCP.iterator();
+      com.tencent.mm.plugin.fts.a.a.c localc;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localc = (com.tencent.mm.plugin.fts.a.a.c)((Iterator)localObject2).next();
+        if ("SearchContactBar".equals(localc.dBg)) {
+          localc.position = (((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCJ + 1);
+        }
+      }
+      localObject2 = ((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCP.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localc = (com.tencent.mm.plugin.fts.a.a.c)((Iterator)localObject2).next();
+        if ("SOSBar".equals(localc.dBg)) {
+          if ((((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCF > 0) || (((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCG > 0)) {
+            localc.position = (((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCJ + 2);
+          } else {
+            localc.position = (((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCJ + 1);
+          }
+        }
+      }
+      if ((((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCF > 0) || (((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCG > 0)) {}
+      for (i = ((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCJ + 3;; i = ((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCJ + 2)
+      {
+        localObject1 = ((com.tencent.mm.plugin.fts.ui.c.b)localObject1).tCP.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (com.tencent.mm.plugin.fts.a.a.c)((Iterator)localObject1).next();
+          if (((com.tencent.mm.plugin.fts.a.a.c)localObject2).dBg.startsWith("SOSRelevant")) {
+            ((com.tencent.mm.plugin.fts.a.a.c)localObject2).position = i;
+          }
+        }
+      }
+      AppMethodBeat.o(111946);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.k
  * JD-Core Version:    0.7.0.1
  */

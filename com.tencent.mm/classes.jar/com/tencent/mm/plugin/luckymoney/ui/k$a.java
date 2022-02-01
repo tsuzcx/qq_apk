@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(65970);
-    uyW = new a("NOTSET", 0);
-    uyX = new a("ON", 1);
-    uyY = new a("OFF", 2);
-    uyZ = new a[] { uyW, uyX, uyY };
+    vBz = new a("NOTSET", 0);
+    vBA = new a("ON", 1);
+    vBB = new a("OFF", 2);
+    vBC = new a[] { vBz, vBA, vBB };
     AppMethodBeat.o(65970);
   }
   

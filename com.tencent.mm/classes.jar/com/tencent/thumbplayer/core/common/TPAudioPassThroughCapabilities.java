@@ -20,15 +20,15 @@ public final class TPAudioPassThroughCapabilities
   
   static
   {
-    AppMethodBeat.i(193577);
+    AppMethodBeat.i(220359);
     DEFAULT_AUDIO_CAPABILITIES = new TPAudioPassThroughCapabilities(new int[] { 2 }, 8);
     EXTERNAL_SURROUND_SOUND_CAPABILITIES = new TPAudioPassThroughCapabilities(new int[] { 2, 5, 6 }, 8);
-    AppMethodBeat.o(193577);
+    AppMethodBeat.o(220359);
   }
   
   public TPAudioPassThroughCapabilities(int[] paramArrayOfInt, int paramInt)
   {
-    AppMethodBeat.i(193572);
+    AppMethodBeat.i(220354);
     if (paramArrayOfInt != null)
     {
       this.supportedEncodings = Arrays.copyOf(paramArrayOfInt, paramArrayOfInt.length);
@@ -37,7 +37,7 @@ public final class TPAudioPassThroughCapabilities
     for (;;)
     {
       this.maxChannelCount = paramInt;
-      AppMethodBeat.o(193572);
+      AppMethodBeat.o(220354);
       return;
       this.supportedEncodings = new int[0];
     }
@@ -45,47 +45,47 @@ public final class TPAudioPassThroughCapabilities
   
   public static TPAudioPassThroughCapabilities getCapabilities(Context paramContext)
   {
-    AppMethodBeat.i(193570);
+    AppMethodBeat.i(220352);
     paramContext = getCapabilities(paramContext, paramContext.registerReceiver(null, new IntentFilter("android.media.action.HDMI_AUDIO_PLUG")));
-    AppMethodBeat.o(193570);
+    AppMethodBeat.o(220352);
     return paramContext;
   }
   
   @SuppressLint({"InlinedApi"})
   static TPAudioPassThroughCapabilities getCapabilities(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(193571);
+    AppMethodBeat.i(220353);
     if ((paramIntent == null) || (paramIntent.getIntExtra("android.media.extra.AUDIO_PLUG_STATE", 0) == 0))
     {
       paramContext = DEFAULT_AUDIO_CAPABILITIES;
-      AppMethodBeat.o(193571);
+      AppMethodBeat.o(220353);
       return paramContext;
     }
     paramContext = new TPAudioPassThroughCapabilities(paramIntent.getIntArrayExtra("android.media.extra.ENCODINGS"), paramIntent.getIntExtra("android.media.extra.MAX_CHANNEL_COUNT", 8));
-    AppMethodBeat.o(193571);
+    AppMethodBeat.o(220353);
     return paramContext;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(193574);
+    AppMethodBeat.i(220356);
     if (this == paramObject)
     {
-      AppMethodBeat.o(193574);
+      AppMethodBeat.o(220356);
       return true;
     }
     if (!(paramObject instanceof TPAudioPassThroughCapabilities))
     {
-      AppMethodBeat.o(193574);
+      AppMethodBeat.o(220356);
       return false;
     }
     paramObject = (TPAudioPassThroughCapabilities)paramObject;
     if ((Arrays.equals(this.supportedEncodings, paramObject.supportedEncodings)) && (this.maxChannelCount == paramObject.maxChannelCount))
     {
-      AppMethodBeat.o(193574);
+      AppMethodBeat.o(220356);
       return true;
     }
-    AppMethodBeat.o(193574);
+    AppMethodBeat.o(220356);
     return false;
   }
   
@@ -96,30 +96,30 @@ public final class TPAudioPassThroughCapabilities
   
   public final int hashCode()
   {
-    AppMethodBeat.i(193575);
+    AppMethodBeat.i(220357);
     int i = this.maxChannelCount;
     int j = Arrays.hashCode(this.supportedEncodings);
-    AppMethodBeat.o(193575);
+    AppMethodBeat.o(220357);
     return i + j * 31;
   }
   
   public final boolean supportsEncoding(int paramInt)
   {
-    AppMethodBeat.i(193573);
+    AppMethodBeat.i(220355);
     if (Arrays.binarySearch(this.supportedEncodings, paramInt) >= 0)
     {
-      AppMethodBeat.o(193573);
+      AppMethodBeat.o(220355);
       return true;
     }
-    AppMethodBeat.o(193573);
+    AppMethodBeat.o(220355);
     return false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(193576);
+    AppMethodBeat.i(220358);
     String str = "AudioCapabilities[maxChannelCount=" + this.maxChannelCount + ", supportedEncodings=" + Arrays.toString(this.supportedEncodings) + "]";
-    AppMethodBeat.o(193576);
+    AppMethodBeat.o(220358);
     return str;
   }
 }

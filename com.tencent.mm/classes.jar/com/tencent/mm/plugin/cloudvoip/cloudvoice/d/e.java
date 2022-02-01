@@ -5,49 +5,49 @@ import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.b.a;
 import com.tencent.mm.plugin.voip.model.b;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
 {
-  static int osM = 3;
+  static int oWi = 3;
   int mChannels;
   boolean mIsPlayMute;
   int mSampleRate;
-  f osI;
-  volatile com.tencent.mm.audio.b.c osJ;
-  private d osK;
-  private j osL;
-  int osN;
-  int osO;
-  private int osP;
-  private final Object osQ;
-  int osR;
-  private int osS;
-  private int osT;
-  private long osU;
-  boolean osV;
-  int osW;
-  c.a osX;
+  f oWe;
+  public volatile com.tencent.mm.audio.b.c oWf;
+  private d oWg;
+  private j oWh;
+  int oWj;
+  int oWk;
+  private int oWl;
+  private final Object oWm;
+  int oWn;
+  private int oWo;
+  private int oWp;
+  private long oWq;
+  public boolean oWr;
+  int oWs;
+  c.a oWt;
   
   public e(j paramj)
   {
     AppMethodBeat.i(90791);
-    this.osN = 1;
-    this.osO = 92;
-    this.osP = 1;
-    this.osQ = new Object();
-    this.osR = 0;
-    this.osS = 0;
-    this.osT = 1;
-    this.osU = 0L;
+    this.oWj = 1;
+    this.oWk = 92;
+    this.oWl = 1;
+    this.oWm = new Object();
+    this.oWn = 0;
+    this.oWo = 0;
+    this.oWp = 1;
+    this.oWq = 0L;
     this.mIsPlayMute = false;
-    this.osV = false;
+    this.oWr = false;
     this.mSampleRate = v2protocal.VOICE_SAMPLERATE;
     this.mChannels = 1;
-    this.osW = 20;
-    this.osX = new c.a()
+    this.oWs = 20;
+    this.oWt = new c.a()
     {
-      public final void cf(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
       public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
@@ -61,12 +61,12 @@ public final class e
             if (e.a(e.this) % 50 == 0)
             {
               e.b(e.this);
-              ac.v("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: syncOnRecPcmDataReady pcm raw length: %d, given len; %d", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
+              ad.v("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: syncOnRecPcmDataReady pcm raw length: %d, given len; %d", new Object[] { Integer.valueOf(paramAnonymousArrayOfByte.length), Integer.valueOf(paramAnonymousInt) });
             }
             if (e.c(e.this) == 2)
             {
               paramAnonymousInt = j;
-              if (e.d(e.this).ota.osB == null) {
+              if (e.d(e.this).oWw.oVX == null) {
                 break label404;
               }
               paramAnonymousInt = 1;
@@ -77,18 +77,18 @@ public final class e
             if (e.e(e.this) <= 10) {
               e.a(e.this, 92);
             }
-            Object localObject2 = e.d(e.this).ota.osB;
+            Object localObject2 = e.d(e.this).oWw.oVX;
             if (localObject2 != null)
             {
-              paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).ehh();
+              paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).euT();
               e.a(e.this, (paramAnonymousInt + 24 + e.e(e.this) * 3) / 4);
               if (e.f(e.this) != 1) {
                 break label338;
               }
-              localObject2 = e.d(e.this).ota.osB;
+              localObject2 = e.d(e.this).oWw.oVX;
               paramAnonymousInt = i;
               if (localObject2 != null) {
-                paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).ehe();
+                paramAnonymousInt = ((com.tencent.mm.plugin.voip.model.c)localObject2).euQ();
               }
               i = paramAnonymousInt;
               if (paramAnonymousInt >= e.e(e.this)) {
@@ -101,8 +101,8 @@ public final class e
               }
               e.i(e.this);
               e.a(e.this, System.currentTimeMillis());
-              ac.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,first record");
-              localObject2 = p.otZ;
+              ad.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,first record");
+              localObject2 = p.oXv;
               p.w(paramAnonymousArrayOfByte, paramAnonymousArrayOfByte.length, e.e(e.this));
             }
           }
@@ -115,7 +115,7 @@ public final class e
           long l1 = System.currentTimeMillis();
           long l2 = l1 - e.j(e.this);
           if (l2 > 1000L) {
-            ac.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,error,deltaTime:".concat(String.valueOf(l2)));
+            ad.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "amyfwang,error,deltaTime:".concat(String.valueOf(l2)));
           }
           e.a(e.this, l1);
           continue;
@@ -124,47 +124,39 @@ public final class e
         }
       }
     };
-    this.osK = new d();
-    this.osL = paramj;
-    this.osI = new f();
+    this.oWg = new d();
+    this.oWh = paramj;
+    this.oWe = new f();
     AppMethodBeat.o(90791);
   }
   
-  public final boolean Og()
+  public final boolean PP()
   {
     AppMethodBeat.i(90792);
-    ac.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: trigger start play");
-    if (this.osN != 2) {
-      ac.e("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: not init when start listen!");
+    ad.i("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: trigger start play");
+    if (this.oWj != 2) {
+      ad.e("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "hy: not init when start listen!");
     }
-    synchronized (this.osQ)
+    synchronized (this.oWm)
     {
-      if (!this.osJ.Og())
+      if (!this.oWf.PP())
       {
-        if (this.osJ.cVv != 13) {
-          this.osR = 1;
+        if (this.oWf.dgL != 13) {
+          this.oWn = 1;
         }
         AppMethodBeat.o(90792);
         return false;
       }
-      p.otZ.jz(true);
-      ac.d("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "VoipDeivceHandler.m_iAudioDevErr:" + this.osR);
+      p.oXv.jK(true);
+      ad.d("MicroMsg.OpenVoice.OpenVoiceAudioMgr", "VoipDeivceHandler.m_iAudioDevErr:" + this.oWn);
       AppMethodBeat.o(90792);
       return true;
     }
   }
-  
-  public final boolean bVp()
-  {
-    if (this.osJ == null) {
-      return false;
-    }
-    return this.osV;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.e
  * JD-Core Version:    0.7.0.1
  */

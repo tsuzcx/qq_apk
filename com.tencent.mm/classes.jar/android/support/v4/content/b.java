@@ -66,7 +66,7 @@ import java.util.HashMap;
 
 public class b
 {
-  private static TypedValue GT;
+  private static TypedValue IM;
   private static final Object sLock = new Object();
   
   public static File[] Q(Context paramContext)
@@ -107,7 +107,7 @@ public class b
       return paramContext.getSystemService(paramClass);
     }
     if (Build.VERSION.SDK_INT >= 23) {}
-    for (paramClass = paramContext.getSystemServiceName(paramClass); paramClass != null; paramClass = (String)a.GU.get(paramClass)) {
+    for (paramClass = paramContext.getSystemServiceName(paramClass); paramClass != null; paramClass = (String)a.IN.get(paramClass)) {
       return paramContext.getSystemService(paramClass);
     }
     return null;
@@ -117,15 +117,15 @@ public class b
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().ba(null).ba(paramArrayOfIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.aeD(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
-      paramContext.startActivities((Intent[])paramArrayOfIntent.lR(0), (Bundle)paramArrayOfIntent.lR(1));
+      paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().bc(null).bc(paramArrayOfIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
+      paramContext.startActivities((Intent[])paramArrayOfIntent.mq(0), (Bundle)paramArrayOfIntent.mq(1));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;Landroid/os/Bundle;)V");
       return true;
     }
-    paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramArrayOfIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.aeD(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
-    paramContext.startActivities((Intent[])paramArrayOfIntent.lR(0));
+    paramArrayOfIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramArrayOfIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramArrayOfIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
+    paramContext.startActivities((Intent[])paramArrayOfIntent.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivities", "(Landroid/content/Context;[Landroid/content/Intent;Landroid/os/Bundle;)Z", "Undefined", "startActivities", "([Landroid/content/Intent;)V");
     return true;
   }
@@ -148,11 +148,11 @@ public class b
     }
     synchronized (sLock)
     {
-      if (GT == null) {
-        GT = new TypedValue();
+      if (IM == null) {
+        IM = new TypedValue();
       }
-      paramContext.getResources().getValue(paramInt, GT, true);
-      paramInt = GT.resourceId;
+      paramContext.getResources().getValue(paramInt, IM, true);
+      paramInt = IM.resourceId;
       return paramContext.getResources().getDrawable(paramInt);
     }
   }
@@ -232,92 +232,92 @@ public class b
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramBundle).ba(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.aeD(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
-      paramContext.startActivity((Intent)paramIntent.lR(0), (Bundle)paramIntent.lR(1));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle).bc(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
+      paramContext.startActivity((Intent)paramIntent.mq(0), (Bundle)paramIntent.mq(1));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
       return;
     }
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().ba(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.aeD(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.lR(0));
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahp(), "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramIntent.mq(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "android/support/v4/content/ContextCompat", "startActivity", "(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   static final class a
   {
-    static final HashMap<Class<?>, String> GU = new HashMap();
+    static final HashMap<Class<?>, String> IN = new HashMap();
     
     static
     {
       if (Build.VERSION.SDK_INT > 22)
       {
-        GU.put(SubscriptionManager.class, "telephony_subscription_service");
-        GU.put(UsageStatsManager.class, "usagestats");
+        IN.put(SubscriptionManager.class, "telephony_subscription_service");
+        IN.put(UsageStatsManager.class, "usagestats");
       }
       if (Build.VERSION.SDK_INT > 21)
       {
-        GU.put(AppWidgetManager.class, "appwidget");
-        GU.put(BatteryManager.class, "batterymanager");
-        GU.put(CameraManager.class, "camera");
-        GU.put(JobScheduler.class, "jobscheduler");
-        GU.put(LauncherApps.class, "launcherapps");
-        GU.put(MediaProjectionManager.class, "media_projection");
-        GU.put(MediaSessionManager.class, "media_session");
-        GU.put(RestrictionsManager.class, "restrictions");
-        GU.put(TelecomManager.class, "telecom");
-        GU.put(TvInputManager.class, "tv_input");
+        IN.put(AppWidgetManager.class, "appwidget");
+        IN.put(BatteryManager.class, "batterymanager");
+        IN.put(CameraManager.class, "camera");
+        IN.put(JobScheduler.class, "jobscheduler");
+        IN.put(LauncherApps.class, "launcherapps");
+        IN.put(MediaProjectionManager.class, "media_projection");
+        IN.put(MediaSessionManager.class, "media_session");
+        IN.put(RestrictionsManager.class, "restrictions");
+        IN.put(TelecomManager.class, "telecom");
+        IN.put(TvInputManager.class, "tv_input");
       }
       if (Build.VERSION.SDK_INT > 19)
       {
-        GU.put(AppOpsManager.class, "appops");
-        GU.put(CaptioningManager.class, "captioning");
-        GU.put(ConsumerIrManager.class, "consumer_ir");
-        GU.put(PrintManager.class, "print");
+        IN.put(AppOpsManager.class, "appops");
+        IN.put(CaptioningManager.class, "captioning");
+        IN.put(ConsumerIrManager.class, "consumer_ir");
+        IN.put(PrintManager.class, "print");
       }
       if (Build.VERSION.SDK_INT > 18) {
-        GU.put(BluetoothManager.class, "bluetooth");
+        IN.put(BluetoothManager.class, "bluetooth");
       }
       if (Build.VERSION.SDK_INT > 17)
       {
-        GU.put(DisplayManager.class, "display");
-        GU.put(UserManager.class, "user");
+        IN.put(DisplayManager.class, "display");
+        IN.put(UserManager.class, "user");
       }
       if (Build.VERSION.SDK_INT > 16)
       {
-        GU.put(InputManager.class, "input");
-        GU.put(MediaRouter.class, "media_router");
-        GU.put(NsdManager.class, "servicediscovery");
+        IN.put(InputManager.class, "input");
+        IN.put(MediaRouter.class, "media_router");
+        IN.put(NsdManager.class, "servicediscovery");
       }
-      GU.put(AccessibilityService.class, "accessibility");
-      GU.put(AccountManager.class, "account");
-      GU.put(ActivityManager.class, "activity");
-      GU.put(AlarmManager.class, "alarm");
-      GU.put(AudioManager.class, "audio");
-      GU.put(ClipboardManager.class, "clipboard");
-      GU.put(ConnectivityManager.class, "connectivity");
-      GU.put(DevicePolicyManager.class, "device_policy");
-      GU.put(DownloadManager.class, "download");
-      GU.put(DropBoxManager.class, "dropbox");
-      GU.put(InputMethodManager.class, "input_method");
-      GU.put(KeyguardManager.class, "keyguard");
-      GU.put(LayoutInflater.class, "layout_inflater");
-      GU.put(LocationManager.class, "location");
-      GU.put(NfcManager.class, "nfc");
-      GU.put(NotificationManager.class, "notification");
-      GU.put(PowerManager.class, "power");
-      GU.put(SearchManager.class, "search");
-      GU.put(SensorManager.class, "sensor");
-      GU.put(StorageManager.class, "storage");
-      GU.put(TelephonyManager.class, "phone");
-      GU.put(TextServicesManager.class, "textservices");
-      GU.put(UiModeManager.class, "uimode");
-      GU.put(UsbManager.class, "usb");
-      GU.put(Vibrator.class, "vibrator");
-      GU.put(WallpaperManager.class, "wallpaper");
-      GU.put(WifiP2pManager.class, "wifip2p");
-      GU.put(WifiManager.class, "wifi");
-      GU.put(WindowManager.class, "window");
+      IN.put(AccessibilityService.class, "accessibility");
+      IN.put(AccountManager.class, "account");
+      IN.put(ActivityManager.class, "activity");
+      IN.put(AlarmManager.class, "alarm");
+      IN.put(AudioManager.class, "audio");
+      IN.put(ClipboardManager.class, "clipboard");
+      IN.put(ConnectivityManager.class, "connectivity");
+      IN.put(DevicePolicyManager.class, "device_policy");
+      IN.put(DownloadManager.class, "download");
+      IN.put(DropBoxManager.class, "dropbox");
+      IN.put(InputMethodManager.class, "input_method");
+      IN.put(KeyguardManager.class, "keyguard");
+      IN.put(LayoutInflater.class, "layout_inflater");
+      IN.put(LocationManager.class, "location");
+      IN.put(NfcManager.class, "nfc");
+      IN.put(NotificationManager.class, "notification");
+      IN.put(PowerManager.class, "power");
+      IN.put(SearchManager.class, "search");
+      IN.put(SensorManager.class, "sensor");
+      IN.put(StorageManager.class, "storage");
+      IN.put(TelephonyManager.class, "phone");
+      IN.put(TextServicesManager.class, "textservices");
+      IN.put(UiModeManager.class, "uimode");
+      IN.put(UsbManager.class, "usb");
+      IN.put(Vibrator.class, "vibrator");
+      IN.put(WallpaperManager.class, "wallpaper");
+      IN.put(WifiP2pManager.class, "wifip2p");
+      IN.put(WifiManager.class, "wifi");
+      IN.put(WindowManager.class, "window");
     }
   }
 }

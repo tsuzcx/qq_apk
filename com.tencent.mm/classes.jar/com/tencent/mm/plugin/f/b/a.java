@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.f.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gz;
+import com.tencent.mm.g.c.hj;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends gz
+  extends hj
 {
   protected static c.a info;
   
@@ -16,35 +16,35 @@ public final class a
   {
     AppMethodBeat.i(22738);
     c.a locala = new c.a();
-    locala.GvF = new Field[7];
+    locala.IhA = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.GvH.put("msgId", "LONG");
+    locala.IhC.put("msgId", "LONG");
     localStringBuilder.append(" msgId LONG");
     localStringBuilder.append(", ");
     locala.columns[1] = "username";
-    locala.GvH.put("username", "TEXT");
+    locala.IhC.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "msgType";
-    locala.GvH.put("msgType", "INTEGER");
+    locala.IhC.put("msgType", "INTEGER");
     localStringBuilder.append(" msgType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "msgSubType";
-    locala.GvH.put("msgSubType", "INTEGER");
+    locala.IhC.put("msgSubType", "INTEGER");
     localStringBuilder.append(" msgSubType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "path";
-    locala.GvH.put("path", "TEXT");
+    locala.IhC.put("path", "TEXT");
     localStringBuilder.append(" path TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "size";
-    locala.GvH.put("size", "LONG");
+    locala.IhC.put("size", "LONG");
     localStringBuilder.append(" size LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "msgtime";
-    locala.GvH.put("msgtime", "LONG");
+    locala.IhC.put("msgtime", "LONG");
     localStringBuilder.append(" msgtime LONG");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -74,7 +74,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.f.b.a
  * JD-Core Version:    0.7.0.1
  */

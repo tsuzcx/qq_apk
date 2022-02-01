@@ -5,16 +5,16 @@ import java.util.ArrayList;
 
 public final class a<T extends c>
 {
-  public BKGLoaderManager pcK;
+  public BKGLoaderManager pGu;
   
   public a()
   {
     AppMethodBeat.i(108744);
     b.a locala = new b.a();
-    locala.pcL = 1;
-    locala.pcM = 10;
-    com.tencent.mm.av.a.e.a locala1 = new com.tencent.mm.av.a.e.a();
-    locala.pcN = new b.b(locala.pcL, locala.pcL, locala1);
+    locala.pGv = 1;
+    locala.pGw = 10;
+    com.tencent.mm.aw.a.e.a locala1 = new com.tencent.mm.aw.a.e.a();
+    locala.pGx = new b.b(locala.pGv, locala.pGv, locala1);
     a(new b(locala));
     AppMethodBeat.o(108744);
   }
@@ -28,14 +28,14 @@ public final class a<T extends c>
     //   2: ldc 54
     //   4: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 56	com/tencent/mm/plugin/emoji/sync/a:pcK	Lcom/tencent/mm/plugin/emoji/sync/BKGLoaderManager;
+    //   8: getfield 56	com/tencent/mm/plugin/emoji/sync/a:pGu	Lcom/tencent/mm/plugin/emoji/sync/BKGLoaderManager;
     //   11: ifnonnull +23 -> 34
     //   14: aload_0
     //   15: new 58	com/tencent/mm/plugin/emoji/sync/BKGLoaderManager
     //   18: dup
     //   19: aload_1
     //   20: invokespecial 60	com/tencent/mm/plugin/emoji/sync/BKGLoaderManager:<init>	(Lcom/tencent/mm/plugin/emoji/sync/b;)V
-    //   23: putfield 56	com/tencent/mm/plugin/emoji/sync/a:pcK	Lcom/tencent/mm/plugin/emoji/sync/BKGLoaderManager;
+    //   23: putfield 56	com/tencent/mm/plugin/emoji/sync/a:pGu	Lcom/tencent/mm/plugin/emoji/sync/BKGLoaderManager;
     //   26: ldc 54
     //   28: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
@@ -43,7 +43,7 @@ public final class a<T extends c>
     //   33: return
     //   34: ldc 62
     //   36: ldc 64
-    //   38: invokestatic 69	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   38: invokestatic 69	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   41: ldc 54
     //   43: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: goto -15 -> 31
@@ -65,7 +65,7 @@ public final class a<T extends c>
   public final void Q(ArrayList<c> paramArrayList)
   {
     AppMethodBeat.i(108746);
-    this.pcK.cQ(paramArrayList);
+    this.pGu.cQ(paramArrayList);
     AppMethodBeat.o(108746);
   }
 }

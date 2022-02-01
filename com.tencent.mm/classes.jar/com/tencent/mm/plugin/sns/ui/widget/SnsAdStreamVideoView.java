@@ -7,19 +7,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.plugin.sight.decode.ui.b;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public class SnsAdStreamVideoView
   extends MMVideoView
 {
-  public au zkw;
+  public av ACu;
   
   public SnsAdStreamVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100473);
-    this.zkw = new au(new au.a()
+    this.ACu = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -36,7 +36,7 @@ public class SnsAdStreamVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(100474);
-    this.zkw = new au(new au.a()
+    this.ACu = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -49,38 +49,38 @@ public class SnsAdStreamVideoView
     AppMethodBeat.o(100474);
   }
   
-  public final int cDA()
+  public final int cLU()
   {
     return 2131495519;
   }
   
-  public final void dSB()
+  public final void eeW()
   {
     AppMethodBeat.i(100475);
-    this.kWb.setVisibility(0);
+    this.lta.setVisibility(0);
     AppMethodBeat.o(100475);
   }
   
-  public final void dSC()
+  public final void eeX()
   {
     AppMethodBeat.i(100476);
-    this.kWb.setVisibility(4);
+    this.lta.setVisibility(4);
     AppMethodBeat.o(100476);
   }
   
-  public final b dSD()
+  public final b eeY()
   {
     AppMethodBeat.i(100477);
     b local1 = new b()
     {
-      public final void anR()
+      public final void aqD()
       {
         AppMethodBeat.i(100470);
         SnsAdStreamVideoView.a(SnsAdStreamVideoView.this).stopTimer();
         AppMethodBeat.o(100470);
       }
       
-      public final void nn(int paramAnonymousInt)
+      public final void nM(int paramAnonymousInt)
       {
         AppMethodBeat.i(100471);
         if (SnsAdStreamVideoView.a(SnsAdStreamVideoView.this, paramAnonymousInt)) {
@@ -94,10 +94,10 @@ public class SnsAdStreamVideoView
     return local1;
   }
   
-  public final void dSE()
+  public final void eeZ()
   {
     AppMethodBeat.i(100478);
-    this.zkw.au(5000L, 0L);
+    this.ACu.az(5000L, 0L);
     AppMethodBeat.o(100478);
   }
 }

@@ -3,7 +3,7 @@ package d.l.b.a.b.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.v;
 import d.g.b.a.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.f.b;
 import java.util.Iterator;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public abstract interface g
   extends a, Iterable<c>
 {
-  public static final a LeU = a.LeW;
+  public static final a MVP = a.MVR;
   
   public abstract c g(b paramb);
   
@@ -21,28 +21,28 @@ public abstract interface g
   
   public static final class a
   {
-    private static final g LeV;
+    private static final g MVQ;
     
     static
     {
       AppMethodBeat.i(56946);
-      LeW = new a();
-      LeV = (g)new a();
+      MVR = new a();
+      MVQ = (g)new a();
       AppMethodBeat.o(56946);
     }
     
-    public static g fSm()
+    public static g gjL()
     {
-      return LeV;
+      return MVQ;
     }
     
-    public static g iX(List<? extends c> paramList)
+    public static g jl(List<? extends c> paramList)
     {
       AppMethodBeat.i(56945);
-      k.h(paramList, "annotations");
+      p.h(paramList, "annotations");
       if (paramList.isEmpty())
       {
-        paramList = LeV;
+        paramList = MVQ;
         AppMethodBeat.o(56945);
         return paramList;
       }
@@ -57,7 +57,7 @@ public abstract interface g
       public final boolean h(b paramb)
       {
         AppMethodBeat.i(56944);
-        k.h(paramb, "fqName");
+        p.h(paramb, "fqName");
         boolean bool = g.b.b(this, paramb);
         AppMethodBeat.o(56944);
         return bool;
@@ -71,7 +71,7 @@ public abstract interface g
       public final Iterator<c> iterator()
       {
         AppMethodBeat.i(56943);
-        Iterator localIterator = ((List)v.KTF).iterator();
+        Iterator localIterator = ((List)v.MKE).iterator();
         AppMethodBeat.o(56943);
         return localIterator;
       }
@@ -88,7 +88,7 @@ public abstract interface g
     public static c a(g paramg, b paramb)
     {
       AppMethodBeat.i(56947);
-      k.h(paramb, "fqName");
+      p.h(paramb, "fqName");
       Iterator localIterator = ((Iterable)paramg).iterator();
       do
       {
@@ -96,7 +96,7 @@ public abstract interface g
           break;
         }
         paramg = localIterator.next();
-      } while (!k.g(((c)paramg).fRH(), paramb));
+      } while (!p.i(((c)paramg).gjg(), paramb));
       for (;;)
       {
         paramg = (c)paramg;
@@ -109,7 +109,7 @@ public abstract interface g
     public static boolean b(g paramg, b paramb)
     {
       AppMethodBeat.i(56948);
-      k.h(paramb, "fqName");
+      p.h(paramb, "fqName");
       if (paramg.g(paramb) != null)
       {
         AppMethodBeat.o(56948);

@@ -25,25 +25,23 @@ import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ba;
-import com.tencent.mm.g.a.ba.b;
-import com.tencent.mm.g.c.ff;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.g.a.bd;
+import com.tencent.mm.g.a.bd.b;
+import com.tencent.mm.g.b.a.ce;
+import com.tencent.mm.g.c.fp;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.scanner.d;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.b;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
-import com.tencent.mm.vfs.i;
 import com.tencent.mm.view.AnimationLayout;
 import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 
@@ -51,37 +49,37 @@ import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 public class TranslationResultUI
   extends MMActivity
 {
-  private int dbL;
-  private View fvu;
-  private AnimationLayout iBC;
-  private boolean iBD;
-  private ImageView iBF;
-  private MultiTouchImageView kqu;
+  private int dnh;
+  private View fOB;
+  private AnimationLayout iUM;
+  private boolean iUN;
+  private ImageView iUP;
+  private MultiTouchImageView kLw;
   private long msgId;
   private float scaleX;
   private float scaleY;
   private float translationX;
   private float translationY;
-  private Bitmap xeU;
-  private MMGestureGallery xeX;
-  private String xgT;
-  private ff xgU;
-  private a xgV;
-  private View xgW;
-  private TextView xgX;
-  private Rect xgY;
+  private Bitmap ysW;
+  private MMGestureGallery ysZ;
+  private String yuU;
+  private fp yuV;
+  private a yuW;
+  private View yuX;
+  private TextView yuY;
+  private Rect yuZ;
   
-  private void aOc()
+  private void aRo()
   {
     AppMethodBeat.i(120942);
-    if (this.iBD)
+    if (this.iUN)
     {
       AppMethodBeat.o(120942);
       return;
     }
-    this.iBD = true;
-    ac.i("MicroMsg.TranslationResultUI", "runExitAnimation, thumbRect %s", new Object[] { this.xgY });
-    this.iBC.a(this.iBF, this.fvu, new ViewAnimHelper.ViewInfo(this.xgY), new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
+    this.iUN = true;
+    ad.i("MicroMsg.TranslationResultUI", "runExitAnimation, thumbRect %s", new Object[] { this.yuZ });
+    this.iUM.a(this.iUP, this.fOB, new ViewAnimHelper.ViewInfo(this.yuZ), new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
@@ -101,7 +99,7 @@ public class TranslationResultUI
         if (TranslationResultUI.g(TranslationResultUI.this) != null)
         {
           if (TranslationResultUI.g(TranslationResultUI.this).getScale() > 1.0F) {
-            TranslationResultUI.g(TranslationResultUI.this).fij();
+            TranslationResultUI.g(TranslationResultUI.this).fyy();
           }
           TranslationResultUI.a(TranslationResultUI.this, TranslationResultUI.g(TranslationResultUI.this).getTranslationX());
           TranslationResultUI.b(TranslationResultUI.this, TranslationResultUI.g(TranslationResultUI.this).getTranslationY());
@@ -132,9 +130,9 @@ public class TranslationResultUI
   private void goBack()
   {
     AppMethodBeat.i(120941);
-    if (this.xgY != null)
+    if (this.yuZ != null)
     {
-      aOc();
+      aRo();
       AppMethodBeat.o(120941);
       return;
     }
@@ -156,50 +154,50 @@ public class TranslationResultUI
   public void initView()
   {
     AppMethodBeat.i(120939);
-    this.fvu = findViewById(2131304241);
-    this.xgW = findViewById(2131304288);
-    this.iBF = ((ImageView)findViewById(2131300336));
-    this.iBC = ((AnimationLayout)findViewById(2131296674));
-    this.xgX = ((TextView)findViewById(2131308044));
-    this.xgT = getIntent().getStringExtra("original_file_path");
+    this.fOB = findViewById(2131304241);
+    this.yuX = findViewById(2131304288);
+    this.iUP = ((ImageView)findViewById(2131300336));
+    this.iUM = ((AnimationLayout)findViewById(2131296674));
+    this.yuY = ((TextView)findViewById(2131308044));
+    this.yuU = getIntent().getStringExtra("original_file_path");
     this.msgId = getIntent().getLongExtra("msg_id", -1L);
-    this.dbL = getIntent().getIntExtra("translate_source", 0);
-    this.xgY = ((Rect)getIntent().getParcelableExtra("thumb_location"));
-    ac.i("MicroMsg.TranslationResultUI", "file path %s", new Object[] { this.xgT });
-    if (!i.eA(this.xgT)) {
-      ac.e("MicroMsg.TranslationResultUI", "translation original file not exist!");
+    this.dnh = getIntent().getIntExtra("translate_source", 0);
+    this.yuZ = ((Rect)getIntent().getParcelableExtra("thumb_location"));
+    ad.i("MicroMsg.TranslationResultUI", "file path %s", new Object[] { this.yuU });
+    if (!com.tencent.mm.vfs.i.fv(this.yuU)) {
+      ad.e("MicroMsg.TranslationResultUI", "translation original file not exist!");
     }
     Object localObject1 = findViewById(2131304282);
     Object localObject2 = (FrameLayout.LayoutParams)((View)localObject1).getLayoutParams();
-    ((FrameLayout.LayoutParams)localObject2).bottomMargin += aj.ej(this);
+    ((FrameLayout.LayoutParams)localObject2).bottomMargin += al.ej(this);
     ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
     getSupportActionBar().hide();
     getController().q(this, getResources().getColor(2131101053));
     getController().setNavigationbarColor(getResources().getColor(2131101053));
-    this.xeX = ((MMGestureGallery)findViewById(2131306079));
-    this.xgV = new a((byte)0);
-    this.xeX.setAdapter(this.xgV);
-    this.xeX.setSingleClickOverListener(new MMGestureGallery.f()
+    this.ysZ = ((MMGestureGallery)findViewById(2131306079));
+    this.yuW = new a((byte)0);
+    this.ysZ.setAdapter(this.yuW);
+    this.ysZ.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      public final void aOd()
+      public final void aRp()
       {
         AppMethodBeat.i(120929);
         TranslationResultUI.a(TranslationResultUI.this);
         AppMethodBeat.o(120929);
       }
     });
-    this.xgU = ((d)g.ad(d.class)).getTranslationResult(this.xgT);
-    if (this.xgU != null)
+    this.yuV = ((d)com.tencent.mm.kernel.g.ad(d.class)).getTranslationResult(this.yuU);
+    if (this.yuV != null)
     {
-      if (this.xeU == null) {
+      if (this.ysW == null) {
         com.tencent.mm.sdk.g.b.e(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(120931);
-            TranslationResultUI.a(TranslationResultUI.this, f.decodeFile(TranslationResultUI.b(TranslationResultUI.this).field_resultFile, null));
+            TranslationResultUI.a(TranslationResultUI.this, com.tencent.mm.sdk.platformtools.g.decodeFile(TranslationResultUI.b(TranslationResultUI.this).field_resultFile, null));
             if (TranslationResultUI.c(TranslationResultUI.this) != null) {
-              ap.f(new Runnable()
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
@@ -216,35 +214,39 @@ public class TranslationResultUI
       }
       for (;;)
       {
-        if (!bs.isNullOrNil(this.xgU.field_brand))
+        if (!bt.isNullOrNil(this.yuV.field_brand))
         {
-          this.xgX.setText(this.xgU.field_brand);
-          this.xgX.setVisibility(0);
+          this.yuY.setText(this.yuV.field_brand);
+          this.yuY.setVisibility(0);
         }
-        this.xgW.setOnClickListener(new View.OnClickListener()
+        this.yuX.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(120932);
-            paramAnonymousView = new com.tencent.mm.g.b.a.bo();
-            paramAnonymousView.dCQ = 7L;
-            paramAnonymousView.dNc = TranslationResultUI.e(TranslationResultUI.this);
-            paramAnonymousView.aHZ();
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/scanner/ui/TranslationResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            paramAnonymousView = new ce();
+            paramAnonymousView.dPl = 7L;
+            paramAnonymousView.eca = TranslationResultUI.e(TranslationResultUI.this);
+            paramAnonymousView.aLk();
             TranslationResultUI.a(TranslationResultUI.this, TranslationResultUI.b(TranslationResultUI.this).field_resultFile);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/scanner/ui/TranslationResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(120932);
           }
         });
-        this.xgW.setVisibility(0);
-        this.xeX.setGalleryScaleListener(new MMGestureGallery.b()
+        this.yuX.setVisibility(0);
+        this.ysZ.setGalleryScaleListener(new MMGestureGallery.b()
         {
-          public final void M(float paramAnonymousFloat1, float paramAnonymousFloat2)
+          public final void O(float paramAnonymousFloat1, float paramAnonymousFloat2)
           {
             float f1 = 1.0F;
             AppMethodBeat.i(120933);
             float f2 = 1.0F - paramAnonymousFloat2 / TranslationResultUI.f(TranslationResultUI.this).getHeight();
             if (f2 > 1.0F)
             {
-              ac.d("MicroMsg.TranslationResultUI", "onGalleryScale tx: %f, ty: %f, scale: %f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Float.valueOf(f1) });
+              ad.d("MicroMsg.TranslationResultUI", "onGalleryScale tx: %f, ty: %f, scale: %f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Float.valueOf(f1) });
               if (TranslationResultUI.g(TranslationResultUI.this) == null) {
                 break label224;
               }
@@ -270,31 +272,31 @@ public class TranslationResultUI
               TranslationResultUI.h(TranslationResultUI.this).setVisibility(8);
             }
             label224:
-            ac.d("MicroMsg.TranslationResultUI", "runDragAnimation contentView is null !!");
+            ad.d("MicroMsg.TranslationResultUI", "runDragAnimation contentView is null !!");
             AppMethodBeat.o(120933);
           }
           
-          public final void N(float paramAnonymousFloat1, float paramAnonymousFloat2) {}
+          public final void P(float paramAnonymousFloat1, float paramAnonymousFloat2) {}
         });
-        localObject1 = ((k)g.ab(k.class)).dcr().vP(this.msgId);
+        localObject1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).dlK().xY(this.msgId);
         if (this.msgId != -1L)
         {
-          localObject2 = new ba();
-          ((ba)localObject2).daD.cZc = ((com.tencent.mm.storage.bo)localObject1);
-          com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject2);
-          this.xgY = new Rect();
-          this.xgY.left = ((ba)localObject2).daE.daF;
-          this.xgY.top = ((ba)localObject2).daE.daG;
-          this.xgY.right = (((ba)localObject2).daE.daH + this.xgY.left);
-          this.xgY.bottom = (((ba)localObject2).daE.daI + this.xgY.top);
+          localObject2 = new bd();
+          ((bd)localObject2).dlX.dku = ((bu)localObject1);
+          com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject2);
+          this.yuZ = new Rect();
+          this.yuZ.left = ((bd)localObject2).dlY.dlZ;
+          this.yuZ.top = ((bd)localObject2).dlY.dma;
+          this.yuZ.right = (((bd)localObject2).dlY.dmb + this.yuZ.left);
+          this.yuZ.bottom = (((bd)localObject2).dlY.dmc + this.yuZ.top);
         }
         AppMethodBeat.o(120939);
         return;
-        this.xgV.bitmap = this.xeU;
-        this.xgV.notifyDataSetChanged();
+        this.yuW.bitmap = this.ysW;
+        this.yuW.notifyDataSetChanged();
       }
     }
-    ac.e("MicroMsg.TranslationResultUI", "translation result not found!");
+    ad.e("MicroMsg.TranslationResultUI", "translation result not found!");
     goBack();
     AppMethodBeat.o(120939);
   }
@@ -312,7 +314,7 @@ public class TranslationResultUI
   {
     AppMethodBeat.i(120944);
     super.onDestroy();
-    this.xeU = null;
+    this.ysW = null;
     AppMethodBeat.o(120944);
   }
   
@@ -380,12 +382,12 @@ public class TranslationResultUI
       {
         TranslationResultUI.a(TranslationResultUI.this, new MultiTouchImageView(TranslationResultUI.this, 0, 0, (byte)0));
         TranslationResultUI.g(TranslationResultUI.this).setLayoutParams(new Gallery.LayoutParams(-1, -1));
-        TranslationResultUI.g(TranslationResultUI.this).fij();
+        TranslationResultUI.g(TranslationResultUI.this).fyy();
       }
       if (this.bitmap != null)
       {
         TranslationResultUI.g(TranslationResultUI.this).setImageBitmap(this.bitmap);
-        TranslationResultUI.g(TranslationResultUI.this).cF(this.bitmap.getWidth(), this.bitmap.getHeight());
+        TranslationResultUI.g(TranslationResultUI.this).cH(this.bitmap.getWidth(), this.bitmap.getHeight());
       }
       paramView = TranslationResultUI.g(TranslationResultUI.this);
       AppMethodBeat.o(120937);
@@ -395,7 +397,7 @@ public class TranslationResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.TranslationResultUI
  * JD-Core Version:    0.7.0.1
  */

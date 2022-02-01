@@ -5,10 +5,10 @@ import com.tencent.mm.b.p;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
@@ -18,98 +18,98 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public boolean BhW;
-  private Map<String, String> BhX;
-  public t Bom;
+  public boolean CIk;
+  private Map<String, String> CIl;
+  public u COB;
   public String mReqKey;
   private String token;
-  private Map<String, String> vtm;
+  private Map<String, String> wyE;
   
   public a(Authen paramAuthen, String paramString1, String paramString2)
   {
     AppMethodBeat.i(69882);
     this.mReqKey = null;
     this.token = null;
-    this.vtm = new HashMap();
-    this.BhX = new HashMap();
-    setPayInfo(paramAuthen.wfX, this.vtm, this.BhX);
-    this.vtm.put("flag", paramAuthen.drx);
-    this.vtm.put("bank_type", paramAuthen.cZz);
-    this.vtm.put("mobile_area", paramAuthen.BtP);
-    this.vtm.put("session_id", paramString2);
-    if (!bs.isNullOrNil(paramAuthen.BtA)) {
-      this.vtm.put("passwd", paramAuthen.BtA);
+    this.wyE = new HashMap();
+    this.CIl = new HashMap();
+    setPayInfo(paramAuthen.xnF, this.wyE, this.CIl);
+    this.wyE.put("flag", paramAuthen.dDp);
+    this.wyE.put("bank_type", paramAuthen.dkR);
+    this.wyE.put("mobile_area", paramAuthen.CUe);
+    this.wyE.put("session_id", paramString2);
+    if (!bt.isNullOrNil(paramAuthen.CTP)) {
+      this.wyE.put("passwd", paramAuthen.CTP);
     }
-    if (!bs.isNullOrNil(paramAuthen.token)) {
-      this.vtm.put("token", paramAuthen.token);
+    if (!bt.isNullOrNil(paramAuthen.token)) {
+      this.wyE.put("token", paramAuthen.token);
     }
-    if (!bs.isNullOrNil(paramAuthen.BeX))
+    if (!bt.isNullOrNil(paramAuthen.CFm))
     {
-      g.agS();
-      paramString2 = new p(bs.a((Integer)g.agR().agA().get(9, null), 0));
-      this.vtm.put("import_code", paramAuthen.BeX);
-      this.vtm.put("qqid", paramString2.toString());
-      if (paramAuthen.BtC > 0) {
-        this.vtm.put("cre_type", paramAuthen.BtC);
+      g.ajD();
+      paramString2 = new p(bt.a((Integer)g.ajC().ajl().get(9, null), 0));
+      this.wyE.put("import_code", paramAuthen.CFm);
+      this.wyE.put("qqid", paramString2.toString());
+      if (paramAuthen.CTR > 0) {
+        this.wyE.put("cre_type", paramAuthen.CTR);
       }
-      this.vtm.put("bind_serailno", paramAuthen.vwo);
+      this.wyE.put("bind_serailno", paramAuthen.wBI);
     }
-    if (!bs.isNullOrNil(paramAuthen.BtH))
+    if (!bt.isNullOrNil(paramAuthen.CTW))
     {
-      this.vtm.put("first_name", paramAuthen.BtH);
-      this.vtm.put("last_name", paramAuthen.BtI);
-      this.vtm.put("country", paramAuthen.country);
-      this.vtm.put("area", paramAuthen.exV);
-      this.vtm.put("city", paramAuthen.exW);
-      this.vtm.put("address", paramAuthen.hEt);
-      this.vtm.put("phone_number", paramAuthen.tGU);
-      this.vtm.put("zip_code", paramAuthen.iYE);
-      this.vtm.put("email", paramAuthen.exO);
-      this.vtm.put("language", ab.eUO());
+      this.wyE.put("first_name", paramAuthen.CTW);
+      this.wyE.put("last_name", paramAuthen.CTX);
+      this.wyE.put("country", paramAuthen.country);
+      this.wyE.put("area", paramAuthen.ePu);
+      this.wyE.put("city", paramAuthen.ePv);
+      this.wyE.put("address", paramAuthen.hWY);
+      this.wyE.put("phone_number", paramAuthen.uJH);
+      this.wyE.put("zip_code", paramAuthen.jrN);
+      this.wyE.put("email", paramAuthen.ePn);
+      this.wyE.put("language", ac.fks());
     }
-    if (!bs.isNullOrNil(paramAuthen.BsL)) {
-      this.vtm.put("true_name", paramAuthen.BsL);
+    if (!bt.isNullOrNil(paramAuthen.CTa)) {
+      this.wyE.put("true_name", paramAuthen.CTa);
     }
-    if (!bs.isNullOrNil(paramAuthen.BtB)) {
-      this.vtm.put("identify_card", paramAuthen.BtB);
+    if (!bt.isNullOrNil(paramAuthen.CTQ)) {
+      this.wyE.put("identify_card", paramAuthen.CTQ);
     }
-    if (paramAuthen.BtC > 0) {
-      this.vtm.put("cre_type", paramAuthen.BtC);
+    if (paramAuthen.CTR > 0) {
+      this.wyE.put("cre_type", paramAuthen.CTR);
     }
-    if (!bs.isNullOrNil(paramAuthen.BoQ)) {
-      this.vtm.put("mobile_no", paramAuthen.BoQ);
+    if (!bt.isNullOrNil(paramAuthen.CPf)) {
+      this.wyE.put("mobile_no", paramAuthen.CPf);
     }
-    this.vtm.put("bank_card_id", paramAuthen.BtD);
-    if (!bs.isNullOrNil(paramAuthen.BtE)) {
-      this.vtm.put("cvv2", paramAuthen.BtE);
+    this.wyE.put("bank_card_id", paramAuthen.CTS);
+    if (!bt.isNullOrNil(paramAuthen.CTT)) {
+      this.wyE.put("cvv2", paramAuthen.CTT);
     }
-    if (!bs.isNullOrNil(paramAuthen.BtF)) {
-      this.vtm.put("valid_thru", paramAuthen.BtF);
+    if (!bt.isNullOrNil(paramAuthen.CTU)) {
+      this.wyE.put("valid_thru", paramAuthen.CTU);
     }
-    if ((paramAuthen.drx == 1) || (paramAuthen.drx == 2))
+    if ((paramAuthen.dDp == 1) || (paramAuthen.dDp == 2))
     {
-      this.vtm.put("creid_renewal", String.valueOf(paramAuthen.BsV));
-      this.vtm.put("birth_date", paramAuthen.Bta);
-      this.vtm.put("cre_expire_date", paramAuthen.BsW);
+      this.wyE.put("creid_renewal", String.valueOf(paramAuthen.CTk));
+      this.wyE.put("birth_date", paramAuthen.CTp);
+      this.wyE.put("cre_expire_date", paramAuthen.CTl);
     }
-    if (((paramAuthen.drx == 2) || (paramAuthen.drx == 5)) && (paramAuthen.BtQ == 1) && (!bs.isNullOrNil(paramAuthen.Bpa)))
+    if (((paramAuthen.dDp == 2) || (paramAuthen.dDp == 5)) && (paramAuthen.CUf == 1) && (!bt.isNullOrNil(paramAuthen.CPp)))
     {
-      this.vtm.put("verify_user_token", "1");
-      this.vtm.put("usertoken", paramAuthen.Bpa);
+      this.wyE.put("verify_user_token", "1");
+      this.wyE.put("usertoken", paramAuthen.CPp);
     }
-    if ((!bs.isNullOrNil(paramAuthen.BtR)) && (paramAuthen.BtR.isEmpty())) {
-      this.vtm.put("checkpayjsapi_token", paramAuthen.BtR);
+    if ((!bt.isNullOrNil(paramAuthen.CUg)) && (paramAuthen.CUg.isEmpty())) {
+      this.wyE.put("checkpayjsapi_token", paramAuthen.CUg);
     }
-    if (z.fAn())
+    if (z.fRx())
     {
-      this.BhX.put("uuid_for_bindcard", z.getBindCardUuid());
-      this.BhX.put("bindcard_scene", z.fAo());
+      this.CIl.put("uuid_for_bindcard", z.getBindCardUuid());
+      this.CIl.put("bindcard_scene", z.fRy());
     }
-    if (!bs.isNullOrNil(paramString1)) {
-      this.vtm.put("has_underage_alert", paramString1);
+    if (!bt.isNullOrNil(paramString1)) {
+      this.wyE.put("has_underage_alert", paramString1);
     }
-    setRequestData(this.vtm);
-    setWXRequestData(this.BhX);
+    setRequestData(this.wyE);
+    setWXRequestData(this.CIl);
     AppMethodBeat.o(69882);
   }
   
@@ -140,7 +140,7 @@ public final class a
     {
       this.mReqKey = paramJSONObject.optString("req_key");
       this.token = paramJSONObject.optString("token");
-      this.Bom = t.bd(paramJSONObject);
+      this.COB = u.bm(paramJSONObject);
     }
     AppMethodBeat.o(69884);
   }
@@ -149,9 +149,9 @@ public final class a
   {
     AppMethodBeat.i(69883);
     super.resend();
-    this.vtm.put("is_repeat_send", "1");
-    setRequestData(this.vtm);
-    this.BhW = true;
+    this.wyE.put("is_repeat_send", "1");
+    setRequestData(this.wyE);
+    this.CIk = true;
     AppMethodBeat.o(69883);
     return true;
   }

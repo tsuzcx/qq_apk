@@ -10,18 +10,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.m;
 
 public class GameMenuView
   extends LinearLayout
 {
-  private View CGL;
-  private LinearLayout CGM;
-  private LinearLayout CGN;
-  private f CGO;
-  private b.c CGP;
-  private b.a CGQ;
-  private boolean lcE;
+  private f EkA;
+  private b.c EkB;
+  private b.a EkC;
+  private View Ekx;
+  private LinearLayout Eky;
+  private LinearLayout Ekz;
+  private boolean lzE;
   private Context mContext;
   private LayoutInflater mInflater;
   
@@ -29,14 +31,14 @@ public class GameMenuView
   {
     super(paramContext, null);
     AppMethodBeat.i(80983);
-    this.lcE = false;
+    this.lzE = false;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(this.mContext);
     paramContext = this.mContext.getResources().getDisplayMetrics();
     if (paramContext.widthPixels > paramContext.heightPixels) {
       bool = true;
     }
-    this.lcE = bool;
+    this.lzE = bool;
     initView();
     AppMethodBeat.o(80983);
   }
@@ -45,7 +47,7 @@ public class GameMenuView
   {
     super(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(80985);
-    this.lcE = false;
+    this.lzE = false;
     this.mContext = paramContext;
     initView();
     AppMethodBeat.o(80985);
@@ -54,16 +56,16 @@ public class GameMenuView
   private void initView()
   {
     AppMethodBeat.i(80986);
-    if (this.lcE)
+    if (this.lzE)
     {
       setOrientation(0);
       this.mInflater.inflate(2131494349, this, true);
     }
     for (View localView = this.mInflater.inflate(2131494346, this, true);; localView = this.mInflater.inflate(2131494347, this, true))
     {
-      this.CGL = localView.findViewById(2131300509);
-      this.CGM = ((LinearLayout)localView.findViewById(2131300508));
-      this.CGN = ((LinearLayout)localView.findViewById(2131300510));
+      this.Ekx = localView.findViewById(2131300509);
+      this.Eky = ((LinearLayout)localView.findViewById(2131300508));
+      this.Ekz = ((LinearLayout)localView.findViewById(2131300510));
       AppMethodBeat.o(80986);
       return;
       setOrientation(1);
@@ -74,7 +76,7 @@ public class GameMenuView
   public void setAdapter(f paramf)
   {
     AppMethodBeat.i(80984);
-    this.CGO = paramf;
+    this.EkA = paramf;
     paramf.registerDataSetObserver(new DataSetObserver()
     {
       public final void onChanged()
@@ -97,12 +99,12 @@ public class GameMenuView
   
   public void setDismissListener(b.a parama)
   {
-    this.CGQ = parama;
+    this.EkC = parama;
   }
   
   public void setGameMenuItemSelectedListener(b.c paramc)
   {
-    this.CGP = paramc;
+    this.EkB = paramc;
   }
 }
 

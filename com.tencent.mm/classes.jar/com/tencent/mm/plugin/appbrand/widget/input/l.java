@@ -9,12 +9,12 @@ import java.lang.ref.WeakReference;
 public final class l
   implements f.b, f.c
 {
-  final WeakReference<aa> mCq;
+  final WeakReference<aa> ncQ;
   
   public l(aa paramaa)
   {
     AppMethodBeat.i(136408);
-    this.mCq = new WeakReference(paramaa);
+    this.ncQ = new WeakReference(paramaa);
     paramaa.a(this);
     paramaa.a(this);
     AppMethodBeat.o(136408);
@@ -23,7 +23,7 @@ public final class l
   public final void onBackground()
   {
     AppMethodBeat.i(136409);
-    aa localaa = (aa)this.mCq.get();
+    aa localaa = (aa)this.ncQ.get();
     if (localaa != null) {
       o.x(localaa);
     }
@@ -33,7 +33,7 @@ public final class l
   public final void onDestroy()
   {
     AppMethodBeat.i(136410);
-    aa localaa = (aa)this.mCq.get();
+    aa localaa = (aa)this.ncQ.get();
     if (localaa != null)
     {
       if ((localaa.getContext() instanceof ad)) {
@@ -44,8 +44,8 @@ public final class l
       e.v(localaa);
       localaa.b(this);
       localaa.b(this);
-      if (localaa.lyE != null) {
-        h.bzW().c(localaa.lyE);
+      if (localaa.lYc != null) {
+        h.bDY().c(localaa.lYc);
       }
     }
     AppMethodBeat.o(136410);
@@ -53,7 +53,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.l
  * JD-Core Version:    0.7.0.1
  */

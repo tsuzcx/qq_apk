@@ -4,10 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class e
 {
@@ -16,14 +16,14 @@ public final class e
     AppMethodBeat.i(155843);
     try
     {
-      paramString = (d)ai.getContext().getClassLoader().loadClass(ai.eUW() + paramString).newInstance();
-      paramString.d(paramApplication);
+      paramString = (d)aj.getContext().getClassLoader().loadClass(aj.fkB() + paramString).newInstance();
+      paramString.f(paramApplication);
       AppMethodBeat.o(155843);
       return paramString;
     }
     catch (Exception paramApplication)
     {
-      ac.printErrStackTrace("MicroMsg.ProfileFactoryImpl", paramApplication, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.ProfileFactoryImpl", paramApplication, "", new Object[0]);
       AppMethodBeat.o(155843);
     }
     return null;
@@ -31,7 +31,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.e
  * JD-Core Version:    0.7.0.1
  */

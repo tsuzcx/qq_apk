@@ -2,25 +2,28 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.ax;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
 
 public abstract class er
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eVS = "hit".hashCode();
-  private static final int eVT = "hitTimeMS".hashCode();
-  private static final int enO = "appId".hashCode();
-  private static final int epb = "version".hashCode();
+  private static final int eFq = "updateTime".hashCode();
+  private static final int fnw = "acctTypeId".hashCode();
+  private static final int fnx = "language".hashCode();
+  private static final int fny = "accTypeRec".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eVQ = true;
-  private boolean eVR = true;
-  private boolean enx = true;
-  private boolean eoW = true;
-  public String field_appId;
-  public int field_hit;
-  public long field_hitTimeMS;
-  public int field_version;
+  private boolean eFn = true;
+  public ax field_accTypeRec;
+  public String field_acctTypeId;
+  public String field_language;
+  public long field_updateTime;
+  private boolean fnt = true;
+  private boolean fnu = true;
+  private boolean fnv = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -28,17 +31,17 @@ public abstract class er
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
+      if (fnw != k) {
         break label60;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_acctTypeId = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -46,12 +49,23 @@ public abstract class er
       break label20;
       break;
       label60:
-      if (epb == k) {
-        this.field_version = paramCursor.getInt(i);
-      } else if (eVS == k) {
-        this.field_hit = paramCursor.getInt(i);
-      } else if (eVT == k) {
-        this.field_hitTimeMS = paramCursor.getLong(i);
+      if (fnx == k) {
+        this.field_language = paramCursor.getString(i);
+      } else if (fny == k) {
+        try
+        {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
+          }
+          this.field_accTypeRec = ((ax)new ax().parseFrom(arrayOfByte));
+        }
+        catch (IOException localIOException)
+        {
+          ad.e("MicroMsg.SDK.BaseOpenIMAccTypeInfo", localIOException.getMessage());
+        }
+      } else if (eFq == k) {
+        this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -61,27 +75,36 @@ public abstract class er
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fnt) {
+      localContentValues.put("acctTypeId", this.field_acctTypeId);
     }
-    if (this.eoW) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
+    if (this.fnu) {
+      localContentValues.put("language", this.field_language);
     }
-    if (this.eVQ) {
-      localContentValues.put("hit", Integer.valueOf(this.field_hit));
+    if ((this.fnv) && (this.field_accTypeRec != null)) {}
+    try
+    {
+      localContentValues.put("accTypeRec", this.field_accTypeRec.toByteArray());
+      if (this.eFn) {
+        localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+      }
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.eVR) {
-      localContentValues.put("hitTimeMS", Long.valueOf(this.field_hitTimeMS));
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.SDK.BaseOpenIMAccTypeInfo", localIOException.getMessage());
+      }
     }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.er
  * JD-Core Version:    0.7.0.1
  */

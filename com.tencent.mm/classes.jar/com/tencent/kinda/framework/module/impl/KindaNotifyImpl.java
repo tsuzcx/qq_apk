@@ -2,9 +2,9 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.KindaNotify;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.km;
+import com.tencent.mm.g.a.kv;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 
 public class KindaNotifyImpl
@@ -15,11 +15,11 @@ public class KindaNotifyImpl
   public void notify(String paramString, HashMap<String, String> paramHashMap)
   {
     AppMethodBeat.i(18645);
-    ac.i("MicroMsg.KindaNotifyImpl", "key:%s, value:%s", new Object[] { paramString, paramHashMap.toString() });
-    km localkm = new km();
-    localkm.dmi.key = paramString;
-    localkm.dmi.dmj = paramHashMap;
-    a.GpY.l(localkm);
+    ad.i("MicroMsg.KindaNotifyImpl", "key:%s, value:%s", new Object[] { paramString, paramHashMap.toString() });
+    kv localkv = new kv();
+    localkv.dxW.key = paramString;
+    localkv.dxW.dxX = paramHashMap;
+    a.IbL.l(localkv);
     AppMethodBeat.o(18645);
   }
 }

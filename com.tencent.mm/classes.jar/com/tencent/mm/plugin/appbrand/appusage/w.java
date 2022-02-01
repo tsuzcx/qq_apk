@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.n.a;
-import com.tencent.mm.plugin.appbrand.config.w.c;
-import com.tencent.mm.protocal.protobuf.eaa;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.appbrand.config.x;
+import com.tencent.mm.plugin.appbrand.config.x.c;
+import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,32 +15,32 @@ import java.util.Set;
 
  enum w
 {
-  static void a(int paramInt, LinkedList<eaa> paramLinkedList)
+  static void a(int paramInt, LinkedList<ege> paramLinkedList)
   {
     AppMethodBeat.i(44599);
     a(paramInt, paramLinkedList, null);
     AppMethodBeat.o(44599);
   }
   
-  static void a(int paramInt, LinkedList<eaa> paramLinkedList, w.c paramc)
+  static void a(int paramInt, LinkedList<ege> paramLinkedList, x.c paramc)
   {
-    AppMethodBeat.i(186342);
+    AppMethodBeat.i(188034);
     HashSet localHashSet = new HashSet();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      localObject = (eaa)paramLinkedList.next();
-      if (!bs.isNullOrNil(((eaa)localObject).username)) {
-        localHashSet.add(((eaa)localObject).username);
+      localObject = (ege)paramLinkedList.next();
+      if (!bt.isNullOrNil(((ege)localObject).username)) {
+        localHashSet.add(((ege)localObject).username);
       }
     }
     Object localObject = new ArrayList(localHashSet.size());
     ((List)localObject).addAll(localHashSet);
     if (paramInt == 3) {}
-    for (paramLinkedList = n.a.jEw;; paramLinkedList = n.a.jEv)
+    for (paramLinkedList = n.a.jYy;; paramLinkedList = n.a.jYx)
     {
-      com.tencent.mm.plugin.appbrand.config.w.a((List)localObject, paramLinkedList, paramc);
-      AppMethodBeat.o(186342);
+      x.a((List)localObject, paramLinkedList, paramc);
+      AppMethodBeat.o(188034);
       return;
     }
   }

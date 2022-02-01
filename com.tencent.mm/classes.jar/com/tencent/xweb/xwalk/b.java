@@ -7,39 +7,39 @@ import org.xwalk.core.Log;
 
 public final class b
 {
-  private static final String[] KFb = { "_id" };
-  private final Object KFc;
+  private static final String[] MvB = { "_id" };
+  private final Object MvC;
   SQLiteDatabase mDatabase;
   private boolean mInitialized;
   
   private b()
   {
-    AppMethodBeat.i(208907);
-    this.KFc = new Object();
-    AppMethodBeat.o(208907);
+    AppMethodBeat.i(195539);
+    this.MvC = new Object();
+    AppMethodBeat.o(195539);
   }
   
-  public static b cC(final Context paramContext, final String paramString)
+  public static b cG(final Context paramContext, final String paramString)
   {
-    AppMethodBeat.i(208906);
+    AppMethodBeat.i(195538);
     b localb = new b();
     new Thread()
     {
       public final void run()
       {
-        AppMethodBeat.i(208905);
-        b.a(this.KFd, paramContext, paramString);
-        AppMethodBeat.o(208905);
+        AppMethodBeat.i(195537);
+        b.a(this.MvD, paramContext, paramString);
+        AppMethodBeat.o(195537);
       }
     }.start();
-    AppMethodBeat.o(208906);
+    AppMethodBeat.o(195538);
     return localb;
   }
   
-  final boolean fLs()
+  final boolean gcO()
   {
-    AppMethodBeat.i(208908);
-    synchronized (this.KFc)
+    AppMethodBeat.i(195540);
+    synchronized (this.MvC)
     {
       for (;;)
       {
@@ -47,7 +47,7 @@ public final class b
         if (!bool) {
           try
           {
-            this.KFc.wait();
+            this.MvC.wait();
           }
           catch (InterruptedException localInterruptedException)
           {
@@ -58,10 +58,10 @@ public final class b
     }
     if (this.mDatabase != null)
     {
-      AppMethodBeat.o(208908);
+      AppMethodBeat.o(195540);
       return true;
     }
-    AppMethodBeat.o(208908);
+    AppMethodBeat.o(195540);
     return false;
   }
   
@@ -76,7 +76,7 @@ public final class b
     //   9: aload_2
     //   10: ifnull +10 -> 20
     //   13: aload_0
-    //   14: invokevirtual 131	com/tencent/xweb/xwalk/b:fLs	()Z
+    //   14: invokevirtual 131	com/tencent/xweb/xwalk/b:gcO	()Z
     //   17: ifne +10 -> 27
     //   20: ldc 129
     //   22: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V

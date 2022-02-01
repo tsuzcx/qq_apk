@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fy
   extends b
 {
-  public a dgj;
-  public b dgk;
+  public a drq;
+  public b drr;
   
   public fy()
   {
@@ -16,29 +16,26 @@ public final class fy
   
   private fy(byte paramByte)
   {
-    AppMethodBeat.i(116023);
-    this.dgj = new a();
-    this.dgk = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116021);
+    this.drq = new a();
+    this.drr = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116023);
+    AppMethodBeat.o(116021);
   }
   
   public static final class a
   {
-    public String dgl;
-    public int dgm = 0;
-    public Runnable dgn;
-    public String fileName;
-    public int from = 0;
-    public int scene;
+    public Runnable cXl;
+    public int duration;
+    public String filePath;
+    public int op;
   }
   
   public static final class b
   {
-    public boolean bhH;
-    public String content;
-    public int state = 0;
+    public boolean dno = false;
+    public int drs;
   }
 }
 

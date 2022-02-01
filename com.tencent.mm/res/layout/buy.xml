@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/amt" android:layout_gravity="center_horizontal" android:id="@id/hxo" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <CheckBox android:id="@id/hxr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:checked="true" android:layout_below="@id/hxo" style="@style/lj" />
+    <TextView android:textSize="@dimen/amu" android:id="@id/hxs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/amv" android:layout_toRightOf="@id/hxr" android:layout_alignBottom="@id/hxr" />
+</RelativeLayout>

@@ -1,305 +1,318 @@
 package com.tencent.mm.plugin.voip.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip/util/VoipReportHelper;", "", "()V", "ID", "", "TAG", "", "markAddViewFullScreenToRendererCost", "", "data", "markAddViewFullScreenToRendererCostFirst", "markAddViewFullScreenToRendererCostInvite", "markAddViewMiniWindowToRendererCost", "markAddViewMiniWindowToRendererCostFirst", "markAddViewMiniWindowToRendererCostInvite", "markBatteryPropertyCurrentInHW", "markBatteryPropertyCurrentInSW", "markCameraOnError", "markCameraPboSizeHeight", "height", "markCameraPboSizeWidth", "width", "markCameraRendererPerFrameNewFullScreenCost", "cost", "markCameraRendererPerFrameNewFullScreenCostWithFaceBeauty", "markCameraRendererPerFrameNewMiniWindowCost", "markCameraRendererPerFrameNewMiniWindowCostWithFaceBeauty", "markDecodeModeChangeToHW", "count", "markDecodeModeChangeToSW", "markFaceBeautySendDataIlleagel", "markFaceBeautySendDataNull", "markFullScreenPercent", "percent", "markHWRendererPerFrameFullScreenCost", "markHWRendererPerFrameMiniWindowCost", "markInitCameraRendererSucc", "markInitServiceRendererSucc", "markMMFaceBeautyAlgoUse", "markMiniWindowsPercent", "markNoFaceBeautyAlgoUse", "markRenderModeChangeAuto", "markRenderModeChangeManual", "markRendererUseSurfaceView", "markRendererUseTextureView", "markVoipRendererUseNew", "markYTFaceBeautyAlgoUse", "markYuvRendererPerFrameFullScreenCost", "markYuvRendererPerFrameMiniWindowCost", "plugin-voip_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport;", "", "()V", "addRendererViewInFullScreenWindowsTimes", "", "addRendererViewInFullScreenWindowsTimesInvite", "addRendererViewInMiniScreenWindowsTimes", "addRendererViewInMiniScreenWindowsTimesInvite", "changeToFullScreenCount", "", "changeToHWCount", "changeToMiniScreenCount", "changeToSWCount", "mCameraRenderFrameCount", "mServiceRenderFrameCount", "mYuvRenderFrameCount", "onDecModeChanged", "", "mode", "onFrameDrawCost", "cost", "type", "isFullScreen", "", "isFaceBeauty", "onRendererDrawPerFrameEndAfterAddView", "isInvite", "onRendererDrawPerFrameEndAfterAddViewAfterInit", "onRendererViewAdd", "times", "onWindowTypeChanged", "reportCameraRendererCostPerFrame", "reportRendererTypeChangeCount", "reportRendererWindowTypePercent", "reportServiceRendererCostPerFrame", "reportWhileFinish", "reportYUVRendererCostPerFrame", "Companion", "plugin-voip_release"})
 public final class i
 {
-  public static final i AMu;
+  public static final a ClE;
+  public long ClA = -1L;
+  public int ClB = -1;
+  public int ClC = -1;
+  public int ClD = -1;
+  public long Clt = -1L;
+  public long Clu = -1L;
+  private int Clv = -1;
+  private int Clw = -1;
+  public long Clx = -1L;
+  public long Cly = -1L;
+  public long Clz = -1L;
   
   static
   {
-    AppMethodBeat.i(208722);
-    AMu = new i();
-    AppMethodBeat.o(208722);
+    AppMethodBeat.i(216008);
+    ClE = new a((byte)0);
+    AppMethodBeat.o(216008);
   }
   
-  public static void elU()
+  public static final void UH(int paramInt)
   {
-    AppMethodBeat.i(208687);
-    ac.i("MicroMsg.VoipReportHelper", "markVoipRendererUseNew");
-    h.wUl.n(1304L, 1L, 1L);
-    AppMethodBeat.o(208687);
+    AppMethodBeat.i(216010);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(216010);
+      return;
+      k localk = k.ClI;
+      k.ezT();
+      AppMethodBeat.o(216010);
+      return;
+      localk = k.ClI;
+      k.ezU();
+    }
   }
   
-  public static void elV()
+  private final void ezL()
   {
-    AppMethodBeat.i(208688);
-    ac.i("MicroMsg.VoipReportHelper", "markCameraOnError");
-    h.wUl.n(1304L, 2L, 1L);
-    AppMethodBeat.o(208688);
+    AppMethodBeat.i(216005);
+    this.Clt += 1L;
+    this.Clu += 1L;
+    k localk;
+    if (this.Clt > 0L)
+    {
+      localk = k.ClI;
+      k.BB(this.Clt);
+    }
+    if (this.Clu > 0L)
+    {
+      localk = k.ClI;
+      k.BC(this.Clu);
+    }
+    this.Clt = -1L;
+    this.Clu = -1L;
+    AppMethodBeat.o(216005);
   }
   
-  public static void elW()
+  private final void ezM()
   {
-    AppMethodBeat.i(208689);
-    ac.i("MicroMsg.VoipReportHelper", "markInitCameraRendererSucc");
-    h.wUl.n(1304L, 3L, 1L);
-    AppMethodBeat.o(208689);
+    AppMethodBeat.i(216006);
+    this.Clv += 1;
+    this.Clw += 1;
+    int i = this.Clv + this.Clw;
+    if (i != 0)
+    {
+      k localk;
+      if (this.Clv > 0)
+      {
+        localk = k.ClI;
+        k.BV(this.Clv * 100 / i);
+      }
+      if (this.Clw > 0)
+      {
+        localk = k.ClI;
+        k.BW(this.Clw * 100 / i);
+      }
+    }
+    this.Clv = -1;
+    this.Clw = -1;
+    AppMethodBeat.o(216006);
   }
   
-  public static void elX()
+  public static final void ezO()
   {
-    AppMethodBeat.i(208690);
-    ac.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc");
-    h.wUl.n(1304L, 4L, 1L);
-    AppMethodBeat.o(208690);
+    AppMethodBeat.i(216009);
+    k localk = k.ClI;
+    k.ezQ();
+    AppMethodBeat.o(216009);
   }
   
-  public static void elY()
+  public static final void tB(boolean paramBoolean)
   {
-    AppMethodBeat.i(208693);
-    ac.i("MicroMsg.VoipReportHelper", "markRendererUseSurfaceView");
-    h.wUl.n(1304L, 7L, 1L);
-    AppMethodBeat.o(208693);
+    AppMethodBeat.i(216011);
+    if (paramBoolean)
+    {
+      localk = k.ClI;
+      k.ezW();
+      AppMethodBeat.o(216011);
+      return;
+    }
+    k localk = k.ClI;
+    k.ezV();
+    AppMethodBeat.o(216011);
   }
   
-  public static void elZ()
+  public final void UG(int paramInt)
   {
-    AppMethodBeat.i(208694);
-    ac.i("MicroMsg.VoipReportHelper", "markRendererUseTextureView");
-    h.wUl.n(1304L, 8L, 1L);
-    AppMethodBeat.o(208694);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.Clw += 1;
+      return;
+    }
+    this.Clv += 1;
   }
   
-  public static void ema()
+  public final void aD(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(208695);
-    ac.i("MicroMsg.VoipReportHelper", "markRenderModeChangeAuto");
-    h.wUl.n(1304L, 9L, 1L);
-    AppMethodBeat.o(208695);
+    AppMethodBeat.i(216003);
+    k localk;
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        if (this.Clz != -1L)
+        {
+          localk = k.ClI;
+          k.BR(bt.aO(this.Clz));
+          this.Clz = -1L;
+          AppMethodBeat.o(216003);
+        }
+      }
+      else
+      {
+        if (this.Clx != -1L)
+        {
+          localk = k.ClI;
+          k.BR(bt.aO(this.Clx));
+          this.Clx = -1L;
+        }
+        AppMethodBeat.o(216003);
+      }
+    }
+    else if (paramBoolean2)
+    {
+      if (this.ClA != -1L)
+      {
+        localk = k.ClI;
+        k.BS(bt.aO(this.ClA));
+        this.ClA = -1L;
+        AppMethodBeat.o(216003);
+      }
+    }
+    else if (this.Cly != -1L)
+    {
+      localk = k.ClI;
+      k.BS(bt.aO(this.Cly));
+      this.Cly = -1L;
+    }
+    AppMethodBeat.o(216003);
   }
   
-  public static void emb()
+  public final void aE(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(208696);
-    ac.i("MicroMsg.VoipReportHelper", "markRenderModeChangeManual");
-    h.wUl.n(1304L, 10L, 1L);
-    AppMethodBeat.o(208696);
+    AppMethodBeat.i(216004);
+    k localk;
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        if (this.Clz != -1L)
+        {
+          localk = k.ClI;
+          k.BP(bt.aO(this.Clz));
+          this.Clz = -1L;
+          AppMethodBeat.o(216004);
+        }
+      }
+      else
+      {
+        if (this.Clx != -1L)
+        {
+          localk = k.ClI;
+          k.BF(bt.aO(this.Clx));
+          this.Clx = -1L;
+        }
+        AppMethodBeat.o(216004);
+      }
+    }
+    else if (paramBoolean2)
+    {
+      if (this.ClA != -1L)
+      {
+        localk = k.ClI;
+        k.BQ(bt.aO(this.ClA));
+        this.ClA = -1L;
+        AppMethodBeat.o(216004);
+      }
+    }
+    else if (this.Cly != -1L)
+    {
+      localk = k.ClI;
+      k.BG(bt.aO(this.Cly));
+      this.Cly = -1L;
+    }
+    AppMethodBeat.o(216004);
   }
   
-  public static void emc()
+  public final void ezN()
   {
-    AppMethodBeat.i(208701);
-    ac.i("MicroMsg.VoipReportHelper", "markNoFaceBeautyAlgoUse");
-    h.wUl.n(1304L, 15L, 1L);
-    AppMethodBeat.o(208701);
+    AppMethodBeat.i(216007);
+    k localk = k.ClI;
+    k.ezP();
+    ezL();
+    ezM();
+    AppMethodBeat.o(216007);
   }
   
-  public static void emd()
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport$Companion;", "", "()V", "reportBatteryAverage", "", "data", "", "type", "", "reportCameraOnError", "reportFaceBeautyAlgoException", "reportFaceBeautyUse", "reportNewRendererInitSucc", "isCamera", "", "reportPboSizeInit", "width", "height", "reportRendererModeChanged", "isManual", "reportRendererUse", "plugin-voip_release"})
+  public static final class a
   {
-    AppMethodBeat.i(208702);
-    ac.i("MicroMsg.VoipReportHelper", "markYTFaceBeautyAlgoUse");
-    h.wUl.n(1304L, 16L, 1L);
-    AppMethodBeat.o(208702);
-  }
-  
-  public static void eme()
-  {
-    AppMethodBeat.i(208703);
-    ac.i("MicroMsg.VoipReportHelper", "markMMFaceBeautyAlgoUse");
-    h.wUl.n(1304L, 17L, 1L);
-    AppMethodBeat.o(208703);
-  }
-  
-  public static void emf()
-  {
-    AppMethodBeat.i(208704);
-    ac.i("MicroMsg.VoipReportHelper", "markFaceBeautySendDataNull");
-    h.wUl.n(1304L, 18L, 1L);
-    AppMethodBeat.o(208704);
-  }
-  
-  public static void emg()
-  {
-    AppMethodBeat.i(208705);
-    ac.i("MicroMsg.VoipReportHelper", "markFaceBeautySendDataIlleagel");
-    h.wUl.n(1304L, 19L, 1L);
-    AppMethodBeat.o(208705);
-  }
-  
-  public static void yU(long paramLong)
-  {
-    AppMethodBeat.i(208697);
-    ac.i("MicroMsg.VoipReportHelper", "markDecodeModeChangeToHW,count=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 11, 50, (int)paramLong, false);
-    AppMethodBeat.o(208697);
-  }
-  
-  public static void yV(long paramLong)
-  {
-    AppMethodBeat.i(208698);
-    ac.i("MicroMsg.VoipReportHelper", "markDecodeModeChangeToSW,count=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 12, 51, (int)paramLong, false);
-    AppMethodBeat.o(208698);
-  }
-  
-  public static void yW(long paramLong)
-  {
-    AppMethodBeat.i(208706);
-    ac.i("MicroMsg.VoipReportHelper", "markBatteryPropertyCurrentInHW,data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 20, 38, (int)paramLong, false);
-    AppMethodBeat.o(208706);
-  }
-  
-  public static void yX(long paramLong)
-  {
-    AppMethodBeat.i(208707);
-    ac.i("MicroMsg.VoipReportHelper", "markBatteryPropertyCurrentInSW, data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 21, 39, (int)paramLong, false);
-    AppMethodBeat.o(208707);
-  }
-  
-  public static void yY(long paramLong)
-  {
-    AppMethodBeat.i(208708);
-    ac.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCost, data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 24, 22, (int)paramLong, false);
-    AppMethodBeat.o(208708);
-  }
-  
-  public static void yZ(long paramLong)
-  {
-    AppMethodBeat.i(208709);
-    ac.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCost, data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 25, 23, (int)paramLong, false);
-    AppMethodBeat.o(208709);
-  }
-  
-  public static void za(long paramLong)
-  {
-    AppMethodBeat.i(208710);
-    ac.i("MicroMsg.VoipReportHelper", "markYuvRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 28, 26, (int)paramLong, false);
-    AppMethodBeat.o(208710);
-  }
-  
-  public static void zb(long paramLong)
-  {
-    AppMethodBeat.i(208711);
-    ac.i("MicroMsg.VoipReportHelper", "markYuvRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 29, 27, (int)paramLong, false);
-    AppMethodBeat.o(208711);
-  }
-  
-  public static void zc(long paramLong)
-  {
-    AppMethodBeat.i(208712);
-    ac.i("MicroMsg.VoipReportHelper", "markHWRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 32, 30, (int)paramLong, false);
-    AppMethodBeat.o(208712);
-  }
-  
-  public static void zd(long paramLong)
-  {
-    AppMethodBeat.i(208713);
-    ac.i("MicroMsg.VoipReportHelper", "markHWRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 33, 31, (int)paramLong, false);
-    AppMethodBeat.o(208713);
-  }
-  
-  public static void zi(long paramLong)
-  {
-    AppMethodBeat.i(208718);
-    ac.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 42, 40, (int)paramLong, false);
-    AppMethodBeat.o(208718);
-  }
-  
-  public static void zj(long paramLong)
-  {
-    AppMethodBeat.i(208719);
-    ac.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 43, 41, (int)paramLong, false);
-    AppMethodBeat.o(208719);
-  }
-  
-  public static void zk(long paramLong)
-  {
-    AppMethodBeat.i(208720);
-    ac.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 48, 52, (int)paramLong, false);
-    AppMethodBeat.o(208720);
-  }
-  
-  public static void zl(long paramLong)
-  {
-    AppMethodBeat.i(208721);
-    ac.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 49, 53, (int)paramLong, false);
-    AppMethodBeat.o(208721);
-  }
-  
-  public static void zm(long paramLong)
-  {
-    AppMethodBeat.i(208691);
-    ac.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc,width=".concat(String.valueOf(paramLong)));
-    h.wUl.n(1304L, 5L, paramLong);
-    AppMethodBeat.o(208691);
-  }
-  
-  public static void zn(long paramLong)
-  {
-    AppMethodBeat.i(208692);
-    ac.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc,height=".concat(String.valueOf(paramLong)));
-    h.wUl.n(1304L, 6L, paramLong);
-    AppMethodBeat.o(208692);
-  }
-  
-  public static void zo(long paramLong)
-  {
-    AppMethodBeat.i(208699);
-    ac.i("MicroMsg.VoipReportHelper", "markFullScreenPercent,percent=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 13, 70, (int)paramLong, false);
-    AppMethodBeat.o(208699);
-  }
-  
-  public static void zp(long paramLong)
-  {
-    AppMethodBeat.i(208700);
-    ac.i("MicroMsg.VoipReportHelper", "markMiniWindowsPercent,percent=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 14, 71, (int)paramLong, false);
-    AppMethodBeat.o(208700);
-  }
-  
-  public static void zq(long paramLong)
-  {
-    AppMethodBeat.i(208714);
-    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 36, 34, (int)paramLong, false);
-    AppMethodBeat.o(208714);
-  }
-  
-  public static void zr(long paramLong)
-  {
-    AppMethodBeat.i(208715);
-    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 37, 35, (int)paramLong, false);
-    AppMethodBeat.o(208715);
-  }
-  
-  public static void zs(long paramLong)
-  {
-    AppMethodBeat.i(208716);
-    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewFullScreenCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 72, 74, (int)paramLong, false);
-    AppMethodBeat.o(208716);
-  }
-  
-  public static void zt(long paramLong)
-  {
-    AppMethodBeat.i(208717);
-    ac.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewMiniWindowCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    h.wUl.c(1304, 73, 75, (int)paramLong, false);
-    AppMethodBeat.o(208717);
+    public static void UI(int paramInt)
+    {
+      AppMethodBeat.i(216000);
+      switch (paramInt)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(216000);
+        return;
+        k localk = k.ClI;
+        k.ezX();
+        AppMethodBeat.o(216000);
+        return;
+        localk = k.ClI;
+        k.ezY();
+        AppMethodBeat.o(216000);
+        return;
+        localk = k.ClI;
+        k.ezZ();
+      }
+    }
+    
+    public static void UJ(int paramInt)
+    {
+      AppMethodBeat.i(216001);
+      switch (paramInt)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(216001);
+        return;
+        k localk = k.ClI;
+        k.eAa();
+        AppMethodBeat.o(216001);
+        return;
+        localk = k.ClI;
+        k.eAb();
+      }
+    }
+    
+    public static void ag(long paramLong, int paramInt)
+    {
+      AppMethodBeat.i(216002);
+      switch (paramInt)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(216002);
+        return;
+        k localk = k.ClI;
+        k.BE(paramLong);
+        AppMethodBeat.o(216002);
+        return;
+        localk = k.ClI;
+        k.BD(paramLong);
+      }
+    }
+    
+    public static void tC(boolean paramBoolean)
+    {
+      AppMethodBeat.i(215999);
+      if (paramBoolean)
+      {
+        localk = k.ClI;
+        k.ezR();
+        AppMethodBeat.o(215999);
+        return;
+      }
+      k localk = k.ClI;
+      k.ezS();
+      AppMethodBeat.o(215999);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.i
  * JD-Core Version:    0.7.0.1
  */

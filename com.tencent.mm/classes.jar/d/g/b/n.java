@@ -1,32 +1,107 @@
 package d.g.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l.a;
-import d.l.h;
-import d.l.h.a;
-import d.l.m.a;
 
-public abstract class n
-  extends m
-  implements h
+public class n
+  extends e
+  implements m, d.l.e
 {
-  public final Object ay(Object paramObject)
+  private final int arity;
+  
+  public n(int paramInt)
   {
-    return get(paramObject);
+    this.arity = paramInt;
   }
   
-  public final h.a fOA()
+  public n(int paramInt, Object paramObject)
   {
-    return ((h)fOB()).fOA();
+    super(paramObject);
+    this.arity = paramInt;
   }
   
-  protected final a fOo()
+  public boolean equals(Object paramObject)
   {
-    return w.a(this);
+    AppMethodBeat.i(128938);
+    if (paramObject == this)
+    {
+      AppMethodBeat.o(128938);
+      return true;
+    }
+    if ((paramObject instanceof n))
+    {
+      paramObject = (n)paramObject;
+      if (Hv() == null)
+      {
+        if (paramObject.Hv() != null) {}
+      }
+      else {
+        while (Hv().equals(paramObject.Hv()))
+        {
+          if ((!getName().equals(paramObject.getName())) || (!Hu().equals(paramObject.Hu())) || (!p.i(gfP(), paramObject.gfP()))) {
+            break;
+          }
+          AppMethodBeat.o(128938);
+          return true;
+        }
+      }
+      AppMethodBeat.o(128938);
+      return false;
+    }
+    if ((paramObject instanceof d.l.e))
+    {
+      boolean bool = paramObject.equals(gfQ());
+      AppMethodBeat.o(128938);
+      return bool;
+    }
+    AppMethodBeat.o(128938);
+    return false;
   }
   
-  public final m.a fOz()
+  public int getArity()
   {
-    return ((h)fOB()).fOz();
+    return this.arity;
+  }
+  
+  protected final a gfO()
+  {
+    AppMethodBeat.i(128937);
+    d.l.e locale = z.a(this);
+    AppMethodBeat.o(128937);
+    return locale;
+  }
+  
+  public int hashCode()
+  {
+    AppMethodBeat.i(128939);
+    if (Hv() == null) {}
+    for (int i = 0;; i = Hv().hashCode() * 31)
+    {
+      int j = getName().hashCode();
+      int k = Hu().hashCode();
+      AppMethodBeat.o(128939);
+      return (i + j) * 31 + k;
+    }
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(128940);
+    Object localObject = gfQ();
+    if (localObject != this)
+    {
+      localObject = localObject.toString();
+      AppMethodBeat.o(128940);
+      return localObject;
+    }
+    if ("<init>".equals(getName()))
+    {
+      AppMethodBeat.o(128940);
+      return "constructor (Kotlin reflection is not available)";
+    }
+    localObject = "function " + getName() + " (Kotlin reflection is not available)";
+    AppMethodBeat.o(128940);
+    return localObject;
   }
 }
 

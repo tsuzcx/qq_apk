@@ -20,8 +20,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.wallet_core.ui.e;
 
 public class MMKLabelView
@@ -59,16 +60,16 @@ public class MMKLabelView
     {
       if (i != -1)
       {
-        String str = e.adP(i);
+        String str = e.agp(i);
         try
         {
-          ((TextView)getView()).setTypeface(Typeface.createFromAsset(ai.getContext().getAssets(), str));
+          ((TextView)getView()).setTypeface(Typeface.createFromAsset(aj.getContext().getAssets(), str));
           AppMethodBeat.o(19064);
           return;
         }
         catch (Exception localException)
         {
-          ac.e("base_MMKView", "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+          ad.e("base_MMKView", "setTypeface() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
           AppMethodBeat.o(19064);
           return;
         }
@@ -82,10 +83,30 @@ public class MMKLabelView
           i = 3;
           continue;
         }
-        if (!this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Bold")) {
-          break label199;
+        if (this.textFontName.equalsIgnoreCase("WeChat-Sans-SS-Bold"))
+        {
+          i = 1;
+          continue;
         }
-        i = 1;
+        if (this.textFontName.equalsIgnoreCase("WeChat-Sans-Std-Medium"))
+        {
+          i = 4;
+          continue;
+        }
+        if (this.textFontName.equalsIgnoreCase("WeChat-Sans-Std-Light"))
+        {
+          i = 6;
+          continue;
+        }
+        if (this.textFontName.equalsIgnoreCase("WeChat-Sans-Std-Bold"))
+        {
+          i = 5;
+          continue;
+        }
+        if (!this.textFontName.equalsIgnoreCase("WeChat-Sans-Std-Regular")) {
+          break label301;
+        }
+        i = 7;
         continue;
       }
       if (this.fontStyle == FontStyle.BOLD)
@@ -94,10 +115,16 @@ public class MMKLabelView
         AppMethodBeat.o(19064);
         return;
       }
+      if (this.fontStyle == FontStyle.MEDIUM)
+      {
+        al.a(((TextView)getView()).getPaint(), 0.8F);
+        AppMethodBeat.o(19064);
+        return;
+      }
       ((TextView)getView()).setTypeface(null, 0);
       AppMethodBeat.o(19064);
       return;
-      label199:
+      label301:
       i = -1;
     }
   }
@@ -153,7 +180,7 @@ public class MMKLabelView
   public String getText()
   {
     AppMethodBeat.i(19070);
-    ac.d("base_MMKView", "MMKLabelView getText ");
+    ad.d("base_MMKView", "MMKLabelView getText ");
     Object localObject = ((TextView)getView()).getText();
     if (localObject != null)
     {
@@ -183,7 +210,7 @@ public class MMKLabelView
   public float getTextSize()
   {
     AppMethodBeat.i(19072);
-    float f = a.ax(ai.getContext(), (int)((TextView)getView()).getTextSize());
+    float f = a.aA(aj.getContext(), (int)((TextView)getView()).getTextSize());
     AppMethodBeat.o(19072);
     return f;
   }
@@ -254,7 +281,7 @@ public class MMKLabelView
     AppMethodBeat.i(19069);
     if (paramString != null)
     {
-      ((TextView)getView()).setText(k.b(ai.getContext(), paramString, ((TextView)getView()).getTextSize()));
+      ((TextView)getView()).setText(k.b(aj.getContext(), paramString, ((TextView)getView()).getTextSize()));
       notifyChanged();
     }
     AppMethodBeat.o(19069);
@@ -290,7 +317,7 @@ public class MMKLabelView
   {
     AppMethodBeat.i(19073);
     this.textColor = paramDynamicColor;
-    ac.d("MMKLabelView", "setTextColor: " + Integer.toHexString(MMKViewUtil.argbColor(ColorUtil.getColorByMode(paramDynamicColor, ColorUtil.MMViewType.MMKLabelViewText))));
+    ad.d("MMKLabelView", "setTextColor: " + Integer.toHexString(MMKViewUtil.argbColor(ColorUtil.getColorByMode(paramDynamicColor, ColorUtil.MMViewType.MMKLabelViewText))));
     ((TextView)getView()).setTextColor(MMKViewUtil.argbColor(ColorUtil.getColorByMode(paramDynamicColor, ColorUtil.MMViewType.MMKLabelViewText)));
     notifyChanged();
     AppMethodBeat.o(19073);
@@ -312,7 +339,7 @@ public class MMKLabelView
     AppMethodBeat.i(19071);
     if (paramFloat > 0.0F)
     {
-      ((TextView)getView()).setTextSize(0, MMKViewUtil.dpToPx(ai.getContext(), paramFloat));
+      ((TextView)getView()).setTextSize(0, MMKViewUtil.dpToPx(aj.getContext(), paramFloat));
       notifyChanged();
     }
     AppMethodBeat.o(19071);

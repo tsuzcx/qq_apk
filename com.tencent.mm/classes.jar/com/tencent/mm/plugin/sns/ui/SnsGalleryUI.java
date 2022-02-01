@@ -10,25 +10,25 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.dy;
-import com.tencent.mm.g.b.a.eg;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.a.e;
-import com.tencent.mm.plugin.messenger.a.j;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.am.a;
-import com.tencent.mm.plugin.sns.model.an;
+import com.tencent.mm.g.b.a.ew;
+import com.tencent.mm.g.b.a.ff;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.messenger.a.d;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.sns.j.e;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.an.a;
+import com.tencent.mm.plugin.sns.model.ao;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.x;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.btz;
-import com.tencent.mm.protocal.protobuf.zf;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bf;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.byn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -38,31 +38,21 @@ import java.util.Map;
 @com.tencent.mm.kernel.i
 public class SnsGalleryUI
   extends SnsBaseGalleryUI
-  implements u.a
+  implements v.a
 {
+  private int Aad = 0;
+  private String Adb = "";
   private int scene = 0;
   private String userName = "";
-  private int yIJ = 0;
-  private String yLE = "";
-  
-  protected final boolean dPi()
-  {
-    return true;
-  }
-  
-  protected final int dPj()
-  {
-    return 4;
-  }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(98706);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ac.d("MicroMsg.SnsGalleryUI", "dispatchKeyEvent");
+      ad.d("MicroMsg.SnsGalleryUI", "dispatchKeyEvent");
       paramKeyEvent = new Intent();
-      paramKeyEvent.putExtra("sns_cmd_list", this.yIz.yzV);
+      paramKeyEvent.putExtra("sns_cmd_list", this.zZT.zRm);
       setResult(-1, paramKeyEvent);
       finish();
       AppMethodBeat.o(98706);
@@ -73,38 +63,48 @@ public class SnsGalleryUI
     return bool;
   }
   
-  public final void eI(String paramString, int paramInt)
+  protected final int ebA()
+  {
+    return 4;
+  }
+  
+  protected final boolean ebz()
+  {
+    return true;
+  }
+  
+  public final void fa(String paramString, int paramInt)
   {
     AppMethodBeat.i(98708);
     SnsInfoFlip localSnsInfoFlip;
-    if (this.yIC != null) {
-      if ((!bs.isNullOrNil(paramString)) && (paramInt != 3))
+    if (this.zZW != null) {
+      if ((!bt.isNullOrNil(paramString)) && (paramInt != 3))
       {
-        localSnsInfoFlip = this.yIC;
-        if ((localSnsInfoFlip.yMd != null) && (localSnsInfoFlip.hqR != null)) {
+        localSnsInfoFlip = this.zZW;
+        if ((localSnsInfoFlip.Adz != null) && (localSnsInfoFlip.hJj != null)) {
           break label57;
         }
       }
     }
     for (;;)
     {
-      this.yIC.rn(true);
+      this.zZW.rR(true);
       AppMethodBeat.o(98708);
       return;
       label57:
       paramInt = 0;
       while (paramInt >= 0)
       {
-        if (localSnsInfoFlip.yMd != null) {
+        if (localSnsInfoFlip.Adz != null) {
           for (;;)
           {
-            if (paramInt >= localSnsInfoFlip.hqR.size()) {
+            if (paramInt >= localSnsInfoFlip.hJj.size()) {
               break label137;
             }
-            com.tencent.mm.plugin.sns.i.b localb = localSnsInfoFlip.yMd.PB(paramInt);
-            if ((!bs.isNullOrNil(localb.yav)) && (localb.yav.equals(paramString)))
+            com.tencent.mm.plugin.sns.i.b localb = localSnsInfoFlip.Adz.Rk(paramInt);
+            if ((!bt.isNullOrNil(localb.parentId)) && (localb.parentId.equals(paramString)))
             {
-              localSnsInfoFlip.hqR.remove(paramInt);
+              localSnsInfoFlip.hJj.remove(paramInt);
               break;
             }
             paramInt += 1;
@@ -113,53 +113,53 @@ public class SnsGalleryUI
         label137:
         paramInt = -1;
       }
-      localSnsInfoFlip.yMd.notifyDataSetChanged();
+      localSnsInfoFlip.Adz.notifyDataSetChanged();
     }
   }
   
-  public final void eJ(String paramString, int paramInt)
+  public final void fb(String paramString, int paramInt)
   {
     AppMethodBeat.i(98710);
-    super.eJ(paramString, paramInt);
-    paramString = af.dHR().auT(paramString);
+    super.fb(paramString, paramInt);
+    paramString = ag.dUe().aAa(paramString);
     TimeLineObject localTimeLineObject;
-    dy localdy;
+    ew localew;
     if (paramString != null)
     {
-      com.tencent.mm.plugin.sns.j.f.ydE.G(paramString);
-      com.tencent.mm.plugin.sns.j.f.ydE.b(paramString, paramInt);
-      localTimeLineObject = paramString.dLV();
-      if ((localTimeLineObject != null) && (localTimeLineObject.FQo != null) && (!bs.gY(localTimeLineObject.FQo.Etz)))
+      e.ztz.I(paramString);
+      e.ztz.c(paramString, paramInt);
+      localTimeLineObject = paramString.dYl();
+      if ((localTimeLineObject != null) && (localTimeLineObject.HAT != null) && (!bt.hj(localTimeLineObject.HAT.GaQ)))
       {
-        localdy = com.tencent.mm.plugin.sns.j.f.ydE.dJx();
-        if (localdy != null) {
+        localew = e.ztz.dVK();
+        if (localew != null) {
           break label186;
         }
-        localdy = com.tencent.mm.plugin.sns.j.f.ydE.dJy();
-        localdy.dTa = 1L;
-        localdy = localdy.lU(com.tencent.mm.plugin.sns.data.q.wX(paramString.field_snsId)).lT(com.tencent.mm.plugin.sns.j.f.ydE.ydQ.dUd);
-        localdy.dNc = com.tencent.mm.plugin.sns.j.f.ydE.ydQ.dNc;
-        localdy.dHS = localTimeLineObject.FQo.Ety;
-        localdy.dSZ = localTimeLineObject.FQo.Etz.size();
-        com.tencent.mm.plugin.sns.j.f.ydE.yeg = System.currentTimeMillis();
+        localew = e.ztz.dVL();
+        localew.ejn = 1L;
+        localew = localew.oe(com.tencent.mm.plugin.sns.data.q.zx(paramString.field_snsId)).od(e.ztz.ztL.ekv);
+        localew.eca = e.ztz.ztL.eca;
+        localew.dUX = localTimeLineObject.HAT.GaP;
+        localew.ejm = localTimeLineObject.HAT.GaQ.size();
+        e.ztz.zub = System.currentTimeMillis();
       }
     }
     for (;;)
     {
-      com.tencent.mm.plugin.sns.j.f.ydE.e(paramString, paramInt);
+      e.ztz.f(paramString, paramInt);
       AppMethodBeat.o(98710);
       return;
       label186:
-      if (!bs.lr(com.tencent.mm.plugin.sns.data.q.wX(paramString.field_snsId), localdy.dHM))
+      if (!bt.lQ(com.tencent.mm.plugin.sns.data.q.zx(paramString.field_snsId), localew.dUR))
       {
-        com.tencent.mm.plugin.sns.j.f.ydE.dJB();
-        localdy = com.tencent.mm.plugin.sns.j.f.ydE.dJy();
-        localdy.dTa = 0L;
-        localdy = localdy.lU(com.tencent.mm.plugin.sns.data.q.wX(paramString.field_snsId)).lT(com.tencent.mm.plugin.sns.j.f.ydE.ydQ.dUd);
-        localdy.dNc = com.tencent.mm.plugin.sns.j.f.ydE.ydQ.dNc;
-        localdy.dHS = localTimeLineObject.FQo.Ety;
-        localdy.dSZ = localTimeLineObject.FQo.Etz.size();
-        com.tencent.mm.plugin.sns.j.f.ydE.yeg = System.currentTimeMillis();
+        e.ztz.dVO();
+        localew = e.ztz.dVL();
+        localew.ejn = 0L;
+        localew = localew.oe(com.tencent.mm.plugin.sns.data.q.zx(paramString.field_snsId)).od(e.ztz.ztL.ekv);
+        localew.eca = e.ztz.ztL.eca;
+        localew.dUX = localTimeLineObject.HAT.GaP;
+        localew.ejm = localTimeLineObject.HAT.GaQ.size();
+        e.ztz.zub = System.currentTimeMillis();
       }
     }
   }
@@ -176,21 +176,21 @@ public class SnsGalleryUI
     this.userName = getIntent().getStringExtra("sns_gallery_userName");
     int i = getIntent().getIntExtra("sns_gallery_localId", 0);
     final boolean bool = getIntent().getBooleanExtra("sns_gallery_is_self", false);
-    this.yIJ = getIntent().getIntExtra("sns_gallery_position", 0);
-    Object localObject = x.bk("sns_table_", i);
-    ac.i("MicroMsg.SnsGalleryUI", "initView localId:%s, pos:%d", new Object[] { localObject, Integer.valueOf(this.yIJ) });
-    eJ((String)localObject, this.yIJ);
-    Q(bool, 1);
-    this.yIC = new SnsInfoFlip(this);
-    this.yIC.setVideoScene(this.scene);
-    this.yIC.setNeedScanImage(true);
-    localObject = af.dHH();
+    this.Aad = getIntent().getIntExtra("sns_gallery_position", 0);
+    Object localObject = x.bn("sns_table_", i);
+    ad.i("MicroMsg.SnsGalleryUI", "initView localId:%s, pos:%d", new Object[] { localObject, Integer.valueOf(this.Aad) });
+    fb((String)localObject, this.Aad);
+    R(bool, 1);
+    this.zZW = new SnsInfoFlip(this);
+    this.zZW.setVideoScene(this.scene);
+    this.zZW.setNeedScanImage(true);
+    localObject = ag.dTU();
     String str = this.userName;
-    if (((am.a)localObject).xVp.containsKey(str))
+    if (((an.a)localObject).zll.containsKey(str))
     {
-      i = ((Integer)((am.a)localObject).xVp.get(str)).intValue();
-      ((am.a)localObject).xVp.put(str, Integer.valueOf(i + 1));
-      localObject = (ArrayList)((am.a)localObject).xVo.get(str);
+      i = ((Integer)((an.a)localObject).zll.get(str)).intValue();
+      ((an.a)localObject).zll.put(str, Integer.valueOf(i + 1));
+      localObject = (ArrayList)((an.a)localObject).zlk.get(str);
       if (localObject != null) {
         break label467;
       }
@@ -199,35 +199,35 @@ public class SnsGalleryUI
     label467:
     for (;;)
     {
-      this.yIC.setShowTitle(true);
-      this.yIC.setEnableHorLongBmpMode(false);
-      this.yIC.a((List)localObject, this.userName, this.yIJ, this.yIx, this);
-      this.yIC.setOnDeleteAllAction(new Runnable()
+      this.zZW.setShowTitle(true);
+      this.zZW.setEnableHorLongBmpMode(false);
+      this.zZW.a((List)localObject, this.userName, this.Aad, this.zZR, this);
+      this.zZW.setOnDeleteAllAction(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(98697);
-          SnsGalleryUI.this.yIz.dNw();
+          SnsGalleryUI.this.zZT.dZL();
           AppMethodBeat.o(98697);
         }
       });
-      this.yIC.setOnPageSelectListener(this);
-      g.agS();
-      localObject = ((k)g.ab(k.class)).awB().aNt(this.userName);
-      if ((localObject != null) && ((int)((com.tencent.mm.n.b)localObject).fLJ > 0) && (com.tencent.mm.n.b.ln(((av)localObject).field_type))) {
-        localObject = bf.fbl();
+      this.zZW.setOnPageSelectListener(this);
+      com.tencent.mm.kernel.g.ajD();
+      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(this.userName);
+      if ((localObject != null) && ((int)((com.tencent.mm.o.b)localObject).gfj > 0) && (com.tencent.mm.o.b.lM(((aw)localObject).field_type))) {
+        localObject = bj.fro();
       }
       for (;;)
       {
-        this.yIC.setFromScene((bf)localObject);
-        this.yIC.username = this.userName;
-        addView(this.yIC);
+        this.zZW.setFromScene((bj)localObject);
+        this.zZW.username = this.userName;
+        addView(this.zZW);
         setBackBtn(new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
             AppMethodBeat.i(98698);
-            SnsGalleryUI.this.yIz.dNw();
+            SnsGalleryUI.this.zZT.dZL();
             AppMethodBeat.o(98698);
             return true;
           }
@@ -237,28 +237,28 @@ public class SnsGalleryUI
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
             AppMethodBeat.i(98699);
-            Object localObject = SnsGalleryUI.this.yIC.getSelectId();
-            String str = SnsGalleryUI.this.yIC.getSelectedMediaId();
-            paramAnonymousMenuItem = SnsGalleryUI.this.yIC.getSelectItem();
-            ac.d("MicroMsg.SnsGalleryUI", "click selectLocalId ".concat(String.valueOf(localObject)));
-            ac.d("MicroMsg.SnsGalleryUI", "click position ".concat(String.valueOf(str)));
-            localObject = af.dHR().auT((String)localObject);
+            Object localObject = SnsGalleryUI.this.zZW.getSelectId();
+            String str = SnsGalleryUI.this.zZW.getSelectedMediaId();
+            paramAnonymousMenuItem = SnsGalleryUI.this.zZW.getSelectItem();
+            ad.d("MicroMsg.SnsGalleryUI", "click selectLocalId ".concat(String.valueOf(localObject)));
+            ad.d("MicroMsg.SnsGalleryUI", "click position ".concat(String.valueOf(str)));
+            localObject = ag.dUe().aAa((String)localObject);
             for (;;)
             {
               try
               {
-                i = SnsGalleryUI.this.yIC.getPosition();
-                int j = ((p)localObject).dLV().FQo.Etz.size();
+                i = SnsGalleryUI.this.zZW.getPosition();
+                int j = ((p)localObject).dYl().HAT.GaQ.size();
                 if ((j <= 1) || (i <= 1) || (i > j)) {
                   continue;
                 }
                 i -= 1;
-                SnsGalleryUI.this.yIz.a(bool, (p)localObject, paramAnonymousMenuItem.dwE, SnsGalleryUI.this.yIC.yzk, true, i);
+                SnsGalleryUI.this.zZT.a(bool, (p)localObject, paramAnonymousMenuItem.dIQ, SnsGalleryUI.this.zZW.zQB, true, i);
               }
               catch (Exception paramAnonymousMenuItem)
               {
                 int i;
-                ac.printErrStackTrace("MicroMsg.SnsGalleryUI", paramAnonymousMenuItem, "", new Object[0]);
+                ad.printErrStackTrace("MicroMsg.SnsGalleryUI", paramAnonymousMenuItem, "", new Object[0]);
                 continue;
               }
               AppMethodBeat.o(98699);
@@ -269,13 +269,13 @@ public class SnsGalleryUI
         });
         AppMethodBeat.o(98707);
         return;
-        ((am.a)localObject).xVp.put(str, Integer.valueOf(0));
+        ((an.a)localObject).zll.put(str, Integer.valueOf(0));
         break;
-        localObject = com.tencent.mm.model.u.axw();
+        localObject = u.aAm();
         if (this.userName.equals(localObject)) {
-          localObject = bf.fbm();
+          localObject = bj.frp();
         } else {
-          localObject = bf.fbn();
+          localObject = bj.frq();
         }
       }
     }
@@ -284,7 +284,7 @@ public class SnsGalleryUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(98709);
-    ac.i("MicroMsg.SnsGalleryUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    ad.i("MicroMsg.SnsGalleryUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(98709);
@@ -299,11 +299,11 @@ public class SnsGalleryUI
       }
       str2 = paramIntent.getStringExtra("Select_Conv_User");
       str1 = paramIntent.getStringExtra("custom_send_text");
-      if (this.yIC == null) {
+      if (this.zZW == null) {
         break label534;
       }
-      paramIntent = this.yIC.getSelectItem();
-      if (paramIntent.dwE.ndI != 6)
+      paramIntent = this.zZW.getSelectItem();
+      if (paramIntent.dIQ.nEf != 6)
       {
         AppMethodBeat.o(98709);
         return;
@@ -311,36 +311,36 @@ public class SnsGalleryUI
     }
     label514:
     label534:
-    for (Object localObject2 = paramIntent.dwE;; localObject2 = null)
+    for (Object localObject2 = paramIntent.dIQ;; localObject2 = null)
     {
       if (localObject2 == null)
       {
         AppMethodBeat.o(98709);
         return;
       }
-      String str3 = an.jc(af.getAccSnsPath(), ((btz)localObject2).Id);
+      String str3 = ao.jo(ag.getAccSnsPath(), ((byn)localObject2).Id);
       paramIntent = "";
       Object localObject1 = "";
-      String str4 = com.tencent.mm.plugin.sns.data.q.i((btz)localObject2);
-      if (com.tencent.mm.vfs.i.eA(str3 + str4))
+      String str4 = com.tencent.mm.plugin.sns.data.q.i((byn)localObject2);
+      if (com.tencent.mm.vfs.i.fv(str3 + str4))
       {
         localObject1 = str3 + str4;
-        paramIntent = str3 + com.tencent.mm.plugin.sns.data.q.d((btz)localObject2);
+        paramIntent = str3 + com.tencent.mm.plugin.sns.data.q.d((byn)localObject2);
       }
-      if (com.tencent.mm.vfs.i.eA(str3 + com.tencent.mm.plugin.sns.data.q.o((btz)localObject2))) {
-        paramIntent = str3 + com.tencent.mm.plugin.sns.data.q.o((btz)localObject2);
+      if (com.tencent.mm.vfs.i.fv(str3 + com.tencent.mm.plugin.sns.data.q.o((byn)localObject2))) {
+        paramIntent = str3 + com.tencent.mm.plugin.sns.data.q.o((byn)localObject2);
       }
-      for (localObject1 = str3 + com.tencent.mm.plugin.sns.data.q.m((btz)localObject2);; localObject1 = localObject2)
+      for (localObject1 = str3 + com.tencent.mm.plugin.sns.data.q.m((byn)localObject2);; localObject1 = localObject2)
       {
-        localObject2 = bs.S(str2.split(","));
-        paramInt1 = com.tencent.mm.plugin.sns.data.q.ate(paramIntent);
+        localObject2 = bt.U(str2.split(","));
+        paramInt1 = com.tencent.mm.plugin.sns.data.q.ayj(paramIntent);
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           str2 = (String)((Iterator)localObject2).next();
-          ac.i("MicroMsg.SnsGalleryUI", "send sight to %s, videopath %s, thumbpath %s duration %d", new Object[] { str2, paramIntent, localObject1, Integer.valueOf(paramInt1) });
-          j.dck().a(this, str2, paramIntent, (String)localObject1, 62, paramInt1, "", null);
-          j.dck().hF(str1, str2);
+          ad.i("MicroMsg.SnsGalleryUI", "send sight to %s, videopath %s, thumbpath %s duration %d", new Object[] { str2, paramIntent, localObject1, Integer.valueOf(paramInt1) });
+          com.tencent.mm.plugin.messenger.a.g.dlD().a(this, str2, paramIntent, (String)localObject1, 62, paramInt1, "", null);
+          com.tencent.mm.plugin.messenger.a.g.dlD().hP(str1, str2);
         }
         com.tencent.mm.ui.widget.snackbar.b.n(this, getString(2131760233));
         AppMethodBeat.o(98709);
@@ -348,13 +348,13 @@ public class SnsGalleryUI
         if (1 == paramInt1)
         {
           paramInt1 = paramIntent.getIntExtra("sns_gallery_op_id", 0);
-          localObject1 = x.bk("sns_table_", paramIntent.getIntExtra("sns_gallery_op_id", 0));
-          this.yIz.Pk(paramInt1);
-          eI((String)localObject1, 1);
+          localObject1 = x.bn("sns_table_", paramIntent.getIntExtra("sns_gallery_op_id", 0));
+          this.zZT.QS(paramInt1);
+          fa((String)localObject1, 1);
           if (paramIntent.getBooleanExtra("sns_gallery_force_finish", false))
           {
             paramIntent = new Intent();
-            paramIntent.putExtra("sns_cmd_list", this.yIz.yzV);
+            paramIntent.putExtra("sns_cmd_list", this.zZT.zRm);
             setResult(-1, paramIntent);
             finish();
           }
@@ -375,7 +375,7 @@ public class SnsGalleryUI
     setActionbarColor(getContext().getResources().getColor(2131100196));
     setNavigationbarColor(getContext().getResources().getColor(2131100196));
     initView();
-    com.tencent.mm.plugin.sns.j.f.ydE.ydZ = System.currentTimeMillis();
+    e.ztz.ztU = System.currentTimeMillis();
     AppMethodBeat.o(98700);
   }
   
@@ -383,29 +383,29 @@ public class SnsGalleryUI
   {
     AppMethodBeat.i(98701);
     getWindow().clearFlags(128);
-    Object localObject = af.dHH();
+    Object localObject = ag.dTU();
     String str = this.userName;
     int i;
-    if (((am.a)localObject).xVp.containsKey(str))
+    if (((an.a)localObject).zll.containsKey(str))
     {
-      i = Math.max(((Integer)((am.a)localObject).xVp.get(str)).intValue() - 1, 0);
-      ((am.a)localObject).xVp.put(str, Integer.valueOf(i));
+      i = Math.max(((Integer)((an.a)localObject).zll.get(str)).intValue() - 1, 0);
+      ((an.a)localObject).zll.put(str, Integer.valueOf(i));
     }
     for (;;)
     {
       if (i <= 0) {
-        ((am.a)localObject).xVo.remove(str);
+        ((an.a)localObject).zlk.remove(str);
       }
-      af.dHO().aD(this);
+      ag.dUb().aD(this);
       super.onDestroy();
-      localObject = com.tencent.mm.plugin.sns.j.f.ydE;
-      if (((com.tencent.mm.plugin.sns.j.f)localObject).ydZ != 0L)
+      localObject = e.ztz;
+      if (((e)localObject).ztU != 0L)
       {
-        ((com.tencent.mm.plugin.sns.j.f)localObject).yea += System.currentTimeMillis() - ((com.tencent.mm.plugin.sns.j.f)localObject).ydZ;
-        ((com.tencent.mm.plugin.sns.j.f)localObject).ydZ = 0L;
+        ((e)localObject).ztV += System.currentTimeMillis() - ((e)localObject).ztU;
+        ((e)localObject).ztU = 0L;
       }
-      com.tencent.mm.plugin.sns.j.f.ydE.dJz();
-      com.tencent.mm.plugin.sns.j.f.ydE.dJB();
+      e.ztz.dVM();
+      e.ztz.dVO();
       AppMethodBeat.o(98701);
       return;
       i = 0;
@@ -425,18 +425,18 @@ public class SnsGalleryUI
     AppMethodBeat.i(98705);
     super.onResume();
     SnsInfoFlip localSnsInfoFlip;
-    if (this.yIC != null)
+    if (this.zZW != null)
     {
-      btz localbtz = this.yIC.getCntMedia();
-      localSnsInfoFlip = this.yIC;
-      if ((localbtz == null) || (localbtz.ndI != 6)) {
+      byn localbyn = this.zZW.getCntMedia();
+      localSnsInfoFlip = this.zZW;
+      if ((localbyn == null) || (localbyn.nEf != 6)) {
         break label63;
       }
     }
     label63:
     for (boolean bool = true;; bool = false)
     {
-      localSnsInfoFlip.rn(bool);
+      localSnsInfoFlip.rR(bool);
       com.tencent.mm.plugin.ball.f.f.e(true, true, true);
       AppMethodBeat.o(98705);
       return;
@@ -447,7 +447,7 @@ public class SnsGalleryUI
   {
     AppMethodBeat.i(98702);
     super.onStart();
-    com.tencent.mm.plugin.sns.j.f.ydE.yeg = System.currentTimeMillis();
+    e.ztz.zub = System.currentTimeMillis();
     AppMethodBeat.o(98702);
   }
   
@@ -455,7 +455,7 @@ public class SnsGalleryUI
   {
     AppMethodBeat.i(98703);
     super.onStop();
-    com.tencent.mm.plugin.sns.j.f.ydE.dJz();
+    e.ztz.dVM();
     AppMethodBeat.o(98703);
   }
   

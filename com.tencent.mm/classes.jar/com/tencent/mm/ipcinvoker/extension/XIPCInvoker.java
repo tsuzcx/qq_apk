@@ -20,7 +20,7 @@ public final class XIPCInvoker
       AppMethodBeat.o(158811);
       return null;
     }
-    paramString = paramString.ger;
+    paramString = paramString.gyb;
     AppMethodBeat.o(158811);
     return paramString;
   }
@@ -36,8 +36,8 @@ public final class XIPCInvoker
     implements Parcelable
   {
     public static final Parcelable.Creator<WrapperParcelable> CREATOR;
-    Object ger;
-    String geu;
+    Object gyb;
+    String gye;
     
     static
     {
@@ -50,8 +50,8 @@ public final class XIPCInvoker
     
     public WrapperParcelable(String paramString, Object paramObject)
     {
-      this.geu = paramString;
-      this.ger = paramObject;
+      this.gye = paramString;
+      this.gyb = paramObject;
     }
     
     public int describeContents()
@@ -62,15 +62,15 @@ public final class XIPCInvoker
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(158808);
-      paramParcel.writeString(this.geu);
-      if (this.ger != null)
+      paramParcel.writeString(this.gye);
+      if (this.gyb != null)
       {
-        a locala = c.bf(this.ger);
+        a locala = c.bh(this.gyb);
         if (locala != null)
         {
           paramParcel.writeInt(1);
           paramParcel.writeString(locala.getClass().getName());
-          locala.a(this.ger, paramParcel);
+          locala.a(this.gyb, paramParcel);
           AppMethodBeat.o(158808);
           return;
         }
@@ -87,15 +87,15 @@ public final class XIPCInvoker
   static final class b
     implements d, com.tencent.mm.ipcinvoker.e.a
   {
-    d<XIPCInvoker.WrapperParcelable> ges;
-    com.tencent.mm.ipcinvoker.e.a get;
+    d<XIPCInvoker.WrapperParcelable> gyc;
+    com.tencent.mm.ipcinvoker.e.a gyd;
     
     b(d<XIPCInvoker.WrapperParcelable> paramd)
     {
       AppMethodBeat.i(158803);
-      this.ges = paramd;
+      this.gyc = paramd;
       if ((paramd instanceof com.tencent.mm.ipcinvoker.e.a)) {
-        this.get = ((com.tencent.mm.ipcinvoker.e.a)paramd);
+        this.gyd = ((com.tencent.mm.ipcinvoker.e.a)paramd);
       }
       AppMethodBeat.o(158803);
     }
@@ -103,20 +103,20 @@ public final class XIPCInvoker
     public final void a(com.tencent.mm.ipcinvoker.e.b paramb)
     {
       AppMethodBeat.i(158805);
-      if (this.get == null)
+      if (this.gyd == null)
       {
         AppMethodBeat.o(158805);
         return;
       }
-      this.get.a(paramb);
+      this.gyd.a(paramb);
       AppMethodBeat.o(158805);
     }
     
-    public final void bc(Object paramObject)
+    public final void be(Object paramObject)
     {
       AppMethodBeat.i(158804);
-      if (this.ges != null) {
-        this.ges.bc(new XIPCInvoker.WrapperParcelable(null, paramObject));
+      if (this.gyc != null) {
+        this.gyc.be(new XIPCInvoker.WrapperParcelable(null, paramObject));
       }
       AppMethodBeat.o(158804);
     }

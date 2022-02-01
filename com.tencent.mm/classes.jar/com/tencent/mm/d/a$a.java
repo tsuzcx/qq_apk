@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  static final long cGW;
-  public int cGX = 0;
+  static final long cSa;
+  public int cSb = 0;
   
   static
   {
     AppMethodBeat.i(959);
-    cGW = "Micromsg".hashCode();
+    cSa = "Micromsg".hashCode();
     AppMethodBeat.o(959);
   }
   
   public a$a(int paramInt)
   {
-    this.cGX = paramInt;
+    this.cSb = paramInt;
   }
   
   public static a G(byte[] paramArrayOfByte)
@@ -29,7 +29,7 @@ public final class a$a
       l = 0L;
       i = 0;
       if (i >= paramArrayOfByte.length) {
-        if (l >> 32 != cGW) {
+        if (l >> 32 != cSa) {
           break label75;
         }
       }

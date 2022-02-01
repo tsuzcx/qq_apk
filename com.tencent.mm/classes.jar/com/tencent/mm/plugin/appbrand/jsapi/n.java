@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.b;
+import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.page.aa;
@@ -15,16 +15,16 @@ public abstract class n
   extends o
 {
   protected Activity activity;
-  int jWt;
+  int kqK;
   
   public n(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
     super(paramm, paramq, paramaa, paramJSONObject, paramInt);
-    this.activity = a.jg(paramq.getRuntime().mContext);
+    this.activity = a.jq(paramq.getRuntime().mContext);
     if (this.activity == null) {
       throw new IllegalArgumentException("JsApiActivityResultRequest. Activity is null");
     }
-    this.jWt = (paramm.hashCode() & 0xFFFF);
+    this.kqK = (paramm.hashCode() & 0xFFFF);
   }
   
   protected abstract void C(Intent paramIntent);
@@ -33,7 +33,7 @@ public abstract class n
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jWt != paramInt1) {
+    if (this.kqK != paramInt1) {
       return;
     }
     if (paramInt2 == -1)
@@ -53,12 +53,12 @@ public abstract class n
   
   public final void run()
   {
-    e.aA(this.activity).b(new e.b()
+    e.aA(this.activity).b(new e.c()
     {
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174747);
-        if (paramAnonymousInt1 == n.this.jWt)
+        if (paramAnonymousInt1 == n.this.kqK)
         {
           n.this.c(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
           AppMethodBeat.o(174747);
@@ -68,7 +68,7 @@ public abstract class n
         return false;
       }
     });
-    if (!a(this.activity, beG(), this.jWt)) {
+    if (!a(this.activity, bik(), this.kqK)) {
       onError(-1, "fail:system error {{launch fail}}");
     }
   }

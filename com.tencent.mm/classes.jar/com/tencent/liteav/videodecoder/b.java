@@ -9,7 +9,7 @@ import android.os.Build.VERSION;
 import android.view.Surface;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
@@ -881,7 +881,7 @@ public class b
       if (!this.j) {
         break label87;
       }
-      d.a(this.s, -2304, "h265解码失败");
+      f.a(this.s, -2304, "h265解码失败");
     }
     for (;;)
     {
@@ -892,7 +892,7 @@ public class b
       AppMethodBeat.o(16659);
       return;
       label87:
-      d.a(this.s, 2106, "硬解启动失败，采用软解");
+      f.a(this.s, 2106, "硬解启动失败，采用软解");
     }
   }
   

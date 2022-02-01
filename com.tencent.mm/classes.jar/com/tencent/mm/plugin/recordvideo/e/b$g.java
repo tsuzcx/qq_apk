@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.f.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
 final class b$g
   implements Runnable
 {
@@ -20,23 +20,23 @@ final class b$g
   
   public final void run()
   {
-    AppMethodBeat.i(199449);
-    Object localObject = g.agR();
-    k.g(localObject, "MMKernel.storage()");
-    boolean bool = ((e)localObject).agA().getBoolean(ah.a.GLd, true);
-    ac.i("MicroMsg.MediaFileUtil", "handleMultiVideoResult videoState : " + bool + ' ');
+    AppMethodBeat.i(200875);
+    Object localObject = g.ajC();
+    p.g(localObject, "MMKernel.storage()");
+    boolean bool = ((e)localObject).ajl().getBoolean(al.a.Ixv, true);
+    ad.i("MicroMsg.MediaFileUtil", "handleMultiVideoResult videoState : " + bool + ' ');
     if (bool)
     {
-      localObject = b.alY("jpg");
-      i.lZ(this.wDI, (String)localObject);
-      b.k((String)localObject, ai.getContext());
+      localObject = b.aqN("jpg");
+      i.mz(this.xRp, (String)localObject);
+      b.k((String)localObject, aj.getContext());
     }
-    AppMethodBeat.o(199449);
+    AppMethodBeat.o(200875);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.b.g
  * JD-Core Version:    0.7.0.1
  */

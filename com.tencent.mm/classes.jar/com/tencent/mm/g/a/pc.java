@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pc
   extends b
 {
-  public a drL;
+  public a dDc;
   
   public pc()
   {
@@ -15,26 +15,17 @@ public final class pc
   
   private pc(byte paramByte)
   {
-    AppMethodBeat.i(89649);
-    this.drL = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(117615);
+    this.dDc = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(89649);
+    AppMethodBeat.o(117615);
   }
   
   public static final class a
   {
-    public String appId;
-    public String appName;
-    public int cZX = 0;
-    public String content;
-    public String daa;
-    public String drM;
-    public int drN;
-    public int drO;
-    public boolean drP;
-    public long msgId;
-    public int msgType;
+    public int scene;
+    public String sessionId;
   }
 }
 

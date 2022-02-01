@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.topstory.a;
 
 import com.tencent.mm.kernel.b.d;
-import com.tencent.mm.protocal.protobuf.dil;
+import com.tencent.mm.protocal.protobuf.doa;
 import com.tencent.xweb.WebView.c;
 
 public abstract interface b
@@ -13,7 +13,7 @@ public abstract interface b
   
   public abstract WebView.c getWebViewType();
   
-  public abstract void onVideoListUIDestroy(dil paramdil);
+  public abstract void onVideoListUIDestroy(doa paramdoa);
   
   public abstract void onVideoListUIPause();
   

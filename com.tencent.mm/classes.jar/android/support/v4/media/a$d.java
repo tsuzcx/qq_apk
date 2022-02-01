@@ -7,16 +7,16 @@ import java.util.List;
 class a$d<T extends a.c>
   extends MediaBrowser.SubscriptionCallback
 {
-  protected final T Jv;
+  protected final T Ll;
   
   public a$d(T paramT)
   {
-    this.Jv = paramT;
+    this.Ll = paramT;
   }
   
   public void onChildrenLoaded(String paramString, List<MediaBrowser.MediaItem> paramList)
   {
-    this.Jv.j(paramList);
+    this.Ll.j(paramList);
   }
   
   public void onError(String paramString) {}

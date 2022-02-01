@@ -3,12 +3,12 @@ package com.tencent.mm.sdk.h;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Field;
 
 public final class e
 {
-  public static boolean eWO()
+  public static boolean fmy()
   {
     boolean bool1 = false;
     AppMethodBeat.i(153483);
@@ -22,14 +22,14 @@ public final class e
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.Vendor.Oppo", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Vendor.Oppo", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(153483);
     return bool1;
   }
   
-  public static boolean jj(Context paramContext)
+  public static boolean js(Context paramContext)
   {
     AppMethodBeat.i(153482);
     if (paramContext == null)

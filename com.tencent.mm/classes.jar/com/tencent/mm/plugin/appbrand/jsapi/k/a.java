@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
-import com.tencent.mm.plugin.appbrand.page.b.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.permission.c;
 
 public final class a
-  extends i<aa, f>
+  extends p
 {
-  public static final int CTRL_INDEX = 139;
-  public static final String NAME = "disableScrollBounce";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "onReceiveMsgChannel";
   
   public a()
   {
-    super(f.class);
+    AppMethodBeat.i(188455);
+    c.TP("onReceiveMsgChannel");
+    AppMethodBeat.o(188455);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.a
  * JD-Core Version:    0.7.0.1
  */

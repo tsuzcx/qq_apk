@@ -1,16 +1,14 @@
 package d.l.b.a.b.m;
 
 import d.l.b.a.b.b.a.a;
-import d.l.b.a.b.j.f.h;
 import d.l.b.a.b.m.a.i;
 import d.l.b.a.b.m.a.t;
-import d.l.b.a.b.m.c.g;
 import java.util.List;
 
 public abstract class ab
-  implements a, g
+  implements a, d.l.b.a.b.m.c.h
 {
-  private int LLl;
+  private int NCg;
   
   public abstract ab d(i parami);
   
@@ -22,41 +20,41 @@ public abstract class ab
     if (!(paramObject instanceof ab)) {
       return false;
     }
-    if (fUx() == ((ab)paramObject).fUx())
+    if (glW() == ((ab)paramObject).glW())
     {
-      t localt = t.LMA;
-      if (t.a(gcz(), ((ab)paramObject).gcz())) {
+      t localt = t.NDv;
+      if (t.a(gua(), ((ab)paramObject).gua())) {
         return true;
       }
     }
     return false;
   }
   
-  public abstract h fQN();
+  public abstract d.l.b.a.b.j.f.h gil();
   
-  public abstract boolean fUx();
+  public abstract boolean glW();
   
-  public abstract List<av> gbw();
+  public abstract List<av> gsW();
   
-  public abstract at gbz();
+  public abstract at gsZ();
   
-  public abstract bg gcz();
+  public abstract bg gua();
   
   public final int hashCode()
   {
-    int i = this.LLl;
+    int i = this.NCg;
     if (i != 0) {
       return i;
     }
     if (ad.aq(this))
     {
       i = super.hashCode();
-      this.LLl = i;
+      this.NCg = i;
       return i;
     }
-    int j = gbz().hashCode();
-    int k = gbw().hashCode();
-    if (fUx()) {}
+    int j = gsZ().hashCode();
+    int k = gsW().hashCode();
+    if (glW()) {}
     for (i = 1;; i = 0)
     {
       i += (j * 31 + k) * 31;
@@ -66,7 +64,7 @@ public abstract class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.ab
  * JD-Core Version:    0.7.0.1
  */

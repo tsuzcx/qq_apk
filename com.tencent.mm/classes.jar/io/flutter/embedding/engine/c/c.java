@@ -8,45 +8,45 @@ import io.flutter.plugin.a.p;
 
 public final class c
 {
-  public final b<String> KMU;
+  public final b<String> MDR;
   
   public c(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10218);
-    this.KMU = new b(paramDartExecutor, "flutter/lifecycle", p.KPf);
+    this.MDR = new b(paramDartExecutor, "flutter/lifecycle", p.MGc);
     AppMethodBeat.o(10218);
   }
   
-  public final void fNA()
+  public final void geY()
+  {
+    AppMethodBeat.i(10219);
+    a.gea();
+    this.MDR.eF("AppLifecycleState.inactive");
+    AppMethodBeat.o(10219);
+  }
+  
+  public final void geZ()
   {
     AppMethodBeat.i(10220);
-    a.fMD();
-    this.KMU.eC("AppLifecycleState.resumed");
+    a.gea();
+    this.MDR.eF("AppLifecycleState.resumed");
     AppMethodBeat.o(10220);
   }
   
-  public final void fNB()
+  public final void gfa()
   {
     AppMethodBeat.i(10221);
-    a.fMD();
-    this.KMU.eC("AppLifecycleState.paused");
+    a.gea();
+    this.MDR.eF("AppLifecycleState.paused");
     AppMethodBeat.o(10221);
   }
   
-  public final void fNC()
+  public final void gfb()
   {
-    AppMethodBeat.i(192818);
-    a.fMD();
-    this.KMU.eC("AppLifecycleState.detached");
-    AppMethodBeat.o(192818);
-  }
-  
-  public final void fNz()
-  {
-    AppMethodBeat.i(10219);
-    a.fMD();
-    this.KMU.eC("AppLifecycleState.inactive");
-    AppMethodBeat.o(10219);
+    AppMethodBeat.i(213267);
+    a.gea();
+    this.MDR.eF("AppLifecycleState.detached");
+    AppMethodBeat.o(213267);
   }
 }
 

@@ -7,10 +7,10 @@ public enum b$a$a
   static
   {
     AppMethodBeat.i(9936);
-    KPt = new a("NO_TARGET", 0);
-    KPu = new a("FRAMEWORK_CLIENT", 1);
-    KPv = new a("PLATFORM_VIEW", 2);
-    KPw = new a[] { KPt, KPu, KPv };
+    MGs = new a("NO_TARGET", 0);
+    MGt = new a("FRAMEWORK_CLIENT", 1);
+    MGu = new a("PLATFORM_VIEW", 2);
+    MGv = new a[] { MGs, MGt, MGu };
     AppMethodBeat.o(9936);
   }
   
@@ -18,7 +18,7 @@ public enum b$a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     io.flutter.plugin.b.b.a.a
  * JD-Core Version:    0.7.0.1
  */

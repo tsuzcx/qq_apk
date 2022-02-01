@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,25 +11,25 @@ import org.json.JSONObject;
 public final class a
 {
   public String app_id;
-  public String hhs;
-  public String hiu;
-  public int lRv;
-  public String nUA;
-  public boolean nUB;
-  public String nUr;
-  public String nUs;
-  public String nUt;
-  public String nUu;
-  public int nUv;
-  public String nUw;
-  public int nUx;
-  public String nUy;
-  public String nUz;
-  public String nvS;
+  public String hAD;
+  public String hzB;
+  public int mrl;
+  public String nXq;
+  public String oxM;
+  public String oxN;
+  public String oxO;
+  public String oxP;
+  public int oxQ;
+  public String oxR;
+  public int oxS;
+  public String oxT;
+  public String oxU;
+  public String oxV;
+  public boolean oxW;
   public String title;
   public String userName;
   
-  public static LinkedList<a> UD(String paramString)
+  public static LinkedList<a> Ym(String paramString)
   {
     AppMethodBeat.i(112714);
     if (TextUtils.isEmpty(paramString))
@@ -45,13 +45,13 @@ public final class a
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
       AppMethodBeat.o(112714);
     }
     return null;
   }
   
-  public static LinkedList<a> UE(String paramString)
+  public static LinkedList<a> Yn(String paramString)
   {
     AppMethodBeat.i(112715);
     if (TextUtils.isEmpty(paramString))
@@ -67,7 +67,7 @@ public final class a
     }
     catch (JSONException paramString)
     {
-      ac.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.AvailableCardItem", paramString, "", new Object[0]);
       AppMethodBeat.o(112715);
     }
     return null;
@@ -87,23 +87,23 @@ public final class a
     {
       JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
       a locala = new a();
-      locala.nUr = localJSONObject.optString("card_tp_id");
-      locala.lRv = localJSONObject.optInt("card_type");
-      locala.hiu = localJSONObject.optString("color");
-      locala.hhs = localJSONObject.optString("logo_url");
+      locala.oxM = localJSONObject.optString("card_tp_id");
+      locala.mrl = localJSONObject.optInt("card_type");
+      locala.hAD = localJSONObject.optString("color");
+      locala.hzB = localJSONObject.optString("logo_url");
       locala.title = localJSONObject.optString("title");
-      locala.nUs = localJSONObject.optString("sub_title");
-      locala.nUt = localJSONObject.optString("aux_title");
-      locala.nUu = localJSONObject.optString("encrypt_code");
+      locala.oxN = localJSONObject.optString("sub_title");
+      locala.oxO = localJSONObject.optString("aux_title");
+      locala.oxP = localJSONObject.optString("encrypt_code");
       locala.userName = localJSONObject.optString("from_user_name");
       locala.app_id = localJSONObject.optString("app_id");
-      locala.nUv = localJSONObject.optInt("end_time");
-      locala.nUw = localJSONObject.optString("card_user_id");
-      locala.nUx = localJSONObject.optInt("choose_optional");
-      locala.nUz = localJSONObject.optString("invoice_item");
-      locala.nUA = localJSONObject.optString("invoice_status");
-      locala.nUy = localJSONObject.optString("invoice_title");
-      locala.nUB = paramBoolean;
+      locala.oxQ = localJSONObject.optInt("end_time");
+      locala.oxR = localJSONObject.optString("card_user_id");
+      locala.oxS = localJSONObject.optInt("choose_optional");
+      locala.oxU = localJSONObject.optString("invoice_item");
+      locala.oxV = localJSONObject.optString("invoice_status");
+      locala.oxT = localJSONObject.optString("invoice_title");
+      locala.oxW = paramBoolean;
       localLinkedList.add(locala);
       i += 1;
     }
@@ -113,7 +113,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.a
  * JD-Core Version:    0.7.0.1
  */

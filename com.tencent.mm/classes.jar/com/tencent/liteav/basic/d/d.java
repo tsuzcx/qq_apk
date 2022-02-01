@@ -23,15 +23,15 @@ public class d
   
   public String getMessage()
   {
-    AppMethodBeat.i(193046);
+    AppMethodBeat.i(187274);
     if (this.mErrorMessage != null)
     {
       str = "EGL error code: " + this.mErrorCode + this.mErrorMessage;
-      AppMethodBeat.o(193046);
+      AppMethodBeat.o(187274);
       return str;
     }
     String str = "EGL error code: " + this.mErrorCode;
-    AppMethodBeat.o(193046);
+    AppMethodBeat.o(187274);
     return str;
   }
 }

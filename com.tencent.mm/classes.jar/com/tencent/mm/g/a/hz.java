@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hz
   extends b
 {
-  public a dja;
-  public b djb;
+  public a dux;
   
   public hz()
   {
@@ -16,28 +15,22 @@ public final class hz
   
   private hz(byte paramByte)
   {
-    AppMethodBeat.i(89643);
-    this.dja = new a();
-    this.djb = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(91205);
+    this.dux = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(89643);
+    AppMethodBeat.o(91205);
   }
   
   public static final class a
   {
-    public int CW = 0;
-    public String param;
-  }
-  
-  public static final class b
-  {
-    public String djc;
+    public String duy;
+    public int type = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.hz
  * JD-Core Version:    0.7.0.1
  */

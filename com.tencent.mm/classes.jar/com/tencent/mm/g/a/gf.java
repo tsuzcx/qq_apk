@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class gf
   extends b
 {
-  public a dgF;
+  public a drQ;
   
   public gf()
   {
@@ -16,23 +15,26 @@ public final class gf
   
   private gf(byte paramByte)
   {
-    AppMethodBeat.i(163527);
-    this.dgF = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116027);
+    this.drQ = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(163527);
+    AppMethodBeat.o(116027);
   }
   
   public static final class a
   {
-    public Activity dgE;
-    public String dgG;
-    public int dgH;
+    public int drR;
+    public int drS;
+    public int drT;
+    public int drU;
+    public String fileName;
+    public int result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.gf
  * JD-Core Version:    0.7.0.1
  */

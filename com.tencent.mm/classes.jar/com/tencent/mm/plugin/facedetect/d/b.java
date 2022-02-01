@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
 import com.tencent.mm.plugin.facedetect.model.h.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract interface b
 {
@@ -15,32 +15,32 @@ public abstract interface b
   
   public abstract boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult);
   
-  public abstract boolean cnO();
+  public abstract boolean ctt();
   
-  public abstract boolean cnP();
+  public abstract boolean ctu();
   
-  public abstract void cnQ();
+  public abstract void ctv();
   
-  public abstract b cnR();
+  public abstract b ctw();
   
-  public abstract a cnS();
+  public abstract a ctx();
   
   public abstract void setBusinessTip(String paramString);
   
   public static final class a
   {
     public String errMsg;
-    public int qyH;
-    public int qyI;
+    public int riw;
+    public int rix;
     
     a()
     {
-      this.qyH = 1;
+      this.riw = 1;
     }
     
     a(String paramString)
     {
-      this.qyI = 7;
+      this.rix = 7;
       this.errMsg = paramString;
     }
   }
@@ -71,13 +71,13 @@ public abstract interface b
       }
       if (parama.type == 4)
       {
-        ac.i(TAG, "hy: is read number");
-        parama = new d(parama.qxG);
+        ad.i(TAG, "hy: is read number");
+        parama = new d(parama.rhw);
         AppMethodBeat.o(103815);
         return parama;
       }
-      ac.i(TAG, "hy: is normal");
-      parama = new c(parama.iZx, parama.qxD);
+      ad.i(TAG, "hy: is normal");
+      parama = new c(parama.jsG, parama.rht);
       AppMethodBeat.o(103815);
       return parama;
     }
@@ -85,7 +85,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.b
  * JD-Core Version:    0.7.0.1
  */

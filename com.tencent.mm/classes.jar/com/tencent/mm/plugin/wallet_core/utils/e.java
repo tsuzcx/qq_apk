@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.wallet_core.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import org.json.JSONObject;
 
 public final class e
 {
-  public static void bo(JSONObject paramJSONObject)
+  public static void bx(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(71641);
     if (paramJSONObject == null)
     {
-      ac.e("MicroMsg.WalletNetSceneUtil", "parseLuckyMoneySnsPayData() json is null");
+      ad.e("MicroMsg.WalletNetSceneUtil", "parseLuckyMoneySnsPayData() json is null");
       AppMethodBeat.o(71641);
       return;
     }
-    ac.i("MicroMsg.WalletNetSceneUtil", "parseLuckyMoneySnsPayData()");
+    ad.i("MicroMsg.WalletNetSceneUtil", "parseLuckyMoneySnsPayData()");
     String str2 = "";
     String str1 = "";
     int i = paramJSONObject.optInt("is_open_sns_pay", 0);
@@ -28,33 +28,33 @@ public final class e
     {
       str2 = paramJSONObject.optString("open_sns_pay_title");
       str1 = paramJSONObject.optString("open_sns_pay_wording");
-      g.agS();
-      g.agR().agA().set(ah.a.GIg, str2);
-      g.agS();
-      g.agR().agA().set(ah.a.GIh, str1);
+      g.ajD();
+      g.ajC().ajl().set(al.a.Iuy, str2);
+      g.ajD();
+      g.ajC().ajl().set(al.a.Iuz, str1);
     }
-    ac.i("MicroMsg.WalletNetSceneUtil", "is_open_sns_pay:" + i + ", can_open_sns_pay:" + j + ", is_white_user:" + k);
-    ac.i("MicroMsg.WalletNetSceneUtil", "open_sns_pay_title:" + str2 + ", open_sns_pay_wording:" + str1);
-    g.agS();
-    g.agR().agA().set(ah.a.GId, Integer.valueOf(i));
-    g.agS();
-    g.agR().agA().set(ah.a.GIe, Integer.valueOf(j));
-    g.agS();
-    g.agR().agA().set(ah.a.GIf, Integer.valueOf(k));
+    ad.i("MicroMsg.WalletNetSceneUtil", "is_open_sns_pay:" + i + ", can_open_sns_pay:" + j + ", is_white_user:" + k);
+    ad.i("MicroMsg.WalletNetSceneUtil", "open_sns_pay_title:" + str2 + ", open_sns_pay_wording:" + str1);
+    g.ajD();
+    g.ajC().ajl().set(al.a.Iuv, Integer.valueOf(i));
+    g.ajD();
+    g.ajC().ajl().set(al.a.Iuw, Integer.valueOf(j));
+    g.ajD();
+    g.ajC().ajl().set(al.a.Iux, Integer.valueOf(k));
     if (k == 1)
     {
       str1 = paramJSONObject.optString("set_sns_pay_title");
       paramJSONObject = paramJSONObject.optString("set_sns_pay_wording");
-      g.agS();
-      g.agR().agA().set(ah.a.GIi, str1);
-      g.agS();
-      g.agR().agA().set(ah.a.GIj, paramJSONObject);
+      g.ajD();
+      g.ajC().ajl().set(al.a.IuA, str1);
+      g.ajD();
+      g.ajC().ajl().set(al.a.IuB, paramJSONObject);
     }
     for (;;)
     {
-      ac.i("MicroMsg.WalletNetSceneUtil", "set_sns_pay_title:" + str1 + ", set_sns_pay_wording:" + paramJSONObject);
-      g.agS();
-      g.agR().agA().faa();
+      ad.i("MicroMsg.WalletNetSceneUtil", "set_sns_pay_title:" + str1 + ", set_sns_pay_wording:" + paramJSONObject);
+      g.ajD();
+      g.ajC().ajl().fqc();
       AppMethodBeat.o(71641);
       return;
       paramJSONObject = "";

@@ -32,7 +32,7 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewParent;
 import com.davemorrissey.labs.subscaleview.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -51,121 +51,123 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class SubsamplingScaleImageView
   extends View
 {
-  private static final List<Integer> aMS;
-  private static final List<Integer> aMT;
-  private static final List<Integer> aMU;
-  private static final List<Integer> aMV;
-  private static final List<Integer> aMW;
-  public static int aNp;
-  private static Bitmap.Config aOt;
-  private static com.davemorrissey.labs.subscaleview.c.a aOu;
-  private static com.davemorrissey.labs.subscaleview.c.d aOv;
-  private static com.davemorrissey.labs.subscaleview.c.c aOw;
+  public static int aXJ;
+  private static final List<Integer> aXk;
+  private static final List<Integer> aXl;
+  private static final List<Integer> aXm;
+  private static final List<Integer> aXn;
+  private static final List<Integer> aXo;
+  private static Bitmap.Config aYN;
+  private static com.davemorrissey.labs.subscaleview.c.a aYO;
+  private static com.davemorrissey.labs.subscaleview.c.d aYP;
+  private static com.davemorrissey.labs.subscaleview.c.c aYQ;
   private final String TAG;
-  private com.davemorrissey.labs.subscaleview.a.d aMC;
-  public int aMO;
-  public int aMP;
-  private Rect aMQ;
-  private boolean aMX;
-  private boolean aMY;
-  private boolean aMZ;
-  private final ReadWriteLock aMv;
-  private float aNA;
-  private PointF aNB;
-  private PointF aNC;
-  private PointF aND;
-  private Float aNE;
-  private PointF aNF;
-  private PointF aNG;
-  private boolean aNH;
-  private a aNI;
-  private a aNJ;
-  private int aNK;
-  private int aNL;
-  private Rect aNM;
-  private boolean aNN;
-  private boolean aNO;
-  private boolean aNP;
-  private int aNQ;
-  private GestureDetector aNR;
-  private GestureDetector.SimpleOnGestureListener aNS;
-  private GestureDetector aNT;
-  private com.davemorrissey.labs.subscaleview.a.b<? extends com.davemorrissey.labs.subscaleview.a.d> aNU;
-  private com.davemorrissey.labs.subscaleview.a.b<? extends com.davemorrissey.labs.subscaleview.a.d> aNV;
-  private PointF aNW;
-  private float aNX;
-  private final float aNY;
-  private float aNZ;
-  private int aNa;
-  private int aNb;
-  private boolean aNc;
-  private int aNd;
-  private boolean aNe;
-  private long aNf;
-  private long aNg;
-  private Bitmap aNh;
-  private Map<Integer, List<com.davemorrissey.labs.subscaleview.c.e>> aNi;
-  private boolean aNj;
-  private float aNk;
-  private float aNl;
-  private int aNm;
-  private int aNn;
-  private int aNo;
-  private int aNq;
-  private int aNr;
-  private boolean aNs;
-  private boolean aNt;
-  private boolean aNu;
-  private boolean aNv;
-  private float aNw;
-  private int aNx;
-  private int aNy;
-  private int aNz;
-  private float aOA;
-  private float aOB;
-  public float aOC;
-  private float aOD;
-  private float aOE;
-  private float aOF;
-  private float aOG;
-  private boolean aOH;
-  private boolean aOI;
-  private PointF aOJ;
-  private View.OnAttachStateChangeListener aOK;
-  private com.davemorrissey.labs.subscaleview.d.a aOL;
-  private c aOM;
-  private boolean aON;
-  private boolean aOO;
-  private boolean aOP;
-  private float aOQ;
-  private float aOR;
-  private boolean aOa;
-  private PointF aOb;
-  private PointF aOc;
-  private PointF aOd;
-  private a aOe;
-  private boolean aOf;
-  private boolean aOg;
-  private e aOh;
-  private f aOi;
-  private View.OnLongClickListener aOj;
-  private Paint aOk;
-  private Paint aOl;
-  private Paint aOm;
-  private Paint aOn;
-  private g aOo;
-  private RectF aOp;
-  private float[] aOq;
-  private float[] aOr;
-  private Matrix aOs;
-  private LinkedList<com.davemorrissey.labs.subscaleview.c.b> aOx;
-  private int aOy;
-  private int aOz;
+  private final ReadWriteLock aWM;
+  private com.davemorrissey.labs.subscaleview.a.d aWT;
+  private boolean aXA;
+  private boolean aXB;
+  private Map<Integer, List<com.davemorrissey.labs.subscaleview.c.e>> aXC;
+  private boolean aXD;
+  private float aXE;
+  private float aXF;
+  private int aXG;
+  private int aXH;
+  private int aXI;
+  private int aXK;
+  private int aXL;
+  private boolean aXM;
+  private boolean aXN;
+  private boolean aXO;
+  private boolean aXP;
+  private float aXQ;
+  private int aXR;
+  private int aXS;
+  private int aXT;
+  private float aXU;
+  private PointF aXV;
+  private PointF aXW;
+  private PointF aXX;
+  private Float aXY;
+  private PointF aXZ;
+  public int aXg;
+  public int aXh;
+  private Rect aXi;
+  private boolean aXp;
+  private boolean aXq;
+  private boolean aXr;
+  private int aXs;
+  private int aXt;
+  private boolean aXu;
+  private int aXv;
+  private boolean aXw;
+  private long aXx;
+  private long aXy;
+  private Bitmap aXz;
+  private boolean aYA;
+  private e aYB;
+  private f aYC;
+  private View.OnLongClickListener aYD;
+  private Paint aYE;
+  private Paint aYF;
+  private Paint aYG;
+  private Paint aYH;
+  private g aYI;
+  private RectF aYJ;
+  private float[] aYK;
+  private float[] aYL;
+  private Matrix aYM;
+  private LinkedList<com.davemorrissey.labs.subscaleview.c.b> aYR;
+  private int aYS;
+  private int aYT;
+  private float aYU;
+  private float aYV;
+  public float aYW;
+  private float aYX;
+  private float aYY;
+  private float aYZ;
+  private PointF aYa;
+  private boolean aYb;
+  private a aYc;
+  private a aYd;
+  private int aYe;
+  private int aYf;
+  private Rect aYg;
+  private boolean aYh;
+  private boolean aYi;
+  private boolean aYj;
+  private int aYk;
+  private GestureDetector aYl;
+  private GestureDetector.SimpleOnGestureListener aYm;
+  private GestureDetector aYn;
+  private com.davemorrissey.labs.subscaleview.a.b<? extends com.davemorrissey.labs.subscaleview.a.d> aYo;
+  private com.davemorrissey.labs.subscaleview.a.b<? extends com.davemorrissey.labs.subscaleview.a.d> aYp;
+  private PointF aYq;
+  private float aYr;
+  private final float aYs;
+  private float aYt;
+  private boolean aYu;
+  private PointF aYv;
+  private PointF aYw;
+  private PointF aYx;
+  private a aYy;
+  private boolean aYz;
+  private float aZa;
+  private boolean aZb;
+  private boolean aZc;
+  private PointF aZd;
+  private View.OnAttachStateChangeListener aZe;
+  private com.davemorrissey.labs.subscaleview.d.a aZf;
+  private c aZg;
+  private boolean aZh;
+  private boolean aZi;
+  private boolean aZj;
+  private float aZk;
+  private float aZl;
   private Bitmap bitmap;
   private boolean cancelled;
   private float density;
-  private Matrix eY;
   public Executor executor;
+  private Matrix gR;
   private Handler handler;
   private int orientation;
   private float scale;
@@ -174,16 +176,16 @@ public class SubsamplingScaleImageView
   static
   {
     AppMethodBeat.i(157473);
-    aMS = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(90), Integer.valueOf(180), Integer.valueOf(270), Integer.valueOf(-1) });
-    aMT = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3) });
-    aMU = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(1) });
-    aMV = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3) });
-    aMW = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(3), Integer.valueOf(4) });
-    aNp = 2147483647;
-    aOt = Bitmap.Config.ARGB_8888;
-    aOu = new com.davemorrissey.labs.subscaleview.b.a();
-    aOv = new com.davemorrissey.labs.subscaleview.b.c();
-    aOw = new com.davemorrissey.labs.subscaleview.b.b();
+    aXk = Arrays.asList(new Integer[] { Integer.valueOf(0), Integer.valueOf(90), Integer.valueOf(180), Integer.valueOf(270), Integer.valueOf(-1) });
+    aXl = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3) });
+    aXm = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(1) });
+    aXn = Arrays.asList(new Integer[] { Integer.valueOf(1), Integer.valueOf(2), Integer.valueOf(3) });
+    aXo = Arrays.asList(new Integer[] { Integer.valueOf(2), Integer.valueOf(1), Integer.valueOf(3), Integer.valueOf(4) });
+    aXJ = 2147483647;
+    aYN = Bitmap.Config.ARGB_8888;
+    aYO = new com.davemorrissey.labs.subscaleview.b.a();
+    aYP = new com.davemorrissey.labs.subscaleview.b.c();
+    aYQ = new com.davemorrissey.labs.subscaleview.b.b();
     AppMethodBeat.o(157473);
   }
   
@@ -192,49 +194,51 @@ public class SubsamplingScaleImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(157394);
     this.TAG = (SubsamplingScaleImageView.class.getSimpleName() + hashCode());
-    this.aNe = true;
-    this.aNf = -1L;
-    this.aNg = -1L;
-    this.aNj = false;
+    this.aXw = true;
+    this.aXx = -1L;
+    this.aXy = -1L;
+    this.aXA = false;
+    this.aXB = false;
+    this.aXD = false;
     this.orientation = -1;
-    this.aNk = 2.0F;
-    this.aNl = qy();
-    this.aNm = -1;
-    this.aNn = 1;
-    this.aNo = 3;
-    this.aNq = aNp;
-    this.aNr = aNp;
-    this.aNs = true;
-    this.aNt = true;
-    this.aNu = true;
-    this.aNv = true;
-    this.aNw = 2.0F;
-    this.aNx = 1;
-    this.aNy = 200;
-    this.aNz = 200;
-    this.aNL = 0;
-    this.aMv = new ReentrantReadWriteLock(true);
-    this.aNU = new com.davemorrissey.labs.subscaleview.a.a(com.davemorrissey.labs.subscaleview.a.e.class);
-    this.aNV = new com.davemorrissey.labs.subscaleview.a.a(com.davemorrissey.labs.subscaleview.a.e.class);
-    this.aOq = new float[8];
-    this.aOr = new float[8];
-    this.aOx = new LinkedList();
+    this.aXE = 2.0F;
+    this.aXF = rW();
+    this.aXG = -1;
+    this.aXH = 1;
+    this.aXI = 3;
+    this.aXK = aXJ;
+    this.aXL = aXJ;
+    this.aXM = true;
+    this.aXN = true;
+    this.aXO = true;
+    this.aXP = true;
+    this.aXQ = 2.0F;
+    this.aXR = 1;
+    this.aXS = 200;
+    this.aXT = 200;
+    this.aYf = 0;
+    this.aWM = new ReentrantReadWriteLock(true);
+    this.aYo = new com.davemorrissey.labs.subscaleview.a.a(com.davemorrissey.labs.subscaleview.a.e.class);
+    this.aYp = new com.davemorrissey.labs.subscaleview.a.a(com.davemorrissey.labs.subscaleview.a.e.class);
+    this.aYK = new float[8];
+    this.aYL = new float[8];
+    this.aYR = new LinkedList();
     this.cancelled = false;
     this.executor = AsyncTask.THREAD_POOL_EXECUTOR;
-    this.aOF = 1.0F;
-    this.aOG = 20.0F;
-    this.aOH = true;
-    this.aOI = false;
-    this.aOL = new com.davemorrissey.labs.subscaleview.d.a();
-    this.aOM = new c() {};
-    this.aON = false;
-    this.aOO = false;
-    this.aOP = false;
+    this.aYZ = 1.0F;
+    this.aZa = 20.0F;
+    this.aZb = true;
+    this.aZc = false;
+    this.aZf = new com.davemorrissey.labs.subscaleview.d.a();
+    this.aZg = new c() {};
+    this.aZh = false;
+    this.aZi = false;
+    this.aZj = false;
     this.density = getResources().getDisplayMetrics().density;
     setDoubleTapZoomScale(2.0F);
     setMinimumTileDpi(320);
     setGestureDetector(paramContext);
-    this.aOs = new Matrix();
+    this.aYM = new Matrix();
     this.handler = new Handler(new Handler.Callback()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
@@ -265,14 +269,14 @@ public class SubsamplingScaleImageView
             AppMethodBeat.o(157394);
             throw paramContext;
           }
-          setImage(a.W("file:///android_asset/".concat(String.valueOf(str))).ql());
+          setImage(a.aP("assets:///".concat(String.valueOf(str))).rJ());
         }
       }
       if (paramAttributeSet.hasValue(3))
       {
         int i = paramAttributeSet.getResourceId(3, 0);
         if (i > 0) {
-          setImage(new a(i).ql());
+          setImage(new a(i).rJ());
         }
       }
       if (paramAttributeSet.hasValue(1)) {
@@ -289,36 +293,36 @@ public class SubsamplingScaleImageView
       }
       paramAttributeSet.recycle();
     }
-    this.aNY = TypedValue.applyDimension(1, 20.0F, paramContext.getResources().getDisplayMetrics());
+    this.aYs = TypedValue.applyDimension(1, 20.0F, paramContext.getResources().getDisplayMetrics());
     float f = getContext().getResources().getDisplayMetrics().widthPixels / 720.0F;
     if (f > 1.0F) {
-      this.aOF = f;
+      this.aYZ = f;
     }
     AppMethodBeat.o(157394);
   }
   
-  private int T(float paramFloat)
+  private int V(float paramFloat)
   {
     AppMethodBeat.i(157420);
     float f = paramFloat;
-    if (this.aNm > 0)
+    if (this.aXG > 0)
     {
       DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
       f = localDisplayMetrics.xdpi;
       f = (localDisplayMetrics.ydpi + f) / 2.0F;
-      f = paramFloat * (this.aNm / f);
+      f = paramFloat * (this.aXG / f);
     }
-    int j = (int)(qw() * f);
-    int i = (int)(qx() * f);
+    int j = (int)(rU() * f);
+    int i = (int)(rV() * f);
     if ((j == 0) || (i == 0))
     {
       AppMethodBeat.o(157420);
       return 32;
     }
-    if ((qx() > i) || (qw() > j))
+    if ((rV() > i) || (rU() > j))
     {
-      i = Math.round(qx() / i);
-      j = Math.round(qw() / j);
+      i = Math.round(rV() / i);
+      j = Math.round(rU() / j);
       if (i >= j) {}
     }
     for (;;)
@@ -340,44 +344,20 @@ public class SubsamplingScaleImageView
     }
   }
   
-  private float U(float paramFloat)
-  {
-    if (this.aNB == null) {
-      return (0.0F / 0.0F);
-    }
-    return (paramFloat - this.aNB.x) / this.scale;
-  }
-  
-  private float V(float paramFloat)
-  {
-    if (this.aNB == null) {
-      return (0.0F / 0.0F);
-    }
-    return (paramFloat - this.aNB.y) / this.scale;
-  }
-  
   private float W(float paramFloat)
   {
-    if (this.aNB == null) {
+    if (this.aXV == null) {
       return (0.0F / 0.0F);
     }
-    return this.scale * paramFloat + this.aNB.x;
+    return (paramFloat - this.aXV.x) / this.scale;
   }
   
   private float X(float paramFloat)
   {
-    if (this.aNB == null) {
+    if (this.aXV == null) {
       return (0.0F / 0.0F);
     }
-    return this.scale * paramFloat + this.aNB.y;
-  }
-  
-  private float Y(float paramFloat)
-  {
-    AppMethodBeat.i(157442);
-    paramFloat = Math.max(qy(), paramFloat);
-    AppMethodBeat.o(157442);
-    return paramFloat;
+    return (paramFloat - this.aXV.y) / this.scale;
   }
   
   private static float a(int paramInt, long paramLong1, float paramFloat1, float paramFloat2, long paramLong2)
@@ -408,12 +388,12 @@ public class SubsamplingScaleImageView
   private PointF a(float paramFloat1, float paramFloat2, PointF paramPointF)
   {
     AppMethodBeat.i(157437);
-    if (this.aNB == null)
+    if (this.aXV == null)
     {
       AppMethodBeat.o(157437);
       return null;
     }
-    paramPointF.set(U(paramFloat1), V(paramFloat2));
+    paramPointF.set(W(paramFloat1), X(paramFloat2));
     AppMethodBeat.o(157437);
     return paramPointF;
   }
@@ -423,19 +403,19 @@ public class SubsamplingScaleImageView
     try
     {
       AppMethodBeat.i(157417);
-      f("initialiseBaseLayer maxTileDimensions=%dx%d", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
-      this.aOo = new g(0.0F, new PointF(0.0F, 0.0F), (byte)0);
-      a(true, this.aOo);
-      this.aNd = T(this.aOo.scale);
+      h("initialiseBaseLayer maxTileDimensions=%dx%d", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
+      this.aYI = new g(0.0F, new PointF(0.0F, 0.0F), (byte)0);
+      a(true, this.aYI);
+      this.aXv = V(this.aYI.scale);
       b(paramPoint);
-      paramPoint = ((List)this.aNi.get(Integer.valueOf(this.aNd))).iterator();
+      paramPoint = ((List)this.aXC.get(Integer.valueOf(this.aXv))).iterator();
       while (paramPoint.hasNext())
       {
         com.davemorrissey.labs.subscaleview.c.e locale = (com.davemorrissey.labs.subscaleview.c.e)paramPoint.next();
-        ac.i(this.TAG, "alvinluo tile fullSampleSize: %d", new Object[] { Integer.valueOf(this.aNd) });
+        ad.i(this.TAG, "alvinluo tile fullSampleSize: %d", new Object[] { Integer.valueOf(this.aXv) });
         a(locale);
       }
-      aJ(true);
+      aK(true);
     }
     finally {}
     AppMethodBeat.o(157417);
@@ -448,19 +428,19 @@ public class SubsamplingScaleImageView
     int i;
     label101:
     float f1;
-    if (!this.aNt)
+    if (!this.aXN)
     {
-      if (this.aNG != null)
+      if (this.aYa != null)
       {
-        paramPointF1.x = this.aNG.x;
-        paramPointF1.y = this.aNG.y;
+        paramPointF1.x = this.aYa.x;
+        paramPointF1.y = this.aYa.y;
       }
     }
     else
     {
       f2 = getDoubleTapZoomScale();
-      ac.i(this.TAG, "alvinluo doubleTapZoom %f", new Object[] { Float.valueOf(f2) });
-      if ((this.scale > f2 * 0.9D) && (this.scale != this.aOC)) {
+      ad.i(this.TAG, "alvinluo doubleTapZoom %f", new Object[] { Float.valueOf(f2) });
+      if ((this.scale > f2 * 0.9D) && (this.scale != this.aYW)) {
         break label159;
       }
       i = 1;
@@ -469,7 +449,7 @@ public class SubsamplingScaleImageView
       }
       f1 = f2;
       label109:
-      if (this.aNx != 3) {
+      if (this.aXR != 3) {
         break label173;
       }
       a(f1, paramPointF1);
@@ -479,30 +459,30 @@ public class SubsamplingScaleImageView
       invalidate();
       AppMethodBeat.o(157411);
       return;
-      paramPointF1.x = (qw() / 2);
-      paramPointF1.y = (qx() / 2);
+      paramPointF1.x = (rU() / 2);
+      paramPointF1.y = (rV() / 2);
       break;
       label159:
       i = 0;
       break label101;
       label165:
-      f1 = this.aOC;
+      f1 = this.aYW;
       break label109;
       label173:
-      if ((this.aNx == 2) || (i == 0) || (!this.aNt))
+      if ((this.aXR == 2) || (i == 0) || (!this.aXN))
       {
         paramPointF1 = new b(f1, paramPointF1, (byte)0);
-        paramPointF1.aPe = false;
-        paramPointF1.duration = this.aNy;
-        paramPointF1.aPg = 4;
+        paramPointF1.aZy = false;
+        paramPointF1.duration = this.aXS;
+        paramPointF1.aZA = 4;
         paramPointF1.start();
       }
-      else if (this.aNx == 1)
+      else if (this.aXR == 1)
       {
         paramPointF1 = new b(f2, paramPointF1, paramPointF2, (byte)0);
-        paramPointF1.aPe = false;
-        paramPointF1.duration = this.aNy;
-        paramPointF1.aPg = 4;
+        paramPointF1.aZy = false;
+        paramPointF1.duration = this.aXS;
+        paramPointF1.aZA = 4;
         paramPointF1.start();
       }
     }
@@ -512,9 +492,9 @@ public class SubsamplingScaleImageView
   {
     AppMethodBeat.i(157412);
     paramPointF1 = new b(paramFloat, paramPointF1, paramPointF2, (byte)0);
-    paramPointF1.aPe = false;
-    paramPointF1.duration = this.aNz;
-    paramPointF1.aPg = 2;
+    paramPointF1.aZy = false;
+    paramPointF1.duration = this.aXT;
+    paramPointF1.aZA = 2;
     paramPointF1.start();
     AppMethodBeat.o(157412);
   }
@@ -524,13 +504,13 @@ public class SubsamplingScaleImageView
     AppMethodBeat.i(157393);
     if (this.cancelled)
     {
-      ac.i(this.TAG, "alvinluo newLoadTask, has cancelled and ignore");
+      ad.i(this.TAG, "alvinluo newLoadTask, has cancelled and ignore");
       AppMethodBeat.o(157393);
       return;
     }
-    parame = aOv.a(this, this.aMC, parame);
-    parame.qi();
-    this.aOx.add(parame);
+    parame = aYP.a(this, this.aWT, parame);
+    parame.rG();
+    this.aYR.add(parame);
     AppMethodBeat.o(157393);
   }
   
@@ -539,19 +519,19 @@ public class SubsamplingScaleImageView
     float f2 = 0.5F;
     AppMethodBeat.i(157421);
     boolean bool = paramBoolean;
-    if (this.aNn == 2)
+    if (this.aXH == 2)
     {
       bool = paramBoolean;
-      if (this.aOf) {
+      if (this.aYz) {
         bool = false;
       }
     }
-    PointF localPointF = paramg.aNB;
-    float f4 = Y(paramg.scale);
-    float f3 = f4 * qw();
-    float f5 = f4 * qx();
+    PointF localPointF = paramg.aXV;
+    float f4 = aa(paramg.scale);
+    float f3 = f4 * rU();
+    float f5 = f4 * rV();
     float f1;
-    if ((this.aNn == 3) && (this.aOf))
+    if ((this.aXH == 3) && (this.aYz))
     {
       localPointF.x = Math.max(localPointF.x, getWidth() / 2 - f3);
       localPointF.y = Math.max(localPointF.y, getHeight() / 2 - f5);
@@ -563,7 +543,7 @@ public class SubsamplingScaleImageView
       if ((getPaddingTop() > 0) || (getPaddingBottom() > 0)) {
         f2 = getPaddingTop() / (getPaddingTop() + getPaddingBottom());
       }
-      if ((this.aNn != 3) || (!this.aOf)) {
+      if ((this.aXH != 3) || (!this.aYz)) {
         break label369;
       }
       f2 = Math.max(0, getWidth() / 2);
@@ -615,23 +595,23 @@ public class SubsamplingScaleImageView
     paramArrayOfFloat[7] = paramFloat8;
   }
   
-  private void aJ(boolean paramBoolean)
+  private void aK(boolean paramBoolean)
   {
     AppMethodBeat.i(157418);
-    if ((this.aMC == null) || (this.aNi == null))
+    if ((this.aWT == null) || (this.aXC == null))
     {
       AppMethodBeat.o(157418);
       return;
     }
-    int j = Math.min(this.aNd, T(this.scale));
-    Iterator localIterator1 = this.aNi.entrySet().iterator();
+    int j = Math.min(this.aXv, V(this.scale));
+    Iterator localIterator1 = this.aXC.entrySet().iterator();
     while (localIterator1.hasNext())
     {
       Iterator localIterator2 = ((List)((Map.Entry)localIterator1.next()).getValue()).iterator();
       while (localIterator2.hasNext())
       {
         com.davemorrissey.labs.subscaleview.c.e locale = (com.davemorrissey.labs.subscaleview.c.e)localIterator2.next();
-        if ((locale.sampleSize < j) || ((locale.sampleSize > j) && (locale.sampleSize != this.aNd)))
+        if ((locale.sampleSize < j) || ((locale.sampleSize > j) && (locale.sampleSize != this.aXv)))
         {
           locale.visible = false;
           if (locale.bitmap != null)
@@ -642,25 +622,25 @@ public class SubsamplingScaleImageView
         }
         if (locale.sampleSize == j)
         {
-          float f1 = U(0.0F);
-          float f2 = U(getWidth());
-          float f3 = V(0.0F);
-          float f4 = V(getHeight());
-          if ((f1 <= locale.aMF.right) && (locale.aMF.left <= f2) && (f3 <= locale.aMF.bottom) && (locale.aMF.top <= f4)) {}
+          float f1 = W(0.0F);
+          float f2 = W(getWidth());
+          float f3 = X(0.0F);
+          float f4 = X(getHeight());
+          if ((f1 <= locale.aWW.right) && (locale.aWW.left <= f2) && (f3 <= locale.aWW.bottom) && (locale.aWW.top <= f4)) {}
           for (int i = 1;; i = 0)
           {
             if (i == 0) {
               break label328;
             }
             locale.visible = true;
-            if ((locale.aMG) || (locale.bitmap != null) || (!paramBoolean)) {
+            if ((locale.aWX) || (locale.bitmap != null) || (!paramBoolean)) {
               break;
             }
             a(locale);
             break;
           }
           label328:
-          if (locale.sampleSize != this.aNd)
+          if (locale.sampleSize != this.aXv)
           {
             locale.visible = false;
             if (locale.bitmap != null)
@@ -670,7 +650,7 @@ public class SubsamplingScaleImageView
             }
           }
         }
-        else if (locale.sampleSize == this.aNd)
+        else if (locale.sampleSize == this.aXv)
         {
           locale.visible = true;
         }
@@ -679,32 +659,40 @@ public class SubsamplingScaleImageView
     AppMethodBeat.o(157418);
   }
   
-  private void aK(boolean paramBoolean)
+  private void aL(boolean paramBoolean)
   {
     AppMethodBeat.i(157422);
     int i;
-    if (this.aNB == null)
+    if (this.aXV == null)
     {
       i = 1;
-      this.aNB = new PointF(0.0F, 0.0F);
+      this.aXV = new PointF(0.0F, 0.0F);
     }
     for (;;)
     {
-      if (this.aOo == null) {
-        this.aOo = new g(0.0F, new PointF(0.0F, 0.0F), (byte)0);
+      if (this.aYI == null) {
+        this.aYI = new g(0.0F, new PointF(0.0F, 0.0F), (byte)0);
       }
-      this.aOo.scale = this.scale;
-      this.aOo.aNB.set(this.aNB);
-      a(paramBoolean, this.aOo);
-      this.scale = this.aOo.scale;
-      this.aNB.set(this.aOo.aNB);
-      if ((i != 0) && (this.aNo != 4)) {
-        this.aNB.set(h(qw() / 2, qx() / 2, this.scale));
+      this.aYI.scale = this.scale;
+      this.aYI.aXV.set(this.aXV);
+      a(paramBoolean, this.aYI);
+      this.scale = this.aYI.scale;
+      this.aXV.set(this.aYI.aXV);
+      if ((i != 0) && (this.aXI != 4)) {
+        this.aXV.set(j(rU() / 2, rV() / 2, this.scale));
       }
       AppMethodBeat.o(157422);
       return;
       i = 0;
     }
+  }
+  
+  private float aa(float paramFloat)
+  {
+    AppMethodBeat.i(157442);
+    paramFloat = Math.max(rW(), paramFloat);
+    AppMethodBeat.o(157442);
+    return paramFloat;
   }
   
   private static float b(long paramLong1, float paramFloat1, float paramFloat2, long paramLong2)
@@ -720,12 +708,12 @@ public class SubsamplingScaleImageView
   private PointF b(float paramFloat1, float paramFloat2, PointF paramPointF)
   {
     AppMethodBeat.i(157439);
-    if (this.aNB == null)
+    if (this.aXV == null)
     {
       AppMethodBeat.o(157439);
       return null;
     }
-    paramPointF.set(W(paramFloat1), X(paramFloat2));
+    paramPointF.set(Y(paramFloat1), Z(paramFloat2));
     AppMethodBeat.o(157439);
     return paramPointF;
   }
@@ -733,27 +721,27 @@ public class SubsamplingScaleImageView
   private void b(Point paramPoint)
   {
     AppMethodBeat.i(157423);
-    f("initialiseTileMap maxTileDimensions=%dx%d", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
-    this.aNi = new LinkedHashMap();
-    int i = this.aNd;
+    h("initialiseTileMap maxTileDimensions=%dx%d", new Object[] { Integer.valueOf(paramPoint.x), Integer.valueOf(paramPoint.y) });
+    this.aXC = new LinkedHashMap();
+    int i = this.aXv;
     int j = 1;
     int m = 1;
-    int k = qw() / j;
-    int i2 = qx() / m;
+    int k = rU() / j;
+    int i2 = rV() / m;
     int n = k / i;
     int i1 = i2 / i;
-    while ((n + j + 1 > paramPoint.x) || ((n > getWidth() * 1.25D) && (i < this.aNd)))
+    while ((n + j + 1 > paramPoint.x) || ((n > getWidth() * 1.25D) && (i < this.aXv)))
     {
       j += 1;
-      k = qw() / j;
+      k = rU() / j;
       n = k / i;
     }
     for (;;)
     {
-      if ((i1 + m + 1 > paramPoint.y) || ((i1 > getHeight() * 1.25D) && (i < this.aNd)))
+      if ((i1 + m + 1 > paramPoint.y) || ((i1 > getHeight() * 1.25D) && (i < this.aXv)))
       {
         m += 1;
-        n = qx() / m;
+        n = rV() / m;
         i1 = n / i;
       }
       else
@@ -770,14 +758,14 @@ public class SubsamplingScaleImageView
             boolean bool;
             label265:
             int i3;
-            if (i == this.aNd)
+            if (i == this.aXv)
             {
               bool = true;
               locale.visible = bool;
               if (i1 != j - 1) {
                 break label385;
               }
-              i3 = qw();
+              i3 = rU();
               label286:
               if (i2 != m - 1) {
                 break label397;
@@ -785,11 +773,11 @@ public class SubsamplingScaleImageView
             }
             label385:
             label397:
-            for (int i4 = qx();; i4 = (i2 + 1) * n)
+            for (int i4 = rV();; i4 = (i2 + 1) * n)
             {
-              locale.aMF = new Rect(i1 * k, i2 * n, i3, i4);
-              locale.aMH = new Rect(0, 0, 0, 0);
-              locale.aMI = new Rect(locale.aMF);
+              locale.aWW = new Rect(i1 * k, i2 * n, i3, i4);
+              locale.aWY = new Rect(0, 0, 0, 0);
+              locale.aWZ = new Rect(locale.aWW);
               localArrayList.add(locale);
               i2 += 1;
               break;
@@ -801,7 +789,7 @@ public class SubsamplingScaleImageView
           }
           i1 += 1;
         }
-        this.aNi.put(Integer.valueOf(i), localArrayList);
+        this.aXC.put(Integer.valueOf(i), localArrayList);
         if (i != 1)
         {
           i /= 2;
@@ -817,7 +805,7 @@ public class SubsamplingScaleImageView
   private void c(PointF paramPointF)
   {
     AppMethodBeat.i(157465);
-    if ((this.aOi != null) && (!this.aNB.equals(paramPointF))) {
+    if ((this.aYC != null) && (!this.aXV.equals(paramPointF))) {
       getCenter();
     }
     AppMethodBeat.o(157465);
@@ -835,9 +823,9 @@ public class SubsamplingScaleImageView
   
   private float getDoubleTapZoomScale()
   {
-    float f1 = this.aOC;
-    if (this.aOA * 0.7F > f1) {
-      f1 = this.aOA;
+    float f1 = this.aYW;
+    if (this.aYU * 0.7F > f1) {
+      f1 = this.aYU;
     }
     for (;;)
     {
@@ -846,37 +834,37 @@ public class SubsamplingScaleImageView
         f2 = 1.0F;
       }
       f1 = f2;
-      if (f2 > this.aNk) {
-        f1 = this.aNk;
+      if (f2 > this.aXE) {
+        f1 = this.aXE;
       }
       return f1;
-      if (this.aOB * 0.7F > f1) {
-        f1 = this.aOB;
+      if (this.aYV * 0.7F > f1) {
+        f1 = this.aYV;
       } else {
-        f1 = this.aOC * this.aNw;
+        f1 = this.aYW * this.aXQ;
       }
     }
   }
   
   public static Bitmap.Config getPreferredBitmapConfig()
   {
-    return aOt;
+    return aYN;
   }
   
-  private PointF h(float paramFloat1, float paramFloat2, float paramFloat3)
+  private PointF j(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(157440);
     int i = getPaddingLeft();
     int j = (getWidth() - getPaddingRight() - getPaddingLeft()) / 2;
     int k = getPaddingTop();
     int m = (getHeight() - getPaddingBottom() - getPaddingTop()) / 2;
-    if (this.aOo == null) {
-      this.aOo = new g(0.0F, new PointF(0.0F, 0.0F), (byte)0);
+    if (this.aYI == null) {
+      this.aYI = new g(0.0F, new PointF(0.0F, 0.0F), (byte)0);
     }
-    this.aOo.scale = paramFloat3;
-    this.aOo.aNB.set(i + j - paramFloat1 * paramFloat3, k + m - paramFloat2 * paramFloat3);
-    a(true, this.aOo);
-    PointF localPointF = this.aOo.aNB;
+    this.aYI.scale = paramFloat3;
+    this.aYI.aXV.set(i + j - paramFloat1 * paramFloat3, k + m - paramFloat2 * paramFloat3);
+    a(true, this.aYI);
+    PointF localPointF = this.aYI.aXV;
     AppMethodBeat.o(157440);
     return localPointF;
   }
@@ -886,120 +874,121 @@ public class SubsamplingScaleImageView
     return (int)(this.density * paramInt);
   }
   
-  private void qm()
+  private void rK()
   {
     AppMethodBeat.i(157398);
-    ac.i(this.TAG, "alvinluo initScaleRate: %f", new Object[] { Float.valueOf(this.aOC) });
-    qo();
-    qp();
+    ad.i(this.TAG, "alvinluo initScaleRate: %f", new Object[] { Float.valueOf(this.aYW) });
+    rM();
+    rN();
     AppMethodBeat.o(157398);
   }
   
-  private void qn()
+  private void rL()
   {
-    AppMethodBeat.i(205113);
+    AppMethodBeat.i(207100);
     if (this.bitmap == null)
     {
-      AppMethodBeat.o(205113);
+      AppMethodBeat.o(207100);
       return;
     }
-    if (!this.aMX)
+    if (!this.aXp)
     {
-      AppMethodBeat.o(205113);
+      AppMethodBeat.o(207100);
       return;
     }
-    int k = qw();
-    int m = qx();
-    int i;
-    int j;
-    label75:
-    boolean bool1;
-    label90:
-    boolean bool2;
-    if (k > m * 2.2F)
+    int i = rU();
+    int j = rV();
+    boolean bool;
+    if (i > j * 2.2F)
     {
-      i = 1;
-      if (m <= k * 2.2F) {
-        break label232;
+      bool = true;
+      this.aXB = bool;
+      if (j <= i * 2.2F) {
+        break label272;
       }
-      j = 1;
-      if ((i == 0) || (k <= this.aOy)) {
-        break label237;
+      bool = true;
+      label77:
+      this.aXA = bool;
+      if ((!this.aXB) || (i <= this.aYS)) {
+        break label277;
       }
-      bool1 = true;
-      if ((j == 0) || (m <= this.aOz)) {
-        break label243;
+      bool = true;
+      label99:
+      this.aXB = bool;
+      if ((!this.aXA) || (j <= this.aYT)) {
+        break label282;
       }
-      bool2 = true;
-      label106:
-      qm();
-      if (!bool2) {
-        break label249;
+      bool = true;
+      label121:
+      this.aXA = bool;
+      rK();
+      if (!this.aXA) {
+        break label287;
       }
-      this.aOD = (this.aOy * 1.0F / qu());
-      this.aOE = (this.aOz * 1.0F / qv());
+      this.aYX = (this.aYS * 1.0F / rS());
+      this.aYY = (this.aYT * 1.0F / rT());
     }
     for (;;)
     {
-      ac.i(this.TAG, "alvinluo initPreviewScaleRate previewWidthScale: %f, previewHeightScale: %f, previewHeight: %d, previewWidth: %d, verticalLong: %b, horizontalLong: %b", new Object[] { Float.valueOf(this.aOD), Float.valueOf(this.aOE), Integer.valueOf(qv()), Integer.valueOf(qu()), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      AppMethodBeat.o(205113);
+      ad.i(this.TAG, "alvinluo initPreviewScaleRate previewWidthScale: %f, previewHeightScale: %f, previewHeight: %d, previewWidth: %d, verticalLong: %b, horizontalLong: %b, %s", new Object[] { Float.valueOf(this.aYX), Float.valueOf(this.aYY), Integer.valueOf(rT()), Integer.valueOf(rS()), Boolean.valueOf(this.aXA), Boolean.valueOf(this.aXB), this.aYc.getUri().toString() });
+      AppMethodBeat.o(207100);
       return;
-      i = 0;
+      bool = false;
       break;
-      label232:
-      j = 0;
-      break label75;
-      label237:
-      bool1 = false;
-      break label90;
-      label243:
-      bool2 = false;
-      break label106;
-      label249:
-      if (bool1)
+      label272:
+      bool = false;
+      break label77;
+      label277:
+      bool = false;
+      break label99;
+      label282:
+      bool = false;
+      break label121;
+      label287:
+      if (this.aXB)
       {
-        this.aOD = (this.aOy * 1.0F / qu());
-        this.aOE = (this.aOC * qx() / qv());
+        this.aYX = (this.aYS * 1.0F / rS());
+        this.aYY = (this.aYW * rV() / rT());
       }
       else
       {
-        this.aOD = (this.aOC * qw() / qu());
-        this.aOE = (this.aOC * qx() / qv());
+        this.aYX = (this.aYW * rU() / rS());
+        this.aYY = (this.aYW * rV() / rT());
       }
     }
   }
   
-  private void qo()
+  private void rM()
   {
     AppMethodBeat.i(157399);
-    this.aNk = (getDoubleTapZoomScale() * 2.0F * this.aOF);
+    this.aXE = (getDoubleTapZoomScale() * 2.0F * this.aYZ);
     AppMethodBeat.o(157399);
   }
   
-  private void qp()
+  private void rN()
   {
     AppMethodBeat.i(157400);
-    this.aNl = Math.min(qy(), this.aOC * 0.75F);
+    this.aXF = Math.min(rW(), this.aYW * 0.75F);
     AppMethodBeat.o(157400);
   }
   
-  private boolean qq()
+  private boolean rO()
   {
     AppMethodBeat.i(157414);
-    if ((this.bitmap != null) && (!this.aMX))
+    if ((this.bitmap != null) && (!this.aXp))
     {
       AppMethodBeat.o(157414);
       return true;
     }
-    if (this.aNi != null)
+    if (this.aXC != null)
     {
-      Iterator localIterator = this.aNi.entrySet().iterator();
+      Iterator localIterator = this.aXC.entrySet().iterator();
       boolean bool2;
       for (boolean bool1 = true; localIterator.hasNext(); bool1 = bool2)
       {
         Object localObject = (Map.Entry)localIterator.next();
         bool2 = bool1;
-        if (((Integer)((Map.Entry)localObject).getKey()).intValue() == this.aNd)
+        if (((Integer)((Map.Entry)localObject).getKey()).intValue() == this.aXv)
         {
           localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
           for (;;)
@@ -1009,7 +998,7 @@ public class SubsamplingScaleImageView
               break;
             }
             com.davemorrissey.labs.subscaleview.c.e locale = (com.davemorrissey.labs.subscaleview.c.e)((Iterator)localObject).next();
-            if ((locale.aMG) || (locale.bitmap == null)) {
+            if ((locale.aWX) || (locale.bitmap == null)) {
               bool1 = false;
             }
           }
@@ -1022,37 +1011,37 @@ public class SubsamplingScaleImageView
     return false;
   }
   
-  private boolean qr()
+  private boolean rP()
   {
     AppMethodBeat.i(157415);
-    if ((getWidth() > 0) && (getHeight() > 0) && (this.aMO > 0) && (this.aMP > 0) && ((this.bitmap != null) || (qq()))) {}
+    if ((getWidth() > 0) && (getHeight() > 0) && (this.aXg > 0) && (this.aXh > 0) && ((this.bitmap != null) || (rO()))) {}
     for (boolean bool = true;; bool = false)
     {
-      if ((!this.aOf) && (bool))
+      if ((!this.aYz) && (bool))
       {
-        qt();
-        this.aOf = true;
+        rR();
+        this.aYz = true;
       }
       AppMethodBeat.o(157415);
       return bool;
     }
   }
   
-  private boolean qs()
+  private boolean rQ()
   {
     AppMethodBeat.i(157416);
-    boolean bool = qq();
-    if ((!this.aOg) && (bool))
+    boolean bool = rO();
+    if ((!this.aYA) && (bool))
     {
-      qt();
-      this.aOg = true;
-      ac.i(this.TAG, "alvinluo onImageLoaded");
-      qm();
-      a(this.aOC, new PointF(0.0F, 0.0F));
-      if (this.aNf != -1L)
+      rR();
+      this.aYA = true;
+      ad.i(this.TAG, "alvinluo onImageLoaded");
+      rK();
+      a(this.aYW, new PointF(0.0F, 0.0F));
+      if (this.aXx != -1L)
       {
-        this.aNg = System.currentTimeMillis();
-        dA((int)(this.aNg - this.aNf));
+        this.aXy = System.currentTimeMillis();
+        dE((int)(this.aXy - this.aXx));
       }
       com.tencent.mm.sdk.g.b.c(new Runnable()
       {
@@ -1061,7 +1050,7 @@ public class SubsamplingScaleImageView
           AppMethodBeat.i(157384);
           if ((SubsamplingScaleImageView.u(SubsamplingScaleImageView.this) != null) && (!SubsamplingScaleImageView.u(SubsamplingScaleImageView.this).isRecycled()))
           {
-            ac.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo rotateAndScale fullImageBitmap");
+            ad.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo rotateAndScale fullImageBitmap");
             SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, SubsamplingScaleImageView.this.a(SubsamplingScaleImageView.u(SubsamplingScaleImageView.this), SubsamplingScaleImageView.t(SubsamplingScaleImageView.this)));
           }
           SubsamplingScaleImageView.this.post(new Runnable()
@@ -1083,41 +1072,41 @@ public class SubsamplingScaleImageView
     return bool;
   }
   
-  private void qt()
+  private void rR()
   {
     AppMethodBeat.i(157419);
-    if ((getWidth() == 0) || (getHeight() == 0) || (this.aMO <= 0) || (this.aMP <= 0))
+    if ((getWidth() == 0) || (getHeight() == 0) || (this.aXg <= 0) || (this.aXh <= 0))
     {
       AppMethodBeat.o(157419);
       return;
     }
-    if ((this.aNF != null) && (this.aNE != null))
+    if ((this.aXZ != null) && (this.aXY != null))
     {
-      this.scale = this.aNE.floatValue();
-      if (this.aNB == null) {
-        this.aNB = new PointF();
+      this.scale = this.aXY.floatValue();
+      if (this.aXV == null) {
+        this.aXV = new PointF();
       }
-      this.aNB.x = (getWidth() / 2 - this.scale * this.aNF.x);
-      this.aNB.y = (getHeight() / 2 - this.scale * this.aNF.y);
-      this.aNF = null;
-      this.aNE = null;
-      this.aNH = false;
+      this.aXV.x = (getWidth() / 2 - this.scale * this.aXZ.x);
+      this.aXV.y = (getHeight() / 2 - this.scale * this.aXZ.y);
+      this.aXZ = null;
+      this.aXY = null;
+      this.aYb = false;
+      aL(true);
       aK(true);
-      aJ(true);
     }
-    aK(false);
+    aL(false);
     AppMethodBeat.o(157419);
   }
   
-  private int qu()
+  private int rS()
   {
     AppMethodBeat.i(157431);
-    if ((this.bitmap == null) || (!this.aMX))
+    if ((this.bitmap == null) || (!this.aXp))
     {
       AppMethodBeat.o(157431);
       return 0;
     }
-    int i = this.aNL;
+    int i = this.aYf;
     if ((i == 90) || (i == 270))
     {
       i = this.bitmap.getHeight();
@@ -1129,15 +1118,15 @@ public class SubsamplingScaleImageView
     return i;
   }
   
-  private int qv()
+  private int rT()
   {
     AppMethodBeat.i(157432);
-    if ((this.bitmap == null) || (!this.aMX))
+    if ((this.bitmap == null) || (!this.aXp))
     {
       AppMethodBeat.o(157432);
       return 0;
     }
-    int i = this.aNL;
+    int i = this.aYf;
     if ((i == 90) || (i == 270))
     {
       i = this.bitmap.getWidth();
@@ -1149,54 +1138,54 @@ public class SubsamplingScaleImageView
     return i;
   }
   
-  private int qw()
+  private int rU()
   {
     AppMethodBeat.i(157433);
     int i = getRequiredRotation();
     if ((i == 90) || (i == 270))
     {
-      i = this.aMP;
+      i = this.aXh;
       AppMethodBeat.o(157433);
       return i;
     }
-    i = this.aMO;
+    i = this.aXg;
     AppMethodBeat.o(157433);
     return i;
   }
   
-  private int qx()
+  private int rV()
   {
     AppMethodBeat.i(157434);
     int i = getRequiredRotation();
     if ((i == 90) || (i == 270))
     {
-      i = this.aMO;
+      i = this.aXg;
       AppMethodBeat.o(157434);
       return i;
     }
-    i = this.aMP;
+    i = this.aXh;
     AppMethodBeat.o(157434);
     return i;
   }
   
-  private float qy()
+  private float rW()
   {
     AppMethodBeat.i(157441);
     int i = getPaddingBottom() + getPaddingTop();
     int j = getPaddingLeft() + getPaddingRight();
-    if ((this.aNo == 2) || (this.aNo == 4))
+    if ((this.aXI == 2) || (this.aXI == 4))
     {
-      f = Math.max((getWidth() - j) / qw(), (getHeight() - i) / qx());
+      f = Math.max((getWidth() - j) / rU(), (getHeight() - i) / rV());
       AppMethodBeat.o(157441);
       return f;
     }
-    if ((this.aNo == 3) && (this.aNl > 0.0F))
+    if ((this.aXI == 3) && (this.aXF > 0.0F))
     {
-      f = this.aNl;
+      f = this.aXF;
       AppMethodBeat.o(157441);
       return f;
     }
-    float f = Math.min((getWidth() - j) / qw(), (getHeight() - i) / qx());
+    float f = Math.min((getWidth() - j) / rU(), (getHeight() - i) / rV());
     AppMethodBeat.o(157441);
     return f;
   }
@@ -1207,7 +1196,7 @@ public class SubsamplingScaleImageView
     ViewParent localViewParent = getParent();
     if (localViewParent != null)
     {
-      ac.i(this.TAG, "alvinluo requestDisallowInterceptTouchEvent disallow: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      ad.i(this.TAG, "alvinluo requestDisallowInterceptTouchEvent disallow: %b", new Object[] { Boolean.valueOf(paramBoolean) });
       localViewParent.requestDisallowInterceptTouchEvent(paramBoolean);
     }
     AppMethodBeat.o(157410);
@@ -1216,77 +1205,77 @@ public class SubsamplingScaleImageView
   private void reset(boolean paramBoolean)
   {
     AppMethodBeat.i(157404);
-    f("reset newImage=".concat(String.valueOf(paramBoolean)), new Object[0]);
+    h("reset newImage=".concat(String.valueOf(paramBoolean)), new Object[0]);
     this.scale = 0.0F;
-    this.aNA = 0.0F;
-    this.aNB = null;
-    this.aNC = null;
-    this.aND = null;
-    this.aNE = Float.valueOf(0.0F);
-    this.aNF = null;
-    this.aNG = null;
-    this.aNN = false;
-    this.aNO = false;
-    this.aNP = false;
-    this.aNQ = 0;
-    this.aNd = 0;
-    this.aNW = null;
-    this.aNX = 0.0F;
-    this.aNZ = 0.0F;
-    this.aOa = false;
-    this.aOc = null;
-    this.aOb = null;
-    this.aOd = null;
-    this.aOe = null;
-    this.aOo = null;
-    this.eY = null;
-    this.aOp = null;
+    this.aXU = 0.0F;
+    this.aXV = null;
+    this.aXW = null;
+    this.aXX = null;
+    this.aXY = Float.valueOf(0.0F);
+    this.aXZ = null;
+    this.aYa = null;
+    this.aYh = false;
+    this.aYi = false;
+    this.aYj = false;
+    this.aYk = 0;
+    this.aXv = 0;
+    this.aYq = null;
+    this.aYr = 0.0F;
+    this.aYt = 0.0F;
+    this.aYu = false;
+    this.aYw = null;
+    this.aYv = null;
+    this.aYx = null;
+    this.aYy = null;
+    this.aYI = null;
+    this.gR = null;
+    this.aYJ = null;
     Object localObject1;
     if (paramBoolean)
     {
-      if (this.aOL != null)
+      if (this.aZf != null)
       {
-        localObject1 = this.aOL;
-        ((com.davemorrissey.labs.subscaleview.d.a)localObject1).aML = 0;
-        ((com.davemorrissey.labs.subscaleview.d.a)localObject1).aMJ = 0;
-        ((com.davemorrissey.labs.subscaleview.d.a)localObject1).aML = 0;
+        localObject1 = this.aZf;
+        ((com.davemorrissey.labs.subscaleview.d.a)localObject1).aXc = 0;
+        ((com.davemorrissey.labs.subscaleview.d.a)localObject1).aXa = 0;
+        ((com.davemorrissey.labs.subscaleview.d.a)localObject1).aXc = 0;
       }
       this.uri = null;
-      this.aMv.writeLock().lock();
+      this.aWM.writeLock().lock();
     }
     com.davemorrissey.labs.subscaleview.c.e locale;
     label512:
     try
     {
-      if (this.aMC != null)
+      if (this.aWT != null)
       {
-        this.aMC.recycle();
-        this.aMC = null;
+        this.aWT.recycle();
+        this.aWT = null;
       }
-      this.aMv.writeLock().unlock();
-      if ((this.bitmap != null) && (!this.aNc)) {
+      this.aWM.writeLock().unlock();
+      if ((this.bitmap != null) && (!this.aXu)) {
         this.bitmap.recycle();
       }
-      if ((this.bitmap != null) && (this.aNc) && (this.aOh != null)) {
-        this.aOh.qB();
+      if ((this.bitmap != null) && (this.aXu) && (this.aYB != null)) {
+        this.aYB.rZ();
       }
-      this.aMO = 0;
-      this.aMP = 0;
-      this.aNK = 0;
-      this.aMQ = null;
-      this.aNM = null;
-      this.aOf = false;
-      this.aOg = false;
+      this.aXg = 0;
+      this.aXh = 0;
+      this.aYe = 0;
+      this.aXi = null;
+      this.aYg = null;
+      this.aYz = false;
+      this.aYA = false;
       this.bitmap = null;
-      this.aMX = false;
-      this.aNc = false;
-      this.aMY = false;
-      this.aMZ = false;
-      this.aNe = true;
-      if (this.aNi == null) {
+      this.aXp = false;
+      this.aXu = false;
+      this.aXq = false;
+      this.aXr = false;
+      this.aXw = true;
+      if (this.aXC == null) {
         break label534;
       }
-      localObject1 = this.aNi.entrySet().iterator();
+      localObject1 = this.aXC.entrySet().iterator();
       for (;;)
       {
         if (!((Iterator)localObject1).hasNext()) {
@@ -1299,13 +1288,13 @@ public class SubsamplingScaleImageView
           locale.visible = false;
           if (locale.bitmap != null)
           {
-            if (this.aNJ == null) {
+            if (this.aYd == null) {
               break label489;
             }
-            if (this.aNJ.bitmap != locale.bitmap) {
+            if (this.aYd.bitmap != locale.bitmap) {
               break label512;
             }
-            ac.i(this.TAG, "alvinluo reset tile bitmap not need to recycle: %d", new Object[] { Integer.valueOf(locale.bitmap.hashCode()) });
+            ad.i(this.TAG, "alvinluo reset tile bitmap not need to recycle: %d", new Object[] { Integer.valueOf(locale.bitmap.hashCode()) });
           }
         }
       }
@@ -1313,11 +1302,11 @@ public class SubsamplingScaleImageView
     finally
     {
       label489:
-      this.aMv.writeLock().unlock();
+      this.aWM.writeLock().unlock();
       AppMethodBeat.o(157404);
     }
     label529:
-    this.aNi = null;
+    this.aXC = null;
     label534:
     setGestureDetector(getContext());
     AppMethodBeat.o(157404);
@@ -1325,7 +1314,7 @@ public class SubsamplingScaleImageView
   
   public static void setBitmapLoaderImp(com.davemorrissey.labs.subscaleview.c.a parama)
   {
-    aOu = parama;
+    aYO = parama;
   }
   
   private void setFullImageBitmap(final Bitmap paramBitmap)
@@ -1341,7 +1330,7 @@ public class SubsamplingScaleImageView
           long l1 = System.currentTimeMillis();
           SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, SubsamplingScaleImageView.this.a(paramBitmap, SubsamplingScaleImageView.t(SubsamplingScaleImageView.this)));
           long l2 = System.currentTimeMillis();
-          ac.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo rotate and scale fullImageBitmap cost: %d", new Object[] { Long.valueOf(l2 - l1) });
+          ad.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo rotate and scale fullImageBitmap cost: %d", new Object[] { Long.valueOf(l2 - l1) });
         }
         AppMethodBeat.o(157380);
       }
@@ -1352,15 +1341,30 @@ public class SubsamplingScaleImageView
   private void setGestureDetector(final Context paramContext)
   {
     AppMethodBeat.i(157405);
-    this.aNR = new GestureDetector(paramContext, new GestureDetector.SimpleOnGestureListener()
+    this.aYl = new GestureDetector(paramContext, new GestureDetector.SimpleOnGestureListener()
     {
+      public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(207095);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        boolean bool = super.onContextClick(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(207095);
+        return bool;
+      }
+      
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(157378);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
         if ((SubsamplingScaleImageView.k(SubsamplingScaleImageView.this)) && (SubsamplingScaleImageView.f(SubsamplingScaleImageView.this)) && (SubsamplingScaleImageView.g(SubsamplingScaleImageView.this) != null))
         {
           SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, paramContext);
-          ac.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo onDoubleTap, quickScaledEnabled: %b", new Object[] { Boolean.valueOf(SubsamplingScaleImageView.m(SubsamplingScaleImageView.this)) });
+          ad.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo onDoubleTap, quickScaledEnabled: %b", new Object[] { Boolean.valueOf(SubsamplingScaleImageView.m(SubsamplingScaleImageView.this)) });
           if (SubsamplingScaleImageView.m(SubsamplingScaleImageView.this))
           {
             SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, new PointF(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY()));
@@ -1373,14 +1377,17 @@ public class SubsamplingScaleImageView
             SubsamplingScaleImageView.d(SubsamplingScaleImageView.this, new PointF(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY()));
             SubsamplingScaleImageView.e(SubsamplingScaleImageView.this, new PointF(SubsamplingScaleImageView.r(SubsamplingScaleImageView.this).x, SubsamplingScaleImageView.r(SubsamplingScaleImageView.this).y));
             SubsamplingScaleImageView.s(SubsamplingScaleImageView.this);
+            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(157378);
             return false;
           }
           SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, SubsamplingScaleImageView.this.a(new PointF(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY())), new PointF(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY()));
+          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(157378);
           return true;
         }
         boolean bool = super.onDoubleTapEvent(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(157378);
         return bool;
       }
@@ -1394,15 +1401,15 @@ public class SubsamplingScaleImageView
           paramAnonymousFloat1 = (SubsamplingScaleImageView.this.getWidth() / 2 - paramAnonymousMotionEvent1.x) / SubsamplingScaleImageView.i(SubsamplingScaleImageView.this);
           paramAnonymousFloat2 = (SubsamplingScaleImageView.this.getHeight() / 2 - paramAnonymousMotionEvent1.y) / SubsamplingScaleImageView.i(SubsamplingScaleImageView.this);
           paramAnonymousMotionEvent1 = new SubsamplingScaleImageView.b(SubsamplingScaleImageView.this, new PointF(paramAnonymousFloat1, paramAnonymousFloat2), (byte)0);
-          if (!SubsamplingScaleImageView.qz().contains(Integer.valueOf(1)))
+          if (!SubsamplingScaleImageView.rX().contains(Integer.valueOf(1)))
           {
             paramAnonymousMotionEvent1 = new IllegalArgumentException("Unknown easing type: 1");
             AppMethodBeat.o(157376);
             throw paramAnonymousMotionEvent1;
           }
-          paramAnonymousMotionEvent1.aPf = 1;
-          paramAnonymousMotionEvent1.aPl = false;
-          paramAnonymousMotionEvent1.aPg = 3;
+          paramAnonymousMotionEvent1.aZz = 1;
+          paramAnonymousMotionEvent1.aZF = false;
+          paramAnonymousMotionEvent1.aZA = 3;
           paramAnonymousMotionEvent1.start();
           AppMethodBeat.o(157376);
           return true;
@@ -1410,6 +1417,17 @@ public class SubsamplingScaleImageView
         boolean bool = super.onFling(paramAnonymousMotionEvent1, paramAnonymousMotionEvent2, paramAnonymousFloat1, paramAnonymousFloat2);
         AppMethodBeat.o(157376);
         return bool;
+      }
+      
+      public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(207094);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahq());
+        super.onLongPress(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
+        AppMethodBeat.o(207094);
       }
       
       public final boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
@@ -1428,33 +1446,52 @@ public class SubsamplingScaleImageView
         AppMethodBeat.o(157377);
         return true;
       }
-    });
-    this.aNT = new GestureDetector(paramContext, new GestureDetector.SimpleOnGestureListener()
-    {
-      public final boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
+      
+      public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(157379);
-        SubsamplingScaleImageView.this.performClick();
-        AppMethodBeat.o(157379);
-        return true;
+        AppMethodBeat.i(207093);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(207093);
+        return bool;
       }
     });
+    this.aYn = new GestureDetector(paramContext, new SubsamplingScaleImageView.4(this));
     AppMethodBeat.o(157405);
   }
   
   public static void setPreferredBitmapConfig(Bitmap.Config paramConfig)
   {
-    aOt = paramConfig;
+    aYN = paramConfig;
   }
   
   public static void setTileInitLoaderImp(com.davemorrissey.labs.subscaleview.c.c paramc)
   {
-    aOw = paramc;
+    aYQ = paramc;
   }
   
   public static void setTileLoaderImp(com.davemorrissey.labs.subscaleview.c.d paramd)
   {
-    aOv = paramd;
+    aYP = paramd;
+  }
+  
+  public final float Y(float paramFloat)
+  {
+    if (this.aXV == null) {
+      return (0.0F / 0.0F);
+    }
+    return this.scale * paramFloat + this.aXV.x;
+  }
+  
+  public final float Z(float paramFloat)
+  {
+    if (this.aXV == null) {
+      return (0.0F / 0.0F);
+    }
+    return this.scale * paramFloat + this.aXV.y;
   }
   
   public final Bitmap a(Bitmap paramBitmap, int paramInt)
@@ -1462,7 +1499,7 @@ public class SubsamplingScaleImageView
     AppMethodBeat.i(157427);
     if (paramBitmap == null)
     {
-      ac.e(this.TAG, "alvinluo rotateAndScaleBitmap bitmap is null");
+      ad.e(this.TAG, "alvinluo rotateAndScaleBitmap bitmap is null");
       AppMethodBeat.o(157427);
       return null;
     }
@@ -1471,7 +1508,7 @@ public class SubsamplingScaleImageView
     if (paramInt != 0) {
       localMatrix.postRotate(paramInt);
     }
-    ac.d(this.TAG, "alvinluo rotateAndScaleBitmap matrix.isIdentify: %b", new Object[] { Boolean.valueOf(localMatrix.isIdentity()) });
+    ad.d(this.TAG, "alvinluo rotateAndScaleBitmap matrix.isIdentify: %b", new Object[] { Boolean.valueOf(localMatrix.isIdentity()) });
     if ((paramBitmap.getWidth() > 0) && (paramBitmap.getHeight() > 0))
     {
       if (localMatrix.isIdentity())
@@ -1487,8 +1524,8 @@ public class SubsamplingScaleImageView
       }
       catch (OutOfMemoryError paramBitmap)
       {
-        ac.printErrStackTrace(this.TAG, paramBitmap, "alvinluo createBitmap oom", new Object[0]);
-        aOt = Bitmap.Config.RGB_565;
+        ad.printErrStackTrace(this.TAG, paramBitmap, "alvinluo createBitmap oom", new Object[0]);
+        aYN = Bitmap.Config.RGB_565;
         AppMethodBeat.o(157427);
         return null;
       }
@@ -1508,11 +1545,11 @@ public class SubsamplingScaleImageView
   public final void a(float paramFloat, PointF paramPointF)
   {
     AppMethodBeat.i(157456);
-    this.aOe = null;
-    this.aNH = true;
-    this.aNE = Float.valueOf(paramFloat);
-    this.aNF = paramPointF;
-    this.aNG = paramPointF;
+    this.aYy = null;
+    this.aYb = true;
+    this.aXY = Float.valueOf(paramFloat);
+    this.aXZ = paramPointF;
+    this.aYa = paramPointF;
     invalidate();
     AppMethodBeat.o(157456);
   }
@@ -1524,12 +1561,12 @@ public class SubsamplingScaleImageView
       try
       {
         AppMethodBeat.i(157428);
-        ac.i(this.TAG, "alvinluo onPreviewLoaded");
+        ad.i(this.TAG, "alvinluo onPreviewLoaded");
         if (paramBitmap != null) {
-          ac.i(this.TAG, "alvinluo onPreviewLoaded %d, recycle: %b", new Object[] { Integer.valueOf(paramBitmap.hashCode()), Boolean.valueOf(paramBitmap.isRecycled()) });
+          ad.i(this.TAG, "alvinluo onPreviewLoaded %d, recycle: %b", new Object[] { Integer.valueOf(paramBitmap.hashCode()), Boolean.valueOf(paramBitmap.isRecycled()) });
         }
         long l = System.currentTimeMillis();
-        if (this.aOg)
+        if (this.aYA)
         {
           if (this.bitmap != null) {
             this.bitmap.recycle();
@@ -1537,28 +1574,28 @@ public class SubsamplingScaleImageView
           AppMethodBeat.o(157428);
           return;
         }
-        if (this.aNM != null)
+        if (this.aYg != null)
         {
-          if ((this.aNM.width() > 0) && (this.aNM.height() > 0))
+          if ((this.aYg.width() > 0) && (this.aYg.height() > 0))
           {
-            this.bitmap = Bitmap.createBitmap(paramBitmap, this.aNM.left, this.aNM.top, this.aNM.width(), this.aNM.height());
-            this.aNL = 0;
+            this.bitmap = Bitmap.createBitmap(paramBitmap, this.aYg.left, this.aYg.top, this.aYg.width(), this.aYg.height());
+            this.aYf = 0;
           }
-          this.aMX = true;
-          this.aMZ = false;
-          this.aNa = this.bitmap.getWidth();
-          this.aNb = this.bitmap.getHeight();
-          qn();
-          this.aMZ = true;
-          if (qr())
+          this.aXp = true;
+          this.aXr = false;
+          this.aXs = this.bitmap.getWidth();
+          this.aXt = this.bitmap.getHeight();
+          rL();
+          this.aXr = true;
+          if (rP())
           {
             invalidate();
             requestLayout();
           }
-          dz((int)(System.currentTimeMillis() - l));
-          ac.i(this.TAG, "alvinluo onPreviewLoaded");
-          if ((!this.aMY) && (this.aOh != null)) {
-            this.aOh.qA();
+          dD((int)(System.currentTimeMillis() - l));
+          ad.i(this.TAG, "alvinluo onPreviewLoaded");
+          if ((!this.aXq) && (this.aYB != null)) {
+            this.aYB.rY();
           }
           AppMethodBeat.o(157428);
           continue;
@@ -1568,7 +1605,7 @@ public class SubsamplingScaleImageView
         }
       }
       finally {}
-      this.aNL = paramInteger.intValue();
+      this.aYf = paramInteger.intValue();
       label283:
       this.bitmap = paramBitmap;
     }
@@ -1579,30 +1616,30 @@ public class SubsamplingScaleImageView
     try
     {
       AppMethodBeat.i(157424);
-      f("alvinluo onTilesInited sWidth: %d, sHeight: %d, this.sWidth: %d, this.sHeight: %d, sOrientation: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.aMO), Integer.valueOf(this.aMP), Integer.valueOf(paramInt3) });
-      if ((this.aMO > 0) && (this.aMP > 0) && ((this.aMO != paramInt1) || (this.aMP != paramInt2)))
+      h("alvinluo onTilesInited sWidth: %d, sHeight: %d, this.sWidth: %d, this.sHeight: %d, sOrientation: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.aXg), Integer.valueOf(this.aXh), Integer.valueOf(paramInt3) });
+      if ((this.aXg > 0) && (this.aXh > 0) && ((this.aXg != paramInt1) || (this.aXh != paramInt2)))
       {
         reset(false);
         if (this.bitmap != null)
         {
-          if (!this.aNc) {
+          if (!this.aXu) {
             this.bitmap.recycle();
           }
           this.bitmap = null;
-          if ((this.aOh != null) && (this.aNc)) {
-            this.aOh.qB();
+          if ((this.aYB != null) && (this.aXu)) {
+            this.aYB.rZ();
           }
-          this.aMX = false;
-          this.aNc = false;
+          this.aXp = false;
+          this.aXu = false;
         }
       }
-      this.aMC = paramd;
-      this.aMO = paramInt1;
-      this.aMP = paramInt2;
-      this.aNK = paramInt3;
-      qr();
-      if ((!qs()) && (this.aNq > 0) && (this.aNq != aNp) && (this.aNr > 0) && (this.aNr != aNp) && (getWidth() > 0) && (getHeight() > 0)) {
-        a(new Point(this.aNq, this.aNr));
+      this.aWT = paramd;
+      this.aXg = paramInt1;
+      this.aXh = paramInt2;
+      this.aYe = paramInt3;
+      rP();
+      if ((!rQ()) && (this.aXK > 0) && (this.aXK != aXJ) && (this.aXL > 0) && (this.aXL != aXJ) && (getWidth() > 0) && (getHeight() > 0)) {
+        a(new Point(this.aXK, this.aXL));
       }
       invalidate();
       requestLayout();
@@ -1622,65 +1659,65 @@ public class SubsamplingScaleImageView
       AppMethodBeat.o(157403);
       throw parama1;
     }
-    this.aNI = parama1;
-    this.aNJ = parama2;
+    this.aYc = parama1;
+    this.aYd = parama2;
     reset(true);
-    if (parama1.uri != null) {
-      this.aNK = h(getContext(), parama1.uri.toString());
+    if (parama1.getUri() != null) {
+      this.aYe = d(getContext(), parama1.getUri());
     }
     if (parama2 != null)
     {
-      if ((parama1.aMO > 0) && (parama1.aMP > 0)) {
-        break label160;
+      if ((parama1.aXg > 0) && (parama1.aXh > 0)) {
+        break label157;
       }
-      ac.e(this.TAG, "alvinluo Preview image cannot be used unless dimensions are provided for the main image");
+      ad.e(this.TAG, "alvinluo Preview image cannot be used unless dimensions are provided for the main image");
     }
-    while ((parama1.bitmap != null) && (parama1.aMQ != null))
+    while ((parama1.bitmap != null) && (parama1.aXi != null))
     {
-      b(Bitmap.createBitmap(parama1.bitmap, parama1.aMQ.left, parama1.aMQ.top, parama1.aMQ.width(), parama1.aMQ.height()), 0, false);
+      b(Bitmap.createBitmap(parama1.bitmap, parama1.aXi.left, parama1.aXi.top, parama1.aXi.width(), parama1.aXi.height()), 0, false);
       AppMethodBeat.o(157403);
       return;
-      label160:
-      this.aMO = parama1.aMO;
-      this.aMP = parama1.aMP;
-      this.aNM = parama2.aMQ;
+      label157:
+      this.aXg = parama1.aXg;
+      this.aXh = parama1.aXh;
+      this.aYg = parama2.aXi;
       if (parama2.bitmap != null)
       {
-        this.aNc = parama2.aMR;
+        this.aXu = parama2.aXj;
         a(parama2.bitmap, Integer.valueOf(0));
       }
       else
       {
-        Uri localUri2 = parama2.uri;
+        Uri localUri2 = parama2.getUri();
         Uri localUri1 = localUri2;
         if (localUri2 == null)
         {
           localUri1 = localUri2;
-          if (parama2.aMM != null) {
-            localUri1 = Uri.parse("android.resource://" + getContext().getPackageName() + "/" + parama2.aMM);
+          if (parama2.aXe != null) {
+            localUri1 = Uri.parse("android.resource://" + getContext().getPackageName() + "/" + parama2.aXe);
           }
         }
-        aOu.a(this, getContext(), this.aNU, localUri1, true).qi();
+        aYO.a(this, getContext(), this.aYo, localUri1, true).rG();
       }
     }
     if (parama1.bitmap != null)
     {
-      b(parama1.bitmap, 0, parama1.aMR);
+      b(parama1.bitmap, 0, parama1.aXj);
       AppMethodBeat.o(157403);
       return;
     }
-    this.aMQ = parama1.aMQ;
-    this.uri = parama1.uri;
-    if ((this.uri == null) && (parama1.aMM != null)) {
-      this.uri = Uri.parse("android.resource://" + getContext().getPackageName() + "/" + parama1.aMM);
+    this.aXi = parama1.aXi;
+    this.uri = parama1.getUri();
+    if ((this.uri == null) && (parama1.aXe != null)) {
+      this.uri = Uri.parse("android.resource://" + getContext().getPackageName() + "/" + parama1.aXe);
     }
-    if ((parama1.aMN) || (this.aMQ != null))
+    if ((parama1.aXf) || (this.aXi != null))
     {
-      aOw.a(this, getContext(), this.aNV, this.uri).qi();
+      aYQ.a(this, getContext(), this.aYp, this.uri).rG();
       AppMethodBeat.o(157403);
       return;
     }
-    aOu.a(this, getContext(), this.aNU, this.uri, false).qi();
+    aYO.a(this, getContext(), this.aYo, this.uri, false).rG();
     AppMethodBeat.o(157403);
   }
   
@@ -1697,22 +1734,22 @@ public class SubsamplingScaleImageView
     try
     {
       AppMethodBeat.i(157429);
-      f("onImageLoaded has bitmap", new Object[0]);
-      if ((this.aMO > 0) && (this.aMP > 0) && ((this.aMO != paramBitmap.getWidth()) || (this.aMP != paramBitmap.getHeight()))) {
+      h("onImageLoaded has bitmap", new Object[0]);
+      if ((this.aXg > 0) && (this.aXh > 0) && ((this.aXg != paramBitmap.getWidth()) || (this.aXh != paramBitmap.getHeight()))) {
         reset(false);
       }
-      if ((this.bitmap != null) && (!this.aNc)) {
+      if ((this.bitmap != null) && (!this.aXu)) {
         this.bitmap.recycle();
       }
-      if ((this.bitmap != null) && (this.aNc) && (this.aOh != null)) {
-        this.aOh.qB();
+      if ((this.bitmap != null) && (this.aXu) && (this.aYB != null)) {
+        this.aYB.rZ();
       }
-      this.aMX = false;
-      this.aNc = paramBoolean;
+      this.aXp = false;
+      this.aXu = paramBoolean;
       this.bitmap = paramBitmap;
-      this.aMO = paramBitmap.getWidth();
-      this.aMP = paramBitmap.getHeight();
-      this.aNK = paramInt;
+      this.aXg = paramBitmap.getWidth();
+      this.aXh = paramBitmap.getHeight();
+      this.aYe = paramInt;
       com.tencent.mm.sdk.g.b.c(new Runnable()
       {
         public final void run()
@@ -1723,13 +1760,13 @@ public class SubsamplingScaleImageView
             SubsamplingScaleImageView.b(SubsamplingScaleImageView.this, SubsamplingScaleImageView.this.a(paramBitmap, paramInt));
           }
           long l2 = System.currentTimeMillis();
-          ac.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo onImageLoaded rotaeAndScaleBitmap %d", new Object[] { Long.valueOf(l2 - l1) });
+          ad.i(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "alvinluo onImageLoaded rotaeAndScaleBitmap %d", new Object[] { Long.valueOf(l2 - l1) });
           SubsamplingScaleImageView.this.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(157381);
-              if ((SubsamplingScaleImageView.6.this.aOU) || (SubsamplingScaleImageView.6.this.aOV))
+              if ((SubsamplingScaleImageView.6.this.aZo) || (SubsamplingScaleImageView.6.this.aZp))
               {
                 SubsamplingScaleImageView.this.invalidate();
                 SubsamplingScaleImageView.this.requestLayout();
@@ -1754,22 +1791,22 @@ public class SubsamplingScaleImageView
     //   1: istore_3
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc_w 1347
+    //   4: ldc_w 1356
     //   7: invokestatic 212	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: invokestatic 1038	java/lang/System:currentTimeMillis	()J
-    //   14: putfield 302	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNf	J
+    //   11: invokestatic 1052	java/lang/System:currentTimeMillis	()J
+    //   14: putfield 302	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXx	J
     //   17: aload_0
     //   18: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
     //   21: astore 4
     //   23: aload_1
-    //   24: getfield 835	com/davemorrissey/labs/subscaleview/c/e:sampleSize	I
+    //   24: getfield 838	com/davemorrissey/labs/subscaleview/c/e:sampleSize	I
     //   27: istore_2
     //   28: aload_1
-    //   29: getfield 840	com/davemorrissey/labs/subscaleview/c/e:bitmap	Landroid/graphics/Bitmap;
+    //   29: getfield 843	com/davemorrissey/labs/subscaleview/c/e:bitmap	Landroid/graphics/Bitmap;
     //   32: ifnonnull +166 -> 198
     //   35: aload 4
-    //   37: ldc_w 1349
+    //   37: ldc_w 1358
     //   40: iconst_2
     //   41: anewarray 284	java/lang/Object
     //   44: dup
@@ -1780,70 +1817,70 @@ public class SubsamplingScaleImageView
     //   51: dup
     //   52: iconst_1
     //   53: iload_3
-    //   54: invokestatic 1004	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   54: invokestatic 1009	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   57: aastore
-    //   58: invokestatic 1213	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   58: invokestatic 1228	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   61: aload_1
-    //   62: getfield 835	com/davemorrissey/labs/subscaleview/c/e:sampleSize	I
+    //   62: getfield 838	com/davemorrissey/labs/subscaleview/c/e:sampleSize	I
     //   65: aload_0
-    //   66: getfield 683	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNd	I
+    //   66: getfield 681	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXv	I
     //   69: if_icmpne +40 -> 109
     //   72: aload_1
-    //   73: getfield 840	com/davemorrissey/labs/subscaleview/c/e:bitmap	Landroid/graphics/Bitmap;
+    //   73: getfield 843	com/davemorrissey/labs/subscaleview/c/e:bitmap	Landroid/graphics/Bitmap;
     //   76: ifnull +33 -> 109
     //   79: aload_0
-    //   80: getfield 298	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNe	Z
+    //   80: getfield 298	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXw	Z
     //   83: ifeq +26 -> 109
     //   86: aload_0
     //   87: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
-    //   90: ldc_w 1351
-    //   93: invokestatic 774	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   90: ldc_w 1360
+    //   93: invokestatic 772	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   96: aload_0
     //   97: iconst_0
-    //   98: putfield 298	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNe	Z
+    //   98: putfield 298	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXw	Z
     //   101: aload_0
     //   102: aload_1
-    //   103: getfield 840	com/davemorrissey/labs/subscaleview/c/e:bitmap	Landroid/graphics/Bitmap;
-    //   106: putfield 615	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNh	Landroid/graphics/Bitmap;
+    //   103: getfield 843	com/davemorrissey/labs/subscaleview/c/e:bitmap	Landroid/graphics/Bitmap;
+    //   106: putfield 612	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXz	Landroid/graphics/Bitmap;
     //   109: aload_0
-    //   110: invokespecial 1257	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:qr	()Z
+    //   110: invokespecial 1272	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:rP	()Z
     //   113: pop
     //   114: aload_0
-    //   115: invokespecial 1274	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:qs	()Z
+    //   115: invokespecial 1289	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:rQ	()Z
     //   118: pop
     //   119: aload_0
-    //   120: invokespecial 1023	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:qq	()Z
+    //   120: invokespecial 1037	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:rO	()Z
     //   123: ifeq +62 -> 185
     //   126: aload_0
-    //   127: getfield 870	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:bitmap	Landroid/graphics/Bitmap;
+    //   127: getfield 874	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:bitmap	Landroid/graphics/Bitmap;
     //   130: ifnull +55 -> 185
     //   133: aload_0
-    //   134: getfield 1133	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNc	Z
+    //   134: getfield 1146	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXu	Z
     //   137: ifne +10 -> 147
     //   140: aload_0
-    //   141: getfield 870	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:bitmap	Landroid/graphics/Bitmap;
-    //   144: invokevirtual 843	android/graphics/Bitmap:recycle	()V
+    //   141: getfield 874	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:bitmap	Landroid/graphics/Bitmap;
+    //   144: invokevirtual 846	android/graphics/Bitmap:recycle	()V
     //   147: aload_0
     //   148: aconst_null
-    //   149: putfield 870	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:bitmap	Landroid/graphics/Bitmap;
+    //   149: putfield 874	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:bitmap	Landroid/graphics/Bitmap;
     //   152: aload_0
-    //   153: getfield 1135	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aOh	Lcom/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$e;
+    //   153: getfield 1148	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aYB	Lcom/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$e;
     //   156: ifnull +19 -> 175
     //   159: aload_0
-    //   160: getfield 1133	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNc	Z
+    //   160: getfield 1146	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXu	Z
     //   163: ifeq +12 -> 175
     //   166: aload_0
-    //   167: getfield 1135	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aOh	Lcom/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$e;
-    //   170: invokeinterface 1138 1 0
+    //   167: getfield 1148	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aYB	Lcom/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$e;
+    //   170: invokeinterface 1151 1 0
     //   175: aload_0
     //   176: iconst_0
-    //   177: putfield 980	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aMX	Z
+    //   177: putfield 985	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXp	Z
     //   180: aload_0
     //   181: iconst_0
-    //   182: putfield 1133	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aNc	Z
+    //   182: putfield 1146	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXu	Z
     //   185: aload_0
-    //   186: invokevirtual 748	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:invalidate	()V
-    //   189: ldc_w 1347
+    //   186: invokevirtual 746	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:invalidate	()V
+    //   189: ldc_w 1356
     //   192: invokestatic 264	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   195: aload_0
     //   196: monitorexit
@@ -1873,16 +1910,297 @@ public class SubsamplingScaleImageView
     //   185	195	203	finally
   }
   
-  public final void dA(int paramInt)
+  /* Error */
+  public final int d(Context paramContext, Uri paramUri)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 7
+    //   6: ldc_w 1365
+    //   9: invokestatic 212	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   12: ldc_w 1367
+    //   15: aload_2
+    //   16: invokevirtual 1370	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   19: invokevirtual 1371	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   22: ifeq +168 -> 190
+    //   25: aload_1
+    //   26: invokevirtual 1375	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   29: aload_2
+    //   30: iconst_1
+    //   31: anewarray 476	java/lang/String
+    //   34: dup
+    //   35: iconst_0
+    //   36: ldc_w 1376
+    //   39: aastore
+    //   40: aconst_null
+    //   41: aconst_null
+    //   42: aconst_null
+    //   43: invokevirtual 1382	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   46: astore_1
+    //   47: aload_1
+    //   48: ifnull +86 -> 134
+    //   51: aload_1
+    //   52: invokeinterface 1387 1 0
+    //   57: ifeq +77 -> 134
+    //   60: aload_1
+    //   61: iconst_0
+    //   62: invokeinterface 1390 2 0
+    //   67: istore_3
+    //   68: getstatic 226	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aXk	Ljava/util/List;
+    //   71: iload_3
+    //   72: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   75: invokeinterface 1393 2 0
+    //   80: istore 5
+    //   82: iload 5
+    //   84: ifeq +33 -> 117
+    //   87: iload_3
+    //   88: iconst_m1
+    //   89: if_icmpeq +28 -> 117
+    //   92: iload_3
+    //   93: istore 4
+    //   95: aload_1
+    //   96: ifnull +12 -> 108
+    //   99: aload_1
+    //   100: invokeinterface 1396 1 0
+    //   105: iload_3
+    //   106: istore 4
+    //   108: ldc_w 1365
+    //   111: invokestatic 264	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   114: iload 4
+    //   116: ireturn
+    //   117: aload_0
+    //   118: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
+    //   121: ldc_w 1398
+    //   124: iload_3
+    //   125: invokestatic 600	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   128: invokevirtual 495	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   131: invokestatic 1400	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   134: iconst_0
+    //   135: istore_3
+    //   136: goto -44 -> 92
+    //   139: astore_1
+    //   140: aconst_null
+    //   141: astore_1
+    //   142: aload_0
+    //   143: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
+    //   146: ldc_w 1402
+    //   149: invokestatic 1400	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   152: aload_1
+    //   153: ifnull +253 -> 406
+    //   156: aload_1
+    //   157: invokeinterface 1396 1 0
+    //   162: iconst_0
+    //   163: istore 4
+    //   165: goto -57 -> 108
+    //   168: astore_1
+    //   169: aload 7
+    //   171: astore_2
+    //   172: aload_2
+    //   173: ifnull +9 -> 182
+    //   176: aload_2
+    //   177: invokeinterface 1396 1 0
+    //   182: ldc_w 1365
+    //   185: invokestatic 264	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   188: aload_1
+    //   189: athrow
+    //   190: aload_2
+    //   191: aconst_null
+    //   192: invokestatic 1407	com/tencent/mm/vfs/i:b	(Landroid/net/Uri;Lcom/tencent/mm/vfs/a$e;)Ljava/io/InputStream;
+    //   195: astore 7
+    //   197: new 1409	androidx/a/a/a
+    //   200: dup
+    //   201: aload 7
+    //   203: invokespecial 1412	androidx/a/a/a:<init>	(Ljava/io/InputStream;)V
+    //   206: ldc_w 1414
+    //   209: iconst_1
+    //   210: invokevirtual 1418	androidx/a/a/a:getAttributeInt	(Ljava/lang/String;I)I
+    //   213: istore_3
+    //   214: iload_3
+    //   215: iconst_1
+    //   216: if_icmpeq +7 -> 223
+    //   219: iload_3
+    //   220: ifne +41 -> 261
+    //   223: iconst_0
+    //   224: istore_3
+    //   225: iload_3
+    //   226: istore 4
+    //   228: aload 7
+    //   230: ifnull -122 -> 108
+    //   233: aload 7
+    //   235: invokevirtual 1421	java/io/InputStream:close	()V
+    //   238: iload_3
+    //   239: istore 4
+    //   241: goto -133 -> 108
+    //   244: astore_1
+    //   245: aload_0
+    //   246: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
+    //   249: ldc_w 1423
+    //   252: invokestatic 1400	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   255: iload_3
+    //   256: istore 4
+    //   258: goto -150 -> 108
+    //   261: iload_3
+    //   262: bipush 6
+    //   264: if_icmpne +9 -> 273
+    //   267: bipush 90
+    //   269: istore_3
+    //   270: goto -45 -> 225
+    //   273: iload_3
+    //   274: iconst_3
+    //   275: if_icmpne +10 -> 285
+    //   278: sipush 180
+    //   281: istore_3
+    //   282: goto -57 -> 225
+    //   285: iload_3
+    //   286: bipush 8
+    //   288: if_icmpne +10 -> 298
+    //   291: sipush 270
+    //   294: istore_3
+    //   295: goto -70 -> 225
+    //   298: aload_0
+    //   299: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
+    //   302: ldc_w 1425
+    //   305: iload_3
+    //   306: invokestatic 600	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   309: invokevirtual 495	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   312: invokestatic 1400	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   315: iconst_0
+    //   316: istore_3
+    //   317: goto -92 -> 225
+    //   320: astore_2
+    //   321: ldc_w 1365
+    //   324: invokestatic 264	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   327: aload_2
+    //   328: athrow
+    //   329: astore_1
+    //   330: aload 7
+    //   332: ifnull +12 -> 344
+    //   335: aload_2
+    //   336: ifnull +27 -> 363
+    //   339: aload 7
+    //   341: invokevirtual 1421	java/io/InputStream:close	()V
+    //   344: ldc_w 1365
+    //   347: invokestatic 264	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   350: aload_1
+    //   351: athrow
+    //   352: astore 6
+    //   354: aload_2
+    //   355: aload 6
+    //   357: invokevirtual 1429	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   360: goto -16 -> 344
+    //   363: aload 7
+    //   365: invokevirtual 1421	java/io/InputStream:close	()V
+    //   368: goto -24 -> 344
+    //   371: astore_1
+    //   372: aload 6
+    //   374: astore_2
+    //   375: goto -45 -> 330
+    //   378: astore_2
+    //   379: aload_1
+    //   380: astore 6
+    //   382: aload_2
+    //   383: astore_1
+    //   384: aload 6
+    //   386: astore_2
+    //   387: goto -215 -> 172
+    //   390: astore_2
+    //   391: aload_1
+    //   392: astore 6
+    //   394: aload_2
+    //   395: astore_1
+    //   396: aload 6
+    //   398: astore_2
+    //   399: goto -227 -> 172
+    //   402: astore_2
+    //   403: goto -261 -> 142
+    //   406: iconst_0
+    //   407: istore 4
+    //   409: goto -301 -> 108
+    //   412: astore_1
+    //   413: iconst_0
+    //   414: istore_3
+    //   415: goto -170 -> 245
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	418	0	this	SubsamplingScaleImageView
+    //   0	418	1	paramContext	Context
+    //   0	418	2	paramUri	Uri
+    //   67	348	3	i	int
+    //   93	315	4	j	int
+    //   80	3	5	bool	boolean
+    //   1	1	6	localObject	Object
+    //   352	21	6	localThrowable	java.lang.Throwable
+    //   380	17	6	localContext	Context
+    //   4	360	7	localInputStream	java.io.InputStream
+    // Exception table:
+    //   from	to	target	type
+    //   25	47	139	java/lang/Exception
+    //   25	47	168	finally
+    //   233	238	244	java/lang/Exception
+    //   197	214	320	java/lang/Throwable
+    //   298	315	320	java/lang/Throwable
+    //   321	329	329	finally
+    //   339	344	352	java/lang/Throwable
+    //   197	214	371	finally
+    //   298	315	371	finally
+    //   51	82	378	finally
+    //   117	134	378	finally
+    //   142	152	390	finally
+    //   51	82	402	java/lang/Exception
+    //   117	134	402	java/lang/Exception
+    //   190	197	412	java/lang/Exception
+    //   339	344	412	java/lang/Exception
+    //   344	352	412	java/lang/Exception
+    //   354	360	412	java/lang/Exception
+    //   363	368	412	java/lang/Exception
+  }
+  
+  public final void dC(int paramInt)
+  {
+    try
+    {
+      AppMethodBeat.i(157388);
+      if (this.aZf != null)
+      {
+        com.davemorrissey.labs.subscaleview.d.a locala = this.aZf;
+        locala.aXb += paramInt;
+        ad.d("MicroMsg.ImageDecodeRecord", "alvinluo addTileInitTime: %d, total: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.aXb) });
+      }
+      AppMethodBeat.o(157388);
+      return;
+    }
+    finally {}
+  }
+  
+  public final void dD(int paramInt)
+  {
+    try
+    {
+      AppMethodBeat.i(157389);
+      if (this.aZf != null)
+      {
+        com.davemorrissey.labs.subscaleview.d.a locala = this.aZf;
+        locala.aXa += paramInt;
+        ad.d("MicroMsg.ImageDecodeRecord", "alvinluo addPreviewLoadedTime: %d, total: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.aXa) });
+      }
+      AppMethodBeat.o(157389);
+      return;
+    }
+    finally {}
+  }
+  
+  public final void dE(int paramInt)
   {
     try
     {
       AppMethodBeat.i(157390);
-      if (this.aOL != null)
+      if (this.aZf != null)
       {
-        com.davemorrissey.labs.subscaleview.d.a locala = this.aOL;
-        locala.aML += paramInt;
-        ac.d("MicroMsg.ImageDecodeRecord", "alvinluo addTileDecodeTime: %d, total: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.aML) });
+        com.davemorrissey.labs.subscaleview.d.a locala = this.aZf;
+        locala.aXc += paramInt;
+        ad.d("MicroMsg.ImageDecodeRecord", "alvinluo addTileDecodeTime: %d, total: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.aXc) });
       }
       AppMethodBeat.o(157390);
       return;
@@ -1893,51 +2211,10 @@ public class SubsamplingScaleImageView
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(157408);
-    ac.d(this.TAG, "alvinluo SubsamplingScaleImageView dispatchTouchEvent");
+    ad.d(this.TAG, "alvinluo SubsamplingScaleImageView dispatchTouchEvent");
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(157408);
     return bool;
-  }
-  
-  public final void dy(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(157388);
-      if (this.aOL != null)
-      {
-        com.davemorrissey.labs.subscaleview.d.a locala = this.aOL;
-        locala.aMK += paramInt;
-        ac.d("MicroMsg.ImageDecodeRecord", "alvinluo addTileInitTime: %d, total: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.aMK) });
-      }
-      AppMethodBeat.o(157388);
-      return;
-    }
-    finally {}
-  }
-  
-  public final void dz(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(157389);
-      if (this.aOL != null)
-      {
-        com.davemorrissey.labs.subscaleview.d.a locala = this.aOL;
-        locala.aMJ += paramInt;
-        ac.d("MicroMsg.ImageDecodeRecord", "alvinluo addPreviewLoadedTime: %d, total: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(locala.aMJ) });
-      }
-      AppMethodBeat.o(157389);
-      return;
-    }
-    finally {}
-  }
-  
-  public final void f(String paramString, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(157444);
-    ac.d(this.TAG, String.format(paramString, paramVarArgs));
-    AppMethodBeat.o(157444);
   }
   
   public final int getAppliedOrientation()
@@ -1960,24 +2237,24 @@ public class SubsamplingScaleImageView
   
   public ReadWriteLock getDecoderLock()
   {
-    return this.aMv;
+    return this.aWM;
   }
   
   public Bitmap getFullImageBitmap()
   {
-    return this.aNh;
+    return this.aXz;
   }
   
   public int getFullImageSampleSize()
   {
-    return this.aNd;
+    return this.aXv;
   }
   
   public com.davemorrissey.labs.subscaleview.d.a getImageDecodeRecord()
   {
     try
     {
-      com.davemorrissey.labs.subscaleview.d.a locala = this.aOL;
+      com.davemorrissey.labs.subscaleview.d.a locala = this.aZf;
       return locala;
     }
     finally
@@ -1989,20 +2266,20 @@ public class SubsamplingScaleImageView
   
   public float getMaxScale()
   {
-    return this.aNk;
+    return this.aXE;
   }
   
   public final float getMinScale()
   {
     AppMethodBeat.i(157453);
-    float f = qy();
+    float f = rW();
     AppMethodBeat.o(157453);
     return f;
   }
   
   public e getOnImageEventListener()
   {
-    return this.aOh;
+    return this.aYB;
   }
   
   public final int getOrientation()
@@ -2012,35 +2289,35 @@ public class SubsamplingScaleImageView
   
   public int getPreviewHeight()
   {
-    return this.aNb;
+    return this.aXt;
   }
   
   public int getPreviewOrientation()
   {
-    return this.aNL;
+    return this.aYf;
   }
   
   public int getPreviewWidth()
   {
-    return this.aNa;
+    return this.aXs;
   }
   
   public int getRequiredRotation()
   {
     if (this.orientation == -1) {
-      return this.aNK;
+      return this.aYe;
     }
     return this.orientation;
   }
   
   public final int getSHeight()
   {
-    return this.aMP;
+    return this.aXh;
   }
   
   public final int getSWidth()
   {
-    return this.aMO;
+    return this.aXg;
   }
   
   public final float getScale()
@@ -2051,7 +2328,7 @@ public class SubsamplingScaleImageView
   public final b getState()
   {
     AppMethodBeat.i(157458);
-    if ((this.aNB != null) && (this.aMO > 0) && (this.aMP > 0))
+    if ((this.aXV != null) && (this.aXg > 0) && (this.aXh > 0))
     {
       b localb = new b(getScale(), getCenter(), getOrientation());
       AppMethodBeat.o(157458);
@@ -2063,221 +2340,22 @@ public class SubsamplingScaleImageView
   
   public Rect getsRegion()
   {
-    return this.aMQ;
+    return this.aXi;
   }
   
-  /* Error */
-  public final int h(Context paramContext, String paramString)
+  public final void h(String paramString, Object... paramVarArgs)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: iconst_0
-    //   4: istore 4
-    //   6: ldc_w 1419
-    //   9: invokestatic 212	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   12: aload_2
-    //   13: ldc_w 1421
-    //   16: invokevirtual 1425	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   19: ifeq +176 -> 195
-    //   22: aload_1
-    //   23: invokevirtual 1429	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   26: aload_2
-    //   27: invokestatic 1324	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   30: iconst_1
-    //   31: anewarray 472	java/lang/String
-    //   34: dup
-    //   35: iconst_0
-    //   36: ldc_w 1430
-    //   39: aastore
-    //   40: aconst_null
-    //   41: aconst_null
-    //   42: aconst_null
-    //   43: invokevirtual 1436	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   46: astore_1
-    //   47: aload_1
-    //   48: ifnull +82 -> 130
-    //   51: aload_1
-    //   52: invokeinterface 1441 1 0
-    //   57: ifeq +73 -> 130
-    //   60: aload_1
-    //   61: iconst_0
-    //   62: invokeinterface 1444 2 0
-    //   67: istore_3
-    //   68: getstatic 226	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:aMS	Ljava/util/List;
-    //   71: iload_3
-    //   72: invokestatic 218	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   75: invokeinterface 1447 2 0
-    //   80: istore 6
-    //   82: iload 6
-    //   84: ifeq +29 -> 113
-    //   87: iload_3
-    //   88: iconst_m1
-    //   89: if_icmpeq +24 -> 113
-    //   92: iload_3
-    //   93: istore 4
-    //   95: aload_1
-    //   96: ifnull +93 -> 189
-    //   99: aload_1
-    //   100: invokeinterface 1450 1 0
-    //   105: ldc_w 1419
-    //   108: invokestatic 264	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   111: iload_3
-    //   112: ireturn
-    //   113: aload_0
-    //   114: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
-    //   117: ldc_w 1452
-    //   120: iload_3
-    //   121: invokestatic 603	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   124: invokevirtual 491	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   127: invokestatic 1454	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   130: iconst_0
-    //   131: istore_3
-    //   132: goto -40 -> 92
-    //   135: astore_1
-    //   136: aconst_null
-    //   137: astore_1
-    //   138: aload_0
-    //   139: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
-    //   142: ldc_w 1456
-    //   145: invokestatic 1454	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   148: aload_1
-    //   149: ifnull +37 -> 186
-    //   152: aload_1
-    //   153: invokeinterface 1450 1 0
-    //   158: iload 4
-    //   160: istore_3
-    //   161: goto -56 -> 105
-    //   164: astore_1
-    //   165: aload 7
-    //   167: astore_2
-    //   168: aload_2
-    //   169: ifnull +9 -> 178
-    //   172: aload_2
-    //   173: invokeinterface 1450 1 0
-    //   178: ldc_w 1419
-    //   181: invokestatic 264	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   184: aload_1
-    //   185: athrow
-    //   186: iconst_0
-    //   187: istore 4
-    //   189: iload 4
-    //   191: istore_3
-    //   192: goto -87 -> 105
-    //   195: iload 4
-    //   197: istore_3
-    //   198: aload_2
-    //   199: ldc_w 1458
-    //   202: invokevirtual 1425	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   205: ifeq -100 -> 105
-    //   208: iload 4
-    //   210: istore_3
-    //   211: aload_2
-    //   212: ldc_w 484
-    //   215: invokevirtual 1425	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   218: ifne -113 -> 105
-    //   221: new 1460	androidx/a/a/a
-    //   224: dup
-    //   225: aload_2
-    //   226: bipush 7
-    //   228: invokevirtual 1463	java/lang/String:substring	(I)Ljava/lang/String;
-    //   231: invokespecial 1464	androidx/a/a/a:<init>	(Ljava/lang/String;)V
-    //   234: ldc_w 1466
-    //   237: iconst_1
-    //   238: invokevirtual 1470	androidx/a/a/a:getAttributeInt	(Ljava/lang/String;I)I
-    //   241: istore 5
-    //   243: iload 4
-    //   245: istore_3
-    //   246: iload 5
-    //   248: iconst_1
-    //   249: if_icmpeq -144 -> 105
-    //   252: iload 4
-    //   254: istore_3
-    //   255: iload 5
-    //   257: ifeq -152 -> 105
-    //   260: iload 5
-    //   262: bipush 6
-    //   264: if_icmpne +78 -> 342
-    //   267: bipush 90
-    //   269: istore_3
-    //   270: goto -165 -> 105
-    //   273: aload_0
-    //   274: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
-    //   277: ldc_w 1472
-    //   280: iload 5
-    //   282: invokestatic 603	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   285: invokevirtual 491	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   288: invokestatic 1454	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   291: iload 4
-    //   293: istore_3
-    //   294: goto -189 -> 105
-    //   297: astore_1
-    //   298: aload_0
-    //   299: getfield 296	com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView:TAG	Ljava/lang/String;
-    //   302: ldc_w 1474
-    //   305: invokestatic 1454	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   308: iload 4
-    //   310: istore_3
-    //   311: goto -206 -> 105
-    //   314: astore_2
-    //   315: aload_1
-    //   316: astore 7
-    //   318: aload_2
-    //   319: astore_1
-    //   320: aload 7
-    //   322: astore_2
-    //   323: goto -155 -> 168
-    //   326: astore_2
-    //   327: aload_1
-    //   328: astore 7
-    //   330: aload_2
-    //   331: astore_1
-    //   332: aload 7
-    //   334: astore_2
-    //   335: goto -167 -> 168
-    //   338: astore_2
-    //   339: goto -201 -> 138
-    //   342: iload 5
-    //   344: iconst_3
-    //   345: if_icmpne +10 -> 355
-    //   348: sipush 180
-    //   351: istore_3
-    //   352: goto -247 -> 105
-    //   355: iload 5
-    //   357: bipush 8
-    //   359: if_icmpne -86 -> 273
-    //   362: sipush 270
-    //   365: istore_3
-    //   366: goto -261 -> 105
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	369	0	this	SubsamplingScaleImageView
-    //   0	369	1	paramContext	Context
-    //   0	369	2	paramString	String
-    //   67	299	3	i	int
-    //   4	305	4	j	int
-    //   241	119	5	k	int
-    //   80	3	6	bool	boolean
-    //   1	332	7	localContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   22	47	135	java/lang/Exception
-    //   22	47	164	finally
-    //   221	243	297	java/lang/Exception
-    //   273	291	297	java/lang/Exception
-    //   51	82	314	finally
-    //   113	130	314	finally
-    //   138	148	326	finally
-    //   51	82	338	java/lang/Exception
-    //   113	130	338	java/lang/Exception
+    AppMethodBeat.i(157444);
+    ad.d(this.TAG, String.format(paramString, paramVarArgs));
+    AppMethodBeat.o(157444);
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(157391);
     super.onAttachedToWindow();
-    if (this.aOK != null) {
-      this.aOK.onViewAttachedToWindow(this);
+    if (this.aZe != null) {
+      this.aZe.onViewAttachedToWindow(this);
     }
     this.cancelled = false;
     AppMethodBeat.o(157391);
@@ -2290,15 +2368,15 @@ public class SubsamplingScaleImageView
     if (!this.cancelled)
     {
       this.cancelled = true;
-      ac.i(this.TAG, "alvinluo cancelAllTileLoadTask, task size: %d", new Object[] { Integer.valueOf(this.aOx.size()) });
-      Iterator localIterator = this.aOx.iterator();
+      ad.i(this.TAG, "alvinluo cancelAllTileLoadTask, task size: %d", new Object[] { Integer.valueOf(this.aYR.size()) });
+      Iterator localIterator = this.aYR.iterator();
       while (localIterator.hasNext()) {
         ((com.davemorrissey.labs.subscaleview.c.b)localIterator.next()).cancel();
       }
-      this.aOx.clear();
+      this.aYR.clear();
     }
-    if (this.aOK != null) {
-      this.aOK.onViewDetachedFromWindow(this);
+    if (this.aZe != null) {
+      this.aZe.onViewDetachedFromWindow(this);
     }
     AppMethodBeat.o(157392);
   }
@@ -2308,35 +2386,35 @@ public class SubsamplingScaleImageView
     AppMethodBeat.i(157413);
     super.onDraw(paramCanvas);
     System.currentTimeMillis();
-    if (this.aOk == null)
+    if (this.aYE == null)
     {
-      this.aOk = new Paint();
-      this.aOk.setAntiAlias(true);
-      this.aOk.setFilterBitmap(true);
-      this.aOk.setDither(true);
+      this.aYE = new Paint();
+      this.aYE.setAntiAlias(true);
+      this.aYE.setFilterBitmap(true);
+      this.aYE.setDither(true);
     }
-    if (((this.aOl == null) || (this.aOm == null)) && (this.aNj))
+    if (((this.aYF == null) || (this.aYG == null)) && (this.aXD))
     {
-      this.aOl = new Paint();
-      this.aOl.setTextSize(px(20));
-      this.aOl.setColor(-65281);
-      this.aOl.setStyle(Paint.Style.FILL);
-      this.aOm = new Paint();
-      this.aOm.setColor(-65281);
-      this.aOm.setStyle(Paint.Style.STROKE);
-      this.aOm.setStrokeWidth(px(1));
+      this.aYF = new Paint();
+      this.aYF.setTextSize(px(20));
+      this.aYF.setColor(-65281);
+      this.aYF.setStyle(Paint.Style.FILL);
+      this.aYG = new Paint();
+      this.aYG.setColor(-65281);
+      this.aYG.setStyle(Paint.Style.STROKE);
+      this.aYG.setStrokeWidth(px(1));
     }
-    if ((this.aMO == 0) || (this.aMP == 0) || (getWidth() == 0) || (getHeight() == 0))
+    if ((this.aXg == 0) || (this.aXh == 0) || (getWidth() == 0) || (getHeight() == 0))
     {
       AppMethodBeat.o(157413);
       return;
     }
     int j;
     int k;
-    if ((this.aNi == null) && (this.aMC != null))
+    if ((this.aXC == null) && (this.aWT != null))
     {
-      j = Math.min(paramCanvas.getMaximumBitmapWidth(), this.aNq);
-      k = Math.min(paramCanvas.getMaximumBitmapHeight(), this.aNr);
+      j = Math.min(paramCanvas.getMaximumBitmapWidth(), this.aXK);
+      k = Math.min(paramCanvas.getMaximumBitmapHeight(), this.aXL);
       i = j;
       if (j > 10000) {
         i = 10000;
@@ -2345,57 +2423,57 @@ public class SubsamplingScaleImageView
       if (k > 10000) {
         j = 10000;
       }
-      ac.i(this.TAG, "alvinluo getMaxBitmapDimensions %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ad.i(this.TAG, "alvinluo getMaxBitmapDimensions %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       a(new Point(i, j));
     }
-    if (!qr())
+    if (!rP())
     {
       AppMethodBeat.o(157413);
       return;
     }
-    qt();
+    rR();
     boolean bool1;
     float f1;
     boolean bool2;
-    if ((this.aOe != null) && (this.aOe.aPc != null))
+    if ((this.aYy != null) && (this.aYy.aZw != null))
     {
-      if (this.aND == null) {
-        this.aND = new PointF(0.0F, 0.0F);
+      if (this.aXX == null) {
+        this.aXX = new PointF(0.0F, 0.0F);
       }
-      this.aND.set(this.aNB);
-      long l = System.currentTimeMillis() - this.aOe.time;
-      if (l > this.aOe.duration)
+      this.aXX.set(this.aXV);
+      long l = System.currentTimeMillis() - this.aYy.time;
+      if (l > this.aYy.duration)
       {
         bool1 = true;
-        l = Math.min(l, this.aOe.duration);
-        this.scale = a(this.aOe.aPf, l, this.aOe.aNA, this.aOe.aOY - this.aOe.aNA, this.aOe.duration);
-        f1 = a(this.aOe.aPf, l, this.aOe.aPc.x, this.aOe.aPd.x - this.aOe.aPc.x, this.aOe.duration);
-        f2 = a(this.aOe.aPf, l, this.aOe.aPc.y, this.aOe.aPd.y - this.aOe.aPc.y, this.aOe.duration);
-        localObject1 = this.aNB;
-        ((PointF)localObject1).x -= W(this.aOe.aPa.x) - f1;
-        localObject1 = this.aNB;
-        ((PointF)localObject1).y -= X(this.aOe.aPa.y) - f2;
-        if ((!bool1) && (this.aOe.aNA != this.aOe.aOY)) {
+        l = Math.min(l, this.aYy.duration);
+        this.scale = a(this.aYy.aZz, l, this.aYy.aXU, this.aYy.aZs - this.aYy.aXU, this.aYy.duration);
+        f1 = a(this.aYy.aZz, l, this.aYy.aZw.x, this.aYy.aZx.x - this.aYy.aZw.x, this.aYy.duration);
+        f2 = a(this.aYy.aZz, l, this.aYy.aZw.y, this.aYy.aZx.y - this.aYy.aZw.y, this.aYy.duration);
+        localObject1 = this.aXV;
+        ((PointF)localObject1).x -= Y(this.aYy.aZu.x) - f1;
+        localObject1 = this.aXV;
+        ((PointF)localObject1).y -= Z(this.aYy.aZu.y) - f2;
+        if ((!bool1) && (this.aYy.aXU != this.aYy.aZs)) {
           break label883;
         }
         bool2 = true;
         label669:
-        aK(bool2);
-        c(this.aND);
-        aJ(bool1);
+        aL(bool2);
+        c(this.aXX);
+        aK(bool1);
         if (bool1) {
-          this.aOe = null;
+          this.aYy = null;
         }
         invalidate();
       }
     }
     else
     {
-      if ((this.aNi == null) || (!qq()) || (!this.aOH)) {
+      if ((this.aXC == null) || (!rO()) || (!this.aZb)) {
         break label1797;
       }
-      k = Math.min(this.aNd, T(this.scale));
-      localObject1 = this.aNi.entrySet().iterator();
+      k = Math.min(this.aXv, V(this.scale));
+      localObject1 = this.aXC.entrySet().iterator();
     }
     Object localObject2;
     Object localObject3;
@@ -2416,7 +2494,7 @@ public class SubsamplingScaleImageView
             break;
           }
           localObject3 = (com.davemorrissey.labs.subscaleview.c.e)((Iterator)localObject2).next();
-          if ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).visible) && ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMG) || (((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap == null))) {
+          if ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).visible) && ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWX) || (((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap == null))) {
             i = 1;
           }
         }
@@ -2428,7 +2506,7 @@ public class SubsamplingScaleImageView
       }
     }
     label896:
-    Object localObject1 = this.aNi.entrySet().iterator();
+    Object localObject1 = this.aXC.entrySet().iterator();
     for (;;)
     {
       if (((Iterator)localObject1).hasNext())
@@ -2444,101 +2522,101 @@ public class SubsamplingScaleImageView
             if (((Iterator)localObject2).hasNext())
             {
               localObject3 = (com.davemorrissey.labs.subscaleview.c.e)((Iterator)localObject2).next();
-              Rect localRect = ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMF;
-              ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.set((int)W(localRect.left), (int)X(localRect.top), (int)W(localRect.right), (int)X(localRect.bottom));
-              if ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMG) || (((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap == null)) {
+              Rect localRect = ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWW;
+              ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.set((int)Y(localRect.left), (int)Z(localRect.top), (int)Y(localRect.right), (int)Z(localRect.bottom));
+              if ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWX) || (((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap == null)) {
                 break label1737;
               }
-              if (this.aOn != null) {
-                paramCanvas.drawRect(((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH, this.aOn);
+              if (this.aYH != null) {
+                paramCanvas.drawRect(((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY, this.aYH);
               }
-              if (this.eY == null) {
-                this.eY = new Matrix();
+              if (this.gR == null) {
+                this.gR = new Matrix();
               }
-              this.eY.reset();
-              a(this.aOq, 0.0F, 0.0F, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getWidth(), 0.0F, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getWidth(), ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getHeight(), 0.0F, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getHeight());
+              this.gR.reset();
+              a(this.aYK, 0.0F, 0.0F, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getWidth(), 0.0F, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getWidth(), ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getHeight(), 0.0F, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.getHeight());
               if (getRequiredRotation() != 0) {
                 break label1462;
               }
-              a(this.aOr, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom);
+              a(this.aYL, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom);
               label1249:
-              this.eY.setPolyToPoly(this.aOq, 0, this.aOr, 0, 4);
+              this.gR.setPolyToPoly(this.aYK, 0, this.aYL, 0, 4);
               if (!((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap.isRecycled()) {
-                paramCanvas.drawBitmap(((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap, this.eY, this.aOk);
+                paramCanvas.drawBitmap(((com.davemorrissey.labs.subscaleview.c.e)localObject3).bitmap, this.gR, this.aYE);
               }
-              if (this.aNj) {
-                paramCanvas.drawRect(((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH, this.aOm);
+              if (this.aXD) {
+                paramCanvas.drawRect(((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY, this.aYG);
               }
             }
             for (;;)
             {
-              if ((!((com.davemorrissey.labs.subscaleview.c.e)localObject3).visible) || (!this.aNj)) {
+              if ((!((com.davemorrissey.labs.subscaleview.c.e)localObject3).visible) || (!this.aXD)) {
                 break label1795;
               }
-              paramCanvas.drawText("ISS " + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).sampleSize + " RECT " + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMF.top + "," + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMF.left + "," + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMF.bottom + "," + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMF.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left + px(5), ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top + px(15), this.aOl);
+              paramCanvas.drawText("ISS " + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).sampleSize + " RECT " + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWW.top + "," + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWW.left + "," + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWW.bottom + "," + ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWW.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left + px(5), ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top + px(15), this.aYF);
               break label974;
               break;
               label1462:
               if (getRequiredRotation() == 90)
               {
-                a(this.aOr, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top);
+                a(this.aYL, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top);
                 break label1249;
               }
               if (getRequiredRotation() == 180)
               {
-                a(this.aOr, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top);
+                a(this.aYL, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top);
                 break label1249;
               }
               if (getRequiredRotation() != 270) {
                 break label1249;
               }
-              a(this.aOr, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.bottom);
+              a(this.aYL, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.right, ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.bottom);
               break label1249;
               label1737:
-              if ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMG) && (this.aNj)) {
-                paramCanvas.drawText("LOADING", ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.left + px(5), ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aMH.top + px(35), this.aOl);
+              if ((((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWX) && (this.aXD)) {
+                paramCanvas.drawText("LOADING", ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.left + px(5), ((com.davemorrissey.labs.subscaleview.c.e)localObject3).aWY.top + px(35), this.aYF);
               }
             }
           }
           label1797:
           if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
           {
-            ac.d(this.TAG, "alvinluo onDraw bitmap scale: %f", new Object[] { Float.valueOf(this.scale) });
-            if ((!this.aMX) || (this.aMZ))
+            ad.d(this.TAG, "alvinluo onDraw bitmap scale: %f", new Object[] { Float.valueOf(this.scale) });
+            if ((!this.aXp) || (this.aXr))
             {
-              if (this.eY == null) {
-                this.eY = new Matrix();
+              if (this.gR == null) {
+                this.gR = new Matrix();
               }
-              this.eY.reset();
+              this.gR.reset();
               i = this.bitmap.getWidth();
               j = this.bitmap.getHeight();
-              if ((this.aNL == 90) || (this.aNL == 270))
+              if ((this.aYf == 90) || (this.aYf == 270))
               {
                 i = this.bitmap.getHeight();
                 j = this.bitmap.getWidth();
               }
-              if (this.aMX)
+              if (this.aXp)
               {
                 f1 = i / 2.0F;
                 f2 = j / 2.0F;
-                qn();
-                this.eY.postScale(this.aOD, this.aOE, f1, f2);
+                rL();
+                this.gR.postScale(this.aYX, this.aYY, f1, f2);
               }
-              f1 = (this.aOy - this.bitmap.getWidth()) / 2;
-              f2 = (this.aOz - this.bitmap.getHeight()) / 2;
-              this.eY.postTranslate(f1, f2);
-              ac.d(this.TAG, "alvinluo onDraw offsetX: %f, offsetY: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
-              if (this.aOn != null)
+              f1 = (this.aYS - this.bitmap.getWidth()) / 2;
+              f2 = (this.aYT - this.bitmap.getHeight()) / 2;
+              this.gR.postTranslate(f1, f2);
+              ad.d(this.TAG, "alvinluo onDraw offsetX: %f, offsetY: %f", new Object[] { Float.valueOf(f1), Float.valueOf(f2) });
+              if (this.aYH != null)
               {
-                if (this.aOp == null) {
-                  this.aOp = new RectF();
+                if (this.aYJ == null) {
+                  this.aYJ = new RectF();
                 }
-                localObject1 = this.aOp;
-                if (!this.aMX) {
+                localObject1 = this.aYJ;
+                if (!this.aXp) {
                   break label2880;
                 }
                 f1 = this.bitmap.getWidth();
-                if (!this.aMX) {
+                if (!this.aXp) {
                   break label2889;
                 }
               }
@@ -2549,52 +2627,52 @@ public class SubsamplingScaleImageView
     }
     label2880:
     label2889:
-    for (float f2 = this.bitmap.getHeight();; f2 = this.aMP)
+    for (float f2 = this.bitmap.getHeight();; f2 = this.aXh)
     {
       ((RectF)localObject1).set(0.0F, 0.0F, f1, f2);
-      this.eY.mapRect(this.aOp);
-      paramCanvas.drawRect(this.aOp, this.aOn);
-      paramCanvas.drawBitmap(this.bitmap, this.eY, this.aOk);
-      if (this.aNj)
+      this.gR.mapRect(this.aYJ);
+      paramCanvas.drawRect(this.aYJ, this.aYH);
+      paramCanvas.drawBitmap(this.bitmap, this.gR, this.aYE);
+      if (this.aXD)
       {
-        ac.d(this.TAG, "alvinluo onDraw debug vTranslate %f, %f", new Object[] { Float.valueOf(this.aNB.x), Float.valueOf(this.aNB.y) });
-        paramCanvas.drawText("Scale: " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.scale) }) + " (" + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(qy()) }) + " - " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.aNk) }) + ")", px(5), px(15), this.aOl);
-        paramCanvas.drawText("Translate: " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.aNB.x) }) + ":" + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.aNB.y) }), px(5), px(30), this.aOl);
+        ad.d(this.TAG, "alvinluo onDraw debug vTranslate %f, %f", new Object[] { Float.valueOf(this.aXV.x), Float.valueOf(this.aXV.y) });
+        paramCanvas.drawText("Scale: " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.scale) }) + " (" + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(rW()) }) + " - " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.aXE) }) + ")", px(5), px(15), this.aYF);
+        paramCanvas.drawText("Translate: " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.aXV.x) }) + ":" + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(this.aXV.y) }), px(5), px(30), this.aYF);
         localObject1 = getCenter();
-        paramCanvas.drawText("Source center: " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(((PointF)localObject1).x) }) + ":" + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(((PointF)localObject1).y) }), px(5), px(45), this.aOl);
-        if (this.aOe != null)
+        paramCanvas.drawText("Source center: " + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(((PointF)localObject1).x) }) + ":" + String.format(Locale.ENGLISH, "%.2f", new Object[] { Float.valueOf(((PointF)localObject1).y) }), px(5), px(45), this.aYF);
+        if (this.aYy != null)
         {
-          localObject1 = b(this.aOe.aOZ);
-          localObject2 = b(this.aOe.aPb);
-          localObject3 = b(this.aOe.aPa);
-          paramCanvas.drawCircle(((PointF)localObject1).x, ((PointF)localObject1).y, px(10), this.aOm);
-          this.aOm.setColor(-65536);
-          paramCanvas.drawCircle(((PointF)localObject2).x, ((PointF)localObject2).y, px(20), this.aOm);
-          this.aOm.setColor(-16776961);
-          paramCanvas.drawCircle(((PointF)localObject3).x, ((PointF)localObject3).y, px(25), this.aOm);
-          this.aOm.setColor(-16711681);
-          paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, px(30), this.aOm);
+          localObject1 = b(this.aYy.aZt);
+          localObject2 = b(this.aYy.aZv);
+          localObject3 = b(this.aYy.aZu);
+          paramCanvas.drawCircle(((PointF)localObject1).x, ((PointF)localObject1).y, px(10), this.aYG);
+          this.aYG.setColor(-65536);
+          paramCanvas.drawCircle(((PointF)localObject2).x, ((PointF)localObject2).y, px(20), this.aYG);
+          this.aYG.setColor(-16776961);
+          paramCanvas.drawCircle(((PointF)localObject3).x, ((PointF)localObject3).y, px(25), this.aYG);
+          this.aYG.setColor(-16711681);
+          paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, px(30), this.aYG);
         }
-        if (this.aNW != null)
+        if (this.aYq != null)
         {
-          this.aOm.setColor(-65536);
-          paramCanvas.drawCircle(this.aNW.x, this.aNW.y, px(20), this.aOm);
+          this.aYG.setColor(-65536);
+          paramCanvas.drawCircle(this.aYq.x, this.aYq.y, px(20), this.aYG);
         }
-        if (this.aOc != null)
+        if (this.aYw != null)
         {
-          this.aOm.setColor(-16776961);
-          paramCanvas.drawCircle(W(this.aOc.x), X(this.aOc.y), px(35), this.aOm);
+          this.aYG.setColor(-16776961);
+          paramCanvas.drawCircle(Y(this.aYw.x), Z(this.aYw.y), px(35), this.aYG);
         }
-        if ((this.aOd != null) && (this.aNP))
+        if ((this.aYx != null) && (this.aYj))
         {
-          this.aOm.setColor(-16711681);
-          paramCanvas.drawCircle(this.aOd.x, this.aOd.y, px(30), this.aOm);
+          this.aYG.setColor(-16711681);
+          paramCanvas.drawCircle(this.aYx.x, this.aYx.y, px(30), this.aYG);
         }
-        this.aOm.setColor(-65281);
+        this.aYG.setColor(-65281);
       }
       AppMethodBeat.o(157413);
       return;
-      f1 = this.aMO;
+      f1 = this.aXg;
       break;
     }
   }
@@ -2614,23 +2692,23 @@ public class SubsamplingScaleImageView
       }
       i = 1;
       label47:
-      if ((this.aMO <= 0) || (this.aMP <= 0)) {
+      if ((this.aXg <= 0) || (this.aXh <= 0)) {
         break label214;
       }
       if ((paramInt2 == 0) || (i == 0)) {
         break label164;
       }
-      paramInt2 = qw();
-      paramInt1 = qx();
+      paramInt2 = rU();
+      paramInt1 = rV();
     }
     for (;;)
     {
       paramInt2 = Math.max(paramInt2, getSuggestedMinimumWidth());
       paramInt1 = Math.max(paramInt1, getSuggestedMinimumHeight());
       setMeasuredDimension(paramInt2, paramInt1);
-      this.aOy = paramInt2;
-      this.aOz = paramInt1;
-      ac.d(this.TAG, "alvinluo SubsamplingImageView onMeasure mViewWidth: %d, mViewHeight: %d", new Object[] { Integer.valueOf(this.aOy), Integer.valueOf(this.aOy) });
+      this.aYS = paramInt2;
+      this.aYT = paramInt1;
+      ad.d(this.TAG, "alvinluo SubsamplingImageView onMeasure mViewWidth: %d, mViewHeight: %d", new Object[] { Integer.valueOf(this.aYS), Integer.valueOf(this.aYS) });
       AppMethodBeat.o(157407);
       return;
       paramInt2 = 0;
@@ -2641,12 +2719,12 @@ public class SubsamplingScaleImageView
       label164:
       if (i != 0)
       {
-        paramInt1 = (int)(qx() / qw() * j);
+        paramInt1 = (int)(rV() / rU() * j);
         paramInt2 = j;
       }
       else if (paramInt2 != 0)
       {
-        paramInt2 = (int)(qw() / qx() * paramInt1);
+        paramInt2 = (int)(rU() / rV() * paramInt1);
       }
       else
       {
@@ -2659,16 +2737,16 @@ public class SubsamplingScaleImageView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(157406);
-    f("onSizeChanged %dx%d -> %dx%d scale: %f, pendingScale: %f, needPendingScale: %b", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(this.scale), this.aNE, Boolean.valueOf(this.aNH) });
-    qm();
+    h("onSizeChanged %dx%d -> %dx%d scale: %f, pendingScale: %f, needPendingScale: %b", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(this.scale), this.aXY, Boolean.valueOf(this.aYb) });
+    rK();
     PointF localPointF = getCenter();
-    if (((this.aOf) || (this.aNH)) && (localPointF != null))
+    if (((this.aYz) || (this.aYb)) && (localPointF != null))
     {
-      this.aOe = null;
-      if (!this.aNH)
+      this.aYy = null;
+      if (!this.aYb)
       {
-        this.aNE = Float.valueOf(this.scale);
-        this.aNF = localPointF;
+        this.aXY = Float.valueOf(this.scale);
+        this.aXZ = localPointF;
       }
     }
     AppMethodBeat.o(157406);
@@ -2677,84 +2755,106 @@ public class SubsamplingScaleImageView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(157409);
-    ac.d(this.TAG, "alvinluo SubSamplingScaleImageView onTouchEvent: %d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
-    if ((this.aOe != null) && (!this.aOe.aPe))
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+    ad.d(this.TAG, "alvinluo SubSamplingScaleImageView onTouchEvent: %d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()) });
+    if ((this.aYy != null) && (!this.aYy.aZy))
     {
       requestDisallowInterceptTouchEvent(true);
+      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(157409);
       return true;
     }
-    this.aOe = null;
-    if (this.aNB == null)
+    this.aYy = null;
+    if (this.aXV == null)
     {
-      if (this.aNT != null) {
-        this.aNT.onTouchEvent(paramMotionEvent);
+      if (this.aYn != null)
+      {
+        localObject = this.aYn;
+        paramMotionEvent = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramMotionEvent.ahp(), "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)paramMotionEvent.mq(0)), "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
       }
+      com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(157409);
       return true;
     }
-    if ((!this.aNP) && ((this.aNR == null) || (this.aNR.onTouchEvent(paramMotionEvent))))
-    {
-      this.aNN = false;
-      this.aNO = false;
-      this.aNQ = 0;
-      AppMethodBeat.o(157409);
-      return true;
+    if (!this.aYj) {
+      if (this.aYl != null)
+      {
+        localObject = this.aYl;
+        com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        if (!com.tencent.mm.hellhoundlib.a.a.a(localObject, ((GestureDetector)localObject).onTouchEvent((MotionEvent)locala.mq(0)), "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z")) {}
+      }
+      else
+      {
+        this.aYh = false;
+        this.aYi = false;
+        this.aYk = 0;
+        com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+        AppMethodBeat.o(157409);
+        return true;
+      }
     }
-    if (this.aNC == null) {
-      this.aNC = new PointF(0.0F, 0.0F);
+    if (this.aXW == null) {
+      this.aXW = new PointF(0.0F, 0.0F);
     }
-    if (this.aND == null) {
-      this.aND = new PointF(0.0F, 0.0F);
+    if (this.aXX == null) {
+      this.aXX = new PointF(0.0F, 0.0F);
     }
-    if (this.aNW == null) {
-      this.aNW = new PointF(0.0F, 0.0F);
+    if (this.aYq == null) {
+      this.aYq = new PointF(0.0F, 0.0F);
     }
-    this.aND.set(this.aNB);
+    this.aXX.set(this.aXV);
     int i = paramMotionEvent.getPointerCount();
     boolean bool1;
-    label303:
+    label539:
     boolean bool2;
+    label597:
     float f1;
-    label511:
+    label769:
     float f3;
     float f4;
     float f5;
     double d;
     float f2;
-    label949:
-    label994:
+    label1207:
+    label1252:
     float f6;
     float f7;
     switch (paramMotionEvent.getAction())
     {
     default: 
       bool1 = false;
-      c(this.aND);
+      c(this.aXX);
       bool2 = super.onTouchEvent(paramMotionEvent);
-      ac.i(this.TAG, "alvinluo onTouchEvent super: %b, handled: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      ad.i(this.TAG, "alvinluo onTouchEvent super: %b, handled: %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       if ((bool1) || (bool2))
       {
+        bool1 = true;
+        com.tencent.mm.hellhoundlib.a.a.a(bool1, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(157409);
-        return true;
+        return bool1;
       }
       break;
     case 0: 
     case 5: 
     case 261: 
-      this.aOQ = paramMotionEvent.getRawX();
-      this.aOR = paramMotionEvent.getRawY();
-      this.aOe = null;
+      this.aZk = paramMotionEvent.getRawX();
+      this.aZl = paramMotionEvent.getRawY();
+      this.aYy = null;
       requestDisallowInterceptTouchEvent(true);
-      this.aNQ = Math.max(this.aNQ, i);
+      this.aYk = Math.max(this.aYk, i);
       if (i >= 2) {
-        if (this.aNu)
+        if (this.aXO)
         {
           f1 = e(paramMotionEvent.getX(0), paramMotionEvent.getX(1), paramMotionEvent.getY(0), paramMotionEvent.getY(1));
-          this.aNA = this.scale;
-          this.aNX = f1;
-          this.aNC.set(this.aNB.x, this.aNB.y);
-          this.aNW.set((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F, (paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
+          this.aXU = this.scale;
+          this.aYr = f1;
+          this.aXW.set(this.aXV.x, this.aXV.y);
+          this.aYq.set((paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F, (paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
           this.handler.removeMessages(1);
         }
       }
@@ -2762,130 +2862,130 @@ public class SubsamplingScaleImageView
       {
         bool1 = true;
         break;
-        this.aNQ = 0;
-        break label511;
-        if (!this.aNP)
+        this.aYk = 0;
+        break label769;
+        if (!this.aYj)
         {
-          this.aNC.set(this.aNB.x, this.aNB.y);
-          this.aNW.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-          ac.i(this.TAG, "pennqin, delay time 601 ms.");
+          this.aXW.set(this.aXV.x, this.aXV.y);
+          this.aYq.set(paramMotionEvent.getX(), paramMotionEvent.getY());
+          ad.i(this.TAG, "pennqin, delay time 601 ms.");
           this.handler.sendEmptyMessageDelayed(1, 601L);
         }
       }
     case 2: 
       bool2 = false;
       bool1 = bool2;
-      if (this.aNQ > 0)
+      if (this.aYk > 0)
       {
         if (i < 2) {
-          break label1330;
+          break label1588;
         }
         f3 = e(paramMotionEvent.getX(0), paramMotionEvent.getX(1), paramMotionEvent.getY(0), paramMotionEvent.getY(1));
         f4 = (paramMotionEvent.getX(0) + paramMotionEvent.getX(1)) / 2.0F;
         f5 = (paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F;
-        this.aOJ = new PointF(f4, f5);
+        this.aZd = new PointF(f4, f5);
         bool1 = bool2;
-        if (this.aNu) {
-          if ((e(this.aNW.x, f4, this.aNW.y, f5) <= 5.0F) && (Math.abs(f3 - this.aNX) <= 5.0F))
+        if (this.aXO) {
+          if ((e(this.aYq.x, f4, this.aYq.y, f5) <= 5.0F) && (Math.abs(f3 - this.aYr) <= 5.0F))
           {
             bool1 = bool2;
-            if (!this.aNO) {}
+            if (!this.aYi) {}
           }
           else
           {
-            this.aNN = true;
-            this.aNO = true;
+            this.aYh = true;
+            this.aYi = true;
             d = this.scale;
-            f2 = f3 / this.aNX * this.aNA;
+            f2 = f3 / this.aYr * this.aXU;
             f1 = f2;
-            if (f2 >= this.aNk * 2.0F)
+            if (f2 >= this.aXE * 2.0F)
             {
-              f1 = this.aNk;
-              f1 = (f2 - this.aNk) * 0.1F + f1 * 2.0F;
+              f1 = this.aXE;
+              f1 = (f2 - this.aXE) * 0.1F + f1 * 2.0F;
             }
             this.scale = f1;
-            ac.i(this.TAG, "alvinluo zoom preScale: %f, scale: %f, minScale: %f, maxScale: %f", new Object[] { Double.valueOf(d), Float.valueOf(this.scale), Float.valueOf(qy()), Float.valueOf(this.aNk) });
-            if (this.scale > qy()) {
-              break label994;
+            ad.i(this.TAG, "alvinluo zoom preScale: %f, scale: %f, minScale: %f, maxScale: %f", new Object[] { Double.valueOf(d), Float.valueOf(this.scale), Float.valueOf(rW()), Float.valueOf(this.aXE) });
+            if (this.scale > rW()) {
+              break label1252;
             }
-            this.aNX = f3;
-            this.aNA = qy();
-            this.aNW.set(f4, f5);
-            this.aNC.set(this.aNB);
+            this.aYr = f3;
+            this.aXU = rW();
+            this.aYq.set(f4, f5);
+            this.aXW.set(this.aXV);
           }
         }
       }
       for (;;)
       {
-        aK(true);
-        aJ(this.aNs);
+        aL(true);
+        aK(this.aXM);
         bool1 = true;
-        ac.d(this.TAG, "alvinluo Action_Move consumed: %b", new Object[] { Boolean.valueOf(bool1) });
+        ad.d(this.TAG, "alvinluo Action_Move consumed: %b", new Object[] { Boolean.valueOf(bool1) });
         if (!bool1) {
           break;
         }
         this.handler.removeMessages(1);
         invalidate();
         bool1 = true;
-        break label303;
-        if (this.aNt)
+        break label539;
+        if (this.aXN)
         {
-          f1 = this.aNW.x;
-          f2 = this.aNC.x;
-          f6 = this.aNW.y;
-          f7 = this.aNC.y;
-          float f8 = this.scale / this.aNA;
-          float f9 = this.scale / this.aNA;
-          this.aNB.x = (f4 - (f1 - f2) * f8);
-          this.aNB.y = (f5 - (f6 - f7) * f9);
-          if (((qx() * d < getHeight()) && (this.scale * qx() >= getHeight())) || ((d * qw() < getWidth()) && (this.scale * qw() >= getWidth())))
+          f1 = this.aYq.x;
+          f2 = this.aXW.x;
+          f6 = this.aYq.y;
+          f7 = this.aXW.y;
+          float f8 = this.scale / this.aXU;
+          float f9 = this.scale / this.aXU;
+          this.aXV.x = (f4 - (f1 - f2) * f8);
+          this.aXV.y = (f5 - (f6 - f7) * f9);
+          if (((rV() * d < getHeight()) && (this.scale * rV() >= getHeight())) || ((d * rU() < getWidth()) && (this.scale * rU() >= getWidth())))
           {
-            aK(true);
-            this.aNW.set(f4, f5);
-            this.aNC.set(this.aNB);
-            this.aNA = this.scale;
-            this.aNX = f3;
+            aL(true);
+            this.aYq.set(f4, f5);
+            this.aXW.set(this.aXV);
+            this.aXU = this.scale;
+            this.aYr = f3;
           }
         }
-        else if (this.aNG != null)
+        else if (this.aYa != null)
         {
-          this.aNB.x = (getWidth() / 2 - this.scale * this.aNG.x);
-          this.aNB.y = (getHeight() / 2 - this.scale * this.aNG.y);
+          this.aXV.x = (getWidth() / 2 - this.scale * this.aYa.x);
+          this.aXV.y = (getHeight() / 2 - this.scale * this.aYa.y);
         }
         else
         {
-          this.aNB.x = (getWidth() / 2 - this.scale * (qw() / 2));
-          this.aNB.y = (getHeight() / 2 - this.scale * (qx() / 2));
+          this.aXV.x = (getWidth() / 2 - this.scale * (rU() / 2));
+          this.aXV.y = (getHeight() / 2 - this.scale * (rV() / 2));
         }
       }
-      label1330:
-      if (this.aNP)
+      label1588:
+      if (this.aYj)
       {
-        f2 = Math.abs(this.aOd.y - paramMotionEvent.getY()) * 2.0F + this.aNY;
-        if (this.aNZ == -1.0F) {
-          this.aNZ = f2;
+        f2 = Math.abs(this.aYx.y - paramMotionEvent.getY()) * 2.0F + this.aYs;
+        if (this.aYt == -1.0F) {
+          this.aYt = f2;
         }
-        if (paramMotionEvent.getY() > this.aOb.y)
+        if (paramMotionEvent.getY() > this.aYv.y)
         {
           i = 1;
-          label1396:
-          this.aOb.set(0.0F, paramMotionEvent.getY());
-          f3 = 0.5F * Math.abs(1.0F - f2 / this.aNZ);
+          label1654:
+          this.aYv.set(0.0F, paramMotionEvent.getY());
+          f3 = 0.5F * Math.abs(1.0F - f2 / this.aYt);
           if (f3 <= 0.03F)
           {
             f1 = f2;
-            if (!this.aOa) {
+            if (!this.aYu) {
               break;
             }
           }
           else
           {
-            this.aOa = true;
-            if (this.aNZ <= 0.0F) {
-              break label2804;
+            this.aYu = true;
+            if (this.aYt <= 0.0F) {
+              break label3060;
             }
             if (i == 0) {
-              break label1756;
+              break label2014;
             }
             f1 = 1.0F + f3;
           }
@@ -2895,203 +2995,203 @@ public class SubsamplingScaleImageView
     }
     for (;;)
     {
-      label1471:
+      label1729:
       d = this.scale;
-      this.scale = Math.max(qy(), Math.min(this.aNk, f1 * this.scale));
-      if (this.aNt)
+      this.scale = Math.max(rW(), Math.min(this.aXE, f1 * this.scale));
+      if (this.aXN)
       {
-        f1 = this.aNW.x;
-        f3 = this.aNC.x;
-        f4 = this.aNW.y;
-        f5 = this.aNC.y;
-        f6 = this.scale / this.aNA;
-        f7 = this.scale / this.aNA;
-        this.aNB.x = (this.aNW.x - (f1 - f3) * f6);
-        this.aNB.y = (this.aNW.y - (f4 - f5) * f7);
-        if (((qx() * d >= getHeight()) || (this.scale * qx() < getHeight())) && ((qw() * d >= getWidth()) || (this.scale * qw() < getWidth()))) {
-          break label2797;
+        f1 = this.aYq.x;
+        f3 = this.aXW.x;
+        f4 = this.aYq.y;
+        f5 = this.aXW.y;
+        f6 = this.scale / this.aXU;
+        f7 = this.scale / this.aXU;
+        this.aXV.x = (this.aYq.x - (f1 - f3) * f6);
+        this.aXV.y = (this.aYq.y - (f4 - f5) * f7);
+        if (((rV() * d >= getHeight()) || (this.scale * rV() < getHeight())) && ((rU() * d >= getWidth()) || (this.scale * rU() < getWidth()))) {
+          break label3053;
         }
-        aK(true);
-        this.aNW.set(b(this.aOc));
-        this.aNC.set(this.aNB);
-        this.aNA = this.scale;
+        aL(true);
+        this.aYq.set(b(this.aYw));
+        this.aXW.set(this.aXV);
+        this.aXU = this.scale;
         f1 = 0.0F;
       }
       for (;;)
       {
-        this.aNZ = f1;
-        aK(true);
-        aJ(this.aNs);
+        this.aYt = f1;
+        aL(true);
+        aK(this.aXM);
         bool1 = true;
-        break label949;
+        break label1207;
         i = 0;
-        break label1396;
-        label1756:
+        break label1654;
+        label2014:
         f1 = 1.0F - f3;
-        break label1471;
-        if (this.aNG != null)
+        break label1729;
+        if (this.aYa != null)
         {
-          this.aNB.x = (getWidth() / 2 - this.scale * this.aNG.x);
-          this.aNB.y = (getHeight() / 2 - this.scale * this.aNG.y);
+          this.aXV.x = (getWidth() / 2 - this.scale * this.aYa.x);
+          this.aXV.y = (getHeight() / 2 - this.scale * this.aYa.y);
           f1 = f2;
         }
         else
         {
-          this.aNB.x = (getWidth() / 2 - this.scale * (qw() / 2));
-          this.aNB.y = (getHeight() / 2 - this.scale * (qx() / 2));
+          this.aXV.x = (getWidth() / 2 - this.scale * (rU() / 2));
+          this.aXV.y = (getHeight() / 2 - this.scale * (rV() / 2));
           f1 = f2;
           continue;
           bool1 = bool2;
-          if (this.aNN) {
-            break label949;
+          if (this.aYh) {
+            break label1207;
           }
-          f1 = Math.abs(paramMotionEvent.getX() - this.aNW.x);
-          f2 = Math.abs(paramMotionEvent.getY() - this.aNW.y);
+          f1 = Math.abs(paramMotionEvent.getX() - this.aYq.x);
+          f2 = Math.abs(paramMotionEvent.getY() - this.aYq.y);
           f3 = this.density * 5.0F;
           if ((f1 <= f3) && (f2 <= f3))
           {
             bool1 = bool2;
-            if (!this.aNO) {
-              break label949;
+            if (!this.aYi) {
+              break label1207;
             }
           }
-          this.aNB.x = (this.aNC.x + (paramMotionEvent.getX() - this.aNW.x));
-          this.aNB.y = (this.aNC.y + (paramMotionEvent.getY() - this.aNW.y));
-          f4 = this.aNB.x;
-          f5 = this.aNB.y;
-          aK(true);
-          label2069:
-          label2085:
+          this.aXV.x = (this.aXW.x + (paramMotionEvent.getX() - this.aYq.x));
+          this.aXV.y = (this.aXW.y + (paramMotionEvent.getY() - this.aYq.y));
+          f4 = this.aXV.x;
+          f5 = this.aXV.y;
+          aL(true);
+          label2327:
+          label2343:
           boolean bool3;
-          label2108:
+          label2366:
           boolean bool4;
-          label2131:
+          label2389:
           boolean bool5;
-          if (f4 != this.aNB.x)
+          if (f4 != this.aXV.x)
           {
             bool1 = true;
-            if (f5 == this.aNB.y) {
-              break label2348;
+            if (f5 == this.aXV.y) {
+              break label2606;
             }
             bool2 = true;
-            if ((!bool1) || (f1 <= f2) || (this.aNO)) {
-              break label2354;
+            if ((!bool1) || (f1 <= f2) || (this.aYi)) {
+              break label2612;
             }
             bool3 = true;
-            if ((!bool2) || (f2 <= f1) || (this.aNO)) {
-              break label2360;
+            if ((!bool2) || (f2 <= f1) || (this.aYi)) {
+              break label2618;
             }
             bool4 = true;
-            if ((f5 != this.aNB.y) || (f2 <= 3.0F * f3)) {
-              break label2366;
+            if ((f5 != this.aXV.y) || (f2 <= 3.0F * f3)) {
+              break label2624;
             }
             bool5 = true;
-            label2159:
-            ac.i(this.TAG, "alvinluo Action_Move edge atXEdge: %b, atYEdge: %b, edgeXSwipe: %b, edgeYSwipe: %b, yPan: %b, isPanning: %b,dx: %f, dy: %f, offset: %f", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(this.aNO), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3) });
-            if ((bool3) || (bool4) || ((bool1) && (bool2) && (!bool5) && (!this.aNO))) {
-              break label2372;
+            label2417:
+            ad.i(this.TAG, "alvinluo Action_Move edge atXEdge: %b, atYEdge: %b, edgeXSwipe: %b, edgeYSwipe: %b, yPan: %b, isPanning: %b,dx: %f, dy: %f, offset: %f", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(this.aYi), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3) });
+            if ((bool3) || (bool4) || ((bool1) && (bool2) && (!bool5) && (!this.aYi))) {
+              break label2630;
             }
-            this.aNO = true;
+            this.aYi = true;
           }
           for (;;)
           {
-            if (!this.aNt)
+            if (!this.aXN)
             {
-              this.aNB.x = this.aNC.x;
-              this.aNB.y = this.aNC.y;
+              this.aXV.x = this.aXW.x;
+              this.aXV.y = this.aXW.y;
               requestDisallowInterceptTouchEvent(false);
             }
-            aJ(this.aNs);
+            aK(this.aXM);
             bool1 = true;
             break;
             bool1 = false;
-            break label2069;
-            label2348:
+            break label2327;
+            label2606:
             bool2 = false;
-            break label2085;
-            label2354:
+            break label2343;
+            label2612:
             bool3 = false;
-            break label2108;
-            label2360:
+            break label2366;
+            label2618:
             bool4 = false;
-            break label2131;
-            label2366:
+            break label2389;
+            label2624:
             bool5 = false;
-            break label2159;
-            label2372:
+            break label2417;
+            label2630:
             if ((f1 > f3) || (f2 > f3))
             {
-              this.aNQ = 0;
+              this.aYk = 0;
               this.handler.removeMessages(1);
               requestDisallowInterceptTouchEvent(false);
             }
           }
           this.handler.removeMessages(1);
-          if (this.aNP)
+          if (this.aYj)
           {
-            this.aNP = false;
-            if (!this.aOa) {
-              a(this.aOc, this.aNW);
+            this.aYj = false;
+            if (!this.aYu) {
+              a(this.aYw, this.aYq);
             }
           }
-          if ((this.aNQ > 0) && ((this.aNN) || (this.aNO)))
+          if ((this.aYk > 0) && ((this.aYh) || (this.aYi)))
           {
-            if ((this.aNN) && (i == 2))
+            if ((this.aYh) && (i == 2))
             {
-              this.aNO = true;
-              this.aNC.set(this.aNB.x, this.aNB.y);
+              this.aYi = true;
+              this.aXW.set(this.aXV.x, this.aXV.y);
               if (paramMotionEvent.getActionIndex() != 1) {
-                break label2657;
+                break label2915;
               }
-              this.aNW.set(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
-              label2533:
-              if (this.scale > this.aOC) {
-                break label2677;
+              this.aYq.set(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
+              label2791:
+              if (this.scale > this.aYW) {
+                break label2935;
               }
-              ac.i(this.TAG, "alvinluo scale %f less than %f, and need to reset", new Object[] { Float.valueOf(this.scale), Float.valueOf(this.aOC) });
-              PointF localPointF = new PointF(this.aOy / 2, this.aOz / 2);
-              a(localPointF, localPointF, this.aOC);
-              this.aNO = false;
+              ad.i(this.TAG, "alvinluo scale %f less than %f, and need to reset", new Object[] { Float.valueOf(this.scale), Float.valueOf(this.aYW) });
+              localObject = new PointF(this.aYS / 2, this.aYT / 2);
+              a((PointF)localObject, (PointF)localObject, this.aYW);
+              this.aYi = false;
             }
             for (;;)
             {
               if (i < 3) {
-                this.aNN = false;
+                this.aYh = false;
               }
               if (i < 2)
               {
-                this.aNO = false;
-                this.aNQ = 0;
+                this.aYi = false;
+                this.aYk = 0;
               }
-              aJ(true);
+              aK(true);
               bool1 = true;
               break;
-              label2657:
-              this.aNW.set(paramMotionEvent.getX(1), paramMotionEvent.getY(1));
-              break label2533;
-              label2677:
+              label2915:
+              this.aYq.set(paramMotionEvent.getX(1), paramMotionEvent.getY(1));
+              break label2791;
+              label2935:
               if (this.scale > getDoubleTapZoomScale() * 2.0F)
               {
-                ac.i(this.TAG, "alvinluo current scale %f larger than maxScale: %f, and reset to scale: %f", new Object[] { Float.valueOf(this.scale), Float.valueOf(this.aNk), Float.valueOf(getDoubleTapZoomScale() * 2.0F) });
-                a(a(this.aOJ), this.aOJ, getDoubleTapZoomScale() * 2.0F);
+                ad.i(this.TAG, "alvinluo current scale %f larger than maxScale: %f, and reset to scale: %f", new Object[] { Float.valueOf(this.scale), Float.valueOf(this.aXE), Float.valueOf(getDoubleTapZoomScale() * 2.0F) });
+                a(a(this.aZd), this.aZd, getDoubleTapZoomScale() * 2.0F);
               }
             }
           }
           if (i == 1)
           {
-            this.aNN = false;
-            this.aNO = false;
-            this.aNQ = 0;
+            this.aYh = false;
+            this.aYi = false;
+            this.aYk = 0;
           }
           bool1 = false;
           break;
-          AppMethodBeat.o(157409);
-          return false;
-          label2797:
+          bool1 = false;
+          break label597;
+          label3053:
           f1 = f2;
         }
       }
-      label2804:
+      label3060:
       f1 = 1.0F;
     }
   }
@@ -3105,7 +3205,7 @@ public class SubsamplingScaleImageView
       AppMethodBeat.o(157447);
       throw paramClass;
     }
-    this.aNU = new com.davemorrissey.labs.subscaleview.a.a(paramClass);
+    this.aYo = new com.davemorrissey.labs.subscaleview.a.a(paramClass);
     AppMethodBeat.o(157447);
   }
   
@@ -3118,13 +3218,13 @@ public class SubsamplingScaleImageView
       AppMethodBeat.o(157448);
       throw paramb;
     }
-    this.aNU = paramb;
+    this.aYo = paramb;
     AppMethodBeat.o(157448);
   }
   
   public final void setDebug(boolean paramBoolean)
   {
-    this.aNj = paramBoolean;
+    this.aXD = paramBoolean;
   }
   
   public final void setDoubleTapZoomDpi(int paramInt)
@@ -3139,36 +3239,36 @@ public class SubsamplingScaleImageView
   public final void setDoubleTapZoomDuration(int paramInt)
   {
     AppMethodBeat.i(157463);
-    this.aNy = Math.max(0, paramInt);
+    this.aXS = Math.max(0, paramInt);
     AppMethodBeat.o(157463);
   }
   
   public final void setDoubleTapZoomScale(float paramFloat)
   {
-    this.aNw = paramFloat;
+    this.aXQ = paramFloat;
   }
   
   public final void setDoubleTapZoomStyle(int paramInt)
   {
     AppMethodBeat.i(157462);
-    if (!aMT.contains(Integer.valueOf(paramInt)))
+    if (!aXl.contains(Integer.valueOf(paramInt)))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid zoom style: ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(157462);
       throw localIllegalArgumentException;
     }
-    this.aNx = paramInt;
+    this.aXR = paramInt;
     AppMethodBeat.o(157462);
   }
   
   public void setEagerLoadingEnabled(boolean paramBoolean)
   {
-    this.aNs = paramBoolean;
+    this.aXM = paramBoolean;
   }
   
   public void setEdgeSwipeListener(c paramc)
   {
-    this.aOM = paramc;
+    this.aZg = paramc;
   }
   
   public void setExecutor(Executor paramExecutor)
@@ -3186,7 +3286,7 @@ public class SubsamplingScaleImageView
   
   public void setGestureDetectorListener(GestureDetector.SimpleOnGestureListener paramSimpleOnGestureListener)
   {
-    this.aNS = paramSimpleOnGestureListener;
+    this.aYm = paramSimpleOnGestureListener;
   }
   
   public final void setImage(a parama)
@@ -3207,9 +3307,9 @@ public class SubsamplingScaleImageView
         localMatrix = null;
       }
     }
-    if (((localMatrix == null) && (!this.aOs.isIdentity())) || ((localMatrix != null) && (!this.aOs.equals(localMatrix))))
+    if (((localMatrix == null) && (!this.aYM.isIdentity())) || ((localMatrix != null) && (!this.aYM.equals(localMatrix))))
     {
-      this.aOs.set(localMatrix);
+      this.aYM.set(localMatrix);
       invalidate();
     }
     AppMethodBeat.o(157401);
@@ -3217,13 +3317,13 @@ public class SubsamplingScaleImageView
   
   public final void setMaxScale(float paramFloat)
   {
-    this.aNk = paramFloat;
+    this.aXE = paramFloat;
   }
   
   public void setMaxTileSize(int paramInt)
   {
-    this.aNq = paramInt;
-    this.aNr = paramInt;
+    this.aXK = paramInt;
+    this.aXL = paramInt;
   }
   
   public final void setMaximumDpi(int paramInt)
@@ -3237,7 +3337,7 @@ public class SubsamplingScaleImageView
   
   public final void setMinScale(float paramFloat)
   {
-    this.aNl = paramFloat;
+    this.aXF = paramFloat;
   }
   
   public final void setMinimumDpi(int paramInt)
@@ -3252,16 +3352,16 @@ public class SubsamplingScaleImageView
   public final void setMinimumScaleType(int paramInt)
   {
     AppMethodBeat.i(157450);
-    if (!aMW.contains(Integer.valueOf(paramInt)))
+    if (!aXo.contains(Integer.valueOf(paramInt)))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid scale type: ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(157450);
       throw localIllegalArgumentException;
     }
-    this.aNo = paramInt;
-    if (this.aOf)
+    this.aXI = paramInt;
+    if (this.aYz)
     {
-      aK(true);
+      aL(true);
       invalidate();
     }
     AppMethodBeat.o(157450);
@@ -3272,8 +3372,8 @@ public class SubsamplingScaleImageView
     AppMethodBeat.i(157454);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     float f = localDisplayMetrics.xdpi;
-    this.aNm = ((int)Math.min((localDisplayMetrics.ydpi + f) / 2.0F, paramInt));
-    if (this.aOf)
+    this.aXG = ((int)Math.min((localDisplayMetrics.ydpi + f) / 2.0F, paramInt));
+    if (this.aYz)
     {
       reset(false);
       invalidate();
@@ -3283,28 +3383,28 @@ public class SubsamplingScaleImageView
   
   public void setOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
-    this.aOK = paramOnAttachStateChangeListener;
+    this.aZe = paramOnAttachStateChangeListener;
   }
   
   public void setOnImageEventListener(e parame)
   {
-    this.aOh = parame;
+    this.aYB = parame;
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    this.aOj = paramOnLongClickListener;
+    this.aYD = paramOnLongClickListener;
   }
   
   public void setOnStateChangedListener(f paramf)
   {
-    this.aOi = paramf;
+    this.aYC = paramf;
   }
   
   public final void setOrientation(int paramInt)
   {
     AppMethodBeat.i(157396);
-    if (!aMS.contains(Integer.valueOf(paramInt)))
+    if (!aXk.contains(Integer.valueOf(paramInt)))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid orientation: ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(157396);
@@ -3320,14 +3420,14 @@ public class SubsamplingScaleImageView
   public final void setPanEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(157459);
-    this.aNt = paramBoolean;
-    if ((!paramBoolean) && (this.aNB != null))
+    this.aXN = paramBoolean;
+    if ((!paramBoolean) && (this.aXV != null))
     {
-      this.aNB.x = (getWidth() / 2 - this.scale * (qw() / 2));
-      this.aNB.y = (getHeight() / 2 - this.scale * (qx() / 2));
-      if (this.aOf)
+      this.aXV.x = (getWidth() / 2 - this.scale * (rU() / 2));
+      this.aXV.y = (getHeight() / 2 - this.scale * (rV() / 2));
+      if (this.aYz)
       {
-        aJ(true);
+        aK(true);
         invalidate();
       }
     }
@@ -3337,16 +3437,16 @@ public class SubsamplingScaleImageView
   public final void setPanLimit(int paramInt)
   {
     AppMethodBeat.i(157449);
-    if (!aMV.contains(Integer.valueOf(paramInt)))
+    if (!aXn.contains(Integer.valueOf(paramInt)))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Invalid pan limit: ".concat(String.valueOf(paramInt)));
       AppMethodBeat.o(157449);
       throw localIllegalArgumentException;
     }
-    this.aNn = paramInt;
-    if (this.aOf)
+    this.aXH = paramInt;
+    if (this.aYz)
     {
-      aK(true);
+      aL(true);
       invalidate();
     }
     AppMethodBeat.o(157449);
@@ -3355,14 +3455,14 @@ public class SubsamplingScaleImageView
   public void setPreviewDone(boolean paramBoolean)
   {
     AppMethodBeat.i(157395);
-    this.aOH = paramBoolean;
+    this.aZb = paramBoolean;
     invalidate();
     AppMethodBeat.o(157395);
   }
   
   public final void setQuickScaleEnabled(boolean paramBoolean)
   {
-    this.aNv = paramBoolean;
+    this.aXP = paramBoolean;
   }
   
   public final void setRegionDecoderClass(Class<? extends com.davemorrissey.labs.subscaleview.a.d> paramClass)
@@ -3374,7 +3474,7 @@ public class SubsamplingScaleImageView
       AppMethodBeat.o(157445);
       throw paramClass;
     }
-    this.aNV = new com.davemorrissey.labs.subscaleview.a.a(paramClass);
+    this.aYp = new com.davemorrissey.labs.subscaleview.a.a(paramClass);
     AppMethodBeat.o(157445);
   }
   
@@ -3387,18 +3487,18 @@ public class SubsamplingScaleImageView
       AppMethodBeat.o(157446);
       throw paramb;
     }
-    this.aNV = paramb;
+    this.aYp = paramb;
     AppMethodBeat.o(157446);
   }
   
   public void setScaleRate(float paramFloat)
   {
     AppMethodBeat.i(157397);
-    this.aOC = paramFloat;
-    this.aNk = 2.0F;
-    this.aNl = 1.0F;
-    qo();
-    qp();
+    this.aYW = paramFloat;
+    this.aXE = 2.0F;
+    this.aXF = 1.0F;
+    rM();
+    rN();
     AppMethodBeat.o(157397);
   }
   
@@ -3406,42 +3506,42 @@ public class SubsamplingScaleImageView
   {
     AppMethodBeat.i(157460);
     if (Color.alpha(paramInt) == 0) {
-      this.aOn = null;
+      this.aYH = null;
     }
     for (;;)
     {
       invalidate();
       AppMethodBeat.o(157460);
       return;
-      this.aOn = new Paint();
-      this.aOn.setStyle(Paint.Style.FILL);
-      this.aOn.setColor(paramInt);
+      this.aYH = new Paint();
+      this.aYH.setStyle(Paint.Style.FILL);
+      this.aYH.setColor(paramInt);
     }
   }
   
   public final void setZoomEnabled(boolean paramBoolean)
   {
-    this.aNu = paramBoolean;
+    this.aXO = paramBoolean;
   }
   
   public void setsRegion(Rect paramRect)
   {
-    this.aMQ = paramRect;
+    this.aXi = paramRect;
   }
   
   static final class a
   {
-    float aNA;
-    float aOY;
-    PointF aOZ;
-    PointF aPa;
-    PointF aPb;
-    PointF aPc;
-    PointF aPd;
-    boolean aPe;
-    int aPf;
-    int aPg;
-    SubsamplingScaleImageView.d aPh;
+    float aXU;
+    int aZA;
+    SubsamplingScaleImageView.d aZB;
+    float aZs;
+    PointF aZt;
+    PointF aZu;
+    PointF aZv;
+    PointF aZw;
+    PointF aZx;
+    boolean aZy;
+    int aZz;
     long duration;
     long time;
     
@@ -3449,9 +3549,9 @@ public class SubsamplingScaleImageView
     {
       AppMethodBeat.i(157385);
       this.duration = 200L;
-      this.aPe = true;
-      this.aPf = 2;
-      this.aPg = 1;
+      this.aZy = true;
+      this.aZz = 2;
+      this.aZA = 1;
       this.time = System.currentTimeMillis();
       AppMethodBeat.o(157385);
     }
@@ -3459,58 +3559,58 @@ public class SubsamplingScaleImageView
   
   public final class b
   {
-    boolean aPe;
-    int aPf;
-    int aPg;
-    private SubsamplingScaleImageView.d aPh;
-    private final float aPi;
-    private final PointF aPj;
-    private final PointF aPk;
-    boolean aPl;
+    int aZA;
+    private SubsamplingScaleImageView.d aZB;
+    private final float aZC;
+    private final PointF aZD;
+    private final PointF aZE;
+    boolean aZF;
+    boolean aZy;
+    int aZz;
     long duration;
     
     private b(float paramFloat, PointF paramPointF)
     {
       this.duration = 500L;
-      this.aPf = 2;
-      this.aPg = 1;
-      this.aPe = true;
-      this.aPl = true;
-      this.aPi = paramFloat;
-      this.aPj = paramPointF;
-      this.aPk = null;
+      this.aZz = 2;
+      this.aZA = 1;
+      this.aZy = true;
+      this.aZF = true;
+      this.aZC = paramFloat;
+      this.aZD = paramPointF;
+      this.aZE = null;
     }
     
     private b(float paramFloat, PointF paramPointF1, PointF paramPointF2)
     {
       this.duration = 500L;
-      this.aPf = 2;
-      this.aPg = 1;
-      this.aPe = true;
-      this.aPl = true;
-      this.aPi = paramFloat;
-      this.aPj = paramPointF1;
-      this.aPk = paramPointF2;
+      this.aZz = 2;
+      this.aZA = 1;
+      this.aZy = true;
+      this.aZF = true;
+      this.aZC = paramFloat;
+      this.aZD = paramPointF1;
+      this.aZE = paramPointF2;
     }
     
     private b(PointF paramPointF)
     {
       AppMethodBeat.i(157386);
       this.duration = 500L;
-      this.aPf = 2;
-      this.aPg = 1;
-      this.aPe = true;
-      this.aPl = true;
-      this.aPi = SubsamplingScaleImageView.i(SubsamplingScaleImageView.this);
-      this.aPj = paramPointF;
-      this.aPk = null;
+      this.aZz = 2;
+      this.aZA = 1;
+      this.aZy = true;
+      this.aZF = true;
+      this.aZC = SubsamplingScaleImageView.i(SubsamplingScaleImageView.this);
+      this.aZD = paramPointF;
+      this.aZE = null;
       AppMethodBeat.o(157386);
     }
     
     public final void start()
     {
       AppMethodBeat.i(157387);
-      if ((SubsamplingScaleImageView.w(SubsamplingScaleImageView.this) != null) && (SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPh != null)) {}
+      if ((SubsamplingScaleImageView.w(SubsamplingScaleImageView.this) != null) && (SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZB != null)) {}
       try
       {
         SubsamplingScaleImageView.w(SubsamplingScaleImageView.this);
@@ -3518,36 +3618,36 @@ public class SubsamplingScaleImageView
         int j = (SubsamplingScaleImageView.this.getWidth() - SubsamplingScaleImageView.this.getPaddingRight() - SubsamplingScaleImageView.this.getPaddingLeft()) / 2;
         int k = SubsamplingScaleImageView.this.getPaddingTop();
         int m = (SubsamplingScaleImageView.this.getHeight() - SubsamplingScaleImageView.this.getPaddingBottom() - SubsamplingScaleImageView.this.getPaddingTop()) / 2;
-        float f3 = SubsamplingScaleImageView.b(SubsamplingScaleImageView.this, this.aPi);
-        if (this.aPl)
+        float f3 = SubsamplingScaleImageView.b(SubsamplingScaleImageView.this, this.aZC);
+        if (this.aZF)
         {
-          Object localObject = SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, this.aPj.x, this.aPj.y, f3, new PointF());
+          Object localObject = SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, this.aZD.x, this.aZD.y, f3, new PointF());
           SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, new SubsamplingScaleImageView.a((byte)0));
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aNA = SubsamplingScaleImageView.i(SubsamplingScaleImageView.this);
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aOY = f3;
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aXU = SubsamplingScaleImageView.i(SubsamplingScaleImageView.this);
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZs = f3;
           SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).time = System.currentTimeMillis();
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPb = ((PointF)localObject);
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aOZ = SubsamplingScaleImageView.this.getCenter();
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPa = ((PointF)localObject);
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPc = SubsamplingScaleImageView.this.b((PointF)localObject);
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPd = new PointF(j + i, m + k);
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZv = ((PointF)localObject);
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZt = SubsamplingScaleImageView.this.getCenter();
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZu = ((PointF)localObject);
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZw = SubsamplingScaleImageView.this.b((PointF)localObject);
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZx = new PointF(j + i, m + k);
           SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).duration = this.duration;
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPe = this.aPe;
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPf = this.aPf;
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPg = this.aPg;
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZy = this.aZy;
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZz = this.aZz;
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZA = this.aZA;
           SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).time = System.currentTimeMillis();
-          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aPh = this.aPh;
-          if (this.aPk != null)
+          SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZB = this.aZB;
+          if (this.aZE != null)
           {
-            float f1 = this.aPk.x - SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aOZ.x * f3;
-            float f2 = this.aPk.y - SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aOZ.y * f3;
+            float f1 = this.aZE.x - SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZt.x * f3;
+            float f2 = this.aZE.y - SubsamplingScaleImageView.w(SubsamplingScaleImageView.this).aZt.y * f3;
             localObject = new SubsamplingScaleImageView.g(f3, new PointF(f1, f2), (byte)0);
             SubsamplingScaleImageView.a(SubsamplingScaleImageView.this, (SubsamplingScaleImageView.g)localObject);
             SubsamplingScaleImageView.a locala = SubsamplingScaleImageView.w(SubsamplingScaleImageView.this);
-            f3 = this.aPk.x;
-            float f4 = ((SubsamplingScaleImageView.g)localObject).aNB.x;
-            float f5 = this.aPk.y;
-            locala.aPd = new PointF(f4 - f1 + f3, ((SubsamplingScaleImageView.g)localObject).aNB.y - f2 + f5);
+            f3 = this.aZE.x;
+            float f4 = ((SubsamplingScaleImageView.g)localObject).aXV.x;
+            float f5 = this.aZE.y;
+            locala.aZx = new PointF(f4 - f1 + f3, ((SubsamplingScaleImageView.g)localObject).aXV.y - f2 + f5);
           }
           SubsamplingScaleImageView.this.invalidate();
           AppMethodBeat.o(157387);
@@ -3558,9 +3658,9 @@ public class SubsamplingScaleImageView
       {
         for (;;)
         {
-          ac.w(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "Error thrown by animation listener", new Object[] { localException });
+          ad.w(SubsamplingScaleImageView.l(SubsamplingScaleImageView.this), "Error thrown by animation listener", new Object[] { localException });
           continue;
-          PointF localPointF = this.aPj;
+          PointF localPointF = this.aZD;
         }
       }
     }
@@ -3580,22 +3680,22 @@ public class SubsamplingScaleImageView
     
     public abstract void m(Bitmap paramBitmap);
     
-    public abstract void qA();
+    public abstract void rY();
     
-    public abstract void qB();
+    public abstract void rZ();
   }
   
   public static abstract interface f {}
   
   static final class g
   {
-    PointF aNB;
+    PointF aXV;
     float scale;
     
     private g(float paramFloat, PointF paramPointF)
     {
       this.scale = paramFloat;
-      this.aNB = paramPointF;
+      this.aXV = paramPointF;
     }
   }
 }

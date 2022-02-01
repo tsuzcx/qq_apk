@@ -12,24 +12,24 @@ public class WepkgVersion
   implements Parcelable
 {
   public static final Parcelable.Creator<WepkgVersion> CREATOR;
-  public int DaM;
-  public boolean DbC;
-  public long DbD;
-  public long DbE;
-  public int DbF;
-  public String DbG;
-  public int DbH;
-  public long DbI;
-  public boolean DbJ;
-  public boolean DbK;
-  public boolean DbL;
-  public int DbM;
+  public int EEL;
+  public boolean EFB;
+  public long EFC;
+  public long EFD;
+  public int EFE;
+  public String EFF;
+  public int EFG;
+  public long EFH;
+  public boolean EFI;
+  public boolean EFJ;
+  public boolean EFK;
+  public int EFL;
   public String appId;
   public String charset;
   public long createTime;
-  public int dCD;
+  public int dOQ;
   public String downloadUrl;
-  public String fYR;
+  public String gsn;
   public String md5;
   public String pkgPath;
   public String version;
@@ -46,23 +46,23 @@ public class WepkgVersion
   public WepkgVersion(Parcel paramParcel)
   {
     AppMethodBeat.i(110760);
-    this.fYR = paramParcel.readString();
+    this.gsn = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.version = paramParcel.readString();
     this.pkgPath = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.DbC = bool1;
-      this.DbD = paramParcel.readLong();
-      this.DbE = paramParcel.readLong();
-      this.DbF = paramParcel.readInt();
-      this.DbG = paramParcel.readString();
+      this.EFB = bool1;
+      this.EFC = paramParcel.readLong();
+      this.EFD = paramParcel.readLong();
+      this.EFE = paramParcel.readInt();
+      this.EFF = paramParcel.readString();
       this.md5 = paramParcel.readString();
       this.downloadUrl = paramParcel.readString();
-      this.DbH = paramParcel.readInt();
-      this.DaM = paramParcel.readInt();
-      this.DbI = paramParcel.readLong();
+      this.EFG = paramParcel.readInt();
+      this.EEL = paramParcel.readInt();
+      this.EFH = paramParcel.readLong();
       this.createTime = paramParcel.readLong();
       this.charset = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
@@ -70,13 +70,13 @@ public class WepkgVersion
       }
       bool1 = true;
       label154:
-      this.DbJ = bool1;
+      this.EFI = bool1;
       if (paramParcel.readByte() == 0) {
         break label219;
       }
       bool1 = true;
       label168:
-      this.DbK = bool1;
+      this.EFJ = bool1;
       if (paramParcel.readByte() == 0) {
         break label224;
       }
@@ -86,9 +86,9 @@ public class WepkgVersion
     label224:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.DbL = bool1;
-      this.DbM = paramParcel.readInt();
-      this.dCD = paramParcel.readInt();
+      this.EFK = bool1;
+      this.EFL = paramParcel.readInt();
+      this.dOQ = paramParcel.readInt();
       AppMethodBeat.o(110760);
       return;
       bool1 = false;
@@ -104,27 +104,27 @@ public class WepkgVersion
   {
     if (parame != null)
     {
-      this.fYR = parame.field_pkgId;
+      this.gsn = parame.field_pkgId;
       this.appId = parame.field_appId;
       this.version = parame.field_version;
       this.pkgPath = parame.field_pkgPath;
-      this.DbC = parame.field_disableWvCache;
-      this.DbD = parame.field_clearPkgTime;
-      this.DbE = parame.field_checkIntervalTime;
-      this.DbF = parame.field_packMethod;
-      this.DbG = parame.field_domain;
+      this.EFB = parame.field_disableWvCache;
+      this.EFC = parame.field_clearPkgTime;
+      this.EFD = parame.field_checkIntervalTime;
+      this.EFE = parame.field_packMethod;
+      this.EFF = parame.field_domain;
       this.md5 = parame.field_md5;
       this.downloadUrl = parame.field_downloadUrl;
-      this.DbH = parame.field_pkgSize;
-      this.DaM = parame.field_downloadNetType;
-      this.DbI = parame.field_nextCheckTime;
+      this.EFG = parame.field_pkgSize;
+      this.EEL = parame.field_downloadNetType;
+      this.EFH = parame.field_nextCheckTime;
       this.createTime = parame.field_createTime;
       this.charset = parame.field_charset;
-      this.DbJ = parame.field_bigPackageReady;
-      this.DbK = parame.field_preloadFilesReady;
-      this.DbL = parame.field_preloadFilesAtomic;
-      this.DbM = parame.field_totalDownloadCount;
-      this.dCD = parame.field_downloadTriggerType;
+      this.EFI = parame.field_bigPackageReady;
+      this.EFJ = parame.field_preloadFilesReady;
+      this.EFK = parame.field_preloadFilesAtomic;
+      this.EFL = parame.field_totalDownloadCount;
+      this.dOQ = parame.field_downloadTriggerType;
     }
   }
   
@@ -133,7 +133,7 @@ public class WepkgVersion
     return 0;
   }
   
-  public final JSONObject eJh()
+  public final JSONObject eYb()
   {
     AppMethodBeat.i(110761);
     JSONObject localJSONObject = new JSONObject();
@@ -142,22 +142,22 @@ public class WepkgVersion
       localJSONObject.put("appId", this.appId);
       localJSONObject.put("version", this.version);
       localJSONObject.put("pkgPath", this.pkgPath);
-      localJSONObject.put("disableWvCache", this.DbC);
-      localJSONObject.put("clearPkgTime", this.DbD);
-      localJSONObject.put("checkIntervalTime", this.DbE);
-      localJSONObject.put("packMethod", this.DbF);
-      localJSONObject.put("domain", this.DbG);
+      localJSONObject.put("disableWvCache", this.EFB);
+      localJSONObject.put("clearPkgTime", this.EFC);
+      localJSONObject.put("checkIntervalTime", this.EFD);
+      localJSONObject.put("packMethod", this.EFE);
+      localJSONObject.put("domain", this.EFF);
       localJSONObject.put("md5", this.md5);
       localJSONObject.put("downloadUrl", this.downloadUrl);
-      localJSONObject.put("pkgSize", this.DbH);
-      localJSONObject.put("downloadNetType", this.DaM);
-      localJSONObject.put("nextCheckTime", this.DbI);
+      localJSONObject.put("pkgSize", this.EFG);
+      localJSONObject.put("downloadNetType", this.EEL);
+      localJSONObject.put("nextCheckTime", this.EFH);
       localJSONObject.put("charset", this.charset);
-      localJSONObject.put("bigPackageReady", this.DbJ);
-      localJSONObject.put("preloadFilesReady", this.DbK);
-      localJSONObject.put("preloadFilesAtomic", this.DbL);
-      localJSONObject.put("totalDownloadCount", this.DbM);
-      localJSONObject.put("downloadTriggerType", this.dCD);
+      localJSONObject.put("bigPackageReady", this.EFI);
+      localJSONObject.put("preloadFilesReady", this.EFJ);
+      localJSONObject.put("preloadFilesAtomic", this.EFK);
+      localJSONObject.put("totalDownloadCount", this.EFL);
+      localJSONObject.put("downloadTriggerType", this.dOQ);
       label222:
       AppMethodBeat.o(110761);
       return localJSONObject;
@@ -172,38 +172,38 @@ public class WepkgVersion
   {
     int i = 1;
     AppMethodBeat.i(110762);
-    paramParcel.writeString(this.fYR);
+    paramParcel.writeString(this.gsn);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.pkgPath);
-    if (this.DbC)
+    if (this.EFB)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.DbD);
-      paramParcel.writeLong(this.DbE);
-      paramParcel.writeInt(this.DbF);
-      paramParcel.writeString(this.DbG);
+      paramParcel.writeLong(this.EFC);
+      paramParcel.writeLong(this.EFD);
+      paramParcel.writeInt(this.EFE);
+      paramParcel.writeString(this.EFF);
       paramParcel.writeString(this.md5);
       paramParcel.writeString(this.downloadUrl);
-      paramParcel.writeInt(this.DbH);
-      paramParcel.writeInt(this.DaM);
-      paramParcel.writeLong(this.DbI);
+      paramParcel.writeInt(this.EFG);
+      paramParcel.writeInt(this.EEL);
+      paramParcel.writeLong(this.EFH);
       paramParcel.writeLong(this.createTime);
       paramParcel.writeString(this.charset);
-      if (!this.DbJ) {
+      if (!this.EFI) {
         break label214;
       }
       paramInt = 1;
       label151:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.DbK) {
+      if (!this.EFJ) {
         break label219;
       }
       paramInt = 1;
       label166:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.DbL) {
+      if (!this.EFK) {
         break label224;
       }
     }
@@ -213,8 +213,8 @@ public class WepkgVersion
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.DbM);
-      paramParcel.writeInt(this.dCD);
+      paramParcel.writeInt(this.EFL);
+      paramParcel.writeInt(this.dOQ);
       AppMethodBeat.o(110762);
       return;
       paramInt = 0;
@@ -228,7 +228,7 @@ public class WepkgVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.WepkgVersion
  * JD-Core Version:    0.7.0.1
  */

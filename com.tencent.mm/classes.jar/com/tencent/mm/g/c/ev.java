@@ -7,26 +7,17 @@ import com.tencent.mm.sdk.e.c;
 public abstract class ev
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableStartTimeIndex ON PredownloadIssueLaunchWxaAppResponse(startTime)", "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableEndTimeIndex ON PredownloadIssueLaunchWxaAppResponse(endTime)" };
-  private static final int eWr = "launchProtoBlob".hashCode();
-  private static final int emh = "startTime".hashCode();
-  private static final int emi = "endTime".hashCode();
-  private static final int enO = "appId".hashCode();
-  private static final int env = "scene".hashCode();
-  private static final int epp = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eCW = "msgId".hashCode();
+  private static final int eLo = "isRead".hashCode();
+  private static final int fnS = "msgContentXml".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eWq = true;
-  private boolean ema = true;
-  private boolean emb = true;
-  private boolean ent = true;
-  private boolean enx = true;
-  private boolean epk = true;
-  public String field_appId;
-  public long field_endTime;
-  public byte[] field_launchProtoBlob;
-  public long field_reportId;
-  public int field_scene;
-  public long field_startTime;
+  private boolean eCS = true;
+  private boolean eLb = true;
+  public String field_isRead;
+  public String field_msgContentXml;
+  public String field_msgId;
+  private boolean fnR = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,27 +32,22 @@ public abstract class ev
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
-        break label60;
+      if (eCW != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getString(i);
+      this.eCS = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (env == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (eWr == k) {
-        this.field_launchProtoBlob = paramCursor.getBlob(i);
-      } else if (emh == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (emi == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (epp == k) {
-        this.field_reportId = paramCursor.getLong(i);
+      label65:
+      if (fnS == k) {
+        this.field_msgContentXml = paramCursor.getString(i);
+      } else if (eLo == k) {
+        this.field_isRead = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -71,23 +57,14 @@ public abstract class ev
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eCS) {
+      localContentValues.put("msgId", this.field_msgId);
     }
-    if (this.ent) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.fnR) {
+      localContentValues.put("msgContentXml", this.field_msgContentXml);
     }
-    if (this.eWq) {
-      localContentValues.put("launchProtoBlob", this.field_launchProtoBlob);
-    }
-    if (this.ema) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
-    }
-    if (this.emb) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
-    }
-    if (this.epk) {
-      localContentValues.put("reportId", Long.valueOf(this.field_reportId));
+    if (this.eLb) {
+      localContentValues.put("isRead", this.field_isRead);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

@@ -8,42 +8,42 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.List;
 
 public final class c
   extends s
 {
-  private final a DgO;
-  private final Intent DgP;
-  private final x DgQ;
+  private final x ELA;
+  private final c.a ELy;
+  private final Intent ELz;
   
   public c(Bundle paramBundle)
   {
     AppMethodBeat.i(109457);
-    this.DgQ = new x();
+    this.ELA = new x();
     if ((paramBundle == null) || (paramBundle.getParcelable("key_target_intent") == null)) {
-      this.DgO = a.DgS;
+      this.ELy = c.a.ELC;
     }
-    while (this.DgO == a.DgS)
+    while (this.ELy == c.a.ELC)
     {
-      this.DgP = null;
+      this.ELz = null;
       AppMethodBeat.o(109457);
       return;
-      a locala = a.Wp(paramBundle.getInt("key_map_app", a.DgS.code));
-      if (a(ai.getContext(), locala, null) == null) {
-        this.DgO = a.DgS;
+      c.a locala = c.a.Yk(paramBundle.getInt("key_map_app", c.a.ELC.code));
+      if (a(aj.getContext(), locala, null) == null) {
+        this.ELy = c.a.ELC;
       } else {
-        this.DgO = locala;
+        this.ELy = locala;
       }
     }
-    this.DgP = ((Intent)paramBundle.getParcelable("key_target_intent"));
+    this.ELz = ((Intent)paramBundle.getParcelable("key_target_intent"));
     AppMethodBeat.o(109457);
   }
   
-  private static ResolveInfo a(Context paramContext, a parama, Intent paramIntent)
+  private static ResolveInfo a(Context paramContext, c.a parama, Intent paramIntent)
   {
     AppMethodBeat.i(109458);
     Intent localIntent = paramIntent;
@@ -51,7 +51,7 @@ public final class c
       localIntent = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F) })));
     }
     paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0);
-    if (bs.gY(paramContext))
+    if (bt.hj(paramContext))
     {
       AppMethodBeat.o(109458);
       return null;
@@ -73,65 +73,65 @@ public final class c
   public final String a(Context paramContext, ResolveInfo paramResolveInfo)
   {
     AppMethodBeat.i(109462);
-    paramContext = this.DgQ.a(paramContext, paramResolveInfo);
+    paramContext = this.ELA.a(paramContext, paramResolveInfo);
     AppMethodBeat.o(109462);
     return paramContext;
   }
   
-  public final boolean aFV(String paramString)
+  public final boolean aLv(String paramString)
   {
     AppMethodBeat.i(109460);
-    boolean bool = this.DgO.getPackage().equals(paramString);
+    boolean bool = this.ELy.getPackage().equals(paramString);
     AppMethodBeat.o(109460);
     return bool;
   }
   
-  public final String aNm()
+  public final String aQx()
   {
-    if (this.DgO == a.DgS) {
+    if (this.ELy == c.a.ELC) {
       return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
     }
     return null;
   }
   
-  public final String eKy()
+  public final String eZs()
   {
-    if (this.DgO == a.DgS) {
+    if (this.ELy == c.a.ELC) {
       return "TencentMap.apk";
     }
     return null;
   }
   
-  public final t.a eKz()
+  public final t.a eZt()
   {
     AppMethodBeat.i(109461);
-    if (this.DgO == a.DgS)
+    if (this.ELy == c.a.ELC)
     {
-      locala = this.DgQ.eKz();
+      locala = this.ELA.eZt();
       AppMethodBeat.o(109461);
       return locala;
     }
     t.a locala = new t.a();
-    locala.DhD = -1;
-    locala.DhA = -1;
-    ResolveInfo localResolveInfo = a(ai.getContext(), this.DgO, this.DgP);
+    locala.EMo = -1;
+    locala.EMl = -1;
+    ResolveInfo localResolveInfo = a(aj.getContext(), this.ELy, this.ELz);
     if (localResolveInfo != null) {
-      locala.DhE = a(ai.getContext(), localResolveInfo);
+      locala.EMp = a(aj.getContext(), localResolveInfo);
     }
     AppMethodBeat.o(109461);
     return locala;
   }
   
-  public final boolean hi(Context paramContext)
+  public final boolean hn(Context paramContext)
   {
     AppMethodBeat.i(109459);
-    if (this.DgO == a.DgS)
+    if (this.ELy == c.a.ELC)
     {
-      boolean bool = this.DgQ.hi(paramContext);
+      boolean bool = this.ELA.hn(paramContext);
       AppMethodBeat.o(109459);
       return bool;
     }
-    if (a(paramContext, this.DgO, this.DgP) != null)
+    if (a(paramContext, this.ELy, this.ELz) != null)
     {
       AppMethodBeat.o(109459);
       return true;
@@ -139,75 +139,10 @@ public final class c
     AppMethodBeat.o(109459);
     return false;
   }
-  
-  public static enum a
-  {
-    public final int code;
-    
-    static
-    {
-      AppMethodBeat.i(109456);
-      DgS = new a("TencentMap", 0, 0);
-      DgT = new a("GoogleMap", 1, 1);
-      DgU = new a("SogouMap", 2, 2);
-      DgV = new a("BaiduMap", 3, 3);
-      DgW = new a("AutonaviMap", 4, 4);
-      DgX = new a[] { DgS, DgT, DgU, DgV, DgW };
-      AppMethodBeat.o(109456);
-    }
-    
-    private a(int paramInt)
-    {
-      this.code = paramInt;
-    }
-    
-    public static a Wp(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return DgS;
-      case 0: 
-        return DgS;
-      case 1: 
-        return DgT;
-      case 2: 
-        return DgU;
-      case 3: 
-        return DgV;
-      }
-      return DgW;
-    }
-    
-    public final String getPackage()
-    {
-      AppMethodBeat.i(109455);
-      switch (c.1.DgR[ordinal()])
-      {
-      default: 
-        AppMethodBeat.o(109455);
-        return "com.tencent.map";
-      case 1: 
-        AppMethodBeat.o(109455);
-        return "com.tencent.map";
-      case 2: 
-        AppMethodBeat.o(109455);
-        return "com.google.android.apps.maps";
-      case 3: 
-        AppMethodBeat.o(109455);
-        return "com.sogou.map.android.maps";
-      case 4: 
-        AppMethodBeat.o(109455);
-        return "com.baidu.BaiduMap";
-      }
-      AppMethodBeat.o(109455);
-      return "com.autonavi.minimap";
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.c
  * JD-Core Version:    0.7.0.1
  */

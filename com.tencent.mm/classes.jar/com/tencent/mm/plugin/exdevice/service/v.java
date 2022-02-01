@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.exdevice.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashMap;
 
 public final class v
 {
-  private static v pCE = null;
-  public ao hTd;
-  final HashMap<Long, Integer> pCF;
+  private static v qgj = null;
+  public ap imu;
+  final HashMap<Long, Integer> qgk;
   
   private v()
   {
     AppMethodBeat.i(23698);
-    this.pCF = new HashMap();
-    this.hTd = new ao("MMExDevicePushCore");
+    this.qgk = new HashMap();
+    this.imu = new ap("MMExDevicePushCore");
     AppMethodBeat.o(23698);
   }
   
-  public static v chs()
+  public static v clW()
   {
     AppMethodBeat.i(23699);
-    if (pCE == null) {
-      pCE = new v();
+    if (qgj == null) {
+      qgj = new v();
     }
-    v localv = pCE;
+    v localv = qgj;
     AppMethodBeat.o(23699);
     return localv;
   }

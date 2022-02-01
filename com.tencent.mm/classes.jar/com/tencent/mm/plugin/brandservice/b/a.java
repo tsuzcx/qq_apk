@@ -4,50 +4,52 @@ import android.content.Context;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.u;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.k;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
 import com.tencent.mm.sdk.platformtools.bt;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.widget.MMNeat7extView;
+import d.g.b.p;
 import d.l;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/model/BizPayLogic;", "", "()V", "TAG", "", "isPayReadingOpen", "", "()I", "setPayReadingOpen", "(I)V", "payMMkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getPayMMkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setPayMMkv", "(Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;)V", "appMsgPaySuccess", "", "url", "itemShowType", "getPayIcon", "scene", "isPaid", "", "onPaySuccessNotify", "values", "", "payMmkv", "setPayStatus", "setPayStatusById", "id", "setTitleText", "text", "", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "isPaySubscribe", "item", "Lcom/tencent/mm/message/BizReaderItem;", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/model/BizPayLogic;", "", "()V", "TAG", "", "isPayReadingOpen", "", "()I", "setPayReadingOpen", "(I)V", "payMMkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getPayMMkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setPayMMkv", "(Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;)V", "appMsgPaySuccess", "", "url", "itemShowType", "getPayIcon", "scene", "isPaid", "", "onPaySuccessNotify", "values", "", "payMmkv", "setPayStatus", "setPayStatusById", "id", "setTitleText", "text", "", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "isPaySubscribe", "item", "Lcom/tencent/mm/message/BizReaderItem;", "plugin-brandservice_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.BizPayLogic";
-  private static aw nuN;
-  private static int nuO;
-  public static final a nuP;
+  private static ax nWl;
+  private static int nWm;
+  public static final a nWn;
   
   static
   {
     AppMethodBeat.i(6497);
-    nuP = new a();
+    nWn = new a();
     TAG = "MicroMsg.BizPayLogic";
-    nuO = -1;
+    nWm = -1;
     AppMethodBeat.o(6497);
   }
   
   public static void R(Map<String, String> paramMap)
   {
     AppMethodBeat.i(6495);
-    d.g.b.k.h(paramMap, "values");
+    p.h(paramMap, "values");
     String str = (String)paramMap.get(".sysmsg.MMBizPaySubscribePayNotify.AppmsgUrl");
-    int i = bs.getInt((String)paramMap.get(".sysmsg.MMBizPaySubscribePayNotify.ItemShowType"), -1);
-    ac.i(TAG, "onPaySuccessNotify url=" + str + ", itemShowType=" + i);
+    int i = bt.getInt((String)paramMap.get(".sysmsg.MMBizPaySubscribePayNotify.ItemShowType"), -1);
+    ad.i(TAG, "onPaySuccessNotify url=" + str + ", itemShowType=" + i);
     if ((str != null) && (i >= 0)) {
-      cq(str, i);
+      ct(str, i);
     }
     AppMethodBeat.o(6495);
   }
   
-  public static boolean Ts(String paramString)
+  public static boolean WZ(String paramString)
   {
     AppMethodBeat.i(6490);
     if (paramString == null)
@@ -55,9 +57,9 @@ public final class a
       AppMethodBeat.o(6490);
       return false;
     }
-    aw localaw = bIZ();
-    g localg = g.nvq;
-    if (localaw.decodeInt(g.Tt(paramString), 0) == 1)
+    ax localax = bNs();
+    g localg = g.nWO;
+    if (localax.decodeInt(g.Xa(paramString), 0) == 1)
     {
       AppMethodBeat.o(6490);
       return true;
@@ -69,14 +71,14 @@ public final class a
   public static void a(CharSequence paramCharSequence, MMNeat7extView paramMMNeat7extView, boolean paramBoolean, String paramString, int paramInt)
   {
     AppMethodBeat.i(6493);
-    d.g.b.k.h(paramCharSequence, "text");
-    d.g.b.k.h(paramMMNeat7extView, "titleTv");
-    if ((paramBoolean) && (bIQ()))
+    p.h(paramCharSequence, "text");
+    p.h(paramMMNeat7extView, "titleTv");
+    if ((paramBoolean) && (bNh()))
     {
-      Object localObject = com.tencent.mm.plugin.bizui.a.a.noe;
+      Object localObject = com.tencent.mm.plugin.bizui.a.a.nPa;
       localObject = paramMMNeat7extView.getContext();
-      d.g.b.k.g(localObject, "titleTv.context");
-      com.tencent.mm.plugin.bizui.a.a.a((Context)localObject, paramMMNeat7extView, cs(paramString, paramInt), paramCharSequence, paramInt);
+      p.g(localObject, "titleTv.context");
+      com.tencent.mm.plugin.bizui.a.a.a((Context)localObject, paramMMNeat7extView, cv(paramString, paramInt), paramCharSequence, paramInt);
       AppMethodBeat.o(6493);
       return;
     }
@@ -84,14 +86,14 @@ public final class a
     AppMethodBeat.o(6493);
   }
   
-  public static void a(String paramString, MMNeat7extView paramMMNeat7extView, com.tencent.mm.ah.v paramv, int paramInt)
+  public static void a(String paramString, MMNeat7extView paramMMNeat7extView, com.tencent.mm.ai.v paramv, int paramInt)
   {
     boolean bool = true;
     AppMethodBeat.i(6492);
-    d.g.b.k.h(paramString, "text");
-    d.g.b.k.h(paramMMNeat7extView, "titleTv");
-    d.g.b.k.h(paramv, "item");
-    if ((paramv.type == 0) && (paramv.hhb == 1)) {}
+    p.h(paramString, "text");
+    p.h(paramMMNeat7extView, "titleTv");
+    p.h(paramv, "item");
+    if ((paramv.type == 0) && (paramv.hzk == 1)) {}
     for (;;)
     {
       a((CharSequence)paramString, paramMMNeat7extView, bool, paramv.url, paramInt);
@@ -101,33 +103,33 @@ public final class a
     }
   }
   
-  public static void aB(String paramString, boolean paramBoolean)
+  public static void aD(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(6489);
-    d.g.b.k.h(paramString, "url");
-    g localg = g.nvq;
-    paramString = g.Tt(paramString);
+    p.h(paramString, "url");
+    g localg = g.nWO;
+    paramString = g.Xa(paramString);
     if (paramBoolean)
     {
-      bIZ().encode(paramString, 1);
+      bNs().encode(paramString, 1);
       AppMethodBeat.o(6489);
       return;
     }
-    bIZ().remove(paramString);
+    bNs().remove(paramString);
     AppMethodBeat.o(6489);
   }
   
-  public static boolean bIQ()
+  public static boolean bNh()
   {
     AppMethodBeat.i(6496);
-    if ((h.IS_FLAVOR_RED) || (h.DEBUG) || (bt.eWo()))
+    if ((i.IS_FLAVOR_RED) || (i.DEBUG) || (bu.flY()))
     {
       AppMethodBeat.o(6496);
       return true;
     }
-    if (nuO != -1)
+    if (nWm != -1)
     {
-      if (nuO == 1)
+      if (nWm == 1)
       {
         AppMethodBeat.o(6496);
         return true;
@@ -135,9 +137,9 @@ public final class a
       AppMethodBeat.o(6496);
       return false;
     }
-    nuO = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pQe, 0);
-    ac.i(TAG, "isPayReadingOpen open %d", new Object[] { Integer.valueOf(nuO) });
-    if (nuO == 1)
+    nWm = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qur, 0);
+    ad.i(TAG, "isPayReadingOpen open %d", new Object[] { Integer.valueOf(nWm) });
+    if (nWm == 1)
     {
       AppMethodBeat.o(6496);
       return true;
@@ -146,13 +148,13 @@ public final class a
     return false;
   }
   
-  private static aw bIZ()
+  private static ax bNs()
   {
     AppMethodBeat.i(6488);
     Object localObject;
-    if (nuN != null)
+    if (nWl != null)
     {
-      localObject = nuN;
+      localObject = nWl;
       if (localObject == null)
       {
         localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.sdk.platformtools.MultiProcessMMKV");
@@ -162,13 +164,13 @@ public final class a
       AppMethodBeat.o(6488);
       return localObject;
     }
-    if (ai.cin()) {
-      d.g.b.k.g(com.tencent.mm.kernel.g.agP(), "MMKernel.account()");
+    if (aj.cmR()) {
+      p.g(com.tencent.mm.kernel.g.ajA(), "MMKernel.account()");
     }
-    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.agb())
+    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.aiN())
     {
-      localObject = aw.fK("appMsgPay_".concat(String.valueOf(i)), 2);
-      nuN = (aw)localObject;
+      localObject = ax.gh("appMsgPay_".concat(String.valueOf(i)), 2);
+      nWl = (ax)localObject;
       if (localObject != null) {
         break;
       }
@@ -180,35 +182,35 @@ public final class a
     return localObject;
   }
   
-  public static void cq(String paramString, int paramInt)
+  public static void ct(String paramString, int paramInt)
   {
     AppMethodBeat.i(6494);
-    d.g.b.k.h(paramString, "url");
-    if (Ts(paramString))
+    p.h(paramString, "url");
+    if (WZ(paramString))
     {
-      ac.d(TAG, "url pay status: already paid url=" + paramString + ", itemShowType=" + paramInt);
+      ad.d(TAG, "url pay status: already paid url=" + paramString + ", itemShowType=" + paramInt);
       AppMethodBeat.o(6494);
       return;
     }
-    ac.i(TAG, "appMsgPaySuccess url=" + paramString + ", itemShowType=" + paramInt);
-    com.tencent.mm.plugin.brandservice.ui.timeline.preload.k localk = com.tencent.mm.plugin.brandservice.ui.timeline.preload.k.nGP;
-    com.tencent.mm.plugin.brandservice.ui.timeline.preload.k.TN(paramString);
-    aB(paramString, true);
-    com.tencent.mm.plugin.brandservice.ui.timeline.preload.k.a(paramString, paramInt, 90, new Object[0]);
+    ad.i(TAG, "appMsgPaySuccess url=" + paramString + ", itemShowType=" + paramInt);
+    k localk = k.ojs;
+    k.Xv(paramString);
+    aD(paramString, true);
+    k.a(paramString, paramInt, 90, new Object[0]);
     paramString = new u();
-    paramString.cZe.cZf = true;
-    com.tencent.mm.sdk.b.a.GpY.a((com.tencent.mm.sdk.b.b)paramString, Looper.getMainLooper());
+    paramString.dkw.dkx = true;
+    com.tencent.mm.sdk.b.a.IbL.a((com.tencent.mm.sdk.b.b)paramString, Looper.getMainLooper());
     AppMethodBeat.o(6494);
   }
   
-  private static int cs(String paramString, int paramInt)
+  private static int cv(String paramString, int paramInt)
   {
     AppMethodBeat.i(162409);
-    String str = ab.eUO();
-    boolean bool1 = aj.DT();
-    com.tencent.mm.plugin.bizui.a.a locala = com.tencent.mm.plugin.bizui.a.a.noe;
-    boolean bool2 = com.tencent.mm.plugin.bizui.a.a.yk(paramInt);
-    if (Ts(paramString))
+    String str = ac.fks();
+    boolean bool1 = al.isDarkMode();
+    com.tencent.mm.plugin.bizui.a.a locala = com.tencent.mm.plugin.bizui.a.a.nPa;
+    boolean bool2 = com.tencent.mm.plugin.bizui.a.a.yU(paramInt);
+    if (WZ(paramString))
     {
       if (str == null) {}
       while (bool1)

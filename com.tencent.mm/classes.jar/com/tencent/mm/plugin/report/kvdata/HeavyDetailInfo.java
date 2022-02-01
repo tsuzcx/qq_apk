@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class HeavyDetailInfo
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public long chatroom_;
   public long contact_;
@@ -21,15 +21,15 @@ public class HeavyDetailInfo
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.flag_);
-      paramVarArgs.aO(2, this.sdFileSize_);
-      paramVarArgs.aO(3, this.sdFileRatio_);
-      paramVarArgs.aO(4, this.dbSize_);
-      paramVarArgs.aO(5, this.message_);
-      paramVarArgs.aO(6, this.conversation_);
-      paramVarArgs.aO(7, this.contact_);
-      paramVarArgs.aO(8, this.chatroom_);
-      paramVarArgs.aO(9, this.favDbSize_);
+      paramVarArgs.aY(1, this.flag_);
+      paramVarArgs.aY(2, this.sdFileSize_);
+      paramVarArgs.aY(3, this.sdFileRatio_);
+      paramVarArgs.aY(4, this.dbSize_);
+      paramVarArgs.aY(5, this.message_);
+      paramVarArgs.aY(6, this.conversation_);
+      paramVarArgs.aY(7, this.contact_);
+      paramVarArgs.aY(8, this.chatroom_);
+      paramVarArgs.aY(9, this.favDbSize_);
       AppMethodBeat.o(151534);
       return 0;
     }
@@ -50,9 +50,9 @@ public class HeavyDetailInfo
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(151534);
@@ -68,39 +68,39 @@ public class HeavyDetailInfo
         AppMethodBeat.o(151534);
         return -1;
       case 1: 
-        localHeavyDetailInfo.flag_ = locala.LVo.xG();
+        localHeavyDetailInfo.flag_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       case 2: 
-        localHeavyDetailInfo.sdFileSize_ = locala.LVo.xG();
+        localHeavyDetailInfo.sdFileSize_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       case 3: 
-        localHeavyDetailInfo.sdFileRatio_ = locala.LVo.xG();
+        localHeavyDetailInfo.sdFileRatio_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       case 4: 
-        localHeavyDetailInfo.dbSize_ = locala.LVo.xG();
+        localHeavyDetailInfo.dbSize_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       case 5: 
-        localHeavyDetailInfo.message_ = locala.LVo.xG();
+        localHeavyDetailInfo.message_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       case 6: 
-        localHeavyDetailInfo.conversation_ = locala.LVo.xG();
+        localHeavyDetailInfo.conversation_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       case 7: 
-        localHeavyDetailInfo.contact_ = locala.LVo.xG();
+        localHeavyDetailInfo.contact_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       case 8: 
-        localHeavyDetailInfo.chatroom_ = locala.LVo.xG();
+        localHeavyDetailInfo.chatroom_ = locala.NPN.zd();
         AppMethodBeat.o(151534);
         return 0;
       }
-      localHeavyDetailInfo.favDbSize_ = locala.LVo.xG();
+      localHeavyDetailInfo.favDbSize_ = locala.NPN.zd();
       AppMethodBeat.o(151534);
       return 0;
     }

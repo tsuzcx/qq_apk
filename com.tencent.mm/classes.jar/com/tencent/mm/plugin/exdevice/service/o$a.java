@@ -43,31 +43,31 @@ public abstract class o$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      long l = chi();
+      long l = clM();
       paramParcel2.writeNoException();
       paramParcel2.writeLong(l);
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramParcel1 = chj();
+      paramParcel1 = clN();
       paramParcel2.writeNoException();
       paramParcel2.writeByteArray(paramParcel1);
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = chk();
+      paramInt1 = clO();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 4: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-      paramInt1 = chl();
+      paramInt1 = clP();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTaskReq_AIDL");
-    paramInt1 = chm();
+    paramInt1 = clQ();
     paramParcel2.writeNoException();
     paramParcel2.writeInt(paramInt1);
     return true;
@@ -88,7 +88,7 @@ public abstract class o$a
       return this.mRemote;
     }
     
-    public final long chi()
+    public final long clM()
     {
       AppMethodBeat.i(23684);
       Parcel localParcel1 = Parcel.obtain();
@@ -109,7 +109,7 @@ public abstract class o$a
       }
     }
     
-    public final byte[] chj()
+    public final byte[] clN()
     {
       AppMethodBeat.i(23685);
       Parcel localParcel1 = Parcel.obtain();
@@ -130,7 +130,7 @@ public abstract class o$a
       }
     }
     
-    public final int chk()
+    public final int clO()
     {
       AppMethodBeat.i(23686);
       Parcel localParcel1 = Parcel.obtain();
@@ -151,7 +151,7 @@ public abstract class o$a
       }
     }
     
-    public final int chl()
+    public final int clP()
     {
       AppMethodBeat.i(23687);
       Parcel localParcel1 = Parcel.obtain();
@@ -172,7 +172,7 @@ public abstract class o$a
       }
     }
     
-    public final int chm()
+    public final int clQ()
     {
       AppMethodBeat.i(23688);
       Parcel localParcel1 = Parcel.obtain();
@@ -196,7 +196,7 @@ public abstract class o$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.o.a
  * JD-Core Version:    0.7.0.1
  */

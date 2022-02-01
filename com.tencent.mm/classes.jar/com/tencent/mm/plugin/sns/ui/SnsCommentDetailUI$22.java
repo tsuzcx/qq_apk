@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ar.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.model.as.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class SnsCommentDetailUI$22
-  implements ar.b.a
+  implements as.b.a
 {
   SnsCommentDetailUI$22(SnsCommentDetailUI paramSnsCommentDetailUI) {}
   
   public final void p(final String paramString, final boolean paramBoolean)
   {
-    AppMethodBeat.i(200492);
-    ac.i("MicroMsg.SnsCommentDetailUI", "setAvatar, getContactCallBack, userName=" + paramString + ", succ=" + paramBoolean + ", retryCount=" + this.yKq.yKn);
-    new ao(Looper.getMainLooper()).postDelayed(new Runnable()
+    AppMethodBeat.i(198324);
+    ad.i("MicroMsg.SnsCommentDetailUI", "setAvatar, getContactCallBack, userName=" + paramString + ", succ=" + paramBoolean + ", retryCount=" + this.AbL.AbI);
+    new ap(Looper.getMainLooper()).postDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(200491);
-        if ((paramBoolean) && (!SnsCommentDetailUI.22.this.yKq.isFinishing()) && (SnsCommentDetailUI.22.this.yKq.yKn < 5))
+        AppMethodBeat.i(198323);
+        if ((paramBoolean) && (!SnsCommentDetailUI.22.this.AbL.isFinishing()) && (SnsCommentDetailUI.22.this.AbL.AbI < 5))
         {
-          ac.i("MicroMsg.SnsCommentDetailUI", "setAvatar, setHeader after getContact, userName=" + paramString);
-          SnsCommentDetailUI.22.this.yKq.dPt();
+          ad.i("MicroMsg.SnsCommentDetailUI", "setAvatar, setHeader after getContact, userName=" + paramString);
+          SnsCommentDetailUI.22.this.AbL.ebK();
         }
-        SnsCommentDetailUI localSnsCommentDetailUI = SnsCommentDetailUI.22.this.yKq;
-        localSnsCommentDetailUI.yKn += 1;
-        AppMethodBeat.o(200491);
+        SnsCommentDetailUI localSnsCommentDetailUI = SnsCommentDetailUI.22.this.AbL;
+        localSnsCommentDetailUI.AbI += 1;
+        AppMethodBeat.o(198323);
       }
     }, 500L);
-    AppMethodBeat.o(200492);
+    AppMethodBeat.o(198324);
   }
 }
 

@@ -23,13 +23,13 @@ public final class c$c
       AppMethodBeat.o(73141);
       return paramTenpaySecureEditText;
     case 1: 
-      b.fzz();
-      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(true, b.fzA());
+      b.fQJ();
+      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(true, b.fQK());
       AppMethodBeat.o(73141);
       return paramTenpaySecureEditText;
     case 0: 
-      b.fzz();
-      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(false, b.fzA());
+      b.fQJ();
+      paramTenpaySecureEditText = paramTenpaySecureEditText.getEncryptDataWithHash(false, b.fQK());
       AppMethodBeat.o(73141);
       return paramTenpaySecureEditText;
     case 3: 

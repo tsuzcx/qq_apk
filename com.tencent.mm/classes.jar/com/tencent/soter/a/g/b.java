@@ -7,69 +7,69 @@ import com.tencent.soter.a.f.f;
 
 public final class b
 {
-  String BVH;
-  public f JXA;
-  public int JXB;
-  public com.tencent.soter.a.d.b JXC;
-  com.tencent.soter.a.a.a JXD;
-  com.tencent.soter.a.a.b JXE;
-  c JXz;
+  String Dwb;
+  c LRu;
+  public f LRv;
+  public int LRw;
+  public com.tencent.soter.a.d.b LRx;
+  com.tencent.soter.a.a.a LRy;
+  com.tencent.soter.a.a.b LRz;
   Context mContext;
   public int mScene;
-  public com.tencent.soter.a.d.a skw;
+  public com.tencent.soter.a.d.a tgY;
   
   public final String toString()
   {
     AppMethodBeat.i(29);
-    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.BVH + '\'' + ", mIWrapGetChallengeStr=" + this.JXz + ", mIWrapUploadSignature=" + this.JXA + ", mContext=" + this.mContext + ", mBiometricType=" + this.JXB + '}';
+    String str = "AuthenticationParam{mScene=" + this.mScene + ", mChallenge='" + this.Dwb + '\'' + ", mIWrapGetChallengeStr=" + this.LRu + ", mIWrapUploadSignature=" + this.LRv + ", mContext=" + this.mContext + ", mBiometricType=" + this.LRw + '}';
     AppMethodBeat.o(29);
     return str;
   }
   
   public static final class a
   {
-    public b JXF;
+    public b LRA;
     
     public a()
     {
       AppMethodBeat.i(28);
-      this.JXF = new b((byte)0);
+      this.LRA = new b((byte)0);
       AppMethodBeat.o(28);
     }
     
     public final a a(com.tencent.soter.a.a.a parama)
     {
-      this.JXF.JXD = parama;
+      this.LRA.LRy = parama;
       return this;
     }
     
     public final a a(com.tencent.soter.a.a.b paramb)
     {
-      this.JXF.JXE = paramb;
+      this.LRA.LRz = paramb;
       return this;
     }
     
-    public final a aTy(String paramString)
+    public final a aZy(String paramString)
     {
-      this.JXF.BVH = paramString;
+      this.LRA.Dwb = paramString;
       return this;
     }
     
-    public final a aep(int paramInt)
+    public final a agP(int paramInt)
     {
-      this.JXF.mScene = paramInt;
+      this.LRA.mScene = paramInt;
       return this;
     }
     
-    public final a aeq(int paramInt)
+    public final a agQ(int paramInt)
     {
-      this.JXF.JXB = paramInt;
+      this.LRA.LRw = paramInt;
       return this;
     }
     
-    public final a kT(Context paramContext)
+    public final a lg(Context paramContext)
     {
-      this.JXF.mContext = paramContext;
+      this.LRA.mContext = paramContext;
       return this;
     }
   }

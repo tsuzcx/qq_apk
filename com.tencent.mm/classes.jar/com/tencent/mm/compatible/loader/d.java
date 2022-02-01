@@ -8,7 +8,7 @@ public abstract class d
 {
   protected Application app;
   
-  public final void d(Application paramApplication)
+  public final void f(Application paramApplication)
   {
     this.app = paramApplication;
   }

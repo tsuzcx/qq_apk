@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vr
   extends b
 {
-  public a dyx;
+  public a dKf;
   
   public vr()
   {
@@ -15,21 +15,21 @@ public final class vr
   
   private vr(byte paramByte)
   {
-    AppMethodBeat.i(162263);
-    this.dyx = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116049);
+    this.dKf = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(162263);
+    AppMethodBeat.o(116049);
   }
   
   public static final class a
   {
-    public String dyy;
+    public int status;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.vr
  * JD-Core Version:    0.7.0.1
  */

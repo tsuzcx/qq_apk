@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.monitor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 final class b$7
   implements Runnable
 {
-  b$7(b paramb, long paramLong1, ah.a parama, long paramLong2) {}
+  b$7(b paramb, long paramLong1, al.a parama, long paramLong2) {}
   
   public final void run()
   {
     AppMethodBeat.i(51506);
-    if (!g.agM())
+    if (!g.ajx())
     {
       AppMethodBeat.o(51506);
       return;
     }
-    g.agS();
-    g.agR().agA().set(ah.a.GLE, Long.valueOf(this.uVI));
-    if (this.uVJ != null)
+    g.ajD();
+    g.ajC().ajl().set(al.a.IxW, Long.valueOf(this.vYQ));
+    if (this.vYR != null)
     {
-      g.agS();
-      g.agR().agA().set(this.uVJ, Long.valueOf(this.oJJ));
+      g.ajD();
+      g.ajC().ajl().set(this.vYR, Long.valueOf(this.pnq));
     }
-    ac.i("MicroMsg.SubCoreBaseMonitor", "summerhv resetHeavyUser heavyUser[%d, %d], fkey[%s], value[%d]", new Object[] { Long.valueOf(this.uVI), Long.valueOf(b.s(this.uVA)), this.uVJ, Long.valueOf(this.oJJ) });
+    ad.i("MicroMsg.SubCoreBaseMonitor", "summerhv resetHeavyUser heavyUser[%d, %d], fkey[%s], value[%d]", new Object[] { Long.valueOf(this.vYQ), Long.valueOf(b.s(this.vYI)), this.vYR, Long.valueOf(this.pnq) });
     AppMethodBeat.o(51506);
   }
 }

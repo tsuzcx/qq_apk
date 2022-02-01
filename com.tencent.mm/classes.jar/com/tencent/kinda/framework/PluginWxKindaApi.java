@@ -3,18 +3,20 @@ package com.tencent.kinda.framework;
 import com.tencent.kinda.framework.api.IPluginWxKindaApi;
 import com.tencent.kinda.framework.app.SubCoreKinda;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.model.t;
 import com.tencent.mm.pluginsdk.wallet.a;
 
 public class PluginWxKindaApi
   extends f
-  implements IPluginWxKindaApi
+  implements IPluginWxKindaApi, c
 {
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(18262);
-    if (paramg.ahL())
+    if (paramg.akw())
     {
       pin(new t(SubCoreKinda.class));
       com.tencent.mm.kernel.g.b(a.class, new WxCrossServices());
@@ -41,10 +43,19 @@ public class PluginWxKindaApi
   {
     return "plugin-wxkindaapi";
   }
+  
+  public void onAccountInitialized(e.c paramc)
+  {
+    AppMethodBeat.i(199416);
+    WxCrossServices.judgeReprot();
+    AppMethodBeat.o(199416);
+  }
+  
+  public void onAccountRelease() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.PluginWxKindaApi
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ import java.util.Map;
 public final class l
 {
   public Map<String, Map<String, Long>> map;
-  public ArrayList<String> xNw;
-  public ArrayList<List<String>> xNx;
+  public ArrayList<String> zdq;
+  public ArrayList<List<String>> zdr;
   
   public l()
   {
     AppMethodBeat.i(95085);
-    this.xNw = new ArrayList();
-    this.xNx = new ArrayList();
+    this.zdq = new ArrayList();
+    this.zdr = new ArrayList();
     this.map = new HashMap();
     AppMethodBeat.o(95085);
   }

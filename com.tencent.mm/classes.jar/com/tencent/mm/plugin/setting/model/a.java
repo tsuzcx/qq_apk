@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ao;
-import com.tencent.mm.model.bn.a;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.bo.a;
 import com.tencent.mm.network.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class a
 {
-  public static a xof;
-  private static a xog;
-  public boolean hTo = false;
+  public static a yCK;
+  private static a yCL;
+  public boolean imJ = false;
   
-  public static long Sx(String paramString)
+  public static long VV(String paramString)
   {
     AppMethodBeat.i(73761);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-    long l1 = bs.eWj();
+    long l1 = bt.flT();
     try
     {
       long l2 = localSimpleDateFormat.parse(paramString).getTime();
@@ -33,27 +33,27 @@ public final class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.FixToolsUplogModel", "dateToTimeStamp failed. date:%s, stack:%s", new Object[] { paramString, bs.eWi() });
+        ad.e("MicroMsg.FixToolsUplogModel", "dateToTimeStamp failed. date:%s, stack:%s", new Object[] { paramString, bt.flS() });
       }
     }
     AppMethodBeat.o(73761);
     return l1;
   }
   
-  public static a dBG()
+  public static a dNj()
   {
     AppMethodBeat.i(73760);
-    if (xog == null) {
-      xog = new a();
+    if (yCL == null) {
+      yCL = new a();
     }
-    a locala = xog;
+    a locala = yCL;
     AppMethodBeat.o(73760);
     return locala;
   }
   
   public static abstract interface a
   {
-    public abstract void Nx(int paramInt);
+    public abstract void Pa(int paramInt);
   }
 }
 

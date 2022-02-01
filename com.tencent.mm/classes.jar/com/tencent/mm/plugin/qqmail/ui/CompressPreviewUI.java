@@ -17,14 +17,14 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.qqmail.b.o;
-import com.tencent.mm.plugin.qqmail.b.w;
-import com.tencent.mm.plugin.qqmail.b.w.a;
+import com.tencent.mm.plugin.qqmail.d.k;
+import com.tencent.mm.plugin.qqmail.d.v;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -36,28 +36,28 @@ import java.util.Map;
 public class CompressPreviewUI
   extends MMActivity
 {
-  private ProgressBar mVX;
-  private TextView sEo;
-  private String vTT;
-  private String vUF;
-  private c vWA;
-  private String vWc;
-  private long vXp;
-  private List<a> vXq;
-  private String vXr;
-  private ListView vXs;
-  private b vXt;
-  private w.a vXu;
+  private ProgressBar nwu;
+  private TextView tBf;
+  private String xbf;
+  private String xdT;
+  private String xdU;
+  private c xer;
+  private long xfd;
+  private List<a> xfe;
+  private String xff;
+  private ListView xfg;
+  private b xfh;
+  private com.tencent.mm.plugin.qqmail.c.a xfi;
   
   public CompressPreviewUI()
   {
     AppMethodBeat.i(122976);
-    this.vTT = null;
-    this.vUF = null;
-    this.vXp = 0L;
-    this.vWA = new c(this);
-    this.vXq = new ArrayList();
-    this.vXu = new w.a()
+    this.xbf = null;
+    this.xdU = null;
+    this.xfd = 0L;
+    this.xer = new c(this);
+    this.xfe = new ArrayList();
+    this.xfi = new com.tencent.mm.plugin.qqmail.c.a()
     {
       public final void onError(int paramAnonymousInt, String paramAnonymousString)
       {
@@ -66,14 +66,14 @@ public class CompressPreviewUI
         {
           CompressPreviewUI.j(CompressPreviewUI.this).a(new c.a()
           {
-            public final void drP()
+            public final void dCn()
             {
               AppMethodBeat.i(122967);
               CompressPreviewUI.i(CompressPreviewUI.this);
               AppMethodBeat.o(122967);
             }
             
-            public final void drQ() {}
+            public final void dCo() {}
           });
           AppMethodBeat.o(122969);
           return;
@@ -88,7 +88,7 @@ public class CompressPreviewUI
       {
         AppMethodBeat.i(122968);
         CompressPreviewUI.b(CompressPreviewUI.this, (String)paramAnonymousMap.get(".Response.result.compressfilepath"));
-        int j = bs.getInt((String)paramAnonymousMap.get(".Response.result.filelist.count"), 0);
+        int j = bt.getInt((String)paramAnonymousMap.get(".Response.result.filelist.count"), 0);
         int i = 0;
         if (i < j) {}
         for (;;)
@@ -107,8 +107,8 @@ public class CompressPreviewUI
             }
             localObject = URLDecoder.decode((String)localObject, "utf-8");
             String str1 = (String)paramAnonymousMap.get(paramAnonymousString + ".parentpath");
-            int k = bs.getInt((String)paramAnonymousMap.get(paramAnonymousString + ".size"), 0);
-            int m = bs.getInt((String)paramAnonymousMap.get(paramAnonymousString + ".type"), 0);
+            int k = bt.getInt((String)paramAnonymousMap.get(paramAnonymousString + ".size"), 0);
+            int m = bt.getInt((String)paramAnonymousMap.get(paramAnonymousString + ".type"), 0);
             boolean bool = ((String)paramAnonymousMap.get(paramAnonymousString + ".preview")).equals("1");
             String str2 = (String)paramAnonymousMap.get(paramAnonymousString + ".name");
             List localList = CompressPreviewUI.h(CompressPreviewUI.this);
@@ -119,13 +119,13 @@ public class CompressPreviewUI
               localList.add(new CompressPreviewUI.a(localCompressPreviewUI, (String)localObject, str2, str1, m, paramAnonymousString, bool));
               break label398;
             }
-            paramAnonymousString = "(" + bs.qz(k) + ")";
+            paramAnonymousString = "(" + bt.sy(k) + ")";
             continue;
             CompressPreviewUI.a(CompressPreviewUI.this, "");
           }
           catch (Exception paramAnonymousString)
           {
-            ac.printErrStackTrace("MicroMsg.CompressPreviewUI", paramAnonymousString, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.CompressPreviewUI", paramAnonymousString, "", new Object[0]);
           }
           AppMethodBeat.o(122968);
           return;
@@ -140,37 +140,37 @@ public class CompressPreviewUI
     AppMethodBeat.o(122976);
   }
   
-  private void aqb(String paramString)
+  private void ava(String paramString)
   {
     AppMethodBeat.i(122981);
-    ac.i("MicroMsg.CompressPreviewUI", "curPath=".concat(String.valueOf(paramString)));
-    this.mVX.setVisibility(8);
-    this.sEo.setVisibility(8);
-    this.vXs.setVisibility(0);
-    a locala1 = aqc(paramString);
+    ad.i("MicroMsg.CompressPreviewUI", "curPath=".concat(String.valueOf(paramString)));
+    this.nwu.setVisibility(8);
+    this.tBf.setVisibility(8);
+    this.xfg.setVisibility(0);
+    a locala1 = avb(paramString);
     ArrayList localArrayList = new ArrayList();
     if (locala1 != null) {
       localArrayList.add(locala1);
     }
     int i = 0;
-    while (i < this.vXq.size())
+    while (i < this.xfe.size())
     {
-      a locala2 = (a)this.vXq.get(i);
-      if (((paramString.endsWith(locala2.vXx)) && (locala2.vXx.length() > 0)) || (locala2.vXx.equals(paramString))) {
+      a locala2 = (a)this.xfe.get(i);
+      if (((paramString.endsWith(locala2.xfl)) && (locala2.xfl.length() > 0)) || (locala2.xfl.equals(paramString))) {
         localArrayList.add(locala2);
       }
       i += 1;
     }
-    this.vXt.a(locala1, localArrayList);
-    this.vXt.notifyDataSetChanged();
-    this.vXs.setSelection(0);
+    this.xfh.a(locala1, localArrayList);
+    this.xfh.notifyDataSetChanged();
+    this.xfg.setSelection(0);
     AppMethodBeat.o(122981);
   }
   
-  private a aqc(String paramString)
+  private a avb(String paramString)
   {
     AppMethodBeat.i(122982);
-    Iterator localIterator = this.vXq.iterator();
+    Iterator localIterator = this.xfe.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -184,14 +184,14 @@ public class CompressPreviewUI
     return null;
   }
   
-  private void dsf()
+  private void dCD()
   {
     AppMethodBeat.i(122983);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("mailid", this.vTT);
-    localHashMap.put("attachid", this.vUF);
+    localHashMap.put("mailid", this.xbf);
+    localHashMap.put("attachid", this.xdU);
     localHashMap.put("fun", "list");
-    ((o)g.ad(o.class)).getNormalMailAppService().a("/cgi-bin/viewcompress", localHashMap, this.vXu);
+    ((k)g.ad(k.class)).getNormalMailAppService().a("/cgi-bin/viewcompress", localHashMap, this.xfi);
     AppMethodBeat.o(122983);
   }
   
@@ -203,57 +203,66 @@ public class CompressPreviewUI
   public void initView()
   {
     AppMethodBeat.i(122978);
-    this.vXs = ((ListView)findViewById(2131298552));
-    this.sEo = ((TextView)findViewById(2131298550));
-    this.mVX = ((ProgressBar)findViewById(2131298551));
-    if ((this.vTT == null) || (this.vUF == null))
+    this.xfg = ((ListView)findViewById(2131298552));
+    this.tBf = ((TextView)findViewById(2131298550));
+    this.nwu = ((ProgressBar)findViewById(2131298551));
+    if ((this.xbf == null) || (this.xdU == null))
     {
-      this.mVX.setVisibility(8);
-      this.sEo.setText(2131761033);
+      this.nwu.setVisibility(8);
+      this.tBf.setText(2131761033);
       AppMethodBeat.o(122978);
       return;
     }
-    this.vXt = new b((byte)0);
-    this.vXs.setAdapter(this.vXt);
-    this.vXs.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.xfh = new b((byte)0);
+    this.xfg.setAdapter(this.xfh);
+    this.xfg.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(122963);
-        paramAnonymousView = CompressPreviewUI.a(CompressPreviewUI.this).LM(paramAnonymousInt);
-        String str1 = paramAnonymousView.id;
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousAdapterView);
+        ((b)localObject).bd(paramAnonymousView);
+        ((b)localObject).mr(paramAnonymousInt);
+        ((b)localObject).qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahq());
+        paramAnonymousView = CompressPreviewUI.a(CompressPreviewUI.this).Nm(paramAnonymousInt);
+        localObject = paramAnonymousView.id;
         paramAnonymousAdapterView = CompressPreviewUI.a(CompressPreviewUI.this);
-        if (paramAnonymousAdapterView.vXy == null) {}
-        for (paramAnonymousAdapterView = null; str1.equals(paramAnonymousAdapterView); paramAnonymousAdapterView = paramAnonymousAdapterView.vXy.id)
+        if (paramAnonymousAdapterView.xfm == null) {}
+        for (paramAnonymousAdapterView = null; ((String)localObject).equals(paramAnonymousAdapterView); paramAnonymousAdapterView = paramAnonymousAdapterView.xfm.id)
         {
-          CompressPreviewUI.a(CompressPreviewUI.this, CompressPreviewUI.a(CompressPreviewUI.this).dsh());
+          CompressPreviewUI.a(CompressPreviewUI.this, CompressPreviewUI.a(CompressPreviewUI.this).dCF());
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(122963);
           return;
         }
-        if (paramAnonymousView.dsg())
+        if (paramAnonymousView.dCE())
         {
           CompressPreviewUI.a(CompressPreviewUI.this, paramAnonymousView.id);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(122963);
           return;
         }
-        if (paramAnonymousView.aMz)
+        if (paramAnonymousView.aWQ)
         {
-          str1 = "mailid=" + CompressPreviewUI.b(CompressPreviewUI.this);
-          String str2 = "attachid=" + paramAnonymousView.id;
-          String str3 = "compressfilepath=" + CompressPreviewUI.c(CompressPreviewUI.this);
+          localObject = "mailid=" + CompressPreviewUI.b(CompressPreviewUI.this);
+          String str1 = "attachid=" + paramAnonymousView.id;
+          String str2 = "compressfilepath=" + CompressPreviewUI.c(CompressPreviewUI.this);
           paramAnonymousAdapterView = new Intent(CompressPreviewUI.this, MailWebViewUI.class);
           paramAnonymousAdapterView.putExtra("uri", "/cgi-bin/viewdocument");
-          paramAnonymousAdapterView.putExtra("params", new String[] { str1, str2, str3, "texttype=html" });
-          paramAnonymousAdapterView.putExtra("baseurl", w.drK());
+          paramAnonymousAdapterView.putExtra("params", new String[] { localObject, str1, str2, "texttype=html" });
+          paramAnonymousAdapterView.putExtra("baseurl", v.dCk());
           paramAnonymousAdapterView.putExtra("method", "get");
-          paramAnonymousAdapterView.putExtra("singleColumn", FileExplorerUI.aHO(paramAnonymousView.name));
+          paramAnonymousAdapterView.putExtra("singleColumn", FileExplorerUI.aNq(paramAnonymousView.name));
           paramAnonymousAdapterView.putExtra("title", CompressPreviewUI.this.getString(2131762189));
           paramAnonymousView = CompressPreviewUI.this;
-          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousAdapterView);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.aeD(), "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.lR(0));
+          paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahp(), "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mq(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(122963);
       }
     });
@@ -272,12 +281,16 @@ public class CompressPreviewUI
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(122965);
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
         paramAnonymousView = CompressPreviewUI.d(CompressPreviewUI.this);
-        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymousView);
-        Object localObject = new Object();
-        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.aeD(), "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-        BackwardSupportUtil.c.b((ListView)paramAnonymousView.lR(0));
+        paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+        localObject = new Object();
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahp(), "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        BackwardSupportUtil.c.b((ListView)paramAnonymousView.mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$3", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(122965);
       }
     });
@@ -294,15 +307,15 @@ public class CompressPreviewUI
         ((Intent)localObject).putExtra("is_preview", 0);
         ((Intent)localObject).putExtra("is_compress", true);
         paramAnonymousMenuItem = CompressPreviewUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/plugin/qqmail/ui/CompressPreviewUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(122966);
         return true;
       }
     });
-    dsf();
+    dCD();
     AppMethodBeat.o(122978);
   }
   
@@ -310,12 +323,12 @@ public class CompressPreviewUI
   {
     AppMethodBeat.i(122977);
     super.onCreate(paramBundle);
-    this.vTT = getIntent().getStringExtra("mail_id");
-    this.vUF = getIntent().getStringExtra("attach_id");
-    this.vXp = getIntent().getLongExtra("attach_size", 0L);
-    this.vWc = getIntent().getStringExtra("attach_name");
+    this.xbf = getIntent().getStringExtra("mail_id");
+    this.xdU = getIntent().getStringExtra("attach_id");
+    this.xfd = getIntent().getLongExtra("attach_size", 0L);
+    this.xdT = getIntent().getStringExtra("attach_name");
     initView();
-    setMMTitle(this.vWc);
+    setMMTitle(this.xdT);
     AppMethodBeat.o(122977);
   }
   
@@ -323,16 +336,16 @@ public class CompressPreviewUI
   {
     AppMethodBeat.i(122979);
     super.onDestroy();
-    this.vWA.release();
+    this.xer.release();
     AppMethodBeat.o(122979);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(122980);
-    if ((paramInt == 4) && (this.vXt.dsh() != null))
+    if ((paramInt == 4) && (this.xfh.dCF() != null))
     {
-      aqb(this.vXt.dsh());
+      ava(this.xfh.dCF());
       AppMethodBeat.o(122980);
       return true;
     }
@@ -355,12 +368,12 @@ public class CompressPreviewUI
   
   final class a
   {
-    boolean aMz;
+    boolean aWQ;
     String id;
-    String jsy;
+    String jMs;
     String name;
     int type;
-    String vXx;
+    String xfl;
     
     public a(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, boolean paramBoolean)
     {
@@ -371,14 +384,14 @@ public class CompressPreviewUI
       if (paramString3 == null) {
         this$1 = "";
       }
-      this.vXx = CompressPreviewUI.this;
+      this.xfl = CompressPreviewUI.this;
       this.type = paramInt;
-      this.jsy = paramString4;
-      this.aMz = paramBoolean;
+      this.jMs = paramString4;
+      this.aWQ = paramBoolean;
       AppMethodBeat.o(122970);
     }
     
-    public final boolean dsg()
+    public final boolean dCE()
     {
       return this.type == 1;
     }
@@ -387,17 +400,17 @@ public class CompressPreviewUI
   final class b
     extends BaseAdapter
   {
-    private List<CompressPreviewUI.a> kwM = null;
-    CompressPreviewUI.a vXy;
+    private List<CompressPreviewUI.a> kSS = null;
+    CompressPreviewUI.a xfm;
     
     private b() {}
     
-    public final CompressPreviewUI.a LM(int paramInt)
+    public final CompressPreviewUI.a Nm(int paramInt)
     {
       AppMethodBeat.i(122973);
-      if ((this.kwM != null) && (this.kwM.size() > paramInt))
+      if ((this.kSS != null) && (this.kSS.size() > paramInt))
       {
-        CompressPreviewUI.a locala = (CompressPreviewUI.a)this.kwM.get(paramInt);
+        CompressPreviewUI.a locala = (CompressPreviewUI.a)this.kSS.get(paramInt);
         AppMethodBeat.o(122973);
         return locala;
       }
@@ -407,27 +420,27 @@ public class CompressPreviewUI
     
     public final void a(CompressPreviewUI.a parama, List<CompressPreviewUI.a> paramList)
     {
-      this.vXy = parama;
-      this.kwM = paramList;
+      this.xfm = parama;
+      this.kSS = paramList;
     }
     
-    public final String dsh()
+    public final String dCF()
     {
       AppMethodBeat.i(122971);
-      if ((this.vXy == null) || (this.vXy.vXx == null))
+      if ((this.xfm == null) || (this.xfm.xfl == null))
       {
         AppMethodBeat.o(122971);
         return null;
       }
-      if (this.vXy.vXx.length() == 0)
+      if (this.xfm.xfl.length() == 0)
       {
         AppMethodBeat.o(122971);
         return "";
       }
-      int i = this.vXy.id.indexOf(this.vXy.vXx);
+      int i = this.xfm.id.indexOf(this.xfm.xfl);
       if (i >= 0)
       {
-        String str = this.vXy.id.substring(0, i) + this.vXy.vXx;
+        String str = this.xfm.id.substring(0, i) + this.xfm.xfl;
         AppMethodBeat.o(122971);
         return str;
       }
@@ -438,9 +451,9 @@ public class CompressPreviewUI
     public final int getCount()
     {
       AppMethodBeat.i(122972);
-      if (this.kwM != null)
+      if (this.kSS != null)
       {
-        int i = this.kwM.size();
+        int i = this.kSS.size();
         AppMethodBeat.o(122972);
         return i;
       }
@@ -461,21 +474,21 @@ public class CompressPreviewUI
       {
         paramViewGroup = View.inflate(CompressPreviewUI.this.getContext(), 2131494675, null);
         paramView = new a((byte)0);
-        paramView.lzC = ((ImageView)paramViewGroup.findViewById(2131299919));
-        paramView.iMz = ((TextView)paramViewGroup.findViewById(2131299925));
-        paramView.vXz = ((TextView)paramViewGroup.findViewById(2131299929));
-        paramView.vXA = ((ImageView)paramViewGroup.findViewById(2131299930));
+        paramView.lZa = ((ImageView)paramViewGroup.findViewById(2131299919));
+        paramView.jfJ = ((TextView)paramViewGroup.findViewById(2131299925));
+        paramView.xfn = ((TextView)paramViewGroup.findViewById(2131299929));
+        paramView.xfo = ((ImageView)paramViewGroup.findViewById(2131299930));
         paramViewGroup.setTag(paramView);
       }
       a locala = (a)paramViewGroup.getTag();
-      CompressPreviewUI.a locala1 = LM(paramInt);
-      if ((paramInt == 0) && (dsh() != null))
+      CompressPreviewUI.a locala1 = Nm(paramInt);
+      if ((paramInt == 0) && (dCF() != null))
       {
-        paramView = locala.lzC;
+        paramView = locala.lZa;
         paramInt = 2131233694;
         paramView.setImageResource(paramInt);
-        paramView = locala.vXA;
-        if (!locala1.aMz) {
+        paramView = locala.xfo;
+        if (!locala1.aWQ) {
           break label219;
         }
       }
@@ -483,27 +496,27 @@ public class CompressPreviewUI
       for (paramInt = 0;; paramInt = 4)
       {
         paramView.setVisibility(paramInt);
-        locala.iMz.setText(locala1.name);
-        locala.vXz.setText(locala1.jsy);
+        locala.jfJ.setText(locala1.name);
+        locala.xfn.setText(locala1.jMs);
         AppMethodBeat.o(122974);
         return paramViewGroup;
-        paramView = locala.lzC;
-        if (locala1.dsg())
+        paramView = locala.lZa;
+        if (locala1.dCE())
         {
           paramInt = 2131233695;
           break;
         }
-        paramInt = FileExplorerUI.aHN(locala1.name);
+        paramInt = FileExplorerUI.aNp(locala1.name);
         break;
       }
     }
     
     final class a
     {
-      TextView iMz;
-      ImageView lzC;
-      ImageView vXA;
-      TextView vXz;
+      TextView jfJ;
+      ImageView lZa;
+      TextView xfn;
+      ImageView xfo;
       
       private a() {}
     }

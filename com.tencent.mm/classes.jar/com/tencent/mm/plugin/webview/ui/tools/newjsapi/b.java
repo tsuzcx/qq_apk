@@ -1,208 +1,136 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.util.Base64;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.c;
+import com.tencent.mm.plugin.messenger.foundation.a.c.a;
+import com.tencent.mm.plugin.messenger.foundation.a.c.b;
+import com.tencent.mm.plugin.webview.c.c.a;
+import com.tencent.mm.plugin.webview.c.d;
 import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.widget.a.d.a;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiConfirmDialog;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "parseColor", "color", "plugin-webview_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiAppBindGroup;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class b
-  extends com.tencent.mm.plugin.webview.c.c.a
+  extends a
 {
-  private static final int CHh = 343;
-  public static final b CLu;
-  private static final String TAG = "MicroMsg.JsApiConfirmDialog";
-  private static final String dxZ = "confirmDialog";
+  public static final b Epk;
   
   static
   {
-    AppMethodBeat.i(175678);
-    CLu = new b();
-    TAG = "MicroMsg.JsApiConfirmDialog";
-    CHh = 343;
-    dxZ = "confirmDialog";
-    AppMethodBeat.o(175678);
+    AppMethodBeat.i(207630);
+    Epk = new b();
+    AppMethodBeat.o(207630);
   }
   
-  public final boolean a(com.tencent.mm.plugin.webview.c.d paramd, final com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(final d paramd, final com.tencent.mm.plugin.webview.c.l paraml)
   {
-    AppMethodBeat.i(189488);
-    k.h(paramd, "env");
-    k.h(paraml, "msg");
-    final HashMap localHashMap = new HashMap();
-    try
-    {
-      Object localObject1 = new d.a(paramd.context);
-      JSONObject localJSONObject = paraml.Cku;
-      if (localJSONObject.has("title")) {
-        ((d.a)localObject1).aRH(localJSONObject.getString("title"));
-      }
-      if (localJSONObject.has("titleDesc")) {
-        ((d.a)localObject1).at((CharSequence)localJSONObject.getString("titleDesc"));
-      }
-      Object localObject2;
-      if (localJSONObject.has("titleColor"))
-      {
-        localObject2 = localJSONObject.getString("titleColor");
-        k.g(localObject2, "rawParams.getString(KEY_TITLE_COLOR)");
-        ((d.a)localObject1).acG(Color.parseColor((String)localObject2) | 0xFF000000);
-      }
-      if (localJSONObject.has("titleMaxLine")) {
-        ((d.a)localObject1).acH(localJSONObject.getInt("titleMaxLine"));
-      }
-      if (localJSONObject.has("titleGravity")) {
-        ((d.a)localObject1).acI(localJSONObject.getInt("titleGravity"));
-      }
-      if (localJSONObject.has("msg")) {
-        ((d.a)localObject1).aRI(localJSONObject.getString("msg"));
-      }
-      if (localJSONObject.has("msgSubTitle")) {
-        ((d.a)localObject1).au((CharSequence)localJSONObject.getString("msgSubTitle"));
-      }
-      if (localJSONObject.has("msgSubDesc")) {
-        ((d.a)localObject1).aRJ(localJSONObject.getString("msgSubDesc"));
-      }
-      if (localJSONObject.has("msgMaxLine")) {
-        ((d.a)localObject1).acK(localJSONObject.getInt("msgMaxLine"));
-      }
-      if (localJSONObject.has("msgIconBase64"))
-      {
-        localObject2 = Base64.decode(localJSONObject.getString("msgIconBase64"), 0);
-        ((d.a)localObject1).aH(BitmapFactory.decodeByteArray((byte[])localObject2, 0, localObject2.length));
-      }
-      for (;;)
-      {
-        if (localJSONObject.has("contentDesc")) {
-          ((d.a)localObject1).aRL(localJSONObject.getString("contentDesc"));
-        }
-        if (localJSONObject.has("contentDescGravity")) {
-          ((d.a)localObject1).acL(localJSONObject.getInt("contentDescGravity"));
-        }
-        if (localJSONObject.has("confirmText")) {
-          ((d.a)localObject1).aRO(localJSONObject.getString("confirmText"));
-        }
-        if (localJSONObject.has("confirmTextColor"))
-        {
-          localObject2 = localJSONObject.getString("confirmTextColor");
-          k.g(localObject2, "rawParams.getString(KEY_CONFIRM_COLOR)");
-          ((d.a)localObject1).acO(Color.parseColor((String)localObject2) | 0xFF000000);
-        }
-        if (localJSONObject.has("cancelText")) {
-          ((d.a)localObject1).aRP(localJSONObject.getString("cancelText"));
-        }
-        if (localJSONObject.has("cancelTextColor"))
-        {
-          localObject2 = localJSONObject.getString("cancelTextColor");
-          k.g(localObject2, "rawParams.getString(KEY_CANCEL_COLOR)");
-          ((d.a)localObject1).acP(Color.parseColor((String)localObject2) | 0xFF000000);
-        }
-        ((d.a)localObject1).e((DialogInterface.OnCancelListener)new a(paramd, paraml, localHashMap));
-        ((d.a)localObject1).a((DialogInterface.OnDismissListener)new b(paramd, paraml, localHashMap));
-        ((d.a)localObject1).b((DialogInterface.OnClickListener)new c(paramd, paraml, localHashMap));
-        ((d.a)localObject1).c((DialogInterface.OnClickListener)new d(paramd, paraml, localHashMap));
-        localObject1 = ((d.a)localObject1).fvp();
-        if (localJSONObject.has("msgIconUrl"))
-        {
-          k.g(localObject1, "alert");
-          localObject2 = ((com.tencent.mm.ui.widget.a.d)localObject1).fvo();
-          com.tencent.mm.av.a.a.aFG().a(localJSONObject.getString("msgIconUrl"), (ImageView)localObject2, new c.a().aFP().aFT());
-        }
-        ((com.tencent.mm.ui.widget.a.d)localObject1).show();
-        AppMethodBeat.o(189488);
-        return true;
-        if (localJSONObject.has("msgIconUrl")) {
-          ((d.a)localObject1).aH(Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888));
-        }
-      }
-      return false;
+    c.b localb = null;
+    AppMethodBeat.i(207629);
+    p.h(paramd, "env");
+    p.h(paraml, "msg");
+    Object localObject2 = paraml.xaW.get("url");
+    Object localObject1 = localObject2;
+    if (!(localObject2 instanceof String)) {
+      localObject1 = null;
     }
-    catch (JSONException localJSONException)
+    localObject1 = (String)localObject1;
+    localObject2 = (CharSequence)localObject1;
+    if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      ac.printErrStackTrace(TAG, (Throwable)localJSONException, "doConfirmDialog", new Object[0]);
-      paramd.Cjq.j(paraml.Ckt, paraml.kCH + ":err", (Map)localHashMap);
-      AppMethodBeat.o(189488);
+      ad.i("MicroMsg.JsApiAppBindGroup.", "url is null");
+      paramd.Dyx.i(paraml.DNz, "bindGroup:fail", null);
+      AppMethodBeat.o(207629);
+      return true;
+    }
+    String str1 = paramd.Dyx.aGD((String)localObject1);
+    localObject1 = (CharSequence)str1;
+    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+    for (i = 1; i != 0; i = 0)
+    {
+      ad.i("MicroMsg.JsApiAppBindGroup.", "appId is null");
+      paramd.Dyx.i(paraml.DNz, "bindGroup:fail", null);
+      AppMethodBeat.o(207629);
+      return true;
+    }
+    localObject2 = paraml.xaW.get("signature");
+    localObject1 = localObject2;
+    if (!(localObject2 instanceof String)) {
+      localObject1 = null;
+    }
+    String str2 = (String)localObject1;
+    localObject2 = paraml.xaW.get("groupId");
+    localObject1 = localObject2;
+    if (!(localObject2 instanceof String)) {
+      localObject1 = null;
+    }
+    localObject2 = (String)localObject1;
+    localObject1 = paraml.xaW.get("nonceStr");
+    if (!(localObject1 instanceof String)) {
+      localObject1 = localb;
+    }
+    for (;;)
+    {
+      localObject1 = (String)localObject1;
+      localb = new c.b();
+      localb.appId = str1;
+      localb.signature = str2;
+      localb.vJO = ((String)localObject2);
+      localb.vJP = ((String)localObject1);
+      ((c)g.ab(c.class)).a(paramd.context, localb, (c.a)new a((String)localObject2, paramd, paraml));
+      AppMethodBeat.o(207629);
+      return true;
     }
   }
   
-  public final int ezX()
+  public final int eOL()
   {
-    return CHh;
+    return 376;
   }
   
-  public final String ezY()
+  public final String eOM()
   {
-    return dxZ;
+    return "bindGroup";
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "errorMsg", "", "groupOpenId", "onDealEnd"})
   static final class a
-    implements DialogInterface.OnCancelListener
+    implements c.a
   {
-    a(com.tencent.mm.plugin.webview.c.d paramd, com.tencent.mm.plugin.webview.c.l paraml, HashMap paramHashMap) {}
+    a(String paramString, d paramd, com.tencent.mm.plugin.webview.c.l paraml) {}
     
-    public final void onCancel(DialogInterface paramDialogInterface)
+    public final void a(boolean paramBoolean, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(175673);
-      this.CHk.Cjq.j(paraml.Ckt, paraml.kCH + ":cancelled", (Map)localHashMap);
-      AppMethodBeat.o(175673);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
-  static final class b
-    implements DialogInterface.OnDismissListener
-  {
-    b(com.tencent.mm.plugin.webview.c.d paramd, com.tencent.mm.plugin.webview.c.l paraml, HashMap paramHashMap) {}
-    
-    public final void onDismiss(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(175674);
-      this.CHk.Cjq.j(paraml.Ckt, paraml.kCH + ":dismiss", (Map)localHashMap);
-      AppMethodBeat.o(175674);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  static final class c
-    implements DialogInterface.OnClickListener
-  {
-    c(com.tencent.mm.plugin.webview.c.d paramd, com.tencent.mm.plugin.webview.c.l paraml, HashMap paramHashMap) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(175675);
-      this.CHk.Cjq.j(paraml.Ckt, paraml.kCH + ":ok", (Map)localHashMap);
-      AppMethodBeat.o(175675);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  static final class d
-    implements DialogInterface.OnClickListener
-  {
-    d(com.tencent.mm.plugin.webview.c.d paramd, com.tencent.mm.plugin.webview.c.l paraml, HashMap paramHashMap) {}
-    
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(175676);
-      this.CHk.Cjq.j(paraml.Ckt, paraml.kCH + ":no", (Map)localHashMap);
-      AppMethodBeat.o(175676);
+      AppMethodBeat.i(207628);
+      if (paramBoolean)
+      {
+        localObject1 = (CharSequence)paramString2;
+        if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+        for (int i = 1; i != 0; i = 0)
+        {
+          ad.i("MicroMsg.JsApiAppBindGroup.", "success:" + this.Epl);
+          paramString1 = new HashMap();
+          ((Map)paramString1).put("openId", paramString2);
+          paramString2 = paramd.Dyx;
+          localObject1 = paraml.DNz;
+          localObject2 = new StringBuilder();
+          b localb = b.Epk;
+          paramString2.i((String)localObject1, "bindGroup:success", (Map)paramString1);
+          AppMethodBeat.o(207628);
+          return;
+        }
+      }
+      ad.i("MicroMsg.JsApiAppBindGroup.", "fail:".concat(String.valueOf(paramString1)));
+      paramString1 = paramd.Dyx;
+      paramString2 = paraml.DNz;
+      Object localObject1 = new StringBuilder();
+      Object localObject2 = b.Epk;
+      paramString1.i(paramString2, "bindGroup:fail", null);
+      AppMethodBeat.o(207628);
     }
   }
 }

@@ -18,39 +18,41 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.story.d.a.a;
 import com.tencent.mm.plugin.story.d.a.b;
 import com.tencent.mm.plugin.story.i.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.ui.MMActivity;
 import d.g.a.b;
 import d.g.a.m;
+import d.g.b.p;
+import d.g.b.q;
 import d.v;
-import d.y;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "()V", "curDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "favPanel", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel;", "isSelf", "", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumPresenter;", "mUsername", "", "tipTv", "Landroid/widget/TextView;", "getLayoutId", "", "goFavGallery", "", "position", "dateList", "goFavSelector", "initActionBar", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "isAll", "onLoadFavFinish", "datas", "", "isAllEmpty", "onResume", "Companion", "plugin-story_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumView;", "()V", "curDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "Lkotlin/collections/ArrayList;", "favPanel", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel;", "isSelf", "", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavAlbumPresenter;", "mUsername", "", "tipTv", "Landroid/widget/TextView;", "getLayoutId", "", "goFavGallery", "", "position", "dateList", "goFavSelector", "initActionBar", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "isAll", "onLoadFavFinish", "datas", "", "isAllEmpty", "onResume", "Companion", "plugin-story_release"})
 public final class StoryFavAlbumUI
   extends MMActivity
   implements a.b
 {
+  public static final StoryFavAlbumUI.a AWU;
   private static final String TAG = "MicroMsg.StoryFavAlbumUI";
-  public static final StoryFavAlbumUI.a zFv;
-  private boolean dfZ;
-  private TextView ijF;
-  private String lhM;
-  private ArrayList<j> zFs;
-  private StoryFavoritePanel zFt;
-  private a.a zFu;
+  private ArrayList<j> AWR;
+  private StoryFavoritePanel AWS;
+  private a.a AWT;
+  private boolean drv;
+  private TextView iCW;
+  private String lEN;
   
   static
   {
     AppMethodBeat.i(119858);
-    zFv = new StoryFavAlbumUI.a((byte)0);
+    AWU = new StoryFavAlbumUI.a((byte)0);
     TAG = "MicroMsg.StoryFavAlbumUI";
     AppMethodBeat.o(119858);
   }
@@ -58,9 +60,9 @@ public final class StoryFavAlbumUI
   public StoryFavAlbumUI()
   {
     AppMethodBeat.i(119857);
-    this.lhM = "";
-    this.zFs = new ArrayList();
-    this.dfZ = true;
+    this.lEN = "";
+    this.AWR = new ArrayList();
+    this.drv = true;
     AppMethodBeat.o(119857);
   }
   
@@ -69,10 +71,10 @@ public final class StoryFavAlbumUI
     return 2131495649;
   }
   
-  public final void j(List<j> paramList, boolean paramBoolean)
+  public final void k(List<j> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(119855);
-    d.g.b.k.h(paramList, "datas");
+    p.h(paramList, "datas");
     int i;
     if (!((Collection)paramList).isEmpty()) {
       i = 1;
@@ -80,26 +82,26 @@ public final class StoryFavAlbumUI
     Object localObject1;
     while ((i != 0) || (!paramBoolean))
     {
-      this.zFs.clear();
-      this.zFs.addAll((Collection)paramList);
-      localObject1 = this.zFt;
+      this.AWR.clear();
+      this.AWR.addAll((Collection)paramList);
+      localObject1 = this.AWS;
       if (localObject1 != null)
       {
-        paramBoolean = this.dfZ;
-        d.g.b.k.h(paramList, "favoriteStory");
-        ac.i(((StoryFavoritePanel)localObject1).TAG, "updateFavStory " + paramList.size());
-        Object localObject2 = ((StoryFavoritePanel)localObject1).zFE;
+        paramBoolean = this.drv;
+        p.h(paramList, "favoriteStory");
+        ad.i(((StoryFavoritePanel)localObject1).TAG, "updateFavStory " + paramList.size());
+        Object localObject2 = ((StoryFavoritePanel)localObject1).AXd;
         if (localObject2 != null) {
           ((TextView)localObject2).setVisibility(8);
         }
-        localObject2 = ((StoryFavoritePanel)localObject1).zFF;
+        localObject2 = ((StoryFavoritePanel)localObject1).AXe;
         if (localObject2 != null) {
           ((RecyclerView)localObject2).setVisibility(0);
         }
-        ((StoryFavoritePanel)localObject1).dfZ = paramBoolean;
-        ((StoryFavoritePanel)localObject1).zFI.clear();
-        if ((paramBoolean) && (((StoryFavoritePanel)localObject1).fromScene != StoryFavoritePanel.zFP)) {
-          ((StoryFavoritePanel)localObject1).zFI.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).zFA));
+        ((StoryFavoritePanel)localObject1).drv = paramBoolean;
+        ((StoryFavoritePanel)localObject1).AXh.clear();
+        if ((paramBoolean) && (((StoryFavoritePanel)localObject1).fromScene != StoryFavoritePanel.AXo)) {
+          ((StoryFavoritePanel)localObject1).AXh.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).AWZ));
         }
         paramList = ((Iterable)paramList).iterator();
         for (;;)
@@ -107,33 +109,33 @@ public final class StoryFavAlbumUI
           if (paramList.hasNext())
           {
             localObject2 = (j)paramList.next();
-            ((StoryFavoritePanel)localObject1).zFI.add(new StoryFavoritePanel.c((j)localObject2, ((StoryFavoritePanel)localObject1).zFB));
+            ((StoryFavoritePanel)localObject1).AXh.add(new StoryFavoritePanel.c((j)localObject2, ((StoryFavoritePanel)localObject1).AXa));
             continue;
             i = 0;
             break;
           }
         }
-        ((StoryFavoritePanel)localObject1).zFI.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).wru));
-        ((StoryFavoritePanel)localObject1).zFG.notifyDataSetChanged();
+        ((StoryFavoritePanel)localObject1).AXh.add(new StoryFavoritePanel.c(new j(), ((StoryFavoritePanel)localObject1).xzl));
+        ((StoryFavoritePanel)localObject1).AXf.notifyDataSetChanged();
         AppMethodBeat.o(119855);
         return;
       }
       AppMethodBeat.o(119855);
       return;
     }
-    this.zFs.clear();
-    paramList = this.ijF;
+    this.AWR.clear();
+    paramList = this.iCW;
     if (paramList != null) {
       paramList.setVisibility(8);
     }
-    paramList = this.zFt;
+    paramList = this.AWS;
     if (paramList != null)
     {
       localObject1 = getContext();
-      d.g.b.k.g(localObject1, "context");
+      p.g(localObject1, "context");
       localObject1 = ((AppCompatActivity)localObject1).getResources().getString(2131764202);
-      d.g.b.k.g(localObject1, "context.resources.getStr…album_favorite_empty_tip)");
-      paramList.axk((String)localObject1);
+      p.g(localObject1, "context.resources.getStr…album_favorite_empty_tip)");
+      paramList.aCo((String)localObject1);
       AppMethodBeat.o(119855);
       return;
     }
@@ -157,95 +159,95 @@ public final class StoryFavAlbumUI
     {
       paramBundle = "";
     }
-    this.lhM = paramBundle;
-    ac.i(TAG, "initViews username=" + this.lhM);
-    paramBundle = g.agR().agA().get(2);
+    this.lEN = paramBundle;
+    ad.i(TAG, "initViews username=" + this.lEN);
+    paramBundle = g.ajC().ajl().get(2);
     if (paramBundle == null)
     {
       paramBundle = new v("null cannot be cast to non-null type kotlin.String");
       AppMethodBeat.o(119852);
       throw paramBundle;
     }
-    this.dfZ = bs.lr((String)paramBundle, this.lhM);
-    if (this.dfZ)
+    this.drv = bt.lQ((String)paramBundle, this.lEN);
+    if (this.drv)
     {
       setMMTitle(2131764203);
       setBackBtn((MenuItem.OnMenuItemClickListener)new StoryFavAlbumUI.b(this));
-      this.zFu = ((a.a)new com.tencent.mm.plugin.story.g.k((a.b)this));
-      paramBundle = this.zFu;
+      this.AWT = ((a.a)new com.tencent.mm.plugin.story.g.k((a.b)this));
+      paramBundle = this.AWT;
       if (paramBundle == null) {
-        d.g.b.k.aVY("mPresenter");
+        p.bcb("mPresenter");
       }
-      paramBundle.onCreate(this.lhM);
-      this.ijF = ((TextView)findViewById(2131296567));
-      if (this.dfZ) {
+      paramBundle.onCreate(this.lEN);
+      this.iCW = ((TextView)findViewById(2131296567));
+      if (this.drv) {
         break label508;
       }
-      paramBundle = this.ijF;
+      paramBundle = this.iCW;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
     }
     for (;;)
     {
-      this.zFt = ((StoryFavoritePanel)findViewById(2131296607));
-      paramBundle = this.zFt;
+      this.AWS = ((StoryFavoritePanel)findViewById(2131296607));
+      paramBundle = this.AWS;
       if (paramBundle != null)
       {
-        localObject = StoryFavoritePanel.zFQ;
-        paramBundle.setup(StoryFavoritePanel.dZx());
+        localObject = StoryFavoritePanel.AXp;
+        paramBundle.setup(StoryFavoritePanel.elM());
       }
-      paramBundle = this.zFt;
+      paramBundle = this.AWS;
       if (paramBundle != null) {
-        paramBundle.setMOnAddItemClickListener((b)new StoryFavAlbumUI.d(this));
+        paramBundle.setMOnAddItemClickListener((b)new d(this));
       }
-      paramBundle = this.zFt;
+      paramBundle = this.AWS;
       if (paramBundle != null) {
         paramBundle.setMOnFavItemClickListener((m)new e(this));
       }
-      paramBundle = this.zFt;
+      paramBundle = this.AWS;
       if (paramBundle != null) {
         paramBundle.a((RecyclerView.m)new f(this));
       }
-      paramBundle = this.zFu;
+      paramBundle = this.AWT;
       if (paramBundle == null) {
-        d.g.b.k.aVY("mPresenter");
+        p.bcb("mPresenter");
       }
-      paramBundle.dUZ();
-      paramBundle = this.zFu;
+      paramBundle.eho();
+      paramBundle = this.AWT;
       if (paramBundle == null) {
-        d.g.b.k.aVY("mPresenter");
+        p.bcb("mPresenter");
       }
-      paramBundle.dVa();
+      paramBundle.ehp();
       AppMethodBeat.o(119852);
       return;
-      paramBundle = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-      d.g.b.k.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
-      paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramBundle).awB().aNt(this.lhM);
+      paramBundle = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+      p.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
+      paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).azp().Bf(this.lEN);
       localObject = (Context)getContext();
       if (paramBundle != null)
       {
-        paramBundle = paramBundle.aaS();
+        paramBundle = paramBundle.adv();
         if (paramBundle == null) {}
       }
       for (paramBundle = (CharSequence)paramBundle;; paramBundle = (CharSequence)"")
       {
         View localView = findViewById(16908308);
-        d.g.b.k.g(localView, "findViewById<TextView>(android.R.id.text1)");
+        p.g(localView, "findViewById<TextView>(android.R.id.text1)");
         paramBundle = com.tencent.mm.pluginsdk.ui.span.k.b((Context)localObject, paramBundle, ((TextView)localView).getTextSize());
         setMMTitle(paramBundle + getString(2131764204));
         break;
       }
       label508:
-      paramBundle = this.ijF;
+      paramBundle = this.iCW;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.ijF;
+      paramBundle = this.iCW;
       if (paramBundle != null) {
         paramBundle.setText((CharSequence)Html.fromHtml(getResources().getString(2131764197)));
       }
-      paramBundle = this.ijF;
+      paramBundle = this.iCW;
       if (paramBundle != null) {
         paramBundle.setOnClickListener((View.OnClickListener)new StoryFavAlbumUI.c(this));
       }
@@ -256,11 +258,11 @@ public final class StoryFavAlbumUI
   {
     AppMethodBeat.i(119854);
     super.onDestroy();
-    a.a locala = this.zFu;
+    a.a locala = this.AWT;
     if (locala == null) {
-      d.g.b.k.aVY("mPresenter");
+      p.bcb("mPresenter");
     }
-    locala.dPE();
+    locala.ebV();
     AppMethodBeat.o(119854);
   }
   
@@ -268,11 +270,11 @@ public final class StoryFavAlbumUI
   {
     AppMethodBeat.i(119853);
     super.onResume();
-    a.a locala = this.zFu;
+    a.a locala = this.AWT;
     if (locala == null) {
-      d.g.b.k.aVY("mPresenter");
+      p.bcb("mPresenter");
     }
-    locala.dVa();
+    locala.ehp();
     AppMethodBeat.o(119853);
   }
   
@@ -282,23 +284,34 @@ public final class StoryFavAlbumUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void rC(boolean paramBoolean)
+  public final void si(boolean paramBoolean)
   {
     AppMethodBeat.i(119856);
-    StoryFavoritePanel localStoryFavoritePanel = this.zFt;
+    StoryFavoritePanel localStoryFavoritePanel = this.AWS;
     if (localStoryFavoritePanel != null)
     {
-      localStoryFavoritePanel.rC(paramBoolean);
+      localStoryFavoritePanel.si(paramBoolean);
       AppMethodBeat.o(119856);
       return;
     }
     AppMethodBeat.o(119856);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "storyFavInfo", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "position", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "invoke"})
+  static final class d
+    extends q
+    implements b<StoryFavoritePanel.c, z>
+  {
+    d(StoryFavAlbumUI paramStoryFavAlbumUI)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "storyFavInfo", "Lcom/tencent/mm/plugin/story/ui/album/StoryFavoritePanel$StoryFavInfo;", "position", "", "invoke"})
   static final class e
-    extends d.g.b.l
-    implements m<StoryFavoritePanel.c, Integer, y>
+    extends q
+    implements m<StoryFavoritePanel.c, Integer, z>
   {
     e(StoryFavAlbumUI paramStoryFavAlbumUI)
     {
@@ -306,14 +319,14 @@ public final class StoryFavAlbumUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI$initViews$4", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/story/ui/album/StoryFavAlbumUI$initViews$4", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
   public static final class f
     extends e
   {
-    public final void Xa()
+    public final void Zt()
     {
       AppMethodBeat.i(119851);
-      StoryFavAlbumUI.d(this.zFw).dUY();
+      StoryFavAlbumUI.d(this.AWV).ehn();
       AppMethodBeat.o(119851);
     }
   }

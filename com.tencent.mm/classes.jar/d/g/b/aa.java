@@ -1,303 +1,54 @@
 package d.g.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.d;
-import d.g.a.e;
-import d.g.a.h;
-import d.g.a.j;
-import d.g.a.l;
-import d.g.a.m;
-import d.g.a.n;
-import d.g.a.o;
-import d.g.a.p;
-import d.g.a.q;
-import d.g.a.r;
-import d.g.a.s;
-import d.g.a.t;
-import d.g.a.u;
-import d.g.a.v;
-import d.g.a.w;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import d.l.b;
+import d.l.e;
 
 public class aa
 {
-  public static Iterable eM(Object paramObject)
+  public e a(n paramn)
   {
-    AppMethodBeat.i(128964);
-    if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.c))) {
-      i(paramObject, "kotlin.collections.MutableIterable");
-    }
-    paramObject = eN(paramObject);
-    AppMethodBeat.o(128964);
-    return paramObject;
+    return paramn;
   }
   
-  private static Iterable eN(Object paramObject)
+  public d.l.h a(t paramt)
   {
-    AppMethodBeat.i(128965);
-    try
-    {
-      paramObject = (Iterable)paramObject;
-      AppMethodBeat.o(128965);
-      return paramObject;
-    }
-    catch (ClassCastException paramObject)
-    {
-      paramObject = (ClassCastException)o(paramObject);
-      AppMethodBeat.o(128965);
-      throw paramObject;
-    }
+    return paramt;
   }
   
-  public static Collection eO(Object paramObject)
+  public d.l.m a(w paramw)
   {
-    AppMethodBeat.i(128966);
-    if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.b))) {
-      i(paramObject, "kotlin.collections.MutableCollection");
-    }
-    paramObject = eP(paramObject);
-    AppMethodBeat.o(128966);
-    return paramObject;
+    return paramw;
   }
   
-  private static Collection eP(Object paramObject)
+  public String a(m paramm)
   {
-    AppMethodBeat.i(128967);
-    try
+    AppMethodBeat.i(128961);
+    paramm = paramm.getClass().getGenericInterfaces()[0].toString();
+    if (paramm.startsWith("kotlin.jvm.functions."))
     {
-      paramObject = (Collection)paramObject;
-      AppMethodBeat.o(128967);
-      return paramObject;
+      paramm = paramm.substring(21);
+      AppMethodBeat.o(128961);
+      return paramm;
     }
-    catch (ClassCastException paramObject)
-    {
-      paramObject = (ClassCastException)o(paramObject);
-      AppMethodBeat.o(128967);
-      throw paramObject;
-    }
+    AppMethodBeat.o(128961);
+    return paramm;
   }
   
-  public static Set eQ(Object paramObject)
+  public String a(q paramq)
   {
-    AppMethodBeat.i(128968);
-    if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.g))) {
-      i(paramObject, "kotlin.collections.MutableSet");
-    }
-    paramObject = eR(paramObject);
-    AppMethodBeat.o(128968);
-    return paramObject;
+    AppMethodBeat.i(128960);
+    paramq = a(paramq);
+    AppMethodBeat.o(128960);
+    return paramq;
   }
   
-  private static Set eR(Object paramObject)
+  public b bp(Class paramClass)
   {
-    AppMethodBeat.i(128969);
-    try
-    {
-      paramObject = (Set)paramObject;
-      AppMethodBeat.o(128969);
-      return paramObject;
-    }
-    catch (ClassCastException paramObject)
-    {
-      paramObject = (ClassCastException)o(paramObject);
-      AppMethodBeat.o(128969);
-      throw paramObject;
-    }
-  }
-  
-  public static Map eS(Object paramObject)
-  {
-    AppMethodBeat.i(177350);
-    if (((paramObject instanceof d.g.b.a.a)) && (!(paramObject instanceof d.g.b.a.f))) {
-      i(paramObject, "kotlin.collections.MutableMap");
-    }
-    paramObject = eT(paramObject);
-    AppMethodBeat.o(177350);
-    return paramObject;
-  }
-  
-  private static Map eT(Object paramObject)
-  {
-    AppMethodBeat.i(177351);
-    try
-    {
-      paramObject = (Map)paramObject;
-      AppMethodBeat.o(177351);
-      return paramObject;
-    }
-    catch (ClassCastException paramObject)
-    {
-      paramObject = (ClassCastException)o(paramObject);
-      AppMethodBeat.o(177351);
-      throw paramObject;
-    }
-  }
-  
-  public static Object eU(Object paramObject)
-  {
-    AppMethodBeat.i(128970);
-    if (paramObject != null)
-    {
-      if (!(paramObject instanceof d.c)) {
-        break label355;
-      }
-      if (!(paramObject instanceof i)) {
-        break label57;
-      }
-      i = ((i)paramObject).getArity();
-      if (i != 2) {
-        break label355;
-      }
-    }
-    label57:
-    label355:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        i(paramObject, "kotlin.jvm.functions.Function2");
-      }
-      AppMethodBeat.o(128970);
-      return paramObject;
-      if ((paramObject instanceof d.g.a.a))
-      {
-        i = 0;
-        break;
-      }
-      if ((paramObject instanceof d.g.a.b))
-      {
-        i = 1;
-        break;
-      }
-      if ((paramObject instanceof m))
-      {
-        i = 2;
-        break;
-      }
-      if ((paramObject instanceof q))
-      {
-        i = 3;
-        break;
-      }
-      if ((paramObject instanceof r))
-      {
-        i = 4;
-        break;
-      }
-      if ((paramObject instanceof s))
-      {
-        i = 5;
-        break;
-      }
-      if ((paramObject instanceof t))
-      {
-        i = 6;
-        break;
-      }
-      if ((paramObject instanceof u))
-      {
-        i = 7;
-        break;
-      }
-      if ((paramObject instanceof v))
-      {
-        i = 8;
-        break;
-      }
-      if ((paramObject instanceof w))
-      {
-        i = 9;
-        break;
-      }
-      if ((paramObject instanceof d.g.a.c))
-      {
-        i = 10;
-        break;
-      }
-      if ((paramObject instanceof d))
-      {
-        i = 11;
-        break;
-      }
-      if ((paramObject instanceof e))
-      {
-        i = 12;
-        break;
-      }
-      if ((paramObject instanceof d.g.a.f))
-      {
-        i = 13;
-        break;
-      }
-      if ((paramObject instanceof d.g.a.g))
-      {
-        i = 14;
-        break;
-      }
-      if ((paramObject instanceof h))
-      {
-        i = 15;
-        break;
-      }
-      if ((paramObject instanceof d.g.a.i))
-      {
-        i = 16;
-        break;
-      }
-      if ((paramObject instanceof j))
-      {
-        i = 17;
-        break;
-      }
-      if ((paramObject instanceof d.g.a.k))
-      {
-        i = 18;
-        break;
-      }
-      if ((paramObject instanceof l))
-      {
-        i = 19;
-        break;
-      }
-      if ((paramObject instanceof n))
-      {
-        i = 20;
-        break;
-      }
-      if ((paramObject instanceof o))
-      {
-        i = 21;
-        break;
-      }
-      if ((paramObject instanceof p))
-      {
-        i = 22;
-        break;
-      }
-      i = -1;
-      break;
-    }
-  }
-  
-  private static void i(Object paramObject, String paramString)
-  {
-    AppMethodBeat.i(128963);
-    if (paramObject == null) {}
-    for (paramObject = "null";; paramObject = paramObject.getClass().getName())
-    {
-      paramObject = (ClassCastException)o(new ClassCastException(paramObject + " cannot be cast to " + paramString));
-      AppMethodBeat.o(128963);
-      throw paramObject;
-    }
-  }
-  
-  private static <T extends Throwable> T o(T paramT)
-  {
-    AppMethodBeat.i(128962);
-    paramT = k.b(paramT, aa.class.getName());
-    AppMethodBeat.o(128962);
-    return paramT;
+    AppMethodBeat.i(128959);
+    paramClass = new h(paramClass);
+    AppMethodBeat.o(128959);
+    return paramClass;
   }
 }
 

@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.pluginsdk.ui.d;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.plugin.patmsg.ui.AvatarPatTipImageView;
+import com.tencent.mm.pluginsdk.ui.e;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.util.ArrayList;
@@ -19,17 +20,17 @@ import java.util.List;
 public class ContactListExpandPreference
   extends Preference
 {
-  private int DrH;
-  public q DrI;
-  public s DrJ;
+  private int EWL;
+  public q EWM;
+  public s EWN;
   
   public ContactListExpandPreference(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(152211);
-    this.DrH = -1;
+    this.EWL = -1;
     if (paramInt == 0) {
-      eNJ();
+      fcI();
     }
     for (;;)
     {
@@ -38,8 +39,8 @@ public class ContactListExpandPreference
       return;
       if (paramInt == 1)
       {
-        this.DrH = 1;
-        this.DrJ = new s();
+        this.EWL = 1;
+        this.EWN = new s();
       }
     }
   }
@@ -48,8 +49,8 @@ public class ContactListExpandPreference
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(152212);
-    this.DrH = -1;
-    eNJ();
+    this.EWL = -1;
+    fcI();
     setLayoutResource(2131494818);
     AppMethodBeat.o(152212);
   }
@@ -58,26 +59,35 @@ public class ContactListExpandPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(152213);
-    this.DrH = -1;
-    eNJ();
+    this.EWL = -1;
+    fcI();
     setLayoutResource(2131494818);
     AppMethodBeat.o(152213);
   }
   
-  private void eNJ()
+  private void fcI()
   {
     AppMethodBeat.i(152214);
-    this.DrH = 0;
-    this.DrI = new q(this.mContext);
+    this.EWL = 0;
+    this.EWM = new q(this.mContext);
     AppMethodBeat.o(152214);
   }
   
-  public final boolean WY(int paramInt)
+  public final void A(String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(152218);
+    if (this.EWM != null) {
+      this.EWM.A(paramString, paramList);
+    }
+    AppMethodBeat.o(152218);
+  }
+  
+  public final boolean YU(int paramInt)
   {
     AppMethodBeat.i(152220);
-    if (this.DrI != null)
+    if (this.EWM != null)
     {
-      boolean bool = this.DrI.DqY.WY(paramInt);
+      boolean bool = this.EWM.EWc.YU(paramInt);
       AppMethodBeat.o(152220);
       return bool;
     }
@@ -85,12 +95,12 @@ public class ContactListExpandPreference
     return true;
   }
   
-  public final boolean Xa(int paramInt)
+  public final boolean YW(int paramInt)
   {
     AppMethodBeat.i(152221);
-    if (this.DrI != null)
+    if (this.EWM != null)
     {
-      boolean bool = this.DrI.DqY.Xa(paramInt);
+      boolean bool = this.EWM.EWc.YW(paramInt);
       AppMethodBeat.o(152221);
       return bool;
     }
@@ -98,12 +108,12 @@ public class ContactListExpandPreference
     return false;
   }
   
-  public final String Xb(int paramInt)
+  public final String YX(int paramInt)
   {
     AppMethodBeat.i(152223);
-    if ((this.DrI != null) && (this.DrI.DqY.Xa(paramInt)))
+    if ((this.EWM != null) && (this.EWM.EWc.YW(paramInt)))
     {
-      String str = ((ai)this.DrI.DqY.getItem(paramInt)).field_username;
+      String str = ((am)this.EWM.EWc.getItem(paramInt)).field_username;
       AppMethodBeat.o(152223);
       return str;
     }
@@ -111,12 +121,12 @@ public class ContactListExpandPreference
     return "";
   }
   
-  public final String Xc(int paramInt)
+  public final String YY(int paramInt)
   {
     AppMethodBeat.i(152224);
-    if ((this.DrI != null) && (this.DrI.DqY.Xa(paramInt)))
+    if ((this.EWM != null) && (this.EWM.EWc.YW(paramInt)))
     {
-      String str = ((ai)this.DrI.DqY.getItem(paramInt)).field_nickname;
+      String str = ((am)this.EWM.EWc.getItem(paramInt)).field_nickname;
       AppMethodBeat.o(152224);
       return str;
     }
@@ -124,12 +134,12 @@ public class ContactListExpandPreference
     return "";
   }
   
-  public final String Xd(int paramInt)
+  public final String YZ(int paramInt)
   {
     AppMethodBeat.i(152225);
-    if ((this.DrI != null) && (this.DrI.DqY.Xa(paramInt)))
+    if ((this.EWM != null) && (this.EWM.EWc.YW(paramInt)))
     {
-      String str = ((ai)this.DrI.DqY.getItem(paramInt)).field_conRemark;
+      String str = ((am)this.EWM.EWc.getItem(paramInt)).field_conRemark;
       AppMethodBeat.o(152225);
       return str;
     }
@@ -139,105 +149,98 @@ public class ContactListExpandPreference
   
   public final void a(a parama)
   {
-    if (this.DrI != null) {
-      this.DrI.zpu = parama;
+    if (this.EWM != null) {
+      this.EWM.AHo = parama;
     }
   }
   
   public final void a(s.b paramb)
   {
-    if (this.DrI != null) {
-      this.DrI.DqZ = paramb;
+    if (this.EWM != null) {
+      this.EWM.EWd = paramb;
     }
   }
   
-  public final void a(d paramd)
+  public final void a(e parame)
   {
-    if (this.DrI != null) {
-      this.DrI.DqY.Drp = paramd;
+    if (this.EWM != null) {
+      this.EWM.EWc.EWt = parame;
     }
   }
   
   public final void a(f paramf, String paramString)
   {
     AppMethodBeat.i(152216);
-    if (this.DrI != null) {
-      this.DrI.a(paramf, paramString);
+    if (this.EWM != null) {
+      this.EWM.a(paramf, paramString);
     }
     AppMethodBeat.o(152216);
   }
   
-  public final void aHs(String paramString)
+  public final void aMV(String paramString)
   {
-    if (this.DrI != null) {
-      this.DrI.DqY.Drw = paramString;
+    if (this.EWM != null) {
+      this.EWM.EWc.EWA = paramString;
     }
   }
   
-  public final void aQ(ArrayList<ai> paramArrayList)
+  public final void aN(ArrayList<am> paramArrayList)
   {
     AppMethodBeat.i(152219);
-    if (this.DrI != null) {
-      this.DrI.aQ(paramArrayList);
+    if (this.EWM != null) {
+      this.EWM.aN(paramArrayList);
     }
     AppMethodBeat.o(152219);
   }
   
-  public final void eNE()
-  {
-    AppMethodBeat.i(152227);
-    if (this.DrI != null) {
-      this.DrI.eNE();
-    }
-    AppMethodBeat.o(152227);
-  }
-  
-  public final void eNI()
-  {
-    AppMethodBeat.i(152226);
-    if (this.DrI != null) {
-      this.DrI.DqY.eNI();
-    }
-    AppMethodBeat.o(152226);
-  }
-  
-  public final void eNK()
-  {
-    if (this.DrI != null) {
-      this.DrI.DqY.DrA = false;
-    }
-  }
-  
-  public final ContactListExpandPreference eNL()
-  {
-    if (this.DrI != null) {
-      this.DrI.DqY.Drs = false;
-    }
-    return this;
-  }
-  
-  public final void eb(List<String> paramList)
+  public final void eo(List<String> paramList)
   {
     AppMethodBeat.i(152229);
-    if (this.DrI != null) {
-      this.DrI.DqY.eb(paramList);
+    if (this.EWM != null) {
+      this.EWM.EWc.eo(paramList);
     }
     AppMethodBeat.o(152229);
   }
   
-  public final void gS(List<String> paramList)
+  public final void fcD()
   {
-    AppMethodBeat.i(210359);
-    y(null, paramList);
-    AppMethodBeat.o(210359);
+    AppMethodBeat.i(152227);
+    if (this.EWM != null) {
+      this.EWM.fcD();
+    }
+    AppMethodBeat.o(152227);
+  }
+  
+  public final void fcH()
+  {
+    AppMethodBeat.i(152226);
+    if (this.EWM != null) {
+      this.EWM.EWc.fcH();
+    }
+    AppMethodBeat.o(152226);
+  }
+  
+  public final void fcJ()
+  {
+    if (this.EWM != null) {
+      this.EWM.EWc.EWE = false;
+    }
+  }
+  
+  public final ContactListExpandPreference fcK()
+  {
+    if (this.EWM != null) {
+      this.EWM.EWc.EWw = false;
+    }
+    return this;
   }
   
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(152222);
-    if ((this.DrI != null) && (this.DrI.DqY.Xa(paramInt)))
+    if ((this.EWM != null) && (this.EWM.EWc.YW(paramInt)))
     {
-      Object localObject = this.DrI.DqY.getItem(paramInt);
+      Object localObject = this.EWM.EWc.getItem(paramInt);
       AppMethodBeat.o(152222);
       return localObject;
     }
@@ -248,8 +251,8 @@ public class ContactListExpandPreference
   public final void notifyChanged()
   {
     AppMethodBeat.i(152217);
-    if (this.DrI != null) {
-      this.DrI.bzd();
+    if (this.EWM != null) {
+      this.EWM.bDh();
     }
     AppMethodBeat.o(152217);
   }
@@ -258,108 +261,112 @@ public class ContactListExpandPreference
   {
     AppMethodBeat.i(152215);
     ViewGroup localViewGroup;
-    if (this.DrH == 1)
+    if (this.EWL == 1)
     {
-      s locals = this.DrJ;
-      label77:
+      s locals = this.EWN;
+      locals.kBS = paramView;
+      label83:
       int i;
-      label163:
-      label214:
-      View localView;
-      label252:
+      label169:
+      label220:
+      Object localObject;
+      label259:
       LinearLayout.LayoutParams localLayoutParams;
       int j;
       if (paramView.getId() == 2131298675)
       {
         localViewGroup = (ViewGroup)paramView;
         if (locals.row != 0) {
-          break label450;
+          break label501;
         }
         localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getResources().getDimensionPixelSize(2131165489), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(2131165500));
-        if (((locals.DqY.Dro % r.Drh != r.Drh - 1) && (locals.DqY.Dro % r.Drh != 0)) || (!locals.ftK) || (locals.row != locals.DqY.getCount() / r.Drh - 1)) {
-          break label543;
+        if (((locals.EWc.EWs % r.EWl != r.EWl - 1) && (locals.EWc.EWs % r.EWl != 0)) || (!locals.fMM) || (locals.row != locals.EWc.getCount() / r.EWl - 1)) {
+          break label594;
         }
         localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), 0);
-        if (locals.DqY == null) {
-          break label693;
+        if (locals.EWc == null) {
+          break label744;
         }
-        localViewGroup.setOnClickListener(locals.iu);
-        if (localViewGroup.getChildCount() > r.Drh)
+        localViewGroup.setOnClickListener(locals.km);
+        if (localViewGroup.getChildCount() > r.EWl)
         {
-          localViewGroup.removeViews(0, localViewGroup.getChildCount() - r.Drh);
+          localViewGroup.removeViews(0, localViewGroup.getChildCount() - r.EWl);
           localViewGroup.requestLayout();
         }
         i = 0;
-        if (i >= locals.DrK) {
-          break label660;
+        if (i >= locals.EWO) {
+          break label711;
         }
         if (localViewGroup.getChildAt(i) != null) {
-          break label626;
+          break label677;
         }
-        localView = View.inflate(localViewGroup.getContext(), 2131495276, null);
-        localViewGroup.addView(localView);
+        localObject = View.inflate(localViewGroup.getContext(), 2131495276, null);
+        localViewGroup.addView((View)localObject);
         localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         localLayoutParams.gravity = 49;
-        if (r.Drh != 4) {
-          break label637;
+        if (r.EWl != 4) {
+          break label688;
         }
         j = localViewGroup.getResources().getDimensionPixelSize(2131165516);
         localLayoutParams.setMargins(j, 0, j, 0);
       }
       for (;;)
       {
-        if ((!locals.DqY.eNG()) && (locals.DqY.Dro == 1))
+        if ((!locals.EWc.fcF()) && (locals.EWc.EWs == 1))
         {
           j = localViewGroup.getResources().getDimensionPixelSize(2131165198);
           localLayoutParams.setMargins(j, 0, j, 0);
         }
-        localView.setLayoutParams(localLayoutParams);
-        j = locals.row * locals.DrK + i;
-        locals.DqY.getView(j, localView, localViewGroup);
-        if (locals.Dre != null) {
-          localView.setOnClickListener(new s.3(locals, localViewGroup, j));
+        ((View)localObject).setLayoutParams(localLayoutParams);
+        j = locals.row * locals.EWO + i;
+        locals.EWc.getView(j, (View)localObject, localViewGroup);
+        if (locals.EWi != null) {
+          ((View)localObject).setOnClickListener(new s.3(locals, localViewGroup, j));
         }
-        if (locals.DrL != null) {
-          localView.setOnLongClickListener(new s.4(locals, localViewGroup, j));
+        if (locals.EWP != null) {
+          ((View)localObject).setOnLongClickListener(new s.4(locals, localViewGroup, j));
         }
+        localObject = (AvatarPatTipImageView)((View)localObject).findViewById(2131304237);
+        ((AvatarPatTipImageView)localObject).setOnDoubleClickListener(new s.5(locals));
+        ((AvatarPatTipImageView)localObject).setOnClickListener(new s.6(locals, localViewGroup, j));
         i += 1;
-        break label214;
+        break label220;
         localViewGroup = (ViewGroup)paramView.findViewById(2131298675);
         break;
-        label450:
-        if (locals.row == locals.DqY.getCount() / r.Drh - 1)
+        label501:
+        if (locals.row == locals.EWc.getCount() / r.EWl - 1)
         {
           localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(2131165489));
-          break label77;
+          break label83;
         }
         localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getResources().getDimensionPixelSize(2131165500), localViewGroup.getPaddingRight(), localViewGroup.getResources().getDimensionPixelSize(2131165500));
-        break label77;
-        label543:
-        if ((locals.ftK) || (locals.DqY.Dro % r.Drh != 0) || (locals.row != locals.DqY.getCount() / r.Drh - 1)) {
-          break label163;
+        break label83;
+        label594:
+        if ((locals.fMM) || (locals.EWc.EWs % r.EWl != 0) || (locals.row != locals.EWc.getCount() / r.EWl - 1)) {
+          break label169;
         }
         localViewGroup.setPadding(localViewGroup.getPaddingLeft(), localViewGroup.getPaddingTop(), localViewGroup.getPaddingRight(), (int)localViewGroup.getContext().getResources().getDimension(2131165568));
-        break label163;
-        label626:
-        localView = localViewGroup.getChildAt(i);
-        break label252;
-        label637:
+        break label169;
+        label677:
+        localObject = localViewGroup.getChildAt(i);
+        break label259;
+        label688:
         j = localViewGroup.getResources().getDimensionPixelSize(2131165500);
         localLayoutParams.setMargins(j, 0, j, 0);
       }
-      label660:
-      if ((!locals.DqY.eNG()) && (locals.DqY.Dro <= 1)) {
-        break label704;
+      label711:
+      if ((!locals.EWc.fcF()) && (locals.EWc.EWs <= 1)) {
+        break label755;
       }
       ((LinearLayout)localViewGroup).setGravity(17);
     }
     for (;;)
     {
-      label693:
+      label744:
       super.onBindView(paramView);
       AppMethodBeat.o(152215);
       return;
-      label704:
+      label755:
       ((LinearLayout)localViewGroup).setGravity(19);
     }
   }
@@ -367,48 +374,49 @@ public class ContactListExpandPreference
   public final void refresh()
   {
     AppMethodBeat.i(152228);
-    if (this.DrI != null) {
-      this.DrI.DqY.WJ();
+    if (this.EWM != null) {
+      this.EWM.EWc.Zd();
     }
     AppMethodBeat.o(152228);
   }
   
-  public final ContactListExpandPreference vc(boolean paramBoolean)
+  public final void vN(boolean paramBoolean)
   {
-    if (this.DrI != null) {
-      this.DrI.DqY.Drr = paramBoolean;
+    AppMethodBeat.i(214482);
+    if (this.EWM != null) {
+      this.EWM.vN(paramBoolean);
+    }
+    if (this.EWN != null) {
+      this.EWN.EWb = paramBoolean;
+    }
+    AppMethodBeat.o(214482);
+  }
+  
+  public final ContactListExpandPreference vO(boolean paramBoolean)
+  {
+    if (this.EWM != null) {
+      this.EWM.EWc.EWv = paramBoolean;
     }
     return this;
   }
   
-  public final ContactListExpandPreference vd(boolean paramBoolean)
+  public final ContactListExpandPreference vP(boolean paramBoolean)
   {
-    if (this.DrI != null) {
-      this.DrI.DqY.Drq = paramBoolean;
+    if (this.EWM != null) {
+      this.EWM.EWc.EWu = paramBoolean;
     }
     return this;
-  }
-  
-  public final void y(String paramString, List<String> paramList)
-  {
-    AppMethodBeat.i(152218);
-    if (this.DrI != null) {
-      this.DrI.y(paramString, paramList);
-    }
-    AppMethodBeat.o(152218);
   }
   
   public static abstract interface a
   {
-    public abstract void a(ViewGroup paramViewGroup, View paramView, int paramInt);
+    public abstract void YJ();
     
-    public abstract void b(ViewGroup paramViewGroup, View paramView, int paramInt);
+    public abstract void e(ViewGroup paramViewGroup, int paramInt);
     
-    public abstract void c(ViewGroup paramViewGroup, View paramView, int paramInt);
+    public abstract void lc(int paramInt);
     
-    public abstract void d(ViewGroup paramViewGroup, View paramView);
-    
-    public abstract void e(ViewGroup paramViewGroup, View paramView);
+    public abstract void ld(int paramInt);
   }
 }
 

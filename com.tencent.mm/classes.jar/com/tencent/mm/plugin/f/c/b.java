@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.f.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
 
 public final class b
   implements Runnable
 {
-  private bo cZc;
+  private bu dku;
   private int opType;
   
-  public b(bo parambo, int paramInt)
+  public b(bu parambu, int paramInt)
   {
     AppMethodBeat.i(22750);
-    this.cZc = parambo;
+    this.dku = parambu;
     this.opType = paramInt;
-    ac.d("MicroMsg.MsgEventTask", "%d msg id[%d %d] optype[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.cZc.field_msgId), Integer.valueOf(this.cZc.getType()), Integer.valueOf(this.opType) });
+    ad.d("MicroMsg.MsgEventTask", "%d msg id[%d %d] optype[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.dku.field_msgId), Integer.valueOf(this.dku.getType()), Integer.valueOf(this.opType) });
     AppMethodBeat.o(22750);
   }
   
@@ -26,11 +26,11 @@ public final class b
     switch (this.opType)
     {
     default: 
-      ac.w("MicroMsg.MsgEventTask", "%d unknow op type [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.opType) });
+      ad.w("MicroMsg.MsgEventTask", "%d unknow op type [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.opType) });
       AppMethodBeat.o(22751);
       return;
     }
-    com.tencent.mm.plugin.f.b.bOp().aa(this.cZc);
+    com.tencent.mm.plugin.f.b.bSU().ad(this.dku);
     AppMethodBeat.o(22751);
   }
 }

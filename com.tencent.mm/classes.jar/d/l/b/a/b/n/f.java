@@ -1,7 +1,7 @@
 package d.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.t;
 
 public abstract class f
@@ -21,19 +21,19 @@ public abstract class f
   
   public final String i(t paramt)
   {
-    k.h(paramt, "functionDescriptor");
+    p.h(paramt, "functionDescriptor");
     return b.a.a(this, paramt);
   }
   
   public static final class a
     extends f
   {
-    public static final a LNt;
+    public static final a NEo;
     
     static
     {
       AppMethodBeat.i(61298);
-      LNt = new a();
+      NEo = new a();
       AppMethodBeat.o(61298);
     }
     
@@ -45,8 +45,8 @@ public abstract class f
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61297);
-      k.h(paramt, "functionDescriptor");
-      if (paramt.fQQ() != null)
+      p.h(paramt, "functionDescriptor");
+      if (paramt.gio() != null)
       {
         AppMethodBeat.o(61297);
         return true;
@@ -59,12 +59,12 @@ public abstract class f
   public static final class b
     extends f
   {
-    public static final b LNu;
+    public static final b NEp;
     
     static
     {
       AppMethodBeat.i(61300);
-      LNu = new b();
+      NEp = new b();
       AppMethodBeat.o(61300);
     }
     
@@ -76,8 +76,8 @@ public abstract class f
     public final boolean h(t paramt)
     {
       AppMethodBeat.i(61299);
-      k.h(paramt, "functionDescriptor");
-      if ((paramt.fQQ() != null) || (paramt.fQP() != null))
+      p.h(paramt, "functionDescriptor");
+      if ((paramt.gio() != null) || (paramt.gin() != null))
       {
         AppMethodBeat.o(61299);
         return true;
@@ -89,7 +89,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.n.f
  * JD-Core Version:    0.7.0.1
  */

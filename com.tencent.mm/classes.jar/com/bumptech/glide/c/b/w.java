@@ -11,56 +11,56 @@ import java.security.MessageDigest;
 final class w
   implements h
 {
-  private static final f<Class<?>, byte[]> aGq;
-  private final b aAy;
-  private final h aEf;
-  private final h aEk;
-  private final com.bumptech.glide.c.j aEm;
-  private final Class<?> aGr;
-  private final m<?> aGs;
+  private static final f<Class<?>, byte[]> aIh;
+  private final b aCp;
+  private final h aFW;
+  private final h aGb;
+  private final com.bumptech.glide.c.j aGd;
+  private final Class<?> aIi;
+  private final m<?> aIj;
   private final int height;
   private final int width;
   
   static
   {
     AppMethodBeat.i(77055);
-    aGq = new f(50L);
+    aIh = new f(50L);
     AppMethodBeat.o(77055);
   }
   
   w(b paramb, h paramh1, h paramh2, int paramInt1, int paramInt2, m<?> paramm, Class<?> paramClass, com.bumptech.glide.c.j paramj)
   {
-    this.aAy = paramb;
-    this.aEf = paramh1;
-    this.aEk = paramh2;
+    this.aCp = paramb;
+    this.aFW = paramh1;
+    this.aGb = paramh2;
     this.width = paramInt1;
     this.height = paramInt2;
-    this.aGs = paramm;
-    this.aGr = paramClass;
-    this.aEm = paramj;
+    this.aIj = paramm;
+    this.aIi = paramClass;
+    this.aGd = paramj;
   }
   
   public final void a(MessageDigest paramMessageDigest)
   {
     AppMethodBeat.i(77053);
-    byte[] arrayOfByte3 = (byte[])this.aAy.n([B.class);
+    byte[] arrayOfByte3 = (byte[])this.aCp.n([B.class);
     ByteBuffer.wrap(arrayOfByte3).putInt(this.width).putInt(this.height).array();
-    this.aEk.a(paramMessageDigest);
-    this.aEf.a(paramMessageDigest);
+    this.aGb.a(paramMessageDigest);
+    this.aFW.a(paramMessageDigest);
     paramMessageDigest.update(arrayOfByte3);
-    if (this.aGs != null) {
-      this.aGs.a(paramMessageDigest);
+    if (this.aIj != null) {
+      this.aIj.a(paramMessageDigest);
     }
-    this.aEm.a(paramMessageDigest);
-    byte[] arrayOfByte2 = (byte[])aGq.get(this.aGr);
+    this.aGd.a(paramMessageDigest);
+    byte[] arrayOfByte2 = (byte[])aIh.get(this.aIi);
     byte[] arrayOfByte1 = arrayOfByte2;
     if (arrayOfByte2 == null)
     {
-      arrayOfByte1 = this.aGr.getName().getBytes(aDo);
-      aGq.put(this.aGr, arrayOfByte1);
+      arrayOfByte1 = this.aIi.getName().getBytes(aFf);
+      aIh.put(this.aIi, arrayOfByte1);
     }
     paramMessageDigest.update(arrayOfByte1);
-    this.aAy.put(arrayOfByte3);
+    this.aCp.put(arrayOfByte3);
     AppMethodBeat.o(77053);
   }
   
@@ -70,7 +70,7 @@ final class w
     if ((paramObject instanceof w))
     {
       paramObject = (w)paramObject;
-      if ((this.height == paramObject.height) && (this.width == paramObject.width) && (com.bumptech.glide.h.j.e(this.aGs, paramObject.aGs)) && (this.aGr.equals(paramObject.aGr)) && (this.aEf.equals(paramObject.aEf)) && (this.aEk.equals(paramObject.aEk)) && (this.aEm.equals(paramObject.aEm)))
+      if ((this.height == paramObject.height) && (this.width == paramObject.width) && (com.bumptech.glide.h.j.g(this.aIj, paramObject.aIj)) && (this.aIi.equals(paramObject.aIi)) && (this.aFW.equals(paramObject.aFW)) && (this.aGb.equals(paramObject.aGb)) && (this.aGd.equals(paramObject.aGd)))
       {
         AppMethodBeat.o(77051);
         return true;
@@ -85,13 +85,13 @@ final class w
   public final int hashCode()
   {
     AppMethodBeat.i(77052);
-    int j = ((this.aEf.hashCode() * 31 + this.aEk.hashCode()) * 31 + this.width) * 31 + this.height;
+    int j = ((this.aFW.hashCode() * 31 + this.aGb.hashCode()) * 31 + this.width) * 31 + this.height;
     int i = j;
-    if (this.aGs != null) {
-      i = j * 31 + this.aGs.hashCode();
+    if (this.aIj != null) {
+      i = j * 31 + this.aIj.hashCode();
     }
-    j = this.aGr.hashCode();
-    int k = this.aEm.hashCode();
+    j = this.aIi.hashCode();
+    int k = this.aGd.hashCode();
     AppMethodBeat.o(77052);
     return (i * 31 + j) * 31 + k;
   }
@@ -99,7 +99,7 @@ final class w
   public final String toString()
   {
     AppMethodBeat.i(77054);
-    String str = "ResourceCacheKey{sourceKey=" + this.aEf + ", signature=" + this.aEk + ", width=" + this.width + ", height=" + this.height + ", decodedResourceClass=" + this.aGr + ", transformation='" + this.aGs + '\'' + ", options=" + this.aEm + '}';
+    String str = "ResourceCacheKey{sourceKey=" + this.aFW + ", signature=" + this.aGb + ", width=" + this.width + ", height=" + this.height + ", decodedResourceClass=" + this.aIi + ", transformation='" + this.aIj + '\'' + ", options=" + this.aGd + '}';
     AppMethodBeat.o(77054);
     return str;
   }

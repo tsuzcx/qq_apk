@@ -8,7 +8,7 @@ import com.tencent.mm.cf.f;
 import com.tencent.mm.cf.f.a;
 import com.tencent.mm.cf.g;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
   implements com.tencent.mm.plugin.emoji.b.a
@@ -16,7 +16,7 @@ public final class a
   public final boolean J(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(104529);
-    boolean bool = g.eXw().J(paramCharSequence);
+    boolean bool = g.fng().J(paramCharSequence);
     AppMethodBeat.o(104529);
     return bool;
   }
@@ -24,26 +24,26 @@ public final class a
   public final boolean K(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(104530);
-    boolean bool = g.eXw().K(paramCharSequence);
+    boolean bool = g.fng().K(paramCharSequence);
     AppMethodBeat.o(104530);
     return bool;
-  }
-  
-  public final String Xw(String paramString)
-  {
-    AppMethodBeat.i(104531);
-    b.eXh();
-    paramString = b.Xw(paramString);
-    AppMethodBeat.o(104531);
-    return paramString;
   }
   
   public final SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
     AppMethodBeat.i(104526);
-    paramContext = g.eXw().b(paramCharSequence, paramFloat);
+    paramContext = g.fng().b(paramCharSequence, paramFloat);
     AppMethodBeat.o(104526);
     return paramContext;
+  }
+  
+  public final String abd(String paramString)
+  {
+    AppMethodBeat.i(104531);
+    b.fmR();
+    paramString = b.abd(paramString);
+    AppMethodBeat.o(104531);
+    return paramString;
   }
   
   public final SpannableString b(Context paramContext, CharSequence paramCharSequence, float paramFloat)
@@ -54,12 +54,12 @@ public final class a
     return paramContext;
   }
   
-  public final String fh(String paramString1, String paramString2)
+  public final String fr(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104528);
-    g.eXw();
-    f localf = f.eXr();
-    ai.getContext();
+    g.fng();
+    f localf = f.fnb();
+    aj.getContext();
     int i = 0;
     int j = paramString1.length();
     StringBuilder localStringBuilder = new StringBuilder(j);
@@ -68,7 +68,7 @@ public final class a
       char c = paramString1.charAt(i);
       if ((c == '/') || (c == '['))
       {
-        f.a locala = localf.aMi(paramString1.substring(i));
+        f.a locala = localf.aRP(paramString1.substring(i));
         if (locala != null)
         {
           localStringBuilder.append(paramString2);
@@ -86,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a
  * JD-Core Version:    0.7.0.1
  */

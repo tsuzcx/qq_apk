@@ -15,23 +15,23 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class g
   extends Preference
 {
-  public View.OnClickListener gst;
-  private View jja;
+  public View.OnClickListener gMe;
+  private View jCI;
   public boolean mClickable;
   public String mContent;
   private View mView;
-  private int vzA;
-  private int vzB;
-  public int vzz;
+  public int wET;
+  private int wEU;
+  private int wEV;
   
   public g(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(70676);
     this.mView = null;
-    this.vzz = 2147483647;
-    this.vzA = -1;
-    this.vzB = -1;
+    this.wET = 2147483647;
+    this.wEU = -1;
+    this.wEV = -1;
     setLayoutResource(2131494531);
     AppMethodBeat.o(70676);
   }
@@ -55,17 +55,17 @@ public final class g
     Object localObject = (TextView)paramView.findViewById(2131301249);
     TextView localTextView = (TextView)paramView.findViewById(2131306264);
     ((TextView)localObject).setText(getTitle());
-    this.jja = paramView;
-    if (this.vzz != 2147483647) {
-      localTextView.setTextColor(this.vzz);
+    this.jCI = paramView;
+    if (this.wET != 2147483647) {
+      localTextView.setTextColor(this.wET);
     }
     if (this.mClickable)
     {
-      if ((this.vzA >= 0) && (this.vzB > 0))
+      if ((this.wEU >= 0) && (this.wEV > 0))
       {
         paramView = new l(this.mContext);
         localObject = new SpannableString(this.mContent);
-        paramView.BFA = new l.a()
+        paramView.DfS = new l.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -77,17 +77,17 @@ public final class g
           }
         };
         localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        ((SpannableString)localObject).setSpan(paramView, this.vzA, this.vzB, 33);
+        ((SpannableString)localObject).setSpan(paramView, this.wEU, this.wEV, 33);
         localTextView.setText((CharSequence)localObject);
         AppMethodBeat.o(70678);
         return;
       }
-      if (this.vzz != 2147483647) {
-        localTextView.setTextColor(this.vzz);
+      if (this.wET != 2147483647) {
+        localTextView.setTextColor(this.wET);
       }
       for (;;)
       {
-        localTextView.setOnClickListener(this.gst);
+        localTextView.setOnClickListener(this.gMe);
         localTextView.setText(k.b(this.mContext, this.mContent, localTextView.getTextSize()));
         AppMethodBeat.o(70678);
         return;

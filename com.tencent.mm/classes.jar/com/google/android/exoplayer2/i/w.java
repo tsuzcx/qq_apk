@@ -71,7 +71,7 @@ public final class w
     return paramStringBuilder;
   }
   
-  private static int[] aK(String paramString)
+  private static int[] bD(String paramString)
   {
     AppMethodBeat.i(93215);
     int[] arrayOfInt = new int[4];
@@ -163,7 +163,7 @@ public final class w
     if (paramString2 == null) {
       paramString1 = "";
     }
-    paramString2 = aK(paramString1);
+    paramString2 = bD(paramString1);
     if (paramString2[0] != -1)
     {
       localStringBuilder.append(paramString1);
@@ -172,7 +172,7 @@ public final class w
       AppMethodBeat.o(93213);
       return paramString1;
     }
-    int[] arrayOfInt = aK(str);
+    int[] arrayOfInt = bD(str);
     if (paramString2[3] == 0)
     {
       paramString1 = paramString1;

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public final class c
     this.fileName = paramString;
   }
   
-  public static int DX(String paramString)
+  public static int Hj(String paramString)
   {
     AppMethodBeat.i(28935);
     if (paramString.length() >= 0) {}
@@ -42,7 +42,7 @@ public final class c
     return i;
   }
   
-  private boolean eaH()
+  private boolean emX()
   {
     AppMethodBeat.i(169765);
     if (this.fileName.length() >= 0)
@@ -57,16 +57,16 @@ public final class c
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ac.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:false");
+      ad.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:false");
       try
       {
-        this.file = i.cY(this.fileName, false);
+        this.file = i.dd(this.fileName, false);
         AppMethodBeat.o(169765);
         return true;
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        ad.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
         this.file = null;
         AppMethodBeat.o(169765);
       }
@@ -76,7 +76,7 @@ public final class c
     return false;
   }
   
-  public final a QY(int paramInt)
+  public final a SH(int paramInt)
   {
     AppMethodBeat.i(28938);
     a locala = new a();
@@ -86,7 +86,7 @@ public final class c
       AppMethodBeat.o(28938);
       return locala;
     }
-    if ((this.file == null) && (!eaH()))
+    if ((this.file == null) && (!emX()))
     {
       locala.ret = -2;
       AppMethodBeat.o(28938);
@@ -98,28 +98,28 @@ public final class c
       long l = this.file.length();
       this.file.seek(paramInt);
       int j = this.file.read(locala.buf, 0, 6000);
-      ac.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
+      ad.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       int i = j;
       if (j < 0) {
         i = 0;
       }
-      locala.cWy = i;
-      locala.ibm = (i + paramInt);
+      locala.dhO = i;
+      locala.iuI = (i + paramInt);
       locala.ret = 0;
       AppMethodBeat.o(28938);
       return locala;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
-      aKd();
+      ad.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
+      aNm();
       locala.ret = -1;
       AppMethodBeat.o(28938);
     }
     return locala;
   }
   
-  public final void aKd()
+  public final void aNm()
   {
     AppMethodBeat.i(28936);
     if (this.file != null) {
@@ -127,7 +127,7 @@ public final class c
       {
         this.file.close();
         this.file = null;
-        ac.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
+        ad.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
         AppMethodBeat.o(28936);
         return;
       }
@@ -139,8 +139,8 @@ public final class c
   public static final class a
   {
     public byte[] buf = null;
-    public int cWy = 0;
-    public int ibm = 0;
+    public int dhO = 0;
+    public int iuI = 0;
     public int ret = 0;
   }
 }

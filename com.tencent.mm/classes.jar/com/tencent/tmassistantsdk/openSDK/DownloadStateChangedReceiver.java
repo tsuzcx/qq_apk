@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ public class DownloadStateChangedReceiver
 {
   private static final String TAG = "DownloadStateChangedReceiver";
   protected static DownloadStateChangedReceiver mInstance = null;
-  protected ao handler;
+  protected ap handler;
   protected boolean isRegisted;
   ArrayList<IDownloadStateChangedListener> mListeners;
   
@@ -27,7 +27,7 @@ public class DownloadStateChangedReceiver
     this.handler = null;
     this.isRegisted = false;
     this.mListeners = new ArrayList();
-    this.handler = new ao("downloadStateChangedThread");
+    this.handler = new ap("downloadStateChangedThread");
     AppMethodBeat.o(102086);
   }
   
@@ -68,15 +68,15 @@ public class DownloadStateChangedReceiver
           localTMQQDownloaderStateChangeParam.hostPackageName = paramIntent.getStringExtra("hostPackageName");
           localTMQQDownloaderStateChangeParam.hostVersion = paramIntent.getStringExtra("hostVersion");
           localTMQQDownloaderStateChangeParam.taskId = paramIntent.getStringExtra("taskId");
-          localTMQQDownloaderStateChangeParam.errorCode = bs.getInt(paramIntent.getStringExtra("errorCode"), 0);
+          localTMQQDownloaderStateChangeParam.errorCode = bt.getInt(paramIntent.getStringExtra("errorCode"), 0);
           localTMQQDownloaderStateChangeParam.errorMsg = paramIntent.getStringExtra("errorMsg");
-          localTMQQDownloaderStateChangeParam.state = bs.getInt(paramIntent.getStringExtra("state"), 0);
+          localTMQQDownloaderStateChangeParam.state = bt.getInt(paramIntent.getStringExtra("state"), 0);
           Object localObject = new TMQQDownloaderOpenSDKParam();
           ((TMQQDownloaderOpenSDKParam)localObject).SNGAppId = paramIntent.getStringExtra("sngAppId");
           ((TMQQDownloaderOpenSDKParam)localObject).taskAppId = paramIntent.getStringExtra("taskAppId");
           ((TMQQDownloaderOpenSDKParam)localObject).taskApkId = paramIntent.getStringExtra("taskApkId");
           ((TMQQDownloaderOpenSDKParam)localObject).taskPackageName = paramIntent.getStringExtra("taskPackageName");
-          ((TMQQDownloaderOpenSDKParam)localObject).taskVersion = bs.getInt(paramIntent.getStringExtra("taskVersion"), 0);
+          ((TMQQDownloaderOpenSDKParam)localObject).taskVersion = bt.getInt(paramIntent.getStringExtra("taskVersion"), 0);
           ((TMQQDownloaderOpenSDKParam)localObject).via = paramIntent.getStringExtra("via");
           ((TMQQDownloaderOpenSDKParam)localObject).uin = paramIntent.getStringExtra("uin");
           ((TMQQDownloaderOpenSDKParam)localObject).uinType = paramIntent.getStringExtra("uinType");
@@ -110,7 +110,7 @@ public class DownloadStateChangedReceiver
       {
         TMLog.i("DownloadStateChangedReceiver", "registeReceiver exception!!!");
         this.isRegisted = false;
-        ac.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
+        ad.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102089);
@@ -147,7 +147,7 @@ public class DownloadStateChangedReceiver
       {
         TMLog.i("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!");
         this.isRegisted = false;
-        ac.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
+        ad.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102090);

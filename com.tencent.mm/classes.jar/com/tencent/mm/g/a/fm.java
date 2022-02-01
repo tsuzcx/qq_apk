@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fm
   extends b
 {
-  public a dfi;
-  public b dfj;
+  public a dqx;
   
   public fm()
   {
@@ -16,32 +15,21 @@ public final class fm
   
   private fm(byte paramByte)
   {
-    AppMethodBeat.i(19805);
-    this.dfi = new a();
-    this.dfj = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(116015);
+    this.dqx = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19805);
+    AppMethodBeat.o(116015);
   }
   
   public static final class a
   {
-    public String bssid;
-    public int dfk;
-    public String ssid;
-    public int version = 1;
-  }
-  
-  public static final class b
-  {
-    public int dfl = 0;
-    public int dfm = 0;
-    public String dfn;
+    public int op;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,32 @@
 package d.g.b;
 
 import d.l.a;
-import d.l.m;
+import d.l.h;
+import d.l.h.a;
 import d.l.m.a;
 
 public abstract class t
-  extends q
-  implements m
+  extends s
+  implements h
 {
-  public final Object ay(Object paramObject)
+  protected final a gfO()
+  {
+    return z.a(this);
+  }
+  
+  public final m.a gga()
+  {
+    return ((h)ggc()).gga();
+  }
+  
+  public final h.a ggb()
+  {
+    return ((h)ggc()).ggb();
+  }
+  
+  public Object invoke(Object paramObject)
   {
     return get(paramObject);
-  }
-  
-  protected final a fOo()
-  {
-    return w.a(this);
-  }
-  
-  public final m.a fOz()
-  {
-    return ((m)fOB()).fOz();
   }
 }
 

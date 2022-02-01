@@ -4,13 +4,13 @@ import com.tencent.mm.plugin.appbrand.appcache.WxaPkg.Info;
 
 public final class c
 {
-  public String cQK;
-  public String kbR;
-  public WxaPkg.Info kbS;
+  public String dca;
+  public String kwq;
+  public WxaPkg.Info kwr;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -7,9 +7,9 @@ public abstract interface g
 {
   public abstract void a(a parama);
   
-  public abstract void fNM();
+  public abstract void gfl();
   
-  public abstract View o(Integer paramInteger);
+  public abstract View p(Integer paramInteger);
 }
 
 

@@ -7,13 +7,13 @@ import java.util.List;
 
 public abstract interface r
 {
-  public static final r LIg = new r()
+  public static final r Nze = new r()
   {
     public final void a(e paramAnonymouse, List<String> paramAnonymousList)
     {
       AppMethodBeat.i(60314);
       if (paramAnonymouse == null) {
-        agL(0);
+        ajm(0);
       }
       AppMethodBeat.o(60314);
     }
@@ -22,7 +22,7 @@ public abstract interface r
     {
       AppMethodBeat.i(60315);
       if (paramAnonymousb == null) {
-        agL(2);
+        ajm(2);
       }
       AppMethodBeat.o(60315);
     }
@@ -34,7 +34,7 @@ public abstract interface r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.k.a.r
  * JD-Core Version:    0.7.0.1
  */

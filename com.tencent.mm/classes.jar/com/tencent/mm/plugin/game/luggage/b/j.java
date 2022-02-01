@@ -1,84 +1,84 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bo;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class j
-  extends bo<f>
+  extends bq<com.tencent.mm.plugin.game.luggage.f.g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
-  
-  public final void b(final a<f>.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama)
   {
-    AppMethodBeat.i(83069);
-    ac.i("MicroMsg.JsApiGetGameData", "invokeInMM");
-    Object localObject2 = parama.bWS.bVY;
-    if (localObject2 == null)
-    {
-      ac.e("MicroMsg.JsApiGetGameData", "data is null");
-      parama.a("null_data", null);
-      AppMethodBeat.o(83069);
-      return;
-    }
-    String str = ((JSONObject)localObject2).optString("preVerifyAppId");
-    Object localObject1 = str;
-    if (bs.isNullOrNil(str))
-    {
-      localObject1 = Uri.parse(bs.nullAsNil(((f)parama.bWR).bLL()));
-      if ((((Uri)localObject1).getHost() != null) && (((Uri)localObject1).getHost().equals("game.weixin.qq.com"))) {
-        localObject1 = "wx62d9035fd4fd2059";
-      }
-    }
-    else
-    {
-      str = ((JSONObject)localObject2).optString("key");
-      if (!bs.isNullOrNil(str)) {
-        break label157;
-      }
-      ac.i("MicroMsg.JsApiGetGameData", "key is null");
-      parama.a("null_key", null);
-      AppMethodBeat.o(83069);
-      return;
-    }
-    ac.i("MicroMsg.JsApiGetGameData", "appId is null");
-    parama.a("appid_null", null);
-    AppMethodBeat.o(83069);
-    return;
-    label157:
-    localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("appId", (String)localObject1);
-    ((Bundle)localObject2).putString("key", str);
-    h.a("com.tencent.mm", (Parcelable)localObject2, a.class, new d() {});
-    AppMethodBeat.o(83069);
+    AppMethodBeat.i(83066);
+    AppMethodBeat.o(83066);
   }
   
-  public final int bYk()
+  public final void b(final com.tencent.luggage.d.b<com.tencent.mm.plugin.game.luggage.f.g>.a paramb)
+  {
+    AppMethodBeat.i(180134);
+    ad.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
+    Object localObject = paramb.chh.cgn;
+    if (localObject == null)
+    {
+      ad.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
+      paramb.a("null_data", null);
+      AppMethodBeat.o(180134);
+      return;
+    }
+    int i = ((JSONObject)localObject).optInt("cmd", 0);
+    localObject = ((JSONObject)localObject).optString("param");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("cmd", i);
+    localBundle.putString("param", (String)localObject);
+    JSONObject localJSONObject = new JSONObject();
+    if (i == 10008) {
+      try
+      {
+        localJSONObject.put("page_start_time", ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).tVA.Ejp);
+        paramb.a("", localJSONObject);
+        AppMethodBeat.o(180134);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        paramb.a("", null);
+        AppMethodBeat.o(180134);
+        return;
+      }
+    }
+    if (i == 10009)
+    {
+      ((com.tencent.mm.plugin.game.luggage.f.g)paramb.chg).tVB = bt.getLong(localJSONException, System.currentTimeMillis());
+      paramb.a("", null);
+      AppMethodBeat.o(180134);
+      return;
+    }
+    h.a("com.tencent.mm", localBundle, a.class, new d() {});
+    AppMethodBeat.o(180134);
+  }
+  
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "getGameData";
+    return "getGameCommInfo";
   }
   
   static class a
-    implements b<Bundle, Bundle>
+    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
   {}
 }
 

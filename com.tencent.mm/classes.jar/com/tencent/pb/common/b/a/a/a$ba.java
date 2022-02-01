@@ -6,34 +6,34 @@ import com.google.b.a.e;
 public final class a$ba
   extends e
 {
-  public int JPv = 0;
+  public int LJh = 0;
   
   public a$ba()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.JPv != 0) {
-      paramb.bw(1, this.JPv);
+    if (this.LJh != 0) {
+      paramb.by(1, this.LJh);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.JPv != 0) {
-      i = j + b.by(1, this.JPv);
+    if (this.LJh != 0) {
+      i = j + b.bA(1, this.LJh);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ba
  * JD-Core Version:    0.7.0.1
  */

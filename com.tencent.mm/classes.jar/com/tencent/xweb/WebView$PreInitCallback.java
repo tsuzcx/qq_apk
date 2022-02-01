@@ -2,7 +2,7 @@ package com.tencent.xweb;
 
 public abstract interface WebView$PreInitCallback
 {
-  public abstract void aUA();
+  public abstract void aXM();
   
   public abstract void onCoreInitFinished();
 }

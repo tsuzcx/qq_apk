@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.clean.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.f.b.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public final class c
 {
-  public long dbz;
+  public long dmV;
   public String filePath;
-  public long iaH;
+  public long iud;
   public int msgType;
-  public List<a> oqN;
+  public List<a> oUi;
   public long size;
   public String thumbPath;
   public int type;
@@ -22,15 +22,15 @@ public final class c
   public c()
   {
     AppMethodBeat.i(22824);
-    this.oqN = new ArrayList();
+    this.oUi = new ArrayList();
     AppMethodBeat.o(22824);
   }
   
-  public final long bVc()
+  public final long bZH()
   {
     AppMethodBeat.i(22826);
     Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(this.iaH);
+    localCalendar.setTimeInMillis(this.iud);
     int i = localCalendar.get(1);
     long l = localCalendar.get(2) + i * 100;
     AppMethodBeat.o(22826);
@@ -46,19 +46,19 @@ public final class c
       AppMethodBeat.o(22825);
       return "";
     case 1: 
-      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "IMG", bs.An(this.size), this.filePath });
+      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "IMG", bt.Dd(this.size), this.filePath });
       AppMethodBeat.o(22825);
       return str;
     case 3: 
-      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "VIDEO", bs.An(this.size), this.filePath });
+      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "VIDEO", bt.Dd(this.size), this.filePath });
       AppMethodBeat.o(22825);
       return str;
     case 2: 
-      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "VOICE", bs.An(this.size), this.filePath });
+      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "VOICE", bt.Dd(this.size), this.filePath });
       AppMethodBeat.o(22825);
       return str;
     }
-    String str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "ATTACH", bs.An(this.size), this.filePath });
+    String str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "ATTACH", bt.Dd(this.size), this.filePath });
     AppMethodBeat.o(22825);
     return str;
   }

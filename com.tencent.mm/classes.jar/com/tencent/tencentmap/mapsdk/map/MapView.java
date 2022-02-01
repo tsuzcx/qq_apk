@@ -63,7 +63,7 @@ public class MapView
     AppMethodBeat.o(87463);
   }
   
-  public void addView(View paramView, MapView.LayoutParams paramLayoutParams)
+  public void addView(View paramView, LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(87464);
     if ((this.mapView == null) || (paramLayoutParams == null))
@@ -322,6 +322,26 @@ public class MapView
     }
     this.mapView.updateViewLayout(paramView, paramLayoutParams);
     AppMethodBeat.o(87482);
+  }
+  
+  public static class LayoutParams
+    extends ViewGroup.LayoutParams
+  {
+    public static final int BOTTOM_CENTER = 81;
+    public static final int CENTER = 17;
+    public int alignment = 17;
+    public int height = 0;
+    public LatLng point = null;
+    public int width = 0;
+    
+    public LayoutParams(int paramInt1, int paramInt2, LatLng paramLatLng, int paramInt3)
+    {
+      super(paramInt2);
+      this.width = paramInt1;
+      this.height = paramInt2;
+      this.point = paramLatLng;
+      this.alignment = paramInt3;
+    }
   }
 }
 

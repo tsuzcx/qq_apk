@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.cloudvoip.cloudvoice.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/cloudvoip/cloudvoice/audio/OpenVoiceAudioManager$Companion;", "", "()V", "IS_SPEAKER_ON", "", "TAG", "", "cloudvoice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/cloudvoip/cloudvoice/audio/OpenVoiceAudioManager$Companion;", "", "()V", "IS_SPEAKER_ON", "", "TAG", "", "cloudvoice_release"})
 public final class a$a {}
 
 

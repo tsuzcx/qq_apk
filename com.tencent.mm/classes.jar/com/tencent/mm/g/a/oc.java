@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class oc
   extends b
 {
-  public a dqA;
+  public a dBV;
   
   public oc()
   {
@@ -15,19 +15,16 @@ public final class oc
   
   private oc(byte paramByte)
   {
-    AppMethodBeat.i(42655);
-    this.dqA = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(130928);
+    this.dBV = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(42655);
+    AppMethodBeat.o(130928);
   }
   
   public static final class a
   {
-    public int count;
-    public String dqB;
-    public String dqC;
-    public int ret;
+    public int retCode;
   }
 }
 

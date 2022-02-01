@@ -1,100 +1,225 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.Drawable;
-import android.support.v4.graphics.drawable.a;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.arch.a.c.a;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnApplyWindowInsetsListener;
+import android.view.Window;
+import android.view.WindowInsets;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.WeakHashMap;
 
+@TargetApi(21)
 public final class am
 {
-  public static boolean ZN(int paramInt)
+  private static final boolean JgH;
+  private static final WeakHashMap<Activity, am> JgI;
+  private WindowInsets JgJ;
+  private final Set<View.OnApplyWindowInsetsListener> pjv;
+  
+  static
   {
-    AppMethodBeat.i(159117);
-    if (1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.3D)
+    AppMethodBeat.i(153549);
+    if (Build.VERSION.SDK_INT < 23) {}
+    for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(159117);
-      return true;
+      JgH = bool;
+      JgI = new WeakHashMap();
+      AppMethodBeat.o(153549);
+      return;
     }
-    AppMethodBeat.o(159117);
-    return false;
   }
   
-  private static int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  private am(final Activity paramActivity)
   {
-    if (paramInt5 == 0) {
-      return 0;
-    }
-    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
-  }
-  
-  public static Drawable c(Drawable paramDrawable, ColorStateList paramColorStateList)
-  {
-    AppMethodBeat.i(159116);
-    if (paramDrawable == null)
+    AppMethodBeat.i(153547);
+    this.pjv = new HashSet();
+    paramActivity.runOnUiThread(new Runnable()
     {
-      AppMethodBeat.o(159116);
-      return null;
-    }
-    paramDrawable = a.i(paramDrawable);
-    a.a(paramDrawable, paramColorStateList);
-    AppMethodBeat.o(159116);
-    return paramDrawable;
+      public final void run()
+      {
+        AppMethodBeat.i(153542);
+        paramActivity.getWindow().getDecorView().setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
+        {
+          public final WindowInsets onApplyWindowInsets(View paramAnonymous2View, WindowInsets paramAnonymous2WindowInsets)
+          {
+            AppMethodBeat.i(153541);
+            synchronized (am.this)
+            {
+              am.a(am.this, new WindowInsets(paramAnonymous2WindowInsets));
+            }
+            synchronized (am.a(am.this))
+            {
+              LinkedList localLinkedList = new LinkedList(am.a(am.this));
+              ??? = localLinkedList.iterator();
+              while (((Iterator)???).hasNext())
+              {
+                ((View.OnApplyWindowInsetsListener)((Iterator)???).next()).onApplyWindowInsets(paramAnonymous2View, paramAnonymous2WindowInsets);
+                continue;
+                paramAnonymous2View = finally;
+                AppMethodBeat.o(153541);
+                throw paramAnonymous2View;
+              }
+            }
+            paramAnonymous2View = paramAnonymous2View.onApplyWindowInsets(paramAnonymous2WindowInsets);
+            AppMethodBeat.o(153541);
+            return paramAnonymous2View;
+          }
+        });
+        AppMethodBeat.o(153542);
+      }
+    });
+    AppMethodBeat.o(153547);
   }
   
-  public static Drawable e(Drawable paramDrawable, int paramInt)
+  @TargetApi(21)
+  public static am bg(Activity paramActivity)
   {
-    AppMethodBeat.i(159115);
-    if (paramDrawable != null) {
-      paramDrawable.setColorFilter(new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP));
-    }
-    AppMethodBeat.o(159115);
-    return paramDrawable;
+    AppMethodBeat.i(153544);
+    paramActivity = d(paramActivity, true);
+    AppMethodBeat.o(153544);
+    return paramActivity;
   }
   
-  public static int eR(int paramInt1, int paramInt2)
+  public static WindowInsets bh(Activity paramActivity)
   {
-    AppMethodBeat.i(159112);
-    if ((paramInt2 < 0) || (paramInt2 > 100))
+    AppMethodBeat.i(153545);
+    if (JgH)
     {
-      an.e("alphaColor", "alpha must be between 0 and 100", new Object[0]);
-      AppMethodBeat.o(159112);
-      return paramInt1;
+      paramActivity = d(paramActivity, false);
+      if (paramActivity == null)
+      {
+        AppMethodBeat.o(153545);
+        return null;
+      }
+      paramActivity = paramActivity.fyc();
+      AppMethodBeat.o(153545);
+      return paramActivity;
     }
-    paramInt2 = (int)(paramInt2 * 0.01D * 255.0D);
-    AppMethodBeat.o(159112);
-    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
-  }
-  
-  private static int jr(int paramInt1, int paramInt2)
-  {
-    return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
-  }
-  
-  public static Drawable k(Context paramContext, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(159114);
-    paramContext = paramContext.getResources().getDrawable(paramInt1);
-    if (paramContext != null) {
-      paramContext.setColorFilter(new PorterDuffColorFilter(paramInt2, PorterDuff.Mode.SRC_ATOP));
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramActivity = paramActivity.getWindow().getDecorView().getRootWindowInsets();
+      AppMethodBeat.o(153545);
+      return paramActivity;
     }
-    AppMethodBeat.o(159114);
-    return paramContext;
+    AppMethodBeat.o(153545);
+    return null;
   }
   
-  public static int o(int paramInt1, int paramInt2)
+  private static am d(Activity paramActivity, boolean paramBoolean)
   {
-    AppMethodBeat.i(159113);
-    int i = Color.alpha(paramInt2);
-    int j = Color.alpha(paramInt1);
-    int k = jr(j, i);
-    paramInt1 = Color.argb(k, b(Color.red(paramInt1), j, Color.red(paramInt2), i, k), b(Color.green(paramInt1), j, Color.green(paramInt2), i, k), b(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
-    AppMethodBeat.o(159113);
-    return paramInt1;
+    AppMethodBeat.i(153546);
+    synchronized (JgI)
+    {
+      am localam2 = (am)JgI.get(paramActivity);
+      am localam1 = localam2;
+      if (localam2 == null)
+      {
+        localam1 = localam2;
+        if (paramBoolean)
+        {
+          localam1 = new am(paramActivity);
+          JgI.put(paramActivity, localam1);
+        }
+      }
+      AppMethodBeat.o(153546);
+      return localam1;
+    }
+  }
+  
+  private WindowInsets fyc()
+  {
+    try
+    {
+      WindowInsets localWindowInsets = this.JgJ;
+      return localWindowInsets;
+    }
+    finally {}
+  }
+  
+  public static void i(Application paramApplication)
+  {
+    AppMethodBeat.i(153543);
+    paramApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {}
+    {
+      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
+      {
+        AppMethodBeat.i(153538);
+        this.JgK.apply(paramAnonymousActivity);
+        AppMethodBeat.o(153538);
+      }
+      
+      public final void onActivityDestroyed(Activity paramAnonymousActivity)
+      {
+        AppMethodBeat.i(153540);
+        synchronized (am.fyd())
+        {
+          paramAnonymousActivity = (am)am.fyd().remove(paramAnonymousActivity);
+          if (paramAnonymousActivity == null) {
+            break label72;
+          }
+        }
+        synchronized (am.a(paramAnonymousActivity))
+        {
+          am.a(paramAnonymousActivity).clear();
+          AppMethodBeat.o(153540);
+          return;
+          paramAnonymousActivity = finally;
+          AppMethodBeat.o(153540);
+          throw paramAnonymousActivity;
+        }
+        label72:
+        AppMethodBeat.o(153540);
+      }
+      
+      public final void onActivityPaused(Activity paramAnonymousActivity) {}
+      
+      public final void onActivityResumed(Activity paramAnonymousActivity) {}
+      
+      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
+      
+      public final void onActivityStarted(Activity paramAnonymousActivity)
+      {
+        AppMethodBeat.i(153539);
+        this.JgK.apply(paramAnonymousActivity);
+        AppMethodBeat.o(153539);
+      }
+      
+      public final void onActivityStopped(Activity paramAnonymousActivity) {}
+    });
+    AppMethodBeat.o(153543);
+  }
+  
+  public final void a(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
+  {
+    AppMethodBeat.i(153548);
+    synchronized (this.pjv)
+    {
+      this.pjv.add(paramOnApplyWindowInsetsListener);
+      AppMethodBeat.o(153548);
+      return;
+    }
+  }
+  
+  public final void b(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
+  {
+    AppMethodBeat.i(175981);
+    synchronized (this.pjv)
+    {
+      this.pjv.remove(paramOnApplyWindowInsetsListener);
+      AppMethodBeat.o(175981);
+      return;
+    }
   }
 }
 

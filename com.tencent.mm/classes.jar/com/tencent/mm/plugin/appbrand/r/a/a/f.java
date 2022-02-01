@@ -5,30 +5,30 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.a;
-import d.g.b.v.d;
+import d.g.b.y.d;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"ensureGlobalLayoutAtRepeatCount", "", "Landroid/view/View;", "repeat", "", "callback", "Lkotlin/Function0;", "luggage-wxa-app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"ensureGlobalLayoutAtRepeatCount", "", "Landroid/view/View;", "repeat", "", "callback", "Lkotlin/Function0;", "luggage-wxa-app_release"})
 public final class f
 {
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandlerProxyImplKt$ensureGlobalLayoutAtRepeatCount$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "luggage-wxa-app_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandlerProxyImplKt$ensureGlobalLayoutAtRepeatCount$1", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "luggage-wxa-app_release"})
   public static final class a
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
-    a(View paramView, v.d paramd, a parama) {}
+    a(View paramView, y.d paramd, a parama) {}
     
     public final void onGlobalLayout()
     {
       AppMethodBeat.i(176484);
-      v.d locald = this.lPp;
-      locald.KUO += 1;
-      if (locald.KUO < this.lPq)
+      y.d locald = this.mpe;
+      locald.MLT += 1;
+      if (locald.MLT < this.mpf)
       {
         AppMethodBeat.o(176484);
         return;
       }
-      this.lPo.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-      this.gTu.invoke();
+      this.mpd.getViewTreeObserver().removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
+      this.hlv.invoke();
       AppMethodBeat.o(176484);
     }
   }

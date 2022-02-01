@@ -1,15 +1,15 @@
 package com.tencent.mm.media.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Arrays;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/codec/MediaCodecAACCodec$EncoderData;", "", "data", "", "pts", "", "isEnd", "", "([BJZ)V", "getData", "()[B", "()Z", "getPts", "()J", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/codec/MediaCodecAACCodec$EncoderData;", "", "data", "", "pts", "", "isEnd", "", "([BJZ)V", "getData", "()[B", "()Z", "getPts", "()J", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
 public final class a$a
 {
   final byte[] data;
-  final boolean gNN;
+  final boolean hhJ;
   final long pts;
   
   public a$a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
@@ -17,7 +17,7 @@ public final class a$a
     AppMethodBeat.i(93468);
     this.data = paramArrayOfByte;
     this.pts = paramLong;
-    this.gNN = paramBoolean;
+    this.hhJ = paramBoolean;
     AppMethodBeat.o(93468);
   }
   
@@ -29,7 +29,7 @@ public final class a$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!k.g(this.data, paramObject.data)) || (this.pts != paramObject.pts) || (this.gNN != paramObject.gNN)) {}
+        if ((!p.i(this.data, paramObject.data)) || (this.pts != paramObject.pts) || (this.hhJ != paramObject.hhJ)) {}
       }
     }
     else
@@ -49,7 +49,7 @@ public final class a$a
   public final String toString()
   {
     AppMethodBeat.i(93469);
-    String str = "EncoderData(data=" + Arrays.toString(this.data) + ", pts=" + this.pts + ", isEnd=" + this.gNN + ")";
+    String str = "EncoderData(data=" + Arrays.toString(this.data) + ", pts=" + this.pts + ", isEnd=" + this.hhJ + ")";
     AppMethodBeat.o(93469);
     return str;
   }

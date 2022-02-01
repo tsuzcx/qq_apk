@@ -10,75 +10,64 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
 import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
 import com.tencent.mm.plugin.appbrand.widget.desktop.a.c;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
 {
-  private static int mva;
-  public static float mvb;
-  public static int mvc;
-  public static float mvd;
-  public static int mve;
-  public static final int mvf;
-  private static float mvg;
-  private static int mvh;
-  private static int mvi;
-  private static int mvj;
-  private static boolean mvk;
+  private static int mVH;
+  public static float mVI;
+  public static int mVJ;
+  public static float mVK;
+  public static int mVL;
+  public static final int mVM;
+  private static float mVN;
+  private static int mVO;
+  private static int mVP;
+  private static int mVQ;
+  private static boolean mVR;
   
   static
   {
     AppMethodBeat.i(49439);
-    mva = 1;
-    mvb = 4.5F;
-    mvc = 4;
-    mvd = 3.5F;
-    mve = 3;
-    mvf = AppBrandGlobalSystemConfig.bat().jCI;
-    mvg = mvb;
-    mvh = mvc;
-    mvi = 1;
-    mvj = 0;
-    mvk = true;
+    mVH = 1;
+    mVI = 4.5F;
+    mVJ = 4;
+    mVK = 3.5F;
+    mVL = 3;
+    mVM = AppBrandGlobalSystemConfig.bdT().jWE;
+    mVN = mVI;
+    mVO = mVJ;
+    mVP = 1;
+    mVQ = 0;
+    mVR = true;
     AppMethodBeat.o(49439);
   }
   
-  public static int aYW()
-  {
-    AppMethodBeat.i(49434);
-    if (mvj == 0) {
-      mvj = ((ah)g.ab(ah.class)).aYq();
-    }
-    int i = mvj;
-    AppMethodBeat.o(49434);
-    return i;
-  }
-  
-  public static boolean abe()
+  public static boolean adI()
   {
     AppMethodBeat.i(49435);
-    ac.d("MicroMsg.AppBrandDesktopConfig", "alvinluo isEnableNativeDynamicBackground %b, thread: %d", new Object[] { Boolean.valueOf(mvk), Long.valueOf(Thread.currentThread().getId()) });
-    boolean bool = mvk;
+    ad.d("MicroMsg.AppBrandDesktopConfig", "alvinluo isEnableNativeDynamicBackground %b, thread: %d", new Object[] { Boolean.valueOf(mVR), Long.valueOf(Thread.currentThread().getId()) });
+    boolean bool = mVR;
     AppMethodBeat.o(49435);
     return bool;
   }
   
-  public static boolean byC()
+  public static boolean bCH()
   {
-    return mva == 2;
+    return mVH == 2;
   }
   
-  public static boolean byD()
+  public static boolean bCI()
   {
     return true;
   }
   
-  public static void byE()
+  public static void bCJ()
   {
     AppMethodBeat.i(49438);
-    SharedPreferences localSharedPreferences = ai.eUY();
+    SharedPreferences localSharedPreferences = aj.fkD();
     if (localSharedPreferences == null)
     {
       AppMethodBeat.o(49438);
@@ -87,107 +76,118 @@ public final class b
     boolean bool1 = localSharedPreferences.getBoolean("enable_dynamic_background_for_test", false);
     if (bool1)
     {
-      ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo initEnableNativeDynamicBackground enableForTest: %b", new Object[] { Boolean.valueOf(bool1) });
-      mvk = true;
-      hR(true);
-      c.bzj();
+      ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo initEnableNativeDynamicBackground enableForTest: %b", new Object[] { Boolean.valueOf(bool1) });
+      mVR = true;
+      ib(true);
+      c.bDn();
       AppMethodBeat.o(49438);
       return;
     }
-    mvk = localSharedPreferences.getBoolean("enable_dynamic_background", true);
-    boolean bool2 = c.bzi();
+    mVR = localSharedPreferences.getBoolean("enable_dynamic_background", true);
+    boolean bool2 = c.bDm();
     bool1 = bool2;
     if (bool2)
     {
       int i = localSharedPreferences.getInt("dynamic_background_version", -1);
-      ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo localVersion %d, currentVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(1) });
+      ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo localVersion %d, currentVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(1) });
       if (i == 1) {
         break label216;
       }
-      ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo ignore crash because of new version", new Object[] { Integer.valueOf(i), Integer.valueOf(1) });
+      ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo ignore crash because of new version", new Object[] { Integer.valueOf(i), Integer.valueOf(1) });
       localSharedPreferences.edit().putInt("dynamic_background_version", 1).apply();
-      c.bzj();
-      hR(true);
+      c.bDn();
+      ib(true);
     }
     for (bool1 = false;; bool1 = bool2)
     {
-      ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo AppBrandDesktopConfig initEnableNativeDynamicBackground: %b, willCrash: %b", new Object[] { Boolean.valueOf(mvk), Boolean.valueOf(bool1) });
+      ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo AppBrandDesktopConfig initEnableNativeDynamicBackground: %b, willCrash: %b", new Object[] { Boolean.valueOf(mVR), Boolean.valueOf(bool1) });
       AppMethodBeat.o(49438);
       return;
       label216:
-      ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo disable dynamicBackground because of crash");
-      hR(false);
+      ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo disable dynamicBackground because of crash");
+      ib(false);
     }
   }
   
-  public static int byF()
+  public static int bCK()
   {
-    return mvi;
+    return mVP;
+  }
+  
+  public static int bcu()
+  {
+    AppMethodBeat.i(49434);
+    if (mVQ == 0) {
+      mVQ = ((ah)g.ab(ah.class)).bbO();
+    }
+    int i = mVQ;
+    AppMethodBeat.o(49434);
+    return i;
   }
   
   public static int getCompletelyCountPerPage()
   {
-    return mvh;
+    return mVO;
   }
   
   public static float getShowCountPerPage()
   {
-    return mvg;
+    return mVN;
   }
   
-  public static void hR(boolean paramBoolean)
+  public static void ib(boolean paramBoolean)
   {
     AppMethodBeat.i(49436);
-    ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo setEnableNativeDynamicBackground enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (mvk != paramBoolean)
+    ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo setEnableNativeDynamicBackground enable: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (mVR != paramBoolean)
     {
-      SharedPreferences localSharedPreferences = ai.eUY();
+      SharedPreferences localSharedPreferences = aj.fkD();
       if (localSharedPreferences != null) {
         localSharedPreferences.edit().putBoolean("enable_dynamic_background", paramBoolean).apply();
       }
     }
-    mvk = paramBoolean;
+    mVR = paramBoolean;
     AppMethodBeat.o(49436);
   }
   
   public static void init(Context paramContext)
   {
     AppMethodBeat.i(49437);
-    ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo DesktopConfig init mCurrentType: %d", new Object[] { Integer.valueOf(mva) });
-    if (mva == 1)
+    ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo DesktopConfig init mCurrentType: %d", new Object[] { Integer.valueOf(mVH) });
+    if (mVH == 1)
     {
-      mvb = 4.0F;
-      mvc = 4;
-      mvd = 3.0F;
-      mve = 3;
-      mvg = mvb;
-      mvh = mvc;
+      mVI = 4.0F;
+      mVJ = 4;
+      mVK = 3.0F;
+      mVL = 3;
+      mVN = mVI;
+      mVO = mVJ;
     }
-    int j = d.c(paramContext, mvg);
+    int j = d.c(paramContext, mVN);
     int i = j;
-    if (mva == 1) {
+    if (mVH == 1) {
       i = (int)(j + paramContext.getResources().getDimensionPixelSize(2131165568) * 2 * d.eb(paramContext));
     }
     if (i <= a.fromDPToPix(paramContext, 10)) {
-      mvg = mvd;
+      mVN = mVK;
     }
-    for (mvh = mve;; mvh = mvc)
+    for (mVO = mVL;; mVO = mVJ)
     {
-      i = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pYx, 1);
-      mvi = i;
+      i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qDI, 1);
+      mVP = i;
       i = Math.max(i, 1);
-      mvi = i;
-      mvi = Math.min(i, 4);
-      ac.i("MicroMsg.AppBrandDesktopConfig", "alvinluo DesktopConfig init showCountPerPage: %f, completelyShowCountPerPage: %d, mRecentAppBrandMaxShowLines: %d", new Object[] { Float.valueOf(mvg), Integer.valueOf(mvh), Integer.valueOf(mvi) });
+      mVP = i;
+      mVP = Math.min(i, 4);
+      ad.i("MicroMsg.AppBrandDesktopConfig", "alvinluo DesktopConfig init showCountPerPage: %f, completelyShowCountPerPage: %d, mRecentAppBrandMaxShowLines: %d", new Object[] { Float.valueOf(mVN), Integer.valueOf(mVO), Integer.valueOf(mVP) });
       AppMethodBeat.o(49437);
       return;
-      mvg = mvb;
+      mVN = mVI;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b
  * JD-Core Version:    0.7.0.1
  */

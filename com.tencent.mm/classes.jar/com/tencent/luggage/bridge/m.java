@@ -9,10 +9,10 @@ final class m
   m(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(140329);
-    this.bVX = b.valueOf(paramJSONObject.getString("type"));
-    this.bVY = paramJSONObject.optJSONObject("data");
-    if (this.bVY == null) {
-      this.bVY = new JSONObject();
+    this.cgm = b.valueOf(paramJSONObject.getString("type"));
+    this.cgn = paramJSONObject.optJSONObject("data");
+    if (this.cgn == null) {
+      this.cgn = new JSONObject();
     }
     AppMethodBeat.o(140329);
   }

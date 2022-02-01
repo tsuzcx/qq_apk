@@ -1,23 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.co;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/pip/PipOrientationMode;", "", "(Ljava/lang/String;I)V", "LANDSCAPE", "PORTRAIT", "luggage-wxa-app_release"})
-public enum e
+public final class e
+  extends a<d>
 {
-  static
-  {
-    AppMethodBeat.i(193282);
-    e locale1 = new e("LANDSCAPE", 0);
-    kHS = locale1;
-    e locale2 = new e("PORTRAIT", 1);
-    kHT = locale2;
-    kHU = new e[] { locale1, locale2 };
-    AppMethodBeat.o(193282);
-  }
+  public static final int CTRL_INDEX = 10;
+  public static final String NAME = "hideNavigationBarLoading";
   
-  private e() {}
+  public final boolean bib()
+  {
+    return true;
+  }
 }
 
 

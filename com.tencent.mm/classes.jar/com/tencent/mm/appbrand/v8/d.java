@@ -7,15 +7,15 @@ public abstract interface d
 {
   public abstract void destroy(int paramInt);
   
-  public abstract int hp(int paramInt);
+  public abstract int hw(int paramInt);
   
-  public abstract SharedV8ArrayBuffer hq(int paramInt);
+  public abstract SharedV8ArrayBuffer hx(int paramInt);
   
-  public abstract ByteBuffer hr(int paramInt);
+  public abstract ByteBuffer hy(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.d
  * JD-Core Version:    0.7.0.1
  */

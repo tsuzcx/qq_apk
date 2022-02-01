@@ -10,10 +10,10 @@ import java.util.Set;
 public abstract class e<T, V, X, Y>
   implements f<T, V>
 {
-  protected a hfn;
-  public f<T, X> hfs = null;
-  public d<T, Y> hft = null;
-  public f.b<T, V> hfu = null;
+  public f<T, X> hxA = null;
+  public d<T, Y> hxB = null;
+  public f.b<T, V> hxC = null;
+  protected a hxv;
   public int maxSize;
   
   public e(int paramInt)
@@ -24,15 +24,15 @@ public abstract class e<T, V, X, Y>
   
   public e(int paramInt, f.b<T, V> paramb, a parama)
   {
-    this.hfu = paramb;
+    this.hxC = paramb;
     this.maxSize = paramInt;
-    this.hfn = parama;
+    this.hxv = parama;
     init();
   }
   
   public e(f.b<T, V> paramb)
   {
-    this.hfu = paramb;
+    this.hxC = paramb;
     this.maxSize = 10;
     init();
   }
@@ -44,157 +44,157 @@ public abstract class e<T, V, X, Y>
   
   public final void a(final f.a<T, V> parama)
   {
-    this.hfs.a(new f.a() {});
+    this.hxA.a(new f.a() {});
   }
   
-  public V aJ(T paramT)
+  public V aL(T paramT)
   {
-    Object localObject = bN(this.hfs.aJ(paramT));
-    if (this.hft != null) {
-      this.hft.x(avY(), paramT);
+    Object localObject = bP(this.hxA.aL(paramT));
+    if (this.hxB != null) {
+      this.hxB.z(ayL(), paramT);
     }
     return localObject;
   }
   
-  public final boolean aK(T paramT)
+  public final boolean aM(T paramT)
   {
-    boolean bool = this.hfs.aK(paramT);
-    if (this.hft != null) {
-      this.hft.t(avY(), paramT);
+    boolean bool = this.hxA.aM(paramT);
+    if (this.hxB != null) {
+      this.hxB.v(ayL(), paramT);
     }
     return bool;
   }
   
-  public final boolean aL(T paramT)
+  public final boolean aN(T paramT)
   {
-    boolean bool = this.hfs.aL(paramT);
-    if (this.hft != null) {
-      this.hft.y(avY(), paramT);
+    boolean bool = this.hxA.aN(paramT);
+    if (this.hxB != null) {
+      this.hxB.A(ayL(), paramT);
     }
     return bool;
   }
   
-  protected abstract T avY();
+  protected abstract T ayL();
   
-  protected f<T, X> avZ()
+  protected f<T, X> ayM()
   {
     new h(this.maxSize, new f.b()
     {
       public final void c(T paramAnonymousT, X paramAnonymousX1, X paramAnonymousX2)
       {
         AppMethodBeat.i(156513);
-        if (e.this.hfu != null) {
-          e.this.hfu.c(paramAnonymousT, e.this.bN(paramAnonymousX1), e.this.bN(paramAnonymousX2));
+        if (e.this.hxC != null) {
+          e.this.hxC.c(paramAnonymousT, e.this.bP(paramAnonymousX1), e.this.bP(paramAnonymousX2));
         }
         AppMethodBeat.o(156513);
       }
     });
   }
   
-  protected abstract V bN(X paramX);
+  protected abstract V bP(X paramX);
   
-  protected abstract X bP(V paramV);
+  protected abstract X bR(V paramV);
   
   public final void clear()
   {
-    this.hfs.clear();
+    this.hxA.clear();
   }
   
   public final int createCount()
   {
-    return this.hfs.createCount();
+    return this.hxA.createCount();
   }
   
   public final int evictionCount()
   {
-    return this.hfs.evictionCount();
+    return this.hxA.evictionCount();
   }
   
   public V get(T paramT)
   {
-    Object localObject = bN(this.hfs.get(paramT));
-    if (this.hft != null) {
-      this.hft.w(avY(), paramT);
+    Object localObject = bP(this.hxA.get(paramT));
+    if (this.hxB != null) {
+      this.hxB.y(ayL(), paramT);
     }
     return localObject;
   }
   
   public final int hitCount()
   {
-    return this.hfs.hitCount();
+    return this.hxA.hitCount();
   }
   
   protected void init()
   {
-    this.hfs = avZ();
-    this.hft = a(this.hfn);
+    this.hxA = ayM();
+    this.hxB = a(this.hxv);
   }
   
   public final Set<T> keySet()
   {
-    return this.hfs.keySet();
+    return this.hxA.keySet();
   }
   
   public final int maxSize()
   {
-    return this.hfs.maxSize();
+    return this.hxA.maxSize();
   }
   
   public final int missCount()
   {
-    return this.hfs.missCount();
-  }
-  
-  public void o(T paramT, V paramV)
-  {
-    this.hfs.o(paramT, bP(paramV));
-    if (this.hft != null)
-    {
-      Object localObject = avY();
-      this.hft.f(localObject, paramT, r(paramT, paramV));
-    }
+    return this.hxA.missCount();
   }
   
   public V put(T paramT, V paramV)
   {
-    Object localObject1 = bN(this.hfs.put(paramT, bP(paramV)));
-    if (this.hft != null)
+    Object localObject1 = bP(this.hxA.put(paramT, bR(paramV)));
+    if (this.hxB != null)
     {
-      Object localObject2 = avY();
-      this.hft.g(localObject2, paramT, r(paramT, paramV));
+      Object localObject2 = ayL();
+      this.hxB.g(localObject2, paramT, t(paramT, paramV));
     }
     return localObject1;
   }
   
   public final int putCount()
   {
-    return this.hfs.putCount();
+    return this.hxA.putCount();
   }
   
-  protected abstract Y r(T paramT, V paramV);
+  public void q(T paramT, V paramV)
+  {
+    this.hxA.q(paramT, bR(paramV));
+    if (this.hxB != null)
+    {
+      Object localObject = ayL();
+      this.hxB.f(localObject, paramT, t(paramT, paramV));
+    }
+  }
   
   public V remove(T paramT)
   {
-    Object localObject = bN(this.hfs.remove(paramT));
-    if (this.hft != null) {
-      this.hft.v(avY(), paramT);
+    Object localObject = bP(this.hxA.remove(paramT));
+    if (this.hxB != null) {
+      this.hxB.x(ayL(), paramT);
     }
     return localObject;
   }
   
   public final int size()
   {
-    return this.hfs.size();
+    return this.hxA.size();
   }
   
   public final int sizeOf(T paramT, V paramV)
   {
-    return this.hfs.sizeOf(paramT, bP(paramV));
+    return this.hxA.sizeOf(paramT, bR(paramV));
   }
+  
+  protected abstract Y t(T paramT, V paramV);
   
   public final void trimToSize(int paramInt)
   {
-    this.hfs.trimToSize(paramInt);
+    this.hxA.trimToSize(paramInt);
   }
 }
 

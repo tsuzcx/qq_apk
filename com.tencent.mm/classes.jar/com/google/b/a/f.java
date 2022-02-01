@@ -17,7 +17,7 @@ public final class f
       int m = paramStringBuffer1.length();
       if (paramString != null)
       {
-        paramStringBuffer2.append(paramStringBuffer1).append(bk(paramString)).append(" <\n");
+        paramStringBuffer2.append(paramStringBuffer1).append(cd(paramString)).append(" <\n");
         paramStringBuffer1.append("  ");
       }
       Class localClass = paramObject.getClass();
@@ -89,7 +89,7 @@ public final class f
     }
     return;
     label395:
-    paramString = bk(paramString);
+    paramString = cd(paramString);
     paramStringBuffer2.append(paramStringBuffer1).append(paramString).append(": ");
     if ((paramObject instanceof String))
     {
@@ -146,7 +146,23 @@ public final class f
     paramStringBuffer.append('"');
   }
   
-  private static String bk(String paramString)
+  public static <T extends e> String c(T paramT)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    try
+    {
+      a(null, paramT, new StringBuffer(), localStringBuffer);
+      return localStringBuffer.toString();
+    }
+    catch (IllegalAccessException paramT)
+    {
+      return "Error printing proto: " + paramT.getMessage();
+    }
+    catch (InvocationTargetException paramT) {}
+    return "Error printing proto: " + paramT.getMessage();
+  }
+  
+  private static String cd(String paramString)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
@@ -168,22 +184,6 @@ public final class f
       }
     }
     return localStringBuffer.toString();
-  }
-  
-  public static <T extends e> String c(T paramT)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    try
-    {
-      a(null, paramT, new StringBuffer(), localStringBuffer);
-      return localStringBuffer.toString();
-    }
-    catch (IllegalAccessException paramT)
-    {
-      return "Error printing proto: " + paramT.getMessage();
-    }
-    catch (InvocationTargetException paramT) {}
-    return "Error printing proto: " + paramT.getMessage();
   }
   
   private static String escapeString(String paramString)
@@ -209,7 +209,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.b.a.f
  * JD-Core Version:    0.7.0.1
  */

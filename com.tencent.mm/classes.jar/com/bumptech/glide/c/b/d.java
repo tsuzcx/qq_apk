@@ -8,21 +8,21 @@ import java.io.File;
 final class d<DataType>
   implements a.b
 {
-  private final com.bumptech.glide.c.d<DataType> aEl;
-  private final j aEm;
+  private final com.bumptech.glide.c.d<DataType> aGc;
+  private final j aGd;
   private final DataType data;
   
   d(com.bumptech.glide.c.d<DataType> paramd, DataType paramDataType, j paramj)
   {
-    this.aEl = paramd;
+    this.aGc = paramd;
     this.data = paramDataType;
-    this.aEm = paramj;
+    this.aGd = paramj;
   }
   
   public final boolean s(File paramFile)
   {
     AppMethodBeat.i(76931);
-    boolean bool = this.aEl.a(this.data, paramFile, this.aEm);
+    boolean bool = this.aGc.a(this.data, paramFile, this.aGd);
     AppMethodBeat.o(76931);
     return bool;
   }

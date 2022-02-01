@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.story.api;
 
 public abstract interface g
 {
-  public abstract void dpQ();
+  public abstract void dAt();
   
-  public abstract void dpR();
+  public abstract void dAu();
   
-  public abstract void dpS();
+  public abstract void dAv();
 }
 
 

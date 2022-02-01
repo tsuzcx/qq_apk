@@ -3,66 +3,58 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ahp
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int dxw;
-  public int index;
-  public int nLC;
-  public String qIF;
-  public String query;
-  public int scene;
-  public String sessionId;
+  public int GeZ;
+  public int Gfa;
+  public int Gfb;
+  public String Gfc;
+  public int Gfd;
+  public String Gfe;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127475);
+    AppMethodBeat.i(122488);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.scene);
-      paramVarArgs.aR(2, this.nLC);
-      paramVarArgs.aR(3, this.index);
-      if (this.sessionId != null) {
-        paramVarArgs.d(4, this.sessionId);
+      paramVarArgs.aS(1, this.GeZ);
+      paramVarArgs.aS(2, this.Gfa);
+      paramVarArgs.aS(3, this.Gfb);
+      if (this.Gfc != null) {
+        paramVarArgs.d(4, this.Gfc);
       }
-      if (this.query != null) {
-        paramVarArgs.d(5, this.query);
+      paramVarArgs.aS(5, this.Gfd);
+      if (this.Gfe != null) {
+        paramVarArgs.d(6, this.Gfe);
       }
-      if (this.qIF != null) {
-        paramVarArgs.d(6, this.qIF);
-      }
-      paramVarArgs.aR(7, this.dxw);
-      AppMethodBeat.o(127475);
+      AppMethodBeat.o(122488);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.scene) + 0 + f.a.a.b.b.a.bx(2, this.nLC) + f.a.a.b.b.a.bx(3, this.index);
+      int i = f.a.a.b.b.a.bz(1, this.GeZ) + 0 + f.a.a.b.b.a.bz(2, this.Gfa) + f.a.a.b.b.a.bz(3, this.Gfb);
       paramInt = i;
-      if (this.sessionId != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.sessionId);
+      if (this.Gfc != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Gfc);
       }
-      i = paramInt;
-      if (this.query != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.query);
-      }
+      i = paramInt + f.a.a.b.b.a.bz(5, this.Gfd);
       paramInt = i;
-      if (this.qIF != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.qIF);
+      if (this.Gfe != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.Gfe);
       }
-      i = f.a.a.b.b.a.bx(7, this.dxw);
-      AppMethodBeat.o(127475);
-      return paramInt + i;
+      AppMethodBeat.o(122488);
+      return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(127475);
+      AppMethodBeat.o(122488);
       return 0;
     }
     if (paramInt == 3)
@@ -72,44 +64,40 @@ public final class ahp
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(127475);
+        AppMethodBeat.o(122488);
         return -1;
       case 1: 
-        localahp.scene = locala.LVo.xF();
-        AppMethodBeat.o(127475);
+        localahp.GeZ = locala.NPN.zc();
+        AppMethodBeat.o(122488);
         return 0;
       case 2: 
-        localahp.nLC = locala.LVo.xF();
-        AppMethodBeat.o(127475);
+        localahp.Gfa = locala.NPN.zc();
+        AppMethodBeat.o(122488);
         return 0;
       case 3: 
-        localahp.index = locala.LVo.xF();
-        AppMethodBeat.o(127475);
+        localahp.Gfb = locala.NPN.zc();
+        AppMethodBeat.o(122488);
         return 0;
       case 4: 
-        localahp.sessionId = locala.LVo.readString();
-        AppMethodBeat.o(127475);
+        localahp.Gfc = locala.NPN.readString();
+        AppMethodBeat.o(122488);
         return 0;
       case 5: 
-        localahp.query = locala.LVo.readString();
-        AppMethodBeat.o(127475);
-        return 0;
-      case 6: 
-        localahp.qIF = locala.LVo.readString();
-        AppMethodBeat.o(127475);
+        localahp.Gfd = locala.NPN.zc();
+        AppMethodBeat.o(122488);
         return 0;
       }
-      localahp.dxw = locala.LVo.xF();
-      AppMethodBeat.o(127475);
+      localahp.Gfe = locala.NPN.readString();
+      AppMethodBeat.o(122488);
       return 0;
     }
-    AppMethodBeat.o(127475);
+    AppMethodBeat.o(122488);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ahp
  * JD-Core Version:    0.7.0.1
  */

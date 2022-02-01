@@ -5,32 +5,32 @@ import java.lang.reflect.Array;
 
 public final class b
 {
-  final byte[][] bKQ;
+  final byte[][] bVd;
   public final int height;
   public final int width;
   
   public b(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12242);
-    this.bKQ = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt2, paramInt1 }));
+    this.bVd = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { paramInt2, paramInt1 }));
     this.width = paramInt1;
     this.height = paramInt2;
     AppMethodBeat.o(12242);
   }
   
-  public final byte bM(int paramInt1, int paramInt2)
+  public final byte bO(int paramInt1, int paramInt2)
   {
-    return this.bKQ[paramInt2][paramInt1];
+    return this.bVd[paramInt2][paramInt1];
   }
   
   public final void set(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.bKQ[paramInt2][paramInt1] = ((byte)paramInt3);
+    this.bVd[paramInt2][paramInt1] = ((byte)paramInt3);
   }
   
   public final void set(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    byte[] arrayOfByte = this.bKQ[paramInt2];
+    byte[] arrayOfByte = this.bVd[paramInt2];
     if (paramBoolean) {}
     for (paramInt2 = 1;; paramInt2 = 0)
     {
@@ -49,7 +49,7 @@ public final class b
       int j = 0;
       if (j < this.width)
       {
-        switch (this.bKQ[i][j])
+        switch (this.bVd[i][j])
         {
         default: 
           ((StringBuilder)localObject).append("  ");

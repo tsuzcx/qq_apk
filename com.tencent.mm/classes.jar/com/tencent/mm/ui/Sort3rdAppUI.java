@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.o;
 import com.tencent.mm.pluginsdk.model.app.p;
@@ -22,10 +22,10 @@ import java.util.List;
 public class Sort3rdAppUI
   extends MMActivity
 {
-  private long FwG;
-  private Sort3rdAppUI.a Hsd;
-  private List<g> Hse;
-  private DragSortListView pga;
+  private Sort3rdAppUI.a JfP;
+  private List<g> JfQ;
+  private DragSortListView pJC;
+  private long xdB;
   
   protected int getLayoutId()
   {
@@ -46,10 +46,10 @@ public class Sort3rdAppUI
       }
     });
     setMMTitle(getString(2131755131));
-    this.pga = ((DragSortListView)findViewById(2131301457));
-    this.pga.setDropListener(new DragSortListView.h()
+    this.pJC = ((DragSortListView)findViewById(2131301457));
+    this.pJC.setDropListener(new DragSortListView.h()
     {
-      public final void ei(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void ek(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(33750);
         g localg = (g)Sort3rdAppUI.a(Sort3rdAppUI.this).getItem(paramAnonymousInt1);
@@ -65,15 +65,15 @@ public class Sort3rdAppUI
   {
     AppMethodBeat.i(33756);
     super.onCreate(paramBundle);
-    this.FwG = getIntent().getLongExtra("KFlag", -1L);
+    this.xdB = getIntent().getLongExtra("KFlag", -1L);
     initView();
-    this.Hse = com.tencent.mm.pluginsdk.model.app.h.b(this, this.FwG, true);
-    paramBundle = ap.eLm().zO(this.FwG);
+    this.JfQ = com.tencent.mm.pluginsdk.model.app.h.b(this, this.xdB, true);
+    paramBundle = ao.fah().CC(this.xdB);
     if ((paramBundle != null) && (paramBundle.size() > 0)) {
-      Collections.sort(this.Hse, new Comparator() {});
+      Collections.sort(this.JfQ, new Comparator() {});
     }
-    this.Hsd = new Sort3rdAppUI.a(this, this.Hse, this.FwG);
-    this.pga.setAdapter(this.Hsd);
+    this.JfP = new Sort3rdAppUI.a(this, this.JfQ, this.xdB);
+    this.pJC.setAdapter(this.JfP);
     AppMethodBeat.o(33756);
   }
   
@@ -88,11 +88,11 @@ public class Sort3rdAppUI
   {
     AppMethodBeat.i(33759);
     super.onPause();
-    if (this.Hsd != null)
+    if (this.JfP != null)
     {
-      List localList = this.Hsd.oXp;
-      p localp = ap.eLm();
-      long l = this.FwG;
+      List localList = this.JfP.pAZ;
+      p localp = ao.fah();
+      long l = this.xdB;
       Object localObject = new StringBuilder();
       ((StringBuilder)localObject).append("delete from AppSort");
       ((StringBuilder)localObject).append(" where flag = ").append(l).append(" ");
@@ -100,21 +100,21 @@ public class Sort3rdAppUI
       localp.db.execSQL("AppSort", (String)localObject);
       if ((localList != null) && (localList.size() > 0))
       {
-        az.ayM();
-        l = c.agw().vE(Thread.currentThread().getId());
-        localp = ap.eLm();
+        ba.aBQ();
+        l = c.getDataDB().xO(Thread.currentThread().getId());
+        localp = ao.fah();
         int i = 0;
         while (i < localList.size())
         {
           localObject = new o();
-          ((o)localObject).field_flag = this.FwG;
+          ((o)localObject).field_flag = this.xdB;
           ((o)localObject).field_appId = ((g)localList.get(i)).field_appId;
           ((o)localObject).field_sortId = i;
           localp.a((o)localObject);
           i += 1;
         }
-        az.ayM();
-        c.agw().qL(l);
+        ba.aBQ();
+        c.getDataDB().sJ(l);
       }
     }
     AppMethodBeat.o(33759);

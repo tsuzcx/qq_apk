@@ -48,17 +48,20 @@ public final class akf
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
       localObject = c.n(paramVarArgs);
-      ((Path)localObject).moveTo(3.0F, 36.0F);
-      ((Path)localObject).cubicTo(9.08381F, 23.542883F, 21.576628F, 15.0F, 36.0F, 15.0F);
-      ((Path)localObject).cubicTo(50.42337F, 15.0F, 62.916191F, 23.542883F, 69.0F, 36.0F);
-      ((Path)localObject).cubicTo(62.916191F, 48.457119F, 50.42337F, 57.0F, 36.0F, 57.0F);
-      ((Path)localObject).cubicTo(21.576628F, 57.0F, 9.08381F, 48.457119F, 3.0F, 36.0F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(36.0F, 46.5F);
-      ((Path)localObject).cubicTo(41.798988F, 46.5F, 46.5F, 41.798988F, 46.5F, 36.0F);
-      ((Path)localObject).cubicTo(46.5F, 30.20101F, 41.798988F, 25.5F, 36.0F, 25.5F);
-      ((Path)localObject).cubicTo(30.20101F, 25.5F, 25.5F, 30.20101F, 25.5F, 36.0F);
-      ((Path)localObject).cubicTo(25.5F, 41.798988F, 30.20101F, 46.5F, 36.0F, 46.5F);
+      ((Path)localObject).moveTo(33.0F, 57.0F);
+      ((Path)localObject).lineTo(26.121321F, 63.878681F);
+      ((Path)localObject).cubicTo(24.949747F, 65.050255F, 23.050253F, 65.050255F, 21.878679F, 63.878681F);
+      ((Path)localObject).cubicTo(21.316071F, 63.316071F, 21.0F, 62.553009F, 21.0F, 61.757359F);
+      ((Path)localObject).lineTo(21.0F, 57.0F);
+      ((Path)localObject).lineTo(10.5F, 57.0F);
+      ((Path)localObject).cubicTo(8.014719F, 57.0F, 6.0F, 54.985283F, 6.0F, 52.5F);
+      ((Path)localObject).lineTo(6.0F, 16.5F);
+      ((Path)localObject).cubicTo(6.0F, 14.014719F, 8.014719F, 12.0F, 10.5F, 12.0F);
+      ((Path)localObject).lineTo(61.5F, 12.0F);
+      ((Path)localObject).cubicTo(63.985283F, 12.0F, 66.0F, 14.014719F, 66.0F, 16.5F);
+      ((Path)localObject).lineTo(66.0F, 52.5F);
+      ((Path)localObject).cubicTo(66.0F, 54.985283F, 63.985283F, 57.0F, 61.5F, 57.0F);
+      ((Path)localObject).lineTo(33.0F, 57.0F);
       ((Path)localObject).close();
       WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
@@ -69,7 +72,7 @@ public final class akf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.akf
  * JD-Core Version:    0.7.0.1
  */

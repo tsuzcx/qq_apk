@@ -3,9 +3,8 @@ package com.tencent.mm.opensdk.modelbiz;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXNontaxPay
 {
@@ -19,7 +18,7 @@ public class WXNontaxPay
     public final boolean checkArgs()
     {
       AppMethodBeat.i(3926);
-      if (d.b(this.url))
+      if (b.b(this.url))
       {
         Log.i("MicroMsg.SDK.WXNontaxPay.Req", "url should not be empty");
         AppMethodBeat.o(3926);
@@ -54,38 +53,6 @@ public class WXNontaxPay
       super.fromBundle(paramBundle);
       paramBundle.putString("_wxapi_nontax_pay_req_url", this.url);
       AppMethodBeat.o(3927);
-    }
-  }
-  
-  public static final class Resp
-    extends BaseResp
-  {
-    public String wxOrderId;
-    
-    public final boolean checkArgs()
-    {
-      return true;
-    }
-    
-    public final void fromBundle(Bundle paramBundle)
-    {
-      AppMethodBeat.i(3917);
-      super.fromBundle(paramBundle);
-      this.wxOrderId = paramBundle.getString("_wxapi_nontax_pay_order_id");
-      AppMethodBeat.o(3917);
-    }
-    
-    public final int getType()
-    {
-      return 21;
-    }
-    
-    public final void toBundle(Bundle paramBundle)
-    {
-      AppMethodBeat.i(3916);
-      super.fromBundle(paramBundle);
-      paramBundle.putString("_wxapi_nontax_pay_order_id", this.wxOrderId);
-      AppMethodBeat.o(3916);
     }
   }
 }

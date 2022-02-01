@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.FIELD})
 public @interface i
 {
-  String eWA();
+  String fmk();
   
-  int eWB() default 0;
+  int fml() default 0;
 }
 
 

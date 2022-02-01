@@ -1,54 +1,110 @@
 package com.tencent.mm.model;
 
+import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class cf
 {
-  public Set<a> hqd;
-  public boolean isRunning;
+  private static boolean hIt = false;
+  private static long hIu = 0L;
   
-  public cf()
+  public static long aCK()
   {
-    AppMethodBeat.i(132286);
-    this.isRunning = false;
-    this.hqd = new HashSet();
-    AppMethodBeat.o(132286);
-  }
-  
-  public final boolean a(a parama)
-  {
-    AppMethodBeat.i(132287);
-    if (this.isRunning)
+    AppMethodBeat.i(132281);
+    if ((aj.cnC()) && (g.ajD().gBW))
     {
-      ac.e("MicroMsg.UninitForUEH", "add , is running , forbid add");
-      AppMethodBeat.o(132287);
-      return false;
+      g.ajD();
+      if (g.ajA().aiK()) {}
     }
-    boolean bool = this.hqd.add(parama);
-    AppMethodBeat.o(132287);
-    return bool;
-  }
-  
-  public final boolean b(a parama)
-  {
-    AppMethodBeat.i(132288);
-    if (this.isRunning)
+    else
     {
-      ac.e("MicroMsg.UninitForUEH", "remove , is running , forbid remove");
-      AppMethodBeat.o(132288);
-      return false;
+      ad.i("MicroMsg.TimeHelper", "account error");
+      AppMethodBeat.o(132281);
+      return 0L;
     }
-    boolean bool = this.hqd.remove(parama);
-    AppMethodBeat.o(132288);
-    return bool;
+    try
+    {
+      long l = aCL();
+      AppMethodBeat.o(132281);
+      return l;
+    }
+    catch (Throwable localThrowable)
+    {
+      ad.e("MicroMsg.TimeHelper", localThrowable.getMessage());
+      AppMethodBeat.o(132281);
+    }
+    return 0L;
   }
   
-  public static abstract interface a
+  public static long aCL()
   {
-    public abstract boolean azL();
+    AppMethodBeat.i(132283);
+    long l2 = SystemClock.elapsedRealtime();
+    g.ajD();
+    long l3 = g.ajC().ajl().a(al.a.Izf, l2);
+    g.ajD();
+    long l1 = g.ajC().ajl().a(al.a.Ize, 0L);
+    l2 = Math.max(0L, l2 - l3);
+    ad.d("MicroMsg.TimeHelper", "[getSyncServerTimeMs] SyncServerTime:" + hIu + " offset:" + l2);
+    if (0L < l1)
+    {
+      AppMethodBeat.o(132283);
+      return l2 + l1;
+    }
+    l1 = System.currentTimeMillis();
+    AppMethodBeat.o(132283);
+    return l1;
+  }
+  
+  public static long aCM()
+  {
+    AppMethodBeat.i(162133);
+    if (hIt)
+    {
+      l = aCL();
+      AppMethodBeat.o(162133);
+      return l;
+    }
+    long l = System.currentTimeMillis();
+    AppMethodBeat.o(162133);
+    return l;
+  }
+  
+  public static int aCN()
+  {
+    AppMethodBeat.i(132284);
+    int i = (int)(aCL() / 1000L);
+    AppMethodBeat.o(132284);
+    return i;
+  }
+  
+  public static void rL(long paramLong)
+  {
+    AppMethodBeat.i(132282);
+    long l = SystemClock.elapsedRealtime();
+    hIu = Math.max(paramLong, hIu);
+    g.ajD();
+    g.ajC().ajl().set(al.a.Ize, Long.valueOf(hIu));
+    g.ajD();
+    g.ajC().ajl().set(al.a.Izf, Long.valueOf(l));
+    ad.d("MicroMsg.TimeHelper", "[updateSyncServerTime] elapsedTime:%s SLastSyncServerTimeMs:%s", new Object[] { Long.valueOf(l), Long.valueOf(hIu) });
+    hIt = true;
+    AppMethodBeat.o(132282);
+  }
+  
+  public static long rM(long paramLong)
+  {
+    AppMethodBeat.i(132285);
+    long l = aCL() / 1000L;
+    AppMethodBeat.o(132285);
+    return l - paramLong;
   }
 }
 

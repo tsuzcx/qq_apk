@@ -1,43 +1,49 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.plugin.webview.luggage.l;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class z
-  extends bo<f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a<f>.a parama)
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78562);
-    ac.i("MicroMsg.JsApiHideOptionMenu", "invoke");
-    l locall = ((f)parama.bWR).eAo();
-    if (locall == null)
+    AppMethodBeat.i(78561);
+    ad.i("MicroMsg.JsApiHideMenuItems", "invokeInOwn");
+    JSONArray localJSONArray = paramb.chh.cgn.optJSONArray("menuList");
+    if (localJSONArray == null)
     {
-      ac.e("MicroMsg.JsApiHideOptionMenu", "actionBar is null");
-      parama.a("fail", null);
-      AppMethodBeat.o(78562);
+      ad.i("MicroMsg.JsApiHideMenuItems", "data is null");
+      paramb.a("invalid_data", null);
+      AppMethodBeat.o(78561);
       return;
     }
-    locall.eAH();
-    parama.a("", null);
-    AppMethodBeat.o(78562);
+    m localm = ((g)paramb.chg).ePe();
+    if (localm != null) {
+      localm.N(localJSONArray);
+    }
+    paramb.a("", null);
+    AppMethodBeat.o(78561);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "hideOptionMenu";
+    return "hideMenuItems";
   }
 }
 

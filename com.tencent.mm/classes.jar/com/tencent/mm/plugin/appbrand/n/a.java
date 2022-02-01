@@ -1,71 +1,40 @@
 package com.tencent.mm.plugin.appbrand.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.a.a;
+import com.tencent.mm.protocal.protobuf.cvp;
+import java.util.Locale;
 
-public abstract interface a
+public final class a
 {
-  public abstract String OY(String paramString);
-  
-  public abstract void a(String paramString, b paramb);
-  
-  public abstract void a(String paramString, b paramb, a parama);
-  
-  public abstract boolean bpc();
-  
-  public static abstract interface a
+  public static boolean a(int paramInt1, int paramInt2, cvp paramcvp)
   {
-    public abstract void b(c paramc);
+    return (paramInt1 == 0) && (paramInt2 == 0) && (paramcvp != null);
   }
   
-  public static abstract interface b
+  public static boolean e(a.a<?> parama)
   {
-    public abstract void a(a.d paramd);
+    AppMethodBeat.i(180325);
+    if ((parama != null) && (a(parama.errType, parama.errCode, parama.hNC)))
+    {
+      AppMethodBeat.o(180325);
+      return true;
+    }
+    AppMethodBeat.o(180325);
+    return false;
   }
   
-  public static class c
-    implements a
+  public static String f(a.a parama)
   {
-    public final String OY(String paramString)
+    AppMethodBeat.i(180326);
+    if (parama == null)
     {
-      return "__APP__";
+      AppMethodBeat.o(180326);
+      return "null";
     }
-    
-    public void a(String paramString, a.b paramb)
-    {
-      AppMethodBeat.i(176556);
-      if (paramb != null) {
-        paramb.a(a.d.lvn);
-      }
-      AppMethodBeat.o(176556);
-    }
-    
-    public final void a(String paramString, a.b paramb, a.a parama)
-    {
-      AppMethodBeat.i(193400);
-      a(paramString, paramb);
-      AppMethodBeat.o(193400);
-    }
-    
-    public final boolean bpc()
-    {
-      return false;
-    }
-  }
-  
-  public static enum d
-  {
-    static
-    {
-      AppMethodBeat.i(134931);
-      lvn = new d("OK", 0);
-      lvo = new d("FAIL", 1);
-      lvp = new d("CANCEL", 2);
-      lvq = new d("MODULE_NOT_FOUND", 3);
-      lvr = new d[] { lvn, lvo, lvp, lvq };
-      AppMethodBeat.o(134931);
-    }
-    
-    private d() {}
+    parama = String.format(Locale.US, "%d %d %s", new Object[] { Integer.valueOf(parama.errType), Integer.valueOf(parama.errCode), parama.errMsg });
+    AppMethodBeat.o(180326);
+    return parama;
   }
 }
 

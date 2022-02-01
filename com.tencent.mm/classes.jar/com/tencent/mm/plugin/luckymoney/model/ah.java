@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,11 +20,11 @@ public final class ah
 {
   long msgId;
   String talker;
-  public l uni;
-  public String unu;
-  public String unv;
-  public int unw;
-  public LuckyMoneyEmojiSwitch unx;
+  public l vpO;
+  public String vqa;
+  public String vqb;
+  public int vqc;
+  public LuckyMoneyEmojiSwitch vqd;
   
   public ah(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
@@ -34,12 +34,12 @@ public final class ah
   public ah(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(65286);
-    this.uni = null;
+    this.vpO = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
     localHashMap.put("limit", String.valueOf(paramInt1));
     localHashMap.put("offset", String.valueOf(paramInt2));
-    if (!bs.isNullOrNil(paramString2)) {
+    if (!bt.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
     localHashMap.put("ver", paramString3);
@@ -51,12 +51,12 @@ public final class ah
   public ah(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3, String paramString4)
   {
     AppMethodBeat.i(65285);
-    this.uni = null;
+    this.vpO = null;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
     localHashMap.put("limit", "11");
     localHashMap.put("offset", String.valueOf(paramInt));
-    if (!bs.isNullOrNil(paramString2)) {
+    if (!bt.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
     localHashMap.put("befortTimestamp", String.valueOf(paramLong));
@@ -66,7 +66,7 @@ public final class ah
     AppMethodBeat.o(65285);
   }
   
-  public final String bVR()
+  public final String cau()
   {
     return "/cgi-bin/mmpay-bin/qrydetailwxhb";
   }
@@ -81,40 +81,40 @@ public final class ah
     AppMethodBeat.i(65287);
     try
     {
-      this.uni = x.au(paramJSONObject);
-      this.unu = paramJSONObject.optString("processContent");
-      this.unx = LuckyMoneyEmojiSwitch.at(paramJSONObject);
-      ac.i("MicroMsg.NetSceneLuckyMoneyDetail", "luckyMoneyEmojiSwitch:%s", new Object[] { this.unx.toString() });
-      this.unv = paramJSONObject.optString("expression_md5");
-      this.unw = paramJSONObject.optInt("expression_type");
-      ac.i("MicroMsg.NetSceneLuckyMoneyDetail", "expressionmd5:%s expressiontype:%s", new Object[] { this.unv, Integer.valueOf(this.unw) });
-      g.agS();
-      paramInt = ((Integer)g.agR().agA().get(ah.a.GSZ, Integer.valueOf(0))).intValue();
-      int i = ((b)g.ab(b.class)).a(b.a.pSw, 0);
-      if ((bs.jl(paramInt, 1)) || (bs.jl(i, 1)))
+      this.vpO = x.aD(paramJSONObject);
+      this.vqa = paramJSONObject.optString("processContent");
+      this.vqd = LuckyMoneyEmojiSwitch.aC(paramJSONObject);
+      ad.i("MicroMsg.NetSceneLuckyMoneyDetail", "luckyMoneyEmojiSwitch:%s", new Object[] { this.vqd.toString() });
+      this.vqb = paramJSONObject.optString("expression_md5");
+      this.vqc = paramJSONObject.optInt("expression_type");
+      ad.i("MicroMsg.NetSceneLuckyMoneyDetail", "expressionmd5:%s expressiontype:%s", new Object[] { this.vqb, Integer.valueOf(this.vqc) });
+      g.ajD();
+      paramInt = ((Integer)g.ajC().ajl().get(al.a.IFE, Integer.valueOf(0))).intValue();
+      int i = ((b)g.ab(b.class)).a(b.a.qwX, 0);
+      if ((bt.jx(paramInt, 1)) || (bt.jx(i, 1)))
       {
-        if (this.unx == null) {
-          this.unx = new LuckyMoneyEmojiSwitch();
+        if (this.vqd == null) {
+          this.vqd = new LuckyMoneyEmojiSwitch();
         }
-        this.unx.ulX = 1;
-        this.unx.ulY = 1;
-        this.unx.ulZ = 1;
-        this.unx.uma = 1;
+        this.vqd.voD = 1;
+        this.vqd.voE = 1;
+        this.vqd.voF = 1;
+        this.vqd.voG = 1;
       }
-      ac.i("MicroMsg.NetSceneLuckyMoneyDetail", "localSwitch() luckyMoneyEmojiSwitch:%s ", new Object[] { this.unx.toString() });
+      ad.i("MicroMsg.NetSceneLuckyMoneyDetail", "localSwitch() luckyMoneyEmojiSwitch:%s ", new Object[] { this.vqd.toString() });
       AppMethodBeat.o(65287);
       return;
     }
     catch (JSONException paramString)
     {
-      ac.w("MicroMsg.NetSceneLuckyMoneyDetail", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
+      ad.w("MicroMsg.NetSceneLuckyMoneyDetail", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
       AppMethodBeat.o(65287);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ah
  * JD-Core Version:    0.7.0.1
  */

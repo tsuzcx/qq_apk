@@ -8,13 +8,13 @@ public abstract interface t
 {
   public abstract Collection<g> G(d.g.a.b<? super f, Boolean> paramb);
   
-  public abstract d.l.b.a.b.f.b fRH();
+  public abstract d.l.b.a.b.f.b gjg();
   
-  public abstract Collection<t> fTD();
+  public abstract Collection<t> glc();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.t
  * JD-Core Version:    0.7.0.1
  */

@@ -6,14 +6,14 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n;
 import com.tencent.mm.sdk.a.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public final class a
   implements Application.ActivityLifecycleCallbacks, n, c.a
 {
-  private static a vzU;
-  aw cqB;
+  private static a wGe;
+  ax cBy;
   String mProcessName;
   volatile int mState;
   
@@ -23,18 +23,18 @@ public final class a
     this.mState = 0;
     String str = "fg_killed_state_".concat(String.valueOf(paramString));
     this.mProcessName = paramString;
-    this.cqB = aw.aKU(str);
-    ac.d("MicroMsg.ForegroundKilledDetect", "MMKV stg :%s", new Object[] { str });
+    this.cBy = ax.aQA(str);
+    ad.d("MicroMsg.ForegroundKilledDetect", "MMKV stg :%s", new Object[] { str });
     AppMethodBeat.o(176886);
   }
   
-  public static a aph(String paramString)
+  public static a aum(String paramString)
   {
     AppMethodBeat.i(176887);
-    if (vzU == null) {
-      vzU = new a(paramString.replace(":", "_"));
+    if (wGe == null) {
+      wGe = new a(paramString.replace(":", "_"));
     }
-    paramString = vzU;
+    paramString = wGe;
     AppMethodBeat.o(176887);
     return paramString;
   }
@@ -44,45 +44,45 @@ public final class a
     this.mState |= paramInt;
   }
   
-  final void KW(int paramInt)
+  final void My(int paramInt)
   {
     this.mState &= (paramInt ^ 0xFFFFFFFF);
   }
   
-  public final String baV()
+  public final String bev()
   {
     AppMethodBeat.i(176893);
-    ac.d("MicroMsg.ForegroundKilledDetect", "%s : crash was caught! DO NOT report this case", new Object[] { this.mProcessName });
+    ad.d("MicroMsg.ForegroundKilledDetect", "%s : crash was caught! DO NOT report this case", new Object[] { this.mProcessName });
     int i = this.mState;
-    if (!dnY())
+    if (!dyu())
     {
       setState(4);
-      dnZ();
+      dyv();
     }
-    ac.d("MicroMsg.ForegroundKilledDetect", "%s: setStateCrashCaught state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
+    ad.d("MicroMsg.ForegroundKilledDetect", "%s: setStateCrashCaught state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
     AppMethodBeat.o(176893);
     return "";
   }
   
-  final boolean dnW()
+  final boolean dys()
   {
     return (this.mState & 0x1) == 1;
   }
   
-  final boolean dnX()
+  final boolean dyt()
   {
     return (this.mState & 0x2) == 2;
   }
   
-  final boolean dnY()
+  final boolean dyu()
   {
     return (this.mState & 0x4) == 4;
   }
   
-  final void dnZ()
+  final void dyv()
   {
     AppMethodBeat.i(176892);
-    this.cqB.encode("state", this.mState);
+    this.cBy.encode("state", this.mState);
     AppMethodBeat.o(176892);
   }
   
@@ -94,12 +94,12 @@ public final class a
   {
     AppMethodBeat.i(176889);
     int i = this.mState;
-    if (dnX())
+    if (dyt())
     {
-      KW(2);
-      dnZ();
+      My(2);
+      dyv();
     }
-    ac.d("MicroMsg.ForegroundKilledDetect", "%s: setStateActivityBackground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
+    ad.d("MicroMsg.ForegroundKilledDetect", "%s: setStateActivityBackground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
     AppMethodBeat.o(176889);
   }
   
@@ -107,12 +107,12 @@ public final class a
   {
     AppMethodBeat.i(176888);
     int i = this.mState;
-    if (!dnX())
+    if (!dyt())
     {
       setState(2);
-      dnZ();
+      dyv();
     }
-    ac.d("MicroMsg.ForegroundKilledDetect", "%s: setStateActivityForeground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
+    ad.d("MicroMsg.ForegroundKilledDetect", "%s: setStateActivityForeground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
     AppMethodBeat.o(176888);
   }
   
@@ -126,12 +126,12 @@ public final class a
   {
     AppMethodBeat.i(176891);
     int i = this.mState;
-    if (dnW())
+    if (dys())
     {
-      KW(1);
-      dnZ();
+      My(1);
+      dyv();
     }
-    ac.d("MicroMsg.ForegroundKilledDetect", "%s: setStateAppBackground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
+    ad.d("MicroMsg.ForegroundKilledDetect", "%s: setStateAppBackground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
     AppMethodBeat.o(176891);
   }
   
@@ -139,12 +139,12 @@ public final class a
   {
     AppMethodBeat.i(176890);
     int i = this.mState;
-    if (!dnW())
+    if (!dys())
     {
       setState(1);
-      dnZ();
+      dyv();
     }
-    ac.d("MicroMsg.ForegroundKilledDetect", "%s: setStateAppForeground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
+    ad.d("MicroMsg.ForegroundKilledDetect", "%s: setStateAppForeground state = %s -> %s", new Object[] { this.mProcessName, Integer.toBinaryString(i), Integer.toBinaryString(this.mState) });
     AppMethodBeat.o(176890);
   }
 }

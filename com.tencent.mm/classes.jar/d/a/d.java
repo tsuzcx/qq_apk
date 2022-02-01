@@ -3,25 +3,25 @@ package d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.a.a;
 import d.g.b.b;
-import d.g.b.f;
-import d.g.b.k;
+import d.g.b.i;
+import d.g.b.p;
 import d.l;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/ArrayAsCollection;", "T", "", "values", "", "isVarargs", "", "([Ljava/lang/Object;Z)V", "()Z", "size", "", "getSize", "()I", "getValues", "()[Ljava/lang/Object;", "[Ljava/lang/Object;", "contains", "element", "(Ljava/lang/Object;)Z", "containsAll", "elements", "isEmpty", "iterator", "", "toArray", "", "kotlin-stdlib"})
 final class d<T>
   implements a, Collection<T>
 {
-  private final boolean KTx;
-  private final T[] anD;
+  private final boolean MKw;
+  private final T[] apv;
   
   public d(T[] paramArrayOfT, boolean paramBoolean)
   {
     AppMethodBeat.i(129067);
-    this.anD = paramArrayOfT;
-    this.KTx = paramBoolean;
+    this.apv = paramArrayOfT;
+    this.MKw = paramBoolean;
     AppMethodBeat.o(129067);
   }
   
@@ -52,7 +52,7 @@ final class d<T>
   public final boolean contains(Object paramObject)
   {
     AppMethodBeat.i(129063);
-    boolean bool = e.contains(this.anD, paramObject);
+    boolean bool = e.contains(this.apv, paramObject);
     AppMethodBeat.o(129063);
     return bool;
   }
@@ -60,7 +60,7 @@ final class d<T>
   public final boolean containsAll(Collection<? extends Object> paramCollection)
   {
     AppMethodBeat.i(129064);
-    k.h(paramCollection, "elements");
+    p.h(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
     if (!((Collection)paramCollection).isEmpty())
     {
@@ -79,13 +79,13 @@ final class d<T>
   
   public final boolean isEmpty()
   {
-    return this.anD.length == 0;
+    return this.apv.length == 0;
   }
   
   public final Iterator<T> iterator()
   {
     AppMethodBeat.i(129065);
-    Iterator localIterator = b.ad(this.anD);
+    Iterator localIterator = b.ae(this.apv);
     AppMethodBeat.o(129065);
     return localIterator;
   }
@@ -117,16 +117,16 @@ final class d<T>
   public final Object[] toArray()
   {
     AppMethodBeat.i(129066);
-    Object[] arrayOfObject = this.anD;
-    boolean bool = this.KTx;
-    k.h(arrayOfObject, "$this$copyToArrayOfAny");
-    if ((bool) && (k.g(arrayOfObject.getClass(), [Ljava.lang.Object.class)))
+    Object[] arrayOfObject = this.apv;
+    boolean bool = this.MKw;
+    p.h(arrayOfObject, "$this$copyToArrayOfAny");
+    if ((bool) && (p.i(arrayOfObject.getClass(), [Ljava.lang.Object.class)))
     {
       AppMethodBeat.o(129066);
       return arrayOfObject;
     }
     arrayOfObject = Arrays.copyOf(arrayOfObject, arrayOfObject.length, [Ljava.lang.Object.class);
-    k.g(arrayOfObject, "java.util.Arrays.copyOf(… Array<Any?>::class.java)");
+    p.g(arrayOfObject, "java.util.Arrays.copyOf(… Array<Any?>::class.java)");
     AppMethodBeat.o(129066);
     return arrayOfObject;
   }
@@ -134,7 +134,7 @@ final class d<T>
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129074);
-    paramArrayOfT = f.a(this, paramArrayOfT);
+    paramArrayOfT = i.a(this, paramArrayOfT);
     AppMethodBeat.o(129074);
     return paramArrayOfT;
   }

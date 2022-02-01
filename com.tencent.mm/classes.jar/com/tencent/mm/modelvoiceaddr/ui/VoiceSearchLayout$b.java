@@ -2,7 +2,7 @@ package com.tencent.mm.modelvoiceaddr.ui;
 
 public abstract interface VoiceSearchLayout$b
 {
-  public abstract void fc(boolean paramBoolean);
+  public abstract void fe(boolean paramBoolean);
 }
 
 

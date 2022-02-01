@@ -1,7 +1,7 @@
 package d.l.b.a.b.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.t;
 
 public abstract interface b
@@ -17,7 +17,7 @@ public abstract interface b
     public static String a(b paramb, t paramt)
     {
       AppMethodBeat.i(61278);
-      k.h(paramt, "functionDescriptor");
+      p.h(paramt, "functionDescriptor");
       if (!paramb.h(paramt))
       {
         paramb = paramb.getDescription();
@@ -31,7 +31,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.n.b
  * JD-Core Version:    0.7.0.1
  */

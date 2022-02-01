@@ -28,24 +28,24 @@ public class NavigationMenuItemView
   extends ForegroundLinearLayout
   implements p.a
 {
-  private static final int[] hY = { 16842912 };
-  private final int fJ;
-  boolean gM;
-  private boolean iX;
-  final CheckedTextView iY;
-  FrameLayout iZ;
-  private j ik;
-  private ColorStateList ja;
-  private boolean jb;
-  private Drawable jc;
-  private final android.support.v4.view.a jd = new android.support.v4.view.a()
+  private static final int[] jT = { 16842912 };
+  private final int hA;
+  boolean iH;
+  private boolean kO;
+  final CheckedTextView kP;
+  FrameLayout kQ;
+  private ColorStateList kR;
+  private boolean kS;
+  private Drawable kT;
+  private final android.support.v4.view.a kU = new android.support.v4.view.a()
   {
     public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, c paramAnonymousc)
     {
       super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
-      paramAnonymousc.setCheckable(NavigationMenuItemView.this.gM);
+      paramAnonymousc.setCheckable(NavigationMenuItemView.this.iH);
     }
   };
+  private j ke;
   
   public NavigationMenuItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -57,27 +57,27 @@ public class NavigationMenuItemView
     super(paramContext, paramAttributeSet, paramInt);
     setOrientation(0);
     LayoutInflater.from(paramContext).inflate(2131493704, this, true);
-    this.fJ = paramContext.getResources().getDimensionPixelSize(2131166115);
-    this.iY = ((CheckedTextView)findViewById(2131299014));
-    this.iY.setDuplicateParentStateEnabled(true);
-    t.a(this.iY, this.jd);
+    this.hA = paramContext.getResources().getDimensionPixelSize(2131166115);
+    this.kP = ((CheckedTextView)findViewById(2131299014));
+    this.kP.setDuplicateParentStateEnabled(true);
+    t.a(this.kP, this.kU);
   }
   
   private void setActionView(View paramView)
   {
     if (paramView != null)
     {
-      if (this.iZ == null) {
-        this.iZ = ((FrameLayout)((ViewStub)findViewById(2131299013)).inflate());
+      if (this.kQ == null) {
+        this.kQ = ((FrameLayout)((ViewStub)findViewById(2131299013)).inflate());
       }
-      this.iZ.removeAllViews();
-      this.iZ.addView(paramView);
+      this.kQ.removeAllViews();
+      this.kQ.addView(paramView);
     }
   }
   
   public final void a(j paramj)
   {
-    this.ik = paramj;
+    this.ke = paramj;
     int i;
     StateListDrawable localStateListDrawable;
     if (paramj.isVisible())
@@ -91,7 +91,7 @@ public class NavigationMenuItemView
           break label247;
         }
         localStateListDrawable = new StateListDrawable();
-        localStateListDrawable.addState(hY, new ColorDrawable(localTypedValue.data));
+        localStateListDrawable.addState(jT, new ColorDrawable(localTypedValue.data));
         localStateListDrawable.addState(EMPTY_STATE_SET, new ColorDrawable(0));
         label95:
         t.a(this, localStateListDrawable);
@@ -104,7 +104,7 @@ public class NavigationMenuItemView
       setActionView(paramj.getActionView());
       setContentDescription(paramj.getContentDescription());
       bb.a(this, paramj.getTooltipText());
-      if ((this.ik.getTitle() != null) || (this.ik.getIcon() != null) || (this.ik.getActionView() == null)) {
+      if ((this.ke.getTitle() != null) || (this.ke.getIcon() != null) || (this.ke.getActionView() == null)) {
         break label252;
       }
       i = 1;
@@ -112,12 +112,12 @@ public class NavigationMenuItemView
       if (i == 0) {
         break label257;
       }
-      this.iY.setVisibility(8);
-      if (this.iZ != null)
+      this.kP.setVisibility(8);
+      if (this.kQ != null)
       {
-        paramj = (LinearLayoutCompat.LayoutParams)this.iZ.getLayoutParams();
+        paramj = (LinearLayoutCompat.LayoutParams)this.kQ.getLayoutParams();
         paramj.width = -1;
-        this.iZ.setLayoutParams(paramj);
+        this.kQ.setLayoutParams(paramj);
       }
     }
     label247:
@@ -131,29 +131,29 @@ public class NavigationMenuItemView
       break label95;
       i = 0;
       break label196;
-      this.iY.setVisibility(0);
-    } while (this.iZ == null);
+      this.kP.setVisibility(0);
+    } while (this.kQ == null);
     label257:
-    paramj = (LinearLayoutCompat.LayoutParams)this.iZ.getLayoutParams();
+    paramj = (LinearLayoutCompat.LayoutParams)this.kQ.getLayoutParams();
     paramj.width = -2;
-    this.iZ.setLayoutParams(paramj);
+    this.kQ.setLayoutParams(paramj);
   }
   
-  public final boolean bl()
+  public final boolean bA()
   {
     return false;
   }
   
   public j getItemData()
   {
-    return this.ik;
+    return this.ke;
   }
   
   protected int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-    if ((this.ik != null) && (this.ik.isCheckable()) && (this.ik.isChecked())) {
-      mergeDrawableStates(arrayOfInt, hY);
+    if ((this.ke != null) && (this.ke.isCheckable()) && (this.ke.isChecked())) {
+      mergeDrawableStates(arrayOfInt, jT);
     }
     return arrayOfInt;
   }
@@ -161,17 +161,17 @@ public class NavigationMenuItemView
   public void setCheckable(boolean paramBoolean)
   {
     refreshDrawableState();
-    if (this.gM != paramBoolean)
+    if (this.iH != paramBoolean)
     {
-      this.gM = paramBoolean;
-      this.jd.sendAccessibilityEvent(this.iY, 2048);
+      this.iH = paramBoolean;
+      this.kU.sendAccessibilityEvent(this.kP, 2048);
     }
   }
   
   public void setChecked(boolean paramBoolean)
   {
     refreshDrawableState();
-    this.iY.setChecked(paramBoolean);
+    this.kP.setChecked(paramBoolean);
   }
   
   public void setHorizontalPadding(int paramInt)
@@ -185,55 +185,55 @@ public class NavigationMenuItemView
     if (paramDrawable != null)
     {
       localObject = paramDrawable;
-      if (this.jb)
+      if (this.kS)
       {
         localObject = paramDrawable.getConstantState();
         if (localObject == null)
         {
           localObject = android.support.v4.graphics.drawable.a.i(paramDrawable).mutate();
-          android.support.v4.graphics.drawable.a.a((Drawable)localObject, this.ja);
+          android.support.v4.graphics.drawable.a.a((Drawable)localObject, this.kR);
         }
       }
       else
       {
-        ((Drawable)localObject).setBounds(0, 0, this.fJ, this.fJ);
+        ((Drawable)localObject).setBounds(0, 0, this.hA, this.hA);
         paramDrawable = (Drawable)localObject;
       }
     }
     for (;;)
     {
-      q.a(this.iY, paramDrawable, null, null, null);
+      q.a(this.kP, paramDrawable, null, null, null);
       return;
       paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
       break;
-      if (this.iX)
+      if (this.kO)
       {
-        if (this.jc == null)
+        if (this.kT == null)
         {
-          this.jc = f.c(getResources(), 2131233417, getContext().getTheme());
-          if (this.jc != null) {
-            this.jc.setBounds(0, 0, this.fJ, this.fJ);
+          this.kT = f.c(getResources(), 2131233417, getContext().getTheme());
+          if (this.kT != null) {
+            this.kT.setBounds(0, 0, this.hA, this.hA);
           }
         }
-        paramDrawable = this.jc;
+        paramDrawable = this.kT;
       }
     }
   }
   
   public void setIconPadding(int paramInt)
   {
-    this.iY.setCompoundDrawablePadding(paramInt);
+    this.kP.setCompoundDrawablePadding(paramInt);
   }
   
   void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.ja = paramColorStateList;
-    if (this.ja != null) {}
+    this.kR = paramColorStateList;
+    if (this.kR != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jb = bool;
-      if (this.ik != null) {
-        setIcon(this.ik.getIcon());
+      this.kS = bool;
+      if (this.ke != null) {
+        setIcon(this.ke.getIcon());
       }
       return;
     }
@@ -241,22 +241,22 @@ public class NavigationMenuItemView
   
   public void setNeedsEmptyIcon(boolean paramBoolean)
   {
-    this.iX = paramBoolean;
+    this.kO = paramBoolean;
   }
   
   public void setTextAppearance(int paramInt)
   {
-    q.d(this.iY, paramInt);
+    q.d(this.kP, paramInt);
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    this.iY.setTextColor(paramColorStateList);
+    this.kP.setTextColor(paramColorStateList);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.iY.setText(paramCharSequence);
+    this.kP.setText(paramCharSequence);
   }
 }
 

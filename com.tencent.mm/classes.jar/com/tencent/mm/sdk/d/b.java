@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.Serializable;
 
 public class b
@@ -21,7 +21,7 @@ public class b
   {
     AppMethodBeat.i(158008);
     super.enter();
-    ac.i("LogStateTransitionState", "entering " + this.name);
+    ad.i("LogStateTransitionState", "entering " + this.name);
     AppMethodBeat.o(158008);
   }
   
@@ -29,13 +29,13 @@ public class b
   {
     AppMethodBeat.i(158009);
     super.exit();
-    ac.i("LogStateTransitionState", "exiting " + this.name);
+    ad.i("LogStateTransitionState", "exiting " + this.name);
     AppMethodBeat.o(158009);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.d.b
  * JD-Core Version:    0.7.0.1
  */

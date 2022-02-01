@@ -5,20 +5,20 @@ import rx.e;
 
 public final class c<T>
 {
-  private static final c McE;
-  private static final Object McF;
-  private static final Object McG;
+  private static final c NXG;
+  private static final Object NXH;
+  private static final Object NXI;
   
   static
   {
     AppMethodBeat.i(90234);
-    McE = new c();
-    McF = new c.1();
-    McG = new c.2();
+    NXG = new c();
+    NXH = new c.1();
+    NXI = new c.2();
     AppMethodBeat.o(90234);
   }
   
-  public static Object L(Throwable paramThrowable)
+  public static Object M(Throwable paramThrowable)
   {
     AppMethodBeat.i(90232);
     paramThrowable = new c.a(paramThrowable);
@@ -29,15 +29,15 @@ public final class c<T>
   public static boolean a(e<? super T> parame, Object paramObject)
   {
     AppMethodBeat.i(90233);
-    if (paramObject == McF)
+    if (paramObject == NXH)
     {
-      parame.ggi();
+      parame.gyM();
       AppMethodBeat.o(90233);
       return true;
     }
-    if (paramObject == McG)
+    if (paramObject == NXI)
     {
-      parame.gd(null);
+      parame.gz(null);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -49,7 +49,7 @@ public final class c<T>
         AppMethodBeat.o(90233);
         return true;
       }
-      parame.gd(paramObject);
+      parame.gz(paramObject);
       AppMethodBeat.o(90233);
       return false;
     }
@@ -58,32 +58,32 @@ public final class c<T>
     throw parame;
   }
   
+  public static Object gB(T paramT)
+  {
+    Object localObject = paramT;
+    if (paramT == null) {
+      localObject = NXI;
+    }
+    return localObject;
+  }
+  
   public static T getValue(Object paramObject)
   {
     Object localObject = paramObject;
-    if (paramObject == McG) {
+    if (paramObject == NXI) {
       localObject = null;
     }
     return localObject;
   }
   
-  public static Object gf(T paramT)
+  public static <T> c<T> gyW()
   {
-    Object localObject = paramT;
-    if (paramT == null) {
-      localObject = McG;
-    }
-    return localObject;
+    return NXG;
   }
   
-  public static <T> c<T> ggs()
+  public static Object gyX()
   {
-    return McE;
-  }
-  
-  public static Object ggt()
-  {
-    return McF;
+    return NXH;
   }
 }
 

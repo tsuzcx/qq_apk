@@ -11,30 +11,30 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cl.a.a;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.aq;
 
 public class RoundProgressBtn
   extends View
 {
-  private float AeM;
-  private int Jls;
-  private int Jlt;
-  private int Jlu;
-  private int Jlv;
-  private int jTr;
+  private float Bwy;
+  private int LcP;
+  private int LcQ;
+  private int LcR;
+  private int LcS;
+  private int knF;
   private int max;
-  private int pGo;
   private Paint paint;
   private int progress;
-  private float sYF;
+  private int qjT;
+  private float tWs;
   
   public RoundProgressBtn(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159685);
-    this.Jlt = 0;
-    this.Jlu = 0;
-    this.Jlv = ao.av(getContext(), 2131165274);
+    this.LcQ = 0;
+    this.LcR = 0;
+    this.LcS = aq.ay(getContext(), 2131165274);
     c(paramContext, paramAttributeSet, 0);
     AppMethodBeat.o(159685);
   }
@@ -43,9 +43,9 @@ public class RoundProgressBtn
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159686);
-    this.Jlt = 0;
-    this.Jlu = 0;
-    this.Jlv = ao.av(getContext(), 2131165274);
+    this.LcQ = 0;
+    this.LcR = 0;
+    this.LcS = aq.ay(getContext(), 2131165274);
     c(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.o(159686);
   }
@@ -57,13 +57,13 @@ public class RoundProgressBtn
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RoundProgressBtn, paramInt, 0);
-      this.Jls = paramContext.getColor(4, getContext().getResources().getColor(2131100813));
-      this.sYF = paramContext.getDimension(5, 0.0F);
-      this.jTr = paramContext.getColor(2, getContext().getResources().getColor(2131101171));
-      this.AeM = paramContext.getDimension(3, this.sYF);
+      this.LcP = paramContext.getColor(4, getContext().getResources().getColor(2131100813));
+      this.tWs = paramContext.getDimension(5, 0.0F);
+      this.knF = paramContext.getColor(2, getContext().getResources().getColor(2131101171));
+      this.Bwy = paramContext.getDimension(3, this.tWs);
       this.max = paramContext.getInt(0, 100);
       this.progress = paramContext.getInt(1, 0);
-      this.pGo = paramContext.getInt(6, -90);
+      this.qjT = paramContext.getInt(6, -90);
       paramContext.recycle();
     }
     AppMethodBeat.o(159687);
@@ -79,31 +79,31 @@ public class RoundProgressBtn
     AppMethodBeat.i(159688);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    if (this.sYF == 0.0F) {
-      this.sYF = ((int)(getWidth() / 2 * 0.167D));
+    if (this.tWs == 0.0F) {
+      this.tWs = ((int)(getWidth() / 2 * 0.167D));
     }
-    this.AeM = this.sYF;
-    this.Jlt = ((int)this.sYF);
-    this.Jlu = ((int)(i * 0.667F));
-    int j = (int)(i - this.sYF / 2.0F);
-    this.paint.setStrokeWidth(this.sYF);
-    this.paint.setColor(this.Jls);
+    this.Bwy = this.tWs;
+    this.LcQ = ((int)this.tWs);
+    this.LcR = ((int)(i * 0.667F));
+    int j = (int)(i - this.tWs / 2.0F);
+    this.paint.setStrokeWidth(this.tWs);
+    this.paint.setColor(this.LcP);
     this.paint.setAntiAlias(true);
     this.paint.setStyle(Paint.Style.STROKE);
     paramCanvas.drawCircle(i, i, j, this.paint);
-    this.paint.setStrokeWidth(this.AeM);
-    this.paint.setColor(this.jTr);
+    this.paint.setStrokeWidth(this.Bwy);
+    this.paint.setColor(this.knF);
     RectF localRectF = new RectF(i - j, i - j, i + j, j + i);
     j = this.progress * 360 / this.max;
-    paramCanvas.drawArc(localRectF, this.pGo, j, false, this.paint);
+    paramCanvas.drawArc(localRectF, this.qjT, j, false, this.paint);
     this.paint.setStrokeWidth(0.0F);
     this.paint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawRect(i - this.sYF * 1.5F, i - this.Jlu / 2, i - this.sYF * 0.5F, this.Jlu / 2 + i, this.paint);
+    paramCanvas.drawRect(i - this.tWs * 1.5F, i - this.LcR / 2, i - this.tWs * 0.5F, this.LcR / 2 + i, this.paint);
     float f1 = i;
-    float f2 = this.Jlt;
-    float f3 = i - this.Jlu / 2;
+    float f2 = this.LcQ;
+    float f3 = i - this.LcR / 2;
     float f4 = i;
-    paramCanvas.drawRect(f2 * 0.5F + f1, f3, this.Jlt * 1.5F + f4, this.Jlu / 2 + i, this.paint);
+    paramCanvas.drawRect(f2 * 0.5F + f1, f3, this.LcQ * 1.5F + f4, this.LcR / 2 + i, this.paint);
     AppMethodBeat.o(159688);
   }
   

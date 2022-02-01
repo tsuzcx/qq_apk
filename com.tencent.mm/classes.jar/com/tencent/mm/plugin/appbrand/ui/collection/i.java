@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.desktop.DragRecyclerView;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "plugin-appbrand-integration_release"})
 public final class i
   extends DragRecyclerView
 {

@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 public final class i$d
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
   public i$d(a parama)
   {

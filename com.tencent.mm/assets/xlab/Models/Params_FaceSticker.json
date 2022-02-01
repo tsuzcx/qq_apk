@@ -9,5 +9,5 @@
   "ExportLandmarks3D" : true,
   "ExportVertices" : true,
   "ExportNormal" : false,
-  "ExportAction": true
+  "ExportAction" : true
 }

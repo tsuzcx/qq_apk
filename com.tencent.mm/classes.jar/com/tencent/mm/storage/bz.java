@@ -1,113 +1,69 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fz;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class bz
-  extends fz
+  extends j<by>
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  public e db;
   
   static
   {
-    AppMethodBeat.i(43306);
-    c.a locala = new c.a();
-    locala.GvF = new Field[5];
-    locala.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "encryptUsername";
-    locala.GvH.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "encryptUsername";
-    locala.columns[1] = "conRemark";
-    locala.GvH.put("conRemark", "TEXT default '' ");
-    localStringBuilder.append(" conRemark TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "contactLabels";
-    locala.GvH.put("contactLabels", "TEXT default '' ");
-    localStringBuilder.append(" contactLabels TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "conDescription";
-    locala.GvH.put("conDescription", "TEXT default '' ");
-    localStringBuilder.append(" conDescription TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "conPhone";
-    locala.GvH.put("conPhone", "TEXT default '' ");
-    localStringBuilder.append(" conPhone TEXT default '' ");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(43306);
+    AppMethodBeat.i(32885);
+    SQL_CREATE = new String[] { j.getCreateSQLs(by.info, "OpenMsgListener") };
+    AppMethodBeat.o(32885);
   }
   
-  public bz()
+  public bz(e parame)
   {
-    AppMethodBeat.i(43304);
-    this.field_encryptUsername = "";
-    this.field_conRemark = "";
-    AppMethodBeat.o(43304);
+    super(parame, by.info, "OpenMsgListener", null);
+    AppMethodBeat.i(32881);
+    this.db = parame;
+    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
+    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
+    AppMethodBeat.o(32881);
   }
   
-  public bz(String paramString)
+  public final by aUm(String paramString)
   {
-    this();
-    AppMethodBeat.i(43302);
-    this.field_conRemark = "";
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    AppMethodBeat.i(32882);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(32882);
+      return null;
     }
-    this.field_encryptUsername = str;
-    AppMethodBeat.o(43302);
-  }
-  
-  public bz(String paramString1, String paramString2)
-  {
-    this();
-    AppMethodBeat.i(43303);
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
+    Cursor localCursor = this.db.a("OpenMsgListener", null, "appId=?", new String[] { bt.aQN(paramString) }, null, null, null, 2);
+    if (!localCursor.moveToFirst())
+    {
+      ad.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:".concat(String.valueOf(paramString)));
+      localCursor.close();
+      AppMethodBeat.o(32882);
+      return null;
     }
-    this.field_encryptUsername = str;
-    paramString1 = paramString2;
-    if (paramString2 == null) {
-      paramString1 = "";
-    }
-    this.field_conRemark = paramString1;
-    AppMethodBeat.o(43303);
+    paramString = new by();
+    paramString.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(32882);
+    return paramString;
   }
   
-  public final String Tm()
+  public final Cursor fsy()
   {
-    return this.field_conRemark;
-  }
-  
-  public final String Tq()
-  {
-    return this.field_encryptUsername;
-  }
-  
-  protected final Object clone()
-  {
-    AppMethodBeat.i(43305);
-    Object localObject = super.clone();
-    AppMethodBeat.o(43305);
-    return localObject;
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return info;
+    AppMethodBeat.i(32883);
+    Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
+    AppMethodBeat.o(32883);
+    return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.bz
  * JD-Core Version:    0.7.0.1
  */

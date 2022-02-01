@@ -6,27 +6,27 @@ import java.util.Stack;
 
 public final class g
 {
-  private static final a Jrf;
+  private static final a LiK;
   
   static
   {
     AppMethodBeat.i(74824);
-    Jrf = new a();
+    LiK = new a();
     AppMethodBeat.o(74824);
   }
   
-  public static final <Var1, Var2> c<com.tencent.mm.vending.j.c<Var1, Var2>> J(Var1 paramVar1, Var2 paramVar2)
+  public static final <Var1, Var2> c<com.tencent.mm.vending.j.c<Var1, Var2>> L(Var1 paramVar1, Var2 paramVar2)
   {
     AppMethodBeat.i(74811);
-    paramVar1 = new e().G(new Object[] { paramVar1, paramVar2 });
+    paramVar1 = new e().H(new Object[] { paramVar1, paramVar2 });
     AppMethodBeat.o(74811);
     return paramVar1;
   }
   
-  public static <$1, $2> com.tencent.mm.vending.j.c<$1, $2> K($1 param$1, $2 param$2)
+  public static <$1, $2> com.tencent.mm.vending.j.c<$1, $2> M($1 param$1, $2 param$2)
   {
     AppMethodBeat.i(74818);
-    param$1 = com.tencent.mm.vending.j.a.L(param$1, param$2);
+    param$1 = com.tencent.mm.vending.j.a.N(param$1, param$2);
     AppMethodBeat.o(74818);
     return param$1;
   }
@@ -34,7 +34,7 @@ public final class g
   public static final <Var1, Var2, Var3, Var4, Var5, Var6> c<com.tencent.mm.vending.j.g<Var1, Var2, Var3, Var4, Var5, Var6>> a(Var1 paramVar1, Var2 paramVar2, Var3 paramVar3, Var4 paramVar4, Var5 paramVar5, Var6 paramVar6)
   {
     AppMethodBeat.i(74815);
-    paramVar1 = new e().G(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4, paramVar5, paramVar6 });
+    paramVar1 = new e().H(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4, paramVar5, paramVar6 });
     AppMethodBeat.o(74815);
     return paramVar1;
   }
@@ -42,22 +42,9 @@ public final class g
   public static final <Var1, Var2, Var3, Var4, Var5, Var6, Var7> c<h<Var1, Var2, Var3, Var4, Var5, Var6, Var7>> a(Var1 paramVar1, Var2 paramVar2, Var3 paramVar3, Var4 paramVar4, Var5 paramVar5, Var6 paramVar6, Var7 paramVar7)
   {
     AppMethodBeat.i(74816);
-    paramVar1 = new e().G(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4, paramVar5, paramVar6, paramVar7 });
+    paramVar1 = new e().H(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4, paramVar5, paramVar6, paramVar7 });
     AppMethodBeat.o(74816);
     return paramVar1;
-  }
-  
-  public static final void a(b paramVarArgs)
-  {
-    AppMethodBeat.i(74822);
-    if (paramVarArgs == null)
-    {
-      com.tencent.mm.vending.f.a.w("Vending.QuickAccess", "dummy mario", new Object[0]);
-      AppMethodBeat.o(74822);
-      return;
-    }
-    paramVarArgs.eb(null);
-    AppMethodBeat.o(74822);
   }
   
   public static final void a(b paramb, Object... paramVarArgs)
@@ -71,7 +58,7 @@ public final class g
     }
     if (paramVarArgs.length > 0)
     {
-      paramb.F(paramVarArgs);
+      paramb.G(paramVarArgs);
       AppMethodBeat.o(74821);
       return;
     }
@@ -82,21 +69,21 @@ public final class g
   public static final <_Var> void a(d<_Var> paramd)
   {
     AppMethodBeat.i(74823);
-    b localb = fxt();
+    b localb = fOg();
     paramd.a(new d.b()
     {
-      public final void bo(_Var paramAnonymous_Var)
+      public final void bq(_Var paramAnonymous_Var)
       {
         AppMethodBeat.i(74808);
-        g.a(this.cda, new Object[] { paramAnonymous_Var });
+        g.a(this.cnr, new Object[] { paramAnonymous_Var });
         AppMethodBeat.o(74808);
       }
     }).a(new d.a()
     {
-      public final void cc(Object paramAnonymousObject)
+      public final void ce(Object paramAnonymousObject)
       {
         AppMethodBeat.i(74825);
-        this.cda.eb(paramAnonymousObject);
+        this.cnr.ee(paramAnonymousObject);
         AppMethodBeat.o(74825);
       }
     });
@@ -106,7 +93,7 @@ public final class g
   public static final <Var1, Var2, Var3, Var4> c<com.tencent.mm.vending.j.e<Var1, Var2, Var3, Var4>> b(Var1 paramVar1, Var2 paramVar2, Var3 paramVar3, Var4 paramVar4)
   {
     AppMethodBeat.i(74813);
-    paramVar1 = new e().G(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4 });
+    paramVar1 = new e().H(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4 });
     AppMethodBeat.o(74813);
     return paramVar1;
   }
@@ -114,65 +101,78 @@ public final class g
   public static final <Var1, Var2, Var3, Var4, Var5> c<com.tencent.mm.vending.j.f<Var1, Var2, Var3, Var4, Var5>> b(Var1 paramVar1, Var2 paramVar2, Var3 paramVar3, Var4 paramVar4, Var5 paramVar5)
   {
     AppMethodBeat.i(74814);
-    paramVar1 = new e().G(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4, paramVar5 });
+    paramVar1 = new e().H(new Object[] { paramVar1, paramVar2, paramVar3, paramVar4, paramVar5 });
     AppMethodBeat.o(74814);
     return paramVar1;
   }
   
-  public static final <Var1> c<Var1> ef(Var1 paramVar1)
+  public static final void b(b paramVarArgs)
+  {
+    AppMethodBeat.i(74822);
+    if (paramVarArgs == null)
+    {
+      com.tencent.mm.vending.f.a.w("Vending.QuickAccess", "dummy mario", new Object[0]);
+      AppMethodBeat.o(74822);
+      return;
+    }
+    paramVarArgs.ee(null);
+    AppMethodBeat.o(74822);
+  }
+  
+  public static final <Var1> c<Var1> ei(Var1 paramVar1)
   {
     AppMethodBeat.i(74810);
-    paramVar1 = new e().G(new Object[] { paramVar1 });
+    paramVar1 = new e().H(new Object[] { paramVar1 });
     AppMethodBeat.o(74810);
     return paramVar1;
   }
   
-  public static <$1> com.tencent.mm.vending.j.b<$1> eg($1 param$1)
+  public static <$1> com.tencent.mm.vending.j.b<$1> ej($1 param$1)
   {
     AppMethodBeat.i(74817);
-    param$1 = com.tencent.mm.vending.j.a.eh(param$1);
+    param$1 = com.tencent.mm.vending.j.a.ek(param$1);
     AppMethodBeat.o(74817);
     return param$1;
   }
   
-  public static final b fxn()
+  public static final b fOa()
   {
     AppMethodBeat.i(74819);
-    Object localObject = f.fxr();
-    Stack localStack = (Stack)((f)localObject).Jre.get();
+    Object localObject = f.fOe();
+    Stack localStack = (Stack)((f)localObject).LiJ.get();
     if (localStack == null) {
       localObject = null;
     }
     while (localObject != null)
     {
-      localObject = ((c)localObject).fxn();
+      localObject = ((c)localObject).fOa();
       AppMethodBeat.o(74819);
       return localObject;
       if (localStack.size() == 0) {
         localObject = null;
       } else {
-        localObject = (c)((Stack)((f)localObject).Jre.get()).peek();
+        localObject = (c)((Stack)((f)localObject).LiJ.get()).peek();
       }
     }
-    localObject = Jrf;
+    localObject = LiK;
     AppMethodBeat.o(74819);
     return localObject;
   }
   
-  public static final c<Void> fxs()
+  public static final c<Void> fOf()
   {
     AppMethodBeat.i(74809);
-    c localc = new e().G(new Object[0]);
+    c localc = new e().H(new Object[0]);
     AppMethodBeat.o(74809);
     return localc;
   }
   
-  public static final b fxt()
+  public static final b fOg()
   {
     AppMethodBeat.i(74820);
-    b localb = fxn();
+    b localb = fOa();
     if (localb != null) {
-      localb.fxm();
+      localb.fNZ();
     }
     for (;;)
     {
@@ -185,7 +185,7 @@ public final class g
   public static final <Var1, Var2, Var3> c<com.tencent.mm.vending.j.d<Var1, Var2, Var3>> h(Var1 paramVar1, Var2 paramVar2, Var3 paramVar3)
   {
     AppMethodBeat.i(74812);
-    paramVar1 = new e().G(new Object[] { paramVar1, paramVar2, paramVar3 });
+    paramVar1 = new e().H(new Object[] { paramVar1, paramVar2, paramVar3 });
     AppMethodBeat.o(74812);
     return paramVar1;
   }

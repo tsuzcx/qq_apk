@@ -3,88 +3,86 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.os.Bundle;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.f;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.stub.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class k
 {
-  public static k Cya;
-  private String Cyb;
+  public static k EbJ;
+  private String EbK;
   private String bssid;
-  boolean hqq = false;
-  private e kYt = null;
+  boolean hII = false;
+  private e lvv = null;
   private int networkType;
   private String sessionId;
   private String ssid;
-  String yeN;
+  String zuO;
   
   static
   {
     AppMethodBeat.i(79943);
-    Cya = new k();
+    EbJ = new k();
     AppMethodBeat.o(79943);
   }
   
   private void o(int paramInt1, String paramString, int paramInt2)
   {
     AppMethodBeat.i(79942);
-    f localf = new f();
-    localf.n("20adInfo", this.yeN + ",");
-    localf.n("21optype", paramInt1 + ",");
-    localf.n("22sessionId", this.sessionId + ",");
-    localf.n("23currURL", this.Cyb + ",");
-    localf.n("24referURL", paramString + ",");
-    localf.n("25errCode", paramInt2 + ",");
-    localf.n("26networkType", this.networkType + ",");
-    localf.n("27timeStamp", bs.eWj() + ",");
-    localf.n("28ssid", this.ssid + ",");
-    localf.n("29bssid", this.bssid + ",");
-    ac.i("MicroMsg.WebViewReportUtil", "report logbuffer adPageOp(13791): optype:%d, sessionId:%s, currUrl:%s, referUrl:%s, errCode:%d, networkType:%d", new Object[] { Integer.valueOf(paramInt1), this.sessionId, this.Cyb, paramString, Integer.valueOf(paramInt2), Integer.valueOf(this.networkType) });
-    h.wUl.f(13791, new Object[] { localf });
-    if (this.kYt == null)
+    com.tencent.mm.modelsns.g localg = new com.tencent.mm.modelsns.g();
+    localg.m("20adInfo", this.zuO + ",");
+    localg.m("21optype", paramInt1 + ",");
+    localg.m("22sessionId", this.sessionId + ",");
+    localg.m("23currURL", this.EbK + ",");
+    localg.m("24referURL", paramString + ",");
+    localg.m("25errCode", paramInt2 + ",");
+    localg.m("26networkType", this.networkType + ",");
+    localg.m("27timeStamp", bt.flT() + ",");
+    localg.m("28ssid", this.ssid + ",");
+    localg.m("29bssid", this.bssid + ",");
+    ad.i("MicroMsg.WebViewReportUtil", "report logbuffer adPageOp(13791): optype:%d, sessionId:%s, currUrl:%s, referUrl:%s, errCode:%d, networkType:%d", new Object[] { Integer.valueOf(paramInt1), this.sessionId, this.EbK, paramString, Integer.valueOf(paramInt2), Integer.valueOf(this.networkType) });
+    com.tencent.mm.plugin.report.service.g.yhR.f(13791, new Object[] { localg });
+    if (this.lvv == null)
     {
-      ac.e("MicroMsg.WebViewReportUtil", "report invoker null");
+      ad.e("MicroMsg.WebViewReportUtil", "report invoker null");
       AppMethodBeat.o(79942);
       return;
     }
     paramString = new Bundle();
-    paramString.putString("ad_report_data_str", localf.toString());
+    paramString.putString("ad_report_data_str", localg.toString());
     try
     {
-      this.kYt.x(1295, paramString);
+      this.lvv.y(1295, paramString);
       AppMethodBeat.o(79942);
       return;
     }
     catch (RemoteException paramString)
     {
-      ac.e("MicroMsg.WebViewReportUtil", "report: exp:%s", new Object[] { paramString });
+      ad.e("MicroMsg.WebViewReportUtil", "report: exp:%s", new Object[] { paramString });
       AppMethodBeat.o(79942);
     }
   }
   
-  public final void Bb()
+  public final void CA()
   {
-    AppMethodBeat.i(188380);
-    ac.v("MicroMsg.WebViewReportUtil", "onPageFinished traceid %s", new Object[] { this.yeN });
-    if (bs.isNullOrNil(this.yeN))
+    AppMethodBeat.i(208024);
+    ad.v("MicroMsg.WebViewReportUtil", "onPageFinished traceid %s", new Object[] { this.zuO });
+    if (bt.isNullOrNil(this.zuO))
     {
-      AppMethodBeat.o(188380);
+      AppMethodBeat.o(208024);
       return;
     }
-    lA(2);
-    AppMethodBeat.o(188380);
+    ma(2);
+    AppMethodBeat.o(208024);
   }
   
-  public final void VI(int paramInt)
+  public final void Xx(int paramInt)
   {
     AppMethodBeat.i(79939);
-    ac.v("MicroMsg.WebViewReportUtil", "onReceivedError traceid %s", new Object[] { this.yeN });
-    if (bs.isNullOrNil(this.yeN))
+    ad.v("MicroMsg.WebViewReportUtil", "onReceivedError traceid %s", new Object[] { this.zuO });
+    if (bt.isNullOrNil(this.zuO))
     {
       AppMethodBeat.o(79939);
       return;
@@ -95,53 +93,53 @@ public final class k
   
   public final void b(e parame)
   {
-    this.kYt = parame;
+    this.lvv = parame;
   }
   
-  public final void bK(String paramString)
+  public final void cD(String paramString)
   {
-    AppMethodBeat.i(188379);
-    ac.v("MicroMsg.WebViewReportUtil", "onPageStarted url %s, currUrl %s, traceid %s", new Object[] { paramString, this.Cyb, this.yeN });
-    String str = this.Cyb;
-    this.Cyb = paramString;
-    if (bs.isNullOrNil(this.yeN))
+    AppMethodBeat.i(208023);
+    ad.v("MicroMsg.WebViewReportUtil", "onPageStarted url %s, currUrl %s, traceid %s", new Object[] { paramString, this.EbK, this.zuO });
+    String str = this.EbK;
+    this.EbK = paramString;
+    if (bt.isNullOrNil(this.zuO))
     {
-      AppMethodBeat.o(188379);
+      AppMethodBeat.o(208023);
       return;
     }
     o(1, str, 0);
-    AppMethodBeat.o(188379);
+    AppMethodBeat.o(208023);
   }
   
   public final void close()
   {
     AppMethodBeat.i(79940);
-    ac.v("MicroMsg.WebViewReportUtil", "close traceid %s", new Object[] { this.yeN });
-    this.hqq = true;
-    if (bs.isNullOrNil(this.yeN))
+    ad.v("MicroMsg.WebViewReportUtil", "close traceid %s", new Object[] { this.zuO });
+    this.hII = true;
+    if (bt.isNullOrNil(this.zuO))
     {
       AppMethodBeat.o(79940);
       return;
     }
-    lA(4);
-    this.yeN = null;
+    ma(4);
+    this.zuO = null;
     AppMethodBeat.o(79940);
   }
   
-  public final void kC(String paramString1, String paramString2)
+  public final void kY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(79938);
-    ac.i("MicroMsg.WebViewReportUtil", "setting traceid " + paramString1 + ",usename " + paramString2);
-    this.yeN = paramString1;
-    this.networkType = com.tencent.mm.plugin.webview.model.ax.bhK();
-    this.sessionId = ah.dg(paramString2 + bs.eWj());
-    this.ssid = com.tencent.mm.sdk.platformtools.ax.iL(ai.getContext());
-    this.bssid = com.tencent.mm.sdk.platformtools.ax.iM(ai.getContext());
-    this.hqq = false;
+    ad.i("MicroMsg.WebViewReportUtil", "setting traceid " + paramString1 + ",usename " + paramString2);
+    this.zuO = paramString1;
+    this.networkType = com.tencent.mm.plugin.webview.model.ay.blr();
+    this.sessionId = ai.ee(paramString2 + bt.flT());
+    this.ssid = com.tencent.mm.sdk.platformtools.ay.iV(aj.getContext());
+    this.bssid = com.tencent.mm.sdk.platformtools.ay.iW(aj.getContext());
+    this.hII = false;
     AppMethodBeat.o(79938);
   }
   
-  final void lA(int paramInt)
+  final void ma(int paramInt)
   {
     AppMethodBeat.i(79941);
     o(paramInt, "", 0);
@@ -150,22 +148,22 @@ public final class k
   
   public final void setTraceId(String paramString)
   {
-    AppMethodBeat.i(188378);
+    AppMethodBeat.i(208022);
     String str3 = "";
     String str1 = str3;
-    if (this.kYt != null) {}
+    if (this.lvv != null) {}
     try
     {
-      str1 = this.kYt.k(23, null).getString("config_info_username");
-      kC(paramString, str1);
-      AppMethodBeat.o(188378);
+      str1 = this.lvv.k(23, null).getString("config_info_username");
+      kY(paramString, str1);
+      AppMethodBeat.o(208022);
       return;
     }
     catch (RemoteException localRemoteException)
     {
       for (;;)
       {
-        ac.e("MicroMsg.WebViewReportUtil", "setTraceId getConfigInfo exp:%s", new Object[] { localRemoteException });
+        ad.e("MicroMsg.WebViewReportUtil", "setTraceId getConfigInfo exp:%s", new Object[] { localRemoteException });
         String str2 = str3;
       }
     }

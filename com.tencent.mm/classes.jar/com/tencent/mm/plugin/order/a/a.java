@@ -7,7 +7,7 @@ import com.tencent.mm.plugin.order.ui.MallOrderDetailInfoUI;
 import com.tencent.mm.plugin.order.ui.MallOrderProductListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderRecordListUI;
 import com.tencent.mm.plugin.order.ui.MallOrderTransactionInfoUI;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.d;
 
 public class a
@@ -16,7 +16,7 @@ public class a
   public d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(66631);
-    ac.d("MicroMsg.ShowOrdersInfoProcess", "start Process : ShowOrdersInfo");
+    ad.d("MicroMsg.ShowOrdersInfoProcess", "start Process : ShowOrdersInfo");
     b(paramActivity, MallOrderRecordListUI.class, paramBundle);
     AppMethodBeat.o(66631);
     return this;
@@ -64,7 +64,7 @@ public class a
     return false;
   }
   
-  public final String cHN()
+  public final String cQc()
   {
     return "ShowOrdersInfoProcess";
   }

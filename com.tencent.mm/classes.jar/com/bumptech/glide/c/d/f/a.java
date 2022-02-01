@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream;
 public final class a
   implements e<Bitmap, byte[]>
 {
-  private final Bitmap.CompressFormat aKw;
+  private final Bitmap.CompressFormat aMn;
   private final int quality;
   
   public a()
@@ -21,7 +21,7 @@ public final class a
   
   private a(Bitmap.CompressFormat paramCompressFormat)
   {
-    this.aKw = paramCompressFormat;
+    this.aMn = paramCompressFormat;
     this.quality = 100;
   }
   
@@ -29,7 +29,7 @@ public final class a
   {
     AppMethodBeat.i(77529);
     paramj = new ByteArrayOutputStream();
-    ((Bitmap)paramu.get()).compress(this.aKw, this.quality, paramj);
+    ((Bitmap)paramu.get()).compress(this.aMn, this.quality, paramj);
     paramu.recycle();
     paramu = new b(paramj.toByteArray());
     AppMethodBeat.o(77529);

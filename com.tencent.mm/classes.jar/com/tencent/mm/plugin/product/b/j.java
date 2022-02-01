@@ -1,58 +1,58 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.afb;
+import com.tencent.mm.protocal.protobuf.ahk;
 import com.tencent.mm.protocal.protobuf.az;
-import com.tencent.mm.protocal.protobuf.cgx;
-import com.tencent.mm.protocal.protobuf.cgy;
-import com.tencent.mm.protocal.protobuf.crr;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.clw;
+import com.tencent.mm.protocal.protobuf.clx;
+import com.tencent.mm.protocal.protobuf.cwy;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class j
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private b rr;
-  public String vED;
-  public LinkedList<afb> vEO;
-  public LinkedList<az> vEP;
+  public String wLJ;
+  public LinkedList<ahk> wLU;
+  public LinkedList<az> wLV;
   
-  public j(LinkedList<crr> paramLinkedList, int paramInt)
+  public j(LinkedList<cwy> paramLinkedList, int paramInt)
   {
     AppMethodBeat.i(66900);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new cgx();
-    ((b.a)localObject).hvu = new cgy();
+    ((b.a)localObject).hNM = new clw();
+    ((b.a)localObject).hNN = new clx();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/presubmitorder";
     ((b.a)localObject).funcId = 554;
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (cgx)this.rr.hvr.hvw;
-    ((cgx)localObject).EhQ = paramLinkedList;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (clw)this.rr.hNK.hNQ;
+    ((clw)localObject).FOX = paramLinkedList;
     if (paramLinkedList != null) {
       i = paramLinkedList.size();
     }
-    ((cgx)localObject).vyh = i;
-    ((cgx)localObject).FuY = paramInt;
+    ((clw)localObject).wDB = i;
+    ((clw)localObject).Hfd = paramInt;
     AppMethodBeat.o(66900);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(66902);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(66902);
     return i;
@@ -66,14 +66,14 @@ public final class j
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66901);
-    paramArrayOfByte = (cgy)((b)paramq).hvs.hvw;
-    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.DWU == 0))
+    paramArrayOfByte = (clx)((b)paramq).hNL.hNQ;
+    if ((paramInt2 == 0) && (paramInt3 == 0) && (paramArrayOfByte.FCq == 0))
     {
-      ac.d("MicroMsg.NetSceneMallPreSubmitOrder", "resp.ExpressCount " + paramArrayOfByte.EPY);
-      ac.d("MicroMsg.NetSceneMallPreSubmitOrder", "resp.LockId " + paramArrayOfByte.EhR);
-      this.vEO = paramArrayOfByte.FuZ;
-      this.vED = paramArrayOfByte.EhR;
-      this.vEP = paramArrayOfByte.Fva;
+      ad.d("MicroMsg.NetSceneMallPreSubmitOrder", "resp.ExpressCount " + paramArrayOfByte.Gzp);
+      ad.d("MicroMsg.NetSceneMallPreSubmitOrder", "resp.LockId " + paramArrayOfByte.FOY);
+      this.wLU = paramArrayOfByte.Hfe;
+      this.wLJ = paramArrayOfByte.FOY;
+      this.wLV = paramArrayOfByte.Hff;
     }
     paramInt1 = paramInt3;
     paramq = paramString;
@@ -81,20 +81,20 @@ public final class j
     {
       paramInt1 = paramInt3;
       paramq = paramString;
-      if (paramArrayOfByte.DWU != 0)
+      if (paramArrayOfByte.FCq != 0)
       {
-        paramInt1 = paramArrayOfByte.DWU;
-        paramq = paramArrayOfByte.DWV;
+        paramInt1 = paramArrayOfByte.FCq;
+        paramq = paramArrayOfByte.FCr;
       }
     }
-    ac.d("MicroMsg.NetSceneMallPreSubmitOrder", "errCode " + paramInt1 + ", errMsg " + paramq);
+    ad.d("MicroMsg.NetSceneMallPreSubmitOrder", "errCode " + paramInt1 + ", errMsg " + paramq);
     this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
     AppMethodBeat.o(66901);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.j
  * JD-Core Version:    0.7.0.1
  */

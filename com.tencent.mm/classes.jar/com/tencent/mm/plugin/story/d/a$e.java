@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.story.d;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "", "checkStoryPost", "", "loadDBData", "loadFpData", "loadNpData", "onCreate", "userName", "", "onDestory", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "", "checkStoryPost", "", "loadDBData", "loadFpData", "loadNpData", "onCreate", "userName", "", "onDestory", "plugin-story_release"})
 public abstract interface a$e
 {
-  public abstract void dPE();
+  public abstract void ebV();
   
-  public abstract void dUY();
+  public abstract void ehn();
   
-  public abstract void dUZ();
+  public abstract void eho();
   
-  public abstract void dVb();
+  public abstract void ehq();
   
   public abstract void onCreate(String paramString);
 }

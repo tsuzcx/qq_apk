@@ -16,14 +16,14 @@ public final class al
   {
     AppMethodBeat.i(128901);
     paramc = ak.f(paramc, paramJSONObject);
-    paramc = k(paramc.errMsg, paramc.values);
+    paramc = m(paramc.errMsg, paramc.values);
     AppMethodBeat.o(128901);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.al
  * JD-Core Version:    0.7.0.1
  */

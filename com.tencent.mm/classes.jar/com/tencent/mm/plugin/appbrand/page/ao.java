@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.page;
 
 public abstract interface ao
 {
-  public abstract boolean brj();
+  public abstract boolean bvk();
 }
 
 

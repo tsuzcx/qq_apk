@@ -4,23 +4,23 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.Map;
 
 public final class y
 {
-  public static boolean fIt = false;
-  public String fIu = "";
-  Map<String, String> fIv = null;
-  private int fIw = 0;
+  public static boolean gbT = false;
+  public String gbU = "";
+  Map<String, String> gbV = null;
+  private int gbW = 0;
   
-  public static boolean Ym()
+  public static boolean aaO()
   {
     boolean bool = false;
-    if (fIt)
+    if (gbT)
     {
-      fIt = false;
+      gbT = false;
       bool = true;
     }
     return bool;
@@ -28,24 +28,24 @@ public final class y
   
   public final void i(Map<String, String> paramMap)
   {
-    this.fIv = paramMap;
+    this.gbV = paramMap;
   }
   
-  public final void kU(int paramInt)
+  public final void lt(int paramInt)
   {
     AppMethodBeat.i(155767);
-    this.fIw = paramInt;
-    fIt = true;
-    SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(ai.getContext(), "system_config_prefs", 4).edit();
+    this.gbW = paramInt;
+    gbT = true;
+    SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(aj.getContext(), "system_config_prefs", 4).edit();
     localEditor.putInt("update_swip_back_status", paramInt);
     localEditor.commit();
-    ac.v("MicroMsg.ManuFacturerInfo", "update mSwipBackStatus(%s)", new Object[] { Integer.valueOf(this.fIw) });
+    ad.v("MicroMsg.ManuFacturerInfo", "update mSwipBackStatus(%s)", new Object[] { Integer.valueOf(this.gbW) });
     AppMethodBeat.o(155767);
   }
   
-  public final void sw(String paramString)
+  public final void vl(String paramString)
   {
-    this.fIu = paramString;
+    this.gbU = paramString;
   }
 }
 

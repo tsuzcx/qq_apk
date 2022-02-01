@@ -6,52 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class r
   extends a
 {
-  public long dGa;
-  public long dGb;
-  public long dGc = 0L;
-  public String dGd = "";
+  public int dSI;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(206461);
+    AppMethodBeat.i(63295);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dGa);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dGb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dGc);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dGd);
+    ((StringBuffer)localObject).append(this.dSI);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(206461);
+    awz((String)localObject);
+    AppMethodBeat.o(63295);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(206462);
+    AppMethodBeat.i(63296);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ClickMethod:").append(this.dGa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadNum:").append(this.dGb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("JumpToChatType:").append(this.dGc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UserName:").append(this.dGd);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dSI);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(206462);
+    AppMethodBeat.o(63296);
     return localObject;
   }
   
   public final int getId()
   {
-    return 20134;
+    return 18884;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.r
  * JD-Core Version:    0.7.0.1
  */

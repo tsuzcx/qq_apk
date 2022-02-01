@@ -6,153 +6,164 @@ import java.util.LinkedList;
 
 public final class g
 {
-  String jYy;
-  public boolean jZH = false;
-  public String job = "";
-  boolean kaU = true;
+  public String jHX = "";
+  String ksU;
+  public boolean kud = false;
+  boolean kvq = true;
   public String mAppId = "";
   int mDownloadType = 1;
   String mFileName = "";
   long mFileSize = 0L;
   String mPackageName = "";
   int mScene = 0;
-  String oIP = "";
-  String oIQ = "";
-  int oIR = 1;
-  public boolean oIS = false;
-  public boolean oIT = false;
-  boolean oIU = false;
-  private boolean oIV = false;
-  public boolean oIW = false;
-  boolean oIX = false;
-  boolean oIY = false;
-  boolean oIZ = false;
-  private boolean oJa = false;
-  int oJb = 0;
-  int oJc = 0;
-  int oJd = 0;
-  LinkedList<a> oJe;
-  public String oJf;
+  boolean pmA = false;
+  private boolean pmB = false;
+  public boolean pmC = false;
+  boolean pmD = false;
+  boolean pmE = false;
+  boolean pmF = false;
+  private boolean pmG = false;
+  int pmH = 0;
+  int pmI = 0;
+  int pmJ = 0;
+  LinkedList<a> pmK;
+  public String pmL;
+  boolean pmM;
+  String pmv = "";
+  String pmw = "";
+  int pmx = 1;
+  public boolean pmy = false;
+  public boolean pmz = false;
   
   public static final class a
   {
-    public g oJg;
+    public g pmN;
     
     public a()
     {
       AppMethodBeat.i(89007);
-      this.oJg = new g((byte)0);
+      this.pmN = new g((byte)0);
       AppMethodBeat.o(89007);
     }
     
-    public final void AG(int paramInt)
+    public final void Bp(int paramInt)
     {
-      this.oJg.oIR = paramInt;
+      this.pmN.pmx = paramInt;
     }
     
-    public final void AH(int paramInt)
+    public final void Bq(int paramInt)
     {
-      this.oJg.oJb = paramInt;
+      this.pmN.pmH = paramInt;
     }
     
-    public final void AI(int paramInt)
+    public final void Br(int paramInt)
     {
-      this.oJg.oJd = paramInt;
+      this.pmN.pmJ = paramInt;
     }
     
-    public final void AJ(int paramInt)
+    public final void Bs(int paramInt)
     {
-      this.oJg.oJc = paramInt;
+      this.pmN.pmI = paramInt;
     }
     
-    public final void AK(int paramInt)
+    public final void Bt(int paramInt)
     {
-      this.oJg.mDownloadType = paramInt;
+      this.pmN.mDownloadType = paramInt;
     }
     
-    public final void S(LinkedList<a> paramLinkedList)
+    public final void T(LinkedList<a> paramLinkedList)
     {
-      this.oJg.oJe = paramLinkedList;
+      this.pmN.pmK = paramLinkedList;
     }
     
-    public final void WD(String paramString)
+    public final void aak(String paramString)
     {
-      this.oJg.job = paramString;
+      this.pmN.jHX = paramString;
     }
     
-    public final void WE(String paramString)
+    public final void aal(String paramString)
     {
-      this.oJg.oIP = paramString;
+      this.pmN.pmv = paramString;
     }
     
-    public final void WF(String paramString)
+    public final void aam(String paramString)
     {
-      this.oJg.mFileName = paramString;
+      this.pmN.mFileName = paramString;
     }
     
-    public final void WG(String paramString)
+    public final void aan(String paramString)
     {
-      this.oJg.oIQ = paramString;
+      this.pmN.pmw = paramString;
     }
     
-    public final void WH(String paramString)
+    public final void aao(String paramString)
     {
-      this.oJg.jYy = paramString;
+      this.pmN.ksU = paramString;
     }
     
-    public final void WI(String paramString)
+    public final void aap(String paramString)
     {
-      this.oJg.oJf = paramString;
+      this.pmN.pmL = paramString;
     }
     
-    public final void bXR()
+    public final void cct()
     {
-      this.oJg.oIX = true;
+      this.pmN.pmD = true;
     }
     
-    public final void bXS()
+    public final void ccu()
     {
-      this.oJg.oIZ = true;
+      this.pmN.pmF = true;
     }
     
-    public final void ey(String paramString)
+    public final g ccv()
     {
-      this.oJg.mPackageName = paramString;
+      return this.pmN;
     }
     
-    public final void jF(boolean paramBoolean)
+    public final void ccw()
     {
-      this.oJg.oIS = paramBoolean;
+      this.pmN.pmM = true;
     }
     
-    public final void jG(boolean paramBoolean)
+    public final void ft(String paramString)
     {
-      this.oJg.kaU = paramBoolean;
+      this.pmN.mPackageName = paramString;
     }
     
-    public final void jH(boolean paramBoolean)
+    public final void jQ(boolean paramBoolean)
     {
-      this.oJg.oIU = paramBoolean;
+      this.pmN.pmy = paramBoolean;
     }
     
-    public final void jI(boolean paramBoolean)
+    public final void jR(boolean paramBoolean)
     {
-      this.oJg.jZH = paramBoolean;
+      this.pmN.kvq = paramBoolean;
+    }
+    
+    public final void jS(boolean paramBoolean)
+    {
+      this.pmN.pmA = paramBoolean;
+    }
+    
+    public final void jT(boolean paramBoolean)
+    {
+      this.pmN.kud = paramBoolean;
     }
     
     public final void setAppId(String paramString)
     {
-      this.oJg.mAppId = paramString;
+      this.pmN.mAppId = paramString;
     }
     
     public final void setScene(int paramInt)
     {
-      this.oJg.mScene = paramInt;
+      this.pmN.mScene = paramInt;
     }
     
-    public final void sk(long paramLong)
+    public final void ui(long paramLong)
     {
-      this.oJg.mFileSize = paramLong;
+      this.pmN.mFileSize = paramLong;
     }
   }
 }

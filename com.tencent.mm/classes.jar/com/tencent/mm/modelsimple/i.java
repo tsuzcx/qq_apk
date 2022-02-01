@@ -1,9 +1,9 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.l;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.l;
+import com.tencent.mm.al.n;
 import com.tencent.mm.b.o;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
@@ -12,7 +12,7 @@ import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.p.a;
 import com.tencent.mm.protocal.p.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.List;
 import junit.framework.Assert;
 
@@ -20,17 +20,17 @@ public final class i
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   public byte[] content;
-  public String hRP;
-  private q hwy;
+  private q hON;
+  public String ild;
   
   public i(l.e parame)
   {
     AppMethodBeat.i(20614);
-    this.hRP = "";
+    this.ild = "";
     parame = (p.b)parame;
-    this.hRP = parame.hRP;
+    this.ild = parame.ild;
     this.content = parame.content;
     AppMethodBeat.o(20614);
   }
@@ -38,7 +38,7 @@ public final class i
   public i(List<String> paramList, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20613);
-    this.hRP = "";
+    this.ild = "";
     if ((paramList.size() > 0) && (paramArrayOfByte != null)) {}
     int j;
     String str;
@@ -54,16 +54,16 @@ public final class i
         i += 1;
       }
     }
-    this.hwy = new a();
-    paramList = (p.a)this.hwy.getReqObj();
-    paramList.dgL = 111;
-    paramList.drx = 0;
-    paramList.hTM = j;
+    this.hON = new a();
+    paramList = (p.a)this.hON.getReqObj();
+    paramList.dsi = 111;
+    paramList.dDp = 0;
+    paramList.inh = j;
     if (str != null)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      paramList.DIY = str;
+      paramList.Fof = str;
       if (paramArrayOfByte == null) {
         break label269;
       }
@@ -72,9 +72,9 @@ public final class i
     for (bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      paramList.DIZ = paramArrayOfByte;
-      ac.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: cmdId=111 seq=".concat(String.valueOf(j)));
-      ac.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: lstReceiver=" + str + " status = " + o.t(paramArrayOfByte, 0));
+      paramList.Fog = paramArrayOfByte;
+      ad.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: cmdId=111 seq=".concat(String.valueOf(j)));
+      ad.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: lstReceiver=" + str + " status = " + o.t(paramArrayOfByte, 0));
       AppMethodBeat.o(20613);
       return;
       bool1 = false;
@@ -82,11 +82,11 @@ public final class i
     }
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(20615);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hwy, this);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hON, this);
     AppMethodBeat.o(20615);
     return i;
   }
@@ -111,25 +111,25 @@ public final class i
   public static final class a
     extends l
   {
-    private final p.a hRQ;
-    private final p.b hRR;
+    private final p.a ile;
+    private final p.b ilf;
     
     public a()
     {
       AppMethodBeat.i(20612);
-      this.hRQ = new p.a();
-      this.hRR = new p.b();
+      this.ile = new p.a();
+      this.ilf = new p.b();
       AppMethodBeat.o(20612);
     }
     
     public final l.d getReqObjImp()
     {
-      return this.hRQ;
+      return this.ile;
     }
     
     public final l.e getRespObj()
     {
-      return this.hRR;
+      return this.ilf;
     }
     
     public final int getType()

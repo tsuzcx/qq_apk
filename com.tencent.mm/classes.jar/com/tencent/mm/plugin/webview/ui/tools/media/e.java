@@ -1,88 +1,89 @@
 package com.tencent.mm.plugin.webview.ui.tools.media;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.ipcinvoker.d;
-import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.model.y.b;
-import com.tencent.mm.plugin.webview.model.c;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import d.g.b.k;
+import com.tencent.mm.ai.y;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav;", "", "()V", "TAG", "", "doFav", "", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "data", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "IPCInvoke_Fav", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MPVideoTransmitHelper;", "", "()V", "TAG", "", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "getMpShareVideoInfo", "()Lcom/tencent/mm/message/MPShareVideoInfo;", "setMpShareVideoInfo", "(Lcom/tencent/mm/message/MPShareVideoInfo;)V", "onActivityResult", "", "activity", "Landroid/app/Activity;", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "plugin-webview_release"})
 public final class e
 {
-  public static final e CLc;
-  private static final String TAG = "MicroMsg.MpShareVideoMsgFav";
+  final String TAG = "MicroMsg.MPVideoTransmit";
+  public y hzo;
   
-  static
+  public final boolean c(final Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(82666);
-    CLc = new e();
-    TAG = "MicroMsg.MpShareVideoMsgFav";
-    AppMethodBeat.o(82666);
-  }
-  
-  public static void b(com.tencent.mm.ah.y paramy)
-  {
-    AppMethodBeat.i(82664);
-    k.h(paramy, "msgInfo");
-    MpVideoDataParcelable localMpVideoDataParcelable = new MpVideoDataParcelable();
-    localMpVideoDataParcelable.CLe = paramy;
-    h.a("com.tencent.mm", (Parcelable)localMpVideoDataParcelable, a.class, (d)b.CLd);
-    AppMethodBeat.o(82664);
-  }
-  
-  public static void b(MpVideoDataParcelable paramMpVideoDataParcelable)
-  {
-    AppMethodBeat.i(82665);
-    k.h(paramMpVideoDataParcelable, "data");
-    paramMpVideoDataParcelable = paramMpVideoDataParcelable.CLe;
-    if (paramMpVideoDataParcelable == null)
+    AppMethodBeat.i(82661);
+    p.h(paramActivity, "activity");
+    if (3 == paramInt1)
     {
-      ac.w(TAG, "doFav msgInfo is null");
-      AppMethodBeat.o(82665);
-      return;
+      if (this.hzo == null)
+      {
+        ad.w(this.TAG, "onActivityResult mpMsgInfo is null");
+        AppMethodBeat.o(82661);
+        return true;
+      }
+      String str;
+      if (paramInt2 == -1) {
+        if (paramIntent != null)
+        {
+          str = paramIntent.getStringExtra("Select_Conv_User");
+          if (paramIntent == null) {
+            break label130;
+          }
+          paramIntent = paramIntent.getStringExtra("custom_send_text");
+          label72:
+          if (str != null)
+          {
+            Object localObject = d.EoO;
+            localObject = this.hzo;
+            if (localObject == null) {
+              p.gfZ();
+            }
+            d.b(str, (y)localObject, paramIntent, (com.tencent.mm.ipcinvoker.d)new a(this, paramActivity));
+          }
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(82661);
+        return true;
+        str = null;
+        break;
+        label130:
+        paramIntent = null;
+        break label72;
+        ad.w(this.TAG, "share cancel");
+        if ((paramActivity instanceof WebViewUI))
+        {
+          paramActivity = ((WebViewUI)paramActivity).DzP;
+          if (paramActivity != null)
+          {
+            paramIntent = this.hzo;
+            if (paramIntent == null) {
+              p.gfZ();
+            }
+            paramActivity.kO(paramIntent.FCc, "canceled");
+          }
+        }
+      }
     }
-    cs localcs = new cs();
-    Object localObject = com.tencent.mm.model.y.xJ(bs.nullAsNil(paramMpVideoDataParcelable.hkW));
-    localObject = com.tencent.mm.model.y.ayq().F((String)localObject, true);
-    if (localObject == null) {
-      k.fOy();
-    }
-    ((y.b)localObject).l("sendAppMsgScene", Integer.valueOf(2));
-    ((y.b)localObject).l("preChatName", paramMpVideoDataParcelable.dCl);
-    ((y.b)localObject).l("prePublishId", paramMpVideoDataParcelable.hkW);
-    ((y.b)localObject).l("preUsername", paramMpVideoDataParcelable.dCk);
-    ((y.b)localObject).l("referUrl", paramMpVideoDataParcelable.url);
-    localcs.dck.dcq = 36;
-    c.a(localcs, paramMpVideoDataParcelable);
-    a.GpY.l((com.tencent.mm.sdk.b.b)localcs);
-    AppMethodBeat.o(82665);
+    AppMethodBeat.o(82661);
+    return false;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav$IPCInvoke_Fav;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
-  static final class a
-    implements com.tencent.mm.ipcinvoker.b<MpVideoDataParcelable, Bundle>
-  {}
-  
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
-  static final class b<T>
-    implements d<ResultType>
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class a<T>
+    implements com.tencent.mm.ipcinvoker.d<Bundle>
   {
-    public static final b CLd;
-    
-    static
-    {
-      AppMethodBeat.i(82663);
-      CLd = new b();
-      AppMethodBeat.o(82663);
-    }
+    a(e parame, Activity paramActivity) {}
   }
 }
 

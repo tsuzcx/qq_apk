@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class l
   extends b
 {
-  public a cYD;
-  public b cYE;
+  public a djV;
+  public b djW;
   
   public l()
   {
@@ -17,21 +17,21 @@ public final class l
   private l(byte paramByte)
   {
     AppMethodBeat.i(121047);
-    this.cYD = new a();
-    this.cYE = new b();
-    this.Gqe = false;
+    this.djV = new a();
+    this.djW = new b();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(121047);
   }
   
   public static final class a
   {
-    public String cYF;
+    public String djX;
   }
   
   public static final class b
   {
-    public int cYG;
+    public int djY;
   }
 }
 

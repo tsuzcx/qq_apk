@@ -18,22 +18,22 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class f
   extends Preference
 {
-  private View.OnClickListener gst;
+  private View.OnClickListener gMe;
   private boolean mClickable;
   private String mContent;
   private View mView;
-  private int vzA;
-  private int vzB;
-  private int vzz;
+  private int wET;
+  private int wEU;
+  private int wEV;
   
   public f(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66815);
     this.mView = null;
-    this.vzz = 2147483647;
-    this.vzA = -1;
-    this.vzB = -1;
+    this.wET = 2147483647;
+    this.wEU = -1;
+    this.wEV = -1;
     setLayoutResource(2131494709);
     AppMethodBeat.o(66815);
   }
@@ -42,23 +42,23 @@ public final class f
   {
     this.mContent = paramString;
     this.mClickable = true;
-    this.vzA = paramInt1;
-    this.vzB = paramInt2;
-    this.gst = paramOnClickListener;
+    this.wEU = paramInt1;
+    this.wEV = paramInt2;
+    this.gMe = paramOnClickListener;
   }
   
-  public final void ape(String paramString)
+  public final void aue(String paramString)
   {
     AppMethodBeat.i(66818);
     try
     {
-      this.vzz = g.cd(paramString, true);
+      this.wET = g.cl(paramString, true);
       AppMethodBeat.o(66818);
       return;
     }
     catch (Exception paramString)
     {
-      this.vzz = 2147483647;
+      this.wET = 2147483647;
       AppMethodBeat.o(66818);
     }
   }
@@ -82,16 +82,16 @@ public final class f
     Object localObject = (TextView)paramView.findViewById(2131302033);
     paramView = (TextView)paramView.findViewById(2131302032);
     ((TextView)localObject).setText(getTitle());
-    if (this.vzz != 2147483647) {
-      paramView.setTextColor(this.vzz);
+    if (this.wET != 2147483647) {
+      paramView.setTextColor(this.wET);
     }
     if (this.mClickable)
     {
-      if ((this.vzA >= 0) && (this.vzB > 0))
+      if ((this.wEU >= 0) && (this.wEV > 0))
       {
         localObject = new a(this.mContext);
         SpannableString localSpannableString = new SpannableString(this.mContent);
-        ((a)localObject).vzS = new a.a()
+        ((a)localObject).wFm = new a.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -103,13 +103,13 @@ public final class f
           }
         };
         paramView.setMovementMethod(LinkMovementMethod.getInstance());
-        localSpannableString.setSpan(localObject, this.vzA, this.vzB, 33);
+        localSpannableString.setSpan(localObject, this.wEU, this.wEV, 33);
         paramView.setText(localSpannableString);
         AppMethodBeat.o(66817);
         return;
       }
       paramView.setTextColor(this.mContext.getResources().getColor(2131100607));
-      paramView.setOnClickListener(this.gst);
+      paramView.setOnClickListener(this.gMe);
       paramView.setText(k.b(this.mContext, this.mContent, paramView.getTextSize()));
       AppMethodBeat.o(66817);
       return;

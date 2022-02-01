@@ -3,16 +3,16 @@ package com.google.c;
 public abstract class f
   extends Exception
 {
-  protected static final boolean bHo;
-  protected static final StackTraceElement[] bHp;
+  protected static final boolean bRC;
+  protected static final StackTraceElement[] bRD;
   
   static
   {
     if (System.getProperty("surefire.test.class.path") != null) {}
     for (boolean bool = true;; bool = false)
     {
-      bHo = bool;
-      bHp = new StackTraceElement[0];
+      bRC = bool;
+      bRD = new StackTraceElement[0];
       return;
     }
   }

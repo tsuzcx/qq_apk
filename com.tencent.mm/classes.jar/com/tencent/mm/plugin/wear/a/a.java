@@ -14,7 +14,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class a
 {
-  public static final HashMap<String, Object> ewL()
+  public static final HashMap<String, Object> eKR()
   {
     AppMethodBeat.i(131327);
     Object localObject1 = KeyPairGenerator.getInstance("RSA");
@@ -29,7 +29,7 @@ public final class a
     return localHashMap;
   }
   
-  public static final byte[] ewM()
+  public static final byte[] eKS()
   {
     AppMethodBeat.i(131329);
     try

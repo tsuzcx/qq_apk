@@ -13,10 +13,10 @@ import org.w3c.dom.NodeList;
 
 public final class f
 {
-  private static boolean cHm = false;
+  private static boolean cSq = false;
   
   /* Error */
-  public static Map<String, String> L(String paramString1, String paramString2)
+  public static Map<String, String> M(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: sipush 967
@@ -145,7 +145,7 @@ public final class f
     //   257: aload_0
     //   258: iconst_0
     //   259: invokestatic 135	com/tencent/mm/d/f:a	(Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Lorg/w3c/dom/Node;I)V
-    //   262: getstatic 10	com/tencent/mm/d/f:cHm	Z
+    //   262: getstatic 10	com/tencent/mm/d/f:cSq	Z
     //   265: ifeq +8 -> 273
     //   268: aload 4
     //   270: invokestatic 139	com/tencent/mm/d/f:h	(Ljava/util/Map;)V
@@ -299,7 +299,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.d.f
  * JD-Core Version:    0.7.0.1
  */

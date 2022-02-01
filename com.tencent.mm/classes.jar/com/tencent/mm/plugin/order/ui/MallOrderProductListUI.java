@@ -14,10 +14,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.plugin.order.c.b;
 import com.tencent.mm.plugin.order.c.c;
 import com.tencent.mm.plugin.order.model.ProductSectionItem;
 import com.tencent.mm.plugin.order.model.ProductSectionItem.Skus;
@@ -30,18 +29,18 @@ import java.util.List;
 public class MallOrderProductListUI
   extends WalletBaseUI
 {
-  private ListView EO;
-  private String hiX;
-  private List<ProductSectionItem> myd;
-  private BaseAdapter oao;
-  private String owt;
+  private ListView GF;
+  private String hBg;
+  private List<ProductSectionItem> mYL;
+  private BaseAdapter oDI;
+  private String oZO;
   
   public MallOrderProductListUI()
   {
     AppMethodBeat.i(66750);
-    this.myd = new ArrayList();
-    this.owt = "";
-    this.hiX = "";
+    this.mYL = new ArrayList();
+    this.oZO = "";
+    this.hBg = "";
     AppMethodBeat.o(66750);
   }
   
@@ -59,26 +58,33 @@ public class MallOrderProductListUI
     ArrayList localArrayList = localBundle.getParcelableArrayList("order_product_list");
     if ((localArrayList != null) && (localArrayList.size() > 0))
     {
-      this.myd.clear();
-      this.myd.addAll(localArrayList);
+      this.mYL.clear();
+      this.mYL.addAll(localArrayList);
     }
-    this.owt = localBundle.getString("key_trans_id");
-    this.hiX = localBundle.getString("appname");
-    this.EO = ((ListView)findViewById(2131303082));
-    this.oao = new a((byte)0);
-    this.EO.setAdapter(this.oao);
-    this.oao.notifyDataSetChanged();
-    this.EO.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.oZO = localBundle.getString("key_trans_id");
+    this.hBg = localBundle.getString("appname");
+    this.GF = ((ListView)findViewById(2131303082));
+    this.oDI = new a((byte)0);
+    this.GF.setAdapter(this.oDI);
+    this.oDI.notifyDataSetChanged();
+    this.GF.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(66743);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/order/ui/MallOrderProductListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         paramAnonymousAdapterView = (ProductSectionItem)MallOrderProductListUI.a(MallOrderProductListUI.this).get(paramAnonymousInt);
         if (paramAnonymousAdapterView != null)
         {
           MallOrderProductListUI.a(MallOrderProductListUI.this, paramAnonymousAdapterView);
-          c.a(Boolean.FALSE, MallOrderProductListUI.b(MallOrderProductListUI.this), MallOrderProductListUI.c(MallOrderProductListUI.this), paramAnonymousAdapterView.name, paramAnonymousAdapterView.vyz);
+          c.a(Boolean.FALSE, MallOrderProductListUI.b(MallOrderProductListUI.this), MallOrderProductListUI.c(MallOrderProductListUI.this), paramAnonymousAdapterView.name, paramAnonymousAdapterView.wDT);
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/order/ui/MallOrderProductListUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
         AppMethodBeat.o(66743);
       }
     });
@@ -133,7 +139,7 @@ public class MallOrderProductListUI
   {
     private a() {}
     
-    private ProductSectionItem KS(int paramInt)
+    private ProductSectionItem Mu(int paramInt)
     {
       AppMethodBeat.i(66745);
       ProductSectionItem localProductSectionItem = (ProductSectionItem)MallOrderProductListUI.a(MallOrderProductListUI.this).get(paramInt);
@@ -162,35 +168,35 @@ public class MallOrderProductListUI
       {
         paramView = View.inflate(MallOrderProductListUI.this, 2131494723, null);
         paramViewGroup = new MallOrderProductListUI.b(MallOrderProductListUI.this, (byte)0);
-        paramViewGroup.ofL = ((ImageView)paramView.findViewById(2131301180));
-        paramViewGroup.vyS = ((TextView)paramView.findViewById(2131301179));
-        paramViewGroup.vyT = ((TextView)paramView.findViewById(2131301176));
-        paramViewGroup.vyU = ((TextView)paramView.findViewById(2131301181));
-        paramViewGroup.vyV = ((TextView)paramView.findViewById(2131301177));
-        paramViewGroup.vyW = ((TextView)paramView.findViewById(2131301182));
+        paramViewGroup.oJe = ((ImageView)paramView.findViewById(2131301180));
+        paramViewGroup.wEm = ((TextView)paramView.findViewById(2131301179));
+        paramViewGroup.wEn = ((TextView)paramView.findViewById(2131301176));
+        paramViewGroup.wEo = ((TextView)paramView.findViewById(2131301181));
+        paramViewGroup.wEp = ((TextView)paramView.findViewById(2131301177));
+        paramViewGroup.wEq = ((TextView)paramView.findViewById(2131301182));
         paramView.setTag(paramViewGroup);
-        localProductSectionItem = KS(paramInt);
-        paramViewGroup.hhs = localProductSectionItem.iconUrl;
-        if ((TextUtils.isEmpty(paramViewGroup.hhs)) || (!e.aSH(paramViewGroup.hhs))) {
+        localProductSectionItem = Mu(paramInt);
+        paramViewGroup.hzB = localProductSectionItem.iconUrl;
+        if ((TextUtils.isEmpty(paramViewGroup.hzB)) || (!e.aYG(paramViewGroup.hzB))) {
           break label275;
         }
-        Bitmap localBitmap = u.a(new b(paramViewGroup.hhs));
-        paramViewGroup.ofL.setImageBitmap(localBitmap);
+        Bitmap localBitmap = u.a(new com.tencent.mm.plugin.order.c.b(paramViewGroup.hzB));
+        paramViewGroup.oJe.setImageBitmap(localBitmap);
       }
       for (;;)
       {
-        paramViewGroup.vyS.setText(localProductSectionItem.name);
-        paramViewGroup.vyT.setText(ProductSectionItem.Skus.es(localProductSectionItem.vyx));
-        paramViewGroup.vyU.setText(localProductSectionItem.vyy);
-        paramViewGroup.vyV.setText("+" + localProductSectionItem.count);
+        paramViewGroup.wEm.setText(localProductSectionItem.name);
+        paramViewGroup.wEn.setText(ProductSectionItem.Skus.eF(localProductSectionItem.wDR));
+        paramViewGroup.wEo.setText(localProductSectionItem.wDS);
+        paramViewGroup.wEp.setText("+" + localProductSectionItem.count);
         u.a(paramViewGroup);
-        paramViewGroup.vyW.setVisibility(8);
+        paramViewGroup.wEq.setVisibility(8);
         AppMethodBeat.o(66746);
         return paramView;
         paramViewGroup = (MallOrderProductListUI.b)paramView.getTag();
         break;
         label275:
-        paramViewGroup.ofL.setImageResource(2131690780);
+        paramViewGroup.oJe.setImageResource(2131690780);
       }
     }
   }
@@ -198,26 +204,26 @@ public class MallOrderProductListUI
   final class b
     implements u.a
   {
-    String hhs;
-    ImageView ofL;
-    TextView vyS;
-    TextView vyT;
-    TextView vyU;
-    TextView vyV;
-    TextView vyW;
+    String hzB;
+    ImageView oJe;
+    TextView wEm;
+    TextView wEn;
+    TextView wEo;
+    TextView wEp;
+    TextView wEq;
     
     private b() {}
     
     public final void k(String paramString, final Bitmap paramBitmap)
     {
       AppMethodBeat.i(66749);
-      if ((paramString != null) && (paramString.equals(this.hhs))) {
-        this.ofL.post(new Runnable()
+      if ((paramString != null) && (paramString.equals(this.hzB))) {
+        this.oJe.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66748);
-            MallOrderProductListUI.b.this.ofL.setImageBitmap(paramBitmap);
+            MallOrderProductListUI.b.this.oJe.setImageBitmap(paramBitmap);
             AppMethodBeat.o(66748);
           }
         });

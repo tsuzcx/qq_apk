@@ -3,20 +3,20 @@ package com.tencent.mm.live.core.core.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/core/core/model/LiveStatus$LiveRoomStatus;", "", "(Ljava/lang/String;I)V", "LIVE_OUT_ROOM", "LIVE_IN_ROOM", "LIVE_JOIN_ROOM", "plugin-core_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/core/core/model/LiveStatus$LiveRoomStatus;", "", "(Ljava/lang/String;I)V", "LIVE_OUT_ROOM", "LIVE_IN_ROOM", "LIVE_JOIN_ROOM", "plugin-core_release"})
 public enum e$c
 {
   static
   {
-    AppMethodBeat.i(209169);
+    AppMethodBeat.i(216826);
     c localc1 = new c("LIVE_OUT_ROOM", 0);
-    goo = localc1;
+    gHX = localc1;
     c localc2 = new c("LIVE_IN_ROOM", 1);
-    goq = localc2;
+    gHY = localc2;
     c localc3 = new c("LIVE_JOIN_ROOM", 2);
-    gor = localc3;
-    gos = new c[] { localc1, localc2, localc3 };
-    AppMethodBeat.o(209169);
+    gHZ = localc3;
+    gIa = new c[] { localc1, localc2, localc3 };
+    AppMethodBeat.o(216826);
   }
   
   private e$c() {}

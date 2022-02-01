@@ -5,7 +5,7 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.xweb.c;
 import com.tencent.xweb.d;
 import java.io.BufferedOutputStream;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static String Q(InputStream paramInputStream)
+  private static String T(InputStream paramInputStream)
   {
     AppMethodBeat.i(152839);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -40,7 +40,7 @@ public final class f
     return paramInputStream;
   }
   
-  public static void R(Context paramContext, String paramString1, String paramString2)
+  public static void U(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(152842);
     paramContext = new AlertDialog.Builder(paramContext);
@@ -50,7 +50,7 @@ public final class f
     AppMethodBeat.o(152842);
   }
   
-  private static Bundle aRe(String paramString)
+  private static Bundle aXc(String paramString)
   {
     AppMethodBeat.i(152836);
     Bundle localBundle = new Bundle();
@@ -70,15 +70,15 @@ public final class f
     return localBundle;
   }
   
-  public static Bundle aRf(String paramString)
+  public static Bundle aXd(String paramString)
   {
     AppMethodBeat.i(152837);
     paramString = paramString.replace("fbconnect", "http");
     try
     {
       paramString = new URL(paramString);
-      Bundle localBundle = aRe(paramString.getQuery());
-      localBundle.putAll(aRe(paramString.getRef()));
+      Bundle localBundle = aXc(paramString.getQuery());
+      localBundle.putAll(aXc(paramString.getRef()));
       AppMethodBeat.o(152837);
       return localBundle;
     }
@@ -90,7 +90,7 @@ public final class f
     return paramString;
   }
   
-  public static JSONObject aRg(String paramString)
+  public static JSONObject aXe(String paramString)
   {
     AppMethodBeat.i(152841);
     if (paramString.equals("false"))
@@ -139,7 +139,7 @@ public final class f
     return paramString;
   }
   
-  public static String bd(Bundle paramBundle)
+  public static String bi(Bundle paramBundle)
   {
     AppMethodBeat.i(152835);
     if (paramBundle == null)
@@ -173,9 +173,9 @@ public final class f
     AppMethodBeat.i(152838);
     Object localObject1 = paramString1;
     if (paramString2.equals("GET")) {
-      localObject1 = paramString1 + "?" + bd(paramBundle);
+      localObject1 = paramString1 + "?" + bi(paramBundle);
     }
-    ac.d("Facebook-Util", paramString2 + " URL: " + (String)localObject1);
+    ad.d("Facebook-Util", paramString2 + " URL: " + (String)localObject1);
     localObject1 = (HttpURLConnection)new URL((String)localObject1).openConnection();
     ((HttpURLConnection)localObject1).setConnectTimeout(20000);
     ((HttpURLConnection)localObject1).setReadTimeout(20000);
@@ -205,7 +205,7 @@ public final class f
       ((HttpURLConnection)localObject1).connect();
       paramString2 = new BufferedOutputStream(((HttpURLConnection)localObject1).getOutputStream());
       paramString2.write(("--" + "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" + "\r\n").getBytes());
-      paramString2.write(o(paramBundle, "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f").getBytes());
+      paramString2.write(n(paramBundle, "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f").getBytes());
       paramString2.write(("\r\n" + "--" + "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" + "\r\n").getBytes());
       if (!paramString1.isEmpty())
       {
@@ -223,7 +223,7 @@ public final class f
     }
     try
     {
-      paramString1 = Q(((HttpURLConnection)localObject1).getInputStream());
+      paramString1 = T(((HttpURLConnection)localObject1).getInputStream());
     }
     catch (FileNotFoundException paramString1)
     {
@@ -236,28 +236,28 @@ public final class f
           AppMethodBeat.o(152838);
           return paramString1;
           paramString1 = paramString1;
-          paramString1 = Q(((HttpURLConnection)localObject1).getErrorStream());
+          paramString1 = T(((HttpURLConnection)localObject1).getErrorStream());
         }
       }
       catch (Exception paramString2)
       {
         for (;;)
         {
-          ac.e("FacebookUtil", paramString2.getMessage());
+          ad.e("FacebookUtil", paramString2.getMessage());
         }
       }
     }
   }
   
-  public static void kl(Context paramContext)
+  public static void kx(Context paramContext)
   {
     AppMethodBeat.i(152840);
-    d.li(paramContext);
-    c.fJa().removeAllCookie();
+    d.lv(paramContext);
+    c.gaw().removeAllCookie();
     AppMethodBeat.o(152840);
   }
   
-  private static String o(Bundle paramBundle, String paramString)
+  private static String n(Bundle paramBundle, String paramString)
   {
     AppMethodBeat.i(152834);
     if (paramBundle == null)

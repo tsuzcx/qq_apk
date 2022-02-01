@@ -5,7 +5,8 @@ import android.os.Bundle;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.Monitor;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.e;
+import com.tencent.liteav.basic.util.f;
+import com.tencent.liteav.basic.util.g;
 import com.tencent.liteav.beauty.b.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
@@ -37,7 +38,7 @@ public class b
   private int n;
   private int o;
   private com.tencent.liteav.basic.d.b p;
-  private e q;
+  private g q;
   private boolean s;
   private k t;
   
@@ -347,7 +348,7 @@ public class b
         StringBuilder localStringBuilder = new StringBuilder("CVGLThread");
         Integer localInteger = r;
         r = Integer.valueOf(r.intValue() + 1);
-        this.q = new e(localInteger);
+        this.q = new g(localInteger);
         ??? = new boolean[1];
         this.q.a(new Runnable()
         {
@@ -627,7 +628,7 @@ public class b
       }
       if (b.i(localb) < b.j(localb))
       {
-        int[] arrayOfInt = com.tencent.liteav.basic.util.d.a();
+        int[] arrayOfInt = f.a();
         b.k(localb);
         b.a(localb, b.l(localb) + arrayOfInt[0] / 10);
         float f = b.m(localb);

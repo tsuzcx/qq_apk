@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
 
 public final class uk
   extends b
 {
-  public a dxc;
+  public a dII;
   
   public uk()
   {
@@ -16,16 +16,18 @@ public final class uk
   
   private uk(byte paramByte)
   {
-    AppMethodBeat.i(125646);
-    this.dxc = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125636);
+    this.dII = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125646);
+    AppMethodBeat.o(125636);
   }
   
   public static final class a
   {
-    public LinkedList<Long> dxd;
+    public Context context;
+    public String drH;
+    public int dsi;
   }
 }
 

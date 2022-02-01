@@ -7,77 +7,77 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static g.b JZi;
-  public static boolean cuo;
-  public int JZb;
-  public int JZc;
-  public int JZd;
-  public b JZe;
-  public h.a JZf;
-  public d JZg;
-  public boolean JZh = true;
-  public long uHV;
+  public static g.b LTd;
+  public static boolean cFj;
+  public int LSW;
+  public int LSX;
+  public int LSY;
+  public b LSZ;
+  public h.a LTa;
+  public d LTb;
+  public boolean LTc = true;
+  public long vLa;
   
   static
   {
-    AppMethodBeat.i(191071);
-    cuo = false;
-    JZi = new g.b()
+    AppMethodBeat.i(219267);
+    cFj = false;
+    LTd = new g.b()
     {
       public final void a(Thread paramAnonymousThread, String paramAnonymousString) {}
       
-      public final boolean doB()
+      public final boolean dyV()
       {
         return false;
       }
       
-      public final boolean doC()
+      public final boolean dyW()
       {
         return false;
       }
     };
-    AppMethodBeat.o(191071);
+    AppMethodBeat.o(219267);
   }
   
   public static final class a
   {
-    public a JZj;
+    public a LTe;
     
     public a()
     {
       AppMethodBeat.i(183098);
-      this.JZj = new a((byte)0);
+      this.LTe = new a((byte)0);
       AppMethodBeat.o(183098);
     }
     
     public final a a(h.a parama)
     {
-      this.JZj.JZf = parama;
+      this.LTe.LTa = parama;
       return this;
     }
     
-    public final a aes(int paramInt)
+    public final a agS(int paramInt)
     {
-      this.JZj.JZd = paramInt;
+      this.LTe.LSY = paramInt;
       return this;
     }
     
-    public final a fDV()
+    public final a fVn()
     {
-      this.JZj.uHV = 259200000L;
+      this.LTe.vLa = 259200000L;
       return this;
     }
     
-    public final a fDW()
+    public final a fVo()
     {
-      this.JZj.JZh = true;
+      this.LTe.LTc = true;
       return this;
     }
     
-    public final a kA(int paramInt1, int paramInt2)
+    public final a kP(int paramInt1, int paramInt2)
     {
-      this.JZj.JZc = paramInt1;
-      this.JZj.JZb = paramInt2;
+      this.LTe.LSX = paramInt1;
+      this.LTe.LSW = paramInt2;
       return this;
     }
   }

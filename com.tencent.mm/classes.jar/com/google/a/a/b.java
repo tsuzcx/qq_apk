@@ -11,7 +11,7 @@ public @interface b
 {
   Class<?> value();
   
-  boolean xh() default true;
+  boolean yE() default true;
 }
 
 

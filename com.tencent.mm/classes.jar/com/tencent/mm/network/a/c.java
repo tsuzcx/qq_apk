@@ -1,25 +1,25 @@
 package com.tencent.mm.network.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.u;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.v;
 import java.net.InetAddress;
 
 public final class c
 {
-  private InetAddress inF;
+  private InetAddress iGX;
   private int port;
   private int type;
   
   private c(InetAddress paramInetAddress, int paramInt1, int paramInt2)
   {
-    this.inF = paramInetAddress;
+    this.iGX = paramInetAddress;
     this.port = paramInt1;
     this.type = paramInt2;
   }
   
-  public static c Fi(String paramString)
+  public static c Iw(String paramString)
   {
     AppMethodBeat.i(132966);
     if (paramString == null)
@@ -35,13 +35,13 @@ public final class c
     }
     try
     {
-      paramString = new c(u.aKH(paramString[0]), Integer.parseInt(paramString[1]), Integer.parseInt(paramString[2]));
+      paramString = new c(v.aQn(paramString[0]), Integer.parseInt(paramString[1]), Integer.parseInt(paramString[2]));
       AppMethodBeat.o(132966);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ac.e("MicroMsg.InAddress", "exception:%s", new Object[] { bs.m(paramString) });
+      ad.e("MicroMsg.InAddress", "exception:%s", new Object[] { bt.n(paramString) });
       AppMethodBeat.o(132966);
     }
     return null;
@@ -56,7 +56,7 @@ public final class c
     }
     for (;;)
     {
-      str = this.inF.getHostAddress() + ":" + this.port + "(" + str + ")";
+      str = this.iGX.getHostAddress() + ":" + this.port + "(" + str + ")";
       AppMethodBeat.o(132965);
       return str;
       if (this.type == 3) {

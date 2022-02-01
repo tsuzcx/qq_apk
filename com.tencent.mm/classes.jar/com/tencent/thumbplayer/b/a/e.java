@@ -3,17 +3,17 @@ package com.tencent.thumbplayer.b.a;
 public abstract interface e
   extends a
 {
-  public abstract void BX(long paramLong);
+  public abstract void EZ(long paramLong);
   
-  public abstract int fFp();
+  public abstract long esj();
   
-  public abstract long fFq();
+  public abstract long esk();
   
-  public abstract long fFr();
+  public abstract int fWG();
   
-  public abstract long fFs();
+  public abstract long fWH();
   
-  public abstract long fFt();
+  public abstract long fWI();
   
   public abstract String getFilePath();
 }

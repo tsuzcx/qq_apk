@@ -45,7 +45,7 @@ public final class k
   static final class b
     implements d<File>
   {
-    private static final String[] aIt = { "_data" };
+    private static final String[] aKk = { "_data" };
     private final Context context;
     private final Uri uri;
     
@@ -60,7 +60,7 @@ public final class k
       paramg = null;
       Object localObject = null;
       AppMethodBeat.i(77256);
-      Cursor localCursor = this.context.getContentResolver().query(this.uri, aIt, null, null, null);
+      Cursor localCursor = this.context.getContentResolver().query(this.uri, aKk, null, null, null);
       if (localCursor != null) {
         paramg = localObject;
       }
@@ -82,7 +82,7 @@ public final class k
         localCursor.close();
         AppMethodBeat.o(77256);
       }
-      parama.R(new File(paramg));
+      parama.S(new File(paramg));
       AppMethodBeat.o(77256);
     }
     
@@ -90,14 +90,14 @@ public final class k
     
     public final void cleanup() {}
     
-    public final Class<File> nU()
+    public final Class<File> om()
     {
       return File.class;
     }
     
-    public final a nV()
+    public final a on()
     {
-      return a.aCP;
+      return a.aEG;
     }
   }
 }

@@ -8,6 +8,8 @@ import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class a$b$1
   implements View.OnLongClickListener
@@ -17,8 +19,12 @@ final class a$b$1
   public final boolean onLongClick(View paramView)
   {
     AppMethodBeat.i(152099);
-    ((ClipboardManager)this.pBf.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("UserName:", this.crn));
-    Toast.makeText(this.pBf.getContext(), 2131755702, 0).show();
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahq());
+    ((ClipboardManager)this.qeK.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText("UserName:", this.cCj));
+    Toast.makeText(this.qeK.getContext(), 2131755702, 0).show();
+    a.a(true, this, "com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(152099);
     return true;
   }

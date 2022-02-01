@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.wallet_payu.security_question.ui;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_payu.security_question.model.PayUSecurityQuestion;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
 import java.util.ArrayList;
 
 final class WalletPayUSecurityQuestionSettingUI$1
-  implements n.c
+  implements n.d
 {
   WalletPayUSecurityQuestionSettingUI$1(WalletPayUSecurityQuestionSettingUI paramWalletPayUSecurityQuestionSettingUI) {}
   
@@ -15,7 +15,7 @@ final class WalletPayUSecurityQuestionSettingUI$1
   {
     AppMethodBeat.i(72223);
     paraml.clear();
-    ArrayList localArrayList = WalletPayUSecurityQuestionSettingUI.a(this.BTE);
+    ArrayList localArrayList = WalletPayUSecurityQuestionSettingUI.a(this.DtY);
     if (localArrayList != null)
     {
       int i = 0;

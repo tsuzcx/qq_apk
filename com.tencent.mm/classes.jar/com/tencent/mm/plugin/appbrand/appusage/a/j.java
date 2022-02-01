@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.protocal.protobuf.afa;
-import com.tencent.mm.protocal.protobuf.cpi;
-import com.tencent.mm.protocal.protobuf.cpj;
-import com.tencent.mm.protocal.protobuf.wy;
-import com.tencent.mm.protocal.protobuf.xc;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.al.a;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.protocal.protobuf.ahj;
+import com.tencent.mm.protocal.protobuf.cun;
+import com.tencent.mm.protocal.protobuf.cuo;
+import com.tencent.mm.protocal.protobuf.yx;
+import com.tencent.mm.protocal.protobuf.zb;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public class j
-  extends c<cpj>
+  extends a<cuo>
 {
-  public j(long paramLong, LinkedList<afa> paramLinkedList, LinkedList<wy> paramLinkedList1, int paramInt1, int paramInt2, int paramInt3, xc paramxc)
+  public j(long paramLong, LinkedList<ahj> paramLinkedList, LinkedList<yx> paramLinkedList1, int paramInt1, int paramInt2, int paramInt3, zb paramzb)
   {
     AppMethodBeat.i(44689);
-    ac.i("MicroMsg.Recommend.CgiReportRecommendWxa", "sessionId:%d, action_scene:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1) });
+    ad.i("MicroMsg.Recommend.CgiReportRecommendWxa", "sessionId:%d, action_scene:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1) });
     b.a locala = new b.a();
-    cpi localcpi = new cpi();
-    localcpi.bQR = paramLong;
-    localcpi.FBU = paramLinkedList;
-    localcpi.FBX = paramLinkedList1;
-    localcpi.FBV = paramInt1;
-    localcpi.FBW = paramInt2;
-    localcpi.FBY = paramInt3;
-    localcpi.ETw = paramxc;
-    locala.hvt = localcpi;
-    locala.hvu = new cpj();
+    cun localcun = new cun();
+    localcun.cbe = paramLong;
+    localcun.Hmj = paramLinkedList;
+    localcun.Hmm = paramLinkedList1;
+    localcun.Hmk = paramInt1;
+    localcun.Hml = paramInt2;
+    localcun.Hmn = paramInt3;
+    localcun.GCQ = paramzb;
+    locala.hNM = localcun;
+    locala.hNN = new cuo();
     locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/reportrecommendwxa";
     locala.funcId = 2564;
-    this.rr = locala.aAz();
+    c(locala.aDC());
     AppMethodBeat.o(44689);
   }
 }

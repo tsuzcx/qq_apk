@@ -4,17 +4,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
 import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.plugin.sns.storage.q;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.bjl;
-import com.tencent.mm.protocal.protobuf.bua;
-import com.tencent.mm.protocal.protobuf.daj;
-import com.tencent.mm.protocal.protobuf.dbb;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bnt;
+import com.tencent.mm.protocal.protobuf.byo;
+import com.tencent.mm.protocal.protobuf.dfw;
+import com.tencent.mm.protocal.protobuf.dgo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,12 +22,12 @@ import java.util.List;
 
 public final class m
 {
-  private static final ThreadLocal<HashMap<String, Long>> xPg;
+  private static final ThreadLocal<HashMap<String, Long>> zfa;
   
   static
   {
     AppMethodBeat.i(95195);
-    xPg = new ThreadLocal();
+    zfa = new ThreadLocal();
     AppMethodBeat.o(95195);
   }
   
@@ -39,34 +39,34 @@ public final class m
       AppMethodBeat.o(95191);
       return true;
     }
-    bua localbua = paramp.dMn();
+    byo localbyo = paramp.dYD();
     if (paramp.field_type != 21)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (localbua.dBA == 1)
+    if (localbyo.dNN == 1)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (u.axw().equals(paramp.field_userName))
+    if (u.aAm().equals(paramp.field_userName))
     {
       AppMethodBeat.o(95191);
       return true;
     }
     if (paramSnsObject.SnsRedEnvelops != null)
     {
-      paramSnsObject = paramSnsObject.SnsRedEnvelops.FKj;
+      paramSnsObject = paramSnsObject.SnsRedEnvelops.HuR;
       if ((paramSnsObject == null) || (paramSnsObject.size() == 0))
       {
         AppMethodBeat.o(95191);
         return false;
       }
-      paramp = u.axw();
+      paramp = u.aAm();
       paramSnsObject = paramSnsObject.iterator();
       while (paramSnsObject.hasNext()) {
-        if (paramp.equals(((daj)paramSnsObject.next()).Username))
+        if (paramp.equals(((dfw)paramSnsObject.next()).Username))
         {
           AppMethodBeat.o(95191);
           return true;
@@ -77,11 +77,11 @@ public final class m
     return false;
   }
   
-  public static boolean ato(String paramString)
+  public static boolean ayt(String paramString)
   {
     AppMethodBeat.i(95189);
-    paramString = af.dHR().auT(paramString);
-    boolean bool = a(paramString, aj.t(paramString));
+    paramString = ag.dUe().aAa(paramString);
+    boolean bool = a(paramString, ak.v(paramString));
     AppMethodBeat.o(95189);
     return bool;
   }
@@ -97,7 +97,7 @@ public final class m
     }
     Object localObject1 = paramSnsObject;
     if (paramSnsObject == null) {
-      localObject1 = aj.t(paramp);
+      localObject1 = ak.v(paramp);
     }
     if (localObject1 == null)
     {
@@ -110,17 +110,17 @@ public final class m
       AppMethodBeat.o(95194);
       return 0L;
     }
-    Object localObject2 = paramSnsObject.FKj;
+    Object localObject2 = paramSnsObject.HuR;
     if (localObject2 == null)
     {
       AppMethodBeat.o(95194);
       return 0L;
     }
-    paramSnsObject = paramp.yvo;
-    if (bs.isNullOrNil(paramSnsObject)) {}
+    paramSnsObject = paramp.zMB;
+    if (bt.isNullOrNil(paramSnsObject)) {}
     for (paramp = g.getMessageDigest(paramp.field_content) + g.getMessageDigest(paramp.field_attrBuf);; paramp = paramSnsObject)
     {
-      localObject1 = (HashMap)xPg.get();
+      localObject1 = (HashMap)zfa.get();
       if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramp)))
       {
         l = ((Long)((HashMap)localObject1).get(paramp)).longValue();
@@ -132,18 +132,18 @@ public final class m
       {
         if (paramSnsObject.hasNext())
         {
-          daj localdaj = (daj)paramSnsObject.next();
-          localObject2 = new bjl();
+          dfw localdfw = (dfw)paramSnsObject.next();
+          localObject2 = new bnt();
           try
           {
-            ((bjl)localObject2).parseFrom(z.a(localdaj.FJc));
-            l += ((bjl)localObject2).dBN;
+            ((bnt)localObject2).parseFrom(z.a(localdfw.HtK));
+            l += ((bnt)localObject2).dOa;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ac.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
+              ad.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
             }
           }
         }
@@ -153,21 +153,21 @@ public final class m
         paramSnsObject = new HashMap();
       }
       paramSnsObject.put(paramp, Long.valueOf(l));
-      xPg.set(paramSnsObject);
+      zfa.set(paramSnsObject);
       AppMethodBeat.o(95194);
       return l;
     }
   }
   
-  public static boolean n(p paramp)
+  public static boolean p(p paramp)
   {
     AppMethodBeat.i(95190);
-    boolean bool = a(paramp, aj.t(paramp));
+    boolean bool = a(paramp, ak.v(paramp));
     AppMethodBeat.o(95190);
     return bool;
   }
   
-  public static int o(p paramp)
+  public static int q(p paramp)
   {
     AppMethodBeat.i(95192);
     if (paramp == null)
@@ -175,24 +175,24 @@ public final class m
       AppMethodBeat.o(95192);
       return 0;
     }
-    paramp = aj.t(paramp);
+    paramp = ak.v(paramp);
     if (paramp == null)
     {
       AppMethodBeat.o(95192);
       return 0;
     }
     paramp = paramp.SnsRedEnvelops;
-    if ((paramp == null) || (paramp.FKj.size() == 0))
+    if ((paramp == null) || (paramp.HuR.size() == 0))
     {
       AppMethodBeat.o(95192);
       return 0;
     }
-    int i = paramp.FKj.size();
+    int i = paramp.HuR.size();
     AppMethodBeat.o(95192);
     return i;
   }
   
-  public static long p(p paramp)
+  public static long r(p paramp)
   {
     AppMethodBeat.i(95193);
     long l = b(paramp, null);

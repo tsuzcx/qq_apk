@@ -11,19 +11,19 @@ public abstract interface i
 {
   public abstract boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong);
   
-  public abstract byte[] aBS();
+  public abstract byte[] aEV();
   
-  public abstract byte[] aBU();
+  public abstract byte[] aEX();
   
-  public abstract String aBV();
+  public abstract String aEY();
   
-  public abstract byte[] aCi();
+  public abstract byte[] aFl();
   
-  public abstract String aCj();
+  public abstract String aFm();
   
-  public abstract String aCk();
+  public abstract String aFn();
   
-  public abstract int aCl();
+  public abstract int aFo();
   
   public abstract byte[] getAuthResponse();
   
@@ -37,7 +37,7 @@ public abstract interface i
   
   public abstract int getUin();
   
-  public abstract byte[] mp(int paramInt);
+  public abstract byte[] mO(int paramInt);
   
   public abstract void setErrMsg(String paramString);
   
@@ -90,7 +90,7 @@ public abstract interface i
         }
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aBS();
+        paramParcel1 = aEV();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -124,19 +124,19 @@ public abstract interface i
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = mp(paramParcel1.readInt());
+        paramParcel1 = mO(paramParcel1.readInt());
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aCi();
+        paramParcel1 = aFl();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aBU();
+        paramParcel1 = aEX();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -148,7 +148,7 @@ public abstract interface i
         return true;
       case 12: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aBV();
+        paramParcel1 = aEY();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
@@ -160,19 +160,19 @@ public abstract interface i
         return true;
       case 14: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aCj();
+        paramParcel1 = aFm();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 15: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramParcel1 = aCk();
+        paramParcel1 = aFn();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
       case 16: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseResp_AIDL");
-        paramInt1 = aCl();
+        paramInt1 = aFo();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -271,7 +271,7 @@ public abstract interface i
         //   18	77	105	finally
       }
       
-      public final byte[] aBS()
+      public final byte[] aEV()
       {
         AppMethodBeat.i(133071);
         Parcel localParcel1 = Parcel.obtain();
@@ -292,7 +292,7 @@ public abstract interface i
         }
       }
       
-      public final byte[] aBU()
+      public final byte[] aEX()
       {
         AppMethodBeat.i(133079);
         Parcel localParcel1 = Parcel.obtain();
@@ -313,7 +313,7 @@ public abstract interface i
         }
       }
       
-      public final String aBV()
+      public final String aEY()
       {
         AppMethodBeat.i(133081);
         Parcel localParcel1 = Parcel.obtain();
@@ -334,7 +334,7 @@ public abstract interface i
         }
       }
       
-      public final byte[] aCi()
+      public final byte[] aFl()
       {
         AppMethodBeat.i(133078);
         Parcel localParcel1 = Parcel.obtain();
@@ -355,7 +355,7 @@ public abstract interface i
         }
       }
       
-      public final String aCj()
+      public final String aFm()
       {
         AppMethodBeat.i(133083);
         Parcel localParcel1 = Parcel.obtain();
@@ -376,7 +376,7 @@ public abstract interface i
         }
       }
       
-      public final String aCk()
+      public final String aFn()
       {
         AppMethodBeat.i(133084);
         Parcel localParcel1 = Parcel.obtain();
@@ -397,7 +397,7 @@ public abstract interface i
         }
       }
       
-      public final int aCl()
+      public final int aFo()
       {
         AppMethodBeat.i(133085);
         Parcel localParcel1 = Parcel.obtain();
@@ -549,7 +549,7 @@ public abstract interface i
         }
       }
       
-      public final byte[] mp(int paramInt)
+      public final byte[] mO(int paramInt)
       {
         AppMethodBeat.i(133077);
         Parcel localParcel1 = Parcel.obtain();

@@ -4,50 +4,50 @@ import android.graphics.Bitmap;
 import com.tencent.mm.memory.a.b;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/loader/cache/memory/DefaultMemoryCacheMap;", "", "()V", "MAX_BIG_BITMAP_SIZE", "", "getMAX_BIG_BITMAP_SIZE", "()I", "MAX_DEFAULT_BITMAP_SIZE", "getMAX_DEFAULT_BITMAP_SIZE", "OVERSIZE_BITMAP_SIZE", "getOVERSIZE_BITMAP_SIZE", "bigImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "Landroid/graphics/Bitmap;", "getBigImageMemoryCache", "()Lcom/tencent/mm/memory/cache/BitmapResource;", "defaultImageMemoryCache", "getDefaultImageMemoryCache", "libimageloader_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/loader/cache/memory/DefaultMemoryCacheMap;", "", "()V", "MAX_BIG_BITMAP_SIZE", "", "getMAX_BIG_BITMAP_SIZE", "()I", "MAX_DEFAULT_BITMAP_SIZE", "getMAX_DEFAULT_BITMAP_SIZE", "OVERSIZE_BITMAP_SIZE", "getOVERSIZE_BITMAP_SIZE", "bigImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "Landroid/graphics/Bitmap;", "getBigImageMemoryCache", "()Lcom/tencent/mm/memory/cache/BitmapResource;", "defaultImageMemoryCache", "getDefaultImageMemoryCache", "libimageloader_release"})
 public final class d
 {
-  private static final b<Bitmap> gJA;
-  public static final d gJB;
-  private static final b<Bitmap> gJr;
-  private static final int gJs = 50;
-  private static final int gJu = 524288;
-  private static final int gJv = 10;
+  private static final b<Bitmap> hdc;
+  private static final int hdd = 50;
+  private static final int hdf = 524288;
+  private static final int hdg = 10;
+  private static final b<Bitmap> hdl;
+  public static final d hdm;
   
   static
   {
     d locald = new d();
-    gJB = locald;
-    gJu = 524288;
-    gJs = 50;
-    gJv = 10;
-    gJr = new b(gJs, locald.getClass());
-    gJA = new b(gJv, locald.getClass());
+    hdm = locald;
+    hdf = 524288;
+    hdd = 50;
+    hdg = 10;
+    hdc = new b(hdd, locald.getClass());
+    hdl = new b(hdg, locald.getClass());
   }
   
-  public static int anX()
+  public static int aqK()
   {
-    return gJu;
+    return hdf;
   }
   
-  public static int anY()
+  public static int aqL()
   {
-    return gJs;
+    return hdd;
   }
   
-  public static int anZ()
+  public static int aqM()
   {
-    return gJv;
+    return hdg;
   }
   
-  public static b<Bitmap> aoa()
+  public static b<Bitmap> aqN()
   {
-    return gJr;
+    return hdc;
   }
   
-  public static b<Bitmap> aob()
+  public static b<Bitmap> aqO()
   {
-    return gJA;
+    return hdl;
   }
 }
 

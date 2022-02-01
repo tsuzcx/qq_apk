@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.downloader_app.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bc;
+import com.tencent.mm.g.c.bd;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends bc
+  extends bd
 {
   protected static c.a info;
   
@@ -15,20 +15,20 @@ public final class a
   {
     AppMethodBeat.i(8961);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.GvH.put("appId", "TEXT PRIMARY KEY ");
+    locala.IhC.put("appId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "appId";
+    locala.IhB = "appId";
     locala.columns[1] = "status";
-    locala.GvH.put("status", "INTEGER");
+    locala.IhC.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "modifyTime";
-    locala.GvH.put("modifyTime", "LONG");
+    locala.IhC.put("modifyTime", "LONG");
     localStringBuilder.append(" modifyTime LONG");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();

@@ -11,28 +11,28 @@ import java.util.WeakHashMap;
 final class a
   implements h
 {
-  private final Set<i> aKD;
-  private boolean aKE;
-  private boolean aKd;
+  private boolean aLU;
+  private final Set<i> aMu;
+  private boolean aMv;
   
   a()
   {
     AppMethodBeat.i(77540);
-    this.aKD = Collections.newSetFromMap(new WeakHashMap());
+    this.aMu = Collections.newSetFromMap(new WeakHashMap());
     AppMethodBeat.o(77540);
   }
   
   public final void a(i parami)
   {
     AppMethodBeat.i(77541);
-    this.aKD.add(parami);
-    if (this.aKE)
+    this.aMu.add(parami);
+    if (this.aMv)
     {
       parami.onDestroy();
       AppMethodBeat.o(77541);
       return;
     }
-    if (this.aKd)
+    if (this.aLU)
     {
       parami.onStart();
       AppMethodBeat.o(77541);
@@ -45,15 +45,15 @@ final class a
   public final void b(i parami)
   {
     AppMethodBeat.i(77542);
-    this.aKD.remove(parami);
+    this.aMu.remove(parami);
     AppMethodBeat.o(77542);
   }
   
   final void onDestroy()
   {
     AppMethodBeat.i(77545);
-    this.aKE = true;
-    Iterator localIterator = j.c(this.aKD).iterator();
+    this.aMv = true;
+    Iterator localIterator = j.c(this.aMu).iterator();
     while (localIterator.hasNext()) {
       ((i)localIterator.next()).onDestroy();
     }
@@ -63,8 +63,8 @@ final class a
   final void onStart()
   {
     AppMethodBeat.i(77543);
-    this.aKd = true;
-    Iterator localIterator = j.c(this.aKD).iterator();
+    this.aLU = true;
+    Iterator localIterator = j.c(this.aMu).iterator();
     while (localIterator.hasNext()) {
       ((i)localIterator.next()).onStart();
     }
@@ -74,8 +74,8 @@ final class a
   final void onStop()
   {
     AppMethodBeat.i(77544);
-    this.aKd = false;
-    Iterator localIterator = j.c(this.aKD).iterator();
+    this.aLU = false;
+    Iterator localIterator = j.c(this.aMu).iterator();
     while (localIterator.hasNext()) {
       ((i)localIterator.next()).onStop();
     }

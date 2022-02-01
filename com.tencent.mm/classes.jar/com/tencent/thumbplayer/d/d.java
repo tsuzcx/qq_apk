@@ -3,7 +3,7 @@ package com.tencent.thumbplayer.d;
 import android.util.Xml;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.b.a.e;
-import com.tencent.thumbplayer.utils.b;
+import com.tencent.thumbplayer.utils.a;
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.StringWriter;
@@ -14,48 +14,48 @@ import org.xmlpull.v1.XmlSerializer;
 public final class d
   implements com.tencent.thumbplayer.b.a.d, Serializable
 {
-  private int KgY;
-  private int KgZ;
-  public List<e> Kha;
+  private int Mao;
+  private int Map;
+  public List<e> Maq;
   
-  public final List<e> fFn()
+  public final List<e> fWE()
   {
-    return this.Kha;
+    return this.Maq;
   }
   
-  public final long fFo()
+  public final long fWF()
   {
-    AppMethodBeat.i(187861);
-    Iterator localIterator = this.Kha.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((e)localIterator.next()).fFs() + l) {}
-    AppMethodBeat.o(187861);
+    AppMethodBeat.i(191882);
+    Iterator localIterator = this.Maq.iterator();
+    for (long l = 0L; localIterator.hasNext(); l = ((e)localIterator.next()).fWH() + l) {}
+    AppMethodBeat.o(191882);
     return l;
   }
   
   public final int getMediaType()
   {
-    return this.KgZ;
+    return this.Map;
   }
   
   public final int getTrackId()
   {
-    return this.KgY;
+    return this.Mao;
   }
   
   public final String getUrl()
   {
-    AppMethodBeat.i(187860);
+    AppMethodBeat.i(191881);
     for (;;)
     {
       int i;
       try
       {
-        localList = this.Kha;
-        i = this.KgZ;
-        if (!b.isEmpty(localList)) {
+        localList = this.Maq;
+        i = this.Map;
+        if (!a.isEmpty(localList)) {
           break label156;
         }
-        AppMethodBeat.o(187860);
+        AppMethodBeat.o(191881);
         return "";
       }
       catch (IOException localIOException)
@@ -64,8 +64,8 @@ public final class d
         XmlSerializer localXmlSerializer;
         StringWriter localStringWriter;
         String str1;
-        com.tencent.thumbplayer.utils.f.e("TPMediaCompositionTrack", localIOException);
-        AppMethodBeat.o(187860);
+        com.tencent.thumbplayer.utils.d.e("TPMediaCompositionTrack", localIOException);
+        AppMethodBeat.o(191881);
         return null;
       }
       localXmlSerializer = Xml.newSerializer();
@@ -78,7 +78,7 @@ public final class d
       localXmlSerializer.endTag("", "assets");
       localXmlSerializer.endDocument();
       str1 = localStringWriter.toString();
-      AppMethodBeat.o(187860);
+      AppMethodBeat.o(191881);
       return str1;
       label156:
       String str2;
@@ -87,7 +87,7 @@ public final class d
         str3 = "video_tracks";
         str1 = "video_track";
         continue;
-        AppMethodBeat.o(187860);
+        AppMethodBeat.o(191881);
         return "";
         if (i == 1)
         {

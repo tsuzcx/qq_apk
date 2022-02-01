@@ -1,28 +1,59 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.chatting.e.a;
 
-final class bd$d
-  extends c.a
+public final class bd$d
+  extends bd.a
 {
-  TextView Ioj;
-  
-  public final c.a gr(View paramView)
+  public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(37548);
-    super.fX(paramView);
-    this.fAz = ((TextView)paramView.findViewById(2131298178));
-    this.Ioj = ((TextView)paramView.findViewById(2131298211));
-    this.nDl = paramView.findViewById(2131298069);
-    this.IhW = ((ImageView)paramView.findViewById(2131298174));
-    this.ijt = ((CheckBox)paramView.findViewById(2131298068));
-    this.gGk = paramView.findViewById(2131298147);
-    AppMethodBeat.o(37548);
-    return this;
+    AppMethodBeat.i(37521);
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localObject = new ah(paramLayoutInflater, 2131493463);
+      ((View)localObject).setTag(new bd.i().gI((View)localObject));
+    }
+    AppMethodBeat.o(37521);
+    return localObject;
+  }
+  
+  public final void a(c.a parama, int paramInt, a parama1, bu parambu, String paramString)
+  {
+    AppMethodBeat.i(37522);
+    bd.i.a((bd.i)parama, parambu, true, paramInt, parama1, o(parama1), c(parama1));
+    AppMethodBeat.o(37522);
+  }
+  
+  public final boolean a(MenuItem paramMenuItem, a parama, bu parambu)
+  {
+    return false;
+  }
+  
+  public final boolean a(l paraml, View paramView, bu parambu)
+  {
+    return false;
+  }
+  
+  public final boolean b(View paramView, a parama, bu parambu)
+  {
+    return false;
+  }
+  
+  public final boolean bi(int paramInt, boolean paramBoolean)
+  {
+    return (!paramBoolean) && (paramInt == 53);
   }
 }
 

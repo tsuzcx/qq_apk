@@ -17,8 +17,8 @@ import com.tencent.mm.plugin.appbrand.r.a.a.o;
 import com.tencent.mm.plugin.appbrand.r.a.c;
 import com.tencent.mm.plugin.appbrand.r.a.e.a;
 import com.tencent.mm.plugin.appbrand.r.a.e.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ConcurrentModificationException;
 import java.util.Locale;
 import java.util.Map;
@@ -27,31 +27,31 @@ import java.util.Objects;
 public final class bi
   implements com.tencent.mm.plugin.appbrand.page.b.b, com.tencent.mm.plugin.appbrand.page.b.d
 {
-  volatile String caG;
-  private boolean caH;
-  private final aa caw;
-  final com.tencent.luggage.sdk.b.a.b.e lFe;
-  private boolean lFf;
-  private boolean lFg;
-  private Configuration lFh;
-  private a lFi;
+  private final aa ckN;
+  volatile String ckX;
+  private boolean ckY;
   private boolean mDestroyed;
+  final com.tencent.luggage.sdk.b.a.b.e meI;
+  private boolean meJ;
+  private boolean meK;
+  private Configuration meL;
+  private a meM;
   
   bi(aa paramaa)
   {
     AppMethodBeat.i(147449);
-    this.caH = false;
+    this.ckY = false;
     this.mDestroyed = false;
-    this.lFf = false;
-    this.lFg = false;
-    this.caw = paramaa;
-    this.lFe = new com.tencent.luggage.sdk.b.a.b.e(paramaa);
-    this.caw.lAi.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
+    this.meJ = false;
+    this.meK = false;
+    this.ckN = paramaa;
+    this.meI = new com.tencent.luggage.sdk.b.a.b.e(paramaa);
+    this.ckN.lZG.addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
         AppMethodBeat.i(147445);
-        if (TextUtils.isEmpty(bi.a(bi.this).jZJ))
+        if (TextUtils.isEmpty(bi.a(bi.this).kuf))
         {
           AppMethodBeat.o(147445);
           return;
@@ -59,7 +59,7 @@ public final class bi
         if (bi.b(bi.this)) {
           try
           {
-            bi.a(bi.this).lAi.removeOnLayoutChangeListener(this);
+            bi.a(bi.this).lZG.removeOnLayoutChangeListener(this);
             AppMethodBeat.o(147445);
             return;
           }
@@ -70,7 +70,7 @@ public final class bi
               public final void run()
               {
                 AppMethodBeat.i(147444);
-                bi.a(bi.this).lAi.removeOnLayoutChangeListener(jdField_this);
+                bi.a(bi.this).lZG.removeOnLayoutChangeListener(jdField_this);
                 AppMethodBeat.o(147444);
               }
             });
@@ -78,7 +78,7 @@ public final class bi
             return;
           }
         }
-        ac.i("Luggage.MPPageViewOrientationExtensionImpl", "pageArea onLayoutChange appId[%s], url[%s], frozen[%b]", new Object[] { bi.a(bi.this).getAppId(), bi.a(bi.this).jZJ, Boolean.valueOf(bi.c(bi.this)) });
+        ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "pageArea onLayoutChange appId[%s], url[%s], frozen[%b]", new Object[] { bi.a(bi.this).getAppId(), bi.a(bi.this).kuf, Boolean.valueOf(bi.c(bi.this)) });
         if (bi.c(bi.this))
         {
           bi.d(bi.this);
@@ -92,10 +92,10 @@ public final class bi
     AppMethodBeat.o(147449);
   }
   
-  private void brm()
+  private void bvn()
   {
     AppMethodBeat.i(185221);
-    if (this.caw.CX() == null)
+    if (this.ckN.Ew() == null)
     {
       AppMethodBeat.o(185221);
       return;
@@ -105,65 +105,65 @@ public final class bi
       AppMethodBeat.o(185221);
       return;
     }
-    this.lFe.Dd();
+    this.meI.EC();
     AppMethodBeat.o(185221);
   }
   
   private com.tencent.mm.plugin.appbrand.r.a.e getOrientationHandler()
   {
     AppMethodBeat.i(169507);
-    com.tencent.mm.plugin.appbrand.r.a.e locale = this.caw.jgX.getOrientationHandler();
+    com.tencent.mm.plugin.appbrand.r.a.e locale = this.ckN.jzX.getOrientationHandler();
     AppMethodBeat.o(169507);
     return locale;
   }
   
-  private void ha(boolean paramBoolean)
+  private void hi(boolean paramBoolean)
   {
     AppMethodBeat.i(185220);
-    this.lFf = paramBoolean;
-    if ((!this.lFf) && (this.lFg))
+    this.meJ = paramBoolean;
+    if ((!this.meJ) && (this.meK))
     {
-      ac.i("Luggage.MPPageViewOrientationExtensionImpl", "emitPageLayout after mPageLayoutFrozen reset false, appId[%s] url[%s] mDestroyed[%b]", new Object[] { this.caw.getAppId(), this.caw.jZJ, Boolean.valueOf(this.mDestroyed) });
-      brm();
-      this.lFg = false;
+      ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "emitPageLayout after mPageLayoutFrozen reset false, appId[%s] url[%s] mDestroyed[%b]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, Boolean.valueOf(this.mDestroyed) });
+      bvn();
+      this.meK = false;
     }
     AppMethodBeat.o(185220);
   }
   
-  public final boolean BZ()
+  public final boolean Dy()
   {
     AppMethodBeat.i(147450);
     Object localObject;
-    if (this.caw.jgX == null)
+    if (this.ckN.jzX == null)
     {
       localObject = null;
       if (localObject != null) {
         break label85;
       }
-      ac.e("Luggage.MPPageViewOrientationExtensionImpl", "__willResize NULL orientationHandler, appId:%s, url:%s", new Object[] { this.caw.getAppId(), this.caw.jZJ });
+      ad.e("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "__willResize NULL orientationHandler, appId:%s, url:%s", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
     }
     label85:
     label235:
     for (;;)
     {
       boolean bool = false;
-      this.lFe.cef = bool;
+      this.meI.cov = bool;
       AppMethodBeat.o(147450);
       return bool;
-      localObject = this.caw.jgX.getOrientationHandler();
+      localObject = this.ckN.jzX.getOrientationHandler();
       break;
-      e.b localb = ((com.tencent.mm.plugin.appbrand.r.a.e)localObject).aUB();
-      localObject = e.b.Qz(this.caG);
-      ac.i("Luggage.MPPageViewOrientationExtensionImpl", "willResizeByOrientation appId[%s], url[%s] current[%s], desire[%s]", new Object[] { this.caw.getAppId(), this.caw.jZJ, localb, localObject });
-      if (e.b.lOR != localObject) {
-        if ((e.b.c(getOrientationHandler().aUB())) && (((a)this.caw.ar(a.class)).cbS))
+      e.b localb = ((com.tencent.mm.plugin.appbrand.r.a.e)localObject).aXN();
+      localObject = e.b.Uf(this.ckX);
+      ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "willResizeByOrientation appId[%s], url[%s] current[%s], desire[%s]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, localb, localObject });
+      if (e.b.moH != localObject) {
+        if ((e.b.c(getOrientationHandler().aXN())) && (((a)this.ckN.ar(a.class)).cmj))
         {
-          ac.i("Luggage.MPPageViewOrientationExtensionImpl", "willResizeByOrientation appId[%s], url[%s], tabletLandscapeCompatible", new Object[] { this.caw.getAppId(), this.caw.jZJ });
+          ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "willResizeByOrientation appId[%s], url[%s], tabletLandscapeCompatible", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
         }
         else
         {
           if (localObject == null) {
-            localObject = e.b.lOQ;
+            localObject = e.b.moG;
           }
           for (;;)
           {
@@ -178,9 +178,9 @@ public final class bi
     }
   }
   
-  public final String Ca()
+  public final String Dz()
   {
-    return this.caG;
+    return this.ckX;
   }
   
   public final void a(final e.a parama)
@@ -188,7 +188,7 @@ public final class bi
     AppMethodBeat.i(169508);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      this.caw.N(new Runnable()
+      this.ckN.M(new Runnable()
       {
         public final void run()
         {
@@ -202,17 +202,17 @@ public final class bi
     }
     if (this.mDestroyed)
     {
-      ac.w("Luggage.MPPageViewOrientationExtensionImpl", "resetPageOrientation but destroyed, appId:%s url:%s", new Object[] { this.caw.getAppId(), this.caw.jZJ });
+      ad.w("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation but destroyed, appId:%s url:%s", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
       AppMethodBeat.o(169508);
       return;
     }
-    ha(true);
+    hi(true);
     parama = new e.a()
     {
       public final void a(e.b paramAnonymousb, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(169506);
-        ac.i("Luggage.MPPageViewOrientationExtensionImpl", "resetPageOrientation, onOrientationChanged, appId[%s] url[%s] orientation[%s] success[%b]", new Object[] { bi.f(bi.this), bi.g(bi.this), paramAnonymousb, Boolean.valueOf(paramAnonymousBoolean) });
+        ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, onOrientationChanged, appId[%s] url[%s] orientation[%s] success[%b]", new Object[] { bi.f(bi.this), bi.g(bi.this), paramAnonymousb, Boolean.valueOf(paramAnonymousBoolean) });
         if (parama != null) {
           parama.a(paramAnonymousb, paramAnonymousBoolean);
         }
@@ -220,23 +220,23 @@ public final class bi
         AppMethodBeat.o(169506);
       }
     };
-    boolean bool = this.caw.jgX instanceof o;
-    if ((e.b.c(getOrientationHandler().aUB())) && (bool) && (((a)this.caw.ar(a.class)).cbS))
+    boolean bool = this.ckN.jzX instanceof o;
+    if ((e.b.c(getOrientationHandler().aXN())) && (bool) && (((a)this.ckN.ar(a.class)).cmj))
     {
-      ac.i("Luggage.MPPageViewOrientationExtensionImpl", "resetPageOrientation appId[%s], url[%s], tabletLandscapeCompatible", new Object[] { this.caw.getAppId(), this.caw.jZJ });
+      ad.i("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation appId[%s], url[%s], tabletLandscapeCompatible", new Object[] { this.ckN.getAppId(), this.ckN.kuf });
       parama.a(null, false);
       AppMethodBeat.o(169508);
       return;
     }
-    if (this.caw.getRuntime().aTe())
+    if (this.ckN.getRuntime().aWo())
     {
-      ac.m("Luggage.MPPageViewOrientationExtensionImpl", "resetPageOrientation, wxa is showing launch ad, ignore changing orientation", new Object[0]);
+      ad.m("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, wxa is showing launch ad, ignore changing orientation", new Object[0]);
       parama.a(null, false);
       AppMethodBeat.o(169508);
       return;
     }
-    ac.m("Luggage.MPPageViewOrientationExtensionImpl", "resetPageOrientation, before trigger, appId[%s] url[%s] orientation[%s]", new Object[] { this.caw.getAppId(), this.caw.jZJ, this.caG });
-    String str = bs.bG(this.caG, "portrait");
+    ad.m("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", "resetPageOrientation, before trigger, appId[%s] url[%s] orientation[%s]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, this.ckX });
+    String str = bt.bI(this.ckX, "portrait");
     int i = -1;
     switch (str.hashCode())
     {
@@ -246,8 +246,8 @@ public final class bi
       switch (i)
       {
       default: 
-        str = String.format(Locale.US, "resetPageOrientation get invalid value, appId[%s], url[%s], orientation[%s]", new Object[] { this.caw.getAppId(), this.caw.jZJ, this.caG });
-        if (!this.caw.jdX) {
+        str = String.format(Locale.US, "resetPageOrientation get invalid value, appId[%s], url[%s], orientation[%s]", new Object[] { this.ckN.getAppId(), this.ckN.kuf, this.ckX });
+        if (!this.ckN.jxf) {
           break label564;
         }
         parama = new IllegalArgumentException(str);
@@ -274,131 +274,106 @@ public final class bi
         break;
       }
     }
-    getOrientationHandler().a(e.b.lOR, parama);
+    getOrientationHandler().a(e.b.moH, parama);
     AppMethodBeat.o(169508);
     return;
-    getOrientationHandler().a(e.b.lOS, parama);
+    getOrientationHandler().a(e.b.moI, parama);
     AppMethodBeat.o(169508);
     return;
-    getOrientationHandler().a(e.b.lOQ, parama);
+    getOrientationHandler().a(e.b.moG, parama);
     AppMethodBeat.o(169508);
     return;
-    getOrientationHandler().a(e.b.lOU, parama);
+    getOrientationHandler().a(e.b.moK, parama);
     AppMethodBeat.o(169508);
     return;
     label564:
-    ac.e("Luggage.MPPageViewOrientationExtensionImpl", str);
+    ad.e("Luggage.MPPageViewOrientationExtensionImpl[AppBrandSplashAd]", str);
     parama.a(null, false);
     AppMethodBeat.o(169508);
   }
   
   public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb) {}
   
-  public final void cc(String paramString)
+  public final void cW(String paramString)
   {
     AppMethodBeat.i(147451);
-    this.caG = paramString;
+    this.ckX = paramString;
     a(null);
     AppMethodBeat.o(147451);
   }
   
-  public final void o(final String paramString, final Map<String, Object> paramMap)
-  {
-    AppMethodBeat.i(147452);
-    if (Looper.myLooper() != Looper.getMainLooper())
-    {
-      this.caw.N(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(147446);
-          bi.this.o(paramString, paramMap);
-          AppMethodBeat.o(147446);
-        }
-      });
-      AppMethodBeat.o(147452);
-      return;
-    }
-    com.tencent.luggage.sdk.b.a.b.e locale = this.lFe;
-    if (paramMap != null) {
-      locale.cee.putAll(paramMap);
-    }
-    cc(paramString);
-    AppMethodBeat.o(147452);
-  }
-  
   public final void onBackground()
   {
-    this.caH = false;
-    this.lFe.foreground = false;
+    this.ckY = false;
+    this.meI.foreground = false;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(206182);
-    if ((this.caH) && (!this.mDestroyed) && (this.lFh != null) && (this.lFh.orientation != paramConfiguration.orientation))
+    AppMethodBeat.i(192273);
+    if ((this.ckY) && (!this.mDestroyed) && (this.meL != null) && (this.meL.orientation != paramConfiguration.orientation))
     {
-      this.lFh = new Configuration(paramConfiguration);
-      if (this.lFi == null) {
-        this.lFi = new a((byte)0);
+      this.meL = new Configuration(paramConfiguration);
+      if (this.meM == null) {
+        this.meM = new a((byte)0);
       }
-      paramConfiguration = this.lFi;
-      paramConfiguration.lFj.ha(true);
-      paramConfiguration.dz();
-      Object localObject = (View)Objects.requireNonNull(paramConfiguration.lFj.caw.jHO);
-      ((View)localObject).postDelayed(paramConfiguration.lFp, 100L);
+      paramConfiguration = this.meM;
+      paramConfiguration.meN.hi(true);
+      paramConfiguration.dO();
+      Object localObject = (View)Objects.requireNonNull(paramConfiguration.meN.ckN.kca);
+      ((View)localObject).postDelayed(paramConfiguration.meT, 100L);
       localObject = ((View)localObject).getViewTreeObserver();
       bi.a.2 local2 = new bi.a.2(paramConfiguration);
-      paramConfiguration.adr = local2;
+      paramConfiguration.afi = local2;
       ((ViewTreeObserver)localObject).addOnGlobalLayoutListener(local2);
     }
-    AppMethodBeat.o(206182);
+    AppMethodBeat.o(192273);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(206181);
-    this.caH = false;
+    AppMethodBeat.i(192272);
+    this.ckY = false;
     this.mDestroyed = true;
-    if (this.lFi != null)
+    if (this.meM != null)
     {
-      a locala = this.lFi;
-      locala.dz();
-      locala.adr = null;
-      locala.lFp = null;
+      a locala = this.meM;
+      locala.dO();
+      locala.afi = null;
+      locala.meT = null;
     }
-    AppMethodBeat.o(206181);
+    AppMethodBeat.o(192272);
   }
   
   public final void onForeground()
   {
     AppMethodBeat.i(147454);
-    if (this.lFh == null) {
-      this.lFh = new Configuration(((r)Objects.requireNonNull(this.caw.lCC)).getResources().getConfiguration());
+    if (this.meL == null) {
+      this.meL = new Configuration(((r)Objects.requireNonNull(this.ckN.mcd)).getResources().getConfiguration());
     }
-    this.caH = true;
-    if ((this.caw.getFullscreenImpl() != null) && (this.caw.getFullscreenImpl().bsE())) {
-      this.caw.getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
+    this.ckY = true;
+    if ((this.ckN.getFullscreenImpl() != null) && (this.ckN.getFullscreenImpl().bwI())) {
+      this.ckN.getFullscreenImpl().a(new com.tencent.mm.plugin.appbrand.r.a.b()
       {
-        public final void Cb()
+        public final void DA()
         {
-          AppMethodBeat.i(206176);
+          AppMethodBeat.i(192267);
           bi.a(bi.this).getFullscreenImpl().b(this);
           if ((!bi.b(bi.this)) && (bi.i(bi.this))) {
             bi.this.a(null);
           }
-          AppMethodBeat.o(206176);
+          AppMethodBeat.o(192267);
         }
       });
     }
     for (;;)
     {
-      com.tencent.luggage.sdk.b.a.b.e locale = this.lFe;
-      if (locale.ceb)
+      com.tencent.luggage.sdk.b.a.b.e locale = this.meI;
+      if (locale.cor)
       {
-        ac.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "onForeground dispatch ViewDidResize appId[%s] url[%s]", new Object[] { locale.caw.getAppId(), locale.caw.jZJ });
-        locale.De();
-        locale.ceb = false;
+        ad.i("Luggage.AppBrandPageViewResizedEmitter[pageOrientation]", "onForeground dispatch ViewDidResize appId[%s] url[%s]", new Object[] { locale.ckN.getAppId(), locale.ckN.kuf });
+        locale.ED();
+        locale.cor = false;
       }
       locale.foreground = true;
       AppMethodBeat.o(147454);
@@ -407,44 +382,61 @@ public final class bi
     }
   }
   
+  public final void q(String paramString, Map<String, Object> paramMap)
+  {
+    AppMethodBeat.i(147452);
+    if (Looper.myLooper() != Looper.getMainLooper())
+    {
+      this.ckN.M(new bi.2(this, paramString, paramMap));
+      AppMethodBeat.o(147452);
+      return;
+    }
+    com.tencent.luggage.sdk.b.a.b.e locale = this.meI;
+    if (paramMap != null) {
+      locale.cou.putAll(paramMap);
+    }
+    cW(paramString);
+    AppMethodBeat.o(147452);
+  }
+  
   final class a
   {
-    ViewTreeObserver.OnGlobalLayoutListener adr;
-    Runnable lFp;
+    ViewTreeObserver.OnGlobalLayoutListener afi;
+    Runnable meT;
     
     private a()
     {
-      AppMethodBeat.i(206179);
-      this.lFp = new Runnable()
+      AppMethodBeat.i(192270);
+      this.meT = new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(206177);
+          AppMethodBeat.i(192268);
           bi.h(bi.this);
-          AppMethodBeat.o(206177);
+          AppMethodBeat.o(192268);
         }
       };
-      AppMethodBeat.o(206179);
+      AppMethodBeat.o(192270);
     }
     
-    final void dz()
+    final void dO()
     {
-      AppMethodBeat.i(206180);
-      ViewGroup localViewGroup = bi.a(bi.this).jHO;
+      AppMethodBeat.i(192271);
+      ViewGroup localViewGroup = bi.a(bi.this).kca;
       if (localViewGroup != null)
       {
-        localViewGroup.removeCallbacks(this.lFp);
-        if (this.adr != null) {
-          localViewGroup.getViewTreeObserver().removeOnGlobalLayoutListener(this.adr);
+        localViewGroup.removeCallbacks(this.meT);
+        if (this.afi != null) {
+          localViewGroup.getViewTreeObserver().removeOnGlobalLayoutListener(this.afi);
         }
       }
-      AppMethodBeat.o(206180);
+      AppMethodBeat.o(192271);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bi
  * JD-Core Version:    0.7.0.1
  */

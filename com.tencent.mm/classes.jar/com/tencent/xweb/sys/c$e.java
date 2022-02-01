@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c$e
   extends com.tencent.xweb.JsResult
 {
-  public android.webkit.JsResult KDs;
+  public android.webkit.JsResult MtS;
   
   public c$e(android.webkit.JsResult paramJsResult)
   {
-    this.KDs = paramJsResult;
+    this.MtS = paramJsResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153665);
-    if (this.KDs != null) {
-      this.KDs.cancel();
+    if (this.MtS != null) {
+      this.MtS.cancel();
     }
     AppMethodBeat.o(153665);
   }
@@ -24,8 +24,8 @@ public final class c$e
   public final void confirm()
   {
     AppMethodBeat.i(153664);
-    if (this.KDs != null) {
-      this.KDs.confirm();
+    if (this.MtS != null) {
+      this.MtS.confirm();
     }
     AppMethodBeat.o(153664);
   }

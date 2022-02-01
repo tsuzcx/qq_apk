@@ -7,24 +7,24 @@ import com.tencent.xweb.r;
 public final class g$a
   implements r
 {
-  SslErrorHandler KEs;
+  SslErrorHandler MuS;
   
   public g$a(SslErrorHandler paramSslErrorHandler)
   {
-    this.KEs = paramSslErrorHandler;
+    this.MuS = paramSslErrorHandler;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153847);
-    this.KEs.cancel();
+    this.MuS.cancel();
     AppMethodBeat.o(153847);
   }
   
   public final void proceed()
   {
     AppMethodBeat.i(153846);
-    this.KEs.proceed();
+    this.MuS.proceed();
     AppMethodBeat.o(153846);
   }
 }

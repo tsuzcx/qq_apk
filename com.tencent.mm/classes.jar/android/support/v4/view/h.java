@@ -12,12 +12,12 @@ public final class h
     {
       public final boolean onMenuItemActionCollapse(MenuItem paramAnonymousMenuItem)
       {
-        return this.NS.fe();
+        return this.PJ.fv();
       }
       
       public final boolean onMenuItemActionExpand(MenuItem paramAnonymousMenuItem)
       {
-        return this.NS.fd();
+        return this.PJ.fu();
       }
     });
   }
@@ -25,9 +25,9 @@ public final class h
   @Deprecated
   public static abstract interface a
   {
-    public abstract boolean fd();
+    public abstract boolean fu();
     
-    public abstract boolean fe();
+    public abstract boolean fv();
   }
 }
 

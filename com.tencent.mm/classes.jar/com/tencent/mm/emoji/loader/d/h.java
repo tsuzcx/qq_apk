@@ -4,14 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.sync.EmojiUpdateReceiver;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.l;
-import d.y;
+import d.z;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/request/ProcessRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/request/ProcessRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
 public final class h
-  extends i<y>
+  extends i<z>
 {
   public h(EmojiInfo paramEmojiInfo)
   {
@@ -20,15 +20,15 @@ public final class h
     AppMethodBeat.o(105472);
   }
   
-  public final void df(boolean paramBoolean)
+  public final void dh(boolean paramBoolean)
   {
     AppMethodBeat.i(105471);
     Intent localIntent = new Intent();
     localIntent.setAction(EmojiUpdateReceiver.ACTION);
-    localIntent.putExtra(EmojiUpdateReceiver.fWe, EmojiUpdateReceiver.fWk);
-    localIntent.putExtra("md5", this.fPB.JC());
+    localIntent.putExtra(EmojiUpdateReceiver.gpH, EmojiUpdateReceiver.gpN);
+    localIntent.putExtra("md5", this.gjb.Lb());
     localIntent.putExtra("result", paramBoolean);
-    ai.getContext().sendBroadcast(localIntent);
+    aj.getContext().sendBroadcast(localIntent);
     AppMethodBeat.o(105471);
   }
 }

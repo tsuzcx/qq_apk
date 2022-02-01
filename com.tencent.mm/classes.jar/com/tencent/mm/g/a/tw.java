@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.btz;
 import com.tencent.mm.sdk.b.b;
 
 public final class tw
   extends b
 {
-  public a dwD;
-  
   public tw()
   {
     this((byte)0);
@@ -16,19 +12,8 @@ public final class tw
   
   private tw(byte paramByte)
   {
-    AppMethodBeat.i(125640);
-    this.dwD = new a();
-    this.Gqe = false;
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(125640);
-  }
-  
-  public static final class a
-  {
-    public int cZu;
-    public btz dwE;
-    public String mediaId;
-    public String path;
   }
 }
 

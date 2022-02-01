@@ -13,7 +13,7 @@ import java.util.Set;
 public final class j
   implements h
 {
-  private volatile Map<String, String> aIo;
+  private volatile Map<String, String> aKf;
   private final Map<String, List<i>> headers;
   
   j(Map<String, List<i>> paramMap)
@@ -31,7 +31,7 @@ public final class j
     int i = 0;
     while (i < j)
     {
-      String str = ((i)paramList.get(i)).oV();
+      String str = ((i)paramList.get(i)).pn();
       if (!TextUtils.isEmpty(str))
       {
         localStringBuilder.append(str);
@@ -63,10 +63,10 @@ public final class j
   public final Map<String, String> getHeaders()
   {
     AppMethodBeat.i(77250);
-    if (this.aIo == null) {
+    if (this.aKf == null) {
       try
       {
-        if (this.aIo == null)
+        if (this.aKf == null)
         {
           HashMap localHashMap = new HashMap();
           Iterator localIterator = this.headers.entrySet().iterator();
@@ -78,7 +78,7 @@ public final class j
               localHashMap.put(localEntry.getKey(), str);
             }
           }
-          this.aIo = Collections.unmodifiableMap(localMap1);
+          this.aKf = Collections.unmodifiableMap(localMap1);
         }
       }
       finally
@@ -86,7 +86,7 @@ public final class j
         AppMethodBeat.o(77250);
       }
     }
-    Map localMap2 = this.aIo;
+    Map localMap2 = this.aKf;
     AppMethodBeat.o(77250);
     return localMap2;
   }
@@ -109,11 +109,11 @@ public final class j
   
   public static final class a
   {
-    private static final String aIp;
-    private static final Map<String, List<i>> aIq;
-    boolean aIr = true;
-    private boolean aIs = true;
-    Map<String, List<i>> headers = aIq;
+    private static final String aKg;
+    private static final Map<String, List<i>> aKh;
+    boolean aKi = true;
+    private boolean aKj = true;
+    Map<String, List<i>> headers = aKh;
     
     static
     {
@@ -122,12 +122,12 @@ public final class j
       if (TextUtils.isEmpty((CharSequence)localObject)) {}
       for (;;)
       {
-        aIp = (String)localObject;
+        aKg = (String)localObject;
         localObject = new HashMap(2);
-        if (!TextUtils.isEmpty(aIp)) {
-          ((Map)localObject).put("User-Agent", Collections.singletonList(new j.b(aIp)));
+        if (!TextUtils.isEmpty(aKg)) {
+          ((Map)localObject).put("User-Agent", Collections.singletonList(new j.b(aKg)));
         }
-        aIq = Collections.unmodifiableMap((Map)localObject);
+        aKh = Collections.unmodifiableMap((Map)localObject);
         AppMethodBeat.o(77245);
         return;
         int j = ((String)localObject).length();
@@ -183,7 +183,7 @@ public final class j
       return i;
     }
     
-    public final String oV()
+    public final String pn()
     {
       return this.value;
     }

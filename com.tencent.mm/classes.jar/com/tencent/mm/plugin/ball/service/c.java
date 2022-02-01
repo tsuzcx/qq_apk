@@ -1,111 +1,114 @@
 package com.tencent.mm.plugin.ball.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.i;
 import d.f;
 import d.g.a.a;
-import d.g.b.u;
-import d.g.b.w;
+import d.g.b.p;
+import d.g.b.q;
+import d.k;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "Lcom/tencent/mm/plugin/ball/api/IFloatBallReportService;", "()V", "enableReport", "", "Ljava/lang/Boolean;", "lastExitPageInfo", "Lcom/tencent/mm/plugin/ball/service/FloatBallReportService$ExitPageInfo;", "markExitPage", "", "pageType", "", "hasFloatBall", "isSupportMessageBall", "markWechatForeground", "foreground", "onEnterChattingFromNotification", "timestamp", "", "addMessageBallResult", "updateEnableReport", "Companion", "ExitPageInfo", "plugin-ball_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "Lcom/tencent/mm/plugin/ball/api/IFloatBallReportService;", "()V", "enableReport", "", "Ljava/lang/Boolean;", "lastExitPageInfo", "Lcom/tencent/mm/plugin/ball/service/FloatBallReportService$ExitPageInfo;", "markExitPage", "", "pageType", "", "hasFloatBall", "isSupportMessageBall", "markWechatForeground", "foreground", "onEnterChattingFromNotification", "timestamp", "", "addMessageBallResult", "updateEnableReport", "Companion", "ExitPageInfo", "plugin-ball_release"})
 public final class c
   implements com.tencent.mm.plugin.ball.c.b
 {
-  private static final f gKX;
-  public static final a nfU;
-  private volatile c nfS;
-  private Boolean nfT;
+  private static final f heM;
+  public static final a nGq;
+  private volatile c nGo;
+  private Boolean nGp;
   
   static
   {
-    AppMethodBeat.i(208094);
-    nfU = new a((byte)0);
-    gKX = d.g.a(d.k.KTc, (a)b.nfV);
-    AppMethodBeat.o(208094);
+    AppMethodBeat.i(217390);
+    nGq = new a((byte)0);
+    heM = d.g.a(k.MKa, (a)b.nGr);
+    AppMethodBeat.o(217390);
   }
   
   public final void c(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(208091);
-    ac.d("MicroMsg.FloatBallReportService", "alvinluo markExitPage pageType: %d, hasFloatBall: %b, isSupportMessageBall: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    this.nfS = new c(paramInt, paramBoolean1, paramBoolean2, System.currentTimeMillis());
-    AppMethodBeat.o(208091);
+    AppMethodBeat.i(217387);
+    ad.d("MicroMsg.FloatBallReportService", "alvinluo markExitPage pageType: %d, hasFloatBall: %b, isSupportMessageBall: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    this.nGo = new c(paramInt, paramBoolean1, paramBoolean2, System.currentTimeMillis());
+    AppMethodBeat.o(217387);
   }
   
-  public final void iD(boolean paramBoolean)
+  public final void iM(boolean paramBoolean)
   {
-    AppMethodBeat.i(208093);
-    ac.i("MicroMsg.FloatBallReportService", "alvinluo markWechatForeground %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(217389);
+    ad.i("MicroMsg.FloatBallReportService", "alvinluo markWechatForeground %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (!paramBoolean) {
-      this.nfS = null;
+      this.nGo = null;
     }
-    AppMethodBeat.o(208093);
+    AppMethodBeat.o(217389);
   }
   
   public final void n(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(208092);
+    AppMethodBeat.i(217388);
     int i;
-    if (this.nfT == null)
+    if (this.nGp == null)
     {
-      i = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pWR, 0);
-      if ((i != 1) && (!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) && (!com.tencent.mm.sdk.platformtools.h.DEBUG)) {
+      i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBT, 0);
+      if ((i != 1) && (!i.IS_FLAVOR_RED) && (!i.DEBUG)) {
         break label106;
       }
     }
     label106:
     for (boolean bool = true;; bool = false)
     {
-      this.nfT = Boolean.valueOf(bool);
-      ac.i("MicroMsg.FloatBallReportService", "alvinluo updateEnableReport config: %d, enable: %b", new Object[] { Integer.valueOf(i), this.nfT });
-      if (!d.g.b.k.g(this.nfT, Boolean.FALSE)) {
+      this.nGp = Boolean.valueOf(bool);
+      ad.i("MicroMsg.FloatBallReportService", "alvinluo updateEnableReport config: %d, enable: %b", new Object[] { Integer.valueOf(i), this.nGp });
+      if (!p.i(this.nGp, Boolean.FALSE)) {
         break;
       }
-      AppMethodBeat.o(208092);
+      AppMethodBeat.o(217388);
       return;
     }
-    if (this.nfS == null)
+    if (this.nGo == null)
     {
-      com.tencent.mm.plugin.report.service.h.wUl.f(20041, new Object[] { Integer.valueOf(-1), Integer.valueOf(0), Integer.valueOf(0) });
-      AppMethodBeat.o(208092);
+      com.tencent.mm.plugin.report.service.g.yhR.f(20041, new Object[] { Integer.valueOf(-1), Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(217388);
       return;
     }
     try
     {
-      Object localObject = this.nfS;
+      Object localObject = this.nGo;
       if (localObject == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
       paramLong -= ((c)localObject).timestamp;
-      localObject = this.nfS;
+      localObject = this.nGo;
       if (localObject == null) {
-        d.g.b.k.fOy();
+        p.gfZ();
       }
-      if (((c)localObject).nfW) {
+      if (((c)localObject).nGs) {
         paramInt = 4;
       }
       for (;;)
       {
-        localObject = this.nfS;
+        localObject = this.nGo;
         if (localObject == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
-        ac.d("MicroMsg.FloatBallReportService", "alvinluo onEnterChattingFromNotification type: %d, addMessageBallResult: %d, timeDiff: %d", new Object[] { Integer.valueOf(((c)localObject).pageType), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-        localObject = com.tencent.mm.plugin.report.service.h.wUl;
-        c localc = this.nfS;
+        ad.d("MicroMsg.FloatBallReportService", "alvinluo onEnterChattingFromNotification type: %d, addMessageBallResult: %d, timeDiff: %d", new Object[] { Integer.valueOf(((c)localObject).pageType), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+        localObject = com.tencent.mm.plugin.report.service.g.yhR;
+        c localc = this.nGo;
         if (localc == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
-        ((com.tencent.mm.plugin.report.service.h)localObject).f(20041, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(localc.pageType) });
-        this.nfS = null;
-        AppMethodBeat.o(208092);
+        ((com.tencent.mm.plugin.report.service.g)localObject).f(20041, new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(localc.pageType) });
+        this.nGo = null;
+        AppMethodBeat.o(217388);
         return;
-        localObject = this.nfS;
+        localObject = this.nGo;
         if (localObject == null) {
-          d.g.b.k.fOy();
+          p.gfZ();
         }
-        bool = ((c)localObject).nfX;
+        bool = ((c)localObject).nGt;
         if (!bool) {
           paramInt = 3;
         }
@@ -114,45 +117,38 @@ public final class c
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.FloatBallReportService", (Throwable)localException, "onEnterChattingFromNotification exception", new Object[0]);
-      this.nfS = null;
-      AppMethodBeat.o(208092);
+      ad.printErrStackTrace("MicroMsg.FloatBallReportService", (Throwable)localException, "onEnterChattingFromNotification exception", new Object[0]);
+      this.nGo = null;
+      AppMethodBeat.o(217388);
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/ball/service/FloatBallReportService$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "getInstance", "()Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "instance$delegate", "Lkotlin/Lazy;", "plugin-ball_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ball/service/FloatBallReportService$Companion;", "", "()V", "TAG", "", "instance", "Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "getInstance", "()Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "instance$delegate", "Lkotlin/Lazy;", "plugin-ball_release"})
   public static final class a
   {
-    static
+    public static c bKM()
     {
-      AppMethodBeat.i(208089);
-      $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(a.class), "instance", "getInstance()Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;")) };
-      AppMethodBeat.o(208089);
-    }
-    
-    public static c bGB()
-    {
-      AppMethodBeat.i(208090);
-      Object localObject = c.aow();
-      a locala = c.nfU;
+      AppMethodBeat.i(217386);
+      Object localObject = c.ari();
+      a locala = c.nGq;
       localObject = (c)((f)localObject).getValue();
-      AppMethodBeat.o(208090);
+      AppMethodBeat.o(217386);
       return localObject;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "Lcom/tencent/mm/plugin/ball/service/FloatBallReportService;", "invoke"})
   static final class b
-    extends d.g.b.l
+    extends q
     implements a<c>
   {
-    public static final b nfV;
+    public static final b nGr;
     
     static
     {
-      AppMethodBeat.i(208088);
-      nfV = new b();
-      AppMethodBeat.o(208088);
+      AppMethodBeat.i(217385);
+      nGr = new b();
+      AppMethodBeat.o(217385);
     }
     
     b()
@@ -161,19 +157,19 @@ public final class c
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/ball/service/FloatBallReportService$ExitPageInfo;", "", "pageType", "", "hasFloatBall", "", "isSupportMessageBall", "timestamp", "", "(IZZJ)V", "getHasFloatBall", "()Z", "getPageType", "()I", "getTimestamp", "()J", "plugin-ball_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/ball/service/FloatBallReportService$ExitPageInfo;", "", "pageType", "", "hasFloatBall", "", "isSupportMessageBall", "timestamp", "", "(IZZJ)V", "getHasFloatBall", "()Z", "getPageType", "()I", "getTimestamp", "()J", "plugin-ball_release"})
   static final class c
   {
-    final boolean nfW;
-    final boolean nfX;
+    final boolean nGs;
+    final boolean nGt;
     final int pageType;
     final long timestamp;
     
     public c(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
     {
       this.pageType = paramInt;
-      this.nfW = paramBoolean1;
-      this.nfX = paramBoolean2;
+      this.nGs = paramBoolean1;
+      this.nGt = paramBoolean2;
       this.timestamp = paramLong;
     }
   }

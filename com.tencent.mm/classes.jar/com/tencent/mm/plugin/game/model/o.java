@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cp;
+import com.tencent.mm.g.c.cy;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -11,144 +11,145 @@ import java.util.List;
 import java.util.Map;
 
 public final class o
-  extends cp
+  extends cy
 {
   protected static c.a info;
   public String mAppName;
-  public String pey;
-  public long tdK;
-  private boolean tdL;
-  public String tdM;
-  public String tdN;
-  public String tdO;
-  public String tdP;
-  public String tdQ;
-  public int tdR;
-  public String tdS;
-  public String tdT;
-  public LinkedList<i> tdU;
-  public boolean tdV;
-  public d tdW;
-  public boolean tdX;
-  public c tdY;
-  public HashMap<String, e> tdZ;
-  public boolean tdi;
-  public f teA;
-  public h teB;
-  public j teC;
-  public b teD;
-  public m teE;
-  public l teF;
-  public k teG;
-  public int teH;
-  public int teI;
-  public String teJ;
-  public String teK;
-  public String teL;
-  public int teM;
-  public String teN;
-  public boolean teO;
-  public String tea;
-  public int teb;
-  public int tec;
-  public int ted;
-  public String tee;
-  public String tef;
-  public String teg;
-  public int teh;
-  public int tei;
-  public long tej;
-  public long tek;
-  public int tel;
-  public a tem;
-  public String ten;
-  public String teo;
-  public String tep;
-  public String teq;
-  public String ter;
-  public String tes;
-  public String tet;
-  public String teu;
-  public String tev;
-  public String tew;
-  public String tex;
-  public String tey;
-  public g tez;
+  public String pIa;
+  public boolean uaY;
+  public long ubA;
+  private boolean ubB;
+  public String ubC;
+  public String ubD;
+  public String ubE;
+  public String ubF;
+  public String ubG;
+  public int ubH;
+  public String ubI;
+  public String ubJ;
+  public LinkedList<j> ubK;
+  public boolean ubL;
+  public e ubM;
+  public boolean ubN;
+  public d ubO;
+  public HashMap<String, f> ubP;
+  public String ubQ;
+  public int ubR;
+  public int ubS;
+  public int ubT;
+  public String ubU;
+  public String ubV;
+  public String ubW;
+  public int ubX;
+  public int ubY;
+  public long ubZ;
+  public String ucA;
+  public String ucB;
+  public String ucC;
+  public int ucD;
+  public String ucE;
+  public boolean ucF;
+  public long uca;
+  public int ucb;
+  public a ucc;
+  public String ucd;
+  public String uce;
+  public String ucf;
+  public String ucg;
+  public String uch;
+  public String uci;
+  public String ucj;
+  public String uck;
+  public String ucl;
+  public String ucm;
+  public String ucn;
+  public String uco;
+  public h ucp;
+  public g ucq;
+  public i ucr;
+  public k ucs;
+  public c uct;
+  public n ucu;
+  public m ucv;
+  public l ucw;
+  public b ucx;
+  public int ucy;
+  public int ucz;
   
   static
   {
     AppMethodBeat.i(41454);
     c.a locala = new c.a();
-    locala.GvF = new Field[17];
+    locala.IhA = new Field[17];
     locala.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.GvH.put("msgId", "LONG PRIMARY KEY ");
+    locala.IhC.put("msgId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" msgId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "msgId";
+    locala.IhB = "msgId";
     locala.columns[1] = "mergerId";
-    locala.GvH.put("mergerId", "TEXT");
+    locala.IhC.put("mergerId", "TEXT");
     localStringBuilder.append(" mergerId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "gameMsgId";
-    locala.GvH.put("gameMsgId", "TEXT");
+    locala.IhC.put("gameMsgId", "TEXT");
     localStringBuilder.append(" gameMsgId TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "msgType";
-    locala.GvH.put("msgType", "INTEGER");
+    locala.IhC.put("msgType", "INTEGER");
     localStringBuilder.append(" msgType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "createTime";
-    locala.GvH.put("createTime", "LONG default '0' ");
+    locala.IhC.put("createTime", "LONG default '0' ");
     localStringBuilder.append(" createTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "expireTime";
-    locala.GvH.put("expireTime", "LONG default '0' ");
+    locala.IhC.put("expireTime", "LONG default '0' ");
     localStringBuilder.append(" expireTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "showInMsgList";
-    locala.GvH.put("showInMsgList", "INTEGER default 'true' ");
+    locala.IhC.put("showInMsgList", "INTEGER default 'true' ");
     localStringBuilder.append(" showInMsgList INTEGER default 'true' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "isRead";
-    locala.GvH.put("isRead", "INTEGER default 'false' ");
+    locala.IhC.put("isRead", "INTEGER default 'false' ");
     localStringBuilder.append(" isRead INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "label";
-    locala.GvH.put("label", "TEXT default '' ");
+    locala.IhC.put("label", "TEXT default '' ");
     localStringBuilder.append(" label TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "isHidden";
-    locala.GvH.put("isHidden", "INTEGER default 'false' ");
+    locala.IhC.put("isHidden", "INTEGER default 'false' ");
     localStringBuilder.append(" isHidden INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "weight";
-    locala.GvH.put("weight", "TEXT default '' ");
+    locala.IhC.put("weight", "TEXT default '' ");
     localStringBuilder.append(" weight TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "rawXML";
-    locala.GvH.put("rawXML", "TEXT default '' ");
+    locala.IhC.put("rawXML", "TEXT default '' ");
     localStringBuilder.append(" rawXML TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "receiveTime";
-    locala.GvH.put("receiveTime", "LONG default '0' ");
+    locala.IhC.put("receiveTime", "LONG default '0' ");
     localStringBuilder.append(" receiveTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "showType";
-    locala.GvH.put("showType", "INTEGER default '0' ");
+    locala.IhC.put("showType", "INTEGER default '0' ");
     localStringBuilder.append(" showType INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[15] = "interactiveMergeId";
-    locala.GvH.put("interactiveMergeId", "TEXT default '' ");
+    locala.IhC.put("interactiveMergeId", "TEXT default '' ");
     localStringBuilder.append(" interactiveMergeId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "hasMergedCount";
-    locala.GvH.put("hasMergedCount", "INTEGER default '1' ");
+    locala.IhC.put("hasMergedCount", "INTEGER default '1' ");
     localStringBuilder.append(" hasMergedCount INTEGER default '1' ");
     locala.columns[17] = "rowid";
     locala.sql = localStringBuilder.toString();
@@ -159,82 +160,83 @@ public final class o
   public o()
   {
     AppMethodBeat.i(41452);
-    this.tdK = 0L;
-    this.tdL = false;
-    this.pey = "";
-    this.tdM = "";
-    this.tdN = "";
+    this.ubA = 0L;
+    this.ubB = false;
+    this.pIa = "";
+    this.ubC = "";
+    this.ubD = "";
     this.mAppName = "";
-    this.tdO = "";
-    this.tdP = "";
-    this.tdQ = "";
-    this.tdR = 0;
-    this.tdS = "";
-    this.tdT = "";
-    this.tdU = new LinkedList();
-    this.tdW = new d();
-    this.tdY = new c();
-    this.tdZ = new HashMap();
-    this.tea = "";
-    this.teb = 0;
-    this.tec = 0;
-    this.ted = 0;
-    this.tee = "";
-    this.tef = "";
-    this.teg = "";
-    this.teh = 0;
-    this.tei = 0;
-    this.tej = 0L;
-    this.tek = 0L;
-    this.tel = 0;
-    this.tem = new a();
-    this.ten = "";
-    this.teo = "";
-    this.tep = "";
-    this.teq = "";
-    this.ter = "";
-    this.tes = "";
-    this.tet = "";
-    this.teA = new f();
-    this.teB = new h();
-    this.teC = new j();
-    this.teD = new b();
-    this.teE = new m();
-    this.teF = new l();
-    this.teG = new k();
-    this.tdi = false;
-    this.teM = 0;
-    this.teN = "";
-    this.teO = false;
+    this.ubE = "";
+    this.ubF = "";
+    this.ubG = "";
+    this.ubH = 0;
+    this.ubI = "";
+    this.ubJ = "";
+    this.ubK = new LinkedList();
+    this.ubM = new e();
+    this.ubO = new d();
+    this.ubP = new HashMap();
+    this.ubQ = "";
+    this.ubR = 0;
+    this.ubS = 0;
+    this.ubT = 0;
+    this.ubU = "";
+    this.ubV = "";
+    this.ubW = "";
+    this.ubX = 0;
+    this.ubY = 0;
+    this.ubZ = 0L;
+    this.uca = 0L;
+    this.ucb = 0;
+    this.ucc = new a();
+    this.ucd = "";
+    this.uce = "";
+    this.ucf = "";
+    this.ucg = "";
+    this.uch = "";
+    this.uci = "";
+    this.ucj = "";
+    this.ucq = new g();
+    this.ucr = new i();
+    this.ucs = new k();
+    this.uct = new c();
+    this.ucu = new n();
+    this.ucv = new m();
+    this.ucw = new l();
+    this.ucx = new b();
+    this.uaY = false;
+    this.ucD = 0;
+    this.ucE = "";
+    this.ucF = false;
     AppMethodBeat.o(41452);
   }
   
-  public final void cQp()
+  public final void cYU()
   {
     AppMethodBeat.i(41453);
-    if (this.tdL)
+    if (this.ubB)
     {
       AppMethodBeat.o(41453);
       return;
     }
     if (this.field_msgType == 100)
     {
-      u.cQE();
+      u.cZk();
       u.a(this);
     }
     for (;;)
     {
       q.b(this);
-      this.tdL = true;
+      this.ubB = true;
       AppMethodBeat.o(41453);
       return;
       q.a(this);
     }
   }
   
-  public final boolean cmf()
+  public final boolean crL()
   {
-    return this.teF.tfy == 0;
+    return this.ucv.udo == 0;
   }
   
   public final c.a getDBInfo()
@@ -245,129 +247,135 @@ public final class o
   public static final class a
   {
     public int orientation;
-    public boolean sWB;
-    public boolean teP;
-    public List<String> teQ;
+    public boolean tTj;
+    public boolean ucG;
+    public List<String> ucH;
     public String url;
     
     public a()
     {
       AppMethodBeat.i(41450);
-      this.teQ = new ArrayList();
+      this.ucH = new ArrayList();
       AppMethodBeat.o(41450);
     }
   }
   
   public static final class b
   {
-    public List<String> teQ;
-    public String teR;
-    
-    public b()
-    {
-      AppMethodBeat.i(41451);
-      this.teQ = new ArrayList();
-      AppMethodBeat.o(41451);
-    }
+    public boolean dDJ = false;
+    public boolean ucI = false;
   }
   
   public static final class c
   {
-    public String mDesc;
-    public String teS;
-    public String teT;
+    public List<String> ucH;
+    public String ucJ;
+    
+    public c()
+    {
+      AppMethodBeat.i(41451);
+      this.ucH = new ArrayList();
+      AppMethodBeat.o(41451);
+    }
   }
   
   public static final class d
   {
-    public String mText;
-    public String teS;
-    public int teU;
-    public int teV;
-    public int teW;
-    public boolean teX;
-    public int teY;
-    public boolean teZ;
+    public String mDesc;
+    public String ucK;
+    public String ucL;
   }
   
   public static final class e
   {
-    public int mJumpType;
-    public String pGs;
+    public int mIconHeight;
+    public int mIconWidth;
+    public String mText;
+    public String ucK;
+    public int ucM;
+    public boolean ucN;
+    public int ucO;
+    public boolean ucP;
   }
   
   public static final class f
   {
-    public String mContent;
-    public String teS;
-    public String teT;
+    public int mJumpType;
+    public String qjX;
   }
   
   public static final class g
   {
-    public String teT;
-    public String tfa;
-    public String tfb;
-    public String tfc;
+    public String mContent;
+    public String ucK;
+    public String ucL;
   }
   
   public static final class h
   {
-    public boolean mClickable;
-    public String mName;
-    public String teT;
+    public String ucL;
+    public String ucQ;
+    public String ucR;
+    public String ucS;
   }
   
   public static final class i
   {
-    public String bLs;
-    public String tfd;
-    public String tfe;
-    public String tff;
-    public String tfg;
-    public String userName;
+    public boolean mClickable;
+    public String mName;
+    public String ucL;
   }
   
   public static final class j
   {
-    public int nZF = 0;
-    public String tfh;
-    public long tfi = 0L;
+    public String bVF;
+    public String ucT;
+    public String ucU;
+    public String ucV;
+    public String ucW;
+    public String userName;
   }
   
   public static final class k
   {
-    public String tfj;
-    public int tfk;
-    public int tfl;
-    public String tfm;
-    public String tfn;
-    public String tfo;
-    public String tfp;
-    public String tfq;
-    public String tfr;
-    public String tfs;
-    public int tft;
-    public String tfu;
-    public String tfv;
-    public String tfw;
-    public String tfx;
+    public int oCZ = 0;
+    public String ucX;
+    public long ucY = 0L;
   }
   
   public static final class l
   {
-    public String hqo;
-    public int tfy = 0;
+    public String ucZ;
+    public int uda;
+    public int udb;
+    public String udc;
+    public String udd;
+    public String ude;
+    public String udf;
+    public String udg;
+    public String udh;
+    public String udi;
+    public int udj;
+    public String udk;
+    public String udl;
+    public String udm;
+    public String udn;
   }
   
   public static final class m
   {
-    public int tfz;
+    public String hIG;
+    public int udo = 0;
+  }
+  
+  public static final class n
+  {
+    public int udp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.o
  * JD-Core Version:    0.7.0.1
  */

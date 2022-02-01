@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qz;
-import com.tencent.mm.g.a.qz.b;
+import com.tencent.mm.g.a.rk;
+import com.tencent.mm.g.a.rk.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
@@ -24,7 +24,7 @@ public class FaceTransparentStubUI
   {
     AppMethodBeat.i(104034);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ac.i("MicroMsg.FaceTransparentStubUI", "hy: on activity result in FaceTransparentStubUI");
+    ad.i("MicroMsg.FaceTransparentStubUI", "hy: on activity result in FaceTransparentStubUI");
     setResult(paramInt2, paramIntent);
     finish();
     AppMethodBeat.o(104034);
@@ -38,24 +38,24 @@ public class FaceTransparentStubUI
     Object localObject = getIntent().getBundleExtra("KEY_EXTRAS");
     if (!((Bundle)localObject).containsKey("k_user_name"))
     {
-      g.agP();
-      if (com.tencent.mm.kernel.a.afX()) {
-        ((Bundle)localObject).putString("k_user_name", u.axz());
+      g.ajA();
+      if (com.tencent.mm.kernel.a.aiJ()) {
+        ((Bundle)localObject).putString("k_user_name", u.aAp());
       }
     }
-    paramBundle = new qz();
-    paramBundle.due.context = this;
-    paramBundle.due.dtY = i;
-    paramBundle.due.extras = ((Bundle)localObject);
-    com.tencent.mm.sdk.b.a.GpY.l(paramBundle);
-    ac.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.duf.dtV) });
-    if (!paramBundle.duf.dtV)
+    paramBundle = new rk();
+    paramBundle.dGe.context = this;
+    paramBundle.dGe.dFY = i;
+    paramBundle.dGe.extras = ((Bundle)localObject);
+    com.tencent.mm.sdk.b.a.IbL.l(paramBundle);
+    ad.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dGf.dFV) });
+    if (!paramBundle.dGf.dFV)
     {
-      if (paramBundle.duf.extras == null) {
+      if (paramBundle.dGf.extras == null) {
         break label181;
       }
       localObject = new Intent();
-      ((Intent)localObject).putExtras(paramBundle.duf.extras);
+      ((Intent)localObject).putExtras(paramBundle.dGf.extras);
       setResult(1, (Intent)localObject);
     }
     for (;;)

@@ -3,13 +3,13 @@ package com.tencent.mm.view;
 import d.g.a.a;
 import d.l;
 
-@l(fNY={1, 1, 16})
+@l(gfx={1, 1, 16})
 final class f
   implements Runnable
 {
   f(a parama)
   {
-    this.bYd = parama;
+    this.civ = parama;
   }
 }
 

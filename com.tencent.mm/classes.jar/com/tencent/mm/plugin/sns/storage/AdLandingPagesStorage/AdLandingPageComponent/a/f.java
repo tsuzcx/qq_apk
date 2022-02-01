@@ -1,98 +1,66 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.axq;
-import com.tencent.mm.protocal.protobuf.axr;
-import com.tencent.mm.protocal.protobuf.byr;
-import com.tencent.mm.protocal.protobuf.bys;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ajz;
+import com.tencent.mm.protocal.protobuf.aka;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class f
   extends n
   implements k
 {
-  private g callback;
-  public String jsonString;
+  private com.tencent.mm.al.f callback;
   private b rr;
+  public String zJu;
   
   public f(String paramString)
   {
-    AppMethodBeat.i(97154);
+    AppMethodBeat.i(97150);
+    this.zJu = "";
+    this.zJu = paramString;
     b.a locala = new b.a();
-    locala.hvt = new byr();
-    locala.hvu = new bys();
-    locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_officialsync";
-    locala.funcId = 2721;
-    this.rr = locala.aAz();
-    ((byr)this.rr.hvr.hvw).FnN = paramString;
-    ac.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: syncBuffer:".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(97154);
+    locala.hNM = new ajz();
+    locala.hNN = new aka();
+    locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_favofficialitem";
+    locala.funcId = 2874;
+    this.rr = locala.aDC();
+    ((ajz)this.rr.hNK.hNQ).Gjq = paramString;
+    ad.i("MicroMsg.NetSceneFavOfficialItem", "Req: item_buff[%s]", new Object[] { paramString });
+    AppMethodBeat.o(97150);
   }
   
-  public f(String paramString1, String paramString2, String paramString3)
+  public final int doScene(e parame, com.tencent.mm.al.f paramf)
   {
-    AppMethodBeat.i(97153);
-    Object localObject = new b.a();
-    ((b.a)localObject).hvt = new axq();
-    ((b.a)localObject).hvu = new axr();
-    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/getgamecanvasinfo";
-    ((b.a)localObject).funcId = 1337;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (axq)this.rr.hvr.hvw;
-    ((axq)localObject).hOf = paramString1;
-    ((axq)localObject).EPt = paramString2;
-    ((axq)localObject).EPu = paramString3;
-    ac.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: shareType:" + paramString2 + " sharedAppId :" + paramString1);
-    AppMethodBeat.o(97153);
-  }
-  
-  public final int doScene(e parame, g paramg)
-  {
-    AppMethodBeat.i(97156);
-    this.callback = paramg;
+    AppMethodBeat.i(97151);
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(97156);
+    AppMethodBeat.o(97151);
     return i;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(97155);
-    int i = this.rr.getType();
-    AppMethodBeat.o(97155);
-    return i;
+    return 2874;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(97157);
-    ac.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString + " sceneType: " + getType());
-    if (getType() == 1337) {
-      this.jsonString = ((axr)((b)paramq).hvs.hvw).ELz;
-    }
-    for (;;)
-    {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(97157);
-      return;
-      if (getType() == 2721) {
-        this.jsonString = ((bys)((b)paramq).hvs.hvw).FnO;
-      }
-    }
+    AppMethodBeat.i(97152);
+    ad.i("MicroMsg.NetSceneFavOfficialItem", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(97152);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -2,21 +2,21 @@ package com.tencent.mm.ui;
 
 public abstract interface m
 {
-  public abstract void feF();
+  public abstract void fuM();
   
-  public abstract void feG();
+  public abstract void fuN();
   
-  public abstract void feH();
+  public abstract void fuO();
   
-  public abstract void feI();
+  public abstract void fuP();
   
-  public abstract void feJ();
+  public abstract void fuQ();
   
-  public abstract void feL();
+  public abstract void fuS();
   
-  public abstract void ffG();
+  public abstract void fvQ();
   
-  public abstract void ffH();
+  public abstract void fvR();
 }
 
 

@@ -1,113 +1,94 @@
 package com.tencent.mm.plugin.editor.widget.voiceview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.i.a;
-import com.tencent.mm.ak.i.b;
-import com.tencent.mm.ak.j;
+import com.tencent.mm.al.h;
+import com.tencent.mm.al.h.a;
+import com.tencent.mm.al.h.b;
+import com.tencent.mm.al.i;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.platformtools.SensorController;
 import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bj;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class a
-  implements i.a, i.b, SensorController.a
+  implements h.a, h.b, SensorController.a
 {
-  public static volatile a oUF = null;
+  public static volatile a pyp = null;
   public List<a> callbacks;
-  private int dhE;
+  private int dtc;
   private long lastShakeTime;
-  public i oUG;
-  private boolean oUH;
-  private boolean oUI;
-  private boolean oUJ;
-  public bj oUK;
-  public SensorController oUL;
   public String path;
+  public h pyq;
+  private boolean pyr;
+  private boolean pys;
+  private boolean pyt;
+  public bk pyu;
+  public SensorController pyv;
   
   private a()
   {
     AppMethodBeat.i(182004);
-    this.oUH = true;
-    this.oUJ = false;
+    this.pyr = true;
+    this.pyt = false;
     this.lastShakeTime = -1L;
     this.callbacks = new LinkedList();
-    this.oUG = ((j)g.ab(j.class)).Lk();
-    Boolean localBoolean = (Boolean)g.agR().agA().get(26, Boolean.FALSE);
-    this.oUI = localBoolean.booleanValue();
+    this.pyq = ((i)g.ab(i.class)).MS();
+    Boolean localBoolean = (Boolean)g.ajC().ajl().get(26, Boolean.FALSE);
+    this.pys = localBoolean.booleanValue();
     boolean bool;
     if (!localBoolean.booleanValue())
     {
       bool = true;
-      this.oUH = bool;
-      if (this.oUG == null) {
+      this.pyr = bool;
+      if (this.pyq == null) {
         break label187;
       }
-      this.oUG.a(this);
-      this.oUG.a(this);
-      this.oUG.cl(this.oUH);
+      this.pyq.a(this);
+      this.pyq.a(this);
+      this.pyq.cm(this.pyr);
     }
     for (;;)
     {
-      if (this.oUL == null) {
-        this.oUL = new SensorController(ai.getContext());
+      if (this.pyv == null) {
+        this.pyv = new SensorController(aj.getContext());
       }
-      if (this.oUK == null) {
-        this.oUK = new bj(ai.getContext());
+      if (this.pyu == null) {
+        this.pyu = new bk(aj.getContext());
       }
       AppMethodBeat.o(182004);
       return;
       bool = false;
       break;
       label187:
-      ac.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
+      ad.w("MicroMsg.RecordVoiceHelper", "get voice player fail, it is null");
     }
   }
   
-  public static a caV()
-  {
-    AppMethodBeat.i(182005);
-    if (oUF == null) {}
-    try
-    {
-      if (oUF == null) {
-        oUF = new a();
-      }
-      a locala = oUF;
-      AppMethodBeat.o(182005);
-      return locala;
-    }
-    finally
-    {
-      AppMethodBeat.o(182005);
-    }
-  }
-  
-  private void caW()
+  private void cfA()
   {
     AppMethodBeat.i(182006);
-    if ((this.oUL != null) && (!this.oUL.aKH))
+    if ((this.pyv != null) && (!this.pyv.aMy))
     {
-      this.oUL.a(this);
+      this.pyv.a(this);
       Runnable local1 = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(182003);
-          a.a(a.this, bs.Gn());
+          a.a(a.this, bt.HI());
           AppMethodBeat.o(182003);
         }
       };
-      if (this.oUK.aE(local1))
+      if (this.pyu.aD(local1))
       {
         this.lastShakeTime = 0L;
         AppMethodBeat.o(182006);
@@ -118,54 +99,73 @@ public class a
     AppMethodBeat.o(182006);
   }
   
-  private void caX()
+  private void cfB()
   {
     AppMethodBeat.i(182007);
-    if (this.oUL != null) {
-      this.oUL.eVS();
+    if (this.pyv != null) {
+      this.pyv.flC();
     }
-    if (this.oUK != null) {
-      this.oUK.eVT();
+    if (this.pyu != null) {
+      this.pyu.flD();
     }
     AppMethodBeat.o(182007);
   }
   
-  public final double NW()
+  public static a cfz()
+  {
+    AppMethodBeat.i(182005);
+    if (pyp == null) {}
+    try
+    {
+      if (pyp == null) {
+        pyp = new a();
+      }
+      a locala = pyp;
+      AppMethodBeat.o(182005);
+      return locala;
+    }
+    finally
+    {
+      AppMethodBeat.o(182005);
+    }
+  }
+  
+  public final double PF()
   {
     AppMethodBeat.i(182011);
-    if (this.oUG == null)
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.RecordVoiceHelper", "get now progress error, player is null");
+      ad.w("MicroMsg.RecordVoiceHelper", "get now progress error, player is null");
       AppMethodBeat.o(182011);
       return 0.0D;
     }
-    double d = this.oUG.NW();
+    double d = this.pyq.PF();
     AppMethodBeat.o(182011);
     return d;
   }
   
-  public final boolean cN(String paramString, int paramInt)
+  public final boolean cQ(String paramString, int paramInt)
   {
     AppMethodBeat.i(182008);
-    if (this.oUG == null)
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ad.w("MicroMsg.RecordVoiceHelper", "start play error, path %s, voiceType %d, player is null", new Object[] { paramString, Integer.valueOf(paramInt) });
       AppMethodBeat.o(182008);
       return false;
     }
-    this.oUG.stop();
-    caW();
+    this.pyq.stop();
+    cfA();
     this.path = paramString;
-    this.dhE = paramInt;
-    if ((!bs.isNullOrNil(paramString)) && (this.oUG.a(paramString, this.oUH, true, paramInt)))
+    this.dtc = paramInt;
+    if ((!bt.isNullOrNil(paramString)) && (this.pyq.a(paramString, this.pyr, true, paramInt)))
     {
-      am.aKO("keep_app_silent");
+      an.aQu("keep_app_silent");
       Iterator localIterator = this.callbacks.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
         if (locala != null) {
-          locala.Xr(paramString);
+          locala.aaY(paramString);
         }
       }
       AppMethodBeat.o(182008);
@@ -175,73 +175,73 @@ public class a
     return false;
   }
   
-  public final boolean caY()
+  public final boolean cfC()
   {
     AppMethodBeat.i(182010);
-    if (this.oUG == null)
+    if (this.pyq == null)
     {
-      ac.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
+      ad.w("MicroMsg.RecordVoiceHelper", "check is play, but player is null");
       AppMethodBeat.o(182010);
       return false;
     }
-    boolean bool = this.oUG.isPlaying();
+    boolean bool = this.pyq.isPlaying();
     AppMethodBeat.o(182010);
     return bool;
   }
   
-  public final void kc(boolean paramBoolean)
+  public final void kn(boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(182014);
-    if (bs.isNullOrNil(this.path))
+    if (bt.isNullOrNil(this.path))
     {
       AppMethodBeat.o(182014);
       return;
     }
-    if (this.oUJ)
+    if (this.pyt)
     {
       if (!paramBoolean) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.oUJ = paramBoolean;
+        this.pyt = paramBoolean;
         AppMethodBeat.o(182014);
         return;
       }
     }
-    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bs.aO(this.lastShakeTime) > 400L))
+    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bt.aO(this.lastShakeTime) > 400L))
     {
-      this.oUJ = true;
+      this.pyt = true;
       AppMethodBeat.o(182014);
       return;
     }
-    this.oUJ = false;
-    if ((this.oUG != null) && (this.oUG.NU()))
+    this.pyt = false;
+    if ((this.pyq != null) && (this.pyq.PD()))
     {
       AppMethodBeat.o(182014);
       return;
     }
-    if (this.oUI)
+    if (this.pys)
     {
-      if (this.oUG != null) {
-        this.oUG.cl(false);
+      if (this.pyq != null) {
+        this.pyq.cm(false);
       }
-      this.oUH = false;
+      this.pyr = false;
       AppMethodBeat.o(182014);
       return;
     }
-    if ((this.oUG != null) && (!this.oUG.isPlaying()))
+    if ((this.pyq != null) && (!this.pyq.isPlaying()))
     {
-      this.oUG.cl(true);
-      this.oUH = true;
+      this.pyq.cm(true);
+      this.pyr = true;
       AppMethodBeat.o(182014);
       return;
     }
-    if (this.oUG != null) {
-      this.oUG.cl(paramBoolean);
+    if (this.pyq != null) {
+      this.pyq.cm(paramBoolean);
     }
-    this.oUH = paramBoolean;
+    this.pyr = paramBoolean;
     if (!paramBoolean) {
-      cN(this.path, this.dhE);
+      cQ(this.path, this.dtc);
     }
     AppMethodBeat.o(182014);
   }
@@ -249,7 +249,7 @@ public class a
   public final void onCompletion()
   {
     AppMethodBeat.i(182013);
-    ac.d("MicroMsg.RecordVoiceHelper", "on completion, do stop play");
+    ad.d("MicroMsg.RecordVoiceHelper", "on completion, do stop play");
     stopPlay();
     AppMethodBeat.o(182013);
   }
@@ -257,7 +257,7 @@ public class a
   public final void onError()
   {
     AppMethodBeat.i(182012);
-    ac.d("MicroMsg.RecordVoiceHelper", "on error, do stop play");
+    ad.d("MicroMsg.RecordVoiceHelper", "on error, do stop play");
     stopPlay();
     AppMethodBeat.o(182012);
   }
@@ -265,34 +265,34 @@ public class a
   public final void stopPlay()
   {
     AppMethodBeat.i(182009);
-    ac.i("MicroMsg.RecordVoiceHelper", "stop play");
-    am.aKP("keep_app_silent");
-    if (this.oUG != null)
+    ad.i("MicroMsg.RecordVoiceHelper", "stop play");
+    an.aQv("keep_app_silent");
+    if (this.pyq != null)
     {
-      this.oUG.stop();
+      this.pyq.stop();
       Iterator localIterator = this.callbacks.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
         if (locala != null) {
-          locala.caU();
+          locala.cfy();
         }
       }
     }
-    caX();
+    cfB();
     AppMethodBeat.o(182009);
   }
   
   static abstract interface a
   {
-    public abstract void Xr(String paramString);
+    public abstract void aaY(String paramString);
     
-    public abstract void caU();
+    public abstract void cfy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.widget.voiceview.a
  * JD-Core Version:    0.7.0.1
  */

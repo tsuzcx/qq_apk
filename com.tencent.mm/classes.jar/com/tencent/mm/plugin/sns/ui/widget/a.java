@@ -12,27 +12,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends Animation
 {
-  private final float cEZ;
-  private final float cFa;
+  private final float ABK;
+  private final float ABL;
+  private final float ABM;
+  private final boolean ABN;
+  private Camera ABO;
+  private final float cQe;
+  private final float cQf;
   private Context context;
   private float scale;
-  private final float zjJ;
-  private final float zjK;
-  private final float zjL;
-  private final boolean zjM;
-  private Camera zjN;
   
   public a(Context paramContext, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
     AppMethodBeat.i(100450);
     this.scale = 1.0F;
     this.context = paramContext;
-    this.zjJ = paramFloat1;
-    this.zjK = paramFloat2;
-    this.cEZ = paramFloat3;
-    this.cFa = paramFloat4;
-    this.zjL = 150.0F;
-    this.zjM = paramBoolean;
+    this.ABK = paramFloat1;
+    this.ABL = paramFloat2;
+    this.cQe = paramFloat3;
+    this.cQf = paramFloat4;
+    this.ABM = 150.0F;
+    this.ABN = paramBoolean;
     this.scale = paramContext.getResources().getDisplayMetrics().density;
     AppMethodBeat.o(100450);
   }
@@ -40,16 +40,16 @@ public final class a
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     AppMethodBeat.i(100452);
-    float f1 = this.zjJ;
-    float f2 = this.zjK;
-    float f3 = this.zjJ;
-    float f4 = this.cEZ;
-    float f5 = this.cFa;
-    Object localObject = this.zjN;
+    float f1 = this.ABK;
+    float f2 = this.ABL;
+    float f3 = this.ABK;
+    float f4 = this.cQe;
+    float f5 = this.cQf;
+    Object localObject = this.ABO;
     paramTransformation = paramTransformation.getMatrix();
     ((Camera)localObject).save();
-    if (this.zjM) {
-      ((Camera)localObject).translate(0.0F, 0.0F, this.zjL * paramFloat);
+    if (this.ABN) {
+      ((Camera)localObject).translate(0.0F, 0.0F, this.ABM * paramFloat);
     }
     for (;;)
     {
@@ -83,7 +83,7 @@ public final class a
       paramTransformation.postTranslate(f4, f5);
       AppMethodBeat.o(100452);
       return;
-      ((Camera)localObject).translate(0.0F, 0.0F, this.zjL * (1.0F - paramFloat));
+      ((Camera)localObject).translate(0.0F, 0.0F, this.ABM * (1.0F - paramFloat));
     }
   }
   
@@ -91,7 +91,7 @@ public final class a
   {
     AppMethodBeat.i(100451);
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.zjN = new Camera();
+    this.ABO = new Camera();
     AppMethodBeat.o(100451);
   }
 }

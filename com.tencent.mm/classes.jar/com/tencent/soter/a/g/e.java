@@ -7,27 +7,27 @@ import com.tencent.soter.core.c.c;
 
 public final class e
 {
-  public d JXJ;
-  public String JXK = "";
-  int[] JXL;
-  public c JXM;
-  public String JXN = "";
-  HandlerThread JXO;
+  public d LRE;
+  public String LRF = "";
+  int[] LRG;
+  public c LRH;
+  public String LRI = "";
+  HandlerThread LRJ;
   
   public static final class a
   {
-    public e JXP;
+    public e LRK;
     
     public a()
     {
       AppMethodBeat.i(31);
-      this.JXP = new e((byte)0);
+      this.LRK = new e((byte)0);
       AppMethodBeat.o(31);
     }
     
     public final a M(int... paramVarArgs)
     {
-      this.JXP.JXL = paramVarArgs;
+      this.LRK.LRG = paramVarArgs;
       return this;
     }
   }

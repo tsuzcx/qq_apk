@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet_core.c.w;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
@@ -11,7 +11,7 @@ import com.tencent.mm.plugin.wxcredit.a.c;
 import com.tencent.mm.plugin.wxcredit.a.e;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountResultUI;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountUI;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
@@ -40,7 +40,7 @@ public class b
             }
             if ((paramAnonymousn instanceof c))
             {
-              b.b(b.this).putDouble("key_credit_amount", ((c)paramAnonymousn).Dct);
+              b.b(b.this).putDouble("key_credit_amount", ((c)paramAnonymousn).EGt);
               b.this.a(this.activity, 0, b.c(b.this));
               AppMethodBeat.o(72242);
               return true;
@@ -54,7 +54,7 @@ public class b
         {
           AppMethodBeat.i(72243);
           paramAnonymousVarArgs = (Bankcard)b.d(b.this).getParcelable("key_bankcard");
-          this.JFQ.a(new e(paramAnonymousVarArgs.field_bindSerial), true, 1);
+          this.LyU.a(new e(paramAnonymousVarArgs.field_bindSerial), true, 1);
           AppMethodBeat.o(72243);
           return true;
         }
@@ -84,7 +84,7 @@ public class b
         {
           AppMethodBeat.i(72245);
           b.f(b.this).putString("key_pwd1", (String)paramAnonymousVarArgs[0]);
-          this.JFQ.a(new w((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
+          this.LyU.a(new w((String)paramAnonymousVarArgs[0], 5, ""), true, 1);
           AppMethodBeat.o(72245);
           return true;
         }
@@ -99,7 +99,7 @@ public class b
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72246);
-    ac.d("MicroMsg.WXCreditChangeAmountProcess", "start Process : WXCreditChangeAmountProcess");
+    ad.d("MicroMsg.WXCreditChangeAmountProcess", "start Process : WXCreditChangeAmountProcess");
     b(paramActivity, WalletCheckPwdUI.class, paramBundle);
     AppMethodBeat.o(72246);
     return this;
@@ -138,7 +138,7 @@ public class b
     return false;
   }
   
-  public final String cHN()
+  public final String cQc()
   {
     return "WXCreditChangeAmountProcess";
   }

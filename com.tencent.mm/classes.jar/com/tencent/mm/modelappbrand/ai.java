@@ -3,12 +3,12 @@ package com.tencent.mm.modelappbrand;
 public abstract class ai
   implements o
 {
+  public abstract void Cq(String paramString);
+  
   public final String getName()
   {
     return "onSearchWAWidgetReloadData";
   }
-  
-  public abstract void zr(String paramString);
 }
 
 

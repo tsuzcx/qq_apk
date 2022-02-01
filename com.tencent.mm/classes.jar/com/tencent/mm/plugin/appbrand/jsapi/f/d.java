@@ -1,129 +1,173 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g.a;
-import com.tencent.mm.plugin.appbrand.jsapi.ar;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.c;
-import com.tencent.mm.plugin.appbrand.jsapi.f.a.b.m;
-import com.tencent.mm.plugin.appbrand.jsapi.f.a.f;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.widget.input.i;
+import com.tencent.mm.plugin.appbrand.widget.input.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
-  extends b
+  extends h
 {
-  public static final int CTRL_INDEX = 140;
-  public static final String NAME = "addMapControls";
+  private static final int CTRL_INDEX = 110;
+  private static final String NAME = "insertTextArea";
   
-  public final void a(final c paramc, JSONObject paramJSONObject, int paramInt)
+  protected final i a(final WeakReference<aa> paramWeakReference, final String paramString, final int paramInt)
   {
-    AppMethodBeat.i(143659);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(136267);
+    paramWeakReference = new x()
     {
-      ac.e("MicroMsg.JsApiAddMapControls", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(143659);
-      return;
-    }
-    ac.d("MicroMsg.JsApiAddMapControls", "data:%s", new Object[] { paramJSONObject.toString() });
-    com.tencent.mm.plugin.appbrand.jsapi.f.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
-    {
-      ac.e("MicroMsg.JsApiAddMapControls", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(143659);
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      try
+      private void bky()
       {
-        if (paramJSONObject.has("controls"))
+        AppMethodBeat.i(136263);
+        aa localaa = (aa)paramWeakReference.get();
+        if ((localaa == null) || (localaa.lYc == null))
         {
-          localb.bhp();
-          JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("controls"));
-          i = 0;
-          if (i < localJSONArray.length())
-          {
-            JSONObject localJSONObject1 = (JSONObject)localJSONArray.get(i);
-            b.c localc = new b.c();
-            localc.kvC = ((com.tencent.mm.plugin.appbrand.g.b)paramc.K(com.tencent.mm.plugin.appbrand.g.b.class)).b(paramc, localJSONObject1.optString("iconPath"));
-            localc.kvD = localJSONObject1.optBoolean("clickable");
-            localc.data = localJSONObject1.optString("data");
-            JSONObject localJSONObject2 = localJSONObject1.getJSONObject("position");
-            int j = g.a(localJSONObject2, "left", 0);
-            int k = g.a(localJSONObject2, "top", 0);
-            localc.left = j;
-            localc.top = k;
-            if (localJSONObject2.has("width")) {
-              localc.width = g.a(localJSONObject2, "width", 0);
-            }
-            if (localJSONObject2.has("height")) {
-              localc.height = g.a(localJSONObject2, "height", 0);
-            }
-            if (localJSONObject1.optBoolean("clickable")) {
-              localb.a(localc, new b.m()
-              {
-                public final void Ml(String paramAnonymousString)
-                {
-                  AppMethodBeat.i(143658);
-                  d.a locala = new d.a((byte)0);
-                  JSONObject localJSONObject = new JSONObject();
-                  try
-                  {
-                    localJSONObject.put("mapId", this.ktV);
-                    localJSONObject.put("data", paramAnonymousString);
-                    locala.LO(localJSONObject.toString());
-                    paramc.b(locala);
-                    AppMethodBeat.o(143658);
-                    return;
-                  }
-                  catch (JSONException paramAnonymousString)
-                  {
-                    for (;;)
-                    {
-                      ac.e("MicroMsg.JsApiAddMapControls", "put JSON data error : %s", new Object[] { paramAnonymousString });
-                    }
-                  }
-                }
-              }, (a)paramc.K(a.class));
-            } else {
-              localb.a(localc, null, (a)paramc.K(a.class));
-            }
-          }
+          AppMethodBeat.o(136263);
+          return;
+        }
+        com.tencent.mm.plugin.appbrand.widget.input.h.bDY().e(localaa.lYc);
+        AppMethodBeat.o(136263);
+      }
+      
+      public final void PE(String paramAnonymousString)
+      {
+        AppMethodBeat.i(136261);
+        aa localaa = (aa)paramWeakReference.get();
+        if (localaa == null)
+        {
+          AppMethodBeat.o(136261);
+          return;
+        }
+        try
+        {
+          int i = this.ndw;
+          h.a locala = new h.a();
+          paramAnonymousString = new JSONObject().put("value", com.tencent.mm.plugin.appbrand.utils.e.Vb(paramAnonymousString)).put("data", d.td(i)).put("cursor", 0).put("inputId", i).put("keyCode", 8);
+          locala.a(localaa.getRuntime().Ew(), localaa.aXC()).Ph(paramAnonymousString.toString()).bir();
+          AppMethodBeat.o(136261);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          ad.e("MicroMsg.JsApiInsertTextArea", "onBackspacePressedWhileValueNoChange, e = %s", new Object[] { paramAnonymousString });
+          AppMethodBeat.o(136261);
         }
       }
-      catch (Exception paramJSONObject)
+      
+      public final void a(String paramAnonymousString, int paramAnonymousInt, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
-        ac.e("MicroMsg.JsApiAddMapControls", "parse controls error, exception : %s", new Object[] { paramJSONObject });
-        a(paramc, paramInt, e("fail:internal error", null), false, localb.bhm());
-        AppMethodBeat.o(143659);
-        return;
+        AppMethodBeat.i(136259);
+        if (paramWeakReference.get() != null) {}
+        try
+        {
+          paramAnonymousString = com.tencent.mm.plugin.appbrand.utils.e.Vb(paramAnonymousString);
+          paramAnonymousString = new JSONObject().put("value", paramAnonymousString).put("inputId", this.ndw).put("cursor", paramAnonymousInt).toString();
+          if (paramAnonymousBoolean1) {
+            ((aa)paramWeakReference.get()).c("onKeyboardConfirm", paramAnonymousString, 0);
+          }
+          if (!paramAnonymousBoolean2) {
+            ((aa)paramWeakReference.get()).c("onKeyboardComplete", paramAnonymousString, 0);
+          }
+        }
+        catch (JSONException paramAnonymousString)
+        {
+          for (;;)
+          {
+            ad.e("MicroMsg.JsApiInsertTextArea", "dispatch input done, exp = %s", new Object[] { bt.n(paramAnonymousString) });
+          }
+        }
+        if (!paramAnonymousBoolean2) {
+          bky();
+        }
+        AppMethodBeat.o(136259);
       }
-      a(paramc, paramInt, e("ok", null), true, localb.bhm());
-      AppMethodBeat.o(143659);
-      return;
-      i += 1;
-    }
+      
+      public final void bkw()
+      {
+        AppMethodBeat.i(136260);
+        if (paramWeakReference.get() != null)
+        {
+          int i = this.ndw;
+          HashMap localHashMap = new HashMap(1);
+          localHashMap.put("inputId", Integer.valueOf(i));
+          ((aa)paramWeakReference.get()).h(paramInt, d.this.m("ok", localHashMap));
+          d.ai(i, paramString);
+          d.a(i, (aa)paramWeakReference.get());
+        }
+        AppMethodBeat.o(136260);
+      }
+      
+      public final void bkx()
+      {
+        AppMethodBeat.i(136262);
+        if (paramWeakReference.get() != null)
+        {
+          ((aa)paramWeakReference.get()).h(paramInt, d.this.e("fail", null));
+          bky();
+        }
+        AppMethodBeat.o(136262);
+      }
+    };
+    AppMethodBeat.o(136267);
+    return paramWeakReference;
   }
   
-  static final class a
-    extends ar
+  public final void a(aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
-    private static final int CTRL_INDEX = 143;
-    private static final String NAME = "onMapControlClick";
+    AppMethodBeat.i(136264);
+    super.a(paramaa, paramJSONObject, paramInt);
+    AppMethodBeat.o(136264);
+  }
+  
+  protected final void a(i parami)
+  {
+    AppMethodBeat.i(136266);
+    super.a(parami);
+    parami.sZT = new d.1(this, parami);
+    AppMethodBeat.o(136266);
+  }
+  
+  protected final boolean a(com.tencent.mm.plugin.appbrand.widget.input.d.e parame, JSONObject paramJSONObject, aa paramaa, int paramInt)
+  {
+    AppMethodBeat.i(136265);
+    if (!super.a(parame, paramJSONObject, paramaa, paramInt))
+    {
+      AppMethodBeat.o(136265);
+      return false;
+    }
+    parame.njm = Boolean.TRUE;
+    parame.cvH = "emoji";
+    parame.cvK = false;
+    parame.niS = false;
+    parame.njs = Boolean.FALSE;
+    parame.njn = Boolean.valueOf(paramJSONObject.optBoolean("confirm", true));
+    AppMethodBeat.o(136265);
+    return true;
+  }
+  
+  protected final boolean bku()
+  {
+    return false;
+  }
+  
+  protected final boolean bkv()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.f.d
  * JD-Core Version:    0.7.0.1
  */

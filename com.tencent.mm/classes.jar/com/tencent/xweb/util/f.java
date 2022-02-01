@@ -10,7 +10,25 @@ import org.xwalk.core.Log;
 
 public final class f
 {
-  public static Object aVn(String paramString)
+  public static Object b(String paramString1, String paramString2, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(157010);
+    try
+    {
+      paramString1 = Class.forName(paramString1).getMethod(paramString2, paramArrayOfClass);
+      paramString1.setAccessible(true);
+      paramString1 = paramString1.invoke(null, paramVarArgs);
+      AppMethodBeat.o(157010);
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      AppMethodBeat.o(157010);
+    }
+    return null;
+  }
+  
+  public static Object bbq(String paramString)
   {
     AppMethodBeat.i(157011);
     if (TextUtils.isEmpty(paramString))
@@ -27,24 +45,6 @@ public final class f
     catch (Throwable paramString)
     {
       AppMethodBeat.o(157011);
-    }
-    return null;
-  }
-  
-  public static Object b(String paramString1, String paramString2, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(157010);
-    try
-    {
-      paramString1 = Class.forName(paramString1).getMethod(paramString2, paramArrayOfClass);
-      paramString1.setAccessible(true);
-      paramString1 = paramString1.invoke(null, paramVarArgs);
-      AppMethodBeat.o(157010);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      AppMethodBeat.o(157010);
     }
     return null;
   }
@@ -102,7 +102,7 @@ public final class f
     return paramObject;
   }
   
-  public static Object mK(String paramString1, String paramString2)
+  public static Object ni(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157009);
     try

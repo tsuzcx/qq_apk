@@ -1,20 +1,20 @@
 package com.tencent.mm.audio.b;
 
-import com.tencent.mm.ak.k.a;
+import com.tencent.mm.al.j.a;
 
 public abstract interface a
 {
-  public abstract boolean NX();
+  public abstract boolean PG();
   
-  public abstract int NY();
+  public abstract int PH();
   
-  public abstract void a(k.a parama);
-  
-  public abstract boolean fE(String paramString);
+  public abstract void a(j.a parama);
   
   public abstract int getMaxAmplitude();
   
   public abstract int getStatus();
+  
+  public abstract boolean gz(String paramString);
 }
 
 

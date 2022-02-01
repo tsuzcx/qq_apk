@@ -9,51 +9,51 @@ import com.tencent.mm.plugin.appbrand.page.d.c.b;
 public final class b
   implements com.tencent.mm.plugin.appbrand.page.b.b, h
 {
-  private final a cbc;
-  private final aa cbd;
+  private final a clt;
+  private final aa clu;
   
   public b(aa paramaa)
   {
     AppMethodBeat.i(130682);
-    this.cbc = new a(paramaa);
-    this.cbd = paramaa;
+    this.clt = new a(paramaa);
+    this.clu = paramaa;
     AppMethodBeat.o(130682);
   }
   
-  public final void Cl()
+  public final void DK()
   {
     AppMethodBeat.i(130684);
-    this.cbd.runOnUiThread(new Runnable()
+    this.clu.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130680);
-        b.a(b.this).Cl();
+        b.a(b.this).DK();
         AppMethodBeat.o(130680);
       }
     });
     AppMethodBeat.o(130684);
   }
   
-  public final void Cm()
+  public final void DL()
   {
     AppMethodBeat.i(130685);
-    this.cbd.runOnUiThread(new Runnable()
+    this.clu.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130681);
-        b.a(b.this).Cm();
+        b.a(b.this).DL();
         AppMethodBeat.o(130681);
       }
     });
     AppMethodBeat.o(130685);
   }
   
-  public final boolean Co()
+  public final boolean DN()
   {
     AppMethodBeat.i(130686);
-    if (this.cbc.Cn() == c.b.lGQ)
+    if (this.clt.DM() == c.b.mgD)
     {
       AppMethodBeat.o(130686);
       return true;
@@ -73,13 +73,13 @@ public final class b
   public final void onForeground()
   {
     AppMethodBeat.i(130683);
-    this.cbc.BW();
+    this.clt.Dv();
     AppMethodBeat.o(130683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.game.page.a.b
  * JD-Core Version:    0.7.0.1
  */

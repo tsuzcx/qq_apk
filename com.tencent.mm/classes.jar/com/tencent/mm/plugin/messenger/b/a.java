@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.messenger.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.byd;
-import com.tencent.mm.protocal.protobuf.bye;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ccu;
+import com.tencent.mm.protocal.protobuf.ccv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
   extends n
   implements k
 {
   public int action;
-  private g callback;
+  private f callback;
   private final b rr;
-  public bye uHk;
+  public ccv vKn;
   
   public a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(198590);
-    ac.i("MicroMsg.openim.NetSceneOpenImNotAutoSucceed", "NetSceneNotAutoSucceed action:%s originTpusername:%s op:%s heirTpusername%s", new Object[] { Integer.valueOf(paramInt), bs.bG(paramString1, ""), bs.bG(paramString1, ""), bs.aLJ(paramString3) });
+    AppMethodBeat.i(211840);
+    ad.i("MicroMsg.openim.NetSceneOpenImNotAutoSucceed", "NetSceneNotAutoSucceed action:%s originTpusername:%s op:%s heirTpusername%s", new Object[] { Integer.valueOf(paramInt), bt.bI(paramString1, ""), bt.bI(paramString1, ""), bt.aRp(paramString3) });
     Object localObject = new b.a();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/notautosucceed";
     ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).hvt = new byd();
-    ((b.a)localObject).hvu = new bye();
-    this.rr = ((b.a)localObject).aAz();
+    ((b.a)localObject).hNM = new ccu();
+    ((b.a)localObject).hNN = new ccv();
+    this.rr = ((b.a)localObject).aDC();
     this.action = paramInt;
-    localObject = (byd)this.rr.hvr.hvw;
-    ((byd)localObject).Fno = bs.bG(paramString1, "");
-    ((byd)localObject).Fnp = bs.bG(paramString2, "");
-    ((byd)localObject).Fnq = bs.bG(paramString3, "");
-    ((byd)localObject).action = paramInt;
-    AppMethodBeat.o(198590);
+    localObject = (ccu)this.rr.hNK.hNQ;
+    ((ccu)localObject).GWX = bt.bI(paramString1, "");
+    ((ccu)localObject).GWY = bt.bI(paramString2, "");
+    ((ccu)localObject).GWZ = bt.bI(paramString3, "");
+    ((ccu)localObject).action = paramInt;
+    AppMethodBeat.o(211840);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(198591);
-    this.callback = paramg;
-    this.uHk = ((bye)this.rr.hvs.hvw);
+    AppMethodBeat.i(211841);
+    this.callback = paramf;
+    this.vKn = ((ccv)this.rr.hNL.hNQ);
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(198591);
+    AppMethodBeat.o(211841);
     return i;
   }
   
@@ -60,10 +60,10 @@ public final class a
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(198592);
-    ac.i("MicroMsg.openim.NetSceneOpenImNotAutoSucceed", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(211842);
+    ad.i("MicroMsg.openim.NetSceneOpenImNotAutoSucceed", "onGYNetEnd:[%d,%d,%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(198592);
+    AppMethodBeat.o(211842);
   }
 }
 

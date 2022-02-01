@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandVideoAutogirationParseHelper;", "", "()V", "IS_AUTOGIRATION_DEFAULT", "", "IS_AUTOGIRATION_KEY", "", "isAutogiration", "dataJsonObj", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)Ljava/lang/Boolean;", "luggage-wxa-app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandVideoAutogirationParseHelper;", "", "()V", "IS_AUTOGIRATION_DEFAULT", "", "IS_AUTOGIRATION_KEY", "", "isAutogiration", "dataJsonObj", "Lorg/json/JSONObject;", "(Lorg/json/JSONObject;)Ljava/lang/Boolean;", "luggage-wxa-app_release"})
 public final class z
 {
-  public static final z jWE;
+  public static final z kqV;
   
   static
   {
     AppMethodBeat.i(135570);
-    jWE = new z();
+    kqV = new z();
     AppMethodBeat.o(135570);
   }
   
   public static final Boolean D(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(178663);
-    k.h(paramJSONObject, "dataJsonObj");
+    p.h(paramJSONObject, "dataJsonObj");
     if (paramJSONObject.has("autoRotation"))
     {
       boolean bool = paramJSONObject.optBoolean("autoRotation", false);

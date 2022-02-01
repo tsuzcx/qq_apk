@@ -1,16 +1,23 @@
 package d.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.l;
+import d.g.b.p;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"checkStepIsPositive", "", "isPositive", "", "step", "", "contains", "T", "", "R", "", "Lkotlin/ranges/ClosedRange;", "element", "(Ljava/lang/Iterable;Ljava/lang/Object;)Z", "rangeTo", "", "that", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lkotlin/ranges/ClosedRange;", "Lkotlin/ranges/ClosedFloatingPointRange;", "", "", "kotlin-stdlib"}, fOb=1)
-class i
+@d.l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"checkStepIsPositive", "", "isPositive", "", "step", "", "contains", "T", "", "R", "", "Lkotlin/ranges/ClosedRange;", "element", "(Ljava/lang/Iterable;Ljava/lang/Object;)Z", "rangeTo", "", "that", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)Lkotlin/ranges/ClosedRange;", "Lkotlin/ranges/ClosedFloatingPointRange;", "", "", "kotlin-stdlib"})
+public class i
 {
+  public static final l<Double> O(double paramDouble)
+  {
+    AppMethodBeat.i(221196);
+    l locall = (l)new k(paramDouble);
+    AppMethodBeat.o(221196);
+    return locall;
+  }
+  
   public static final void a(boolean paramBoolean, Number paramNumber)
   {
     AppMethodBeat.i(129312);
-    k.h(paramNumber, "step");
+    p.h(paramNumber, "step");
     if (!paramBoolean)
     {
       paramNumber = (Throwable)new IllegalArgumentException("Step must be positive, was: " + paramNumber + '.');

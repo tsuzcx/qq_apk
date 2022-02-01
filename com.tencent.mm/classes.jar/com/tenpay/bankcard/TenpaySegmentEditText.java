@@ -17,8 +17,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.wallet_core.b;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import com.tenpay.android.wechat.TenpayUtil;
 import com.tenpay.ndk.Encrypt;
@@ -239,8 +239,8 @@ public final class TenpaySegmentEditText
     if (mTimeStamp != null) {
       ((Encrypt)localObject2).setTimeStamp(mTimeStamp);
     }
-    b.fzz();
-    if (b.fzA())
+    com.tencent.mm.wallet_core.b.fQJ();
+    if (com.tencent.mm.wallet_core.b.fQK())
     {
       localObject1 = ((Encrypt)localObject2).encryptPasswdWithRSA2048((String)localObject1);
       AppMethodBeat.o(73281);
@@ -342,7 +342,7 @@ public final class TenpaySegmentEditText
     AppMethodBeat.i(73276);
     Encrypt localEncrypt = new Encrypt();
     String str = paramString2;
-    if (bs.isNullOrNil(paramString2)) {
+    if (bt.isNullOrNil(paramString2)) {
       str = localEncrypt.getRandomKey();
     }
     paramString1 = localEncrypt.desedeDecode(paramString1, str).split("-");
@@ -362,9 +362,14 @@ public final class TenpaySegmentEditText
       paramString2.setSelectAllOnFocus(true);
       paramString2.setOnClickListener(new View.OnClickListener()
       {
+        private byte _hellAccFlag_;
+        
         public void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(73267);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tenpay/bankcard/TenpaySegmentEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if (TenpaySegmentEditText.this.mOnClickListener != null) {
             TenpaySegmentEditText.this.mOnClickListener.onClick(paramAnonymousView);
           }
@@ -374,6 +379,7 @@ public final class TenpaySegmentEditText
             paramString2.requestFocus();
             TenpaySegmentEditText.access$102(TenpaySegmentEditText.this, false);
           }
+          a.a(this, "com/tenpay/bankcard/TenpaySegmentEditText$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(73267);
         }
       });

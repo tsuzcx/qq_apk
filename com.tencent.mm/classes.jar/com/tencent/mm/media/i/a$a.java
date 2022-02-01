@@ -2,7 +2,7 @@ package com.tencent.mm.media.i;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/media/render/AbsSurfaceRenderer$Companion;", "", "()V", "TAG", "", "plugin-mediaeditor_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/media/remuxer/CodecInputSurface$Companion;", "", "()V", "TIME_COST_TAG", "", "ZERO_FRAME_FAILED_THRESHOLD", "", "plugin-mediaeditor_release"})
 public final class a$a {}
 
 

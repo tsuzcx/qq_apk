@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.selectcontact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cy;
+import com.tencent.mm.g.a.db;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
@@ -12,19 +12,19 @@ public class PluginSelectContact
   extends f
   implements com.tencent.mm.kernel.api.bucket.c, a
 {
-  private com.tencent.mm.sdk.b.c xnS;
+  private com.tencent.mm.sdk.b.c yBT;
   
   public PluginSelectContact()
   {
     AppMethodBeat.i(102768);
-    this.xnS = new com.tencent.mm.sdk.b.c() {};
+    this.yBT = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(102768);
   }
   
   public void configure(g paramg)
   {
     AppMethodBeat.i(102770);
-    paramg.ahL();
+    paramg.akw();
     AppMethodBeat.o(102770);
   }
   
@@ -33,7 +33,7 @@ public class PluginSelectContact
   public void execute(g paramg)
   {
     AppMethodBeat.i(102771);
-    paramg.ahL();
+    paramg.akw();
     AppMethodBeat.o(102771);
   }
   
@@ -53,14 +53,14 @@ public class PluginSelectContact
   {
     AppMethodBeat.i(102772);
     u.init();
-    this.xnS.alive();
+    this.yBT.alive();
     AppMethodBeat.o(102772);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(102773);
-    this.xnS.dead();
+    this.yBT.dead();
     AppMethodBeat.o(102773);
   }
 }

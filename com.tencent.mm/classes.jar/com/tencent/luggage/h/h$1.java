@@ -16,7 +16,7 @@ final class h$1
     AppMethodBeat.i(140518);
     paramDialogInterface.dismiss();
     paramDialogInterface = this.val$activity;
-    String str = this.cgh;
+    String str = this.cqy;
     paramInt = this.val$requestCode;
     a.a(paramDialogInterface, new String[] { str }, paramInt);
     AppMethodBeat.o(140518);
@@ -24,7 +24,7 @@ final class h$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.luggage.h.h.1
  * JD-Core Version:    0.7.0.1
  */

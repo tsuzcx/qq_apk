@@ -6,9 +6,9 @@ import java.lang.reflect.Type;
 
 public final class a<T>
 {
-  final int aFZ;
-  public final Type bET;
-  public final Class<? super T> bGk;
+  final int aHQ;
+  public final Type bPh;
+  public final Class<? super T> bQy;
   
   protected a()
   {
@@ -20,18 +20,18 @@ public final class a<T>
       AppMethodBeat.o(107871);
       throw ((Throwable)localObject);
     }
-    this.bET = b.b(((java.lang.reflect.ParameterizedType)localObject).getActualTypeArguments()[0]);
-    this.bGk = b.c(this.bET);
-    this.aFZ = this.bET.hashCode();
+    this.bPh = b.b(((java.lang.reflect.ParameterizedType)localObject).getActualTypeArguments()[0]);
+    this.bQy = b.c(this.bPh);
+    this.aHQ = this.bPh.hashCode();
     AppMethodBeat.o(107871);
   }
   
   private a(Type paramType)
   {
     AppMethodBeat.i(107872);
-    this.bET = b.b((Type)com.google.a.b.a.checkNotNull(paramType));
-    this.bGk = b.c(this.bET);
-    this.aFZ = this.bET.hashCode();
+    this.bPh = b.b((Type)com.google.a.b.a.checkNotNull(paramType));
+    this.bQy = b.c(this.bPh);
+    this.aHQ = this.bPh.hashCode();
     AppMethodBeat.o(107872);
   }
   
@@ -54,7 +54,7 @@ public final class a<T>
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(107873);
-    if (((paramObject instanceof a)) && (b.a(this.bET, ((a)paramObject).bET)))
+    if (((paramObject instanceof a)) && (b.a(this.bPh, ((a)paramObject).bPh)))
     {
       AppMethodBeat.o(107873);
       return true;
@@ -65,20 +65,20 @@ public final class a<T>
   
   public final int hashCode()
   {
-    return this.aFZ;
+    return this.aHQ;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(107874);
-    String str = b.d(this.bET);
+    String str = b.d(this.bPh);
     AppMethodBeat.o(107874);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.c.a
  * JD-Core Version:    0.7.0.1
  */

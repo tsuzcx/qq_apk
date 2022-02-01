@@ -10,8 +10,8 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.DatePicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -28,128 +28,128 @@ import java.util.Date;
 public class BackupSelectExtUI
   extends MMPreference
 {
-  private int aUt;
+  private int beN;
   private long endTime;
-  private int mSg;
-  private long mUn;
-  private int mWh;
-  private SimpleDateFormat mWi;
-  private RadioCheckPreference nae;
-  private RadioCheckPreference naf;
-  private RadioCheckPreference nag;
-  private RadioCheckPreference nah;
-  private Preference nai;
-  private Preference naj;
-  private boolean nak;
+  private RadioCheckPreference nAB;
+  private RadioCheckPreference nAC;
+  private RadioCheckPreference nAD;
+  private RadioCheckPreference nAE;
+  private Preference nAF;
+  private Preference nAG;
+  private boolean nAH;
+  private int nsF;
+  private long nuL;
+  private int nwE;
+  private SimpleDateFormat nwF;
   private f screen;
   private long startTime;
   
   public BackupSelectExtUI()
   {
     AppMethodBeat.i(21786);
-    this.mWh = 0;
-    this.nak = false;
-    this.aUt = 0;
+    this.nwE = 0;
+    this.nAH = false;
+    this.beN = 0;
     this.startTime = 0L;
     this.endTime = 0L;
-    this.mUn = 0L;
-    this.mWi = new SimpleDateFormat("yyyy.MM.dd");
+    this.nuL = 0L;
+    this.nwF = new SimpleDateFormat("yyyy.MM.dd");
     AppMethodBeat.o(21786);
   }
   
-  private void bET()
+  private void bJc()
   {
     AppMethodBeat.i(21791);
-    switch (this.mWh)
+    switch (this.nwE)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(21791);
       return;
-      this.nae.wT(true);
-      this.naf.wT(false);
-      this.screen.d(this.naj);
-      this.screen.d(this.nai);
+      this.nAB.xE(true);
+      this.nAC.xE(false);
+      this.screen.d(this.nAG);
+      this.screen.d(this.nAF);
       enableOptionMenu(true);
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(21791);
       return;
-      cL();
+      updateView();
     }
   }
   
-  private void bEU()
+  private void bJd()
   {
     AppMethodBeat.i(21792);
-    switch (this.aUt)
+    switch (this.beN)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(21792);
       return;
-      this.nag.wT(true);
-      this.nah.wT(false);
+      this.nAD.xE(true);
+      this.nAE.xE(false);
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(21792);
       return;
-      this.nag.wT(false);
-      this.nah.wT(true);
+      this.nAD.xE(false);
+      this.nAE.xE(true);
       this.screen.notifyDataSetChanged();
     }
   }
   
-  private void bEV()
+  private void bJe()
   {
     AppMethodBeat.i(21794);
     if ((this.startTime == 0L) || (this.endTime == 0L))
     {
-      this.naj.setSummary(2131756262);
-      this.nai.setSummary(2131756262);
+      this.nAG.setSummary(2131756262);
+      this.nAF.setSummary(2131756262);
     }
     for (boolean bool = false;; bool = true)
     {
       enableOptionMenu(bool);
       AppMethodBeat.o(21794);
       return;
-      this.naj.setSummary(this.mWi.format(new Date(this.startTime)));
-      this.nai.setSummary(this.mWi.format(new Date(this.endTime - 86400000L)));
+      this.nAG.setSummary(this.nwF.format(new Date(this.startTime)));
+      this.nAF.setSummary(this.nwF.format(new Date(this.endTime - 86400000L)));
       if ((this.startTime == 0L) || (this.endTime == 0L)) {
         break;
       }
     }
   }
   
-  private void cL()
+  private void updateView()
   {
     AppMethodBeat.i(21793);
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(2131951629);
-    this.nae = ((RadioCheckPreference)this.screen.aPN("backup_select_ext_time_all"));
-    this.naf = ((RadioCheckPreference)this.screen.aPN("backup_select_ext_time_some"));
-    this.naj = this.screen.aPN("backup_select_begin_time");
-    this.nai = this.screen.aPN("backup_select_end_time");
-    this.nag = ((RadioCheckPreference)this.screen.aPN("backup_select_ext_content_all_msg"));
-    this.nah = ((RadioCheckPreference)this.screen.aPN("backup_select_ext_content_text_only"));
-    if (!this.nak)
+    this.nAB = ((RadioCheckPreference)this.screen.aVD("backup_select_ext_time_all"));
+    this.nAC = ((RadioCheckPreference)this.screen.aVD("backup_select_ext_time_some"));
+    this.nAG = this.screen.aVD("backup_select_begin_time");
+    this.nAF = this.screen.aVD("backup_select_end_time");
+    this.nAD = ((RadioCheckPreference)this.screen.aVD("backup_select_ext_content_all_msg"));
+    this.nAE = ((RadioCheckPreference)this.screen.aVD("backup_select_ext_content_text_only"));
+    if (!this.nAH)
     {
-      this.screen.d(this.screen.aPN("backup_select_ext_content_title"));
-      this.screen.d(this.nag);
-      this.screen.d(this.nah);
+      this.screen.d(this.screen.aVD("backup_select_ext_content_title"));
+      this.screen.d(this.nAD);
+      this.screen.d(this.nAE);
     }
-    if (this.mSg == 1)
+    if (this.nsF == 1)
     {
-      this.screen.aPN("backup_select_ext_time_title").setTitle(2131756240);
-      if (this.nak) {
-        this.screen.aPN("backup_select_ext_content_title").setTitle(2131756238);
+      this.screen.aVD("backup_select_ext_time_title").setTitle(2131756240);
+      if (this.nAH) {
+        this.screen.aVD("backup_select_ext_content_title").setTitle(2131756238);
       }
-      switch (this.mWh)
+      switch (this.nwE)
       {
       default: 
         label256:
-        if (this.nak) {
-          switch (this.aUt)
+        if (this.nAH) {
+          switch (this.beN)
           {
           }
         }
@@ -161,34 +161,34 @@ public class BackupSelectExtUI
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(21793);
       return;
-      if (this.mSg != 2) {
+      if (this.nsF != 2) {
         break;
       }
-      this.screen.aPN("backup_select_ext_time_title").setTitle(2131756168);
-      if (!this.nak) {
+      this.screen.aVD("backup_select_ext_time_title").setTitle(2131756168);
+      if (!this.nAH) {
         break;
       }
-      this.screen.aPN("backup_select_ext_content_title").setTitle(2131756166);
+      this.screen.aVD("backup_select_ext_content_title").setTitle(2131756166);
       break;
-      this.nae.wT(true);
-      this.naf.wT(false);
-      this.naj.setEnabled(false);
-      this.nai.setEnabled(false);
-      this.screen.d(this.naj);
-      this.screen.d(this.nai);
+      this.nAB.xE(true);
+      this.nAC.xE(false);
+      this.nAG.setEnabled(false);
+      this.nAF.setEnabled(false);
+      this.screen.d(this.nAG);
+      this.screen.d(this.nAF);
       enableOptionMenu(true);
       break label256;
-      bEV();
-      this.nae.wT(false);
-      this.naf.wT(true);
-      this.naj.setEnabled(true);
-      this.nai.setEnabled(true);
+      bJe();
+      this.nAB.xE(false);
+      this.nAC.xE(true);
+      this.nAG.setEnabled(true);
+      this.nAF.setEnabled(true);
       break label256;
-      this.nag.wT(true);
-      this.nah.wT(false);
+      this.nAD.xE(true);
+      this.nAE.xE(false);
       continue;
-      this.nag.wT(false);
-      this.nah.wT(true);
+      this.nAD.xE(false);
+      this.nAE.xE(true);
     }
   }
   
@@ -200,15 +200,15 @@ public class BackupSelectExtUI
   public void initView()
   {
     AppMethodBeat.i(21790);
-    this.mSg = getIntent().getIntExtra("BACKUP_MODE", 0);
+    this.nsF = getIntent().getIntExtra("BACKUP_MODE", 0);
     setMMTitle(2131756258);
-    this.mWh = getIntent().getIntExtra("BACKUP_SELECT_TIME_MODE", 0);
-    this.nak = getIntent().getBooleanExtra("BACKUP_SELECT_SUPPORT_CONTENT_TYPE", false);
-    this.aUt = getIntent().getIntExtra("BACKUP_SELECT_CONTENT_TYPE", 0);
+    this.nwE = getIntent().getIntExtra("BACKUP_SELECT_TIME_MODE", 0);
+    this.nAH = getIntent().getBooleanExtra("BACKUP_SELECT_SUPPORT_CONTENT_TYPE", false);
+    this.beN = getIntent().getIntExtra("BACKUP_SELECT_CONTENT_TYPE", 0);
     this.startTime = getIntent().getLongExtra("BACKUP_SELECT_TIME_START_TIME", 0L);
     this.endTime = getIntent().getLongExtra("BACKUP_SELECT_TIME_END_TIME", 0L);
-    this.mUn = getIntent().getLongExtra("BACKUP_SELECT_TIME_MIN_CONVERSATION_TIME", 0L);
-    cL();
+    this.nuL = getIntent().getLongExtra("BACKUP_SELECT_TIME_MIN_CONVERSATION_TIME", 0L);
+    updateView();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -248,7 +248,7 @@ public class BackupSelectExtUI
         AppMethodBeat.o(21785);
         return true;
       }
-    }, null, s.b.Hom);
+    }, null, s.b.JbS);
     AppMethodBeat.o(21790);
   }
   
@@ -284,7 +284,7 @@ public class BackupSelectExtUI
             AppMethodBeat.o(21783);
             return;
           case 1: 
-            l = g.Sx("000000");
+            l = g.VV("000000");
             BackupSelectExtUI.a(BackupSelectExtUI.this, l / 1000L * 1000L);
             BackupSelectExtUI.b(BackupSelectExtUI.this).setSummary(BackupSelectExtUI.a(BackupSelectExtUI.this).format(new Date(l)));
             BackupSelectExtUI.c(BackupSelectExtUI.this).notifyDataSetChanged();
@@ -297,7 +297,7 @@ public class BackupSelectExtUI
               return;
             }
           }
-          long l = g.Sx("000000");
+          long l = g.VV("000000");
           BackupSelectExtUI.b(BackupSelectExtUI.this, l / 1000L * 1000L + 86400000L);
           BackupSelectExtUI.f(BackupSelectExtUI.this).setSummary(BackupSelectExtUI.a(BackupSelectExtUI.this).format(new Date(l)));
           BackupSelectExtUI.c(BackupSelectExtUI.this).notifyDataSetChanged();
@@ -311,23 +311,23 @@ public class BackupSelectExtUI
         }
       }, i, j, ((Calendar)localObject).get(5), ((Calendar)localObject).getTimeInMillis(), (byte)0);
       ((e)localObject).setCanceledOnTouchOutside(false);
-      long l1 = bs.eWj() / 86400000L * 86400000L + 57600000L - 1L;
-      long l2 = this.mUn / 86400000L * 86400000L + 57600000L - 86400000L;
+      long l1 = bt.flT() / 86400000L * 86400000L + 57600000L - 1L;
+      long l2 = this.nuL / 86400000L * 86400000L + 57600000L - 86400000L;
       if (l1 > l2) {}
       try
       {
-        ((e)localObject).BA(l2);
-        ((e)localObject).Bz(l1);
+        ((e)localObject).Es(l2);
+        ((e)localObject).Er(l1);
         AppMethodBeat.o(21789);
         return localObject;
         if (this.startTime == 0L) {}
-        for (l1 = bs.eWj();; l1 = this.startTime)
+        for (l1 = bt.flT();; l1 = this.startTime)
         {
           ((Calendar)localObject).setTimeInMillis(l1);
           break;
         }
         if (this.endTime == 0L) {}
-        for (l1 = bs.eWj();; l1 = this.endTime - 86400000L)
+        for (l1 = bt.flT();; l1 = this.endTime - 86400000L)
         {
           ((Calendar)localObject).setTimeInMillis(l1);
           break;
@@ -337,7 +337,7 @@ public class BackupSelectExtUI
       {
         for (;;)
         {
-          ac.e("MicroMsg.BackupSelectExtUI", "DatePicker exception!! minTime:%d, maxTime:%d, exception:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l1), localException });
+          ad.e("MicroMsg.BackupSelectExtUI", "DatePicker exception!! minTime:%d, maxTime:%d, exception:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l1), localException });
         }
       }
     }
@@ -349,44 +349,44 @@ public class BackupSelectExtUI
     paramf = paramPreference.mKey;
     if (paramf.equals("backup_select_ext_time_all"))
     {
-      this.mWh = 0;
-      bET();
+      this.nwE = 0;
+      bJc();
       AppMethodBeat.o(21788);
       return true;
     }
     if (paramf.equals("backup_select_ext_time_some"))
     {
-      this.mWh = 1;
-      bET();
+      this.nwE = 1;
+      bJc();
       AppMethodBeat.o(21788);
       return true;
     }
     if (paramf.equals("backup_select_ext_content_all_msg"))
     {
-      if (this.nak)
+      if (this.nAH)
       {
-        this.aUt = 0;
-        bEU();
+        this.beN = 0;
+        bJd();
       }
       for (;;)
       {
         AppMethodBeat.o(21788);
         return true;
-        ac.e("MicroMsg.BackupSelectExtUI", "onPreferenceTreeClick select ext content all msg, but not support content type");
+        ad.e("MicroMsg.BackupSelectExtUI", "onPreferenceTreeClick select ext content all msg, but not support content type");
       }
     }
     if (paramf.equals("backup_select_ext_content_text_only"))
     {
-      if (this.nak)
+      if (this.nAH)
       {
-        this.aUt = 1;
-        bEU();
+        this.beN = 1;
+        bJd();
       }
       for (;;)
       {
         AppMethodBeat.o(21788);
         return true;
-        ac.e("MicroMsg.BackupSelectExtUI", "onPreferenceTreeClick select ext content text only, but not support content type");
+        ad.e("MicroMsg.BackupSelectExtUI", "onPreferenceTreeClick select ext content text only, but not support content type");
       }
     }
     if (paramf.equals("backup_select_begin_time"))

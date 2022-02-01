@@ -12,16 +12,16 @@ import java.util.List;
 final class c$b<T extends c.a>
   extends MediaController.Callback
 {
-  protected final T KP;
+  protected final T MH;
   
   public c$b(T paramT)
   {
-    this.KP = paramT;
+    this.MH = paramT;
   }
   
   public final void onAudioInfoChanged(MediaController.PlaybackInfo paramPlaybackInfo)
   {
-    c.a locala = this.KP;
+    c.a locala = this.MH;
     int j = paramPlaybackInfo.getPlaybackType();
     AudioAttributes localAudioAttributes = ((MediaController.PlaybackInfo)paramPlaybackInfo).getAudioAttributes();
     int i;
@@ -30,7 +30,7 @@ final class c$b<T extends c.a>
     }
     for (;;)
     {
-      locala.c(j, i, paramPlaybackInfo.getVolumeControl(), paramPlaybackInfo.getMaxVolume(), paramPlaybackInfo.getCurrentVolume());
+      locala.d(j, i, paramPlaybackInfo.getVolumeControl(), paramPlaybackInfo.getMaxVolume(), paramPlaybackInfo.getCurrentVolume());
       return;
       if ((localAudioAttributes.getFlags() & 0x4) == 4) {
         i = 6;
@@ -75,38 +75,38 @@ final class c$b<T extends c.a>
   public final void onExtrasChanged(Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    this.KP.eJ();
+    this.MH.fa();
   }
   
   public final void onMetadataChanged(MediaMetadata paramMediaMetadata)
   {
-    this.KP.x(paramMediaMetadata);
+    this.MH.y(paramMediaMetadata);
   }
   
   public final void onPlaybackStateChanged(PlaybackState paramPlaybackState)
   {
-    this.KP.w(paramPlaybackState);
+    this.MH.x(paramPlaybackState);
   }
   
   public final void onQueueChanged(List<MediaSession.QueueItem> paramList)
   {
-    this.KP.onQueueChanged(paramList);
+    this.MH.onQueueChanged(paramList);
   }
   
   public final void onQueueTitleChanged(CharSequence paramCharSequence)
   {
-    this.KP.eI();
+    this.MH.eZ();
   }
   
   public final void onSessionDestroyed()
   {
-    this.KP.onSessionDestroyed();
+    this.MH.onSessionDestroyed();
   }
   
   public final void onSessionEvent(String paramString, Bundle paramBundle)
   {
     MediaSessionCompat.d(paramBundle);
-    this.KP.eH();
+    this.MH.eY();
   }
 }
 

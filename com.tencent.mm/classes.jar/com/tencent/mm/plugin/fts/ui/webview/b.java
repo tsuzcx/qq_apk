@@ -2,15 +2,17 @@ package com.tencent.mm.plugin.fts.ui.webview;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.xweb.WebView;
+import com.tencent.xweb.ac;
 
 public final class b
-  extends com.tencent.xweb.ac
+  extends ac
 {
   public final boolean a(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(176929);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FTS.PardusWebViewClient", "shouldOverrideUrlLoading %s", new Object[] { paramString });
+    ad.i("MicroMsg.FTS.PardusWebViewClient", "shouldOverrideUrlLoading %s", new Object[] { paramString });
     boolean bool = super.a(paramWebView, paramString);
     AppMethodBeat.o(176929);
     return bool;
@@ -19,7 +21,7 @@ public final class b
   public final void b(WebView paramWebView, String paramString)
   {
     AppMethodBeat.i(176928);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FTS.PardusWebViewClient", "onPageFinished %s  %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.FTS.PardusWebViewClient", "onPageFinished %s  %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
     super.b(paramWebView, paramString);
     AppMethodBeat.o(176928);
   }
@@ -27,7 +29,7 @@ public final class b
   public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(176927);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.FTS.PardusWebViewClient", "onPageStarted %s %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
+    ad.i("MicroMsg.FTS.PardusWebViewClient", "onPageStarted %s %d", new Object[] { paramString, Long.valueOf(Thread.currentThread().getId()) });
     super.b(paramWebView, paramString, paramBitmap);
     AppMethodBeat.o(176927);
   }

@@ -1,54 +1,54 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.dk;
-import com.tencent.mm.g.b.a.dl;
-import com.tencent.mm.g.b.a.dm;
+import com.tencent.mm.g.b.a.ee;
+import com.tencent.mm.g.b.a.ef;
+import com.tencent.mm.g.b.a.eg;
 import com.tencent.mm.model.w;
 
 public final class z
 {
   public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(197038);
+    AppMethodBeat.i(213410);
     int i = 1;
-    if (w.xB(paramString1)) {
+    if (w.Az(paramString1)) {
       i = 2;
     }
-    dm localdm = new dm();
-    localdm.lu(paramString1);
-    localdm.dFt = i;
-    localdm.dSe = paramInt1;
-    localdm.dRP = paramInt2;
-    localdm.dCS = paramInt3;
-    localdm.dSh = paramInt4;
-    localdm.lv(paramString2);
-    localdm.lw(paramString3);
-    localdm.aHZ();
-    AppMethodBeat.o(197038);
+    eg localeg = new eg();
+    localeg.nB(paramString1);
+    localeg.dSy = i;
+    localeg.ehJ = paramInt1;
+    localeg.ehm = paramInt2;
+    localeg.dPH = paramInt3;
+    localeg.ehM = paramInt4;
+    localeg.nC(paramString2);
+    localeg.nD(paramString3);
+    localeg.aLk();
+    AppMethodBeat.o(213410);
   }
   
   public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(197040);
+    AppMethodBeat.i(213412);
     int i = 0;
-    if (w.xB(paramString1)) {
+    if (w.Az(paramString1)) {
       i = 2;
     }
     for (;;)
     {
-      dl localdl = new dl();
-      localdl.lr(paramString1);
-      localdl.dFt = i;
-      localdl.dRP = paramInt1;
-      localdl.dCS = paramInt2;
-      localdl.dSe = paramInt3;
-      localdl.ls(paramString2);
-      localdl.lt(paramString3);
-      localdl.aHZ();
-      AppMethodBeat.o(197040);
+      ef localef = new ef();
+      localef.ny(paramString1);
+      localef.dSy = i;
+      localef.ehm = paramInt1;
+      localef.dPH = paramInt2;
+      localef.ehJ = paramInt3;
+      localef.nz(paramString2);
+      localef.nA(paramString3);
+      localef.aLk();
+      AppMethodBeat.o(213412);
       return;
-      if (w.xA(paramString1)) {
+      if (w.Ay(paramString1)) {
         i = 1;
       }
     }
@@ -56,25 +56,25 @@ public final class z
   
   public static void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(197039);
+    AppMethodBeat.i(213411);
     int i = 0;
-    if (w.xB(paramString1)) {
+    if (w.Az(paramString1)) {
       i = 2;
     }
     for (;;)
     {
-      dk localdk = new dk();
-      localdk.lo(paramString1);
-      localdk.dFt = i;
-      localdk.dRP = paramInt1;
-      localdk.dHR = paramInt2;
-      localdk.Rc();
-      localdk.lp(paramString2);
-      localdk.lq(paramString3);
-      localdk.aHZ();
-      AppMethodBeat.o(197039);
+      ee localee = new ee();
+      localee.nv(paramString1);
+      localee.dSy = i;
+      localee.ehm = paramInt1;
+      localee.dUW = paramInt2;
+      localee.Tj();
+      localee.nw(paramString2);
+      localee.nx(paramString3);
+      localee.aLk();
+      AppMethodBeat.o(213411);
       return;
-      if (w.xA(paramString1)) {
+      if (w.Ay(paramString1)) {
         i = 1;
       }
     }
@@ -82,7 +82,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.z
  * JD-Core Version:    0.7.0.1
  */

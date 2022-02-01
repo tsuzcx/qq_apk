@@ -15,7 +15,7 @@ public final class h<E>
     AppMethodBeat.o(111324);
   }
   
-  private boolean aK(E paramE)
+  private boolean aM(E paramE)
   {
     AppMethodBeat.i(111326);
     synchronized (this.lock)
@@ -37,7 +37,7 @@ public final class h<E>
     }
   }
   
-  public final E cMV()
+  public final E cVn()
   {
     AppMethodBeat.i(111325);
     synchronized (this.lock)
@@ -64,12 +64,12 @@ public final class h<E>
     }
   }
   
-  public final void dg(E paramE)
+  public final void dj(E paramE)
   {
     AppMethodBeat.i(111327);
     synchronized (this.lock)
     {
-      if (aK(paramE)) {
+      if (aM(paramE)) {
         super.remove(paramE);
       }
       AppMethodBeat.o(111327);

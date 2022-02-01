@@ -5,14 +5,14 @@ import java.util.concurrent.Future;
 public abstract class b
   implements e, g, j, Runnable
 {
-  private Future cXV;
+  private Future djn;
   
   public final void a(Future paramFuture)
   {
-    this.cXV = paramFuture;
+    this.djn = paramFuture;
   }
   
-  public boolean aev()
+  public boolean ahh()
   {
     return true;
   }
@@ -21,34 +21,34 @@ public abstract class b
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.cXV != null)
+    if (this.djn != null)
     {
       bool1 = bool2;
-      if (!this.cXV.isDone()) {
-        bool1 = this.cXV.cancel(false);
+      if (!this.djn.isDone()) {
+        bool1 = this.djn.cancel(false);
       }
     }
     return bool1;
   }
   
-  public final void fEw()
+  public final void fVO()
   {
-    if ((this.cXV != null) && (!this.cXV.isCancelled())) {
-      this.cXV.get();
+    if ((this.djn != null) && (!this.djn.isCancelled())) {
+      this.djn.get();
     }
   }
   
   public final boolean isDone()
   {
-    if (this.cXV == null) {
+    if (this.djn == null) {
       return false;
     }
-    return this.cXV.isDone();
+    return this.djn.isDone();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.e.i.b
  * JD-Core Version:    0.7.0.1
  */

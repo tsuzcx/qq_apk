@@ -1,6 +1,6 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.ActivityNotFoundException;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -12,6 +12,8 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.List;
@@ -21,11 +23,11 @@ import java.util.regex.Pattern;
 public final class q
   extends s
 {
-  public static final String[] Dhs = { "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel", "application/pdf", "application/epub+zip", "text/plain", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/zip", "application/rar" };
-  public static final int[] Dht = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
-  public static final int[] Dhu = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
+  public static final String[] EMc = { "application/msword", "application/vnd.ms-powerpoint", "application/vnd.ms-excel", "application/pdf", "application/epub+zip", "text/plain", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "application/zip", "application/rar" };
+  public static final int[] EMd = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
+  public static final int[] EMe = { 2131689585, 2131689571, 2131689557, 2131689568, 2131689556, 2131689576, 2131689585, 2131689557, 2131689571, 2131689573, 2131689573 };
   
-  public static int aGb(String paramString)
+  public static int aLB(String paramString)
   {
     AppMethodBeat.i(109472);
     Object localObject2 = null;
@@ -48,16 +50,16 @@ public final class q
     }
     int i = 0;
     int j = -1;
-    while (i < Dhs.length)
+    while (i < EMc.length)
     {
-      if (Dhs[i].equals(localObject2)) {
+      if (EMc[i].equals(localObject2)) {
         j = i;
       }
       i += 1;
     }
     if (j != -1)
     {
-      i = Dht[j];
+      i = EMd[j];
       AppMethodBeat.o(109472);
       return i;
     }
@@ -65,211 +67,7 @@ public final class q
     return 2131689577;
   }
   
-  public static int bH(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(109468);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(109468);
-      return 3;
-    }
-    boolean bool;
-    if ((paramString == null) || (paramString.length() == 0)) {
-      bool = false;
-    }
-    Object localObject1;
-    Object localObject3;
-    for (;;)
-    {
-      localObject2 = paramString;
-      if (!bool) {
-        localObject2 = "http://".concat(String.valueOf(paramString));
-      }
-      try
-      {
-        paramString = Uri.parse((String)localObject2);
-        int i;
-        if (paramString == null)
-        {
-          AppMethodBeat.o(109468);
-          return 2;
-          localObject1 = paramString.trim();
-          i = ((String)localObject1).toLowerCase().indexOf("://");
-          int j = ((String)localObject1).toLowerCase().indexOf('.');
-          if ((i > 0) && (j > 0) && (i > j)) {
-            bool = false;
-          } else {
-            bool = ((String)localObject1).toLowerCase().contains("://");
-          }
-        }
-        else
-        {
-          localObject1 = paramString;
-          if (paramString.getScheme().toLowerCase().equals("qb"))
-          {
-            localObject1 = hk(paramContext);
-            if (((a)localObject1).Dhv != -1) {
-              break label219;
-            }
-            i = 0;
-          }
-          for (;;)
-          {
-            localObject1 = paramString;
-            if (i == 0) {
-              localObject1 = Uri.parse("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10375" + URLEncoder.encode((String)localObject2, "UTF-8"));
-            }
-            localObject3 = hk(paramContext);
-            if (((a)localObject3).Dhv != -1) {
-              break;
-            }
-            AppMethodBeat.o(109468);
-            return 4;
-            label219:
-            if (((a)localObject1).Dhv == 2)
-            {
-              i = ((a)localObject1).ver;
-              if (i < 42)
-              {
-                i = 0;
-                continue;
-              }
-            }
-            i = 1;
-          }
-          if (((a)localObject3).Dhv != 2) {
-            break label284;
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        AppMethodBeat.o(109468);
-        return 2;
-      }
-    }
-    if (((a)localObject3).ver < 33)
-    {
-      AppMethodBeat.o(109468);
-      return 5;
-    }
-    label284:
-    Object localObject2 = new Intent("android.intent.action.VIEW");
-    if (((a)localObject3).Dhv == 2) {
-      if ((((a)localObject3).ver >= 33) && (((a)localObject3).ver <= 39))
-      {
-        ((Intent)localObject2).setClassName("com.tencent.mtt", "com.tencent.mtt.PhotoEditUI");
-        paramString = (String)localObject2;
-      }
-    }
-    for (;;)
-    {
-      paramString.setData((Uri)localObject1);
-      try
-      {
-        paramString.putExtra("loginType", 24);
-        paramString.putExtra("ChannelID", "com.tencent.mm");
-        paramString.putExtra("PosID", 0);
-        paramString = new com.tencent.mm.hellhoundlib.b.a().ba(paramString);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.aeD(), "com/tencent/mm/pluginsdk/model/QQBrowserHelper", "loadUrl", "(Landroid/content/Context;Ljava/lang/String;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)paramString.lR(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/QQBrowserHelper", "loadUrl", "(Landroid/content/Context;Ljava/lang/String;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(109468);
-        return 0;
-      }
-      catch (ActivityNotFoundException paramContext)
-      {
-        AppMethodBeat.o(109468);
-      }
-      if ((((a)localObject3).ver >= 40) && (((a)localObject3).ver <= 45))
-      {
-        ((Intent)localObject2).setClassName("com.tencent.mtt", "com.tencent.mtt.SplashActivity");
-        paramString = (String)localObject2;
-      }
-      else
-      {
-        paramString = (String)localObject2;
-        if (((a)localObject3).ver >= 46)
-        {
-          localObject2 = new Intent("com.tencent.QQBrowser.action.VIEW");
-          localObject3 = g(paramContext, (Uri)localObject1);
-          paramString = (String)localObject2;
-          if (localObject3 != null)
-          {
-            paramString = (String)localObject2;
-            if (!TextUtils.isEmpty(((b)localObject3).classname))
-            {
-              ((Intent)localObject2).setClassName(((b)localObject3).Dhx, ((b)localObject3).classname);
-              paramString = (String)localObject2;
-              continue;
-              if (((a)localObject3).Dhv == 1)
-              {
-                if (((a)localObject3).ver == 1)
-                {
-                  ((Intent)localObject2).setClassName("com.tencent.qbx5", "com.tencent.qbx5.PhotoEditUI");
-                  paramString = (String)localObject2;
-                }
-                else
-                {
-                  paramString = (String)localObject2;
-                  if (((a)localObject3).ver == 2)
-                  {
-                    ((Intent)localObject2).setClassName("com.tencent.qbx5", "com.tencent.qbx5.SplashActivity");
-                    paramString = (String)localObject2;
-                  }
-                }
-              }
-              else if (((a)localObject3).Dhv == 0)
-              {
-                if ((((a)localObject3).ver >= 4) && (((a)localObject3).ver <= 6))
-                {
-                  ((Intent)localObject2).setClassName("com.tencent.qbx", "com.tencent.qbx.SplashActivity");
-                  paramString = (String)localObject2;
-                }
-                else
-                {
-                  paramString = (String)localObject2;
-                  if (((a)localObject3).ver > 6)
-                  {
-                    localObject2 = new Intent("com.tencent.QQBrowser.action.VIEW");
-                    localObject3 = g(paramContext, (Uri)localObject1);
-                    paramString = (String)localObject2;
-                    if (localObject3 != null)
-                    {
-                      paramString = (String)localObject2;
-                      if (!TextUtils.isEmpty(((b)localObject3).classname))
-                      {
-                        ((Intent)localObject2).setClassName(((b)localObject3).Dhx, ((b)localObject3).classname);
-                        paramString = (String)localObject2;
-                      }
-                    }
-                  }
-                }
-              }
-              else
-              {
-                localObject2 = new Intent("com.tencent.QQBrowser.action.VIEW");
-                localObject3 = g(paramContext, (Uri)localObject1);
-                paramString = (String)localObject2;
-                if (localObject3 != null)
-                {
-                  paramString = (String)localObject2;
-                  if (!TextUtils.isEmpty(((b)localObject3).classname))
-                  {
-                    ((Intent)localObject2).setClassName(((b)localObject3).Dhx, ((b)localObject3).classname);
-                    paramString = (String)localObject2;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return 4;
-  }
-  
-  private static b g(Context paramContext, Uri paramUri)
+  private static b h(Context paramContext, Uri paramUri)
   {
     AppMethodBeat.i(109470);
     Object localObject = new Intent("com.tencent.QQBrowser.action.VIEW");
@@ -289,24 +87,24 @@ public final class q
       if (str.contains("com.tencent.mtt"))
       {
         paramContext.classname = ((ResolveInfo)localObject).activityInfo.name;
-        paramContext.Dhx = ((ResolveInfo)localObject).activityInfo.packageName;
+        paramContext.EMi = ((ResolveInfo)localObject).activityInfo.packageName;
         AppMethodBeat.o(109470);
         return paramContext;
       }
       if (str.contains("com.tencent.qbx"))
       {
         paramContext.classname = ((ResolveInfo)localObject).activityInfo.name;
-        paramContext.Dhx = ((ResolveInfo)localObject).activityInfo.packageName;
+        paramContext.EMi = ((ResolveInfo)localObject).activityInfo.packageName;
       }
     }
     AppMethodBeat.o(109470);
     return paramContext;
   }
   
-  public static boolean hj(Context paramContext)
+  public static boolean ho(Context paramContext)
   {
     AppMethodBeat.i(109464);
-    if (hk(paramContext).Dhv == -1)
+    if (hp(paramContext).EMg == -1)
     {
       AppMethodBeat.o(109464);
       return false;
@@ -315,7 +113,7 @@ public final class q
     return true;
   }
   
-  private static a hk(Context paramContext)
+  private static a hp(Context paramContext)
   {
     AppMethodBeat.i(109469);
     locala = new a();
@@ -329,9 +127,9 @@ public final class q
         {
           localObject6 = localPackageManager.getPackageInfo("com.tencent.mtt", 0);
           localObject1 = localObject6;
-          locala.Dhv = 2;
+          locala.EMg = 2;
           localObject1 = localObject6;
-          locala.Dhw = "ADRQB_";
+          locala.EMh = "ADRQB_";
           Object localObject3 = localObject6;
           if (localObject6 != null)
           {
@@ -342,7 +140,7 @@ public final class q
               localObject1 = localObject6;
               locala.ver = ((PackageInfo)localObject6).versionCode;
               localObject1 = localObject6;
-              locala.Dhw += ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
+              locala.EMh += ((PackageInfo)localObject6).versionName.replaceAll("\\.", "");
               AppMethodBeat.o(109469);
               return locala;
             }
@@ -367,9 +165,9 @@ public final class q
       {
         localObject1 = localPackageManager.getPackageInfo("com.tencent.qbx", 0);
         localObject4 = localObject1;
-        locala.Dhv = 0;
+        locala.EMg = 0;
         localObject4 = localObject1;
-        locala.Dhw = "ADRQBX_";
+        locala.EMh = "ADRQBX_";
         paramContext = (Context)localObject1;
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException1)
@@ -378,9 +176,9 @@ public final class q
         {
           localPackageInfo1 = localPackageManager.getPackageInfo("com.tencent.qbx5", 0);
           localObject4 = localPackageInfo1;
-          locala.Dhv = 1;
+          locala.EMg = 1;
           localObject4 = localPackageInfo1;
-          locala.Dhw = "ADRQBX5_";
+          locala.EMh = "ADRQBX5_";
           paramContext = localPackageInfo1;
         }
         catch (PackageManager.NameNotFoundException localNameNotFoundException2)
@@ -390,9 +188,9 @@ public final class q
           {
             localObject4 = localPackageManager.getPackageInfo("com.tencent.mtt", 0);
             localObject2 = localObject4;
-            locala.Dhv = 2;
+            locala.EMg = 2;
             localObject2 = localObject4;
-            locala.Dhw = "ADRQB_";
+            locala.EMh = "ADRQB_";
             paramContext = (Context)localObject4;
           }
           catch (PackageManager.NameNotFoundException localNameNotFoundException4)
@@ -401,9 +199,9 @@ public final class q
             {
               PackageInfo localPackageInfo2 = localPackageManager.getPackageInfo("com.tencent.mtt.x86", 0);
               localObject2 = localPackageInfo2;
-              locala.Dhv = 2;
+              locala.EMg = 2;
               localObject2 = localPackageInfo2;
-              locala.Dhw = "ADRQB_";
+              locala.EMh = "ADRQB_";
               paramContext = localPackageInfo2;
             }
             catch (Exception localException)
@@ -411,22 +209,22 @@ public final class q
               Object localObject5 = localObject2;
               try
               {
-                localObject6 = g(paramContext, Uri.parse("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10375"));
+                localObject6 = h(paramContext, Uri.parse("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10375"));
                 paramContext = localObject2;
                 if (localObject6 == null) {
                   continue;
                 }
                 paramContext = localObject2;
                 localObject5 = localObject2;
-                if (TextUtils.isEmpty(((b)localObject6).Dhx)) {
+                if (TextUtils.isEmpty(((b)localObject6).EMi)) {
                   continue;
                 }
                 localObject5 = localObject2;
-                paramContext = localPackageManager.getPackageInfo(((b)localObject6).Dhx, 0);
+                paramContext = localPackageManager.getPackageInfo(((b)localObject6).EMi, 0);
                 localObject5 = paramContext;
-                locala.Dhv = 2;
+                locala.EMg = 2;
                 localObject5 = paramContext;
-                locala.Dhw = "ADRQB_";
+                locala.EMh = "ADRQB_";
               }
               catch (Exception paramContext)
               {
@@ -440,7 +238,7 @@ public final class q
     if (paramContext != null)
     {
       locala.ver = paramContext.versionCode;
-      locala.Dhw += paramContext.versionName.replaceAll("\\.", "");
+      locala.EMh += paramContext.versionName.replaceAll("\\.", "");
     }
     AppMethodBeat.o(109469);
     return locala;
@@ -522,7 +320,7 @@ public final class q
     return paramContext;
   }
   
-  public final boolean aFV(String paramString)
+  public final boolean aLv(String paramString)
   {
     AppMethodBeat.i(109465);
     if (("com.tencent.mtt".equals(paramString)) || ("com.tencent.qbx".equals(paramString)) || ("com.tencent.mtt.x86".equals(paramString)) || ("com.tencent.qbx5".equals(paramString)))
@@ -534,12 +332,12 @@ public final class q
     return false;
   }
   
-  public final String aNm()
+  public final String aQx()
   {
     return "http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10318";
   }
   
-  public final boolean af(Context paramContext, Intent paramIntent)
+  public final boolean ah(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(109471);
     paramContext = paramContext.getPackageManager().queryIntentActivities(paramIntent, 0);
@@ -565,32 +363,237 @@ public final class q
     return false;
   }
   
-  public final String eKy()
+  public final int bL(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(109468);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(109468);
+      return 3;
+    }
+    boolean bool;
+    if ((paramString == null) || (paramString.length() == 0)) {
+      bool = false;
+    }
+    Object localObject1;
+    Object localObject3;
+    for (;;)
+    {
+      localObject2 = paramString;
+      if (!bool) {
+        localObject2 = "http://".concat(String.valueOf(paramString));
+      }
+      try
+      {
+        paramString = Uri.parse((String)localObject2);
+        int i;
+        if (paramString == null)
+        {
+          AppMethodBeat.o(109468);
+          return 2;
+          localObject1 = paramString.trim();
+          i = ((String)localObject1).toLowerCase().indexOf("://");
+          int j = ((String)localObject1).toLowerCase().indexOf('.');
+          if ((i > 0) && (j > 0) && (i > j)) {
+            bool = false;
+          } else {
+            bool = ((String)localObject1).toLowerCase().contains("://");
+          }
+        }
+        else
+        {
+          localObject1 = paramString;
+          if (paramString.getScheme().toLowerCase().equals("qb"))
+          {
+            localObject1 = hp(paramContext);
+            if (((a)localObject1).EMg != -1) {
+              break label231;
+            }
+            i = 0;
+          }
+          for (;;)
+          {
+            localObject1 = paramString;
+            if (i == 0) {
+              localObject1 = Uri.parse("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10375" + URLEncoder.encode((String)localObject2, "UTF-8"));
+            }
+            localObject3 = hp(paramContext);
+            if (((a)localObject3).EMg != -1) {
+              break;
+            }
+            AppMethodBeat.o(109468);
+            return 4;
+            label231:
+            if (((a)localObject1).EMg == 2)
+            {
+              i = ((a)localObject1).ver;
+              if (i < 42)
+              {
+                i = 0;
+                continue;
+              }
+            }
+            i = 1;
+          }
+          if (((a)localObject3).EMg != 2) {
+            break label298;
+          }
+        }
+      }
+      catch (Exception paramContext)
+      {
+        AppMethodBeat.o(109468);
+        return 2;
+      }
+    }
+    if (((a)localObject3).ver < 33)
+    {
+      AppMethodBeat.o(109468);
+      return 5;
+    }
+    label298:
+    Object localObject2 = new Intent("android.intent.action.VIEW");
+    if (((a)localObject3).EMg == 2) {
+      if ((((a)localObject3).ver >= 33) && (((a)localObject3).ver <= 39))
+      {
+        ((Intent)localObject2).setClassName("com.tencent.mtt", "com.tencent.mtt.PhotoEditUI");
+        paramString = (String)localObject2;
+      }
+    }
+    for (;;)
+    {
+      paramString.setData((Uri)localObject1);
+      try
+      {
+        paramString.putExtra("loginType", 24);
+        paramString.putExtra("ChannelID", "com.tencent.mm");
+        paramString.putExtra("PosID", 0);
+        if (d.ly(29)) {
+          PendingIntent.getActivity(paramContext, 0, paramString, 134217728).send(paramContext, 1, null, new q.1(this), null);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(109468);
+          return 0;
+          if ((((a)localObject3).ver >= 40) && (((a)localObject3).ver <= 45))
+          {
+            ((Intent)localObject2).setClassName("com.tencent.mtt", "com.tencent.mtt.SplashActivity");
+            paramString = (String)localObject2;
+            break;
+          }
+          paramString = (String)localObject2;
+          if (((a)localObject3).ver < 46) {
+            break;
+          }
+          localObject2 = new Intent("com.tencent.QQBrowser.action.VIEW");
+          localObject3 = h(paramContext, (Uri)localObject1);
+          paramString = (String)localObject2;
+          if (localObject3 == null) {
+            break;
+          }
+          paramString = (String)localObject2;
+          if (TextUtils.isEmpty(((b)localObject3).classname)) {
+            break;
+          }
+          ((Intent)localObject2).setClassName(((b)localObject3).EMi, ((b)localObject3).classname);
+          paramString = (String)localObject2;
+          break;
+          if (((a)localObject3).EMg == 1)
+          {
+            if (((a)localObject3).ver == 1)
+            {
+              ((Intent)localObject2).setClassName("com.tencent.qbx5", "com.tencent.qbx5.PhotoEditUI");
+              paramString = (String)localObject2;
+              break;
+            }
+            paramString = (String)localObject2;
+            if (((a)localObject3).ver != 2) {
+              break;
+            }
+            ((Intent)localObject2).setClassName("com.tencent.qbx5", "com.tencent.qbx5.SplashActivity");
+            paramString = (String)localObject2;
+            break;
+          }
+          if (((a)localObject3).EMg == 0)
+          {
+            if ((((a)localObject3).ver >= 4) && (((a)localObject3).ver <= 6))
+            {
+              ((Intent)localObject2).setClassName("com.tencent.qbx", "com.tencent.qbx.SplashActivity");
+              paramString = (String)localObject2;
+              break;
+            }
+            paramString = (String)localObject2;
+            if (((a)localObject3).ver <= 6) {
+              break;
+            }
+            localObject2 = new Intent("com.tencent.QQBrowser.action.VIEW");
+            localObject3 = h(paramContext, (Uri)localObject1);
+            paramString = (String)localObject2;
+            if (localObject3 == null) {
+              break;
+            }
+            paramString = (String)localObject2;
+            if (TextUtils.isEmpty(((b)localObject3).classname)) {
+              break;
+            }
+            ((Intent)localObject2).setClassName(((b)localObject3).EMi, ((b)localObject3).classname);
+            paramString = (String)localObject2;
+            break;
+          }
+          localObject2 = new Intent("com.tencent.QQBrowser.action.VIEW");
+          localObject3 = h(paramContext, (Uri)localObject1);
+          paramString = (String)localObject2;
+          if (localObject3 == null) {
+            break;
+          }
+          paramString = (String)localObject2;
+          if (TextUtils.isEmpty(((b)localObject3).classname)) {
+            break;
+          }
+          ((Intent)localObject2).setClassName(((b)localObject3).EMi, ((b)localObject3).classname);
+          paramString = (String)localObject2;
+          break;
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahp(), "com/tencent/mm/pluginsdk/model/QQBrowserHelper", "loadUrl", "(Landroid/content/Context;Ljava/lang/String;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramString.mq(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/pluginsdk/model/QQBrowserHelper", "loadUrl", "(Landroid/content/Context;Ljava/lang/String;)I", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        }
+        return 4;
+      }
+      catch (Exception paramContext)
+      {
+        ad.e("MicroMsg.QQBrowserHelper", "open in browser failed : %s", new Object[] { paramContext.getMessage() });
+        AppMethodBeat.o(109468);
+      }
+    }
+  }
+  
+  public final String eZs()
   {
     return "qq_browser.apk";
   }
   
-  public final t.a eKz()
+  public final t.a eZt()
   {
     AppMethodBeat.i(109466);
     t.a locala = new t.a();
-    locala.DhB = 2131762069;
-    locala.DhD = 2131762070;
-    locala.DhA = 2131232696;
+    locala.EMm = 2131762069;
+    locala.EMo = 2131762070;
+    locala.EMl = 2131232696;
     AppMethodBeat.o(109466);
     return locala;
   }
   
-  public final boolean hi(Context paramContext)
+  public final boolean hn(Context paramContext)
   {
     AppMethodBeat.i(109463);
-    paramContext = hk(paramContext);
-    if (paramContext.Dhv == -1)
+    paramContext = hp(paramContext);
+    if (paramContext.EMg == -1)
     {
       AppMethodBeat.o(109463);
       return false;
     }
-    if ((paramContext.Dhv == 2) && (paramContext.ver < 33))
+    if ((paramContext.EMg == 2) && (paramContext.ver < 33))
     {
       AppMethodBeat.o(109463);
       return false;
@@ -601,20 +604,20 @@ public final class q
   
   public static final class a
   {
-    public int Dhv = -1;
-    public String Dhw = "";
+    public int EMg = -1;
+    public String EMh = "";
     public int ver = -1;
   }
   
   static final class b
   {
-    public String Dhx = "";
+    public String EMi = "";
     public String classname = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.q
  * JD-Core Version:    0.7.0.1
  */

@@ -6,22 +6,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends e
 {
-  public String dnn;
-  public CdnLogic.BatchSnsReqImageData[] fqQ;
-  public int fqX;
-  public int fqY;
-  public int fqZ = 0;
-  public volatile boolean fra = false;
+  public String dzb;
+  public CdnLogic.BatchSnsReqImageData[] fIX;
+  public int fJe;
+  public int fJf;
+  public int fJg = 0;
+  public volatile boolean fJh = false;
   
-  public final boolean Vz()
+  public final boolean XQ()
   {
-    return this.fqY == this.fqZ;
+    return this.fJf == this.fJg;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(120677);
-    String str = String.format("feedId: %s, count:%d", new Object[] { this.dnn, Integer.valueOf(this.fqY) });
+    String str = String.format("feedId: %s, count:%d", new Object[] { this.dzb, Integer.valueOf(this.fJf) });
     AppMethodBeat.o(120677);
     return str;
   }

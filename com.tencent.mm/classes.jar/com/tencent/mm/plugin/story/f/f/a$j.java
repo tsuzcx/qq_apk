@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.story.f.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.r;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "storyId", "", "isSync", "", "fromUser", "", "storyOwner", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "storyId", "", "isSync", "", "fromUser", "", "storyOwner", "invoke"})
 final class a$j
-  extends d.g.b.l
-  implements r<Long, Boolean, String, String, y>
+  extends q
+  implements r<Long, Boolean, String, String, z>
 {
-  public static final j zvz;
+  public static final j ANv;
   
   static
   {
     AppMethodBeat.i(119000);
-    zvz = new j();
+    ANv = new j();
     AppMethodBeat.o(119000);
   }
   

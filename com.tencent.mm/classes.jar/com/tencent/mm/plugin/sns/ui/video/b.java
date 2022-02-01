@@ -7,26 +7,26 @@ import java.util.Set;
 
 public class b
 {
-  private static volatile b ziT;
-  public Set<a> ziU;
+  private static volatile b AAT;
+  public Set<a> AAU;
   
   private b()
   {
     AppMethodBeat.i(176434);
-    this.ziU = new HashSet();
+    this.AAU = new HashSet();
     AppMethodBeat.o(176434);
   }
   
-  public static b dSj()
+  public static b eeD()
   {
     AppMethodBeat.i(176435);
-    if (ziT == null) {}
+    if (AAT == null) {}
     try
     {
-      if (ziT == null) {
-        ziT = new b();
+      if (AAT == null) {
+        AAT = new b();
       }
-      b localb = ziT;
+      b localb = AAT;
       AppMethodBeat.o(176435);
       return localb;
     }
@@ -39,8 +39,8 @@ public class b
   public final void a(a parama)
   {
     AppMethodBeat.i(176436);
-    this.ziU.add(parama);
-    Iterator localIterator = this.ziU.iterator();
+    this.AAU.add(parama);
+    Iterator localIterator = this.AAU.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -54,7 +54,7 @@ public class b
   public final void pause()
   {
     AppMethodBeat.i(176437);
-    Iterator localIterator = this.ziU.iterator();
+    Iterator localIterator = this.AAU.iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).pause();
     }

@@ -66,21 +66,21 @@ public abstract class o
     if ((paramInt1 < 0) || (paramInt2 < 0)) {
       throw new IllegalArgumentException("Negative size is not allowed. Input: " + paramInt1 + 'x' + paramInt2);
     }
-    int j = yk();
+    int j = zH();
     int i = j;
     if (paramMap != null)
     {
       i = j;
-      if (paramMap.containsKey(c.bHf)) {
-        i = Integer.parseInt(paramMap.get(c.bHf).toString());
+      if (paramMap.containsKey(c.bRt)) {
+        i = Integer.parseInt(paramMap.get(c.bRt).toString());
       }
     }
-    return a(bn(paramString), paramInt1, paramInt2, i);
+    return a(cg(paramString), paramInt1, paramInt2, i);
   }
   
-  public abstract boolean[] bn(String paramString);
+  public abstract boolean[] cg(String paramString);
   
-  public int yk()
+  public int zH()
   {
     return 10;
   }

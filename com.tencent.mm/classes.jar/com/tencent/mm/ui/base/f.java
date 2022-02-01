@@ -9,23 +9,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private static boolean Z(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(141641);
-    if (fib())
-    {
-      if (paramMotionEvent.getPointerCount() >= 2)
-      {
-        AppMethodBeat.o(141641);
-        return true;
-      }
-      AppMethodBeat.o(141641);
-      return false;
-    }
-    AppMethodBeat.o(141641);
-    return false;
-  }
-  
   public static void a(PointF paramPointF, Bitmap paramBitmap)
   {
     AppMethodBeat.i(141644);
@@ -54,7 +37,24 @@ public final class f
     AppMethodBeat.o(141643);
   }
   
-  public static float aa(MotionEvent paramMotionEvent)
+  private static boolean ab(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(141641);
+    if (fyq())
+    {
+      if (paramMotionEvent.getPointerCount() >= 2)
+      {
+        AppMethodBeat.o(141641);
+        return true;
+      }
+      AppMethodBeat.o(141641);
+      return false;
+    }
+    AppMethodBeat.o(141641);
+    return false;
+  }
+  
+  public static float ac(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141642);
     float f1 = d(paramMotionEvent, 0) - d(paramMotionEvent, 1);
@@ -64,10 +64,10 @@ public final class f
     return f1;
   }
   
-  public static int ab(MotionEvent paramMotionEvent)
+  public static int ad(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(141647);
-    if (fib())
+    if (fyq())
     {
       new e();
       int i = paramMotionEvent.getPointerCount();
@@ -81,7 +81,7 @@ public final class f
   public static float d(MotionEvent paramMotionEvent, int paramInt)
   {
     AppMethodBeat.i(141645);
-    if (Z(paramMotionEvent))
+    if (ab(paramMotionEvent))
     {
       new e();
       f = paramMotionEvent.getX(paramInt);
@@ -96,7 +96,7 @@ public final class f
   public static float e(MotionEvent paramMotionEvent, int paramInt)
   {
     AppMethodBeat.i(141646);
-    if (Z(paramMotionEvent))
+    if (ab(paramMotionEvent))
     {
       new e();
       f = paramMotionEvent.getY(paramInt);
@@ -111,7 +111,7 @@ public final class f
   public static void e(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(141648);
-    if (fib())
+    if (fyq())
     {
       new e();
       paramKeyEvent.startTracking();
@@ -122,7 +122,7 @@ public final class f
   public static boolean f(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(141649);
-    if (fib())
+    if (fyq())
     {
       new e();
       boolean bool = paramKeyEvent.isTracking();
@@ -133,7 +133,7 @@ public final class f
     return false;
   }
   
-  private static boolean fib()
+  private static boolean fyq()
   {
     return Build.VERSION.SDK_INT >= 5;
   }
@@ -141,7 +141,7 @@ public final class f
   public static boolean g(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(141650);
-    if (fib())
+    if (fyq())
     {
       new e();
       boolean bool = paramKeyEvent.isCanceled();
@@ -154,7 +154,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.f
  * JD-Core Version:    0.7.0.1
  */

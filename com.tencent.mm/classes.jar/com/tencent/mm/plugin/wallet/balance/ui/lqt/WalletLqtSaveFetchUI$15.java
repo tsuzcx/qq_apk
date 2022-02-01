@@ -5,8 +5,8 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class WalletLqtSaveFetchUI$15
   implements TextView.OnEditorActionListener
@@ -15,16 +15,16 @@ final class WalletLqtSaveFetchUI$15
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(207224);
+    AppMethodBeat.i(199252);
     if ((paramKeyEvent.getAction() == 1) && (paramKeyEvent.getKeyCode() == 66))
     {
-      ac.i("MicroMsg.WalletLqtSaveFetchUI", "click enter");
-      this.wJE.onClick(null);
-      h.wUl.f(20287, new Object[] { Integer.valueOf(2) });
-      AppMethodBeat.o(207224);
+      ad.i("MicroMsg.WalletLqtSaveFetchUI", "click enter");
+      this.xXl.onClick(null);
+      g.yhR.f(20287, new Object[] { Integer.valueOf(2) });
+      AppMethodBeat.o(199252);
       return true;
     }
-    AppMethodBeat.o(207224);
+    AppMethodBeat.o(199252);
     return true;
   }
 }

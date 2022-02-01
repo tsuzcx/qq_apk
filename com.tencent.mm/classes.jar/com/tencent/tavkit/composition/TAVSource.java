@@ -43,15 +43,15 @@ public class TAVSource
   
   public String toString()
   {
-    AppMethodBeat.i(191997);
-    String str = "TAVSource{asset=" + this.asset + ", videoComposition=" + this.videoComposition + ", audioMix=" + this.audioMix + '}';
-    AppMethodBeat.o(191997);
+    AppMethodBeat.i(219794);
+    String str = "TAVSource{\nasset=" + this.asset + "\nvideoComposition=" + this.videoComposition + "\naudioMix=" + this.audioMix + '}';
+    AppMethodBeat.o(219794);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.TAVSource
  * JD-Core Version:    0.7.0.1
  */

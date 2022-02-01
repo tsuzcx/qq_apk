@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WrapScollview
   extends ScrollView
 {
+  private boolean AqZ = true;
   private View contentView;
-  private boolean yZj = true;
   
   public WrapScollview(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,7 +27,7 @@ public class WrapScollview
   protected int computeScrollDeltaToGetChildRectOnScreen(Rect paramRect)
   {
     AppMethodBeat.i(99806);
-    if (!this.yZj)
+    if (!this.AqZ)
     {
       AppMethodBeat.o(99806);
       return 0;
@@ -72,7 +72,7 @@ public class WrapScollview
   
   public void setDoComputeScrollDeltaToGetChildRectOnScreen(boolean paramBoolean)
   {
-    this.yZj = paramBoolean;
+    this.AqZ = paramBoolean;
   }
 }
 

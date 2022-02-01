@@ -1,13 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-public abstract interface b
-  extends com.tencent.luggage.a.b
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+
+public final class b
 {
-  public abstract float biP();
+  public String data;
+  public h lfK;
+  public com.tencent.mm.plugin.appbrand.jsapi.b lfL;
+  public String path;
+  public long startTime;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ah;
-import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.ai;
+import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.plugin.wallet_core.model.d;
-import com.tencent.mm.protocal.protobuf.agt;
-import com.tencent.mm.protocal.protobuf.brl;
-import com.tencent.mm.protocal.protobuf.bzd;
-import com.tencent.mm.protocal.protobuf.sh;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.ajj;
+import com.tencent.mm.protocal.protobuf.bvy;
+import com.tencent.mm.protocal.protobuf.cdu;
+import com.tencent.mm.protocal.protobuf.ub;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.FileSystem.a;
 import com.tencent.mm.vfs.i;
 import java.io.IOException;
@@ -24,53 +24,53 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class s
 {
-  public static final s AXi;
-  private static final String AXj;
-  private static final String AXk;
-  public brl AWS;
-  public brl AWT;
-  private long AWU;
-  private long AWV;
-  private List<Bankcard> AWW;
-  private List<Bankcard> AWX;
-  private ReentrantLock AWY;
-  public String AWZ;
-  public String AXa;
-  public String AXb;
-  public int AXc;
-  public String AXd;
-  public String AXe;
-  public String AXf;
-  public agt AXg;
-  public Vector<a> AXh;
+  public static final s Cxr;
+  private static final String Cxs;
+  private static final String Cxt;
+  public bvy Cxb;
+  public bvy Cxc;
+  private long Cxd;
+  private long Cxe;
+  private List<Bankcard> Cxf;
+  private List<Bankcard> Cxg;
+  private ReentrantLock Cxh;
+  public String Cxi;
+  public String Cxj;
+  public String Cxk;
+  public int Cxl;
+  public String Cxm;
+  public String Cxn;
+  public String Cxo;
+  public ajj Cxp;
+  public Vector<a> Cxq;
   
   static
   {
     AppMethodBeat.i(68473);
-    AXi = new s();
-    AXj = eoh() + "/save/";
-    AXk = eoh() + "/fetch/";
+    Cxr = new s();
+    Cxs = eCg() + "/save/";
+    Cxt = eCg() + "/fetch/";
     AppMethodBeat.o(68473);
   }
   
   public s()
   {
     AppMethodBeat.i(68461);
-    this.AWY = new ReentrantLock();
-    this.AXh = new Vector();
+    this.Cxh = new ReentrantLock();
+    this.Cxq = new Vector();
     AppMethodBeat.o(68461);
   }
   
-  public static List<Bankcard> Tn(int paramInt)
+  public static List<Bankcard> Vg(int paramInt)
   {
     AppMethodBeat.i(68468);
-    Object localObject1 = AXi;
+    Object localObject1 = Cxr;
     boolean bool;
     Object localObject2;
     if (paramInt == 1)
     {
       bool = true;
-      localObject2 = ((s)localObject1).tg(bool);
+      localObject2 = ((s)localObject1).tQ(bool);
       if (localObject2 != null)
       {
         localObject1 = localObject2;
@@ -78,8 +78,8 @@ public final class s
       }
       else
       {
-        com.tencent.mm.plugin.wallet.a.s.epp();
-        localObject1 = com.tencent.mm.plugin.wallet.a.s.epq().esy();
+        com.tencent.mm.plugin.wallet.a.s.eDp();
+        localObject1 = com.tencent.mm.plugin.wallet.a.s.eDq().eGy();
       }
       localObject2 = new LinkedList();
       if (localObject1 != null) {
@@ -94,10 +94,10 @@ public final class s
           break label190;
         }
         Bankcard localBankcard = (Bankcard)((Iterator)localObject1).next();
-        if (localBankcard.eqR())
+        if (localBankcard.eER())
         {
-          com.tencent.mm.plugin.wallet.a.s.epp();
-          if (!com.tencent.mm.plugin.wallet.a.s.epq().esc())
+          com.tencent.mm.plugin.wallet.a.s.eDp();
+          if (!com.tencent.mm.plugin.wallet.a.s.eDq().eGc())
           {
             ((List)localObject2).add(localBankcard);
             continue;
@@ -105,10 +105,10 @@ public final class s
             break;
           }
         }
-        if ((paramInt == 1) && ((localBankcard.field_support_lqt_turn_in == 1) || (localBankcard.eqR()))) {
+        if ((paramInt == 1) && ((localBankcard.field_support_lqt_turn_in == 1) || (localBankcard.eER()))) {
           ((List)localObject2).add(localBankcard);
         }
-        if ((paramInt == 2) && ((localBankcard.field_support_lqt_turn_out == 1) || (localBankcard.eqR()))) {
+        if ((paramInt == 2) && ((localBankcard.field_support_lqt_turn_out == 1) || (localBankcard.eER()))) {
           ((List)localObject2).add(localBankcard);
         }
       }
@@ -118,35 +118,35 @@ public final class s
     return localObject2;
   }
   
-  private static String eoh()
+  private static String eCg()
   {
     AppMethodBeat.i(68471);
-    String str = com.tencent.mm.loader.j.b.aph() + "wallet/lqt/";
+    String str = com.tencent.mm.loader.j.b.arU() + "wallet/lqt/";
     AppMethodBeat.o(68471);
     return str;
   }
   
-  private List<Bankcard> th(boolean paramBoolean)
+  private List<Bankcard> tR(boolean paramBoolean)
   {
     AppMethodBeat.i(68469);
-    brl localbrl;
+    bvy localbvy;
     if (paramBoolean) {
-      localbrl = this.AWS;
+      localbvy = this.Cxb;
     }
     try
     {
-      this.AWY.lock();
-      if (localbrl == null)
+      this.Cxh.lock();
+      if (localbvy == null)
       {
         if (paramBoolean) {
-          this.AWW = null;
+          this.Cxf = null;
         }
         for (;;)
         {
           return null;
-          localbrl = this.AWT;
+          localbvy = this.Cxc;
           break;
-          this.AWX = null;
+          this.Cxg = null;
         }
       }
       if (!paramBoolean) {
@@ -155,20 +155,20 @@ public final class s
     }
     finally
     {
-      this.AWY.unlock();
+      this.Cxh.unlock();
       AppMethodBeat.o(68469);
     }
-    if ((this.AWW != null) && (this.AWW.size() > 0))
+    if ((this.Cxf != null) && (this.Cxf.size() > 0))
     {
-      localObject2 = this.AWW;
-      this.AWY.unlock();
+      localObject2 = this.Cxf;
+      this.Cxh.unlock();
       AppMethodBeat.o(68469);
       return localObject2;
       label121:
-      if ((this.AWX != null) && (this.AWX.size() > 0))
+      if ((this.Cxg != null) && (this.Cxg.size() > 0))
       {
-        localObject2 = this.AWX;
-        this.AWY.unlock();
+        localObject2 = this.Cxg;
+        this.Cxh.unlock();
         AppMethodBeat.o(68469);
         return localObject2;
       }
@@ -176,98 +176,98 @@ public final class s
     Bankcard localBankcard;
     if (paramBoolean)
     {
-      this.AWW = new ArrayList();
-      if (this.AWS.Fgz != null)
+      this.Cxf = new ArrayList();
+      if (this.Cxb.GQb != null)
       {
-        localObject2 = ah.a(this.AWS.Fgz);
+        localObject2 = ai.a(this.Cxb.GQb);
         if (localObject2 != null) {
-          this.AWW.add(localObject2);
+          this.Cxf.add(localObject2);
         }
       }
-      if ((this.AWS.EMe != null) && (this.AWS.EMe.size() > 0))
+      if ((this.Cxb.Gvi != null) && (this.Cxb.Gvi.size() > 0))
       {
-        localObject2 = this.AWS.EMe.iterator();
+        localObject2 = this.Cxb.Gvi.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          localBankcard = d.a((sh)((Iterator)localObject2).next());
+          localBankcard = d.a((ub)((Iterator)localObject2).next());
           if (localBankcard != null) {
-            this.AWW.add(localBankcard);
+            this.Cxf.add(localBankcard);
           }
         }
       }
-      localObject2 = this.AWW;
-      this.AWY.unlock();
+      localObject2 = this.Cxf;
+      this.Cxh.unlock();
       AppMethodBeat.o(68469);
       return localObject2;
     }
-    this.AWX = new ArrayList();
-    if (this.AWT.Fgz != null)
+    this.Cxg = new ArrayList();
+    if (this.Cxc.GQb != null)
     {
-      localObject2 = ah.a(this.AWT.Fgz);
+      localObject2 = ai.a(this.Cxc.GQb);
       if (localObject2 != null) {
-        this.AWX.add(localObject2);
+        this.Cxg.add(localObject2);
       }
     }
-    if ((this.AWT.EMe != null) && (this.AWT.EMe.size() > 0))
+    if ((this.Cxc.Gvi != null) && (this.Cxc.Gvi.size() > 0))
     {
-      localObject2 = this.AWT.EMe.iterator();
+      localObject2 = this.Cxc.Gvi.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localBankcard = d.a((sh)((Iterator)localObject2).next());
+        localBankcard = d.a((ub)((Iterator)localObject2).next());
         if (localBankcard != null) {
-          this.AWX.add(localBankcard);
+          this.Cxg.add(localBankcard);
         }
       }
     }
-    Object localObject2 = this.AWX;
-    this.AWY.unlock();
+    Object localObject2 = this.Cxg;
+    this.Cxh.unlock();
     AppMethodBeat.o(68469);
     return localObject2;
   }
   
-  private void tj(boolean paramBoolean)
+  private void tT(boolean paramBoolean)
   {
     AppMethodBeat.i(68472);
     if (paramBoolean) {}
     Object localObject1;
-    for (String str = AXj;; str = AXk)
+    for (String str = Cxs;; str = Cxt)
     {
-      localObject1 = i.cZ(str, false);
+      localObject1 = i.de(str, false);
       if (localObject1 != null) {
         break;
       }
       AppMethodBeat.o(68472);
       return;
     }
-    ac.i("MicroMsg.LqtBindQueryInfoCache", "tryLoadCacheFromDisk: %s, save: %s", new Object[] { localObject1, Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.LqtBindQueryInfoCache", "tryLoadCacheFromDisk: %s, save: %s", new Object[] { localObject1, Boolean.valueOf(paramBoolean) });
     long l1 = System.currentTimeMillis();
     Iterator localIterator = ((Iterable)localObject1).iterator();
     while (localIterator.hasNext())
     {
       localObject1 = ((FileSystem.a)localIterator.next()).name;
       Object localObject2 = str + (String)localObject1;
-      long l2 = bs.getLong((String)localObject1, 0L);
-      ac.i("MicroMsg.LqtBindQueryInfoCache", "file name: %s", new Object[] { Long.valueOf(l2) });
+      long l2 = bt.getLong((String)localObject1, 0L);
+      ad.i("MicroMsg.LqtBindQueryInfoCache", "file name: %s", new Object[] { Long.valueOf(l2) });
       if (l2 > 0L)
       {
         if (l1 - l2 < 3600000L)
         {
-          localObject2 = i.aU((String)localObject2, 0, -1);
-          localObject1 = new brl();
+          localObject2 = i.aY((String)localObject2, 0, -1);
+          localObject1 = new bvy();
           try
           {
-            ((brl)localObject1).parseFrom((byte[])localObject2);
+            ((bvy)localObject1).parseFrom((byte[])localObject2);
             if (localObject1 == null) {
               continue;
             }
-            this.AWY.lock();
+            this.Cxh.lock();
             if (paramBoolean)
             {
-              this.AWS = ((brl)localObject1);
-              this.AWW = null;
-              this.AWU = l2;
-              this.AWY.unlock();
-              ac.i("MicroMsg.LqtBindQueryInfoCache", "succ get saveCache: %s %s", new Object[] { localObject1, Long.valueOf(l2) });
+              this.Cxb = ((bvy)localObject1);
+              this.Cxf = null;
+              this.Cxd = l2;
+              this.Cxh.unlock();
+              ad.i("MicroMsg.LqtBindQueryInfoCache", "succ get saveCache: %s %s", new Object[] { localObject1, Long.valueOf(l2) });
               AppMethodBeat.o(68472);
               return;
             }
@@ -277,11 +277,11 @@ public final class s
             for (;;)
             {
               localObject1 = null;
-              ac.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", localIOException, "parse bindquery from cache error: %s", new Object[] { localIOException.getMessage() });
+              ad.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", localIOException, "parse bindquery from cache error: %s", new Object[] { localIOException.getMessage() });
               continue;
-              this.AWT = ((brl)localObject1);
-              this.AWX = null;
-              this.AWV = l2;
+              this.Cxc = ((bvy)localObject1);
+              this.Cxg = null;
+              this.Cxe = l2;
             }
           }
         }
@@ -297,34 +297,34 @@ public final class s
     AppMethodBeat.o(68472);
   }
   
-  public final void a(brl parambrl, boolean paramBoolean)
+  public final void a(bvy parambvy, boolean paramBoolean)
   {
     AppMethodBeat.i(68462);
-    if (parambrl != null)
+    if (parambvy != null)
     {
-      this.AWY.lock();
+      this.Cxh.lock();
       if (!paramBoolean) {
         break label105;
       }
-      this.AWS = parambrl;
-      this.AWW = null;
-      this.AWU = System.currentTimeMillis();
+      this.Cxb = parambvy;
+      this.Cxf = null;
+      this.Cxd = System.currentTimeMillis();
     }
     for (;;)
     {
-      this.AWY.unlock();
-      ac.i("MicroMsg.LqtBindQueryInfoCache", "setCache: %s, save: %s", new Object[] { parambrl, Boolean.valueOf(paramBoolean) });
+      this.Cxh.unlock();
+      ad.i("MicroMsg.LqtBindQueryInfoCache", "setCache: %s, save: %s", new Object[] { parambvy, Boolean.valueOf(paramBoolean) });
       try
       {
-        com.tencent.mm.sdk.g.b.c(new s.2(this, parambrl.toByteArray(), paramBoolean), "LqtBindQueryInfoCache_saveCacheToDiski");
-        ap.f(new Runnable()
+        com.tencent.mm.sdk.g.b.c(new s.2(this, parambvy.toByteArray(), paramBoolean), "LqtBindQueryInfoCache_saveCacheToDiski");
+        aq.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(68459);
             Iterator localIterator = s.a(s.this).iterator();
             while (localIterator.hasNext()) {
-              ((s.a)localIterator.next()).eoi();
+              ((s.a)localIterator.next()).eCh();
             }
             AppMethodBeat.o(68459);
           }
@@ -332,39 +332,39 @@ public final class s
         AppMethodBeat.o(68462);
         return;
         label105:
-        this.AWT = parambrl;
-        this.AWX = null;
-        this.AWV = System.currentTimeMillis();
+        this.Cxc = parambvy;
+        this.Cxg = null;
+        this.Cxe = System.currentTimeMillis();
       }
-      catch (Exception parambrl)
+      catch (Exception parambvy)
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", parambrl, "saveCacheToDisk error: %s", new Object[] { parambrl.getMessage() });
+          ad.printErrStackTrace("MicroMsg.LqtBindQueryInfoCache", parambvy, "saveCacheToDisk error: %s", new Object[] { parambvy.getMessage() });
         }
       }
     }
   }
   
-  public final void a(bzd parambzd)
+  public final void a(cdu paramcdu)
   {
-    this.AWZ = parambzd.AWZ;
-    this.AXa = parambzd.AXa;
-    this.AXb = parambzd.AXb;
-    this.AXc = parambzd.AXc;
-    this.AXd = parambzd.AXd;
-    this.AXe = parambzd.Foa;
-    this.AXg = parambzd.Fob;
+    this.Cxi = paramcdu.Cxi;
+    this.Cxj = paramcdu.Cxj;
+    this.Cxk = paramcdu.Cxk;
+    this.Cxl = paramcdu.Cxl;
+    this.Cxm = paramcdu.Cxm;
+    this.Cxn = paramcdu.GXM;
+    this.Cxp = paramcdu.GXN;
   }
   
-  public final Bankcard eoe()
+  public final Bankcard eCd()
   {
     AppMethodBeat.i(68464);
-    ti(true);
-    Object localObject = this.AWS;
+    tS(true);
+    Object localObject = this.Cxb;
     if (localObject != null)
     {
-      localObject = ah.a(((brl)localObject).Fgz);
+      localObject = ai.a(((bvy)localObject).GQb);
       AppMethodBeat.o(68464);
       return localObject;
     }
@@ -372,14 +372,14 @@ public final class s
     return null;
   }
   
-  public final String eof()
+  public final String eCe()
   {
     AppMethodBeat.i(68466);
-    ti(true);
-    Object localObject = this.AWS;
+    tS(true);
+    Object localObject = this.Cxb;
     if (localObject != null)
     {
-      localObject = ((brl)localObject).FgD;
+      localObject = ((bvy)localObject).GQf;
       AppMethodBeat.o(68466);
       return localObject;
     }
@@ -387,14 +387,14 @@ public final class s
     return "";
   }
   
-  public final int eog()
+  public final int eCf()
   {
     AppMethodBeat.i(68467);
-    ti(true);
-    brl localbrl = this.AWS;
-    if (localbrl != null)
+    tS(true);
+    bvy localbvy = this.Cxb;
+    if (localbvy != null)
     {
-      int i = localbrl.FgE;
+      int i = localbvy.GQg;
       AppMethodBeat.o(68467);
       return i;
     }
@@ -402,19 +402,19 @@ public final class s
     return 0;
   }
   
-  public final Bankcard tf(boolean paramBoolean)
+  public final Bankcard tP(boolean paramBoolean)
   {
     AppMethodBeat.i(68463);
-    ti(paramBoolean);
+    tS(paramBoolean);
     if (paramBoolean) {}
-    for (Object localObject1 = this.AWS; (localObject1 != null) && (!bs.isNullOrNil(((brl)localObject1).Fgx)); localObject1 = this.AWT)
+    for (Object localObject1 = this.Cxb; (localObject1 != null) && (!bt.isNullOrNil(((bvy)localObject1).GPZ)); localObject1 = this.Cxc)
     {
-      Object localObject2 = th(paramBoolean);
+      Object localObject2 = tR(paramBoolean);
       if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
         break;
       }
-      localObject1 = ((brl)localObject1).Fgx;
-      if (bs.isNullOrNil((String)localObject1)) {
+      localObject1 = ((bvy)localObject1).GPZ;
+      if (bt.isNullOrNil((String)localObject1)) {
         break;
       }
       localObject2 = ((List)localObject2).iterator();
@@ -433,14 +433,14 @@ public final class s
     return null;
   }
   
-  public final List<Bankcard> tg(boolean paramBoolean)
+  public final List<Bankcard> tQ(boolean paramBoolean)
   {
     AppMethodBeat.i(68465);
-    ti(paramBoolean);
+    tS(paramBoolean);
     if (paramBoolean) {}
-    for (Object localObject = this.AWS; localObject != null; localObject = this.AWT)
+    for (Object localObject = this.Cxb; localObject != null; localObject = this.Cxc)
     {
-      localObject = th(paramBoolean);
+      localObject = tR(paramBoolean);
       AppMethodBeat.o(68465);
       return localObject;
     }
@@ -448,40 +448,40 @@ public final class s
     return null;
   }
   
-  public final void ti(boolean paramBoolean)
+  public final void tS(boolean paramBoolean)
   {
     AppMethodBeat.i(68470);
     long l2 = System.currentTimeMillis();
-    brl localbrl;
+    bvy localbvy;
     if (paramBoolean)
     {
-      localbrl = this.AWS;
+      localbvy = this.Cxb;
       if (!paramBoolean) {
         break label56;
       }
     }
     label56:
-    for (long l1 = this.AWU;; l1 = this.AWV)
+    for (long l1 = this.Cxd;; l1 = this.Cxe)
     {
-      if (localbrl != null) {
+      if (localbvy != null) {
         break label64;
       }
-      tj(paramBoolean);
+      tT(paramBoolean);
       AppMethodBeat.o(68470);
       return;
-      localbrl = this.AWT;
+      localbvy = this.Cxc;
       break;
     }
     label64:
     if (l2 - l1 > 3600000L) {
-      ac.i("MicroMsg.LqtBindQueryInfoCache", "checkCache, saveCache time exceed, try reload from disk");
+      ad.i("MicroMsg.LqtBindQueryInfoCache", "checkCache, saveCache time exceed, try reload from disk");
     }
     AppMethodBeat.o(68470);
   }
   
   public static abstract interface a
   {
-    public abstract void eoi();
+    public abstract void eCh();
   }
 }
 

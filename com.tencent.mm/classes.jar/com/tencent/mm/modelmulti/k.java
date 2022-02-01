@@ -7,35 +7,35 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.g.a.hi;
-import com.tencent.mm.g.a.nx;
-import com.tencent.mm.g.a.uj;
+import com.tencent.mm.g.a.ar;
+import com.tencent.mm.g.a.hp;
+import com.tencent.mm.g.a.of;
+import com.tencent.mm.g.a.vc;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.zero.c;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.ad;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bya;
-import com.tencent.mm.protocal.protobuf.byb;
-import com.tencent.mm.protocal.protobuf.xv;
-import com.tencent.mm.protocal.protobuf.xw;
+import com.tencent.mm.protocal.protobuf.ccr;
+import com.tencent.mm.protocal.protobuf.ccs;
+import com.tencent.mm.protocal.protobuf.zu;
+import com.tencent.mm.protocal.protobuf.zv;
 import com.tencent.mm.protocal.v.a;
 import com.tencent.mm.protocal.v.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import junit.framework.Assert;
@@ -44,28 +44,28 @@ public final class k
   extends n
   implements com.tencent.mm.network.k
 {
-  protected static int hLw = 7;
-  private static boolean hMt = false;
-  private static int hMw = 0;
+  protected static int duf = 7;
+  private static boolean ifn = false;
+  private static int ifq = 0;
   public String TAG;
-  private com.tencent.mm.ak.g callback;
+  private f callback;
   private int errCode;
   private String errMsg;
   private int errType;
-  private f.a gma;
-  private boolean hLA;
-  private boolean hLV;
-  private int hLx;
-  private long hLz;
-  public v.b hMA;
-  private long hMB;
-  public q hMs;
-  private boolean hMu;
-  private au hMv;
-  private int hMx;
-  private boolean hMy;
-  private String hMz;
-  private au htR;
+  private f.a gFK;
+  private av hMj;
+  private boolean ieP;
+  private int ier;
+  private long iet;
+  private boolean ieu;
+  public r ifm;
+  private boolean ifo;
+  private av ifp;
+  private int ifr;
+  private boolean ifs;
+  private String ift;
+  public v.b ifu;
+  private long ifv;
   
   public k(int paramInt)
   {
@@ -74,76 +74,76 @@ public final class k
     this.errType = 0;
     this.errCode = 0;
     this.errMsg = "";
-    this.hMs = null;
-    this.hMu = false;
-    this.hLx = 0;
-    this.htR = null;
-    this.hMv = null;
-    this.hLz = -1L;
-    this.hLA = false;
-    this.hMy = false;
-    this.hLV = false;
-    this.hMz = "";
-    this.hMA = null;
-    this.hMB = 0L;
+    this.ifm = null;
+    this.ifo = false;
+    this.ier = 0;
+    this.hMj = null;
+    this.ifp = null;
+    this.iet = -1L;
+    this.ieu = false;
+    this.ifs = false;
+    this.ieP = false;
+    this.ift = "";
+    this.ifu = null;
+    this.ifv = 0L;
     this.TAG = (this.TAG + "[" + hashCode() + "]");
-    ac.i(this.TAG, "dkpush NetSceneSync scene:%d stack:%s", new Object[] { Integer.valueOf(paramInt), bs.eWi() });
-    this.hMz = as.eVo();
-    this.gma = new f.a();
-    if (this.hMs == null) {
-      this.hMs = new q();
+    com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "dkpush NetSceneSync scene:%d stack:%s", new Object[] { Integer.valueOf(paramInt), bt.flS() });
+    this.ift = at.fkV();
+    this.gFK = new f.a();
+    if (this.ifm == null) {
+      this.ifm = new r();
     }
-    this.hMs.hNy = paramInt;
-    com.tencent.mm.kernel.g.agS();
-    if ((com.tencent.mm.kernel.g.agR() != null) && (com.tencent.mm.kernel.g.agM()))
+    this.ifm.igM = paramInt;
+    com.tencent.mm.kernel.g.ajD();
+    if ((com.tencent.mm.kernel.g.ajC() != null) && (com.tencent.mm.kernel.g.ajx()))
     {
-      com.tencent.mm.kernel.g.agS();
-      if ((com.tencent.mm.kernel.g.agR().agA() != null) && (!com.tencent.mm.kernel.a.afS()))
+      com.tencent.mm.kernel.g.ajD();
+      if ((com.tencent.mm.kernel.g.ajC().ajl() != null) && (!com.tencent.mm.kernel.a.aiE()))
       {
-        com.tencent.mm.kernel.g.agS();
-        long l = bs.a((Long)com.tencent.mm.kernel.g.agR().agA().get(8196, null), 0L);
+        com.tencent.mm.kernel.g.ajD();
+        long l = bt.a((Long)com.tencent.mm.kernel.g.ajC().ajl().get(8196, null), 0L);
         if (l != 0L)
         {
-          com.tencent.mm.kernel.g.agS();
-          com.tencent.mm.kernel.g.agR().agA().set(8196, Long.valueOf(0L));
-          int i = (int)(l | hLw);
-          hLw = i;
-          hLw = i & 0x5F;
+          com.tencent.mm.kernel.g.ajD();
+          com.tencent.mm.kernel.g.ajC().ajl().set(8196, Long.valueOf(0L));
+          int i = (int)(l | duf);
+          duf = i;
+          duf = i & 0x5F;
         }
       }
     }
     if (paramInt == 1) {
-      hMt = true;
+      ifn = true;
     }
     if (paramInt == 1010)
     {
-      hLw |= 0x10;
-      hMt = true;
-      this.hMx = 7;
+      duf |= 0x10;
+      ifn = true;
+      this.ifr = 7;
     }
     for (;;)
     {
-      if (hMw == 0) {
-        aGh();
+      if (ifq == 0) {
+        aJq();
       }
       AppMethodBeat.o(132574);
       return;
       if (paramInt == 1011)
       {
-        hLw |= 0x40;
-        hMt = true;
-        this.hMx = 7;
+        duf |= 0x40;
+        ifn = true;
+        this.ifr = 7;
       }
       else if (paramInt == 3)
       {
-        hLw |= 0x40000;
-        hMt = true;
-        this.hMx = 3;
-        ac.i(this.TAG, "summerbadcr NetSceneSync aiScene[%d], selector[%d], syncScene[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hLw), Integer.valueOf(this.hMx) });
+        duf |= 0x40000;
+        ifn = true;
+        this.ifr = 3;
+        com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "summerbadcr NetSceneSync aiScene[%d], selector[%d], syncScene[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(duf), Integer.valueOf(this.ifr) });
       }
       else
       {
-        this.hMx = paramInt;
+        this.ifr = paramInt;
       }
     }
   }
@@ -152,35 +152,35 @@ public final class k
   {
     this(8);
     AppMethodBeat.i(132575);
-    this.hMz = as.eVo();
-    ac.i(this.TAG, "dkpush NOTIFYDATA resp size:%d pushSyncFlag:%d  recvTime:%d", new Object[] { Long.valueOf(paramb.getBufferSize()), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    this.hLx = paramInt;
-    this.hLz = paramLong;
-    this.htR = new au(com.tencent.mm.kernel.g.agU().GrZ.getLooper(), new au.a()
+    this.ift = at.fkV();
+    com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "dkpush NOTIFYDATA resp size:%d pushSyncFlag:%d  recvTime:%d", new Object[] { Long.valueOf(paramb.getBufferSize()), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    this.ier = paramInt;
+    this.iet = paramLong;
+    this.hMj = new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new av.a()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(132569);
         k.a(k.this);
         k.a locala = new k.a(paramb);
-        com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 230L, 1L, false);
+        com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 230L, 1L, false);
         k.this.onGYNetEnd(-1, 0, 0, "", locala, null);
         AppMethodBeat.o(132569);
         return false;
       }
     }, false);
-    if (hMw == 0) {
-      aGh();
+    if (ifq == 0) {
+      aJq();
     }
     AppMethodBeat.o(132575);
   }
   
-  private boolean aGh()
+  private boolean aJq()
   {
     AppMethodBeat.i(132580);
     Object localObject2 = new PInt();
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agP();
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajA();
     Object localObject1 = com.tencent.mm.booter.g.a((PInt)localObject2, com.tencent.mm.kernel.a.getUin());
     String str = this.TAG;
     int j = ((PInt)localObject2).value;
@@ -188,12 +188,12 @@ public final class k
     if (localObject1 != null) {}
     for (int i = localObject1.length;; i = 0)
     {
-      ac.i(str, "dealWithRespData index:%d, hashcode:%d, buf.len:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
-      hMw = ((PInt)localObject2).value;
-      if ((((PInt)localObject2).value != 0) && (!bs.cv((byte[])localObject1))) {
+      com.tencent.mm.sdk.platformtools.ad.i(str, "dealWithRespData index:%d, hashcode:%d, buf.len:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
+      ifq = ((PInt)localObject2).value;
+      if ((((PInt)localObject2).value != 0) && (!bt.cC((byte[])localObject1))) {
         break;
       }
-      hMw = 0;
+      ifq = 0;
       AppMethodBeat.o(132580);
       return false;
     }
@@ -202,14 +202,14 @@ public final class k
     {
       ((v.b)localObject2).fromProtoBuf((byte[])localObject1);
       localObject1 = new a((v.b)localObject2);
-      this.hMv = new au(com.tencent.mm.kernel.g.agU().GrZ.getLooper(), new au.a()
+      this.ifp = new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new av.a()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(132570);
           k.a(k.this);
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 231L, 1L, false);
-          k.this.onGYNetEnd(-1, 0, 0, "", this.hMD, null);
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 231L, 1L, false);
+          k.this.onGYNetEnd(-1, 0, 0, "", this.ifx, null);
           AppMethodBeat.o(132570);
           return false;
         }
@@ -219,13 +219,13 @@ public final class k
     }
     catch (Exception localException)
     {
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 226L, 1L, false);
-      ac.e(this.TAG, "dealWithRespData SyncResp fromProtoBuf failed");
-      i = hMw;
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agP();
-      com.tencent.mm.booter.g.cm(i, com.tencent.mm.kernel.a.getUin());
-      hMw = 0;
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 226L, 1L, false);
+      com.tencent.mm.sdk.platformtools.ad.e(this.TAG, "dealWithRespData SyncResp fromProtoBuf failed");
+      i = ifq;
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajA();
+      com.tencent.mm.booter.g.co(i, com.tencent.mm.kernel.a.getUin());
+      ifq = 0;
       AppMethodBeat.o(132580);
       return false;
     }
@@ -233,25 +233,25 @@ public final class k
     {
       long l1 = Runtime.getRuntime().freeMemory() / 1000L;
       long l2 = Runtime.getRuntime().totalMemory() / 1000L;
-      ac.i(this.TAG, "dealWithRespData memoryInfo avail/total, dalvik[%dk, %dk, user:%dk]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1) });
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "dealWithRespData memoryInfo avail/total, dalvik[%dk, %dk, user:%dk]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1) });
       Assert.assertTrue("dealWithRespData error", false);
       AppMethodBeat.o(132580);
     }
     return false;
   }
   
-  private boolean aGi()
+  private boolean aJr()
   {
     AppMethodBeat.i(132583);
     try
     {
-      boolean bool = ((Boolean)PowerManager.class.getMethod("isScreenOn", new Class[0]).invoke((PowerManager)ai.getContext().getSystemService("power"), new Object[0])).booleanValue();
+      boolean bool = ((Boolean)PowerManager.class.getMethod("isScreenOn", new Class[0]).invoke((PowerManager)aj.getContext().getSystemService("power"), new Object[0])).booleanValue();
       AppMethodBeat.o(132583);
       return bool;
     }
     catch (Exception localException)
     {
-      ac.e(this.TAG, "reflectScreenOn invoke ERROR use isScreenOn:%s e:%s", new Object[] { Boolean.TRUE, bs.m(localException) });
+      com.tencent.mm.sdk.platformtools.ad.e(this.TAG, "reflectScreenOn invoke ERROR use isScreenOn:%s e:%s", new Object[] { Boolean.TRUE, bt.n(localException) });
       AppMethodBeat.o(132583);
     }
     return true;
@@ -260,93 +260,98 @@ public final class k
   protected final void a(v.b paramb)
   {
     AppMethodBeat.i(132582);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agR().agA().set(8195, bs.cx(z.a(paramb.DJr.Eki)));
-    ai.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.YK()).edit().putString("notify_sync_key_keybuf", bs.cx(z.a(paramb.DJr.Eki))).commit();
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agR().agA().set(8196, Long.valueOf(paramb.DJr.EfS));
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajC().ajl().set(8195, bt.cE(z.a(paramb.Foy.FRr)));
+    aj.getContext().getSharedPreferences("notify_sync_pref", com.tencent.mm.compatible.util.g.abm()).edit().putString("notify_sync_key_keybuf", bt.cE(z.a(paramb.Foy.FRr))).commit();
+    com.tencent.mm.kernel.g.ajD();
+    com.tencent.mm.kernel.g.ajC().ajl().set(8196, Long.valueOf(paramb.Foy.FMr));
     boolean bool;
     Object localObject;
-    if (((paramb.DJr.EfS & hLw) != 0) && (!super.securityLimitCountReach()))
+    if (((paramb.Foy.FMr & duf) != 0) && (!super.securityLimitCountReach()))
     {
       bool = true;
-      ac.i(this.TAG, "canContinue cont:%b ContinueFlag:%d selector:%d securityLimitCountReach:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramb.DJr.EfS), Integer.valueOf(hLw), Boolean.valueOf(super.securityLimitCountReach()) });
-      if ((!bool) && ((paramb.DJr.EfS & 0x100) != 0))
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "canContinue cont:%b ContinueFlag:%d selector:%d securityLimitCountReach:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramb.Foy.FMr), Integer.valueOf(duf), Boolean.valueOf(super.securityLimitCountReach()) });
+      if ((!bool) && ((paramb.Foy.FMr & 0x100) != 0))
       {
-        localObject = new uj();
-        ((uj)localObject).dxb.sourceType = 1;
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+        localObject = new vc();
+        ((vc)localObject).dJn.sourceType = 1;
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
       }
-      if ((!bool) && ((paramb.DJr.EfS & 0x200000) != 0))
+      if ((!bool) && ((paramb.Foy.FMr & 0x200000) != 0))
       {
-        localObject = new nx();
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+        localObject = new of();
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
       }
-      if ((!bool) && ((paramb.DJr.EfS & 0x1000000) != 0))
+      if ((!bool) && ((paramb.Foy.FMr & 0x1000000) != 0))
       {
-        localObject = new hi();
-        com.tencent.mm.sdk.b.a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+        localObject = new hp();
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
       }
-      localObject = com.tencent.mm.plugin.report.e.wTc;
+      if ((!bool) && ((paramb.Foy.FMr & 0x20) != 0))
+      {
+        localObject = new ar();
+        com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
+      }
+      localObject = com.tencent.mm.plugin.report.e.ygI;
       if (!bool) {
-        break label448;
+        break label483;
       }
     }
-    label448:
+    label483:
     for (long l = 234L;; l = 235L)
     {
       ((com.tencent.mm.plugin.report.e)localObject).idkeyStat(99L, l, 1L, false);
-      ac.i(this.TAG, "onRespHandled continueFlag:%d isNotifyData:%b conCont:%b notifyPending:%b pushSyncFlag:%d isContinueScene:%b respHandler:%s ", new Object[] { Integer.valueOf(paramb.DJr.EfS), Boolean.valueOf(this.hLA), Boolean.valueOf(bool), Boolean.valueOf(hMt), Integer.valueOf(this.hLx), Boolean.valueOf(this.hMy), this.hMv });
-      if ((this.hLA) || (!bool)) {
-        break label456;
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "onRespHandled continueFlag:%d isNotifyData:%b conCont:%b notifyPending:%b pushSyncFlag:%d isContinueScene:%b respHandler:%s ", new Object[] { Integer.valueOf(paramb.Foy.FMr), Boolean.valueOf(this.ieu), Boolean.valueOf(bool), Boolean.valueOf(ifn), Integer.valueOf(this.ier), Boolean.valueOf(this.ifs), this.ifp });
+      if ((this.ieu) || (!bool)) {
+        break label491;
       }
-      this.hMy = true;
+      this.ifs = true;
       doScene(dispatcher(), this.callback);
       AppMethodBeat.o(132582);
       return;
       bool = false;
       break;
     }
-    label456:
+    label491:
     int i;
-    if (hMt)
+    if (ifn)
     {
-      ac.i(this.TAG, "dkpush new notify pending, sync now");
-      if (hMw != 0)
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "dkpush new notify pending, sync now");
+      if (ifq != 0)
       {
-        i = hMw;
-        com.tencent.mm.kernel.g.agS();
-        com.tencent.mm.kernel.g.agP();
-        com.tencent.mm.booter.g.cm(i, com.tencent.mm.kernel.a.getUin());
+        i = ifq;
+        com.tencent.mm.kernel.g.ajD();
+        com.tencent.mm.kernel.g.ajA();
+        com.tencent.mm.booter.g.co(i, com.tencent.mm.kernel.a.getUin());
       }
-      hMw = 0;
-      this.hMv = null;
-      hMt = false;
-      this.hMy = true;
+      ifq = 0;
+      this.ifp = null;
+      ifn = false;
+      this.ifs = true;
       doScene(dispatcher(), this.callback);
       AppMethodBeat.o(132582);
       return;
     }
-    if (this.hMv != null)
+    if (this.ifp != null)
     {
-      i = hMw;
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agP();
-      com.tencent.mm.booter.g.cm(i, com.tencent.mm.kernel.a.getUin());
-      this.hMv = null;
-      aGh();
+      i = ifq;
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajA();
+      com.tencent.mm.booter.g.co(i, com.tencent.mm.kernel.a.getUin());
+      this.ifp = null;
+      aJq();
       doScene(dispatcher(), this.callback);
       AppMethodBeat.o(132582);
       return;
     }
-    if ((this.hLx & 0x1) > 0)
+    if ((this.ier & 0x1) > 0)
     {
-      com.tencent.mm.kernel.g.agS();
-      paramb = bs.aLu(bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(8195, null)));
-      com.tencent.mm.kernel.g.agi().a(new g(this.hLz, paramb), 0);
+      com.tencent.mm.kernel.g.ajD();
+      paramb = bt.aRa(bt.nullAsNil((String)com.tencent.mm.kernel.g.ajC().ajl().get(8195, null)));
+      com.tencent.mm.kernel.g.aiU().a(new g(this.iet, paramb), 0);
     }
-    ac.d(this.TAG, "sync or init end: reset selector : now = " + hLw + " default = 7");
-    hLw = 7;
+    com.tencent.mm.sdk.platformtools.ad.d(this.TAG, "sync or init end: reset selector : now = " + duf + " default = 7");
+    duf = 7;
     this.callback.onSceneEnd(this.errType, this.errCode, this.errMsg, this);
     AppMethodBeat.o(132582);
   }
@@ -362,19 +367,19 @@ public final class k
       return false;
     }
     paramn = (k)paramn;
-    if ((!paramn.hMu) && (hMt))
+    if ((!paramn.ifo) && (ifn))
     {
-      ac.e(this.TAG, "old not busy and notified, maybe cancel old scene, last dispatch=%d", new Object[] { Long.valueOf(paramn.lastdispatch) });
+      com.tencent.mm.sdk.platformtools.ad.e(this.TAG, "old not busy and notified, maybe cancel old scene, last dispatch=%d", new Object[] { Long.valueOf(paramn.lastdispatch) });
       label111:
       String str;
       StringBuilder localStringBuilder;
-      if (bs.aO(paramn.lastdispatch) > 360000L)
+      if (bt.aO(paramn.lastdispatch) > 360000L)
       {
         if (!bool) {
           break label192;
         }
-        ac.i(this.TAG, "summerworker NetSceneSync timeout");
-        paramn = com.tencent.mm.kernel.g.agU().cOC().getRunningMessage();
+        com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "summerworker NetSceneSync timeout");
+        paramn = com.tencent.mm.kernel.g.ajF().cWY().getRunningMessage();
         if (paramn != null) {
           break label176;
         }
@@ -384,7 +389,7 @@ public final class k
         }
         str = this.TAG;
         localStringBuilder = new StringBuilder("summerworker worker is just blocked by task: ");
-        paramn = com.tencent.mm.kernel.g.agU().cOC().getRunningMessage();
+        paramn = com.tencent.mm.kernel.g.ajF().cWY().getRunningMessage();
         if (paramn != null) {
           break label184;
         }
@@ -393,7 +398,7 @@ public final class k
       label184:
       for (paramn = localObject;; paramn = paramn.toString())
       {
-        ac.e(str, paramn);
+        com.tencent.mm.sdk.platformtools.ad.e(str, paramn);
         AppMethodBeat.o(132576);
         return false;
         bool = false;
@@ -413,74 +418,74 @@ public final class k
   {
     AppMethodBeat.i(132578);
     super.cancel();
-    com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 229L, 1L, false);
-    this.hLV = true;
+    com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 229L, 1L, false);
+    this.ieP = true;
     AppMethodBeat.o(132578);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(132579);
-    if (l.aGj())
+    if (l.aJs())
     {
-      hMw = 0;
-      ac.e(this.TAG, "dkinit never do sync before init done");
+      ifq = 0;
+      com.tencent.mm.sdk.platformtools.ad.e(this.TAG, "dkinit never do sync before init done");
       AppMethodBeat.o(132579);
       return -1;
     }
-    this.callback = paramg;
-    if (this.hMs == null) {
-      this.hMs = new q();
+    this.callback = paramf;
+    if (this.ifm == null) {
+      this.ifm = new r();
     }
-    this.hMs.cqM = com.tencent.mm.sdk.a.b.foreground;
-    if (this.hMv != null)
+    this.ifm.cBJ = com.tencent.mm.sdk.a.b.foreground;
+    if (this.ifp != null)
     {
-      ac.i(this.TAG, "pushSyncRespHandler not null");
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "pushSyncRespHandler not null");
       prepareDispatcher(parame);
-      this.hMv.au(0L, 0L);
+      this.ifp.az(0L, 0L);
       AppMethodBeat.o(132579);
       return 0;
     }
-    if (hMw > 0)
+    if (ifq > 0)
     {
-      ac.w(this.TAG, "other sync is dealing with resp data :%d", new Object[] { Integer.valueOf(hMw) });
+      com.tencent.mm.sdk.platformtools.ad.w(this.TAG, "other sync is dealing with resp data :%d", new Object[] { Integer.valueOf(ifq) });
       AppMethodBeat.o(132579);
       return -1;
     }
-    if (this.htR != null)
+    if (this.hMj != null)
     {
-      ac.i(this.TAG, "pusher not null");
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "pusher not null");
       prepareDispatcher(parame);
-      this.htR.au(0L, 0L);
+      this.hMj.az(0L, 0L);
       AppMethodBeat.o(132579);
       return 0;
     }
-    paramg = new a();
-    bya localbya = ((v.a)paramg.getReqObj()).DJq;
-    if (this.hMx == 3)
+    paramf = new a();
+    ccr localccr = ((v.a)paramf.getReqObj()).Fox;
+    if (this.ifr == 3)
     {
-      localbya.Fnl = 1;
-      if (!this.hMy) {
+      localccr.GWU = 1;
+      if (!this.ifs) {
         break label383;
       }
     }
     label383:
-    for (int i = 6;; i = this.hMx)
+    for (int i = 6;; i = this.ifr)
     {
-      this.hMx = i;
-      localbya.Ekh = hLw;
-      com.tencent.mm.kernel.g.agS();
-      byte[] arrayOfByte = bs.aLu(bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(8195, new byte[0])));
-      localbya.Eki = z.al(arrayOfByte);
-      localbya.Scene = this.hMx;
-      localbya.Fnk = new xw();
-      localbya.DUp = d.gMK;
-      ac.i(this.TAG, "doScene Selector:%d Scene:%d key[%s]", new Object[] { Integer.valueOf(localbya.Ekh), Integer.valueOf(localbya.Scene), ad.cj(arrayOfByte) });
-      hMt = false;
-      i = dispatch(parame, paramg, this);
+      this.ifr = i;
+      localccr.FRq = duf;
+      com.tencent.mm.kernel.g.ajD();
+      byte[] arrayOfByte = bt.aRa(bt.nullAsNil((String)com.tencent.mm.kernel.g.ajC().ajl().get(8195, new byte[0])));
+      localccr.FRr = z.al(arrayOfByte);
+      localccr.Scene = this.ifr;
+      localccr.GWT = new zv();
+      localccr.FzJ = d.hgH;
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "doScene Selector:%d Scene:%d key[%s]", new Object[] { Integer.valueOf(localccr.FRq), Integer.valueOf(localccr.Scene), com.tencent.mm.protocal.ad.cq(arrayOfByte) });
+      ifn = false;
+      i = dispatch(parame, paramf, this);
       AppMethodBeat.o(132579);
       return i;
-      localbya.Fnl = 0;
+      localccr.GWU = 0;
       break;
     }
   }
@@ -499,20 +504,20 @@ public final class k
       if (paramq == null) {}
       for (paramInt1 = -2;; paramInt1 = paramq.getType())
       {
-        ac.e(paramString, "onGYNetEnd error type:%d", new Object[] { Integer.valueOf(paramInt1) });
+        com.tencent.mm.sdk.platformtools.ad.e(paramString, "onGYNetEnd error type:%d", new Object[] { Integer.valueOf(paramInt1) });
         AppMethodBeat.o(132581);
         return;
       }
     }
     v.b localb = (v.b)paramq.getRespObj();
     paramArrayOfByte = this.TAG;
-    long l = this.gma.YH();
-    boolean bool = this.hLA;
-    if (localb.DJr.Ekl == null)
+    long l = this.gFK.abj();
+    boolean bool = this.ieu;
+    if (localb.Foy.FRu == null)
     {
       paramInt1 = -1;
-      ac.i(paramArrayOfByte, "onGYNetEnd:[%d,%d,%s] time:%d  isnotifydata:%b count:%d pusher:%s pushSyncRespHandler:%s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(paramInt1), this.htR, this.hMv });
-      if (localb.DJr.Ekl != null) {
+      com.tencent.mm.sdk.platformtools.ad.i(paramArrayOfByte, "onGYNetEnd:[%d,%d,%s] time:%d  isnotifydata:%b count:%d pusher:%s pushSyncRespHandler:%s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(paramInt1), this.hMj, this.ifp });
+      if (localb.Foy.FRu != null) {
         break label381;
       }
       paramInt1 = -1;
@@ -522,47 +527,47 @@ public final class k
       }
       paramInt1 = 1;
       label211:
-      if (aGi()) {
+      if (aJr()) {
         break label409;
       }
-      paramArrayOfByte = com.tencent.mm.plugin.report.e.wTc;
+      paramArrayOfByte = com.tencent.mm.plugin.report.e.ygI;
       if (paramInt1 == 0) {
         break label401;
       }
       l = 221L;
       label232:
       paramArrayOfByte.idkeyStat(99L, l, 1L, false);
-      this.htR = null;
-      this.hMu = true;
+      this.hMj = null;
+      this.ifo = true;
       if ((paramInt2 != 4) || (paramInt3 != -2006)) {
         break label863;
       }
       bool = true;
       paramInt2 = 0;
       paramInt3 = 0;
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 227L, 1L, false);
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 227L, 1L, false);
     }
     for (;;)
     {
       if ((paramInt2 != 0) || (paramInt3 != 0))
       {
-        if (this.hMA != null)
+        if (this.ifu != null)
         {
-          ac.i(this.TAG, "oreh sync mIRH.processingResp is not null, and simulate not continue");
+          com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "oreh sync mIRH.processingResp is not null, and simulate not continue");
           this.errType = paramInt2;
           this.errCode = paramInt3;
           this.errMsg = paramString;
-          ((v.b)paramq.getRespObj()).DJr.EfS = 0;
+          ((v.b)paramq.getRespObj()).Foy.FMr = 0;
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 232L, 1L, false);
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 232L, 1L, false);
           AppMethodBeat.o(132581);
           return;
-          paramInt1 = localb.DJr.Ekl.ncL;
+          paramInt1 = localb.Foy.FRu.nDi;
           break;
           label381:
-          paramInt1 = localb.DJr.Ekl.ncL;
+          paramInt1 = localb.Foy.FRu.nDi;
           break label205;
           label396:
           paramInt1 = 0;
@@ -573,7 +578,7 @@ public final class k
           label409:
           if (!com.tencent.mm.sdk.a.b.foreground)
           {
-            paramArrayOfByte = com.tencent.mm.plugin.report.e.wTc;
+            paramArrayOfByte = com.tencent.mm.plugin.report.e.ygI;
             if (paramInt1 != 0) {}
             for (l = 220L;; l = 217L)
             {
@@ -581,7 +586,7 @@ public final class k
               break;
             }
           }
-          paramArrayOfByte = com.tencent.mm.plugin.report.e.wTc;
+          paramArrayOfByte = com.tencent.mm.plugin.report.e.ygI;
           if (paramInt1 != 0) {}
           for (l = 219L;; l = 216L)
           {
@@ -591,21 +596,21 @@ public final class k
           this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         }
       }
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 233L, 1L, false);
-      paramArrayOfByte = z.a(((v.a)paramq.getReqObj()).DJq.Eki);
-      paramq = z.a(localb.DJr.Eki);
-      ac.i(this.TAG, "onGYNetEnd replace key:%b req :%s", new Object[] { Boolean.valueOf(bool), ad.cj(paramArrayOfByte) });
-      ac.i(this.TAG, "onGYNetEnd replace key:%b resp:%s", new Object[] { Boolean.valueOf(bool), ad.cj(paramq) });
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 233L, 1L, false);
+      paramArrayOfByte = z.a(((v.a)paramq.getReqObj()).Fox.FRr);
+      paramq = z.a(localb.Foy.FRr);
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "onGYNetEnd replace key:%b req :%s", new Object[] { Boolean.valueOf(bool), com.tencent.mm.protocal.ad.cq(paramArrayOfByte) });
+      com.tencent.mm.sdk.platformtools.ad.i(this.TAG, "onGYNetEnd replace key:%b resp:%s", new Object[] { Boolean.valueOf(bool), com.tencent.mm.protocal.ad.cq(paramq) });
       if (!bool)
       {
         paramString = paramArrayOfByte;
-        if (bs.cv(paramArrayOfByte))
+        if (bt.cC(paramArrayOfByte))
         {
-          com.tencent.mm.kernel.g.agS();
-          paramString = bs.aLu(bs.nullAsNil((String)com.tencent.mm.kernel.g.agR().agA().get(8195, new byte[0])));
-          ac.d(this.TAG, "dkpush userinfo key : %d[%s]", new Object[] { Integer.valueOf(paramString.length), bs.cu(paramString) });
+          com.tencent.mm.kernel.g.ajD();
+          paramString = bt.aRa(bt.nullAsNil((String)com.tencent.mm.kernel.g.ajC().ajl().get(8195, new byte[0])));
+          com.tencent.mm.sdk.platformtools.ad.d(this.TAG, "dkpush userinfo key : %d[%s]", new Object[] { Integer.valueOf(paramString.length), bt.cB(paramString) });
         }
-        paramArrayOfByte = ad.k(paramString, paramq);
+        paramArrayOfByte = com.tencent.mm.protocal.ad.k(paramString, paramq);
         if (paramArrayOfByte != null)
         {
           paramString = paramArrayOfByte;
@@ -613,82 +618,82 @@ public final class k
         }
         else
         {
-          ac.w(this.TAG, "merge key failed, use server side instead");
+          com.tencent.mm.sdk.platformtools.ad.w(this.TAG, "merge key failed, use server side instead");
           paramString = paramq;
         }
-        localb.DJr.Eki = z.al(paramString);
+        localb.Foy.FRr = z.al(paramString);
       }
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agP().cM(localb.DJr.ndj, localb.DJr.Fnm);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agP();
-      com.tencent.mm.kernel.a.mn(localb.DJr.ndj);
-      if (this.hMA == null) {}
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajA().cO(localb.Foy.nDG, localb.Foy.GWV);
+      com.tencent.mm.kernel.g.ajD();
+      com.tencent.mm.kernel.g.ajA();
+      com.tencent.mm.kernel.a.mM(localb.Foy.nDG);
+      if (this.ifu == null) {}
       for (bool = true;; bool = false)
       {
         Assert.assertTrue(bool);
-        this.hMA = localb;
-        this.hMB = bs.eWj();
-        new au(com.tencent.mm.kernel.g.agU().GrZ.getLooper(), new au.a()
+        this.ifu = localb;
+        this.ifv = bt.flT();
+        new av(com.tencent.mm.kernel.g.ajF().IdO.getLooper(), new av.a()
         {
-          private int hME = 0;
-          private long hMF = 0L;
-          private int hMG = 0;
+          private int ifA = 0;
+          private int ify = 0;
+          private long ifz = 0L;
           
           public final boolean onTimerExpired()
           {
             AppMethodBeat.i(132571);
             Object localObject2 = new c();
-            if (!com.tencent.mm.kernel.g.agM())
+            if (!com.tencent.mm.kernel.g.ajx())
             {
-              ac.e(k.b(k.this), "syncRespHandler acc is not ready STOP :%s", new Object[] { k.c(k.this) });
+              com.tencent.mm.sdk.platformtools.ad.e(k.b(k.this), "syncRespHandler acc is not ready STOP :%s", new Object[] { k.c(k.this) });
               k.d(k.this);
               AppMethodBeat.o(132571);
               return false;
             }
             if (k.e(k.this))
             {
-              ((c)localObject2).dq(k.this);
+              ((c)localObject2).dt(k.this);
               k.d(k.this);
               AppMethodBeat.o(132571);
               return false;
             }
-            if ((k.c(k.this) == null) || (k.c(k.this).DJr.Ekl == null) || (k.c(k.this).DJr.Ekl.ncM == null))
+            if ((k.c(k.this) == null) || (k.c(k.this).Foy.FRu == null) || (k.c(k.this).Foy.FRu.nDj == null))
             {
-              ac.e(k.b(k.this), "syncRespHandler CmdList is null! Stop Processing :%s", new Object[] { k.c(k.this) });
-              ((c)localObject2).dq(k.this);
+              com.tencent.mm.sdk.platformtools.ad.e(k.b(k.this), "syncRespHandler CmdList is null! Stop Processing :%s", new Object[] { k.c(k.this) });
+              ((c)localObject2).dt(k.this);
               k.d(k.this);
               AppMethodBeat.o(132571);
               return false;
             }
-            Object localObject1 = k.c(k.this).DJr.Ekl.ncM;
-            ((c)localObject2).jdMethod_do(k.this);
-            this.hMG += 1;
-            long l1 = bs.eWj();
+            Object localObject1 = k.c(k.this).Foy.FRu.nDj;
+            ((c)localObject2).dr(k.this);
+            this.ifA += 1;
+            long l1 = bt.flT();
             int i = 0;
             while (i < 5)
             {
-              if (this.hME < ((LinkedList)localObject1).size())
+              if (this.ify < ((LinkedList)localObject1).size())
               {
-                ac.v(k.b(k.this), "syncRespHandler i:%d curidx:%d size:%d cmdid:%d cmdbuf:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.hME), Integer.valueOf(((LinkedList)localObject1).size()), Integer.valueOf(((xv)((LinkedList)localObject1).get(this.hME)).ErL), Integer.valueOf(((xv)((LinkedList)localObject1).get(this.hME)).ErM.getILen()) });
+                com.tencent.mm.sdk.platformtools.ad.v(k.b(k.this), "syncRespHandler i:%d curidx:%d size:%d cmdid:%d cmdbuf:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.ify), Integer.valueOf(((LinkedList)localObject1).size()), Integer.valueOf(((zu)((LinkedList)localObject1).get(this.ify)).FYU), Integer.valueOf(((zu)((LinkedList)localObject1).get(this.ify)).FYV.getILen()) });
                 ((LinkedList)localObject1).size();
-                if (!((c)localObject2).a((xv)((LinkedList)localObject1).get(this.hME), false)) {
-                  ac.w(k.b(k.this), "DoCmd Failed index:%d", new Object[] { Integer.valueOf(this.hME) });
+                if (!((c)localObject2).a((zu)((LinkedList)localObject1).get(this.ify), false)) {
+                  com.tencent.mm.sdk.platformtools.ad.w(k.b(k.this), "DoCmd Failed index:%d", new Object[] { Integer.valueOf(this.ify) });
                 }
-                this.hME += 1;
+                this.ify += 1;
               }
-              if (this.hME >= ((LinkedList)localObject1).size())
+              if (this.ify >= ((LinkedList)localObject1).size())
               {
-                this.hMF += bs.Ap(l1);
-                l2 = bs.Ap(k.f(k.this));
-                ac.i(k.b(k.this), "syncRespHandler process DONE idx:%d size:%d time[%d,%d] count:%d %s", new Object[] { Integer.valueOf(this.hME), Integer.valueOf(((LinkedList)localObject1).size()), Long.valueOf(l2), Long.valueOf(this.hMF), Integer.valueOf(this.hMG), k.c(k.this) });
+                this.ifz += bt.Df(l1);
+                l2 = bt.Df(k.f(k.this));
+                com.tencent.mm.sdk.platformtools.ad.i(k.b(k.this), "syncRespHandler process DONE idx:%d size:%d time[%d,%d] count:%d %s", new Object[] { Integer.valueOf(this.ify), Integer.valueOf(((LinkedList)localObject1).size()), Long.valueOf(l2), Long.valueOf(this.ifz), Integer.valueOf(this.ifA), k.c(k.this) });
                 k.this.a(k.c(k.this));
-                ((c)localObject2).dp(k.this);
-                i = bs.m((Integer)com.tencent.mm.plugin.report.e.a((int)this.hMF, new int[] { 100, 300, 1000, 3000 }, new Integer[] { Integer.valueOf(240), Integer.valueOf(239), Integer.valueOf(238), Integer.valueOf(237), Integer.valueOf(236) }));
-                com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, i, 1L, false);
-                i = bs.m((Integer)com.tencent.mm.plugin.report.e.a(((LinkedList)localObject1).size(), new int[] { 0, 1, 2, 3, 5, 10 }, new Integer[] { Integer.valueOf(249), Integer.valueOf(248), Integer.valueOf(247), Integer.valueOf(246), Integer.valueOf(245), Integer.valueOf(244), Integer.valueOf(243) }));
-                com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, i, 1L, false);
-                localObject2 = com.tencent.mm.plugin.report.e.wTc;
+                ((c)localObject2).ds(k.this);
+                i = bt.n((Integer)com.tencent.mm.plugin.report.e.a((int)this.ifz, new int[] { 100, 300, 1000, 3000 }, new Integer[] { Integer.valueOf(240), Integer.valueOf(239), Integer.valueOf(238), Integer.valueOf(237), Integer.valueOf(236) }));
+                com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, i, 1L, false);
+                i = bt.n((Integer)com.tencent.mm.plugin.report.e.a(((LinkedList)localObject1).size(), new int[] { 0, 1, 2, 3, 5, 10 }, new Integer[] { Integer.valueOf(249), Integer.valueOf(248), Integer.valueOf(247), Integer.valueOf(246), Integer.valueOf(245), Integer.valueOf(244), Integer.valueOf(243) }));
+                com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, i, 1L, false);
+                localObject2 = com.tencent.mm.plugin.report.e.ygI;
                 int j;
                 int k;
                 int m;
@@ -697,14 +702,14 @@ public final class k
                 {
                   l1 = 241L;
                   ((com.tencent.mm.plugin.report.e)localObject2).idkeyStat(99L, l1, 1L, false);
-                  com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, k.g(k.this), 1L, false);
-                  com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 0L, 1L, false);
-                  localObject2 = com.tencent.mm.plugin.report.e.wTc;
+                  com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, k.g(k.this), 1L, false);
+                  com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 0L, 1L, false);
+                  localObject2 = com.tencent.mm.plugin.report.e.ygI;
                   j = ((LinkedList)localObject1).size();
                   k = k.g(k.this);
-                  m = k.c(k.this).DJr.EfS;
-                  l1 = this.hMF;
-                  n = this.hMG;
+                  m = k.c(k.this).Foy.FMr;
+                  l1 = this.ifz;
+                  n = this.ifA;
                   localObject1 = k.h(k.this);
                   if (!com.tencent.mm.sdk.a.b.foreground) {
                     break label987;
@@ -721,21 +726,21 @@ public final class k
                   break;
                 }
               }
-              long l2 = bs.Ap(l1);
+              long l2 = bt.Df(l1);
               if (l2 > 500L)
               {
-                ac.d(k.b(k.this), "syncRespHandler PAUSE by 500ms  time:%d  processcount:%d sum:%d ,%s", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(this.hME), k.c(k.this) });
-                this.hMF += bs.Ap(l1);
+                com.tencent.mm.sdk.platformtools.ad.d(k.b(k.this), "syncRespHandler PAUSE by 500ms  time:%d  processcount:%d sum:%d ,%s", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(this.ify), k.c(k.this) });
+                this.ifz += bt.Df(l1);
                 AppMethodBeat.o(132571);
                 return true;
               }
               i += 1;
             }
-            this.hMF += bs.Ap(l1);
+            this.ifz += bt.Df(l1);
             AppMethodBeat.o(132571);
             return true;
           }
-        }, true).au(50L, 50L);
+        }, true).az(50L, 50L);
         AppMethodBeat.o(132581);
         return;
       }
@@ -757,8 +762,8 @@ public final class k
     com.tencent.mm.plugin.report.e locale;
     if (bool)
     {
-      com.tencent.mm.plugin.report.e.wTc.idkeyStat(99L, 228L, 1L, false);
-      locale = com.tencent.mm.plugin.report.e.wTc;
+      com.tencent.mm.plugin.report.e.ygI.idkeyStat(99L, 228L, 1L, false);
+      locale = com.tencent.mm.plugin.report.e.ygI;
       if (!com.tencent.mm.sdk.a.b.foreground) {
         break label126;
       }
@@ -775,7 +780,7 @@ public final class k
   
   public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
   {
-    return n.b.hwa;
+    return n.b.hOp;
   }
   
   public final boolean uniqueInNetsceneQueue()
@@ -784,43 +789,43 @@ public final class k
   }
   
   public static final class a
-    extends com.tencent.mm.ak.l
+    extends com.tencent.mm.al.l
   {
-    private final v.a hLD;
-    private final v.b hLE;
-    private final boolean hLF;
+    private final v.a iex;
+    private final v.b iey;
+    private final boolean iez;
     
     public a()
     {
       AppMethodBeat.i(132572);
-      this.hLD = new v.a();
-      this.hLE = new v.b();
-      this.hLF = false;
+      this.iex = new v.a();
+      this.iey = new v.b();
+      this.iez = false;
       AppMethodBeat.o(132572);
     }
     
     public a(v.b paramb)
     {
       AppMethodBeat.i(132573);
-      this.hLD = new v.a();
-      this.hLE = paramb;
-      this.hLF = true;
+      this.iex = new v.a();
+      this.iey = paramb;
+      this.iez = true;
       AppMethodBeat.o(132573);
     }
     
     public final boolean getPush()
     {
-      return this.hLF;
+      return this.iez;
     }
     
     public final l.d getReqObjImp()
     {
-      return this.hLD;
+      return this.iex;
     }
     
     public final l.e getRespObj()
     {
-      return this.hLE;
+      return this.iey;
     }
     
     public final int getType()
@@ -836,7 +841,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelmulti.k
  * JD-Core Version:    0.7.0.1
  */

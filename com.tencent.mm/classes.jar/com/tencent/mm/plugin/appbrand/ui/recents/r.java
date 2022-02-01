@@ -7,29 +7,29 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.List;
 
 final class r
   extends RecyclerView.a
 {
-  private final ArrayList<?> ijj;
+  private final ArrayList<?> mDataList;
   private LayoutInflater mInflater;
-  final SparseArray<s> mlQ;
+  final SparseArray<s> mMs;
   
   r(ArrayList<?> paramArrayList)
   {
     AppMethodBeat.i(49283);
-    this.mlQ = new SparseArray();
-    this.ijj = paramArrayList;
+    this.mMs = new SparseArray();
+    this.mDataList = paramArrayList;
     AppMethodBeat.o(49283);
   }
   
   public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(49286);
-    s locals = (s)this.mlQ.get(paramInt);
+    s locals = (s)this.mMs.get(paramInt);
     if (locals == null)
     {
       AppMethodBeat.o(49286);
@@ -47,9 +47,9 @@ final class r
   public final void a(RecyclerView.w paramw, int paramInt)
   {
     AppMethodBeat.i(49287);
-    s locals = (s)this.mlQ.get(getItemViewType(paramInt));
+    s locals = (s)this.mMs.get(getItemViewType(paramInt));
     if (locals != null) {
-      locals.c(paramw, uZ(paramInt));
+      locals.c(paramw, vE(paramInt));
     }
     AppMethodBeat.o(49287);
   }
@@ -57,7 +57,7 @@ final class r
   public final void a(RecyclerView.w paramw, int paramInt, List paramList)
   {
     AppMethodBeat.i(49288);
-    s locals = (s)this.mlQ.get(getItemViewType(paramInt));
+    s locals = (s)this.mMs.get(getItemViewType(paramInt));
     if (locals == null)
     {
       super.a(paramw, paramInt, paramList);
@@ -66,26 +66,26 @@ final class r
     }
     if (paramList.size() > 0)
     {
-      uZ(paramInt);
+      vE(paramInt);
       if (locals.b(paramw, paramList.get(0)))
       {
         AppMethodBeat.o(49288);
         return;
       }
     }
-    locals.c(paramw, uZ(paramInt));
+    locals.c(paramw, vE(paramInt));
     AppMethodBeat.o(49288);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(49291);
-    if (this.ijj == null)
+    if (this.mDataList == null)
     {
       AppMethodBeat.o(49291);
       return 0;
     }
-    int i = this.ijj.size();
+    int i = this.mDataList.size();
     AppMethodBeat.o(49291);
     return i;
   }
@@ -93,14 +93,14 @@ final class r
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(49290);
-    Object localObject = uZ(paramInt);
-    s locals = (s)this.mlQ.get(getItemViewType(paramInt));
+    Object localObject = vE(paramInt);
+    s locals = (s)this.mMs.get(getItemViewType(paramInt));
     if ((localObject == null) || (locals == null))
     {
       AppMethodBeat.o(49290);
       return 0L;
     }
-    long l = locals.cB(localObject);
+    long l = locals.cD(localObject);
     AppMethodBeat.o(49290);
     return l;
   }
@@ -108,7 +108,7 @@ final class r
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(49289);
-    Object localObject = uZ(paramInt);
+    Object localObject = vE(paramInt);
     if (localObject == null)
     {
       AppMethodBeat.o(49289);
@@ -122,7 +122,7 @@ final class r
   final boolean isEmpty()
   {
     AppMethodBeat.i(49284);
-    if ((this.ijj == null) || (bs.gY(this.ijj)))
+    if ((this.mDataList == null) || (bt.hj(this.mDataList)))
     {
       AppMethodBeat.o(49284);
       return true;
@@ -131,7 +131,7 @@ final class r
     return false;
   }
   
-  final Object uZ(int paramInt)
+  final Object vE(int paramInt)
   {
     AppMethodBeat.i(49285);
     if ((paramInt < 0) || (paramInt >= getItemCount()))
@@ -139,7 +139,7 @@ final class r
       AppMethodBeat.o(49285);
       return null;
     }
-    Object localObject = this.ijj.get(paramInt);
+    Object localObject = this.mDataList.get(paramInt);
     AppMethodBeat.o(49285);
     return localObject;
   }

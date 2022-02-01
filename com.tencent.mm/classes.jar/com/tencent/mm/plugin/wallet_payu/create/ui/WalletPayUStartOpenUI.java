@@ -10,48 +10,48 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wallet_payu.a.c;
 import com.tencent.mm.plugin.wallet_payu.create.a.d;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MMFormMobileInputView;
-import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public class WalletPayUStartOpenUI
   extends WalletBaseUI
 {
-  private WalletPayUOpenIntroView BRZ;
-  private MMFormMobileInputView BSa;
-  private EditText BSb;
-  private EditText BSc;
-  private Button BSd;
-  private TextView BSe;
-  private TextView BSf;
-  private String BSg;
-  private String iTD;
+  private WalletPayUOpenIntroView Dss;
+  private MMFormMobileInputView Dst;
+  private EditText Dsu;
+  private EditText Dsv;
+  private Button Dsw;
+  private TextView Dsx;
+  private TextView Dsy;
+  private String Dsz;
+  private String jmL;
   
-  private String epr()
+  private String eDr()
   {
     AppMethodBeat.i(72040);
-    if (this.BSa.getCountryCode().startsWith("+"))
+    if (this.Dst.getCountryCode().startsWith("+"))
     {
-      str = this.BSa.getCountryCode().substring(1);
+      str = this.Dst.getCountryCode().substring(1);
       AppMethodBeat.o(72040);
       return str;
     }
-    String str = this.BSa.getCountryCode();
+    String str = this.Dst.getCountryCode();
     AppMethodBeat.o(72040);
     return str;
   }
   
-  private boolean evd()
+  private boolean eJj()
   {
     AppMethodBeat.i(72041);
-    if ((!bs.isNullOrNil(epr())) && (!bs.isNullOrNil(this.BSc.getText().toString())))
+    if ((!bt.isNullOrNil(eDr())) && (!bt.isNullOrNil(this.Dsv.getText().toString())))
     {
       AppMethodBeat.o(72041);
       return true;
@@ -60,20 +60,20 @@ public class WalletPayUStartOpenUI
     return false;
   }
   
-  private void eve()
+  private void eJk()
   {
     AppMethodBeat.i(72042);
-    if (this.BSa.getVisibility() == 0)
+    if (this.Dst.getVisibility() == 0)
     {
-      if (evd())
+      if (eJj())
       {
-        this.BSg = epr();
-        this.iTD = this.BSa.getMobileNumber();
-        this.BSd.setEnabled(true);
+        this.Dsz = eDr();
+        this.jmL = this.Dst.getMobileNumber();
+        this.Dsw.setEnabled(true);
         AppMethodBeat.o(72042);
         return;
       }
-      this.BSd.setEnabled(false);
+      this.Dsw.setEnabled(false);
     }
     AppMethodBeat.o(72042);
   }
@@ -92,22 +92,22 @@ public class WalletPayUStartOpenUI
   {
     AppMethodBeat.i(72038);
     super.onCreate(paramBundle);
-    this.iTD = getInput().getString("key_mobile");
-    this.BSg = getInput().getString("dial_code");
-    if (bs.isNullOrNil(this.BSg)) {
-      this.BSg = "27";
+    this.jmL = getInput().getString("key_mobile");
+    this.Dsz = getInput().getString("dial_code");
+    if (bt.isNullOrNil(this.Dsz)) {
+      this.Dsz = "27";
     }
-    this.BRZ = ((WalletPayUOpenIntroView)findViewById(2131301044));
-    this.BRZ.setPagerData(new d[] { new d(2131233575, 2131765731, 2131765725), new d(2131233576, 2131765732, 2131765726), new d(2131233577, 2131765733, 2131765727) });
-    this.BSa = ((MMFormMobileInputView)findViewById(2131305178));
-    this.BSd = ((Button)findViewById(2131305174));
-    this.BSb = this.BSa.getCountryCodeEditText();
-    this.BSc = this.BSa.getMobileNumberEditText();
-    if (!bs.isNullOrNil(this.iTD)) {
-      this.BSc.setText(this.iTD);
+    this.Dss = ((WalletPayUOpenIntroView)findViewById(2131301044));
+    this.Dss.setPagerData(new d[] { new d(2131233575, 2131765731, 2131765725), new d(2131233576, 2131765732, 2131765726), new d(2131233577, 2131765733, 2131765727) });
+    this.Dst = ((MMFormMobileInputView)findViewById(2131305178));
+    this.Dsw = ((Button)findViewById(2131305174));
+    this.Dsu = this.Dst.getCountryCodeEditText();
+    this.Dsv = this.Dst.getMobileNumberEditText();
+    if (!bt.isNullOrNil(this.jmL)) {
+      this.Dsv.setText(this.jmL);
     }
-    if (!bs.isNullOrNil(this.BSg)) {
-      this.BSb.setText(this.BSg);
+    if (!bt.isNullOrNil(this.Dsz)) {
+      this.Dsu.setText(this.Dsz);
     }
     paramBundle = new TextWatcher()
     {
@@ -122,26 +122,30 @@ public class WalletPayUStartOpenUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    this.BSc.addTextChangedListener(paramBundle);
-    this.BSb.addTextChangedListener(paramBundle);
-    this.BSd.setOnClickListener(new View.OnClickListener()
+    this.Dsv.addTextChangedListener(paramBundle);
+    this.Dsu.addTextChangedListener(paramBundle);
+    this.Dsw.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72037);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_payu/create/ui/WalletPayUStartOpenUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (WalletPayUStartOpenUI.b(WalletPayUStartOpenUI.this).getVisibility() == 0)
         {
           WalletPayUStartOpenUI.this.getInput().putString("key_mobile", WalletPayUStartOpenUI.c(WalletPayUStartOpenUI.this));
           WalletPayUStartOpenUI.this.getInput().putString("dial_code", WalletPayUStartOpenUI.d(WalletPayUStartOpenUI.this));
         }
         WalletPayUStartOpenUI.this.getNetController().s(new Object[0]);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_payu/create/ui/WalletPayUStartOpenUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(72037);
       }
     });
-    this.BSe = ((TextView)findViewById(2131305177));
-    c.a(this, this.BSe);
-    this.BSf = ((TextView)findViewById(2131305180));
-    this.BSf.setText(ah.fAv());
+    this.Dsx = ((TextView)findViewById(2131305177));
+    c.a(this, this.Dsx);
+    this.Dsy = ((TextView)findViewById(2131305180));
+    this.Dsy.setText(ah.fRF());
     AppMethodBeat.o(72038);
   }
   
@@ -149,7 +153,7 @@ public class WalletPayUStartOpenUI
   {
     AppMethodBeat.i(72039);
     super.onResume();
-    eve();
+    eJk();
     AppMethodBeat.o(72039);
   }
   
@@ -166,7 +170,7 @@ public class WalletPayUStartOpenUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.create.ui.WalletPayUStartOpenUI
  * JD-Core Version:    0.7.0.1
  */

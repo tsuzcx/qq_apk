@@ -4,21 +4,21 @@ import java.util.List;
 
 public abstract interface c$a
 {
-  public abstract void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public abstract void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
-  public abstract void eH();
+  public abstract void eY();
   
-  public abstract void eI();
+  public abstract void eZ();
   
-  public abstract void eJ();
+  public abstract void fa();
   
   public abstract void onQueueChanged(List<?> paramList);
   
   public abstract void onSessionDestroyed();
   
-  public abstract void w(Object paramObject);
-  
   public abstract void x(Object paramObject);
+  
+  public abstract void y(Object paramObject);
 }
 
 

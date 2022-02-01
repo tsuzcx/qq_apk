@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.shake.c.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.az;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.protocal.protobuf.ayu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.protocal.protobuf.bcy;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class b
   extends n
   implements k
 {
-  private g callback;
-  private final com.tencent.mm.ak.b rr;
-  public e xxD;
+  private f callback;
+  private final com.tencent.mm.al.b rr;
+  public e yMo;
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(28183);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(28183);
     return i;
@@ -40,18 +40,18 @@ public final class b
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(28184);
-    ac.i("MicroMsg.NetSceneGetLbsCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
+    ad.i("MicroMsg.NetSceneGetLbsCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ayu)this.rr.hvs.hvw;
+      paramq = (bcy)this.rr.hNL.hNQ;
       if (paramq == null) {
         break label851;
       }
       paramInt1 = (int)(System.currentTimeMillis() / 1000L);
-      if (paramq.EQc) {
+      if (paramq.Gzt) {
         break label124;
       }
-      ac.e("MicroMsg.NetSceneGetLbsCard", "getlbscard have_card is false, no card , don't handle");
+      ad.e("MicroMsg.NetSceneGetLbsCard", "getlbscard have_card is false, no card , don't handle");
     }
     label218:
     label757:
@@ -61,96 +61,96 @@ public final class b
       AppMethodBeat.o(28184);
       return;
       label124:
-      if (paramq.EQg <= paramInt1)
+      if (paramq.Gzx <= paramInt1)
       {
-        ac.e("MicroMsg.NetSceneGetLbsCard", "getlbscard entrance_endtime: " + paramq.EQg + " is <= currentTime:" + paramInt1 + " , don't handle");
+        ad.e("MicroMsg.NetSceneGetLbsCard", "getlbscard entrance_endtime: " + paramq.Gzx + " is <= currentTime:" + paramInt1 + " , don't handle");
       }
-      else if (TextUtils.isEmpty(paramq.nUr))
+      else if (TextUtils.isEmpty(paramq.oxM))
       {
-        ac.e("MicroMsg.NetSceneGetLbsCard", "getlbscard card_tp_id is empty , don't handle");
+        ad.e("MicroMsg.NetSceneGetLbsCard", "getlbscard card_tp_id is empty , don't handle");
       }
       else
       {
-        ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard have_card is true");
-        if (paramq.EQd)
+        ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard have_card is true");
+        if (paramq.Gzu)
         {
-          ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard have_red_dot is true");
-          this.xxD = new e();
-          this.xxD.nWg = 1;
-          this.xxD.nUr = paramq.nUr;
-          this.xxD.dvP = paramq.dvP;
-          this.xxD.title = paramq.title;
-          this.xxD.nUs = paramq.nUs;
-          this.xxD.nUt = paramq.nUt;
-          this.xxD.nVK = paramq.nVK;
-          this.xxD.hhs = paramq.hhs;
-          this.xxD.hiu = paramq.hiu;
-          this.xxD.xxE = 0;
-          this.xxD.xxH = paramq.xxH;
-          this.xxD.xxI = paramq.xxI;
-          this.xxD.xxJ = paramq.xxJ;
-          this.xxD.xxK = paramq.xxK;
-          this.xxD.xxL = "";
-          this.xxD.nUv = paramq.nUv;
-          this.xxD.xxM = paramq.xxM;
-          this.xxD.xxN = paramq.xxN;
-          m.dDr().xxG = this.xxD.xxL;
-          ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard entrance_endtime: " + paramq.EQg + " is <= currentTime:" + paramInt1);
-          ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard activity_type: " + paramq.EQi);
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GDF, Integer.valueOf(paramInt1));
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GDG, Integer.valueOf(paramq.EQg));
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GDH, paramq.Bkp);
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GDK, paramq.EQh);
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GDL, Integer.valueOf(paramq.EQi));
-          paramArrayOfByte = com.tencent.mm.plugin.shake.c.c.a.dDI();
-          ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard msg reddotid is " + paramq.EQe);
-          ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard pre reddotid is ".concat(String.valueOf(paramArrayOfByte)));
-          if (TextUtils.isEmpty(paramq.EQe)) {
-            ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard resp.red_dot_id is empty");
+          ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard have_red_dot is true");
+          this.yMo = new e();
+          this.yMo.ozA = 1;
+          this.yMo.oxM = paramq.oxM;
+          this.yMo.dHY = paramq.dHY;
+          this.yMo.title = paramq.title;
+          this.yMo.oxN = paramq.oxN;
+          this.yMo.oxO = paramq.oxO;
+          this.yMo.oze = paramq.oze;
+          this.yMo.hzB = paramq.hzB;
+          this.yMo.hAD = paramq.hAD;
+          this.yMo.yMp = 0;
+          this.yMo.yMs = paramq.yMs;
+          this.yMo.yMt = paramq.yMt;
+          this.yMo.yMu = paramq.yMu;
+          this.yMo.yMv = paramq.yMv;
+          this.yMo.yMw = "";
+          this.yMo.oxQ = paramq.oxQ;
+          this.yMo.yMx = paramq.yMx;
+          this.yMo.yMy = paramq.yMy;
+          m.dOU().yMr = this.yMo.yMw;
+          ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard entrance_endtime: " + paramq.Gzx + " is <= currentTime:" + paramInt1);
+          ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard activity_type: " + paramq.Gzz);
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.IpY, Integer.valueOf(paramInt1));
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.IpZ, Integer.valueOf(paramq.Gzx));
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.Iqa, paramq.CKD);
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.Iqd, paramq.Gzy);
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.Iqe, Integer.valueOf(paramq.Gzz));
+          paramArrayOfByte = com.tencent.mm.plugin.shake.c.c.a.dPl();
+          ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard msg reddotid is " + paramq.Gzv);
+          ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard pre reddotid is ".concat(String.valueOf(paramArrayOfByte)));
+          if (TextUtils.isEmpty(paramq.Gzv)) {
+            ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard resp.red_dot_id is empty");
           }
           if (!TextUtils.isEmpty(paramArrayOfByte)) {
             break label757;
           }
-          ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard pre_red_dot_id is empty, resp.red_dot_id is not empty");
-          com.tencent.mm.y.c.aeH().x(262155, true);
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GDP, paramq.EQe);
-          az.ayM();
-          com.tencent.mm.model.c.agA().set(ah.a.GDQ, paramq.EQf);
+          ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard pre_red_dot_id is empty, resp.red_dot_id is not empty");
+          com.tencent.mm.z.c.aht().x(262155, true);
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.Iqi, paramq.Gzv);
+          ba.aBQ();
+          com.tencent.mm.model.c.ajl().set(al.a.Iqj, paramq.Gzw);
         }
         for (;;)
         {
-          h.wUl.kvStat(11721, paramq.nUr);
+          g.yhR.kvStat(11721, paramq.oxM);
           break;
-          ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard have_red_dot is false");
+          ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard have_red_dot is false");
           break label218;
-          if (!paramArrayOfByte.equals(paramq.EQe))
+          if (!paramArrayOfByte.equals(paramq.Gzv))
           {
-            ac.i("MicroMsg.NetSceneGetLbsCard", "getlbscard redDotId and msg.reddotid is not empty, but no equals");
-            com.tencent.mm.y.c.aeH().x(262155, true);
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(ah.a.GDP, paramq.EQe);
-            az.ayM();
-            com.tencent.mm.model.c.agA().set(ah.a.GDQ, paramq.EQf);
+            ad.i("MicroMsg.NetSceneGetLbsCard", "getlbscard redDotId and msg.reddotid is not empty, but no equals");
+            com.tencent.mm.z.c.aht().x(262155, true);
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().set(al.a.Iqi, paramq.Gzv);
+            ba.aBQ();
+            com.tencent.mm.model.c.ajl().set(al.a.Iqj, paramq.Gzw);
           }
-          else if (paramArrayOfByte.equals(paramq.EQe))
+          else if (paramArrayOfByte.equals(paramq.Gzv))
           {
-            ac.i("MicroMsg.NetSceneGetLbsCard", "redDotId equals msg.reddotid");
+            ad.i("MicroMsg.NetSceneGetLbsCard", "redDotId equals msg.reddotid");
           }
         }
-        ac.e("MicroMsg.NetSceneGetLbsCard", "getlbscard resp is null");
+        ad.e("MicroMsg.NetSceneGetLbsCard", "getlbscard resp is null");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.b
  * JD-Core Version:    0.7.0.1
  */

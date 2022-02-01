@@ -7,20 +7,20 @@ import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "sizeResolver", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "(Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;)V", "TAG", "", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "sizeResolver", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "(Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;)V", "TAG", "", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-emojisdk_release"})
 public final class i
   extends RecyclerView.h
 {
   private final String TAG;
-  private final o fTo;
+  private final o gmS;
   
   public i(o paramo)
   {
     AppMethodBeat.i(105667);
-    this.fTo = paramo;
+    this.gmS = paramo;
     this.TAG = "MicroMsg.EmojiPanelItemDecoration";
     AppMethodBeat.o(105667);
   }
@@ -28,17 +28,17 @@ public final class i
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(105666);
-    k.h(paramRect, "outRect");
-    k.h(paramView, "view");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramRect, "outRect");
+    p.h(paramView, "view");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     paramRecyclerView = paramRecyclerView.getAdapter();
     if (paramRecyclerView == null)
     {
       AppMethodBeat.o(105666);
       return;
     }
-    k.g(paramRecyclerView, "parent.adapter ?: return");
+    p.g(paramRecyclerView, "parent.adapter ?: return");
     int i = RecyclerView.bw(paramView);
     if (i == -1)
     {
@@ -46,7 +46,7 @@ public final class i
       return;
     }
     i = paramRecyclerView.getItemViewType(i);
-    int j = this.fTo.fUo;
+    int j = this.gmS.gnQ;
     switch (i)
     {
     }

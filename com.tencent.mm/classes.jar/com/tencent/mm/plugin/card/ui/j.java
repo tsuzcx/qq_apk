@@ -6,7 +6,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
-import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
@@ -18,99 +17,83 @@ import java.util.ArrayList;
 
 public final class j
 {
-  public Bitmap jas;
-  public o jat;
-  ImageView jau;
-  View jav;
-  View.OnClickListener jax;
-  b nTp;
-  public Bitmap nYK;
-  float nYS;
-  boolean ocd;
-  MMActivity ofX;
-  Bitmap ofY;
-  TextView ofZ;
-  TextView oga;
-  View ogb;
-  ImageView ogc;
-  MMVerticalTextView ogd;
-  MMVerticalTextView oge;
-  ArrayList<Bitmap> ogf;
-  String ogg;
+  public Bitmap jtB;
+  public o jtC;
+  ImageView jtD;
+  View jtE;
+  View.OnClickListener jtG;
+  public Bitmap oCe;
+  float oCm;
+  boolean oFw;
+  MMActivity oJq;
+  Bitmap oJr;
+  TextView oJs;
+  TextView oJt;
+  View oJu;
+  ImageView oJv;
+  MMVerticalTextView oJw;
+  MMVerticalTextView oJx;
+  ArrayList<Bitmap> oJy;
+  String oJz;
+  b owK;
   
   public j(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(113550);
-    this.ocd = true;
-    this.ofY = null;
-    this.jat = null;
-    this.nYS = 0.0F;
-    this.ogf = new ArrayList();
-    this.ogg = "";
-    this.jax = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(113548);
-        if ((paramAnonymousView.getId() == 2131303350) || (paramAnonymousView.getId() == 2131303346))
-        {
-          if ((j.this.jat != null) && (j.this.jat.isShowing())) {
-            j.this.jat.dismiss();
-          }
-          if (!j.this.nTp.bOR()) {
-            j.this.bSz();
-          }
-        }
-        AppMethodBeat.o(113548);
-      }
-    };
-    this.ofX = paramMMActivity;
+    this.oFw = true;
+    this.oJr = null;
+    this.jtC = null;
+    this.oCm = 0.0F;
+    this.oJy = new ArrayList();
+    this.oJz = "";
+    this.jtG = new j.1(this);
+    this.oJq = paramMMActivity;
     AppMethodBeat.o(113550);
   }
   
-  private void aT(float paramFloat)
+  private void aW(float paramFloat)
   {
     AppMethodBeat.i(113551);
-    WindowManager.LayoutParams localLayoutParams = this.ofX.getWindow().getAttributes();
+    WindowManager.LayoutParams localLayoutParams = this.oJq.getWindow().getAttributes();
     localLayoutParams.screenBrightness = paramFloat;
-    this.ofX.getWindow().setAttributes(localLayoutParams);
+    this.oJq.getWindow().setAttributes(localLayoutParams);
     AppMethodBeat.o(113551);
   }
   
-  public final void bSA()
-  {
-    AppMethodBeat.i(113554);
-    if ((this.jat != null) && (this.jat.isShowing())) {
-      this.jau.setImageBitmap(this.jas);
-    }
-    AppMethodBeat.o(113554);
-  }
-  
-  public final void bSy()
+  public final void bXd()
   {
     AppMethodBeat.i(113552);
-    if (this.nYS < 0.8F) {
-      aT(0.8F);
+    if (this.oCm < 0.8F) {
+      aW(0.8F);
     }
     AppMethodBeat.o(113552);
   }
   
-  public final void bSz()
+  public final void bXe()
   {
     AppMethodBeat.i(113553);
-    aT(this.nYS);
+    aW(this.oCm);
     AppMethodBeat.o(113553);
+  }
+  
+  public final void bXf()
+  {
+    AppMethodBeat.i(113554);
+    if ((this.jtC != null) && (this.jtC.isShowing())) {
+      this.jtD.setImageBitmap(this.jtB);
+    }
+    AppMethodBeat.o(113554);
   }
   
   final void recycleBmpList()
   {
     AppMethodBeat.i(113555);
-    if (this.ogf.size() > 2)
+    if (this.oJy.size() > 2)
     {
-      int i = this.ogf.size() - 1;
+      int i = this.oJy.size() - 1;
       while (i > 1)
       {
-        l.T((Bitmap)this.ogf.remove(i));
+        l.T((Bitmap)this.oJy.remove(i));
         i -= 1;
       }
     }
@@ -119,7 +102,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.j
  * JD-Core Version:    0.7.0.1
  */

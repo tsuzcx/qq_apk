@@ -15,12 +15,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.k;
 import com.tencent.mm.pluginsdk.model.w.a;
 import com.tencent.mm.sandbox.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ay;
 import com.tencent.mm.service.MMService;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Collection;
@@ -33,19 +33,19 @@ import java.util.Map;
 public class UpdaterService
   extends MMService
 {
-  private static UpdaterService GmH = null;
-  static final long GmJ = 1800000L;
-  Map<Integer, a> GmI;
-  private au GmK;
-  private a GmL;
-  private boolean cqM;
+  private static UpdaterService HYu = null;
+  static final long HYw = 1800000L;
+  Map<Integer, a> HYv;
+  private av HYx;
+  private a HYy;
+  private boolean cBJ;
   
   public UpdaterService()
   {
     AppMethodBeat.i(32801);
-    this.GmI = new HashMap();
-    this.cqM = false;
-    this.GmK = new au(new au.a()
+    this.HYv = new HashMap();
+    this.cBJ = false;
+    this.HYx = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
@@ -59,32 +59,42 @@ public class UpdaterService
         return false;
       }
     }, true);
-    this.GmL = null;
+    this.HYy = null;
     AppMethodBeat.o(32801);
   }
   
-  public static UpdaterService eTt()
+  public static void fD()
   {
-    return GmH;
+    AppMethodBeat.i(32802);
+    ad.i("MicroMsg.UpdaterService", "UpdaterService stopInstance()");
+    if (HYu != null) {
+      HYu.fiW();
+    }
+    AppMethodBeat.o(32802);
   }
   
-  private boolean eTu()
+  public static UpdaterService fiV()
+  {
+    return HYu;
+  }
+  
+  private boolean fiW()
   {
     AppMethodBeat.i(32808);
-    if (this.GmI.size() > 0)
+    if (this.HYv.size() > 0)
     {
-      Iterator localIterator = this.GmI.values().iterator();
+      Iterator localIterator = this.HYv.values().iterator();
       while (localIterator.hasNext()) {
         if (((a)localIterator.next()).isBusy())
         {
-          ac.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, dont stop, some download mgr still busy");
+          ad.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, dont stop, some download mgr still busy");
           AppMethodBeat.o(32808);
           return false;
         }
       }
     }
-    ac.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, UpdaterService killed self");
-    ap.n(new Runnable()
+    ad.i("MicroMsg.UpdaterService", "checkAndTryStopSelf, UpdaterService killed self");
+    aq.o(new Runnable()
     {
       public final void run()
       {
@@ -95,34 +105,24 @@ public class UpdaterService
           while (localIterator.hasNext()) {
             if (((a)localIterator.next()).isBusy())
             {
-              ac.i("MicroMsg.UpdaterService", "checkAndTryStopSelf2, dont stop, some download mgr still busy");
+              ad.i("MicroMsg.UpdaterService", "checkAndTryStopSelf2, dont stop, some download mgr still busy");
               AppMethodBeat.o(32799);
               return;
             }
           }
         }
-        if (!w.a.eKP())
+        if (!w.a.eZJ())
         {
           UpdaterService.this.stopSelf();
           AppMethodBeat.o(32799);
           return;
         }
-        ac.i("TBSDownloadMgr", "is still busy");
+        ad.i("TBSDownloadMgr", "is still busy");
         AppMethodBeat.o(32799);
       }
     }, 10000L);
     AppMethodBeat.o(32808);
     return true;
-  }
-  
-  public static void fm()
-  {
-    AppMethodBeat.i(32802);
-    ac.i("MicroMsg.UpdaterService", "UpdaterService stopInstance()");
-    if (GmH != null) {
-      GmH.eTu();
-    }
-    AppMethodBeat.o(32802);
   }
   
   private void o(Intent paramIntent)
@@ -134,20 +134,20 @@ public class UpdaterService
       return;
     }
     int i = paramIntent.getIntExtra("intent_extra_download_type", 0);
-    ac.i("MicroMsg.UpdaterService", "handleCommand, downloadType = %d", new Object[] { Integer.valueOf(i) });
-    a locala = (a)this.GmI.get(Integer.valueOf(i));
+    ad.i("MicroMsg.UpdaterService", "handleCommand, downloadType = %d", new Object[] { Integer.valueOf(i) });
+    a locala = (a)this.HYv.get(Integer.valueOf(i));
     if (locala != null)
     {
-      boolean bool = locala.bc(paramIntent);
-      ac.i("MicroMsg.UpdaterService", "handleCommand ret = %b", new Object[] { Boolean.valueOf(bool) });
+      boolean bool = locala.bh(paramIntent);
+      ad.i("MicroMsg.UpdaterService", "handleCommand ret = %b", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
-        eTu();
+        fiW();
       }
     }
     AppMethodBeat.o(32807);
   }
   
-  public final IBinder Uz()
+  public final IBinder WQ()
   {
     return null;
   }
@@ -161,40 +161,40 @@ public class UpdaterService
   {
     AppMethodBeat.i(32803);
     super.onCreate();
-    ac.i("MicroMsg.UpdaterService", "onCreate");
-    c.o(hashCode(), this);
-    GmH = this;
-    this.GmI.put(Integer.valueOf(0), k.a.GmG);
-    this.GmI.put(Integer.valueOf(1), e.eTa());
-    this.GmI.put(Integer.valueOf(2), e.eTa());
-    this.GmI.put(Integer.valueOf(4), l.a.GmN);
-    this.GmI.put(Integer.valueOf(5), l.a.GmN);
-    MMActivity.initLanguage(ai.getContext());
-    Object localObject = this.GmK;
-    long l = GmJ;
-    ((au)localObject).au(l, l);
+    ad.i("MicroMsg.UpdaterService", "onCreate");
+    c.n(hashCode(), this);
+    HYu = this;
+    this.HYv.put(Integer.valueOf(0), k.a.HYt);
+    this.HYv.put(Integer.valueOf(1), e.fiC());
+    this.HYv.put(Integer.valueOf(2), e.fiC());
+    this.HYv.put(Integer.valueOf(4), l.a.HYA);
+    this.HYv.put(Integer.valueOf(5), l.a.HYA);
+    MMActivity.initLanguage(aj.getContext());
+    Object localObject = this.HYx;
+    long l = HYw;
+    ((av)localObject).az(l, l);
     localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("android.net.conn.CONNECTIVITY_CHANGE");
-    this.GmL = new a();
-    a locala = this.GmL;
-    this.Gxd.registerReceiver(locala, (IntentFilter)localObject);
+    this.HYy = new a();
+    a locala = this.HYy;
+    this.IiX.registerReceiver(locala, (IntentFilter)localObject);
     AppMethodBeat.o(32803);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(32806);
-    ac.i("MicroMsg.UpdaterService", "onDestroy");
-    this.GmK.stopTimer();
-    if (this.GmL != null) {}
+    ad.i("MicroMsg.UpdaterService", "onDestroy");
+    this.HYx.stopTimer();
+    if (this.HYy != null) {}
     try
     {
-      Object localObject = this.GmL;
-      this.Gxd.unregisterReceiver((BroadcastReceiver)localObject);
-      if (this.cqM) {
-        eXd();
+      Object localObject = this.HYy;
+      this.IiX.unregisterReceiver((BroadcastReceiver)localObject);
+      if (this.cBJ) {
+        fmN();
       }
-      localObject = this.GmI.values().iterator();
+      localObject = this.HYv.values().iterator();
       while (((Iterator)localObject).hasNext()) {
         ((a)((Iterator)localObject).next()).onDestroy();
       }
@@ -203,11 +203,11 @@ public class UpdaterService
     {
       for (;;)
       {
-        ac.e("MicroMsg.UpdaterService", "unregisterReceiver(UpdaterService.ConnectivityReceiver) exception = %s", new Object[] { localException.getMessage() });
+        ad.e("MicroMsg.UpdaterService", "unregisterReceiver(UpdaterService.ConnectivityReceiver) exception = %s", new Object[] { localException.getMessage() });
       }
-      this.GmI.clear();
-      GmH = null;
-      c.p(hashCode(), this);
+      this.HYv.clear();
+      HYu = null;
+      c.o(hashCode(), this);
       super.onDestroy();
       AppMethodBeat.o(32806);
     }
@@ -216,7 +216,7 @@ public class UpdaterService
   public final void onStart(Intent paramIntent, int paramInt)
   {
     AppMethodBeat.i(32804);
-    ac.i("MicroMsg.UpdaterService", "onStart intent = %s", new Object[] { paramIntent });
+    ad.i("MicroMsg.UpdaterService", "onStart intent = %s", new Object[] { paramIntent });
     o(paramIntent);
     AppMethodBeat.o(32804);
   }
@@ -224,20 +224,20 @@ public class UpdaterService
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(32805);
-    ac.i("MicroMsg.UpdaterService", "onStartCommand intent = %s", new Object[] { paramIntent });
+    ad.i("MicroMsg.UpdaterService", "onStartCommand intent = %s", new Object[] { paramIntent });
     if (paramIntent != null)
     {
       if (!paramIntent.getBooleanExtra("intent_extra_run_in_foreground", false)) {
         break label136;
       }
-      ac.i("MicroMsg.UpdaterService", "runServiceInForground");
+      ad.i("MicroMsg.UpdaterService", "runServiceInForground");
       Object localObject = new Intent();
-      localObject = PendingIntent.getService(ai.getContext(), 0, (Intent)localObject, 0);
-      s.c localc = com.tencent.mm.bq.a.bE(ai.getContext(), "reminder_channel_id").i("updater service running forground").i(System.currentTimeMillis()).f("Updater Service").g("updater service running forground");
-      localc.Fu = ((PendingIntent)localObject);
+      localObject = PendingIntent.getService(aj.getContext(), 0, (Intent)localObject, 0);
+      s.c localc = com.tencent.mm.br.a.bI(aj.getContext(), "reminder_channel_id").i("updater service running forground").i(System.currentTimeMillis()).f("Updater Service").g("updater service running forground");
+      localc.Hl = ((PendingIntent)localObject);
       startForeground(0, localc.build());
     }
-    for (this.cqM = true;; this.cqM = true)
+    for (this.cBJ = true;; this.cBJ = true)
     {
       label136:
       do
@@ -245,7 +245,7 @@ public class UpdaterService
         o(paramIntent);
         AppMethodBeat.o(32805);
         return 2;
-      } while ((Build.VERSION.SDK_INT >= 18) || (this.cqM));
+      } while ((Build.VERSION.SDK_INT >= 18) || (this.cBJ));
       startForeground(-1314, new Notification());
     }
   }
@@ -257,15 +257,15 @@ public class UpdaterService
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(32800);
-      if (UpdaterService.eTt() != null)
+      if (UpdaterService.fiV() != null)
       {
-        paramIntent = UpdaterService.eTt();
-        boolean bool = ax.isWifi(paramContext);
-        if (paramIntent.GmI.size() > 0)
+        paramIntent = UpdaterService.fiV();
+        boolean bool = ay.isWifi(paramContext);
+        if (paramIntent.HYv.size() > 0)
         {
-          paramContext = paramIntent.GmI.values().iterator();
+          paramContext = paramIntent.HYv.values().iterator();
           while (paramContext.hasNext()) {
-            ((a)paramContext.next()).vE(bool);
+            ((a)paramContext.next()).wq(bool);
           }
         }
       }

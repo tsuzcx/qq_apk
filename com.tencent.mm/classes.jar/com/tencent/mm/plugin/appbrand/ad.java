@@ -3,39 +3,38 @@ package com.tencent.mm.plugin.appbrand;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/FakeNativeRuntimeAutoReLaunchLogic;", "Lcom/tencent/mm/plugin/appbrand/IRuntimeAutoReLaunchLogicInterceptor;", "initialConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)V", "appId", "", "kotlin.jvm.PlatformType", "getAppId", "()Ljava/lang/String;", "mCurrentConfig", "mLastAcceptableEnterScene", "", "scene", "getScene", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "onConfigUpdated", "", "newConfig", "shouldReLaunchOnConfigWillUpdate", "", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/FakeNativeRuntimeAutoReLaunchLogic;", "Lcom/tencent/mm/plugin/appbrand/IRuntimeAutoReLaunchLogicInterceptor;", "initialConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)V", "appId", "", "kotlin.jvm.PlatformType", "getAppId", "()Ljava/lang/String;", "mCurrentConfig", "mLastAcceptableEnterScene", "", "scene", "getScene", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "onConfigUpdated", "", "newConfig", "shouldReLaunchOnConfigWillUpdate", "", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)Ljava/lang/Boolean;", "Companion", "plugin-appbrand-integration_release"})
 public final class ad
   implements ah
 {
   @Deprecated
-  public static final a jhP;
-  private AppBrandInitConfigWC jhN;
-  private int jhO;
+  public static final a jAY;
+  private AppBrandInitConfigWC jAW;
+  private int jAX;
   
   static
   {
     AppMethodBeat.i(175104);
-    jhP = new a((byte)0);
+    jAY = new a((byte)0);
     AppMethodBeat.o(175104);
   }
   
   public ad(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
     AppMethodBeat.i(175103);
-    this.jhN = paramAppBrandInitConfigWC;
-    this.jhO = paramAppBrandInitConfigWC.CB().scene;
+    this.jAW = paramAppBrandInitConfigWC;
+    this.jAX = paramAppBrandInitConfigWC.Ea().scene;
     AppMethodBeat.o(175103);
   }
   
   public final Boolean b(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
     AppMethodBeat.i(175101);
-    k.h(paramAppBrandInitConfigWC, "newConfig");
-    if (!this.jhN.jDy)
+    p.h(paramAppBrandInitConfigWC, "newConfig");
+    if (!this.jAW.jXu)
     {
       AppMethodBeat.o(175101);
       return null;
@@ -45,13 +44,13 @@ public final class ad
     {
       try
       {
-        if (1038 == paramAppBrandInitConfigWC.CB().scene)
+        if (1038 == paramAppBrandInitConfigWC.Ea().scene)
         {
-          ac.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return false. appId[" + this.jhN.appId + "], reason=1038 back from other MiniProgram");
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return false. appId[" + this.jAW.appId + "], reason=1038 back from other MiniProgram");
           localObject1 = Boolean.FALSE;
           return localObject1;
         }
-        Object localObject1 = (CharSequence)paramAppBrandInitConfigWC.jjf;
+        Object localObject1 = (CharSequence)paramAppBrandInitConfigWC.jCN;
         if (localObject1 != null)
         {
           if (((CharSequence)localObject1).length() == 0)
@@ -59,7 +58,7 @@ public final class ad
             break label318;
             if (i == 0)
             {
-              ac.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return true appId[" + this.jhN.appId + "] enterPath[" + paramAppBrandInitConfigWC.jjf + ']');
+              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return true appId[" + this.jAW.appId + "] enterPath[" + paramAppBrandInitConfigWC.jCN + ']');
               localObject1 = Boolean.TRUE;
               return localObject1;
             }
@@ -69,12 +68,12 @@ public final class ad
             i = 0;
             continue;
           }
-          if (this.jhO != paramAppBrandInitConfigWC.CB().scene)
+          if (this.jAX != paramAppBrandInitConfigWC.Ea().scene)
           {
             bool = true;
             localObject1 = Boolean.valueOf(bool);
             bool = ((Boolean)localObject1).booleanValue();
-            ac.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return " + bool + " appId[" + this.jhN.appId + "] mLastAcceptableScene[" + this.jhO + "] newScene[" + paramAppBrandInitConfigWC.CB().scene + ']');
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.AppBrandRuntimeWC.FakeNativeRuntimeAutoReLaunchLogic", "shouldRelaunch return " + bool + " appId[" + this.jAW.appId + "] mLastAcceptableScene[" + this.jAX + "] newScene[" + paramAppBrandInitConfigWC.Ea().scene + ']');
             return localObject1;
           }
           boolean bool = false;
@@ -93,15 +92,15 @@ public final class ad
   public final void c(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
     AppMethodBeat.i(175102);
-    k.h(paramAppBrandInitConfigWC, "newConfig");
-    this.jhN = paramAppBrandInitConfigWC;
-    if (1038 != paramAppBrandInitConfigWC.CB().scene) {
-      this.jhO = paramAppBrandInitConfigWC.CB().scene;
+    p.h(paramAppBrandInitConfigWC, "newConfig");
+    this.jAW = paramAppBrandInitConfigWC;
+    if (1038 != paramAppBrandInitConfigWC.Ea().scene) {
+      this.jAX = paramAppBrandInitConfigWC.Ea().scene;
     }
     AppMethodBeat.o(175102);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/FakeNativeRuntimeAutoReLaunchLogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/FakeNativeRuntimeAutoReLaunchLogic$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 

@@ -1,10 +1,25 @@
 package com.tencent.luggage.d;
 
-import android.os.Bundle;
+import android.content.Context;
+import com.tencent.luggage.h.e;
+import com.tencent.luggage.webview.a;
+import java.util.LinkedList;
 
-public abstract interface j
+public abstract class j
 {
-  public abstract e k(String paramString, Bundle paramBundle);
+  abstract p BZ();
+  
+  abstract Class<? extends a> Ca();
+  
+  public abstract LinkedList<h> Cd();
+  
+  public abstract k Ce();
+  
+  abstract LinkedList<Class<? extends b>> Cf();
+  
+  public abstract e Cg();
+  
+  abstract Context getContext();
 }
 
 

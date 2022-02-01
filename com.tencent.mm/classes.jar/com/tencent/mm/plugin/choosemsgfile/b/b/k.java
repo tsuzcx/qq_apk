@@ -8,51 +8,52 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.aj;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.ak;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.fav.ui.e;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public class k
   extends a<n>
 {
-  private String foE;
-  private k.b ooK;
-  public String ooU;
-  private String ooX;
-  private Integer ooY;
-  private String ooZ;
-  private String opa;
+  private String fGM;
+  private k.b oSf;
+  public String oSp;
+  private String oSs;
+  private Integer oSt;
+  private String oSu;
+  private String oSv;
   
-  public k(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bo parambo, String paramString)
+  public k(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bu parambu, String paramString)
   {
-    super(paramg, parambo);
-    this.ooU = paramString;
+    super(paramg, parambu);
+    this.oSp = paramString;
   }
   
-  private String Tm()
+  private String VB()
   {
     AppMethodBeat.i(123290);
     Object localObject;
-    if (this.opa == null)
+    if (this.oSv == null)
     {
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.ooU);
+      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(this.oSp);
       if (localObject == null) {
         break label59;
       }
     }
     label59:
-    for (this.opa = ((av)localObject).field_conRemark;; this.opa = "")
+    for (this.oSv = ((aw)localObject).field_conRemark;; this.oSv = "")
     {
-      localObject = this.opa;
+      localObject = this.oSv;
       AppMethodBeat.o(123290);
       return localObject;
     }
@@ -67,7 +68,7 @@ public class k
       AppMethodBeat.o(123292);
       return;
     }
-    ap.f(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
@@ -82,99 +83,99 @@ public class k
   private void b(n paramn)
   {
     AppMethodBeat.i(123293);
-    switch (this.ooJ)
+    switch (this.oSe)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(123293);
       return;
-      paramn.iIW.setVisibility(0);
-      paramn.oph.setVisibility(8);
-      paramn.fwP.setVisibility(8);
-      paramn.opq.setVisibility(8);
-      paramn.opo.setVisibility(8);
+      paramn.jcf.setVisibility(0);
+      paramn.oSC.setVisibility(8);
+      paramn.fQc.setVisibility(8);
+      paramn.oSL.setVisibility(8);
+      paramn.oSJ.setVisibility(8);
       AppMethodBeat.o(123293);
       return;
-      paramn.iIW.setVisibility(0);
-      paramn.oph.setVisibility(0);
-      paramn.fwP.setVisibility(8);
-      paramn.opq.setVisibility(8);
-      paramn.opo.setVisibility(8);
-      if (this.aoe > 0)
+      paramn.jcf.setVisibility(0);
+      paramn.oSC.setVisibility(0);
+      paramn.fQc.setVisibility(8);
+      paramn.oSL.setVisibility(8);
+      paramn.oSJ.setVisibility(8);
+      if (this.apW > 0)
       {
-        int i = (int)(this.MW / this.aoe * 100.0F);
+        int i = (int)(this.fq / this.apW * 100.0F);
         if ((i == -1) || (i >= 100))
         {
-          paramn.oph.setProgress(100);
+          paramn.oSC.setProgress(100);
           AppMethodBeat.o(123293);
           return;
         }
-        paramn.oph.setProgress(i);
+        paramn.oSC.setProgress(i);
         AppMethodBeat.o(123293);
         return;
-        paramn.iIW.setVisibility(8);
-        paramn.oph.setVisibility(8);
-        paramn.fwP.setVisibility(0);
-        paramn.opq.setVisibility(0);
-        paramn.opo.setVisibility(8);
+        paramn.jcf.setVisibility(8);
+        paramn.oSC.setVisibility(8);
+        paramn.fQc.setVisibility(0);
+        paramn.oSL.setVisibility(0);
+        paramn.oSJ.setVisibility(8);
         AppMethodBeat.o(123293);
         return;
-        paramn.iIW.setVisibility(8);
-        paramn.oph.setVisibility(8);
-        paramn.fwP.setVisibility(8);
-        paramn.opq.setVisibility(8);
-        paramn.opo.setVisibility(0);
-        paramn.gAI.setText(bUI().toUpperCase() + " " + getContext().getString(2131757351));
+        paramn.jcf.setVisibility(8);
+        paramn.oSC.setVisibility(8);
+        paramn.fQc.setVisibility(8);
+        paramn.oSL.setVisibility(8);
+        paramn.oSJ.setVisibility(0);
+        paramn.gUs.setText(bZn().toUpperCase() + " " + getContext().getString(2131757351));
         AppMethodBeat.o(123293);
         return;
-        paramn.iIW.setVisibility(8);
-        paramn.oph.setVisibility(8);
-        paramn.fwP.setVisibility(8);
-        paramn.opq.setVisibility(8);
-        paramn.opo.setVisibility(0);
-        paramn.gAI.setText(bUI().toUpperCase() + " " + getContext().getString(2131757350));
+        paramn.jcf.setVisibility(8);
+        paramn.oSC.setVisibility(8);
+        paramn.fQc.setVisibility(8);
+        paramn.oSL.setVisibility(8);
+        paramn.oSJ.setVisibility(0);
+        paramn.gUs.setText(bZn().toUpperCase() + " " + getContext().getString(2131757350));
         AppMethodBeat.o(123293);
         return;
-        paramn.iIW.setVisibility(8);
-        paramn.oph.setVisibility(8);
-        paramn.fwP.setVisibility(0);
-        paramn.opq.setVisibility(0);
-        paramn.fwP.setChecked(false);
-        paramn.opo.setVisibility(8);
+        paramn.jcf.setVisibility(8);
+        paramn.oSC.setVisibility(8);
+        paramn.fQc.setVisibility(0);
+        paramn.oSL.setVisibility(0);
+        paramn.fQc.setChecked(false);
+        paramn.oSJ.setVisibility(8);
       }
     }
   }
   
-  private k.b bUP()
+  private k.b bZu()
   {
     AppMethodBeat.i(123283);
-    if (this.ooK == null) {
-      this.ooK = k.b.vA(this.ooz.field_content);
+    if (this.oSf == null) {
+      this.oSf = k.b.yr(this.oRU.field_content);
     }
-    k.b localb = this.ooK;
+    k.b localb = this.oSf;
     AppMethodBeat.o(123283);
     return localb;
   }
   
-  private String bUR()
+  private String bZw()
   {
     AppMethodBeat.i(123289);
     Object localObject;
-    if (this.ooZ == null)
+    if (this.oSu == null)
     {
       localObject = null;
-      if (w.sQ(this.ooU)) {
-        localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(this.ooU);
+      if (w.vF(this.oSp)) {
+        localObject = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azz().AN(this.oSp);
       }
       if (localObject == null) {
         break label75;
       }
     }
     label75:
-    for (this.ooZ = ((x)localObject).wk(getUsername());; this.ooZ = "")
+    for (this.oSu = ((ab)localObject).zf(getUsername());; this.oSu = "")
     {
-      localObject = this.ooZ;
+      localObject = this.oSu;
       AppMethodBeat.o(123289);
       return localObject;
     }
@@ -183,25 +184,25 @@ public class k
   public void a(View paramView, a parama)
   {
     AppMethodBeat.i(123291);
-    if ((!bUH().rG(this.ooz.field_msgId)) && (!bj()))
+    if ((!bZm().tF(this.oRU.field_msgId)) && (!isInvalid()))
     {
       if (isEnable())
       {
-        com.tencent.mm.plugin.choosemsgfile.b.d.c.g(getContext(), this.ooz.field_msgId);
+        com.tencent.mm.plugin.choosemsgfile.b.d.c.g(getContext(), this.oRU.field_msgId);
         AppMethodBeat.o(123291);
         return;
       }
-      com.tencent.mm.plugin.choosemsgfile.b.d.c.P(getContext(), bUH().mMaxCount);
+      com.tencent.mm.plugin.choosemsgfile.b.d.c.Q(getContext(), bZm().mMaxCount);
     }
     AppMethodBeat.o(123291);
   }
   
-  public String bUI()
+  public String bZn()
   {
     AppMethodBeat.i(123285);
-    if (bUP() != null)
+    if (bZu() != null)
     {
-      String str = bUP().hhG;
+      String str = bZu().hzP;
       AppMethodBeat.o(123285);
       return str;
     }
@@ -209,12 +210,12 @@ public class k
     return "";
   }
   
-  public int bUJ()
+  public int bZo()
   {
     AppMethodBeat.i(123288);
-    if (bUP() != null)
+    if (bZu() != null)
     {
-      int i = bUP().hhF;
+      int i = bZu().hzO;
       AppMethodBeat.o(123288);
       return i;
     }
@@ -222,13 +223,13 @@ public class k
     return 0;
   }
   
-  public int bUQ()
+  public int bZv()
   {
     AppMethodBeat.i(123286);
-    if (this.ooY == null) {
-      this.ooY = Integer.valueOf(e.acR(bUI()));
+    if (this.oSt == null) {
+      this.oSt = Integer.valueOf(e.agG(bZn()));
     }
-    int i = this.ooY.intValue();
+    int i = this.oSt.intValue();
     AppMethodBeat.o(123286);
     return i;
   }
@@ -236,13 +237,13 @@ public class k
   public String getFileName()
   {
     AppMethodBeat.i(123287);
-    if (bUP() != null)
+    if (bZu() != null)
     {
-      Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).awB().aNt(this.ooU);
+      Object localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azp().Bf(this.oSp);
       if (localObject != null) {
-        this.ooX = ((ai)localObject).aaR();
+        this.oSs = ((am)localObject).adu();
       }
-      localObject = bUP().title;
+      localObject = bZu().title;
       AppMethodBeat.o(123287);
       return localObject;
     }
@@ -258,17 +259,17 @@ public class k
   public String getUsername()
   {
     AppMethodBeat.i(123284);
-    if (this.foE == null) {
-      this.foE = com.tencent.mm.plugin.choosemsgfile.b.d.c.b(this.ooz, w.sQ(this.ooU));
+    if (this.fGM == null) {
+      this.fGM = com.tencent.mm.plugin.choosemsgfile.b.d.c.b(this.oRU, w.vF(this.oSp));
     }
-    String str = this.foE;
+    String str = this.fGM;
     AppMethodBeat.o(123284);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.k
  * JD-Core Version:    0.7.0.1
  */

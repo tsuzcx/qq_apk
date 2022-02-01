@@ -13,20 +13,20 @@ import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 public final class al
   extends a
 {
-  final RecyclerView alu;
-  final a asU;
+  final RecyclerView anl;
+  final a auL;
   
   public al(RecyclerView paramRecyclerView)
   {
-    this.alu = paramRecyclerView;
-    this.asU = new a(this);
+    this.anl = paramRecyclerView;
+    this.auL = new a(this);
   }
   
   public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(RecyclerView.class.getName());
-    if (((paramView instanceof RecyclerView)) && (!this.alu.kV()))
+    if (((paramView instanceof RecyclerView)) && (!this.anl.lm()))
     {
       paramView = (RecyclerView)paramView;
       if (paramView.getLayoutManager() != null) {
@@ -41,17 +41,17 @@ public final class al
     paramc.setClassName(RecyclerView.class.getName());
     int i;
     int j;
-    if ((!this.alu.kV()) && (this.alu.getLayoutManager() != null))
+    if ((!this.anl.lm()) && (this.anl.getLayoutManager() != null))
     {
-      paramView = this.alu.getLayoutManager();
-      RecyclerView.o localo = paramView.alu.apR;
-      RecyclerView.t localt = paramView.alu.aqO;
-      if ((paramView.alu.canScrollVertically(-1)) || (paramView.alu.canScrollHorizontally(-1)))
+      paramView = this.anl.getLayoutManager();
+      RecyclerView.o localo = paramView.anl.arJ;
+      RecyclerView.t localt = paramView.anl.asG;
+      if ((paramView.anl.canScrollVertically(-1)) || (paramView.anl.canScrollHorizontally(-1)))
       {
         paramc.addAction(8192);
         paramc.setScrollable(true);
       }
-      if ((paramView.alu.canScrollVertically(1)) || (paramView.alu.canScrollHorizontally(1)))
+      if ((paramView.anl.canScrollVertically(1)) || (paramView.anl.canScrollHorizontally(1)))
       {
         paramc.addAction(4096);
         paramc.setScrollable(true);
@@ -66,7 +66,7 @@ public final class al
     for (;;)
     {
       if (Build.VERSION.SDK_INT >= 19) {
-        paramc.Pm.setCollectionInfo((AccessibilityNodeInfo.CollectionInfo)((c.b)paramView).PW);
+        paramc.Rb.setCollectionInfo((AccessibilityNodeInfo.CollectionInfo)((c.b)paramView).RL);
       }
       return;
       label198:
@@ -96,12 +96,12 @@ public final class al
           {
             return bool1;
             bool1 = bool2;
-          } while (this.alu.kV());
+          } while (this.anl.lm());
           bool1 = bool2;
-        } while (this.alu.getLayoutManager() == null);
-        paramView = this.alu.getLayoutManager();
+        } while (this.anl.getLayoutManager() == null);
+        paramView = this.anl.getLayoutManager();
         bool1 = bool2;
-      } while (paramView.alu == null);
+      } while (paramView.anl == null);
       switch (paramInt)
       {
       default: 
@@ -114,17 +114,17 @@ public final class al
       }
     } while (i == 0);
     label110:
-    paramView.alu.a(i, paramInt, null);
+    paramView.anl.a(i, paramInt, null);
     return true;
-    if (paramView.alu.canScrollVertically(-1)) {}
+    if (paramView.anl.canScrollVertically(-1)) {}
     for (paramInt = -(paramView.mHeight - paramView.getPaddingTop() - paramView.getPaddingBottom());; paramInt = 0)
     {
       i = paramInt;
-      if (paramView.alu.canScrollHorizontally(-1))
+      if (paramView.anl.canScrollHorizontally(-1))
       {
         i = -(paramView.mWidth - paramView.getPaddingLeft() - paramView.getPaddingRight());
         break;
-        if (!paramView.alu.canScrollVertically(1)) {
+        if (!paramView.anl.canScrollVertically(1)) {
           break label256;
         }
       }
@@ -132,7 +132,7 @@ public final class al
       for (paramInt = paramView.mHeight - paramView.getPaddingTop() - paramView.getPaddingBottom();; paramInt = 0)
       {
         i = paramInt;
-        if (paramView.alu.canScrollHorizontally(1))
+        if (paramView.anl.canScrollHorizontally(1))
         {
           i = paramView.mWidth - paramView.getPaddingLeft() - paramView.getPaddingRight();
           break;
@@ -148,18 +148,18 @@ public final class al
   public static final class a
     extends a
   {
-    final al asV;
+    final al auM;
     
     public a(al paramal)
     {
-      this.asV = paramal;
+      this.auM = paramal;
     }
     
     public final void onInitializeAccessibilityNodeInfo(View paramView, c paramc)
     {
       super.onInitializeAccessibilityNodeInfo(paramView, paramc);
-      if ((!this.asV.alu.kV()) && (this.asV.alu.getLayoutManager() != null)) {
-        this.asV.alu.getLayoutManager().a(paramView, paramc);
+      if ((!this.auM.anl.lm()) && (this.auM.anl.getLayoutManager() != null)) {
+        this.auM.anl.getLayoutManager().a(paramView, paramc);
       }
     }
     
@@ -176,10 +176,10 @@ public final class al
         {
           return bool1;
           bool1 = bool2;
-        } while (this.asV.alu.kV());
+        } while (this.auM.anl.lm());
         bool1 = bool2;
-      } while (this.asV.alu.getLayoutManager() == null);
-      this.asV.alu.getLayoutManager();
+      } while (this.auM.anl.getLayoutManager() == null);
+      this.auM.anl.getLayoutManager();
       return false;
     }
   }

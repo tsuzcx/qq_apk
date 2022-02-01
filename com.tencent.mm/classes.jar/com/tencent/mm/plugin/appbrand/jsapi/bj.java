@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.aa;
-
 public final class bj
-  extends a<aa>
+  extends a<h>
 {
-  public static final int CTRL_INDEX = 0;
-  public static final String NAME = "openLink";
+  public static final int CTRL_INDEX = 642;
+  public static final String NAME = "openWCCardHomePage";
 }
 
 

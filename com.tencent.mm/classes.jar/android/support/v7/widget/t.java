@@ -10,17 +10,17 @@ public abstract interface t
   
   public abstract void bv(int paramInt);
   
-  public abstract void go();
+  public abstract void gF();
   
   public abstract boolean hideOverflowMenu();
   
-  public abstract boolean ia();
-  
-  public abstract boolean ib();
-  
-  public abstract void ic();
+  public abstract boolean is();
   
   public abstract boolean isOverflowMenuShowing();
+  
+  public abstract boolean it();
+  
+  public abstract void iu();
   
   public abstract void setWindowCallback(Window.Callback paramCallback);
   

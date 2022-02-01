@@ -11,21 +11,21 @@ import android.support.v7.widget.RecyclerView.t;
 import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "()V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionItemDecoration;", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "()V", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "plugin-appbrand-integration_release"})
 final class f
   extends RecyclerView.h
 {
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(51264);
-    k.h(paramRect, "outRect");
-    k.h(paramView, "view");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramRect, "outRect");
+    p.h(paramView, "view");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     paramRect.left = 0;
     paramRect.right = 0;
     paramRect.top = 0;
@@ -38,22 +38,22 @@ final class f
     }
     paramt = (GridLayoutManager)paramt;
     paramView = paramRecyclerView.bh(paramView);
-    k.g(paramView, "parent.getChildViewHolder(view!!)");
-    int i = paramView.lv();
+    p.g(paramView, "parent.getChildViewHolder(view!!)");
+    int i = paramView.lN();
     paramView = paramRecyclerView.getAdapter();
     if (paramView == null) {
-      k.fOy();
+      p.gfZ();
     }
-    k.g(paramView, "parent.adapter!!");
-    int j = paramView.getItemCount() / paramt.jJ();
-    if (i >= paramt.jJ() * j) {}
+    p.g(paramView, "parent.adapter!!");
+    int j = paramView.getItemCount() / paramt.jZ();
+    if (i >= paramt.jZ() * j) {}
     for (i = 0;; i = paramView.getResources().getDimensionPixelSize(2131165858))
     {
       paramRect.bottom = i;
       AppMethodBeat.o(51264);
       return;
       paramView = paramRecyclerView.getContext();
-      k.g(paramView, "parent.context");
+      p.g(paramView, "parent.context");
     }
   }
 }

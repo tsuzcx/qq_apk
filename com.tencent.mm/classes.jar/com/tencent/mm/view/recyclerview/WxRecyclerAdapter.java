@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
-import d.g.b.v.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
+import d.g.b.y.f;
 import d.l;
 import d.v;
 import java.util.ArrayList;
@@ -25,55 +25,55 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "itemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "needScrollData", "", "(Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;Ljava/util/ArrayList;Z)V", "convertTypeMap", "Landroid/util/SparseArray;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "dataChangeListener", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "dataScrollListener", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "isFirstViewHolder", "sessionExposeMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getSessionExposeMap", "()Landroid/util/LongSparseArray;", "totalExposeMap", "getTotalExposeMap", "visibleExposeMap", "getVisibleExposeMap", "wxItemShowInfoMap", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "getWxItemShowInfoMap", "wxRVListener", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "getWxRVListener", "()Lcom/tencent/mm/view/recyclerview/WxRVListener;", "setWxRVListener", "(Lcom/tencent/mm/view/recyclerview/WxRVListener;)V", "_getItemCount", "", "_getItemId", "", "position", "_getItemViewType", "_onBindFooterHolder", "", "holder", "info", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "_onBindHeaderHolder", "_onBindViewHolder", "payloads", "", "", "_onCreateFooterHolder", "parent", "Landroid/view/ViewGroup;", "type", "_onCreateHeaderHolder", "_onCreateViewHolder", "viewType", "getData", "getFooterConvert", "getHeaderConvert", "getItemConvert", "onAttachedToRecyclerView", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onBindFirstBodyViewHolder", "onDetachedFromRecyclerView", "onPause", "onResume", "onViewAttachedToWindow", "wrapViewHolder", "view", "Landroid/view/View;", "libmmui_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx;", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "itemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "data", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "needScrollData", "", "(Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;Ljava/util/ArrayList;Z)V", "convertTypeMap", "Landroid/util/SparseArray;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "dataChangeListener", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "dataScrollListener", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "isFirstViewHolder", "sessionExposeMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getSessionExposeMap", "()Landroid/util/LongSparseArray;", "totalExposeMap", "getTotalExposeMap", "visibleExposeMap", "getVisibleExposeMap", "wxItemShowInfoMap", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "getWxItemShowInfoMap", "wxRVListener", "Lcom/tencent/mm/view/recyclerview/WxRVListener;", "getWxRVListener", "()Lcom/tencent/mm/view/recyclerview/WxRVListener;", "setWxRVListener", "(Lcom/tencent/mm/view/recyclerview/WxRVListener;)V", "_getItemCount", "", "_getItemId", "", "position", "_getItemViewType", "_onBindFooterHolder", "", "holder", "info", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "_onBindHeaderHolder", "_onBindViewHolder", "payloads", "", "", "_onCreateFooterHolder", "parent", "Landroid/view/ViewGroup;", "type", "_onCreateHeaderHolder", "_onCreateViewHolder", "viewType", "getData", "getFooterConvert", "getHeaderConvert", "getItemConvert", "onAttachedToRecyclerView", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onBindFirstBodyViewHolder", "onDetachedFromRecyclerView", "onPause", "onResume", "onViewAttachedToWindow", "wrapViewHolder", "view", "Landroid/view/View;", "libmmui_release"})
 public class WxRecyclerAdapter<D extends a>
   extends d<e>
 {
-  private final SparseArray<b<?>> JCJ;
-  public final LongSparseArray<f> JCK;
-  private boolean JCL;
-  public final LongSparseArray<h> JCM;
-  public final LongSparseArray<h> JCN;
-  final LongSparseArray<h> JCO;
-  public i JCP;
-  private RecyclerView.m JCQ;
-  private RecyclerView.c JCR;
-  private final boolean JCS;
+  private final SparseArray<b<?>> LvP;
+  public final LongSparseArray<f> LvQ;
+  private boolean LvR;
+  public final LongSparseArray<h> LvS;
+  public final LongSparseArray<h> LvT;
+  final LongSparseArray<h> LvU;
+  public i LvV;
+  private RecyclerView.m LvW;
+  private RecyclerView.c LvX;
+  private final boolean LvY;
   public final ArrayList<D> data;
-  private final c rlE;
+  private final c sam;
   
   public WxRecyclerAdapter(c paramc, ArrayList<D> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(197368);
-    this.rlE = paramc;
+    AppMethodBeat.i(186701);
+    this.sam = paramc;
     this.data = paramArrayList;
-    this.JCS = paramBoolean;
-    this.JCJ = new SparseArray();
-    this.JCK = new LongSparseArray();
-    this.JCL = true;
-    this.JCM = new LongSparseArray();
-    this.JCN = new LongSparseArray();
-    this.JCO = new LongSparseArray();
-    AppMethodBeat.o(197368);
+    this.LvY = paramBoolean;
+    this.LvP = new SparseArray();
+    this.LvQ = new LongSparseArray();
+    this.LvR = true;
+    this.LvS = new LongSparseArray();
+    this.LvT = new LongSparseArray();
+    this.LvU = new LongSparseArray();
+    AppMethodBeat.o(186701);
   }
   
-  private final b<D> Ac(int paramInt)
+  private final b<D> AL(int paramInt)
   {
     AppMethodBeat.i(164732);
-    b localb = (b)this.JCJ.get(paramInt);
+    b localb = (b)this.LvP.get(paramInt);
     Object localObject = localb;
     if (localb == null)
     {
-      localb = this.rlE.Ac(paramInt);
+      localb = this.sam.AL(paramInt);
       if (localb == null)
       {
         localObject = new v("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.ItemConvert<D>");
         AppMethodBeat.o(164732);
         throw ((Throwable)localObject);
       }
-      this.JCJ.put(paramInt, localb);
+      this.LvP.put(paramInt, localb);
       localObject = localb;
-      if (!localb.JBV)
+      if (!localb.Lvc)
       {
         localb.a(getRecyclerView(), this);
         localObject = localb;
@@ -89,17 +89,17 @@ public class WxRecyclerAdapter<D extends a>
     return localObject;
   }
   
-  private final b<d.b> adK(int paramInt)
+  private final b<d.b> agk(int paramInt)
   {
     AppMethodBeat.i(164733);
-    b localb = (b)this.JCJ.get(paramInt);
+    b localb = (b)this.LvP.get(paramInt);
     Object localObject = localb;
     if (localb == null)
     {
-      localb = this.rlE.Ac(paramInt);
-      this.JCJ.put(paramInt, localb);
+      localb = this.sam.AL(paramInt);
+      this.LvP.put(paramInt, localb);
       localObject = localb;
-      if (!localb.JBV)
+      if (!localb.Lvc)
       {
         localb.a(getRecyclerView(), this);
         localObject = localb;
@@ -115,23 +115,23 @@ public class WxRecyclerAdapter<D extends a>
     return localObject;
   }
   
-  private final b<d.b> adL(int paramInt)
+  private final b<d.b> agl(int paramInt)
   {
     AppMethodBeat.i(164734);
-    b localb = (b)this.JCJ.get(paramInt);
+    b localb = (b)this.LvP.get(paramInt);
     Object localObject = localb;
     if (localb == null)
     {
-      localb = this.rlE.Ac(paramInt);
+      localb = this.sam.AL(paramInt);
       if (localb == null)
       {
         localObject = new v("null cannot be cast to non-null type com.tencent.mm.view.recyclerview.ItemConvert<com.tencent.mm.view.recyclerview.RecyclerViewAdapterEx.FixedViewInfo>");
         AppMethodBeat.o(164734);
         throw ((Throwable)localObject);
       }
-      this.JCJ.put(paramInt, localb);
+      this.LvP.put(paramInt, localb);
       localObject = localb;
-      if (!localb.JBV)
+      if (!localb.Lvc)
       {
         localb.a(getRecyclerView(), this);
         localObject = localb;
@@ -147,73 +147,73 @@ public class WxRecyclerAdapter<D extends a>
     return localObject;
   }
   
-  public final int adF(int paramInt)
-  {
-    AppMethodBeat.i(164721);
-    paramInt = ((a)this.data.get(paramInt)).bTF();
-    AppMethodBeat.o(164721);
-    return paramInt;
-  }
-  
-  public final long adG(int paramInt)
-  {
-    AppMethodBeat.i(164722);
-    long l = ((a)this.data.get(paramInt)).lx();
-    AppMethodBeat.o(164722);
-    return l;
-  }
-  
-  public void b(e parame, int paramInt)
+  public void a(e parame, int paramInt)
   {
     AppMethodBeat.i(182559);
-    k.h(parame, "holder");
-    int i = getItemViewType(this.JCb.size() + paramInt);
+    p.h(parame, "holder");
+    int i = getItemViewType(this.Lvi.size() + paramInt);
     Object localObject = this.data.get(paramInt);
-    k.g(localObject, "data[position]");
+    p.g(localObject, "data[position]");
     localObject = (a)localObject;
-    parame.ej(localObject);
+    parame.em(localObject);
     parame.setRecyclerView(getRecyclerView());
     long l = SystemClock.uptimeMillis();
-    Ac(i).a(parame, (a)localObject, paramInt, i, false, null);
+    AL(i).a(parame, (a)localObject, paramInt, i, false, null);
     l = SystemClock.uptimeMillis() - l;
     if (l > 17L) {
-      ac.i("RecyclerViewAdapterEx", "holder.setAssociatedObject pos:" + paramInt + ", item:" + localObject.hashCode() + " cost=" + l);
+      ad.i("RecyclerViewAdapterEx", "holder.setAssociatedObject pos:" + paramInt + ", item:" + localObject.hashCode() + " cost=" + l);
     }
-    if (this.JCL)
+    if (this.LvR)
     {
-      this.JCL = false;
+      this.LvR = false;
       getRecyclerView().post((Runnable)new a(this));
     }
     AppMethodBeat.o(182559);
   }
   
+  public final int agf(int paramInt)
+  {
+    AppMethodBeat.i(164721);
+    paramInt = ((a)this.data.get(paramInt)).bYk();
+    AppMethodBeat.o(164721);
+    return paramInt;
+  }
+  
+  public final long agg(int paramInt)
+  {
+    AppMethodBeat.i(164722);
+    long l = ((a)this.data.get(paramInt)).lP();
+    AppMethodBeat.o(164722);
+    return l;
+  }
+  
   public final void c(final RecyclerView paramRecyclerView)
   {
     AppMethodBeat.i(182557);
-    k.h(paramRecyclerView, "recyclerView");
+    p.h(paramRecyclerView, "recyclerView");
     super.c(paramRecyclerView);
-    int j = this.JCJ.size();
+    int j = this.LvP.size();
     int i = 0;
     Object localObject;
     while (i < j)
     {
-      int k = this.JCJ.keyAt(i);
-      localObject = this.JCJ.get(k);
-      k.g(localObject, "convertTypeMap.get(key)");
+      int k = this.LvP.keyAt(i);
+      localObject = this.LvP.get(k);
+      p.g(localObject, "convertTypeMap.get(key)");
       localObject = (b)localObject;
-      if (!((b)localObject).JBV) {
+      if (!((b)localObject).Lvc) {
         ((b)localObject).a(paramRecyclerView, this);
       }
       i += 1;
     }
-    if (this.JCS)
+    if (this.LvY)
     {
       localObject = new b(this, paramRecyclerView);
       paramRecyclerView.a((RecyclerView.m)localObject);
-      this.JCQ = ((RecyclerView.m)localObject);
+      this.LvW = ((RecyclerView.m)localObject);
       paramRecyclerView = new c(this, paramRecyclerView);
       a((RecyclerView.c)paramRecyclerView);
-      this.JCR = ((RecyclerView.c)paramRecyclerView);
+      this.LvX = ((RecyclerView.c)paramRecyclerView);
     }
     AppMethodBeat.o(182557);
   }
@@ -221,22 +221,22 @@ public class WxRecyclerAdapter<D extends a>
   public final void d(RecyclerView paramRecyclerView)
   {
     AppMethodBeat.i(182558);
-    k.h(paramRecyclerView, "recyclerView");
+    p.h(paramRecyclerView, "recyclerView");
     super.d(paramRecyclerView);
-    int j = this.JCJ.size();
+    int j = this.LvP.size();
     int i = 0;
     while (i < j)
     {
-      int k = this.JCJ.keyAt(i);
-      Object localObject = this.JCJ.get(k);
-      k.g(localObject, "convertTypeMap.get(key)");
+      int k = this.LvP.keyAt(i);
+      Object localObject = this.LvP.get(k);
+      p.g(localObject, "convertTypeMap.get(key)");
       localObject = (b)localObject;
-      if (((b)localObject).JBV) {
+      if (((b)localObject).Lvc) {
         ((b)localObject).d(paramRecyclerView);
       }
       i += 1;
     }
-    paramRecyclerView = this.JCR;
+    paramRecyclerView = this.LvX;
     if (paramRecyclerView != null)
     {
       b(paramRecyclerView);
@@ -246,55 +246,55 @@ public class WxRecyclerAdapter<D extends a>
     AppMethodBeat.o(182558);
   }
   
-  public void e(final e parame)
+  public void f(final e parame)
   {
-    AppMethodBeat.i(197363);
-    k.h(parame, "holder");
+    AppMethodBeat.i(186696);
+    p.h(parame, "holder");
     super.k((RecyclerView.w)parame);
-    Object localObject1 = parame.asD;
-    k.g(localObject1, "holder.itemView");
+    Object localObject1 = parame.auu;
+    p.g(localObject1, "holder.itemView");
     localObject1 = ((View)localObject1).getLayoutParams();
     if (localObject1 != null)
     {
-      final a locala = (a)parame.fzs();
+      final a locala = (a)parame.fQC();
       if (locala != null)
       {
         if ((localObject1 instanceof StaggeredGridLayoutManager.LayoutParams))
         {
-          i = ((StaggeredGridLayoutManager.LayoutParams)localObject1).mp();
-          localObject2 = parame.asD;
-          k.g(localObject2, "holder.itemView");
+          i = ((StaggeredGridLayoutManager.LayoutParams)localObject1).mH();
+          localObject2 = parame.auu;
+          p.g(localObject2, "holder.itemView");
           int j = ((View)localObject2).getMeasuredWidth();
-          localObject2 = parame.asD;
-          k.g(localObject2, "holder.itemView");
+          localObject2 = parame.auu;
+          p.g(localObject2, "holder.itemView");
           localObject2 = new f(i, j, ((View)localObject2).getMeasuredHeight());
           if ((((f)localObject2).width == 0) || (((f)localObject2).height == 0)) {
-            parame.asD.post((Runnable)new f((f)localObject2, locala, (ViewGroup.LayoutParams)localObject1, this, parame));
+            parame.auu.post((Runnable)new f((f)localObject2, locala, (ViewGroup.LayoutParams)localObject1, this, parame));
           }
-          this.JCK.put(locala.lx(), localObject2);
-          AppMethodBeat.o(197363);
+          this.LvQ.put(locala.lP(), localObject2);
+          AppMethodBeat.o(186696);
           return;
         }
-        Object localObject2 = parame.asD;
-        k.g(localObject2, "holder.itemView");
+        Object localObject2 = parame.auu;
+        p.g(localObject2, "holder.itemView");
         int i = ((View)localObject2).getMeasuredWidth();
-        localObject2 = parame.asD;
-        k.g(localObject2, "holder.itemView");
+        localObject2 = parame.auu;
+        p.g(localObject2, "holder.itemView");
         localObject2 = new f(0, i, ((View)localObject2).getMeasuredHeight());
         if ((((f)localObject2).width == 0) || (((f)localObject2).height == 0)) {
-          parame.asD.post((Runnable)new g((f)localObject2, locala, (ViewGroup.LayoutParams)localObject1, this, parame));
+          parame.auu.post((Runnable)new g((f)localObject2, locala, (ViewGroup.LayoutParams)localObject1, this, parame));
         }
-        this.JCK.put(locala.lx(), localObject2);
-        AppMethodBeat.o(197363);
+        this.LvQ.put(locala.lP(), localObject2);
+        AppMethodBeat.o(186696);
         return;
       }
-      AppMethodBeat.o(197363);
+      AppMethodBeat.o(186696);
       return;
     }
-    AppMethodBeat.o(197363);
+    AppMethodBeat.o(186696);
   }
   
-  public final int fzq()
+  public final int fQA()
   {
     AppMethodBeat.i(164723);
     int i = this.data.size();
@@ -304,33 +304,33 @@ public class WxRecyclerAdapter<D extends a>
   
   public final void onPause()
   {
-    AppMethodBeat.i(197367);
+    AppMethodBeat.i(186700);
     getRecyclerView().post((Runnable)new d(this));
-    AppMethodBeat.o(197367);
+    AppMethodBeat.o(186700);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(197366);
+    AppMethodBeat.i(186699);
     getRecyclerView().post((Runnable)new e(this));
-    AppMethodBeat.o(197366);
+    AppMethodBeat.o(186699);
   }
   
   public void t(RecyclerView paramRecyclerView)
   {
-    AppMethodBeat.i(197365);
-    k.h(paramRecyclerView, "recyclerView");
-    RecyclerView.m localm = this.JCQ;
+    AppMethodBeat.i(186698);
+    p.h(paramRecyclerView, "recyclerView");
+    RecyclerView.m localm = this.LvW;
     if (localm != null)
     {
       localm.b(paramRecyclerView, 5);
-      AppMethodBeat.o(197365);
+      AppMethodBeat.o(186698);
       return;
     }
-    AppMethodBeat.o(197365);
+    AppMethodBeat.o(186698);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
   static final class a
     implements Runnable
   {
@@ -338,66 +338,66 @@ public class WxRecyclerAdapter<D extends a>
     
     public final void run()
     {
-      AppMethodBeat.i(197346);
-      this.JCT.t(this.JCT.getRecyclerView());
-      AppMethodBeat.o(197346);
+      AppMethodBeat.i(186679);
+      this.LvZ.t(this.LvZ.getRecyclerView());
+      AppMethodBeat.o(186679);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "currentState", "", "getCurrentState", "()I", "setCurrentState", "(I)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastState", "getLastState", "setLastState", "scaledTouchSlop", "getScaledTouchSlop", "sumOffset", "getSumOffset", "setSumOffset", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "onScrolled", "dx", "dy", "libmmui_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "currentState", "", "getCurrentState", "()I", "setCurrentState", "(I)V", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastState", "getLastState", "setLastState", "scaledTouchSlop", "getScaledTouchSlop", "sumOffset", "getSumOffset", "setSumOffset", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "onScrolled", "dx", "dy", "libmmui_release"})
   public static final class b
     extends RecyclerView.m
   {
-    private int JCU;
+    private int Lwa;
     private int currentState;
-    int nAG;
-    int nAH;
-    private final int rdq;
-    private int rdt;
+    int obN;
+    int obO;
+    private final int rQM;
+    private int rQP;
     
     b(RecyclerView paramRecyclerView)
     {
-      AppMethodBeat.i(197351);
-      this.nAG = -1;
-      this.nAH = -1;
+      AppMethodBeat.i(186684);
+      this.obN = -1;
+      this.obO = -1;
       paramRecyclerView = ViewConfiguration.get(localObject.getContext());
-      k.g(paramRecyclerView, "ViewConfiguration.get(recyclerView.context)");
-      this.rdq = paramRecyclerView.getScaledTouchSlop();
-      AppMethodBeat.o(197351);
+      p.g(paramRecyclerView, "ViewConfiguration.get(recyclerView.context)");
+      this.rQM = paramRecyclerView.getScaledTouchSlop();
+      AppMethodBeat.o(186684);
     }
     
     public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(197350);
+      AppMethodBeat.i(186683);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bb(paramRecyclerView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).lS(paramInt1);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).lS(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aeE());
-      k.h(paramRecyclerView, "recyclerView");
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramRecyclerView);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramInt1);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).mr(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+      p.h(paramRecyclerView, "recyclerView");
       super.a(paramRecyclerView, paramInt1, paramInt2);
       if (this.currentState == 2)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(197350);
+        AppMethodBeat.o(186683);
         return;
       }
       localObject = paramRecyclerView.getLayoutManager();
       if (localObject == null) {
-        k.fOy();
+        p.gfZ();
       }
-      k.g(localObject, "recyclerView.layoutManager!!");
-      if (((RecyclerView.i)localObject).jM()) {}
+      p.g(localObject, "recyclerView.layoutManager!!");
+      if (((RecyclerView.i)localObject).kc()) {}
       for (;;)
       {
-        this.JCU += paramInt1;
-        if ((Math.abs(this.JCU) > this.rdq * 5) || ((this.rdt == 2) && (this.currentState == 1)))
+        this.Lwa += paramInt1;
+        if ((Math.abs(this.Lwa) > this.rQM * 5) || ((this.rQP == 2) && (this.currentState == 1)))
         {
           b(paramRecyclerView, 3);
-          this.JCU = 0;
+          this.Lwa = 0;
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(197350);
+        AppMethodBeat.o(186683);
         return;
         paramInt1 = paramInt2;
       }
@@ -405,18 +405,18 @@ public class WxRecyclerAdapter<D extends a>
     
     public final void b(final RecyclerView paramRecyclerView, final int paramInt)
     {
-      AppMethodBeat.i(197349);
+      AppMethodBeat.i(186682);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bb(paramRecyclerView);
-      localb.lS(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.aeE());
-      k.h(paramRecyclerView, "recyclerView");
+      localb.bd(paramRecyclerView);
+      localb.mr(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahq());
+      p.h(paramRecyclerView, "recyclerView");
       paramRecyclerView.post((Runnable)new a(this, paramInt, paramRecyclerView));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(197349);
+      AppMethodBeat.o(186682);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
     static final class a
       implements Runnable
     {
@@ -427,28 +427,28 @@ public class WxRecyclerAdapter<D extends a>
         Object localObject5 = null;
         Object localObject6 = null;
         int k = 0;
-        AppMethodBeat.i(197348);
-        final v.f localf = new v.f();
-        localf.KUQ = new g(paramInt);
-        ((g)localf.KUQ).nAG = this.JCV.nAG;
-        ((g)localf.KUQ).nAH = this.JCV.nAH;
+        AppMethodBeat.i(186681);
+        final y.f localf = new y.f();
+        localf.MLV = new g(paramInt);
+        ((g)localf.MLV).obN = this.Lwb.obN;
+        ((g)localf.MLV).obO = this.Lwb.obO;
         Object localObject4 = paramRecyclerView.getLayoutManager();
         Object localObject1;
         label187:
         int j;
         if ((localObject4 instanceof LinearLayoutManager))
         {
-          ((g)localf.KUQ).rdH = Math.max(0, ((LinearLayoutManager)localObject4).jW());
-          ((g)localf.KUQ).rdJ = Math.max(0, ((LinearLayoutManager)localObject4).jY());
-          localObject5 = paramRecyclerView.ch(((g)localf.KUQ).rdH);
+          ((g)localf.MLV).rRd = Math.max(0, ((LinearLayoutManager)localObject4).km());
+          ((g)localf.MLV).rRf = Math.max(0, ((LinearLayoutManager)localObject4).ko());
+          localObject5 = paramRecyclerView.ch(((g)localf.MLV).rRd);
           if (localObject5 != null)
           {
-            localObject1 = Integer.valueOf(((RecyclerView.w)localObject5).lv());
+            localObject1 = Integer.valueOf(((RecyclerView.w)localObject5).lN());
             if (localObject5 == null) {
               break label285;
             }
-            localObject4 = Integer.valueOf(((RecyclerView.w)localObject5).lu());
-            if (!(k.g(localObject1, localObject4) ^ true)) {
+            localObject4 = Integer.valueOf(((RecyclerView.w)localObject5).lM());
+            if (!(p.i(localObject1, localObject4) ^ true)) {
               break label558;
             }
             localObject4 = new StringBuilder("[onScrollStateChanged] invalid. adapterPosition=");
@@ -458,15 +458,15 @@ public class WxRecyclerAdapter<D extends a>
           }
           label285:
           label291:
-          for (localObject1 = Integer.valueOf(((RecyclerView.w)localObject5).lv());; localObject1 = null)
+          for (localObject1 = Integer.valueOf(((RecyclerView.w)localObject5).lN());; localObject1 = null)
           {
             localObject4 = ((StringBuilder)localObject4).append(localObject1).append(", layoutPosition=");
             localObject1 = localObject6;
             if (localObject5 != null) {
-              localObject1 = Integer.valueOf(((RecyclerView.w)localObject5).lu());
+              localObject1 = Integer.valueOf(((RecyclerView.w)localObject5).lM());
             }
-            ac.w("RecyclerViewAdapterEx", localObject1);
-            AppMethodBeat.o(197348);
+            ad.w("RecyclerViewAdapterEx", localObject1);
+            AppMethodBeat.o(186681);
             return;
             localObject1 = null;
             break;
@@ -480,8 +480,8 @@ public class WxRecyclerAdapter<D extends a>
             break label1748;
           }
           localObject1 = ((StaggeredGridLayoutManager)localObject4).n(null);
-          localObject4 = ((StaggeredGridLayoutManager)localObject4).mi();
-          localObject6 = (g)localf.KUQ;
+          localObject4 = ((StaggeredGridLayoutManager)localObject4).mA();
+          localObject6 = (g)localf.MLV;
           if (localObject1 != null)
           {
             i = localObject1[0];
@@ -490,20 +490,20 @@ public class WxRecyclerAdapter<D extends a>
             }
             j = localObject1[1];
             label356:
-            ((g)localObject6).rdH = Math.min(i, j);
-            ((g)localf.KUQ).rdJ = Math.max(localObject4[0], localObject4[1]);
-            localObject6 = paramRecyclerView.ch(((g)localf.KUQ).rdH);
+            ((g)localObject6).rRd = Math.min(i, j);
+            ((g)localf.MLV).rRf = Math.max(localObject4[0], localObject4[1]);
+            localObject6 = paramRecyclerView.ch(((g)localf.MLV).rRd);
             if (localObject6 == null) {
               break label540;
             }
-            localObject1 = Integer.valueOf(((RecyclerView.w)localObject6).lv());
+            localObject1 = Integer.valueOf(((RecyclerView.w)localObject6).lN());
             label423:
             if (localObject6 == null) {
               break label546;
             }
-            localObject4 = Integer.valueOf(((RecyclerView.w)localObject6).lu());
+            localObject4 = Integer.valueOf(((RecyclerView.w)localObject6).lM());
             label438:
-            if (!(k.g(localObject1, localObject4) ^ true)) {
+            if (!(p.i(localObject1, localObject4) ^ true)) {
               break label558;
             }
             localObject4 = new StringBuilder("[onScrollStateChanged] invalid. adapterPosition=");
@@ -515,15 +515,15 @@ public class WxRecyclerAdapter<D extends a>
           label540:
           label546:
           label552:
-          for (localObject1 = Integer.valueOf(((RecyclerView.w)localObject6).lv());; localObject1 = null)
+          for (localObject1 = Integer.valueOf(((RecyclerView.w)localObject6).lN());; localObject1 = null)
           {
             localObject4 = ((StringBuilder)localObject4).append(localObject1).append(", layoutPosition=");
             localObject1 = localObject5;
             if (localObject6 != null) {
-              localObject1 = Integer.valueOf(((RecyclerView.w)localObject6).lu());
+              localObject1 = Integer.valueOf(((RecyclerView.w)localObject6).lM());
             }
-            ac.w("RecyclerViewAdapterEx", localObject1);
-            AppMethodBeat.o(197348);
+            ad.w("RecyclerViewAdapterEx", localObject1);
+            AppMethodBeat.o(186681);
             return;
             i = 0;
             break;
@@ -543,58 +543,58 @@ public class WxRecyclerAdapter<D extends a>
         Object localObject2;
         if (i != 0)
         {
-          this.JCV.nAG = ((g)localf.KUQ).rdH;
-          this.JCV.nAH = ((g)localf.KUQ).rdJ;
+          this.Lwb.obN = ((g)localf.MLV).rRd;
+          this.Lwb.obO = ((g)localf.MLV).rRf;
           try
           {
-            i = ((g)localf.KUQ).rdH;
-            j = ((g)localf.KUQ).rdJ;
+            i = ((g)localf.MLV).rRd;
+            j = ((g)localf.MLV).rRf;
             if (i <= j)
             {
-              if ((this.JCV.JCT.getItemCount() <= 0) || ((i < 0) && (i >= this.JCV.JCT.getItemCount()))) {
+              if ((this.Lwb.LvZ.getItemCount() <= 0) || ((i < 0) && (i >= this.Lwb.LvZ.getItemCount()))) {
                 break label1753;
               }
-              m = i - this.JCV.JCT.JCb.size();
+              m = i - this.Lwb.LvZ.Lvi.size();
               if (m < 0) {
-                localObject1 = (a)this.JCV.JCT.adH(i);
+                localObject1 = (a)this.Lwb.LvZ.agh(i);
               }
               for (;;)
               {
                 localObject4 = new h((a)localObject1);
-                ((h)localObject4).rdE = i;
-                ((h)localObject4).rdF = ((f)this.JCV.JCT.JCK.get(((a)localObject1).lx()));
-                ((g)localf.KUQ).JCA.add(localObject4);
+                ((h)localObject4).rRa = i;
+                ((h)localObject4).rRb = ((f)this.Lwb.LvZ.LvQ.get(((a)localObject1).lP()));
+                ((g)localf.MLV).LvG.add(localObject4);
                 break;
-                if (m >= WxRecyclerAdapter.a(this.JCV.JCT).size())
+                if (m >= WxRecyclerAdapter.a(this.Lwb.LvZ).size())
                 {
-                  localObject1 = (a)this.JCV.JCT.adI(m - WxRecyclerAdapter.a(this.JCV.JCT).size());
+                  localObject1 = (a)this.Lwb.LvZ.agi(m - WxRecyclerAdapter.a(this.Lwb.LvZ).size());
                 }
                 else
                 {
-                  localObject1 = WxRecyclerAdapter.a(this.JCV.JCT).get(m);
-                  k.g(localObject1, "data[dataIndex]");
+                  localObject1 = WxRecyclerAdapter.a(this.Lwb.LvZ).get(m);
+                  p.g(localObject1, "data[dataIndex]");
                   localObject1 = (a)localObject1;
                 }
               }
             }
-            if (((g)localf.KUQ).nAG != ((g)localf.KUQ).rdH) {}
+            if (((g)localf.MLV).obN != ((g)localf.MLV).rRd) {}
           }
           catch (Exception localException1)
           {
-            ac.printErrStackTrace("RecyclerViewAdapterEx", (Throwable)localException1, "", new Object[0]);
+            ad.printErrStackTrace("RecyclerViewAdapterEx", (Throwable)localException1, "", new Object[0]);
           }
-          if ((((g)localf.KUQ).nAH == ((g)localf.KUQ).rdJ) || ((((g)localf.KUQ).nAG == -1) && (((g)localf.KUQ).nAH == -1)))
+          if ((((g)localf.MLV).obO == ((g)localf.MLV).rRf) || ((((g)localf.MLV).obN == -1) && (((g)localf.MLV).obO == -1)))
           {
-            ((g)localf.KUQ).JCB.addAll((Collection)((g)localf.KUQ).JCA);
+            ((g)localf.MLV).LvH.addAll((Collection)((g)localf.MLV).LvG);
             label976:
             localObject2 = new LongSparseArray();
-            localObject4 = ((Iterable)((g)localf.KUQ).JCA).iterator();
+            localObject4 = ((Iterable)((g)localf.MLV).LvG).iterator();
             while (((Iterator)localObject4).hasNext())
             {
               localObject5 = (h)((Iterator)localObject4).next();
-              ((LongSparseArray)localObject2).put(((h)localObject5).JCE.lx(), localObject5);
-              if (this.JCV.JCT.JCO.indexOfKey(((h)localObject5).JCE.lx()) < 0) {
-                ((g)localf.KUQ).JCD.add(localObject5);
+              ((LongSparseArray)localObject2).put(((h)localObject5).LvK.lP(), localObject5);
+              if (this.Lwb.LvZ.LvU.indexOfKey(((h)localObject5).LvK.lP()) < 0) {
+                ((g)localf.MLV).LvJ.add(localObject5);
               }
             }
           }
@@ -603,87 +603,87 @@ public class WxRecyclerAdapter<D extends a>
         {
           try
           {
-            i = d.k.h.lb(((g)localf.KUQ).rdH, ((g)localf.KUQ).nAG);
-            j = d.k.h.lb(this.JCV.JCT.getItemCount() - 1, d.k.h.la(((g)localf.KUQ).rdJ, ((g)localf.KUQ).nAH));
+            i = d.k.h.lq(((g)localf.MLV).rRd, ((g)localf.MLV).obN);
+            j = d.k.h.lq(this.Lwb.LvZ.getItemCount() - 1, d.k.h.lp(((g)localf.MLV).rRf, ((g)localf.MLV).obO));
             if (i > j) {
               break label976;
             }
-            if ((this.JCV.JCT.getItemCount() <= 0) || ((i < 0) && (i >= this.JCV.JCT.getItemCount()))) {
+            if ((this.Lwb.LvZ.getItemCount() <= 0) || ((i < 0) && (i >= this.Lwb.LvZ.getItemCount()))) {
               break label1765;
             }
-            m = i - this.JCV.JCT.JCb.size();
+            m = i - this.Lwb.LvZ.Lvi.size();
             if (m < 0)
             {
-              localObject2 = (a)this.JCV.JCT.adH(i);
+              localObject2 = (a)this.Lwb.LvZ.agh(i);
               localObject4 = new h((a)localObject2);
-              ((h)localObject4).rdE = m;
-              ((h)localObject4).rdF = ((f)this.JCV.JCT.JCK.get(((a)localObject2).lx()));
-              ((g)localf.KUQ).JCB.add(localObject4);
+              ((h)localObject4).rRa = m;
+              ((h)localObject4).rRb = ((f)this.Lwb.LvZ.LvQ.get(((a)localObject2).lP()));
+              ((g)localf.MLV).LvH.add(localObject4);
               break label1765;
             }
-            if (m >= WxRecyclerAdapter.a(this.JCV.JCT).size())
+            if (m >= WxRecyclerAdapter.a(this.Lwb.LvZ).size())
             {
-              localObject2 = (a)this.JCV.JCT.adI(m - WxRecyclerAdapter.a(this.JCV.JCT).size());
+              localObject2 = (a)this.Lwb.LvZ.agi(m - WxRecyclerAdapter.a(this.Lwb.LvZ).size());
               continue;
             }
-            localObject2 = WxRecyclerAdapter.a(this.JCV.JCT).get(m);
-            k.g(localObject2, "data[dataIndex]");
+            localObject2 = WxRecyclerAdapter.a(this.Lwb.LvZ).get(m);
+            p.g(localObject2, "data[dataIndex]");
             localObject2 = (a)localObject2;
             continue;
           }
           catch (Exception localException2)
           {
-            ac.printErrStackTrace("RecyclerViewAdapterEx", (Throwable)localException2, "", new Object[0]);
+            ad.printErrStackTrace("RecyclerViewAdapterEx", (Throwable)localException2, "", new Object[0]);
           }
-          j = this.JCV.JCT.JCO.size();
+          j = this.Lwb.LvZ.LvU.size();
           i = 0;
           while (i < j)
           {
-            localObject4 = (h)this.JCV.JCT.JCO.valueAt(i);
-            if (localException2.indexOfKey(((h)localObject4).JCE.lx()) < 0) {
-              ((g)localf.KUQ).JCC.add(localObject4);
+            localObject4 = (h)this.Lwb.LvZ.LvU.valueAt(i);
+            if (localException2.indexOfKey(((h)localObject4).LvK.lP()) < 0) {
+              ((g)localf.MLV).LvI.add(localObject4);
             }
             i += 1;
           }
-          this.JCV.JCT.JCO.clear();
+          this.Lwb.LvZ.LvU.clear();
           j = localException2.size();
           i = k;
           while (i < j)
           {
             localObject4 = (h)localException2.valueAt(i);
-            this.JCV.JCT.JCO.put(((h)localObject4).JCE.lx(), localObject4);
+            this.Lwb.LvZ.LvU.put(((h)localObject4).LvK.lP(), localObject4);
             i += 1;
           }
-          Object localObject3 = ((Iterable)((g)localf.KUQ).JCB).iterator();
+          Object localObject3 = ((Iterable)((g)localf.MLV).LvH).iterator();
           while (((Iterator)localObject3).hasNext())
           {
             localObject4 = (h)((Iterator)localObject3).next();
-            if (this.JCV.JCT.JCN.indexOfKey(((h)localObject4).JCE.lx()) < 0) {
-              this.JCV.JCT.JCN.put(((h)localObject4).JCE.lx(), localObject4);
+            if (this.Lwb.LvZ.LvT.indexOfKey(((h)localObject4).LvK.lP()) < 0) {
+              this.Lwb.LvZ.LvT.put(((h)localObject4).LvK.lP(), localObject4);
             }
-            if (this.JCV.JCT.JCM.indexOfKey(((h)localObject4).JCE.lx()) < 0) {
-              this.JCV.JCT.JCM.put(((h)localObject4).JCE.lx(), localObject4);
+            if (this.Lwb.LvZ.LvS.indexOfKey(((h)localObject4).LvK.lP()) < 0) {
+              this.Lwb.LvZ.LvS.put(((h)localObject4).LvK.lP(), localObject4);
             }
           }
-          localObject3 = com.tencent.e.h.JZN;
+          localObject3 = com.tencent.e.h.LTJ;
           localObject4 = (Runnable)new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(197347);
-              i locali = this.JCX.JCV.JCT.JCP;
+              AppMethodBeat.i(186680);
+              i locali = this.Lwd.Lwb.LvZ.LvV;
               if (locali != null)
               {
-                locali.a(this.JCX.rbu, (g)localf.KUQ);
-                AppMethodBeat.o(197347);
+                locali.a(this.Lwd.rOk, (g)localf.MLV);
+                AppMethodBeat.o(186680);
                 return;
               }
-              AppMethodBeat.o(197347);
+              AppMethodBeat.o(186680);
             }
           };
-          localObject5 = i.JCG;
-          ((com.tencent.e.i)localObject3).f((Runnable)localObject4, i.a.fzt());
-          AppMethodBeat.o(197348);
+          localObject5 = i.LvM;
+          ((com.tencent.e.i)localObject3).f((Runnable)localObject4, i.a.fQD());
+          AppMethodBeat.o(186681);
           return;
           label1748:
           i = 0;
@@ -704,60 +704,60 @@ public class WxRecyclerAdapter<D extends a>
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$3", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "notifyChangeEvent", "", "onChanged", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "libmmui_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onAttachedToRecyclerView$3", "Landroid/support/v7/widget/RecyclerView$AdapterDataObserver;", "notifyChangeEvent", "", "onChanged", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "libmmui_release"})
   public static final class c
     extends RecyclerView.c
   {
     c(RecyclerView paramRecyclerView) {}
     
-    private void fzu()
+    private void fQE()
     {
-      AppMethodBeat.i(197353);
+      AppMethodBeat.i(186686);
       paramRecyclerView.post((Runnable)new a(this));
-      AppMethodBeat.o(197353);
-    }
-    
-    public final void at(int paramInt1, int paramInt2)
-    {
-      AppMethodBeat.i(197356);
-      super.at(paramInt1, paramInt2);
-      fzu();
-      AppMethodBeat.o(197356);
+      AppMethodBeat.o(186686);
     }
     
     public final void au(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(197358);
+      AppMethodBeat.i(186689);
       super.au(paramInt1, paramInt2);
-      fzu();
-      AppMethodBeat.o(197358);
+      fQE();
+      AppMethodBeat.o(186689);
+    }
+    
+    public final void av(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(186691);
+      super.av(paramInt1, paramInt2);
+      fQE();
+      AppMethodBeat.o(186691);
     }
     
     public final void f(int paramInt1, int paramInt2, Object paramObject)
     {
-      AppMethodBeat.i(197355);
+      AppMethodBeat.i(186688);
       super.f(paramInt1, paramInt2, paramObject);
-      fzu();
-      AppMethodBeat.o(197355);
+      fQE();
+      AppMethodBeat.o(186688);
     }
     
     public final void l(int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(197357);
+      AppMethodBeat.i(186690);
       super.l(paramInt1, paramInt2, paramInt3);
-      fzu();
-      AppMethodBeat.o(197357);
+      fQE();
+      AppMethodBeat.o(186690);
     }
     
     public final void onChanged()
     {
-      AppMethodBeat.i(197354);
+      AppMethodBeat.i(186687);
       super.onChanged();
-      fzu();
-      AppMethodBeat.o(197354);
+      fQE();
+      AppMethodBeat.o(186687);
     }
     
-    @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
     static final class a
       implements Runnable
     {
@@ -765,20 +765,20 @@ public class WxRecyclerAdapter<D extends a>
       
       public final void run()
       {
-        AppMethodBeat.i(197352);
-        RecyclerView.m localm = WxRecyclerAdapter.b(this.JCZ.JCT);
+        AppMethodBeat.i(186685);
+        RecyclerView.m localm = WxRecyclerAdapter.b(this.Lwf.LvZ);
         if (localm != null)
         {
-          localm.b(this.JCZ.rbu, 8);
-          AppMethodBeat.o(197352);
+          localm.b(this.Lwf.rOk, 8);
+          AppMethodBeat.o(186685);
           return;
         }
-        AppMethodBeat.o(197352);
+        AppMethodBeat.o(186685);
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
   static final class d
     implements Runnable
   {
@@ -786,15 +786,15 @@ public class WxRecyclerAdapter<D extends a>
     
     public final void run()
     {
-      AppMethodBeat.i(197359);
-      ac.i("RecyclerViewAdapterEx", "onPause visibleExposeMap.size:" + this.JCT.JCO.size() + " sessionExposeMap.size:" + this.JCT.JCN.size());
-      this.JCT.JCO.clear();
-      this.JCT.JCN.clear();
-      AppMethodBeat.o(197359);
+      AppMethodBeat.i(186692);
+      ad.i("RecyclerViewAdapterEx", "onPause visibleExposeMap.size:" + this.LvZ.LvU.size() + " sessionExposeMap.size:" + this.LvZ.LvT.size());
+      this.LvZ.LvU.clear();
+      this.LvZ.LvT.clear();
+      AppMethodBeat.o(186692);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run"})
   static final class e
     implements Runnable
   {
@@ -802,19 +802,19 @@ public class WxRecyclerAdapter<D extends a>
     
     public final void run()
     {
-      AppMethodBeat.i(197360);
-      RecyclerView.m localm = WxRecyclerAdapter.b(this.JCT);
+      AppMethodBeat.i(186693);
+      RecyclerView.m localm = WxRecyclerAdapter.b(this.LvZ);
       if (localm != null)
       {
-        localm.b(this.JCT.getRecyclerView(), 7);
-        AppMethodBeat.o(197360);
+        localm.b(this.LvZ.getRecyclerView(), 7);
+        AppMethodBeat.o(186693);
         return;
       }
-      AppMethodBeat.o(197360);
+      AppMethodBeat.o(186693);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onViewAttachedToWindow$1$1$1$1", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$apply$lambda$1", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$let$lambda$1"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onViewAttachedToWindow$1$1$1$1", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$apply$lambda$1", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$let$lambda$1"})
   static final class f
     implements Runnable
   {
@@ -822,20 +822,20 @@ public class WxRecyclerAdapter<D extends a>
     
     public final void run()
     {
-      AppMethodBeat.i(197361);
-      f localf = this.JDa;
-      View localView = parame.asD;
-      k.g(localView, "holder.itemView");
+      AppMethodBeat.i(186694);
+      f localf = this.Lwg;
+      View localView = parame.auu;
+      p.g(localView, "holder.itemView");
       localf.width = localView.getMeasuredWidth();
-      localf = this.JDa;
-      localView = parame.asD;
-      k.g(localView, "holder.itemView");
+      localf = this.Lwg;
+      localView = parame.auu;
+      p.g(localView, "holder.itemView");
       localf.height = localView.getMeasuredHeight();
-      AppMethodBeat.o(197361);
+      AppMethodBeat.o(186694);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onViewAttachedToWindow$1$1$2$1", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$apply$lambda$2", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$let$lambda$2"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "D", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "run", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$onViewAttachedToWindow$1$1$2$1", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$apply$lambda$2", "com/tencent/mm/view/recyclerview/WxRecyclerAdapter$$special$$inlined$let$lambda$2"})
   static final class g
     implements Runnable
   {
@@ -843,22 +843,22 @@ public class WxRecyclerAdapter<D extends a>
     
     public final void run()
     {
-      AppMethodBeat.i(197362);
-      f localf = this.JDa;
-      View localView = parame.asD;
-      k.g(localView, "holder.itemView");
+      AppMethodBeat.i(186695);
+      f localf = this.Lwg;
+      View localView = parame.auu;
+      p.g(localView, "holder.itemView");
       localf.width = localView.getMeasuredWidth();
-      localf = this.JDa;
-      localView = parame.asD;
-      k.g(localView, "holder.itemView");
+      localf = this.Lwg;
+      localView = parame.auu;
+      p.g(localView, "holder.itemView");
       localf.height = localView.getMeasuredHeight();
-      AppMethodBeat.o(197362);
+      AppMethodBeat.o(186695);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.view.recyclerview.WxRecyclerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bn.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class fw
   extends b
 {
-  public a dfX;
+  public a dro;
+  public b drp;
   
   public fw()
   {
@@ -16,26 +16,29 @@ public final class fw
   
   private fw(byte paramByte)
   {
-    AppMethodBeat.i(116022);
-    this.dfX = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116020);
+    this.dro = new a();
+    this.drp = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116022);
+    AppMethodBeat.o(116020);
   }
   
   public static final class a
   {
-    public boolean dfY;
-    public boolean dfZ;
-    public int dga;
-    public bn.a dgb;
-    public int type;
+    public int op;
     public String username;
+  }
+  
+  public static final class b
+  {
+    public boolean dno = false;
+    public String fileName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fw
  * JD-Core Version:    0.7.0.1
  */

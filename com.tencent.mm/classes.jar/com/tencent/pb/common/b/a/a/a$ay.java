@@ -9,217 +9,217 @@ import java.util.Arrays;
 public final class a$ay
   extends e
 {
-  private static volatile ay[] JOV;
-  public int AUP = 0;
-  public int DKi = 0;
-  public byte[] JMC = g.bGH;
-  public int JMx = 0;
-  public int JOW = 0;
-  public int JOX = 0;
-  public a.at JOY = null;
-  public int JOZ = 0;
-  public String JPa = "";
-  public a.au[] JPb = a.au.fBO();
-  public int JPc = 0;
-  public int[] JPd = g.bGB;
-  public int JPe = 0;
-  public int JPf = 0;
-  public int JPg = 0;
-  public int JPh = 0;
-  public a.aq JPi = null;
-  public String JPj = "";
-  public int JPk = 0;
-  public a.t JPl = null;
-  public int JPm = -1;
-  public String JPn = "";
-  public int JPo = 0;
-  public int JPp = 0;
-  public int JPq = 0;
-  public String dhV = "";
-  public int osF = -1;
+  private static volatile ay[] LIH;
+  public int CuX = 0;
+  public int Fpp = 0;
+  public int LGg = 0;
+  public byte[] LGl = g.bQV;
+  public int LII = 0;
+  public int LIJ = 0;
+  public a.at LIK = null;
+  public int LIL = 0;
+  public String LIM = "";
+  public a.au[] LIN = a.au.fTd();
+  public int LIO = 0;
+  public int[] LIP = g.bQP;
+  public int LIQ = 0;
+  public int LIR = 0;
+  public int LIS = 0;
+  public int LIT = 0;
+  public a.aq LIU = null;
+  public String LIV = "";
+  public int LIW = 0;
+  public a.t LIX = null;
+  public int LIY = -1;
+  public String LIZ = "";
+  public int LJa = 0;
+  public int LJb = 0;
+  public int LJc = 0;
+  public String dtx = "";
+  public int oWb = -1;
   public int platform = 0;
   public int reason = 0;
   public int status = 0;
   
   public a$ay()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static ay[] fBQ()
+  public static ay[] fTf()
   {
-    if (JOV == null) {}
-    synchronized (c.bGz)
+    if (LIH == null) {}
+    synchronized (c.bQN)
     {
-      if (JOV == null) {
-        JOV = new ay[0];
+      if (LIH == null) {
+        LIH = new ay[0];
       }
-      return JOV;
+      return LIH;
     }
   }
   
   public final void a(b paramb)
   {
     int j = 0;
-    if (this.DKi != 0) {
-      paramb.bw(1, this.DKi);
+    if (this.Fpp != 0) {
+      paramb.by(1, this.Fpp);
     }
-    if (this.JOW != 0) {
-      paramb.bw(2, this.JOW);
+    if (this.LII != 0) {
+      paramb.by(2, this.LII);
     }
     if (this.status != 0) {
-      paramb.bw(3, this.status);
+      paramb.by(3, this.status);
     }
     if (this.reason != 0) {
-      paramb.bw(4, this.reason);
+      paramb.by(4, this.reason);
     }
-    if (this.osF != -1) {
-      paramb.bv(5, this.osF);
+    if (this.oWb != -1) {
+      paramb.bx(5, this.oWb);
     }
-    if (this.JOX != 0) {
-      paramb.bw(6, this.JOX);
+    if (this.LIJ != 0) {
+      paramb.by(6, this.LIJ);
     }
-    if (this.JOY != null) {
-      paramb.a(7, this.JOY);
+    if (this.LIK != null) {
+      paramb.a(7, this.LIK);
     }
-    if (this.JOZ != 0) {
-      paramb.bw(8, this.JOZ);
+    if (this.LIL != 0) {
+      paramb.by(8, this.LIL);
     }
-    if (!this.JPa.equals("")) {
-      paramb.d(9, this.JPa);
+    if (!this.LIM.equals("")) {
+      paramb.d(9, this.LIM);
     }
     int i;
-    if ((this.JPb != null) && (this.JPb.length > 0))
+    if ((this.LIN != null) && (this.LIN.length > 0))
     {
       i = 0;
-      while (i < this.JPb.length)
+      while (i < this.LIN.length)
       {
-        a.au localau = this.JPb[i];
+        a.au localau = this.LIN[i];
         if (localau != null) {
           paramb.a(10, localau);
         }
         i += 1;
       }
     }
-    if (this.JPc != 0) {
-      paramb.bw(11, this.JPc);
+    if (this.LIO != 0) {
+      paramb.by(11, this.LIO);
     }
-    if ((this.JPd != null) && (this.JPd.length > 0))
+    if ((this.LIP != null) && (this.LIP.length > 0))
     {
       i = j;
-      while (i < this.JPd.length)
+      while (i < this.LIP.length)
       {
-        paramb.bw(12, this.JPd[i]);
+        paramb.by(12, this.LIP[i]);
         i += 1;
       }
     }
-    if (this.JPe != 0) {
-      paramb.bw(13, this.JPe);
+    if (this.LIQ != 0) {
+      paramb.by(13, this.LIQ);
     }
-    if (this.JPf != 0) {
-      paramb.bw(14, this.JPf);
+    if (this.LIR != 0) {
+      paramb.by(14, this.LIR);
     }
-    if (this.JPg != 0) {
-      paramb.bw(15, this.JPg);
+    if (this.LIS != 0) {
+      paramb.by(15, this.LIS);
     }
-    if (this.JPh != 0) {
-      paramb.bw(16, this.JPh);
+    if (this.LIT != 0) {
+      paramb.by(16, this.LIT);
     }
-    if (this.JPi != null) {
-      paramb.a(17, this.JPi);
+    if (this.LIU != null) {
+      paramb.a(17, this.LIU);
     }
-    if (!this.dhV.equals("")) {
-      paramb.d(100, this.dhV);
+    if (!this.dtx.equals("")) {
+      paramb.d(100, this.dtx);
     }
-    if (!this.JPj.equals("")) {
-      paramb.d(101, this.JPj);
+    if (!this.LIV.equals("")) {
+      paramb.d(101, this.LIV);
     }
-    if (this.JPk != 0) {
-      paramb.bw(102, this.JPk);
+    if (this.LIW != 0) {
+      paramb.by(102, this.LIW);
     }
-    if (!Arrays.equals(this.JMC, g.bGH)) {
-      paramb.b(200, this.JMC);
+    if (!Arrays.equals(this.LGl, g.bQV)) {
+      paramb.b(200, this.LGl);
     }
-    if (this.JPl != null) {
-      paramb.a(201, this.JPl);
+    if (this.LIX != null) {
+      paramb.a(201, this.LIX);
     }
-    if (this.JPm != -1) {
-      paramb.bv(202, this.JPm);
+    if (this.LIY != -1) {
+      paramb.bx(202, this.LIY);
     }
-    if (!this.JPn.equals("")) {
-      paramb.d(203, this.JPn);
+    if (!this.LIZ.equals("")) {
+      paramb.d(203, this.LIZ);
     }
     if (this.platform != 0) {
-      paramb.bv(204, this.platform);
+      paramb.bx(204, this.platform);
     }
-    if (this.JPo != 0) {
-      paramb.bw(205, this.JPo);
+    if (this.LJa != 0) {
+      paramb.by(205, this.LJa);
     }
-    if (this.AUP != 0) {
-      paramb.bw(206, this.AUP);
+    if (this.CuX != 0) {
+      paramb.by(206, this.CuX);
     }
-    if (this.JPp != 0) {
-      paramb.bw(207, this.JPp);
+    if (this.LJb != 0) {
+      paramb.by(207, this.LJb);
     }
-    if (this.JPq != 0) {
-      paramb.bw(208, this.JPq);
+    if (this.LJc != 0) {
+      paramb.by(208, this.LJc);
     }
-    if (this.JMx != 0) {
-      paramb.bw(240, this.JMx);
+    if (this.LGg != 0) {
+      paramb.by(240, this.LGg);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.DKi != 0) {
-      i = j + b.by(1, this.DKi);
+    if (this.Fpp != 0) {
+      i = j + b.bA(1, this.Fpp);
     }
     j = i;
-    if (this.JOW != 0) {
-      j = i + b.by(2, this.JOW);
+    if (this.LII != 0) {
+      j = i + b.bA(2, this.LII);
     }
     i = j;
     if (this.status != 0) {
-      i = j + b.by(3, this.status);
+      i = j + b.bA(3, this.status);
     }
     j = i;
     if (this.reason != 0) {
-      j = i + b.by(4, this.reason);
+      j = i + b.bA(4, this.reason);
     }
     i = j;
-    if (this.osF != -1) {
-      i = j + b.bx(5, this.osF);
+    if (this.oWb != -1) {
+      i = j + b.bz(5, this.oWb);
     }
     j = i;
-    if (this.JOX != 0) {
-      j = i + b.by(6, this.JOX);
+    if (this.LIJ != 0) {
+      j = i + b.bA(6, this.LIJ);
     }
     i = j;
-    if (this.JOY != null) {
-      i = j + b.b(7, this.JOY);
+    if (this.LIK != null) {
+      i = j + b.b(7, this.LIK);
     }
     j = i;
-    if (this.JOZ != 0) {
-      j = i + b.by(8, this.JOZ);
+    if (this.LIL != 0) {
+      j = i + b.bA(8, this.LIL);
     }
     i = j;
-    if (!this.JPa.equals("")) {
-      i = j + b.e(9, this.JPa);
+    if (!this.LIM.equals("")) {
+      i = j + b.e(9, this.LIM);
     }
     j = i;
     int k;
-    if (this.JPb != null)
+    if (this.LIN != null)
     {
       j = i;
-      if (this.JPb.length > 0)
+      if (this.LIN.length > 0)
       {
         j = 0;
-        while (j < this.JPb.length)
+        while (j < this.LIN.length)
         {
-          a.au localau = this.JPb[j];
+          a.au localau = this.LIN[j];
           k = i;
           if (localau != null) {
             k = i + b.b(10, localau);
@@ -231,103 +231,103 @@ public final class a$ay
       }
     }
     i = j;
-    if (this.JPc != 0) {
-      i = j + b.by(11, this.JPc);
+    if (this.LIO != 0) {
+      i = j + b.bA(11, this.LIO);
     }
     j = i;
-    if (this.JPd != null)
+    if (this.LIP != null)
     {
       j = i;
-      if (this.JPd.length > 0)
+      if (this.LIP.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.JPd.length)
+        while (j < this.LIP.length)
         {
-          k += b.fM(this.JPd[j]);
+          k += b.fP(this.LIP[j]);
           j += 1;
         }
-        j = i + k + this.JPd.length * 1;
+        j = i + k + this.LIP.length * 1;
       }
     }
     i = j;
-    if (this.JPe != 0) {
-      i = j + b.by(13, this.JPe);
+    if (this.LIQ != 0) {
+      i = j + b.bA(13, this.LIQ);
     }
     j = i;
-    if (this.JPf != 0) {
-      j = i + b.by(14, this.JPf);
+    if (this.LIR != 0) {
+      j = i + b.bA(14, this.LIR);
     }
     i = j;
-    if (this.JPg != 0) {
-      i = j + b.by(15, this.JPg);
+    if (this.LIS != 0) {
+      i = j + b.bA(15, this.LIS);
     }
     j = i;
-    if (this.JPh != 0) {
-      j = i + b.by(16, this.JPh);
+    if (this.LIT != 0) {
+      j = i + b.bA(16, this.LIT);
     }
     i = j;
-    if (this.JPi != null) {
-      i = j + b.b(17, this.JPi);
+    if (this.LIU != null) {
+      i = j + b.b(17, this.LIU);
     }
     j = i;
-    if (!this.dhV.equals("")) {
-      j = i + b.e(100, this.dhV);
+    if (!this.dtx.equals("")) {
+      j = i + b.e(100, this.dtx);
     }
     i = j;
-    if (!this.JPj.equals("")) {
-      i = j + b.e(101, this.JPj);
+    if (!this.LIV.equals("")) {
+      i = j + b.e(101, this.LIV);
     }
     j = i;
-    if (this.JPk != 0) {
-      j = i + b.by(102, this.JPk);
+    if (this.LIW != 0) {
+      j = i + b.bA(102, this.LIW);
     }
     i = j;
-    if (!Arrays.equals(this.JMC, g.bGH)) {
-      i = j + b.c(200, this.JMC);
+    if (!Arrays.equals(this.LGl, g.bQV)) {
+      i = j + b.c(200, this.LGl);
     }
     j = i;
-    if (this.JPl != null) {
-      j = i + b.b(201, this.JPl);
+    if (this.LIX != null) {
+      j = i + b.b(201, this.LIX);
     }
     i = j;
-    if (this.JPm != -1) {
-      i = j + b.bx(202, this.JPm);
+    if (this.LIY != -1) {
+      i = j + b.bz(202, this.LIY);
     }
     j = i;
-    if (!this.JPn.equals("")) {
-      j = i + b.e(203, this.JPn);
+    if (!this.LIZ.equals("")) {
+      j = i + b.e(203, this.LIZ);
     }
     i = j;
     if (this.platform != 0) {
-      i = j + b.bx(204, this.platform);
+      i = j + b.bz(204, this.platform);
     }
     j = i;
-    if (this.JPo != 0) {
-      j = i + b.by(205, this.JPo);
+    if (this.LJa != 0) {
+      j = i + b.bA(205, this.LJa);
     }
     i = j;
-    if (this.AUP != 0) {
-      i = j + b.by(206, this.AUP);
+    if (this.CuX != 0) {
+      i = j + b.bA(206, this.CuX);
     }
     j = i;
-    if (this.JPp != 0) {
-      j = i + b.by(207, this.JPp);
+    if (this.LJb != 0) {
+      j = i + b.bA(207, this.LJb);
     }
     i = j;
-    if (this.JPq != 0) {
-      i = j + b.by(208, this.JPq);
+    if (this.LJc != 0) {
+      i = j + b.bA(208, this.LJc);
     }
     j = i;
-    if (this.JMx != 0) {
-      j = i + b.by(240, this.JMx);
+    if (this.LGg != 0) {
+      j = i + b.bA(240, this.LGg);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ay
  * JD-Core Version:    0.7.0.1
  */

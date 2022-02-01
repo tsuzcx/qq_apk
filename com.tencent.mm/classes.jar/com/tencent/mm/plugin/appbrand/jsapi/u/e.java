@@ -1,64 +1,54 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.content.ClipboardManager;
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class e
+public class e
   extends a
 {
-  public static final int CTRL_INDEX = 169;
-  public static final String NAME = "getClipboardData";
+  private static final int CTRL_INDEX = 64;
+  private static final String NAME = "reportIDKey";
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137660);
-    paramJSONObject = (ClipboardManager)ai.getContext().getSystemService("clipboard");
+    AppMethodBeat.i(107802);
+    paramJSONObject = paramJSONObject.optJSONArray("dataArray");
     if (paramJSONObject == null)
     {
-      ac.i("MicroMsg.JsApiGetClipboardData", "getSystemService(CLIPBOARD_SERVICE) failed.");
       paramc.h(paramInt, e("fail", null));
-      AppMethodBeat.o(137660);
+      AppMethodBeat.o(107802);
       return;
     }
-    try
+    int i = 0;
+    for (;;)
     {
-      Object localObject2 = paramJSONObject.getPrimaryClip();
-      Object localObject1 = "";
-      paramJSONObject = (JSONObject)localObject1;
-      if (localObject2 != null)
-      {
-        paramJSONObject = (JSONObject)localObject1;
-        if (((ClipData)localObject2).getItemCount() > 0)
+      if (i < paramJSONObject.length()) {
+        try
         {
-          localObject2 = ((ClipData)localObject2).getItemAt(0);
-          paramJSONObject = (JSONObject)localObject1;
-          if (((ClipData.Item)localObject2).getText() != null) {
-            paramJSONObject = ((ClipData.Item)localObject2).getText().toString();
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          int j = localJSONObject.optInt("id");
+          int k = localJSONObject.optInt("key");
+          int m = localJSONObject.optInt("value");
+          g.yhR.idkeyStat(j, k, m, false);
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            ad.e("MicroMsg.JsApiReportIDKey", "parse json failed : %s", new Object[] { localException.getMessage() });
           }
         }
       }
-      localObject1 = new HashMap();
-      ((Map)localObject1).put("data", paramJSONObject);
-      paramc.h(paramInt, k("ok", (Map)localObject1));
-      AppMethodBeat.o(137660);
-      return;
     }
-    catch (Exception paramJSONObject)
-    {
-      ac.e("MicroMsg.JsApiGetClipboardData", "invoke with appId:%s, but get Exception:%s", new Object[] { paramc.getAppId(), paramJSONObject });
-      AppMethodBeat.o(137660);
-    }
+    paramc.h(paramInt, e("ok", null));
+    AppMethodBeat.o(107802);
   }
 }
 

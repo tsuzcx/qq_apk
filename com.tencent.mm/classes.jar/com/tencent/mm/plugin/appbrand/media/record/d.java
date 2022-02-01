@@ -2,47 +2,47 @@ package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class d
 {
-  public static final Long cRA;
-  public static final Long cRC;
-  public static final Long cRD;
-  public static final Long cRE;
-  private static List<String> cRH;
-  public static long cRI;
-  public static final Long lse;
-  public static final Long lsg;
+  public static final Long dcQ;
+  public static final Long dcS;
+  public static final Long dcT;
+  public static final Long dcU;
+  private static List<String> dcX;
+  public static long dcY;
+  public static final Long lRo;
+  public static final Long lRp;
   
   static
   {
     AppMethodBeat.i(146323);
-    cRA = Long.valueOf(259200000L);
-    cRC = Long.valueOf(86400000L);
-    cRD = Long.valueOf(43200000L);
-    cRE = Long.valueOf(240000L);
-    lse = Long.valueOf(60000L);
-    lsg = cRC;
-    cRI = 0L;
-    cRH = new ArrayList(10);
+    dcQ = Long.valueOf(259200000L);
+    dcS = Long.valueOf(86400000L);
+    dcT = Long.valueOf(43200000L);
+    dcU = Long.valueOf(240000L);
+    lRo = Long.valueOf(60000L);
+    lRp = dcS;
+    dcY = 0L;
+    dcX = new ArrayList(10);
     AppMethodBeat.o(146323);
   }
   
-  public static void boH()
+  public static void bsG()
   {
     AppMethodBeat.i(146320);
     long l = System.currentTimeMillis();
-    if (l - cRI <= lsg.longValue())
+    if (l - dcY <= lRp.longValue())
     {
-      ac.e("MicroMsg.Record.AudioRecordCacheClean", "The last clean time is in AUDIO_RECORD_NO_SCAN_TIME time");
+      ad.e("MicroMsg.Record.AudioRecordCacheClean", "The last clean time is in AUDIO_RECORD_NO_SCAN_TIME time");
       AppMethodBeat.o(146320);
       return;
     }
-    ac.i("MicroMsg.Record.AudioRecordCacheClean", "start clean audio record file");
-    cRI = l;
+    ad.i("MicroMsg.Record.AudioRecordCacheClean", "start clean audio record file");
+    dcY = l;
     b.c(new Runnable()
     {
       public final void run()

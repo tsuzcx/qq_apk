@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,7 +58,7 @@ final class v
     {
       try
       {
-        this.mPort = bs.getInt(str, this.mPort);
+        this.mPort = bt.getInt(str, this.mPort);
         paramString = paramString.group(5);
         if ((paramString != null) && (paramString.length() > 0))
         {

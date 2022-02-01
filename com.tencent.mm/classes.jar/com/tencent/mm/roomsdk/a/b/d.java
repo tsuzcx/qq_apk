@@ -1,12 +1,12 @@
 package com.tencent.mm.roomsdk.a.b;
 
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.storage.bu;
 
 public abstract class d
   implements a<d>
 {
-  public bo Gkt;
-  public int fsB;
+  public bu HWf;
+  public int fLb;
 }
 
 

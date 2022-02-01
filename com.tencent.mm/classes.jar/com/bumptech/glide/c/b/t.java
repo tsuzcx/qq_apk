@@ -12,33 +12,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class t<Z>
   implements u<Z>, a.c
 {
-  private static final l.a<t<?>> aGl;
-  private final b aEz;
-  private boolean aGc;
-  private u<Z> aGm;
-  private boolean aGn;
+  private static final l.a<t<?>> aIc;
+  private final b aGq;
+  private boolean aHT;
+  private u<Z> aId;
+  private boolean aIe;
   
   static
   {
     AppMethodBeat.i(77045);
-    aGl = a.a(20, new a.a() {});
+    aIc = a.a(20, new a.a() {});
     AppMethodBeat.o(77045);
   }
   
   t()
   {
     AppMethodBeat.i(77039);
-    this.aEz = new b.a();
+    this.aGq = new b.a();
     AppMethodBeat.o(77039);
   }
   
   static <Z> t<Z> d(u<Z> paramu)
   {
     AppMethodBeat.i(77038);
-    t localt = (t)i.checkNotNull((t)aGl.acquire(), "Argument must not be null");
-    localt.aGc = false;
-    localt.aGn = true;
-    localt.aGm = paramu;
+    t localt = (t)i.checkNotNull((t)aIc.acquire(), "Argument must not be null");
+    localt.aHT = false;
+    localt.aIe = true;
+    localt.aId = paramu;
     AppMethodBeat.o(77038);
     return localt;
   }
@@ -46,7 +46,7 @@ final class t<Z>
   public final Z get()
   {
     AppMethodBeat.i(77042);
-    Object localObject = this.aGm.get();
+    Object localObject = this.aId.get();
     AppMethodBeat.o(77042);
     return localObject;
   }
@@ -54,20 +54,20 @@ final class t<Z>
   public final int getSize()
   {
     AppMethodBeat.i(77043);
-    int i = this.aGm.getSize();
+    int i = this.aId.getSize();
     AppMethodBeat.o(77043);
     return i;
   }
   
-  public final b om()
+  public final b oE()
   {
-    return this.aEz;
+    return this.aGq;
   }
   
-  public final Class<Z> oy()
+  public final Class<Z> oQ()
   {
     AppMethodBeat.i(77041);
-    Class localClass = this.aGm.oy();
+    Class localClass = this.aId.oQ();
     AppMethodBeat.o(77041);
     return localClass;
   }
@@ -77,13 +77,13 @@ final class t<Z>
     try
     {
       AppMethodBeat.i(77044);
-      this.aEz.qe();
-      this.aGc = true;
-      if (!this.aGn)
+      this.aGq.qw();
+      this.aHT = true;
+      if (!this.aIe)
       {
-        this.aGm.recycle();
-        this.aGm = null;
-        aGl.release(this);
+        this.aId.recycle();
+        this.aId = null;
+        aIc.release(this);
       }
       AppMethodBeat.o(77044);
       return;
@@ -96,8 +96,8 @@ final class t<Z>
     try
     {
       AppMethodBeat.i(77040);
-      this.aEz.qe();
-      if (!this.aGn)
+      this.aGq.qw();
+      if (!this.aIe)
       {
         IllegalStateException localIllegalStateException = new IllegalStateException("Already unlocked");
         AppMethodBeat.o(77040);
@@ -105,8 +105,8 @@ final class t<Z>
       }
     }
     finally {}
-    this.aGn = false;
-    if (this.aGc) {
+    this.aIe = false;
+    if (this.aHT) {
       recycle();
     }
     AppMethodBeat.o(77040);

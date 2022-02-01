@@ -9,18 +9,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private final e aAt;
-  private final h aAu;
-  private final b aHT;
+  private final e aCk;
+  private final h aCl;
+  private final b aJK;
   private final Handler handler;
   
   public a(h paramh, e parame, b paramb)
   {
     AppMethodBeat.i(77198);
     this.handler = new Handler(Looper.getMainLooper());
-    this.aAu = paramh;
-    this.aAt = parame;
-    this.aHT = paramb;
+    this.aCl = paramh;
+    this.aCk = parame;
+    this.aJK = paramb;
     AppMethodBeat.o(77198);
   }
 }

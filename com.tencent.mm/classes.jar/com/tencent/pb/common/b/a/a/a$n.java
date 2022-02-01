@@ -7,63 +7,63 @@ import com.google.b.a.e;
 public final class a$n
   extends e
 {
-  private static volatile n[] JMK;
-  public int DKi = 0;
-  public String JML = "";
+  private static volatile n[] LGt;
+  public int Fpp = 0;
+  public String LGu = "";
   public String nickname = "";
   
   public a$n()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
-  public static n[] fBH()
+  public static n[] fSW()
   {
-    if (JMK == null) {}
-    synchronized (c.bGz)
+    if (LGt == null) {}
+    synchronized (c.bQN)
     {
-      if (JMK == null) {
-        JMK = new n[0];
+      if (LGt == null) {
+        LGt = new n[0];
       }
-      return JMK;
+      return LGt;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.DKi != 0) {
-      paramb.bw(1, this.DKi);
+    if (this.Fpp != 0) {
+      paramb.by(1, this.Fpp);
     }
     if (!this.nickname.equals("")) {
       paramb.d(2, this.nickname);
     }
-    if (!this.JML.equals("")) {
-      paramb.d(3, this.JML);
+    if (!this.LGu.equals("")) {
+      paramb.d(3, this.LGu);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.DKi != 0) {
-      i = j + b.by(1, this.DKi);
+    if (this.Fpp != 0) {
+      i = j + b.bA(1, this.Fpp);
     }
     j = i;
     if (!this.nickname.equals("")) {
       j = i + b.e(2, this.nickname);
     }
     i = j;
-    if (!this.JML.equals("")) {
-      i = j + b.e(3, this.JML);
+    if (!this.LGu.equals("")) {
+      i = j + b.e(3, this.LGu);
     }
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.n
  * JD-Core Version:    0.7.0.1
  */

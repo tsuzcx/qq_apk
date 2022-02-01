@@ -1,105 +1,46 @@
 package com.tencent.liteav.basic.util;
 
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.CountDownLatch;
 
 public class e
+  extends Handler
 {
-  private Handler a;
-  private Looper b;
-  private boolean c;
-  private Thread d;
-  
-  public e(String paramString)
+  public e(Looper paramLooper)
   {
-    AppMethodBeat.i(14699);
-    paramString = new HandlerThread(paramString);
-    this.c = true;
-    paramString.start();
-    this.b = paramString.getLooper();
-    this.a = new Handler(this.b);
-    this.d = paramString;
-    AppMethodBeat.o(14699);
+    super(paramLooper);
   }
   
-  public Handler a()
+  public boolean a(final Runnable paramRunnable)
   {
-    return this.a;
-  }
-  
-  public void a(final Runnable paramRunnable)
-  {
-    AppMethodBeat.i(14701);
-    final boolean[] arrayOfBoolean = new boolean[1];
-    if (Thread.currentThread().equals(this.d))
+    AppMethodBeat.i(187253);
+    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    boolean bool = post(new Runnable()
     {
-      paramRunnable.run();
-      AppMethodBeat.o(14701);
-      return;
-    }
-    Handler localHandler = this.a;
-    arrayOfBoolean[0] = false;
+      public void run()
+      {
+        AppMethodBeat.i(14720);
+        paramRunnable.run();
+        localCountDownLatch.countDown();
+        AppMethodBeat.o(14720);
+      }
+    });
+    if (bool) {}
     try
     {
-      this.a.post(new Runnable()
-      {
-        public void run()
-        {
-          AppMethodBeat.i(14720);
-          paramRunnable.run();
-          arrayOfBoolean[0] = true;
-          synchronized (e.a(e.this))
-          {
-            e.a(e.this).notifyAll();
-            AppMethodBeat.o(14720);
-            return;
-          }
-        }
-      });
+      localCountDownLatch.await();
+      AppMethodBeat.o(187253);
+      return bool;
+    }
+    catch (InterruptedException paramRunnable)
+    {
       for (;;)
       {
-        int i = arrayOfBoolean[0];
-        if (i != 0) {
-          break;
-        }
-        try
-        {
-          this.a.wait();
-        }
-        catch (Exception paramRunnable) {}
+        Thread.currentThread().interrupt();
       }
-      return;
     }
-    finally
-    {
-      AppMethodBeat.o(14701);
-    }
-  }
-  
-  public void a(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(14703);
-    this.a.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(14703);
-  }
-  
-  public void b(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(14702);
-    this.a.post(paramRunnable);
-    AppMethodBeat.o(14702);
-  }
-  
-  protected void finalize()
-  {
-    AppMethodBeat.i(14700);
-    if (this.c) {
-      this.a.getLooper().quit();
-    }
-    super.finalize();
-    AppMethodBeat.o(14700);
   }
 }
 

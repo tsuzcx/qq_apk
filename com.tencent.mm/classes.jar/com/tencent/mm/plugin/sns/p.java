@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class p
   implements com.tencent.mm.plugin.sns.b.p
 {
-  private static volatile p xHl = null;
+  private static volatile p yVV = null;
   
-  public static p dFu()
+  public static p dQW()
   {
     AppMethodBeat.i(94916);
-    if (xHl == null) {}
+    if (yVV == null) {}
     try
     {
-      if (xHl == null) {
-        xHl = new p();
+      if (yVV == null) {
+        yVV = new p();
       }
-      p localp = xHl;
+      p localp = yVV;
       AppMethodBeat.o(94916);
       return localp;
     }

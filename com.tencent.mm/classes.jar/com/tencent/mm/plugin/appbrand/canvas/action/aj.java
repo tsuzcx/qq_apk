@@ -33,7 +33,7 @@ public final class aj
       AppMethodBeat.o(144988);
       return false;
     }
-    boolean bool = a(paramCanvas, paramd.scaleX, paramd.jzK, paramd.jzL, paramd.scaleY, paramd.translateX, paramd.translateY);
+    boolean bool = a(paramCanvas, paramd.scaleX, paramd.jTF, paramd.jTG, paramd.scaleY, paramd.translateX, paramd.translateY);
     AppMethodBeat.o(144988);
     return bool;
   }
@@ -59,7 +59,7 @@ public final class aj
     return false;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144985);
     SetTransformActionArg localSetTransformActionArg = new SetTransformActionArg();

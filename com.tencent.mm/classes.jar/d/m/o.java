@@ -7,18 +7,18 @@ import d.l;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/sequences/TakeWhileSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "predicate", "Lkotlin/Function1;", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/sequences/TakeWhileSequence;", "T", "Lkotlin/sequences/Sequence;", "sequence", "predicate", "Lkotlin/Function1;", "", "(Lkotlin/sequences/Sequence;Lkotlin/jvm/functions/Function1;)V", "iterator", "", "kotlin-stdlib"})
 public final class o<T>
   implements h<T>
 {
-  final b<T, Boolean> LPC;
-  final h<T> LPy;
+  final h<T> NGt;
+  final b<T, Boolean> NGx;
   
   public o(h<? extends T> paramh, b<? super T, Boolean> paramb)
   {
     AppMethodBeat.i(129542);
-    this.LPy = paramh;
-    this.LPC = paramb;
+    this.NGt = paramh;
+    this.NGx = paramb;
     AppMethodBeat.o(129542);
   }
   
@@ -30,47 +30,47 @@ public final class o<T>
     return localIterator;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"kotlin/sequences/TakeWhileSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"kotlin/sequences/TakeWhileSequence$iterator$1", "", "iterator", "getIterator", "()Ljava/util/Iterator;", "nextItem", "getNextItem", "()Ljava/lang/Object;", "setNextItem", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "nextState", "", "getNextState", "()I", "setNextState", "(I)V", "calcNext", "", "hasNext", "", "next", "kotlin-stdlib"})
   public static final class a
     implements a, Iterator<T>
   {
-    private final Iterator<T> KTJ;
-    private int LPD;
-    private T LPE;
+    private final Iterator<T> MKI;
+    private int NGy;
+    private T NGz;
     
     a()
     {
       AppMethodBeat.i(129523);
-      this.KTJ = localObject.LPy.iterator();
-      this.LPD = -1;
+      this.MKI = localObject.NGt.iterator();
+      this.NGy = -1;
       AppMethodBeat.o(129523);
     }
     
-    private final void gcZ()
+    private final void guz()
     {
       AppMethodBeat.i(129520);
-      if (this.KTJ.hasNext())
+      if (this.MKI.hasNext())
       {
-        Object localObject = this.KTJ.next();
-        if (((Boolean)this.LPV.LPC.ay(localObject)).booleanValue())
+        Object localObject = this.MKI.next();
+        if (((Boolean)this.NGQ.NGx.invoke(localObject)).booleanValue())
         {
-          this.LPD = 1;
-          this.LPE = localObject;
+          this.NGy = 1;
+          this.NGz = localObject;
           AppMethodBeat.o(129520);
           return;
         }
       }
-      this.LPD = 0;
+      this.NGy = 0;
       AppMethodBeat.o(129520);
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(129522);
-      if (this.LPD == -1) {
-        gcZ();
+      if (this.NGy == -1) {
+        guz();
       }
-      if (this.LPD == 1)
+      if (this.NGy == 1)
       {
         AppMethodBeat.o(129522);
         return true;
@@ -82,18 +82,18 @@ public final class o<T>
     public final T next()
     {
       AppMethodBeat.i(129521);
-      if (this.LPD == -1) {
-        gcZ();
+      if (this.NGy == -1) {
+        guz();
       }
-      if (this.LPD == 0)
+      if (this.NGy == 0)
       {
         localObject = (Throwable)new NoSuchElementException();
         AppMethodBeat.o(129521);
         throw ((Throwable)localObject);
       }
-      Object localObject = this.LPE;
-      this.LPE = null;
-      this.LPD = -1;
+      Object localObject = this.NGz;
+      this.NGz = null;
+      this.NGy = -1;
       AppMethodBeat.o(129521);
       return localObject;
     }

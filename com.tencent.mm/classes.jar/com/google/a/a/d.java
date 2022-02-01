@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.FIELD, java.lang.annotation.ElementType.TYPE})
 public @interface d
 {
-  double xj();
+  double yG();
 }
 
 

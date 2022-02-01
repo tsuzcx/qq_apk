@@ -27,9 +27,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.b;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.c;
 import com.tencent.mm.plugin.downloader.model.f;
@@ -40,13 +38,16 @@ import com.tencent.mm.pluginsdk.model.app.r;
 import com.tencent.mm.pluginsdk.model.s;
 import com.tencent.mm.pluginsdk.model.t;
 import com.tencent.mm.pluginsdk.model.t.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.ListViewInScrollView;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -55,167 +56,181 @@ import java.util.List;
 public class AppChooserUI
   extends MMActivity
 {
-  private Bundle DDA;
-  private s DDB;
-  private ArrayList<String> DDC;
-  private c DDD;
-  private c DDE;
-  private List<c> DDF;
-  private boolean DDG;
-  private String DDH;
-  private int DDI;
-  private int DDJ;
-  private boolean DDK;
-  private boolean DDL;
-  private boolean DDM;
-  private long DDN;
-  private e DDO;
-  private AdapterView.OnItemClickListener DDP;
-  private DialogInterface.OnClickListener DDQ;
-  private DialogInterface.OnClickListener DDR;
-  private View.OnClickListener DDS;
-  private m DDT;
-  private a DDx;
-  private Intent DDy;
-  private String DDz;
-  private DialogInterface.OnDismissListener VX;
-  private PackageManager bMJ;
-  private int cbq;
+  private a FiD;
+  private Intent FiE;
+  private String FiF;
+  private Bundle FiG;
+  private s FiH;
+  private ArrayList<String> FiI;
+  private c FiJ;
+  private c FiK;
+  private List<c> FiL;
+  private boolean FiM;
+  private String FiN;
+  private int FiO;
+  private int FiP;
+  private boolean FiQ;
+  private boolean FiR;
+  private boolean FiS;
+  private long FiT;
+  private e FiU;
+  private AdapterView.OnItemClickListener FiV;
+  private DialogInterface.OnClickListener FiW;
+  private DialogInterface.OnClickListener FiX;
+  private View.OnClickListener FiY;
+  private m FiZ;
+  private DialogInterface.OnDismissListener XM;
+  private PackageManager bWW;
+  private int clH;
   private String mimeType;
   private int scene;
   
   public AppChooserUI()
   {
     AppMethodBeat.i(109532);
-    this.DDy = null;
-    this.DDz = null;
-    this.DDA = null;
-    this.DDB = null;
-    this.DDC = null;
+    this.FiE = null;
+    this.FiF = null;
+    this.FiG = null;
+    this.FiH = null;
+    this.FiI = null;
     this.scene = 0;
-    this.DDD = null;
-    this.DDE = new c();
-    this.DDG = false;
+    this.FiJ = null;
+    this.FiK = new c();
+    this.FiM = false;
     this.mimeType = null;
-    this.DDK = false;
-    this.DDL = false;
-    this.DDM = false;
-    this.DDP = new AdapterView.OnItemClickListener()
+    this.FiQ = false;
+    this.FiR = false;
+    this.FiS = false;
+    this.FiV = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(109507);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/tools/AppChooserUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
         if (AppChooserUI.a(AppChooserUI.this) != null)
         {
-          AppChooserUI.a(AppChooserUI.this, AppChooserUI.a(AppChooserUI.this).Xx(paramAnonymousInt));
+          AppChooserUI.a(AppChooserUI.this, AppChooserUI.a(AppChooserUI.this).Zt(paramAnonymousInt));
           AppChooserUI.a(AppChooserUI.this).notifyDataSetChanged();
-          if ((AppChooserUI.b(AppChooserUI.this) != null) && (AppChooserUI.b(AppChooserUI.this).jaW.isShowing()))
+          if ((AppChooserUI.b(AppChooserUI.this) != null) && (AppChooserUI.b(AppChooserUI.this).juf.isShowing()))
           {
-            if ((AppChooserUI.c(AppChooserUI.this) == null) || (!AppChooserUI.c(AppChooserUI.this).DEb) || ((AppChooserUI.c(AppChooserUI.this).tGm) && ((AppChooserUI.c(AppChooserUI.this).AmJ) || (AppChooserUI.d(AppChooserUI.this) >= AppChooserUI.e(AppChooserUI.this))))) {
-              break label262;
+            if ((AppChooserUI.c(AppChooserUI.this) == null) || (!AppChooserUI.c(AppChooserUI.this).Fjh) || ((AppChooserUI.c(AppChooserUI.this).uIY) && ((AppChooserUI.c(AppChooserUI.this).BEO) || (AppChooserUI.d(AppChooserUI.this) >= AppChooserUI.e(AppChooserUI.this))))) {
+              break label325;
             }
-            AppChooserUI.b(AppChooserUI.this).vv(false);
+            AppChooserUI.b(AppChooserUI.this).wh(false);
           }
         }
         for (;;)
         {
-          if (((AppChooserUI.f(AppChooserUI.this) == 6) || (AppChooserUI.g(AppChooserUI.this) == 2)) && (AppChooserUI.c(AppChooserUI.this) != null) && (AppChooserUI.c(AppChooserUI.this).DDY != null))
+          if (((AppChooserUI.f(AppChooserUI.this) == 6) || (AppChooserUI.g(AppChooserUI.this) == 2)) && (AppChooserUI.c(AppChooserUI.this) != null) && (AppChooserUI.c(AppChooserUI.this).Fje != null))
           {
-            AppChooserUI.a(AppChooserUI.this, AppChooserUI.c(AppChooserUI.this).DDY.activityInfo.packageName, false);
-            com.tencent.mm.plugin.report.service.h.wUl.f(12809, new Object[] { Integer.valueOf(4), AppChooserUI.c(AppChooserUI.this).DDY.activityInfo.packageName });
+            AppChooserUI.a(AppChooserUI.this, AppChooserUI.c(AppChooserUI.this).Fje.activityInfo.packageName, false);
+            com.tencent.mm.plugin.report.service.g.yhR.f(12809, new Object[] { Integer.valueOf(4), AppChooserUI.c(AppChooserUI.this).Fje.activityInfo.packageName });
           }
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/AppChooserUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(109507);
           return;
-          label262:
-          AppChooserUI.b(AppChooserUI.this).vv(true);
+          label325:
+          AppChooserUI.b(AppChooserUI.this).wh(true);
         }
       }
     };
-    this.DDQ = new DialogInterface.OnClickListener()
+    this.FiW = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(109508);
-        if ((AppChooserUI.c(AppChooserUI.this) != null) && (AppChooserUI.c(AppChooserUI.this).DDY != null))
+        if ((AppChooserUI.c(AppChooserUI.this) != null) && (AppChooserUI.c(AppChooserUI.this).Fje != null))
         {
-          g.agR().agA().set(AppChooserUI.a(AppChooserUI.this, 274528), AppChooserUI.c(AppChooserUI.this).DDY.activityInfo.packageName);
-          AppChooserUI.a(AppChooserUI.this, AppChooserUI.c(AppChooserUI.this).DDY.activityInfo.packageName, true);
+          com.tencent.mm.kernel.g.ajC().ajl().set(AppChooserUI.a(AppChooserUI.this, 274528), AppChooserUI.c(AppChooserUI.this).Fje.activityInfo.packageName);
+          AppChooserUI.a(AppChooserUI.this, AppChooserUI.c(AppChooserUI.this).Fje.activityInfo.packageName, true);
         }
         AppMethodBeat.o(109508);
       }
     };
-    this.DDR = new DialogInterface.OnClickListener()
+    this.FiX = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(109509);
-        if ((AppChooserUI.c(AppChooserUI.this) != null) && (AppChooserUI.c(AppChooserUI.this).DDY != null)) {
-          AppChooserUI.a(AppChooserUI.this, AppChooserUI.c(AppChooserUI.this).DDY.activityInfo.packageName, false);
+        if ((AppChooserUI.c(AppChooserUI.this) != null) && (AppChooserUI.c(AppChooserUI.this).Fje != null)) {
+          AppChooserUI.a(AppChooserUI.this, AppChooserUI.c(AppChooserUI.this).Fje.activityInfo.packageName, false);
         }
         AppMethodBeat.o(109509);
       }
     };
-    this.DDS = new View.OnClickListener()
+    this.FiY = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(109510);
-        ac.i("MicroMsg.AppChooserUI", "mDownloadOnClickListener");
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/tools/AppChooserUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        ad.i("MicroMsg.AppChooserUI", "mDownloadOnClickListener");
         if (AppChooserUI.a(AppChooserUI.this) != null)
         {
-          paramAnonymousView = AppChooserUI.a(AppChooserUI.this).DDV;
-          if (paramAnonymousView == AppChooserUI.f.DEg)
-          {
-            if ((AppChooserUI.b(AppChooserUI.this) != null) && (AppChooserUI.b(AppChooserUI.this).jaW.isShowing()))
-            {
-              AppChooserUI.a(AppChooserUI.this).DDV = AppChooserUI.f.DEh;
-              AppChooserUI.a(AppChooserUI.this).notifyDataSetChanged();
-            }
-            paramAnonymousView = new g.a();
-            if (AppChooserUI.f(AppChooserUI.this) == 1)
-            {
-              paramAnonymousView.WD("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10375");
-              paramAnonymousView.WF(AppChooserUI.h(AppChooserUI.this).eKy());
-              paramAnonymousView.AG(1);
-              paramAnonymousView.jF(true);
-              f.bXJ().a(paramAnonymousView.oJg);
-              t.eKN();
-              t.Wv(AppChooserUI.g(AppChooserUI.this));
-              if (AppChooserUI.g(AppChooserUI.this) == 0)
-              {
-                if (!AppChooserUI.i(AppChooserUI.this)) {
-                  break label275;
-                }
-                com.tencent.mm.plugin.report.service.h.wUl.f(11168, new Object[] { Integer.valueOf(4), Integer.valueOf(AppChooserUI.f(AppChooserUI.this)) });
-              }
-            }
-            for (;;)
-            {
-              if (AppChooserUI.g(AppChooserUI.this) == 1) {
-                com.tencent.mm.plugin.report.service.h.wUl.f(12809, new Object[] { Integer.valueOf(5), "" });
-              }
-              AppMethodBeat.o(109510);
-              return;
-              paramAnonymousView.WD(AppChooserUI.h(AppChooserUI.this).aNm());
-              break;
-              label275:
-              com.tencent.mm.plugin.report.service.h.wUl.f(11168, new Object[] { Integer.valueOf(3), Integer.valueOf(AppChooserUI.f(AppChooserUI.this)) });
-            }
+          paramAnonymousView = AppChooserUI.a(AppChooserUI.this).Fjb;
+          if (paramAnonymousView != AppChooserUI.f.Fjm) {
+            break label355;
           }
-          if (paramAnonymousView == AppChooserUI.f.DEi)
+          if ((AppChooserUI.b(AppChooserUI.this) != null) && (AppChooserUI.b(AppChooserUI.this).juf.isShowing()))
+          {
+            AppChooserUI.a(AppChooserUI.this).Fjb = AppChooserUI.f.Fjn;
+            AppChooserUI.a(AppChooserUI.this).notifyDataSetChanged();
+          }
+          paramAnonymousView = new g.a();
+          if (AppChooserUI.f(AppChooserUI.this) != 1) {
+            break label302;
+          }
+          paramAnonymousView.aak("http://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10375");
+          paramAnonymousView.aam(AppChooserUI.h(AppChooserUI.this).eZs());
+          paramAnonymousView.Bp(1);
+          paramAnonymousView.jQ(true);
+          f.ccl().a(paramAnonymousView.pmN);
+          t.eZH();
+          t.Yq(AppChooserUI.g(AppChooserUI.this));
+          if (AppChooserUI.g(AppChooserUI.this) == 0)
+          {
+            if (!AppChooserUI.i(AppChooserUI.this)) {
+              break label319;
+            }
+            com.tencent.mm.plugin.report.service.g.yhR.f(11168, new Object[] { Integer.valueOf(4), Integer.valueOf(AppChooserUI.f(AppChooserUI.this)) });
+          }
+          label248:
+          if (AppChooserUI.g(AppChooserUI.this) == 1) {
+            com.tencent.mm.plugin.report.service.g.yhR.f(12809, new Object[] { Integer.valueOf(5), "" });
+          }
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/tools/AppChooserUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(109510);
+          return;
+          label302:
+          paramAnonymousView.aak(AppChooserUI.h(AppChooserUI.this).aQx());
+          break;
+          label319:
+          com.tencent.mm.plugin.report.service.g.yhR.f(11168, new Object[] { Integer.valueOf(3), Integer.valueOf(AppChooserUI.f(AppChooserUI.this)) });
+          break label248;
+          label355:
+          if (paramAnonymousView == AppChooserUI.f.Fjo)
           {
             paramAnonymousView = AppChooserUI.this;
             long l = AppChooserUI.j(AppChooserUI.this);
-            ac.i("MicroMsg.AppChooserUI", "installRecommendApp");
-            String str = f.bXJ().rT(l).path;
-            ac.d("MicroMsg.AppChooserUI", "filepath:%s", new Object[] { String.valueOf(str) });
-            r.b(paramAnonymousView.getContext(), str, new AppChooserUI.7(paramAnonymousView), false);
+            ad.i("MicroMsg.AppChooserUI", "installRecommendApp");
+            localObject = f.ccl().tS(l).path;
+            ad.d("MicroMsg.AppChooserUI", "filepath:%s", new Object[] { String.valueOf(localObject) });
+            r.b(paramAnonymousView.getContext(), (String)localObject, new AppChooserUI.7(paramAnonymousView), false);
           }
         }
-        AppMethodBeat.o(109510);
       }
     };
-    this.VX = new DialogInterface.OnDismissListener()
+    this.XM = new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -224,86 +239,86 @@ public class AppChooserUI
         AppMethodBeat.o(109511);
       }
     };
-    this.DDT = new m()
+    this.FiZ = new m()
     {
       public final void a(long paramAnonymousLong, int paramAnonymousInt, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(109515);
-        ac.d("MicroMsg.AppChooserUI", "onTaskFailed downloadId:%s", new Object[] { Long.valueOf(paramAnonymousLong) });
-        g.agR().agA().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(0L));
+        ad.d("MicroMsg.AppChooserUI", "onTaskFailed downloadId:%s", new Object[] { Long.valueOf(paramAnonymousLong) });
+        com.tencent.mm.kernel.g.ajC().ajl().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(0L));
         if (AppChooserUI.a(AppChooserUI.this) != null)
         {
-          AppChooserUI.a(AppChooserUI.this).DDV = AppChooserUI.f.DEg;
+          AppChooserUI.a(AppChooserUI.this).Fjb = AppChooserUI.f.Fjm;
           AppChooserUI.a(AppChooserUI.this).notifyDataSetChanged();
         }
         AppMethodBeat.o(109515);
       }
       
+      public final void a(long paramAnonymousLong1, String paramAnonymousString, long paramAnonymousLong2, long paramAnonymousLong3) {}
+      
       public final void b(long paramAnonymousLong, String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(109514);
-        ac.d("MicroMsg.AppChooserUI", "onTaskFinished downloadId: %d, savedPath: %s", new Object[] { Long.valueOf(paramAnonymousLong), paramAnonymousString });
-        if ((!bs.isNullOrNil(paramAnonymousString)) && (com.tencent.mm.vfs.i.eA(paramAnonymousString)))
+        ad.d("MicroMsg.AppChooserUI", "onTaskFinished downloadId: %d, savedPath: %s", new Object[] { Long.valueOf(paramAnonymousLong), paramAnonymousString });
+        if ((!bt.isNullOrNil(paramAnonymousString)) && (i.fv(paramAnonymousString)))
         {
-          g.agR().agA().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(AppChooserUI.j(AppChooserUI.this)));
+          com.tencent.mm.kernel.g.ajC().ajl().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(AppChooserUI.j(AppChooserUI.this)));
           if ((AppChooserUI.a(AppChooserUI.this) != null) && (AppChooserUI.j(AppChooserUI.this) == paramAnonymousLong))
           {
-            AppChooserUI.a(AppChooserUI.this).DDV = AppChooserUI.f.DEi;
+            AppChooserUI.a(AppChooserUI.this).Fjb = AppChooserUI.f.Fjo;
             AppChooserUI.a(AppChooserUI.this).notifyDataSetChanged();
           }
         }
         AppMethodBeat.o(109514);
       }
       
-      public final void j(long paramAnonymousLong, String paramAnonymousString) {}
+      public final void j(long paramAnonymousLong, String paramAnonymousString)
+      {
+        AppMethodBeat.i(109512);
+        AppChooserUI.a(AppChooserUI.this, paramAnonymousLong);
+        com.tencent.mm.kernel.g.ajC().ajl().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(AppChooserUI.j(AppChooserUI.this)));
+        ad.d("MicroMsg.AppChooserUI", "onTaskStarted downloadId:%s savedFilePath:%s", new Object[] { String.valueOf(paramAnonymousLong), paramAnonymousString });
+        AppMethodBeat.o(109512);
+      }
       
-      public final void onTaskPaused(long paramAnonymousLong)
+      public final void k(long paramAnonymousLong, String paramAnonymousString) {}
+      
+      public final void sL(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(109513);
+        ad.d("MicroMsg.AppChooserUI", "onTaskRemove downloadId:%s", new Object[] { Long.valueOf(paramAnonymousLong) });
+        AppMethodBeat.o(109513);
+      }
+      
+      public final void sM(long paramAnonymousLong)
       {
         AppMethodBeat.i(109516);
-        ac.d("MicroMsg.AppChooserUI", "onTaskPaused downloadId:%s", new Object[] { Long.valueOf(paramAnonymousLong) });
-        g.agR().agA().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(0L));
+        ad.d("MicroMsg.AppChooserUI", "onTaskPaused downloadId:%s", new Object[] { Long.valueOf(paramAnonymousLong) });
+        com.tencent.mm.kernel.g.ajC().ajl().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(0L));
         if (AppChooserUI.a(AppChooserUI.this) != null)
         {
-          AppChooserUI.a(AppChooserUI.this).DDV = AppChooserUI.f.DEg;
+          AppChooserUI.a(AppChooserUI.this).Fjb = AppChooserUI.f.Fjm;
           AppChooserUI.a(AppChooserUI.this).notifyDataSetChanged();
         }
         AppMethodBeat.o(109516);
       }
       
-      public final void onTaskRemoved(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(109513);
-        ac.d("MicroMsg.AppChooserUI", "onTaskRemove downloadId:%s", new Object[] { Long.valueOf(paramAnonymousLong) });
-        AppMethodBeat.o(109513);
-      }
-      
-      public final void onTaskStarted(long paramAnonymousLong, String paramAnonymousString)
-      {
-        AppMethodBeat.i(109512);
-        AppChooserUI.a(AppChooserUI.this, paramAnonymousLong);
-        g.agR().agA().set(AppChooserUI.a(AppChooserUI.this, 274560), Long.valueOf(AppChooserUI.j(AppChooserUI.this)));
-        ac.d("MicroMsg.AppChooserUI", "onTaskStarted downloadId:%s savedFilePath:%s", new Object[] { String.valueOf(paramAnonymousLong), paramAnonymousString });
-        AppMethodBeat.o(109512);
-      }
-      
-      public final void qN(long paramAnonymousLong) {}
-      
-      public final void qO(long paramAnonymousLong) {}
+      public final void sN(long paramAnonymousLong) {}
     };
     AppMethodBeat.o(109532);
   }
   
-  private int Xw(int paramInt)
+  private int Zs(int paramInt)
   {
     AppMethodBeat.i(109537);
     if (this.mimeType != null)
     {
-      i = this.cbq;
+      i = this.clH;
       int j = this.mimeType.hashCode();
       AppMethodBeat.o(109537);
       return i + paramInt + j;
     }
-    int i = this.cbq;
+    int i = this.clH;
     AppMethodBeat.o(109537);
     return i + paramInt;
   }
@@ -312,8 +327,8 @@ public class AppChooserUI
   {
     AppMethodBeat.i(109541);
     ArrayList localArrayList = new ArrayList();
-    paramIntent = this.bMJ.queryIntentActivities(paramIntent, 65536);
-    ePV();
+    paramIntent = this.bWW.queryIntentActivities(paramIntent, 65536);
+    feX();
     int j = 0;
     int i = 0;
     int k = j;
@@ -327,20 +342,20 @@ public class AppChooserUI
         k = i;
         if (j < m)
         {
-          ac.i("MicroMsg.AppChooserUI", "cpan name:%s", new Object[] { ((ResolveInfo)paramIntent.get(j)).activityInfo.name });
+          ad.i("MicroMsg.AppChooserUI", "cpan name:%s", new Object[] { ((ResolveInfo)paramIntent.get(j)).activityInfo.name });
           ResolveInfo localResolveInfo = (ResolveInfo)paramIntent.get(j);
           if (localResolveInfo != null)
           {
             String str = localResolveInfo.activityInfo.packageName;
             if ((paramArrayList == null) || (paramArrayList.isEmpty()) || (paramArrayList.contains(str))) {
-              if (this.DDB.aFV(str))
+              if (this.FiH.aLv(str))
               {
-                this.DDE.DDY = localResolveInfo;
-                this.DDE.tGm = true;
-                if (((paramBoolean) || (!this.DDK)) && ((paramBoolean) || (!this.DDE.tGm))) {
+                this.FiK.Fje = localResolveInfo;
+                this.FiK.uIY = true;
+                if (((paramBoolean) || (!this.FiQ)) && ((paramBoolean) || (!this.FiK.uIY))) {
                   break label266;
                 }
-                localArrayList.add(0, this.DDE);
+                localArrayList.add(0, this.FiK);
                 i = 1;
               }
             }
@@ -350,49 +365,49 @@ public class AppChooserUI
           {
             j += 1;
             break;
-            localArrayList.add(new c(localResolveInfo, this.DDB.a(getContext(), localResolveInfo)));
+            localArrayList.add(new c(localResolveInfo, this.FiH.a(getContext(), localResolveInfo)));
           }
         }
       }
     }
     if ((paramBoolean) && (k == 0))
     {
-      if ((this.cbq != 0) || (this.mimeType == null)) {
+      if ((this.clH != 0) || (this.mimeType == null)) {
         break label537;
       }
-      localArrayList.add(0, this.DDE);
-      if (!this.DDL) {
+      localArrayList.add(0, this.FiK);
+      if (!this.FiR) {
         break label504;
       }
-      com.tencent.mm.plugin.report.service.h.wUl.f(11168, new Object[] { Integer.valueOf(2), Integer.valueOf(this.scene) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(11168, new Object[] { Integer.valueOf(2), Integer.valueOf(this.scene) });
     }
     for (;;)
     {
-      if (((this.scene == 4) || (this.scene == 8)) && (this.DDE.DDY == null))
+      if (((this.scene == 4) || (this.scene == 8)) && (this.FiK.Fje == null))
       {
-        this.DDE.DDY = new ResolveInfo();
-        this.DDE.DDY.activityInfo = new ActivityInfo();
-        this.DDE.DDY.activityInfo.packageName = "com.tencent.mtt";
+        this.FiK.Fje = new ResolveInfo();
+        this.FiK.Fje.activityInfo = new ActivityInfo();
+        this.FiK.Fje.activityInfo.packageName = "com.tencent.mtt";
       }
       paramIntent = new HashSet();
       i = localArrayList.size() - 1;
       while (i >= 0)
       {
         paramArrayList = (c)localArrayList.get(i);
-        if (paramArrayList.DDY != null)
+        if (paramArrayList.Fje != null)
         {
-          paramArrayList = paramArrayList.DDY.activityInfo.packageName;
-          if ((!bs.isNullOrNil(paramArrayList)) && (!paramIntent.add(paramArrayList))) {
+          paramArrayList = paramArrayList.Fje.activityInfo.packageName;
+          if ((!bt.isNullOrNil(paramArrayList)) && (!paramIntent.add(paramArrayList))) {
             localArrayList.remove(i);
           }
         }
         i -= 1;
       }
       label504:
-      com.tencent.mm.plugin.report.service.h.wUl.f(11168, new Object[] { Integer.valueOf(1), Integer.valueOf(this.scene) });
+      com.tencent.mm.plugin.report.service.g.yhR.f(11168, new Object[] { Integer.valueOf(1), Integer.valueOf(this.scene) });
       continue;
       label537:
-      localArrayList.add(0, this.DDE);
+      localArrayList.add(0, this.FiK);
     }
     AppMethodBeat.o(109541);
     return localArrayList;
@@ -406,7 +421,7 @@ public class AppChooserUI
       Drawable localDrawable;
       if ((paramResolveInfo.resolvePackageName != null) && (paramResolveInfo.icon != 0))
       {
-        localDrawable = d(this.bMJ.getResourcesForApplication(paramResolveInfo.resolvePackageName), paramResolveInfo.icon);
+        localDrawable = d(this.bWW.getResourcesForApplication(paramResolveInfo.resolvePackageName), paramResolveInfo.icon);
         if (localDrawable != null)
         {
           AppMethodBeat.o(109543);
@@ -416,10 +431,10 @@ public class AppChooserUI
       int i = paramResolveInfo.getIconResource();
       if (i != 0)
       {
-        localDrawable = d(this.bMJ.getResourcesForApplication(paramResolveInfo.activityInfo.packageName), i);
+        localDrawable = d(this.bWW.getResourcesForApplication(paramResolveInfo.activityInfo.packageName), i);
         if (localDrawable != null)
         {
-          ac.i("MicroMsg.AppChooserUI", "loadIconForResolveInfo iconRes %d done", new Object[] { Integer.valueOf(i) });
+          ad.i("MicroMsg.AppChooserUI", "loadIconForResolveInfo iconRes %d done", new Object[] { Integer.valueOf(i) });
           AppMethodBeat.o(109543);
           return localDrawable;
         }
@@ -427,8 +442,8 @@ public class AppChooserUI
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      ac.e("MicroMsg.AppChooserUI", "Couldn't find resources for package", new Object[] { localNameNotFoundException });
-      paramResolveInfo = paramResolveInfo.loadIcon(this.bMJ);
+      ad.e("MicroMsg.AppChooserUI", "Couldn't find resources for package", new Object[] { localNameNotFoundException });
+      paramResolveInfo = paramResolveInfo.loadIcon(this.bWW);
       AppMethodBeat.o(109543);
     }
     return paramResolveInfo;
@@ -439,7 +454,7 @@ public class AppChooserUI
     AppMethodBeat.i(109542);
     try
     {
-      paramResources = b.e(paramResources, paramInt);
+      paramResources = com.tencent.mm.cd.b.e(paramResources, paramInt);
       AppMethodBeat.o(109542);
       return paramResources;
     }
@@ -452,51 +467,51 @@ public class AppChooserUI
     }
   }
   
-  private int ePU()
+  private int feW()
   {
-    return 274496 + this.cbq;
+    return 274496 + this.clH;
   }
   
-  private void ePV()
+  private void feX()
   {
     AppMethodBeat.i(109539);
-    t.a locala = this.DDB.eKz();
-    if (!bs.isNullOrNil(locala.DhC))
+    t.a locala = this.FiH.eZt();
+    if (!bt.isNullOrNil(locala.EMn))
     {
-      this.DDz = locala.DhC;
-      if (locala.DhA > 0) {
-        this.DDE.DEa = getResources().getDrawable(locala.DhA);
+      this.FiF = locala.EMn;
+      if (locala.EMl > 0) {
+        this.FiK.Fjg = getResources().getDrawable(locala.EMl);
       }
-      if (locala.DhD <= 0) {
+      if (locala.EMo <= 0) {
         break label163;
       }
     }
     label163:
-    for (this.DDE.DDZ = getResources().getString(locala.DhD);; this.DDE.DDZ = locala.DhE)
+    for (this.FiK.Fjf = getResources().getString(locala.EMo);; this.FiK.Fjf = locala.EMp)
     {
-      this.DDE.DEb = true;
-      this.DDE.AmJ = this.DDK;
-      if (this.DDK) {
-        this.DDE.tGm = true;
+      this.FiK.Fjh = true;
+      this.FiK.BEO = this.FiQ;
+      if (this.FiQ) {
+        this.FiK.uIY = true;
       }
-      if (this.DDL) {
-        this.DDE.DEc = true;
+      if (this.FiR) {
+        this.FiK.Fji = true;
       }
       AppMethodBeat.o(109539);
       return;
-      if (locala.DhB <= 0) {
+      if (locala.EMm <= 0) {
         break;
       }
-      this.DDz = getResources().getString(locala.DhB);
+      this.FiF = getResources().getString(locala.EMm);
       break;
     }
   }
   
-  private boolean ePW()
+  private boolean feY()
   {
     AppMethodBeat.i(109540);
-    ac.d("MicroMsg.AppChooserUI", "mShouldShowRecommendApp %s | mAppRecommendCount %d | mAppMaxRecommendCount %d | isOverseasUser %s", new Object[] { Boolean.valueOf(this.DDM), Integer.valueOf(this.DDI), Integer.valueOf(this.DDJ), Boolean.valueOf(bs.ja(this)) });
-    if ((this.DDM) && (this.DDI < this.DDJ) && (!bs.ja(this)) && (com.tencent.mm.sdk.platformtools.i.cGY != 1))
+    ad.d("MicroMsg.AppChooserUI", "mShouldShowRecommendApp %s | mAppRecommendCount %d | mAppMaxRecommendCount %d | isOverseasUser %s", new Object[] { Boolean.valueOf(this.FiS), Integer.valueOf(this.FiO), Integer.valueOf(this.FiP), Boolean.valueOf(bt.jk(this)) });
+    if ((this.FiS) && (this.FiO < this.FiP) && (!bt.jk(this)) && (j.cSc != 1))
     {
       AppMethodBeat.o(109540);
       return true;
@@ -511,7 +526,7 @@ public class AppChooserUI
     Intent localIntent = new Intent();
     localIntent.putExtra("selectpkg", paramString);
     localIntent.putExtra("isalways", paramBoolean);
-    localIntent.putExtra("transferback", this.DDA);
+    localIntent.putExtra("transferback", this.FiG);
     setResult(paramInt, localIntent);
     finish();
     AppMethodBeat.o(109538);
@@ -534,50 +549,50 @@ public class AppChooserUI
   {
     AppMethodBeat.i(109533);
     super.onCreate(paramBundle);
-    t.eKN();
-    t.Ws(this.cbq);
-    aj.b(getWindow());
+    t.eZH();
+    t.Yn(this.clH);
+    al.b(getWindow());
     Object localObject = getIntent();
     paramBundle = ((Intent)localObject).getParcelableExtra("targetintent");
     if (!(paramBundle instanceof Intent))
     {
-      ac.w("ChooseActivity", "Target is not an intent: ".concat(String.valueOf(paramBundle)));
+      ad.w("ChooseActivity", "Target is not an intent: ".concat(String.valueOf(paramBundle)));
       m(0, null, false);
       AppMethodBeat.o(109533);
       return;
     }
-    this.DDy = ((Intent)paramBundle);
+    this.FiE = ((Intent)paramBundle);
     paramBundle = ((Intent)localObject).getStringExtra("title");
-    this.cbq = ((Intent)localObject).getIntExtra("type", 0);
-    this.DDG = ((Intent)localObject).getBooleanExtra("openWay", false);
-    this.DDA = ((Intent)localObject).getBundleExtra("transferback");
-    this.DDC = ((Intent)localObject).getStringArrayListExtra("targetwhitelist");
-    this.DDL = ((Intent)localObject).getBooleanExtra("needupate", false);
+    this.clH = ((Intent)localObject).getIntExtra("type", 0);
+    this.FiM = ((Intent)localObject).getBooleanExtra("openWay", false);
+    this.FiG = ((Intent)localObject).getBundleExtra("transferback");
+    this.FiI = ((Intent)localObject).getStringArrayListExtra("targetwhitelist");
+    this.FiR = ((Intent)localObject).getBooleanExtra("needupate", false);
     this.mimeType = ((Intent)localObject).getStringExtra("mimetype");
     this.scene = ((Intent)localObject).getIntExtra("scene", 0);
     boolean bool;
-    if (g.agM())
+    if (com.tencent.mm.kernel.g.ajx())
     {
-      this.DDH = ((String)g.agR().agA().get(Xw(274528), ""));
-      if ((TextUtils.isEmpty(this.DDH)) || (!q.t(getContext(), this.DDH)) || ((this.DDC != null) && (!this.DDC.isEmpty()) && (!this.DDC.contains(this.DDH))) || (this.DDG)) {
+      this.FiN = ((String)com.tencent.mm.kernel.g.ajC().ajl().get(Zs(274528), ""));
+      if ((TextUtils.isEmpty(this.FiN)) || (!q.s(getContext(), this.FiN)) || ((this.FiI != null) && (!this.FiI.isEmpty()) && (!this.FiI.contains(this.FiN))) || (this.FiM)) {
         break label1291;
       }
-      Intent localIntent = new Intent(this.DDy);
-      localIntent.setPackage(this.DDH);
-      if (!bs.ah(this, localIntent)) {
+      Intent localIntent = new Intent(this.FiE);
+      localIntent.setPackage(this.FiN);
+      if (!bt.aj(this, localIntent)) {
         break label424;
       }
       bool = true;
     }
     for (;;)
     {
-      ac.i("MicroMsg.AppChooserUI", "isAlwaysUseOption %b, scene %d, mDefaultAppPackageName %s, mimeType %s, isOpenWay %b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.scene), this.DDH, this.mimeType, Boolean.valueOf(this.DDG) });
+      ad.i("MicroMsg.AppChooserUI", "isAlwaysUseOption %b, scene %d, mDefaultAppPackageName %s, mimeType %s, isOpenWay %b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.scene), this.FiN, this.mimeType, Boolean.valueOf(this.FiM) });
       if ((bool) && (this.scene != 6))
       {
-        m(-1, this.DDH, true);
+        m(-1, this.FiN, true);
         AppMethodBeat.o(109533);
         return;
-        ac.e("MicroMsg.AppChooserUI", "acc not ready");
+        ad.e("MicroMsg.AppChooserUI", "acc not ready");
         m(4097, null, false);
         AppMethodBeat.o(109533);
         return;
@@ -586,56 +601,56 @@ public class AppChooserUI
       }
       else
       {
-        this.bMJ = getPackageManager();
-        this.DDx = new a();
-        t.eKN();
-        this.DDB = t.z(this.cbq, ((Intent)localObject).getBundleExtra("key_recommend_params"));
-        this.DDK = this.DDB.hi(getContext());
-        this.DDI = ((Integer)g.agR().agA().get(ePU(), Integer.valueOf(0))).intValue();
-        t.eKN();
-        this.DDJ = t.Wr(this.cbq);
-        ac.d("MicroMsg.AppChooserUI", "jiaminchen mRecommendAppAvailable is %s, mAppRecommendCount is %d", new Object[] { String.valueOf(this.DDK), Integer.valueOf(this.DDI) });
+        this.bWW = getPackageManager();
+        this.FiD = new a();
+        t.eZH();
+        this.FiH = t.A(this.clH, ((Intent)localObject).getBundleExtra("key_recommend_params"));
+        this.FiQ = this.FiH.hn(getContext());
+        this.FiO = ((Integer)com.tencent.mm.kernel.g.ajC().ajl().get(feW(), Integer.valueOf(0))).intValue();
+        t.eZH();
+        this.FiP = t.Ym(this.clH);
+        ad.d("MicroMsg.AppChooserUI", "jiaminchen mRecommendAppAvailable is %s, mAppRecommendCount is %d", new Object[] { String.valueOf(this.FiQ), Integer.valueOf(this.FiO) });
         int i;
         if (!((Intent)localObject).getBooleanExtra("not_show_recommend_app", false))
         {
           bool = true;
-          this.DDM = bool;
-          if (this.DDI < this.DDJ) {
+          this.FiS = bool;
+          if (this.FiO < this.FiP) {
             break label791;
           }
           i = 1;
           label596:
-          this.DDF = a(this.DDy, ePW(), this.DDC);
-          if ((i == 0) && (!this.DDK)) {
-            g.agR().agA().set(ePU(), Integer.valueOf(this.DDI + 1));
+          this.FiL = a(this.FiE, feY(), this.FiI);
+          if ((i == 0) && (!this.FiQ)) {
+            com.tencent.mm.kernel.g.ajC().ajl().set(feW(), Integer.valueOf(this.FiO + 1));
           }
-          if (!this.DDK) {
+          if (!this.FiQ) {
             break label796;
           }
-          t.eKN();
-          t.Wu(this.cbq);
+          t.eZH();
+          t.Yp(this.clH);
           label667:
-          if (this.DDF == null) {
+          if (this.FiL == null) {
             break label814;
           }
         }
         label791:
         label796:
         label814:
-        for (int j = this.DDF.size();; j = 0)
+        for (int j = this.FiL.size();; j = 0)
         {
-          ac.i("MicroMsg.AppChooserUI", "mResolveListData size %d", new Object[] { Integer.valueOf(j) });
-          if ((this.DDF == null) || (this.DDF.size() != 1) || ((ePW()) && (!this.DDK))) {
+          ad.i("MicroMsg.AppChooserUI", "mResolveListData size %d", new Object[] { Integer.valueOf(j) });
+          if ((this.FiL == null) || (this.FiL.size() != 1) || ((feY()) && (!this.FiQ))) {
             break label851;
           }
-          paramBundle = (c)this.DDF.get(0);
+          paramBundle = (c)this.FiL.get(0);
           if (paramBundle == null) {
             break label835;
           }
-          if (paramBundle.DDY == null) {
+          if (paramBundle.Fje == null) {
             break label819;
           }
-          m(-1, paramBundle.DDY.activityInfo.packageName, false);
+          m(-1, paramBundle.Fje.activityInfo.packageName, false);
           AppMethodBeat.o(109533);
           return;
           bool = false;
@@ -645,8 +660,8 @@ public class AppChooserUI
           if (i != 0) {
             break label667;
           }
-          t.eKN();
-          t.Wt(this.cbq);
+          t.eZH();
+          t.Yo(this.clH);
           break label667;
         }
         label819:
@@ -659,44 +674,44 @@ public class AppChooserUI
         return;
         label851:
         setTitleVisibility(8);
-        if ((this.DDF != null) && (!this.DDF.isEmpty()))
+        if ((this.FiL != null) && (!this.FiL.isEmpty()))
         {
-          this.DDx.oXp = this.DDF;
-          this.DDN = ((Long)g.agR().agA().get(Xw(274560), Long.valueOf(0L))).longValue();
-          localObject = f.bXJ().rT(this.DDN);
-          ac.d("MicroMsg.AppChooserUI", "downloadId:" + this.DDN + ", status:" + ((FileDownloadTaskInfo)localObject).status);
-          if ((3 == ((FileDownloadTaskInfo)localObject).status) && (com.tencent.mm.vfs.i.eA(((FileDownloadTaskInfo)localObject).path)) && (this.DDx != null))
+          this.FiD.pAZ = this.FiL;
+          this.FiT = ((Long)com.tencent.mm.kernel.g.ajC().ajl().get(Zs(274560), Long.valueOf(0L))).longValue();
+          localObject = f.ccl().tS(this.FiT);
+          ad.d("MicroMsg.AppChooserUI", "downloadId:" + this.FiT + ", status:" + ((FileDownloadTaskInfo)localObject).status);
+          if ((3 == ((FileDownloadTaskInfo)localObject).status) && (i.fv(((FileDownloadTaskInfo)localObject).path)) && (this.FiD != null))
           {
-            this.DDx.DDV = f.DEi;
-            this.DDx.notifyDataSetChanged();
+            this.FiD.Fjb = AppChooserUI.f.Fjo;
+            this.FiD.notifyDataSetChanged();
           }
-          this.DDO = new e(getContext());
-          localObject = this.DDO;
+          this.FiU = new e(getContext());
+          localObject = this.FiU;
           if (paramBundle != null) {}
           for (((e)localObject).mTitle = paramBundle.toString();; ((e)localObject).mTitle = null)
           {
-            this.DDO.DEe = this.DDP;
-            this.DDO.DDR = this.DDR;
-            this.DDO.DEf = this.DDQ;
-            this.DDO.oao = this.DDx;
-            this.DDO.VX = this.VX;
-            paramBundle = this.DDO;
-            if (paramBundle.DEe != null) {
-              paramBundle.DEd.setOnItemClickListener(paramBundle.DEe);
+            this.FiU.Fjk = this.FiV;
+            this.FiU.FiX = this.FiX;
+            this.FiU.Fjl = this.FiW;
+            this.FiU.oDI = this.FiD;
+            this.FiU.XM = this.XM;
+            paramBundle = this.FiU;
+            if (paramBundle.Fjk != null) {
+              paramBundle.Fjj.setOnItemClickListener(paramBundle.Fjk);
             }
-            if (paramBundle.oao != null) {
-              paramBundle.DEd.setAdapter(paramBundle.oao);
+            if (paramBundle.oDI != null) {
+              paramBundle.Fjj.setAdapter(paramBundle.oDI);
             }
-            paramBundle.jaW = com.tencent.mm.ui.base.h.a(paramBundle.mContext, true, paramBundle.mTitle, paramBundle.DEd, paramBundle.mContext.getString(2131755922), paramBundle.mContext.getString(2131755921), paramBundle.DDR, paramBundle.DEf, 2131100464);
-            paramBundle.jaW.setOnDismissListener(paramBundle.VX);
-            paramBundle.jaW.show();
-            if ((!this.DDL) && (this.DDK) && (i == 0))
+            paramBundle.juf = h.a(paramBundle.mContext, true, paramBundle.mTitle, paramBundle.Fjj, paramBundle.mContext.getString(2131755922), paramBundle.mContext.getString(2131755921), paramBundle.FiX, paramBundle.Fjl, 2131100464);
+            paramBundle.juf.setOnDismissListener(paramBundle.XM);
+            paramBundle.juf.show();
+            if ((!this.FiR) && (this.FiQ) && (i == 0))
             {
-              this.DDD = this.DDE;
-              this.DDO.vv(true);
+              this.FiJ = this.FiK;
+              this.FiU.wh(true);
             }
-            f.bXJ();
-            c.a(this.DDT);
+            f.ccl();
+            c.a(this.FiZ);
             AppMethodBeat.o(109533);
             return;
           }
@@ -714,10 +729,10 @@ public class AppChooserUI
   {
     AppMethodBeat.i(109535);
     super.onDestroy();
-    f.bXJ();
-    c.b(this.DDT);
-    if (this.DDO != null) {
-      this.DDO.jaW.dismiss();
+    f.ccl();
+    c.b(this.FiZ);
+    if (this.FiU != null) {
+      this.FiU.juf.dismiss();
     }
     AppMethodBeat.o(109535);
   }
@@ -726,23 +741,23 @@ public class AppChooserUI
   {
     AppMethodBeat.i(109534);
     super.onResume();
-    if ((this.DDL) && (this.DDy != null) && (this.DDB.af(this, this.DDy)))
+    if ((this.FiR) && (this.FiE != null) && (this.FiH.ah(this, this.FiE)))
     {
-      ac.i("MicroMsg.AppChooserUI", "user installed lasted recommend app");
-      this.DDL = false;
-      this.DDE.DEc = false;
+      ad.i("MicroMsg.AppChooserUI", "user installed lasted recommend app");
+      this.FiR = false;
+      this.FiK.Fji = false;
     }
-    this.DDK = this.DDB.hi(getContext());
-    this.DDF = a(this.DDy, ePW(), this.DDC);
-    if ((this.DDK) && (this.DDD == null) && (!this.DDG))
+    this.FiQ = this.FiH.hn(getContext());
+    this.FiL = a(this.FiE, feY(), this.FiI);
+    if ((this.FiQ) && (this.FiJ == null) && (!this.FiM))
     {
-      this.DDD = this.DDE;
-      this.DDO.vv(true);
+      this.FiJ = this.FiK;
+      this.FiU.wh(true);
     }
-    if (this.DDx != null)
+    if (this.FiD != null)
     {
-      this.DDx.oXp = this.DDF;
-      this.DDx.notifyDataSetChanged();
+      this.FiD.pAZ = this.FiL;
+      this.FiD.notifyDataSetChanged();
     }
     AppMethodBeat.o(109534);
   }
@@ -756,27 +771,27 @@ public class AppChooserUI
   final class a
     extends BaseAdapter
   {
-    AppChooserUI.f DDV;
-    List<AppChooserUI.c> oXp;
+    AppChooserUI.f Fjb;
+    List<AppChooserUI.c> pAZ;
     
     public a()
     {
       AppMethodBeat.i(109518);
-      this.oXp = new ArrayList();
-      this.DDV = AppChooserUI.f.DEg;
+      this.pAZ = new ArrayList();
+      this.Fjb = AppChooserUI.f.Fjm;
       AppChooserUI.a(AppChooserUI.this, AppChooserUI.this.getPackageManager());
       AppMethodBeat.o(109518);
     }
     
-    public final AppChooserUI.c Xx(int paramInt)
+    public final AppChooserUI.c Zt(int paramInt)
     {
       AppMethodBeat.i(109520);
-      if (this.oXp == null)
+      if (this.pAZ == null)
       {
         AppMethodBeat.o(109520);
         return null;
       }
-      AppChooserUI.c localc = (AppChooserUI.c)this.oXp.get(paramInt);
+      AppChooserUI.c localc = (AppChooserUI.c)this.pAZ.get(paramInt);
       AppMethodBeat.o(109520);
       return localc;
     }
@@ -784,12 +799,12 @@ public class AppChooserUI
     public final int getCount()
     {
       AppMethodBeat.i(109522);
-      if (this.oXp == null)
+      if (this.pAZ == null)
       {
         AppMethodBeat.o(109522);
         return 0;
       }
-      int i = this.oXp.size();
+      int i = this.pAZ.size();
       AppMethodBeat.o(109522);
       return i;
     }
@@ -802,7 +817,7 @@ public class AppChooserUI
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(109521);
-      if (Xx(paramInt).DEb)
+      if (Zt(paramInt).Fjh)
       {
         AppMethodBeat.o(109521);
         return 1;
@@ -815,31 +830,31 @@ public class AppChooserUI
     {
       int i = 0;
       AppMethodBeat.i(109519);
-      AppChooserUI.c localc = Xx(paramInt);
+      AppChooserUI.c localc = Zt(paramInt);
       label73:
       boolean bool;
       if ((paramView == null) || (paramView.getTag() == null))
       {
         paramView = LayoutInflater.from(AppChooserUI.this.getContext());
-        if (localc.DEb)
+        if (localc.Fjh)
         {
           paramInt = 2131493081;
           paramView = paramView.inflate(paramInt, null);
           paramViewGroup = new AppChooserUI.b(AppChooserUI.this, paramView);
           paramView.setTag(paramViewGroup);
-          if (localc.DEa == null) {
+          if (localc.Fjg == null) {
             new AppChooserUI.d(AppChooserUI.this).execute(new AppChooserUI.c[] { localc });
           }
-          paramViewGroup.ts.setImageDrawable(localc.DEa);
-          Object localObject2 = localc.DDZ;
+          paramViewGroup.vl.setImageDrawable(localc.Fjg);
+          Object localObject2 = localc.Fjf;
           Object localObject1 = localObject2;
           if (AppChooserUI.k(AppChooserUI.this))
           {
             localObject1 = localObject2;
-            if (localc.DDY != null)
+            if (localc.Fje != null)
             {
               localObject1 = localObject2;
-              if (localc.DDY.activityInfo.packageName.equals(AppChooserUI.l(AppChooserUI.this)))
+              if (localc.Fje.activityInfo.packageName.equals(AppChooserUI.l(AppChooserUI.this)))
               {
                 localObject2 = TextUtils.concat(new CharSequence[] { localObject2, AppChooserUI.this.getString(2131755706) });
                 localObject1 = localObject2;
@@ -851,36 +866,36 @@ public class AppChooserUI
               }
             }
           }
-          paramViewGroup.tug.setText((CharSequence)localObject1);
-          if ((localc == null) || ((localc.DEb) && (!localc.AmJ) && ((!localc.DEb) || (!localc.tGm) || (AppChooserUI.d(AppChooserUI.this) < AppChooserUI.e(AppChooserUI.this)))) || (localc.DEc)) {
+          paramViewGroup.usF.setText((CharSequence)localObject1);
+          if ((localc == null) || ((localc.Fjh) && (!localc.BEO) && ((!localc.Fjh) || (!localc.uIY) || (AppChooserUI.d(AppChooserUI.this) < AppChooserUI.e(AppChooserUI.this)))) || (localc.Fji)) {
             break label554;
           }
-          paramViewGroup.DDW.setVisibility(8);
-          paramViewGroup.DDX.setVisibility(0);
-          localObject1 = paramViewGroup.DDX;
+          paramViewGroup.Fjc.setVisibility(8);
+          paramViewGroup.Fjd.setVisibility(0);
+          localObject1 = paramViewGroup.Fjd;
           localObject2 = AppChooserUI.c(AppChooserUI.this);
           if (!(localObject2 instanceof AppChooserUI.c)) {
             break label548;
           }
           localObject2 = (AppChooserUI.c)localObject2;
-          if (((((AppChooserUI.c)localObject2).DDY == null) || (localc.DDY == null) || (!((AppChooserUI.c)localObject2).DDY.activityInfo.packageName.equals(localc.DDY.activityInfo.packageName))) && ((!((AppChooserUI.c)localObject2).DEb) || (!localc.DEb))) {
+          if (((((AppChooserUI.c)localObject2).Fje == null) || (localc.Fje == null) || (!((AppChooserUI.c)localObject2).Fje.activityInfo.packageName.equals(localc.Fje.activityInfo.packageName))) && ((!((AppChooserUI.c)localObject2).Fjh) || (!localc.Fjh))) {
             break label548;
           }
           bool = true;
           label413:
           ((RadioButton)localObject1).setChecked(bool);
           label420:
-          if (!localc.DEb) {
+          if (!localc.Fjh) {
             break label740;
           }
           if (AppChooserUI.f(AppChooserUI.this) != 4) {
             break label720;
           }
-          paramViewGroup.tui.setText(2131762069);
+          paramViewGroup.usH.setText(2131762069);
           label448:
-          localObject1 = paramViewGroup.tui;
+          localObject1 = paramViewGroup.usH;
           paramInt = i;
-          if (bs.isNullOrNil(AppChooserUI.n(AppChooserUI.this))) {
+          if (bt.isNullOrNil(AppChooserUI.n(AppChooserUI.this))) {
             paramInt = 8;
           }
           ((TextView)localObject1).setVisibility(paramInt);
@@ -889,7 +904,7 @@ public class AppChooserUI
       for (;;)
       {
         if ((AppChooserUI.f(AppChooserUI.this) != 6) && (AppChooserUI.c(AppChooserUI.this) != null) && (AppChooserUI.c(AppChooserUI.this).equals(localc))) {
-          paramViewGroup.DDX.setChecked(true);
+          paramViewGroup.Fjd.setChecked(true);
         }
         AppMethodBeat.o(109519);
         return paramView;
@@ -901,44 +916,44 @@ public class AppChooserUI
         bool = false;
         break label413;
         label554:
-        paramViewGroup.DDW.setVisibility(0);
-        paramViewGroup.DDX.setVisibility(8);
-        paramViewGroup.DDW.setOnClickListener(AppChooserUI.m(AppChooserUI.this));
-        if (this.DDV == AppChooserUI.f.DEg)
+        paramViewGroup.Fjc.setVisibility(0);
+        paramViewGroup.Fjd.setVisibility(8);
+        paramViewGroup.Fjc.setOnClickListener(AppChooserUI.m(AppChooserUI.this));
+        if (this.Fjb == AppChooserUI.f.Fjm)
         {
-          if (localc.DEc) {
-            paramViewGroup.DDW.setText(2131755827);
+          if (localc.Fji) {
+            paramViewGroup.Fjc.setText(2131755827);
           }
           for (;;)
           {
-            paramViewGroup.DDW.setEnabled(true);
+            paramViewGroup.Fjc.setEnabled(true);
             break;
-            paramViewGroup.DDW.setText(2131755714);
+            paramViewGroup.Fjc.setText(2131755714);
           }
         }
-        if (this.DDV == AppChooserUI.f.DEh)
+        if (this.Fjb == AppChooserUI.f.Fjn)
         {
-          paramViewGroup.DDW.setText(2131755720);
-          paramViewGroup.DDW.setEnabled(false);
+          paramViewGroup.Fjc.setText(2131755720);
+          paramViewGroup.Fjc.setEnabled(false);
           break label420;
         }
-        if (this.DDV != AppChooserUI.f.DEi) {
+        if (this.Fjb != AppChooserUI.f.Fjo) {
           break label420;
         }
-        if (localc.DEc) {
-          paramViewGroup.DDW.setText(2131755908);
+        if (localc.Fji) {
+          paramViewGroup.Fjc.setText(2131755908);
         }
         for (;;)
         {
-          paramViewGroup.DDW.setEnabled(true);
+          paramViewGroup.Fjc.setEnabled(true);
           break;
-          paramViewGroup.DDW.setText(2131755907);
+          paramViewGroup.Fjc.setText(2131755907);
         }
         label720:
-        paramViewGroup.tui.setText(bs.nullAsNil(AppChooserUI.n(AppChooserUI.this)));
+        paramViewGroup.usH.setText(bt.nullAsNil(AppChooserUI.n(AppChooserUI.this)));
         break label448;
         label740:
-        paramViewGroup.tui.setVisibility(8);
+        paramViewGroup.usH.setVisibility(8);
       }
     }
     
@@ -950,43 +965,43 @@ public class AppChooserUI
   
   final class b
   {
-    TextView DDW;
-    RadioButton DDX;
-    ImageView ts;
-    TextView tug;
-    TextView tui;
+    TextView Fjc;
+    RadioButton Fjd;
+    TextView usF;
+    TextView usH;
+    ImageView vl;
     
     public b(View paramView)
     {
       AppMethodBeat.i(109524);
-      this.ts = ((ImageView)paramView.findViewById(2131296852));
-      this.tug = ((TextView)paramView.findViewById(2131296865));
-      this.tui = ((TextView)paramView.findViewById(2131296843));
-      this.DDW = ((TextView)paramView.findViewById(2131296875));
-      this.DDX = ((RadioButton)paramView.findViewById(2131296871));
+      this.vl = ((ImageView)paramView.findViewById(2131296852));
+      this.usF = ((TextView)paramView.findViewById(2131296865));
+      this.usH = ((TextView)paramView.findViewById(2131296843));
+      this.Fjc = ((TextView)paramView.findViewById(2131296875));
+      this.Fjd = ((RadioButton)paramView.findViewById(2131296871));
       AppMethodBeat.o(109524);
     }
   }
   
   final class c
   {
-    boolean AmJ;
-    ResolveInfo DDY;
-    CharSequence DDZ;
-    Drawable DEa;
-    boolean DEb;
-    boolean DEc;
-    boolean tGm;
+    boolean BEO;
+    ResolveInfo Fje;
+    CharSequence Fjf;
+    Drawable Fjg;
+    boolean Fjh;
+    boolean Fji;
+    boolean uIY;
     
     public c() {}
     
     public c(ResolveInfo paramResolveInfo, CharSequence paramCharSequence)
     {
-      this.DDY = paramResolveInfo;
-      this.DDZ = paramCharSequence;
-      this.DEb = false;
-      this.AmJ = true;
-      this.DEc = false;
+      this.Fje = paramResolveInfo;
+      this.Fjf = paramCharSequence;
+      this.Fjh = false;
+      this.BEO = true;
+      this.Fji = false;
     }
   }
   
@@ -998,61 +1013,46 @@ public class AppChooserUI
   
   final class e
   {
-    DialogInterface.OnClickListener DDR;
-    ListViewInScrollView DEd;
-    AdapterView.OnItemClickListener DEe;
-    DialogInterface.OnClickListener DEf;
-    DialogInterface.OnDismissListener VX;
-    public d jaW;
+    DialogInterface.OnClickListener FiX;
+    ListViewInScrollView Fjj;
+    AdapterView.OnItemClickListener Fjk;
+    DialogInterface.OnClickListener Fjl;
+    DialogInterface.OnDismissListener XM;
+    public d juf;
     Context mContext;
     String mTitle;
-    BaseAdapter oao;
+    BaseAdapter oDI;
     
     public e(Context paramContext)
     {
       AppMethodBeat.i(109527);
       this.mContext = paramContext;
-      this.DEd = ((ListViewInScrollView)View.inflate(this.mContext, 2131493079, null));
+      this.Fjj = ((ListViewInScrollView)View.inflate(this.mContext, 2131493079, null));
       AppMethodBeat.o(109527);
     }
     
-    public final void vv(boolean paramBoolean)
+    public final void wh(boolean paramBoolean)
     {
       AppMethodBeat.i(109528);
-      if (this.jaW != null)
+      if (this.juf != null)
       {
         if (!paramBoolean)
         {
-          this.jaW.a(2131755922, null);
-          this.jaW.b(2131755921, null);
+          this.juf.a(2131755922, null);
+          this.juf.b(2131755921, null);
           AppMethodBeat.o(109528);
           return;
         }
-        this.jaW.a(2131755922, this.DDR);
-        this.jaW.b(2131755921, this.DEf);
+        this.juf.a(2131755922, this.FiX);
+        this.juf.b(2131755921, this.Fjl);
       }
       AppMethodBeat.o(109528);
     }
   }
-  
-  public static enum f
-  {
-    static
-    {
-      AppMethodBeat.i(109531);
-      DEg = new f("UNINSTALL", 0);
-      DEh = new f("DOWNLOADING", 1);
-      DEi = new f("DOWNLOADED", 2);
-      DEj = new f[] { DEg, DEh, DEi };
-      AppMethodBeat.o(109531);
-    }
-    
-    private f() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.AppChooserUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.am;
-import d.g.b.k;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.ao;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class GalleryPickerFragment$e
   implements View.OnClickListener
 {
@@ -20,32 +22,39 @@ final class GalleryPickerFragment$e
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(164817);
-    if (GalleryPickerFragment.e(this.sLG).getVisibility() == 0)
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    a.b("com/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$initFolderSelectLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    Context localContext;
+    if (GalleryPickerFragment.e(this.tIn).getVisibility() == 0)
     {
-      GalleryPickerFragment.e(this.sLG).setVisibility(8);
-      GalleryPickerFragment.f(this.sLG).setVisibility(0);
-      paramView = this.sLM;
-      localContext1 = this.sLG.getContext();
-      localContext2 = this.sLG.getContext();
-      if (localContext2 == null) {
-        k.fOy();
+      GalleryPickerFragment.e(this.tIn).setVisibility(8);
+      GalleryPickerFragment.f(this.tIn).setVisibility(0);
+      paramView = this.tIt;
+      localObject = this.tIn.getContext();
+      localContext = this.tIn.getContext();
+      if (localContext == null) {
+        p.gfZ();
       }
-      k.g(localContext2, "context!!");
-      paramView.setImageDrawable(am.k(localContext1, 2131689710, localContext2.getResources().getColor(2131100021)));
+      p.g(localContext, "context!!");
+      paramView.setImageDrawable(ao.k((Context)localObject, 2131689710, localContext.getResources().getColor(2131100021)));
+    }
+    for (;;)
+    {
+      a.a(this, "com/tencent/mm/plugin/gallery/picker/GalleryPickerFragment$initFolderSelectLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(164817);
       return;
+      GalleryPickerFragment.e(this.tIn).setVisibility(0);
+      GalleryPickerFragment.f(this.tIn).setVisibility(8);
+      paramView = this.tIt;
+      localObject = this.tIn.getContext();
+      localContext = this.tIn.getContext();
+      if (localContext == null) {
+        p.gfZ();
+      }
+      p.g(localContext, "context!!");
+      paramView.setImageDrawable(ao.k((Context)localObject, 2131689707, localContext.getResources().getColor(2131100021)));
     }
-    GalleryPickerFragment.e(this.sLG).setVisibility(0);
-    GalleryPickerFragment.f(this.sLG).setVisibility(8);
-    paramView = this.sLM;
-    Context localContext1 = this.sLG.getContext();
-    Context localContext2 = this.sLG.getContext();
-    if (localContext2 == null) {
-      k.fOy();
-    }
-    k.g(localContext2, "context!!");
-    paramView.setImageDrawable(am.k(localContext1, 2131689707, localContext2.getResources().getColor(2131100021)));
-    AppMethodBeat.o(164817);
   }
 }
 

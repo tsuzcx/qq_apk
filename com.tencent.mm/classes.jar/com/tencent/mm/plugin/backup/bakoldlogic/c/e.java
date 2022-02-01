@@ -1,42 +1,44 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ast;
-import com.tencent.mm.protocal.protobuf.asu;
+import com.tencent.mm.protocal.protobuf.awr;
+import com.tencent.mm.protocal.protobuf.aws;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends n
   implements k
 {
-  private g callback;
+  private f callback;
   private final String id;
-  public byte[] nbG;
-  private final com.tencent.mm.ak.b rr;
+  public byte[] nCd;
+  private final com.tencent.mm.al.b rr;
   
   public e(String paramString)
   {
     AppMethodBeat.i(21948);
     Object localObject = new b.a();
-    ((b.a)localObject).hvt = new ast();
-    ((b.a)localObject).hvu = new asu();
+    ((b.a)localObject).hNM = new awr();
+    ((b.a)localObject).hNN = new aws();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getbakchatkey";
-    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).hNO = 0;
     ((b.a)localObject).respCmdId = 0;
     ((b.a)localObject).funcId = 596;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (ast)this.rr.hvr.hvw;
-    ((ast)localObject).ID = paramString;
-    ((ast)localObject).EMc = com.tencent.mm.protocal.ac.eRv().ver;
+    this.rr = ((b.a)localObject).aDC();
+    localObject = (awr)this.rr.hNK.hNQ;
+    ((awr)localObject).ID = paramString;
+    ((awr)localObject).Gvg = ac.fgz().ver;
     this.id = paramString;
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneGetBakchatkey", "init id:%s, ver:0x%x", new Object[] { ((ast)localObject).ID, Integer.valueOf(((ast)localObject).EMc) });
+    ad.i("MicroMsg.NetSceneGetBakchatkey", "init id:%s, ver:0x%x", new Object[] { ((awr)localObject).ID, Integer.valueOf(((awr)localObject).Gvg) });
     AppMethodBeat.o(21948);
   }
   
@@ -47,10 +49,10 @@ public final class e
     AppMethodBeat.o(21949);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
     AppMethodBeat.i(21950);
-    this.callback = paramg;
+    this.callback = paramf;
     int i = dispatch(parame, this.rr, this);
     AppMethodBeat.o(21950);
     return i;
@@ -64,19 +66,19 @@ public final class e
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21951);
-    com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneGetBakchatkey", "errType %d,  errCode %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    ad.i("MicroMsg.NetSceneGetBakchatkey", "errType %d,  errCode %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.nbG = ((asu)this.rr.hvs.hvw).DUt.getBuffer().xy;
+      this.nCd = ((aws)this.rr.hNL.hNQ).FzN.getBuffer().zr;
       paramq = this.id;
-      if (this.nbG == null) {}
-      for (paramInt1 = 0;; paramInt1 = this.nbG.length)
+      if (this.nCd == null) {}
+      for (paramInt1 = 0;; paramInt1 = this.nCd.length)
       {
-        com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneGetBakchatkey", "id:%s,  key len:%d", new Object[] { paramq, Integer.valueOf(paramInt1) });
-        if (this.nbG == null) {
+        ad.i("MicroMsg.NetSceneGetBakchatkey", "id:%s,  key len:%d", new Object[] { paramq, Integer.valueOf(paramInt1) });
+        if (this.nCd == null) {
           break label197;
         }
-        paramArrayOfByte = this.nbG;
+        paramArrayOfByte = this.nCd;
         paramq = "";
         paramInt1 = 0;
         while (paramInt1 < paramArrayOfByte.length)
@@ -85,7 +87,7 @@ public final class e
           paramInt1 += 1;
         }
       }
-      com.tencent.mm.sdk.platformtools.ac.i("MicroMsg.NetSceneGetBakchatkey", "dump bakchat: %s", new Object[] { paramq });
+      ad.i("MicroMsg.NetSceneGetBakchatkey", "dump bakchat: %s", new Object[] { paramq });
     }
     label197:
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -94,7 +96,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.c.e
  * JD-Core Version:    0.7.0.1
  */

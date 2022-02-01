@@ -16,20 +16,18 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.b;
-import com.tencent.mm.protocal.protobuf.ha;
-import com.tencent.mm.protocal.protobuf.hb;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.hh;
+import com.tencent.mm.protocal.protobuf.hi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.a;
 import com.tencent.mm.ui.a.c;
 import com.tencent.mm.ui.base.MMFormVerifyCodeInputView;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.z;
@@ -41,128 +39,139 @@ import java.util.LinkedList;
 public class AppBrandIDCardVerifyPwdFrag
   extends MMFragment
 {
-  private LinearLayout fBI;
-  private TextView gAI;
-  private MMFormVerifyCodeInputView iRZ;
-  private TextView lJL;
-  private a mActionBarHelper;
+  private LinearLayout fUV;
+  private TextView gUs;
+  private MMFormVerifyCodeInputView jlh;
+  private com.tencent.mm.ui.a mActionBarHelper;
+  AppBrandIDCardUI.a mGT;
+  private View mGU;
+  private Button mGW;
+  private hi mHk;
+  private hh mHx;
+  private TextView mHy;
   private MyKeyboardWindow mKeyboard;
-  private hb mgK;
-  private ha mgX;
-  private TextView mgY;
-  AppBrandIDCardUI.a mgt;
-  private View mgu;
-  private Button mgw;
+  private TextView mjy;
   
   public void dealContentView(View paramView)
   {
     AppMethodBeat.i(48977);
-    if ((this.mgt == null) || (this.mgt.bvP() == null))
+    if ((this.mGT == null) || (this.mGT.bzV() == null))
     {
-      ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "idCardUILogic or idCardUILogic.getIDCardShowInfo() is null, err");
+      ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "idCardUILogic or idCardUILogic.getIDCardShowInfo() is null, err");
       AppMethodBeat.o(48977);
       return;
     }
-    if ((this.mgt.bvP().DUk == null) || (this.mgt.bvP().DUk.size() <= 0))
+    if ((this.mGT.bzV().FzE == null) || (this.mGT.bzV().FzE.size() <= 0))
     {
-      ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sms.get(0) is null, err, return");
+      ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sms.get(0) is null, err, return");
       AppMethodBeat.o(48977);
       return;
     }
-    this.fBI = ((LinearLayout)paramView.findViewById(2131296756));
-    this.gAI = ((TextView)paramView.findViewById(2131296753));
-    this.lJL = ((TextView)paramView.findViewById(2131296757));
-    this.mgY = ((TextView)paramView.findViewById(2131296758));
-    this.mgw = ((Button)paramView.findViewById(2131296742));
-    this.iRZ = ((MMFormVerifyCodeInputView)paramView.findViewById(2131296754));
+    this.fUV = ((LinearLayout)paramView.findViewById(2131296756));
+    this.gUs = ((TextView)paramView.findViewById(2131296753));
+    this.mjy = ((TextView)paramView.findViewById(2131296757));
+    this.mHy = ((TextView)paramView.findViewById(2131296758));
+    this.mGW = ((Button)paramView.findViewById(2131296742));
+    this.jlh = ((MMFormVerifyCodeInputView)paramView.findViewById(2131296754));
     this.mKeyboard = ((MyKeyboardWindow)paramView.findViewById(2131296755));
-    this.mgu = z.jD(getContext()).inflate(2131492921, null);
-    this.mgu.setBackgroundColor(getResources().getColor(2131100705));
-    this.mActionBarHelper = new a(this.mgu);
-    paramView = new LinearLayout.LayoutParams(-1, b.dT(getActivity()));
-    this.fBI.addView(this.mgu, 0, paramView);
-    this.mgK = this.mgt.bvP();
-    this.mActionBarHelper.setTitle(this.mgK.title);
-    this.mActionBarHelper.e(new View.OnClickListener()
+    this.mGU = z.jO(getContext()).inflate(2131492921, null);
+    this.mGU.setBackgroundColor(getResources().getColor(2131100705));
+    this.mActionBarHelper = new com.tencent.mm.ui.a(this.mGU);
+    paramView = new LinearLayout.LayoutParams(-1, com.tencent.mm.plugin.appbrand.widget.b.dT(getActivity()));
+    this.fUV.addView(this.mGU, 0, paramView);
+    this.mHk = this.mGT.bzV();
+    this.mActionBarHelper.setTitle(this.mHk.title);
+    this.mActionBarHelper.setClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(48968);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this) != null) {
           AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).back();
         }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(48968);
       }
     });
-    this.gAI.setText(this.mgK.desc);
-    this.mgX = ((ha)this.mgK.DUk.get(0));
-    this.lJL.setText(((ha)this.mgK.DUk.get(0)).DUj);
-    if (this.mgK.DUk.size() > 1)
+    this.gUs.setText(this.mHk.desc);
+    this.mHx = ((hh)this.mHk.FzE.get(0));
+    this.mjy.setText(((hh)this.mHk.FzE.get(0)).FzD);
+    if (this.mHk.FzE.size() > 1)
     {
-      this.mgY.setVisibility(0);
-      this.mgY.setOnClickListener(new View.OnClickListener()
+      this.mHy.setVisibility(0);
+      this.mHy.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(48971);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           if (AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this) != null) {
-            AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).bvN();
+            AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).bzT();
           }
           paramAnonymousView = new e(AppBrandIDCardVerifyPwdFrag.this.getContext(), 1, false);
-          paramAnonymousView.ISu = new n.c()
+          paramAnonymousView.KJy = new n.d()
           {
             public final void onCreateMMMenu(l paramAnonymous2l)
             {
               AppMethodBeat.i(48969);
-              ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_list.size %d", new Object[] { Integer.valueOf(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.size()) });
-              Iterator localIterator = AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.iterator();
+              ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_list.size %d", new Object[] { Integer.valueOf(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).FzE.size()) });
+              Iterator localIterator = AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).FzE.iterator();
               while (localIterator.hasNext())
               {
-                ha localha = (ha)localIterator.next();
-                if ((bs.isNullOrNil(localha.DUi)) || (bs.isNullOrNil(localha.DUj))) {
-                  ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_id or show_phone is empty, continue");
+                hh localhh = (hh)localIterator.next();
+                if ((bt.isNullOrNil(localhh.FzC)) || (bt.isNullOrNil(localhh.FzD))) {
+                  ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "phone_id or show_phone is empty, continue");
                 } else {
-                  paramAnonymous2l.c(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.indexOf(localha), localha.DUj);
+                  paramAnonymous2l.c(AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).FzE.indexOf(localhh), localhh.FzD);
                 }
               }
               AppMethodBeat.o(48969);
             }
           };
-          paramAnonymousView.ISv = new n.d()
+          paramAnonymousView.KJz = new n.e()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
               AppMethodBeat.i(48970);
-              ha localha = (ha)AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).DUk.get(paramAnonymous2MenuItem.getItemId());
-              if (localha == null)
+              hh localhh = (hh)AppBrandIDCardVerifyPwdFrag.b(AppBrandIDCardVerifyPwdFrag.this).FzE.get(paramAnonymous2MenuItem.getItemId());
+              if (localhh == null)
               {
-                ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "not find phone_id, menuItem id :%d", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
+                ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "not find phone_id, menuItem id :%d", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
                 AppMethodBeat.o(48970);
                 return;
               }
-              ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "select menuItem id:%d, phone_id:%s, show_phone:%s, bank_type:%s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()), localha.DUi, localha.DUj, localha.cZz });
-              AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this, localha);
-              AppBrandIDCardVerifyPwdFrag.c(AppBrandIDCardVerifyPwdFrag.this).setText(localha.DUj);
+              ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "select menuItem id:%d, phone_id:%s, show_phone:%s, bank_type:%s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()), localhh.FzC, localhh.FzD, localhh.dkR });
+              AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this, localhh);
+              AppBrandIDCardVerifyPwdFrag.c(AppBrandIDCardVerifyPwdFrag.this).setText(localhh.FzD);
               AppMethodBeat.o(48970);
             }
           };
-          paramAnonymousView.cED();
+          paramAnonymousView.cMW();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(48971);
         }
       });
-      this.iRZ.setVisibility(0);
-      this.iRZ.setSendSmsBtnClickListener(new View.OnClickListener()
+      this.jlh.setVisibility(0);
+      this.jlh.setSendSmsBtnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(48974);
-          h.a(AppBrandIDCardVerifyPwdFrag.this.getContext(), AppBrandIDCardVerifyPwdFrag.this.getString(2131755472) + AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this).DUj, AppBrandIDCardVerifyPwdFrag.this.getString(2131755467), AppBrandIDCardVerifyPwdFrag.this.getString(2131755835), AppBrandIDCardVerifyPwdFrag.this.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          h.a(AppBrandIDCardVerifyPwdFrag.this.getContext(), AppBrandIDCardVerifyPwdFrag.this.getString(2131755472) + AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this).FzD, AppBrandIDCardVerifyPwdFrag.this.getString(2131755467), AppBrandIDCardVerifyPwdFrag.this.getString(2131755835), AppBrandIDCardVerifyPwdFrag.this.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(48972);
-              AppBrandIDCardVerifyPwdFrag.e(AppBrandIDCardVerifyPwdFrag.this).bso();
-              ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sendSms click");
+              AppBrandIDCardVerifyPwdFrag.e(AppBrandIDCardVerifyPwdFrag.this).bwt();
+              ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "sendSms click");
               if (AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this) != null) {
                 AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).a(AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this));
               }
@@ -177,10 +186,11 @@ public class AppBrandIDCardVerifyPwdFrag
               AppMethodBeat.o(48973);
             }
           });
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(48974);
         }
       });
-      this.iRZ.addTextChangedListener(new TextWatcher()
+      this.jlh.addTextChangedListener(new TextWatcher()
       {
         public final void afterTextChanged(Editable paramAnonymousEditable)
         {
@@ -199,7 +209,7 @@ public class AppBrandIDCardVerifyPwdFrag
         
         public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       });
-      paramView = this.iRZ.getContentEditText();
+      paramView = this.jlh.getContentEditText();
       if (paramView != null)
       {
         if (Build.VERSION.SDK_INT < 21) {
@@ -208,30 +218,34 @@ public class AppBrandIDCardVerifyPwdFrag
         paramView.setShowSoftInputOnFocus(false);
       }
       label449:
-      if ((this.iRZ.getText() == null) || (this.iRZ.getText().toString().length() <= 0)) {
+      if ((this.jlh.getText() == null) || (this.jlh.getText().toString().length() <= 0)) {
         break label764;
       }
-      this.mgw.setEnabled(true);
+      this.mGW.setEnabled(true);
     }
     for (;;)
     {
       for (;;)
       {
-        this.mgw.setVisibility(0);
-        this.mgw.setOnClickListener(new View.OnClickListener()
+        this.mGW.setVisibility(0);
+        this.mGW.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(48976);
-            ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "verify sms click");
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+            ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "verify sms click");
             if (AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this) != null) {
               AppBrandIDCardVerifyPwdFrag.a(AppBrandIDCardVerifyPwdFrag.this).a(AppBrandIDCardVerifyPwdFrag.e(AppBrandIDCardVerifyPwdFrag.this).getText().toString(), AppBrandIDCardVerifyPwdFrag.d(AppBrandIDCardVerifyPwdFrag.this));
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/autofill/AppBrandIDCardVerifyPwdFrag$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(48976);
           }
         });
         this.mKeyboard.setXMode(0);
-        this.mKeyboard.setInputEditText(this.iRZ.getContentEditText());
+        this.mKeyboard.setInputEditText(this.jlh.getContentEditText());
         if (Build.VERSION.SDK_INT >= 14)
         {
           paramView = new c();
@@ -239,7 +253,7 @@ public class AppBrandIDCardVerifyPwdFrag
         }
         AppMethodBeat.o(48977);
         return;
-        this.mgY.setVisibility(8);
+        this.mHy.setVisibility(8);
         break;
         try
         {
@@ -253,7 +267,7 @@ public class AppBrandIDCardVerifyPwdFrag
         {
           for (;;)
           {
-            ac.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+            ad.i("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, setShowSoftInputOnFocus no such method, api level = %d", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
             try
             {
               Method localMethod2 = EditText.class.getMethod("setSoftInputShownOnFocus", new Class[] { Boolean.TYPE });
@@ -263,7 +277,7 @@ public class AppBrandIDCardVerifyPwdFrag
             }
             catch (Exception localException)
             {
-              ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bs.m(localException) });
+              ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setSoftInputShownOnFocus], exp = %s", new Object[] { bt.n(localException) });
             }
           }
           if ((paramView.getContext() == null) || (!(paramView.getContext() instanceof MMActivity))) {
@@ -273,12 +287,12 @@ public class AppBrandIDCardVerifyPwdFrag
         }
         catch (Exception paramView)
         {
-          ac.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bs.m(paramView) });
+          ad.e("MicroMsg.AppBrandIDCardVerifyPwdFrag", "setNoSystemInputOnEditText, reflect method [setShowSoftInputOnFocus], exp = %s", new Object[] { bt.n(paramView) });
         }
       }
       break label449;
       label764:
-      this.mgw.setEnabled(false);
+      this.mGW.setEnabled(false);
     }
   }
   
@@ -307,9 +321,9 @@ public class AppBrandIDCardVerifyPwdFrag
   public void onSwipeBack()
   {
     AppMethodBeat.i(48979);
-    if (this.mgt != null)
+    if (this.mGT != null)
     {
-      this.mgt.onSwipeBack();
+      this.mGT.onSwipeBack();
       getContentView().setVisibility(8);
       if (isSupportNavigationSwipeBack()) {
         getSwipeBackLayout().setEnableGesture(false);

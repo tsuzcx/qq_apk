@@ -6,13 +6,13 @@ import rx.d.b;
 public final class d<T, R>
   implements d.a<R>
 {
-  final d.a<T> McH;
-  final d.b<? extends R, ? super T> McI;
+  final d.a<T> NXJ;
+  final d.b<? extends R, ? super T> NXK;
   
   public d(d.a<T> parama, d.b<? extends R, ? super T> paramb)
   {
-    this.McH = parama;
-    this.McI = paramb;
+    this.NXJ = parama;
+    this.NXK = paramb;
   }
 }
 

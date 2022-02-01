@@ -17,120 +17,137 @@ import java.util.Set;
 
 public class a
 {
-  public final b KKl;
-  public final io.flutter.embedding.engine.b.a KKo;
-  private final FlutterJNI KLj;
-  public final DartExecutor KLk;
-  public final c KLl;
-  public final io.flutter.embedding.engine.c.a KLm;
-  public final io.flutter.embedding.engine.c.c KLn;
-  public final d KLo;
-  public final e KLp;
-  public final f KLq;
-  private final i KLr;
-  public final io.flutter.embedding.engine.c.h KLs;
-  public final j KLt;
-  private final k KLu;
-  public final io.flutter.plugin.platform.h KLv;
-  private final a KLw;
+  public final b MAZ;
+  public final io.flutter.embedding.engine.b.a MBc;
+  private final FlutterJNI MCg;
+  public final DartExecutor MCh;
+  public final c MCi;
+  public final io.flutter.embedding.engine.c.a MCj;
+  public final io.flutter.embedding.engine.c.c MCk;
+  public final d MCl;
+  public final e MCm;
+  public final f MCn;
+  private final i MCo;
+  public final io.flutter.embedding.engine.c.h MCp;
+  public final j MCq;
+  private final k MCr;
+  public final io.flutter.plugin.platform.h MCs;
+  private final a MCt;
   private final Set<a> engineLifecycleListeners;
   
   public a(Context paramContext)
   {
-    this(paramContext, null);
+    this(paramContext, (byte)0);
     AppMethodBeat.i(10180);
     AppMethodBeat.o(10180);
   }
   
-  private a(Context paramContext, io.flutter.embedding.engine.a.a parama, FlutterJNI paramFlutterJNI, String[] paramArrayOfString)
+  private a(Context paramContext, byte paramByte)
   {
-    AppMethodBeat.i(192803);
+    this(paramContext, io.flutter.embedding.engine.a.a.geQ(), new FlutterJNI(), null, true);
+    AppMethodBeat.i(213249);
+    AppMethodBeat.o(213249);
+  }
+  
+  private a(Context paramContext, io.flutter.embedding.engine.a.a parama, FlutterJNI paramFlutterJNI, io.flutter.plugin.platform.h paramh, String[] paramArrayOfString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(213252);
     this.engineLifecycleListeners = new HashSet();
-    this.KLw = new a()
+    this.MCt = new a()
     {
       public final void onPreEngineRestart()
       {
         AppMethodBeat.i(10115);
-        io.flutter.a.fMD();
+        io.flutter.a.gea();
         Iterator localIterator = a.d(a.this).iterator();
         while (localIterator.hasNext()) {
           ((a.a)localIterator.next()).onPreEngineRestart();
         }
+        a.e(a.this).gfn();
         AppMethodBeat.o(10115);
       }
     };
-    this.KLj = paramFlutterJNI;
-    parama.startInitialization(paramContext);
+    this.MCg = paramFlutterJNI;
+    parama.startInitialization(paramContext.getApplicationContext());
     parama.ensureInitializationComplete(paramContext, paramArrayOfString);
-    paramFlutterJNI.addEngineLifecycleListener(this.KLw);
-    io.flutter.a.fMD();
-    this.KLj.attachToNative(false);
-    if (!this.KLj.isAttached())
+    paramFlutterJNI.addEngineLifecycleListener(this.MCt);
+    io.flutter.a.gea();
+    this.MCg.attachToNative(false);
+    if (!this.MCg.isAttached())
     {
       paramContext = new RuntimeException("FlutterEngine failed to attach to its native Object reference.");
-      AppMethodBeat.o(192803);
+      AppMethodBeat.o(213252);
       throw paramContext;
     }
-    this.KLk = new DartExecutor(paramFlutterJNI, paramContext.getAssets());
-    this.KLk.onAttachedToJNI();
-    this.KKo = new io.flutter.embedding.engine.b.a(paramFlutterJNI);
-    this.KLm = new io.flutter.embedding.engine.c.a(this.KLk, paramFlutterJNI);
-    this.KKl = new b(this.KLk);
-    this.KLn = new io.flutter.embedding.engine.c.c(this.KLk);
-    this.KLo = new d(this.KLk);
-    this.KLp = new e(this.KLk);
-    this.KLq = new f(this.KLk);
-    this.KLr = new i(this.KLk);
-    this.KLs = new io.flutter.embedding.engine.c.h(this.KLk);
-    this.KLt = new j(this.KLk);
-    this.KLu = new k(this.KLk);
-    this.KLv = new io.flutter.plugin.platform.h();
-    this.KLl = new c(paramContext.getApplicationContext(), this, parama);
-    try
-    {
-      Class.forName("io.flutter.a.a").getDeclaredMethod("registerWith", new Class[] { a.class }).invoke(null, new Object[] { this });
-      AppMethodBeat.o(192803);
-      return;
+    this.MCh = new DartExecutor(paramFlutterJNI, paramContext.getAssets());
+    this.MCh.onAttachedToJNI();
+    this.MBc = new io.flutter.embedding.engine.b.a(paramFlutterJNI);
+    this.MCj = new io.flutter.embedding.engine.c.a(this.MCh, paramFlutterJNI);
+    this.MAZ = new b(this.MCh);
+    this.MCk = new io.flutter.embedding.engine.c.c(this.MCh);
+    this.MCl = new d(this.MCh);
+    this.MCm = new e(this.MCh);
+    this.MCn = new f(this.MCh);
+    this.MCo = new i(this.MCh);
+    this.MCp = new io.flutter.embedding.engine.c.h(this.MCh);
+    this.MCq = new j(this.MCh);
+    this.MCr = new k(this.MCh);
+    this.MCs = paramh;
+    this.MCi = new c(paramContext.getApplicationContext(), this, parama);
+    if (paramBoolean) {
+      try
+      {
+        Class.forName("io.flutter.a.a").getDeclaredMethod("registerWith", new Class[] { a.class }).invoke(null, new Object[] { this });
+        AppMethodBeat.o(213252);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        new StringBuilder("Tried to automatically register plugins with FlutterEngine (").append(this).append(") but could not find and invoke the GeneratedPluginRegistrant.");
+        io.flutter.a.ged();
+      }
     }
-    catch (Exception paramContext)
-    {
-      new StringBuilder("Tried to automatically register plugins with FlutterEngine (").append(this).append(") but could not find and invoke the GeneratedPluginRegistrant.");
-      io.flutter.a.fMG();
-      AppMethodBeat.o(192803);
-    }
+    AppMethodBeat.o(213252);
+  }
+  
+  private a(Context paramContext, io.flutter.embedding.engine.a.a parama, FlutterJNI paramFlutterJNI, String[] paramArrayOfString, boolean paramBoolean)
+  {
+    this(paramContext, parama, paramFlutterJNI, new io.flutter.plugin.platform.h(), paramArrayOfString, paramBoolean);
+    AppMethodBeat.i(213251);
+    AppMethodBeat.o(213251);
   }
   
   public a(Context paramContext, String[] paramArrayOfString)
   {
-    this(paramContext, io.flutter.embedding.engine.a.a.fNr(), new FlutterJNI(), paramArrayOfString);
-    AppMethodBeat.i(192802);
-    AppMethodBeat.o(192802);
+    this(paramContext, io.flutter.embedding.engine.a.a.geQ(), new FlutterJNI(), paramArrayOfString, false);
+    AppMethodBeat.i(213250);
+    AppMethodBeat.o(213250);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(10181);
-    io.flutter.a.fMF();
-    this.KLl.destroy();
-    this.KLk.onDetachedFromJNI();
-    this.KLj.removeEngineLifecycleListener(this.KLw);
-    this.KLj.detachFromNativeAndReleaseResources();
+    io.flutter.a.gea();
+    this.MCi.destroy();
+    this.MCh.onDetachedFromJNI();
+    this.MCg.removeEngineLifecycleListener(this.MCt);
+    this.MCg.detachFromNativeAndReleaseResources();
     AppMethodBeat.o(10181);
   }
   
-  public final io.flutter.embedding.engine.c.c fNb()
+  public final io.flutter.embedding.engine.c.c geB()
   {
-    return this.KLn;
+    return this.MCk;
   }
   
-  public final e fNc()
+  public final e geC()
   {
-    return this.KLp;
+    return this.MCm;
   }
   
   public final DartExecutor getDartExecutor()
   {
-    return this.KLk;
+    return this.MCh;
   }
   
   public static abstract interface a

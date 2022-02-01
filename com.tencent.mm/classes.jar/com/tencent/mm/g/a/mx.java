@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class mx
   extends b
 {
-  public a dps;
+  public a dAR;
   
   public mx()
   {
@@ -15,16 +17,19 @@ public final class mx
   
   private mx(byte paramByte)
   {
-    AppMethodBeat.i(184010);
-    this.dps = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116036);
+    this.dAR = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(184010);
+    AppMethodBeat.o(116036);
   }
   
   public static final class a
   {
-    public String dpt;
+    public Activity activity;
+    public int dAP = 0;
+    public Bundle dAS;
+    public String dlG;
   }
 }
 

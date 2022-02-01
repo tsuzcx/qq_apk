@@ -1,26 +1,26 @@
 package com.tencent.mm.pluginsdk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.plugin.s.a.a.a;
 import com.tencent.mm.pluginsdk.model.app.aa;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.e;
 import com.tencent.mm.pluginsdk.model.app.u;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class k
   implements u
 {
-  public static boolean Dha = false;
-  private static k Dhb;
-  public a Dhc;
+  public static boolean ELK = false;
+  private static k ELL;
+  public a ELM;
   
-  public static b aFY(String paramString)
+  public static b aLy(String paramString)
   {
     AppMethodBeat.i(30992);
     if (paramString == null)
@@ -28,31 +28,31 @@ public final class k
       AppMethodBeat.o(30992);
       return null;
     }
-    paramString = bv.L(paramString, "PersonalAppSetting");
+    paramString = bw.M(paramString, "PersonalAppSetting");
     if (paramString == null)
     {
       AppMethodBeat.o(30992);
       return null;
     }
     paramString = (String)paramString.get(".PersonalAppSetting.OpenID");
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(30992);
       return null;
     }
     b localb = new b();
-    localb.Dhd = paramString;
+    localb.ELN = paramString;
     AppMethodBeat.o(30992);
     return localb;
   }
   
-  public static k eKA()
+  public static k eZu()
   {
     AppMethodBeat.i(30989);
-    if (Dhb == null) {
-      Dhb = new k();
+    if (ELL == null) {
+      ELL = new k();
     }
-    k localk = Dhb;
+    k localk = ELL;
     AppMethodBeat.o(30989);
     return localk;
   }
@@ -60,15 +60,15 @@ public final class k
   public final void a(int paramInt1, int paramInt2, String paramString, aa paramaa)
   {
     AppMethodBeat.i(30991);
-    if (!az.agM())
+    if (!ba.ajx())
     {
       AppMethodBeat.o(30991);
       return;
     }
-    ac.d("MicroMsg.GetUserInfoInAppLogic", "onSceneEnd errType=%s errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.d("MicroMsg.GetUserInfoInAppLogic", "onSceneEnd errType=%s errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramaa == null)
     {
-      ac.e("MicroMsg.GetUserInfoInAppLogic", "scene == null");
+      ad.e("MicroMsg.GetUserInfoInAppLogic", "scene == null");
       AppMethodBeat.o(30991);
       return;
     }
@@ -81,30 +81,30 @@ public final class k
     {
       AppMethodBeat.o(30991);
       return;
-      if ((ai.getContext() == null) || (a.a.dnF() == null))
+      if ((aj.getContext() == null) || (a.a.dxX() == null))
       {
-        ac.e("MicroMsg.GetUserInfoInAppLogic", "wrong environment");
+        ad.e("MicroMsg.GetUserInfoInAppLogic", "wrong environment");
         AppMethodBeat.o(30991);
         return;
       }
-      ac.e("MicroMsg.GetUserInfoInAppLogic", "NetSceneGetUserInfoInApp come back", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ad.e("MicroMsg.GetUserInfoInAppLogic", "NetSceneGetUserInfoInApp come back", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       paramString = (n)paramaa;
-      if (this.Dhc != null) {
-        this.Dhc.a(paramString);
+      if (this.ELM != null) {
+        this.ELM.a(paramString);
       }
     }
   }
   
-  public final void eKB()
+  public final void eZv()
   {
     AppMethodBeat.i(30990);
-    if (!az.agM())
+    if (!ba.ajx())
     {
       AppMethodBeat.o(30990);
       return;
     }
-    ap.dnB().a(14, this);
-    Dha = true;
+    ao.dxT().a(14, this);
+    ELK = true;
     AppMethodBeat.o(30990);
   }
   
@@ -115,12 +115,12 @@ public final class k
   
   public static final class b
   {
-    public String Dhd;
+    public String ELN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.k
  * JD-Core Version:    0.7.0.1
  */

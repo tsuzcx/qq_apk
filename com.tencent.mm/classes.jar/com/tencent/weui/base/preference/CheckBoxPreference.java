@@ -15,13 +15,13 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class CheckBoxPreference
   extends Preference
 {
-  private TextView Bod;
-  private int Boe;
-  private String Bof;
-  private int Bog;
-  boolean mF;
+  private TextView COs;
+  private int COt;
+  private String COu;
+  private int COv;
   private View mView;
-  private MMSwitchBtn tTm;
+  boolean oB;
+  private MMSwitchBtn rck;
   
   public CheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,28 +32,28 @@ public class CheckBoxPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159986);
-    this.mF = false;
-    this.Boe = -1;
-    this.Bof = "";
-    this.Bog = 8;
+    this.oB = false;
+    this.COt = -1;
+    this.COu = "";
+    this.COv = 8;
     setLayoutResource(2131494804);
     AppMethodBeat.o(159986);
   }
   
   public final boolean isChecked()
   {
-    if (this.tTm != null) {
-      return this.tTm.JaE;
+    if (this.rck != null) {
+      return this.rck.KRP;
     }
-    return this.mF;
+    return this.oB;
   }
   
   public void onBindView(View paramView)
   {
     AppMethodBeat.i(159988);
     super.onBindView(paramView);
-    this.tTm = ((MMSwitchBtn)paramView.findViewById(2131298255));
-    this.tTm.setSwitchListener(new MMSwitchBtn.a()
+    this.rck = ((MMSwitchBtn)paramView.findViewById(2131298255));
+    this.rck.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
@@ -62,29 +62,29 @@ public class CheckBoxPreference
         AppMethodBeat.o(159985);
       }
     });
-    this.tTm.setCheck(this.mF);
+    this.rck.setCheck(this.oB);
     if (!isEnabled())
     {
-      this.tTm.setEnabled(false);
+      this.rck.setEnabled(false);
       ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100022));
     }
-    this.Bod = ((TextView)paramView.findViewById(2131305883));
-    paramView = this.Bof;
-    int i = this.Boe;
-    this.Boe = i;
-    this.Bof = paramView;
-    if (this.Bod != null)
+    this.COs = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.COu;
+    int i = this.COt;
+    this.COt = i;
+    this.COu = paramView;
+    if (this.COs != null)
     {
       if (i > 0) {
-        this.Bod.setBackgroundResource(this.Boe);
+        this.COs.setBackgroundResource(this.COt);
       }
-      if (!TextUtils.isEmpty(this.Bof)) {
-        this.Bod.setText(this.Bof);
+      if (!TextUtils.isEmpty(this.COu)) {
+        this.COs.setText(this.COu);
       }
     }
-    this.Bog = this.Bog;
-    if (this.Bod != null) {
-      this.Bod.setVisibility(this.Bog);
+    this.COv = this.COv;
+    if (this.COs != null) {
+      this.COs.setVisibility(this.COv);
     }
     AppMethodBeat.o(159988);
   }

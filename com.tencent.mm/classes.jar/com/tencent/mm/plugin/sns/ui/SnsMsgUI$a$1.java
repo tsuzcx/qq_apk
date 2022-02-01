@@ -16,18 +16,18 @@ final class SnsMsgUI$a$1
     AppMethodBeat.i(98874);
     if (paramBoolean)
     {
-      tPy.add(paramMMSlideDelView);
+      uSl.add(paramMMSlideDelView);
       AppMethodBeat.o(98874);
       return;
     }
-    tPy.remove(paramMMSlideDelView);
+    uSl.remove(paramMMSlideDelView);
     AppMethodBeat.o(98874);
   }
   
-  public final boolean cVq()
+  public final boolean deB()
   {
     AppMethodBeat.i(98875);
-    if (tPy.size() > 0)
+    if (uSl.size() > 0)
     {
       AppMethodBeat.o(98875);
       return true;
@@ -36,33 +36,33 @@ final class SnsMsgUI$a$1
     return false;
   }
   
-  public final void cVr()
+  public final void deC()
   {
     AppMethodBeat.i(98876);
-    Iterator localIterator = tPy.iterator();
+    Iterator localIterator = uSl.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.fiI();
+        localMMSlideDelView.fyX();
       }
     }
-    tPy.clear();
+    uSl.clear();
     AppMethodBeat.o(98876);
   }
   
-  public final void cVs()
+  public final void deD()
   {
     AppMethodBeat.i(98877);
-    Iterator localIterator = tPy.iterator();
+    Iterator localIterator = uSl.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.fiH();
+        localMMSlideDelView.fyW();
       }
     }
-    tPy.clear();
+    uSl.clear();
     AppMethodBeat.o(98877);
   }
 }

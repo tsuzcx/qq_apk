@@ -3,13 +3,13 @@ package com.tencent.mm.ui.widget;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class e$b
 {
   e$b(e parame) {}
   
-  public final View n(ViewGroup paramViewGroup, int paramInt)
+  public final View p(ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(143341);
     if (paramViewGroup != null)
@@ -20,8 +20,8 @@ final class e$b
       {
         View localView = paramViewGroup.getChildAt(i);
         Class localClass = localView.getClass();
-        ac.d("MicroMsg.MMDatePickerDialog", "NAME = ".concat(String.valueOf(localClass.getName())));
-        ac.d("MicroMsg.MMDatePickerDialog", "SimpleName = " + localClass.getSimpleName());
+        ad.d("MicroMsg.MMDatePickerDialog", "NAME = ".concat(String.valueOf(localClass.getName())));
+        ad.d("MicroMsg.MMDatePickerDialog", "SimpleName = " + localClass.getSimpleName());
         if (("NumberPicker".equals(localClass.getSimpleName())) && (i == paramInt))
         {
           AppMethodBeat.o(143341);
@@ -29,7 +29,7 @@ final class e$b
         }
         if ((localView instanceof ViewGroup))
         {
-          localView = n((ViewGroup)localView, paramInt);
+          localView = p((ViewGroup)localView, paramInt);
           if (localView != null)
           {
             AppMethodBeat.o(143341);

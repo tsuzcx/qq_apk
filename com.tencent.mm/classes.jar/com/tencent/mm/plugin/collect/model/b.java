@@ -13,16 +13,18 @@ import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.qbar.f;
 
 public final class b
 {
   public static Bitmap a(Context paramContext, String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, u.a parama, boolean paramBoolean, int paramInt3, float paramFloat)
   {
-    AppMethodBeat.i(207037);
+    AppMethodBeat.i(198941);
     int i = (int)(paramInt2 * 0.26F);
     int j = (int)(paramInt2 * 0.22F);
     paramInt2 = (int)(paramInt2 * 0.076F);
@@ -32,14 +34,14 @@ public final class b
       {
         Paint localPaint = new Paint();
         localPaint.setAntiAlias(true);
-        ac.i("MicroMsg.CollectBitmapFactory", "createCollectQrcode size avatarSize %s dpCanvas %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+        ad.i("MicroMsg.CollectBitmapFactory", "createCollectQrcode size avatarSize %s dpCanvas %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
         localBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
         Object localObject2 = null;
         Object localObject1 = localObject2;
         if (paramInt1 == 1)
         {
           localObject1 = localObject2;
-          if (!bs.isNullOrNil(paramString3))
+          if (!bt.isNullOrNil(paramString3))
           {
             localObject1 = u.a(new c(paramString3));
             u.b(parama);
@@ -47,20 +49,20 @@ public final class b
         }
         paramString3 = (String)localObject1;
         if (localObject1 == null) {
-          paramString3 = com.tencent.mm.aj.c.e(paramString2, j, j, (int)(j * 0.06F));
+          paramString3 = com.tencent.mm.ak.c.e(paramString2, j, j, (int)(j * 0.06F));
         }
         paramString2 = paramString3;
         if (paramString3 == null)
         {
-          paramString2 = BackwardSupportUtil.b.b(ai.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
-          paramString2 = com.tencent.mm.sdk.platformtools.f.a(paramString2, false, 0.06F * paramString2.getWidth());
+          paramString2 = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cc.a.getDensity(null));
+          paramString2 = g.a(paramString2, false, 0.06F * paramString2.getWidth());
         }
         paramString3 = paramString2;
         if (paramString2 != null)
         {
           paramString3 = paramString2;
           if (paramBoolean) {
-            paramString3 = com.tencent.mm.sdk.platformtools.f.a(paramString2, false, paramString2.getWidth() * 0.5F);
+            paramString3 = g.a(paramString2, false, paramString2.getWidth() * 0.5F);
           }
         }
         paramString2 = paramString3;
@@ -68,45 +70,45 @@ public final class b
         {
           paramString2 = paramString3;
           if (paramFloat > 0.0F) {
-            paramString2 = com.tencent.mm.sdk.platformtools.f.a(paramString3, false, com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 2));
+            paramString2 = g.a(paramString3, false, com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 2));
           }
         }
         paramString3 = new Canvas(localBitmap);
         paramInt1 = (i - j) / 2;
         paramString3.drawBitmap(paramString2, null, new Rect(paramInt1, paramInt1, i - paramInt1, i - paramInt1), localPaint);
         paramString3.drawBitmap(MMBitmapFactory.decodeStream(paramContext.getResources().openRawResource(2131231780)), null, new Rect(i - paramInt2, i - paramInt2, i, i), localPaint);
-        if (bs.jl(paramInt3, -1)) {
+        if (bt.jx(paramInt3, -1)) {
           break label553;
         }
-        if (!bs.jl(paramInt3, 0)) {
+        if (!bt.jx(paramInt3, 0)) {
           break label547;
         }
       }
       catch (Exception paramContext)
       {
         Bitmap localBitmap;
-        ac.printErrStackTrace("MicroMsg.CollectBitmapFactory", paramContext, "", new Object[0]);
-        AppMethodBeat.o(207037);
+        ad.printErrStackTrace("MicroMsg.CollectBitmapFactory", paramContext, "", new Object[0]);
+        AppMethodBeat.o(198941);
         return null;
       }
       paramString2 = new byte[40000];
       paramString3 = new int[2];
-      paramInt2 = com.tencent.qbar.f.a(paramString2, paramString3, paramString1, 12, paramInt1, "UTF-8");
+      paramInt2 = f.a(paramString2, paramString3, paramString1, 12, paramInt1, "UTF-8");
       if (paramInt2 == 0)
       {
-        paramContext = com.tencent.mm.by.a.a.a(paramContext, localBitmap, paramString2, paramString3, 0.1D);
+        paramContext = com.tencent.mm.bz.a.a.a(paramContext, localBitmap, paramString2, paramString3, 0.1D);
         if (paramContext == null)
         {
-          ac.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(paramInt2), bs.eWi().toString() });
-          ac.i("MicroMsg.CollectBitmapFactory", "bitmap recycle %s errorLevel:%s", new Object[] { localBitmap, Integer.valueOf(paramInt1) });
+          ad.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(paramInt2), bt.flS().toString() });
+          ad.i("MicroMsg.CollectBitmapFactory", "bitmap recycle %s errorLevel:%s", new Object[] { localBitmap, Integer.valueOf(paramInt1) });
           localBitmap.recycle();
-          AppMethodBeat.o(207037);
+          AppMethodBeat.o(198941);
           return paramContext;
         }
-        ac.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
+        ad.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
         continue;
       }
-      ac.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(paramInt2), bs.eWi().toString() });
+      ad.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(paramInt2), bt.flS().toString() });
       paramContext = null;
       continue;
       label547:

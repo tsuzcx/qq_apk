@@ -7,11 +7,11 @@ public abstract interface f<K, O>
 {
   public abstract void a(a<K, O> parama);
   
-  public abstract O aJ(K paramK);
+  public abstract O aL(K paramK);
   
-  public abstract boolean aK(K paramK);
+  public abstract boolean aM(K paramK);
   
-  public abstract boolean aL(K paramK);
+  public abstract boolean aN(K paramK);
   
   public abstract void clear();
   
@@ -29,11 +29,11 @@ public abstract interface f<K, O>
   
   public abstract int missCount();
   
-  public abstract void o(K paramK, O paramO);
-  
   public abstract O put(K paramK, O paramO);
   
   public abstract int putCount();
+  
+  public abstract void q(K paramK, O paramO);
   
   public abstract O remove(K paramK);
   
@@ -54,7 +54,7 @@ public abstract interface f<K, O>
   
   public static abstract interface c<K, O>
   {
-    public abstract int p(K paramK, O paramO);
+    public abstract int r(K paramK, O paramO);
   }
 }
 

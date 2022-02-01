@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.b;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.content.res.Resources;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,40 +10,41 @@ import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.widget.desktop.h;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Collections;
 import java.util.List;
 
 public final class k<T extends RecyclerView.w>
   extends i<T>
 {
-  int cUq = 0;
+  FrameLayout cuk;
+  int dfG = 0;
   int endPos = 0;
-  FrameLayout mqR;
-  View mxK;
-  public com.tencent.mm.plugin.appbrand.widget.desktop.g mxS = null;
-  private List mzM;
-  List mzN;
-  Object mzO;
-  boolean mzP;
-  public g mzQ;
-  a mzR;
+  public h mYA = null;
+  View mYs;
+  private List nau;
+  List nav;
+  Object naw;
+  boolean nax;
+  public g nay;
+  a naz;
   public int paddingLeft = 0;
   public int paddingTop = 0;
   
   public k(FrameLayout paramFrameLayout, List paramList1, List paramList2, a parama)
   {
-    this.mqR = paramFrameLayout;
-    this.mzM = paramList1;
-    this.mzR = parama;
-    this.mzN = paramList2;
+    this.cuk = paramFrameLayout;
+    this.nau = paramList1;
+    this.naz = parama;
+    this.nav = paramList2;
   }
   
   private View i(RecyclerView paramRecyclerView, T paramT)
   {
     AppMethodBeat.i(49836);
-    paramT.asD.setVisibility(4);
-    paramRecyclerView = this.mzQ.e(paramRecyclerView, paramT);
+    paramT.auu.setVisibility(4);
+    paramRecyclerView = this.nay.e(paramRecyclerView, paramT);
     paramRecyclerView.setVisibility(0);
     AppMethodBeat.o(49836);
     return paramRecyclerView;
@@ -54,17 +53,17 @@ public final class k<T extends RecyclerView.w>
   private void n(RecyclerView paramRecyclerView)
   {
     AppMethodBeat.i(49835);
-    if (this.mzP)
+    if (this.nax)
     {
-      int i = this.mzN.indexOf(this.mzO);
+      int i = this.nav.indexOf(this.naw);
       if (i >= 0)
       {
-        this.mzN.remove(i);
+        this.nav.remove(i);
         paramRecyclerView.getAdapter().cl(i);
       }
-      this.mzP = false;
-      if (this.mzR != null) {
-        this.mzR.byO();
+      this.nax = false;
+      if (this.naz != null) {
+        this.naz.bCR();
       }
     }
     AppMethodBeat.o(49835);
@@ -73,16 +72,16 @@ public final class k<T extends RecyclerView.w>
   private float o(RecyclerView paramRecyclerView)
   {
     AppMethodBeat.i(49837);
-    if (this.mxS == null)
+    if (this.mYA == null)
     {
       AppMethodBeat.o(49837);
       return 0.0F;
     }
-    int i = this.mxS.computeVerticalScrollOffset();
+    int i = this.mYA.computeVerticalScrollOffset();
     int j = paramRecyclerView.computeVerticalScrollExtent();
-    int k = this.mxS.computeVerticalScrollRange();
+    int k = this.mYA.computeVerticalScrollRange();
     int m = k - paramRecyclerView.getMeasuredHeight() - i;
-    ac.i("ItemInsertHelper", "alvinluo computeMoveExtraY scrollOffset: %d, scrollExtent: %d, scrollRange: %d, height: %d, extra: %d, diff: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramRecyclerView.getMeasuredHeight()), Integer.valueOf((int)(paramRecyclerView.getResources().getDimension(2131166753) * 1.0F)), Integer.valueOf(m) });
+    ad.i("ItemInsertHelper", "alvinluo computeMoveExtraY scrollOffset: %d, scrollExtent: %d, scrollRange: %d, height: %d, extra: %d, diff: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramRecyclerView.getMeasuredHeight()), Integer.valueOf((int)(paramRecyclerView.getResources().getDimension(2131166753) * 1.0F)), Integer.valueOf(m) });
     if (m > paramRecyclerView.getResources().getDimension(2131166753) * 1.0F)
     {
       AppMethodBeat.o(49837);
@@ -97,9 +96,9 @@ public final class k<T extends RecyclerView.w>
   public final boolean O(T paramT)
   {
     AppMethodBeat.i(49826);
-    if (this.mzQ != null)
+    if (this.nay != null)
     {
-      boolean bool = this.mzQ.O(paramT);
+      boolean bool = this.nay.O(paramT);
       AppMethodBeat.o(49826);
       return bool;
     }
@@ -115,9 +114,9 @@ public final class k<T extends RecyclerView.w>
   public final boolean P(T paramT)
   {
     AppMethodBeat.i(49832);
-    if (this.mzQ != null)
+    if (this.nay != null)
     {
-      boolean bool = this.mzQ.P(paramT);
+      boolean bool = this.nay.P(paramT);
       AppMethodBeat.o(49832);
       return bool;
     }
@@ -128,9 +127,9 @@ public final class k<T extends RecyclerView.w>
   public final boolean R(T paramT)
   {
     AppMethodBeat.i(49828);
-    if (this.mzQ != null)
+    if (this.nay != null)
     {
-      boolean bool = this.mzQ.a(paramT, this.mzO);
+      boolean bool = this.nay.a(paramT, this.naw);
       AppMethodBeat.o(49828);
       return bool;
     }
@@ -138,38 +137,38 @@ public final class k<T extends RecyclerView.w>
     return true;
   }
   
-  public final void a(final RecyclerView paramRecyclerView, final RecyclerView.w paramw, final int paramInt, final Runnable paramRunnable)
+  public final void a(final RecyclerView paramRecyclerView, RecyclerView.w paramw, final int paramInt, final Runnable paramRunnable)
   {
     AppMethodBeat.i(49830);
-    if (this.mzQ != null) {
-      this.mzQ.cN(this.mxK);
+    if (this.nay != null) {
+      this.nay.cP(this.mYs);
     }
-    final Runnable local4 = new Runnable()
+    Runnable local4 = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(49824);
-        if (k.this.mzP)
+        if (k.this.nax)
         {
           k localk = k.this;
           RecyclerView localRecyclerView = paramRecyclerView;
-          Object localObject1 = k.this.mzO;
+          Object localObject1 = k.this.naw;
           int m = paramInt;
-          ac.i("ItemInsertHelper", "alvinluo checkDuplicate position: %d", new Object[] { Integer.valueOf(m) });
+          ad.i("ItemInsertHelper", "alvinluo checkDuplicate position: %d", new Object[] { Integer.valueOf(m) });
           if (localObject1 != null)
           {
-            if (localk.mzR != null)
+            if (localk.naz != null)
             {
               int i = 0;
               for (int j = -1;; j = k)
               {
                 k = j;
-                if (i >= localk.mzN.size()) {
+                if (i >= localk.nav.size()) {
                   break;
                 }
-                Object localObject2 = localk.mzN.get(i);
+                Object localObject2 = localk.nav.get(i);
                 k = j;
-                if (localk.mzR.C(localObject1, localObject2))
+                if (localk.naz.E(localObject1, localObject2))
                 {
                   k = j;
                   if (i != m) {
@@ -180,106 +179,72 @@ public final class k<T extends RecyclerView.w>
               }
             }
             int k = -1;
-            if ((k != -1) && (k < localk.mzN.size()))
+            if ((k != -1) && (k < localk.nav.size()))
             {
-              ac.i("ItemInsertHelper", "alvinluo checkDuplicate targetPosition: %d", new Object[] { Integer.valueOf(k) });
-              localk.mzN.remove(k);
+              ad.i("ItemInsertHelper", "alvinluo checkDuplicate targetPosition: %d", new Object[] { Integer.valueOf(k) });
+              localk.nav.remove(k);
               localRecyclerView.getAdapter().cl(k);
             }
           }
         }
-        if (k.this.mzQ != null) {
-          k.this.mzQ.b(k.this.cUq, k.this.endPos, k.this.mzO, k.this.mzP);
+        if (k.this.nay != null) {
+          k.this.nay.b(k.this.dfG, k.this.endPos, k.this.naw, k.this.nax);
         }
         paramRunnable.run();
         AppMethodBeat.o(49824);
       }
     };
-    final RecyclerView.w localw;
+    RecyclerView.w localw;
     float f2;
     float f1;
     float f3;
-    if ((paramw != null) && (this.mxK != null))
+    if ((paramw != null) && (this.mYs != null))
     {
-      ac.i("ItemInsertHelper", "[finishMove] position:" + paramw.lv() + " dragViewPosition:" + paramInt);
+      ad.i("ItemInsertHelper", "[finishMove] position:" + paramw.lN() + " dragViewPosition:" + paramInt);
       localw = paramRecyclerView.ci(paramInt);
-      f2 = this.mxK.getTranslationX();
-      f1 = this.mxK.getTranslationY();
-      if (!this.mzP)
+      f2 = this.mYs.getTranslationX();
+      f1 = this.mYs.getTranslationY();
+      if (!this.nax)
       {
         f2 = f(paramRecyclerView, paramw);
-        f3 = this.mzR.bwh();
-        f1 = Q(paramw) + this.mzR.bwi() + o(paramRecyclerView);
+        f3 = this.naz.bAn();
+        f1 = Q(paramw) + this.naz.bAo() + o(paramRecyclerView);
         f2 = f3 + f2;
       }
     }
     for (;;)
     {
-      paramRunnable = this.mzR.cO(this.mxK);
+      paramRunnable = this.naz.cQ(this.mYs);
       paramRecyclerView = paramRunnable;
       if (paramRunnable == null) {
-        paramRecyclerView = this.mxK;
+        paramRecyclerView = this.mYs;
       }
-      ac.i("ItemInsertHelper", "alvinluo finishMove transX: %f, transY: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f1) });
-      this.mxK.findViewById(2131305201).setVisibility(4);
+      ad.i("ItemInsertHelper", "alvinluo finishMove transX: %f, transY: %f", new Object[] { Float.valueOf(f2), Float.valueOf(f1) });
+      this.mYs.findViewById(2131305201).setVisibility(4);
       paramRecyclerView.animate().scaleX(1.0F).scaleY(1.0F).setDuration(300L).setListener(null).start();
-      this.mxK.animate().translationX(f2).translationY(f1).setDuration(300L).setListener(new Animator.AnimatorListener()
-      {
-        public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-        
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(49825);
-          k.this.mqR.removeView(k.this.mxK);
-          if (!k.this.mzP)
-          {
-            paramw.asD.setVisibility(0);
-            local4.run();
-            AppMethodBeat.o(49825);
-            return;
-          }
-          if ((localw != null) && (localw.asD != null)) {
-            localw.asD.setVisibility(0);
-          }
-          if (paramw != null)
-          {
-            paramw.asD.setVisibility(0);
-            paramw.asD.setScaleX(0.0F);
-            paramw.asD.setScaleY(0.0F);
-            paramw.asD.animate().scaleX(1.0F).scaleY(1.0F).alpha(1.0F).setDuration(300L).setListener(null).start();
-          }
-          local4.run();
-          k.this.mxK.setScaleX(1.0F);
-          k.this.mxK.setScaleY(1.0F);
-          AppMethodBeat.o(49825);
-        }
-        
-        public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-        
-        public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-      }).start();
+      this.mYs.animate().translationX(f2).translationY(f1).setDuration(300L).setListener(new k.5(this, paramw, local4, localw)).start();
       AppMethodBeat.o(49830);
       return;
-      if ((localw == null) || (paramInt != localw.lv()))
+      if ((localw == null) || (paramInt != localw.lN()))
       {
-        if (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).jW() > paramInt) {
+        if (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).km() > paramInt) {
           f1 -= paramRecyclerView.getHeight();
         } else {
           f1 = paramRecyclerView.getHeight() + f1;
         }
       }
-      else if (this.mzP)
+      else if (this.nax)
       {
         f2 = f(paramRecyclerView, localw);
-        f3 = this.mzR.bwh();
+        f3 = this.naz.bAn();
         f1 = Q(localw);
-        float f5 = this.mzR.bwi();
+        float f5 = this.naz.bAo();
         float f4 = o(paramRecyclerView);
         f1 = f1 + f5 + f4;
-        ac.i("ItemInsertHelper", "alvinluo finishMove computeMoveExtraY %f", new Object[] { Float.valueOf(f4) });
+        ad.i("ItemInsertHelper", "alvinluo finishMove computeMoveExtraY %f", new Object[] { Float.valueOf(f4) });
         f2 = f3 + f2;
         continue;
-        ac.e("ItemInsertHelper", "alvinluo finishMove viewHolder is null");
+        ad.e("ItemInsertHelper", "alvinluo finishMove viewHolder is null");
         AppMethodBeat.o(49830);
         return;
       }
@@ -296,8 +261,8 @@ public final class k<T extends RecyclerView.w>
     }
     paramView.setTranslationX(paramView.getTranslationX() - paramFloat1);
     paramView.setTranslationY(paramView.getTranslationY() - paramFloat2);
-    if (this.mzQ != null) {
-      this.mzQ.a(paramw, paramView, this.mzO, paramInt);
+    if (this.nay != null) {
+      this.nay.a(paramw, paramView, this.naw, paramInt);
     }
     AppMethodBeat.o(49831);
   }
@@ -305,15 +270,15 @@ public final class k<T extends RecyclerView.w>
   public final boolean a(final RecyclerView paramRecyclerView, T paramT1, T paramT2, final int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(49829);
-    ac.i("ItemInsertHelper", "alvinluo ItemInsertHelper onMoved isHasInserted: " + this.mzP + ", from: " + paramInt1 + ", to: " + paramInt2);
+    ad.i("ItemInsertHelper", "alvinluo ItemInsertHelper onMoved isHasInserted: " + this.nax + ", from: " + paramInt1 + ", to: " + paramInt2);
     if (paramInt2 < 0)
     {
       AppMethodBeat.o(49829);
       return false;
     }
-    if (!this.mzP)
+    if (!this.nax)
     {
-      this.mzN.add(paramInt2, this.mzO);
+      this.nav.add(paramInt2, this.naw);
       paramRecyclerView.post(new Runnable()
       {
         public final void run()
@@ -323,20 +288,20 @@ public final class k<T extends RecyclerView.w>
           AppMethodBeat.o(49821);
         }
       });
-      this.mzP = true;
-      if (this.mzR != null) {
-        this.mzR.byN();
+      this.nax = true;
+      if (this.naz != null) {
+        this.naz.bCQ();
       }
     }
     for (;;)
     {
       this.endPos = paramInt2;
-      if (this.mzR != null) {
-        this.mzR.g(this.mzO, paramInt2);
+      if (this.naz != null) {
+        this.naz.h(this.naw, paramInt2);
       }
       AppMethodBeat.o(49829);
       return true;
-      if ((paramInt1 < 0) || (paramInt1 >= this.mzN.size()) || (paramInt2 < 0) || (paramInt2 >= this.mzN.size()))
+      if ((paramInt1 < 0) || (paramInt1 >= this.nav.size()) || (paramInt2 < 0) || (paramInt2 >= this.nav.size()))
       {
         AppMethodBeat.o(49829);
         return false;
@@ -347,7 +312,7 @@ public final class k<T extends RecyclerView.w>
         i = paramInt1;
         while (i < paramInt2)
         {
-          Collections.swap(this.mzN, i, i + 1);
+          Collections.swap(this.nav, i, i + 1);
           i += 1;
         }
         if (paramRecyclerView != null) {
@@ -356,7 +321,7 @@ public final class k<T extends RecyclerView.w>
             public final void run()
             {
               AppMethodBeat.i(49822);
-              paramRecyclerView.getAdapter().ap(paramInt1, paramInt2);
+              paramRecyclerView.getAdapter().aq(paramInt1, paramInt2);
               AppMethodBeat.o(49822);
             }
           });
@@ -367,7 +332,7 @@ public final class k<T extends RecyclerView.w>
         i = paramInt1;
         while (i > paramInt2)
         {
-          Collections.swap(this.mzN, i, i - 1);
+          Collections.swap(this.nav, i, i - 1);
           i -= 1;
         }
         if (paramRecyclerView != null) {
@@ -376,7 +341,7 @@ public final class k<T extends RecyclerView.w>
             public final void run()
             {
               AppMethodBeat.i(49823);
-              paramRecyclerView.getAdapter().ap(paramInt1, paramInt2);
+              paramRecyclerView.getAdapter().aq(paramInt1, paramInt2);
               AppMethodBeat.o(49823);
             }
           });
@@ -388,26 +353,26 @@ public final class k<T extends RecyclerView.w>
   public final View g(RecyclerView paramRecyclerView, T paramT)
   {
     AppMethodBeat.i(49827);
-    this.mxK = i(paramRecyclerView, paramT);
-    if (this.mxK != null)
+    this.mYs = i(paramRecyclerView, paramT);
+    if (this.mYs != null)
     {
-      FrameLayout localFrameLayout = this.mqR;
+      FrameLayout localFrameLayout = this.cuk;
       paramRecyclerView = i(paramRecyclerView, paramT);
-      this.mxK = paramRecyclerView;
+      this.mYs = paramRecyclerView;
       localFrameLayout.addView(paramRecyclerView);
-      if ((paramT.lv() < 0) && (this.mxK != null))
+      if ((paramT.lN() < 0) && (this.mYs != null))
       {
-        this.mqR.removeView(this.mxK);
-        this.mxK = null;
+        this.cuk.removeView(this.mYs);
+        this.mYs = null;
         AppMethodBeat.o(49827);
         return null;
       }
-      this.mzP = false;
-      if (paramT.lv() < this.mzM.size())
+      this.nax = false;
+      if (paramT.lN() < this.nau.size())
       {
-        this.mzO = this.mzR.cA(this.mzM.get(paramT.lv()));
-        this.cUq = paramT.lv();
-        paramRecyclerView = this.mxK;
+        this.naw = this.naz.cC(this.nau.get(paramT.lN()));
+        this.dfG = paramT.lN();
+        paramRecyclerView = this.mYs;
         AppMethodBeat.o(49827);
         return paramRecyclerView;
       }
@@ -419,18 +384,18 @@ public final class k<T extends RecyclerView.w>
   public final void h(RecyclerView paramRecyclerView, T paramT)
   {
     AppMethodBeat.i(49833);
-    int i = paramT.lv();
-    ac.i("ItemInsertHelper", "[onDelete] position:".concat(String.valueOf(i)));
-    if ((i >= 0) && (i < this.mzM.size())) {
-      this.mzM.remove(i);
+    int i = paramT.lN();
+    ad.i("ItemInsertHelper", "[onDelete] position:".concat(String.valueOf(i)));
+    if ((i >= 0) && (i < this.nau.size())) {
+      this.nau.remove(i);
     }
     n(paramRecyclerView);
-    if (this.mzQ != null)
+    if (this.nay != null)
     {
-      if ((this.mzO instanceof AppBrandDesktopView.c)) {
-        ((AppBrandDesktopView.c)this.mzO).position = paramT.lv();
+      if ((this.naw instanceof AppBrandDesktopView.c)) {
+        ((AppBrandDesktopView.c)this.naw).position = paramT.lN();
       }
-      this.mzQ.cz(this.mzO);
+      this.nay.cB(this.naw);
     }
     AppMethodBeat.o(49833);
   }
@@ -438,7 +403,7 @@ public final class k<T extends RecyclerView.w>
   public final void m(RecyclerView paramRecyclerView)
   {
     AppMethodBeat.i(49834);
-    ac.i("ItemInsertHelper", "alvinluo onCancel");
+    ad.i("ItemInsertHelper", "alvinluo onCancel");
     n(paramRecyclerView);
     AppMethodBeat.o(49834);
   }
@@ -446,16 +411,16 @@ public final class k<T extends RecyclerView.w>
   public static abstract interface a
     extends m
   {
-    public abstract boolean C(Object paramObject1, Object paramObject2);
+    public abstract boolean E(Object paramObject1, Object paramObject2);
     
-    public abstract void byN();
+    public abstract void bCQ();
     
-    public abstract void byO();
+    public abstract void bCR();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b.k
  * JD-Core Version:    0.7.0.1
  */

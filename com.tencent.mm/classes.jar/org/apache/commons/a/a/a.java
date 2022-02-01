@@ -11,11 +11,11 @@ public final class a
   extends OutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private final List<byte[]> LYc;
-  private int LYd;
-  private int LYe;
-  private byte[] LYf;
-  private boolean LYg;
+  private final List<byte[]> NSB;
+  private int NSC;
+  private int NSD;
+  private byte[] NSE;
+  private boolean NSF;
   private int count;
   
   public a()
@@ -26,11 +26,11 @@ public final class a
   private a(byte paramByte)
   {
     AppMethodBeat.i(10290);
-    this.LYc = new ArrayList();
-    this.LYg = true;
+    this.NSB = new ArrayList();
+    this.NSF = true;
     try
     {
-      ajn(1024);
+      alY(1024);
       return;
     }
     finally
@@ -39,26 +39,26 @@ public final class a
     }
   }
   
-  private void ajn(int paramInt)
+  private void alY(int paramInt)
   {
     AppMethodBeat.i(10291);
-    if (this.LYd < this.LYc.size() - 1)
+    if (this.NSC < this.NSB.size() - 1)
     {
-      this.LYe += this.LYf.length;
-      this.LYd += 1;
-      this.LYf = ((byte[])this.LYc.get(this.LYd));
+      this.NSD += this.NSE.length;
+      this.NSC += 1;
+      this.NSE = ((byte[])this.NSB.get(this.NSC));
       AppMethodBeat.o(10291);
       return;
     }
-    if (this.LYf == null) {}
-    for (this.LYe = 0;; this.LYe += this.LYf.length)
+    if (this.NSE == null) {}
+    for (this.NSD = 0;; this.NSD += this.NSE.length)
     {
-      this.LYd += 1;
-      this.LYf = new byte[paramInt];
-      this.LYc.add(this.LYf);
+      this.NSC += 1;
+      this.NSE = new byte[paramInt];
+      this.NSB.add(this.NSE);
       AppMethodBeat.o(10291);
       return;
-      paramInt = Math.max(this.LYf.length << 1, paramInt - this.LYe);
+      paramInt = Math.max(this.NSE.length << 1, paramInt - this.NSD);
     }
   }
   
@@ -79,7 +79,7 @@ public final class a
           return arrayOfByte1;
         }
         byte[] arrayOfByte1 = new byte[j];
-        Iterator localIterator = this.LYc.iterator();
+        Iterator localIterator = this.NSB.iterator();
         int i = 0;
         int k;
         if (localIterator.hasNext())
@@ -115,14 +115,14 @@ public final class a
     try
     {
       AppMethodBeat.i(10293);
-      int j = this.count - this.LYe;
+      int j = this.count - this.NSD;
       int i = j;
-      if (j == this.LYf.length)
+      if (j == this.NSE.length)
       {
-        ajn(this.count + 1);
+        alY(this.count + 1);
         i = 0;
       }
-      this.LYf[i] = ((byte)paramInt);
+      this.NSE[i] = ((byte)paramInt);
       this.count += 1;
       AppMethodBeat.o(10293);
       return;
@@ -147,17 +147,17 @@ public final class a
     try
     {
       int m = this.count + paramInt2;
-      int j = this.count - this.LYe;
+      int j = this.count - this.NSD;
       int i = paramInt2;
       while (i > 0)
       {
-        int k = Math.min(i, this.LYf.length - j);
-        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.LYf, j, k);
+        int k = Math.min(i, this.NSE.length - j);
+        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.NSE, j, k);
         k = i - k;
         i = k;
         if (k > 0)
         {
-          ajn(m);
+          alY(m);
           j = 0;
           i = k;
         }
@@ -173,7 +173,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.music.e;
 
-import com.tencent.mm.ay.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.az.f;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.net.URL;
 import java.util.List;
 
 public abstract class g
   implements a
 {
-  protected f lrO;
-  protected c veO;
+  protected f lQY;
+  protected c wkj;
   
-  public boolean JI(int paramInt)
+  public boolean Lk(int paramInt)
   {
     return true;
   }
@@ -20,29 +20,29 @@ public abstract class g
   
   public final void a(c paramc)
   {
-    this.veO = paramc;
+    this.wkj = paramc;
   }
   
-  public String anB(String paramString)
+  public String asA(String paramString)
   {
     return paramString;
   }
   
-  public URL anC(String paramString)
+  public URL asB(String paramString)
   {
     return new URL(paramString);
   }
   
-  public f diz()
+  public f dsL()
   {
-    return this.lrO;
+    return this.lQY;
   }
   
   public void e(List<f> paramList, boolean paramBoolean) {}
   
   public boolean i(f paramf)
   {
-    this.lrO = paramf;
+    this.lQY = paramf;
     return true;
   }
   
@@ -60,39 +60,39 @@ public abstract class g
   
   public void l(f paramf)
   {
-    this.lrO = paramf;
+    this.lQY = paramf;
   }
   
-  public final void m(f paramf)
+  public void m(f paramf)
   {
-    if ((this.lrO != null) && (this.lrO.f(paramf)))
+    if ((this.lQY != null) && (this.lQY.f(paramf)))
     {
-      f localf = this.lrO;
-      localf.hNU = paramf.hNU;
-      localf.hNV = paramf.hNV;
-      localf.hNW = paramf.hNW;
-      localf.hNX = paramf.hNX;
-      localf.hOb = paramf.hOb;
-      localf.hOc = paramf.hOc;
-      localf.hOd = paramf.hOd;
-      localf.hOe = paramf.hOe;
-      localf.hOj = paramf.hOj;
-      localf.hOf = paramf.hOf;
-      localf.cSh = paramf.cSh;
+      f localf = this.lQY;
+      localf.ihi = paramf.ihi;
+      localf.ihj = paramf.ihj;
+      localf.ihk = paramf.ihk;
+      localf.ihl = paramf.ihl;
+      localf.ihp = paramf.ihp;
+      localf.ihq = paramf.ihq;
+      localf.ihr = paramf.ihr;
+      localf.ihs = paramf.ihs;
+      localf.ihx = paramf.ihx;
+      localf.iht = paramf.iht;
+      localf.ddx = paramf.ddx;
       localf.protocol = paramf.protocol;
-      localf.htq = paramf.htq;
+      localf.hLI = paramf.hLI;
       localf.volume = paramf.volume;
-      localf.hOe = paramf.hOe;
-      localf.htz = paramf.hty;
-      localf.htz = paramf.htz;
-      localf.hOp = paramf.hOp;
-      localf.hOq = paramf.hOq;
-      localf.dvl = paramf.dvl;
-      localf.hOs = paramf.hOs;
-      localf.hOr = paramf.hOr;
+      localf.ihs = paramf.ihs;
+      localf.hLR = paramf.hLQ;
+      localf.hLR = paramf.hLR;
+      localf.ihD = paramf.ihD;
+      localf.ihE = paramf.ihE;
+      localf.dHo = paramf.dHo;
+      localf.ihG = paramf.ihG;
+      localf.ihF = paramf.ihF;
       return;
     }
-    this.lrO = paramf;
+    this.lQY = paramf;
   }
   
   public void n(f paramf) {}
@@ -103,19 +103,19 @@ public abstract class g
   
   public void q(f paramf) {}
   
-  public f r(List<f> paramList, int paramInt)
+  public void r(f paramf) {}
+  
+  public f t(List<f> paramList, int paramInt)
   {
     if ((paramList == null) || (paramList.size() == 0) || (paramInt >= paramList.size()))
     {
-      ac.i("MicroMsg.Music.MusicBaseLogic", "music wrapper list error");
+      ad.i("MicroMsg.Music.MusicBaseLogic", "music wrapper list error");
       return null;
     }
-    this.lrO = ((f)paramList.get(paramInt));
-    ac.i("MicroMsg.Music.MusicBaseLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(paramInt) });
-    return this.lrO;
+    this.lQY = ((f)paramList.get(paramInt));
+    ad.i("MicroMsg.Music.MusicBaseLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(paramInt) });
+    return this.lQY;
   }
-  
-  public void r(f paramf) {}
 }
 
 

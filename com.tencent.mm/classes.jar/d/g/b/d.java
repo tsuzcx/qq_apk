@@ -1,16 +1,23 @@
 package d.g.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/jvm/internal/ClassBasedDeclarationContainer;", "Lkotlin/reflect/KDeclarationContainer;", "jClass", "Ljava/lang/Class;", "getJClass", "()Ljava/lang/Class;", "kotlin-stdlib"})
-public abstract interface d
-  extends d.l.d
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/jvm/internal/ByteCompanionObject;", "", "()V", "MAX_VALUE", "", "MIN_VALUE", "SIZE_BITS", "", "SIZE_BYTES", "kotlin-stdlib"})
+public final class d
 {
-  public abstract Class<?> fOt();
+  public static final d MLy;
+  
+  static
+  {
+    AppMethodBeat.i(199622);
+    MLy = new d();
+    AppMethodBeat.o(199622);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     d.g.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,8 +13,8 @@ public class MiniProgramNavigationBackResult
   implements Parcelable
 {
   public static final Parcelable.Creator<MiniProgramNavigationBackResult> CREATOR;
-  public JSONObject jhV;
-  public JSONObject jhW;
+  public JSONObject jBe;
+  public JSONObject jBf;
   
   static
   {
@@ -30,14 +30,14 @@ public class MiniProgramNavigationBackResult
     AppMethodBeat.i(134628);
     try
     {
-      this.jhV = new JSONObject(bs.bG(paramParcel.readString(), "{}"));
-      this.jhW = new JSONObject(bs.bG(paramParcel.readString(), "{}"));
+      this.jBe = new JSONObject(bt.bI(paramParcel.readString(), "{}"));
+      this.jBf = new JSONObject(bt.bI(paramParcel.readString(), "{}"));
       AppMethodBeat.o(134628);
       return;
     }
     catch (JSONException paramParcel)
     {
-      ac.e("MicroMsg.AppBrand.MiniProgramNavigationBackResult", "readFromParcel, ex = %s", new Object[] { paramParcel });
+      ad.e("MicroMsg.AppBrand.MiniProgramNavigationBackResult", "readFromParcel, ex = %s", new Object[] { paramParcel });
       AppMethodBeat.o(134628);
     }
   }
@@ -55,7 +55,7 @@ public class MiniProgramNavigationBackResult
     if (paramJSONObject1 == null)
     {
       paramJSONObject1 = localJSONObject;
-      localMiniProgramNavigationBackResult.jhV = ((JSONObject)paramJSONObject1);
+      localMiniProgramNavigationBackResult.jBe = ((JSONObject)paramJSONObject1);
       paramJSONObject1 = new JSONObject();
       if (paramJSONObject2 != null) {
         break label80;
@@ -63,7 +63,7 @@ public class MiniProgramNavigationBackResult
     }
     for (;;)
     {
-      localMiniProgramNavigationBackResult.jhW = ((JSONObject)paramJSONObject1);
+      localMiniProgramNavigationBackResult.jBf = ((JSONObject)paramJSONObject1);
       AppMethodBeat.o(134626);
       return localMiniProgramNavigationBackResult;
       break;
@@ -81,21 +81,21 @@ public class MiniProgramNavigationBackResult
   {
     Object localObject2 = null;
     AppMethodBeat.i(134627);
-    if (this.jhV == null)
+    if (this.jBe == null)
     {
       localObject1 = null;
       paramParcel.writeString((String)localObject1);
-      if (this.jhW != null) {
+      if (this.jBf != null) {
         break label54;
       }
     }
     label54:
-    for (Object localObject1 = localObject2;; localObject1 = this.jhW.toString())
+    for (Object localObject1 = localObject2;; localObject1 = this.jBf.toString())
     {
       paramParcel.writeString((String)localObject1);
       AppMethodBeat.o(134627);
       return;
-      localObject1 = this.jhV.toString();
+      localObject1 = this.jBe.toString();
       break;
     }
   }

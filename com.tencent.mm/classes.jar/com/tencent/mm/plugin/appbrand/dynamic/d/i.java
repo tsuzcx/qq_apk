@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 import android.os.Bundle;
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.ab.b.b.a;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.extension.f;
 import com.tencent.mm.model.y.b;
 import com.tencent.mm.modelappbrand.t;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 import org.json.JSONObject;
 
 public final class i
@@ -21,14 +21,14 @@ public final class i
     super("openApp", 326);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121330);
-    parama = parama.afz();
+    parama = parama.ail();
     b localb = new b();
     localb.id = parama.getString("__page_view_id", "");
     localb.url = paramJSONObject.optString("url", "");
-    XIPCInvoker.a(parama.getString("__process_name", ai.getProcessName()), localb, a.class, new d() {});
+    XIPCInvoker.a(parama.getString("__process_name", aj.getProcessName()), localb, a.class, new d() {});
     AppMethodBeat.o(121330);
   }
   

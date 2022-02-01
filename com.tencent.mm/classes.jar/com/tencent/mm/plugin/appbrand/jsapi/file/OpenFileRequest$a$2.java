@@ -4,7 +4,7 @@ import android.content.Context;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cq.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.tbs.one.TBSOneManager;
 import java.util.HashMap;
@@ -14,52 +14,52 @@ final class OpenFileRequest$a$2
 {
   OpenFileRequest$a$2(OpenFileRequest.a parama, TBSOneManager paramTBSOneManager) {}
   
-  public final boolean bgL()
+  public final boolean bkq()
   {
-    AppMethodBeat.i(186619);
-    boolean bool = OpenFileRequest.a.a(this.krI);
-    AppMethodBeat.o(186619);
+    AppMethodBeat.i(188352);
+    boolean bool = OpenFileRequest.a.a(this.kNe);
+    AppMethodBeat.o(188352);
     return bool;
   }
   
-  public final boolean bgM()
+  public final boolean bkr()
   {
-    AppMethodBeat.i(186620);
-    if (!this.krJ.isComponentInstalled("file")) {}
+    AppMethodBeat.i(188353);
+    if (!this.kNf.isComponentInstalled("file")) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.AppBrand.OpenFileRequest", "needDownloadMiniQB: %b", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(186620);
+      ad.i("MicroMsg.AppBrand.OpenFileRequest", "needDownloadMiniQB: %b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(188353);
       return bool;
     }
   }
   
-  public final void bgN()
+  public final void bks()
   {
-    AppMethodBeat.i(186621);
-    MMActivity localMMActivity = OpenFileRequest.a.b(this.krI);
+    AppMethodBeat.i(188354);
+    MMActivity localMMActivity = OpenFileRequest.a.b(this.kNe);
     if (localMMActivity == null)
     {
-      ac.w("MicroMsg.AppBrand.OpenFileRequest", "get context return null");
-      AppMethodBeat.o(186621);
+      ad.w("MicroMsg.AppBrand.OpenFileRequest", "get context return null");
+      AppMethodBeat.o(188354);
       return;
     }
-    OpenFileRequest.a.a(this.krI, localMMActivity, this.krJ);
-    AppMethodBeat.o(186621);
+    OpenFileRequest.a.a(this.kNe, localMMActivity, this.kNf);
+    AppMethodBeat.o(188354);
   }
   
   public final void d(int paramInt, Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback, ValueCallback<Integer> paramValueCallback1)
   {
-    AppMethodBeat.i(186622);
+    AppMethodBeat.i(188355);
     as.a(paramInt, paramContext, paramString1, paramString2, paramString3, paramBoolean, paramHashMap, paramValueCallback, paramValueCallback1);
-    AppMethodBeat.o(186622);
+    AppMethodBeat.o(188355);
   }
   
-  public final void r(Context paramContext, String paramString1, String paramString2)
+  public final void s(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186623);
-    as.o(paramContext, paramString1, paramString2);
-    AppMethodBeat.o(186623);
+    AppMethodBeat.i(188356);
+    as.p(paramContext, paramString1, paramString2);
+    AppMethodBeat.o(188356);
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mm.loader.l;
 
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class b
 {
-  public static final String gNl = com.tencent.mm.loader.j.b.aph() + ".tmp";
-  public static final String gNm = com.tencent.mm.loader.j.b.aph() + ".loader";
-  public static long gNn = 0L;
+  public static final String hhi = com.tencent.mm.loader.j.b.arU() + ".tmp";
+  public static final String hhj = com.tencent.mm.loader.j.b.arU() + ".loader";
+  public static long hhk = 0L;
   
-  public static String aqj()
+  public static String asY()
   {
-    Object localObject = new StringBuilder().append(gNl).append("/");
+    Object localObject = new StringBuilder().append(hhi).append("/");
     long l = System.currentTimeMillis();
     localObject = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-    ac.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] get tmp file path:%s", new Object[] { localObject });
-    e locale = new e(gNl);
+    ad.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] get tmp file path:%s", new Object[] { localObject });
+    e locale = new e(hhi);
     if (!locale.exists()) {
       locale.mkdirs();
     }

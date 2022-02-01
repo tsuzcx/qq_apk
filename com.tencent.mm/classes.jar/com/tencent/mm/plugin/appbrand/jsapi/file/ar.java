@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.b.p;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.appcache.az;
 import com.tencent.mm.plugin.appbrand.appcache.ba;
-import com.tencent.mm.plugin.appbrand.appcache.be;
-import com.tencent.mm.plugin.appbrand.appcache.bl;
+import com.tencent.mm.plugin.appbrand.appcache.bb;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
 import com.tencent.mm.plugin.appbrand.appstorage.LuggageLocalFileObjectManager;
 import com.tencent.mm.plugin.appbrand.appstorage.l;
@@ -19,8 +19,8 @@ import com.tencent.mm.plugin.appbrand.appstorage.t;
 import com.tencent.mm.plugin.appbrand.appstorage.w;
 import com.tencent.mm.plugin.appbrand.appstorage.x;
 import com.tencent.mm.plugin.appbrand.z.i;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.q;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -34,7 +34,7 @@ public class ar
   {
     AppMethodBeat.i(147172);
     ar.class.getClassLoader();
-    com.tencent.mm.compatible.util.j.sC("appbrandcommon");
+    com.tencent.mm.compatible.util.j.vr("appbrandcommon");
     AppMethodBeat.o(147172);
   }
   
@@ -42,41 +42,41 @@ public class ar
   {
     super(new LinkedList());
     AppMethodBeat.i(147163);
-    if (bl.V(paramc) != null) {}
-    for (Object localObject = new az(be.U(paramc));; localObject = ba.S(paramc))
+    if (bm.P(paramc) != null) {}
+    for (Object localObject = new ba(bf.O(paramc));; localObject = bb.M(paramc))
     {
-      this.jti.clear();
-      n localn = new n(AppBrandLocalMediaObjectManager.aXR() + paramc.mAppId + "/", paramc.mAppId, "wxfile://");
-      localn.jsY = (paramd.ccC * 1048576L);
-      x localx1 = cZ(p.getString(paramc.DC().uin), paramc.mAppId);
-      localx1.jtp = (paramd.ccC * 1048576L);
-      x localx2 = da(p.getString(paramc.DC().uin), paramc.mAppId);
-      localx2.jtp = (paramd.jCX * 1048576L);
-      this.jti.add(localx2);
-      localx2 = db(p.getString(paramc.DC().uin), paramc.mAppId);
-      localx2.jtp = 9223372036854775807L;
-      this.jti.add(localx2);
-      paramc = dc(p.getString(paramc.DC().uin), paramc.mAppId);
-      paramc.jtp = (paramd.ccC * 1048576L);
-      this.jti.add(paramc);
-      this.jti.add(localx1);
-      this.jti.add(localn);
-      this.jti.add(localObject);
+      this.jNc.clear();
+      n localn = new n(AppBrandLocalMediaObjectManager.Mt() + paramc.mAppId + "/", paramc.mAppId, "wxfile://");
+      localn.jMS = (paramd.cmT * 1048576L);
+      x localx1 = db(p.getString(paramc.Fb().uin), paramc.mAppId);
+      localx1.jNj = (paramd.cmT * 1048576L);
+      x localx2 = dc(p.getString(paramc.Fb().uin), paramc.mAppId);
+      localx2.jNj = (paramd.jWT * 1048576L);
+      this.jNc.add(localx2);
+      localx2 = dd(p.getString(paramc.Fb().uin), paramc.mAppId);
+      localx2.jNj = 9223372036854775807L;
+      this.jNc.add(localx2);
+      paramc = de(p.getString(paramc.Fb().uin), paramc.mAppId);
+      paramc.jNj = (paramd.cmT * 1048576L);
+      this.jNc.add(paramc);
+      this.jNc.add(localx1);
+      this.jNc.add(localn);
+      this.jNc.add(localObject);
       initialize();
       AppMethodBeat.o(147163);
       return;
     }
   }
   
-  public static String bgC()
+  public static String bkh()
   {
-    AppMethodBeat.i(210395);
-    String str = AppBrandLocalMediaObjectManager.aXR();
-    AppMethodBeat.o(210395);
+    AppMethodBeat.i(221598);
+    String str = AppBrandLocalMediaObjectManager.Mt();
+    AppMethodBeat.o(221598);
     return str;
   }
   
-  public static x cZ(String paramString1, String paramString2)
+  public static x db(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147168);
     paramString1 = new x(m(new String[] { paramString1, paramString2 }), "wxfile://usr");
@@ -84,7 +84,7 @@ public class ar
     return paramString1;
   }
   
-  public static x da(String paramString1, String paramString2)
+  public static x dc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147169);
     paramString1 = new x(m(new String[] { paramString1, paramString2, "opendata" }), "wxfile://opendata");
@@ -92,7 +92,7 @@ public class ar
     return paramString1;
   }
   
-  public static x db(String paramString1, String paramString2)
+  public static x dd(String paramString1, String paramString2)
   {
     AppMethodBeat.i(147170);
     paramString1 = new x(m(new String[] { paramString1, paramString2, "clientdata" }), "wxfile://clientdata");
@@ -100,7 +100,7 @@ public class ar
     return paramString1;
   }
   
-  public static x dc(String paramString1, String paramString2)
+  public static x de(String paramString1, String paramString2)
   {
     AppMethodBeat.i(182990);
     paramString1 = new x(m(new String[] { paramString1, paramString2, "singlePage" }), "wxfile://singlepage");
@@ -116,17 +116,17 @@ public class ar
     int i = 0;
     while (i < j)
     {
-      ((StringBuilder)localObject).append(bs.nullAsNil(paramVarArgs[i])).append(';');
+      ((StringBuilder)localObject).append(bt.nullAsNil(paramVarArgs[i])).append(';');
       i += 1;
     }
     String str = g.getMessageDigest(((StringBuilder)localObject).toString().getBytes());
-    if (!com.tencent.mm.compatible.util.e.YD()) {}
+    if (!com.tencent.mm.compatible.util.e.abf()) {}
     for (paramVarArgs = null; paramVarArgs == null; paramVarArgs = new com.tencent.mm.vfs.e(paramVarArgs + "wxanewfiles/"))
     {
-      ac.e("MicroMsg.AppBrand.LuggageFileSystemRegistryWC", "getIndependentRootPath, extRoot NULL");
+      ad.e("MicroMsg.AppBrand.LuggageFileSystemRegistryWC", "getIndependentRootPath, extRoot NULL");
       AppMethodBeat.o(147171);
       return null;
-      localObject = com.tencent.mm.loader.j.b.aph();
+      localObject = com.tencent.mm.loader.j.b.arU();
       paramVarArgs = (String[])localObject;
       if (!((String)localObject).endsWith("/")) {
         paramVarArgs = (String)localObject + "/";
@@ -137,10 +137,10 @@ public class ar
     return paramVarArgs;
   }
   
-  public final com.tencent.mm.vfs.e IU(String paramString)
+  public final com.tencent.mm.vfs.e Ml(String paramString)
   {
     AppMethodBeat.i(147166);
-    paramString = ((n)av(n.class)).IU(paramString);
+    paramString = ((n)av(n.class)).Ml(paramString);
     AppMethodBeat.o(147166);
     return paramString;
   }
@@ -157,11 +157,11 @@ public class ar
   {
     AppMethodBeat.i(147164);
     Object localObject = Uri.parse(paramString);
-    if (("wxfile".equals(((Uri)localObject).getScheme())) && (bs.isNullOrNil(((Uri)localObject).getAuthority())))
+    if (("wxfile".equals(((Uri)localObject).getScheme())) && (bt.isNullOrNil(((Uri)localObject).getAuthority())))
     {
       paramString = new LinkedList();
       ((n)av(n.class)).a("", parami);
-      if (!bs.gY((List)parami.value))
+      if (!bt.hj((List)parami.value))
       {
         localObject = ((List)parami.value).iterator();
         while (((Iterator)localObject).hasNext())
@@ -171,10 +171,10 @@ public class ar
         }
       }
       com.tencent.luggage.h.b.c(paramString, (List)parami.value);
-      ((x)Jc("wxfile://usr")).a("wxfile://usr", parami);
+      ((x)Mt("wxfile://usr")).a("wxfile://usr", parami);
       com.tencent.luggage.h.b.c(paramString, (List)parami.value);
       parami.value = paramString;
-      paramString = l.jsB;
+      paramString = l.jMv;
       AppMethodBeat.o(147164);
       return paramString;
     }
@@ -183,17 +183,17 @@ public class ar
     return paramString;
   }
   
-  public final List<w> aYc()
+  public final List<w> bbA()
   {
     AppMethodBeat.i(147167);
-    List localList = ((n)av(n.class)).jsW.aYe();
+    List localList = ((n)av(n.class)).jMQ.bbC();
     AppMethodBeat.o(147167);
     return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ar
  * JD-Core Version:    0.7.0.1
  */

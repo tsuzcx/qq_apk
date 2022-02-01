@@ -2,8 +2,8 @@ package d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.a.a;
-import d.g.b.f;
-import d.g.b.k;
+import d.g.b.i;
+import d.g.b.p;
 import d.l;
 import java.io.Serializable;
 import java.util.Collection;
@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.RandomAccess;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/EmptyList;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "get", "index", "hashCode", "indexOf", "isEmpty", "iterator", "", "lastIndexOf", "listIterator", "", "readResolve", "subList", "fromIndex", "toIndex", "toString", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/EmptyList;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "Ljava/util/RandomAccess;", "Lkotlin/collections/RandomAccess;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "get", "index", "hashCode", "indexOf", "isEmpty", "iterator", "", "lastIndexOf", "listIterator", "", "readResolve", "subList", "fromIndex", "toIndex", "toString", "", "kotlin-stdlib"})
 public final class v
   implements a, Serializable, List, RandomAccess
 {
-  public static final v KTF;
+  public static final v MKE;
   
   static
   {
     AppMethodBeat.i(129160);
-    KTF = new v();
+    MKE = new v();
     AppMethodBeat.o(129160);
   }
   
   private final Object readResolve()
   {
-    return KTF;
+    return MKE;
   }
   
   public final boolean addAll(int paramInt, Collection paramCollection)
@@ -62,7 +62,7 @@ public final class v
       AppMethodBeat.o(129153);
       return false;
     }
-    k.h((Void)paramObject, "element");
+    p.h((Void)paramObject, "element");
     AppMethodBeat.o(129153);
     return false;
   }
@@ -70,7 +70,7 @@ public final class v
   public final boolean containsAll(Collection paramCollection)
   {
     AppMethodBeat.i(129154);
-    k.h(paramCollection, "elements");
+    p.h(paramCollection, "elements");
     boolean bool = paramCollection.isEmpty();
     AppMethodBeat.o(129154);
     return bool;
@@ -101,7 +101,7 @@ public final class v
       AppMethodBeat.o(129156);
       return -1;
     }
-    k.h((Void)paramObject, "element");
+    p.h((Void)paramObject, "element");
     AppMethodBeat.o(129156);
     return -1;
   }
@@ -113,7 +113,7 @@ public final class v
   
   public final Iterator iterator()
   {
-    return (Iterator)u.KTE;
+    return (Iterator)u.MKD;
   }
   
   public final int lastIndexOf(Object paramObject)
@@ -124,14 +124,14 @@ public final class v
       AppMethodBeat.o(129157);
       return -1;
     }
-    k.h((Void)paramObject, "element");
+    p.h((Void)paramObject, "element");
     AppMethodBeat.o(129157);
     return -1;
   }
   
   public final ListIterator listIterator()
   {
-    return (ListIterator)u.KTE;
+    return (ListIterator)u.MKD;
   }
   
   public final ListIterator listIterator(int paramInt)
@@ -143,7 +143,7 @@ public final class v
       AppMethodBeat.o(129158);
       throw ((Throwable)localObject);
     }
-    Object localObject = (ListIterator)u.KTE;
+    Object localObject = (ListIterator)u.MKD;
     AppMethodBeat.o(129158);
     return localObject;
   }
@@ -189,7 +189,7 @@ public final class v
   public final Object[] toArray()
   {
     AppMethodBeat.i(129171);
-    Object[] arrayOfObject = f.s(this);
+    Object[] arrayOfObject = i.t(this);
     AppMethodBeat.o(129171);
     return arrayOfObject;
   }
@@ -197,7 +197,7 @@ public final class v
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129172);
-    paramArrayOfT = f.a(this, paramArrayOfT);
+    paramArrayOfT = i.a(this, paramArrayOfT);
     AppMethodBeat.o(129172);
     return paramArrayOfT;
   }

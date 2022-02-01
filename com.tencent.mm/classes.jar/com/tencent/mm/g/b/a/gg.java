@@ -6,42 +6,42 @@ import com.tencent.mm.plugin.report.a;
 public final class gg
   extends a
 {
-  public long dCQ = 0L;
-  private String ebs;
-  public long ebt = 0L;
+  public long enB = 0L;
+  public String enC = "";
+  public String enD = "";
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(149944);
+    AppMethodBeat.i(19868);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dCQ);
+    ((StringBuffer)localObject).append(this.enB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ebs);
+    ((StringBuffer)localObject).append(this.enC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ebt);
+    ((StringBuffer)localObject).append(this.enD);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(149944);
+    awz((String)localObject);
+    AppMethodBeat.o(19868);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(149945);
+    AppMethodBeat.i(19869);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Action:").append(this.dCQ);
+    ((StringBuffer)localObject).append("LogType:").append(this.enB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReqKey:").append(this.ebs);
+    ((StringBuffer)localObject).append("WechatLanguage:").append(this.enC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterSettingScene:").append(this.ebt);
+    ((StringBuffer)localObject).append("InputLanguage:").append(this.enD);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149945);
+    AppMethodBeat.o(19869);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18262;
+    return 15493;
   }
 }
 

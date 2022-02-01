@@ -1,19 +1,31 @@
 package com.tencent.mm.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/model/panel/SmileyPanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/PanelGroupModel;", "Lcom/tencent/mm/emoji/model/panel/SmileyItemGroup;", "()V", "data", "getData", "()Lcom/tencent/mm/emoji/model/panel/SmileyItemGroup;", "setData", "(Lcom/tencent/mm/emoji/model/panel/SmileyItemGroup;)V", "createData", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/model/panel/PanelTab;", "", "type", "", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "groupIndex", "(ILcom/tencent/mm/storage/emotion/EmojiGroupInfo;I)V", "getGroupIndex", "()I", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "getType", "Companion", "plugin-emojisdk_release"})
 public final class ag
-  extends x<af>
 {
-  public af fSr;
+  public static final ag.a glP;
+  public final int bEA;
+  public final EmojiGroupInfo gin;
+  public final int type;
   
-  public ag()
+  static
   {
-    AppMethodBeat.i(105586);
-    this.fSr = new af();
-    AppMethodBeat.o(105586);
+    AppMethodBeat.i(105580);
+    glP = new ag.a((byte)0);
+    AppMethodBeat.o(105580);
+  }
+  
+  public ag(int paramInt1, EmojiGroupInfo paramEmojiGroupInfo, int paramInt2)
+  {
+    AppMethodBeat.i(105579);
+    this.type = paramInt1;
+    this.gin = paramEmojiGroupInfo;
+    this.bEA = paramInt2;
+    AppMethodBeat.o(105579);
   }
 }
 

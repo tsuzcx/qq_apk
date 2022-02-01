@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader_app.detail;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.d.e;
+import com.tencent.mm.plugin.game.luggage.f.f;
 import com.tencent.xweb.WebView;
 
 public class b
-  extends e
+  extends f
 {
   public b(Context paramContext)
   {

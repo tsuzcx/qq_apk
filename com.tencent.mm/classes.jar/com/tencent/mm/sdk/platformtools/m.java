@@ -1,72 +1,140 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.support.v4.content.FileProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.g;
 import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
-import java.io.File;
+import java.io.IOException;
 
 public final class m
 {
-  public static Uri a(Context paramContext, e parame)
+  public static boolean aLc(String paramString)
   {
-    AppMethodBeat.i(156179);
-    parame = i.k(q.B(parame.mUri), false);
-    if (parame == null) {
-      paramContext = null;
-    }
-    for (;;)
+    AppMethodBeat.i(157532);
+    try
     {
-      AppMethodBeat.o(156179);
-      return paramContext;
-      if (Build.VERSION.SDK_INT >= 24) {
-        paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", new File(parame));
-      } else {
-        paramContext = Uri.fromFile(new File(parame));
+      if (new e(paramString).mkdirs())
+      {
+        paramString = new e(paramString + ".nomedia");
+        boolean bool = paramString.exists();
+        if (bool) {}
       }
+      try
+      {
+        paramString.createNewFile();
+        AppMethodBeat.o(157532);
+        return true;
+      }
+      catch (IOException paramString)
+      {
+        for (;;)
+        {
+          ad.printErrStackTrace("MicroMsg.FilePathGenerator", paramString, "", new Object[0]);
+        }
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(157532);
     }
   }
   
-  public static void a(Context paramContext, Intent paramIntent, Uri paramUri, String paramString)
+  private static String aQh(String paramString)
   {
-    AppMethodBeat.i(156178);
-    String str = paramUri.getScheme();
-    if ((str == null) || (str.isEmpty()) || (str.equals("file")) || (str.equals("wcf")))
+    AppMethodBeat.i(157531);
+    if (bt.isNullOrNil(paramString))
     {
-      a(paramContext, paramIntent, new e(paramUri.getPath()), paramString);
-      AppMethodBeat.o(156178);
-      return;
+      AppMethodBeat.o(157531);
+      return null;
     }
-    paramIntent.setDataAndType(paramUri, paramString);
-    paramIntent.addFlags(1);
-    AppMethodBeat.o(156178);
+    if (paramString.length() <= 4)
+    {
+      AppMethodBeat.o(157531);
+      return null;
+    }
+    paramString = paramString.substring(0, 2) + "/" + paramString.substring(2, 4) + "/";
+    AppMethodBeat.o(157531);
+    return paramString;
   }
   
-  public static void a(Context paramContext, Intent paramIntent, e parame, String paramString)
+  private static String b(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(156177);
-    String str = i.k(q.B(parame.mUri), false);
-    if (str == null) {
-      paramContext = null;
-    }
-    while ((h.IS_FLAVOR_RED) && (paramContext == null))
+    AppMethodBeat.i(157533);
+    if (bt.isNullOrNil(paramString1))
     {
-      paramContext = new IllegalArgumentException("Path cannot be exported via provider: ".concat(String.valueOf(parame)));
-      AppMethodBeat.o(156177);
-      throw paramContext;
-      if (Build.VERSION.SDK_INT >= 24) {
-        paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", new File(str));
-      } else {
-        paramContext = Uri.fromFile(new File(str));
+      AppMethodBeat.o(157533);
+      return null;
+    }
+    if (!paramString1.endsWith("/"))
+    {
+      AppMethodBeat.o(157533);
+      return null;
+    }
+    String str = "";
+    if (paramInt == 1) {
+      str = aQh(paramString3);
+    }
+    while (bt.isNullOrNil(str))
+    {
+      AppMethodBeat.o(157533);
+      return null;
+      if (paramInt == 2) {
+        if (bt.isNullOrNil(paramString3)) {
+          str = null;
+        } else {
+          str = aQh(g.getMessageDigest(paramString3.getBytes()));
+        }
       }
     }
-    paramIntent.setDataAndType(paramContext, paramString).addFlags(1);
-    AppMethodBeat.o(156177);
+    paramString1 = paramString1 + str;
+    if ((paramBoolean) && (!aLc(paramString1)))
+    {
+      AppMethodBeat.o(157533);
+      return null;
+    }
+    paramString1 = paramString1 + bt.nullAsNil(paramString2) + paramString3 + bt.nullAsNil(paramString4);
+    AppMethodBeat.o(157533);
+    return paramString1;
+  }
+  
+  public static String b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
+  {
+    AppMethodBeat.i(157535);
+    paramString1 = paramString1 + paramString3 + paramString4 + paramString5;
+    paramString2 = b(paramString2, paramString3, paramString4, paramString5, 1, paramBoolean);
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)))
+    {
+      AppMethodBeat.o(157535);
+      return null;
+    }
+    paramString3 = new e(paramString2);
+    paramString4 = new e(paramString1);
+    if (paramString3.exists())
+    {
+      AppMethodBeat.o(157535);
+      return paramString2;
+    }
+    if (paramString4.exists()) {
+      p.C(paramString1, paramString2, false);
+    }
+    AppMethodBeat.o(157535);
+    return paramString2;
+  }
+  
+  public static String d(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    AppMethodBeat.i(157534);
+    paramString1 = b(paramString1, paramString2, paramString3, paramString4, paramInt, true);
+    AppMethodBeat.o(157534);
+    return paramString1;
+  }
+  
+  public static String j(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    AppMethodBeat.i(157536);
+    paramString1 = b(paramString1, paramString2, paramString3, paramString4, paramString5, true);
+    AppMethodBeat.o(157536);
+    return paramString1;
   }
 }
 

@@ -10,17 +10,17 @@ public abstract class a<T>
   implements AbsListView.OnScrollListener
 {
   private static final String TAG = "MicroMsg." + a.class.getName();
-  protected boolean fYC;
+  protected boolean grY;
   
   public a(Context paramContext, T paramT)
   {
     super(paramContext, paramT);
-    wy(true);
+    xk(true);
   }
   
-  public abstract boolean bSw();
+  public abstract boolean bXb();
   
-  public abstract int bSx();
+  public abstract int bXc();
   
   public abstract int getShowCount();
   
@@ -28,7 +28,7 @@ public abstract class a<T>
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.fYC = false;
+    this.grY = false;
   }
 }
 

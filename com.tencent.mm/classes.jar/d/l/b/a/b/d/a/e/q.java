@@ -5,17 +5,17 @@ import java.util.List;
 public abstract interface q
   extends p, x
 {
-  public abstract List<y> fQU();
+  public abstract List<y> gis();
   
-  public abstract v fTA();
+  public abstract v gkZ();
   
-  public abstract b fTB();
+  public abstract b gla();
   
-  public abstract boolean fTC();
+  public abstract boolean glb();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.e.q
  * JD-Core Version:    0.7.0.1
  */

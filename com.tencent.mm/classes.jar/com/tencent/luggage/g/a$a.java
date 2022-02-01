@@ -12,19 +12,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a$a
   extends com.tencent.mm.plugin.appbrand.widget.a
 {
-  private Configuration abC;
-  private final Resources cfU;
-  private DisplayMetrics cfV;
+  private Configuration adt;
+  private final Resources cqk;
+  private DisplayMetrics cql;
   
   a$a(a parama, Resources paramResources, DisplayMetrics paramDisplayMetrics)
   {
     super(paramResources);
     AppMethodBeat.i(169463);
-    this.cfU = paramResources;
-    this.cfV = paramDisplayMetrics;
-    parama = new Configuration(this.cfU.getConfiguration());
+    this.cqk = paramResources;
+    this.cql = paramDisplayMetrics;
+    parama = new Configuration(this.cqk.getConfiguration());
     paramResources = new DisplayMetrics();
-    paramResources.setTo(this.cfU.getDisplayMetrics());
+    paramResources.setTo(this.cqk.getDisplayMetrics());
     updateConfiguration(parama, paramResources);
     AppMethodBeat.o(169463);
   }
@@ -32,8 +32,8 @@ final class a$a
   private Drawable v(Drawable paramDrawable)
   {
     AppMethodBeat.i(169466);
-    if (((paramDrawable instanceof BitmapDrawable)) && (this.cfV != null)) {
-      ((BitmapDrawable)paramDrawable).setTargetDensity(this.cfV.densityDpi);
+    if (((paramDrawable instanceof BitmapDrawable)) && (this.cql != null)) {
+      ((BitmapDrawable)paramDrawable).setTargetDensity(this.cql.densityDpi);
     }
     AppMethodBeat.o(169466);
     return paramDrawable;
@@ -42,9 +42,9 @@ final class a$a
   public final Configuration getConfiguration()
   {
     AppMethodBeat.i(169465);
-    if (this.abC != null)
+    if (this.adt != null)
     {
-      localConfiguration = this.abC;
+      localConfiguration = this.adt;
       AppMethodBeat.o(169465);
       return localConfiguration;
     }
@@ -56,7 +56,7 @@ final class a$a
   public final int getDimensionPixelOffset(int paramInt)
   {
     AppMethodBeat.i(169471);
-    paramInt = vi(paramInt);
+    paramInt = vO(paramInt);
     AppMethodBeat.o(169471);
     return paramInt;
   }
@@ -64,7 +64,7 @@ final class a$a
   public final int getDimensionPixelSize(int paramInt)
   {
     AppMethodBeat.i(169472);
-    paramInt = vj(paramInt);
+    paramInt = vP(paramInt);
     AppMethodBeat.o(169472);
     return paramInt;
   }
@@ -72,9 +72,9 @@ final class a$a
   public final DisplayMetrics getDisplayMetrics()
   {
     AppMethodBeat.i(169464);
-    if (this.cfV != null)
+    if (this.cql != null)
     {
-      localDisplayMetrics = this.cfV;
+      localDisplayMetrics = this.cql;
       AppMethodBeat.o(169464);
       return localDisplayMetrics;
     }
@@ -86,13 +86,13 @@ final class a$a
   public final Drawable getDrawable(int paramInt)
   {
     AppMethodBeat.i(169467);
-    if (this.cfV != null)
+    if (this.cql != null)
     {
-      localDrawable = getDrawableForDensity(paramInt, this.cfV.densityDpi);
+      localDrawable = getDrawableForDensity(paramInt, this.cql.densityDpi);
       AppMethodBeat.o(169467);
       return localDrawable;
     }
-    Drawable localDrawable = v(this.cfU.getDrawable(paramInt));
+    Drawable localDrawable = v(this.cqk.getDrawable(paramInt));
     AppMethodBeat.o(169467);
     return localDrawable;
   }
@@ -101,13 +101,13 @@ final class a$a
   public final Drawable getDrawable(int paramInt, Resources.Theme paramTheme)
   {
     AppMethodBeat.i(169468);
-    if (this.cfV != null)
+    if (this.cql != null)
     {
-      paramTheme = getDrawableForDensity(paramInt, this.cfV.densityDpi, paramTheme);
+      paramTheme = getDrawableForDensity(paramInt, this.cql.densityDpi, paramTheme);
       AppMethodBeat.o(169468);
       return paramTheme;
     }
-    paramTheme = v(this.cfU.getDrawable(paramInt, paramTheme));
+    paramTheme = v(this.cqk.getDrawable(paramInt, paramTheme));
     AppMethodBeat.o(169468);
     return paramTheme;
   }
@@ -120,11 +120,11 @@ final class a$a
     if (paramInt2 == 0)
     {
       i = paramInt2;
-      if (this.cfV != null) {
-        i = this.cfV.densityDpi;
+      if (this.cql != null) {
+        i = this.cql.densityDpi;
       }
     }
-    Drawable localDrawable = this.cfU.getDrawableForDensity(paramInt1, i);
+    Drawable localDrawable = this.cqk.getDrawableForDensity(paramInt1, i);
     AppMethodBeat.o(169469);
     return localDrawable;
   }
@@ -137,11 +137,11 @@ final class a$a
     if (paramInt2 == 0)
     {
       i = paramInt2;
-      if (this.cfV != null) {
-        i = this.cfV.densityDpi;
+      if (this.cql != null) {
+        i = this.cql.densityDpi;
       }
     }
-    paramTheme = this.cfU.getDrawableForDensity(paramInt1, i, paramTheme);
+    paramTheme = this.cqk.getDrawableForDensity(paramInt1, i, paramTheme);
     AppMethodBeat.o(169470);
     return paramTheme;
   }
@@ -149,13 +149,13 @@ final class a$a
   public final void updateConfiguration(Configuration paramConfiguration, DisplayMetrics paramDisplayMetrics)
   {
     AppMethodBeat.i(169473);
-    if (this.cfV != null)
+    if (this.cql != null)
     {
-      this.cfV = a.a(this.cfW, paramDisplayMetrics, paramConfiguration);
-      this.abC = new Configuration(paramConfiguration);
-      this.abC.densityDpi = this.cfV.densityDpi;
-      super.updateConfiguration(this.abC, this.cfV);
-      this.cfU.updateConfiguration(paramConfiguration, paramDisplayMetrics);
+      this.cql = a.a(this.cqm, paramDisplayMetrics, paramConfiguration);
+      this.adt = new Configuration(paramConfiguration);
+      this.adt.densityDpi = this.cql.densityDpi;
+      super.updateConfiguration(this.adt, this.cql);
+      this.cqk.updateConfiguration(paramConfiguration, paramDisplayMetrics);
       AppMethodBeat.o(169473);
       return;
     }

@@ -1,391 +1,66 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.m;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.i;
-import com.tencent.mm.vfs.q;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONStringer;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import d.l;
 
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/model/WebViewVisitReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "appId", "", "chattype", "", "desc", "enterTime", "", "expidstr", "hasShowKeyboard", "lastResumeTime", "mPreUsername", "mPreviousUrl", "messageId", "messageIndex", "newMsgId", "publishId", "publisher", "rawUrl", "scene", "statExtStr", "stayTime", "title", "username", "viewID", "onPause", "", "onResume", "report", "setAppId", "setChattype", "setDesc", "setExpidstr", "setHasShowKeyboard", "showKeyboard", "", "setMessageId", "setMessageIndex", "setPreUsername", "setPreviousUrl", "url", "setPublishId", "setPublisher", "setRawUrl", "setScene", "setStatExtStr", "setTitle", "setUserName", "setViewID", "plugin-webview_release"})
 public final class aw
 {
-  public static String aBX(String paramString)
+  public String DNH;
+  public long DUA;
+  public int DUB;
+  public String DUC;
+  public String DUD;
+  public String DUE;
+  public int DUF;
+  public int DUG;
+  public String DUz;
+  public String appId;
+  public long dBD;
+  public String dKk;
+  public String desc;
+  final long enterTime;
+  public String fkz;
+  public String hDf;
+  public long lastResumeTime;
+  public int scene;
+  public String title;
+  public String username;
+  public String zRz;
+  
+  public aw()
   {
-    AppMethodBeat.i(79047);
-    Object localObject = new e(b.aps());
-    if (!((e)localObject).mkdirs()) {
-      ac.i("MicroMsg.WebviewJSSDKUtil", "mkdirs failed.File is exist = " + ((e)localObject).exists());
-    }
-    if (!((e)localObject).exists()) {
-      ac.e("MicroMsg.WebviewJSSDKUtil", "camera storage path do not exist.(%s)", new Object[] { b.aps() });
-    }
-    localObject = q.B(((e)localObject).fxV()) + "/" + paramString + ".jpg";
-    ac.i("MicroMsg.WebviewJSSDKUtil", "get file path from capture file name : %s == %s", new Object[] { paramString, localObject });
-    AppMethodBeat.o(79047);
-    return localObject;
+    AppMethodBeat.i(207596);
+    this.title = "";
+    this.desc = "";
+    this.lastResumeTime = -1L;
+    this.enterTime = (System.currentTimeMillis() / 1000L);
+    AppMethodBeat.o(207596);
   }
   
-  private static Intent aBY(String paramString)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements b<IPCVoid, IPCString>
   {
-    AppMethodBeat.i(79048);
-    Intent localIntent = new Intent("android.media.action.IMAGE_CAPTURE");
-    paramString = aBX(paramString);
-    localIntent.putExtra("output", m.a(ai.getContext(), new e(paramString)));
-    AppMethodBeat.o(79048);
-    return localIntent;
-  }
-  
-  public static String aBZ(String paramString)
-  {
-    AppMethodBeat.i(79051);
-    ac.i("MicroMsg.WebviewJSSDKUtil", "genLocalIdByFilePath, file path is ：%s", new Object[] { paramString });
-    if (bs.isNullOrNil(paramString))
+    public static final a DUH;
+    
+    static
     {
-      AppMethodBeat.o(79051);
-      return null;
-    }
-    String str = "weixin://resourceid/" + ah.dg(paramString);
-    ac.i("MicroMsg.WebviewJSSDKUtil", "gen local id by filepath, filepath : %s, localid : %s", new Object[] { paramString, str });
-    AppMethodBeat.o(79051);
-    return str;
-  }
-  
-  public static String aCa(String paramString)
-  {
-    AppMethodBeat.i(79052);
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eCa().aBU(paramString);
-    if (localWebViewJSSDKFileItem != null)
-    {
-      ac.i("MicroMsg.WebviewJSSDKUtil", "get local thumb filepath from local id :%s", new Object[] { localWebViewJSSDKFileItem.kmB });
-      paramString = localWebViewJSSDKFileItem.kmB;
-      AppMethodBeat.o(79052);
-      return paramString;
-    }
-    ac.e("MicroMsg.WebviewJSSDKUtil", "fromLocalIdToFilePath, local map not contains the local id : %s", new Object[] { paramString });
-    AppMethodBeat.o(79052);
-    return null;
-  }
-  
-  public static String aCb(String paramString)
-  {
-    AppMethodBeat.i(79053);
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eCa().aBU(paramString);
-    if (localWebViewJSSDKFileItem != null)
-    {
-      ac.i("MicroMsg.WebviewJSSDKUtil", "get orignal filepath from local id :%s", new Object[] { localWebViewJSSDKFileItem.jAH });
-      paramString = localWebViewJSSDKFileItem.jAH;
-      AppMethodBeat.o(79053);
-      return paramString;
-    }
-    ac.e("MicroMsg.WebviewJSSDKUtil", "getOrigFilePathByLocalId, local map not contains the local id : %s", new Object[] { paramString });
-    AppMethodBeat.o(79053);
-    return null;
-  }
-  
-  static InputStream aCc(String paramString)
-  {
-    AppMethodBeat.i(79058);
-    ac.i("MicroMsg.WebviewJSSDKUtil", "getDataFromLocalId : %s", new Object[] { paramString });
-    if (bs.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(79058);
-      return null;
-    }
-    if ((!bs.isNullOrNil(paramString)) && (i.eA(paramString))) {
-      try
-      {
-        paramString = i.openRead(paramString);
-        AppMethodBeat.o(79058);
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        ac.e("MicroMsg.WebviewJSSDKUtil", "init file input stream error : %s", new Object[] { paramString.getMessage() });
-      }
-    }
-    AppMethodBeat.o(79058);
-    return null;
-  }
-  
-  public static String aCd(String paramString)
-  {
-    AppMethodBeat.i(79059);
-    paramString = "_USER_FOR_WEBVIEW_JSAPI" + s.u(paramString, bs.eWj());
-    AppMethodBeat.o(79059);
-    return paramString;
-  }
-  
-  public static String aL(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(79054);
-    if (paramArrayList.size() == 0)
-    {
-      ac.e("MicroMsg.WebviewJSSDKUtil", "data is null");
-      AppMethodBeat.o(79054);
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    int i = 0;
-    while (i < paramArrayList.size())
-    {
-      localJSONArray.put((String)paramArrayList.get(i));
-      i += 1;
-    }
-    paramArrayList = localJSONArray.toString();
-    AppMethodBeat.o(79054);
-    return paramArrayList;
-  }
-  
-  public static Intent aM(String paramString1, String paramString2, String paramString3)
-  {
-    int i = 1;
-    AppMethodBeat.i(79046);
-    Intent localIntent = new Intent("android.intent.action.GET_CONTENT");
-    localIntent.addCategory("android.intent.category.OPENABLE");
-    Object localObject;
-    if (bs.isNullOrNil(paramString1))
-    {
-      localIntent.setType("*/*");
-      localObject = null;
-      if (bs.isNullOrNil(paramString2)) {
-        break label337;
-      }
-      if (!"camera".equalsIgnoreCase(paramString2)) {
-        break label151;
-      }
-      paramString1 = aBY(paramString3);
-      i = 0;
-      paramString1 = new Intent[] { paramString1 };
-    }
-    for (;;)
-    {
-      if ((i != 0) || (paramString1 == null) || (paramString1.length == 0))
-      {
-        paramString2 = new Intent("android.intent.action.CHOOSER");
-        paramString2.putExtra("android.intent.extra.INITIAL_INTENTS", paramString1);
-        paramString2.putExtra("android.intent.extra.TITLE", ai.getContext().getString(2131766283));
-        paramString2.putExtra("android.intent.extra.INTENT", localIntent);
-        AppMethodBeat.o(79046);
-        return paramString2;
-        localIntent.setType(paramString1);
-        break;
-        label151:
-        if ("camcorder".equalsIgnoreCase(paramString2))
-        {
-          paramString1 = eBB();
-          i = 0;
-          paramString1 = new Intent[] { paramString1 };
-          continue;
-        }
-        if ("microphone".equalsIgnoreCase(paramString2))
-        {
-          paramString1 = eBC();
-          i = 0;
-          paramString1 = new Intent[] { paramString1 };
-          continue;
-        }
-        if ((!"*".equalsIgnoreCase(paramString2)) && (!"true".equalsIgnoreCase(paramString2)) && (!"false".equalsIgnoreCase(paramString2))) {
-          break label383;
-        }
-        if (paramString1.equalsIgnoreCase("image/*"))
-        {
-          paramString1 = new Intent[1];
-          paramString1[0] = aBY(paramString3);
-          paramString3 = paramString1;
-        }
-      }
-      for (;;)
-      {
-        if (("false".equalsIgnoreCase(paramString2)) || ("*".equalsIgnoreCase(paramString2)))
-        {
-          paramString1 = paramString3;
-          break;
-          if (paramString1.equalsIgnoreCase("audio/*"))
-          {
-            paramString3 = new Intent[1];
-            paramString3[0] = eBC();
-          }
-          else
-          {
-            paramString3 = localObject;
-            if (paramString1.equalsIgnoreCase("video/*"))
-            {
-              paramString3 = new Intent[1];
-              paramString3[0] = eBB();
-              continue;
-              label337:
-              if (d.la(16))
-              {
-                ac.i("MicroMsg.WebviewJSSDKUtil", "android API version is below 16.");
-                paramString1 = aBY(paramString3);
-                i = 0;
-                paramString1 = new Intent[] { paramString1 };
-                break;
-                paramString1 = paramString1[0];
-                AppMethodBeat.o(79046);
-                return paramString1;
-              }
-              label383:
-              i = 0;
-              paramString1 = null;
-              break;
-            }
-          }
-        }
-      }
-      i = 0;
-      paramString1 = paramString3;
+      AppMethodBeat.i(207594);
+      DUH = new a();
+      AppMethodBeat.o(207594);
     }
   }
   
-  public static String aM(ArrayList<String> paramArrayList)
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "curUsername", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class b<T>
+    implements d<ResultType>
   {
-    AppMethodBeat.i(79055);
-    if (paramArrayList.size() == 0)
-    {
-      ac.e("MicroMsg.WebviewJSSDKUtil", "data is null");
-      AppMethodBeat.o(79055);
-      return "";
-    }
-    JSONStringer localJSONStringer = new JSONStringer();
-    try
-    {
-      localJSONStringer.array();
-      localJSONStringer.object();
-      int i = 0;
-      while (i < paramArrayList.size())
-      {
-        String str = (String)paramArrayList.get(i);
-        localJSONStringer.key("localId");
-        localJSONStringer.value(str);
-        i += 1;
-      }
-      localJSONStringer.endObject();
-      localJSONStringer.endArray();
-      paramArrayList = localJSONStringer.toString();
-      AppMethodBeat.o(79055);
-      return paramArrayList;
-    }
-    catch (Exception paramArrayList)
-    {
-      ac.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramArrayList, "", new Object[0]);
-      AppMethodBeat.o(79055);
-    }
-    return "";
-  }
-  
-  public static String aN(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(79056);
-    if (bs.gY(paramArrayList))
-    {
-      AppMethodBeat.o(79056);
-      return "";
-    }
-    JSONStringer localJSONStringer = new JSONStringer();
-    try
-    {
-      localJSONStringer.array();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        String str = (String)paramArrayList.next();
-        WebViewJSSDKFileItem localWebViewJSSDKFileItem = g.eCa().aBU(str);
-        if ((localWebViewJSSDKFileItem instanceof WebViewJSSDKImageItem))
-        {
-          localJSONStringer.object();
-          localJSONStringer.key("localId");
-          localJSONStringer.value(str);
-          localJSONStringer.key("height");
-          localJSONStringer.value(localWebViewJSSDKFileItem.height);
-          localJSONStringer.key("width");
-          localJSONStringer.value(localWebViewJSSDKFileItem.width);
-          localJSONStringer.key("isGif");
-          localJSONStringer.value(((WebViewJSSDKImageItem)localWebViewJSSDKFileItem).sNg);
-          localJSONStringer.endObject();
-        }
-      }
-      localJSONStringer.endArray();
-    }
-    catch (Exception paramArrayList)
-    {
-      ac.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramArrayList, "", new Object[0]);
-      AppMethodBeat.o(79056);
-      return "";
-    }
-    paramArrayList = localJSONStringer.toString();
-    AppMethodBeat.o(79056);
-    return paramArrayList;
-  }
-  
-  public static String b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(79057);
-    if (bs.isNullOrNil(paramString1))
-    {
-      ac.e("MicroMsg.WebviewJSSDKUtil", "parseVideoItemToJson localId is null");
-      AppMethodBeat.o(79057);
-      return "";
-    }
-    JSONStringer localJSONStringer = new JSONStringer();
-    try
-    {
-      localJSONStringer.array();
-      localJSONStringer.object();
-      localJSONStringer.key("localId");
-      localJSONStringer.value(paramString1);
-      localJSONStringer.key("thumbLocalId");
-      localJSONStringer.value(paramString2);
-      localJSONStringer.key("duration");
-      localJSONStringer.value(String.valueOf(paramInt1));
-      localJSONStringer.key("height");
-      localJSONStringer.value(String.valueOf(paramInt2));
-      localJSONStringer.key("width");
-      localJSONStringer.value(String.valueOf(paramInt3));
-      localJSONStringer.key("size");
-      localJSONStringer.value(String.valueOf(paramInt4));
-      localJSONStringer.endObject();
-      localJSONStringer.endArray();
-      paramString1 = localJSONStringer.toString();
-      AppMethodBeat.o(79057);
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      ac.printErrStackTrace("MicroMsg.WebviewJSSDKUtil", paramString1, "", new Object[0]);
-      AppMethodBeat.o(79057);
-    }
-    return "";
-  }
-  
-  private static Intent eBB()
-  {
-    AppMethodBeat.i(79049);
-    Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
-    AppMethodBeat.o(79049);
-    return localIntent;
-  }
-  
-  private static Intent eBC()
-  {
-    AppMethodBeat.i(79050);
-    Intent localIntent = new Intent("android.provider.MediaStore.RECORD_SOUND");
-    AppMethodBeat.o(79050);
-    return localIntent;
+    b(aw paramaw) {}
   }
 }
 

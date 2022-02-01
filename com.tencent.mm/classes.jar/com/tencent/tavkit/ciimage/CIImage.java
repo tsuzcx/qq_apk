@@ -1,18 +1,21 @@
 package com.tencent.tavkit.ciimage;
 
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.PointF;
 import android.opengl.EGL14;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tav.asset.AssetUtils;
 import com.tencent.tav.coremedia.CGRect;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.TextureInfo;
+import com.tencent.tav.decoder.DecoderUtils;
 import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
@@ -20,13 +23,14 @@ import com.tencent.tavkit.utils.MathUtils;
 import com.tencent.tavkit.utils.TAVBitmapUtils;
 import com.tencent.tavkit.utils.Utils;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 public class CIImage
   implements Cloneable
 {
-  public static boolean LOG_VERBOSE = false;
+  private static Bitmap.Config[] SUPPORT_CONFIGS = { Bitmap.Config.ALPHA_8, Bitmap.Config.RGB_565, Bitmap.Config.ARGB_4444, Bitmap.Config.ARGB_8888 };
   private final String TAG;
   private float alpha;
   private Bitmap bitmap;
@@ -34,6 +38,7 @@ public class CIImage
   private boolean isHardMode;
   private final List<CIImage> overlayImages;
   private int preferRotation;
+  private int rotation;
   private final CGSize size;
   private String textureCacheKey;
   private TextureInfo textureInfo;
@@ -41,46 +46,40 @@ public class CIImage
   
   public CIImage(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(191801);
+    AppMethodBeat.i(219586);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "CIImage() called with: bitmap = [" + paramBitmap + "]");
-    }
-    this.bitmap = paramBitmap;
+    Logger.v(this.TAG, "CIImage() called with: bitmap = [" + paramBitmap + "]");
+    this.bitmap = checkBitmapConfig(paramBitmap);
     this.size = new CGSize(paramBitmap.getWidth(), paramBitmap.getHeight());
-    AppMethodBeat.o(191801);
+    AppMethodBeat.o(219586);
   }
   
   public CIImage(CGSize paramCGSize)
   {
-    AppMethodBeat.i(191799);
+    AppMethodBeat.i(219584);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "CIImage() called with: renderSize = [" + paramCGSize + "]");
-    }
+    Logger.v(this.TAG, "CIImage() called with: renderSize = [" + paramCGSize + "]");
     this.size = paramCGSize;
-    AppMethodBeat.o(191799);
+    AppMethodBeat.o(219584);
   }
   
   public CIImage(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(191800);
+    AppMethodBeat.i(219585);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
     this.alpha = 1.0F;
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "CIImage() called with: textureInfo = [" + paramTextureInfo + "]");
-    }
+    Logger.v(this.TAG, "CIImage() called with: textureInfo = [" + paramTextureInfo + "]");
     this.textureInfo = paramTextureInfo;
     this.size = new CGSize(paramTextureInfo.width, paramTextureInfo.height);
-    AppMethodBeat.o(191800);
+    AppMethodBeat.o(219585);
   }
   
   public CIImage(String paramString)
@@ -90,7 +89,7 @@ public class CIImage
   
   public CIImage(String paramString, CGSize paramCGSize)
   {
-    AppMethodBeat.i(191802);
+    AppMethodBeat.i(219587);
     this.TAG = ("CIImage@" + Integer.toHexString(hashCode()));
     this.overlayImages = new ArrayList();
     this.isHardMode = false;
@@ -98,26 +97,22 @@ public class CIImage
     long l = System.currentTimeMillis();
     this.preferRotation = TAVBitmapUtils.readImagePreferRotation(paramString);
     this.bitmap = decodeBitmap(paramString, paramCGSize);
+    this.bitmap = checkBitmapConfig(this.bitmap);
     if (this.bitmap != null)
     {
       this.size = new CGSize(this.bitmap.getWidth(), this.bitmap.getHeight());
-      if (LOG_VERBOSE)
-      {
-        Logger.d(this.TAG, "CIImage() called with: imagePath = [" + paramString + "], sampleSize = " + paramCGSize + ", BitmapFactory.decodeFile cons ms = " + (System.currentTimeMillis() - l) + ", outBitmapSize = " + this.size);
-        AppMethodBeat.o(191802);
-      }
+      Logger.v(this.TAG, "CIImage() called with: imagePath = [" + paramString + "], sampleSize = " + paramCGSize + ", BitmapFactory.decodeFile cons ms = " + (System.currentTimeMillis() - l) + ", outBitmapSize = " + this.size);
+      AppMethodBeat.o(219587);
+      return;
     }
-    else
-    {
-      Logger.e(this.TAG, "CIImage: 图片解码失败！imagePath = ".concat(String.valueOf(paramString)));
-      this.size = new CGSize();
-    }
-    AppMethodBeat.o(191802);
+    Logger.e(this.TAG, "CIImage: 图片解码失败！imagePath = ".concat(String.valueOf(paramString)));
+    this.size = new CGSize();
+    AppMethodBeat.o(219587);
   }
   
   private void addOverlayImage(CIImage paramCIImage)
   {
-    AppMethodBeat.i(191808);
+    AppMethodBeat.i(219595);
     try
     {
       this.overlayImages.add(paramCIImage);
@@ -125,14 +120,27 @@ public class CIImage
     }
     finally
     {
-      AppMethodBeat.o(191808);
+      AppMethodBeat.o(219595);
     }
+  }
+  
+  private Bitmap checkBitmapConfig(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(219589);
+    if (Arrays.binarySearch(SUPPORT_CONFIGS, paramBitmap.getConfig()) < 0)
+    {
+      paramBitmap = transcodeBitmap(paramBitmap);
+      AppMethodBeat.o(219589);
+      return paramBitmap;
+    }
+    AppMethodBeat.o(219589);
+    return paramBitmap;
   }
   
   private Bitmap decodeBitmap(String paramString, CGSize paramCGSize)
   {
     int i = 1;
-    AppMethodBeat.i(191803);
+    AppMethodBeat.i(219588);
     BitmapFactory.Options localOptions1 = new BitmapFactory.Options();
     localOptions1.inJustDecodeBounds = true;
     BitmapFactory.decodeFile(paramString, localOptions1);
@@ -141,38 +149,52 @@ public class CIImage
       i = (int)(localOptions1.outWidth / paramCGSize.width);
     }
     localOptions2.inSampleSize = i;
+    localOptions2.inPreferredConfig = Bitmap.Config.ARGB_8888;
     paramString = BitmapFactory.decodeFile(paramString, localOptions2);
-    AppMethodBeat.o(191803);
+    AppMethodBeat.o(219588);
     return paramString;
   }
   
   private Matrix getImageTextureMatrix()
   {
-    AppMethodBeat.i(191817);
+    AppMethodBeat.i(219607);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(new float[] { 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 1.0F, 0.0F, 0.0F, 1.0F });
-    AppMethodBeat.o(191817);
+    AppMethodBeat.o(219607);
     return localMatrix;
+  }
+  
+  private Bitmap transcodeBitmap(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(219590);
+    Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    localPaint.setAntiAlias(true);
+    localPaint.setDither(true);
+    localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
+    AppMethodBeat.o(219590);
+    return localBitmap;
   }
   
   public void applyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
   {
-    AppMethodBeat.i(191813);
+    AppMethodBeat.i(219603);
     Matrix localMatrix = new Matrix();
     switch (1.$SwitchMap$com$tencent$tavkit$composition$model$TAVVideoConfiguration$TAVVideoConfigurationContentMode[paramTAVVideoConfigurationContentMode.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(191813);
+      AppMethodBeat.o(219603);
       return;
       localMatrix.postConcat(MathUtils.transformBySourceRectFit(getExtent(), paramCGRect));
       imageByApplyingTransform(localMatrix);
-      AppMethodBeat.o(191813);
+      AppMethodBeat.o(219603);
       return;
       localMatrix.postConcat(MathUtils.transformBySourceRectFill(getExtent(), paramCGRect));
       imageByApplyingTransform(localMatrix);
-      AppMethodBeat.o(191813);
+      AppMethodBeat.o(219603);
       return;
       paramTAVVideoConfigurationContentMode = new Matrix();
       paramTAVVideoConfigurationContentMode.postScale(paramCGRect.size.width / getExtent().size.width, paramCGRect.size.height / getExtent().size.height);
@@ -184,47 +206,121 @@ public class CIImage
     }
   }
   
+  public void applyFixInSize(CGSize paramCGSize, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
+  {
+    AppMethodBeat.i(219601);
+    if (!Utils.isSizeValid(paramCGSize))
+    {
+      AppMethodBeat.o(219601);
+      return;
+    }
+    switch (1.$SwitchMap$com$tencent$tavkit$composition$model$TAVVideoConfiguration$TAVVideoConfigurationContentMode[paramTAVVideoConfigurationContentMode.ordinal()])
+    {
+    default: 
+      paramCGSize = MathUtils.sizeFit(this.size, paramCGSize);
+    }
+    for (;;)
+    {
+      paramTAVVideoConfigurationContentMode = new Matrix();
+      paramTAVVideoConfigurationContentMode.postScale(paramCGSize.width / this.size.width, paramCGSize.height / this.size.height);
+      imageByApplyingTransform(paramTAVVideoConfigurationContentMode);
+      this.size.height = paramCGSize.height;
+      this.size.width = paramCGSize.width;
+      AppMethodBeat.o(219601);
+      return;
+      paramCGSize = MathUtils.sizeFit(this.size, paramCGSize);
+      continue;
+      paramCGSize = MathUtils.sizeFill(this.size, paramCGSize);
+      continue;
+      paramCGSize = MathUtils.sizeScale(this.size, paramCGSize);
+    }
+  }
+  
+  public void applyFlip(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    float f4 = 0.0F;
+    float f3 = -1.0F;
+    AppMethodBeat.i(219596);
+    if ((!paramBoolean1) && (!paramBoolean2))
+    {
+      AppMethodBeat.o(219596);
+      return;
+    }
+    float f1;
+    float f2;
+    if (paramBoolean1)
+    {
+      f1 = -1.0F;
+      if (!paramBoolean1) {
+        break label114;
+      }
+      f2 = this.size.width;
+      label50:
+      if (!paramBoolean2) {
+        break label120;
+      }
+    }
+    for (;;)
+    {
+      if (paramBoolean2) {
+        f4 = this.size.height;
+      }
+      Matrix localMatrix = new Matrix();
+      localMatrix.postScale(f1, f3);
+      localMatrix.postTranslate(f2, f4);
+      imageByApplyingTransform(localMatrix);
+      AppMethodBeat.o(219596);
+      return;
+      f1 = 1.0F;
+      break;
+      label114:
+      f2 = 0.0F;
+      break label50;
+      label120:
+      f3 = 1.0F;
+    }
+  }
+  
   public void applyPreferRotation()
   {
-    AppMethodBeat.i(191809);
+    AppMethodBeat.i(219597);
     applyPreferRotation(0);
-    AppMethodBeat.o(191809);
+    AppMethodBeat.o(219597);
   }
   
   public void applyPreferRotation(int paramInt)
   {
-    AppMethodBeat.i(191810);
+    AppMethodBeat.i(219598);
     TextureInfo localTextureInfo = getDrawTextureInfo();
     if (localTextureInfo == null)
     {
-      AppMethodBeat.o(191810);
+      AppMethodBeat.o(219598);
       return;
     }
-    paramInt = localTextureInfo.preferRotation + paramInt;
-    if (paramInt == 0)
+    this.rotation = (localTextureInfo.preferRotation + paramInt);
+    if (this.rotation == 0)
     {
-      AppMethodBeat.o(191810);
+      AppMethodBeat.o(219598);
       return;
     }
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "applyPreferRotation: textureInfo.preferRotation = ".concat(String.valueOf(paramInt)));
-    }
+    Logger.v(this.TAG, "applyPreferRotation: textureInfo.preferRotation = " + this.rotation);
     Matrix localMatrix = new Matrix();
-    AssetUtils.getRotationMatrix(localMatrix, paramInt, localTextureInfo.width, localTextureInfo.height);
+    DecoderUtils.getRotationMatrix(localMatrix, this.rotation, localTextureInfo.width, localTextureInfo.height);
     imageByApplyingTransform(localMatrix);
-    if (paramInt % 2 == 1)
+    if (this.rotation % 2 == 1)
     {
       this.size.width = localTextureInfo.height;
       this.size.height = localTextureInfo.width;
     }
-    AppMethodBeat.o(191810);
+    AppMethodBeat.o(219598);
   }
   
   public CIImage clone()
   {
-    AppMethodBeat.i(191819);
-    CIImage localCIImage = new CIImage(this.size);
+    AppMethodBeat.i(219609);
+    CIImage localCIImage = new CIImage(this.size.clone());
     localCIImage.textureInfo = this.textureInfo;
+    localCIImage.textureCacheKey = this.textureCacheKey;
     localCIImage.bitmap = this.bitmap;
     localCIImage.preferRotation = this.preferRotation;
     localCIImage.transform = new Matrix(this.transform);
@@ -235,46 +331,40 @@ public class CIImage
       localCIImage.overlayImages.clear();
       localCIImage.overlayImages.addAll(this.overlayImages);
       localCIImage.alpha = this.alpha;
-      AppMethodBeat.o(191819);
+      AppMethodBeat.o(219609);
       return localCIImage;
     }
   }
   
-  public Bitmap convertToBitmap(CIContext paramCIContext)
+  @Deprecated
+  public Bitmap convertToBitmap()
   {
-    AppMethodBeat.i(191816);
-    TextureInfo localTextureInfo = CIContext.newTextureInfo((int)this.size.width, (int)this.size.height);
-    paramCIContext.convertImageToTexture(this, localTextureInfo);
-    paramCIContext = TAVGLUtils.saveBitmap(localTextureInfo);
-    localTextureInfo.release();
-    AppMethodBeat.o(191816);
-    return paramCIContext;
+    AppMethodBeat.i(219606);
+    Bitmap localBitmap = TAVGLUtils.saveBitmap(this);
+    AppMethodBeat.o(219606);
+    return localBitmap;
   }
   
   public void draw(TextureFilter paramTextureFilter)
   {
-    AppMethodBeat.i(191814);
+    AppMethodBeat.i(219604);
     Object localObject = getDrawTextureInfo();
     if (localObject != null)
     {
-      if (LOG_VERBOSE) {
-        Logger.v(this.TAG, "draw: with drawTexture = " + localObject + ", filter = " + paramTextureFilter);
-      }
+      Logger.v(this.TAG, "draw: with drawTexture = " + localObject + ", filter = " + paramTextureFilter);
       paramTextureFilter.applyFilter((TextureInfo)localObject, this.transform, ((TextureInfo)localObject).getTextureMatrix(), this.alpha, this.frame);
     }
     if (this.overlayImages.isEmpty())
     {
-      AppMethodBeat.o(191814);
+      AppMethodBeat.o(219604);
       return;
     }
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "draw: with: draw overlayImages = " + this.overlayImages + ", filter = " + paramTextureFilter);
-    }
+    Logger.v(this.TAG, "draw: with: draw overlayImages = " + this.overlayImages + ", filter = " + paramTextureFilter);
     localObject = this.overlayImages.iterator();
     while (((Iterator)localObject).hasNext()) {
       ((CIImage)((Iterator)localObject).next()).draw(paramTextureFilter);
     }
-    AppMethodBeat.o(191814);
+    AppMethodBeat.o(219604);
   }
   
   public float getAlpha()
@@ -284,11 +374,11 @@ public class CIImage
   
   public TextureInfo getDrawTextureInfo()
   {
-    AppMethodBeat.i(191815);
+    AppMethodBeat.i(219605);
     if (this.textureInfo != null)
     {
       localObject1 = this.textureInfo;
-      AppMethodBeat.o(191815);
+      AppMethodBeat.o(219605);
       return localObject1;
     }
     Object localObject1 = EGL14.eglGetCurrentContext();
@@ -298,7 +388,7 @@ public class CIImage
     Object localObject2 = ThreadLocalTextureCache.getInstance().getTextureInfo(this.textureCacheKey);
     if ((localObject1 != null) && (localObject2 != null) && (!((TextureInfo)localObject2).isReleased()))
     {
-      AppMethodBeat.o(191815);
+      AppMethodBeat.o(219605);
       return localObject2;
     }
     if (this.bitmap != null)
@@ -310,29 +400,25 @@ public class CIImage
       GLUtils.texImage2D(3553, 0, this.bitmap, 0);
       GLES20.glBindTexture(3553, 0);
       ThreadLocalTextureCache.getInstance().putTextureInfo(this.textureCacheKey, (TextureInfo)localObject2);
-      if (LOG_VERBOSE) {
-        Logger.v(this.TAG, "getDrawTextureInfo: bind bitmap texture, texture = " + localObject2 + ", eglContext = " + localObject1);
-      }
+      Logger.v(this.TAG, "getDrawTextureInfo: bind bitmap texture, texture = " + localObject2 + ", eglContext = " + localObject1);
       if (this.isHardMode)
       {
         this.bitmap.recycle();
         this.bitmap = null;
-        if (LOG_VERBOSE) {
-          Logger.v(this.TAG, "getDrawTextureInfo: isHardMode, bitmap.recycle()");
-        }
+        Logger.v(this.TAG, "getDrawTextureInfo: isHardMode, bitmap.recycle()");
       }
-      AppMethodBeat.o(191815);
+      AppMethodBeat.o(219605);
       return localObject2;
     }
-    AppMethodBeat.o(191815);
+    AppMethodBeat.o(219605);
     return null;
   }
   
   public CGRect getExtent()
   {
-    AppMethodBeat.i(191804);
+    AppMethodBeat.i(219591);
     CGRect localCGRect = new CGRect(new PointF(0.0F, 0.0F), this.size);
-    AppMethodBeat.o(191804);
+    AppMethodBeat.o(219591);
     return localCGRect;
   }
   
@@ -346,45 +432,60 @@ public class CIImage
     return this.transform;
   }
   
+  public CIImage imageApplyFillInFrame(CGRect paramCGRect, TAVVideoConfiguration.TAVVideoConfigurationContentMode paramTAVVideoConfigurationContentMode)
+  {
+    AppMethodBeat.i(219602);
+    TAVVideoConfiguration.TAVVideoConfigurationContentMode localTAVVideoConfigurationContentMode = TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFill;
+    applyFillInFrame(paramCGRect, paramTAVVideoConfigurationContentMode);
+    AppMethodBeat.o(219602);
+    return this;
+  }
+  
   public CIImage imageByApplyingTransform(Matrix paramMatrix)
   {
-    AppMethodBeat.i(191807);
+    AppMethodBeat.i(219594);
     if (this.transform == null) {
       this.transform = new Matrix();
     }
     this.transform.postConcat(paramMatrix);
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "imageByApplyingTransform() called with: in transform = [" + paramMatrix + "], result transform = " + this.transform);
-    }
-    AppMethodBeat.o(191807);
+    Logger.v(this.TAG, "imageByApplyingTransform() called with: in transform = [" + paramMatrix + "], result transform = " + this.transform);
+    AppMethodBeat.o(219594);
     return this;
   }
   
   public CIImage imageByCompositingOverImage(CIImage paramCIImage)
   {
-    AppMethodBeat.i(191806);
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "imageByCompositingOverImage() called with: destImage = [" + paramCIImage + "]");
-    }
+    AppMethodBeat.i(219593);
+    Logger.v(this.TAG, "imageByCompositingOverImage() called with: destImage = [" + paramCIImage + "]");
     paramCIImage.addOverlayImage(this);
-    AppMethodBeat.o(191806);
+    AppMethodBeat.o(219593);
     return paramCIImage;
   }
   
   public CIImage imageByCroppingToRect(CGRect paramCGRect)
   {
-    AppMethodBeat.i(191811);
+    AppMethodBeat.i(219599);
     if (!Utils.isRectValid(paramCGRect))
     {
-      AppMethodBeat.o(191811);
+      AppMethodBeat.o(219599);
       return this;
     }
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "imageByCroppingToRect: frame = [" + paramCGRect + "]");
+    Logger.v(this.TAG, "imageByCroppingToRect: frame = [" + paramCGRect + "]");
+    this.size.width = paramCGRect.size.width;
+    this.size.height = paramCGRect.size.height;
+    if (this.rotation % 2 != 0) {}
+    for (this.frame = new CGRect(paramCGRect.origin.y, paramCGRect.origin.x, paramCGRect.size.height, paramCGRect.size.width);; this.frame = paramCGRect.clone())
+    {
+      paramCGRect = paramCGRect.origin;
+      if ((paramCGRect.x != 0.0F) || (paramCGRect.y != 0.0F))
+      {
+        Matrix localMatrix = new Matrix();
+        localMatrix.postTranslate(-paramCGRect.x, -paramCGRect.y);
+        imageByApplyingTransform(localMatrix);
+      }
+      AppMethodBeat.o(219599);
+      return this;
     }
-    this.frame = paramCGRect;
-    AppMethodBeat.o(191811);
-    return this;
   }
   
   public boolean isCanvasImage()
@@ -396,7 +497,7 @@ public class CIImage
   {
     try
     {
-      AppMethodBeat.i(191818);
+      AppMethodBeat.i(219608);
       Logger.d(this.TAG, "release() start");
       if ((this.bitmap != null) && (!this.bitmap.isRecycled()))
       {
@@ -421,32 +522,28 @@ public class CIImage
     }
     finally {}
     Logger.d(this.TAG, "release() end");
-    AppMethodBeat.o(191818);
+    AppMethodBeat.o(219608);
   }
   
   public void reset()
   {
-    AppMethodBeat.i(191805);
-    if (LOG_VERBOSE) {
-      Logger.d(this.TAG, "reset() called, before transform = " + this.transform);
-    }
+    AppMethodBeat.i(219592);
+    Logger.v(this.TAG, "reset() called, before transform = " + this.transform);
     if (this.transform != null) {
       this.transform = null;
     }
-    AppMethodBeat.o(191805);
+    AppMethodBeat.o(219592);
   }
   
   public CIImage safeApplyTransform(Matrix paramMatrix)
   {
-    AppMethodBeat.i(191812);
+    AppMethodBeat.i(219600);
     if ((paramMatrix == null) || (paramMatrix.isIdentity()))
     {
-      AppMethodBeat.o(191812);
+      AppMethodBeat.o(219600);
       return this;
     }
-    if (LOG_VERBOSE) {
-      Logger.v(this.TAG, "safeApplyTransform: transform = [" + paramMatrix + "]");
-    }
+    Logger.v(this.TAG, "safeApplyTransform: transform = [" + paramMatrix + "]");
     float f1 = getExtent().origin.x + getExtent().size.width / 2.0F;
     float f2 = getExtent().origin.y + getExtent().size.height / 2.0F;
     Matrix localMatrix = new Matrix();
@@ -456,7 +553,7 @@ public class CIImage
     paramMatrix.postTranslate(f1, f2);
     localMatrix.postConcat(paramMatrix);
     paramMatrix = imageByApplyingTransform(localMatrix);
-    AppMethodBeat.o(191812);
+    AppMethodBeat.o(219600);
     return paramMatrix;
   }
   
@@ -472,27 +569,27 @@ public class CIImage
   
   public CIImage simpleClone()
   {
-    AppMethodBeat.i(191820);
-    CIImage localCIImage = new CIImage(this.size);
+    AppMethodBeat.i(219610);
+    CIImage localCIImage = new CIImage(this.size.clone());
     localCIImage.textureInfo = this.textureInfo;
     localCIImage.preferRotation = this.preferRotation;
     localCIImage.bitmap = this.bitmap;
     localCIImage.alpha = this.alpha;
-    AppMethodBeat.o(191820);
+    AppMethodBeat.o(219610);
     return localCIImage;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(191821);
+    AppMethodBeat.i(219611);
     String str = "CIImage{hash=" + Integer.toHexString(hashCode()) + ", size=" + this.size + ", textureInfo=" + this.textureInfo + ", bitmap=" + this.bitmap + ", transform=" + this.transform + ", frame=" + this.frame + ", overlayImages=" + this.overlayImages + '}';
-    AppMethodBeat.o(191821);
+    AppMethodBeat.o(219611);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIImage
  * JD-Core Version:    0.7.0.1
  */

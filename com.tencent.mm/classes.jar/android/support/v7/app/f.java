@@ -8,41 +8,41 @@ import java.util.Map;
 
 final class f
 {
-  private static Field XK;
-  private static boolean XL;
-  private static Class XM;
-  private static boolean XN;
-  private static Field XO;
-  private static boolean XP;
-  private static Field XQ;
-  private static boolean XR;
+  private static boolean ZA;
+  private static Class ZB;
+  private static boolean ZC;
+  private static Field ZD;
+  private static boolean ZE;
+  private static Field ZF;
+  private static boolean ZG;
+  private static Field Zz;
   
-  private static void L(Object paramObject)
+  private static void M(Object paramObject)
   {
-    if (!XN) {}
+    if (!ZC) {}
     try
     {
-      XM = Class.forName("android.content.res.ThemedResourceCache");
+      ZB = Class.forName("android.content.res.ThemedResourceCache");
       label14:
-      XN = true;
-      if (XM == null) {}
+      ZC = true;
+      if (ZB == null) {}
       for (;;)
       {
         return;
-        if (!XP) {}
+        if (!ZE) {}
         try
         {
-          Field localField = XM.getDeclaredField("mUnthemedEntries");
-          XO = localField;
+          Field localField = ZB.getDeclaredField("mUnthemedEntries");
+          ZD = localField;
           localField.setAccessible(true);
           label49:
-          XP = true;
-          if (XO == null) {
+          ZE = true;
+          if (ZD == null) {
             continue;
           }
           try
           {
-            paramObject = (LongSparseArray)XO.get(paramObject);
+            paramObject = (LongSparseArray)ZD.get(paramObject);
             if (paramObject == null) {
               continue;
             }
@@ -91,18 +91,18 @@ final class f
   
   private static void b(Resources paramResources)
   {
-    if (!XL) {}
+    if (!ZA) {}
     try
     {
       Field localField = Resources.class.getDeclaredField("mDrawableCache");
-      XK = localField;
+      Zz = localField;
       localField.setAccessible(true);
       label23:
-      XL = true;
-      if (XK != null) {}
+      ZA = true;
+      if (Zz != null) {}
       try
       {
-        paramResources = (Map)XK.get(paramResources);
+        paramResources = (Map)Zz.get(paramResources);
         if (paramResources != null) {
           paramResources.clear();
         }
@@ -124,24 +124,24 @@ final class f
   
   private static void c(Resources paramResources)
   {
-    if (!XL) {}
+    if (!ZA) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mDrawableCache");
-      XK = (Field)localObject1;
+      Zz = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label23:
-      XL = true;
+      ZA = true;
       Object localObject2 = null;
       localObject1 = localObject2;
-      if (XK != null) {}
+      if (Zz != null) {}
       try
       {
-        localObject1 = XK.get(paramResources);
+        localObject1 = Zz.get(paramResources);
         if (localObject1 == null) {
           return;
         }
-        L(localObject1);
+        M(localObject1);
         return;
       }
       catch (IllegalAccessException paramResources)
@@ -161,44 +161,44 @@ final class f
   private static void d(Resources paramResources)
   {
     Object localObject2 = null;
-    if (!XR) {}
+    if (!ZG) {}
     try
     {
       Object localObject1 = Resources.class.getDeclaredField("mResourcesImpl");
-      XQ = (Field)localObject1;
+      ZF = (Field)localObject1;
       ((Field)localObject1).setAccessible(true);
       label25:
-      XR = true;
-      if (XQ == null) {}
+      ZG = true;
+      if (ZF == null) {}
       for (;;)
       {
         return;
         try
         {
-          paramResources = XQ.get(paramResources);
+          paramResources = ZF.get(paramResources);
           if (paramResources == null) {
             continue;
           }
-          if (XL) {}
+          if (ZA) {}
         }
         catch (IllegalAccessException paramResources)
         {
           try
           {
             localObject1 = paramResources.getClass().getDeclaredField("mDrawableCache");
-            XK = (Field)localObject1;
+            Zz = (Field)localObject1;
             ((Field)localObject1).setAccessible(true);
             label73:
-            XL = true;
+            ZA = true;
             localObject1 = localObject2;
-            if (XK != null) {}
+            if (Zz != null) {}
             try
             {
-              localObject1 = XK.get(paramResources);
+              localObject1 = Zz.get(paramResources);
               if (localObject1 == null) {
                 continue;
               }
-              L(localObject1);
+              M(localObject1);
               return;
               paramResources = paramResources;
               paramResources = null;

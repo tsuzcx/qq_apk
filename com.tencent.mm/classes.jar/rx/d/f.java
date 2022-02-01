@@ -9,30 +9,30 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class f
 {
-  private static final f Mgh;
-  static final b Mgn;
-  private final AtomicReference<b> Mgi;
-  private final AtomicReference<d> Mgj;
-  private final AtomicReference<h> Mgk;
-  private final AtomicReference<a> Mgl;
-  private final AtomicReference<g> Mgm;
+  private static final f Obj;
+  static final b Obp;
+  private final AtomicReference<b> Obk;
+  private final AtomicReference<d> Obl;
+  private final AtomicReference<h> Obm;
+  private final AtomicReference<a> Obn;
+  private final AtomicReference<g> Obo;
   
   static
   {
     AppMethodBeat.i(90495);
-    Mgh = new f();
-    Mgn = new b() {};
+    Obj = new f();
+    Obp = new b() {};
     AppMethodBeat.o(90495);
   }
   
   f()
   {
     AppMethodBeat.i(90488);
-    this.Mgi = new AtomicReference();
-    this.Mgj = new AtomicReference();
-    this.Mgk = new AtomicReference();
-    this.Mgl = new AtomicReference();
-    this.Mgm = new AtomicReference();
+    this.Obk = new AtomicReference();
+    this.Obl = new AtomicReference();
+    this.Obm = new AtomicReference();
+    this.Obn = new AtomicReference();
+    this.Obo = new AtomicReference();
     AppMethodBeat.o(90488);
   }
   
@@ -106,118 +106,118 @@ public final class f
   }
   
   @Deprecated
-  public static f ggI()
+  public static f gzm()
   {
-    return Mgh;
+    return Obj;
   }
   
-  public final b ggJ()
+  public final b gzn()
   {
     AppMethodBeat.i(90489);
     Object localObject;
-    if (this.Mgi.get() == null)
+    if (this.Obk.get() == null)
     {
       localObject = a(b.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Mgi.compareAndSet(null, Mgn);
+      this.Obk.compareAndSet(null, Obp);
     }
     for (;;)
     {
-      localObject = (b)this.Mgi.get();
+      localObject = (b)this.Obk.get();
       AppMethodBeat.o(90489);
       return localObject;
       label58:
-      this.Mgi.compareAndSet(null, (b)localObject);
+      this.Obk.compareAndSet(null, (b)localObject);
     }
   }
   
-  public final d ggK()
+  public final d gzo()
   {
     AppMethodBeat.i(90490);
     Object localObject;
-    if (this.Mgj.get() == null)
+    if (this.Obl.get() == null)
     {
       localObject = a(d.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Mgj.compareAndSet(null, e.ggH());
+      this.Obl.compareAndSet(null, e.gzl());
     }
     for (;;)
     {
-      localObject = (d)this.Mgj.get();
+      localObject = (d)this.Obl.get();
       AppMethodBeat.o(90490);
       return localObject;
       label58:
-      this.Mgj.compareAndSet(null, (d)localObject);
+      this.Obl.compareAndSet(null, (d)localObject);
     }
   }
   
-  public final h ggL()
+  public final h gzp()
   {
     AppMethodBeat.i(90491);
     Object localObject;
-    if (this.Mgk.get() == null)
+    if (this.Obm.get() == null)
     {
       localObject = a(h.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Mgk.compareAndSet(null, i.ggS());
+      this.Obm.compareAndSet(null, i.gzw());
     }
     for (;;)
     {
-      localObject = (h)this.Mgk.get();
+      localObject = (h)this.Obm.get();
       AppMethodBeat.o(90491);
       return localObject;
       label58:
-      this.Mgk.compareAndSet(null, (h)localObject);
+      this.Obm.compareAndSet(null, (h)localObject);
     }
   }
   
-  public final a ggM()
+  public final a gzq()
   {
     AppMethodBeat.i(90492);
     Object localObject;
-    if (this.Mgl.get() == null)
+    if (this.Obn.get() == null)
     {
       localObject = a(a.class, System.getProperties());
       if (localObject != null) {
         break label63;
       }
-      this.Mgl.compareAndSet(null, new a() {});
+      this.Obn.compareAndSet(null, new a() {});
     }
     for (;;)
     {
-      localObject = (a)this.Mgl.get();
+      localObject = (a)this.Obn.get();
       AppMethodBeat.o(90492);
       return localObject;
       label63:
-      this.Mgl.compareAndSet(null, (a)localObject);
+      this.Obn.compareAndSet(null, (a)localObject);
     }
   }
   
-  public final g ggN()
+  public final g gzr()
   {
     AppMethodBeat.i(90494);
     Object localObject;
-    if (this.Mgm.get() == null)
+    if (this.Obo.get() == null)
     {
       localObject = a(g.class, System.getProperties());
       if (localObject != null) {
         break label58;
       }
-      this.Mgm.compareAndSet(null, g.ggR());
+      this.Obo.compareAndSet(null, g.gzv());
     }
     for (;;)
     {
-      localObject = (g)this.Mgm.get();
+      localObject = (g)this.Obo.get();
       AppMethodBeat.o(90494);
       return localObject;
       label58:
-      this.Mgm.compareAndSet(null, (g)localObject);
+      this.Obo.compareAndSet(null, (g)localObject);
     }
   }
 }

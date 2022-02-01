@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
-import com.tencent.mm.plugin.scanner.model.y;
+import com.tencent.mm.plugin.scanner.model.ab;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "refreshView", "release", "setDuration", "duration", "", "show", "visible", "", "startAnimation", "stopAnimation", "plugin-scan_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "refreshView", "release", "setDuration", "duration", "", "show", "visible", "", "startAnimation", "stopAnimation", "plugin-scan_release"})
 public abstract interface d
 {
-  public abstract void b(y paramy);
+  public abstract void b(ab paramab);
   
   public abstract void refreshView();
   

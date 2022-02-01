@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
+import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.utils.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class h
-  extends c
+  extends d
 {
   private static final int CTRL_INDEX = 361;
   public static final String NAME = "updateLivePusher";
@@ -39,7 +39,7 @@ public final class h
     //   15: iload_2
     //   16: invokestatic 59	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   19: aastore
-    //   20: invokestatic 64	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   20: invokestatic 64	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   23: aload_3
     //   24: instanceof 66
     //   27: ifne +28 -> 55
@@ -52,7 +52,7 @@ public final class h
     //   40: iload_2
     //   41: invokestatic 59	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   44: aastore
-    //   45: invokestatic 71	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   45: invokestatic 71	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   48: ldc 47
     //   50: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   53: iconst_0
@@ -68,7 +68,7 @@ public final class h
     //   72: ifne +17 -> 89
     //   75: ldc 49
     //   77: ldc 81
-    //   79: invokestatic 85	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 85	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   82: ldc 47
     //   84: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   87: iconst_0
@@ -84,18 +84,18 @@ public final class h
     //   105: aload 4
     //   107: ldc 87
     //   109: aload_3
-    //   110: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ciQ	Ljava/lang/String;
+    //   110: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ctf	Ljava/lang/String;
     //   113: invokevirtual 98	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   116: putfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ciQ	Ljava/lang/String;
+    //   116: putfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ctf	Ljava/lang/String;
     //   119: aload_3
     //   120: aload 4
     //   122: ldc 100
     //   124: aconst_null
     //   125: invokevirtual 98	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   128: putfield 103	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ciR	Ljava/lang/String;
+    //   128: putfield 103	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ctg	Ljava/lang/String;
     //   131: aload_3
-    //   132: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ciQ	Ljava/lang/String;
-    //   135: invokestatic 108	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   132: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ctf	Ljava/lang/String;
+    //   135: invokestatic 108	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   138: ifeq +170 -> 308
     //   141: aload 4
     //   143: ldc 87
@@ -104,86 +104,86 @@ public final class h
     //   150: pop
     //   151: aload_3
     //   152: aload 4
-    //   154: invokestatic 120	com/tencent/mm/plugin/appbrand/jsapi/live/k:P	(Lorg/json/JSONObject;)Landroid/os/Bundle;
-    //   157: invokevirtual 124	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:H	(Landroid/os/Bundle;)V
+    //   154: invokestatic 120	com/tencent/mm/plugin/appbrand/jsapi/live/k:Q	(Lorg/json/JSONObject;)Landroid/os/Bundle;
+    //   157: invokevirtual 123	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:I	(Landroid/os/Bundle;)V
     //   160: aload 4
-    //   162: ldc 126
+    //   162: ldc 125
     //   164: invokevirtual 91	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   167: ifeq +36 -> 203
     //   170: aload 4
-    //   172: ldc 126
-    //   174: invokevirtual 130	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   172: ldc 125
+    //   174: invokevirtual 129	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   177: astore 5
     //   179: aload 4
-    //   181: ldc 132
-    //   183: invokevirtual 134	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   181: ldc 131
+    //   183: invokevirtual 133	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   186: astore 6
     //   188: aload 5
-    //   190: invokestatic 108	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   190: invokestatic 108	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   193: ifeq +150 -> 343
     //   196: ldc 49
-    //   198: ldc 136
-    //   200: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   198: ldc 135
+    //   200: invokestatic 137	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   203: aload 4
     //   205: ldc 87
     //   207: invokevirtual 91	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   210: ifeq +27 -> 237
     //   213: aload 4
     //   215: ldc 87
-    //   217: invokevirtual 130	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   217: invokevirtual 129	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   220: astore 5
     //   222: aload 5
-    //   224: invokestatic 108	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   224: invokestatic 108	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   227: ifeq +167 -> 394
     //   230: ldc 49
-    //   232: ldc 140
-    //   234: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   232: ldc 139
+    //   234: invokestatic 137	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   237: aload 4
-    //   239: ldc 142
+    //   239: ldc 141
     //   241: invokevirtual 91	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   244: ifeq +36 -> 280
     //   247: aload 4
-    //   249: ldc 142
-    //   251: invokevirtual 130	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   249: ldc 141
+    //   251: invokevirtual 129	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   254: astore 5
     //   256: aload 4
-    //   258: ldc 144
-    //   260: invokevirtual 134	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   258: ldc 143
+    //   260: invokevirtual 133	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   263: astore 4
     //   265: aload 5
-    //   267: invokestatic 108	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   267: invokestatic 108	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   270: ifeq +174 -> 444
     //   273: ldc 49
-    //   275: ldc 146
-    //   277: invokestatic 138	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   275: ldc 145
+    //   277: invokestatic 137	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   280: ldc 47
     //   282: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   285: iconst_1
     //   286: ireturn
     //   287: astore 5
     //   289: ldc 49
-    //   291: ldc 148
+    //   291: ldc 147
     //   293: iconst_1
     //   294: anewarray 53	java/lang/Object
     //   297: dup
     //   298: iconst_0
     //   299: aload 5
     //   301: aastore
-    //   302: invokestatic 71	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   302: invokestatic 71	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   305: goto -154 -> 151
     //   308: aload_3
-    //   309: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ciQ	Ljava/lang/String;
-    //   312: ldc 150
-    //   314: invokevirtual 155	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   309: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ctf	Ljava/lang/String;
+    //   312: ldc 149
+    //   314: invokevirtual 154	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   317: ifne +15 -> 332
     //   320: aload_3
-    //   321: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ciQ	Ljava/lang/String;
-    //   324: ldc 157
-    //   326: invokevirtual 155	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   321: getfield 94	com/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView:ctf	Ljava/lang/String;
+    //   324: ldc 156
+    //   326: invokevirtual 154	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   329: ifeq -178 -> 151
     //   332: aload 4
     //   334: ldc 87
-    //   336: invokevirtual 161	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
+    //   336: invokevirtual 160	org/json/JSONObject:remove	(Ljava/lang/String;)Ljava/lang/Object;
     //   339: pop
     //   340: goto -189 -> 151
     //   343: aload_1
@@ -194,24 +194,24 @@ public final class h
     //   352: aload_0
     //   353: aload_3
     //   354: aload 5
-    //   356: invokespecial 164	com/tencent/mm/plugin/appbrand/jsapi/live/h$1:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/h;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;Ljava/lang/String;)V
-    //   359: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/b:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/b$a;)V
+    //   356: invokespecial 163	com/tencent/mm/plugin/appbrand/jsapi/live/h$1:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/h;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;Ljava/lang/String;)V
+    //   359: invokestatic 169	com/tencent/mm/plugin/appbrand/utils/b:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/b$a;)V
     //   362: goto -159 -> 203
     //   365: astore 5
     //   367: ldc 49
-    //   369: ldc 172
+    //   369: ldc 171
     //   371: iconst_2
     //   372: anewarray 53	java/lang/Object
     //   375: dup
     //   376: iconst_0
-    //   377: ldc 126
+    //   377: ldc 125
     //   379: aastore
     //   380: dup
     //   381: iconst_1
     //   382: aload 5
-    //   384: invokevirtual 176	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
+    //   384: invokevirtual 175	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
     //   387: aastore
-    //   388: invokestatic 64	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   388: invokestatic 64	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   391: goto -188 -> 203
     //   394: aload_1
     //   395: aload 5
@@ -221,12 +221,12 @@ public final class h
     //   402: aload_0
     //   403: aload_3
     //   404: aload 5
-    //   406: invokespecial 177	com/tencent/mm/plugin/appbrand/jsapi/live/h$2:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/h;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;Ljava/lang/String;)V
-    //   409: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/b:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/b$a;)V
+    //   406: invokespecial 176	com/tencent/mm/plugin/appbrand/jsapi/live/h$2:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/h;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;Ljava/lang/String;)V
+    //   409: invokestatic 169	com/tencent/mm/plugin/appbrand/utils/b:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/b$a;)V
     //   412: goto -175 -> 237
     //   415: astore 5
     //   417: ldc 49
-    //   419: ldc 172
+    //   419: ldc 171
     //   421: iconst_2
     //   422: anewarray 53	java/lang/Object
     //   425: dup
@@ -236,9 +236,9 @@ public final class h
     //   430: dup
     //   431: iconst_1
     //   432: aload 5
-    //   434: invokevirtual 176	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
+    //   434: invokevirtual 175	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
     //   437: aastore
-    //   438: invokestatic 64	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   438: invokestatic 64	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   441: goto -204 -> 237
     //   444: aload_1
     //   445: aload 5
@@ -247,24 +247,24 @@ public final class h
     //   452: dup
     //   453: aload_0
     //   454: aload_3
-    //   455: invokespecial 180	com/tencent/mm/plugin/appbrand/jsapi/live/h$3:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/h;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;)V
-    //   458: invokestatic 170	com/tencent/mm/plugin/appbrand/utils/b:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/b$a;)V
+    //   455: invokespecial 179	com/tencent/mm/plugin/appbrand/jsapi/live/h$3:<init>	(Lcom/tencent/mm/plugin/appbrand/jsapi/live/h;Lcom/tencent/mm/plugin/appbrand/jsapi/live/AppBrandLivePusherView;)V
+    //   458: invokestatic 169	com/tencent/mm/plugin/appbrand/utils/b:a	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/utils/b$a;)V
     //   461: goto -181 -> 280
     //   464: astore_1
     //   465: ldc 49
-    //   467: ldc 172
+    //   467: ldc 171
     //   469: iconst_2
     //   470: anewarray 53	java/lang/Object
     //   473: dup
     //   474: iconst_0
-    //   475: ldc 142
+    //   475: ldc 141
     //   477: aastore
     //   478: dup
     //   479: iconst_1
     //   480: aload_1
-    //   481: invokevirtual 176	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
+    //   481: invokevirtual 175	org/json/JSONException:getLocalizedMessage	()Ljava/lang/String;
     //   484: aastore
-    //   485: invokestatic 64	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   485: invokestatic 64	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   488: goto -208 -> 280
     // Local variable table:
     //   start	length	slot	name	signature
@@ -291,7 +291,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,33 @@
 package com.tencent.mm.plugin.sns.ad.e;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.y;
 
 public final class d
+  extends y
 {
-  public static void a(a parama)
+  public static double g(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(200026);
-    if (parama != null) {}
+    double d1 = 0.0D;
+    AppMethodBeat.i(197704);
+    if (paramBundle == null)
+    {
+      AppMethodBeat.o(197704);
+      return 0.0D;
+    }
     try
     {
-      iR(parama.dFW(), parama.getContent());
-      AppMethodBeat.o(200026);
-      return;
+      double d2 = paramBundle.getDouble(paramString, 0.0D);
+      d1 = d2;
     }
-    catch (Throwable parama)
+    catch (Throwable paramBundle)
     {
-      AppMethodBeat.o(200026);
+      label29:
+      break label29;
     }
-  }
-  
-  private static void iR(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(200027);
-    try
-    {
-      ac.d("SnsAdChannelReporter", "Channel: " + paramString1 + "; Content: " + paramString2);
-      j.iU(paramString1, paramString2);
-      AppMethodBeat.o(200027);
-      return;
-    }
-    catch (Throwable paramString1)
-    {
-      AppMethodBeat.o(200027);
-    }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract String dFW();
-    
-    public abstract String getContent();
+    AppMethodBeat.o(197704);
+    return d1;
   }
 }
 

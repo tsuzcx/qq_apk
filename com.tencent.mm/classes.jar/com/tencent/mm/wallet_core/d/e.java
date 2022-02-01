@@ -1,16 +1,16 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 
 public abstract interface e
 {
   public abstract void b(n paramn, boolean paramBoolean);
   
-  public abstract void cZd();
+  public abstract void dip();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.wallet_core.d.e
  * JD-Core Version:    0.7.0.1
  */

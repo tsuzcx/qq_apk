@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXEmojiObject
   implements WXMediaMessage.IMediaObject
@@ -15,24 +15,30 @@ public class WXEmojiObject
   
   public WXEmojiObject()
   {
+    AppMethodBeat.i(196952);
     this.emojiData = null;
     this.emojiPath = null;
+    AppMethodBeat.o(196952);
   }
   
   public WXEmojiObject(String paramString)
   {
+    AppMethodBeat.i(196954);
     this.emojiPath = paramString;
+    AppMethodBeat.o(196954);
   }
   
   public WXEmojiObject(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(196953);
     this.emojiData = paramArrayOfByte;
+    AppMethodBeat.o(196953);
   }
   
   private int getFileSize(String paramString)
   {
     AppMethodBeat.i(3943);
-    int i = d.getFileSize(paramString);
+    int i = b.a(paramString);
     AppMethodBeat.o(3943);
     return i;
   }
@@ -40,26 +46,34 @@ public class WXEmojiObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(3942);
-    if (((this.emojiData == null) || (this.emojiData.length == 0)) && ((this.emojiPath == null) || (this.emojiPath.length() == 0)))
+    Object localObject = this.emojiData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, both arguments is null");
-      AppMethodBeat.o(3942);
-      return false;
+      localObject = this.emojiPath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.emojiData != null) && (this.emojiData.length > 10485760))
+    else
     {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiData is too large");
+      localObject = this.emojiData;
+      if ((localObject != null) && (localObject.length > 10485760))
+      {
+        Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiData is too large");
+        AppMethodBeat.o(3942);
+        return false;
+      }
+      localObject = this.emojiPath;
+      if ((localObject != null) && (getFileSize((String)localObject) > 10485760))
+      {
+        Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiSize is too large");
+        AppMethodBeat.o(3942);
+        return false;
+      }
       AppMethodBeat.o(3942);
-      return false;
+      return true;
     }
-    if ((this.emojiPath != null) && (getFileSize(this.emojiPath) > 10485760))
-    {
-      Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiSize is too large");
-      AppMethodBeat.o(3942);
-      return false;
-    }
+    Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, both arguments is null");
     AppMethodBeat.o(3942);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

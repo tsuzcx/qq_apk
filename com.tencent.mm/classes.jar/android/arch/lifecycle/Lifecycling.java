@@ -35,33 +35,6 @@ public class Lifecycling
     }
   }
   
-  static GenericLifecycleObserver d(Object paramObject)
-  {
-    if ((paramObject instanceof FullLifecycleObserver)) {
-      return new FullLifecycleObserverAdapter((FullLifecycleObserver)paramObject);
-    }
-    if ((paramObject instanceof GenericLifecycleObserver)) {
-      return (GenericLifecycleObserver)paramObject;
-    }
-    Object localObject = paramObject.getClass();
-    if (e((Class)localObject) == 2)
-    {
-      localObject = (List)cL.get(localObject);
-      if (((List)localObject).size() == 1) {
-        return new SingleGeneratedAdapterObserver(a((Constructor)((List)localObject).get(0), paramObject));
-      }
-      GeneratedAdapter[] arrayOfGeneratedAdapter = new GeneratedAdapter[((List)localObject).size()];
-      int i = 0;
-      while (i < ((List)localObject).size())
-      {
-        arrayOfGeneratedAdapter[i] = a((Constructor)((List)localObject).get(i), paramObject);
-        i += 1;
-      }
-      return new CompositeGeneratedAdaptersObserver(arrayOfGeneratedAdapter);
-    }
-    return new ReflectiveGenericLifecycleObserver(paramObject);
-  }
-  
   private static Constructor<? extends GeneratedAdapter> d(Class<?> paramClass)
   {
     for (;;)
@@ -118,6 +91,33 @@ public class Lifecycling
     int i = f(paramClass);
     cK.put(paramClass, Integer.valueOf(i));
     return i;
+  }
+  
+  static GenericLifecycleObserver e(Object paramObject)
+  {
+    if ((paramObject instanceof FullLifecycleObserver)) {
+      return new FullLifecycleObserverAdapter((FullLifecycleObserver)paramObject);
+    }
+    if ((paramObject instanceof GenericLifecycleObserver)) {
+      return (GenericLifecycleObserver)paramObject;
+    }
+    Object localObject = paramObject.getClass();
+    if (e((Class)localObject) == 2)
+    {
+      localObject = (List)cL.get(localObject);
+      if (((List)localObject).size() == 1) {
+        return new SingleGeneratedAdapterObserver(a((Constructor)((List)localObject).get(0), paramObject));
+      }
+      GeneratedAdapter[] arrayOfGeneratedAdapter = new GeneratedAdapter[((List)localObject).size()];
+      int i = 0;
+      while (i < ((List)localObject).size())
+      {
+        arrayOfGeneratedAdapter[i] = a((Constructor)((List)localObject).get(i), paramObject);
+        i += 1;
+      }
+      return new CompositeGeneratedAdaptersObserver(arrayOfGeneratedAdapter);
+    }
+    return new ReflectiveGenericLifecycleObserver(paramObject);
   }
   
   private static int f(Class<?> paramClass)

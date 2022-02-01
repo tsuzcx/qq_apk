@@ -7,9 +7,9 @@ public class CMTimeUtils
 {
   public static long CMTimeConvertToUs(CMTime paramCMTime)
   {
-    AppMethodBeat.i(197616);
+    AppMethodBeat.i(217902);
     long l = (paramCMTime.getTimeSeconds() * 1000.0F * 1000.0F);
-    AppMethodBeat.o(197616);
+    AppMethodBeat.o(217902);
     return l;
   }
 }

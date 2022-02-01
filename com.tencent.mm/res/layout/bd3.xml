@@ -10,7 +10,7 @@
                 <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hg9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" />
             </LinearLayout>
             <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0px" />
-            <Button android:textSize="@dimen/ia" android:textStyle="bold" android:textColor="@color/fu" android:layout_gravity="center_horizontal" android:id="@id/a94" android:background="@drawable/u9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:text="@string/du7" style="@style/of" />
+            <Button android:textSize="@dimen/ia" android:textStyle="bold" android:textColor="@color/fu" android:layout_gravity="center_horizontal" android:id="@id/a94" android:background="@drawable/c8s" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:text="@string/du7" style="@style/of" />
         </LinearLayout>
         <FrameLayout android:layout_gravity="bottom|center" android:id="@id/a93" android:background="@drawable/xf" android:layout_width="@dimen/cd" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/c_" android:layout_marginBottom="@dimen/c5">
             <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_filled_arrow" android:rotation="270.0" app:iconColor="@color/FG_0" />

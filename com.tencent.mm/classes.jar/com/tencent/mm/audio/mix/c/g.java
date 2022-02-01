@@ -4,13 +4,13 @@ import com.tencent.mm.audio.mix.a.e;
 
 public abstract interface g
 {
-  public abstract void F(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void G(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract byte[] J(byte[] paramArrayOfByte);
   
-  public abstract void MR();
+  public abstract void OA();
   
-  public abstract e MS();
+  public abstract e OB();
   
   public abstract void flushCache();
   

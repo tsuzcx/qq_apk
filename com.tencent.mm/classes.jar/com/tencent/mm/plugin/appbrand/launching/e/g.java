@@ -4,9 +4,9 @@ import android.content.Intent;
 
 public abstract interface g
 {
-  public abstract void G(Intent paramIntent);
+  public abstract void H(Intent paramIntent);
   
-  public abstract boolean boh();
+  public abstract boolean bsa();
   
   public abstract void onDestroy();
   
@@ -16,7 +16,7 @@ public abstract interface g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.g
  * JD-Core Version:    0.7.0.1
  */

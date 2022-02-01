@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,13 +16,13 @@ import java.util.List;
 public class RoomManagerPreference
   extends Preference
 {
-  private List<ai> fwf;
+  private List<am> fPs;
   
   public RoomManagerPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(13014);
-    this.fwf = new LinkedList();
+    this.fPs = new LinkedList();
     AppMethodBeat.o(13014);
   }
   
@@ -30,7 +30,7 @@ public class RoomManagerPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13013);
-    this.fwf = new LinkedList();
+    this.fPs = new LinkedList();
     AppMethodBeat.o(13013);
   }
   
@@ -46,11 +46,11 @@ public class RoomManagerPreference
     localImageView2.setVisibility(4);
     paramView.setVisibility(4);
     int i = 0;
-    if (i < this.fwf.size())
+    if (i < this.fPs.size())
     {
       if (i == 0)
       {
-        a.b.a(localImageView1, ((ai)this.fwf.get(0)).field_username, 0.15F, false);
+        a.b.a(localImageView1, ((am)this.fPs.get(0)).field_username, 0.15F, false);
         localImageView1.setVisibility(0);
       }
       for (;;)
@@ -59,13 +59,13 @@ public class RoomManagerPreference
         break;
         if (1 == i)
         {
-          a.b.a(localImageView2, ((ai)this.fwf.get(1)).field_username, 0.15F, false);
+          a.b.a(localImageView2, ((am)this.fPs.get(1)).field_username, 0.15F, false);
           localImageView2.setVisibility(0);
         }
         else if (2 == i)
         {
           paramView.setVisibility(0);
-          a.b.a(paramView, ((ai)this.fwf.get(2)).field_username, 0.15F, false);
+          a.b.a(paramView, ((am)this.fPs.get(2)).field_username, 0.15F, false);
         }
       }
     }

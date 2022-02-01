@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class al
   extends b
 {
-  public a cZH;
+  public a dkZ;
   
   public al()
   {
@@ -16,8 +16,8 @@ public final class al
   private al(byte paramByte)
   {
     AppMethodBeat.i(5530);
-    this.cZH = new a();
-    this.Gqe = false;
+    this.dkZ = new a();
+    this.IbR = false;
     this.callback = null;
     AppMethodBeat.o(5530);
   }

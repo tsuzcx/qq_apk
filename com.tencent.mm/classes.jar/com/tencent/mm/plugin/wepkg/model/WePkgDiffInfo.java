@@ -9,11 +9,11 @@ public class WePkgDiffInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<WePkgDiffInfo> CREATOR;
-  public String DaL;
-  public int DaM;
+  public String EEK;
+  public int EEL;
   public String downloadUrl;
-  public String fYR;
   public int fileSize;
+  public String gsn;
   public String md5;
   public String oldVersion;
   public String version;
@@ -33,20 +33,20 @@ public class WePkgDiffInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(110681);
-    paramParcel.writeString(this.fYR);
+    paramParcel.writeString(this.gsn);
     paramParcel.writeString(this.oldVersion);
-    paramParcel.writeString(this.DaL);
+    paramParcel.writeString(this.EEK);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.downloadUrl);
     paramParcel.writeString(this.md5);
     paramParcel.writeInt(this.fileSize);
-    paramParcel.writeInt(this.DaM);
+    paramParcel.writeInt(this.EEL);
     AppMethodBeat.o(110681);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.WePkgDiffInfo
  * JD-Core Version:    0.7.0.1
  */

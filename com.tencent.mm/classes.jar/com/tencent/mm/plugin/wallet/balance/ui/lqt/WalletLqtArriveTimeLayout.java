@@ -10,10 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cnj;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.protocal.protobuf.csm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.e;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -23,36 +25,40 @@ import java.util.List;
 public class WalletLqtArriveTimeLayout
   extends LinearLayout
 {
-  List<cnj> AZZ;
-  List<WeakReference<b>> Baa;
-  cnj Bab;
-  private WalletLqtArriveTimeLayout.a Bac;
-  boolean Bad;
-  private View.OnClickListener oPc;
+  List<csm> CAm;
+  List<WeakReference<b>> CAn;
+  csm CAo;
+  private WalletLqtArriveTimeLayout.a CAp;
+  boolean CAq;
+  private View.OnClickListener psK;
   
   public WalletLqtArriveTimeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(68743);
-    this.AZZ = new ArrayList();
-    this.Baa = new ArrayList();
-    this.Bad = false;
-    this.oPc = new View.OnClickListener()
+    this.CAm = new ArrayList();
+    this.CAn = new ArrayList();
+    this.CAq = false;
+    this.psK = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(68741);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtArriveTimeLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this);
         paramAnonymousView = (WalletLqtArriveTimeLayout.b)paramAnonymousView.getTag();
         if ((WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this) != null) && (WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this).size() > paramAnonymousView.index))
         {
-          paramAnonymousView.adP.setChecked(true);
-          WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this, (cnj)WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this).get(paramAnonymousView.index));
+          paramAnonymousView.afG.setChecked(true);
+          WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this, (csm)WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this).get(paramAnonymousView.index));
         }
         for (;;)
         {
           WalletLqtArriveTimeLayout.c(WalletLqtArriveTimeLayout.this);
-          ac.i("MicroMsg.WalletLqtArriveTimeLayout", "click item: %s, %s", new Object[] { Integer.valueOf(paramAnonymousView.index), paramAnonymousView.lfN.getText() });
+          ad.i("MicroMsg.WalletLqtArriveTimeLayout", "click item: %s, %s", new Object[] { Integer.valueOf(paramAnonymousView.index), paramAnonymousView.lCL.getText() });
+          a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtArriveTimeLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(68741);
           return;
           WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this, null);
@@ -66,25 +72,29 @@ public class WalletLqtArriveTimeLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(68744);
-    this.AZZ = new ArrayList();
-    this.Baa = new ArrayList();
-    this.Bad = false;
-    this.oPc = new View.OnClickListener()
+    this.CAm = new ArrayList();
+    this.CAn = new ArrayList();
+    this.CAq = false;
+    this.psK = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(68741);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtArriveTimeLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this);
         paramAnonymousView = (WalletLqtArriveTimeLayout.b)paramAnonymousView.getTag();
         if ((WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this) != null) && (WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this).size() > paramAnonymousView.index))
         {
-          paramAnonymousView.adP.setChecked(true);
-          WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this, (cnj)WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this).get(paramAnonymousView.index));
+          paramAnonymousView.afG.setChecked(true);
+          WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this, (csm)WalletLqtArriveTimeLayout.b(WalletLqtArriveTimeLayout.this).get(paramAnonymousView.index));
         }
         for (;;)
         {
           WalletLqtArriveTimeLayout.c(WalletLqtArriveTimeLayout.this);
-          ac.i("MicroMsg.WalletLqtArriveTimeLayout", "click item: %s, %s", new Object[] { Integer.valueOf(paramAnonymousView.index), paramAnonymousView.lfN.getText() });
+          ad.i("MicroMsg.WalletLqtArriveTimeLayout", "click item: %s, %s", new Object[] { Integer.valueOf(paramAnonymousView.index), paramAnonymousView.lCL.getText() });
+          a.a(this, "com/tencent/mm/plugin/wallet/balance/ui/lqt/WalletLqtArriveTimeLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(68741);
           return;
           WalletLqtArriveTimeLayout.a(WalletLqtArriveTimeLayout.this, null);
@@ -97,84 +107,84 @@ public class WalletLqtArriveTimeLayout
   private static void a(b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(68747);
-    paramb.adP.setEnabled(paramBoolean);
-    paramb.lfN.setEnabled(paramBoolean);
-    paramb.lgw.setEnabled(paramBoolean);
-    paramb.ijA.setEnabled(paramBoolean);
+    paramb.afG.setEnabled(paramBoolean);
+    paramb.lCL.setEnabled(paramBoolean);
+    paramb.lDu.setEnabled(paramBoolean);
+    paramb.iCR.setEnabled(paramBoolean);
     AppMethodBeat.o(68747);
   }
   
-  private void eoG()
+  private void eCG()
   {
     AppMethodBeat.i(68745);
-    if (this.Bac != null) {
-      this.Bac.eoH();
+    if (this.CAp != null) {
+      this.CAp.eCH();
     }
     AppMethodBeat.o(68745);
   }
   
-  public final void ayK(String paramString)
+  public final void aDS(String paramString)
   {
     AppMethodBeat.i(68748);
-    ac.i("MicroMsg.WalletLqtArriveTimeLayout", "input money: %s", new Object[] { paramString });
-    if ((this.AZZ == null) || (this.AZZ.isEmpty()))
+    ad.i("MicroMsg.WalletLqtArriveTimeLayout", "input money: %s", new Object[] { paramString });
+    if ((this.CAm == null) || (this.CAm.isEmpty()))
     {
       AppMethodBeat.o(68748);
       return;
     }
-    this.Bab = null;
-    Object localObject1 = this.Baa.iterator();
+    this.CAo = null;
+    Object localObject1 = this.CAn.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (WeakReference)((Iterator)localObject1).next();
       if (((WeakReference)localObject2).get() != null)
       {
-        ((b)((WeakReference)localObject2).get()).adP.setEnabled(true);
-        ((b)((WeakReference)localObject2).get()).adP.setChecked(false);
+        ((b)((WeakReference)localObject2).get()).afG.setEnabled(true);
+        ((b)((WeakReference)localObject2).get()).afG.setChecked(false);
       }
     }
-    int j = e.mj(paramString, "100");
-    paramString = this.AZZ.iterator();
+    int j = e.mH(paramString, "100");
+    paramString = this.CAm.iterator();
     int i = 0;
     if (paramString.hasNext())
     {
-      localObject1 = (cnj)paramString.next();
-      if ((((cnj)localObject1).FAF >= 0) && (j > ((cnj)localObject1).FAF))
+      localObject1 = (csm)paramString.next();
+      if ((((csm)localObject1).HkT >= 0) && (j > ((csm)localObject1).HkT))
       {
-        ac.i("MicroMsg.WalletLqtArriveTimeLayout", "disable item: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((cnj)localObject1).FAF) });
-        localObject1 = (b)((WeakReference)this.Baa.get(i)).get();
+        ad.i("MicroMsg.WalletLqtArriveTimeLayout", "disable item: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((csm)localObject1).HkT) });
+        localObject1 = (b)((WeakReference)this.CAn.get(i)).get();
         if (localObject1 != null)
         {
-          ((b)localObject1).adP.setChecked(false);
+          ((b)localObject1).afG.setChecked(false);
           a((b)localObject1, false);
-          this.Bab = null;
-          eoG();
+          this.CAo = null;
+          eCG();
         }
       }
       for (;;)
       {
         i += 1;
         break;
-        localObject2 = (b)((WeakReference)this.Baa.get(i)).get();
+        localObject2 = (b)((WeakReference)this.CAn.get(i)).get();
         if (localObject2 != null)
         {
           a((b)localObject2, true);
-          if (this.Bab == null)
+          if (this.CAo == null)
           {
-            ac.i("MicroMsg.WalletLqtArriveTimeLayout", "auto select type: %s", new Object[] { Integer.valueOf(((cnj)localObject1).FuV) });
-            ((b)localObject2).adP.setChecked(true);
-            this.Bab = ((cnj)localObject1);
-            eoG();
+            ad.i("MicroMsg.WalletLqtArriveTimeLayout", "auto select type: %s", new Object[] { Integer.valueOf(((csm)localObject1).Hfa) });
+            ((b)localObject2).afG.setChecked(true);
+            this.CAo = ((csm)localObject1);
+            eCG();
             if (i > 0) {
-              ((b)localObject2).lfN.setTextColor(ai.getContext().getResources().getColor(2131100464));
+              ((b)localObject2).lCL.setTextColor(aj.getContext().getResources().getColor(2131100464));
             } else {
-              ((b)localObject2).eoI();
+              ((b)localObject2).eCI();
             }
           }
           else
           {
-            ((b)localObject2).eoI();
+            ((b)localObject2).eCI();
           }
         }
       }
@@ -182,69 +192,69 @@ public class WalletLqtArriveTimeLayout
     AppMethodBeat.o(68748);
   }
   
-  public List<cnj> getRedeemTypeList()
+  public List<csm> getRedeemTypeList()
   {
-    return this.AZZ;
+    return this.CAm;
   }
   
-  public cnj getSelectRedeemType()
+  public csm getSelectRedeemType()
   {
-    return this.Bab;
+    return this.CAo;
   }
   
-  public final void o(List<cnj> paramList, boolean paramBoolean)
+  public final void q(List<csm> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(182505);
-    this.Bad = true;
-    this.AZZ.clear();
-    this.AZZ.addAll(paramList);
-    this.Baa.clear();
+    this.CAq = true;
+    this.CAm.clear();
+    this.CAm.addAll(paramList);
+    this.CAn.clear();
     removeAllViews();
     setVisibility(0);
-    if ((this.AZZ != null) && (!this.AZZ.isEmpty()))
+    if ((this.CAm != null) && (!this.CAm.isEmpty()))
     {
-      paramList = this.AZZ.iterator();
+      paramList = this.CAm.iterator();
       int i = 0;
       if (paramList.hasNext())
       {
-        cnj localcnj = (cnj)paramList.next();
+        csm localcsm = (csm)paramList.next();
         LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131495975, this, false);
         b localb = new b((byte)0);
-        localb.ijA = localLinearLayout;
-        localb.lfN = ((TextView)localLinearLayout.findViewById(2131301695));
-        localb.lgw = ((TextView)localLinearLayout.findViewById(2131301694));
-        localb.adP = ((RadioButton)localLinearLayout.findViewById(2131301697));
-        localb.lfN.setText(localcnj.FAD);
-        if (!bs.isNullOrNil(localcnj.FAE))
+        localb.iCR = localLinearLayout;
+        localb.lCL = ((TextView)localLinearLayout.findViewById(2131301695));
+        localb.lDu = ((TextView)localLinearLayout.findViewById(2131301694));
+        localb.afG = ((RadioButton)localLinearLayout.findViewById(2131301697));
+        localb.lCL.setText(localcsm.HkR);
+        if (!bt.isNullOrNil(localcsm.HkS))
         {
-          localb.lgw.setText(localcnj.FAE);
+          localb.lDu.setText(localcsm.HkS);
           label217:
-          if (this.Bab != null) {
-            ac.d("MicroMsg.WalletLqtArriveTimeLayout", "arrive wording: %s, %s, %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.Bab.FuV), Integer.valueOf(localcnj.FuV) });
+          if (this.CAo != null) {
+            ad.d("MicroMsg.WalletLqtArriveTimeLayout", "arrive wording: %s, %s, %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.CAo.Hfa), Integer.valueOf(localcsm.Hfa) });
           }
           if (!paramBoolean) {
             break label369;
           }
-          if ((this.Bab != null) && (this.Bab.FuV == localcnj.FuV)) {
-            localb.adP.setChecked(true);
+          if ((this.CAo != null) && (this.CAo.Hfa == localcsm.Hfa)) {
+            localb.afG.setChecked(true);
           }
         }
         for (;;)
         {
           localb.index = i;
           localLinearLayout.setTag(localb);
-          localLinearLayout.setOnClickListener(this.oPc);
-          this.Baa.add(new WeakReference(localb));
+          localLinearLayout.setOnClickListener(this.psK);
+          this.CAn.add(new WeakReference(localb));
           addView(localLinearLayout);
           i += 1;
           break;
-          localb.lgw.setVisibility(8);
+          localb.lDu.setVisibility(8);
           break label217;
           label369:
           if (i == 0)
           {
-            localb.adP.setChecked(true);
-            this.Bab = localcnj;
+            localb.afG.setChecked(true);
+            this.CAo = localcsm;
           }
         }
       }
@@ -254,21 +264,21 @@ public class WalletLqtArriveTimeLayout
   
   public void setCallback(WalletLqtArriveTimeLayout.a parama)
   {
-    this.Bac = parama;
+    this.CAp = parama;
   }
   
   static final class b
   {
-    public RadioButton adP;
-    public View ijA;
+    public RadioButton afG;
+    public View iCR;
     public int index;
-    public TextView lfN;
-    public TextView lgw;
+    public TextView lCL;
+    public TextView lDu;
     
-    public final void eoI()
+    public final void eCI()
     {
       AppMethodBeat.i(68742);
-      this.lfN.setTextColor(ai.getContext().getResources().getColorStateList(2131101117));
+      this.lCL.setTextColor(aj.getContext().getResources().getColorStateList(2131101117));
       AppMethodBeat.o(68742);
     }
   }

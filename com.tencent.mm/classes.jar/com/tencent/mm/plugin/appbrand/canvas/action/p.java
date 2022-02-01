@@ -19,7 +19,7 @@ public final class p
       AppMethodBeat.o(144913);
       return false;
     }
-    paramCanvas.scale(paramd.jzq, paramd.jzr);
+    paramCanvas.scale(paramd.jTn, paramd.jTo);
     AppMethodBeat.o(144913);
     return true;
   }
@@ -37,7 +37,7 @@ public final class p
     return true;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144911);
     ScaleActionArg localScaleActionArg = new ScaleActionArg();

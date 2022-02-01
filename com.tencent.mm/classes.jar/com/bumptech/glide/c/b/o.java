@@ -8,34 +8,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class o<Z>
   implements u<Z>
 {
-  private a aDS;
-  private h aDY;
-  final boolean aDZ;
-  final u<Z> aEa;
-  private final boolean aGa;
-  private int aGb;
-  private boolean aGc;
+  private a aFJ;
+  private h aFP;
+  final boolean aFQ;
+  final u<Z> aFR;
+  private final boolean aHR;
+  private int aHS;
+  private boolean aHT;
   
   o(u<Z> paramu, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(77006);
-    this.aEa = ((u)i.checkNotNull(paramu, "Argument must not be null"));
-    this.aDZ = paramBoolean1;
-    this.aGa = paramBoolean2;
+    this.aFR = ((u)i.checkNotNull(paramu, "Argument must not be null"));
+    this.aFQ = paramBoolean1;
+    this.aHR = paramBoolean2;
     AppMethodBeat.o(77006);
   }
   
   final void a(h paramh, a parama)
   {
-    this.aDY = paramh;
-    this.aDS = parama;
+    this.aFP = paramh;
+    this.aFJ = parama;
   }
   
   final void acquire()
   {
     AppMethodBeat.i(77011);
     Object localObject;
-    if (this.aGc)
+    if (this.aHT)
     {
       localObject = new IllegalStateException("Cannot acquire a recycled resource");
       AppMethodBeat.o(77011);
@@ -47,14 +47,14 @@ final class o<Z>
       AppMethodBeat.o(77011);
       throw ((Throwable)localObject);
     }
-    this.aGb += 1;
+    this.aHS += 1;
     AppMethodBeat.o(77011);
   }
   
   public final Z get()
   {
     AppMethodBeat.i(77008);
-    Object localObject = this.aEa.get();
+    Object localObject = this.aFR.get();
     AppMethodBeat.o(77008);
     return localObject;
   }
@@ -62,15 +62,15 @@ final class o<Z>
   public final int getSize()
   {
     AppMethodBeat.i(77009);
-    int i = this.aEa.getSize();
+    int i = this.aFR.getSize();
     AppMethodBeat.o(77009);
     return i;
   }
   
-  public final Class<Z> oy()
+  public final Class<Z> oQ()
   {
     AppMethodBeat.i(77007);
-    Class localClass = this.aEa.oy();
+    Class localClass = this.aFR.oQ();
     AppMethodBeat.o(77007);
     return localClass;
   }
@@ -79,21 +79,21 @@ final class o<Z>
   {
     AppMethodBeat.i(77010);
     IllegalStateException localIllegalStateException;
-    if (this.aGb > 0)
+    if (this.aHS > 0)
     {
       localIllegalStateException = new IllegalStateException("Cannot recycle a resource while it is still acquired");
       AppMethodBeat.o(77010);
       throw localIllegalStateException;
     }
-    if (this.aGc)
+    if (this.aHT)
     {
       localIllegalStateException = new IllegalStateException("Cannot recycle a resource that has already been recycled");
       AppMethodBeat.o(77010);
       throw localIllegalStateException;
     }
-    this.aGc = true;
-    if (this.aGa) {
-      this.aEa.recycle();
+    this.aHT = true;
+    if (this.aHR) {
+      this.aFR.recycle();
     }
     AppMethodBeat.o(77010);
   }
@@ -102,7 +102,7 @@ final class o<Z>
   {
     AppMethodBeat.i(77012);
     Object localObject;
-    if (this.aGb <= 0)
+    if (this.aHS <= 0)
     {
       localObject = new IllegalStateException("Cannot release a recycled or not yet acquired resource");
       AppMethodBeat.o(77012);
@@ -114,10 +114,10 @@ final class o<Z>
       AppMethodBeat.o(77012);
       throw ((Throwable)localObject);
     }
-    int i = this.aGb - 1;
-    this.aGb = i;
+    int i = this.aHS - 1;
+    this.aHS = i;
     if (i == 0) {
-      this.aDS.b(this.aDY, this);
+      this.aFJ.b(this.aFP, this);
     }
     AppMethodBeat.o(77012);
   }
@@ -125,7 +125,7 @@ final class o<Z>
   public final String toString()
   {
     AppMethodBeat.i(77013);
-    String str = "EngineResource{isCacheable=" + this.aDZ + ", listener=" + this.aDS + ", key=" + this.aDY + ", acquired=" + this.aGb + ", isRecycled=" + this.aGc + ", resource=" + this.aEa + '}';
+    String str = "EngineResource{isCacheable=" + this.aFQ + ", listener=" + this.aFJ + ", key=" + this.aFP + ", acquired=" + this.aHS + ", isRecycled=" + this.aHT + ", resource=" + this.aFR + '}';
     AppMethodBeat.o(77013);
     return str;
   }

@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.qqmail;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.qqmail.b.ad;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.plugin.qqmail.a.a;
+import com.tencent.mm.plugin.qqmail.d.ac;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.b.d;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class Plugin
-  implements d
+  implements com.tencent.mm.pluginsdk.b.d
 {
-  private a vTv;
+  private d xaZ;
   
   public Plugin()
   {
     AppMethodBeat.i(122626);
-    this.vTv = new a();
+    this.xaZ = new d();
     AppMethodBeat.o(122626);
   }
   
-  public final m createApplication()
+  public final n createApplication()
   {
     AppMethodBeat.i(122627);
-    com.tencent.mm.plugin.qqmail.a.a locala = new com.tencent.mm.plugin.qqmail.a.a();
+    a locala = new a();
     AppMethodBeat.o(122627);
     return locala;
   }
   
-  public final aw createSubCore()
+  public final ax createSubCore()
   {
     AppMethodBeat.i(122628);
-    ad localad = new ad();
+    ac localac = new ac();
     AppMethodBeat.o(122628);
-    return localad;
+    return localac;
   }
   
   public final c getContactWidgetFactory()
   {
-    return this.vTv;
+    return this.xaZ;
   }
 }
 

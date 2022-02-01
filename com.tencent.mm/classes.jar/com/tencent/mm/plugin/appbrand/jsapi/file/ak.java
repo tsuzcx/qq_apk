@@ -7,8 +7,8 @@ import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m.a;
 import com.tencent.mm.plugin.appbrand.z.i;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -28,20 +28,20 @@ public final class ak
       AppMethodBeat.o(170099);
       return "fail:file not exists";
     }
-    Object localObject2 = paramc.DH().Ih(paramString);
+    Object localObject2 = paramc.Fg().Lz(paramString);
     Object localObject1 = localObject2;
-    if (localObject2 != l.jsB) {}
+    if (localObject2 != l.jMv) {}
     try
     {
       localObject2 = new i();
-      paramc = paramc.DH().a(parame, paramString, (i)localObject2);
+      paramc = paramc.Fg().a(parame, paramString, (i)localObject2);
       localObject1 = paramc;
       if (parami != null)
       {
         parami.value = ((i)localObject2).value;
         localObject1 = paramc;
       }
-      switch (2.krw[localObject1.ordinal()])
+      switch (2.kMS[localObject1.ordinal()])
       {
       default: 
         paramc = "fail " + ((l)localObject1).name();
@@ -75,14 +75,14 @@ public final class ak
     AppMethodBeat.i(128899);
     Object localObject2 = paramJSONObject.optString("tempFilePath");
     Object localObject1 = paramJSONObject.optString("filePath");
-    if (bs.isNullOrNil((String)localObject2))
+    if (bt.isNullOrNil((String)localObject2))
     {
-      ac.e("MicroMsg.JsApiSaveFile", "temp localId is null or nil");
+      ad.e("MicroMsg.JsApiSaveFile", "temp localId is null or nil");
       paramc = new m.a("fail", new Object[0]);
       AppMethodBeat.o(128899);
       return paramc;
     }
-    localObject2 = paramc.DH().IS((String)localObject2);
+    localObject2 = paramc.Fg().Mj((String)localObject2);
     if ((localObject2 == null) || (!((com.tencent.mm.vfs.e)localObject2).exists()))
     {
       paramc = new m.a("fail tempFilePath file not exist", new Object[0]);
@@ -103,7 +103,7 @@ public final class ak
   public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128898);
-    e.kqZ.execute(new Runnable()
+    e.kMv.execute(new Runnable()
     {
       public final void run()
       {
@@ -114,21 +114,21 @@ public final class ak
           return;
         }
         m.a locala = ak.f(paramc, paramJSONObject);
-        paramc.h(paramInt, ak.this.k(locala.errMsg, locala.values));
+        paramc.h(paramInt, ak.this.m(locala.errMsg, locala.values));
         AppMethodBeat.o(128896);
       }
     });
     AppMethodBeat.o(128898);
   }
   
-  public final boolean bex()
+  public final boolean bib()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 class FloatBallHelper$1
   extends ResultReceiver
@@ -17,12 +17,12 @@ class FloatBallHelper$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(106061);
-    if ((paramInt == 2) && (paramBundle != null) && (this.nfR.bGn()))
+    if ((paramInt == 2) && (paramBundle != null) && (this.nGn.bKy()))
     {
       boolean bool = paramBundle.getBoolean("can_add_float_ball_when_hide", false);
-      ac.i("MicroMsg.FloatBallHelper", "alvinluo autoAddFloatBall canAdd: %b after remove floatBall done", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.FloatBallHelper", "alvinluo autoAddFloatBall canAdd: %b after remove floatBall done", new Object[] { Boolean.valueOf(bool) });
       if (bool) {
-        this.nfR.ga(true);
+        this.nGn.gf(true);
       }
     }
     AppMethodBeat.o(106061);
@@ -30,7 +30,7 @@ class FloatBallHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.service.FloatBallHelper.1
  * JD-Core Version:    0.7.0.1
  */

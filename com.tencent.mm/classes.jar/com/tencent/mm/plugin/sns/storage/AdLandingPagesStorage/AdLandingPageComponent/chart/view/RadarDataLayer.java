@@ -20,22 +20,22 @@ import java.util.Set;
 public class RadarDataLayer
   extends DataLayerView
 {
-  public static final Point yli;
-  private Path vU;
-  private int yld;
-  private float ylg;
-  private a ylj;
-  private a ylk;
-  private b yll;
-  private ValueAnimator ylm;
-  private boolean yln;
-  private int ylo;
-  private Point ylp;
+  public static final Point zBX;
+  private Path xN;
+  private int zBS;
+  private float zBV;
+  private a zBY;
+  private a zBZ;
+  private b zCa;
+  private ValueAnimator zCb;
+  private boolean zCc;
+  private int zCd;
+  private Point zCe;
   
   static
   {
     AppMethodBeat.i(96360);
-    yli = new Point(0, 0);
+    zBX = new Point(0, 0);
     AppMethodBeat.o(96360);
   }
   
@@ -43,26 +43,26 @@ public class RadarDataLayer
   {
     super(paramContext);
     AppMethodBeat.i(96349);
-    this.yll = new b();
-    this.yln = true;
-    this.yld = 4;
-    this.ylo = 80;
-    this.ylp = yli;
-    this.ylg = 1.0F;
-    this.vU = new Path();
-    this.ylg = paramFloat;
-    this.yll = parama.ykq;
-    this.yld = parama.size();
-    this.ylj = parama;
-    paramContext = parama.ykr;
+    this.zCa = new b();
+    this.zCc = true;
+    this.zBS = 4;
+    this.zCd = 80;
+    this.zCe = zBX;
+    this.zBV = 1.0F;
+    this.xN = new Path();
+    this.zBV = paramFloat;
+    this.zCa = parama.zBf;
+    this.zBS = parama.size();
+    this.zBY = parama;
+    paramContext = parama.zBg;
     long l = parama.duration;
     if (l > 0L)
     {
-      this.ylm = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.ylk = new a();
-      this.ylm.setDuration(l);
-      this.ylm.setInterpolator(paramContext);
-      this.ylm.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.zCb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.zBZ = new a();
+      this.zCb.setDuration(l);
+      this.zCb.setInterpolator(paramContext);
+      this.zCb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -86,14 +86,14 @@ public class RadarDataLayer
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(96347);
-    this.yll = new b();
-    this.yln = true;
-    this.yld = 4;
-    this.ylo = 80;
-    this.ylp = yli;
-    this.ylg = 1.0F;
-    this.vU = new Path();
-    dKh();
+    this.zCa = new b();
+    this.zCc = true;
+    this.zBS = 4;
+    this.zCd = 80;
+    this.zCe = zBX;
+    this.zBV = 1.0F;
+    this.xN = new Path();
+    dWv();
     AppMethodBeat.o(96347);
   }
   
@@ -101,18 +101,18 @@ public class RadarDataLayer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(96348);
-    this.yll = new b();
-    this.yln = true;
-    this.yld = 4;
-    this.ylo = 80;
-    this.ylp = yli;
-    this.ylg = 1.0F;
-    this.vU = new Path();
-    dKh();
+    this.zCa = new b();
+    this.zCc = true;
+    this.zBS = 4;
+    this.zCd = 80;
+    this.zCe = zBX;
+    this.zBV = 1.0F;
+    this.xN = new Path();
+    dWv();
     AppMethodBeat.o(96348);
   }
   
-  private void dKh()
+  private void dWv()
   {
     AppMethodBeat.i(96350);
     setMinimumHeight(160);
@@ -124,9 +124,9 @@ public class RadarDataLayer
   {
     AppMethodBeat.i(96353);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.yll.ykt);
+    localPaint.setColor(this.zCa.zBi);
     localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setStrokeWidth(this.yll.yku);
+    localPaint.setStrokeWidth(this.zCa.zBj);
     localPaint.setAntiAlias(true);
     AppMethodBeat.o(96353);
     return localPaint;
@@ -136,7 +136,7 @@ public class RadarDataLayer
   {
     AppMethodBeat.i(96355);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.yll.ykx);
+    localPaint.setColor(this.zCa.zBm);
     AppMethodBeat.o(96355);
     return localPaint;
   }
@@ -145,14 +145,14 @@ public class RadarDataLayer
   {
     AppMethodBeat.i(96352);
     Paint localPaint = new Paint();
-    b localb = this.yll;
-    if (localb.ykv == -1) {}
-    for (int i = localb.ykt;; i = localb.ykv)
+    b localb = this.zCa;
+    if (localb.zBk == -1) {}
+    for (int i = localb.zBi;; i = localb.zBk)
     {
       localPaint.setColor(i);
       localPaint.setStyle(Paint.Style.FILL);
       localPaint.setAntiAlias(true);
-      localPaint.setAlpha(this.yll.ykw);
+      localPaint.setAlpha(this.zCa.zBl);
       AppMethodBeat.o(96352);
       return localPaint;
     }
@@ -162,20 +162,20 @@ public class RadarDataLayer
   {
     AppMethodBeat.i(96354);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.yll.ykt);
-    localPaint.setStrokeWidth(this.yll.yku);
+    localPaint.setColor(this.zCa.zBi);
+    localPaint.setStrokeWidth(this.zCa.zBj);
     AppMethodBeat.o(96354);
     return localPaint;
   }
   
-  public final int dKe()
+  public final int dWs()
   {
-    return this.ylo * 2;
+    return this.zCd * 2;
   }
   
-  public final int dKf()
+  public final int dWt()
   {
-    return this.ylo * 2;
+    return this.zCd * 2;
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -184,53 +184,53 @@ public class RadarDataLayer
     super.onDraw(paramCanvas);
     int i = getHeight();
     int j = getWidth();
-    this.ylo = ((int)(Math.min(i, j) / 2.0F * 0.8D));
-    this.ylp.set((int)(j / 2.0F), (int)(i / 2.0F));
-    if (this.ylj == null)
+    this.zCd = ((int)(Math.min(i, j) / 2.0F * 0.8D));
+    this.zCe.set((int)(j / 2.0F), (int)(i / 2.0F));
+    if (this.zBY == null)
     {
       paramCanvas = new RuntimeException("Error: NullPointerException at data.");
       AppMethodBeat.o(96351);
       throw paramCanvas;
     }
-    if (this.ylj != null)
+    if (this.zBY != null)
     {
       Object localObject;
       label120:
       float f1;
       float f2;
-      if (this.ylk == null)
+      if (this.zBZ == null)
       {
-        localObject = this.ylj.entrySet();
+        localObject = this.zBY.entrySet();
         localObject = ((Set)localObject).iterator();
         i = 0;
         if (!((Iterator)localObject).hasNext()) {
           break label332;
         }
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-        f1 = (float)(this.ylp.x - ((Float)localEntry.getValue()).floatValue() / this.ylg * this.ylo * Math.sin(6.283185307179586D - i * 2 * 3.141592653589793D / this.yld));
-        f2 = (float)(this.ylp.y - ((Float)localEntry.getValue()).floatValue() / this.ylg * this.ylo * Math.cos(6.283185307179586D - i * 2 * 3.141592653589793D / this.yld));
+        f1 = (float)(this.zCe.x - ((Float)localEntry.getValue()).floatValue() / this.zBV * this.zCd * Math.sin(6.283185307179586D - i * 2 * 3.141592653589793D / this.zBS));
+        f2 = (float)(this.zCe.y - ((Float)localEntry.getValue()).floatValue() / this.zBV * this.zCd * Math.cos(6.283185307179586D - i * 2 * 3.141592653589793D / this.zBS));
         if (i != 0) {
           break label320;
         }
-        this.vU.moveTo(f1, f2);
+        this.xN.moveTo(f1, f2);
       }
       for (;;)
       {
-        if (this.yln) {
-          paramCanvas.drawCircle(f1, f2, this.yll.yky, getPaintLayerDotPoint());
+        if (this.zCc) {
+          paramCanvas.drawCircle(f1, f2, this.zCa.zBn, getPaintLayerDotPoint());
         }
         i += 1;
         break label120;
-        localObject = this.ylk.entrySet();
+        localObject = this.zBZ.entrySet();
         break;
         label320:
-        this.vU.lineTo(f1, f2);
+        this.xN.lineTo(f1, f2);
       }
       label332:
-      this.vU.close();
-      paramCanvas.drawPath(this.vU, getPaintLayerFilling());
-      paramCanvas.drawPath(this.vU, getPaintLayerBorder());
-      this.vU.reset();
+      this.xN.close();
+      paramCanvas.drawPath(this.xN, getPaintLayerFilling());
+      paramCanvas.drawPath(this.xN, getPaintLayerBorder());
+      this.xN.reset();
     }
     AppMethodBeat.o(96351);
   }
@@ -238,7 +238,7 @@ public class RadarDataLayer
   public void setData(a parama)
   {
     AppMethodBeat.i(96357);
-    this.ylj = parama;
+    this.zBY = parama;
     invalidate();
     AppMethodBeat.o(96357);
   }
@@ -246,7 +246,7 @@ public class RadarDataLayer
   public void setGlobalMax(float paramFloat)
   {
     AppMethodBeat.i(96356);
-    this.ylg = paramFloat;
+    this.zBV = paramFloat;
     invalidate();
     AppMethodBeat.o(96356);
   }
@@ -254,7 +254,7 @@ public class RadarDataLayer
   public void setLayerStyle(b paramb)
   {
     AppMethodBeat.i(96358);
-    this.yll = paramb;
+    this.zCa = paramb;
     invalidate();
     AppMethodBeat.o(96358);
   }
@@ -262,14 +262,14 @@ public class RadarDataLayer
   public void setMaxValue(float paramFloat)
   {
     AppMethodBeat.i(96359);
-    this.ylg = paramFloat;
+    this.zBV = paramFloat;
     invalidate();
     AppMethodBeat.o(96359);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarDataLayer
  * JD-Core Version:    0.7.0.1
  */

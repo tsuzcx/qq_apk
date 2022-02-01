@@ -1,20 +1,20 @@
 package com.tencent.mm.ce;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.vending.h.d;
 
 public final class a
   extends d
 {
-  private String GmO;
-  private ao handler;
+  private String HYB;
+  private ap handler;
   
   public a(String paramString)
   {
     AppMethodBeat.i(179439);
-    this.handler = new ao(paramString);
-    this.GmO = this.handler.getSerialTag();
+    this.handler = new ap(paramString);
+    this.HYB = this.handler.getSerialTag();
     AppMethodBeat.o(179439);
   }
   
@@ -25,7 +25,7 @@ public final class a
     AppMethodBeat.o(179442);
   }
   
-  public final void f(Runnable paramRunnable, long paramLong)
+  public final void g(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(179441);
     this.handler.postDelayed(paramRunnable, paramLong);
@@ -34,7 +34,7 @@ public final class a
   
   public final String getType()
   {
-    return this.GmO;
+    return this.HYB;
   }
   
   public final void w(Runnable paramRunnable)

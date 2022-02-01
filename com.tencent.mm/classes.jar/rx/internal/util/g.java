@@ -8,13 +8,13 @@ public final class g
   extends AtomicLong
   implements ThreadFactory
 {
-  public static final ThreadFactory Mfv;
-  final String hUu;
+  public static final ThreadFactory Oax;
+  final String inP;
   
   static
   {
     AppMethodBeat.i(90207);
-    Mfv = new ThreadFactory()
+    Oax = new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -29,13 +29,13 @@ public final class g
   
   public g(String paramString)
   {
-    this.hUu = paramString;
+    this.inP = paramString;
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
     AppMethodBeat.i(90206);
-    paramRunnable = new Thread(paramRunnable, this.hUu + incrementAndGet());
+    paramRunnable = new Thread(paramRunnable, this.inP + incrementAndGet());
     paramRunnable.setDaemon(true);
     AppMethodBeat.o(90206);
     return paramRunnable;

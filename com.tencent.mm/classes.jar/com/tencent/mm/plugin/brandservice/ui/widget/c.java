@@ -3,52 +3,52 @@ package com.tencent.mm.plugin.brandservice.ui.widget;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr;", "", "()V", "value", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "curSpeed", "getCurSpeed", "()Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "setCurSpeed", "(Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;)V", "lastSpeed", "getLastSpeed", "setLastSpeed", "resetCurSpeed", "", "MPVideoSpeed", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr;", "", "()V", "value", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "curSpeed", "getCurSpeed", "()Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;", "setCurSpeed", "(Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoSpeedMgr$MPVideoSpeed;)V", "lastSpeed", "getLastSpeed", "setLastSpeed", "resetCurSpeed", "", "MPVideoSpeed", "plugin-brandservice_release"})
 public final class c
 {
-  private static c.a nQU;
-  private static c.a nQV;
-  public static final c nQW;
+  private static c.a otB;
+  private static c.a otC;
+  public static final c otD;
   
   static
   {
     AppMethodBeat.i(179028);
-    nQW = new c();
+    otD = new c();
     AppMethodBeat.o(179028);
   }
   
   public static void a(c.a parama)
   {
-    if (nQV == null) {}
-    for (c.a locala = c.a.nQZ;; locala = nQV)
+    if (otC == null) {}
+    for (c.a locala = c.a.otG;; locala = otC)
     {
-      nQU = locala;
-      nQV = parama;
+      otB = locala;
+      otC = parama;
       return;
     }
   }
   
-  public static c.a bNW()
+  public static c.a bSx()
   {
-    if (nQU == null) {
-      return c.a.nQZ;
+    if (otB == null) {
+      return c.a.otG;
     }
-    return nQU;
+    return otB;
   }
   
-  public static c.a bNX()
+  public static c.a bSy()
   {
-    if (nQV == null) {
-      return c.a.nQZ;
+    if (otC == null) {
+      return c.a.otG;
     }
-    return nQV;
+    return otC;
   }
   
-  public static void bNY()
+  public static void bSz()
   {
     AppMethodBeat.i(179027);
-    nQU = c.a.nQZ;
-    a(c.a.nQZ);
+    otB = c.a.otG;
+    a(c.a.otG);
     AppMethodBeat.o(179027);
   }
 }

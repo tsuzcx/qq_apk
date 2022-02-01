@@ -11,6 +11,8 @@ public abstract interface q
   
   public abstract int getLongPollingTimeout();
   
+  public abstract int getNewExtFlags();
+  
   public abstract int getOptions();
   
   public abstract l.d getReqObj();
@@ -18,6 +20,8 @@ public abstract interface q
   public abstract l.e getRespObj();
   
   public abstract int getTimeOut();
+  
+  public abstract byte[] getTransHeader();
   
   public abstract int getType();
   

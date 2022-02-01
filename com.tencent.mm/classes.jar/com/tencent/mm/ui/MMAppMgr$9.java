@@ -3,9 +3,9 @@ package com.tencent.mm.ui;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 
 final class MMAppMgr$9
   implements CompoundButton.OnCheckedChangeListener
@@ -13,8 +13,8 @@ final class MMAppMgr$9
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     AppMethodBeat.i(33411);
-    az.ayM();
-    c.agA().set(61, Boolean.valueOf(paramBoolean));
+    ba.aBQ();
+    c.ajl().set(61, Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(33411);
   }
 }

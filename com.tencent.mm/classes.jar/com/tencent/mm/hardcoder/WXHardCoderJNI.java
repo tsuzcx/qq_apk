@@ -6,9 +6,9 @@ import android.os.Build;
 import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -115,28 +115,28 @@ public class WXHardCoderJNI
       public final void d(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(155945);
-        ac.d(paramAnonymousString1, paramAnonymousString2);
+        ad.d(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(155945);
       }
       
       public final void e(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(155946);
-        ac.e(paramAnonymousString1, paramAnonymousString2);
+        ad.e(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(155946);
       }
       
       public final void i(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(155944);
-        ac.i(paramAnonymousString1, paramAnonymousString2);
+        ad.i(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(155944);
       }
       
       public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
         AppMethodBeat.i(155947);
-        ac.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
+        ad.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
         AppMethodBeat.o(155947);
       }
     };
@@ -166,7 +166,7 @@ public class WXHardCoderJNI
       {
         int i = 0;
         AppMethodBeat.i(155950);
-        ac.i("MicroMsg.WXHardCoderJNI", "FuncRetCallback callbackType:" + paramAnonymousInt1 + ", requestId:" + paramAnonymousLong + ", retCode:" + paramAnonymousInt2 + ", funcId:" + paramAnonymousInt3 + ", dataType:" + paramAnonymousInt4);
+        ad.i("MicroMsg.WXHardCoderJNI", "FuncRetCallback callbackType:" + paramAnonymousInt1 + ", requestId:" + paramAnonymousLong + ", retCode:" + paramAnonymousInt2 + ", funcId:" + paramAnonymousInt3 + ", dataType:" + paramAnonymousInt4);
         if (paramAnonymousInt1 == 2) {
           switch (paramAnonymousInt3)
           {
@@ -182,14 +182,14 @@ public class WXHardCoderJNI
           try
           {
             paramAnonymousInt1 = new JSONObject(new String(paramAnonymousArrayOfByte)).optInt("system_event_code", 0);
-            ac.i("MicroMsg.WXHardCoderJNI", "onData SYSTEM_EVENT_CODE: ".concat(String.valueOf(paramAnonymousInt1)));
+            ad.i("MicroMsg.WXHardCoderJNI", "onData SYSTEM_EVENT_CODE: ".concat(String.valueOf(paramAnonymousInt1)));
             WXHardCoderJNI.systemEventCallback.onEvent(paramAnonymousInt1);
             AppMethodBeat.o(155950);
             return;
           }
           catch (JSONException paramAnonymousArrayOfByte)
           {
-            ac.i("MicroMsg.WXHardCoderJNI", "onData parse system event e:" + paramAnonymousArrayOfByte.getMessage());
+            ad.i("MicroMsg.WXHardCoderJNI", "onData parse system event e:" + paramAnonymousArrayOfByte.getMessage());
             AppMethodBeat.o(155950);
             return;
           }
@@ -205,7 +205,7 @@ public class WXHardCoderJNI
             try
             {
               paramAnonymousInt1 = paramAnonymousArrayOfByte.getInt("getparameterstype");
-              ac.i("MicroMsg.WXHardCoderJNI", "onData GET_PARAMETERS: " + paramAnonymousArrayOfByte + ", type:" + paramAnonymousInt1);
+              ad.i("MicroMsg.WXHardCoderJNI", "onData GET_PARAMETERS: " + paramAnonymousArrayOfByte + ", type:" + paramAnonymousInt1);
               WXHardCoderJNI.getParametersCallback.onGetParameters(paramAnonymousInt1, paramAnonymousArrayOfByte);
             }
             catch (JSONException localJSONException2)
@@ -216,7 +216,7 @@ public class WXHardCoderJNI
             paramAnonymousArrayOfByte = null;
           }
           label279:
-          ac.i("MicroMsg.WXHardCoderJNI", "onData parse get parameters e:" + localJSONException1.getMessage());
+          ad.i("MicroMsg.WXHardCoderJNI", "onData parse get parameters e:" + localJSONException1.getMessage());
           paramAnonymousInt1 = i;
         }
       }
@@ -230,8 +230,8 @@ public class WXHardCoderJNI
     String str1 = Build.MANUFACTURER;
     String str2 = Build.MODEL;
     String str3 = readServerAddr(false);
-    ac.i("MicroMsg.WXHardCoderJNI", "checkHardCoderEnv manufacture[%s], model[%s], remote[%s]", new Object[] { str1, str2, str3 });
-    if (!bs.isNullOrNil(str3))
+    ad.i("MicroMsg.WXHardCoderJNI", "checkHardCoderEnv manufacture[%s], model[%s], remote[%s]", new Object[] { str1, str2, str3 });
+    if (!bt.isNullOrNil(str3))
     {
       AppMethodBeat.o(155965);
       return true;
@@ -263,7 +263,7 @@ public class WXHardCoderJNI
     getParametersCallback = paramGetParametersCallback;
     long l = HardCoderJNI.getParameters(paramJSONObject.getBytes(), Process.myTid(), SystemClock.elapsedRealtimeNanos());
     HardCoderJNI.putFuncRetHashMap(l, funcRet);
-    ac.i("MicroMsg.WXHardCoderJNI", "getParameters type:" + paramInt + ", len: " + paramJSONObject.length());
+    ad.i("MicroMsg.WXHardCoderJNI", "getParameters type:" + paramInt + ", len: " + paramJSONObject.length());
     try
     {
       Thread.sleep(20L);
@@ -317,7 +317,7 @@ public class WXHardCoderJNI
       if (str == null) {
         parama = "null";
       }
-      ac.w("MicroMsg.WXHardCoderJNI", "initHardCoder serverSock is null or empty, skip init and reguard as disabled, serverSock:%s.", new Object[] { parama });
+      ad.w("MicroMsg.WXHardCoderJNI", "initHardCoder serverSock is null or empty, skip init and reguard as disabled, serverSock:%s.", new Object[] { parama });
       HardCoderJNI.setCheckEnv(false);
       AppMethodBeat.o(155964);
       return -3;
@@ -329,8 +329,8 @@ public class WXHardCoderJNI
     hardCoderReporterInfo = parama1;
     d.a(wxHardCoderLog);
     HardCoderJNI.setSceneReportCallback(sceneReportCallback);
-    ac.i("MicroMsg.WXHardCoderJNI", "initHardCoder hcDebug[%b] hcEnable[%b] checkEnv[%b] TICK_RATE[%d]", new Object[] { Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Boolean.valueOf(HardCoderJNI.isCheckEnv()), Integer.valueOf(HardCoderJNI.tickRate) });
-    int i = HardCoderJNI.initHardCoder(str, 0, ai.getPackageName() + ".hardcoder.client.sock", new HardCoderJNI.HCPerfManagerThread()
+    ad.i("MicroMsg.WXHardCoderJNI", "initHardCoder hcDebug[%b] hcEnable[%b] checkEnv[%b] TICK_RATE[%d]", new Object[] { Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Boolean.valueOf(HardCoderJNI.isCheckEnv()), Integer.valueOf(HardCoderJNI.tickRate) });
+    int i = HardCoderJNI.initHardCoder(str, 0, aj.getPackageName() + ".hardcoder.client.sock", new HardCoderJNI.HCPerfManagerThread()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable, String paramAnonymousString, int paramAnonymousInt)
       {
@@ -457,10 +457,10 @@ public class WXHardCoderJNI
             ((Method)localObject1).setAccessible(true);
           }
           localObject1 = (String)sGetStringPropsMethod.invoke(null, new Object[] { "persist.sys.hardcoder.name", "" });
-          ac.i("MicroMsg.WXHardCoderJNI", "readServerAddr, serverprop[%s], result[%s], stack[%s]", new Object[] { "persist.sys.hardcoder.name", localObject1, bs.eWi() });
+          ad.i("MicroMsg.WXHardCoderJNI", "readServerAddr, serverprop[%s], result[%s], stack[%s]", new Object[] { "persist.sys.hardcoder.name", localObject1, bt.flS() });
           if (paramBoolean)
           {
-            if (!bs.isNullOrNil((String)localObject1)) {
+            if (!bt.isNullOrNil((String)localObject1)) {
               continue;
             }
             reportInfo(new j(true, 1, 1, false));
@@ -470,7 +470,7 @@ public class WXHardCoderJNI
         catch (Throwable localThrowable)
         {
           Object localObject1;
-          ac.printErrStackTrace("MicroMsg.WXHardCoderJNI", localThrowable, "readServerAddr", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WXHardCoderJNI", localThrowable, "readServerAddr", new Object[0]);
           if (!paramBoolean) {
             continue;
           }
@@ -511,7 +511,7 @@ public class WXHardCoderJNI
     if (paramGetParametersCallback == null) {}
     for (Object localObject = "null";; localObject = paramGetParametersCallback)
     {
-      ac.i("MicroMsg.WXHardCoderJNI", "registerGetParametersCallback, type:%d, callback:%s, stack[%s]", new Object[] { Integer.valueOf(paramInt), localObject, bs.eWi() });
+      ad.i("MicroMsg.WXHardCoderJNI", "registerGetParametersCallback, type:%d, callback:%s, stack[%s]", new Object[] { Integer.valueOf(paramInt), localObject, bt.flS() });
       getParameters(paramInt, paramGetParametersCallback, paramVarArgs);
       AppMethodBeat.o(155971);
       return 0;
@@ -526,7 +526,7 @@ public class WXHardCoderJNI
       AppMethodBeat.o(155974);
       return -2L;
     }
-    ac.i("MicroMsg.WXHardCoderJNI", "registerSystemEventCallback, stack[%s]", new Object[] { bs.eWi() });
+    ad.i("MicroMsg.WXHardCoderJNI", "registerSystemEventCallback, stack[%s]", new Object[] { bt.flS() });
     systemEventCallback = paramSystemEventCallback;
     long l = HardCoderJNI.registerSystemEventCallback(Process.myTid(), SystemClock.elapsedRealtime());
     HardCoderJNI.putFuncRetHashMap(l, funcRet);
@@ -541,17 +541,17 @@ public class WXHardCoderJNI
     HardCoderJNI.setCheckEnv(bool);
     if (!bool)
     {
-      ac.e("MicroMsg.WXHardCoderJNI", "reloadSPConfig hcEnv is false.");
+      ad.e("MicroMsg.WXHardCoderJNI", "reloadSPConfig hcEnv is false.");
       AppMethodBeat.o(155961);
       return;
     }
     setDebug(false);
-    SharedPreferences localSharedPreferences = ai.getContext().getSharedPreferences("hardcoder_setting", 0);
+    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("hardcoder_setting", 0);
     HardCoderJNI.setHcEnable(localSharedPreferences.getBoolean("KEY_HC_ENABLE", true));
     hcBgEnable = localSharedPreferences.getBoolean("KEY_HC_BG_ENABLE", true);
     hcUinHash = localSharedPreferences.getInt("KEY_HC_UIN_HASH", 0);
     HardCoderJNI.setHcDebug(localSharedPreferences.getBoolean("KEY_HC_DEBUG", false));
-    ac.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig scene:%d, hcDebug:%b, hcEnable:%b, hcUinHash:%d, checkEnv:%b, stack[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Integer.valueOf(hcUinHash), Boolean.valueOf(HardCoderJNI.isCheckEnv()), bs.eWi() });
+    ad.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig scene:%d, hcDebug:%b, hcEnable:%b, hcUinHash:%d, checkEnv:%b, stack[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(HardCoderJNI.isHcDebug()), Boolean.valueOf(HardCoderJNI.isHcEnable()), Integer.valueOf(hcUinHash), Boolean.valueOf(HardCoderJNI.isCheckEnv()), bt.flS() });
     hcRetryInterval = localSharedPreferences.getInt("KEY_HC_RETRY_INTERVAL", 30);
     if (localSharedPreferences.getInt("KEY_HC_KV_PER", 0) < hcUinHash)
     {
@@ -701,7 +701,7 @@ public class WXHardCoderJNI
       hcMiniProgramLaunchThr = localSharedPreferences.getBoolean("KEY_HC_MINI_PROGRAM_LAUNCH_THR", false);
       hcMiniProgramLaunchTimeout = localSharedPreferences.getInt("KEY_HC_MINI_PROGRAM_LAUNCH_TIMEOUT", 5000);
       hcMiniProgramLaunchAction = localSharedPreferences.getLong("KEY_HC_MINI_PROGRAM_LAUNCH_ACTION", 114688L);
-      ac.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig Boot[%b] EnterChatting[%b] QuitChatting[%b] SendMsg[%b] SendPicMsg[%b] ReceiveMsg[%b] UpdateChatroom[%b] DB[%b] EncodeVideo[%b] DecodePic[%b] Gif[%b] GifFrame[%b] SNS[%b] MediaGallery[%b] Album[%b] SNSUser[%b] SNSMsg[%b] MiniProgramLaunch[%b]", new Object[] { Boolean.valueOf(hcBootEnable), Boolean.valueOf(hcEnterChattingEnable), Boolean.valueOf(hcQuitChattingEnable), Boolean.valueOf(hcSendMsgEnable), Boolean.valueOf(hcSendPicMsgEnable), Boolean.valueOf(hcReceiveMsgEnable), Boolean.valueOf(hcUpdateChatroomEnable), Boolean.valueOf(hcDBEnable), Boolean.valueOf(hcEncodeVideoEnable), Boolean.valueOf(hcDecodePicEnable), Boolean.valueOf(hcGifEnable), Boolean.valueOf(hcGifFrameEnable), Boolean.valueOf(hcSNSScrollEnable), Boolean.valueOf(hcMediaGalleryScrollEnable), Boolean.valueOf(hcAlbumScrollEnable), Boolean.valueOf(hcSNSUserScrollEnable), Boolean.valueOf(hcSNSMsgScrollEnable), Boolean.valueOf(hcMiniProgramLaunchEnable) });
+      ad.i("MicroMsg.WXHardCoderJNI", "reloadSPConfig Boot[%b] EnterChatting[%b] QuitChatting[%b] SendMsg[%b] SendPicMsg[%b] ReceiveMsg[%b] UpdateChatroom[%b] DB[%b] EncodeVideo[%b] DecodePic[%b] Gif[%b] GifFrame[%b] SNS[%b] MediaGallery[%b] Album[%b] SNSUser[%b] SNSMsg[%b] MiniProgramLaunch[%b]", new Object[] { Boolean.valueOf(hcBootEnable), Boolean.valueOf(hcEnterChattingEnable), Boolean.valueOf(hcQuitChattingEnable), Boolean.valueOf(hcSendMsgEnable), Boolean.valueOf(hcSendPicMsgEnable), Boolean.valueOf(hcReceiveMsgEnable), Boolean.valueOf(hcUpdateChatroomEnable), Boolean.valueOf(hcDBEnable), Boolean.valueOf(hcEncodeVideoEnable), Boolean.valueOf(hcDecodePicEnable), Boolean.valueOf(hcGifEnable), Boolean.valueOf(hcGifFrameEnable), Boolean.valueOf(hcSNSScrollEnable), Boolean.valueOf(hcMediaGalleryScrollEnable), Boolean.valueOf(hcAlbumScrollEnable), Boolean.valueOf(hcSNSUserScrollEnable), Boolean.valueOf(hcSNSMsgScrollEnable), Boolean.valueOf(hcMiniProgramLaunchEnable) });
       AppMethodBeat.o(155961);
       return;
       bool = false;

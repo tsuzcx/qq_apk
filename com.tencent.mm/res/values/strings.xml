@@ -335,7 +335,7 @@
     <string name="i3">离开</string>
     <string name="i4">扬声器</string>
     <string name="i5">\"%s\"</string>
-    <string name="i6">关闭</string>
+    <string name="k4">[大文件]</string>
     <string name="i7">正在使用你的</string>
     <string name="i8">位置信息</string>
     <string name="i9">%d个小程序</string>
@@ -412,8 +412,6 @@
     <string name="hex">不让他(她)看我的朋友圈</string>
     <string name="hey">不看他(她)的朋友圈</string>
     <string name="k3">清除测试配置</string>
-    <string name="k4">仿原生截图loading隐藏半透明遮罩</string>
-    <string name="k5">仿原生截图loading显示半透明遮罩</string>
     <string name="k6">大家在用仿原生版</string>
     <string name="k7">大家在用仿原生版内部体验(wx6bd2fb149a93a9c5)</string>
     <string name="k8">线上版(最近使用列表)</string>
@@ -600,7 +598,7 @@
 小程序"</string>
     <string name="ov">服务预览</string>
     <string name="ow">服务类目</string>
-    <string name="ox">评价人数不足</string>
+    <string name="ox">评分人数不足</string>
     <string name="oy">开发版小程序二维码已失效</string>
     <string name="oz">暂无体验权限</string>
     <string name="p0">微信没有读取联系人权限，请到系统设置或手机管理软件中开启该权限。</string>
@@ -612,7 +610,7 @@
     <string name="p6">最近</string>
     <string name="p7">我的小程序</string>
     <string name="p8">大家在用</string>
-    <string name="p9">小程序直播</string>
+    <string name="p9">购物直播</string>
     <string name="p_">我的订单</string>
     <string name="pa">最近使用</string>
     <string name="hf5">有%d个联系人未能添加到仅聊天列表，可尝试重新提交。</string>
@@ -956,6 +954,8 @@ All Rights Reserved."</string>
     <string name="hf_">我是群主的群聊</string>
     <string name="y4">数据下载中,请稍后...</string>
     <string name="y5">输入appid搜索打开正式版小程序</string>
+    <string name="bve">关闭</string>
+    <string name="hsm">开发者版</string>
     <string name="y6">小游戏在本机上启动失败</string>
     <string name="y7">图片解码内部错误</string>
     <string name="y8">图片解码失败, 错误码: %d, 错误信息:</string>
@@ -993,7 +993,8 @@ All Rights Reserved."</string>
     <string name="z1">当前为首页</string>
     <string name="z2">取消浮窗</string>
     <string name="z3">浮窗</string>
-    <string name="z4">未成年人成长守护</string>
+    <string name="z4">"成长守护
+防沉迷"</string>
     <string name="z5">小程序资料</string>
     <string name="z6">当前页面不可转发</string>
     <string name="z7">分享到朋友圈</string>
@@ -1050,7 +1051,9 @@ All Rights Reserved."</string>
     <string name="a0k">切换用户信息只更改你在“%s”中的微信头像和昵称。</string>
     <string name="a0l">发送到聊天</string>
     <string name="hfa">加载小程序插件权限超时，无法启动 %s</string>
+    <string name="hsn">开发团队</string>
     <string name="a0m">https://kf.qq.com/touch/sappfaq/180705A3IB3Y1807056fMr6V.html</string>
+    <string name="hso">更多资料</string>
     <string name="a0n">前往小程序</string>
     <string name="a0o">消息订阅</string>
     <string name="a0p">不接收</string>
@@ -1907,7 +1910,7 @@ All Rights Reserved."</string>
     <string name="am9">发票标题</string>
     <string name="am_">发票报销须知</string>
     <string name="ama">去看看</string>
-    <string name="amb">卡证</string>
+    <string name="amb">证件</string>
     <string name="amc">2016.11.12</string>
     <string name="amd">发票名称</string>
     <string name="ame">金额：%s</string>
@@ -2071,8 +2074,8 @@ All Rights Reserved."</string>
     <string name="aql">最多可置顶8个工具</string>
     <string name="aqm">群收款</string>
     <string name="aqn">最多可置顶8个工具</string>
-    <string name="aqo">使用听筒模式</string>
-    <string name="aqp">使用扬声器模式</string>
+    <string name="aqo">听筒播放</string>
+    <string name="aqp">扬声器播放</string>
     <string name="aqq">当前为蓝牙播放模式</string>
     <string name="aqr">听筒播放，请贴近手机聆听</string>
     <string name="aqs">手指上滑，取消发送</string>
@@ -2234,15 +2237,15 @@ All Rights Reserved."</string>
     <string name="auy">重新发送</string>
     <string name="auz">重译</string>
     <string name="av0">撤回</string>
-    <string name="av1">添加表情</string>
+    <string name="av1">添加</string>
     <string name="av2">保存视频</string>
     <string name="av3">查看专辑</string>
     <string name="av4">相关表情</string>
     <string name="av5">停止转换</string>
-    <string name="av6">收起</string>
-    <string name="av7">收起文字</string>
+    <string name="av6">隐藏</string>
+    <string name="av7">隐藏</string>
     <string name="av8">翻译</string>
-    <string name="av9">转换为文字（仅普通话）</string>
+    <string name="av9">转文字</string>
     <string name="av_">提醒</string>
     <string name="ava">拜年红包</string>
     <string name="avb">红包</string>
@@ -2906,7 +2909,7 @@ All Rights Reserved."</string>
     <string name="bbh">查看详情</string>
     <string name="bbi">帮助中心</string>
     <string name="bbj">消息免打扰</string>
-    <string name="bbk">在这里可以接收来自微信收款助手的通知，帮助你更好地使用二维码收款。</string>
+    <string name="bbk">在这里可以接收来自微信收款助手的通知，帮助你更好地使用微信收款。</string>
     <string name="bbl">置顶此功能</string>
     <string name="bbm">查看详情</string>
     <string name="bbn">帮助中心</string>
@@ -2996,10 +2999,14 @@ All Rights Reserved."</string>
     <string name="bdw">已停止修复，可以在 “ 我 - 设置 - 聊天 - 修复聊天记录 ” 中重新修复。</string>
     <string name="bdx">未能修复，可以在 “ 我 - 设置 - 聊天 - 修复聊天记录 ” 中重新修复。</string>
     <string name="bdy">聊天记录没有异常，无需修复</string>
+    <string name="k5">礼物</string>
+    <string name="hsp">未修改</string>
     <string name="bdz">重启微信</string>
     <string name="be0">设备可用空间不足，预计需要 %1$d MB 空间，现有 %2$d MB，请清理空间后再尝试恢复</string>
+    <string name="bvf">[游戏名片]</string>
     <string name="be1">修复成功，即将重新启动微信</string>
     <string name="be2">确定</string>
+    <string name="cdw">撤回</string>
     <string name="be3">五</string>
     <string name="be4">一</string>
     <string name="be5">六</string>
@@ -3230,6 +3237,7 @@ All Rights Reserved."</string>
     <string name="bk5">更多特效</string>
     <string name="bk6">无特效</string>
     <string name="bk7">推荐特效</string>
+    <string name="hsq">跳转中...</string>
     <string name="bk8">表情将会上传保存，在其他设备也可查看</string>
     <string name="bk9">我的自拍表情</string>
     <string name="bk_">&lt;font color=#FFFFFF>给表情&lt;/font>&lt;font color=#FD9931>赞赏&lt;/font></string>
@@ -3645,8 +3653,7 @@ All Rights Reserved."</string>
     <string name="bvb">你的投诉已提交审核</string>
     <string name="bvc">补充说明</string>
     <string name="bvd">选择原因</string>
-    <string name="bvg">搜索维修厂</string>
-    <string name="bvh">总实验开关</string>
+    <string name="bvg">微信维修厂</string>
     <string name="bvi">确定要发送涂鸦图片吗?</string>
     <string name="bvj">给你发了一条消息，请从微信查看。</string>
     <string name="bvk">取消</string>
@@ -4269,7 +4276,7 @@ All Rights Reserved."</string>
     <string name="cb1">%1$s：%2$s</string>
     <string name="cb2">消息通知</string>
     <string name="cb3">黑名单</string>
-    <string name="cb4">粉丝(%d)</string>
+    <string name="cb4">关注我的用户(%d)</string>
     <string name="cb5">我的关注</string>
     <string name="cb6">关注的视频号(%d)</string>
     <string name="cb7">赞过的动态</string>
@@ -4374,7 +4381,6 @@ channels@tencent.com申诉"</string>
     <string name="cdt">动态</string>
     <string name="cdu">暂无更多动态</string>
     <string name="cdv">评论(%s)</string>
-    <string name="cdw">更多新动态</string>
     <string name="cdx">视频号</string>
     <string name="cdy">未完成的功能</string>
     <string name="cdz">话题</string>
@@ -4428,6 +4434,7 @@ channels@tencent.com申诉"</string>
     <string name="cf8">修复联系人、群聊、聊天记录搜索故障</string>
     <string name="cf9">查看搜索信息</string>
     <string name="cf_">确定修复后，微信会立即退出。再次打开微信后，再次关闭屏幕10分钟，即可正常搜索。</string>
+    <string name="hx0">发送给朋友</string>
     <string name="cfa">设置本地索引建立完成</string>
     <string name="cfb">性能检测工具</string>
     <string name="cfc">修复搜索故障</string>
@@ -4457,6 +4464,7 @@ channels@tencent.com申诉"</string>
     <string name="cg0">你的手机没有授权微信获得浮窗权限，音乐浮窗不能正常使用</string>
     <string name="cg1">你的手机没有授权微信获得浮窗权限，收藏笔记浮窗无法正常使用</string>
     <string name="cg2">你的手机没有授权微信获得浮窗权限，网页浮窗无法正常使用</string>
+    <string name="hx1">分享到%s</string>
     <string name="cg3">将取消全部浮窗</string>
     <string name="cg4">查看开启方法</string>
     <string name="cg5">开启</string>
@@ -5062,7 +5070,7 @@ channels@tencent.com申诉"</string>
     <string name="cvv">"开启手势密码后进入“我-支付”时，
 微信将会验证你的手势密码"</string>
     <string name="cvw">多次输入错误，请%d分钟后再试</string>
-    <string name="cvx">忘记手势密码?</string>
+    <string name="cvx">忘记手势密码</string>
     <string name="cvy">再次输入以确认</string>
     <string name="cvz">密码不一致，请重新设置</string>
     <string name="cw0">请设置手势密码</string>
@@ -5300,6 +5308,7 @@ channels@tencent.com申诉"</string>
     <string name="d1w">妈妈</string>
     <string name="hfx">移除</string>
     <string name="d1x">待对方领取</string>
+    <string name="hsr">小程序购物体验保障服务</string>
     <string name="d1y">[亲属卡]%s</string>
     <string name="d1z">领取</string>
     <string name="hfy">已保存至相册</string>
@@ -6783,6 +6792,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="e3g">禁收通知的小程序</string>
     <string name="hg0">需要授权存储空间权限，以将图片、视频等文件保存到手机。</string>
     <string name="e3h">拒收此小程序消息</string>
+    <string name="hx2">文件无法发送，已超过今日发送限制</string>
     <string name="e3i">不再接收该小程序的%s</string>
     <string name="e3j">拒收后，该小程序将无法发送所有订阅消息</string>
     <string name="e3k">不再接收此类消息</string>
@@ -6802,6 +6812,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="e3y">正在设置</string>
     <string name="e3z">接收此帐号下发的客服消息</string>
     <string name="e40">接收</string>
+    <string name="hx3">广告</string>
     <string name="e41">接收通知</string>
     <string name="e42">接收该小程序消息后，此小程序可向你发送此类通知</string>
     <string name="e43">接收该小程序的%s</string>
@@ -7139,6 +7150,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="ebr">file:///android_asset/doc/default/qqsync_intro.htm</string>
     <string name="ebs">file:///android_asset/doc/default/qqsync_privacy.htm</string>
     <string name="ebt">\?hl=zh_CN</string>
+    <string name="hss">将删除本条推荐内容</string>
     <string name="ebu">生成赞赏码</string>
     <string name="ebv">赞赏</string>
     <string name="ebw">留言</string>
@@ -7164,6 +7176,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="ece">添加赞赏引导语</string>
     <string name="ecf">赞赏设置</string>
     <string name="ecg">更新后，你的所有赞赏码将展示为新内容</string>
+    <string name="hst">推荐</string>
     <string name="ech">“%s”</string>
     <string name="eci">元</string>
     <string name="ecj">已检测到本地应用，是否打开？</string>
@@ -7611,7 +7624,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="eo_">it has leak!</string>
     <string name="eoa">Dumping heap snapshot...</string>
     <string name="eob">重新下载</string>
-    <string name="eoc">发送给朋友</string>
+    <string name="eoc">转发</string>
     <string name="eod">文件过大，暂不支持转发</string>
     <string name="eoe">共%d条消息</string>
     <string name="eof">确认转发</string>
@@ -7981,6 +7994,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="ey3">\"相关结果</string>
     <string name="ey4">没有找到\"</string>
     <string name="ey5">用户不存在</string>
+    <string name="hsu">搜一搜</string>
     <string name="ey6">搜索结果</string>
     <string name="ey7">"城市: "</string>
     <string name="ey8">"备注: "</string>
@@ -8065,6 +8079,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f0c">选择朋友</string>
     <string name="f0d">选择</string>
     <string name="f0e">选择聊天</string>
+    <string name="bvh">该群聊已设置关联 “%s”，无法开启群聊邀请确认，解除关联后可开启。</string>
     <string name="f0f">“%s”</string>
     <string name="f0g">选择联系人</string>
     <string name="f0h">的联系人</string>
@@ -8131,7 +8146,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f25">我是%s</string>
     <string name="f26">我是群聊“%1$s”的%2$s</string>
     <string name="f27">正在发送</string>
-    <string name="f28">发送的文件不能超过100M</string>
     <string name="f29">发送失败</string>
     <string name="f2_">已发送</string>
     <string name="f2a">正在发送...</string>
@@ -8170,7 +8184,9 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f37">普通模式</string>
     <string name="f38">系统中的微信消息通知设置已关闭，前往打开？</string>
     <string name="hg2">使用</string>
+    <string name="hsv">发表评论</string>
     <string name="hg3">···展开···</string>
+    <string name="hx4">浮评上不可叠加字幕</string>
     <string name="f39">已开启</string>
     <string name="f3_">查看头像</string>
     <string name="f3a">重新发送验证邮件</string>
@@ -8261,6 +8277,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f5l">正在发送验证邮件...</string>
     <string name="f5m">内测反馈</string>
     <string name="f5n">深色模式</string>
+    <string name="hx5">不接收对方的消息</string>
     <string name="f5o">地区</string>
     <string name="f5p">导出个人数据</string>
     <string name="f5q">邮件地址</string>
@@ -8415,13 +8432,11 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f9p">未启用</string>
     <string name="f9q">已启用</string>
     <string name="f9r">启用该功能</string>
-    <string name="f9s">启用功能失败</string>
     <string name="f9t">已启用</string>
     <string name="f9u">已启用的功能</string>
     <string name="f9v">正在启用...</string>
     <string name="f9w">功能设置</string>
     <string name="f9x">停用</string>
-    <string name="f9y">停用功能失败</string>
     <string name="f9z">停用该功能同时将清空历史数据</string>
     <string name="f_0">停用该功能后你将不会收到朋友圈的提醒，但不会清空你发过的朋友圈及评论/赞。</string>
     <string name="f_1">未启用</string>
@@ -8444,7 +8459,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="f_h">可赠送名额</string>
     <string name="f_i">群二维码名片</string>
     <string name="f_j">邮件未发送，确定取消？</string>
-    <string name="bve">是否允许应用本地模板</string>
+    <string name="hx6">关联</string>
     <string name="f_k">群聊人数上限</string>
     <string name="f_l">群聊权限</string>
     <string name="f_m">安全设置</string>
@@ -8508,7 +8523,6 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fb3">清除登录痕迹</string>
     <string name="fb4">为了保护帐号安全，本次登录需要验证密码</string>
     <string name="fb5">轻触头像以切换帐号</string>
-    <string name="hhk">打开TPPlayer</string>
     <string name="fb6">系统通知</string>
     <string name="fb7" formatted="false">https://weixin.qq.com/cgi-bin/readtemplate?check=false&amp;t=weixin_notices&amp;func=notices&amp;action=list&amp;platform=android&amp;uin=%d&amp;new=%d&amp;lang=zh_CN</string>
     <string name="fb8">不保存照片和视频</string>
@@ -8871,7 +8885,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fko">私密链接不能评论</string>
     <string name="fkp">私密照片不能评论</string>
     <string name="fkq">私密文字不能评论</string>
-    <string name="hsm">是否关闭搜索预加载</string>
+    <string name="hsw">加入视频号黑名单</string>
     <string name="fkr">私密视频不能评论</string>
     <string name="fks">下载原图失败</string>
     <string name="fkt">下载小视频失败</string>
@@ -9091,7 +9105,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fql">发表文字</string>
     <string name="fqm">投诉</string>
     <string name="fqn">更换了相册背景</string>
-    <string name="fqo">确定删除吗？</string>
+    <string name="fqo">删除该朋友圈？</string>
     <string name="fqp">分享了一张专辑</string>
     <string name="fqq">分享了一本书</string>
     <string name="fqr">推荐了一位艺术家</string>
@@ -9273,7 +9287,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fvh">暂无视频动态可以设为精选</string>
     <string name="fvi">精选动态</string>
     <string name="fvj">的精选动态</string>
-    <string name="hsn">是否启动重置模板</string>
+    <string name="hsx">移出视频号黑名单</string>
     <string name="fvk">所有精选</string>
     <string name="fvl">清空</string>
     <string name="fvm">是否清空全部朋友的视频动态？</string>
@@ -9342,6 +9356,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="fxb">留言</string>
     <string name="fxc">yyyy年:M月:d日</string>
     <string name="fxd">精选</string>
+    <string name="hx7">将%s关联以下群聊</string>
     <string name="fxe">拍一个视频动态</string>
     <string name="fxf">拍一个视频动态</string>
     <string name="fxg">(对好友24小时可见)</string>
@@ -9523,7 +9538,7 @@ http://wechat.com/dl/ 然后扫描二维码加我好友。"</string>
     <string name="g21">更多功能按钮</string>
     <string name="g22">搜索</string>
     <string name="g23">发送小视频</string>
-    <string name="g24">发送状态</string>
+    <string name="g24">发送视频动态</string>
     <string name="g25">看一看小助手</string>
     <string name="g26">微信看一看</string>
     <string name="g27">k</string>
@@ -10531,7 +10546,7 @@ https://weixin.qq.com
     <string name="hhw">同步未完成，是否中断？</string>
     <string name="hhx">正在加载</string>
     <string name="hhy">放弃</string>
-    <string name="hhz">你将不会看到以上朋友点赞的动态。</string>
+    <string name="hhz">你将不会看到以上朋友点赞的动态</string>
     <string name="hi0">已取消</string>
     <string name="hi1">创建视频号</string>
     <string name="hi2">声明原创</string>
@@ -11515,9 +11530,9 @@ https://weixin.qq.com
     <string name="him">收藏的动态(%d)</string>
     <string name="hin">收藏的动态</string>
     <string name="hio">%d个动态</string>
-    <string name="hgn">由于网络问题，对方可能不知道你拍了拍他。</string>
-    <string name="hgo">你拍了拍自己</string>
-    <string name="hgp">你拍了拍</string>
+    <string name="hgn">由于网络问题，对方可能不知道你拍了拍他（她）。</string>
+    <string name="hgo">我拍了拍自己</string>
+    <string name="hgp">我拍了拍</string>
     <string name="hgq">你拍了拍 %s</string>
     <string name="hgr">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=setalias/faq&amp;wechat_real_lang=%s</string>
     <string name="hgs">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=setalias/agreement&amp;wechat_real_lang=%s</string>
@@ -11550,8 +11565,6 @@ https://weixin.qq.com
     <string name="hj5">%1$s 的其他%2$s条动态</string>
     <string name="hj6">%1$s 赞过的其他%2$s条动态</string>
     <string name="hj7">%s最近推荐的动态</string>
-    <string name="hj8">没有更多动态，前往热门</string>
-    <string name="hj9">前往热门</string>
     <string name="hj_">他</string>
     <string name="hja">%s不能为空</string>
     <string name="hjb">%s字数过多</string>
@@ -11565,7 +11578,7 @@ https://weixin.qq.com
     <string name="hjj">不再看他赞过的内容</string>
     <string name="hjk">不看朋友点赞的动态(%d)</string>
     <string name="hjl">暂时为空</string>
-    <string name="hjm">看他赞过的内容</string>
+    <string name="f28">评论...</string>
     <string name="hjn">未能移除</string>
     <string name="hjo">%d个朋友赞过</string>
     <string name="hjp">更多相似动态</string>
@@ -11627,6 +11640,7 @@ https://weixin.qq.com
     <string name="hl2">非个人帐号不可设置</string>
     <string name="hl3">性别默认使用微信性别</string>
     <string name="hl4">她</string>
+    <string name="hsy">删除该聊天</string>
     <string name="hl5">关注</string>
     <string name="hl6">朋友</string>
     <string name="hl7">附近</string>
@@ -11635,14 +11649,42 @@ https://weixin.qq.com
     <string name="hl_">网络不可用，请稍后再试</string>
     <string name="hla">没有更多动态</string>
     <string name="hlb">知道了</string>
-    <string name="hlc">开启后，他（她）所有点赞推荐的动态你将不再看到</string>
-    <string name="hld">不看朋友推荐</string>
-    <string name="hle">已暂停</string>
+    <string name="hlc">屏蔽后，该朋友所有点赞过的内容你将不再看到</string>
+    <string name="hld">屏蔽朋友点赞的内容</string>
+    <string name="hle">视频已暂停</string>
     <string name="hlf">轻触编辑单段视频</string>
-    <string name="hso">图片动态不能双击点赞</string>
-    <string name="hsp">打开后，你的朋友在热门和附近里不会看到你发的动态</string>
+    <string name="hsz">标为已读</string>
+    <string name="ht0">置顶聊天</string>
+    <string name="ht1">取消置顶聊天</string>
+    <string name="hx8">"1.其他人可在“%s”中，选择加入此群聊。
+2.群主可在 “群管理” 中，关闭此进群方式。"</string>
+    <string name="hx9">暂时无法继续操作，可稍后试试</string>
+    <string name="hx_">无法关联群聊</string>
+    <string name="hxa">已关联</string>
     <string name="hlg">点赞</string>
+    <string name="hxb">创建新的群聊</string>
     <string name="hlh">跳过</string>
+    <string name="hxc">其他人可通过%s加入群聊</string>
+    <string name="hxd">无法加入群聊</string>
+    <string name="hxe">其他进群方式</string>
+    <string name="hxg">无法开启群聊邀请确认</string>
+    <string name="ht7">更换实名信息</string>
+    <string name="ht8">同意《微信支付刷脸服务协议》</string>
+    <string name="ht9">当前功能只有微信支付实名本人(%s)才能使用，将开启摄像头进行人脸认证。</string>
+    <string name="ht_">刷脸验证</string>
+    <string name="hta">验证</string>
+    <string name="hxh">该群聊已被关联，打开该群聊，选择右上角“…”—群管理—其他进群方式，可解除关联。</string>
+    <string name="hxi">该群聊已开启群聊邀请确认，不支持关联。打开该群聊，选择右上角“…”群管理，可关闭群聊邀请确认。</string>
+    <string name="htb">创建视频号</string>
+    <string name="htc">清空打招呼消息</string>
+    <string name="htd">评论</string>
+    <string name="hte">: %s</string>
+    <string name="htf">不再接收的消息</string>
+    <string name="htg">打招呼消息</string>
+    <string name="hth">私信</string>
+    <string name="hti">视频号消息</string>
+    <string name="htj">暂不创建</string>
+    <string name="htk">你需要创建视频号后，才可以向对方发起私信。</string>
     <string name="hli">暂不支持向企业微信用户收款</string>
     <string name="hlj">本群含有企业微信用户，暂不支持向企业微信用户发起群收款。</string>
     <string name="hlk">仅可向微信用户收款</string>
@@ -11823,7 +11865,7 @@ https://weixin.qq.com
     <string name="hqa">主播已关闭评论</string>
     <string name="hqb">正在直播\"%s\"</string>
     <string name="hqc">群里还有%d场直播</string>
-    <string name="hqd">群里有%d场直播</string>
+    <string name="hqd">群里共%d场直播</string>
     <string name="hqe">结束</string>
     <string name="hqf">https://support.weixin.qq.com/cgi-bin/mmsupport-bin/newreadtemplate?t=live_forensic/index&amp;type=error&amp;lang=%s</string>
     <string name="hqg">《微信直播功能行为规范》</string>
@@ -11841,10 +11883,21 @@ https://weixin.qq.com
     <string name="hqr">所在位置</string>
     <string name="hqs">位置识别中…</string>
     <string name="hqt">标记位置，更容易被同城的人看到</string>
+    <string name="htl">删除</string>
+    <string name="htm">收藏</string>
+    <string name="htn">%s条动态</string>
+    <string name="hto">赞了你的赞</string>
     <string name="hqu">MLVBLiveRoom</string>
+    <string name="htp">图片动态不能双击点赞</string>
+    <string name="htq">%s个新关注</string>
+    <string name="htr">共%s个朋友赞过</string>
+    <string name="hts">赞了你的评论</string>
+    <string name="htt">赞了你的评论</string>
     <string name="hqv">收付款</string>
     <string name="hqw">手机剩余可用</string>
     <string name="hqx">空间</string>
+    <string name="htu" formatted="false">%s等%s人</string>
+    <string name="htv">赞</string>
     <string name="hqy">美颜</string>
     <string name="hqz">无</string>
     <string name="hr0">自然</string>
@@ -11864,20 +11917,34 @@ https://weixin.qq.com
     <string name="hrd">最近使用</string>
     <string name="hre">热门推荐</string>
     <string name="hrf">完成</string>
+    <string name="htw">没有赞过的动态</string>
     <string name="hrg">分段拍摄</string>
     <string name="hrh">普通</string>
     <string name="hri">轻触摄像，松手后再次轻触可分段拍摄</string>
     <string name="hrj">切换为图片</string>
     <string name="hrk">切换为普通视频</string>
     <string name="hrl">切换为卡点视频</string>
-    <string name="hsq">[群直播] %s</string>
+    <string name="htx">以下动态有新的朋友赞</string>
+    <string name="hty">赞了你的动态</string>
+    <string name="htz">%s人赞了你的动态</string>
+    <string name="hu0">的动态</string>
+    <string name="hu1">赞过的动态(%s)</string>
     <string name="hrm">已结束</string>
     <string name="hrn">直播中</string>
     <string name="hro">群直播</string>
     <string name="hrp">识别图中的条形码</string>
+    <string name="hu2">赞过的动态</string>
+    <string name="hu3">%s条新消息</string>
+    <string name="hu4">你的帐号异常，无法发起私信。</string>
+    <string name="hu5">帐号审核中，无法发起私信。</string>
+    <string name="hu6">[草稿]</string>
+    <string name="hu7">视频号私信</string>
+    <string name="hu8">你已经回复的私信不受影响</string>
     <string name="hrq">关闭后，视频号有新内容更新时，微信发现页不再出现红点提示。</string>
     <string name="hrr">视频号</string>
     <string name="hrs">照片、视频、文件和通话</string>
+    <string name="hu9">不再接收新私信</string>
+    <string name="hu_">创建视频号后才可以向对方发起私信</string>
     <string name="hrt">更新提醒</string>
     <string name="hru">使用移动网络改善语音通话</string>
     <string name="hrv">关闭后，下次语音通话将不使用移动网络改善</string>
@@ -11891,6 +11958,7 @@ https://weixin.qq.com
     <string name="hs3">选择原因</string>
     <string name="hs4">选择后将减少该类推荐</string>
     <string name="hs5">已反馈</string>
+    <string name="hua">完成微信实名认证，才可以向对方发起私信</string>
     <string name="hs6">链接未发送</string>
     <string name="hs7">笔记未发送</string>
     <string name="hs8">文字未发送</string>
@@ -11898,20 +11966,342 @@ https://weixin.qq.com
     <string name="hs_">重新编辑</string>
     <string name="hsa">摄像头推流</string>
     <string name="hsb">直播拉流</string>
+    <string name="hub">私信</string>
+    <string name="huc">对方已关闭私信</string>
+    <string name="hud">微信实名认证</string>
+    <string name="hue">打招呼消息</string>
+    <string name="huf">打开后，你的朋友在热门和附近里不会看到你发的动态</string>
     <string name="hsc">视频合成失败，请重试</string>
-    <string name="hsd">添加字幕</string>
     <string name="hse">裁剪</string>
     <string name="hsf">拖拽选择播放片段</string>
     <string name="hsg">正在使用移动网络改善通话质量</string>
+    <string name="hug">\@提到</string>
+    <string name="huh">\#话题#</string>
+    <string name="hui">%s:</string>
+    <string name="huj">对方回复前只能发三条消息</string>
+    <string name="huk">等%s个朋友 赞了</string>
     <string name="hsh">取消</string>
     <string name="hsi">到账银行卡</string>
+    <string name="hul">赞了</string>
+    <string name="hum">%s个朋友 赞了</string>
+    <string name="hun">发私信</string>
+    <string name="huo">正在发送中</string>
+    <string name="hup">转发</string>
+    <string name="huq">分享到朋友圈</string>
+    <string name="hxj">解除关联</string>
+    <string name="hur">轻触头像可切换身份</string>
+    <string name="hus">没有更多新动态</string>
+    <string name="huu">没有更多新动态</string>
+    <string name="huv">finderTransluentTheme</string>
+    <string name="huw">不接收他的私信</string>
+    <string name="hux">已屏蔽</string>
+    <string name="huy">屏蔽</string>
+    <string name="huz">不再看到该朋友点赞的动态</string>
+    <string name="hv0">浮评</string>
+    <string name="hv1">作者回复：</string>
+    <string name="hv2">更新微信</string>
+    <string name="hxk">解除与%s的关联</string>
+    <string name="hxl">解除关联后，其他人将无法从%s加入群聊</string>
+    <string name="hxm">暂时无法继续操作，可稍后试试</string>
+    <string name="hxn">已解除关联</string>
+    <string name="hxo">解除与%s的关联</string>
+    <string name="i6">确定删除和%s的聊天记录吗？</string>
+    <string name="hxp">%1$s通过%2$s加入群聊</string>
+    <string name="hxq">这条语音消息未加载完毕，不可收藏。</string>
+    <string name="hv3">你有新消息</string>
+    <string name="hv4">收到{unread_msg_count}条玩家消息</string>
+    <string name="hv5">暂无互动</string>
+    <string name="hv6">加入黑名单</string>
+    <string name="hv7">拉黑后你将不再收到对方发来的消息</string>
+    <string name="hv8">拉黑后你将不再收到对方发来的消息、内容推荐，并且对方将无法与你互动</string>
+    <string name="hv9">同时拉黑其微信游戏账号</string>
+    <string name="hv_">拉黑</string>
+    <string name="hva">移出</string>
+    <string name="hvb">移出黑名单</string>
+    <string name="hvc">移出黑名单后，可以收到对方发来的消息</string>
+    <string name="hvd">移出黑名单后，可以收到对方发来的消息、内容推荐，且对方将可以与你互动</string>
+    <string name="hve">同时将其微信游戏账号移出黑名单</string>
     <string name="hsj">下单异常,请检查商品参数</string>
     <string name="hsk">插件下载失败，请稍后再试</string>
     <string name="hsl">正在下载插件：</string>
+    <string name="hvf">[%1$d条]%2$s</string>
+    <string name="hvg">999+</string>
+    <string name="hvh">暂无通知</string>
+    <string name="hvi">账号未初始化</string>
+    <string name="hvj">加入黑名单失败</string>
+    <string name="hvk">[礼物]</string>
+    <string name="hvl">微信更新前的消息可在这里查看</string>
+    <string name="hvm">历史消息</string>
+    <string name="hvn">互动提醒</string>
+    <string name="hvo">加载失败，点击重试</string>
+    <string name="hvp">正在加载</string>
+    <string name="hvq">移出黑名单失败</string>
+    <string name="hvr">服务通知</string>
+    <string name="hxr">这条语音消息未加载完毕，不可转文字。</string>
+    <string name="hvs">视频号消息</string>
+    <string name="hvt">视频号消息</string>
+    <string name="hvu">SPHXX</string>
+    <string name="hvv">SHIPINHAOXIAOXI</string>
+    <string name="hxs">没有更多消息了</string>
+    <string name="hxt">服务器回包数据错误</string>
+    <string name="hxu">服务器回包解析异常</string>
+    <string name="hxv">服务器异常</string>
+    <string name="hxw">邮箱帐号</string>
+    <string name="hxx">未关联</string>
+    <string name="hxy">切换到新邮箱帐号后，旧邮箱帐号的历史信息将不再保留，是否继续？</string>
+    <string name="hxz">选择的消息包含未下载的文件，请下载或取消选中后再转发。</string>
+    <string name="hy0">包含一张图片</string>
+    <string name="hy1">包含多张图片</string>
+    <string name="hy2">标为未读</string>
+    <string name="f9s">《微信支付刷脸服务协议》</string>
+    <string name="f9y">取消推荐</string>
+    <string name="hhk">没有更多动态，去看%s</string>
+    <string name="hjm">去看%s</string>
+    <string name="hy3">应用到指尖搜索词库</string>
+    <string name="hy4">从视频号选择 60 秒视频</string>
+    <string name="hy5">用视频号发表</string>
+    <string name="hy6">轻触添加文字</string>
+    <string name="hy7">删除文字</string>
+    <string name="hvw">点击区域可以放大</string>
+    <string name="hvx">切换到横屏观看</string>
+    <string name="hvy">切换到竖屏观看</string>
+    <string name="hvz">分享已结束</string>
+    <string name="hw0">分享者离开了微信</string>
+    <string name="hsd">点赞推荐给朋友</string>
+    <string name="hy8">最多可分享%d条聊天记录</string>
+    <string name="ht2">去看%s动态</string>
+    <string name="hw1">拍了拍</string>
+    <string name="hw2">拍一拍</string>
+    <string name="hw3">你和朋友单独的聊天中将出现一条拍一拍消息</string>
+    <string name="hw4">拍了拍这里的头像后，将通知朋友</string>
+    <string name="hw5">\#%s#</string>
+    <string name="hw6">%s的动态</string>
+    <string name="hw7">[群直播] %s</string>
+    <string name="hy9">当前消息未下载完成，请稍后再试。</string>
+    <string name="hy_">部分消息未下载完成，请稍后再试。</string>
+    <string name="hya">热门动态</string>
+    <string name="hyb">热门有更多推荐</string>
+    <string name="hyc">视频号私信</string>
+    <string name="hyd">裁剪</string>
+    <string name="hw8">不再接收他的消息</string>
+    <string name="hw9">加入黑名单</string>
+    <string name="hw_">%s 的文件演示</string>
+    <string name="hye">删除</string>
+    <string name="hyf">表情</string>
+    <string name="hwa">消息</string>
+    <string name="hwb">私信</string>
+    <string name="hwc">我拍了拍自己的%s</string>
+    <string name="hwd">我拍了拍%1$s的%2$s</string>
+    <string name="hyg">变速</string>
+    <string name="hyh">文字</string>
+    <string name="hyi">他们还喜欢...</string>
+    <string name="hyj">喜欢这个动态的人还喜欢看</string>
+    <string name="hwe">朋友拍了拍我</string>
+    <string name="hwf">朋友拍你的时候将出现</string>
+    <string name="hwg">设置拍一拍</string>
+    <string name="hyk">允许公众号引用</string>
+    <string name="hyl">你的视频号动态可以被所有公众号引用</string>
+    <string name="hym">你的视频号动态只能被自己运营的公众号引用</string>
+    <string name="hwh">删除该评论？</string>
+    <string name="hwi">评论已被删除</string>
+    <string name="hyn">上传视频中，稍后可发送到朋友圈</string>
+    <string name="hwj">已删除</string>
+    <string name="hyo">转发到朋友圈</string>
+    <string name="hyp">申请关注</string>
+    <string name="hyq">取消申请</string>
+    <string name="hwk">至</string>
+    <string name="hyr">去看相似动态</string>
+    <string name="hwl">查看更新</string>
+    <string name="hwm">下载失败，请稍后重试</string>
+    <string name="hwn">下载进度：</string>
+    <string name="hwo">开始下载，可在通知中心查看进度</string>
+    <string name="hwp">更新包大小为</string>
+    <string name="hwq">更新完成，现在重启微信？</string>
+    <string name="hwr">更新已准备完成</string>
+    <string name="hws">更新包准备失败，请稍后重试</string>
+    <string name="hwt">更新准备中...</string>
+    <string name="hwu">无更新</string>
+    <string name="hwv" formatted="false">https://weixin.qq.com/cgi-bin/readtemplate?lang=%s&amp;t=intro_newversion&amp;version=%d</string>
+    <string name="hww">检查到微信有更新</string>
+    <string name="hys">不看朋友点赞的动态</string>
+    <string name="hyt">看她点赞的动态</string>
+    <string name="hyu">看他点赞的动态</string>
+    <string name="hyv">暂无消息</string>
+    <string name="hyw">私信</string>
+    <string name="hyx">通过</string>
+    <string name="hyy">已过期</string>
+    <string name="hyz">已撤回</string>
+    <string name="hz0">已通过</string>
+    <string name="hz1">请求关注你</string>
+    <string name="hz2">通过了你的关注申请</string>
+    <string name="hz3">%.1fm</string>
+    <string name="hz4">%.1f亿</string>
+    <string name="hz5">%.1fb</string>
+    <string name="hz6">私密帐号</string>
+    <string name="hz7">开启后，只有你允许的用户才能关注你</string>
+    <string name="hz8">"已设置私密帐号
+不可收藏"</string>
+    <string name="hz9">"已设置私密帐号
+不可转发"</string>
+    <string name="hz_">根据作者隐私设置，无法查看该内容</string>
+    <string name="hza">"对方设置私密帐号
+点赞不会推荐给好友"</string>
+    <string name="hzb">"长按私密点赞
+不会推荐给好友"</string>
+    <string name="hzc">"仅自己可见动态
+不可转发"</string>
+    <string name="hzd">仅自己可见</string>
+    <string name="hze">待对方回复才可以发送</string>
+    <string name="hzf">你有新私信</string>
+    <string name="hzg">刚刚看过</string>
+    <string name="hzh">已设置私密帐号，需要对方同意关注后可看到内容</string>
+    <string name="hzi">更多相似动态</string>
+    <string name="hzj">设置失败</string>
+    <string name="hzk">根据作者隐私设置，无法查看该内容</string>
+    <string name="hzl">仅自己可见</string>
+    <string name="hzm">已设置为私密</string>
+    <string name="hzn">公开可见</string>
+    <string name="hzo">已设置为公开</string>
+    <string name="hzp">创作指南</string>
+    <string name="hzq">转发给朋友</string>
+    <string name="hwx">微信</string>
+    <string name="hzr">分享到朋友圈</string>
+    <string name="hzs">我知道了</string>
+    <string name="hzt">你还没有创建视频号</string>
+    <string name="hzu">前往“发现页-视频号”创建帐号后，可以发表60秒视频到朋友圈。</string>
+    <string name="hzv">你还没有发表视频号动态</string>
+    <string name="hzw">发表视频号动态后，可以选择60秒视频发到朋友圈。</string>
+    <string name="hzx">选择我的视频号动态</string>
+    <string name="hwy">跳转中...</string>
+    <string name="hwz">授权服务异常</string>
+    <string name="hzy">粗体</string>
+    <string name="hzz">默认</string>
+    <string name="i00">细体</string>
+    <string name="i01">中体</string>
+    <string name="i02">游戏名片</string>
+    <string name="i03">你推荐了%s</string>
+    <string name="i04">向你推荐了%s</string>
+    <string name="i05">创建新的群聊</string>
+    <string name="ht3">由腾讯直播和腾讯云提供服务支持</string>
+    <string name="i06">前往图片来源</string>
+    <string name="i07">清除当前特效</string>
+    <string name="i08">特效持续时间</string>
+    <string name="i09">已使用特效</string>
+    <string name="i0_">添加特效</string>
+    <string name="i0a">下载附件失败</string>
+    <string name="i0b">摄像头</string>
+    <string name="i0c">麦克风</string>
+    <string name="i0d">扬声器</string>
+    <string name="i0e">%1$s设置拍一拍%2$s，朋友拍了拍你的头像后会出现设置的内容。</string>
+    <string name="i0f">读取邮件内容失败</string>
+    <string name="i0g">换一个邮箱</string>
+    <string name="i0h">使用微信号注册的邮箱接收邮件</string>
+    <string name="i0i">邮箱独立密码验证失败</string>
+    <string name="i0j">识别中</string>
+    <string name="i0k">分享的聊天记录已被撤回</string>
+    <string name="i0l">聊天记录上传失败</string>
+    <string name="i0m">当前网络不佳，聊天记录上传失败，请检查网络</string>
+    <string name="i0n">分享的聊天记录正在上传中</string>
+    <string name="i0o">移出群成员并撤回聊天记录</string>
+    <string name="i0p">撤回聊天记录</string>
+    <string name="i0q">拍了拍这里的头像后，你和朋友单独的聊天中将出现一条拍一拍消息</string>
+    <string name="i0r">撤回刚才这次拍一拍？</string>
+    <string name="i0s">如果对方使用的不是最新版本微信，可能无法撤回。</string>
+    <string name="i0t">撤回拍一拍消息</string>
+    <string name="i0u">%d 分钟内长按拍一拍消息可以撤回</string>
+    <string name="i0v">将%s移出群聊，并撤回分享的聊天记录？</string>
+    <string name="i0w">移出并撤回</string>
+    <string name="i0x">小程序码</string>
+    <string name="i0y">条形码</string>
+    <string name="i0z">公众号二维码</string>
+    <string name="i10">识别图中的赞赏码</string>
+    <string name="i11">群聊二维码</string>
+    <string name="i12">识别图中条形码</string>
+    <string name="i13">识别图中收款码</string>
+    <string name="i14">识别图中二维码</string>
+    <string name="i15">识别图中赞赏码</string>
+    <string name="i16">识别图中小程序码</string>
+    <string name="i17">收款码</string>
+    <string name="i18">个人二维码</string>
+    <string name="i19">赞赏码</string>
+    <string name="i1_">企业微信名片二维码</string>
+    <string name="i1a">已选择%s条聊天记录</string>
+    <string name="i1b">文件已超过大小限制</string>
+    <string name="i1c">分享聊天记录</string>
+    <string name="i1d">下滑将自动选择聊天记录</string>
+    <string name="i1e">成员已被移出群聊，分享的聊天记录已被撤回</string>
+    <string name="i1f">移出成员并撤回聊天记录失败</string>
+    <string name="i1g">聊天记录已撤回，删除成员失败</string>
+    <string name="i1h">分享的聊天记录已被撤回</string>
+    <string name="i1i">撤回不成功</string>
+    <string name="i1j">正在撤回聊天记录…</string>
+    <string name="i1k">分享%s条聊天记录</string>
+    <string name="i1l">已达到上限</string>
+    <string name="i1m">我拍了拍自己%s</string>
+    <string name="i1n">我拍了拍%1$s%2$s</string>
+    <string name="i1o">发送的文件不能超过%dM</string>
+    <string name="i1p">最多可输入%d个汉字</string>
+    <string name="i1q">启用邮箱助手失败</string>
+    <string name="i1r">启用邮箱助手成功</string>
+    <string name="i1s">停用邮箱助手失败</string>
+    <string name="i1t">停用邮箱助手成功</string>
+    <string name="i1u">评论列表</string>
+    <string name="i1v">点赞列表</string>
+    <string name="i1w">你可以选择视频号已发布内容，发到朋友圈。</string>
+    <string name="i1x">前往视频号发表60秒视频，可以分享朋友圈</string>
+    <string name="i1y">%s的图片</string>
+    <string name="i1z">%s的视频</string>
+    <string name="i20">配乐</string>
+    <string name="i21">录音</string>
+    <string name="i22">字幕</string>
+    <string name="i23">原声字幕</string>
+    <string name="i24">生成字幕</string>
+    <string name="i25">生成原声字幕</string>
+    <string name="i26">取消</string>
+    <string name="i27">清除字幕</string>
+    <string name="i28">视频原声识别失败</string>
+    <string name="i29">正在识别字幕...</string>
+    <string name="i2_">视频原声识别字幕</string>
+    <string name="i2a">普通模式</string>
+    <string name="i2b">一键成片</string>
+    <string name="i2c">取消</string>
+    <string name="i2d">网络状态不佳，请检查网络后重试</string>
+    <string name="i2e">正在用王者荣耀·妲己配音</string>
+    <string name="i2f">编辑录音</string>
+    <string name="i2g">录音</string>
+    <string name="i2h">删除配音</string>
+    <string name="i2i">是否删除当前片段配音</string>
+    <string name="i2j">剩余%ss</string>
+    <string name="i2k">录音字幕</string>
+    <string name="i2l">生成录音字幕</string>
+    <string name="i2m">网络不佳，请重新识别字幕</string>
+    <string name="i2n">删除字幕</string>
+    <string name="i2o">是否删除原生字幕</string>
+    <string name="i2p">暂未识别到人声</string>
+    <string name="i2q">删除表情</string>
+    <string name="i2r">取消</string>
+    <string name="i2s">是否删除当前表情</string>
+    <string name="i2t" formatted="false">当前视频总长度 %d 秒，已截取 %d 秒的内容</string>
+    <string name="i2u">快</string>
+    <string name="i2v">正常</string>
+    <string name="i2w">慢</string>
+    <string name="i2x">调整字幕</string>
+    <string name="i2y">删除</string>
+    <string name="i2z">编辑</string>
+    <string name="i30">朗读</string>
+    <string name="i31">时长</string>
+    <string name="i32">设置时长</string>
+    <string name="i33">是否删除当前文字</string>
+    <string name="i34">应用到所有片段</string>
+    <string name="i35">正在下载转场素材</string>
+    <string name="i36">无转场</string>
+    <string name="i37">无</string>
+    <string name="i38">添加转场</string>
+    <string name="i39">选中的图片已过期或已清理，无法搜索</string>
     <item type="string" name="APKTOOL_DUMMY_14d" />
-    <item type="string" name="APKTOOL_DUMMY_3b0" />
+    <item type="string" name="APKTOOL_DUMMY_19c" />
+    <item type="string" name="APKTOOL_DUMMY_19d" />
     <item type="string" name="APKTOOL_DUMMY_3b1" />
-    <item type="string" name="APKTOOL_DUMMY_3b2" />
     <item type="string" name="APKTOOL_DUMMY_3c8" />
     <item type="string" name="APKTOOL_DUMMY_3c9" />
     <item type="string" name="APKTOOL_DUMMY_3ca" />
@@ -11922,28 +12312,21 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_415" />
     <item type="string" name="APKTOOL_DUMMY_417" />
     <item type="string" name="APKTOOL_DUMMY_418" />
-    <item type="string" name="APKTOOL_DUMMY_419" />
-    <item type="string" name="APKTOOL_DUMMY_41b" />
     <item type="string" name="APKTOOL_DUMMY_485" />
     <item type="string" name="APKTOOL_DUMMY_649" />
     <item type="string" name="APKTOOL_DUMMY_64a" />
     <item type="string" name="APKTOOL_DUMMY_ba3" />
-    <item type="string" name="APKTOOL_DUMMY_bad" />
-    <item type="string" name="APKTOOL_DUMMY_bae" />
-    <item type="string" name="APKTOOL_DUMMY_bb1" />
-    <item type="string" name="APKTOOL_DUMMY_bb4" />
     <item type="string" name="APKTOOL_DUMMY_bb5" />
     <item type="string" name="APKTOOL_DUMMY_c99" />
-    <item type="string" name="APKTOOL_DUMMY_c9a" />
     <item type="string" name="APKTOOL_DUMMY_ca8" />
     <item type="string" name="APKTOOL_DUMMY_e3a" />
     <item type="string" name="APKTOOL_DUMMY_e3b" />
+    <item type="string" name="APKTOOL_DUMMY_e3d" />
     <item type="string" name="APKTOOL_DUMMY_e46" />
     <item type="string" name="APKTOOL_DUMMY_ed1" />
     <item type="string" name="APKTOOL_DUMMY_ed2" />
+    <item type="string" name="APKTOOL_DUMMY_110f" />
     <item type="string" name="APKTOOL_DUMMY_1143" />
-    <item type="string" name="APKTOOL_DUMMY_1145" />
-    <item type="string" name="APKTOOL_DUMMY_1163" />
     <item type="string" name="APKTOOL_DUMMY_127f" />
     <item type="string" name="APKTOOL_DUMMY_1280" />
     <item type="string" name="APKTOOL_DUMMY_13f4" />
@@ -11951,7 +12334,6 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_13f9" />
     <item type="string" name="APKTOOL_DUMMY_1480" />
     <item type="string" name="APKTOOL_DUMMY_14a5" />
-    <item type="string" name="APKTOOL_DUMMY_14a6" />
     <item type="string" name="APKTOOL_DUMMY_14a7" />
     <item type="string" name="APKTOOL_DUMMY_14aa" />
     <item type="string" name="APKTOOL_DUMMY_14ac" />
@@ -11961,128 +12343,139 @@ https://weixin.qq.com
     <item type="string" name="APKTOOL_DUMMY_15f4" />
     <item type="string" name="APKTOOL_DUMMY_16b9" />
     <item type="string" name="APKTOOL_DUMMY_18b2" />
-    <item type="string" name="APKTOOL_DUMMY_1a4c" />
-    <item type="string" name="APKTOOL_DUMMY_1a60" />
-    <item type="string" name="APKTOOL_DUMMY_1ba8" />
-    <item type="string" name="APKTOOL_DUMMY_1bc1" />
     <item type="string" name="APKTOOL_DUMMY_1c4a" />
     <item type="string" name="APKTOOL_DUMMY_1cc2" />
     <item type="string" name="APKTOOL_DUMMY_1d37" />
     <item type="string" name="APKTOOL_DUMMY_1d6a" />
-    <item type="string" name="APKTOOL_DUMMY_1eea" />
-    <item type="string" name="APKTOOL_DUMMY_1f3f" />
-    <item type="string" name="APKTOOL_DUMMY_1fa9" />
-    <item type="string" name="APKTOOL_DUMMY_1fab" />
-    <item type="string" name="APKTOOL_DUMMY_2006" />
-    <item type="string" name="APKTOOL_DUMMY_2432" />
-    <item type="string" name="APKTOOL_DUMMY_2ce3" />
-    <item type="string" name="APKTOOL_DUMMY_2cf0" />
-    <item type="string" name="APKTOOL_DUMMY_2cf3" />
-    <item type="string" name="APKTOOL_DUMMY_2cf4" />
-    <item type="string" name="APKTOOL_DUMMY_2cf5" />
-    <item type="string" name="APKTOOL_DUMMY_2cf6" />
-    <item type="string" name="APKTOOL_DUMMY_2cf8" />
-    <item type="string" name="APKTOOL_DUMMY_2cfa" />
-    <item type="string" name="APKTOOL_DUMMY_2cfb" />
-    <item type="string" name="APKTOOL_DUMMY_2cfc" />
+    <item type="string" name="APKTOOL_DUMMY_1f82" />
+    <item type="string" name="APKTOOL_DUMMY_209f" />
+    <item type="string" name="APKTOOL_DUMMY_20a5" />
+    <item type="string" name="APKTOOL_DUMMY_20f8" />
+    <item type="string" name="APKTOOL_DUMMY_2c97" />
+    <item type="string" name="APKTOOL_DUMMY_2c98" />
     <item type="string" name="APKTOOL_DUMMY_2cfd" />
     <item type="string" name="APKTOOL_DUMMY_2cfe" />
     <item type="string" name="APKTOOL_DUMMY_2cff" />
     <item type="string" name="APKTOOL_DUMMY_2d00" />
     <item type="string" name="APKTOOL_DUMMY_2d01" />
     <item type="string" name="APKTOOL_DUMMY_2d02" />
-    <item type="string" name="APKTOOL_DUMMY_2d03" />
-    <item type="string" name="APKTOOL_DUMMY_2d04" />
-    <item type="string" name="APKTOOL_DUMMY_2d05" />
-    <item type="string" name="APKTOOL_DUMMY_2d06" />
-    <item type="string" name="APKTOOL_DUMMY_2d07" />
-    <item type="string" name="APKTOOL_DUMMY_2d08" />
-    <item type="string" name="APKTOOL_DUMMY_2d09" />
-    <item type="string" name="APKTOOL_DUMMY_2d0a" />
-    <item type="string" name="APKTOOL_DUMMY_2d0b" />
-    <item type="string" name="APKTOOL_DUMMY_2d0c" />
-    <item type="string" name="APKTOOL_DUMMY_2d0d" />
-    <item type="string" name="APKTOOL_DUMMY_2d0e" />
-    <item type="string" name="APKTOOL_DUMMY_2d0f" />
-    <item type="string" name="APKTOOL_DUMMY_2d10" />
-    <item type="string" name="APKTOOL_DUMMY_2d11" />
-    <item type="string" name="APKTOOL_DUMMY_2d12" />
-    <item type="string" name="APKTOOL_DUMMY_2d13" />
-    <item type="string" name="APKTOOL_DUMMY_2d14" />
-    <item type="string" name="APKTOOL_DUMMY_2dda" />
-    <item type="string" name="APKTOOL_DUMMY_2ddb" />
-    <item type="string" name="APKTOOL_DUMMY_2ddc" />
-    <item type="string" name="APKTOOL_DUMMY_2ddd" />
-    <item type="string" name="APKTOOL_DUMMY_2ddf" />
-    <item type="string" name="APKTOOL_DUMMY_2de0" />
-    <item type="string" name="APKTOOL_DUMMY_2de1" />
-    <item type="string" name="APKTOOL_DUMMY_2de2" />
-    <item type="string" name="APKTOOL_DUMMY_2de3" />
-    <item type="string" name="APKTOOL_DUMMY_2de7" />
-    <item type="string" name="APKTOOL_DUMMY_2de8" />
-    <item type="string" name="APKTOOL_DUMMY_2dfc" />
-    <item type="string" name="APKTOOL_DUMMY_2e03" />
-    <item type="string" name="APKTOOL_DUMMY_2e04" />
-    <item type="string" name="APKTOOL_DUMMY_2e05" />
-    <item type="string" name="APKTOOL_DUMMY_2e07" />
-    <item type="string" name="APKTOOL_DUMMY_2e0c" />
-    <item type="string" name="APKTOOL_DUMMY_2e0d" />
-    <item type="string" name="APKTOOL_DUMMY_2e0e" />
-    <item type="string" name="APKTOOL_DUMMY_2e0f" />
-    <item type="string" name="APKTOOL_DUMMY_2e10" />
-    <item type="string" name="APKTOOL_DUMMY_2e11" />
-    <item type="string" name="APKTOOL_DUMMY_2e12" />
-    <item type="string" name="APKTOOL_DUMMY_2e16" />
-    <item type="string" name="APKTOOL_DUMMY_2e17" />
-    <item type="string" name="APKTOOL_DUMMY_2e25" />
-    <item type="string" name="APKTOOL_DUMMY_2e2d" />
-    <item type="string" name="APKTOOL_DUMMY_2e2e" />
-    <item type="string" name="APKTOOL_DUMMY_2e2f" />
-    <item type="string" name="APKTOOL_DUMMY_2e30" />
-    <item type="string" name="APKTOOL_DUMMY_2e31" />
-    <item type="string" name="APKTOOL_DUMMY_2e37" />
-    <item type="string" name="APKTOOL_DUMMY_2e38" />
-    <item type="string" name="APKTOOL_DUMMY_2e39" />
-    <item type="string" name="APKTOOL_DUMMY_2e3a" />
-    <item type="string" name="APKTOOL_DUMMY_2e3b" />
-    <item type="string" name="APKTOOL_DUMMY_2e3e" />
-    <item type="string" name="APKTOOL_DUMMY_2e3f" />
-    <item type="string" name="APKTOOL_DUMMY_2e40" />
-    <item type="string" name="APKTOOL_DUMMY_2e41" />
-    <item type="string" name="APKTOOL_DUMMY_2e42" />
-    <item type="string" name="APKTOOL_DUMMY_2e43" />
-    <item type="string" name="APKTOOL_DUMMY_2e44" />
-    <item type="string" name="APKTOOL_DUMMY_2e45" />
-    <item type="string" name="APKTOOL_DUMMY_2e46" />
+    <item type="string" name="APKTOOL_DUMMY_2e33" />
     <item type="string" name="APKTOOL_DUMMY_2e47" />
-    <item type="string" name="APKTOOL_DUMMY_2e48" />
-    <item type="string" name="APKTOOL_DUMMY_2e49" />
-    <item type="string" name="APKTOOL_DUMMY_2e4a" />
-    <item type="string" name="APKTOOL_DUMMY_2e4b" />
-    <item type="string" name="APKTOOL_DUMMY_2e4c" />
-    <item type="string" name="APKTOOL_DUMMY_2e4d" />
-    <item type="string" name="APKTOOL_DUMMY_2e4e" />
-    <item type="string" name="APKTOOL_DUMMY_2e4f" />
-    <item type="string" name="APKTOOL_DUMMY_2e50" />
-    <item type="string" name="APKTOOL_DUMMY_2e51" />
-    <item type="string" name="APKTOOL_DUMMY_2e52" />
-    <item type="string" name="APKTOOL_DUMMY_2e53" />
-    <item type="string" name="APKTOOL_DUMMY_2e54" />
-    <item type="string" name="APKTOOL_DUMMY_2e55" />
-    <item type="string" name="APKTOOL_DUMMY_2e56" />
-    <item type="string" name="APKTOOL_DUMMY_2e57" />
-    <item type="string" name="APKTOOL_DUMMY_2e58" />
-    <item type="string" name="APKTOOL_DUMMY_2e59" />
-    <item type="string" name="APKTOOL_DUMMY_2e5a" />
-    <item type="string" name="APKTOOL_DUMMY_2e5b" />
-    <item type="string" name="APKTOOL_DUMMY_2e5c" />
-    <item type="string" name="APKTOOL_DUMMY_2e5d" />
-    <item type="string" name="APKTOOL_DUMMY_2e5e" />
-    <item type="string" name="APKTOOL_DUMMY_2e5f" />
-    <item type="string" name="APKTOOL_DUMMY_2e60" />
-    <item type="string" name="APKTOOL_DUMMY_2e61" />
-    <item type="string" name="APKTOOL_DUMMY_2e62" />
-    <item type="string" name="APKTOOL_DUMMY_2e63" />
-    <item type="string" name="APKTOOL_DUMMY_2e64" />
-    <item type="string" name="APKTOOL_DUMMY_2e65" />
+    <item type="string" name="APKTOOL_DUMMY_2e77" />
+    <item type="string" name="APKTOOL_DUMMY_2e78" />
+    <item type="string" name="APKTOOL_DUMMY_2e79" />
+    <item type="string" name="APKTOOL_DUMMY_2e7f" />
+    <item type="string" name="APKTOOL_DUMMY_2e83" />
+    <item type="string" name="APKTOOL_DUMMY_2e84" />
+    <item type="string" name="APKTOOL_DUMMY_2e85" />
+    <item type="string" name="APKTOOL_DUMMY_2e89" />
+    <item type="string" name="APKTOOL_DUMMY_2e8f" />
+    <item type="string" name="APKTOOL_DUMMY_2e90" />
+    <item type="string" name="APKTOOL_DUMMY_2e99" />
+    <item type="string" name="APKTOOL_DUMMY_2ea0" />
+    <item type="string" name="APKTOOL_DUMMY_2ea7" />
+    <item type="string" name="APKTOOL_DUMMY_2ea8" />
+    <item type="string" name="APKTOOL_DUMMY_2f06" />
+    <item type="string" name="APKTOOL_DUMMY_2f07" />
+    <item type="string" name="APKTOOL_DUMMY_2f08" />
+    <item type="string" name="APKTOOL_DUMMY_2f0b" />
+    <item type="string" name="APKTOOL_DUMMY_2f0c" />
+    <item type="string" name="APKTOOL_DUMMY_2f11" />
+    <item type="string" name="APKTOOL_DUMMY_2f12" />
+    <item type="string" name="APKTOOL_DUMMY_2f13" />
+    <item type="string" name="APKTOOL_DUMMY_2f14" />
+    <item type="string" name="APKTOOL_DUMMY_2f15" />
+    <item type="string" name="APKTOOL_DUMMY_2f1a" />
+    <item type="string" name="APKTOOL_DUMMY_2f1b" />
+    <item type="string" name="APKTOOL_DUMMY_2f1c" />
+    <item type="string" name="APKTOOL_DUMMY_2f1d" />
+    <item type="string" name="APKTOOL_DUMMY_2f1e" />
+    <item type="string" name="APKTOOL_DUMMY_2f1f" />
+    <item type="string" name="APKTOOL_DUMMY_2f20" />
+    <item type="string" name="APKTOOL_DUMMY_2f21" />
+    <item type="string" name="APKTOOL_DUMMY_2f22" />
+    <item type="string" name="APKTOOL_DUMMY_2f23" />
+    <item type="string" name="APKTOOL_DUMMY_2f24" />
+    <item type="string" name="APKTOOL_DUMMY_2f25" />
+    <item type="string" name="APKTOOL_DUMMY_2f26" />
+    <item type="string" name="APKTOOL_DUMMY_2f27" />
+    <item type="string" name="APKTOOL_DUMMY_2f28" />
+    <item type="string" name="APKTOOL_DUMMY_2f29" />
+    <item type="string" name="APKTOOL_DUMMY_2f2a" />
+    <item type="string" name="APKTOOL_DUMMY_2f2b" />
+    <item type="string" name="APKTOOL_DUMMY_2f2c" />
+    <item type="string" name="APKTOOL_DUMMY_2f2d" />
+    <item type="string" name="APKTOOL_DUMMY_2f2e" />
+    <item type="string" name="APKTOOL_DUMMY_2f2f" />
+    <item type="string" name="APKTOOL_DUMMY_2f30" />
+    <item type="string" name="APKTOOL_DUMMY_2f31" />
+    <item type="string" name="APKTOOL_DUMMY_2f34" />
+    <item type="string" name="APKTOOL_DUMMY_2f35" />
+    <item type="string" name="APKTOOL_DUMMY_2f36" />
+    <item type="string" name="APKTOOL_DUMMY_2f37" />
+    <item type="string" name="APKTOOL_DUMMY_2f38" />
+    <item type="string" name="APKTOOL_DUMMY_2f3e" />
+    <item type="string" name="APKTOOL_DUMMY_2f3f" />
+    <item type="string" name="APKTOOL_DUMMY_2f43" />
+    <item type="string" name="APKTOOL_DUMMY_2f44" />
+    <item type="string" name="APKTOOL_DUMMY_2f45" />
+    <item type="string" name="APKTOOL_DUMMY_2f46" />
+    <item type="string" name="APKTOOL_DUMMY_2f4c" />
+    <item type="string" name="APKTOOL_DUMMY_2f4d" />
+    <item type="string" name="APKTOOL_DUMMY_2f53" />
+    <item type="string" name="APKTOOL_DUMMY_2f54" />
+    <item type="string" name="APKTOOL_DUMMY_2f55" />
+    <item type="string" name="APKTOOL_DUMMY_2f56" />
+    <item type="string" name="APKTOOL_DUMMY_2f57" />
+    <item type="string" name="APKTOOL_DUMMY_2f58" />
+    <item type="string" name="APKTOOL_DUMMY_2f70" />
+    <item type="string" name="APKTOOL_DUMMY_2f71" />
+    <item type="string" name="APKTOOL_DUMMY_2f81" />
+    <item type="string" name="APKTOOL_DUMMY_2f82" />
+    <item type="string" name="APKTOOL_DUMMY_2f83" />
+    <item type="string" name="APKTOOL_DUMMY_2f84" />
+    <item type="string" name="APKTOOL_DUMMY_2f86" />
+    <item type="string" name="APKTOOL_DUMMY_2f8b" />
+    <item type="string" name="APKTOOL_DUMMY_2f8c" />
+    <item type="string" name="APKTOOL_DUMMY_2f8f" />
+    <item type="string" name="APKTOOL_DUMMY_2f94" />
+    <item type="string" name="APKTOOL_DUMMY_2f97" />
+    <item type="string" name="APKTOOL_DUMMY_2f98" />
+    <item type="string" name="APKTOOL_DUMMY_2f99" />
+    <item type="string" name="APKTOOL_DUMMY_2f9a" />
+    <item type="string" name="APKTOOL_DUMMY_2fc7" />
+    <item type="string" name="APKTOOL_DUMMY_2fc8" />
+    <item type="string" name="APKTOOL_DUMMY_2fc9" />
+    <item type="string" name="APKTOOL_DUMMY_2fca" />
+    <item type="string" name="APKTOOL_DUMMY_2fcb" />
+    <item type="string" name="APKTOOL_DUMMY_2fcc" />
+    <item type="string" name="APKTOOL_DUMMY_2fcd" />
+    <item type="string" name="APKTOOL_DUMMY_2fce" />
+    <item type="string" name="APKTOOL_DUMMY_2fcf" />
+    <item type="string" name="APKTOOL_DUMMY_2fd0" />
+    <item type="string" name="APKTOOL_DUMMY_2fd1" />
+    <item type="string" name="APKTOOL_DUMMY_2fd2" />
+    <item type="string" name="APKTOOL_DUMMY_2fd3" />
+    <item type="string" name="APKTOOL_DUMMY_2fd4" />
+    <item type="string" name="APKTOOL_DUMMY_2fd5" />
+    <item type="string" name="APKTOOL_DUMMY_2fd6" />
+    <item type="string" name="APKTOOL_DUMMY_2fd7" />
+    <item type="string" name="APKTOOL_DUMMY_2fd8" />
+    <item type="string" name="APKTOOL_DUMMY_2fd9" />
+    <item type="string" name="APKTOOL_DUMMY_2fda" />
+    <item type="string" name="APKTOOL_DUMMY_2fdb" />
+    <item type="string" name="APKTOOL_DUMMY_2fdc" />
+    <item type="string" name="APKTOOL_DUMMY_2fdd" />
+    <item type="string" name="APKTOOL_DUMMY_2fde" />
+    <item type="string" name="APKTOOL_DUMMY_2fdf" />
+    <item type="string" name="APKTOOL_DUMMY_2fe0" />
+    <item type="string" name="APKTOOL_DUMMY_2fe1" />
+    <item type="string" name="APKTOOL_DUMMY_2fe2" />
+    <item type="string" name="APKTOOL_DUMMY_2fe3" />
+    <item type="string" name="APKTOOL_DUMMY_2fe4" />
+    <item type="string" name="APKTOOL_DUMMY_2fe5" />
+    <item type="string" name="APKTOOL_DUMMY_2fe6" />
+    <item type="string" name="APKTOOL_DUMMY_2fe7" />
+    <item type="string" name="APKTOOL_DUMMY_2fe8" />
+    <item type="string" name="APKTOOL_DUMMY_2fe9" />
 </resources>

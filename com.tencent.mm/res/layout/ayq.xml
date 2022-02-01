@@ -6,7 +6,7 @@
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/epu" android:background="@drawable/amv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/b8" android:layout_weight="1.0" android:layout_marginStart="@dimen/c5">
             <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/d13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fqj" android:layout_weight="1.0" />
             <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:ellipsize="end" android:id="@id/fpt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:text="@string/fmj" android:singleLine="true" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/c5" app:iconColor="?bi" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_right" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/c5" app:iconColor="@color/ee" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout android:gravity="center_vertical" android:id="@id/fpp" android:background="@drawable/oc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/b8" android:paddingStart="@dimen/ci">

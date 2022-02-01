@@ -3,7 +3,7 @@ package com.tencent.kinda.framework.module.impl;
 import com.tencent.kinda.gen.TenpayCgi;
 import com.tencent.kinda.gen.TenpayCgiCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import java.util.HashMap;
@@ -18,8 +18,8 @@ public class TenpayCgiImpl
     AppMethodBeat.i(18681);
     String.format("requestTenpay: cgiId:%d", new Object[] { Integer.valueOf(paramInt) });
     paramHashMap1 = new NetSceneTenpay(paramInt, paramHashMap1, paramHashMap2, paramTenpayCgiCallback);
-    g.agS();
-    g.agQ().ghe.a(paramHashMap1, 0);
+    g.ajD();
+    g.ajB().gAO.a(paramHashMap1, 0);
     String.format("MMCore.getNetSceneQueue().doScene %s", new Object[] { paramHashMap1 });
     AppMethodBeat.o(18681);
   }

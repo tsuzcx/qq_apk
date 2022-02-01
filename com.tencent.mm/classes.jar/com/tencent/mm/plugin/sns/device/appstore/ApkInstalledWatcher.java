@@ -9,7 +9,7 @@ import android.text.TextUtils;
 public abstract class ApkInstalledWatcher
   extends BroadcastReceiver
 {
-  private static String aG(Intent paramIntent)
+  private static String aL(Intent paramIntent)
   {
     try
     {
@@ -20,7 +20,7 @@ public abstract class ApkInstalledWatcher
     return "";
   }
   
-  protected abstract boolean ati(String paramString);
+  protected abstract boolean ayn(String paramString);
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -30,14 +30,14 @@ public abstract class ApkInstalledWatcher
         paramContext = paramIntent.getAction();
         if ("android.intent.action.PACKAGE_ADDED".equals(paramContext))
         {
-          paramContext = aG(paramIntent);
+          paramContext = aL(paramIntent);
           if (!TextUtils.isEmpty(paramContext)) {
-            ati(paramContext);
+            ayn(paramContext);
           }
         }
         else if ("android.intent.action.PACKAGE_REMOVED".equals(paramContext))
         {
-          TextUtils.isEmpty(aG(paramIntent));
+          TextUtils.isEmpty(aL(paramIntent));
           return;
         }
       }

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uv
   extends b
 {
-  public a dxN;
+  public a dIZ;
   
   public uv()
   {
@@ -15,24 +15,21 @@ public final class uv
   
   private uv(byte paramByte)
   {
-    AppMethodBeat.i(19837);
-    this.dxN = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(125644);
+    this.dIZ = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19837);
+    AppMethodBeat.o(125644);
   }
   
   public static final class a
   {
-    public String bLs;
-    public String dwc;
-    public String dxO;
-    public int dxP;
+    public long dJa = -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.uv
  * JD-Core Version:    0.7.0.1
  */

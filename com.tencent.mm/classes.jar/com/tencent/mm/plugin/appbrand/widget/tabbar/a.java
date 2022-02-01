@@ -25,38 +25,38 @@ import android.widget.TextView;
 import com.tencent.luggage.h.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.z.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class a
   extends FrameLayout
 {
-  public f mOQ;
-  public LinearLayout mOR;
-  protected String mOS;
-  protected int mOT;
-  protected int mOU;
-  protected LinkedList<a> mOV;
-  public LinkedList<Pair<d, d>> mOW;
-  private int mOX;
-  private b mOY;
+  public f npn;
+  public LinearLayout npo;
+  protected String npp;
+  protected int npq;
+  protected int npr;
+  protected LinkedList<a> nps;
+  public LinkedList<Pair<d, d>> npt;
+  private int npu;
+  private b npv;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(135519);
-    this.mOX = 0;
-    this.mOV = new LinkedList();
-    this.mOW = new LinkedList();
-    this.mOQ = new f();
+    this.npu = 0;
+    this.nps = new LinkedList();
+    this.npt = new LinkedList();
+    this.npn = new f();
     setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    this.mOR = new LinearLayout(paramContext);
-    this.mOR.setOrientation(0);
-    this.mOR.setGravity(16);
-    this.mOR.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    addView(this.mOR);
+    this.npo = new LinearLayout(paramContext);
+    this.npo.setOrientation(0);
+    this.npo.setGravity(16);
+    this.npo.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    addView(this.npo);
     AppMethodBeat.o(135519);
   }
   
@@ -95,9 +95,9 @@ public class a
       {
         AppMethodBeat.i(135517);
         int i = 0;
-        while (i < a.this.mOV.size())
+        while (i < a.this.nps.size())
         {
-          a.this.a(a.this.mOR.getChildAt(i), (a.a)a.this.mOV.get(i));
+          a.this.a(a.this.npo.getChildAt(i), (a.a)a.this.nps.get(i));
           i += 1;
         }
         AppMethodBeat.o(135517);
@@ -119,19 +119,19 @@ public class a
     AppMethodBeat.o(135521);
   }
   
-  public final int Si(String paramString)
+  public final int VF(String paramString)
   {
     AppMethodBeat.i(135533);
-    LinkedList localLinkedList = this.mOV;
-    String str = k.cp(paramString);
-    Iterator localIterator = this.mOV.iterator();
+    LinkedList localLinkedList = this.nps;
+    String str = k.dr(paramString);
+    Iterator localIterator = this.nps.iterator();
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
       paramString = (a)localIterator.next();
-    } while (!k.cp(paramString.mUrl).equals(str));
+    } while (!k.dr(paramString.mUrl).equals(str));
     for (;;)
     {
       int i = localLinkedList.indexOf(paramString);
@@ -144,12 +144,12 @@ public class a
   public final void a(int paramInt, String paramString, d paramd1, d paramd2)
   {
     AppMethodBeat.i(135524);
-    if (paramInt >= this.mOV.size())
+    if (paramInt >= this.nps.size())
     {
       AppMethodBeat.o(135524);
       return;
     }
-    a locala = (a)this.mOV.get(paramInt);
+    a locala = (a)this.nps.get(paramInt);
     String str = paramString;
     if (paramString == null) {
       str = locala.mText;
@@ -158,18 +158,18 @@ public class a
     if (paramd1 != null)
     {
       paramString = paramd1;
-      if (paramd1.bBK() == null) {
-        paramString = locala.mPl;
+      if (paramd1.bFM() == null) {
+        paramString = locala.npI;
       }
-      locala.mPl = paramString;
+      locala.npI = paramString;
     }
     if (paramd2 != null)
     {
       paramString = paramd2;
-      if (paramd2.bBK() == null) {
-        paramString = locala.mPm;
+      if (paramd2.bFM() == null) {
+        paramString = locala.npJ;
       }
-      locala.mPm = paramString;
+      locala.npJ = paramString;
     }
     refreshView();
     AppMethodBeat.o(135524);
@@ -185,37 +185,37 @@ public class a
     final TextView localTextView2 = (TextView)paramView.findViewById(2131307148);
     View localView = paramView.findViewById(2131307146);
     int i;
-    if ("top".equals(this.mOS))
+    if ("top".equals(this.npp))
     {
       paramView.setLayoutParams(new LinearLayout.LayoutParams(0, fromDPToPix(getContext(), 40), 1.0F));
       localImageView1.setVisibility(8);
       localTextView2.setTextSize(1, 14.0F);
-      if (parama.mPn)
+      if (parama.npK)
       {
-        localView.setBackgroundColor(this.mOU);
+        localView.setBackgroundColor(this.npr);
         localView.setVisibility(0);
         paramView = localTextView1.getBackground();
         if (paramView != null) {
-          paramView.setColorFilter(parama.mPq, PorterDuff.Mode.SRC_ATOP);
+          paramView.setColorFilter(parama.npN, PorterDuff.Mode.SRC_ATOP);
         }
-        if (!parama.mPp.isEmpty()) {
+        if (!parama.npM.isEmpty()) {
           break label592;
         }
         i = 4;
         label180:
         localTextView1.setVisibility(i);
-        localTextView1.setText(parama.mPp);
-        localTextView1.setTextColor(parama.mPr);
-        if (!parama.mPo) {
+        localTextView1.setText(parama.npM);
+        localTextView1.setTextColor(parama.npO);
+        if (!parama.npL) {
           break label597;
         }
         i = 0;
         label213:
         localImageView2.setVisibility(i);
-        if ((!parama.mPn) || (parama.mPm.bBK() == null)) {
+        if ((!parama.npK) || (parama.npJ.bFM() == null)) {
           break label602;
         }
-        parama.mPm.a(new e()
+        parama.npJ.a(new e()
         {
           public final void a(Bitmap paramAnonymousBitmap, d paramAnonymousd)
           {
@@ -225,18 +225,18 @@ public class a
             AppMethodBeat.o(135506);
           }
         });
-        parama.mPm.bBJ();
+        parama.npJ.bFL();
         label260:
         localTextView2.setText(parama.mText);
-        if (!parama.mPn) {
+        if (!parama.npK) {
           break label629;
         }
-        localTextView2.setTextColor(this.mOU);
+        localTextView2.setTextColor(this.npr);
       }
     }
     for (;;)
     {
-      if (!"top".equals(this.mOS)) {
+      if (!"top".equals(this.npp)) {
         localTextView2.post(new Runnable()
         {
           public final void run()
@@ -284,7 +284,7 @@ public class a
       return;
       localView.setVisibility(4);
       break;
-      if (parama.mPl.bBK() != null) {
+      if (parama.npI.bFM() != null) {
         if ((parama.mText != null) && (!parama.mText.equals("")))
         {
           paramView.setLayoutParams(new LinearLayout.LayoutParams(0, fromDPToPix(getContext(), 54), 1.0F));
@@ -320,7 +320,7 @@ public class a
       i = 4;
       break label213;
       label602:
-      parama.mPl.a(new e()
+      parama.npI.a(new e()
       {
         public final void a(Bitmap paramAnonymousBitmap, d paramAnonymousd)
         {
@@ -330,44 +330,44 @@ public class a
           AppMethodBeat.o(135507);
         }
       });
-      parama.mPl.bBJ();
+      parama.npI.bFL();
       break label260;
       label629:
-      localTextView2.setTextColor(this.mOT);
+      localTextView2.setTextColor(this.npq);
     }
   }
   
   public void a(String paramString1, String paramString2, String paramString3, String paramString4, AppBrandTabBarItem paramAppBrandTabBarItem)
   {
-    AppMethodBeat.i(193552);
+    AppMethodBeat.i(197473);
     a locala = new a();
-    locala.mPl = new b(paramString3, new c()
+    locala.npI = new b(paramString3, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(135510);
         super.a(paramAnonymousString, paramAnonymousd);
-        ac.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
+        ad.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
         AppMethodBeat.o(135510);
       }
     });
-    locala.mPm = new b(paramString4, new c()
+    locala.npJ = new b(paramString4, new c()
     {
       public final void a(String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(135511);
         super.a(paramAnonymousString, paramAnonymousd);
-        ac.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
+        ad.e("IconLoadErrorHandler ", "load icon fail: ".concat(String.valueOf(paramAnonymousString)));
         AppMethodBeat.o(135511);
       }
     });
     locala.mText = paramString2;
     locala.mUrl = paramString1;
-    this.mOW.add(new Pair(locala.mPl, locala.mPm));
-    if ((locala.mText == null) && ((locala.mPl.bBK() == null) || (locala.mPm.bBK() == null)))
+    this.npt.add(new Pair(locala.npI, locala.npJ));
+    if ((locala.mText == null) && ((locala.npI.bFM() == null) || (locala.npJ.bFM() == null)))
     {
-      ac.e("MicroMsg.AppBrandPageTabBar", "illegal data");
-      AppMethodBeat.o(193552);
+      ad.e("MicroMsg.AppBrandPageTabBar", "illegal data");
+      AppMethodBeat.o(197473);
       return;
     }
     if (paramAppBrandTabBarItem != null) {}
@@ -379,15 +379,19 @@ public class a
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(135512);
-          int i = a.this.mOR.indexOfChild(paramAnonymousView);
-          a.this.ws(i);
-          a.this.bBH();
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/tabbar/AppBrandPageTabBar$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          int i = a.this.npo.indexOfChild(paramAnonymousView);
+          a.this.wX(i);
+          a.this.bFJ();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/tabbar/AppBrandPageTabBar$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(135512);
         }
       });
-      this.mOV.add(locala);
-      this.mOR.addView(paramAppBrandTabBarItem);
-      AppMethodBeat.o(193552);
+      this.nps.add(locala);
+      this.npo.addView(paramAppBrandTabBarItem);
+      AppMethodBeat.o(197473);
       return;
       paramAppBrandTabBarItem = new AppBrandTabBarItem(getContext());
     }
@@ -399,7 +403,7 @@ public class a
     int j = getHeight();
     int i;
     final ObjectAnimator localObjectAnimator;
-    if ("top".equals(this.mOS))
+    if ("top".equals(this.npp))
     {
       i = -1;
       localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { i * j, 0.0F });
@@ -443,11 +447,11 @@ public class a
     AppMethodBeat.o(135532);
   }
   
-  public final void bBH()
+  public final void bFJ()
   {
     AppMethodBeat.i(135530);
-    if (this.mOY != null) {
-      this.mOY.am(this.mOX, ((a)this.mOV.get(this.mOX)).mUrl);
+    if (this.npv != null) {
+      this.npv.ao(this.npu, ((a)this.nps.get(this.npu)).mUrl);
     }
     AppMethodBeat.o(135530);
   }
@@ -455,18 +459,18 @@ public class a
   public final void d(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(135525);
-    int j = g.cd(paramString3, 0);
-    int k = g.cd(paramString4, -1);
+    int j = g.cg(paramString3, 0);
+    int k = g.cg(paramString4, -1);
     int i = 0;
-    if (i < this.mOV.size())
+    if (i < this.nps.size())
     {
       if (i == paramInt)
       {
-        ((a)this.mOV.get(i)).bBI();
+        ((a)this.nps.get(i)).bFK();
         if (!"redDot".equals(paramString1)) {
           break label93;
         }
-        ((a)this.mOV.get(i)).mPo = true;
+        ((a)this.nps.get(i)).npL = true;
       }
       for (;;)
       {
@@ -475,14 +479,14 @@ public class a
         label93:
         if ("text".equals(paramString1))
         {
-          ((a)this.mOV.get(i)).mPp = paramString2;
-          ((a)this.mOV.get(i)).mPq = j;
-          ((a)this.mOV.get(i)).mPr = k;
+          ((a)this.nps.get(i)).npM = paramString2;
+          ((a)this.nps.get(i)).npN = j;
+          ((a)this.nps.get(i)).npO = k;
         }
         else if ("none".equals(paramString1))
         {
-          ((a)this.mOV.get(i)).mPo = false;
-          ((a)this.mOV.get(i)).mPp = "";
+          ((a)this.nps.get(i)).npL = false;
+          ((a)this.nps.get(i)).npM = "";
         }
       }
     }
@@ -490,27 +494,19 @@ public class a
     AppMethodBeat.o(135525);
   }
   
-  public final void dT(final boolean paramBoolean)
+  public final void dV(boolean paramBoolean)
   {
     AppMethodBeat.i(135526);
-    if (!ap.isMainThread())
+    if (!aq.isMainThread())
     {
-      ap.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(135513);
-          a.this.dT(paramBoolean);
-          AppMethodBeat.o(135513);
-        }
-      });
+      aq.f(new a.9(this, paramBoolean));
       AppMethodBeat.o(135526);
       return;
     }
     int j = getHeight();
     int i;
     ObjectAnimator localObjectAnimator;
-    if ("top".equals(this.mOS))
+    if ("top".equals(this.npp))
     {
       i = -1;
       localObjectAnimator = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, i * j });
@@ -540,10 +536,10 @@ public class a
   
   public String getPosition()
   {
-    return this.mOS;
+    return this.npp;
   }
   
-  public final void k(final String paramString1, final String paramString2, final String paramString3, final String paramString4)
+  public final void j(final String paramString1, final String paramString2, final String paramString3, final String paramString4)
   {
     AppMethodBeat.i(135520);
     runOnUiThread(new Runnable()
@@ -562,22 +558,22 @@ public class a
   
   public void setClickListener(b paramb)
   {
-    this.mOY = paramb;
+    this.npv = paramb;
   }
   
   public void setPosition(String paramString)
   {
-    this.mOS = paramString;
+    this.npp = paramString;
   }
   
-  public final void ws(int paramInt)
+  public final void wX(int paramInt)
   {
     AppMethodBeat.i(135523);
-    ((a)this.mOV.get(this.mOX)).mPn = false;
-    if ((paramInt > 0) && (paramInt < this.mOV.size())) {}
-    for (this.mOX = paramInt;; this.mOX = 0)
+    ((a)this.nps.get(this.npu)).npK = false;
+    if ((paramInt > 0) && (paramInt < this.nps.size())) {}
+    for (this.npu = paramInt;; this.npu = 0)
     {
-      ((a)this.mOV.get(this.mOX)).mPn = true;
+      ((a)this.nps.get(this.npu)).npK = true;
       refreshView();
       AppMethodBeat.o(135523);
       return;
@@ -586,41 +582,41 @@ public class a
   
   public static final class a
   {
-    public d mPl;
-    public d mPm;
-    public boolean mPn;
-    public boolean mPo;
-    public String mPp;
-    public int mPq;
-    public int mPr;
     public String mText;
     public String mUrl;
+    public d npI;
+    public d npJ;
+    public boolean npK;
+    public boolean npL;
+    public String npM;
+    public int npN;
+    public int npO;
     
     public a()
     {
       AppMethodBeat.i(135518);
-      this.mPn = false;
-      bBI();
+      this.npK = false;
+      bFK();
       AppMethodBeat.o(135518);
     }
     
-    final void bBI()
+    final void bFK()
     {
-      this.mPo = false;
-      this.mPp = "";
-      this.mPq = 0;
-      this.mPr = -1;
+      this.npL = false;
+      this.npM = "";
+      this.npN = 0;
+      this.npO = -1;
     }
   }
   
   public static abstract interface b
   {
-    public abstract void am(int paramInt, String paramString);
+    public abstract void ao(int paramInt, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.a
  * JD-Core Version:    0.7.0.1
  */

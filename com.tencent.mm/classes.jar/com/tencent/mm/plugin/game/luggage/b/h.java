@@ -1,89 +1,35 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
-import com.tencent.mm.plugin.downloader_app.api.c;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class h
-  extends bn
+  extends bq<com.tencent.luggage.d.a>
 {
-  public final void a(Context paramContext, String paramString, bn.a parama)
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  
+  public final void b(b<com.tencent.luggage.d.a>.a paramb)
   {
-    AppMethodBeat.i(83064);
-    Object localObject = ((c)g.ab(c.class)).bYc();
-    if (bs.gY((List)localObject))
-    {
-      parama.f(null, null);
-      AppMethodBeat.o(83064);
-      return;
+    AppMethodBeat.i(211605);
+    ad.i("MicroMsg.JsApiCloseJsCore", "invokeInOwn");
+    if (com.tencent.mm.plugin.game.luggage.h.a.cXE() != null) {
+      com.tencent.mm.plugin.game.luggage.h.a.cXE().cXF();
     }
-    paramContext = new JSONObject();
-    paramString = new JSONArray();
-    localObject = ((LinkedList)localObject).iterator();
-    for (;;)
-    {
-      DownloadWidgetTaskInfo localDownloadWidgetTaskInfo;
-      JSONObject localJSONObject;
-      if (((Iterator)localObject).hasNext())
-      {
-        localDownloadWidgetTaskInfo = (DownloadWidgetTaskInfo)((Iterator)localObject).next();
-        localJSONObject = new JSONObject();
-      }
-      try
-      {
-        localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
-        localJSONObject.put("status", localDownloadWidgetTaskInfo.oKt);
-        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.cYu);
-        localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
-        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.kaP);
-        if (localDownloadWidgetTaskInfo.oJp) {
-          localJSONObject.put("reserve_for_wifi", 1);
-        }
-        label177:
-        paramString.put(localJSONObject);
-        continue;
-        try
-        {
-          paramContext.put("result", paramString.toString());
-          label198:
-          parama.f(null, paramContext);
-          AppMethodBeat.o(83064);
-          return;
-        }
-        catch (JSONException paramString)
-        {
-          break label198;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        break label177;
-      }
-    }
+    AppMethodBeat.o(211605);
   }
   
-  public final void b(a.a parama) {}
-  
-  public final int bYk()
+  public final int ccO()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "getDownloadWidgetTaskInfos";
+    return "closeJsCore";
   }
 }
 

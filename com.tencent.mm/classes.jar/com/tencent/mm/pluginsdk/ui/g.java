@@ -1,18 +1,25 @@
 package com.tencent.mm.pluginsdk.ui;
 
-public abstract interface g
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.o;
+
+public final class g
 {
-  public abstract void gL(boolean paramBoolean);
+  private static final Drawable backgroundDrawable;
+  public o ESL;
   
-  public abstract int getVideoTotalTime();
-  
-  public abstract void sQ(int paramInt);
-  
-  public abstract void setVideoTotalTime(int paramInt);
+  static
+  {
+    AppMethodBeat.i(31192);
+    backgroundDrawable = new ColorDrawable();
+    AppMethodBeat.o(31192);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.g
  * JD-Core Version:    0.7.0.1
  */

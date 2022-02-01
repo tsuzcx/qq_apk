@@ -14,8 +14,8 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class t
 {
@@ -24,13 +24,13 @@ public final class t
     AppMethodBeat.i(43962);
     if ((parama == null) || (paramContext == null) || (parama.userName == null))
     {
-      ac.e("MicroMsg.AppBrandShortcutManager", "buildIntent, wrong parameters");
+      ad.e("MicroMsg.AppBrandShortcutManager", "buildIntent, wrong parameters");
       AppMethodBeat.o(43962);
       return null;
     }
     if ((paramBitmap == null) && (paramBoolean))
     {
-      ac.e("MicroMsg.AppBrandShortcutManager", "no bmp");
+      ad.e("MicroMsg.AppBrandShortcutManager", "no bmp");
       AppMethodBeat.o(43962);
       return null;
     }
@@ -38,7 +38,7 @@ public final class t
     if (TextUtils.isEmpty(parama.nickname))
     {
       str = parama.userName;
-      parama = s.aUu().a(paramContext.getPackageName(), paramInt, parama.userName, parama.nickname, parama.ccP, parama.appId, parama.uin, 1);
+      parama = s.aXG().a(paramContext.getPackageName(), paramInt, parama.userName, parama.nickname, parama.cng, parama.appId, parama.uin, 1);
       if (!paramBoolean) {
         break label180;
       }
@@ -74,18 +74,18 @@ public final class t
     if (localBitmap != null)
     {
       paramBitmap = localBitmap.copy(Bitmap.Config.ARGB_8888, true);
-      ac.i("MicroMsg.AppBrandShortcutManager", "bitmap recycle %s", new Object[] { localBitmap });
+      ad.i("MicroMsg.AppBrandShortcutManager", "bitmap recycle %s", new Object[] { localBitmap });
       localBitmap.recycle();
     }
     if (paramInt == 2) {
-      a(paramContext, paramBitmap, a.aw(paramContext, 2131755659));
+      a(paramContext, paramBitmap, a.az(paramContext, 2131755659));
     }
     for (;;)
     {
       AppMethodBeat.o(43964);
       return paramBitmap;
       if (paramInt == 1) {
-        a(paramContext, paramBitmap, a.aw(paramContext, 2131755660));
+        a(paramContext, paramBitmap, a.az(paramContext, 2131755660));
       }
     }
   }
@@ -98,7 +98,7 @@ public final class t
       AppMethodBeat.o(43965);
       return;
     }
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       AppMethodBeat.o(43965);
       return;
@@ -134,42 +134,42 @@ public final class t
     AppMethodBeat.i(43961);
     if ((paramContext == null) || (parama == null))
     {
-      ac.e("MicroMsg.AppBrandShortcutManager", "add fail, invalid argument");
+      ad.e("MicroMsg.AppBrandShortcutManager", "add fail, invalid argument");
       AppMethodBeat.o(43961);
       return false;
     }
-    if (parama.ccP == null)
+    if (parama.cng == null)
     {
-      ac.e("MicroMsg.AppBrandShortcutManager", "no such user");
+      ad.e("MicroMsg.AppBrandShortcutManager", "no such user");
       AppMethodBeat.o(43961);
       return false;
     }
-    Object localObject = k(parama.ccP);
+    Object localObject = k(parama.cng);
     if (localObject == null)
     {
-      ac.i("MicroMsg.AppBrandShortcutManager", "bitmap do not exist, delay get.");
+      ad.i("MicroMsg.AppBrandShortcutManager", "bitmap do not exist, delay get.");
       AppMethodBeat.o(43961);
       return true;
     }
     Intent localIntent = a(paramContext, parama, paramInt, a(paramContext, (Bitmap)localObject, paramInt), true);
     if (localIntent == null)
     {
-      ac.e("MicroMsg.AppBrandShortcutManager", "add fail, intent is null");
+      ad.e("MicroMsg.AppBrandShortcutManager", "add fail, intent is null");
       AppMethodBeat.o(43961);
       return false;
     }
     if ((Intent)localIntent.getParcelableExtra("android.intent.extra.shortcut.INTENT") != null)
     {
       String str2 = parama.appId;
-      String str3 = com.tencent.mm.plugin.base.model.b.et(str2 + String.valueOf(paramInt), q.cF(true));
+      String str3 = com.tencent.mm.plugin.base.model.b.eC(str2 + String.valueOf(paramInt), q.cH(true));
       if (str3 != null)
       {
         localObject = com.tencent.mm.plugin.base.model.b.Z(str3.getBytes());
-        String str4 = com.tencent.mm.plugin.base.model.b.et(str2 + String.valueOf(paramInt), q.getAndroidId());
+        String str4 = com.tencent.mm.plugin.base.model.b.eC(str2 + String.valueOf(paramInt), q.getAndroidId());
         if (str3 != null) {
           str1 = com.tencent.mm.plugin.base.model.b.Z(str4.getBytes());
         }
-        ac.i("MicroMsg.AppBrandShortcutManager", "alvinluo appId: %s, shortcutId: %s", new Object[] { str2, localObject });
+        ad.i("MicroMsg.AppBrandShortcutManager", "alvinluo appId: %s, shortcutId: %s", new Object[] { str2, localObject });
       }
     }
     for (;;)
@@ -177,13 +177,13 @@ public final class t
       try
       {
         com.tencent.mm.plugin.base.model.b.a(paramContext, localIntent, str1, (String)localObject, paramBoolean);
-        ac.i("MicroMsg.AppBrandShortcutManager", "add shortcut %s", new Object[] { parama.userName });
+        ad.i("MicroMsg.AppBrandShortcutManager", "add shortcut %s", new Object[] { parama.userName });
         AppMethodBeat.o(43961);
         return true;
       }
       catch (IllegalStateException paramContext)
       {
-        ac.w("MicroMsg.AppBrandShortcutManager", paramContext.toString());
+        ad.w("MicroMsg.AppBrandShortcutManager", paramContext.toString());
         AppMethodBeat.o(43961);
         return false;
       }
@@ -202,9 +202,9 @@ public final class t
     while (i < j)
     {
       localObject = paramArrayOfString[i];
-      if (!bs.isNullOrNil((String)localObject))
+      if (!bt.isNullOrNil((String)localObject))
       {
-        Bitmap localBitmap = com.tencent.mm.modelappbrand.a.b.aAS().a((String)localObject, null);
+        Bitmap localBitmap = com.tencent.mm.modelappbrand.a.b.aDV().a((String)localObject, null);
         if (localBitmap != null)
         {
           localObject = localBitmap;
@@ -224,7 +224,7 @@ public final class t
   public static final class a
   {
     public String appId;
-    public String[] ccP;
+    public String[] cng;
     public String nickname;
     public int uin;
     public String userName;
@@ -232,7 +232,7 @@ public final class t
     public a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
     {
       this.uin = paramInt;
-      this.ccP = paramArrayOfString;
+      this.cng = paramArrayOfString;
       this.nickname = paramString1;
       this.appId = paramString2;
       this.userName = paramString3;
@@ -241,7 +241,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import com.tencent.matrix.report.h.d;
 import com.tencent.matrix.trace.b.a.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.f;
 import com.tencent.mm.storagebase.f.a;
 import com.tencent.wcdb.database.SQLiteDatabase;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public final class a
   implements h.c
 {
-  private static long ctj;
+  private static long cEf;
   
   static
   {
@@ -40,7 +40,7 @@ public final class a
   {
     Object localObject2 = paramd.tag;
     Object localObject1 = paramd.key;
-    JSONObject localJSONObject1 = paramd.cue;
+    final JSONObject localJSONObject1 = paramd.cEZ;
     long l5 = SystemClock.uptimeMillis();
     if (((String)localObject2).equals("Trace")) {}
     long l1;
@@ -55,23 +55,23 @@ public final class a
     int k;
     try
     {
-      if ((!paramd.tag.equalsIgnoreCase("Trace_EvilMethod")) || (!localJSONObject1.getString("detail").equalsIgnoreCase(a.a.cyS.toString()))) {
+      if ((!paramd.tag.equalsIgnoreCase("Trace_EvilMethod")) || (!localJSONObject1.getString("detail").equalsIgnoreCase(a.a.cJN.toString()))) {
         break label611;
       }
       paramd = localJSONObject1.getString("cost");
-      l1 = bs.aLz((String)localObject1);
-      l6 = bs.aLz(paramd);
-      if (!g.agM()) {
+      l1 = bt.aRf((String)localObject1);
+      l6 = bt.aRf(paramd);
+      if (!g.ajx()) {
         break label611;
       }
-      paramd = g.agR().ghG;
-      if ((paramd == null) || (paramd.fdK() == null)) {
+      paramd = g.ajC().gBq;
+      if ((paramd == null) || (paramd.ftS() == null)) {
         break label730;
       }
-      localObject2 = f.fdD();
+      localObject2 = f.ftL();
       long l7 = ((f.a)localObject2).time;
-      ac.i("MicroMsg.AnrReportListener", "[happen] threadStatus:%s sql:%s time:%s db:%s", new Object[] { Integer.valueOf(((f.a)localObject2).status), ((f.a)localObject2).sql, Long.valueOf(l7), ((f.a)localObject2).vDO });
-      if (((f.a)localObject2).vDO == null) {
+      ad.i("MicroMsg.AnrReportListener", "[happen] threadStatus:%s sql:%s time:%s db:%s", new Object[] { Integer.valueOf(((f.a)localObject2).status), ((f.a)localObject2).sql, Long.valueOf(l7), ((f.a)localObject2).wKU });
+      if (((f.a)localObject2).wKU == null) {
         break label692;
       }
       l2 = SystemClock.uptimeMillis();
@@ -80,8 +80,8 @@ public final class a
       l2 = 0L;
       l1 = 0L;
       localObject1 = new JSONObject();
-      paramd = ((f.a)localObject2).vDO.dumpJSON(false);
-      ac.i("MicroMsg.AnrReportListener", "[happen] db raw json:%s", new Object[] { paramd });
+      paramd = ((f.a)localObject2).wKU.dumpJSON(false);
+      ad.i("MicroMsg.AnrReportListener", "[happen] db raw json:%s", new Object[] { paramd });
       JSONArray localJSONArray1 = paramd.getJSONArray("availableNonPrimary");
       i = 0;
       if (i >= localJSONArray1.length()) {
@@ -98,8 +98,8 @@ public final class a
       localJSONArray2.put(localJSONObject2);
       localJSONObject2.put("start", l7);
       localJSONObject2.put("duration", Math.min(l6, l8 + l6 - l7));
-      localJSONObject2.put("tid", ctj);
-      ac.i("MicroMsg.AnrReportListener", "[happen] add executing:%s", new Object[] { localJSONObject2 });
+      localJSONObject2.put("tid", cEf);
+      ad.i("MicroMsg.AnrReportListener", "[happen] add executing:%s", new Object[] { localJSONObject2 });
     }
     catch (JSONException paramd)
     {
@@ -116,15 +116,15 @@ public final class a
         label573:
         label592:
         label611:
-        ac.printErrStackTrace("MicroMsg.AnrReportListener", paramd, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.AnrReportListener", paramd, "", new Object[0]);
         return;
         label692:
-        ac.i("MicroMsg.AnrReportListener", "has't any db operation in time!");
+        ad.i("MicroMsg.AnrReportListener", "has't any db operation in time!");
       }
     }
     finally
     {
-      ac.i("MicroMsg.AnrReportListener", "[report] cost:%sms", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l5) });
+      ad.i("MicroMsg.AnrReportListener", "[report] cost:%sms", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l5) });
     }
     if (m < localJSONArray2.length())
     {
@@ -145,7 +145,7 @@ public final class a
         l3 = l1;
         l4 = l2;
         k = j;
-        if (ctj == l10)
+        if (cEf == l10)
         {
           l4 = l2 + l9;
           l3 = l1;
@@ -164,8 +164,14 @@ public final class a
       {
         ((JSONObject)localObject1).put("detail", paramd);
         localJSONObject1.put("dbInfo", localObject1);
-        com.tencent.e.h.JZN.aS(new a.2(this, localJSONObject1));
-        ac.i("MicroMsg.AnrReportListener", "[report] cost:%sms", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l5) });
+        com.tencent.e.h.LTJ.aR(new Runnable()
+        {
+          public final void run()
+          {
+            ad.i("MicroMsg.AnrReportListener", "[happen] %s", new Object[] { localJSONObject1.toString() });
+          }
+        });
+        ad.i("MicroMsg.AnrReportListener", "[report] cost:%sms", new Object[] { Long.valueOf(SystemClock.uptimeMillis() - l5) });
         return;
       }
       label730:
@@ -176,7 +182,7 @@ public final class a
         break label519;
         paramd = new JSONObject();
         break label573;
-        ac.w("MicroMsg.AnrReportListener", "sqliteDB is null!");
+        ad.w("MicroMsg.AnrReportListener", "sqliteDB is null!");
         break label592;
         m = 0;
         break label385;

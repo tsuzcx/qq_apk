@@ -1,13 +1,11 @@
 package com.tencent.mm.plugin.webview.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.p;
 import d.l;
 import d.v;
 import java.util.HashMap;
@@ -15,25 +13,25 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper;", "", "()V", "TAG", "", "callCountMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper$JsApiCallInfo;", "Lkotlin/collections/HashMap;", "controlByteMap", "isTooFrequent", "", "controlByte", "reportTooFrequent", "", "funcName", "url", "JsApiCallInfo", "webview-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper;", "", "()V", "TAG", "", "callCountMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper$JsApiCallInfo;", "Lkotlin/collections/HashMap;", "controlByteMap", "isTooFrequent", "", "controlByte", "reportTooFrequent", "", "funcName", "url", "JsApiCallInfo", "webview-sdk_release"})
 public final class e
 {
-  private final HashMap<Integer, a> Cjs;
-  private final HashMap<Integer, Integer> Cjt;
+  private final HashMap<Integer, a> DMw;
+  private final HashMap<Integer, Integer> DMx;
   private final String TAG;
   
   public e()
   {
-    AppMethodBeat.i(205529);
+    AppMethodBeat.i(214318);
     this.TAG = "MicroMsg.JsApiFrequentHelper";
-    this.Cjs = new HashMap();
-    this.Cjt = new HashMap();
+    this.DMw = new HashMap();
+    this.DMx = new HashMap();
     for (;;)
     {
       int i;
       try
       {
-        Object localObject1 = ((b)g.ab(b.class)).a(b.a.pPG, "{\"list\":[{\"limit\":10,\"pos\":14},{\"limit\":10,\"pos\":15}]}");
+        Object localObject1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qtH, "{\"list\":[{\"limit\":10,\"pos\":14},{\"limit\":10,\"pos\":15}]}");
         JSONArray localJSONArray = new JSONObject((String)localObject1).optJSONArray("list");
         if (localJSONArray == null) {
           break;
@@ -47,83 +45,83 @@ public final class e
         if (localObject2 == null)
         {
           localObject1 = new v("null cannot be cast to non-null type org.json.JSONObject");
-          AppMethodBeat.o(205529);
+          AppMethodBeat.o(214318);
           throw ((Throwable)localObject1);
         }
       }
       catch (Throwable localThrowable)
       {
-        ac.w(this.TAG, "parse fail: ex=" + localThrowable.getMessage());
-        AppMethodBeat.o(205529);
+        ad.w(this.TAG, "parse fail: ex=" + localThrowable.getMessage());
+        AppMethodBeat.o(214318);
         return;
       }
       Object localObject2 = (JSONObject)localObject2;
-      ((Map)this.Cjt).put(Integer.valueOf(((JSONObject)localObject2).optInt("pos")), Integer.valueOf(((JSONObject)localObject2).optInt("limit")));
+      ((Map)this.DMx).put(Integer.valueOf(((JSONObject)localObject2).optInt("pos")), Integer.valueOf(((JSONObject)localObject2).optInt("limit")));
       i += 1;
     }
-    ac.i(this.TAG, "size=" + this.Cjt.size() + ", config=" + localThrowable);
-    AppMethodBeat.o(205529);
+    ad.i(this.TAG, "size=" + this.DMx.size() + ", config=" + localThrowable);
+    AppMethodBeat.o(214318);
   }
   
-  public final void N(int paramInt, String paramString1, String paramString2)
+  public final void Q(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(205528);
-    k.h(paramString1, "funcName");
-    k.h(paramString2, "url");
-    if (((Map)this.Cjt).containsKey(Integer.valueOf(paramInt)))
+    AppMethodBeat.i(214317);
+    p.h(paramString1, "funcName");
+    p.h(paramString2, "url");
+    if (((Map)this.DMx).containsKey(Integer.valueOf(paramInt)))
     {
-      Object localObject = this.Cjt.get(Integer.valueOf(paramInt));
+      Object localObject = this.DMx.get(Integer.valueOf(paramInt));
       if (localObject == null) {
-        k.fOy();
+        p.gfZ();
       }
-      k.g(localObject, "controlByteMap[controlByte]!!");
+      p.g(localObject, "controlByteMap[controlByte]!!");
       int i = ((Number)localObject).intValue();
       if (i <= 0)
       {
-        AppMethodBeat.o(205528);
+        AppMethodBeat.o(214317);
         return;
       }
-      localObject = (a)this.Cjs.get(Integer.valueOf(paramInt));
+      localObject = (a)this.DMw.get(Integer.valueOf(paramInt));
       if (localObject != null)
       {
         if (((a)localObject).count == i) {
-          h.wUl.f(18188, new Object[] { paramString1, x.aId(paramString2) });
+          com.tencent.mm.plugin.report.service.g.yhR.f(18188, new Object[] { paramString1, x.aNF(paramString2) });
         }
-        AppMethodBeat.o(205528);
+        AppMethodBeat.o(214317);
         return;
       }
     }
-    AppMethodBeat.o(205528);
+    AppMethodBeat.o(214317);
   }
   
-  public final boolean UM(int paramInt)
+  public final boolean WD(int paramInt)
   {
-    AppMethodBeat.i(205527);
-    if (((Map)this.Cjt).containsKey(Integer.valueOf(paramInt)))
+    AppMethodBeat.i(214316);
+    if (((Map)this.DMx).containsKey(Integer.valueOf(paramInt)))
     {
-      Object localObject = this.Cjt.get(Integer.valueOf(paramInt));
+      Object localObject = this.DMx.get(Integer.valueOf(paramInt));
       if (localObject == null) {
-        k.fOy();
+        p.gfZ();
       }
-      k.g(localObject, "controlByteMap[controlByte]!!");
+      p.g(localObject, "controlByteMap[controlByte]!!");
       int i = ((Number)localObject).intValue();
       if (i <= 0)
       {
-        AppMethodBeat.o(205527);
+        AppMethodBeat.o(214316);
         return false;
       }
-      localObject = (a)this.Cjs.get(Integer.valueOf(paramInt));
+      localObject = (a)this.DMw.get(Integer.valueOf(paramInt));
       long l = System.currentTimeMillis() / 60000L;
       if (localObject == null) {
         localObject = new a(l);
       }
       for (;;)
       {
-        ((Map)this.Cjs).put(Integer.valueOf(paramInt), localObject);
+        ((Map)this.DMw).put(Integer.valueOf(paramInt), localObject);
         if (((a)localObject).count < i) {
           break;
         }
-        AppMethodBeat.o(205527);
+        AppMethodBeat.o(214316);
         return true;
         if (((a)localObject).time == l)
         {
@@ -135,13 +133,13 @@ public final class e
           ((a)localObject).count = 1;
         }
       }
-      ac.i(this.TAG, "isTooFrequent controlByte:" + paramInt + ", count:" + ((a)localObject).count);
+      ad.i(this.TAG, "isTooFrequent controlByte:" + paramInt + ", count:" + ((a)localObject).count);
     }
-    AppMethodBeat.o(205527);
+    AppMethodBeat.o(214316);
     return false;
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper$JsApiCallInfo;", "", "time", "", "count", "", "(JI)V", "getCount", "()I", "setCount", "(I)V", "getTime", "()J", "setTime", "(J)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "webview-sdk_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/jsapi/JsApiFrequentHelper$JsApiCallInfo;", "", "time", "", "count", "", "(JI)V", "getCount", "()I", "setCount", "(I)V", "getTime", "()J", "setTime", "(J)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "webview-sdk_release"})
   public static final class a
   {
     int count;
@@ -177,9 +175,9 @@ public final class e
     
     public final String toString()
     {
-      AppMethodBeat.i(205526);
+      AppMethodBeat.i(214315);
       String str = "JsApiCallInfo(time=" + this.time + ", count=" + this.count + ")";
-      AppMethodBeat.o(205526);
+      AppMethodBeat.o(214315);
       return str;
     }
   }

@@ -27,39 +27,41 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.an;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.as;
 
 public class MMListPopupWindow
 {
-  private ListAdapter EN;
-  private final f HxX;
-  private final e HxY;
-  private final d HxZ;
-  private final b Hya;
-  public a Hyb;
-  private int aiV;
-  public int aoZ;
-  public int apa;
-  private int apb;
-  private boolean apd;
-  private boolean apg;
-  public boolean aph;
-  int api;
-  public View apj;
-  public int apk;
-  public View apl;
-  private Drawable apm;
-  public AdapterView.OnItemClickListener apn;
-  private AdapterView.OnItemSelectedListener apo;
-  private Runnable apu;
-  private boolean apv;
-  public o jat;
+  private ListAdapter GE;
+  private final f JlN;
+  private final e JlO;
+  private final d JlP;
+  private final b JlQ;
+  public a JlR;
+  private int akM;
+  public int aqR;
+  public int aqS;
+  private int aqT;
+  private boolean aqV;
+  private boolean aqY;
+  public boolean aqZ;
+  int ara;
+  public View arb;
+  public int arc;
+  public View ard;
+  private Drawable are;
+  public AdapterView.OnItemClickListener arf;
+  private AdapterView.OnItemSelectedListener arg;
+  private Runnable arl;
+  private boolean arm;
+  public o jtC;
   private Context mContext;
   private Handler mHandler;
-  public boolean mHk;
   private DataSetObserver mObserver;
   private Rect mTempRect;
+  public boolean nhI;
   
   public MMListPopupWindow(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -69,29 +71,29 @@ public class MMListPopupWindow
   public MMListPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     AppMethodBeat.i(159198);
-    this.HxX = new f((byte)0);
-    this.HxY = new e((byte)0);
-    this.HxZ = new d((byte)0);
-    this.Hya = new b((byte)0);
-    this.api = 2147483647;
-    this.aoZ = -2;
-    this.aiV = -2;
-    this.apg = false;
-    this.aph = false;
-    this.apk = 0;
+    this.JlN = new f((byte)0);
+    this.JlO = new e((byte)0);
+    this.JlP = new d((byte)0);
+    this.JlQ = new b((byte)0);
+    this.ara = 2147483647;
+    this.aqR = -2;
+    this.akM = -2;
+    this.aqY = false;
+    this.aqZ = false;
+    this.arc = 0;
     this.mHandler = new Handler();
     this.mTempRect = new Rect();
-    this.mHk = false;
+    this.nhI = false;
     this.mContext = paramContext;
-    this.jat = new o(paramContext);
-    this.jat.setInputMethodMode(1);
+    this.jtC = new o(paramContext);
+    this.jtC.setInputMethodMode(1);
     AppMethodBeat.o(159198);
   }
   
   public final void clearListSelection()
   {
     AppMethodBeat.i(159209);
-    a locala = this.Hyb;
+    a locala = this.JlR;
     if (locala != null)
     {
       a.a(locala, true);
@@ -103,18 +105,18 @@ public class MMListPopupWindow
   public final void dismiss()
   {
     AppMethodBeat.i(159205);
-    this.jat.dismiss();
-    kf();
-    this.jat.setContentView(null);
-    this.Hyb = null;
-    this.mHandler.removeCallbacks(this.HxX);
+    this.jtC.dismiss();
+    kv();
+    this.jtC.setContentView(null);
+    this.JlR = null;
+    this.mHandler.removeCallbacks(this.JlN);
     AppMethodBeat.o(159205);
   }
   
   public final boolean isInputMethodNotNeeded()
   {
     AppMethodBeat.i(159210);
-    if (this.jat.getInputMethodMode() == 2)
+    if (this.jtC.getInputMethodMode() == 2)
     {
       AppMethodBeat.o(159210);
       return true;
@@ -123,23 +125,23 @@ public class MMListPopupWindow
     return false;
   }
   
-  public final void kf()
+  public final void kv()
   {
     AppMethodBeat.i(159207);
-    if (this.apj != null)
+    if (this.arb != null)
     {
-      ViewParent localViewParent = this.apj.getParent();
+      ViewParent localViewParent = this.arb.getParent();
       if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.apj);
+        ((ViewGroup)localViewParent).removeView(this.arb);
       }
     }
     AppMethodBeat.o(159207);
   }
   
-  public final void kg()
+  public final void kw()
   {
     AppMethodBeat.i(159208);
-    this.jat.setInputMethodMode(2);
+    this.jtC.setInputMethodMode(2);
     AppMethodBeat.o(159208);
   }
   
@@ -151,17 +153,17 @@ public class MMListPopupWindow
     }
     for (;;)
     {
-      this.EN = paramListAdapter;
-      if (this.EN != null) {
+      this.GE = paramListAdapter;
+      if (this.GE != null) {
         paramListAdapter.registerDataSetObserver(this.mObserver);
       }
-      if (this.Hyb != null) {
-        this.Hyb.setAdapter(this.EN);
+      if (this.JlR != null) {
+        this.JlR.setAdapter(this.GE);
       }
       AppMethodBeat.o(159199);
       return;
-      if (this.EN != null) {
-        this.EN.unregisterDataSetObserver(this.mObserver);
+      if (this.GE != null) {
+        this.GE.unregisterDataSetObserver(this.mObserver);
       }
     }
   }
@@ -169,51 +171,51 @@ public class MMListPopupWindow
   public final void setAnimationStyle(int paramInt)
   {
     AppMethodBeat.i(159202);
-    this.jat.setAnimationStyle(paramInt);
+    this.jtC.setAnimationStyle(paramInt);
     AppMethodBeat.o(159202);
   }
   
   public final void setBackgroundDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(159201);
-    this.jat.setBackgroundDrawable(paramDrawable);
+    this.jtC.setBackgroundDrawable(paramDrawable);
     AppMethodBeat.o(159201);
   }
   
   public final void setContentWidth(int paramInt)
   {
     AppMethodBeat.i(159203);
-    Drawable localDrawable = this.jat.getBackground();
+    Drawable localDrawable = this.jtC.getBackground();
     if (localDrawable != null)
     {
       localDrawable.getPadding(this.mTempRect);
-      this.aiV = (this.mTempRect.left + this.mTempRect.right + paramInt);
+      this.akM = (this.mTempRect.left + this.mTempRect.right + paramInt);
       AppMethodBeat.o(159203);
       return;
     }
-    this.aiV = paramInt;
+    this.akM = paramInt;
     AppMethodBeat.o(159203);
   }
   
   public final void setModal(boolean paramBoolean)
   {
     AppMethodBeat.i(159200);
-    this.apv = paramBoolean;
-    this.jat.setFocusable(this.apv);
+    this.arm = paramBoolean;
+    this.jtC.setFocusable(this.arm);
     AppMethodBeat.o(159200);
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
     AppMethodBeat.i(159206);
-    this.jat.setOnDismissListener(paramOnDismissListener);
+    this.jtC.setOnDismissListener(paramOnDismissListener);
     AppMethodBeat.o(159206);
   }
   
   public final void setVerticalOffset(int paramInt)
   {
-    this.apb = paramInt;
-    this.apd = true;
+    this.aqT = paramInt;
+    this.aqV = true;
   }
   
   public final void show()
@@ -228,39 +230,45 @@ public class MMListPopupWindow
     View localView;
     FrameLayout.LayoutParams localLayoutParams1;
     FrameLayout.LayoutParams localLayoutParams2;
-    if (this.Hyb == null)
+    if (this.JlR == null)
     {
       localObject2 = this.mContext;
-      this.apu = new Runnable()
+      this.arl = new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(159182);
-          View localView = MMListPopupWindow.this.apl;
+          View localView = MMListPopupWindow.this.ard;
           if ((localView != null) && (localView.getWindowToken() != null)) {
             MMListPopupWindow.this.show();
           }
           AppMethodBeat.o(159182);
         }
       };
-      if (!this.apv)
+      if (!this.arm)
       {
         bool1 = true;
-        this.Hyb = new a((Context)localObject2, bool1, (byte)0);
-        if (this.apm != null) {
-          this.Hyb.setSelector(this.apm);
+        this.JlR = new a((Context)localObject2, bool1, (byte)0);
+        if (this.are != null) {
+          this.JlR.setSelector(this.are);
         }
-        this.Hyb.setAdapter(this.EN);
-        this.Hyb.setOnItemClickListener(this.apn);
-        this.Hyb.setFocusable(true);
-        this.Hyb.setFocusableInTouchMode(true);
-        this.Hyb.setDivider(null);
-        this.Hyb.setDividerHeight(0);
-        this.Hyb.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        this.JlR.setAdapter(this.GE);
+        this.JlR.setOnItemClickListener(this.arf);
+        this.JlR.setFocusable(true);
+        this.JlR.setFocusableInTouchMode(true);
+        this.JlR.setDivider(null);
+        this.JlR.setDividerHeight(0);
+        this.JlR.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
           public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
           {
             AppMethodBeat.i(159183);
+            b localb = new b();
+            localb.bd(paramAnonymousAdapterView);
+            localb.bd(paramAnonymousView);
+            localb.mr(paramAnonymousInt);
+            localb.qY(paramAnonymousLong);
+            a.b("com/tencent/mm/ui/base/MMListPopupWindow$2", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
             if (paramAnonymousInt != -1)
             {
               paramAnonymousAdapterView = MMListPopupWindow.a(MMListPopupWindow.this);
@@ -268,30 +276,31 @@ public class MMListPopupWindow
                 MMListPopupWindow.a.a(paramAnonymousAdapterView, false);
               }
             }
+            a.a(this, "com/tencent/mm/ui/base/MMListPopupWindow$2", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
             AppMethodBeat.o(159183);
           }
           
           public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
         });
-        this.Hyb.setOnScrollListener(this.HxZ);
-        if (this.apo != null) {
-          this.Hyb.setOnItemSelectedListener(this.apo);
+        this.JlR.setOnScrollListener(this.JlP);
+        if (this.arg != null) {
+          this.JlR.setOnItemSelectedListener(this.arg);
         }
-        localObject1 = this.Hyb;
-        localView = this.apj;
+        localObject1 = this.JlR;
+        localView = this.arb;
         if (localView == null) {
           break label1317;
         }
-        kf();
+        kv();
         localObject2 = new FrameLayout((Context)localObject2);
         localLayoutParams1 = new FrameLayout.LayoutParams(-1, -1);
         localLayoutParams2 = new FrameLayout.LayoutParams(-1, -2);
-        switch (this.apk)
+        switch (this.arc)
         {
         default: 
-          an.e("ListPopupWindow", "Invalid hint position " + this.apk, new Object[0]);
+          ap.e("ListPopupWindow", "Invalid hint position " + this.arc, new Object[0]);
           label294:
-          localView.measure(View.MeasureSpec.makeMeasureSpec(this.aiV, -2147483648), 0);
+          localView.measure(View.MeasureSpec.makeMeasureSpec(this.akM, -2147483648), 0);
           localObject1 = localObject2;
         }
       }
@@ -303,12 +312,12 @@ public class MMListPopupWindow
     label1317:
     for (;;)
     {
-      this.jat.setContentView((View)localObject1);
+      this.jtC.setContentView((View)localObject1);
       int i = 0;
       for (;;)
       {
         label325:
-        localObject1 = this.jat.getBackground();
+        localObject1 = this.jtC.getBackground();
         int k;
         int i1;
         int m;
@@ -317,17 +326,17 @@ public class MMListPopupWindow
           ((Drawable)localObject1).getPadding(this.mTempRect);
           j = this.mTempRect.top + this.mTempRect.bottom;
           k = j;
-          if (!this.apd)
+          if (!this.aqV)
           {
-            this.apb = (-this.mTempRect.top);
+            this.aqT = (-this.mTempRect.top);
             k = j;
           }
-          if (this.jat.getInputMethodMode() != 2) {
+          if (this.jtC.getInputMethodMode() != 2) {
             break label772;
           }
           j = 1;
-          localObject1 = this.apl;
-          i1 = this.apb;
+          localObject1 = this.ard;
+          i1 = this.aqT;
           localObject2 = new Rect();
           ((View)localObject1).getWindowVisibleDisplayFrame((Rect)localObject2);
           ((View)localObject1).getLocationOnScreen(new int[2]);
@@ -337,28 +346,28 @@ public class MMListPopupWindow
           }
           ((View)localObject1).getContext().getResources();
         }
-        for (int j = aq.cl(((View)localObject1).getContext()).y;; j = m)
+        for (int j = as.ci(((View)localObject1).getContext()).y;; j = m)
         {
           j -= i1;
           m = j;
-          if (this.jat.getBackground() != null)
+          if (this.jtC.getBackground() != null)
           {
-            this.jat.getBackground().getPadding(this.mTempRect);
+            this.jtC.getBackground().getPadding(this.mTempRect);
             m = j - (this.mTempRect.top + this.mTempRect.bottom);
           }
-          if ((this.apg) || (this.aoZ == -1))
+          if ((this.aqY) || (this.aqR == -1))
           {
             i = m + k;
             bool1 = isInputMethodNotNeeded();
-            if (!this.jat.isShowing()) {
+            if (!this.jtC.isShowing()) {
               break label1046;
             }
-            if (this.aiV != -1) {
+            if (this.akM != -1) {
               break label926;
             }
             j = -1;
             label567:
-            if (this.aoZ != -1) {
+            if (this.aqR != -1) {
               break label995;
             }
             if (!bool1) {
@@ -368,17 +377,17 @@ public class MMListPopupWindow
             if (!bool1) {
               break label964;
             }
-            localObject1 = this.jat;
-            if (this.aiV != -1) {
+            localObject1 = this.jtC;
+            if (this.akM != -1) {
               break label959;
             }
             k = n;
             label602:
             ((o)localObject1).setWindowLayoutMode(k, 0);
             label609:
-            this.jat.update(j, i);
-            localObject1 = this.jat;
-            if ((this.aph) || (this.apg)) {
+            this.jtC.update(j, i);
+            localObject1 = this.jtC;
+            if ((this.aqZ) || (this.aqY)) {
               break label1012;
             }
           }
@@ -390,10 +399,10 @@ public class MMListPopupWindow
           for (bool1 = bool2;; bool1 = false)
           {
             ((o)localObject1).setOutsideTouchable(bool1);
-            if (!this.mHk) {
+            if (!this.nhI) {
               break label1018;
             }
-            this.jat.showAtLocation(this.apl, 17, 0, 0);
+            this.jtC.showAtLocation(this.ard, 17, 0, 0);
             AppMethodBeat.o(159204);
             return;
             bool1 = false;
@@ -406,7 +415,7 @@ public class MMListPopupWindow
             ((FrameLayout)localObject2).addView((View)localObject1, localLayoutParams1);
             ((FrameLayout)localObject2).addView(localView, localLayoutParams2);
             break label294;
-            localObject1 = this.apj;
+            localObject1 = this.arb;
             if (localObject1 == null) {
               break label1312;
             }
@@ -417,14 +426,14 @@ public class MMListPopupWindow
             break label388;
             j = 0;
             break label401;
-            switch (this.aiV)
+            switch (this.akM)
             {
             default: 
-              j = View.MeasureSpec.makeMeasureSpec(this.aiV, 1073741824);
+              j = View.MeasureSpec.makeMeasureSpec(this.akM, 1073741824);
             }
             for (;;)
             {
-              m = this.Hyb.ew(j, m - i);
+              m = this.JlR.ey(j, m - i);
               j = i;
               if (m > 0) {
                 j = i + k;
@@ -435,90 +444,90 @@ public class MMListPopupWindow
               continue;
               j = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), 1073741824);
             }
-            if (this.aiV == -2)
+            if (this.akM == -2)
             {
-              j = this.apl.getWidth();
+              j = this.ard.getWidth();
               break label567;
             }
-            j = this.aiV;
+            j = this.akM;
             break label567;
             i = -1;
             break label580;
             k = 0;
             break label602;
-            localObject1 = this.jat;
-            if (this.aiV == -1) {}
+            localObject1 = this.jtC;
+            if (this.akM == -1) {}
             for (k = -1;; k = 0)
             {
               ((o)localObject1).setWindowLayoutMode(k, -1);
               break;
             }
-            if (this.aoZ == -2) {
+            if (this.aqR == -2) {
               break label609;
             }
-            i = this.aoZ;
+            i = this.aqR;
             break label609;
           }
           label1018:
-          this.jat.showAtLocation(this.apl, 53, this.apa, this.apb);
+          this.jtC.showAtLocation(this.ard, 53, this.aqS, this.aqT);
           AppMethodBeat.o(159204);
           return;
-          if (this.aiV == -1)
+          if (this.akM == -1)
           {
             j = -1;
-            if (this.aoZ != -1) {
+            if (this.aqR != -1) {
               break label1238;
             }
             i = -1;
             label1066:
-            this.jat.setWindowLayoutMode(j, i);
-            localObject1 = this.jat;
-            if ((this.aph) || (this.apg)) {
+            this.jtC.setWindowLayoutMode(j, i);
+            localObject1 = this.jtC;
+            if ((this.aqZ) || (this.aqY)) {
               break label1276;
             }
             bool1 = bool3;
             label1099:
             ((o)localObject1).setOutsideTouchable(bool1);
-            this.jat.setTouchInterceptor(this.HxY);
-            if (!this.mHk) {
+            this.jtC.setTouchInterceptor(this.JlO);
+            if (!this.nhI) {
               break label1282;
             }
-            this.jat.showAtLocation(this.apl, 17, 0, 0);
+            this.jtC.showAtLocation(this.ard, 17, 0, 0);
           }
           for (;;)
           {
-            this.Hyb.setSelection(-1);
-            if ((!this.apv) || (this.Hyb.isInTouchMode())) {
+            this.JlR.setSelection(-1);
+            if ((!this.arm) || (this.JlR.isInTouchMode())) {
               clearListSelection();
             }
-            if (!this.apv) {
-              this.mHandler.post(this.Hya);
+            if (!this.arm) {
+              this.mHandler.post(this.JlQ);
             }
             AppMethodBeat.o(159204);
             return;
-            if (this.aiV == -2)
+            if (this.akM == -2)
             {
-              this.jat.setWidth(this.apl.getWidth());
+              this.jtC.setWidth(this.ard.getWidth());
               j = 0;
               break;
             }
-            this.jat.setWidth(this.aiV);
+            this.jtC.setWidth(this.akM);
             j = 0;
             break;
             label1238:
-            if (this.aoZ == -2)
+            if (this.aqR == -2)
             {
-              this.jat.setHeight(i);
+              this.jtC.setHeight(i);
               i = 0;
               break label1066;
             }
-            this.jat.setHeight(this.aoZ);
+            this.jtC.setHeight(this.aqR);
             i = 0;
             break label1066;
             label1276:
             bool1 = false;
             break label1099;
-            this.jat.showAtLocation(this.apl, 53, this.apa, this.apb);
+            this.jtC.showAtLocation(this.ard, 53, this.aqS, this.aqT);
           }
         }
         i = 0;
@@ -529,19 +538,19 @@ public class MMListPopupWindow
   static final class a
     extends ListView
   {
-    private boolean akW;
-    private boolean akX;
+    private boolean amN;
+    private boolean amO;
     
     private a(Context paramContext, boolean paramBoolean)
     {
       super(null, 2130968938);
       AppMethodBeat.i(159184);
-      this.akX = paramBoolean;
+      this.amO = paramBoolean;
       setCacheColorHint(0);
       AppMethodBeat.o(159184);
     }
     
-    final int ew(int paramInt1, int paramInt2)
+    final int ey(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(159189);
       int i = getListPaddingTop();
@@ -622,7 +631,7 @@ public class MMListPopupWindow
     public final boolean hasFocus()
     {
       AppMethodBeat.i(159188);
-      if ((this.akX) || (super.hasFocus()))
+      if ((this.amO) || (super.hasFocus()))
       {
         AppMethodBeat.o(159188);
         return true;
@@ -634,7 +643,7 @@ public class MMListPopupWindow
     public final boolean hasWindowFocus()
     {
       AppMethodBeat.i(159186);
-      if ((this.akX) || (super.hasWindowFocus()))
+      if ((this.amO) || (super.hasWindowFocus()))
       {
         AppMethodBeat.o(159186);
         return true;
@@ -646,7 +655,7 @@ public class MMListPopupWindow
     public final boolean isFocused()
     {
       AppMethodBeat.i(159187);
-      if ((this.akX) || (super.isFocused()))
+      if ((this.amO) || (super.isFocused()))
       {
         AppMethodBeat.o(159187);
         return true;
@@ -658,7 +667,7 @@ public class MMListPopupWindow
     public final boolean isInTouchMode()
     {
       AppMethodBeat.i(159185);
-      if (((this.akX) && (this.akW)) || (super.isInTouchMode()))
+      if (((this.amO) && (this.amN)) || (super.isInTouchMode()))
       {
         AppMethodBeat.o(159185);
         return true;
@@ -689,7 +698,7 @@ public class MMListPopupWindow
     public final void onChanged()
     {
       AppMethodBeat.i(159192);
-      if (MMListPopupWindow.this.jat.isShowing()) {
+      if (MMListPopupWindow.this.jtC.isShowing()) {
         MMListPopupWindow.this.show();
       }
       AppMethodBeat.o(159192);
@@ -769,7 +778,7 @@ public class MMListPopupWindow
     public final void run()
     {
       AppMethodBeat.i(159197);
-      if ((MMListPopupWindow.a(MMListPopupWindow.this) != null) && (MMListPopupWindow.a(MMListPopupWindow.this).getCount() > MMListPopupWindow.a(MMListPopupWindow.this).getChildCount()) && (MMListPopupWindow.a(MMListPopupWindow.this).getChildCount() <= MMListPopupWindow.this.api))
+      if ((MMListPopupWindow.a(MMListPopupWindow.this) != null) && (MMListPopupWindow.a(MMListPopupWindow.this).getCount() > MMListPopupWindow.a(MMListPopupWindow.this).getChildCount()) && (MMListPopupWindow.a(MMListPopupWindow.this).getChildCount() <= MMListPopupWindow.this.ara))
       {
         MMListPopupWindow.b(MMListPopupWindow.this).setInputMethodMode(2);
         MMListPopupWindow.this.show();

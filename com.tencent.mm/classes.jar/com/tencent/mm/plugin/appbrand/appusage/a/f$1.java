@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.xc;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.protocal.protobuf.zb;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.util.LinkedList;
 
 public final class f$1
@@ -14,11 +14,11 @@ public final class f$1
   public final void run()
   {
     AppMethodBeat.i(44674);
-    xc localxc = new xc();
-    localxc.Erw = ax.getNetTypeString(ai.getContext());
-    localxc.latitude = c.aZk();
-    localxc.longitude = c.aZj();
-    new j(this.jxe, this.jxf, this.jxg, this.jxh, this.jxi, this.jxj, localxc) {}.aBB();
+    zb localzb = new zb();
+    localzb.FYG = ay.getNetTypeString(aj.getContext());
+    localzb.latitude = c.bcI();
+    localzb.longitude = c.bcH();
+    new j(this.jRa, this.jRb, this.jRc, this.jRd, this.jRe, this.jRf, localzb) {}.aED();
     AppMethodBeat.o(44674);
   }
 }

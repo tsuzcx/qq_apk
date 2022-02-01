@@ -8,24 +8,24 @@ import rx.internal.util.unsafe.Pow2;
 abstract class a<E>
   extends AbstractQueue<E>
 {
-  protected final AtomicReferenceArray<E> LUi;
+  protected final AtomicReferenceArray<E> NLd;
   protected final int mask;
   
   public a(int paramInt)
   {
     paramInt = Pow2.roundToPowerOfTwo(paramInt);
     this.mask = (paramInt - 1);
-    this.LUi = new AtomicReferenceArray(paramInt);
+    this.NLd = new AtomicReferenceArray(paramInt);
   }
   
-  protected final int CJ(long paramLong)
+  protected final int FP(long paramLong)
   {
     return (int)paramLong & this.mask;
   }
   
-  protected final E ajp(int paramInt)
+  protected final E ama(int paramInt)
   {
-    return this.LUi.get(paramInt);
+    return this.NLd.get(paramInt);
   }
   
   public void clear()

@@ -11,12 +11,12 @@ public final class c
   {
     AppMethodBeat.i(121376);
     paramJSONObject = super.b(paramJSONObject, paramString);
-    paramJSONObject.jAq = true;
+    paramJSONObject.jUl = true;
     AppMethodBeat.o(121376);
     return paramJSONObject;
   }
   
-  public final int bcz()
+  public final int bgd()
   {
     return 2;
   }

@@ -7,17 +7,17 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.protocal.protobuf.aqc;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.n.e;
+import com.tencent.mm.n.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.protocal.protobuf.aty;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
@@ -25,62 +25,62 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class AutoAddFriendUI
   extends MMActivity
 {
+  private MMSwitchBtn Bii;
+  private TextView Bij;
+  private MMSwitchBtn Bik;
+  private SparseIntArray Bil;
   private int status;
-  private MMSwitchBtn zQG;
-  private TextView zQH;
-  private MMSwitchBtn zQI;
-  private SparseIntArray zQJ;
   
   public AutoAddFriendUI()
   {
     AppMethodBeat.i(29009);
-    this.zQG = null;
-    this.zQH = null;
-    this.zQI = null;
-    this.zQJ = new SparseIntArray();
+    this.Bii = null;
+    this.Bij = null;
+    this.Bik = null;
+    this.Bil = new SparseIntArray();
     AppMethodBeat.o(29009);
   }
   
-  private boolean Lr(int paramInt)
+  private boolean MT(int paramInt)
   {
     return (this.status & paramInt) != 0;
   }
   
-  private boolean eaL()
+  private boolean enb()
   {
     AppMethodBeat.i(29011);
-    az.ayM();
-    c.agA().set(7, Integer.valueOf(this.status));
+    ba.aBQ();
+    c.ajl().set(7, Integer.valueOf(this.status));
     int i = 0;
-    while (i < this.zQJ.size())
+    while (i < this.Bil.size())
     {
-      int j = this.zQJ.keyAt(i);
-      int k = this.zQJ.valueAt(i);
-      aqc localaqc = new aqc();
-      localaqc.EIY = j;
-      localaqc.vVH = k;
-      az.ayM();
-      c.awA().c(new j.a(23, localaqc));
-      ac.d("MicroMsg.AutoAddFriendUI", "switch  " + j + " " + k);
+      int j = this.Bil.keyAt(i);
+      int k = this.Bil.valueAt(i);
+      aty localaty = new aty();
+      localaty.GrZ = j;
+      localaty.xcI = k;
+      ba.aBQ();
+      c.azo().c(new k.a(23, localaty));
+      ad.d("MicroMsg.AutoAddFriendUI", "switch  " + j + " " + k);
       i += 1;
     }
-    this.zQJ.clear();
+    this.Bil.clear();
     AppMethodBeat.o(29011);
     return true;
   }
   
-  private static int eaM()
+  private static int enc()
   {
     AppMethodBeat.i(29013);
-    String str2 = g.ZY().getValue("AutoAddFriendShow");
+    String str2 = g.acA().getValue("AutoAddFriendShow");
     String str1 = str2;
-    if (bs.isNullOrNil(str2)) {
+    if (bt.isNullOrNil(str2)) {
       str1 = "0";
     }
     try
     {
-      i = bs.getInt(str1, 0);
-      ac.d("MicroMsg.AutoAddFriendUI", "getAutoAddDynamicConfig, autoAdd = %d", new Object[] { Integer.valueOf(i) });
+      i = bt.getInt(str1, 0);
+      ad.d("MicroMsg.AutoAddFriendUI", "getAutoAddDynamicConfig, autoAdd = %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(29013);
       return i;
     }
@@ -101,15 +101,15 @@ public class AutoAddFriendUI
   public void initView()
   {
     AppMethodBeat.i(29012);
-    this.zQG = ((MMSwitchBtn)findViewById(2131302705));
-    this.zQH = ((TextView)findViewById(2131296990));
-    this.zQI = ((MMSwitchBtn)findViewById(2131296989));
-    boolean bool = Lr(32);
-    this.zQG.setCheck(bool);
-    if (eaM() == 1)
+    this.Bii = ((MMSwitchBtn)findViewById(2131302705));
+    this.Bij = ((TextView)findViewById(2131296990));
+    this.Bik = ((MMSwitchBtn)findViewById(2131296989));
+    boolean bool = MT(32);
+    this.Bii.setCheck(bool);
+    if (enc() == 1)
     {
-      this.zQI.setCheck(Lr(2097152));
-      this.zQI.setSwitchListener(new MMSwitchBtn.a()
+      this.Bik.setCheck(MT(2097152));
+      this.Bik.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
@@ -121,7 +121,7 @@ public class AutoAddFriendUI
     }
     for (;;)
     {
-      this.zQG.setSwitchListener(new MMSwitchBtn.a()
+      this.Bii.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
@@ -142,8 +142,8 @@ public class AutoAddFriendUI
       });
       AppMethodBeat.o(29012);
       return;
-      this.zQH.setVisibility(8);
-      this.zQI.setVisibility(8);
+      this.Bij.setVisibility(8);
+      this.Bik.setVisibility(8);
     }
   }
   
@@ -152,7 +152,7 @@ public class AutoAddFriendUI
     AppMethodBeat.i(29010);
     super.onCreate(paramBundle);
     setMMTitle(2131756085);
-    this.status = u.axA();
+    this.status = u.aAq();
     initView();
     AppMethodBeat.o(29010);
   }
@@ -168,7 +168,7 @@ public class AutoAddFriendUI
   {
     AppMethodBeat.i(29015);
     super.onPause();
-    eaL();
+    enb();
     AppMethodBeat.o(29015);
   }
   

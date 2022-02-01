@@ -2,17 +2,19 @@ package d.l.b.a.b.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.m;
+import d.g.b.q;
+import d.l.b.a.b.b.l;
 
 final class a$a
-  extends d.g.b.l
-  implements m<d.l.b.a.b.b.l, d.l.b.a.b.b.l, Boolean>
+  extends q
+  implements m<l, l, Boolean>
 {
-  public static final a LEm;
+  public static final a Nvl;
   
   static
   {
     AppMethodBeat.i(59873);
-    LEm = new a();
+    Nvl = new a();
     AppMethodBeat.o(59873);
   }
   

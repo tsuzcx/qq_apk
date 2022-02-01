@@ -2,19 +2,20 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class f
-  extends bo<com.tencent.mm.plugin.webview.luggage.f>
+  extends br<g>
 {
-  public final void a(Context paramContext, String paramString, final bn.a parama)
+  public final void a(Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(78523);
     try
@@ -50,15 +51,15 @@ public class f
     }
     catch (JSONException paramContext)
     {
-      ac.e("MicroMsg.JsApiBatchViewCard", "paras data error: " + paramContext.getMessage());
+      ad.e("MicroMsg.JsApiBatchViewCard", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(78523);
     }
   }
   
-  public final void b(a<com.tencent.mm.plugin.webview.luggage.f>.a parama) {}
+  public final void b(b<g>.a paramb) {}
   
-  public final int bYk()
+  public final int ccO()
   {
     return 2;
   }

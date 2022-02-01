@@ -18,7 +18,7 @@ public final class y
   {
     AppMethodBeat.i(144947);
     if ((paramArrayOfFloat != null) && (paramFloat != 1.4E-45F)) {
-      paramd.jzb.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
+      paramd.jSY.setPathEffect(new DashPathEffect(paramArrayOfFloat, paramFloat));
     }
     AppMethodBeat.o(144947);
     return true;
@@ -33,7 +33,7 @@ public final class y
       AppMethodBeat.o(144948);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.jzD, paramCanvas.jzE);
+    boolean bool = a(paramd, paramCanvas.jTy, paramCanvas.jTz);
     AppMethodBeat.o(144948);
     return bool;
   }
@@ -73,7 +73,7 @@ public final class y
     return false;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144945);
     SetLineDashActionArg localSetLineDashActionArg = new SetLineDashActionArg();

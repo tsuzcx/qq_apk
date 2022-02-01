@@ -1,16 +1,16 @@
 package com.tencent.mm.permission;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.oi;
+import com.tencent.mm.g.a.or;
 import com.tencent.mm.sdk.b.c;
 
 final class a$1
-  extends c<oi>
+  extends c<or>
 {
   a$1(a parama)
   {
     AppMethodBeat.i(161282);
-    this.__eventId = oi.class.getName().hashCode();
+    this.__eventId = or.class.getName().hashCode();
     AppMethodBeat.o(161282);
   }
 }

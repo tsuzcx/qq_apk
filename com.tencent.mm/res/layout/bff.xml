@@ -11,7 +11,7 @@
     <com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView android:id="@id/bh2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <LinearLayout android:gravity="center|right" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/h6z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:layout_marginRight="16.0dip">
         <ImageView android:id="@id/cw4" android:layout_width="20.0dip" android:layout_height="20.0dip" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/a_u" android:gravity="center" android:layout_gravity="center" android:id="@id/ggk" android:layout_width="wrap_content" android:layout_height="18.0dip" android:text="@string/bit" android:textAlignment="gravity" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:gravity="center" android:layout_gravity="center" android:id="@id/ggk" android:layout_width="wrap_content" android:layout_height="18.0dip" android:text="@string/bit" android:textAlignment="gravity" />
         <ImageView android:id="@id/cwk" android:layout_width="12.0dip" android:layout_height="24.0dip" />
     </LinearLayout>
     <com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditVideoSeekBarView android:id="@id/bh6" android:background="@color/a7c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="95.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />

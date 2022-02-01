@@ -14,34 +14,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class e
   implements c
 {
-  final c.a aKF;
-  boolean aKG;
-  private boolean aKH;
-  private final BroadcastReceiver aKI;
+  final c.a aMw;
+  boolean aMx;
+  private boolean aMy;
+  private final BroadcastReceiver aMz;
   private final Context context;
   
   e(Context paramContext, c.a parama)
   {
     AppMethodBeat.i(77548);
-    this.aKI = new BroadcastReceiver()
+    this.aMz = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(77547);
-        boolean bool = e.this.aKG;
-        e.this.aKG = e.isConnected(paramAnonymousContext);
-        if (bool != e.this.aKG)
+        boolean bool = e.this.aMx;
+        e.this.aMx = e.isConnected(paramAnonymousContext);
+        if (bool != e.this.aMx)
         {
           if (Log.isLoggable("ConnectivityMonitor", 3)) {
-            new StringBuilder("connectivity changed, isConnected: ").append(e.this.aKG);
+            new StringBuilder("connectivity changed, isConnected: ").append(e.this.aMx);
           }
-          e.this.aKF.aG(e.this.aKG);
+          e.this.aMw.aG(e.this.aMx);
         }
         AppMethodBeat.o(77547);
       }
     };
     this.context = paramContext.getApplicationContext();
-    this.aKF = parama;
+    this.aMw = parama;
     AppMethodBeat.o(77548);
   }
   
@@ -74,13 +74,13 @@ final class e
   public final void onStart()
   {
     AppMethodBeat.i(77550);
-    if (!this.aKH)
+    if (!this.aMy)
     {
-      this.aKG = isConnected(this.context);
+      this.aMx = isConnected(this.context);
       try
       {
-        this.context.registerReceiver(this.aKI, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
-        this.aKH = true;
+        this.context.registerReceiver(this.aMz, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+        this.aMy = true;
         AppMethodBeat.o(77550);
         return;
       }
@@ -95,10 +95,10 @@ final class e
   public final void onStop()
   {
     AppMethodBeat.i(77551);
-    if (this.aKH)
+    if (this.aMy)
     {
-      this.context.unregisterReceiver(this.aKI);
-      this.aKH = false;
+      this.context.unregisterReceiver(this.aMz);
+      this.aMy = false;
     }
     AppMethodBeat.o(77551);
   }

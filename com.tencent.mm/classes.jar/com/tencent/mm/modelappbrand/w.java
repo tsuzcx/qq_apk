@@ -3,7 +3,7 @@ package com.tencent.mm.modelappbrand;
 public abstract class w
   implements o
 {
-  public abstract void aAN();
+  public abstract void aDQ();
   
   public final String getName()
   {

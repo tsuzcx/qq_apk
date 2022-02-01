@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wallet_payu.pwd.a;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.al.n;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.d.i;
@@ -12,12 +12,12 @@ import com.tencent.mm.wallet_core.d.i;
 public class a
   extends g
 {
-  private Bundle dmf;
+  private Bundle dxT;
   
   public a(MMActivity paramMMActivity, i parami, Bundle paramBundle)
   {
     super(paramMMActivity, parami);
-    this.dmf = paramBundle;
+    this.dxT = paramBundle;
   }
   
   public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -26,27 +26,27 @@ public class a
     if ((paramn instanceof c))
     {
       paramString = (c)paramn;
-      if (bs.isNullOrNil(paramString.token)) {
+      if (bt.isNullOrNil(paramString.token)) {
         break label67;
       }
-      ac.d("MicroMsg.CommonCheckPwdController", "hy: check pwd pass");
-      this.dmf.putString("payu_reference", paramString.token);
-      com.tencent.mm.wallet_core.a.k(this.activity, this.dmf);
+      ad.d("MicroMsg.CommonCheckPwdController", "hy: check pwd pass");
+      this.dxT.putString("payu_reference", paramString.token);
+      com.tencent.mm.wallet_core.a.k(this.activity, this.dxT);
     }
     for (;;)
     {
       AppMethodBeat.o(72142);
       return false;
       label67:
-      ac.w("MicroMsg.CommonCheckPwdController", "hy: check pwd failed");
+      ad.w("MicroMsg.CommonCheckPwdController", "hy: check pwd failed");
     }
   }
   
   public final boolean s(Object... paramVarArgs)
   {
     AppMethodBeat.i(72143);
-    this.dmf.putString("key_pwd1", (String)paramVarArgs[0]);
-    this.JFQ.b(new c(this.dmf.getString("key_pwd1")), true);
+    this.dxT.putString("key_pwd1", (String)paramVarArgs[0]);
+    this.LyU.b(new c(this.dxT.getString("key_pwd1")), true);
     AppMethodBeat.o(72143);
     return true;
   }

@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  public a JEG;
+  public a LxK;
   public long duration;
   public long interval;
   

@@ -14,7 +14,7 @@ final class aq
     }
     int i = paramaj.bo(paramView2);
     int j = paramaj.bn(paramView1);
-    return Math.min(paramaj.kn(), i - j);
+    return Math.min(paramaj.kD(), i - j);
   }
   
   static int a(RecyclerView.t paramt, aj paramaj, View paramView1, View paramView2, RecyclerView.i parami, boolean paramBoolean1, boolean paramBoolean2)
@@ -50,7 +50,7 @@ final class aq
       j = Math.abs(paramaj.bo(paramView2) - paramaj.bn(paramView1));
       int k = Math.abs(RecyclerView.i.bB(paramView1) - RecyclerView.i.bB(paramView2));
       float f = j / (k + 1);
-      return Math.round(i * f + (paramaj.kl() - paramaj.bn(paramView1)));
+      return Math.round(i * f + (paramaj.kB() - paramaj.bn(paramView1)));
     }
   }
   

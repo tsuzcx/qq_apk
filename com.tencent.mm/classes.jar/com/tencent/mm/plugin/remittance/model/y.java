@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,37 +12,37 @@ public final class y
   extends m
 {
   public String desc;
-  public double oxA;
+  public double paV;
   public int status;
-  public boolean tEJ;
-  public String vxJ;
-  public int vxT;
-  public String vxl;
-  private String wLA;
-  public String wLB;
-  public int wLC;
-  private String wLD;
-  public String wLE;
-  public int wLF;
-  public String wLG;
-  public String wLH;
-  public int wLI;
-  public a wLJ;
-  public b wLK;
-  public d wLL;
-  public ResendMsgInfo wLM;
-  public d wLN;
-  public String wLO;
-  public String wLP;
+  public boolean uHs;
+  public String wCF;
+  public String wDd;
+  public int wDn;
+  private String xZh;
+  public String xZi;
+  public int xZj;
+  private String xZk;
+  public String xZl;
+  public int xZm;
+  public String xZn;
+  public String xZo;
+  public int xZp;
+  public a xZq;
+  public b xZr;
+  public d xZs;
+  public ResendMsgInfo xZt;
+  public d xZu;
+  public String xZv;
+  public String xZw;
   
   public y(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     AppMethodBeat.i(67893);
-    this.wLA = null;
-    this.wLB = null;
-    this.wLA = paramString1;
-    this.wLB = paramString2;
-    this.vxT = paramInt1;
+    this.xZh = null;
+    this.xZi = null;
+    this.xZh = paramString1;
+    this.xZi = paramString2;
+    this.wDn = paramInt1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("transfer_id", paramString2);
     localHashMap.put("trans_id", paramString1);
@@ -51,7 +51,7 @@ public final class y
     AppMethodBeat.o(67893);
   }
   
-  private static c aF(JSONObject paramJSONObject)
+  private static c aO(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67895);
     c localc = new c();
@@ -62,12 +62,12 @@ public final class y
     localc.type = localJSONObject.optInt("type");
     localc.url = localJSONObject.optString("url");
     localc.username = localJSONObject.optString("username");
-    localc.wLU = localJSONObject.optString("pagepath");
+    localc.xZB = localJSONObject.optString("pagepath");
     AppMethodBeat.o(67895);
     return localc;
   }
   
-  private static d aG(JSONObject paramJSONObject)
+  private static d aP(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67896);
     d locald = new d();
@@ -75,8 +75,8 @@ public final class y
     if (paramJSONObject == null) {
       localJSONObject = new JSONObject();
     }
-    locald.dlQ = localJSONObject.optString("wording");
-    locald.wLT = aF(localJSONObject.optJSONObject("jump_info"));
+    locald.dxD = localJSONObject.optString("wording");
+    locald.xZA = aO(localJSONObject.optJSONObject("jump_info"));
     AppMethodBeat.o(67896);
     return locald;
   }
@@ -99,25 +99,25 @@ public final class y
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67894);
-    ac.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    ad.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(67894);
       return;
     }
-    this.wLC = paramJSONObject.optInt("pay_time");
-    this.oxA = (paramJSONObject.optDouble("fee") / 100.0D);
-    this.vxl = paramJSONObject.optString("fee_type");
+    this.xZj = paramJSONObject.optInt("pay_time");
+    this.paV = (paramJSONObject.optDouble("fee") / 100.0D);
+    this.wCF = paramJSONObject.optString("fee_type");
     this.status = paramJSONObject.optInt("trans_status");
-    this.wLD = paramJSONObject.optString("trans_status_name");
-    this.wLF = paramJSONObject.optInt("modify_time");
-    this.tEJ = paramJSONObject.optBoolean("is_payer");
-    this.vxJ = paramJSONObject.optString("refund_bank_type");
-    this.wLG = paramJSONObject.optString("status_desc");
-    this.wLH = paramJSONObject.optString("status_supplementary");
-    this.wLI = paramJSONObject.optInt("delay_confirm_flag");
-    this.wLO = paramJSONObject.optString("banner_content");
-    this.wLP = paramJSONObject.optString("banner_url");
+    this.xZk = paramJSONObject.optString("trans_status_name");
+    this.xZm = paramJSONObject.optInt("modify_time");
+    this.uHs = paramJSONObject.optBoolean("is_payer");
+    this.wDd = paramJSONObject.optString("refund_bank_type");
+    this.xZn = paramJSONObject.optString("status_desc");
+    this.xZo = paramJSONObject.optString("status_supplementary");
+    this.xZp = paramJSONObject.optInt("delay_confirm_flag");
+    this.xZv = paramJSONObject.optString("banner_content");
+    this.xZw = paramJSONObject.optString("banner_url");
     this.desc = paramJSONObject.optString("desc");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("addr_info");
     Object localObject = new a();
@@ -125,24 +125,24 @@ public final class y
     if (localJSONObject == null) {
       paramString = new JSONObject();
     }
-    ((a)localObject).wLQ = paramString.optString("address_name");
-    ((a)localObject).iOg = paramString.optString("phone_num");
-    ((a)localObject).hEt = paramString.optString("address");
-    this.wLJ = ((a)localObject);
+    ((a)localObject).xZx = paramString.optString("address_name");
+    ((a)localObject).jhp = paramString.optString("phone_num");
+    ((a)localObject).hWY = paramString.optString("address");
+    this.xZq = ((a)localObject);
     localJSONObject = paramJSONObject.optJSONObject("exposure_info");
     localObject = new b();
     paramString = localJSONObject;
     if (localJSONObject == null) {
       paramString = new JSONObject();
     }
-    ((b)localObject).drM = paramString.optString("icon");
+    ((b)localObject).dDH = paramString.optString("icon");
     ((b)localObject).name = paramString.optString("name");
-    ((b)localObject).dlQ = paramString.optString("wording");
-    ((b)localObject).wLR = paramString.optInt("is_show_btn");
-    ((b)localObject).wLS = paramString.optString("btn_wording");
-    ((b)localObject).wLT = aF(paramString.optJSONObject("jump_info"));
-    this.wLK = ((b)localObject);
-    this.wLL = aG(paramJSONObject.optJSONObject("text_info"));
+    ((b)localObject).dxD = paramString.optString("wording");
+    ((b)localObject).xZy = paramString.optInt("is_show_btn");
+    ((b)localObject).xZz = paramString.optString("btn_wording");
+    ((b)localObject).xZA = aO(paramString.optJSONObject("jump_info"));
+    this.xZr = ((b)localObject);
+    this.xZs = aP(paramJSONObject.optJSONObject("text_info"));
     localJSONObject = paramJSONObject.optJSONObject("resend_info");
     localObject = new ResendMsgInfo();
     paramString = localJSONObject;
@@ -150,25 +150,25 @@ public final class y
       paramString = new JSONObject();
     }
     ((ResendMsgInfo)localObject).title = paramString.optString("title");
-    ((ResendMsgInfo)localObject).DdI = paramString.optString("pic");
+    ((ResendMsgInfo)localObject).EHI = paramString.optString("pic");
     ((ResendMsgInfo)localObject).description = paramString.optString("description");
-    ((ResendMsgInfo)localObject).unW = paramString.optString("left_button_wording");
-    ((ResendMsgInfo)localObject).unX = paramString.optString("right_button_wording");
-    this.wLM = ((ResendMsgInfo)localObject);
-    this.wLN = aG(paramJSONObject.optJSONObject("middle_info"));
+    ((ResendMsgInfo)localObject).kzK = paramString.optString("left_button_wording");
+    ((ResendMsgInfo)localObject).kzL = paramString.optString("right_button_wording");
+    this.xZt = ((ResendMsgInfo)localObject);
+    this.xZu = aP(paramJSONObject.optJSONObject("middle_info"));
     AppMethodBeat.o(67894);
   }
   
   public static final class a
   {
-    public String hEt;
-    public String iOg;
-    public String wLQ;
+    public String hWY;
+    public String jhp;
+    public String xZx;
     
     public final String toString()
     {
       AppMethodBeat.i(67889);
-      String str = "AddressInfo{addressName='" + this.wLQ + '\'' + ", phoneNum='" + this.iOg + '\'' + ", address='" + this.hEt + '\'' + '}';
+      String str = "AddressInfo{addressName='" + this.xZx + '\'' + ", phoneNum='" + this.jhp + '\'' + ", address='" + this.hWY + '\'' + '}';
       AppMethodBeat.o(67889);
       return str;
     }
@@ -176,17 +176,17 @@ public final class y
   
   public static final class b
   {
-    public String dlQ;
-    public String drM;
+    public String dDH;
+    public String dxD;
     public String name;
-    public int wLR;
-    public String wLS;
-    public y.c wLT;
+    public y.c xZA;
+    public int xZy;
+    public String xZz;
     
     public final String toString()
     {
       AppMethodBeat.i(67890);
-      String str = "ExposureInfo{icon='" + this.drM + '\'' + ", name='" + this.name + '\'' + ", wording='" + this.dlQ + '\'' + ", isShowBtn=" + this.wLR + ", btnWording='" + this.wLS + '\'' + ", jumpInfo=" + this.wLT + '}';
+      String str = "ExposureInfo{icon='" + this.dDH + '\'' + ", name='" + this.name + '\'' + ", wording='" + this.dxD + '\'' + ", isShowBtn=" + this.xZy + ", btnWording='" + this.xZz + '\'' + ", jumpInfo=" + this.xZA + '}';
       AppMethodBeat.o(67890);
       return str;
     }
@@ -197,12 +197,12 @@ public final class y
     public int type;
     public String url;
     public String username;
-    public String wLU;
+    public String xZB;
     
     public final String toString()
     {
       AppMethodBeat.i(67891);
-      String str = "JumpInfo{type=" + this.type + ", url='" + this.url + '\'' + ", username='" + this.username + '\'' + ", pagepath='" + this.wLU + '\'' + '}';
+      String str = "JumpInfo{type=" + this.type + ", url='" + this.url + '\'' + ", username='" + this.username + '\'' + ", pagepath='" + this.xZB + '\'' + '}';
       AppMethodBeat.o(67891);
       return str;
     }
@@ -210,13 +210,13 @@ public final class y
   
   public static final class d
   {
-    public String dlQ;
-    public y.c wLT;
+    public String dxD;
+    public y.c xZA;
     
     public final String toString()
     {
       AppMethodBeat.i(67892);
-      String str = "TextInfo{wording='" + this.dlQ + '\'' + ", jumpInfo=" + this.wLT + '}';
+      String str = "TextInfo{wording='" + this.dxD + '\'' + ", jumpInfo=" + this.xZA + '}';
       AppMethodBeat.o(67892);
       return str;
     }
@@ -224,7 +224,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.y
  * JD-Core Version:    0.7.0.1
  */

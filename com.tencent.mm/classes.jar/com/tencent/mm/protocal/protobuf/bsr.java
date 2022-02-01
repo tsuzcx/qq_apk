@@ -3,43 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bsr
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int FhK;
-  public String FhL;
+  public int GNl;
+  public int yhn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169926);
+    AppMethodBeat.i(133175);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.FhK);
-      if (this.FhL != null) {
-        paramVarArgs.d(2, this.FhL);
-      }
-      AppMethodBeat.o(169926);
+      paramVarArgs.aS(1, this.yhn);
+      paramVarArgs.aS(2, this.GNl);
+      AppMethodBeat.o(133175);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.FhK) + 0;
-      paramInt = i;
-      if (this.FhL != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.FhL);
-      }
-      AppMethodBeat.o(169926);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(1, this.yhn);
+      int i = f.a.a.b.b.a.bz(2, this.GNl);
+      AppMethodBeat.o(133175);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(169926);
+      AppMethodBeat.o(133175);
       return 0;
     }
     if (paramInt == 3)
@@ -49,18 +44,18 @@ public final class bsr
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(169926);
+        AppMethodBeat.o(133175);
         return -1;
       case 1: 
-        localbsr.FhK = locala.LVo.xF();
-        AppMethodBeat.o(169926);
+        localbsr.yhn = locala.NPN.zc();
+        AppMethodBeat.o(133175);
         return 0;
       }
-      localbsr.FhL = locala.LVo.readString();
-      AppMethodBeat.o(169926);
+      localbsr.GNl = locala.NPN.zc();
+      AppMethodBeat.o(133175);
       return 0;
     }
-    AppMethodBeat.o(169926);
+    AppMethodBeat.o(133175);
     return -1;
   }
 }

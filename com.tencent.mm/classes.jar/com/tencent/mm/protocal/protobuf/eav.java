@@ -1,74 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class eav
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Fho;
-  public int Ggp;
-  public long Ggw;
+  public eax HND;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(50119);
+    AppMethodBeat.i(207260);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.Fho);
-      paramVarArgs.aO(2, this.Ggw);
-      paramVarArgs.aR(3, this.Ggp);
-      AppMethodBeat.o(50119);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bx(1, this.Fho);
-      int i = f.a.a.b.b.a.p(2, this.Ggw);
-      int j = f.a.a.b.b.a.bx(3, this.Ggp);
-      AppMethodBeat.o(50119);
-      return paramInt + 0 + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
-        }
-      }
-      AppMethodBeat.o(50119);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      eav localeav = (eav)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.HND != null)
       {
-      default: 
-        AppMethodBeat.o(50119);
-        return -1;
-      case 1: 
-        localeav.Fho = locala.LVo.xF();
-        AppMethodBeat.o(50119);
-        return 0;
-      case 2: 
-        localeav.Ggw = locala.LVo.xG();
-        AppMethodBeat.o(50119);
-        return 0;
+        paramVarArgs.lC(1, this.HND.computeSize());
+        this.HND.writeFields(paramVarArgs);
       }
-      localeav.Ggp = locala.LVo.xF();
-      AppMethodBeat.o(50119);
+      AppMethodBeat.o(207260);
       return 0;
     }
-    AppMethodBeat.o(50119);
-    return -1;
+    if (paramInt == 1) {
+      if (this.HND == null) {
+        break label310;
+      }
+    }
+    label310:
+    for (paramInt = f.a.a.a.lB(1, this.HND.computeSize()) + 0;; paramInt = 0)
+    {
+      AppMethodBeat.o(207260);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.gxE();
+          }
+        }
+        AppMethodBeat.o(207260);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        eav localeav = (eav)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(207260);
+          return -1;
+        }
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new eax();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((eax)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localeav.HND = ((eax)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(207260);
+        return 0;
+      }
+      AppMethodBeat.o(207260);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eav
  * JD-Core Version:    0.7.0.1
  */

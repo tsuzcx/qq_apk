@@ -13,7 +13,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RcptPreference
   extends Preference
 {
-  RcptItem jaA;
+  RcptItem jtJ;
   
   public RcptPreference(Context paramContext)
   {
@@ -37,19 +37,19 @@ public class RcptPreference
   {
     AppMethodBeat.i(20975);
     super.onBindView(paramView);
-    if (this.jaA == null)
+    if (this.jtJ == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    ((TextView)paramView.findViewById(2131307140)).setText(this.jaA.name);
+    ((TextView)paramView.findViewById(2131307140)).setText(this.jtJ.name);
     paramView = paramView.findViewById(16908312);
     if (paramView == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    if (this.jaA.iYF)
+    if (this.jtJ.jrO)
     {
       paramView.setVisibility(0);
       AppMethodBeat.o(20975);

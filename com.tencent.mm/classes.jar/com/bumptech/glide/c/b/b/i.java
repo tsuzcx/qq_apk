@@ -12,9 +12,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public final int aHr;
-  public final int aHs;
-  public final int aHt;
+  public final int aJi;
+  public final int aJj;
+  public final int aJk;
   private final Context context;
   
   public i(a parama)
@@ -26,13 +26,13 @@ public final class i
     float f1;
     label91:
     int m;
-    if (a(parama.aHv))
+    if (a(parama.aJm))
     {
-      i = parama.aHB / 2;
-      this.aHt = i;
-      localObject = parama.aHv;
-      f1 = parama.aHz;
-      float f2 = parama.aHA;
+      i = parama.aJs / 2;
+      this.aJk = i;
+      localObject = parama.aJm;
+      f1 = parama.aJq;
+      float f2 = parama.aJr;
       i = ((ActivityManager)localObject).getMemoryClass();
       bool = a((ActivityManager)localObject);
       float f3 = i * 1024 * 1024;
@@ -41,19 +41,19 @@ public final class i
       }
       f1 = f2;
       i = Math.round(f1 * f3);
-      int k = parama.aHw.oM() * parama.aHw.oN() * 4;
-      int j = Math.round(k * parama.aHy);
-      k = Math.round(k * parama.aHx);
-      m = i - this.aHt;
+      int k = parama.aJn.pe() * parama.aJn.pf() * 4;
+      int j = Math.round(k * parama.aJp);
+      k = Math.round(k * parama.aJo);
+      m = i - this.aJk;
       if (k + j > m) {
         break label331;
       }
-      this.aHs = k;
-      this.aHr = j;
+      this.aJj = k;
+      this.aJi = j;
       label180:
       if (Log.isLoggable("MemorySizeCalculator", 3))
       {
-        localObject = new StringBuilder("Calculation complete, Calculated memory cache size: ").append(dp(this.aHs)).append(", pool size: ").append(dp(this.aHr)).append(", byte array size: ").append(dp(this.aHt)).append(", memory class limited? ");
+        localObject = new StringBuilder("Calculation complete, Calculated memory cache size: ").append(dp(this.aJj)).append(", pool size: ").append(dp(this.aJi)).append(", byte array size: ").append(dp(this.aJk)).append(", memory class limited? ");
         if (k + j <= i) {
           break label374;
         }
@@ -64,15 +64,15 @@ public final class i
     label374:
     for (boolean bool = true;; bool = false)
     {
-      ((StringBuilder)localObject).append(bool).append(", max size: ").append(dp(i)).append(", memoryClass: ").append(parama.aHv.getMemoryClass()).append(", isLowMemoryDevice: ").append(a(parama.aHv));
+      ((StringBuilder)localObject).append(bool).append(", max size: ").append(dp(i)).append(", memoryClass: ").append(parama.aJm.getMemoryClass()).append(", isLowMemoryDevice: ").append(a(parama.aJm));
       AppMethodBeat.o(77162);
       return;
-      i = parama.aHB;
+      i = parama.aJs;
       break;
       break label91;
-      f1 = m / (parama.aHy + parama.aHx);
-      this.aHs = Math.round(parama.aHx * f1);
-      this.aHr = Math.round(f1 * parama.aHy);
+      f1 = m / (parama.aJp + parama.aJo);
+      this.aJj = Math.round(parama.aJo * f1);
+      this.aJi = Math.round(f1 * parama.aJp);
       break label180;
     }
   }
@@ -101,14 +101,14 @@ public final class i
   
   public static final class a
   {
-    static final int aHu;
-    float aHA;
-    int aHB;
-    ActivityManager aHv;
-    i.c aHw;
-    float aHx;
-    float aHy;
-    float aHz;
+    static final int aJl;
+    ActivityManager aJm;
+    i.c aJn;
+    float aJo;
+    float aJp;
+    float aJq;
+    float aJr;
+    int aJs;
     final Context context;
     
     static
@@ -116,7 +116,7 @@ public final class i
       if (Build.VERSION.SDK_INT < 26) {}
       for (int i = 4;; i = 1)
       {
-        aHu = i;
+        aJl = i;
         return;
       }
     }
@@ -124,16 +124,16 @@ public final class i
     public a(Context paramContext)
     {
       AppMethodBeat.i(77161);
-      this.aHx = 2.0F;
-      this.aHy = aHu;
-      this.aHz = 0.4F;
-      this.aHA = 0.33F;
-      this.aHB = 4194304;
+      this.aJo = 2.0F;
+      this.aJp = aJl;
+      this.aJq = 0.4F;
+      this.aJr = 0.33F;
+      this.aJs = 4194304;
       this.context = paramContext;
-      this.aHv = ((ActivityManager)paramContext.getSystemService("activity"));
-      this.aHw = new i.b(paramContext.getResources().getDisplayMetrics());
-      if ((Build.VERSION.SDK_INT >= 26) && (i.a(this.aHv))) {
-        this.aHy = 0.0F;
+      this.aJm = ((ActivityManager)paramContext.getSystemService("activity"));
+      this.aJn = new i.b(paramContext.getResources().getDisplayMetrics());
+      if ((Build.VERSION.SDK_INT >= 26) && (i.a(this.aJm))) {
+        this.aJp = 0.0F;
       }
       AppMethodBeat.o(77161);
     }
@@ -142,29 +142,29 @@ public final class i
   static final class b
     implements i.c
   {
-    private final DisplayMetrics aHC;
+    private final DisplayMetrics aJt;
     
     b(DisplayMetrics paramDisplayMetrics)
     {
-      this.aHC = paramDisplayMetrics;
+      this.aJt = paramDisplayMetrics;
     }
     
-    public final int oM()
+    public final int pe()
     {
-      return this.aHC.widthPixels;
+      return this.aJt.widthPixels;
     }
     
-    public final int oN()
+    public final int pf()
     {
-      return this.aHC.heightPixels;
+      return this.aJt.heightPixels;
     }
   }
   
   static abstract interface c
   {
-    public abstract int oM();
+    public abstract int pe();
     
-    public abstract int oN();
+    public abstract int pf();
   }
 }
 

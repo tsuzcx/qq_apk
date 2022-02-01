@@ -7,10 +7,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(24470);
-    quq = new a("PREFIX", 0);
-    qur = new a("SUBDOMAIN", 1);
-    qus = new a("DOMAIN", 2);
-    qut = new a[] { quq, qur, qus };
+    red = new a("PREFIX", 0);
+    ree = new a("SUBDOMAIN", 1);
+    reg = new a("DOMAIN", 2);
+    reh = new a[] { red, ree, reg };
     AppMethodBeat.o(24470);
   }
   

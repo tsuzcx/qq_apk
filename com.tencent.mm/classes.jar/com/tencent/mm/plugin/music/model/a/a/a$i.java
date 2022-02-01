@@ -9,7 +9,7 @@ import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a$i
   implements k<IPCAudioParamRequest, IPCVoid>
@@ -21,23 +21,23 @@ public final class a$i
     {
       try
       {
-        ac.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setMusicMIMETypeByMusicId Task, musicId:%s, mimeType:%s", new Object[] { paramIPCAudioParamRequest.dnX, paramIPCAudioParamRequest.mimeType });
-        localObject1 = paramIPCAudioParamRequest.dnX;
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setMusicMIMETypeByMusicId Task, musicId:%s, mimeType:%s", new Object[] { paramIPCAudioParamRequest.dzL, paramIPCAudioParamRequest.mimeType });
+        localObject1 = paramIPCAudioParamRequest.dzL;
         paramIPCAudioParamRequest = paramIPCAudioParamRequest.mimeType;
-        localObject2 = com.tencent.mm.plugin.music.model.f.diV().anL((String)localObject1);
+        localObject2 = com.tencent.mm.plugin.music.model.f.dth().asK((String)localObject1);
         if (localObject2 != null) {
           continue;
         }
-        ac.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "setMusicMIMETypeByMusicId pMusic is null!'");
+        ad.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "setMusicMIMETypeByMusicId pMusic is null!'");
       }
       catch (Exception paramIPCAudioParamRequest)
       {
         Object localObject1;
         Object localObject2;
         ContentValues localContentValues;
-        ac.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc setMusicMIMETypeByMusicId task", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc setMusicMIMETypeByMusicId task", new Object[0]);
         continue;
-        ac.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "don't need update the piece file mime type");
+        ad.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "don't need update the piece file mime type");
         continue;
       }
       paramIPCAudioParamRequest = new IPCVoid();
@@ -46,12 +46,12 @@ public final class a$i
       if ((!TextUtils.isEmpty(((c)localObject2).field_pieceFileMIMEType)) && (((c)localObject2).field_pieceFileMIMEType.equals(paramIPCAudioParamRequest))) {
         continue;
       }
-      ac.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "updatePieceFileMIMEType()");
-      localObject2 = com.tencent.mm.plugin.music.model.f.diV();
+      ad.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "updatePieceFileMIMEType()");
+      localObject2 = com.tencent.mm.plugin.music.model.f.dth();
       localContentValues = new ContentValues();
       localContentValues.put("pieceFileMIMEType", paramIPCAudioParamRequest);
-      ac.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceFileMIMEType raw=%d musicId=%s", new Object[] { Integer.valueOf(((d)localObject2).db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject1 })), localObject1 });
-      localObject1 = (c)((d)localObject2).vgu.get(localObject1);
+      ad.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceFileMIMEType raw=%d musicId=%s", new Object[] { Integer.valueOf(((d)localObject2).db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject1 })), localObject1 });
+      localObject1 = (c)((d)localObject2).wlP.get(localObject1);
       if (localObject1 != null) {
         ((c)localObject1).field_pieceFileMIMEType = paramIPCAudioParamRequest;
       }

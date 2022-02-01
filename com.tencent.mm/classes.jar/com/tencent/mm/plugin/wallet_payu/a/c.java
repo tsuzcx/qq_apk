@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.ui.l;
 import com.tencent.mm.plugin.wallet_core.ui.l.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.ui.e;
 import junit.framework.Assert;
 
@@ -22,24 +22,24 @@ public final class c
     {
       Assert.assertTrue(bool);
       l locall1 = new l(paramContext);
-      locall1.BFA = new l.a()
+      locall1.DfS = new l.a()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72051);
-          ac.i("MicroMsg.PayUUtil", "hy: user clicked the span");
-          e.aT(this.val$context, "https://www.payu.co.za/wechat/terms-and-conditions/");
+          ad.i("MicroMsg.PayUUtil", "hy: user clicked the span");
+          e.aW(this.val$context, "https://www.payu.co.za/wechat/terms-and-conditions/");
           AppMethodBeat.o(72051);
         }
       };
       l locall2 = new l(paramContext);
-      locall2.BFA = new l.a()
+      locall2.DfS = new l.a()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(72052);
-          ac.i("MicroMsg.PayUUtil", "hy: user clicked the tos span");
-          e.aT(this.val$context, "https://weixin.qq.com/cgi-bin/readtemplate?lang=en_US&check=false&t=weixin_agreement&s=terms");
+          ad.i("MicroMsg.PayUUtil", "hy: user clicked the tos span");
+          e.aW(this.val$context, "https://weixin.qq.com/cgi-bin/readtemplate?lang=en_US&check=false&t=weixin_agreement&s=terms");
           AppMethodBeat.o(72052);
         }
       };
@@ -56,7 +56,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.a.c
  * JD-Core Version:    0.7.0.1
  */

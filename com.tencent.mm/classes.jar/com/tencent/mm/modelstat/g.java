@@ -4,93 +4,93 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ab;
+import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.sdk.e.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 
 public final class g
 {
-  private final String dsY;
-  private g.a hWx = null;
+  private final String dEZ;
+  private a ipS = null;
   
   public g(String paramString)
   {
-    this.dsY = paramString;
+    this.dEZ = paramString;
   }
   
-  public final g.a aIx()
+  public final a aLH()
   {
     a locala = null;
     AppMethodBeat.i(151078);
-    if (this.hWx != null)
+    if (this.ipS != null)
     {
-      localObject1 = this.hWx;
+      localObject1 = this.ipS;
       AppMethodBeat.o(151078);
       return localObject1;
     }
-    String str = this.dsY + "mobileinfo.ini";
+    String str = this.dEZ + "mobileinfo.ini";
     Object localObject2 = new e(str);
     if (!((e)localObject2).exists())
     {
-      ac.i("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig file not exist :%s", new Object[] { str });
+      ad.i("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig file not exist :%s", new Object[] { str });
       localObject1 = null;
     }
     Object localObject3;
     for (;;)
     {
-      this.hWx = ((g.a)localObject1);
-      if ((this.hWx == null) || (this.hWx.hWz)) {
+      this.ipS = ((a)localObject1);
+      if ((this.ipS == null) || (this.ipS.ipU)) {
         break;
       }
-      ac.v("MicroMsg.MobileInfoStorage ReportDataFlow", "checkInfo mobile info cache Read file succ.");
-      localObject1 = this.hWx;
+      ad.v("MicroMsg.MobileInfoStorage ReportDataFlow", "checkInfo mobile info cache Read file succ.");
+      localObject1 = this.ipS;
       AppMethodBeat.o(151078);
       return localObject1;
       localObject3 = new a(str);
-      localObject1 = new g.a();
-      ((g.a)localObject1).hWy = bs.m(((a)localObject3).aLT("ispCode"));
-      ((g.a)localObject1).ispName = ((a)localObject3).getValue("ispName");
-      ((g.a)localObject1).subType = bs.m(((a)localObject3).aLT("subType"));
-      ((g.a)localObject1).extraInfo = ((a)localObject3).getValue("extraInfo");
+      localObject1 = new a();
+      ((a)localObject1).ipT = bt.n(((a)localObject3).aRA("ispCode"));
+      ((a)localObject1).ispName = ((a)localObject3).getValue("ispName");
+      ((a)localObject1).subType = bt.n(((a)localObject3).aRA("subType"));
+      ((a)localObject1).extraInfo = ((a)localObject3).getValue("extraInfo");
       long l2 = ((e)localObject2).lastModified();
       long l1 = l2;
-      if (10011 == ab.ivG)
+      if (10011 == ac.iON)
       {
         l1 = l2;
-        if (ab.ivH > 0)
+        if (ac.iOO > 0)
         {
-          l1 = bs.eWj() - ab.ivH;
-          ac.w("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig DK_TEST_MOBILEINFOFILE_MODTIME val:%d lm:%d", new Object[] { Integer.valueOf(ab.ivH), Long.valueOf(l1) });
-          ab.ivH = 0;
+          l1 = bt.flT() - ac.iOO;
+          ad.w("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig DK_TEST_MOBILEINFOFILE_MODTIME val:%d lm:%d", new Object[] { Integer.valueOf(ac.iOO), Long.valueOf(l1) });
+          ac.iOO = 0;
         }
       }
-      if ((l1 > 0L) && (bs.Ap(l1) > 259200000L))
+      if ((l1 > 0L) && (bt.Df(l1) > 259200000L))
       {
-        ac.w("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig  diff:%d file:%s cache expired remove!", new Object[] { Long.valueOf(bs.Ap(l1)), str });
-        ((g.a)localObject1).hWz = true;
+        ad.w("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig  diff:%d file:%s cache expired remove!", new Object[] { Long.valueOf(bt.Df(l1)), str });
+        ((a)localObject1).ipU = true;
       }
-      ac.i("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig MobileInfo subType:%d ispCode:%d ispName:%s extraInfo:%s expired:%b", new Object[] { Integer.valueOf(((g.a)localObject1).subType), Integer.valueOf(((g.a)localObject1).hWy), ((g.a)localObject1).ispName, ((g.a)localObject1).extraInfo, Boolean.valueOf(((g.a)localObject1).hWz) });
+      ad.i("MicroMsg.MobileInfoStorage ReportDataFlow", "readConfig MobileInfo subType:%d ispCode:%d ispName:%s extraInfo:%s expired:%b", new Object[] { Integer.valueOf(((a)localObject1).subType), Integer.valueOf(((a)localObject1).ipT), ((a)localObject1).ispName, ((a)localObject1).extraInfo, Boolean.valueOf(((a)localObject1).ipU) });
     }
-    localObject2 = ai.getContext();
+    localObject2 = aj.getContext();
     if (localObject2 == null)
     {
-      ac.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem MMApplicationContext is null");
+      ad.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem MMApplicationContext is null");
       localObject1 = locala;
     }
     while (localObject1 == null)
     {
-      ac.v("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem failed , use old.");
-      localObject1 = this.hWx;
+      ad.v("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem failed , use old.");
+      localObject1 = this.ipS;
       AppMethodBeat.o(151078);
       return localObject1;
       localObject1 = (ConnectivityManager)((Context)localObject2).getSystemService("connectivity");
       if (localObject1 == null)
       {
-        ac.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem ConnectivityManager is null");
+        ad.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem ConnectivityManager is null");
         localObject1 = locala;
       }
       else
@@ -98,53 +98,62 @@ public final class g
         localObject3 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
         if (localObject3 == null)
         {
-          ac.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem getActiveNetworkInfo is null");
+          ad.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem getActiveNetworkInfo is null");
           localObject1 = locala;
         }
         else if (((NetworkInfo)localObject3).getType() == 1)
         {
-          ac.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem net type is wifi");
+          ad.e("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem net type is wifi");
           localObject1 = locala;
         }
         else
         {
-          localObject1 = new g.a();
-          ((g.a)localObject1).subType = ((NetworkInfo)localObject3).getSubtype();
-          ((g.a)localObject1).hWy = ax.getISPCode((Context)localObject2);
-          ((g.a)localObject1).ispName = ax.getISPName((Context)localObject2);
-          ((g.a)localObject1).extraInfo = ((NetworkInfo)localObject3).getExtraInfo();
-          ac.i("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem subType:%d ispCode:%d ispName:%s extraInfo:%s", new Object[] { Integer.valueOf(((g.a)localObject1).subType), Integer.valueOf(((g.a)localObject1).hWy), ((g.a)localObject1).ispName, ((g.a)localObject1).extraInfo });
+          localObject1 = new a();
+          ((a)localObject1).subType = ((NetworkInfo)localObject3).getSubtype();
+          ((a)localObject1).ipT = ay.getISPCode((Context)localObject2);
+          ((a)localObject1).ispName = ay.getISPName((Context)localObject2);
+          ((a)localObject1).extraInfo = ((NetworkInfo)localObject3).getExtraInfo();
+          ad.i("MicroMsg.MobileInfoStorage ReportDataFlow", "readInfoBySystem subType:%d ispCode:%d ispName:%s extraInfo:%s", new Object[] { Integer.valueOf(((a)localObject1).subType), Integer.valueOf(((a)localObject1).ipT), ((a)localObject1).ispName, ((a)localObject1).extraInfo });
         }
       }
     }
-    this.hWx = ((g.a)localObject1);
-    Object localObject1 = this.hWx;
+    this.ipS = ((a)localObject1);
+    Object localObject1 = this.ipS;
     if (localObject1 == null) {
-      ac.e("MicroMsg.MobileInfoStorage ReportDataFlow", "saveConfig info is null");
+      ad.e("MicroMsg.MobileInfoStorage ReportDataFlow", "saveConfig info is null");
     }
     for (;;)
     {
-      localObject1 = this.hWx;
+      localObject1 = this.ipS;
       AppMethodBeat.o(151078);
       return localObject1;
-      if (bs.isNullOrNil(str))
+      if (bt.isNullOrNil(str))
       {
-        ac.e("MicroMsg.MobileInfoStorage ReportDataFlow", "saveConfig path is null");
+        ad.e("MicroMsg.MobileInfoStorage ReportDataFlow", "saveConfig path is null");
       }
       else
       {
         locala = new a(str);
-        locala.fN("ispCode", ((g.a)localObject1).hWy);
-        locala.M("ispName", ((g.a)localObject1).ispName);
-        locala.fN("subType", ((g.a)localObject1).subType);
-        locala.M("extraInfo", ((g.a)localObject1).extraInfo);
+        locala.gk("ispCode", ((a)localObject1).ipT);
+        locala.N("ispName", ((a)localObject1).ispName);
+        locala.gk("subType", ((a)localObject1).subType);
+        locala.N("extraInfo", ((a)localObject1).extraInfo);
       }
     }
+  }
+  
+  public static final class a
+  {
+    public String extraInfo = "";
+    public int ipT = 0;
+    boolean ipU = false;
+    public String ispName = "";
+    public int subType = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelstat.g
  * JD-Core Version:    0.7.0.1
  */

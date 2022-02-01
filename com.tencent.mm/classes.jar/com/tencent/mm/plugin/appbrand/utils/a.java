@@ -7,50 +7,48 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.a.j;
-import d.g.b.k;
 import d.l;
 import java.lang.Class<+Landroid.app.Activity;>;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "genAppBrandInstanceId", "", "parcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "appId", "generateInstanceId", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/utils/AppBrandComponentUtil;", "", "()V", "genAppBrandInstanceId", "", "parcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "appId", "generateInstanceId", "uin", "", "hasPreLoading", "", "triggerServiceName", "isActivityHasSpecificTaskAffinity", "clazz", "Ljava/lang/Class;", "Landroid/app/Activity;", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a mnT;
+  public static final a mOv;
   
   static
   {
     AppMethodBeat.i(51400);
-    mnT = new a();
+    mOv = new a();
     AppMethodBeat.o(51400);
   }
   
-  public static final boolean Rs(String paramString)
+  public static final boolean UY(String paramString)
   {
-    AppMethodBeat.i(187450);
+    AppMethodBeat.i(189664);
     paramString = (CharSequence)paramString;
     if ((paramString == null) || (paramString.length() == 0)) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(187450);
+      AppMethodBeat.o(189664);
       return true;
     }
-    AppMethodBeat.o(187450);
+    AppMethodBeat.o(189664);
     return false;
   }
   
   public static final boolean aI(Class<? extends Activity> paramClass)
   {
     AppMethodBeat.i(51397);
-    k.h(paramClass, "clazz");
+    d.g.b.p.h(paramClass, "clazz");
     try
     {
-      Context localContext = ai.getContext();
+      Context localContext = aj.getContext();
       if (localContext != null)
       {
         Object localObject = localContext.getPackageManager();
@@ -67,10 +65,10 @@ public final class a
           }
         }
       }
-      k.g(localContext, "appContext");
+      d.g.b.p.g(localContext, "appContext");
       paramClass = localContext.getPackageName();
       label71:
-      boolean bool = k.g(paramClass, localContext.getPackageName());
+      boolean bool = d.g.b.p.i(paramClass, localContext.getPackageName());
       AppMethodBeat.o(51397);
       return bool ^ true;
     }
@@ -84,27 +82,27 @@ public final class a
   public static final String c(LaunchParcel paramLaunchParcel, String paramString)
   {
     AppMethodBeat.i(51398);
-    k.h(paramLaunchParcel, "parcel");
-    paramString = f.bY(paramString, paramLaunchParcel.hxM);
+    d.g.b.p.h(paramLaunchParcel, "parcel");
+    paramString = f.cb(paramString, paramLaunchParcel.hQh);
     paramLaunchParcel = paramString;
     if (paramString == null)
     {
-      k.g(g.agP(), "MMKernel.account()");
-      paramLaunchParcel = vf(com.tencent.mm.kernel.a.getUin());
+      d.g.b.p.g(g.ajA(), "MMKernel.account()");
+      paramLaunchParcel = vL(com.tencent.mm.kernel.a.getUin());
     }
     if (paramLaunchParcel == null) {
-      k.fOy();
+      d.g.b.p.gfZ();
     }
     AppMethodBeat.o(51398);
     return paramLaunchParcel;
   }
   
-  public static final String vf(int paramInt)
+  public static final String vL(int paramInt)
   {
     AppMethodBeat.i(51399);
-    String str = p.getString(paramInt);
-    k.g(str, "UIN.getString(uin)");
-    str = j.a((Iterable)j.listOf(new String[] { str, String.valueOf(bs.eWj()) }), (CharSequence)"_", null, null, 0, null, null, 62);
+    String str = com.tencent.mm.b.p.getString(paramInt);
+    d.g.b.p.g(str, "UIN.getString(uin)");
+    str = j.a((Iterable)j.listOf(new String[] { str, String.valueOf(bt.flT()) }), (CharSequence)"_", null, null, 0, null, null, 62);
     AppMethodBeat.o(51399);
     return str;
   }

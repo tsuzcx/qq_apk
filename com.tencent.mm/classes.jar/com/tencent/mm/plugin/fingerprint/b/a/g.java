@@ -3,11 +3,8 @@ package com.tencent.mm.plugin.fingerprint.b.a;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.ad;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.plugin.fingerprint.b.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
 import java.util.Map;
 
 public final class g
@@ -21,64 +18,64 @@ public final class g
   
   public final void b(Context paramContext, f paramf, b paramb) {}
   
-  public final boolean cHA()
+  public final boolean cPP()
   {
     return false;
   }
   
-  public final boolean cHB()
+  public final boolean cPQ()
   {
     return false;
   }
   
-  public final boolean cHC()
+  public final boolean cPR()
   {
     return false;
   }
   
-  public final boolean cHD()
+  public final boolean cPS()
   {
     return false;
   }
   
-  public final boolean cHE()
+  public final boolean cPT()
   {
     return false;
   }
   
-  public final int cHF()
+  public final int cPU()
   {
     return 0;
   }
   
-  public final com.tencent.mm.plugin.fingerprint.d.d cHG()
+  public final com.tencent.mm.plugin.fingerprint.d.d cPV()
   {
     return null;
   }
   
-  public final boolean cHH()
+  public final boolean cPW()
   {
     return false;
   }
   
-  public final boolean cHb()
+  public final boolean cPq()
   {
     return false;
   }
   
-  public final Map<String, String> cHj()
+  public final Map<String, String> cPy()
   {
     return null;
   }
   
   public final void cancel() {}
   
-  public final boolean fb(Context paramContext)
+  public final boolean fe(Context paramContext)
   {
     return false;
   }
   
-  public final boolean fc(Context paramContext)
+  public final boolean ff(Context paramContext)
   {
     return false;
   }
@@ -92,26 +89,26 @@ public final class g
       localc.a(this);
       com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.fingerprint.d.a.class, localc);
     }
-    if ((ae.fJj.dyk) && (com.tencent.mm.plugin.soter.e.b.dTA()))
+    if ((ae.gcK.dKx) && (com.tencent.mm.plugin.soter.e.b.efO()))
     {
-      ac.i("MicroMsg.DummyBiometricPayManager", "maybe soter init fail, reinit");
-      h.wUl.dB(1104, 42);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DummyBiometricPayManager", "maybe soter init fail, reinit");
+      com.tencent.mm.plugin.report.service.g.yhR.dD(1104, 42);
       com.tencent.mm.plugin.soter.e.b.a(true, new com.tencent.mm.plugin.soter.d.g()
       {
-        public final void aZ(int paramAnonymousInt, String paramAnonymousString)
+        public final void bc(int paramAnonymousInt, String paramAnonymousString)
         {
           AppMethodBeat.i(64403);
-          if (com.tencent.soter.a.a.fDA())
+          if (com.tencent.soter.a.a.fUS())
           {
-            ac.i("MicroMsg.DummyBiometricPayManager", "init success: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DummyBiometricPayManager", "init success: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
             paramAnonymousString = new j();
             paramAnonymousString.prepare();
             com.tencent.mm.kernel.g.b(i.class, paramAnonymousString);
             AppMethodBeat.o(64403);
             return;
           }
-          ac.i("MicroMsg.DummyBiometricPayManager", "init failed: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-          h.wUl.dB(1104, 43);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.DummyBiometricPayManager", "init failed: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          com.tencent.mm.plugin.report.service.g.yhR.dD(1104, 43);
           AppMethodBeat.o(64403);
         }
       });

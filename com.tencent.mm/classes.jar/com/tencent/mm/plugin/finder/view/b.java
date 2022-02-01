@@ -1,21 +1,34 @@
 package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.hs;
+import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.sdk.b.c;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/view/FinderBottomDialogHelper;", "", "()V", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/ContactUninterestEventListener;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/FinderUninterestEvent;", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "callback", "", "event", "Companion", "plugin-finder_release"})
 public final class b
+  extends c<hs>
 {
-  private static final String TAG = "FinderBottomDialogHelper";
-  public static final b.a rVs;
+  public static final a sSa;
+  private final BaseFinderFeedLoader rTS;
   
   static
   {
-    AppMethodBeat.i(168222);
-    rVs = new b.a((byte)0);
-    TAG = "FinderBottomDialogHelper";
-    AppMethodBeat.o(168222);
+    AppMethodBeat.i(205043);
+    sSa = new a((byte)0);
+    AppMethodBeat.o(205043);
   }
+  
+  public b(BaseFinderFeedLoader paramBaseFinderFeedLoader)
+  {
+    AppMethodBeat.i(205042);
+    this.rTS = paramBaseFinderFeedLoader;
+    AppMethodBeat.o(205042);
+  }
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/view/ContactUninterestEventListener$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 

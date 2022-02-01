@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 
 public class WXAppExtendObject
   implements WXMediaMessage.IMediaObject
@@ -20,20 +20,24 @@ public class WXAppExtendObject
   
   public WXAppExtendObject(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(196970);
     this.extInfo = paramString1;
     this.filePath = paramString2;
+    AppMethodBeat.o(196970);
   }
   
   public WXAppExtendObject(String paramString, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(196969);
     this.extInfo = paramString;
     this.fileData = paramArrayOfByte;
+    AppMethodBeat.o(196969);
   }
   
   private int getFileSize(String paramString)
   {
     AppMethodBeat.i(3956);
-    int i = d.getFileSize(paramString);
+    int i = b.a(paramString);
     AppMethodBeat.o(3956);
     return i;
   }
@@ -41,31 +45,41 @@ public class WXAppExtendObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(3955);
-    if (((this.extInfo == null) || (this.extInfo.length() == 0)) && ((this.filePath == null) || (this.filePath.length() == 0)) && ((this.fileData == null) || (this.fileData.length == 0)))
+    Object localObject = this.extInfo;
+    if ((localObject == null) || (((String)localObject).length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, all arguments is null");
-      AppMethodBeat.o(3955);
-      return false;
+      localObject = this.filePath;
+      if ((localObject == null) || (((String)localObject).length() == 0))
+      {
+        localObject = this.fileData;
+        if ((localObject == null) || (localObject.length == 0)) {
+          break label193;
+        }
+      }
     }
-    if ((this.extInfo != null) && (this.extInfo.length() > 2048))
+    localObject = this.extInfo;
+    if ((localObject != null) && (((String)localObject).length() > 2048))
     {
       Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, extInfo is invalid");
       AppMethodBeat.o(3955);
       return false;
     }
-    if ((this.filePath != null) && (this.filePath.length() > 10240))
+    localObject = this.filePath;
+    if ((localObject != null) && (((String)localObject).length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, filePath is invalid");
       AppMethodBeat.o(3955);
       return false;
     }
-    if ((this.filePath != null) && (getFileSize(this.filePath) > 10485760))
+    localObject = this.filePath;
+    if ((localObject != null) && (getFileSize((String)localObject) > 10485760))
     {
       Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, fileSize is too large");
       AppMethodBeat.o(3955);
       return false;
     }
-    if ((this.fileData != null) && (this.fileData.length > 10485760))
+    localObject = this.fileData;
+    if ((localObject != null) && (localObject.length > 10485760))
     {
       Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, fileData is too large");
       AppMethodBeat.o(3955);
@@ -73,6 +87,10 @@ public class WXAppExtendObject
     }
     AppMethodBeat.o(3955);
     return true;
+    label193:
+    Log.e("MicroMsg.SDK.WXAppExtendObject", "checkArgs fail, all arguments is null");
+    AppMethodBeat.o(3955);
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

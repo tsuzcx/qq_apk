@@ -13,7 +13,7 @@ import android.view.View.OnApplyWindowInsetsListener;
 import android.view.Window;
 import android.view.WindowInsets;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.am;
 
 @TargetApi(21)
 public final class m
@@ -21,18 +21,18 @@ public final class m
 {
   private final Paint mPaint;
   private final Rect mTempRect;
-  final Rect msG;
-  private int msH;
-  public int msI;
+  final Rect mTm;
+  private int mTn;
+  public int mTo;
   
   public m()
   {
     AppMethodBeat.i(49371);
-    this.msG = new Rect();
+    this.mTm = new Rect();
     this.mTempRect = new Rect();
     this.mPaint = new Paint();
-    this.msH = 0;
-    this.msI = 0;
+    this.mTn = 0;
+    this.mTo = 0;
     AppMethodBeat.o(49371);
   }
   
@@ -52,7 +52,7 @@ public final class m
       public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
       {
         AppMethodBeat.i(49370);
-        this.msJ.msG.set(paramAnonymousWindowInsets.getSystemWindowInsetLeft(), paramAnonymousWindowInsets.getSystemWindowInsetTop(), paramAnonymousWindowInsets.getSystemWindowInsetRight(), paramAnonymousWindowInsets.getSystemWindowInsetBottom());
+        this.mTp.mTm.set(paramAnonymousWindowInsets.getSystemWindowInsetLeft(), paramAnonymousWindowInsets.getSystemWindowInsetTop(), paramAnonymousWindowInsets.getSystemWindowInsetRight(), paramAnonymousWindowInsets.getSystemWindowInsetBottom());
         t.W(paramAnonymousView);
         if (localView == paramAnonymousView)
         {
@@ -65,12 +65,12 @@ public final class m
       }
     };
     if (localView == paramView) {
-      ak.bg(paramActivity).a(local1);
+      am.bg(paramActivity).a(local1);
     }
     for (;;)
     {
-      localm.msH = 0;
-      localm.msI = paramActivity.getWindow().getNavigationBarColor();
+      localm.mTn = 0;
+      localm.mTo = paramActivity.getWindow().getNavigationBarColor();
       AppMethodBeat.o(49372);
       return;
       paramView.setOnApplyWindowInsetsListener(local1);
@@ -86,34 +86,34 @@ public final class m
       AppMethodBeat.o(49373);
       return;
     }
-    int i = Math.min(localRect.top + this.msG.top, localRect.bottom);
-    int j = Math.min(localRect.left + this.msG.left, localRect.right);
-    int k = Math.max(localRect.right - this.msG.right, localRect.left);
-    int m = Math.max(localRect.bottom - this.msG.bottom, localRect.top);
-    if ((this.msH != 0) && (this.msG.top > 0))
+    int i = Math.min(localRect.top + this.mTm.top, localRect.bottom);
+    int j = Math.min(localRect.left + this.mTm.left, localRect.right);
+    int k = Math.max(localRect.right - this.mTm.right, localRect.left);
+    int m = Math.max(localRect.bottom - this.mTm.bottom, localRect.top);
+    if ((this.mTn != 0) && (this.mTm.top > 0))
     {
       this.mTempRect.set(j, localRect.top, k, i);
-      this.mPaint.setColor(this.msH);
+      this.mPaint.setColor(this.mTn);
       paramCanvas.drawRect(this.mTempRect, this.mPaint);
     }
-    if (this.msI != 0)
+    if (this.mTo != 0)
     {
-      if (this.msG.left > 0)
+      if (this.mTm.left > 0)
       {
         this.mTempRect.set(localRect.left, i, j, m);
-        this.mPaint.setColor(this.msI);
+        this.mPaint.setColor(this.mTo);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
-      if (this.msG.right > 0)
+      if (this.mTm.right > 0)
       {
         this.mTempRect.set(k, i, localRect.right, m);
-        this.mPaint.setColor(this.msI);
+        this.mPaint.setColor(this.mTo);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
-      if (this.msG.bottom > 0)
+      if (this.mTm.bottom > 0)
       {
         this.mTempRect.set(j, m, k, localRect.bottom);
-        this.mPaint.setColor(this.msI);
+        this.mPaint.setColor(this.mTo);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
     }
@@ -131,7 +131,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.m
  * JD-Core Version:    0.7.0.1
  */

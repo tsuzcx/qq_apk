@@ -11,21 +11,21 @@ public final class g
   {
     AppMethodBeat.i(23156);
     m localm = new m();
-    localm.pAV = new c();
-    localm.pAY = paramInt;
-    this.pwt = localm;
-    this.pwr = 30003;
+    localm.qeA = new c();
+    localm.qeD = paramInt;
+    this.pZY = localm;
+    this.pZW = 30003;
     AppMethodBeat.o(23156);
   }
   
-  public final byte[] cgm()
+  public final byte[] ckQ()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.g
  * JD-Core Version:    0.7.0.1
  */

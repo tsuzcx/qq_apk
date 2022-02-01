@@ -1,7 +1,7 @@
 package d.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.e.b.c;
 import d.l.b.a.b.e.c.a.b;
 import d.l.b.a.b.e.c.a.e;
@@ -11,13 +11,13 @@ import d.m;
 
 public final class s
 {
-  public static final a Lsh;
+  public static final a Nje;
   final String signature;
   
   static
   {
     AppMethodBeat.i(58237);
-    Lsh = new a((byte)0);
+    Nje = new a((byte)0);
     AppMethodBeat.o(58237);
   }
   
@@ -34,7 +34,7 @@ public final class s
       if ((paramObject instanceof s))
       {
         paramObject = (s)paramObject;
-        if (!k.g(this.signature, paramObject.signature)) {}
+        if (!p.i(this.signature, paramObject.signature)) {}
       }
     }
     else
@@ -73,7 +73,7 @@ public final class s
     public static s a(s params, int paramInt)
     {
       AppMethodBeat.i(58236);
-      k.h(params, "signature");
+      p.h(params, "signature");
       params = new s(params.signature + '@' + paramInt, (byte)0);
       AppMethodBeat.o(58236);
       return params;
@@ -82,9 +82,9 @@ public final class s
     public static s a(c paramc, a.b paramb)
     {
       AppMethodBeat.i(58232);
-      k.h(paramc, "nameResolver");
-      k.h(paramb, "signature");
-      paramc = mV(paramc.getString(paramb.LuF), paramc.getString(paramb.Lyq));
+      p.h(paramc, "nameResolver");
+      p.h(paramb, "signature");
+      paramc = nt(paramc.getString(paramb.NlC), paramc.getString(paramb.Npn));
       AppMethodBeat.o(58232);
       return paramc;
     }
@@ -92,16 +92,16 @@ public final class s
     public static s a(e parame)
     {
       AppMethodBeat.i(58235);
-      k.h(parame, "signature");
+      p.h(parame, "signature");
       if ((parame instanceof e.b))
       {
-        parame = mV(parame.getName(), parame.getDesc());
+        parame = nt(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
       if ((parame instanceof e.a))
       {
-        parame = mW(parame.getName(), parame.getDesc());
+        parame = nu(parame.getName(), parame.getDesc());
         AppMethodBeat.o(58235);
         return parame;
       }
@@ -110,21 +110,21 @@ public final class s
       throw parame;
     }
     
-    public static s mV(String paramString1, String paramString2)
+    public static s nt(String paramString1, String paramString2)
     {
       AppMethodBeat.i(58233);
-      k.h(paramString1, "name");
-      k.h(paramString2, "desc");
+      p.h(paramString1, "name");
+      p.h(paramString2, "desc");
       paramString1 = new s(paramString1 + paramString2, (byte)0);
       AppMethodBeat.o(58233);
       return paramString1;
     }
     
-    public static s mW(String paramString1, String paramString2)
+    public static s nu(String paramString1, String paramString2)
     {
       AppMethodBeat.i(58234);
-      k.h(paramString1, "name");
-      k.h(paramString2, "desc");
+      p.h(paramString1, "name");
+      p.h(paramString2, "desc");
       paramString1 = new s(paramString1 + '#' + paramString2, (byte)0);
       AppMethodBeat.o(58234);
       return paramString1;

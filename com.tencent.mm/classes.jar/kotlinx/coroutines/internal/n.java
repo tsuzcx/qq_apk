@@ -2,68 +2,58 @@ package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
-import kotlinx.coroutines.ar;
-import kotlinx.coroutines.bw;
+import java.util.List;
+import kotlinx.coroutines.bz;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/internal/MissingMainCoroutineDispatcher;", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "cause", "", "errorHint", "", "(Ljava/lang/Throwable;Ljava/lang/String;)V", "immediate", "getImmediate", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "delay", "", "time", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "isDispatchNeeded", "", "missing", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "kotlinx-coroutines-core"})
-final class n
-  extends bw
-  implements ar
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"FAST_SERVICE_LOADER_PROPERTY_NAME", "", "SUPPORT_MISSING", "", "SUPPORT_MISSING$annotations", "()V", "createMissingDispatcher", "Lkotlinx/coroutines/internal/MissingMainCoroutineDispatcher;", "cause", "", "errorHint", "throwMissingMainDispatcherException", "", "isMissing", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "tryCreateDispatcher", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "factories", "", "kotlinx-coroutines-core"})
+public final class n
 {
-  private final String LTc;
-  private final Throwable cause;
+  private static final boolean NJY = true;
   
-  public n(Throwable paramThrowable, String paramString)
+  public static final bz a(MainDispatcherFactory paramMainDispatcherFactory, List<? extends MainDispatcherFactory> paramList)
   {
-    this.cause = paramThrowable;
-    this.LTc = paramString;
+    AppMethodBeat.i(190808);
+    try
+    {
+      paramList = paramMainDispatcherFactory.createDispatcher(paramList);
+      paramMainDispatcherFactory = paramList;
+    }
+    catch (Throwable paramList)
+    {
+      for (;;)
+      {
+        paramMainDispatcherFactory = (bz)d(paramList, paramMainDispatcherFactory.hintOnError());
+      }
+    }
+    AppMethodBeat.o(190808);
+    return paramMainDispatcherFactory;
   }
   
-  private final Void geI()
+  private static final o d(Throwable paramThrowable, String paramString)
   {
-    AppMethodBeat.i(191210);
-    if (this.cause == null)
+    AppMethodBeat.i(190809);
+    if (NJY)
     {
-      m.geH();
-      AppMethodBeat.o(191210);
-      throw null;
+      paramThrowable = new o(paramThrowable, paramString);
+      AppMethodBeat.o(190809);
+      return paramThrowable;
     }
-    StringBuilder localStringBuilder = new StringBuilder("Module with the Main dispatcher had failed to initialize");
-    Object localObject = this.LTc;
-    if (localObject != null)
+    if (paramThrowable != null)
     {
-      String str = ". ".concat(String.valueOf(localObject));
-      localObject = str;
-      if (str != null) {}
+      AppMethodBeat.o(190809);
+      throw paramThrowable;
     }
-    else
-    {
-      localObject = "";
-    }
-    localObject = (Throwable)new IllegalStateException(localObject, this.cause);
-    AppMethodBeat.o(191210);
-    throw ((Throwable)localObject);
-  }
-  
-  public final boolean gdB()
-  {
-    AppMethodBeat.i(191207);
-    geI();
-    AppMethodBeat.o(191207);
+    gwg();
+    AppMethodBeat.o(190809);
     throw null;
   }
   
-  public final String toString()
+  public static final Void gwg()
   {
-    AppMethodBeat.i(191211);
-    StringBuilder localStringBuilder = new StringBuilder("Main[missing");
-    if (this.cause != null) {}
-    for (String str = ", cause=" + this.cause;; str = "")
-    {
-      str = str + ']';
-      AppMethodBeat.o(191211);
-      return str;
-    }
+    AppMethodBeat.i(190811);
+    Throwable localThrowable = (Throwable)new IllegalStateException("Module with the Main dispatcher is missing. Add dependency providing the Main dispatcher, e.g. 'kotlinx-coroutines-android' and ensure it has the same version as 'kotlinx-coroutines-core'");
+    AppMethodBeat.o(190811);
+    throw localThrowable;
   }
 }
 

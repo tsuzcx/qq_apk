@@ -8,15 +8,15 @@ public abstract class o
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eoG = "dataType".hashCode();
-  private static final int eoH = "size".hashCode();
-  private static final int eot;
+  private static final int eFL = "dataType".hashCode();
+  private static final int eFM = "size".hashCode();
+  private static final int eFy;
   private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private boolean __hadSetkey = true;
-  private boolean eoE = true;
-  private boolean eoF = true;
-  private boolean eop = true;
+  private boolean eFJ = true;
+  private boolean eFK = true;
+  private boolean eFu = true;
   public String field_data;
   public String field_dataType;
   public String field_key;
@@ -24,7 +24,7 @@ public abstract class o
   
   static
   {
-    eot = "data".hashCode();
+    eFy = "data".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -52,11 +52,11 @@ public abstract class o
       break label20;
       break;
       label65:
-      if (eot == k) {
+      if (eFy == k) {
         this.field_data = paramCursor.getString(i);
-      } else if (eoG == k) {
+      } else if (eFL == k) {
         this.field_dataType = paramCursor.getString(i);
-      } else if (eoH == k) {
+      } else if (eFM == k) {
         this.field_size = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -70,13 +70,13 @@ public abstract class o
     if (this.__hadSetkey) {
       localContentValues.put("key", this.field_key);
     }
-    if (this.eop) {
+    if (this.eFu) {
       localContentValues.put("data", this.field_data);
     }
-    if (this.eoE) {
+    if (this.eFJ) {
       localContentValues.put("dataType", this.field_dataType);
     }
-    if (this.eoF) {
+    if (this.eFK) {
       localContentValues.put("size", Integer.valueOf(this.field_size));
     }
     if (this.systemRowid > 0L) {

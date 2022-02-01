@@ -7,44 +7,46 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.finder.feed.a.f;
-import com.tencent.mm.plugin.finder.feed.a.g;
-import com.tencent.mm.plugin.finder.feed.a.h;
-import com.tencent.mm.plugin.finder.feed.model.internal.c;
+import com.tencent.mm.plugin.finder.feed.FinderAtTimelineUIContract.Loader;
+import com.tencent.mm.plugin.finder.feed.FinderAtTimelineUIContract.b;
+import com.tencent.mm.plugin.finder.feed.FinderAtTimelineUIContract.c;
+import com.tencent.mm.plugin.finder.feed.model.internal.e;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderAtTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Presenter;", "()V", "TAG", "", "cacheId", "", "feedLoader", "presenter", "scene", "", "viewCallback", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "onDestroy", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderAtTimelineUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderLoaderFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Loader;", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderAtTimelineUIContract$Presenter;", "()V", "TAG", "", "cacheId", "", "feedLoader", "presenter", "scene", "", "viewCallback", "getCommentScene", "getLayoutId", "getModel", "getPresenter", "getReportType", "getViewCallback", "initOnCreate", "", "onDestroy", "Companion", "plugin-finder_release"})
 public final class FinderAtTimelineUI
-  extends FinderLoaderFeedUI<a.f, a.h, a.g>
+  extends FinderLoaderFeedUI<FinderAtTimelineUIContract.Loader, FinderAtTimelineUIContract.c, FinderAtTimelineUIContract.b>
 {
-  private static ConcurrentHashMap<Long, FinderItem> roF;
-  public static final FinderAtTimelineUI.a roG;
+  private static ConcurrentHashMap<Long, FinderItem> sdo;
+  public static final a sdp;
   private final String TAG = "Finder.FinderAtTimelineUI";
   private HashMap _$_findViewCache;
-  private long rhr;
-  private a.g roC;
-  private a.h roD;
-  private a.f roE;
   private final int scene = 2;
+  private FinderAtTimelineUIContract.b sdk;
+  private FinderAtTimelineUIContract.c sdl;
+  private FinderAtTimelineUIContract.Loader sdm;
+  private long sdn;
   
   static
   {
-    AppMethodBeat.i(202285);
-    roG = new FinderAtTimelineUI.a((byte)0);
-    roF = new ConcurrentHashMap();
-    AppMethodBeat.o(202285);
+    AppMethodBeat.i(202610);
+    sdp = new a((byte)0);
+    sdo = new ConcurrentHashMap();
+    AppMethodBeat.o(202610);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(202287);
+    AppMethodBeat.i(202612);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -55,16 +57,16 @@ public final class FinderAtTimelineUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(202287);
+    AppMethodBeat.o(202612);
     return localView1;
   }
   
-  public final int cuI()
+  public final int cAZ()
   {
     return 13;
   }
   
-  public final int cvJ()
+  public final int cBZ()
   {
     return 2;
   }
@@ -76,34 +78,34 @@ public final class FinderAtTimelineUI
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(202280);
+    AppMethodBeat.i(202605);
     setMMTitle(2131764860);
-    this.rhr = getIntent().getLongExtra("KEY_CACHE_ID", 0L);
-    ac.i(this.TAG, "cacheId:" + this.rhr);
-    roF.clear();
-    this.roC = new a.g((MMActivity)this, this.scene);
+    this.sdn = getIntent().getLongExtra("KEY_CACHE_ID", 0L);
+    ad.i(this.TAG, "cacheId:" + this.sdn);
+    sdo.clear();
+    this.sdk = new FinderAtTimelineUIContract.b((MMActivity)this, this.scene);
     Object localObject1 = (MMActivity)this;
-    Object localObject2 = this.roC;
+    Object localObject2 = this.sdk;
     if (localObject2 == null) {
-      k.aVY("presenter");
+      p.bcb("presenter");
     }
-    this.roD = new a.h((MMActivity)localObject1, (a.g)localObject2, this.scene);
-    localObject1 = u.axE();
-    k.g(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
-    localObject2 = c.rom;
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.IrY;
-    localObject1 = new a.f((String)localObject1, (c)localObject2, ((FinderReporterUIC)com.tencent.mm.ui.component.a.q((MMActivity)this).get(FinderReporterUIC.class)).cGb());
-    ((a.f)localObject1).fetchEndCallback = ((d.g.a.a)new b(this));
-    this.roE = ((a.f)localObject1);
-    AppMethodBeat.o(202280);
+    this.sdl = new FinderAtTimelineUIContract.c((MMActivity)localObject1, (FinderAtTimelineUIContract.b)localObject2, this.scene);
+    localObject1 = u.aAu();
+    p.g(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
+    localObject2 = e.scU;
+    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KiD;
+    localObject1 = new FinderAtTimelineUIContract.Loader((String)localObject1, (e)localObject2, ((FinderReporterUIC)com.tencent.mm.ui.component.a.s((MMActivity)this).get(FinderReporterUIC.class)).cOu());
+    ((FinderAtTimelineUIContract.Loader)localObject1).rTm = ((d.g.a.a)new b(this));
+    this.sdm = ((FinderAtTimelineUIContract.Loader)localObject1);
+    AppMethodBeat.o(202605);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(202281);
+    AppMethodBeat.i(202606);
     super.onDestroy();
-    roF.clear();
-    AppMethodBeat.o(202281);
+    sdo.clear();
+    AppMethodBeat.o(202606);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -112,10 +114,13 @@ public final class FinderAtTimelineUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderAtTimelineUI$initOnCreate$1$1"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderAtTimelineUI$Companion;", "", "()V", "finderFeedCacheMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getFinderFeedCacheMap", "()Ljava/util/concurrent/ConcurrentHashMap;", "setFinderFeedCacheMap", "(Ljava/util/concurrent/ConcurrentHashMap;)V", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderAtTimelineUI$initOnCreate$1$1"})
   static final class b
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     b(FinderAtTimelineUI paramFinderAtTimelineUI)
     {
@@ -125,7 +130,7 @@ public final class FinderAtTimelineUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderAtTimelineUI
  * JD-Core Version:    0.7.0.1
  */

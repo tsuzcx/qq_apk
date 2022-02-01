@@ -8,7 +8,7 @@ import java.math.BigInteger;
 public final class p
   extends k
 {
-  private static final Class<?>[] bDk = { Integer.TYPE, Long.TYPE, Short.TYPE, Float.TYPE, Double.TYPE, Byte.TYPE, Boolean.TYPE, Character.TYPE, Integer.class, Long.class, Short.class, Float.class, Double.class, Byte.class, Boolean.class, Character.class };
+  private static final Class<?>[] bNy = { Integer.TYPE, Long.TYPE, Short.TYPE, Float.TYPE, Double.TYPE, Byte.TYPE, Boolean.TYPE, Character.TYPE, Integer.class, Long.class, Short.class, Float.class, Double.class, Byte.class, Boolean.class, Character.class };
   public Object value;
   
   public p(Boolean paramBoolean)
@@ -42,7 +42,7 @@ public final class p
     return false;
   }
   
-  private static boolean af(Object paramObject)
+  private static boolean ai(Object paramObject)
   {
     AppMethodBeat.i(107884);
     if ((paramObject instanceof String))
@@ -51,7 +51,7 @@ public final class p
       return true;
     }
     paramObject = paramObject.getClass();
-    Class[] arrayOfClass = bDk;
+    Class[] arrayOfClass = bNy;
     int j = arrayOfClass.length;
     int i = 0;
     while (i < j)
@@ -76,7 +76,7 @@ public final class p
       AppMethodBeat.o(107880);
       return;
     }
-    if (((paramObject instanceof Number)) || (af(paramObject))) {}
+    if (((paramObject instanceof Number)) || (ai(paramObject))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkArgument(bool);
@@ -112,7 +112,7 @@ public final class p
     }
     if ((a(this)) && (a(paramObject)))
     {
-      if (xa().longValue() == paramObject.xa().longValue())
+      if (yx().longValue() == paramObject.yx().longValue())
       {
         AppMethodBeat.o(107886);
         return true;
@@ -122,8 +122,8 @@ public final class p
     }
     if (((this.value instanceof Number)) && ((paramObject.value instanceof Number)))
     {
-      double d1 = xa().doubleValue();
-      double d2 = paramObject.xa().doubleValue();
+      double d1 = yx().doubleValue();
+      double d2 = paramObject.yx().doubleValue();
       if ((d1 == d2) || ((Double.isNaN(d1)) && (Double.isNaN(d2))))
       {
         AppMethodBeat.o(107886);
@@ -146,7 +146,7 @@ public final class p
       AppMethodBeat.o(107881);
       return bool;
     }
-    boolean bool = Boolean.parseBoolean(xb());
+    boolean bool = Boolean.parseBoolean(yy());
     AppMethodBeat.o(107881);
     return bool;
   }
@@ -162,14 +162,14 @@ public final class p
     long l;
     if (a(this))
     {
-      l = xa().longValue();
+      l = yx().longValue();
       i = (int)(l ^ l >>> 32);
       AppMethodBeat.o(107885);
       return i;
     }
     if ((this.value instanceof Number))
     {
-      l = Double.doubleToLongBits(xa().doubleValue());
+      l = Double.doubleToLongBits(yx().doubleValue());
       i = (int)(l ^ l >>> 32);
       AppMethodBeat.o(107885);
       return i;
@@ -179,7 +179,7 @@ public final class p
     return i;
   }
   
-  public final Number xa()
+  public final Number yx()
   {
     AppMethodBeat.i(107882);
     if ((this.value instanceof String))
@@ -193,12 +193,12 @@ public final class p
     return localObject;
   }
   
-  public final String xb()
+  public final String yy()
   {
     AppMethodBeat.i(107883);
     if ((this.value instanceof Number))
     {
-      str = xa().toString();
+      str = yx().toString();
       AppMethodBeat.o(107883);
       return str;
     }
@@ -215,7 +215,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.a.p
  * JD-Core Version:    0.7.0.1
  */

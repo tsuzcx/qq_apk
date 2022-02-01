@@ -5,15 +5,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getLayoutId", "", "isFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinishing", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "libmmui_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/ui/component/UIComponent;", "Lcom/tencent/mm/ui/component/SimpleUIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "isUserVisibleFocused", "", "()Z", "setUserVisibleFocused", "(Z)V", "rootView", "Landroid/view/View;", "getRootView", "()Landroid/view/View;", "setRootView", "(Landroid/view/View;)V", "getLayoutId", "", "isFragment", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPressed", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onCreateAfter", "onCreateBefore", "onDestroy", "onFinishing", "onKeyDown", "keyCode", "event", "Landroid/view/KeyEvent;", "onKeyUp", "onPause", "onRequestPermissionsResult", "permissions", "", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onRestoreInstanceState", "onResume", "onSaveInstanceState", "outState", "onStart", "onStop", "onUserVisibleFocused", "onUserVisibleUnFocused", "libmmui_release"})
 public abstract class UIComponent
   extends SimpleUIComponent
 {
-  private boolean Isa;
-  public View khe;
+  private boolean KiF;
+  public View kBS;
   
   public UIComponent(Fragment paramFragment)
   {
@@ -25,25 +25,31 @@ public abstract class UIComponent
     super(paramMMActivity);
   }
   
-  public void Z(Bundle paramBundle) {}
+  public void ac(Bundle paramBundle) {}
   
-  public void aa(Bundle paramBundle) {}
+  public void ad(Bundle paramBundle) {}
   
-  public void cFW()
+  public void cBA()
   {
-    this.Isa = false;
+    this.KiF = true;
   }
   
-  public void cGh() {}
-  
-  public void cvj()
+  public void cKA()
   {
-    this.Isa = true;
+    this.KiF = false;
   }
   
-  public final boolean fqL()
+  public void cOA() {}
+  
+  public final boolean fHy()
   {
     return this.fragment != null;
+  }
+  
+  public final void gQ(View paramView)
+  {
+    p.h(paramView, "<set-?>");
+    this.kBS = paramView;
   }
   
   public int getLayoutId()
@@ -53,17 +59,11 @@ public abstract class UIComponent
   
   public final View getRootView()
   {
-    View localView = this.khe;
+    View localView = this.kBS;
     if (localView == null) {
-      k.aVY("rootView");
+      p.bcb("rootView");
     }
     return localView;
-  }
-  
-  public final void gz(View paramView)
-  {
-    k.h(paramView, "<set-?>");
-    this.khe = paramView;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
@@ -81,8 +81,8 @@ public abstract class UIComponent
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    k.h(paramArrayOfString, "permissions");
-    k.h(paramArrayOfInt, "grantResults");
+    p.h(paramArrayOfString, "permissions");
+    p.h(paramArrayOfInt, "grantResults");
   }
   
   public void onResume() {}
@@ -93,7 +93,7 @@ public abstract class UIComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.component.UIComponent
  * JD-Core Version:    0.7.0.1
  */

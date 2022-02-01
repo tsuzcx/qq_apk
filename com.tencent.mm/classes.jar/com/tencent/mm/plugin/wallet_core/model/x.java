@@ -1,167 +1,102 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
+import android.content.Context;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gj;
-import com.tencent.mm.plugin.wallet_core.d.e;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import com.tencent.mm.plugin.wallet_core.id_verify.model.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
 
 public final class x
-  extends gj
 {
-  public static c.a info;
+  public List<ElementQuery> CPh = null;
+  public SparseArray<String> Dao = null;
+  public List<a> Dap;
   
-  static
+  public final ElementQuery aEp(String paramString)
   {
-    AppMethodBeat.i(70415);
-    c.a locala = new c.a();
-    locala.GvF = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "bulletin_scene";
-    locala.GvH.put("bulletin_scene", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" bulletin_scene TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.GvG = "bulletin_scene";
-    locala.columns[1] = "bulletin_content";
-    locala.GvH.put("bulletin_content", "TEXT");
-    localStringBuilder.append(" bulletin_content TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "bulletin_url";
-    locala.GvH.put("bulletin_url", "TEXT");
-    localStringBuilder.append(" bulletin_url TEXT");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(70415);
+    AppMethodBeat.i(70412);
+    if ((this.CPh != null) && (this.CPh.size() != 0))
+    {
+      Iterator localIterator = this.CPh.iterator();
+      while (localIterator.hasNext())
+      {
+        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
+        if ((localElementQuery.dkR != null) && (localElementQuery.dkR.equals(paramString)))
+        {
+          AppMethodBeat.o(70412);
+          return localElementQuery;
+        }
+      }
+      ad.w("MicroMsg.WalletBankElementManager", "hy: not found given banktype: %s", new Object[] { paramString });
+      AppMethodBeat.o(70412);
+      return null;
+    }
+    ad.w("MicroMsg.WalletBankElementManager", "hy: no element from given banktype");
+    AppMethodBeat.o(70412);
+    return null;
   }
   
-  public static void be(JSONObject paramJSONObject)
+  public final ElementQuery aEq(String paramString)
   {
-    boolean bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    AppMethodBeat.i(70414);
-    Object localObject1 = s.erC();
-    if ((paramJSONObject != null) && (localObject1 != null))
+    AppMethodBeat.i(70413);
+    if (bt.isNullOrNil(paramString))
     {
-      Object localObject3 = paramJSONObject.optJSONArray("banner_map");
-      paramJSONObject = paramJSONObject.optJSONArray("banner_content_array");
-      localObject2 = new HashMap();
-      HashMap localHashMap = new HashMap();
-      if ((localObject3 != null) && (paramJSONObject != null))
-      {
-        int k = ((JSONArray)localObject3).length();
-        int i = 0;
-        Object localObject4;
-        String str;
-        while (i < k)
-        {
-          localObject4 = ((JSONArray)localObject3).optJSONObject(i);
-          if (localObject4 != null)
-          {
-            str = ((JSONObject)localObject4).optString("banner_type");
-            localObject4 = ((JSONObject)localObject4).optString("banner_template_id");
-            ac.i("MicroMsg.WalletBulletin", "sceneid=" + str + "; contentid=" + (String)localObject4);
-            if ((!bs.isNullOrNil(str)) && (!bs.isNullOrNil((String)localObject4)))
-            {
-              ((Map)localObject2).put(str, localObject4);
-              ac.i("MicroMsg.WalletBulletin", "sceneid:" + str + " map contentid:" + (String)localObject4);
-            }
-          }
-          i += 1;
-        }
-        k = paramJSONObject.length();
-        i = j;
-        while (i < k)
-        {
-          localObject3 = paramJSONObject.optJSONObject(i);
-          if (localObject3 != null) {
-            localHashMap.put(((JSONObject)localObject3).optString("banner_template_id"), Integer.valueOf(i));
-          }
-          i += 1;
-        }
-        if (((Map)localObject2).size() > 0)
-        {
-          localObject3 = ((Map)localObject2).keySet().iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            str = (String)((Iterator)localObject3).next();
-            localObject4 = (String)((Map)localObject2).get(str);
-            if (localHashMap.containsKey(localObject4))
-            {
-              ac.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
-              localObject4 = paramJSONObject.optJSONObject(((Integer)localHashMap.get(localObject4)).intValue());
-              x localx = new x();
-              localx.field_bulletin_scene = str;
-              localx.field_bulletin_content = ((JSONObject)localObject4).optString("content");
-              localx.field_bulletin_url = ((JSONObject)localObject4).optString("url");
-              ((e)localObject1).insert(localx);
-            }
-            else
-            {
-              ac.e("MicroMsg.WalletBulletin", "can not find contentid:" + (String)localObject4 + "in contentMap");
-            }
-          }
-        }
-        AppMethodBeat.o(70414);
-        return;
-      }
-      localObject1 = new StringBuilder("scenes==null?");
-      if (localObject3 == null)
-      {
-        bool1 = true;
-        localObject1 = ((StringBuilder)localObject1).append(bool1).append("  contents==null?");
-        if (paramJSONObject != null) {
-          break label537;
-        }
-      }
-      label537:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        ac.e("MicroMsg.WalletBulletin", bool1);
-        AppMethodBeat.o(70414);
-        return;
-        bool1 = false;
-        break;
-      }
+      ad.w("MicroMsg.WalletBankElementManager", "hy: bindSerail given is null");
+      AppMethodBeat.o(70413);
+      return null;
     }
-    Object localObject2 = new StringBuilder("json==null?");
-    if (paramJSONObject == null)
+    if ((this.CPh != null) && (this.CPh.size() != 0))
     {
-      bool1 = true;
-      paramJSONObject = ((StringBuilder)localObject2).append(bool1).append("  stg==null?");
-      if (localObject1 != null) {
-        break label609;
+      Iterator localIterator = this.CPh.iterator();
+      while (localIterator.hasNext())
+      {
+        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
+        if (paramString.equals(localElementQuery.wBI))
+        {
+          AppMethodBeat.o(70413);
+          return localElementQuery;
+        }
       }
+      ad.w("MicroMsg.WalletBankElementManager", "hy: not found given element query");
+      AppMethodBeat.o(70413);
+      return null;
     }
-    label609:
-    for (boolean bool1 = bool3;; bool1 = false)
-    {
-      ac.e("MicroMsg.WalletBulletin", bool1);
-      AppMethodBeat.o(70414);
-      return;
-      bool1 = false;
-      break;
-    }
+    ad.w("MicroMsg.WalletBankElementManager", "hy: element list is null. get element failed");
+    AppMethodBeat.o(70413);
+    return null;
   }
   
-  public final c.a getDBInfo()
+  public final String am(Context paramContext, int paramInt)
   {
-    return info;
+    AppMethodBeat.i(70411);
+    if (this.Dao != null)
+    {
+      String str = (String)this.Dao.get(paramInt);
+      if (!bt.isNullOrNil(str))
+      {
+        AppMethodBeat.o(70411);
+        return str;
+      }
+    }
+    paramContext = paramContext.getString(2131765105);
+    AppMethodBeat.o(70411);
+    return paramContext;
+  }
+  
+  public final String gL(Context paramContext)
+  {
+    AppMethodBeat.i(70410);
+    paramContext = am(paramContext, t.eFy().eGk());
+    AppMethodBeat.o(70410);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.x
  * JD-Core Version:    0.7.0.1
  */

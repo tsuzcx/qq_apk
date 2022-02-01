@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public double BgK;
-  public LinkedList<t> BgM;
-  public double BgR;
-  public double BgS;
-  public int BgT;
-  public String BgU;
-  public String BgV;
-  public b Bha;
-  public String Bhb;
-  public double Bhc;
-  public LinkedList<f> Bhd;
+  public double CGY;
+  public LinkedList<t> CHa;
+  public double CHf;
+  public double CHg;
+  public int CHh;
+  public String CHi;
+  public String CHj;
+  public b CHo;
+  public String CHp;
+  public double CHq;
+  public LinkedList<f> CHr;
   
   public j()
   {
     AppMethodBeat.i(91296);
-    this.Bhd = new LinkedList();
-    this.BgM = new LinkedList();
+    this.CHr = new LinkedList();
+    this.CHa = new LinkedList();
     AppMethodBeat.o(91296);
   }
   
@@ -33,60 +33,60 @@ public final class j
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Bhb != null) {
-        paramVarArgs.d(1, this.Bhb);
+      if (this.CHp != null) {
+        paramVarArgs.d(1, this.CHp);
       }
-      paramVarArgs.e(2, this.Bhc);
-      paramVarArgs.e(3, this.BgK);
-      paramVarArgs.e(4, 8, this.Bhd);
-      paramVarArgs.e(5, 8, this.BgM);
-      paramVarArgs.e(6, this.BgR);
-      paramVarArgs.e(7, this.BgS);
-      paramVarArgs.aR(8, this.BgT);
-      if (this.BgU != null) {
-        paramVarArgs.d(9, this.BgU);
+      paramVarArgs.e(2, this.CHq);
+      paramVarArgs.e(3, this.CGY);
+      paramVarArgs.e(4, 8, this.CHr);
+      paramVarArgs.e(5, 8, this.CHa);
+      paramVarArgs.e(6, this.CHf);
+      paramVarArgs.e(7, this.CHg);
+      paramVarArgs.aS(8, this.CHh);
+      if (this.CHi != null) {
+        paramVarArgs.d(9, this.CHi);
       }
-      if (this.BgV != null) {
-        paramVarArgs.d(10, this.BgV);
+      if (this.CHj != null) {
+        paramVarArgs.d(10, this.CHj);
       }
-      if (this.Bha != null) {
-        paramVarArgs.c(11, this.Bha);
+      if (this.CHo != null) {
+        paramVarArgs.c(11, this.CHo);
       }
       AppMethodBeat.o(91297);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Bhb == null) {
-        break label906;
+      if (this.CHp == null) {
+        break label894;
       }
     }
-    label906:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Bhb) + 0;; paramInt = 0)
+    label894:
+    for (paramInt = f.a.a.b.b.a.e(1, this.CHp) + 0;; paramInt = 0)
     {
-      int i = paramInt + (f.a.a.b.b.a.fK(2) + 8) + (f.a.a.b.b.a.fK(3) + 8) + f.a.a.a.c(4, 8, this.Bhd) + f.a.a.a.c(5, 8, this.BgM) + (f.a.a.b.b.a.fK(6) + 8) + (f.a.a.b.b.a.fK(7) + 8) + f.a.a.b.b.a.bx(8, this.BgT);
+      int i = paramInt + f.a.a.b.b.a.alT(2) + f.a.a.b.b.a.alT(3) + f.a.a.a.c(4, 8, this.CHr) + f.a.a.a.c(5, 8, this.CHa) + f.a.a.b.b.a.alT(6) + f.a.a.b.b.a.alT(7) + f.a.a.b.b.a.bz(8, this.CHh);
       paramInt = i;
-      if (this.BgU != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.BgU);
+      if (this.CHi != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.CHi);
       }
       i = paramInt;
-      if (this.BgV != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.BgV);
+      if (this.CHj != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.CHj);
       }
       paramInt = i;
-      if (this.Bha != null) {
-        paramInt = i + f.a.a.b.b.a.b(11, this.Bha);
+      if (this.CHo != null) {
+        paramInt = i + f.a.a.b.b.a.b(11, this.CHo);
       }
       AppMethodBeat.o(91297);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.Bhd.clear();
-        this.BgM.clear();
+        this.CHr.clear();
+        this.CHa.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91297);
@@ -105,19 +105,19 @@ public final class j
           AppMethodBeat.o(91297);
           return -1;
         case 1: 
-          localj.Bhb = ((f.a.a.a.a)localObject1).LVo.readString();
+          localj.CHp = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(91297);
           return 0;
         case 2: 
-          localj.Bhc = Double.longBitsToDouble(((f.a.a.a.a)localObject1).LVo.gab());
+          localj.CHq = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
           AppMethodBeat.o(91297);
           return 0;
         case 3: 
-          localj.BgK = Double.longBitsToDouble(((f.a.a.a.a)localObject1).LVo.gab());
+          localj.CGY = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
           AppMethodBeat.o(91297);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -125,14 +125,14 @@ public final class j
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new f();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localj.Bhd.add(localObject1);
+            for (bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localj.CHr.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91297);
           return 0;
         case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -140,34 +140,34 @@ public final class j
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new t();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localj.BgM.add(localObject1);
+            for (bool = true; bool; bool = ((t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localj.CHa.add(localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91297);
           return 0;
         case 6: 
-          localj.BgR = Double.longBitsToDouble(((f.a.a.a.a)localObject1).LVo.gab());
+          localj.CHf = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
           AppMethodBeat.o(91297);
           return 0;
         case 7: 
-          localj.BgS = Double.longBitsToDouble(((f.a.a.a.a)localObject1).LVo.gab());
+          localj.CHg = Double.longBitsToDouble(((f.a.a.a.a)localObject1).NPN.grA());
           AppMethodBeat.o(91297);
           return 0;
         case 8: 
-          localj.BgT = ((f.a.a.a.a)localObject1).LVo.xF();
+          localj.CHh = ((f.a.a.a.a)localObject1).NPN.zc();
           AppMethodBeat.o(91297);
           return 0;
         case 9: 
-          localj.BgU = ((f.a.a.a.a)localObject1).LVo.readString();
+          localj.CHi = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(91297);
           return 0;
         case 10: 
-          localj.BgV = ((f.a.a.a.a)localObject1).LVo.readString();
+          localj.CHj = ((f.a.a.a.a)localObject1).NPN.readString();
           AppMethodBeat.o(91297);
           return 0;
         }
-        localj.Bha = ((f.a.a.a.a)localObject1).LVo.gfk();
+        localj.CHo = ((f.a.a.a.a)localObject1).NPN.gxI();
         AppMethodBeat.o(91297);
         return 0;
       }

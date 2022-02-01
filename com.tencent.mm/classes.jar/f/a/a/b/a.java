@@ -2,20 +2,20 @@ package f.a.a.b;
 
 public final class a
 {
-  static final int LBk = 16;
-  static final int LBl = 26;
+  static final int Nsg = 16;
+  static final int Nsh = 26;
   
-  public static int bA(int paramInt1, int paramInt2)
+  public static int bC(int paramInt1, int paramInt2)
   {
     return paramInt1 << 3 | paramInt2;
   }
   
-  public static int fN(int paramInt)
+  public static int fQ(int paramInt)
   {
     return paramInt & 0x7;
   }
   
-  public static int fO(int paramInt)
+  public static int fR(int paramInt)
   {
     return paramInt >>> 3;
   }

@@ -8,14 +8,14 @@ public final class m
   public static final int CTRL_INDEX = 496;
   public static final String NAME = "setGlobalStorage";
   
-  protected final String f(h paramh)
+  protected final String e(h paramh)
   {
     return "wxGlobal";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.m
  * JD-Core Version:    0.7.0.1
  */

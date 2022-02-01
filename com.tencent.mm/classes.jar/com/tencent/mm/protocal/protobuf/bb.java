@@ -3,16 +3,16 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bb
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String DNA;
-  public String DNB;
-  public String DNC;
-  public String DND;
-  public String DNE;
-  public long DNz;
-  public String exV;
-  public String exW;
+  public long FsE;
+  public String FsF;
+  public String FsG;
+  public String FsH;
+  public String FsI;
+  public String FsJ;
+  public String ePu;
+  public String ePv;
   public double latitude;
   public double longitude;
   
@@ -22,74 +22,74 @@ public final class bb
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.exV != null) {
-        paramVarArgs.d(1, this.exV);
+      if (this.ePu != null) {
+        paramVarArgs.d(1, this.ePu);
       }
-      if (this.exW != null) {
-        paramVarArgs.d(2, this.exW);
+      if (this.ePv != null) {
+        paramVarArgs.d(2, this.ePv);
       }
       paramVarArgs.e(3, this.latitude);
       paramVarArgs.e(4, this.longitude);
-      paramVarArgs.aO(5, this.DNz);
-      if (this.DNA != null) {
-        paramVarArgs.d(6, this.DNA);
+      paramVarArgs.aY(5, this.FsE);
+      if (this.FsF != null) {
+        paramVarArgs.d(6, this.FsF);
       }
-      if (this.DNB != null) {
-        paramVarArgs.d(7, this.DNB);
+      if (this.FsG != null) {
+        paramVarArgs.d(7, this.FsG);
       }
-      if (this.DNC != null) {
-        paramVarArgs.d(8, this.DNC);
+      if (this.FsH != null) {
+        paramVarArgs.d(8, this.FsH);
       }
-      if (this.DND != null) {
-        paramVarArgs.d(9, this.DND);
+      if (this.FsI != null) {
+        paramVarArgs.d(9, this.FsI);
       }
-      if (this.DNE != null) {
-        paramVarArgs.d(10, this.DNE);
+      if (this.FsJ != null) {
+        paramVarArgs.d(10, this.FsJ);
       }
       AppMethodBeat.o(91341);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.exV == null) {
-        break label716;
+      if (this.ePu == null) {
+        break label712;
       }
     }
-    label716:
-    for (paramInt = f.a.a.b.b.a.e(1, this.exV) + 0;; paramInt = 0)
+    label712:
+    for (paramInt = f.a.a.b.b.a.e(1, this.ePu) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.exW != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.exW);
+      if (this.ePv != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.ePv);
       }
-      i = i + (f.a.a.b.b.a.fK(3) + 8) + (f.a.a.b.b.a.fK(4) + 8) + f.a.a.b.b.a.p(5, this.DNz);
+      i = i + f.a.a.b.b.a.alT(3) + f.a.a.b.b.a.alT(4) + f.a.a.b.b.a.p(5, this.FsE);
       paramInt = i;
-      if (this.DNA != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.DNA);
+      if (this.FsF != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.FsF);
       }
       i = paramInt;
-      if (this.DNB != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.DNB);
+      if (this.FsG != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.FsG);
       }
       paramInt = i;
-      if (this.DNC != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.DNC);
+      if (this.FsH != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.FsH);
       }
       i = paramInt;
-      if (this.DND != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.DND);
+      if (this.FsI != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.FsI);
       }
       paramInt = i;
-      if (this.DNE != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.DNE);
+      if (this.FsJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.FsJ);
       }
       AppMethodBeat.o(91341);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         AppMethodBeat.o(91341);
@@ -105,43 +105,43 @@ public final class bb
           AppMethodBeat.o(91341);
           return -1;
         case 1: 
-          localbb.exV = locala.LVo.readString();
+          localbb.ePu = locala.NPN.readString();
           AppMethodBeat.o(91341);
           return 0;
         case 2: 
-          localbb.exW = locala.LVo.readString();
+          localbb.ePv = locala.NPN.readString();
           AppMethodBeat.o(91341);
           return 0;
         case 3: 
-          localbb.latitude = Double.longBitsToDouble(locala.LVo.gab());
+          localbb.latitude = Double.longBitsToDouble(locala.NPN.grA());
           AppMethodBeat.o(91341);
           return 0;
         case 4: 
-          localbb.longitude = Double.longBitsToDouble(locala.LVo.gab());
+          localbb.longitude = Double.longBitsToDouble(locala.NPN.grA());
           AppMethodBeat.o(91341);
           return 0;
         case 5: 
-          localbb.DNz = locala.LVo.xG();
+          localbb.FsE = locala.NPN.zd();
           AppMethodBeat.o(91341);
           return 0;
         case 6: 
-          localbb.DNA = locala.LVo.readString();
+          localbb.FsF = locala.NPN.readString();
           AppMethodBeat.o(91341);
           return 0;
         case 7: 
-          localbb.DNB = locala.LVo.readString();
+          localbb.FsG = locala.NPN.readString();
           AppMethodBeat.o(91341);
           return 0;
         case 8: 
-          localbb.DNC = locala.LVo.readString();
+          localbb.FsH = locala.NPN.readString();
           AppMethodBeat.o(91341);
           return 0;
         case 9: 
-          localbb.DND = locala.LVo.readString();
+          localbb.FsI = locala.NPN.readString();
           AppMethodBeat.o(91341);
           return 0;
         }
-        localbb.DNE = locala.LVo.readString();
+        localbb.FsJ = locala.NPN.readString();
         AppMethodBeat.o(91341);
         return 0;
       }
@@ -152,7 +152,7 @@ public final class bb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bb
  * JD-Core Version:    0.7.0.1
  */

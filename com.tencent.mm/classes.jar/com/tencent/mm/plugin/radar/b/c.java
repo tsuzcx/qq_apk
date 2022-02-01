@@ -2,25 +2,29 @@ package com.tencent.mm.plugin.radar.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.pe;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.po;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.cd.a;
 import com.tencent.mm.model.w;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.protocal.protobuf.cu;
+import com.tencent.mm.pluginsdk.ui.applet.aa;
+import com.tencent.mm.protocal.protobuf.cv;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bo.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bu.d;
 import d.a.j;
-import d.l;
+import d.g.b.ae;
+import d.g.b.p;
 import d.v;
 import java.util.Collection;
 import java.util.HashMap;
@@ -29,24 +33,24 @@ import java.util.List;
 import java.util.Map;
 import junit.framework.Assert;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact;", "Lcom/tencent/mm/sdk/storage/MStorageEx$IOnStorageChange;", "delegate", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "getDelegate", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "msgListener", "com/tencent/mm/plugin/radar/model/RadarAddContact$msgListener$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$msgListener$1;", "needVerify", "Ljava/util/HashMap;", "", "onFMsgInfoNotify", "com/tencent/mm/plugin/radar/model/RadarAddContact$onFMsgInfoNotify$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$onFMsgInfoNotify$1;", "verifying", "Ljava/util/LinkedList;", "addContact", "", "username", "buildContact", "Lcom/tencent/mm/storage/Contact;", "verify", "Lcom/tencent/mm/storage/MsgInfo$VerifyContent;", "getStatus", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getVerifyMsg", "", "onAddContactReturn", "ret", "hasSendVerify", "errMsg", "timeStamp", "onCreate", "", "onDestroy", "onNotifyChange", "event", "", "stg", "Lcom/tencent/mm/sdk/storage/MStorageEx;", "obj", "", "onRecvFriendAdded", "contact", "onRecvFriendVerify", "onVerifyContactReturn", "putVerifyMsg", "msgContent", "removeVerifyMsg", "removeVerifying", "reset", "updateFMsgConversationState", "state", "verifyContact", "AddContactHelper", "Companion", "IOnAddContact", "IOnAddContactHelper", "Status", "plugin-radar_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact;", "Lcom/tencent/mm/sdk/storage/MStorageEx$IOnStorageChange;", "delegate", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "getDelegate", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "msgListener", "com/tencent/mm/plugin/radar/model/RadarAddContact$msgListener$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$msgListener$1;", "needVerify", "Ljava/util/HashMap;", "", "onFMsgInfoNotify", "com/tencent/mm/plugin/radar/model/RadarAddContact$onFMsgInfoNotify$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$onFMsgInfoNotify$1;", "verifying", "Ljava/util/LinkedList;", "addContact", "", "username", "buildContact", "Lcom/tencent/mm/storage/Contact;", "verify", "Lcom/tencent/mm/storage/MsgInfo$VerifyContent;", "getStatus", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getVerifyMsg", "", "onAddContactReturn", "ret", "hasSendVerify", "errMsg", "timeStamp", "onCreate", "", "onDestroy", "onNotifyChange", "event", "", "stg", "Lcom/tencent/mm/sdk/storage/MStorageEx;", "obj", "", "onRecvFriendAdded", "contact", "onRecvFriendVerify", "onVerifyContactReturn", "putVerifyMsg", "msgContent", "removeVerifyMsg", "removeVerifying", "reset", "updateFMsgConversationState", "state", "verifyContact", "AddContactHelper", "Companion", "IOnAddContact", "IOnAddContactHelper", "Status", "plugin-radar_release"})
 public final class c
   implements n.b
 {
   public static final String TAG = "MicroMsg.RadarAddContact";
-  public static final c.b waB;
+  public static final c.b xil;
   final Context context;
-  private final ao handler;
-  final c waA;
-  private final LinkedList<String> waw;
-  public final HashMap<String, String> wax;
-  public final i way;
-  public final g waz;
+  private final ap handler;
+  private final LinkedList<String> xig;
+  public final HashMap<String, String> xih;
+  public final i xii;
+  public final g xij;
+  final c xik;
   
   static
   {
     AppMethodBeat.i(138536);
-    waB = new c.b((byte)0);
+    xil = new c.b((byte)0);
     TAG = "MicroMsg.RadarAddContact";
     AppMethodBeat.o(138536);
   }
@@ -54,72 +58,72 @@ public final class c
   public c(c paramc, Context paramContext)
   {
     AppMethodBeat.i(138535);
-    this.waA = paramc;
+    this.xik = paramc;
     this.context = paramContext;
-    this.waw = new LinkedList();
-    this.wax = new HashMap();
-    this.way = new i(this);
-    this.waz = new g(this);
-    this.handler = new ao();
+    this.xig = new LinkedList();
+    this.xih = new HashMap();
+    this.xii = new i(this);
+    this.xij = new g(this);
+    this.handler = new ap();
     AppMethodBeat.o(138535);
   }
   
-  private final void V(ai paramai)
+  private final void V(am paramam)
   {
     AppMethodBeat.i(138531);
-    if (this.waw.contains(paramai.getUsername())) {
-      this.waw.remove(paramai.getUsername());
+    if (this.xig.contains(paramam.getUsername())) {
+      this.xig.remove(paramam.getUsername());
     }
-    if (this.waw.contains(paramai.Tq())) {
-      this.waw.remove(paramai.Tq());
+    if (this.xig.contains(paramam.VF())) {
+      this.xig.remove(paramam.VF());
     }
     AppMethodBeat.o(138531);
   }
   
-  private final void W(ai paramai)
+  private final void W(am paramam)
   {
     AppMethodBeat.i(138532);
-    this.wax.remove(paramai.getUsername());
-    this.wax.remove(paramai.Tq());
+    this.xih.remove(paramam.getUsername());
+    this.xih.remove(paramam.VF());
     AppMethodBeat.o(138532);
   }
   
-  private final void X(final ai paramai)
+  private final void X(final am paramam)
   {
     AppMethodBeat.i(138534);
-    V(paramai);
-    W(paramai);
-    this.handler.post((Runnable)new j(this, paramai));
+    V(paramam);
+    W(paramam);
+    this.handler.post((Runnable)new j(this, paramam));
     AppMethodBeat.o(138534);
   }
   
   public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
   {
     AppMethodBeat.i(138533);
-    d.g.b.k.h(paramn, "stg");
-    ac.d(TAG, "onNotifyChange event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+    p.h(paramn, "stg");
+    ad.d(TAG, "onNotifyChange event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      ac.e(TAG, "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ad.e(TAG, "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
       AppMethodBeat.o(138533);
       return;
     }
     paramn = (String)paramObject;
-    paramObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-    d.g.b.k.g(paramObject, "service(IMessengerStorage::class.java)");
-    paramObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)paramObject).awB().aNt(paramn);
-    if ((paramObject != null) && (paramObject.aaE()))
+    paramObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(paramObject, "service(IMessengerStorage::class.java)");
+    paramObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramObject).azp().Bf(paramn);
+    if ((paramObject != null) && (paramObject.adh()))
     {
-      ac.d(TAG, "ContactStg onNotifyChange %s", new Object[] { paramn });
+      ad.d(TAG, "ContactStg onNotifyChange %s", new Object[] { paramn });
       X(paramObject);
     }
     AppMethodBeat.o(138533);
   }
   
-  public final long aqg(final String paramString)
+  public final long avf(final String paramString)
   {
     AppMethodBeat.i(138529);
-    d.g.b.k.h(paramString, "username");
+    p.h(paramString, "username");
     final long l = System.currentTimeMillis();
     a locala = new a((d)new f(this, paramString, l));
     LinkedList localLinkedList = new LinkedList();
@@ -130,71 +134,71 @@ public final class c
       Assert.assertTrue(bool);
       Assert.assertTrue(true);
       locala.onStart();
-      locala.waD = localLinkedList;
-      locala.lhM = paramString;
+      locala.xin = localLinkedList;
+      locala.lEN = paramString;
       if (paramString != null) {
-        locala.waC.add(paramString);
+        locala.xim.add(paramString);
       }
-      new com.tencent.mm.pluginsdk.ui.applet.aa(locala.waF.context, null).C((List)locala.waC, (List)localLinkedList);
+      new aa(locala.xip.context, null).E((List)locala.xim, (List)localLinkedList);
       AppMethodBeat.o(138529);
       return l;
     }
   }
   
-  public final e aqh(String paramString)
+  public final e avg(String paramString)
   {
     AppMethodBeat.i(138530);
-    d.g.b.k.h(paramString, "username");
-    Object localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-    d.g.b.k.g(localObject, "service(IMessengerStorage::class.java)");
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).awB().aNt(paramString);
-    if ((localObject == null) || (((ai)localObject).aaQ() == 0)) {
-      if (this.waw.contains(paramString)) {
-        localObject = e.waH;
+    p.h(paramString, "username");
+    Object localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(localObject, "service(IMessengerStorage::class.java)");
+    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp().Bf(paramString);
+    if ((localObject == null) || (((am)localObject).adt() == 0)) {
+      if (this.xig.contains(paramString)) {
+        localObject = e.xir;
       }
     }
     for (;;)
     {
-      ac.d(TAG, "query username(%s) status %s", new Object[] { paramString, localObject });
+      ad.d(TAG, "query username(%s) status %s", new Object[] { paramString, localObject });
       AppMethodBeat.o(138530);
       return localObject;
-      localObject = e.waG;
+      localObject = e.xiq;
       continue;
-      if (((ai)localObject).aaE()) {
-        localObject = e.waI;
-      } else if (this.wax.containsKey(paramString)) {
-        localObject = e.waJ;
-      } else if (this.waw.contains(paramString)) {
-        localObject = e.waH;
+      if (((am)localObject).adh()) {
+        localObject = e.xis;
+      } else if (this.xih.containsKey(paramString)) {
+        localObject = e.xit;
+      } else if (this.xig.contains(paramString)) {
+        localObject = e.xir;
       } else {
-        localObject = e.waG;
+        localObject = e.xiq;
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$AddContactHelper;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "callback", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact;Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;)V", "lstScene", "Ljava/util/LinkedList;", "", "lstUsername", "", "mUsername", "addContact", "", "username", "finish", "ok", "", "hasSentVerify", "respUsername", "errMsg", "onSceneEnd", "errType", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStart", "onStop", "sendVerifyRequest", "verifyOk", "verifyTicket", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$AddContactHelper;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "callback", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "(Lcom/tencent/mm/plugin/radar/model/RadarAddContact;Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;)V", "lstScene", "Ljava/util/LinkedList;", "", "lstUsername", "", "mUsername", "addContact", "", "username", "finish", "ok", "", "hasSentVerify", "respUsername", "errMsg", "onSceneEnd", "errType", "errCode", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onStart", "onStop", "sendVerifyRequest", "verifyOk", "verifyTicket", "plugin-radar_release"})
   public final class a
-    implements com.tencent.mm.ak.g
+    implements f
   {
-    String lhM;
-    final LinkedList<String> waC;
-    LinkedList<Integer> waD;
-    private final c.d waE;
+    String lEN;
+    final LinkedList<String> xim;
+    LinkedList<Integer> xin;
+    private final c.d xio;
     
     public a()
     {
       AppMethodBeat.i(138516);
       Object localObject;
-      this.waE = localObject;
-      this.waC = new LinkedList();
+      this.xio = localObject;
+      this.xim = new LinkedList();
       AppMethodBeat.o(138516);
     }
     
     private final void b(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
     {
       AppMethodBeat.i(138514);
-      com.tencent.mm.kernel.g.agi().b(30, (com.tencent.mm.ak.g)this);
-      c.d locald = this.waE;
+      g.aiU().b(30, (f)this);
+      c.d locald = this.xio;
       if (locald != null)
       {
         locald.a(paramBoolean1, paramBoolean2, paramString1, paramString2);
@@ -204,22 +208,22 @@ public final class c
       AppMethodBeat.o(138514);
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.al.n paramn)
     {
       AppMethodBeat.i(138515);
-      d.g.b.k.h(paramn, "scene");
-      ac.d(c.access$getTAG$cp(), "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+      p.h(paramn, "scene");
+      ad.d(c.access$getTAG$cp(), "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
       if (paramn.getType() != 30)
       {
-        ac.w(c.access$getTAG$cp(), "not expected scene,  type = " + paramn.getType());
+        ad.w(c.access$getTAG$cp(), "not expected scene,  type = " + paramn.getType());
         AppMethodBeat.o(138515);
         return;
       }
-      if (((o)paramn).eKM() == 2)
+      if (((o)paramn).eZG() == 2)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          b(false, true, this.lhM, "");
+          b(false, true, this.lEN, "");
           AppMethodBeat.o(138515);
           return;
         }
@@ -229,7 +233,7 @@ public final class c
       }
       for (;;)
       {
-        b(false, false, this.lhM, paramn);
+        b(false, false, this.lEN, paramn);
         AppMethodBeat.o(138515);
         return;
         if ((paramInt1 == 4) && (paramInt2 == -94))
@@ -247,25 +251,25 @@ public final class c
           continue;
           if ((paramInt1 == 0) && (paramInt2 == 0))
           {
-            b(true, false, this.lhM, "");
+            b(true, false, this.lEN, "");
             AppMethodBeat.o(138515);
             return;
           }
           if (paramInt2 == -44)
           {
-            new com.tencent.mm.pluginsdk.ui.applet.aa(c.this.context, null).C((List)this.waC, (List)this.waD);
+            new aa(c.this.context, null).E((List)this.xim, (List)this.xin);
             AppMethodBeat.o(138515);
             return;
           }
           if (paramInt2 == -87)
           {
-            b(false, false, this.lhM, c.this.context.getString(2131757604));
+            b(false, false, this.lEN, c.this.context.getString(2131757604));
             AppMethodBeat.o(138515);
             return;
           }
-          if ((paramInt2 == -24) && (!bs.isNullOrNil(paramString)))
+          if ((paramInt2 == -24) && (!bt.isNullOrNil(paramString)))
           {
-            String str = this.lhM;
+            String str = this.lEN;
             paramn = paramString;
             if (paramString == null) {
               paramn = "";
@@ -286,51 +290,51 @@ public final class c
     public final void onStart()
     {
       AppMethodBeat.i(138513);
-      com.tencent.mm.kernel.g.agi().a(30, (com.tencent.mm.ak.g)this);
+      g.aiU().a(30, (f)this);
       AppMethodBeat.o(138513);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "", "onAddContactReturn", "", "ok", "", "hasSentVerify", "errMsg", "", "username", "timeStamp", "", "onRecvFriendAdded", "contact", "Lcom/tencent/mm/storage/Contact;", "onRecvFriendVerify", "onVerifyContactReturn", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContact;", "", "onAddContactReturn", "", "ok", "", "hasSentVerify", "errMsg", "", "username", "timeStamp", "", "onRecvFriendAdded", "contact", "Lcom/tencent/mm/storage/Contact;", "onRecvFriendVerify", "onVerifyContactReturn", "plugin-radar_release"})
   public static abstract interface c
   {
-    public abstract void X(ai paramai);
+    public abstract void X(am paramam);
     
-    public abstract void Y(ai paramai);
+    public abstract void Y(am paramam);
     
     public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong);
     
     public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, long paramLong);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "", "canAddContact", "", "ok", "", "hasSentVerify", "respUsername", "", "errMsg", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "", "canAddContact", "", "ok", "", "hasSentVerify", "respUsername", "", "errMsg", "plugin-radar_release"})
   public static abstract interface d
   {
     public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "", "(Ljava/lang/String;I)V", "Stranger", "Verifying", "Added", "NeedVerify", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "", "(Ljava/lang/String;I)V", "Stranger", "Verifying", "Added", "NeedVerify", "plugin-radar_release"})
   public static enum e
   {
     static
     {
       AppMethodBeat.i(138517);
       e locale1 = new e("Stranger", 0);
-      waG = locale1;
+      xiq = locale1;
       e locale2 = new e("Verifying", 1);
-      waH = locale2;
+      xir = locale2;
       e locale3 = new e("Added", 2);
-      waI = locale3;
+      xis = locale3;
       e locale4 = new e("NeedVerify", 3);
-      waJ = locale4;
-      waK = new e[] { locale1, locale2, locale3, locale4 };
+      xit = locale4;
+      xiu = new e[] { locale1, locale2, locale3, locale4 };
       AppMethodBeat.o(138517);
     }
     
     private e() {}
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/model/RadarAddContact$addContact$add$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "canAddContact", "", "ok", "", "hasSentVerify", "respUsername", "", "errMsg", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/model/RadarAddContact$addContact$add$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "canAddContact", "", "ok", "", "hasSentVerify", "respUsername", "", "errMsg", "plugin-radar_release"})
   public static final class f
     implements c.d
   {
@@ -341,79 +345,79 @@ public final class c
       AppMethodBeat.i(138520);
       if (paramBoolean1)
       {
-        Object localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-        d.g.b.k.g(localObject, "service(IMessengerStorage::class.java)");
-        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject).awB().aNt(paramString1);
-        d.g.b.k.g(localObject, "contact");
-        if (((ai)localObject).aaQ() > 0) {
-          w.u((ai)localObject);
+        Object localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+        p.g(localObject, "service(IMessengerStorage::class.java)");
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azp().Bf(paramString1);
+        p.g(localObject, "contact");
+        if (((am)localObject).adt() > 0) {
+          w.u((am)localObject);
         }
-        c.en(paramString1, 1);
-        if (j.a((Iterable)c.a(this.waF), paramString1))
+        c.eG(paramString1, 1);
+        if (j.a((Iterable)c.a(this.xip), paramString1))
         {
-          localObject = (Collection)c.a(this.waF);
+          localObject = (Collection)c.a(this.xip);
           if (localObject == null)
           {
             paramString1 = new v("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
             AppMethodBeat.o(138520);
             throw paramString1;
           }
-          d.g.b.aa.eO(localObject).remove(paramString1);
+          ae.eR(localObject).remove(paramString1);
         }
-        ac.d(c.access$getTAG$cp(), "addContact %s return ok", new Object[] { paramString });
+        ad.d(c.access$getTAG$cp(), "addContact %s return ok", new Object[] { paramString });
       }
       for (;;)
       {
-        c.a(this.waF, paramBoolean1, paramBoolean2, paramString2, paramString1, l);
+        c.a(this.xip, paramBoolean1, paramBoolean2, paramString2, paramString1, l);
         AppMethodBeat.o(138520);
         return;
         if (paramBoolean2)
         {
-          if ((paramString1 != null) && (!c.a(this.waF).contains(paramString1))) {
-            c.a(this.waF).add(paramString1);
+          if ((paramString1 != null) && (!c.a(this.xip).contains(paramString1))) {
+            c.a(this.xip).add(paramString1);
           }
-          c.en(paramString1, 2);
-          ac.d(c.access$getTAG$cp(), "addContact has sent verify to %s", new Object[] { paramString });
+          c.eG(paramString1, 2);
+          ad.d(c.access$getTAG$cp(), "addContact has sent verify to %s", new Object[] { paramString });
         }
         else
         {
-          ac.d(c.access$getTAG$cp(), "addContact return not ok, user canceled or error");
+          ad.d(c.access$getTAG$cp(), "addContact return not ok, user canceled or error");
         }
       }
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/model/RadarAddContact$msgListener$1", "Lcom/tencent/mm/model/SysCmdMsgExtension$ISysCmdMsgListener;", "NODE_ENCRYPT_USERNAME", "", "NODE_TYPE", "NODE_USERNAME", "onDeleteMsg", "", "msg", "Lcom/tencent/mm/modelbase/IMessageExtension$DeleteMsgInfo;", "onRecieveMsg", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/model/RadarAddContact$msgListener$1", "Lcom/tencent/mm/model/SysCmdMsgExtension$ISysCmdMsgListener;", "NODE_ENCRYPT_USERNAME", "", "NODE_TYPE", "NODE_USERNAME", "onDeleteMsg", "", "msg", "Lcom/tencent/mm/modelbase/IMessageExtension$DeleteMsgInfo;", "onRecieveMsg", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "plugin-radar_release"})
   public static final class g
-    implements cc.a
+    implements cd.a
   {
-    private final String waM = ".sysmsg.addcontact.type";
-    private final String waN = ".sysmsg.addcontact.username";
-    private final String waO = ".sysmsg.addcontact.encryptusername";
+    private final String xiw = ".sysmsg.addcontact.type";
+    private final String xix = ".sysmsg.addcontact.username";
+    private final String xiy = ".sysmsg.addcontact.encryptusername";
     
-    public final void a(f.a parama)
+    public final void a(e.a parama)
     {
       AppMethodBeat.i(138521);
-      d.g.b.k.h(parama, "addMsgInfo");
-      Object localObject1 = z.a(parama.fXi.DPV);
-      Object localObject2 = bv.L((String)localObject1, "sysmsg");
+      p.h(parama, "addMsgInfo");
+      Object localObject1 = z.a(parama.gqE.Fvk);
+      Object localObject2 = bw.M((String)localObject1, "sysmsg");
       if (localObject2 == null)
       {
         AppMethodBeat.o(138521);
         return;
       }
-      if (d.g.b.k.g((String)((Map)localObject2).get(this.waM), "1"))
+      if (p.i((String)((Map)localObject2).get(this.xiw), "1"))
       {
-        parama = (String)((Map)localObject2).get(this.waN);
-        localObject2 = (String)((Map)localObject2).get(this.waO);
+        parama = (String)((Map)localObject2).get(this.xix);
+        localObject2 = (String)((Map)localObject2).get(this.xiy);
         CharSequence localCharSequence = (CharSequence)parama;
-        if ((localCharSequence == null) || (d.n.n.aD(localCharSequence)))
+        if ((localCharSequence == null) || (d.n.n.aE(localCharSequence)))
         {
           i = 1;
           if (i == 0)
           {
             localCharSequence = (CharSequence)localObject2;
-            if ((localCharSequence != null) && (!d.n.n.aD(localCharSequence))) {
+            if ((localCharSequence != null) && (!d.n.n.aE(localCharSequence))) {
               break label172;
             }
           }
@@ -424,23 +428,23 @@ public final class c
           if (i == 0) {
             break label177;
           }
-          ac.e(c.access$getTAG$cp(), "error! server return incorrect content! : %s", new Object[] { localObject1 });
+          ad.e(c.access$getTAG$cp(), "error! server return incorrect content! : %s", new Object[] { localObject1 });
           AppMethodBeat.o(138521);
           return;
           i = 0;
           break;
         }
         label177:
-        localObject1 = new ai();
-        ((ai)localObject1).setUsername(parama);
-        ((ai)localObject1).qp((String)localObject2);
-        c.c(this.waF, (ai)localObject1);
-        ac.d(c.access$getTAG$cp(), "receive contact added system message useranme %s, encypt %s", new Object[] { ((ai)localObject1).getUsername(), ((ai)localObject1).Tq() });
+        localObject1 = new am();
+        ((am)localObject1).setUsername(parama);
+        ((am)localObject1).sZ((String)localObject2);
+        c.c(this.xip, (am)localObject1);
+        ad.d(c.access$getTAG$cp(), "receive contact added system message useranme %s, encypt %s", new Object[] { ((am)localObject1).getUsername(), ((am)localObject1).VF() });
       }
       AppMethodBeat.o(138521);
     }
     
-    public final void a(f.c paramc)
+    public final void a(e.c paramc)
     {
       AppMethodBeat.i(138522);
       paramc = (Throwable)new d.n("An operation is not implemented: ".concat(String.valueOf("not implemented")));
@@ -449,7 +453,7 @@ public final class c
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class h
     implements Runnable
   {
@@ -458,45 +462,45 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(138523);
-      this.waF.waA.a(this.waP, this.waQ, this.iiO, this.gxu, this.waL);
+      this.xip.xik.a(this.uyS, this.xiz, this.iCg, this.gRf, this.xiv);
       AppMethodBeat.o(138523);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/model/RadarAddContact$onFMsgInfoNotify$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RadarSayHiMsgEvent;", "callback", "", "event", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/model/RadarAddContact$onFMsgInfoNotify$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/RadarSayHiMsgEvent;", "callback", "", "event", "plugin-radar_release"})
   public static final class i
-    extends com.tencent.mm.sdk.b.c<pe>
+    extends com.tencent.mm.sdk.b.c<po>
   {}
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class j
     implements Runnable
   {
-    j(c paramc, ai paramai) {}
+    j(c paramc, am paramam) {}
     
     public final void run()
     {
       AppMethodBeat.i(138525);
-      this.waF.waA.X(paramai);
+      this.xip.xik.X(paramam);
       AppMethodBeat.o(138525);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class k
     implements Runnable
   {
-    k(c paramc, ai paramai) {}
+    k(c paramc, am paramam) {}
     
     public final void run()
     {
       AppMethodBeat.i(138526);
-      this.waF.waA.Y(this.waR);
+      this.xip.xik.Y(this.xiA);
       AppMethodBeat.o(138526);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
   static final class l
     implements Runnable
   {
@@ -505,12 +509,12 @@ public final class c
     public final void run()
     {
       AppMethodBeat.i(138527);
-      this.waF.waA.a(this.waP, this.iiO, this.gxu, this.waL);
+      this.xip.xik.a(this.uyS, this.iCg, this.gRf, this.xiv);
       AppMethodBeat.o(138527);
     }
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/radar/model/RadarAddContact$verifyContact$add$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "canAddContact", "", "ok", "", "hasSentVerify", "respUsername", "", "errMsg", "plugin-radar_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/radar/model/RadarAddContact$verifyContact$add$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "canAddContact", "", "ok", "", "hasSentVerify", "respUsername", "", "errMsg", "plugin-radar_release"})
   public static final class m
     implements c.d
   {
@@ -521,40 +525,40 @@ public final class c
       AppMethodBeat.i(138528);
       if (paramBoolean1)
       {
-        Object localObject1 = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-        d.g.b.k.g(localObject1, "service(IMessengerStorage::class.java)");
-        Object localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject1).awB().aNt(paramString1);
+        Object localObject1 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+        p.g(localObject1, "service(IMessengerStorage::class.java)");
+        Object localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject1).azp().Bf(paramString1);
         if (localObject2 != null)
         {
           localObject1 = localObject2;
           paramBoolean2 = paramBoolean1;
-          if (((ai)localObject2).aaQ() != 0) {}
+          if (((am)localObject2).adt() != 0) {}
         }
         else
         {
-          localObject1 = c.a(bo.d.aOn(this.waS));
-          localObject2 = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-          d.g.b.k.g(localObject2, "service(IMessengerStorage::class.java)");
-          if (!((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).awB().ag((ai)localObject1))
+          localObject1 = c.a(bu.d.aUe(this.xiB));
+          localObject2 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+          p.g(localObject2, "service(IMessengerStorage::class.java)");
+          if (!((com.tencent.mm.plugin.messenger.foundation.a.l)localObject2).azp().ag((am)localObject1))
           {
-            ac.e(c.access$getTAG$cp(), "canAddContact fail, insert fail");
+            ad.e(c.access$getTAG$cp(), "canAddContact fail, insert fail");
             paramBoolean1 = false;
           }
-          localObject2 = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
-          d.g.b.k.g(localObject2, "service(IMessengerStorage::class.java)");
-          localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.k)localObject2).awB().aNt(((ai)localObject1).getUsername());
+          localObject2 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+          p.g(localObject2, "service(IMessengerStorage::class.java)");
+          localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject2).azp().Bf(((am)localObject1).getUsername());
           paramBoolean2 = paramBoolean1;
         }
-        ac.d(c.access$getTAG$cp(), "verifyContact return ok");
-        w.u((ai)localObject1);
-        c.en(paramString1, 1);
+        ad.d(c.access$getTAG$cp(), "verifyContact return ok");
+        w.u((am)localObject1);
+        c.eG(paramString1, 1);
       }
       for (;;)
       {
-        c.a(this.waF, paramBoolean2, paramString2, paramString1, this.waL);
+        c.a(this.xip, paramBoolean2, paramString2, paramString1, this.xiv);
         AppMethodBeat.o(138528);
         return;
-        ac.d(c.access$getTAG$cp(), "verifyContact return not ok");
+        ad.d(c.access$getTAG$cp(), "verifyContact return not ok");
         paramBoolean2 = paramBoolean1;
       }
     }

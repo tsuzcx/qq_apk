@@ -15,7 +15,7 @@ abstract interface l
   
   public abstract int i(Bitmap paramBitmap);
   
-  public abstract Bitmap oD();
+  public abstract Bitmap oV();
 }
 
 

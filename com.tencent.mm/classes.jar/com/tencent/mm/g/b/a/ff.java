@@ -6,84 +6,132 @@ import com.tencent.mm.plugin.report.a;
 public final class ff
   extends a
 {
-  private long dLe = 0L;
-  private long dUP = 0L;
-  private long dWR = 0L;
-  private String dWg = "";
-  private long dWh = 0L;
+  public long eca;
+  public long ekA;
+  public long ekB;
+  public long ekC;
+  private long ekD;
+  public long ekE;
+  public long ekF;
+  public long ekG;
+  public long ekH;
+  public long ekI;
+  public long ekJ;
+  public long ekK;
+  public long ekL;
+  public long ekM;
+  public long ekN;
+  public String ekO;
+  public String ekv;
+  public long ekw;
+  private long ekx;
+  private long eky;
+  private int ekz;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118522);
+    AppMethodBeat.i(94849);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWg);
+    ((StringBuffer)localObject).append(this.ekv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dLe);
+    ((StringBuffer)localObject).append(this.eca);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUP);
+    ((StringBuffer)localObject).append(this.ekw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWh);
+    ((StringBuffer)localObject).append(this.ekx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWR);
+    ((StringBuffer)localObject).append(this.eky);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekz);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekA);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekB);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekC);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekD);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekE);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekI);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekJ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekK);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekL);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekN);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ekO);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118522);
+    awz((String)localObject);
+    AppMethodBeat.o(94849);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118523);
+    AppMethodBeat.i(94850);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("StoryId:").append(this.dWg);
+    ((StringBuffer)localObject).append("OwnerUsername:").append(this.ekv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoType:").append(this.dLe);
+    ((StringBuffer)localObject).append("Source:").append(this.eca);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dUP);
+    ((StringBuffer)localObject).append("IsFriend:").append(this.ekw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProfileSource:").append(this.dWh);
+    ((StringBuffer)localObject).append("OwnerSetting:").append(this.ekx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsAlbumStarButton:").append(this.dWR);
+    ((StringBuffer)localObject).append("OwnerPrivacySetting:").append(this.eky);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Sessionid:").append(this.ekz);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AlbumEntrancePicCount:").append(this.ekA);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AlbumExplodeFeedCount:").append(this.ekB);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AlbumClickFeedCount:").append(this.ekC);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AlbumClickFeedList:").append(this.ekD);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AlbumTimelineStayTime:").append(this.ekE);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AlbumTimeDragCount:").append(this.ekF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("LikeBanner:").append(this.ekG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("GalleryBrowseFeedCount:").append(this.ekH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("GalleryBrowsePictureCount:").append(this.ekI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("GalleryStayTime:").append(this.ekJ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FeedDetailPageBrowseFeedCount:").append(this.ekK);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FeedDetailPageBrowsePictureCount:").append(this.ekL);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FeedDetailPageStayTime:").append(this.ekM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TotalStayTime:").append(this.ekN);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AlbumClickFeedListStr:").append(this.ekO);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118523);
+    AppMethodBeat.o(94850);
     return localObject;
   }
   
   public final int getId()
   {
-    return 17090;
-  }
-  
-  public final ff jT(long paramLong)
-  {
-    this.dLe = paramLong;
-    return this;
-  }
-  
-  public final ff jU(long paramLong)
-  {
-    this.dUP = paramLong;
-    return this;
-  }
-  
-  public final ff jV(long paramLong)
-  {
-    this.dWh = paramLong;
-    return this;
-  }
-  
-  public final ff jW(long paramLong)
-  {
-    this.dWR = paramLong;
-    return this;
-  }
-  
-  public final ff mO(String paramString)
-  {
-    AppMethodBeat.i(118521);
-    this.dWg = t("StoryId", paramString, true);
-    AppMethodBeat.o(118521);
-    return this;
+    return 18840;
   }
 }
 

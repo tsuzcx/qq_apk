@@ -1,24 +1,58 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.text.TextUtils;
-import android.webkit.ValueCallback;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.i.c;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.e;
+import java.io.ByteArrayOutputStream;
+import java.nio.ByteBuffer;
 
 public final class ch
+  extends a<com.tencent.mm.plugin.appbrand.q>
 {
-  public static void a(i parami, String paramString1, String paramString2)
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "uploadToCommonCDN";
+  
+  private static String c(com.tencent.mm.plugin.appbrand.q paramq, String paramString)
   {
-    AppMethodBeat.i(147149);
-    String str = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      str = "{}";
+    AppMethodBeat.i(45705);
+    paramq = paramq.getRuntime().Fg().Mj(paramString);
+    if (paramq == null)
+    {
+      AppMethodBeat.o(45705);
+      return "";
     }
-    ac.d("MicroMsg.JsScriptEvaluatorWC", "hy: dispatch, event: %s, data size: %s, srcId: %d", new Object[] { paramString1, Integer.valueOf(str.length()), Integer.valueOf(0) });
-    parami.evaluateJavascript(String.format("typeof WeixinJSBridge !== 'undefined' && WeixinJSBridge.subscribeHandler('%s', %s)", new Object[] { paramString1, str }), new ValueCallback() {});
-    AppMethodBeat.o(147149);
+    paramq = com.tencent.mm.vfs.q.B(paramq.fOK());
+    AppMethodBeat.o(45705);
+    return paramq;
   }
+  
+  private static ByteBuffer ct(Object paramObject)
+  {
+    AppMethodBeat.i(188275);
+    if ((paramObject instanceof String)) {
+      paramObject = ByteBuffer.wrap(((String)paramObject).getBytes());
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(188275);
+      return paramObject;
+      if ((paramObject instanceof ByteBuffer)) {
+        paramObject = (ByteBuffer)paramObject;
+      } else {
+        paramObject = null;
+      }
+    }
+  }
+  
+  static final class a
+    implements b<Bundle, Bundle>
+  {}
 }
 
 

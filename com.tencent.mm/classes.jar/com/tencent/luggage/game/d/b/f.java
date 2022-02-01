@@ -1,16 +1,10 @@
 package com.tencent.luggage.game.d.b;
 
-import android.text.Editable;
-import com.tencent.luggage.game.widget.input.WAGamePanelInputEditText;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.q;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
 
 public final class f
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
+  extends a<q>
 {
   private static final int CTRL_INDEX = 463;
   private static final String NAME = "updateKeyboard";

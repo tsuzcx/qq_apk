@@ -5,11 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.sdk.platformtools.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.p;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -18,9 +18,9 @@ import java.nio.ByteBuffer;
 
 public class a
 {
-  private static WordDetectNative Kyu;
+  private static WordDetectNative MoA;
   
-  private static byte[] aI(Bitmap paramBitmap)
+  private static byte[] aK(Bitmap paramBitmap)
   {
     AppMethodBeat.i(91187);
     try
@@ -47,22 +47,22 @@ public class a
     return null;
   }
   
-  public static int cA(Context paramContext, String paramString)
+  public static int cE(Context paramContext, String paramString)
   {
     AppMethodBeat.i(91188);
-    if (Kyu == null) {}
+    if (MoA == null) {}
     Object localObject;
     try
     {
-      if (Kyu == null)
+      if (MoA == null)
       {
         localObject = new WordDetectNative();
-        Kyu = (WordDetectNative)localObject;
-        ((WordDetectNative)localObject).init(lh(paramContext));
+        MoA = (WordDetectNative)localObject;
+        ((WordDetectNative)localObject).init(lu(paramContext));
       }
       if ((paramString == null) || (paramString.length() <= 0))
       {
-        ac.e("MicroMsg.WordDetectModHelper", "in decodeFile, file == null");
+        ad.e("MicroMsg.WordDetectModHelper", "in decodeFile, file == null");
         AppMethodBeat.o(91188);
         return 0;
       }
@@ -76,36 +76,36 @@ public class a
       long l = System.currentTimeMillis();
       paramContext = new BitmapFactory.Options();
       paramContext.inJustDecodeBounds = true;
-      f.decodeFile(paramString, paramContext);
+      g.decodeFile(paramString, paramContext);
       localObject = new BitmapFactory.Options();
       int i = paramContext.outWidth * paramContext.outHeight * 3;
       float f = 1.0F * paramContext.outHeight / paramContext.outWidth;
       if (i > 52428800)
       {
-        ac.w("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, quit", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
+        ad.w("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, quit", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
         AppMethodBeat.o(91188);
         return 0;
       }
       if ((f > 10.0F) || (f < 0.1F))
       {
-        ac.w("MicroMsg.WordDetectModHelper", "bitmap width_height ratio too large %f, quit", new Object[] { Float.valueOf(f) });
+        ad.w("MicroMsg.WordDetectModHelper", "bitmap width_height ratio too large %f, quit", new Object[] { Float.valueOf(f) });
         AppMethodBeat.o(91188);
         return 0;
       }
       if (i > 10485760)
       {
-        ac.i("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, sample", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
+        ad.i("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, sample", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
         ((BitmapFactory.Options)localObject).inSampleSize = 2;
       }
-      paramContext = f.decodeFile(paramString, (BitmapFactory.Options)localObject);
+      paramContext = g.decodeFile(paramString, (BitmapFactory.Options)localObject);
       if (paramContext == null)
       {
-        ac.e("MicroMsg.WordDetectModHelper", "decode bitmap is null!");
+        ad.e("MicroMsg.WordDetectModHelper", "decode bitmap is null!");
         AppMethodBeat.o(91188);
         return 0;
       }
-      paramString = aI(paramContext);
-      boolean bool = bs.cv(paramString);
+      paramString = aK(paramContext);
+      boolean bool = bt.cC(paramString);
       if (bool)
       {
         AppMethodBeat.o(91188);
@@ -113,21 +113,21 @@ public class a
       }
       i = paramContext.getWidth();
       int j = paramContext.getHeight();
-      int k = Kyu.scanImage(paramString, i, j, 3);
-      ac.i("MicroMsg.WordDetectModHelper", "data length = %d, w = %d, h = %d, scanImage result %d", new Object[] { Integer.valueOf(paramString.length), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+      int k = MoA.scanImage(paramString, i, j, 3);
+      ad.i("MicroMsg.WordDetectModHelper", "data length = %d, w = %d, h = %d, scanImage result %d", new Object[] { Integer.valueOf(paramString.length), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
       if (k != 0)
       {
         AppMethodBeat.o(91188);
         return 0;
       }
-      i = Kyu.getResult();
-      ac.i("MicroMsg.WordDetectModHelper", "decodeFile ret = %d, cost %d", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
+      i = MoA.getResult();
+      ad.i("MicroMsg.WordDetectModHelper", "decodeFile ret = %d, cost %d", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(91188);
       return i;
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.WordDetectModHelper", "Detect Word Error, e: %s", new Object[] { paramContext.getMessage() });
+      ad.e("MicroMsg.WordDetectModHelper", "Detect Word Error, e: %s", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(91188);
       return 0;
     }
@@ -135,140 +135,140 @@ public class a
     {
       for (;;)
       {
-        ac.e("MicroMsg.WordDetectModHelper", "System Error， error: %s", new Object[] { paramContext.getMessage() });
+        ad.e("MicroMsg.WordDetectModHelper", "System Error， error: %s", new Object[] { paramContext.getMessage() });
       }
     }
   }
   
-  public static WordDetectNative.WordDetectDetailResult cB(Context paramContext, String paramString)
+  public static WordDetectNative.WordDetectDetailResult cF(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(204955);
-    if (Kyu == null) {}
+    AppMethodBeat.i(218765);
+    if (MoA == null) {}
     Object localObject;
     try
     {
-      if (Kyu == null)
+      if (MoA == null)
       {
         localObject = new WordDetectNative();
-        Kyu = (WordDetectNative)localObject;
-        ((WordDetectNative)localObject).init(lh(paramContext));
+        MoA = (WordDetectNative)localObject;
+        ((WordDetectNative)localObject).init(lu(paramContext));
       }
       if ((paramString == null) || (paramString.length() <= 0))
       {
-        ac.e("MicroMsg.WordDetectModHelper", "in decodeFile, file == null");
-        paramContext = a.a.Kyv;
-        AppMethodBeat.o(204955);
+        ad.e("MicroMsg.WordDetectModHelper", "in decodeFile, file == null");
+        paramContext = a.MoB;
+        AppMethodBeat.o(218765);
         return paramContext;
       }
     }
     finally
     {
-      AppMethodBeat.o(204955);
+      AppMethodBeat.o(218765);
     }
     try
     {
       long l = System.currentTimeMillis();
       paramContext = new BitmapFactory.Options();
       paramContext.inJustDecodeBounds = true;
-      f.decodeFile(paramString, paramContext);
+      g.decodeFile(paramString, paramContext);
       localObject = new BitmapFactory.Options();
       int i = paramContext.outWidth * paramContext.outHeight * 3;
       float f = 1.0F * paramContext.outHeight / paramContext.outWidth;
       if (i > 52428800)
       {
-        ac.w("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, quit", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
-        paramContext = a.a.Kyv;
-        AppMethodBeat.o(204955);
+        ad.w("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, quit", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
+        paramContext = a.MoB;
+        AppMethodBeat.o(218765);
         return paramContext;
       }
       if ((f > 10.0F) || (f < 0.1F))
       {
-        ac.w("MicroMsg.WordDetectModHelper", "bitmap width_height ratio too large %f, quit", new Object[] { Float.valueOf(f) });
-        paramContext = a.a.Kyv;
-        AppMethodBeat.o(204955);
+        ad.w("MicroMsg.WordDetectModHelper", "bitmap width_height ratio too large %f, quit", new Object[] { Float.valueOf(f) });
+        paramContext = a.MoB;
+        AppMethodBeat.o(218765);
         return paramContext;
       }
       if (i > 10485760)
       {
-        ac.i("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, sample", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
+        ad.i("MicroMsg.WordDetectModHelper", "bitmap too large %d x %d, sample", new Object[] { Integer.valueOf(paramContext.outWidth), Integer.valueOf(paramContext.outHeight) });
         ((BitmapFactory.Options)localObject).inSampleSize = 2;
       }
-      paramContext = f.decodeFile(paramString, (BitmapFactory.Options)localObject);
+      paramContext = g.decodeFile(paramString, (BitmapFactory.Options)localObject);
       if (paramContext == null)
       {
-        ac.e("MicroMsg.WordDetectModHelper", "decode bitmap is null!");
-        paramContext = a.a.Kyv;
-        AppMethodBeat.o(204955);
+        ad.e("MicroMsg.WordDetectModHelper", "decode bitmap is null!");
+        paramContext = a.MoB;
+        AppMethodBeat.o(218765);
         return paramContext;
       }
-      paramString = aI(paramContext);
-      if (bs.cv(paramString))
+      paramString = aK(paramContext);
+      if (bt.cC(paramString))
       {
-        paramContext = a.a.Kyv;
-        AppMethodBeat.o(204955);
+        paramContext = a.MoB;
+        AppMethodBeat.o(218765);
         return paramContext;
       }
       i = paramContext.getWidth();
       int j = paramContext.getHeight();
-      int k = Kyu.scanImage(paramString, i, j, 3);
-      ac.i("MicroMsg.WordDetectModHelper", "data length = %d, w = %d, h = %d, scanImage result %d", new Object[] { Integer.valueOf(paramString.length), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+      int k = MoA.scanImage(paramString, i, j, 3);
+      ad.i("MicroMsg.WordDetectModHelper", "data length = %d, w = %d, h = %d, scanImage result %d", new Object[] { Integer.valueOf(paramString.length), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
       if (k != 0)
       {
-        paramContext = a.a.Kyv;
-        AppMethodBeat.o(204955);
+        paramContext = a.MoB;
+        AppMethodBeat.o(218765);
         return paramContext;
       }
       paramContext = new WordDetectNative.WordDetectDetailResult();
-      if (Kyu.getDetailResult(paramContext) != 0)
+      if (MoA.getDetailResult(paramContext) != 0)
       {
-        paramContext = a.a.Kyv;
-        AppMethodBeat.o(204955);
+        paramContext = a.MoB;
+        AppMethodBeat.o(218765);
         return paramContext;
       }
-      ac.i("MicroMsg.WordDetectModHelper", "decodeFile result %s, cost %d", new Object[] { paramContext.rate_lang, Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(204955);
+      ad.i("MicroMsg.WordDetectModHelper", "decodeFile result %s, cost %d", new Object[] { paramContext.rate_lang, Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(218765);
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      ac.e("MicroMsg.WordDetectModHelper", "Detect Word Error, e: %s", new Object[] { paramContext.getMessage() });
-      paramContext = a.a.Kyv;
-      AppMethodBeat.o(204955);
+      ad.e("MicroMsg.WordDetectModHelper", "Detect Word Error, e: %s", new Object[] { paramContext.getMessage() });
+      paramContext = a.MoB;
+      AppMethodBeat.o(218765);
       return paramContext;
     }
     catch (Error paramContext)
     {
       for (;;)
       {
-        ac.e("MicroMsg.WordDetectModHelper", "System Error， error: %s", new Object[] { paramContext.getMessage() });
+        ad.e("MicroMsg.WordDetectModHelper", "System Error， error: %s", new Object[] { paramContext.getMessage() });
       }
     }
   }
   
-  private static WordDetectNative.ConfigParam lh(Context paramContext)
+  private static WordDetectNative.ConfigParam lu(Context paramContext)
   {
     AppMethodBeat.i(91186);
     try
     {
-      Object localObject = new e(b.aoY().replace("/data/user/0", "/data/data") + "files/", "word_detect");
+      Object localObject = new e(b.arL().replace("/data/user/0", "/data/data") + "files/", "word_detect");
       if (!((e)localObject).exists()) {
         ((e)localObject).mkdirs();
       }
-      String str = q.B(((e)localObject).fxV());
+      String str = q.B(((e)localObject).fOK());
       localObject = str + "/net_fc.bin";
       str = str + "/net_fc.param";
-      aw localaw = aw.aKT("word_detect_mode_lib");
-      boolean bool = localaw.getBoolean("word_detect_mode_version_2", false);
+      ax localax = ax.aQz("word_detect_mode_lib");
+      boolean bool = localax.getBoolean("word_detect_mode_version_2", false);
       if (!bool)
       {
         i.deleteFile((String)localObject);
         i.deleteFile(str);
-        localaw.putBoolean("word_detect_mode_version_2", true);
+        localax.putBoolean("word_detect_mode_version_2", true);
       }
-      if ((!bool) || (!i.eA((String)localObject)))
+      if ((!bool) || (!i.fv((String)localObject)))
       {
-        o.P(paramContext, "qbar/net_fc.bin", (String)localObject);
-        o.P(paramContext, "qbar/net_fc.param", str);
+        p.S(paramContext, "qbar/net_fc.bin", (String)localObject);
+        p.S(paramContext, "qbar/net_fc.param", str);
       }
       paramContext = new WordDetectNative.ConfigParam();
       paramContext.detect_model_bin = ((String)localObject);
@@ -278,15 +278,20 @@ public class a
     }
     catch (Exception paramContext)
     {
-      ac.w("MicroMsg.WordDetectModHelper", "getWordDetectParam err %s", new Object[] { paramContext.getMessage() });
+      ad.w("MicroMsg.WordDetectModHelper", "getWordDetectParam err %s", new Object[] { paramContext.getMessage() });
       AppMethodBeat.o(91186);
     }
     return null;
   }
+  
+  public static abstract interface a
+  {
+    public static final WordDetectNative.WordDetectDetailResult MoB = new WordDetectNative.WordDetectDetailResult();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.worddetect.a
  * JD-Core Version:    0.7.0.1
  */

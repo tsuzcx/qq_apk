@@ -2,7 +2,7 @@ package com.tencent.mm.loader.g;
 
 public abstract interface b
 {
-  public abstract void D(Runnable paramRunnable);
+  public abstract void C(Runnable paramRunnable);
   
   public abstract void execute(Runnable paramRunnable);
 }

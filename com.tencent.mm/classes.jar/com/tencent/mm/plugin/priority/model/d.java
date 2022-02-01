@@ -2,36 +2,37 @@ package com.tencent.mm.plugin.priority.model;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.e;
-import com.tencent.mm.av.o;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.aw.i;
+import com.tencent.mm.aw.q;
 import com.tencent.mm.plugin.priority.PluginPriority;
 import com.tencent.mm.plugin.priority.model.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
 {
-  public List<Object> vDS;
-  public a vDT;
+  public List<Object> wKY;
+  public a wKZ;
   
   public d()
   {
     AppMethodBeat.i(87812);
-    this.vDS = new LinkedList();
-    this.vDT = new a("Priority.PriorityTaskRunner");
+    this.wKY = new LinkedList();
+    this.wKZ = new a("Priority.PriorityTaskRunner");
     AppMethodBeat.o(87812);
   }
   
   public final void a(com.tencent.mm.plugin.priority.model.b.a parama)
   {
     AppMethodBeat.i(87814);
-    if (this.vDT != null)
+    if (this.wKZ != null)
     {
-      parama = this.vDT.obtainMessage(1, parama);
-      this.vDT.sendMessage(parama);
+      parama = this.wKZ.obtainMessage(1, parama);
+      this.wKZ.sendMessage(parama);
     }
     AppMethodBeat.o(87814);
   }
@@ -39,32 +40,32 @@ public final class d
   public final void b(com.tencent.mm.plugin.priority.model.b.a parama)
   {
     AppMethodBeat.i(87815);
-    if (this.vDT != null)
+    if (this.wKZ != null)
     {
-      parama = this.vDT.obtainMessage(1, parama);
-      this.vDT.sendMessageDelayed(parama, 1000L);
+      parama = this.wKZ.obtainMessage(1, parama);
+      this.wKZ.sendMessageDelayed(parama, 1000L);
     }
     AppMethodBeat.o(87815);
   }
   
-  public final void wj(long paramLong)
+  public final void yu(long paramLong)
   {
     AppMethodBeat.i(87813);
-    if (this.vDT != null)
+    if (this.wKZ != null)
     {
       if (paramLong == 0L)
       {
-        this.vDT.sendEmptyMessage(0);
+        this.wKZ.sendEmptyMessage(0);
         AppMethodBeat.o(87813);
         return;
       }
-      this.vDT.sendEmptyMessageDelayed(0, paramLong);
+      this.wKZ.sendEmptyMessageDelayed(0, paramLong);
     }
     AppMethodBeat.o(87813);
   }
   
   public final class a
-    extends ao
+    extends ap
   {
     a(String paramString)
     {
@@ -88,43 +89,43 @@ public final class d
         }
         catch (Exception paramMessage)
         {
-          e locale;
-          ac.printErrStackTrace("MicroMsg.Priority.PriorityTaskRunner", paramMessage, "handle priority msg", new Object[0]);
+          com.tencent.mm.aw.g localg;
+          ad.printErrStackTrace("MicroMsg.Priority.PriorityTaskRunner", paramMessage, "handle priority msg", new Object[0]);
           AppMethodBeat.o(87811);
           return;
         }
-        ac.v("MicroMsg.Priority.PriorityTaskRunner", "priority runner tick");
+        ad.v("MicroMsg.Priority.PriorityTaskRunner", "priority runner tick");
         paramMessage = d.this;
-        if (paramMessage.vDT != null) {
-          paramMessage.vDT.removeMessages(0);
+        if (paramMessage.wKZ != null) {
+          paramMessage.wKZ.removeMessages(0);
         }
-        d.this.wj(120000L);
+        d.this.yu(120000L);
         paramMessage = ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CImgAutoDownloader();
-        if (paramMessage.vEq != 0L)
+        if (paramMessage.wLw != 0L)
         {
-          locale = o.aFx().qg(paramMessage.vEq);
-          if (o.aFy().a(locale.dcd, paramMessage.vEq, locale.hGP))
+          localg = q.aIF().G(paramMessage.talker, paramMessage.wLw);
+          if (q.aIG().a(localg.dnz, paramMessage.wLw, localg.hZz))
           {
             i = 1;
             if (i == 0)
             {
               ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CImgAutoDownloader();
-              if (com.tencent.mm.plugin.priority.model.a.c.a.doN()) {
+              if (com.tencent.mm.plugin.priority.model.a.c.a.dzp()) {
                 ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CImgAutoDownloader().start();
               }
             }
-            if (bs.isNullOrNil(((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CFileAutoDownloader().vEf)) {
-              break label282;
+            if (bt.isNullOrNil(((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CFileAutoDownloader().wLl)) {
+              break label286;
             }
             i = 1;
             if (i == 0)
             {
               ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CFileAutoDownloader();
-              if (com.tencent.mm.plugin.priority.model.a.b.a.doG()) {
+              if (com.tencent.mm.plugin.priority.model.a.b.a.dzi()) {
                 ((PluginPriority)com.tencent.mm.kernel.g.ad(PluginPriority.class)).getC2CFileAutoDownloader().start();
               }
             }
-            if (!c.doP()) {
+            if (!c.dzr()) {
               continue;
             }
             d.this.a(new c());
@@ -136,7 +137,7 @@ public final class d
         }
         int i = 0;
         continue;
-        label282:
+        label286:
         i = 0;
         continue;
         long l = System.currentTimeMillis();
@@ -144,13 +145,13 @@ public final class d
         try
         {
           paramMessage.run();
-          ac.i("MicroMsg.Priority.PriorityTaskRunner", "Once Run Task %s Use Time %d", new Object[] { paramMessage.getName(), Long.valueOf(System.currentTimeMillis() - l) });
+          ad.i("MicroMsg.Priority.PriorityTaskRunner", "Once Run Task %s Use Time %d", new Object[] { paramMessage.getName(), Long.valueOf(System.currentTimeMillis() - l) });
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.Priority.PriorityTaskRunner", localException, "MESSAGE_ONCE_RUN_TASK %s", new Object[] { paramMessage.getName() });
+            ad.printErrStackTrace("MicroMsg.Priority.PriorityTaskRunner", localException, "MESSAGE_ONCE_RUN_TASK %s", new Object[] { paramMessage.getName() });
           }
         }
       }
@@ -159,7 +160,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.priority.model.d
  * JD-Core Version:    0.7.0.1
  */

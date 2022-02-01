@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public final class d
 {
-  public String uAA;
-  public String uAy;
-  public int uAz;
+  public String vDb;
+  public int vDc;
+  public String vDd;
   
   public d(String paramString)
   {
     AppMethodBeat.i(65990);
-    this.uAy = "";
-    this.uAz = 0;
-    this.uAA = "";
+    this.vDb = "";
+    this.vDc = 0;
+    this.vDd = "";
     try
     {
       paramString = new JSONObject(paramString);
-      this.uAy = paramString.optString("eu_protocol_url");
-      this.uAz = paramString.optInt("0");
-      this.uAA = paramString.optString("wxpay_protocol_url");
+      this.vDb = paramString.optString("eu_protocol_url");
+      this.vDc = paramString.optInt("0");
+      this.vDd = paramString.optString("wxpay_protocol_url");
       AppMethodBeat.o(65990);
       return;
     }
     catch (Exception paramString)
     {
-      ac.printErrStackTrace("MciroMsg.EUInfo", paramString, "", new Object[0]);
+      ad.printErrStackTrace("MciroMsg.EUInfo", paramString, "", new Object[0]);
       AppMethodBeat.o(65990);
     }
   }

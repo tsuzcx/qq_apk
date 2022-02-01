@@ -1,88 +1,90 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.pluginsdk.h.a.c.m;
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mm.compatible.loader.a;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class ac
 {
-  private static final Set<b> jmV;
+  private static String[] jGS = { "__APP__", "__WITHOUT_PLUGINCODE__", "__WITHOUT_MULTI_PLUGINCODE__", "__PLUGINCODE__" };
+  private final String appId;
+  private final String coW;
+  private volatile String jGR;
   
-  static
+  public ac(String paramString)
   {
-    AppMethodBeat.i(90557);
-    jmV = new HashSet();
-    AppMethodBeat.o(90557);
+    this.appId = paramString;
+    this.coW = null;
   }
   
-  static a a(a parama)
+  public ac(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(90556);
+    AppMethodBeat.i(146000);
+    this.appId = paramString1;
+    this.coW = Ls(paramString2);
+    AppMethodBeat.o(146000);
+  }
+  
+  public ac(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(146002);
+    switch (paramInt)
+    {
+    default: 
+      this.coW = Ls(paramString2);
+    }
     for (;;)
     {
-      int i;
-      synchronized (jmV)
-      {
-        Object[] arrayOfObject = jmV.toArray();
-        int j = arrayOfObject.length;
-        i = 0;
-        if (i >= j) {
-          break;
-        }
-        ??? = ((b)arrayOfObject[i]).a(parama);
-        if (??? != null)
-        {
-          AppMethodBeat.o(90556);
-          return ???;
-        }
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(90556);
-    return null;
-  }
-  
-  public static void a(b paramb)
-  {
-    AppMethodBeat.i(90555);
-    synchronized (jmV)
-    {
-      jmV.add(paramb);
-      AppMethodBeat.o(90555);
+      this.appId = paramString1;
+      AppMethodBeat.o(146002);
       return;
+      this.coW = "";
+      continue;
+      this.coW = (Ls(paramString2) + '$' + "__WITHOUT_PLUGINCODE__");
+      continue;
+      this.coW = (Ls(paramString2) + '$' + "__WITHOUT_MULTI_PLUGINCODE__");
+      continue;
+      this.coW = "__PLUGINCODE__";
+      continue;
+      this.coW = "__WITHOUT_PLUGINCODE__";
+      continue;
+      this.coW = "__WITHOUT_MULTI_PLUGINCODE__";
     }
   }
   
-  public static abstract interface a
+  private static String Ls(String paramString)
   {
-    public abstract void a(m paramm);
-    
-    public abstract void aWa();
-    
-    public abstract void aWb();
-    
-    public abstract void aWc();
-    
-    public abstract void aWd();
-    
-    public abstract void aWe();
-    
-    public abstract void aWf();
-    
-    public abstract void aWg();
-    
-    public abstract void fF(boolean paramBoolean);
-    
-    public abstract void fG(boolean paramBoolean);
-    
-    public abstract void rr(int paramInt);
+    AppMethodBeat.i(146001);
+    if ((bt.isNullOrNil(paramString)) || (a.contains(jGS, paramString)))
+    {
+      AppMethodBeat.o(146001);
+      return paramString;
+    }
+    paramString = m.Mp(paramString);
+    AppMethodBeat.o(146001);
+    return paramString;
   }
   
-  public static abstract interface b
+  public final String toString()
   {
-    public abstract ac.a a(a parama);
+    AppMethodBeat.i(146003);
+    StringBuilder localStringBuilder;
+    if (bt.isNullOrNil(this.jGR))
+    {
+      localStringBuilder = new StringBuilder().append(this.appId);
+      if (!bt.isNullOrNil(this.coW)) {
+        break label67;
+      }
+    }
+    label67:
+    for (String str = "";; str = "$" + this.coW)
+    {
+      this.jGR = str;
+      str = this.jGR;
+      AppMethodBeat.o(146003);
+      return str;
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +10,14 @@ import org.json.JSONObject;
 public final class r
   extends m
 {
-  public r(u paramu)
+  public r(v paramv)
   {
     AppMethodBeat.i(69572);
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
-    localHashMap1.put("verify_code", paramu.BzM);
-    localHashMap1.put("token", paramu.token);
-    setPayInfo(paramu.wfX, localHashMap1, localHashMap2);
+    localHashMap1.put("verify_code", paramv.Daf);
+    localHashMap1.put("token", paramv.token);
+    setPayInfo(paramv.xnF, localHashMap1, localHashMap2);
     setRequestData(localHashMap1);
     setWXRequestData(localHashMap2);
     AppMethodBeat.o(69572);
@@ -42,7 +42,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.r
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 @Deprecated
 public final class e
 {
-  public static e wer;
+  public static e xma;
   
   static
   {
     AppMethodBeat.i(102666);
-    wer = new e();
+    xma = new e();
     AppMethodBeat.o(102666);
   }
 }

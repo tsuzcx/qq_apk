@@ -1,121 +1,104 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.report.d;
-import com.tencent.mm.plugin.finder.spam.a;
+import com.tencent.mm.g.b.a.ak;
+import com.tencent.mm.plugin.finder.cgi.ae;
+import com.tencent.mm.plugin.finder.report.h;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.b;
-import com.tencent.mm.plugin.finder.storage.t;
-import com.tencent.mm.plugin.finder.upload.action.g;
+import com.tencent.mm.plugin.finder.utils.o;
+import com.tencent.mm.plugin.report.a;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.protocal.protobuf.anm;
-import com.tencent.mm.sdk.platformtools.ac;
-import d.g.b.k;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.l;
+import d.n.n;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/model/FinderLikeLogic;", "", "()V", "TAG", "", "likeComment", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "feedId", "", "objectNonceId", "comment", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "like", "", "scene1", "", "isPoster", "likeFeed", "likeAction", "finderObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "scene", "isShowRecWording", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/model/FinderFollowLogic;", "", "()V", "follow", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderFollow;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "finderUser", "", "opType", "", "plugin-finder_release"})
 public final class u
 {
-  private static final String TAG = "Finder.FinderLikeLogic";
-  public static final u ruV;
+  public static final u skm;
   
   static
   {
-    AppMethodBeat.i(166395);
-    ruV = new u();
-    TAG = "Finder.FinderLikeLogic";
-    AppMethodBeat.o(166395);
+    AppMethodBeat.i(166392);
+    skm = new u();
+    AppMethodBeat.o(166392);
   }
   
-  public static void a(anm paramanm, int paramInt, FinderItem paramFinderItem, boolean paramBoolean1, boolean paramBoolean2)
+  public static ae a(aqy paramaqy, String paramString, int paramInt)
   {
-    AppMethodBeat.i(202562);
-    k.h(paramanm, "contextObj");
-    k.h(paramFinderItem, "finderObject");
-    Object localObject = a.rBD;
-    if (a.aed("like"))
-    {
-      AppMethodBeat.o(202562);
-      return;
-    }
-    localObject = e.wTc;
+    AppMethodBeat.i(202957);
+    p.h(paramaqy, "contextObj");
+    p.h(paramString, "finderUser");
+    ad.i("Finder.FinderFollowLogic", "follow event commentScene:" + paramaqy.tcl + " user:" + paramString + " opType: " + paramInt + " form " + bt.flS());
+    Object localObject1 = e.ygI;
+    Object localObject2 = ae.rJh;
     long l;
-    if (paramBoolean1)
-    {
-      l = 0L;
-      ((e)localObject).idkeyStat(1278L, l, 1L, false);
-      if (!paramBoolean1) {
-        break label115;
-      }
-    }
-    label115:
-    for (int i = 2;; i = 1)
-    {
-      localObject = d.rxr;
-      d.a(paramanm, paramFinderItem.getId(), 1, i, paramInt, "", 2, paramBoolean2);
-      localObject = g.rOb;
-      g.a(g.cCH(), paramFinderItem, paramBoolean1, paramanm);
-      AppMethodBeat.o(202562);
-      return;
-      l = 1L;
-      break;
-    }
-  }
-  
-  public static void a(anm paramanm, long paramLong, String paramString, t paramt, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(202563);
-    k.h(paramanm, "contextObj");
-    k.h(paramString, "objectNonceId");
-    k.h(paramt, "comment");
-    Object localObject = a.rBD;
-    if (a.aed("like"))
-    {
-      AppMethodBeat.o(202563);
-      return;
-    }
-    localObject = b.rCU;
     int i;
-    long l;
-    if (!b.czB())
+    if (paramInt == ae.cye())
     {
-      localObject = b.rCU;
-      if (b.czC() == 1)
-      {
-        i = 1;
-        ac.i(TAG, "likeComment scene: " + i + ", scene1:" + paramInt);
-        localObject = e.wTc;
-        if (!paramBoolean1) {
-          break label193;
-        }
-        l = 2L;
-        label117:
-        ((e)localObject).idkeyStat(1278L, l, 1L, false);
-        if (!paramBoolean1) {
-          break label201;
-        }
+      l = 5L;
+      ((e)localObject1).idkeyStat(1278L, l, 1L, false);
+      localObject1 = h.soM;
+      l = paramaqy.tcj;
+      localObject1 = ae.rJh;
+      if (paramInt != ae.cye()) {
+        break label411;
       }
+      i = 1;
+      label129:
+      p.h(paramaqy, "contextObj");
+      p.h(paramString, "finderUsername");
+      localObject1 = new ak();
+      ((ak)localObject1).hs(paramaqy.sessionId);
+      ((ak)localObject1).ht("");
+      ((ak)localObject1).cV(paramaqy.tcl);
+      ((ak)localObject1).hv(paramString);
+      ((ak)localObject1).cN(3L);
+      ((ak)localObject1).cO(i);
+      ((ak)localObject1).hw("");
+      ((ak)localObject1).cQ(2L);
+      ((ak)localObject1).hz(paramaqy.qXu);
+      ((ak)localObject1).hA(paramaqy.qXj);
+      localObject2 = h.ws(l);
+      if (localObject2 == null) {
+        break label416;
+      }
+      ((ak)localObject1).hu(h.wu(l));
+      ((ak)localObject1).cR(((FinderItem)localObject2).getFeedObject().likeCount);
+      ((ak)localObject1).cS(((FinderItem)localObject2).getFeedObject().commentCount);
+      ((ak)localObject1).cT(((FinderItem)localObject2).getFeedObject().friendLikeCount);
+      ((ak)localObject1).cU(((FinderItem)localObject2).getMediaType());
+      o localo = o.sMi;
+      ((ak)localObject1).hx(n.h(o.p((FinderItem)localObject2), ",", ";", false));
+      ((ak)localObject1).hy("");
+      ((ak)localObject1).hB(h.I(l, paramaqy.tcl));
     }
-    label193:
-    label201:
-    for (paramInt = 2;; paramInt = 1)
+    for (;;)
     {
-      localObject = d.rxr;
-      d.a(paramanm, paramLong, 4, paramInt, 1, paramt.getUsername(), i);
-      localObject = g.rOb;
-      g.a(g.cCH(), paramLong, paramString, paramt, paramBoolean1, i, paramanm, paramBoolean2);
-      AppMethodBeat.o(202563);
-      return;
-      i = paramInt;
+      ((ak)localObject1).aLk();
+      h.a((a)localObject1);
+      paramaqy = new ae(paramString, paramInt, paramaqy, paramaqy.tcj);
+      AppMethodBeat.o(202957);
+      return paramaqy;
+      l = 4L;
       break;
-      l = 3L;
-      break label117;
+      label411:
+      i = 2;
+      break label129;
+      label416:
+      ((ak)localObject1).hu("0");
+      ((ak)localObject1).hx("");
+      ((ak)localObject1).hy("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.u
  * JD-Core Version:    0.7.0.1
  */

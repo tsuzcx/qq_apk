@@ -1,6 +1,7 @@
 package d.l.b.a.b.b.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
 import d.l.b.a.b.b.ao;
 import d.l.b.a.b.b.d.b.n;
 import d.l.b.a.b.d.a.d.a;
@@ -10,19 +11,19 @@ import d.l.b.a.b.d.a.e.l;
 public final class k
   implements b
 {
-  public static final k Ljh;
+  public static final k Nad;
   
   static
   {
     AppMethodBeat.i(57387);
-    Ljh = new k();
+    Nad = new k();
     AppMethodBeat.o(57387);
   }
   
   public final a a(l paraml)
   {
     AppMethodBeat.i(57386);
-    d.g.b.k.h(paraml, "javaElement");
+    p.h(paraml, "javaElement");
     paraml = (a)new a((n)paraml);
     AppMethodBeat.o(57386);
     return paraml;
@@ -31,20 +32,20 @@ public final class k
   public static final class a
     implements a
   {
-    public final n Lji;
+    public final n Nae;
     
     public a(n paramn)
     {
       AppMethodBeat.i(57385);
-      this.Lji = paramn;
+      this.Nae = paramn;
       AppMethodBeat.o(57385);
     }
     
-    public final ao fRR()
+    public final ao gjq()
     {
       AppMethodBeat.i(57384);
-      ao localao = ao.Led;
-      d.g.b.k.g(localao, "SourceFile.NO_SOURCE_FILE");
+      ao localao = ao.MUY;
+      p.g(localao, "SourceFile.NO_SOURCE_FILE");
       AppMethodBeat.o(57384);
       return localao;
     }
@@ -52,7 +53,7 @@ public final class k
     public final String toString()
     {
       AppMethodBeat.i(57383);
-      String str = getClass().getName() + ": " + this.Lji.toString();
+      String str = getClass().getName() + ": " + this.Nae.toString();
       AppMethodBeat.o(57383);
       return str;
     }
@@ -60,7 +61,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.a.k
  * JD-Core Version:    0.7.0.1
  */

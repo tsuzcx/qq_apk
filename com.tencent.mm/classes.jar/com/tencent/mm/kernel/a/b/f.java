@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cn.b;
 import com.tencent.mm.kernel.a.a.a.a;
 import com.tencent.mm.kernel.j;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -17,52 +17,60 @@ public final class f<T>
   extends com.tencent.mm.kernel.a.a.a<T>
   implements c<T>
 {
-  private c<T> gjI;
-  private d<T> gjO;
-  public Class gjP;
-  private volatile boolean gjQ = false;
+  private volatile boolean gDA = false;
+  private c<T> gDs;
+  private d<T> gDy;
+  public Class gDz;
   
   public f(Class paramClass, d<T> paramd, c paramc)
   {
-    this.gjP = paramClass;
-    this.gjO = paramd;
-    this.gjI = paramc;
+    this.gDz = paramClass;
+    this.gDy = paramd;
+    this.gDs = paramc;
   }
   
   public final void a(a<T> parama)
   {
     AppMethodBeat.i(158394);
-    parama = parama.ahm();
+    parama = parama.ajX();
     if (parama != null)
     {
       parama = parama.iterator();
       while (parama.hasNext())
       {
         a locala = (a)parama.next();
-        if (locala.ahF()) {
-          this.gjO.b(locala);
+        if (locala.akq()) {
+          this.gDy.b(locala);
         }
       }
     }
     AppMethodBeat.o(158394);
   }
   
-  public final List<a.a> ahA()
+  public final a<T> ake()
+  {
+    AppMethodBeat.i(158393);
+    a locala = this.gDy.ake();
+    AppMethodBeat.o(158393);
+    return locala;
+  }
+  
+  public final List<a.a> akl()
   {
     AppMethodBeat.i(158396);
     ArrayList localArrayList = new ArrayList(1);
-    Iterator localIterator = this.gjt.values().iterator();
+    Iterator localIterator = this.gDd.values().iterator();
     while (localIterator.hasNext())
     {
       a.a locala = (a.a)localIterator.next();
-      if (!((a)locala).gjx)
+      if (!((a)locala).gDh)
       {
-        int i = ((a)locala).gjR;
-        a locala1 = ((a)locala).gjU;
-        if (((a)locala).gjU != null) {}
-        for (Object localObject = Boolean.valueOf(((a)locala).gjU.gjx);; localObject = "")
+        int i = ((a)locala).gDB;
+        a locala1 = ((a)locala).gDE;
+        if (((a)locala).gDE != null) {}
+        for (Object localObject = Boolean.valueOf(((a)locala).gDE.gDh);; localObject = "")
         {
-          ac.e("MMSkeleton.ParallelsDependencies", "ParallelsDependencies node(%s) not consumed!!!! %s, %s, %s", new Object[] { locala, Integer.valueOf(i), locala1, localObject });
+          ad.e("MMSkeleton.ParallelsDependencies", "ParallelsDependencies node(%s) not consumed!!!! %s, %s, %s", new Object[] { locala, Integer.valueOf(i), locala1, localObject });
           localArrayList.add(locala);
           break;
         }
@@ -72,84 +80,76 @@ public final class f<T>
     return localArrayList;
   }
   
-  public final a<T> aht()
+  public final a<T> bB(T paramT)
   {
-    AppMethodBeat.i(158393);
-    a locala = this.gjO.aht();
-    AppMethodBeat.o(158393);
-    return locala;
+    AppMethodBeat.i(158390);
+    paramT = (a)this.gDd.get(paramT);
+    AppMethodBeat.o(158390);
+    return paramT;
   }
   
-  public final void bA(Object paramObject)
+  public final void bC(Object paramObject)
   {
     AppMethodBeat.i(158395);
-    a locala = (a)this.gjt.get(paramObject);
-    if (locala.gjw != ((a)paramObject).gjw) {
-      ac.e("MMSkeleton.ParallelsDependencies", "not same!!!! %s, %s, %s, %s", new Object[] { locala, locala.gjw, paramObject, this.gjt.get(paramObject) });
+    a locala = (a)this.gDd.get(paramObject);
+    if (locala.gDg != ((a)paramObject).gDg) {
+      ad.e("MMSkeleton.ParallelsDependencies", "not same!!!! %s, %s, %s, %s", new Object[] { locala, locala.gDg, paramObject, this.gDd.get(paramObject) });
     }
-    if ((this.gjQ) && (locala.ahC())) {
-      this.gjO.b(locala);
+    if ((this.gDA) && (locala.akn())) {
+      this.gDy.b(locala);
     }
     AppMethodBeat.o(158395);
   }
   
-  public final a.a<T> bt(T paramT)
+  public final a.a<T> bv(T paramT)
   {
     AppMethodBeat.i(158389);
-    if (!this.gjt.containsKey(paramT)) {
-      this.gjt.putIfAbsent(paramT, new a(paramT, this.gjP, this.gjI, (byte)0));
+    if (!this.gDd.containsKey(paramT)) {
+      this.gDd.putIfAbsent(paramT, new a(paramT, this.gDz, this.gDs, (byte)0));
     }
-    paramT = (a.a)this.gjt.get(paramT);
+    paramT = (a.a)this.gDd.get(paramT);
     AppMethodBeat.o(158389);
-    return paramT;
-  }
-  
-  public final a<T> bz(T paramT)
-  {
-    AppMethodBeat.i(158390);
-    paramT = (a)this.gjt.get(paramT);
-    AppMethodBeat.o(158390);
     return paramT;
   }
   
   public final void prepare()
   {
     AppMethodBeat.i(158392);
-    ac.i("MMSkeleton.ParallelsDependencies", "ParallelsDependencies for type %s", new Object[] { this.gjP });
-    Assert.assertNotNull(this.gjO);
-    this.gjQ = true;
-    Iterator localIterator = this.gjt.values().iterator();
+    ad.i("MMSkeleton.ParallelsDependencies", "ParallelsDependencies for type %s", new Object[] { this.gDz });
+    Assert.assertNotNull(this.gDy);
+    this.gDA = true;
+    Iterator localIterator = this.gDd.values().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (a.a)localIterator.next();
-      if (((a.a)localObject).ahp())
+      if (((a.a)localObject).aka())
       {
         localObject = (a)localObject;
-        ac.d("MMSkeleton.ParallelsDependencies", "ParallelsDependencies prepare can provide %s", new Object[] { localObject });
-        if (((a)localObject).ahC()) {
-          this.gjO.b((a)localObject);
+        ad.d("MMSkeleton.ParallelsDependencies", "ParallelsDependencies prepare can provide %s", new Object[] { localObject });
+        if (((a)localObject).akn()) {
+          this.gDy.b((a)localObject);
         }
-        ac.d("MMSkeleton.ParallelsDependencies", "ParallelsDependencies prepare can provide %s done", new Object[] { localObject });
+        ad.d("MMSkeleton.ParallelsDependencies", "ParallelsDependencies prepare can provide %s done", new Object[] { localObject });
       }
     }
-    ac.d("MMSkeleton.ParallelsDependencies", "ParallelsDependencies prepare %s done", new Object[] { this.gjP });
+    ad.d("MMSkeleton.ParallelsDependencies", "ParallelsDependencies prepare %s done", new Object[] { this.gDz });
     AppMethodBeat.o(158392);
   }
   
   public final void reset(boolean paramBoolean)
   {
     AppMethodBeat.i(158391);
-    Iterator localIterator = this.gjt.values().iterator();
+    Iterator localIterator = this.gDd.values().iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
       if (paramBoolean) {
-        locala.gjx = false;
+        locala.gDh = false;
       }
       try
       {
-        locala.gjR = locala.aho();
-        locala.gjT = false;
+        locala.gDB = locala.ajZ();
+        locala.gDD = false;
       }
       finally
       {
@@ -162,36 +162,36 @@ public final class f<T>
   public static final class a<T>
     extends a.a<T>
   {
-    volatile int gjR;
-    private boolean gjS;
-    volatile boolean gjT;
-    public volatile a gjU;
-    public volatile a gjV;
-    public h gjW;
-    private c gjX;
-    public f.b gjY;
+    volatile int gDB;
+    private boolean gDC;
+    volatile boolean gDD;
+    public volatile a gDE;
+    public volatile a gDF;
+    public h gDG;
+    private c gDH;
+    public f.b gDI;
     
     private a(T paramT, Class paramClass, c paramc)
     {
       super();
       AppMethodBeat.i(158380);
-      this.gjR = 0;
-      this.gjS = false;
-      this.gjT = false;
-      this.gjW = new h();
-      this.gjY = new f.b();
-      this.gjW.gjA = paramClass;
-      this.gjX = paramc;
+      this.gDB = 0;
+      this.gDC = false;
+      this.gDD = false;
+      this.gDG = new h();
+      this.gDI = new f.b();
+      this.gDG.gDk = paramClass;
+      this.gDH = paramc;
       AppMethodBeat.o(158380);
     }
     
-    private boolean ahB()
+    private boolean akm()
     {
-      return (this.gjR == 0) && ((this.gjU == null) || (this.gjU.gjx));
+      return (this.gDB == 0) && ((this.gDE == null) || (this.gDE.gDh));
     }
     
     /* Error */
-    private boolean ahD()
+    private boolean ako()
     {
       // Byte code:
       //   0: iconst_1
@@ -201,27 +201,27 @@ public final class f<T>
       //   4: ldc 76
       //   6: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   9: aload_0
-      //   10: getfield 80	com/tencent/mm/kernel/a/a/a$a:gjw	Ljava/lang/Object;
+      //   10: getfield 80	com/tencent/mm/kernel/a/a/a$a:gDg	Ljava/lang/Object;
       //   13: astore 5
       //   15: aload_0
-      //   16: getfield 47	com/tencent/mm/kernel/a/b/f$a:gjW	Lcom/tencent/mm/kernel/a/b/h;
-      //   19: getfield 56	com/tencent/mm/kernel/a/b/h:gjA	Ljava/lang/Class;
+      //   16: getfield 47	com/tencent/mm/kernel/a/b/f$a:gDG	Lcom/tencent/mm/kernel/a/b/h;
+      //   19: getfield 56	com/tencent/mm/kernel/a/b/h:gDk	Ljava/lang/Class;
       //   22: astore 6
       //   24: aload_0
-      //   25: getfield 40	com/tencent/mm/kernel/a/b/f$a:gjT	Z
+      //   25: getfield 40	com/tencent/mm/kernel/a/b/f$a:gDD	Z
       //   28: istore_3
       //   29: aload_0
-      //   30: getfield 36	com/tencent/mm/kernel/a/b/f$a:gjR	I
+      //   30: getfield 36	com/tencent/mm/kernel/a/b/f$a:gDB	I
       //   33: istore_1
       //   34: aload_0
-      //   35: getfield 71	com/tencent/mm/kernel/a/b/f$a:gjU	Lcom/tencent/mm/kernel/a/b/f$a;
+      //   35: getfield 71	com/tencent/mm/kernel/a/b/f$a:gDE	Lcom/tencent/mm/kernel/a/b/f$a;
       //   38: astore 7
       //   40: aload_0
-      //   41: getfield 71	com/tencent/mm/kernel/a/b/f$a:gjU	Lcom/tencent/mm/kernel/a/b/f$a;
+      //   41: getfield 71	com/tencent/mm/kernel/a/b/f$a:gDE	Lcom/tencent/mm/kernel/a/b/f$a;
       //   44: ifnull +88 -> 132
       //   47: aload_0
-      //   48: getfield 71	com/tencent/mm/kernel/a/b/f$a:gjU	Lcom/tencent/mm/kernel/a/b/f$a;
-      //   51: getfield 74	com/tencent/mm/kernel/a/a/a$a:gjx	Z
+      //   48: getfield 71	com/tencent/mm/kernel/a/b/f$a:gDE	Lcom/tencent/mm/kernel/a/b/f$a;
+      //   51: getfield 74	com/tencent/mm/kernel/a/a/a$a:gDh	Z
       //   54: invokestatic 86	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   57: astore 4
       //   59: ldc 88
@@ -257,12 +257,12 @@ public final class f<T>
       //   102: dup
       //   103: bipush 6
       //   105: aload_0
-      //   106: getfield 47	com/tencent/mm/kernel/a/b/f$a:gjW	Lcom/tencent/mm/kernel/a/b/h;
-      //   109: getfield 100	com/tencent/mm/kernel/a/b/h:gkh	Ljava/lang/Class;
+      //   106: getfield 47	com/tencent/mm/kernel/a/b/f$a:gDG	Lcom/tencent/mm/kernel/a/b/h;
+      //   109: getfield 100	com/tencent/mm/kernel/a/b/h:gDR	Ljava/lang/Class;
       //   112: aastore
-      //   113: invokestatic 105	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   113: invokestatic 105	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   116: aload_0
-      //   117: getfield 40	com/tencent/mm/kernel/a/b/f$a:gjT	Z
+      //   117: getfield 40	com/tencent/mm/kernel/a/b/f$a:gDD	Z
       //   120: ifeq +19 -> 139
       //   123: ldc 76
       //   125: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -274,7 +274,7 @@ public final class f<T>
       //   134: astore 4
       //   136: goto -77 -> 59
       //   139: aload_0
-      //   140: invokespecial 109	com/tencent/mm/kernel/a/b/f$a:ahB	()Z
+      //   140: invokespecial 109	com/tencent/mm/kernel/a/b/f$a:akm	()Z
       //   143: istore_2
       //   144: ldc 76
       //   146: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -302,7 +302,7 @@ public final class f<T>
       //   139	149	152	finally
     }
     
-    private void ahE()
+    private void akp()
     {
       for (;;)
       {
@@ -313,23 +313,23 @@ public final class f<T>
         finally {}
         try
         {
-          if (!this.gjT) {
+          if (!this.gDD) {
             continue;
           }
-          ac.d("MMSkeleton.ParallelsDependencies", "waitingResolved node %s, consumed %s, phase %s resolved!", new Object[] { this, Boolean.valueOf(this.gjx), this.gjW.gjA });
+          ad.d("MMSkeleton.ParallelsDependencies", "waitingResolved node %s, consumed %s, phase %s resolved!", new Object[] { this, Boolean.valueOf(this.gDh), this.gDG.gDk });
           AppMethodBeat.o(158385);
         }
         catch (InterruptedException localInterruptedException)
         {
-          ac.printErrStackTrace("MMSkeleton.ParallelsDependencies", localInterruptedException, "", new Object[0]);
+          ad.printErrStackTrace("MMSkeleton.ParallelsDependencies", localInterruptedException, "", new Object[0]);
           AppMethodBeat.o(158385);
           continue;
         }
         return;
-        ac.i("MMSkeleton.ParallelsDependencies", "waiting resolved");
-        ac.d("MMSkeleton.ParallelsDependencies", "waitingResolved node %s, consumed %s, phase %s", new Object[] { this, Boolean.valueOf(this.gjx), this.gjW.gjA });
+        ad.i("MMSkeleton.ParallelsDependencies", "waiting resolved");
+        ad.d("MMSkeleton.ParallelsDependencies", "waitingResolved node %s, consumed %s, phase %s", new Object[] { this, Boolean.valueOf(this.gDh), this.gDG.gDk });
         wait();
-        ac.d("MMSkeleton.ParallelsDependencies", "waitingResolved node %s, consumed %s, phase %s done", new Object[] { this, Boolean.valueOf(this.gjx), this.gjW.gjA });
+        ad.d("MMSkeleton.ParallelsDependencies", "waitingResolved node %s, consumed %s, phase %s done", new Object[] { this, Boolean.valueOf(this.gDh), this.gDG.gDk });
         AppMethodBeat.o(158385);
       }
     }
@@ -340,7 +340,7 @@ public final class f<T>
       super.a(parama);
       try
       {
-        this.gjR += 1;
+        this.gDB += 1;
         return;
       }
       finally
@@ -352,17 +352,17 @@ public final class f<T>
     public final void a(com.tencent.mm.vending.c.a parama)
     {
       AppMethodBeat.i(158382);
-      if (!this.gjx) {
-        if (!ahD())
+      if (!this.gDh) {
+        if (!ako())
         {
-          Object localObject = ahn();
+          Object localObject = ajY();
           Assert.assertNotNull(localObject);
           localObject = ((HashSet)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
             a.a locala = (a.a)((Iterator)localObject).next();
-            if (!((a)locala).gjx) {
-              ac.i("MMSkeleton.ParallelsDependencies", "ParallelsNode(%s) found it's depending node(%s) not consumed.", new Object[] { this, locala });
+            if (!((a)locala).gDh) {
+              ad.i("MMSkeleton.ParallelsDependencies", "ParallelsNode(%s) found it's depending node(%s) not consumed.", new Object[] { this, locala });
             }
           }
         }
@@ -370,23 +370,23 @@ public final class f<T>
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
-          ahE();
+          akp();
         }
-        this.gjY.gjZ.fBb();
-        if (!this.gjx)
+        this.gDI.gDJ.fSl();
+        if (!this.gDh)
         {
-          j.i("MMSkeleton.ParallelsDependencies", "Consume node(%s) on phase(%s) may after waiting resolved.", new Object[] { this, this.gjW.gjA });
+          j.i("MMSkeleton.ParallelsDependencies", "Consume node(%s) on phase(%s) may after waiting resolved.", new Object[] { this, this.gDG.gDk });
           parama.call(this);
-          this.gjx = true;
+          this.gDh = true;
         }
-        this.gjY.gjZ.done();
+        this.gDI.gDJ.done();
         AppMethodBeat.o(158382);
         return;
       }
     }
     
     /* Error */
-    public final boolean ahC()
+    public final boolean akn()
     {
       // Byte code:
       //   0: iconst_0
@@ -396,27 +396,27 @@ public final class f<T>
       //   4: ldc 195
       //   6: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   9: aload_0
-      //   10: getfield 80	com/tencent/mm/kernel/a/a/a$a:gjw	Ljava/lang/Object;
+      //   10: getfield 80	com/tencent/mm/kernel/a/a/a$a:gDg	Ljava/lang/Object;
       //   13: astore 5
       //   15: aload_0
-      //   16: getfield 47	com/tencent/mm/kernel/a/b/f$a:gjW	Lcom/tencent/mm/kernel/a/b/h;
-      //   19: getfield 56	com/tencent/mm/kernel/a/b/h:gjA	Ljava/lang/Class;
+      //   16: getfield 47	com/tencent/mm/kernel/a/b/f$a:gDG	Lcom/tencent/mm/kernel/a/b/h;
+      //   19: getfield 56	com/tencent/mm/kernel/a/b/h:gDk	Ljava/lang/Class;
       //   22: astore 6
       //   24: aload_0
-      //   25: getfield 40	com/tencent/mm/kernel/a/b/f$a:gjT	Z
+      //   25: getfield 40	com/tencent/mm/kernel/a/b/f$a:gDD	Z
       //   28: istore_3
       //   29: aload_0
-      //   30: getfield 36	com/tencent/mm/kernel/a/b/f$a:gjR	I
+      //   30: getfield 36	com/tencent/mm/kernel/a/b/f$a:gDB	I
       //   33: istore_1
       //   34: aload_0
-      //   35: getfield 71	com/tencent/mm/kernel/a/b/f$a:gjU	Lcom/tencent/mm/kernel/a/b/f$a;
+      //   35: getfield 71	com/tencent/mm/kernel/a/b/f$a:gDE	Lcom/tencent/mm/kernel/a/b/f$a;
       //   38: astore 7
       //   40: aload_0
-      //   41: getfield 71	com/tencent/mm/kernel/a/b/f$a:gjU	Lcom/tencent/mm/kernel/a/b/f$a;
+      //   41: getfield 71	com/tencent/mm/kernel/a/b/f$a:gDE	Lcom/tencent/mm/kernel/a/b/f$a;
       //   44: ifnull +88 -> 132
       //   47: aload_0
-      //   48: getfield 71	com/tencent/mm/kernel/a/b/f$a:gjU	Lcom/tencent/mm/kernel/a/b/f$a;
-      //   51: getfield 74	com/tencent/mm/kernel/a/a/a$a:gjx	Z
+      //   48: getfield 71	com/tencent/mm/kernel/a/b/f$a:gDE	Lcom/tencent/mm/kernel/a/b/f$a;
+      //   51: getfield 74	com/tencent/mm/kernel/a/a/a$a:gDh	Z
       //   54: invokestatic 86	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   57: astore 4
       //   59: ldc 88
@@ -452,12 +452,12 @@ public final class f<T>
       //   102: dup
       //   103: bipush 6
       //   105: aload_0
-      //   106: getfield 47	com/tencent/mm/kernel/a/b/f$a:gjW	Lcom/tencent/mm/kernel/a/b/h;
-      //   109: getfield 100	com/tencent/mm/kernel/a/b/h:gkh	Ljava/lang/Class;
+      //   106: getfield 47	com/tencent/mm/kernel/a/b/f$a:gDG	Lcom/tencent/mm/kernel/a/b/h;
+      //   109: getfield 100	com/tencent/mm/kernel/a/b/h:gDR	Ljava/lang/Class;
       //   112: aastore
-      //   113: invokestatic 118	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   113: invokestatic 118	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   116: aload_0
-      //   117: getfield 40	com/tencent/mm/kernel/a/b/f$a:gjT	Z
+      //   117: getfield 40	com/tencent/mm/kernel/a/b/f$a:gDD	Z
       //   120: ifeq +19 -> 139
       //   123: ldc 195
       //   125: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -469,7 +469,7 @@ public final class f<T>
       //   134: astore 4
       //   136: goto -77 -> 59
       //   139: aload_0
-      //   140: invokespecial 109	com/tencent/mm/kernel/a/b/f$a:ahB	()Z
+      //   140: invokespecial 109	com/tencent/mm/kernel/a/b/f$a:akm	()Z
       //   143: ifeq +57 -> 200
       //   146: ldc 88
       //   148: ldc 199
@@ -482,19 +482,19 @@ public final class f<T>
       //   158: dup
       //   159: iconst_1
       //   160: aload_0
-      //   161: getfield 74	com/tencent/mm/kernel/a/a/a$a:gjx	Z
+      //   161: getfield 74	com/tencent/mm/kernel/a/a/a$a:gDh	Z
       //   164: invokestatic 86	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   167: aastore
       //   168: dup
       //   169: iconst_2
       //   170: aload_0
-      //   171: getfield 47	com/tencent/mm/kernel/a/b/f$a:gjW	Lcom/tencent/mm/kernel/a/b/h;
-      //   174: getfield 56	com/tencent/mm/kernel/a/b/h:gjA	Ljava/lang/Class;
+      //   171: getfield 47	com/tencent/mm/kernel/a/b/f$a:gDG	Lcom/tencent/mm/kernel/a/b/h;
+      //   174: getfield 56	com/tencent/mm/kernel/a/b/h:gDk	Ljava/lang/Class;
       //   177: aastore
-      //   178: invokestatic 105	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   178: invokestatic 105	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   181: aload_0
       //   182: iconst_1
-      //   183: putfield 40	com/tencent/mm/kernel/a/b/f$a:gjT	Z
+      //   183: putfield 40	com/tencent/mm/kernel/a/b/f$a:gDD	Z
       //   186: aload_0
       //   187: invokevirtual 202	java/lang/Object:notify	()V
       //   190: ldc 195
@@ -529,13 +529,13 @@ public final class f<T>
       //   200	205	208	finally
     }
     
-    public final boolean ahF()
+    public final boolean akq()
     {
       try
       {
         AppMethodBeat.i(158386);
-        this.gjR -= 1;
-        boolean bool = ahC();
+        this.gDB -= 1;
+        boolean bool = akn();
         AppMethodBeat.o(158386);
         return bool;
       }
@@ -549,7 +549,7 @@ public final class f<T>
     public final String toString()
     {
       AppMethodBeat.i(158387);
-      String str = super.toString() + " - with type " + this.gjW.gjA;
+      String str = super.toString() + " - with type " + this.gDG.gDk;
       AppMethodBeat.o(158387);
       return str;
     }
@@ -557,12 +557,12 @@ public final class f<T>
   
   public static final class b
   {
-    public b gjZ;
+    public b gDJ;
     
     public b()
     {
       AppMethodBeat.i(158388);
-      this.gjZ = new b();
+      this.gDJ = new b();
       AppMethodBeat.o(158388);
     }
   }

@@ -3,9 +3,9 @@ package com.tencent.soter.a.d;
 @Deprecated
 public abstract interface b
 {
-  public abstract void dTc();
+  public abstract void efq();
   
-  public abstract void dTd();
+  public abstract void efr();
   
   public abstract void onAuthenticationCancelled();
   

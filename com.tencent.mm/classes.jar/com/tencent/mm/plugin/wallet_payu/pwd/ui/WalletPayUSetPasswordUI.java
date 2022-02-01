@@ -13,7 +13,7 @@ public class WalletPayUSetPasswordUI
   {
     AppMethodBeat.i(72165);
     super.onCreate(paramBundle);
-    a.a(this.tDZ, false);
+    a.a(this.uGI, false);
     AppMethodBeat.o(72165);
   }
   

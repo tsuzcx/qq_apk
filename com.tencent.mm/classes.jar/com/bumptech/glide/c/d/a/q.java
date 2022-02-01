@@ -27,7 +27,7 @@ public final class q
       return i;
     }
     
-    public final Class<Bitmap> oy()
+    public final Class<Bitmap> oQ()
     {
       return Bitmap.class;
     }

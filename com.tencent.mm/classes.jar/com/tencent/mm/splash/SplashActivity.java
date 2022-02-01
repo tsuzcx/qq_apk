@@ -12,41 +12,22 @@ import java.util.Iterator;
 public class SplashActivity
   extends HellActivity
 {
-  private boolean GyZ = false;
+  private boolean IkT = false;
   
-  private void eXP()
-  {
-    AppMethodBeat.i(40662);
-    e locale = h.GyG;
-    new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(40653);
-        SplashActivity.c(SplashActivity.this);
-        AppMethodBeat.o(40653);
-      }
-    };
-    if (locale.Li()) {
-      eXR();
-    }
-    AppMethodBeat.o(40662);
-  }
-  
-  private void eXR()
+  private void fnB()
   {
     AppMethodBeat.i(40664);
-    if (this.GyZ)
+    if (this.IkT)
     {
       AppMethodBeat.o(40664);
       return;
     }
-    this.GyZ = true;
+    this.IkT = true;
     if (!isFinishing())
     {
       setResult(-100);
       int i = getIntent().getIntExtra("hashcode", 0);
-      Iterator localIterator = h.GyD.iterator();
+      Iterator localIterator = h.Ikx.iterator();
       while (localIterator.hasNext())
       {
         i locali = (i)localIterator.next();
@@ -72,7 +53,7 @@ public class SplashActivity
         public final void run()
         {
           AppMethodBeat.i(40656);
-          h.GyG = null;
+          h.IkA = null;
           AppMethodBeat.o(40656);
         }
       }, 5000L);
@@ -82,12 +63,31 @@ public class SplashActivity
     }
   }
   
-  public final void eXQ()
+  private void fnz()
+  {
+    AppMethodBeat.i(40662);
+    e locale = h.IkA;
+    new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(40653);
+        SplashActivity.c(SplashActivity.this);
+        AppMethodBeat.o(40653);
+      }
+    };
+    if (locale.MQ()) {
+      fnB();
+    }
+    AppMethodBeat.o(40662);
+  }
+  
+  public final void fnA()
   {
     AppMethodBeat.i(40663);
-    if (h.GyG != null)
+    if (h.IkA != null)
     {
-      if (!h.GyG.a(this, new Runnable()
+      if (!h.IkA.a(this, new Runnable()
       {
         public final void run()
         {
@@ -97,14 +97,14 @@ public class SplashActivity
         }
       }))
       {
-        eXP();
+        fnz();
         AppMethodBeat.o(40663);
       }
     }
     else
     {
       h.b("WxSplash.SplashActivity", "permissions delegate is null, call splash finish directly.", new Object[0]);
-      eXR();
+      fnB();
     }
     AppMethodBeat.o(40663);
   }
@@ -115,13 +115,13 @@ public class SplashActivity
     super.onCreate(paramBundle);
     h.a(this);
     h.b("WxSplash.SplashActivity", "onCreate", new Object[0]);
-    if (!h.eXG())
+    if (!h.fnq())
     {
       h.b("WxSplash.SplashActivity", "no need splash, finish", new Object[0]);
-      eXQ();
+      fnA();
     }
-    if (h.GyP != null) {
-      h.GyP.r(this);
+    if (h.IkJ != null) {
+      h.IkJ.r(this);
     }
     AppMethodBeat.o(40657);
   }
@@ -146,8 +146,8 @@ public class SplashActivity
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(40661);
-    if (h.GyG != null) {
-      h.GyG.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
+    if (h.IkA != null) {
+      h.IkA.a(this, paramInt, paramArrayOfString, paramArrayOfInt);
     }
     AppMethodBeat.o(40661);
   }

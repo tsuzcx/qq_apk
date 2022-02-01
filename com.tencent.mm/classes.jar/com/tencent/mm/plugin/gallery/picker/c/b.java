@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.gallery.picker.c;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaBitmapMemoryCache;", "Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Landroid/graphics/Bitmap;", "()V", "defaultImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "clear", "", "get", "Lcom/tencent/mm/loader/model/Resource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "head", "Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "put", "value", "remove", "Companion", "plugin-gallery_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaBitmapMemoryCache;", "Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "Landroid/graphics/Bitmap;", "()V", "defaultImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "clear", "", "get", "Lcom/tencent/mm/loader/model/Resource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "head", "Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "put", "value", "remove", "Companion", "plugin-gallery_release"})
 public final class b
   extends com.tencent.mm.loader.b.b.e<GalleryItem.MediaItem, Bitmap>
 {
   private static final String TAG = "MicroMsg.Loader.MediaBitmapMemoryCache";
-  public static final b.a sMz;
-  private final com.tencent.mm.memory.a.b<Bitmap> gJr;
+  public static final b.a tJh;
+  private final com.tencent.mm.memory.a.b<Bitmap> hdc;
   
   static
   {
     AppMethodBeat.i(164898);
-    sMz = new b.a((byte)0);
+    tJh = new b.a((byte)0);
     TAG = "MicroMsg.Loader.MediaBitmapMemoryCache";
     AppMethodBeat.o(164898);
   }
@@ -25,16 +25,16 @@ public final class b
   public b()
   {
     AppMethodBeat.i(164897);
-    this.gJr = new com.tencent.mm.memory.a.b(200, getClass());
+    this.hdc = new com.tencent.mm.memory.a.b(200, getClass());
     AppMethodBeat.o(164897);
   }
   
   public final com.tencent.mm.loader.h.e<Bitmap> a(com.tencent.mm.loader.h.a.a<GalleryItem.MediaItem> parama, com.tencent.mm.loader.e.c.a<Bitmap> parama1)
   {
     AppMethodBeat.i(164895);
-    k.h(parama, "url");
+    p.h(parama, "url");
     parama = b(parama, parama1);
-    parama = (Bitmap)this.gJr.get(parama);
+    parama = (Bitmap)this.hdc.get(parama);
     if (parama != null)
     {
       parama = new com.tencent.mm.loader.h.e(parama);

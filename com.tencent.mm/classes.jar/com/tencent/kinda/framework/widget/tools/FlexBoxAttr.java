@@ -554,13 +554,10 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19361);
     this.marginBottom = paramFloat;
-    if (this.marginBottom > 0.0F)
-    {
-      paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
-      node().setMargin(YogaEdge.BOTTOM, paramFloat);
-      if (this.iFlexBoxChange != null) {
-        this.iFlexBoxChange.onChange();
-      }
+    paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
+    node().setMargin(YogaEdge.BOTTOM, paramFloat);
+    if (this.iFlexBoxChange != null) {
+      this.iFlexBoxChange.onChange();
     }
     AppMethodBeat.o(19361);
   }
@@ -580,13 +577,10 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19358);
     this.marginLeft = paramFloat;
-    if (this.marginLeft > 0.0F)
-    {
-      paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
-      node().setMargin(YogaEdge.LEFT, paramFloat);
-      if (this.iFlexBoxChange != null) {
-        this.iFlexBoxChange.onChange();
-      }
+    paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
+    node().setMargin(YogaEdge.LEFT, paramFloat);
+    if (this.iFlexBoxChange != null) {
+      this.iFlexBoxChange.onChange();
     }
     AppMethodBeat.o(19358);
   }
@@ -606,13 +600,10 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19360);
     this.marginRight = paramFloat;
-    if (this.marginRight > 0.0F)
-    {
-      paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
-      node().setMargin(YogaEdge.RIGHT, paramFloat);
-      if (this.iFlexBoxChange != null) {
-        this.iFlexBoxChange.onChange();
-      }
+    paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
+    node().setMargin(YogaEdge.RIGHT, paramFloat);
+    if (this.iFlexBoxChange != null) {
+      this.iFlexBoxChange.onChange();
     }
     AppMethodBeat.o(19360);
   }
@@ -632,13 +623,10 @@ public class FlexBoxAttr
   {
     AppMethodBeat.i(19359);
     this.marginTop = paramFloat;
-    if (this.marginTop > 0.0F)
-    {
-      paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
-      node().setMargin(YogaEdge.TOP, paramFloat);
-      if (this.iFlexBoxChange != null) {
-        this.iFlexBoxChange.onChange();
-      }
+    paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
+    node().setMargin(YogaEdge.TOP, paramFloat);
+    if (this.iFlexBoxChange != null) {
+      this.iFlexBoxChange.onChange();
     }
     AppMethodBeat.o(19359);
   }

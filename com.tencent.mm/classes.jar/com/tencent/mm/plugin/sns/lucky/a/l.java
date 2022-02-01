@@ -1,27 +1,29 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.c;
-import com.tencent.mm.model.cc.a;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.c;
+import com.tencent.mm.model.cd.a;
+import com.tencent.mm.modelsns.h;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.sns.storage.b;
+import com.tencent.mm.plugin.sns.data.j;
+import com.tencent.mm.plugin.sns.model.a;
 import com.tencent.mm.protocal.protobuf.SnsObject;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.cmj;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.protocal.protobuf.dba;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.crk;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.protocal.protobuf.dgn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.math.BigInteger;
 
 public final class l
-  implements cc.a
+  implements cd.a
 {
-  private static String as(String paramString1, String paramString2, String paramString3)
+  private static String az(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95188);
-    if ((bs.isNullOrNil(paramString1)) || (bs.isNullOrNil(paramString2)) || (bs.isNullOrNil(paramString3)))
+    if ((bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)) || (bt.isNullOrNil(paramString3)))
     {
       AppMethodBeat.o(95188);
       return "";
@@ -38,57 +40,59 @@ public final class l
     return "";
   }
   
-  public final void a(f.a parama)
+  public final void a(e.a parama)
   {
     AppMethodBeat.i(95187);
-    if ((parama == null) || (parama.fXi == null) || (parama.fXi.DPV == null))
+    if ((parama == null) || (parama.gqE == null) || (parama.gqE.Fvk == null))
     {
-      ac.i("MicroMsg.SimpleExperimentLsn", "recv null msg");
+      ad.i("MicroMsg.SimpleExperimentLsn", "recv null msg");
       AppMethodBeat.o(95187);
       return;
     }
-    Object localObject1 = z.a(parama.fXi.DPV);
-    ac.d("MicroMsg.SimpleExperimentLsn", "recv addMsg ".concat(String.valueOf(localObject1)));
-    parama = as((String)localObject1, "<TimelineObject", "</TimelineObject>");
-    if (bs.isNullOrNil(parama))
+    Object localObject1 = z.a(parama.gqE.Fvk);
+    ad.d("MicroMsg.SimpleExperimentLsn", "recv addMsg ".concat(String.valueOf(localObject1)));
+    parama = az((String)localObject1, "<TimelineObject", "</TimelineObject>");
+    if (bt.isNullOrNil(parama))
     {
-      ac.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  timelineObj tag");
+      ad.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  timelineObj tag");
       AppMethodBeat.o(95187);
       return;
     }
-    String str = as((String)localObject1, "<RecXml", "</RecXml>");
-    if (bs.isNullOrNil(str))
+    String str = az((String)localObject1, "<RecXml", "</RecXml>");
+    if (bt.isNullOrNil(str))
     {
-      ac.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  RecXml tag");
+      ad.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  RecXml tag");
       AppMethodBeat.o(95187);
       return;
     }
-    Object localObject2 = as((String)localObject1, "<ADInfo", "</ADInfo>");
-    if (bs.isNullOrNil((String)localObject2))
+    Object localObject2 = az((String)localObject1, "<ADInfo", "</ADInfo>");
+    if (bt.isNullOrNil((String)localObject2))
     {
-      ac.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  ADInfo tag");
+      ad.i("MicroMsg.SimpleExperimentLsn", "recv addMsg has no  ADInfo tag");
       AppMethodBeat.o(95187);
       return;
     }
-    com.tencent.mm.plugin.sns.waid.g.awf((String)localObject2);
-    localObject1 = com.tencent.mm.modelsns.g.Ds(parama);
-    cmj localcmj = new cmj();
-    localcmj.FzG = z.FI((String)localObject2);
-    localObject2 = new dba();
-    localcmj.FzF = ((dba)localObject2);
-    ((dba)localObject2).FKh = z.FI(str);
+    localObject1 = h.Gx(parama);
+    crk localcrk = new crk();
+    localcrk.HjO = z.IX((String)localObject2);
+    localObject2 = new dgn();
+    localcrk.HjN = ((dgn)localObject2);
+    ((dgn)localObject2).HuP = z.IX(str);
     SnsObject localSnsObject = new SnsObject();
     localSnsObject.Id = new BigInteger(((TimeLineObject)localObject1).Id).longValue();
     localSnsObject.CreateTime = ((TimeLineObject)localObject1).CreateTime;
-    localSnsObject.Username = ((TimeLineObject)localObject1).ncR;
+    localSnsObject.Username = ((TimeLineObject)localObject1).nDo;
     localSnsObject.ObjectDesc = z.al(parama.getBytes());
-    ((dba)localObject2).FIN = localSnsObject;
-    com.tencent.mm.plugin.sns.model.a.b(localcmj);
-    com.tencent.mm.plugin.sns.ad.timeline.a.a.a((TimeLineObject)localObject1, new b(str), 2);
+    ((dgn)localObject2).Htv = localSnsObject;
+    a.b(localcrk);
+    boolean bool = j.axQ(str);
+    parama = new com.tencent.mm.plugin.sns.storage.b(str);
+    ad.i("MicroMsg.SimpleExperimentLsn", "isUsePreferedInfo=" + bool + ", adXml.usePreferedInfo" + parama.zws);
+    com.tencent.mm.plugin.sns.ad.timeline.a.b.a((TimeLineObject)localObject1, parama, 2);
     AppMethodBeat.o(95187);
   }
   
-  public final void a(f.c paramc) {}
+  public final void a(e.c paramc) {}
 }
 
 

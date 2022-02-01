@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.scanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
+import com.tencent.mm.n.e;
 import com.tencent.mm.plugin.zero.b.a;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Arrays;
 import java.util.List;
 
 public final class h
 {
-  private static String MM(int paramInt)
+  private static String Oo(int paramInt)
   {
     switch (paramInt)
     {
@@ -35,26 +35,26 @@ public final class h
     return "vi";
   }
   
-  public static boolean dyY()
+  public static boolean dKw()
   {
     AppMethodBeat.i(151578);
-    int i = ((a)g.ab(a.class)).ZY().getInt("EnableSnsPicTranslation", 0);
-    Object localObject = ((a)g.ab(a.class)).ZY().getValue("PicTranslationSupportUserLanguage");
+    int i = ((a)g.ab(a.class)).acA().getInt("EnableSnsPicTranslation", 0);
+    Object localObject = ((a)g.ab(a.class)).acA().getValue("PicTranslationSupportUserLanguage");
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.ScannerHelper", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, ab.eUO() });
-      if ((i != 1) || (bs.isNullOrNil((String)localObject))) {
+      ad.i("MicroMsg.ScannerHelper", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, ac.fks() });
+      if ((i != 1) || (bt.isNullOrNil((String)localObject))) {
         break;
       }
       localObject = ((String)localObject).split(";");
-      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(ab.eUO()))) {
+      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(ac.fks()))) {
         break;
       }
       AppMethodBeat.o(151578);
       return true;
     }
-    if (d.DIg)
+    if (d.Fnn)
     {
       AppMethodBeat.o(151578);
       return true;
@@ -63,26 +63,26 @@ public final class h
     return false;
   }
   
-  public static boolean dyZ()
+  public static boolean dKx()
   {
     AppMethodBeat.i(151579);
-    int i = ((a)g.ab(a.class)).ZY().getInt("EnableFavPicTranslation", 0);
-    Object localObject = ((a)g.ab(a.class)).ZY().getValue("PicTranslationSupportUserLanguage");
+    int i = ((a)g.ab(a.class)).acA().getInt("EnableFavPicTranslation", 0);
+    Object localObject = ((a)g.ab(a.class)).acA().getValue("PicTranslationSupportUserLanguage");
     if (i == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.i("MicroMsg.ScannerHelper", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, ab.eUO() });
-      if ((i != 1) || (bs.isNullOrNil((String)localObject))) {
+      ad.i("MicroMsg.ScannerHelper", "enable %s, support lang %s, current lang %s", new Object[] { Boolean.valueOf(bool), localObject, ac.fks() });
+      if ((i != 1) || (bt.isNullOrNil((String)localObject))) {
         break;
       }
       localObject = ((String)localObject).split(";");
-      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(ab.eUO()))) {
+      if ((localObject == null) || (!Arrays.asList((Object[])localObject).contains(ac.fks()))) {
         break;
       }
       AppMethodBeat.o(151579);
       return true;
     }
-    if (d.DIg)
+    if (d.Fnn)
     {
       AppMethodBeat.o(151579);
       return true;
@@ -91,9 +91,9 @@ public final class h
     return false;
   }
   
-  public static int fg(List<Float> paramList)
+  public static int ft(List<Float> paramList)
   {
-    AppMethodBeat.i(192642);
+    AppMethodBeat.i(195333);
     if (paramList != null)
     {
       int j = 0;
@@ -104,10 +104,10 @@ public final class h
           break;
         }
         k = i;
-        if (!MM(j).equalsIgnoreCase("bg"))
+        if (!Oo(j).equalsIgnoreCase("bg"))
         {
           k = i;
-          if (!MM(j).equalsIgnoreCase(ab.eUO()))
+          if (!Oo(j).equalsIgnoreCase(ac.fks()))
           {
             int m = (int)(((Float)paramList.get(j)).floatValue() * 100.0F);
             k = i;
@@ -120,7 +120,7 @@ public final class h
       }
     }
     int k = 0;
-    AppMethodBeat.o(192642);
+    AppMethodBeat.o(195333);
     return k;
   }
 }

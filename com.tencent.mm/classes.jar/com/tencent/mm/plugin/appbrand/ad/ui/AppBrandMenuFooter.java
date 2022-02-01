@@ -12,12 +12,12 @@ import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.g;
 import com.tencent.mm.plugin.appbrand.ad.d;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class AppBrandMenuFooter
   extends LinearLayout
 {
-  private View jja;
+  private View jCI;
   
   public AppBrandMenuFooter(Context paramContext)
   {
@@ -38,22 +38,22 @@ public class AppBrandMenuFooter
   private void aM(Context paramContext)
   {
     AppMethodBeat.i(160570);
-    this.jja = LayoutInflater.from(paramContext).inflate(2131493011, this);
+    this.jCI = LayoutInflater.from(paramContext).inflate(2131493011, this);
     AppMethodBeat.o(160570);
   }
   
   public void setPageView(ae paramae)
   {
     AppMethodBeat.i(160571);
-    ((TextView)this.jja.findViewById(2131302654)).setText(bs.nullAsNil(d.HC(paramae.getAppId())));
-    ImageView localImageView = (ImageView)this.jja.findViewById(2131300874);
-    b.aAS().a(localImageView, d.HD(paramae.getAppId()), 2131230988, g.htk);
+    ((TextView)this.jCI.findViewById(2131302654)).setText(bt.nullAsNil(d.KP(paramae.getAppId())));
+    ImageView localImageView = (ImageView)this.jCI.findViewById(2131300874);
+    b.aDV().a(localImageView, d.KQ(paramae.getAppId()), 2131230988, g.hLC);
     AppMethodBeat.o(160571);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.ui.AppBrandMenuFooter
  * JD-Core Version:    0.7.0.1
  */

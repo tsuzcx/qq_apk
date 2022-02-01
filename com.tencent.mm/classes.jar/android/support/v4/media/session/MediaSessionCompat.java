@@ -26,14 +26,14 @@ public class MediaSessionCompat
     implements Parcelable
   {
     public static final Parcelable.Creator<QueueItem> CREATOR = new Parcelable.Creator() {};
-    private final MediaDescriptionCompat Jn;
-    private final long KQ;
-    private Object KR;
+    private final MediaDescriptionCompat Ld;
+    private final long MI;
+    private Object MJ;
     
     QueueItem(Parcel paramParcel)
     {
-      this.Jn = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
-      this.KQ = paramParcel.readLong();
+      this.Ld = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
+      this.MI = paramParcel.readLong();
     }
     
     private QueueItem(Object paramObject, MediaDescriptionCompat paramMediaDescriptionCompat, long paramLong)
@@ -44,9 +44,9 @@ public class MediaSessionCompat
       if (paramLong == -1L) {
         throw new IllegalArgumentException("Id cannot be QueueItem.UNKNOWN_ID");
       }
-      this.Jn = paramMediaDescriptionCompat;
-      this.KQ = paramLong;
-      this.KR = paramObject;
+      this.Ld = paramMediaDescriptionCompat;
+      this.MI = paramLong;
+      this.MJ = paramObject;
     }
     
     public static List<QueueItem> l(List<?> paramList)
@@ -60,7 +60,7 @@ public class MediaSessionCompat
       {
         paramList = localIterator.next();
         if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {}
-        for (paramList = null;; paramList = new QueueItem(paramList, MediaDescriptionCompat.u(((MediaSession.QueueItem)paramList).getDescription()), ((MediaSession.QueueItem)paramList).getQueueId()))
+        for (paramList = null;; paramList = new QueueItem(paramList, MediaDescriptionCompat.v(((MediaSession.QueueItem)paramList).getDescription()), ((MediaSession.QueueItem)paramList).getQueueId()))
         {
           localArrayList.add(paramList);
           break;
@@ -76,13 +76,13 @@ public class MediaSessionCompat
     
     public final String toString()
     {
-      return "MediaSession.QueueItem {Description=" + this.Jn + ", Id=" + this.KQ + " }";
+      return "MediaSession.QueueItem {Description=" + this.Ld + ", Id=" + this.MI + " }";
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      this.Jn.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeLong(this.KQ);
+      this.Ld.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeLong(this.MI);
     }
   }
   
@@ -90,11 +90,11 @@ public class MediaSessionCompat
     implements Parcelable
   {
     public static final Parcelable.Creator<ResultReceiverWrapper> CREATOR = new Parcelable.Creator() {};
-    ResultReceiver KS;
+    ResultReceiver MK;
     
     ResultReceiverWrapper(Parcel paramParcel)
     {
-      this.KS = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
+      this.MK = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
     }
     
     public final int describeContents()
@@ -104,7 +104,7 @@ public class MediaSessionCompat
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      this.KS.writeToParcel(paramParcel, paramInt);
+      this.MK.writeToParcel(paramParcel, paramInt);
     }
   }
   
@@ -112,9 +112,9 @@ public class MediaSessionCompat
     implements Parcelable
   {
     public static final Parcelable.Creator<Token> CREATOR = new Parcelable.Creator() {};
-    final Object KT;
-    b KU;
-    Bundle KV;
+    final Object ML;
+    b MM;
+    Bundle MN;
     
     Token(Object paramObject)
     {
@@ -128,20 +128,20 @@ public class MediaSessionCompat
     
     private Token(Object paramObject, b paramb, byte paramByte)
     {
-      this.KT = paramObject;
-      this.KU = paramb;
-      this.KV = null;
+      this.ML = paramObject;
+      this.MM = paramb;
+      this.MN = null;
     }
     
     public static Token a(Object paramObject, b paramb)
     {
       if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21)) {
-        return new Token(d.z(paramObject), paramb);
+        return new Token(d.A(paramObject), paramb);
       }
       return null;
     }
     
-    public static Token y(Object paramObject)
+    public static Token z(Object paramObject)
     {
       return a(paramObject, null);
     }
@@ -161,33 +161,33 @@ public class MediaSessionCompat
           return false;
         }
         paramObject = (Token)paramObject;
-        if (this.KT != null) {
+        if (this.ML != null) {
           break;
         }
-      } while (paramObject.KT == null);
+      } while (paramObject.ML == null);
       return false;
-      if (paramObject.KT == null) {
+      if (paramObject.ML == null) {
         return false;
       }
-      return this.KT.equals(paramObject.KT);
+      return this.ML.equals(paramObject.ML);
     }
     
     public final int hashCode()
     {
-      if (this.KT == null) {
+      if (this.ML == null) {
         return 0;
       }
-      return this.KT.hashCode();
+      return this.ML.hashCode();
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
-        paramParcel.writeParcelable((Parcelable)this.KT, paramInt);
+        paramParcel.writeParcelable((Parcelable)this.ML, paramInt);
         return;
       }
-      paramParcel.writeStrongBinder((IBinder)this.KT);
+      paramParcel.writeStrongBinder((IBinder)this.ML);
     }
   }
 }

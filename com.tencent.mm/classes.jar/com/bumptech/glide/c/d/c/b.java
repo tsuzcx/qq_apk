@@ -26,7 +26,7 @@ public abstract class b<T extends Drawable>
     while (!(this.drawable instanceof c)) {
       return;
     }
-    ((c)this.drawable).pm().prepareToDraw();
+    ((c)this.drawable).pE().prepareToDraw();
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.newtips;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mx;
+import com.tencent.mm.g.a.nf;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
@@ -11,42 +11,42 @@ public class PluginNewTips
   extends f
   implements com.tencent.mm.kernel.api.bucket.c
 {
-  private static HashMap<String, a> vmJ;
-  private com.tencent.mm.sdk.b.c<mx> vmK;
+  private static HashMap<String, a> wsb;
+  private com.tencent.mm.sdk.b.c<nf> wsc;
   
   static
   {
     AppMethodBeat.i(184027);
-    vmJ = new HashMap();
+    wsb = new HashMap();
     AppMethodBeat.o(184027);
   }
   
   public PluginNewTips()
   {
     AppMethodBeat.i(184022);
-    this.vmK = new com.tencent.mm.sdk.b.c() {};
+    this.wsc = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(184022);
   }
   
   public static void addLocalNewTipsCallback(String paramString, a parama)
   {
     AppMethodBeat.i(184025);
-    vmJ.put(paramString, parama);
+    wsb.put(paramString, parama);
     AppMethodBeat.o(184025);
   }
   
   public static void removeLocalNewTipsCallback(String paramString)
   {
     AppMethodBeat.i(184026);
-    vmJ.remove(paramString);
+    wsb.remove(paramString);
     AppMethodBeat.o(184026);
   }
   
   public void execute(g paramg)
   {
     AppMethodBeat.i(127208);
-    if (paramg.ahL()) {
-      pin(a.djZ());
+    if (paramg.akw()) {
+      pin(a.dul());
     }
     AppMethodBeat.o(127208);
   }
@@ -54,20 +54,20 @@ public class PluginNewTips
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(184023);
-    this.vmK.alive();
+    this.wsc.alive();
     AppMethodBeat.o(184023);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(184024);
-    this.vmK.dead();
+    this.wsc.dead();
     AppMethodBeat.o(184024);
   }
   
   public static abstract interface a
   {
-    public abstract void dkf();
+    public abstract void dur();
   }
 }
 

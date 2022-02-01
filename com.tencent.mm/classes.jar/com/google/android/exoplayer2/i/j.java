@@ -5,31 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public static boolean aE(String paramString)
-  {
-    AppMethodBeat.i(93140);
-    boolean bool = "audio".equals(aJ(paramString));
-    AppMethodBeat.o(93140);
-    return bool;
-  }
-  
-  public static boolean aF(String paramString)
-  {
-    AppMethodBeat.i(93141);
-    boolean bool = "video".equals(aJ(paramString));
-    AppMethodBeat.o(93141);
-    return bool;
-  }
-  
-  public static boolean aG(String paramString)
-  {
-    AppMethodBeat.i(93142);
-    boolean bool = "text".equals(aJ(paramString));
-    AppMethodBeat.o(93142);
-    return bool;
-  }
-  
-  public static String aH(String paramString)
+  public static String bA(String paramString)
   {
     AppMethodBeat.i(93145);
     if (paramString == null)
@@ -97,7 +73,7 @@ public final class j
     return null;
   }
   
-  public static int aI(String paramString)
+  public static int bB(String paramString)
   {
     AppMethodBeat.i(93146);
     if (TextUtils.isEmpty(paramString))
@@ -105,17 +81,17 @@ public final class j
       AppMethodBeat.o(93146);
       return -1;
     }
-    if (aE(paramString))
+    if (bx(paramString))
     {
       AppMethodBeat.o(93146);
       return 1;
     }
-    if (aF(paramString))
+    if (by(paramString))
     {
       AppMethodBeat.o(93146);
       return 2;
     }
-    if ((aG(paramString)) || ("application/cea-608".equals(paramString)) || ("application/cea-708".equals(paramString)) || ("application/x-mp4-cea-608".equals(paramString)) || ("application/x-subrip".equals(paramString)) || ("application/ttml+xml".equals(paramString)) || ("application/x-quicktime-tx3g".equals(paramString)) || ("application/x-mp4-vtt".equals(paramString)) || ("application/x-rawcc".equals(paramString)) || ("application/vobsub".equals(paramString)) || ("application/pgs".equals(paramString)) || ("application/dvbsubs".equals(paramString)))
+    if ((bz(paramString)) || ("application/cea-608".equals(paramString)) || ("application/cea-708".equals(paramString)) || ("application/x-mp4-cea-608".equals(paramString)) || ("application/x-subrip".equals(paramString)) || ("application/ttml+xml".equals(paramString)) || ("application/x-quicktime-tx3g".equals(paramString)) || ("application/x-mp4-vtt".equals(paramString)) || ("application/x-rawcc".equals(paramString)) || ("application/vobsub".equals(paramString)) || ("application/pgs".equals(paramString)) || ("application/dvbsubs".equals(paramString)))
     {
       AppMethodBeat.o(93146);
       return 3;
@@ -129,7 +105,7 @@ public final class j
     return -1;
   }
   
-  private static String aJ(String paramString)
+  private static String bC(String paramString)
   {
     AppMethodBeat.i(93147);
     if (paramString == null)
@@ -148,10 +124,34 @@ public final class j
     AppMethodBeat.o(93147);
     return paramString;
   }
+  
+  public static boolean bx(String paramString)
+  {
+    AppMethodBeat.i(93140);
+    boolean bool = "audio".equals(bC(paramString));
+    AppMethodBeat.o(93140);
+    return bool;
+  }
+  
+  public static boolean by(String paramString)
+  {
+    AppMethodBeat.i(93141);
+    boolean bool = "video".equals(bC(paramString));
+    AppMethodBeat.o(93141);
+    return bool;
+  }
+  
+  public static boolean bz(String paramString)
+  {
+    AppMethodBeat.i(93142);
+    boolean bool = "text".equals(bC(paramString));
+    AppMethodBeat.o(93142);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.i.j
  * JD-Core Version:    0.7.0.1
  */

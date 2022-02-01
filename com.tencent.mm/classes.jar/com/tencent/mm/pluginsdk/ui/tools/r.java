@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.webkit.MimeTypeMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.q;
 
@@ -25,13 +25,13 @@ public final class r
     this.uri = paramUri;
     if (paramUri == null)
     {
-      ac.e("MicroMsg.UriFileHelper", "initFileTypeAndPath uri == null");
+      ad.e("MicroMsg.UriFileHelper", "initFileTypeAndPath uri == null");
       AppMethodBeat.o(152425);
       return;
     }
     if (this.context == null)
     {
-      ac.e("MicroMsg.UriFileHelper", "initFileTypeAndPath context == null");
+      ad.e("MicroMsg.UriFileHelper", "initFileTypeAndPath context == null");
       AppMethodBeat.o(152425);
       return;
     }
@@ -45,12 +45,12 @@ public final class r
         localObject1 = new e(paramUri.getPath());
         if (!((e)localObject1).exists())
         {
-          ac.e("MicroMsg.UriFileHelper", "File is null");
+          ad.e("MicroMsg.UriFileHelper", "File is null");
           this.fileType = 0;
           AppMethodBeat.o(152425);
           return;
         }
-        this.filePath = q.B(((e)localObject1).fxV());
+        this.filePath = q.B(((e)localObject1).fOK());
         i = this.filePath.lastIndexOf(".");
         if ((i == -1) || (i >= this.filePath.length() - 1)) {
           this.fileType = 1;
@@ -69,7 +69,7 @@ public final class r
       if (this.context != null) {
         break label247;
       }
-      ac.e("MicroMsg.UriFileHelper", "getFilePath context == null");
+      ad.e("MicroMsg.UriFileHelper", "getFilePath context == null");
     }
     for (;;)
     {
@@ -79,12 +79,12 @@ public final class r
       localObject2 = this.context.getContentResolver().query(paramUri, null, null, null, null);
       if (localObject2 == null)
       {
-        ac.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor is null");
+        ad.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor is null");
       }
       else if ((((Cursor)localObject2).getCount() <= 0) || (!((Cursor)localObject2).moveToFirst()))
       {
         ((Cursor)localObject2).close();
-        ac.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor getCount is 0 or moveToFirst fail");
+        ad.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor getCount is 0 or moveToFirst fail");
       }
       else
       {
@@ -92,7 +92,7 @@ public final class r
         if (i == -1)
         {
           ((Cursor)localObject2).close();
-          ac.e("MicroMsg.UriFileHelper", "getFilePath : columnIdx is -1, column with columnName = _data does not exist");
+          ad.e("MicroMsg.UriFileHelper", "getFilePath : columnIdx is -1, column with columnName = _data does not exist");
         }
         else
         {
@@ -106,7 +106,7 @@ public final class r
     }
     for (;;)
     {
-      ac.d("MicroMsg.UriFileHelper", "MimeType[%s], filePath = [%s], fileType = [%s], type = [%s], Uri[%s]", new Object[] { paramContext, this.filePath, Integer.valueOf(this.fileType), paramContext, paramUri.toString() });
+      ad.d("MicroMsg.UriFileHelper", "MimeType[%s], filePath = [%s], fileType = [%s], type = [%s], Uri[%s]", new Object[] { paramContext, this.filePath, Integer.valueOf(this.fileType), paramContext, paramUri.toString() });
       AppMethodBeat.o(152425);
       return;
       if (paramContext.contains("video")) {
@@ -123,7 +123,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.r
  * JD-Core Version:    0.7.0.1
  */

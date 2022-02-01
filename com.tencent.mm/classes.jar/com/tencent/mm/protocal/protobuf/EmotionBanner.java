@@ -5,7 +5,7 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public class EmotionBanner
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
   public EmotionBannerImg BannerImg;
   public EmotionSummary BannerSummary;
@@ -30,12 +30,12 @@ public class EmotionBanner
       }
       if (this.BannerSummary != null)
       {
-        paramVarArgs.ln(1, this.BannerSummary.computeSize());
+        paramVarArgs.lC(1, this.BannerSummary.computeSize());
         this.BannerSummary.writeFields(paramVarArgs);
       }
       if (this.BannerImg != null)
       {
-        paramVarArgs.ln(2, this.BannerImg.computeSize());
+        paramVarArgs.lC(2, this.BannerImg.computeSize());
         this.BannerImg.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(104768);
@@ -47,20 +47,20 @@ public class EmotionBanner
       }
     }
     label562:
-    for (paramInt = f.a.a.a.lm(1, this.BannerSummary.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.a.lB(1, this.BannerSummary.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.BannerImg != null) {
-        i = paramInt + f.a.a.a.lm(2, this.BannerImg.computeSize());
+        i = paramInt + f.a.a.a.lB(2, this.BannerImg.computeSize());
       }
       AppMethodBeat.o(104768);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.BannerSummary == null)
@@ -91,7 +91,7 @@ public class EmotionBanner
           AppMethodBeat.o(104768);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
@@ -99,14 +99,14 @@ public class EmotionBanner
             localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new EmotionSummary();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((EmotionSummary)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            for (bool = true; bool; bool = ((EmotionSummary)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
             localEmotionBanner.BannerSummary = ((EmotionSummary)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104768);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
@@ -114,7 +114,7 @@ public class EmotionBanner
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new EmotionBannerImg();
           localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((EmotionBannerImg)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          for (bool = true; bool; bool = ((EmotionBannerImg)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
           localEmotionBanner.BannerImg = ((EmotionBannerImg)localObject1);
           paramInt += 1;
         }

@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.i.a;
 
-import com.tencent.mm.protocal.protobuf.aiz;
+import com.tencent.mm.kernel.c.a;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "T", "", "onModifyResult", "", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "(Ljava/lang/Object;Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;)V", "finder-sdk_release"})
-public abstract interface k<T>
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyFeedReproduce;", "Lcom/tencent/mm/kernel/service/IService;", "modifyFeedReproduce", "", "ifOpen", "", "finder-sdk_release"})
+public abstract interface k
+  extends a
 {
-  public abstract void a(T paramT, aiz paramaiz);
+  public abstract void lK(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.k
  * JD-Core Version:    0.7.0.1
  */

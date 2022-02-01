@@ -3,19 +3,19 @@ package com.tencent.mm.live.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LiveTimeUtil;", "", "()V", "Companion", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveTimeUtil;", "", "()V", "Companion", "plugin-logic_release"})
 public final class k
 {
-  public static final a gvB;
+  public static final a gPm;
   
   static
   {
-    AppMethodBeat.i(189873);
-    gvB = new a((byte)0);
-    AppMethodBeat.o(189873);
+    AppMethodBeat.i(212159);
+    gPm = new a((byte)0);
+    AppMethodBeat.o(212159);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/model/LiveTimeUtil$Companion;", "", "()V", "formatDuration", "", "durationMs", "", "splitStr", "formatDurationSecond", "duration", "", "showH", "", "showM", "showS", "plugin-logic_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/model/LiveTimeUtil$Companion;", "", "()V", "formatDuration", "", "durationMs", "", "splitStr", "formatDurationSecond", "duration", "", "showH", "", "showM", "showS", "plugin-logic_release"})
   public static final class a {}
 }
 

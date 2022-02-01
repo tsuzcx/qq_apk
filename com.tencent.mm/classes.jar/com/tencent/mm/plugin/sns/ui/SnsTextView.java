@@ -9,14 +9,14 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class SnsTextView
   extends TextView
 {
-  private String uaK = "";
-  private char ySb = '\000';
+  private char AjC = '\000';
+  private String vdt = "";
   
   public SnsTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class SnsTextView
     }
     catch (Throwable localThrowable)
     {
-      ac.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
       AppMethodBeat.o(99220);
     }
     return -1;
@@ -51,7 +51,7 @@ public class SnsTextView
     }
     catch (Throwable paramCanvas)
     {
-      ac.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
       AppMethodBeat.o(99219);
     }
   }
@@ -66,17 +66,17 @@ public class SnsTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(99218);
-    if ((ae.fJo.fFU == 1) || (ae.fJo.fFU == -1)) {
+    if ((ae.gcP.fZt == 1) || (ae.gcP.fZt == -1)) {
       try
       {
         super.onMeasure(paramInt1, paramInt2);
-        this.ySb = '\000';
+        this.AjC = '\000';
         AppMethodBeat.o(99218);
         return;
       }
       catch (IndexOutOfBoundsException localIndexOutOfBoundsException1)
       {
-        if (this.ySb < '\003')
+        if (this.AjC < '\003')
         {
           try
           {
@@ -85,33 +85,33 @@ public class SnsTextView
             if ((arrayOfMetricAffectingSpan != null) && (arrayOfMetricAffectingSpan.length > 0)) {
               localSpannableStringBuilder.insert(localSpannableStringBuilder.getSpanStart(arrayOfMetricAffectingSpan[0]) - 1, " ");
             }
-            for (this.ySb = ((char)(this.ySb + '\001'));; this.ySb = 'd')
+            for (this.AjC = ((char)(this.AjC + '\001'));; this.AjC = 'd')
             {
               setText(localSpannableStringBuilder);
               onMeasure(paramInt1, paramInt2);
               AppMethodBeat.o(99218);
               return;
             }
-            if (this.ySb != '\003') {
+            if (this.AjC != '\003') {
               break label269;
             }
           }
           catch (IndexOutOfBoundsException localIndexOutOfBoundsException2)
           {
-            ac.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + bs.isNullOrNil(this.uaK));
-            setText(this.uaK);
+            ad.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + bt.isNullOrNil(this.vdt));
+            setText(this.vdt);
             onMeasure(paramInt1, paramInt2);
-            this.ySb = ((char)(this.ySb + '\001'));
+            this.AjC = ((char)(this.AjC + '\001'));
             AppMethodBeat.o(99218);
             return;
           }
         }
         else
         {
-          ac.i("MicroMsg.SnsTextView", "fix error set origintext " + bs.isNullOrNil(this.uaK));
-          setText(this.uaK);
+          ad.i("MicroMsg.SnsTextView", "fix error set origintext " + bt.isNullOrNil(this.vdt));
+          setText(this.vdt);
           onMeasure(paramInt1, paramInt2);
-          this.ySb = ((char)(this.ySb + '\001'));
+          this.AjC = ((char)(this.AjC + '\001'));
           AppMethodBeat.o(99218);
           return;
         }
@@ -150,7 +150,7 @@ public class SnsTextView
   
   public void setOriginText(String paramString)
   {
-    this.uaK = paramString;
+    this.vdt = paramString;
   }
 }
 

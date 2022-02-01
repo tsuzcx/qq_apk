@@ -1,27 +1,32 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f.b;
-import d.d.f.c;
-import java.io.Closeable;
+import d.l;
+import kotlinx.coroutines.internal.t;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Ljava/io/Closeable;", "()V", "executor", "Ljava/util/concurrent/Executor;", "getExecutor", "()Ljava/util/concurrent/Executor;", "close", "", "Key", "kotlinx-coroutines-core"})
-public abstract class bg
-  extends ab
-  implements Closeable
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"CLOSED_EMPTY", "Lkotlinx/coroutines/internal/Symbol;", "CLOSED_EMPTY$annotations", "()V", "DISPOSED_TASK", "DISPOSED_TASK$annotations", "MAX_DELAY_NS", "", "MAX_MS", "MS_TO_NS", "SCHEDULE_COMPLETED", "", "SCHEDULE_DISPOSED", "SCHEDULE_OK", "delayNanosToMillis", "timeNanos", "delayToNanos", "timeMillis", "Queue", "T", "Lkotlinx/coroutines/internal/LockFreeTaskQueueCore;", "kotlinx-coroutines-core"})
+public final class bg
 {
-  public static final a LRK = new a((byte)0);
+  private static final t NID;
+  private static final t NIE;
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    extends d.d.b<ab, bg>
+  static
   {
-    private a()
-    {
-      super((d.g.a.b)1.LRL);
-      AppMethodBeat.i(191184);
-      AppMethodBeat.o(191184);
+    AppMethodBeat.i(190760);
+    NID = new t("REMOVED_TASK");
+    NIE = new t("CLOSED_EMPTY");
+    AppMethodBeat.o(190760);
+  }
+  
+  public static final long FD(long paramLong)
+  {
+    if (paramLong <= 0L) {
+      return 0L;
     }
+    if (paramLong >= 9223372036854L) {
+      return 9223372036854775807L;
+    }
+    return 1000000L * paramLong;
   }
 }
 

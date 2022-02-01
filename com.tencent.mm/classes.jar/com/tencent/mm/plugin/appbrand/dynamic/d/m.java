@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.b.b.a;
+import com.tencent.mm.ab.b.b.a;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.kernel.b.h;
@@ -18,15 +18,15 @@ public final class m
     super("showDatePickerView", 457);
   }
   
-  public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.ab.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121340);
-    parama = parama.afz();
+    parama = parama.ail();
     String str = parama.getString("__page_view_id", "");
     Bundle localBundle = new Bundle();
     localBundle.putString("id", str);
     localBundle.putString("data", paramJSONObject.toString());
-    XIPCInvoker.a(parama.getString("__process_name", ((h)com.tencent.mm.kernel.g.agO().agp()).mProcessName), localBundle, a.class, new com.tencent.mm.ipcinvoker.d() {});
+    XIPCInvoker.a(parama.getString("__process_name", ((h)com.tencent.mm.kernel.g.ajz().ajb()).mProcessName), localBundle, a.class, new com.tencent.mm.ipcinvoker.d() {});
     AppMethodBeat.o(121340);
   }
   

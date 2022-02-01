@@ -6,11 +6,11 @@ public abstract interface c
 {
   public abstract void b(com.tencent.mm.toolkit.a.c paramc);
   
-  public abstract void fX(Context paramContext);
+  public abstract void gc(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.a.c
  * JD-Core Version:    0.7.0.1
  */

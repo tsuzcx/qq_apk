@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class v
   implements g
 {
-  private final g bmW;
-  private final f bvn;
+  private final f bFB;
+  private final g bxr;
   
   public v(g paramg, f paramf)
   {
     AppMethodBeat.i(93102);
-    this.bmW = ((g)a.checkNotNull(paramg));
-    this.bvn = ((f)a.checkNotNull(paramf));
+    this.bxr = ((g)a.checkNotNull(paramg));
+    this.bFB = ((f)a.checkNotNull(paramf));
     AppMethodBeat.o(93102);
   }
   
   public final long a(j paramj)
   {
     AppMethodBeat.i(93103);
-    long l = this.bmW.a(paramj);
+    long l = this.bxr.a(paramj);
     j localj = paramj;
     if (paramj.length == -1L)
     {
@@ -30,7 +30,7 @@ public final class v
         localj = new j(paramj.uri, paramj.absoluteStreamPosition, paramj.position, l, paramj.key, paramj.flags);
       }
     }
-    this.bvn.b(localj);
+    this.bFB.b(localj);
     AppMethodBeat.o(93103);
     return l;
   }
@@ -40,12 +40,12 @@ public final class v
     AppMethodBeat.i(93106);
     try
     {
-      this.bmW.close();
+      this.bxr.close();
       return;
     }
     finally
     {
-      this.bvn.close();
+      this.bFB.close();
       AppMethodBeat.o(93106);
     }
   }
@@ -53,7 +53,7 @@ public final class v
   public final Uri getUri()
   {
     AppMethodBeat.i(93105);
-    Uri localUri = this.bmW.getUri();
+    Uri localUri = this.bxr.getUri();
     AppMethodBeat.o(93105);
     return localUri;
   }
@@ -61,9 +61,9 @@ public final class v
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93104);
-    paramInt2 = this.bmW.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt2 = this.bxr.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      this.bvn.write(paramArrayOfByte, paramInt1, paramInt2);
+      this.bFB.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     AppMethodBeat.o(93104);
     return paramInt2;

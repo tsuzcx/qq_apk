@@ -58,15 +58,7 @@ public class V8
     nativeLoadException = null;
     undefined = new V8Object.Undefined();
     invalid = new Object();
-    sLoadLibraryDelegate = new ILoadLibraryDelegate()
-    {
-      public final void loadLibrary(String paramAnonymousString)
-      {
-        AppMethodBeat.i(61784);
-        LibraryLoader.loadLibrary(paramAnonymousString);
-        AppMethodBeat.o(61784);
-      }
-    };
+    sLoadLibraryDelegate = new V8.1();
     AppMethodBeat.o(61968);
   }
   
@@ -342,9 +334,9 @@ public class V8
   
   public static void broadcastMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(194760);
+    AppMethodBeat.i(213643);
     _nativeTransBroadcastMessage(paramInt, paramString);
-    AppMethodBeat.o(194760);
+    AppMethodBeat.o(213643);
   }
   
   private void checkArgs(Object[] paramArrayOfObject)
@@ -473,23 +465,23 @@ public class V8
   {
     // Byte code:
     //   0: ldc_w 438
-    //   3: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 92	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
+    //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 90	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
     //   9: ifne +24 -> 33
-    //   12: getstatic 82	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
+    //   12: getstatic 80	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
     //   15: astore 5
     //   17: aload 5
     //   19: monitorenter
-    //   20: getstatic 92	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
+    //   20: getstatic 90	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
     //   23: ifne +7 -> 30
     //   26: aload_1
     //   27: invokestatic 441	com/eclipsesource/v8/V8:load	(Ljava/lang/String;)V
     //   30: aload 5
     //   32: monitorexit
     //   33: invokestatic 443	com/eclipsesource/v8/V8:checkNativeLibraryLoaded	()V
-    //   36: getstatic 90	com/eclipsesource/v8/V8:initialized	Z
+    //   36: getstatic 88	com/eclipsesource/v8/V8:initialized	Z
     //   39: ifne +33 -> 72
-    //   42: getstatic 82	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
+    //   42: getstatic 80	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
     //   45: astore_1
     //   46: aload_1
     //   47: monitorenter
@@ -504,21 +496,21 @@ public class V8
     //   66: aload_1
     //   67: monitorexit
     //   68: iconst_1
-    //   69: putstatic 90	com/eclipsesource/v8/V8:initialized	Z
+    //   69: putstatic 88	com/eclipsesource/v8/V8:initialized	Z
     //   72: new 2	com/eclipsesource/v8/V8
     //   75: dup
     //   76: aload_0
     //   77: iload_2
     //   78: invokespecial 113	com/eclipsesource/v8/V8:<init>	(Ljava/lang/String;Z)V
     //   81: astore_1
-    //   82: getstatic 82	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
+    //   82: getstatic 80	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
     //   85: astore_0
     //   86: aload_0
     //   87: monitorenter
-    //   88: getstatic 84	com/eclipsesource/v8/V8:runtimeCounter	I
+    //   88: getstatic 82	com/eclipsesource/v8/V8:runtimeCounter	I
     //   91: iconst_1
     //   92: iadd
-    //   93: putstatic 84	com/eclipsesource/v8/V8:runtimeCounter	I
+    //   93: putstatic 82	com/eclipsesource/v8/V8:runtimeCounter	I
     //   96: aload_0
     //   97: monitorexit
     //   98: ldc_w 438
@@ -667,9 +659,9 @@ public class V8
   
   public static long getNativeTransManager()
   {
-    AppMethodBeat.i(194758);
+    AppMethodBeat.i(213641);
     long l = _getNativeTransManager();
-    AppMethodBeat.o(194758);
+    AppMethodBeat.o(213641);
     return l;
   }
   
@@ -728,12 +720,12 @@ public class V8
     //   0: ldc 2
     //   2: monitorenter
     //   3: ldc_w 601
-    //   6: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: getstatic 106	com/eclipsesource/v8/V8:sLoadLibraryDelegate	Lcom/eclipsesource/v8/ILoadLibraryDelegate;
     //   12: aload_0
     //   13: invokeinterface 606 2 0
     //   18: iconst_1
-    //   19: putstatic 92	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
+    //   19: putstatic 90	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
     //   22: ldc_w 601
     //   25: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: ldc 2
@@ -741,7 +733,7 @@ public class V8
     //   31: return
     //   32: astore_0
     //   33: aload_0
-    //   34: putstatic 94	com/eclipsesource/v8/V8:nativeLoadError	Ljava/lang/Error;
+    //   34: putstatic 92	com/eclipsesource/v8/V8:nativeLoadError	Ljava/lang/Error;
     //   37: ldc_w 601
     //   40: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: goto -15 -> 28
@@ -752,7 +744,7 @@ public class V8
     //   51: athrow
     //   52: astore_0
     //   53: aload_0
-    //   54: putstatic 96	com/eclipsesource/v8/V8:nativeLoadException	Ljava/lang/Exception;
+    //   54: putstatic 94	com/eclipsesource/v8/V8:nativeLoadException	Ljava/lang/Exception;
     //   57: ldc_w 601
     //   60: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: goto -35 -> 28
@@ -825,9 +817,9 @@ public class V8
   
   public static void postMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(194759);
+    AppMethodBeat.i(213642);
     _nativeTransPostMessage(paramInt, paramString);
-    AppMethodBeat.o(194759);
+    AppMethodBeat.o(213642);
   }
   
   private void releaseArguments(Object[] paramArrayOfObject, boolean paramBoolean)
@@ -1201,13 +1193,13 @@ public class V8
   {
     // Byte code:
     //   0: ldc_w 842
-    //   3: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 136	com/eclipsesource/v8/V8:functionRegistry	Ljava/util/Map;
     //   10: lload_1
     //   11: invokestatic 845	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   14: invokeinterface 847 2 0
-    //   19: checkcast 13	com/eclipsesource/v8/V8$MethodDescriptor
+    //   19: checkcast 11	com/eclipsesource/v8/V8$MethodDescriptor
     //   22: astore 6
     //   24: aload 6
     //   26: getfield 851	com/eclipsesource/v8/V8$MethodDescriptor:callback	Lcom/eclipsesource/v8/JavaCallback;
@@ -1306,13 +1298,13 @@ public class V8
   {
     // Byte code:
     //   0: ldc_w 881
-    //   3: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: getfield 136	com/eclipsesource/v8/V8:functionRegistry	Ljava/util/Map;
     //   10: lload_1
     //   11: invokestatic 845	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   14: invokeinterface 847 2 0
-    //   19: checkcast 13	com/eclipsesource/v8/V8$MethodDescriptor
+    //   19: checkcast 11	com/eclipsesource/v8/V8$MethodDescriptor
     //   22: astore 6
     //   24: aload 6
     //   26: getfield 885	com/eclipsesource/v8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/v8/JavaVoidCallback;
@@ -1509,9 +1501,9 @@ public class V8
   
   public void enableNativeTrans()
   {
-    AppMethodBeat.i(194757);
+    AppMethodBeat.i(213640);
     _enableNativeTrans(this.v8RuntimePtr);
-    AppMethodBeat.o(194757);
+    AppMethodBeat.o(213640);
   }
   
   protected boolean equals(long paramLong1, long paramLong2, long paramLong3)
@@ -2203,49 +2195,49 @@ public class V8
   
   public void nativeDispatch()
   {
-    AppMethodBeat.i(194752);
+    AppMethodBeat.i(213635);
     _nativeDispatch(this.v8RuntimePtr);
-    AppMethodBeat.o(194752);
+    AppMethodBeat.o(213635);
   }
   
   public void nativeLoopStop()
   {
-    AppMethodBeat.i(194753);
+    AppMethodBeat.i(213636);
     _nativeLoopStop(this.v8RuntimePtr);
-    AppMethodBeat.o(194753);
+    AppMethodBeat.o(213636);
   }
   
   public void nativeMessageLoop()
   {
-    AppMethodBeat.i(194751);
+    AppMethodBeat.i(213634);
     _nativeMessageLoop(this.v8RuntimePtr);
-    AppMethodBeat.o(194751);
+    AppMethodBeat.o(213634);
   }
   
   protected void onNativeRunJavaTask()
   {
-    AppMethodBeat.i(194754);
+    AppMethodBeat.i(213637);
     if (this.nativeJavaCallback_ != null) {
       this.nativeJavaCallback_.run();
     }
-    AppMethodBeat.o(194754);
+    AppMethodBeat.o(213637);
   }
   
   protected void onNativeTransMsgDispatchByJava()
   {
-    AppMethodBeat.i(194756);
+    AppMethodBeat.i(213639);
     if (this._javaTaskScheduler != null) {
       this._javaTaskScheduler.Schedule(new Runnable()
       {
         public void run()
         {
-          AppMethodBeat.i(194750);
+          AppMethodBeat.i(213633);
           V8.access$200(V8.this.v8RuntimePtr);
-          AppMethodBeat.o(194750);
+          AppMethodBeat.o(213633);
         }
       });
     }
-    AppMethodBeat.o(194756);
+    AppMethodBeat.o(213639);
   }
   
   boolean pumpMessageLoop()
@@ -2473,10 +2465,10 @@ public class V8
   
   public void setJavaTaskScheduler(JavaTaskScheduler paramJavaTaskScheduler)
   {
-    AppMethodBeat.i(194755);
+    AppMethodBeat.i(213638);
     this._javaTaskScheduler = paramJavaTaskScheduler;
     _nativeTransSetJavaSchedule(1L);
-    AppMethodBeat.o(194755);
+    AppMethodBeat.o(213638);
   }
   
   public void setNativeJavaCallback(Runnable paramRunnable)
@@ -2609,7 +2601,7 @@ public class V8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.v8.V8
  * JD-Core Version:    0.7.0.1
  */

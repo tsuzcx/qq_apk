@@ -1,26 +1,43 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tav.coremedia.TextureInfo;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/TrackRenderInfo;", "", "track", "Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "texture", "Lcom/tencent/tav/coremedia/TextureInfo;", "(Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTexture", "()Lcom/tencent/tav/coremedia/TextureInfo;", "setTexture", "(Lcom/tencent/tav/coremedia/TextureInfo;)V", "getTrack", "()Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;", "setTrack", "(Lcom/tencent/mm/plugin/vlog/model/VLogCompositionTrack;)V", "plugin-vlog_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"enableMagic", "", "enableVideoTemplate", "plugin-vlog_release"})
 public final class p
 {
-  private u AnN;
-  public TextureInfo texture;
-  
-  public p(u paramu, TextureInfo paramTextureInfo)
+  public static final boolean erW()
   {
-    AppMethodBeat.i(207561);
-    this.AnN = paramu;
-    this.texture = paramTextureInfo;
-    AppMethodBeat.o(207561);
+    AppMethodBeat.i(195746);
+    if (!i.IS_FLAVOR_PURPLE) {
+      boolean bool = i.DEBUG;
+    }
+    if (ax.aQz("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_EDITOR_MAGIC_INT_SYNC", 0) == 1)
+    {
+      AppMethodBeat.o(195746);
+      return true;
+    }
+    AppMethodBeat.o(195746);
+    return false;
+  }
+  
+  public static final boolean erX()
+  {
+    AppMethodBeat.i(195747);
+    if (ax.aQz("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_EDITOR_VIDEO_TEMPLATE_INT_SYNC", 0) == 1)
+    {
+      AppMethodBeat.o(195747);
+      return true;
+    }
+    AppMethodBeat.o(195747);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.p
  * JD-Core Version:    0.7.0.1
  */

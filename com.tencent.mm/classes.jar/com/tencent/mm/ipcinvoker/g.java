@@ -7,11 +7,11 @@ import junit.framework.Assert;
 
 public final class g
 {
-  private static String gdU;
+  private static String gxE;
   public static Context sContext;
   
   /* Error */
-  private static String B(Context paramContext, int paramInt)
+  private static String C(Context paramContext, int paramInt)
   {
     // Byte code:
     //   0: ldc 13
@@ -200,13 +200,13 @@ public final class g
     //   162	175	288	java/lang/Exception
   }
   
-  public static String aeL()
+  public static String ahx()
   {
     AppMethodBeat.i(158733);
-    if ((gdU == null) || (gdU.length() == 0)) {
-      gdU = B(sContext, Process.myPid());
+    if ((gxE == null) || (gxE.length() == 0)) {
+      gxE = C(sContext, Process.myPid());
     }
-    String str = gdU;
+    String str = gxE;
     AppMethodBeat.o(158733);
     return str;
   }
@@ -220,10 +220,10 @@ public final class g
     return localContext;
   }
   
-  public static boolean tE(String paramString)
+  public static boolean wu(String paramString)
   {
     AppMethodBeat.i(158732);
-    if ((paramString != null) && (paramString.equals(aeL())))
+    if ((paramString != null) && (paramString.equals(ahx())))
     {
       AppMethodBeat.o(158732);
       return true;
@@ -234,7 +234,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.g
  * JD-Core Version:    0.7.0.1
  */

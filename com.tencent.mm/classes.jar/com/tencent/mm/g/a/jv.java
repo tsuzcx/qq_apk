@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class jv
   extends b
 {
-  public a dlp;
+  public a dwO;
+  public b dwP;
   
   public jv()
   {
@@ -15,21 +17,29 @@ public final class jv
   
   private jv(byte paramByte)
   {
-    AppMethodBeat.i(205627);
-    this.dlp = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(93325);
+    this.dwO = new a();
+    this.dwP = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(205627);
+    AppMethodBeat.o(93325);
   }
   
   public static final class a
   {
-    public int currentIndex;
+    public Context context;
+    public int enterScene = 0;
+    public int scene = 0;
+  }
+  
+  public static final class b
+  {
+    public String targetActivity;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.jv
  * JD-Core Version:    0.7.0.1
  */

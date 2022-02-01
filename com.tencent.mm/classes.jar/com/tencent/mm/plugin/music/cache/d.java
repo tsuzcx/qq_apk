@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.music.cache;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.BitSet;
 
 public final class d
 {
   public int count;
-  public String dnX;
-  public long ixc;
+  public String dzL;
+  public long iQl;
   public String mUrl;
-  public BitSet vdZ;
+  public BitSet wjv;
   
   public d(String paramString)
   {
     AppMethodBeat.i(137154);
-    this.vdZ = new BitSet();
-    this.ixc = -1L;
+    this.wjv = new BitSet();
+    this.iQl = -1L;
     this.count = 0;
-    this.dnX = "";
+    this.dzL = "";
     this.mUrl = paramString;
     AppMethodBeat.o(137154);
   }
   
-  private boolean dio()
+  private boolean dsA()
   {
     AppMethodBeat.i(137163);
-    ac.i("MicroMsg.Music.IndexBitMgr", "isCacheComplete, count:%d, cardinality:%d", new Object[] { Integer.valueOf(this.count), Integer.valueOf(this.vdZ.cardinality()) });
-    if ((this.count > 0) && (this.count == this.vdZ.cardinality()))
+    ad.i("MicroMsg.Music.IndexBitMgr", "isCacheComplete, count:%d, cardinality:%d", new Object[] { Integer.valueOf(this.count), Integer.valueOf(this.wjv.cardinality()) });
+    if ((this.count > 0) && (this.count == this.wjv.cardinality()))
     {
       AppMethodBeat.o(137163);
       return true;
@@ -37,87 +37,73 @@ public final class d
     return false;
   }
   
-  public final void JA(int paramInt)
+  public final void Lc(int paramInt)
   {
     AppMethodBeat.i(137157);
-    ac.i("MicroMsg.Music.IndexBitMgr", "setFileCacheComplete %d", new Object[] { Integer.valueOf(paramInt) });
-    if (!TextUtils.isEmpty(this.dnX)) {
-      e.ed(this.dnX, paramInt);
+    ad.i("MicroMsg.Music.IndexBitMgr", "setFileCacheComplete %d", new Object[] { Integer.valueOf(paramInt) });
+    if (!TextUtils.isEmpty(this.dzL)) {
+      e.ev(this.dzL, paramInt);
     }
     AppMethodBeat.o(137157);
   }
   
-  public final boolean JB(int paramInt)
+  public final boolean Ld(int paramInt)
   {
     AppMethodBeat.i(137159);
-    boolean bool = this.vdZ.get(paramInt);
+    boolean bool = this.wjv.get(paramInt);
     AppMethodBeat.o(137159);
     return bool;
   }
   
-  public final void JC(int paramInt)
+  public final void Le(int paramInt)
   {
     AppMethodBeat.i(137160);
-    this.vdZ.set(paramInt);
+    this.wjv.set(paramInt);
     AppMethodBeat.o(137160);
   }
   
-  public final void JD(int paramInt)
+  public final void Lf(int paramInt)
   {
     AppMethodBeat.i(137161);
-    this.vdZ.set(paramInt, false);
+    this.wjv.set(paramInt, false);
     AppMethodBeat.o(137161);
   }
   
   public final void clearCache()
   {
     AppMethodBeat.i(137156);
-    ac.i("MicroMsg.Music.IndexBitMgr", "clearCache");
-    this.vdZ = new BitSet(this.count);
-    JA(0);
-    if (!TextUtils.isEmpty(this.dnX)) {
-      e.s(this.dnX, null);
+    ad.i("MicroMsg.Music.IndexBitMgr", "clearCache");
+    this.wjv = new BitSet(this.count);
+    Lc(0);
+    if (!TextUtils.isEmpty(this.dzL)) {
+      e.t(this.dzL, null);
     }
     AppMethodBeat.o(137156);
   }
   
-  public final void din()
+  public final void dsz()
   {
     AppMethodBeat.i(137155);
-    if (!TextUtils.isEmpty(this.dnX))
+    if (!TextUtils.isEmpty(this.dzL))
     {
-      byte[] arrayOfByte = a.a(this.vdZ);
-      e.s(this.dnX, arrayOfByte);
+      byte[] arrayOfByte = a.a(this.wjv);
+      e.t(this.dzL, arrayOfByte);
     }
-    ac.d("MicroMsg.Music.IndexBitMgr", "saveBitCache bitSet:%s", new Object[] { this.vdZ.toString() });
-    ac.i("MicroMsg.Music.IndexBitMgr", "saveBitCache bitSet count %d, cardinality:" + this.count + "," + this.vdZ.cardinality());
-    if (dio()) {
-      JA(1);
+    ad.d("MicroMsg.Music.IndexBitMgr", "saveBitCache bitSet:%s", new Object[] { this.wjv.toString() });
+    ad.i("MicroMsg.Music.IndexBitMgr", "saveBitCache bitSet count %d, cardinality:" + this.count + "," + this.wjv.cardinality());
+    if (dsA()) {
+      Lc(1);
     }
     AppMethodBeat.o(137155);
   }
   
-  public final int getIndex(int paramInt)
-  {
-    AppMethodBeat.i(137158);
-    if (paramInt > this.ixc)
-    {
-      ac.e("MicroMsg.Music.IndexBitMgr", "getIndex, offset is invalid, offset:%d, fileLength:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.ixc) });
-      AppMethodBeat.o(137158);
-      return 0;
-    }
-    paramInt /= 8192;
-    AppMethodBeat.o(137158);
-    return paramInt;
-  }
-  
-  public final boolean gq(int paramInt1, int paramInt2)
+  public final boolean gI(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(137162);
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > this.ixc) || (paramInt1 + paramInt2 > this.ixc))
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt1 > this.iQl) || (paramInt1 + paramInt2 > this.iQl))
     {
-      ac.e("MicroMsg.Music.IndexBitMgr", "canReadFromCache offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(this.ixc) });
-      ac.e("MicroMsg.Music.IndexBitMgr", "canReadFromCache invalid parameter!");
+      ad.e("MicroMsg.Music.IndexBitMgr", "canReadFromCache offset %d, size %d, fileLength %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(this.iQl) });
+      ad.e("MicroMsg.Music.IndexBitMgr", "canReadFromCache invalid parameter!");
       AppMethodBeat.o(137162);
       return false;
     }
@@ -126,9 +112,9 @@ public final class d
     paramInt1 = i;
     while (paramInt1 <= paramInt2)
     {
-      if (!JB(i))
+      if (!Ld(i))
       {
-        ac.d("MicroMsg.Music.IndexBitMgr", "index %d, indexBit 0", new Object[] { Integer.valueOf(paramInt1) });
+        ad.d("MicroMsg.Music.IndexBitMgr", "index %d, indexBit 0", new Object[] { Integer.valueOf(paramInt1) });
         AppMethodBeat.o(137162);
         return false;
       }
@@ -136,6 +122,20 @@ public final class d
     }
     AppMethodBeat.o(137162);
     return true;
+  }
+  
+  public final int getIndex(int paramInt)
+  {
+    AppMethodBeat.i(137158);
+    if (paramInt > this.iQl)
+    {
+      ad.e("MicroMsg.Music.IndexBitMgr", "getIndex, offset is invalid, offset:%d, fileLength:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.iQl) });
+      AppMethodBeat.o(137158);
+      return 0;
+    }
+    paramInt /= 8192;
+    AppMethodBeat.o(137158);
+    return paramInt;
   }
   
   public static final class a
@@ -161,7 +161,7 @@ public final class d
       return arrayOfByte;
     }
     
-    public static BitSet br(byte[] paramArrayOfByte)
+    public static BitSet bz(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(137153);
       BitSet localBitSet = new BitSet(paramArrayOfByte.length * 8);

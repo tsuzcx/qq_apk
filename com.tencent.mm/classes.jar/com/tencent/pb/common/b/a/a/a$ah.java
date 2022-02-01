@@ -6,106 +6,114 @@ import com.google.b.a.e;
 public final class a$ah
   extends e
 {
-  public int EFp = 0;
-  public int JNV = 0;
-  public int JNW = 0;
-  public int JNX = 0;
-  public int JNY = 0;
-  public int JNZ = 0;
-  public int JOa = -1;
-  public int JOb = 0;
+  public int GnD = 0;
+  public int LHE = 0;
+  public int LHF = 0;
+  public int LHG = 0;
+  public int LHH = 0;
+  public int LHI = 0;
+  public int LHJ = -1;
+  public int LHK = 0;
+  public int LHL = 0;
   public int roomId = 0;
-  public long tIG = 0L;
+  public long uLt = 0L;
   
   public a$ah()
   {
-    this.bGA = -1;
+    this.bQO = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.EFp != 0) {
-      paramb.bw(1, this.EFp);
+    if (this.GnD != 0) {
+      paramb.by(1, this.GnD);
     }
     if (this.roomId != 0) {
-      paramb.bv(2, this.roomId);
+      paramb.bx(2, this.roomId);
     }
-    if (this.tIG != 0L) {
-      paramb.n(3, this.tIG);
+    if (this.uLt != 0L) {
+      paramb.n(3, this.uLt);
     }
-    if (this.JNV != 0) {
-      paramb.bw(4, this.JNV);
+    if (this.LHE != 0) {
+      paramb.by(4, this.LHE);
     }
-    if (this.JNW != 0) {
-      paramb.bw(5, this.JNW);
+    if (this.LHF != 0) {
+      paramb.by(5, this.LHF);
     }
-    if (this.JNX != 0) {
-      paramb.bw(6, this.JNX);
+    if (this.LHG != 0) {
+      paramb.by(6, this.LHG);
     }
-    if (this.JNY != 0) {
-      paramb.bw(7, this.JNY);
+    if (this.LHH != 0) {
+      paramb.by(7, this.LHH);
     }
-    if (this.JNZ != 0) {
-      paramb.bw(8, this.JNZ);
+    if (this.LHI != 0) {
+      paramb.by(8, this.LHI);
     }
-    if (this.JOa != -1) {
-      paramb.bv(9, this.JOa);
+    if (this.LHJ != -1) {
+      paramb.bx(9, this.LHJ);
     }
-    if (this.JOb != 0) {
-      paramb.bv(10, this.JOb);
+    if (this.LHK != 0) {
+      paramb.bx(10, this.LHK);
+    }
+    if (this.LHL != 0) {
+      paramb.bx(11, this.LHL);
     }
     super.a(paramb);
   }
   
-  public final int xT()
+  public final int zq()
   {
-    int j = super.xT();
+    int j = super.zq();
     int i = j;
-    if (this.EFp != 0) {
-      i = j + b.by(1, this.EFp);
+    if (this.GnD != 0) {
+      i = j + b.bA(1, this.GnD);
     }
     j = i;
     if (this.roomId != 0) {
-      j = i + b.bx(2, this.roomId);
+      j = i + b.bz(2, this.roomId);
     }
     i = j;
-    if (this.tIG != 0L) {
-      i = j + b.p(3, this.tIG);
+    if (this.uLt != 0L) {
+      i = j + b.p(3, this.uLt);
     }
     j = i;
-    if (this.JNV != 0) {
-      j = i + b.by(4, this.JNV);
+    if (this.LHE != 0) {
+      j = i + b.bA(4, this.LHE);
     }
     i = j;
-    if (this.JNW != 0) {
-      i = j + b.by(5, this.JNW);
+    if (this.LHF != 0) {
+      i = j + b.bA(5, this.LHF);
     }
     j = i;
-    if (this.JNX != 0) {
-      j = i + b.by(6, this.JNX);
+    if (this.LHG != 0) {
+      j = i + b.bA(6, this.LHG);
     }
     i = j;
-    if (this.JNY != 0) {
-      i = j + b.by(7, this.JNY);
+    if (this.LHH != 0) {
+      i = j + b.bA(7, this.LHH);
     }
     j = i;
-    if (this.JNZ != 0) {
-      j = i + b.by(8, this.JNZ);
+    if (this.LHI != 0) {
+      j = i + b.bA(8, this.LHI);
     }
     i = j;
-    if (this.JOa != -1) {
-      i = j + b.bx(9, this.JOa);
+    if (this.LHJ != -1) {
+      i = j + b.bz(9, this.LHJ);
     }
     j = i;
-    if (this.JOb != 0) {
-      j = i + b.bx(10, this.JOb);
+    if (this.LHK != 0) {
+      j = i + b.bz(10, this.LHK);
     }
-    return j;
+    i = j;
+    if (this.LHL != 0) {
+      i = j + b.bz(11, this.LHL);
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ah
  * JD-Core Version:    0.7.0.1
  */

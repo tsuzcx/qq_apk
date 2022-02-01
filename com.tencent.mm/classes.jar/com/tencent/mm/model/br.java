@@ -1,63 +1,123 @@
 package com.tencent.mm.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.a;
-import com.tencent.mm.az.a.a;
-import com.tencent.mm.storage.bo;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
 public final class br
-  extends a
 {
-  public br(Map<String, String> paramMap, bo parambo)
+  public static br hHT;
+  private SharedPreferences hHU;
+  
+  static
   {
-    super(paramMap, parambo);
+    AppMethodBeat.i(132261);
+    hHT = new br();
+    AppMethodBeat.o(132261);
   }
   
-  public static void axo()
+  private br()
   {
-    AppMethodBeat.i(123974);
-    a.a.a("reportbizlocation", new a.a()
+    AppMethodBeat.i(132258);
+    this.hHU = aj.getContext().getSharedPreferences(aj.fkC() + "_register_history", 0);
+    AppMethodBeat.o(132258);
+  }
+  
+  public final void g(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(132259);
+    Object localObject;
+    for (;;)
     {
-      public final a a(Map<String, String> paramAnonymousMap, bo paramAnonymousbo)
+      try
       {
-        AppMethodBeat.i(123972);
-        paramAnonymousMap = new br(paramAnonymousMap, paramAnonymousbo);
-        AppMethodBeat.o(123972);
-        return paramAnonymousMap;
+        if (paramMap.isEmpty())
+        {
+          ad.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
+          AppMethodBeat.o(132259);
+          return;
+        }
+        if (!this.hHU.contains(paramString)) {
+          break label173;
+        }
+        localObject = this.hHU.getString(paramString, "");
+        if (!bt.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+          Iterator localIterator = paramMap.keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          String str = (String)localIterator.next();
+          ((JSONObject)localObject).put(str, paramMap.get(str));
+          continue;
+        }
+        localObject = new JSONObject();
       }
-    });
-    AppMethodBeat.o(123974);
+      catch (Exception paramMap)
+      {
+        ad.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        AppMethodBeat.o(132259);
+        return;
+      }
+      continue;
+      label173:
+      localObject = new JSONObject();
+    }
+    ad.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.hHU.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.o(132259);
   }
   
-  public final boolean axn()
+  public final String getString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(123973);
-    if (this.values == null)
+    AppMethodBeat.i(132260);
+    try
     {
-      AppMethodBeat.o(123973);
-      return false;
+      ad.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.hHU.contains(paramString1))
+      {
+        Object localObject = new String(Base64.decode(this.hHU.getString(paramString1, ""), 0));
+        if (!bt.isNullOrNil((String)localObject))
+        {
+          ad.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has(paramString2))
+          {
+            localObject = ((JSONObject)localObject).getString(paramString2);
+            AppMethodBeat.o(132260);
+            return localObject;
+          }
+        }
+      }
+      else
+      {
+        ad.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
+      }
     }
-    if (!this.TYPE.equals("reportbizlocation"))
+    catch (Exception localException)
     {
-      AppMethodBeat.o(123973);
-      return false;
+      for (;;)
+      {
+        ad.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+      }
     }
-    String str2 = (String)this.values.get(".sysmsg.reportbizlocation.text");
-    String str1 = (String)this.values.get(".sysmsg.reportbizlocation.link.text");
-    str2 = str2 + str1;
-    this.hOC.add(str1);
-    this.hOD.addFirst(Integer.valueOf(str2.length() - str1.length()));
-    this.hOE.add(Integer.valueOf(str2.length()));
-    this.hOA = str2;
-    AppMethodBeat.o(123973);
-    return false;
+    AppMethodBeat.o(132260);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.br
  * JD-Core Version:    0.7.0.1
  */

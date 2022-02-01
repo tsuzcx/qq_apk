@@ -12,24 +12,24 @@ import org.xwalk.core.Log;
 
 public final class t
 {
-  static boolean Kzm;
-  static List<String> Kzo;
-  static List<String> Kzp;
-  static HashSet<String> Kzq;
-  static HashSet<String> Kzr;
+  static boolean MpH;
+  static List<String> MpJ;
+  static List<String> MpK;
+  static HashSet<String> MpL;
+  static HashSet<String> MpM;
   
   static
   {
     AppMethodBeat.i(156768);
-    Kzo = new ArrayList();
-    Kzp = new ArrayList();
-    Kzq = new HashSet();
-    Kzr = new HashSet();
+    MpJ = new ArrayList();
+    MpK = new ArrayList();
+    MpL = new HashSet();
+    MpM = new HashSet();
     init();
     AppMethodBeat.o(156768);
   }
   
-  private static boolean H(String paramString, List<String> paramList)
+  private static boolean J(String paramString, List<String> paramList)
   {
     AppMethodBeat.i(156766);
     paramList = paramList.iterator();
@@ -74,53 +74,56 @@ public final class t
     return false;
   }
   
-  public static boolean aUS(String paramString)
+  public static boolean baV(String paramString)
   {
     AppMethodBeat.i(156763);
     if (!init())
     {
+      Log.i("UrlDispatcher", "init urldispatcher failed ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(156763);
       return false;
     }
     if (TextUtils.isEmpty(paramString))
     {
+      Log.e("UrlDispatcher", "host is empty ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(156763);
       return false;
     }
     paramString = paramString.trim();
-    if ((!a(paramString, Kzq)) && (!H(paramString, Kzo)))
+    if ((!a(paramString, MpL)) && (!J(paramString, MpJ)))
     {
+      Log.i("UrlDispatcher", "not in white list ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(156763);
       return false;
     }
-    if ((a(paramString, Kzr)) || (H(paramString, Kzp)))
+    if ((a(paramString, MpM)) || (J(paramString, MpK)))
     {
-      g.r(903L, 121L, 1L);
+      g.t(903L, 121L, 1L);
       Log.i("UrlDispatcher", "dispatch to toolsmp failed in blacklist, host = ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(156763);
       return false;
     }
-    g.r(903L, 120L, 1L);
+    g.t(903L, 120L, 1L);
     Log.i("UrlDispatcher", "dispatch to toolsmp suc, host = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(156763);
     return true;
   }
   
-  public static boolean aUT(String paramString)
+  public static boolean baW(String paramString)
   {
-    AppMethodBeat.i(205064);
-    if ((a(paramString, Kzr)) || (H(paramString, Kzp)))
+    AppMethodBeat.i(197075);
+    if ((a(paramString, MpM)) || (J(paramString, MpK)))
     {
-      g.r(903L, 121L, 1L);
+      g.t(903L, 121L, 1L);
       Log.i("UrlDispatcher", "isInXWebBlackList dispatch to toolsmp failed in blacklist, host = ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(205064);
+      AppMethodBeat.o(197075);
       return true;
     }
-    AppMethodBeat.o(205064);
+    AppMethodBeat.o(197075);
     return false;
   }
   
-  private static List<String> aUU(String paramString)
+  private static List<String> baX(String paramString)
   {
     AppMethodBeat.i(156765);
     ArrayList localArrayList = new ArrayList();
@@ -157,57 +160,57 @@ public final class t
     //   1: istore_0
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc 163
+    //   5: ldc 172
     //   7: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: getstatic 165	com/tencent/xweb/t:Kzm	Z
+    //   10: getstatic 174	com/tencent/xweb/t:MpH	Z
     //   13: ifeq +13 -> 26
-    //   16: ldc 163
+    //   16: ldc 172
     //   18: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: ldc 2
     //   23: monitorexit
     //   24: iload_0
     //   25: ireturn
-    //   26: ldc 167
-    //   28: ldc 169
-    //   30: invokestatic 175	com/tencent/xweb/a:mx	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   26: ldc 176
+    //   28: ldc 178
+    //   30: invokestatic 184	com/tencent/xweb/a:mV	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   33: astore_1
-    //   34: ldc 177
-    //   36: ldc 169
-    //   38: invokestatic 175	com/tencent/xweb/a:mx	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   34: ldc 186
+    //   36: ldc 178
+    //   38: invokestatic 184	com/tencent/xweb/a:mV	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   41: astore_2
-    //   42: ldc 179
-    //   44: ldc 169
-    //   46: invokestatic 175	com/tencent/xweb/a:mx	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   42: ldc 188
+    //   44: ldc 178
+    //   46: invokestatic 184	com/tencent/xweb/a:mV	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   49: astore_3
-    //   50: ldc 181
-    //   52: ldc 169
-    //   54: invokestatic 175	com/tencent/xweb/a:mx	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   50: ldc 190
+    //   52: ldc 178
+    //   54: invokestatic 184	com/tencent/xweb/a:mV	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   57: astore 4
-    //   59: getstatic 30	com/tencent/xweb/t:Kzo	Ljava/util/List;
+    //   59: getstatic 30	com/tencent/xweb/t:MpJ	Ljava/util/List;
     //   62: aload_1
-    //   63: invokestatic 183	com/tencent/xweb/t:aUU	(Ljava/lang/String;)Ljava/util/List;
-    //   66: invokeinterface 187 2 0
+    //   63: invokestatic 192	com/tencent/xweb/t:baX	(Ljava/lang/String;)Ljava/util/List;
+    //   66: invokeinterface 196 2 0
     //   71: pop
-    //   72: getstatic 32	com/tencent/xweb/t:Kzp	Ljava/util/List;
+    //   72: getstatic 32	com/tencent/xweb/t:MpK	Ljava/util/List;
     //   75: aload_2
-    //   76: invokestatic 183	com/tencent/xweb/t:aUU	(Ljava/lang/String;)Ljava/util/List;
-    //   79: invokeinterface 187 2 0
+    //   76: invokestatic 192	com/tencent/xweb/t:baX	(Ljava/lang/String;)Ljava/util/List;
+    //   79: invokeinterface 196 2 0
     //   84: pop
-    //   85: getstatic 37	com/tencent/xweb/t:Kzq	Ljava/util/HashSet;
+    //   85: getstatic 37	com/tencent/xweb/t:MpL	Ljava/util/HashSet;
     //   88: aload_3
-    //   89: invokestatic 183	com/tencent/xweb/t:aUU	(Ljava/lang/String;)Ljava/util/List;
-    //   92: invokevirtual 188	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
+    //   89: invokestatic 192	com/tencent/xweb/t:baX	(Ljava/lang/String;)Ljava/util/List;
+    //   92: invokevirtual 197	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
     //   95: pop
-    //   96: getstatic 39	com/tencent/xweb/t:Kzr	Ljava/util/HashSet;
+    //   96: getstatic 39	com/tencent/xweb/t:MpM	Ljava/util/HashSet;
     //   99: aload 4
-    //   101: invokestatic 183	com/tencent/xweb/t:aUU	(Ljava/lang/String;)Ljava/util/List;
-    //   104: invokevirtual 188	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
+    //   101: invokestatic 192	com/tencent/xweb/t:baX	(Ljava/lang/String;)Ljava/util/List;
+    //   104: invokevirtual 197	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
     //   107: pop
     //   108: iconst_1
-    //   109: putstatic 165	com/tencent/xweb/t:Kzm	Z
-    //   112: getstatic 165	com/tencent/xweb/t:Kzm	Z
+    //   109: putstatic 174	com/tencent/xweb/t:MpH	Z
+    //   112: getstatic 174	com/tencent/xweb/t:MpH	Z
     //   115: istore_0
-    //   116: ldc 163
+    //   116: ldc 172
     //   118: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   121: goto -100 -> 21
     //   124: astore_1
@@ -216,9 +219,9 @@ public final class t
     //   128: aload_1
     //   129: athrow
     //   130: astore_1
-    //   131: ldc 124
-    //   133: ldc 190
-    //   135: invokestatic 193	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   131: ldc 106
+    //   133: ldc 199
+    //   135: invokestatic 126	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   138: goto -26 -> 112
     // Local variable table:
     //   start	length	slot	name	signature
@@ -242,14 +245,14 @@ public final class t
   {
     try
     {
-      AppMethodBeat.i(205065);
-      Kzm = false;
-      Kzo = new ArrayList();
-      Kzp = new ArrayList();
-      Kzq = new HashSet();
-      Kzr = new HashSet();
+      AppMethodBeat.i(197076);
+      MpH = false;
+      MpJ = new ArrayList();
+      MpK = new ArrayList();
+      MpL = new HashSet();
+      MpM = new HashSet();
       init();
-      AppMethodBeat.o(205065);
+      AppMethodBeat.o(197076);
       return;
     }
     finally

@@ -19,15 +19,15 @@
         </FrameLayout>
         <include layout="@layout/blv" />
     </com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/f93" android:background="@drawable/ac3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="@dimen/ah7" android:layout_marginRight="24.0dip">
+    <LinearLayout android:orientation="vertical" android:id="@id/f93" android:background="@drawable/ac3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="@dimen/ah7" android:layout_marginRight="24.0dip">
         <FrameLayout android:id="@id/f92" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ah8">
             <com.tencent.mm.plugin.websearch.ui.widget.SOSEditTextView android:id="@id/fqo" android:layout_width="fill_parent" android:layout_height="48.0dip" />
             <View android:layout_gravity="bottom" android:id="@id/f87" android:background="@color/a_j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginBottom="7.6999817dip" />
         </FrameLayout>
     </LinearLayout>
-    <com.tencent.mm.plugin.fts.ui.widget.FTSMainUIEducationLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/f8r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ah6" android:layout_alignParentLeft="true" android:layout_alignParentStart="true" />
+    <com.tencent.mm.plugin.fts.ui.widget.FTSMainUIEducationLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/f8r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ah6" android:layout_alignParentLeft="true" android:layout_alignParentStart="true" />
     <View android:id="@id/fqp" android:background="@color/a2u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="48.0dip" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/gbw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="56.0dip" android:layout_centerHorizontal="true">
+    <LinearLayout android:orientation="horizontal" android:id="@id/gbw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="56.0dip" android:layout_centerHorizontal="true">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="4.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@raw/sos_logo_icon" app:iconColor="@color/Red" />
         <TextView android:textSize="@dimen/gy" android:textColor="@color/y4" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/c7n" />
     </LinearLayout>

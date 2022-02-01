@@ -6,28 +6,28 @@ import java.util.Set;
 
 final class e
 {
-  c[] bLI;
-  private final f bLJ;
-  final ArrayList<d> bLX;
-  Set<Character> bLY;
+  c[] bVV;
+  private final f bVW;
+  final ArrayList<d> bWk;
+  Set<Character> bWl;
   
   e(f paramf)
   {
     AppMethodBeat.i(39849);
-    this.bLX = new ArrayList();
-    this.bLJ = paramf;
+    this.bWk = new ArrayList();
+    this.bVW = paramf;
     AppMethodBeat.o(39849);
   }
   
-  private char[] yy()
+  private char[] zV()
   {
     AppMethodBeat.i(39855);
-    int j = this.bLX.size();
+    int j = this.bWk.size();
     char[] arrayOfChar = new char[j];
     int i = 0;
     while (i < j)
     {
-      arrayOfChar[i] = ((d)this.bLX.get(i)).bLK;
+      arrayOfChar[i] = ((d)this.bWk.get(i)).bVX;
       i += 1;
     }
     AppMethodBeat.o(39855);
@@ -37,21 +37,21 @@ final class e
   final void b(char[] paramArrayOfChar)
   {
     AppMethodBeat.i(39850);
-    if (this.bLI == null)
+    if (this.bVV == null)
     {
       paramArrayOfChar = new IllegalStateException("Need to call #setCharacterLists first.");
       AppMethodBeat.o(39850);
       throw paramArrayOfChar;
     }
     int i = 0;
-    while (i < this.bLX.size()) {
-      if (((d)this.bLX.get(i)).yv() > 0.0F) {
+    while (i < this.bWk.size()) {
+      if (((d)this.bWk.get(i)).zS() > 0.0F) {
         i += 1;
       } else {
-        this.bLX.remove(i);
+        this.bWk.remove(i);
       }
     }
-    int[] arrayOfInt = a.a(yy(), paramArrayOfChar, this.bLY);
+    int[] arrayOfInt = a.a(zV(), paramArrayOfChar, this.bWl);
     int j = 0;
     int k = 0;
     i = 0;
@@ -64,9 +64,9 @@ final class e
         AppMethodBeat.o(39850);
         throw paramArrayOfChar;
       case 1: 
-        this.bLX.add(i, new d(this.bLI, this.bLJ));
+        this.bWk.add(i, new d(this.bVV, this.bVW));
       case 0: 
-        ((d)this.bLX.get(i)).o(paramArrayOfChar[k]);
+        ((d)this.bWk.get(i)).q(paramArrayOfChar[k]);
         i += 1;
         k += 1;
       }
@@ -74,7 +74,7 @@ final class e
       {
         j += 1;
         break;
-        ((d)this.bLX.get(i)).o('\000');
+        ((d)this.bWk.get(i)).q('\000');
         i += 1;
       }
     }
@@ -84,13 +84,13 @@ final class e
   final void onAnimationEnd()
   {
     AppMethodBeat.i(39851);
-    int j = this.bLX.size();
+    int j = this.bWk.size();
     int i = 0;
     while (i < j)
     {
-      d locald = (d)this.bLX.get(i);
-      locald.yw();
-      locald.bLT = locald.bLR;
+      d locald = (d)this.bWk.get(i);
+      locald.zT();
+      locald.bWg = locald.bWe;
       i += 1;
     }
     AppMethodBeat.o(39851);
@@ -99,57 +99,57 @@ final class e
   final void setAnimationProgress(float paramFloat)
   {
     AppMethodBeat.i(39852);
-    int j = this.bLX.size();
+    int j = this.bWk.size();
     int i = 0;
     while (i < j)
     {
-      d locald = (d)this.bLX.get(i);
+      d locald = (d)this.bWk.get(i);
       if (paramFloat == 1.0F)
       {
-        locald.bLK = locald.bLL;
-        locald.bLU = 0.0F;
-        locald.bLV = 0.0F;
+        locald.bVX = locald.bVY;
+        locald.bWh = 0.0F;
+        locald.bWi = 0.0F;
       }
-      float f1 = locald.bLJ.bLP;
+      float f1 = locald.bVW.bWc;
       float f2 = Math.abs(locald.endIndex - locald.startIndex) * f1 * paramFloat / f1;
       float f3 = (int)f2;
-      float f4 = locald.bLV;
-      locald.bLO = ((f2 - f3) * f1 * locald.bLW + f4 * (1.0F - paramFloat));
+      float f4 = locald.bWi;
+      locald.bWb = ((f2 - f3) * f1 * locald.bWj + f4 * (1.0F - paramFloat));
       int k = locald.startIndex;
-      locald.bLN = ((int)f2 * locald.bLW + k);
-      locald.bLP = f1;
-      locald.bLR = (locald.bLQ + (locald.bLS - locald.bLQ) * paramFloat);
+      locald.bWa = ((int)f2 * locald.bWj + k);
+      locald.bWc = f1;
+      locald.bWe = (locald.bWd + (locald.bWf - locald.bWd) * paramFloat);
       i += 1;
     }
     AppMethodBeat.o(39852);
   }
   
-  final float yv()
+  final float zS()
   {
     AppMethodBeat.i(39854);
     float f = 0.0F;
-    int j = this.bLX.size();
+    int j = this.bWk.size();
     int i = 0;
     while (i < j)
     {
-      f += ((d)this.bLX.get(i)).yv();
+      f += ((d)this.bWk.get(i)).zS();
       i += 1;
     }
     AppMethodBeat.o(39854);
     return f;
   }
   
-  final float yx()
+  final float zU()
   {
     AppMethodBeat.i(39853);
     float f = 0.0F;
-    int j = this.bLX.size();
+    int j = this.bWk.size();
     int i = 0;
     while (i < j)
     {
-      d locald = (d)this.bLX.get(i);
-      locald.yw();
-      f += locald.bLT;
+      d locald = (d)this.bWk.get(i);
+      locald.zT();
+      f += locald.bWg;
       i += 1;
     }
     AppMethodBeat.o(39853);

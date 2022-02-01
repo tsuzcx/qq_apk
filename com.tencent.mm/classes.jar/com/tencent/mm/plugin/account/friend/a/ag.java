@@ -1,68 +1,70 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.a;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.a;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.protobuf.bep;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.bix;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class ag
   extends n
   implements k
 {
-  com.tencent.mm.ak.g callback;
-  public final q hwy;
+  f callback;
+  public final q hON;
   
   public ag(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(131118);
     this.callback = null;
-    this.hwy = new a();
-    u.a locala = (u.a)this.hwy.getReqObj();
-    locala.iKO.ETW = paramString1;
-    locala.iKO.ETX = paramString2;
-    locala.iKO.ndW = paramString3;
-    locala.iKO.ETY = paramString4;
-    locala.iKO.ETZ = paramString5;
-    locala.iKO.EUa = paramString6;
-    locala.iKO.EUb = paramInt;
-    locala.iKO.pAD = ab.eUO();
-    paramString1 = locala.iKO;
-    com.tencent.mm.kernel.g.agP();
-    paramString1.DUo = a.agc();
+    this.hON = new a();
+    u.a locala = (u.a)this.hON.getReqObj();
+    locala.jdX.GDt = paramString1;
+    locala.jdX.GDu = paramString2;
+    locala.jdX.nEt = paramString3;
+    locala.jdX.GDv = paramString4;
+    locala.jdX.GDw = paramString5;
+    locala.jdX.GDx = paramString6;
+    locala.jdX.GDy = paramInt;
+    locala.jdX.qei = com.tencent.mm.sdk.platformtools.ac.fks();
+    paramString1 = locala.jdX;
+    g.ajA();
+    paramString1.FzI = a.aiO();
     AppMethodBeat.o(131118);
   }
   
-  public final String aHA()
+  public final String aKL()
   {
     AppMethodBeat.i(131122);
-    String str = ((u.b)this.hwy.getRespObj()).iKP.ETZ;
+    String str = ((u.b)this.hON.getRespObj()).jdY.GDw;
     AppMethodBeat.o(131122);
     return str;
   }
   
-  public final byte[] aHB()
+  public final byte[] aKM()
   {
     AppMethodBeat.i(131121);
-    byte[] arrayOfByte = z.a(((u.b)this.hwy.getRespObj()).iKP.EUc, new byte[0]);
+    byte[] arrayOfByte = z.a(((u.b)this.hON.getRespObj()).jdY.GDz, new byte[0]);
     AppMethodBeat.o(131121);
     return arrayOfByte;
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(131119);
-    this.callback = paramg;
-    int i = dispatch(parame, this.hwy, this);
+    this.callback = paramf;
+    int i = dispatch(parame, this.hON, this);
     AppMethodBeat.o(131119);
     return i;
   }
@@ -78,18 +80,18 @@ public final class ag
     if ((paramInt2 == 4) && (paramInt3 == -102))
     {
       paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      com.tencent.mm.kernel.g.agU().az(new Runnable()
+      ad.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      g.ajF().ay(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(131116);
-          new com.tencent.mm.modelsimple.l().doScene(ag.this.dispatcher(), new com.tencent.mm.ak.g()
+          new com.tencent.mm.modelsimple.l().doScene(ag.this.dispatcher(), new f()
           {
             public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
             {
               AppMethodBeat.i(131115);
-              com.tencent.mm.sdk.platformtools.ac.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              ad.d("MicroMsg.NetSceneGetSuggestAlias", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
                 ag.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", ag.this);
@@ -117,22 +119,22 @@ public final class ag
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    return n.b.hwa;
+    return n.b.hOp;
   }
   
   public final void setSecurityCheckError(n.a parama) {}
   
   public static final class a
-    extends com.tencent.mm.ak.l
+    extends com.tencent.mm.al.l
   {
-    private final u.a iLl;
-    private final u.b iLm;
+    private final u.a jeu;
+    private final u.b jev;
     
     public a()
     {
       AppMethodBeat.i(131117);
-      this.iLl = new u.a();
-      this.iLm = new u.b();
+      this.jeu = new u.a();
+      this.jev = new u.b();
       AppMethodBeat.o(131117);
     }
     
@@ -143,12 +145,12 @@ public final class ag
     
     public final l.d getReqObjImp()
     {
-      return this.iLl;
+      return this.jeu;
     }
     
     public final l.e getRespObj()
     {
-      return this.iLm;
+      return this.jev;
     }
     
     public final int getType()
@@ -164,7 +166,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.ag
  * JD-Core Version:    0.7.0.1
  */

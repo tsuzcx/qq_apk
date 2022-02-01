@@ -2,54 +2,54 @@ package com.tencent.mm.emoji.loader.a;
 
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.af;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ag;
 import d.l;
 import java.lang.ref.WeakReference;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/cache/AnimateCache;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cache", "Lcom/tencent/mm/sdk/platformtools/LruCache;", "Ljava/lang/ref/WeakReference;", "Landroid/graphics/drawable/Drawable;", "get", "key", "put", "", "drawable", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/cache/AnimateCache;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "cache", "Lcom/tencent/mm/sdk/platformtools/LruCache;", "Ljava/lang/ref/WeakReference;", "Landroid/graphics/drawable/Drawable;", "get", "key", "put", "", "drawable", "plugin-emojisdk_release"})
 public final class a
 {
   private static final String TAG = "MicroMsg.EmojiLoader.AnimateCache";
-  private static final af<String, WeakReference<Drawable>> fPf;
-  public static final a fPg;
+  private static final ag<String, WeakReference<Drawable>> giF;
+  public static final a giG;
   
   static
   {
     AppMethodBeat.i(105412);
-    fPg = new a();
+    giG = new a();
     TAG = "MicroMsg.EmojiLoader.AnimateCache";
-    fPf = new af(20);
+    giF = new ag(20);
     AppMethodBeat.o(105412);
   }
   
   public static void put(String paramString, Drawable paramDrawable)
   {
     AppMethodBeat.i(105411);
-    ac.i(TAG, "put ".concat(String.valueOf(paramString)));
+    ad.i(TAG, "put ".concat(String.valueOf(paramString)));
     if (paramString != null)
     {
       if (paramDrawable != null)
       {
-        fPf.put(paramString, new WeakReference(paramDrawable));
+        giF.put(paramString, new WeakReference(paramDrawable));
         AppMethodBeat.o(105411);
         return;
       }
-      fPf.remove(paramString);
+      giF.remove(paramString);
     }
     AppMethodBeat.o(105411);
   }
   
-  public static Drawable td(String paramString)
+  public static Drawable vS(String paramString)
   {
     AppMethodBeat.i(105410);
-    ac.i(TAG, "get ".concat(String.valueOf(paramString)));
+    ad.i(TAG, "get ".concat(String.valueOf(paramString)));
     if (paramString == null)
     {
       AppMethodBeat.o(105410);
       return null;
     }
-    paramString = (WeakReference)fPf.get(paramString);
+    paramString = (WeakReference)giF.get(paramString);
     if (paramString != null)
     {
       paramString = (Drawable)paramString.get();

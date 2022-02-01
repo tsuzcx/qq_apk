@@ -21,7 +21,7 @@ import org.apache.commons.a.c;
 
 public final class a
 {
-  public static ArrayList<DetectCode> J(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public static ArrayList<DetectCode> L(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     AppMethodBeat.i(3508);
     ArrayList localArrayList1 = new ArrayList();
@@ -70,7 +70,7 @@ public final class a
     AppMethodBeat.o(3506);
   }
   
-  public static int ee(String paramString)
+  public static int eZ(String paramString)
   {
     AppMethodBeat.i(3507);
     if (paramString != null) {}
@@ -104,7 +104,7 @@ public final class a
     return false;
   }
   
-  public static QbarNative.QbarAiModelParam kN(Context paramContext)
+  public static QbarNative.QbarAiModelParam la(Context paramContext)
   {
     AppMethodBeat.i(3509);
     try
@@ -118,14 +118,14 @@ public final class a
       int i = localSharedPreferences.getInt("qbar_ai_model_version", 0);
       int j = localSharedPreferences.getInt("qbar_ai_model_copy_version", 0);
       Log.i("ScanUtil", String.format("version %d, copyVersion %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-      if ((i != 102) || (i != j))
+      if ((i != 103) || (i != j))
       {
         d(paramContext.getResources().getAssets().open("qbar/detect_model.bin"), str1);
         d(paramContext.getResources().getAssets().open("qbar/detect_model.param"), str2);
         d(paramContext.getResources().getAssets().open("qbar/srnet.bin"), str3);
         d(paramContext.getResources().getAssets().open("qbar/srnet.param"), str4);
-        localSharedPreferences.edit().putInt("qbar_ai_model_version", 102).apply();
-        localSharedPreferences.edit().putInt("qbar_ai_model_copy_version", 102).commit();
+        localSharedPreferences.edit().putInt("qbar_ai_model_version", 103).apply();
+        localSharedPreferences.edit().putInt("qbar_ai_model_copy_version", 103).commit();
       }
       paramContext = new QbarNative.QbarAiModelParam();
       paramContext.detect_model_bin_path_ = str1;
@@ -145,7 +145,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.scanlib.a
  * JD-Core Version:    0.7.0.1
  */

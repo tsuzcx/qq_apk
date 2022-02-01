@@ -5,7 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class CoreService$InnerService
   extends Service
@@ -30,7 +30,7 @@ public class CoreService$InnerService
     {
       for (;;)
       {
-        ac.e("MicroMsg.CoreService", "set service for push exception:%s.", new Object[] { localNullPointerException });
+        ad.e("MicroMsg.CoreService", "set service for push exception:%s.", new Object[] { localNullPointerException });
       }
     }
   }

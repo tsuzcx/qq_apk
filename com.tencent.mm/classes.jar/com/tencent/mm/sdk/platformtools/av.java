@@ -1,906 +1,172 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.content.pm.ApplicationInfo;
 import android.os.Looper;
-import android.util.LruCache;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.os.Message;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.WeakHashMap;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
 
-@Deprecated
-public final class av
-  implements SharedPreferences
+public class av
+  extends ap
 {
-  private static final Object GsB;
-  private static final LruCache<String, av> GsD;
-  private static ao Gss;
-  private final Object GsA;
-  private final WeakHashMap<SharedPreferences.OnSharedPreferenceChangeListener, Object> GsC;
-  private FLock Gst;
-  private File Gsu;
-  private File Gsv;
-  private boolean Gsw;
-  private int Gsx;
-  private long Gsy;
-  private long Gsz;
-  private Map<String, Object> gen;
-  private boolean gha;
-  private int mMode;
+  private static int Idt;
+  private final int Idu;
+  private long Ief;
+  private final a Ieg;
+  private final boolean lle;
+  private boolean mStop;
   
-  static
+  public av(Looper paramLooper, a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(156249);
-    Gss = null;
-    GsB = new Object();
-    GsD = new LruCache(5);
-    AppMethodBeat.o(156249);
+    super(paramLooper);
+    AppMethodBeat.i(157716);
+    this.Ief = 0L;
+    this.mStop = false;
+    this.Ieg = parama;
+    this.Idu = fkY();
+    this.lle = paramBoolean;
+    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.fVV()))) {
+      ad.e("MicroMsg.MTimerHandler", "MTimerHandler can not init handler with initThread, stack %s", new Object[] { bt.flS() });
+    }
+    AppMethodBeat.o(157716);
   }
   
-  private av()
+  public av(a parama, a parama1, boolean paramBoolean)
   {
-    AppMethodBeat.i(156232);
-    this.Gst = null;
-    this.Gsu = null;
-    this.Gsv = null;
-    this.mMode = 0;
-    this.Gsw = false;
-    this.gen = null;
-    this.Gsx = 0;
-    this.gha = false;
-    this.Gsy = 0L;
-    this.Gsz = 0L;
-    this.GsA = new Object();
-    this.GsC = new WeakHashMap();
-    RuntimeException localRuntimeException = new RuntimeException("Not supported.");
-    AppMethodBeat.o(156232);
-    throw localRuntimeException;
+    super(parama);
+    AppMethodBeat.i(182966);
+    this.Ief = 0L;
+    this.mStop = false;
+    this.Ieg = parama1;
+    this.Idu = fkY();
+    this.lle = paramBoolean;
+    AppMethodBeat.o(182966);
   }
   
-  private av(Context paramContext, String paramString, int paramInt)
+  public av(a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(156233);
-    this.Gst = null;
-    this.Gsu = null;
-    this.Gsv = null;
-    this.mMode = 0;
-    this.Gsw = false;
-    this.gen = null;
-    this.Gsx = 0;
-    this.gha = false;
-    this.Gsy = 0L;
-    this.Gsz = 0L;
-    this.GsA = new Object();
-    this.GsC = new WeakHashMap();
-    Context localContext = paramContext.getApplicationContext();
-    if (Gss == null) {
-      Gss = new ao(Looper.getMainLooper());
+    AppMethodBeat.i(157715);
+    this.Ief = 0L;
+    this.mStop = false;
+    this.Ieg = parama;
+    this.Idu = fkY();
+    this.lle = paramBoolean;
+    if ((Thread.currentThread().getName().equals("initThread")) || ("initThread".equals(a.fVV()))) {
+      ad.e("MicroMsg.MTimerHandler", "MTimerHandler can not init handler with initThread, stack %s", new Object[] { bt.flS() });
     }
-    String str = localContext.getApplicationInfo().dataDir;
-    if (str != null)
-    {
-      paramContext = str;
-      if (str.length() != 0) {}
-    }
-    else
-    {
-      ac.w("MicroMsg.MultiProcSharedPreferences", "Failed to retrive data path by ApplicationInfo.dataDir, use prefix hardcoded version instead.");
-      paramContext = "/data/data/" + localContext.getPackageName();
-    }
-    ac.i("MicroMsg.MultiProcSharedPreferences", "Path to store sp data: ".concat(String.valueOf(paramContext)));
-    paramContext = new File(paramContext, "shared_prefs");
-    if (!paramContext.exists())
-    {
-      paramContext.mkdirs();
-      this.Gsu = new File(paramContext, paramString + ".xml");
-      paramContext = this.Gsu;
-      this.Gsv = new File(paramContext.getPath() + ".bak");
-      this.mMode = paramInt;
-      if ((paramInt & 0x4) == 0) {
-        break label370;
-      }
-    }
-    label370:
-    for (boolean bool = true;; bool = false)
-    {
-      this.Gsw = bool;
-      if (this.Gsw) {
-        this.Gst = new FLock(this.Gsu.getPath() + ".lock");
-      }
-      eVt();
-      AppMethodBeat.o(156233);
-      return;
-      if ((paramContext.canRead()) && (paramContext.canWrite())) {
-        break;
-      }
-      paramContext.setReadable(true, true);
-      paramContext.setWritable(true, true);
-      break;
-    }
+    AppMethodBeat.o(157715);
   }
   
-  private void eVt()
+  public av(String paramString, a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(156234);
-    try
+    super(paramString);
+    AppMethodBeat.i(182965);
+    this.Ief = 0L;
+    this.mStop = false;
+    this.Ieg = parama;
+    this.Idu = fkY();
+    this.lle = paramBoolean;
+    AppMethodBeat.o(182965);
+  }
+  
+  private static int fkY()
+  {
+    if (Idt >= 8192) {
+      Idt = 0;
+    }
+    int i = Idt + 1;
+    Idt = i;
+    return i;
+  }
+  
+  public final void CX(long paramLong)
+  {
+    AppMethodBeat.i(221723);
+    az(paramLong, paramLong);
+    AppMethodBeat.o(221723);
+  }
+  
+  public final void az(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(157721);
+    this.Ief = paramLong2;
+    stopTimer();
+    this.mStop = false;
+    sendEmptyMessageDelayed(this.Idu, paramLong1);
+    AppMethodBeat.o(157721);
+  }
+  
+  protected void finalize()
+  {
+    AppMethodBeat.i(157717);
+    stopTimer();
+    super.finalize();
+    AppMethodBeat.o(157717);
+  }
+  
+  public final boolean fkZ()
+  {
+    AppMethodBeat.i(157722);
+    if ((this.mStop) || (!hasMessages(this.Idu)))
     {
-      this.gha = false;
-      Runnable local1 = new Runnable()
+      AppMethodBeat.o(157722);
+      return true;
+    }
+    AppMethodBeat.o(157722);
+    return false;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    AppMethodBeat.i(157718);
+    if (paramMessage.what == this.Idu)
+    {
+      if (this.Ieg == null)
       {
-        public final void run()
-        {
-          AppMethodBeat.i(156202);
-          synchronized (av.this)
-          {
-            av.a(av.this);
-            AppMethodBeat.o(156202);
-            return;
-          }
-        }
-      };
-      h.JZN.aV(local1);
-      AppMethodBeat.o(156234);
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(156234);
-    }
-  }
-  
-  private void eVu()
-  {
-    AppMethodBeat.i(156237);
-    while (!this.gha) {
-      try
-      {
-        wait();
-      }
-      catch (InterruptedException localInterruptedException) {}
-    }
-    AppMethodBeat.o(156237);
-  }
-  
-  public static SharedPreferences s(Context paramContext, String paramString, int paramInt)
-  {
-    int i = 1;
-    AppMethodBeat.i(156231);
-    aw localaw = aw.aKT(paramString);
-    if (av.a.eVw())
-    {
-      ac.i("MicroMsg.MultiProcSharedPreferences", "sp: %s, use Flock version MultiProcessSP.", new Object[] { paramString });
-      av localav = (av)GsD.get(paramString);
-      if (localav == null)
-      {
-        paramContext = new av(paramContext, paramString, paramInt);
-        GsD.put(paramString, paramContext);
-      }
-      for (;;)
-      {
-        aw.a(paramContext, localaw);
-        AppMethodBeat.o(156231);
-        return localaw;
-        paramContext = localav;
-        if ((paramInt & 0x4) != 0)
-        {
-          for (;;)
-          {
-            try
-            {
-              if (localav.Gsx <= 0)
-              {
-                paramInt = i;
-                if (localav.Gsy == localav.Gsu.lastModified())
-                {
-                  if (localav.Gsz != localav.Gsu.length()) {
-                    paramInt = i;
-                  }
-                }
-                else
-                {
-                  if (paramInt != 0) {
-                    break label177;
-                  }
-                  paramContext = localav;
-                  break;
-                }
-              }
-            }
-            finally
-            {
-              AppMethodBeat.o(156231);
-            }
-            paramInt = 0;
-          }
-          label177:
-          localav.eVt();
-          paramContext = localav;
-        }
-      }
-    }
-    ac.i("MicroMsg.MultiProcSharedPreferences", "sp: %s, use system sp.", new Object[] { paramString });
-    paramContext = paramContext.getSharedPreferences(paramString, paramInt);
-    AppMethodBeat.o(156231);
-    return paramContext;
-  }
-  
-  public final boolean contains(String paramString)
-  {
-    AppMethodBeat.i(156245);
-    try
-    {
-      eVu();
-      boolean bool = this.gen.containsKey(paramString);
-      return bool;
-    }
-    finally
-    {
-      AppMethodBeat.o(156245);
-    }
-  }
-  
-  public final SharedPreferences.Editor edit()
-  {
-    AppMethodBeat.i(156246);
-    try
-    {
-      eVu();
-      b localb = new b((byte)0);
-      AppMethodBeat.o(156246);
-      return localb;
-    }
-    finally
-    {
-      AppMethodBeat.o(156246);
-    }
-  }
-  
-  public final Map<String, ?> getAll()
-  {
-    AppMethodBeat.i(156238);
-    try
-    {
-      eVu();
-      HashMap localHashMap = new HashMap(this.gen);
-      return localHashMap;
-    }
-    finally
-    {
-      AppMethodBeat.o(156238);
-    }
-  }
-  
-  public final boolean getBoolean(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(156244);
-    try
-    {
-      eVu();
-      paramString = (Boolean)this.gen.get(paramString);
-      if (paramString != null) {
-        paramBoolean = paramString.booleanValue();
-      }
-      return paramBoolean;
-    }
-    finally
-    {
-      AppMethodBeat.o(156244);
-    }
-  }
-  
-  public final float getFloat(String paramString, float paramFloat)
-  {
-    AppMethodBeat.i(156243);
-    try
-    {
-      eVu();
-      paramString = (Float)this.gen.get(paramString);
-      if (paramString != null) {
-        paramFloat = paramString.floatValue();
-      }
-      return paramFloat;
-    }
-    finally
-    {
-      AppMethodBeat.o(156243);
-    }
-  }
-  
-  public final int getInt(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(156241);
-    try
-    {
-      eVu();
-      paramString = (Integer)this.gen.get(paramString);
-      if (paramString != null) {
-        paramInt = paramString.intValue();
-      }
-      return paramInt;
-    }
-    finally
-    {
-      AppMethodBeat.o(156241);
-    }
-  }
-  
-  public final long getLong(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(156242);
-    try
-    {
-      eVu();
-      paramString = (Long)this.gen.get(paramString);
-      if (paramString != null) {
-        paramLong = paramString.longValue();
-      }
-      return paramLong;
-    }
-    finally
-    {
-      AppMethodBeat.o(156242);
-    }
-  }
-  
-  /* Error */
-  public final String getString(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: ldc_w 456
-    //   3: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: monitorenter
-    //   8: aload_0
-    //   9: invokespecial 399	com/tencent/mm/sdk/platformtools/av:eVu	()V
-    //   12: aload_0
-    //   13: getfield 92	com/tencent/mm/sdk/platformtools/av:gen	Ljava/util/Map;
-    //   16: aload_1
-    //   17: invokeinterface 423 2 0
-    //   22: checkcast 145	java/lang/String
-    //   25: astore_1
-    //   26: aload_1
-    //   27: ifnull +13 -> 40
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: ldc_w 456
-    //   35: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   38: aload_1
-    //   39: areturn
-    //   40: aload_2
-    //   41: astore_1
-    //   42: goto -12 -> 30
-    //   45: astore_1
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: ldc_w 456
-    //   51: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   54: aload_1
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	av
-    //   0	56	1	paramString1	String
-    //   0	56	2	paramString2	String
-    // Exception table:
-    //   from	to	target	type
-    //   8	26	45	finally
-    //   30	32	45	finally
-    //   46	48	45	finally
-  }
-  
-  /* Error */
-  public final Set<String> getStringSet(String paramString, Set<String> paramSet)
-  {
-    // Byte code:
-    //   0: ldc_w 459
-    //   3: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: monitorenter
-    //   8: aload_0
-    //   9: invokespecial 399	com/tencent/mm/sdk/platformtools/av:eVu	()V
-    //   12: aload_0
-    //   13: getfield 92	com/tencent/mm/sdk/platformtools/av:gen	Ljava/util/Map;
-    //   16: aload_1
-    //   17: invokeinterface 423 2 0
-    //   22: checkcast 461	java/util/Set
-    //   25: astore_1
-    //   26: aload_1
-    //   27: ifnull +13 -> 40
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: ldc_w 459
-    //   35: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   38: aload_1
-    //   39: areturn
-    //   40: aload_2
-    //   41: astore_1
-    //   42: goto -12 -> 30
-    //   45: astore_1
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: ldc_w 459
-    //   51: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   54: aload_1
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	av
-    //   0	56	1	paramString	String
-    //   0	56	2	paramSet	Set<String>
-    // Exception table:
-    //   from	to	target	type
-    //   8	26	45	finally
-    //   30	32	45	finally
-    //   46	48	45	finally
-  }
-  
-  public final void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
-  {
-    AppMethodBeat.i(156235);
-    try
-    {
-      this.GsC.put(paramOnSharedPreferenceChangeListener, GsB);
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(156235);
-    }
-  }
-  
-  public final void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
-  {
-    AppMethodBeat.i(156236);
-    try
-    {
-      this.GsC.remove(paramOnSharedPreferenceChangeListener);
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(156236);
-    }
-  }
-  
-  final class b
-    implements SharedPreferences.Editor
-  {
-    private final Map<String, Object> GsH;
-    private boolean GsI;
-    
-    private b()
-    {
-      AppMethodBeat.i(156213);
-      this.GsH = new HashMap();
-      this.GsI = false;
-      AppMethodBeat.o(156213);
-    }
-    
-    private FileOutputStream Q(File paramFile)
-    {
-      AppMethodBeat.i(156225);
-      try
-      {
-        FileOutputStream localFileOutputStream = new FileOutputStream(paramFile);
-        paramFile = localFileOutputStream;
-      }
-      catch (FileNotFoundException localFileNotFoundException1)
-      {
-        for (;;)
-        {
-          Object localObject = paramFile.getParentFile();
-          if (!((File)localObject).mkdir())
-          {
-            ac.e("MicroMsg.MultiProcSharedPreferences", "Couldn't create directory for SharedPreferences file ".concat(String.valueOf(paramFile)));
-            AppMethodBeat.o(156225);
-            return null;
-          }
-          av.f((File)localObject, av.h(av.this));
-          try
-          {
-            localObject = new FileOutputStream(paramFile);
-            paramFile = (File)localObject;
-          }
-          catch (FileNotFoundException localFileNotFoundException2)
-          {
-            ac.e("MicroMsg.MultiProcSharedPreferences", "Couldn't create SharedPreferences file ".concat(String.valueOf(paramFile)), new Object[] { localFileNotFoundException2 });
-            paramFile = null;
-          }
-        }
-      }
-      AppMethodBeat.o(156225);
-      return paramFile;
-    }
-    
-    private void a(final av.c paramc)
-    {
-      AppMethodBeat.i(156226);
-      if ((paramc.cqb == null) || (paramc.GsO == null) || (paramc.GsO.size() == 0))
-      {
-        AppMethodBeat.o(156226);
+        AppMethodBeat.o(157718);
         return;
       }
-      if (Looper.myLooper() == Looper.getMainLooper())
+      if (!this.Ieg.onTimerExpired())
       {
-        int i = paramc.GsO.size() - 1;
-        while (i >= 0)
-        {
-          String str = (String)paramc.GsO.get(i);
-          Iterator localIterator = paramc.cqb.iterator();
-          while (localIterator.hasNext())
-          {
-            SharedPreferences.OnSharedPreferenceChangeListener localOnSharedPreferenceChangeListener = (SharedPreferences.OnSharedPreferenceChangeListener)localIterator.next();
-            if (localOnSharedPreferenceChangeListener != null) {
-              localOnSharedPreferenceChangeListener.onSharedPreferenceChanged(av.this, str);
-            }
-          }
-          i -= 1;
-        }
-        AppMethodBeat.o(156226);
+        AppMethodBeat.o(157718);
         return;
       }
-      av.eVv().post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(156212);
-          av.b.b(av.b.this, paramc);
-          AppMethodBeat.o(156212);
-        }
-      });
-      AppMethodBeat.o(156226);
-    }
-    
-    private void a(final av.c paramc, Runnable arg2)
-    {
-      int j = 1;
-      AppMethodBeat.i(156224);
-      paramc = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(156211);
-          synchronized (av.f(av.this))
-          {
-            av.b.a(av.b.this, paramc);
-          }
-          synchronized (av.this)
-          {
-            av.g(av.this);
-            if (paramRunnable != null) {
-              paramRunnable.run();
-            }
-            AppMethodBeat.o(156211);
-            return;
-            localObject2 = finally;
-            AppMethodBeat.o(156211);
-            throw localObject2;
-          }
-        }
-      };
-      int i;
-      if (??? == null) {
-        i = 1;
-      }
-      while (i != 0) {
-        synchronized (av.this)
-        {
-          if (av.b(av.this) == 1)
-          {
-            i = j;
-            if (i != 0)
-            {
-              paramc.run();
-              AppMethodBeat.o(156224);
-              return;
-              i = 0;
-            }
-          }
-          else
-          {
-            i = 0;
-          }
-        }
-      }
-      be.eVI().execute(paramc);
-      AppMethodBeat.o(156224);
-    }
-    
-    private av.c eVx()
-    {
-      AppMethodBeat.i(156223);
-      av.c localc1 = new av.c((byte)0);
-      for (;;)
-      {
-        Object localObject2;
-        String str;
-        synchronized (av.this)
-        {
-          if (av.b(av.this) > 0) {
-            av.a(av.this, new HashMap(av.c(av.this)));
-          }
-          localc1.GsP = av.c(av.this);
-          av.d(av.this);
-          if (av.e(av.this).size() > 0)
-          {
-            i = 1;
-            if (i != 0)
-            {
-              localc1.GsO = new ArrayList();
-              localc1.cqb = new HashSet(av.e(av.this).keySet());
-            }
-            try
-            {
-              if (this.GsI)
-              {
-                if (!av.c(av.this).isEmpty())
-                {
-                  localc1.GsN = true;
-                  av.c(av.this).clear();
-                }
-                this.GsI = false;
-              }
-              Iterator localIterator = this.GsH.entrySet().iterator();
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              localObject2 = (Map.Entry)localIterator.next();
-              str = (String)((Map.Entry)localObject2).getKey();
-              localObject2 = ((Map.Entry)localObject2).getValue();
-              if (localObject2 != this) {
-                break label318;
-              }
-              if (!av.c(av.this).containsKey(str)) {
-                continue;
-              }
-              av.c(av.this).remove(str);
-              localc1.GsN = true;
-              if (i == 0) {
-                continue;
-              }
-              localc1.GsO.add(str);
-              continue;
-              localc2 = finally;
-            }
-            finally
-            {
-              AppMethodBeat.o(156223);
-            }
-          }
-        }
-        int i = 0;
-        continue;
-        label318:
-        if (av.c(av.this).containsKey(str))
-        {
-          Object localObject3 = av.c(av.this).get(str);
-          if ((localObject3 != null) && (localObject3.equals(localObject2))) {}
-        }
-        else
-        {
-          av.c(av.this).put(str, localObject2);
-        }
-      }
-      this.GsH.clear();
-      AppMethodBeat.o(156223);
-      return localc2;
-    }
-    
-    public final void apply()
-    {
-      AppMethodBeat.i(156222);
-      final av.c localc = eVx();
-      final Runnable local1 = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(156209);
-          try
-          {
-            localc.GsQ.await();
-            AppMethodBeat.o(156209);
-            return;
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            AppMethodBeat.o(156209);
-          }
-        }
-      };
-      be.aC(local1);
-      a(localc, new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(156210);
-          local1.run();
-          be.aD(local1);
-          AppMethodBeat.o(156210);
-        }
-      });
-      a(localc);
-      AppMethodBeat.o(156222);
-    }
-    
-    public final SharedPreferences.Editor clear()
-    {
-      try
-      {
-        this.GsI = true;
-        return this;
-      }
-      finally {}
-    }
-    
-    public final boolean commit()
-    {
-      AppMethodBeat.i(156221);
-      av.c localc = eVx();
-      a(localc, null);
-      try
-      {
-        localc.GsQ.await();
-        a(localc);
-        boolean bool = localc.GsR;
-        AppMethodBeat.o(156221);
-        return bool;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        AppMethodBeat.o(156221);
-      }
-      return false;
-    }
-    
-    public final SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(156219);
-      try
-      {
-        this.GsH.put(paramString, Boolean.valueOf(paramBoolean));
-        return this;
-      }
-      finally
-      {
-        AppMethodBeat.o(156219);
+      if ((this.lle) && (!this.mStop)) {
+        sendEmptyMessageDelayed(this.Idu, this.Ief);
       }
     }
-    
-    public final SharedPreferences.Editor putFloat(String paramString, float paramFloat)
-    {
-      AppMethodBeat.i(156218);
-      try
-      {
-        this.GsH.put(paramString, Float.valueOf(paramFloat));
-        return this;
-      }
-      finally
-      {
-        AppMethodBeat.o(156218);
-      }
-    }
-    
-    public final SharedPreferences.Editor putInt(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(156216);
-      try
-      {
-        this.GsH.put(paramString, Integer.valueOf(paramInt));
-        return this;
-      }
-      finally
-      {
-        AppMethodBeat.o(156216);
-      }
-    }
-    
-    public final SharedPreferences.Editor putLong(String paramString, long paramLong)
-    {
-      AppMethodBeat.i(156217);
-      try
-      {
-        this.GsH.put(paramString, Long.valueOf(paramLong));
-        return this;
-      }
-      finally
-      {
-        AppMethodBeat.o(156217);
-      }
-    }
-    
-    public final SharedPreferences.Editor putString(String paramString1, String paramString2)
-    {
-      AppMethodBeat.i(156214);
-      try
-      {
-        this.GsH.put(paramString1, paramString2);
-        return this;
-      }
-      finally
-      {
-        AppMethodBeat.o(156214);
-      }
-    }
-    
-    public final SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
-    {
-      AppMethodBeat.i(156215);
-      try
-      {
-        this.GsH.put(paramString, paramSet);
-        return this;
-      }
-      finally
-      {
-        AppMethodBeat.o(156215);
-      }
-    }
-    
-    public final SharedPreferences.Editor remove(String paramString)
-    {
-      AppMethodBeat.i(156220);
-      try
-      {
-        this.GsH.put(paramString, this);
-        return this;
-      }
-      finally
-      {
-        AppMethodBeat.o(156220);
-      }
-    }
+    AppMethodBeat.o(157718);
   }
   
-  static final class c
+  public final void stopTimer()
   {
-    public boolean GsN;
-    public List<String> GsO;
-    public Map<String, Object> GsP;
-    public final CountDownLatch GsQ;
-    public volatile boolean GsR;
-    public Set<SharedPreferences.OnSharedPreferenceChangeListener> cqb;
-    
-    private c()
+    AppMethodBeat.i(157720);
+    removeMessages(this.Idu);
+    this.mStop = true;
+    AppMethodBeat.o(157720);
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(157723);
+    if (this.Ieg == null)
     {
-      AppMethodBeat.i(156229);
-      this.GsN = false;
-      this.GsO = null;
-      this.cqb = null;
-      this.GsP = null;
-      this.GsQ = new CountDownLatch(1);
-      this.GsR = false;
-      AppMethodBeat.o(156229);
+      str = "MTimerHandler(" + getClass().getName() + "){mCallBack = null}";
+      AppMethodBeat.o(157723);
+      return str;
     }
-    
-    public final void vW(boolean paramBoolean)
-    {
-      AppMethodBeat.i(156230);
-      this.GsR = paramBoolean;
-      this.GsQ.countDown();
-      AppMethodBeat.o(156230);
-    }
+    String str = "MTimerHandler(" + getClass().getName() + "){mCallBack = " + this.Ieg.getClass().getName() + "}";
+    AppMethodBeat.o(157723);
+    return str;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean onTimerExpired();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.av
  * JD-Core Version:    0.7.0.1
  */

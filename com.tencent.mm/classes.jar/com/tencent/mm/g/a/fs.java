@@ -1,15 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i.a;
-import com.tencent.mm.ak.i.b;
 import com.tencent.mm.sdk.b.b;
 
 public final class fs
   extends b
 {
-  public a dfN;
-  public b dfO;
+  public a dqZ;
+  public b dra;
   
   public fs()
   {
@@ -18,32 +17,28 @@ public final class fs
   
   private fs(byte paramByte)
   {
-    AppMethodBeat.i(116019);
-    this.dfN = new a();
-    this.dfO = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(19806);
+    this.dqZ = new a();
+    this.dra = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116019);
+    AppMethodBeat.o(19806);
   }
   
   public static final class a
   {
-    public boolean cQv;
-    public boolean dfP = false;
-    public i.a dfQ;
-    public i.b dfR;
-    public String fileName;
-    public int op;
+    public String[] drb;
   }
   
   public static final class b
   {
-    public boolean dbS = false;
+    public int dqH = 0;
+    public MatrixCursor drc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.fs
  * JD-Core Version:    0.7.0.1
  */

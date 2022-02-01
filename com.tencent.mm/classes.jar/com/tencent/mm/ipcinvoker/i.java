@@ -9,10 +9,10 @@ import java.util.Map;
 
 public final class i
 {
-  public static void tF(String paramString)
+  public static void wv(String paramString)
   {
     AppMethodBeat.i(158750);
-    if (c.aeI().tC(paramString))
+    if (c.ahu().ws(paramString))
     {
       AppMethodBeat.o(158750);
       return;
@@ -22,25 +22,25 @@ public final class i
       public final void run()
       {
         AppMethodBeat.i(158748);
-        c localc = c.aeI();
-        String str = this.gdK;
-        if (g.tE(str))
+        c localc = c.ahu();
+        String str = this.gxu;
+        if (g.wu(str))
         {
           b.i("IPC.IPCBridgeManager", "the same process(%s), do not need to build IPCBridge.", new Object[] { str });
           AppMethodBeat.o(158748);
           return;
         }
-        localc.tA(str);
+        localc.wq(str);
         AppMethodBeat.o(158748);
       }
     });
     AppMethodBeat.o(158750);
   }
   
-  public static void tG(String paramString)
+  public static void ww(String paramString)
   {
     AppMethodBeat.i(158751);
-    if (c.aeI().tC(paramString))
+    if (c.ahu().ws(paramString))
     {
       AppMethodBeat.o(158751);
       return;
@@ -50,7 +50,7 @@ public final class i
       public final void run()
       {
         AppMethodBeat.i(158749);
-        c.aeI().tD(this.gdK);
+        c.ahu().wt(this.gxu);
         AppMethodBeat.o(158749);
       }
     });

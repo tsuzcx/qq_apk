@@ -5,8 +5,8 @@
         <TextView android:textSize="@dimen/q" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:id="@id/dvg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:singleLine="true" />
         <TextView android:textSize="@dimen/b_" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:id="@id/duo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c0" />
         <TextView android:textSize="12.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/g9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" />
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:src="@drawable/x8" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/hy1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:src="@drawable/x8" />
+        <RelativeLayout android:id="@id/hwm" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <TextView android:textSize="@dimen/b_" android:textColor="@color/BW_0_Alpha_0_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xj" android:layout_centerVertical="true" />
             <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@raw/arrow_right" android:tint="@color/BW_50" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         </RelativeLayout>

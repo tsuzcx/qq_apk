@@ -3,51 +3,51 @@ package com.tencent.mm.plugin.d.a.b.a;
 import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.d.a.b.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @TargetApi(18)
 public class f
   extends a
 {
   static final String TAG;
-  public static String nrH;
-  public static String nrI;
-  public int nrJ = -1;
-  public int nrK = -1;
-  public int nrL = -1;
-  public long nrM = 0L;
-  public long nrN = 0L;
+  public static String nSD;
+  public static String nSE;
+  public int nSF = -1;
+  public int nSG = -1;
+  public int nSH = -1;
+  public long nSI = 0L;
+  public long nSJ = 0L;
   
   static
   {
     AppMethodBeat.i(22584);
     TAG = f.class.getName();
-    nrH = h.nqn;
-    nrI = h.nqo;
+    nSD = h.nRj;
+    nSE = h.nRk;
     AppMethodBeat.o(22584);
   }
   
   public f()
   {
-    this.nqF = null;
-    this.nqG = 8;
-    this.npZ = 1L;
+    this.nRB = null;
+    this.nRC = 8;
+    this.nQV = 1L;
   }
   
-  public final byte[] bIB()
+  public final byte[] bMO()
   {
     AppMethodBeat.i(22583);
-    if (this.nrJ < 0)
+    if (this.nSF < 0)
     {
-      ac.e(TAG, "stepCount is invalid");
+      ad.e(TAG, "stepCount is invalid");
       AppMethodBeat.o(22583);
       return null;
     }
-    if (this.nrK >= 0) {}
+    if (this.nSG >= 0) {}
     for (int i = 7;; i = 4)
     {
       int j = i;
-      if (this.nrL >= 0) {
+      if (this.nSH >= 0) {
         j = i + 3;
       }
       byte[] arrayOfByte = new byte[j];
@@ -56,13 +56,13 @@ public class f
       i = 1;
       while (j < 3)
       {
-        arrayOfByte[i] = ((byte)(this.nrJ >> j * 8 & 0xFF));
+        arrayOfByte[i] = ((byte)(this.nSF >> j * 8 & 0xFF));
         i += 1;
         j += 1;
       }
       j = i;
       int k;
-      if (this.nrK >= 0)
+      if (this.nSG >= 0)
       {
         arrayOfByte[0] = ((byte)(arrayOfByte[0] | 0x2));
         k = 0;
@@ -72,12 +72,12 @@ public class f
           if (k >= 3) {
             break;
           }
-          arrayOfByte[i] = ((byte)(this.nrK >> k * 8 & 0xFF));
+          arrayOfByte[i] = ((byte)(this.nSG >> k * 8 & 0xFF));
           i += 1;
           k += 1;
         }
       }
-      if (this.nrL >= 0)
+      if (this.nSH >= 0)
       {
         arrayOfByte[0] = 4;
         k = 0;
@@ -85,7 +85,7 @@ public class f
         j = k;
         while (j < 3)
         {
-          arrayOfByte[i] = ((byte)(this.nrL >> j * 8 & 0xFF));
+          arrayOfByte[i] = ((byte)(this.nSH >> j * 8 & 0xFF));
           j += 1;
           i += 1;
         }
@@ -97,7 +97,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.b.a.f
  * JD-Core Version:    0.7.0.1
  */

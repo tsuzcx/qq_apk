@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import d.g.a.a;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
 final class AppBrandPreLoadingUI$e
-  extends d.g.b.l
-  implements a<y>
+  extends q
+  implements a<z>
 {
   AppBrandPreLoadingUI$e(AppBrandPreLoadingUI paramAppBrandPreLoadingUI, String paramString)
   {

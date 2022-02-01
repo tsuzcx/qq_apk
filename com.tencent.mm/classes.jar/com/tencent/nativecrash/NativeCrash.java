@@ -6,56 +6,56 @@ import java.nio.charset.Charset;
 
 public final class NativeCrash
 {
-  private static final Charset JJA;
-  private static c JJy;
-  private static a JJz;
+  private static c LDh;
+  private static a LDi;
+  private static final Charset LDj;
   
   static
   {
     AppMethodBeat.i(40117);
-    JJA = Charset.forName("UTF-8");
+    LDj = Charset.forName("UTF-8");
     AppMethodBeat.o(40117);
   }
   
   public static a a(a parama)
   {
-    a locala = JJz;
-    JJz = parama;
+    a locala = LDi;
+    LDi = parama;
     return locala;
   }
   
   public static c a(c paramc)
   {
-    c localc = JJy;
-    JJy = paramc;
+    c localc = LDh;
+    LDh = paramc;
     return localc;
   }
   
-  public static void aSX(String paramString)
+  public static void aYX(String paramString)
   {
-    AppMethodBeat.i(198541);
+    AppMethodBeat.i(186408);
     if (!InitializationProbe.libLoaded) {
       System.loadLibrary("wechatcrash");
     }
     nativeInit(paramString, 1871, 2048, true);
-    AppMethodBeat.o(198541);
+    AppMethodBeat.o(186408);
   }
   
-  public static c fBj()
-  {
-    return JJy;
-  }
-  
-  public static a fBk()
-  {
-    return JJz;
-  }
-  
-  public static void fBl()
+  public static void fSA()
   {
     AppMethodBeat.i(40115);
     nativeResetCustomInfo();
     AppMethodBeat.o(40115);
+  }
+  
+  public static c fSy()
+  {
+    return LDh;
+  }
+  
+  public static a fSz()
+  {
+    return LDi;
   }
   
   private static native void nativeCustomInfo(byte[] paramArrayOfByte);
@@ -67,22 +67,22 @@ public final class NativeCrash
   @Keep
   private static boolean onANRDumped(int paramInt, String paramString)
   {
-    AppMethodBeat.i(198543);
-    boolean bool = new b(true, paramInt, null, paramString).hJ();
-    AppMethodBeat.o(198543);
+    AppMethodBeat.i(186410);
+    boolean bool = new b(true, paramInt, null, paramString).hZ();
+    AppMethodBeat.o(186410);
     return bool;
   }
   
   @Keep
   private static boolean onCrashDumped(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(198542);
-    boolean bool = new b(false, paramInt, paramString1, paramString2).hJ();
-    AppMethodBeat.o(198542);
+    AppMethodBeat.i(186409);
+    boolean bool = new b(false, paramInt, paramString1, paramString2).hZ();
+    AppMethodBeat.o(186409);
     return bool;
   }
   
-  public static void sY(String paramString)
+  public static void vN(String paramString)
   {
     AppMethodBeat.i(40114);
     if (paramString == null)
@@ -93,7 +93,7 @@ public final class NativeCrash
     if (!paramString.endsWith("\n")) {}
     for (paramString = paramString + "";; paramString = paramString + '\000')
     {
-      nativeCustomInfo(paramString.getBytes(JJA));
+      nativeCustomInfo(paramString.getBytes(LDj));
       AppMethodBeat.o(40114);
       return;
     }
@@ -101,81 +101,81 @@ public final class NativeCrash
   
   public static abstract interface a
   {
-    public abstract boolean aaX();
+    public abstract boolean adA();
   }
   
   static final class b
     implements Runnable
   {
-    Throwable JJB;
-    final String JJC;
-    final String JJD;
-    final NativeCrash.c JJy;
-    final NativeCrash.a JJz;
+    final NativeCrash.c LDh;
+    final NativeCrash.a LDi;
+    Throwable LDk;
+    final String LDl;
+    final String LDm;
     final int mStatus;
-    boolean tVR;
+    boolean uYv;
     
     b(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(198538);
-      this.tVR = false;
-      this.JJB = null;
+      AppMethodBeat.i(186405);
+      this.uYv = false;
+      this.LDk = null;
       if (paramBoolean) {
-        this.JJy = null;
+        this.LDh = null;
       }
-      for (this.JJz = NativeCrash.fBk();; this.JJz = null)
+      for (this.LDi = NativeCrash.fSz();; this.LDi = null)
       {
         this.mStatus = paramInt;
-        this.JJC = paramString1;
-        this.JJD = paramString2;
-        AppMethodBeat.o(198538);
+        this.LDl = paramString1;
+        this.LDm = paramString2;
+        AppMethodBeat.o(186405);
         return;
-        this.JJy = NativeCrash.fBj();
+        this.LDh = NativeCrash.fSy();
       }
     }
     
-    final boolean hJ()
+    final boolean hZ()
     {
-      AppMethodBeat.i(198539);
-      if ((this.JJy == null) && (this.JJz == null))
+      AppMethodBeat.i(186406);
+      if ((this.LDh == null) && (this.LDi == null))
       {
-        AppMethodBeat.o(198539);
+        AppMethodBeat.o(186406);
         return false;
       }
       Thread localThread = new Thread(this, "NativeCrash Dump Callback");
       localThread.start();
       localThread.join(5000L);
-      boolean bool = this.tVR;
-      AppMethodBeat.o(198539);
+      boolean bool = this.uYv;
+      AppMethodBeat.o(186406);
       return bool;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(198540);
+      AppMethodBeat.i(186407);
       try
       {
-        if (this.JJz != null)
+        if (this.LDi != null)
         {
-          this.tVR = this.JJz.aaX();
-          AppMethodBeat.o(198540);
+          this.uYv = this.LDi.adA();
+          AppMethodBeat.o(186407);
           return;
         }
-        if (this.JJy != null)
+        if (this.LDh != null)
         {
-          this.tVR = this.JJy.onCrashDumped(this.mStatus, this.JJC, this.JJD);
-          AppMethodBeat.o(198540);
+          this.uYv = this.LDh.onCrashDumped(this.mStatus, this.LDl, this.LDm);
+          AppMethodBeat.o(186407);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        this.JJB = localThrowable;
-        AppMethodBeat.o(198540);
+        this.LDk = localThrowable;
+        AppMethodBeat.o(186407);
         return;
       }
-      this.tVR = false;
-      AppMethodBeat.o(198540);
+      this.uYv = false;
+      AppMethodBeat.o(186407);
     }
   }
   

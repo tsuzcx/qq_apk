@@ -5,9 +5,9 @@ import com.tencent.mm.plugin.appbrand.jsapi.j;
 public class a
   implements j
 {
-  public boolean lHp = false;
-  public boolean lHq = false;
-  public boolean lHr = false;
+  public boolean mhb = false;
+  public boolean mhc = false;
+  public boolean mhd = false;
 }
 
 

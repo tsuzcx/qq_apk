@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pm
   extends b
 {
-  public a dsv;
+  public a dDG;
   
   public pm()
   {
@@ -15,24 +15,32 @@ public final class pm
   
   private pm(byte paramByte)
   {
-    AppMethodBeat.i(91214);
-    this.dsv = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(89649);
+    this.dDG = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91214);
+    AppMethodBeat.o(89649);
   }
   
   public static final class a
   {
-    public String drV;
-    public long dsr;
-    public String dsw;
-    public String username;
+    public String appId;
+    public String appName;
+    public String content;
+    public String dDH;
+    public boolean dDI;
+    public boolean dDJ;
+    public int dlp = 0;
+    public String dls;
+    public int iconHeight;
+    public int iconWidth;
+    public long msgId;
+    public int msgType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.pm
  * JD-Core Version:    0.7.0.1
  */

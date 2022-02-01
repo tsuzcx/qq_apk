@@ -3,50 +3,50 @@ package com.tencent.mm.emoji.panel.a;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/panel/adapter/SmileyPanelSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/panel/adapter/SmileyPanelSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
 public final class v
   extends o
 {
-  public static final v fUD;
-  private static final float fUf;
-  private static final float fUg;
-  private static final float fUh;
-  private static final float fUi;
+  private static final float gnH;
+  private static final float gnI;
+  private static final float gnJ;
+  private static final float gnK;
+  public static final v gof;
   
   static
   {
     AppMethodBeat.i(105689);
     v localv = new v();
-    fUD = localv;
-    Object localObject = ai.getContext();
-    k.g(localObject, "context");
+    gof = localv;
+    Object localObject = aj.getContext();
+    p.g(localObject, "context");
     localObject = ((Context)localObject).getResources();
-    fUf = ((Resources)localObject).getDimension(2131166243);
-    fUg = ((Resources)localObject).getDimension(2131165289);
-    fUh = ((Resources)localObject).getDimension(2131165289) - 1.0F;
-    fUi = ((Resources)localObject).getDimension(2131165274);
-    localv.arE = 8;
-    localv.adn();
+    gnH = ((Resources)localObject).getDimension(2131166243);
+    gnI = ((Resources)localObject).getDimension(2131165289);
+    gnJ = ((Resources)localObject).getDimension(2131165289) - 1.0F;
+    gnK = ((Resources)localObject).getDimension(2131165274);
+    localv.atv = 8;
+    localv.updateSize();
     AppMethodBeat.o(105689);
   }
   
-  public final float adk()
+  public final float afQ()
   {
-    return fUf;
+    return gnH;
   }
   
-  public final float adl()
+  public final float afR()
   {
-    return fUg;
+    return gnI;
   }
   
-  public final float adm()
+  public final float afS()
   {
-    return fUh;
+    return gnJ;
   }
 }
 

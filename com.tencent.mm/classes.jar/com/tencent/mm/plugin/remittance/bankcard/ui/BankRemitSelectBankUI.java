@@ -9,15 +9,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.remittance.bankcard.a.h;
 import com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel;
-import com.tencent.mm.plugin.remittance.bankcard.model.a;
-import com.tencent.mm.plugin.remittance.bankcard.model.b;
-import com.tencent.mm.protocal.protobuf.atc;
-import com.tencent.mm.protocal.protobuf.im;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.axa;
+import com.tencent.mm.protocal.protobuf.it;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.sortview.d;
 import com.tencent.mm.wallet_core.c.r;
 import com.tencent.mm.wallet_core.c.r.a;
@@ -30,7 +28,7 @@ import java.util.List;
 public class BankRemitSelectBankUI
   extends BankRemitBaseUI
 {
-  private BankRemitSortView wGV;
+  private BankRemitSortView xUC;
   
   public int getLayoutId()
   {
@@ -40,13 +38,19 @@ public class BankRemitSelectBankUI
   public void initView()
   {
     AppMethodBeat.i(67581);
-    this.wGV = ((BankRemitSortView)findViewById(2131297565));
-    this.wGV.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.xUC = ((BankRemitSortView)findViewById(2131297565));
+    this.xUC.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(67576);
-        paramAnonymousAdapterView = (im)((d)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).data;
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousAdapterView);
+        localb.bd(paramAnonymousView);
+        localb.mr(paramAnonymousInt);
+        localb.qY(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/bankcard/ui/BankRemitSelectBankUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahq());
+        paramAnonymousAdapterView = (it)((d)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt)).data;
         if (paramAnonymousAdapterView != null)
         {
           paramAnonymousAdapterView = new BankcardElemParcel(paramAnonymousAdapterView);
@@ -54,11 +58,14 @@ public class BankRemitSelectBankUI
           paramAnonymousView.putExtra("key_bank_card_elem_parcel", paramAnonymousAdapterView);
           BankRemitSelectBankUI.this.setResult(-1, paramAnonymousView);
           BankRemitSelectBankUI.this.finish();
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/bankcard/ui/BankRemitSelectBankUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(67576);
           return;
+          ad.w("MicroMsg.BankRemitSelectBankUI", "bankcardelem is null, : %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         }
-        ac.w("MicroMsg.BankRemitSelectBankUI", "bankcardelem is null, : %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        AppMethodBeat.o(67576);
       }
     });
     AppMethodBeat.o(67581);
@@ -71,9 +78,9 @@ public class BankRemitSelectBankUI
     setMMTitle(2131756397);
     addSceneEndListener(1399);
     initView();
-    ac.i("MicroMsg.BankRemitSelectBankUI", "do fetch data");
+    ad.i("MicroMsg.BankRemitSelectBankUI", "do fetch data");
     paramBundle = new h();
-    paramBundle.r(this);
+    paramBundle.t(this);
     doSceneProgress(paramBundle);
     AppMethodBeat.o(67580);
   }
@@ -98,40 +105,40 @@ public class BankRemitSelectBankUI
         {
           AppMethodBeat.i(67579);
           paramAnonymousn = new ArrayList();
-          Object localObject2 = paramString.wEo.EMh;
-          paramAnonymousString = paramString.wEo.EMg;
-          Object localObject1 = new b();
+          Object localObject2 = paramString.xRV.Gvl;
+          paramAnonymousString = paramString.xRV.Gvk;
+          Object localObject1 = new com.tencent.mm.plugin.remittance.bankcard.model.b();
           Object localObject3;
           if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
           {
-            ac.i("MicroMsg.BankRemitSelectBankUI", "freq card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
+            ad.i("MicroMsg.BankRemitSelectBankUI", "freq card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
             localObject2 = ((List)localObject2).iterator();
             while (((Iterator)localObject2).hasNext())
             {
-              localObject3 = (im)((Iterator)localObject2).next();
+              localObject3 = (it)((Iterator)localObject2).next();
               d locald = new d();
-              locald.HGs = "☆";
+              locald.Juj = "☆";
               locald.data = localObject3;
               paramAnonymousn.add(locald);
             }
           }
           if ((paramAnonymousString != null) && (!paramAnonymousString.isEmpty()))
           {
-            ac.i("MicroMsg.BankRemitSelectBankUI", "card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
+            ad.i("MicroMsg.BankRemitSelectBankUI", "card count: %s", new Object[] { Integer.valueOf(paramAnonymousString.size()) });
             Collections.sort(paramAnonymousString, (Comparator)localObject1);
             localObject1 = paramAnonymousString.iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (im)((Iterator)localObject1).next();
-              if (!bs.isNullOrNil(((im)localObject2).tGS))
+              localObject2 = (it)((Iterator)localObject1).next();
+              if (!bt.isNullOrNil(((it)localObject2).uJF))
               {
-                if (!bs.isNullOrNil(((im)localObject2).DWp)) {
-                  ac.i("MicroMsg.BankRemitSelectBankUI", "use sort pingyin: %s", new Object[] { ((im)localObject2).DWp });
+                if (!bt.isNullOrNil(((it)localObject2).FBL)) {
+                  ad.i("MicroMsg.BankRemitSelectBankUI", "use sort pingyin: %s", new Object[] { ((it)localObject2).FBL });
                 }
-                for (paramAnonymousString = ((im)localObject2).DWp.toUpperCase().charAt(0);; paramAnonymousString = a.arf(((im)localObject2).tGS))
+                for (paramAnonymousString = ((it)localObject2).FBL.toUpperCase().charAt(0);; paramAnonymousString = com.tencent.mm.plugin.remittance.bankcard.model.a.awf(((it)localObject2).uJF))
                 {
                   localObject3 = new d();
-                  ((d)localObject3).HGs = paramAnonymousString;
+                  ((d)localObject3).Juj = paramAnonymousString;
                   ((d)localObject3).data = localObject2;
                   paramAnonymousn.add(localObject3);
                   break;
@@ -139,7 +146,7 @@ public class BankRemitSelectBankUI
               }
             }
           }
-          BankRemitSelectBankUI.a(BankRemitSelectBankUI.this).gh(paramAnonymousn);
+          BankRemitSelectBankUI.a(BankRemitSelectBankUI.this).gs(paramAnonymousn);
           AppMethodBeat.o(67579);
         }
       }).b(new r.a()
@@ -147,9 +154,9 @@ public class BankRemitSelectBankUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(67578);
-          ac.e("MicroMsg.BankRemitSelectBankUI", "response error: %s, %s", new Object[] { Integer.valueOf(paramString.wEo.dae), paramString.wEo.oxf });
-          if (!bs.isNullOrNil(paramString.wEo.oxf)) {
-            Toast.makeText(BankRemitSelectBankUI.this, paramString.wEo.oxf, 1).show();
+          ad.e("MicroMsg.BankRemitSelectBankUI", "response error: %s, %s", new Object[] { Integer.valueOf(paramString.xRV.dlw), paramString.xRV.paA });
+          if (!bt.isNullOrNil(paramString.xRV.paA)) {
+            Toast.makeText(BankRemitSelectBankUI.this, paramString.xRV.paA, 1).show();
           }
           AppMethodBeat.o(67578);
         }
@@ -158,7 +165,7 @@ public class BankRemitSelectBankUI
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
         {
           AppMethodBeat.i(67577);
-          ac.e("MicroMsg.BankRemitSelectBankUI", "net error: %s", new Object[] { paramString });
+          ad.e("MicroMsg.BankRemitSelectBankUI", "net error: %s", new Object[] { paramString });
           AppMethodBeat.o(67577);
         }
       });
@@ -175,7 +182,7 @@ public class BankRemitSelectBankUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitSelectBankUI
  * JD-Core Version:    0.7.0.1
  */

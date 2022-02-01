@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vy
   extends b
 {
-  public a dyO;
+  public a dKu;
   
   public vy()
   {
@@ -15,16 +15,16 @@ public final class vy
   
   private vy(byte paramByte)
   {
-    AppMethodBeat.i(94819);
-    this.dyO = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(118480);
+    this.dKu = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(94819);
+    AppMethodBeat.o(118480);
   }
   
   public static final class a
   {
-    public long fe = 0L;
+    public int state = -1;
   }
 }
 

@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class pj
   extends b
 {
-  public a dsk;
-  public b dsl;
+  public a dDu;
+  public b dDv;
   
   public pj()
   {
@@ -16,31 +16,32 @@ public final class pj
   
   private pj(byte paramByte)
   {
-    AppMethodBeat.i(123933);
-    this.dsk = new a();
-    this.dsl = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(155374);
+    this.dDu = new a();
+    this.dDv = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(123933);
+    AppMethodBeat.o(155374);
   }
   
   public static final class a
   {
-    public cs dsm;
-    public int dsn = -1;
-    public String dso;
-    public int dsp = 0;
-    public int opType = 1;
+    public int dDA = 0;
+    public String dDw;
+    public String dDx;
+    public String dDy;
+    public int dDz = 0;
+    public int opType = 0;
   }
   
   public static final class b
   {
-    public boolean dbS;
+    public boolean dno;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.pj
  * JD-Core Version:    0.7.0.1
  */

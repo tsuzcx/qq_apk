@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.es;
+import com.tencent.mm.g.c.fc;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends es
+  extends fc
 {
-  static final c.a hlR;
+  static final c.a hEe;
   
   static
   {
     AppMethodBeat.i(44432);
     c.a locala = new c.a();
-    locala.GvF = new Field[7];
+    locala.IhA = new Field[7];
     locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.GvH.put("username", "TEXT PRIMARY KEY ");
+    locala.IhC.put("username", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" username TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "username";
+    locala.IhB = "username";
     locala.columns[1] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "startTime";
-    locala.GvH.put("startTime", "LONG");
+    locala.IhC.put("startTime", "LONG");
     localStringBuilder.append(" startTime LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "endTime";
-    locala.GvH.put("endTime", "LONG");
+    locala.IhC.put("endTime", "LONG");
     localStringBuilder.append(" endTime LONG");
     localStringBuilder.append(", ");
     locala.columns[4] = "sceneList";
-    locala.GvH.put("sceneList", "TEXT");
+    locala.IhC.put("sceneList", "TEXT");
     localStringBuilder.append(" sceneList TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "cgiList";
-    locala.GvH.put("cgiList", "TEXT");
+    locala.IhC.put("cgiList", "TEXT");
     localStringBuilder.append(" cgiList TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "reportId";
-    locala.GvH.put("reportId", "INTEGER");
+    locala.IhC.put("reportId", "INTEGER");
     localStringBuilder.append(" reportId INTEGER");
     locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(44432);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
   
   public final String toString()

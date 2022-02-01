@@ -5,15 +5,16 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.OfflineVideoView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class SnsAdTimelineVideoView
   extends OfflineVideoView
 {
-  private boolean ypD;
-  private boolean zky;
+  private boolean ACw;
+  public boolean zGF;
   
   public SnsAdTimelineVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,29 +24,29 @@ public class SnsAdTimelineVideoView
   public SnsAdTimelineVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.yCn = false;
+    this.zTH = false;
   }
   
-  public final void Po(int paramInt)
+  public final void QW(int paramInt)
   {
     AppMethodBeat.i(179400);
-    super.Po(paramInt);
+    super.QW(paramInt);
     StringBuilder localStringBuilder = new StringBuilder("updateVideoUI: thumVis=");
-    if (this.qQT.getVisibility() == 0) {}
+    if (this.rAT.getVisibility() == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.SnsAdTimelineVideoView", bool + ", ms=" + paramInt + ", second=" + paramInt / 1000);
+      ad.d("MicroMsg.SnsAdTimelineVideoView", bool + ", ms=" + paramInt + ", second=" + paramInt / 1000);
       AppMethodBeat.o(179400);
       return;
     }
   }
   
-  public final void aw(int paramInt, boolean paramBoolean)
+  public final void aB(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(200662);
-    super.aw(paramInt, paramBoolean);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "seekTo:" + paramInt + ", afterSeekPlay=" + paramBoolean);
-    AppMethodBeat.o(200662);
+    AppMethodBeat.i(198597);
+    super.aB(paramInt, paramBoolean);
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "seekTo:" + paramInt + ", afterSeekPlay=" + paramBoolean);
+    AppMethodBeat.o(198597);
   }
   
   public final void c(boolean paramBoolean, float paramFloat)
@@ -53,10 +54,10 @@ public class SnsAdTimelineVideoView
     AppMethodBeat.i(179399);
     super.c(paramBoolean, paramFloat);
     StringBuilder localStringBuilder = new StringBuilder("switchVideoModel: thumVis=");
-    if (this.qQT.getVisibility() == 0) {}
+    if (this.rAT.getVisibility() == 0) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      ac.i("MicroMsg.SnsAdTimelineVideoView", paramBoolean);
+      ad.i("MicroMsg.SnsAdTimelineVideoView", paramBoolean);
       AppMethodBeat.o(179399);
       return;
     }
@@ -65,29 +66,29 @@ public class SnsAdTimelineVideoView
   public final void clear()
   {
     AppMethodBeat.i(179389);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "clear");
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "clear");
     super.onDestroy();
-    this.zky = false;
-    this.yCn = false;
-    this.ypD = false;
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "path after clear=" + getVideoPath());
+    this.ACw = false;
+    this.zTH = false;
+    this.zGF = false;
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "path after clear=" + getVideoPath());
     AppMethodBeat.o(179389);
   }
   
-  public final void dNR()
+  public final void eae()
   {
     AppMethodBeat.i(179398);
-    super.dNR();
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "clearTimer");
+    super.eae();
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "clearTimer");
     AppMethodBeat.o(179398);
   }
   
   public Drawable getThumbDrawable()
   {
     AppMethodBeat.i(179394);
-    if (this.qQT != null)
+    if (this.rAT != null)
     {
-      Drawable localDrawable = this.qQT.getDrawable();
+      Drawable localDrawable = this.rAT.getDrawable();
       AppMethodBeat.o(179394);
       return localDrawable;
     }
@@ -98,8 +99,8 @@ public class SnsAdTimelineVideoView
   public final boolean isError()
   {
     AppMethodBeat.i(179395);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "isError=" + this.qUP);
-    boolean bool = this.qUP;
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "isError=" + this.rFd);
+    boolean bool = this.rFd;
     AppMethodBeat.o(179395);
     return bool;
   }
@@ -108,7 +109,7 @@ public class SnsAdTimelineVideoView
   {
     AppMethodBeat.i(179396);
     super.onDetachedFromWindow();
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "onDetachedFromWindow");
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "onDetachedFromWindow");
     clear();
     AppMethodBeat.o(179396);
   }
@@ -116,28 +117,17 @@ public class SnsAdTimelineVideoView
   public final void pause()
   {
     AppMethodBeat.i(179385);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "pause");
-    super.dNS();
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "pause");
+    super.eaf();
     AppMethodBeat.o(179385);
-  }
-  
-  public final void rB()
-  {
-    AppMethodBeat.i(179387);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "onPrepared, path=%s , shouldPlayWhenPrepared=%s", new Object[] { getVideoPath(), Boolean.valueOf(this.yCn) });
-    if (this.yCn) {
-      super.rB();
-    }
-    this.ypD = true;
-    AppMethodBeat.o(179387);
   }
   
   public final void restart()
   {
     AppMethodBeat.i(179388);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "restart, hasPrepared=" + this.zky);
-    if (this.zky) {
-      super.aw(0, true);
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "restart, hasPrepared=" + this.ACw);
+    if (this.ACw) {
+      super.aB(0, true);
     }
     AppMethodBeat.o(179388);
   }
@@ -145,24 +135,24 @@ public class SnsAdTimelineVideoView
   public final void seekTo(int paramInt)
   {
     AppMethodBeat.i(179390);
-    aw(paramInt, true);
+    aB(paramInt, true);
     AppMethodBeat.o(179390);
   }
   
   public void setShouldPlayWhenPrepared(boolean paramBoolean)
   {
     AppMethodBeat.i(179386);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "setShouldPlayWhenPrepared:".concat(String.valueOf(paramBoolean)));
-    this.yCn = paramBoolean;
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "setShouldPlayWhenPrepared:".concat(String.valueOf(paramBoolean)));
+    this.zTH = paramBoolean;
     AppMethodBeat.o(179386);
   }
   
   public void setThumbBmp(Bitmap paramBitmap)
   {
     AppMethodBeat.i(179392);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "setThumbBmp=".concat(String.valueOf(paramBitmap)));
-    if (this.qQT != null) {
-      this.qQT.setImageBitmap(paramBitmap);
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "setThumbBmp=".concat(String.valueOf(paramBitmap)));
+    if (this.rAT != null) {
+      this.rAT.setImageBitmap(paramBitmap);
     }
     AppMethodBeat.o(179392);
   }
@@ -170,22 +160,31 @@ public class SnsAdTimelineVideoView
   public void setThumbDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(179393);
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "setThumbDrawable=".concat(String.valueOf(paramDrawable)));
-    if (this.qQT != null) {
-      this.qQT.setImageDrawable(paramDrawable);
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "setThumbDrawable=".concat(String.valueOf(paramDrawable)));
+    if (this.rAT != null) {
+      this.rAT.setImageDrawable(paramDrawable);
     }
     AppMethodBeat.o(179393);
+  }
+  
+  public void setThumpViewScaleType(ImageView.ScaleType paramScaleType)
+  {
+    AppMethodBeat.i(198598);
+    if (this.rAT != null) {
+      this.rAT.setScaleType(paramScaleType);
+    }
+    AppMethodBeat.o(198598);
   }
   
   public void setVideoPath(String paramString)
   {
     AppMethodBeat.i(179391);
     String str = getVideoPath();
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "setVideoPath, hasPrepared=" + this.zky + ", path=" + paramString + ", oldPath=" + str);
-    if ((!this.zky) || ((paramString != null) && (!paramString.equals(str))))
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "setVideoPath, hasPrepared=" + this.ACw + ", path=" + paramString + ", oldPath=" + str);
+    if ((!this.ACw) || ((paramString != null) && (!paramString.equals(str))))
     {
-      super.ade(paramString);
-      this.zky = true;
+      super.agT(paramString);
+      this.ACw = true;
     }
     AppMethodBeat.o(179391);
   }
@@ -195,16 +194,16 @@ public class SnsAdTimelineVideoView
   public final void start()
   {
     AppMethodBeat.i(179384);
-    boolean bool = dNU();
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "start, hasPrepared=" + this.ypD + ", shouldPlayWhenPrepared=" + this.yCn + ", isPlaying=" + bool);
-    if ((!this.ypD) && (this.yCn))
+    boolean bool = eah();
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "start, hasPrepared=" + this.zGF + ", shouldPlayWhenPrepared=" + this.zTH + ", isPlaying=" + bool);
+    if ((!this.zGF) && (this.zTH))
     {
       AppMethodBeat.o(179384);
       return;
     }
     if (!bool)
     {
-      ac.i("MicroMsg.SnsAdTimelineVideoView", "do start");
+      ad.i("MicroMsg.SnsAdTimelineVideoView", "do start");
       super.start();
     }
     AppMethodBeat.o(179384);
@@ -214,8 +213,19 @@ public class SnsAdTimelineVideoView
   {
     AppMethodBeat.i(179397);
     super.startTimer();
-    ac.i("MicroMsg.SnsAdTimelineVideoView", "startTimer:" + getTimerInterval());
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "startTimer:" + getTimerInterval());
     AppMethodBeat.o(179397);
+  }
+  
+  public final void ta()
+  {
+    AppMethodBeat.i(179387);
+    ad.i("MicroMsg.SnsAdTimelineVideoView", "onPrepared, path=%s , shouldPlayWhenPrepared=%s", new Object[] { getVideoPath(), Boolean.valueOf(this.zTH) });
+    if (this.zTH) {
+      super.ta();
+    }
+    this.zGF = true;
+    AppMethodBeat.o(179387);
   }
 }
 

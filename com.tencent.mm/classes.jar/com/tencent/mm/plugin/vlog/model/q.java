@@ -3,25 +3,47 @@ package com.tencent.mm.plugin.vlog.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/model/TransitionType;", "", "(Ljava/lang/String;I)V", "NONE", "FADE", "plugin-vlog_release"})
-public enum q
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/model/PlayRange;", "", "start", "", "end", "(JJ)V", "getEnd", "()J", "setEnd", "(J)V", "getStart", "setStart", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-vlog_release"})
+public final class q
 {
-  static
+  long bpc = 0L;
+  long start = 0L;
+  
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(110931);
-    q localq1 = new q("NONE", 0);
-    AnO = localq1;
-    q localq2 = new q("FADE", 1);
-    AnP = localq2;
-    AnQ = new q[] { localq1, localq2 };
-    AppMethodBeat.o(110931);
+    if (this != paramObject)
+    {
+      if ((paramObject instanceof q))
+      {
+        paramObject = (q)paramObject;
+        if ((this.start != paramObject.start) || (this.bpc != paramObject.bpc)) {}
+      }
+    }
+    else {
+      return true;
+    }
+    return false;
   }
   
-  private q() {}
+  public final int hashCode()
+  {
+    long l = this.start;
+    int i = (int)(l ^ l >>> 32);
+    l = this.bpc;
+    return i * 31 + (int)(l ^ l >>> 32);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(195748);
+    String str = "PlayRange(start=" + this.start + ", end=" + this.bpc + ")";
+    AppMethodBeat.o(195748);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.q
  * JD-Core Version:    0.7.0.1
  */

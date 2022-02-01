@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ru
   extends b
 {
-  public a duK;
-  public b duL;
+  public a dGq;
+  public b dGr;
   
   public ru()
   {
@@ -16,18 +16,15 @@ public final class ru
   
   private ru(byte paramByte)
   {
-    AppMethodBeat.i(19833);
-    this.duK = new a();
-    this.duL = new b();
-    this.Gqe = false;
+    AppMethodBeat.i(93326);
+    this.dGq = new a();
+    this.dGr = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19833);
+    AppMethodBeat.o(93326);
   }
   
-  public static final class a
-  {
-    public String userName;
-  }
+  public static final class a {}
   
   public static final class b {}
 }

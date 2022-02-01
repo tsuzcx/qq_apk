@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ckk;
-import com.tencent.mm.protocal.protobuf.dns;
-import com.tencent.mm.protocal.protobuf.dqp;
-import com.tencent.mm.protocal.protobuf.dqu;
-import com.tencent.mm.protocal.protobuf.wk;
-import com.tencent.mm.protocal.protobuf.wl;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.cpk;
+import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.protocal.protobuf.dwj;
+import com.tencent.mm.protocal.protobuf.dwo;
+import com.tencent.mm.protocal.protobuf.yj;
+import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
   extends n
   implements k
 {
-  public static int zTP = 1;
-  public static int zTQ = 2;
-  public static int zTR = 3;
+  public static int Blt = 1;
+  public static int Blu = 2;
+  public static int Blv = 3;
+  private String Blp;
+  private int Blq;
+  private dwj Blr;
+  private long Bls;
+  public dwo Blw;
+  public dtj Blx;
+  public cpk Bly;
+  int Blz;
   private int Scene;
-  private String dvw;
-  private b hvm;
+  private String dHm;
+  private String dHz;
+  private b hNF;
   private String mFileName;
   public int mState;
-  private g vkE;
-  private String zTK;
-  private int zTL;
-  private dqp zTM;
-  private long zTN;
-  private String zTO;
-  public dqu zTS;
-  public dns zTT;
-  public ckk zTU;
-  int zTV;
+  private f wpW;
   
   public a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
@@ -78,50 +78,50 @@ public final class a
   {
     AppMethodBeat.i(29266);
     b.a locala = new b.a();
-    locala.hvt = new wk();
-    locala.hvu = new wl();
+    locala.hNM = new yj();
+    locala.hNN = new yk();
     locala.uri = "/cgi-bin/micromsg-bin/checkvoicetrans";
     locala.funcId = 546;
-    locala.reqCmdId = 0;
+    locala.hNO = 0;
     locala.respCmdId = 0;
     this.mFileName = paramString2;
-    this.hvm = locala.aAz();
-    ac.i("MicroMsg.NetSceneCheckVoiceTrans", "voiceId:%s, totalLen:%d, encodeType: %d, svrMsgId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
+    this.hNF = locala.aDC();
+    ad.i("MicroMsg.NetSceneCheckVoiceTrans", "voiceId:%s, totalLen:%d, encodeType: %d, svrMsgId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
     if (paramInt2 >= 0) {
-      this.zTM = d.cb(paramInt2, paramString2);
+      this.Blr = d.ci(paramInt2, paramString2);
     }
     if (paramLong > 0L) {
-      this.zTN = paramLong;
+      this.Bls = paramLong;
     }
-    this.zTK = paramString1;
-    this.zTL = paramInt1;
+    this.Blp = paramString1;
+    this.Blq = paramInt1;
     this.Scene = paramInt3;
-    this.zTO = paramString3;
-    this.dvw = paramString4;
+    this.dHm = paramString3;
+    this.dHz = paramString4;
     AppMethodBeat.o(29266);
   }
   
-  public final int doScene(e parame, g paramg)
+  public final int doScene(e parame, f paramf)
   {
     AppMethodBeat.i(29267);
-    this.vkE = paramg;
-    paramg = (wk)this.hvm.hvr.hvw;
-    paramg.Eee = this.zTK;
-    paramg.vTH = this.zTL;
-    paramg.EqI = this.zTM;
-    paramg.vTQ = this.zTN;
-    paramg.Scene = this.Scene;
-    paramg.tlK = this.zTO;
-    paramg.tlJ = this.dvw;
-    int i = dispatch(parame, this.hvm, this);
+    this.wpW = paramf;
+    paramf = (yj)this.hNF.hNK.hNQ;
+    paramf.FKD = this.Blp;
+    paramf.xcK = this.Blq;
+    paramf.FXS = this.Blr;
+    paramf.xbt = this.Bls;
+    paramf.Scene = this.Scene;
+    paramf.ukj = this.dHm;
+    paramf.uki = this.dHz;
+    int i = dispatch(parame, this.hNF, this);
     AppMethodBeat.o(29267);
     return i;
   }
   
-  public final boolean eaX()
+  public final boolean eno()
   {
     AppMethodBeat.i(29269);
-    if ((this.zTS != null) && (!bs.isNullOrNil(this.zTS.FYc)))
+    if ((this.Blw != null) && (!bt.isNullOrNil(this.Blw.HIY)))
     {
       AppMethodBeat.o(29269);
       return true;
@@ -140,30 +140,30 @@ public final class a
     AppMethodBeat.i(29268);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (wl)this.hvm.hvs.hvw;
+      paramq = (yk)this.hNF.hNL.hNQ;
       if (paramq == null)
       {
         AppMethodBeat.o(29268);
         return;
       }
-      this.zTS = paramq.EqJ;
-      this.mState = paramq.ndj;
-      this.zTT = paramq.EqK;
-      this.zTU = paramq.EqL;
-      this.zTV = paramq.EqM;
+      this.Blw = paramq.FXT;
+      this.mState = paramq.nDG;
+      this.Blx = paramq.FXU;
+      this.Bly = paramq.FXV;
+      this.Blz = paramq.FXW;
     }
     for (;;)
     {
-      this.vkE.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.wpW.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(29268);
       return;
-      ac.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.zTK });
+      ad.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.Blp });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.a
  * JD-Core Version:    0.7.0.1
  */

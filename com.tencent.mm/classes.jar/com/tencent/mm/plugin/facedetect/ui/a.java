@@ -13,48 +13,48 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 
 public class a
 {
-  private static b qAr;
-  private RelativeLayout qAg;
-  private Button qAh;
-  private ImageView qAi;
-  private TextView qAj;
-  private TextView qAk;
-  private Button qAl;
-  private Button qAm;
-  private TextView qAn;
-  private Animation qAo;
-  private Animation qAp;
-  protected WeakReference<FaceDetectPrepareUI> qAq;
+  private static b rkg;
+  private RelativeLayout rjV;
+  private Button rjW;
+  private ImageView rjX;
+  private TextView rjY;
+  private TextView rjZ;
+  private Button rka;
+  private Button rkb;
+  private TextView rkc;
+  private Animation rkd;
+  private Animation rke;
+  protected WeakReference<FaceDetectPrepareUI> rkf;
   
   static
   {
     AppMethodBeat.i(103917);
-    qAr = new b();
+    rkg = new b();
     AppMethodBeat.o(103917);
   }
   
   a(FaceDetectPrepareUI paramFaceDetectPrepareUI)
   {
     AppMethodBeat.i(103905);
-    this.qAg = null;
-    this.qAh = null;
-    this.qAi = null;
-    this.qAj = null;
-    this.qAk = null;
-    this.qAl = null;
-    this.qAm = null;
-    this.qAn = null;
-    this.qAo = null;
-    this.qAp = null;
-    this.qAq = null;
-    this.qAq = new WeakReference(paramFaceDetectPrepareUI);
+    this.rjV = null;
+    this.rjW = null;
+    this.rjX = null;
+    this.rjY = null;
+    this.rjZ = null;
+    this.rka = null;
+    this.rkb = null;
+    this.rkc = null;
+    this.rkd = null;
+    this.rke = null;
+    this.rkf = null;
+    this.rkf = new WeakReference(paramFaceDetectPrepareUI);
     AppMethodBeat.o(103905);
   }
   
@@ -70,8 +70,8 @@ public class a
   {
     AppMethodBeat.i(103916);
     paramOnClickListener = a(2131232119, paramContext.getString(2131758724), null, paramContext.getString(2131755691), null, paramOnClickListener);
-    paramOnClickListener.qCf = true;
-    paramOnClickListener.qCh = (paramContext.getString(2131758724).length() - 3);
+    paramOnClickListener.rlV = true;
+    paramOnClickListener.rlX = (paramContext.getString(2131758724).length() - 3);
     AppMethodBeat.o(103916);
     return paramOnClickListener;
   }
@@ -81,9 +81,9 @@ public class a
     if (paramString != null) {}
     for (boolean bool = true;; bool = false)
     {
-      paramc.qCg = bool;
-      paramc.qCn = paramString;
-      paramc.qCr = paramOnClickListener;
+      paramc.rlW = bool;
+      paramc.rmd = paramString;
+      paramc.rmh = paramOnClickListener;
       return paramc;
     }
   }
@@ -101,15 +101,15 @@ public class a
     boolean bool2 = true;
     AppMethodBeat.i(103915);
     c localc = new c();
-    localc.qCm = paramInt;
-    localc.qCj = paramString1;
+    localc.rmc = paramInt;
+    localc.rlZ = paramString1;
     if (paramString2 != null)
     {
       bool1 = true;
-      localc.qCa = bool1;
-      localc.qCk = paramString2;
-      localc.qCe = false;
-      localc.qCl = null;
+      localc.rlQ = bool1;
+      localc.rma = paramString2;
+      localc.rlU = false;
+      localc.rmb = null;
       if (paramString3 == null) {
         break label134;
       }
@@ -117,14 +117,14 @@ public class a
     label134:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localc.qCd = bool1;
-      localc.ikb = paramString3;
-      localc.qCg = false;
-      localc.qCn = null;
-      localc.qCp = paramOnClickListener1;
-      localc.qCq = null;
-      localc.qCs = paramOnClickListener2;
-      localc.qCr = null;
+      localc.rlT = bool1;
+      localc.iDs = paramString3;
+      localc.rlW = false;
+      localc.rmd = null;
+      localc.rmf = paramOnClickListener1;
+      localc.rmg = null;
+      localc.rmi = paramOnClickListener2;
+      localc.rmh = null;
       AppMethodBeat.o(103915);
       return localc;
       bool1 = false;
@@ -132,7 +132,7 @@ public class a
     }
   }
   
-  public static c coc()
+  public static c ctH()
   {
     AppMethodBeat.i(103912);
     c localc = b(2131232168, null, null, null, null, null);
@@ -143,98 +143,98 @@ public class a
   public void V(Bitmap paramBitmap)
   {
     AppMethodBeat.i(103908);
-    this.qAg.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+    this.rjV.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
     AppMethodBeat.o(103908);
   }
   
   public void a(final c paramc)
   {
     AppMethodBeat.i(103910);
-    if (qAr != null) {
-      qAr.cancel();
+    if (rkg != null) {
+      rkg.cancel();
     }
     if (paramc == null)
     {
       AppMethodBeat.o(103910);
       return;
     }
-    ac.i("MicroMsg.FaceDetectJumper", "hy: request show conf: %s", new Object[] { paramc.toString() });
+    ad.i("MicroMsg.FaceDetectJumper", "hy: request show conf: %s", new Object[] { paramc.toString() });
     label133:
     label177:
     int i;
     String str;
-    if (paramc.qCd)
+    if (paramc.rlT)
     {
-      ac.i("MicroMsg.FaceDetectJumper", " mCancelBtn VISIBLE");
-      this.qAl.setVisibility(0);
-      this.qAl.setText(paramc.ikb);
-      this.qAl.setOnClickListener(paramc.qCs);
-      if (!paramc.qCa) {
+      ad.i("MicroMsg.FaceDetectJumper", " mCancelBtn VISIBLE");
+      this.rka.setVisibility(0);
+      this.rka.setText(paramc.iDs);
+      this.rka.setOnClickListener(paramc.rmi);
+      if (!paramc.rlQ) {
         break label484;
       }
-      ac.i("MicroMsg.FaceDetectJumper", " isShowMainButton VISIBLE");
-      this.qAh.setVisibility(0);
-      this.qAh.setText(paramc.qCk);
-      this.qAh.setOnClickListener(paramc.qCp);
-      if (!paramc.qCe) {
+      ad.i("MicroMsg.FaceDetectJumper", " isShowMainButton VISIBLE");
+      this.rjW.setVisibility(0);
+      this.rjW.setText(paramc.rma);
+      this.rjW.setOnClickListener(paramc.rmf);
+      if (!paramc.rlU) {
         break label495;
       }
-      ac.i("MicroMsg.FaceDetectJumper", " mSubBtn VISIBLE");
-      this.qAm.setVisibility(0);
-      this.qAm.setText(paramc.qCl);
-      this.qAm.setOnClickListener(paramc.qCq);
-      if (!paramc.qCb) {
+      ad.i("MicroMsg.FaceDetectJumper", " mSubBtn VISIBLE");
+      this.rkb.setVisibility(0);
+      this.rkb.setText(paramc.rmb);
+      this.rkb.setOnClickListener(paramc.rmg);
+      if (!paramc.rlR) {
         break label609;
       }
-      ac.i("MicroMsg.FaceDetectJumper", " isShowStatusWordingTv VISIBLE");
-      this.qAj.setVisibility(0);
-      if (!paramc.qCf) {
+      ad.i("MicroMsg.FaceDetectJumper", " isShowStatusWordingTv VISIBLE");
+      this.rjY.setVisibility(0);
+      if (!paramc.rlV) {
         break label579;
       }
-      ac.i("MicroMsg.FaceDetectJumper", " isShowOneByOne VISIBLE");
-      this.qAk.setVisibility(0);
-      i = paramc.qCh;
-      str = paramc.qCj;
-      if ((!bs.isNullOrNil(str)) && (i < str.length()) && (i >= 0)) {
+      ad.i("MicroMsg.FaceDetectJumper", " isShowOneByOne VISIBLE");
+      this.rjZ.setVisibility(0);
+      i = paramc.rlX;
+      str = paramc.rlZ;
+      if ((!bt.isNullOrNil(str)) && (i < str.length()) && (i >= 0)) {
         break label506;
       }
-      ac.e("MicroMsg.FaceDetectJumper", "hy: invalid showing one by one");
-      this.qAj.setText(str);
-      this.qAk.setText("");
+      ad.e("MicroMsg.FaceDetectJumper", "hy: invalid showing one by one");
+      this.rjY.setText(str);
+      this.rjZ.setText("");
       label274:
-      if (!paramc.qCc) {
+      if (!paramc.rlS) {
         break label636;
       }
-      ac.i("MicroMsg.FaceDetectJumper", " mStatusIv VISIBLE");
-      this.qAi.setVisibility(0);
-      this.qAi.setImageResource(paramc.qCm);
+      ad.i("MicroMsg.FaceDetectJumper", " mStatusIv VISIBLE");
+      this.rjX.setVisibility(0);
+      this.rjX.setImageResource(paramc.rmc);
       label308:
-      if (!paramc.qCg) {
+      if (!paramc.rlW) {
         break label647;
       }
-      ac.i("MicroMsg.FaceDetectJumper", " mFeedbackTv VISIBLE");
-      this.qAn.setVisibility(0);
-      this.qAn.setText(paramc.qCn);
-      this.qAn.setOnClickListener(paramc.qCr);
+      ad.i("MicroMsg.FaceDetectJumper", " mFeedbackTv VISIBLE");
+      this.rkc.setVisibility(0);
+      this.rkc.setText(paramc.rmd);
+      this.rkc.setOnClickListener(paramc.rmh);
     }
     for (;;)
     {
-      if (paramc.qCi != null)
+      if (paramc.rlY != null)
       {
-        ac.i("MicroMsg.FaceDetectJumper", "bgBm：：%s ", new Object[] { paramc.qCi });
-        this.qAg.setBackgroundDrawable(new BitmapDrawable(paramc.qCi));
+        ad.i("MicroMsg.FaceDetectJumper", "bgBm：：%s ", new Object[] { paramc.rlY });
+        this.rjV.setBackgroundDrawable(new BitmapDrawable(paramc.rlY));
       }
-      ac.i("MicroMsg.FaceDetectJumper", "show jumper, visible: %s", new Object[] { Integer.valueOf(this.qAg.getVisibility()) });
-      if (this.qAg.getVisibility() != 0)
+      ad.i("MicroMsg.FaceDetectJumper", "show jumper, visible: %s", new Object[] { Integer.valueOf(this.rjV.getVisibility()) });
+      if (this.rjV.getVisibility() != 0)
       {
-        this.qAg.setVisibility(0);
-        this.qAg.startAnimation(this.qAo);
-        this.qAo.setAnimationListener(new Animation.AnimationListener()
+        this.rjV.setVisibility(0);
+        this.rjV.startAnimation(this.rkd);
+        this.rkd.setAnimationListener(new Animation.AnimationListener()
         {
           public final void onAnimationEnd(Animation paramAnonymousAnimation)
           {
             AppMethodBeat.i(103903);
-            ac.i("MicroMsg.FaceDetectJumper", "showJumperEnd: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+            ad.i("MicroMsg.FaceDetectJumper", "showJumperEnd: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
             AppMethodBeat.o(103903);
           }
           
@@ -245,47 +245,47 @@ public class a
       }
       AppMethodBeat.o(103910);
       return;
-      this.qAl.setVisibility(4);
+      this.rka.setVisibility(4);
       break;
       label484:
-      this.qAh.setVisibility(4);
+      this.rjW.setVisibility(4);
       break label133;
       label495:
-      this.qAm.setVisibility(4);
+      this.rkb.setVisibility(4);
       break label177;
       label506:
-      qAr.cancel();
-      b localb = qAr;
-      WeakReference localWeakReference1 = new WeakReference(this.qAj);
-      WeakReference localWeakReference2 = new WeakReference(this.qAk);
-      localb.qAx = str;
-      localb.qAy = i;
-      localb.qAv = localWeakReference1;
-      localb.qAw = localWeakReference2;
-      qAr.start();
+      rkg.cancel();
+      b localb = rkg;
+      WeakReference localWeakReference1 = new WeakReference(this.rjY);
+      WeakReference localWeakReference2 = new WeakReference(this.rjZ);
+      localb.rkm = str;
+      localb.rkn = i;
+      localb.rkk = localWeakReference1;
+      localb.rkl = localWeakReference2;
+      rkg.start();
       break label274;
       label579:
-      ac.i("MicroMsg.FaceDetectJumper", " imTweekyTv VISIBLE");
-      this.qAk.setVisibility(4);
-      this.qAj.setText(paramc.qCj);
+      ad.i("MicroMsg.FaceDetectJumper", " imTweekyTv VISIBLE");
+      this.rjZ.setVisibility(4);
+      this.rjY.setText(paramc.rlZ);
       break label274;
       label609:
-      ac.i("MicroMsg.FaceDetectJumper", " mStatusWordingTV VISIBLE");
-      this.qAj.setVisibility(4);
-      this.qAk.setVisibility(4);
+      ad.i("MicroMsg.FaceDetectJumper", " mStatusWordingTV VISIBLE");
+      this.rjY.setVisibility(4);
+      this.rjZ.setVisibility(4);
       break label274;
       label636:
-      this.qAi.setVisibility(4);
+      this.rjX.setVisibility(4);
       break label308;
       label647:
-      this.qAn.setVisibility(4);
+      this.rkc.setVisibility(4);
     }
   }
   
-  public boolean bjw()
+  public boolean bni()
   {
     AppMethodBeat.i(103911);
-    if (this.qAg.getVisibility() != 8)
+    if (this.rjV.getVisibility() != 8)
     {
       AppMethodBeat.o(103911);
       return true;
@@ -294,52 +294,52 @@ public class a
     return false;
   }
   
-  public void cob()
-  {
-    AppMethodBeat.i(103909);
-    if (qAr != null) {
-      qAr.cancel();
-    }
-    this.qAl.setVisibility(4);
-    this.qAh.setVisibility(4);
-    this.qAm.setVisibility(4);
-    this.qAk.setVisibility(4);
-    this.qAj.setVisibility(4);
-    AppMethodBeat.o(103909);
-  }
-  
   public void create()
   {
     AppMethodBeat.i(103906);
-    synchronized ((FaceDetectPrepareUI)this.qAq.get())
+    synchronized ((FaceDetectPrepareUI)this.rkf.get())
     {
-      if (this.qAq.get() != null)
+      if (this.rkf.get() != null)
       {
-        this.qAg = ((RelativeLayout)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131301246));
-        this.qAh = ((Button)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131302852));
-        this.qAi = ((ImageView)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131305894));
-        this.qAj = ((TextView)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131305896));
-        this.qAo = AnimationUtils.loadAnimation((Context)this.qAq.get(), 2130771981);
-        this.qAp = AnimationUtils.loadAnimation((Context)this.qAq.get(), 2130771982);
-        this.qAl = ((Button)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131301244));
-        this.qAm = ((Button)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131305511));
-        this.qAk = ((TextView)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131306168));
-        this.qAn = ((TextView)((FaceDetectPrepareUI)this.qAq.get()).findViewById(2131299898));
-        this.qAo.setDuration(500L);
-        this.qAp.setDuration(500L);
+        this.rjV = ((RelativeLayout)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131301246));
+        this.rjW = ((Button)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131302852));
+        this.rjX = ((ImageView)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131305894));
+        this.rjY = ((TextView)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131305896));
+        this.rkd = AnimationUtils.loadAnimation((Context)this.rkf.get(), 2130771981);
+        this.rke = AnimationUtils.loadAnimation((Context)this.rkf.get(), 2130771982);
+        this.rka = ((Button)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131301244));
+        this.rkb = ((Button)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131305511));
+        this.rjZ = ((TextView)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131306168));
+        this.rkc = ((TextView)((FaceDetectPrepareUI)this.rkf.get()).findViewById(2131299898));
+        this.rkd.setDuration(500L);
+        this.rke.setDuration(500L);
       }
       AppMethodBeat.o(103906);
       return;
     }
   }
   
+  public void ctG()
+  {
+    AppMethodBeat.i(103909);
+    if (rkg != null) {
+      rkg.cancel();
+    }
+    this.rka.setVisibility(4);
+    this.rjW.setVisibility(4);
+    this.rkb.setVisibility(4);
+    this.rjZ.setVisibility(4);
+    this.rjY.setVisibility(4);
+    AppMethodBeat.o(103909);
+  }
+  
   public void dismiss()
   {
     AppMethodBeat.i(103907);
-    ac.m("MicroMsg.FaceDetectJumper", "dismiss jumper", new Object[0]);
-    qAr.cancel();
-    if (this.qAg.getVisibility() == 0) {
-      ap.f(new Runnable()
+    ad.m("MicroMsg.FaceDetectJumper", "dismiss jumper", new Object[0]);
+    rkg.cancel();
+    if (this.rjV.getVisibility() == 0) {
+      aq.f(new Runnable()
       {
         public final void run()
         {
@@ -370,11 +370,11 @@ public class a
   public static final class b
     extends CountDownTimer
   {
-    int gPA = 0;
-    WeakReference<TextView> qAv = null;
-    WeakReference<TextView> qAw = null;
-    String qAx = null;
-    int qAy = 0;
+    WeakReference<TextView> rkk = null;
+    WeakReference<TextView> rkl = null;
+    String rkm = null;
+    int rkn = 0;
+    int rko = 0;
     
     public b()
     {
@@ -386,19 +386,19 @@ public class a
     public final void onTick(long paramLong)
     {
       AppMethodBeat.i(103904);
-      if ((this.qAv != null) && (this.qAv.get() != null) && (this.qAw != null) && (this.qAw.get() != null))
+      if ((this.rkk != null) && (this.rkk.get() != null) && (this.rkl != null) && (this.rkl.get() != null))
       {
-        TextView localTextView1 = (TextView)this.qAv.get();
-        TextView localTextView2 = (TextView)this.qAw.get();
-        localTextView1.setText(this.qAx.substring(0, this.qAy));
-        localTextView2.setText(this.qAx.substring(this.qAy, this.qAy + this.gPA % (this.qAx.length() - this.qAy + 1)));
+        TextView localTextView1 = (TextView)this.rkk.get();
+        TextView localTextView2 = (TextView)this.rkl.get();
+        localTextView1.setText(this.rkm.substring(0, this.rkn));
+        localTextView2.setText(this.rkm.substring(this.rkn, this.rkn + this.rko % (this.rkm.length() - this.rkn + 1)));
       }
       for (;;)
       {
-        this.gPA += 1;
+        this.rko += 1;
         AppMethodBeat.o(103904);
         return;
-        ac.w("MicroMsg.FaceDetectJumper", "hy: tv ref released");
+        ad.w("MicroMsg.FaceDetectJumper", "hy: tv ref released");
         cancel();
       }
     }

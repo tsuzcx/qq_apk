@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTextBaseLineActionArg;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONArray;
 
 public final class ah
@@ -15,11 +15,11 @@ public final class ah
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
     AppMethodBeat.i(144979);
-    ac.i("MicroMsg.SetTextBaselineAction", "SetTextBaselineAction, align:%s", new Object[] { paramString });
+    ad.i("MicroMsg.SetTextBaselineAction", "SetTextBaselineAction, align:%s", new Object[] { paramString });
     if ("top".equalsIgnoreCase(paramString))
     {
-      paramd.jzb.jAa = a.a.jAh;
-      paramd.jzc.jAa = a.a.jAh;
+      paramd.jSY.jTV = a.a.jUc;
+      paramd.jSZ.jTV = a.a.jUc;
     }
     for (;;)
     {
@@ -27,18 +27,18 @@ public final class ah
       return true;
       if ("middle".equalsIgnoreCase(paramString))
       {
-        paramd.jzb.jAa = a.a.jAj;
-        paramd.jzc.jAa = a.a.jAj;
+        paramd.jSY.jTV = a.a.jUe;
+        paramd.jSZ.jTV = a.a.jUe;
       }
       else if ("bottom".equalsIgnoreCase(paramString))
       {
-        paramd.jzb.jAa = a.a.jAi;
-        paramd.jzc.jAa = a.a.jAi;
+        paramd.jSY.jTV = a.a.jUd;
+        paramd.jSZ.jTV = a.a.jUd;
       }
       else if ("normal".equalsIgnoreCase(paramString))
       {
-        paramd.jzb.jAa = a.a.jAg;
-        paramd.jzc.jAa = a.a.jAg;
+        paramd.jSY.jTV = a.a.jUb;
+        paramd.jSZ.jTV = a.a.jUb;
       }
     }
   }
@@ -52,7 +52,7 @@ public final class ah
       AppMethodBeat.o(144980);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.jzJ);
+    boolean bool = b(paramd, paramCanvas.jTE);
     AppMethodBeat.o(144980);
     return bool;
   }
@@ -70,7 +70,7 @@ public final class ah
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144977);
     SetTextBaseLineActionArg localSetTextBaseLineActionArg = new SetTextBaseLineActionArg();

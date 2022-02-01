@@ -4,30 +4,30 @@ import com.tencent.mm.plugin.story.f.d.h;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/presenter/GalleryGroupUpdateCallback;", "", "deleteGroup", "", "groupIndex", "", "notifyDeleteResult", "isOk", "", "notifyGroup", "notifyIndicator", "notifyItemsChange", "start", "count", "notifyItemsInsert", "notifyItemsRemove", "notifySetFavResult", "favorite", "success", "notifySetPrivacyResult", "isPrivacy", "updateGroup", "items", "", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "updateGroupCount", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/presenter/GalleryGroupUpdateCallback;", "", "deleteGroup", "", "groupIndex", "", "notifyDeleteResult", "isOk", "", "notifyGroup", "notifyIndicator", "notifyItemsChange", "start", "count", "notifyItemsInsert", "notifyItemsRemove", "notifySetFavResult", "favorite", "success", "notifySetPrivacyResult", "isPrivacy", "updateGroup", "items", "", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "updateGroupCount", "plugin-story_release"})
 public abstract interface c
 {
-  public abstract void QA(int paramInt);
+  public abstract void Si(int paramInt);
   
-  public abstract void QB(int paramInt);
+  public abstract void Sj(int paramInt);
   
-  public abstract void Qz(int paramInt);
+  public abstract void Sk(int paramInt);
   
-  public abstract void aj(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void ar(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void an(boolean paramBoolean1, boolean paramBoolean2);
   
   public abstract void as(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void at(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void dXc();
+  public abstract void au(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void n(int paramInt, List<h> paramList);
+  public abstract void ejr();
   
-  public abstract void rI(boolean paramBoolean);
+  public abstract void o(int paramInt, List<h> paramList);
   
-  public abstract void rJ(boolean paramBoolean);
+  public abstract void so(boolean paramBoolean);
+  
+  public abstract void sp(boolean paramBoolean);
 }
 
 

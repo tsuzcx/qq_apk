@@ -19,12 +19,12 @@ public final class a
     if (size() + 1 > 5) {
       throw new IllegalArgumentException("Maximum number of items supported by BottomNavigationView is 5. Limit can be checked with BottomNavigationView#getMaxItemCount()");
     }
-    hB();
+    hR();
     paramCharSequence = super.a(paramInt1, paramInt2, paramInt3, paramCharSequence);
     if ((paramCharSequence instanceof j)) {
       ((j)paramCharSequence).ac(true);
     }
-    hC();
+    hS();
     return paramCharSequence;
   }
   

@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.sns.ad.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.al;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.am;
 import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.al;
 
 public final class b
 {
-  private static int kWB;
-  private static int kWC;
-  public int xIp;
-  public p xIq;
-  public int xIr;
-  public long xIs;
-  public long xIt;
+  private static int ltA;
+  private static int ltB;
+  public int yXE;
+  public p yXF;
+  public int yXG;
+  public long yXH;
+  public long yXI;
   
-  public static int dFE()
+  public static int dRw()
   {
-    AppMethodBeat.i(199957);
+    AppMethodBeat.i(197600);
     int i = 0;
     try
     {
-      boolean bool = aj.DT();
+      boolean bool = al.isDarkMode();
       i = bool;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ac.e("AdExposureParams", "getDarkModeStatus exp=" + localThrowable.toString());
+        ad.e("AdExposureParams", "getDarkModeStatus exp=" + localThrowable.toString());
       }
-      AppMethodBeat.o(199957);
+      AppMethodBeat.o(197600);
     }
     if (i != 0)
     {
-      AppMethodBeat.o(199957);
+      AppMethodBeat.o(197600);
       return 2;
     }
     return 1;
@@ -44,44 +44,44 @@ public final class b
   
   public static int getScreenHeight()
   {
-    AppMethodBeat.i(199955);
-    if (kWC == 0) {}
+    AppMethodBeat.i(197598);
+    if (ltB == 0) {}
     try
     {
-      int[] arrayOfInt = al.gg(ai.getContext());
-      kWB = arrayOfInt[0];
-      kWC = arrayOfInt[1];
-      int i = kWC;
-      AppMethodBeat.o(199955);
+      int[] arrayOfInt = am.gk(aj.getContext());
+      ltA = arrayOfInt[0];
+      ltB = arrayOfInt[1];
+      int i = ltB;
+      AppMethodBeat.o(197598);
       return i;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ac.e("AdExposureParams", "getScreenHeight exp=" + localThrowable.toString());
+        ad.e("AdExposureParams", "getScreenHeight exp=" + localThrowable.toString());
       }
     }
   }
   
   public static int getScreenWidth()
   {
-    AppMethodBeat.i(199956);
-    if (kWB == 0) {}
+    AppMethodBeat.i(197599);
+    if (ltA == 0) {}
     try
     {
-      int[] arrayOfInt = al.gg(ai.getContext());
-      kWB = arrayOfInt[0];
-      kWC = arrayOfInt[1];
-      int i = kWB;
-      AppMethodBeat.o(199956);
+      int[] arrayOfInt = am.gk(aj.getContext());
+      ltA = arrayOfInt[0];
+      ltB = arrayOfInt[1];
+      int i = ltA;
+      AppMethodBeat.o(197599);
       return i;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ac.e("AdExposureParams", "getScreenWidth exp=" + localThrowable.toString());
+        ad.e("AdExposureParams", "getScreenWidth exp=" + localThrowable.toString());
       }
     }
   }

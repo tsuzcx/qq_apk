@@ -10,18 +10,18 @@ import rx.e.b;
 public final class a<T>
   extends b<T, T>
 {
-  static final e Mcv;
-  final b<T> Mct;
-  private boolean Mcu;
+  static final e NXx;
+  final b<T> NXv;
+  private boolean NXw;
   
   static
   {
     AppMethodBeat.i(90244);
-    Mcv = new e()
+    NXx = new e()
     {
-      public final void gd(Object paramAnonymousObject) {}
+      public final void gyM() {}
       
-      public final void ggi() {}
+      public final void gz(Object paramAnonymousObject) {}
       
       public final void onError(Throwable paramAnonymousThrowable) {}
     };
@@ -32,33 +32,33 @@ public final class a<T>
   {
     super(new a(paramb));
     AppMethodBeat.i(90239);
-    this.Mct = paramb;
+    this.NXv = paramb;
     AppMethodBeat.o(90239);
   }
   
-  private void ge(Object paramObject)
+  private void gA(Object paramObject)
   {
     AppMethodBeat.i(90240);
-    synchronized (this.Mct.Mcx)
+    synchronized (this.NXv.NXz)
     {
-      this.Mct.Mcz.add(paramObject);
-      if ((this.Mct.get() != null) && (!this.Mct.Mcy))
+      this.NXv.NXB.add(paramObject);
+      if ((this.NXv.get() != null) && (!this.NXv.NXA))
       {
-        this.Mcu = true;
-        this.Mct.Mcy = true;
+        this.NXw = true;
+        this.NXv.NXA = true;
       }
-      if (this.Mcu)
+      if (this.NXw)
       {
-        paramObject = this.Mct.Mcz.poll();
+        paramObject = this.NXv.NXB.poll();
         if (paramObject != null) {
-          c.a((e)this.Mct.get(), paramObject);
+          c.a((e)this.NXv.get(), paramObject);
         }
       }
     }
     AppMethodBeat.o(90240);
   }
   
-  public static <T> a<T> ggq()
+  public static <T> a<T> gyU()
   {
     AppMethodBeat.i(90238);
     a locala = new a(new b());
@@ -66,70 +66,70 @@ public final class a<T>
     return locala;
   }
   
-  public final void gd(T paramT)
-  {
-    AppMethodBeat.i(90243);
-    if (this.Mcu)
-    {
-      ((e)this.Mct.get()).gd(paramT);
-      AppMethodBeat.o(90243);
-      return;
-    }
-    ge(c.gf(paramT));
-    AppMethodBeat.o(90243);
-  }
-  
-  public final void ggi()
+  public final void gyM()
   {
     AppMethodBeat.i(90241);
-    if (this.Mcu)
+    if (this.NXw)
     {
-      ((e)this.Mct.get()).ggi();
+      ((e)this.NXv.get()).gyM();
       AppMethodBeat.o(90241);
       return;
     }
-    ge(c.ggt());
+    gA(c.gyX());
     AppMethodBeat.o(90241);
+  }
+  
+  public final void gz(T paramT)
+  {
+    AppMethodBeat.i(90243);
+    if (this.NXw)
+    {
+      ((e)this.NXv.get()).gz(paramT);
+      AppMethodBeat.o(90243);
+      return;
+    }
+    gA(c.gB(paramT));
+    AppMethodBeat.o(90243);
   }
   
   public final void onError(Throwable paramThrowable)
   {
     AppMethodBeat.i(90242);
-    if (this.Mcu)
+    if (this.NXw)
     {
-      ((e)this.Mct.get()).onError(paramThrowable);
+      ((e)this.NXv.get()).onError(paramThrowable);
       AppMethodBeat.o(90242);
       return;
     }
-    ge(c.L(paramThrowable));
+    gA(c.M(paramThrowable));
     AppMethodBeat.o(90242);
   }
   
   static final class a<T>
     implements d.a<T>
   {
-    final a.b<T> Mct;
+    final a.b<T> NXv;
     
     public a(a.b<T> paramb)
     {
-      this.Mct = paramb;
+      this.NXv = paramb;
     }
   }
   
   static final class b<T>
     extends AtomicReference<e<? super T>>
   {
-    final c<T> McA;
-    final Object Mcx;
-    boolean Mcy;
-    final ConcurrentLinkedQueue<Object> Mcz;
+    boolean NXA;
+    final ConcurrentLinkedQueue<Object> NXB;
+    final c<T> NXC;
+    final Object NXz;
     
     b()
     {
       AppMethodBeat.i(90235);
-      this.Mcx = new Object();
-      this.Mcz = new ConcurrentLinkedQueue();
-      this.McA = c.ggs();
+      this.NXz = new Object();
+      this.NXB = new ConcurrentLinkedQueue();
+      this.NXC = c.gyW();
       AppMethodBeat.o(90235);
     }
   }

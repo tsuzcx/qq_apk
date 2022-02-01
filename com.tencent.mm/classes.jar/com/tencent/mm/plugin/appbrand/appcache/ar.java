@@ -1,58 +1,89 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.vending.c.a;
 
 public final class ar
 {
-  private static a jnk;
-  private static ICommLibReader jnl = null;
+  private static final WxaCommLibRuntimeReader.a jHd;
   
-  public static void a(a parama)
+  static
   {
-    jnk = parama;
+    AppMethodBeat.i(44336);
+    jHd = new WxaCommLibRuntimeReader.a();
+    AppMethodBeat.o(44336);
   }
   
-  public static ICommLibReader aWJ()
+  public static void bad()
   {
-    AppMethodBeat.i(184407);
-    try
-    {
-      ICommLibReader localICommLibReader = jnl;
-      ac.i("MicroMsg.AppBrand.WxaCommLibPreloadSessionInMM", "getCurrentAcceptedCommLibReader [%s], stacktrace=%s", new Object[] { localICommLibReader, Log.getStackTraceString(new Throwable()) });
-      AppMethodBeat.o(184407);
-      return localICommLibReader;
-    }
-    finally
-    {
-      AppMethodBeat.o(184407);
-    }
+    AppMethodBeat.i(44332);
+    doNotify();
+    AppMethodBeat.o(44332);
   }
   
-  static void c(ICommLibReader paramICommLibReader)
+  public static void bae()
   {
-    AppMethodBeat.i(90567);
+    AppMethodBeat.i(44333);
+    doNotify();
+    AppMethodBeat.o(44333);
+  }
+  
+  public static void baf()
+  {
+    AppMethodBeat.i(44334);
     try
     {
-      jnl = paramICommLibReader;
-      if (jnk != null) {
-        jnk.b(paramICommLibReader);
-      }
-      AppMethodBeat.o(90567);
+      WxaCommLibRuntimeReader.a locala = jHd;
+      IPCVoid localIPCVoid = IPCVoid.gyi;
+      locala.bam();
+      AppMethodBeat.o(44334);
       return;
     }
-    finally
+    catch (WxaCommLibRuntimeReader.AccountNotReadyError localAccountNotReadyError)
     {
-      AppMethodBeat.o(90567);
+      com.tencent.mm.model.b localb = new com.tencent.mm.model.b();
+      AppMethodBeat.o(44334);
+      throw localb;
     }
   }
   
-  public static abstract interface a
+  private static void doNotify()
   {
-    public abstract void b(ICommLibReader paramICommLibReader);
+    AppMethodBeat.i(44335);
+    Object localObject1 = jHd;
+    Object localObject2 = IPCVoid.gyi;
+    localObject2 = ((WxaCommLibRuntimeReader.a)localObject1).bam();
+    if ((localObject2 instanceof WxaPkgWrappingInfo))
+    {
+      localObject1 = (WxaPkgWrappingInfo)localObject2;
+      ad.i("MicroMsg.AppBrand.WxaCommLibPreloadNotify", "doNotify check ok ret[%s]", new Object[] { localObject2 });
+      localObject2 = g.gBK;
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = localObject2[i];
+        str = aj.getPackageName() + str;
+        if (aj.aQt(str)) {
+          XIPCInvoker.a(str, localObject1, a.class, null);
+        }
+        i += 1;
+      }
+      AppMethodBeat.o(44335);
+      return;
+    }
+    ad.e("MicroMsg.AppBrand.WxaCommLibPreloadNotify", "doNotify check failed ret[%s]", new Object[] { localObject2 });
+    AppMethodBeat.o(44335);
   }
+  
+  static final class a
+    implements com.tencent.mm.ipcinvoker.b<WxaPkgWrappingInfo, IPCVoid>
+  {}
 }
 
 

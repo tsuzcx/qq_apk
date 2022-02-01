@@ -9,18 +9,18 @@ public abstract class a
 {
   public <T extends a> T after(com.tencent.mm.kernel.b.a parama)
   {
-    h.agV().agO().agp().ghu.giG.a(b.class, this, parama);
+    h.ajG().ajz().ajb().gBe.gCq.a(b.class, this, parama);
     return this;
   }
   
   public void alone()
   {
-    h.agV().agO().agp().ghu.giG.a(b.class, this, this);
+    h.ajG().ajz().ajb().gBe.gCq.a(b.class, this, this);
   }
   
   public <T extends a> T before(com.tencent.mm.kernel.b.a parama)
   {
-    h.agV().agO().agp().ghu.giG.a(b.class, parama, this);
+    h.ajG().ajz().ajb().gBe.gCq.a(b.class, parama, this);
     return this;
   }
   

@@ -6,33 +6,20 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntimeWCAccessible;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.g.d;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.service.f.a;
 import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
   extends com.tencent.mm.plugin.ball.service.f
 {
-  private static com.tencent.mm.plugin.ball.c.f jPm;
-  o jPl;
+  private static com.tencent.mm.plugin.ball.c.f kjw;
+  o jCo;
   
   static
   {
     AppMethodBeat.i(44975);
-    jPm = new com.tencent.mm.plugin.ball.c.g()
-    {
-      public final void c(BallInfo paramAnonymousBallInfo)
-      {
-        AppMethodBeat.i(186447);
-        c.b(paramAnonymousBallInfo);
-        AppMethodBeat.o(186447);
-      }
-      
-      public final void d(BallInfo paramAnonymousBallInfo) {}
-      
-      public final void e(BallInfo paramAnonymousBallInfo) {}
-    };
+    kjw = new c.2();
     AppMethodBeat.o(44975);
   }
   
@@ -40,83 +27,78 @@ public final class c
   {
     super(paramf);
     AppMethodBeat.i(44964);
-    this.jPl = paramo;
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "create, runtime:%s", new Object[] { Integer.valueOf(paramo.hashCode()) });
+    this.jCo = paramo;
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "create, runtime:%s", new Object[] { Integer.valueOf(paramo.hashCode()) });
     AppMethodBeat.o(44964);
   }
   
   public static int b(g.d paramd)
   {
-    if (paramd == g.d.jdd) {
+    if (paramd == g.d.jwm) {
       return 2;
     }
-    if (paramd == g.d.jdc) {
+    if (paramd == g.d.jwl) {
       return 1;
     }
     return 0;
   }
   
-  public static void bdf()
+  public static void bgJ()
   {
     AppMethodBeat.i(44972);
     if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(1, jPm);
+      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).a(1, kjw);
     }
     AppMethodBeat.o(44972);
   }
   
-  public static void bdg()
+  public static void bgK()
   {
     AppMethodBeat.i(44973);
     if (com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class) != null) {
-      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(1, jPm);
+      ((com.tencent.mm.plugin.ball.c.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.ball.c.c.class)).b(1, kjw);
     }
     AppMethodBeat.o(44973);
   }
   
   public final void a(final f.a parama)
   {
-    AppMethodBeat.i(186448);
-    g localg = (g)this.jPl.as(g.class);
-    if ((localg != null) && (localg.bdl()))
+    AppMethodBeat.i(188144);
+    g localg = (g)this.jCo.as(g.class);
+    if ((localg != null) && (localg.bgP()))
     {
-      localg.a(a.jg(this.jPl.mContext), new g.a()
+      localg.a(a.jq(this.jCo.mContext), new g.a()
       {
-        public final void bdh()
+        public final void bgL()
         {
-          AppMethodBeat.i(186446);
-          ac.i("MicroMsg.AppBrandFloatBallHelper", "beforeOnMenuFloatBallSelected, afterShowVOIPTip");
+          AppMethodBeat.i(188142);
+          ad.i("MicroMsg.AppBrandFloatBallHelper", "beforeOnMenuFloatBallSelected, afterShowVOIPTip");
           if (parama != null) {
             parama.proceed();
           }
-          AppMethodBeat.o(186446);
+          AppMethodBeat.o(188142);
         }
       });
-      AppMethodBeat.o(186448);
+      AppMethodBeat.o(188144);
       return;
     }
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "beforeOnMenuFloatBallSelected, not show vpip tip");
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "beforeOnMenuFloatBallSelected, not show vpip tip");
     parama.proceed();
-    AppMethodBeat.o(186448);
+    AppMethodBeat.o(188144);
   }
   
-  public final void aa(int paramInt, String paramString)
+  public final void ac(int paramInt, String paramString)
   {
     AppMethodBeat.i(44966);
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    super.aa(paramInt, paramString);
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.ac(paramInt, paramString);
     AppMethodBeat.o(44966);
   }
   
-  public final boolean bcV()
-  {
-    return false;
-  }
-  
-  public final boolean bcW()
+  public final boolean bgA()
   {
     AppMethodBeat.i(44965);
-    if (!this.jPl.aTS().jDy)
+    if (!this.jCo.aXc().jXu)
     {
       AppMethodBeat.o(44965);
       return true;
@@ -125,65 +107,70 @@ public final class c
     return false;
   }
   
-  public final void bcX()
+  public final void bgB()
   {
     AppMethodBeat.i(44969);
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.jPl.hashCode()) });
-    if (AppBrandRuntimeWCAccessible.isGame(this.jPl))
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
+    if (AppBrandRuntimeWCAccessible.isGame(this.jCo))
     {
-      super.bGh();
+      super.bKs();
       AppMethodBeat.o(44969);
       return;
     }
-    super.bcX();
+    super.bgB();
     AppMethodBeat.o(44969);
   }
   
-  public final void bcY()
+  public final void bgC()
   {
     AppMethodBeat.i(44970);
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.jPl.hashCode()) });
-    super.bcY();
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
+    super.bgC();
     AppMethodBeat.o(44970);
   }
   
-  public final void bcZ()
+  public final void bgD()
   {
     AppMethodBeat.i(44971);
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.jPl.hashCode()) });
-    this.ngF.gb(true);
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
+    this.nHb.gg(true);
     AppMethodBeat.o(44971);
   }
   
-  public final boolean bde()
+  public final boolean bgI()
   {
-    AppMethodBeat.i(186449);
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "alvinluo enableMessageFloatBall %b, %s", new Object[] { Boolean.valueOf(bcW()), this });
-    boolean bool = bcW();
-    AppMethodBeat.o(186449);
+    AppMethodBeat.i(188145);
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "alvinluo enableMessageFloatBall %b, %s", new Object[] { Boolean.valueOf(bgA()), this });
+    boolean bool = bgA();
+    AppMethodBeat.o(188145);
     return bool;
+  }
+  
+  public final boolean bgz()
+  {
+    return false;
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(44968);
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.jPl.hashCode()) });
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
     super.onDestroy();
     AppMethodBeat.o(44968);
   }
   
-  public final boolean rT(int paramInt)
+  public final boolean sv(int paramInt)
   {
     AppMethodBeat.i(44967);
-    ac.i("MicroMsg.AppBrandFloatBallHelper", "onClose, runtime:%s", new Object[] { Integer.valueOf(this.jPl.hashCode()) });
-    boolean bool = super.rT(paramInt);
+    ad.i("MicroMsg.AppBrandFloatBallHelper", "onClose, runtime:%s", new Object[] { Integer.valueOf(this.jCo.hashCode()) });
+    boolean bool = super.sv(paramInt);
     AppMethodBeat.o(44967);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.c
  * JD-Core Version:    0.7.0.1
  */

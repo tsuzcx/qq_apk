@@ -1,10 +1,13 @@
 package com.tencent.mapsdk.rastercore;
 
 import android.content.Context;
-import com.e.a.a.a.a.a;
-import com.e.a.a.a.a.d;
-import com.e.a.a.a.a.j;
+import com.f.a.a.a.a.a;
+import com.f.a.a.a.a.d;
+import com.f.a.a.a.a.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.i;
 import com.tencent.tencentmap.mapsdk.map.IMapView;
 import com.tencent.tencentmap.mapsdk.map.TencentMapOptions;
 
@@ -12,9 +15,21 @@ public class MapProvider
 {
   private TencentMapOptions mTencentMapOptions;
   
+  public static String getMapSdkPath()
+  {
+    AppMethodBeat.i(199842);
+    String str = b.arV() + "mapsdk";
+    if (!i.fv(str)) {
+      i.aYg(str);
+    }
+    ad.d("MapProvider", "path:%s", new Object[] { str });
+    AppMethodBeat.o(199842);
+    return str;
+  }
+  
   public IMapView getMapView(Context paramContext, TencentMapOptions paramTencentMapOptions)
   {
-    AppMethodBeat.i(205779);
+    AppMethodBeat.i(199841);
     int i = 0;
     this.mTencentMapOptions = paramTencentMapOptions;
     if (this.mTencentMapOptions != null) {
@@ -27,7 +42,7 @@ public class MapProvider
     }
     for (;;)
     {
-      AppMethodBeat.o(205779);
+      AppMethodBeat.o(199841);
       return paramContext;
       LogHelper.e("maptype", "glmapview");
       paramContext = new d(paramContext, this.mTencentMapOptions);

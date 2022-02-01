@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fingerprint;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.plugin.fingerprint.b.b;
 import com.tencent.mm.plugin.fingerprint.b.f;
 import com.tencent.mm.plugin.fingerprint.b.h;
@@ -13,14 +13,14 @@ import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements aw
+  implements ax
 {
-  private n sjl;
-  private com.tencent.mm.plugin.fingerprint.b.i sjm;
-  private j sjn;
-  private b sjo;
-  private com.tencent.mm.plugin.fingerprint.b.e sjp;
-  private f sjq;
+  private n tfN;
+  private com.tencent.mm.plugin.fingerprint.b.i tfO;
+  private j tfP;
+  private b tfQ;
+  private com.tencent.mm.plugin.fingerprint.b.e tfR;
+  private f tfS;
   
   static
   {
@@ -32,12 +32,12 @@ public class a
   public a()
   {
     AppMethodBeat.i(64213);
-    this.sjl = new n();
-    this.sjm = new com.tencent.mm.plugin.fingerprint.b.i();
-    this.sjn = new j();
-    this.sjo = new b();
-    this.sjp = new com.tencent.mm.plugin.fingerprint.b.e();
-    this.sjq = new f();
+    this.tfN = new n();
+    this.tfO = new com.tencent.mm.plugin.fingerprint.b.i();
+    this.tfP = new j();
+    this.tfQ = new b();
+    this.tfR = new com.tencent.mm.plugin.fingerprint.b.e();
+    this.tfS = new f();
     AppMethodBeat.o(64213);
   }
   
@@ -51,12 +51,12 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(64214);
-    com.tencent.mm.sdk.b.a.GpY.c(this.sjl);
-    com.tencent.mm.sdk.b.a.GpY.c(this.sjm);
-    com.tencent.mm.sdk.b.a.GpY.c(this.sjn);
-    com.tencent.mm.sdk.b.a.GpY.c(this.sjo);
-    com.tencent.mm.sdk.b.a.GpY.c(this.sjp);
-    com.tencent.mm.sdk.b.a.GpY.c(this.sjq);
+    com.tencent.mm.sdk.b.a.IbL.c(this.tfN);
+    com.tencent.mm.sdk.b.a.IbL.c(this.tfO);
+    com.tencent.mm.sdk.b.a.IbL.c(this.tfP);
+    com.tencent.mm.sdk.b.a.IbL.c(this.tfQ);
+    com.tencent.mm.sdk.b.a.IbL.c(this.tfR);
+    com.tencent.mm.sdk.b.a.IbL.c(this.tfS);
     g.a(h.class, new com.tencent.mm.kernel.c.e(new q()));
     AppMethodBeat.o(64214);
   }
@@ -64,14 +64,14 @@ public class a
   public void onAccountRelease()
   {
     AppMethodBeat.i(64215);
-    com.tencent.mm.sdk.b.a.GpY.d(this.sjl);
-    this.sjm.release();
-    com.tencent.mm.sdk.b.a.GpY.d(this.sjm);
-    com.tencent.mm.sdk.b.a.GpY.d(this.sjn);
-    com.tencent.mm.sdk.b.a.GpY.d(this.sjo);
-    com.tencent.mm.sdk.b.a.GpY.d(this.sjp);
+    com.tencent.mm.sdk.b.a.IbL.d(this.tfN);
+    this.tfO.release();
+    com.tencent.mm.sdk.b.a.IbL.d(this.tfO);
+    com.tencent.mm.sdk.b.a.IbL.d(this.tfP);
+    com.tencent.mm.sdk.b.a.IbL.d(this.tfQ);
+    com.tencent.mm.sdk.b.a.IbL.d(this.tfR);
     ((com.tencent.mm.plugin.fingerprint.b.a.i)g.ab(com.tencent.mm.plugin.fingerprint.b.a.i.class)).cancel();
-    com.tencent.mm.sdk.b.a.GpY.d(this.sjq);
+    com.tencent.mm.sdk.b.a.IbL.d(this.tfS);
     g.ac(h.class);
     AppMethodBeat.o(64215);
   }

@@ -5,21 +5,21 @@ public abstract interface f
 {
   public static final class a
   {
-    public String JXw;
-    public String JXx;
-    public int JXy;
+    public String LRr;
+    public String LRs;
+    public int LRt;
     
     public a(String paramString1, String paramString2, int paramInt)
     {
-      this.JXw = paramString2;
-      this.JXy = paramInt;
-      this.JXx = paramString1;
+      this.LRr = paramString2;
+      this.LRt = paramInt;
+      this.LRs = paramString1;
     }
   }
   
   public static final class b
   {
-    public boolean qwz;
+    public boolean rgp;
   }
 }
 

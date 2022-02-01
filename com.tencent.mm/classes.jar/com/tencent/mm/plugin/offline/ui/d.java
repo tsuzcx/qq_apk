@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.offline.ui;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vn;
-import com.tencent.mm.g.a.vn.a;
+import com.tencent.mm.g.a.wg;
+import com.tencent.mm.g.a.wg.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.i;
 import com.tencent.mm.plugin.offline.k;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class d
-  extends c<vn>
+  extends c<wg>
 {
-  private ao mHandler;
+  private ap mHandler;
   
   public d()
   {
     AppMethodBeat.i(66399);
-    this.mHandler = new ao(Looper.getMainLooper());
-    this.__eventId = vn.class.getName().hashCode();
+    this.mHandler = new ap(Looper.getMainLooper());
+    this.__eventId = wg.class.getName().hashCode();
     AppMethodBeat.o(66399);
   }
 }

@@ -9,37 +9,36 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ux;
+import com.tencent.mm.g.a.vq;
 import com.tencent.mm.plugin.appbrand.appusage.ap.b;
 import com.tencent.mm.plugin.appbrand.appusage.ap.c;
 import com.tencent.mm.plugin.appbrand.appusage.t.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandLauncherDesktopReporter;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.d;
+import com.tencent.mm.plugin.appbrand.report.e;
 import com.tencent.mm.plugin.appbrand.report.model.l;
 import com.tencent.mm.plugin.appbrand.report.model.l.a;
 import com.tencent.mm.plugin.appbrand.report.model.l.b;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyEmptyUI;
-import com.tencent.mm.protocal.protobuf.aen;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.protocal.protobuf.agw;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 final class j
   extends f
   implements View.OnClickListener, ap.c
 {
-  private boolean mkZ;
+  private boolean mLB;
   
   j(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
     super(paramFragmentActivity, paramViewGroup);
     AppMethodBeat.i(180409);
-    this.mkZ = com.tencent.mm.pluginsdk.permission.b.o(paramFragmentActivity, "android.permission.ACCESS_COARSE_LOCATION");
+    this.mLB = com.tencent.mm.pluginsdk.permission.b.n(paramFragmentActivity, "android.permission.ACCESS_COARSE_LOCATION");
     AppMethodBeat.o(180409);
   }
   
-  private void bwI()
+  private void bAO()
   {
     AppMethodBeat.i(49193);
     Object localObject = this.mActivity;
@@ -48,22 +47,22 @@ final class j
       AppMethodBeat.o(49193);
       return;
     }
-    localObject = ((AppBrandLauncherUI)localObject).mbE;
+    localObject = ((AppBrandLauncherUI)localObject).mBM;
     if (localObject != null) {
-      ((t.d)localObject).aYO();
+      ((t.d)localObject).bcm();
     }
-    if (this.mjb != null)
+    if (this.mJC != null)
     {
-      localObject = d.lRj;
-      d.b(this.mActivity).btc();
+      localObject = e.mqZ;
+      e.b(this.mActivity).bxh();
     }
     AppMethodBeat.o(49193);
   }
   
-  public final void a(aen paramaen)
+  public final void a(agw paramagw)
   {
     AppMethodBeat.i(180412);
-    b(paramaen);
+    b(paramagw);
     AppMethodBeat.o(180412);
   }
   
@@ -77,17 +76,17 @@ final class j
     AppMethodBeat.o(180411);
   }
   
-  public final ap.b aZe()
-  {
-    return ap.b.jwn;
-  }
-  
-  public final void bwo()
+  public final void bAu()
   {
     AppMethodBeat.i(49182);
-    super.bwo();
-    hB(true);
+    super.bAu();
+    hL(true);
     AppMethodBeat.o(49182);
+  }
+  
+  public final ap.b bcC()
+  {
+    return ap.b.jQj;
   }
   
   protected final String getTitle()
@@ -101,31 +100,37 @@ final class j
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(49192);
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListNearByHeader", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
     paramView = this.mActivity;
     if (paramView == null)
     {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListNearByHeader", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(49192);
       return;
     }
-    if (!this.mkZ)
+    if (!this.mLB)
     {
-      bwI();
+      bAO();
       paramView.startActivityForResult(new Intent(paramView, AppBrandNearbyEmptyUI.class).putExtra("extra_enter_reason", 1), 3);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListNearByHeader", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(49192);
       return;
     }
-    Object localObject = new ux();
-    a.GpY.l((com.tencent.mm.sdk.b.b)localObject);
+    localObject = new vq();
+    com.tencent.mm.sdk.b.a.IbL.l((com.tencent.mm.sdk.b.b)localObject);
     localObject = new AppBrandStatObject();
     ((AppBrandStatObject)localObject).scene = 1001;
-    com.tencent.mm.plugin.appbrand.launching.e.f.lqh.a(paramView, "gh_2b2e3862a1fb@app", null, "pages/index/index.html", 0, 0, (AppBrandStatObject)localObject, null, null);
-    bwI();
+    com.tencent.mm.plugin.appbrand.launching.e.f.lNC.a(paramView, "gh_2b2e3862a1fb@app", null, "pages/index/index.html", 0, 0, (AppBrandStatObject)localObject, null, null);
+    bAO();
     paramView = new l();
-    paramView.lTr = l.b.lTE;
-    paramView.lTs = 0;
-    paramView.lTt = "";
-    paramView.lTv = l.a.lTz;
+    paramView.mtg = l.b.mtt;
+    paramView.mth = 0;
+    paramView.mti = "";
+    paramView.mtk = l.a.mto;
     paramView.report();
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListNearByHeader", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(49192);
   }
   
@@ -133,10 +138,10 @@ final class j
   {
     AppMethodBeat.i(49181);
     super.onResume();
-    if ((!this.mkZ) && (com.tencent.mm.pluginsdk.permission.b.o(this.mActivity, "android.permission.ACCESS_COARSE_LOCATION")))
+    if ((!this.mLB) && (com.tencent.mm.pluginsdk.permission.b.n(this.mActivity, "android.permission.ACCESS_COARSE_LOCATION")))
     {
-      this.mkZ = true;
-      bwo();
+      this.mLB = true;
+      bAu();
     }
     AppMethodBeat.o(49181);
   }

@@ -9,12 +9,12 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.b.a.a;
 import com.tencent.mm.plugin.account.friend.a.an;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.base.h;
 
 public class RegByFacebookSetPwdUI
@@ -31,7 +31,7 @@ public class RegByFacebookSetPwdUI
   protected final void a(a.a parama)
   {
     AppMethodBeat.i(128504);
-    switch (2.iOC[parama.ordinal()])
+    switch (2.jhL[parama.ordinal()])
     {
     }
     for (;;)
@@ -51,15 +51,15 @@ public class RegByFacebookSetPwdUI
     }
   }
   
-  protected final n aQZ()
+  protected final n aUl()
   {
     AppMethodBeat.i(128501);
-    an localan = new an(this.iXK);
+    an localan = new an(this.jqT);
     AppMethodBeat.o(128501);
     return localan;
   }
   
-  protected final String aRa()
+  protected final String aUm()
   {
     AppMethodBeat.i(128502);
     String str = ((EditText)findViewById(2131303948)).getText().toString();
@@ -67,7 +67,7 @@ public class RegByFacebookSetPwdUI
     return str;
   }
   
-  protected final String aRb()
+  protected final String aUn()
   {
     AppMethodBeat.i(128503);
     String str = ((EditText)findViewById(2131303947)).getText().toString();
@@ -75,7 +75,7 @@ public class RegByFacebookSetPwdUI
     return str;
   }
   
-  protected final int aRc()
+  protected final int aUo()
   {
     return 382;
   }
@@ -97,8 +97,8 @@ public class RegByFacebookSetPwdUI
     AppMethodBeat.i(128505);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      g.agR().agA().set(57, Integer.valueOf(0));
-      h.d(this, getString(2131762317, new Object[] { (String)g.agR().agA().get(5, null) }), getString(2131762308), new DialogInterface.OnClickListener()
+      g.ajC().ajl().set(57, Integer.valueOf(0));
+      h.d(this, getString(2131762317, new Object[] { (String)g.ajC().ajl().get(5, null) }), getString(2131762308), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -138,7 +138,7 @@ public class RegByFacebookSetPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByFacebookSetPwdUI
  * JD-Core Version:    0.7.0.1
  */

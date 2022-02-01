@@ -13,33 +13,33 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  private static final d Kas;
-  private static final ConcurrentHashMap<Looper, WeakReference<Handler>> Kat;
-  private final Looper cyY;
+  private static final d LUp;
+  private static final ConcurrentHashMap<Looper, WeakReference<Handler>> LUq;
+  private final Looper cJU;
   
   static
   {
     AppMethodBeat.i(183287);
-    Kas = new d();
-    Kat = new ConcurrentHashMap();
+    LUp = new d();
+    LUq = new ConcurrentHashMap();
     AppMethodBeat.o(183287);
   }
   
   private d()
   {
     AppMethodBeat.i(183283);
-    HandlerThread localHandlerThread = c.aLY("TP#Internal");
+    HandlerThread localHandlerThread = c.aRF("TP#Internal");
     localHandlerThread.setPriority(8);
     localHandlerThread.start();
-    this.cyY = localHandlerThread.getLooper();
+    this.cJU = localHandlerThread.getLooper();
     AppMethodBeat.o(183283);
   }
   
   public static Handler a(String paramString, Handler.Callback paramCallback)
   {
     AppMethodBeat.i(183285);
-    paramString = new a(paramString, Kas.cyY, paramCallback);
-    Kat.put(Kas.cyY, new WeakReference(paramString));
+    paramString = new a(paramString, LUp.cJU, paramCallback);
+    LUq.put(LUp.cJU, new WeakReference(paramString));
     AppMethodBeat.o(183285);
     return paramString;
   }
@@ -47,7 +47,7 @@ public final class d
   public static void release()
   {
     AppMethodBeat.i(183286);
-    Iterator localIterator = Kat.values().iterator();
+    Iterator localIterator = LUq.values().iterator();
     while (localIterator.hasNext())
     {
       Handler localHandler = (Handler)((WeakReference)localIterator.next()).get();

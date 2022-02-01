@@ -1,223 +1,249 @@
 package com.tencent.mm.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.Random;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class ac
 {
-  private int crypt;
-  private boolean header;
-  private byte[] key;
-  private byte[] out;
-  private int padding;
-  private byte[] plain;
-  private int pos;
-  private int preCrypt;
-  private byte[] prePlain;
-  private Random random;
+  public static boolean iOA;
+  public static boolean iOB;
+  public static boolean iOC;
+  public static boolean iOD;
+  public static boolean iOE;
+  public static int iOF;
+  public static int iOG;
+  public static boolean iOH;
+  public static String iOI;
+  public static String iOJ;
+  public static boolean iOK;
+  public static boolean iOL;
+  public static int iOM;
+  public static int iON;
+  public static int iOO;
+  public static String iOP;
+  public static String iOQ;
+  public static String iOR;
+  public static String iOS;
+  public static boolean iOT;
+  public static boolean iOU;
+  public static boolean iOV;
+  public static boolean iOW;
+  public static String iOX;
+  public static String iOY;
+  public static String iOZ;
+  public static boolean iOb;
+  public static boolean iOc;
+  public static boolean iOd;
+  public static boolean iOe;
+  public static boolean iOf;
+  public static boolean iOg;
+  public static boolean iOh;
+  public static boolean iOi;
+  public static boolean iOj;
+  public static boolean iOk;
+  public static boolean iOl;
+  public static boolean iOm;
+  public static String iOn;
+  public static boolean iOo;
+  public static boolean iOp;
+  public static boolean iOq;
+  public static boolean iOr;
+  public static int iOs;
+  public static boolean iOt;
+  public static boolean iOu;
+  public static boolean iOv;
+  public static String iOw;
+  public static String iOx;
+  public static boolean iOy;
+  public static boolean iOz;
+  public static float iPA;
+  public static boolean iPB;
+  public static int iPC;
+  public static int iPD;
+  public static boolean iPE;
+  public static String iPF;
+  public static String iPG;
+  public static boolean iPH;
+  public static boolean iPI;
+  public static String iPJ;
+  public static String iPK;
+  public static boolean iPL;
+  public static boolean iPM;
+  public static boolean iPN;
+  public static boolean iPO;
+  public static boolean iPP;
+  public static boolean iPQ;
+  public static boolean iPR;
+  public static boolean iPS;
+  public static boolean iPT;
+  public static boolean iPU;
+  public static boolean iPV;
+  public static boolean iPW;
+  private static HashMap<Integer, ConcurrentLinkedQueue<Integer>> iPX;
+  public static boolean iPY;
+  public static boolean iPZ;
+  public static String iPa;
+  public static String iPb;
+  public static boolean iPc;
+  public static boolean iPd;
+  public static boolean iPe;
+  public static int iPf;
+  public static boolean iPg;
+  public static boolean iPh;
+  public static boolean iPi;
+  public static boolean iPj;
+  public static boolean iPk;
+  public static String iPl;
+  public static int iPm;
+  public static boolean iPn;
+  public static boolean iPo;
+  public static boolean iPp;
+  public static boolean iPq;
+  public static String iPr;
+  public static int iPs;
+  public static boolean iPt;
+  public static boolean iPu;
+  public static int iPw;
+  public static boolean iPx;
+  public static String iPy;
+  public static float iPz;
+  public static boolean iQa;
+  public static double lat;
+  public static double lng;
   
-  public ac()
+  static
   {
-    AppMethodBeat.i(151415);
-    this.header = true;
-    this.random = new Random();
-    AppMethodBeat.o(151415);
+    AppMethodBeat.i(132987);
+    iOb = false;
+    iOc = false;
+    iOd = false;
+    iOe = false;
+    iOf = false;
+    iOg = false;
+    iOh = false;
+    iOi = false;
+    iOj = false;
+    iOk = false;
+    iOl = false;
+    iOm = false;
+    iOn = "";
+    iOo = false;
+    iOp = false;
+    iOq = false;
+    iOr = false;
+    iOs = 0;
+    iOt = false;
+    iOu = false;
+    iOv = false;
+    iOw = "";
+    iOx = "";
+    iOy = false;
+    iOz = false;
+    iOA = false;
+    iOB = false;
+    iOC = false;
+    iOD = false;
+    iOE = false;
+    iOF = 0;
+    iOG = 0;
+    iOH = false;
+    iOI = null;
+    iOJ = null;
+    iOK = false;
+    iOL = false;
+    iOM = 0;
+    iON = 0;
+    iOO = 0;
+    iOP = "";
+    iOQ = "";
+    iOR = null;
+    iOS = null;
+    iOT = false;
+    iOU = false;
+    iOV = false;
+    iOW = false;
+    lat = 0.0D;
+    lng = 0.0D;
+    iOX = "";
+    iOY = "";
+    iOZ = "";
+    iPa = "";
+    iPb = "";
+    iPc = false;
+    iPd = false;
+    iPe = false;
+    iPf = 0;
+    iPg = false;
+    iPh = false;
+    iPi = false;
+    iPj = false;
+    iPk = false;
+    iPl = "";
+    iPm = 0;
+    iPn = false;
+    iPo = true;
+    iPp = false;
+    iPq = false;
+    iPr = "";
+    iPs = 0;
+    iPt = false;
+    iPu = false;
+    iPw = -1;
+    iPx = false;
+    iPy = "";
+    iPz = 0.4F;
+    iPA = 0.7F;
+    iPB = false;
+    iPC = 0;
+    iPD = 0;
+    iPE = false;
+    iPF = "";
+    iPG = "";
+    iPH = false;
+    iPI = false;
+    iPJ = "";
+    iPK = "";
+    iPL = false;
+    iPM = false;
+    iPN = false;
+    iPO = false;
+    iPP = false;
+    iPQ = false;
+    iPR = false;
+    iPS = false;
+    iPT = false;
+    iPU = false;
+    iPV = false;
+    iPW = false;
+    iPX = new HashMap();
+    iPY = false;
+    iPZ = false;
+    iQa = false;
+    AppMethodBeat.o(132987);
   }
   
-  private static long A(byte[] paramArrayOfByte, int paramInt)
+  public static void dv(int paramInt1, int paramInt2)
   {
-    long l = 0L;
-    int i = paramInt;
-    while (i < paramInt + 4)
+    AppMethodBeat.i(132986);
+    synchronized (iPX)
     {
-      l = l << 8 | paramArrayOfByte[i] & 0xFF;
-      i += 1;
-    }
-    return l & 0xFFFFFFFF;
-  }
-  
-  private byte[] encipher(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(151417);
-    int i = 16;
-    for (;;)
-    {
-      long l3;
-      long l2;
-      long l4;
-      long l5;
-      long l6;
-      long l7;
-      long l1;
-      try
+      ConcurrentLinkedQueue localConcurrentLinkedQueue2 = (ConcurrentLinkedQueue)iPX.get(Integer.valueOf(paramInt1));
+      ConcurrentLinkedQueue localConcurrentLinkedQueue1 = localConcurrentLinkedQueue2;
+      if (localConcurrentLinkedQueue2 == null)
       {
-        l3 = A(paramArrayOfByte, 0);
-        l2 = A(paramArrayOfByte, 4);
-        l4 = A(this.key, 0);
-        l5 = A(this.key, 4);
-        l6 = A(this.key, 8);
-        l7 = A(this.key, 12);
-        l1 = 0L;
+        localConcurrentLinkedQueue1 = new ConcurrentLinkedQueue();
+        iPX.put(Integer.valueOf(paramInt1), localConcurrentLinkedQueue1);
       }
-      catch (IOException paramArrayOfByte)
-      {
-        DataOutputStream localDataOutputStream;
-        AppMethodBeat.o(151417);
-        return null;
-      }
-      paramArrayOfByte = new ByteArrayOutputStream(8);
-      localDataOutputStream = new DataOutputStream(paramArrayOfByte);
-      localDataOutputStream.writeInt((int)l3);
-      localDataOutputStream.writeInt((int)l2);
-      localDataOutputStream.close();
-      paramArrayOfByte = paramArrayOfByte.toByteArray();
-      AppMethodBeat.o(151417);
-      return paramArrayOfByte;
-      while (i > 0)
-      {
-        l1 = l1 + 2654435769L & 0xFFFFFFFF;
-        l3 = l3 + ((l2 << 4) + l4 ^ l2 + l1 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
-        l2 = l2 + ((l3 << 4) + l6 ^ l3 + l1 ^ (l3 >>> 5) + l7) & 0xFFFFFFFF;
-        i -= 1;
-      }
-    }
-  }
-  
-  private void encrypt8Bytes()
-  {
-    AppMethodBeat.i(151418);
-    this.pos = 0;
-    byte[] arrayOfByte;
-    int i;
-    if (this.pos < 8)
-    {
-      if (this.header)
-      {
-        arrayOfByte = this.plain;
-        i = this.pos;
-        arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.prePlain[this.pos]));
-      }
-      for (;;)
-      {
-        this.pos += 1;
-        break;
-        arrayOfByte = this.plain;
-        i = this.pos;
-        arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.out[(this.preCrypt + this.pos)]));
-      }
-    }
-    System.arraycopy(encipher(this.plain), 0, this.out, this.crypt, 8);
-    for (this.pos = 0; this.pos < 8; this.pos += 1)
-    {
-      arrayOfByte = this.out;
-      i = this.crypt + this.pos;
-      arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.prePlain[this.pos]));
-    }
-    System.arraycopy(this.plain, 0, this.prePlain, 0, 8);
-    this.preCrypt = this.crypt;
-    this.crypt += 8;
-    this.pos = 0;
-    this.header = false;
-    AppMethodBeat.o(151418);
-  }
-  
-  public final byte[] a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
-  {
-    AppMethodBeat.i(151416);
-    this.plain = new byte[8];
-    this.prePlain = new byte[8];
-    this.pos = 1;
-    this.padding = 0;
-    this.preCrypt = 0;
-    this.crypt = 0;
-    this.key = paramArrayOfByte2;
-    this.header = true;
-    this.pos = ((paramInt + 10) % 8);
-    if (this.pos != 0) {
-      this.pos = (8 - this.pos);
-    }
-    this.out = new byte[this.pos + paramInt + 10];
-    this.plain[0] = ((byte)(this.random.nextInt() & 0xF8 | this.pos));
-    int i = 1;
-    while (i <= this.pos)
-    {
-      this.plain[i] = ((byte)(this.random.nextInt() & 0xFF));
-      i += 1;
-    }
-    this.pos += 1;
-    i = 0;
-    while (i < 8)
-    {
-      this.prePlain[i] = 0;
-      i += 1;
-    }
-    this.padding = 1;
-    while (this.padding <= 2)
-    {
-      if (this.pos < 8)
-      {
-        paramArrayOfByte2 = this.plain;
-        i = this.pos;
-        this.pos = (i + 1);
-        paramArrayOfByte2[i] = ((byte)(this.random.nextInt() & 0xFF));
-        this.padding += 1;
-      }
-      if (this.pos == 8) {
-        encrypt8Bytes();
-      }
-    }
-    int j = 0;
-    i = paramInt;
-    paramInt = j;
-    if (i > 0)
-    {
-      if (this.pos >= 8) {
-        break label442;
-      }
-      paramArrayOfByte2 = this.plain;
-      int k = this.pos;
-      this.pos = (k + 1);
-      j = paramInt + 1;
-      paramArrayOfByte2[k] = paramArrayOfByte1[paramInt];
-      i -= 1;
-      paramInt = j;
-    }
-    label442:
-    for (;;)
-    {
-      if (this.pos == 8)
-      {
-        encrypt8Bytes();
-        break;
-        this.padding = 1;
-        while (this.padding <= 7)
-        {
-          if (this.pos < 8)
-          {
-            paramArrayOfByte1 = this.plain;
-            paramInt = this.pos;
-            this.pos = (paramInt + 1);
-            paramArrayOfByte1[paramInt] = 0;
-            this.padding += 1;
-          }
-          if (this.pos == 8) {
-            encrypt8Bytes();
-          }
-        }
-        paramArrayOfByte1 = this.out;
-        AppMethodBeat.o(151416);
-        return paramArrayOfByte1;
-      }
-      break;
+      localConcurrentLinkedQueue1.add(Integer.valueOf(paramInt2));
+      AppMethodBeat.o(132986);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.platformtools.ac
  * JD-Core Version:    0.7.0.1
  */

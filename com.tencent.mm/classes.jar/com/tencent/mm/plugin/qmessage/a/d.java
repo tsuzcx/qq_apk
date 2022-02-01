@@ -6,40 +6,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public int drx;
+  public int dDp;
   String extInfo;
-  private int hFO;
-  private int hpt;
-  private int huB;
-  private int huC;
-  private long iLI;
+  private int hHL;
+  private int hMT;
+  private int hMU;
+  private int hYt;
+  private long jeR;
   public String username;
-  public int vST;
-  public long vSU;
-  public long vSV;
-  private String vSW;
-  private String vSX;
-  private String vSY;
-  private String vSZ;
+  public int xad;
+  public long xae;
+  public long xaf;
+  private String xag;
+  private String xah;
+  private String xai;
+  private String xaj;
   
   public d()
   {
     AppMethodBeat.i(27719);
-    this.drx = -1;
+    this.dDp = -1;
     this.username = "";
-    this.iLI = 0L;
+    this.jeR = 0L;
     this.extInfo = "";
-    this.vST = 0;
-    this.vSU = 0L;
-    this.vSV = 0L;
-    this.hpt = 0;
-    this.hFO = 0;
-    this.huB = 0;
-    this.huC = 0;
-    this.vSW = "";
-    this.vSX = "";
-    this.vSY = "";
-    this.vSZ = "";
+    this.xad = 0;
+    this.xae = 0L;
+    this.xaf = 0L;
+    this.hHL = 0;
+    this.hYt = 0;
+    this.hMT = 0;
+    this.hMU = 0;
+    this.xag = "";
+    this.xah = "";
+    this.xai = "";
+    this.xaj = "";
     AppMethodBeat.o(27719);
   }
   
@@ -47,19 +47,19 @@ public final class d
   {
     AppMethodBeat.i(27720);
     this.username = paramCursor.getString(0);
-    this.iLI = paramCursor.getLong(1);
+    this.jeR = paramCursor.getLong(1);
     this.extInfo = paramCursor.getString(2);
-    this.vST = paramCursor.getInt(3);
-    this.vSU = paramCursor.getLong(4);
-    this.vSV = paramCursor.getLong(5);
-    this.hpt = paramCursor.getInt(6);
-    this.hFO = paramCursor.getInt(7);
-    this.huB = paramCursor.getInt(8);
-    this.huC = paramCursor.getInt(9);
-    this.vSW = paramCursor.getString(10);
-    this.vSX = paramCursor.getString(11);
-    this.vSY = paramCursor.getString(12);
-    this.vSZ = paramCursor.getString(13);
+    this.xad = paramCursor.getInt(3);
+    this.xae = paramCursor.getLong(4);
+    this.xaf = paramCursor.getLong(5);
+    this.hHL = paramCursor.getInt(6);
+    this.hYt = paramCursor.getInt(7);
+    this.hMT = paramCursor.getInt(8);
+    this.hMU = paramCursor.getInt(9);
+    this.xag = paramCursor.getString(10);
+    this.xah = paramCursor.getString(11);
+    this.xai = paramCursor.getString(12);
+    this.xaj = paramCursor.getString(13);
     AppMethodBeat.o(27720);
   }
   
@@ -67,39 +67,39 @@ public final class d
   {
     AppMethodBeat.i(27721);
     ContentValues localContentValues = new ContentValues();
-    if ((this.drx & 0x1) != 0) {
+    if ((this.dDp & 0x1) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.drx & 0x2) != 0) {
-      localContentValues.put("qq", Long.valueOf(this.iLI));
+    if ((this.dDp & 0x2) != 0) {
+      localContentValues.put("qq", Long.valueOf(this.jeR));
     }
-    if ((this.drx & 0x4) != 0) {
-      localContentValues.put("extinfo", drp());
+    if ((this.dDp & 0x4) != 0) {
+      localContentValues.put("extinfo", dBR());
     }
-    if ((this.drx & 0x8) != 0) {
-      localContentValues.put("needupdate", Integer.valueOf(this.vST));
+    if ((this.dDp & 0x8) != 0) {
+      localContentValues.put("needupdate", Integer.valueOf(this.xad));
     }
-    if ((this.drx & 0x10) != 0) {
-      localContentValues.put("extupdateseq", Long.valueOf(this.vSU));
+    if ((this.dDp & 0x10) != 0) {
+      localContentValues.put("extupdateseq", Long.valueOf(this.xae));
     }
-    if ((this.drx & 0x20) != 0) {
-      localContentValues.put("imgupdateseq", Long.valueOf(this.vSV));
+    if ((this.dDp & 0x20) != 0) {
+      localContentValues.put("imgupdateseq", Long.valueOf(this.xaf));
     }
-    if ((this.drx & 0x40) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(this.hpt));
+    if ((this.dDp & 0x40) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.hHL));
     }
-    if ((this.drx & 0x80) != 0) {
-      localContentValues.put("reserved2", Integer.valueOf(this.hFO));
+    if ((this.dDp & 0x80) != 0) {
+      localContentValues.put("reserved2", Integer.valueOf(this.hYt));
     }
-    if ((this.drx & 0x100) != 0) {
-      localContentValues.put("reserved3", Integer.valueOf(this.huB));
+    if ((this.dDp & 0x100) != 0) {
+      localContentValues.put("reserved3", Integer.valueOf(this.hMT));
     }
-    if ((this.drx & 0x200) != 0) {
-      localContentValues.put("reserved4", Integer.valueOf(this.huC));
+    if ((this.dDp & 0x200) != 0) {
+      localContentValues.put("reserved4", Integer.valueOf(this.hMU));
     }
-    if ((this.drx & 0x400) != 0)
+    if ((this.dDp & 0x400) != 0)
     {
-      if (this.vSW == null)
+      if (this.xag == null)
       {
         str = "";
         localContentValues.put("reserved5", str);
@@ -107,26 +107,26 @@ public final class d
     }
     else
     {
-      if ((this.drx & 0x800) != 0)
+      if ((this.dDp & 0x800) != 0)
       {
-        if (this.vSX != null) {
+        if (this.xah != null) {
           break label366;
         }
         str = "";
         label287:
         localContentValues.put("reserved6", str);
       }
-      if ((this.drx & 0x1000) != 0)
+      if ((this.dDp & 0x1000) != 0)
       {
-        if (this.vSY != null) {
+        if (this.xai != null) {
           break label374;
         }
         str = "";
         label315:
         localContentValues.put("reserved7", str);
       }
-      if ((this.drx & 0x2000) != 0) {
-        if (this.vSZ != null) {
+      if ((this.dDp & 0x2000) != 0) {
+        if (this.xaj != null) {
           break label382;
         }
       }
@@ -134,21 +134,21 @@ public final class d
     label366:
     label374:
     label382:
-    for (String str = "";; str = this.vSZ)
+    for (String str = "";; str = this.xaj)
     {
       localContentValues.put("reserved8", str);
       AppMethodBeat.o(27721);
       return localContentValues;
-      str = this.vSW;
+      str = this.xag;
       break;
-      str = this.vSX;
+      str = this.xah;
       break label287;
-      str = this.vSY;
+      str = this.xai;
       break label315;
     }
   }
   
-  public final String drp()
+  public final String dBR()
   {
     if (this.extInfo == null) {
       return "";

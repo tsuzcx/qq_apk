@@ -4,9 +4,9 @@ import com.tencent.xweb.m;
 
 public abstract interface f
 {
-  public abstract m fKo();
+  public abstract m gbJ();
   
-  public abstract void fKp();
+  public abstract void gbK();
 }
 
 

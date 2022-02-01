@@ -3,10 +3,11 @@ package com.tencent.mm.audio.a;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i.a;
-import com.tencent.mm.ak.i.b;
-import com.tencent.mm.ak.i.c;
-import com.tencent.mm.ak.i.d;
+import com.tencent.mm.al.h;
+import com.tencent.mm.al.h.a;
+import com.tencent.mm.al.h.b;
+import com.tencent.mm.al.h.c;
+import com.tencent.mm.al.h.d;
 import com.tencent.mm.audio.b.g.b;
 import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.modelvoice.d;
@@ -18,34 +19,35 @@ import com.tencent.mm.modelvoice.q;
 import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.modelvoice.u;
 import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bc;
-import com.tencent.mm.sdk.platformtools.bc.a;
-import com.tencent.mm.sdk.platformtools.bc.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bd.a;
+import com.tencent.mm.sdk.platformtools.bd.b;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
 import junit.framework.Assert;
 
 public final class a
-  implements com.tencent.mm.ak.i
+  implements h
 {
-  private static String cUG = null;
-  private boolean cQr;
-  private boolean cQs;
-  private boolean cQt;
-  private d cQw;
-  private boolean cUA;
-  private int cUB;
-  private boolean cUC;
-  private i.c cUD;
-  private i.d cUE;
-  private String cUF;
-  private com.tencent.mm.audio.a cUH;
-  public i.b cUI;
-  public i.a cUJ;
-  private boolean cUz;
+  private static String dfW = null;
   private Context context;
+  private boolean dbH;
+  private boolean dbI;
+  private boolean dbJ;
+  private d dbM;
+  private boolean dfP;
+  private boolean dfQ;
+  private int dfR;
+  private boolean dfS;
+  private h.c dfT;
+  private h.d dfU;
+  private String dfV;
+  private com.tencent.mm.audio.a dfX;
+  public h.b dfY;
+  public h.a dfZ;
   
   public a(Context paramContext)
   {
@@ -55,37 +57,37 @@ public final class a
   public a(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(148290);
-    this.cQw = null;
+    this.dbM = null;
     this.context = null;
-    this.cUz = false;
-    this.cUA = false;
-    this.cUB = 0;
-    this.cUC = true;
-    this.cUF = null;
-    this.cQr = true;
-    this.cQs = true;
-    this.cQt = false;
-    this.cUI = null;
+    this.dfP = false;
+    this.dfQ = false;
+    this.dfR = 0;
+    this.dfS = true;
+    this.dfV = null;
+    this.dbH = true;
+    this.dbI = true;
+    this.dbJ = false;
+    this.dfY = null;
     if ((paramContext instanceof Activity)) {}
-    for (Context localContext = ai.getContext();; localContext = paramContext)
+    for (Context localContext = aj.getContext();; localContext = paramContext)
     {
       this.context = localContext;
-      this.cUB = paramInt;
-      this.cUH = new com.tencent.mm.audio.a(paramContext, new a.1(this));
+      this.dfR = paramInt;
+      this.dfX = new com.tencent.mm.audio.a(paramContext, new a.1(this));
       new g.b();
       AppMethodBeat.o(148290);
       return;
     }
   }
   
-  private void NV()
+  private void PE()
   {
     AppMethodBeat.i(148302);
     d.a local3 = new d.a()
     {
       public final void onCompletion()
       {
-        AppMethodBeat.i(209452);
+        AppMethodBeat.i(205861);
         com.tencent.mm.sdk.g.b.c(new Runnable()
         {
           public final void run()
@@ -93,42 +95,42 @@ public final class a
             AppMethodBeat.i(148284);
             try
             {
-              if (ae.fJe.fDc == 1) {
+              if (ae.gcF.fWq == 1) {
                 Thread.sleep(300L);
               }
-              ac.i("MicroMsg.SceneVoicePlayer", "onCompletion, intOnCompletion: %s, shouldPlayComplete: %s", new Object[] { a.f(a.this), Boolean.valueOf(a.g(a.this)) });
-              ap.f(new Runnable()
+              ad.i("MicroMsg.SceneVoicePlayer", "onCompletion, intOnCompletion: %s, shouldPlayComplete: %s", new Object[] { a.f(a.this), Boolean.valueOf(a.g(a.this)) });
+              aq.f(new Runnable()
               {
                 public final void run()
                 {
-                  AppMethodBeat.i(209451);
-                  a.b(a.this).cm(a.b(a.this).cQv);
-                  bc.b localb;
+                  AppMethodBeat.i(205860);
+                  a.b(a.this).cn(a.b(a.this).dbL);
+                  bd.b localb;
                   if (a.g(a.this))
                   {
                     Context localContext = a.h(a.this);
-                    boolean bool = a.b(a.this).cQv;
-                    bc.a local1 = new bc.a()
+                    boolean bool = a.b(a.this).dbL;
+                    bd.a local1 = new bd.a()
                     {
                       public final void onCompletion()
                       {
-                        AppMethodBeat.i(209450);
-                        ac.i("MicroMsg.SceneVoicePlayer", "play sound end onCompletion");
+                        AppMethodBeat.i(205859);
+                        ad.i("MicroMsg.SceneVoicePlayer", "play sound end onCompletion");
                         if (!a.this.isPlaying())
                         {
-                          ac.i("MicroMsg.SceneVoicePlayer", "onCompletion() continuousPlay:%s", new Object[] { Boolean.valueOf(a.i(a.this)) });
-                          a.b(a.this).cn(a.i(a.this));
+                          ad.i("MicroMsg.SceneVoicePlayer", "onCompletion() continuousPlay:%s", new Object[] { Boolean.valueOf(a.i(a.this)) });
+                          a.b(a.this).co(a.i(a.this));
                           a.j(a.this);
-                          ac.i("MicroMsg.SceneVoicePlayer", "onCompletion() abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(a.c(a.this)), Boolean.valueOf(a.d(a.this)) });
-                          ac.i("MicroMsg.SceneVoicePlayer", "onCompletion() resetSpeaker");
+                          ad.i("MicroMsg.SceneVoicePlayer", "onCompletion() abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(a.c(a.this)), Boolean.valueOf(a.d(a.this)) });
+                          ad.i("MicroMsg.SceneVoicePlayer", "onCompletion() resetSpeaker");
                         }
-                        AppMethodBeat.o(209450);
+                        AppMethodBeat.o(205859);
                       }
                     };
                     if (bool)
                     {
-                      localb = bc.b.Gtz;
-                      bc.a(localContext, 2131761938, localb, local1);
+                      localb = bd.b.Ifo;
+                      bd.a(localContext, 2131761938, localb, local1);
                     }
                   }
                   for (;;)
@@ -136,25 +138,25 @@ public final class a
                     if (a.f(a.this) == null) {
                       break label321;
                     }
-                    ac.i("MicroMsg.SceneVoicePlayer", "intOnCompletion onCompletion()");
+                    ad.i("MicroMsg.SceneVoicePlayer", "intOnCompletion onCompletion()");
                     a.f(a.this).onCompletion();
-                    AppMethodBeat.o(209451);
+                    AppMethodBeat.o(205860);
                     return;
-                    localb = bc.b.GtA;
+                    localb = bd.b.Ifp;
                     break;
-                    ac.i("MicroMsg.SceneVoicePlayer", "play sound end onCompletion");
+                    ad.i("MicroMsg.SceneVoicePlayer", "play sound end onCompletion");
                     if (!a.this.isPlaying())
                     {
-                      ac.i("MicroMsg.SceneVoicePlayer", "onCompletion() abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(a.c(a.this)), Boolean.valueOf(a.d(a.this)) });
-                      ac.i("MicroMsg.SceneVoicePlayer", "onCompletion() continuousPlay:%s", new Object[] { Boolean.valueOf(a.i(a.this)) });
-                      a.b(a.this).cn(a.i(a.this));
+                      ad.i("MicroMsg.SceneVoicePlayer", "onCompletion() abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(a.c(a.this)), Boolean.valueOf(a.d(a.this)) });
+                      ad.i("MicroMsg.SceneVoicePlayer", "onCompletion() continuousPlay:%s", new Object[] { Boolean.valueOf(a.i(a.this)) });
+                      a.b(a.this).co(a.i(a.this));
                       a.j(a.this);
-                      ac.i("MicroMsg.SceneVoicePlayer", "onCompletion() resetSpeaker");
+                      ad.i("MicroMsg.SceneVoicePlayer", "onCompletion() resetSpeaker");
                     }
                   }
                   label321:
-                  ac.e("MicroMsg.SceneVoicePlayer", "intOnCompletion is null!!!");
-                  AppMethodBeat.o(209451);
+                  ad.e("MicroMsg.SceneVoicePlayer", "intOnCompletion is null!!!");
+                  AppMethodBeat.o(205860);
                 }
               });
               AppMethodBeat.o(148284);
@@ -162,16 +164,16 @@ public final class a
             }
             catch (Exception localException)
             {
-              ac.e("MicroMsg.SceneVoicePlayer", "exception:%s", new Object[] { bs.m(localException) });
+              ad.e("MicroMsg.SceneVoicePlayer", "exception:%s", new Object[] { bt.n(localException) });
               AppMethodBeat.o(148284);
             }
           }
         }, "SceneVoice_onCompletion");
-        AppMethodBeat.o(209452);
+        AppMethodBeat.o(205861);
       }
     };
-    if (this.cQw != null) {
-      this.cQw.a(local3);
+    if (this.dbM != null) {
+      this.dbM.a(local3);
     }
     AppMethodBeat.o(148302);
   }
@@ -183,47 +185,47 @@ public final class a
     {
       public final void onError()
       {
-        AppMethodBeat.i(209449);
+        AppMethodBeat.i(205858);
         com.tencent.mm.audio.a locala = a.b(a.this);
-        locala.bCr();
-        if (locala.cQt)
+        locala.bGw();
+        if (locala.dbJ)
         {
-          com.tencent.mm.compatible.util.b localb = locala.cQq;
+          com.tencent.mm.compatible.util.b localb = locala.dbG;
           if (localb != null) {
-            localb.YC();
+            localb.abe();
           }
-          locala.cQt = false;
+          locala.dbJ = false;
         }
-        ac.i("MicroMsg.SceneVoicePlayer", "setError abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(a.c(a.this)), Boolean.valueOf(a.d(a.this)) });
+        ad.i("MicroMsg.SceneVoicePlayer", "setError abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(a.c(a.this)), Boolean.valueOf(a.d(a.this)) });
         if (a.e(a.this) != null) {
-          ap.f(new Runnable()
+          aq.f(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(209448);
+              AppMethodBeat.i(205857);
               a.e(a.this).onError();
-              AppMethodBeat.o(209448);
+              AppMethodBeat.o(205857);
             }
           });
         }
-        AppMethodBeat.o(209449);
+        AppMethodBeat.o(205858);
       }
     };
-    if (this.cQw != null) {
-      this.cQw.a(local2);
+    if (this.dbM != null) {
+      this.dbM.a(local2);
     }
     AppMethodBeat.o(148301);
   }
   
-  public final boolean MZ()
+  public final boolean OI()
   {
     AppMethodBeat.i(148305);
-    if (this.cQw == null)
+    if (this.dbM == null)
     {
       AppMethodBeat.o(148305);
       return false;
     }
-    if (this.cQw.getStatus() == 2)
+    if (this.dbM.getStatus() == 2)
     {
       AppMethodBeat.o(148305);
       return true;
@@ -232,95 +234,95 @@ public final class a
     return false;
   }
   
-  public final boolean NU()
+  public final boolean PD()
   {
-    return this.cUz;
+    return this.dfP;
   }
   
-  public final double NW()
+  public final double PF()
   {
     AppMethodBeat.i(148303);
-    if (this.cQw == null)
+    if (this.dbM == null)
     {
       AppMethodBeat.o(148303);
       return 0.0D;
     }
-    double d = this.cQw.NW();
+    double d = this.dbM.PF();
     AppMethodBeat.o(148303);
     return d;
   }
   
-  public final void a(i.a parama)
+  public final void a(h.a parama)
   {
-    this.cUJ = parama;
+    this.dfZ = parama;
   }
   
-  public final void a(i.b paramb)
+  public final void a(h.b paramb)
   {
-    this.cUI = paramb;
+    this.dfY = paramb;
   }
   
-  public final void a(i.c paramc)
+  public final void a(h.c paramc)
   {
-    this.cUD = paramc;
+    this.dfT = paramc;
   }
   
-  public final void a(i.d paramd)
+  public final void a(h.d paramd)
   {
-    this.cUE = paramd;
+    this.dfU = paramd;
   }
   
   public final boolean a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(148293);
-    ac.i("MicroMsg.SceneVoicePlayer", "start file name:[%s] speakerOn:[%b], isFullPath: %s, type: %s, userType: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.TRUE, Integer.valueOf(paramInt1), Integer.valueOf(this.cUB) });
+    ad.i("MicroMsg.SceneVoicePlayer", "start file name:[%s] speakerOn:[%b], isFullPath: %s, type: %s, userType: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.TRUE, Integer.valueOf(paramInt1), Integer.valueOf(this.dfR) });
     if (paramString.length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (com.tencent.mm.vfs.i.eA(paramString)) {
+      if (i.fv(paramString)) {
         break;
       }
-      ac.e("MicroMsg.SceneVoicePlayer", "start, file %s not exist!, fullPath: %s", new Object[] { paramString, paramString });
+      ad.e("MicroMsg.SceneVoicePlayer", "start, file %s not exist!, fullPath: %s", new Object[] { paramString, paramString });
       AppMethodBeat.o(148293);
       return false;
     }
     int i = paramInt1;
     if (paramInt1 == -1) {
-      i = q.f(paramString, this.cUB, true);
+      i = q.f(paramString, this.dfR, true);
     }
     if (i == 0) {
       if (this.context != null)
       {
-        this.cQw = new u(this.context);
-        if (this.cQw == null) {
+        this.dbM = new u(this.context);
+        if (this.dbM == null) {
           break label369;
         }
-        ac.i("MicroMsg.SceneVoicePlayer", "init player success %s", new Object[] { Integer.valueOf(hashCode()) });
-        this.cUH.cQw = this.cQw;
+        ad.i("MicroMsg.SceneVoicePlayer", "init player success %s", new Object[] { Integer.valueOf(hashCode()) });
+        this.dfX.dbM = this.dbM;
       }
     }
     for (;;)
     {
-      this.cUH.Ms();
-      this.cUH.cl(paramBoolean);
-      this.cUH.ih(this.cUH.cQv);
-      NV();
+      this.dfX.Ob();
+      this.dfX.cm(paramBoolean);
+      this.dfX.iq(this.dfX.dbL);
+      PE();
       setError();
-      this.cUH.t(paramString, paramInt2);
-      ac.i("MicroMsg.SceneVoicePlayer", "jacks Player requestFocus focus helper, needFocusOnPlay: %s", new Object[] { Boolean.valueOf(this.cQr) });
+      this.dfX.v(paramString, paramInt2);
+      ad.i("MicroMsg.SceneVoicePlayer", "jacks Player requestFocus focus helper, needFocusOnPlay: %s", new Object[] { Boolean.valueOf(this.dbH) });
       AppMethodBeat.o(148293);
       return true;
-      this.cQw = new u();
+      this.dbM = new u();
       break;
       if (i == 1)
       {
         if (this.context != null)
         {
-          this.cQw = new l(this.context);
+          this.dbM = new l(this.context);
           break;
         }
-        this.cQw = new l();
+        this.dbM = new l();
         break;
       }
       if (i != 2) {
@@ -328,33 +330,33 @@ public final class a
       }
       if (this.context != null)
       {
-        this.cQw = new k(this.context);
+        this.dbM = new k(this.context);
         break;
       }
-      this.cQw = new k();
+      this.dbM = new k();
       break;
       label369:
-      ac.e("MicroMsg.SceneVoicePlayer", "init player failed %s", new Object[] { Integer.valueOf(hashCode()) });
+      ad.e("MicroMsg.SceneVoicePlayer", "init player failed %s", new Object[] { Integer.valueOf(hashCode()) });
     }
   }
   
   public final boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     AppMethodBeat.i(148292);
-    ac.i("MicroMsg.SceneVoicePlayer", "start file name:[%s] speakerOn:[%b], isFullPath: %s, type: %s, userType: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt), Integer.valueOf(this.cUB) });
+    ad.i("MicroMsg.SceneVoicePlayer", "start file name:[%s] speakerOn:[%b], isFullPath: %s, type: %s, userType: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt), Integer.valueOf(this.dfR) });
     boolean bool;
     if (paramString.length() > 0)
     {
       bool = true;
       Assert.assertTrue(bool);
-      cUG = this.cUF;
-      this.cUF = paramString;
+      dfW = this.dfV;
+      this.dfV = paramString;
       if (!paramBoolean2) {
         break label136;
       }
       str = paramString;
       label87:
-      if (com.tencent.mm.vfs.i.eA(str)) {
+      if (i.fv(str)) {
         break label154;
       }
       if (!paramBoolean2) {
@@ -365,7 +367,7 @@ public final class a
     label145:
     for (String str = paramString;; str = s.getFullPath(paramString))
     {
-      ac.e("MicroMsg.SceneVoicePlayer", "start, file %s not exist!, fullPath: %s", new Object[] { paramString, str });
+      ad.e("MicroMsg.SceneVoicePlayer", "start, file %s not exist!, fullPath: %s", new Object[] { paramString, str });
       AppMethodBeat.o(148292);
       return false;
       bool = false;
@@ -376,27 +378,27 @@ public final class a
     label154:
     int i = paramInt;
     if (paramInt == -1) {
-      i = q.f(paramString, this.cUB, paramBoolean2);
+      i = q.f(paramString, this.dfR, paramBoolean2);
     }
     if (i == 0) {
       if (this.context != null)
       {
-        this.cQw = new u(this.context);
-        if (this.cQw == null) {
+        this.dbM = new u(this.context);
+        if (this.dbM == null) {
           break label475;
         }
-        ac.i("MicroMsg.SceneVoicePlayer", "init player success %s", new Object[] { Integer.valueOf(hashCode()) });
-        this.cUH.cQw = this.cQw;
+        ad.i("MicroMsg.SceneVoicePlayer", "init player success %s", new Object[] { Integer.valueOf(hashCode()) });
+        this.dfX.dbM = this.dbM;
         label241:
-        this.cUH.Ms();
-        this.cUH.cl(paramBoolean1);
-        if ((com.tencent.mm.plugin.audio.c.a.bCs()) || (com.tencent.mm.plugin.audio.c.a.bCy()))
+        this.dfX.Ob();
+        this.dfX.cm(paramBoolean1);
+        if ((com.tencent.mm.plugin.audio.c.a.bGx()) || (com.tencent.mm.plugin.audio.c.a.bGD()))
         {
-          ac.i("MicroMsg.SceneVoicePlayer", "headset plugged: %b, bluetoothon: %b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.bCs()), Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.bCy()) });
-          this.cUH.cl(false);
+          ad.i("MicroMsg.SceneVoicePlayer", "headset plugged: %b, bluetoothon: %b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.bGx()), Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.bGD()) });
+          this.dfX.cm(false);
         }
-        this.cUH.ih(this.cUH.cQv);
-        NV();
+        this.dfX.iq(this.dfX.dbL);
+        PE();
         setError();
         if (!paramBoolean2) {
           break label500;
@@ -405,20 +407,20 @@ public final class a
     }
     for (;;)
     {
-      this.cUH.t(paramString, 0);
-      ac.i("MicroMsg.SceneVoicePlayer", "jacks Player requestFocus focus helper, needFocusOnPlay: %s", new Object[] { Boolean.valueOf(this.cQr) });
+      this.dfX.v(paramString, 0);
+      ad.i("MicroMsg.SceneVoicePlayer", "jacks Player requestFocus focus helper, needFocusOnPlay: %s", new Object[] { Boolean.valueOf(this.dbH) });
       AppMethodBeat.o(148292);
       return true;
-      this.cQw = new u();
+      this.dbM = new u();
       break;
       if (i == 1)
       {
         if (this.context != null)
         {
-          this.cQw = new l(this.context);
+          this.dbM = new l(this.context);
           break;
         }
-        this.cQw = new l();
+        this.dbM = new l();
         break;
       }
       if (i != 2) {
@@ -426,16 +428,16 @@ public final class a
       }
       if (this.context != null)
       {
-        this.cQw = new k(this.context);
+        this.dbM = new k(this.context);
         break;
       }
-      this.cQw = new k();
+      this.dbM = new k();
       break;
       label475:
-      ac.e("MicroMsg.SceneVoicePlayer", "init player failed %s", new Object[] { Integer.valueOf(hashCode()) });
+      ad.e("MicroMsg.SceneVoicePlayer", "init player failed %s", new Object[] { Integer.valueOf(hashCode()) });
       break label241;
       label500:
-      if (this.cUB == 0) {
+      if (this.dfR == 0) {
         paramString = s.getFullPath(paramString);
       } else {
         paramString = null;
@@ -443,58 +445,58 @@ public final class a
     }
   }
   
-  public final boolean bF(boolean paramBoolean)
-  {
-    AppMethodBeat.i(148295);
-    if (this.cQw == null)
-    {
-      AppMethodBeat.o(148295);
-      return false;
-    }
-    ac.i("MicroMsg.SceneVoicePlayer", "pause");
-    boolean bool = this.cUH.co(paramBoolean);
-    if ((bool) && (this.cUD != null)) {
-      this.cUD.eA(paramBoolean);
-    }
-    ac.i("MicroMsg.SceneVoicePlayer", "jacks Player abandonFocus focus helper, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(this.cQr), Boolean.valueOf(this.cQt) });
-    AppMethodBeat.o(148295);
-    return bool;
-  }
-  
-  public final void cl(boolean paramBoolean)
+  public final void cm(boolean paramBoolean)
   {
     AppMethodBeat.i(148300);
-    this.cUH.cm(paramBoolean);
+    this.dfX.cn(paramBoolean);
     AppMethodBeat.o(148300);
-  }
-  
-  public final void cp(boolean paramBoolean)
-  {
-    this.cQr = paramBoolean;
   }
   
   public final void cq(boolean paramBoolean)
   {
-    this.cQs = paramBoolean;
+    this.dbH = paramBoolean;
   }
   
   public final void cr(boolean paramBoolean)
   {
+    this.dbI = paramBoolean;
+  }
+  
+  public final boolean cs(boolean paramBoolean)
+  {
+    AppMethodBeat.i(148295);
+    if (this.dbM == null)
+    {
+      AppMethodBeat.o(148295);
+      return false;
+    }
+    ad.i("MicroMsg.SceneVoicePlayer", "pause");
+    boolean bool = this.dfX.cp(paramBoolean);
+    if ((bool) && (this.dfT != null)) {
+      this.dfT.eC(paramBoolean);
+    }
+    ad.i("MicroMsg.SceneVoicePlayer", "jacks Player abandonFocus focus helper, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(this.dbH), Boolean.valueOf(this.dbJ) });
+    AppMethodBeat.o(148295);
+    return bool;
+  }
+  
+  public final void ct(boolean paramBoolean)
+  {
     AppMethodBeat.i(148304);
-    ac.i("MicroMsg.SceneVoicePlayer", "setContinuousPlay() continuousPlay:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.cUA = paramBoolean;
+    ad.i("MicroMsg.SceneVoicePlayer", "setContinuousPlay() continuousPlay:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.dfQ = paramBoolean;
     AppMethodBeat.o(148304);
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(148291);
-    if (this.cQw == null)
+    if (this.dbM == null)
     {
       AppMethodBeat.o(148291);
       return false;
     }
-    boolean bool = this.cQw.isPlaying();
+    boolean bool = this.dbM.isPlaying();
     AppMethodBeat.o(148291);
     return bool;
   }
@@ -509,65 +511,65 @@ public final class a
   
   public final boolean pause()
   {
-    AppMethodBeat.i(210499);
-    boolean bool = bF(true);
-    AppMethodBeat.o(210499);
+    AppMethodBeat.i(221419);
+    boolean bool = cs(true);
+    AppMethodBeat.o(221419);
     return bool;
   }
   
   public final boolean resume()
   {
     AppMethodBeat.i(148296);
-    if (this.cQw == null)
+    if (this.dbM == null)
     {
       AppMethodBeat.o(148296);
       return false;
     }
-    ac.i("MicroMsg.SceneVoicePlayer", "resume");
-    boolean bool = this.cUH.Mt();
-    ac.i("MicroMsg.SceneVoicePlayer", "jacks Player requestFocus focus helper, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(this.cQr), Boolean.valueOf(this.cQt) });
+    ad.i("MicroMsg.SceneVoicePlayer", "resume");
+    boolean bool = this.dfX.Oc();
+    ad.i("MicroMsg.SceneVoicePlayer", "jacks Player requestFocus focus helper, needFocusOnPlay: %s, hasAudioFocus: %s", new Object[] { Boolean.valueOf(this.dbH), Boolean.valueOf(this.dbJ) });
     AppMethodBeat.o(148296);
     return bool;
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(210500);
+    AppMethodBeat.i(221420);
     stop(false);
-    AppMethodBeat.o(210500);
+    AppMethodBeat.o(221420);
   }
   
   public final void stop(boolean paramBoolean)
   {
     AppMethodBeat.i(148299);
-    if (this.cQw == null)
+    if (this.dbM == null)
     {
-      ac.e("MicroMsg.SceneVoicePlayer", "stop player failed cause player is null %s", new Object[] { Integer.valueOf(hashCode()) });
+      ad.e("MicroMsg.SceneVoicePlayer", "stop player failed cause player is null %s", new Object[] { Integer.valueOf(hashCode()) });
       AppMethodBeat.o(148299);
       return;
     }
-    this.cQw.Fb();
-    this.cQw.a(null);
-    ac.i("MicroMsg.SceneVoicePlayer", "stop player abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s, abandonFocusOnStop: %s", new Object[] { Boolean.valueOf(this.cQr), Boolean.valueOf(this.cQt), Boolean.valueOf(this.cQs) });
-    this.cUH.Mu();
-    if ((!paramBoolean) && (this.cUE != null)) {
-      this.cUE.onStop();
+    this.dbM.Gv();
+    this.dbM.a(null);
+    ad.i("MicroMsg.SceneVoicePlayer", "stop player abandon focus, needFocusOnPlay: %s, hasAudioFocus: %s, abandonFocusOnStop: %s", new Object[] { Boolean.valueOf(this.dbH), Boolean.valueOf(this.dbJ), Boolean.valueOf(this.dbI) });
+    this.dfX.Od();
+    if ((!paramBoolean) && (this.dfU != null)) {
+      this.dfU.onStop();
     }
     AppMethodBeat.o(148299);
   }
   
   public final void unInit()
   {
-    AppMethodBeat.i(209453);
-    this.cUH.context = null;
-    a.a locala = com.tencent.mm.plugin.audio.c.a.mRw;
-    a.a.So("music");
-    AppMethodBeat.o(209453);
+    AppMethodBeat.i(205862);
+    this.dfX.context = null;
+    a.a locala = com.tencent.mm.plugin.audio.c.a.nrV;
+    a.a.VM("music");
+    AppMethodBeat.o(205862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.audio.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -20,22 +20,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.c;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.pa;
-import com.tencent.mm.g.a.pa.b;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.pj;
+import com.tencent.mm.g.a.pj.b;
 import com.tencent.mm.platformtools.u;
-import com.tencent.mm.plugin.account.friend.a.b;
 import com.tencent.mm.plugin.account.friend.a.o;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.a;
 import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.n.e;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -45,29 +45,29 @@ public class InviteFriendUI
   extends MMActivity
   implements e.a
 {
-  private ImageView iKw;
-  private String iMF;
-  private int iMG;
-  private String iMH;
-  private String iMI;
-  private String iMJ;
-  private Button iMK;
-  private int iML;
-  private int iMM;
-  private String iMN = null;
-  private String iMO = null;
+  private ImageView jdF;
+  private String jfP;
+  private int jfQ;
+  private String jfR;
+  private String jfS;
+  private String jfT;
+  private Button jfU;
+  private int jfV;
+  private int jfW;
+  private String jfX = null;
+  private String jfY = null;
   
-  public final void Af(String paramString)
+  public final void De(String paramString)
   {
     AppMethodBeat.i(131246);
-    if ((this.iMF == null) || (this.iMF.equals("")))
+    if ((this.jfP == null) || (this.jfP.equals("")))
     {
       AppMethodBeat.o(131246);
       return;
     }
-    long l = c.zP(paramString);
-    if ((l > 0L) && (this.iMF.equals(String.valueOf(l))) && (this.iMG == 0)) {
-      this.iKw.setImageBitmap(c.a(paramString, false, -1, null));
+    long l = c.CO(paramString);
+    if ((l > 0L) && (this.jfP.equals(String.valueOf(l))) && (this.jfQ == 0)) {
+      this.jdF.setImageBitmap(c.a(paramString, false, -1, null));
     }
     AppMethodBeat.o(131246);
   }
@@ -80,96 +80,100 @@ public class InviteFriendUI
   public void initView()
   {
     AppMethodBeat.i(131245);
-    this.iKw = ((ImageView)findViewById(2131301054));
+    this.jdF = ((ImageView)findViewById(2131301054));
     TextView localTextView1 = (TextView)findViewById(2131301059);
     TextView localTextView3 = (TextView)findViewById(2131301061);
     TextView localTextView2 = (TextView)findViewById(2131301060);
-    this.iMK = ((Button)findViewById(2131301057));
+    this.jfU = ((Button)findViewById(2131301057));
     Button localButton = (Button)findViewById(2131301062);
-    localTextView1.setText(this.iMH);
-    localTextView2.setText(getString(2131760355, new Object[] { this.iMH }));
+    localTextView1.setText(this.jfR);
+    localTextView2.setText(getString(2131760355, new Object[] { this.jfR }));
     Object localObject;
-    if (this.iMG == 1)
+    if (this.jfQ == 1)
     {
-      this.iKw.setBackgroundDrawable(com.tencent.mm.cc.a.l(this, 2131690027));
-      localTextView3.setText(getString(2131755748) + this.iMF);
-      localObject = com.tencent.mm.b.g.getMessageDigest(this.iMF.getBytes());
-      if (!com.tencent.mm.kernel.g.agR().isSDCardAvailable())
+      this.jdF.setBackgroundDrawable(com.tencent.mm.cc.a.l(this, 2131690027));
+      localTextView3.setText(getString(2131755748) + this.jfP);
+      localObject = com.tencent.mm.b.g.getMessageDigest(this.jfP.getBytes());
+      if (!com.tencent.mm.kernel.g.ajC().isSDCardAvailable())
       {
-        localObject = com.tencent.mm.aj.p.aBh().cB(ai.getContext());
+        localObject = com.tencent.mm.ak.p.aEk().cy(aj.getContext());
         if (localObject == null) {
           break label580;
         }
-        this.iKw.setImageBitmap((Bitmap)localObject);
+        this.jdF.setImageBitmap((Bitmap)localObject);
       }
     }
     else
     {
       label200:
-      if (this.iMG == 0)
+      if (this.jfQ == 0)
       {
-        this.iKw.setBackgroundDrawable(com.tencent.mm.cc.a.l(this, 2131690032));
-        localTextView3.setText(getString(2131755753) + this.iMF);
-        long l = com.tencent.mm.b.p.dv(this.iMF);
+        this.jdF.setBackgroundDrawable(com.tencent.mm.cc.a.l(this, 2131690032));
+        localTextView3.setText(getString(2131755753) + this.jfP);
+        long l = com.tencent.mm.b.p.er(this.jfP);
         localObject = null;
         if (l != 0L) {
-          localObject = c.pP(l);
+          localObject = c.rO(l);
         }
         if (localObject != null) {
           break label596;
         }
-        this.iKw.setImageDrawable(com.tencent.mm.cc.a.l(this, 2131690032));
+        this.jdF.setImageDrawable(com.tencent.mm.cc.a.l(this, 2131690032));
         localButton.setVisibility(0);
       }
       label290:
-      if (this.iMG == 2)
+      if (this.jfQ == 2)
       {
-        this.iMK.setText(2131760029);
-        this.iKw.setBackgroundDrawable(com.tencent.mm.cc.a.l(this, 2131231878));
-        localTextView3.setText(getString(2131755739) + this.iMF);
-        if (com.tencent.mm.kernel.g.agR().isSDCardAvailable()) {
+        this.jfU.setText(2131760029);
+        this.jdF.setBackgroundDrawable(com.tencent.mm.cc.a.l(this, 2131231878));
+        localTextView3.setText(getString(2131755739) + this.jfP);
+        if (com.tencent.mm.kernel.g.ajC().isSDCardAvailable()) {
           break label607;
         }
-        localObject = com.tencent.mm.aj.p.aBh().cB(ai.getContext());
+        localObject = com.tencent.mm.ak.p.aEk().cy(aj.getContext());
         label376:
         if (localObject == null) {
           break label618;
         }
-        this.iKw.setImageBitmap((Bitmap)localObject);
-        if (TextUtils.isEmpty(this.iMH))
+        this.jdF.setImageBitmap((Bitmap)localObject);
+        if (TextUtils.isEmpty(this.jfR))
         {
-          localTextView1.setText(bs.aLI(this.iMF));
-          localTextView2.setText(getString(2131760355, new Object[] { bs.aLI(this.iMF) }));
+          localTextView1.setText(bt.aRo(this.jfP));
+          localTextView2.setText(getString(2131760355, new Object[] { bt.aRo(this.jfP) }));
         }
       }
       label388:
-      if (this.iMG == 3)
+      if (this.jfQ == 3)
       {
-        this.iMK.setText(2131760354);
-        localObject = u.a(new com.tencent.mm.pluginsdk.ui.tools.e(this.iMO, this.iMO));
+        this.jfU.setText(2131760354);
+        localObject = u.a(new com.tencent.mm.pluginsdk.ui.tools.e(this.jfY, this.jfY));
         if (localObject == null) {
           break label634;
         }
-        this.iKw.setImageBitmap((Bitmap)localObject);
+        this.jdF.setImageBitmap((Bitmap)localObject);
       }
     }
     for (;;)
     {
       localButton.setVisibility(8);
-      this.iMK.setOnClickListener(new View.OnClickListener()
+      this.jfU.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(final View paramAnonymousView)
         {
           AppMethodBeat.i(131238);
+          Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahq());
           switch (InviteFriendUI.a(InviteFriendUI.this))
           {
           }
-          label739:
+          label767:
           for (;;)
           {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(131238);
             return;
-            Object localObject1 = (String)com.tencent.mm.kernel.g.agR().agA().get(42, "");
+            localObject1 = (String)com.tencent.mm.kernel.g.ajC().ajl().get(42, "");
             if (localObject1 != null)
             {
               paramAnonymousView = (View)localObject1;
@@ -177,7 +181,7 @@ public class InviteFriendUI
             }
             else
             {
-              paramAnonymousView = (String)com.tencent.mm.kernel.g.agR().agA().get(2, "");
+              paramAnonymousView = (String)com.tencent.mm.kernel.g.ajC().ajl().get(2, "");
             }
             paramAnonymousView = InviteFriendUI.this.getString(2131760373, new Object[] { paramAnonymousView });
             localObject1 = Uri.parse("smsto:" + InviteFriendUI.b(InviteFriendUI.this));
@@ -206,35 +210,33 @@ public class InviteFriendUI
                 ((Intent)localObject3).setData((Uri)localObject1);
                 ((Intent)localObject3).putExtra("sms_body", paramAnonymousView);
                 paramAnonymousView = InviteFriendUI.this;
-                localObject1 = new com.tencent.mm.hellhoundlib.b.a().ba(localObject3);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).aeD(), "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lR(0));
+                localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject3);
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahp(), "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mq(0));
                 com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 InviteFriendUI.c(InviteFriendUI.this);
               }
-              AppMethodBeat.o(131238);
-              return;
             }
-            if (((HashMap)localObject2).size() > 1)
+            else if (((HashMap)localObject2).size() > 1)
             {
               localObject4 = new com.tencent.mm.ui.tools.l(InviteFriendUI.this);
-              ((com.tencent.mm.ui.tools.l)localObject4).ISy = new n.a()
+              ((com.tencent.mm.ui.tools.l)localObject4).KJC = new n.a()
               {
                 public final void a(ImageView paramAnonymous2ImageView, MenuItem paramAnonymous2MenuItem)
                 {
                   AppMethodBeat.i(131232);
                   paramAnonymous2MenuItem = paramAnonymous2MenuItem.getTitle();
-                  paramAnonymous2ImageView.setImageDrawable(((ResolveInfo)this.iMQ.get(paramAnonymous2MenuItem)).loadIcon(this.iMR));
+                  paramAnonymous2ImageView.setImageDrawable(((ResolveInfo)this.jga.get(paramAnonymous2MenuItem)).loadIcon(this.jgb));
                   AppMethodBeat.o(131232);
                 }
               };
-              ((com.tencent.mm.ui.tools.l)localObject4).ISz = new n.b()
+              ((com.tencent.mm.ui.tools.l)localObject4).KJD = new n.b()
               {
                 public final void a(TextView paramAnonymous2TextView, MenuItem paramAnonymous2MenuItem)
                 {
                   AppMethodBeat.i(131233);
                   paramAnonymous2MenuItem = paramAnonymous2MenuItem.getTitle();
-                  paramAnonymous2MenuItem = ((ResolveInfo)this.iMQ.get(paramAnonymous2MenuItem)).loadLabel(this.iMR);
+                  paramAnonymous2MenuItem = ((ResolveInfo)this.jga.get(paramAnonymous2MenuItem)).loadLabel(this.jgb);
                   if (paramAnonymous2MenuItem != null)
                   {
                     paramAnonymous2TextView.setText(paramAnonymous2MenuItem.toString());
@@ -245,85 +247,84 @@ public class InviteFriendUI
                   AppMethodBeat.o(131233);
                 }
               };
-              ((com.tencent.mm.ui.tools.l)localObject4).ISu = new n.c()
+              ((com.tencent.mm.ui.tools.l)localObject4).KJy = new n.d()
               {
                 public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
                 {
                   AppMethodBeat.i(131234);
-                  Iterator localIterator = this.iMQ.keySet().iterator();
+                  Iterator localIterator = this.jga.keySet().iterator();
                   while (localIterator.hasNext()) {
                     paramAnonymous2l.add((String)localIterator.next());
                   }
                   AppMethodBeat.o(131234);
                 }
               };
-              ((com.tencent.mm.ui.tools.l)localObject4).ISv = new n.d()
+              ((com.tencent.mm.ui.tools.l)localObject4).KJz = new n.e()
               {
                 public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
                 {
                   AppMethodBeat.i(131235);
                   Object localObject = paramAnonymous2MenuItem.getTitle();
                   paramAnonymous2MenuItem = new Intent();
-                  paramAnonymous2MenuItem.setComponent(new ComponentName(((ResolveInfo)this.iMQ.get(localObject)).activityInfo.packageName, ((ResolveInfo)this.iMQ.get(localObject)).activityInfo.name));
+                  paramAnonymous2MenuItem.setComponent(new ComponentName(((ResolveInfo)this.jga.get(localObject)).activityInfo.packageName, ((ResolveInfo)this.jga.get(localObject)).activityInfo.name));
                   paramAnonymous2MenuItem.setAction("android.intent.action.SENDTO");
-                  paramAnonymous2MenuItem.setData(this.iMT);
+                  paramAnonymous2MenuItem.setData(this.jgd);
                   paramAnonymous2MenuItem.putExtra("sms_body", paramAnonymousView);
                   localObject = InviteFriendUI.this;
-                  paramAnonymous2MenuItem = new com.tencent.mm.hellhoundlib.b.a().ba(paramAnonymous2MenuItem);
-                  com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymous2MenuItem.aeD(), "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  ((InviteFriendUI)localObject).startActivity((Intent)paramAnonymous2MenuItem.lR(0));
+                  paramAnonymous2MenuItem = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymous2MenuItem);
+                  com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymous2MenuItem.ahp(), "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  ((InviteFriendUI)localObject).startActivity((Intent)paramAnonymous2MenuItem.mq(0));
                   com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$1$4", "onMMMenuItemSelected", "(Landroid/view/MenuItem;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                   AppMethodBeat.o(131235);
                 }
               };
-              ((com.tencent.mm.ui.tools.l)localObject4).ftL();
+              ((com.tencent.mm.ui.tools.l)localObject4).fKy();
               InviteFriendUI.c(InviteFriendUI.this);
-              AppMethodBeat.o(131238);
-              return;
             }
-            Toast.makeText(InviteFriendUI.this, 2131763024, 1).show();
-            AppMethodBeat.o(131238);
-            return;
-            int i = com.tencent.mm.b.p.dv(InviteFriendUI.b(InviteFriendUI.this));
-            new g(InviteFriendUI.this, new g.a()
+            else
             {
-              public final void g(boolean paramAnonymous2Boolean, String paramAnonymous2String)
+              Toast.makeText(InviteFriendUI.this, 2131763024, 1).show();
+              continue;
+              int i = com.tencent.mm.b.p.er(InviteFriendUI.b(InviteFriendUI.this));
+              new g(InviteFriendUI.this, new g.a()
               {
-                AppMethodBeat.i(131236);
-                if (paramAnonymous2Boolean) {
-                  InviteFriendUI.this.finish();
+                public final void h(boolean paramAnonymous2Boolean, String paramAnonymous2String)
+                {
+                  AppMethodBeat.i(131236);
+                  if (paramAnonymous2Boolean) {
+                    InviteFriendUI.this.finish();
+                  }
+                  AppMethodBeat.o(131236);
                 }
-                AppMethodBeat.o(131236);
-              }
-            }).r(new int[] { i });
-            AppMethodBeat.o(131238);
-            return;
-            paramAnonymousView = new h(InviteFriendUI.this, new h.a()
-            {
-              public final void fp(boolean paramAnonymous2Boolean)
+              }).r(new int[] { i });
+              continue;
+              paramAnonymousView = new h(InviteFriendUI.this, new h.a()
               {
-                AppMethodBeat.i(131237);
-                if (paramAnonymous2Boolean) {
-                  ((o)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).ay(InviteFriendUI.d(InviteFriendUI.this), 1);
+                public final void ft(boolean paramAnonymous2Boolean)
+                {
+                  AppMethodBeat.i(131237);
+                  if (paramAnonymous2Boolean) {
+                    ((o)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).aA(InviteFriendUI.d(InviteFriendUI.this), 1);
+                  }
+                  AppMethodBeat.o(131237);
                 }
-                AppMethodBeat.o(131237);
+              });
+              localObject2 = InviteFriendUI.e(InviteFriendUI.this);
+              localObject1 = InviteFriendUI.b(InviteFriendUI.this);
+              com.tencent.mm.kernel.g.aiU().a(489, paramAnonymousView);
+              localObject2 = ((o)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).JG((String)localObject2);
+              if ((localObject2 == null) || (((Cursor)localObject2).getCount() <= 1)) {
+                paramAnonymousView.JO((String)localObject1);
               }
-            });
-            localObject2 = InviteFriendUI.e(InviteFriendUI.this);
-            localObject1 = InviteFriendUI.b(InviteFriendUI.this);
-            com.tencent.mm.kernel.g.agi().a(489, paramAnonymousView);
-            localObject2 = ((o)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).Gr((String)localObject2);
-            if ((localObject2 == null) || (((Cursor)localObject2).getCount() <= 1)) {
-              paramAnonymousView.Gz((String)localObject1);
-            }
-            for (;;)
-            {
-              if (localObject2 == null) {
-                break label739;
+              for (;;)
+              {
+                if (localObject2 == null) {
+                  break label767;
+                }
+                ((Cursor)localObject2).close();
+                break;
+                paramAnonymousView.c((Cursor)localObject2);
               }
-              ((Cursor)localObject2).close();
-              break;
-              paramAnonymousView.c((Cursor)localObject2);
             }
           }
         }
@@ -333,15 +334,19 @@ public class InviteFriendUI
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(131239);
-          paramAnonymousView = new pa();
-          paramAnonymousView.drC.opType = 0;
-          paramAnonymousView.drC.drE = (InviteFriendUI.b(InviteFriendUI.this) + "@qqim");
-          paramAnonymousView.drC.drF = InviteFriendUI.f(InviteFriendUI.this);
-          com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousView);
-          if (paramAnonymousView.drD.dbS) {
-            com.tencent.mm.plugin.account.a.a.iyx.d(new Intent().putExtra("Chat_User", InviteFriendUI.b(InviteFriendUI.this) + "@qqim"), InviteFriendUI.this);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+          paramAnonymousView = new pj();
+          paramAnonymousView.dDu.opType = 0;
+          paramAnonymousView.dDu.dDw = (InviteFriendUI.b(InviteFriendUI.this) + "@qqim");
+          paramAnonymousView.dDu.dDx = InviteFriendUI.f(InviteFriendUI.this);
+          com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousView);
+          if (paramAnonymousView.dDv.dno) {
+            com.tencent.mm.plugin.account.a.a.iRG.d(new Intent().putExtra("Chat_User", InviteFriendUI.b(InviteFriendUI.this) + "@qqim"), InviteFriendUI.this);
           }
           InviteFriendUI.this.finish();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/InviteFriendUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(131239);
         }
       });
@@ -357,28 +362,28 @@ public class InviteFriendUI
       });
       AppMethodBeat.o(131245);
       return;
-      localObject = ((b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Gi((String)localObject);
+      localObject = ((com.tencent.mm.plugin.account.friend.a.b)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getAddrUploadStg()).Jx((String)localObject);
       if (localObject != null)
       {
-        localObject = com.tencent.mm.plugin.account.friend.a.l.a(((com.tencent.mm.plugin.account.friend.a.a)localObject).aPl(), this);
+        localObject = com.tencent.mm.plugin.account.friend.a.l.a(((com.tencent.mm.plugin.account.friend.a.a)localObject).aSx(), this);
         break;
       }
       localObject = null;
       break;
       label580:
-      this.iKw.setImageDrawable(com.tencent.mm.cc.a.l(this, 2131690027));
+      this.jdF.setImageDrawable(com.tencent.mm.cc.a.l(this, 2131690027));
       break label200;
       label596:
-      this.iKw.setImageBitmap((Bitmap)localObject);
+      this.jdF.setImageBitmap((Bitmap)localObject);
       break label290;
       label607:
-      localObject = c.zK(this.iMI);
+      localObject = c.CJ(this.jfS);
       break label376;
       label618:
-      this.iKw.setImageDrawable(com.tencent.mm.cc.a.l(this, 2131231878));
+      this.jdF.setImageDrawable(com.tencent.mm.cc.a.l(this, 2131231878));
       break label388;
       label634:
-      this.iKw.setImageResource(2131690013);
+      this.jdF.setImageResource(2131690013);
     }
   }
   
@@ -388,17 +393,17 @@ public class InviteFriendUI
     super.onCreate(paramBundle);
     setMMTitle(2131760357);
     paramBundle = getIntent();
-    this.iMG = paramBundle.getIntExtra("friend_type", -1);
-    this.iMH = paramBundle.getStringExtra("friend_nick");
-    this.iMF = paramBundle.getStringExtra("friend_num");
-    this.iMI = paramBundle.getStringExtra("friend_googleID");
-    this.iMJ = paramBundle.getStringExtra("friend_googleItemID");
-    this.iMF = bs.nullAsNil(this.iMF);
-    this.iMN = paramBundle.getStringExtra("friend_linkedInID");
-    this.iMO = paramBundle.getStringExtra("friend_linkedInPicUrl");
+    this.jfQ = paramBundle.getIntExtra("friend_type", -1);
+    this.jfR = paramBundle.getStringExtra("friend_nick");
+    this.jfP = paramBundle.getStringExtra("friend_num");
+    this.jfS = paramBundle.getStringExtra("friend_googleID");
+    this.jfT = paramBundle.getStringExtra("friend_googleItemID");
+    this.jfP = bt.nullAsNil(this.jfP);
+    this.jfX = paramBundle.getStringExtra("friend_linkedInID");
+    this.jfY = paramBundle.getStringExtra("friend_linkedInPicUrl");
     initView();
-    this.iML = paramBundle.getIntExtra("search_kvstat_scene", 0);
-    this.iMM = paramBundle.getIntExtra("search_kvstat_position", 0);
+    this.jfV = paramBundle.getIntExtra("search_kvstat_scene", 0);
+    this.jfW = paramBundle.getIntExtra("search_kvstat_position", 0);
     AppMethodBeat.o(131241);
   }
   
@@ -413,7 +418,7 @@ public class InviteFriendUI
   {
     AppMethodBeat.i(131242);
     super.onPause();
-    com.tencent.mm.aj.p.aBh().e(this);
+    com.tencent.mm.ak.p.aEk().e(this);
     AppMethodBeat.o(131242);
   }
   
@@ -421,7 +426,7 @@ public class InviteFriendUI
   {
     AppMethodBeat.i(131243);
     super.onResume();
-    com.tencent.mm.aj.p.aBh().d(this);
+    com.tencent.mm.ak.p.aEk().d(this);
     AppMethodBeat.o(131243);
   }
   

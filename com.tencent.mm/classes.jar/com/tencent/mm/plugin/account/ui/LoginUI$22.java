@@ -17,12 +17,12 @@ final class LoginUI$22
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(128223);
-    if (this.iSO.iSM[0] != 0)
+    if (this.jlW.jlU[0] != 0)
     {
-      this.iSO.iSM[0] = false;
-      b.vor.aop("ie_login_id");
+      this.jlW.jlU[0] = false;
+      b.wtJ.atp("ie_login_id");
     }
-    b.vor.aoq("ie_login_id");
+    b.wtJ.atq("ie_login_id");
     AppMethodBeat.o(128223);
   }
 }

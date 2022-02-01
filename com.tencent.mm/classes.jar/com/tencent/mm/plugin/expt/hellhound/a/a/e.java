@@ -6,7 +6,7 @@ public abstract interface e
 {
   public abstract void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void k(ViewGroup paramViewGroup, int paramInt);
+  public abstract void l(ViewGroup paramViewGroup, int paramInt);
 }
 
 

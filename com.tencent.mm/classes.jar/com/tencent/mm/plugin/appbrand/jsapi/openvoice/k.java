@@ -1,92 +1,45 @@
 package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.permission.c;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.11;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
 
 public final class k
-  extends com.tencent.mm.plugin.appbrand.jsapi.p
+  extends i
 {
-  public static final int CTRL_INDEX = 520;
-  public static final String NAME = "onVoIPChatInterrupted";
+  public static final int CTRL_INDEX = 780;
+  public static final String NAME = "subscribeVoIPMembers";
+  private static String TAG = "MicroMsg.OpenVoice.JsApiSubscribeVoIPMembers";
   
   public k()
   {
-    AppMethodBeat.i(180259);
-    c.Qk("onVoIPChatInterrupted");
-    AppMethodBeat.o(180259);
+    AppMethodBeat.i(180257);
+    com.tencent.mm.plugin.appbrand.permission.c.TP("subscribeVoIPMembers");
+    AppMethodBeat.o(180257);
   }
   
-  private a b(p.a parama)
+  public final void a(com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(186737);
-    switch (1.kEX[parama.ordinal()])
+    AppMethodBeat.i(180258);
+    if (paramJSONObject == null)
     {
-    default: 
-      parama = new a("unknown reason", -1000);
-      AppMethodBeat.o(186737);
-      return parama;
-    case 1: 
-      parama = new a("call interrupted due to native reason", -1000);
-      AppMethodBeat.o(186737);
-      return parama;
-    case 2: 
-      parama = new a("user manually exit the call", -1000);
-      AppMethodBeat.o(186737);
-      return parama;
-    case 3: 
-      parama = new a("device start failed", -1000);
-      AppMethodBeat.o(186737);
-      return parama;
-    case 4: 
-      parama = new a("in comming call", -2);
-      AppMethodBeat.o(186737);
-      return parama;
-    case 5: 
-      parama = new a("session update failed", -1000);
-      AppMethodBeat.o(186737);
-      return parama;
-    case 6: 
-      parama = new a("current mini app entered background", -1);
-      AppMethodBeat.o(186737);
-      return parama;
+      paramc.h(paramInt, e("fail:data is null or nil", null));
+      AppMethodBeat.o(180258);
+      return;
     }
-    parama = new a("call interrupted due to close passive float ball", -3);
-    AppMethodBeat.o(186737);
-    return parama;
-  }
-  
-  public final void a(p.a parama)
-  {
-    AppMethodBeat.i(186736);
-    ac.i("MicroMsg.OpenVoice.OnVoIPChatInterruptedJsEvent", "hy: dispath reason: %s", new Object[] { parama });
-    HashMap localHashMap = new HashMap(2);
-    parama = b(parama);
-    localHashMap.put("errMsg", parama.cvQ + ", room id: " + com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.otZ.ouE);
-    localHashMap.put("errCode", Integer.valueOf(parama.errCode));
-    localHashMap.put("reason", parama.cvQ);
-    A(localHashMap).beN();
-    AppMethodBeat.o(186736);
-  }
-  
-  final class a
-  {
-    String cvQ;
-    int errCode;
-    
-    public a(String paramString, int paramInt)
-    {
-      this.cvQ = paramString;
-      this.errCode = paramInt;
-    }
+    Object localObject = paramc.getAppId();
+    ad.i(TAG, "hy: appId:" + (String)localObject + ", parmas:" + paramJSONObject.toString());
+    localObject = p.oXv;
+    ((p)localObject).af(new p.11((p)localObject, paramJSONObject, new k.1(this, paramc, paramInt)));
+    AppMethodBeat.o(180258);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.k
  * JD-Core Version:    0.7.0.1
  */

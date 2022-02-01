@@ -2,9 +2,9 @@ package com.tencent.mm.ui;
 
 public final class e$i
 {
-  public static int Hhm = 0;
-  public static int Hhn = 1;
-  public static int Hho = 2;
+  public static int IUC = 0;
+  public static int IUD = 1;
+  public static int IUE = 2;
 }
 
 

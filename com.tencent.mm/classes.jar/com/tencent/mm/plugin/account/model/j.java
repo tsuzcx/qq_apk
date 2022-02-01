@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.g.a.a;
 import com.tencent.mm.ui.g.a.a.1;
 import com.tencent.mm.ui.g.a.a.a;
@@ -24,20 +24,20 @@ import org.json.JSONObject;
 
 public final class j
 {
-  ao handler;
-  private c iOp;
-  a iOq;
+  ap handler;
+  private c jhy;
+  a jhz;
   
   public j(c paramc, a parama)
   {
-    this.iOp = paramc;
-    this.iOq = parama;
+    this.jhy = paramc;
+    this.jhz = parama;
   }
   
-  public final void aOY()
+  public final void aSk()
   {
     AppMethodBeat.i(127846);
-    this.handler = new ao()
+    this.handler = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -49,31 +49,31 @@ public final class j
         {
           AppMethodBeat.o(127841);
           return;
-          if (j.this.iOq != null)
+          if (j.this.jhz != null)
           {
-            j.this.iOq.onError(paramAnonymousMessage.arg1, (String)paramAnonymousMessage.obj);
+            j.this.jhz.onError(paramAnonymousMessage.arg1, (String)paramAnonymousMessage.obj);
             AppMethodBeat.o(127841);
             return;
-            if (j.this.iOq != null) {
-              j.this.iOq.w(paramAnonymousMessage.getData());
+            if (j.this.jhz != null) {
+              j.this.jhz.x(paramAnonymousMessage.getData());
             }
           }
         }
       }
     };
     Bundle localBundle = new Bundle();
-    localBundle.putString("client_id", ai.getContext().getString(2131758773));
-    localBundle.putString("client_secret", ai.getContext().getString(2131758788));
+    localBundle.putString("client_id", aj.getContext().getString(2131758773));
+    localBundle.putString("client_secret", aj.getContext().getString(2131758788));
     localBundle.putString("grant_type", "fb_exchange_token");
-    localBundle.putString("fb_exchange_token", this.iOp.iFS);
+    localBundle.putString("fb_exchange_token", this.jhy.iZb);
     a.a local2 = new a.a()
     {
-      public final void GB(String paramAnonymousString)
+      public final void JQ(String paramAnonymousString)
       {
         AppMethodBeat.i(127842);
         if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
         {
-          ac.e("MicroMsg.RefreshTokenRunner", "response is null or nil");
+          ad.e("MicroMsg.RefreshTokenRunner", "response is null or nil");
           j.a(j.this, 1, "response is null or nil");
           AppMethodBeat.o(127842);
           return;
@@ -89,7 +89,7 @@ public final class j
             String str2;
             try
             {
-              localObject1 = f.aRg(paramAnonymousString);
+              localObject1 = f.aXe(paramAnonymousString);
               if (((JSONObject)localObject1).has("access_token"))
               {
                 paramAnonymousString = new Bundle();
@@ -113,7 +113,7 @@ public final class j
             }
             catch (Throwable paramAnonymousString)
             {
-              ac.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
+              ad.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
               j.a(j.this, 2, "decodeUrl fail");
               AppMethodBeat.o(127842);
               return;
@@ -169,7 +169,7 @@ public final class j
         }
         try
         {
-          f.aRg(paramAnonymousString);
+          f.aXe(paramAnonymousString);
           j.a(j.this, 2, "parseJson error");
           AppMethodBeat.o(127842);
           return;
@@ -178,15 +178,15 @@ public final class j
         {
           for (;;)
           {
-            ac.e("MicroMsg.RefreshTokenRunner", "parseJson exception : " + paramAnonymousString.getMessage());
-            ac.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
+            ad.e("MicroMsg.RefreshTokenRunner", "parseJson exception : " + paramAnonymousString.getMessage());
+            ad.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
           }
         }
         catch (e paramAnonymousString)
         {
-          localObject1 = "errCode = " + paramAnonymousString.mErrorCode + ", errType = " + paramAnonymousString.IJb + ", errMsg = " + paramAnonymousString.getMessage();
-          ac.e("MicroMsg.RefreshTokenRunner", "parseJson facebookerror, ".concat(String.valueOf(localObject1)));
-          ac.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
+          localObject1 = "errCode = " + paramAnonymousString.mErrorCode + ", errType = " + paramAnonymousString.KAi + ", errMsg = " + paramAnonymousString.getMessage();
+          ad.e("MicroMsg.RefreshTokenRunner", "parseJson facebookerror, ".concat(String.valueOf(localObject1)));
+          ad.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
           j.a(j.this, 3, (String)localObject1);
           AppMethodBeat.o(127842);
         }
@@ -195,7 +195,7 @@ public final class j
       public final void a(FileNotFoundException paramAnonymousFileNotFoundException)
       {
         AppMethodBeat.i(127844);
-        ac.e("MicroMsg.RefreshTokenRunner", "onFileNotFoundException");
+        ad.e("MicroMsg.RefreshTokenRunner", "onFileNotFoundException");
         j.a(j.this, 2, paramAnonymousFileNotFoundException.getMessage());
         AppMethodBeat.o(127844);
       }
@@ -203,7 +203,7 @@ public final class j
       public final void a(MalformedURLException paramAnonymousMalformedURLException)
       {
         AppMethodBeat.i(127845);
-        ac.e("MicroMsg.RefreshTokenRunner", "onMalformedURLException");
+        ad.e("MicroMsg.RefreshTokenRunner", "onMalformedURLException");
         j.a(j.this, 2, paramAnonymousMalformedURLException.getMessage());
         AppMethodBeat.o(127845);
       }
@@ -211,12 +211,12 @@ public final class j
       public final void c(IOException paramAnonymousIOException)
       {
         AppMethodBeat.i(127843);
-        ac.e("MicroMsg.RefreshTokenRunner", "onIOException");
+        ad.e("MicroMsg.RefreshTokenRunner", "onIOException");
         j.a(j.this, 2, paramAnonymousIOException.getMessage());
         AppMethodBeat.o(127843);
       }
     };
-    b.c(new a.1(new a(this.iOp), "oauth/access_token", localBundle, "GET", local2), "AsyncFacebookRunner_request");
+    b.c(new a.1(new a(this.jhy), "oauth/access_token", localBundle, "GET", local2), "AsyncFacebookRunner_request");
     AppMethodBeat.o(127846);
   }
   
@@ -224,7 +224,7 @@ public final class j
   {
     public abstract void onError(int paramInt, String paramString);
     
-    public abstract void w(Bundle paramBundle);
+    public abstract void x(Bundle paramBundle);
   }
 }
 

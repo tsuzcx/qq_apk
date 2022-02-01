@@ -13,8 +13,8 @@ import com.tencent.mm.cc.a;
 public class MMImageButton
   extends FrameLayout
 {
-  private ImageView dkL;
-  private TextView nyS;
+  private ImageView dwy;
+  private TextView wNs;
   
   public MMImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,18 +27,18 @@ public class MMImageButton
     AppMethodBeat.i(142026);
     paramAttributeSet = new FrameLayout.LayoutParams(-2, -2);
     paramAttributeSet.gravity = 17;
-    this.dkL = new ImageView(paramContext);
-    this.dkL.setLayoutParams(paramAttributeSet);
-    addView(this.dkL);
+    this.dwy = new ImageView(paramContext);
+    this.dwy.setLayoutParams(paramAttributeSet);
+    addView(this.dwy);
     paramAttributeSet = new FrameLayout.LayoutParams(-2, -2);
     paramAttributeSet.gravity = 17;
-    this.nyS = new TextView(paramContext);
-    this.nyS.setLayoutParams(paramAttributeSet);
-    this.nyS.setClickable(false);
-    this.nyS.setFocusable(false);
-    this.nyS.setFocusableInTouchMode(false);
-    this.nyS.setTextColor(a.m(paramContext, 2131100651));
-    addView(this.nyS);
+    this.wNs = new TextView(paramContext);
+    this.wNs.setLayoutParams(paramAttributeSet);
+    this.wNs.setClickable(false);
+    this.wNs.setFocusable(false);
+    this.wNs.setFocusableInTouchMode(false);
+    this.wNs.setTextColor(a.m(paramContext, 2131100651));
+    addView(this.wNs);
     AppMethodBeat.o(142026);
   }
   
@@ -46,17 +46,17 @@ public class MMImageButton
   {
     AppMethodBeat.i(142031);
     super.setEnabled(paramBoolean);
-    this.nyS.setEnabled(paramBoolean);
-    this.dkL.setEnabled(paramBoolean);
+    this.wNs.setEnabled(paramBoolean);
+    this.dwy.setEnabled(paramBoolean);
     AppMethodBeat.o(142031);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(142028);
-    this.dkL.setImageDrawable(paramDrawable);
-    this.dkL.setVisibility(0);
-    this.nyS.setVisibility(8);
+    this.dwy.setImageDrawable(paramDrawable);
+    this.dwy.setVisibility(0);
+    this.wNs.setVisibility(8);
     AppMethodBeat.o(142028);
   }
   
@@ -70,18 +70,18 @@ public class MMImageButton
   public void setText(int paramInt)
   {
     AppMethodBeat.i(142030);
-    this.nyS.setText(paramInt);
-    this.nyS.setVisibility(0);
-    this.dkL.setVisibility(8);
+    this.wNs.setText(paramInt);
+    this.wNs.setVisibility(0);
+    this.dwy.setVisibility(8);
     AppMethodBeat.o(142030);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(142029);
-    this.nyS.setText(paramString);
-    this.nyS.setVisibility(0);
-    this.dkL.setVisibility(8);
+    this.wNs.setText(paramString);
+    this.wNs.setVisibility(0);
+    this.dwy.setVisibility(8);
     AppMethodBeat.o(142029);
   }
 }

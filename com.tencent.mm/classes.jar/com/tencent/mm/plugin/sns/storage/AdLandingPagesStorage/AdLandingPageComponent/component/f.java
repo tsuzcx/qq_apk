@@ -10,7 +10,6 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,16 +17,16 @@ import java.util.List;
 public final class f
   extends a
 {
-  private List<k> bsA;
-  private w ymv;
-  private l ymw;
+  private List<l> aQH;
+  private w zDk;
+  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l zDl;
   
   public f(Context paramContext, w paramw, ViewGroup paramViewGroup)
   {
     super(paramContext, paramw, paramViewGroup);
     AppMethodBeat.i(96438);
-    this.ymv = paramw;
-    this.bsA = new ArrayList();
+    this.zDk = paramw;
+    this.aQH = new ArrayList();
     AppMethodBeat.o(96438);
   }
   
@@ -35,80 +34,65 @@ public final class f
   {
     AppMethodBeat.i(96448);
     if ((paramx instanceof w)) {
-      this.ymv = ((w)paramx);
+      this.zDk = ((w)paramx);
     }
     super.a(paramx);
     AppMethodBeat.o(96448);
   }
   
-  public final void dJX()
+  protected final void dRl()
+  {
+    AppMethodBeat.i(96439);
+    if (this.zDl == null)
+    {
+      this.zDl = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l(this.zDk.aQH, this.context, (FrameLayout)this.contentView);
+      this.zDl.layout();
+      this.aQH = dWH();
+      AppMethodBeat.o(96439);
+      return;
+    }
+    this.zDl.fP(this.zDk.aQH);
+    AppMethodBeat.o(96439);
+  }
+  
+  public final void dRm()
+  {
+    AppMethodBeat.i(96442);
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext())
+    {
+      l locall = (l)localIterator.next();
+      if (locall.dWU()) {
+        locall.dRm();
+      }
+    }
+    super.dRm();
+    AppMethodBeat.o(96442);
+  }
+  
+  public final void dRn()
+  {
+    AppMethodBeat.i(96443);
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext()) {
+      ((l)localIterator.next()).dRn();
+    }
+    super.dRn();
+    AppMethodBeat.o(96443);
+  }
+  
+  public final void dRo()
   {
     AppMethodBeat.i(96446);
-    super.dJX();
-    Iterator localIterator = this.bsA.iterator();
+    super.dRo();
+    Iterator localIterator = this.aQH.iterator();
     while (localIterator.hasNext()) {
-      ((k)localIterator.next()).dJX();
+      ((l)localIterator.next()).dRo();
     }
     AppMethodBeat.o(96446);
   }
   
-  public final void dJY()
-  {
-    AppMethodBeat.i(96442);
-    Iterator localIterator = this.bsA.iterator();
-    while (localIterator.hasNext())
-    {
-      k localk = (k)localIterator.next();
-      if (localk.dKC()) {
-        localk.dJY();
-      }
-    }
-    super.dJY();
-    AppMethodBeat.o(96442);
-  }
-  
-  public final void dJZ()
-  {
-    AppMethodBeat.i(96443);
-    Iterator localIterator = this.bsA.iterator();
-    while (localIterator.hasNext()) {
-      ((k)localIterator.next()).dJZ();
-    }
-    super.dJZ();
-    AppMethodBeat.o(96443);
-  }
-  
-  public final void dKa()
-  {
-    AppMethodBeat.i(96444);
-    Iterator localIterator = this.bsA.iterator();
-    while (localIterator.hasNext())
-    {
-      k localk = (k)localIterator.next();
-      if (localk.dKC()) {
-        localk.dKa();
-      }
-    }
-    super.dKa();
-    AppMethodBeat.o(96444);
-  }
-  
-  protected final void dKm()
-  {
-    AppMethodBeat.i(96439);
-    if (this.ymw == null)
-    {
-      this.ymw = new l(this.ymv.bsA, this.context, (FrameLayout)this.contentView);
-      this.ymw.layout();
-      this.bsA = dKu();
-      AppMethodBeat.o(96439);
-      return;
-    }
-    this.ymw.fE(this.ymv.bsA);
-    AppMethodBeat.o(96439);
-  }
-  
-  protected final View dKp()
+  protected final View dWC()
   {
     AppMethodBeat.i(96441);
     FrameLayout localFrameLayout = new FrameLayout(this.context);
@@ -116,48 +100,63 @@ public final class f
     return localFrameLayout;
   }
   
-  protected final void dKs()
+  protected final void dWF()
   {
     AppMethodBeat.i(96440);
     ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
     if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.ymQ.paddingLeft, (int)this.ymQ.paddingTop, (int)this.ymQ.paddingRight, (int)this.ymQ.paddingBottom);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.zDK.paddingLeft, (int)this.zDK.paddingTop, (int)this.zDK.paddingRight, (int)this.zDK.paddingBottom);
     }
     this.contentView.setLayoutParams(localLayoutParams);
     AppMethodBeat.o(96440);
   }
   
-  public final void dKt()
+  public final void dWG()
   {
     AppMethodBeat.i(96445);
-    Iterator localIterator = this.bsA.iterator();
+    Iterator localIterator = this.aQH.iterator();
     while (localIterator.hasNext())
     {
-      k localk = (k)localIterator.next();
-      if (localk.dKC())
+      l locall = (l)localIterator.next();
+      if (locall.dWU())
       {
-        localk.dJY();
-        localk.dKa();
+        locall.dRm();
+        locall.dWm();
       }
       else
       {
-        localk.dJZ();
+        locall.dRn();
       }
     }
     AppMethodBeat.o(96445);
   }
   
-  public final List<k> dKu()
+  public final List<l> dWH()
   {
     AppMethodBeat.i(96447);
-    ArrayList localArrayList = new ArrayList(this.ymw.dLn());
+    ArrayList localArrayList = new ArrayList(this.zDl.dXE());
     AppMethodBeat.o(96447);
     return localArrayList;
+  }
+  
+  public final void dWm()
+  {
+    AppMethodBeat.i(96444);
+    Iterator localIterator = this.aQH.iterator();
+    while (localIterator.hasNext())
+    {
+      l locall = (l)localIterator.next();
+      if (locall.dWU()) {
+        locall.dWm();
+      }
+    }
+    super.dWm();
+    AppMethodBeat.o(96444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.f
  * JD-Core Version:    0.7.0.1
  */

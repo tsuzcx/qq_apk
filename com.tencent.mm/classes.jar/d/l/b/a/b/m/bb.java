@@ -1,48 +1,46 @@
 package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
-import d.l.b.a.b.a.h;
+import d.g.b.p;
 import d.l.b.a.b.f.b;
 import d.l.b.a.b.f.c;
-import d.l.b.a.b.m.c.g;
-import d.l.b.a.b.m.c.i;
-import d.l.b.a.b.m.c.m;
+import d.l.b.a.b.m.c.j;
 import d.l.b.a.b.m.c.n;
-import d.l.b.a.b.m.c.p;
+import d.l.b.a.b.m.c.o;
+import d.l.b.a.b.m.c.q;
 
 public abstract interface bb
-  extends p
+  extends q
 {
-  public abstract g a(n paramn);
+  public abstract d.l.b.a.b.m.c.h a(o paramo);
   
-  public abstract n a(m paramm);
+  public abstract o a(n paramn);
   
-  public abstract boolean a(g paramg, b paramb);
+  public abstract boolean a(d.l.b.a.b.m.c.h paramh, b paramb);
   
-  public abstract boolean b(m paramm);
+  public abstract boolean b(n paramn);
   
-  public abstract h c(m paramm);
+  public abstract d.l.b.a.b.a.h c(n paramn);
   
-  public abstract h d(m paramm);
+  public abstract d.l.b.a.b.a.h d(n paramn);
   
-  public abstract boolean e(m paramm);
+  public abstract boolean e(n paramn);
   
-  public abstract c f(m paramm);
+  public abstract c f(n paramn);
   
-  public abstract g k(g paramg);
+  public abstract d.l.b.a.b.m.c.h k(d.l.b.a.b.m.c.h paramh);
   
-  public abstract boolean l(g paramg);
+  public abstract boolean l(d.l.b.a.b.m.c.h paramh);
   
-  public abstract g m(g paramg);
+  public abstract d.l.b.a.b.m.c.h m(d.l.b.a.b.m.c.h paramh);
   
   public static final class a
   {
-    public static boolean b(bb parambb, g paramg)
+    public static boolean b(bb parambb, d.l.b.a.b.m.c.h paramh)
     {
       AppMethodBeat.i(60871);
-      k.h(paramg, "$this$isMarkedNullable");
-      if (((paramg instanceof i)) && (parambb.h((i)paramg)))
+      p.h(paramh, "$this$isMarkedNullable");
+      if (((paramh instanceof j)) && (parambb.h((j)paramh)))
       {
         AppMethodBeat.o(60871);
         return true;
@@ -51,29 +49,29 @@ public abstract interface bb
       return false;
     }
     
-    public static g c(bb parambb, g paramg)
+    public static d.l.b.a.b.m.c.h c(bb parambb, d.l.b.a.b.m.c.h paramh)
     {
       AppMethodBeat.i(60872);
-      k.h(paramg, "$this$makeNullable");
-      i locali = parambb.o(paramg);
-      if (locali != null)
+      p.h(paramh, "$this$makeNullable");
+      j localj = parambb.o(paramh);
+      if (localj != null)
       {
-        parambb = parambb.a(locali, true);
+        parambb = parambb.a(localj, true);
         if (parambb != null)
         {
-          parambb = (g)parambb;
+          parambb = (d.l.b.a.b.m.c.h)parambb;
           AppMethodBeat.o(60872);
           return parambb;
         }
       }
       AppMethodBeat.o(60872);
-      return paramg;
+      return paramh;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.bb
  * JD-Core Version:    0.7.0.1
  */

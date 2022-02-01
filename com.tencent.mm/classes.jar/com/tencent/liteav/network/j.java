@@ -5,7 +5,7 @@ import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.datareport.TXCDRExtInfo;
 import com.tencent.liteav.basic.datareport.a;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -41,7 +41,7 @@ public class j
     AppMethodBeat.i(15423);
     this.w = true;
     this.a = paramContext.getApplicationContext();
-    this.b = d.b(this.a);
+    this.b = f.b(this.a);
     this.d = "Android";
     i.a().a(this.a);
     a();

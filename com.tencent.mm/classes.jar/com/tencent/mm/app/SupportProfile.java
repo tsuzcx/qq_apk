@@ -7,59 +7,73 @@ import com.tencent.mm.booter.q;
 import com.tencent.mm.booter.v;
 import com.tencent.mm.compatible.deviceinfo.m;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.plugin.report.b.c;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.plugin.report.a.c;
+import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.au.c;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import junit.framework.Assert;
 
 public class SupportProfile
   extends com.tencent.mm.compatible.loader.d
 {
-  protected static String csT = "";
+  protected static String cDP = "";
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onCreate()
   {
     AppMethodBeat.i(19476);
-    csT = ai.getProcessName();
+    cDP = aj.getProcessName();
     SupportProfile.class.getClassLoader();
-    com.tencent.mm.f.a.bG(ai.getContext());
-    s.a(new SupportProfile.1(this));
-    v localv = new v(com.tencent.mm.booter.d.bK(this.app.getBaseContext()));
-    localv.rq("SUPPORT");
-    com.tencent.mm.platformtools.ab.iuU = bs.a(localv.rr(".com.tencent.mm.debug.test.display_errcode"), false);
-    com.tencent.mm.platformtools.ab.iuV = bs.a(localv.rr(".com.tencent.mm.debug.test.display_msgstate"), false);
-    com.tencent.mm.platformtools.ab.iuW = bs.a(localv.rr(".com.tencent.mm.debug.test.network.simulate_fault"), false);
-    com.tencent.mm.platformtools.ab.iuX = bs.a(localv.rr(".com.tencent.mm.debug.test.network.force_touch"), false);
-    com.tencent.mm.platformtools.ab.iuY = bs.a(localv.rr(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
-    com.tencent.mm.platformtools.ab.iuZ = bs.a(localv.rr(".com.tencent.mm.debug.test.crashIsExit"), false);
-    com.tencent.mm.platformtools.ab.ivd = bs.a(localv.rr(".com.tencent.mm.debug.test.album_show_info"), false);
-    com.tencent.mm.platformtools.ab.ive = bs.a(localv.rr(".com.tencent.mm.debug.test.location_help"), false);
-    com.tencent.mm.platformtools.ab.ivh = bs.a(localv.rr(".com.tencent.mm.debug.test.force_soso"), false);
-    com.tencent.mm.platformtools.ab.ivi = bs.a(localv.rr(".com.tencent.mm.debug.test.simulatePostServerError"), false);
-    com.tencent.mm.platformtools.ab.ivj = bs.a(localv.rr(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
-    com.tencent.mm.platformtools.ab.ivk = bs.a(localv.rr(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
-    com.tencent.mm.platformtools.ab.ivn = bs.a(localv.rr(".com.tencent.mm.debug.test.filterfpnp"), false);
-    com.tencent.mm.platformtools.ab.ivo = bs.a(localv.rr(".com.tencent.mm.debug.test.testForPull"), false);
-    int i = bs.a(localv.getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
-    com.tencent.mm.platformtools.ab.ivl = i;
-    if ((i != 4) && (com.tencent.mm.platformtools.ab.ivl > 0))
+    com.tencent.mm.f.a.bF(aj.getContext());
+    s.a(new au.c()
     {
-      com.tencent.mm.storage.ag.GDs = com.tencent.mm.platformtools.ab.ivl;
-      ac.e("SetupSupportDebugger", "cdn thread num " + com.tencent.mm.platformtools.ab.ivl);
+      public final void a(au paramAnonymousau, String paramAnonymousString, Throwable paramAnonymousThrowable)
+      {
+        AppMethodBeat.i(193074);
+        g.yhR.idkeyStat(637L, 0L, 1L, false);
+        KVCommCrossProcessReceiver.dKl();
+        AppMethodBeat.o(193074);
+      }
+    });
+    v localv = new v(com.tencent.mm.booter.d.bJ(this.app.getBaseContext()));
+    localv.uc("SUPPORT");
+    ac.iOb = bt.a(localv.ud(".com.tencent.mm.debug.test.display_errcode"), false);
+    ac.iOc = bt.a(localv.ud(".com.tencent.mm.debug.test.display_msgstate"), false);
+    ac.iOd = bt.a(localv.ud(".com.tencent.mm.debug.test.network.simulate_fault"), false);
+    ac.iOe = bt.a(localv.ud(".com.tencent.mm.debug.test.network.force_touch"), false);
+    ac.iOf = bt.a(localv.ud(".com.tencent.mm.debug.test.outputToSdCardlog"), false);
+    ac.iOg = bt.a(localv.ud(".com.tencent.mm.debug.test.crashIsExit"), false);
+    ac.iOk = bt.a(localv.ud(".com.tencent.mm.debug.test.album_show_info"), false);
+    ac.iOl = bt.a(localv.ud(".com.tencent.mm.debug.test.location_help"), false);
+    ac.iOo = bt.a(localv.ud(".com.tencent.mm.debug.test.force_soso"), false);
+    ac.iOp = bt.a(localv.ud(".com.tencent.mm.debug.test.simulatePostServerError"), false);
+    ac.iOq = bt.a(localv.ud(".com.tencent.mm.debug.test.simulateUploadServerError"), false);
+    ac.iOr = bt.a(localv.ud(".com.tencent.mm.debug.test.snsNotwirteThumb"), false);
+    ac.iOu = bt.a(localv.ud(".com.tencent.mm.debug.test.filterfpnp"), false);
+    ac.iOv = bt.a(localv.ud(".com.tencent.mm.debug.test.testForPull"), false);
+    int i = bt.a(localv.getInteger(".com.tencent.mm.debug.test.cdnDownloadThread"), 0);
+    ac.iOs = i;
+    if ((i != 4) && (ac.iOs > 0))
+    {
+      com.tencent.mm.storage.ak.IpL = ac.iOs;
+      ad.e("SetupSupportDebugger", "cdn thread num " + ac.iOs);
     }
-    com.tencent.mm.platformtools.ab.ivm = bs.a(localv.rr(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
-    com.tencent.mm.platformtools.ab.ivE = bs.a(localv.rr(".com.tencent.mm.debug.forcex5webview"), false);
-    com.tencent.mm.platformtools.ab.ivB = bs.bG(localv.getString(".com.tencent.mm.debug.jsapi.permission"), "");
-    ac.d("SetupSupportDebugger", "Test.jsapiPermission = " + com.tencent.mm.platformtools.ab.ivB);
+    ac.iOt = bt.a(localv.ud(".com.tencent.mm.debug.test.logShowSnsItemXml"), false);
+    ac.iOL = bt.a(localv.ud(".com.tencent.mm.debug.forcex5webview"), false);
+    ac.iOI = bt.bI(localv.getString(".com.tencent.mm.debug.jsapi.permission"), "");
+    ad.d("SetupSupportDebugger", "Test.jsapiPermission = " + ac.iOI);
     try
     {
       i = Integer.decode(localv.getString(".com.tencent.mm.debug.log.setversion")).intValue();
-      com.tencent.mm.protocal.d.XE(i);
+      com.tencent.mm.protocal.d.ZA(i);
       new StringBuilder("set up test protocal version = ").append(Integer.toHexString(i));
     }
     catch (Exception localException5)
@@ -67,13 +81,13 @@ public class SupportProfile
       try
       {
         String str = localv.getString(".com.tencent.mm.debug.log.setapilevel");
-        if (!bs.isNullOrNil(str))
+        if (!bt.isNullOrNil(str))
         {
-          com.tencent.mm.protocal.d.gMK = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.DHY = "android-".concat(String.valueOf(str));
-          com.tencent.mm.protocal.d.DIa = String.valueOf(str);
-          b.aKr(str);
-          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.gMK).append(" ").append(b.eUl());
+          com.tencent.mm.protocal.d.hgH = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.Fnf = "android-".concat(String.valueOf(str));
+          com.tencent.mm.protocal.d.Fnh = String.valueOf(str);
+          b.aPX(str);
+          new StringBuilder("set up test protocal apilevel = ").append(com.tencent.mm.protocal.d.hgH).append(" ").append(b.fjO());
         }
       }
       catch (Exception localException5)
@@ -81,15 +95,15 @@ public class SupportProfile
         try
         {
           i = Integer.decode(localv.getString(".com.tencent.mm.debug.log.setuin")).intValue();
-          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.DIb).append(" new: ").append(i);
-          com.tencent.mm.protocal.d.DIb = i;
+          new StringBuilder("set up test protocal uin old: ").append(com.tencent.mm.protocal.d.Fni).append(" new: ").append(i);
+          com.tencent.mm.protocal.d.Fni = i;
         }
         catch (Exception localException5)
         {
           try
           {
             i = Integer.decode(localv.getString(".com.tencent.mm.debug.log.setchannel")).intValue();
-            localv.fnq.flW = i;
+            localv.fFy.fEd = i;
           }
           catch (Exception localException5)
           {
@@ -97,69 +111,69 @@ public class SupportProfile
             {
               for (;;)
               {
-                boolean bool1 = bs.a(localv.rr(".com.tencent.mm.debug.report.debugmodel"), false);
-                boolean bool2 = bs.a(localv.rr(".com.tencent.mm.debug.report.kvstat"), false);
-                boolean bool3 = bs.a(localv.rr(".com.tencent.mm.debug.report.clientpref"), false);
-                boolean bool4 = bs.a(localv.rr(".com.tencent.mm.debug.report.useraction"), false);
+                boolean bool1 = bt.a(localv.ud(".com.tencent.mm.debug.report.debugmodel"), false);
+                boolean bool2 = bt.a(localv.ud(".com.tencent.mm.debug.report.kvstat"), false);
+                boolean bool3 = bt.a(localv.ud(".com.tencent.mm.debug.report.clientpref"), false);
+                boolean bool4 = bt.a(localv.ud(".com.tencent.mm.debug.report.useraction"), false);
                 c.d(bool1, bool2, bool3, bool4);
                 new StringBuilder("try control report : debugModel[").append(bool1).append("],kv[").append(bool2).append("], clientPref[").append(bool3).append("], useraction[").append(bool4).append("]");
-                s.ep(csT);
-                a.JV();
-                j.sC("wcdb");
-                j.sC("commonimgdec");
-                j.sC("wechatcommon");
-                j.sC("wechatbase");
-                j.sC(com.tencent.mm.sdk.a.GpP);
-                j.sC("wechatmm");
-                j.sC("FFmpeg");
-                j.sC("wechatpack");
-                i = m.XE();
+                s.fk(cDP);
+                a.Lu();
+                j.vr("wcdb");
+                j.vr("commonimgdec");
+                j.vr("wechatcommon");
+                j.vr("wechatbase");
+                j.vr(com.tencent.mm.sdk.a.IbC);
+                j.vr("wechatmm");
+                j.vr("FFmpeg");
+                j.vr("wechatpack");
+                i = m.aaf();
                 if ((i & 0x400) == 0) {
-                  break label921;
+                  break label922;
                 }
-                ac.i("MicroMsg.SupportProfile", "load wechatsight_v7a, core number: %d", new Object[] { Integer.valueOf(i >> 12) });
-                j.sC("wechatsight_v7a");
+                ad.i("MicroMsg.SupportProfile", "load wechatsight_v7a, core number: %d", new Object[] { Integer.valueOf(i >> 12) });
+                j.vr("wechatsight_v7a");
                 if (i >> 12 < 4) {
                   break;
                 }
-                com.tencent.mm.plugin.sight.base.c.xCp = 3;
-                com.tencent.mm.plugin.sight.base.c.xCr = 3;
-                com.tencent.mm.plugin.sight.base.c.xCs = 544000;
-                com.tencent.mm.f.a.bG(ai.getContext());
-                ab.KT();
+                com.tencent.mm.plugin.sight.base.c.yQZ = 3;
+                com.tencent.mm.plugin.sight.base.c.yRb = 3;
+                com.tencent.mm.plugin.sight.base.c.yRc = 544000;
+                com.tencent.mm.f.a.bF(aj.getContext());
+                ab.MA();
                 MMActivity.initLanguage(this.app.getBaseContext());
                 AppMethodBeat.o(19476);
                 return;
                 localException2 = localException2;
-                ac.i("SetupSupportDebugger", "no debugger was got");
+                ad.i("SetupSupportDebugger", "no debugger was got");
                 continue;
                 localException3 = localException3;
-                ac.i("SetupSupportDebugger", "no debugger was got");
+                ad.i("SetupSupportDebugger", "no debugger was got");
                 continue;
                 localException4 = localException4;
-                ac.i("SetupSupportDebugger", "no debugger was got");
+                ad.i("SetupSupportDebugger", "no debugger was got");
                 continue;
                 localException5 = localException5;
-                ac.i("SetupSupportDebugger", "no debugger was got");
+                ad.i("SetupSupportDebugger", "no debugger was got");
               }
             }
             catch (Exception localException1)
             {
               for (;;)
               {
-                ac.i("SetupSupportDebugger", "no debugger was got");
+                ad.i("SetupSupportDebugger", "no debugger was got");
                 continue;
-                com.tencent.mm.plugin.sight.base.c.xCp = 1;
-                com.tencent.mm.plugin.sight.base.c.xCr = 1;
-                com.tencent.mm.plugin.sight.base.c.xCs = 640000;
+                com.tencent.mm.plugin.sight.base.c.yQZ = 1;
+                com.tencent.mm.plugin.sight.base.c.yRb = 1;
+                com.tencent.mm.plugin.sight.base.c.yRc = 640000;
                 continue;
-                label921:
-                ac.i("MicroMsg.SupportProfile", "load wechatsight");
-                j.sC("wechatsight");
+                label922:
+                ad.i("MicroMsg.SupportProfile", "load wechatsight");
+                j.vr("wechatsight");
                 Assert.assertTrue("Can't remove libwechatsight.so yet.", false);
-                com.tencent.mm.plugin.sight.base.c.xCp = 1;
-                com.tencent.mm.plugin.sight.base.c.xCr = 1;
-                com.tencent.mm.plugin.sight.base.c.xCs = 640000;
+                com.tencent.mm.plugin.sight.base.c.yQZ = 1;
+                com.tencent.mm.plugin.sight.base.c.yRb = 1;
+                com.tencent.mm.plugin.sight.base.c.yRc = 640000;
               }
             }
           }
@@ -172,7 +186,7 @@ public class SupportProfile
   {
     AppMethodBeat.i(19477);
     super.onTrimMemory(paramInt);
-    ac.v("MicroMsg.SupportProfile", "onTrimMemory(l : %d)", new Object[] { Integer.valueOf(paramInt) });
+    ad.v("MicroMsg.SupportProfile", "onTrimMemory(l : %d)", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(19477);
   }
 }

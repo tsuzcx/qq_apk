@@ -3,54 +3,54 @@ package com.tencent.mm.plugin.recordvideo.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/util/MediaDebugInfo;", "", "()V", "mediaNum", "", "getMediaNum", "()I", "setMediaNum", "(I)V", "useCpuCrop", "", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "useDaemonRecord", "getUseDaemonRecord", "setUseDaemonRecord", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/util/MediaDebugInfo;", "", "()V", "mediaNum", "", "getMediaNum", "()I", "setMediaNum", "(I)V", "useCpuCrop", "", "getUseCpuCrop", "()Z", "setUseCpuCrop", "(Z)V", "useDaemonRecord", "getUseDaemonRecord", "setUseDaemonRecord", "plugin-recordvideo_release"})
 public final class a
 {
-  private static boolean gWY;
-  public static final a wDA;
-  private static boolean wDy;
-  private static int wDz;
+  private static boolean hpe;
+  private static boolean xRf;
+  private static int xRg;
+  public static final a xRh;
   
   static
   {
     AppMethodBeat.i(76177);
-    wDA = new a();
+    xRh = new a();
     AppMethodBeat.o(76177);
   }
   
-  public static void Mt(int paramInt)
+  public static void NV(int paramInt)
   {
-    wDz = paramInt;
+    xRg = paramInt;
   }
   
-  public static boolean dwX()
+  public static boolean dIp()
   {
-    return gWY;
+    return hpe;
   }
   
-  public static boolean dwY()
+  public static boolean dIq()
   {
-    return wDy;
+    return xRf;
   }
   
-  public static int dwZ()
+  public static int dIr()
   {
-    return wDz;
+    return xRg;
   }
   
-  public static void pI(boolean paramBoolean)
+  public static void qh(boolean paramBoolean)
   {
-    gWY = paramBoolean;
+    hpe = paramBoolean;
   }
   
-  public static void pJ(boolean paramBoolean)
+  public static void qi(boolean paramBoolean)
   {
-    wDy = paramBoolean;
+    xRf = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,13 @@ import java.util.NoSuchElementException;
 
 final class v$a
 {
-  private static final Iterator<Object> LAY;
-  private static final Iterable<Object> LAZ;
+  private static final Iterator<Object> NrU;
+  private static final Iterable<Object> NrV;
   
   static
   {
     AppMethodBeat.i(59575);
-    LAY = new Iterator()
+    NrU = new Iterator()
     {
       public final boolean hasNext()
       {
@@ -35,12 +35,12 @@ final class v$a
         throw localUnsupportedOperationException;
       }
     };
-    LAZ = new Iterable()
+    NrV = new Iterable()
     {
       public final Iterator<Object> iterator()
       {
         AppMethodBeat.i(59574);
-        Iterator localIterator = v.a.gaL();
+        Iterator localIterator = v.a.gsk();
         AppMethodBeat.o(59574);
         return localIterator;
       }
@@ -48,9 +48,9 @@ final class v$a
     AppMethodBeat.o(59575);
   }
   
-  static <T> Iterable<T> gaK()
+  static <T> Iterable<T> gsj()
   {
-    return LAZ;
+    return NrV;
   }
 }
 

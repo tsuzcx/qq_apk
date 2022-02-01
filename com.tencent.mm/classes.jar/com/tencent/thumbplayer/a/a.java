@@ -11,9 +11,9 @@ public abstract interface a
   
   public abstract void a(p paramp);
   
-  public abstract b fEI();
+  public abstract b fWa();
   
-  public abstract j fEJ();
+  public abstract j fWb();
   
   public abstract int getCurrentPlayClipNo();
   
@@ -23,7 +23,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.a.a
  * JD-Core Version:    0.7.0.1
  */

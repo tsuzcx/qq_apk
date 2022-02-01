@@ -10,13 +10,13 @@ import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.af;
 import com.tencent.mm.compatible.util.l;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.vfs.i;
 
 public final class b
 {
-  private static BitmapFactory.Options aQu(String paramString)
+  private static BitmapFactory.Options aWn(String paramString)
   {
     AppMethodBeat.i(152889);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
@@ -29,28 +29,28 @@ public final class b
     return localOptions;
   }
   
-  public static boolean aSS(String paramString)
+  public static boolean aYR(String paramString)
   {
     AppMethodBeat.i(152885);
-    if (fBe())
+    if (fSo())
     {
       AppMethodBeat.o(152885);
       return false;
     }
-    paramString = aQu(paramString);
+    paramString = aWn(paramString);
     int i = paramString.outWidth;
     int j = paramString.outHeight;
-    ac.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImgOpt ignore abTestFlag, widthFactor: %f, heightFactor: %f, width: %d, height: %d", new Object[] { Float.valueOf(1.0F), Float.valueOf(1.0F), Integer.valueOf(i), Integer.valueOf(j) });
-    if (a.kr(i, j))
+    ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImgOpt ignore abTestFlag, widthFactor: %f, heightFactor: %f, width: %d, height: %d", new Object[] { Float.valueOf(1.0F), Float.valueOf(1.0F), Integer.valueOf(i), Integer.valueOf(j) });
+    if (a.kG(i, j))
     {
-      ac.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt filter image");
+      ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt filter image");
       AppMethodBeat.o(152885);
       return false;
     }
-    ac.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt not filter");
-    int k = getScreenWidth(ai.getContext());
-    int m = getScreenHeight(ai.getContext());
-    ac.d("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt width: %d, height: %d, screenWidth: %d, screenHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+    ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt not filter");
+    int k = getScreenWidth(aj.getContext());
+    int m = getScreenHeight(aj.getContext());
+    ad.d("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt width: %d, height: %d, screenWidth: %d, screenHeight: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
     if (i >= k * 1.0F)
     {
       AppMethodBeat.o(152885);
@@ -65,7 +65,7 @@ public final class b
     return false;
   }
   
-  private static boolean fBe()
+  private static boolean fSo()
   {
     AppMethodBeat.i(152886);
     if (Build.VERSION.SDK_INT == 27)
@@ -77,13 +77,13 @@ public final class b
         return false;
       }
     }
-    if (l.YR())
+    if (l.abs())
     {
-      ac.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt is MTK platform");
+      ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImageOpt is MTK platform");
       if ((Build.VERSION.SDK_INT == 24) || (Build.VERSION.SDK_INT == 25) || (Build.VERSION.SDK_INT == 27))
       {
-        ac.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImgOpt is MTK platform, android api: %d, cannot use BigImgOpt", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
-        c.adU(Build.VERSION.SDK_INT);
+        ad.i("MicroMsg.BigImageJudge", "alvinluo checkUseBigImgOpt is MTK platform, android api: %d, cannot use BigImgOpt", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+        c.agu(Build.VERSION.SDK_INT);
         AppMethodBeat.o(152886);
         return true;
       }

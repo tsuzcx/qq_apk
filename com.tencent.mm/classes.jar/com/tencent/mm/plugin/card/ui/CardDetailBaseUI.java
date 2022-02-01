@@ -20,23 +20,23 @@ import com.tencent.mm.ui.z;
 public abstract class CardDetailBaseUI
   extends MMActivity
 {
-  private TextView lfN;
-  private ImageView mgn;
-  private View mgu;
-  private TextView obn;
-  private ImageView obo;
-  private View obp;
+  private TextView lCL;
+  private ImageView mGO;
+  private View mGU;
+  private TextView oEG;
+  private ImageView oEH;
+  private View oEI;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.mgu = z.jD(getContext()).inflate(2131493268, null);
-    this.mgu.setBackgroundColor(getResources().getColor(2131099873));
-    this.lfN = ((TextView)this.mgu.findViewById(2131305908));
-    this.obn = ((TextView)this.mgu.findViewById(2131305509));
-    this.mgn = ((ImageView)this.mgu.findViewById(2131296940));
-    this.obo = ((ImageView)this.mgu.findViewById(2131302241));
-    this.obp = this.mgu.findViewById(2131299154);
+    this.mGU = z.jO(getContext()).inflate(2131493268, null);
+    this.mGU.setBackgroundColor(getResources().getColor(2131099873));
+    this.lCL = ((TextView)this.mGU.findViewById(2131305908));
+    this.oEG = ((TextView)this.mGU.findViewById(2131305509));
+    this.mGO = ((ImageView)this.mGU.findViewById(2131296940));
+    this.oEH = ((ImageView)this.mGU.findViewById(2131302241));
+    this.oEI = this.mGU.findViewById(2131299154);
     LinearLayout localLinearLayout;
     Object localObject;
     if ((getContentView() != null) && (((ViewGroup)getContentView()).getChildCount() > 0))
@@ -55,7 +55,7 @@ public abstract class CardDetailBaseUI
     for (int i = getResources().getDimensionPixelSize(2131165251);; i = getResources().getDimensionPixelSize(2131165252))
     {
       localObject = new LinearLayout.LayoutParams(-1, i);
-      localLinearLayout.addView(this.mgu, (ViewGroup.LayoutParams)localObject);
+      localLinearLayout.addView(this.mGU, (ViewGroup.LayoutParams)localObject);
       localLinearLayout.addView(paramBundle);
       ((ViewGroup)getContentView()).addView(localLinearLayout);
       return;

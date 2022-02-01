@@ -1,43 +1,110 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.f;
+import d.g.a.b;
 import d.l;
+import d.z;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
-public final class bi
-  implements bj
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/ExecutorCoroutineDispatcherBase;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "()V", "removesFutureOnCancellation", "", "close", "", "dispatch", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "equals", "other", "", "hashCode", "", "initFutureCancellation", "initFutureCancellation$kotlinx_coroutines_core", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "", "scheduleBlock", "Ljava/util/concurrent/ScheduledFuture;", "time", "unit", "Ljava/util/concurrent/TimeUnit;", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "", "kotlinx-coroutines-core"})
+public abstract class bi
+  extends bh
+  implements as
 {
-  final bx LRN;
+  boolean NIH;
   
-  public bi(bx parambx)
+  private final ScheduledFuture<?> a(Runnable paramRunnable, long paramLong, TimeUnit paramTimeUnit)
   {
-    AppMethodBeat.i(118136);
-    this.LRN = parambx;
-    AppMethodBeat.o(118136);
-  }
-  
-  public final bx gdQ()
-  {
-    return this.LRN;
-  }
-  
-  public final boolean isActive()
-  {
-    return false;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118135);
-    if (al.getDEBUG())
+    try
     {
-      str = this.LRN.getString("New");
-      AppMethodBeat.o(118135);
-      return str;
+      Executor localExecutor = getExecutor();
+      Object localObject = localExecutor;
+      if (!(localExecutor instanceof ScheduledExecutorService)) {
+        localObject = null;
+      }
+      localObject = (ScheduledExecutorService)localObject;
+      if (localObject != null)
+      {
+        paramRunnable = ((ScheduledExecutorService)localObject).schedule(paramRunnable, paramLong, paramTimeUnit);
+        return paramRunnable;
+      }
+      return null;
     }
-    String str = super.toString();
-    AppMethodBeat.o(118135);
-    return str;
+    catch (RejectedExecutionException paramRunnable) {}
+    return null;
+  }
+  
+  public final void a(long paramLong, k<? super z> paramk)
+  {
+    if (this.NIH) {}
+    for (ScheduledFuture localScheduledFuture = a((Runnable)new cf((ac)this, paramk), paramLong, TimeUnit.MILLISECONDS); localScheduledFuture != null; localScheduledFuture = null)
+    {
+      paramk.K((b)new h((Future)localScheduledFuture));
+      return;
+    }
+    ao.NIf.a(paramLong, paramk);
+  }
+  
+  public final void a(f paramf, Runnable paramRunnable)
+  {
+    for (;;)
+    {
+      try
+      {
+        Executor localExecutor = getExecutor();
+        paramf = ck.NJi;
+        if (paramf != null)
+        {
+          Runnable localRunnable = paramf.gvS();
+          paramf = localRunnable;
+          if (localRunnable != null)
+          {
+            localExecutor.execute(paramf);
+            return;
+          }
+        }
+      }
+      catch (RejectedExecutionException paramf)
+      {
+        ao.NIf.aW(paramRunnable);
+        return;
+      }
+      paramf = paramRunnable;
+    }
+  }
+  
+  public void close()
+  {
+    Executor localExecutor = getExecutor();
+    Object localObject = localExecutor;
+    if (!(localExecutor instanceof ExecutorService)) {
+      localObject = null;
+    }
+    localObject = (ExecutorService)localObject;
+    if (localObject != null) {
+      ((ExecutorService)localObject).shutdown();
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof bi)) && (((bi)paramObject).getExecutor() == getExecutor());
+  }
+  
+  public int hashCode()
+  {
+    return System.identityHashCode(getExecutor());
+  }
+  
+  public String toString()
+  {
+    return getExecutor().toString();
   }
 }
 

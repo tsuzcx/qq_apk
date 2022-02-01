@@ -8,10 +8,10 @@ import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ay;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.i;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.model.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.mm.splash.e;
 import com.tencent.mm.ui.MMAppMgr;
 import com.tencent.mm.ui.n;
@@ -19,19 +19,19 @@ import com.tencent.mm.ui.n;
 final class WeChatSplashStartup$5
   implements e
 {
-  n cKh;
+  n cVu;
   
   WeChatSplashStartup$5(WeChatSplashStartup paramWeChatSplashStartup)
   {
     AppMethodBeat.i(160064);
-    this.cKh = new n();
+    this.cVu = new n();
     AppMethodBeat.o(160064);
   }
   
-  public final boolean Li()
+  public final boolean MQ()
   {
     AppMethodBeat.i(169426);
-    boolean bool = n.fgv();
+    boolean bool = n.fwH();
     AppMethodBeat.o(169426);
     return bool;
   }
@@ -39,7 +39,7 @@ final class WeChatSplashStartup$5
   public final boolean a(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(160068);
-    boolean bool = this.cKh.a(paramActivity, paramInt, paramArrayOfString, paramArrayOfInt);
+    boolean bool = this.cVu.a(paramActivity, paramInt, paramArrayOfString, paramArrayOfInt);
     AppMethodBeat.o(160068);
     return bool;
   }
@@ -47,16 +47,16 @@ final class WeChatSplashStartup$5
   public final boolean a(Activity paramActivity, final Runnable paramRunnable)
   {
     AppMethodBeat.i(160066);
-    g.agP();
-    boolean bool = a.afX();
-    String str = ay.hnA.aw("login_user_name", "");
+    g.ajA();
+    boolean bool = a.aiJ();
+    String str = az.hFS.ax("login_user_name", "");
     if ((!bool) && (str.equals(""))) {}
     for (int i = 1; i == 0; i = 0)
     {
       AppMethodBeat.o(160066);
       return false;
     }
-    if (i.GqL)
+    if (j.Icz)
     {
       bool = MMAppMgr.a(paramActivity, new DialogInterface.OnClickListener()
       {
@@ -77,10 +77,10 @@ final class WeChatSplashStartup$5
   public final boolean n(Intent paramIntent)
   {
     AppMethodBeat.i(160065);
-    if ((paramIntent != null) && (x.getIntExtra(paramIntent, "absolutely_exit_pid", 0) == Process.myPid()))
+    if ((paramIntent != null) && (y.getIntExtra(paramIntent, "absolutely_exit_pid", 0) == Process.myPid()))
     {
-      ac.i("MicroMsg.WeChatSplashStartup", "handle exit intent.");
-      MMAppMgr.wA(x.getBooleanExtra(paramIntent, "kill_service", true));
+      ad.i("MicroMsg.WeChatSplashStartup", "handle exit intent.");
+      MMAppMgr.xm(y.getBooleanExtra(paramIntent, "kill_service", true));
       AppMethodBeat.o(160065);
       return true;
     }

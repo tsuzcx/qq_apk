@@ -2,76 +2,101 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class d
   extends a
 {
-  public String dDe = "";
-  public long dDf = 0L;
-  public a dDg;
+  public long dPN = 0L;
+  private long dPO = 0L;
+  public long dPP = 0L;
+  public long dPQ = 0L;
+  public long dPR = 0L;
+  public long dPS = 0L;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(43448);
+    AppMethodBeat.i(19855);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dDe);
+    ((StringBuffer)localObject).append(this.dPN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dDf);
+    ((StringBuffer)localObject).append(this.dPO);
     ((StringBuffer)localObject).append(",");
-    if (this.dDg != null) {}
-    for (int i = this.dDg.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      localObject = ((StringBuffer)localObject).toString();
-      arz((String)localObject);
-      AppMethodBeat.o(43448);
-      return localObject;
-    }
+    ((StringBuffer)localObject).append(this.dPP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dPQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dPR);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dPS);
+    localObject = ((StringBuffer)localObject).toString();
+    awz((String)localObject);
+    AppMethodBeat.o(19855);
+    return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(43449);
+    AppMethodBeat.i(19856);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Url:").append(this.dDe);
+    ((StringBuffer)localObject).append("FirstInputTimeStampMs:").append(this.dPN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DownLoadCostStampMs:").append(this.dDf);
+    ((StringBuffer)localObject).append("LastInputTimeStampMs:").append(this.dPO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreLoadStatus:").append(this.dDg);
+    ((StringBuffer)localObject).append("SendStampMs:").append(this.dPP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickCount:").append(this.dPQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TextLength:").append(this.dPR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EmojiCount:").append(this.dPS);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43449);
+    AppMethodBeat.o(19856);
     return localObject;
+  }
+  
+  public final d RF()
+  {
+    AppMethodBeat.i(19852);
+    d locald = bn(bt.flT());
+    AppMethodBeat.o(19852);
+    return locald;
+  }
+  
+  public final d RG()
+  {
+    AppMethodBeat.i(19854);
+    d locald = bo(bt.flT());
+    AppMethodBeat.o(19854);
+    return locald;
+  }
+  
+  public final d bn(long paramLong)
+  {
+    AppMethodBeat.i(19851);
+    this.dPN = paramLong;
+    super.bg("FirstInputTimeStampMs", this.dPN);
+    AppMethodBeat.o(19851);
+    return this;
+  }
+  
+  public final d bo(long paramLong)
+  {
+    AppMethodBeat.i(19853);
+    this.dPO = paramLong;
+    super.bg("LastInputTimeStampMs", this.dPO);
+    AppMethodBeat.o(19853);
+    return this;
   }
   
   public final int getId()
   {
-    return 15586;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(43447);
-      dDh = new a("NoDownLoad", 0, 0);
-      dDi = new a("DownLoading", 1, 1);
-      dDj = new a("DownLoaded", 2, 2);
-      dDk = new a("DownLoadFail", 3, 3);
-      dDl = new a[] { dDh, dDi, dDj, dDk };
-      AppMethodBeat.o(43447);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    return 16113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.d
  * JD-Core Version:    0.7.0.1
  */

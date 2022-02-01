@@ -5,46 +5,46 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.a.e;
 import com.tencent.mm.plugin.expt.hellhound.core.a.a.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 
 final class m
   implements o
 {
   WeakReference<Activity> mActivityRef;
-  com.tencent.mm.plugin.expt.hellhound.a.a.a qlE;
-  private final e qlm;
-  private final p qlo;
-  private a qma;
+  com.tencent.mm.plugin.expt.hellhound.a.a.a qUB;
+  private a qUX;
+  private final e qUj;
+  private final p qUl;
   
   m()
   {
-    AppMethodBeat.i(195274);
-    this.qlm = new e()
+    AppMethodBeat.i(210421);
+    this.qUj = new e()
     {
       public final void a(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(195272);
+        AppMethodBeat.i(210419);
         if (m.this.mActivityRef == null)
         {
-          AppMethodBeat.o(195272);
+          AppMethodBeat.o(210419);
           return;
         }
         Activity localActivity = (Activity)m.this.mActivityRef.get();
         if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed()))
         {
-          ac.m("HABBYGE-MALI.FinderTimelineMonitor", "FinderTimelineMonitor, onScroll, is NULL or finishing", new Object[0]);
-          AppMethodBeat.o(195272);
+          ad.m("HABBYGE-MALI.FinderTimelineMonitor", "FinderTimelineMonitor, onScroll, is NULL or finishing", new Object[0]);
+          AppMethodBeat.o(210419);
           return;
         }
-        m.this.qlE.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
-        AppMethodBeat.o(195272);
+        m.this.qUB.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
+        AppMethodBeat.o(210419);
       }
       
-      public final void k(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
+      public final void l(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
-        AppMethodBeat.i(195271);
-        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = m.this.qlE;
+        AppMethodBeat.i(210418);
+        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = m.this.qUB;
         switch (paramAnonymousInt)
         {
         default: 
@@ -52,8 +52,8 @@ final class m
         }
         for (;;)
         {
-          locala.g(paramAnonymousViewGroup, paramAnonymousInt);
-          AppMethodBeat.o(195271);
+          locala.h(paramAnonymousViewGroup, paramAnonymousInt);
+          AppMethodBeat.o(210418);
           return;
           paramAnonymousInt = 0;
           continue;
@@ -63,89 +63,89 @@ final class m
         }
       }
     };
-    this.qlo = new p()
+    this.qUl = new p()
     {
-      public final void kH(boolean paramAnonymousBoolean)
+      public final void kZ(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(195273);
-        if (m.this.qlE != null) {
-          m.this.qlE.kG(paramAnonymousBoolean);
+        AppMethodBeat.i(210420);
+        if (m.this.qUB != null) {
+          m.this.qUB.kY(paramAnonymousBoolean);
         }
-        AppMethodBeat.o(195273);
+        AppMethodBeat.o(210420);
       }
     };
-    this.qma = new a();
-    this.qlE = new com.tencent.mm.plugin.expt.hellhound.a.a.a(1, "18260", "1001");
-    AppMethodBeat.o(195274);
+    this.qUX = new a();
+    this.qUB = new com.tencent.mm.plugin.expt.hellhound.a.a.a(1, "18260", "1001");
+    AppMethodBeat.o(210421);
   }
   
   final void a(int paramInt, String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(195275);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.ciw()) || (!com.tencent.mm.plugin.expt.hellhound.a.ciz())) {}
+    AppMethodBeat.i(210422);
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.cnt()) || (!com.tencent.mm.plugin.expt.hellhound.a.cnw())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ac.e("HABBYGE-MALI.FinderTimelineMonitor", "FinderTimelineMonitor, monitor, dontNeedMonitorFinder true !!");
-      AppMethodBeat.o(195275);
+      ad.e("HABBYGE-MALI.FinderTimelineMonitor", "FinderTimelineMonitor, monitor, dontNeedMonitorFinder true !!");
+      AppMethodBeat.o(210422);
       return;
     }
-    ac.i("HABBYGE-MALI.FinderTimelineMonitor", "FinderTimelineMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    ad.i("HABBYGE-MALI.FinderTimelineMonitor", "FinderTimelineMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(195275);
+      AppMethodBeat.o(210422);
       return;
       this.mActivityRef = new WeakReference(paramActivity);
-      c.ciO().l(704, paramString);
-      AppMethodBeat.o(195275);
+      c.cnO().l(704, paramString);
+      AppMethodBeat.o(210422);
       return;
-      c.ciO().l(705, paramString);
-      AppMethodBeat.o(195275);
+      c.cnO().l(705, paramString);
+      AppMethodBeat.o(210422);
       return;
-      c.ciO().l(706, paramString);
-      AppMethodBeat.o(195275);
+      c.cnO().l(706, paramString);
+      AppMethodBeat.o(210422);
       return;
-      c.ciO().l(707, paramString);
+      c.cnO().l(707, paramString);
     }
   }
   
-  public final void cjq()
+  public final void coC()
   {
-    AppMethodBeat.i(195277);
-    this.qma.cjq();
-    this.qlE.a(1, null);
-    AppMethodBeat.o(195277);
+    AppMethodBeat.i(210424);
+    this.qUX.coC();
+    this.qUB.a(1, null);
+    AppMethodBeat.o(210424);
   }
   
-  public final void cjz()
+  public final void coL()
   {
-    AppMethodBeat.i(195276);
+    AppMethodBeat.i(210423);
     if (this.mActivityRef != null) {
-      this.qlE.a(0, (Activity)this.mActivityRef.get());
+      this.qUB.a(0, (Activity)this.mActivityRef.get());
     }
-    this.qma.a(this.qlm, this.qlo);
-    AppMethodBeat.o(195276);
+    this.qUX.a(this.qUj, this.qUl);
+    AppMethodBeat.o(210423);
   }
   
   public final void free()
   {
-    AppMethodBeat.i(195278);
-    this.qlE.a(2, null);
+    AppMethodBeat.i(210425);
+    this.qUB.a(2, null);
     if (this.mActivityRef != null)
     {
       this.mActivityRef.clear();
       this.mActivityRef = null;
     }
-    AppMethodBeat.o(195278);
+    AppMethodBeat.o(210425);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(195279);
-    this.qlE.a(3, null);
-    AppMethodBeat.o(195279);
+    AppMethodBeat.i(210426);
+    this.qUB.a(3, null);
+    AppMethodBeat.o(210426);
   }
 }
 

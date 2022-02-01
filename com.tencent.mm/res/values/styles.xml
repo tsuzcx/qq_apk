@@ -145,16 +145,6 @@
     </style>
     <style name="z" parent="@style/a3">
         <item name="a">#33ffffff</item>
-        <item name="b">#ff111111</item>
-        <item name="c">#ff1e1e1e</item>
-        <item name="d">#ff191919</item>
-        <item name="e">#ff202020</item>
-        <item name="f">#ff404040</item>
-        <item name="g">#ff2c2c2c</item>
-        <item name="i">#ccffffff</item>
-        <item name="j">#80ffffff</item>
-        <item name="k">#4dffffff</item>
-        <item name="l">#0dffffff</item>
         <item name="m">#ff1196ff</item>
         <item name="n">#ff28b561</item>
         <item name="o">#ff5f749e</item>
@@ -163,13 +153,9 @@
         <item name="t">#ff259c5c</item>
         <item name="u">@color/Yellow_80</item>
         <item name="bi">#ff6b6b6b</item>
-        <item name="dm">@drawable/ld</item>
-        <item name="dn">@drawable/lc</item>
         <item name="do">@raw/chatfrom_voice_playing_f1_dark</item>
         <item name="dp">@raw/chatfrom_voice_playing_f2_dark</item>
         <item name="dq">@raw/chatfrom_voice_playing_f3_dark</item>
-        <item name="dr">@drawable/n3</item>
-        <item name="ds">@drawable/n2</item>
         <item name="fy">@raw/more_my_card_dark</item>
         <item name="fz">@raw/icons_outlined_colorful_favorites_dark</item>
         <item name="g0">@raw/icons_outlined_colorful_game_dark</item>
@@ -251,16 +237,6 @@
     </style>
     <style name="a4" parent="@style/a3">
         <item name="a">#e6000000</item>
-        <item name="b">#ffededed</item>
-        <item name="c">#fff7f7f7</item>
-        <item name="d">#ffffffff</item>
-        <item name="e">#fff7f7f7</item>
-        <item name="f">#ff4c4c4c</item>
-        <item name="g">#ffffffff</item>
-        <item name="i">#e6000000</item>
-        <item name="j">#80000000</item>
-        <item name="k">#4d000000</item>
-        <item name="l">#1a000000</item>
         <item name="m">#ff1485ee</item>
         <item name="n">#ff95ec69</item>
         <item name="o">#ff576b95</item>
@@ -269,13 +245,9 @@
         <item name="t">#ff06ae56</item>
         <item name="u">#ffffc300</item>
         <item name="bi">#ffb2b2b2</item>
-        <item name="dm">@drawable/l8</item>
-        <item name="dn">@drawable/l9</item>
         <item name="do">@raw/chatfrom_voice_playing_f1</item>
         <item name="dp">@raw/chatfrom_voice_playing_f2</item>
         <item name="dq">@raw/chatfrom_voice_playing_f3</item>
-        <item name="dr">@drawable/mz</item>
-        <item name="ds">@drawable/n1</item>
         <item name="fy">@raw/more_my_card</item>
         <item name="fz">@raw/icons_outlined_colorful_favorites</item>
         <item name="g0">@raw/icons_outlined_colorful_game</item>
@@ -1535,8 +1507,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:button">@null</item>
-        <item name="android:minHeight">20.0dip</item>
-        <item name="android:drawableLeft">@drawable/a2r</item>
+        <item name="android:minHeight">@dimen/an7</item>
+        <item name="android:drawableLeft">@drawable/c9f</item>
         <item name="android:drawablePadding">8.0dip</item>
     </style>
     <style name="fb" parent="@android:style/Widget.CompoundButton.CheckBox">
@@ -1594,7 +1566,7 @@
     </style>
     <style name="fl">
         <item name="android:textSize">@dimen/q</item>
-        <item name="android:textColor">?j</item>
+        <item name="android:textColor">@color/FG_1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
@@ -1768,7 +1740,7 @@
     </style>
     <style name="gg">
         <item name="android:textSize">@dimen/k4</item>
-        <item name="android:textColor">?j</item>
+        <item name="android:textColor">@color/FG_1</item>
         <item name="android:clickable">true</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -1916,7 +1888,7 @@
     </style>
     <style name="gz">
         <item name="android:textSize">@dimen/gx</item>
-        <item name="android:textColor">?k</item>
+        <item name="android:textColor">@color/FG_2</item>
         <item name="android:padding">@dimen/d</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -2152,7 +2124,7 @@
     </style>
     <style name="hr">
         <item name="android:textSize">@dimen/b_</item>
-        <item name="android:textColor">?j</item>
+        <item name="android:textColor">@color/FG_1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
@@ -2160,7 +2132,7 @@
     <style name="hs">
         <item name="android:textSize">@dimen/gu</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?i</item>
+        <item name="android:textColor">@color/FG_0</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
@@ -2168,7 +2140,7 @@
     <style name="ht">
         <item name="android:textSize">@dimen/q</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">?i</item>
+        <item name="android:textColor">@color/FG_0</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
@@ -2577,7 +2549,7 @@
     </style>
     <style name="jc">
         <item name="android:textSize">@dimen/ed</item>
-        <item name="android:textColor">?k</item>
+        <item name="android:textColor">@color/FG_2</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
@@ -2891,14 +2863,14 @@
     </style>
     <style name="kn">
         <item name="android:textSize">@dimen/b_</item>
-        <item name="android:textColor">?j</item>
+        <item name="android:textColor">@color/FG_1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
     </style>
     <style name="ko">
         <item name="android:textSize">@dimen/gw</item>
-        <item name="android:textColor">?i</item>
+        <item name="android:textColor">@color/FG_0</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
@@ -3548,7 +3520,7 @@
     </style>
     <style name="nb">
         <item name="android:textSize">@dimen/ia</item>
-        <item name="android:textColor">?i</item>
+        <item name="android:textColor">@color/FG_0</item>
         <item name="android:ellipsize">end</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
@@ -3630,7 +3602,7 @@
         <item name="android:inputType">none</item>
     </style>
     <style name="nu" parent="@android:style/Widget.CompoundButton.RadioButton">
-        <item name="android:textColor">?i</item>
+        <item name="android:textColor">@color/FG_0</item>
         <item name="android:button">?vn</item>
     </style>
     <style name="nv" parent="@android:style/Widget.CompoundButton.RadioButton">
@@ -4512,8 +4484,8 @@
         <item name="android:textSize">@dimen/ia</item>
         <item name="android:clickable">true</item>
         <item name="android:button">@null</item>
-        <item name="android:minHeight">20.0dip</item>
-        <item name="android:drawableLeft">@drawable/a2r</item>
+        <item name="android:minHeight">@dimen/an7</item>
+        <item name="android:drawableLeft">@drawable/c9f</item>
         <item name="android:drawablePadding">4.0dip</item>
     </style>
     <style name="s0" parent="@style/kp">
@@ -4881,7 +4853,7 @@
         <item name="android:clickable">true</item>
         <item name="android:button">@null</item>
         <item name="android:minHeight">20.0dip</item>
-        <item name="android:drawableLeft">@drawable/a2r</item>
+        <item name="android:drawableLeft">@drawable/c9f</item>
         <item name="android:drawablePadding">4.0dip</item>
     </style>
     <style name="tp" parent="@style/kp">
@@ -4940,7 +4912,7 @@
     </style>
     <style name="u4" parent="@style/u1">
         <item name="android:textSize">13.0dip</item>
-        <item name="android:textColor">#ff888888</item>
+        <item name="android:textColor">@color/km</item>
     </style>
     <style name="u5" parent="@style/u1">
         <item name="android:textSize">9.0dip</item>
@@ -5154,7 +5126,7 @@
     <style name="we" parent="@style/bw" />
     <style name="wf">
         <item name="android:textSize">@dimen/q</item>
-        <item name="android:textColor">?i</item>
+        <item name="android:textColor">@color/FG_0</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.6</item>
@@ -5283,7 +5255,7 @@
     </style>
     <style name="ya">
         <item name="android:textSize">@dimen/q</item>
-        <item name="android:textColor">?i</item>
+        <item name="android:textColor">@color/FG_0</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
@@ -6745,5 +6717,29 @@
         <item name="android:textColor">@color/aat</item>
         <item name="android:paddingTop">8.0dip</item>
         <item name="android:paddingBottom">8.0dip</item>
+    </style>
+    <style name="a6t" parent="@style/z">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="a06">@string/huv</item>
+    </style>
+    <style name="a6u" parent="@style/a4">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="a06">@string/huv</item>
+    </style>
+    <style name="a6v" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/ez</item>
+        <item name="android:windowExitAnimation">@anim/f0</item>
+    </style>
+    <style name="a6w" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/f1</item>
+        <item name="android:windowExitAnimation">@null</item>
+    </style>
+    <style name="a6x" parent="@style/vx">
+        <item name="android:textSize">15.0dip</item>
+    </style>
+    <style name="a6y" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/n3</item>
     </style>
 </resources>

@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.d.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storagebase.h;
 
 public final class c
 {
-  public long gLX = 0L;
-  boolean gas = false;
-  private long mUa = -1L;
+  boolean guj = false;
+  public long hfU = 0L;
+  private long nuy = -1L;
   
   public final void begin()
   {
     AppMethodBeat.i(21817);
-    ac.d("MicroMsg.Recoverfaster", "begin");
-    if (b.bFw().bFx().ghG != null)
+    ad.d("MicroMsg.Recoverfaster", "begin");
+    if (b.bJF().bJG().gBq != null)
     {
-      this.mUa = b.bFw().bFx().ghG.vE(Thread.currentThread().getId());
-      this.gas = true;
+      this.nuy = b.bJF().bJG().gBq.xO(Thread.currentThread().getId());
+      this.guj = true;
     }
-    this.gLX = bs.eWj();
+    this.hfU = bt.flT();
     AppMethodBeat.o(21817);
   }
   
   public final void end()
   {
     AppMethodBeat.i(21818);
-    if ((this.gas) && (b.bFw().bFx().ghG != null))
+    if ((this.guj) && (b.bJF().bJG().gBq != null))
     {
-      b.bFw().bFx().ghG.qL(this.mUa);
-      this.gas = false;
+      b.bJF().bJG().gBq.sJ(this.nuy);
+      this.guj = false;
     }
     AppMethodBeat.o(21818);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,27 +8,27 @@ import java.lang.reflect.Method;
 class ai
   extends ah
 {
-  private static Method BQ;
-  private static boolean BR;
-  private static Method BS;
-  private static boolean BT;
-  private static Method BU;
-  private static boolean BV;
+  private static Method DI;
+  private static boolean DJ;
+  private static Method DK;
+  private static boolean DL;
+  private static Method DM;
+  private static boolean DN;
   
   public final void a(View paramView, Matrix paramMatrix)
   {
-    if (!BR) {}
+    if (!DJ) {}
     try
     {
       Method localMethod = View.class.getDeclaredMethod("transformMatrixToGlobal", new Class[] { Matrix.class });
-      BQ = localMethod;
+      DI = localMethod;
       localMethod.setAccessible(true);
       label32:
-      BR = true;
-      if (BQ != null) {}
+      DJ = true;
+      if (DI != null) {}
       try
       {
-        BQ.invoke(paramView, new Object[] { paramMatrix });
+        DI.invoke(paramView, new Object[] { paramMatrix });
         return;
       }
       catch (InvocationTargetException paramView)
@@ -45,18 +45,18 @@ class ai
   
   public final void b(View paramView, Matrix paramMatrix)
   {
-    if (!BT) {}
+    if (!DL) {}
     try
     {
       Method localMethod = View.class.getDeclaredMethod("transformMatrixToLocal", new Class[] { Matrix.class });
-      BS = localMethod;
+      DK = localMethod;
       localMethod.setAccessible(true);
       label32:
-      BT = true;
-      if (BS != null) {}
+      DL = true;
+      if (DK != null) {}
       try
       {
-        BS.invoke(paramView, new Object[] { paramMatrix });
+        DK.invoke(paramView, new Object[] { paramMatrix });
         return;
       }
       catch (InvocationTargetException paramView)
@@ -73,18 +73,18 @@ class ai
   
   public final void c(View paramView, Matrix paramMatrix)
   {
-    if (!BV) {}
+    if (!DN) {}
     try
     {
       Method localMethod = View.class.getDeclaredMethod("setAnimationMatrix", new Class[] { Matrix.class });
-      BU = localMethod;
+      DM = localMethod;
       localMethod.setAccessible(true);
       label32:
-      BV = true;
-      if (BU != null) {}
+      DN = true;
+      if (DM != null) {}
       try
       {
-        BU.invoke(paramView, new Object[] { paramMatrix });
+        DM.invoke(paramView, new Object[] { paramMatrix });
         return;
       }
       catch (IllegalAccessException paramView)
@@ -101,7 +101,7 @@ class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ai
  * JD-Core Version:    0.7.0.1
  */

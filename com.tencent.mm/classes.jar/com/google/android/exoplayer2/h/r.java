@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class r
   implements g.a
 {
-  private final w<? super q> bur = null;
+  private final w<? super q> bEG = null;
   
   public r()
   {
@@ -14,10 +14,10 @@ public final class r
   
   private r(byte paramByte) {}
   
-  public final g vc()
+  public final g wB()
   {
     AppMethodBeat.i(93082);
-    q localq = new q(this.bur);
+    q localq = new q(this.bEG);
     AppMethodBeat.o(93082);
     return localq;
   }

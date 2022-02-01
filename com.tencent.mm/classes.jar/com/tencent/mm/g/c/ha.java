@@ -8,33 +8,38 @@ public abstract class ha
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO = "appId".hashCode();
-  private static final int eol = "updateTime".hashCode();
-  private static final int fiY = "accessTime".hashCode();
-  private static final int fjA;
-  private static final int fjB;
-  private static final int fjC = "cacheFilePath".hashCode();
-  private static final int fjz = "commLibVersionId".hashCode();
+  private static final int eGk;
+  private static final int eNa = "downloadUrl".hashCode();
+  private static final int eSP;
+  private static final int fAl = "pkgId".hashCode();
+  private static final int fAm;
+  private static final int fAn;
+  private static final int fAo = "pkgSize".hashCode();
+  private static final int fAp = "downloadNetType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  private boolean eoi = true;
-  private boolean fiK = true;
-  public long field_accessTime;
-  public String field_appId;
-  public String field_appVersionId;
-  public String field_cacheFilePath;
-  public String field_commLibVersionId;
-  public String field_pageURL;
-  public long field_updateTime;
-  private boolean fjv = true;
-  private boolean fjw = true;
-  private boolean fjx = true;
-  private boolean fjy = true;
+  private boolean eGf = true;
+  private boolean eMS = true;
+  private boolean eSd = true;
+  private boolean fAg = true;
+  private boolean fAh = true;
+  private boolean fAi = true;
+  private boolean fAj = true;
+  private boolean fAk = true;
+  public int field_downloadNetType;
+  public String field_downloadUrl;
+  public String field_md5;
+  public String field_oldPath;
+  public String field_oldVersion;
+  public String field_pkgId;
+  public int field_pkgSize;
+  public String field_version;
   
   static
   {
-    fjA = "appVersionId".hashCode();
-    fjB = "pageURL".hashCode();
+    eGk = "version".hashCode();
+    fAm = "oldVersion".hashCode();
+    fAn = "oldPath".hashCode();
+    eSP = "md5".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -50,29 +55,32 @@ public abstract class ha
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
-        break label60;
+      if (fAl != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_pkgId = paramCursor.getString(i);
+      this.fAg = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (fjz == k) {
-        this.field_commLibVersionId = paramCursor.getString(i);
-      } else if (fjA == k) {
-        this.field_appVersionId = paramCursor.getString(i);
-      } else if (fjB == k) {
-        this.field_pageURL = paramCursor.getString(i);
-      } else if (eol == k) {
-        this.field_updateTime = paramCursor.getLong(i);
-      } else if (fiY == k) {
-        this.field_accessTime = paramCursor.getLong(i);
-      } else if (fjC == k) {
-        this.field_cacheFilePath = paramCursor.getString(i);
+      label65:
+      if (eGk == k) {
+        this.field_version = paramCursor.getString(i);
+      } else if (fAm == k) {
+        this.field_oldVersion = paramCursor.getString(i);
+      } else if (fAn == k) {
+        this.field_oldPath = paramCursor.getString(i);
+      } else if (eSP == k) {
+        this.field_md5 = paramCursor.getString(i);
+      } else if (eNa == k) {
+        this.field_downloadUrl = paramCursor.getString(i);
+      } else if (fAo == k) {
+        this.field_pkgSize = paramCursor.getInt(i);
+      } else if (fAp == k) {
+        this.field_downloadNetType = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -82,26 +90,29 @@ public abstract class ha
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fAg) {
+      localContentValues.put("pkgId", this.field_pkgId);
     }
-    if (this.fjv) {
-      localContentValues.put("commLibVersionId", this.field_commLibVersionId);
+    if (this.eGf) {
+      localContentValues.put("version", this.field_version);
     }
-    if (this.fjw) {
-      localContentValues.put("appVersionId", this.field_appVersionId);
+    if (this.fAh) {
+      localContentValues.put("oldVersion", this.field_oldVersion);
     }
-    if (this.fjx) {
-      localContentValues.put("pageURL", this.field_pageURL);
+    if (this.fAi) {
+      localContentValues.put("oldPath", this.field_oldPath);
     }
-    if (this.eoi) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.eSd) {
+      localContentValues.put("md5", this.field_md5);
     }
-    if (this.fiK) {
-      localContentValues.put("accessTime", Long.valueOf(this.field_accessTime));
+    if (this.eMS) {
+      localContentValues.put("downloadUrl", this.field_downloadUrl);
     }
-    if (this.fjy) {
-      localContentValues.put("cacheFilePath", this.field_cacheFilePath);
+    if (this.fAj) {
+      localContentValues.put("pkgSize", Integer.valueOf(this.field_pkgSize));
+    }
+    if (this.fAk) {
+      localContentValues.put("downloadNetType", Integer.valueOf(this.field_downloadNetType));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -111,7 +122,7 @@ public abstract class ha
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.ha
  * JD-Core Version:    0.7.0.1
  */

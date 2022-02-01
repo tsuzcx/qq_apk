@@ -4,19 +4,19 @@ import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
 import java.util.Iterator;
 import java.util.List;
 
 final class WalletLqtPlanDetailUI$5
-  implements n.c
+  implements n.d
 {
   WalletLqtPlanDetailUI$5(WalletLqtPlanDetailUI paramWalletLqtPlanDetailUI, List paramList) {}
   
   public final void onCreateMMMenu(l paraml)
   {
     AppMethodBeat.i(68907);
-    Iterator localIterator = this.BcL.iterator();
+    Iterator localIterator = this.CCZ.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
@@ -25,16 +25,16 @@ final class WalletLqtPlanDetailUI$5
       default: 
         break;
       case 1: 
-        paraml.jw(i, 2131765470);
+        paraml.jI(i, 2131765470);
         break;
       case 2: 
-        paraml.c(i, this.BcI.getString(2131765471));
+        paraml.c(i, this.CCW.getString(2131765471));
         break;
       case 3: 
-        paraml.a(i, this.BcI.getContext().getResources().getColor(2131099803), this.BcI.getString(2131765468));
+        paraml.a(i, this.CCW.getContext().getResources().getColor(2131099803), this.CCW.getString(2131765468));
         break;
       case 4: 
-        paraml.jw(i, 2131765469);
+        paraml.jI(i, 2131765469);
       }
     }
     AppMethodBeat.o(68907);

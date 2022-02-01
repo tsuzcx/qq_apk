@@ -27,15 +27,15 @@ public final class c
       if (localObject == null) {
         break label191;
       }
-      i = ((g)localObject).lv();
-      if ((i != paramb.edm()) && (paramb.edj().Aei))
+      i = ((g)localObject).lN();
+      if ((i != paramb.epE()) && (paramb.epB().BvU))
       {
-        paramb.edj().stopPlay();
+        paramb.epB().stopPlay();
         if (localObject != null) {
-          paramb.edf().i(((g)localObject).zZN);
+          paramb.epx().i(((g)localObject).Brz);
         }
       }
-      paramb.edc();
+      paramb.epu();
       j = 0;
       label103:
       if (j >= localRecyclerView.getChildCount()) {
@@ -45,12 +45,12 @@ public final class c
       if (((View)localObject).getTag() != null)
       {
         localObject = (g)paramb.getRecyclerView().bh((View)localObject);
-        if (((g)localObject).lv() != i) {
+        if (((g)localObject).lN() != i) {
           break label196;
         }
-        ((g)localObject).edb();
-        if (!paramb.edj().Aei) {
-          ((g)localObject).Afh.edA();
+        ((g)localObject).ept();
+        if (!paramb.epB().BvU) {
+          ((g)localObject).BwT.epS();
         }
       }
     }
@@ -64,7 +64,7 @@ public final class c
       i = -1;
       break;
       label196:
-      ((g)localObject).Afh.edB();
+      ((g)localObject).BwT.epT();
     }
     label207:
     AppMethodBeat.o(126245);
@@ -75,25 +75,25 @@ public final class c
     AppMethodBeat.i(126246);
     h localh = c(paramb);
     if ((localh != null) && ((localh instanceof g))) {
-      if (!paramb.edj().Aei)
+      if (!paramb.epB().BvU)
       {
-        if (!paramb.ede().isConnected()) {
+        if (!paramb.epw().isConnected()) {
           break label89;
         }
-        paramb.a(localh.zZN);
-        localh.sd(true);
+        paramb.a(localh.Brz);
+        localh.sJ(true);
       }
     }
     for (;;)
     {
-      localh.edb();
-      paramb.Ro(localh.edd());
-      paramb.edf().eeh();
+      localh.ept();
+      paramb.SY(localh.epv());
+      paramb.epx().eqy();
       AppMethodBeat.o(126246);
       return;
       label89:
-      localh.edP().edE();
-      paramb.edj().stopPlay();
+      localh.eqh().epW();
+      paramb.epB().stopPlay();
     }
   }
 }

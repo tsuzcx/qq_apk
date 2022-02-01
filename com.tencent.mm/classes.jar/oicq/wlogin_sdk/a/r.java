@@ -6,27 +6,27 @@ import oicq.wlogin_sdk.tools.util;
 public final class r
   extends a
 {
-  int LWX = 0;
-  int LWY = 0;
+  int NRw = 0;
+  int NRx = 0;
   
   public r()
   {
-    this.LVT = 278;
+    this.NQs = 278;
   }
   
-  public final byte[] lp(int paramInt1, int paramInt2)
+  public final byte[] lE(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(88140);
-    this.LWX = 10;
-    byte[] arrayOfByte = new byte[this.LWX];
-    util.U(arrayOfByte, 0, this.LWY);
-    util.W(arrayOfByte, 1, paramInt1);
-    util.W(arrayOfByte, 5, paramInt2);
-    util.U(arrayOfByte, 9, 0);
-    super.ajl(this.LVT);
-    super.ae(arrayOfByte, this.LWX);
-    super.gfx();
-    arrayOfByte = super.gft();
+    this.NRw = 10;
+    byte[] arrayOfByte = new byte[this.NRw];
+    util.V(arrayOfByte, 0, this.NRx);
+    util.X(arrayOfByte, 1, paramInt1);
+    util.X(arrayOfByte, 5, paramInt2);
+    util.V(arrayOfByte, 9, 0);
+    super.alW(this.NQs);
+    super.af(arrayOfByte, this.NRw);
+    super.gxV();
+    arrayOfByte = super.gxR();
     AppMethodBeat.o(88140);
     return arrayOfByte;
   }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.eggspring.c;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneGetBrandCardContent$Companion;", "", "()V", "TAG", "", "plugin-eggspring_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneGetBrandCardContent$Companion;", "", "()V", "TAG", "", "plugin-eggspring_release"})
 public final class b$a {}
 
 

@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.q;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.FileDescriptor;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -138,7 +138,7 @@ public class FFmpegMetadataRetriever
     }
     catch (Exception localException)
     {
-      ac.e("FFmpegMetadataRetriever", "do nothing");
+      ad.e("FFmpegMetadataRetriever", "do nothing");
       return;
     }
     finally
@@ -202,7 +202,7 @@ public class FFmpegMetadataRetriever
     {
       AppMethodBeat.o(107615);
       return null;
-      locala.uOd = localHashMap;
+      locala.vRm = localHashMap;
       i = 1;
     }
     AppMethodBeat.o(107615);
@@ -260,14 +260,14 @@ public class FFmpegMetadataRetriever
           continue;
         }
         str1 = extractMetadata("video_width");
-        ac.d("FFmpegMetadataRetriever", "video height %s rotate %s", new Object[] { str1, str2 });
+        ad.d("FFmpegMetadataRetriever", "video height %s rotate %s", new Object[] { str1, str2 });
         int j = Integer.valueOf(str1).intValue();
         i = j;
       }
       catch (Exception localException)
       {
         String str1;
-        ac.e("FFmpegMetadataRetriever", "can not get video height %s", new Object[] { localException.getMessage() });
+        ad.e("FFmpegMetadataRetriever", "can not get video height %s", new Object[] { localException.getMessage() });
         continue;
       }
       AppMethodBeat.o(107625);
@@ -289,7 +289,7 @@ public class FFmpegMetadataRetriever
     {
       for (;;)
       {
-        ac.e("FFmpegMetadataRetriever", "can not get video rotation. %s", new Object[] { localException.getMessage() });
+        ad.e("FFmpegMetadataRetriever", "can not get video rotation. %s", new Object[] { localException.getMessage() });
       }
     }
     AppMethodBeat.o(107624);
@@ -315,7 +315,7 @@ public class FFmpegMetadataRetriever
       catch (Exception localException)
       {
         String str;
-        ac.e("FFmpegMetadataRetriever", "can not get video width %s", new Object[] { localException.getMessage() });
+        ad.e("FFmpegMetadataRetriever", "can not get video width %s", new Object[] { localException.getMessage() });
         continue;
       }
       AppMethodBeat.o(107623);
@@ -546,7 +546,7 @@ public class FFmpegMetadataRetriever
   
   public final class a
   {
-    HashMap<String, String> uOd;
+    HashMap<String, String> vRm;
     
     public a() {}
   }

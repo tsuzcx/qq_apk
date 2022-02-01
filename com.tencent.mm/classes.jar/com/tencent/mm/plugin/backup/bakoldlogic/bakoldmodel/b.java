@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.o;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.zip.CRC32;
@@ -16,11 +16,11 @@ public final class b
     {
       ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       localByteArrayOutputStream.write(paramArrayOfByte1);
-      localByteArrayOutputStream.write(o.ha(paramInt1));
+      localByteArrayOutputStream.write(o.hh(paramInt1));
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort1 >> 8 & 0xFF), (byte)(paramShort1 & 0xFF) });
       localByteArrayOutputStream.write(new byte[] { (byte)(paramShort2 >> 8 & 0xFF), (byte)(paramShort2 & 0xFF) });
-      localByteArrayOutputStream.write(o.ha(paramInt2));
-      localByteArrayOutputStream.write(o.ha(0));
+      localByteArrayOutputStream.write(o.hh(paramInt2));
+      localByteArrayOutputStream.write(o.hh(0));
       localByteArrayOutputStream.write(paramArrayOfByte2);
       paramArrayOfByte1 = new CRC32();
       paramArrayOfByte1.update(localByteArrayOutputStream.toByteArray());
@@ -31,7 +31,7 @@ public final class b
     }
     catch (IOException paramArrayOfByte1)
     {
-      ac.printErrStackTrace("MicroMsg.BakOldPacker", paramArrayOfByte1, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.BakOldPacker", paramArrayOfByte1, "", new Object[0]);
       AppMethodBeat.o(21809);
     }
     return 0;
@@ -52,7 +52,7 @@ public final class b
       continue;
       i = 0;
     }
-    ac.e("MicroMsg.BakOldPacker", "dump errBuf: %s", new Object[] { str });
+    ad.e("MicroMsg.BakOldPacker", "dump errBuf: %s", new Object[] { str });
     AppMethodBeat.o(21810);
     return str;
   }

@@ -8,34 +8,34 @@ import java.io.InputStream;
 public final class k
   implements e<InputStream>
 {
-  private final m aDG;
+  private final m aFx;
   
   k(InputStream paramInputStream, b paramb)
   {
     AppMethodBeat.i(76895);
-    this.aDG = new m(paramInputStream, paramb);
-    this.aDG.mark(5242880);
+    this.aFx = new m(paramInputStream, paramb);
+    this.aFx.mark(5242880);
     AppMethodBeat.o(76895);
   }
   
   public final void cleanup()
   {
     AppMethodBeat.i(76896);
-    this.aDG.release();
+    this.aFx.release();
     AppMethodBeat.o(76896);
   }
   
   public static final class a
     implements e.a<InputStream>
   {
-    private final b aDH;
+    private final b aFy;
     
     public a(b paramb)
     {
-      this.aDH = paramb;
+      this.aFy = paramb;
     }
     
-    public final Class<InputStream> nU()
+    public final Class<InputStream> om()
     {
       return InputStream.class;
     }

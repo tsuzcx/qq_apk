@@ -12,7 +12,7 @@ public class ToolsMpProcessIPCService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.ToolsMpProcessIPCService
  * JD-Core Version:    0.7.0.1
  */

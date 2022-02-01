@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 public final class q
 {
-  public int Bxh;
-  public int Bxi;
-  public int Bxj;
-  public String Bxk;
-  public String Bxl;
-  public String Bxm;
-  public String Bxn;
+  public String CXA;
+  public String CXB;
+  public String CXC;
+  public String CXD;
+  public int CXx;
+  public int CXy;
+  public int CXz;
 }
 
 

@@ -5,23 +5,23 @@ import d.k.d;
 import d.l;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/ReversedList;", "T", "Lkotlin/collections/AbstractMutableList;", "delegate", "", "(Ljava/util/List;)V", "size", "", "getSize", "()I", "add", "", "index", "element", "(ILjava/lang/Object;)V", "clear", "get", "(I)Ljava/lang/Object;", "removeAt", "set", "(ILjava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/ReversedList;", "T", "Lkotlin/collections/AbstractMutableList;", "delegate", "", "(Ljava/util/List;)V", "size", "", "getSize", "()I", "add", "", "index", "element", "(ILjava/lang/Object;)V", "clear", "get", "(I)Ljava/lang/Object;", "removeAt", "set", "(ILjava/lang/Object;)Ljava/lang/Object;", "kotlin-stdlib"})
 public final class aj<T>
   extends c<T>
 {
-  private final List<T> KTK;
+  private final List<T> MKJ;
   
   public aj(List<T> paramList)
   {
     AppMethodBeat.i(129150);
-    this.KTK = paramList;
+    this.MKJ = paramList;
     AppMethodBeat.o(129150);
   }
   
   public final void add(int paramInt, T paramT)
   {
     AppMethodBeat.i(129149);
-    List localList = this.KTK;
+    List localList = this.MKJ;
     int i = size();
     if (paramInt < 0) {}
     while (i < paramInt)
@@ -37,14 +37,14 @@ public final class aj<T>
   public final void clear()
   {
     AppMethodBeat.i(129146);
-    this.KTK.clear();
+    this.MKJ.clear();
     AppMethodBeat.o(129146);
   }
   
   public final T get(int paramInt)
   {
     AppMethodBeat.i(129145);
-    Object localObject = this.KTK.get(r.B(this, paramInt));
+    Object localObject = this.MKJ.get(r.D(this, paramInt));
     AppMethodBeat.o(129145);
     return localObject;
   }
@@ -52,7 +52,7 @@ public final class aj<T>
   public final int getSize()
   {
     AppMethodBeat.i(129144);
-    int i = this.KTK.size();
+    int i = this.MKJ.size();
     AppMethodBeat.o(129144);
     return i;
   }
@@ -60,7 +60,7 @@ public final class aj<T>
   public final T removeAt(int paramInt)
   {
     AppMethodBeat.i(129147);
-    Object localObject = this.KTK.remove(r.B(this, paramInt));
+    Object localObject = this.MKJ.remove(r.D(this, paramInt));
     AppMethodBeat.o(129147);
     return localObject;
   }
@@ -68,7 +68,7 @@ public final class aj<T>
   public final T set(int paramInt, T paramT)
   {
     AppMethodBeat.i(129148);
-    paramT = this.KTK.set(r.B(this, paramInt), paramT);
+    paramT = this.MKJ.set(r.D(this, paramInt), paramT);
     AppMethodBeat.o(129148);
     return paramT;
   }

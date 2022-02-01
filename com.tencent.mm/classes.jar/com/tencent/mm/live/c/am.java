@@ -11,131 +11,138 @@ import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
 import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.ao;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "isLiving", "", "minimizeBtn", "Landroid/widget/ImageView;", "minimizeBtnClickArea", "Landroid/widget/RelativeLayout;", "statusChange", "", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "isLiving", "", "minimizeBtn", "Landroid/widget/ImageView;", "minimizeBtnClickArea", "Landroid/widget/RelativeLayout;", "statusChange", "", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class am
   extends a
 {
   Context context;
-  boolean gCP;
-  private final ImageView gCQ;
-  private final RelativeLayout gCR;
-  final b gzb;
+  final b gSM;
+  private final ImageView gWA;
+  private final RelativeLayout gWB;
+  boolean gWz;
   
   public am(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(190257);
-    this.gzb = paramb;
+    AppMethodBeat.i(212547);
+    this.gSM = paramb;
     this.context = paramViewGroup.getContext();
     paramb = paramViewGroup.findViewById(2131307715);
-    k.g(paramb, "root.findViewById(R.id.live_minimiza_icon_btn)");
-    this.gCQ = ((ImageView)paramb);
+    p.g(paramb, "root.findViewById(R.id.live_minimiza_icon_btn)");
+    this.gWA = ((ImageView)paramb);
     paramb = paramViewGroup.findViewById(2131307716);
-    k.g(paramb, "root.findViewById(R.id.l…miza_icon_btn_click_area)");
-    this.gCR = ((RelativeLayout)paramb);
-    nj(4);
-    paramb = this.gCQ;
+    p.g(paramb, "root.findViewById(R.id.l…miza_icon_btn_click_area)");
+    this.gWB = ((RelativeLayout)paramb);
+    nI(4);
+    paramb = this.gWA;
     Context localContext = paramViewGroup.getContext();
-    k.g(localContext, "root.context");
-    paramb.setImageDrawable(com.tencent.mm.ui.am.e(localContext.getResources().getDrawable(2131691528), -1));
-    this.gCR.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    p.g(localContext, "root.context");
+    paramb.setImageDrawable(ao.e(localContext.getResources().getDrawable(2131691528), -1));
+    this.gWB.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(190254);
-        if (!com.tencent.mm.compatible.d.b.cc(ai.getContext()))
+        AppMethodBeat.i(212544);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveMinimizePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        if (!com.tencent.mm.compatible.d.b.ca(aj.getContext()))
         {
-          ac.e("MicroMsg.LiveCoreMini", "showVideoTalking, permission denied");
-          b.b.a(this.gCS.gzb, b.c.gya);
-          RequestFloatWindowPermissionDialog.a(this.gCS.context, this.gCS.context.getString(2131766708), (RequestFloatWindowPermissionDialog.a)new RequestFloatWindowPermissionDialog.a()
+          ad.e("MicroMsg.LiveCoreMini", "showVideoTalking, permission denied");
+          b.b.a(this.gWC.gSM, b.c.gRL);
+          RequestFloatWindowPermissionDialog.a(this.gWC.context, this.gWC.context.getString(2131766708), (RequestFloatWindowPermissionDialog.a)new RequestFloatWindowPermissionDialog.a()
           {
             public final void a(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(190251);
-              k.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
+              AppMethodBeat.i(212541);
+              p.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              if (this.gCT.gCS.gCP)
+              if (this.gWD.gWC.gWz)
               {
-                if (this.gCT.gCS.gzb.getLiveRole() != 1) {
+                if (this.gWD.gWC.gSM.getLiveRole() != 1) {
                   break label101;
                 }
-                paramAnonymous2RequestFloatWindowPermissionDialog = com.tencent.mm.live.core.core.a.b.gnC;
-                paramAnonymous2RequestFloatWindowPermissionDialog = this.gCT.gzm.getContext();
-                k.g(paramAnonymous2RequestFloatWindowPermissionDialog, "root.context");
+                paramAnonymous2RequestFloatWindowPermissionDialog = com.tencent.mm.live.core.core.a.b.gHl;
+                paramAnonymous2RequestFloatWindowPermissionDialog = this.gWD.gSX.getContext();
+                p.g(paramAnonymous2RequestFloatWindowPermissionDialog, "root.context");
               }
-              for (com.tencent.mm.live.core.core.a.b.a.ct(paramAnonymous2RequestFloatWindowPermissionDialog).goL.gnZ = true;; com.tencent.mm.live.core.core.c.b.a.cu(paramAnonymous2RequestFloatWindowPermissionDialog).goL.gnZ = true)
+              for (com.tencent.mm.live.core.core.a.b.a.cq(paramAnonymous2RequestFloatWindowPermissionDialog).gIt.gHI = true;; com.tencent.mm.live.core.core.c.b.a.cr(paramAnonymous2RequestFloatWindowPermissionDialog).gIt.gHI = true)
               {
-                b.b.a(this.gCT.gCS.gzb, b.c.gxY);
-                AppMethodBeat.o(190251);
+                b.b.a(this.gWD.gWC.gSM, b.c.gRJ);
+                AppMethodBeat.o(212541);
                 return;
                 label101:
-                paramAnonymous2RequestFloatWindowPermissionDialog = com.tencent.mm.live.core.core.c.b.gqt;
-                paramAnonymous2RequestFloatWindowPermissionDialog = this.gCT.gzm.getContext();
-                k.g(paramAnonymous2RequestFloatWindowPermissionDialog, "root.context");
+                paramAnonymous2RequestFloatWindowPermissionDialog = com.tencent.mm.live.core.core.c.b.gKd;
+                paramAnonymous2RequestFloatWindowPermissionDialog = this.gWD.gSX.getContext();
+                p.g(paramAnonymous2RequestFloatWindowPermissionDialog, "root.context");
               }
             }
             
             public final void b(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(190252);
-              k.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
+              AppMethodBeat.i(212542);
+              p.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
               paramAnonymous2RequestFloatWindowPermissionDialog.finish();
-              b.b.a(this.gCT.gCS.gzb, b.c.gyb);
-              AppMethodBeat.o(190252);
+              b.b.a(this.gWD.gWC.gSM, b.c.gRM);
+              AppMethodBeat.o(212542);
             }
             
             public final void c(RequestFloatWindowPermissionDialog paramAnonymous2RequestFloatWindowPermissionDialog)
             {
-              AppMethodBeat.i(190253);
-              k.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
-              b.b.a(this.gCT.gCS.gzb, b.c.gyc);
-              AppMethodBeat.o(190253);
+              AppMethodBeat.i(212543);
+              p.h(paramAnonymous2RequestFloatWindowPermissionDialog, "dialog");
+              b.b.a(this.gWD.gWC.gSM, b.c.gRN);
+              AppMethodBeat.o(212543);
             }
-          }, false, com.tencent.mm.bq.a.Zb());
-          AppMethodBeat.o(190254);
-          return;
+          }, false, com.tencent.mm.br.a.abB());
         }
-        b.b.a(this.gCS.gzb, b.c.gxY);
-        AppMethodBeat.o(190254);
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveMinimizePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(212544);
+          return;
+          b.b.a(this.gWC.gSM, b.c.gRJ);
+        }
       }
     });
-    AppMethodBeat.o(190257);
+    AppMethodBeat.o(212547);
   }
   
   public final void a(b.c paramc, Bundle paramBundle)
   {
-    AppMethodBeat.i(190256);
-    k.h(paramc, "status");
+    AppMethodBeat.i(212546);
+    p.h(paramc, "status");
     super.a(paramc, paramBundle);
-    switch (an.cfA[paramc.ordinal()])
+    switch (an.cpQ[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190256);
+      AppMethodBeat.o(212546);
       return;
-      nj(4);
-      this.gCP = false;
-      AppMethodBeat.o(190256);
+      nI(4);
+      this.gWz = false;
+      AppMethodBeat.o(212546);
       return;
-      nj(0);
-      this.gCP = true;
-      AppMethodBeat.o(190256);
+      nI(0);
+      this.gWz = true;
+      AppMethodBeat.o(212546);
       return;
-      if (this.gzb.getLiveRole() == 0)
+      if (this.gSM.getLiveRole() == 0)
       {
         if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
         {
-          nj(4);
-          AppMethodBeat.o(190256);
+          nI(4);
+          AppMethodBeat.o(212546);
           return;
         }
-        nj(0);
+        nI(0);
       }
     }
   }

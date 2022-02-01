@@ -12,17 +12,20 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.aw.i;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.modelvideo.m.5;
+import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.t.a;
 import com.tencent.mm.modelvideo.t.a.a;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,20 +35,20 @@ import java.util.Map;
 import java.util.Set;
 
 public final class m
-  extends b
+  extends com.tencent.mm.pluginsdk.ui.b.b
   implements t.a
 {
-  Map<String, Long> IHw;
-  Map<Long, b> IHx;
+  Map<String, Long> KyE;
+  Map<Long, b> KyF;
   ViewGroup mContainer;
   
   public m(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38821);
-    this.IHw = new HashMap();
-    this.IHx = new HashMap();
-    com.tencent.mm.modelvideo.o.aJy().a(this, Looper.getMainLooper());
+    this.KyE = new HashMap();
+    this.KyF = new HashMap();
+    o.aMJ().a(this, Looper.getMainLooper());
     this.mContainer = ((ViewGroup)this.view);
     AppMethodBeat.o(38821);
   }
@@ -53,10 +56,10 @@ public final class m
   private void updateStatus()
   {
     AppMethodBeat.i(38823);
-    ac.i("MicroMsg.MassSightBanner", "call update status");
+    ad.i("MicroMsg.MassSightBanner", "call update status");
     a locala = new a((byte)0);
-    locala.IHy = new WeakReference(this);
-    az.agU().az(locala);
+    locala.KyG = new WeakReference(this);
+    ba.ajF().ay(locala);
     AppMethodBeat.o(38823);
   }
   
@@ -64,33 +67,33 @@ public final class m
   {
     AppMethodBeat.i(38824);
     parama = parama.fileName;
-    Long localLong = (Long)this.IHw.get(parama);
+    Long localLong = (Long)this.KyE.get(parama);
     if (localLong == null)
     {
-      ac.d("MicroMsg.MassSightBanner", "massSendId is null, fileName %s", new Object[] { parama });
-      if (bs.bG(parama, "").startsWith("DELETE_")) {
+      ad.d("MicroMsg.MassSightBanner", "massSendId is null, fileName %s", new Object[] { parama });
+      if (bt.bI(parama, "").startsWith("DELETE_")) {
         updateStatus();
       }
       AppMethodBeat.o(38824);
       return;
     }
-    b localb = (b)this.IHx.get(localLong);
+    b localb = (b)this.KyF.get(localLong);
     if (localb == null)
     {
-      ac.d("MicroMsg.MassSightBanner", "find massSendId %d, but holder is null", new Object[] { localLong });
+      ad.d("MicroMsg.MassSightBanner", "find massSendId %d, but holder is null", new Object[] { localLong });
       AppMethodBeat.o(38824);
       return;
     }
-    s locals = u.Ej(parama);
+    s locals = u.Hy(parama);
     if (locals == null)
     {
-      ac.w("MicroMsg.MassSightBanner", "on nofify changed, filename %s, massSendId %d, but videoinfo is null", new Object[] { parama, localLong });
+      ad.w("MicroMsg.MassSightBanner", "on nofify changed, filename %s, massSendId %d, but videoinfo is null", new Object[] { parama, localLong });
       AppMethodBeat.o(38824);
       return;
     }
     if (locals.status == 199)
     {
-      ac.i("MicroMsg.MassSightBanner", "fileName %s, massSendId %d, done", new Object[] { parama, localLong });
+      ad.i("MicroMsg.MassSightBanner", "fileName %s, massSendId %d, done", new Object[] { parama, localLong });
       updateStatus();
       AppMethodBeat.o(38824);
       return;
@@ -102,7 +105,7 @@ public final class m
   public final void destroy()
   {
     AppMethodBeat.i(38822);
-    com.tencent.mm.modelvideo.o.aJy().a(this);
+    o.aMJ().a(this);
     AppMethodBeat.o(38822);
   }
   
@@ -114,53 +117,53 @@ public final class m
   static final class a
     implements Runnable
   {
-    WeakReference<m> IHy;
+    WeakReference<m> KyG;
     
     public final void run()
     {
       AppMethodBeat.i(38815);
-      List localList1 = com.tencent.mm.modelvideo.o.aJy().aJP();
-      List localList2 = com.tencent.mm.modelvideo.o.aJy().aJQ();
-      Object localObject = (m)this.IHy.get();
+      List localList1 = o.aMJ().aNa();
+      List localList2 = o.aMJ().aNb();
+      Object localObject = (m)this.KyG.get();
       if (localObject == null)
       {
-        ac.w("MicroMsg.MassSightBanner", "try to load date, but banner ref is null");
+        ad.w("MicroMsg.MassSightBanner", "try to load date, but banner ref is null");
         AppMethodBeat.o(38815);
         return;
       }
-      ac.i("MicroMsg.MassSightBanner", "ViewCount %d, unfinish size %d, fail size %d", new Object[] { Integer.valueOf(((m)localObject).mContainer.getChildCount()), Integer.valueOf(localList1.size()), Integer.valueOf(localList2.size()) });
+      ad.i("MicroMsg.MassSightBanner", "ViewCount %d, unfinish size %d, fail size %d", new Object[] { Integer.valueOf(((m)localObject).mContainer.getChildCount()), Integer.valueOf(localList1.size()), Integer.valueOf(localList2.size()) });
       if ((((m)localObject).mContainer.getChildCount() == 0) && (localList1.isEmpty()) && (localList2.isEmpty()))
       {
         AppMethodBeat.o(38815);
         return;
       }
       localObject = new m.c((byte)0);
-      ((m.c)localObject).IHy = new WeakReference(this.IHy.get());
-      ((m.c)localObject).IHH = localList1;
-      ((m.c)localObject).IHI = localList2;
-      ap.f((Runnable)localObject);
+      ((m.c)localObject).KyG = new WeakReference(this.KyG.get());
+      ((m.c)localObject).KyP = localList1;
+      ((m.c)localObject).KyQ = localList2;
+      aq.f((Runnable)localObject);
       AppMethodBeat.o(38815);
     }
   }
   
   static final class b
   {
-    boolean IHA = false;
-    View IHB = null;
-    com.tencent.mm.plugin.sight.decode.a.a IHC = null;
-    ImageView IHD = null;
-    TextView IHE = null;
-    ImageButton IHF = null;
-    long IHz = 0L;
-    ProgressBar iXo = null;
+    long KyH = 0L;
+    boolean KyI = false;
+    View KyJ = null;
+    com.tencent.mm.plugin.sight.decode.a.a KyK = null;
+    ImageView KyL = null;
+    TextView KyM = null;
+    ImageButton KyN = null;
+    ProgressBar jqx = null;
   }
   
   static final class c
     implements Runnable
   {
-    List<s> IHH;
-    List<s> IHI;
-    WeakReference<m> IHy;
+    WeakReference<m> KyG;
+    List<s> KyP;
+    List<s> KyQ;
     
     private static int a(String paramString, m paramm, List<s> paramList, int paramInt1, int paramInt2, int paramInt3)
     {
@@ -174,17 +177,17 @@ public final class m
         if (localIterator.hasNext())
         {
           locals = (s)localIterator.next();
-          paramm.IHw.put(locals.getFileName(), Long.valueOf(locals.hYX));
-          if (paramm.IHx.containsKey(Long.valueOf(locals.hYX)))
+          paramm.KyE.put(locals.getFileName(), Long.valueOf(locals.ist));
+          if (paramm.KyF.containsKey(Long.valueOf(locals.ist)))
           {
-            ac.d("MicroMsg.MassSightBanner", "%s: has contains massSendId %d, file %s", new Object[] { paramString, Long.valueOf(locals.hYX), locals.getFileName() });
+            ad.d("MicroMsg.MassSightBanner", "%s: has contains massSendId %d, file %s", new Object[] { paramString, Long.valueOf(locals.ist), locals.getFileName() });
           }
           else if (paramInt1 < paramInt2)
           {
             paramList = paramm.mContainer;
             int i = paramInt1 + 1;
             paramList = paramList.getChildAt(paramInt1);
-            ac.d("MicroMsg.MassSightBanner", "%s: refresh view(%d/%d, hashCode %d) with massSendId %d", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramList.hashCode()), Long.valueOf(locals.hYX) });
+            ad.d("MicroMsg.MassSightBanner", "%s: refresh view(%d/%d, hashCode %d) with massSendId %d", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(paramInt2), Integer.valueOf(paramList.hashCode()), Long.valueOf(locals.ist) });
             paramInt1 = i;
             localb = (m.b)paramList.getTag();
             if (localb != null) {
@@ -199,46 +202,46 @@ public final class m
       for (;;)
       {
         String str1;
-        if (localb.IHz != locals.hYX)
+        if (localb.KyH != locals.ist)
         {
-          ac.d("MicroMsg.MassSightBanner", "ashutest::mass send id not match! %d -> %d, totalCount %d", new Object[] { Long.valueOf(localb.IHz), Long.valueOf(locals.hYX), Integer.valueOf(paramInt3) });
-          localb.IHz = locals.hYX;
-          localb.IHB = paramList;
-          localb.IHC = ((com.tencent.mm.plugin.sight.decode.a.a)paramList.findViewById(2131300966));
-          localb.IHD = ((ImageView)paramList.findViewById(2131305203));
-          localb.iXo = ((ProgressBar)paramList.findViewById(2131303515));
-          localb.IHF = ((ImageButton)paramList.findViewById(2131297690));
-          localb.IHE = ((TextView)paramList.findViewById(2131301013));
-          localb.IHC.setDrawableWidth(paramList.getResources().getDimensionPixelSize(2131165508));
-          localb.IHB.setTag(localb);
-          localb.IHF.setTag(Long.valueOf(localb.IHz));
-          localb.IHB.setOnClickListener(new m.b.1(localb));
-          localb.IHF.setOnClickListener(new m.b.2(localb));
-          com.tencent.mm.modelvideo.o.aJy();
-          str1 = t.DV(locals.getFileName());
-          com.tencent.mm.modelvideo.o.aJy();
-          String str2 = t.DW(locals.getFileName());
-          paramList = com.tencent.mm.av.o.aFx().a(str2, com.tencent.mm.cc.a.getDensity(paramList.getContext()), paramList.getContext());
-          localb.IHC.setThumbBmp(paramList);
+          ad.d("MicroMsg.MassSightBanner", "ashutest::mass send id not match! %d -> %d, totalCount %d", new Object[] { Long.valueOf(localb.KyH), Long.valueOf(locals.ist), Integer.valueOf(paramInt3) });
+          localb.KyH = locals.ist;
+          localb.KyJ = paramList;
+          localb.KyK = ((com.tencent.mm.plugin.sight.decode.a.a)paramList.findViewById(2131300966));
+          localb.KyL = ((ImageView)paramList.findViewById(2131305203));
+          localb.jqx = ((ProgressBar)paramList.findViewById(2131303515));
+          localb.KyN = ((ImageButton)paramList.findViewById(2131297690));
+          localb.KyM = ((TextView)paramList.findViewById(2131301013));
+          localb.KyK.setDrawableWidth(paramList.getResources().getDimensionPixelSize(2131165508));
+          localb.KyJ.setTag(localb);
+          localb.KyN.setTag(Long.valueOf(localb.KyH));
+          localb.KyJ.setOnClickListener(new m.b.1(localb));
+          localb.KyN.setOnClickListener(new m.b.2(localb));
+          o.aMJ();
+          str1 = t.Hh(locals.getFileName());
+          o.aMJ();
+          String str2 = t.Hi(locals.getFileName());
+          paramList = q.aIF().a(str2, com.tencent.mm.cc.a.getDensity(paramList.getContext()), paramList.getContext());
+          localb.KyK.setThumbBmp(paramList);
           if (paramInt3 <= 3) {
             break label669;
           }
-          localb.IHC.clear();
-          localb.IHD.setVisibility(0);
+          localb.KyK.clear();
+          localb.KyL.setVisibility(0);
         }
         for (;;)
         {
           a(localb, locals);
-          paramm.IHx.put(Long.valueOf(locals.hYX), localb);
+          paramm.KyF.put(Long.valueOf(locals.ist), localb);
           break;
           paramList = LayoutInflater.from(paramm.mContainer.getContext()).inflate(2131494743, paramm.mContainer, false);
           paramm.mContainer.addView(paramList);
-          ac.d("MicroMsg.MassSightBanner", "%s: new view(%d/%d, hashCode %d) with massSendId %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramList.hashCode()), Long.valueOf(locals.hYX) });
+          ad.d("MicroMsg.MassSightBanner", "%s: new view(%d/%d, hashCode %d) with massSendId %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramList.hashCode()), Long.valueOf(locals.ist) });
           break label192;
-          ac.d("MicroMsg.MassSightBanner", "ashutest::mass send id match! %d, totalCount %d", new Object[] { Long.valueOf(localb.IHz), Integer.valueOf(paramInt3) });
+          ad.d("MicroMsg.MassSightBanner", "ashutest::mass send id match! %d, totalCount %d", new Object[] { Long.valueOf(localb.KyH), Integer.valueOf(paramInt3) });
           break label436;
-          localb.IHC.e(str1, false, 0);
-          localb.IHD.setVisibility(8);
+          localb.KyK.e(str1, false, 0);
+          localb.KyL.setVisibility(8);
         }
         AppMethodBeat.o(38818);
         return paramInt1;
@@ -249,26 +252,26 @@ public final class m
     {
       boolean bool = true;
       AppMethodBeat.i(38819);
-      ac.v("MicroMsg.MassSightBanner", "info status %d", new Object[] { Integer.valueOf(params.status) });
+      ad.v("MicroMsg.MassSightBanner", "info status %d", new Object[] { Integer.valueOf(params.status) });
       if ((params.status == 198) || (params.status == 197) || (params.status == 196))
       {
-        paramb.iXo.setVisibility(4);
-        paramb.IHE.setVisibility(0);
-        paramb.IHF.setEnabled(true);
-        paramb.IHA = true;
+        paramb.jqx.setVisibility(4);
+        paramb.KyM.setVisibility(0);
+        paramb.KyN.setEnabled(true);
+        paramb.KyI = true;
         AppMethodBeat.o(38819);
         return;
       }
-      float f = params.hZn / params.hux;
-      paramb.iXo.setVisibility(0);
-      paramb.IHE.setVisibility(4);
-      paramb.iXo.setProgress((int)(paramb.iXo.getMax() * f));
-      params = paramb.IHF;
+      float f = params.isJ / params.hMP;
+      paramb.jqx.setVisibility(0);
+      paramb.KyM.setVisibility(4);
+      paramb.jqx.setProgress((int)(paramb.jqx.getMax() * f));
+      params = paramb.KyN;
       if (Float.compare(0.99F, f) > 0) {}
       for (;;)
       {
         params.setEnabled(bool);
-        paramb.IHA = false;
+        paramb.KyI = false;
         AppMethodBeat.o(38819);
         return;
         bool = false;
@@ -278,27 +281,27 @@ public final class m
     public final void run()
     {
       AppMethodBeat.i(38820);
-      m localm = (m)this.IHy.get();
+      m localm = (m)this.KyG.get();
       if (localm == null)
       {
-        ac.w("MicroMsg.MassSightBanner", "try to refresh, but banner ref is null");
+        ad.w("MicroMsg.MassSightBanner", "try to refresh, but banner ref is null");
         AppMethodBeat.o(38820);
         return;
       }
       int k = localm.mContainer.getChildCount();
-      localm.IHx.clear();
+      localm.KyF.clear();
       HashSet localHashSet = new HashSet();
-      Iterator localIterator = this.IHH.iterator();
+      Iterator localIterator = this.KyP.iterator();
       while (localIterator.hasNext()) {
-        localHashSet.add(Long.valueOf(((s)localIterator.next()).hYX));
+        localHashSet.add(Long.valueOf(((s)localIterator.next()).ist));
       }
-      localIterator = this.IHI.iterator();
+      localIterator = this.KyQ.iterator();
       while (localIterator.hasNext()) {
-        localHashSet.add(Long.valueOf(((s)localIterator.next()).hYX));
+        localHashSet.add(Long.valueOf(((s)localIterator.next()).ist));
       }
       int i = localHashSet.size();
-      int j = a("update unfinish", localm, this.IHH, 0, k, i);
-      j = a("update fail", localm, this.IHI, j, k, i);
+      int j = a("update unfinish", localm, this.KyP, 0, k, i);
+      j = a("update fail", localm, this.KyQ, j, k, i);
       i = j;
       while (i < k)
       {

@@ -10,54 +10,54 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.u;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class TipSayingWidget
   extends LinearLayout
 {
   private Context context;
-  private String fnC;
-  private TextView fxS;
-  private ImageView ubi;
-  private Chronometer ubj;
-  private int ubk;
+  private String fFK;
+  private TextView fRf;
+  private ImageView vdR;
+  private Chronometer vdS;
+  private int vdT;
   
   public TipSayingWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55954);
-    this.ubk = 0;
+    this.vdT = 0;
     this.context = paramContext;
     paramContext = View.inflate(this.context, 2131495759, this);
-    this.ubi = ((ImageView)paramContext.findViewById(2131304297));
-    this.fxS = ((TextView)paramContext.findViewById(2131304299));
-    this.ubj = ((Chronometer)findViewById(2131298329));
+    this.vdR = ((ImageView)paramContext.findViewById(2131304297));
+    this.fRf = ((TextView)paramContext.findViewById(2131304299));
+    this.vdS = ((Chronometer)findViewById(2131298329));
     AppMethodBeat.o(55954);
   }
   
   public void setCurSaying(String paramString)
   {
     AppMethodBeat.i(55955);
-    if (bs.isNullOrNil(paramString))
+    if (bt.isNullOrNil(paramString))
     {
       setVisibility(8);
       AppMethodBeat.o(55955);
       return;
     }
     setVisibility(0);
-    a.b.w(this.ubi, paramString);
-    if (bs.isNullOrNil(this.fnC)) {
-      this.fnC = u.axw();
+    a.b.w(this.vdR, paramString);
+    if (bt.isNullOrNil(this.fFK)) {
+      this.fFK = u.aAm();
     }
-    if (this.fnC.equals(paramString))
+    if (this.fFK.equals(paramString))
     {
-      this.fxS.setText(this.context.getString(2131764532, new Object[] { paramString }));
-      this.ubj.setVisibility(0);
+      this.fRf.setText(this.context.getString(2131764532, new Object[] { paramString }));
+      this.vdS.setVisibility(0);
       AppMethodBeat.o(55955);
       return;
     }
-    this.fxS.setText(this.context.getString(2131764532, new Object[] { paramString }));
-    this.ubj.setVisibility(8);
+    this.fRf.setText(this.context.getString(2131764532, new Object[] { paramString }));
+    this.vdS.setVisibility(8);
     AppMethodBeat.o(55955);
   }
 }

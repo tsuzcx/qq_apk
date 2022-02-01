@@ -12,21 +12,23 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.story.f.b.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.MMActivity;
 import d.g.a.m;
-import d.g.b.k;
-import d.y;
+import d.g.b.p;
+import d.g.b.q;
+import d.l;
+import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "commentAdapter", "Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter;", "commentRecycler", "Landroid/support/v7/widget/RecyclerView;", "getLayoutId", "", "onCommentsLoaded", "", "comments", "", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "CommentUnreadAdapter", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "commentAdapter", "Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter;", "commentRecycler", "Landroid/support/v7/widget/RecyclerView;", "getLayoutId", "", "onCommentsLoaded", "", "comments", "", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "CommentUnreadAdapter", "plugin-story_release"})
 public final class StoryCommentsUI
   extends MMActivity
 {
-  private RecyclerView zDj;
-  private a zDk;
+  private RecyclerView AUI;
+  private a AUJ;
   
   public final int getLayoutId()
   {
@@ -38,37 +40,37 @@ public final class StoryCommentsUI
     AppMethodBeat.i(119638);
     super.onCreate(paramBundle);
     paramBundle = findViewById(2131305325);
-    k.g(paramBundle, "findViewById(R.id.story_comment_recycler)");
-    this.zDj = ((RecyclerView)paramBundle);
-    paramBundle = this.zDj;
+    p.g(paramBundle, "findViewById(R.id.story_comment_recycler)");
+    this.AUI = ((RecyclerView)paramBundle);
+    paramBundle = this.AUI;
     if (paramBundle == null) {
-      k.aVY("commentRecycler");
+      p.bcb("commentRecycler");
     }
     paramBundle.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    this.zDk = new a();
-    paramBundle = this.zDj;
+    this.AUJ = new a();
+    paramBundle = this.AUI;
     if (paramBundle == null) {
-      k.aVY("commentRecycler");
+      p.bcb("commentRecycler");
     }
-    Object localObject = this.zDk;
+    Object localObject = this.AUJ;
     if (localObject == null) {
-      k.aVY("commentAdapter");
+      p.bcb("commentAdapter");
     }
     paramBundle.setAdapter((RecyclerView.a)localObject);
-    paramBundle = this.zDk;
+    paramBundle = this.AUJ;
     if (paramBundle == null) {
-      k.aVY("commentAdapter");
+      p.bcb("commentAdapter");
     }
-    paramBundle.rFB = ((m)b.zDs);
+    paramBundle.sAA = ((m)b.AUR);
     localObject = new ArrayList();
-    paramBundle = this.zDk;
+    paramBundle = this.AUJ;
     if (paramBundle == null) {
-      k.aVY("commentAdapter");
+      p.bcb("commentAdapter");
     }
     localObject = (List)localObject;
-    k.h(localObject, "storyComments");
-    paramBundle.zDl.clear();
-    paramBundle.zDl.addAll((Collection)localObject);
+    p.h(localObject, "storyComments");
+    paramBundle.AUK.clear();
+    paramBundle.AUK.addAll((Collection)localObject);
     paramBundle.notifyDataSetChanged();
     AppMethodBeat.o(119638);
   }
@@ -79,73 +81,74 @@ public final class StoryCommentsUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter$CommentUnreadViewHolder;", "Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI;", "(Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI;)V", "comments", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/collections/ArrayList;", "onItemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "item", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "getItemCount", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "update", "storyComments", "", "CommentUnreadViewHolder", "plugin-story_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter$CommentUnreadViewHolder;", "Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI;", "(Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI;)V", "comments", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "Lkotlin/collections/ArrayList;", "onItemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "item", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "getItemCount", "onBindViewHolder", "holder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "update", "storyComments", "", "CommentUnreadViewHolder", "plugin-story_release"})
   public final class a
     extends RecyclerView.a<a>
   {
-    m<? super Integer, ? super a, y> rFB;
-    final ArrayList<a> zDl;
+    final ArrayList<com.tencent.mm.plugin.story.f.b.a> AUK;
+    m<? super Integer, ? super com.tencent.mm.plugin.story.f.b.a, z> sAA;
     
     public a()
     {
       AppMethodBeat.i(119635);
-      this.zDl = new ArrayList();
+      this.AUK = new ArrayList();
       AppMethodBeat.o(119635);
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(119632);
-      int i = this.zDl.size();
+      int i = this.AUK.size();
       AppMethodBeat.o(119632);
       return i;
     }
     
-    @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter$CommentUnreadViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter;Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "getAvatar", "()Landroid/widget/ImageView;", "content", "Landroid/widget/TextView;", "getContent", "()Landroid/widget/TextView;", "fromUser", "getFromUser", "quote", "getQuote", "storyPreview", "getStoryPreview", "onBind", "", "position", "", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "plugin-story_release"})
+    @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter$CommentUnreadViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter;Landroid/view/View;)V", "avatar", "Landroid/widget/ImageView;", "getAvatar", "()Landroid/widget/ImageView;", "content", "Landroid/widget/TextView;", "getContent", "()Landroid/widget/TextView;", "fromUser", "getFromUser", "quote", "getQuote", "storyPreview", "getStoryPreview", "onBind", "", "position", "", "comment", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "plugin-story_release"})
     public final class a
       extends RecyclerView.w
     {
-      final ImageView iKw;
-      final TextView uEM;
-      private final ImageView zDn;
-      final TextView zDo;
-      private final TextView zDp;
+      private final ImageView AUM;
+      final TextView AUN;
+      private final TextView AUO;
+      final ImageView jdF;
+      final TextView vHM;
       
       public a()
       {
         super();
         AppMethodBeat.i(119631);
         this$1 = localObject.findViewById(2131305309);
-        k.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…tory_comment_item_avatar)");
-        this.iKw = ((ImageView)StoryCommentsUI.a.this);
+        p.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…tory_comment_item_avatar)");
+        this.jdF = ((ImageView)StoryCommentsUI.a.this);
         this$1 = localObject.findViewById(2131305316);
-        k.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…ory_comment_item_preview)");
-        this.zDn = ((ImageView)StoryCommentsUI.a.this);
+        p.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…ory_comment_item_preview)");
+        this.AUM = ((ImageView)StoryCommentsUI.a.this);
         this$1 = localObject.findViewById(2131305319);
-        k.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…ry_comment_item_username)");
-        this.zDo = ((TextView)StoryCommentsUI.a.this);
+        p.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…ry_comment_item_username)");
+        this.AUN = ((TextView)StoryCommentsUI.a.this);
         this$1 = localObject.findViewById(2131305312);
-        k.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…ory_comment_item_content)");
-        this.uEM = ((TextView)StoryCommentsUI.a.this);
+        p.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…ory_comment_item_content)");
+        this.vHM = ((TextView)StoryCommentsUI.a.this);
         this$1 = localObject.findViewById(2131305317);
-        k.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…mment_item_quote_content)");
-        this.zDp = ((TextView)StoryCommentsUI.a.this);
+        p.g(StoryCommentsUI.a.this, "itemView.findViewById(R.…mment_item_quote_content)");
+        this.AUO = ((TextView)StoryCommentsUI.a.this);
         localObject.setOnClickListener((View.OnClickListener)new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(119630);
-            int i = this.zDr.lv();
-            paramAnonymousView = StoryCommentsUI.a.a(this.zDr.zDq).get(i);
-            k.g(paramAnonymousView, "comments[position]");
-            paramAnonymousView = (a)paramAnonymousView;
-            m localm = this.zDr.zDq.rFB;
-            if (localm != null)
-            {
-              localm.n(Integer.valueOf(i), paramAnonymousView);
-              AppMethodBeat.o(119630);
-              return;
+            Object localObject = new b();
+            ((b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter$CommentUnreadViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+            int i = this.AUQ.lN();
+            paramAnonymousView = StoryCommentsUI.a.a(this.AUQ.AUP).get(i);
+            p.g(paramAnonymousView, "comments[position]");
+            paramAnonymousView = (com.tencent.mm.plugin.story.f.b.a)paramAnonymousView;
+            localObject = this.AUQ.AUP.sAA;
+            if (localObject != null) {
+              ((m)localObject).p(Integer.valueOf(i), paramAnonymousView);
             }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/story/ui/StoryCommentsUI$CommentUnreadAdapter$CommentUnreadViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(119630);
           }
         });
@@ -154,17 +157,17 @@ public final class StoryCommentsUI
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "position", "", "item", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "position", "", "item", "Lcom/tencent/mm/plugin/story/model/comment/StoryCommentItem;", "invoke"})
   static final class b
-    extends d.g.b.l
-    implements m<Integer, a, y>
+    extends q
+    implements m<Integer, com.tencent.mm.plugin.story.f.b.a, z>
   {
-    public static final b zDs;
+    public static final b AUR;
     
     static
     {
       AppMethodBeat.i(119637);
-      zDs = new b();
+      AUR = new b();
       AppMethodBeat.o(119637);
     }
     

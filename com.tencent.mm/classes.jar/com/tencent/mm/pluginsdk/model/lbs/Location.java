@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class Location
   implements Parcelable
 {
   public static final Parcelable.Creator<Location> CREATOR;
   public int accuracy;
-  public int doD;
-  public String doF;
-  public float hEE;
-  public float hEF;
+  public int dAr;
+  public String dAt;
+  public float hXj;
+  public float hXk;
   public String mac;
   
   static
@@ -28,12 +28,12 @@ public class Location
   
   public Location(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    this.hEE = paramFloat1;
-    this.hEF = paramFloat2;
+    this.hXj = paramFloat1;
+    this.hXk = paramFloat2;
     this.accuracy = paramInt1;
-    this.doD = paramInt2;
+    this.dAr = paramInt2;
     this.mac = paramString1;
-    this.doF = paramString2;
+    this.dAt = paramString2;
   }
   
   public int describeContents()
@@ -41,12 +41,12 @@ public class Location
     return 0;
   }
   
-  public final boolean eLp()
+  public final boolean fak()
   {
     AppMethodBeat.i(151845);
-    if ((this.hEE == -85.0F) || (this.hEF == -1000.0F))
+    if ((this.hXj == -85.0F) || (this.hXk == -1000.0F))
     {
-      ac.d("MicroMsg.Radar.Location", "mac and cellId is null");
+      ad.d("MicroMsg.Radar.Location", "mac and cellId is null");
       AppMethodBeat.o(151845);
       return true;
     }
@@ -57,18 +57,18 @@ public class Location
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(151846);
-    paramParcel.writeFloat(this.hEE);
-    paramParcel.writeFloat(this.hEF);
+    paramParcel.writeFloat(this.hXj);
+    paramParcel.writeFloat(this.hXk);
     paramParcel.writeInt(this.accuracy);
-    paramParcel.writeInt(this.doD);
+    paramParcel.writeInt(this.dAr);
     paramParcel.writeString(this.mac);
-    paramParcel.writeString(this.doF);
+    paramParcel.writeString(this.dAt);
     AppMethodBeat.o(151846);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.lbs.Location
  * JD-Core Version:    0.7.0.1
  */

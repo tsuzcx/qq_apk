@@ -10,6 +10,12 @@ public class ImageDecodeConfig
   @Keep
   public Bitmap.Config mConfig = Bitmap.Config.ARGB_8888;
   @Keep
+  public int mPreferredHeight = 0;
+  @Keep
+  public double mPreferredScale = 0.0D;
+  @Keep
+  public int mPreferredWidth = 0;
+  @Keep
   public boolean mPremultiplyAlpha = true;
   @Keep
   public ReferrerPolicy mReferrerPolicy = ReferrerPolicy.NOT_SET;
@@ -26,22 +32,25 @@ public class ImageDecodeConfig
   }
   
   @Keep
-  public static Object createConfig(int paramInt1, boolean paramBoolean, int paramInt2)
+  public static Object createConfig(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, double paramDouble)
   {
-    AppMethodBeat.i(191262);
+    AppMethodBeat.i(194931);
     ImageDecodeConfig localImageDecodeConfig = new ImageDecodeConfig();
     localImageDecodeConfig.mPremultiplyAlpha = paramBoolean;
     if (paramInt1 == 8)
     {
       localImageDecodeConfig.mConfig = Bitmap.Config.ALPHA_8;
       if (paramInt2 != 0) {
-        break label90;
+        break label118;
       }
       localImageDecodeConfig.mReferrerPolicy = ReferrerPolicy.NOT_SET;
     }
     for (;;)
     {
-      AppMethodBeat.o(191262);
+      localImageDecodeConfig.mPreferredWidth = paramInt3;
+      localImageDecodeConfig.mPreferredHeight = paramInt4;
+      localImageDecodeConfig.mPreferredScale = paramDouble;
+      AppMethodBeat.o(194931);
       return localImageDecodeConfig;
       if (paramInt1 == 4)
       {
@@ -55,7 +64,7 @@ public class ImageDecodeConfig
       }
       localImageDecodeConfig.mConfig = Bitmap.Config.ARGB_8888;
       break;
-      label90:
+      label118:
       if (paramInt2 == 1) {
         localImageDecodeConfig.mReferrerPolicy = ReferrerPolicy.NO_REFERRER;
       } else if (paramInt2 == 2) {
@@ -90,18 +99,26 @@ public class ImageDecodeConfig
   @Keep
   public int getNativeReferrerPolicy()
   {
-    AppMethodBeat.i(191261);
-    switch (1.aQl[this.mReferrerPolicy.ordinal()])
+    AppMethodBeat.i(194930);
+    switch (1.baF[this.mReferrerPolicy.ordinal()])
     {
     default: 
-      AppMethodBeat.o(191261);
+      AppMethodBeat.o(194930);
       return 0;
     case 1: 
-      AppMethodBeat.o(191261);
+      AppMethodBeat.o(194930);
       return 1;
     }
-    AppMethodBeat.o(191261);
+    AppMethodBeat.o(194930);
     return 2;
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(194932);
+    String str = "ImageDecodeConfig{mConfig=" + this.mConfig + ", mPremultiplyAlpha=" + this.mPremultiplyAlpha + ", mReferrerPolicy=" + this.mReferrerPolicy + ", mPreferredWidth=" + this.mPreferredWidth + ", mPreferredHeight=" + this.mPreferredHeight + ", mPreferredScale=" + this.mPreferredScale + '}';
+    AppMethodBeat.o(194932);
+    return str;
   }
   
   @Keep
@@ -109,12 +126,12 @@ public class ImageDecodeConfig
   {
     static
     {
-      AppMethodBeat.i(191260);
+      AppMethodBeat.i(194929);
       NOT_SET = new ReferrerPolicy("NOT_SET", 0);
       NO_REFERRER = new ReferrerPolicy("NO_REFERRER", 1);
       ORIGIN = new ReferrerPolicy("ORIGIN", 2);
       $VALUES = new ReferrerPolicy[] { NOT_SET, NO_REFERRER, ORIGIN };
-      AppMethodBeat.o(191260);
+      AppMethodBeat.o(194929);
     }
     
     private ReferrerPolicy() {}
@@ -122,7 +139,7 @@ public class ImageDecodeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.ImageDecodeConfig
  * JD-Core Version:    0.7.0.1
  */

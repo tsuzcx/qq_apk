@@ -6,40 +6,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class p<T>
   implements a<T>
 {
-  private static final Object bAt;
-  private volatile Object bAu;
-  private volatile a<T> bAv;
+  private static final Object bKH;
+  private volatile Object bKI;
+  private volatile a<T> bKJ;
   
   static
   {
     AppMethodBeat.i(4095);
-    bAt = new Object();
+    bKH = new Object();
     AppMethodBeat.o(4095);
   }
   
   p(d<T> paramd, b paramb)
   {
     AppMethodBeat.i(4092);
-    this.bAu = bAt;
-    this.bAv = new q(paramd, paramb);
+    this.bKI = bKH;
+    this.bKJ = new q(paramd, paramb);
     AppMethodBeat.o(4092);
   }
   
   public final T get()
   {
     AppMethodBeat.i(4093);
-    Object localObject3 = this.bAu;
+    Object localObject3 = this.bKI;
     Object localObject1 = localObject3;
-    if (localObject3 == bAt) {}
+    if (localObject3 == bKH) {}
     try
     {
-      localObject3 = this.bAu;
+      localObject3 = this.bKI;
       localObject1 = localObject3;
-      if (localObject3 == bAt)
+      if (localObject3 == bKH)
       {
-        localObject1 = this.bAv.get();
-        this.bAu = localObject1;
-        this.bAv = null;
+        localObject1 = this.bKJ.get();
+        this.bKI = localObject1;
+        this.bKJ = null;
       }
       return localObject1;
     }
@@ -51,7 +51,7 @@ final class p<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.components.p
  * JD-Core Version:    0.7.0.1
  */

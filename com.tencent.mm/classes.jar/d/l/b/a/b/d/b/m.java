@@ -1,29 +1,30 @@
 package d.l.b.a.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.aa;
+import d.ac;
+import d.g.b.p;
 import d.l.b.a.b.j.e.d;
 import d.n.n;
 
 final class m
   implements l<k>
 {
-  public static final m Lse;
+  public static final m Njb;
   
   static
   {
     AppMethodBeat.i(58216);
-    Lse = new m();
+    Njb = new m();
     AppMethodBeat.o(58216);
   }
   
-  private k aWr(String paramString)
+  private k bcu(String paramString)
   {
     int k = 0;
     AppMethodBeat.i(58209);
-    d.g.b.k.h(paramString, "representation");
+    p.h(paramString, "representation");
     if (((CharSequence)paramString).length() > 0) {}
-    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
+    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
     {
       paramString = (Throwable)new AssertionError("empty string as JvmType");
       AppMethodBeat.o(58209);
@@ -73,7 +74,7 @@ final class m
           i = 1;
         }
       }
-      if ((aa.KTq) && (i == 0))
+      if ((ac.MKp) && (i == 0))
       {
         paramString = (Throwable)new AssertionError("Type that is not primitive nor array should be Object, but '" + paramString + "' was found");
         AppMethodBeat.o(58209);
@@ -87,22 +88,22 @@ final class m
     case 91: 
       label157:
       paramString = paramString.substring(1);
-      d.g.b.k.g(paramString, "(this as java.lang.String).substring(startIndex)");
-      paramString = (k)new k.a(aWr(paramString));
+      p.g(paramString, "(this as java.lang.String).substring(startIndex)");
+      paramString = (k)new k.a(bcu(paramString));
       AppMethodBeat.o(58209);
       return paramString;
     }
     paramString = paramString.substring(1, paramString.length() - 1);
-    d.g.b.k.g(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+    p.g(paramString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
     paramString = (k)new k.b(paramString);
     AppMethodBeat.o(58209);
     return paramString;
   }
   
-  private static k.b aWs(String paramString)
+  private static k.b bcv(String paramString)
   {
     AppMethodBeat.i(58211);
-    d.g.b.k.h(paramString, "internalName");
+    p.h(paramString, "internalName");
     paramString = new k.b(paramString);
     AppMethodBeat.o(58211);
     return paramString;
@@ -111,16 +112,16 @@ final class m
   public final String a(k paramk)
   {
     AppMethodBeat.i(58213);
-    d.g.b.k.h(paramk, "type");
+    p.h(paramk, "type");
     if ((paramk instanceof k.a))
     {
-      paramk = "[" + a(((k.a)paramk).Lsb);
+      paramk = "[" + a(((k.a)paramk).NiY);
       AppMethodBeat.o(58213);
       return paramk;
     }
     if ((paramk instanceof k.c))
     {
-      paramk = ((k.c)paramk).Lsd;
+      paramk = ((k.c)paramk).Nja;
       if (paramk != null)
       {
         paramk = paramk.getDesc();
@@ -136,7 +137,7 @@ final class m
     {
       if ((paramk instanceof k.b))
       {
-        paramk = "L" + ((k.b)paramk).Lsc + ";";
+        paramk = "L" + ((k.b)paramk).NiZ + ";";
         AppMethodBeat.o(58213);
         return paramk;
       }
@@ -150,7 +151,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.b.m
  * JD-Core Version:    0.7.0.1
  */

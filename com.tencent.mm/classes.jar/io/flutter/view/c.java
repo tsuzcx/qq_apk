@@ -4,11 +4,11 @@ import android.graphics.SurfaceTexture;
 
 public abstract interface c
 {
-  public abstract a fNv();
+  public abstract a geU();
   
   public static abstract interface a
   {
-    public abstract long fNy();
+    public abstract long geX();
     
     public abstract void release();
     
@@ -17,7 +17,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     io.flutter.view.c
  * JD-Core Version:    0.7.0.1
  */

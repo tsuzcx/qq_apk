@@ -1,31 +1,31 @@
 package com.tencent.mm.chatroom.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.protocal.protobuf.buy;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.protobuf.bzn;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.sdk.platformtools.bt;
 
 @Deprecated
 public final class a
-  extends j.b
+  extends k.b
 {
-  private buy fsW;
+  private bzn fLw;
   
   public a(String paramString, int paramInt)
   {
     super(20);
     AppMethodBeat.i(12503);
-    this.fsW = new buy();
-    this.fsW.DPA = new crm().aJV(bs.nullAsNil(paramString));
-    this.fsW.ndj = paramInt;
-    this.uHj = this.fsW;
+    this.fLw = new bzn();
+    this.fLw.FuO = new cwt().aPy(bt.nullAsNil(paramString));
+    this.fLw.nDG = paramInt;
+    this.vKm = this.fLw;
     AppMethodBeat.o(12503);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.f.a
  * JD-Core Version:    0.7.0.1
  */

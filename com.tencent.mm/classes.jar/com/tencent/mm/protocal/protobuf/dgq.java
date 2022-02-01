@@ -3,45 +3,38 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dgq
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int FPR;
-  public String FPS;
-  public int FvP;
+  public int Hvb;
+  public int Hvc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32466);
+    AppMethodBeat.i(125813);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.FPR);
-      paramVarArgs.aR(2, this.FvP);
-      if (this.FPS != null) {
-        paramVarArgs.d(3, this.FPS);
-      }
-      AppMethodBeat.o(32466);
+      paramVarArgs.aS(1, this.Hvb);
+      paramVarArgs.aS(2, this.Hvc);
+      AppMethodBeat.o(125813);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.FPR) + 0 + f.a.a.b.b.a.bx(2, this.FvP);
-      paramInt = i;
-      if (this.FPS != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.FPS);
-      }
-      AppMethodBeat.o(32466);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bz(1, this.Hvb);
+      int i = f.a.a.b.b.a.bz(2, this.Hvc);
+      AppMethodBeat.o(125813);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(32466);
+      AppMethodBeat.o(125813);
       return 0;
     }
     if (paramInt == 3)
@@ -51,22 +44,18 @@ public final class dgq
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32466);
+        AppMethodBeat.o(125813);
         return -1;
       case 1: 
-        localdgq.FPR = locala.LVo.xF();
-        AppMethodBeat.o(32466);
-        return 0;
-      case 2: 
-        localdgq.FvP = locala.LVo.xF();
-        AppMethodBeat.o(32466);
+        localdgq.Hvb = locala.NPN.zc();
+        AppMethodBeat.o(125813);
         return 0;
       }
-      localdgq.FPS = locala.LVo.readString();
-      AppMethodBeat.o(32466);
+      localdgq.Hvc = locala.NPN.zc();
+      AppMethodBeat.o(125813);
       return 0;
     }
-    AppMethodBeat.o(32466);
+    AppMethodBeat.o(125813);
     return -1;
   }
 }

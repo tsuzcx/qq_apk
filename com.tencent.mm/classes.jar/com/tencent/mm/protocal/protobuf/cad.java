@@ -1,158 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cad
-  extends com.tencent.mm.bw.a
+  extends cvp
 {
-  public String Euf;
-  public String Eug;
-  public int Fpf;
-  public String Fpg;
-  public String Fph;
-  public String appId;
-  public String bLs;
-  public String fBV;
-  public String userName;
-  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152637);
+    AppMethodBeat.i(152629);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.userName != null) {
-        paramVarArgs.d(1, this.userName);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.lC(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.bLs != null) {
-        paramVarArgs.d(2, this.bLs);
-      }
-      if (this.fBV != null) {
-        paramVarArgs.d(3, this.fBV);
-      }
-      if (this.Euf != null) {
-        paramVarArgs.d(4, this.Euf);
-      }
-      if (this.Eug != null) {
-        paramVarArgs.d(5, this.Eug);
-      }
-      paramVarArgs.aR(6, this.Fpf);
-      if (this.appId != null) {
-        paramVarArgs.d(7, this.appId);
-      }
-      if (this.Fpg != null) {
-        paramVarArgs.d(8, this.Fpg);
-      }
-      if (this.Fph != null) {
-        paramVarArgs.d(9, this.Fph);
-      }
-      AppMethodBeat.o(152637);
+      AppMethodBeat.o(152629);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.userName == null) {
-        break label686;
+      if (this.BaseResponse == null) {
+        break label310;
       }
     }
-    label686:
-    for (int i = f.a.a.b.b.a.e(1, this.userName) + 0;; i = 0)
+    label310:
+    for (paramInt = f.a.a.a.lB(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.bLs != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.bLs);
-      }
-      i = paramInt;
-      if (this.fBV != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.fBV);
-      }
-      paramInt = i;
-      if (this.Euf != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Euf);
-      }
-      i = paramInt;
-      if (this.Eug != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.Eug);
-      }
-      i += f.a.a.b.b.a.bx(6, this.Fpf);
-      paramInt = i;
-      if (this.appId != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.appId);
-      }
-      i = paramInt;
-      if (this.Fpg != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.Fpg);
-      }
-      paramInt = i;
-      if (this.Fph != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.Fph);
-      }
-      AppMethodBeat.o(152637);
+      AppMethodBeat.o(152629);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvp.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvp.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(152637);
+        AppMethodBeat.o(152629);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         cad localcad = (cad)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152637);
+          AppMethodBeat.o(152629);
           return -1;
-        case 1: 
-          localcad.userName = locala.LVo.readString();
-          AppMethodBeat.o(152637);
-          return 0;
-        case 2: 
-          localcad.bLs = locala.LVo.readString();
-          AppMethodBeat.o(152637);
-          return 0;
-        case 3: 
-          localcad.fBV = locala.LVo.readString();
-          AppMethodBeat.o(152637);
-          return 0;
-        case 4: 
-          localcad.Euf = locala.LVo.readString();
-          AppMethodBeat.o(152637);
-          return 0;
-        case 5: 
-          localcad.Eug = locala.LVo.readString();
-          AppMethodBeat.o(152637);
-          return 0;
-        case 6: 
-          localcad.Fpf = locala.LVo.xF();
-          AppMethodBeat.o(152637);
-          return 0;
-        case 7: 
-          localcad.appId = locala.LVo.readString();
-          AppMethodBeat.o(152637);
-          return 0;
-        case 8: 
-          localcad.Fpg = locala.LVo.readString();
-          AppMethodBeat.o(152637);
-          return 0;
         }
-        localcad.Fph = locala.LVo.readString();
-        AppMethodBeat.o(152637);
+        paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new BaseResponse();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvp.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcad.BaseResponse = ((BaseResponse)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(152629);
         return 0;
       }
-      AppMethodBeat.o(152637);
+      AppMethodBeat.o(152629);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cad
  * JD-Core Version:    0.7.0.1
  */

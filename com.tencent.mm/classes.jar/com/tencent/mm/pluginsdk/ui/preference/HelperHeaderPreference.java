@@ -10,21 +10,21 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.ar;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.t;
 
 public class HelperHeaderPreference
   extends Preference
 {
-  private a DAQ;
+  private a FfX;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(152254);
-    this.DAQ = new a();
+    this.FfX = new a();
     AppMethodBeat.o(152254);
   }
   
@@ -32,16 +32,16 @@ public class HelperHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(152255);
-    this.DAQ = new a();
+    this.FfX = new a();
     AppMethodBeat.o(152255);
   }
   
-  public final void aR(String paramString1, String paramString2, String paramString3)
+  public final void aZ(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(152257);
-    this.DAQ.drG = paramString1;
-    this.DAQ.fBV = paramString2;
-    this.DAQ.hint = paramString3;
+    this.FfX.dDy = paramString1;
+    this.FfX.fVj = paramString2;
+    this.FfX.hint = paramString3;
     super.callChangeListener(null);
     AppMethodBeat.o(152257);
   }
@@ -57,20 +57,20 @@ public class HelperHeaderPreference
     final View localView = paramView.findViewById(2131303492);
     localTextView4.setText(2131759042);
     if (localImageView != null) {
-      a.b.c(localImageView, this.DAQ.drG);
+      a.b.c(localImageView, this.FfX.dDy);
     }
     if (localTextView1 != null) {
-      switch (this.DAQ.status)
+      switch (this.FfX.status)
       {
       }
     }
     for (;;)
     {
       if (localTextView2 != null) {
-        localTextView2.setText(this.DAQ.fBV);
+        localTextView2.setText(this.FfX.fVj);
       }
       if (localTextView3 != null) {
-        localTextView3.setText(this.DAQ.hint);
+        localTextView3.setText(this.FfX.hint);
       }
       super.onBindView(paramView);
       localView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
@@ -83,15 +83,15 @@ public class HelperHeaderPreference
           localView.getLocationOnScreen(arrayOfInt);
           int k = arrayOfInt[1];
           int j = a.fromDPToPix(HelperHeaderPreference.this.mContext, 60);
-          int m = ap.ji(HelperHeaderPreference.this.mContext);
-          int n = ap.dT(HelperHeaderPreference.this.mContext);
-          ac.i("MicroMsg.HelperHeaderPreference", "actionBarHeight=%s ,statusBarHeight=%s , rootTop:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(k) });
+          int m = ar.jG(HelperHeaderPreference.this.mContext);
+          int n = ar.dT(HelperHeaderPreference.this.mContext);
+          ad.i("MicroMsg.HelperHeaderPreference", "actionBarHeight=%s ,statusBarHeight=%s , rootTop:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(k) });
           int i = j;
           if (m > 0)
           {
             i = j;
             if (n > 0) {
-              i = a.av(HelperHeaderPreference.this.mContext, 2131165289) + n;
+              i = a.ay(HelperHeaderPreference.this.mContext, 2131165289) + n;
             }
           }
           j = i;
@@ -111,11 +111,11 @@ public class HelperHeaderPreference
       AppMethodBeat.o(152256);
       return;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(t.kq(this.mContext));
+      localTextView1.setTextColor(t.kC(this.mContext));
       localTextView1.setText(2131763360);
       continue;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(t.kr(this.mContext));
+      localTextView1.setTextColor(t.kD(this.mContext));
       localTextView1.setText(2131763368);
       continue;
       localTextView1.setVisibility(8);
@@ -125,15 +125,15 @@ public class HelperHeaderPreference
   public final void updateStatus(int paramInt)
   {
     AppMethodBeat.i(152258);
-    this.DAQ.status = paramInt;
+    this.FfX.status = paramInt;
     super.callChangeListener(null);
     AppMethodBeat.o(152258);
   }
   
   public static final class a
   {
-    public String drG;
-    public String fBV;
+    public String dDy;
+    public String fVj;
     public String hint;
     public int status;
   }

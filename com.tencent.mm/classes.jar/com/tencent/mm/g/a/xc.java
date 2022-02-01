@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class xc
   extends b
 {
-  public a dzT;
+  public a dLv;
   
   public xc()
   {
@@ -15,16 +15,19 @@ public final class xc
   
   private xc(byte paramByte)
   {
-    AppMethodBeat.i(19846);
-    this.dzT = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(140992);
+    this.dLv = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(19846);
+    AppMethodBeat.o(140992);
   }
   
   public static final class a
   {
-    public String path;
+    public int dLw = 0;
+    public int dLx = 0;
+    public int dLy = 0;
+    public int type = 0;
   }
 }
 

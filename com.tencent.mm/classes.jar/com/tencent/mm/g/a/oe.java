@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class oe
   extends b
 {
-  public a dqD;
+  public a dCd;
   
   public oe()
   {
@@ -15,22 +16,24 @@ public final class oe
   
   private oe(byte paramByte)
   {
-    AppMethodBeat.i(149877);
-    this.dqD = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(89648);
+    this.dCd = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149877);
+    AppMethodBeat.o(89648);
   }
   
   public static final class a
   {
-    public boolean dqE;
-    public String talker;
+    public Context context;
+    public int dCe;
+    public String extraInfo;
+    public int jumpType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.oe
  * JD-Core Version:    0.7.0.1
  */

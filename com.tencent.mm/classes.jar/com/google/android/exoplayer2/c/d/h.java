@@ -31,17 +31,17 @@ public final class h
       return null;
     }
     paramArrayOfByte.setPosition(0);
-    if (paramArrayOfByte.readInt() != paramArrayOfByte.vy() + 4)
+    if (paramArrayOfByte.readInt() != paramArrayOfByte.wV() + 4)
     {
       AppMethodBeat.o(92123);
       return null;
     }
-    if (paramArrayOfByte.readInt() != a.bbn)
+    if (paramArrayOfByte.readInt() != a.blI)
     {
       AppMethodBeat.o(92123);
       return null;
     }
-    int i = a.ee(paramArrayOfByte.readInt());
+    int i = a.ei(paramArrayOfByte.readInt());
     if (i > 1)
     {
       AppMethodBeat.o(92123);
@@ -49,10 +49,10 @@ public final class h
     }
     UUID localUUID = new UUID(paramArrayOfByte.readLong(), paramArrayOfByte.readLong());
     if (i == 1) {
-      paramArrayOfByte.eX(paramArrayOfByte.vF() * 16);
+      paramArrayOfByte.fa(paramArrayOfByte.xc() * 16);
     }
-    i = paramArrayOfByte.vF();
-    if (i != paramArrayOfByte.vy())
+    i = paramArrayOfByte.xc();
+    if (i != paramArrayOfByte.wV())
     {
       AppMethodBeat.o(92123);
       return null;
@@ -66,7 +66,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.h
  * JD-Core Version:    0.7.0.1
  */

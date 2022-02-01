@@ -10,23 +10,23 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.chatting.ChattingAnimFrame;
 import com.tencent.mm.ui.chatting.view.MMChattingListView;
 
 public class ChattingScrollLayout
   extends LinearLayout
 {
-  private Runnable Dyp;
-  private int Dyq;
-  private int Dyr;
-  private int Dys;
-  private int Dyt;
-  private int Dyu;
-  private View Dyv;
-  private MMChattingListView Dyw;
-  private View ofC;
-  private OverScroller pZ;
+  private int FdA;
+  private int FdB;
+  private int FdC;
+  private int FdD;
+  private View FdE;
+  MMChattingListView FdF;
+  private Runnable Fdy;
+  private int Fdz;
+  private View oIV;
+  private OverScroller rT;
   
   public ChattingScrollLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,42 +37,42 @@ public class ChattingScrollLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31733);
-    this.Dyq = 0;
-    this.Dyr = 0;
-    this.Dys = 0;
-    this.Dyt = 0;
-    this.pZ = new OverScroller(getContext(), new b());
+    this.Fdz = 0;
+    this.FdA = 0;
+    this.FdB = 0;
+    this.FdC = 0;
+    this.rT = new OverScroller(getContext(), new b());
     AppMethodBeat.o(31733);
   }
   
-  private void ePp()
+  private void fer()
   {
     AppMethodBeat.i(31738);
-    int i = this.Dyw.getBottomSpace();
+    int i = this.FdF.getBottomSpace();
     if (i > 0) {
-      f1 = this.ofC.getTranslationY();
+      f1 = this.oIV.getTranslationY();
     }
-    for (float f1 = i + f1;; f1 = this.ofC.getTranslationY())
+    for (float f1 = i + f1;; f1 = this.oIV.getTranslationY())
     {
       float f2 = f1 + getInterTranslationY();
       f1 = f2;
       if (f2 > 0.0F) {
         f1 = 0.0F;
       }
-      this.Dyw.setTranslationY(f1);
+      this.FdF.setTranslationY(f1);
       AppMethodBeat.o(31738);
       return;
     }
   }
   
-  private void ePq()
+  private void fes()
   {
     AppMethodBeat.i(31740);
     Object localObject = (ChattingAnimFrame)findViewById(2131297976);
     if (localObject == null)
     {
       localObject = findViewById(2131306439);
-      ac.i("MicroMsg.ChattingScrollLayout", "resizeChatAnimFrame: use view stub");
+      ad.i("MicroMsg.ChattingScrollLayout", "resizeChatAnimFrame: use view stub");
     }
     for (;;)
     {
@@ -81,20 +81,20 @@ public class ChattingScrollLayout
         ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams();
         if (localMarginLayoutParams != null)
         {
-          localMarginLayoutParams.bottomMargin = this.Dyr;
+          localMarginLayoutParams.bottomMargin = this.FdA;
           ((View)localObject).setLayoutParams(localMarginLayoutParams);
         }
       }
       AppMethodBeat.o(31740);
       return;
-      ac.i("MicroMsg.ChattingScrollLayout", "resizeChatAnimFrame: use view");
+      ad.i("MicroMsg.ChattingScrollLayout", "resizeChatAnimFrame: use view");
     }
   }
   
   private int getInterTranslationY()
   {
-    if (this.Dys != 0) {
-      return (int)(1.0D * this.Dyq / this.Dys * this.Dyu);
+    if (this.FdB != 0) {
+      return (int)(1.0D * this.Fdz / this.FdB * this.FdD);
     }
     return 0;
   }
@@ -102,26 +102,26 @@ public class ChattingScrollLayout
   public final void c(int paramInt1, final boolean paramBoolean, final int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(185854);
-    ac.i("MicroMsg.ChattingScrollLayout", "scrollContentTo: %s", new Object[] { Integer.valueOf(paramInt1) });
-    if (this.Dyr == paramInt1)
+    ad.i("MicroMsg.ChattingScrollLayout", "scrollContentTo: %s", new Object[] { Integer.valueOf(paramInt1) });
+    if (this.FdA == paramInt1)
     {
       AppMethodBeat.o(185854);
       return;
     }
-    this.Dyr = paramInt1;
-    if (this.Dyr != 0) {
-      this.Dys = this.Dyr;
+    this.FdA = paramInt1;
+    if (this.FdA != 0) {
+      this.FdB = this.FdA;
     }
-    this.Dyu = paramInt3;
-    ePq();
-    this.pZ.forceFinished(true);
-    removeCallbacks(this.Dyp);
-    this.Dyp = new Runnable()
+    this.FdD = paramInt3;
+    fes();
+    this.rT.forceFinished(true);
+    removeCallbacks(this.Fdy);
+    this.Fdy = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(31732);
-        ac.i("MicroMsg.ChattingScrollLayout", "scrollContentTo: in runnable");
+        ad.i("MicroMsg.ChattingScrollLayout", "scrollContentTo: in runnable");
         ChattingScrollLayout.a(ChattingScrollLayout.this);
         int j = ChattingScrollLayout.b(ChattingScrollLayout.this);
         int k = ChattingScrollLayout.c(ChattingScrollLayout.this);
@@ -150,26 +150,26 @@ public class ChattingScrollLayout
         }
       }
     };
-    post(this.Dyp);
+    post(this.Fdy);
     AppMethodBeat.o(185854);
   }
   
   public void computeScroll()
   {
     AppMethodBeat.i(31737);
-    if (this.pZ.computeScrollOffset())
+    if (this.rT.computeScrollOffset())
     {
-      this.Dyq = this.pZ.getCurrY();
+      this.Fdz = this.rT.getCurrY();
       int i = 0;
       while (i < getChildCount())
       {
         View localView = getChildAt(i);
-        if (localView != this.Dyv) {
-          localView.setTranslationY(-this.Dyq);
+        if (localView != this.FdE) {
+          localView.setTranslationY(-this.Fdz);
         }
         i += 1;
       }
-      ePp();
+      fer();
       t.W(this);
     }
     AppMethodBeat.o(31737);
@@ -179,13 +179,13 @@ public class ChattingScrollLayout
   {
     AppMethodBeat.i(31739);
     if (paramMotionEvent.getActionMasked() == 0) {}
-    for (this.Dyt = this.Dyq;; this.Dyt = 0) {
+    for (this.FdC = this.Fdz;; this.FdC = 0) {
       do
       {
         boolean bool = super.dispatchTouchEvent(paramMotionEvent);
         AppMethodBeat.o(31739);
         return bool;
-        paramMotionEvent.offsetLocation(0.0F, this.Dyt - this.Dyq);
+        paramMotionEvent.offsetLocation(0.0F, this.FdC - this.Fdz);
       } while ((paramMotionEvent.getActionMasked() != 1) && (paramMotionEvent.getActionMasked() != 3));
     }
   }
@@ -194,24 +194,24 @@ public class ChattingScrollLayout
   {
     AppMethodBeat.i(31734);
     super.onFinishInflate();
-    this.ofC = findViewById(2131302672);
-    this.Dyv = findViewById(2131298070);
-    this.Dyw = ((MMChattingListView)findViewById(2131298103));
+    this.oIV = findViewById(2131302672);
+    this.FdE = findViewById(2131298070);
+    this.FdF = ((MMChattingListView)findViewById(2131298103));
     AppMethodBeat.o(31734);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(31736);
-    ac.i("MicroMsg.ChattingScrollLayout", "onLayout: %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ad.i("MicroMsg.ChattingScrollLayout", "onLayout: %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.Dyp != null)
+    if (this.Fdy != null)
     {
-      removeCallbacks(this.Dyp);
-      post(this.Dyp);
+      removeCallbacks(this.Fdy);
+      post(this.Fdy);
     }
-    if ((this.pZ != null) && (this.pZ.isFinished())) {
-      ePp();
+    if ((this.rT != null) && (this.rT.isFinished())) {
+      fer();
     }
     AppMethodBeat.o(31736);
   }

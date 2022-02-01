@@ -1,60 +1,60 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bu;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class h
 {
-  public ArrayList<bo> qSv;
-  public boolean qSw;
-  ArrayList<b> qSx;
+  public ArrayList<bu> rCx;
+  public boolean rCy;
+  ArrayList<b> rCz;
   
   private h()
   {
     AppMethodBeat.i(36079);
-    this.qSv = new ArrayList();
-    this.qSw = false;
-    this.qSx = new ArrayList();
+    this.rCx = new ArrayList();
+    this.rCy = false;
+    this.rCz = new ArrayList();
     AppMethodBeat.o(36079);
   }
   
-  private bo Bp(long paramLong)
+  private bu Eh(long paramLong)
   {
     AppMethodBeat.i(36081);
-    Iterator localIterator = this.qSv.iterator();
+    Iterator localIterator = this.rCx.iterator();
     while (localIterator.hasNext())
     {
-      bo localbo = (bo)localIterator.next();
-      if (localbo.field_msgId == paramLong)
+      bu localbu = (bu)localIterator.next();
+      if (localbu.field_msgId == paramLong)
       {
         AppMethodBeat.o(36081);
-        return localbo;
+        return localbu;
       }
     }
     AppMethodBeat.o(36081);
     return null;
   }
   
-  private void bUu()
+  private void bYZ()
   {
     AppMethodBeat.i(36087);
-    Iterator localIterator = this.qSx.iterator();
+    Iterator localIterator = this.rCz.iterator();
     while (localIterator.hasNext()) {
       ((b)localIterator.next()).clear();
     }
     AppMethodBeat.o(36087);
   }
   
-  private void fpo()
+  private void fFT()
   {
     AppMethodBeat.i(36086);
-    Iterator localIterator = this.qSx.iterator();
+    Iterator localIterator = this.rCz.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).fpm();
+      ((b)localIterator.next()).fFR();
     }
     AppMethodBeat.o(36086);
   }
@@ -62,53 +62,62 @@ public final class h
   public final void a(b paramb)
   {
     AppMethodBeat.i(36088);
-    this.qSx.remove(paramb);
-    this.qSx.add(paramb);
+    this.rCz.remove(paramb);
+    this.rCz.add(paramb);
     AppMethodBeat.o(36088);
   }
   
-  public final void cg(bo parambo)
+  public final void clear()
+  {
+    AppMethodBeat.i(36083);
+    ad.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
+    this.rCx.clear();
+    bYZ();
+    AppMethodBeat.o(36083);
+  }
+  
+  public final void cm(bu parambu)
   {
     AppMethodBeat.i(36080);
-    if (parambo == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(36080);
       return;
     }
-    ac.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(parambo.field_msgId) });
-    this.qSv.remove(parambo);
-    this.qSv.remove(Bp(parambo.field_msgId));
-    this.qSv.add(parambo);
-    fpo();
+    ad.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(parambu.field_msgId) });
+    this.rCx.remove(parambu);
+    this.rCx.remove(Eh(parambu.field_msgId));
+    this.rCx.add(parambu);
+    fFT();
     AppMethodBeat.o(36080);
   }
   
-  public final void ch(bo parambo)
+  public final void cn(bu parambu)
   {
     AppMethodBeat.i(36082);
-    if (parambo == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(36082);
       return;
     }
-    ac.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(parambo.field_msgId) });
-    this.qSv.remove(parambo);
-    this.qSv.remove(Bp(parambo.field_msgId));
-    fpo();
+    ad.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(parambu.field_msgId) });
+    this.rCx.remove(parambu);
+    this.rCx.remove(Eh(parambu.field_msgId));
+    fFT();
     AppMethodBeat.o(36082);
   }
   
-  public final boolean ci(bo parambo)
+  public final boolean co(bu parambu)
   {
     AppMethodBeat.i(36085);
-    if (parambo == null)
+    if (parambu == null)
     {
       AppMethodBeat.o(36085);
       return false;
     }
-    Iterator localIterator = this.qSv.iterator();
+    Iterator localIterator = this.rCx.iterator();
     while (localIterator.hasNext()) {
-      if (((bo)localIterator.next()).field_msgId == parambo.field_msgId)
+      if (((bu)localIterator.next()).field_msgId == parambu.field_msgId)
       {
         AppMethodBeat.o(36085);
         return true;
@@ -118,32 +127,23 @@ public final class h
     return false;
   }
   
-  public final void clear()
-  {
-    AppMethodBeat.i(36083);
-    ac.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
-    this.qSv.clear();
-    bUu();
-    AppMethodBeat.o(36083);
-  }
-  
   public final void detach()
   {
     AppMethodBeat.i(36084);
-    this.qSx.clear();
+    this.rCz.clear();
     clear();
-    this.qSw = false;
+    this.rCy = false;
     AppMethodBeat.o(36084);
   }
   
   public static final class a
   {
-    private static final h IbS;
+    private static final h JRk;
     
     static
     {
       AppMethodBeat.i(36078);
-      IbS = new h((byte)0);
+      JRk = new h((byte)0);
       AppMethodBeat.o(36078);
     }
   }
@@ -152,7 +152,7 @@ public final class h
   {
     public abstract void clear();
     
-    public abstract void fpm();
+    public abstract void fFR();
   }
 }
 

@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.c;
-import com.tencent.mm.av.o;
-import com.tencent.mm.av.p;
-import com.tencent.mm.av.p.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.aw.d;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.aw.r;
+import com.tencent.mm.aw.r.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,16 +20,16 @@ import java.util.Map;
 public class WalletBalancePrivacyMMHeaderPreference
   extends Preference
 {
-  String drM;
-  private int lzV;
+  String dDH;
+  private int lZt;
   String title;
-  Map<String, p.a> wHG;
+  Map<String, r.a> xVn;
   
   public WalletBalancePrivacyMMHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(69588);
-    this.wHG = new HashMap();
+    this.xVn = new HashMap();
     AppMethodBeat.o(69588);
   }
   
@@ -37,13 +37,13 @@ public class WalletBalancePrivacyMMHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69587);
-    this.wHG = new HashMap();
+    this.xVn = new HashMap();
     AppMethodBeat.o(69587);
   }
   
-  public final void fS()
+  public final void gk()
   {
-    this.lzV = 2131689519;
+    this.lZt = 2131689519;
   }
   
   public final void onBindView(View paramView)
@@ -52,38 +52,38 @@ public class WalletBalancePrivacyMMHeaderPreference
     super.onBindView(paramView);
     Object localObject = (ImageView)paramView.findViewById(2131297104);
     paramView = (TextView)paramView.findViewById(2131297105);
-    if (bs.isNullOrNil(this.drM)) {
-      if (!bs.jl(this.lzV, 0)) {
-        ((ImageView)localObject).setImageResource(this.lzV);
+    if (bt.isNullOrNil(this.dDH)) {
+      if (!bt.jx(this.lZt, 0)) {
+        ((ImageView)localObject).setImageResource(this.lZt);
       }
     }
     for (;;)
     {
-      if (!bs.isNullOrNil(this.title)) {
+      if (!bt.isNullOrNil(this.title)) {
         paramView.setText(this.title);
       }
       AppMethodBeat.o(69589);
       return;
-      o.aFw();
-      Bitmap localBitmap = c.te(this.drM);
+      q.aIE();
+      Bitmap localBitmap = d.vT(this.dDH);
       if (localBitmap != null)
       {
         ((ImageView)localObject).setImageBitmap(localBitmap);
       }
-      else if (!bs.isNullOrNil(this.drM))
+      else if (!bt.isNullOrNil(this.dDH))
       {
-        localObject = new p.a()
+        localObject = new r.a()
         {
           public final void a(String paramAnonymousString1, Bitmap paramAnonymousBitmap, String paramAnonymousString2)
           {
             AppMethodBeat.i(69586);
-            ac.i("MicroMsg.WalletBalancePrivacyMMHeaderPreference", "alvinluo icon url: %s", new Object[] { paramAnonymousString1 });
-            this.wHH.setImageBitmap(paramAnonymousBitmap);
+            ad.i("MicroMsg.WalletBalancePrivacyMMHeaderPreference", "alvinluo icon url: %s", new Object[] { paramAnonymousString1 });
+            this.xVo.setImageBitmap(paramAnonymousBitmap);
             AppMethodBeat.o(69586);
           }
         };
-        this.wHG.put(this.drM, localObject);
-        o.aFA().a(this.drM, (p.a)localObject);
+        this.xVn.put(this.dDH, localObject);
+        q.aII().a(this.dDH, (r.a)localObject);
       }
     }
   }

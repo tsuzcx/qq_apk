@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lz;
-import com.tencent.mm.g.a.lz.a;
+import com.tencent.mm.g.a.mi;
+import com.tencent.mm.g.a.mi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.a;
 import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.a;
 import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.p;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,22 +22,22 @@ public final class d
 {
   public static final int CTRL_INDEX = 592;
   public static final String NAME = "openBusinessView";
-  p fua;
-  boolean kqy = false;
-  private com.tencent.mm.sdk.b.c<lz> kqz;
+  p fNb;
+  boolean kLU = false;
+  private com.tencent.mm.sdk.b.c<mi> kLV;
   
   private void a(com.tencent.mm.plugin.appbrand.d paramd, int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(46291);
     HashMap localHashMap = new HashMap();
     localHashMap.put("errCode", Integer.valueOf(paramInt2));
-    paramd.h(paramInt1, k(paramString, localHashMap));
+    paramd.h(paramInt1, m(paramString, localHashMap));
     AppMethodBeat.o(46291);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c bgB()
+  public final com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c bkg()
   {
-    return h.kqS;
+    return h.kMo;
   }
 }
 

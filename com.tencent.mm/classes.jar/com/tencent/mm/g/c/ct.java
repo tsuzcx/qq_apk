@@ -3,69 +3,83 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class ct
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eLG = "googleid".hashCode();
-  private static final int eLH = "googlename".hashCode();
-  private static final int eLI = "googlephotourl".hashCode();
-  private static final int eLJ = "googlegmail".hashCode();
-  private static final int eLK;
-  private static final int eLL;
-  private static final int eLM;
-  private static final int eLN;
-  private static final int eLO;
-  private static final int eLP = "googleitemid".hashCode();
-  private static final int eLQ = "googlecgistatus".hashCode();
-  private static final int eLR = "contecttype".hashCode();
-  private static final int eLS = "googlenamepy".hashCode();
-  private static final int elV;
-  private static final int eok = "username".hashCode();
-  private static final int etG = "nickname".hashCode();
+  private static final int eCW = "msgId".hashCode();
+  private static final int eEU;
+  private static final int eGw;
+  private static final int eHS = "xml".hashCode();
+  private static final int eHT;
+  private static final int eHU;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eLA = true;
-  private boolean eLB = true;
-  private boolean eLC = true;
-  private boolean eLD = true;
-  private boolean eLE = true;
-  private boolean eLF = true;
-  private boolean eLt = true;
-  private boolean eLu = true;
-  private boolean eLv = true;
-  private boolean eLw = true;
-  private boolean eLx = true;
-  private boolean eLy = true;
-  private boolean eLz = true;
-  private boolean elS = true;
-  private boolean eoh = true;
-  private boolean etC = true;
-  public String field_big_url;
-  public String field_contecttype;
-  public int field_googlecgistatus;
-  public String field_googlegmail;
-  public String field_googleid;
-  public String field_googleitemid;
-  public String field_googlename;
-  public String field_googlenamepy;
-  public String field_googlephotourl;
-  public String field_nickname;
-  public String field_nicknameqp;
-  public int field_ret;
-  public String field_small_url;
-  public int field_status;
-  public String field_username;
-  public String field_usernamepy;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eCS = true;
+  private boolean eED = true;
+  private boolean eGr = true;
+  private boolean eHP = true;
+  private boolean eHQ = true;
+  private boolean eHR = true;
+  public String field_appId;
+  public String field_description;
+  public long field_msgId;
+  public String field_source;
+  public String field_title;
+  public int field_type;
+  public String field_xml;
   
   static
   {
-    eLK = "nicknameqp".hashCode();
-    eLL = "usernamepy".hashCode();
-    eLM = "small_url".hashCode();
-    eLN = "big_url".hashCode();
-    eLO = "ret".hashCode();
-    elV = "status".hashCode();
+    eEU = "appId".hashCode();
+    eHT = "title".hashCode();
+    eHU = "description".hashCode();
+    eGw = "source".hashCode();
+    type_HASHCODE = "type".hashCode();
+  }
+  
+  public static c.a Vv()
+  {
+    c.a locala = new c.a();
+    locala.IhA = new Field[7];
+    locala.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "msgId";
+    locala.IhC.put("msgId", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" msgId LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IhB = "msgId";
+    locala.columns[1] = "xml";
+    locala.IhC.put("xml", "TEXT");
+    localStringBuilder.append(" xml TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "appId";
+    locala.IhC.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "title";
+    locala.IhC.put("title", "TEXT");
+    localStringBuilder.append(" title TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "description";
+    locala.IhC.put("description", "TEXT");
+    localStringBuilder.append(" description TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "source";
+    locala.IhC.put("source", "TEXT");
+    localStringBuilder.append(" source TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "type";
+    locala.IhC.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    locala.columns[7] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -81,80 +95,31 @@ public abstract class ct
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eLG != k) {
-        break label60;
+      if (eCW != k) {
+        break label65;
       }
-      this.field_googleid = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getLong(i);
+      this.eCS = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eLH == k)
-      {
-        this.field_googlename = paramCursor.getString(i);
-      }
-      else if (eLI == k)
-      {
-        this.field_googlephotourl = paramCursor.getString(i);
-      }
-      else if (eLJ == k)
-      {
-        this.field_googlegmail = paramCursor.getString(i);
-      }
-      else if (eok == k)
-      {
-        this.field_username = paramCursor.getString(i);
-      }
-      else if (etG == k)
-      {
-        this.field_nickname = paramCursor.getString(i);
-      }
-      else if (eLK == k)
-      {
-        this.field_nicknameqp = paramCursor.getString(i);
-      }
-      else if (eLL == k)
-      {
-        this.field_usernamepy = paramCursor.getString(i);
-      }
-      else if (eLM == k)
-      {
-        this.field_small_url = paramCursor.getString(i);
-      }
-      else if (eLN == k)
-      {
-        this.field_big_url = paramCursor.getString(i);
-      }
-      else if (eLO == k)
-      {
-        this.field_ret = paramCursor.getInt(i);
-      }
-      else if (elV == k)
-      {
-        this.field_status = paramCursor.getInt(i);
-      }
-      else if (eLP == k)
-      {
-        this.field_googleitemid = paramCursor.getString(i);
-        this.eLC = true;
-      }
-      else if (eLQ == k)
-      {
-        this.field_googlecgistatus = paramCursor.getInt(i);
-      }
-      else if (eLR == k)
-      {
-        this.field_contecttype = paramCursor.getString(i);
-      }
-      else if (eLS == k)
-      {
-        this.field_googlenamepy = paramCursor.getString(i);
-      }
-      else if (rowid_HASHCODE == k)
-      {
+      label65:
+      if (eHS == k) {
+        this.field_xml = paramCursor.getString(i);
+      } else if (eEU == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eHT == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (eHU == k) {
+        this.field_description = paramCursor.getString(i);
+      } else if (eGw == k) {
+        this.field_source = paramCursor.getString(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
     }
@@ -163,53 +128,26 @@ public abstract class ct
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eLt) {
-      localContentValues.put("googleid", this.field_googleid);
+    if (this.eCS) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eLu) {
-      localContentValues.put("googlename", this.field_googlename);
+    if (this.eHP) {
+      localContentValues.put("xml", this.field_xml);
     }
-    if (this.eLv) {
-      localContentValues.put("googlephotourl", this.field_googlephotourl);
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eLw) {
-      localContentValues.put("googlegmail", this.field_googlegmail);
+    if (this.eHQ) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.eoh) {
-      localContentValues.put("username", this.field_username);
+    if (this.eHR) {
+      localContentValues.put("description", this.field_description);
     }
-    if (this.etC) {
-      localContentValues.put("nickname", this.field_nickname);
+    if (this.eGr) {
+      localContentValues.put("source", this.field_source);
     }
-    if (this.eLx) {
-      localContentValues.put("nicknameqp", this.field_nicknameqp);
-    }
-    if (this.eLy) {
-      localContentValues.put("usernamepy", this.field_usernamepy);
-    }
-    if (this.eLz) {
-      localContentValues.put("small_url", this.field_small_url);
-    }
-    if (this.eLA) {
-      localContentValues.put("big_url", this.field_big_url);
-    }
-    if (this.eLB) {
-      localContentValues.put("ret", Integer.valueOf(this.field_ret));
-    }
-    if (this.elS) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
-    }
-    if (this.eLC) {
-      localContentValues.put("googleitemid", this.field_googleitemid);
-    }
-    if (this.eLD) {
-      localContentValues.put("googlecgistatus", Integer.valueOf(this.field_googlecgistatus));
-    }
-    if (this.eLE) {
-      localContentValues.put("contecttype", this.field_contecttype);
-    }
-    if (this.eLF) {
-      localContentValues.put("googlenamepy", this.field_googlenamepy);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -219,7 +157,7 @@ public abstract class ct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.ct
  * JD-Core Version:    0.7.0.1
  */

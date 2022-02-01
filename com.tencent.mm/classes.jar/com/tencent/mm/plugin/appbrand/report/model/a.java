@@ -12,42 +12,42 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI;
 import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.page.ae;
-import com.tencent.mm.plugin.appbrand.page.bt;
+import com.tencent.mm.plugin.appbrand.page.bs;
 import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.y;
 import java.util.LinkedList;
 
 public final class a
   implements f
 {
-  private final o jez;
-  private boolean lAw;
-  private Intent lSq;
-  private boolean lSr;
-  private boolean lSs;
-  private k lSt;
-  private m lSu;
-  private p lSv;
-  private q lSw;
-  private volatile h lSx;
+  private final o jxG;
+  private boolean lZU;
   private final String mAppId;
+  private Intent msh;
+  private boolean msi;
+  private boolean msj;
+  private k msk;
+  private m msl;
+  private p msm;
+  private q msn;
+  private volatile h mso;
   
   public a(o paramo)
   {
     AppMethodBeat.i(48085);
-    this.lAw = false;
-    this.lSr = false;
-    this.lSs = false;
-    this.lSt = null;
-    this.lSu = null;
-    this.lSv = null;
-    this.lSw = null;
-    this.lSx = null;
+    this.lZU = false;
+    this.msi = false;
+    this.msj = false;
+    this.msk = null;
+    this.msl = null;
+    this.msm = null;
+    this.msn = null;
+    this.mso = null;
     this.mAppId = paramo.mAppId;
-    this.jez = paramo;
-    this.lSw = q.J(this.jez);
+    this.jxG = paramo;
+    this.msn = q.A(this.jxG);
     resetSession();
     AppMethodBeat.o(48085);
   }
@@ -57,36 +57,36 @@ public final class a
     AppMethodBeat.i(48088);
     if (paramae2 != null)
     {
-      this.lSt.t(paramae2);
-      this.lSv.a(paramae2, paramae1.lyH);
+      this.msk.u(paramae2);
+      this.msm.a(paramae2, paramae1.lYf);
     }
-    this.lSu.v(paramae1);
+    this.msl.w(paramae1);
     AppMethodBeat.o(48088);
   }
   
   private void j(long paramLong, int paramInt)
   {
     AppMethodBeat.i(48094);
-    int i = this.jez.aTR().jEg.pkgVersion;
-    com.tencent.mm.plugin.report.service.h.wUl.f(13543, new Object[] { this.mAppId, Integer.valueOf(i), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    int i = this.jxG.aXb().jYh.pkgVersion;
+    com.tencent.mm.plugin.report.service.g.yhR.f(13543, new Object[] { this.mAppId, Integer.valueOf(i), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
     AppMethodBeat.o(48094);
   }
   
-  public final void H(Intent paramIntent)
+  public final void I(Intent paramIntent)
   {
-    this.lSq = paramIntent;
+    this.msh = paramIntent;
   }
   
-  public final void a(long paramLong, bt parambt)
+  public final void a(long paramLong, bs parambs)
   {
     AppMethodBeat.i(48093);
     int i;
-    switch (1.cax[parambt.ordinal()])
+    switch (1.ckO[parambs.ordinal()])
     {
     default: 
       i = 2;
       j(paramLong, i);
-      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(390L, 0L, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(390L, 0L, 1L, false);
       switch ((int)paramLong / 250)
       {
       default: 
@@ -96,7 +96,7 @@ public final class a
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.wUl.idkeyStat(390L, i, 1L, false);
+      com.tencent.mm.plugin.report.service.g.yhR.idkeyStat(390L, i, 1L, false);
       AppMethodBeat.o(48093);
       return;
       i = 1;
@@ -117,19 +117,19 @@ public final class a
     }
   }
   
-  public final void a(ae paramae1, ae paramae2, bt parambt)
+  public final void a(ae paramae1, ae paramae2, bs parambs)
   {
     int i = 0;
     AppMethodBeat.i(48087);
     h localh;
-    if ((bt.lGo == parambt) && (this.lSs))
+    if ((bs.mfR == parambs) && (this.msj))
     {
-      this.lSs = false;
+      this.msj = false;
       resetSession();
-      if ((bt.lGo == parambt) || (paramae2 == null) || (bs.isNullOrNil(paramae2.lyH)) || (paramae2 == paramae1)) {
+      if ((bs.mfR == parambs) || (paramae2 == null) || (bt.isNullOrNil(paramae2.lYf)) || (paramae2 == paramae1)) {
         i = 1;
       }
-      localh = this.lSx;
+      localh = this.mso;
       if (i == 0) {
         break label117;
       }
@@ -137,15 +137,15 @@ public final class a
     label117:
     for (ae localae = null;; localae = paramae2)
     {
-      localh.a(paramae1, localae, parambt);
+      localh.a(paramae1, localae, parambs);
       if (i != 0) {
         break label123;
       }
-      paramae2.lCV.onBackground();
+      paramae2.mcx.onBackground();
       a(paramae1, paramae2);
       AppMethodBeat.o(48087);
       return;
-      this.lSs = false;
+      this.msj = false;
       break;
     }
     label123:
@@ -153,43 +153,43 @@ public final class a
     AppMethodBeat.o(48087);
   }
   
-  public final void bor()
+  public final void bsj()
   {
     AppMethodBeat.i(48090);
     j(0L, 4);
     AppMethodBeat.o(48090);
   }
   
-  public final h bos()
+  public final h bsk()
   {
-    return this.lSx;
+    return this.mso;
   }
   
-  public final Intent bot()
+  public final Intent bsl()
   {
-    return this.lSq;
+    return this.msh;
   }
   
-  public final p bou()
+  public final p bsm()
   {
-    return this.lSv;
+    return this.msm;
   }
   
-  public final q bov()
+  public final q bsn()
   {
-    return this.lSw;
+    return this.msn;
   }
   
-  public final void bow()
+  public final void bso()
   {
-    this.lSr = true;
-    this.lSs = true;
+    this.msi = true;
+    this.msj = true;
   }
   
   public final void c(ae paramae)
   {
     AppMethodBeat.i(48091);
-    if ((paramae == null) || (this.lAw))
+    if ((paramae == null) || (this.lZU))
     {
       AppMethodBeat.o(48091);
       return;
@@ -201,99 +201,99 @@ public final class a
   public final void d(ae paramae)
   {
     AppMethodBeat.i(48089);
-    this.lAw = true;
-    this.lSx.d(paramae);
-    paramae.lCV.onBackground();
-    Object localObject1 = this.lSt;
-    Object localObject2 = com.tencent.mm.sdk.f.a.jg(paramae.getContext());
+    this.lZU = true;
+    this.mso.d(paramae);
+    paramae.mcx.onBackground();
+    Object localObject1 = this.msk;
+    Object localObject2 = com.tencent.mm.sdk.f.a.jq(paramae.getContext());
     if ((localObject2 != null) && (((Activity)localObject2).isFinishing())) {
-      ((k)localObject1).lTe = true;
+      ((k)localObject1).msU = true;
     }
-    ((k)localObject1).u(paramae);
+    ((k)localObject1).v(paramae);
     ((k)localObject1).report();
-    localObject2 = this.lSv;
-    ((p)localObject2).lTg = ((String)((p)localObject2).lUm.peekFirst());
-    ((p)localObject2).lTi = null;
+    localObject2 = this.msm;
+    ((p)localObject2).msW = ((String)((p)localObject2).mud.peekFirst());
+    ((p)localObject2).msY = null;
     Intent localIntent;
-    switch (p.2.jrQ[com.tencent.mm.plugin.appbrand.g.Hg(localObject2.appId).ordinal()])
+    switch (p.2.jLK[com.tencent.mm.plugin.appbrand.g.Kv(localObject2.appId).ordinal()])
     {
     default: 
-      localIntent = ((p)localObject2).jez.aTT().getReporter().bot();
+      localIntent = ((p)localObject2).jxG.aXd().getReporter().bsl();
       if (localIntent != null) {
         if (localIntent.getComponent() == null)
         {
           localObject1 = "";
-          ac.e("MicroMsg.AppBrand.Report.kv_14992", "onBackground, intent %s, get null cmp name", new Object[] { localIntent });
-          ((p)localObject2).lTh = 8;
-          ((p)localObject2).lTi = bs.bG(x.getStringExtra(localIntent, AppBrandProcessProxyUI.jUR), (String)localObject1);
-          localObject1 = ((p)localObject2).lTi;
-          ((p)localObject2).lUm.pollFirst();
-          ((p)localObject2).lUm.push(bs.nullAsNil((String)localObject1));
+          ad.e("MicroMsg.AppBrand.Report.kv_14992", "onBackground, intent %s, get null cmp name", new Object[] { localIntent });
+          ((p)localObject2).msX = 8;
+          ((p)localObject2).msY = bt.bI(y.getStringExtra(localIntent, AppBrandProcessProxyUI.kpf), (String)localObject1);
+          localObject1 = ((p)localObject2).msY;
+          ((p)localObject2).mud.pollFirst();
+          ((p)localObject2).mud.push(bt.nullAsNil((String)localObject1));
         }
       }
       break;
     }
     for (;;)
     {
-      localObject1 = com.tencent.mm.sdk.f.a.jg(paramae.getContext());
+      localObject1 = com.tencent.mm.sdk.f.a.jq(paramae.getContext());
       if ((localObject1 != null) && (((Activity)localObject1).isFinishing())) {
-        ((p)localObject2).lTe = true;
+        ((p)localObject2).msU = true;
       }
-      ((p)localObject2).w(paramae);
+      ((p)localObject2).x(paramae);
       AppMethodBeat.o(48089);
       return;
-      ((p)localObject2).lTh = 3;
+      ((p)localObject2).msX = 3;
       continue;
-      ((p)localObject2).lTh = 6;
+      ((p)localObject2).msX = 6;
       continue;
       localObject1 = localIntent.getComponent().getClassName();
       break;
-      ((p)localObject2).lTh = 7;
+      ((p)localObject2).msX = 7;
     }
   }
   
   public final void e(ae paramae)
   {
     AppMethodBeat.i(48092);
-    this.lSq = null;
-    if (this.lSr)
+    this.msh = null;
+    if (this.msi)
     {
-      this.lSr = false;
+      this.msi = false;
       AppMethodBeat.o(48092);
       return;
     }
-    this.lSx.e(paramae);
-    this.lSu.v(paramae);
+    this.mso.e(paramae);
+    this.msl.w(paramae);
     AppMethodBeat.o(48092);
   }
   
   public final void resetSession()
   {
     AppMethodBeat.i(48086);
-    if (bs.isNullOrNil(this.mAppId))
+    if (bt.isNullOrNil(this.mAppId))
     {
-      ac.e("MicroMsg.AppBrandPageContainerReporter", "resetSession with dummy model, stack %s", new Object[] { bs.m(new Throwable()) });
-      this.lSx = h.lSO;
-      this.lSu = m.btx();
-      this.lSt = k.btw();
-      this.lSv = p.btG();
+      ad.e("MicroMsg.AppBrandPageContainerReporter", "resetSession with dummy model, stack %s", new Object[] { bt.n(new Throwable()) });
+      this.mso = h.msF;
+      this.msl = m.bxC();
+      this.msk = k.bxB();
+      this.msm = p.bxL();
       AppMethodBeat.o(48086);
       return;
     }
-    String str1 = this.jez.aTS().CD();
-    String str2 = d.d(this.jez.aTS().cce);
-    this.lSx = new c(str2, this.jez.aSI());
-    this.lSt = k.a(this.jez, str1, this.lSx);
+    String str1 = this.jxG.aXc().Ec();
+    String str2 = d.d(this.jxG.aXc().cmv);
+    this.mso = new c(str2, this.jxG.aVW());
+    this.msk = k.a(this.jxG, str1, this.mso);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.push(bs.nullAsNil(str2));
-    this.lSv = p.a(this.jez, str1, localLinkedList);
-    this.lSu = m.b(this.jez, str1, this.lSx);
+    localLinkedList.push(bt.nullAsNil(str2));
+    this.msm = p.a(this.jxG, str1, localLinkedList);
+    this.msl = m.b(this.jxG, str1, this.mso);
     AppMethodBeat.o(48086);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.a
  * JD-Core Version:    0.7.0.1
  */

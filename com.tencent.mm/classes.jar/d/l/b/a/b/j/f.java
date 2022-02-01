@@ -10,14 +10,14 @@ import d.l.b.a.b.b.l;
 import d.l.b.a.b.b.t;
 import d.l.b.a.b.i.c.a;
 import d.l.b.a.b.i.i;
-import d.y;
+import d.z;
 import java.util.Comparator;
 
 public class f
   implements Comparator<l>
 {
-  public static final f LEK;
-  private static final d.l.b.a.b.i.c LEL;
+  public static final f NvJ;
+  private static final d.l.b.a.b.i.c NvK;
   
   static
   {
@@ -26,9 +26,9 @@ public class f
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      LEK = new f();
-      c.a locala = d.l.b.a.b.i.c.LCk;
-      LEL = c.a.H(new b() {});
+      NvJ = new f();
+      c.a locala = d.l.b.a.b.i.c.Nth;
+      NvK = c.a.H(new b() {});
       AppMethodBeat.o(59953);
       return;
     }
@@ -37,12 +37,12 @@ public class f
   public static final class a
     implements Comparator<l>
   {
-    public static final a LEM;
+    public static final a NvL;
     
     static
     {
       AppMethodBeat.i(59951);
-      LEM = new a();
+      NvL = new a();
       AppMethodBeat.o(59951);
     }
     
@@ -61,7 +61,7 @@ public class f
       }
       if ((paraml instanceof ah))
       {
-        if (((ah)paraml).fQP() == null)
+        if (((ah)paraml).gin() == null)
         {
           AppMethodBeat.o(59947);
           return 6;
@@ -71,7 +71,7 @@ public class f
       }
       if ((paraml instanceof t))
       {
-        if (((t)paraml).fQP() == null)
+        if (((t)paraml).gin() == null)
         {
           AppMethodBeat.o(59947);
           return 4;
@@ -107,7 +107,7 @@ public class f
         AppMethodBeat.o(59948);
         return Integer.valueOf(0);
       }
-      i = paraml1.fRf().u(paraml2.fRf());
+      i = paraml1.giD().u(paraml2.giD());
       if (i != 0)
       {
         AppMethodBeat.o(59948);
@@ -120,7 +120,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.f
  * JD-Core Version:    0.7.0.1
  */

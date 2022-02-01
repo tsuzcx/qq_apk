@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.wallet.pwd;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet.pwd.a.j;
 import com.tencent.mm.plugin.wallet.pwd.a.o;
-import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
@@ -25,7 +25,7 @@ final class a$5
     AppMethodBeat.i(69490);
     if ((paramInt1 == 0) && (paramInt2 == 0) && (((paramn instanceof o)) || ((paramn instanceof j))))
     {
-      this.Bki.a(this.activity, 0, a.g(this.Bki));
+      this.CKw.a(this.activity, 0, a.g(this.CKw));
       AppMethodBeat.o(69490);
       return true;
     }
@@ -36,19 +36,19 @@ final class a$5
   public final boolean s(Object... paramVarArgs)
   {
     AppMethodBeat.i(69491);
-    paramVarArgs = (u)paramVarArgs[0];
-    if (this.Bki.dmf.getBoolean("key_is_set_pwd_after_face_action"))
+    paramVarArgs = (v)paramVarArgs[0];
+    if (this.CKw.dxT.getBoolean("key_is_set_pwd_after_face_action"))
     {
-      ac.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, after face verify, reset pwd by face");
-      String str = this.Bki.dmf.getString("key_face_action_result_token");
-      this.JFQ.a(new j(str, paramVarArgs.iJA), true, 1);
+      ad.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, after face verify, reset pwd by face");
+      String str = this.CKw.dxT.getString("key_face_action_result_token");
+      this.LyU.a(new j(str, paramVarArgs.jcJ), true, 1);
     }
     for (;;)
     {
       AppMethodBeat.o(69491);
       return true;
-      ac.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, not after face verify, reset pwd normal");
-      this.JFQ.a(new o(paramVarArgs), true, 1);
+      ad.i("MicroMsg.ProcessManager", "WalletPwdConfirmUI controller onNext, not after face verify, reset pwd normal");
+      this.LyU.a(new o(paramVarArgs), true, 1);
     }
   }
 }

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.widget.desktop.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/IQueryCache;", "DATA", "", "createQueryCacheConfig", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "queryAndCache", "()Ljava/lang/Object;", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/IQueryCache;", "DATA", "", "createQueryCacheConfig", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/QueryCacheConfig;", "queryAndCache", "()Ljava/lang/Object;", "plugin-appbrand-integration_release"})
 public abstract interface h<DATA>
 {
-  public abstract n bzw();
+  public abstract n bDA();
 }
 
 

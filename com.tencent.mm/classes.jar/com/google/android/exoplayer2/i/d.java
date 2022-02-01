@@ -5,17 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  private static final byte[] bwo = { 0, 0, 0, 1 };
-  private static final int[] bwp = { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
-  private static final int[] bwq = { 0, 1, 2, 3, 4, 5, 6, 8, -1, -1, -1, 7, 8, -1, 8, -1 };
+  private static final byte[] bGC = { 0, 0, 0, 1 };
+  private static final int[] bGD = { 96000, 88200, 64000, 48000, 44100, 32000, 24000, 22050, 16000, 12000, 11025, 8000, 7350 };
+  private static final int[] bGE = { 0, 1, 2, 3, 4, 5, 6, 8, -1, -1, -1, 7, 8, -1, 8, -1 };
   
   private static int c(l paraml)
   {
     AppMethodBeat.i(93126);
-    int j = paraml.eo(5);
+    int j = paraml.es(5);
     int i = j;
     if (j == 31) {
-      i = paraml.eo(6) + 32;
+      i = paraml.es(6) + 32;
     }
     AppMethodBeat.o(93126);
     return i;
@@ -24,10 +24,10 @@ public final class d
   private static int d(l paraml)
   {
     AppMethodBeat.i(93127);
-    int i = paraml.eo(4);
+    int i = paraml.es(4);
     if (i == 15)
     {
-      i = paraml.eo(24);
+      i = paraml.es(24);
       AppMethodBeat.o(93127);
       return i;
     }
@@ -35,7 +35,7 @@ public final class d
     for (boolean bool = true;; bool = false)
     {
       a.checkArgument(bool);
-      i = bwp[i];
+      i = bGD[i];
       break;
     }
   }
@@ -43,9 +43,9 @@ public final class d
   public static byte[] j(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93123);
-    byte[] arrayOfByte = new byte[bwo.length + paramInt2];
-    System.arraycopy(bwo, 0, arrayOfByte, 0, bwo.length);
-    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, bwo.length, paramInt2);
+    byte[] arrayOfByte = new byte[bGC.length + paramInt2];
+    System.arraycopy(bGC, 0, arrayOfByte, 0, bGC.length);
+    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, bGC.length, paramInt2);
     AppMethodBeat.o(93123);
     return arrayOfByte;
   }
@@ -56,7 +56,7 @@ public final class d
     paramArrayOfByte = new l(paramArrayOfByte);
     int m = c(paramArrayOfByte);
     int i = d(paramArrayOfByte);
-    int k = paramArrayOfByte.eo(4);
+    int k = paramArrayOfByte.es(4);
     if (m != 5)
     {
       j = k;
@@ -69,11 +69,11 @@ public final class d
       i = m;
       if (c(paramArrayOfByte) == 22)
       {
-        j = paramArrayOfByte.eo(4);
+        j = paramArrayOfByte.es(4);
         i = m;
       }
     }
-    int j = bwq[j];
+    int j = bGE[j];
     if (j != -1) {}
     for (boolean bool = true;; bool = false)
     {
@@ -91,7 +91,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.i.d
  * JD-Core Version:    0.7.0.1
  */

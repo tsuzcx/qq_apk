@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.n.e;
+import com.tencent.mm.n.g;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,7 +44,7 @@ public final class x
     return null;
   }
   
-  public final boolean aFV(String paramString)
+  public final boolean aLv(String paramString)
   {
     AppMethodBeat.i(109481);
     if ((paramString != null) && ("com.tencent.map".equals(paramString)))
@@ -56,32 +56,32 @@ public final class x
     return false;
   }
   
-  public final String aNm()
+  public final String aQx()
   {
     return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
   }
   
-  public final String eKy()
+  public final String eZs()
   {
     return "TencentMap.apk";
   }
   
-  public final t.a eKz()
+  public final t.a eZt()
   {
     AppMethodBeat.i(109482);
     t.a locala = new t.a();
-    locala.DhB = 2131764397;
-    String str = g.ZY().getValue("QQMapDownloadTips");
-    if (!bs.isNullOrNil(str)) {
-      locala.DhC = str;
+    locala.EMm = 2131764397;
+    String str = g.acA().getValue("QQMapDownloadTips");
+    if (!bt.isNullOrNil(str)) {
+      locala.EMn = str;
     }
-    locala.DhD = 2131764402;
-    locala.DhA = 2131232699;
+    locala.EMo = 2131764402;
+    locala.EMl = 2131232699;
     AppMethodBeat.o(109482);
     return locala;
   }
   
-  public final boolean hi(Context paramContext)
+  public final boolean hn(Context paramContext)
   {
     AppMethodBeat.i(109480);
     Object localObject = new Intent("android.intent.action.VIEW", Uri.parse("sosomap://type=nav"));
@@ -107,7 +107,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.x
  * JD-Core Version:    0.7.0.1
  */

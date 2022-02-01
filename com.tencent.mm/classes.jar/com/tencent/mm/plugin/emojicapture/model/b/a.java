@@ -8,39 +8,39 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.g.c;
-import d.g.b.k;
+import com.tencent.mm.plugin.emojicapture.model.d;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "Lcom/tencent/mm/media/mix/FrameRetriever;", "preViewRect", "Landroid/graphics/RectF;", "(Landroid/graphics/RectF;)V", "bitmap", "Landroid/graphics/Bitmap;", "canvas", "Landroid/graphics/Canvas;", "currFrameTime", "", "drawer", "Lcom/tencent/mm/media/mix/EditorFrameDrawer;", "editorItems", "", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "height", "", "paint", "Landroid/graphics/Paint;", "preViewMatrix", "Landroid/graphics/Matrix;", "width", "addItem", "", "item", "requestNextFrame", "Lcom/tencent/mm/media/mix/FrameInfo;", "start", "stop", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/model/mix/EmojiFrameRetriever;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "preViewRect", "Landroid/graphics/RectF;", "(Landroid/graphics/RectF;)V", "bitmap", "Landroid/graphics/Bitmap;", "canvas", "Landroid/graphics/Canvas;", "currFrameTime", "", "drawer", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameDrawer;", "editorItems", "", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "getEditorItems", "()Ljava/util/List;", "setEditorItems", "(Ljava/util/List;)V", "height", "", "paint", "Landroid/graphics/Paint;", "preViewMatrix", "Landroid/graphics/Matrix;", "width", "addItem", "", "item", "requestNextFrame", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "start", "stop", "plugin-emojicapture_release"})
 public final class a
-  implements com.tencent.mm.media.g.d
+  implements com.tencent.mm.plugin.recordvideo.ui.editor.b.b
 {
+  private final Canvas aTq;
   private final Bitmap bitmap;
-  private final Canvas brp;
-  private long gPk;
-  List<com.tencent.mm.media.editor.a.b> gSw;
   private int height;
+  List<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> pRU;
+  private long pRV;
+  private final Matrix pRW;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.b pRX;
   private final Paint paint;
-  private final Matrix pov;
-  private final com.tencent.mm.media.g.b pow;
   private int width;
   
   public a(RectF paramRectF)
   {
     AppMethodBeat.i(262);
-    Object localObject = com.tencent.mm.plugin.emojicapture.model.d.pnw;
-    this.width = com.tencent.mm.plugin.emojicapture.model.d.ceL();
-    localObject = com.tencent.mm.plugin.emojicapture.model.d.pnw;
-    this.height = com.tencent.mm.plugin.emojicapture.model.d.ceL();
-    this.gSw = ((List)new ArrayList());
-    this.pov = new Matrix();
+    Object localObject = d.pQW;
+    this.width = d.cjo();
+    localObject = d.pQW;
+    this.height = d.cjo();
+    this.pRU = ((List)new ArrayList());
+    this.pRW = new Matrix();
     this.paint = new Paint();
-    this.pow = new com.tencent.mm.media.g.b(this.gSw);
-    localObject = this.pov;
+    this.pRX = new com.tencent.mm.plugin.recordvideo.ui.editor.b(this.pRU);
+    localObject = this.pRW;
     float f1 = paramRectF.left;
     float f2 = paramRectF.top;
     float f3 = paramRectF.right;
@@ -51,45 +51,45 @@ public final class a
     this.paint.setAntiAlias(true);
     this.paint.setFilterBitmap(true);
     paramRectF = Bitmap.createBitmap(this.width, this.height, Bitmap.Config.ARGB_8888);
-    k.g(paramRectF, "Bitmap.createBitmap(widt… Bitmap.Config.ARGB_8888)");
+    p.g(paramRectF, "Bitmap.createBitmap(widt… Bitmap.Config.ARGB_8888)");
     this.bitmap = paramRectF;
-    this.brp = new Canvas(this.bitmap);
+    this.aTq = new Canvas(this.bitmap);
     AppMethodBeat.o(262);
   }
   
-  public final void a(com.tencent.mm.media.editor.a.b paramb)
+  public final void a(com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a parama)
   {
-    AppMethodBeat.i(261);
-    if (paramb != null) {
-      this.gSw.add(paramb);
+    AppMethodBeat.i(195130);
+    if (parama != null) {
+      this.pRU.add(parama);
     }
-    AppMethodBeat.o(261);
+    AppMethodBeat.o(195130);
   }
   
-  public final c aqZ()
+  public final com.tencent.mm.plugin.recordvideo.ui.editor.b.a ckc()
   {
-    AppMethodBeat.i(259);
-    if (this.gSw.size() <= 0)
+    AppMethodBeat.i(195129);
+    if (this.pRU.size() <= 0)
     {
-      AppMethodBeat.o(259);
+      AppMethodBeat.o(195129);
       return null;
     }
-    int i = this.brp.save();
-    this.brp.drawColor(0, PorterDuff.Mode.MULTIPLY);
-    this.brp.concat(this.pov);
-    this.gPk = this.pow.a(this.brp, this.paint);
-    this.brp.restoreToCount(i);
-    c localc = new c(this.bitmap, this.gPk);
-    AppMethodBeat.o(259);
-    return localc;
+    int i = this.aTq.save();
+    this.aTq.drawColor(0, PorterDuff.Mode.MULTIPLY);
+    this.aTq.concat(this.pRW);
+    this.pRV = this.pRX.a(this.aTq, this.paint);
+    this.aTq.restoreToCount(i);
+    com.tencent.mm.plugin.recordvideo.ui.editor.b.a locala = new com.tencent.mm.plugin.recordvideo.ui.editor.b.a(this.bitmap, this.pRV);
+    AppMethodBeat.o(195129);
+    return locala;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(260);
-    Iterator localIterator = this.gSw.iterator();
+    Iterator localIterator = this.pRU.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.mm.media.editor.a.b)localIterator.next()).destroy();
+      ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)localIterator.next()).destroy();
     }
     AppMethodBeat.o(260);
   }

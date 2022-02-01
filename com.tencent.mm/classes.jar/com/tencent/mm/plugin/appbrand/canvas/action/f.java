@@ -92,7 +92,7 @@ public final class f
           for (int i = paramInt2;; i = 0)
           {
             localObject = new Rect(paramInt3, i, paramInt1 + paramInt4, paramInt2 + paramInt5);
-            paramString = paramd.jzh.a(paramd, paramString, (Rect)localObject, new e.a()
+            paramString = paramd.jTe.a(paramd, paramString, (Rect)localObject, new e.a()
             {
               public final void a(com.tencent.mm.plugin.appbrand.canvas.d paramAnonymousd)
               {
@@ -110,14 +110,14 @@ public final class f
             break;
           }
           label278:
-          paramInt1 = g.ve(paramInt1);
-          paramInt2 = g.ve(paramInt2);
-          paramInt4 = g.ve(paramInt4);
-          paramInt5 = g.ve(paramInt5);
-          paramInt3 = g.ve(paramInt3);
-          i = g.ve(i);
-          int j = g.ve(paramString.getWidth());
-          int k = g.ve(paramString.getHeight());
+          paramInt1 = g.vJ(paramInt1);
+          paramInt2 = g.vJ(paramInt2);
+          paramInt4 = g.vJ(paramInt4);
+          paramInt5 = g.vJ(paramInt5);
+          paramInt3 = g.vJ(paramInt3);
+          i = g.vJ(i);
+          int j = g.vJ(paramString.getWidth());
+          int k = g.vJ(paramString.getHeight());
           paramFloat3 = f3 / paramInt4;
           paramFloat4 = f2 / paramInt5;
           f1 = paramFloat2 + (paramInt3 - paramInt1) * paramFloat3;
@@ -127,10 +127,10 @@ public final class f
           for (;;)
           {
             paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
-            paramCanvas.drawBitmap(paramString, new Rect(0, 0, paramString.getWidth(), paramString.getHeight()), new RectF(f1, f3, f4, paramFloat4), paramd.jzc);
+            paramCanvas.drawBitmap(paramString, new Rect(0, 0, paramString.getWidth(), paramString.getHeight()), new RectF(f1, f3, f4, paramFloat4), paramd.jSZ);
             AppMethodBeat.o(144874);
             return true;
-            localObject = paramd.jzh.a(paramd, paramString, new e.a()
+            localObject = paramd.jTe.a(paramd, paramString, new e.a()
             {
               public final void a(com.tencent.mm.plugin.appbrand.canvas.d paramAnonymousd)
               {
@@ -145,7 +145,7 @@ public final class f
               return false;
             }
             if (f3 == 0.0F) {
-              paramFloat3 = g.ve(((Bitmap)localObject).getWidth()) + paramFloat2;
+              paramFloat3 = g.vJ(((Bitmap)localObject).getWidth()) + paramFloat2;
             }
             f4 = paramFloat3;
             f3 = paramFloat1;
@@ -153,7 +153,7 @@ public final class f
             paramString = (String)localObject;
             if (f2 == 0.0F)
             {
-              paramFloat4 = g.ve(((Bitmap)localObject).getHeight()) + paramFloat1;
+              paramFloat4 = g.vJ(((Bitmap)localObject).getHeight()) + paramFloat1;
               f4 = paramFloat3;
               f3 = paramFloat1;
               f1 = paramFloat2;
@@ -189,7 +189,7 @@ public final class f
       AppMethodBeat.o(144873);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.jzn, paramDrawActionArg.url, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.width, paramDrawActionArg.height, paramDrawActionArg.jzo, paramDrawActionArg.jzp, paramDrawActionArg.aMO, paramDrawActionArg.aMP);
+    boolean bool = a(paramd, paramCanvas, paramDrawActionArg.jTk, paramDrawActionArg.url, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.width, paramDrawActionArg.height, paramDrawActionArg.jTl, paramDrawActionArg.jTm, paramDrawActionArg.aXg, paramDrawActionArg.aXh);
     AppMethodBeat.o(144873);
     return bool;
   }
@@ -208,7 +208,7 @@ public final class f
     return bool;
   }
   
-  public final BaseDrawActionArg aZO()
+  public final BaseDrawActionArg bdn()
   {
     AppMethodBeat.i(144871);
     DrawImageActionArg localDrawImageActionArg = new DrawImageActionArg();

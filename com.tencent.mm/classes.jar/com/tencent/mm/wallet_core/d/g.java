@@ -1,18 +1,18 @@
 package com.tencent.mm.wallet_core.d;
 
 import android.content.Intent;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class g
 {
-  public i JFQ;
+  public i LyU;
   public MMActivity activity;
   
   public g(MMActivity paramMMActivity, i parami)
   {
     this.activity = paramMMActivity;
-    this.JFQ = parami;
+    this.LyU = parami;
   }
   
   public boolean A(Object... paramVarArgs)

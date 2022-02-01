@@ -1,13 +1,6 @@
 package com.tencent.luggage.d;
 
-import org.json.JSONObject;
-
-public abstract class c<TARGET extends n>
-{
-  public abstract JSONObject Aq();
-  
-  public abstract String name();
-}
+abstract interface c {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

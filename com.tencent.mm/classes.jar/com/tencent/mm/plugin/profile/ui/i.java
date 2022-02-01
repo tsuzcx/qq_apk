@@ -7,25 +7,26 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.model.az;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.profile.b;
 import com.tencent.mm.pluginsdk.b.a;
-import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.protocal.protobuf.cft;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.cks;
 import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.au.a;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.f;
 import junit.framework.Assert;
@@ -33,42 +34,42 @@ import junit.framework.Assert;
 public final class i
   implements a, n.b
 {
-  private ai contact;
+  private am contact;
   Context context;
   private f screen;
-  private HelperHeaderPreference.a vKI;
+  private HelperHeaderPreference.a wRR;
   
   public i(Context paramContext)
   {
     AppMethodBeat.i(27154);
     this.context = paramContext;
-    this.vKI = new r(paramContext);
+    this.wRR = new r(paramContext);
     AppMethodBeat.o(27154);
   }
   
-  private void bYK()
+  private void cdo()
   {
     AppMethodBeat.i(27158);
-    boolean bool = dqj();
+    boolean bool = dAM();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(2131951644);
-    ((HelperHeaderPreference)this.screen.aPN("contact_info_header_helper")).a(this.contact, this.vKI);
+    ((HelperHeaderPreference)this.screen.aVD("contact_info_header_helper")).a(this.contact, this.wRR);
     if (bool)
     {
-      this.screen.cK("contact_info_linkedin_account", false);
-      this.screen.aPO("contact_info_linkedin_install");
+      this.screen.cP("contact_info_linkedin_account", false);
+      this.screen.aVE("contact_info_linkedin_install");
       AppMethodBeat.o(27158);
       return;
     }
-    this.screen.cK("contact_info_linkedin_account", true);
-    this.screen.aPO("contact_info_linkedin_uninstall");
+    this.screen.cP("contact_info_linkedin_account", true);
+    this.screen.aVE("contact_info_linkedin_uninstall");
     AppMethodBeat.o(27158);
   }
   
-  private static boolean dqj()
+  private static boolean dAM()
   {
     AppMethodBeat.i(27155);
-    if ((u.axI() & 0x1000000) == 0)
+    if ((u.aAy() & 0x1000000) == 0)
     {
       AppMethodBeat.o(27155);
       return true;
@@ -77,30 +78,30 @@ public final class i
     return false;
   }
   
-  public static void x(Context paramContext, final boolean paramBoolean)
+  public static void z(Context paramContext, final boolean paramBoolean)
   {
     AppMethodBeat.i(27159);
     if (paramBoolean) {}
     for (String str = paramContext.getString(2131763362);; str = paramContext.getString(2131763370))
     {
       paramContext.getString(2131755906);
-      new au(new au.a()
+      new av(new av.a()
       {
         public final boolean onTimerExpired()
         {
           AppMethodBeat.i(27153);
-          if (this.oDo != null) {
-            this.oDo.dismiss();
+          if (this.pgO != null) {
+            this.pgO.dismiss();
           }
-          int i = u.axI();
-          cft localcft;
+          int i = u.aAy();
+          cks localcks;
           if (paramBoolean)
           {
             i &= 0xFEFFFFFF;
-            az.ayM();
-            c.agA().set(34, Integer.valueOf(i));
-            localcft = new cft();
-            localcft.DNd = 16777216;
+            ba.aBQ();
+            c.ajl().set(34, Integer.valueOf(i));
+            localcks = new cks();
+            localcks.Fsi = 16777216;
             if (!paramBoolean) {
               break label176;
             }
@@ -108,53 +109,90 @@ public final class i
           label176:
           for (i = 0;; i = 1)
           {
-            localcft.Fuc = i;
-            az.ayM();
-            c.awA().c(new j.a(39, localcft));
-            if (this.uEr != null) {
-              this.uEr.a(null, null);
+            localcks.Heh = i;
+            ba.aBQ();
+            c.azo().c(new k.a(39, localcks));
+            if (this.vHr != null) {
+              this.vHr.a(null, null);
             }
             AppMethodBeat.o(27153);
             return false;
             i |= 0x1000000;
-            az.ayM();
-            c.agA().set(286722, "");
-            az.ayM();
-            c.agA().set(286721, "");
-            az.ayM();
-            c.agA().set(286723, "");
+            ba.aBQ();
+            c.ajl().set(286722, "");
+            ba.aBQ();
+            c.ajl().set(286721, "");
+            ba.aBQ();
+            c.ajl().set(286723, "");
             break;
           }
         }
-      }, false).au(1500L, 1500L);
+      }, false).az(1500L, 1500L);
       AppMethodBeat.o(27159);
       return;
     }
   }
   
-  public final boolean WZ(String paramString)
+  public final void a(int paramInt, n paramn, Object paramObject)
+  {
+    AppMethodBeat.i(27162);
+    if ((paramObject instanceof Integer))
+    {
+      paramInt = ((Integer)paramObject).intValue();
+      if ((paramInt == 40) || (paramInt == 34)) {
+        cdo();
+      }
+    }
+    AppMethodBeat.o(27162);
+  }
+  
+  public final boolean a(f paramf, am paramam, boolean paramBoolean, int paramInt)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(27157);
+    if (paramf != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      Assert.assertTrue(paramBoolean);
+      paramBoolean = bool;
+      if (paramam != null) {
+        paramBoolean = true;
+      }
+      Assert.assertTrue(paramBoolean);
+      Assert.assertTrue(w.zZ(paramam.field_username));
+      ba.aBQ();
+      c.ajl().a(this);
+      this.contact = paramam;
+      this.screen = paramf;
+      cdo();
+      AppMethodBeat.o(27157);
+      return true;
+    }
+  }
+  
+  public final boolean aaG(String paramString)
   {
     AppMethodBeat.i(27156);
-    ac.d("MicroMsg.ContactWidgetLinkedIn", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bs.nullAsNil(paramString).length() <= 0)
+    ad.d("MicroMsg.ContactWidgetLinkedIn", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (bt.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27156);
       return false;
     }
     if (paramString.equals("contact_info_linkedin_install"))
     {
-      x(this.context, true);
+      z(this.context, true);
       AppMethodBeat.o(27156);
       return true;
     }
     if (paramString.equals("contact_info_linkedin_uninstall"))
     {
-      h.d(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+      h.e(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27152);
-          i.x(i.this.context, false);
+          i.z(i.this.context, false);
           AppMethodBeat.o(27152);
         }
       }, null);
@@ -166,55 +204,18 @@ public final class i
       Intent localIntent = new Intent(this.context, BindLinkedInUI.class);
       ((Activity)this.context).startActivityForResult(localIntent, 1);
     }
-    ac.e("MicroMsg.ContactWidgetLinkedIn", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    ad.e("MicroMsg.ContactWidgetLinkedIn", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(27156);
     return false;
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(27162);
-    if ((paramObject instanceof Integer))
-    {
-      paramInt = ((Integer)paramObject).intValue();
-      if ((paramInt == 40) || (paramInt == 34)) {
-        bYK();
-      }
-    }
-    AppMethodBeat.o(27162);
-  }
-  
-  public final boolean a(f paramf, ai paramai, boolean paramBoolean, int paramInt)
-  {
-    boolean bool = false;
-    AppMethodBeat.i(27157);
-    if (paramf != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      Assert.assertTrue(paramBoolean);
-      paramBoolean = bool;
-      if (paramai != null) {
-        paramBoolean = true;
-      }
-      Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(w.xc(paramai.field_username));
-      az.ayM();
-      c.agA().a(this);
-      this.contact = paramai;
-      this.screen = paramf;
-      bYK();
-      AppMethodBeat.o(27157);
-      return true;
-    }
-  }
-  
-  public final boolean bYJ()
+  public final boolean cdn()
   {
     AppMethodBeat.i(27160);
-    az.ayM();
-    c.agA().b(this);
-    this.screen.aPN("contact_info_header_helper");
-    b.iyy.Lj();
+    ba.aBQ();
+    c.ajl().b(this);
+    this.screen.aVD("contact_info_header_helper");
+    b.iRH.MR();
     AppMethodBeat.o(27160);
     return true;
   }
@@ -223,7 +224,7 @@ public final class i
   {
     AppMethodBeat.i(27161);
     if ((paramInt1 == 1) && (paramInt2 == -1)) {
-      bYK();
+      cdo();
     }
     AppMethodBeat.o(27161);
   }

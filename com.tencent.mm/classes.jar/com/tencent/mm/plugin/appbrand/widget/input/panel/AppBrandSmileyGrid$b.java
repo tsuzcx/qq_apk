@@ -6,18 +6,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandSmileyGrid$b
 {
-  ImageView lzC;
+  ImageView lZa;
   
   public AppBrandSmileyGrid$b(View paramView)
   {
     AppMethodBeat.i(49932);
-    this.lzC = ((ImageView)paramView.findViewById(2131296943));
+    this.lZa = ((ImageView)paramView.findViewById(2131296943));
     AppMethodBeat.o(49932);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.AppBrandSmileyGrid.b
  * JD-Core Version:    0.7.0.1
  */

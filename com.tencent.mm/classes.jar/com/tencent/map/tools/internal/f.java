@@ -102,7 +102,7 @@ public final class f
   
   public final Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(191285);
+    AppMethodBeat.i(195077);
     Object localObject = null;
     try
     {
@@ -110,7 +110,7 @@ public final class f
       try
       {
         paramClass = b.a(paramClass, paramString, paramArrayOfObject);
-        AppMethodBeat.o(191285);
+        AppMethodBeat.o(195077);
         return paramClass;
       }
       catch (Exception paramClass)
@@ -118,11 +118,11 @@ public final class f
         if ((paramClass instanceof InvocationTargetException))
         {
           paramClass = new RuntimeException(((InvocationTargetException)paramClass).getTargetException());
-          AppMethodBeat.o(191285);
+          AppMethodBeat.o(195077);
           throw paramClass;
         }
         paramClass = new RuntimeException(paramClass);
-        AppMethodBeat.o(191285);
+        AppMethodBeat.o(195077);
         throw paramClass;
       }
     }

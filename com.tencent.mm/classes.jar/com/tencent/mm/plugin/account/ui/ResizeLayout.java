@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ResizeLayout
   extends LinearLayout
 {
-  private a iXJ = null;
+  private a jqS = null;
   
   public ResizeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,8 +18,8 @@ public class ResizeLayout
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(128726);
-    if (this.iXJ != null) {
-      this.iXJ.aQL();
+    if (this.jqS != null) {
+      this.jqS.aTX();
     }
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(128726);
@@ -27,12 +27,12 @@ public class ResizeLayout
   
   public void setOnSizeChanged(a parama)
   {
-    this.iXJ = parama;
+    this.jqS = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void aQL();
+    public abstract void aTX();
   }
 }
 

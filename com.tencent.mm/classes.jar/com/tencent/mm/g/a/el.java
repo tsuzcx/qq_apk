@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class el
   extends b
 {
-  public a dem;
+  public a dpF;
   
   public el()
   {
@@ -16,23 +15,22 @@ public final class el
   
   private el(byte paramByte)
   {
-    AppMethodBeat.i(116002);
-    this.dem = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(115999);
+    this.dpF = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(116002);
+    AppMethodBeat.o(115999);
   }
   
   public static final class a
   {
-    public Context context;
-    public int op = 0;
-    public String userName;
+    public String cUi;
+    public boolean doA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.el
  * JD-Core Version:    0.7.0.1
  */

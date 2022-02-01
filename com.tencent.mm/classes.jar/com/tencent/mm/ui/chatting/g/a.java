@@ -1,144 +1,173 @@
 package com.tencent.mm.ui.chatting.g;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.chatting.m.e;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.ball.c.g;
+import com.tencent.mm.plugin.ball.f.b;
+import com.tencent.mm.plugin.ball.f.d;
+import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class a
-  implements c<bo>
+  extends com.tencent.mm.plugin.ball.service.f
 {
-  private SparseArray<bo> IeI;
-  private com.tencent.mm.ui.chatting.d.a cLy;
+  private static final Set<String> JPe;
+  private static boolean JPf;
+  private static long JPg;
+  private static com.tencent.mm.plugin.ball.c.f kjw;
+  private String kju = "";
+  private String mFilePath = "";
+  private int oTR = 0;
   
-  public a(com.tencent.mm.ui.chatting.d.a parama, SparseArray<bo> paramSparseArray)
+  static
   {
-    this.cLy = parama;
-    this.IeI = paramSparseArray;
+    AppMethodBeat.i(35866);
+    HashSet localHashSet = new HashSet();
+    JPe = localHashSet;
+    localHashSet.add("app_type");
+    JPe.add("app_media_id");
+    JPe.add("app_msg_id");
+    JPe.add("app_show_share");
+    JPe.add("scene");
+    kjw = new g()
+    {
+      public final void c(BallInfo paramAnonymousBallInfo)
+      {
+        AppMethodBeat.i(35856);
+        a.b(paramAnonymousBallInfo);
+        AppMethodBeat.o(35856);
+      }
+      
+      public final void d(BallInfo paramAnonymousBallInfo) {}
+      
+      public final void e(BallInfo paramAnonymousBallInfo) {}
+    };
+    JPf = false;
+    JPg = 0L;
+    AppMethodBeat.o(35866);
   }
   
-  public final void a(final d.a parama, final e<bo> parame, final d.d<bo> paramd, final d.b paramb)
+  public a(com.tencent.mm.plugin.ball.a.f paramf)
   {
-    AppMethodBeat.i(36418);
-    Object localObject = com.tencent.mm.ui.chatting.k.a.Igd;
-    switch (com.tencent.mm.ui.chatting.k.a.1.Igf[paramd.IeY.ordinal()])
-    {
+    super(paramf);
+  }
+  
+  public static void deP()
+  {
+    AppMethodBeat.i(35863);
+    com.tencent.mm.sdk.b.a.IbL.b(new a.2());
+    AppMethodBeat.o(35863);
+  }
+  
+  public static boolean isFileExist(String paramString)
+  {
+    AppMethodBeat.i(35864);
+    boolean bool = new e(paramString).exists();
+    AppMethodBeat.o(35864);
+    return bool;
+  }
+  
+  public final boolean bgA()
+  {
+    return true;
+  }
+  
+  public final void bgD()
+  {
+    AppMethodBeat.i(35859);
+    ad.i("MicroMsg.FilesFloatBall.FilesPageFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.bgD();
+    if ((this.nHb != null) && (this.nHb.getActivity() != null)) {
+      this.nHb.getActivity().finish();
     }
-    while (parame == null)
+    AppMethodBeat.o(35859);
+  }
+  
+  public final void bgE()
+  {
+    AppMethodBeat.i(35860);
+    ad.i("MicroMsg.FilesFloatBall.FilesPageFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
+    super.bgE();
+    AppMethodBeat.o(35860);
+  }
+  
+  public final boolean bgI()
+  {
+    return true;
+  }
+  
+  public final boolean bgz()
+  {
+    AppMethodBeat.i(35858);
+    if ((!bt.isNullOrNil(this.mFilePath)) && (!i.fv(this.mFilePath)))
     {
-      ac.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[load] null == source!");
-      paramb.next();
-      AppMethodBeat.o(36418);
-      return;
-      localObject = ((com.tencent.mm.ui.chatting.k.a)localObject).Ige;
-      localObject[0] += 1;
-      continue;
-      localObject = ((com.tencent.mm.ui.chatting.k.a)localObject).Ige;
-      localObject[1] += 1;
-      continue;
-      localObject = ((com.tencent.mm.ui.chatting.k.a)localObject).Ige;
-      localObject[2] += 1;
-      continue;
-      if ((paramd.IeX != null) && (paramd.IeX.getInt("SCENE") == 1))
+      AppMethodBeat.o(35858);
+      return false;
+    }
+    AppMethodBeat.o(35858);
+    return true;
+  }
+  
+  public final void h(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(35861);
+    ad.i("MicroMsg.FilesFloatBall.FilesPageFloatBallHelper", "onCreate, filePath:%s fileExt:%s sence:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    this.mFilePath = paramString1;
+    this.kju = paramString2;
+    this.oTR = paramInt;
+    super.ac(4, b.Wq(paramString1));
+    bKG().nGc = 4;
+    bKG().nGb = this.oTR;
+    bKC();
+    if (this.nGj.ime != null)
+    {
+      this.nGj.ime.putString("filePath", paramString1);
+      if (paramBoolean)
       {
-        localObject = ((com.tencent.mm.ui.chatting.k.a)localObject).Ige;
-        localObject[3] += 1;
+        if (this.nHb.getIntent() != null)
+        {
+          com.tencent.mm.plugin.ball.f.a.b(this.nHb.getIntent(), this.nGj.ime, JPe);
+          this.nGj.ime.putBoolean("ifAppAttachDownloadUI", true);
+          bKC();
+          AppMethodBeat.o(35861);
+        }
       }
       else
       {
-        localObject = ((com.tencent.mm.ui.chatting.k.a)localObject).Ige;
-        localObject[4] += 1;
+        this.nGj.ime.putBoolean("ifAppAttachDownloadUI", false);
+        this.nGj.ime.putString("fileExt", paramString2);
+        this.nGj.ime.putInt("sence", paramInt);
+        bKC();
       }
     }
-    parame.a(new d.b()
-    {
-      public final void next()
-      {
-        AppMethodBeat.i(36417);
-        parame.ib(paramd.IeZ);
-        parame.close();
-        paramd.fAw = parame.eZx();
-        paramd.Ifa = paramd.IeZ.size();
-        ac.i("MicroMsg.ChattingLoader.ChattingDataCallback", "action：" + parama + " addCount:" + paramd.Ifa + " totalCount:" + paramd.fAw);
-        paramb.next();
-        AppMethodBeat.o(36417);
-      }
-    });
-    AppMethodBeat.o(36418);
+    AppMethodBeat.o(35861);
   }
   
-  public final SparseArray<bo> hW(List<bo> paramList)
+  public final void mn(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(36419);
-    Object localObject = paramList;
-    if (paramList == null)
-    {
-      localObject = new LinkedList();
-      ac.e("MicroMsg.ChattingLoader.ChattingDataCallback", "[fillData] list is null!");
+    AppMethodBeat.i(35862);
+    Integer localInteger = d.Wr(paramString1);
+    paramString1 = localInteger;
+    if (localInteger == null) {
+      paramString1 = d.Wr("unknown");
     }
-    try
-    {
-      if ((((List)localObject).size() > 0) && (this.cLy != null))
-      {
-        paramList = this.cLy.getTalkerUserName();
-        localbo = (bo)((List)localObject).get(0);
-        if ((localbo != null) && (!bs.isNullOrNil(paramList)) && (!bs.isNullOrNil(localbo.field_talker)) && (!bs.lr(localbo.field_talker, paramList)))
-        {
-          ac.i("MicroMsg.ChattingLoader.ChattingDataCallback", "talker not equal, chattingContextTalker:%s, msgInfoTalker:%s", new Object[] { localbo.field_talker, paramList });
-          h.wUl.f(18264, new Object[] { localbo.field_talker, paramList });
-          h.wUl.n(1151L, 0L, 1L);
-          paramList = this.IeI;
-          AppMethodBeat.o(36419);
-          return paramList;
-        }
-      }
+    this.nGj.lZt = paramString1.intValue();
+    if (bt.isNullOrNil(this.nGj.name)) {
+      this.nGj.name = paramString2;
     }
-    catch (Throwable paramList)
-    {
-      bo localbo;
-      ac.printErrStackTrace("MicroMsg.ChattingLoader.ChattingDataCallback", paramList, "fillData Exception", new Object[0]);
-      h.wUl.n(1151L, 1L, 1L);
-      this.IeI.clear();
-      paramList = ((List)localObject).iterator();
-      int i = 0;
-      while (paramList.hasNext())
-      {
-        localObject = this.IeI;
-        localbo = (bo)paramList.next();
-        ((SparseArray)localObject).put(i, localbo);
-        int j = i + 1;
-        i = j;
-        if (localbo != null)
-        {
-          i = j;
-          if (localbo.isText())
-          {
-            i = j;
-            if (localbo.field_content != null)
-            {
-              localbo.setContent(localbo.field_content.replaceAll("‮", ""));
-              i = j;
-            }
-          }
-        }
-      }
-      paramList = this.IeI;
-      AppMethodBeat.o(36419);
-    }
-    return paramList;
+    bKC();
+    AppMethodBeat.o(35862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.g.a
  * JD-Core Version:    0.7.0.1
  */

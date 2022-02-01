@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emoji.sync;
 
 public abstract interface d
 {
-  public abstract void Yq(String paramString);
+  public abstract void abW(String paramString);
   
   public abstract void l(String paramString, int paramInt, boolean paramBoolean);
 }

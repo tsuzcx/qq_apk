@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.voip_cs.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bp;
+import com.tencent.mm.g.a.bs;
 
 final class c$1
-  extends com.tencent.mm.sdk.b.c<bp>
+  extends com.tencent.mm.sdk.b.c<bs>
 {
   c$1(c paramc)
   {
     AppMethodBeat.i(161686);
-    this.__eventId = bp.class.getName().hashCode();
+    this.__eventId = bs.class.getName().hashCode();
     AppMethodBeat.o(161686);
   }
 }

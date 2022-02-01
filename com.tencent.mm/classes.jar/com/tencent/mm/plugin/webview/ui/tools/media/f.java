@@ -1,121 +1,86 @@
 package com.tencent.mm.plugin.webview.ui.tools.media;
 
-import android.content.Context;
-import android.view.MenuItem;
+import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.y;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.widget.a.e.a;
-import d.g.b.k;
+import com.tencent.mm.g.a.cv;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.model.y.b;
+import com.tencent.mm.plugin.webview.model.c;
+import com.tencent.mm.protocal.protobuf.jb;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoMenuHelper;", "", "()V", "MENU_ID_FAV", "", "MENU_ID_SEND_TO_FRIEND", "TAG", "", "showMenu", "", "ui", "Landroid/content/Context;", "mpShareVideoInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "from", "plugin-webview_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav;", "", "()V", "TAG", "", "doFav", "", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "data", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "mpShareVideoInfo", "Lcom/tencent/mm/protocal/protobuf/BaseMpShareVideoInfo;", "IPCInvoke_Fav", "plugin-webview_release"})
 public final class f
 {
-  public static final f CLf;
-  private static final String TAG = "MicroMsg.JsApiHandleMPPageAction";
-  private static final int nPi = 1;
-  private static final int nPk = 0;
+  public static final f EoS;
+  private static final String TAG = "MicroMsg.MpShareVideoMsgFav";
   
   static
   {
-    AppMethodBeat.i(82675);
-    CLf = new f();
-    TAG = "MicroMsg.JsApiHandleMPPageAction";
-    nPi = 1;
-    AppMethodBeat.o(82675);
+    AppMethodBeat.i(82666);
+    EoS = new f();
+    TAG = "MicroMsg.MpShareVideoMsgFav";
+    AppMethodBeat.o(82666);
   }
   
-  public static void a(Context paramContext, final y paramy, final int paramInt)
+  public static void b(com.tencent.mm.ai.y paramy)
   {
-    AppMethodBeat.i(82674);
-    k.h(paramContext, "ui");
-    k.h(paramy, "mpShareVideoInfo");
-    Object localObject = a.CKm;
-    a.iS(paramInt, 3);
-    if ((paramContext instanceof WebViewUI))
+    AppMethodBeat.i(82664);
+    p.h(paramy, "msgInfo");
+    MpVideoDataParcelable localMpVideoDataParcelable = new MpVideoDataParcelable();
+    localMpVideoDataParcelable.EoU = paramy;
+    h.a("com.tencent.mm", (Parcelable)localMpVideoDataParcelable, a.class, (d)b.EoT);
+    AppMethodBeat.o(82664);
+  }
+  
+  public static void d(jb paramjb)
+  {
+    AppMethodBeat.i(207612);
+    if (paramjb == null)
     {
-      localObject = new com.tencent.mm.ui.widget.a.e(paramContext, 1, false);
-      ((com.tencent.mm.ui.widget.a.e)localObject).a((n.c)new a(paramContext));
-      ((com.tencent.mm.ui.widget.a.e)localObject).a((n.d)new b(paramContext, paramy, paramInt));
-      ((com.tencent.mm.ui.widget.a.e)localObject).a((e.a)new c(paramInt));
-      ((com.tencent.mm.ui.widget.a.e)localObject).p((CharSequence)" ", 1);
-      ((com.tencent.mm.ui.widget.a.e)localObject).fvt();
-      ((com.tencent.mm.ui.widget.a.e)localObject).cED();
-      AppMethodBeat.o(82674);
+      ad.w(TAG, "doFav msgInfo is null");
+      AppMethodBeat.o(207612);
       return;
     }
-    ac.e(TAG, "not in WebViewUI now!");
-    AppMethodBeat.o(82674);
+    cv localcv = new cv();
+    Object localObject = com.tencent.mm.model.y.AH(bt.nullAsNil(paramjb.hDf));
+    localObject = com.tencent.mm.model.y.aBq().F((String)localObject, true);
+    if (localObject == null) {
+      p.gfZ();
+    }
+    ((y.b)localObject).k("sendAppMsgScene", Integer.valueOf(2));
+    ((y.b)localObject).k("preChatName", paramjb.dOy);
+    ((y.b)localObject).k("prePublishId", paramjb.hDf);
+    ((y.b)localObject).k("preUsername", paramjb.dOx);
+    ((y.b)localObject).k("referUrl", paramjb.url);
+    localcv.dnG.dnM = 36;
+    c.a(localcv, paramjb);
+    a.IbL.l((com.tencent.mm.sdk.b.b)localcv);
+    AppMethodBeat.o(207612);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav$IPCInvoke_Fav;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
   static final class a
-    implements n.c
-  {
-    a(Context paramContext) {}
-    
-    public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
-    {
-      AppMethodBeat.i(82671);
-      f localf = f.CLf;
-      paraml.a(f.eGe(), (CharSequence)this.CLg.getString(2131762163), 2131689831, false);
-      localf = f.CLf;
-      paraml.a(f.eGf(), (CharSequence)this.CLg.getString(2131761941), 2131689808, false);
-      AppMethodBeat.o(82671);
-    }
-  }
+    implements com.tencent.mm.ipcinvoker.b<MpVideoDataParcelable, Bundle>
+  {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class b
-    implements n.d
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class b<T>
+    implements d<ResultType>
   {
-    b(Context paramContext, y paramy, int paramInt) {}
+    public static final b EoT;
     
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+    static
     {
-      AppMethodBeat.i(82672);
-      k.g(paramMenuItem, "menuItem");
-      paramInt = paramMenuItem.getItemId();
-      paramMenuItem = f.CLf;
-      if (paramInt == f.eGe())
-      {
-        ((WebViewUI)this.CLg).CAG.hhf = paramy;
-        paramMenuItem = c.CKY;
-        c.a(this.CLg, paramy.hld, "", paramy.title, paramy.DWF, 2);
-        paramMenuItem = a.CKm;
-        a.aC(1, paramInt, 3);
-        AppMethodBeat.o(82672);
-        return;
-      }
-      paramMenuItem = f.CLf;
-      if (paramInt == f.eGf())
-      {
-        paramMenuItem = e.CLc;
-        e.b(paramy);
-        h.cd(this.CLg, this.CLg.getString(2131758936));
-        paramMenuItem = a.CKm;
-        a.aC(2, paramInt, 3);
-      }
-      AppMethodBeat.o(82672);
-    }
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "onClick"})
-  static final class c
-    implements e.a
-  {
-    c(int paramInt) {}
-    
-    public final void onClick()
-    {
-      AppMethodBeat.i(82673);
-      a locala = a.CKm;
-      a.aC(3, this.CLh, 3);
-      AppMethodBeat.o(82673);
+      AppMethodBeat.i(82663);
+      EoT = new b();
+      AppMethodBeat.o(82663);
     }
   }
 }

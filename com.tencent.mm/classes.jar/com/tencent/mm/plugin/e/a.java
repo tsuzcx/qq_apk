@@ -8,11 +8,11 @@ public final class a
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(22632);
-    if (!com.tencent.mm.kernel.a.afS())
+    if (!com.tencent.mm.kernel.a.aiE())
     {
-      com.tencent.mm.kernel.g.agP().ggL = true;
-      com.tencent.mm.kernel.g.agP().initialize();
-      com.tencent.mm.kernel.g.agP().ggL = false;
+      com.tencent.mm.kernel.g.ajA().gAv = true;
+      com.tencent.mm.kernel.g.ajA().initialize();
+      com.tencent.mm.kernel.g.ajA().gAv = false;
     }
     AppMethodBeat.o(22632);
   }

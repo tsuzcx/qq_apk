@@ -6,73 +6,73 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class g
   implements w.a
 {
-  public static g DEN = null;
-  private SensorEventListener CHV;
-  private float[] DEJ;
-  int DEK;
-  int DEL;
-  private SensorManager DEM;
+  public static g FjT = null;
+  private SensorEventListener ElH;
+  private float[] FjP;
+  int FjQ;
+  int FjR;
+  private SensorManager FjS;
   public boolean hasInit;
   
   public g()
   {
     AppMethodBeat.i(152387);
     this.hasInit = false;
-    this.DEJ = new float[3];
-    this.DEK = -10000;
-    this.DEL = -10000;
+    this.FjP = new float[3];
+    this.FjQ = -10000;
+    this.FjR = -10000;
     AppMethodBeat.o(152387);
   }
   
-  private void eQe()
+  private void ffg()
   {
     AppMethodBeat.i(152391);
-    ac.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-    if ((this.DEM != null) && (this.CHV != null))
+    ad.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
+    if ((this.FjS != null) && (this.ElH != null))
     {
-      ac.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-      this.DEM.unregisterListener(this.CHV);
-      this.DEM = null;
-      this.CHV = null;
+      ad.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
+      this.FjS.unregisterListener(this.ElH);
+      this.FjS = null;
+      this.ElH = null;
     }
     this.hasInit = false;
     AppMethodBeat.o(152391);
   }
   
-  public final void eAi()
+  public final void eOW()
   {
     AppMethodBeat.i(152392);
-    DEN = null;
-    eQe();
+    FjT = null;
+    ffg();
     AppMethodBeat.o(152392);
   }
   
-  public final void eAj()
+  public final void eOX()
   {
     AppMethodBeat.i(152394);
-    eQe();
+    ffg();
     AppMethodBeat.o(152394);
   }
   
-  public final int eQd()
+  public final int fff()
   {
     AppMethodBeat.i(152388);
-    ac.d("MicroMsg.HeadingPitchSensorMgr", "getHeading() " + this.DEK);
-    int i = this.DEK;
+    ad.d("MicroMsg.HeadingPitchSensorMgr", "getHeading() " + this.FjQ);
+    int i = this.FjQ;
     AppMethodBeat.o(152388);
     return i;
   }
   
-  public final void gO(Context paramContext)
+  public final void gT(Context paramContext)
   {
     AppMethodBeat.i(152393);
-    hw(paramContext);
+    hB(paramContext);
     AppMethodBeat.o(152393);
   }
   
@@ -84,32 +84,32 @@ public final class g
   public final int getPitch()
   {
     AppMethodBeat.i(152389);
-    ac.d("MicroMsg.HeadingPitchSensorMgr", "getPitch() " + this.DEL);
-    int i = this.DEL;
+    ad.d("MicroMsg.HeadingPitchSensorMgr", "getPitch() " + this.FjR);
+    int i = this.FjR;
     AppMethodBeat.o(152389);
     return i;
   }
   
-  public final void hw(Context paramContext)
+  public final void hB(Context paramContext)
   {
     AppMethodBeat.i(152390);
-    ac.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() ");
+    ad.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() ");
     if (paramContext == null)
     {
-      ac.e("MicroMsg.HeadingPitchSensorMgr", "initSensor() context == null");
+      ad.e("MicroMsg.HeadingPitchSensorMgr", "initSensor() context == null");
       AppMethodBeat.o(152390);
       return;
     }
-    if (this.DEM == null) {
-      this.DEM = ((SensorManager)ai.getContext().getSystemService("sensor"));
+    if (this.FjS == null) {
+      this.FjS = ((SensorManager)aj.getContext().getSystemService("sensor"));
     }
-    if (this.CHV == null) {
-      this.CHV = new SensorEventListener()
+    if (this.ElH == null) {
+      this.ElH = new SensorEventListener()
       {
         public final void onAccuracyChanged(Sensor paramAnonymousSensor, int paramAnonymousInt)
         {
           AppMethodBeat.i(152386);
-          ac.i("MicroMsg.HeadingPitchSensorMgr", "onAccuracyChanged");
+          ad.i("MicroMsg.HeadingPitchSensorMgr", "onAccuracyChanged");
           AppMethodBeat.o(152386);
         }
         
@@ -121,27 +121,27 @@ public final class g
             g.a(g.this)[0] = paramAnonymousSensorEvent.values[0];
             g.a(g.this)[1] = paramAnonymousSensorEvent.values[1];
             g.a(g.this)[2] = paramAnonymousSensorEvent.values[2];
-            if (g.this.DEK == -10000) {
-              g.this.DEK = ((int)g.a(g.this)[0]);
+            if (g.this.FjQ == -10000) {
+              g.this.FjQ = ((int)g.a(g.this)[0]);
             }
             for (;;)
             {
-              if (g.this.DEK == 0) {
-                g.this.DEK = 1;
+              if (g.this.FjQ == 0) {
+                g.this.FjQ = 1;
               }
-              if (g.this.DEK == 365) {
-                g.this.DEK = 364;
+              if (g.this.FjQ == 365) {
+                g.this.FjQ = 364;
               }
-              if (g.this.DEL != -10000) {
+              if (g.this.FjR != -10000) {
                 break;
               }
-              g.this.DEL = ((int)g.a(g.this)[1]);
+              g.this.FjR = ((int)g.a(g.this)[1]);
               AppMethodBeat.o(152385);
               return;
-              if ((g.a(g.this)[0] - g.this.DEK > 300.0F) || (g.a(g.this)[0] - g.this.DEK < -300.0F)) {
-                g.this.DEK = ((int)g.a(g.this)[0]);
+              if ((g.a(g.this)[0] - g.this.FjQ > 300.0F) || (g.a(g.this)[0] - g.this.FjQ < -300.0F)) {
+                g.this.FjQ = ((int)g.a(g.this)[0]);
               } else {
-                g.this.DEK = ((int)(g.this.DEK * 0.6D + g.a(g.this)[0] * 0.4D));
+                g.this.FjQ = ((int)(g.this.FjQ * 0.6D + g.a(g.this)[0] * 0.4D));
               }
             }
             if (g.a(g.this)[1] < -68.0F)
@@ -151,25 +151,25 @@ public final class g
               if (j < -89) {
                 i = -89;
               }
-              g.this.DEL = i;
+              g.this.FjR = i;
               AppMethodBeat.o(152385);
               return;
             }
             if (g.a(g.this)[1] > 89.0F)
             {
-              g.this.DEL = 89;
+              g.this.FjR = 89;
               AppMethodBeat.o(152385);
               return;
             }
-            g.this.DEL = ((int)(g.this.DEL * 0.6D + g.a(g.this)[1] * 0.4D));
+            g.this.FjR = ((int)(g.this.FjR * 0.6D + g.a(g.this)[1] * 0.4D));
           }
           AppMethodBeat.o(152385);
         }
       };
     }
-    boolean bool = this.DEM.registerListener(this.CHV, this.DEM.getDefaultSensor(3), 3);
+    boolean bool = this.FjS.registerListener(this.ElH, this.FjS.getDefaultSensor(3), 3);
     this.hasInit = true;
-    ac.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() finish, %s", new Object[] { Boolean.valueOf(bool) });
+    ad.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() finish, %s", new Object[] { Boolean.valueOf(bool) });
     AppMethodBeat.o(152390);
   }
 }

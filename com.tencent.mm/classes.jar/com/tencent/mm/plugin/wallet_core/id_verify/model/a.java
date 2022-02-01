@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 public final class a
 {
-  public String Bsn;
-  public String Bso;
-  public String cZz;
+  public String CSC;
+  public String CSD;
+  public String dkR;
 }
 
 

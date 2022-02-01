@@ -6,44 +6,44 @@ import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.fingerprint.FingerPrintAuth;
 import com.tencent.mm.plugin.fingerprint.b.a.c;
 import com.tencent.mm.plugin.fingerprint.b.a.i;
 import com.tencent.mm.plugin.fingerprint.c.e;
 import com.tencent.mm.plugin.soter.d.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ao.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.c.y;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public final class g
   implements com.tencent.mm.plugin.fingerprint.d.d
 {
-  int djq;
-  private String djt;
-  private String iTR;
-  ao skg;
-  com.tencent.mm.plugin.fingerprint.d.b skk;
-  private com.tencent.mm.plugin.fingerprint.d.b skl;
-  WalletBaseUI skm;
-  private String skn;
+  int dvd;
+  private String dvg;
+  private String jmZ;
+  ap tgI;
+  com.tencent.mm.plugin.fingerprint.d.b tgM;
+  private com.tencent.mm.plugin.fingerprint.d.b tgN;
+  WalletBaseUI tgO;
+  private String tgP;
   
   public g()
   {
     AppMethodBeat.i(64332);
-    this.skk = null;
-    this.skl = null;
-    this.skm = null;
-    this.skn = null;
-    this.djt = null;
-    this.iTR = null;
-    this.skg = new ao(new ao.a()
+    this.tgM = null;
+    this.tgN = null;
+    this.tgO = null;
+    this.tgP = null;
+    this.dvg = null;
+    this.jmZ = null;
+    this.tgI = new ap(new ap.a()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
@@ -53,19 +53,19 @@ public final class g
           String str = paramAnonymousMessage.getData().getString("rsaKey");
           if (TextUtils.isEmpty(str))
           {
-            ac.e("MicroMsg.HwFingerprintOpenDelegate", "handleMessage msg.what=" + paramAnonymousMessage.what + " rsaKey is null");
-            ap.f(new Runnable()
+            ad.e("MicroMsg.HwFingerprintOpenDelegate", "handleMessage msg.what=" + paramAnonymousMessage.what + " rsaKey is null");
+            aq.f(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(64326);
-                g.this.skk.aZ(-1, g.this.skm.getString(2131759409));
+                g.this.tgM.bc(-1, g.this.tgO.getString(2131759409));
                 AppMethodBeat.o(64326);
               }
             });
           }
           paramAnonymousMessage = new e(str);
-          g.this.skm.doSceneProgress(paramAnonymousMessage, false);
+          g.this.tgO.doSceneProgress(paramAnonymousMessage, false);
           AppMethodBeat.o(64327);
           return true;
         }
@@ -84,36 +84,36 @@ public final class g
       public final void a(c paramAnonymousc)
       {
         AppMethodBeat.i(64328);
-        ac.i("MicroMsg.HwFingerprintOpenDelegate", "result: %s", new Object[] { Integer.valueOf(paramAnonymousc.errCode) });
+        ad.i("MicroMsg.HwFingerprintOpenDelegate", "result: %s", new Object[] { Integer.valueOf(paramAnonymousc.errCode) });
         String str = "";
         switch (paramAnonymousc.errCode)
         {
         }
         for (;;)
         {
-          paramb.aZ(-2, str);
+          paramb.bc(-2, str);
           AppMethodBeat.o(64328);
           return;
-          ac.i("MicroMsg.HwFingerprintOpenDelegate", "identify success");
-          g.this.djq = paramAnonymousc.djq;
-          paramb.aZ(0, "");
+          ad.i("MicroMsg.HwFingerprintOpenDelegate", "identify success");
+          g.this.dvd = paramAnonymousc.dvd;
+          paramb.bc(0, "");
           AppMethodBeat.o(64328);
           return;
-          ac.i("MicroMsg.HwFingerprintOpenDelegate", "identify FingerPrintConst.RESULT_NO_MATCH");
-          paramb.aZ(-1, "");
+          ad.i("MicroMsg.HwFingerprintOpenDelegate", "identify FingerPrintConst.RESULT_NO_MATCH");
+          paramb.bc(-1, "");
           AppMethodBeat.o(64328);
           return;
-          ac.i("MicroMsg.HwFingerprintOpenDelegate", "identify timeout");
+          ad.i("MicroMsg.HwFingerprintOpenDelegate", "identify timeout");
           continue;
-          str = ai.getContext().getString(2131764097);
+          str = aj.getContext().getString(2131764097);
           do
           {
             a.d(1000, -1000223, paramAnonymousc.errCode, "fingerprint error");
             break;
-            ac.i("MicroMsg.HwFingerprintOpenDelegate", "hy: on error: %s", new Object[] { Integer.valueOf(paramAnonymousc.errCode) });
-            str = ai.getContext().getString(2131764095);
+            ad.i("MicroMsg.HwFingerprintOpenDelegate", "hy: on error: %s", new Object[] { Integer.valueOf(paramAnonymousc.errCode) });
+            str = aj.getContext().getString(2131764095);
           } while (paramAnonymousc.errCode != 10308);
-          str = ai.getContext().getString(2131764096);
+          str = aj.getContext().getString(2131764096);
           a.d(6, -1000223, -1, "too many trial");
         }
       }
@@ -124,57 +124,57 @@ public final class g
   public final void a(Context paramContext, com.tencent.mm.plugin.fingerprint.d.b paramb, String paramString)
   {
     AppMethodBeat.i(64333);
-    this.skm = ((WalletBaseUI)paramContext);
-    this.skk = paramb;
-    this.iTR = paramString;
-    paramContext = FingerPrintAuth.getRsaKey(d.eZ(ai.getContext()), d.getUserId(), q.XX());
-    a.dTm();
+    this.tgO = ((WalletBaseUI)paramContext);
+    this.tgM = paramb;
+    this.jmZ = paramString;
+    paramContext = FingerPrintAuth.getRsaKey(d.fc(aj.getContext()), d.getUserId(), q.aay());
+    a.efA();
     if (TextUtils.isEmpty(paramContext))
     {
-      ac.e("MicroMsg.HwFingerprintOpenDelegate", "FingerPrintAuth.getRsaKey() is null");
-      new o(new a((byte)0)).bei();
+      ad.e("MicroMsg.HwFingerprintOpenDelegate", "FingerPrintAuth.getRsaKey() is null");
+      new o(new a((byte)0)).bhM();
       AppMethodBeat.o(64333);
       return;
     }
-    ac.i("MicroMsg.HwFingerprintOpenDelegate", "do NetSceneTenpayGetOpenTouchCert");
+    ad.i("MicroMsg.HwFingerprintOpenDelegate", "do NetSceneTenpayGetOpenTouchCert");
     paramContext = new e(paramContext);
-    this.skm.doSceneProgress(paramContext, false);
+    this.tgO.doSceneProgress(paramContext, false);
     AppMethodBeat.o(64333);
   }
   
   public final void a(com.tencent.mm.plugin.fingerprint.d.b paramb, int paramInt)
   {
     AppMethodBeat.i(64335);
-    this.skl = paramb;
-    if (TextUtils.isEmpty(this.iTR))
+    this.tgN = paramb;
+    if (TextUtils.isEmpty(this.jmZ))
     {
-      ac.e("MicroMsg.HwFingerprintOpenDelegate", "get user pwd error");
-      paramb.aZ(-1, this.skm.getString(2131759409));
+      ad.e("MicroMsg.HwFingerprintOpenDelegate", "get user pwd error");
+      paramb.bc(-1, this.tgO.getString(2131759409));
       AppMethodBeat.o(64335);
       return;
     }
     String str1 = d.getUserId();
-    String str2 = q.XX();
-    String str3 = y.fAm();
+    String str2 = q.aay();
+    String str3 = y.fRw();
     paramb = "";
-    if (d.cHi())
+    if (d.cPx())
     {
-      str1 = FingerPrintAuth.genOpenFPEncrypt(d.eZ(ai.getContext()), str1, str2, String.valueOf(this.djq), str3, "", this.skn, this.djt, Build.MODEL);
-      paramb = FingerPrintAuth.genOpenFPSign(d.eZ(ai.getContext()), d.getUserId(), q.XX(), str1);
+      str1 = FingerPrintAuth.genOpenFPEncrypt(d.fc(aj.getContext()), str1, str2, String.valueOf(this.dvd), str3, "", this.tgP, this.dvg, Build.MODEL);
+      paramb = FingerPrintAuth.genOpenFPSign(d.fc(aj.getContext()), d.getUserId(), q.aay(), str1);
     }
     for (;;)
     {
-      if (TextUtils.isEmpty(this.skn)) {
-        ac.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypted_device_info which return by FingerPrintAuth.genOpenFPEncrypt is null");
+      if (TextUtils.isEmpty(this.tgP)) {
+        ad.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypted_device_info which return by FingerPrintAuth.genOpenFPEncrypt is null");
       }
       for (;;)
       {
-        paramb = new com.tencent.mm.plugin.fingerprint.c.f(str1, paramb, this.iTR, paramInt);
-        this.skm.doSceneProgress(paramb, false);
+        paramb = new com.tencent.mm.plugin.fingerprint.c.f(str1, paramb, this.jmZ, paramInt);
+        this.tgO.doSceneProgress(paramb, false);
         AppMethodBeat.o(64335);
         return;
         if (TextUtils.isEmpty(paramb)) {
-          ac.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypto_open_sign which return by FingerPrintAuth.genOpenFPSign is null");
+          ad.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypto_open_sign which return by FingerPrintAuth.genOpenFPSign is null");
         }
       }
       str1 = "";
@@ -192,28 +192,28 @@ public final class g
       Object localObject;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        ac.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert success");
+        ad.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert success");
         paramString = (e)paramn;
-        this.skn = paramString.skn;
-        this.djt = paramString.djt;
-        localObject = this.skk;
+        this.tgP = paramString.tgP;
+        this.dvg = paramString.dvg;
+        localObject = this.tgM;
         paramn = "";
         paramInt1 = i;
       }
       for (;;)
       {
-        ((com.tencent.mm.plugin.fingerprint.d.b)localObject).aZ(paramInt1, paramn);
+        ((com.tencent.mm.plugin.fingerprint.d.b)localObject).bc(paramInt1, paramn);
         AppMethodBeat.o(64334);
         return true;
-        ac.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert error");
-        com.tencent.mm.plugin.fingerprint.d.b localb = this.skk;
+        ad.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert error");
+        com.tencent.mm.plugin.fingerprint.d.b localb = this.tgM;
         paramInt2 = -1;
         paramInt1 = paramInt2;
         localObject = localb;
         paramn = paramString;
-        if (bs.isNullOrNil(paramString))
+        if (bt.isNullOrNil(paramString))
         {
-          paramn = this.skm.getString(2131759409);
+          paramn = this.tgO.getString(2131759409);
           paramInt1 = paramInt2;
           localObject = localb;
         }
@@ -223,15 +223,15 @@ public final class g
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        a.dTn();
+        a.efB();
         a.d(0, 0, 0, "OK");
-        this.skl.aZ(0, "");
+        this.tgN.bc(0, "");
       }
       for (;;)
       {
         AppMethodBeat.o(64334);
         return true;
-        this.skl.aZ(-2, "");
+        this.tgN.bc(-2, "");
       }
     }
     AppMethodBeat.o(64334);
@@ -243,31 +243,31 @@ public final class g
   {
     private a() {}
     
-    public final void LV(final String paramString)
+    public final void Pr(final String paramString)
     {
       AppMethodBeat.i(64331);
       if (TextUtils.isEmpty(paramString))
       {
-        ap.f(new Runnable()
+        aq.f(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(64329);
-            g.this.skk.aZ(-1, g.this.skm.getString(2131759409));
+            g.this.tgM.bc(-1, g.this.tgO.getString(2131759409));
             AppMethodBeat.o(64329);
           }
         });
-        ac.e("MicroMsg.HwFingerprintOpenDelegate", "GenRsaKeySync.callback rsaKey is empty!");
+        ad.e("MicroMsg.HwFingerprintOpenDelegate", "GenRsaKeySync.callback rsaKey is empty!");
         AppMethodBeat.o(64331);
         return;
       }
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(64330);
-          ac.i("MicroMsg.HwFingerprintOpenDelegate", "GenRsaKeySync.callback running");
-          Message localMessage = g.this.skg.obtainMessage();
+          ad.i("MicroMsg.HwFingerprintOpenDelegate", "GenRsaKeySync.callback running");
+          Message localMessage = g.this.tgI.obtainMessage();
           localMessage.what = 1;
           Bundle localBundle = new Bundle();
           localBundle.putString("rsaKey", paramString);

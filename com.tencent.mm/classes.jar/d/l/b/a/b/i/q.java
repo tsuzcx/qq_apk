@@ -1,7 +1,7 @@
 package d.l.b.a.b.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.f.c;
 import d.l.b.a.b.f.f;
 import java.util.Iterator;
@@ -13,18 +13,18 @@ public final class q
   public static final String g(c paramc)
   {
     AppMethodBeat.i(59871);
-    k.h(paramc, "$this$render");
-    paramc = paramc.fZN();
-    k.g(paramc, "pathSegments()");
-    paramc = je(paramc);
+    p.h(paramc, "$this$render");
+    paramc = paramc.grm();
+    p.g(paramc, "pathSegments()");
+    paramc = js(paramc);
     AppMethodBeat.o(59871);
     return paramc;
   }
   
-  public static final String je(List<f> paramList)
+  public static final String js(List<f> paramList)
   {
     AppMethodBeat.i(59872);
-    k.h(paramList, "pathSegments");
+    p.h(paramList, "pathSegments");
     StringBuilder localStringBuilder = new StringBuilder();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -36,7 +36,7 @@ public final class q
       localStringBuilder.append(x(localf));
     }
     paramList = localStringBuilder.toString();
-    k.g(paramList, "StringBuilder().apply(builderAction).toString()");
+    p.g(paramList, "StringBuilder().apply(builderAction).toString()");
     AppMethodBeat.o(59872);
     return paramList;
   }
@@ -44,18 +44,18 @@ public final class q
   public static final String x(f paramf)
   {
     AppMethodBeat.i(59869);
-    k.h(paramf, "$this$render");
+    p.h(paramf, "$this$render");
     if (y(paramf))
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      paramf = paramf.rf();
-      k.g(paramf, "asString()");
+      paramf = paramf.sD();
+      p.g(paramf, "asString()");
       paramf = "`".concat(String.valueOf(paramf)) + '`';
       AppMethodBeat.o(59869);
       return paramf;
     }
-    paramf = paramf.rf();
-    k.g(paramf, "asString()");
+    paramf = paramf.sD();
+    p.g(paramf, "asString()");
     AppMethodBeat.o(59869);
     return paramf;
   }
@@ -63,15 +63,15 @@ public final class q
   private static final boolean y(f paramf)
   {
     AppMethodBeat.i(59870);
-    if (paramf.Lzs)
+    if (paramf.Nqp)
     {
       AppMethodBeat.o(59870);
       return false;
     }
-    paramf = paramf.rf();
-    k.g(paramf, "asString()");
+    paramf = paramf.sD();
+    p.g(paramf, "asString()");
     int j;
-    if (!l.LDV.contains(paramf))
+    if (!l.NuU.contains(paramf))
     {
       paramf = (CharSequence)paramf;
       i = 0;
@@ -110,7 +110,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.i.q
  * JD-Core Version:    0.7.0.1
  */

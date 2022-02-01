@@ -1,63 +1,72 @@
 package com.tencent.mm.plugin.emojicapture.ui.b;
 
 import android.opengl.GLES20;
-import com.tencent.mm.media.f.c;
+import com.tencent.mm.media.g.c;
 import com.tencent.mm.plugin.emojicapture.model.e;
-import com.tencent.mm.plugin.xlabeffect.XLabEffect;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.sticker.f;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiPreviewRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCaptureRender;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCapturePreviewRender;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "emojiFilterProcessTex", "Lcom/tencent/mm/plugin/emojicapture/filter/EmojiFilterProcess;", "enableEffect", "", "filterOutputTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "outputHeight", "getOutputHeight", "()I", "outputProc", "outputWidth", "getOutputWidth", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "checkInitEffect", "getInputRenderProc", "getRecordTexture", "pauseRender", "release", "renderImpl", "resumeRender", "setRemoveBg", "remove", "plugin-emojicapture_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiPreviewRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCaptureRender;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCapturePreviewRender;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "emojiFilterProcessTex", "Lcom/tencent/mm/plugin/emojicapture/filter/EmojiFilterProcess;", "enableEffect", "", "filterOutputTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "outputHeight", "getOutputHeight", "()I", "outputProc", "outputWidth", "getOutputWidth", "removeBg", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "changeSticker", "", "checkInitEffect", "getInputRenderProc", "getRecordTexture", "pauseRender", "release", "renderImpl", "resumeRender", "setRemoveBg", "remove", "plugin-emojicapture_release"})
 public abstract class j
-  extends com.tencent.mm.media.i.b.a
+  extends com.tencent.mm.media.j.b.a
   implements k, l
 {
-  final int grA;
-  final int grB;
-  private com.tencent.mm.media.f.d gsb;
-  private com.tencent.mm.plugin.emojicapture.d.a pvA;
-  private boolean pvB;
-  private com.tencent.mm.media.i.b.a pvC;
+  private com.tencent.mm.media.g.d gLJ;
+  final int outputHeight;
+  final int outputWidth;
+  private boolean pQj;
+  private f pSk;
+  private com.tencent.mm.plugin.emojicapture.d.a pZf;
+  private boolean pZg;
+  private com.tencent.mm.media.j.b.a pZh;
   
   public j(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    Object localObject = com.tencent.mm.plugin.emojicapture.model.d.pnw;
-    this.grA = com.tencent.mm.plugin.emojicapture.model.d.ceL();
-    localObject = com.tencent.mm.plugin.emojicapture.model.d.pnw;
-    this.grB = com.tencent.mm.plugin.emojicapture.model.d.ceL();
-    this.pvB = true;
-    localObject = b.puK;
-    this.gsb = c.ea(true);
-    this.pvC = ((com.tencent.mm.media.i.b.a)new i(this.grA, this.grB, paramInt3, paramInt4));
+    Object localObject = com.tencent.mm.plugin.emojicapture.model.d.pQW;
+    this.outputWidth = com.tencent.mm.plugin.emojicapture.model.d.cjo();
+    localObject = com.tencent.mm.plugin.emojicapture.model.d.pQW;
+    this.outputHeight = com.tencent.mm.plugin.emojicapture.model.d.cjo();
+    this.pZg = true;
+    localObject = b.pYp;
+    this.gLJ = c.ec(true);
+    this.pZh = ((com.tencent.mm.media.j.b.a)new i(this.outputWidth, this.outputHeight, paramInt3, paramInt4));
   }
   
-  private final void cgc()
+  private final void ckG()
   {
     int j = 0;
-    Object localObject = cfX();
+    Object localObject = ckB();
     int i;
     if (localObject != null)
     {
-      localObject = ((com.tencent.mm.media.i.b.a)localObject).gVr;
+      localObject = ((com.tencent.mm.media.j.b.a)localObject).hnu;
       if (localObject != null) {
-        i = ((com.tencent.mm.media.f.d)localObject).gRW;
+        i = ((com.tencent.mm.media.g.d)localObject).hko;
       }
     }
     for (;;)
     {
-      if ((this.pvA == null) && (this.pvB))
+      if ((this.pZf == null) && (this.pZg))
       {
-        this.pvA = new com.tencent.mm.plugin.emojicapture.d.a();
-        localObject = this.pvA;
+        this.pZf = new com.tencent.mm.plugin.emojicapture.d.a();
+        localObject = this.pZf;
         if (localObject != null)
         {
-          com.tencent.mm.media.f.d locald = this.gsb;
+          com.tencent.mm.media.g.d locald = this.gLJ;
           if (locald != null) {
-            j = locald.gRW;
+            j = locald.hko;
           }
-          ((com.tencent.mm.plugin.emojicapture.d.a)localObject).fl(i, j);
+          ((com.tencent.mm.plugin.emojicapture.d.a)localObject).fp(i, j);
+        }
+        localObject = this.pZf;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.emojicapture.d.a)localObject).kL(this.pQj);
+        }
+        localObject = this.pZf;
+        if (localObject != null) {
+          ((com.tencent.mm.plugin.emojicapture.d.a)localObject).a(this.pSk);
         }
       }
       return;
@@ -69,101 +78,69 @@ public abstract class j
   
   public final void a(f paramf)
   {
-    Object localObject2 = null;
-    cgc();
-    com.tencent.mm.plugin.emojicapture.d.a locala = this.pvA;
-    String str;
-    if (locala != null)
-    {
-      str = com.tencent.mm.plugin.emojicapture.d.a.TAG;
-      StringBuilder localStringBuilder = new StringBuilder("changeSticker: ").append(locala.pmO).append(", ");
-      if (paramf == null) {
-        break label129;
-      }
-      localObject1 = paramf.pmO;
-      ac.i(str, (String)localObject1);
-      str = locala.pmO;
-      if (paramf == null) {
-        break label134;
-      }
-    }
-    label129:
-    label134:
-    for (Object localObject1 = paramf.pmO;; localObject1 = null)
-    {
-      if ((d.g.b.k.g(str, localObject1) ^ true))
-      {
-        localObject1 = localObject2;
-        if (paramf != null) {
-          localObject1 = paramf.pmO;
-        }
-        locala.pmO = ((String)localObject1);
-        localObject1 = locala.fZP;
-        if (localObject1 != null) {
-          ((XLabEffect)localObject1).a(paramf);
-        }
-      }
-      return;
-      localObject1 = null;
-      break;
+    this.pSk = paramf;
+    ckG();
+    com.tencent.mm.plugin.emojicapture.d.a locala = this.pZf;
+    if (locala != null) {
+      locala.a(paramf);
     }
   }
   
-  public final void ajt()
+  public final void amf()
   {
-    this.pvB = false;
-    com.tencent.mm.plugin.emojicapture.d.a locala = this.pvA;
+    this.pZg = false;
+    com.tencent.mm.plugin.emojicapture.d.a locala = this.pZf;
     if (locala != null) {
       locala.clear();
     }
-    this.pvA = null;
+    this.pZf = null;
   }
   
-  public final void aju()
+  public final void amg()
   {
-    this.pvB = true;
+    this.pZg = true;
   }
   
-  public final void arr()
+  public final void aue()
   {
     int j = 0;
-    Object localObject1 = cfX();
+    Object localObject1 = ckB();
     if (localObject1 != null) {
-      ((com.tencent.mm.media.i.b.a)localObject1).cS(this.gqZ, this.gra);
+      ((com.tencent.mm.media.j.b.a)localObject1).cU(this.gKJ, this.gKK);
     }
-    localObject1 = cfX();
+    localObject1 = ckB();
     if (localObject1 != null) {
-      ((com.tencent.mm.media.i.b.a)localObject1).mE(this.gVh);
+      ((com.tencent.mm.media.j.b.a)localObject1).nd(this.hnk);
     }
-    localObject1 = cfX();
+    localObject1 = ckB();
     if (localObject1 != null) {
-      ((com.tencent.mm.media.i.b.a)localObject1).gVi = this.gVi;
+      ((com.tencent.mm.media.j.b.a)localObject1).hnl = this.hnl;
     }
-    localObject1 = cfX();
+    localObject1 = ckB();
     int i;
     Object localObject2;
     long l;
     if (localObject1 != null)
     {
-      ((com.tencent.mm.media.i.b.a)localObject1).ajG();
-      localObject1 = ((com.tencent.mm.media.i.b.a)localObject1).gVr;
+      ((com.tencent.mm.media.j.b.a)localObject1).ams();
+      localObject1 = ((com.tencent.mm.media.j.b.a)localObject1).hnu;
       if (localObject1 != null)
       {
-        i = ((com.tencent.mm.media.f.d)localObject1).gRW;
-        cgc();
-        localObject1 = this.pvA;
+        i = ((com.tencent.mm.media.g.d)localObject1).hko;
+        ckG();
+        localObject1 = this.pZf;
         if (localObject1 != null)
         {
-          int k = this.grA;
-          int m = this.grB;
-          ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqZ = k;
-          ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gra = m;
-          localObject2 = ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).fZP;
+          int k = this.outputWidth;
+          int m = this.outputHeight;
+          ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKJ = k;
+          ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKK = m;
+          localObject2 = ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gtl;
           if (localObject2 != null) {
-            ((XLabEffect)localObject2).setSize(k, m);
+            ((com.tencent.mm.plugin.xlabeffect.b)localObject2).setSize(k, m);
           }
-          ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqX = i;
-          l = bs.Gn();
+          ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKH = i;
+          l = bt.HI();
         }
       }
     }
@@ -171,28 +148,28 @@ public abstract class j
     {
       try
       {
-        if (!((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pnb)
+        if (!((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pQB)
         {
-          GLES20.glBindFramebuffer(36160, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pna);
-          GLES20.glFramebufferTexture2D(36160, 36064, 3553, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqX, 0);
-          localObject2 = b.puK;
-          b.a.Y(((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pmZ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqZ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gra);
-          GLES20.glBindTexture(3553, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pmZ);
-          GLES20.glCopyTexImage2D(3553, 0, 6408, 0, 0, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqZ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gra, 0);
+          GLES20.glBindFramebuffer(36160, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pQA);
+          GLES20.glFramebufferTexture2D(36160, 36064, 3553, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKH, 0);
+          localObject2 = b.pYp;
+          b.a.aa(((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pQz, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKJ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKK);
+          GLES20.glBindTexture(3553, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pQz);
+          GLES20.glCopyTexImage2D(3553, 0, 6408, 0, 0, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKJ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKK, 0);
           GLES20.glBindFramebuffer(36160, 0);
           GLES20.glBindTexture(3553, 0);
-          localObject1 = this.gsb;
+          localObject1 = this.gLJ;
           i = j;
           if (localObject1 != null) {
-            i = ((com.tencent.mm.media.f.d)localObject1).gRW;
+            i = ((com.tencent.mm.media.g.d)localObject1).hko;
           }
-          localObject1 = this.pvC;
+          localObject1 = this.pZh;
           if (localObject1 != null) {
-            ((com.tencent.mm.media.i.b.a)localObject1).no(i);
+            ((com.tencent.mm.media.j.b.a)localObject1).nN(i);
           }
-          localObject1 = this.pvC;
+          localObject1 = this.pZh;
           if (localObject1 != null) {
-            ((com.tencent.mm.media.i.b.a)localObject1).ajG();
+            ((com.tencent.mm.media.j.b.a)localObject1).ams();
           }
           return;
           i = -1;
@@ -200,76 +177,72 @@ public abstract class j
           i = 0;
           break;
         }
-        localObject2 = ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).fZP;
+        localObject2 = ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gtl;
         if (localObject2 != null) {
-          XLabEffect.a((XLabEffect)localObject2, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqX);
+          com.tencent.mm.plugin.xlabeffect.b.a((com.tencent.mm.plugin.xlabeffect.b)localObject2, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKH);
         }
-        localObject2 = b.puK;
-        b.a.Y(((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pmZ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqZ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gra);
-        localObject2 = ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).fZP;
+        localObject2 = b.pYp;
+        b.a.aa(((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pQz, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKJ, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKK);
+        localObject2 = ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gtl;
         if (localObject2 != null) {
-          XLabEffect.a((XLabEffect)localObject2, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gqX, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pmZ, 0L, false, 60);
+          com.tencent.mm.plugin.xlabeffect.b.a((com.tencent.mm.plugin.xlabeffect.b)localObject2, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).gKH, ((com.tencent.mm.plugin.emojicapture.d.a)localObject1).pQz, false, 60);
         }
         GLES20.glBindFramebuffer(36160, 0);
         GLES20.glBindTexture(3553, 0);
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace(com.tencent.mm.plugin.emojicapture.d.a.TAG, (Throwable)localException, "filterProcess error", new Object[0]);
-        e locale = e.pny;
-        e.cfb();
+        ad.printErrStackTrace(com.tencent.mm.plugin.emojicapture.d.a.TAG, (Throwable)localException, "filterProcess error", new Object[0]);
+        e locale = e.pQY;
+        e.cjE();
         continue;
       }
-      ac.d(com.tencent.mm.plugin.emojicapture.d.a.TAG, "filterProcess: cost %s", new Object[] { Long.valueOf(bs.aO(l)) });
+      ad.d(com.tencent.mm.plugin.emojicapture.d.a.TAG, "filterProcess: cost %s", new Object[] { Long.valueOf(bt.aO(l)) });
     }
   }
   
-  public abstract com.tencent.mm.media.i.b.a cfX();
+  public abstract com.tencent.mm.media.j.b.a ckB();
   
-  public final com.tencent.mm.media.f.d cgb()
+  public final com.tencent.mm.media.g.d ckF()
   {
-    com.tencent.mm.media.i.b.a locala = cfX();
+    com.tencent.mm.media.j.b.a locala = ckB();
     if (locala != null) {
-      return locala.gVr;
+      return locala.hnu;
     }
     return null;
   }
   
-  public final void kA(boolean paramBoolean)
+  public final void kL(boolean paramBoolean)
   {
-    cgc();
-    Object localObject = this.pvA;
-    if (localObject != null)
-    {
-      ac.i(com.tencent.mm.plugin.emojicapture.d.a.TAG, "setRemoveBg: ".concat(String.valueOf(paramBoolean)));
-      localObject = ((com.tencent.mm.plugin.emojicapture.d.a)localObject).fZP;
-      if (localObject != null) {
-        ((XLabEffect)localObject).uQ(paramBoolean);
-      }
+    this.pQj = paramBoolean;
+    ckG();
+    com.tencent.mm.plugin.emojicapture.d.a locala = this.pZf;
+    if (locala != null) {
+      locala.kL(paramBoolean);
     }
   }
   
   public void release()
   {
     super.release();
-    Object localObject = this.gsb;
+    Object localObject = this.gLJ;
     if (localObject != null) {
-      ((com.tencent.mm.media.f.d)localObject).close();
+      ((com.tencent.mm.media.g.d)localObject).close();
     }
-    localObject = this.pvC;
+    localObject = this.pZh;
     if (localObject != null) {
-      ((com.tencent.mm.media.i.b.a)localObject).release();
+      ((com.tencent.mm.media.j.b.a)localObject).release();
     }
-    localObject = this.pvA;
+    localObject = this.pZf;
     if (localObject != null) {
       ((com.tencent.mm.plugin.emojicapture.d.a)localObject).clear();
     }
-    this.pvA = null;
+    this.pZf = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.b.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,83 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bc.b;
+import com.tencent.mm.bc.t;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.w;
+import com.tencent.mm.modelappbrand.l;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bu;
+import com.tencent.mm.ui.chatting.AppBrandServiceChattingUI.AppBrandServiceChattingFmUI;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
 
 final class bf
-  extends c.a
+  implements au.a
 {
-  protected TextView IqC;
-  protected TextView IqD;
-  protected Button IqE;
-  protected Button IqF;
-  protected ImageView IqG;
-  protected TextView ijE;
-  
-  public final bf gv(View paramView)
+  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bu parambu)
   {
-    AppMethodBeat.i(37551);
-    super.fX(paramView);
-    this.ijE = ((TextView)paramView.findViewById(2131298026));
-    this.IqC = ((TextView)paramView.findViewById(2131298025));
-    this.IqD = ((TextView)paramView.findViewById(2131298048));
-    this.IqE = ((Button)paramView.findViewById(2131298137));
-    this.IqF = ((Button)paramView.findViewById(2131298136));
-    this.IqG = ((ImageView)paramView.findViewById(2131298179));
-    this.ijt = ((CheckBox)paramView.findViewById(2131298068));
-    this.gGk = paramView.findViewById(2131298147);
-    AppMethodBeat.o(37551);
-    return this;
+    AppMethodBeat.i(37550);
+    String str = parama1.getTalkerUserName();
+    parama = (au.b)parama;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("conv_talker_username", str);
+    if ((parama1.JOR instanceof AppBrandServiceChattingUI.AppBrandServiceChattingFmUI))
+    {
+      paramInt = 10;
+      localBundle.putInt("scene", paramInt);
+      localBundle.putLong("msg_id", parambu.field_msgId);
+      localBundle.putLong("msg_sever_id", parambu.field_msgSvrId);
+      localBundle.putString("send_msg_username", parambu.field_talker);
+      parambu = ((l)g.ab(l.class)).a(parambu.field_content, localBundle, new WeakReference(parama1.JOR.getContext()), new WeakReference(parama.KfL));
+      if ((parambu != null) && (parambu.length() != 0)) {
+        break label326;
+      }
+      parama.tPw.setVisibility(8);
+      label162:
+      parambu = t.aKa().Gb(str);
+      ba.aBQ();
+      paramInt = ((Integer)c.ajl().get(12311, Integer.valueOf(-2))).intValue();
+      if (((parambu == null) || (parambu.iiM == -2)) && ((parambu != null) || (paramInt == -2))) {
+        break label346;
+      }
+      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131100151));
+      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231583));
+    }
+    for (;;)
+    {
+      parama.KfL.setOnClickListener(new bf.1(this));
+      parama.KfL.invalidate();
+      AppMethodBeat.o(37550);
+      return;
+      if (parama1.fFv())
+      {
+        paramInt = 2;
+        break;
+      }
+      if (w.zE(str))
+      {
+        paramInt = 7;
+        break;
+      }
+      paramInt = 1;
+      break;
+      label326:
+      parama.tPw.setVisibility(0);
+      parama.KfL.ar(parambu);
+      break label162;
+      label346:
+      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131099735));
+      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231582));
+    }
   }
 }
 

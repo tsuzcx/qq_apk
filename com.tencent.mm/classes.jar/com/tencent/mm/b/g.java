@@ -31,7 +31,7 @@ public final class g
     //   11: aconst_null
     //   12: areturn
     //   13: aload_0
-    //   14: invokestatic 43	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   14: invokestatic 43	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   17: astore_3
     //   18: ldc2_w 30
     //   21: aload_0
@@ -151,10 +151,10 @@ public final class g
     //   7: aconst_null
     //   8: areturn
     //   9: aload_0
-    //   10: invokestatic 43	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   10: invokestatic 43	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   13: astore_0
     //   14: aload_0
-    //   15: invokestatic 93	com/tencent/mm/b/g:n	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   15: invokestatic 93	com/tencent/mm/b/g:r	(Ljava/io/InputStream;)Ljava/lang/String;
     //   18: astore_1
     //   19: aload_0
     //   20: invokevirtual 56	java/io/InputStream:close	()V
@@ -211,7 +211,7 @@ public final class g
     //   14	23	74	java/lang/Exception
   }
   
-  public static String dt(String paramString)
+  public static String ep(String paramString)
   {
     if (paramString == null) {}
     do
@@ -303,7 +303,7 @@ public final class g
     }
   }
   
-  public static String n(InputStream paramInputStream)
+  public static String r(InputStream paramInputStream)
   {
     int j = 0;
     if (paramInputStream == null) {}

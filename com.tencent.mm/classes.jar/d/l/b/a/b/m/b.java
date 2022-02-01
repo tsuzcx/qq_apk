@@ -6,7 +6,7 @@ import d.l.b.a.b.b.l;
 import d.l.b.a.b.b.y;
 import d.l.b.a.b.f.f;
 import d.l.b.a.b.j.d.a;
-import d.l.b.a.b.l.i;
+import d.l.b.a.b.l.j;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -15,19 +15,40 @@ public abstract class b
   extends h
   implements at
 {
-  private int aFZ = 0;
+  private int aHQ = 0;
   
-  public b(i parami)
+  public b(j paramj)
   {
-    super(parami);
+    super(paramj);
   }
   
   private static boolean d(d.l.b.a.b.b.h paramh)
   {
     if (paramh == null) {
-      agL(2);
+      ajm(2);
     }
     return (!u.L(paramh)) && (!d.l.b.a.b.j.c.m(paramh));
+  }
+  
+  protected final Collection<ab> Ar(boolean paramBoolean)
+  {
+    Object localObject2 = ghP().ghs();
+    if (!(localObject2 instanceof e))
+    {
+      localObject1 = Collections.emptyList();
+      if (localObject1 == null) {
+        ajm(3);
+      }
+      return localObject1;
+    }
+    Object localObject1 = new d.l.b.a.b.o.h();
+    localObject2 = (e)localObject2;
+    ((Collection)localObject1).add(((e)localObject2).giC());
+    localObject2 = ((e)localObject2).ghv();
+    if ((paramBoolean) && (localObject2 != null)) {
+      ((Collection)localObject1).add(((e)localObject2).giC());
+    }
+    return localObject1;
   }
   
   public final boolean equals(Object paramObject)
@@ -44,8 +65,8 @@ public abstract class b
     if (((at)paramObject).getParameters().size() != getParameters().size()) {
       return false;
     }
-    Object localObject = fQr();
-    paramObject = ((at)paramObject).fQq();
+    Object localObject = ghP();
+    paramObject = ((at)paramObject).ghO();
     if ((!d((d.l.b.a.b.b.h)localObject)) || ((paramObject != null) && (!d(paramObject)))) {
       return false;
     }
@@ -53,11 +74,11 @@ public abstract class b
     {
       localObject = (e)localObject;
       paramObject = (e)paramObject;
-      if (!((e)localObject).fRf().equals(paramObject.fRf())) {
+      if (!((e)localObject).giD().equals(paramObject.giD())) {
         return false;
       }
-      localObject = ((e)localObject).fPU();
-      for (paramObject = paramObject.fPU(); (localObject != null) && (paramObject != null); paramObject = paramObject.fPU())
+      localObject = ((e)localObject).ghs();
+      for (paramObject = paramObject.ghs(); (localObject != null) && (paramObject != null); paramObject = paramObject.ghs())
       {
         if ((localObject instanceof y)) {
           return paramObject instanceof y;
@@ -67,7 +88,7 @@ public abstract class b
         }
         if ((localObject instanceof d.l.b.a.b.b.ab))
         {
-          if (((paramObject instanceof d.l.b.a.b.b.ab)) && (((d.l.b.a.b.b.ab)localObject).fRH().equals(((d.l.b.a.b.b.ab)paramObject).fRH()))) {
+          if (((paramObject instanceof d.l.b.a.b.b.ab)) && (((d.l.b.a.b.b.ab)localObject).gjg().equals(((d.l.b.a.b.b.ab)paramObject).gjg()))) {
             break;
           }
           return false;
@@ -75,74 +96,53 @@ public abstract class b
         if ((paramObject instanceof d.l.b.a.b.b.ab)) {
           return false;
         }
-        if (!((l)localObject).fRf().equals(paramObject.fRf())) {
+        if (!((l)localObject).giD().equals(paramObject.giD())) {
           return false;
         }
-        localObject = ((l)localObject).fPU();
+        localObject = ((l)localObject).ghs();
       }
       return true;
     }
     return false;
   }
   
-  public abstract e fQr();
+  public abstract e ghP();
   
-  public final g fRE()
+  protected final ab gjT()
   {
-    g localg = a.G(fQr());
+    if (g.e(ghP())) {
+      return null;
+    }
+    return gjd().ghd();
+  }
+  
+  public final g gjd()
+  {
+    g localg = a.G(ghP());
     if (localg == null) {
-      agL(1);
+      ajm(1);
     }
     return localg;
   }
   
-  protected final ab fSv()
-  {
-    if (g.e(fQr())) {
-      return null;
-    }
-    return fRE().fPF();
-  }
-  
   public final int hashCode()
   {
-    int i = this.aFZ;
+    int i = this.aHQ;
     if (i != 0) {
       return i;
     }
-    e locale = fQr();
+    e locale = ghP();
     if (d(locale)) {}
     for (i = d.l.b.a.b.j.c.n(locale).hashCode();; i = System.identityHashCode(this))
     {
-      this.aFZ = i;
+      this.aHQ = i;
       return i;
     }
-  }
-  
-  protected final Collection<ab> zD(boolean paramBoolean)
-  {
-    Object localObject2 = fQr().fPU();
-    if (!(localObject2 instanceof e))
-    {
-      localObject1 = Collections.emptyList();
-      if (localObject1 == null) {
-        agL(3);
-      }
-      return localObject1;
-    }
-    Object localObject1 = new d.l.b.a.b.o.h();
-    localObject2 = (e)localObject2;
-    ((Collection)localObject1).add(((e)localObject2).fRe());
-    localObject2 = ((e)localObject2).fPX();
-    if ((paramBoolean) && (localObject2 != null)) {
-      ((Collection)localObject1).add(((e)localObject2).fRe());
-    }
-    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.b
  * JD-Core Version:    0.7.0.1
  */

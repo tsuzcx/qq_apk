@@ -17,14 +17,14 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class b
 {
-  private final ColorStateList HA;
-  public final Shader Hz;
+  public final Shader Jt;
+  private final ColorStateList Ju;
   public int mColor;
   
   private b(Shader paramShader, ColorStateList paramColorStateList, int paramInt)
   {
-    this.Hz = paramShader;
-    this.HA = paramColorStateList;
+    this.Jt = paramShader;
+    this.Ju = paramColorStateList;
     this.mColor = paramInt;
   }
   
@@ -110,7 +110,7 @@ public final class b
     }
     for (;;)
     {
-      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.mColors, paramResources.HJ, d.au(m));
+      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.mColors, paramResources.JD, d.au(m));
       for (;;)
       {
         return new b(paramResources, null, 0);
@@ -124,9 +124,9 @@ public final class b
         if (f7 <= 0.0F) {
           throw new XmlPullParserException("<gradient> tag requires 'gradientRadius' attribute with radial type");
         }
-        paramResources = new RadialGradient(f5, f6, f7, paramResources.mColors, paramResources.HJ, d.au(m));
+        paramResources = new RadialGradient(f5, f6, f7, paramResources.mColors, paramResources.JD, d.au(m));
         continue;
-        paramResources = new SweepGradient(f5, f6, paramResources.mColors, paramResources.HJ);
+        paramResources = new SweepGradient(f5, f6, paramResources.mColors, paramResources.JD);
       }
       label586:
       switch (paramInt)
@@ -140,23 +140,13 @@ public final class b
     }
   }
   
-  public final boolean dY()
-  {
-    return this.Hz != null;
-  }
-  
-  public final boolean dZ()
-  {
-    return (dY()) || (this.mColor != 0);
-  }
-  
   public final boolean e(int[] paramArrayOfInt)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     if (isStateful())
     {
-      int i = this.HA.getColorForState(paramArrayOfInt, this.HA.getDefaultColor());
+      int i = this.Ju.getColorForState(paramArrayOfInt, this.Ju.getDefaultColor());
       bool1 = bool2;
       if (i != this.mColor)
       {
@@ -167,9 +157,19 @@ public final class b
     return bool1;
   }
   
+  public final boolean et()
+  {
+    return this.Jt != null;
+  }
+  
+  public final boolean eu()
+  {
+    return (et()) || (this.mColor != 0);
+  }
+  
   public final boolean isStateful()
   {
-    return (this.Hz == null) && (this.HA != null) && (this.HA.isStateful());
+    return (this.Jt == null) && (this.Ju != null) && (this.Ju.isStateful());
   }
 }
 

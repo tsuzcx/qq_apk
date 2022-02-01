@@ -11,9 +11,9 @@ import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.scanner.util.n;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -22,10 +22,10 @@ public final class CategoryWithTitlePreference
   implements u.a
 {
   private Context context;
-  private int drN;
-  private int drO;
-  private ImageView fBA;
+  private ImageView fUN;
+  private int iconHeight;
   private String iconUrl;
+  private int iconWidth;
   private f screen;
   private String title;
   private TextView titleTv;
@@ -45,8 +45,8 @@ public final class CategoryWithTitlePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51780);
     this.title = "";
-    this.drN = 34;
-    this.drO = 34;
+    this.iconWidth = 34;
+    this.iconHeight = 34;
     setLayoutResource(2131494810);
     this.context = paramContext;
     u.a(this);
@@ -56,9 +56,9 @@ public final class CategoryWithTitlePreference
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(51784);
-    ac.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
-    if ((!bs.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.fBA != null)) {
-      ap.f(new Runnable()
+    ad.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
+    if ((!bt.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.fUN != null)) {
+      aq.f(new Runnable()
       {
         public final void run()
         {
@@ -80,24 +80,24 @@ public final class CategoryWithTitlePreference
     AppMethodBeat.i(51783);
     super.onBindView(paramView);
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    this.fBA = ((ImageView)paramView.findViewById(2131300874));
-    paramView = this.fBA.getLayoutParams();
-    paramView.width = BackwardSupportUtil.b.g(this.context, this.drN / 2);
-    paramView.height = BackwardSupportUtil.b.g(this.context, this.drO / 2);
-    this.fBA.setLayoutParams(paramView);
+    this.fUN = ((ImageView)paramView.findViewById(2131300874));
+    paramView = this.fUN.getLayoutParams();
+    paramView.width = BackwardSupportUtil.b.g(this.context, this.iconWidth / 2);
+    paramView.height = BackwardSupportUtil.b.g(this.context, this.iconHeight / 2);
+    this.fUN.setLayoutParams(paramView);
     if ((this.title != null) && (this.title.length() > 0) && (this.titleTv != null))
     {
       this.titleTv.setVisibility(0);
       this.titleTv.setText(this.title);
-      ac.v("MicroMsg.scanner.CategoryWithTitlePreference", "onBindView title : " + this.titleTv.getText());
+      ad.v("MicroMsg.scanner.CategoryWithTitlePreference", "onBindView title : " + this.titleTv.getText());
     }
-    if (!bs.isNullOrNil(this.iconUrl))
+    if (!bt.isNullOrNil(this.iconUrl))
     {
       paramView = u.a(new n(this.iconUrl));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.fBA.setImageBitmap(paramView);
-        this.fBA.setVisibility(0);
+        this.fUN.setImageBitmap(paramView);
+        this.fUN.setVisibility(0);
       }
     }
     AppMethodBeat.o(51783);
@@ -111,7 +111,7 @@ public final class CategoryWithTitlePreference
       if (this.context != null) {
         this.title = this.context.getString(paramInt);
       }
-      if (bs.isNullOrNil(this.title)) {
+      if (bt.isNullOrNil(this.title)) {
         break label71;
       }
       this.titleTv.setVisibility(0);
@@ -137,7 +137,7 @@ public final class CategoryWithTitlePreference
       {
         this.titleTv.setVisibility(0);
         this.titleTv.setText(paramCharSequence);
-        ac.v("MicroMsg.scanner.CategoryWithTitlePreference", "title : " + this.titleTv.getText());
+        ad.v("MicroMsg.scanner.CategoryWithTitlePreference", "title : " + this.titleTv.getText());
       }
     }
     for (;;)

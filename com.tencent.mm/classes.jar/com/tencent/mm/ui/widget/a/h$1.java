@@ -3,6 +3,8 @@ package com.tencent.mm.ui.widget.a;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.base.o;
 
 public final class h$1
@@ -12,12 +14,16 @@ public final class h$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(199708);
-    this.HAu.dismiss();
-    if (this.Jgq != null) {
-      this.Jgq.onClick(paramView);
+    AppMethodBeat.i(192630);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/ui/widget/dialog/MMTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    this.Jol.dismiss();
+    if (this.KXD != null) {
+      this.KXD.onClick(paramView);
     }
-    AppMethodBeat.o(199708);
+    a.a(this, "com/tencent/mm/ui/widget/dialog/MMTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(192630);
   }
 }
 

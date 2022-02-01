@@ -1,11 +1,15 @@
 package com.tencent.mm.plugin.game.luggage.a;
 
+import java.util.Map;
+
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract String agS(String paramString);
+  public abstract String alp(String paramString);
   
-  public abstract boolean agT(String paramString);
+  public abstract boolean alq(String paramString);
+  
+  public abstract Map<String, Class> cXb();
 }
 
 

@@ -10,33 +10,33 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.f;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.g;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/ClickBigImageView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "FIX_PADDING", "", "bitmap", "Landroid/graphics/Bitmap;", "color", "", "hasSelected", "", "mDoodlePaint", "Landroid/graphics/Paint;", "radius", "type", "getType", "()I", "setType", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "setBitmap", "setDrawColor", "setHasSelected", "select", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/ClickBigImageView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "FIX_PADDING", "", "bitmap", "Landroid/graphics/Bitmap;", "color", "", "hasSelected", "", "mDoodlePaint", "Landroid/graphics/Paint;", "radius", "type", "getType", "()I", "setType", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "setBitmap", "setDrawColor", "setHasSelected", "select", "plugin-recordvideo_release"})
 public final class ClickBigImageView
   extends View
 {
   private Bitmap bitmap;
   private int color;
-  private final Paint gfa;
+  private final Paint gyK;
   private final int radius;
   private int type;
-  boolean ucv;
-  private final float wuJ;
+  boolean vff;
+  private final float xCF;
   
   public ClickBigImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(75720);
-    this.gfa = new Paint(1);
+    this.gyK = new Paint(1);
     this.radius = a.fromDPToPix(paramContext, 7);
-    this.wuJ = a.fromDPToPix(paramContext, 2);
-    this.gfa.setStyle(Paint.Style.FILL);
-    this.gfa.setStrokeCap(Paint.Cap.ROUND);
-    this.gfa.setAntiAlias(true);
-    this.gfa.setStyle(Paint.Style.FILL);
+    this.xCF = a.fromDPToPix(paramContext, 2);
+    this.gyK.setStyle(Paint.Style.FILL);
+    this.gyK.setStrokeCap(Paint.Cap.ROUND);
+    this.gyK.setAntiAlias(true);
+    this.gyK.setStyle(Paint.Style.FILL);
     AppMethodBeat.o(75720);
   }
   
@@ -48,14 +48,14 @@ public final class ClickBigImageView
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(75717);
-    k.h(paramCanvas, "canvas");
+    p.h(paramCanvas, "canvas");
     paramCanvas.drawColor(0);
-    this.gfa.setColor(-1);
+    this.gyK.setColor(-1);
     int i = getWidth();
-    if (!this.ucv) {
-      i = getWidth() - (int)this.wuJ * 2;
+    if (!this.vff) {
+      i = getWidth() - (int)this.xCF * 2;
     }
-    paramCanvas.drawCircle(getWidth() / 2.0F, getWidth() / 2.0F, i / 2.0F, this.gfa);
+    paramCanvas.drawCircle(getWidth() / 2.0F, getWidth() / 2.0F, i / 2.0F, this.gyK);
     if (this.bitmap != null)
     {
       Bitmap localBitmap = this.bitmap;
@@ -64,17 +64,17 @@ public final class ClickBigImageView
         float f = this.radius;
         localBitmap = this.bitmap;
         if (localBitmap == null) {
-          k.fOy();
+          p.gfZ();
         }
         f = f * 2.0F / localBitmap.getWidth();
-        this.bitmap = f.b(this.bitmap, 0.0F, f, f);
+        this.bitmap = g.b(this.bitmap, 0.0F, f, f);
         i = getWidth();
         localBitmap = this.bitmap;
         if (localBitmap == null) {
-          k.fOy();
+          p.gfZ();
         }
         f = (i - localBitmap.getWidth()) / 2.0F;
-        paramCanvas.drawBitmap(this.bitmap, f, f, this.gfa);
+        paramCanvas.drawBitmap(this.bitmap, f, f, this.gyK);
       }
     }
     for (;;)
@@ -84,8 +84,8 @@ public final class ClickBigImageView
       return;
       if (this.color != 0)
       {
-        this.gfa.setColor(this.color);
-        paramCanvas.drawCircle(getWidth() / 2.0F, getWidth() / 2.0F, this.radius, this.gfa);
+        this.gyK.setColor(this.color);
+        paramCanvas.drawCircle(getWidth() / 2.0F, getWidth() / 2.0F, this.radius, this.gyK);
       }
     }
   }
@@ -93,7 +93,7 @@ public final class ClickBigImageView
   public final void setBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(75718);
-    k.h(paramBitmap, "bitmap");
+    p.h(paramBitmap, "bitmap");
     this.bitmap = paramBitmap;
     AppMethodBeat.o(75718);
   }
@@ -106,9 +106,9 @@ public final class ClickBigImageView
   public final void setHasSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(75719);
-    if (this.ucv != paramBoolean)
+    if (this.vff != paramBoolean)
     {
-      this.ucv = paramBoolean;
+      this.vff = paramBoolean;
       invalidate();
     }
     AppMethodBeat.o(75719);
@@ -121,7 +121,7 @@ public final class ClickBigImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView
  * JD-Core Version:    0.7.0.1
  */

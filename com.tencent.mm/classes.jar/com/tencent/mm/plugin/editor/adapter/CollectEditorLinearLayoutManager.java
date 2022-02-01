@@ -8,22 +8,22 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class CollectEditorLinearLayoutManager
   extends LinearLayoutManager
 {
-  private final int ngo;
-  public int oOD;
-  public boolean oOE;
+  private final int nGK;
+  public int psl;
+  public boolean psm;
   
   public CollectEditorLinearLayoutManager()
   {
     AppMethodBeat.i(181634);
-    this.ngo = i.iw(ai.getContext());
-    this.oOD = -1;
-    this.oOE = false;
+    this.nGK = i.iG(aj.getContext());
+    this.psl = -1;
+    this.psm = false;
     AppMethodBeat.o(181634);
   }
   
@@ -31,9 +31,9 @@ public class CollectEditorLinearLayoutManager
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
     AppMethodBeat.i(181635);
-    this.ngo = i.iw(ai.getContext());
-    this.oOD = -1;
-    this.oOE = false;
+    this.nGK = i.iG(aj.getContext());
+    this.psl = -1;
+    this.psm = false;
     AppMethodBeat.o(181635);
   }
   
@@ -41,7 +41,7 @@ public class CollectEditorLinearLayoutManager
   {
     int j = 1;
     AppMethodBeat.i(181636);
-    if (!this.oOE)
+    if (!this.psm)
     {
       paramInt = super.b(paramInt, paramo, paramt);
       AppMethodBeat.o(181636);
@@ -49,20 +49,20 @@ public class CollectEditorLinearLayoutManager
     }
     int i;
     if (paramInt < 0) {
-      if (j.aU(49.0F) <= Math.abs(paramInt)) {
+      if (j.aX(49.0F) <= Math.abs(paramInt)) {
         i = 1;
       }
     }
     for (;;)
     {
       if (paramInt > 0) {
-        if (this.ngo + j.aU(49.0F) < paramInt) {
+        if (this.nGK + j.aX(49.0F) < paramInt) {
           i = j;
         }
       }
       for (;;)
       {
-        if ((i != 0) && (this.oOE))
+        if ((i != 0) && (this.psm))
         {
           AppMethodBeat.o(181636);
           return 0;
@@ -89,8 +89,8 @@ public class CollectEditorLinearLayoutManager
   
   public final int c(RecyclerView.t paramt)
   {
-    if (this.oOD > 0) {
-      return this.oOD;
+    if (this.psl > 0) {
+      return this.psl;
     }
     return 900;
   }
@@ -106,14 +106,14 @@ public class CollectEditorLinearLayoutManager
     }
     catch (Exception paramo)
     {
-      ac.printErrStackTrace("MicroMsg.CollectEditorLinearLayoutManager", paramo, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CollectEditorLinearLayoutManager", paramo, "", new Object[0]);
       AppMethodBeat.o(181637);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.CollectEditorLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

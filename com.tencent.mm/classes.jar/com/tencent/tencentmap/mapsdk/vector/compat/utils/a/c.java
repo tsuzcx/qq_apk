@@ -10,9 +10,9 @@ public class c
   
   public c()
   {
-    AppMethodBeat.i(192338);
+    AppMethodBeat.i(193063);
     this.b = (6.283185307179586D * a);
-    AppMethodBeat.o(192338);
+    AppMethodBeat.o(193063);
   }
   
   public c(double paramDouble)
@@ -22,7 +22,7 @@ public class c
   
   public double a(LatLng paramLatLng1, LatLng paramLatLng2)
   {
-    AppMethodBeat.i(192341);
+    AppMethodBeat.i(193066);
     double d4 = paramLatLng1.getLongitude();
     double d3 = paramLatLng1.getLatitude();
     double d2 = paramLatLng2.getLongitude();
@@ -49,33 +49,33 @@ public class c
     paramLatLng2[2] = d8;
     d1 = Math.asin(Math.sqrt((paramLatLng1[0] - paramLatLng2[0]) * (paramLatLng1[0] - paramLatLng2[0]) + (paramLatLng1[1] - paramLatLng2[1]) * (paramLatLng1[1] - paramLatLng2[1]) + (paramLatLng1[2] - paramLatLng2[2]) * (paramLatLng1[2] - paramLatLng2[2])) / 2.0D);
     d2 = this.b;
-    AppMethodBeat.o(192341);
+    AppMethodBeat.o(193066);
     return d1 * d2 * 3.141592653589793D;
   }
   
   public LatLng a(b paramb)
   {
-    AppMethodBeat.i(192340);
+    AppMethodBeat.i(193065);
     double d = paramb.a / this.b;
     paramb = new LatLng(90.0D - Math.toDegrees(Math.atan(Math.exp(-(0.5D - paramb.b / this.b) * 2.0D * 3.141592653589793D)) * 2.0D), (d - 0.5D) * 360.0D);
-    AppMethodBeat.o(192340);
+    AppMethodBeat.o(193065);
     return paramb;
   }
   
   public b a(LatLng paramLatLng)
   {
-    AppMethodBeat.i(192339);
+    AppMethodBeat.i(193064);
     double d1 = paramLatLng.getLongitude() / 360.0D;
     double d2 = Math.sin(Math.toRadians(paramLatLng.getLatitude()));
     d2 = Math.log((1.0D + d2) / (1.0D - d2)) * 0.5D / -6.283185307179586D;
     paramLatLng = new b((d1 + 0.5D) * this.b, (d2 + 0.5D) * this.b);
-    AppMethodBeat.o(192339);
+    AppMethodBeat.o(193064);
     return paramLatLng;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.a.c
  * JD-Core Version:    0.7.0.1
  */

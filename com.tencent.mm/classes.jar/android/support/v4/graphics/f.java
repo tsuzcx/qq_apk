@@ -18,10 +18,10 @@ import java.util.List;
 final class f
   extends i
 {
-  private static final Class HU;
-  private static final Constructor HV;
-  private static final Method HW;
-  private static final Method HX;
+  private static final Class JN;
+  private static final Constructor JO;
+  private static final Method JP;
+  private static final Method JQ;
   
   static
   {
@@ -31,10 +31,10 @@ final class f
       localConstructor = localClass.getConstructor(new Class[0]);
       localMethod2 = localClass.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
       Method localMethod1 = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass, 1).getClass() });
-      HV = localConstructor;
-      HU = localClass;
-      HW = localMethod2;
-      HX = localMethod1;
+      JO = localConstructor;
+      JN = localClass;
+      JP = localMethod2;
+      JQ = localMethod1;
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -59,7 +59,7 @@ final class f
   {
     try
     {
-      paramBoolean = ((Boolean)HW.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
+      paramBoolean = ((Boolean)JP.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
       return paramBoolean;
     }
     catch (IllegalAccessException paramObject)
@@ -73,16 +73,16 @@ final class f
     }
   }
   
-  public static boolean ea()
+  public static boolean ev()
   {
-    return HW != null;
+    return JP != null;
   }
   
-  private static Object eb()
+  private static Object ew()
   {
     try
     {
-      Object localObject = HV.newInstance(new Object[0]);
+      Object localObject = JO.newInstance(new Object[0]);
       return localObject;
     }
     catch (InstantiationException localInstantiationException)
@@ -100,13 +100,13 @@ final class f
     }
   }
   
-  private static Typeface p(Object paramObject)
+  private static Typeface q(Object paramObject)
   {
     try
     {
-      Object localObject = Array.newInstance(HU, 1);
+      Object localObject = Array.newInstance(JN, 1);
       Array.set(localObject, 0, paramObject);
-      paramObject = (Typeface)HX.invoke(null, new Object[] { localObject });
+      paramObject = (Typeface)JQ.invoke(null, new Object[] { localObject });
       return paramObject;
     }
     catch (IllegalAccessException paramObject)
@@ -122,26 +122,26 @@ final class f
   
   public final Typeface a(Context paramContext, c.b paramb, Resources paramResources, int paramInt)
   {
-    Object localObject1 = eb();
-    paramb = paramb.HB;
+    Object localObject1 = ew();
+    paramb = paramb.Jv;
     int i = paramb.length;
     paramInt = 0;
     while (paramInt < i)
     {
       Object localObject2 = paramb[paramInt];
-      ByteBuffer localByteBuffer = j.a(paramContext, paramResources, localObject2.HG);
+      ByteBuffer localByteBuffer = j.a(paramContext, paramResources, localObject2.JA);
       if (localByteBuffer == null) {}
-      while (!a(localObject1, localByteBuffer, localObject2.HF, localObject2.HC, localObject2.HD)) {
+      while (!a(localObject1, localByteBuffer, localObject2.Jz, localObject2.Jw, localObject2.Jx)) {
         return null;
       }
       paramInt += 1;
     }
-    return p(localObject1);
+    return q(localObject1);
   }
   
   public final Typeface a(Context paramContext, b.b[] paramArrayOfb, int paramInt)
   {
-    Object localObject = eb();
+    Object localObject = ew();
     n localn = new n();
     int j = paramArrayOfb.length;
     int i = 0;
@@ -156,12 +156,12 @@ final class f
         localByteBuffer1 = j.b(paramContext, localUri);
         localn.put(localUri, localByteBuffer1);
       }
-      if (!a(localObject, localByteBuffer1, localb.HF, localb.HC, localb.HD)) {
+      if (!a(localObject, localByteBuffer1, localb.Jz, localb.Jw, localb.Jx)) {
         return null;
       }
       i += 1;
     }
-    return Typeface.create(p(localObject), paramInt);
+    return Typeface.create(q(localObject), paramInt);
   }
 }
 

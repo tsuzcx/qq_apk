@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.address.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String iYQ;
-  public String iYR;
-  public String iYS;
-  public String iYT;
-  public String iYU;
-  public String iYV;
-  public String iYW;
-  public String iYX;
-  public String iYY;
   public int id;
+  public String jrZ;
+  public String jsa;
+  public String jsb;
+  public String jsc;
+  public String jsd;
+  public String jse;
+  public String jsf;
+  public String jsg;
+  public String jsh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
@@ -22,75 +22,75 @@ public final class b
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aR(1, this.id);
-      if (this.iYQ != null) {
-        paramVarArgs.d(2, this.iYQ);
+      paramVarArgs.aS(1, this.id);
+      if (this.jrZ != null) {
+        paramVarArgs.d(2, this.jrZ);
       }
-      if (this.iYR != null) {
-        paramVarArgs.d(3, this.iYR);
+      if (this.jsa != null) {
+        paramVarArgs.d(3, this.jsa);
       }
-      if (this.iYS != null) {
-        paramVarArgs.d(4, this.iYS);
+      if (this.jsb != null) {
+        paramVarArgs.d(4, this.jsb);
       }
-      if (this.iYT != null) {
-        paramVarArgs.d(5, this.iYT);
+      if (this.jsc != null) {
+        paramVarArgs.d(5, this.jsc);
       }
-      if (this.iYU != null) {
-        paramVarArgs.d(6, this.iYU);
+      if (this.jsd != null) {
+        paramVarArgs.d(6, this.jsd);
       }
-      if (this.iYV != null) {
-        paramVarArgs.d(7, this.iYV);
+      if (this.jse != null) {
+        paramVarArgs.d(7, this.jse);
       }
-      if (this.iYW != null) {
-        paramVarArgs.d(8, this.iYW);
+      if (this.jsf != null) {
+        paramVarArgs.d(8, this.jsf);
       }
-      if (this.iYX != null) {
-        paramVarArgs.d(9, this.iYX);
+      if (this.jsg != null) {
+        paramVarArgs.d(9, this.jsg);
       }
-      if (this.iYY != null) {
-        paramVarArgs.d(10, this.iYY);
+      if (this.jsh != null) {
+        paramVarArgs.d(10, this.jsh);
       }
       AppMethodBeat.o(20827);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bx(1, this.id) + 0;
+      int i = f.a.a.b.b.a.bz(1, this.id) + 0;
       paramInt = i;
-      if (this.iYQ != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.iYQ);
+      if (this.jrZ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.jrZ);
       }
       i = paramInt;
-      if (this.iYR != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.iYR);
+      if (this.jsa != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.jsa);
       }
       paramInt = i;
-      if (this.iYS != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.iYS);
+      if (this.jsb != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.jsb);
       }
       i = paramInt;
-      if (this.iYT != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.iYT);
+      if (this.jsc != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.jsc);
       }
       paramInt = i;
-      if (this.iYU != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.iYU);
+      if (this.jsd != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.jsd);
       }
       i = paramInt;
-      if (this.iYV != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.iYV);
+      if (this.jse != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.jse);
       }
       paramInt = i;
-      if (this.iYW != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.iYW);
+      if (this.jsf != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.jsf);
       }
       i = paramInt;
-      if (this.iYX != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.iYX);
+      if (this.jsg != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.jsg);
       }
       paramInt = i;
-      if (this.iYY != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.iYY);
+      if (this.jsh != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.jsh);
       }
       AppMethodBeat.o(20827);
       return paramInt;
@@ -98,9 +98,9 @@ public final class b
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
       AppMethodBeat.o(20827);
@@ -116,43 +116,43 @@ public final class b
         AppMethodBeat.o(20827);
         return -1;
       case 1: 
-        localb.id = locala.LVo.xF();
+        localb.id = locala.NPN.zc();
         AppMethodBeat.o(20827);
         return 0;
       case 2: 
-        localb.iYQ = locala.LVo.readString();
+        localb.jrZ = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 3: 
-        localb.iYR = locala.LVo.readString();
+        localb.jsa = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 4: 
-        localb.iYS = locala.LVo.readString();
+        localb.jsb = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 5: 
-        localb.iYT = locala.LVo.readString();
+        localb.jsc = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 6: 
-        localb.iYU = locala.LVo.readString();
+        localb.jsd = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 7: 
-        localb.iYV = locala.LVo.readString();
+        localb.jse = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 8: 
-        localb.iYW = locala.LVo.readString();
+        localb.jsf = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       case 9: 
-        localb.iYX = locala.LVo.readString();
+        localb.jsg = locala.NPN.readString();
         AppMethodBeat.o(20827);
         return 0;
       }
-      localb.iYY = locala.LVo.readString();
+      localb.jsh = locala.NPN.readString();
       AppMethodBeat.o(20827);
       return 0;
     }
@@ -162,7 +162,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.address.d.b
  * JD-Core Version:    0.7.0.1
  */

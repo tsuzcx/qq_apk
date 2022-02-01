@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
-import com.tencent.mm.protocal.protobuf.ebz;
+import com.tencent.mm.protocal.protobuf.eif;
 
 public class c
-  extends a<Boolean, ebz>
+  extends a<Boolean, eif>
 {
-  private final boolean jqm;
+  private final boolean jKg;
   private final int scene;
   
   public c(boolean paramBoolean, int paramInt)
   {
-    this.jqm = paramBoolean;
+    this.jKg = paramBoolean;
     this.scene = paramInt;
   }
   
-  final String aXD()
+  final String bbb()
   {
     return "CmdGetCode";
   }

@@ -15,12 +15,13 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public class BaseNumberKeyboardView
   extends LinearLayout
 {
   private Context mContext;
-  private ImageButton mHz;
   private EditText mInputEditText;
   private Button mKey0;
   private Button mKey1;
@@ -34,6 +35,7 @@ public class BaseNumberKeyboardView
   private Button mKey9;
   private Button mKeyX;
   private int mXMode;
+  private ImageButton nhX;
   
   public BaseNumberKeyboardView(Context paramContext)
   {
@@ -69,14 +71,18 @@ public class BaseNumberKeyboardView
     this.mKey9 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_9")));
     this.mKeyX = ((Button)paramContext.findViewById(getId("tenpay_keyboard_x")));
     this.mKey0 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_0")));
-    this.mHz = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
+    this.nhX = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
     paramContext = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(136678);
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if (BaseNumberKeyboardView.a(BaseNumberKeyboardView.this) == null)
         {
+          a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(136678);
           return;
         }
@@ -87,15 +93,13 @@ public class BaseNumberKeyboardView
           }
           for (;;)
           {
-            AppMethodBeat.o(136678);
-            return;
+            a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(136678);
             return;
             BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, 59));
             BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, 52));
             BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(1, 59));
-            AppMethodBeat.o(136678);
-            return;
+            continue;
             BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, 56));
           }
         }
@@ -107,6 +111,7 @@ public class BaseNumberKeyboardView
         {
           BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, i));
           BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(1, i));
+          a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/numberpad/BaseNumberKeyboardView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(136678);
           return;
           if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_2")) {
@@ -148,7 +153,7 @@ public class BaseNumberKeyboardView
       this.mKey9.setContentDescription("9");
       this.mKey0.setContentDescription("0");
       this.mKeyX.setContentDescription("字母X");
-      this.mHz.setContentDescription("删除");
+      this.nhX.setContentDescription("删除");
     }
     this.mKey1.setOnClickListener(paramContext);
     this.mKey2.setOnClickListener(paramContext);
@@ -161,7 +166,7 @@ public class BaseNumberKeyboardView
     this.mKey9.setOnClickListener(paramContext);
     this.mKeyX.setOnClickListener(paramContext);
     this.mKey0.setOnClickListener(paramContext);
-    this.mHz.setOnClickListener(paramContext);
+    this.nhX.setOnClickListener(paramContext);
     AppMethodBeat.o(136681);
   }
   
@@ -220,7 +225,7 @@ public class BaseNumberKeyboardView
     this.mKey8.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey9.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyX.setAccessibilityDelegate(paramAccessibilityDelegate);
-    this.mHz.setAccessibilityDelegate(paramAccessibilityDelegate);
+    this.nhX.setAccessibilityDelegate(paramAccessibilityDelegate);
     AppMethodBeat.o(136682);
   }
   

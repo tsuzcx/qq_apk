@@ -12,9 +12,9 @@ import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -29,23 +29,23 @@ public final class JsApiAddDownloadTaskForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<AddDownloadTask> CREATOR;
-    private JSONObject bVY;
-    private int bWl;
-    private boolean jYA;
-    private String jYB;
-    private long jYC;
-    private m jYs;
-    private String jYt;
-    private String jYu;
-    private String jYv;
-    private long jYx;
-    private String jYy;
-    private String jYz;
-    private boolean jZH;
-    private q jdy;
-    private int kaV;
-    private boolean kaW;
-    private String kaX;
+    private int cgA;
+    private JSONObject cgn;
+    private q jwH;
+    private m ksO;
+    private String ksP;
+    private String ksQ;
+    private String ksR;
+    private long ksT;
+    private String ksU;
+    private String ksV;
+    private boolean ksW;
+    private String ksX;
+    private long ksY;
+    private boolean kud;
+    private int kvr;
+    private boolean kvs;
+    private String kvt;
     private String mAppId;
     private String mPackageName;
     private int mScene;
@@ -67,54 +67,54 @@ public final class JsApiAddDownloadTaskForNative
     public AddDownloadTask(m paramm, q paramq, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45754);
-      bej();
-      this.jYs = paramm;
-      this.jdy = paramq;
-      this.bWl = paramInt;
-      this.bVY = paramJSONObject;
-      this.jYt = paramJSONObject.optString("taskName");
-      this.jYu = paramJSONObject.optString("taskUrl");
-      this.jYv = paramJSONObject.optString("fileMd5");
-      this.jYx = paramJSONObject.optInt("taskSize", 0);
-      this.jYy = paramJSONObject.optString("extInfo");
-      this.jYz = paramJSONObject.optString("fileType");
+      bhN();
+      this.ksO = paramm;
+      this.jwH = paramq;
+      this.cgA = paramInt;
+      this.cgn = paramJSONObject;
+      this.ksP = paramJSONObject.optString("taskName");
+      this.ksQ = paramJSONObject.optString("taskUrl");
+      this.ksR = paramJSONObject.optString("fileMd5");
+      this.ksT = paramJSONObject.optInt("taskSize", 0);
+      this.ksU = paramJSONObject.optString("extInfo");
+      this.ksV = paramJSONObject.optString("fileType");
       this.mAppId = paramJSONObject.optString("appId");
       this.mPackageName = paramJSONObject.optString("packageName");
-      this.jZH = paramJSONObject.optBoolean("downloadInWifi", false);
-      this.kaV = paramJSONObject.optInt("downloaderType", 0);
-      this.kaW = paramJSONObject.optBoolean("useDownloaderWidget", false);
+      this.kud = paramJSONObject.optBoolean("downloadInWifi", false);
+      this.kvr = paramJSONObject.optInt("downloaderType", 0);
+      this.kvs = paramJSONObject.optBoolean("useDownloaderWidget", false);
       this.mScene = paramJSONObject.optInt("scene", 6001);
-      this.kaX = paramJSONObject.optString("alterUrl");
-      this.jYA = true;
+      this.kvt = paramJSONObject.optString("alterUrl");
+      this.ksW = true;
       AppMethodBeat.o(45754);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(45756);
-      com.tencent.mm.kernel.g.agS();
-      if (!com.tencent.mm.kernel.g.agR().isSDCardAvailable()) {
-        this.jYB = "fail_sdcard_not_ready";
+      com.tencent.mm.kernel.g.ajD();
+      if (!com.tencent.mm.kernel.g.ajC().isSDCardAvailable()) {
+        this.ksX = "fail_sdcard_not_ready";
       }
       for (;;)
       {
-        bet();
+        bhX();
         AppMethodBeat.o(45756);
         return;
-        if ((this.jYx > 0L) && (!com.tencent.mm.compatible.util.e.oR(this.jYx)))
+        if ((this.ksT > 0L) && (!com.tencent.mm.compatible.util.e.qR(this.ksT)))
         {
-          this.jYB = "fail_sdcard_has_not_enough_space";
+          this.ksX = "fail_sdcard_has_not_enough_space";
         }
-        else if (bs.isNullOrNil(this.jYu))
+        else if (bt.isNullOrNil(this.ksQ))
         {
-          this.jYB = "fail_invalid_url";
+          this.ksX = "fail_invalid_url";
         }
         else
         {
-          if (this.kaW)
+          if (this.kvs)
           {
-            localObject = ai.getContext();
-            JSONObject localJSONObject = this.bVY;
+            localObject = aj.getContext();
+            JSONObject localJSONObject = this.cgn;
             com.tencent.mm.plugin.downloader_app.a.a locala = new com.tencent.mm.plugin.downloader_app.a.a();
             if (localJSONObject == null) {}
             for (;;)
@@ -145,69 +145,69 @@ public final class JsApiAddDownloadTaskForNative
               break;
               locala.appName = localJSONObject.optString("taskName");
               locala.downloadUrl = localJSONObject.optString("taskUrl");
-              locala.oKQ = localJSONObject.optString("alterUrl");
-              locala.oKS = localJSONObject.optLong("taskSize");
-              locala.lpa = localJSONObject.optString("fileMd5");
+              locala.poy = localJSONObject.optString("alterUrl");
+              locala.poA = localJSONObject.optLong("taskSize");
+              locala.lMs = localJSONObject.optString("fileMd5");
               locala.extInfo = localJSONObject.optString("extInfo");
-              locala.fileType = bs.getInt(localJSONObject.optString("fileType"), 0);
+              locala.fileType = bt.getInt(localJSONObject.optString("fileType"), 0);
               locala.appId = localJSONObject.optString("appId");
-              locala.oKR = localJSONObject.optString("rawAppId");
+              locala.poz = localJSONObject.optString("rawAppId");
               locala.packageName = localJSONObject.optString("packageName");
               locala.scene = localJSONObject.optInt("scene", 1000);
-              locala.diX = localJSONObject.optInt("downloaderType", 1);
-              locala.oJo = localJSONObject.optBoolean("downloadInWifi", false);
+              locala.duJ = localJSONObject.optInt("downloaderType", 1);
+              locala.pmV = localJSONObject.optBoolean("downloadInWifi", false);
             }
           }
-          ac.i("MicroMsg.JsApiAddDownloadTaskForNative", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.jYu, this.jYv });
+          ad.i("MicroMsg.JsApiAddDownloadTaskForNative", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.ksQ, this.ksR });
           Object localObject = new g.a();
-          ((g.a)localObject).WD(this.jYu);
-          ((g.a)localObject).sk(this.jYx);
-          ((g.a)localObject).WF(this.jYt);
-          ((g.a)localObject).WG(this.jYv);
+          ((g.a)localObject).aak(this.ksQ);
+          ((g.a)localObject).ui(this.ksT);
+          ((g.a)localObject).aam(this.ksP);
+          ((g.a)localObject).aan(this.ksR);
           ((g.a)localObject).setAppId(this.mAppId);
-          ((g.a)localObject).ey(this.mPackageName);
-          ((g.a)localObject).jF(true);
-          ((g.a)localObject).AG(bs.getInt(this.jYz, 1));
+          ((g.a)localObject).ft(this.mPackageName);
+          ((g.a)localObject).jQ(true);
+          ((g.a)localObject).Bp(bt.getInt(this.ksV, 1));
           ((g.a)localObject).setScene(this.mScene);
-          ((g.a)localObject).WH(this.jYy);
-          ((g.a)localObject).bXR();
-          ((g.a)localObject).WE(this.kaX);
-          localObject = ((g.a)localObject).oJg;
-          if (this.kaV == 1) {}
-          for (long l = f.bXJ().b((com.tencent.mm.plugin.downloader.model.g)localObject);; l = f.bXJ().a((com.tencent.mm.plugin.downloader.model.g)localObject))
+          ((g.a)localObject).aao(this.ksU);
+          ((g.a)localObject).cct();
+          ((g.a)localObject).aal(this.kvt);
+          localObject = ((g.a)localObject).pmN;
+          if (this.kvr == 1) {}
+          for (long l = f.ccl().b((com.tencent.mm.plugin.downloader.model.g)localObject);; l = f.ccl().a((com.tencent.mm.plugin.downloader.model.g)localObject))
           {
-            ac.i("MicroMsg.JsApiAddDownloadTaskForNative", "doAddDownloadTaskStraight, downloadId = ".concat(String.valueOf(l)));
+            ad.i("MicroMsg.JsApiAddDownloadTaskForNative", "doAddDownloadTaskStraight, downloadId = ".concat(String.valueOf(l)));
             if (l > 0L) {
               break label517;
             }
-            ac.e("MicroMsg.JsApiAddDownloadTaskForNative", "doAddDownloadTaskStraight fail, downloadId = ".concat(String.valueOf(l)));
-            this.jYB = "";
+            ad.e("MicroMsg.JsApiAddDownloadTaskForNative", "doAddDownloadTaskStraight fail, downloadId = ".concat(String.valueOf(l)));
+            this.ksX = "";
             break;
           }
           label517:
-          this.jYA = false;
-          this.jYC = l;
+          this.ksW = false;
+          this.ksY = l;
         }
       }
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(45757);
-      bek();
-      if (this.jYA)
+      bhO();
+      if (this.ksW)
       {
-        if (bs.isNullOrNil(this.jYB)) {}
-        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.jYB }))
+        if (bt.isNullOrNil(this.ksX)) {}
+        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.ksX }))
         {
-          this.jdy.h(this.bWl, this.jYs.e((String)localObject, null));
+          this.jwH.h(this.cgA, this.ksO.e((String)localObject, null));
           AppMethodBeat.o(45757);
           return;
         }
       }
       Object localObject = new HashMap();
-      ((Map)localObject).put("downloadId", Long.valueOf(this.jYC));
-      this.jdy.h(this.bWl, this.jYs.k("ok", (Map)localObject));
+      ((Map)localObject).put("downloadId", Long.valueOf(this.ksY));
+      this.jwH.h(this.cgA, this.ksO.m("ok", (Map)localObject));
       AppMethodBeat.o(45757);
     }
     
@@ -215,12 +215,12 @@ public final class JsApiAddDownloadTaskForNative
     {
       boolean bool2 = true;
       AppMethodBeat.i(45758);
-      this.jYt = paramParcel.readString();
-      this.jYu = paramParcel.readString();
-      this.jYv = paramParcel.readString();
-      this.jYx = paramParcel.readLong();
-      this.jYy = paramParcel.readString();
-      this.jYz = paramParcel.readString();
+      this.ksP = paramParcel.readString();
+      this.ksQ = paramParcel.readString();
+      this.ksR = paramParcel.readString();
+      this.ksT = paramParcel.readLong();
+      this.ksU = paramParcel.readString();
+      this.ksV = paramParcel.readString();
       this.mAppId = paramParcel.readString();
       this.mPackageName = paramParcel.readString();
       boolean bool1;
@@ -229,26 +229,26 @@ public final class JsApiAddDownloadTaskForNative
       }
       for (;;)
       {
-        this.jZH = bool1;
-        this.kaV = paramParcel.readInt();
+        this.kud = bool1;
+        this.kvr = paramParcel.readInt();
         if (paramParcel.readInt() == 1)
         {
           bool1 = true;
           label105:
-          this.jYA = bool1;
-          this.jYB = paramParcel.readString();
-          this.jYC = paramParcel.readLong();
+          this.ksW = bool1;
+          this.ksX = paramParcel.readString();
+          this.ksY = paramParcel.readLong();
           this.mScene = paramParcel.readInt();
           if (paramParcel.readInt() != 1) {
             break label189;
           }
           bool1 = bool2;
-          this.kaW = bool1;
+          this.kvs = bool1;
         }
         try
         {
-          this.bVY = new JSONObject(paramParcel.readString());
-          this.kaX = paramParcel.readString();
+          this.cgn = new JSONObject(paramParcel.readString());
+          this.kvt = paramParcel.readString();
           AppMethodBeat.o(45758);
           return;
           bool1 = false;
@@ -262,7 +262,7 @@ public final class JsApiAddDownloadTaskForNative
         {
           for (;;)
           {
-            ac.d("MicroMsg.JsApiAddDownloadTaskForNative", localException.getMessage());
+            ad.d("MicroMsg.JsApiAddDownloadTaskForNative", localException.getMessage());
           }
         }
       }
@@ -272,45 +272,45 @@ public final class JsApiAddDownloadTaskForNative
     {
       int i = 1;
       AppMethodBeat.i(45759);
-      paramParcel.writeString(this.jYt);
-      paramParcel.writeString(this.jYu);
-      paramParcel.writeString(this.jYv);
-      paramParcel.writeLong(this.jYx);
-      paramParcel.writeString(this.jYy);
-      paramParcel.writeString(this.jYz);
+      paramParcel.writeString(this.ksP);
+      paramParcel.writeString(this.ksQ);
+      paramParcel.writeString(this.ksR);
+      paramParcel.writeLong(this.ksT);
+      paramParcel.writeString(this.ksU);
+      paramParcel.writeString(this.ksV);
       paramParcel.writeString(this.mAppId);
       paramParcel.writeString(this.mPackageName);
-      if (this.jZH)
+      if (this.kud)
       {
         paramInt = 1;
         paramParcel.writeInt(paramInt);
-        paramParcel.writeInt(this.kaV);
-        if (!this.jYA) {
+        paramParcel.writeInt(this.kvr);
+        if (!this.ksW) {
           break label188;
         }
         paramInt = 1;
         label103:
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.jYB);
-        paramParcel.writeLong(this.jYC);
+        paramParcel.writeString(this.ksX);
+        paramParcel.writeLong(this.ksY);
         paramParcel.writeInt(this.mScene);
-        if (!this.kaW) {
+        if (!this.kvs) {
           break label193;
         }
         paramInt = i;
         label141:
         paramParcel.writeInt(paramInt);
-        if (this.bVY == null) {
+        if (this.cgn == null) {
           break label198;
         }
       }
       label188:
       label193:
       label198:
-      for (String str = this.bVY.toString();; str = "")
+      for (String str = this.cgn.toString();; str = "")
       {
         paramParcel.writeString(str);
-        paramParcel.writeString(this.kaX);
+        paramParcel.writeString(this.kvt);
         AppMethodBeat.o(45759);
         return;
         paramInt = 0;

@@ -30,7 +30,7 @@ public class f
     AppMethodBeat.o(77080);
   }
   
-  public final void oC() {}
+  public final void oU() {}
   
   public final void trimMemory(int paramInt) {}
 }

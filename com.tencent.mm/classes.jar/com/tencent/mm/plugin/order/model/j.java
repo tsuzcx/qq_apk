@@ -4,19 +4,19 @@ import java.util.List;
 
 public final class j
 {
-  public String drV;
-  public String dtG;
-  public String vyd;
-  public String vyn;
-  public String vyo;
-  public String vyp;
-  public String vyq;
-  public String vyr;
-  public String vys;
-  public String vyt;
-  public String vyu;
-  public List<a> vyv;
-  public List<b> vyw;
+  public String dDP;
+  public String msgId;
+  public String wDH;
+  public String wDI;
+  public String wDJ;
+  public String wDK;
+  public String wDL;
+  public String wDM;
+  public String wDN;
+  public String wDO;
+  public List<a> wDP;
+  public List<b> wDQ;
+  public String wDx;
   
   public static final class a
   {

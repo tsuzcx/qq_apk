@@ -3,9 +3,9 @@ package com.google.c.d;
 public abstract class r
   extends o
 {
-  public final int yk()
+  public final int zH()
   {
-    return q.bJJ.length;
+    return q.bTW.length;
   }
 }
 

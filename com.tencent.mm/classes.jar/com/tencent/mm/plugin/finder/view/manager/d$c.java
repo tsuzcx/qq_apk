@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.finder.view.manager;
 
 import android.text.Spannable;
 import d.g.a.m;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "start", "", "end", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "start", "", "end", "invoke"})
 final class d$c
-  extends d.g.b.l
-  implements m<Integer, Integer, y>
+  extends q
+  implements m<Integer, Integer, z>
 {
   d$c(Spannable paramSpannable)
   {
@@ -16,7 +18,7 @@ final class d$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.manager.d.c
  * JD-Core Version:    0.7.0.1
  */

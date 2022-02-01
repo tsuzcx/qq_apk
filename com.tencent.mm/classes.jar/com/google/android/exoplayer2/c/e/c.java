@@ -8,17 +8,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class c
   implements com.google.android.exoplayer2.c.e
 {
-  public static final com.google.android.exoplayer2.c.h aXT;
-  private h beD;
-  private com.google.android.exoplayer2.c.g beR;
-  private boolean beS;
+  public static final com.google.android.exoplayer2.c.h bio;
+  private h boY;
+  private com.google.android.exoplayer2.c.g bpm;
+  private boolean bpn;
   
   static
   {
     AppMethodBeat.i(92154);
-    aXT = new com.google.android.exoplayer2.c.h()
+    bio = new com.google.android.exoplayer2.c.h()
     {
-      public final com.google.android.exoplayer2.c.e[] sT()
+      public final com.google.android.exoplayer2.c.e[] us()
       {
         AppMethodBeat.i(92149);
         c localc = new c();
@@ -38,12 +38,12 @@ public final class c
       AppMethodBeat.o(92153);
       return false;
     }
-    int i = Math.min(((e)localObject).bfe, 8);
+    int i = Math.min(((e)localObject).bpz, 8);
     localObject = new com.google.android.exoplayer2.i.m(i);
     paramf.b(((com.google.android.exoplayer2.i.m)localObject).data, 0, i);
     ((com.google.android.exoplayer2.i.m)localObject).setPosition(0);
     if (b.r((com.google.android.exoplayer2.i.m)localObject)) {
-      this.beD = new b();
+      this.boY = new b();
     }
     for (;;)
     {
@@ -52,7 +52,7 @@ public final class c
       ((com.google.android.exoplayer2.i.m)localObject).setPosition(0);
       if (j.r((com.google.android.exoplayer2.i.m)localObject))
       {
-        this.beD = new j();
+        this.boY = new j();
       }
       else
       {
@@ -60,7 +60,7 @@ public final class c
         if (!g.r((com.google.android.exoplayer2.i.m)localObject)) {
           break;
         }
-        this.beD = new g();
+        this.boY = new g();
       }
     }
     AppMethodBeat.o(92153);
@@ -70,7 +70,7 @@ public final class c
   public final int a(f paramf, k paramk)
   {
     AppMethodBeat.i(92152);
-    if (this.beD == null)
+    if (this.boY == null)
     {
       if (!j(paramf))
       {
@@ -78,16 +78,16 @@ public final class c
         AppMethodBeat.o(92152);
         throw paramf;
       }
-      paramf.sR();
+      paramf.uq();
     }
-    if (!this.beS)
+    if (!this.bpn)
     {
-      localObject = this.beR.dW(0);
-      this.beR.sU();
-      this.beD.a(this.beR, (com.google.android.exoplayer2.c.m)localObject);
-      this.beS = true;
+      localObject = this.bpm.eb(0);
+      this.bpm.ut();
+      this.boY.a(this.bpm, (com.google.android.exoplayer2.c.m)localObject);
+      this.bpn = true;
     }
-    Object localObject = this.beD;
+    Object localObject = this.boY;
     switch (((h)localObject).state)
     {
     default: 
@@ -99,7 +99,7 @@ public final class c
       AppMethodBeat.o(92152);
       return i;
     case 1: 
-      paramf.dQ((int)((h)localObject).bfl);
+      paramf.dU((int)((h)localObject).bpG);
       ((h)localObject).state = 2;
       AppMethodBeat.o(92152);
       return 0;
@@ -111,7 +111,7 @@ public final class c
   
   public final void a(com.google.android.exoplayer2.c.g paramg)
   {
-    this.beR = paramg;
+    this.bpm = paramg;
   }
   
   public final boolean a(f paramf)
@@ -133,15 +133,15 @@ public final class c
   public final void f(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92151);
-    if (this.beD != null) {
-      this.beD.f(paramLong1, paramLong2);
+    if (this.boY != null) {
+      this.boY.f(paramLong1, paramLong2);
     }
     AppMethodBeat.o(92151);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.c
  * JD-Core Version:    0.7.0.1
  */

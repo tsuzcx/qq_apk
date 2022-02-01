@@ -6,74 +6,74 @@ import java.util.ArrayList;
 
 public abstract class g<K, T extends a>
 {
-  public d Hcp;
+  public d IPF;
   
   public g(d paramd, int paramInt)
   {
-    this.Hcp = paramd;
-    this.Hcp.wg(true);
-    this.Hcp.a(new f.a()
+    this.IPF = paramd;
+    this.IPF.wS(true);
+    this.IPF.a(new f.a()
     {
-      public final ArrayList<a> aY(ArrayList<Object> paramAnonymousArrayList)
+      public final ArrayList<a> aV(ArrayList<Object> paramAnonymousArrayList)
       {
         AppMethodBeat.i(133504);
-        paramAnonymousArrayList = g.this.aY(paramAnonymousArrayList);
+        paramAnonymousArrayList = g.this.aV(paramAnonymousArrayList);
         AppMethodBeat.o(133504);
         return paramAnonymousArrayList;
       }
       
-      public final a fdN()
+      public final a ftV()
       {
         AppMethodBeat.i(133503);
-        a locala = g.this.fdP();
+        a locala = g.this.ftX();
         AppMethodBeat.o(133503);
         return locala;
       }
     });
     if (paramInt != 0) {
-      this.Hcp.Zb(paramInt);
+      this.IPF.abk(paramInt);
     }
     getCount();
   }
   
-  public abstract ArrayList<T> aY(ArrayList<Object> paramArrayList);
+  public abstract ArrayList<T> aV(ArrayList<Object> paramArrayList);
   
   public final void c(Object paramObject, T paramT)
   {
-    this.Hcp.a(paramObject, paramT);
+    this.IPF.a(paramObject, paramT);
   }
   
   public final void close()
   {
-    this.Hcp.close();
-    this.Hcp = null;
+    this.IPF.close();
+    this.IPF = null;
   }
   
-  public final boolean dU(Object paramObject)
+  public final boolean dX(Object paramObject)
   {
-    return this.Hcp.dU(paramObject);
+    return this.IPF.dX(paramObject);
   }
   
-  public final boolean fdB()
+  public final SparseArray<K>[] ftH()
   {
-    return this.Hcp.fdB();
+    return this.IPF.ftH();
   }
   
-  public abstract T fdP();
-  
-  public final SparseArray<K>[] fdz()
+  public final boolean ftJ()
   {
-    return this.Hcp.fdz();
+    return this.IPF.ftJ();
   }
+  
+  public abstract T ftX();
   
   public final int getCount()
   {
-    return this.Hcp.getCount();
+    return this.IPF.getCount();
   }
   
   public final boolean isClosed()
   {
-    return this.Hcp.isClosed();
+    return this.IPF.isClosed();
   }
 }
 

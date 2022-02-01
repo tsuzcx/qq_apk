@@ -12,7 +12,7 @@ public class TabItem
   extends View
 {
   public final Drawable icon;
-  public final int sg;
+  public final int tY;
   public final CharSequence text;
   
   public TabItem(Context paramContext, AttributeSet paramAttributeSet)
@@ -21,8 +21,8 @@ public class TabItem
     paramContext = az.a(paramContext, paramAttributeSet, a.a.TabItem);
     this.text = paramContext.getText(2);
     this.icon = paramContext.getDrawable(0);
-    this.sg = paramContext.getResourceId(1, 0);
-    paramContext.awJ.recycle();
+    this.tY = paramContext.getResourceId(1, 0);
+    paramContext.ayA.recycle();
   }
 }
 

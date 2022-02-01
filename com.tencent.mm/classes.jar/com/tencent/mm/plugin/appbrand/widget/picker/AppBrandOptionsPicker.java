@@ -13,12 +13,12 @@ import com.tencent.mm.ui.widget.picker.f;
 
 public class AppBrandOptionsPicker
   extends NumberPicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.m.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.p.c<String>
 {
-  private String[] mKp;
-  private int mKq;
   private int mMaxWidth;
   private int mMinWidth;
+  private String[] nkL;
+  private int nkM;
   
   @Keep
   public AppBrandOptionsPicker(Context paramContext)
@@ -30,19 +30,19 @@ public class AppBrandOptionsPicker
     f.f(this);
     d.a(this);
     this.mMinWidth = a.fromDPToPix(paramContext, 100);
-    this.mKq = a.fromDPToPix(paramContext, 20);
+    this.nkM = a.fromDPToPix(paramContext, 20);
     AppMethodBeat.o(138018);
   }
   
   public final String currentValue()
   {
     AppMethodBeat.i(138024);
-    if ((this.mKp == null) || (this.mKp.length <= 0))
+    if ((this.nkL == null) || (this.nkL.length <= 0))
     {
       AppMethodBeat.o(138024);
       return "";
     }
-    String str = this.mKp[getValue()];
+    String str = this.nkL[getValue()];
     AppMethodBeat.o(138024);
     return str;
   }
@@ -79,7 +79,7 @@ public class AppBrandOptionsPicker
       AppMethodBeat.o(138022);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.mKq * 2;
+    paramInt2 = getMeasuredWidth() + this.nkM * 2;
     paramInt1 = paramInt2;
     if (this.mMaxWidth > 0) {
       if (this.mMaxWidth <= paramInt2) {
@@ -108,7 +108,7 @@ public class AppBrandOptionsPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(138020);
-    this.mKq = Math.max(paramInt, 0);
+    this.nkM = Math.max(paramInt, 0);
     AppMethodBeat.o(138020);
   }
   
@@ -130,7 +130,7 @@ public class AppBrandOptionsPicker
       AppMethodBeat.o(138019);
       return;
     }
-    this.mKp = paramArrayOfString;
+    this.nkL = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));

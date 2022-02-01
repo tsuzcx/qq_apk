@@ -3,75 +3,77 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.c.j;
 import com.tencent.mm.plugin.wallet_core.c.t;
-import com.tencent.mm.plugin.wallet_core.model.an;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.plugin.wallet_core.model.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public final class u
-  implements com.tencent.mm.ak.g
+  implements f
 {
-  public b BJI;
-  private a BJJ;
-  public boolean daU = false;
+  public b Dka;
+  private a Dkb;
+  public boolean dmo = false;
   
   public final void a(a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(71305);
-    this.BJJ = parama;
-    com.tencent.mm.kernel.g.agS();
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GQQ, Boolean.FALSE)).booleanValue();
-    ac.v("MicroMsg.WxPayAgreementsHelper", "showProtoCol agree %s isServerControlShow %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
+    this.Dkb = parama;
+    g.ajD();
+    boolean bool = ((Boolean)g.ajC().ajl().get(al.a.IDn, Boolean.FALSE)).booleanValue();
+    ad.v("MicroMsg.WxPayAgreementsHelper", "showProtoCol agree %s isServerControlShow %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
     if (bool)
     {
-      parama.dbi();
+      parama.dkB();
       AppMethodBeat.o(71305);
       return;
     }
-    if (this.daU)
+    if (this.dmo)
     {
-      ac.i("MicroMsg.WxPayAgreementsHelper", "showProtoCol isShow %s", new Object[] { Boolean.valueOf(this.daU) });
-      parama.dbi();
+      ad.i("MicroMsg.WxPayAgreementsHelper", "showProtoCol isShow %s", new Object[] { Boolean.valueOf(this.dmo) });
+      parama.dkB();
       AppMethodBeat.o(71305);
       return;
     }
     if (paramBoolean)
     {
-      this.daU = true;
+      this.dmo = true;
       parama = new j();
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agQ().ghe.a(parama, 0);
+      g.ajD();
+      g.ajB().gAO.a(parama, 0);
       AppMethodBeat.o(71305);
       return;
     }
-    parama.dbi();
+    parama.dkB();
     AppMethodBeat.o(71305);
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(71304);
-    if (this.BJJ != null) {
-      this.BJJ.cancel();
+    if (this.Dkb != null) {
+      this.Dkb.cancel();
     }
     AppMethodBeat.o(71304);
   }
   
-  public final void dbh()
+  public final void dkA()
   {
     AppMethodBeat.i(71303);
     t localt = new t();
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(localt, 0);
-    if (this.BJJ != null) {
-      this.BJJ.dbh();
+    g.ajD();
+    g.ajB().gAO.a(localt, 0);
+    if (this.Dkb != null) {
+      this.Dkb.dkA();
     }
     AppMethodBeat.o(71303);
   }
@@ -79,20 +81,20 @@ public final class u
   public final void onPause()
   {
     AppMethodBeat.i(71302);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(2541, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.b(2791, this);
+    g.ajD();
+    g.ajB().gAO.b(2541, this);
+    g.ajD();
+    g.ajB().gAO.b(2791, this);
     AppMethodBeat.o(71302);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(71301);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(2541, this);
-    com.tencent.mm.kernel.g.agS();
-    com.tencent.mm.kernel.g.agQ().ghe.a(2791, this);
+    g.ajD();
+    g.ajB().gAO.a(2541, this);
+    g.ajD();
+    g.ajB().gAO.a(2791, this);
     AppMethodBeat.o(71301);
   }
   
@@ -107,17 +109,17 @@ public final class u
         return;
       }
       paramString = (j)paramn;
-      ac.d("MicroMsg.WxPayAgreementsHelper", "errType =  %s errCode %s isShow %s content: %s need_agree_duty %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(an.bjw()), paramString.Bou, Boolean.valueOf(paramString.Bov) });
-      if ((an.bjw()) && (paramString.Bov))
+      ad.d("MicroMsg.WxPayAgreementsHelper", "errType =  %s errCode %s isShow %s content: %s need_agree_duty %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(ao.bni()), paramString.COJ, Boolean.valueOf(paramString.COK) });
+      if ((ao.bni()) && (paramString.COK))
       {
         paramn = new Intent();
-        paramn.putExtra("agreement_content", paramString.Bou);
-        d.b(this.BJI.getContext(), "wallet_core", ".ui.ShowWxPayAgreementsUI", paramn, this.BJI.dbj());
+        paramn.putExtra("agreement_content", paramString.COJ);
+        d.b(this.Dka.getContext(), "wallet_core", ".ui.ShowWxPayAgreementsUI", paramn, this.Dka.dkC());
         AppMethodBeat.o(71306);
         return;
       }
-      if (this.BJJ != null) {
-        this.BJJ.dbi();
+      if (this.Dkb != null) {
+        this.Dkb.dkB();
       }
       AppMethodBeat.o(71306);
       return;
@@ -129,9 +131,9 @@ public final class u
         AppMethodBeat.o(71306);
         return;
       }
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agR().agA().set(ah.a.GQQ, Boolean.TRUE);
-      ac.i("MicroMsg.WxPayAgreementsHelper", "agree Ok!");
+      g.ajD();
+      g.ajC().ajl().set(al.a.IDn, Boolean.TRUE);
+      ad.i("MicroMsg.WxPayAgreementsHelper", "agree Ok!");
     }
     AppMethodBeat.o(71306);
   }
@@ -140,21 +142,21 @@ public final class u
   {
     public abstract void cancel();
     
-    public abstract void dbh();
+    public abstract void dkA();
     
-    public abstract void dbi();
+    public abstract void dkB();
   }
   
   public static abstract interface b
   {
-    public abstract int dbj();
+    public abstract int dkC();
     
     public abstract Context getContext();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.u
  * JD-Core Version:    0.7.0.1
  */

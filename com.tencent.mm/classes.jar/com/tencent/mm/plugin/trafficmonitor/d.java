@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -11,12 +11,12 @@ import java.util.TimerTask;
 public final class d
   extends e
 {
-  private TimerTask AiM = null;
   public final String TAG = "MicroMsg.NsmTrafficStatsInspector";
+  private Timer cNY = null;
+  private TimerTask cNZ = null;
   private boolean started;
-  private Timer uXx = null;
   
-  public final void eeQ()
+  public final void erh()
   {
     AppMethodBeat.i(123899);
     if (this.started)
@@ -28,7 +28,7 @@ public final class d
     c.init(this.id);
     c.reset(this.id);
     c.update(this.id);
-    this.AiM = new TimerTask()
+    this.cNZ = new TimerTask()
     {
       public final void run()
       {
@@ -36,15 +36,15 @@ public final class d
         c.update(d.this.id);
         int i = d.this.type;
         long l5 = System.currentTimeMillis();
-        Object localObject = aw.aKU("trafficmonitor");
-        long l6 = ((aw)localObject).decodeLong("trafficmonitor_" + d.this.interval, 0L);
-        ((aw)localObject).encode("trafficmonitor_" + d.this.interval, l5);
+        Object localObject = ax.aQA("trafficmonitor");
+        long l6 = ((ax)localObject).decodeLong("trafficmonitor_" + d.this.interval, 0L);
+        ((ax)localObject).encode("trafficmonitor_" + d.this.interval, l5);
         long l2;
         long l1;
         long l3;
         if (i == 0)
         {
-          l2 = c.RF(d.this.id) + c.RE(d.this.id);
+          l2 = c.Tp(d.this.id) + c.To(d.this.id);
           l1 = l2;
           long l4 = 0L;
           l3 = l2;
@@ -61,7 +61,7 @@ public final class d
           return;
           if (i == 1)
           {
-            l2 = c.RD(d.this.id) + c.RC(d.this.id);
+            l2 = c.Tn(d.this.id) + c.Tm(d.this.id);
             l1 = l2;
             l3 = 0L;
           }
@@ -70,8 +70,8 @@ public final class d
             if (i != 2) {
               break;
             }
-            l3 = c.RF(d.this.id) + c.RE(d.this.id);
-            l2 = c.RD(d.this.id) + c.RC(d.this.id);
+            l3 = c.Tp(d.this.id) + c.To(d.this.id);
+            l2 = c.Tn(d.this.id) + c.Tm(d.this.id);
             l1 = l2 + l3;
           }
         }
@@ -79,19 +79,19 @@ public final class d
         return;
         label282:
         d.this.currentIndex = i;
-        if (d.yI(l6))
+        if (d.Bg(l6))
         {
-          ac.i("MicroMsg.NsmTrafficStatsInspector", "isDownloadAndNormal");
-          d.this.eeS();
+          ad.i("MicroMsg.NsmTrafficStatsInspector", "isDownloadAndNormal");
+          d.this.erj();
           AppMethodBeat.o(123898);
           return;
         }
-        ac.i("MicroMsg.NsmTrafficStatsInspector", "wxTotalTraffic : %d , interval : %d", new Object[] { Long.valueOf(l1), Long.valueOf(d.this.interval) });
+        ad.i("MicroMsg.NsmTrafficStatsInspector", "wxTotalTraffic : %d , interval : %d", new Object[] { Long.valueOf(l1), Long.valueOf(d.this.interval) });
         String str;
         int j;
-        if (d.this.AiY.a((List)localObject, l1, d.this.interval, l5 - l6))
+        if (d.this.BAK.a((List)localObject, l1, d.this.interval, l5 - l6))
         {
-          Double localDouble = Double.valueOf(d.this.AiY.Aje);
+          Double localDouble = Double.valueOf(d.this.BAK.BAQ);
           str = String.valueOf(localDouble);
           j = (int)Math.round(localDouble.doubleValue());
           i = 0;
@@ -102,10 +102,10 @@ public final class d
         }
         for (;;)
         {
-          ac.i("MicroMsg.NsmTrafficStatsInspector", "Traffic Execced ExceedIndex : %s", new Object[] { str });
-          com.tencent.mm.plugin.report.e.wTc.idkeyStat(877L, i, 1L, true);
-          com.tencent.mm.plugin.report.e.wTc.f(15856, new Object[] { Long.valueOf(d.this.interval), localObject.toString(), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(d.this.AiY.Ajd), str, Integer.valueOf(j) });
-          d.this.eeS();
+          ad.i("MicroMsg.NsmTrafficStatsInspector", "Traffic Execced ExceedIndex : %s", new Object[] { str });
+          com.tencent.mm.plugin.report.e.ygI.idkeyStat(877L, i, 1L, true);
+          com.tencent.mm.plugin.report.e.ygI.f(15856, new Object[] { Long.valueOf(d.this.interval), localObject.toString(), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(d.this.BAK.BAP), str, Integer.valueOf(j) });
+          d.this.erj();
           AppMethodBeat.o(123898);
           return;
           label554:
@@ -121,10 +121,10 @@ public final class d
         }
       }
     };
-    this.uXx = new Timer();
+    this.cNY = new Timer();
     try
     {
-      this.uXx.schedule(this.AiM, 0L, this.interval);
+      this.cNY.schedule(this.cNZ, 0L, this.interval);
       this.started = true;
       AppMethodBeat.o(123899);
       return;
@@ -133,7 +133,7 @@ public final class d
     {
       for (;;)
       {
-        ac.e("MicroMsg.NsmTrafficStatsInspector", "timer.schedule got an IllegalArgumentException, %s", new Object[] { localIllegalArgumentException.getMessage() });
+        ad.e("MicroMsg.NsmTrafficStatsInspector", "timer.schedule got an IllegalArgumentException, %s", new Object[] { localIllegalArgumentException.getMessage() });
       }
     }
   }

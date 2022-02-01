@@ -6,49 +6,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
 import com.tencent.mm.plugin.appbrand.appcache.WxaRuntimeModulePluginListMap;
-import com.tencent.mm.plugin.appbrand.appcache.be;
-import com.tencent.mm.plugin.appbrand.appcache.bl;
-import com.tencent.mm.plugin.appbrand.appcache.bm.a;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.plugin.appbrand.appcache.bn.a;
 import com.tencent.mm.plugin.appbrand.appcache.q;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/luggage/sdk/runtime/RuntimePkgReaderFactoryInterceptorImpl;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgReaderInternalImplFactory$FactoryInterceptor;", "()V", "forceNewReader", "", "getForceNewReader", "()Z", "setForceNewReader", "(Z)V", "forceNewReaderForGame", "getForceNewReaderForGame", "setForceNewReaderForGame", "createInternalReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "wrapper", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgRuntimeReader;", "isGame", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/luggage/sdk/runtime/RuntimePkgReaderFactoryInterceptorImpl;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaRuntimePkgReaderInternalImplFactory$FactoryInterceptor;", "()V", "forceNewReader", "", "getForceNewReader", "()Z", "setForceNewReader", "(Z)V", "forceNewReaderForGame", "getForceNewReaderForGame", "setForceNewReaderForGame", "createInternalReader", "Lcom/tencent/mm/plugin/appbrand/appcache/IWxaPkgRuntimeReader;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "wrapper", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgRuntimeReader;", "isGame", "luggage-wechat-full-sdk_release"})
 public final class d
-  implements bm.a
+  implements bn.a
 {
-  private static volatile boolean cfb;
-  private static volatile boolean cfc;
-  public static final d cfd;
+  private static volatile boolean cps;
+  private static volatile boolean cpt;
+  public static final d cpu;
   
   static
   {
     AppMethodBeat.i(183002);
-    cfd = new d();
+    cpu = new d();
     AppMethodBeat.o(183002);
   }
   
   public static void by(boolean paramBoolean)
   {
-    cfb = paramBoolean;
+    cps = paramBoolean;
   }
   
   public static void bz(boolean paramBoolean)
   {
-    cfc = paramBoolean;
+    cpt = paramBoolean;
   }
   
   private static boolean isGame(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(183001);
-    AppBrandInitConfig localAppBrandInitConfig = paramAppBrandRuntime.DJ();
+    AppBrandInitConfig localAppBrandInitConfig = paramAppBrandRuntime.Fi();
     paramAppBrandRuntime = localAppBrandInitConfig;
     if (!(localAppBrandInitConfig instanceof AppBrandInitConfigLU)) {
       paramAppBrandRuntime = null;
     }
     paramAppBrandRuntime = (AppBrandInitConfigLU)paramAppBrandRuntime;
-    if ((paramAppBrandRuntime != null) && (paramAppBrandRuntime.cca == 4))
+    if ((paramAppBrandRuntime != null) && (paramAppBrandRuntime.cmr == 4))
     {
       AppMethodBeat.o(183001);
       return true;
@@ -57,26 +57,26 @@ public final class d
     return false;
   }
   
-  public final q a(AppBrandRuntime paramAppBrandRuntime, be parambe)
+  public final q a(AppBrandRuntime paramAppBrandRuntime, bf parambf)
   {
     AppMethodBeat.i(183000);
-    k.h(paramAppBrandRuntime, "rt");
-    k.h(parambe, "wrapper");
+    p.h(paramAppBrandRuntime, "rt");
+    p.h(parambf, "wrapper");
     Object localObject = (AppBrandSysConfigLU)paramAppBrandRuntime.c(AppBrandSysConfigLU.class, false);
     if (localObject != null)
     {
-      localObject = ((AppBrandSysConfigLU)localObject).jEg;
+      localObject = ((AppBrandSysConfigLU)localObject).jYh;
       if (localObject != null)
       {
-        localObject = ((WxaPkgWrappingInfo)localObject).jpf;
+        localObject = ((WxaPkgWrappingInfo)localObject).jIZ;
         if ((localObject != null) && (!((WxaRuntimeModulePluginListMap)localObject).isEmpty()))
         {
-          paramAppBrandRuntime = new bl(paramAppBrandRuntime);
+          paramAppBrandRuntime = new bm(paramAppBrandRuntime);
           if (paramAppBrandRuntime == null) {
             break label149;
           }
-          parambe.Im("__plugin__/");
-          parambe.Im("__extended__/");
+          parambf.LE("__plugin__/");
+          parambf.LE("__extended__/");
         }
       }
     }
@@ -85,14 +85,14 @@ public final class d
       paramAppBrandRuntime = (q)paramAppBrandRuntime;
       AppMethodBeat.o(183000);
       return paramAppBrandRuntime;
-      if ((cfb) && (!isGame(paramAppBrandRuntime)))
+      if ((cps) && (!isGame(paramAppBrandRuntime)))
       {
-        paramAppBrandRuntime = new bl(paramAppBrandRuntime);
+        paramAppBrandRuntime = new bm(paramAppBrandRuntime);
         break;
       }
-      if ((cfc) && (isGame(paramAppBrandRuntime)))
+      if ((cpt) && (isGame(paramAppBrandRuntime)))
       {
-        paramAppBrandRuntime = new bl(paramAppBrandRuntime);
+        paramAppBrandRuntime = new bm(paramAppBrandRuntime);
         break;
       }
       paramAppBrandRuntime = null;

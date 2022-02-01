@@ -13,12 +13,12 @@ import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$addRecyclerView$divider$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "paddingLeft", "", "getPaddingLeft", "()I", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "strokeWidth", "getStrokeWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Landroid/graphics/Canvas;", "wxbiz-msgsubscription-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/msgsubscription/ui/SubscribeMsgRequestDialog$addRecyclerView$divider$1", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "paddingLeft", "", "getPaddingLeft", "()I", "paint", "Landroid/graphics/Paint;", "getPaint", "()Landroid/graphics/Paint;", "strokeWidth", "getStrokeWidth", "getItemOffsets", "", "outRect", "Landroid/graphics/Rect;", "view", "Landroid/view/View;", "parent", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "onDraw", "c", "Landroid/graphics/Canvas;", "wxbiz-msgsubscription-sdk_release"})
 public final class b$f
   extends RecyclerView.h
 {
@@ -29,8 +29,8 @@ public final class b$f
   b$f()
   {
     AppMethodBeat.i(149756);
-    this.strokeWidth = a.g(ai.getContext(), 0.5F);
-    this.paddingLeft = a.fromDPToPix(ai.getContext(), 40);
+    this.strokeWidth = a.g(aj.getContext(), 0.5F);
+    this.paddingLeft = a.fromDPToPix(aj.getContext(), 40);
     this.paint = new Paint();
     this.paint.setColor(b.b(localb).getResources().getColor(2131100241));
     this.paint.setStyle(Paint.Style.FILL);
@@ -42,9 +42,9 @@ public final class b$f
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(149754);
-    k.h(paramCanvas, "c");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramCanvas, "c");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     super.a(paramCanvas, paramRecyclerView, paramt);
     float f1 = paramRecyclerView.getPaddingLeft();
     float f2 = paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight();
@@ -53,7 +53,7 @@ public final class b$f
     if (i < j)
     {
       paramt = paramRecyclerView.getChildAt(i);
-      k.g(paramt, "child");
+      p.g(paramt, "child");
       Object localObject = paramt.getLayoutParams();
       if (localObject == null)
       {
@@ -91,10 +91,10 @@ public final class b$f
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
   {
     AppMethodBeat.i(149755);
-    k.h(paramRect, "outRect");
-    k.h(paramView, "view");
-    k.h(paramRecyclerView, "parent");
-    k.h(paramt, "state");
+    p.h(paramRect, "outRect");
+    p.h(paramView, "view");
+    p.h(paramRecyclerView, "parent");
+    p.h(paramt, "state");
     if (RecyclerView.bw(paramView) == 0)
     {
       paramRect.set(0, this.strokeWidth, 0, this.strokeWidth);

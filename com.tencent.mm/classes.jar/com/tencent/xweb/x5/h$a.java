@@ -7,20 +7,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class h$a
 {
-  private static final AtomicInteger OD;
-  private HashMap<Integer, byte[]> KED;
+  private static final AtomicInteger Qu;
+  private HashMap<Integer, byte[]> Mvd;
   
   static
   {
     AppMethodBeat.i(153865);
-    OD = new AtomicInteger(1);
+    Qu = new AtomicInteger(1);
     AppMethodBeat.o(153865);
   }
   
   public h$a()
   {
     AppMethodBeat.i(153861);
-    this.KED = new HashMap();
+    this.Mvd = new HashMap();
     AppMethodBeat.o(153861);
   }
   
@@ -28,7 +28,7 @@ public final class h$a
   public final byte[] getNativeBuffer(int paramInt)
   {
     AppMethodBeat.i(153864);
-    byte[] arrayOfByte = (byte[])this.KED.remove(Integer.valueOf(paramInt));
+    byte[] arrayOfByte = (byte[])this.Mvd.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(153864);
     return arrayOfByte;
   }
@@ -41,13 +41,13 @@ public final class h$a
     int i;
     do
     {
-      k = OD.get();
+      k = Qu.get();
       int j = k + 1;
       i = j;
       if (j > 16777215) {
         i = 1;
       }
-    } while (!OD.compareAndSet(k, i));
+    } while (!Qu.compareAndSet(k, i));
     AppMethodBeat.o(153862);
     return k;
   }
@@ -56,13 +56,13 @@ public final class h$a
   public final void setNativeBuffer(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(153863);
-    this.KED.put(Integer.valueOf(paramInt), paramArrayOfByte);
+    this.Mvd.put(Integer.valueOf(paramInt), paramArrayOfByte);
     AppMethodBeat.o(153863);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.h.a
  * JD-Core Version:    0.7.0.1
  */

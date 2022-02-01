@@ -2,22 +2,22 @@ package com.tencent.mm.ui.contact;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.az;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bq;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class h
 {
-  private static final boolean avJ(String paramString)
+  private static final boolean aAQ(String paramString)
   {
     AppMethodBeat.i(102839);
-    String[] arrayOfString = w.hmW;
+    String[] arrayOfString = w.hFm;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -29,12 +29,12 @@ public final class h
       }
       i += 1;
     }
-    if (w.sQ(paramString))
+    if (w.vF(paramString))
     {
       AppMethodBeat.o(102839);
       return false;
     }
-    if (w.wH(paramString))
+    if (w.zE(paramString))
     {
       AppMethodBeat.o(102839);
       return false;
@@ -43,39 +43,39 @@ public final class h
     return true;
   }
   
-  public static final Cursor ih(List<String> paramList)
+  public static final Cursor it(List<String> paramList)
   {
     AppMethodBeat.i(102837);
-    paramList = ii(paramList);
+    paramList = iu(paramList);
     if (paramList.size() == 0)
     {
-      g.agS();
-      paramList = ((k)g.ab(k.class)).awB().faE();
+      g.ajD();
+      paramList = ((l)g.ab(l.class)).azp().fqH();
       AppMethodBeat.o(102837);
       return paramList;
     }
-    g.agS();
-    paramList = ((k)g.ab(k.class)).awB().hl(paramList);
+    g.ajD();
+    paramList = ((l)g.ab(l.class)).azp().hx(paramList);
     AppMethodBeat.o(102837);
     return paramList;
   }
   
-  private static final List<String> ii(List<String> paramList)
+  private static final List<String> iu(List<String> paramList)
   {
     AppMethodBeat.i(102838);
     ArrayList localArrayList = new ArrayList();
-    paramList = ((k)g.ab(k.class)).awG().a(w.hmN, paramList, true, null);
+    paramList = ((l)g.ab(l.class)).azv().a(w.hFd, paramList, true, null);
     if (paramList.moveToFirst())
     {
       int i = 0;
       do
       {
-        ap localap = new ap();
-        localap.convertFrom(paramList);
+        at localat = new at();
+        localat.convertFrom(paramList);
         int j = i;
-        if (avJ(localap.field_username))
+        if (aAQ(localat.field_username))
         {
-          localArrayList.add(localap.field_username);
+          localArrayList.add(localat.field_username);
           j = i + 1;
           if (j >= 4) {
             break;

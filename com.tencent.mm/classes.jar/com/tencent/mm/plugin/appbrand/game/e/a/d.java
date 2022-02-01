@@ -6,10 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.b;
+import com.tencent.luggage.h.e.c;
 import com.tencent.luggage.sdk.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.game.g.a.a;
 import com.tencent.mm.plugin.appbrand.game.g.b;
@@ -19,8 +18,8 @@ import com.tencent.mm.plugin.appbrand.o;
 import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.game.api.GameShareOption;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,8 +32,8 @@ public final class d
   {
     Object localObject = null;
     AppMethodBeat.i(45144);
-    ac.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: wc start edit screen recorder, with result is %s", new Object[] { paramd });
-    final int i = a.aA(this);
+    ad.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: wc start edit screen recorder, with result is %s", new Object[] { paramd });
+    final int i = a.aC(this);
     Activity localActivity = paramc.au(Activity.class);
     if (localActivity == null)
     {
@@ -42,20 +41,20 @@ public final class d
       AppMethodBeat.o(45144);
       return;
     }
-    e.aA(localActivity).b(new e.b()
+    e.aA(localActivity).b(new e.c()
     {
       public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174728);
         if (paramAnonymousInt1 == i)
         {
-          ac.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: on result callback, result code: %d", new Object[] { Integer.valueOf(paramAnonymousInt2) });
+          ad.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: on result callback, result code: %d", new Object[] { Integer.valueOf(paramAnonymousInt2) });
           if ((paramAnonymousInt2 == 0) || (paramAnonymousInt2 == 3001))
           {
-            ac.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: user cancelled share!");
+            ad.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: user cancelled share!");
             paramAnonymousIntent = new HashMap(1);
             paramAnonymousIntent.put("errCode", Integer.valueOf(803));
-            paramc.h(paramInt, d.this.k("fail: user cancelled", paramAnonymousIntent));
+            paramc.h(paramInt, d.this.m("fail: user cancelled", paramAnonymousIntent));
           }
           for (;;)
           {
@@ -66,58 +65,58 @@ public final class d
               SightCaptureResult localSightCaptureResult = (SightCaptureResult)paramAnonymousIntent.getParcelableExtra("key_req_result");
               paramAnonymousInt1 = paramAnonymousIntent.getIntExtra("key_selected_item", 0);
               paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_ext_url");
-              ac.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: is video: %b, video path %s, thumb path: %s, md5: %s, selectedItem: %d, extUrl: %s", new Object[] { Boolean.valueOf(localSightCaptureResult.oWm), localSightCaptureResult.uJo, localSightCaptureResult.uJp, localSightCaptureResult.uJr, Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
-              if (!localSightCaptureResult.oWm)
+              ad.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: is video: %b, video path %s, thumb path: %s, md5: %s, selectedItem: %d, extUrl: %s", new Object[] { Boolean.valueOf(localSightCaptureResult.pzW), localSightCaptureResult.vMu, localSightCaptureResult.vMv, localSightCaptureResult.vMx, Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
+              if (!localSightCaptureResult.pzW)
               {
                 d.this.a(paramc, paramInt, 3, 804, "not a video");
               }
-              else if ((bs.isNullOrNil(localSightCaptureResult.uJq)) || (bs.isNullOrNil(localSightCaptureResult.uJr)))
+              else if ((bt.isNullOrNil(localSightCaptureResult.vMw)) || (bt.isNullOrNil(localSightCaptureResult.vMx)))
               {
                 d.this.a(paramc, paramInt, 1, 804, "edit failed!");
               }
               else
               {
-                Object localObject2 = localSightCaptureResult.uJo;
-                Object localObject1 = localSightCaptureResult.uJp;
-                Bitmap localBitmap = com.tencent.mm.plugin.mmsight.d.Dl((String)localObject2);
+                Object localObject2 = localSightCaptureResult.vMu;
+                Object localObject1 = localSightCaptureResult.vMv;
+                Bitmap localBitmap = com.tencent.mm.plugin.mmsight.d.Gq((String)localObject2);
                 if (localBitmap != null) {}
                 for (;;)
                 {
                   try
                   {
-                    com.tencent.mm.sdk.platformtools.f.a(localBitmap, 100, Bitmap.CompressFormat.JPEG, (String)localObject1, true);
-                    localObject2 = d.this.a(paramc, (String)localObject2, "edited_video.mp4", bs.isNullOrNil(paramAnonymousIntent));
-                    localObject1 = d.this.a(paramc, (String)localObject1, "edited_video_thumb.jpg", bs.isNullOrNil(paramAnonymousIntent));
+                    com.tencent.mm.sdk.platformtools.g.a(localBitmap, 100, Bitmap.CompressFormat.JPEG, (String)localObject1, true);
+                    localObject2 = d.this.a(paramc, (String)localObject2, "edited_video.mp4", bt.isNullOrNil(paramAnonymousIntent));
+                    localObject1 = d.this.a(paramc, (String)localObject1, "edited_video_thumb.jpg", bt.isNullOrNil(paramAnonymousIntent));
                     if (localObject2 != null) {
                       break;
                     }
-                    ac.w("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: save video temp file failed!");
+                    ad.w("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: save video temp file failed!");
                     d.this.a(paramc, paramInt, 1, 804, "video file save to file system failed!");
                     AppMethodBeat.o(174728);
                     return true;
                   }
                   catch (IOException localIOException)
                   {
-                    ac.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEditWC", localIOException, "hy: exception when convert bitmap", new Object[0]);
+                    ad.printErrStackTrace("MicroMsg.WAGameJsApiScreenRecorderEditWC", localIOException, "hy: exception when convert bitmap", new Object[0]);
                     continue;
                   }
-                  ac.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: generated thumb path is null!");
+                  ad.i("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: generated thumb path is null!");
                 }
                 if (localObject1 == null)
                 {
-                  ac.w("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: save thumb temp file failed!");
+                  ad.w("MicroMsg.WAGameJsApiScreenRecorderEditWC", "hy: save thumb temp file failed!");
                   d.this.a(paramc, paramInt, 1, 804, "video thumb file save to file system failed!");
                   AppMethodBeat.o(174728);
                   return true;
                 }
                 HashMap localHashMap = new HashMap(3);
                 localHashMap.put("errCode", Integer.valueOf(0));
-                localHashMap.put("videoPath", ((b.a)localObject2).jRp);
-                localHashMap.put("thumbPath", ((b.a)localObject1).jRp);
-                localHashMap.put("videoMD5", localSightCaptureResult.uJr);
+                localHashMap.put("videoPath", ((b.a)localObject2).klD);
+                localHashMap.put("thumbPath", ((b.a)localObject1).klD);
+                localHashMap.put("videoMD5", localSightCaptureResult.vMx);
                 localHashMap.put("chosenId", Integer.valueOf(paramAnonymousInt1));
                 localHashMap.put("extUrl", paramAnonymousIntent);
-                paramc.h(paramInt, d.this.k("ok", localHashMap));
+                paramc.h(paramInt, d.this.m("ok", localHashMap));
               }
             }
             else
@@ -135,17 +134,17 @@ public final class d
     localBundle.putParcelableArrayList("k_ext_share_options", paramArrayList);
     paramArrayList = b.a(paramc.getAppId(), f(paramc));
     paramString = localObject;
-    if (paramArrayList.jTC != null) {
-      paramString = paramArrayList.jTC.bdZ();
+    if (paramArrayList.knQ != null) {
+      paramString = paramArrayList.knQ.bhD();
     }
     paramString.audioBitrate = 64000;
     paramString.audioSampleRate = paramd.audioSampleRate;
-    paramString.gOt = 1;
+    paramString.audioChannelCount = 1;
     localBundle.putParcelable("k_preferred_trans_param", paramString);
-    if ((paramc.getRuntime() != null) && (paramc.getRuntime().aTR() != null)) {}
-    for (paramString = paramc.getRuntime().aTR().ddh;; paramString = "")
+    if ((paramc.getRuntime() != null) && (paramc.getRuntime().aXb() != null)) {}
+    for (paramString = paramc.getRuntime().aXb().doD;; paramString = "")
     {
-      ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).a(localActivity, paramc.getAppId(), paramString, parama.jRo, i, localBundle);
+      ((com.tencent.mm.plugin.game.api.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.g.class)).a(localActivity, paramc.getAppId(), paramString, parama.klC, i, localBundle);
       AppMethodBeat.o(45144);
       return;
     }

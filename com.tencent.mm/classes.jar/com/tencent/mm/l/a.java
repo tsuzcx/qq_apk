@@ -1,35 +1,27 @@
 package com.tencent.mm.l;
 
-import com.tencent.mm.storage.bo;
-
 public abstract interface a
 {
-  public abstract String F(String paramString, int paramInt);
-  
-  public abstract void n(bo parambo);
-  
-  public abstract String o(bo parambo);
-  
-  public abstract boolean so(String paramString);
+  public abstract boolean LT();
   
   public static final class a
   {
-    private static a fCe = null;
+    private static a fVr = null;
     
-    public static a Xf()
+    public static a ZF()
     {
-      return fCe;
+      return fVr;
     }
     
     public static void a(a parama)
     {
-      fCe = parama;
+      fVr = parama;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.l.a
  * JD-Core Version:    0.7.0.1
  */

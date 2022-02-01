@@ -7,6 +7,7 @@ import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.coremedia.TimeUtil;
+import com.tencent.tav.decoder.DecoderUtils;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.extractor.AssetExtractor;
 import com.tencent.tav.extractor.ExtractorUtils;
@@ -68,7 +69,7 @@ public abstract class Asset<Track extends AssetTrack>
         this.preferRotation += 4;
       }
       this.preferRotation %= 4;
-      AssetUtils.getRotationMatrix(this.preferredTransform, this.preferRotation, this.naturalSize.width, this.naturalSize.height);
+      DecoderUtils.getRotationMatrix(this.preferredTransform, this.preferRotation, this.naturalSize.width, this.naturalSize.height);
     }
   }
   
@@ -82,14 +83,14 @@ public abstract class Asset<Track extends AssetTrack>
     try
     {
       initMembers();
-      Logger.i("Asset", "tryInitMembers: try count = " + (3 - this.extractorRetryCount), new Object[0]);
+      Logger.v("Asset", "tryInitMembers: try count = " + (3 - this.extractorRetryCount));
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        Logger.e("Asset", "Asset: initMembers failed", localException);
+        Logger.e("Asset", "Asset: initMembers failed, path = " + getSourcePath(), localException);
         trySleep(100);
         tryInitMembers();
       }
@@ -147,7 +148,7 @@ public abstract class Asset<Track extends AssetTrack>
         }
       }
     }
-    new StringBuilder("Asset createTracks finish, has track count: ").append(this.tracks);
+    Logger.d("Asset", "Asset createTracks finish, has track count: " + this.tracks);
   }
   
   protected CMTime getAudioDuration()
@@ -239,7 +240,7 @@ public abstract class Asset<Track extends AssetTrack>
     //   6: ifnull +15 -> 21
     //   9: aload_0
     //   10: getfield 76	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
-    //   13: invokevirtual 273	com/tencent/tav/extractor/AssetExtractor:getSourcePath	()Ljava/lang/String;
+    //   13: invokevirtual 280	com/tencent/tav/extractor/AssetExtractor:getSourcePath	()Ljava/lang/String;
     //   16: astore_1
     //   17: aload_0
     //   18: monitorexit
@@ -280,7 +281,7 @@ public abstract class Asset<Track extends AssetTrack>
     //   9: aload_0
     //   10: getfield 76	com/tencent/tav/asset/Asset:extractor	Lcom/tencent/tav/extractor/AssetExtractor;
     //   13: iload_1
-    //   14: invokevirtual 181	com/tencent/tav/extractor/AssetExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
+    //   14: invokevirtual 187	com/tencent/tav/extractor/AssetExtractor:getTrackFormat	(I)Landroid/media/MediaFormat;
     //   17: astore_2
     //   18: aload_0
     //   19: monitorexit
@@ -413,7 +414,7 @@ public abstract class Asset<Track extends AssetTrack>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.asset.Asset
  * JD-Core Version:    0.7.0.1
  */

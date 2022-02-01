@@ -7,17 +7,17 @@ import rx.g.a;
 public final class g
   extends rx.g
 {
-  private final ThreadFactory JZs;
+  private final ThreadFactory LTn;
   
   public g(ThreadFactory paramThreadFactory)
   {
-    this.JZs = paramThreadFactory;
+    this.LTn = paramThreadFactory;
   }
   
   public final g.a createWorker()
   {
     AppMethodBeat.i(90385);
-    h localh = new h(this.JZs);
+    h localh = new h(this.LTn);
     AppMethodBeat.o(90385);
     return localh;
   }

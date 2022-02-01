@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bm;
-import com.tencent.mm.g.a.bm.a;
+import com.tencent.mm.g.a.bp;
+import com.tencent.mm.g.a.bp.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.e.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<bm>
+  extends com.tencent.mm.sdk.b.c<bp>
 {
   public c()
   {
     AppMethodBeat.i(161067);
-    this.__eventId = bm.class.getName().hashCode();
+    this.__eventId = bp.class.getName().hashCode();
     AppMethodBeat.o(161067);
   }
   
-  private static boolean a(bm parambm)
+  private static boolean a(bp parambp)
   {
     AppMethodBeat.i(108389);
     h localh;
-    if (parambm.dbk.dbd == 37) {
-      if ((parambm.dbk.subType == 5) && (parambm.dbk.cZu == 2))
+    if (parambp.dmE.dmx == 37) {
+      if ((parambp.dmE.subType == 5) && (parambp.dmE.dkM == 2))
       {
-        localh = h.ccb();
-        ac.i("MicroMsg.emoji.EmojiResUpdateMgr", "delete emoji egg!");
+        localh = h.cgF();
+        ad.i("MicroMsg.emoji.EmojiResUpdateMgr", "delete emoji egg!");
       }
     }
     try
     {
-      i.deleteFile(g.agR().cachePath + "eggingfo.ini");
-      i.cU(q.B(new com.tencent.mm.vfs.e(h.getDataEmojiPath(), h.oZd).mUri), true);
-      localh.oZy = null;
-      if (parambm.dbk.cZu == 0) {
-        ac.i("MicroMsg.emoji.EmojiResUpdateOperationListener", "cache res type:%d subType:%d", new Object[] { Integer.valueOf(parambm.dbk.dbd), Integer.valueOf(parambm.dbk.subType) });
+      i.deleteFile(g.ajC().cachePath + "eggingfo.ini");
+      i.cZ(q.B(new com.tencent.mm.vfs.e(h.getDataEmojiPath(), h.pCN).mUri), true);
+      localh.pDi = null;
+      if (parambp.dmE.dkM == 0) {
+        ad.i("MicroMsg.emoji.EmojiResUpdateOperationListener", "cache res type:%d subType:%d", new Object[] { Integer.valueOf(parambp.dmE.dmx), Integer.valueOf(parambp.dmE.subType) });
       }
       AppMethodBeat.o(108389);
       return false;
@@ -45,7 +45,7 @@ public final class c
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.emoji.EmojiResUpdateMgr", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.emoji.EmojiResUpdateMgr", localException, "", new Object[0]);
       }
     }
   }

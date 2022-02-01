@@ -8,16 +8,16 @@ public abstract class bc
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int elV = "status".hashCode();
-  private static final int enO = "appId".hashCode();
-  private static final int epS = "modifyTime".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eFF = "versionType".hashCode();
+  private static final int eQO = "extJson".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean elS = true;
-  private boolean enx = true;
-  private boolean epw = true;
+  private boolean eED = true;
+  private boolean eFB = true;
+  private boolean eQN = true;
   public String field_appId;
-  public long field_modifyTime;
-  public int field_status;
+  public String field_extJson;
+  public int field_versionType;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,22 +32,21 @@ public abstract class bc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
-        break label65;
+      if (eEU != k) {
+        break label60;
       }
       this.field_appId = paramCursor.getString(i);
-      this.enx = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (elV == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (epS == k) {
-        this.field_modifyTime = paramCursor.getLong(i);
+      label60:
+      if (eFF == k) {
+        this.field_versionType = paramCursor.getInt(i);
+      } else if (eQO == k) {
+        this.field_extJson = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +56,14 @@ public abstract class bc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
+    if (this.eED) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.elS) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.eFB) {
+      localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.epw) {
-      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
+    if (this.eQN) {
+      localContentValues.put("extJson", this.field_extJson);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

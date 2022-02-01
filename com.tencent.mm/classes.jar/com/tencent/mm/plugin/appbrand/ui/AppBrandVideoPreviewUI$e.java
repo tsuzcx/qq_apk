@@ -5,7 +5,7 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class AppBrandVideoPreviewUI$e
   implements MenuItem.OnMenuItemClickListener
 {
@@ -14,7 +14,7 @@ final class AppBrandVideoPreviewUI$e
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(51159);
-    this.mfL.onBackPressed();
+    this.mGm.onBackPressed();
     AppMethodBeat.o(51159);
     return true;
   }

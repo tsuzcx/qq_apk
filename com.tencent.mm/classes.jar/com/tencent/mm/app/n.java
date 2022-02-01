@@ -59,12 +59,12 @@ public abstract interface n
     
     public void alive()
     {
-      AppForegroundDelegate.cHM.a(this.wrapper);
+      AppForegroundDelegate.cSQ.a(this.wrapper);
     }
     
     public void dead()
     {
-      AppForegroundDelegate.cHM.b(this.wrapper);
+      AppForegroundDelegate.cSQ.b(this.wrapper);
     }
     
     Handler getHandler()

@@ -10,74 +10,74 @@ public class TPProxyAdapterManager
   
   public static TPProxyAdapterManager getInstance()
   {
-    AppMethodBeat.i(191460);
+    AppMethodBeat.i(190100);
     TPProxyAdapterManager localTPProxyAdapterManager = SingletonHolder.INSTANCE;
-    AppMethodBeat.o(191460);
+    AppMethodBeat.o(190100);
     return localTPProxyAdapterManager;
   }
   
   public String checkVideoStatus(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191465);
+    AppMethodBeat.i(190105);
     if (this.mAdapter != null)
     {
       paramString1 = this.mAdapter.checkVideoStatus(paramString1, paramString2);
-      AppMethodBeat.o(191465);
+      AppMethodBeat.o(190105);
       return paramString1;
     }
-    AppMethodBeat.o(191465);
+    AppMethodBeat.o(190105);
     return "";
   }
   
   public long getCurrentFilesize(int paramInt)
   {
-    AppMethodBeat.i(191467);
+    AppMethodBeat.i(190107);
     if (this.mAdapter != null)
     {
       long l = this.mAdapter.getFilesize(paramInt);
-      AppMethodBeat.o(191467);
+      AppMethodBeat.o(190107);
       return l;
     }
-    AppMethodBeat.o(191467);
+    AppMethodBeat.o(190107);
     return 0L;
   }
   
   public long getCurrentOffset(int paramInt)
   {
-    AppMethodBeat.i(191466);
+    AppMethodBeat.i(190106);
     if (this.mAdapter != null)
     {
       long l = this.mAdapter.getCurrentOffset(paramInt);
-      AppMethodBeat.o(191466);
+      AppMethodBeat.o(190106);
       return l;
     }
-    AppMethodBeat.o(191466);
+    AppMethodBeat.o(190106);
     return 0L;
   }
   
   public String getProxyClipUrl(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(191464);
+    AppMethodBeat.i(190104);
     if (this.mAdapter != null)
     {
       String str = this.mAdapter.getProxyClipUrl(paramInt1, paramInt2);
-      AppMethodBeat.o(191464);
+      AppMethodBeat.o(190104);
       return str;
     }
-    AppMethodBeat.o(191464);
+    AppMethodBeat.o(190104);
     return "";
   }
   
   public int getRecordDuration(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(191468);
+    AppMethodBeat.i(190108);
     if (this.mAdapter != null)
     {
       int i = this.mAdapter.getRecordDuration(paramString1, paramString2);
-      AppMethodBeat.o(191468);
+      AppMethodBeat.o(190108);
       return i;
     }
-    AppMethodBeat.o(191468);
+    AppMethodBeat.o(190108);
     return 0;
   }
   
@@ -88,35 +88,35 @@ public class TPProxyAdapterManager
   
   public int startOnlineOrOfflinePlay(int paramInt1, String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, Map<String, String> paramMap1, Map<String, String> paramMap2)
   {
-    AppMethodBeat.i(191462);
+    AppMethodBeat.i(190102);
     if (this.mAdapter != null)
     {
       paramInt1 = this.mAdapter.startOnlineOrOfflinePlay(paramInt1, paramString1, paramString2, paramString3, paramBoolean1, paramBoolean2, paramInt2, paramMap1, paramMap2);
-      AppMethodBeat.o(191462);
+      AppMethodBeat.o(190102);
       return paramInt1;
     }
-    AppMethodBeat.o(191462);
+    AppMethodBeat.o(190102);
     return -1;
   }
   
   public void stopPlay(int paramInt)
   {
-    AppMethodBeat.i(191463);
+    AppMethodBeat.i(190103);
     if (this.mAdapter != null) {
       this.mAdapter.stopPlay(paramInt);
     }
-    AppMethodBeat.o(191463);
+    AppMethodBeat.o(190103);
   }
   
   public void updateProxyMessage(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    AppMethodBeat.i(191461);
+    AppMethodBeat.i(190101);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(191461);
+      AppMethodBeat.o(190101);
       return;
       TPListenerManager.getInstance().handleCallbackMessage(101, ((Integer)paramObject1).intValue(), null, null, null, null, null);
     }
@@ -128,9 +128,9 @@ public class TPProxyAdapterManager
     
     static
     {
-      AppMethodBeat.i(191459);
+      AppMethodBeat.i(190099);
       INSTANCE = new TPProxyAdapterManager(null);
-      AppMethodBeat.o(191459);
+      AppMethodBeat.o(190099);
     }
   }
 }

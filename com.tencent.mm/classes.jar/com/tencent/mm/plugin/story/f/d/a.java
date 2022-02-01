@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/gallery/AllFriendStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "userList", "", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "queryCondition", "", "(JLjava/util/List;Ljava/util/Map;I)V", "getFilterList", "()Ljava/util/Map;", "getUserList", "()Ljava/util/List;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/gallery/AllFriendStoryDataSeed;", "Lcom/tencent/mm/plugin/story/api/StoryDataSeed;", "key", "", "userList", "", "", "filterList", "", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "queryCondition", "", "(JLjava/util/List;Ljava/util/Map;I)V", "getFilterList", "()Ljava/util/Map;", "getUserList", "()Ljava/util/List;", "plugin-story_release"})
 public final class a
   extends p
 {
-  public final List<String> hzh;
-  public final Map<String, ArrayList<Long>> zuu;
+  public final Map<String, ArrayList<Long>> AMp;
+  public final List<String> hRC;
   
   public a(long paramLong, List<String> paramList, Map<String, ? extends ArrayList<Long>> paramMap, int paramInt)
   {
     super(paramLong, paramInt);
     AppMethodBeat.i(118906);
-    this.hzh = paramList;
-    this.zuu = paramMap;
+    this.hRC = paramList;
+    this.AMp = paramMap;
     AppMethodBeat.o(118906);
   }
 }

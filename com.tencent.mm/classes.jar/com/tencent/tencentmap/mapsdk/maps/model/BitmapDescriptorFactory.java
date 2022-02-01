@@ -26,10 +26,10 @@ public final class BitmapDescriptorFactory
   
   static
   {
-    AppMethodBeat.i(191295);
+    AppMethodBeat.i(195090);
     sTencentMapContextList = new CopyOnWriteArrayList();
     sAttachIndex = new AtomicInteger(0);
-    AppMethodBeat.o(191295);
+    AppMethodBeat.o(195090);
   }
   
   public static void attachMapContext(TencentMapContext paramTencentMapContext)
@@ -108,11 +108,11 @@ public final class BitmapDescriptorFactory
   
   public static void detachMapContext(TencentMapContext paramTencentMapContext)
   {
-    AppMethodBeat.i(191293);
+    AppMethodBeat.i(195088);
     if (sTencentMapContextList.remove(paramTencentMapContext)) {
       sAttachIndex.decrementAndGet();
     }
-    AppMethodBeat.o(191293);
+    AppMethodBeat.o(195088);
   }
   
   public static BitmapDescriptor fromAsset(TencentMapContext paramTencentMapContext, String paramString)
@@ -275,20 +275,21 @@ public final class BitmapDescriptorFactory
   
   private static TencentMapContext getActiveMapContext()
   {
-    AppMethodBeat.i(191294);
-    if (sAttachIndex.get() > 0)
+    AppMethodBeat.i(195089);
+    int i = sAttachIndex.get();
+    if ((i > 0) && (i <= sTencentMapContextList.size()))
     {
-      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextList.get(sAttachIndex.get() - 1);
-      AppMethodBeat.o(191294);
+      TencentMapContext localTencentMapContext = (TencentMapContext)sTencentMapContextList.get(i - 1);
+      AppMethodBeat.o(195089);
       return localTencentMapContext;
     }
-    AppMethodBeat.o(191294);
+    AppMethodBeat.o(195089);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory
  * JD-Core Version:    0.7.0.1
  */

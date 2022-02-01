@@ -5,22 +5,22 @@ import org.json.JSONObject;
 
 public final class g
 {
-  private JSONObject bVY;
-  private String bWk;
-  int bWl;
-  boolean bWm;
+  int cgA;
+  boolean cgB;
+  private JSONObject cgn;
+  private String cgz;
   
   g(m paramm)
   {
     AppMethodBeat.i(140323);
-    paramm = paramm.Ak();
-    this.bWk = paramm.getString("method");
-    this.bVY = paramm.optJSONObject("data");
-    if (this.bVY == null) {
-      this.bVY = new JSONObject();
+    paramm = paramm.BH();
+    this.cgz = paramm.getString("method");
+    this.cgn = paramm.optJSONObject("data");
+    if (this.cgn == null) {
+      this.cgn = new JSONObject();
     }
-    this.bWl = paramm.optInt("callbackId", 0);
-    this.bWm = paramm.optBoolean("keepCallback", false);
+    this.cgA = paramm.optInt("callbackId", 0);
+    this.cgB = paramm.optBoolean("keepCallback", false);
     AppMethodBeat.o(140323);
   }
 }

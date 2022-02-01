@@ -17,40 +17,40 @@ import android.view.View;
 
 public final class b
 {
-  public static final int hJ = 0;
-  private final a hK;
-  private final Path hL;
-  private final Paint hM;
-  public final Paint hN;
-  private c.d hO;
-  public Drawable hP;
-  private boolean hQ;
-  private boolean hR;
+  public static final int jE = 0;
+  private final a jF;
+  private final Path jG;
+  private final Paint jH;
+  public final Paint jI;
+  private c.d jJ;
+  public Drawable jK;
+  private boolean jL;
+  private boolean jM;
   private final View view;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      hJ = 2;
+      jE = 2;
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      hJ = 1;
+      jE = 1;
       return;
     }
   }
   
   public b(a parama)
   {
-    this.hK = parama;
+    this.jF = parama;
     this.view = ((View)parama);
     this.view.setWillNotDraw(false);
-    this.hL = new Path();
-    this.hM = new Paint(7);
-    this.hN = new Paint(1);
-    this.hN.setColor(0);
+    this.jG = new Path();
+    this.jH = new Paint(7);
+    this.jI = new Paint(1);
+    this.jI.setColor(0);
   }
   
   private float a(c.d paramd)
@@ -60,39 +60,39 @@ public final class b
   
   private void b(Canvas paramCanvas)
   {
-    if (bi())
+    if (by())
     {
-      Rect localRect = this.hP.getBounds();
-      float f1 = this.hO.centerX - localRect.width() / 2.0F;
-      float f2 = this.hO.centerY - localRect.height() / 2.0F;
+      Rect localRect = this.jK.getBounds();
+      float f1 = this.jJ.centerX - localRect.width() / 2.0F;
+      float f2 = this.jJ.centerY - localRect.height() / 2.0F;
       paramCanvas.translate(f1, f2);
-      this.hP.draw(paramCanvas);
+      this.jK.draw(paramCanvas);
       paramCanvas.translate(-f1, -f2);
     }
   }
   
-  private void bf()
+  private void bv()
   {
-    if (hJ == 1)
+    if (jE == 1)
     {
-      this.hL.rewind();
-      if (this.hO != null) {
-        this.hL.addCircle(this.hO.centerX, this.hO.centerY, this.hO.radius, Path.Direction.CW);
+      this.jG.rewind();
+      if (this.jJ != null) {
+        this.jG.addCircle(this.jJ.centerX, this.jJ.centerY, this.jJ.radius, Path.Direction.CW);
       }
     }
     this.view.invalidate();
   }
   
-  private boolean bg()
+  private boolean bw()
   {
     int i;
-    if ((this.hO == null) || (this.hO.bj()))
+    if ((this.jJ == null) || (this.jJ.isInvalid()))
     {
       i = 1;
-      if (hJ != 0) {
+      if (jE != 0) {
         break label45;
       }
-      if ((i != 0) || (!this.hR)) {
+      if ((i != 0) || (!this.jM)) {
         break label43;
       }
     }
@@ -108,22 +108,22 @@ public final class b
     return false;
   }
   
-  private boolean bh()
+  private boolean bx()
   {
-    return (!this.hQ) && (Color.alpha(this.hN.getColor()) != 0);
+    return (!this.jL) && (Color.alpha(this.jI.getColor()) != 0);
   }
   
-  private boolean bi()
+  private boolean by()
   {
-    return (!this.hQ) && (this.hP != null) && (this.hO != null);
+    return (!this.jL) && (this.jK != null) && (this.jJ != null);
   }
   
-  public final void bc()
+  public final void bs()
   {
-    if (hJ == 0)
+    if (jE == 0)
     {
-      this.hQ = true;
-      this.hR = false;
+      this.jL = true;
+      this.jM = false;
       this.view.buildDrawingCache();
       Object localObject2 = this.view.getDrawingCache();
       Object localObject1 = localObject2;
@@ -143,37 +143,37 @@ public final class b
       }
       if (localObject1 != null)
       {
-        localObject2 = this.hM;
+        localObject2 = this.jH;
         Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
         ((Paint)localObject2).setShader(new BitmapShader((Bitmap)localObject1, localTileMode, localTileMode));
       }
-      this.hQ = false;
-      this.hR = true;
+      this.jL = false;
+      this.jM = true;
     }
   }
   
-  public final void bd()
+  public final void bt()
   {
-    if (hJ == 0)
+    if (jE == 0)
     {
-      this.hR = false;
+      this.jM = false;
       this.view.destroyDrawingCache();
-      this.hM.setShader(null);
+      this.jH.setShader(null);
       this.view.invalidate();
     }
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (bg()) {
-      switch (hJ)
+    if (bw()) {
+      switch (jE)
       {
       default: 
-        throw new IllegalStateException("Unsupported strategy " + hJ);
+        throw new IllegalStateException("Unsupported strategy " + jE);
       case 2: 
-        this.hK.a(paramCanvas);
-        if (bh()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.hN);
+        this.jF.a(paramCanvas);
+        if (bx()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jI);
         }
         break;
       }
@@ -183,21 +183,21 @@ public final class b
       b(paramCanvas);
       return;
       int i = paramCanvas.save();
-      paramCanvas.clipPath(this.hL);
-      this.hK.a(paramCanvas);
-      if (bh()) {
-        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.hN);
+      paramCanvas.clipPath(this.jG);
+      this.jF.a(paramCanvas);
+      if (bx()) {
+        paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jI);
       }
       paramCanvas.restoreToCount(i);
       continue;
-      paramCanvas.drawCircle(this.hO.centerX, this.hO.centerY, this.hO.radius, this.hM);
-      if (bh())
+      paramCanvas.drawCircle(this.jJ.centerX, this.jJ.centerY, this.jJ.radius, this.jH);
+      if (bx())
       {
-        paramCanvas.drawCircle(this.hO.centerX, this.hO.centerY, this.hO.radius, this.hN);
+        paramCanvas.drawCircle(this.jJ.centerX, this.jJ.centerY, this.jJ.radius, this.jI);
         continue;
-        this.hK.a(paramCanvas);
-        if (bh()) {
-          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.hN);
+        this.jF.a(paramCanvas);
+        if (bx()) {
+          paramCanvas.drawRect(0.0F, 0.0F, this.view.getWidth(), this.view.getHeight(), this.jI);
         }
       }
     }
@@ -206,58 +206,58 @@ public final class b
   public final c.d getRevealInfo()
   {
     Object localObject;
-    if (this.hO == null) {
+    if (this.jJ == null) {
       localObject = null;
     }
     c.d locald;
     do
     {
       return localObject;
-      locald = new c.d(this.hO);
+      locald = new c.d(this.jJ);
       localObject = locald;
-    } while (!locald.bj());
+    } while (!locald.isInvalid());
     locald.radius = a(locald);
     return locald;
   }
   
   public final boolean isOpaque()
   {
-    return (this.hK.be()) && (!bg());
+    return (this.jF.bu()) && (!bw());
   }
   
   public final void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    this.hP = paramDrawable;
+    this.jK = paramDrawable;
     this.view.invalidate();
   }
   
   public final void setCircularRevealScrimColor(int paramInt)
   {
-    this.hN.setColor(paramInt);
+    this.jI.setColor(paramInt);
     this.view.invalidate();
   }
   
   public final void setRevealInfo(c.d paramd)
   {
     if (paramd == null) {
-      this.hO = null;
+      this.jJ = null;
     }
     label70:
     for (;;)
     {
-      bf();
+      bv();
       return;
-      if (this.hO == null) {
-        this.hO = new c.d(paramd);
+      if (this.jJ == null) {
+        this.jJ = new c.d(paramd);
       }
       for (;;)
       {
         if (!k.e(paramd.radius, a(paramd))) {
           break label70;
         }
-        this.hO.radius = 3.4028235E+38F;
+        this.jJ.radius = 3.4028235E+38F;
         break;
-        this.hO.b(paramd);
+        this.jJ.b(paramd);
       }
     }
   }
@@ -266,7 +266,7 @@ public final class b
   {
     public abstract void a(Canvas paramCanvas);
     
-    public abstract boolean be();
+    public abstract boolean bu();
   }
 }
 

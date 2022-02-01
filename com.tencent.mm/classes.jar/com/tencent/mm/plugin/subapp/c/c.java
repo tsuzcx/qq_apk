@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.d;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.e.d;
+import com.tencent.mm.model.ax;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements aw
+  implements ax
 {
-  private b zQc;
+  private b BhD;
   
   public c()
   {
     AppMethodBeat.i(28923);
-    this.zQc = new b();
+    this.BhD = new b();
     AppMethodBeat.o(28923);
   }
   
@@ -28,14 +28,14 @@ public class c
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28925);
-    f.d.a(Integer.valueOf(38), this.zQc);
+    e.d.a(Integer.valueOf(38), this.BhD);
     AppMethodBeat.o(28925);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(28924);
-    f.d.b(Integer.valueOf(38), this.zQc);
+    e.d.b(Integer.valueOf(38), this.BhD);
     AppMethodBeat.o(28924);
   }
   

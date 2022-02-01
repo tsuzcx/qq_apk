@@ -8,20 +8,20 @@ import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 public final class b
   implements CookieInternal.ICookieSyncManagerInternal
 {
-  CookieSyncManager KDn;
+  CookieSyncManager MtN;
   
   public final void init(Context paramContext)
   {
     AppMethodBeat.i(153655);
-    this.KDn = CookieSyncManager.createInstance(paramContext);
+    this.MtN = CookieSyncManager.createInstance(paramContext);
     AppMethodBeat.o(153655);
   }
   
   public final void sync()
   {
     AppMethodBeat.i(153656);
-    if (this.KDn != null) {
-      this.KDn.sync();
+    if (this.MtN != null) {
+      this.MtN.sync();
     }
     AppMethodBeat.o(153656);
   }

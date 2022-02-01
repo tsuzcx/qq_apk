@@ -8,27 +8,27 @@ import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
 import com.tencent.mm.network.n;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 
  enum m
 {
   static
   {
     AppMethodBeat.i(90849);
-    otD = new m("INSTANCE");
-    otE = new m[] { otD };
+    oWZ = new m("INSTANCE");
+    oXa = new m[] { oWZ };
     AppMethodBeat.o(90849);
   }
   
   private m() {}
   
-  final void Au(int paramInt)
+  final void Bd(int paramInt)
   {
     AppMethodBeat.i(90847);
-    final String str = ai.getProcessName();
-    ac.i("MicroMsg.OpenVoice.OpenVoiceNetworkMgr", "hy: %s operate network change: %d", new Object[] { str, Integer.valueOf(paramInt) });
+    final String str = aj.getProcessName();
+    ad.i("MicroMsg.OpenVoice.OpenVoiceNetworkMgr", "hy: %s operate network change: %d", new Object[] { str, Integer.valueOf(paramInt) });
     Bundle localBundle = new Bundle();
     localBundle.putString("from_process", str);
     localBundle.putInt("opcode", paramInt);
@@ -39,24 +39,24 @@ import com.tencent.mm.sdk.platformtools.ax;
   static final class a
     implements b<Bundle, Bundle>
   {
-    private static String otH;
-    private static final n otI;
+    private static String oXd;
+    private static final n oXe;
     
     static
     {
       AppMethodBeat.i(90844);
-      otI = new n.a()
+      oXe = new n.a()
       {
         public final void onNetworkChange(int paramAnonymousInt)
         {
           AppMethodBeat.i(90841);
-          Object localObject = ax.iH(ai.getContext());
-          final String str = ai.getProcessName();
-          ac.i("MicroMsg.OpenVoice.OpenVoiceNetworkMgr", "hy: %s on network changed: %d, changed to %s, %s", new Object[] { str, Integer.valueOf(paramAnonymousInt), localObject, m.a.otH });
+          Object localObject = ay.iR(aj.getContext());
+          final String str = aj.getProcessName();
+          ad.i("MicroMsg.OpenVoice.OpenVoiceNetworkMgr", "hy: %s on network changed: %d, changed to %s, %s", new Object[] { str, Integer.valueOf(paramAnonymousInt), localObject, m.a.oXd });
           localObject = new Bundle();
           ((Bundle)localObject).putString("from_process", str);
           ((Bundle)localObject).putInt("newState", paramAnonymousInt);
-          h.a(m.a.otH, (Parcelable)localObject, m.a.a.class, new d() {});
+          h.a(m.a.oXd, (Parcelable)localObject, m.a.a.class, new d() {});
           AppMethodBeat.o(90841);
         }
       };

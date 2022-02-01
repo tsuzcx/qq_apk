@@ -4,11 +4,9 @@ import android.content.Context;
 import android.text.ClipboardManager;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.l;
 
 public final class c
@@ -19,20 +17,20 @@ public final class c
     super(6);
   }
   
-  public final void a(Context paramContext, f paramf)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
   {
     AppMethodBeat.i(78684);
-    Object localObject = paramf.eAs().aCl(paramf.getUrl());
-    if (bs.isNullOrNil((String)localObject)) {}
-    for (paramf = paramf.getUrl();; paramf = (f)localObject)
+    Object localObject = paramg.ePi().aHL(paramg.getUrl());
+    if (bt.isNullOrNil((String)localObject)) {}
+    for (paramg = paramg.getUrl();; paramg = (com.tencent.mm.plugin.webview.luggage.g)localObject)
     {
-      localObject = (ClipboardManager)ai.getContext().getSystemService("clipboard");
+      localObject = (ClipboardManager)aj.getContext().getSystemService("clipboard");
       if (localObject != null) {}
       try
       {
-        ((ClipboardManager)localObject).setText(paramf);
+        ((ClipboardManager)localObject).setText(paramg);
         Toast.makeText(paramContext, paramContext.getString(2131766248), 0).show();
-        h.wUl.dB(982, 0);
+        com.tencent.mm.plugin.report.service.g.yhR.dD(982, 0);
         AppMethodBeat.o(78684);
         return;
       }
@@ -40,16 +38,16 @@ public final class c
       {
         for (;;)
         {
-          ac.printErrStackTrace("MicroMsg.MenuDelegate_CopyLink", paramContext, "clip.setText error", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.MenuDelegate_CopyLink", paramContext, "clip.setText error", new Object[0]);
         }
       }
     }
   }
   
-  public final void a(Context paramContext, f paramf, l paraml)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
   {
     AppMethodBeat.i(78683);
-    if (paramf.Gi(44)) {
+    if (paramg.HC(44)) {
       paraml.a(6, paramContext.getString(2131766247), 2131689800);
     }
     AppMethodBeat.o(78683);

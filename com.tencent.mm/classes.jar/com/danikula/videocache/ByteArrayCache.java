@@ -13,20 +13,20 @@ public class ByteArrayCache
   public ByteArrayCache()
   {
     this(new byte[0]);
-    AppMethodBeat.i(192465);
-    AppMethodBeat.o(192465);
+    AppMethodBeat.i(215812);
+    AppMethodBeat.o(215812);
   }
   
   public ByteArrayCache(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(192466);
+    AppMethodBeat.i(215813);
     this.data = ((byte[])Preconditions.checkNotNull(paramArrayOfByte));
-    AppMethodBeat.o(192466);
+    AppMethodBeat.o(215813);
   }
   
   public void append(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(192468);
+    AppMethodBeat.i(215815);
     Preconditions.checkNotNull(this.data);
     if ((paramInt >= 0) && (paramInt <= paramArrayOfByte.length)) {}
     for (boolean bool = true;; bool = false)
@@ -35,7 +35,7 @@ public class ByteArrayCache
       byte[] arrayOfByte = Arrays.copyOf(this.data, this.data.length + paramInt);
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte, this.data.length, paramInt);
       this.data = arrayOfByte;
-      AppMethodBeat.o(192468);
+      AppMethodBeat.o(215815);
       return;
     }
   }
@@ -59,26 +59,26 @@ public class ByteArrayCache
   
   public int read(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(192467);
+    AppMethodBeat.i(215814);
     if (paramLong >= this.data.length)
     {
-      AppMethodBeat.o(192467);
+      AppMethodBeat.o(215814);
       return -1;
     }
     if (paramLong > 2147483647L)
     {
       paramArrayOfByte = new IllegalArgumentException("Too long offset for memory cache ".concat(String.valueOf(paramLong)));
-      AppMethodBeat.o(192467);
+      AppMethodBeat.o(215814);
       throw paramArrayOfByte;
     }
     paramInt = new ByteArrayInputStream(this.data).read(paramArrayOfByte, (int)paramLong, paramInt);
-    AppMethodBeat.o(192467);
+    AppMethodBeat.o(215814);
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.danikula.videocache.ByteArrayCache
  * JD-Core Version:    0.7.0.1
  */

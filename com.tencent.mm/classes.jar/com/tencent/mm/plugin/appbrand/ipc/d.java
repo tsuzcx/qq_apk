@@ -7,15 +7,15 @@ import android.os.IInterface;
 public abstract interface d
   extends IInterface
 {
-  public abstract void F(Bundle paramBundle);
-  
   public abstract void G(Bundle paramBundle);
+  
+  public abstract void H(Bundle paramBundle);
   
   public abstract void a(IBinder paramIBinder, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.d
  * JD-Core Version:    0.7.0.1
  */

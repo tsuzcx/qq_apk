@@ -4,76 +4,96 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import f.a.a.b;
 
 public final class ecv
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Gih;
-  public String hip;
-  public String title;
+  public long FAf;
+  public String Hnp;
+  public String Title;
+  public String hDa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32574);
+    AppMethodBeat.i(32533);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.hip == null)
+      if (this.Hnp == null)
       {
-        paramVarArgs = new b("Not all required fields were included: rankid");
-        AppMethodBeat.o(32574);
+        paramVarArgs = new b("Not all required fields were included: Talker");
+        AppMethodBeat.o(32533);
         throw paramVarArgs;
       }
-      if (this.title == null)
+      if (this.Title == null)
       {
-        paramVarArgs = new b("Not all required fields were included: title");
-        AppMethodBeat.o(32574);
+        paramVarArgs = new b("Not all required fields were included: Title");
+        AppMethodBeat.o(32533);
         throw paramVarArgs;
       }
-      if (this.hip != null) {
-        paramVarArgs.d(1, this.hip);
+      if (this.hDa == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Content");
+        AppMethodBeat.o(32533);
+        throw paramVarArgs;
       }
-      if (this.title != null) {
-        paramVarArgs.d(2, this.title);
+      if (this.Hnp != null) {
+        paramVarArgs.d(1, this.Hnp);
       }
-      paramVarArgs.aR(3, this.Gih);
-      AppMethodBeat.o(32574);
+      if (this.Title != null) {
+        paramVarArgs.d(2, this.Title);
+      }
+      if (this.hDa != null) {
+        paramVarArgs.d(3, this.hDa);
+      }
+      paramVarArgs.aY(4, this.FAf);
+      AppMethodBeat.o(32533);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hip == null) {
-        break label427;
+      if (this.Hnp == null) {
+        break label540;
       }
     }
-    label427:
-    for (paramInt = f.a.a.b.b.a.e(1, this.hip) + 0;; paramInt = 0)
+    label540:
+    for (int i = f.a.a.b.b.a.e(1, this.Hnp) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.title != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.title);
+      paramInt = i;
+      if (this.Title != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Title);
       }
-      paramInt = f.a.a.b.b.a.bx(3, this.Gih);
-      AppMethodBeat.o(32574);
+      i = paramInt;
+      if (this.hDa != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.hDa);
+      }
+      paramInt = f.a.a.b.b.a.p(4, this.FAf);
+      AppMethodBeat.o(32533);
       return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        if (this.hip == null)
+        if (this.Hnp == null)
         {
-          paramVarArgs = new b("Not all required fields were included: rankid");
-          AppMethodBeat.o(32574);
+          paramVarArgs = new b("Not all required fields were included: Talker");
+          AppMethodBeat.o(32533);
           throw paramVarArgs;
         }
-        if (this.title == null)
+        if (this.Title == null)
         {
-          paramVarArgs = new b("Not all required fields were included: title");
-          AppMethodBeat.o(32574);
+          paramVarArgs = new b("Not all required fields were included: Title");
+          AppMethodBeat.o(32533);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(32574);
+        if (this.hDa == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Content");
+          AppMethodBeat.o(32533);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32533);
         return 0;
       }
       if (paramInt == 3)
@@ -83,29 +103,33 @@ public final class ecv
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(32574);
+          AppMethodBeat.o(32533);
           return -1;
         case 1: 
-          localecv.hip = locala.LVo.readString();
-          AppMethodBeat.o(32574);
+          localecv.Hnp = locala.NPN.readString();
+          AppMethodBeat.o(32533);
           return 0;
         case 2: 
-          localecv.title = locala.LVo.readString();
-          AppMethodBeat.o(32574);
+          localecv.Title = locala.NPN.readString();
+          AppMethodBeat.o(32533);
+          return 0;
+        case 3: 
+          localecv.hDa = locala.NPN.readString();
+          AppMethodBeat.o(32533);
           return 0;
         }
-        localecv.Gih = locala.LVo.xF();
-        AppMethodBeat.o(32574);
+        localecv.FAf = locala.NPN.zd();
+        AppMethodBeat.o(32533);
         return 0;
       }
-      AppMethodBeat.o(32574);
+      AppMethodBeat.o(32533);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ecv
  * JD-Core Version:    0.7.0.1
  */

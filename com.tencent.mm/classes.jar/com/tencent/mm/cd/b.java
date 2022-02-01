@@ -18,11 +18,10 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.ui.al;
 import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -32,25 +31,25 @@ import org.xmlpull.v1.XmlPullParser;
 public final class b
   extends Resources
 {
-  private static Method GjX = null;
-  private static Method GjY = null;
-  private g GjT;
-  private e GjU;
-  private boolean GjV;
-  public a GjW;
+  private static Method HVK = null;
+  private static Method HVL = null;
+  private g HVG;
+  private e HVH;
+  private boolean HVI;
+  public a HVJ;
   private Resources mResources;
   
   private b(Resources paramResources, g paramg, e parame)
   {
     super(paramResources.getAssets(), paramResources.getDisplayMetrics(), paramResources.getConfiguration());
     AppMethodBeat.i(141213);
-    this.GjT = paramg;
+    this.HVG = paramg;
     if ((paramResources instanceof b)) {}
     for (this.mResources = ((b)paramResources).mResources;; this.mResources = paramResources)
     {
-      this.GjU = parame;
-      eSD();
-      eSE();
+      this.HVH = parame;
+      fhW();
+      fhX();
       AppMethodBeat.o(141213);
       return;
     }
@@ -60,20 +59,20 @@ public final class b
   {
     super(paramResources.getAssets(), parama.getDisplayMetrics(), parama.g(paramResources.getConfiguration()));
     AppMethodBeat.i(141214);
-    this.GjW = parama;
-    this.GjT = paramg;
+    this.HVJ = parama;
+    this.HVG = paramg;
     if ((paramResources instanceof b)) {
       this.mResources = ((b)paramResources).mResources;
     }
     for (;;)
     {
-      this.GjU = parame;
-      eSD();
-      eSE();
+      this.HVH = parame;
+      fhW();
+      fhX();
       try
       {
-        this.GjV = ai.eUY().getBoolean("ShowStringName", false);
-        ac.i("MicroMsg.MMResources", "originalResources:%s mmresource:%s", new Object[] { paramResources, this });
+        this.HVI = aj.fkD().getBoolean("ShowStringName", false);
+        ad.i("MicroMsg.MMResources", "originalResources:%s mmresource:%s", new Object[] { paramResources, this });
         AppMethodBeat.o(141214);
         return;
         this.mResources = paramResources;
@@ -82,7 +81,7 @@ public final class b
       {
         for (;;)
         {
-          ac.e("MicroMsg.MMResources", paramg.getMessage());
+          ad.e("MicroMsg.MMResources", paramg.getMessage());
         }
       }
     }
@@ -99,7 +98,7 @@ public final class b
   public static Resources a(Resources paramResources, Context paramContext, String paramString)
   {
     AppMethodBeat.i(141220);
-    paramResources = new b(paramResources, g.bW(paramContext, paramString), new e(), new a(paramResources.getDisplayMetrics()));
+    paramResources = new b(paramResources, g.cb(paramContext, paramString), new e(), new a(paramResources.getDisplayMetrics()));
     AppMethodBeat.o(141220);
     return paramResources;
   }
@@ -107,7 +106,7 @@ public final class b
   public static Resources a(Resources paramResources, Context paramContext, boolean paramBoolean)
   {
     AppMethodBeat.i(141219);
-    paramContext = g.ii(paramContext);
+    paramContext = g.ir(paramContext);
     e locale = new e();
     if (paramBoolean)
     {
@@ -125,12 +124,12 @@ public final class b
     AppMethodBeat.i(141235);
     Object localObject = paramDrawable;
     if (paramDrawable == null) {
-      ac.m("MicroMsg.MMResources", "Notice!!! drawable == null!!!", new Object[0]);
+      ad.m("MicroMsg.MMResources", "Notice!!! drawable == null!!!", new Object[0]);
     }
     try
     {
-      if (this.GjU.njc.i(this, paramInt)) {
-        ac.e("MicroMsg.MMResources", "resources name = %s, this resource %s", new Object[] { getResourceName(paramInt), this });
+      if (this.HVH.nJy.i(this, paramInt)) {
+        ad.e("MicroMsg.MMResources", "resources name = %s, this resource %s", new Object[] { getResourceName(paramInt), this });
       }
       localObject = new com.tencent.mm.svg.a.c(new Picture(), 0);
       AppMethodBeat.o(141235);
@@ -140,7 +139,7 @@ public final class b
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.MMResources", paramDrawable, "WTF", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMResources", paramDrawable, "WTF", new Object[0]);
       }
     }
   }
@@ -151,98 +150,6 @@ public final class b
     paramResources = com.tencent.mm.svg.a.e.e(paramResources, paramInt);
     AppMethodBeat.o(141238);
     return paramResources;
-  }
-  
-  private boolean eSC()
-  {
-    AppMethodBeat.i(141221);
-    if ((this.GjT != null) && (g.eSC()))
-    {
-      AppMethodBeat.o(141221);
-      return true;
-    }
-    AppMethodBeat.o(141221);
-    return false;
-  }
-  
-  private static void eSD()
-  {
-    Object localObject = null;
-    AppMethodBeat.i(141236);
-    try
-    {
-      Class localClass = Class.forName("android.content.res.MiuiResources");
-      if (localClass != null)
-      {
-        ac.i("MicroMsg.MMResources", "sMiuiThemeEnabled false");
-        Field localField = localClass.getDeclaredField("sMiuiThemeEnabled");
-        localObject = localField;
-        if (localField != null)
-        {
-          localField.setAccessible(true);
-          localField.set(null, Boolean.FALSE);
-          AppMethodBeat.o(141236);
-          return;
-        }
-      }
-      ac.e("MicroMsg.MMResources", "some thing wrong. %s %s", new Object[] { localClass, localObject });
-      AppMethodBeat.o(141236);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      ac.i("MicroMsg.MMResources", "sMiuiThemeEnabled ClassNotFoundException");
-      AppMethodBeat.o(141236);
-      return;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      ac.i("MicroMsg.MMResources", "sMiuiThemeEnabled NoSuchFieldException");
-      AppMethodBeat.o(141236);
-      return;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      ac.i("MicroMsg.MMResources", "sMiuiThemeEnabled IllegalAccessException");
-      AppMethodBeat.o(141236);
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      ac.i("MicroMsg.MMResources", "sMiuiThemeEnabled IllegalArgumentException");
-      AppMethodBeat.o(141236);
-    }
-  }
-  
-  private void eSE()
-  {
-    AppMethodBeat.i(141237);
-    com.tencent.mm.compatible.loader.c localc = new com.tencent.mm.compatible.loader.c(getAssets(), "mThemeCookies", null);
-    try
-    {
-      if (localc.Yw()) {
-        localc.set(new a());
-      }
-      AppMethodBeat.o(141237);
-      return;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      ac.printErrStackTrace("MicroMsg.MMResources", localNoSuchFieldException, "", new Object[0]);
-      AppMethodBeat.o(141237);
-      return;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      ac.printErrStackTrace("MicroMsg.MMResources", localIllegalAccessException, "", new Object[0]);
-      AppMethodBeat.o(141237);
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      ac.printErrStackTrace("MicroMsg.MMResources", localIllegalArgumentException, "", new Object[0]);
-      AppMethodBeat.o(141237);
-    }
   }
   
   public static Drawable f(Resources paramResources, int paramInt)
@@ -258,14 +165,14 @@ public final class b
       if (i != 0) {
         localObject1 = new ColorDrawable(((TypedValue)localObject3).data);
       }
-      if (GjX == null) {}
+      if (HVK == null) {}
       Object localObject2;
       try
       {
         localObject2 = Resources.class.getDeclaredMethod("loadXmlResourceParser", new Class[] { String.class, Integer.TYPE, Integer.TYPE, String.class });
-        GjX = (Method)localObject2;
+        HVK = (Method)localObject2;
         ((Method)localObject2).setAccessible(true);
-        if (GjY == null) {}
+        if (HVL == null) {}
         localObject1 = ((TypedValue)localObject3).string.toString();
       }
       catch (NoSuchMethodException paramResources)
@@ -273,14 +180,14 @@ public final class b
         try
         {
           localObject2 = AssetManager.class.getDeclaredMethod("openNonAsset", new Class[] { Integer.TYPE, String.class, Integer.TYPE });
-          GjY = (Method)localObject2;
+          HVL = (Method)localObject2;
           ((Method)localObject2).setAccessible(true);
           localObject2 = localObject1;
           if (localObject1 != null) {
-            break label361;
+            break label350;
           }
           if (((TypedValue)localObject3).string != null) {
-            break label281;
+            break label270;
           }
           paramResources = new Resources.NotFoundException("Resource is not a Drawable (color or path): ".concat(String.valueOf(localObject3)));
           AppMethodBeat.o(141239);
@@ -288,27 +195,27 @@ public final class b
         }
         catch (NoSuchMethodException paramResources)
         {
-          ac.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
-          ac.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
           AppMethodBeat.o(141239);
           return null;
         }
         paramResources = paramResources;
-        ac.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
-        ac.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMResources", paramResources, "", new Object[0]);
         AppMethodBeat.o(141239);
         return null;
       }
-      label281:
+      label270:
       if (((String)localObject1).endsWith(".xml")) {}
       for (;;)
       {
         try
         {
-          localObject3 = (XmlResourceParser)GjX.invoke(paramResources, new Object[] { localObject1, Integer.valueOf(paramInt), Integer.valueOf(((TypedValue)localObject3).assetCookie), "drawable" });
+          localObject3 = (XmlResourceParser)HVK.invoke(paramResources, new Object[] { localObject1, Integer.valueOf(paramInt), Integer.valueOf(((TypedValue)localObject3).assetCookie), "drawable" });
           localObject2 = Drawable.createFromXml(paramResources, (XmlPullParser)localObject3);
           ((XmlResourceParser)localObject3).close();
-          label361:
+          label350:
           AppMethodBeat.o(141239);
           return localObject2;
         }
@@ -321,7 +228,7 @@ public final class b
         }
         try
         {
-          InputStream localInputStream = (InputStream)GjY.invoke(paramResources.getAssets(), new Object[] { Integer.valueOf(((TypedValue)localObject3).assetCookie), localObject1, Integer.valueOf(2) });
+          InputStream localInputStream = (InputStream)HVL.invoke(paramResources.getAssets(), new Object[] { Integer.valueOf(((TypedValue)localObject3).assetCookie), localObject1, Integer.valueOf(2) });
           localObject2 = Drawable.createFromResourceStream(paramResources, (TypedValue)localObject3, localInputStream, (String)localObject1, null);
           localInputStream.close();
         }
@@ -337,12 +244,104 @@ public final class b
     }
   }
   
+  private boolean fhV()
+  {
+    AppMethodBeat.i(141221);
+    if ((this.HVG != null) && (g.fhV()))
+    {
+      AppMethodBeat.o(141221);
+      return true;
+    }
+    AppMethodBeat.o(141221);
+    return false;
+  }
+  
+  private static void fhW()
+  {
+    Object localObject = null;
+    AppMethodBeat.i(141236);
+    try
+    {
+      Class localClass = Class.forName("android.content.res.MiuiResources");
+      if (localClass != null)
+      {
+        ad.i("MicroMsg.MMResources", "sMiuiThemeEnabled false");
+        Field localField = localClass.getDeclaredField("sMiuiThemeEnabled");
+        localObject = localField;
+        if (localField != null)
+        {
+          localField.setAccessible(true);
+          localField.set(null, Boolean.FALSE);
+          AppMethodBeat.o(141236);
+          return;
+        }
+      }
+      ad.e("MicroMsg.MMResources", "some thing wrong. %s %s", new Object[] { localClass, localObject });
+      AppMethodBeat.o(141236);
+      return;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      ad.i("MicroMsg.MMResources", "sMiuiThemeEnabled ClassNotFoundException");
+      AppMethodBeat.o(141236);
+      return;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      ad.i("MicroMsg.MMResources", "sMiuiThemeEnabled NoSuchFieldException");
+      AppMethodBeat.o(141236);
+      return;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      ad.i("MicroMsg.MMResources", "sMiuiThemeEnabled IllegalAccessException");
+      AppMethodBeat.o(141236);
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      ad.i("MicroMsg.MMResources", "sMiuiThemeEnabled IllegalArgumentException");
+      AppMethodBeat.o(141236);
+    }
+  }
+  
+  private void fhX()
+  {
+    AppMethodBeat.i(141237);
+    com.tencent.mm.compatible.loader.c localc = new com.tencent.mm.compatible.loader.c(getAssets(), "mThemeCookies", null);
+    try
+    {
+      if (localc.aaY()) {
+        localc.set(new a());
+      }
+      AppMethodBeat.o(141237);
+      return;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      ad.printErrStackTrace("MicroMsg.MMResources", localNoSuchFieldException, "", new Object[0]);
+      AppMethodBeat.o(141237);
+      return;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      ad.printErrStackTrace("MicroMsg.MMResources", localIllegalAccessException, "", new Object[0]);
+      AppMethodBeat.o(141237);
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      ad.printErrStackTrace("MicroMsg.MMResources", localIllegalArgumentException, "", new Object[0]);
+      AppMethodBeat.o(141237);
+    }
+  }
+  
   public final DisplayMetrics getDisplayMetrics()
   {
     AppMethodBeat.i(141215);
-    if (this.GjW != null)
+    if (this.HVJ != null)
     {
-      localDisplayMetrics = this.GjW.getDisplayMetrics();
+      localDisplayMetrics = this.HVJ.getDisplayMetrics();
       AppMethodBeat.o(141215);
       return localDisplayMetrics;
     }
@@ -356,7 +355,7 @@ public final class b
     AppMethodBeat.i(141231);
     if (paramInt != 0)
     {
-      localDrawable = this.GjU.g(this.mResources, paramInt);
+      localDrawable = this.HVH.g(this.mResources, paramInt);
       if (localDrawable != null)
       {
         AppMethodBeat.o(141231);
@@ -374,7 +373,7 @@ public final class b
     AppMethodBeat.i(141232);
     if (paramInt != 0)
     {
-      Drawable localDrawable = this.GjU.g(this.mResources, paramInt);
+      Drawable localDrawable = this.HVH.g(this.mResources, paramInt);
       if (localDrawable != null)
       {
         AppMethodBeat.o(141232);
@@ -391,7 +390,7 @@ public final class b
     AppMethodBeat.i(141233);
     if (paramInt1 != 0)
     {
-      localDrawable = this.GjU.g(this.mResources, paramInt1);
+      localDrawable = this.HVH.g(this.mResources, paramInt1);
       if (localDrawable != null)
       {
         AppMethodBeat.o(141233);
@@ -409,7 +408,7 @@ public final class b
     AppMethodBeat.i(141234);
     if (paramInt1 != 0)
     {
-      Drawable localDrawable = this.GjU.g(this.mResources, paramInt1);
+      Drawable localDrawable = this.HVH.g(this.mResources, paramInt1);
       if (localDrawable != null)
       {
         AppMethodBeat.o(141234);
@@ -424,7 +423,7 @@ public final class b
   public final String getQuantityString(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141225);
-    if (this.GjV) {
+    if (this.HVI) {
       try
       {
         String str1 = this.mResources.getResourceEntryName(paramInt1);
@@ -437,7 +436,7 @@ public final class b
         return "";
       }
     }
-    if (eSC())
+    if (fhV())
     {
       str2 = g.getQuantityString(paramInt1, paramInt2);
       if (str2 != null)
@@ -455,7 +454,7 @@ public final class b
   public final String getQuantityString(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
     AppMethodBeat.i(141226);
-    if (this.GjV) {
+    if (this.HVI) {
       try
       {
         paramVarArgs = this.mResources.getResourceEntryName(paramInt1);
@@ -468,7 +467,7 @@ public final class b
         return "";
       }
     }
-    if (eSC())
+    if (fhV())
     {
       String str = g.getQuantityString(paramInt1, paramInt2, paramVarArgs);
       if (str != null)
@@ -486,7 +485,7 @@ public final class b
   public final CharSequence getQuantityText(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141227);
-    if (this.GjV) {
+    if (this.HVI) {
       try
       {
         String str1 = this.mResources.getResourceEntryName(paramInt1);
@@ -499,7 +498,7 @@ public final class b
         return "";
       }
     }
-    if (eSC())
+    if (fhV())
     {
       str2 = g.getQuantityString(paramInt1, paramInt2);
       if (str2 != null)
@@ -517,7 +516,7 @@ public final class b
   public final String getString(int paramInt)
   {
     AppMethodBeat.i(141224);
-    if (this.GjV) {
+    if (this.HVI) {
       try
       {
         String str = this.mResources.getResourceEntryName(paramInt);
@@ -531,19 +530,19 @@ public final class b
       }
     }
     Object localObject;
-    if (eSC())
+    if (fhV())
     {
       localObject = g.getString(paramInt);
       if (localObject != null)
       {
-        localObject = g.ai(((CharSequence)localObject).toString()).toString();
+        localObject = g.ah(((CharSequence)localObject).toString()).toString();
         AppMethodBeat.o(141224);
         return localObject;
       }
     }
     try
     {
-      localObject = g.ai(this.mResources.getString(paramInt));
+      localObject = g.ah(this.mResources.getString(paramInt));
       if (localObject != null)
       {
         localObject = ((CharSequence)localObject).toString();
@@ -564,7 +563,7 @@ public final class b
   public final String[] getStringArray(int paramInt)
   {
     AppMethodBeat.i(141228);
-    if (eSC())
+    if (fhV())
     {
       arrayOfString = g.getStringArray(paramInt);
       if (arrayOfString != null)
@@ -581,7 +580,7 @@ public final class b
   public final CharSequence getText(int paramInt)
   {
     AppMethodBeat.i(141222);
-    if (this.GjV) {
+    if (this.HVI) {
       try
       {
         String str = this.mResources.getResourceEntryName(paramInt);
@@ -594,16 +593,16 @@ public final class b
         return "";
       }
     }
-    if (eSC())
+    if (fhV())
     {
-      localObject = g.ai(g.getString(paramInt));
+      localObject = g.ah(g.getString(paramInt));
       if (localObject != null)
       {
         AppMethodBeat.o(141222);
         return localObject;
       }
     }
-    Object localObject = g.ai(this.mResources.getString(paramInt));
+    Object localObject = g.ah(this.mResources.getString(paramInt));
     if (localObject != null)
     {
       localObject = ((CharSequence)localObject).toString();
@@ -618,7 +617,7 @@ public final class b
   public final CharSequence getText(int paramInt, CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141223);
-    if (this.GjV) {
+    if (this.HVI) {
       try
       {
         paramCharSequence = this.mResources.getResourceEntryName(paramInt);
@@ -631,16 +630,16 @@ public final class b
         return "";
       }
     }
-    if (eSC())
+    if (fhV())
     {
-      paramCharSequence = g.ai(g.getString(paramInt));
+      paramCharSequence = g.ah(g.getString(paramInt));
       if (paramCharSequence != null)
       {
         AppMethodBeat.o(141223);
         return paramCharSequence;
       }
     }
-    paramCharSequence = g.ai(this.mResources.getString(paramInt));
+    paramCharSequence = g.ah(this.mResources.getString(paramInt));
     if (paramCharSequence != null)
     {
       paramCharSequence = paramCharSequence.toString();
@@ -677,24 +676,27 @@ public final class b
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(141216);
-    ac.i("MicroMsg.MMResources", "dancy test locale %s, orientation %s, uimode:%s", new Object[] { paramConfiguration.locale, Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(paramConfiguration.uiMode) });
-    if (ai.cin())
+    ad.i("MicroMsg.MMResources", "dancy test locale %s, orientation %s, uimode:%s", new Object[] { paramConfiguration.locale, Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(paramConfiguration.uiMode) });
+    if (((al.fxZ()) && (aj.cmR())) || (!al.fxZ()))
     {
       c.a(paramConfiguration, this.mResources);
       if (this.mResources != null) {
         this.mResources.getConfiguration().updateFrom(paramConfiguration);
       }
     }
-    a locala = this.GjW;
+    Object localObject = this.HVJ;
     DisplayMetrics localDisplayMetrics = this.mResources.getDisplayMetrics();
-    if (a.eSv())
+    if (a.fhO())
     {
-      localDisplayMetrics.density = locala.aHC.density;
-      localDisplayMetrics.densityDpi = locala.aHC.densityDpi;
-      localDisplayMetrics.scaledDensity = locala.aHC.scaledDensity;
-      locala.aHC.setTo(localDisplayMetrics);
+      localDisplayMetrics.density = ((a)localObject).aJt.density;
+      localDisplayMetrics.densityDpi = ((a)localObject).aJt.densityDpi;
+      localDisplayMetrics.scaledDensity = ((a)localObject).aJt.scaledDensity;
+      ((a)localObject).aJt.setTo(localDisplayMetrics);
     }
-    super.updateConfiguration(this.GjW.g(paramConfiguration), getDisplayMetrics());
+    localObject = new Configuration(getConfiguration());
+    ((Configuration)localObject).fontScale += 0.1F;
+    super.updateConfiguration((Configuration)localObject, getDisplayMetrics());
+    super.updateConfiguration(this.HVJ.g(paramConfiguration), getDisplayMetrics());
     AppMethodBeat.o(141216);
   }
   
@@ -702,7 +704,7 @@ public final class b
   {
     AppMethodBeat.i(141217);
     super.updateConfiguration(paramConfiguration, paramDisplayMetrics);
-    if (ai.cin())
+    if (((al.fxZ()) && (aj.cmR())) || (!al.fxZ()))
     {
       c.a(paramConfiguration, this.mResources);
       if (this.mResources != null)
@@ -715,60 +717,60 @@ public final class b
     int i;
     int j;
     float f1;
-    label284:
-    label348:
-    label356:
+    label296:
+    label360:
+    label368:
     boolean bool2;
-    if (this.GjW != null)
+    if (this.HVJ != null)
     {
-      locala = this.GjW;
-      i = aw.aKT(ai.eUX()).getInt(a.GjC, 0);
-      aj.fhB();
-      j = aj.fhB().densityDpi;
+      locala = this.HVJ;
+      i = ax.aQz(aj.fkC()).getInt(a.HVp, 0);
+      al.fxO();
+      j = al.fxO().densityDpi;
       if (i == 0) {
-        aw.aKT(ai.eUX()).putInt(a.GjC, j);
+        ax.aQz(aj.fkC()).putInt(a.HVp, j);
       }
-      ac.i("MicroMsg.MMDensityManager", "dancy test checkDensity, mDensityDpi:%s,  mCurrentDensityDpi:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      ad.i("MicroMsg.MMDensityManager", "dancy test checkDensity, mDensityDpi:%s,  mCurrentDensityDpi:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
       if ((i == 0) || (i == j)) {
-        break label1018;
+        break label1030;
       }
-      aw.aKT(ai.eUX()).putInt(a.GjC, j);
+      ax.aQz(aj.fkC()).putInt(a.HVp, j);
       i = 1;
       if (i == 0)
       {
-        if (!a.eSv()) {
-          break label1110;
+        if (!a.fhO()) {
+          break label1122;
         }
-        i = com.tencent.mm.cc.a.ia(ai.getContext());
-        ac.i("MicroMsg.MMDensityManager", "old version text index: %s", new Object[] { Integer.valueOf(i) });
-        if ((i == 1) && (!a.eSu())) {
-          break label1110;
+        i = com.tencent.mm.cc.a.ij(aj.getContext());
+        ad.i("MicroMsg.MMDensityManager", "old version text index: %s", new Object[] { Integer.valueOf(i) });
+        if ((i == 1) && (!a.fhN())) {
+          break label1122;
         }
         f1 = 1.0F;
-        if (a.eSu()) {
+        if (a.fhN()) {
           i = 0;
         }
       }
       switch (i)
       {
       default: 
-        com.tencent.mm.cc.a.h(ai.getContext(), f1);
+        com.tencent.mm.cc.a.h(aj.getContext(), f1);
         j = 400;
         switch (i)
         {
         default: 
           i = j;
-          a.Ya(i);
+          a.aad(i);
           i = 1;
           if (i != 0)
           {
-            ac.i("MicroMsg.MMDensityManager", "checkDensity density change, mIcheckDensitylistener:%s", new Object[] { a.GjK });
-            if (a.GjK != null) {
-              a.GjK.Kx();
+            ad.i("MicroMsg.MMDensityManager", "checkDensity density change, mIcheckDensitylistener:%s", new Object[] { a.HVx });
+            if (a.HVx != null) {
+              a.HVx.Mb();
             }
           }
-          boolean bool1 = aw.aKT(ai.eUX()).getBoolean(a.GjE, false);
-          bool2 = aw.aKT(ai.eUX()).getBoolean(a.GjF, false);
+          boolean bool1 = ax.aQz(aj.fkC()).getBoolean(a.HVr, false);
+          bool2 = ax.aQz(aj.fkC()).getBoolean(a.HVs, false);
           if (bool1) {}
           break;
         }
@@ -779,18 +781,18 @@ public final class b
     try
     {
       localDisplayMetrics = new DisplayMetrics();
-      ((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+      ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
       i = localDisplayMetrics.widthPixels;
       j = localDisplayMetrics.heightPixels;
       f1 = localDisplayMetrics.density;
       f2 = locala.getDisplayMetrics().density;
       k = (int)(Math.min(i, j) / f1);
-      h.wUl.f(17089, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Float.toString(f1), Float.toString(f2), Integer.valueOf(k), Integer.valueOf(aj.fhC()), Integer.valueOf(aj.fhD()), Integer.valueOf(a.oPa), Integer.valueOf(Math.min(locala.GjA.widthPixels, locala.GjA.heightPixels)), Float.valueOf(a.GjI) });
-      aw.aKT(ai.eUX()).putBoolean(a.GjE, true);
-      if (aj.fhC() == 0) {
-        break label1148;
+      com.tencent.mm.plugin.report.service.g.yhR.f(17089, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Float.toString(f1), Float.toString(f2), Integer.valueOf(k), Integer.valueOf(al.fxP()), Integer.valueOf(al.fxQ()), Integer.valueOf(a.psI), Integer.valueOf(Math.min(locala.HVn.widthPixels, locala.HVn.heightPixels)), Float.valueOf(a.HVv) });
+      ax.aQz(aj.fkC()).putBoolean(a.HVr, true);
+      if (al.fxP() == 0) {
+        break label1160;
       }
-      i = Math.round(a.oPa / (aj.fhC() / 160.0F));
+      i = Math.round(a.psI / (al.fxP() / 160.0F));
     }
     catch (Exception localException)
     {
@@ -801,22 +803,24 @@ public final class b
           DisplayMetrics localDisplayMetrics;
           float f2;
           int m;
-          ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "", new Object[0]);
           continue;
           i = 0;
         }
       } while (i < 550);
       k = 1;
     }
-    localDisplayMetrics = aj.fhB();
+    localDisplayMetrics = al.fxO();
     m = Math.round(Math.min(localDisplayMetrics.heightPixels, localDisplayMetrics.widthPixels) / localDisplayMetrics.density);
     if (m >= 550) {
       j = 1;
     }
-    label703:
-    label1110:
+    label1030:
+    label1160:
+    label1166:
     for (;;)
     {
+      label715:
       if (!bool2)
       {
         j = localDisplayMetrics.widthPixels;
@@ -824,55 +828,54 @@ public final class b
         f1 = localDisplayMetrics.density;
         f2 = locala.getDisplayMetrics().density;
         int n = (int)(Math.min(j, k) / f1);
-        h.wUl.f(17305, new Object[] { Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), Float.toString(f1), Float.toString(f2), Integer.valueOf(n), Integer.valueOf(aj.fhC()), Integer.valueOf(aj.fhD()), Integer.valueOf(a.oPa), Integer.valueOf(Math.min(locala.GjA.widthPixels, locala.GjA.heightPixels)), Float.valueOf(a.GjI) });
-        aw.aKT(ai.eUX()).putBoolean(a.GjF, true);
+        com.tencent.mm.plugin.report.service.g.yhR.f(17305, new Object[] { Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), Float.toString(f1), Float.toString(f2), Integer.valueOf(n), Integer.valueOf(al.fxP()), Integer.valueOf(al.fxQ()), Integer.valueOf(a.psI), Integer.valueOf(Math.min(locala.HVn.widthPixels, locala.HVn.heightPixels)), Float.valueOf(a.HVv) });
+        ax.aQz(aj.fkC()).putBoolean(a.HVs, true);
       }
-      label1018:
-      label1148:
+      label1122:
       do
       {
-        if (a.eSv())
+        if (a.fhO())
         {
-          locala.eSt();
+          locala.fhM();
           localDisplayMetrics = new DisplayMetrics();
-          ((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-          ac.i("MicroMsg.MMDensityManager", " \n************************************************************************* \nTarget -> %s \nCurrent -> %s \nWindowManager -> %s \nConfiguration -> %s fontScale -> %s \noriginalMetric -> [%s]", new Object[] { a.d(locala.aHC), a.d(paramDisplayMetrics), a.d(localDisplayMetrics), Integer.valueOf(paramConfiguration.densityDpi), Float.valueOf(paramConfiguration.fontScale), locala.GjA });
+          ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+          ad.i("MicroMsg.MMDensityManager", " \n************************************************************************* \nTarget -> %s \nCurrent -> %s \nWindowManager -> %s \nConfiguration -> %s fontScale -> %s \noriginalMetric -> [%s]", new Object[] { a.d(locala.aJt), a.d(paramDisplayMetrics), a.d(localDisplayMetrics), Integer.valueOf(paramConfiguration.densityDpi), Float.valueOf(paramConfiguration.fontScale), locala.HVn });
         }
         AppMethodBeat.o(141217);
         return;
         i = 0;
         break;
         f1 = 0.8F;
-        break label284;
+        break label296;
         f1 = 1.0F;
-        break label284;
+        break label296;
         f1 = 1.1F;
-        break label284;
+        break label296;
         f1 = 1.12F;
-        break label284;
+        break label296;
         f1 = 1.125F;
-        break label284;
+        break label296;
         f1 = 1.4F;
-        break label284;
+        break label296;
         f1 = 1.55F;
-        break label284;
+        break label296;
         f1 = 1.65F;
-        break label284;
+        break label296;
         i = 440;
-        break label348;
+        break label360;
         i = 400;
-        break label348;
+        break label360;
         i = 360;
-        break label348;
+        break label360;
         i = 340;
-        break label348;
+        break label360;
         i = 0;
-        break label356;
+        break label368;
         j = 0;
-        break label1154;
+        break label1166;
         k = 0;
         if (k != 0) {
-          break label703;
+          break label715;
         }
       } while (j == 0);
     }
@@ -884,14 +887,14 @@ public final class b
     public final void add(int paramInt, E paramE)
     {
       AppMethodBeat.i(141212);
-      ac.i("InterceptArrayList", "InterceptArrayList.add index object");
+      ad.i("InterceptArrayList", "InterceptArrayList.add index object");
       AppMethodBeat.o(141212);
     }
     
     public final boolean add(E paramE)
     {
       AppMethodBeat.i(141211);
-      ac.i("InterceptArrayList", "InterceptArrayList.add");
+      ad.i("InterceptArrayList", "InterceptArrayList.add");
       AppMethodBeat.o(141211);
       return true;
     }

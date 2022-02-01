@@ -7,25 +7,25 @@ import java.lang.reflect.Method;
 class ah
   extends ak
 {
-  private static Method BM;
-  private static boolean BN;
-  private static Method BO;
-  private static boolean BP;
+  private static Method DE;
+  private static boolean DF;
+  private static Method DG;
+  private static boolean DH;
   
   public final float O(View paramView)
   {
-    if (!BP) {}
+    if (!DH) {}
     try
     {
       Method localMethod = View.class.getDeclaredMethod("getTransitionAlpha", new Class[0]);
-      BO = localMethod;
+      DG = localMethod;
       localMethod.setAccessible(true);
       label27:
-      BP = true;
-      if (BO != null) {
+      DH = true;
+      if (DG != null) {
         try
         {
-          float f = ((Float)BO.invoke(paramView, new Object[0])).floatValue();
+          float f = ((Float)DG.invoke(paramView, new Object[0])).floatValue();
           return f;
         }
         catch (InvocationTargetException paramView)
@@ -48,18 +48,18 @@ class ah
   
   public final void d(View paramView, float paramFloat)
   {
-    if (!BN) {}
+    if (!DF) {}
     try
     {
       Method localMethod = View.class.getDeclaredMethod("setTransitionAlpha", new Class[] { Float.TYPE });
-      BM = localMethod;
+      DE = localMethod;
       localMethod.setAccessible(true);
       label33:
-      BN = true;
-      if (BM != null) {}
+      DF = true;
+      if (DE != null) {}
       try
       {
-        BM.invoke(paramView, new Object[] { Float.valueOf(paramFloat) });
+        DE.invoke(paramView, new Object[] { Float.valueOf(paramFloat) });
         return;
       }
       catch (InvocationTargetException paramView)
@@ -78,7 +78,7 @@ class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ah
  * JD-Core Version:    0.7.0.1
  */

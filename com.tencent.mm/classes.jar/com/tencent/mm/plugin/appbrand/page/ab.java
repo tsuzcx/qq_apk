@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ab
 {
-  public static String PL(String paramString)
+  public static String Tp(String paramString)
   {
     AppMethodBeat.i(135207);
     int i = paramString.indexOf("<page>");
@@ -19,7 +19,7 @@ public final class ab
     return paramString;
   }
   
-  public static String PM(String paramString)
+  public static String Tq(String paramString)
   {
     AppMethodBeat.i(135208);
     int i = paramString.indexOf("<style>");
@@ -34,7 +34,7 @@ public final class ab
     return paramString;
   }
   
-  public static String PN(String paramString)
+  public static String Tr(String paramString)
   {
     AppMethodBeat.i(135209);
     String str = "";

@@ -26,13 +26,13 @@ class SysWebView$2
   public View getVideoLoadingProgressView()
   {
     AppMethodBeat.i(153705);
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      localView = this.KDN.KDG.getVideoLoadingProgressView();
+      localView = this.Mun.Mug.getVideoLoadingProgressView();
       AppMethodBeat.o(153705);
       return localView;
     }
-    View localView = LayoutInflater.from(this.KDN.KDD.getContext()).inflate(2131495836, null);
+    View localView = LayoutInflater.from(this.Mun.Mud.getContext()).inflate(2131495836, null);
     AppMethodBeat.o(153705);
     return localView;
   }
@@ -41,9 +41,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153700);
     Log.i("SysWebView", "onConsoleMessage " + paramConsoleMessage.message());
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      bool = this.KDN.KDG.onConsoleMessage(paramConsoleMessage);
+      bool = this.Mun.Mug.onConsoleMessage(paramConsoleMessage);
       AppMethodBeat.o(153700);
       return bool;
     }
@@ -56,9 +56,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153699);
     Log.i("SysWebView", "onGeolocationPermissionsHidePrompt");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.onGeolocationPermissionsHidePrompt();
+      this.Mun.Mug.onGeolocationPermissionsHidePrompt();
       AppMethodBeat.o(153699);
       return;
     }
@@ -70,9 +70,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153698);
     Log.i("SysWebView", "onGeolocationPermissionsShowPrompt");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+      this.Mun.Mug.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
       AppMethodBeat.o(153698);
       return;
     }
@@ -85,9 +85,9 @@ class SysWebView$2
     boolean bool = false;
     AppMethodBeat.i(153694);
     Log.i("SysWebView", "onHideCustomView");
-    e.a(this.KDN, false);
-    if (this.KDN.KDG != null) {
-      bool = this.KDN.KDG.blz();
+    e.a(this.Mun, false);
+    if (this.Mun.Mug != null) {
+      bool = this.Mun.Mug.bpk();
     }
     if (bool)
     {
@@ -95,15 +95,15 @@ class SysWebView$2
       AppMethodBeat.o(153694);
       return;
     }
-    if (e.a(this.KDN) != null)
+    if (e.a(this.Mun) != null)
     {
-      e.a(this.KDN).onHideCustomView();
+      e.a(this.Mun).onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.onHideCustomView();
+      this.Mun.Mug.onHideCustomView();
       AppMethodBeat.o(153694);
       return;
     }
@@ -115,9 +115,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153695);
     Log.i("SysWebView", "onJsAlert");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      bool = this.KDN.KDG.a(this.KDN.KDD, paramString1, paramString2, new c.e(paramJsResult));
+      bool = this.Mun.Mug.a(this.Mun.Mud, paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153695);
       return bool;
     }
@@ -130,9 +130,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153696);
     Log.i("SysWebView", "onJsConfirm");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      bool = this.KDN.KDG.b(this.KDN.KDD, paramString1, paramString2, new c.e(paramJsResult));
+      bool = this.Mun.Mug.b(this.Mun.Mud, paramString1, paramString2, new c.e(paramJsResult));
       AppMethodBeat.o(153696);
       return bool;
     }
@@ -145,9 +145,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153697);
     Log.i("SysWebView", "onJsPrompt");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      bool = this.KDN.KDG.a(this.KDN.KDD, paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
+      bool = this.Mun.Mug.a(this.Mun.Mud, paramString1, paramString2, paramString3, new c.d(paramJsPromptResult));
       AppMethodBeat.o(153697);
       return bool;
     }
@@ -159,9 +159,9 @@ class SysWebView$2
   public void onProgressChanged(android.webkit.WebView paramWebView, int paramInt)
   {
     AppMethodBeat.i(153691);
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.a(this.KDN.KDD, paramInt);
+      this.Mun.Mug.a(this.Mun.Mud, paramInt);
       AppMethodBeat.o(153691);
       return;
     }
@@ -174,21 +174,21 @@ class SysWebView$2
     AppMethodBeat.i(153692);
     Log.i("SysWebView", "onReceivedTitle: ".concat(String.valueOf(paramString)));
     b localb;
-    if (e.a(this.KDN) != null)
+    if (e.a(this.Mun) != null)
     {
-      localb = e.a(this.KDN);
-      if (this.KDN.KDD.getFullscreenVideoKind() != WebView.a.KzW) {
+      localb = e.a(this.Mun);
+      if (this.Mun.Mud.getFullscreenVideoKind() != WebView.a.Mqr) {
         break label99;
       }
     }
     label99:
     for (boolean bool = true;; bool = false)
     {
-      localb.aT(true, bool);
-      if (this.KDN.KDG == null) {
+      localb.bb(true, bool);
+      if (this.Mun.Mug == null) {
         break;
       }
-      this.KDN.KDG.d(this.KDN.KDD, paramString);
+      this.Mun.Mug.d(this.Mun.Mud, paramString);
       AppMethodBeat.o(153692);
       return;
     }
@@ -200,27 +200,27 @@ class SysWebView$2
   {
     AppMethodBeat.i(153693);
     Log.i("SysWebView", "onShowCustomView");
-    e.a(this.KDN, true);
+    e.a(this.Mun, true);
     boolean bool = false;
-    if (this.KDN.KDG != null) {
-      bool = this.KDN.KDG.a(paramView, paramCustomViewCallback);
+    if (this.Mun.Mug != null) {
+      bool = this.Mun.Mug.a(paramView, paramCustomViewCallback);
     }
-    g.fKR();
+    g.gcm();
     if (bool)
     {
       Log.i("SysWebView", "onShowCustomView isHandled:true");
       AppMethodBeat.o(153693);
       return;
     }
-    if (e.a(this.KDN) != null)
+    if (e.a(this.Mun) != null)
     {
-      e.a(this.KDN).onShowCustomView(paramView, paramCustomViewCallback);
+      e.a(this.Mun).onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.onShowCustomView(paramView, paramCustomViewCallback);
+      this.Mun.Mug.onShowCustomView(paramView, paramCustomViewCallback);
       AppMethodBeat.o(153693);
       return;
     }
@@ -232,9 +232,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153704);
     Log.i("SysWebView", "onShowFileChooser last method");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      bool = this.KDN.KDG.a(this.KDN.KDD, paramValueCallback, new c.c(paramFileChooserParams));
+      bool = this.Mun.Mug.a(this.Mun.Mud, paramValueCallback, new c.c(paramFileChooserParams));
       AppMethodBeat.o(153704);
       return bool;
     }
@@ -247,9 +247,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153701);
     Log.i("SysWebView", "openFileChooser with one param");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.openFileChooser(paramValueCallback, null, null);
+      this.Mun.Mug.openFileChooser(paramValueCallback, null, null);
       AppMethodBeat.o(153701);
       return;
     }
@@ -261,9 +261,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153702);
     Log.i("SysWebView", "openFileChooser with two param");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.openFileChooser(paramValueCallback, paramString, null);
+      this.Mun.Mug.openFileChooser(paramValueCallback, paramString, null);
       AppMethodBeat.o(153702);
       return;
     }
@@ -275,9 +275,9 @@ class SysWebView$2
   {
     AppMethodBeat.i(153703);
     Log.i("SysWebView", "openFileChooser with three param");
-    if (this.KDN.KDG != null)
+    if (this.Mun.Mug != null)
     {
-      this.KDN.KDG.openFileChooser(paramValueCallback, paramString1, paramString2);
+      this.Mun.Mug.openFileChooser(paramValueCallback, paramString1, paramString2);
       AppMethodBeat.o(153703);
       return;
     }

@@ -7,43 +7,42 @@ import android.content.IntentFilter;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.n.a;
-import com.tencent.mm.g.a.ic;
-import com.tencent.mm.g.a.id;
-import com.tencent.mm.g.a.id.a;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ah.a;
+import com.tencent.mm.g.a.ik;
+import com.tencent.mm.g.a.il;
+import com.tencent.mm.g.a.il.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.al.a;
 
 public class e
 {
   private static n.a appForegroundListener;
-  private static int oJD;
-  private static b tgU;
-  private static a tgV;
-  private static c tgW;
-  private static com.tencent.mm.sdk.b.c tgX;
-  private static com.tencent.mm.sdk.b.c tgY;
+  private static int pnk;
+  private static b ueL;
+  private static a ueM;
+  private static c ueN;
+  private static com.tencent.mm.sdk.b.c ueO;
+  private static com.tencent.mm.sdk.b.c ueP;
   
   static
   {
     AppMethodBeat.i(41682);
-    oJD = -1;
+    pnk = -1;
     appForegroundListener = new n.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(41674);
-        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
+        if ((com.tencent.mm.kernel.g.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD))
         {
-          com.tencent.mm.kernel.g.agP();
-          if (!com.tencent.mm.kernel.a.afS())
+          com.tencent.mm.kernel.g.ajA();
+          if (!com.tencent.mm.kernel.a.aiE())
           {
-            paramAnonymousString = new id();
-            paramAnonymousString.djk.cZu = 1;
-            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousString);
+            paramAnonymousString = new il();
+            paramAnonymousString.duX.dkM = 1;
+            com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousString);
           }
         }
         AppMethodBeat.o(41674);
@@ -52,58 +51,58 @@ public class e
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(41673);
-        if ((com.tencent.mm.kernel.g.agM()) && (com.tencent.mm.kernel.g.agP().ggT))
+        if ((com.tencent.mm.kernel.g.ajx()) && (com.tencent.mm.kernel.g.ajA().gAD))
         {
-          com.tencent.mm.kernel.g.agP();
-          if (!com.tencent.mm.kernel.a.afS())
+          com.tencent.mm.kernel.g.ajA();
+          if (!com.tencent.mm.kernel.a.aiE())
           {
-            paramAnonymousString = new id();
-            paramAnonymousString.djk.cZu = 2;
-            com.tencent.mm.sdk.b.a.GpY.l(paramAnonymousString);
+            paramAnonymousString = new il();
+            paramAnonymousString.duX.dkM = 2;
+            com.tencent.mm.sdk.b.a.IbL.l(paramAnonymousString);
           }
         }
         AppMethodBeat.o(41673);
       }
     };
-    tgX = new com.tencent.mm.sdk.b.c()
+    ueO = new com.tencent.mm.sdk.b.c()
     {
-      private static boolean a(id paramAnonymousid)
+      private static boolean a(il paramAnonymousil)
       {
         AppMethodBeat.i(41675);
-        switch (paramAnonymousid.djk.cZu)
+        switch (paramAnonymousil.duX.dkM)
         {
         }
         for (;;)
         {
           AppMethodBeat.o(41675);
           return false;
-          if (bs.pN(bs.g((Long)com.tencent.mm.kernel.g.agR().agA().get(ah.a.GNQ, Long.valueOf(0L)))) > 600L)
+          if (bt.rM(bt.g((Long)com.tencent.mm.kernel.g.ajC().ajl().get(al.a.IAh, Long.valueOf(0L)))) > 600L)
           {
-            com.tencent.mm.kernel.g.agR().agA().set(ah.a.GNQ, Long.valueOf(bs.aNx()));
-            h.a.cRf().mL(false);
+            com.tencent.mm.kernel.g.ajC().ajl().set(al.a.IAh, Long.valueOf(bt.aQJ()));
+            h.a.cZL().nf(false);
             continue;
-            paramAnonymousid = paramAnonymousid.djk.djj;
-            if (bs.isNullOrNil(paramAnonymousid))
+            paramAnonymousil = paramAnonymousil.duX.duW;
+            if (bt.isNullOrNil(paramAnonymousil))
             {
-              ac.i("MicroMsg.GameSilentDownloadStorage", "deleteAllItem ret:%b", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOo().execSQL("GameSilentDownload", String.format("delete from %s", new Object[] { "GameSilentDownload" }))) });
+              ad.i("MicroMsg.GameSilentDownloadStorage", "deleteAllItem ret:%b", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cWJ().execSQL("GameSilentDownload", String.format("delete from %s", new Object[] { "GameSilentDownload" }))) });
             }
             else
             {
               Object localObject = new d();
-              ((d)localObject).field_appId = paramAnonymousid;
-              ((com.tencent.mm.plugin.game.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.e.class)).cOo().delete((com.tencent.mm.sdk.e.c)localObject, new String[0]);
-              ac.i("MicroMsg.GameSilentDownloadListener", "delete silent download, appid:%s", new Object[] { paramAnonymousid });
+              ((d)localObject).field_appId = paramAnonymousil;
+              ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cWJ().delete((com.tencent.mm.sdk.e.c)localObject, new String[0]);
+              ad.i("MicroMsg.GameSilentDownloadListener", "delete silent download, appid:%s", new Object[] { paramAnonymousil });
               continue;
-              paramAnonymousid = paramAnonymousid.djk.djj;
-              if (!bs.isNullOrNil(paramAnonymousid))
+              paramAnonymousil = paramAnonymousil.duX.duW;
+              if (!bt.isNullOrNil(paramAnonymousil))
               {
-                localObject = com.tencent.mm.plugin.downloader.model.d.Ww(paramAnonymousid);
+                localObject = com.tencent.mm.plugin.downloader.model.d.aad(paramAnonymousil);
                 if (localObject != null)
                 {
                   long l = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadId;
-                  f.bXJ().rS(l);
-                  com.tencent.mm.plugin.downloader.model.d.sd(((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadId);
-                  ac.i("MicroMsg.GameSilentDownload.GameDownloadHelper", "delete downloadInfo in DB. appId:%s", new Object[] { paramAnonymousid });
+                  com.tencent.mm.plugin.downloader.model.f.ccl().tR(l);
+                  com.tencent.mm.plugin.downloader.model.d.ub(((com.tencent.mm.plugin.downloader.g.a)localObject).field_downloadId);
+                  ad.i("MicroMsg.GameSilentDownload.GameDownloadHelper", "delete downloadInfo in DB. appId:%s", new Object[] { paramAnonymousil });
                 }
               }
             }
@@ -111,23 +110,23 @@ public class e
         }
       }
     };
-    tgY = new com.tencent.mm.sdk.b.c() {};
+    ueP = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(41682);
   }
   
-  public static void bXA()
+  public static void ccd()
   {
     AppMethodBeat.i(41680);
     try
     {
-      if (tgU == null) {
-        tgU = new b((byte)0);
+      if (ueL == null) {
+        ueL = new b((byte)0);
       }
       localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
       localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
       localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-      ai.getContext().registerReceiver(tgU, localIntentFilter);
+      aj.getContext().registerReceiver(ueL, localIntentFilter);
     }
     catch (Exception localException1)
     {
@@ -135,70 +134,70 @@ public class e
       {
         IntentFilter localIntentFilter;
         label107:
-        ac.i("MicroMsg.GameSilentDownloadListener", "registerNetChange err:%s", new Object[] { localException1.getMessage() });
+        ad.i("MicroMsg.GameSilentDownloadListener", "registerNetChange err:%s", new Object[] { localException1.getMessage() });
       }
     }
     try
     {
-      if (tgV == null) {
-        tgV = new a((byte)0);
+      if (ueM == null) {
+        ueM = new a((byte)0);
       }
       localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.BATTERY_OKAY");
       localIntentFilter.addAction("android.intent.action.BATTERY_LOW");
-      ai.getContext().registerReceiver(tgV, localIntentFilter);
+      aj.getContext().registerReceiver(ueM, localIntentFilter);
     }
     catch (Exception localException2)
     {
-      ac.i("MicroMsg.GameSilentDownloadListener", "registerBatteryChange err:%s", new Object[] { localException2.getMessage() });
+      ad.i("MicroMsg.GameSilentDownloadListener", "registerBatteryChange err:%s", new Object[] { localException2.getMessage() });
       break label107;
     }
     appForegroundListener.alive();
-    com.tencent.mm.sdk.b.a.GpY.c(tgX);
-    com.tencent.mm.sdk.b.a.GpY.c(tgY);
-    if (tgW == null) {
-      tgW = new c();
+    com.tencent.mm.sdk.b.a.IbL.c(ueO);
+    com.tencent.mm.sdk.b.a.IbL.c(ueP);
+    if (ueN == null) {
+      ueN = new c();
     }
-    f.bXJ();
-    com.tencent.mm.plugin.downloader.model.c.a(tgW);
+    com.tencent.mm.plugin.downloader.model.f.ccl();
+    com.tencent.mm.plugin.downloader.model.c.a(ueN);
     AppMethodBeat.o(41680);
   }
   
-  public static void bXB()
+  public static void cce()
   {
     AppMethodBeat.i(41681);
     appForegroundListener.dead();
-    if (tgU != null) {}
+    if (ueL != null) {}
     try
     {
-      ai.getContext().unregisterReceiver(tgU);
-      tgU = null;
-      if (tgV == null) {}
+      aj.getContext().unregisterReceiver(ueL);
+      ueL = null;
+      if (ueM == null) {}
     }
     catch (Exception localException1)
     {
       try
       {
-        ai.getContext().unregisterReceiver(tgV);
-        tgV = null;
-        com.tencent.mm.sdk.b.a.GpY.d(tgX);
-        com.tencent.mm.sdk.b.a.GpY.d(tgY);
-        if (tgW != null)
+        aj.getContext().unregisterReceiver(ueM);
+        ueM = null;
+        com.tencent.mm.sdk.b.a.IbL.d(ueO);
+        com.tencent.mm.sdk.b.a.IbL.d(ueP);
+        if (ueN != null)
         {
-          f.bXJ();
-          com.tencent.mm.plugin.downloader.model.c.b(tgW);
-          tgW = null;
+          com.tencent.mm.plugin.downloader.model.f.ccl();
+          com.tencent.mm.plugin.downloader.model.c.b(ueN);
+          ueN = null;
         }
         AppMethodBeat.o(41681);
         return;
         localException1 = localException1;
-        ac.i("MicroMsg.GameSilentDownloadListener", "unregisterNetChange err:%s", new Object[] { localException1.getMessage() });
+        ad.i("MicroMsg.GameSilentDownloadListener", "unregisterNetChange err:%s", new Object[] { localException1.getMessage() });
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ac.i("MicroMsg.GameSilentDownloadListener", "unregisterBatteryChange err:%s", new Object[] { localException2.getMessage() });
+          ad.i("MicroMsg.GameSilentDownloadListener", "unregisterBatteryChange err:%s", new Object[] { localException2.getMessage() });
         }
       }
     }
@@ -210,9 +209,9 @@ public class e
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(41678);
-      if ((!com.tencent.mm.kernel.g.agM()) || (com.tencent.mm.kernel.a.afS()))
+      if ((!com.tencent.mm.kernel.g.ajx()) || (com.tencent.mm.kernel.a.aiE()))
       {
-        ac.e("MicroMsg.GameSilentDownloadListener", "acc has not ready");
+        ad.e("MicroMsg.GameSilentDownloadListener", "acc has not ready");
         AppMethodBeat.o(41678);
         return;
       }
@@ -223,15 +222,15 @@ public class e
       }
       if ("android.intent.action.BATTERY_OKAY".equals(paramIntent.getAction()))
       {
-        ac.i("MicroMsg.GameSilentDownloadListener", "batteryChange: ACTION_BATTERY_OKAY, checkDownload");
-        h.a.cRf().mL(true);
+        ad.i("MicroMsg.GameSilentDownloadListener", "batteryChange: ACTION_BATTERY_OKAY, checkDownload");
+        h.a.cZL().nf(true);
         AppMethodBeat.o(41678);
         return;
       }
       if ("android.intent.action.BATTERY_LOW".equals(paramIntent.getAction()))
       {
-        ac.i("MicroMsg.GameSilentDownloadListener", "batteryChange: ACTION_BATTERY_LOW, pauseDownload");
-        h.a.cRf();
+        ad.i("MicroMsg.GameSilentDownloadListener", "batteryChange: ACTION_BATTERY_LOW, pauseDownload");
+        h.a.cZL();
         h.pauseDownload();
       }
       AppMethodBeat.o(41678);
@@ -244,7 +243,7 @@ public class e
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(41679);
-      com.tencent.e.h.JZN.aS(new Runnable()
+      com.tencent.e.h.LTJ.aR(new Runnable()
       {
         /* Error */
         public final void run()
@@ -254,20 +253,20 @@ public class e
           //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
           //   5: ldc 13
           //   7: monitorenter
-          //   8: invokestatic 38	com/tencent/mm/kernel/g:agM	()Z
+          //   8: invokestatic 38	com/tencent/mm/kernel/g:ajx	()Z
           //   11: ifeq +9 -> 20
-          //   14: invokestatic 43	com/tencent/mm/kernel/a:afS	()Z
+          //   14: invokestatic 43	com/tencent/mm/kernel/a:aiE	()Z
           //   17: ifeq +19 -> 36
           //   20: ldc 45
           //   22: ldc 47
-          //   24: invokestatic 53	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   24: invokestatic 53	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
           //   27: ldc 13
           //   29: monitorexit
           //   30: ldc 26
           //   32: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   35: return
-          //   36: invokestatic 62	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
-          //   39: invokestatic 68	com/tencent/mm/sdk/platformtools/ax:getNetType	(Landroid/content/Context;)I
+          //   36: invokestatic 62	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+          //   39: invokestatic 68	com/tencent/mm/sdk/platformtools/ay:getNetType	(Landroid/content/Context;)I
           //   42: istore_1
           //   43: iload_1
           //   44: invokestatic 72	com/tencent/mm/plugin/game/model/a/e:access$200	()I
@@ -278,7 +277,7 @@ public class e
           //   55: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
           //   58: return
           //   59: iload_1
-          //   60: invokestatic 76	com/tencent/mm/plugin/game/model/a/e:Gy	(I)I
+          //   60: invokestatic 76	com/tencent/mm/plugin/game/model/a/e:he	(I)I
           //   63: pop
           //   64: iload_1
           //   65: ifne +37 -> 102
@@ -291,10 +290,10 @@ public class e
           //   78: iload_1
           //   79: invokestatic 84	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
           //   82: aastore
-          //   83: invokestatic 87	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   86: invokestatic 93	com/tencent/mm/plugin/game/model/a/h$a:cRf	()Lcom/tencent/mm/plugin/game/model/a/h;
+          //   83: invokestatic 87	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   86: invokestatic 93	com/tencent/mm/plugin/game/model/a/h$a:cZL	()Lcom/tencent/mm/plugin/game/model/a/h;
           //   89: iconst_0
-          //   90: invokevirtual 99	com/tencent/mm/plugin/game/model/a/h:mL	(Z)V
+          //   90: invokevirtual 99	com/tencent/mm/plugin/game/model/a/h:nf	(Z)V
           //   93: ldc 13
           //   95: monitorexit
           //   96: ldc 26
@@ -309,8 +308,8 @@ public class e
           //   112: iload_1
           //   113: invokestatic 84	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
           //   116: aastore
-          //   117: invokestatic 87	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-          //   120: invokestatic 93	com/tencent/mm/plugin/game/model/a/h$a:cRf	()Lcom/tencent/mm/plugin/game/model/a/h;
+          //   117: invokestatic 87	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   120: invokestatic 93	com/tencent/mm/plugin/game/model/a/h$a:cZL	()Lcom/tencent/mm/plugin/game/model/a/h;
           //   123: pop
           //   124: invokestatic 104	com/tencent/mm/plugin/game/model/a/h:pauseDownload	()V
           //   127: goto -34 -> 93

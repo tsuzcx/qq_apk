@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ui.launcher;
 
 public abstract interface a
 {
-  public abstract void hx(boolean paramBoolean);
+  public abstract void hE(boolean paramBoolean);
 }
 
 

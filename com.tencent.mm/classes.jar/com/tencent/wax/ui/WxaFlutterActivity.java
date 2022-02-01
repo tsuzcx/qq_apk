@@ -27,7 +27,7 @@ import io.flutter.embedding.android.DrawableSplashScreen;
 import io.flutter.embedding.android.FlutterView.b;
 import io.flutter.embedding.android.FlutterView.c;
 import io.flutter.embedding.android.d.a;
-import io.flutter.embedding.android.g;
+import io.flutter.embedding.android.h;
 import io.flutter.view.FlutterMain;
 import java.util.Map;
 
@@ -35,28 +35,28 @@ public class WxaFlutterActivity
   extends AppCompatActivity
   implements LifecycleOwner, b, a.a
 {
-  public static final String tWq;
-  public Toolbar axv;
-  protected a tWr;
-  private LifecycleRegistry tWs;
+  public static final String uYZ;
+  public Toolbar azm;
+  protected a uZa;
+  private LifecycleRegistry uZb;
   
   static
   {
-    AppMethodBeat.i(191741);
-    tWq = d.a.KKz.name();
-    AppMethodBeat.o(191741);
+    AppMethodBeat.i(217538);
+    uYZ = d.a.MBn.name();
+    AppMethodBeat.o(217538);
   }
   
   public WxaFlutterActivity()
   {
-    AppMethodBeat.i(191715);
-    this.tWs = new LifecycleRegistry(this);
-    AppMethodBeat.o(191715);
+    AppMethodBeat.i(217512);
+    this.uZb = new LifecycleRegistry(this);
+    AppMethodBeat.o(217512);
   }
   
-  private Drawable cWA()
+  private Drawable dfM()
   {
-    AppMethodBeat.i(191718);
+    AppMethodBeat.i(217515);
     for (;;)
     {
       try
@@ -71,37 +71,37 @@ public class WxaFlutterActivity
           if (Build.VERSION.SDK_INT > 21)
           {
             localObject1 = getResources().getDrawable(((Integer)localObject1).intValue(), getTheme());
-            AppMethodBeat.o(191718);
+            AppMethodBeat.o(217515);
             return localObject1;
           }
           localObject1 = getResources().getDrawable(((Integer)localObject1).intValue());
-          AppMethodBeat.o(191718);
+          AppMethodBeat.o(217515);
           return localObject1;
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(191718);
+        AppMethodBeat.o(217515);
         return null;
       }
-      AppMethodBeat.o(191718);
+      AppMethodBeat.o(217515);
       return null;
       label106:
       Object localObject2 = null;
     }
   }
   
-  private d.a cWB()
+  private d.a dfN()
   {
-    AppMethodBeat.i(191719);
+    AppMethodBeat.i(217516);
     if (getIntent().hasExtra("background_mode"))
     {
       locala = d.a.valueOf(getIntent().getStringExtra("background_mode"));
-      AppMethodBeat.o(191719);
+      AppMethodBeat.o(217516);
       return locala;
     }
-    d.a locala = d.a.KKz;
-    AppMethodBeat.o(191719);
+    d.a locala = d.a.MBn;
+    AppMethodBeat.o(217516);
     return locala;
   }
   
@@ -109,22 +109,36 @@ public class WxaFlutterActivity
   
   public final void b(io.flutter.embedding.engine.a parama) {}
   
-  public final String cWC()
+  public final h dfL()
   {
-    AppMethodBeat.i(191732);
+    AppMethodBeat.i(217514);
+    Object localObject = dfM();
+    if (localObject != null)
+    {
+      localObject = new DrawableSplashScreen((Drawable)localObject);
+      AppMethodBeat.o(217514);
+      return localObject;
+    }
+    AppMethodBeat.o(217514);
+    return null;
+  }
+  
+  public final String dfO()
+  {
+    AppMethodBeat.i(217529);
     String str = getIntent().getStringExtra("cached_engine_id");
-    AppMethodBeat.o(191732);
+    AppMethodBeat.o(217529);
     return str;
   }
   
-  public final String cWD()
+  public final String dfP()
   {
-    AppMethodBeat.i(191733);
+    AppMethodBeat.i(217530);
     Object localObject1;
     if (getIntent().hasExtra("dart_entrypoint"))
     {
       localObject1 = getIntent().getStringExtra("dart_entrypoint");
-      AppMethodBeat.o(191733);
+      AppMethodBeat.o(217530);
       return localObject1;
     }
     for (;;)
@@ -138,24 +152,24 @@ public class WxaFlutterActivity
           if (localObject1 == null) {
             break;
           }
-          AppMethodBeat.o(191733);
+          AppMethodBeat.o(217530);
           return localObject1;
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(191733);
+        AppMethodBeat.o(217530);
         return "main";
       }
       Object localObject2 = null;
     }
-    AppMethodBeat.o(191733);
+    AppMethodBeat.o(217530);
     return "main";
   }
   
-  public final String cWE()
+  public final String dfQ()
   {
-    AppMethodBeat.i(191734);
+    AppMethodBeat.i(217531);
     if ((getApplicationInfo().flags & 0x2) != 0) {}
     for (int i = 1; (i != 0) && ("android.intent.action.RUN".equals(getIntent().getAction())); i = 0)
     {
@@ -163,22 +177,22 @@ public class WxaFlutterActivity
       if (str == null) {
         break;
       }
-      AppMethodBeat.o(191734);
+      AppMethodBeat.o(217531);
       return str;
     }
     String str = FlutterMain.findAppBundlePath();
-    AppMethodBeat.o(191734);
+    AppMethodBeat.o(217531);
     return str;
   }
   
-  public final String cWF()
+  public final String dfR()
   {
-    AppMethodBeat.i(191735);
+    AppMethodBeat.i(217532);
     Object localObject1;
     if (getIntent().hasExtra("initial_route"))
     {
       localObject1 = getIntent().getStringExtra("initial_route");
-      AppMethodBeat.o(191735);
+      AppMethodBeat.o(217532);
       return localObject1;
     }
     for (;;)
@@ -192,94 +206,80 @@ public class WxaFlutterActivity
           if (localObject1 == null) {
             break;
           }
-          AppMethodBeat.o(191735);
+          AppMethodBeat.o(217532);
           return localObject1;
         }
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        AppMethodBeat.o(191735);
+        AppMethodBeat.o(217532);
         return "/";
       }
       Object localObject2 = null;
     }
-    AppMethodBeat.o(191735);
+    AppMethodBeat.o(217532);
     return "/";
   }
   
-  public final FlutterView.b cWG()
+  public final FlutterView.b dfS()
   {
-    AppMethodBeat.i(191736);
-    if (cWB() == d.a.KKz)
+    AppMethodBeat.i(217533);
+    if (dfN() == d.a.MBn)
     {
-      localb = FlutterView.b.KLd;
-      AppMethodBeat.o(191736);
+      localb = FlutterView.b.MBU;
+      AppMethodBeat.o(217533);
       return localb;
     }
-    FlutterView.b localb = FlutterView.b.KLe;
-    AppMethodBeat.o(191736);
+    FlutterView.b localb = FlutterView.b.MBV;
+    AppMethodBeat.o(217533);
     return localb;
   }
   
-  public final FlutterView.c cWH()
+  public final FlutterView.c dfT()
   {
-    AppMethodBeat.i(191737);
-    if (cWB() == d.a.KKz)
+    AppMethodBeat.i(217534);
+    if (dfN() == d.a.MBn)
     {
-      localc = FlutterView.c.KLg;
-      AppMethodBeat.o(191737);
+      localc = FlutterView.c.MBX;
+      AppMethodBeat.o(217534);
       return localc;
     }
-    FlutterView.c localc = FlutterView.c.KLh;
-    AppMethodBeat.o(191737);
+    FlutterView.c localc = FlutterView.c.MBY;
+    AppMethodBeat.o(217534);
     return localc;
   }
   
-  public final io.flutter.embedding.engine.a cWI()
+  public final io.flutter.embedding.engine.a dfU()
   {
-    AppMethodBeat.i(191738);
-    io.flutter.embedding.engine.a locala = d.fHA().cDT;
-    AppMethodBeat.o(191738);
+    AppMethodBeat.i(217535);
+    io.flutter.embedding.engine.a locala = d.fYR().cOY;
+    AppMethodBeat.o(217535);
     return locala;
   }
   
-  public final String cWJ()
+  public final String dfV()
   {
-    AppMethodBeat.i(191739);
+    AppMethodBeat.i(217536);
     if (getIntent().hasExtra("name"))
     {
       String str = getIntent().getStringExtra("name");
-      AppMethodBeat.o(191739);
+      AppMethodBeat.o(217536);
       return str;
     }
-    AppMethodBeat.o(191739);
+    AppMethodBeat.o(217536);
     return "";
   }
   
-  public final Map cWK()
+  public final Map dfW()
   {
-    AppMethodBeat.i(191740);
+    AppMethodBeat.i(217537);
     if ((getIntent().hasExtra("params")) && ((getIntent().getSerializableExtra("params") instanceof com.tencent.wax.d.a)))
     {
       Map localMap = ((com.tencent.wax.d.a)getIntent().getSerializableExtra("params")).map;
-      AppMethodBeat.o(191740);
+      AppMethodBeat.o(217537);
       return localMap;
     }
-    AppMethodBeat.o(191740);
-    return null;
-  }
-  
-  public final g cWz()
-  {
-    AppMethodBeat.i(191717);
-    Object localObject = cWA();
-    if (localObject != null)
-    {
-      localObject = new DrawableSplashScreen((Drawable)localObject);
-      AppMethodBeat.o(191717);
-      return localObject;
-    }
-    AppMethodBeat.o(191717);
+    AppMethodBeat.o(217537);
     return null;
   }
   
@@ -295,26 +295,26 @@ public class WxaFlutterActivity
   
   public Lifecycle getLifecycle()
   {
-    return this.tWs;
+    return this.uZb;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(191726);
-    this.tWr.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(191726);
+    AppMethodBeat.i(217523);
+    this.uZa.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(217523);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(191728);
-    this.tWr.onBackPressed();
-    AppMethodBeat.o(191728);
+    AppMethodBeat.i(217525);
+    this.uZa.onBackPressed();
+    AppMethodBeat.o(217525);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(191716);
+    AppMethodBeat.i(217513);
     for (;;)
     {
       try
@@ -331,114 +331,114 @@ public class WxaFlutterActivity
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
         Object localObject;
-        io.flutter.a.fMH();
+        io.flutter.a.gee();
         continue;
       }
       super.onCreate(paramBundle);
-      this.tWs.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-      this.tWr = new a(this);
-      this.tWr.fHF();
+      this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      this.uZa = new a(this);
+      this.uZa.fYW();
       paramBundle = new LinearLayout(this);
       paramBundle.setOrientation(1);
       localObject = new Toolbar(this);
       ((Toolbar)localObject).setLayoutParams(new Toolbar.LayoutParams(-1));
-      ((Toolbar)localObject).mE();
+      ((Toolbar)localObject).mW();
       ((Toolbar)localObject).setVisibility(8);
-      this.axv = ((Toolbar)localObject);
-      if (this.axv != null)
+      this.azm = ((Toolbar)localObject);
+      if (this.azm != null)
       {
-        paramBundle.addView(this.axv);
-        setSupportActionBar(this.axv);
+        paramBundle.addView(this.azm);
+        setSupportActionBar(this.azm);
       }
-      paramBundle.addView(this.tWr.fHH(), new LinearLayout.LayoutParams(-1, -1));
+      paramBundle.addView(this.uZa.fYY(), new LinearLayout.LayoutParams(-1, -1));
       setContentView(paramBundle);
-      AppMethodBeat.o(191716);
+      AppMethodBeat.o(217513);
       return;
-      io.flutter.a.fMF();
+      io.flutter.a.gec();
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(191725);
+    AppMethodBeat.i(217522);
     super.onDestroy();
-    this.tWr.onDestroyView();
-    this.tWr.onDetach();
-    this.tWs.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
-    AppMethodBeat.o(191725);
+    this.uZa.onDestroyView();
+    this.uZa.onDetach();
+    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
+    AppMethodBeat.o(217522);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(191727);
+    AppMethodBeat.i(217524);
     super.onNewIntent(paramIntent);
-    this.tWr.onNewIntent(paramIntent);
-    AppMethodBeat.o(191727);
+    this.uZa.onNewIntent(paramIntent);
+    AppMethodBeat.o(217524);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(191723);
+    AppMethodBeat.i(217520);
     super.onPause();
-    this.tWr.onPause();
-    this.tWs.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
-    AppMethodBeat.o(191723);
+    this.uZa.onPause();
+    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+    AppMethodBeat.o(217520);
   }
   
   public void onPostResume()
   {
-    AppMethodBeat.i(191722);
+    AppMethodBeat.i(217519);
     super.onPostResume();
-    this.tWr.onPostResume();
-    AppMethodBeat.o(191722);
+    this.uZa.onPostResume();
+    AppMethodBeat.o(217519);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(191729);
-    this.tWr.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(191729);
+    AppMethodBeat.i(217526);
+    this.uZa.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(217526);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(191721);
+    AppMethodBeat.i(217518);
     super.onResume();
-    this.tWs.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-    this.tWr.onResume();
-    AppMethodBeat.o(191721);
+    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+    this.uZa.onResume();
+    AppMethodBeat.o(217518);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(191720);
+    AppMethodBeat.i(217517);
     super.onStart();
-    this.tWs.handleLifecycleEvent(Lifecycle.Event.ON_START);
-    this.tWr.onStart();
-    AppMethodBeat.o(191720);
+    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_START);
+    this.uZa.onStart();
+    AppMethodBeat.o(217517);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(191724);
+    AppMethodBeat.i(217521);
     super.onStop();
-    this.tWr.onStop();
-    this.tWs.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-    AppMethodBeat.o(191724);
+    this.uZa.onStop();
+    this.uZb.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+    AppMethodBeat.o(217521);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(191731);
-    this.tWr.onTrimMemory(paramInt);
-    AppMethodBeat.o(191731);
+    AppMethodBeat.i(217528);
+    this.uZa.onTrimMemory(paramInt);
+    AppMethodBeat.o(217528);
   }
   
   protected void onUserLeaveHint()
   {
-    AppMethodBeat.i(191730);
-    this.tWr.onUserLeaveHint();
-    AppMethodBeat.o(191730);
+    AppMethodBeat.i(217527);
+    this.uZa.onUserLeaveHint();
+    AppMethodBeat.o(217527);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

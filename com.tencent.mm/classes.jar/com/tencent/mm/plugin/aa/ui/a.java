@@ -7,31 +7,31 @@ import com.tencent.mm.pluginsdk.ui.span.o;
 public final class a
   extends o
 {
-  private a iBr;
+  private a iUB;
   
   public a(a parama)
   {
     super(2, null);
-    this.iBr = parama;
+    this.iUB = parama;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(63470);
-    if (this.iBr != null) {
-      this.iBr.aOb();
+    if (this.iUB != null) {
+      this.iUB.aRn();
     }
     AppMethodBeat.o(63470);
   }
   
   public static abstract interface a
   {
-    public abstract void aOb();
+    public abstract void aRn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
 import android.content.Intent;
 import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class bo
-  extends a<h>
+  extends a<c>
 {
-  public static final int CTRL_INDEX = 619;
-  public static final String NAME = "openWCPayLQTDepositPlanAdd";
-  final int jZb;
-  
-  public bo()
-  {
-    AppMethodBeat.i(174763);
-    this.jZb = com.tencent.luggage.sdk.g.a.aA(this);
-    AppMethodBeat.o(174763);
-  }
+  public static final int CTRL_INDEX = 192;
+  public static final String NAME = "openSetting";
 }
 
 

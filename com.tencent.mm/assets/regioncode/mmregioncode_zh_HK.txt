@@ -1,3 +1,534 @@
+CN|中國大陸
+CN_Anhui|安徽
+CN_Anhui_Anqing|安慶
+CN_Anhui_Bengbu|蚌埠
+CN_Anhui_Bozhou|亳州
+CN_Anhui_Chaohu|巢湖
+CN_Anhui_Chizhou|池州
+CN_Anhui_Chuzhou|滁州
+CN_Anhui_Fuyang|阜陽
+CN_Anhui_Hefei|合肥
+CN_Anhui_Huaibei|淮北
+CN_Anhui_Huainan|淮南
+CN_Anhui_Huangshan|黃山
+CN_Anhui_Luan|六安
+CN_Anhui_MOS|馬鞍山
+CN_Anhui_Suzhou|宿州
+CN_Anhui_Tongling|銅陵
+CN_Anhui_Wuhu|蕪湖
+CN_Anhui_Xuancheng|宣城
+CN_Beijing|北京
+CN_Beijing_Changping|昌平
+CN_Beijing_Chaoyang|朝陽
+CN_Beijing_Daxing|大興
+CN_Beijing_East|東城
+CN_Beijing_Fangshan|房山
+CN_Beijing_Fengtai|豐台
+CN_Beijing_Haidian|海淀
+CN_Beijing_Huairou|懷柔
+CN_Beijing_Mentougou|門頭溝
+CN_Beijing_Miyun|密雲
+CN_Beijing_Pinggu|平谷
+CN_Beijing_Shijingshan|石景山
+CN_Beijing_Shunyi|順義
+CN_Beijing_Tongzhou|通州
+CN_Beijing_West|西城
+CN_Beijing_Yanqing|延慶
+CN_Chongqing|重慶
+CN_Chongqing_Banan|巴南
+CN_Chongqing_Beibei|北碚
+CN_Chongqing_Bishan|璧山
+CN_Chongqing_longevity|長壽
+CN_Chongqing_Chengkou|城口
+CN_Chongqing_Dadukou|大渡口
+CN_Chongqing_Dazu|大足
+CN_Chongqing_Dianjiang|墊江
+CN_Chongqing_Fengdu|豐都
+CN_Chongqing_Fengjie|奉節
+CN_Chongqing_Fuling|涪陵
+CN_Chongqing_Aikawa|合川
+CN_Chongqing_Jiangbei|江北
+CN_Chongqing_Jiangjin|江津
+CN_Chongqing_Jiulongpo|九龍坡
+CN_Chongqing_Kaixian|開縣
+CN_Chongqing_Two Rivers|兩江新區
+CN_Chongqing_Liangping|梁平
+CN_Chongqing_South Bank|南岸
+CN_Chongqing_Nanchuan|南川
+CN_Chongqing_Pengshui|彭水
+CN_Chongqing_Qijiang|綦江
+CN_Chongqing_Qianjiang|黔江
+CN_Chongqing_Rongchang|榮昌
+CN_Chongqing_Shapingba|沙坪壩
+CN_Chongqing_columns|石柱
+CN_Chongqing_Shuangqiao|雙橋
+CN_Chongqing_Tongliang|銅梁
+CN_Chongqing_Tongnan|潼南
+CN_Chongqing_Pine Valley|萬盛
+CN_Chongqing_Wanzhou|萬州
+CN_Chongqing_Wulong|武隆
+CN_Chongqing_Wushan|巫山
+CN_Chongqing_Wuxi|巫溪
+CN_Chongqing_Xiushan|秀山
+CN_Chongqing_Yongchuan|永川
+CN_Chongqing_Youyang|酉陽
+CN_Chongqing_Yubei|渝北
+CN_Chongqing_Yuzhong|渝中
+CN_Chongqing_Yunyang|雲陽
+CN_Chongqing_Zhongxian|忠縣
+CN_Fujian|福建
+CN_Fujian_Fuzhou|福州
+CN_Fujian_Longyan|龍岩
+CN_Fujian_Nanping|南平
+CN_Fujian_Ningde|寧德
+CN_Fujian_Putian|莆田
+CN_Fujian_Quanzhou|泉州
+CN_Fujian_Sanming|三明
+CN_Fujian_Xiamen|廈門
+CN_Fujian_Zhangzhou|漳州
+CN_Gansu|甘肅
+CN_Gansu_Silver|白銀
+CN_Gansu_Dingxi|定西
+CN_Gansu_Gannan|甘南
+CN_Gansu_Jiayuguan|嘉峪關
+CN_Gansu_Jinchang|金昌
+CN_Gansu_Jiuquan|酒泉
+CN_Gansu_Lanzhou|蘭州市
+CN_Gansu_Linxia|臨夏
+CN_Gansu_Longnan|隴南
+CN_Gansu_Pingliang|平涼
+CN_Gansu_Qingyang|慶陽
+CN_Gansu_Tin Shui|天水
+CN_Gansu_Wuwei|武威
+CN_Gansu_Zhangye|張掖
+CN_Guangdong|廣東
+CN_Guangdong_Chaozhou|潮州
+CN_Guangdong_Dongguan|東莞
+CN_Guangdong_Foshan|佛山
+CN_Guangdong_Guangzhou|廣州
+CN_Guangdong_Heyuan|河源
+CN_Guangdong_Huizhou|惠州
+CN_Guangdong_Jiangmen|江門
+CN_Guangdong_Jieyang|揭陽
+CN_Guangdong_Maoming|茂名
+CN_Guangdong_Meizhou|梅州
+CN_Guangdong_Qingyuan|清遠
+CN_Guangdong_Shantou|汕頭
+CN_Guangdong_Shanwei|汕尾
+CN_Guangdong_Shaoguan|韶關
+CN_Guangdong_Shenzhen|深圳
+CN_Guangdong_Yangjiang|陽江
+CN_Guangdong_Yunfu|雲浮
+CN_Guangdong_Zhanjiang|湛江
+CN_Guangdong_Zhaoqing|肇慶
+CN_Guangdong_Zhongshan|中山
+CN_Guangdong_Zhuhai|珠海
+CN_Guangxi|廣西
+CN_Guangxi_Baise|百色
+CN_Guangxi_Beihai|北海
+CN_Guangxi_Chongzuo|崇左
+CN_Guangxi_Fangchenggang|防城港
+CN_Guangxi_Guigang|貴港
+CN_Guangxi_Guilin|桂林
+CN_Guangxi_Hechi|河池
+CN_Guangxi_Hezhou|賀州
+CN_Guangxi_guests|來賓
+CN_Guangxi_Liuzhou|柳州
+CN_Guangxi_Nanning|南寧
+CN_Guangxi_Chow|欽州
+CN_Guangxi_Wuzhou|梧州
+CN_Guangxi_Yulin|玉林
+CN_Guizhou|貴州
+CN_Guizhou_Anshun|安順
+CN_Guizhou_Bijie|畢節
+CN_Guizhou_Guiyang|貴陽
+CN_Guizhou_Liupanshui|六盤水
+CN_Guizhou_Southeast|黔東南
+CN_Guizhou_South Guizhou|黔南
+CN_Guizhou_Southwest Guizhou|黔西南
+CN_Guizhou_Tongren|銅仁
+CN_Guizhou_Lawrence|遵義
+CN_Hainan|海南
+CN_Hainan_White Sands|白沙
+CN_Hainan_Baoting|保亭
+CN_Hainan_Changjiang|昌江
+CN_Hainan_Chengmai|澄邁
+CN_Hainan_Danzhou|儋州
+CN_Hainan_Honour|定安
+CN_Hainan_East|東方
+CN_Hainan_Haikou|海口
+CN_Hainan_Music East|樂東
+CN_Hainan_Pro High|臨高
+CN_Hainan_Lingshui|陵水
+CN_Hainan_Qionghai|瓊海
+CN_Hainan_Qiongzhong|瓊中
+CN_Hainan_Sansha|三沙
+CN_Hainan_Sanya|三亞
+CN_Hainan_Tunchang|屯昌
+CN_Hainan_Manning|萬寧
+CN_Hainan_Wenchang|文昌
+CN_Hainan_Fingers|五指山
+CN_Hebei|河北
+CN_Hebei_Baoding|保定
+CN_Hebei_Cangzhou|滄州
+CN_Hebei_Chengde|承德
+CN_Hebei_Handan|邯鄲
+CN_Hebei_Hengshui|衡水
+CN_Hebei_Langfang|廊坊
+CN_Hebei_Qinhuangdao|秦皇島
+CN_Hebei_Shijiazhuang|石家莊
+CN_Hebei_Tangshan|唐山
+CN_Hebei_Xingtai|邢台
+CN_Hebei_Zhangjiakou|張家口
+CN_Henan|河南
+CN_Henan_Anyang|安陽
+CN_Henan_Hebi|鶴壁
+CN_Henan_Jiyuan|濟源
+CN_Henan_Jiaozuo|焦作
+CN_Henan_Kaifeng|開封
+CN_Henan_Luoyang|洛陽
+CN_Henan_Nanyang|南陽
+CN_Henan_mesa|平頂山
+CN_Henan_Puyang|濮陽
+CN_Henan_Sanmenxia|三門峽
+CN_Henan_Shangqiu|商丘
+CN_Henan_Luohe|漯河
+CN_Henan_Xinxiang|新鄉
+CN_Henan_Xinyang|信陽
+CN_Henan_Xuchang|許昌
+CN_Henan_Zhengzhou|鄭州
+CN_Henan_Zhoukou|周口
+CN_Henan_Zhumadian|駐馬店
+CN_Heilongjiang|黑龍江
+CN_Heilongjiang_Daqing|大慶
+CN_Heilongjiang_Mountains|大興安嶺
+CN_Heilongjiang_Harbin|哈爾濱
+CN_Heilongjiang_Hegang|鶴崗
+CN_Heilongjiang_Heihe|黑河
+CN_Heilongjiang_Jixi|雞西
+CN_Heilongjiang_Jiamusi|佳木斯
+CN_Heilongjiang_Mudanjiang|牡丹江
+CN_Heilongjiang_Qiqihar|齊齊哈爾
+CN_Heilongjiang_Qitaihe|七台河
+CN_Heilongjiang_Shuangyashan|雙鴨山
+CN_Heilongjiang_Suihua|綏化
+CN_Heilongjiang_Yichun|伊春
+CN_Hubei|湖北
+CN_Hubei_Ezhou|鄂州
+CN_Hubei_Enshi|恩施
+CN_Hubei_Huanggang|黃岡
+CN_Hubei_Yellowstone|黃石
+CN_Hubei_Jingmen|荊門
+CN_Hubei_Jingzhou|荊州
+CN_Hubei_Qianjiang|潛江
+CN_Hubei_Shennongjia|神農架
+CN_Hubei_Shiyan|十堰
+CN_Hubei_Suizhou|隨州
+CN_Hubei_Tianmen|天門
+CN_Hubei_Wuhan|武漢
+CN_Hubei_Xianning|咸寧
+CN_Hubei_Bristol|仙桃
+CN_Hubei_Yangyang|襄陽
+CN_Hubei_Xiaogan|孝感
+CN_Hubei_Yichang|宜昌
+CN_Hunan|湖南
+CN_Hunan_Changde|常德
+CN_Hunan_Changsha|長沙
+CN_Hunan_Chenzhou|郴州
+CN_Hunan_Hengyang|衡陽
+CN_Hunan_Huaihua|懷化
+CN_Hunan_Loudi|婁底
+CN_Hunan_Shaoyang|邵陽
+CN_Hunan_Xiangtan|湘潭
+CN_Hunan_Xiangxi|湘西
+CN_Hunan_Yiyang|益陽
+CN_Hunan_Yongzhou|永州
+CN_Hunan_Yueyang|岳陽
+CN_Hunan_Zhangjiajie|張家界
+CN_Hunan_Zhuzhou|株洲
+CN_Jilin|吉林
+CN_Jilin_White City|白城
+CN_Jilin_White Mountains|白山
+CN_Jilin_Changchun|長春
+CN_Jilin_Jilin|吉林
+CN_Jilin_Liaoyuan|遼源
+CN_Jilin_Siping|四平
+CN_Jilin_Matsubara|松原
+CN_Jilin_Tonghua|通化
+CN_Jilin_Yanbian|延邊
+CN_Jiangsu|江蘇
+CN_Jiangsu_Changzhou|常州
+CN_Jiangsu_Huai|淮安
+CN_Jiangsu_Lianyungang|連雲港
+CN_Jiangsu_Nanjing|南京
+CN_Jiangsu_Nantong|南通
+CN_Jiangsu_Suqian|宿遷
+CN_Jiangsu_Suzhou|蘇州
+CN_Jiangsu_Taizhou|泰州
+CN_Jiangsu_Wuxi|無錫
+CN_Jiangsu_Xuzhou|徐州
+CN_Jiangsu_Yancheng|鹽城
+CN_Jiangsu_Yangzhou|揚州
+CN_Jiangsu_Zhenjiang|鎮江
+CN_Jiangxi|江西
+CN_Jiangxi_Fuzhou|撫州
+CN_Jiangxi_Ganzhou|贛州
+CN_Jiangxi_Jian|吉安
+CN_Jiangxi_Jingdezhen|景德鎮
+CN_Jiangxi_Jiujiang|九江
+CN_Jiangxi_Nanchang|南昌
+CN_Jiangxi_Pingxiang|萍鄉
+CN_Jiangxi_Shangrao|上饒
+CN_Jiangxi_Xinyu|新余
+CN_Jiangxi_Yichun|宜春
+CN_Jiangxi_Yingtan|鷹潭
+CN_Liaoning|遼寧
+CN_Liaoning_Anshan|鞍山
+CN_Liaoning_Benxi|本溪
+CN_Liaoning_Chaoyang|朝陽
+CN_Liaoning_Dalian|大連
+CN_Liaoning_Dandong|丹東
+CN_Liaoning_Fushun|撫順
+CN_Liaoning_Fuxin|阜新
+CN_Liaoning_Huludao|葫蘆島
+CN_Liaoning_Jinzhou|錦州
+CN_Liaoning_Liaoyang|遼陽
+CN_Liaoning_Panjin|盤錦
+CN_Liaoning_Shenyang|瀋陽
+CN_Liaoning_Tieling|鐵嶺
+CN_Liaoning_Yingkou|營口
+CN_Inner Mongolia|內蒙古
+CN_Inner Mongolia_Alxa|阿拉善
+CN_Inner Mongolia_Bayannur|巴彥淖爾
+CN_Inner Mongolia_Baotou|包頭
+CN_Inner Mongolia_Chifeng|赤峰
+CN_Inner Mongolia_Erdos|鄂爾多斯
+CN_Inner Mongolia_Hohhot|呼和浩特
+CN_Inner Mongolia_Hulunbeier|呼倫貝爾
+CN_Inner Mongolia_Tongliao|通遼
+CN_Inner Mongolia_Wuhai|烏海
+CN_Inner Mongolia_Bu|烏蘭察布
+CN_Inner Mongolia_Gol|錫林郭勒
+CN_Inner Mongolia_Xing|興安
+CN_Ningxia|寧夏
+CN_Ningxia_Guyuan|固原
+CN_Ningxia_Shizuishan|石嘴山
+CN_Ningxia_Wuzhong|吳忠
+CN_Ningxia_Yinchuan|銀川
+CN_Ningxia_Zhongwei|中衛
+CN_Qinghai|青海
+CN_Qinghai_Guoluo|果洛
+CN_Qinghai_rambling|海北
+CN_Qinghai_Haidong|海東
+CN_Qinghai_Hainan|海南
+CN_Qinghai_Hercynian|海西
+CN_Qinghai_Huangnan|黃南
+CN_Qinghai_Xining|西寧
+CN_Qinghai_Yushu|玉樹
+CN_Shaanxi|陝西
+CN_Shaanxi_Ankang|安康
+CN_Shaanxi_Baoji|寶雞
+CN_Shaanxi_Hanzhong|漢中
+CN_Shaanxi_Shangluo|商洛
+CN_Shaanxi_Tongchuan|銅川
+CN_Shaanxi_Weinan|渭南
+CN_Shaanxi_Xi'an|西安
+CN_Shaanxi_Xianyang|咸陽
+CN_Shaanxi_Yanan|延安
+CN_Shaanxi_Yulin|榆林
+CN_Shandong|山東
+CN_Shandong_Binzhou|濱州
+CN_Shandong_Texas|德州
+CN_Shandong_Dongying|東營
+CN_Shandong_Heze|菏澤
+CN_Shandong_Jinan|濟南
+CN_Shandong_Jining|濟寧
+CN_Shandong_Laiwu|萊蕪
+CN_Shandong_Liaocheng|聊城
+CN_Shandong_Linyi|臨沂
+CN_Shandong_Qingdao|青島
+CN_Shandong_Rizhao|日照
+CN_Shandong_Taian|泰安
+CN_Shandong_Weifang|濰坊
+CN_Shandong_Weihai|威海
+CN_Shandong_Yantai|煙台
+CN_Shandong_Zaozhuang|棗莊
+CN_Shandong_Zibo|淄博
+CN_Shanxi|山西
+CN_Shanxi_Changzhi|長治
+CN_Shanxi_Datong|大同
+CN_Shanxi_Jincheng|晉城
+CN_Shanxi_Jinzhong|晉中
+CN_Shanxi_Linfen|臨汾
+CN_Shanxi_Luliang|呂梁
+CN_Shanxi_Shuozhou|朔州
+CN_Shanxi_Taiyuan|太原
+CN_Shanxi_Xinzhou|忻州
+CN_Shanxi_Yangquan|陽泉
+CN_Shanxi_Yuncheng|運城
+CN_Shanghai|上海
+CN_Shanghai_Baoshan|寶山
+CN_Shanghai_Changning|長寧
+CN_Shanghai_Chongming|崇明
+CN_Shanghai_Fengxian|奉賢
+CN_Shanghai_Hongkou|虹口
+CN_Shanghai_Huangpu|黃浦
+CN_Shanghai_Jiading|嘉定
+CN_Shanghai_Jinshan|金山
+CN_Shanghai_Jing|靜安
+CN_Shanghai_Luwan|盧灣
+CN_Shanghai_Minhang|閔行
+CN_Shanghai_Pudong New District|浦東新區
+CN_Shanghai_Po|普陀
+CN_Shanghai_Qingpu|青浦
+CN_Shanghai_Songjiang|松江
+CN_Shanghai_Xuhui|徐匯
+CN_Shanghai_Yangpu|楊浦
+CN_Sichuan|四川
+CN_Sichuan_Aba|阿壩
+CN_Sichuan_Pakistan|巴中
+CN_Sichuan_Chengdu|成都
+CN_Sichuan_Florida|達州
+CN_Sichuan_Deyang|德陽
+CN_Sichuan_Ganzi|甘孜
+CN_Sichuan_Kwong|廣安
+CN_Sichuan_Guangyuan|廣元
+CN_Sichuan_Leshan|樂山
+CN_Sichuan_Liangshan|涼山
+CN_Sichuan_Luzhou|瀘州
+CN_Sichuan_Meishan|眉山
+CN_Sichuan_Mianyang|綿陽
+CN_Sichuan_Nanchong|南充
+CN_Sichuan_Neijiang|內江
+CN_Sichuan_Panzhihua|攀枝花
+CN_Sichuan_Suining|遂寧
+CN_Sichuan_Yaan|雅安
+CN_Sichuan_Yibin|宜賓
+CN_Sichuan_Zigong|自貢
+CN_Sichuan_Ziyang|資陽
+CN_Tianjin|天津
+CN_Tianjin_Baodi|寶坻
+CN_Tianjin_North Star|北辰
+CN_Tianjin_Binhai New Area|濱海新區
+CN_Tianjin_Toray|東麗
+CN_Tianjin_Hebei|河北
+CN_Tianjin_east|河東
+CN_Tianjin_Peace|和平
+CN_Tianjin_west|河西
+CN_Tianjin_Red Bridge|紅橋
+CN_Tianjin_Jixian|薊州
+CN_Tianjin_Jinnan|津南
+CN_Tianjin_Jinghai|靜海
+CN_Tianjin_Nankai|南開
+CN_Tianjin_Ninghe|寧河
+CN_Tianjin_Wuqing|武清
+CN_Tianjin_West Green|西青
+CN_Tibet|西藏
+CN_Tibet_Ali|阿里
+CN_Tibet_Qamdo|昌都
+CN_Tibet_Lhasa|拉薩
+CN_Tibet_Nyingchi|林芝
+CN_Tibet_Nagqu|那曲
+CN_Tibet_Shigatse|日喀則
+CN_Tibet_Shannan|山南
+CN_Xinjiang|新疆
+CN_Xinjiang_Aksu|阿克蘇
+CN_Xinjiang_Arar|阿拉爾
+CN_Xinjiang_Altay|阿勒泰
+CN_Xinjiang_Bayingolin|巴音郭楞
+CN_Xinjiang_Bortala|博爾塔拉
+CN_Xinjiang_Changji|昌吉
+CN_Xinjiang_Hamilton|哈密
+CN_Xinjiang_Hotan|和田
+CN_Xinjiang_Kashgar|喀什
+CN_Xinjiang_Karamay|克拉瑪依
+CN_Xinjiang_Kizilsu|克孜勒蘇
+CN_Xinjiang_Shihezi|石河子
+CN_Xinjiang_Tacheng|塔城
+CN_Xinjiang_Turpan|吐魯番
+CN_Xinjiang_Figure wooden Shook|圖木舒克
+CN_Xinjiang_Wujiaqu|五家渠
+CN_Xinjiang_Urumqi|烏魯木齊
+CN_Xinjiang_Ili|伊犁
+CN_Yunnan|雲南
+CN_Yunnan_Baoshan|保山
+CN_Yunnan_Chuxiong|楚雄
+CN_Yunnan_Dali|大理
+CN_Yunnan_Devon|德宏
+CN_Yunnan_Diqing|迪慶
+CN_Yunnan_Red|紅河
+CN_Yunnan_Kunming|昆明
+CN_Yunnan_Lijiang|麗江
+CN_Yunnan_Lincang|臨滄
+CN_Yunnan_Nu|怒江
+CN_Yunnan_Pu'er|普洱
+CN_Yunnan_Qujing|曲靖
+CN_Yunnan_Wenshan|文山
+CN_Yunnan_Xishuangbanna|西雙版納
+CN_Yunnan_Yuxi|玉溪
+CN_Yunnan_Zhaotong|昭通
+CN_Zhejiang|浙江
+CN_Zhejiang_Hangzhou|杭州
+CN_Zhejiang_Huzhou|湖州
+CN_Zhejiang_Jiaxing|嘉興
+CN_Zhejiang_Jinhua|金華
+CN_Zhejiang_Lishui|麗水
+CN_Zhejiang_Ningbo|寧波
+CN_Zhejiang_Quzhou|衢州
+CN_Zhejiang_Shaoxing|紹興
+CN_Zhejiang_Taizhou|台州
+CN_Zhejiang_Wenzhou|溫州
+CN_Zhejiang_Zhoushan|舟山
+HK|中國香港
+HK_North|北區
+HK_Tai Po|大埔區
+HK_Eastern|東區
+HK_Kwun Tong|觀塘區
+HK_Wong Tai Sin|黃大仙區
+HK_Kowloon City|九龍城區
+HK_Kwai Tsing|葵青區
+HK_Islands|離島區
+HK_Southern|南區
+HK_Tsuen Wan|荃灣區
+HK_Sha Tin|沙田區
+HK_Sham Shui Po|深水埗區
+HK_Tuen Mun|屯門區
+HK_Wan Chai|灣仔區
+HK_Sai Kung|西貢區
+HK_Yau Tsim Mong|油尖旺區
+HK_Yuen Long|元朗區
+HK_Central and Western|中西區
+MO|中國澳門
+MO_Cathedral|大堂區
+MO_Taipa|氹仔
+MO_St. Lawrence|風順堂區
+MO_Fatima|花地瑪堂區
+MO_Coloane|路環島
+MO_St. Anthony|聖安多尼堂區
+MO_St. Lazarus|望德堂區
+TW|中國臺灣
+TW_Kaohsiung City|高雄市
+TW_Hualien County|花蓮縣
+TW_Keelung City|基隆市
+TW_Chiayi City|嘉義市
+TW_Chiayi County|嘉義縣
+TW_Kinmen County|金門縣
+TW_Lianjiang County|連江縣
+TW_Miaoli County|苗栗縣
+TW_Nantou County|南投縣
+TW_Penghu County|澎湖縣
+TW_Pingtung County|屏東縣
+TW_Taipei|臺北市
+TW_Taitung County|臺東縣
+TW_Tainan City|臺南市
+TW_Taichung City|臺中市
+TW_Taoyuan County|桃園市
+TW_New Taipei City|新北市
+TW_Hsinchu City|新竹市
+TW_Hsinchu County|新竹縣
+TW_Yilan County|宜蘭縣
+TW_Yunlin County|雲林縣
+TW_Changhua County|彰化縣
 AL|阿爾巴尼亞
 DZ|阿爾及利亞
 AF|阿富汗
@@ -97,7 +628,7 @@ AO_Huambo|萬博
 AO_Huila|威拉
 AO_Uige|威熱
 AO_Zaire|薩伊
-AI|安哥拉
+AI|安圭拉
 AG|安提瓜及巴布達
 AU|澳洲
 AU_Australian Capital Territory|澳洲首都領地
@@ -2764,7 +3295,7 @@ SB|所羅門群島
 SO|索馬里
 TJ|塔吉克
 TH|泰國
-TH_Amnat Charoen|安納乍能
+TH_Amnat Charoen|安納乍倫
 TH_Prachuap Khiri Khan|巴蜀
 TH_Pathum Thani|巴吞他尼
 TH_Prachin Buri|巴真
@@ -2773,11 +3304,11 @@ TH_Saraburi|北標
 TH_Pattani|北大年
 TH_Samut Prakan|北攬
 TH_Nakhon Sawan|北欖坡
-TH_Chachoengsao|北柳
+TH_Chachoengsao|差春騷
 TH_Phetchabun|碧差汶
-TH_Phatthalung|博達倫
-TH_Chai Nat|猜那
-TH_Chaiyaphum|猜也奔
+TH_Phatthalung|博他侖
+TH_Chai Nat|猜納
+TH_Chaiyaphum|猜也蓬
 TH_Uttaradit|程逸
 TH_Chumphon|春蓬
 TH_Chon Buri|春武里
@@ -2788,13 +3319,14 @@ TH_Trang|董里
 TH_Phetchaburi|佛丕
 TH_Nakhon Pathom|佛統
 TH_Kamphaeng Phet|甘烹碧
+TH_Nakhon Ratchasima|呵叻
 TH_Ang Thong|紅統
 TH_Lop Buri|華富里
 TH_Kalasin|加拉信
 TH_Krabi|甲米
 TH_Chanthaburi|尖竹汶
 TH_Khon Kaen|孔敬
-TH_Rayong|拉農
+TH_Ranong|拉廊
 TH_Nong Khai|廊開
 TH_Nong Bua Lamphu|廊莫那浦
 TH_Ratchaburi|叻丕
@@ -2802,13 +3334,14 @@ TH_Loei|黎
 TH_Roi Et|黎逸
 TH_Samut Sakhon|龍仔厝
 TH_Nakhon Si Thammarat|洛坤
-TH_Ranong|羅勇
+TH_Rayong|羅勇
 TH_Maha Sarakham|瑪哈沙拉堪
 TH_Bangkok|曼谷
-TH_Mukdahan|莫達漢
+TH_Mukdahan|穆達漢
 TH_Nakhon Nayok|那空那育
 TH_Nakhon Phanom|那空帕農
 TH_Nan|難
+TH_Lampang|南邦
 TH_Lamphun|南奔
 TH_Nonthaburi|暖武里
 TH_Phrae|帕
@@ -2825,10 +3358,11 @@ TH_Sa Kaeo|沙繳
 TH_Si sa ket|四色菊
 TH_Songkhla|宋卡
 TH_Sukhothai|素可泰
-TH_Surat Thani|素叻
+TH_Surat Thani|素叻他尼
 TH_Surin|素林
 TH_Suphan Buri|素攀武里
 TH_Narathiwat|陶公
+TH_Bueng Kan|汶干
 TH_Buri Ram|武里南
 TH_Udon Thani|烏隆
 TH_Uthai Thani|烏泰他尼
@@ -2837,7 +3371,7 @@ TH_Sing Buri|信武里
 TH_Mae Hong Son|夜豐頌
 TH_Samut Songkhram|夜功
 TH_Yala|也拉
-TH_Yasothon|耶梭通
+TH_Yasothon|益梭通
 TZ|坦桑尼亞
 TO|湯加
 TC|特克斯和凱科斯群島
@@ -3388,535 +3922,3 @@ TD|乍得
 GI|直布羅陀
 CL|智利
 CF|中非共和國
-CN|中國大陸
-CN_Anhui|安徽
-CN_Anhui_Anqing|安慶
-CN_Anhui_Bengbu|蚌埠
-CN_Anhui_Bozhou|亳州
-CN_Anhui_Chaohu|巢湖
-CN_Anhui_Chizhou|池州
-CN_Anhui_Chuzhou|滁州
-CN_Anhui_Fuyang|阜陽
-CN_Anhui_Hefei|合肥
-CN_Anhui_Huaibei|淮北
-CN_Anhui_Huainan|淮南
-CN_Anhui_Huangshan|黃山
-CN_Anhui_Luan|六安
-CN_Anhui_MOS|馬鞍山
-CN_Anhui_Suzhou|宿州
-CN_Anhui_Tongling|銅陵
-CN_Anhui_Wuhu|蕪湖
-CN_Anhui_Xuancheng|宣城
-CN_Beijing|北京
-CN_Beijing_Changping|昌平
-CN_Beijing_Chaoyang|朝陽
-CN_Beijing_Daxing|大興
-CN_Beijing_East|東城
-CN_Beijing_Fangshan|房山
-CN_Beijing_Fengtai|豐台
-CN_Beijing_Haidian|海澱
-CN_Beijing_Huairou|懷柔
-CN_Beijing_Mentougou|門頭溝
-CN_Beijing_Miyun|密雲
-CN_Beijing_Pinggu|平谷
-CN_Beijing_Shijingshan|石景山
-CN_Beijing_Shunyi|順義
-CN_Beijing_Tongzhou|通州
-CN_Beijing_West|西城
-CN_Beijing_Yanqing|延慶
-CN_Chongqing|重慶
-CN_Chongqing_Banan|巴南
-CN_Chongqing_Beibei|北碚
-CN_Chongqing_Bishan|璧山
-CN_Chongqing_longevity|長壽
-CN_Chongqing_Chengkou|城口
-CN_Chongqing_Dadukou|大渡口
-CN_Chongqing_Dazu|大足
-CN_Chongqing_Dianjiang|墊江
-CN_Chongqing_Fengdu|豐都
-CN_Chongqing_Fengjie|奉節
-CN_Chongqing_Fuling|涪陵
-CN_Chongqing_Aikawa|合川
-CN_Chongqing_Jiangbei|江北
-CN_Chongqing_Jiangjin|江津
-CN_Chongqing_Jiulongpo|九龍坡
-CN_Chongqing_Kaixian|開縣
-CN_Chongqing_Two Rivers|兩江新區
-CN_Chongqing_Liangping|梁平
-CN_Chongqing_South Bank|南岸
-CN_Chongqing_Nanchuan|南川
-CN_Chongqing_Pengshui|彭水
-CN_Chongqing_Qijiang|綦江
-CN_Chongqing_Qianjiang|黔江
-CN_Chongqing_Rongchang|榮昌
-CN_Chongqing_Shapingba|沙坪壩
-CN_Chongqing_columns|石柱
-CN_Chongqing_Shuangqiao|雙橋
-CN_Chongqing_Tongliang|銅梁
-CN_Chongqing_Tongnan|潼南
-CN_Chongqing_Pine Valley|萬盛
-CN_Chongqing_Wanzhou|萬州
-CN_Chongqing_Wulong|武隆
-CN_Chongqing_Wushan|巫山
-CN_Chongqing_Wuxi|巫溪
-CN_Chongqing_Xiushan|秀山
-CN_Chongqing_Yongchuan|永川
-CN_Chongqing_Youyang|酉陽
-CN_Chongqing_Yubei|渝北
-CN_Chongqing_Yuzhong|渝中
-CN_Chongqing_Yunyang|雲陽
-CN_Chongqing_Zhongxian|忠縣
-CN_Fujian|福建
-CN_Fujian_Fuzhou|福州
-CN_Fujian_Longyan|龍岩
-CN_Fujian_Nanping|南平
-CN_Fujian_Ningde|寧德
-CN_Fujian_Putian|莆田
-CN_Fujian_Quanzhou|泉州
-CN_Fujian_Sanming|三明
-CN_Fujian_Xiamen|廈門
-CN_Fujian_Zhangzhou|漳州
-CN_Gansu|甘肅
-CN_Gansu_Silver|白銀
-CN_Gansu_Dingxi|定西
-CN_Gansu_Gannan|甘南
-CN_Gansu_Jiayuguan|嘉峪關
-CN_Gansu_Jinchang|金昌
-CN_Gansu_Jiuquan|酒泉
-CN_Gansu_Lanzhou|蘭州市
-CN_Gansu_Linxia|臨夏
-CN_Gansu_Longnan|隴南
-CN_Gansu_Pingliang|平涼
-CN_Gansu_Qingyang|慶陽
-CN_Gansu_Tin Shui|天水
-CN_Gansu_Wuwei|武威
-CN_Gansu_Zhangye|張掖
-CN_Guangdong|廣東
-CN_Guangdong_Chaozhou|潮州
-CN_Guangdong_Dongguan|東莞
-CN_Guangdong_Foshan|佛山
-CN_Guangdong_Guangzhou|廣州
-CN_Guangdong_Heyuan|河源
-CN_Guangdong_Huizhou|惠州
-CN_Guangdong_Jiangmen|江門
-CN_Guangdong_Jieyang|揭陽
-CN_Guangdong_Maoming|茂名
-CN_Guangdong_Meizhou|梅州
-CN_Guangdong_Qingyuan|清遠
-CN_Guangdong_Shantou|汕頭
-CN_Guangdong_Shanwei|汕尾
-CN_Guangdong_Shaoguan|韶關
-CN_Guangdong_Shenzhen|深圳
-CN_Guangdong_Yangjiang|陽江
-CN_Guangdong_Yunfu|雲浮
-CN_Guangdong_Zhanjiang|湛江
-CN_Guangdong_Zhaoqing|肇慶
-CN_Guangdong_Zhongshan|中山
-CN_Guangdong_Zhuhai|珠海
-CN_Guangxi|廣西
-CN_Guangxi_Baise|百色
-CN_Guangxi_Beihai|北海
-CN_Guangxi_Chongzuo|崇左
-CN_Guangxi_Fangchenggang|防城港
-CN_Guangxi_Guigang|貴港
-CN_Guangxi_Guilin|桂林
-CN_Guangxi_Hechi|河池
-CN_Guangxi_Hezhou|賀州
-CN_Guangxi_guests|來賓
-CN_Guangxi_Liuzhou|柳州
-CN_Guangxi_Nanning|南寧
-CN_Guangxi_Chow|欽州
-CN_Guangxi_Wuzhou|梧州
-CN_Guangxi_Yulin|玉林
-CN_Guizhou|貴州
-CN_Guizhou_Anshun|安順
-CN_Guizhou_Bijie|畢節
-CN_Guizhou_Guiyang|貴陽
-CN_Guizhou_Liupanshui|六盤水
-CN_Guizhou_Southeast|黔東南
-CN_Guizhou_South Guizhou|黔南
-CN_Guizhou_Southwest Guizhou|黔西南
-CN_Guizhou_Tongren|銅仁
-CN_Guizhou_Lawrence|遵義
-CN_Hainan|海南
-CN_Hainan_White Sands|白沙
-CN_Hainan_Baoting|保亭
-CN_Hainan_Changjiang|昌江
-CN_Hainan_Chengmai|澄邁
-CN_Hainan_Danzhou|儋州
-CN_Hainan_Honour|定安
-CN_Hainan_East|東方
-CN_Hainan_Haikou|海口
-CN_Hainan_Music East|樂東
-CN_Hainan_Pro High|臨高
-CN_Hainan_Lingshui|陵水
-CN_Hainan_Qionghai|瓊海
-CN_Hainan_Qiongzhong|瓊中
-CN_Hainan_Sansha|三沙
-CN_Hainan_Sanya|三亞
-CN_Hainan_Tunchang|屯昌
-CN_Hainan_Manning|萬寧
-CN_Hainan_Wenchang|文昌
-CN_Hainan_Fingers|五指山
-CN_Hebei|河北
-CN_Hebei_Baoding|保定
-CN_Hebei_Cangzhou|滄州
-CN_Hebei_Chengde|承德
-CN_Hebei_Handan|邯鄲
-CN_Hebei_Hengshui|衡水
-CN_Hebei_Langfang|廊坊
-CN_Hebei_Qinhuangdao|秦皇島
-CN_Hebei_Shijiazhuang|石家莊
-CN_Hebei_Tangshan|唐山
-CN_Hebei_Xingtai|邢台
-CN_Hebei_Zhangjiakou|張家口
-CN_Henan|河南
-CN_Henan_Anyang|安陽
-CN_Henan_Hebi|鶴壁
-CN_Henan_Jiyuan|濟源
-CN_Henan_Jiaozuo|焦作
-CN_Henan_Kaifeng|開封
-CN_Henan_Luoyang|洛陽
-CN_Henan_Nanyang|南陽
-CN_Henan_mesa|平頂山
-CN_Henan_Puyang|濮陽
-CN_Henan_Sanmenxia|三門峽
-CN_Henan_Shangqiu|商丘
-CN_Henan_Luohe|漯河
-CN_Henan_Xinxiang|新鄉
-CN_Henan_Xinyang|信陽
-CN_Henan_Xuchang|許昌
-CN_Henan_Zhengzhou|鄭州
-CN_Henan_Zhoukou|周口
-CN_Henan_Zhumadian|駐馬店
-CN_Heilongjiang|黑龍江
-CN_Heilongjiang_Daqing|大慶
-CN_Heilongjiang_Mountains|大興安嶺
-CN_Heilongjiang_Harbin|哈爾濱
-CN_Heilongjiang_Hegang|鶴崗
-CN_Heilongjiang_Heihe|黑河
-CN_Heilongjiang_Jixi|雞西
-CN_Heilongjiang_Jiamusi|佳木斯
-CN_Heilongjiang_Mudanjiang|牡丹江
-CN_Heilongjiang_Qiqihar|齊齊哈爾
-CN_Heilongjiang_Qitaihe|七台河
-CN_Heilongjiang_Shuangyashan|雙鴨山
-CN_Heilongjiang_Suihua|綏化
-CN_Heilongjiang_Yichun|伊春
-CN_Hubei|湖北
-CN_Hubei_Ezhou|鄂州
-CN_Hubei_Enshi|恩施
-CN_Hubei_Huanggang|黃岡
-CN_Hubei_Yellowstone|黃石
-CN_Hubei_Jingmen|荊門
-CN_Hubei_Jingzhou|荊州
-CN_Hubei_Qianjiang|潛江
-CN_Hubei_Shennongjia|神農架
-CN_Hubei_Shiyan|十堰
-CN_Hubei_Suizhou|隨州
-CN_Hubei_Tianmen|天門
-CN_Hubei_Wuhan|武漢
-CN_Hubei_Xianning|咸寧
-CN_Hubei_Bristol|仙桃
-CN_Hubei_Yangyang|襄陽
-CN_Hubei_Xiaogan|孝感
-CN_Hubei_Yichang|宜昌
-CN_Hunan|湖南
-CN_Hunan_Changde|常德
-CN_Hunan_Changsha|長沙
-CN_Hunan_Chenzhou|郴州
-CN_Hunan_Hengyang|衡陽
-CN_Hunan_Huaihua|懷化
-CN_Hunan_Loudi|婁底
-CN_Hunan_Shaoyang|邵陽
-CN_Hunan_Xiangtan|湘潭
-CN_Hunan_Xiangxi|湘西
-CN_Hunan_Yiyang|益陽
-CN_Hunan_Yongzhou|永州
-CN_Hunan_Yueyang|岳陽
-CN_Hunan_Zhangjiajie|張家界
-CN_Hunan_Zhuzhou|株洲
-CN_Jilin|吉林
-CN_Jilin_White City|白城
-CN_Jilin_White Mountains|白山
-CN_Jilin_Changchun|長春
-CN_Jilin_Jilin|吉林
-CN_Jilin_Liaoyuan|遼源
-CN_Jilin_Siping|四平
-CN_Jilin_Matsubara|松原
-CN_Jilin_Tonghua|通化
-CN_Jilin_Yanbian|延邊
-CN_Jiangsu|江蘇
-CN_Jiangsu_Changzhou|常州
-CN_Jiangsu_Huai|淮安
-CN_Jiangsu_Lianyungang|連雲港
-CN_Jiangsu_Nanjing|南京
-CN_Jiangsu_Nantong|南通
-CN_Jiangsu_Suqian|宿遷
-CN_Jiangsu_Suzhou|蘇州
-CN_Jiangsu_Taizhou|泰州
-CN_Jiangsu_Wuxi|無錫
-CN_Jiangsu_Xuzhou|徐州
-CN_Jiangsu_Yancheng|鹽城
-CN_Jiangsu_Yangzhou|揚州
-CN_Jiangsu_Zhenjiang|鎮江
-CN_Jiangxi|江西
-CN_Jiangxi_Fuzhou|撫州
-CN_Jiangxi_Ganzhou|贛州
-CN_Jiangxi_Jian|吉安
-CN_Jiangxi_Jingdezhen|景德鎮
-CN_Jiangxi_Jiujiang|九江
-CN_Jiangxi_Nanchang|南昌
-CN_Jiangxi_Pingxiang|萍鄉
-CN_Jiangxi_Shangrao|上饒
-CN_Jiangxi_Xinyu|新余
-CN_Jiangxi_Yichun|宜春
-CN_Jiangxi_Yingtan|鷹潭
-CN_Liaoning|遼寧
-CN_Liaoning_Anshan|鞍山
-CN_Liaoning_Benxi|本溪
-CN_Liaoning_Chaoyang|朝陽
-CN_Liaoning_Dalian|大連
-CN_Liaoning_Dandong|丹東
-CN_Liaoning_Fushun|撫順
-CN_Liaoning_Fuxin|阜新
-CN_Liaoning_Huludao|葫蘆島
-CN_Liaoning_Jinzhou|錦州
-CN_Liaoning_Liaoyang|遼陽
-CN_Liaoning_Panjin|盤錦
-CN_Liaoning_Shenyang|瀋陽
-CN_Liaoning_Tieling|鐵嶺
-CN_Liaoning_Yingkou|營口
-CN_Inner Mongolia|內蒙古
-CN_Inner Mongolia_Alxa|阿拉善
-CN_Inner Mongolia_Bayannur|巴彥淖爾
-CN_Inner Mongolia_Baotou|包頭
-CN_Inner Mongolia_Chifeng|赤峰
-CN_Inner Mongolia_Erdos|鄂爾多斯
-CN_Inner Mongolia_Hohhot|呼和浩特
-CN_Inner Mongolia_Hulunbeier|呼倫貝爾
-CN_Inner Mongolia_Tongliao|通遼
-CN_Inner Mongolia_Wuhai|烏海
-CN_Inner Mongolia_Bu|烏蘭察布
-CN_Inner Mongolia_Gol|錫林郭勒
-CN_Inner Mongolia_Xing|興安
-CN_Ningxia|寧夏
-CN_Ningxia_Guyuan|固原
-CN_Ningxia_Shizuishan|石嘴山
-CN_Ningxia_Wuzhong|吳忠
-CN_Ningxia_Yinchuan|銀川
-CN_Ningxia_Zhongwei|中衛
-CN_Qinghai|青海
-CN_Qinghai_Guoluo|果洛
-CN_Qinghai_rambling|海北
-CN_Qinghai_Haidong|海東
-CN_Qinghai_Hainan|海南
-CN_Qinghai_Hercynian|海西
-CN_Qinghai_Huangnan|黃南
-CN_Qinghai_Xining|西寧
-CN_Qinghai_Yushu|玉樹
-CN_Shaanxi|陝西
-CN_Shaanxi_Ankang|安康
-CN_Shaanxi_Baoji|寶雞
-CN_Shaanxi_Hanzhong|漢中
-CN_Shaanxi_Shangluo|商洛
-CN_Shaanxi_Tongchuan|銅川
-CN_Shaanxi_Weinan|渭南
-CN_Shaanxi_Xi'an|西安
-CN_Shaanxi_Xianyang|咸陽
-CN_Shaanxi_Yanan|延安
-CN_Shaanxi_Yulin|榆林
-CN_Shandong|山東
-CN_Shandong_Binzhou|濱州
-CN_Shandong_Texas|德州
-CN_Shandong_Dongying|東營
-CN_Shandong_Heze|菏澤
-CN_Shandong_Jinan|濟南
-CN_Shandong_Jining|濟寧
-CN_Shandong_Laiwu|萊蕪
-CN_Shandong_Liaocheng|聊城
-CN_Shandong_Linyi|臨沂
-CN_Shandong_Qingdao|青島
-CN_Shandong_Rizhao|日照
-CN_Shandong_Taian|泰安
-CN_Shandong_Weifang|濰坊
-CN_Shandong_Weihai|威海
-CN_Shandong_Yantai|煙台
-CN_Shandong_Zaozhuang|棗莊
-CN_Shandong_Zibo|淄博
-CN_Shanxi|山西
-CN_Shanxi_Changzhi|長治
-CN_Shanxi_Datong|大同
-CN_Shanxi_Jincheng|晉城
-CN_Shanxi_Jinzhong|晉中
-CN_Shanxi_Linfen|臨汾
-CN_Shanxi_Luliang|呂梁
-CN_Shanxi_Shuozhou|朔州
-CN_Shanxi_Taiyuan|太原
-CN_Shanxi_Xinzhou|忻州
-CN_Shanxi_Yangquan|陽泉
-CN_Shanxi_Yuncheng|運城
-CN_Shanghai|上海
-CN_Shanghai_Baoshan|寶山
-CN_Shanghai_Changning|長寧
-CN_Shanghai_Chongming|崇明
-CN_Shanghai_Fengxian|奉賢
-CN_Shanghai_Hongkou|虹口
-CN_Shanghai_Huangpu|黃浦
-CN_Shanghai_Jiading|嘉定
-CN_Shanghai_Jinshan|金山
-CN_Shanghai_Jing|靜安
-CN_Shanghai_Luwan|盧灣
-CN_Shanghai_Minhang|閔行
-CN_Shanghai_Pudong New District|浦東新區
-CN_Shanghai_Po|普陀
-CN_Shanghai_Qingpu|青浦
-CN_Shanghai_Songjiang|松江
-CN_Shanghai_Xuhui|徐匯
-CN_Shanghai_Yangpu|楊浦
-CN_Shanghai_Zhabei|閘北
-CN_Sichuan|四川
-CN_Sichuan_Aba|阿壩
-CN_Sichuan_Pakistan|巴中
-CN_Sichuan_Chengdu|成都
-CN_Sichuan_Florida|達州
-CN_Sichuan_Deyang|德陽
-CN_Sichuan_Ganzi|甘孜
-CN_Sichuan_Kwong|廣安
-CN_Sichuan_Guangyuan|廣元
-CN_Sichuan_Leshan|樂山
-CN_Sichuan_Liangshan|涼山
-CN_Sichuan_Luzhou|瀘州
-CN_Sichuan_Meishan|眉山
-CN_Sichuan_Mianyang|綿陽
-CN_Sichuan_Nanchong|南充
-CN_Sichuan_Neijiang|內江
-CN_Sichuan_Panzhihua|攀枝花
-CN_Sichuan_Suining|遂寧
-CN_Sichuan_Yaan|雅安
-CN_Sichuan_Yibin|宜賓
-CN_Sichuan_Zigong|自貢
-CN_Sichuan_Ziyang|資陽
-CN_Tianjin|天津
-CN_Tianjin_Baodi|寶坻
-CN_Tianjin_North Star|北辰
-CN_Tianjin_Binhai New Area|濱海新區
-CN_Tianjin_Toray|東麗
-CN_Tianjin_Hebei|河北
-CN_Tianjin_east|河東
-CN_Tianjin_Peace|和平
-CN_Tianjin_west|河西
-CN_Tianjin_Red Bridge|紅橋
-CN_Tianjin_Jixian|薊縣
-CN_Tianjin_Jinnan|津南
-CN_Tianjin_Jinghai|靜海
-CN_Tianjin_Nankai|南開
-CN_Tianjin_Ninghe|寧河
-CN_Tianjin_Wuqing|武清
-CN_Tianjin_West Green|西青
-CN_Tibet|西藏
-CN_Tibet_Ali|阿里
-CN_Tibet_Qamdo|昌都
-CN_Tibet_Lhasa|拉薩
-CN_Tibet_Nyingchi|林芝
-CN_Tibet_Nagqu|那曲
-CN_Tibet_Shigatse|日喀則
-CN_Tibet_Shannan|山南
-CN_Xinjiang|新疆
-CN_Xinjiang_Aksu|阿克蘇
-CN_Xinjiang_Arar|阿拉爾
-CN_Xinjiang_Altay|阿勒泰
-CN_Xinjiang_Bayingolin|巴音郭楞
-CN_Xinjiang_Bortala|博爾塔拉
-CN_Xinjiang_Changji|昌吉
-CN_Xinjiang_Hamilton|哈密
-CN_Xinjiang_Hotan|和田
-CN_Xinjiang_Kashgar|喀什
-CN_Xinjiang_Karamay|克拉瑪依
-CN_Xinjiang_Kizilsu|克孜勒蘇
-CN_Xinjiang_Shihezi|石河子
-CN_Xinjiang_Tacheng|塔城
-CN_Xinjiang_Turpan|吐魯番
-CN_Xinjiang_Figure wooden Shook|圖木舒克
-CN_Xinjiang_Wujiaqu|五家渠
-CN_Xinjiang_Urumqi|烏魯木齊
-CN_Xinjiang_Ili|伊犁
-CN_Yunnan|雲南
-CN_Yunnan_Baoshan|保山
-CN_Yunnan_Chuxiong|楚雄
-CN_Yunnan_Dali|大理
-CN_Yunnan_Devon|德宏
-CN_Yunnan_Diqing|迪慶
-CN_Yunnan_Red|紅河
-CN_Yunnan_Kunming|昆明
-CN_Yunnan_Lijiang|麗江
-CN_Yunnan_Lincang|臨滄
-CN_Yunnan_Nu|怒江
-CN_Yunnan_Pu'er|普洱
-CN_Yunnan_Qujing|曲靖
-CN_Yunnan_Wenshan|文山
-CN_Yunnan_Xishuangbanna|西雙版納
-CN_Yunnan_Yuxi|玉溪
-CN_Yunnan_Zhaotong|昭通
-CN_Zhejiang|浙江
-CN_Zhejiang_Hangzhou|杭州
-CN_Zhejiang_Huzhou|湖州
-CN_Zhejiang_Jiaxing|嘉興
-CN_Zhejiang_Jinhua|金華
-CN_Zhejiang_Lishui|麗水
-CN_Zhejiang_Ningbo|寧波
-CN_Zhejiang_Quzhou|衢州
-CN_Zhejiang_Shaoxing|紹興
-CN_Zhejiang_Taizhou|台州
-CN_Zhejiang_Wenzhou|溫州
-CN_Zhejiang_Zhoushan|舟山
-HK|中國香港
-HK_North|北區
-HK_Tai Po|大埔區
-HK_Eastern|東區
-HK_Kwun Tong|觀塘區
-HK_Wong Tai Sin|黃大仙區
-HK_Kowloon City|九龍城區
-HK_Kwai Tsing|葵青區
-HK_Islands|離島區
-HK_Southern|南區
-HK_Tsuen Wan|荃灣區
-HK_Sha Tin|沙田區
-HK_Sham Shui Po|深水埗區
-HK_Tuen Mun|屯門區
-HK_Wan Chai|灣仔區
-HK_Sai Kung|西貢區
-HK_Yau Tsim Mong|油尖旺區
-HK_Yuen Long|元朗區
-HK_Central and Western|中西區
-MO|中國澳門
-MO_Cathedral|大堂區
-MO_Taipa|氹仔
-MO_St. Lawrence|風順堂區
-MO_Fatima|花地瑪堂區
-MO_Coloane|路環島
-MO_St. Anthony|聖安多尼堂區
-MO_St. Lazarus|望德堂區
-TW|中國臺灣
-TW_Kaohsiung City|高雄市
-TW_Hualien County|花蓮縣
-TW_Keelung City|基隆市
-TW_Chiayi City|嘉義市
-TW_Chiayi County|嘉義縣
-TW_Kinmen County|金門縣
-TW_Lianjiang County|連江縣
-TW_Miaoli County|苗栗縣
-TW_Nantou County|南投縣
-TW_Penghu County|澎湖縣
-TW_Pingtung County|屏東縣
-TW_Taipei|臺北市
-TW_Taitung County|臺東縣
-TW_Tainan City|臺南市
-TW_Taichung City|臺中市
-TW_Taoyuan County|桃園市
-TW_New Taipei City|新北市
-TW_Hsinchu City|新竹市
-TW_Hsinchu County|新竹縣
-TW_Yilan County|宜蘭縣
-TW_Yunlin County|雲林縣
-TW_Changhua County|彰化縣

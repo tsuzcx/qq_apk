@@ -5,8 +5,8 @@ import com.tencent.mm.plugin.game.f.d;
 import com.tencent.mm.plugin.s.a;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -18,23 +18,23 @@ public final class i
     super(paramString);
   }
   
-  public final void cQl()
+  public final void cYQ()
   {
     AppMethodBeat.i(41408);
-    LinkedList localLinkedList = w(optJSONArray("items"));
+    LinkedList localLinkedList = x(optJSONArray("items"));
     Iterator localIterator = localLinkedList.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      localc.pQ(localc.tcL);
+      localc.sA(localc.uaB);
     }
-    d.aC(localLinkedList);
+    d.aE(localLinkedList);
     AppMethodBeat.o(41408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.i
  * JD-Core Version:    0.7.0.1
  */

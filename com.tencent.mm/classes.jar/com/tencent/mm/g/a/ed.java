@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ed
   extends b
 {
-  public a deb;
+  public a dpk;
+  public b dpl;
   
   public ed()
   {
@@ -15,18 +16,23 @@ public final class ed
   
   private ed(byte paramByte)
   {
-    AppMethodBeat.i(115994);
-    this.deb = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(115991);
+    this.dpk = new a();
+    this.dpl = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(115994);
+    AppMethodBeat.o(115991);
   }
   
   public static final class a
   {
-    public String cIZ;
-    public byte[] data;
-    public String ddh;
+    public boolean dpj = false;
+    public String dpm;
+  }
+  
+  public static final class b
+  {
+    public boolean dpn = false;
   }
 }
 

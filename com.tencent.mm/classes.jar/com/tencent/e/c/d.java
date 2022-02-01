@@ -6,18 +6,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class d
   extends a
 {
-  public static HandlerThread aTC(String paramString)
+  public static HandlerThread aZC(String paramString)
   {
     AppMethodBeat.i(183241);
-    paramString = gx(paramString, 5);
+    paramString = gV(paramString, 5);
     AppMethodBeat.o(183241);
     return paramString;
   }
   
-  public static HandlerThread aTD(String paramString)
+  public static HandlerThread aZD(String paramString)
   {
     AppMethodBeat.i(183242);
-    paramString = gx(paramString, 5);
+    paramString = gV(paramString, 5);
     AppMethodBeat.o(183242);
     return paramString;
   }
@@ -31,43 +31,43 @@ public final class d
     return paramString;
   }
   
-  public static HandlerThread gA(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(183239);
-    paramString = gx(paramString, paramInt);
-    AppMethodBeat.o(183239);
-    return paramString;
-  }
-  
-  public static HandlerThread gB(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(183240);
-    paramString = gx(paramString, paramInt);
-    AppMethodBeat.o(183240);
-    return paramString;
-  }
-  
-  public static HandlerThread gC(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(191083);
-    paramString = gx(paramString, paramInt);
-    AppMethodBeat.o(191083);
-    return paramString;
-  }
-  
-  public static HandlerThread gy(String paramString, int paramInt)
+  public static HandlerThread gW(String paramString, int paramInt)
   {
     AppMethodBeat.i(183237);
-    paramString = gx(paramString, paramInt);
+    paramString = gV(paramString, paramInt);
     AppMethodBeat.o(183237);
     return paramString;
   }
   
-  public static HandlerThread gz(String paramString, int paramInt)
+  public static HandlerThread gX(String paramString, int paramInt)
   {
     AppMethodBeat.i(183238);
-    paramString = gx(paramString, paramInt);
+    paramString = gV(paramString, paramInt);
     AppMethodBeat.o(183238);
+    return paramString;
+  }
+  
+  public static HandlerThread gY(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(183239);
+    paramString = gV(paramString, paramInt);
+    AppMethodBeat.o(183239);
+    return paramString;
+  }
+  
+  public static HandlerThread gZ(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(183240);
+    paramString = gV(paramString, paramInt);
+    AppMethodBeat.o(183240);
+    return paramString;
+  }
+  
+  public static HandlerThread ha(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(219279);
+    paramString = gV(paramString, paramInt);
+    AppMethodBeat.o(219279);
     return paramString;
   }
 }

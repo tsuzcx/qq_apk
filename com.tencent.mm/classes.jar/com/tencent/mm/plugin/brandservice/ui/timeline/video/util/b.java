@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
 import d.l;
-import d.y;
+import d.z;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotHelper;", "", "()V", "TAG", "", "dotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "checkDotValid", "", "lastDotInfo", "dotInfo", "duration", "", "checkWebViewId", "getDotList", "getNextDotInfo", "currentTime", "", "parseDotPosInfo", "", "posInfo", "reset", "setDotScriptData", "bundle", "Landroid/os/Bundle;", "shouldDestroyDotNow", "dot", "shouldShowDotNow", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotHelper;", "", "()V", "TAG", "", "dotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "checkDotValid", "", "lastDotInfo", "dotInfo", "duration", "", "checkWebViewId", "getDotList", "getNextDotInfo", "currentTime", "", "parseDotPosInfo", "", "posInfo", "reset", "setDotScriptData", "bundle", "Landroid/os/Bundle;", "shouldDestroyDotNow", "dot", "shouldShowDotNow", "plugin-brandservice_release"})
 public final class b
 {
   public final String TAG;
-  public LinkedList<c> nNF;
+  public LinkedList<c> oql;
   
   public b()
   {
     AppMethodBeat.i(7283);
     this.TAG = "MicroMsg.BizVideoDotHelper";
-    this.nNF = new LinkedList();
+    this.oql = new LinkedList();
     AppMethodBeat.o(7283);
   }
   
   public static boolean a(float paramFloat, c paramc)
   {
     if (paramc == null) {}
-    while ((paramc.nNK) || (paramc.nNN > paramFloat) || (paramFloat > paramc.nNG)) {
+    while ((paramc.oqq) || (paramc.oqt > paramFloat) || (paramFloat > paramc.oqm)) {
       return false;
     }
     return true;
   }
   
-  public static boolean bNz()
+  public static boolean bRZ()
   {
     AppMethodBeat.i(7282);
-    if ((!h.DEBUG) && (!h.IS_FLAVOR_RED))
+    if ((!i.DEBUG) && (!i.IS_FLAVOR_RED))
     {
       AppMethodBeat.o(7282);
       return true;
     }
-    if (aw.aKT("MicroMsg.BizVideoDetailUI").decodeInt("CheckWebviewId", 1) == 0)
+    if (ax.aQz("MicroMsg.BizVideoDetailUI").decodeInt("CheckWebviewId", 1) == 0)
     {
       AppMethodBeat.o(7282);
       return false;
@@ -50,31 +50,31 @@ public final class b
     return true;
   }
   
-  public final c aR(float paramFloat)
+  public final c aU(float paramFloat)
   {
     AppMethodBeat.i(7280);
     try
     {
-      boolean bool = bs.gY((List)this.nNF);
+      boolean bool = bt.hj((List)this.oql);
       if (bool) {
         return null;
       }
-      Object localObject1 = this.nNF.iterator();
+      Object localObject1 = this.oql.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         c localc = (c)((Iterator)localObject1).next();
-        if (paramFloat <= localc.nNG) {
+        if (paramFloat <= localc.oqm) {
           if (paramFloat >= 2.0F)
           {
             double d1 = paramFloat;
-            double d2 = localc.nNN;
+            double d2 = localc.oqt;
             if (d1 >= d2 - 10.0D) {
               return localc;
             }
           }
         }
       }
-      localObject1 = y.KTp;
+      localObject1 = z.MKo;
       return null;
     }
     finally
@@ -91,19 +91,19 @@ public final class b
       AppMethodBeat.o(7281);
       return false;
     }
-    if ((paramc.nNK) && ((paramFloat < paramc.nNN) || (paramFloat > paramc.nNO)))
+    if ((paramc.oqq) && ((paramFloat < paramc.oqt) || (paramFloat > paramc.oqu)))
     {
       AppMethodBeat.o(7281);
       return true;
     }
-    if (paramFloat > paramc.nNO)
+    if (paramFloat > paramc.oqu)
     {
       AppMethodBeat.o(7281);
       return true;
     }
-    if (paramFloat < paramc.nNN)
+    if (paramFloat < paramc.oqt)
     {
-      c localc = aR(paramFloat);
+      c localc = aU(paramFloat);
       if ((localc != null) && (localc.id != paramc.id))
       {
         AppMethodBeat.o(7281);
@@ -119,8 +119,8 @@ public final class b
     AppMethodBeat.i(7279);
     try
     {
-      this.nNF.clear();
-      y localy = y.KTp;
+      this.oql.clear();
+      z localz = z.MKo;
       return;
     }
     finally

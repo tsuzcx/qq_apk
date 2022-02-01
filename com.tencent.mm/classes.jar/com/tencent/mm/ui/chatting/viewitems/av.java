@@ -2,83 +2,72 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.b;
-import com.tencent.mm.bb.t;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.bc.b;
+import com.tencent.mm.bc.t;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.w;
-import com.tencent.mm.plugin.messenger.a.f;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.chatting.AppBrandServiceChattingUI.AppBrandServiceChattingFmUI;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.pluginsdk.ui.span.j.a;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 import com.tencent.neattextview.textview.view.NeatTextView;
-import java.lang.ref.WeakReference;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 final class av
-  implements at.a
+  implements au.a
 {
-  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bo parambo)
+  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bu parambu)
   {
-    AppMethodBeat.i(37381);
-    String str = parama1.getTalkerUserName();
-    parama = (at.b)parama;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("conv_talker_username", str);
-    if ((parama1.HZF instanceof AppBrandServiceChattingUI.AppBrandServiceChattingFmUI))
+    AppMethodBeat.i(37379);
+    parama = (au.b)parama;
+    parama.KfL.ar(parambu.field_content);
+    parama.KfL.setTag(new bk(parambu, parama1.fFv(), paramInt, null, '\000'));
+    Object localObject = new Bundle();
+    ((Bundle)localObject).putString("chatroom_name", parama1.getTalkerUserName());
+    ((Bundle)localObject).putLong("msg_id", parambu.field_msgId);
+    if ((parambu.field_flag & 0x8) != 0)
     {
-      paramInt = 10;
-      localBundle.putInt("scene", paramInt);
-      localBundle.putLong("msg_id", parambo.field_msgId);
-      localBundle.putLong("msg_sever_id", parambo.field_msgSvrId);
-      localBundle.putString("send_msg_username", parambo.field_talker);
-      localBundle.putString("local_session", parama1.HZI);
-      parambo = ((f)g.ab(f.class)).b(parambo.field_content, localBundle, new WeakReference(parama1.HZF.getContext()), new WeakReference(parama.Ipl));
-      if ((parambo != null) && (parambo.length() != 0)) {
-        break label337;
+      parama.KfL.a(k.a(parama1.JOR.getContext(), parambu.field_content, (int)parama.KfL.getTextSize(), false, localObject), TextView.BufferType.SPANNABLE);
+      parama.KfL.setClickable(true);
+      if (parambu.field_content.contains("weixin://wxpay/transfer/remindrcvmsg"))
+      {
+        parambu = parambu.field_content;
+        parambu = j.a.Fhm.matcher(parambu);
+        if (parambu.find())
+        {
+          localObject = Uri.parse(parambu.group(1));
+          parambu = ((Uri)localObject).getQueryParameter("transferid");
+          localObject = ((Uri)localObject).getQueryParameter("transfer_msg_type");
+          g.yhR.f(20467, new Object[] { "transfer_to_change", "read message", "", "", "", "", Integer.valueOf(4), parambu, localObject });
+        }
       }
-      parama.sSS.setVisibility(8);
-      label173:
-      parambo = t.aGP().CW(str);
-      az.ayM();
-      paramInt = ((Integer)c.agA().get(12311, Integer.valueOf(-2))).intValue();
-      if (((parambo == null) || (parambo.hPy == -2)) && ((parambo != null) || (paramInt == -2))) {
-        break label357;
+      parambu = t.aKa().Gb(parama1.getTalkerUserName());
+      ba.aBQ();
+      paramInt = ((Integer)c.ajl().get(12311, Integer.valueOf(-2))).intValue();
+      if (((parambu == null) || (parambu.iiM == -2)) && ((parambu != null) || (paramInt == -2))) {
+        break label422;
       }
-      parama.Ipl.setTextColor(parama1.HZF.getContext().getResources().getColor(2131100151));
-      parama.Ipl.setBackground(parama1.HZF.getContext().getResources().getDrawable(2131231583));
+      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131100151));
+      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231583));
     }
     for (;;)
     {
-      parama.Ipl.setOnClickListener(new av.1(this));
-      parama.Ipl.invalidate();
-      AppMethodBeat.o(37381);
+      parama.KfL.invalidate();
+      AppMethodBeat.o(37379);
       return;
-      if (parama1.foQ())
-      {
-        paramInt = 2;
-        break;
-      }
-      if (w.wH(str))
-      {
-        paramInt = 7;
-        break;
-      }
-      paramInt = 1;
+      parama.KfL.a(k.a(parama1.JOR.getContext(), parambu.field_content, (int)parama.KfL.getTextSize(), true, localObject), TextView.BufferType.SPANNABLE);
       break;
-      label337:
-      parama.sSS.setVisibility(0);
-      parama.Ipl.ar(parambo);
-      break label173;
-      label357:
-      parama.Ipl.setTextColor(ao.aJ(parama1.HZF.getContext(), 2130968586));
-      parama.Ipl.setBackground(parama1.HZF.getContext().getResources().getDrawable(2131231582));
+      label422:
+      parama.KfL.setTextColor(parama1.JOR.getContext().getResources().getColor(2131099735));
+      parama.KfL.setBackground(parama1.JOR.getContext().getResources().getDrawable(2131231582));
     }
   }
 }

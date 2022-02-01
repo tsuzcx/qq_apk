@@ -21,7 +21,7 @@ public class MaxHeightRecyclerView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int getmMaxHeight()
+  public int getMaxHeight()
   {
     return this.mMaxHeight;
   }
@@ -47,7 +47,7 @@ public class MaxHeightRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.MaxHeightRecyclerView
  * JD-Core Version:    0.7.0.1
  */

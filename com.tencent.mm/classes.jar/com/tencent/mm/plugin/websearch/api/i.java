@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import android.content.Context;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface i
   extends a
 {
-  public abstract void Uf(int paramInt);
+  public abstract void a(Context paramContext, Runnable paramRunnable);
   
-  public abstract String aAo(String paramString);
+  public abstract boolean b(Context paramContext, Runnable paramRunnable);
   
-  public abstract void cl(int paramInt, String paramString);
+  public abstract void eLF();
   
-  public abstract int ewU();
+  public abstract void eLG();
   
-  public abstract String ewV();
-  
-  public abstract void ke(String paramString1, String paramString2);
+  public abstract boolean eLH();
 }
 
 

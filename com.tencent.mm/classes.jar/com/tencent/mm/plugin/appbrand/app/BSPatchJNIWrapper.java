@@ -12,7 +12,7 @@ public class BSPatchJNIWrapper
   {
     AppMethodBeat.i(44127);
     BSPatchJNIWrapper.class.getClassLoader();
-    j.sC("appbrandcommon");
+    j.vr("appbrandcommon");
     AppMethodBeat.o(44127);
   }
   

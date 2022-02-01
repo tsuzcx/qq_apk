@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public abstract class d
   implements a
 {
-  private c JUr;
+  private c LOn;
   
   /* Error */
   private int a(Context paramContext, final AtomicReference<IBinder> paramAtomicReference, final AtomicReference<ServiceConnection> paramAtomicReference1)
@@ -89,7 +89,7 @@ public abstract class d
     //   14: invokestatic 55	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   17: invokespecial 58	java/util/concurrent/atomic/AtomicReference:<init>	(Ljava/lang/Object;)V
     //   20: astore 6
-    //   22: getstatic 64	com/tencent/e/h:JZN	Lcom/tencent/e/i;
+    //   22: getstatic 64	com/tencent/e/h:LTJ	Lcom/tencent/e/i;
     //   25: new 10	com/tencent/d/e/b/a/a/d$2
     //   28: dup
     //   29: aload_0
@@ -138,7 +138,7 @@ public abstract class d
     //   51	59	80	java/lang/Throwable
   }
   
-  private c kH(Context paramContext)
+  private c kU(Context paramContext)
   {
     int j = -1;
     AtomicReference localAtomicReference1 = new AtomicReference();
@@ -171,12 +171,12 @@ public abstract class d
   
   public abstract Intent getIntent();
   
-  public final c kG(Context paramContext)
+  public final c kS(Context paramContext)
   {
-    if ((this.JUr == null) || (this.JUr.errorCode != 0)) {
-      this.JUr = kH(paramContext);
+    if ((this.LOn == null) || (this.LOn.errorCode != 0)) {
+      this.LOn = kU(paramContext);
     }
-    return this.JUr;
+    return this.LOn;
   }
 }
 

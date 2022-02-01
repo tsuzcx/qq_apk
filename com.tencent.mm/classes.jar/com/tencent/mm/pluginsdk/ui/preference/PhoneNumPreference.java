@@ -8,15 +8,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.n.a;
-import com.tencent.mm.n.b;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.plugin.profile.c;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.ProfileMobilePhoneView;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 import java.util.HashSet;
@@ -25,13 +23,13 @@ public class PhoneNumPreference
   extends Preference
   implements View.OnClickListener
 {
-  ProfileMobilePhoneView DBA;
-  public String Dop;
-  public String Doq;
+  public String ETv;
+  public String ETw;
+  ProfileMobilePhoneView FgH;
   public Intent intent;
-  public f lZC;
-  public ai piT;
-  private View uCg;
+  public f mzx;
+  public am pMt;
+  private View vET;
   
   public PhoneNumPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,10 +41,10 @@ public class PhoneNumPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public static String b(String paramString, ai paramai)
+  public static String b(String paramString, am paramam)
   {
     AppMethodBeat.i(31899);
-    if (paramai.eyl == null)
+    if (paramam.ePJ == null)
     {
       AppMethodBeat.o(31899);
       return null;
@@ -56,7 +54,7 @@ public class PhoneNumPreference
       localHashSet.add(paramString);
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    String[] arrayOfString = a.e(paramai);
+    String[] arrayOfString = com.tencent.mm.o.a.e(paramam);
     if (arrayOfString != null)
     {
       int j = arrayOfString.length;
@@ -64,8 +62,8 @@ public class PhoneNumPreference
       while (i < j)
       {
         String str = arrayOfString[i].trim();
-        if ((!localHashSet.contains(str)) && (!bs.isNullOrNil(str))) {
-          localStringBuilder.append(str).append(a.d(paramai));
+        if ((!localHashSet.contains(str)) && (!bt.isNullOrNil(str))) {
+          localStringBuilder.append(str).append(com.tencent.mm.o.a.d(paramam));
         }
         localHashSet.add(str);
         i += 1;
@@ -74,22 +72,22 @@ public class PhoneNumPreference
     if (localStringBuilder.length() > 1) {
       localStringBuilder.subSequence(0, localStringBuilder.length() - 1);
     }
-    ac.i("MicroMsg.PhoneNumPreference", "[filterPhoneList] phoneNumberByMD5:%s phoneList:%s", new Object[] { paramString, paramai.eyl });
+    ad.i("MicroMsg.PhoneNumPreference", "[filterPhoneList] phoneNumberByMD5:%s phoneList:%s", new Object[] { paramString, paramam.ePJ });
     paramString = localStringBuilder.toString();
     AppMethodBeat.o(31899);
     return paramString;
   }
   
-  public final void ePM()
+  public final void feO()
   {
     AppMethodBeat.i(31900);
-    if ((this.piT == null) || (!b.ln(this.piT.field_type)) || (ai.aNc(this.piT.field_username)) || ((bs.isNullOrNil(this.Dop)) && (bs.isNullOrNil(this.Doq))))
+    if ((this.pMt == null) || (!com.tencent.mm.o.b.lM(this.pMt.field_type)) || (am.aSQ(this.pMt.field_username)) || ((bt.isNullOrNil(this.ETv)) && (bt.isNullOrNil(this.ETw))))
     {
-      this.lZC.cK("contact_profile_phone", true);
+      this.mzx.cP("contact_profile_phone", true);
       AppMethodBeat.o(31900);
       return;
     }
-    this.lZC.cK("contact_profile_phone", false);
+    this.mzx.cP("contact_profile_phone", false);
     AppMethodBeat.o(31900);
   }
   
@@ -97,33 +95,37 @@ public class PhoneNumPreference
   {
     AppMethodBeat.i(31898);
     super.onBindView(paramView);
-    this.DBA.dqG();
+    this.FgH.dBj();
     AppMethodBeat.o(31898);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(31901);
-    h.wUl.f(16055, new Object[] { Integer.valueOf(c.aB(this.intent)), Integer.valueOf(17), Integer.valueOf(1), this.piT.field_username });
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/preference/PhoneNumPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+    g.yhR.f(16055, new Object[] { Integer.valueOf(c.aG(this.intent)), Integer.valueOf(17), Integer.valueOf(1), this.pMt.field_username });
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/pluginsdk/ui/preference/PhoneNumPreference", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(31901);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31897);
-    if (this.uCg == null)
+    if (this.vET == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
       ProfileMobilePhoneView localProfileMobilePhoneView = new ProfileMobilePhoneView(paramViewGroup.getContext(), this);
-      this.DBA = localProfileMobilePhoneView;
+      this.FgH = localProfileMobilePhoneView;
       localViewGroup.addView(localProfileMobilePhoneView, new AbsListView.LayoutParams(-1, -2));
-      this.DBA.piT = this.piT;
-      this.DBA.kW(this.Dop, this.Doq);
-      this.uCg = paramViewGroup;
+      this.FgH.pMt = this.pMt;
+      this.FgH.lt(this.ETv, this.ETw);
+      this.vET = paramViewGroup;
     }
-    paramViewGroup = this.uCg;
+    paramViewGroup = this.vET;
     AppMethodBeat.o(31897);
     return paramViewGroup;
   }

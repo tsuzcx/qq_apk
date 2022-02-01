@@ -4,9 +4,9 @@ import android.support.annotation.Keep;
 
 public class MagicGAPID
 {
-  private static boolean cnp = false;
-  public static int cnq = 25;
-  public static String cnr = "/sdcard/tencent/MicroMsg/appbrand/trace";
+  private static boolean cxU = false;
+  public static int cxV = 25;
+  public static String cxW = "/sdcard/tencent/MicroMsg/appbrand/trace";
   
   @Keep
   private static native int nativeAttach(String paramString1, String paramString2, int paramInt);

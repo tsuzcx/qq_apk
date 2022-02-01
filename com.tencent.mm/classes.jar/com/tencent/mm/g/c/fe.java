@@ -8,25 +8,27 @@ public abstract class fe
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eYG = "xmlContent".hashCode();
-  private static final int eYH = "ScanTime".hashCode();
-  private static final int eYI = "funcType".hashCode();
-  private static final int eYJ = "qrcodeUrl".hashCode();
-  private static final int env = "scene".hashCode();
-  private static final int ezD = "productId".hashCode();
+  private static final int eEU = "appId".hashCode();
+  private static final int eGk = "version".hashCode();
+  private static final int eGm = "pkgPath".hashCode();
+  private static final int foA;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eYC = true;
-  private boolean eYD = true;
-  private boolean eYE = true;
-  private boolean eYF = true;
-  private boolean ent = true;
-  private boolean ezA = true;
-  public long field_ScanTime;
-  public int field_funcType;
-  public String field_productId;
-  public String field_qrcodeUrl;
-  public int field_scene;
-  public String field_xmlContent;
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean eED = true;
+  private boolean eGf = true;
+  private boolean eGh = true;
+  public String field_appId;
+  public String field_pkgMd5;
+  public String field_pkgPath;
+  public int field_type;
+  public int field_version;
+  private boolean jdField_for = true;
+  
+  static
+  {
+    foA = "pkgMd5".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,28 +43,25 @@ public abstract class fe
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ezD != k) {
-        break label65;
+      if (eEU != k) {
+        break label60;
       }
-      this.field_productId = paramCursor.getString(i);
-      this.ezA = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eYG == k) {
-        this.field_xmlContent = paramCursor.getString(i);
-      } else if (eYH == k) {
-        this.field_ScanTime = paramCursor.getLong(i);
-      } else if (eYI == k) {
-        this.field_funcType = paramCursor.getInt(i);
-      } else if (eYJ == k) {
-        this.field_qrcodeUrl = paramCursor.getString(i);
-      } else if (env == k) {
-        this.field_scene = paramCursor.getInt(i);
+      label60:
+      if (eGk == k) {
+        this.field_version = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (foA == k) {
+        this.field_pkgMd5 = paramCursor.getString(i);
+      } else if (eGm == k) {
+        this.field_pkgPath = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -72,23 +71,20 @@ public abstract class fe
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ezA) {
-      localContentValues.put("productId", this.field_productId);
+    if (this.eED) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eYC) {
-      localContentValues.put("xmlContent", this.field_xmlContent);
+    if (this.eGf) {
+      localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.eYD) {
-      localContentValues.put("ScanTime", Long.valueOf(this.field_ScanTime));
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eYE) {
-      localContentValues.put("funcType", Integer.valueOf(this.field_funcType));
+    if (this.jdField_for) {
+      localContentValues.put("pkgMd5", this.field_pkgMd5);
     }
-    if (this.eYF) {
-      localContentValues.put("qrcodeUrl", this.field_qrcodeUrl);
-    }
-    if (this.ent) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.eGh) {
+      localContentValues.put("pkgPath", this.field_pkgPath);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

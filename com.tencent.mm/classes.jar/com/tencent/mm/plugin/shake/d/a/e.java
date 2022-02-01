@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.cqk;
+import com.tencent.mm.protocal.protobuf.cvp;
 
 public abstract class e
   extends n
   implements k
 {
-  protected boolean dlS = false;
-  long xza = 0L;
+  protected boolean dxG = false;
+  long yNK = 0L;
   
   public e(long paramLong)
   {
-    this.xza = paramLong;
+    this.yNK = paramLong;
   }
   
-  public final boolean dDN()
+  public final boolean dPq()
   {
-    return this.dlS;
+    return this.dxG;
   }
   
-  public abstract cqk dDO();
+  public abstract cvp dPr();
 }
 
 

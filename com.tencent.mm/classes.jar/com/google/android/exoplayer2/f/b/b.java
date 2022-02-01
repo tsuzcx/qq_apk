@@ -18,52 +18,52 @@ import java.util.List;
 
 final class b
 {
-  private static final byte[] brk = { 0, 7, 8, 15 };
-  private static final byte[] brl = { 0, 119, -120, -1 };
-  private static final byte[] brm = { 0, 17, 34, 51, 68, 85, 102, 119, -120, -103, -86, -69, -52, -35, -18, -1 };
+  private static final byte[] bBE = { 0, 7, 8, 15 };
+  private static final byte[] bBF = { 0, 119, -120, -1 };
+  private static final byte[] bBG = { 0, 17, 34, 51, 68, 85, 102, 119, -120, -103, -86, -69, -52, -35, -18, -1 };
+  private final Canvas aTq;
+  private final Paint bBH;
+  private final Paint bBI;
+  private final b bBJ;
+  private final a bBK;
+  final h bBL;
   private Bitmap bitmap;
-  private final Paint brn;
-  private final Paint bro;
-  private final Canvas brp;
-  private final b brq;
-  private final a brr;
-  final h brs;
   
   public b(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(92794);
-    this.brn = new Paint();
-    this.brn.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.brn.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-    this.brn.setPathEffect(null);
-    this.bro = new Paint();
-    this.bro.setStyle(Paint.Style.FILL);
-    this.bro.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
-    this.bro.setPathEffect(null);
-    this.brp = new Canvas();
-    this.brq = new b(719, 575, 0, 719, 0, 575);
-    this.brr = new a(0, uN(), uO(), uP());
-    this.brs = new h(paramInt1, paramInt2);
+    this.bBH = new Paint();
+    this.bBH.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.bBH.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+    this.bBH.setPathEffect(null);
+    this.bBI = new Paint();
+    this.bBI.setStyle(Paint.Style.FILL);
+    this.bBI.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_OVER));
+    this.bBI.setPathEffect(null);
+    this.aTq = new Canvas();
+    this.bBJ = new b(719, 575, 0, 719, 0, 575);
+    this.bBK = new a(0, wm(), wn(), wo());
+    this.bBL = new h(paramInt1, paramInt2);
     AppMethodBeat.o(92794);
   }
   
   private static f a(l paraml, int paramInt)
   {
     AppMethodBeat.i(92796);
-    int k = paraml.eo(8);
-    paraml.ep(4);
-    boolean bool = paraml.te();
-    paraml.ep(3);
-    int m = paraml.eo(16);
-    int n = paraml.eo(16);
-    int i1 = paraml.eo(3);
-    int i2 = paraml.eo(3);
-    paraml.ep(2);
-    int i3 = paraml.eo(8);
-    int i4 = paraml.eo(8);
-    int i5 = paraml.eo(4);
-    int i6 = paraml.eo(2);
-    paraml.ep(2);
+    int k = paraml.es(8);
+    paraml.et(4);
+    boolean bool = paraml.uD();
+    paraml.et(3);
+    int m = paraml.es(16);
+    int n = paraml.es(16);
+    int i1 = paraml.es(3);
+    int i2 = paraml.es(3);
+    paraml.et(2);
+    int i3 = paraml.es(8);
+    int i4 = paraml.es(8);
+    int i5 = paraml.es(4);
+    int i6 = paraml.es(2);
+    paraml.et(2);
     paramInt -= 10;
     SparseArray localSparseArray = new SparseArray();
     int i7;
@@ -75,20 +75,20 @@ final class b
     int j;
     if (paramInt > 0)
     {
-      i7 = paraml.eo(16);
-      i8 = paraml.eo(2);
-      i9 = paraml.eo(2);
-      i10 = paraml.eo(12);
-      paraml.ep(4);
-      i11 = paraml.eo(12);
+      i7 = paraml.es(16);
+      i8 = paraml.es(2);
+      i9 = paraml.es(2);
+      i10 = paraml.es(12);
+      paraml.et(4);
+      i11 = paraml.es(12);
       paramInt -= 6;
       i = 0;
       j = 0;
       if ((i8 != 1) && (i8 != 2)) {
         break label263;
       }
-      i = paraml.eo(8);
-      j = paraml.eo(8);
+      i = paraml.es(8);
+      j = paraml.es(8);
       paramInt -= 2;
     }
     label263:
@@ -117,8 +117,8 @@ final class b
     int m;
     for (;;)
     {
-      if (locall.vu() != 0) {
-        switch (locall.eo(8))
+      if (locall.wR() != 0) {
+        switch (locall.es(8))
         {
         default: 
           break;
@@ -126,7 +126,7 @@ final class b
           if (paramInt1 == 3) {
             if (paramArrayOfByte == null)
             {
-              arrayOfByte2 = brl;
+              arrayOfByte2 = bBF;
               i = 0;
               m = paramInt3;
             }
@@ -137,7 +137,7 @@ final class b
     }
     for (paramInt3 = i;; paramInt3 = i)
     {
-      int n = locall.eo(2);
+      int n = locall.es(2);
       int j;
       if (n != 0)
       {
@@ -160,28 +160,28 @@ final class b
         if (i == 0) {
           break label1100;
         }
-        locall.vx();
+        locall.wU();
         break;
         arrayOfByte2 = paramArrayOfByte;
         break label129;
         if (paramInt1 == 2)
         {
           if (arrayOfByte1 == null) {}
-          for (arrayOfByte2 = brk;; arrayOfByte2 = arrayOfByte1) {
+          for (arrayOfByte2 = bBE;; arrayOfByte2 = arrayOfByte1) {
             break;
           }
         }
         arrayOfByte2 = null;
         break label129;
-        if (locall.te())
+        if (locall.uD())
         {
-          i = locall.eo(3);
-          n = locall.eo(2);
+          i = locall.es(3);
+          n = locall.es(2);
           j = i + 3;
           i = paramInt3;
           paramInt3 = n;
         }
-        else if (locall.te())
+        else if (locall.uD())
         {
           n = 0;
           j = 1;
@@ -190,7 +190,7 @@ final class b
         }
         else
         {
-          switch (locall.eo(2))
+          switch (locall.es(2))
           {
           default: 
             n = 0;
@@ -210,15 +210,15 @@ final class b
             paramInt3 = n;
             break;
           case 2: 
-            i = locall.eo(4);
-            n = locall.eo(2);
+            i = locall.es(4);
+            n = locall.es(2);
             j = i + 12;
             i = paramInt3;
             paramInt3 = n;
             break;
           case 3: 
-            i = locall.eo(8);
-            n = locall.eo(2);
+            i = locall.es(8);
+            n = locall.es(2);
             j = i + 29;
             i = paramInt3;
             paramInt3 = n;
@@ -227,14 +227,14 @@ final class b
       }
       if (paramInt1 == 3)
       {
-        arrayOfByte2 = brm;
+        arrayOfByte2 = bBG;
         label509:
         i = 0;
         m = paramInt3;
       }
       for (paramInt3 = i;; paramInt3 = i)
       {
-        n = locall.eo(4);
+        n = locall.es(4);
         if (n != 0)
         {
           j = 1;
@@ -256,13 +256,13 @@ final class b
           if (i == 0) {
             break label1089;
           }
-          locall.vx();
+          locall.wU();
           break;
           arrayOfByte2 = null;
           break label509;
-          if (!locall.te())
+          if (!locall.uD())
           {
-            i = locall.eo(3);
+            i = locall.es(3);
             if (i != 0)
             {
               n = 0;
@@ -277,17 +277,17 @@ final class b
               i = 1;
             }
           }
-          else if (!locall.te())
+          else if (!locall.uD())
           {
-            i = locall.eo(2);
-            n = locall.eo(4);
+            i = locall.es(2);
+            n = locall.es(4);
             j = i + 4;
             i = paramInt3;
             paramInt3 = n;
           }
           else
           {
-            switch (locall.eo(2))
+            switch (locall.es(2))
             {
             default: 
               n = 0;
@@ -308,15 +308,15 @@ final class b
               paramInt3 = n;
               break;
             case 2: 
-              i = locall.eo(4);
-              n = locall.eo(4);
+              i = locall.es(4);
+              n = locall.es(4);
               j = i + 9;
               i = paramInt3;
               paramInt3 = n;
               break;
             case 3: 
-              i = locall.eo(8);
-              n = locall.eo(4);
+              i = locall.es(8);
+              n = locall.es(4);
               j = i + 25;
               i = paramInt3;
               paramInt3 = n;
@@ -329,7 +329,7 @@ final class b
         label1086:
         for (;;)
         {
-          i = locall.eo(8);
+          i = locall.es(8);
           if (i != 0) {
             j = 1;
           }
@@ -346,9 +346,9 @@ final class b
             }
             paramInt3 = m;
             break;
-            if (!locall.te())
+            if (!locall.uD())
             {
-              j = locall.eo(7);
+              j = locall.es(7);
               if (j != 0)
               {
                 i = 0;
@@ -362,8 +362,8 @@ final class b
             }
             else
             {
-              j = locall.eo(7);
-              i = locall.eo(8);
+              j = locall.es(7);
+              i = locall.es(8);
             }
           }
           arrayOfByte1 = a(4, 4, locall);
@@ -393,7 +393,7 @@ final class b
     int i = 0;
     while (i < paramInt1)
     {
-      arrayOfByte[i] = ((byte)paraml.eo(paramInt2));
+      arrayOfByte[i] = ((byte)paraml.es(paramInt2));
       i += 1;
     }
     AppMethodBeat.o(92802);
@@ -403,16 +403,16 @@ final class b
   private static a b(l paraml, int paramInt)
   {
     AppMethodBeat.i(92797);
-    int n = paraml.eo(8);
-    paraml.ep(8);
+    int n = paraml.es(8);
+    paraml.et(8);
     paramInt -= 2;
-    int[] arrayOfInt2 = uN();
-    int[] arrayOfInt3 = uO();
-    int[] arrayOfInt4 = uP();
+    int[] arrayOfInt2 = wm();
+    int[] arrayOfInt3 = wn();
+    int[] arrayOfInt4 = wo();
     if (paramInt > 0)
     {
-      int i1 = paraml.eo(8);
-      int i = paraml.eo(8);
+      int i1 = paraml.es(8);
+      int i = paraml.es(8);
       paramInt -= 2;
       int[] arrayOfInt1;
       label73:
@@ -425,10 +425,10 @@ final class b
         if ((i & 0x1) == 0) {
           break label259;
         }
-        m = paraml.eo(8);
-        i = paraml.eo(8);
-        j = paraml.eo(8);
-        k = paraml.eo(8);
+        m = paraml.es(8);
+        i = paraml.es(8);
+        j = paraml.es(8);
+        k = paraml.es(8);
         paramInt -= 4;
       }
       for (;;)
@@ -453,10 +453,10 @@ final class b
         arrayOfInt1 = arrayOfInt4;
         break label73;
         label259:
-        m = paraml.eo(6) << 2;
-        i = paraml.eo(4) << 4;
-        j = paraml.eo(4) << 4;
-        k = paraml.eo(2) << 6;
+        m = paraml.es(6) << 2;
+        i = paraml.es(4) << 4;
+        j = paraml.es(4) << 4;
+        k = paraml.es(2) << 6;
         paramInt -= 2;
       }
     }
@@ -469,14 +469,14 @@ final class b
   {
     byte[] arrayOfByte1 = null;
     AppMethodBeat.i(92798);
-    int i = paraml.eo(16);
-    paraml.ep(4);
-    int j = paraml.eo(2);
-    boolean bool = paraml.te();
-    paraml.ep(1);
+    int i = paraml.es(16);
+    paraml.et(4);
+    int j = paraml.es(2);
+    boolean bool = paraml.uD();
+    paraml.et(1);
     if (j == 1)
     {
-      paraml.ep(paraml.eo(8) * 16);
+      paraml.et(paraml.es(8) * 16);
       paraml = null;
       arrayOfByte1 = null;
     }
@@ -487,8 +487,8 @@ final class b
       return paraml;
       if (j == 0)
       {
-        j = paraml.eo(16);
-        int k = paraml.eo(16);
+        j = paraml.es(16);
+        int k = paraml.es(16);
         if (j > 0)
         {
           arrayOfByte1 = new byte[j];
@@ -518,12 +518,12 @@ final class b
     return paramInt1 << 24 | paramInt2 << 16 | paramInt3 << 8 | paramInt4;
   }
   
-  private static int[] uN()
+  private static int[] wm()
   {
     return new int[] { 0, -1, -16777216, -8421505 };
   }
   
-  private static int[] uO()
+  private static int[] wn()
   {
     AppMethodBeat.i(92799);
     int[] arrayOfInt = new int[16];
@@ -590,7 +590,7 @@ final class b
     return arrayOfInt;
   }
   
-  private static int[] uP()
+  private static int[] wo()
   {
     AppMethodBeat.i(92800);
     int[] arrayOfInt = new int[256];
@@ -847,128 +847,128 @@ final class b
     int j;
     int k;
     Object localObject3;
-    while ((paramArrayOfByte.vu() >= 48) && (paramArrayOfByte.eo(8) == 15))
+    while ((paramArrayOfByte.wR() >= 48) && (paramArrayOfByte.es(8) == 15))
     {
-      localObject1 = this.brs;
-      paramInt = paramArrayOfByte.eo(8);
-      i = paramArrayOfByte.eo(16);
-      i1 = paramArrayOfByte.eo(16);
-      int i2 = paramArrayOfByte.vv();
-      if (i1 * 8 > paramArrayOfByte.vu())
+      localObject1 = this.bBL;
+      paramInt = paramArrayOfByte.es(8);
+      i = paramArrayOfByte.es(16);
+      i1 = paramArrayOfByte.es(16);
+      int i2 = paramArrayOfByte.wS();
+      if (i1 * 8 > paramArrayOfByte.wR())
       {
-        paramArrayOfByte.ep(paramArrayOfByte.vu());
+        paramArrayOfByte.et(paramArrayOfByte.wR());
       }
       else
       {
         switch (paramInt)
         {
         default: 
-          paramInt = paramArrayOfByte.vv();
-          if (paramArrayOfByte.bfu != 0) {
+          paramInt = paramArrayOfByte.wS();
+          if (paramArrayOfByte.bpO != 0) {
             break;
           }
         }
         for (boolean bool = true;; bool = false)
         {
           com.google.android.exoplayer2.i.a.checkState(bool);
-          paramArrayOfByte.bft += i2 + i1 - paramInt;
-          paramArrayOfByte.tf();
+          paramArrayOfByte.bpN += i2 + i1 - paramInt;
+          paramArrayOfByte.uE();
           break;
-          if (i != ((h)localObject1).brU) {
+          if (i != ((h)localObject1).bCn) {
             break label128;
           }
-          paramArrayOfByte.ep(4);
-          bool = paramArrayOfByte.te();
-          paramArrayOfByte.ep(3);
-          m = paramArrayOfByte.eo(16);
-          n = paramArrayOfByte.eo(16);
+          paramArrayOfByte.et(4);
+          bool = paramArrayOfByte.uD();
+          paramArrayOfByte.et(3);
+          m = paramArrayOfByte.es(16);
+          n = paramArrayOfByte.es(16);
           if (bool)
           {
-            paramInt = paramArrayOfByte.eo(16);
-            i = paramArrayOfByte.eo(16);
-            j = paramArrayOfByte.eo(16);
-            k = paramArrayOfByte.eo(16);
+            paramInt = paramArrayOfByte.es(16);
+            i = paramArrayOfByte.es(16);
+            j = paramArrayOfByte.es(16);
+            k = paramArrayOfByte.es(16);
           }
           for (;;)
           {
-            ((h)localObject1).bsa = new b(m, n, paramInt, i, j, k);
+            ((h)localObject1).bCt = new b(m, n, paramInt, i, j, k);
             break;
             paramInt = 0;
             j = 0;
             k = n;
             i = m;
           }
-          if (i != ((h)localObject1).brU) {
+          if (i != ((h)localObject1).bCn) {
             break label128;
           }
-          localObject2 = ((h)localObject1).bsb;
-          i = paramArrayOfByte.eo(8);
-          j = paramArrayOfByte.eo(4);
-          k = paramArrayOfByte.eo(2);
-          paramArrayOfByte.ep(2);
+          localObject2 = ((h)localObject1).bCu;
+          i = paramArrayOfByte.es(8);
+          j = paramArrayOfByte.es(4);
+          k = paramArrayOfByte.es(2);
+          paramArrayOfByte.et(2);
           paramInt = i1 - 2;
           localObject3 = new SparseArray();
           while (paramInt > 0)
           {
-            m = paramArrayOfByte.eo(8);
-            paramArrayOfByte.ep(8);
-            n = paramArrayOfByte.eo(16);
-            int i3 = paramArrayOfByte.eo(16);
+            m = paramArrayOfByte.es(8);
+            paramArrayOfByte.et(8);
+            n = paramArrayOfByte.es(16);
+            int i3 = paramArrayOfByte.es(16);
             paramInt -= 6;
             ((SparseArray)localObject3).put(m, new e(n, i3));
           }
           localObject3 = new d(i, j, k, (SparseArray)localObject3);
           if (((d)localObject3).state != 0)
           {
-            ((h)localObject1).bsb = ((d)localObject3);
-            ((h)localObject1).brE.clear();
-            ((h)localObject1).brW.clear();
-            ((h)localObject1).brX.clear();
+            ((h)localObject1).bCu = ((d)localObject3);
+            ((h)localObject1).bBX.clear();
+            ((h)localObject1).bCp.clear();
+            ((h)localObject1).bCq.clear();
             break label128;
           }
           if ((localObject2 == null) || (((d)localObject2).version == ((d)localObject3).version)) {
             break label128;
           }
-          ((h)localObject1).bsb = ((d)localObject3);
+          ((h)localObject1).bCu = ((d)localObject3);
           break label128;
-          localObject2 = ((h)localObject1).bsb;
-          if ((i != ((h)localObject1).brU) || (localObject2 == null)) {
+          localObject2 = ((h)localObject1).bCu;
+          if ((i != ((h)localObject1).bCn) || (localObject2 == null)) {
             break label128;
           }
           localObject3 = a(paramArrayOfByte, i1);
           if (((d)localObject2).state == 0) {
-            ((f)localObject3).a((f)((h)localObject1).brE.get(((f)localObject3).id));
+            ((f)localObject3).a((f)((h)localObject1).bBX.get(((f)localObject3).id));
           }
-          ((h)localObject1).brE.put(((f)localObject3).id, localObject3);
+          ((h)localObject1).bBX.put(((f)localObject3).id, localObject3);
           break label128;
-          if (i == ((h)localObject1).brU)
+          if (i == ((h)localObject1).bCn)
           {
             localObject2 = b(paramArrayOfByte, i1);
-            ((h)localObject1).brW.put(((a)localObject2).id, localObject2);
+            ((h)localObject1).bCp.put(((a)localObject2).id, localObject2);
             break label128;
           }
-          if (i != ((h)localObject1).brV) {
+          if (i != ((h)localObject1).bCo) {
             break label128;
           }
           localObject2 = b(paramArrayOfByte, i1);
-          ((h)localObject1).brY.put(((a)localObject2).id, localObject2);
+          ((h)localObject1).bCr.put(((a)localObject2).id, localObject2);
           break label128;
-          if (i == ((h)localObject1).brU)
+          if (i == ((h)localObject1).bCn)
           {
             localObject2 = b(paramArrayOfByte);
-            ((h)localObject1).brX.put(((c)localObject2).id, localObject2);
+            ((h)localObject1).bCq.put(((c)localObject2).id, localObject2);
             break label128;
           }
-          if (i != ((h)localObject1).brV) {
+          if (i != ((h)localObject1).bCo) {
             break label128;
           }
           localObject2 = b(paramArrayOfByte);
-          ((h)localObject1).brZ.put(((c)localObject2).id, localObject2);
+          ((h)localObject1).bCs.put(((c)localObject2).id, localObject2);
           break label128;
         }
       }
     }
-    if (this.brs.bsb == null)
+    if (this.bBL.bCu == null)
     {
       paramArrayOfByte = Collections.emptyList();
       AppMethodBeat.o(92795);
@@ -976,34 +976,34 @@ final class b
     }
     ArrayList localArrayList;
     f localf;
-    if (this.brs.bsa != null)
+    if (this.bBL.bCt != null)
     {
-      localObject1 = this.brs.bsa;
+      localObject1 = this.bBL.bCt;
       if ((this.bitmap == null) || (((b)localObject1).width + 1 != this.bitmap.getWidth()) || (((b)localObject1).height + 1 != this.bitmap.getHeight()))
       {
         this.bitmap = Bitmap.createBitmap(((b)localObject1).width + 1, ((b)localObject1).height + 1, Bitmap.Config.ARGB_8888);
-        this.brp.setBitmap(this.bitmap);
+        this.aTq.setBitmap(this.bitmap);
       }
       localArrayList = new ArrayList();
-      SparseArray localSparseArray1 = this.brs.bsb.brE;
+      SparseArray localSparseArray1 = this.bBL.bCu.bBX;
       i = 0;
       if (i >= localSparseArray1.size()) {
         break label1465;
       }
       paramArrayOfByte = (e)localSparseArray1.valueAt(i);
       paramInt = localSparseArray1.keyAt(i);
-      localf = (f)this.brs.brE.get(paramInt);
-      j = paramArrayOfByte.brF + ((b)localObject1).brw;
-      k = paramArrayOfByte.brG + ((b)localObject1).bry;
-      paramInt = Math.min(localf.width + j, ((b)localObject1).brx);
-      m = Math.min(localf.height + k, ((b)localObject1).brz);
-      this.brp.clipRect(j, k, paramInt, m, Region.Op.REPLACE);
-      localObject2 = (a)this.brs.brW.get(localf.brK);
+      localf = (f)this.bBL.bBX.get(paramInt);
+      j = paramArrayOfByte.bBY + ((b)localObject1).bBP;
+      k = paramArrayOfByte.bBZ + ((b)localObject1).bBR;
+      paramInt = Math.min(localf.width + j, ((b)localObject1).bBQ);
+      m = Math.min(localf.height + k, ((b)localObject1).bBS);
+      this.aTq.clipRect(j, k, paramInt, m, Region.Op.REPLACE);
+      localObject2 = (a)this.bBL.bCp.get(localf.bCd);
       paramArrayOfByte = (byte[])localObject2;
       if (localObject2 != null) {
         break label1476;
       }
-      localObject2 = (a)this.brs.brY.get(localf.brK);
+      localObject2 = (a)this.bBL.bCr.get(localf.bCd);
       paramArrayOfByte = (byte[])localObject2;
       if (localObject2 != null) {
         break label1476;
@@ -1014,19 +1014,19 @@ final class b
     label1465:
     label1473:
     label1476:
-    for (Object localObject2 = this.brr;; localObject2 = paramArrayOfByte)
+    for (Object localObject2 = this.bBK;; localObject2 = paramArrayOfByte)
     {
-      SparseArray localSparseArray2 = localf.brO;
+      SparseArray localSparseArray2 = localf.bCh;
       paramInt = 0;
       if (paramInt < localSparseArray2.size())
       {
         m = localSparseArray2.keyAt(paramInt);
         paramArrayOfByte = (g)localSparseArray2.valueAt(paramInt);
-        localObject3 = (c)this.brs.brX.get(m);
+        localObject3 = (c)this.bBL.bCq.get(m);
         if (localObject3 != null) {
           break label1473;
         }
-        localObject3 = (c)this.brs.brZ.get(m);
+        localObject3 = (c)this.bBL.bCs.get(m);
       }
       for (;;)
       {
@@ -1035,56 +1035,56 @@ final class b
         Canvas localCanvas;
         if (localObject3 != null)
         {
-          if (!((c)localObject3).brA) {
+          if (!((c)localObject3).bBT) {
             break label1221;
           }
           localPaint = null;
-          m = localf.brJ;
-          n = j + paramArrayOfByte.brQ;
-          i1 = k + paramArrayOfByte.brR;
-          localCanvas = this.brp;
+          m = localf.bCc;
+          n = j + paramArrayOfByte.bCj;
+          i1 = k + paramArrayOfByte.bCk;
+          localCanvas = this.aTq;
           if (m != 3) {
             break label1230;
           }
-          paramArrayOfByte = ((a)localObject2).brv;
+          paramArrayOfByte = ((a)localObject2).bBO;
         }
         for (;;)
         {
-          a(((c)localObject3).brB, paramArrayOfByte, m, n, i1, localPaint, localCanvas);
-          a(((c)localObject3).brC, paramArrayOfByte, m, n, i1 + 1, localPaint, localCanvas);
+          a(((c)localObject3).bBU, paramArrayOfByte, m, n, i1, localPaint, localCanvas);
+          a(((c)localObject3).bBV, paramArrayOfByte, m, n, i1 + 1, localPaint, localCanvas);
           paramInt += 1;
           break label1040;
-          localObject1 = this.brq;
+          localObject1 = this.bBJ;
           break;
           label1221:
-          localPaint = this.brn;
+          localPaint = this.bBH;
           break label1122;
           label1230:
           if (m == 2) {
-            paramArrayOfByte = ((a)localObject2).bru;
+            paramArrayOfByte = ((a)localObject2).bBN;
           } else {
-            paramArrayOfByte = ((a)localObject2).brt;
+            paramArrayOfByte = ((a)localObject2).bBM;
           }
         }
-        if (localf.brH)
+        if (localf.bCa)
         {
-          if (localf.brJ != 3) {
+          if (localf.bCc != 3) {
             break label1426;
           }
-          paramInt = localObject2.brv[localf.brL];
+          paramInt = localObject2.bBO[localf.bCe];
         }
         for (;;)
         {
-          this.bro.setColor(paramInt);
-          this.brp.drawRect(j, k, localf.width + j, localf.height + k, this.bro);
+          this.bBI.setColor(paramInt);
+          this.aTq.drawRect(j, k, localf.width + j, localf.height + k, this.bBI);
           localArrayList.add(new com.google.android.exoplayer2.f.a(Bitmap.createBitmap(this.bitmap, j, k, localf.width, localf.height), j / ((b)localObject1).width, k / ((b)localObject1).height, localf.width / ((b)localObject1).width, localf.height / ((b)localObject1).height));
-          this.brp.drawColor(0, PorterDuff.Mode.CLEAR);
+          this.aTq.drawColor(0, PorterDuff.Mode.CLEAR);
           i += 1;
           break;
-          if (localf.brJ == 2) {
-            paramInt = localObject2.bru[localf.brM];
+          if (localf.bCc == 2) {
+            paramInt = localObject2.bBN[localf.bCf];
           } else {
-            paramInt = localObject2.brt[localf.brN];
+            paramInt = localObject2.bBM[localf.bCg];
           }
         }
         AppMethodBeat.o(92795);
@@ -1095,26 +1095,26 @@ final class b
   
   static final class a
   {
-    public final int[] brt;
-    public final int[] bru;
-    public final int[] brv;
+    public final int[] bBM;
+    public final int[] bBN;
+    public final int[] bBO;
     public final int id;
     
     public a(int paramInt, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3)
     {
       this.id = paramInt;
-      this.brt = paramArrayOfInt1;
-      this.bru = paramArrayOfInt2;
-      this.brv = paramArrayOfInt3;
+      this.bBM = paramArrayOfInt1;
+      this.bBN = paramArrayOfInt2;
+      this.bBO = paramArrayOfInt3;
     }
   }
   
   static final class b
   {
-    public final int brw;
-    public final int brx;
-    public final int bry;
-    public final int brz;
+    public final int bBP;
+    public final int bBQ;
+    public final int bBR;
+    public final int bBS;
     public final int height;
     public final int width;
     
@@ -1122,67 +1122,67 @@ final class b
     {
       this.width = paramInt1;
       this.height = paramInt2;
-      this.brw = paramInt3;
-      this.brx = paramInt4;
-      this.bry = paramInt5;
-      this.brz = paramInt6;
+      this.bBP = paramInt3;
+      this.bBQ = paramInt4;
+      this.bBR = paramInt5;
+      this.bBS = paramInt6;
     }
   }
   
   static final class c
   {
-    public final boolean brA;
-    public final byte[] brB;
-    public final byte[] brC;
+    public final boolean bBT;
+    public final byte[] bBU;
+    public final byte[] bBV;
     public final int id;
     
     public c(int paramInt, boolean paramBoolean, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
     {
       this.id = paramInt;
-      this.brA = paramBoolean;
-      this.brB = paramArrayOfByte1;
-      this.brC = paramArrayOfByte2;
+      this.bBT = paramBoolean;
+      this.bBU = paramArrayOfByte1;
+      this.bBV = paramArrayOfByte2;
     }
   }
   
   static final class d
   {
-    public final int brD;
-    public final SparseArray<b.e> brE;
+    public final int bBW;
+    public final SparseArray<b.e> bBX;
     public final int state;
     public final int version;
     
     public d(int paramInt1, int paramInt2, int paramInt3, SparseArray<b.e> paramSparseArray)
     {
-      this.brD = paramInt1;
+      this.bBW = paramInt1;
       this.version = paramInt2;
       this.state = paramInt3;
-      this.brE = paramSparseArray;
+      this.bBX = paramSparseArray;
     }
   }
   
   static final class e
   {
-    public final int brF;
-    public final int brG;
+    public final int bBY;
+    public final int bBZ;
     
     public e(int paramInt1, int paramInt2)
     {
-      this.brF = paramInt1;
-      this.brG = paramInt2;
+      this.bBY = paramInt1;
+      this.bBZ = paramInt2;
     }
   }
   
   static final class f
   {
-    public final boolean brH;
-    public final int brI;
-    public final int brJ;
-    public final int brK;
-    public final int brL;
-    public final int brM;
-    public final int brN;
-    public final SparseArray<b.g> brO;
+    public final boolean bCa;
+    public final int bCb;
+    public final int bCc;
+    public final int bCd;
+    public final int bCe;
+    public final int bCf;
+    public final int bCg;
+    public final SparseArray<b.g> bCh;
     public final int height;
     public final int id;
     public final int width;
@@ -1190,16 +1190,16 @@ final class b
     public f(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, SparseArray<b.g> paramSparseArray)
     {
       this.id = paramInt1;
-      this.brH = paramBoolean;
+      this.bCa = paramBoolean;
       this.width = paramInt2;
       this.height = paramInt3;
-      this.brI = paramInt4;
-      this.brJ = paramInt5;
-      this.brK = paramInt6;
-      this.brL = paramInt7;
-      this.brM = paramInt8;
-      this.brN = paramInt9;
-      this.brO = paramSparseArray;
+      this.bCb = paramInt4;
+      this.bCc = paramInt5;
+      this.bCd = paramInt6;
+      this.bCe = paramInt7;
+      this.bCf = paramInt8;
+      this.bCg = paramInt9;
+      this.bCh = paramSparseArray;
     }
     
     public final void a(f paramf)
@@ -1210,11 +1210,11 @@ final class b
         AppMethodBeat.o(92792);
         return;
       }
-      paramf = paramf.brO;
+      paramf = paramf.bCh;
       int i = 0;
       while (i < paramf.size())
       {
-        this.brO.put(paramf.keyAt(i), paramf.valueAt(i));
+        this.bCh.put(paramf.keyAt(i), paramf.valueAt(i));
         i += 1;
       }
       AppMethodBeat.o(92792);
@@ -1223,53 +1223,53 @@ final class b
   
   static final class g
   {
-    public final int brP;
-    public final int brQ;
-    public final int brR;
-    public final int brS;
-    public final int brT;
+    public final int bCi;
+    public final int bCj;
+    public final int bCk;
+    public final int bCl;
+    public final int bCm;
     public final int type;
     
     public g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
     {
       this.type = paramInt1;
-      this.brP = paramInt2;
-      this.brQ = paramInt3;
-      this.brR = paramInt4;
-      this.brS = paramInt5;
-      this.brT = paramInt6;
+      this.bCi = paramInt2;
+      this.bCj = paramInt3;
+      this.bCk = paramInt4;
+      this.bCl = paramInt5;
+      this.bCm = paramInt6;
     }
   }
   
   static final class h
   {
-    public final SparseArray<b.f> brE;
-    public final int brU;
-    public final int brV;
-    public final SparseArray<b.a> brW;
-    public final SparseArray<b.c> brX;
-    public final SparseArray<b.a> brY;
-    public final SparseArray<b.c> brZ;
-    public b.b bsa;
-    public b.d bsb;
+    public final SparseArray<b.f> bBX;
+    public final int bCn;
+    public final int bCo;
+    public final SparseArray<b.a> bCp;
+    public final SparseArray<b.c> bCq;
+    public final SparseArray<b.a> bCr;
+    public final SparseArray<b.c> bCs;
+    public b.b bCt;
+    public b.d bCu;
     
     public h(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(92793);
-      this.brE = new SparseArray();
-      this.brW = new SparseArray();
-      this.brX = new SparseArray();
-      this.brY = new SparseArray();
-      this.brZ = new SparseArray();
-      this.brU = paramInt1;
-      this.brV = paramInt2;
+      this.bBX = new SparseArray();
+      this.bCp = new SparseArray();
+      this.bCq = new SparseArray();
+      this.bCr = new SparseArray();
+      this.bCs = new SparseArray();
+      this.bCn = paramInt1;
+      this.bCo = paramInt2;
       AppMethodBeat.o(92793);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b.b
  * JD-Core Version:    0.7.0.1
  */

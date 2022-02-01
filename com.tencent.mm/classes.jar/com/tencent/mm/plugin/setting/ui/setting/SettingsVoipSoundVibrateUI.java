@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -26,10 +26,10 @@ public class SettingsVoipSoundVibrateUI
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(getResourceId());
-    this.screen.cK("settings_voip_sound", false);
-    ((CheckBoxPreference)this.screen.aPN("settings_voip_sound")).mF = com.tencent.mm.m.f.Zs();
-    this.screen.cK("settings_voip_shake", false);
-    ((CheckBoxPreference)this.screen.aPN("settings_voip_shake")).mF = com.tencent.mm.m.f.Zt();
+    this.screen.cP("settings_voip_sound", false);
+    ((CheckBoxPreference)this.screen.aVD("settings_voip_sound")).oB = com.tencent.mm.n.f.abS();
+    this.screen.cP("settings_voip_shake", false);
+    ((CheckBoxPreference)this.screen.aVD("settings_voip_shake")).oB = com.tencent.mm.n.f.abT();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -72,16 +72,16 @@ public class SettingsVoipSoundVibrateUI
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_voip_sound"))
     {
-      com.tencent.mm.m.f.cV(((CheckBoxPreference)paramPreference).isChecked());
+      com.tencent.mm.n.f.cX(((CheckBoxPreference)paramPreference).isChecked());
       initView();
       AppMethodBeat.o(74565);
       return true;
     }
     if (paramf.equals("settings_voip_shake"))
     {
-      com.tencent.mm.m.f.cW(((CheckBoxPreference)paramPreference).isChecked());
+      com.tencent.mm.n.f.cY(((CheckBoxPreference)paramPreference).isChecked());
       initView();
-      bs.D(this, ((CheckBoxPreference)paramPreference).isChecked());
+      bt.F(this, ((CheckBoxPreference)paramPreference).isChecked());
       AppMethodBeat.o(74565);
       return true;
     }

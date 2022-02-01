@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.g;
 import junit.framework.Assert;
 
 public final class b
@@ -39,7 +39,7 @@ public final class b
     }
   }
   
-  public final String Ap()
+  public final String BM()
   {
     AppMethodBeat.i(48319);
     String str = String.format("Transformation_w%s_h%s", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
@@ -58,7 +58,7 @@ public final class b
     int i = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
     float f = this.mHeight / this.mWidth;
-    Bitmap localBitmap = f.createBitmap(this.mWidth, this.mHeight, Bitmap.Config.ARGB_8888);
+    Bitmap localBitmap = g.createBitmap(this.mWidth, this.mHeight, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Rect localRect1 = new Rect();
     localRect1.left = 0;
@@ -82,7 +82,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.share.b
  * JD-Core Version:    0.7.0.1
  */

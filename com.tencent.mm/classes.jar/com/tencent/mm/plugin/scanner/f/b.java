@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.scanner.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ff;
-import com.tencent.mm.plugin.scanner.model.ac;
+import com.tencent.mm.g.c.fp;
+import com.tencent.mm.plugin.scanner.model.af;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 
@@ -15,39 +15,39 @@ public final class b
   static
   {
     AppMethodBeat.i(120862);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ac.info, "ScanTranslationResult") };
+    SQL_CREATE = new String[] { j.getCreateSQLs(af.info, "ScanTranslationResult") };
     AppMethodBeat.o(120862);
   }
   
   public b(e parame)
   {
-    super(parame, ac.info, "ScanTranslationResult", null);
+    super(parame, af.info, "ScanTranslationResult", null);
     this.db = parame;
   }
   
-  public final boolean a(ac paramac)
+  public final boolean a(af paramaf)
   {
     AppMethodBeat.i(120861);
-    if (arL(paramac.field_originMD5) != null)
+    if (awM(paramaf.field_originMD5) != null)
     {
-      bool = replace(paramac);
+      bool = replace(paramaf);
       AppMethodBeat.o(120861);
       return bool;
     }
-    boolean bool = super.insert(paramac);
+    boolean bool = super.insert(paramaf);
     AppMethodBeat.o(120861);
     return bool;
   }
   
-  public final ff arL(String paramString)
+  public final fp awM(String paramString)
   {
     AppMethodBeat.i(120860);
-    ac localac = new ac();
-    localac.field_originMD5 = paramString;
-    if (get(localac, new String[0]))
+    af localaf = new af();
+    localaf.field_originMD5 = paramString;
+    if (get(localaf, new String[0]))
     {
       AppMethodBeat.o(120860);
-      return localac;
+      return localaf;
     }
     AppMethodBeat.o(120860);
     return null;
@@ -55,7 +55,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.f.b
  * JD-Core Version:    0.7.0.1
  */

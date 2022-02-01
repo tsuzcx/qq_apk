@@ -5,7 +5,7 @@ public final class e
 {
   public e()
   {
-    this.LVT = 259;
+    this.NQs = 259;
   }
 }
 

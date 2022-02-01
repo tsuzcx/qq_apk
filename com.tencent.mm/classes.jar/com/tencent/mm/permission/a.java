@@ -3,63 +3,63 @@ package com.tencent.mm.permission;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.g.a.lm;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
+import com.tencent.mm.g.a.lv;
+import com.tencent.mm.n.e;
+import com.tencent.mm.n.g;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  static final String cIZ;
-  static final String cJa;
-  static Map<Integer, a> iqY;
-  c iqZ;
-  private c ira;
-  private c irb;
+  static final String cUi;
+  static final String cUj;
+  static Map<Integer, a> iKc;
+  c iKd;
+  private c iKe;
+  private c iKf;
   
   static
   {
     AppMethodBeat.i(20689);
-    Object localObject = q.XX();
-    cIZ = (String)localObject;
-    cJa = p.getString(((String)localObject).hashCode());
+    Object localObject = q.aay();
+    cUi = (String)localObject;
+    cUj = p.getString(((String)localObject).hashCode());
     localObject = new HashMap();
-    iqY = (Map)localObject;
+    iKc = (Map)localObject;
     ((Map)localObject).put(Integer.valueOf(1), new a(38, 40, 41, 2131755850, 2131755842));
-    iqY.put(Integer.valueOf(2), new a(43, 44, 45, 2131755849, 2131755843));
+    iKc.put(Integer.valueOf(2), new a(43, 44, 45, 2131755849, 2131755843));
     AppMethodBeat.o(20689);
   }
   
   public a()
   {
     AppMethodBeat.i(20685);
-    this.iqZ = new a.1(this);
-    this.ira = new a.2(this);
-    this.irb = new c() {};
-    com.tencent.mm.sdk.b.a.GpY.c(this.iqZ);
-    com.tencent.mm.sdk.b.a.GpY.c(this.ira);
-    com.tencent.mm.sdk.b.a.GpY.c(this.irb);
+    this.iKd = new a.1(this);
+    this.iKe = new a.2(this);
+    this.iKf = new c() {};
+    com.tencent.mm.sdk.b.a.IbL.c(this.iKd);
+    com.tencent.mm.sdk.b.a.IbL.c(this.iKe);
+    com.tencent.mm.sdk.b.a.IbL.c(this.iKf);
     AppMethodBeat.o(20685);
   }
   
-  private static int Fs(String paramString)
+  private static int II(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(20686);
     try
     {
-      int j = bs.getInt(g.ZY().getValue(paramString), 0);
+      int j = bt.getInt(g.acA().getValue(paramString), 0);
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.e("MicroMsg.PermissionMgr", "getIntValFromDynamicConfig parseInt failed, val: ".concat(String.valueOf(paramString)));
+        ad.e("MicroMsg.PermissionMgr", "getIntValFromDynamicConfig parseInt failed, val: ".concat(String.valueOf(paramString)));
       }
     }
     AppMethodBeat.o(20686);
@@ -68,19 +68,19 @@ public final class a
   
   static final class a
   {
-    public int ird;
-    public int ire;
-    public int irf;
-    public int irg;
-    public int irh;
+    public int iKh;
+    public int iKi;
+    public int iKj;
+    public int iKk;
+    public int iKl;
     
     public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
     {
-      this.ird = paramInt1;
-      this.ire = paramInt2;
-      this.irf = paramInt3;
-      this.irg = paramInt4;
-      this.irh = paramInt5;
+      this.iKh = paramInt1;
+      this.iKi = paramInt2;
+      this.iKj = paramInt3;
+      this.iKk = paramInt4;
+      this.iKl = paramInt5;
     }
   }
 }

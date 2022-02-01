@@ -2,25 +2,27 @@ package com.tencent.mm.plugin.downloader_app.detail.a;
 
 import android.content.Context;
 import android.widget.Toast;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.plugin.downloader.f.b;
 import com.tencent.mm.plugin.downloader.model.h;
 import com.tencent.mm.plugin.downloader_app.a.c;
+import com.tencent.mm.plugin.downloader_app.api.a.a;
 import com.tencent.mm.plugin.downloader_app.api.a.b;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class a
-  extends bn
+  extends bq
 {
-  public final void a(final Context paramContext, String paramString, final bn.a parama)
+  public final void a(final Context paramContext, String paramString, final bq.a parama)
   {
     AppMethodBeat.i(8823);
     try
@@ -28,9 +30,9 @@ public class a
       paramString = new JSONObject(paramString);
       str1 = paramString.optString("task_url");
       l = paramString.optLong("task_size");
-      if (bs.isNullOrNil(str1))
+      if (bt.isNullOrNil(str1))
       {
-        ac.e("MicroMsg.JsApiAddDownloadTaskStraight", "url is null");
+        ad.e("MicroMsg.JsApiAddDownloadTaskStraight", "url is null");
         parama.f("fail", null);
         AppMethodBeat.o(8823);
         return;
@@ -38,16 +40,16 @@ public class a
     }
     catch (JSONException paramContext)
     {
-      ac.e("MicroMsg.JsApiAddDownloadTaskStraight", "paras data error: " + paramContext.getMessage());
+      ad.e("MicroMsg.JsApiAddDownloadTaskStraight", "paras data error: " + paramContext.getMessage());
       parama.f("fail", null);
       AppMethodBeat.o(8823);
       return;
     }
     com.tencent.mm.plugin.downloader.f.a.a(9, new b(paramString.optString("appid"), 1000, -1L, ""));
-    if (!ax.isNetworkConnected(paramContext))
+    if (!ay.isNetworkConnected(paramContext))
     {
       parama.f("fail_network_not_connected", null);
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
@@ -56,14 +58,14 @@ public class a
           AppMethodBeat.o(8819);
         }
       });
-      ac.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, network not ready");
+      ad.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, network not ready");
       AppMethodBeat.o(8823);
       return;
     }
-    if (!e.YD())
+    if (!e.abf())
     {
       parama.f("sdcard_not_ready", null);
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
@@ -72,14 +74,14 @@ public class a
           AppMethodBeat.o(8820);
         }
       });
-      ac.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, sdcard not ready");
+      ad.i("MicroMsg.JsApiAddDownloadTaskStraight", " fail, sdcard not ready");
       AppMethodBeat.o(8823);
       return;
     }
-    if ((l > 0L) && (!h.sm(l)) && (!h.sl(l)))
+    if ((l > 0L) && (!h.uk(l)) && (!h.uj(l)))
     {
       parama.f("has_not_enough_space", null);
-      ap.f(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
@@ -88,7 +90,7 @@ public class a
           AppMethodBeat.o(8821);
         }
       });
-      ac.i("MicroMsg.JsApiAddDownloadTaskStraight", "fail, not enough space, require size = ".concat(String.valueOf(l)));
+      ad.i("MicroMsg.JsApiAddDownloadTaskStraight", "fail, not enough space, require size = ".concat(String.valueOf(l)));
       AppMethodBeat.o(8823);
       return;
     }
@@ -104,16 +106,16 @@ public class a
     paramString = new com.tencent.mm.plugin.downloader_app.a.a();
     paramString.appName = str1;
     paramString.downloadUrl = str2;
-    paramString.oKQ = str3;
-    paramString.oKS = l;
-    paramString.lpa = str4;
+    paramString.poy = str3;
+    paramString.poA = l;
+    paramString.lMs = str4;
     paramString.extInfo = str5;
     paramString.appId = str6;
     paramString.packageName = str7;
-    paramString.diX = i;
+    paramString.duJ = i;
     c.a(paramContext, paramString, new a.b()
     {
-      public final void a(com.tencent.mm.plugin.downloader_app.api.a.a paramAnonymousa, long paramAnonymousLong)
+      public final void a(a.a paramAnonymousa, long paramAnonymousLong)
       {
         AppMethodBeat.i(8822);
         if (paramAnonymousLong < 0L)
@@ -122,7 +124,7 @@ public class a
           AppMethodBeat.o(8822);
           return;
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKo) {
+        if (paramAnonymousa == a.a.pnV) {
           try
           {
             paramAnonymousa = new JSONObject();
@@ -138,13 +140,13 @@ public class a
             return;
           }
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKp)
+        if (paramAnonymousa == a.a.pnW)
         {
           parama.f("fail", null);
           AppMethodBeat.o(8822);
           return;
         }
-        if (paramAnonymousa == com.tencent.mm.plugin.downloader_app.api.a.a.oKq) {
+        if (paramAnonymousa == a.a.pnX) {
           try
           {
             paramAnonymousa = new JSONObject();
@@ -164,9 +166,9 @@ public class a
     AppMethodBeat.o(8823);
   }
   
-  public final void b(com.tencent.luggage.d.a.a parama) {}
+  public final void b(b.a parama) {}
   
-  public final int bYk()
+  public final int ccO()
   {
     return 1;
   }

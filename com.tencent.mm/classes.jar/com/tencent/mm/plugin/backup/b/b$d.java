@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.backup.b;
 
 public abstract interface b$d
 {
-  public abstract void bCO();
+  public abstract void bGW();
   
-  public abstract void wJ(int paramInt);
+  public abstract void xp(int paramInt);
 }
 
 

@@ -8,16 +8,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.ui.z;
 
 public class MMDatePickerView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private Button IZP;
-  private Button IZQ;
-  private Button IZR;
-  private MMSpinnerDatePicker oCR;
+  private Button KRb;
+  private Button KRc;
+  private Button KRd;
+  private MMSpinnerDatePicker pgm;
   
   public MMDatePickerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,35 +40,38 @@ public class MMDatePickerView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(143349);
-    paramContext = z.jD(paramContext).inflate(2131494784, this);
-    this.IZP = ((Button)paramContext.findViewById(2131307139));
-    this.IZQ = ((Button)paramContext.findViewById(2131302451));
-    this.IZR = ((Button)paramContext.findViewById(2131298936));
-    this.oCR = ((MMSpinnerDatePicker)paramContext.findViewById(2131302321));
-    this.IZP.setOnClickListener(this);
-    this.IZQ.setOnClickListener(this);
-    this.IZR.setOnClickListener(this);
+    paramContext = z.jO(paramContext).inflate(2131494784, this);
+    this.KRb = ((Button)paramContext.findViewById(2131307139));
+    this.KRc = ((Button)paramContext.findViewById(2131302451));
+    this.KRd = ((Button)paramContext.findViewById(2131298936));
+    this.pgm = ((MMSpinnerDatePicker)paramContext.findViewById(2131302321));
+    this.KRb.setOnClickListener(this);
+    this.KRc.setOnClickListener(this);
+    this.KRd.setOnClickListener(this);
     AppMethodBeat.o(143349);
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(143350);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/ui/widget/MMDatePickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
     int i = paramView.getId();
-    if (i == 2131307139)
+    if (i == 2131307139) {
+      this.pgm.setPickerMode(0);
+    }
+    for (;;)
     {
-      this.oCR.setPickerMode(0);
+      a.a(this, "com/tencent/mm/ui/widget/MMDatePickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(143350);
       return;
+      if (i == 2131302451) {
+        this.pgm.setPickerMode(1);
+      } else {
+        this.pgm.setPickerMode(2);
+      }
     }
-    if (i == 2131302451)
-    {
-      this.oCR.setPickerMode(1);
-      AppMethodBeat.o(143350);
-      return;
-    }
-    this.oCR.setPickerMode(2);
-    AppMethodBeat.o(143350);
   }
 }
 

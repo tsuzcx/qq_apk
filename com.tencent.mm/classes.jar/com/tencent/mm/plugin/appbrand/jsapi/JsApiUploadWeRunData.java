@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.protocal.protobuf.dng;
-import com.tencent.mm.protocal.protobuf.dnh;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.dsx;
+import com.tencent.mm.protocal.protobuf.dsy;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public class JsApiUploadWeRunData
@@ -21,16 +21,16 @@ public class JsApiUploadWeRunData
 {
   public static final int CTRL_INDEX = 323;
   public static final String NAME = "uploadWeRunData";
-  private UploadMiniAppStepTask kaq;
+  private UploadMiniAppStepTask kuM;
   
   public void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(45717);
-    ac.d("MicroMsg.JsApiUploadWeRunData", "JsApiUploadWeRunData!");
+    ad.d("MicroMsg.JsApiUploadWeRunData", "JsApiUploadWeRunData!");
     if (paramJSONObject == null)
     {
       paramc.h(paramInt, e("fail:data is null", null));
-      ac.e("MicroMsg.JsApiUploadWeRunData", "data is null");
+      ad.e("MicroMsg.JsApiUploadWeRunData", "data is null");
       AppMethodBeat.o(45717);
       return;
     }
@@ -47,9 +47,9 @@ public class JsApiUploadWeRunData
       AppMethodBeat.o(45718);
       return;
     }
-    this.kaq = new UploadMiniAppStepTask(paramm, paramc, paramInt1, paramInt2, paramBoolean);
-    this.kaq.bej();
-    AppBrandMainProcessService.a(this.kaq);
+    this.kuM = new UploadMiniAppStepTask(paramm, paramc, paramInt1, paramInt2, paramBoolean);
+    this.kuM.bhN();
+    AppBrandMainProcessService.a(this.kuM);
     AppMethodBeat.o(45718);
   }
   
@@ -58,12 +58,12 @@ public class JsApiUploadWeRunData
   {
     public static final Parcelable.Creator<UploadMiniAppStepTask> CREATOR;
     private String appId;
-    private boolean ddj;
-    private int jOT;
-    private m jXc;
-    private c jYG;
-    private int kar;
-    private boolean kas;
+    private boolean doF;
+    private int kje;
+    private m kry;
+    private c ktc;
+    private int kuN;
+    private boolean kuO;
     
     static
     {
@@ -82,38 +82,38 @@ public class JsApiUploadWeRunData
     public UploadMiniAppStepTask(m paramm, c paramc, int paramInt1, int paramInt2, boolean paramBoolean)
     {
       AppMethodBeat.i(45709);
-      ac.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask");
-      this.jXc = paramm;
-      this.jYG = paramc;
-      this.jOT = paramInt1;
-      this.kar = paramInt2;
-      this.kas = paramBoolean;
+      ad.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask");
+      this.kry = paramm;
+      this.ktc = paramc;
+      this.kje = paramInt1;
+      this.kuN = paramInt2;
+      this.kuO = paramBoolean;
       this.appId = paramc.getAppId();
       AppMethodBeat.o(45709);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       AppMethodBeat.i(45711);
-      long l2 = ce.azH();
-      ac.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask currentTime %d", new Object[] { Long.valueOf(l2 / 1000L) });
+      long l2 = cf.aCK();
+      ad.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask currentTime %d", new Object[] { Long.valueOf(l2 / 1000L) });
       long l1 = l2;
       if (l2 == 0L) {
         l1 = System.currentTimeMillis();
       }
       b.a locala = new b.a();
-      dng localdng = new dng();
-      locala.hvt = localdng;
-      locala.hvu = new dnh();
+      dsx localdsx = new dsx();
+      locala.hNM = localdsx;
+      locala.hNN = new dsy();
       locala.uri = "/cgi-bin/mmoc-bin/hardware/uploadminiappstep";
       locala.funcId = 1949;
-      locala.reqCmdId = 0;
+      locala.hNO = 0;
       locala.respCmdId = 0;
-      localdng.hOf = this.appId;
-      localdng.ndH = this.kar;
-      localdng.FUS = this.kas;
-      localdng.fZy = ((int)(l1 / 1000L));
-      x.a(locala.aAz(), new x.a()
+      localdsx.iht = this.appId;
+      localdsx.nEe = this.kuN;
+      localdsx.HFG = this.kuO;
+      localdsx.gsU = ((int)(l1 / 1000L));
+      x.a(locala.aDC(), new x.a()
       {
         public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, n paramAnonymousn)
         {
@@ -126,7 +126,7 @@ public class JsApiUploadWeRunData
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
             JsApiUploadWeRunData.UploadMiniAppStepTask.a(JsApiUploadWeRunData.UploadMiniAppStepTask.this, true);
-            ac.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask ok.");
+            ad.d("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask ok.");
           }
           for (;;)
           {
@@ -134,25 +134,25 @@ public class JsApiUploadWeRunData
             AppMethodBeat.o(45707);
             return 0;
             JsApiUploadWeRunData.UploadMiniAppStepTask.a(JsApiUploadWeRunData.UploadMiniAppStepTask.this, false);
-            ac.i("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask fail: errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            ad.i("MicroMsg.JsApiUploadWeRunData", "UploadMiniAppStepTask fail: errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           }
         }
       }, true);
       AppMethodBeat.o(45711);
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(45712);
-      if (this.ddj) {
-        this.jYG.h(this.jOT, this.jXc.e("ok", null));
+      if (this.doF) {
+        this.ktc.h(this.kje, this.kry.e("ok", null));
       }
       for (;;)
       {
-        bek();
+        bhO();
         AppMethodBeat.o(45712);
         return;
-        this.jYG.h(this.jOT, this.jXc.e("fail", null));
+        this.ktc.h(this.kje, this.kry.e("fail", null));
       }
     }
     
@@ -160,11 +160,11 @@ public class JsApiUploadWeRunData
     {
       boolean bool2 = true;
       AppMethodBeat.i(45713);
-      this.kar = paramParcel.readInt();
+      this.kuN = paramParcel.readInt();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.kas = bool1;
+        this.kuO = bool1;
         if (paramParcel.readByte() == 0) {
           break label62;
         }
@@ -172,7 +172,7 @@ public class JsApiUploadWeRunData
       label62:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.ddj = bool1;
+        this.doF = bool1;
         this.appId = paramParcel.readString();
         AppMethodBeat.o(45713);
         return;
@@ -185,12 +185,12 @@ public class JsApiUploadWeRunData
     {
       byte b2 = 1;
       AppMethodBeat.i(45714);
-      paramParcel.writeInt(this.kar);
-      if (this.kas)
+      paramParcel.writeInt(this.kuN);
+      if (this.kuO)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.ddj) {
+        if (!this.doF) {
           break label64;
         }
       }

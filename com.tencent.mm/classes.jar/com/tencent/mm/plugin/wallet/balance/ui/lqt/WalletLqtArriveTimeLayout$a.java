@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 public abstract interface WalletLqtArriveTimeLayout$a
 {
-  public abstract void eoH();
+  public abstract void eCH();
 }
 
 

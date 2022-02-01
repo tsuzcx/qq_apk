@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.ui.formview;
 
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class WalletFormView$4
   implements Runnable
@@ -12,23 +12,23 @@ final class WalletFormView$4
   public final void run()
   {
     AppMethodBeat.i(73146);
-    int j = this.sWC.getSelectionStart();
-    int k = this.sWC.getSelectionEnd();
-    if (bs.isNullOrNil(this.AgE))
+    int j = this.val$editText.getSelectionStart();
+    int k = this.val$editText.getSelectionEnd();
+    if (bt.isNullOrNil(this.Byq))
     {
-      this.sWC.setText("");
+      this.val$editText.setText("");
       AppMethodBeat.o(73146);
       return;
     }
-    this.sWC.setText(this.AgE);
-    EditText localEditText = this.sWC;
+    this.val$editText.setText(this.Byq);
+    EditText localEditText = this.val$editText;
     int i = j;
-    if (j > this.AgE.length()) {
-      i = this.AgE.length();
+    if (j > this.Byq.length()) {
+      i = this.Byq.length();
     }
     j = k;
-    if (k > this.AgE.length()) {
-      j = this.AgE.length();
+    if (k > this.Byq.length()) {
+      j = this.Byq.length();
     }
     localEditText.setSelection(i, j);
     AppMethodBeat.o(73146);

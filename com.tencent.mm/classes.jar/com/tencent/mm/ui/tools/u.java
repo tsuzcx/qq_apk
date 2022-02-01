@@ -6,10 +6,10 @@ import com.tencent.mm.cc.a;
 
 public final class u
 {
-  public static int aM(Context paramContext, int paramInt)
+  public static int aP(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(177648);
-    if (Float.compare(a.eb(paramContext), a.hS(paramContext)) > 0)
+    if (Float.compare(a.eb(paramContext), a.ib(paramContext)) > 0)
     {
       if (paramInt < 10)
       {
@@ -28,16 +28,16 @@ public final class u
     return 2131234442;
   }
   
-  public static int ks(Context paramContext)
+  public static int kE(Context paramContext)
   {
     AppMethodBeat.i(143282);
     float f = a.eb(paramContext);
-    if (Float.compare(f, a.hS(paramContext)) > 0)
+    if (Float.compare(f, a.ib(paramContext)) > 0)
     {
       AppMethodBeat.o(143282);
       return 2131234444;
     }
-    if (Float.compare(f, a.hQ(paramContext)) > 0)
+    if (Float.compare(f, a.hZ(paramContext)) > 0)
     {
       AppMethodBeat.o(143282);
       return 2131234446;

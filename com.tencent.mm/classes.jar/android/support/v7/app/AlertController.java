@@ -41,70 +41,70 @@ import java.lang.ref.WeakReference;
 
 final class AlertController
 {
-  ListAdapter EN;
-  CharSequence Fm;
-  final e UW;
-  final Window UX;
-  final int UY;
-  CharSequence UZ;
-  int VA;
-  int VB;
-  int VC;
-  int VD;
-  int VE;
-  int VF;
-  boolean VG;
-  int VH = 0;
-  final View.OnClickListener VI = new View.OnClickListener()
+  ListAdapter GE;
+  CharSequence Hd;
+  final e WL;
+  final Window WM;
+  final int WN;
+  CharSequence WO;
+  int WP;
+  int WQ;
+  int WR;
+  int WS;
+  int WT;
+  boolean WU = false;
+  Button WV;
+  CharSequence WW;
+  Message WX;
+  Drawable WY;
+  Button WZ;
+  CharSequence Xa;
+  Message Xb;
+  Drawable Xc;
+  Button Xd;
+  CharSequence Xe;
+  Message Xf;
+  Drawable Xg;
+  NestedScrollView Xh;
+  int Xi = 0;
+  Drawable Xj;
+  ImageView Xk;
+  TextView Xl;
+  TextView Xm;
+  View Xn;
+  int Xo = -1;
+  int Xp;
+  int Xq;
+  int Xr;
+  int Xs;
+  int Xt;
+  int Xu;
+  boolean Xv;
+  int Xw = 0;
+  final View.OnClickListener Xx = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
-      if ((paramAnonymousView == AlertController.this.Vg) && (AlertController.this.Vi != null)) {
-        paramAnonymousView = Message.obtain(AlertController.this.Vi);
+      if ((paramAnonymousView == AlertController.this.WV) && (AlertController.this.WX != null)) {
+        paramAnonymousView = Message.obtain(AlertController.this.WX);
       }
       for (;;)
       {
         if (paramAnonymousView != null) {
           paramAnonymousView.sendToTarget();
         }
-        AlertController.this.mHandler.obtainMessage(1, AlertController.this.UW).sendToTarget();
+        AlertController.this.mHandler.obtainMessage(1, AlertController.this.WL).sendToTarget();
         return;
-        if ((paramAnonymousView == AlertController.this.Vk) && (AlertController.this.Vm != null)) {
-          paramAnonymousView = Message.obtain(AlertController.this.Vm);
-        } else if ((paramAnonymousView == AlertController.this.Vo) && (AlertController.this.Vq != null)) {
-          paramAnonymousView = Message.obtain(AlertController.this.Vq);
+        if ((paramAnonymousView == AlertController.this.WZ) && (AlertController.this.Xb != null)) {
+          paramAnonymousView = Message.obtain(AlertController.this.Xb);
+        } else if ((paramAnonymousView == AlertController.this.Xd) && (AlertController.this.Xf != null)) {
+          paramAnonymousView = Message.obtain(AlertController.this.Xf);
         } else {
           paramAnonymousView = null;
         }
       }
     }
   };
-  int Va;
-  int Vb;
-  int Vc;
-  int Vd;
-  int Ve;
-  boolean Vf = false;
-  Button Vg;
-  CharSequence Vh;
-  Message Vi;
-  Drawable Vj;
-  Button Vk;
-  CharSequence Vl;
-  Message Vm;
-  Drawable Vn;
-  Button Vo;
-  CharSequence Vp;
-  Message Vq;
-  Drawable Vr;
-  NestedScrollView Vs;
-  int Vt = 0;
-  Drawable Vu;
-  ImageView Vv;
-  TextView Vw;
-  TextView Vx;
-  View Vy;
-  int Vz = -1;
   final Context mContext;
   Handler mHandler;
   ListView mListView;
@@ -113,20 +113,20 @@ final class AlertController
   public AlertController(Context paramContext, e parame, Window paramWindow)
   {
     this.mContext = paramContext;
-    this.UW = parame;
-    this.UX = paramWindow;
+    this.WL = parame;
+    this.WM = paramWindow;
     this.mHandler = new b(parame);
     paramContext = paramContext.obtainStyledAttributes(null, a.a.AlertDialog, 2130968643, 0);
-    this.VA = paramContext.getResourceId(0, 0);
-    this.VB = paramContext.getResourceId(2, 0);
-    this.VC = paramContext.getResourceId(4, 0);
-    this.VD = paramContext.getResourceId(5, 0);
-    this.VE = paramContext.getResourceId(7, 0);
-    this.VF = paramContext.getResourceId(3, 0);
-    this.VG = paramContext.getBoolean(6, true);
-    this.UY = paramContext.getDimensionPixelSize(1, 0);
+    this.Xp = paramContext.getResourceId(0, 0);
+    this.Xq = paramContext.getResourceId(2, 0);
+    this.Xr = paramContext.getResourceId(4, 0);
+    this.Xs = paramContext.getResourceId(5, 0);
+    this.Xt = paramContext.getResourceId(7, 0);
+    this.Xu = paramContext.getResourceId(3, 0);
+    this.Xv = paramContext.getBoolean(6, true);
+    this.WN = paramContext.getDimensionPixelSize(1, 0);
     paramContext.recycle();
-    parame.gt();
+    parame.gK();
   }
   
   static void a(View paramView1, View paramView2, View paramView3)
@@ -222,101 +222,101 @@ final class AlertController
     default: 
       throw new IllegalArgumentException("Button does not exist");
     case -1: 
-      this.Vh = paramCharSequence;
-      this.Vi = paramMessage;
-      this.Vj = paramDrawable;
+      this.WW = paramCharSequence;
+      this.WX = paramMessage;
+      this.WY = paramDrawable;
       return;
     case -2: 
-      this.Vl = paramCharSequence;
-      this.Vm = paramMessage;
-      this.Vn = paramDrawable;
+      this.Xa = paramCharSequence;
+      this.Xb = paramMessage;
+      this.Xc = paramDrawable;
       return;
     }
-    this.Vp = paramCharSequence;
-    this.Vq = paramMessage;
-    this.Vr = paramDrawable;
+    this.Xe = paramCharSequence;
+    this.Xf = paramMessage;
+    this.Xg = paramDrawable;
   }
   
   public final void setIcon(int paramInt)
   {
-    this.Vu = null;
-    this.Vt = paramInt;
-    if (this.Vv != null)
+    this.Xj = null;
+    this.Xi = paramInt;
+    if (this.Xk != null)
     {
       if (paramInt != 0)
       {
-        this.Vv.setVisibility(0);
-        this.Vv.setImageResource(this.Vt);
+        this.Xk.setVisibility(0);
+        this.Xk.setImageResource(this.Xi);
       }
     }
     else {
       return;
     }
-    this.Vv.setVisibility(8);
+    this.Xk.setVisibility(8);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    this.Fm = paramCharSequence;
-    if (this.Vw != null) {
-      this.Vw.setText(paramCharSequence);
+    this.Hd = paramCharSequence;
+    if (this.Xl != null) {
+      this.Xl.setText(paramCharSequence);
     }
   }
   
   public static class RecycleListView
     extends ListView
   {
-    final int Wp;
-    final int Wq;
+    final int Ye;
+    final int Yf;
     
     public RecycleListView(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RecycleListView);
-      this.Wq = paramContext.getDimensionPixelOffset(0, -1);
-      this.Wp = paramContext.getDimensionPixelOffset(1, -1);
+      this.Yf = paramContext.getDimensionPixelOffset(0, -1);
+      this.Ye = paramContext.getDimensionPixelOffset(1, -1);
     }
   }
   
   public static final class a
   {
-    public ListAdapter EN;
-    public CharSequence Fm;
-    public Cursor Rn;
-    public CharSequence UZ;
-    public int VM = 0;
-    public CharSequence VN;
-    public Drawable VO;
-    public DialogInterface.OnClickListener VP;
-    public CharSequence VQ;
-    public Drawable VR;
-    public DialogInterface.OnClickListener VS;
-    public CharSequence VT;
-    public Drawable VU;
-    public DialogInterface.OnClickListener VV;
-    public DialogInterface.OnCancelListener VW;
-    public DialogInterface.OnDismissListener VX;
-    public DialogInterface.OnKeyListener VY;
-    public CharSequence[] VZ;
-    public int Va;
-    public int Vb;
-    public int Vc;
-    public int Vd;
-    public int Ve;
-    public boolean Vf = false;
-    public int Vt = 0;
-    public Drawable Vu;
-    public View Vy;
-    public int Vz = -1;
-    public DialogInterface.OnClickListener Wa;
-    public boolean[] Wb;
-    public boolean Wc;
-    public boolean Wd;
-    public DialogInterface.OnMultiChoiceClickListener We;
-    public String Wf;
-    public String Wg;
-    public AdapterView.OnItemSelectedListener Wh;
-    public boolean Wi = true;
+    public ListAdapter GE;
+    public CharSequence Hd;
+    public Cursor Tc;
+    public CharSequence WO;
+    public int WP;
+    public int WQ;
+    public int WR;
+    public int WS;
+    public int WT;
+    public boolean WU = false;
+    public int XB = 0;
+    public CharSequence XC;
+    public Drawable XD;
+    public DialogInterface.OnClickListener XE;
+    public CharSequence XF;
+    public Drawable XG;
+    public DialogInterface.OnClickListener XH;
+    public CharSequence XI;
+    public Drawable XJ;
+    public DialogInterface.OnClickListener XK;
+    public DialogInterface.OnCancelListener XL;
+    public DialogInterface.OnDismissListener XM;
+    public DialogInterface.OnKeyListener XN;
+    public CharSequence[] XO;
+    public DialogInterface.OnClickListener XP;
+    public boolean[] XQ;
+    public boolean XR;
+    public boolean XS;
+    public DialogInterface.OnMultiChoiceClickListener XT;
+    public String XU;
+    public String XV;
+    public AdapterView.OnItemSelectedListener XW;
+    public boolean XX = true;
+    public int Xi = 0;
+    public Drawable Xj;
+    public View Xn;
+    public int Xo = -1;
     public boolean mCancelable;
     public final Context mContext;
     public final LayoutInflater mInflater;
@@ -333,11 +333,11 @@ final class AlertController
   static final class b
     extends Handler
   {
-    private WeakReference<DialogInterface> Wo;
+    private WeakReference<DialogInterface> Yd;
     
     public b(DialogInterface paramDialogInterface)
     {
-      this.Wo = new WeakReference(paramDialogInterface);
+      this.Yd = new WeakReference(paramDialogInterface);
     }
     
     public final void handleMessage(Message paramMessage)
@@ -350,7 +350,7 @@ final class AlertController
       case -3: 
       case -2: 
       case -1: 
-        ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.Wo.get(), paramMessage.what);
+        ((DialogInterface.OnClickListener)paramMessage.obj).onClick((DialogInterface)this.Yd.get(), paramMessage.what);
         return;
       }
       ((DialogInterface)paramMessage.obj).dismiss();

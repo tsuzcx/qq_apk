@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.launching.c;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.g;
+import com.tencent.mm.plugin.appbrand.report.h;
 import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
 
 final class f
@@ -14,7 +14,7 @@ final class f
     AppMethodBeat.i(47415);
     if (paramUri == null) {}
     for (paramString = "";; paramString = paramUri.getQueryParameter("appid")) {
-      switch (1.lpp[parama.ordinal()])
+      switch (1.lMI[parama.ordinal()])
       {
       default: 
         AppBrand404PageUI.show(2131755402);
@@ -33,18 +33,18 @@ final class f
     label125:
     for (int i = j;; i = 0)
     {
-      g.Q(paramString, 2, i + 1);
+      h.S(paramString, 2, i + 1);
       AppMethodBeat.o(47415);
       return;
       i = 0;
       break;
     }
     AppBrand404PageUI.show(2131755605);
-    g.Q("", 3, 2);
+    h.S("", 3, 2);
     AppMethodBeat.o(47415);
     return;
     AppBrand404PageUI.show(2131755606);
-    g.Q("", 4, 2);
+    h.S("", 4, 2);
     AppMethodBeat.o(47415);
     return;
     AppMethodBeat.o(47415);

@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 final class u
 {
-  private final BroadcastReceiver.PendingResult bBD;
-  private final ScheduledFuture<?> bBE;
+  private final BroadcastReceiver.PendingResult bLR;
+  private final ScheduledFuture<?> bLS;
   final Intent intent;
   private boolean zzt;
   
@@ -19,8 +19,8 @@ final class u
     AppMethodBeat.i(4210);
     this.zzt = false;
     this.intent = paramIntent;
-    this.bBD = paramPendingResult;
-    this.bBE = paramScheduledExecutorService.schedule(new v(this, paramIntent), 9500L, TimeUnit.MILLISECONDS);
+    this.bLR = paramPendingResult;
+    this.bLS = paramScheduledExecutorService.schedule(new v(this, paramIntent), 9500L, TimeUnit.MILLISECONDS);
     AppMethodBeat.o(4210);
   }
   
@@ -31,8 +31,8 @@ final class u
       AppMethodBeat.i(4211);
       if (!this.zzt)
       {
-        this.bBD.finish();
-        this.bBE.cancel(false);
+        this.bLR.finish();
+        this.bLS.cancel(false);
         this.zzt = true;
       }
       AppMethodBeat.o(4211);

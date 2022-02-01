@@ -1,7 +1,7 @@
 package d.l.b.a.b.d.a.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l.b.a.b.b.a.g;
 import d.l.b.a.b.m.ab;
 import d.l.b.a.b.m.ac;
@@ -17,19 +17,19 @@ public final class f
   extends n
   implements ag
 {
-  private final aj Lqj;
+  private final aj Nhg;
   
   public f(aj paramaj)
   {
     AppMethodBeat.i(58036);
-    this.Lqj = paramaj;
+    this.Nhg = paramaj;
     AppMethodBeat.o(58036);
   }
   
   private static aj a(aj paramaj)
   {
     AppMethodBeat.i(58029);
-    aj localaj = paramaj.zo(false);
+    aj localaj = paramaj.Ac(false);
     if (!a.aI((ab)paramaj))
     {
       AppMethodBeat.o(58029);
@@ -43,17 +43,31 @@ public final class f
   private f c(g paramg)
   {
     AppMethodBeat.i(58030);
-    k.h(paramg, "newAnnotations");
-    paramg = new f(this.Lqj.d(paramg));
+    p.h(paramg, "newAnnotations");
+    paramg = new f(this.Nhg.d(paramg));
     AppMethodBeat.o(58030);
     return paramg;
+  }
+  
+  public final aj Ac(boolean paramBoolean)
+  {
+    AppMethodBeat.i(58033);
+    if (paramBoolean)
+    {
+      localaj = this.Nhg.Ac(true);
+      AppMethodBeat.o(58033);
+      return localaj;
+    }
+    aj localaj = (aj)this;
+    AppMethodBeat.o(58033);
+    return localaj;
   }
   
   public final ab R(ab paramab)
   {
     AppMethodBeat.i(58028);
-    k.h(paramab, "replacement");
-    paramab = paramab.gcz();
+    p.h(paramab, "replacement");
+    paramab = paramab.gua();
     if ((!bc.aF((ab)paramab)) && (!a.aI((ab)paramab)))
     {
       paramab = (ab)paramab;
@@ -68,7 +82,7 @@ public final class f
     }
     if ((paramab instanceof v))
     {
-      paramab = (ab)be.b(ac.a(a(((v)paramab).LLa), a(((v)paramab).LLb)), be.aK((ab)paramab));
+      paramab = (ab)be.b(ac.a(a(((v)paramab).NBV), a(((v)paramab).NBW)), be.aK((ab)paramab));
       AppMethodBeat.o(58028);
       return paramab;
     }
@@ -77,38 +91,24 @@ public final class f
     throw paramab;
   }
   
-  public final aj fUt()
+  public final aj glS()
   {
-    return this.Lqj;
+    return this.Nhg;
   }
   
-  public final boolean fUw()
+  public final boolean glV()
   {
     return true;
   }
   
-  public final boolean fUx()
+  public final boolean glW()
   {
     return false;
-  }
-  
-  public final aj zo(boolean paramBoolean)
-  {
-    AppMethodBeat.i(58033);
-    if (paramBoolean)
-    {
-      localaj = this.Lqj.zo(true);
-      AppMethodBeat.o(58033);
-      return localaj;
-    }
-    aj localaj = (aj)this;
-    AppMethodBeat.o(58033);
-    return localaj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.f
  * JD-Core Version:    0.7.0.1
  */

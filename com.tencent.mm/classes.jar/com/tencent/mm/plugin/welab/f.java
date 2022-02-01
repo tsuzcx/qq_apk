@@ -4,8 +4,8 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.welab.b.c;
 import com.tencent.mm.plugin.welab.d.a.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,78 +22,106 @@ import org.xml.sax.InputSource;
 
 public final class f
 {
-  private static DocumentBuilder hqQ = null;
+  private static DocumentBuilder hJi = null;
+  
+  private static Element BS(String paramString)
+  {
+    AppMethodBeat.i(146232);
+    try
+    {
+      InputSource localInputSource = new InputSource(new ByteArrayInputStream(paramString.getBytes()));
+      if (hJi != null) {
+        paramString = hJi;
+      }
+      for (;;)
+      {
+        paramString = paramString.parse(localInputSource);
+        paramString.normalize();
+        paramString = paramString.getDocumentElement();
+        AppMethodBeat.o(146232);
+        return paramString;
+        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        hJi = paramString;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      ad.e("MicroMsg.Welabparser", paramString.toString());
+      AppMethodBeat.o(146232);
+    }
+  }
   
   public static a a(c paramc)
   {
     AppMethodBeat.i(146233);
     a locala = new a();
-    locala.field_expId = String.valueOf(paramc.CTS);
-    locala.field_sequence = paramc.CTT;
+    locala.field_expId = String.valueOf(paramc.rbx);
+    locala.field_sequence = paramc.rby;
     if (paramc.startTime > 0L)
     {
       l = paramc.startTime;
       locala.field_starttime = l;
       if (paramc.endTime <= 0L) {
-        break label954;
+        break label963;
       }
     }
-    label954:
+    label963:
     for (long l = paramc.endTime;; l = 9223372036854775807L)
     {
       locala.field_endtime = l;
-      String str = "xlab_" + paramc.CTS;
-      paramc = paramc.csJ;
-      locala.field_AllVer = bs.aLy((String)paramc.get(gv(str, "AllVer")));
-      locala.field_BizType = bs.aLy((String)paramc.get(gv(str, "BizType")));
-      locala.field_Desc_cn = ((String)paramc.get(gv(str, "Desc_cn")));
-      locala.field_Desc_en = ((String)paramc.get(gv(str, "Desc_en")));
-      locala.field_Desc_hk = ((String)paramc.get(gv(str, "Desc_hk")));
-      locala.field_Desc_tw = ((String)paramc.get(gv(str, "Desc_tw")));
-      locala.field_DetailURL = ((String)paramc.get(gv(str, "DetailURL")));
-      locala.field_Introduce_cn = ((String)paramc.get(gv(str, "Introduce_cn")));
-      locala.field_Introduce_en = ((String)paramc.get(gv(str, "Introduce_en")));
-      locala.field_Introduce_hk = ((String)paramc.get(gv(str, "Introduce_hk")));
-      locala.field_Introduce_tw = ((String)paramc.get(gv(str, "Introduce_tw")));
-      locala.field_Pos = bs.aLy((String)paramc.get(gv(str, "Pos")));
-      locala.field_Type = bs.aLy((String)paramc.get(gv(str, "Type")));
-      locala.field_Switch = bs.aLy((String)paramc.get(gv(str, "Switch")));
-      locala.field_WeAppPath = ((String)paramc.get(gv(str, "WeAppPath")));
-      locala.field_WeAppUser = ((String)paramc.get(gv(str, "WeAppUser")));
-      locala.field_LabsAppId = ((String)paramc.get(gv(str, "LabsAppId")));
-      locala.field_TitleKey_android = ((String)paramc.get(gv(str, "TitleKey_android")));
-      locala.field_Title_cn = ((String)paramc.get(gv(str, "Title_cn")));
-      locala.field_Title_en = ((String)paramc.get(gv(str, "Title_en")));
-      locala.field_Title_hk = ((String)paramc.get(gv(str, "Title_hk")));
-      locala.field_Title_tw = ((String)paramc.get(gv(str, "Title_tw")));
-      locala.field_ThumbUrl_cn = ((String)paramc.get(gv(str, "ThumbUrl_cn")));
-      locala.field_ThumbUrl_en = ((String)paramc.get(gv(str, "ThumbUrl_en")));
-      locala.field_ThumbUrl_hk = ((String)paramc.get(gv(str, "ThumbUrl_hk")));
-      locala.field_ThumbUrl_tw = ((String)paramc.get(gv(str, "ThumbUrl_tw")));
-      locala.field_ImgUrl_android_cn = b(paramc, gv(str, "ImgUrl_android_cn")).replace(',', ';');
-      locala.field_ImgUrl_android_tw = b(paramc, gv(str, "ImgUrl_android_tw")).replace(',', ';');
-      locala.field_ImgUrl_android_en = b(paramc, gv(str, "ImgUrl_android_en")).replace(',', ';');
-      locala.field_ImgUrl_android_hk = b(paramc, gv(str, "ImgUrl_android_hk")).replace(',', ';');
+      String str = "xlab_" + paramc.rbx;
+      paramc = paramc.cDF;
+      locala.field_AllVer = bt.aRe((String)paramc.get(gG(str, "AllVer")));
+      locala.field_BizType = bt.aRe((String)paramc.get(gG(str, "BizType")));
+      locala.field_Desc_cn = ((String)paramc.get(gG(str, "Desc_cn")));
+      locala.field_Desc_en = ((String)paramc.get(gG(str, "Desc_en")));
+      locala.field_Desc_hk = ((String)paramc.get(gG(str, "Desc_hk")));
+      locala.field_Desc_tw = ((String)paramc.get(gG(str, "Desc_tw")));
+      locala.field_DetailURL = ((String)paramc.get(gG(str, "DetailURL")));
+      locala.field_Introduce_cn = ((String)paramc.get(gG(str, "Introduce_cn")));
+      locala.field_Introduce_en = ((String)paramc.get(gG(str, "Introduce_en")));
+      locala.field_Introduce_hk = ((String)paramc.get(gG(str, "Introduce_hk")));
+      locala.field_Introduce_tw = ((String)paramc.get(gG(str, "Introduce_tw")));
+      locala.field_Pos = bt.aRe((String)paramc.get(gG(str, "Pos")));
+      locala.field_Type = bt.aRe((String)paramc.get(gG(str, "Type")));
+      locala.field_Switch = bt.aRe((String)paramc.get(gG(str, "Switch")));
+      locala.field_WeAppPath = ((String)paramc.get(gG(str, "WeAppPath")));
+      locala.field_WeAppUser = ((String)paramc.get(gG(str, "WeAppUser")));
+      locala.field_LabsAppId = ((String)paramc.get(gG(str, "LabsAppId")));
+      locala.field_TitleKey_android = ((String)paramc.get(gG(str, "TitleKey_android")));
+      locala.field_Title_cn = ((String)paramc.get(gG(str, "Title_cn")));
+      locala.field_Title_en = ((String)paramc.get(gG(str, "Title_en")));
+      locala.field_Title_hk = ((String)paramc.get(gG(str, "Title_hk")));
+      locala.field_Title_tw = ((String)paramc.get(gG(str, "Title_tw")));
+      locala.field_ThumbUrl_cn = ((String)paramc.get(gG(str, "ThumbUrl_cn")));
+      locala.field_ThumbUrl_en = ((String)paramc.get(gG(str, "ThumbUrl_en")));
+      locala.field_ThumbUrl_hk = ((String)paramc.get(gG(str, "ThumbUrl_hk")));
+      locala.field_ThumbUrl_tw = ((String)paramc.get(gG(str, "ThumbUrl_tw")));
+      locala.field_ImgUrl_android_cn = b(paramc, gG(str, "ImgUrl_android_cn")).replace(',', ';');
+      locala.field_ImgUrl_android_tw = b(paramc, gG(str, "ImgUrl_android_tw")).replace(',', ';');
+      locala.field_ImgUrl_android_en = b(paramc, gG(str, "ImgUrl_android_en")).replace(',', ';');
+      locala.field_ImgUrl_android_hk = b(paramc, gG(str, "ImgUrl_android_hk")).replace(',', ';');
       if (TextUtils.isEmpty(locala.field_ImgUrl_android_cn)) {
-        locala.field_ImgUrl_android_cn = ((String)paramc.get(gv(str, "ImgUrl_cn")));
+        locala.field_ImgUrl_android_cn = ((String)paramc.get(gG(str, "ImgUrl_cn")));
       }
       if (TextUtils.isEmpty(locala.field_ImgUrl_android_en)) {
-        locala.field_ImgUrl_android_en = ((String)paramc.get(gv(str, "ImgUrl_en")));
+        locala.field_ImgUrl_android_en = ((String)paramc.get(gG(str, "ImgUrl_en")));
       }
       if (TextUtils.isEmpty(locala.field_ImgUrl_android_hk)) {
-        locala.field_ImgUrl_android_hk = ((String)paramc.get(gv(str, "ImgUrl_hk")));
+        locala.field_ImgUrl_android_hk = ((String)paramc.get(gG(str, "ImgUrl_hk")));
       }
       if (TextUtils.isEmpty(locala.field_ImgUrl_android_tw)) {
-        locala.field_ImgUrl_android_tw = ((String)paramc.get(gv(str, "ImgUrl_tw")));
+        locala.field_ImgUrl_android_tw = ((String)paramc.get(gG(str, "ImgUrl_tw")));
       }
-      locala.field_RedPoint = bs.aLy((String)paramc.get(gv(str, "RedPoint")));
-      locala.field_WeAppDebugMode = bs.aLy((String)paramc.get(gv(str, "WeAppDebugMode")));
-      locala.field_TitleKey_android = ((String)paramc.get(gv(str, "TitleKey_android")));
-      locala.field_Icon = ((String)paramc.get(gv(str, "Icon")));
+      locala.field_RedPoint = bt.aRe((String)paramc.get(gG(str, "RedPoint")));
+      locala.field_WeAppDebugMode = bt.aRe((String)paramc.get(gG(str, "WeAppDebugMode")));
+      locala.field_TitleKey_android = ((String)paramc.get(gG(str, "TitleKey_android")));
+      locala.field_Icon = ((String)paramc.get(gG(str, "Icon")));
       locala.field_bItemFromXExpt = 1;
-      locala.field_status = bs.aLy((String)paramc.get(gv(str, "status")));
-      locala.field_idkey = bs.aLy((String)paramc.get(gv(str, "idkey")));
-      locala.field_idkeyValue = bs.aLy((String)paramc.get(gv(str, "idkeyValue")));
+      locala.field_status = bt.aRe((String)paramc.get(gG(str, "status")));
+      locala.field_idkey = bt.aRe((String)paramc.get(gG(str, "idkey")));
+      locala.field_idkeyValue = bt.aRe((String)paramc.get(gG(str, "idkeyValue")));
       AppMethodBeat.o(146233);
       return locala;
       l = System.currentTimeMillis() / 1000L;
@@ -101,16 +129,16 @@ public final class f
     }
   }
   
-  public static a aEp(String paramString)
+  public static a aJP(String paramString)
   {
     AppMethodBeat.i(146229);
-    ac.v("MicroMsg.Welabparser", "ABTest msg content: %s", new Object[] { paramString });
+    ad.v("MicroMsg.Welabparser", "ABTest msg content: %s", new Object[] { paramString });
     Object localObject2 = paramString.replaceAll(">\n+\\s*<", "><");
     paramString = new a();
-    Object localObject1 = yT((String)localObject2);
+    Object localObject1 = BS((String)localObject2);
     if (localObject1 == null)
     {
-      ac.e("MicroMsg.Welabparser", "Msg parsing failed, msg: %s", new Object[] { localObject2 });
+      ad.e("MicroMsg.Welabparser", "Msg parsing failed, msg: %s", new Object[] { localObject2 });
       AppMethodBeat.o(146229);
       return paramString;
     }
@@ -126,21 +154,21 @@ public final class f
     {
       localObject2 = ((Element)localObject1).getElementsByTagName("prioritylevel");
       if (((NodeList)localObject2).getLength() > 0) {
-        i = bs.getInt(((NodeList)localObject2).item(0).getTextContent(), 1);
+        i = bt.getInt(((NodeList)localObject2).item(0).getTextContent(), 1);
       }
       localObject2 = ((Element)localObject1).getElementsByTagName("status");
       if (((NodeList)localObject2).getLength() > 0) {
-        paramString.field_status = bs.getInt(((NodeList)localObject2).item(0).getTextContent(), 1);
+        paramString.field_status = bt.getInt(((NodeList)localObject2).item(0).getTextContent(), 1);
       }
       paramString.field_prioritylevel = i;
       localObject1 = ((Element)localObject1).getChildNodes();
       i = 0;
       if (i >= ((NodeList)localObject1).getLength()) {
-        break label1444;
+        break label1448;
       }
       localObject2 = ((NodeList)localObject1).item(i);
       if ((localObject2 == null) || (((Node)localObject2).getNodeType() != 1) || (!((Node)localObject2).getNodeName().equals("expinfo"))) {
-        break label829;
+        break label824;
       }
     }
     for (;;)
@@ -160,38 +188,38 @@ public final class f
             localObject3 = ((Element)localObject2).getElementsByTagName("sequence");
             if (((NodeList)localObject3).getLength() != 0)
             {
-              l3 = bs.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+              l3 = bt.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
               localObject3 = ((Element)localObject2).getElementsByTagName("starttime");
               if (((NodeList)localObject3).getLength() > 0)
               {
-                l1 = bs.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+                l1 = bt.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
                 if (l1 != 0L) {
-                  break label1455;
+                  break label1459;
                 }
                 l1 = System.currentTimeMillis() / 1000L;
               }
               try
               {
-                paramString.field_idkey = bs.getInt(((Element)localObject2).getElementsByTagName("monitor").item(0).getChildNodes().item(0).getChildNodes().item(0).getTextContent(), -1);
-                paramString.field_idkeyValue = bs.getInt(((Element)localObject2).getElementsByTagName("monitor").item(0).getChildNodes().item(0).getChildNodes().item(1).getTextContent(), -1);
+                paramString.field_idkey = bt.getInt(((Element)localObject2).getElementsByTagName("monitor").item(0).getChildNodes().item(0).getChildNodes().item(0).getTextContent(), -1);
+                paramString.field_idkeyValue = bt.getInt(((Element)localObject2).getElementsByTagName("monitor").item(0).getChildNodes().item(0).getChildNodes().item(1).getTextContent(), -1);
                 localObject3 = ((Element)localObject2).getElementsByTagName("endtime");
                 if (((NodeList)localObject3).getLength() <= 0) {
-                  break label1458;
+                  break label1462;
                 }
-                l2 = bs.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
+                l2 = bt.getLong(((NodeList)localObject3).item(0).getTextContent(), 0L);
                 if (l2 != 0L) {
-                  break label1452;
+                  break label1456;
                 }
-                break label1458;
+                break label1462;
                 localObject3 = new HashMap();
                 localObject2 = ((Element)localObject2).getElementsByTagName("args");
                 if (((NodeList)localObject2).getLength() <= 0) {
-                  break label836;
+                  break label831;
                 }
                 localObject2 = ((NodeList)localObject2).item(0).getChildNodes();
                 int j = 0;
                 if (j >= ((NodeList)localObject2).getLength()) {
-                  break label836;
+                  break label831;
                 }
                 Object localObject4 = ((NodeList)localObject2).item(j);
                 if ((((Node)localObject4).getNodeType() == 1) && (((Node)localObject4).getNodeName().equals("arg")))
@@ -204,7 +232,7 @@ public final class f
                 }
                 j += 1;
                 continue;
-                ac.i("MicroMsg.Welabparser", "recv illegal type msg");
+                ad.i("MicroMsg.Welabparser", "recv illegal type msg");
                 AppMethodBeat.o(146229);
                 return paramString;
                 l1 = System.currentTimeMillis() / 1000L;
@@ -212,7 +240,7 @@ public final class f
               }
               catch (Exception localException2)
               {
-                ac.e("MicroMsg.Welabparser", bs.m(localException2));
+                ad.e("MicroMsg.Welabparser", bt.n(localException2));
                 continue;
               }
             }
@@ -222,18 +250,18 @@ public final class f
       }
       catch (Exception localException1)
       {
-        ac.e("MicroMsg.Welabparser", localException1.getMessage());
+        ad.e("MicroMsg.Welabparser", localException1.getMessage());
       }
       for (;;)
       {
-        label829:
+        label824:
         break;
-        label836:
+        label831:
         paramString.field_sequence = l3;
         paramString.field_starttime = l1;
         paramString.field_endtime = l2;
-        paramString.field_AllVer = bs.aLy((String)localException2.get("AllVer"));
-        paramString.field_BizType = bs.aLy((String)localException2.get("BizType"));
+        paramString.field_AllVer = bt.aRe((String)localException2.get("AllVer"));
+        paramString.field_BizType = bt.aRe((String)localException2.get("BizType"));
         paramString.field_Desc_cn = ((String)localException2.get("Desc_cn"));
         paramString.field_Desc_en = ((String)localException2.get("Desc_en"));
         paramString.field_Desc_hk = ((String)localException2.get("Desc_hk"));
@@ -243,9 +271,9 @@ public final class f
         paramString.field_Introduce_en = ((String)localException2.get("Introduce_en"));
         paramString.field_Introduce_hk = ((String)localException2.get("Introduce_hk"));
         paramString.field_Introduce_tw = ((String)localException2.get("Introduce_tw"));
-        paramString.field_Pos = bs.aLy((String)localException2.get("Pos"));
-        paramString.field_Type = bs.aLy((String)localException2.get("Type"));
-        paramString.field_Switch = bs.aLy((String)localException2.get("Switch"));
+        paramString.field_Pos = bt.aRe((String)localException2.get("Pos"));
+        paramString.field_Type = bt.aRe((String)localException2.get("Type"));
+        paramString.field_Switch = bt.aRe((String)localException2.get("Switch"));
         paramString.field_WeAppPath = ((String)localException2.get("WeAppPath"));
         paramString.field_WeAppUser = ((String)localException2.get("WeAppUser"));
         paramString.field_LabsAppId = ((String)localException2.get("LabsAppId"));
@@ -274,24 +302,24 @@ public final class f
         if (TextUtils.isEmpty(paramString.field_ImgUrl_android_tw)) {
           paramString.field_ImgUrl_android_tw = ((String)localException2.get("ImgUrl_tw"));
         }
-        paramString.field_RedPoint = bs.aLy((String)localException2.get("RedPoint"));
-        paramString.field_WeAppDebugMode = bs.aLy((String)localException2.get("WeAppDebugMode"));
+        paramString.field_RedPoint = bt.aRe((String)localException2.get("RedPoint"));
+        paramString.field_WeAppDebugMode = bt.aRe((String)localException2.get("WeAppDebugMode"));
         paramString.field_TitleKey_android = ((String)localException2.get("TitleKey_android"));
         paramString.field_Icon = ((String)localException2.get("Icon"));
       }
-      label1444:
+      label1448:
       AppMethodBeat.o(146229);
       return paramString;
-      label1452:
+      label1456:
       continue;
-      label1455:
+      label1459:
       continue;
-      label1458:
+      label1462:
       long l2 = 9223372036854775807L;
     }
   }
   
-  public static List<String> aEq(String paramString)
+  public static List<String> aJQ(String paramString)
   {
     AppMethodBeat.i(146231);
     if (TextUtils.isEmpty(paramString))
@@ -331,45 +359,17 @@ public final class f
     return paramHashMap;
   }
   
-  private static String gv(String paramString1, String paramString2)
+  private static String gG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146234);
     paramString1 = (paramString1 + "_" + paramString2).toLowerCase();
     AppMethodBeat.o(146234);
     return paramString1;
   }
-  
-  private static Element yT(String paramString)
-  {
-    AppMethodBeat.i(146232);
-    try
-    {
-      InputSource localInputSource = new InputSource(new ByteArrayInputStream(paramString.getBytes()));
-      if (hqQ != null) {
-        paramString = hqQ;
-      }
-      for (;;)
-      {
-        paramString = paramString.parse(localInputSource);
-        paramString.normalize();
-        paramString = paramString.getDocumentElement();
-        AppMethodBeat.o(146232);
-        return paramString;
-        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        hqQ = paramString;
-      }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      ac.e("MicroMsg.Welabparser", paramString.toString());
-      AppMethodBeat.o(146232);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.f
  * JD-Core Version:    0.7.0.1
  */

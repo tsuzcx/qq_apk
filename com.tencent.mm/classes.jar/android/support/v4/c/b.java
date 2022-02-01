@@ -34,16 +34,16 @@ import java.util.concurrent.Callable;
 
 public final class b
 {
-  static final h<String, Typeface> HT = new h(16);
-  private static final c Lx = new c("fonts");
-  static final n<String, ArrayList<c.a<c>>> Ly = new n();
-  private static final Comparator<byte[]> Lz = new Comparator() {};
+  static final h<String, Typeface> JM = new h(16);
+  private static final c Np = new c("fonts");
+  static final n<String, ArrayList<c.a<c>>> Nq = new n();
+  private static final Comparator<byte[]> Nr = new Comparator() {};
   static final Object sLock = new Object();
   
   public static Typeface a(Context paramContext, final a parama, f.a arg2, final Handler paramHandler, boolean paramBoolean, int paramInt1, final int paramInt2)
   {
-    paramHandler = parama.Lw + "-" + paramInt2;
-    Object localObject = (Typeface)HT.get(paramHandler);
+    paramHandler = parama.No + "-" + paramInt2;
+    Object localObject = (Typeface)JM.get(paramHandler);
     if (localObject != null)
     {
       if (??? != null) {
@@ -56,7 +56,7 @@ public final class b
       paramContext = a(paramContext, parama, paramInt2);
       if (??? != null)
       {
-        if (paramContext.LD != 0) {
+        if (paramContext.Nv != 0) {
           break label102;
         }
         ???.a(paramContext.mTypeface, null);
@@ -65,14 +65,14 @@ public final class b
       {
         return paramContext.mTypeface;
         label102:
-        ???.a(paramContext.LD, null);
+        ???.a(paramContext.Nv, null);
       }
     }
     parama = new Callable() {};
     if (paramBoolean) {}
     try
     {
-      paramContext = ((c)Lx.a(parama, paramInt1)).mTypeface;
+      paramContext = ((c)Np.a(parama, paramInt1)).mTypeface;
       return paramContext;
     }
     catch (InterruptedException paramContext) {}
@@ -80,11 +80,11 @@ public final class b
     for (paramContext = null;; paramContext = new c.a() {}) {
       synchronized (sLock)
       {
-        if (!Ly.containsKey(paramHandler)) {
+        if (!Nq.containsKey(paramHandler)) {
           break;
         }
         if (paramContext != null) {
-          ((ArrayList)Ly.get(paramHandler)).add(paramContext);
+          ((ArrayList)Nq.get(paramHandler)).add(paramContext);
         }
         return null;
       }
@@ -93,9 +93,9 @@ public final class b
     {
       localObject = new ArrayList();
       ((ArrayList)localObject).add(paramContext);
-      Ly.put(paramHandler, localObject);
+      Nq.put(paramHandler, localObject);
     }
-    paramContext = Lx;
+    paramContext = Np;
     ??? = new c.a() {};
     paramContext.post(new c.2(paramContext, parama, new Handler(), ???));
     return null;
@@ -111,7 +111,7 @@ public final class b
     {
       localObject2 = paramContext.getPackageManager();
       localObject1 = paramContext.getResources();
-      localObject3 = parama.Lr;
+      localObject3 = parama.Nj;
       localProviderInfo = ((PackageManager)localObject2).resolveContentProvider((String)localObject3, 0);
       if (localProviderInfo == null) {
         throw new PackageManager.NameNotFoundException("No package found for authority: ".concat(String.valueOf(localObject3)));
@@ -121,21 +121,21 @@ public final class b
     {
       return new c(null, -1);
     }
-    if (!localProviderInfo.packageName.equals(parama.Ls)) {
-      throw new PackageManager.NameNotFoundException("Found content provider " + (String)localObject3 + ", but package was not " + parama.Ls);
+    if (!localProviderInfo.packageName.equals(parama.Nk)) {
+      throw new PackageManager.NameNotFoundException("Found content provider " + (String)localObject3 + ", but package was not " + parama.Nk);
     }
     Object localObject2 = a(((PackageManager)localObject2).getPackageInfo(localProviderInfo.packageName, 64).signatures);
-    Collections.sort((List)localObject2, Lz);
+    Collections.sort((List)localObject2, Nr);
     int i;
-    if (parama.Lu != null)
+    if (parama.Nm != null)
     {
-      localObject1 = parama.Lu;
+      localObject1 = parama.Nm;
       break label329;
       if (i >= ((List)localObject1).size()) {
         break label341;
       }
       localObject3 = new ArrayList((Collection)((List)localObject1).get(i));
-      Collections.sort((List)localObject3, Lz);
+      Collections.sort((List)localObject3, Nr);
       if (!b((List)localObject2, (List)localObject3)) {
         break label334;
       }
@@ -153,7 +153,7 @@ public final class b
         if (parama.mStatusCode != 0) {
           break label305;
         }
-        paramContext = d.a(paramContext, parama.LC, paramInt);
+        paramContext = d.a(paramContext, parama.Nu, paramInt);
         if (paramContext == null) {
           break label299;
         }
@@ -161,7 +161,7 @@ public final class b
       for (paramInt = 0;; paramInt = -3)
       {
         return new c(paramContext, paramInt);
-        localObject1 = android.support.v4.content.a.c.a((Resources)localObject1, parama.Lv);
+        localObject1 = android.support.v4.content.a.c.a((Resources)localObject1, parama.Nn);
         break label329;
         parama = new a(0, a(paramContext, parama, ((ProviderInfo)localObject1).authority));
         break;
@@ -223,7 +223,7 @@ public final class b
           continue;
         }
         paramContext = paramContext.getContentResolver();
-        parama = parama.Lt;
+        parama = parama.Nl;
         paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { parama }, null, null);
         if (paramContext == null) {
           continue;
@@ -289,7 +289,7 @@ public final class b
       parama.close();
       throw paramContext;
       paramContext = paramContext.getContentResolver();
-      parama = parama.Lt;
+      parama = parama.Nl;
       paramContext = paramContext.query(localUri1, new String[] { "_id", "file_id", "font_ttc_index", "font_variation_settings", "font_weight", "font_italic", "result_code" }, "query = ?", new String[] { parama }, null);
       continue;
       i = 0;
@@ -331,43 +331,43 @@ public final class b
   
   public static final class a
   {
-    final b.b[] LC;
+    final b.b[] Nu;
     final int mStatusCode;
     
     public a(int paramInt, b.b[] paramArrayOfb)
     {
       this.mStatusCode = paramInt;
-      this.LC = paramArrayOfb;
+      this.Nu = paramArrayOfb;
     }
   }
   
   public static final class b
   {
-    public final int HC;
-    public final boolean HD;
-    public final int HF;
+    public final int Jw;
+    public final boolean Jx;
+    public final int Jz;
     final int mResultCode;
     public final Uri mUri;
     
     public b(Uri paramUri, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3)
     {
       this.mUri = ((Uri)m.checkNotNull(paramUri));
-      this.HF = paramInt1;
-      this.HC = paramInt2;
-      this.HD = paramBoolean;
+      this.Jz = paramInt1;
+      this.Jw = paramInt2;
+      this.Jx = paramBoolean;
       this.mResultCode = paramInt3;
     }
   }
   
   static final class c
   {
-    final int LD;
+    final int Nv;
     final Typeface mTypeface;
     
     c(Typeface paramTypeface, int paramInt)
     {
       this.mTypeface = paramTypeface;
-      this.LD = paramInt;
+      this.Nv = paramInt;
     }
   }
 }

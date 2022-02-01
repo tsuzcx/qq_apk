@@ -3,7 +3,7 @@ package com.tencent.liteav.basic.log;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.d;
+import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 
@@ -22,7 +22,7 @@ public class TXCLog
   private static boolean mEnableCompress;
   private static boolean mEnableConsole;
   private static boolean mHasInit;
-  private static a mListener;
+  private static TXCLog.a mListener;
   private static String mLogCacheDir;
   public static String mLogDir;
   private static int mLogLevel;
@@ -50,6 +50,13 @@ public class TXCLog
     AppMethodBeat.o(14775);
   }
   
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(187258);
+    log(1, paramString1, String.format(paramString2, paramVarArgs));
+    AppMethodBeat.o(187258);
+  }
+  
   public static void e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(14778);
@@ -57,11 +64,25 @@ public class TXCLog
     AppMethodBeat.o(14778);
   }
   
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(187261);
+    log(4, paramString1, String.format(paramString2, paramVarArgs));
+    AppMethodBeat.o(187261);
+  }
+  
   public static void i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(14776);
     log(2, paramString1, paramString2);
     AppMethodBeat.o(14776);
+  }
+  
+  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(187259);
+    log(2, paramString1, String.format(paramString2, paramVarArgs));
+    AppMethodBeat.o(187259);
   }
   
   public static boolean init()
@@ -79,7 +100,7 @@ public class TXCLog
         AppMethodBeat.o(14766);
         return true;
       }
-      boolean bool = d.f();
+      boolean bool = f.f();
       Context localContext = TXCCommonUtil.getAppContext();
       if ((bool) && (localContext != null))
       {
@@ -158,7 +179,7 @@ public class TXCLog
     AppMethodBeat.o(14768);
   }
   
-  public static void setListener(a parama)
+  public static void setListener(TXCLog.a parama)
   {
     AppMethodBeat.i(14773);
     mListener = parama;
@@ -225,6 +246,13 @@ public class TXCLog
     AppMethodBeat.o(14774);
   }
   
+  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(187257);
+    log(0, paramString1, String.format(paramString2, paramVarArgs));
+    AppMethodBeat.o(187257);
+  }
+  
   public static void w(String paramString1, String paramString2)
   {
     AppMethodBeat.i(14777);
@@ -232,14 +260,16 @@ public class TXCLog
     AppMethodBeat.o(14777);
   }
   
-  public static abstract interface a
+  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    public abstract void a(int paramInt, String paramString1, String paramString2);
+    AppMethodBeat.i(187260);
+    log(3, paramString1, String.format(paramString2, paramVarArgs));
+    AppMethodBeat.o(187260);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.log.TXCLog
  * JD-Core Version:    0.7.0.1
  */

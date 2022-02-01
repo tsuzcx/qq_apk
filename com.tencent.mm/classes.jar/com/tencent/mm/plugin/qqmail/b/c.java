@@ -1,119 +1,33 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cpx;
-import com.tencent.mm.protocal.protobuf.iv;
-import java.util.LinkedList;
+import com.tencent.mm.protocal.d;
 
 public final class c
-  extends cpx
 {
-  public int ncL;
-  public LinkedList<h> vTF;
+  public static final String USER_AGENT;
   
-  public c()
+  static
   {
-    AppMethodBeat.i(122654);
-    this.vTF = new LinkedList();
-    AppMethodBeat.o(122654);
+    AppMethodBeat.i(215177);
+    USER_AGENT = "weixin/" + d.hgH + "/0x" + Integer.toHexString(d.Fnj);
+    AppMethodBeat.o(215177);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public static void a(String paramString1, String paramString2, String paramString3, a.a parama)
   {
-    AppMethodBeat.i(122655);
-    if (paramInt == 0)
-    {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
-      }
-      paramVarArgs.aR(2, this.ncL);
-      paramVarArgs.e(3, 8, this.vTF);
-      AppMethodBeat.o(122655);
-      return 0;
-    }
-    if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label498;
-      }
-    }
-    label498:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
-    {
-      int i = f.a.a.b.b.a.bx(2, this.ncL);
-      int j = f.a.a.a.c(3, 8, this.vTF);
-      AppMethodBeat.o(122655);
-      return paramInt + i + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.vTF.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
-          }
-        }
-        AppMethodBeat.o(122655);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        c localc = (c)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(122655);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localc.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(122655);
-          return 0;
-        case 2: 
-          localc.ncL = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(122655);
-          return 0;
-        }
-        paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new h();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((h)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localc.vTF.add(localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(122655);
-        return 0;
-      }
-      AppMethodBeat.o(122655);
-      return -1;
-    }
+    AppMethodBeat.i(215176);
+    paramString1 = new b(paramString1, paramString2, parama);
+    paramString2 = new Bundle();
+    paramString2.putString("param_cookie", paramString3);
+    paramString1.x(new Bundle[] { paramString2 });
+    AppMethodBeat.o(215176);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 public abstract interface g
 {
-  public abstract void cYF();
+  public abstract void dhR();
 }
 
 

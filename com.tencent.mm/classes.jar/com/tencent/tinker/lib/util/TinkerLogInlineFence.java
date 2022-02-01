@@ -140,22 +140,22 @@ public final class TinkerLogInlineFence
               default: 
                 return;
               case 2: 
-                TinkerLogInlineFence.1.this.Krr.v((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.Mhs.v((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 3: 
-                TinkerLogInlineFence.1.this.Krr.d((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.Mhs.d((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 4: 
-                TinkerLogInlineFence.1.this.Krr.i((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.Mhs.i((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 5: 
-                TinkerLogInlineFence.1.this.Krr.w((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.Mhs.w((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               case 6: 
-                TinkerLogInlineFence.1.this.Krr.e((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
+                TinkerLogInlineFence.1.this.Mhs.e((String)arrayOfObject[2], str + (String)arrayOfObject[3], (Object[])arrayOfObject[4]);
                 return;
               }
-              TinkerLogInlineFence.1.this.Krr.printErrStackTrace((String)arrayOfObject[2], (Throwable)arrayOfObject[3], str + (String)arrayOfObject[4], (Object[])arrayOfObject[5]);
+              TinkerLogInlineFence.1.this.Mhs.printErrStackTrace((String)arrayOfObject[2], (Throwable)arrayOfObject[3], str + (String)arrayOfObject[4], (Object[])arrayOfObject[5]);
             }
           });
         }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.offline;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yg;
+import com.tencent.mm.g.a.za;
 import com.tencent.mm.plugin.offline.a.s;
 import com.tencent.mm.plugin.offline.a.s.a;
 import com.tencent.mm.plugin.offline.a.s.c;
@@ -12,61 +12,61 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.List;
 
 public final class m
   implements s.a
 {
-  c uoq;
+  c vqU;
   
   public m()
   {
     AppMethodBeat.i(66276);
-    this.uoq = new c() {};
-    a.GpY.c(this.uoq);
-    k.dlZ();
-    k.dma().a(this);
+    this.vqU = new m.1(this);
+    a.IbL.c(this.vqU);
+    k.dwq();
+    k.dwr().a(this);
     AppMethodBeat.o(66276);
   }
   
-  private static void bv(int paramInt, String paramString)
+  private static void bA(int paramInt, String paramString)
   {
     AppMethodBeat.i(66277);
-    yg localyg = new yg();
-    localyg.dBK.dBM = paramInt;
-    localyg.dBK.action = 4;
-    localyg.dBK.content = paramString;
-    a.GpY.l(localyg);
+    za localza = new za();
+    localza.dNX.dNZ = paramInt;
+    localza.dNX.action = 4;
+    localza.dNX.content = paramString;
+    a.IbL.l(localza);
     AppMethodBeat.o(66277);
   }
   
   public final boolean a(s.c paramc)
   {
     AppMethodBeat.i(66278);
-    if (paramc.vty == 6)
+    if (paramc.wyQ == 6)
     {
       paramc = (s.f)paramc;
-      if ((paramc.vtG.BxR != null) && (paramc.vtG.BxR.size() > 0))
+      if ((paramc.wyY.CYk != null) && (paramc.wyY.CYk.size() > 0))
       {
-        paramc = (Orders.Commodity)paramc.vtG.BxR.get(0);
-        bv(0, ai.getContext().getString(2131765933, new Object[] { e.d(paramc.oxA, paramc.vxl) }));
+        paramc = (Orders.Commodity)paramc.wyY.CYk.get(0);
+        bA(0, aj.getContext().getString(2131765933, new Object[] { e.d(paramc.paV, paramc.wCF) }));
       }
     }
     for (;;)
     {
       AppMethodBeat.o(66278);
       return false;
-      bv(9, ai.getContext().getString(2131765931));
+      bA(9, aj.getContext().getString(2131765931));
       continue;
-      if (paramc.vty == 8) {
-        bv(6, ai.getContext().getString(2131765931));
-      } else if (paramc.vty == 5) {
-        bv(7, bs.bG(((s.e)paramc).vtC, ""));
-      } else if (paramc.vty == 4) {
-        bv(8, ai.getContext().getString(2131765932));
+      if (paramc.wyQ == 8) {
+        bA(6, aj.getContext().getString(2131765931));
+      } else if (paramc.wyQ == 5) {
+        bA(7, bt.bI(((s.e)paramc).wyU, ""));
+      } else if (paramc.wyQ == 4) {
+        bA(8, aj.getContext().getString(2131765932));
       }
     }
   }

@@ -6,27 +6,27 @@ import java.util.ArrayList;
 
 public final class u
 {
-  public static final b oUc;
-  public static final r oUd;
-  public static final c oUe;
-  public static final j oUf;
-  public static final i oUg;
-  public static final ArrayList<t> oUh;
+  public static final b pxM;
+  public static final r pxN;
+  public static final c pxO;
+  public static final j pxP;
+  public static final i pxQ;
+  public static final ArrayList<t> pxR;
   
   static
   {
     AppMethodBeat.i(181970);
-    oUc = new b();
-    oUd = new r();
-    oUe = new c();
-    oUf = new j();
-    oUg = new i();
+    pxM = new b();
+    pxN = new r();
+    pxO = new c();
+    pxP = new j();
+    pxQ = new i();
     ArrayList localArrayList = new ArrayList();
-    oUh = localArrayList;
-    localArrayList.add(oUc);
-    oUh.add(oUe);
-    oUh.add(oUf);
-    oUh.add(oUd);
+    pxR = localArrayList;
+    localArrayList.add(pxM);
+    pxR.add(pxO);
+    pxR.add(pxP);
+    pxR.add(pxN);
     AppMethodBeat.o(181970);
   }
   
@@ -51,16 +51,16 @@ public final class u
   public static void a(WXRTEditText paramWXRTEditText, t... paramVarArgs)
   {
     AppMethodBeat.i(181968);
-    a(paramWXRTEditText, oUg, paramVarArgs);
-    a(paramWXRTEditText, oUe, paramVarArgs);
-    a(paramWXRTEditText, oUf, paramVarArgs);
-    a(paramWXRTEditText, oUd, paramVarArgs);
+    a(paramWXRTEditText, pxQ, paramVarArgs);
+    a(paramWXRTEditText, pxO, paramVarArgs);
+    a(paramWXRTEditText, pxP, paramVarArgs);
+    a(paramWXRTEditText, pxN, paramVarArgs);
     AppMethodBeat.o(181968);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.u
  * JD-Core Version:    0.7.0.1
  */

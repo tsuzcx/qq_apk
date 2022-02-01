@@ -2,60 +2,60 @@ package com.tencent.mm.plugin.appbrand.z;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.av.o;
-import com.tencent.mm.g.c.av;
-import com.tencent.mm.g.c.dy;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.bi;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ei;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ak;
+import com.tencent.mm.model.bj;
 import com.tencent.mm.model.u;
 import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.service.m;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.bo;
-import com.tencent.mm.storage.x;
+import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bu;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
 {
-  private static LinkedList<e> fBS;
-  private static HashSet<a> mnG;
-  private static boolean mnH;
-  private static boolean mnI;
+  private static LinkedList<e> fVg;
+  private static HashSet<a> mOi;
+  private static boolean mOj;
+  private static boolean mOk;
   
   static
   {
     AppMethodBeat.i(121091);
-    fBS = new LinkedList();
-    mnG = new HashSet();
-    mnH = false;
-    mnI = false;
+    fVg = new LinkedList();
+    mOi = new HashSet();
+    mOj = false;
+    mOk = false;
     AppMethodBeat.o(121091);
   }
   
-  protected static String a(bo parambo, boolean paramBoolean, String paramString)
+  protected static String a(bu parambu, boolean paramBoolean, String paramString)
   {
     AppMethodBeat.i(121089);
-    if (parambo.field_isSend == 1)
+    if (parambu.field_isSend == 1)
     {
-      parambo = u.axw();
+      parambu = u.aAm();
       AppMethodBeat.o(121089);
-      return parambo;
+      return parambu;
     }
     String str = null;
     if (paramBoolean) {
-      str = bi.yl(parambo.field_content);
+      str = bj.Bk(parambu.field_content);
     }
-    if (bs.isNullOrNil(str)) {}
+    if (bt.isNullOrNil(str)) {}
     for (;;)
     {
       AppMethodBeat.o(121089);
@@ -71,39 +71,39 @@ public final class c
       try
       {
         AppMethodBeat.i(121087);
-        if (mnH)
+        if (mOj)
         {
-          mnG.add(parama);
+          mOi.add(parama);
           AppMethodBeat.o(121087);
           return;
         }
-        if (mnI)
+        if (mOk)
         {
-          parama.A(fBS);
+          parama.A(fVg);
           AppMethodBeat.o(121087);
           continue;
         }
-        mnH = true;
+        mOj = true;
       }
       finally {}
-      mnG.add(parama);
-      com.tencent.mm.kernel.g.agS();
-      com.tencent.mm.kernel.g.agU().az(new Runnable()
+      mOi.add(parama);
+      g.ajD();
+      g.ajF().ay(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(121085);
-          c.HN().clear();
-          if (w.sQ(this.fLg)) {}
+          c.Ji().clear();
+          if (w.vF(this.geH)) {}
           label507:
           Object localObject2;
-          for (x localx = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).awK().xN(this.fLg);; localObject2 = null)
+          for (ab localab = ((com.tencent.mm.plugin.chatroom.a.c)g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).azz().AN(this.geH);; localObject2 = null)
           {
             int i = 100;
             int j = 0;
             while (i >= 100)
             {
-              Cursor localCursor = ((k)com.tencent.mm.kernel.g.ab(k.class)).dcr().dO(this.fLg, j);
+              Cursor localCursor = ((l)g.ab(l.class)).dlK().ef(this.geH, j);
               if (localCursor != null) {}
               for (;;)
               {
@@ -114,30 +114,30 @@ public final class c
                   if ((localCursor == null) || (!localCursor.moveToNext())) {
                     break;
                   }
-                  bo localbo = new bo();
-                  localbo.setMsgId(localCursor.getLong(0));
-                  localbo.oz(localCursor.getLong(1));
-                  localbo.oA(localCursor.getLong(2));
-                  localbo.setContent(localCursor.getString(3));
-                  localbo.jT(localCursor.getInt(4));
-                  localbo.rf(localCursor.getString(5));
-                  str = localbo.field_content;
+                  bu localbu = new bu();
+                  localbu.setMsgId(localCursor.getLong(0));
+                  localbu.qz(localCursor.getLong(1));
+                  localbu.qA(localCursor.getLong(2));
+                  localbu.setContent(localCursor.getString(3));
+                  localbu.kr(localCursor.getInt(4));
+                  localbu.tO(localCursor.getString(5));
+                  str = localbu.field_content;
                   if (str == null) {
                     continue;
                   }
-                  k.b localb = k.b.vA(str);
-                  if ((localb == null) || (!c.vb(localb.type))) {
+                  k.b localb = k.b.yr(str);
+                  if ((localb == null) || (!c.vG(localb.type))) {
                     continue;
                   }
-                  Object localObject4 = c.a(localbo, w.sQ(this.fLg), this.fLg);
-                  localObject3 = ((k)com.tencent.mm.kernel.g.ab(k.class)).awB().aNt((String)localObject4);
+                  Object localObject4 = c.a(localbu, w.vF(this.geH), this.geH);
+                  localObject3 = ((l)g.ab(l.class)).azp().Bf((String)localObject4);
                   str = "";
-                  if (localx != null) {
-                    str = localx.wk((String)localObject4);
+                  if (localab != null) {
+                    str = localab.zf((String)localObject4);
                   }
-                  localObject3 = new e(localbo.field_createTime, localb.type, localb.title, localbo.field_msgId, ((av)localObject3).field_username, ((ai)localObject3).aaR(), ((av)localObject3).field_conRemark, str, bs.bG(localb.hkf, localb.appId), localb, localbo.field_msgSvrId);
+                  localObject3 = new e(localbu.field_createTime, localb.type, localb.title, localbu.field_msgId, ((aw)localObject3).field_username, ((am)localObject3).adu(), ((aw)localObject3).field_conRemark, str, bt.bI(localb.hCo, localb.appId), localb, localbu.field_msgSvrId);
                   ((e)localObject3).desc = localb.title;
-                  localObject4 = ((m)com.tencent.mm.kernel.g.ab(m.class)).Ka(((e)localObject3).dsB.hke);
+                  localObject4 = ((n)g.ab(n.class)).Nt(((e)localObject3).dEu.hCn);
                   if (localObject4 == null) {
                     break label507;
                   }
@@ -148,14 +148,14 @@ public final class c
                   }
                   str = ((WxaAttributes)localObject4).field_brandIconURL;
                   ((e)localObject3).imagePath = str;
-                  if (localb.hkg != 1)
+                  if (localb.hCp != 1)
                   {
-                    str = o.aFx().b(localbo.field_imgPath, false, true);
-                    if (!bs.isNullOrNil(str)) {
-                      ((e)localObject3).mnL = "file://".concat(String.valueOf(str));
+                    str = q.aIF().c(localbu.field_imgPath, false, true);
+                    if (!bt.isNullOrNil(str)) {
+                      ((e)localObject3).mOn = "file://".concat(String.valueOf(str));
                     }
                   }
-                  c.HN().add(localObject3);
+                  c.Ji().add(localObject3);
                   continue;
                   i = 0;
                 }
@@ -167,18 +167,18 @@ public final class c
                   AppMethodBeat.o(121085);
                 }
                 continue;
-                String str = ((e)localObject3).dsB.dvm;
+                String str = ((e)localObject3).dEu.dHp;
                 continue;
                 label520:
-                str = ((e)localObject3).dsB.hks;
+                str = ((e)localObject3).dEu.hCB;
               }
               if (localCursor != null) {
                 localCursor.close();
               }
               j += i;
             }
-            ac.i("MicroMsg.AppBrandHistoryListLogic", "[loadData] data:%s", new Object[] { Integer.valueOf(c.HN().size()) });
-            ap.f(new Runnable()
+            ad.i("MicroMsg.AppBrandHistoryListLogic", "[loadData] data:%s", new Object[] { Integer.valueOf(c.Ji().size()) });
+            aq.f(new Runnable()
             {
               public final void run()
               {
@@ -201,18 +201,18 @@ public final class c
     try
     {
       AppMethodBeat.i(121088);
-      ac.i("MicroMsg.AppBrandHistoryListLogic", "done");
-      mnI = true;
-      mnH = false;
-      Iterator localIterator = mnG.iterator();
+      ad.i("MicroMsg.AppBrandHistoryListLogic", "done");
+      mOk = true;
+      mOj = false;
+      Iterator localIterator = mOi.iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)localIterator.next();
         if (locala != null) {
-          locala.A(fBS);
+          locala.A(fVg);
         }
       }
-      mnG.clear();
+      mOi.clear();
     }
     finally {}
     AppMethodBeat.o(121088);
@@ -223,10 +223,10 @@ public final class c
     try
     {
       AppMethodBeat.i(121086);
-      mnH = false;
-      mnI = false;
-      fBS.clear();
-      mnG.clear();
+      mOj = false;
+      mOk = false;
+      fVg.clear();
+      mOi.clear();
       AppMethodBeat.o(121086);
       return;
     }
@@ -237,7 +237,7 @@ public final class c
     }
   }
   
-  public static boolean vb(int paramInt)
+  public static boolean vG(int paramInt)
   {
     return (33 == paramInt) || (36 == paramInt);
   }

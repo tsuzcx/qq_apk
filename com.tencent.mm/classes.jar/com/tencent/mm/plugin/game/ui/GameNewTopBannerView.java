@@ -9,24 +9,26 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.e;
+import com.tencent.mm.game.report.f;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GameNewTopBannerView
   extends FrameLayout
   implements View.OnClickListener
 {
-  String jYy = null;
+  String ksU = null;
   Context mContext;
-  int tfA;
-  ImageView tnI;
-  ImageView tnJ;
-  int ttu;
-  int ttv;
-  String ttw = "";
-  private String ttx = "";
+  int udq;
+  ImageView umg;
+  ImageView umh;
+  int urT;
+  int urU;
+  String urV = "";
+  private String urW = "";
   
   public GameNewTopBannerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +36,7 @@ public class GameNewTopBannerView
     this.mContext = paramContext;
   }
   
-  static void cRB()
+  static void dag()
   {
     AppMethodBeat.i(42321);
     GameIndexListView.setDefaultPadding(0);
@@ -50,7 +52,7 @@ public class GameNewTopBannerView
     ViewGroup.LayoutParams localLayoutParams = paramImageView.getLayoutParams();
     if (localLayoutParams == null)
     {
-      ac.e("MicroMsg.GameTopBannerView", "resizeGameThemePic, params is null");
+      ad.e("MicroMsg.GameTopBannerView", "resizeGameThemePic, params is null");
       AppMethodBeat.o(42319);
       return 0;
     }
@@ -66,15 +68,19 @@ public class GameNewTopBannerView
   public void onClick(View paramView)
   {
     AppMethodBeat.i(42320);
+    b localb = new b();
+    localb.bd(paramView);
+    a.b("com/tencent/mm/plugin/game/ui/GameNewTopBannerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
     if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
     {
       paramView = (String)paramView.getTag();
-      if (!bs.isNullOrNil(paramView))
+      if (!bt.isNullOrNil(paramView))
       {
-        int i = c.z(this.mContext, paramView, "game_center_top_banner");
-        e.a(this.mContext, 10, 1017, 1, i, 0, null, this.tfA, 0, null, null, this.jYy);
+        int i = c.B(this.mContext, paramView, "game_center_top_banner");
+        f.a(this.mContext, 10, 1017, 1, i, 0, null, this.udq, 0, null, null, this.ksU);
       }
     }
+    a.a(this, "com/tencent/mm/plugin/game/ui/GameNewTopBannerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(42320);
   }
   
@@ -82,15 +88,15 @@ public class GameNewTopBannerView
   {
     AppMethodBeat.i(42318);
     super.onFinishInflate();
-    this.tnI = ((ImageView)findViewById(2131297217));
-    this.tnJ = ((ImageView)findViewById(2131304853));
-    ac.i("MicroMsg.GameTopBannerView", "initView finished");
+    this.umg = ((ImageView)findViewById(2131297217));
+    this.umh = ((ImageView)findViewById(2131304853));
+    ad.i("MicroMsg.GameTopBannerView", "initView finished");
     AppMethodBeat.o(42318);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameNewTopBannerView
  * JD-Core Version:    0.7.0.1
  */

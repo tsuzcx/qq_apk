@@ -6,84 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class u
   extends a
 {
-  private int dHr;
-  public int dHs;
-  private String dHt;
-  public int dHu;
-  private String dHv;
+  public long dTf;
+  public long dTg;
+  public long dTh = 0L;
+  public String dTi = "";
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(183914);
+    AppMethodBeat.i(197134);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHr);
+    ((StringBuffer)localObject).append(this.dTf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHs);
+    ((StringBuffer)localObject).append(this.dTg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHt);
+    ((StringBuffer)localObject).append(this.dTh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHu);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dHv);
+    ((StringBuffer)localObject).append(this.dTi);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(183914);
+    awz((String)localObject);
+    AppMethodBeat.o(197134);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(183915);
+    AppMethodBeat.i(197135);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Action:").append(this.dHr);
+    ((StringBuffer)localObject).append("ClickMethod:").append(this.dTf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsRed:").append(this.dHs);
+    ((StringBuffer)localObject).append("UnreadNum:").append(this.dTg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterPid:").append(this.dHt);
+    ((StringBuffer)localObject).append("JumpToChatType:").append(this.dTh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Index:").append(this.dHu);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Pid:").append(this.dHv);
+    ((StringBuffer)localObject).append("UserName:").append(this.dTi);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(183915);
+    AppMethodBeat.o(197135);
     return localObject;
-  }
-  
-  public final u fO(String paramString)
-  {
-    AppMethodBeat.i(183912);
-    this.dHt = t("EnterPid", paramString, true);
-    AppMethodBeat.o(183912);
-    return this;
-  }
-  
-  public final u fP(String paramString)
-  {
-    AppMethodBeat.i(183913);
-    this.dHv = t("Pid", paramString, true);
-    AppMethodBeat.o(183913);
-    return this;
   }
   
   public final int getId()
   {
-    return 19435;
-  }
-  
-  public final int getIndex()
-  {
-    return this.dHu;
-  }
-  
-  public final u hY(int paramInt)
-  {
-    this.dHr = paramInt;
-    return this;
+    return 20134;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.u
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -11,52 +11,52 @@ import java.util.Set;
 
 final class d$a
 {
-  private static HashMap<String, a> IbA;
-  private int Ibx = 0;
-  private String Iby = "";
-  private int Ibz = 0;
-  private long cSx = 0L;
+  private static HashMap<String, a> JQS;
+  private int JQP = 0;
+  private String JQQ = "";
+  private int JQR = 0;
+  private long ddN = 0L;
+  private int hMP;
   private int height;
-  private int hux;
   private int width;
   
   static
   {
     AppMethodBeat.i(36006);
-    IbA = new HashMap();
+    JQS = new HashMap();
     AppMethodBeat.o(36006);
   }
   
-  public static void gg(String paramString, int paramInt)
+  public static void gD(String paramString, int paramInt)
   {
     AppMethodBeat.i(36004);
     Object localObject;
     try
     {
-      boolean bool = bs.isNullOrNil(paramString);
+      boolean bool = bt.isNullOrNil(paramString);
       if ((bool) || (paramInt == 0))
       {
         AppMethodBeat.o(36004);
         return;
       }
-      paramString = (a)IbA.get(paramString);
+      paramString = (a)JQS.get(paramString);
       if (paramString != null) {
-        paramString.hux = paramInt;
+        paramString.hMP = paramInt;
       }
       paramString = new HashSet();
-      localObject = IbA.keySet().iterator();
+      localObject = JQS.keySet().iterator();
       while (((Iterator)localObject).hasNext())
       {
         String str = (String)((Iterator)localObject).next();
-        a locala = (a)IbA.get(str);
+        a locala = (a)JQS.get(str);
         if (locala != null)
         {
-          long l = bs.Ap(locala.cSx);
-          ac.i("MicroMsg.ImageGalleryHolderImage", "dkprog report: diff:%d [%d,%d,%d] succ:%d change:%d str:%s file:%s", new Object[] { Long.valueOf(l), Integer.valueOf(locala.hux), Integer.valueOf(locala.width), Integer.valueOf(locala.height), Integer.valueOf(locala.Ibx), Integer.valueOf(locala.Ibz), locala.Iby, str });
+          long l = bt.Df(locala.ddN);
+          ad.i("MicroMsg.ImageGalleryHolderImage", "dkprog report: diff:%d [%d,%d,%d] succ:%d change:%d str:%s file:%s", new Object[] { Long.valueOf(l), Integer.valueOf(locala.hMP), Integer.valueOf(locala.width), Integer.valueOf(locala.height), Integer.valueOf(locala.JQP), Integer.valueOf(locala.JQR), locala.JQQ, str });
           if (l >= 60000L)
           {
-            if ((locala.hux > 0) && (!bs.isNullOrNil(locala.Iby))) {
-              h.wUl.f(11713, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(41), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(locala.hux), Integer.valueOf(locala.width), Integer.valueOf(locala.height), Integer.valueOf(locala.Ibx), Integer.valueOf(locala.Ibz), locala.Iby });
+            if ((locala.hMP > 0) && (!bt.isNullOrNil(locala.JQQ))) {
+              g.yhR.f(11713, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(41), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(locala.hMP), Integer.valueOf(locala.width), Integer.valueOf(locala.height), Integer.valueOf(locala.JQP), Integer.valueOf(locala.JQR), locala.JQQ });
             }
             paramString.add(str);
           }
@@ -66,14 +66,14 @@ final class d$a
     }
     catch (Throwable paramString)
     {
-      ac.e("MicroMsg.ImageGalleryHolderImage", "get useopt  setTotalLen :%s", new Object[] { bs.m(paramString) });
+      ad.e("MicroMsg.ImageGalleryHolderImage", "get useopt  setTotalLen :%s", new Object[] { bt.n(paramString) });
       AppMethodBeat.o(36004);
       return;
     }
     while (paramString.hasNext())
     {
       localObject = (String)paramString.next();
-      IbA.remove(localObject);
+      JQS.remove(localObject);
     }
     AppMethodBeat.o(36004);
   }
@@ -83,44 +83,44 @@ final class d$a
     AppMethodBeat.i(36005);
     try
     {
-      boolean bool = bs.isNullOrNil(paramString);
+      boolean bool = bt.isNullOrNil(paramString);
       if ((bool) || (paramInt1 == 0) || (paramInt2 == 0))
       {
         AppMethodBeat.o(36005);
         return;
       }
-      a locala2 = (a)IbA.get(paramString);
+      a locala2 = (a)JQS.get(paramString);
       a locala1 = locala2;
       if (locala2 == null)
       {
         locala1 = new a();
-        locala1.cSx = bs.eWj();
-        IbA.put(paramString, locala1);
+        locala1.ddN = bt.flT();
+        JQS.put(paramString, locala1);
       }
       locala1.height = paramInt2;
       locala1.width = paramInt1;
-      locala1.Iby = (locala1.Iby + paramInt3 + "|");
+      locala1.JQQ = (locala1.JQQ + paramInt3 + "|");
       if (paramInt3 > 0) {
-        if (locala1.Ibx == 0) {
-          locala1.Ibx = paramInt3;
+        if (locala1.JQP == 0) {
+          locala1.JQP = paramInt3;
         }
       }
       for (;;)
       {
-        ac.i("MicroMsg.ImageGalleryHolderImage", "dkprog addBit: [%d,%d,%d] succ:%d change:%d str:%s file:%s", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(locala1.Ibx), Integer.valueOf(locala1.Ibz), locala1.Iby, paramString });
+        ad.i("MicroMsg.ImageGalleryHolderImage", "dkprog addBit: [%d,%d,%d] succ:%d change:%d str:%s file:%s", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(locala1.JQP), Integer.valueOf(locala1.JQR), locala1.JQQ, paramString });
         AppMethodBeat.o(36005);
         return;
-        if (locala1.Ibx != 0)
+        if (locala1.JQP != 0)
         {
-          locala1.Ibz += 1;
-          locala1.Ibx = 0;
+          locala1.JQR += 1;
+          locala1.JQP = 0;
         }
       }
       return;
     }
     catch (Throwable paramString)
     {
-      ac.e("MicroMsg.ImageGalleryHolderImage", "get useopt  addBit :%s", new Object[] { bs.m(paramString) });
+      ad.e("MicroMsg.ImageGalleryHolderImage", "get useopt  addBit :%s", new Object[] { bt.n(paramString) });
       AppMethodBeat.o(36005);
     }
   }

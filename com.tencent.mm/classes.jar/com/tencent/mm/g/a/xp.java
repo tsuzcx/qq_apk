@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class xp
   extends b
 {
-  public a dAr;
+  public a dLU;
+  public b dLV;
   
   public xp()
   {
@@ -15,23 +17,23 @@ public final class xp
   
   private xp(byte paramByte)
   {
-    AppMethodBeat.i(91224);
-    this.dAr = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(116056);
+    this.dLU = new a();
+    this.dLV = new b();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(91224);
+    AppMethodBeat.o(116056);
   }
   
   public static final class a
   {
-    public String appId;
-    public String dAj;
-    public int dAs;
-    public String dac;
-    public String nonceStr;
-    public String packageExt;
-    public String signType;
-    public String timeStamp;
+    public Context context;
+    public int type;
+  }
+  
+  public static final class b
+  {
+    public boolean dLW;
   }
 }
 

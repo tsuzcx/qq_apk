@@ -10,11 +10,12 @@ import android.preference.PreferenceManager;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.protocal.protobuf.blg;
-import com.tencent.mm.protocal.protobuf.blh;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bpq;
+import com.tencent.mm.protocal.protobuf.bpr;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.g;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
@@ -27,28 +28,28 @@ import java.util.LinkedList;
 
 public final class f
 {
-  private int sJE;
-  private e sJF;
-  private SparseArray<RandomAccessFile> sJG;
-  private SparseArray<blh> sJH;
-  int sJI;
+  private int tGp;
+  private e tGq;
+  private SparseArray<RandomAccessFile> tGr;
+  private SparseArray<bpr> tGs;
+  int tGt;
   
   f()
   {
     AppMethodBeat.i(111278);
-    this.sJE = 5;
-    Object localObject1 = PreferenceManager.getDefaultSharedPreferences(ai.getContext());
+    this.tGp = 5;
+    Object localObject1 = PreferenceManager.getDefaultSharedPreferences(aj.getContext());
     if (((SharedPreferences)localObject1).getInt("com.tencent.mm.plugin.gallery.cache.cache-up-to-date", 0) == 0)
     {
       ((SharedPreferences)localObject1).edit().putInt("com.tencent.mm.plugin.gallery.cache.cache-up-to-date", 1).apply();
-      localObject1 = cMJ();
-      ac.i("MicroMsg.DiskCache", (String)localObject1);
-      i.cU((String)localObject1, true);
+      localObject1 = cVc();
+      ad.i("MicroMsg.DiskCache", (String)localObject1);
+      i.cZ((String)localObject1, true);
     }
     long l1 = 0L;
     try
     {
-      localObject1 = new StatFs(b.apb());
+      localObject1 = new StatFs(b.arO());
       long l2 = ((StatFs)localObject1).getBlockCountLong();
       long l3 = ((StatFs)localObject1).getBlockSizeLong();
       l1 = l3 * l2;
@@ -64,32 +65,32 @@ public final class f
       }
     }
     i = (int)((float)l1 / 1024.0F / 1024.0F / 1024.0F);
-    ac.d("MicroMsg.DiskCache", "adjustCacheFileNum: %s gb: %s.", new Object[] { Long.valueOf(l1), Integer.valueOf(i) });
+    ad.d("MicroMsg.DiskCache", "adjustCacheFileNum: %s gb: %s.", new Object[] { Long.valueOf(l1), Integer.valueOf(i) });
     if (i < 64)
     {
-      this.sJE = 5;
-      i = PreferenceManager.getDefaultSharedPreferences(ai.getContext()).getInt("com.tencent.mm.plugin.gallery.cache.cache-file-num", 0);
-      if ((i == 0) || (i != this.sJE))
+      this.tGp = 5;
+      i = PreferenceManager.getDefaultSharedPreferences(aj.getContext()).getInt("com.tencent.mm.plugin.gallery.cache.cache-file-num", 0);
+      if ((i == 0) || (i != this.tGp))
       {
-        localObject1 = cMK();
+        localObject1 = cVd();
         if (localObject1 == null) {
           break label354;
         }
-        ac.i("MicroMsg.DiskCache", "cache path: %s.", new Object[] { localObject1 });
-        i.cU((String)localObject1, true);
+        ad.i("MicroMsg.DiskCache", "cache path: %s.", new Object[] { localObject1 });
+        i.cZ((String)localObject1, true);
       }
     }
     for (;;)
     {
-      PreferenceManager.getDefaultSharedPreferences(ai.getContext()).edit().putInt("com.tencent.mm.plugin.gallery.cache.cache-file-num", this.sJE).apply();
-      String str = cMK();
+      PreferenceManager.getDefaultSharedPreferences(aj.getContext()).edit().putInt("com.tencent.mm.plugin.gallery.cache.cache-file-num", this.tGp).apply();
+      String str = cVd();
       localObject1 = str;
       if (str == null)
       {
-        ac.i("MicroMsg.DiskCache", "wtf!!! use old dir!!!");
-        localObject1 = cMJ();
+        ad.i("MicroMsg.DiskCache", "wtf!!! use old dir!!!");
+        localObject1 = cVc();
       }
-      if (bs.isNullOrNil((String)localObject1)) {
+      if (bt.isNullOrNil((String)localObject1)) {
         break label437;
       }
       localObject1 = new e((String)localObject1);
@@ -101,84 +102,84 @@ public final class f
       throw ((Throwable)localObject1);
       if (i < 128)
       {
-        this.sJE = 10;
+        this.tGp = 10;
         break;
       }
       if (i < 256)
       {
-        this.sJE = 20;
+        this.tGp = 20;
         break;
       }
-      this.sJE = 25;
+      this.tGp = 25;
       break;
       label354:
-      ac.e("MicroMsg.DiskCache", "wtf!!! shared storage is not currently available.");
+      ad.e("MicroMsg.DiskCache", "wtf!!! shared storage is not currently available.");
     }
     label364:
     if (!((e)localObject1).isDirectory())
     {
       bool = ((e)localObject1).mkdirs();
-      ac.d("MicroMsg.DiskCache", "dir[%s] not exist, try to create it, result[%B]", new Object[] { q.B(((e)localObject1).fxV()), Boolean.valueOf(bool) });
+      ad.d("MicroMsg.DiskCache", "dir[%s] not exist, try to create it, result[%B]", new Object[] { q.B(((e)localObject1).fOK()), Boolean.valueOf(bool) });
     }
-    this.sJF = ((e)localObject1);
-    this.sJH = new SparseArray();
+    this.tGq = ((e)localObject1);
+    this.tGs = new SparseArray();
     AppMethodBeat.o(111278);
   }
   
-  private void FQ(int paramInt)
+  private void Hf(int paramInt)
   {
     AppMethodBeat.i(111281);
-    ac.d("MicroMsg.DiskCache", "pennqin debug disk cache deleteDataAndIndex: %s.", new Object[] { Integer.valueOf(paramInt) });
-    if ((this.sJG == null) || (this.sJG.size() <= 0))
+    ad.d("MicroMsg.DiskCache", "pennqin debug disk cache deleteDataAndIndex: %s.", new Object[] { Integer.valueOf(paramInt) });
+    if ((this.tGr == null) || (this.tGr.size() <= 0))
     {
-      if (this.sJG == null) {}
+      if (this.tGr == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ac.w("MicroMsg.DiskCache", "file map is invalid, is null? [%s]", new Object[] { Boolean.valueOf(bool) });
+        ad.w("MicroMsg.DiskCache", "file map is invalid, is null? [%s]", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(111281);
         return;
       }
     }
     if (paramInt < 0)
     {
-      ac.d("MicroMsg.DiskCache", "pennqin debug disk cache delete res: %s.", new Object[] { Boolean.valueOf(new e(this.sJF, "cache.idx").delete()) });
-      this.sJH.clear();
+      ad.d("MicroMsg.DiskCache", "pennqin debug disk cache delete res: %s.", new Object[] { Boolean.valueOf(new e(this.tGq, "cache.idx").delete()) });
+      this.tGs.clear();
     }
     while (paramInt < 0)
     {
-      cMF();
-      cMG();
+      cUY();
+      cUZ();
       AppMethodBeat.o(111281);
       return;
       SparseArray localSparseArray = new SparseArray();
       int i = 0;
-      while (i < this.sJH.size())
+      while (i < this.tGs.size())
       {
-        blh localblh = (blh)this.sJH.valueAt(i);
-        if (localblh.FaQ != paramInt) {
-          localSparseArray.put(this.sJH.keyAt(i), localblh);
+        bpr localbpr = (bpr)this.tGs.valueAt(i);
+        if (localbpr.GKp != paramInt) {
+          localSparseArray.put(this.tGs.keyAt(i), localbpr);
         }
-        ac.v("MicroMsg.DiskCache", "index info{key[%s] beg[%d] length[%d]}", new Object[] { Integer.valueOf(localblh.key), Long.valueOf(localblh.FaP), Integer.valueOf(localblh.length) });
+        ad.v("MicroMsg.DiskCache", "index info{key[%s] beg[%d] length[%d]}", new Object[] { Integer.valueOf(localbpr.key), Long.valueOf(localbpr.GKo), Integer.valueOf(localbpr.length) });
         i += 1;
       }
-      this.sJH = localSparseArray;
-      cME();
+      this.tGs = localSparseArray;
+      cUX();
     }
-    close((Closeable)this.sJG.get(paramInt));
-    ac.d("MicroMsg.DiskCache", "pennqin debug disk cache deleteDataAndIndex delete file res: %s.", new Object[] { Boolean.valueOf(new e(this.sJF, FT(paramInt)).delete()) });
+    close((Closeable)this.tGr.get(paramInt));
+    ad.d("MicroMsg.DiskCache", "pennqin debug disk cache deleteDataAndIndex delete file res: %s.", new Object[] { Boolean.valueOf(new e(this.tGq, Hi(paramInt)).delete()) });
     AppMethodBeat.o(111281);
   }
   
-  private void FR(int paramInt)
+  private void Hg(int paramInt)
   {
     AppMethodBeat.i(111282);
-    ac.d("MicroMsg.DiskCache", "jacks reset Index and Data: %d", new Object[] { Integer.valueOf(paramInt) });
-    FQ(paramInt);
-    FP(paramInt);
+    ad.d("MicroMsg.DiskCache", "jacks reset Index and Data: %d", new Object[] { Integer.valueOf(paramInt) });
+    Hf(paramInt);
+    He(paramInt);
     AppMethodBeat.o(111282);
   }
   
-  private static String FT(int paramInt)
+  private static String Hi(int paramInt)
   {
     AppMethodBeat.i(111289);
     StringBuilder localStringBuilder = new StringBuilder("cache.data");
@@ -191,51 +192,51 @@ public final class f
     }
   }
   
-  private void cMG()
+  private void cUZ()
   {
     AppMethodBeat.i(111286);
-    ac.d("MicroMsg.DiskCache", "pennqin debug disk cache !!!delete all cache file!!!");
+    ad.d("MicroMsg.DiskCache", "pennqin debug disk cache !!!delete all cache file!!!");
     int i = 0;
-    while (i < this.sJE)
+    while (i < this.tGp)
     {
-      ac.d("MicroMsg.DiskCache", "pennqin debug disk cache deleteDataAndIndex delete file res: %s.", new Object[] { Boolean.valueOf(new e(this.sJF, FT(this.sJE)).delete()) });
+      ad.d("MicroMsg.DiskCache", "pennqin debug disk cache deleteDataAndIndex delete file res: %s.", new Object[] { Boolean.valueOf(new e(this.tGq, Hi(this.tGp)).delete()) });
       i += 1;
     }
     AppMethodBeat.o(111286);
   }
   
-  private int cMH()
+  private int cVa()
   {
     int i = 0;
     AppMethodBeat.i(111290);
-    if ((this.sJG == null) || (this.sJG.size() <= 0))
+    if ((this.tGr == null) || (this.tGr.size() <= 0))
     {
-      ac.d("MicroMsg.DiskCache", "checkDataSize, cache file invalid.");
+      ad.d("MicroMsg.DiskCache", "checkDataSize, cache file invalid.");
       AppMethodBeat.o(111290);
       return -1;
     }
-    int j = cMI();
+    int j = cVb();
     if (j < 0)
     {
-      ac.d("MicroMsg.DiskCache", "jacks checkDataSize currentSuffix: %d", new Object[] { Integer.valueOf(this.sJI) });
-      if (this.sJI + 1 >= this.sJE) {
-        FR(i);
+      ad.d("MicroMsg.DiskCache", "jacks checkDataSize currentSuffix: %d", new Object[] { Integer.valueOf(this.tGt) });
+      if (this.tGt + 1 >= this.tGp) {
+        Hg(i);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(111290);
       return i;
-      i = this.sJI + 1;
+      i = this.tGt + 1;
       break;
       i = j;
     }
   }
   
-  private int cMI()
+  private int cVb()
   {
     AppMethodBeat.i(111291);
-    if ((this.sJG == null) || (this.sJG.size() <= 0))
+    if ((this.tGr == null) || (this.tGr.size() <= 0))
     {
       AppMethodBeat.o(111291);
       return -1;
@@ -243,13 +244,13 @@ public final class f
     int i = 0;
     try
     {
-      while (i < this.sJG.size())
+      while (i < this.tGr.size())
       {
-        RandomAccessFile localRandomAccessFile = (RandomAccessFile)this.sJG.valueAt(i);
-        ac.d("MicroMsg.DiskCache", "pennqin debug disk cache r.length[%s] MAX_CACHE_FILE_SIZE[%s]", new Object[] { Long.valueOf(localRandomAccessFile.length()), Integer.valueOf(52428800) });
+        RandomAccessFile localRandomAccessFile = (RandomAccessFile)this.tGr.valueAt(i);
+        ad.d("MicroMsg.DiskCache", "pennqin debug disk cache r.length[%s] MAX_CACHE_FILE_SIZE[%s]", new Object[] { Long.valueOf(localRandomAccessFile.length()), Integer.valueOf(52428800) });
         if (localRandomAccessFile.length() < 52428800L)
         {
-          ac.d("MicroMsg.DiskCache", "pennqin debug disk cache getUsedSuffix, %s.", new Object[] { Integer.valueOf(i) });
+          ad.d("MicroMsg.DiskCache", "pennqin debug disk cache getUsedSuffix, %s.", new Object[] { Integer.valueOf(i) });
           AppMethodBeat.o(111291);
           return i;
         }
@@ -259,26 +260,26 @@ public final class f
     }
     catch (IOException localIOException)
     {
-      ac.printErrStackTrace("MicroMsg.DiskCache", localIOException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.DiskCache", localIOException, "", new Object[0]);
       AppMethodBeat.o(111291);
     }
   }
   
-  private static String cMJ()
+  private static String cVc()
   {
     AppMethodBeat.i(111292);
-    String str = b.aph() + "diskcache";
+    String str = b.arU() + "diskcache";
     AppMethodBeat.o(111292);
     return str;
   }
   
-  private static String cMK()
+  private static String cVd()
   {
     AppMethodBeat.i(111293);
     try
     {
-      Object localObject = e.U(ai.getContext().getExternalCacheDir());
-      localObject = q.B(((e)localObject).fxV()) + "/imgcache";
+      Object localObject = e.X(aj.getContext().getExternalCacheDir());
+      localObject = q.B(((e)localObject).fOK()) + "/imgcache";
       AppMethodBeat.o(111293);
       return localObject;
     }
@@ -301,31 +302,31 @@ public final class f
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.DiskCache", "want close %s fail: %s", new Object[] { paramCloseable.getClass().getName(), localException.getMessage() });
-        ac.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
+        ad.e("MicroMsg.DiskCache", "want close %s fail: %s", new Object[] { paramCloseable.getClass().getName(), localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(111283);
   }
   
-  final void FP(int paramInt)
+  final void He(int paramInt)
   {
     AppMethodBeat.i(111280);
-    if (this.sJG == null) {}
+    if (this.tGr == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.DiskCache", "pennqin debug disk cache fileSuffix: %s, mDataFileMap == null? [%s].", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+      ad.d("MicroMsg.DiskCache", "pennqin debug disk cache fileSuffix: %s, mDataFileMap == null? [%s].", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
       try
       {
         RandomAccessFile localRandomAccessFile1;
-        if (this.sJG == null)
+        if (this.tGr == null)
         {
-          this.sJG = new SparseArray();
+          this.tGr = new SparseArray();
           paramInt = 0;
-          while (paramInt < this.sJE)
+          while (paramInt < this.tGp)
           {
-            localRandomAccessFile1 = i.cY(this.sJF + "/" + FT(paramInt), true);
-            this.sJG.put(paramInt, localRandomAccessFile1);
+            localRandomAccessFile1 = i.dd(this.tGq + "/" + Hi(paramInt), true);
+            this.tGr.put(paramInt, localRandomAccessFile1);
             paramInt += 1;
           }
           AppMethodBeat.o(111280);
@@ -333,12 +334,12 @@ public final class f
         }
         if (paramInt < 0)
         {
-          cMF();
+          cUY();
           paramInt = 0;
-          while (paramInt < this.sJE)
+          while (paramInt < this.tGp)
           {
-            localRandomAccessFile1 = i.cY(this.sJF + "/" + FT(paramInt), true);
-            this.sJG.put(paramInt, localRandomAccessFile1);
+            localRandomAccessFile1 = i.dd(this.tGq + "/" + Hi(paramInt), true);
+            this.tGr.put(paramInt, localRandomAccessFile1);
             paramInt += 1;
           }
           AppMethodBeat.o(111280);
@@ -347,55 +348,55 @@ public final class f
       }
       catch (Exception localException)
       {
-        ac.e("MicroMsg.DiskCache", "load data file error: %s", new Object[] { localException.getMessage() });
-        ac.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
-        this.sJG = null;
+        ad.e("MicroMsg.DiskCache", "load data file error: %s", new Object[] { localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
+        this.tGr = null;
         AppMethodBeat.o(111280);
         return;
       }
-      RandomAccessFile localRandomAccessFile2 = i.cY(this.sJF + "/" + FT(paramInt), true);
-      close((Closeable)this.sJG.get(paramInt));
-      this.sJG.put(paramInt, localRandomAccessFile2);
+      RandomAccessFile localRandomAccessFile2 = i.dd(this.tGq + "/" + Hi(paramInt), true);
+      close((Closeable)this.tGr.get(paramInt));
+      this.tGr.put(paramInt, localRandomAccessFile2);
       AppMethodBeat.o(111280);
       return;
     }
   }
   
-  public final Bitmap FS(int paramInt)
+  public final Bitmap Hh(int paramInt)
   {
     AppMethodBeat.i(111288);
-    if ((this.sJG == null) || (this.sJG.size() <= 0))
+    if ((this.tGr == null) || (this.tGr.size() <= 0))
     {
-      ac.e("MicroMsg.DiskCache", "want to get bitmap, but data file is null");
+      ad.e("MicroMsg.DiskCache", "want to get bitmap, but data file is null");
       AppMethodBeat.o(111288);
       return null;
     }
-    Object localObject = (blh)this.sJH.get(paramInt);
+    Object localObject = (bpr)this.tGs.get(paramInt);
     if (localObject != null) {
       try
       {
-        byte[] arrayOfByte = new byte[((blh)localObject).length];
-        ac.d("MicroMsg.DiskCache", "read data, beg pos %d, length %d", new Object[] { Long.valueOf(((blh)localObject).FaP), Integer.valueOf(((blh)localObject).length) });
-        RandomAccessFile localRandomAccessFile = (RandomAccessFile)this.sJG.get(((blh)localObject).FaQ);
-        localRandomAccessFile.seek(((blh)localObject).FaP);
-        localRandomAccessFile.read(arrayOfByte, 0, ((blh)localObject).length);
-        localObject = com.tencent.mm.sdk.platformtools.f.ck(arrayOfByte);
+        byte[] arrayOfByte = new byte[((bpr)localObject).length];
+        ad.d("MicroMsg.DiskCache", "read data, beg pos %d, length %d", new Object[] { Long.valueOf(((bpr)localObject).GKo), Integer.valueOf(((bpr)localObject).length) });
+        RandomAccessFile localRandomAccessFile = (RandomAccessFile)this.tGr.get(((bpr)localObject).GKp);
+        localRandomAccessFile.seek(((bpr)localObject).GKo);
+        localRandomAccessFile.read(arrayOfByte, 0, ((bpr)localObject).length);
+        localObject = g.cr(arrayOfByte);
         if (localObject != null) {
-          ac.d("MicroMsg.DiskCache", "get bitmap from disk cache ok, wh[%d, %d]", new Object[] { Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
+          ad.d("MicroMsg.DiskCache", "get bitmap from disk cache ok, wh[%d, %d]", new Object[] { Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
         }
         for (;;)
         {
           AppMethodBeat.o(111288);
           return localObject;
-          this.sJH.remove(paramInt);
+          this.tGs.remove(paramInt);
         }
-        ac.w("MicroMsg.DiskCache", "oh!!! indexNode is null!!!");
+        ad.w("MicroMsg.DiskCache", "oh!!! indexNode is null!!!");
       }
       catch (Throwable localThrowable)
       {
-        ac.w("MicroMsg.DiskCache", "read data fail, key[%d]: %s", new Object[] { Integer.valueOf(paramInt), localThrowable.getMessage() });
-        ac.printErrStackTrace("MicroMsg.DiskCache", localThrowable, "", new Object[0]);
-        this.sJH.remove(paramInt);
+        ad.w("MicroMsg.DiskCache", "read data fail, key[%d]: %s", new Object[] { Integer.valueOf(paramInt), localThrowable.getMessage() });
+        ad.printErrStackTrace("MicroMsg.DiskCache", localThrowable, "", new Object[0]);
+        this.tGs.remove(paramInt);
         AppMethodBeat.o(111288);
         return null;
       }
@@ -409,12 +410,12 @@ public final class f
     boolean bool2 = true;
     boolean bool1 = true;
     AppMethodBeat.i(111287);
-    if ((this.sJG == null) || (this.sJG.size() <= 0))
+    if ((this.tGr == null) || (this.tGr.size() <= 0))
     {
-      if (this.sJG == null) {}
+      if (this.tGr == null) {}
       for (;;)
       {
-        ac.e("MicroMsg.DiskCache", "want to put bitmap, but data file is invalid, is null?[%s]", new Object[] { Boolean.valueOf(bool1) });
+        ad.e("MicroMsg.DiskCache", "want to put bitmap, but data file is invalid, is null?[%s]", new Object[] { Boolean.valueOf(bool1) });
         AppMethodBeat.o(111287);
         return;
         bool1 = false;
@@ -425,24 +426,24 @@ public final class f
       if (paramBitmap == null) {}
       for (bool1 = bool2;; bool1 = false)
       {
-        ac.e("MicroMsg.DiskCache", "put bmp, value error, bmp is null? [%s]", new Object[] { Boolean.valueOf(bool1) });
+        ad.e("MicroMsg.DiskCache", "put bmp, value error, bmp is null? [%s]", new Object[] { Boolean.valueOf(bool1) });
         AppMethodBeat.o(111287);
         return;
       }
     }
-    ac.d("MicroMsg.DiskCache", "put bmp key[%d] size[%d, %d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
-    int i = cMH();
+    ad.d("MicroMsg.DiskCache", "put bmp key[%d] size[%d, %d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
+    int i = cVa();
     if (i < 0)
     {
-      ac.e("MicroMsg.DiskCache", "impossible!!! put bmp, file suffix < 0");
+      ad.e("MicroMsg.DiskCache", "impossible!!! put bmp, file suffix < 0");
       AppMethodBeat.o(111287);
       return;
     }
-    blh localblh = (blh)this.sJH.get(paramInt);
-    if (localblh == null)
+    bpr localbpr = (bpr)this.tGs.get(paramInt);
+    if (localbpr == null)
     {
-      localblh = new blh();
-      localblh.key = paramInt;
+      localbpr = new bpr();
+      localbpr.key = paramInt;
     }
     for (;;)
     {
@@ -451,22 +452,22 @@ public final class f
       {
         paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
         long l = System.currentTimeMillis();
-        paramBitmap = (RandomAccessFile)this.sJG.get(i);
-        localblh.FaP = paramBitmap.length();
-        localblh.FaQ = i;
-        localblh.length = localByteArrayOutputStream.size();
+        paramBitmap = (RandomAccessFile)this.tGr.get(i);
+        localbpr.GKo = paramBitmap.length();
+        localbpr.GKp = i;
+        localbpr.length = localByteArrayOutputStream.size();
         byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
-        paramBitmap.seek(localblh.FaP);
+        paramBitmap.seek(localbpr.GKo);
         paramBitmap.write(arrayOfByte);
-        this.sJI = i;
-        ac.d("MicroMsg.DiskCache", "jacks [time: %d]save data ok, key[%d] beg pos %d, length %d, file_suffix %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localblh.key), Long.valueOf(localblh.FaP), Integer.valueOf(localblh.length), Integer.valueOf(localblh.FaQ) });
-        this.sJH.put(paramInt, localblh);
+        this.tGt = i;
+        ad.d("MicroMsg.DiskCache", "jacks [time: %d]save data ok, key[%d] beg pos %d, length %d, file_suffix %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localbpr.key), Long.valueOf(localbpr.GKo), Integer.valueOf(localbpr.length), Integer.valueOf(localbpr.GKp) });
+        this.tGs.put(paramInt, localbpr);
         return;
       }
       catch (Throwable paramBitmap)
       {
-        ac.e("MicroMsg.DiskCache", "error:%s", new Object[] { paramBitmap.getMessage() });
-        ac.printErrStackTrace("MicroMsg.DiskCache", paramBitmap, "", new Object[0]);
+        ad.e("MicroMsg.DiskCache", "error:%s", new Object[] { paramBitmap.getMessage() });
+        ad.printErrStackTrace("MicroMsg.DiskCache", paramBitmap, "", new Object[0]);
         return;
       }
       finally
@@ -477,22 +478,22 @@ public final class f
     }
   }
   
-  final void cMD()
+  final void cUW()
   {
     AppMethodBeat.i(111279);
-    e locale = new e(this.sJF, "cache.idx");
-    Object localObject2 = new blg();
-    Object localObject3 = q.B(locale.fxV());
-    ac.d("MicroMsg.DiskCache", "pennqin debug disk cache path: %s.", new Object[] { localObject3 });
+    e locale = new e(this.tGq, "cache.idx");
+    Object localObject2 = new bpq();
+    Object localObject3 = q.B(locale.fOK());
+    ad.d("MicroMsg.DiskCache", "pennqin debug disk cache path: %s.", new Object[] { localObject3 });
     Object localObject1 = localObject2;
-    if (!bs.isNullOrNil((String)localObject3)) {}
+    if (!bt.isNullOrNil((String)localObject3)) {}
     try
     {
-      localObject3 = bs.readFromFile((String)localObject3);
+      localObject3 = bt.readFromFile((String)localObject3);
       localObject1 = localObject2;
       if (localObject3 != null)
       {
-        ((blg)localObject2).parseFrom((byte[])localObject3);
+        ((bpq)localObject2).parseFrom((byte[])localObject3);
         localObject1 = localObject2;
       }
     }
@@ -500,47 +501,47 @@ public final class f
     {
       for (;;)
       {
-        ac.e("MicroMsg.DiskCache", "load index file error");
-        ac.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
-        FQ(-1);
-        blg localblg1 = new blg();
+        ad.e("MicroMsg.DiskCache", "load index file error");
+        ad.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
+        Hf(-1);
+        bpq localbpq1 = new bpq();
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       for (;;)
       {
-        ac.e("MicroMsg.DiskCache", "load index file error, OOM, index length %s", new Object[] { Long.valueOf(locale.length()) });
-        ac.printErrStackTrace("MicroMsg.DiskCache", localOutOfMemoryError, "", new Object[0]);
-        FQ(-1);
-        blg localblg2 = new blg();
+        ad.e("MicroMsg.DiskCache", "load index file error, OOM, index length %s", new Object[] { Long.valueOf(locale.length()) });
+        ad.printErrStackTrace("MicroMsg.DiskCache", localOutOfMemoryError, "", new Object[0]);
+        Hf(-1);
+        bpq localbpq2 = new bpq();
       }
       AppMethodBeat.o(111279);
     }
-    this.sJH.clear();
-    localObject1 = ((blg)localObject1).FaO.iterator();
+    this.tGs.clear();
+    localObject1 = ((bpq)localObject1).GKn.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (blh)((Iterator)localObject1).next();
-      this.sJH.put(((blh)localObject2).key, localObject2);
+      localObject2 = (bpr)((Iterator)localObject1).next();
+      this.tGs.put(((bpr)localObject2).key, localObject2);
     }
   }
   
-  final void cME()
+  final void cUX()
   {
     AppMethodBeat.i(111284);
-    blg localblg = new blg();
+    bpq localbpq = new bpq();
     int i = 0;
     for (;;)
     {
-      if (i < this.sJH.size()) {
+      if (i < this.tGs.size()) {
         try
         {
-          blh localblh = (blh)this.sJH.valueAt(i);
-          if (localblh != null)
+          bpr localbpr = (bpr)this.tGs.valueAt(i);
+          if (localbpr != null)
           {
-            localblg.FaO.add(localblh);
-            ac.v("MicroMsg.DiskCache", "index info{key[%s] beg[%d] length[%d] file_suffix[%d]}", new Object[] { Integer.valueOf(localblh.key), Long.valueOf(localblh.FaP), Integer.valueOf(localblh.length), Integer.valueOf(localblh.FaQ) });
+            localbpq.GKn.add(localbpr);
+            ad.v("MicroMsg.DiskCache", "index info{key[%s] beg[%d] length[%d] file_suffix[%d]}", new Object[] { Integer.valueOf(localbpr.key), Long.valueOf(localbpr.GKo), Integer.valueOf(localbpr.length), Integer.valueOf(localbpr.GKp) });
           }
           i += 1;
         }
@@ -548,48 +549,48 @@ public final class f
         {
           for (;;)
           {
-            ac.printErrStackTrace("MicroMsg.DiskCache", localClassCastException, "saveIndex ClassCastException.", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.DiskCache", localClassCastException, "saveIndex ClassCastException.", new Object[0]);
             locale = null;
           }
         }
       }
     }
-    e locale = new e(this.sJF, "cache.idx");
+    e locale = new e(this.tGq, "cache.idx");
     try
     {
-      bs.t(q.B(locale.fxV()), localblg.toByteArray());
+      bt.u(q.B(locale.fOK()), localbpq.toByteArray());
       AppMethodBeat.o(111284);
       return;
     }
     catch (Exception localException)
     {
-      ac.e("MicroMsg.DiskCache", "save index data error: %s", new Object[] { localException.getMessage() });
-      ac.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
+      ad.e("MicroMsg.DiskCache", "save index data error: %s", new Object[] { localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.DiskCache", localException, "", new Object[0]);
       AppMethodBeat.o(111284);
     }
   }
   
-  final void cMF()
+  final void cUY()
   {
     AppMethodBeat.i(111285);
-    if ((this.sJG == null) || (this.sJG.size() <= 0))
+    if ((this.tGr == null) || (this.tGr.size() <= 0))
     {
       AppMethodBeat.o(111285);
       return;
     }
     int i = 0;
-    while (i < this.sJG.size())
+    while (i < this.tGr.size())
     {
-      close((RandomAccessFile)this.sJG.valueAt(i));
+      close((RandomAccessFile)this.tGr.valueAt(i));
       i += 1;
     }
-    this.sJG.clear();
+    this.tGr.clear();
     AppMethodBeat.o(111285);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.f
  * JD-Core Version:    0.7.0.1
  */

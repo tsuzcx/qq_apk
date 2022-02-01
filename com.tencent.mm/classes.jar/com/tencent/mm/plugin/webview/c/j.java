@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.webview.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.b;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.i;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/webview/jsapi/JsLoaderSetting;", "", "()V", "value", "", "isVConsoleOpen", "()Z", "setVConsoleOpen", "(Z)V", "webview-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/webview/jsapi/JsLoaderSetting;", "", "()V", "value", "", "isVConsoleOpen", "()Z", "setVConsoleOpen", "(Z)V", "webview-sdk_release"})
 public final class j
 {
-  public static final j Cks;
+  public static final j DNy;
   
   static
   {
-    AppMethodBeat.i(205532);
-    Cks = new j();
-    AppMethodBeat.o(205532);
+    AppMethodBeat.i(214321);
+    DNy = new j();
+    AppMethodBeat.o(214321);
   }
   
-  public static final boolean eAd()
+  public static final boolean eOR()
   {
-    AppMethodBeat.i(205530);
-    if (((h.IS_FLAVOR_RED) || (h.DEBUG) || (((b)g.ab(b.class)).a(b.a.pZB, 0) == 1)) && (k.eAe().getBoolean("vconsole", false)))
+    AppMethodBeat.i(214319);
+    if (((i.IS_FLAVOR_RED) || (i.DEBUG) || (((b)g.ab(b.class)).a(b.a.qEO, 0) == 1)) && (k.eOS().getBoolean("vconsole", false)))
     {
-      AppMethodBeat.o(205530);
+      AppMethodBeat.o(214319);
       return true;
     }
-    AppMethodBeat.o(205530);
+    AppMethodBeat.o(214319);
     return false;
   }
   
-  public static final void um(boolean paramBoolean)
+  public static final void va(boolean paramBoolean)
   {
-    AppMethodBeat.i(205531);
-    k.eAe().putBoolean("vconsole", paramBoolean);
-    AppMethodBeat.o(205531);
+    AppMethodBeat.i(214320);
+    k.eOS().putBoolean("vconsole", paramBoolean);
+    AppMethodBeat.o(214320);
   }
 }
 

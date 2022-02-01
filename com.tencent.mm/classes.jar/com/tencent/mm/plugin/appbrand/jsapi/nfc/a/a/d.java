@@ -4,13 +4,13 @@ import com.tencent.mm.plugin.appbrand.g.a;
 import d.g.a.b;
 import d.l;
 
-@l(fNY={1, 1, 16})
+@l(gfx={1, 1, 16})
 final class d
   implements g.a
 {
   d(b paramb)
   {
-    this.gIs = paramb;
+    this.hcc = paramb;
   }
 }
 

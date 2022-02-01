@@ -7,21 +7,21 @@ import java.util.Map;
 
 final class r
 {
-  private final Map<h, k<?>> aGi;
-  private final Map<h, k<?>> aGj;
+  private final Map<h, k<?>> aHZ;
+  private final Map<h, k<?>> aIa;
   
   r()
   {
     AppMethodBeat.i(77031);
-    this.aGi = new HashMap();
-    this.aGj = new HashMap();
+    this.aHZ = new HashMap();
+    this.aIa = new HashMap();
     AppMethodBeat.o(77031);
   }
   
   final void a(h paramh, k<?> paramk)
   {
     AppMethodBeat.i(77032);
-    Map localMap = aH(paramk.aEI);
+    Map localMap = aH(paramk.aGz);
     if (paramk.equals(localMap.get(paramh))) {
       localMap.remove(paramh);
     }
@@ -31,9 +31,9 @@ final class r
   final Map<h, k<?>> aH(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return this.aGj;
+      return this.aIa;
     }
-    return this.aGi;
+    return this.aHZ;
   }
 }
 

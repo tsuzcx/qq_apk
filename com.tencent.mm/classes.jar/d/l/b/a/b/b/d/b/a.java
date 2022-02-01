@@ -1,7 +1,7 @@
 package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.v;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
@@ -11,25 +11,25 @@ import java.util.List;
 
 final class a
 {
-  private static a Ljk;
-  public static final a Ljl;
+  private static a Nag;
+  public static final a Nah;
   
   static
   {
     AppMethodBeat.i(57394);
-    Ljl = new a();
+    Nah = new a();
     AppMethodBeat.o(57394);
   }
   
   private static a a(Member paramMember)
   {
     AppMethodBeat.i(57392);
-    k.h(paramMember, "member");
+    p.h(paramMember, "member");
     paramMember = paramMember.getClass();
     try
     {
       Method localMethod = paramMember.getMethod("getParameters", new Class[0]);
-      paramMember = new a(localMethod, b.bv(paramMember).loadClass("java.lang.reflect.Parameter").getMethod("getName", new Class[0]));
+      paramMember = new a(localMethod, b.bx(paramMember).loadClass("java.lang.reflect.Parameter").getMethod("getName", new Class[0]));
       AppMethodBeat.o(57392);
       return paramMember;
     }
@@ -44,21 +44,21 @@ final class a
   public static List<String> b(Member paramMember)
   {
     AppMethodBeat.i(57393);
-    k.h(paramMember, "member");
-    Object localObject2 = Ljk;
+    p.h(paramMember, "member");
+    Object localObject2 = Nag;
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = a(paramMember);
-      Ljk = (a)localObject1;
+      Nag = (a)localObject1;
     }
-    localObject2 = ((a)localObject1).Ljm;
+    localObject2 = ((a)localObject1).Nai;
     if (localObject2 == null)
     {
       AppMethodBeat.o(57393);
       return null;
     }
-    localObject1 = ((a)localObject1).Ljn;
+    localObject1 = ((a)localObject1).Naj;
     if (localObject1 == null)
     {
       AppMethodBeat.o(57393);
@@ -94,19 +94,19 @@ final class a
   
   public static final class a
   {
-    final Method Ljm;
-    final Method Ljn;
+    final Method Nai;
+    final Method Naj;
     
     public a(Method paramMethod1, Method paramMethod2)
     {
-      this.Ljm = paramMethod1;
-      this.Ljn = paramMethod2;
+      this.Nai = paramMethod1;
+      this.Naj = paramMethod2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.d.b.a
  * JD-Core Version:    0.7.0.1
  */

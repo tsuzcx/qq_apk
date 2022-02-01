@@ -1,123 +1,224 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class agb
-  extends cpx
+  extends com.tencent.mm.bx.a
 {
-  public int Eyl;
-  public int dBz;
-  public double latitude;
-  public double longitude;
-  public int owW;
-  public int vGO;
+  public String ActivityID;
+  public String AesKey;
+  public String EncryptUrl;
+  public String ExternMd5;
+  public String ExternUrl;
+  public String GdY;
+  public String GdZ;
+  public String Gea;
+  public String Geb;
+  public String Md5;
+  public String ProductID;
+  public String ThumbUrl;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91456);
+    AppMethodBeat.i(104759);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      if (this.Md5 == null)
       {
-        paramVarArgs.ln(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: Md5");
+        AppMethodBeat.o(104759);
+        throw paramVarArgs;
       }
-      paramVarArgs.aR(2, this.owW);
-      paramVarArgs.aR(3, this.vGO);
-      paramVarArgs.aR(4, this.dBz);
-      paramVarArgs.aR(5, this.Eyl);
-      paramVarArgs.e(6, this.latitude);
-      paramVarArgs.e(7, this.longitude);
-      AppMethodBeat.o(91456);
+      if (this.Md5 != null) {
+        paramVarArgs.d(1, this.Md5);
+      }
+      if (this.Url != null) {
+        paramVarArgs.d(2, this.Url);
+      }
+      if (this.ThumbUrl != null) {
+        paramVarArgs.d(3, this.ThumbUrl);
+      }
+      if (this.GdY != null) {
+        paramVarArgs.d(4, this.GdY);
+      }
+      if (this.EncryptUrl != null) {
+        paramVarArgs.d(5, this.EncryptUrl);
+      }
+      if (this.AesKey != null) {
+        paramVarArgs.d(6, this.AesKey);
+      }
+      if (this.ProductID != null) {
+        paramVarArgs.d(7, this.ProductID);
+      }
+      if (this.ExternUrl != null) {
+        paramVarArgs.d(8, this.ExternUrl);
+      }
+      if (this.ExternMd5 != null) {
+        paramVarArgs.d(9, this.ExternMd5);
+      }
+      if (this.ActivityID != null) {
+        paramVarArgs.d(10, this.ActivityID);
+      }
+      if (this.GdZ != null) {
+        paramVarArgs.d(11, this.GdZ);
+      }
+      if (this.Gea != null) {
+        paramVarArgs.d(12, this.Gea);
+      }
+      if (this.Geb != null) {
+        paramVarArgs.d(13, this.Geb);
+      }
+      AppMethodBeat.o(104759);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label592;
+      if (this.Md5 == null) {
+        break label998;
       }
     }
-    label592:
-    for (paramInt = f.a.a.a.lm(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label998:
+    for (int i = f.a.a.b.b.a.e(1, this.Md5) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bx(2, this.owW);
-      int j = f.a.a.b.b.a.bx(3, this.vGO);
-      int k = f.a.a.b.b.a.bx(4, this.dBz);
-      int m = f.a.a.b.b.a.bx(5, this.Eyl);
-      int n = f.a.a.b.b.a.fK(6);
-      int i1 = f.a.a.b.b.a.fK(7);
-      AppMethodBeat.o(91456);
-      return paramInt + i + j + k + m + (n + 8) + (i1 + 8);
+      paramInt = i;
+      if (this.Url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Url);
+      }
+      i = paramInt;
+      if (this.ThumbUrl != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ThumbUrl);
+      }
+      paramInt = i;
+      if (this.GdY != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.GdY);
+      }
+      i = paramInt;
+      if (this.EncryptUrl != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.EncryptUrl);
+      }
+      paramInt = i;
+      if (this.AesKey != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.AesKey);
+      }
+      i = paramInt;
+      if (this.ProductID != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.ProductID);
+      }
+      paramInt = i;
+      if (this.ExternUrl != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.ExternUrl);
+      }
+      i = paramInt;
+      if (this.ExternMd5 != null) {
+        i = paramInt + f.a.a.b.b.a.e(9, this.ExternMd5);
+      }
+      paramInt = i;
+      if (this.ActivityID != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.ActivityID);
+      }
+      i = paramInt;
+      if (this.GdZ != null) {
+        i = paramInt + f.a.a.b.b.a.e(11, this.GdZ);
+      }
+      paramInt = i;
+      if (this.Gea != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.Gea);
+      }
+      i = paramInt;
+      if (this.Geb != null) {
+        i = paramInt + f.a.a.b.b.a.e(13, this.Geb);
+      }
+      AppMethodBeat.o(104759);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cpx.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cpx.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(91456);
+        if (this.Md5 == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Md5");
+          AppMethodBeat.o(104759);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104759);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         agb localagb = (agb)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91456);
+          AppMethodBeat.o(104759);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new iv();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((iv)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cpx.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localagb.BaseRequest = ((iv)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91456);
+          localagb.Md5 = locala.NPN.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 2: 
-          localagb.owW = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(91456);
+          localagb.Url = locala.NPN.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 3: 
-          localagb.vGO = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(91456);
+          localagb.ThumbUrl = locala.NPN.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 4: 
-          localagb.dBz = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(91456);
+          localagb.GdY = locala.NPN.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 5: 
-          localagb.Eyl = ((f.a.a.a.a)localObject1).LVo.xF();
-          AppMethodBeat.o(91456);
+          localagb.EncryptUrl = locala.NPN.readString();
+          AppMethodBeat.o(104759);
           return 0;
         case 6: 
-          localagb.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).LVo.gab());
-          AppMethodBeat.o(91456);
+          localagb.AesKey = locala.NPN.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 7: 
+          localagb.ProductID = locala.NPN.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 8: 
+          localagb.ExternUrl = locala.NPN.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 9: 
+          localagb.ExternMd5 = locala.NPN.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 10: 
+          localagb.ActivityID = locala.NPN.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 11: 
+          localagb.GdZ = locala.NPN.readString();
+          AppMethodBeat.o(104759);
+          return 0;
+        case 12: 
+          localagb.Gea = locala.NPN.readString();
+          AppMethodBeat.o(104759);
           return 0;
         }
-        localagb.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).LVo.gab());
-        AppMethodBeat.o(91456);
+        localagb.Geb = locala.NPN.readString();
+        AppMethodBeat.o(104759);
         return 0;
       }
-      AppMethodBeat.o(91456);
+      AppMethodBeat.o(104759);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.agb
  * JD-Core Version:    0.7.0.1
  */

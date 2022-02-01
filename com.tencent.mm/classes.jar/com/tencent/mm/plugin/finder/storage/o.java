@@ -1,64 +1,39 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ame;
-import d.f;
-import d.g;
-import d.g.a.a;
-import d.g.b.u;
-import d.g.b.w;
+import com.tencent.mm.g.c.cg;
+import com.tencent.mm.sdk.e.c.a;
+import d.g.b.p;
+import d.l;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "(Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;)V", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "getLocalPb", "()Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "localType", "", "getLocalType", "()I", "wording", "", "getWording", "()Ljava/lang/String;", "isSame", "", "other", "Companion", "plugin-finder_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation;", "Lcom/tencent/mm/autogen/table/BaseFinderLocalOperation;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-finder_release"})
 public final class o
+  extends cg
 {
-  private static final int rEp = 1;
-  public static final a rEq;
-  public final f rDJ;
-  public final ame rEo;
+  private static final c.a info;
+  public static final a syA;
   
   static
   {
-    AppMethodBeat.i(202988);
-    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bn(o.class), "id", "getId()J")) };
-    rEq = new a((byte)0);
-    rEp = 1;
-    AppMethodBeat.o(202988);
+    AppMethodBeat.i(203709);
+    syA = new a((byte)0);
+    c.a locala = cg.Vv();
+    p.g(locala, "initAutoDBInfo(FinderLocalOperation::class.java)");
+    info = locala;
+    AppMethodBeat.o(203709);
   }
   
-  public o(ame paramame)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(202990);
-    this.rEo = paramame;
-    this.rDJ = g.K((a)new b(this));
-    AppMethodBeat.o(202990);
+    return info;
   }
   
-  public final String getWording()
-  {
-    AppMethodBeat.i(202989);
-    String str = this.rEo.dlQ;
-    d.g.b.k.g(str, "localPb.wording");
-    AppMethodBeat.o(202989);
-    return str;
-  }
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem$Companion;", "", "()V", "VIEW_ITEM_WORDING", "", "getVIEW_ITEM_WORDING", "()I", "plugin-finder_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
   public static final class a {}
-  
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
-  static final class b
-    extends d.g.b.l
-    implements a<Long>
-  {
-    b(o paramo)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.o
  * JD-Core Version:    0.7.0.1
  */

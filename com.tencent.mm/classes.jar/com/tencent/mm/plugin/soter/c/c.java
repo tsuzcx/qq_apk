@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.mm.plugin.soter.d.j;
 import com.tencent.mm.plugin.soter.d.k;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.soter.a.f.e;
 import com.tencent.soter.core.c.i;
@@ -14,20 +14,20 @@ import java.lang.ref.WeakReference;
 
 public abstract class c
 {
+  protected j AFr = null;
+  protected k AFs = null;
+  public e AFt = null;
+  public e AFu = null;
+  public a AFv = null;
   protected Handler handler = null;
-  protected WeakReference<Activity> lvU = null;
+  protected WeakReference<Activity> lVh = null;
   public int mScene = -1;
-  public e znA = null;
-  public a znB = null;
-  protected j znx = null;
-  protected k zny = null;
-  public e znz = null;
   
   public c(WeakReference<Activity> paramWeakReference, j paramj, k paramk, Handler paramHandler)
   {
-    this.znx = paramj;
-    this.zny = paramk;
-    this.lvU = paramWeakReference;
+    this.AFr = paramj;
+    this.AFs = paramk;
+    this.lVh = paramWeakReference;
     this.handler = paramHandler;
   }
   
@@ -35,72 +35,72 @@ public abstract class c
   {
     if (paramd == null)
     {
-      ac.e("MicroMsg.SoterMpBaseController", "hy: dialog is null.");
+      ad.e("MicroMsg.SoterMpBaseController", "hy: dialog is null.");
       return;
     }
     if (this.handler != null)
     {
-      dTi();
+      efw();
       this.handler.obtainMessage(6, paramd).sendToTarget();
       return;
     }
-    ac.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    ad.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void dTh()
+  protected final void efv()
   {
     if (this.handler != null)
     {
       this.handler.obtainMessage(4).sendToTarget();
       return;
     }
-    ac.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    ad.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void dTi()
+  protected final void efw()
   {
     if (this.handler != null)
     {
       this.handler.obtainMessage(5).sendToTarget();
       return;
     }
-    ac.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    ad.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void dTj()
+  protected final void efx()
   {
     if (this.handler != null)
     {
-      dTi();
-      this.handler.obtainMessage(0, this.zny).sendToTarget();
+      efw();
+      this.handler.obtainMessage(0, this.AFs).sendToTarget();
       return;
     }
-    ac.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    ad.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void dTk()
+  protected final void efy()
   {
     if (this.handler != null)
     {
-      dTi();
-      this.handler.obtainMessage(1, this.zny).sendToTarget();
+      efw();
+      this.handler.obtainMessage(1, this.AFs).sendToTarget();
       return;
     }
-    ac.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    ad.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  protected final void dTl()
+  protected final void efz()
   {
     if (this.handler != null)
     {
-      dTi();
-      this.handler.obtainMessage(2, this.zny).sendToTarget();
+      efw();
+      this.handler.obtainMessage(2, this.AFs).sendToTarget();
       return;
     }
-    ac.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    ad.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
-  public abstract void gb();
+  public abstract void gt();
   
   public abstract void onPause();
   
@@ -120,7 +120,7 @@ public abstract class c
       localMessage.sendToTarget();
       return;
     }
-    ac.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
+    ad.e("MicroMsg.SoterMpBaseController", "hy: handler not bind");
   }
   
   public static abstract interface a

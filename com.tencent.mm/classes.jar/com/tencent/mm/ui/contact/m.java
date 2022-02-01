@@ -11,35 +11,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cc.a;
-import com.tencent.mm.g.c.av;
+import com.tencent.mm.g.c.aw;
 import com.tencent.mm.model.q;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.w;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
 import java.util.List;
 
 public final class m
   extends BaseAdapter
 {
-  private List<String> IvK;
-  private boolean IvL;
+  private List<String> Kmq;
+  private boolean Kmr;
   private Context context;
-  private List<ai> fwF;
+  private List<am> fPS;
   
-  public m(Context paramContext, List<ai> paramList, List<String> paramList1, boolean paramBoolean)
+  public m(Context paramContext, List<am> paramList, List<String> paramList1, boolean paramBoolean)
   {
-    this.fwF = paramList;
+    this.fPS = paramList;
     this.context = paramContext;
-    this.IvL = paramBoolean;
-    this.IvK = paramList1;
+    this.Kmr = paramBoolean;
+    this.Kmq = paramList1;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(37849);
-    int i = this.fwF.size();
+    int i = this.fPS.size();
     AppMethodBeat.o(37849);
     return i;
   }
@@ -47,7 +47,7 @@ public final class m
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(37850);
-    Object localObject = this.fwF.get(paramInt);
+    Object localObject = this.fPS.get(paramInt);
     AppMethodBeat.o(37850);
     return localObject;
   }
@@ -60,33 +60,33 @@ public final class m
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(37848);
-    ai localai = (ai)this.fwF.get(paramInt);
+    am localam = (am)this.fPS.get(paramInt);
     if (paramView == null)
     {
       paramViewGroup = new GroupCardSelectUI.a();
       paramView = View.inflate(this.context, 2131494422, null);
-      paramViewGroup.tVh = ((TextView)paramView.findViewById(2131300624));
-      paramViewGroup.IvW = ((TextView)paramView.findViewById(2131300625));
-      paramViewGroup.iKw = ((ImageView)paramView.findViewById(2131300623));
-      paramViewGroup.vGm = ((CheckBox)paramView.findViewById(2131304502));
+      paramViewGroup.uXJ = ((TextView)paramView.findViewById(2131300624));
+      paramViewGroup.KmE = ((TextView)paramView.findViewById(2131300625));
+      paramViewGroup.jdF = ((ImageView)paramView.findViewById(2131300623));
+      paramViewGroup.wNt = ((CheckBox)paramView.findViewById(2131304502));
       paramView.setTag(paramViewGroup);
-      a.b.c(paramViewGroup.iKw, localai.field_username);
-      paramViewGroup.IvW.setText(k.b(this.context, v.wk(localai.field_username), a.au(this.context, 2131165517)));
-      paramViewGroup.tVh.setText("(" + q.wb(localai.field_username) + ")");
-      if (!w.wr(localai.field_username)) {
+      a.b.c(paramViewGroup.jdF, localam.field_username);
+      paramViewGroup.KmE.setText(k.b(this.context, v.zf(localam.field_username), a.ax(this.context, 2131165517)));
+      paramViewGroup.uXJ.setText("(" + q.yS(localam.field_username) + ")");
+      if (!w.zm(localam.field_username)) {
         break label290;
       }
       Drawable localDrawable = this.context.getResources().getDrawable(2131691000);
       localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      paramViewGroup.IvW.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
+      paramViewGroup.KmE.setCompoundDrawablesWithIntrinsicBounds(null, null, localDrawable, null);
       label232:
-      if (this.IvL)
+      if (this.Kmr)
       {
-        paramViewGroup.vGm.setVisibility(0);
-        if (!this.IvK.contains(localai.field_username)) {
+        paramViewGroup.wNt.setVisibility(0);
+        if (!this.Kmq.contains(localam.field_username)) {
           break label304;
         }
-        paramViewGroup.vGm.setChecked(true);
+        paramViewGroup.wNt.setChecked(true);
       }
     }
     for (;;)
@@ -96,10 +96,10 @@ public final class m
       paramViewGroup = (GroupCardSelectUI.a)paramView.getTag();
       break;
       label290:
-      paramViewGroup.IvW.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+      paramViewGroup.KmE.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
       break label232;
       label304:
-      paramViewGroup.vGm.setChecked(false);
+      paramViewGroup.wNt.setChecked(false);
     }
   }
 }

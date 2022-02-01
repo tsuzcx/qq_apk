@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 import java.util.LinkedList;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazyManager;", "", "()V", "managedDelegates", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Resettable;", "getManagedDelegates", "()Ljava/util/LinkedList;", "register", "", "managed", "reset", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/ResettableLazyManager;", "", "()V", "managedDelegates", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Resettable;", "getManagedDelegates", "()Ljava/util/LinkedList;", "register", "", "managed", "reset", "plugin-brandservice_release"})
 public final class p
 {
-  public final LinkedList<n> nHp;
+  public final LinkedList<n> ojS;
   
   public p()
   {
     AppMethodBeat.i(6731);
-    this.nHp = new LinkedList();
+    this.ojS = new LinkedList();
     AppMethodBeat.o(6731);
   }
 }

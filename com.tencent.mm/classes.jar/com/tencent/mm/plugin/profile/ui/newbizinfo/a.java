@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.p;
+import com.tencent.mm.am.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.b.b;
-import com.tencent.mm.protocal.protobuf.lp;
-import com.tencent.mm.protocal.protobuf.lx;
-import com.tencent.mm.protocal.protobuf.ly;
+import com.tencent.mm.protocal.protobuf.aah;
 import com.tencent.mm.protocal.protobuf.lz;
-import com.tencent.mm.protocal.protobuf.nc;
-import com.tencent.mm.protocal.protobuf.nd;
-import com.tencent.mm.protocal.protobuf.nl;
-import com.tencent.mm.protocal.protobuf.nv;
-import com.tencent.mm.protocal.protobuf.nw;
-import com.tencent.mm.protocal.protobuf.yi;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.mm;
+import com.tencent.mm.protocal.protobuf.mn;
+import com.tencent.mm.protocal.protobuf.mo;
+import com.tencent.mm.protocal.protobuf.ny;
+import com.tencent.mm.protocal.protobuf.nz;
+import com.tencent.mm.protocal.protobuf.oi;
+import com.tencent.mm.protocal.protobuf.pa;
+import com.tencent.mm.protocal.protobuf.pb;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,49 +27,49 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/ProfileV2;", "", "()V", "TAG", "", "profileCachePath", "kotlin.jvm.PlatformType", "getProfileCachePath", "()Ljava/lang/String;", "clear", "", "userName", "get", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "indexOf", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/MessageInfo;", "list", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "index", "", "processServiceInfoList", "", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenuButton;", "menuInfo", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenu;", "save", "resp", "sizeOf", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "updatePayStatus", "msgList", "pickAppMsg", "toFileName", "app_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/ProfileV2;", "", "()V", "TAG", "", "profileCachePath", "kotlin.jvm.PlatformType", "getProfileCachePath", "()Ljava/lang/String;", "clear", "", "userName", "get", "Lcom/tencent/mm/protocal/protobuf/BizProfileV2Resp;", "indexOf", "Lcom/tencent/mm/plugin/profile/ui/newbizinfo/model/MessageInfo;", "list", "Lcom/tencent/mm/protocal/protobuf/BizMessageList;", "index", "", "processServiceInfoList", "", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenuButton;", "menuInfo", "Lcom/tencent/mm/protocal/protobuf/BizServiceMenu;", "save", "resp", "sizeOf", "Lcom/tencent/mm/protocal/protobuf/BizMessage;", "updatePayStatus", "msgList", "pickAppMsg", "toFileName", "app_release"})
 public final class a
 {
-  public static final a vOV;
+  public static final a wWg;
   
   static
   {
     AppMethodBeat.i(39622);
-    vOV = new a();
+    wWg = new a();
     AppMethodBeat.o(39622);
   }
   
-  public static final b a(nd paramnd, int paramInt)
+  public static final b a(nz paramnz, int paramInt)
   {
     AppMethodBeat.i(39621);
-    k.h(paramnd, "list");
-    paramnd = paramnd.EcV;
-    k.g(paramnd, "list.Msg");
-    Object localObject = ((Iterable)paramnd).iterator();
+    p.h(paramnz, "list");
+    paramnz = paramnz.FIZ;
+    p.g(paramnz, "list.Msg");
+    Object localObject = ((Iterable)paramnz).iterator();
     int i = 0;
     if (((Iterator)localObject).hasNext())
     {
-      paramnd = (nc)((Iterator)localObject).next();
-      if (paramnd.EcU == null) {
+      paramnz = (ny)((Iterator)localObject).next();
+      if (paramnz.FIY == null) {
         break label228;
       }
-      if (paramInt < paramnd.EcU.EaL.size() + i)
+      if (paramInt < paramnz.FIY.FGu.size() + i)
       {
-        localObject = (ly)paramnd.EcU.EaL.get(paramInt - i);
+        localObject = (mn)paramnz.FIY.FGu.get(paramInt - i);
         b localb = new b();
-        localb.vPn = String.valueOf(paramnd.EcU.EaK.Eaj);
-        localb.coverImgUrl = ((ly)localObject).Eap;
-        localb.vPk = ((ly)localObject).Ean;
-        localb.vPl = ((ly)localObject).Eau;
-        localb.type = ((ly)localObject).hkQ;
-        localb.gIh = paramnd.EcP.ErX;
-        localb.title = ((ly)localObject).Title;
-        localb.vPm = ((ly)localObject).Eal;
-        localb.vPo = String.valueOf(paramInt - i);
+        localb.wWy = String.valueOf(paramnz.FIY.FGt.FFS);
+        localb.coverImgUrl = ((mn)localObject).FFY;
+        localb.wWv = ((mn)localObject).FFW;
+        localb.wWw = ((mn)localObject).FGd;
+        localb.type = ((mn)localObject).hCZ;
+        localb.hbR = paramnz.FIT.FZg;
+        localb.title = ((mn)localObject).Title;
+        localb.wWx = ((mn)localObject).FFU;
+        localb.wWz = String.valueOf(paramInt - i);
         AppMethodBeat.o(39621);
         return localb;
       }
-      i = paramnd.EcU.EaL.size() + i;
+      i = paramnz.FIY.FGu.size() + i;
     }
     label228:
     for (;;)
@@ -80,18 +80,18 @@ public final class a
     }
   }
   
-  public static final List<nw> a(nv paramnv)
+  public static final List<pb> a(pa parampa)
   {
     AppMethodBeat.i(39617);
-    k.h(paramnv, "menuInfo");
+    p.h(parampa, "menuInfo");
     ArrayList localArrayList = new ArrayList();
-    paramnv = paramnv.EdO;
-    k.g(paramnv, "menuInfo.button_list");
-    paramnv = ((Iterable)paramnv).iterator();
-    while (paramnv.hasNext())
+    parampa = parampa.FKn;
+    p.g(parampa, "menuInfo.button_list");
+    parampa = ((Iterable)parampa).iterator();
+    while (parampa.hasNext())
     {
-      nw localnw = (nw)paramnv.next();
-      switch (localnw.type)
+      pb localpb = (pb)parampa.next();
+      switch (localpb.type)
       {
       case 1: 
       case 3: 
@@ -99,15 +99,15 @@ public final class a
       default: 
         break;
       case 0: 
-        Object localObject1 = localnw.EdP;
-        k.g(localObject1, "button.sub_button_list");
+        Object localObject1 = localpb.FKo;
+        p.g(localObject1, "button.sub_button_list");
         Object localObject2 = (Iterable)localObject1;
         localObject1 = (Collection)new ArrayList();
         localObject2 = ((Iterable)localObject2).iterator();
         if (((Iterator)localObject2).hasNext())
         {
           Object localObject3 = ((Iterator)localObject2).next();
-          switch (((nw)localObject3).type)
+          switch (((pb)localObject3).type)
           {
           }
           for (i = 0; i != 0; i = 1)
@@ -120,41 +120,41 @@ public final class a
         if (!((Collection)localObject1).isEmpty()) {}
         for (int i = 1; i != 0; i = 0)
         {
-          localObject2 = new nw();
-          ((nw)localObject2).parseFrom(localnw.toByteArray());
-          ((nw)localObject2).EdP.clear();
-          ((nw)localObject2).EdP.addAll((Collection)localObject1);
+          localObject2 = new pb();
+          ((pb)localObject2).parseFrom(localpb.toByteArray());
+          ((pb)localObject2).FKo.clear();
+          ((pb)localObject2).FKo.addAll((Collection)localObject1);
           localArrayList.add(localObject2);
           break;
         }
       case 2: 
       case 5: 
-        localArrayList.add(localnw);
+        localArrayList.add(localpb);
       }
     }
-    paramnv = (List)localArrayList;
+    parampa = (List)localArrayList;
     AppMethodBeat.o(39617);
-    return paramnv;
+    return parampa;
   }
   
-  public static void a(nd paramnd)
+  public static void a(nz paramnz)
   {
     AppMethodBeat.i(169906);
-    if (paramnd != null)
+    if (paramnz != null)
     {
-      paramnd = paramnd.EcV;
-      if (paramnd != null)
+      paramnz = paramnz.FIZ;
+      if (paramnz != null)
       {
-        paramnd = ((Iterable)paramnd).iterator();
-        while (paramnd.hasNext())
+        paramnz = ((Iterable)paramnz).iterator();
+        while (paramnz.hasNext())
         {
-          Object localObject1 = (nc)paramnd.next();
+          Object localObject1 = (ny)paramnz.next();
           if (localObject1 != null)
           {
-            localObject1 = ((nc)localObject1).EcU;
+            localObject1 = ((ny)localObject1).FIY;
             if (localObject1 != null)
             {
-              localObject1 = ((lz)localObject1).EaL;
+              localObject1 = ((mo)localObject1).FGu;
               if (localObject1 != null)
               {
                 localObject1 = ((Iterable)localObject1).iterator();
@@ -162,13 +162,13 @@ public final class a
                 Object localObject2;
                 while (((Iterator)localObject1).hasNext())
                 {
-                  ly locally = (ly)((Iterator)localObject1).next();
-                  if ((locally != null) && (locally.EaJ == 1) && (!bs.isNullOrNil(locally.Ean)))
+                  mn localmn = (mn)((Iterator)localObject1).next();
+                  if ((localmn != null) && (localmn.FGs == 1) && (!bt.isNullOrNil(localmn.FFW)))
                   {
-                    localObject2 = com.tencent.mm.plugin.brandservice.b.a.nuP;
-                    localObject2 = locally.Ean;
-                    k.g(localObject2, "detail.ContentUrl");
-                    if (locally.hkL != 1) {
+                    localObject2 = com.tencent.mm.plugin.brandservice.b.a.nWn;
+                    localObject2 = localmn.FFW;
+                    p.g(localObject2, "detail.ContentUrl");
+                    if (localmn.hCU != 1) {
                       break label158;
                     }
                   }
@@ -176,7 +176,7 @@ public final class a
                 label158:
                 for (boolean bool = true;; bool = false)
                 {
-                  com.tencent.mm.plugin.brandservice.b.a.aB((String)localObject2, bool);
+                  com.tencent.mm.plugin.brandservice.b.a.aD((String)localObject2, bool);
                   break label79;
                   break;
                 }
@@ -191,78 +191,78 @@ public final class a
     AppMethodBeat.o(169906);
   }
   
-  private static String apK(String paramString)
+  private static String auQ(String paramString)
   {
-    AppMethodBeat.i(196992);
+    AppMethodBeat.i(194847);
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = g.ab(p.class);
-    k.g(localObject, "MMKernel.service(IBizService::class.java)");
-    localObject = ((p)localObject).aCK();
-    if (!i.eA((String)localObject)) {
-      i.aSh((String)localObject);
+    Object localObject = g.ab(q.class);
+    p.g(localObject, "MMKernel.service(IBizService::class.java)");
+    localObject = ((q)localObject).aFN();
+    if (!i.fv((String)localObject)) {
+      i.aYg((String)localObject);
     }
-    paramString = (String)localObject + "profile_resp_" + ah.dg(paramString);
-    AppMethodBeat.o(196992);
+    paramString = (String)localObject + "profile_resp_" + ai.ee(paramString);
+    AppMethodBeat.o(194847);
     return paramString;
   }
   
-  public static final nl apL(String paramString)
+  public static final oi auR(String paramString)
   {
     AppMethodBeat.i(39619);
-    k.h(paramString, "userName");
-    nl localnl = new nl();
+    p.h(paramString, "userName");
+    oi localoi = new oi();
     try
     {
-      localnl.parseFrom(i.aU(apK(paramString), 0, -1));
+      localoi.parseFrom(i.aY(auQ(paramString), 0, -1));
       AppMethodBeat.o(39619);
-      return localnl;
+      return localoi;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ac.e("MicroMsg.ProfileV2", "readFromFile ex=" + paramString.getMessage());
+        ad.e("MicroMsg.ProfileV2", "readFromFile ex=" + paramString.getMessage());
       }
     }
   }
   
-  public static final void b(nl paramnl)
+  public static final void b(oi paramoi)
   {
     AppMethodBeat.i(39618);
-    k.h(paramnl, "resp");
+    p.h(paramoi, "resp");
     try
     {
-      Object localObject1 = paramnl.Edt.ncR;
-      k.g(localObject1, "resp.AccountInfo.UserName");
-      localObject1 = new e(apK((String)localObject1));
+      Object localObject1 = paramoi.FJC.nDo;
+      p.g(localObject1, "resp.AccountInfo.UserName");
+      localObject1 = new e(auQ((String)localObject1));
       if (((e)localObject1).exists()) {
         ((e)localObject1).delete();
       }
       localObject1 = ((e)localObject1).getAbsolutePath();
-      Object localObject2 = paramnl.Edv;
+      Object localObject2 = paramoi.FJE;
       if (localObject2 != null)
       {
-        localObject2 = ((nd)localObject2).EcV;
+        localObject2 = ((nz)localObject2).FIZ;
         if (localObject2 != null)
         {
           localObject2 = ((Iterable)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            Object localObject3 = (nc)((Iterator)localObject2).next();
+            Object localObject3 = (ny)((Iterator)localObject2).next();
             if (localObject3 != null)
             {
-              localObject3 = ((nc)localObject3).EcU;
+              localObject3 = ((ny)localObject3).FIY;
               if (localObject3 != null)
               {
-                localObject3 = ((lz)localObject3).EaL;
+                localObject3 = ((mo)localObject3).FGu;
                 if (localObject3 != null)
                 {
                   localObject3 = ((Iterable)localObject3).iterator();
                   while (((Iterator)localObject3).hasNext())
                   {
-                    ly locally = (ly)((Iterator)localObject3).next();
-                    if (locally.EaI != null) {
-                      locally.EaI = null;
+                    mn localmn = (mn)((Iterator)localObject3).next();
+                    if (localmn.FGr != null) {
+                      localmn.FGr = null;
                     }
                   }
                 }
@@ -271,9 +271,9 @@ public final class a
           }
         }
       }
-      i.B((String)localObject1, paramnl.toByteArray());
+      i.C((String)localObject1, paramoi.toByteArray());
     }
-    catch (Exception paramnl)
+    catch (Exception paramoi)
     {
       AppMethodBeat.o(39618);
       return;
@@ -283,35 +283,35 @@ public final class a
   
   public static final void clear(String paramString)
   {
-    AppMethodBeat.i(196993);
-    k.h(paramString, "userName");
+    AppMethodBeat.i(194848);
+    p.h(paramString, "userName");
     try
     {
-      paramString = new e(apK(paramString));
+      paramString = new e(auQ(paramString));
       if (paramString.exists()) {
         paramString.delete();
       }
-      AppMethodBeat.o(196993);
+      AppMethodBeat.o(194848);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(196993);
+      AppMethodBeat.o(194848);
     }
   }
   
-  public static final int eC(List<? extends nc> paramList)
+  public static final int eP(List<? extends ny> paramList)
   {
     AppMethodBeat.i(39620);
-    k.h(paramList, "list");
+    p.h(paramList, "list");
     paramList = ((Iterable)paramList).iterator();
     int i = 0;
     if (paramList.hasNext())
     {
-      Object localObject = ((nc)paramList.next()).EcU;
+      Object localObject = ((ny)paramList.next()).FIY;
       if (localObject != null)
       {
-        localObject = ((lz)localObject).EaL;
+        localObject = ((mo)localObject).FGu;
         if (localObject == null) {}
       }
       for (int j = ((LinkedList)localObject).size();; j = 0)

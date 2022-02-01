@@ -2,12 +2,12 @@ package com.tencent.mm.ui;
 
 public final class e$g
 {
-  public static String Hhg = "key_envelope_source";
-  public static String Hhh = "key_source_resp";
-  public static String Hhi = "key_has_source";
-  public static String Hhj = "key_exchange_title";
-  public static String Hhk = "key_exchange_url";
-  public static String Hhl = "key_has_reddot";
+  public static String IUA = "key_exchange_url";
+  public static String IUB = "key_has_reddot";
+  public static String IUw = "key_envelope_source";
+  public static String IUx = "key_source_resp";
+  public static String IUy = "key_has_source";
+  public static String IUz = "key_exchange_title";
 }
 
 

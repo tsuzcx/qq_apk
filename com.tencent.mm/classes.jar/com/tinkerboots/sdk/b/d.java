@@ -10,40 +10,40 @@ import java.util.HashSet;
 
 public final class d
 {
-  private static String KJL;
-  private static HashSet<String> KJM;
+  private static String MAx;
+  private static HashSet<String> MAy;
   
   static
   {
     AppMethodBeat.i(3466);
-    KJM = new HashSet();
+    MAy = new HashSet();
     AppMethodBeat.o(3466);
   }
   
-  public static String fMB()
+  public static String gdY()
   {
-    if (KJL == null) {
+    if (MAx == null) {
       return "";
     }
-    return KJL;
+    return MAx;
   }
   
-  public static boolean fMC()
+  public static boolean gdZ()
   {
     AppMethodBeat.i(3465);
-    if (KJL == null)
+    if (MAx == null)
     {
       AppMethodBeat.o(3465);
       return false;
     }
-    boolean bool = KJM.contains(KJL);
+    boolean bool = MAy.contains(MAx);
     AppMethodBeat.o(3465);
     return bool;
   }
   
   public static abstract interface a
   {
-    public abstract void dom();
+    public abstract void onScreenOff();
   }
   
   public static final class b
@@ -66,7 +66,7 @@ public final class d
             {
               paramAnonymousContext.unregisterReceiver(this);
               if (parama != null) {
-                parama.dom();
+                parama.onScreenOff();
               }
             }
             AppMethodBeat.o(3463);
@@ -80,7 +80,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tinkerboots.sdk.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.b.b;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankcardIdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardImportUI;
 import com.tencent.mm.plugin.wallet_core.utils.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.c.ab;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.d;
@@ -21,13 +21,13 @@ public class a
   public final d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(71704);
-    J(new Object[] { "start", paramActivity, paramBundle });
-    ac.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
+    K(new Object[] { "start", paramActivity, paramBundle });
+    ad.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
     if (paramBundle != null)
     {
-      ab.km(6, paramBundle.getInt("key_bind_scene"));
-      z.adM(paramBundle.getInt("key_bind_scene"));
-      if (!s.ery().esa()) {
+      ab.kB(6, paramBundle.getInt("key_bind_scene"));
+      z.agm(paramBundle.getInt("key_bind_scene"));
+      if (!t.eFy().eGa()) {
         break label133;
       }
       if (paramBundle == null) {
@@ -42,8 +42,8 @@ public class a
     {
       AppMethodBeat.o(71704);
       return this;
-      ab.km(6, 0);
-      z.adM(0);
+      ab.kB(6, 0);
+      z.agm(0);
       break;
       label108:
       b(paramActivity, WalletBankcardIdUI.class, paramBundle);
@@ -54,7 +54,7 @@ public class a
     return paramActivity;
     label133:
     if (paramBundle != null) {
-      f.iy(paramBundle.getInt("key_bind_scene", 0), 1);
+      f.iL(paramBundle.getInt("key_bind_scene", 0), 1);
     }
     if ((paramBundle != null) && (paramBundle.getBoolean("key_is_import_bind", false)))
     {
@@ -81,7 +81,7 @@ public class a
     AppMethodBeat.o(71705);
   }
   
-  public final String cHN()
+  public final String cQc()
   {
     return "OpenECardBindCardProcess";
   }

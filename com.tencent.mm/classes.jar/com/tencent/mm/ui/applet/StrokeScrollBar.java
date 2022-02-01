@@ -13,18 +13,18 @@ public class StrokeScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  public final void WY()
+  public final void Zr()
   {
     AppMethodBeat.i(33837);
-    this.tNY = new String[18];
+    this.uQL = new String[18];
     int i = 0;
-    while (i < this.tNY.length)
+    while (i < this.uQL.length)
     {
-      this.tNY[i] = (Integer.toString(i + 3) + "劃");
+      this.uQL[i] = (Integer.toString(i + 3) + "劃");
       i += 1;
     }
-    this.tNW = 2.0F;
-    this.tNX = 79;
+    this.uQJ = 2.0F;
+    this.uQK = 79;
     AppMethodBeat.o(33837);
   }
   

@@ -4,92 +4,97 @@ import android.content.Context;
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.plugin.recordvideo.background.VideoMixer.MixConfig;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
-import com.tencent.mm.plugin.vlog.model.i;
-import com.tencent.mm.plugin.vlog.model.w;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.aj;
-import d.g.a.q;
+import com.tencent.mm.plugin.vlog.model.aa;
+import com.tencent.mm.plugin.vlog.model.y;
+import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.protobuf.aif;
+import com.tencent.mm.protocal.protobuf.due;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.al;
+import d.g.a.m;
 import d.g.a.r;
-import d.g.b.k;
+import d.g.b.p;
+import d.z;
 import java.util.Iterator;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "", "context", "Landroid/content/Context;", "model", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "muteOrigin", "", "audioInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;ZLcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;)V", "callback", "Lkotlin/Function3;", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "onMuxEnd", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "ret", "errorCode", "remuxer", "Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer;", "vLogGenerateModel", "Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "vLogMusicManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager;", "getThumbBitmap", "previewWidth", "previewHeight", "getVideoDurationMs", "handleBgRemux", "editorProtoData", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "mixConfig", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "release", "setVideoCropInfo", "rect", "Landroid/graphics/Rect;", "beforeCropSize", "Landroid/graphics/Point;", "startBackgroundGenerate", "success", "startGenerate", "Companion", "VLogOutputInfo", "plugin-vlog_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager;", "", "context", "Landroid/content/Context;", "model", "Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "muteOrigin", "", "audioInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/vlog/model/VLogScriptModel;Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;ZLcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;)V", "callback", "Lkotlin/Function3;", "", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "onMuxEnd", "Lkotlin/Function4;", "", "Lkotlin/ParameterName;", "name", "mixVideo", "mixThumb", "ret", "errorCode", "remuxer", "Lcom/tencent/mm/plugin/vlog/remux/VLogRemuxer;", "vLogGenerateModel", "Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "vLogMusicManager", "Lcom/tencent/mm/plugin/vlog/ui/manager/VLogMusicManager;", "getThumbBitmap", "previewWidth", "previewHeight", "getVideoDurationMs", "handleBgRemux", "editorProtoData", "Lcom/tencent/mm/protocal/protobuf/EditorProtoData;", "mixConfig", "Lcom/tencent/mm/plugin/recordvideo/background/VideoMixer$MixConfig;", "extraConfig", "Lcom/tencent/mm/protocal/protobuf/ExtraConfig;", "release", "setVideoCropInfo", "rect", "Landroid/graphics/Rect;", "beforeCropSize", "Landroid/graphics/Point;", "startBackgroundGenerate", "success", "startGenerate", "Companion", "VLogOutputInfo", "plugin-vlog_release"})
 public final class a
 {
-  public static final a Asv;
-  public b Asq;
-  public com.tencent.mm.plugin.vlog.remux.d Asr;
-  private final w Ass;
-  public final r<String, String, Boolean, Integer, d.y> Ast;
-  public final com.tencent.mm.plugin.vlog.model.y Asu;
+  public static final a BMi;
+  public b BMd;
+  public com.tencent.mm.plugin.vlog.remux.d BMe;
+  private final y BMf;
+  public final r<String, String, Boolean, Integer, z> BMg;
+  public final aa BMh;
   private final Context context;
-  public final RecordConfigProvider rRi;
-  public q<? super Boolean, ? super Integer, ? super b, d.y> sMG;
+  public final RecordConfigProvider sNI;
+  public d.g.a.q<? super Boolean, ? super Integer, ? super b, z> tJo;
   
   static
   {
     AppMethodBeat.i(111149);
-    Asv = new a((byte)0);
+    BMi = new a((byte)0);
     AppMethodBeat.o(111149);
   }
   
-  public a(Context paramContext, com.tencent.mm.plugin.vlog.model.y paramy, RecordConfigProvider paramRecordConfigProvider, boolean paramBoolean, AudioCacheInfo paramAudioCacheInfo)
+  public a(Context paramContext, aa paramaa, RecordConfigProvider paramRecordConfigProvider, boolean paramBoolean, AudioCacheInfo paramAudioCacheInfo)
   {
     AppMethodBeat.i(111148);
     this.context = paramContext;
-    this.Asu = paramy;
-    this.rRi = paramRecordConfigProvider;
-    this.Asq = new b();
-    this.Ass = new w();
-    this.Ast = ((r)new c(this));
-    int k = com.tencent.mm.plugin.mmsight.d.IJ(this.rRi.wqt.width);
-    paramContext = aj.cl(ai.getContext());
+    this.BMh = paramaa;
+    this.sNI = paramRecordConfigProvider;
+    this.BMd = new b();
+    this.BMf = new y();
+    this.BMg = ((r)new c(this));
+    int k = com.tencent.mm.plugin.mmsight.d.Kg(this.sNI.xyj.width);
+    paramContext = al.ci(aj.getContext());
     int i = paramContext.y;
     int j = paramContext.x;
-    if (this.rRi.scene == 11)
+    if (this.sNI.scene == 11)
     {
-      j = com.tencent.mm.plugin.mmsight.d.IJ(this.rRi.wqt.height);
-      ac.i("MicroMsg.VLogGenerateManager", "targetWidth:" + k + " targetHeight:" + j + ", videoParam:" + this.rRi.wqt);
-      paramContext = com.tencent.mm.plugin.recordvideo.e.b.wDE;
-      com.tencent.mm.plugin.recordvideo.e.b.e(this.rRi);
-      ac.i("MicroMsg.VLogGenerateManager", "output path:" + this.rRi.wqG);
+      j = com.tencent.mm.plugin.mmsight.d.Kg(this.sNI.xyj.height);
+      ad.i("MicroMsg.VLogGenerateManager", "targetWidth:" + k + " targetHeight:" + j + ", videoParam:" + this.sNI.xyj);
+      paramContext = com.tencent.mm.plugin.recordvideo.e.b.xRl;
+      com.tencent.mm.plugin.recordvideo.e.b.e(this.sNI);
+      ad.i("MicroMsg.VLogGenerateManager", "output path:" + this.sNI.xyx);
       if (!paramBoolean) {
-        break label466;
+        break label467;
       }
       if (paramAudioCacheInfo != null) {
-        break label460;
+        break label461;
       }
       i = 0;
     }
     for (;;)
     {
-      ac.i("MicroMsg.VLogGenerateManager", "audioMixType:" + i + ", muteOrigin:" + paramBoolean + ", audioInfo:" + paramAudioCacheInfo);
-      paramContext = this.Ass;
-      paramContext.AoQ = getVideoDurationMs();
-      paramContext.AoR = i;
-      paramy = this.rRi.wqG;
-      k.g(paramy, "configProvider.outputVideoPath");
-      paramContext.ayl(paramy);
-      paramContext.gNU = k;
-      paramContext.gNV = j;
-      paramContext.videoBitrate = this.rRi.wqt.videoBitrate;
-      paramContext.audioBitrate = this.rRi.wqt.audioBitrate;
-      paramContext.frameRate = this.rRi.wqt.fps;
-      paramContext.audioSampleRate = this.rRi.wqt.audioSampleRate;
-      paramContext.gOt = this.rRi.wqt.gOt;
-      ac.i("MicroMsg.VLogGenerateManager", "vLogGenerateModel is :" + this.Ass);
-      this.Asr = new com.tencent.mm.plugin.vlog.remux.d(this.Asu, this.Ass);
+      ad.i("MicroMsg.VLogGenerateManager", "audioMixType:" + i + ", muteOrigin:" + paramBoolean + ", audioInfo:" + paramAudioCacheInfo);
+      paramContext = this.BMf;
+      paramContext.BGH = getVideoDurationMs();
+      paramContext.BGI = i;
+      paramaa = this.sNI.xyx;
+      p.g(paramaa, "configProvider.outputVideoPath");
+      paramContext.aDr(paramaa);
+      paramContext.targetWidth = k;
+      paramContext.targetHeight = j;
+      paramContext.videoBitrate = this.sNI.xyj.videoBitrate;
+      paramContext.audioBitrate = this.sNI.xyj.audioBitrate;
+      paramContext.frameRate = this.sNI.xyj.fps;
+      paramContext.audioSampleRate = this.sNI.xyj.audioSampleRate;
+      paramContext.audioChannelCount = this.sNI.xyj.audioChannelCount;
+      ad.i("MicroMsg.VLogGenerateManager", "vLogGenerateModel is :" + this.BMf);
+      this.BMe = new com.tencent.mm.plugin.vlog.remux.d(this.BMh, this.BMf);
       AppMethodBeat.o(111148);
       return;
-      j = com.tencent.mm.plugin.mmsight.d.IJ(i * k / j);
+      j = com.tencent.mm.plugin.mmsight.d.Kg(i * k / j);
       break;
-      label460:
+      label461:
       i = 2;
       continue;
-      label466:
+      label467:
       if (paramAudioCacheInfo == null) {
         i = 1;
       } else {
@@ -102,30 +107,30 @@ public final class a
   {
     AppMethodBeat.i(111147);
     long l = 0L;
-    Iterator localIterator = ((Iterable)this.Asu.AoV).iterator();
+    Iterator localIterator = ((Iterable)this.BMh.BGM).iterator();
     if (localIterator.hasNext())
     {
-      i locali = (i)localIterator.next();
-      if (locali.endTime <= l) {
+      com.tencent.mm.plugin.vlog.model.l locall = (com.tencent.mm.plugin.vlog.model.l)localIterator.next();
+      if (locall.endTime <= l) {
         break label92;
       }
-      l = locali.endTime;
+      l = locall.endTime;
     }
     label92:
     for (;;)
     {
       break;
-      ac.i("MicroMsg.VLogGenerateManager", "parse config duration : ".concat(String.valueOf(l)));
+      ad.i("MicroMsg.VLogGenerateManager", "parse config duration : ".concat(String.valueOf(l)));
       int i = (int)l;
       AppMethodBeat.o(111147);
       return i;
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$Companion;", "", "()V", "ERROR_DEFAULT", "", "ERROR_MUSIC_DOWNLOAD_ERROR", "ERROR_MUSIC_MEDIA_EXTRACTOR_ERROR", "ERROR_OK", "ERROR_VIDEO_BG_REMUX", "ERROR_VIDEO_ENCODER_ERROR", "TAG", "", "plugin-vlog_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$Companion;", "", "()V", "ERROR_DEFAULT", "", "ERROR_MUSIC_DOWNLOAD_ERROR", "ERROR_MUSIC_MEDIA_EXTRACTOR_ERROR", "ERROR_OK", "ERROR_VIDEO_BG_REMUX", "ERROR_VIDEO_ENCODER_ERROR", "TAG", "", "plugin-vlog_release"})
   public static final class a {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "videoPath", "", "thumbPath", "(Ljava/lang/String;Ljava/lang/String;)V", "getThumbPath", "()Ljava/lang/String;", "setThumbPath", "(Ljava/lang/String;)V", "getVideoPath", "setVideoPath", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/vlog/ui/manager/VLogGenerateManager$VLogOutputInfo;", "", "videoPath", "", "thumbPath", "(Ljava/lang/String;Ljava/lang/String;)V", "getThumbPath", "()Ljava/lang/String;", "setThumbPath", "(Ljava/lang/String;)V", "getVideoPath", "setVideoPath", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
   public static final class b
   {
     public String thumbPath;
@@ -147,7 +152,7 @@ public final class a
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((!k.g(this.videoPath, paramObject.videoPath)) || (!k.g(this.thumbPath, paramObject.thumbPath))) {}
+          if ((!p.i(this.videoPath, paramObject.videoPath)) || (!p.i(this.thumbPath, paramObject.thumbPath))) {}
         }
       }
       else
@@ -185,12 +190,34 @@ public final class a
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "mixVideo", "", "mixThumb", "ret", "", "errorCode", "", "invoke"})
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "mixVideo", "", "mixThumb", "ret", "", "errorCode", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements r<String, String, Boolean, Integer, d.y>
+    extends d.g.b.q
+    implements r<String, String, Boolean, Integer, z>
   {
     c(a parama)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "<anonymous parameter 0>", "", "thumbPath", "b", "", "i", "", "invoke"})
+  public static final class d
+    extends d.g.b.q
+    implements r<String, String, Boolean, Integer, z>
+  {
+    public d(a parama, int paramInt1, int paramInt2)
+    {
+      super();
+    }
+  }
+  
+  @d.l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "success", "", "filePath", "", "invoke"})
+  public static final class e
+    extends d.g.b.q
+    implements m<Boolean, String, z>
+  {
+    public e(a parama)
     {
       super();
     }

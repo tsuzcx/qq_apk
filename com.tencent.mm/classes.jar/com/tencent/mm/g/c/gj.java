@@ -8,16 +8,22 @@ public abstract class gj
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ffP = "bulletin_scene".hashCode();
-  private static final int ffQ = "bulletin_content".hashCode();
-  private static final int ffR = "bulletin_url".hashCode();
+  private static final int eOS = "conRemark".hashCode();
+  private static final int ePc = "encryptUsername".hashCode();
+  private static final int fuV = "contactLabels".hashCode();
+  private static final int fuW = "conDescription".hashCode();
+  private static final int fuX = "conPhone".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ffM = true;
-  private boolean ffN = true;
-  private boolean ffO = true;
-  public String field_bulletin_content;
-  public String field_bulletin_scene;
-  public String field_bulletin_url;
+  private boolean eOA = true;
+  private boolean eOK = true;
+  public String field_conDescription;
+  public String field_conPhone;
+  public String field_conRemark;
+  public String field_contactLabels;
+  public String field_encryptUsername;
+  private boolean fuS = true;
+  private boolean fuT = true;
+  private boolean fuU = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +38,11 @@ public abstract class gj
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ffP != k) {
+      if (ePc != k) {
         break label65;
       }
-      this.field_bulletin_scene = paramCursor.getString(i);
-      this.ffM = true;
+      this.field_encryptUsername = paramCursor.getString(i);
+      this.eOK = true;
     }
     for (;;)
     {
@@ -44,10 +50,14 @@ public abstract class gj
       break label20;
       break;
       label65:
-      if (ffQ == k) {
-        this.field_bulletin_content = paramCursor.getString(i);
-      } else if (ffR == k) {
-        this.field_bulletin_url = paramCursor.getString(i);
+      if (eOS == k) {
+        this.field_conRemark = paramCursor.getString(i);
+      } else if (fuV == k) {
+        this.field_contactLabels = paramCursor.getString(i);
+      } else if (fuW == k) {
+        this.field_conDescription = paramCursor.getString(i);
+      } else if (fuX == k) {
+        this.field_conPhone = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +67,35 @@ public abstract class gj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ffM) {
-      localContentValues.put("bulletin_scene", this.field_bulletin_scene);
+    if (this.field_encryptUsername == null) {
+      this.field_encryptUsername = "";
     }
-    if (this.ffN) {
-      localContentValues.put("bulletin_content", this.field_bulletin_content);
+    if (this.eOK) {
+      localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
-    if (this.ffO) {
-      localContentValues.put("bulletin_url", this.field_bulletin_url);
+    if (this.field_conRemark == null) {
+      this.field_conRemark = "";
+    }
+    if (this.eOA) {
+      localContentValues.put("conRemark", this.field_conRemark);
+    }
+    if (this.field_contactLabels == null) {
+      this.field_contactLabels = "";
+    }
+    if (this.fuS) {
+      localContentValues.put("contactLabels", this.field_contactLabels);
+    }
+    if (this.field_conDescription == null) {
+      this.field_conDescription = "";
+    }
+    if (this.fuT) {
+      localContentValues.put("conDescription", this.field_conDescription);
+    }
+    if (this.field_conPhone == null) {
+      this.field_conPhone = "";
+    }
+    if (this.fuU) {
+      localContentValues.put("conPhone", this.field_conPhone);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -74,7 +105,7 @@ public abstract class gj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.gj
  * JD-Core Version:    0.7.0.1
  */

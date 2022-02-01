@@ -3,69 +3,47 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aah
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public int Euw;
-  public String Eux;
-  public String Euy;
-  public boolean enable;
-  public String kbL;
-  public String title;
+  public int FGO;
+  public int FZg;
+  public int nDG;
+  public int ugm;
+  public int xbr;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195045);
+    AppMethodBeat.i(124478);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bl(1, this.enable);
-      paramVarArgs.aR(2, this.Euw);
-      if (this.kbL != null) {
-        paramVarArgs.d(3, this.kbL);
-      }
-      if (this.Eux != null) {
-        paramVarArgs.d(4, this.Eux);
-      }
-      if (this.Euy != null) {
-        paramVarArgs.d(5, this.Euy);
-      }
-      if (this.title != null) {
-        paramVarArgs.d(6, this.title);
-      }
-      AppMethodBeat.o(195045);
+      paramVarArgs.aS(1, this.xbr);
+      paramVarArgs.aS(2, this.ugm);
+      paramVarArgs.aS(3, this.FZg);
+      paramVarArgs.aS(4, this.nDG);
+      paramVarArgs.aS(5, this.FGO);
+      AppMethodBeat.o(124478);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.fK(1) + 1 + 0 + f.a.a.b.b.a.bx(2, this.Euw);
-      paramInt = i;
-      if (this.kbL != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.kbL);
-      }
-      i = paramInt;
-      if (this.Eux != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.Eux);
-      }
-      paramInt = i;
-      if (this.Euy != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.Euy);
-      }
-      i = paramInt;
-      if (this.title != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.title);
-      }
-      AppMethodBeat.o(195045);
-      return i;
+      paramInt = f.a.a.b.b.a.bz(1, this.xbr);
+      int i = f.a.a.b.b.a.bz(2, this.ugm);
+      int j = f.a.a.b.b.a.bz(3, this.FZg);
+      int k = f.a.a.b.b.a.bz(4, this.nDG);
+      int m = f.a.a.b.b.a.bz(5, this.FGO);
+      AppMethodBeat.o(124478);
+      return paramInt + 0 + i + j + k + m;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gfg();
+          paramVarArgs.gxE();
         }
       }
-      AppMethodBeat.o(195045);
+      AppMethodBeat.o(124478);
       return 0;
     }
     if (paramInt == 3)
@@ -75,40 +53,36 @@ public final class aah
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(195045);
+        AppMethodBeat.o(124478);
         return -1;
       case 1: 
-        localaah.enable = locala.LVo.fZX();
-        AppMethodBeat.o(195045);
+        localaah.xbr = locala.NPN.zc();
+        AppMethodBeat.o(124478);
         return 0;
       case 2: 
-        localaah.Euw = locala.LVo.xF();
-        AppMethodBeat.o(195045);
+        localaah.ugm = locala.NPN.zc();
+        AppMethodBeat.o(124478);
         return 0;
       case 3: 
-        localaah.kbL = locala.LVo.readString();
-        AppMethodBeat.o(195045);
+        localaah.FZg = locala.NPN.zc();
+        AppMethodBeat.o(124478);
         return 0;
       case 4: 
-        localaah.Eux = locala.LVo.readString();
-        AppMethodBeat.o(195045);
-        return 0;
-      case 5: 
-        localaah.Euy = locala.LVo.readString();
-        AppMethodBeat.o(195045);
+        localaah.nDG = locala.NPN.zc();
+        AppMethodBeat.o(124478);
         return 0;
       }
-      localaah.title = locala.LVo.readString();
-      AppMethodBeat.o(195045);
+      localaah.FGO = locala.NPN.zc();
+      AppMethodBeat.o(124478);
       return 0;
     }
-    AppMethodBeat.o(195045);
+    AppMethodBeat.o(124478);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aah
  * JD-Core Version:    0.7.0.1
  */

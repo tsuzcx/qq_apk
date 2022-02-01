@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iy
   extends b
 {
-  public a dkq;
+  public a dvF;
   
   public iy()
   {
@@ -15,21 +15,21 @@ public final class iy
   
   private iy(byte paramByte)
   {
-    AppMethodBeat.i(149864);
-    this.dkq = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(110506);
+    this.dvF = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(149864);
+    AppMethodBeat.o(110506);
   }
   
   public static final class a
   {
-    public String url;
+    public boolean dvG = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.iy
  * JD-Core Version:    0.7.0.1
  */

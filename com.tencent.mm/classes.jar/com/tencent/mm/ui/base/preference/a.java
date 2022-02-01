@@ -11,13 +11,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends h
 {
-  private SparseArray<View> HDM;
+  private SparseArray<View> JrC;
   
   public a(Context paramContext, ListView paramListView, SharedPreferences paramSharedPreferences)
   {
     super(paramContext, paramListView, paramSharedPreferences);
     AppMethodBeat.i(142508);
-    this.HDM = new SparseArray();
+    this.JrC = new SparseArray();
     AppMethodBeat.o(142508);
   }
   
@@ -29,7 +29,7 @@ public final class a
       AppMethodBeat.o(142510);
       return null;
     }
-    paramListView = (View)this.HDM.get(paramInt);
+    paramListView = (View)this.JrC.get(paramInt);
     AppMethodBeat.o(142510);
     return paramListView;
   }
@@ -38,7 +38,7 @@ public final class a
   {
     AppMethodBeat.i(142509);
     paramView = super.getView(paramInt, paramView, paramViewGroup);
-    this.HDM.put(paramInt, paramView);
+    this.JrC.put(paramInt, paramView);
     AppMethodBeat.o(142509);
     return paramView;
   }

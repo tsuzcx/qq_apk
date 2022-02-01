@@ -7,12 +7,12 @@ import java.util.Comparator;
 public final class c
   implements Comparator<m>
 {
-  public static final c szi;
+  public static final c tvJ;
   
   static
   {
     AppMethodBeat.i(131729);
-    szi = new c();
+    tvJ = new c();
     AppMethodBeat.o(131729);
   }
 }

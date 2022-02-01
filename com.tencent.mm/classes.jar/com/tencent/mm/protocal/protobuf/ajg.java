@@ -4,51 +4,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class ajg
-  extends com.tencent.mm.bw.a
+  extends cvc
 {
-  public FinderContact contact;
-  public String recommendReason;
+  public float FOA;
+  public float FOB;
+  public String Ggv;
+  public int Ggw;
+  public String Ggx;
+  public String Ggy;
+  public int Ggz;
+  public int OpCode;
+  public String xbo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(195056);
+    AppMethodBeat.i(32207);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.contact != null)
+      if (this.BaseRequest != null)
       {
-        paramVarArgs.ln(1, this.contact.computeSize());
-        this.contact.writeFields(paramVarArgs);
+        paramVarArgs.lC(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.recommendReason != null) {
-        paramVarArgs.d(2, this.recommendReason);
+      paramVarArgs.aS(2, this.OpCode);
+      if (this.Ggv != null) {
+        paramVarArgs.d(3, this.Ggv);
       }
-      AppMethodBeat.o(195056);
+      paramVarArgs.z(4, this.FOA);
+      paramVarArgs.z(5, this.FOB);
+      paramVarArgs.aS(6, this.Ggw);
+      if (this.Ggx != null) {
+        paramVarArgs.d(7, this.Ggx);
+      }
+      if (this.Ggy != null) {
+        paramVarArgs.d(8, this.Ggy);
+      }
+      paramVarArgs.aS(9, this.Ggz);
+      if (this.xbo != null) {
+        paramVarArgs.d(10, this.xbo);
+      }
+      AppMethodBeat.o(32207);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.contact == null) {
-        break label370;
+      if (this.BaseRequest == null) {
+        break label792;
       }
     }
-    label370:
-    for (paramInt = f.a.a.a.lm(1, this.contact.computeSize()) + 0;; paramInt = 0)
+    label792:
+    for (paramInt = f.a.a.a.lB(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.recommendReason != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.recommendReason);
+      int i = paramInt + f.a.a.b.b.a.bz(2, this.OpCode);
+      paramInt = i;
+      if (this.Ggv != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.Ggv);
       }
-      AppMethodBeat.o(195056);
-      return i;
+      i = paramInt + f.a.a.b.b.a.alU(4) + f.a.a.b.b.a.alU(5) + f.a.a.b.b.a.bz(6, this.Ggw);
+      paramInt = i;
+      if (this.Ggx != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.Ggx);
+      }
+      i = paramInt;
+      if (this.Ggy != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.Ggy);
+      }
+      i += f.a.a.b.b.a.bz(9, this.Ggz);
+      paramInt = i;
+      if (this.xbo != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.xbo);
+      }
+      AppMethodBeat.o(32207);
+      return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = cvc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(195056);
+        AppMethodBeat.o(32207);
         return 0;
       }
       if (paramInt == 3)
@@ -59,36 +95,68 @@ public final class ajg
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(195056);
+          AppMethodBeat.o(32207);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).ajj(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).alQ(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderContact();
+            localObject1 = new jc();
             localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localajg.contact = ((FinderContact)localObject1);
+            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cvc.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localajg.BaseRequest = ((jc)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(195056);
+          AppMethodBeat.o(32207);
+          return 0;
+        case 2: 
+          localajg.OpCode = ((f.a.a.a.a)localObject1).NPN.zc();
+          AppMethodBeat.o(32207);
+          return 0;
+        case 3: 
+          localajg.Ggv = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(32207);
+          return 0;
+        case 4: 
+          localajg.FOA = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
+          AppMethodBeat.o(32207);
+          return 0;
+        case 5: 
+          localajg.FOB = Float.intBitsToFloat(((f.a.a.a.a)localObject1).NPN.grz());
+          AppMethodBeat.o(32207);
+          return 0;
+        case 6: 
+          localajg.Ggw = ((f.a.a.a.a)localObject1).NPN.zc();
+          AppMethodBeat.o(32207);
+          return 0;
+        case 7: 
+          localajg.Ggx = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(32207);
+          return 0;
+        case 8: 
+          localajg.Ggy = ((f.a.a.a.a)localObject1).NPN.readString();
+          AppMethodBeat.o(32207);
+          return 0;
+        case 9: 
+          localajg.Ggz = ((f.a.a.a.a)localObject1).NPN.zc();
+          AppMethodBeat.o(32207);
           return 0;
         }
-        localajg.recommendReason = ((f.a.a.a.a)localObject1).LVo.readString();
-        AppMethodBeat.o(195056);
+        localajg.xbo = ((f.a.a.a.a)localObject1).NPN.readString();
+        AppMethodBeat.o(32207);
         return 0;
       }
-      AppMethodBeat.o(195056);
+      AppMethodBeat.o(32207);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ajg
  * JD-Core Version:    0.7.0.1
  */

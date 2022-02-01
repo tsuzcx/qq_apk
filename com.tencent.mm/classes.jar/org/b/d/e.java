@@ -11,19 +11,19 @@ import org.b.g.c;
 
 public final class e
 {
-  public final List<d> Mbh;
+  public final List<d> NWj;
   
   public e()
   {
     AppMethodBeat.i(40530);
-    this.Mbh = new ArrayList();
+    this.NWj = new ArrayList();
     AppMethodBeat.o(40530);
   }
   
   public e(List<d> paramList)
   {
     AppMethodBeat.i(40531);
-    this.Mbh = new ArrayList(paramList);
+    this.NWj = new ArrayList(paramList);
     AppMethodBeat.o(40531);
   }
   
@@ -40,18 +40,18 @@ public final class e
         return;
       }
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      this.Mbh.add(new d((String)localEntry.getKey(), (String)localEntry.getValue()));
+      this.NWj.add(new d((String)localEntry.getKey(), (String)localEntry.getValue()));
     }
   }
   
   public final void a(e parame)
   {
     AppMethodBeat.i(40534);
-    this.Mbh.addAll(parame.Mbh);
+    this.NWj.addAll(parame.NWj);
     AppMethodBeat.o(40534);
   }
   
-  public final void aXF(String paramString)
+  public final void beb(String paramString)
   {
     AppMethodBeat.i(40535);
     String[] arrayOfString;
@@ -73,22 +73,22 @@ public final class e
     if (paramString.length > 1) {}
     for (paramString = c.decode(paramString[1]);; paramString = "")
     {
-      this.Mbh.add(new d(str, paramString));
+      this.NWj.add(new d(str, paramString));
       i += 1;
       break;
     }
   }
   
-  public final String gfZ()
+  public final String gyD()
   {
     AppMethodBeat.i(40533);
-    if (this.Mbh.size() == 0)
+    if (this.NWj.size() == 0)
     {
       AppMethodBeat.o(40533);
       return "";
     }
     Object localObject = new StringBuilder();
-    Iterator localIterator = this.Mbh.iterator();
+    Iterator localIterator = this.NWj.iterator();
     for (;;)
     {
       if (!localIterator.hasNext())
@@ -98,7 +98,7 @@ public final class e
         return localObject;
       }
       d locald = (d)localIterator.next();
-      ((StringBuilder)localObject).append('&').append(locald.gfY());
+      ((StringBuilder)localObject).append('&').append(locald.gyC());
     }
   }
 }

@@ -3,52 +3,52 @@ package com.tencent.mm.plugin.shake.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.c.c.a;
 import com.tencent.mm.plugin.shake.d.a.k;
-import com.tencent.mm.pluginsdk.n.b;
+import com.tencent.mm.pluginsdk.o.b;
 
 public final class h
-  implements n.b
+  implements o.b
 {
-  public final int dDe()
+  public final int dOH()
   {
     AppMethodBeat.i(28136);
-    int i = m.dDm().bQe();
+    int i = m.dOP().bUJ();
     AppMethodBeat.o(28136);
     return i;
   }
   
-  public final void dDf()
+  public final void dOI()
   {
     AppMethodBeat.i(28137);
-    a.dDf();
+    a.dOI();
     AppMethodBeat.o(28137);
   }
   
-  public final boolean dDg()
+  public final boolean dOJ()
   {
     AppMethodBeat.i(28138);
-    boolean bool = a.dDg();
+    boolean bool = a.dOJ();
     AppMethodBeat.o(28138);
     return bool;
   }
   
-  public final void dDh()
+  public final void dOK()
   {
     AppMethodBeat.i(28139);
-    a.dDh();
+    a.dOK();
     AppMethodBeat.o(28139);
   }
   
-  public final void dDi()
+  public final void dOL()
   {
     AppMethodBeat.i(28140);
-    a.dDi();
+    a.dOL();
     AppMethodBeat.o(28140);
   }
   
-  public final boolean dDj()
+  public final boolean dOM()
   {
     AppMethodBeat.i(28141);
-    boolean bool = k.dDj();
+    boolean bool = k.dOM();
     AppMethodBeat.o(28141);
     return bool;
   }

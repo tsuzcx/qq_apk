@@ -15,8 +15,8 @@ import org.xmlpull.v1.XmlPullParser;
 public final class g
   implements Interpolator
 {
-  private float[] vi;
-  private float[] vj;
+  private float[] xb;
+  private float[] xc;
   
   public g(Context paramContext, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
   {
@@ -25,11 +25,11 @@ public final class g
   
   private g(Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, XmlPullParser paramXmlPullParser)
   {
-    paramResources = android.support.v4.content.a.g.a(paramResources, paramTheme, paramAttributeSet, a.uV);
+    paramResources = android.support.v4.content.a.g.a(paramResources, paramTheme, paramAttributeSet, a.wO);
     if (android.support.v4.content.a.g.a(paramXmlPullParser, "pathData"))
     {
       paramTheme = android.support.v4.content.a.g.c(paramResources, paramXmlPullParser, "pathData", 4);
-      paramAttributeSet = c.x(paramTheme);
+      paramAttributeSet = c.u(paramTheme);
       if (paramAttributeSet == null) {
         throw new InflateException("The path is null, which is created from ".concat(String.valueOf(paramTheme)));
       }
@@ -78,30 +78,30 @@ public final class g
     if (k <= 0) {
       throw new IllegalArgumentException("The Path has a invalid length ".concat(String.valueOf(f1)));
     }
-    this.vi = new float[k];
-    this.vj = new float[k];
+    this.xb = new float[k];
+    this.xc = new float[k];
     float[] arrayOfFloat = new float[2];
     int i = 0;
     while (i < k)
     {
       paramPath.getPosTan(i * f1 / (k - 1), arrayOfFloat, null);
-      this.vi[i] = arrayOfFloat[0];
-      this.vj[i] = arrayOfFloat[1];
+      this.xb[i] = arrayOfFloat[0];
+      this.xc[i] = arrayOfFloat[1];
       i += 1;
     }
-    if ((Math.abs(this.vi[0]) > 1.E-005D) || (Math.abs(this.vj[0]) > 1.E-005D) || (Math.abs(this.vi[(k - 1)] - 1.0F) > 1.E-005D) || (Math.abs(this.vj[(k - 1)] - 1.0F) > 1.E-005D)) {
-      throw new IllegalArgumentException("The Path must start at (0,0) and end at (1,1) start: " + this.vi[0] + "," + this.vj[0] + " end:" + this.vi[(k - 1)] + "," + this.vj[(k - 1)]);
+    if ((Math.abs(this.xb[0]) > 1.E-005D) || (Math.abs(this.xc[0]) > 1.E-005D) || (Math.abs(this.xb[(k - 1)] - 1.0F) > 1.E-005D) || (Math.abs(this.xc[(k - 1)] - 1.0F) > 1.E-005D)) {
+      throw new IllegalArgumentException("The Path must start at (0,0) and end at (1,1) start: " + this.xb[0] + "," + this.xc[0] + " end:" + this.xb[(k - 1)] + "," + this.xc[(k - 1)]);
     }
     f1 = 0.0F;
     i = 0;
     int j = 0;
     while (j < k)
     {
-      float f2 = this.vi[i];
+      float f2 = this.xb[i];
       if (f2 < f1) {
         throw new IllegalArgumentException("The Path cannot loop back on itself, x :".concat(String.valueOf(f2)));
       }
-      this.vi[j] = f2;
+      this.xb[j] = f2;
       j += 1;
       i += 1;
       f1 = f2;
@@ -119,24 +119,24 @@ public final class g
     if (paramFloat >= 1.0F) {
       return 1.0F;
     }
-    int j = this.vi.length - 1;
+    int j = this.xb.length - 1;
     int i = 0;
     while (j - i > 1)
     {
       int k = (i + j) / 2;
-      if (paramFloat < this.vi[k]) {
+      if (paramFloat < this.xb[k]) {
         j = k;
       } else {
         i = k;
       }
     }
-    float f = this.vi[j] - this.vi[i];
+    float f = this.xb[j] - this.xb[i];
     if (f == 0.0F) {
-      return this.vj[i];
+      return this.xc[i];
     }
-    paramFloat = (paramFloat - this.vi[i]) / f;
-    f = this.vj[i];
-    return paramFloat * (this.vj[j] - f) + f;
+    paramFloat = (paramFloat - this.xb[i]) / f;
+    f = this.xc[i];
+    return paramFloat * (this.xc[j] - f) + f;
   }
 }
 

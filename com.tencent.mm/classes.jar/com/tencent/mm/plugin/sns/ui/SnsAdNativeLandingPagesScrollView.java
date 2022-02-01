@@ -5,34 +5,34 @@ import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class SnsAdNativeLandingPagesScrollView
   extends NestedScrollView
 {
-  private int yFZ;
-  private int yGa;
-  private int yGb;
-  private at yGc;
-  private long yGd;
-  private Runnable yGe;
+  private int zXr;
+  private int zXs;
+  private int zXt;
+  private aw zXu;
+  private long zXv;
+  private Runnable zXw;
   
   public SnsAdNativeLandingPagesScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98318);
-    this.yFZ = 0;
-    this.yGa = 0;
-    this.yGb = 50;
-    this.yGc = null;
-    this.yGd = System.currentTimeMillis();
-    this.yGe = new Runnable()
+    this.zXr = 0;
+    this.zXs = 0;
+    this.zXt = 50;
+    this.zXu = null;
+    this.zXv = System.currentTimeMillis();
+    this.zXw = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(98316);
         int i = SnsAdNativeLandingPagesScrollView.this.getScrollY();
-        ac.w("SnsAdNativeLandingPagesScrollView", "1 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
+        ad.w("SnsAdNativeLandingPagesScrollView", "1 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
         if (i != SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this))
         {
           if (SnsAdNativeLandingPagesScrollView.b(SnsAdNativeLandingPagesScrollView.this) != null)
@@ -53,7 +53,7 @@ public class SnsAdNativeLandingPagesScrollView
           SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this, SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this));
         }
         SnsAdNativeLandingPagesScrollView.b(SnsAdNativeLandingPagesScrollView.this, SnsAdNativeLandingPagesScrollView.this.getScrollY());
-        ac.w("SnsAdNativeLandingPagesScrollView", "2 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
+        ad.w("SnsAdNativeLandingPagesScrollView", "2 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
         SnsAdNativeLandingPagesScrollView.this.postDelayed(SnsAdNativeLandingPagesScrollView.d(SnsAdNativeLandingPagesScrollView.this), SnsAdNativeLandingPagesScrollView.e(SnsAdNativeLandingPagesScrollView.this));
         AppMethodBeat.o(98316);
       }
@@ -65,18 +65,18 @@ public class SnsAdNativeLandingPagesScrollView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98317);
-    this.yFZ = 0;
-    this.yGa = 0;
-    this.yGb = 50;
-    this.yGc = null;
-    this.yGd = System.currentTimeMillis();
-    this.yGe = new Runnable()
+    this.zXr = 0;
+    this.zXs = 0;
+    this.zXt = 50;
+    this.zXu = null;
+    this.zXv = System.currentTimeMillis();
+    this.zXw = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(98316);
         int i = SnsAdNativeLandingPagesScrollView.this.getScrollY();
-        ac.w("SnsAdNativeLandingPagesScrollView", "1 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
+        ad.w("SnsAdNativeLandingPagesScrollView", "1 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
         if (i != SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this))
         {
           if (SnsAdNativeLandingPagesScrollView.b(SnsAdNativeLandingPagesScrollView.this) != null)
@@ -97,7 +97,7 @@ public class SnsAdNativeLandingPagesScrollView
           SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this, SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this));
         }
         SnsAdNativeLandingPagesScrollView.b(SnsAdNativeLandingPagesScrollView.this, SnsAdNativeLandingPagesScrollView.this.getScrollY());
-        ac.w("SnsAdNativeLandingPagesScrollView", "2 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
+        ad.w("SnsAdNativeLandingPagesScrollView", "2 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(SnsAdNativeLandingPagesScrollView.this)), Integer.valueOf(i) });
         SnsAdNativeLandingPagesScrollView.this.postDelayed(SnsAdNativeLandingPagesScrollView.d(SnsAdNativeLandingPagesScrollView.this), SnsAdNativeLandingPagesScrollView.e(SnsAdNativeLandingPagesScrollView.this));
         AppMethodBeat.o(98316);
       }
@@ -124,7 +124,7 @@ public class SnsAdNativeLandingPagesScrollView
   {
     AppMethodBeat.i(98319);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    ac.w("SnsAdNativeLandingPagesScrollView", "onScrollChanged x %d,y %d,oldx %d,oldy %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    ad.w("SnsAdNativeLandingPagesScrollView", "onScrollChanged x %d,y %d,oldx %d,oldy %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     AppMethodBeat.o(98319);
   }
   
@@ -142,14 +142,14 @@ public class SnsAdNativeLandingPagesScrollView
     AppMethodBeat.o(98320);
   }
   
-  public void setScrollViewListener(at paramat)
+  public void setScrollViewListener(aw paramaw)
   {
-    this.yGc = paramat;
+    this.zXu = paramaw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesScrollView
  * JD-Core Version:    0.7.0.1
  */

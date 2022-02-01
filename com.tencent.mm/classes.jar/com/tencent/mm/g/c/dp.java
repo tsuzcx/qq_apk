@@ -2,48 +2,41 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.dzf;
-import com.tencent.mm.protocal.protobuf.dzh;
-import com.tencent.mm.protocal.protobuf.ecl;
-import com.tencent.mm.protocal.protobuf.vg;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ac;
-import java.io.IOException;
 
 public abstract class dp
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eQf = "appIdHash".hashCode();
-  private static final int eQg = "launchAction".hashCode();
-  private static final int eQq;
-  private static final int eQr;
-  private static final int eQs = "jsApiInfo".hashCode();
-  private static final int eQt = "versionInfo".hashCode();
-  private static final int eQu = "widgetSetting".hashCode();
-  private static final int enO = "appId".hashCode();
+  private static final int eEm;
+  private static final int eHT;
+  private static final int eIQ = "msgType".hashCode();
+  private static final int eLo;
+  private static final int eUT = "svrId".hashCode();
+  private static final int fgl;
+  private static final int fgm = "descUrl".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean ePZ = true;
-  private boolean eQa = true;
-  private boolean eQl = true;
-  private boolean eQm = true;
-  private boolean eQn = true;
-  private boolean eQo = true;
-  private boolean eQp = true;
-  private boolean enx = true;
-  public String field_appId;
-  public int field_appIdHash;
-  public vg field_jsApiInfo;
-  public dzf field_launchAction;
-  public int field_pkgType;
-  public dzh field_versionInfo;
-  public ecl field_widgetSetting;
-  public int field_widgetType;
+  private boolean eDP = true;
+  private boolean eHQ = true;
+  private boolean eIB = true;
+  private boolean eLb = true;
+  private boolean eUQ = true;
+  private boolean fgj = true;
+  private boolean fgk = true;
+  public String field_content;
+  public String field_descUrl;
+  public short field_isRead;
+  public int field_msgType;
+  public long field_pushTime;
+  public long field_svrId;
+  public String field_title;
   
   static
   {
-    eQq = "pkgType".hashCode();
-    eQr = "widgetType".hashCode();
+    eLo = "isRead".hashCode();
+    eHT = "title".hashCode();
+    eEm = "content".hashCode();
+    fgl = "pushTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -52,82 +45,37 @@ public abstract class dp
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eQf != k) {
-        break label60;
+      if (eUT != k) {
+        break label65;
       }
-      this.field_appIdHash = paramCursor.getInt(i);
+      this.field_svrId = paramCursor.getLong(i);
+      this.eUQ = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (enO == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (eQq == k) {
-        this.field_pkgType = paramCursor.getInt(i);
-      } else if (eQr == k) {
-        this.field_widgetType = paramCursor.getInt(i);
-      } else if (eQg == k) {
-        try
-        {
-          byte[] arrayOfByte1 = paramCursor.getBlob(i);
-          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
-            continue;
-          }
-          this.field_launchAction = ((dzf)new dzf().parseFrom(arrayOfByte1));
-        }
-        catch (IOException localIOException1)
-        {
-          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException1.getMessage());
-        }
-      } else if (eQs == k) {
-        try
-        {
-          byte[] arrayOfByte2 = paramCursor.getBlob(i);
-          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
-            continue;
-          }
-          this.field_jsApiInfo = ((vg)new vg().parseFrom(arrayOfByte2));
-        }
-        catch (IOException localIOException2)
-        {
-          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException2.getMessage());
-        }
-      } else if (eQt == k) {
-        try
-        {
-          byte[] arrayOfByte3 = paramCursor.getBlob(i);
-          if ((arrayOfByte3 == null) || (arrayOfByte3.length <= 0)) {
-            continue;
-          }
-          this.field_versionInfo = ((dzh)new dzh().parseFrom(arrayOfByte3));
-        }
-        catch (IOException localIOException3)
-        {
-          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException3.getMessage());
-        }
-      } else if (eQu == k) {
-        try
-        {
-          byte[] arrayOfByte4 = paramCursor.getBlob(i);
-          if ((arrayOfByte4 == null) || (arrayOfByte4.length <= 0)) {
-            continue;
-          }
-          this.field_widgetSetting = ((ecl)new ecl().parseFrom(arrayOfByte4));
-        }
-        catch (IOException localIOException4)
-        {
-          ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException4.getMessage());
-        }
+      label65:
+      if (eLo == k) {
+        this.field_isRead = paramCursor.getShort(i);
+      } else if (eHT == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (eEm == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (fgl == k) {
+        this.field_pushTime = paramCursor.getLong(i);
+      } else if (eIQ == k) {
+        this.field_msgType = paramCursor.getInt(i);
+      } else if (fgm == k) {
+        this.field_descUrl = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -137,68 +85,31 @@ public abstract class dp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ePZ) {
-      localContentValues.put("appIdHash", Integer.valueOf(this.field_appIdHash));
+    if (this.eUQ) {
+      localContentValues.put("svrId", Long.valueOf(this.field_svrId));
     }
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.eLb) {
+      localContentValues.put("isRead", Short.valueOf(this.field_isRead));
     }
-    if (this.eQl) {
-      localContentValues.put("pkgType", Integer.valueOf(this.field_pkgType));
+    if (this.eHQ) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.eQm) {
-      localContentValues.put("widgetType", Integer.valueOf(this.field_widgetType));
+    if (this.eDP) {
+      localContentValues.put("content", this.field_content);
     }
-    if ((this.eQa) && (this.field_launchAction != null)) {}
-    try
-    {
-      localContentValues.put("launchAction", this.field_launchAction.toByteArray());
-      if ((!this.eQn) || (this.field_jsApiInfo == null)) {}
+    if (this.fgj) {
+      localContentValues.put("pushTime", Long.valueOf(this.field_pushTime));
     }
-    catch (IOException localIOException3)
-    {
-      try
-      {
-        localContentValues.put("jsApiInfo", this.field_jsApiInfo.toByteArray());
-        if ((!this.eQo) || (this.field_versionInfo == null)) {}
-      }
-      catch (IOException localIOException3)
-      {
-        try
-        {
-          localContentValues.put("versionInfo", this.field_versionInfo.toByteArray());
-          if ((!this.eQp) || (this.field_widgetSetting == null)) {}
-        }
-        catch (IOException localIOException3)
-        {
-          try
-          {
-            for (;;)
-            {
-              localContentValues.put("widgetSetting", this.field_widgetSetting.toByteArray());
-              if (this.systemRowid > 0L) {
-                localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-              }
-              return localContentValues;
-              localIOException1 = localIOException1;
-              ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException1.getMessage());
-              continue;
-              localIOException2 = localIOException2;
-              ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException2.getMessage());
-            }
-            localIOException3 = localIOException3;
-            ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException3.getMessage());
-          }
-          catch (IOException localIOException4)
-          {
-            for (;;)
-            {
-              ac.e("MicroMsg.SDK.BaseLaunchWxaWidgetRespData", localIOException4.getMessage());
-            }
-          }
-        }
-      }
+    if (this.eIB) {
+      localContentValues.put("msgType", Integer.valueOf(this.field_msgType));
     }
+    if (this.fgk) {
+      localContentValues.put("descUrl", this.field_descUrl);
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
 }
 

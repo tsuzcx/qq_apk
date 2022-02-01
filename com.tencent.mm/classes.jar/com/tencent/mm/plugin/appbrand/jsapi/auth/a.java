@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.appbrand.jsapi.auth;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AntiReentrantAuthListenerImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;", "listener", "(Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;)V", "mCalled", "", "onAuthResult", "", "luggage-wechat-full-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AntiReentrantAuthListenerImpl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;", "listener", "(Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthFinishListener;)V", "mCalled", "", "onAuthResult", "", "luggage-wechat-full-sdk_release"})
 public final class a
   implements e
 {
-  private final e kcV;
+  private final e kxv;
   private boolean mCalled;
   
   public a(e parame)
   {
-    this.kcV = parame;
+    this.kxv = parame;
   }
   
-  public final void bfe()
+  public final void biH()
   {
     AppMethodBeat.i(169556);
     if (this.mCalled)
@@ -23,9 +23,9 @@ public final class a
       AppMethodBeat.o(169556);
       return;
     }
-    e locale = this.kcV;
+    e locale = this.kxv;
     if (locale != null) {
-      locale.bfe();
+      locale.biH();
     }
     this.mCalled = true;
     AppMethodBeat.o(169556);
@@ -33,7 +33,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.a
  * JD-Core Version:    0.7.0.1
  */

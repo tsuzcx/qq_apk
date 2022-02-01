@@ -21,9 +21,9 @@ final class az
     AppMethodBeat.i(128917);
     paramJSONObject = new LinkedList();
     i locali = new i();
-    paramc = paramc.DH().a(paramString, locali);
+    paramc = paramc.Fg().a(paramString, locali);
     b.c(paramJSONObject, (List)locali.value);
-    switch (1.krw[paramc.ordinal()])
+    switch (1.kMS[paramc.ordinal()])
     {
     default: 
       paramc = new i.a("fail " + paramc.name(), new Object[0]);
@@ -52,14 +52,14 @@ final class az
     while (paramString.hasNext()) {
       paramc.put(((j)paramString.next()).fileName);
     }
-    paramc = new i.a("ok", new Object[0]).r("files", paramc);
+    paramc = new i.a("ok", new Object[0]).q("files", paramc);
     AppMethodBeat.o(128917);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.az
  * JD-Core Version:    0.7.0.1
  */

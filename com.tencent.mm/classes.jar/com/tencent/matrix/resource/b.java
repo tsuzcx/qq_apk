@@ -14,12 +14,12 @@ import java.lang.reflect.Field;
 public class b
   extends com.tencent.matrix.e.b
 {
-  public final com.tencent.matrix.resource.b.a cuN;
-  public com.tencent.matrix.resource.e.b cuO = null;
+  public final com.tencent.matrix.resource.b.a cFI;
+  public com.tencent.matrix.resource.e.b cFJ = null;
   
   public b(com.tencent.matrix.resource.b.a parama)
   {
-    this.cuN = parama;
+    this.cFI = parama;
   }
   
   public static void b(Application paramApplication)
@@ -106,7 +106,7 @@ public class b
       com.tencent.matrix.g.c.e("Matrix.ResourcePlugin", "ResourcePlugin destroy, ResourcePlugin is not supported, just return", new Object[0]);
       return;
     }
-    this.cuO.cxD.Hv();
+    this.cFJ.cIy.IQ();
     com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "watcher is destroyed.", new Object[0]);
   }
   
@@ -124,7 +124,7 @@ public class b
       unSupportPlugin();
       return;
     }
-    this.cuO = new com.tencent.matrix.resource.e.b(paramApplication, this);
+    this.cFJ = new com.tencent.matrix.resource.e.b(paramApplication, this);
   }
   
   public void start()
@@ -138,13 +138,13 @@ public class b
     do
     {
       return;
-      localb = this.cuO;
-      localb.Ho();
-      localApplication = localb.cxC.getApplication();
+      localb = this.cFJ;
+      localb.IJ();
+      localApplication = localb.cIx.getApplication();
     } while (localApplication == null);
-    localApplication.registerActivityLifecycleCallbacks(localb.cxM);
-    com.tencent.matrix.a.cqa.a(localb);
-    localb.cxD.a(localb.cxN, 0);
+    localApplication.registerActivityLifecycleCallbacks(localb.cIH);
+    com.tencent.matrix.a.cAS.a(localb);
+    localb.cIy.a(localb.cII, 0);
     com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "watcher is started.", new Object[0]);
   }
   
@@ -156,7 +156,7 @@ public class b
       com.tencent.matrix.g.c.e("Matrix.ResourcePlugin", "ResourcePlugin stop, ResourcePlugin is not supported, just return", new Object[0]);
       return;
     }
-    this.cuO.Ho();
+    this.cFJ.IJ();
     com.tencent.matrix.g.c.i("Matrix.ActivityRefWatcher", "watcher is stopped.", new Object[0]);
   }
 }

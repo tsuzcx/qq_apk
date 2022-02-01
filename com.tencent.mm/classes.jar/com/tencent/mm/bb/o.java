@@ -2,142 +2,616 @@ package com.tencent.mm.bb;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.ok;
+import com.tencent.mm.g.a.ok.a;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.memory.a.c;
+import com.tencent.mm.openim.b.l;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.cfk;
+import com.tencent.mm.protocal.protobuf.cgk;
+import com.tencent.mm.protocal.protobuf.cgm;
+import com.tencent.mm.protocal.protobuf.cgn;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.h;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class o
+  implements com.tencent.mm.al.f, com.tencent.mm.plugin.messenger.foundation.a.a.j
 {
-  private String dgl;
-  public int dib;
-  int drx;
-  String hQh;
-  private String huA;
-  private int huB;
-  private int huC;
-  private String huz;
-  public int id;
-  String name;
-  int size;
-  public int status;
-  public int version;
+  public HashMap<Integer, HashSet<WeakReference<j.a>>> bGq;
+  boolean hMb;
+  long hMm;
+  av hYB;
+  com.tencent.mm.b.f<Integer, Integer> hYu;
+  private final int hYz;
+  private com.tencent.mm.b.f<Integer, Integer> iiA;
+  j iiB;
   
-  public o()
+  public o(j paramj)
   {
-    AppMethodBeat.i(150834);
-    this.drx = -1;
-    this.id = 0;
-    this.version = 0;
-    this.name = "";
-    this.size = 0;
-    this.hQh = "";
-    this.status = 0;
-    this.dib = 0;
-    this.huz = "";
-    this.huA = "";
-    this.huB = 0;
-    this.huC = 0;
-    this.dgl = (this.id + "_" + this.dib);
-    AppMethodBeat.o(150834);
-  }
-  
-  public final String aGJ()
-  {
-    if (this.hQh == null) {
-      return "";
-    }
-    return this.hQh;
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(150835);
-    this.version = paramCursor.getInt(2);
-    this.name = paramCursor.getString(3);
-    this.size = paramCursor.getInt(4);
-    this.hQh = paramCursor.getString(5);
-    this.status = paramCursor.getInt(6);
-    this.huz = paramCursor.getString(8);
-    this.huA = paramCursor.getString(9);
-    this.dib = paramCursor.getInt(7);
-    this.huC = paramCursor.getInt(11);
-    this.id = paramCursor.getInt(1);
-    this.huB = paramCursor.getInt(10);
-    this.dgl = paramCursor.getString(0);
-    AppMethodBeat.o(150835);
-  }
-  
-  public final ContentValues convertTo()
-  {
-    AppMethodBeat.i(150836);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.drx & 0x2) != 0) {
-      localContentValues.put("id", Integer.valueOf(this.id));
-    }
-    if ((this.drx & 0x4) != 0) {
-      localContentValues.put("version", Integer.valueOf(this.version));
-    }
-    if ((this.drx & 0x8) != 0)
+    AppMethodBeat.i(116849);
+    this.hMb = false;
+    this.hYu = new c(200);
+    this.iiA = new c(200);
+    this.bGq = new HashMap();
+    this.hMm = 0L;
+    this.hYz = 500;
+    this.hYB = new av(g.ajF().IdO.getLooper(), new av.a()
     {
-      if (this.name == null)
+      public final boolean onTimerExpired()
       {
-        str = "";
-        localContentValues.put("name", str);
+        AppMethodBeat.i(116843);
+        ad.d("MicroMsg.OplogService", "summeroplog pusherTry onTimerExpired tryStartNetscene");
+        o localo = o.this;
+        long l = bt.flT();
+        if ((localo.hMb) && (l - localo.hMm > 10000L)) {
+          localo.hMb = false;
+        }
+        if (localo.hMb) {
+          ad.w("MicroMsg.OplogService", "summeroplog tryStartNetscene netSceneRunning, return.");
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(116843);
+          return false;
+          Object localObject1 = localo.iiB;
+          ArrayList localArrayList = new ArrayList();
+          localObject1 = ((j)localObject1).hHS.a("select oplog2.id,oplog2.inserTime,oplog2.cmdId,oplog2.buffer,oplog2.reserved1,oplog2.reserved2,oplog2.reserved3,oplog2.reserved4 from oplog2  order by inserTime asc limit ?", new String[] { "200" }, 0);
+          if (localObject1 == null) {}
+          Object localObject2;
+          for (;;)
+          {
+            if (localArrayList.size() != 0) {
+              break label306;
+            }
+            ad.d("MicroMsg.OplogService", "summeroplog tryStartNetscene list null ret");
+            break;
+            int j = ((Cursor)localObject1).getCount();
+            if (j > 0)
+            {
+              int i = 0;
+              while (i < j)
+              {
+                ((Cursor)localObject1).moveToPosition(i);
+                localObject2 = new k.b(0);
+                ((k.b)localObject2).id = ((Cursor)localObject1).getInt(0);
+                ((k.b)localObject2).hYr = ((Cursor)localObject1).getLong(1);
+                ((k.b)localObject2).cmdId = ((Cursor)localObject1).getInt(2);
+                ((k.b)localObject2).buffer = ((Cursor)localObject1).getBlob(3);
+                ((k.b)localObject2).vKi = ((Cursor)localObject1).getInt(4);
+                ((k.b)localObject2).vKj = ((Cursor)localObject1).getLong(5);
+                ((k.b)localObject2).vKk = ((Cursor)localObject1).getString(6);
+                ((k.b)localObject2).vKl = ((Cursor)localObject1).getString(7);
+                localArrayList.add(localObject2);
+                i += 1;
+              }
+            }
+            ((Cursor)localObject1).close();
+          }
+          label306:
+          if ((!localo.hMb) && (localArrayList.size() > 0))
+          {
+            localo.hMm = l;
+            localo.hMb = true;
+            localObject1 = new LinkedList();
+            localObject2 = localArrayList.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              k.b localb = (k.b)((Iterator)localObject2).next();
+              if ((localb.getCmdId() == 0) && (localb.vKi > 0)) {
+                ((List)localObject1).add(localb);
+              }
+            }
+            localArrayList.removeAll((Collection)localObject1);
+            localObject1 = ((List)localObject1).iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject2 = (k.b)((Iterator)localObject1).next();
+              if ("@openim".equals(((k.b)localObject2).vKk))
+              {
+                g.ajD();
+                g.ajB().gAO.a(new l((k.b)localObject2), 0);
+              }
+              else
+              {
+                localo.iiB.b((k.b)localObject2);
+              }
+            }
+            if (!localArrayList.isEmpty())
+            {
+              g.ajD();
+              g.ajB().gAO.a(new b(localArrayList), 0);
+            }
+          }
+          ad.d("MicroMsg.OplogService", "summeroplog tryStartNetscene ret ok lastNetscene: %d,  netSceneRunning:%B, take:%d ms. size %s", new Object[] { Long.valueOf(localo.hMm), Boolean.valueOf(localo.hMb), Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localArrayList.size()) });
+        }
       }
-    }
-    else
-    {
-      if ((this.drx & 0x10) != 0) {
-        localContentValues.put("size", Integer.valueOf(this.size));
-      }
-      if ((this.drx & 0x20) != 0) {
-        localContentValues.put("packname", aGJ());
-      }
-      if ((this.drx & 0x40) != 0) {
-        localContentValues.put("status", Integer.valueOf(this.status));
-      }
-      if ((this.drx & 0x80) != 0) {
-        localContentValues.put("type", Integer.valueOf(this.dib));
-      }
-      if ((this.drx & 0x100) != 0)
+      
+      public final String toString()
       {
-        if (this.huz != null) {
-          break label337;
-        }
-        str = "";
-        label195:
-        localContentValues.put("reserved1", str);
+        AppMethodBeat.i(116844);
+        String str = super.toString() + "|pusherTry";
+        AppMethodBeat.o(116844);
+        return str;
       }
-      if ((this.drx & 0x200) != 0) {
-        if (this.huA != null) {
-          break label345;
+    }, false);
+    this.bGq = new HashMap();
+    this.iiB = paramj;
+    g.ajD();
+    g.ajB().gAO.a(681, this);
+    g.ajD();
+    g.ajB().gAO.a(806, this);
+    AppMethodBeat.o(116849);
+  }
+  
+  public final void a(int paramInt, j.a parama)
+  {
+    AppMethodBeat.i(116850);
+    HashSet localHashSet = (HashSet)this.bGq.get(Integer.valueOf(paramInt));
+    if (localHashSet == null) {
+      localHashSet = new HashSet();
+    }
+    for (;;)
+    {
+      Iterator localIterator = localHashSet.iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null) && (((j.a)localWeakReference.get()).equals(parama)))
+        {
+          AppMethodBeat.o(116850);
+          return;
+        }
+      }
+      localHashSet.add(new WeakReference(parama));
+      this.bGq.put(Integer.valueOf(paramInt), localHashSet);
+      AppMethodBeat.o(116850);
+      return;
+    }
+  }
+  
+  final void b(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(116852);
+    Object localObject = (HashSet)this.bGq.get(Integer.valueOf(paramInt1));
+    if (localObject == null)
+    {
+      AppMethodBeat.o(116852);
+      return;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    localObject = ((HashSet)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        localLinkedList.add(localWeakReference.get());
+      }
+    }
+    localObject = localLinkedList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((j.a)((Iterator)localObject).next()).C(paramInt2, paramString1, paramString2);
+    }
+    localLinkedList.clear();
+    AppMethodBeat.o(116852);
+  }
+  
+  public final void b(int paramInt, j.a parama)
+  {
+    AppMethodBeat.i(116851);
+    HashSet localHashSet = (HashSet)this.bGq.get(Integer.valueOf(paramInt));
+    if (localHashSet == null)
+    {
+      AppMethodBeat.o(116851);
+      return;
+    }
+    Iterator localIterator = localHashSet.iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((j.a)localWeakReference.get()).equals(parama)))
+      {
+        localHashSet.remove(localWeakReference);
+        AppMethodBeat.o(116851);
+        return;
+      }
+    }
+    if (localHashSet.size() == 0)
+    {
+      this.bGq.remove(Integer.valueOf(paramInt));
+      AppMethodBeat.o(116851);
+      return;
+    }
+    this.bGq.put(Integer.valueOf(paramInt), localHashSet);
+    AppMethodBeat.o(116851);
+  }
+  
+  public final void c(k.b paramb)
+  {
+    AppMethodBeat.i(116853);
+    int i;
+    if (paramb != null)
+    {
+      int j = paramb.getCmdId();
+      if (paramb.getBuffer() == null)
+      {
+        i = -1;
+        ad.i("MicroMsg.OplogService", "summeroplog dealWith option cmdId= %d, buf len:%d, stack=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bt.flS() });
+        paramb.hYr = bt.flT();
+        j localj = this.iiB;
+        if (paramb != null)
+        {
+          paramb.dDp = -1;
+          ContentValues localContentValues = new ContentValues();
+          if ((paramb.dDp & 0x2) != 0) {
+            localContentValues.put("inserTime", Long.valueOf(paramb.hYr));
+          }
+          if ((paramb.dDp & 0x4) != 0) {
+            localContentValues.put("cmdId", Integer.valueOf(paramb.getCmdId()));
+          }
+          if ((paramb.dDp & 0x8) != 0) {
+            localContentValues.put("buffer", paramb.getBuffer());
+          }
+          if ((paramb.dDp & 0x10) != 0) {
+            localContentValues.put("reserved1", Integer.valueOf(paramb.vKi));
+          }
+          if ((paramb.dDp & 0x20) != 0) {
+            localContentValues.put("reserved2", Long.valueOf(paramb.vKj));
+          }
+          if ((paramb.dDp & 0x40) != 0) {
+            localContentValues.put("reserved3", paramb.vKk);
+          }
+          if ((paramb.dDp & 0x80) != 0) {
+            localContentValues.put("reserved4", paramb.vKl);
+          }
+          i = (int)localj.hHS.a("oplog2", "id", localContentValues);
+          if (i > 0) {
+            paramb.id = i;
+          }
         }
       }
     }
-    label337:
-    label345:
-    for (String str = "";; str = this.huA)
+    for (;;)
     {
-      localContentValues.put("reserved2", str);
-      if ((this.drx & 0x400) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.huB));
-      }
-      if ((this.drx & 0x800) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.huC));
-      }
-      if ((this.drx & 0x1) != 0) {
-        localContentValues.put("localId", this.id + "_" + this.dib);
-      }
-      AppMethodBeat.o(150836);
-      return localContentValues;
-      str = this.name;
+      this.hYB.az(0L, 0L);
+      AppMethodBeat.o(116853);
+      return;
+      i = paramb.getBuffer().length;
       break;
-      str = this.huz;
-      break label195;
+      ad.i("MicroMsg.OplogService", "summeroplog dealWith option null");
+    }
+  }
+  
+  public final void d(k.b paramb)
+  {
+    AppMethodBeat.i(116854);
+    g.ajD();
+    long l = g.ajC().gBq.xO(Thread.currentThread().getId());
+    this.iiB.b(paramb);
+    g.ajD();
+    g.ajC().gBq.sJ(l);
+    AppMethodBeat.o(116854);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  {
+    AppMethodBeat.i(116855);
+    ad.i("MicroMsg.OplogService", "oplog onsceneEnd errType:%d,errCode:%d,errMsg:%s, sceneType %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramn.getType()) });
+    Object localObject2;
+    Object localObject1;
+    if (paramn.getType() == 806)
+    {
+      localObject2 = (cfk)((com.tencent.mm.al.b)paramn.getReqResp()).hNL.hNQ;
+      localObject1 = ((l)paramn).iHF;
+      if ((paramInt1 == 0) || (paramInt2 == 0))
+      {
+        if (!(paramn instanceof l))
+        {
+          AppMethodBeat.o(116855);
+          return;
+        }
+        if (((cfk)localObject2).getBaseResponse() == null) {
+          break label990;
+        }
+      }
+    }
+    label949:
+    label964:
+    label990:
+    for (paramInt1 = ((cfk)localObject2).getBaseResponse().Ret;; paramInt1 = 0)
+    {
+      paramString = new ok();
+      paramString.dCn.ret = paramInt1;
+      a.IbL.l(paramString);
+      b(((k.b)localObject1).getCmdId(), paramInt1, "", "");
+      ad.i("MicroMsg.OplogService", "openim op success, type:%d id %d", new Object[] { Integer.valueOf(((k.b)localObject1).vKi), Integer.valueOf(((k.b)localObject1).getCmdId()) });
+      this.iiB.b((k.b)localObject1);
+      this.hMb = false;
+      paramString = this.hYB;
+      if (this.hYu.size() > 0) {}
+      for (long l = 500L;; l = 0L)
+      {
+        paramString.az(l, l);
+        AppMethodBeat.o(116855);
+        return;
+      }
+      if ((localObject2 != null) && (((cfk)localObject2).getBaseResponse() != null)) {}
+      for (paramn = z.a(((cfk)localObject2).getBaseResponse().ErrMsg);; paramn = "")
+      {
+        if (bt.isNullOrNil(paramn)) {}
+        for (;;)
+        {
+          paramInt1 = ((k.b)localObject1).getCmdId();
+          b(((k.b)localObject1).getCmdId(), -1, "", paramString);
+          this.hMb = false;
+          paramString = (Integer)this.iiA.aL(Integer.valueOf(paramInt1));
+          ad.d("MicroMsg.OplogService", "summeroplog id:%d, inserttime:%d, mapCnt:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(((k.b)localObject1).hYr), paramString });
+          if (paramString == null)
+          {
+            this.iiA.q(Integer.valueOf(paramInt1), Integer.valueOf(1));
+            AppMethodBeat.o(116855);
+            return;
+          }
+          if (paramString.intValue() < 2)
+          {
+            this.iiA.q(Integer.valueOf(paramInt1), Integer.valueOf(paramString.intValue() + 1));
+            AppMethodBeat.o(116855);
+            return;
+          }
+          ad.d("MicroMsg.OplogService", "summeroplog LRUMap Max now id:%d, inserttime:%d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(((k.b)localObject1).hYr) });
+          this.iiB.b((k.b)localObject1);
+          AppMethodBeat.o(116855);
+          return;
+          if (paramn.getType() != 681)
+          {
+            AppMethodBeat.o(116855);
+            return;
+          }
+          if ((paramInt1 != 0) || (paramInt2 != 0) || (((b)paramn).iij == null))
+          {
+            ad.e("MicroMsg.OplogService", "summeroplog tryStartNetscene onSceneEnd errType:%d, errCode:%d, rr:%s not retry", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), ((b)paramn).iij.toString() });
+            this.hMb = false;
+            AppMethodBeat.o(116855);
+            return;
+          }
+          localObject1 = ((b.c)((b)paramn).iij.getRespObj()).iio;
+          if ((((cgm)localObject1).Ret != 0) || (((cgm)localObject1).GZB == null) || (((cgm)localObject1).GZB.GtN == null))
+          {
+            ad.e("MicroMsg.OplogService", "summeroplog tryStartNetscene onSceneEnd Ret:%d  not ok and no retry.", new Object[] { Integer.valueOf(((cgm)localObject1).Ret) });
+            this.hMb = false;
+            AppMethodBeat.o(116855);
+            return;
+          }
+          if ((((cgm)localObject1).GZB == null) || (((cgm)localObject1).GZB.GtN.size() == 0)) {}
+          for (;;)
+          {
+            new a(this, ((b)paramn).iik, ((cgm)localObject1).GZB.GtN, ((cgm)localObject1).GZB.GZC).az(50L, 50L);
+            AppMethodBeat.o(116855);
+            return;
+            localObject2 = new ok();
+            ((ok)localObject2).dCn.ret = ((Integer)((cgm)localObject1).GZB.GtN.getLast()).intValue();
+            LinkedList localLinkedList = ((cgm)localObject1).GZB.GZC;
+            ok.a locala = ((ok)localObject2).dCn;
+            if (localLinkedList.isEmpty())
+            {
+              paramString = "";
+              locala.dCo = paramString;
+              locala = ((ok)localObject2).dCn;
+              if (!localLinkedList.isEmpty()) {
+                break label949;
+              }
+            }
+            for (paramString = "";; paramString = ((cgk)localLinkedList.getLast()).hDa)
+            {
+              locala.dCp = paramString;
+              if ((!bt.isNullOrNil(((ok)localObject2).dCn.dCo)) || (!bt.isNullOrNil(((ok)localObject2).dCn.dCp))) {
+                break label964;
+              }
+              paramInt1 = localLinkedList.size() - 1;
+              while (paramInt1 >= 0)
+              {
+                ((ok)localObject2).dCn.dCo = ((cgk)localLinkedList.get(paramInt1)).Title;
+                ((ok)localObject2).dCn.dCp = ((cgk)localLinkedList.get(paramInt1)).hDa;
+                if ((!bt.isNullOrNil(((ok)localObject2).dCn.dCo)) || (!bt.isNullOrNil(((ok)localObject2).dCn.dCp))) {
+                  break;
+                }
+                paramInt1 -= 1;
+              }
+              paramString = ((cgk)localLinkedList.getLast()).Title;
+              break;
+            }
+            a.IbL.l((com.tencent.mm.sdk.b.b)localObject2);
+          }
+          paramString = paramn;
+        }
+      }
+    }
+  }
+  
+  final class a
+    extends av
+  {
+    public a(final List<k.b> paramList, final LinkedList<Integer> paramLinkedList, final LinkedList<cgk> paramLinkedList1)
+    {
+      super(new av.a()
+      {
+        private int ieU = 0;
+        private int successCount = 0;
+        
+        public final boolean onTimerExpired()
+        {
+          int j = 0;
+          AppMethodBeat.i(116846);
+          final int k = paramLinkedList.size();
+          int m = paramLinkedList1.size();
+          int i;
+          ArrayList localArrayList;
+          Object localObject;
+          if (k < m)
+          {
+            i = k;
+            if (k != m) {
+              ad.w("MicroMsg.OplogService", "summeroplog oplogSize[%d] not equal to resultSize[%d]! now size[%d] respIndex[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.ieU) });
+            }
+            localArrayList = new ArrayList();
+            if (this.ieU < i) {
+              break label172;
+            }
+            o.a.this.hMb = false;
+            if (this.successCount > 0)
+            {
+              localObject = o.a.this.hYB;
+              if (o.a.this.hYu.size() <= 0) {
+                break label166;
+              }
+            }
+          }
+          label166:
+          for (long l = 500L;; l = 0L)
+          {
+            ((av)localObject).az(l, l);
+            AppMethodBeat.o(116846);
+            return false;
+            i = m;
+            break;
+          }
+          label172:
+          k = this.ieU + 20;
+          if (k > i) {}
+          for (;;)
+          {
+            if (this.ieU < i)
+            {
+              k = ((Integer)paramLinkedList1.get(this.ieU)).intValue();
+              final k.b localb = (k.b)paramLinkedList.get(this.ieU);
+              if (this.ieU < localLinkedList.size())
+              {
+                localObject = (cgk)localLinkedList.get(this.ieU);
+                label259:
+                m = localb.id;
+                ad.i("MicroMsg.OplogService", "summeroplog id:%d, cmd:%d, result:%d", new Object[] { Integer.valueOf(m), Integer.valueOf(localb.getCmdId()), Integer.valueOf(k) });
+                aq.f(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(116845);
+                    o localo = o.a.1.this.iiH;
+                    int i = localb.getCmdId();
+                    int j = k;
+                    String str1;
+                    if (this.iiK == null)
+                    {
+                      str1 = "";
+                      if (this.iiK != null) {
+                        break label75;
+                      }
+                    }
+                    label75:
+                    for (String str2 = "";; str2 = this.iiK.hDa)
+                    {
+                      localo.b(i, j, str1, str2);
+                      AppMethodBeat.o(116845);
+                      return;
+                      str1 = this.iiK.Title;
+                      break;
+                    }
+                  }
+                });
+                if ((k != 0) && (k != -3400)) {
+                  break label387;
+                }
+                this.successCount += 1;
+                localArrayList.add(localb);
+                o.a.this.hYu.remove(Integer.valueOf(m));
+              }
+              for (;;)
+              {
+                this.ieU += 1;
+                break;
+                localObject = null;
+                break label259;
+                label387:
+                if (k == -433)
+                {
+                  ad.e("MicroMsg.OplogService", "oplog not yet process, id:%d, cmd:%d", new Object[] { Integer.valueOf(m), Integer.valueOf(localb.getCmdId()) });
+                }
+                else
+                {
+                  localObject = (Integer)o.a.this.hYu.aL(Integer.valueOf(m));
+                  ad.d("MicroMsg.OplogService", "summeroplog id:%d, inserttime:%d, mapCnt:%d", new Object[] { Integer.valueOf(m), Long.valueOf(localb.hYr), localObject });
+                  if (localObject == null)
+                  {
+                    o.a.this.hYu.q(Integer.valueOf(m), Integer.valueOf(1));
+                  }
+                  else if (((Integer)localObject).intValue() < 2)
+                  {
+                    o.a.this.hYu.q(Integer.valueOf(m), Integer.valueOf(((Integer)localObject).intValue() + 1));
+                  }
+                  else
+                  {
+                    ad.d("MicroMsg.OplogService", "summeroplog LRUMap Max now id:%d, inserttime:%d", new Object[] { Integer.valueOf(m), Long.valueOf(localb.hYr) });
+                    localArrayList.add(localb);
+                  }
+                }
+              }
+            }
+            k = localArrayList.size();
+            if (k > 0)
+            {
+              g.ajD();
+              l = g.ajC().gBq.xO(Thread.currentThread().getId());
+              i = j;
+              while (i < k)
+              {
+                o.a.this.iiB.b((k.b)localArrayList.get(i));
+                i += 1;
+              }
+              g.ajD();
+              g.ajC().gBq.sJ(l);
+            }
+            AppMethodBeat.o(116846);
+            return true;
+            i = k;
+          }
+        }
+        
+        public final String toString()
+        {
+          AppMethodBeat.i(116847);
+          String str = super.toString() + "|RespHandler";
+          AppMethodBeat.o(116847);
+          return str;
+        }
+      }, true);
+      AppMethodBeat.i(116848);
+      AppMethodBeat.o(116848);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.bb.o
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.voip_cs.a;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$Companion;", "", "()V", "TAG", "", "plugin-voip-cs_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/voip_cs/audio/VoIPCSAudioManager$Companion;", "", "()V", "TAG", "", "plugin-voip-cs_release"})
 public final class a$a {}
 
 

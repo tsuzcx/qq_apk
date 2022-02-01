@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.ui.base.b;
 
 final class y$1
@@ -16,17 +16,17 @@ final class y$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(33437);
-    h.wUl.idkeyStat(405L, 39L, 1L, true);
-    if (this.HoL != null)
+    g.yhR.idkeyStat(405L, 39L, 1L, true);
+    if (this.Jcr != null)
     {
-      this.iuN.finish();
-      paramDialogInterface = this.iuN;
-      Object localObject = this.HoL;
-      localObject = new com.tencent.mm.hellhoundlib.b.a().ba(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).aeD(), "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lR(0));
+      this.iNQ.finish();
+      paramDialogInterface = this.iNQ;
+      Object localObject = this.Jcr;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahp(), "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mq(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      b.ak(this.iuN, this.HoL);
+      b.am(this.iNQ, this.Jcr);
     }
     AppMethodBeat.o(33437);
   }

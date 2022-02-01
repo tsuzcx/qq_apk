@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   extends i
 {
-  private final b bpL;
+  private final b bAg;
   
   public c(b paramb)
   {
-    this.bpL = paramb;
+    this.bAg = paramb;
   }
   
   public final void release()
   {
     AppMethodBeat.i(92803);
-    this.bpL.a(this);
+    this.bAg.a(this);
     AppMethodBeat.o(92803);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.f.c
  * JD-Core Version:    0.7.0.1
  */

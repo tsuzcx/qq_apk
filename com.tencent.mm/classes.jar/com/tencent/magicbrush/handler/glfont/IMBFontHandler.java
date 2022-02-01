@@ -29,7 +29,7 @@ public abstract interface IMBFontHandler
   
   public abstract void setStrokeWidth(float paramFloat);
   
-  public abstract void useFont(String paramString, float paramFloat, boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void useFont(String paramString1, String paramString2, float paramFloat, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

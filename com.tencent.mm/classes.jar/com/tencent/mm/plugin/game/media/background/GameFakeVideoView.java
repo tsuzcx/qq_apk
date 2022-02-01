@@ -29,8 +29,8 @@ public class GameFakeVideoView
   {
     AppMethodBeat.i(41208);
     super.k(paramSurfaceTexture);
-    if (this.prg != null) {
-      this.prg.eP(getCurrentPosition(), getDuration());
+    if (this.pUM != null) {
+      this.pUM.eT(getCurrentPosition(), getDuration());
     }
     AppMethodBeat.o(41208);
   }

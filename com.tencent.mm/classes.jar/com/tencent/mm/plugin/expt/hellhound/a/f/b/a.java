@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.b;
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.b;
-import com.tencent.mm.protocal.protobuf.cvs;
-import com.tencent.mm.protocal.protobuf.cvt;
+import com.tencent.mm.protocal.protobuf.dbe;
+import com.tencent.mm.protocal.protobuf.dbf;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public static boolean a(Activity paramActivity, cvt paramcvt)
+  public static boolean a(Activity paramActivity, dbf paramdbf)
   {
     AppMethodBeat.i(122098);
-    if (paramcvt.FGw.isEmpty())
+    if (paramdbf.HqY.isEmpty())
     {
       AppMethodBeat.o(122098);
       return true;
@@ -23,19 +23,19 @@ public final class a
     {
       try
       {
-        Iterator localIterator = paramcvt.FGw.iterator();
+        Iterator localIterator = paramdbf.HqY.iterator();
         if (localIterator.hasNext())
         {
-          cvs localcvs = (cvs)localIterator.next();
+          dbe localdbe = (dbe)localIterator.next();
           Object localObject1 = paramActivity;
           if (paramActivity == null)
           {
             localObject1 = paramActivity;
-            if ("MoreTabUI".equals(paramcvt.FGo)) {
-              localObject1 = b.ciH();
+            if ("MoreTabUI".equals(paramdbf.HqQ)) {
+              localObject1 = b.cnF();
             }
           }
-          if ((localObject1 == null) || (localcvs == null))
+          if ((localObject1 == null) || (localdbe == null))
           {
             bool = false;
             paramActivity = (Activity)localObject1;
@@ -45,11 +45,11 @@ public final class a
             AppMethodBeat.o(122098);
             return false;
           }
-          paramActivity = Class.forName(localcvs.className);
-          if ((localcvs.dsY == null) || (localcvs.dsY.isEmpty())) {
+          paramActivity = Class.forName(localdbe.className);
+          if ((localdbe.dEZ == null) || (localdbe.dEZ.isEmpty())) {
             break label294;
           }
-          String[] arrayOfString2 = localcvs.dsY.split(",");
+          String[] arrayOfString2 = localdbe.dEZ.split(",");
           if (arrayOfString2.length <= 0)
           {
             bool = false;
@@ -75,7 +75,7 @@ public final class a
               continue;
             }
           }
-          bool = localcvs.FGp.equals(localObject2);
+          bool = localdbe.HqR.equals(localObject2);
           continue;
         }
         AppMethodBeat.o(122098);

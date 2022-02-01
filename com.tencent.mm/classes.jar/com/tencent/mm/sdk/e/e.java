@@ -11,9 +11,9 @@ public abstract interface e
   
   public abstract int delete(String paramString1, String paramString2, String[] paramArrayOfString);
   
-  public abstract boolean eWz();
-  
   public abstract boolean execSQL(String paramString1, String paramString2);
+  
+  public abstract boolean fmj();
   
   public abstract long insert(String paramString1, String paramString2, ContentValues paramContentValues);
   

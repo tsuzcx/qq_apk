@@ -7,14 +7,14 @@ import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgIntegrityChecker.a;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.ab;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.plugin.appbrand.appcache.bb;
-import com.tencent.mm.plugin.appbrand.appcache.bf;
-import com.tencent.mm.plugin.appbrand.appcache.bf.a;
+import com.tencent.mm.plugin.appbrand.appcache.ac;
+import com.tencent.mm.plugin.appbrand.appcache.az;
+import com.tencent.mm.plugin.appbrand.appcache.bc;
+import com.tencent.mm.plugin.appbrand.appcache.bg;
+import com.tencent.mm.plugin.appbrand.appcache.bg.a;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -22,11 +22,11 @@ import java.util.List;
 
 public final class m
 {
-  private static WxaPkgWrappingInfo D(String paramString1, String paramString2, int paramInt)
+  private static WxaPkgWrappingInfo E(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(174935);
-    if ((!bs.isNullOrNil(paramString2)) && (paramString2.endsWith("__PLUGINCODE__"))) {}
-    for (paramString1 = WxaPkgWrappingInfo.Iv(paramString1); paramString1 == null; paramString1 = WxaPkgWrappingInfo.Iu(paramString1))
+    if ((!bt.isNullOrNil(paramString2)) && (paramString2.endsWith("__PLUGINCODE__"))) {}
+    for (paramString1 = WxaPkgWrappingInfo.LM(paramString1); paramString1 == null; paramString1 = WxaPkgWrappingInfo.LL(paramString1))
     {
       AppMethodBeat.o(174935);
       return null;
@@ -36,44 +36,44 @@ public final class m
     return paramString1;
   }
   
-  public static WxaPkgWrappingInfo On(String paramString)
+  public static WxaPkgWrappingInfo RL(String paramString)
   {
-    AppMethodBeat.i(210157);
-    paramString = bH(paramString, 1);
-    AppMethodBeat.o(210157);
+    AppMethodBeat.i(221293);
+    paramString = bK(paramString, 1);
+    AppMethodBeat.o(221293);
     return paramString;
   }
   
-  static int Oo(String paramString)
+  static int RM(String paramString)
   {
-    AppMethodBeat.i(186827);
-    if (!bs.isNullOrNil(paramString))
+    AppMethodBeat.i(188605);
+    if (!bt.isNullOrNil(paramString))
     {
-      paramString = bH(paramString, 1);
+      paramString = bK(paramString, 1);
       if (paramString != null)
       {
         int i = paramString.pkgVersion;
-        AppMethodBeat.o(186827);
+        AppMethodBeat.o(188605);
         return i;
       }
     }
-    AppMethodBeat.o(186827);
+    AppMethodBeat.o(188605);
     return 0;
   }
   
-  static bb a(ab paramab, int paramInt1, int paramInt2, String[] paramArrayOfString)
+  static bc a(ac paramac, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(186826);
-    paramab = j.aVC().a(paramab, paramInt1, bf.a.joR);
-    if (paramab != null)
+    AppMethodBeat.i(188604);
+    paramac = j.aYX().a(paramac, paramInt1, bg.a.jIN);
+    if (paramac != null)
     {
-      paramab = paramab.iterator();
-      while (paramab.hasNext())
+      paramac = paramac.iterator();
+      while (paramac.hasNext())
       {
-        bb localbb = (bb)paramab.next();
-        if (localbb.field_version != paramInt2)
+        bc localbc = (bc)paramac.next();
+        if (localbc.field_version != paramInt2)
         {
-          String str1 = WxaPkgIntegrityChecker.Ij(localbb.field_pkgPath);
+          String str1 = WxaPkgIntegrityChecker.LB(localbc.field_pkgPath);
           int i = paramArrayOfString.length;
           paramInt1 = 0;
           while (paramInt1 < i)
@@ -81,64 +81,64 @@ public final class m
             String str2 = paramArrayOfString[paramInt1];
             if ((!TextUtils.isEmpty(str2)) && (str2.equals(str1)))
             {
-              AppMethodBeat.o(186826);
-              return localbb;
+              AppMethodBeat.o(188604);
+              return localbc;
             }
             paramInt1 += 1;
           }
         }
       }
     }
-    AppMethodBeat.o(186826);
+    AppMethodBeat.o(188604);
     return null;
   }
   
   static WxaPkgWrappingInfo b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(174934);
-    ab localab = new ab(paramString1, paramString2, paramInt1);
-    ac.i("MicroMsg.AppBrand.Launching.CheckPkgLogic", "multiPkg findPkgInfoAvailable pkgQueryKey:%s,codeType:%d", new Object[] { localab, Integer.valueOf(paramInt3) });
-    if (j.a.rq(paramInt3))
+    ac localac = new ac(paramString1, paramString2, paramInt1);
+    ad.i("MicroMsg.AppBrand.Launching.CheckPkgLogic", "multiPkg findPkgInfoAvailable pkgQueryKey:%s,codeType:%d", new Object[] { localac, Integer.valueOf(paramInt3) });
+    if (j.a.rQ(paramInt3))
     {
-      Object localObject = j.aVC();
+      Object localObject = j.aYX();
       if (localObject == null)
       {
         AppMethodBeat.o(174934);
         return null;
       }
-      localObject = ((bf)localObject).a(localab.toString(), paramInt2, paramInt3, new String[0]);
+      localObject = ((bg)localObject).a(localac.toString(), paramInt2, paramInt3, new String[0]);
       if (localObject == null)
       {
         AppMethodBeat.o(174934);
         return null;
       }
-      if (bs.isNullOrNil(((bb)localObject).field_versionMd5))
+      if (bt.isNullOrNil(((bc)localObject).field_versionMd5))
       {
         AppMethodBeat.o(174934);
         return null;
       }
-      if (((bb)localObject).field_versionMd5.equals(WxaPkgIntegrityChecker.Ij(((bb)localObject).field_pkgPath)))
+      if (((bc)localObject).field_versionMd5.equals(WxaPkgIntegrityChecker.LB(((bc)localObject).field_pkgPath)))
       {
-        ac.i("MicroMsg.AppBrand.Launching.CheckPkgLogic", "appid:%s release already exist modulename:%s,codeType:%d,desirePkgVersion:%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt3), Integer.valueOf(paramInt2) });
-        paramString1 = D(((bb)localObject).field_pkgPath, paramString2, paramInt2);
+        ad.i("MicroMsg.AppBrand.Launching.CheckPkgLogic", "appid:%s release already exist modulename:%s,codeType:%d,desirePkgVersion:%d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt3), Integer.valueOf(paramInt2) });
+        paramString1 = E(((bc)localObject).field_pkgPath, paramString2, paramInt2);
         AppMethodBeat.o(174934);
         return paramString1;
       }
-      i.deleteFile(((bb)localObject).field_pkgPath);
-      paramString1 = a(localab, paramInt3, paramInt2, new String[] { ((bb)localObject).field_versionMd5, ((bb)localObject).field_NewMd5 });
+      i.deleteFile(((bc)localObject).field_pkgPath);
+      paramString1 = a(localac, paramInt3, paramInt2, new String[] { ((bc)localObject).field_versionMd5, ((bc)localObject).field_NewMd5 });
       if (paramString1 != null)
       {
-        localObject = ay.aJ(localab.toString(), paramInt2);
-        i.lZ(paramString1.field_pkgPath, (String)localObject);
-        j.aVC().e(localab.toString(), paramInt3, paramInt2, (String)localObject);
-        paramString1 = D((String)localObject, paramString2, paramInt2);
+        localObject = az.aL(localac.toString(), paramInt2);
+        i.mz(paramString1.field_pkgPath, (String)localObject);
+        j.aYX().e(localac.toString(), paramInt3, paramInt2, (String)localObject);
+        paramString1 = E((String)localObject, paramString2, paramInt2);
         AppMethodBeat.o(174934);
         return paramString1;
       }
     }
     else
     {
-      paramString1 = WxaPkgIntegrityChecker.B(localab.toString(), paramInt3, 1);
+      paramString1 = WxaPkgIntegrityChecker.D(localac.toString(), paramInt3, 1);
       if (paramString1.second != null)
       {
         ((WxaPkgWrappingInfo)paramString1.second).name = paramString2;
@@ -151,16 +151,16 @@ public final class m
     return null;
   }
   
-  public static WxaPkgWrappingInfo bH(String paramString, int paramInt)
+  public static WxaPkgWrappingInfo bK(String paramString, int paramInt)
   {
     AppMethodBeat.i(47158);
-    int[] arrayOfInt = j.aVC().Ip(paramString);
+    int[] arrayOfInt = j.aYX().LH(paramString);
     if ((arrayOfInt != null) && (arrayOfInt.length > paramInt)) {}
     for (;;)
     {
       int i = paramInt + 1;
-      Pair localPair = WxaPkgIntegrityChecker.B(paramString, 0, arrayOfInt[paramInt]);
-      if ((localPair.first == WxaPkgIntegrityChecker.a.jop) && (localPair.second != null))
+      Pair localPair = WxaPkgIntegrityChecker.D(paramString, 0, arrayOfInt[paramInt]);
+      if ((localPair.first == WxaPkgIntegrityChecker.a.jIl) && (localPair.second != null))
       {
         paramString = (WxaPkgWrappingInfo)localPair.second;
         AppMethodBeat.o(47158);
@@ -175,13 +175,13 @@ public final class m
     }
   }
   
-  public static WxaPkgWrappingInfo bI(String paramString, int paramInt)
+  public static WxaPkgWrappingInfo bL(String paramString, int paramInt)
   {
-    AppMethodBeat.i(186825);
-    int[] arrayOfInt = j.aVC().Ip(paramString);
+    AppMethodBeat.i(188603);
+    int[] arrayOfInt = j.aYX().LH(paramString);
     if ((arrayOfInt == null) || (arrayOfInt.length <= 0))
     {
-      AppMethodBeat.o(186825);
+      AppMethodBeat.o(188603);
       return null;
     }
     int i = Math.abs(paramInt - arrayOfInt[0]);
@@ -189,7 +189,7 @@ public final class m
     WxaPkgWrappingInfo localWxaPkgWrappingInfo;
     if (i > j)
     {
-      ac.d("MicroMsg.AppBrand.Launching.CheckPkgLogic", "findAvailablePluginPkg appId:%s,versionArray:%s", new Object[] { paramString, Arrays.toString(arrayOfInt) });
+      ad.d("MicroMsg.AppBrand.Launching.CheckPkgLogic", "findAvailablePluginPkg appId:%s,versionArray:%s", new Object[] { paramString, Arrays.toString(arrayOfInt) });
       int m = arrayOfInt.length;
       j = 0;
       localWxaPkgWrappingInfo = null;
@@ -199,8 +199,8 @@ public final class m
       }
       int n = arrayOfInt[j];
       int k = Math.abs(paramInt - n);
-      Pair localPair = WxaPkgIntegrityChecker.B(paramString, 0, n);
-      if ((localPair.first != WxaPkgIntegrityChecker.a.jop) || (localPair.second == null) || (k > i)) {
+      Pair localPair = WxaPkgIntegrityChecker.D(paramString, 0, n);
+      if ((localPair.first != WxaPkgIntegrityChecker.a.jIl) || (localPair.second == null) || (k > i)) {
         break label223;
       }
       localWxaPkgWrappingInfo = (WxaPkgWrappingInfo)localPair.second;
@@ -215,32 +215,32 @@ public final class m
       i = j;
       break;
       if (localWxaPkgWrappingInfo != null) {
-        ac.i("MicroMsg.AppBrand.Launching.CheckPkgLogic", "findAvailablePluginPkg leastStep:%d,desireVersion:%d,localVersion:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(localWxaPkgWrappingInfo.pkgVersion) });
+        ad.i("MicroMsg.AppBrand.Launching.CheckPkgLogic", "findAvailablePluginPkg leastStep:%d,desireVersion:%d,localVersion:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Integer.valueOf(localWxaPkgWrappingInfo.pkgVersion) });
       }
-      AppMethodBeat.o(186825);
+      AppMethodBeat.o(188603);
       return localWxaPkgWrappingInfo;
     }
   }
   
-  static int bJ(String paramString, int paramInt)
+  static int bM(String paramString, int paramInt)
   {
-    AppMethodBeat.i(186828);
-    if (!bs.isNullOrNil(paramString))
+    AppMethodBeat.i(188606);
+    if (!bt.isNullOrNil(paramString))
     {
-      paramString = bI(paramString, paramInt);
+      paramString = bL(paramString, paramInt);
       if (paramString != null)
       {
         paramInt = paramString.pkgVersion;
-        AppMethodBeat.o(186828);
+        AppMethodBeat.o(188606);
         return paramInt;
       }
     }
-    AppMethodBeat.o(186828);
+    AppMethodBeat.o(188606);
     return 0;
   }
   
   /* Error */
-  static boolean dI(String paramString1, String paramString2)
+  static boolean dK(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: iconst_1
@@ -248,10 +248,10 @@ public final class m
     //   2: ldc 238
     //   4: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokestatic 19	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   8: invokestatic 19	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   11: ifne +10 -> 21
     //   14: aload_0
-    //   15: invokestatic 241	com/tencent/mm/vfs/i:eA	(Ljava/lang/String;)Z
+    //   15: invokestatic 241	com/tencent/mm/vfs/i:fv	(Ljava/lang/String;)Z
     //   18: ifne +10 -> 28
     //   21: ldc 238
     //   23: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -263,7 +263,7 @@ public final class m
     //   33: invokespecial 246	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Ljava/lang/String;)V
     //   36: astore 5
     //   38: aload 5
-    //   40: invokevirtual 249	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:aVW	()Z
+    //   40: invokevirtual 249	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:aZr	()Z
     //   43: istore 4
     //   45: iload 4
     //   47: ifne +15 -> 62
@@ -274,7 +274,7 @@ public final class m
     //   60: iconst_0
     //   61: ireturn
     //   62: aload_1
-    //   63: invokestatic 19	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   63: invokestatic 19	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   66: istore 4
     //   68: iload 4
     //   70: ifeq +15 -> 85
@@ -285,11 +285,11 @@ public final class m
     //   83: iconst_1
     //   84: ireturn
     //   85: aload_1
-    //   86: invokestatic 258	com/tencent/luggage/h/k:cp	(Ljava/lang/String;)Ljava/lang/String;
-    //   89: invokestatic 263	com/tencent/mm/plugin/appbrand/appcache/e:HO	(Ljava/lang/String;)Ljava/lang/String;
+    //   86: invokestatic 258	com/tencent/luggage/h/k:dr	(Ljava/lang/String;)Ljava/lang/String;
+    //   89: invokestatic 263	com/tencent/mm/plugin/appbrand/appcache/e:Lg	(Ljava/lang/String;)Ljava/lang/String;
     //   92: astore_1
     //   93: aload_1
-    //   94: invokestatic 19	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   94: invokestatic 19	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   97: istore 4
     //   99: iload 4
     //   101: ifeq +15 -> 116
@@ -301,12 +301,12 @@ public final class m
     //   115: ireturn
     //   116: aload 5
     //   118: aload_1
-    //   119: invokevirtual 267	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:HP	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   119: invokevirtual 267	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
     //   122: astore 6
     //   124: aload 6
     //   126: ifnull +20 -> 146
     //   129: aload 6
-    //   131: invokestatic 270	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   131: invokestatic 270	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   134: aload 5
     //   136: invokevirtual 253	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:close	()V
     //   139: ldc 238
@@ -315,16 +315,16 @@ public final class m
     //   145: ireturn
     //   146: aload 5
     //   148: ldc_w 272
-    //   151: invokevirtual 267	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:HP	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   151: invokevirtual 267	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:Lh	(Ljava/lang/String;)Ljava/io/InputStream;
     //   154: invokestatic 278	com/tencent/mm/plugin/appbrand/z/d:convertStreamToString	(Ljava/io/InputStream;)Ljava/lang/String;
     //   157: astore 6
     //   159: aload 6
-    //   161: invokestatic 19	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   161: invokestatic 19	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   164: istore_3
     //   165: iload_3
     //   166: ifne +108 -> 274
     //   169: aload 6
-    //   171: invokestatic 284	com/tencent/mm/ab/h:tT	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   171: invokestatic 284	com/tencent/mm/ac/h:wJ	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   174: ldc_w 286
     //   177: invokevirtual 292	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   180: astore 6
@@ -339,11 +339,11 @@ public final class m
     //   196: invokevirtual 302	org/json/JSONArray:getString	(I)Ljava/lang/String;
     //   199: astore 7
     //   201: aload 7
-    //   203: invokestatic 19	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   203: invokestatic 19	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   206: ifne +29 -> 235
     //   209: aload_1
     //   210: aload 7
-    //   212: invokestatic 263	com/tencent/mm/plugin/appbrand/appcache/e:HO	(Ljava/lang/String;)Ljava/lang/String;
+    //   212: invokestatic 263	com/tencent/mm/plugin/appbrand/appcache/e:Lg	(Ljava/lang/String;)Ljava/lang/String;
     //   215: invokevirtual 305	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   218: istore_3
     //   219: iload_3
@@ -379,7 +379,7 @@ public final class m
     //   267: iconst_2
     //   268: aload 6
     //   270: aastore
-    //   271: invokestatic 309	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   271: invokestatic 309	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   274: iconst_0
     //   275: istore_3
     //   276: goto -142 -> 134

@@ -62,8 +62,8 @@ public class MediaButtonReceiver
       paramContext = paramContext.getApplicationContext();
       paramIntent = new a(paramContext, paramIntent, localPendingResult);
       paramContext = new MediaBrowserCompat(paramContext, localComponentName, paramIntent);
-      paramIntent.Kv = paramContext;
-      paramContext.IQ.connect();
+      paramIntent.Ml = paramContext;
+      paramContext.KG.connect();
       return;
     }
     throw new IllegalStateException("Could not find any Service that handles android.intent.action.MEDIA_BUTTON or implements a media browser service.");
@@ -72,8 +72,8 @@ public class MediaButtonReceiver
   static final class a
     extends MediaBrowserCompat.b
   {
-    private final BroadcastReceiver.PendingResult Ku;
-    MediaBrowserCompat Kv;
+    private final BroadcastReceiver.PendingResult Mk;
+    MediaBrowserCompat Ml;
     private final Context mContext;
     private final Intent mIntent;
     
@@ -81,13 +81,13 @@ public class MediaButtonReceiver
     {
       this.mContext = paramContext;
       this.mIntent = paramIntent;
-      this.Ku = paramPendingResult;
+      this.Mk = paramPendingResult;
     }
     
     private void finish()
     {
-      this.Kv.disconnect();
-      this.Ku.finish();
+      this.Ml.disconnect();
+      this.Mk.finish();
     }
     
     public final void onConnected()
@@ -95,7 +95,7 @@ public class MediaButtonReceiver
       KeyEvent localKeyEvent;
       try
       {
-        MediaControllerCompat localMediaControllerCompat = new MediaControllerCompat(this.mContext, this.Kv.IQ.ep());
+        MediaControllerCompat localMediaControllerCompat = new MediaControllerCompat(this.mContext, this.Ml.KG.eG());
         localKeyEvent = (KeyEvent)this.mIntent.getParcelableExtra("android.intent.extra.KEY_EVENT");
         if (localKeyEvent == null) {
           throw new IllegalArgumentException("KeyEvent may not be null");
@@ -106,7 +106,7 @@ public class MediaButtonReceiver
       {
         finish();
         return;
-        localRemoteException.Kw.dispatchMediaButtonEvent(localKeyEvent);
+        localRemoteException.Mm.dispatchMediaButtonEvent(localKeyEvent);
       }
     }
     

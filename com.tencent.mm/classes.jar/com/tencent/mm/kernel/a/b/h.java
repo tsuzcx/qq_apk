@@ -2,9 +2,9 @@ package com.tencent.mm.kernel.a.b;
 
 public final class h
 {
-  public Class gjA;
-  public Class gkh;
-  public Class gki;
+  public Class gDR;
+  public Class gDS;
+  public Class gDk;
 }
 
 

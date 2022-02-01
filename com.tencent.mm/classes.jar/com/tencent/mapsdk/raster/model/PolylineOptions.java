@@ -24,6 +24,7 @@ public final class PolylineOptions
   private boolean isDottedLine;
   private boolean isGeodesic;
   private boolean isVisible;
+  private boolean lineCap;
   private int lineType;
   private IndoorInfo mIndoorInfo;
   private final List<LatLng> points;
@@ -48,6 +49,7 @@ public final class PolylineOptions
     this.iColors = null;
     this.iIndexs = null;
     this.iLevel = OverlayLevel.OverlayLevelAboveRoads;
+    this.lineCap = false;
     this.points = new ArrayList();
     AppMethodBeat.o(87572);
   }
@@ -263,6 +265,16 @@ public final class PolylineOptions
     }
     this.iLevel = paramInt;
     return this;
+  }
+  
+  public final void lineCap(boolean paramBoolean)
+  {
+    this.lineCap = paramBoolean;
+  }
+  
+  public final boolean lineCap()
+  {
+    return this.lineCap;
   }
   
   public final PolylineOptions lineType(int paramInt)

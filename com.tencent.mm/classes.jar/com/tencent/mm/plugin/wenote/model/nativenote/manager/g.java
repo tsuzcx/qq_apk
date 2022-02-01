@@ -7,12 +7,14 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.widget.PopupWindow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public final class g
 {
-  public a CWg;
+  public a EAc;
   public View mParentView;
-  public PopupWindow oQQ;
+  public PopupWindow puA;
   
   public g(Context paramContext, View paramView)
   {
@@ -20,18 +22,22 @@ public final class g
     this.mParentView = paramView;
     paramContext = LayoutInflater.from(paramContext).inflate(2131496103, null);
     paramContext.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-    this.oQQ = new PopupWindow(paramContext, -2, -2, false);
-    this.oQQ.setClippingEnabled(false);
+    this.puA = new PopupWindow(paramContext, -2, -2, false);
+    this.puA.setClippingEnabled(false);
     paramContext.findViewById(2131306977).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30468);
-        g.this.oQQ.dismiss();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        g.this.puA.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.CWg != null) {
-          g.this.CWg.bZc();
+        if (g.this.EAc != null) {
+          g.this.EAc.cdG();
         }
+        a.a(this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30468);
       }
     });
@@ -40,11 +46,15 @@ public final class g
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30469);
-        g.this.oQQ.dismiss();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        g.this.puA.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.CWg != null) {
-          g.this.CWg.bZd();
+        if (g.this.EAc != null) {
+          g.this.EAc.cdH();
         }
+        a.a(this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30469);
       }
     });
@@ -53,11 +63,15 @@ public final class g
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30470);
-        g.this.oQQ.dismiss();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        g.this.puA.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.CWg != null) {
-          g.this.CWg.bZe();
+        if (g.this.EAc != null) {
+          g.this.EAc.cdI();
         }
+        a.a(this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30470);
       }
     });
@@ -66,11 +80,15 @@ public final class g
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30471);
-        g.this.oQQ.dismiss();
+        b localb = new b();
+        localb.bd(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        g.this.puA.dismiss();
         g.this.mParentView.setVisibility(8);
-        if (g.this.CWg != null) {
-          g.this.CWg.bZf();
+        if (g.this.EAc != null) {
+          g.this.EAc.cdJ();
         }
+        a.a(this, "com/tencent/mm/plugin/wenote/model/nativenote/manager/WNNoteEditorOperateWindow$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30471);
       }
     });
@@ -79,18 +97,18 @@ public final class g
   
   public static abstract interface a
   {
-    public abstract void bZc();
+    public abstract void cdG();
     
-    public abstract void bZd();
+    public abstract void cdH();
     
-    public abstract void bZe();
+    public abstract void cdI();
     
-    public abstract void bZf();
+    public abstract void cdJ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.g
  * JD-Core Version:    0.7.0.1
  */

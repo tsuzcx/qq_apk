@@ -30,10 +30,10 @@ public final class h
           AppMethodBeat.o(966);
           return -1;
         }
-        paramString1 = a.ea(paramString1);
-        if ((paramString1 != null) && (paramString1.cGU != null))
+        paramString1 = a.eV(paramString1);
+        if ((paramString1 != null) && (paramString1.cRY != null))
         {
-          i = paramString1.cGU.cGX + 8;
+          i = paramString1.cRY.cSb + 8;
           System.out.println("MicroMsg.MergePatchApk:extLen = ".concat(String.valueOf(i)));
           if (d.a(localRandomAccessFile, localFile1, paramString2, i) != 1)
           {

@@ -2,27 +2,27 @@ package d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.b.a.a;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.io.Serializable;
 import java.util.Map;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/collections/EmptyMap;", "", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "entries", "", "", "getEntries", "()Ljava/util/Set;", "keys", "getKeys", "serialVersionUID", "", "size", "", "getSize", "()I", "values", "", "getValues", "()Ljava/util/Collection;", "containsKey", "", "key", "containsValue", "value", "equals", "other", "get", "hashCode", "isEmpty", "readResolve", "toString", "", "kotlin-stdlib"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/collections/EmptyMap;", "", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "entries", "", "", "getEntries", "()Ljava/util/Set;", "keys", "getKeys", "serialVersionUID", "", "size", "", "getSize", "()I", "values", "", "getValues", "()Ljava/util/Collection;", "containsKey", "", "key", "containsValue", "value", "equals", "other", "get", "hashCode", "isEmpty", "readResolve", "toString", "", "kotlin-stdlib"})
 final class w
   implements a, Serializable, Map
 {
-  public static final w KTG;
+  public static final w MKF;
   
   static
   {
     AppMethodBeat.i(129139);
-    KTG = new w();
+    MKF = new w();
     AppMethodBeat.o(129139);
   }
   
   private final Object readResolve()
   {
-    return KTG;
+    return MKF;
   }
   
   public final void clear()
@@ -46,7 +46,7 @@ final class w
       AppMethodBeat.o(129138);
       return false;
     }
-    k.h((Void)paramObject, "value");
+    p.h((Void)paramObject, "value");
     AppMethodBeat.o(129138);
     return false;
   }

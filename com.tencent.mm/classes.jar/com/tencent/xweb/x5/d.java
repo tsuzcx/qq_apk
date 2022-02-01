@@ -8,12 +8,12 @@ import org.xwalk.core.Log;
 public final class d
   implements CookieInternal.ICookieManagerInternal
 {
-  CookieManager KEo;
+  CookieManager MuO;
   
   public d()
   {
     AppMethodBeat.i(153834);
-    this.KEo = CookieManager.getInstance();
+    this.MuO = CookieManager.getInstance();
     AppMethodBeat.o(153834);
   }
   
@@ -33,21 +33,21 @@ public final class d
       AppMethodBeat.o(153836);
       return;
     }
-    this.KEo.setAcceptThirdPartyCookies((com.tencent.smtt.sdk.WebView)paramWebView, true);
+    this.MuO.setAcceptThirdPartyCookies((com.tencent.smtt.sdk.WebView)paramWebView, true);
     AppMethodBeat.o(153836);
   }
   
-  public final void fJb()
+  public final void gax()
   {
     AppMethodBeat.i(153835);
-    this.KEo.setAcceptCookie(true);
+    this.MuO.setAcceptCookie(true);
     AppMethodBeat.o(153835);
   }
   
   public final String getCookie(String paramString)
   {
     AppMethodBeat.i(153838);
-    paramString = this.KEo.getCookie(paramString);
+    paramString = this.MuO.getCookie(paramString);
     AppMethodBeat.o(153838);
     return paramString;
   }
@@ -55,21 +55,21 @@ public final class d
   public final void removeAllCookie()
   {
     AppMethodBeat.i(153837);
-    this.KEo.removeAllCookie();
+    this.MuO.removeAllCookie();
     AppMethodBeat.o(153837);
   }
   
   public final void removeSessionCookie()
   {
     AppMethodBeat.i(153840);
-    this.KEo.removeSessionCookie();
+    this.MuO.removeSessionCookie();
     AppMethodBeat.o(153840);
   }
   
   public final void setCookie(String paramString1, String paramString2)
   {
     AppMethodBeat.i(153839);
-    this.KEo.setCookie(paramString1, paramString2);
+    this.MuO.setCookie(paramString1, paramString2);
     AppMethodBeat.o(153839);
   }
 }

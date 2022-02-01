@@ -7,25 +7,25 @@ import java.nio.ByteBuffer;
 
 public final class h
 {
-  private static final int[] aWb = { 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8 };
-  private static final int[] aWc = { -1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1 };
-  private static final int[] aWd = { 64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680 };
+  private static final int[] bgw = { 1, 2, 2, 2, 2, 3, 3, 4, 4, 5, 6, 6, 6, 7, 8, 8 };
+  private static final int[] bgx = { -1, 8000, 16000, 32000, -1, -1, 11025, 22050, 44100, -1, -1, 12000, 24000, 48000, -1, -1 };
+  private static final int[] bgy = { 64, 112, 128, 192, 224, 256, 384, 448, 512, 640, 768, 896, 1024, 1152, 1280, 1536, 1920, 2048, 2304, 2560, 2688, 2816, 2823, 2944, 3072, 3840, 4096, 6144, 7680 };
   
   public static Format a(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
     AppMethodBeat.i(91805);
     paramArrayOfByte = new l(paramArrayOfByte);
-    paramArrayOfByte.ep(60);
-    int i = paramArrayOfByte.eo(6);
-    int k = aWb[i];
-    i = paramArrayOfByte.eo(4);
-    int m = aWc[i];
-    i = paramArrayOfByte.eo(5);
-    if (i >= aWd.length)
+    paramArrayOfByte.et(60);
+    int i = paramArrayOfByte.es(6);
+    int k = bgw[i];
+    i = paramArrayOfByte.es(4);
+    int m = bgx[i];
+    i = paramArrayOfByte.es(5);
+    if (i >= bgy.length)
     {
       i = -1;
-      paramArrayOfByte.ep(10);
-      if (paramArrayOfByte.eo(2) <= 0) {
+      paramArrayOfByte.et(10);
+      if (paramArrayOfByte.es(2) <= 0) {
         break label121;
       }
     }
@@ -35,7 +35,7 @@ public final class h
       paramArrayOfByte = Format.a(paramString1, "audio/vnd.dts", i, -1, k + j, m, null, null, paramString2);
       AppMethodBeat.o(91805);
       return paramArrayOfByte;
-      i = aWd[i] * 1000 / 2;
+      i = bgy[i] * 1000 / 2;
       break;
     }
   }
@@ -62,7 +62,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.a.h
  * JD-Core Version:    0.7.0.1
  */

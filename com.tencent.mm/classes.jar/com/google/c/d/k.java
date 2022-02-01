@@ -12,7 +12,7 @@ public final class k
   public final b a(String paramString, a parama, int paramInt1, int paramInt2, Map<c, ?> paramMap)
   {
     AppMethodBeat.i(12292);
-    if (parama != a.bGO)
+    if (parama != a.bRc)
     {
       paramString = new IllegalArgumentException("Can only encode EAN_8, but got ".concat(String.valueOf(parama)));
       AppMethodBeat.o(12292);
@@ -23,7 +23,7 @@ public final class k
     return paramString;
   }
   
-  public final boolean[] bn(String paramString)
+  public final boolean[] cg(String paramString)
   {
     AppMethodBeat.i(12293);
     if (paramString.length() != 8)
@@ -33,24 +33,24 @@ public final class k
       throw paramString;
     }
     boolean[] arrayOfBoolean = new boolean[67];
-    int j = a(arrayOfBoolean, 0, q.bJJ, true) + 0;
+    int j = a(arrayOfBoolean, 0, q.bTW, true) + 0;
     int i = 0;
     int k;
     while (i <= 3)
     {
       k = Integer.parseInt(paramString.substring(i, i + 1));
-      j += a(arrayOfBoolean, j, q.bJL[k], false);
+      j += a(arrayOfBoolean, j, q.bTY[k], false);
       i += 1;
     }
-    j += a(arrayOfBoolean, j, q.bJK, false);
+    j += a(arrayOfBoolean, j, q.bTX, false);
     i = 4;
     while (i <= 7)
     {
       k = Integer.parseInt(paramString.substring(i, i + 1));
-      j += a(arrayOfBoolean, j, q.bJL[k], true);
+      j += a(arrayOfBoolean, j, q.bTY[k], true);
       i += 1;
     }
-    a(arrayOfBoolean, j, q.bJJ, true);
+    a(arrayOfBoolean, j, q.bTW, true);
     AppMethodBeat.o(12293);
     return arrayOfBoolean;
   }

@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.appbrand.jsapi.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/JsApiInsertXWebCanvasElement;", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/AppBrandWebGLPluginJsApi;", "()V", "Companion", "plugin-appbrand-integration_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/JsApiInsertXWebCanvasElement;", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/AppBrandWebGLPluginJsApi;", "()V", "Companion", "plugin-appbrand-integration_release"})
 public final class b
   extends a
 {
   public static final int CTRL_INDEX = 594;
   public static final String NAME = "insertXWebWebGLCanvas";
-  public static final a kos;
+  public static final a kJs;
   
   static
   {
-    AppMethodBeat.i(187185);
-    kos = new a((byte)0);
-    AppMethodBeat.o(187185);
+    AppMethodBeat.i(189116);
+    kJs = new a((byte)0);
+    AppMethodBeat.o(189116);
   }
   
-  @l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/JsApiInsertXWebCanvasElement$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/samelayer/jsapi/JsApiInsertXWebCanvasElement$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 

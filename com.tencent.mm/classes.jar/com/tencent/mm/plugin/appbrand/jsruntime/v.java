@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public abstract interface v
   extends j
 {
-  public static final int[] leN = { 4, 0, 2, 1, 3 };
+  public static final int[] lBM = { 4, 0, 2, 1, 3 };
   
-  public abstract long LS();
+  public abstract long NB();
   
   public abstract void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, m.b paramb);
   
@@ -22,7 +22,7 @@ public abstract interface v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsruntime.v
  * JD-Core Version:    0.7.0.1
  */

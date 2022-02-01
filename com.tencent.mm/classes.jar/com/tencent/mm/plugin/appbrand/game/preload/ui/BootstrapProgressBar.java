@@ -22,43 +22,43 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class BootstrapProgressBar
   extends View
   implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  private Paint jTb;
-  private Paint jTc;
-  private Paint jTd;
-  private float jTe;
-  private float jTf;
-  private float jTg;
-  private boolean jTh;
-  private boolean jTi;
-  private boolean jTj;
-  private boolean jTk;
-  private boolean jTl;
-  private ValueAnimator jTm;
-  private Paint jTn;
-  private Canvas jTo;
-  private Bitmap jTp;
-  private Bitmap jTq;
-  private int jTr;
+  private ValueAnimator knA;
+  private Paint knB;
+  private Canvas knC;
+  private Bitmap knD;
+  private Bitmap knE;
+  private int knF;
+  private Paint knp;
+  private Paint knq;
+  private Paint knr;
+  private float kns;
+  private float knt;
+  private float knu;
+  private boolean knv;
+  private boolean knw;
+  private boolean knx;
+  private boolean kny;
+  private boolean knz;
   
   public BootstrapProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(45297);
-    this.jTe = 0.0F;
-    this.jTf = 0.0F;
-    this.jTg = 100.0F;
-    this.jTh = false;
-    this.jTi = false;
-    this.jTj = true;
-    this.jTk = true;
-    this.jTl = true;
-    bdW();
+    this.kns = 0.0F;
+    this.knt = 0.0F;
+    this.knu = 100.0F;
+    this.knv = false;
+    this.knw = false;
+    this.knx = true;
+    this.kny = true;
+    this.knz = true;
+    bhA();
     AppMethodBeat.o(45297);
   }
   
@@ -66,53 +66,53 @@ public class BootstrapProgressBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(45298);
-    this.jTe = 0.0F;
-    this.jTf = 0.0F;
-    this.jTg = 100.0F;
-    this.jTh = false;
-    this.jTi = false;
-    this.jTj = true;
-    this.jTk = true;
-    this.jTl = true;
-    bdW();
+    this.kns = 0.0F;
+    this.knt = 0.0F;
+    this.knu = 100.0F;
+    this.knv = false;
+    this.knw = false;
+    this.knx = true;
+    this.kny = true;
+    this.knz = true;
+    bhA();
     AppMethodBeat.o(45298);
   }
   
-  private void bdW()
+  private void bhA()
   {
     AppMethodBeat.i(45299);
-    ac.d("BootstrapProgressBar", "initialise");
+    ad.d("BootstrapProgressBar", "initialise");
     ValueAnimator.setFrameDelay(15L);
-    this.jTn = new Paint();
-    this.jTb = new Paint();
-    this.jTb.setStyle(Paint.Style.FILL);
-    this.jTb.setAntiAlias(true);
-    this.jTc = new Paint();
-    this.jTc.setStyle(Paint.Style.FILL);
-    this.jTc.setAntiAlias(true);
-    this.jTd = new Paint();
-    this.jTd.setStyle(Paint.Style.FILL);
-    this.jTd.setARGB(38, 0, 0, 0);
-    setProgress(this.jTe);
-    setMaxProgress(this.jTg);
+    this.knB = new Paint();
+    this.knp = new Paint();
+    this.knp.setStyle(Paint.Style.FILL);
+    this.knp.setAntiAlias(true);
+    this.knq = new Paint();
+    this.knq.setStyle(Paint.Style.FILL);
+    this.knq.setAntiAlias(true);
+    this.knr = new Paint();
+    this.knr.setStyle(Paint.Style.FILL);
+    this.knr.setARGB(38, 0, 0, 0);
+    setProgress(this.kns);
+    setMaxProgress(this.knu);
     AppMethodBeat.o(45299);
   }
   
-  private void bdX()
+  private void bhB()
   {
     AppMethodBeat.i(45303);
-    if ((!this.jTh) || (!this.jTi))
+    if ((!this.knv) || (!this.knw))
     {
       AppMethodBeat.o(45303);
       return;
     }
     clearAnimation();
-    this.jTm = ValueAnimator.ofFloat(new float[] { 0.0F, 0.0F });
-    this.jTm.setDuration(300L);
-    this.jTm.setRepeatCount(-1);
-    this.jTm.setRepeatMode(1);
-    this.jTm.setInterpolator(new LinearInterpolator());
-    this.jTm.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.knA = ValueAnimator.ofFloat(new float[] { 0.0F, 0.0F });
+    this.knA.setDuration(300L);
+    this.knA.setRepeatCount(-1);
+    this.knA.setRepeatMode(1);
+    this.knA.setInterpolator(new LinearInterpolator());
+    this.knA.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -121,18 +121,18 @@ public class BootstrapProgressBar
         AppMethodBeat.o(45296);
       }
     });
-    this.jTm.start();
+    this.knA.start();
     AppMethodBeat.o(45303);
   }
   
   public float getMaxProgress()
   {
-    return this.jTg;
+    return this.knu;
   }
   
   public float getProgress()
   {
-    return this.jTe;
+    return this.kns;
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
@@ -140,7 +140,7 @@ public class BootstrapProgressBar
   public void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(45302);
-    bdX();
+    bhB();
     AppMethodBeat.o(45302);
   }
   
@@ -151,7 +151,7 @@ public class BootstrapProgressBar
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(45301);
-    this.jTf = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.knt = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     invalidate();
     AppMethodBeat.o(45301);
   }
@@ -166,45 +166,45 @@ public class BootstrapProgressBar
       AppMethodBeat.o(45306);
       return;
     }
-    if (this.jTp == null) {
-      this.jTp = Bitmap.createBitmap((int)f3, (int)f4, Bitmap.Config.ARGB_8888);
+    if (this.knD == null) {
+      this.knD = Bitmap.createBitmap((int)f3, (int)f4, Bitmap.Config.ARGB_8888);
     }
-    if (this.jTo == null) {
-      this.jTo = new Canvas(this.jTp);
+    if (this.knC == null) {
+      this.knC = new Canvas(this.knD);
     }
-    this.jTo.drawColor(0, PorterDuff.Mode.CLEAR);
-    float f5 = this.jTe / this.jTg;
+    this.knC.drawColor(0, PorterDuff.Mode.CLEAR);
+    float f5 = this.kns / this.knu;
     int i = (int)(f3 * f5);
     float f2 = 0.0F;
     float f6 = (float)(System.currentTimeMillis() % 370L) / 370.0F;
     float f1 = f2;
-    if (this.jTh)
+    if (this.knv)
     {
       f1 = f2;
-      if (this.jTi) {
+      if (this.knw) {
         f1 = 2.0F * f4 * (1.0F - f6);
       }
     }
     if (f5 < 1.0F)
     {
-      this.jTo.save();
+      this.knC.save();
       localObject1 = new Path();
       ((Path)localObject1).moveTo(0.0F, 0.0F);
       ((Path)localObject1).lineTo(i, 0.0F);
       ((Path)localObject1).lineTo(i - f4, f4);
       ((Path)localObject1).lineTo(0.0F, f4);
-      this.jTo.clipPath((Path)localObject1);
+      this.knC.clipPath((Path)localObject1);
     }
     Object localObject2;
     Object localObject3;
     Object localObject4;
     Object localObject5;
-    if (this.jTh)
+    if (this.knv)
     {
-      if (this.jTq == null)
+      if (this.knE == null)
       {
-        localObject1 = this.jTc;
-        localObject2 = this.jTb;
+        localObject1 = this.knq;
+        localObject2 = this.knp;
         localObject3 = Bitmap.createBitmap((int)f4 * 2, (int)f4, Bitmap.Config.ARGB_8888);
         localObject4 = new Canvas((Bitmap)localObject3);
         localObject5 = new Path();
@@ -224,28 +224,28 @@ public class BootstrapProgressBar
         ((Path)localObject5).lineTo(f2 - f4, f4);
         ((Path)localObject5).lineTo(f2, f4);
         ((Canvas)localObject4).drawPath((Path)localObject5, (Paint)localObject1);
-        this.jTq = ((Bitmap)localObject3);
+        this.knE = ((Bitmap)localObject3);
       }
-      for (f1 = 0.0F - f1; f1 < i; f1 += this.jTq.getWidth()) {
-        this.jTo.drawBitmap(this.jTq, f1, 0.0F, this.jTn);
+      for (f1 = 0.0F - f1; f1 < i; f1 += this.knE.getWidth()) {
+        this.knC.drawBitmap(this.knE, f1, 0.0F, this.knB);
       }
     }
-    this.jTo.drawRect(0.0F, 0.0F, i, f4, this.jTb);
+    this.knC.drawRect(0.0F, 0.0F, i, f4, this.knp);
     if (f5 < 1.0F) {
-      this.jTo.restore();
+      this.knC.restore();
     }
     Object localObject1 = new Path();
     ((Path)localObject1).moveTo(0.0F, 0.0F);
     ((Path)localObject1).lineTo(f3, 0.0F);
     ((Path)localObject1).lineTo(f3, f4);
     ((Path)localObject1).lineTo(0.0F, f4);
-    this.jTo.drawPath((Path)localObject1, this.jTd);
-    if (this.jTj) {}
+    this.knC.drawPath((Path)localObject1, this.knr);
+    if (this.knx) {}
     for (f1 = f4 / 2.0F;; f1 = 0.0F)
     {
-      localObject1 = this.jTp;
-      boolean bool1 = this.jTl;
-      boolean bool2 = this.jTk;
+      localObject1 = this.knD;
+      boolean bool1 = this.knz;
+      boolean bool2 = this.kny;
       localObject2 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
       localObject3 = new Canvas((Bitmap)localObject2);
       localObject4 = new Paint();
@@ -265,7 +265,7 @@ public class BootstrapProgressBar
       }
       ((Paint)localObject4).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
       ((Canvas)localObject3).drawBitmap((Bitmap)localObject1, (Rect)localObject5, (Rect)localObject5, (Paint)localObject4);
-      paramCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, this.jTn);
+      paramCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, this.knB);
       AppMethodBeat.o(45306);
       return;
     }
@@ -282,7 +282,7 @@ public class BootstrapProgressBar
   {
     AppMethodBeat.i(45305);
     if (paramInt2 != paramInt4) {
-      this.jTq = null;
+      this.knE = null;
     }
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(45305);
@@ -291,9 +291,9 @@ public class BootstrapProgressBar
   public void setAnimated(boolean paramBoolean)
   {
     AppMethodBeat.i(45309);
-    this.jTi = paramBoolean;
+    this.knw = paramBoolean;
     invalidate();
-    bdX();
+    bhB();
     AppMethodBeat.o(45309);
   }
   
@@ -302,7 +302,7 @@ public class BootstrapProgressBar
     AppMethodBeat.i(45310);
     if (getProgress() <= paramFloat)
     {
-      this.jTg = paramFloat;
+      this.knu = paramFloat;
       invalidate();
       AppMethodBeat.o(45310);
       return;
@@ -322,27 +322,27 @@ public class BootstrapProgressBar
     }
     for (;;)
     {
-      this.jTe = f;
-      if (!this.jTi) {
+      this.kns = f;
+      if (!this.knw) {
         break;
       }
       clearAnimation();
-      this.jTm = ValueAnimator.ofFloat(new float[] { this.jTf, this.jTe });
-      this.jTm.setDuration(300L);
-      this.jTm.setRepeatCount(0);
-      this.jTm.setRepeatMode(1);
-      this.jTm.setInterpolator(new LinearInterpolator());
-      this.jTm.addUpdateListener(this);
-      this.jTm.addListener(this);
-      this.jTm.start();
+      this.knA = ValueAnimator.ofFloat(new float[] { this.knt, this.kns });
+      this.knA.setDuration(300L);
+      this.knA.setRepeatCount(0);
+      this.knA.setRepeatMode(1);
+      this.knA.setInterpolator(new LinearInterpolator());
+      this.knA.addUpdateListener(this);
+      this.knA.addListener(this);
+      this.knA.start();
       AppMethodBeat.o(45307);
       return;
       f = paramFloat;
-      if (paramFloat > this.jTg) {
+      if (paramFloat > this.knu) {
         f = 100.0F;
       }
     }
-    this.jTf = f;
+    this.knt = f;
     invalidate();
     AppMethodBeat.o(45307);
   }
@@ -350,14 +350,14 @@ public class BootstrapProgressBar
   public void setProgressColor(int paramInt)
   {
     AppMethodBeat.i(45300);
-    this.jTr = paramInt;
-    this.jTb.setColor(this.jTr);
-    Paint localPaint = this.jTc;
-    paramInt = this.jTr;
+    this.knF = paramInt;
+    this.knp.setColor(this.knF);
+    Paint localPaint = this.knq;
+    paramInt = this.knF;
     localPaint.setColor(Color.rgb((int)(Color.red(paramInt) * 0.7F + Color.red(-16777216) * 0.3F) / 1, (int)(Color.green(paramInt) * 0.7F + Color.green(-16777216) * 0.3F) / 1, (int)(Color.blue(paramInt) * 0.7F + Color.blue(-16777216) * 0.3F) / 1));
-    this.jTq = null;
-    this.jTp = null;
-    this.jTo = null;
+    this.knE = null;
+    this.knD = null;
+    this.knC = null;
     invalidate();
     AppMethodBeat.o(45300);
   }
@@ -365,15 +365,15 @@ public class BootstrapProgressBar
   public void setStriped(boolean paramBoolean)
   {
     AppMethodBeat.i(45308);
-    this.jTh = paramBoolean;
+    this.knv = paramBoolean;
     invalidate();
-    bdX();
+    bhB();
     AppMethodBeat.o(45308);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.preload.ui.BootstrapProgressBar
  * JD-Core Version:    0.7.0.1
  */

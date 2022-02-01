@@ -4,24 +4,24 @@ import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.a;
 import com.tencent.mm.plugin.card.model.am;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import java.util.ArrayList;
 
 public final class d
   implements a
 {
-  private c nZG;
+  private c oDa;
   
   public d(c paramc)
   {
-    this.nZG = paramc;
+    this.oDa = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113080);
-    if (this.nZG != null) {
-      am.bQi().add(this.nZG);
+    if (this.oDa != null) {
+      am.bUN().add(this.oDa);
     }
     AppMethodBeat.o(113080);
   }
@@ -29,13 +29,13 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113081);
-    if (this.nZG != null)
+    if (this.oDa != null)
     {
-      am.bQi().remove(this.nZG);
-      Object localObject = this.nZG;
-      ((c)localObject).nZE.release();
-      ((c)localObject).nZE = null;
-      ((c)localObject).cVi();
+      am.bUN().remove(this.oDa);
+      Object localObject = this.oDa;
+      ((c)localObject).oCY.release();
+      ((c)localObject).oCY = null;
+      ((c)localObject).det();
       int i = (int)(((c)localObject).endTime - ((c)localObject).beginTime);
       localObject = new ArrayList();
       IDKey localIDKey1 = new IDKey();
@@ -48,8 +48,8 @@ public final class d
       localIDKey2.SetValue(i);
       ((ArrayList)localObject).add(localIDKey1);
       ((ArrayList)localObject).add(localIDKey2);
-      h.wUl.b((ArrayList)localObject, true);
-      this.nZG = null;
+      g.yhR.b((ArrayList)localObject, true);
+      this.oDa = null;
     }
     AppMethodBeat.o(113081);
   }
@@ -57,15 +57,15 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113082);
-    if (this.nZG != null) {
-      this.nZG.a(null, null);
+    if (this.oDa != null) {
+      this.oDa.a(null, null);
     }
     AppMethodBeat.o(113082);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.d
  * JD-Core Version:    0.7.0.1
  */

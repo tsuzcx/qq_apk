@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 
 public abstract class b
   extends n
 {
-  protected int BYb;
-  protected String Lt;
+  protected int DAT;
+  protected String Nl;
   protected int mScene;
   
-  public final int ewW()
+  public final int eLK()
   {
-    return this.BYb;
+    return this.DAT;
   }
   
-  public abstract String ewZ();
+  public abstract String eLN();
   
   public final String getQuery()
   {
-    return this.Lt;
+    return this.Nl;
   }
 }
 

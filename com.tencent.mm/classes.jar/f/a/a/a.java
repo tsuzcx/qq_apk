@@ -1,17 +1,17 @@
 package f.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import com.tencent.mm.bx.b;
 import java.util.LinkedList;
 
 public final class a
 {
-  public static int aji(int paramInt)
+  public static int alP(int paramInt)
   {
     AppMethodBeat.i(2394);
-    paramInt = f.a.a.b.b.a.fK(paramInt);
+    paramInt = f.a.a.b.b.a.alV(paramInt);
     AppMethodBeat.o(2394);
-    return paramInt + 1;
+    return paramInt;
   }
   
   public static int c(int paramInt1, int paramInt2, LinkedList<?> paramLinkedList)
@@ -48,9 +48,9 @@ public final class a
             break;
           }
           ((Double)paramLinkedList.get(j)).doubleValue();
-          paramInt2 = f.a.a.b.b.a.fK(paramInt1);
+          paramInt2 = f.a.a.b.b.a.alT(paramInt1);
           j += 1;
-          i = paramInt2 + 8 + i;
+          i = paramInt2 + i;
         }
       case 5: 
         i = 0;
@@ -62,9 +62,9 @@ public final class a
             break;
           }
           ((Float)paramLinkedList.get(j)).floatValue();
-          paramInt2 = f.a.a.b.b.a.fK(paramInt1);
+          paramInt2 = f.a.a.b.b.a.alU(paramInt1);
           j += 1;
-          i = paramInt2 + 4 + i;
+          i = paramInt2 + i;
         }
       case 2: 
         i = 0;
@@ -75,7 +75,7 @@ public final class a
           if (j >= paramLinkedList.size()) {
             break;
           }
-          paramInt2 = f.a.a.b.b.a.bx(paramInt1, ((Integer)paramLinkedList.get(j)).intValue());
+          paramInt2 = f.a.a.b.b.a.bz(paramInt1, ((Integer)paramLinkedList.get(j)).intValue());
           j += 1;
           i = paramInt2 + i;
         }
@@ -115,9 +115,9 @@ public final class a
             break;
           }
           ((Boolean)paramLinkedList.get(j)).booleanValue();
-          paramInt2 = f.a.a.b.b.a.fK(paramInt1);
+          paramInt2 = f.a.a.b.b.a.alV(paramInt1);
           j += 1;
-          i = paramInt2 + 1 + i;
+          i = paramInt2 + i;
         }
       }
       int i = 0;
@@ -128,7 +128,7 @@ public final class a
         if (j >= paramLinkedList.size()) {
           break;
         }
-        paramInt2 = lm(paramInt1, ((com.tencent.mm.bw.a)paramLinkedList.get(j)).computeSize());
+        paramInt2 = lB(paramInt1, ((com.tencent.mm.bx.a)paramLinkedList.get(j)).computeSize());
         j += 1;
         i = paramInt2 + i;
       }
@@ -158,11 +158,11 @@ public final class a
           i = 0;
           while (i < paramLinkedList.size())
           {
-            j = f.a.a.b.b.a.fM(((Integer)paramLinkedList.get(i)).intValue());
+            j = f.a.a.b.b.a.fP(((Integer)paramLinkedList.get(i)).intValue());
             i += 1;
             paramInt2 = j + paramInt2;
           }
-          i = f.a.a.b.b.a.fM(paramInt2) + paramInt2 + f.a.a.b.b.a.fK(paramInt1);
+          i = f.a.a.b.b.a.fP(paramInt2) + paramInt2 + f.a.a.b.b.a.fN(paramInt1);
         }
         break;
       }
@@ -182,16 +182,16 @@ public final class a
           i += 1;
           paramInt2 = j + paramInt2;
         }
-        i = f.a.a.b.b.a.fM(paramInt2) + paramInt2 + f.a.a.b.b.a.fK(paramInt1);
+        i = f.a.a.b.b.a.fP(paramInt2) + paramInt2 + f.a.a.b.b.a.fN(paramInt1);
       }
     }
   }
   
   public static int e(int paramInt, String paramString)
   {
-    AppMethodBeat.i(210385);
+    AppMethodBeat.i(221592);
     paramInt = f.a.a.b.b.a.e(paramInt, paramString);
-    AppMethodBeat.o(210385);
+    AppMethodBeat.o(221592);
     return paramInt;
   }
   
@@ -215,7 +215,7 @@ public final class a
           i = 0;
           while (i < paramLinkedList.size())
           {
-            j = f.a.a.b.b.a.fM(((Integer)paramLinkedList.get(i)).intValue());
+            j = f.a.a.b.b.a.fP(((Integer)paramLinkedList.get(i)).intValue());
             i += 1;
             paramInt = j + paramInt;
           }
@@ -244,19 +244,19 @@ public final class a
     }
   }
   
-  public static int ll(int paramInt1, int paramInt2)
+  public static int lA(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(210384);
-    paramInt1 = f.a.a.b.b.a.bx(paramInt1, paramInt2);
-    AppMethodBeat.o(210384);
+    AppMethodBeat.i(221591);
+    paramInt1 = f.a.a.b.b.a.bz(paramInt1, paramInt2);
+    AppMethodBeat.o(221591);
     return paramInt1;
   }
   
-  public static int lm(int paramInt1, int paramInt2)
+  public static int lB(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2395);
-    paramInt1 = f.a.a.b.b.a.fK(paramInt1);
-    int i = f.a.a.b.b.a.fM(paramInt2);
+    paramInt1 = f.a.a.b.b.a.fN(paramInt1);
+    int i = f.a.a.b.b.a.fP(paramInt2);
     AppMethodBeat.o(2395);
     return paramInt1 + i + paramInt2;
   }

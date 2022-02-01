@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.recordvideo.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.cq;
+import com.tencent.mm.g.b.a.di;
 import com.tencent.mm.plugin.recordvideo.jumper.MediaEditReportInfo.EditItem;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 import d.a.j;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;)V", "report", "", "reset", "setEditItemList", "editList", "", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "isAllImage", "", "Companion", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/report/MultiMediaEditReport;", "", "()V", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;", "setStruct", "(Lcom/tencent/mm/autogen/mmdata/rpt/MultiMediaEditInfoStruct;)V", "report", "", "reset", "setEditItemList", "editList", "", "Lcom/tencent/mm/plugin/recordvideo/jumper/MediaEditReportInfo$EditItem;", "isAllImage", "", "Companion", "plugin-recordvideo_release"})
 public final class b
 {
-  public static final b.a wxY;
-  public cq wxX;
+  public static final b.a xGS;
+  public di xGR;
   
   static
   {
-    AppMethodBeat.i(199359);
-    wxY = new b.a((byte)0);
-    AppMethodBeat.o(199359);
+    AppMethodBeat.i(200401);
+    xGS = new b.a((byte)0);
+    AppMethodBeat.o(200401);
   }
   
   public b()
   {
-    AppMethodBeat.i(199358);
-    this.wxX = new cq();
+    AppMethodBeat.i(200400);
+    this.xGR = new di();
     reset();
-    AppMethodBeat.o(199358);
+    AppMethodBeat.o(200400);
   }
   
-  public final void g(List<? extends MediaEditReportInfo.EditItem> paramList, boolean paramBoolean)
+  public final void h(List<? extends MediaEditReportInfo.EditItem> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(199356);
-    k.h(paramList, "editList");
+    AppMethodBeat.i(200398);
+    p.h(paramList, "editList");
     Object localObject2 = (Iterable)paramList;
     Object localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
@@ -58,7 +58,7 @@ public final class b
     {
       localObject4 = (MediaEditReportInfo.EditItem)((Iterator)localObject3).next();
       if (paramBoolean) {}
-      for (i = 0;; i = bs.Aq(((MediaEditReportInfo.EditItem)localObject4).targetDuration))
+      for (i = 0;; i = bt.Dg(((MediaEditReportInfo.EditItem)localObject4).targetDuration))
       {
         ((Collection)localObject2).add(Integer.valueOf(i));
         break;
@@ -72,7 +72,7 @@ public final class b
     {
       localObject5 = (MediaEditReportInfo.EditItem)((Iterator)localObject4).next();
       if (paramBoolean) {}
-      for (i = 0;; i = bs.Aq(((MediaEditReportInfo.EditItem)localObject5).originDuration))
+      for (i = 0;; i = bt.Dg(((MediaEditReportInfo.EditItem)localObject5).originDuration))
       {
         ((Collection)localObject3).add(Integer.valueOf(i));
         break;
@@ -135,31 +135,31 @@ public final class b
       paramList.add(Integer.valueOf(((MediaEditReportInfo.EditItem)((Iterator)localObject10).next()).type));
     }
     paramList = j.a((Iterable)paramList, (CharSequence)"#", null, null, 0, null, null, 62);
-    this.wxX.kE((String)localObject1);
-    this.wxX.kF((String)localObject2);
-    this.wxX.kG((String)localObject3);
-    this.wxX.kI((String)localObject4);
-    this.wxX.kJ((String)localObject5);
-    this.wxX.kK((String)localObject6);
-    this.wxX.kL((String)localObject7);
-    this.wxX.kM((String)localObject8);
-    this.wxX.kN((String)localObject9);
-    this.wxX.kO(paramList);
-    AppMethodBeat.o(199356);
+    this.xGR.mA((String)localObject1);
+    this.xGR.mB((String)localObject2);
+    this.xGR.mC((String)localObject3);
+    this.xGR.mE((String)localObject4);
+    this.xGR.mF((String)localObject5);
+    this.xGR.mG((String)localObject6);
+    this.xGR.mH((String)localObject7);
+    this.xGR.mI((String)localObject8);
+    this.xGR.mJ((String)localObject9);
+    this.xGR.mK(paramList);
+    AppMethodBeat.o(200398);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(199357);
-    this.wxX = new cq();
-    this.wxX.kH("");
-    this.wxX.kD("");
-    AppMethodBeat.o(199357);
+    AppMethodBeat.i(200399);
+    this.xGR = new di();
+    this.xGR.mD("");
+    this.xGR.mz("");
+    AppMethodBeat.o(200399);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.d.b
  * JD-Core Version:    0.7.0.1
  */

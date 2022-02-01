@@ -16,20 +16,20 @@ public class TrackInfo
   
   public CompositionTrackSegment getCompositionTrackSegment(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(192100);
+    AppMethodBeat.i(219899);
     paramCMTimeRange = new CompositionTrackSegment(this.compositionTrackSegment.getSourcePath(), this.compositionTrackSegment.getSourceTrackID(), this.compositionTrackSegment.getTimeMapping().getSource(), paramCMTimeRange, this.compositionTrackSegment.getSourceType());
-    AppMethodBeat.o(192100);
+    AppMethodBeat.o(219899);
     return paramCMTimeRange;
   }
   
   public int getMediaType()
   {
-    AppMethodBeat.i(192101);
+    AppMethodBeat.i(219900);
     int i;
     if (this.track != null)
     {
       i = this.track.getMediaType();
-      AppMethodBeat.o(192101);
+      AppMethodBeat.o(219900);
       return i;
     }
     if (this.compositionTrackSegment != null)
@@ -39,10 +39,10 @@ public class TrackInfo
       if (j == 3) {
         i = 1;
       }
-      AppMethodBeat.o(192101);
+      AppMethodBeat.o(219900);
       return i;
     }
-    AppMethodBeat.o(192101);
+    AppMethodBeat.o(219900);
     return 0;
   }
   
@@ -83,7 +83,7 @@ public class TrackInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TrackInfo
  * JD-Core Version:    0.7.0.1
  */

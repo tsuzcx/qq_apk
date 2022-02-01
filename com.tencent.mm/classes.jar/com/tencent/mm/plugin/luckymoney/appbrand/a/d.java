@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cmm;
-import com.tencent.mm.protocal.protobuf.cmn;
+import com.tencent.mm.protocal.protobuf.crn;
+import com.tencent.mm.protocal.protobuf.cro;
 
 public final class d
-  extends a<cmm, cmn>
+  extends a<crn, cro>
 {
   public d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(64877);
-    cmm localcmm = new cmm();
-    localcmm.djj = paramString1;
-    localcmm.Fpu = paramString2;
-    this.ugo = localcmm;
+    crn localcrn = new crn();
+    localcrn.duW = paramString1;
+    localcrn.GZe = paramString2;
+    this.viY = localcrn;
     AppMethodBeat.o(64877);
   }
   
@@ -29,7 +29,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.a.d
  * JD-Core Version:    0.7.0.1
  */

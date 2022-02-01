@@ -5,56 +5,56 @@ import java.io.Serializable;
 public final class d
   implements Serializable
 {
-  public boolean cjK = false;
-  public int gpC = 15;
-  public boolean gpD = true;
-  public boolean gpE = false;
-  public int gpF = 0;
-  private boolean gpG = true;
-  private boolean gpH = false;
-  public boolean gpI = false;
-  public boolean gpJ = false;
-  public boolean gpK = false;
-  public boolean gpL = true;
-  public int gpM = 0;
-  public boolean gpN = true;
-  private transient boolean gpw = true;
+  public boolean cua = false;
+  private transient boolean gJf = true;
+  public int gJl = 108;
+  public int gJm = 15;
+  public boolean gJn = true;
+  public boolean gJo = false;
+  public int gJp = 0;
+  private boolean gJq = true;
+  private boolean gJr = false;
+  public boolean gJs = false;
+  public boolean gJt = false;
+  public boolean gJu = false;
+  public boolean gJv = true;
+  public int gJw = 0;
+  public boolean gJx = true;
   public int mQosMode = 1;
   public int mQosPreference = 2;
   public int mVideoBitrate = 600;
-  public int mVideoResolution = 108;
   
-  public final boolean ajm()
+  public final boolean alY()
   {
-    return this.gpD;
-  }
-  
-  public final void dF(boolean paramBoolean)
-  {
-    this.gpD = paramBoolean;
-  }
-  
-  public final void dG(boolean paramBoolean)
-  {
-    this.gpN = paramBoolean;
+    return this.gJn;
   }
   
   public final void dH(boolean paramBoolean)
   {
-    this.gpG = paramBoolean;
+    this.gJn = paramBoolean;
   }
   
-  public final void mA(int paramInt)
+  public final void dI(boolean paramBoolean)
+  {
+    this.gJx = paramBoolean;
+  }
+  
+  public final void dJ(boolean paramBoolean)
+  {
+    this.gJq = paramBoolean;
+  }
+  
+  public final void mZ(int paramInt)
   {
     this.mQosMode = paramInt;
   }
   
-  public final void mB(int paramInt)
+  public final void na(int paramInt)
   {
-    this.gpC = paramInt;
+    this.gJm = paramInt;
   }
   
-  public final void mC(int paramInt)
+  public final void nb(int paramInt)
   {
     this.mQosPreference = paramInt;
   }
@@ -66,7 +66,7 @@ public final class d
   
   public final void setVideoResolution(int paramInt)
   {
-    this.mVideoResolution = paramInt;
+    this.gJl = paramInt;
   }
 }
 

@@ -12,7 +12,8 @@
         <FrameLayout android:id="@id/aoo" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <TextView android:id="@id/aon" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/aa" android:drawableRight="@raw/chatto_voice_playing" android:backgroundTintMode="src_atop" />
             <com.tencent.mm.ui.base.AnimImageView android:id="@id/aok" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/aa" />
-            <TextView android:textColor="@color/iz" android:layout_gravity="center|right" android:id="@id/ala" android:layout_marginRight="26.0dip" android:layout_alignRight="@id/aon" style="@style/h4" />
+            <ProgressBar android:gravity="center" android:layout_gravity="center|right" android:id="@id/i1b" android:padding="@dimen/hu" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/c0" style="@style/a5o" />
+            <TextView android:textColor="@color/iz" android:layout_gravity="center|right" android:id="@id/ala" android:layout_marginRight="@dimen/c_" android:layout_alignRight="@id/aon" style="@style/h4" />
         </FrameLayout>
     </FrameLayout>
     <ViewStub android:id="@id/gfa" android:layout="@layout/qp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="@dimen/hk" android:layout_toLeftOf="@id/akx" android:layout_below="@id/aop" android:layout_alignRight="@id/aob" />

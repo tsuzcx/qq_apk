@@ -7,14 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/ui/view/StoryBubbleListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-story_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/ui/view/StoryBubbleListView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bubbleRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-story_release"})
 public final class StoryBubbleListView
   extends RelativeLayout
 {
-  private final RecyclerView zHQ;
+  private final RecyclerView AZr;
   
   public StoryBubbleListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +29,8 @@ public final class StoryBubbleListView
     AppMethodBeat.i(120087);
     View.inflate(paramContext, 2131495709, (ViewGroup)this);
     paramContext = findViewById(2131305477);
-    k.g(paramContext, "findViewById(R.id.story_msg_recycler_view)");
-    this.zHQ = ((RecyclerView)paramContext);
+    p.g(paramContext, "findViewById(R.id.story_msg_recycler_view)");
+    this.AZr = ((RecyclerView)paramContext);
     AppMethodBeat.o(120087);
   }
 }

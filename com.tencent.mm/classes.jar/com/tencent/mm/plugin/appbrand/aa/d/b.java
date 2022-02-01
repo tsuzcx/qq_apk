@@ -8,30 +8,30 @@ public final class b
   extends e
   implements a
 {
-  static final ByteBuffer mqt;
+  static final ByteBuffer mQZ;
+  private String cGL;
   private int code;
-  private String cvQ;
   
   static
   {
     AppMethodBeat.i(156656);
-    mqt = ByteBuffer.allocate(0);
+    mQZ = ByteBuffer.allocate(0);
     AppMethodBeat.o(156656);
   }
   
   public b()
   {
-    super(d.a.mqz);
+    super(d.a.mRf);
     AppMethodBeat.i(156649);
-    hH(true);
+    hS(true);
     AppMethodBeat.o(156649);
   }
   
   public b(int paramInt, String paramString)
   {
-    super(d.a.mqz);
+    super(d.a.mRf);
     AppMethodBeat.i(156650);
-    hH(true);
+    hS(true);
     if (paramString == null) {
       paramString = "";
     }
@@ -54,7 +54,7 @@ public final class b
         AppMethodBeat.o(156650);
         return;
       }
-      paramString = com.tencent.mm.plugin.appbrand.aa.f.b.RG(paramString);
+      paramString = com.tencent.mm.plugin.appbrand.aa.f.b.Vl(paramString);
       ByteBuffer localByteBuffer1 = ByteBuffer.allocate(4);
       localByteBuffer1.putInt(i);
       localByteBuffer1.position(2);
@@ -68,11 +68,11 @@ public final class b
     }
   }
   
-  private void bxC()
+  private void bBH()
   {
     AppMethodBeat.i(156651);
     this.code = 1005;
-    Object localObject = super.bxE();
+    Object localObject = super.bBJ();
     ((ByteBuffer)localObject).mark();
     if (((ByteBuffer)localObject).remaining() >= 2)
     {
@@ -92,21 +92,21 @@ public final class b
     AppMethodBeat.o(156651);
   }
   
-  private void bxD()
+  private void bBI()
   {
     AppMethodBeat.i(156652);
     if (this.code == 1005)
     {
-      this.cvQ = com.tencent.mm.plugin.appbrand.aa.f.b.B(super.bxE());
+      this.cGL = com.tencent.mm.plugin.appbrand.aa.f.b.B(super.bBJ());
       AppMethodBeat.o(156652);
       return;
     }
-    ByteBuffer localByteBuffer = super.bxE();
+    ByteBuffer localByteBuffer = super.bBJ();
     int i = localByteBuffer.position();
     try
     {
       localByteBuffer.position(localByteBuffer.position() + 2);
-      this.cvQ = com.tencent.mm.plugin.appbrand.aa.f.b.B(localByteBuffer);
+      this.cGL = com.tencent.mm.plugin.appbrand.aa.f.b.B(localByteBuffer);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -126,33 +126,33 @@ public final class b
   {
     AppMethodBeat.i(156654);
     super.A(paramByteBuffer);
-    bxC();
-    bxD();
+    bBH();
+    bBI();
     AppMethodBeat.o(156654);
   }
   
-  public final int bxB()
+  public final int bBG()
   {
     return this.code;
   }
   
-  public final ByteBuffer bxE()
+  public final ByteBuffer bBJ()
   {
     AppMethodBeat.i(156655);
     if (this.code == 1005)
     {
-      localByteBuffer = mqt;
+      localByteBuffer = mQZ;
       AppMethodBeat.o(156655);
       return localByteBuffer;
     }
-    ByteBuffer localByteBuffer = super.bxE();
+    ByteBuffer localByteBuffer = super.bBJ();
     AppMethodBeat.o(156655);
     return localByteBuffer;
   }
   
   public final String getMessage()
   {
-    return this.cvQ;
+    return this.cGL;
   }
   
   public final String toString()
@@ -165,7 +165,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.d.b
  * JD-Core Version:    0.7.0.1
  */

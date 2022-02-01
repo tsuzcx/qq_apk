@@ -6,8 +6,8 @@ import java.io.File;
 public class g
   implements Comparable<g>
 {
-  public final boolean bvL;
-  public final long bvM;
+  public final boolean bFZ;
+  public final long bGa;
   public final File file;
   public final String key;
   public final long length;
@@ -22,9 +22,9 @@ public class g
     if (paramFile != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bvL = bool;
+      this.bFZ = bool;
       this.file = paramFile;
-      this.bvM = paramLong3;
+      this.bGa = paramLong3;
       AppMethodBeat.o(92993);
       return;
     }
@@ -54,7 +54,7 @@ public class g
     return 1;
   }
   
-  public final boolean vn()
+  public final boolean wK()
   {
     return this.length == -1L;
   }

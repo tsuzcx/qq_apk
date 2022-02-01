@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.performance.diagnostic.memory;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Process;
 import android.text.TextUtils;
+import com.tencent.e.h;
 import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.performance.jni.memory.MemoryHook;
+import com.tencent.mm.plugin.performance.c;
 import com.tencent.mm.plugin.performance.diagnostic.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.q;
 import com.tencent.mmkv.MMKV;
+import com.tencent.wxperf.jni.HookManager;
+import com.tencent.wxperf.jni.memory.MemoryHook;
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Map;
 import java.util.Map<Ljava.lang.String;Ljava.lang.String;>;
 import junit.framework.Assert;
@@ -28,15 +27,14 @@ public class MemoryHookLogic
   extends a
 {
   public static String TAG;
-  private static final e vAP;
-  private static final e vAQ;
-  public aw vAu;
+  private static final e wHi;
+  private static final e wHj;
   
   static
   {
     AppMethodBeat.i(124967);
     TAG = "MicroMsg.MemoryHookLogic";
-    String str2 = ai.getProcessName();
+    String str2 = aj.getProcessName();
     String str1 = "MM_";
     if (str2.contains(":tools"))
     {
@@ -45,12 +43,12 @@ public class MemoryHookLogic
     }
     for (;;)
     {
-      str2 = ai.getContext().getFilesDir().getAbsolutePath() + "/memory_hook";
+      str2 = aj.getContext().getFilesDir().getAbsolutePath() + "/memory_hook";
       str1 = str2 + "/" + str1 + Process.myPid() + "_memory_hook.log";
-      vAP = new e(str2);
-      vAQ = new e(str1);
-      ac.d(TAG, "init dump file dir = %s", new Object[] { str2 });
-      ac.i(TAG, "init dump file path = %s", new Object[] { str1 });
+      wHi = new e(str2);
+      wHj = new e(str1);
+      ad.d(TAG, "init dump file dir = %s", new Object[] { str2 });
+      ad.i(TAG, "init dump file path = %s", new Object[] { str1 });
       AppMethodBeat.o(124967);
       return;
       if (str2.contains(":appbrand0"))
@@ -84,170 +82,52 @@ public class MemoryHookLogic
   public MemoryHookLogic()
   {
     AppMethodBeat.i(124959);
-    this.vAu = aw.aKT("diagnostic_memory_hook_stg");
     AppMethodBeat.o(124959);
   }
   
-  public static void report()
+  public static boolean dyC()
   {
-    AppMethodBeat.i(124961);
-    MemoryHookReporter.report();
-    AppMethodBeat.o(124961);
-  }
-  
-  public static String wi(long paramLong)
-  {
-    AppMethodBeat.i(124962);
-    String str = new SimpleDateFormat("yy-MM-dd HH:mm:ss").format(new Date(paramLong));
-    AppMethodBeat.o(124962);
-    return str;
-  }
-  
-  public final void aq(Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(124960);
-    ac.i(TAG, "onReceiveIpxxCmd:[%s]", new Object[] { paramMap });
-    boolean bool2 = this.vAu.decodeBool("MH_KEY_ENABLE_BOOLEAN", false);
-    boolean bool1 = this.vAu.decodeBool("MH_KEY_EXPT_ENABLE_BOOLEAN", true);
-    ac.d(TAG, "isExptEnabled = ".concat(String.valueOf(bool1)));
-    if (("1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$expt"))) && ((!bool1) || (bool2)))
+    AppMethodBeat.i(211744);
+    boolean bool2 = wGr.decodeBool("MH_KEY_ENABLE_BOOLEAN", false);
+    ad.i(TAG, "enableMemoryHook = %s for process [%s]", new Object[] { Boolean.valueOf(bool2), aj.getProcessName() });
+    boolean bool1 = bool2;
+    long l1;
+    long l2;
+    if (bool2)
     {
-      localObject = TAG;
-      paramMap = paramMap.get(".cmd.diagnostic.MemoryHook" + ".$expt");
-      if (!bool1) {}
-      for (bool1 = true;; bool1 = false)
+      l1 = wGr.decodeLong("MH_KEY_DURATION_MILLIS_LONG", 0L);
+      l2 = wGr.decodeLong("MH_KEY_BEGIN_TIME_LONG", -1L);
+      ad.i(TAG, "hook duration = %s, hook begin time = %s", new Object[] { Long.valueOf(l1), c.yt(l2) });
+      if (l2 >= 0L) {
+        break label145;
+      }
+      l1 = System.currentTimeMillis();
+      wGr.encode("MH_KEY_BEGIN_TIME_LONG", l1);
+      ad.i(TAG, "update hookBeginTime = %s", new Object[] { Long.valueOf(l1) });
+      bool1 = bool2;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(211744);
+      return bool1;
+      label145:
+      bool1 = bool2;
+      if (System.currentTimeMillis() - l2 > l1)
       {
-        ac.i((String)localObject, "skip config from expt cause [.$expt = %s && (!isExptEnabled = %s || isEnabledNow = %s)]", new Object[] { paramMap, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-        AppMethodBeat.o(124960);
-        return;
+        wGr.encode("MH_KEY_ENABLE_BOOLEAN", false);
+        ad.i(TAG, "time out, disable hook");
+        bool1 = false;
       }
     }
-    if ((paramMap.get(".cmd.diagnostic.MemoryHook" + ".$enableExpt") == null) || ("1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$enableExpt")))) {}
-    String str;
-    for (bool1 = true;; bool1 = false)
-    {
-      this.vAu.encode("MH_KEY_EXPT_ENABLE_BOOLEAN", bool1);
-      ac.d(TAG, "cmd enableExpt = %s, expt = %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf("1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$expt"))) });
-      bool1 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$enable"));
-      this.vAu.encode("MH_KEY_ENABLE_BOOLEAN", bool1);
-      if (!bool1) {
-        break label1300;
-      }
-      str = (String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$hook");
-      if (!TextUtils.isEmpty(str)) {
-        break;
-      }
-      ac.e(TAG, "ERROR(MemoryHook): hook regex is blank");
-      AppMethodBeat.o(124960);
-      return;
-    }
-    Object localObject = (String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$ignore");
-    bool1 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$stack"));
-    int i = bs.getInt((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$min"), 0);
-    int j = bs.getInt((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$max"), 0);
-    double d = bs.getDouble((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$sampling"), 1.0D);
-    int k = bs.getInt((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$duration"), 0);
-    boolean bool3 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$multiprocess"));
-    boolean bool4 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$force"));
-    boolean bool5 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$extreme"));
-    boolean bool6 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$mmap"));
-    this.vAu.encode("MH_KEY_HOOK_SO_STRING", str);
-    this.vAu.encode("MH_KEY_IGNORE_SO_STRING", (String)localObject);
-    this.vAu.encode("MH_KEY_ENABLE_STACKTRACE_BOOLEAN", bool1);
-    this.vAu.encode("MH_KEY_MIN_TRACE_SIZE_INT", i);
-    this.vAu.encode("MH_KEY_MAX_TRACE_SIZE_INT", j);
-    paramMap = this.vAu;
-    if (paramMap.A("MH_KEY_SAMPLING_DOUBLE", Double.valueOf(d))) {
-      paramMap.GsS.encode("MH_KEY_SAMPLING_DOUBLE", d);
-    }
-    this.vAu.encode("MH_KEY_DURATION_MILLIS_LONG", k * 60 * 60 * 1000L);
-    this.vAu.encode("MH_KEY_MULTI_PROCESS_BOOLEAN", bool3);
-    this.vAu.encode("MH_KEY_BEGIN_TIME_LONG", -1L);
-    this.vAu.encode("MH_KEY_EXTREME_BOOLEAN", bool5);
-    this.vAu.encode("MH_KEY_ENABLE_MMAP_BOOLEAN", bool6);
-    paramMap = (Map<String, String>)localObject;
-    if (!bool5)
-    {
-      if (localObject == null) {
-        paramMap = ".*libutils\\.so$;.*libcutils\\.so$;.*libskia\\.so$;.*libbinder.*\\.so$;.*libhwbinder\\.so$;.*libicuuc\\.so$;.*libicui18n\\.so$;.*libart.*\\.so$;.*libandroidfw\\.so$;.*libandroid_runtime\\.so$;.*libjavacore\\.so$;.*libopenjdk.*\\.so$;";
-      }
-    }
-    else
-    {
-      if (((bool2) && (!bool4)) || (!doh())) {
-        break label1300;
-      }
-      ac.i(TAG, "hook immediately");
-      Assert.assertNotNull(str);
-      localObject = str.split(";");
-      if (paramMap != null) {
-        break label1274;
-      }
-    }
-    label1274:
-    for (paramMap = new String[0];; paramMap = paramMap.split(";"))
-    {
-      ac.i(TAG, "hookRegex = %s", new Object[] { Arrays.toString((Object[])localObject) });
-      ac.i(TAG, "ignoreRegex = %s", new Object[] { Arrays.toString(paramMap) });
-      try
-      {
-        MemoryHook.INSTANCE.addHookSo((String[])localObject).addIgnoreSo(paramMap).enableStacktrace(bool1).minTraceSize(i).maxTraceSize(j).sampling(d).enableMmapHook(bool6).hook();
-        this.vAu.encode("MH_KEY_BEGIN_TIME_LONG", System.currentTimeMillis());
-        ac.i(TAG, "register Reporter");
-        MemoryHookReporter.install();
-        dog();
-        com.tencent.mm.plugin.report.service.h.wUl.f(18261, new Object[] { ai.getProcessName(), Integer.valueOf(Process.myPid()), Integer.valueOf(1) });
-        AppMethodBeat.o(124960);
-        return;
-      }
-      catch (Throwable paramMap)
-      {
-        ac.printErrStackTrace(TAG, paramMap, "MemoryHook Error", new Object[0]);
-      }
-      paramMap = (Map<String, String>)localObject;
-      if (!((String)localObject).endsWith(";")) {
-        paramMap = (String)localObject + ";";
-      }
-      paramMap = paramMap + ".*libutils\\.so$;.*libcutils\\.so$;.*libskia\\.so$;.*libbinder.*\\.so$;.*libhwbinder\\.so$;.*libicuuc\\.so$;.*libicui18n\\.so$;.*libart.*\\.so$;.*libandroidfw\\.so$;.*libandroid_runtime\\.so$;.*libjavacore\\.so$;.*libopenjdk.*\\.so$;";
-      break;
-    }
-    label1300:
-    AppMethodBeat.o(124960);
   }
   
-  public final String dob()
-  {
-    return ".cmd.diagnostic.MemoryHook";
-  }
-  
-  public final void dog()
-  {
-    AppMethodBeat.i(124963);
-    final String str = TAG + "-repeat";
-    com.tencent.e.h.JZN.aTz(str);
-    com.tencent.e.h.JZN.a(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(124951);
-        if (MemoryHookLogic.a(MemoryHookLogic.this).decodeBool("MH_KEY_ENABLE_BOOLEAN", false))
-        {
-          MemoryHookLogic.report();
-          com.tencent.e.h.JZN.a(this, 1800000L, str);
-        }
-        AppMethodBeat.o(124951);
-      }
-    }, 1800000L, str);
-    AppMethodBeat.o(124963);
-  }
-  
-  public final boolean doh()
+  public static boolean dyE()
   {
     AppMethodBeat.i(124964);
-    String str = ai.getProcessName();
-    boolean bool = this.vAu.decodeBool("MH_KEY_MULTI_PROCESS_BOOLEAN", false);
-    ac.i(TAG, "enable multiProcess = %s", new Object[] { Boolean.valueOf(bool) });
-    if ((ai.cin()) || ((bool) && ((str.endsWith(":tools")) || (str.contains(":appbrand")))))
+    String str = aj.getProcessName();
+    boolean bool = wGr.decodeBool("MH_KEY_MULTI_PROCESS_BOOLEAN", false);
+    ad.i(TAG, "enable multiProcess = %s", new Object[] { Boolean.valueOf(bool) });
+    if ((aj.cmR()) || ((bool) && ((str.endsWith(":tools")) || (str.contains(":appbrand")))))
     {
       AppMethodBeat.o(124964);
       return true;
@@ -256,121 +136,155 @@ public class MemoryHookLogic
     return false;
   }
   
-  public static final class MemoryHookReporter
-    extends BroadcastReceiver
+  public static void report()
   {
-    private static final String vAT;
-    private static MemoryHookReporter vAU;
-    
-    static
+    AppMethodBeat.i(124961);
+    MemoryHookLogic.MemoryHookReporter.report();
+    AppMethodBeat.o(124961);
+  }
+  
+  public final void av(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(124960);
+    ad.i(TAG, "onReceiveIpxxCmd:[%s]", new Object[] { paramMap });
+    boolean bool2 = wGr.decodeBool("MH_KEY_ENABLE_BOOLEAN", false);
+    boolean bool1 = wGr.decodeBool("MH_KEY_EXPT_ENABLE_BOOLEAN", true);
+    ad.d(TAG, "isExptEnabled = ".concat(String.valueOf(bool1)));
+    if (("1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$expt"))) && ((!bool1) || (bool2)))
     {
-      AppMethodBeat.i(124958);
-      vAT = MemoryHookLogic.TAG + "-reporter";
-      vAU = null;
-      AppMethodBeat.o(124958);
-    }
-    
-    static void doj()
-    {
-      AppMethodBeat.i(124956);
-      Intent localIntent = new Intent("com.tencent.mm.memoryhook.dump");
-      localIntent.putExtra("op", 1);
-      localIntent.putExtra("log_file", q.B(MemoryHookLogic.doi().fxV()));
-      ai.getContext().sendBroadcast(localIntent);
-      AppMethodBeat.o(124956);
-    }
-    
-    /* Error */
-    public static void install()
-    {
-      // Byte code:
-      //   0: ldc 2
-      //   2: monitorenter
-      //   3: ldc 99
-      //   5: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-      //   8: getstatic 44	com/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter:vAU	Lcom/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter;
-      //   11: ifnull +12 -> 23
-      //   14: ldc 99
-      //   16: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   19: ldc 2
-      //   21: monitorexit
-      //   22: return
-      //   23: new 2	com/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter
-      //   26: dup
-      //   27: invokespecial 100	com/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter:<init>	()V
-      //   30: putstatic 44	com/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter:vAU	Lcom/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter;
-      //   33: new 102	android/content/IntentFilter
-      //   36: dup
-      //   37: ldc 55
-      //   39: invokespecial 103	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
-      //   42: astore_0
-      //   43: invokestatic 91	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
-      //   46: getstatic 44	com/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter:vAU	Lcom/tencent/mm/plugin/performance/diagnostic/memory/MemoryHookLogic$MemoryHookReporter;
-      //   49: aload_0
-      //   50: ldc 105
-      //   52: aconst_null
-      //   53: invokevirtual 109	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
-      //   56: pop
-      //   57: ldc 99
-      //   59: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-      //   62: goto -43 -> 19
-      //   65: astore_0
-      //   66: ldc 2
-      //   68: monitorexit
-      //   69: aload_0
-      //   70: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   42	8	0	localIntentFilter	android.content.IntentFilter
-      //   65	5	0	localObject	Object
-      // Exception table:
-      //   from	to	target	type
-      //   3	19	65	finally
-      //   23	62	65	finally
-    }
-    
-    static void report()
-    {
-      AppMethodBeat.i(124955);
-      Intent localIntent = new Intent("com.tencent.mm.memoryhook.dump");
-      localIntent.putExtra("op", 0);
-      ai.getContext().sendBroadcast(localIntent);
-      AppMethodBeat.o(124955);
-    }
-    
-    public final void onReceive(final Context paramContext, Intent paramIntent)
-    {
-      AppMethodBeat.i(124957);
-      final int i = paramIntent.getIntExtra("op", 0);
-      paramContext = paramIntent.getStringExtra("log_file");
-      com.tencent.e.h.JZN.f(new Runnable()
+      localObject = TAG;
+      paramMap = paramMap.get(".cmd.diagnostic.MemoryHook" + ".$expt");
+      if (!bool1) {}
+      for (bool1 = true;; bool1 = false)
       {
-        public final void run()
-        {
-          AppMethodBeat.i(124953);
-          switch (i)
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(124953);
-            return;
-            ac.i(MemoryHookLogic.TAG, "current process...[%s]", new Object[] { ai.getProcessName() });
-            MemoryHookLogic.access$300();
-            MemoryHookLogic.MemoryHookReporter.doj();
-            AppMethodBeat.o(124953);
-            return;
-            if (!ai.cin())
-            {
-              AppMethodBeat.o(124953);
-              return;
-            }
-            MemoryHookLogic.Q(new e(paramContext));
-          }
-        }
-      }, vAT);
-      AppMethodBeat.o(124957);
+        ad.i((String)localObject, "skip config from expt cause [.$expt = %s && (!isExptEnabled = %s || isEnabledNow = %s)]", new Object[] { paramMap, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        AppMethodBeat.o(124960);
+        return;
+      }
     }
+    if ((paramMap.get(".cmd.diagnostic.MemoryHook" + ".$enableExpt") == null) || ("1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$enableExpt")))) {}
+    String str;
+    for (bool1 = true;; bool1 = false)
+    {
+      wGr.encode("MH_KEY_EXPT_ENABLE_BOOLEAN", bool1);
+      ad.d(TAG, "cmd enableExpt = %s, expt = %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf("1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$expt"))) });
+      bool1 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$enable"));
+      wGr.encode("MH_KEY_ENABLE_BOOLEAN", bool1);
+      if (!bool1) {
+        break label1295;
+      }
+      str = (String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$hook");
+      if (!TextUtils.isEmpty(str)) {
+        break;
+      }
+      ad.e(TAG, "ERROR(MemoryHook): hook regex is blank");
+      AppMethodBeat.o(124960);
+      return;
+    }
+    Object localObject = (String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$ignore");
+    bool1 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$stack"));
+    int i = bt.getInt((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$min"), 0);
+    int j = bt.getInt((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$max"), 0);
+    double d = bt.getDouble((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$sampling"), 1.0D);
+    int k = bt.getInt((String)paramMap.get(".cmd.diagnostic.MemoryHook" + ".$duration"), 0);
+    boolean bool3 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$multiprocess"));
+    boolean bool4 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$force"));
+    boolean bool5 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$extreme"));
+    boolean bool6 = "1".equals(paramMap.get(".cmd.diagnostic.MemoryHook" + ".$mmap"));
+    wGr.encode("MH_KEY_HOOK_SO_STRING", str);
+    wGr.encode("MH_KEY_IGNORE_SO_STRING", (String)localObject);
+    wGr.encode("MH_KEY_ENABLE_STACKTRACE_BOOLEAN", bool1);
+    wGr.encode("MH_KEY_MIN_TRACE_SIZE_INT", i);
+    wGr.encode("MH_KEY_MAX_TRACE_SIZE_INT", j);
+    paramMap = wGr;
+    if (paramMap.y("MH_KEY_SAMPLING_DOUBLE", Double.valueOf(d))) {
+      paramMap.IeH.encode("MH_KEY_SAMPLING_DOUBLE", d);
+    }
+    wGr.encode("MH_KEY_DURATION_MILLIS_LONG", k * 60 * 60 * 1000L);
+    wGr.encode("MH_KEY_MULTI_PROCESS_BOOLEAN", bool3);
+    wGr.encode("MH_KEY_BEGIN_TIME_LONG", -1L);
+    wGr.encode("MH_KEY_EXTREME_BOOLEAN", bool5);
+    wGr.encode("MH_KEY_ENABLE_MMAP_BOOLEAN", bool6);
+    paramMap = (Map<String, String>)localObject;
+    if (!bool5)
+    {
+      if (localObject == null) {
+        paramMap = ".*libutils\\.so$;.*libcutils\\.so$;.*libskia\\.so$;.*libbinder.*\\.so$;.*libhwbinder\\.so$;.*libicuuc\\.so$;.*libicui18n\\.so$;.*libart.*\\.so$;.*libandroidfw\\.so$;.*libandroid_runtime\\.so$;.*libjavacore\\.so$;.*libopenjdk.*\\.so$;.*libmemfence\\.so$";
+      }
+    }
+    else
+    {
+      if (((bool2) && (!bool4)) || (!dyE())) {
+        break label1295;
+      }
+      ad.i(TAG, "hook immediately");
+      Assert.assertNotNull(str);
+      localObject = str.split(";");
+      if (paramMap != null) {
+        break label1269;
+      }
+    }
+    label1269:
+    for (paramMap = new String[0];; paramMap = paramMap.split(";"))
+    {
+      ad.i(TAG, "hookRegex = %s", new Object[] { Arrays.toString((Object[])localObject) });
+      ad.i(TAG, "ignoreRegex = %s", new Object[] { Arrays.toString(paramMap) });
+      try
+      {
+        paramMap = MemoryHook.MoI.ag((String[])localObject).ah(paramMap);
+        paramMap.MoO = bool1;
+        paramMap.MoL = i;
+        paramMap.MoM = j;
+        paramMap = paramMap.F(d);
+        paramMap.MoP = bool6;
+        HookManager.MoC.gai().a(paramMap).gah();
+        wGr.encode("MH_KEY_BEGIN_TIME_LONG", System.currentTimeMillis());
+        ad.i(TAG, "register Reporter");
+        MemoryHookLogic.MemoryHookReporter.install();
+        dyD();
+        g.yhR.f(18261, new Object[] { aj.getProcessName(), Integer.valueOf(Process.myPid()), Integer.valueOf(1) });
+        AppMethodBeat.o(124960);
+        return;
+      }
+      catch (Throwable paramMap)
+      {
+        ad.printErrStackTrace(TAG, paramMap, "MemoryHook Error", new Object[0]);
+      }
+      paramMap = (Map<String, String>)localObject;
+      if (!((String)localObject).endsWith(";")) {
+        paramMap = (String)localObject + ";";
+      }
+      paramMap = paramMap + ".*libutils\\.so$;.*libcutils\\.so$;.*libskia\\.so$;.*libbinder.*\\.so$;.*libhwbinder\\.so$;.*libicuuc\\.so$;.*libicui18n\\.so$;.*libart.*\\.so$;.*libandroidfw\\.so$;.*libandroid_runtime\\.so$;.*libjavacore\\.so$;.*libopenjdk.*\\.so$;.*libmemfence\\.so$";
+      break;
+    }
+    label1295:
+    AppMethodBeat.o(124960);
+  }
+  
+  public final void dyD()
+  {
+    AppMethodBeat.i(124963);
+    final String str = TAG + "-repeat";
+    h.LTJ.aZz(str);
+    h.LTJ.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(124951);
+        if (a.wGr.decodeBool("MH_KEY_ENABLE_BOOLEAN", false))
+        {
+          MemoryHookLogic.report();
+          h.LTJ.a(this, 1800000L, str);
+        }
+        AppMethodBeat.o(124951);
+      }
+    }, 1800000L, str);
+    AppMethodBeat.o(124963);
+  }
+  
+  public final String dyy()
+  {
+    return ".cmd.diagnostic.MemoryHook";
   }
 }
 

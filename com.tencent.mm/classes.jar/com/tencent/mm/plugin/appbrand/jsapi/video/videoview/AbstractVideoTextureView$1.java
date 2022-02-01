@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video.videoview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.e.b;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class AbstractVideoTextureView$1
   extends Thread
@@ -11,21 +11,21 @@ final class AbstractVideoTextureView$1
   
   public final void run()
   {
-    AppMethodBeat.i(194642);
+    AppMethodBeat.i(206456);
     try
     {
-      if (this.kVX != null)
+      if (this.lsW != null)
       {
-        ac.i("MicroMsg.Video.AbstractVideoTextureView", "%d another thread to release player[%s]", new Object[] { Integer.valueOf(this.kVY.hashCode()), this.kVX });
-        this.kVX.stop();
-        this.kVX.release();
+        ad.i("MicroMsg.Video.AbstractVideoTextureView", "%d another thread to release player[%s]", new Object[] { Integer.valueOf(this.lsX.hashCode()), this.lsW });
+        this.lsW.stop();
+        this.lsW.release();
       }
-      AppMethodBeat.o(194642);
+      AppMethodBeat.o(206456);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(194642);
+      AppMethodBeat.o(206456);
     }
   }
 }

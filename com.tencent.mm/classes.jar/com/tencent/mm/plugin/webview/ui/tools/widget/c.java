@@ -12,7 +12,7 @@ public abstract interface c
   
   public static final class a
   {
-    public static c CMl;
+    public static c Eql;
   }
 }
 

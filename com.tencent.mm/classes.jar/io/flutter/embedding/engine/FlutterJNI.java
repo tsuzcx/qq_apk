@@ -21,7 +21,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 public class FlutterJNI
 {
   private static final String TAG = "FlutterJNI";
-  private static FlutterJNI.AsyncWaitForVsyncDelegate asyncWaitForVsyncDelegate;
+  private static AsyncWaitForVsyncDelegate asyncWaitForVsyncDelegate;
   private static String observatoryUri;
   private static float refreshRateFPS = 0.0F;
   private AccessibilityDelegate accessibilityDelegate;
@@ -171,7 +171,7 @@ public class FlutterJNI
     AppMethodBeat.o(10162);
   }
   
-  public static void setAsyncWaitForVsyncDelegate(FlutterJNI.AsyncWaitForVsyncDelegate paramAsyncWaitForVsyncDelegate)
+  public static void setAsyncWaitForVsyncDelegate(AsyncWaitForVsyncDelegate paramAsyncWaitForVsyncDelegate)
   {
     asyncWaitForVsyncDelegate = paramAsyncWaitForVsyncDelegate;
   }
@@ -211,10 +211,10 @@ public class FlutterJNI
   
   public void addIsDisplayingFlutterUiListener(io.flutter.embedding.engine.b.b paramb)
   {
-    AppMethodBeat.i(192804);
+    AppMethodBeat.i(213253);
     ensureRunningOnMainThread();
     this.flutterUiDisplayListeners.add(paramb);
-    AppMethodBeat.o(192804);
+    AppMethodBeat.o(213253);
   }
   
   public void attachToNative(boolean paramBoolean)
@@ -247,7 +247,7 @@ public class FlutterJNI
       return;
     }
     new StringBuilder("Tried to send a platform message to Flutter, but FlutterJNI was detached from native C++. Could not send. Channel: ").append(paramString).append(". Response ID: ").append(paramInt);
-    a.fMG();
+    a.ged();
     AppMethodBeat.o(10156);
   }
   
@@ -262,7 +262,7 @@ public class FlutterJNI
       return;
     }
     new StringBuilder("Tried to send a platform message to Flutter, but FlutterJNI was detached from native C++. Could not send. Channel: ").append(paramString).append(". Response ID: ").append(paramInt2);
-    a.fMG();
+    a.ged();
     AppMethodBeat.o(10157);
   }
   
@@ -299,7 +299,7 @@ public class FlutterJNI
     int i = 0;
     if (paramObject != null)
     {
-      localByteBuffer = n.KPb.eD(paramObject);
+      localByteBuffer = n.MFY.eG(paramObject);
       i = localByteBuffer.position();
     }
     dispatchSemanticsAction(paramInt, paramb.value, localByteBuffer, i);
@@ -327,7 +327,7 @@ public class FlutterJNI
       return;
     }
     "Tried to send a platform message response, but FlutterJNI was detached from native C++. Could not send. Response ID: ".concat(String.valueOf(paramInt));
-    a.fMG();
+    a.ged();
     AppMethodBeat.o(10158);
   }
   
@@ -342,7 +342,7 @@ public class FlutterJNI
       return;
     }
     "Tried to send a platform message response, but FlutterJNI was detached from native C++. Could not send. Response ID: ".concat(String.valueOf(paramInt1));
-    a.fMG();
+    a.ged();
     AppMethodBeat.o(10159);
   }
   
@@ -368,33 +368,33 @@ public class FlutterJNI
     ensureRunningOnMainThread();
     Iterator localIterator = this.flutterUiDisplayListeners.iterator();
     while (localIterator.hasNext()) {
-      ((io.flutter.embedding.engine.b.b)localIterator.next()).cHX();
+      ((io.flutter.embedding.engine.b.b)localIterator.next()).cQm();
     }
     AppMethodBeat.o(10135);
   }
   
   public void onMemoryWarning()
   {
-    AppMethodBeat.i(192807);
+    AppMethodBeat.i(213256);
     if (isAttached())
     {
       nativeMemoryWarning(this.nativePlatformViewId.longValue());
-      AppMethodBeat.o(192807);
+      AppMethodBeat.o(213256);
       return;
     }
-    a.fMG();
-    AppMethodBeat.o(192807);
+    a.ged();
+    AppMethodBeat.o(213256);
   }
   
   void onRenderingStopped()
   {
-    AppMethodBeat.i(192806);
+    AppMethodBeat.i(213255);
     ensureRunningOnMainThread();
     Iterator localIterator = this.flutterUiDisplayListeners.iterator();
     while (localIterator.hasNext()) {
-      ((io.flutter.embedding.engine.b.b)localIterator.next()).cHY();
+      ((io.flutter.embedding.engine.b.b)localIterator.next()).cQn();
     }
-    AppMethodBeat.o(192806);
+    AppMethodBeat.o(213255);
   }
   
   public void onSurfaceChanged(int paramInt1, int paramInt2)
@@ -444,10 +444,10 @@ public class FlutterJNI
   
   public void removeIsDisplayingFlutterUiListener(io.flutter.embedding.engine.b.b paramb)
   {
-    AppMethodBeat.i(192805);
+    AppMethodBeat.i(213254);
     ensureRunningOnMainThread();
     this.flutterUiDisplayListeners.remove(paramb);
-    AppMethodBeat.o(192805);
+    AppMethodBeat.o(213254);
   }
   
   public void runBundleAndSnapshotFromLibrary(String paramString1, String paramString2, String paramString3, AssetManager paramAssetManager)
@@ -516,6 +516,11 @@ public class FlutterJNI
     public abstract void updateCustomAccessibilityActions(ByteBuffer paramByteBuffer, String[] paramArrayOfString);
     
     public abstract void updateSemantics(ByteBuffer paramByteBuffer, String[] paramArrayOfString);
+  }
+  
+  public static abstract interface AsyncWaitForVsyncDelegate
+  {
+    public abstract void asyncWaitForVsync(long paramLong);
   }
 }
 

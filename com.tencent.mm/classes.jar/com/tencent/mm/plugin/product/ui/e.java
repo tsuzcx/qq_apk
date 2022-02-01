@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.product.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
 {
-  int vGo;
-  int vGp;
+  int wNv;
+  int wNw;
   
   public e(int paramInt1, int paramInt2)
   {
-    this.vGp = paramInt1;
-    this.vGo = paramInt2;
+    this.wNw = paramInt1;
+    this.wNv = paramInt2;
   }
   
-  public final boolean dpp()
+  public final boolean dzR()
   {
     AppMethodBeat.i(66959);
-    if ((this.vGp & 0x1) > 0) {}
+    if ((this.wNw & 0x1) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      ac.d("MicroMsg.MallProductConfig", "isFreePost, ret = ".concat(String.valueOf(bool)));
+      ad.d("MicroMsg.MallProductConfig", "isFreePost, ret = ".concat(String.valueOf(bool)));
       AppMethodBeat.o(66959);
       return bool;
     }
@@ -28,7 +28,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -24,28 +24,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.plugin.welab.a.a.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.welab.f;
 import com.tencent.mm.plugin.welab.ui.widget.WelabRoundCornerImageView;
-import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.protobuf.bom;
-import com.tencent.mm.protocal.protobuf.bon;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bsz;
+import com.tencent.mm.protocal.protobuf.bta;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
-import com.tencent.mm.ui.widget.MMSwitchBtn.a;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -55,66 +46,70 @@ import java.util.Map;
 public class WelabAppInfoUI
   extends MMActivity
 {
-  private com.tencent.mm.plugin.welab.d.a.a CTY;
-  private int CTZ;
-  private boolean CUa;
-  private WelabRoundCornerImageView CUb;
-  private RecyclerView CUc;
-  private View CUd;
-  private View CUe;
-  private View CUf;
-  private View CUg;
-  private a CUh;
-  private View.OnClickListener CUi;
-  private String djj;
-  private TextView mgY;
-  private Button qPQ;
-  private MMSwitchBtn tTm;
+  private com.tencent.mm.plugin.welab.d.a.a ExV;
+  private int ExW;
+  private boolean ExX;
+  private WelabRoundCornerImageView ExY;
+  private RecyclerView ExZ;
+  private View Eya;
+  private View Eyb;
+  private View Eyc;
+  private View Eyd;
+  private a Eye;
+  private View.OnClickListener Eyf;
+  private String duW;
+  private TextView mHy;
+  private MMSwitchBtn rck;
+  private Button rzQ;
   private TextView titleTv;
-  private TextView vLf;
+  private TextView wSo;
   
   public WelabAppInfoUI()
   {
     AppMethodBeat.i(146278);
-    this.CUi = new View.OnClickListener()
+    this.Eyf = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(146274);
-        Object localObject = paramAnonymousView.getTag().toString();
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+        localObject = paramAnonymousView.getTag().toString();
         paramAnonymousView = new Intent();
         paramAnonymousView.putExtra("nowUrl", (String)localObject);
-        paramAnonymousView.putExtra("urlList", (String[])((WelabAppInfoUI.a)WelabAppInfoUI.e(WelabAppInfoUI.this).getAdapter()).oAg.toArray(new String[0]));
+        paramAnonymousView.putExtra("urlList", (String[])((WelabAppInfoUI.a)WelabAppInfoUI.e(WelabAppInfoUI.this).getAdapter()).pdB.toArray(new String[0]));
         localObject = WelabAppInfoUI.this;
         Intent localIntent = new Intent();
         localIntent.putExtras(paramAnonymousView.getExtras());
         if (paramAnonymousView.getFlags() != 0) {
           localIntent.addFlags(paramAnonymousView.getFlags());
         }
-        com.tencent.mm.br.d.b((Context)localObject, "subapp", ".ui.gallery.GestureGalleryUI", localIntent);
+        com.tencent.mm.bs.d.b((Context)localObject, "subapp", ".ui.gallery.GestureGalleryUI", localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(146274);
       }
     };
     AppMethodBeat.o(146278);
   }
   
-  private String eHH()
+  private String eWA()
   {
     AppMethodBeat.i(146283);
-    String str = "switch_" + this.CTY.field_LabsAppId;
+    String str = "switch_" + this.ExV.field_LabsAppId;
     AppMethodBeat.o(146283);
     return str;
   }
   
-  private void eHI()
+  private void eWB()
   {
     AppMethodBeat.i(146284);
-    Object localObject2 = this.CTY.aEv("field_ImgUrl_android");
+    Object localObject2 = this.ExV.aJV("field_ImgUrl_android");
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = this.CTY.aEv("field_ImgUrl");
+      localObject1 = this.ExV.aJV("field_ImgUrl");
     }
-    localObject1 = f.aEq((String)localObject1);
+    localObject1 = f.aJQ((String)localObject1);
     localObject2 = ((List)localObject1).iterator();
     while (((Iterator)localObject2).hasNext()) {
       if (TextUtils.isEmpty((String)((Iterator)localObject2).next())) {
@@ -123,13 +118,13 @@ public class WelabAppInfoUI
     }
     if (((List)localObject1).isEmpty())
     {
-      this.CUc.setVisibility(8);
+      this.ExZ.setVisibility(8);
       AppMethodBeat.o(146284);
       return;
     }
-    this.CUc.setVisibility(0);
-    this.CUh.oAg = ((List)localObject1);
-    this.CUh.arg.notifyChanged();
+    this.ExZ.setVisibility(0);
+    this.Eye.pdB = ((List)localObject1);
+    this.Eye.asY.notifyChanged();
     AppMethodBeat.o(146284);
   }
   
@@ -142,9 +137,9 @@ public class WelabAppInfoUI
   {
     AppMethodBeat.i(146280);
     super.initView();
-    if (this.CTY == null)
+    if (this.ExV == null)
     {
-      ac.e("WelabAppInfoUI", "info is null");
+      ad.e("WelabAppInfoUI", "info is null");
       AppMethodBeat.o(146280);
       return;
     }
@@ -170,21 +165,21 @@ public class WelabAppInfoUI
         return true;
       }
     });
-    this.CUb = ((WelabRoundCornerImageView)findViewById(2131296854));
+    this.ExY = ((WelabRoundCornerImageView)findViewById(2131296854));
     this.titleTv = ((TextView)findViewById(2131305902));
-    this.vLf = ((TextView)findViewById(2131305546));
-    this.CUc = ((RecyclerView)findViewById(2131300988));
-    this.CUd = findViewById(2131296876);
-    this.qPQ = ((Button)findViewById(2131303020));
-    this.CUe = findViewById(2131299888);
-    this.tTm = ((MMSwitchBtn)findViewById(2131298255));
-    this.mgY = ((TextView)findViewById(2131305579));
-    this.CUf = findViewById(2131305243);
-    this.CUg = findViewById(2131303015);
-    this.CUc.setLayoutManager(new LinearLayoutManager(0));
-    this.CUc.setOverScrollMode(2);
-    this.CUh = new a();
-    this.CUc.setAdapter(this.CUh);
+    this.wSo = ((TextView)findViewById(2131305546));
+    this.ExZ = ((RecyclerView)findViewById(2131300988));
+    this.Eya = findViewById(2131296876);
+    this.rzQ = ((Button)findViewById(2131303020));
+    this.Eyb = findViewById(2131299888);
+    this.rck = ((MMSwitchBtn)findViewById(2131298255));
+    this.mHy = ((TextView)findViewById(2131305579));
+    this.Eyc = findViewById(2131305243);
+    this.Eyd = findViewById(2131303015);
+    this.ExZ.setLayoutManager(new LinearLayoutManager(0));
+    this.ExZ.setOverScrollMode(2);
+    this.Eye = new a();
+    this.ExZ.setAdapter(this.Eye);
     AppMethodBeat.o(146280);
   }
   
@@ -198,18 +193,18 @@ public class WelabAppInfoUI
     paramBundle = getIntent();
     if (paramBundle != null)
     {
-      this.djj = paramBundle.getStringExtra("para_appid");
-      this.CTY = com.tencent.mm.plugin.welab.a.eHv().aEn(this.djj);
-      this.CTZ = this.CTY.field_Switch;
+      this.duW = paramBundle.getStringExtra("para_appid");
+      this.ExV = com.tencent.mm.plugin.welab.a.eWo().aJN(this.duW);
+      this.ExW = this.ExV.field_Switch;
       if (getIntent().getIntExtra("para_from_with_red_point", 0) != 1) {
         break label110;
       }
     }
     for (;;)
     {
-      this.CUa = bool;
+      this.ExX = bool;
       initView();
-      com.tencent.mm.plugin.welab.d.v(this.djj, 2, this.CUa);
+      com.tencent.mm.plugin.welab.d.v(this.duW, 2, this.ExX);
       AppMethodBeat.o(146279);
       return;
       label110:
@@ -223,28 +218,28 @@ public class WelabAppInfoUI
     AppMethodBeat.i(146281);
     super.onPause();
     Object localObject;
-    if (this.CTZ != this.CTY.field_Switch)
+    if (this.ExW != this.ExV.field_Switch)
     {
-      ac.i("WelabAppInfoUI", "update welab info [%b] originSwitch[%d] newSwitch[%d]", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.welab.a.eHv().CTI.update(this.CTY, new String[0])), Integer.valueOf(this.CTZ), Integer.valueOf(this.CTY.field_Switch) });
-      this.CTZ = this.CTY.field_Switch;
-      localObject = new bon();
-      bom localbom = new bom();
-      if (!this.CTY.eHF()) {
+      ad.i("WelabAppInfoUI", "update welab info [%b] originSwitch[%d] newSwitch[%d]", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.welab.a.eWo().ExI.update(this.ExV, new String[0])), Integer.valueOf(this.ExW), Integer.valueOf(this.ExV.field_Switch) });
+      this.ExW = this.ExV.field_Switch;
+      localObject = new bta();
+      bsz localbsz = new bsz();
+      if (!this.ExV.eWy()) {
         break label268;
       }
-      localbom.FdM = i;
-      localbom.FdN = this.CTY.field_LabsAppId;
-      if (this.CTY.field_Switch != 2) {
+      localbsz.GNq = i;
+      localbsz.GNr = this.ExV.field_LabsAppId;
+      if (this.ExV.field_Switch != 2) {
         break label282;
       }
       i = 1;
       label150:
-      localbom.Edq = i;
-      ((bon)localObject).fBS.add(localbom);
-      localObject = new j.a(207, (com.tencent.mm.bw.a)localObject);
-      ((k)g.ab(k.class)).awA().c((j.b)localObject);
-      localObject = this.djj;
-      if (this.CTY.field_Switch != 2) {
+      localbsz.FJz = i;
+      ((bta)localObject).fVg.add(localbsz);
+      localObject = new k.a(207, (com.tencent.mm.bx.a)localObject);
+      ((l)g.ab(l.class)).azo().c((k.b)localObject);
+      localObject = this.duW;
+      if (this.ExV.field_Switch != 2) {
         break label287;
       }
     }
@@ -253,17 +248,17 @@ public class WelabAppInfoUI
     label287:
     for (i = 4;; i = 5)
     {
-      com.tencent.mm.plugin.welab.d.v((String)localObject, i, this.CUa);
-      if (this.CTY.field_Switch == 2)
+      com.tencent.mm.plugin.welab.d.v((String)localObject, i, this.ExX);
+      if (this.ExV.field_Switch == 2)
       {
         localObject = new ArrayList();
-        ((List)localObject).add(this.CTY);
-        com.tencent.mm.plugin.welab.a.eHv();
-        com.tencent.mm.plugin.welab.a.gM((List)localObject);
+        ((List)localObject).add(this.ExV);
+        com.tencent.mm.plugin.welab.a.eWo();
+        com.tencent.mm.plugin.welab.a.gY((List)localObject);
       }
       AppMethodBeat.o(146281);
       return;
-      i = bs.aLy(this.CTY.field_expId);
+      i = bt.aRe(this.ExV.field_expId);
       break;
       i = 2;
       break label150;
@@ -275,162 +270,106 @@ public class WelabAppInfoUI
     AppMethodBeat.i(146282);
     super.onResume();
     Object localObject;
-    if ((this.CTY.eHE()) && (this.CTY.field_Type == 1))
+    if ((this.ExV.eWx()) && (this.ExV.field_Type == 1))
     {
-      this.CUd.setVisibility(0);
-      this.mgY.setText(getResources().getString(2131766201) + this.CTY.aEv("field_Title"));
+      this.Eya.setVisibility(0);
+      this.mHy.setText(getResources().getString(2131766201) + this.ExV.aJV("field_Title"));
       localObject = getSharedPreferences(getPackageName() + "_preferences", 0);
-      this.tTm.setEnabled(true);
-      if (this.CTY.field_Switch == 2)
+      this.rck.setEnabled(true);
+      if (this.ExV.field_Switch == 2)
       {
-        ((SharedPreferences)localObject).edit().putBoolean(eHH(), true).commit();
-        this.tTm.setCheck(true);
-        this.tTm.setSwitchListener(new MMSwitchBtn.a()
-        {
-          public final void onStatusChange(boolean paramAnonymousBoolean)
-          {
-            AppMethodBeat.i(146271);
-            if (WelabAppInfoUI.a(WelabAppInfoUI.this).field_Switch == 2)
-            {
-              WelabAppInfoUI.a(WelabAppInfoUI.this).field_Switch = 1;
-              AppMethodBeat.o(146271);
-              return;
-            }
-            if (WelabAppInfoUI.a(WelabAppInfoUI.this).field_Switch == 1) {
-              WelabAppInfoUI.a(WelabAppInfoUI.this).field_Switch = 2;
-            }
-            AppMethodBeat.o(146271);
-          }
-        });
+        ((SharedPreferences)localObject).edit().putBoolean(eWA(), true).commit();
+        this.rck.setCheck(true);
+        this.rck.setSwitchListener(new WelabAppInfoUI.2(this));
         label175:
-        if (!this.CTY.eHE()) {
+        if (!this.ExV.eWx()) {
           break label454;
         }
-        this.qPQ.setText(getResources().getString(2131766199) + this.CTY.aEv("field_Title"));
-        if (this.CTY.field_Type == 1) {
+        this.rzQ.setText(getResources().getString(2131766199) + this.ExV.aJV("field_Title"));
+        if (this.ExV.field_Type == 1) {
           break label454;
         }
-        this.qPQ.setVisibility(0);
-        this.qPQ.setOnClickListener(new View.OnClickListener()
+        this.rzQ.setVisibility(0);
+        this.rzQ.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(146272);
-            ac.i("WelabAppInfoUI", "open func " + WelabAppInfoUI.b(WelabAppInfoUI.this));
-            paramAnonymousView = com.tencent.mm.plugin.welab.a.eHv();
-            WelabAppInfoUI localWelabAppInfoUI = WelabAppInfoUI.this;
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
+            ad.i("WelabAppInfoUI", "open func " + WelabAppInfoUI.b(WelabAppInfoUI.this));
+            paramAnonymousView = com.tencent.mm.plugin.welab.a.eWo();
+            localObject = WelabAppInfoUI.this;
             String str = WelabAppInfoUI.b(WelabAppInfoUI.this);
-            b localb = (b)paramAnonymousView.CTJ.get(str);
+            com.tencent.mm.plugin.welab.a.a.b localb = (com.tencent.mm.plugin.welab.a.a.b)paramAnonymousView.ExJ.get(str);
             if (localb != null)
             {
-              ac.i("WelabMgr", "use custome opener to open ".concat(String.valueOf(str)));
-              localb.i(localWelabAppInfoUI, str);
+              ad.i("WelabMgr", "use custome opener to open ".concat(String.valueOf(str)));
+              localb.i((Activity)localObject, str);
             }
             for (;;)
             {
               com.tencent.mm.plugin.welab.d.v(WelabAppInfoUI.b(WelabAppInfoUI.this), 7, WelabAppInfoUI.c(WelabAppInfoUI.this));
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/welab/ui/WelabAppInfoUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(146272);
               return;
-              ac.i("WelabMgr", "use default opener open ".concat(String.valueOf(str)));
-              if (paramAnonymousView.aEn(str).field_Type == 2)
+              ad.i("WelabMgr", "use default opener open ".concat(String.valueOf(str)));
+              if (paramAnonymousView.aJN(str).field_Type == 2)
               {
-                if (paramAnonymousView.CTK != null) {
-                  paramAnonymousView.CTK.i(localWelabAppInfoUI, str);
+                if (paramAnonymousView.ExK != null) {
+                  paramAnonymousView.ExK.i((Activity)localObject, str);
                 } else {
-                  ac.e("WelabMgr", "defaultWeAppOpener is null!");
+                  ad.e("WelabMgr", "defaultWeAppOpener is null!");
                 }
               }
               else {
-                ac.e("WelabMgr", "can not find opener for ".concat(String.valueOf(str)));
+                ad.e("WelabMgr", "can not find opener for ".concat(String.valueOf(str)));
               }
             }
           }
         });
         label262:
         localObject = this.titleTv;
-        com.tencent.mm.plugin.welab.a.eHv();
-        ((TextView)localObject).setText(com.tencent.mm.plugin.welab.a.a(this.CTY));
-        this.vLf.setText(this.CTY.aEv("field_Introduce"));
-        if (!this.CTY.eHE()) {
+        com.tencent.mm.plugin.welab.a.eWo();
+        ((TextView)localObject).setText(com.tencent.mm.plugin.welab.a.a(this.ExV));
+        this.wSo.setText(this.ExV.aJV("field_Introduce"));
+        if (!this.ExV.eWx()) {
           break label466;
         }
-        this.CUe.setVisibility(0);
-        this.CUe.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(146273);
-            try
-            {
-              g.agP();
-              int i = com.tencent.mm.kernel.a.getUin();
-              paramAnonymousView = URLEncoder.encode(com.tencent.mm.protocal.d.DEVICE_NAME, "utf-8");
-              Object localObject = URLEncoder.encode(bs.eWc(), "utf-8");
-              String str1 = URLEncoder.encode(q.cF(true), "utf-8");
-              String str2 = URLEncoder.encode(com.tencent.mm.protocal.d.DHW, "utf-8");
-              String str3 = URLEncoder.encode(com.tencent.mm.protocal.d.DHX, "utf-8");
-              String str4 = URLEncoder.encode(com.tencent.mm.protocal.d.DHY, "utf-8");
-              g.agP();
-              String str5 = URLEncoder.encode(com.tencent.mm.kernel.a.agc(), "utf-8");
-              String str6 = URLEncoder.encode(bs.iZ(ai.getContext()), "utf-8");
-              paramAnonymousView = new StringBuilder("&uin=").append(i).append("&deviceName=").append(paramAnonymousView).append("&timeZone=").append((String)localObject).append("&imei=").append(str1).append("&deviceBrand=").append(str2).append("&deviceModel=").append(str3).append("&ostype=").append(str4).append("&clientSeqID=").append(str5).append("&signature=").append(str6).append("&scene=");
-              if (bs.isNullOrNil("")) {}
-              for (i = 0;; i = 1)
-              {
-                paramAnonymousView = i;
-                paramAnonymousView = "https://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=feedback/index" + "&from=" + URLEncoder.encode(new StringBuilder().append(WelabAppInfoUI.a(WelabAppInfoUI.this).field_expId).append("|").append(WelabAppInfoUI.b(WelabAppInfoUI.this)).toString()) + "&version=" + com.tencent.mm.protocal.d.DIc + "&lang=" + ab.iC(ai.getContext()) + "&" + bs.nullAsNil("") + paramAnonymousView;
-                paramAnonymousView = paramAnonymousView + "#/comment/4134";
-                localObject = new Intent();
-                ((Intent)localObject).putExtra("showShare", false);
-                ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
-                ((Intent)localObject).putExtra("title", "意见反馈");
-                ((Intent)localObject).putExtra("neverGetA8Key", true);
-                ((Intent)localObject).putExtra("hardcode_jspermission", JsapiPermissionWrapper.DIw);
-                ((Intent)localObject).putExtra("hardcode_general_ctrl", GeneralControlWrapper.DIs);
-                com.tencent.mm.br.d.b(WelabAppInfoUI.this, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-                AppMethodBeat.o(146273);
-                return;
-              }
-              return;
-            }
-            catch (UnsupportedEncodingException paramAnonymousView)
-            {
-              ac.e("WelabAppInfoUI", "[oneliang]UnsupportedEncodingException:%s", new Object[] { paramAnonymousView.getMessage() });
-              AppMethodBeat.o(146273);
-            }
-          }
-        });
+        this.Eyb.setVisibility(0);
+        this.Eyb.setOnClickListener(new WelabAppInfoUI.4(this));
         label332:
-        if (!this.CTY.eHE()) {
+        if (!this.ExV.eWx()) {
           break label478;
         }
-        this.CUf.setVisibility(8);
-        this.CUg.setVisibility(0);
+        this.Eyc.setVisibility(8);
+        this.Eyd.setVisibility(0);
       }
     }
     for (;;)
     {
-      eHI();
-      this.CUb.setCornerRadiusPercent(0.5F);
-      localObject = com.tencent.mm.av.a.a.aFG();
-      com.tencent.mm.plugin.welab.a.eHv();
-      ((com.tencent.mm.av.a.a)localObject).a(com.tencent.mm.plugin.welab.a.b(this.CTY), this.CUb, com.tencent.mm.plugin.welab.a.eHv().CbH);
+      eWB();
+      this.ExY.setCornerRadiusPercent(0.5F);
+      localObject = com.tencent.mm.aw.a.a.aIP();
+      com.tencent.mm.plugin.welab.a.eWo();
+      ((com.tencent.mm.aw.a.a)localObject).a(com.tencent.mm.plugin.welab.a.b(this.ExV), this.ExY, com.tencent.mm.plugin.welab.a.eWo().DEF);
       AppMethodBeat.o(146282);
       return;
-      ((SharedPreferences)localObject).edit().putBoolean(eHH(), false).commit();
-      this.tTm.setCheck(false);
+      ((SharedPreferences)localObject).edit().putBoolean(eWA(), false).commit();
+      this.rck.setCheck(false);
       break;
-      this.CUd.setVisibility(8);
+      this.Eya.setVisibility(8);
       break label175;
       label454:
-      this.qPQ.setVisibility(8);
+      this.rzQ.setVisibility(8);
       break label262;
       label466:
-      this.CUe.setVisibility(8);
+      this.Eyb.setVisibility(8);
       break label332;
       label478:
-      this.CUf.setVisibility(0);
-      this.CUg.setVisibility(8);
+      this.Eyc.setVisibility(0);
+      this.Eyd.setVisibility(8);
     }
   }
   
@@ -443,14 +382,14 @@ public class WelabAppInfoUI
   final class a
     extends RecyclerView.a<WelabAppInfoUI.b>
   {
-    public List<String> oAg;
+    public List<String> pdB;
     
     public a() {}
     
     public final int getItemCount()
     {
       AppMethodBeat.i(146275);
-      int i = this.oAg.size();
+      int i = this.pdB.size();
       AppMethodBeat.o(146275);
       return i;
     }
@@ -459,7 +398,7 @@ public class WelabAppInfoUI
   final class b
     extends RecyclerView.w
   {
-    public ImageView CUk;
+    public ImageView Eyh;
     
     public b(View paramView)
     {
@@ -469,7 +408,7 @@ public class WelabAppInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.ui.WelabAppInfoUI
  * JD-Core Version:    0.7.0.1
  */

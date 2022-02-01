@@ -16,61 +16,61 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.e.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.expt.h.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.al;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public final class a
 {
-  private static boolean GjB;
-  public static String GjC;
-  public static String GjD;
-  public static String GjE;
-  public static String GjF;
-  public static String GjG;
-  public static String GjH;
-  static float GjI;
-  private static boolean GjJ;
-  static a GjK;
-  private static Boolean GjL;
-  private static Boolean GjM;
-  private static Boolean GjN;
-  private static boolean GjQ;
-  private static boolean GjR;
-  static int oPa;
-  DisplayMetrics GjA;
-  private Method GjO;
-  private Field GjP;
-  DisplayMetrics aHC;
+  private static Boolean HVA;
+  private static boolean HVD;
+  private static boolean HVE;
+  private static boolean HVo;
+  public static String HVp;
+  public static String HVq;
+  public static String HVr;
+  public static String HVs;
+  public static String HVt;
+  public static String HVu;
+  static float HVv;
+  private static boolean HVw;
+  static a HVx;
+  private static Boolean HVy;
+  private static Boolean HVz;
+  static int psI;
+  private Method HVB;
+  private Field HVC;
+  DisplayMetrics HVn;
+  DisplayMetrics aJt;
   
   static
   {
     AppMethodBeat.i(141210);
-    GjB = true;
-    GjC = "screenResolution_density_dpi";
-    GjD = "screenResolution_density_dpi_new";
-    GjE = "screenResolution_density_report_new";
-    GjF = "screenResolution_density_report_pad";
-    GjG = "screenResolution_target_field";
-    GjH = "screenResolution_isModifyDensity";
-    GjI = 1.0F;
-    GjJ = false;
-    oPa = 0;
-    GjL = null;
-    GjM = null;
-    GjN = null;
-    GjQ = false;
-    GjR = false;
+    HVo = true;
+    HVp = "screenResolution_density_dpi";
+    HVq = "screenResolution_density_dpi_new";
+    HVr = "screenResolution_density_report_new";
+    HVs = "screenResolution_density_report_pad";
+    HVt = "screenResolution_target_field";
+    HVu = "screenResolution_isModifyDensity";
+    HVv = 1.0F;
+    HVw = false;
+    psI = 0;
+    HVy = null;
+    HVz = null;
+    HVA = null;
+    HVD = false;
+    HVE = false;
     if (Build.BRAND != null)
     {
       String str = Build.BRAND.toLowerCase();
       if (((str.contains("huawei")) || (str.contains("honor"))) && (Build.VERSION.SDK_INT == 24)) {
-        GjR = true;
+        HVE = true;
       }
     }
     AppMethodBeat.o(141210);
@@ -79,47 +79,47 @@ public final class a
   public a(DisplayMetrics paramDisplayMetrics)
   {
     AppMethodBeat.i(141187);
-    this.GjO = null;
-    this.GjP = null;
-    this.GjA = paramDisplayMetrics;
+    this.HVB = null;
+    this.HVC = null;
+    this.HVn = paramDisplayMetrics;
     Object localObject = Build.BRAND;
-    if (!bs.isNullOrNil((String)localObject))
+    if (!bt.isNullOrNil((String)localObject))
     {
       localObject = ((String)localObject).toLowerCase();
       if (((((String)localObject).contains("huawei")) || (((String)localObject).contains("honor"))) && (paramDisplayMetrics != null) && (Math.min(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels) == 720) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27)))
       {
-        ac.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial 720!!");
+        ad.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial 720!!");
         bool = true;
-        GjJ = bool;
-        oPa = aj.getDeviceWidth();
-        if (!ai.ciE()) {
+        HVw = bool;
+        psI = al.getDeviceWidth();
+        if (!aj.cnC()) {
           break label270;
         }
-        GjB = eSp();
+        HVo = fhI();
         localObject = new IntentFilter();
         ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
-        ai.getContext().registerReceiver(new BroadcastReceiver()
+        aj.getContext().registerReceiver(new BroadcastReceiver()
         {
           public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
           {
             AppMethodBeat.i(141186);
             if (paramAnonymousIntent.getAction().equalsIgnoreCase("android.intent.action.SCREEN_OFF"))
             {
-              if (a.eSy())
+              if (a.fhR())
               {
                 AppMethodBeat.o(141186);
                 return;
               }
-              if (a.eSz())
+              if (a.fhS())
               {
-                a.eSA();
+                a.fhT();
                 AppMethodBeat.o(141186);
                 return;
               }
-              if ((a.eSB()) && (a.eSm()))
+              if ((a.fhU()) && (a.fhF()))
               {
-                ac.i("MicroMsg.MMDensityManager", "killSelfAndCallUp ");
-                a.eSA();
+                ad.i("MicroMsg.MMDensityManager", "killSelfAndCallUp ");
+                a.fhT();
               }
             }
             AppMethodBeat.o(141186);
@@ -130,87 +130,87 @@ public final class a
     label270:
     do
     {
-      localObject = ai.getContext().getSharedPreferences(ai.eUX(), 0).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean(GjH, eSv());
+      localObject = aj.getContext().getSharedPreferences(aj.fkC(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean(HVu, fhO());
       ((SharedPreferences.Editor)localObject).commit();
-      if (!eSv()) {
+      if (!fhO()) {
         break label340;
       }
-      this.aHC = c(paramDisplayMetrics);
-      paramDisplayMetrics.setTo(this.aHC);
+      this.aJt = c(paramDisplayMetrics);
+      paramDisplayMetrics.setTo(this.aJt);
       if (Build.VERSION.SDK_INT >= 21) {
-        ai.getContext().getTheme().getResources().getDisplayMetrics().setTo(this.aHC);
+        aj.getContext().getTheme().getResources().getDisplayMetrics().setTo(this.aJt);
       }
-      ac.i("MicroMsg.MMDensityManager", " Target DisplayMetrics[%s]", new Object[] { this.aHC });
+      ad.i("MicroMsg.MMDensityManager", " Target DisplayMetrics[%s]", new Object[] { this.aJt });
       AppMethodBeat.o(141187);
       return;
       bool = false;
       break;
-      if (ai.isAppBrandProcess())
+      if (aj.isAppBrandProcess())
       {
-        if ((eSp()) && (eSq())) {}
+        if ((fhI()) && (fhJ())) {}
         for (bool = true;; bool = false)
         {
-          GjB = bool;
+          HVo = bool;
           break;
         }
       }
-    } while ((!ai.eVd()) && (!ai.eVe()));
-    if ((eSp()) && (eSr())) {}
+    } while ((!aj.fkI()) && (!aj.fkJ()));
+    if ((fhI()) && (fhK())) {}
     for (boolean bool = true;; bool = false)
     {
-      GjB = bool;
+      HVo = bool;
       break;
     }
     label340:
-    GjI = 400.0F / (Math.min(this.GjA.widthPixels, paramDisplayMetrics.heightPixels) / this.GjA.density);
-    this.aHC = this.GjA;
+    HVv = 400.0F / (Math.min(this.HVn.widthPixels, paramDisplayMetrics.heightPixels) / this.HVn.density);
+    this.aJt = this.HVn;
     AppMethodBeat.o(141187);
-  }
-  
-  public static void Ya(int paramInt)
-  {
-    AppMethodBeat.i(141204);
-    aw.aKT(ai.eUX()).putInt(GjG, paramInt);
-    AppMethodBeat.o(141204);
   }
   
   public static void a(a parama)
   {
-    GjK = parama;
+    HVx = parama;
+  }
+  
+  public static void aad(int paramInt)
+  {
+    AppMethodBeat.i(141204);
+    ax.aQz(aj.fkC()).putInt(HVt, paramInt);
+    AppMethodBeat.o(141204);
   }
   
   public static DisplayMetrics c(DisplayMetrics paramDisplayMetrics)
   {
     AppMethodBeat.i(141188);
-    float f1 = eSx();
+    float f1 = fhQ();
     int i;
     float f3;
     label105:
     float f2;
-    if (aj.fhz())
+    if (al.fxM())
     {
       f1 = 750.0F;
       i = Math.min(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels);
       f3 = i / f1;
-      ac.i("MicroMsg.MMDensityManager", "applyScreenAdaptiveDensity originWidth:%s, originheight:%s, targetField:%s", new Object[] { Integer.valueOf(paramDisplayMetrics.widthPixels), Integer.valueOf(paramDisplayMetrics.heightPixels), Float.valueOf(f1) });
-      if ((aj.fhC() == 0) || (oPa == 0)) {
+      ad.i("MicroMsg.MMDensityManager", "applyScreenAdaptiveDensity originWidth:%s, originheight:%s, targetField:%s", new Object[] { Integer.valueOf(paramDisplayMetrics.widthPixels), Integer.valueOf(paramDisplayMetrics.heightPixels), Float.valueOf(f1) });
+      if ((al.fxP() == 0) || (psI == 0)) {
         break label354;
       }
       if (i == 0) {
         break label349;
       }
-      f1 = oPa / i;
-      if (aj.fhD() == aj.fhC()) {
+      f1 = psI / i;
+      if (al.fxQ() == al.fxP()) {
         break label344;
       }
-      f2 = f1 * (aj.fhD() / aj.fhC());
+      f2 = f1 * (al.fxQ() / al.fxP());
       label126:
       f1 = f2;
       if (f2 < 0.95F) {
         f1 = 0.95F;
       }
-      if ((!aj.fhz()) && (!aj.fhA())) {
+      if ((!al.fxM()) && (!al.fxN())) {
         break label327;
       }
       f2 = f1;
@@ -218,9 +218,9 @@ public final class a
         f2 = 1.5F;
       }
       label166:
-      GjI *= f2;
+      HVv *= f2;
       f1 = f3 * f2;
-      ac.i("MicroMsg.MMDensityManager", "scale targetDensity:%s , DeviceDpi:%s, WindowDpi:%s, DeviceWidth:%s, DisplayWidth:%s, dpiScale:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(aj.fhC()), Integer.valueOf(aj.fhD()), Integer.valueOf(oPa), Integer.valueOf(i), Float.valueOf(f2) });
+      ad.i("MicroMsg.MMDensityManager", "scale targetDensity:%s , DeviceDpi:%s, WindowDpi:%s, DeviceWidth:%s, DisplayWidth:%s, dpiScale:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(al.fxP()), Integer.valueOf(al.fxQ()), Integer.valueOf(psI), Integer.valueOf(i), Float.valueOf(f2) });
     }
     for (;;)
     {
@@ -233,12 +233,12 @@ public final class a
       localDisplayMetrics.density = f1;
       AppMethodBeat.o(141188);
       return localDisplayMetrics;
-      if (aj.fhA())
+      if (al.fxN())
       {
         f1 = 600.0F;
         break;
       }
-      GjI = 400.0F / f1;
+      HVv = 400.0F / f1;
       break;
       label327:
       f2 = f1;
@@ -269,7 +269,7 @@ public final class a
   private static void d(Field paramField)
   {
     AppMethodBeat.i(141201);
-    if (GjQ)
+    if (HVD)
     {
       AppMethodBeat.o(141201);
       return;
@@ -285,23 +285,23 @@ public final class a
     }
     catch (Exception paramField)
     {
-      ac.printErrStackTrace("MicroMsg.MMDensityManager", paramField, "", new Object[0]);
-      GjQ = true;
+      ad.printErrStackTrace("MicroMsg.MMDensityManager", paramField, "", new Object[0]);
+      HVD = true;
       AppMethodBeat.o(141201);
     }
   }
   
-  public static float eSl()
+  public static float fhE()
   {
-    return GjI;
+    return HVv;
   }
   
-  public static boolean eSm()
+  public static boolean fhF()
   {
     AppMethodBeat.i(141189);
     try
     {
-      int i = bs.getInt(b.cmk().b("clicfg_android_density_check_kill_enable", "1", false, true), 1);
+      int i = bt.getInt(d.crP().b("clicfg_android_density_check_kill_enable", "1", false, true), 1);
       if (i > 0)
       {
         AppMethodBeat.o(141189);
@@ -312,24 +312,24 @@ public final class a
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenKillSelf", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenKillSelf", new Object[0]);
       AppMethodBeat.o(141189);
     }
     return false;
   }
   
-  private static boolean eSn()
+  private static boolean fhG()
   {
     AppMethodBeat.i(141190);
-    if (GjL == null) {}
+    if (HVy == null) {}
     try
     {
-      if (bs.getInt(b.cmk().b("clicfg_screen_adaptive_huawei_four", "0", false, true), 1) > 0) {
-        ac.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecialAll!!");
+      if (bt.getInt(d.crP().b("clicfg_screen_adaptive_huawei_four", "0", false, true), 1) > 0) {
+        ad.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecialAll!!");
       }
-      for (GjL = Boolean.TRUE;; GjL = Boolean.FALSE)
+      for (HVy = Boolean.TRUE;; HVy = Boolean.FALSE)
       {
-        boolean bool = GjL.booleanValue();
+        boolean bool = HVy.booleanValue();
         AppMethodBeat.o(141190);
         return bool;
       }
@@ -338,24 +338,24 @@ public final class a
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecialAll", new Object[0]);
-        GjL = Boolean.FALSE;
+        ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecialAll", new Object[0]);
+        HVy = Boolean.FALSE;
       }
     }
   }
   
-  private static boolean eSo()
+  private static boolean fhH()
   {
     AppMethodBeat.i(141191);
-    if (GjM == null) {}
+    if (HVz == null) {}
     try
     {
-      if (bs.getInt(b.cmk().b("clicfg_screen_adaptive_huawei_three", "1", false, true), 1) > 0) {
-        ac.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecial360!!");
+      if (bt.getInt(d.crP().b("clicfg_screen_adaptive_huawei_three", "1", false, true), 1) > 0) {
+        ad.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecial360!!");
       }
-      for (GjM = Boolean.TRUE;; GjM = Boolean.FALSE)
+      for (HVz = Boolean.TRUE;; HVz = Boolean.FALSE)
       {
-        boolean bool = GjM.booleanValue();
+        boolean bool = HVz.booleanValue();
         AppMethodBeat.o(141191);
         return bool;
       }
@@ -364,18 +364,18 @@ public final class a
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecial360", new Object[0]);
-        GjM = Boolean.FALSE;
+        ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecial360", new Object[0]);
+        HVz = Boolean.FALSE;
       }
     }
   }
   
-  public static boolean eSp()
+  public static boolean fhI()
   {
     AppMethodBeat.i(141192);
     try
     {
-      int i = bs.getInt(b.cmk().b("clicfg_screen_adaptive", "1", false, true), 1);
+      int i = bt.getInt(d.crP().b("clicfg_screen_adaptive", "1", false, true), 1);
       if (i > 0)
       {
         AppMethodBeat.o(141192);
@@ -386,7 +386,7 @@ public final class a
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForMM", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForMM", new Object[0]);
       AppMethodBeat.o(141192);
       return false;
     }
@@ -397,19 +397,19 @@ public final class a
     }
   }
   
-  private static boolean eSq()
+  private static boolean fhJ()
   {
     AppMethodBeat.i(141193);
     for (;;)
     {
       try
       {
-        com.tencent.mm.k.a locala = com.tencent.mm.k.a.a.Xe();
+        com.tencent.mm.l.a locala = com.tencent.mm.l.a.a.ZF();
         if (locala != null)
         {
-          bool = locala.Kq();
+          bool = locala.LT();
           int i;
-          if (bs.getInt(b.cmk().b("clicfg_screen_adaptive_appbrand", "1", false, true), 1) > 0)
+          if (bt.getInt(d.crP().b("clicfg_screen_adaptive_appbrand", "1", false, true), 1) > 0)
           {
             i = 1;
             if ((i != 0) && (bool))
@@ -429,7 +429,7 @@ public final class a
       }
       catch (Exception localException)
       {
-        ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForAppBrand", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForAppBrand", new Object[0]);
         AppMethodBeat.o(141193);
         return false;
       }
@@ -437,12 +437,12 @@ public final class a
     }
   }
   
-  private static boolean eSr()
+  private static boolean fhK()
   {
     AppMethodBeat.i(141194);
     try
     {
-      int i = bs.getInt(b.cmk().b("clicfg_screen_adaptive_tool", "1", false, true), 1);
+      int i = bt.getInt(d.crP().b("clicfg_screen_adaptive_tool", "1", false, true), 1);
       if (i > 0)
       {
         AppMethodBeat.o(141194);
@@ -453,26 +453,26 @@ public final class a
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForTool", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForTool", new Object[0]);
       AppMethodBeat.o(141194);
     }
     return false;
   }
   
-  public static float eSs()
+  public static float fhL()
   {
     AppMethodBeat.i(141196);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+    ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
     float f = localDisplayMetrics.density;
     AppMethodBeat.o(141196);
     return f;
   }
   
-  static boolean eSu()
+  static boolean fhN()
   {
     AppMethodBeat.i(141199);
-    if ((com.tencent.mm.cc.a.hX(ai.getContext()) == 0.8F) && (eSx() != 440))
+    if ((com.tencent.mm.cc.a.ig(aj.getContext()) == 0.8F) && (fhQ() != 440))
     {
       AppMethodBeat.o(141199);
       return true;
@@ -481,10 +481,10 @@ public final class a
     return false;
   }
   
-  public static boolean eSv()
+  public static boolean fhO()
   {
     AppMethodBeat.i(141202);
-    if ((GjB) && (!eSw()))
+    if ((HVo) && (!fhP()))
     {
       AppMethodBeat.o(141202);
       return true;
@@ -493,24 +493,24 @@ public final class a
     return false;
   }
   
-  public static boolean eSw()
+  public static boolean fhP()
   {
     AppMethodBeat.i(141203);
     String str = Build.BRAND;
-    if (!bs.isNullOrNil(str))
+    if (!bt.isNullOrNil(str))
     {
-      if (GjR)
+      if (HVE)
       {
         AppMethodBeat.o(141203);
         return true;
       }
-      if ((eSn()) && (aj.DU()))
+      if ((fhG()) && (al.Ft()))
       {
-        ac.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial all!!");
+        ad.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial all!!");
         AppMethodBeat.o(141203);
         return true;
       }
-      if ((eSo()) && (GjJ))
+      if ((fhH()) && (HVw))
       {
         AppMethodBeat.o(141203);
         return true;
@@ -525,39 +525,39 @@ public final class a
     return false;
   }
   
-  public static int eSx()
+  public static int fhQ()
   {
     AppMethodBeat.i(141205);
-    int i = aw.aKT(ai.eUX()).getInt(GjG, 400);
+    int i = ax.aQz(aj.fkC()).getInt(HVt, 400);
     AppMethodBeat.o(141205);
     return i;
   }
   
-  final void eSt()
+  final void fhM()
   {
     AppMethodBeat.i(141198);
     try
     {
       DisplayMetrics localDisplayMetrics = getDisplayMetrics();
-      if (this.GjO == null)
+      if (this.HVB == null)
       {
         Method localMethod = Bitmap.class.getDeclaredMethod("setDefaultDensity", new Class[] { Integer.TYPE });
         localMethod.setAccessible(true);
-        this.GjO = localMethod;
+        this.HVB = localMethod;
       }
-      this.GjO.invoke(null, new Object[] { Integer.valueOf(localDisplayMetrics.densityDpi) });
-      if (this.GjP == null)
+      this.HVB.invoke(null, new Object[] { Integer.valueOf(localDisplayMetrics.densityDpi) });
+      if (this.HVC == null)
       {
-        this.GjP = DisplayMetrics.class.getDeclaredField("DENSITY_DEVICE");
-        d(this.GjP);
+        this.HVC = DisplayMetrics.class.getDeclaredField("DENSITY_DEVICE");
+        d(this.HVC);
       }
-      this.GjP.setInt(null, localDisplayMetrics.densityDpi);
+      this.HVC.setInt(null, localDisplayMetrics.densityDpi);
       AppMethodBeat.o(141198);
       return;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.MMDensityManager", localException, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.MMDensityManager", localException, "", new Object[0]);
       AppMethodBeat.o(141198);
     }
   }
@@ -565,11 +565,11 @@ public final class a
   public final Configuration g(Configuration paramConfiguration)
   {
     AppMethodBeat.i(141197);
-    if (eSv())
+    if (fhO())
     {
       paramConfiguration = new Configuration(paramConfiguration);
       paramConfiguration.densityDpi = getDisplayMetrics().densityDpi;
-      eSt();
+      fhM();
       AppMethodBeat.o(141197);
       return paramConfiguration;
     }
@@ -580,21 +580,21 @@ public final class a
   public final DisplayMetrics getDisplayMetrics()
   {
     AppMethodBeat.i(141195);
-    if (eSv())
+    if (fhO())
     {
       localDisplayMetrics = new DisplayMetrics();
-      localDisplayMetrics.setTo(this.aHC);
+      localDisplayMetrics.setTo(this.aJt);
       AppMethodBeat.o(141195);
       return localDisplayMetrics;
     }
-    DisplayMetrics localDisplayMetrics = this.GjA;
+    DisplayMetrics localDisplayMetrics = this.HVn;
     AppMethodBeat.o(141195);
     return localDisplayMetrics;
   }
   
   public static abstract interface a
   {
-    public abstract void Kx();
+    public abstract void Mb();
   }
 }
 

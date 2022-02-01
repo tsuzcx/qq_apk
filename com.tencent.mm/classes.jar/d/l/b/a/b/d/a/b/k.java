@@ -2,7 +2,8 @@ package d.l.b.a.b.d.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.a.j;
-import d.aa;
+import d.ac;
+import d.g.b.p;
 import d.l.b.a.b.b.an;
 import d.l.b.a.b.b.av;
 import d.l.b.a.b.b.c.aj;
@@ -21,17 +22,17 @@ public final class k
   public static final List<av> a(Collection<l> paramCollection, Collection<? extends av> paramCollection1, d.l.b.a.b.b.a parama)
   {
     AppMethodBeat.i(57732);
-    d.g.b.k.h(paramCollection, "newValueParametersTypes");
-    d.g.b.k.h(paramCollection1, "oldValueParameters");
-    d.g.b.k.h(parama, "newOwner");
+    p.h(paramCollection, "newValueParametersTypes");
+    p.h(paramCollection1, "oldValueParameters");
+    p.h(parama, "newOwner");
     if (paramCollection.size() == paramCollection1.size()) {}
-    for (int i = 1; (aa.KTq) && (i == 0); i = 0)
+    for (int i = 1; (ac.MKp) && (i == 0); i = 0)
     {
       paramCollection = (Throwable)new AssertionError("Different value parameters sizes: Enhanced = " + paramCollection.size() + ", Old = " + paramCollection1.size());
       AppMethodBeat.o(57732);
       throw paramCollection;
     }
-    paramCollection = (Iterable)j.b((Iterable)paramCollection, (Iterable)paramCollection1);
+    paramCollection = (Iterable)j.c((Iterable)paramCollection, (Iterable)paramCollection1);
     paramCollection1 = (Collection)new ArrayList(j.a(paramCollection, 10));
     Iterator localIterator = paramCollection.iterator();
     if (localIterator.hasNext())
@@ -40,18 +41,18 @@ public final class k
       paramCollection = (l)((o)localObject1).first;
       Object localObject2 = (av)((o)localObject1).second;
       i = ((av)localObject2).getIndex();
-      localObject1 = ((av)localObject2).fQj();
-      f localf = ((av)localObject2).fRf();
-      d.g.b.k.g(localf, "oldParameter.name");
-      ab localab = paramCollection.KXI;
-      boolean bool1 = paramCollection.Lnb;
-      boolean bool2 = ((av)localObject2).fSa();
-      boolean bool3 = ((av)localObject2).fSb();
-      if (((av)localObject2).fRY() != null) {}
-      for (paramCollection = d.l.b.a.b.j.d.a.F((d.l.b.a.b.b.l)parama).fRE().l(paramCollection.KXI);; paramCollection = null)
+      localObject1 = ((av)localObject2).ghH();
+      f localf = ((av)localObject2).giD();
+      p.g(localf, "oldParameter.name");
+      ab localab = paramCollection.MOF;
+      boolean bool1 = paramCollection.NdY;
+      boolean bool2 = ((av)localObject2).gjz();
+      boolean bool3 = ((av)localObject2).gjA();
+      if (((av)localObject2).gjx() != null) {}
+      for (paramCollection = d.l.b.a.b.j.d.a.F((d.l.b.a.b.b.l)parama).gjd().l(paramCollection.MOF);; paramCollection = null)
       {
-        localObject2 = ((av)localObject2).fQk();
-        d.g.b.k.g(localObject2, "oldParameter.source");
+        localObject2 = ((av)localObject2).ghI();
+        p.g(localObject2, "oldParameter.source");
         paramCollection1.add(new aj(parama, null, i, (d.l.b.a.b.b.a.g)localObject1, localf, localab, bool1, bool2, bool3, paramCollection, (an)localObject2));
         break;
       }
@@ -67,14 +68,14 @@ public final class k
     Object localObject;
     do
     {
-      d.g.b.k.h(parame, "$this$getParentJavaStaticClassScope");
+      p.h(parame, "$this$getParentJavaStaticClassScope");
       e locale = d.l.b.a.b.j.d.a.B(parame);
       if (locale == null)
       {
         AppMethodBeat.o(57733);
         return null;
       }
-      localObject = locale.fPV();
+      localObject = locale.ght();
       parame = (e)localObject;
       if (!(localObject instanceof d.l.b.a.b.d.a.c.a.l)) {
         parame = null;
@@ -88,7 +89,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.b.k
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.view.Surface;
 
 public abstract interface c
 {
-  public abstract boolean cIc();
+  public abstract boolean cQr();
   
   public abstract long getDurationMs();
   

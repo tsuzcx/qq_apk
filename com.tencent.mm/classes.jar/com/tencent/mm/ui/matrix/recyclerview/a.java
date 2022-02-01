@@ -6,14 +6,14 @@ import android.support.v7.widget.RecyclerView.w;
 public abstract class a<VH extends RecyclerView.w>
   extends RecyclerView.a<VH>
 {
-  public static int IKC = -7198823;
-  public static int IKD = -12929718;
-  public static int IKE = -14308638;
-  public static int IKF = -425344;
-  public static int IKG = -10038571;
-  public static int IKH = -1091275;
-  public static int IKI = -11905697;
-  public static float IKJ = 12.0F;
+  public static int KBJ = -7198823;
+  public static int KBK = -12929718;
+  public static int KBL = -14308638;
+  public static int KBM = -425344;
+  public static int KBN = -10038571;
+  public static int KBO = -1091275;
+  public static int KBP = -11905697;
+  public static float KBQ = 12.0F;
 }
 
 

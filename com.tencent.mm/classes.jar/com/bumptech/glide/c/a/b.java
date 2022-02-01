@@ -9,17 +9,17 @@ import java.io.IOException;
 public abstract class b<T>
   implements d<T>
 {
-  private final AssetManager aDu;
+  private final AssetManager aFl;
   private final String assetPath;
   private T data;
   
   public b(AssetManager paramAssetManager, String paramString)
   {
-    this.aDu = paramAssetManager;
+    this.aFl = paramAssetManager;
     this.assetPath = paramString;
   }
   
-  protected abstract void Q(T paramT);
+  protected abstract void R(T paramT);
   
   protected abstract T a(AssetManager paramAssetManager, String paramString);
   
@@ -27,8 +27,8 @@ public abstract class b<T>
   {
     try
     {
-      this.data = a(this.aDu, this.assetPath);
-      parama.R(this.data);
+      this.data = a(this.aFl, this.assetPath);
+      parama.S(this.data);
       return;
     }
     catch (IOException paramg)
@@ -47,15 +47,15 @@ public abstract class b<T>
     }
     try
     {
-      Q(this.data);
+      R(this.data);
       return;
     }
     catch (IOException localIOException) {}
   }
   
-  public final a nV()
+  public final a on()
   {
-    return a.aCP;
+    return a.aEG;
   }
 }
 

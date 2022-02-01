@@ -14,24 +14,24 @@ import android.os.Build.VERSION;
 
 final class b
 {
-  static final boolean fM;
-  final MaterialButton fN;
-  int fO;
-  PorterDuff.Mode fP;
-  ColorStateList fQ;
-  ColorStateList fR;
-  ColorStateList fS;
-  final Paint fT = new Paint(1);
-  final Rect fU = new Rect();
-  final RectF fV = new RectF();
-  GradientDrawable fW;
-  Drawable fX;
-  GradientDrawable fY;
-  Drawable fZ;
-  GradientDrawable ga;
-  GradientDrawable gb;
-  GradientDrawable gc;
-  boolean gd = false;
+  static final boolean hD;
+  final MaterialButton hE;
+  int hF;
+  PorterDuff.Mode hG;
+  ColorStateList hH;
+  ColorStateList hI;
+  ColorStateList hJ;
+  final Paint hK = new Paint(1);
+  final Rect hL = new Rect();
+  final RectF hM = new RectF();
+  GradientDrawable hN;
+  Drawable hO;
+  GradientDrawable hP;
+  Drawable hQ;
+  GradientDrawable hR;
+  GradientDrawable hS;
+  GradientDrawable hT;
+  boolean hU = false;
   int insetBottom;
   int insetLeft;
   int insetRight;
@@ -43,14 +43,14 @@ final class b
     if (Build.VERSION.SDK_INT >= 21) {}
     for (boolean bool = true;; bool = false)
     {
-      fM = bool;
+      hD = bool;
       return;
     }
   }
   
   public b(MaterialButton paramMaterialButton)
   {
-    this.fN = paramMaterialButton;
+    this.hE = paramMaterialButton;
   }
   
   final InsetDrawable a(Drawable paramDrawable)
@@ -58,44 +58,44 @@ final class b
     return new InsetDrawable(paramDrawable, this.insetLeft, this.insetTop, this.insetRight, this.insetBottom);
   }
   
-  final void aH()
+  final void aX()
   {
-    if (this.ga != null)
+    if (this.hR != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.ga, this.fQ);
-      if (this.fP != null) {
-        android.support.v4.graphics.drawable.a.a(this.ga, this.fP);
+      android.support.v4.graphics.drawable.a.a(this.hR, this.hH);
+      if (this.hG != null) {
+        android.support.v4.graphics.drawable.a.a(this.hR, this.hG);
       }
     }
   }
   
   @TargetApi(21)
-  final Drawable aI()
+  final Drawable aY()
   {
-    this.ga = new GradientDrawable();
-    this.ga.setCornerRadius(this.fO + 1.0E-005F);
-    this.ga.setColor(-1);
-    aH();
-    this.gb = new GradientDrawable();
-    this.gb.setCornerRadius(this.fO + 1.0E-005F);
-    this.gb.setColor(0);
-    this.gb.setStroke(this.strokeWidth, this.fR);
-    InsetDrawable localInsetDrawable = a(new LayerDrawable(new Drawable[] { this.ga, this.gb }));
-    this.gc = new GradientDrawable();
-    this.gc.setCornerRadius(this.fO + 1.0E-005F);
-    this.gc.setColor(-1);
-    return new a(android.support.design.e.a.b(this.fS), localInsetDrawable, this.gc);
+    this.hR = new GradientDrawable();
+    this.hR.setCornerRadius(this.hF + 1.0E-005F);
+    this.hR.setColor(-1);
+    aX();
+    this.hS = new GradientDrawable();
+    this.hS.setCornerRadius(this.hF + 1.0E-005F);
+    this.hS.setColor(0);
+    this.hS.setStroke(this.strokeWidth, this.hI);
+    InsetDrawable localInsetDrawable = a(new LayerDrawable(new Drawable[] { this.hR, this.hS }));
+    this.hT = new GradientDrawable();
+    this.hT.setCornerRadius(this.hF + 1.0E-005F);
+    this.hT.setColor(-1);
+    return new a(android.support.design.e.a.b(this.hJ), localInsetDrawable, this.hT);
   }
   
-  final void aJ()
+  final void aZ()
   {
-    if ((fM) && (this.gb != null)) {
-      this.fN.setInternalBackground(aI());
+    if ((hD) && (this.hS != null)) {
+      this.hE.setInternalBackground(aY());
     }
-    while (fM) {
+    while (hD) {
       return;
     }
-    this.fN.invalidate();
+    this.hE.invalidate();
   }
 }
 

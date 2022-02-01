@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.a;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -12,71 +11,68 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.aq;
 import java.util.Locale;
 
 public final class d
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private LinearLayout Jjx;
-  private CustomTimePickerNew Jjy;
-  public d.a Jjz;
-  private Button gAJ;
-  private Button gCY;
-  private View khe;
-  private int lcC;
-  private BottomSheetBehavior lcD;
+  private LinearLayout LaU;
+  private CustomTimePickerNew LaV;
+  public a LaW;
+  private Button gUt;
+  private Button gWI;
+  private View kBS;
+  private int lzC;
+  private BottomSheetBehavior lzD;
   private Context mContext;
-  private a tyZ;
+  private android.support.design.widget.a uBI;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(159555);
     this.mContext = paramContext;
-    this.tyZ = new a(this.mContext);
-    this.khe = View.inflate(this.mContext, 2131495753, null);
-    this.Jjx = ((LinearLayout)this.khe.findViewById(2131305816));
-    this.Jjy = new CustomTimePickerNew(this.mContext);
-    this.Jjx.removeAllViews();
-    this.Jjx.setGravity(17);
-    this.Jjx.addView(this.Jjy.getView(), new LinearLayout.LayoutParams(-1, -1));
-    this.gAJ = ((Button)this.khe.findViewById(2131302999));
-    this.gAJ.setOnClickListener(new View.OnClickListener()
+    this.uBI = new android.support.design.widget.a(this.mContext);
+    this.kBS = View.inflate(this.mContext, 2131495753, null);
+    this.LaU = ((LinearLayout)this.kBS.findViewById(2131305816));
+    this.LaV = new CustomTimePickerNew(this.mContext);
+    this.LaU.removeAllViews();
+    this.LaU.setGravity(17);
+    this.LaU.addView(this.LaV.getView(), new LinearLayout.LayoutParams(-1, -1));
+    this.gUt = ((Button)this.kBS.findViewById(2131302999));
+    this.gUt.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159552);
-        d locald = d.this;
+        Object localObject = new b();
+        ((b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/MMTimePicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+        localObject = d.this;
         if (d.a(d.this) == null) {}
         for (paramAnonymousView = null;; paramAnonymousView = String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(paramAnonymousView.currentHour), Integer.valueOf(paramAnonymousView.currentMinute) }))
         {
-          d.a(locald, true, paramAnonymousView);
+          d.a((d)localObject, true, paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/MMTimePicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(159552);
           return;
           paramAnonymousView = d.a(d.this);
-          paramAnonymousView.Jjd.aMR();
+          paramAnonymousView.LaA.aQc();
         }
       }
     });
-    this.gCY = ((Button)this.khe.findViewById(2131297690));
-    this.gCY.setOnClickListener(new View.OnClickListener()
+    this.gWI = ((Button)this.kBS.findViewById(2131297690));
+    this.gWI.setOnClickListener(new d.2(this));
+    this.uBI.setContentView(this.kBS);
+    this.lzC = aq.fromDPToPix(this.mContext, 420);
+    this.lzD = BottomSheetBehavior.l((View)this.kBS.getParent());
+    if (this.lzD != null)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(159553);
-        d.a(d.this, false, null);
-        AppMethodBeat.o(159553);
-      }
-    });
-    this.tyZ.setContentView(this.khe);
-    this.lcC = ao.fromDPToPix(this.mContext, 420);
-    this.lcD = BottomSheetBehavior.l((View)this.khe.getParent());
-    if (this.lcD != null)
-    {
-      this.lcD.J(this.lcC);
-      this.lcD.mg = false;
+      this.lzD.J(this.lzC);
+      this.lzD.nZ = false;
     }
-    this.tyZ.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.uBI.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
@@ -91,17 +87,17 @@ public final class d
   public final void hide()
   {
     AppMethodBeat.i(159560);
-    if (this.tyZ != null) {
-      this.tyZ.dismiss();
+    if (this.uBI != null) {
+      this.uBI.dismiss();
     }
     AppMethodBeat.o(159560);
   }
   
-  public final void jY(int paramInt1, int paramInt2)
+  public final void kl(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159558);
-    if (this.Jjy != null) {
-      this.Jjy.init(paramInt1, paramInt2);
+    if (this.LaV != null) {
+      this.LaV.init(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159558);
   }
@@ -111,8 +107,8 @@ public final class d
   public final void setMaxTime(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159557);
-    if (this.Jjy != null) {
-      this.Jjy.setMaxTime(paramInt1, paramInt2);
+    if (this.LaV != null) {
+      this.LaV.setMaxTime(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159557);
   }
@@ -120,8 +116,8 @@ public final class d
   public final void setMinTime(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(159556);
-    if (this.Jjy != null) {
-      this.Jjy.setMinTime(paramInt1, paramInt2);
+    if (this.LaV != null) {
+      this.LaV.setMinTime(paramInt1, paramInt2);
     }
     AppMethodBeat.o(159556);
   }
@@ -129,14 +125,19 @@ public final class d
   public final void show()
   {
     AppMethodBeat.i(159559);
-    if (this.tyZ != null)
+    if (this.uBI != null)
     {
-      if (this.Jjy != null) {
-        this.Jjy.onShow();
+      if (this.LaV != null) {
+        this.LaV.onShow();
       }
-      this.tyZ.show();
+      this.uBI.show();
     }
     AppMethodBeat.o(159559);
+  }
+  
+  public static abstract interface a<T>
+  {
+    public abstract void a(boolean paramBoolean, T paramT);
   }
 }
 

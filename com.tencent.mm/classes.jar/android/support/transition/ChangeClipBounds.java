@@ -15,7 +15,7 @@ import java.util.Map;
 public class ChangeClipBounds
   extends Transition
 {
-  private static final String[] xP = { "android:clipBounds:clip" };
+  private static final String[] zJ = { "android:clipBounds:clip" };
   
   public ChangeClipBounds() {}
   
@@ -72,14 +72,14 @@ public class ChangeClipBounds
       }
       t.b(paramu2.view, paramViewGroup);
       localObject = new m(new Rect());
-      paramu1 = ObjectAnimator.ofObject(paramu2.view, ag.BL, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramu1 });
+      paramu1 = ObjectAnimator.ofObject(paramu2.view, ag.DD, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramu1 });
       paramViewGroup = paramu1;
     } while (i == 0);
     paramu1.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        t.b(this.ys, null);
+        t.b(this.Al, null);
       }
     });
     return paramu1;
@@ -97,7 +97,7 @@ public class ChangeClipBounds
   
   public final String[] getTransitionProperties()
   {
-    return xP;
+    return zJ;
   }
 }
 

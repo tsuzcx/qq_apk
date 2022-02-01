@@ -5,20 +5,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static b KaQ;
+  public static b LUN;
   
   public static b b(com.tencent.e.a parama)
   {
     AppMethodBeat.i(183339);
-    if (parama.JZe != null)
+    if (parama.LSZ != null)
     {
-      parama = parama.JZe;
+      parama = parama.LSZ;
       AppMethodBeat.o(183339);
       return parama;
     }
-    int i = Math.max(1, parama.JZb / 2);
+    int i = Math.max(1, parama.LSW / 2);
     int j = Math.max(1, i / 3);
-    switch (1.KaR[parama.JZf.ordinal()])
+    switch (1.LUO[parama.LTa.ordinal()])
     {
     default: 
       parama = new d();
@@ -51,13 +51,13 @@ public final class h
     static
     {
       AppMethodBeat.i(183338);
-      KaS = new a("FS_POLICY", 0);
-      KaT = new a("LINEAR_POLICY", 1);
-      KaU = new a("CONST_POLICY", 2);
-      KaV = new a("THROW_POLICY", 3);
-      KaW = new a("BLOCK_INVOKER_POLICY", 4);
-      KaX = new a("DEFAULT", 5);
-      KaY = new a[] { KaS, KaT, KaU, KaV, KaW, KaX };
+      LUP = new a("FS_POLICY", 0);
+      LUQ = new a("LINEAR_POLICY", 1);
+      LUR = new a("CONST_POLICY", 2);
+      LUS = new a("THROW_POLICY", 3);
+      LUT = new a("BLOCK_INVOKER_POLICY", 4);
+      LUU = new a("DEFAULT", 5);
+      LUV = new a[] { LUP, LUQ, LUR, LUS, LUT, LUU };
       AppMethodBeat.o(183338);
     }
     

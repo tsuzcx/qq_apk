@@ -6,25 +6,25 @@ import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.storage.bw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.cc;
 
 final class c$a
   implements k<IPCVoid, IPCString>
 {
-  private static IPCString boG()
+  private static IPCString bsF()
   {
     AppMethodBeat.i(146141);
     try
     {
-      ac.i("MicroMsg.Record.AppBrandRecordClientService", "ipc updateDeviceInfo");
-      IPCString localIPCString1 = new IPCString(g.agR().agB().fcA());
+      ad.i("MicroMsg.Record.AppBrandRecordClientService", "ipc updateDeviceInfo");
+      IPCString localIPCString1 = new IPCString(g.ajC().ajm().fsH());
       AppMethodBeat.o(146141);
       return localIPCString1;
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("MicroMsg.Record.AppBrandRecordClientService", localException, "ipc updateDeviceInfo task", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.Record.AppBrandRecordClientService", localException, "ipc updateDeviceInfo task", new Object[0]);
       IPCString localIPCString2 = new IPCString("");
       AppMethodBeat.o(146141);
       return localIPCString2;

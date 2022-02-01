@@ -11,7 +11,7 @@ public abstract interface b
 {
   public abstract void f(String paramString1, int paramInt1, int paramInt2, String paramString2);
   
-  public abstract void u(String paramString, long paramLong1, long paramLong2);
+  public abstract void v(String paramString, long paramLong1, long paramLong2);
   
   public static abstract class a
     extends Binder
@@ -55,7 +55,7 @@ public abstract interface b
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-      u(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+      v(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
     }
@@ -99,7 +99,7 @@ public abstract interface b
         }
       }
       
-      public final void u(String paramString, long paramLong1, long paramLong2)
+      public final void v(String paramString, long paramLong1, long paramLong2)
       {
         AppMethodBeat.i(120705);
         Parcel localParcel1 = Parcel.obtain();

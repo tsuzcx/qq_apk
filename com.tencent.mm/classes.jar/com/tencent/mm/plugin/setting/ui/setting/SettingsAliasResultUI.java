@@ -11,21 +11,23 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.ui.RegByMobileSetPwdUI;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.ui.MMActivity;
 
 public class SettingsAliasResultUI
   extends MMActivity
 {
-  private String eNf;
-  private TextView ijE;
-  private TextView xrE;
-  private Button xrF;
-  private ImageView xrG;
-  private boolean xrH;
+  private String ffB;
+  private TextView iCV;
+  private TextView yGn;
+  private Button yGo;
+  private ImageView yGp;
+  private boolean yGq;
   
   public int getLayoutId()
   {
@@ -36,10 +38,10 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74112);
     setMMTitle(2131761319);
-    this.ijE = ((TextView)findViewById(2131299008));
-    this.xrE = ((TextView)findViewById(2131296639));
-    this.xrF = ((Button)findViewById(2131304612));
-    this.xrG = ((ImageView)findViewById(2131303000));
+    this.iCV = ((TextView)findViewById(2131299008));
+    this.yGn = ((TextView)findViewById(2131296639));
+    this.yGo = ((Button)findViewById(2131304612));
+    this.yGp = ((ImageView)findViewById(2131303000));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -50,29 +52,33 @@ public class SettingsAliasResultUI
         return true;
       }
     });
-    this.xrE.setText(this.eNf);
-    if (!this.xrH)
+    this.yGn.setText(this.ffB);
+    if (!this.yGq)
     {
-      this.xrF.setVisibility(0);
-      this.ijE.setText(getString(2131761324));
+      this.yGo.setVisibility(0);
+      this.iCV.setText(getString(2131761324));
     }
     for (;;)
     {
-      this.xrF.setOnClickListener(new View.OnClickListener()
+      this.yGo.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(74108);
+          b localb = new b();
+          localb.bd(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
           paramAnonymousView = new Intent(SettingsAliasResultUI.this.getContext(), RegByMobileSetPwdUI.class);
           paramAnonymousView.putExtra("kintent_hint", SettingsAliasResultUI.this.getString(2131762358));
           SettingsAliasResultUI.this.startActivityForResult(paramAnonymousView, 0);
+          a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsAliasResultUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(74108);
         }
       });
       AppMethodBeat.o(74112);
       return;
-      this.xrF.setVisibility(8);
-      this.ijE.setText(getString(2131761325));
+      this.yGo.setVisibility(8);
+      this.iCV.setText(getString(2131761325));
     }
   }
   
@@ -90,8 +96,8 @@ public class SettingsAliasResultUI
   {
     AppMethodBeat.i(74109);
     super.onCreate(paramBundle);
-    this.eNf = ((String)g.agR().agA().get(42, null));
-    this.xrH = getIntent().getBooleanExtra("has_pwd", true);
+    this.ffB = ((String)g.ajC().ajl().get(42, null));
+    this.yGq = getIntent().getBooleanExtra("has_pwd", true);
     initView();
     AppMethodBeat.o(74109);
   }

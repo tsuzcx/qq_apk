@@ -8,13 +8,13 @@ public abstract class hd
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int enO = "appId".hashCode();
-  private static final int fke = "permissionProtoBlob".hashCode();
+  private static final int fAz = "host".hashCode();
+  private static final int fcQ = "expireTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean enx = true;
-  public String field_appId;
-  public byte[] field_permissionProtoBlob;
-  private boolean fkd = true;
+  private boolean fAy = true;
+  private boolean fcF = true;
+  public long field_expireTime;
+  public String field_host;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +29,19 @@ public abstract class hd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (enO != k) {
-        break label65;
+      if (fAz != k) {
+        break label60;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.enx = true;
+      this.field_host = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fke == k) {
-        this.field_permissionProtoBlob = paramCursor.getBlob(i);
+      label60:
+      if (fcQ == k) {
+        this.field_expireTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +51,11 @@ public abstract class hd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.enx) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fAy) {
+      localContentValues.put("host", this.field_host);
     }
-    if (this.fkd) {
-      localContentValues.put("permissionProtoBlob", this.field_permissionProtoBlob);
+    if (this.fcF) {
+      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

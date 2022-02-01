@@ -9,19 +9,19 @@ import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 public final class a
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  public final void bfM()
+  public final void bjq()
   {
     AppMethodBeat.i(144570);
-    if (this.kkh.kjP == null)
+    if (this.kFh.kEN == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "connection is not open.", new Object[0]);
-      a(j.kkI);
+      a(j.kFI);
       done();
       AppMethodBeat.o(144570);
       return;
     }
-    this.kkh.go(true);
-    a(j.kkA);
+    this.kFh.gu(true);
+    a(j.kFA);
     done();
     AppMethodBeat.o(144570);
   }
@@ -33,7 +33,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.a
  * JD-Core Version:    0.7.0.1
  */

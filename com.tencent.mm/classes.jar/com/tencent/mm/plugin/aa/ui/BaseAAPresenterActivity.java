@@ -11,11 +11,10 @@ import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.vending.c.b;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
@@ -25,51 +24,51 @@ import com.tenpay.android.wechat.MyKeyboardWindow;
 public abstract class BaseAAPresenterActivity
   extends WalletBaseUI
 {
-  private static final int HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cc.a.fromDPToPix(ai.getContext(), 300);
-  private com.tencent.mm.vending.app.c gkC = new com.tencent.mm.vending.app.c();
-  protected View iCB;
+  private static final int HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cc.a.fromDPToPix(aj.getContext(), 300);
+  private com.tencent.mm.vending.app.c gEm = new com.tencent.mm.vending.app.c();
+  protected View iVL;
   
-  public final <T extends b<? extends com.tencent.mm.vending.app.a>> T am(Class<? extends b<? extends com.tencent.mm.vending.app.a>> paramClass)
+  public final <T extends com.tencent.mm.vending.c.b<? extends com.tencent.mm.vending.app.a>> T am(Class<? extends com.tencent.mm.vending.c.b<? extends com.tencent.mm.vending.app.a>> paramClass)
   {
-    return this.gkC.a(this, paramClass);
+    return this.gEm.a(this, paramClass);
   }
   
   public final <T extends com.tencent.mm.vending.app.a> T aq(Class<? extends com.tencent.mm.vending.app.a> paramClass)
   {
-    return this.gkC.b(this, paramClass);
+    return this.gEm.b(this, paramClass);
   }
   
   public void hideTenpayKB()
   {
     super.hideTenpayKB();
-    if (this.iCB != null) {
-      this.iCB.scrollTo(0, 0);
+    if (this.iVL != null) {
+      this.iVL.scrollTo(0, 0);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gkC.B(getIntent(), this);
+    this.gEm.B(getIntent(), this);
     this.isVKBFirstTimeShown = true;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.gkC.onDestroy();
+    this.gEm.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.gkC.adp(3);
+    this.gEm.afP(3);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gkC.adp(2);
+    this.gEm.afP(2);
   }
   
   public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
@@ -102,7 +101,7 @@ public abstract class BaseAAPresenterActivity
         if ((paramAnonymousView.isFocused()) && (!paramBoolean1))
         {
           ((InputMethodManager)BaseAAPresenterActivity.this.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramAnonymousView.getWindowToken(), 0);
-          new ao().postDelayed(new Runnable()
+          new ap().postDelayed(new Runnable()
           {
             public final void run()
             {
@@ -120,7 +119,7 @@ public abstract class BaseAAPresenterActivity
               else if (((BaseAAPresenterActivity.1.this.val$parent instanceof WalletFormView)) && (Build.VERSION.SDK_INT >= 14))
               {
                 localObject = (WalletFormView)BaseAAPresenterActivity.1.this.val$parent;
-                if (((u.axL()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!u.axL()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
+                if (((u.aAB()) || (((WalletFormView)localObject).getEncrptType() == 100)) && ((!u.aAB()) || (((WalletFormView)localObject).getEncrptType() == 0))) {
                   break label325;
                 }
                 localObject = new com.tencent.mm.ui.a.c();
@@ -154,7 +153,7 @@ public abstract class BaseAAPresenterActivity
           AppMethodBeat.o(63569);
           return;
         }
-        new ao().postDelayed(new Runnable()
+        new ap().postDelayed(new Runnable()
         {
           public final void run()
           {
@@ -174,20 +173,26 @@ public abstract class BaseAAPresenterActivity
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(63570);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/BaseAAPresenterActivity$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         if ((!BaseAAPresenterActivity.h(BaseAAPresenterActivity.this).isShown()) && (!paramBoolean1))
         {
           BaseAAPresenterActivity.this.showTenpayKB();
           BaseAAPresenterActivity.a(BaseAAPresenterActivity.this, localEditText);
           BaseAAPresenterActivity.b(BaseAAPresenterActivity.this, paramInt);
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/BaseAAPresenterActivity$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(63570);
           return;
+          if (paramBoolean1)
+          {
+            BaseAAPresenterActivity.this.hideTenpayKB();
+            ((InputMethodManager)BaseAAPresenterActivity.this.getContext().getSystemService("input_method")).showSoftInput(localEditText, 0);
+          }
         }
-        if (paramBoolean1)
-        {
-          BaseAAPresenterActivity.this.hideTenpayKB();
-          ((InputMethodManager)BaseAAPresenterActivity.this.getContext().getSystemService("input_method")).showSoftInput(localEditText, 0);
-        }
-        AppMethodBeat.o(63570);
       }
     });
     localView.setOnClickListener(new View.OnClickListener()
@@ -195,7 +200,11 @@ public abstract class BaseAAPresenterActivity
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(63571);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/aa/ui/BaseAAPresenterActivity$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
         BaseAAPresenterActivity.this.hideTenpayKB();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/aa/ui/BaseAAPresenterActivity$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(63571);
       }
     });

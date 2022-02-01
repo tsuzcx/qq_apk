@@ -5,28 +5,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a<R>
   implements b<R>
 {
-  static final a<?> aLY;
-  private static final c<?> aLZ;
+  static final a<?> aNP;
+  private static final c<?> aNQ;
   
   static
   {
     AppMethodBeat.i(77704);
-    aLY = new a();
-    aLZ = new a();
+    aNP = new a();
+    aNQ = new a();
     AppMethodBeat.o(77704);
   }
   
-  public static <R> c<R> pV()
+  public static <R> c<R> qn()
   {
-    return aLZ;
+    return aNQ;
   }
   
   public static final class a<R>
     implements c<R>
   {
-    public final b<R> pW()
+    public final b<R> qo()
     {
-      return a.aLY;
+      return a.aNP;
     }
   }
 }

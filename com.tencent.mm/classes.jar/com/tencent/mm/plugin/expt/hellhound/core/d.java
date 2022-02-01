@@ -5,11 +5,11 @@ import android.support.v4.app.FragmentActivity;
 
 public abstract interface d
 {
-  public abstract void a(FragmentActivity paramFragmentActivity, Fragment paramFragment, String paramString, long paramLong, boolean paramBoolean);
+  public abstract void a(FragmentActivity paramFragmentActivity, long paramLong);
   
-  public abstract void a(FragmentActivity paramFragmentActivity, String paramString, long paramLong, boolean paramBoolean);
+  public abstract void a(FragmentActivity paramFragmentActivity, Fragment paramFragment, String paramString, int paramInt, long paramLong, boolean paramBoolean);
   
-  public abstract void sT(long paramLong);
+  public abstract void a(FragmentActivity paramFragmentActivity, String paramString, int paramInt, long paramLong, boolean paramBoolean);
 }
 
 

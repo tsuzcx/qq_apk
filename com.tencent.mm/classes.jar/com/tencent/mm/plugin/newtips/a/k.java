@@ -2,79 +2,79 @@ package com.tencent.mm.plugin.newtips.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.newtips.b.c;
-import com.tencent.mm.protocal.protobuf.dhn;
+import com.tencent.mm.protocal.protobuf.dnc;
 
 public enum k
 {
   public final int value;
-  public final String vnz;
+  public final String wsR;
   
   static
   {
     AppMethodBeat.i(127257);
-    vns = new k("MMNEWTIPS_SHOWTYPE_NONE", 0, "无红点", 10000);
-    vnt = new k("MMNEWTIPS_SHOWTYPE_REDPOINT", 1, "普通红点", 0);
-    vnu = new k("MMNEWTIPS_SHOWTYPE_NEW", 2, "New 红点", 1);
-    vnv = new k("MMNEWTIPS_SHOWTYPE_REDPOINT_TITLE", 3, "带 TITLE 红点", 2);
-    vnw = new k("MMNEWTIPS_SHOWTYPE_REDPOINT_ICON", 4, "带 ICON 红点", 3);
-    vnx = new k("MMNEWTIPS_SHOWTYPE_REDPOINT_TITLE_ICON", 5, "同时带 TITLE 和 ICON 红点", 4);
-    vny = new k("MMNEWTIPS_SHOWTYPE_COUNTER", 6, "计数红点", 5);
-    vnA = new k[] { vns, vnt, vnu, vnv, vnw, vnx, vny };
+    wsK = new k("MMNEWTIPS_SHOWTYPE_NONE", 0, "无红点", 10000);
+    wsL = new k("MMNEWTIPS_SHOWTYPE_REDPOINT", 1, "普通红点", 0);
+    wsM = new k("MMNEWTIPS_SHOWTYPE_NEW", 2, "New 红点", 1);
+    wsN = new k("MMNEWTIPS_SHOWTYPE_REDPOINT_TITLE", 3, "带 TITLE 红点", 2);
+    wsO = new k("MMNEWTIPS_SHOWTYPE_REDPOINT_ICON", 4, "带 ICON 红点", 3);
+    wsP = new k("MMNEWTIPS_SHOWTYPE_REDPOINT_TITLE_ICON", 5, "同时带 TITLE 和 ICON 红点", 4);
+    wsQ = new k("MMNEWTIPS_SHOWTYPE_COUNTER", 6, "计数红点", 5);
+    wsS = new k[] { wsK, wsL, wsM, wsN, wsO, wsP, wsQ };
     AppMethodBeat.o(127257);
   }
   
   private k(String paramString, int paramInt)
   {
-    this.vnz = paramString;
+    this.wsR = paramString;
     this.value = paramInt;
   }
   
-  public static k Kq(int paramInt)
+  public static k LS(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return vnt;
+      return wsL;
     case 0: 
-      return vnt;
+      return wsL;
     case 1: 
-      return vnu;
+      return wsM;
     case 2: 
-      return vnv;
+      return wsN;
     case 3: 
-      return vnw;
+      return wsO;
     case 4: 
-      return vnx;
+      return wsP;
     case 5: 
-      return vny;
+      return wsQ;
     }
-    return vns;
+    return wsK;
   }
   
-  public static dhn a(k paramk, c paramc)
+  public static dnc a(k paramk, c paramc)
   {
     AppMethodBeat.i(127255);
-    dhn localdhn = new dhn();
-    switch (1.vnn[paramk.ordinal()])
+    dnc localdnc = new dnc();
+    switch (1.wsF[paramk.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(127255);
-      return localdhn;
-      localdhn.title = paramc.field_title;
+      return localdnc;
+      localdnc.title = paramc.field_title;
       continue;
-      localdhn.url = paramc.field_icon_url;
+      localdnc.url = paramc.field_icon_url;
       continue;
-      localdhn.url = paramc.field_icon_url;
-      localdhn.title = paramc.field_title;
+      localdnc.url = paramc.field_icon_url;
+      localdnc.title = paramc.field_title;
     }
   }
   
   public final String toString()
   {
     AppMethodBeat.i(127256);
-    String str = "NewTipsShowType{commet='" + this.vnz + '\'' + ", value=" + this.value + '}';
+    String str = "NewTipsShowType{commet='" + this.wsR + '\'' + ", value=" + this.value + '}';
     AppMethodBeat.o(127256);
     return str;
   }

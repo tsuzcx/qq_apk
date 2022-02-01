@@ -12,41 +12,43 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cc.a;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.websearch.ui.widget.SOSEditTextView;
-import com.tencent.mm.sdk.h.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.search.FTSEditTextView;
 
 public class FTSSOSMoreWebViewUI
   extends BaseSOSWebViewUI
 {
-  private View CDI;
-  private int CDm;
+  private int EgX;
+  private View Eht;
   
-  public final void bvh()
+  public final void bzn()
   {
     boolean bool = false;
     AppMethodBeat.i(80692);
-    super.bvh();
-    this.CDI = findViewById(2131306921);
-    eEX().exR();
-    eEX().fth();
-    this.ucS.setVisibility(0);
-    eEX().ftb();
-    this.CDm = a.fromDPToPix(this, 48);
+    super.bzn();
+    this.Eht = findViewById(2131306921);
+    eTQ().eMI();
+    eTQ().fJV();
+    eTQ().fJP();
+    this.EgX = com.tencent.mm.cc.a.fromDPToPix(this, 48);
     if (getScene() == 24) {
-      this.CDI.setVisibility(4);
+      this.Eht.setVisibility(4);
     }
     findViewById(2131304239).setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(80690);
-        FTSSOSMoreWebViewUI.this.eEX().ty.clearFocus();
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        localb.bd(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/fts/FTSSOSMoreWebViewUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
+        FTSSOSMoreWebViewUI.this.eTQ().vr.clearFocus();
         FTSSOSMoreWebViewUI.this.hideVKB();
+        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/fts/FTSSOSMoreWebViewUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(80690);
         return false;
       }
@@ -57,60 +59,60 @@ public class FTSSOSMoreWebViewUI
         public final void run()
         {
           AppMethodBeat.i(80691);
-          FTSSOSMoreWebViewUI.this.eEX().fte();
-          FTSSOSMoreWebViewUI.this.eEX().ftd();
+          FTSSOSMoreWebViewUI.this.eTQ().fJS();
+          FTSSOSMoreWebViewUI.this.eTQ().fJR();
           AppMethodBeat.o(80691);
         }
       }, 128L);
     }
     int i = getResources().getColor(2131101179);
-    if (!aj.DT()) {
+    if (!al.isDarkMode()) {
       bool = true;
     }
-    aM(i, bool);
-    ImageButton localImageButton = eEX().getClearBtn();
+    aT(i, bool);
+    ImageButton localImageButton = eTQ().getClearBtn();
     if (localImageButton != null) {
       localImageButton.getDrawable().setColorFilter(-16777216, PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(80692);
   }
   
-  public final int bvi()
+  public final int bzo()
   {
     AppMethodBeat.i(80693);
-    if ((d.kZ(23)) && (!b.YJ()))
+    if ((d.ly(23)) && (!com.tencent.mm.sdk.h.b.abl()))
     {
       i = getResources().getColor(2131101179);
       AppMethodBeat.o(80693);
       return i;
     }
-    int i = super.bvi();
+    int i = super.bzo();
     AppMethodBeat.o(80693);
     return i;
   }
   
-  public boolean bvs()
+  public boolean bzz()
   {
     AppMethodBeat.i(80695);
-    eEX().fth();
-    this.CDI.setVisibility(0);
-    boolean bool = super.bvs();
+    eTQ().fJV();
+    this.Eht.setVisibility(0);
+    boolean bool = super.bzz();
     AppMethodBeat.o(80695);
     return bool;
   }
   
-  protected final void eET()
+  protected final void eTL()
   {
     AppMethodBeat.i(80696);
     finish();
     AppMethodBeat.o(80696);
   }
   
-  protected final void eEU()
+  protected final void eTN()
   {
     AppMethodBeat.i(80698);
-    super.eEU();
-    this.CDI.setVisibility(0);
+    super.eTN();
+    this.Eht.setVisibility(0);
     AppMethodBeat.o(80698);
   }
   
@@ -118,12 +120,12 @@ public class FTSSOSMoreWebViewUI
   {
     AppMethodBeat.i(80697);
     int i = -1;
-    if ((getType() == 8) && (this.CCM)) {
+    if ((getType() == 8) && (this.Egv)) {
       i = 2131759697;
     }
     while (i < 0)
     {
-      str = ai.getContext().getResources().getString(2131755882) + VM(getType());
+      str = aj.getContext().getResources().getString(2131755882) + XC(getType());
       AppMethodBeat.o(80697);
       return str;
       switch (getType())
@@ -159,7 +161,7 @@ public class FTSSOSMoreWebViewUI
         i = 2131759693;
       }
     }
-    String str = ai.getContext().getResources().getString(2131762937, new Object[] { ai.getContext().getResources().getString(i) });
+    String str = aj.getContext().getResources().getString(2131762937, new Object[] { aj.getContext().getResources().getString(i) });
     AppMethodBeat.o(80697);
     return str;
   }
@@ -169,17 +171,16 @@ public class FTSSOSMoreWebViewUI
     return 2131495631;
   }
   
-  public final void lF(boolean paramBoolean)
+  public final void ma(boolean paramBoolean)
   {
     AppMethodBeat.i(80694);
-    super.lF(paramBoolean);
+    super.ma(paramBoolean);
     if (!paramBoolean)
     {
-      this.CCt.setPadding(this.CDm, 0, this.CCt.getPaddingRight(), 0);
-      this.ucS.setVisibility(0);
-      eEX().ftb();
+      this.Ega.setPadding(this.EgX, 0, this.Ega.getPaddingRight(), 0);
+      eTQ().fJP();
     }
-    eEX().fth();
+    eTQ().fJV();
     AppMethodBeat.o(80694);
   }
   
@@ -191,7 +192,7 @@ public class FTSSOSMoreWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSSOSMoreWebViewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ public enum e
   {
     AppMethodBeat.i(58025);
     e locale1 = new e("READ_ONLY", 0);
-    Lqg = locale1;
+    Nhd = locale1;
     e locale2 = new e("MUTABLE", 1);
-    Lqh = locale2;
-    Lqi = new e[] { locale1, locale2 };
+    Nhe = locale2;
+    Nhf = new e[] { locale1, locale2 };
     AppMethodBeat.o(58025);
   }
   
@@ -19,7 +19,7 @@ public enum e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.d.a.f.e
  * JD-Core Version:    0.7.0.1
  */

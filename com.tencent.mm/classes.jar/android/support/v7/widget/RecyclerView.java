@@ -55,105 +55,105 @@ public class RecyclerView
   extends ViewGroup
   implements k
 {
-  private static final int[] apH = { 16843830 };
-  private static final int[] apI = { 16842987 };
-  static final boolean apJ;
-  static final boolean apK;
-  static final boolean apL;
-  static final boolean apM;
-  private static final boolean apN;
-  private static final boolean apO;
-  private static final Class<?>[] apP;
-  static final Interpolator ard;
-  private final int[] SL;
-  final int[] SM;
-  private final Rect Xg = new Rect();
-  a abe;
-  private final q apQ = new q();
-  final o apR = new o();
-  private SavedState apS;
-  d apT;
-  s apU;
-  final bg apV = new bg();
-  boolean apW;
-  final Runnable apX = new Runnable()
+  private static final int[] arA;
+  static final boolean arB;
+  static final boolean arC;
+  static final boolean arD;
+  static final boolean arE;
+  private static final boolean arF;
+  private static final boolean arG;
+  private static final Class<?>[] arH;
+  private static final int[] arz = { 16843830 };
+  static final Interpolator asV;
+  private final int[] UA;
+  final int[] UB;
+  private final Rect YV = new Rect();
+  a acW;
+  private final q arI = new q();
+  final o arJ = new o();
+  private SavedState arK;
+  d arL;
+  s arM;
+  final bg arN = new bg();
+  boolean arO;
+  final Runnable arP = new Runnable()
   {
     public final void run()
     {
-      if ((!RecyclerView.this.aqh) || (RecyclerView.this.isLayoutRequested())) {
+      if ((!RecyclerView.this.arZ) || (RecyclerView.this.isLayoutRequested())) {
         return;
       }
-      if (!RecyclerView.this.aqe)
+      if (!RecyclerView.this.arW)
       {
         RecyclerView.this.requestLayout();
         return;
       }
-      if (RecyclerView.this.aqk)
+      if (RecyclerView.this.asc)
       {
-        RecyclerView.this.aqj = true;
+        RecyclerView.this.asb = true;
         return;
       }
-      RecyclerView.this.kr();
+      RecyclerView.this.kH();
     }
   };
-  final RectF apY = new RectF();
-  i apZ;
-  private int aqA = -1;
-  private int aqB;
-  private int aqC;
-  private int aqD;
-  private int aqE;
-  private k aqF;
-  private final int aqG;
-  private final int aqH;
-  private float aqI = 1.4E-45F;
-  private float aqJ = 1.4E-45F;
-  private boolean aqK = true;
-  final v aqL = new v();
-  ac aqM;
-  ac.a aqN;
-  final t aqO;
-  private m aqP;
-  private List<m> aqQ;
-  boolean aqR;
-  boolean aqS;
-  private RecyclerView.f.b aqT;
-  boolean aqU;
-  al aqV;
-  private d aqW;
-  private final int[] aqX;
-  private l aqY;
-  private final int[] aqZ;
-  p aqa;
-  public final ArrayList<h> aqb = new ArrayList();
-  private final ArrayList<l> aqc = new ArrayList();
-  private l aqd;
-  boolean aqe;
-  boolean aqf;
-  boolean aqg;
-  boolean aqh;
-  private int aqi = 0;
-  boolean aqj;
-  public boolean aqk;
-  private boolean aql;
-  private int aqm;
-  boolean aqn;
-  private final AccessibilityManager aqo;
-  public List<j> aqp;
-  boolean aqq = false;
-  boolean aqr = false;
-  private int aqs = 0;
-  private int aqt = 0;
-  private e aqu = new e();
-  private EdgeEffect aqv;
-  private EdgeEffect aqw;
-  private EdgeEffect aqx;
-  private EdgeEffect aqy;
-  f aqz = new v();
-  final int[] ara;
-  final List<w> arb;
-  private Runnable arc;
-  private final bg.b are;
+  final RectF arQ = new RectF();
+  i arR;
+  p arS;
+  public final ArrayList<h> arT = new ArrayList();
+  private final ArrayList<l> arU = new ArrayList();
+  private l arV;
+  boolean arW;
+  boolean arX;
+  boolean arY;
+  boolean arZ;
+  private float asA = 1.4E-45F;
+  private float asB = 1.4E-45F;
+  private boolean asC = true;
+  final v asD = new v();
+  ac asE;
+  ac.a asF;
+  final t asG;
+  private m asH;
+  private List<m> asI;
+  boolean asJ;
+  boolean asK;
+  private RecyclerView.f.b asL;
+  boolean asM;
+  al asN;
+  private d asO;
+  private final int[] asP;
+  private l asQ;
+  private final int[] asR;
+  final int[] asS;
+  final List<w> asT;
+  private Runnable asU;
+  private final bg.b asW;
+  private int asa = 0;
+  boolean asb;
+  public boolean asc;
+  private boolean asd;
+  private int ase;
+  boolean asf;
+  private final AccessibilityManager asg;
+  public List<j> ash;
+  boolean asi = false;
+  boolean asj = false;
+  private int ask = 0;
+  private int asl = 0;
+  private e asm = new e();
+  private EdgeEffect asn;
+  private EdgeEffect aso;
+  private EdgeEffect asp;
+  private EdgeEffect asq;
+  f asr = new v();
+  private int ass = -1;
+  private int ast;
+  private int asu;
+  private int asv;
+  private int asw;
+  private k asx;
+  private final int asy;
+  private final int asz;
   private int mScrollState = 0;
   final Rect mTempRect = new Rect();
   private int mTouchSlop;
@@ -161,34 +161,35 @@ public class RecyclerView
   
   static
   {
+    arA = new int[] { 16842987 };
     if ((Build.VERSION.SDK_INT == 18) || (Build.VERSION.SDK_INT == 19) || (Build.VERSION.SDK_INT == 20))
     {
       bool = true;
-      apJ = bool;
+      arB = bool;
       if (Build.VERSION.SDK_INT < 23) {
         break label169;
       }
       bool = true;
       label62:
-      apK = bool;
+      arC = bool;
       if (Build.VERSION.SDK_INT < 16) {
         break label174;
       }
       bool = true;
       label76:
-      apL = bool;
+      arD = bool;
       if (Build.VERSION.SDK_INT < 21) {
         break label179;
       }
       bool = true;
       label90:
-      apM = bool;
+      arE = bool;
       if (Build.VERSION.SDK_INT > 15) {
         break label184;
       }
       bool = true;
       label104:
-      apN = bool;
+      arF = bool;
       if (Build.VERSION.SDK_INT > 15) {
         break label189;
       }
@@ -200,9 +201,9 @@ public class RecyclerView
     label189:
     for (boolean bool = true;; bool = false)
     {
-      apO = bool;
-      apP = new Class[] { Context.class, AttributeSet.class, Integer.TYPE, Integer.TYPE };
-      ard = new Interpolator()
+      arG = bool;
+      arH = new Class[] { Context.class, AttributeSet.class, Integer.TYPE, Integer.TYPE };
+      asV = new Interpolator()
       {
         public final float getInterpolation(float paramAnonymousFloat)
         {
@@ -238,41 +239,41 @@ public class RecyclerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     Object localObject1;
-    if (apM)
+    if (arE)
     {
       localObject1 = new ac.a();
-      this.aqN = ((ac.a)localObject1);
-      this.aqO = new t();
-      this.aqR = false;
-      this.aqS = false;
-      this.aqT = new g();
-      this.aqU = false;
-      this.aqX = new int[2];
-      this.SL = new int[2];
-      this.SM = new int[2];
-      this.aqZ = new int[2];
-      this.ara = new int[2];
-      this.arb = new ArrayList();
-      this.arc = new Runnable()
+      this.asF = ((ac.a)localObject1);
+      this.asG = new t();
+      this.asJ = false;
+      this.asK = false;
+      this.asL = new g();
+      this.asM = false;
+      this.asP = new int[2];
+      this.UA = new int[2];
+      this.UB = new int[2];
+      this.asR = new int[2];
+      this.asS = new int[2];
+      this.asT = new ArrayList();
+      this.asU = new Runnable()
       {
         public final void run()
         {
-          if (RecyclerView.this.aqz != null) {
-            RecyclerView.this.aqz.je();
+          if (RecyclerView.this.asr != null) {
+            RecyclerView.this.asr.ju();
           }
-          RecyclerView.this.aqU = false;
+          RecyclerView.this.asM = false;
         }
       };
-      this.are = new bg.b()
+      this.asW = new bg.b()
       {
         public final void a(RecyclerView.w paramAnonymousw, RecyclerView.f.c paramAnonymousc1, RecyclerView.f.c paramAnonymousc2)
         {
-          RecyclerView.this.apR.u(paramAnonymousw);
+          RecyclerView.this.arJ.u(paramAnonymousw);
           RecyclerView localRecyclerView = RecyclerView.this;
           localRecyclerView.f(paramAnonymousw);
           paramAnonymousw.ax(false);
-          if (localRecyclerView.aqz.d(paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
-            localRecyclerView.kH();
+          if (localRecyclerView.asr.d(paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
+            localRecyclerView.kX();
           }
         }
         
@@ -280,45 +281,45 @@ public class RecyclerView
         {
           RecyclerView localRecyclerView = RecyclerView.this;
           paramAnonymousw.ax(false);
-          if (localRecyclerView.aqz.e(paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
-            localRecyclerView.kH();
+          if (localRecyclerView.asr.e(paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
+            localRecyclerView.kX();
           }
         }
         
         public final void c(RecyclerView.w paramAnonymousw, RecyclerView.f.c paramAnonymousc1, RecyclerView.f.c paramAnonymousc2)
         {
           paramAnonymousw.ax(false);
-          if (RecyclerView.this.aqq) {
-            if (RecyclerView.this.aqz.a(paramAnonymousw, paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
-              RecyclerView.this.kH();
+          if (RecyclerView.this.asi) {
+            if (RecyclerView.this.asr.a(paramAnonymousw, paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
+              RecyclerView.this.kX();
             }
           }
-          while (!RecyclerView.this.aqz.f(paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
+          while (!RecyclerView.this.asr.f(paramAnonymousw, paramAnonymousc1, paramAnonymousc2)) {
             return;
           }
-          RecyclerView.this.kH();
+          RecyclerView.this.kX();
         }
         
         public final void j(RecyclerView.w paramAnonymousw)
         {
-          RecyclerView.this.apZ.a(paramAnonymousw.asD, RecyclerView.this.apR);
+          RecyclerView.this.arR.a(paramAnonymousw.auu, RecyclerView.this.arJ);
         }
       };
       if (paramAttributeSet == null) {
         break label693;
       }
-      localObject1 = paramContext.obtainStyledAttributes(paramAttributeSet, apI, paramInt, 0);
-      this.apW = ((TypedArray)localObject1).getBoolean(0, true);
+      localObject1 = paramContext.obtainStyledAttributes(paramAttributeSet, arA, paramInt, 0);
+      this.arO = ((TypedArray)localObject1).getBoolean(0, true);
       ((TypedArray)localObject1).recycle();
       label358:
       setScrollContainer(true);
       setFocusableInTouchMode(true);
       localObject1 = ViewConfiguration.get(paramContext);
       this.mTouchSlop = ((ViewConfiguration)localObject1).getScaledTouchSlop();
-      this.aqI = u.a((ViewConfiguration)localObject1, paramContext);
-      this.aqJ = u.b((ViewConfiguration)localObject1, paramContext);
-      this.aqG = ((ViewConfiguration)localObject1).getScaledMinimumFlingVelocity();
-      this.aqH = ((ViewConfiguration)localObject1).getScaledMaximumFlingVelocity();
+      this.asA = u.a((ViewConfiguration)localObject1, paramContext);
+      this.asB = u.b((ViewConfiguration)localObject1, paramContext);
+      this.asy = ((ViewConfiguration)localObject1).getScaledMinimumFlingVelocity();
+      this.asz = ((ViewConfiguration)localObject1).getScaledMaximumFlingVelocity();
       if (getOverScrollMode() != 2) {
         break label701;
       }
@@ -333,12 +334,12 @@ public class RecyclerView
     for (boolean bool = true;; bool = false)
     {
       setWillNotDraw(bool);
-      this.aqz.ari = this.aqT;
-      this.apT = new d(new d.a()
+      this.asr.ata = this.asL;
+      this.arL = new d(new d.a()
       {
         private void f(d.b paramAnonymousb)
         {
-          switch (paramAnonymousb.CW)
+          switch (paramAnonymousb.EN)
           {
           case 3: 
           case 5: 
@@ -347,67 +348,67 @@ public class RecyclerView
           default: 
             return;
           case 1: 
-            RecyclerView.this.apZ.c(RecyclerView.this, paramAnonymousb.ahV, paramAnonymousb.ahX);
+            RecyclerView.this.arR.c(RecyclerView.this, paramAnonymousb.ajM, paramAnonymousb.ajO);
             return;
           case 2: 
-            RecyclerView.this.apZ.d(RecyclerView.this, paramAnonymousb.ahV, paramAnonymousb.ahX);
+            RecyclerView.this.arR.d(RecyclerView.this, paramAnonymousb.ajM, paramAnonymousb.ajO);
             return;
           case 4: 
-            RecyclerView.this.apZ.a(RecyclerView.this, paramAnonymousb.ahV, paramAnonymousb.ahX, paramAnonymousb.ahW);
+            RecyclerView.this.arR.a(RecyclerView.this, paramAnonymousb.ajM, paramAnonymousb.ajO, paramAnonymousb.ajN);
             return;
           }
-          RecyclerView.this.apZ.a(RecyclerView.this, paramAnonymousb.ahV, paramAnonymousb.ahX, 1);
-        }
-        
-        public final void M(int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          RecyclerView.this.e(paramAnonymousInt1, paramAnonymousInt2, true);
-          RecyclerView.this.aqR = true;
-          RecyclerView.t localt = RecyclerView.this.aqO;
-          localt.asl += paramAnonymousInt2;
+          RecyclerView.this.arR.a(RecyclerView.this, paramAnonymousb.ajM, paramAnonymousb.ajO, 1);
         }
         
         public final void N(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          RecyclerView.this.e(paramAnonymousInt1, paramAnonymousInt2, false);
-          RecyclerView.this.aqR = true;
+          RecyclerView.this.e(paramAnonymousInt1, paramAnonymousInt2, true);
+          RecyclerView.this.asJ = true;
+          RecyclerView.t localt = RecyclerView.this.asG;
+          localt.auc += paramAnonymousInt2;
         }
         
         public final void O(int paramAnonymousInt1, int paramAnonymousInt2)
         {
+          RecyclerView.this.e(paramAnonymousInt1, paramAnonymousInt2, false);
+          RecyclerView.this.asJ = true;
+        }
+        
+        public final void P(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
           RecyclerView localRecyclerView = RecyclerView.this;
-          int j = localRecyclerView.apU.jb();
+          int j = localRecyclerView.arM.jr();
           int i = 0;
           while (i < j)
           {
-            localObject = RecyclerView.bv(localRecyclerView.apU.bL(i));
-            if ((localObject != null) && (!((RecyclerView.w)localObject).lt()) && (((RecyclerView.w)localObject).mPosition >= paramAnonymousInt1))
+            localObject = RecyclerView.bv(localRecyclerView.arM.bL(i));
+            if ((localObject != null) && (!((RecyclerView.w)localObject).lL()) && (((RecyclerView.w)localObject).mPosition >= paramAnonymousInt1))
             {
               ((RecyclerView.w)localObject).k(paramAnonymousInt2, false);
-              localRecyclerView.aqO.aso = true;
+              localRecyclerView.asG.auf = true;
             }
             i += 1;
           }
-          Object localObject = localRecyclerView.apR;
-          j = ((RecyclerView.o)localObject).arS.size();
+          Object localObject = localRecyclerView.arJ;
+          j = ((RecyclerView.o)localObject).atJ.size();
           i = 0;
           while (i < j)
           {
-            RecyclerView.w localw = (RecyclerView.w)((RecyclerView.o)localObject).arS.get(i);
+            RecyclerView.w localw = (RecyclerView.w)((RecyclerView.o)localObject).atJ.get(i);
             if ((localw != null) && (localw.mPosition >= paramAnonymousInt1)) {
               localw.k(paramAnonymousInt2, true);
             }
             i += 1;
           }
           localRecyclerView.requestLayout();
-          RecyclerView.this.aqR = true;
+          RecyclerView.this.asJ = true;
         }
         
-        public final void P(int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void Q(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           int n = -1;
           RecyclerView localRecyclerView = RecyclerView.this;
-          int i1 = localRecyclerView.apU.jb();
+          int i1 = localRecyclerView.arM.jr();
           int i;
           int j;
           int k;
@@ -422,7 +423,7 @@ public class RecyclerView
             if (m >= i1) {
               break label139;
             }
-            localObject = RecyclerView.bv(localRecyclerView.apU.bL(m));
+            localObject = RecyclerView.bv(localRecyclerView.arM.bL(m));
             if ((localObject != null) && (((RecyclerView.w)localObject).mPosition >= k) && (((RecyclerView.w)localObject).mPosition <= j))
             {
               if (((RecyclerView.w)localObject).mPosition != paramAnonymousInt1) {
@@ -433,7 +434,7 @@ public class RecyclerView
           }
           for (;;)
           {
-            localRecyclerView.aqO.aso = true;
+            localRecyclerView.asG.auf = true;
             m += 1;
             break label35;
             i = 1;
@@ -444,7 +445,7 @@ public class RecyclerView
             ((RecyclerView.w)localObject).k(i, false);
           }
           label139:
-          Object localObject = localRecyclerView.apR;
+          Object localObject = localRecyclerView.arJ;
           label173:
           RecyclerView.w localw;
           if (paramAnonymousInt1 < paramAnonymousInt2)
@@ -452,12 +453,12 @@ public class RecyclerView
             j = paramAnonymousInt2;
             k = paramAnonymousInt1;
             i = n;
-            n = ((RecyclerView.o)localObject).arS.size();
+            n = ((RecyclerView.o)localObject).atJ.size();
             m = 0;
             if (m >= n) {
               break label268;
             }
-            localw = (RecyclerView.w)((RecyclerView.o)localObject).arS.get(m);
+            localw = (RecyclerView.w)((RecyclerView.o)localObject).atJ.get(m);
             if ((localw != null) && (localw.mPosition >= k) && (localw.mPosition <= j))
             {
               if (localw.mPosition != paramAnonymousInt1) {
@@ -479,14 +480,14 @@ public class RecyclerView
           }
           label268:
           localRecyclerView.requestLayout();
-          RecyclerView.this.aqR = true;
+          RecyclerView.this.asJ = true;
         }
         
         public final RecyclerView.w bF(int paramAnonymousInt)
         {
           RecyclerView.w localw = RecyclerView.this.j(paramAnonymousInt, true);
           if (localw == null) {}
-          while (RecyclerView.this.apU.bg(localw.asD)) {
+          while (RecyclerView.this.arM.bg(localw.auu)) {
             return null;
           }
           return localw;
@@ -495,25 +496,25 @@ public class RecyclerView
         public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Object paramAnonymousObject)
         {
           Object localObject = RecyclerView.this;
-          int j = ((RecyclerView)localObject).apU.jb();
+          int j = ((RecyclerView)localObject).arM.jr();
           int i = 0;
           while (i < j)
           {
-            View localView = ((RecyclerView)localObject).apU.bL(i);
+            View localView = ((RecyclerView)localObject).arM.bL(i);
             RecyclerView.w localw = RecyclerView.bv(localView);
-            if ((localw != null) && (!localw.lt()) && (localw.mPosition >= paramAnonymousInt1) && (localw.mPosition < paramAnonymousInt1 + paramAnonymousInt2))
+            if ((localw != null) && (!localw.lL()) && (localw.mPosition >= paramAnonymousInt1) && (localw.mPosition < paramAnonymousInt1 + paramAnonymousInt2))
             {
               localw.addFlags(2);
-              localw.N(paramAnonymousObject);
-              ((RecyclerView.LayoutParams)localView.getLayoutParams()).arI = true;
+              localw.O(paramAnonymousObject);
+              ((RecyclerView.LayoutParams)localView.getLayoutParams()).atz = true;
             }
             i += 1;
           }
-          paramAnonymousObject = ((RecyclerView)localObject).apR;
-          i = paramAnonymousObject.arS.size() - 1;
+          paramAnonymousObject = ((RecyclerView)localObject).arJ;
+          i = paramAnonymousObject.atJ.size() - 1;
           while (i >= 0)
           {
-            localObject = (RecyclerView.w)paramAnonymousObject.arS.get(i);
+            localObject = (RecyclerView.w)paramAnonymousObject.atJ.get(i);
             if (localObject != null)
             {
               j = ((RecyclerView.w)localObject).mPosition;
@@ -525,7 +526,7 @@ public class RecyclerView
             }
             i -= 1;
           }
-          RecyclerView.this.aqS = true;
+          RecyclerView.this.asK = true;
         }
         
         public final void d(d.b paramAnonymousb)
@@ -538,22 +539,22 @@ public class RecyclerView
           f(paramAnonymousb);
         }
       });
-      this.apU = new s(new s.b()
+      this.arM = new s(new s.b()
       {
         public final void addView(View paramAnonymousView, int paramAnonymousInt)
         {
           RecyclerView.this.addView(paramAnonymousView, paramAnonymousInt);
           RecyclerView localRecyclerView = RecyclerView.this;
           RecyclerView.w localw = RecyclerView.bv(paramAnonymousView);
-          if ((localRecyclerView.abe != null) && (localw != null)) {
-            localRecyclerView.abe.k(localw);
+          if ((localRecyclerView.acW != null) && (localw != null)) {
+            localRecyclerView.acW.k(localw);
           }
-          if (localRecyclerView.aqp != null)
+          if (localRecyclerView.ash != null)
           {
-            paramAnonymousInt = localRecyclerView.aqp.size() - 1;
+            paramAnonymousInt = localRecyclerView.ash.size() - 1;
             while (paramAnonymousInt >= 0)
             {
-              ((RecyclerView.j)localRecyclerView.aqp.get(paramAnonymousInt)).bQ(paramAnonymousView);
+              ((RecyclerView.j)localRecyclerView.ash.get(paramAnonymousInt)).bQ(paramAnonymousView);
               paramAnonymousInt -= 1;
             }
           }
@@ -564,10 +565,10 @@ public class RecyclerView
           RecyclerView.w localw = RecyclerView.bv(paramAnonymousView);
           if (localw != null)
           {
-            if ((!localw.lF()) && (!localw.lt())) {
-              throw new IllegalArgumentException("Called attach on a child which is not detached: " + localw + RecyclerView.this.kp());
+            if ((!localw.lX()) && (!localw.lL())) {
+              throw new IllegalArgumentException("Called attach on a child which is not detached: " + localw + RecyclerView.this.kF());
             }
-            localw.lD();
+            localw.lV();
           }
           RecyclerView.a(RecyclerView.this, paramAnonymousView, paramAnonymousInt, paramAnonymousLayoutParams);
         }
@@ -584,12 +585,12 @@ public class RecyclerView
           if (paramAnonymousView != null)
           {
             localRecyclerView = RecyclerView.this;
-            if (paramAnonymousView.asS == -1) {
+            if (paramAnonymousView.auJ == -1) {
               break label38;
             }
           }
           label38:
-          for (paramAnonymousView.asR = paramAnonymousView.asS;; paramAnonymousView.asR = t.X(paramAnonymousView.asD))
+          for (paramAnonymousView.auI = paramAnonymousView.auJ;; paramAnonymousView.auI = t.X(paramAnonymousView.auu))
           {
             localRecyclerView.b(paramAnonymousView, 4);
             return;
@@ -601,8 +602,8 @@ public class RecyclerView
           paramAnonymousView = RecyclerView.bv(paramAnonymousView);
           if (paramAnonymousView != null)
           {
-            RecyclerView.this.b(paramAnonymousView, paramAnonymousView.asR);
-            paramAnonymousView.asR = 0;
+            RecyclerView.this.b(paramAnonymousView, paramAnonymousView.auI);
+            paramAnonymousView.auI = 0;
           }
         }
         
@@ -614,8 +615,8 @@ public class RecyclerView
             localObject = RecyclerView.bv((View)localObject);
             if (localObject != null)
             {
-              if ((((RecyclerView.w)localObject).lF()) && (!((RecyclerView.w)localObject).lt())) {
-                throw new IllegalArgumentException("called detach on an already detached child " + localObject + RecyclerView.this.kp());
+              if ((((RecyclerView.w)localObject).lX()) && (!((RecyclerView.w)localObject).lL())) {
+                throw new IllegalArgumentException("called detach on an already detached child " + localObject + RecyclerView.this.kF());
               }
               ((RecyclerView.w)localObject).addFlags(256);
             }
@@ -669,7 +670,7 @@ public class RecyclerView
       if (t.X(this) == 0) {
         t.p(this, 1);
       }
-      this.aqo = ((AccessibilityManager)getContext().getSystemService("accessibility"));
+      this.asg = ((AccessibilityManager)getContext().getSystemService("accessibility"));
       setAccessibilityDelegateCompat(new al(this));
       if (paramAttributeSet == null) {
         break label1272;
@@ -679,8 +680,8 @@ public class RecyclerView
       if (((TypedArray)localObject1).getInt(1, -1) == -1) {
         setDescendantFocusability(262144);
       }
-      this.aqg = ((TypedArray)localObject1).getBoolean(2, false);
-      if (!this.aqg) {
+      this.arY = ((TypedArray)localObject1).getBoolean(2, false);
+      if (!this.arY) {
         break label757;
       }
       localObject3 = (StateListDrawable)((TypedArray)localObject1).getDrawable(5);
@@ -690,10 +691,10 @@ public class RecyclerView
       if ((localObject3 != null) && (localObject4 != null) && (localStateListDrawable != null) && (localDrawable != null)) {
         break label707;
       }
-      throw new IllegalArgumentException("Trying to set fast scroller without both required drawables." + kp());
+      throw new IllegalArgumentException("Trying to set fast scroller without both required drawables." + kF());
       localObject1 = null;
       break;
-      this.apW = true;
+      this.arO = true;
       break label358;
     }
     label707:
@@ -723,7 +724,7 @@ public class RecyclerView
         }
         try
         {
-          localObject3 = ((Class)localObject4).getConstructor(apP);
+          localObject3 = ((Class)localObject4).getConstructor(arH);
           localObject2 = new Object[4];
           localObject2[0] = paramContext;
           localObject2[1] = paramAttributeSet;
@@ -748,7 +749,7 @@ public class RecyclerView
         setLayoutManager((i)((Constructor)localObject3).newInstance((Object[])localObject2));
         if (Build.VERSION.SDK_INT >= 21)
         {
-          paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, apH, paramInt, 0);
+          paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, arz, paramInt, 0);
           bool = paramContext.getBoolean(0, true);
           paramContext.recycle();
           setNestedScrollingEnabled(bool);
@@ -789,23 +790,28 @@ public class RecyclerView
     }
   }
   
+  private boolean A(int paramInt1, int paramInt2)
+  {
+    return getScrollingChildHelper().A(paramInt1, paramInt2);
+  }
+  
   private void a(long paramLong, w paramw1, w paramw2)
   {
-    int j = this.apU.getChildCount();
+    int j = this.arM.getChildCount();
     int i = 0;
     while (i < j)
     {
-      w localw = bv(this.apU.getChildAt(i));
+      w localw = bv(this.arM.getChildAt(i));
       if ((localw != paramw1) && (g(localw) == paramLong))
       {
-        if ((this.abe != null) && (this.abe.arh)) {
-          throw new IllegalStateException("Two different ViewHolders have the same stable ID. Stable IDs in your adapter MUST BE unique and SHOULD NOT change.\n ViewHolder 1:" + localw + " \n View Holder 2:" + paramw1 + kp());
+        if ((this.acW != null) && (this.acW.asZ)) {
+          throw new IllegalStateException("Two different ViewHolders have the same stable ID. Stable IDs in your adapter MUST BE unique and SHOULD NOT change.\n ViewHolder 1:" + localw + " \n View Holder 2:" + paramw1 + kF());
         }
-        throw new IllegalStateException("Two different ViewHolders have the same change ID. This might happen due to inconsistent Adapter update events or if the LayoutManager lays out the same View multiple times.\n ViewHolder 1:" + localw + " \n View Holder 2:" + paramw1 + kp());
+        throw new IllegalStateException("Two different ViewHolders have the same change ID. This might happen due to inconsistent Adapter update events or if the LayoutManager lays out the same View multiple times.\n ViewHolder 1:" + localw + " \n View Holder 2:" + paramw1 + kF());
       }
       i += 1;
     }
-    new StringBuilder("Problem while matching changed view holders with the newones. The pre-layout information for the change holder ").append(paramw2).append(" cannot be found but it is necessary for ").append(paramw1).append(kp());
+    new StringBuilder("Problem while matching changed view holders with the newones. The pre-layout information for the change holder ").append(paramw2).append(" cannot be found but it is necessary for ").append(paramw1).append(kF());
   }
   
   private void a(w paramw1, w paramw2, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2, boolean paramBoolean1, boolean paramBoolean2)
@@ -819,54 +825,54 @@ public class RecyclerView
       if (paramBoolean2) {
         f(paramw2);
       }
-      paramw1.asJ = paramw2;
+      paramw1.auA = paramw2;
       f(paramw1);
-      this.apR.u(paramw1);
+      this.arJ.u(paramw1);
       paramw2.ax(false);
-      paramw2.asK = paramw1;
+      paramw2.auB = paramw1;
     }
-    if (this.aqz.a(paramw1, paramw2, paramc1, paramc2)) {
-      kH();
+    if (this.asr.a(paramw1, paramw2, paramc1, paramc2)) {
+      kX();
     }
   }
   
   private boolean a(int paramInt1, int paramInt2, MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    kr();
+    kH();
     int i;
     int j;
     int k;
     int m;
-    if (this.abe != null)
+    if (this.acW != null)
     {
-      b(paramInt1, paramInt2, this.ara);
-      i = this.ara[0];
-      j = this.ara[1];
+      b(paramInt1, paramInt2, this.asS);
+      i = this.asS[0];
+      j = this.asS[1];
       k = paramInt1 - i;
       m = paramInt2 - j;
     }
     for (;;)
     {
-      if (!this.aqb.isEmpty()) {
+      if (!this.arT.isEmpty()) {
         invalidate();
       }
-      if (a(i, j, k, m, this.SL, 0))
+      if (a(i, j, k, m, this.UA, 0))
       {
-        this.aqD -= this.SL[0];
-        this.aqE -= this.SL[1];
+        this.asv -= this.UA[0];
+        this.asw -= this.UA[1];
         if (paramMotionEvent != null) {
-          paramMotionEvent.offsetLocation(this.SL[0], this.SL[1]);
+          paramMotionEvent.offsetLocation(this.UA[0], this.UA[1]);
         }
-        paramMotionEvent = this.aqZ;
-        paramMotionEvent[0] += this.SL[0];
-        paramMotionEvent = this.aqZ;
-        paramMotionEvent[1] += this.SL[1];
+        paramMotionEvent = this.asR;
+        paramMotionEvent[0] += this.UA[0];
+        paramMotionEvent = this.asR;
+        paramMotionEvent[1] += this.UA[1];
       }
       for (;;)
       {
         if ((i != 0) || (j != 0)) {
-          an(i, j);
+          ao(i, j);
         }
         if (!awakenScrollBars()) {
           invalidate();
@@ -880,7 +886,7 @@ public class RecyclerView
           if ((paramMotionEvent != null) && (!android.support.v4.view.i.e(paramMotionEvent))) {
             h(paramMotionEvent.getX(), k, paramMotionEvent.getY(), m);
           }
-          aj(paramInt1, paramInt2);
+          ak(paramInt1, paramInt2);
         }
       }
       j = 0;
@@ -890,11 +896,11 @@ public class RecyclerView
     }
   }
   
-  private boolean am(int paramInt1, int paramInt2)
+  private boolean an(int paramInt1, int paramInt2)
   {
     boolean bool = false;
-    m(this.aqX);
-    if ((this.aqX[0] != paramInt1) || (this.aqX[1] != paramInt2)) {
+    m(this.asP);
+    if ((this.asP[0] != paramInt1) || (this.asP[1] != paramInt2)) {
       bool = true;
     }
     return bool;
@@ -905,14 +911,14 @@ public class RecyclerView
     if (paramView == null) {
       return null;
     }
-    return ((LayoutParams)paramView.getLayoutParams()).arH;
+    return ((LayoutParams)paramView.getLayoutParams()).aty;
   }
   
   public static int bw(View paramView)
   {
     paramView = bv(paramView);
     if (paramView != null) {
-      return paramView.lv();
+      return paramView.lN();
     }
     return -1;
   }
@@ -921,7 +927,7 @@ public class RecyclerView
   {
     paramView = bv(paramView);
     if (paramView != null) {
-      return paramView.lu();
+      return paramView.lM();
     }
     return -1;
   }
@@ -956,7 +962,7 @@ public class RecyclerView
   static void d(View paramView, Rect paramRect)
   {
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
-    Rect localRect = localLayoutParams.anO;
+    Rect localRect = localLayoutParams.apG;
     int i = paramView.getLeft();
     int j = localRect.left;
     int k = localLayoutParams.leftMargin;
@@ -985,9 +991,9 @@ public class RecyclerView
       if ((localObject instanceof LayoutParams))
       {
         localObject = (LayoutParams)localObject;
-        if (!((LayoutParams)localObject).arI)
+        if (!((LayoutParams)localObject).atz)
         {
-          localObject = ((LayoutParams)localObject).anO;
+          localObject = ((LayoutParams)localObject).apG;
           localRect = this.mTempRect;
           localRect.left -= ((Rect)localObject).left;
           localRect = this.mTempRect;
@@ -1004,9 +1010,9 @@ public class RecyclerView
         offsetDescendantRectToMyCoords(paramView2, this.mTempRect);
         offsetRectIntoDescendantCoords(paramView1, this.mTempRect);
       }
-      localObject = this.apZ;
+      localObject = this.arR;
       localRect = this.mTempRect;
-      if (this.aqh) {
+      if (this.arZ) {
         break label225;
       }
       bool1 = true;
@@ -1031,8 +1037,8 @@ public class RecyclerView
   
   private long g(w paramw)
   {
-    if (this.abe.arh) {
-      return paramw.asG;
+    if (this.acW.asZ) {
+      return paramw.aux;
     }
     return paramw.mPosition;
   }
@@ -1043,14 +1049,14 @@ public class RecyclerView
     int i = 0;
     if (paramFloat2 < 0.0F)
     {
-      kw();
-      android.support.v4.widget.i.a(this.aqv, -paramFloat2 / getWidth(), 1.0F - paramFloat3 / getHeight());
+      kM();
+      android.support.v4.widget.i.a(this.asn, -paramFloat2 / getWidth(), 1.0F - paramFloat3 / getHeight());
       i = 1;
       if (paramFloat4 >= 0.0F) {
         break label141;
       }
-      ky();
-      android.support.v4.widget.i.a(this.aqw, -paramFloat4 / getHeight(), paramFloat1 / getWidth());
+      kO();
+      android.support.v4.widget.i.a(this.aso, -paramFloat4 / getHeight(), paramFloat1 / getWidth());
       i = j;
     }
     for (;;)
@@ -1062,15 +1068,15 @@ public class RecyclerView
       if (paramFloat2 <= 0.0F) {
         break;
       }
-      kx();
-      android.support.v4.widget.i.a(this.aqx, paramFloat2 / getWidth(), paramFloat3 / getHeight());
+      kN();
+      android.support.v4.widget.i.a(this.asp, paramFloat2 / getWidth(), paramFloat3 / getHeight());
       i = 1;
       break;
       label141:
       if (paramFloat4 > 0.0F)
       {
-        kz();
-        android.support.v4.widget.i.a(this.aqy, paramFloat4 / getHeight(), 1.0F - paramFloat1 / getWidth());
+        kP();
+        android.support.v4.widget.i.a(this.asq, paramFloat4 / getHeight(), 1.0F - paramFloat1 / getWidth());
         i = j;
       }
     }
@@ -1079,12 +1085,12 @@ public class RecyclerView
   static void h(w paramw)
   {
     Object localObject;
-    if (paramw.asE != null) {
-      localObject = (View)paramw.asE.get();
+    if (paramw.auv != null) {
+      localObject = (View)paramw.auv.get();
     }
     while (localObject != null)
     {
-      if (localObject == paramw.asD) {
+      if (localObject == paramw.auu) {
         return;
       }
       localObject = ((View)localObject).getParent();
@@ -1094,13 +1100,13 @@ public class RecyclerView
         localObject = null;
       }
     }
-    paramw.asE = null;
+    paramw.auv = null;
   }
   
   private void i(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionIndex();
-    if (paramMotionEvent.getPointerId(i) == this.aqA) {
+    if (paramMotionEvent.getPointerId(i) == this.ass) {
       if (i != 0) {
         break label75;
       }
@@ -1108,45 +1114,140 @@ public class RecyclerView
     label75:
     for (i = 1;; i = 0)
     {
-      this.aqA = paramMotionEvent.getPointerId(i);
+      this.ass = paramMotionEvent.getPointerId(i);
       int j = (int)(paramMotionEvent.getX(i) + 0.5F);
-      this.aqD = j;
-      this.aqB = j;
+      this.asv = j;
+      this.ast = j;
       i = (int)(paramMotionEvent.getY(i) + 0.5F);
-      this.aqE = i;
-      this.aqC = i;
+      this.asw = i;
+      this.asu = i;
       return;
     }
   }
   
-  private void kA()
+  private void kK()
   {
-    this.aqy = null;
-    this.aqw = null;
-    this.aqx = null;
-    this.aqv = null;
+    this.asD.stop();
+    if (this.arR != null) {
+      this.arR.lz();
+    }
   }
   
-  private void kB()
+  private void kL()
+  {
+    boolean bool2 = false;
+    if (this.asn != null)
+    {
+      this.asn.onRelease();
+      bool2 = this.asn.isFinished();
+    }
+    boolean bool1 = bool2;
+    if (this.aso != null)
+    {
+      this.aso.onRelease();
+      bool1 = bool2 | this.aso.isFinished();
+    }
+    bool2 = bool1;
+    if (this.asp != null)
+    {
+      this.asp.onRelease();
+      bool2 = bool1 | this.asp.isFinished();
+    }
+    bool1 = bool2;
+    if (this.asq != null)
+    {
+      this.asq.onRelease();
+      bool1 = bool2 | this.asq.isFinished();
+    }
+    if (bool1) {
+      t.W(this);
+    }
+  }
+  
+  private void kM()
+  {
+    if (this.asn != null) {
+      return;
+    }
+    this.asn = e.e(this);
+    if (this.arO)
+    {
+      this.asn.setSize(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), getMeasuredWidth() - getPaddingLeft() - getPaddingRight());
+      return;
+    }
+    this.asn.setSize(getMeasuredHeight(), getMeasuredWidth());
+  }
+  
+  private void kN()
+  {
+    if (this.asp != null) {
+      return;
+    }
+    this.asp = e.e(this);
+    if (this.arO)
+    {
+      this.asp.setSize(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), getMeasuredWidth() - getPaddingLeft() - getPaddingRight());
+      return;
+    }
+    this.asp.setSize(getMeasuredHeight(), getMeasuredWidth());
+  }
+  
+  private void kO()
+  {
+    if (this.aso != null) {
+      return;
+    }
+    this.aso = e.e(this);
+    if (this.arO)
+    {
+      this.aso.setSize(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), getMeasuredHeight() - getPaddingTop() - getPaddingBottom());
+      return;
+    }
+    this.aso.setSize(getMeasuredWidth(), getMeasuredHeight());
+  }
+  
+  private void kP()
+  {
+    if (this.asq != null) {
+      return;
+    }
+    this.asq = e.e(this);
+    if (this.arO)
+    {
+      this.asq.setSize(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), getMeasuredHeight() - getPaddingTop() - getPaddingBottom());
+      return;
+    }
+    this.asq.setSize(getMeasuredWidth(), getMeasuredHeight());
+  }
+  
+  private void kQ()
+  {
+    this.asq = null;
+    this.aso = null;
+    this.asp = null;
+    this.asn = null;
+  }
+  
+  private void kR()
   {
     if (this.mVelocityTracker != null) {
       this.mVelocityTracker.clear();
     }
     aM(0);
-    kv();
+    kL();
   }
   
-  private void kC()
+  private void kS()
   {
-    kB();
+    kR();
     setScrollState(0);
   }
   
-  private void kF()
+  private void kV()
   {
-    int i = this.aqm;
-    this.aqm = 0;
-    if ((i != 0) && (kE()))
+    int i = this.ase;
+    this.ase = 0;
+    if ((i != 0) && (kU()))
     {
       AccessibilityEvent localAccessibilityEvent = AccessibilityEvent.obtain();
       localAccessibilityEvent.setEventType(2048);
@@ -1155,40 +1256,40 @@ public class RecyclerView
     }
   }
   
-  private boolean kI()
+  private boolean kY()
   {
-    return (this.aqz != null) && (this.apZ.jK());
+    return (this.asr != null) && (this.arR.ka());
   }
   
-  private void kJ()
+  private void kZ()
   {
     boolean bool2 = true;
-    if (this.aqq)
+    if (this.asi)
     {
-      this.apT.reset();
-      if (this.aqr) {
-        this.apZ.a(this);
+      this.arL.reset();
+      if (this.asj) {
+        this.arR.a(this);
       }
     }
     int i;
     label61:
     t localt;
-    if (kI())
+    if (kY())
     {
-      this.apT.iB();
-      if ((!this.aqR) && (!this.aqS)) {
+      this.arL.iR();
+      if ((!this.asJ) && (!this.asK)) {
         break label180;
       }
       i = 1;
-      localt = this.aqO;
-      if ((!this.aqh) || (this.aqz == null) || ((!this.aqq) && (i == 0) && (!this.apZ.arv)) || ((this.aqq) && (!this.abe.arh))) {
+      localt = this.asG;
+      if ((!this.arZ) || (this.asr == null) || ((!this.asi) && (i == 0) && (!this.arR.atm)) || ((this.asi) && (!this.acW.asZ))) {
         break label185;
       }
       bool1 = true;
       label121:
-      localt.ass = bool1;
-      localt = this.aqO;
-      if ((!this.aqO.ass) || (i == 0) || (this.aqq) || (!kI())) {
+      localt.auj = bool1;
+      localt = this.asG;
+      if ((!this.asG.auj) || (i == 0) || (this.asi) || (!kY())) {
         break label190;
       }
     }
@@ -1197,9 +1298,9 @@ public class RecyclerView
     label190:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      localt.ast = bool1;
+      localt.auk = bool1;
       return;
-      this.apT.iE();
+      this.arL.iU();
       break;
       i = 0;
       break label61;
@@ -1208,55 +1309,55 @@ public class RecyclerView
     }
   }
   
-  private void kK()
+  private void la()
   {
-    if (this.abe == null) {}
-    while (this.apZ == null) {
+    if (this.acW == null) {}
+    while (this.arR == null) {
       return;
     }
-    this.aqO.asr = false;
-    if (this.aqO.asm == 1)
+    this.asG.aui = false;
+    if (this.asG.aud == 1)
     {
-      kO();
-      this.apZ.h(this);
-      kP();
+      le();
+      this.arR.h(this);
+      lf();
     }
     for (;;)
     {
-      kQ();
+      lg();
       return;
-      if ((this.apT.iF()) || (this.apZ.mWidth != getWidth()) || (this.apZ.mHeight != getHeight()))
+      if ((this.arL.iV()) || (this.arR.mWidth != getWidth()) || (this.arR.mHeight != getHeight()))
       {
-        this.apZ.h(this);
-        kP();
+        this.arR.h(this);
+        lf();
       }
       else
       {
-        this.apZ.h(this);
+        this.arR.h(this);
       }
     }
   }
   
-  private void kL()
+  private void lb()
   {
-    if ((this.aqK) && (hasFocus()) && (this.abe != null)) {}
+    if ((this.asC) && (hasFocus()) && (this.acW != null)) {}
     for (Object localObject1 = getFocusedChild();; localObject1 = null)
     {
       if (localObject1 == null) {}
       for (localObject1 = null; localObject1 == null; localObject1 = bu((View)localObject1))
       {
-        kM();
+        lc();
         return;
       }
-      Object localObject2 = this.aqO;
+      Object localObject2 = this.asG;
       long l;
       int i;
-      if (this.abe.arh)
+      if (this.acW.asZ)
       {
-        l = ((w)localObject1).asG;
-        ((t)localObject2).asv = l;
-        localObject2 = this.aqO;
-        if (!this.aqq) {
+        l = ((w)localObject1).aux;
+        ((t)localObject2).aum = l;
+        localObject2 = this.asG;
+        if (!this.asi) {
           break label191;
         }
         i = -1;
@@ -1264,9 +1365,9 @@ public class RecyclerView
       t localt;
       for (;;)
       {
-        ((t)localObject2).asu = i;
-        localt = this.aqO;
-        localObject1 = ((w)localObject1).asD;
+        ((t)localObject2).aul = i;
+        localt = this.asG;
+        localObject1 = ((w)localObject1).auu;
         i = ((View)localObject1).getId();
         while ((!((View)localObject1).isFocused()) && ((localObject1 instanceof ViewGroup)) && (((View)localObject1).hasFocus()))
         {
@@ -1282,27 +1383,27 @@ public class RecyclerView
         break;
         label191:
         if (((w)localObject1).isRemoved()) {
-          i = ((w)localObject1).asF;
+          i = ((w)localObject1).auw;
         } else {
-          i = ((w)localObject1).lv();
+          i = ((w)localObject1).lN();
         }
       }
-      localt.asw = i;
+      localt.aun = i;
       return;
     }
   }
   
-  private void kM()
+  private void lc()
   {
-    this.aqO.asv = -1L;
-    this.aqO.asu = -1;
-    this.aqO.asw = -1;
+    this.asG.aum = -1L;
+    this.asG.aul = -1;
+    this.asG.aun = -1;
   }
   
-  private void kN()
+  private void ld()
   {
     View localView = null;
-    if ((!this.aqK) || (this.abe == null) || (!hasFocus()) || (getDescendantFocusability() == 393216) || ((getDescendantFocusability() == 131072) && (isFocused()))) {}
+    if ((!this.asC) || (this.acW == null) || (!hasFocus()) || (getDescendantFocusability() == 393216) || ((getDescendantFocusability() == 131072) && (isFocused()))) {}
     do
     {
       return;
@@ -1310,31 +1411,31 @@ public class RecyclerView
         break;
       }
       localObject = getFocusedChild();
-      if ((apO) && ((((View)localObject).getParent() == null) || (!((View)localObject).hasFocus())))
+      if ((arG) && ((((View)localObject).getParent() == null) || (!((View)localObject).hasFocus())))
       {
-        if (this.apU.getChildCount() != 0) {
+        if (this.arM.getChildCount() != 0) {
           break;
         }
         requestFocus();
         return;
       }
-    } while (!this.apU.bg((View)localObject));
-    if ((this.aqO.asv != -1L) && (this.abe.arh)) {}
-    for (Object localObject = m(this.aqO.asv);; localObject = null)
+    } while (!this.arM.bg((View)localObject));
+    if ((this.asG.aum != -1L) && (this.acW.asZ)) {}
+    for (Object localObject = m(this.asG.aum);; localObject = null)
     {
       int i;
       label216:
       int k;
       int j;
-      if ((localObject == null) || (this.apU.bg(((w)localObject).asD)) || (!((w)localObject).asD.hasFocusable()))
+      if ((localObject == null) || (this.arM.bg(((w)localObject).auu)) || (!((w)localObject).auu.hasFocusable()))
       {
         localObject = localView;
-        if (this.apU.getChildCount() > 0)
+        if (this.arM.getChildCount() > 0)
         {
-          if (this.aqO.asu != -1)
+          if (this.asG.aul != -1)
           {
-            i = this.aqO.asu;
-            k = this.aqO.getItemCount();
+            i = this.asG.aul;
+            k = this.asG.getItemCount();
             j = i;
             label226:
             if (j >= k) {
@@ -1344,10 +1445,10 @@ public class RecyclerView
             if (localObject == null) {
               break label331;
             }
-            if (!((w)localObject).asD.hasFocusable()) {
+            if (!((w)localObject).auu.hasFocusable()) {
               break label324;
             }
-            localObject = ((w)localObject).asD;
+            localObject = ((w)localObject).auu;
           }
         }
         else
@@ -1356,10 +1457,10 @@ public class RecyclerView
           if (localObject == null) {
             break label397;
           }
-          if (this.aqO.asw == -1L) {
+          if (this.asG.aun == -1L) {
             break label399;
           }
-          localView = ((View)localObject).findViewById(this.aqO.asw);
+          localView = ((View)localObject).findViewById(this.asG.aun);
           if ((localView == null) || (!localView.isFocusable())) {
             break label399;
           }
@@ -1388,9 +1489,9 @@ public class RecyclerView
           if (localObject == null) {
             break label383;
           }
-          if (((w)localObject).asD.hasFocusable())
+          if (((w)localObject).auu.hasFocusable())
           {
-            localObject = ((w)localObject).asD;
+            localObject = ((w)localObject).auu;
             break;
           }
           i -= 1;
@@ -1398,69 +1499,69 @@ public class RecyclerView
         label383:
         localObject = null;
         break label261;
-        localObject = ((w)localObject).asD;
+        localObject = ((w)localObject).auu;
         break label261;
         break;
       }
     }
   }
   
-  private void kO()
+  private void le()
   {
-    this.aqO.cA(1);
-    m(this.aqO);
-    this.aqO.asr = false;
-    ks();
-    this.apV.clear();
-    kD();
-    kJ();
-    kL();
-    Object localObject = this.aqO;
-    if ((this.aqO.ass) && (this.aqS)) {}
+    this.asG.cA(1);
+    m(this.asG);
+    this.asG.aui = false;
+    kI();
+    this.arN.clear();
+    kT();
+    kZ();
+    lb();
+    Object localObject = this.asG;
+    if ((this.asG.auj) && (this.asK)) {}
     int j;
     int i;
     RecyclerView.f.c localc;
     for (boolean bool = true;; bool = false)
     {
-      ((t)localObject).asq = bool;
-      this.aqS = false;
-      this.aqR = false;
-      this.aqO.asp = this.aqO.ast;
-      this.aqO.asn = this.abe.getItemCount();
-      m(this.aqX);
-      if (!this.aqO.ass) {
+      ((t)localObject).auh = bool;
+      this.asK = false;
+      this.asJ = false;
+      this.asG.aug = this.asG.auk;
+      this.asG.aue = this.acW.getItemCount();
+      m(this.asP);
+      if (!this.asG.auj) {
         break;
       }
-      j = this.apU.getChildCount();
+      j = this.arM.getChildCount();
       i = 0;
       while (i < j)
       {
-        localObject = bv(this.apU.getChildAt(i));
-        if ((!((w)localObject).lt()) && ((!((w)localObject).bj()) || (this.abe.arh)))
+        localObject = bv(this.arM.getChildAt(i));
+        if ((!((w)localObject).lL()) && ((!((w)localObject).isInvalid()) || (this.acW.asZ)))
         {
-          localc = this.aqz.a(this.aqO, (w)localObject, f.m((w)localObject), ((w)localObject).lI());
-          this.apV.b((w)localObject, localc);
-          if ((this.aqO.asq) && (((w)localObject).lL()) && (!((w)localObject).isRemoved()) && (!((w)localObject).lt()) && (!((w)localObject).bj()))
+          localc = this.asr.a(this.asG, (w)localObject, f.m((w)localObject), ((w)localObject).ma());
+          this.arN.b((w)localObject, localc);
+          if ((this.asG.auh) && (((w)localObject).md()) && (!((w)localObject).isRemoved()) && (!((w)localObject).lL()) && (!((w)localObject).isInvalid()))
           {
             long l = g((w)localObject);
-            this.apV.a(l, (w)localObject);
+            this.arN.a(l, (w)localObject);
           }
         }
         i += 1;
       }
     }
-    if (this.aqO.ast)
+    if (this.asG.auk)
     {
-      kS();
-      bool = this.aqO.aso;
-      this.aqO.aso = false;
-      this.apZ.c(this.apR, this.aqO);
-      this.aqO.aso = bool;
+      li();
+      bool = this.asG.auf;
+      this.asG.auf = false;
+      this.arR.c(this.arJ, this.asG);
+      this.asG.auf = bool;
       i = 0;
-      if (i < this.apU.getChildCount())
+      if (i < this.arM.getChildCount())
       {
-        localObject = bv(this.apU.getChildAt(i));
-        if ((!((w)localObject).lt()) && (!this.apV.F((w)localObject)))
+        localObject = bv(this.arM.getChildAt(i));
+        if ((!((w)localObject).lL()) && (!this.arN.F((w)localObject)))
         {
           int k = f.m((w)localObject);
           bool = ((w)localObject).cB(8192);
@@ -1468,7 +1569,7 @@ public class RecyclerView
           if (!bool) {
             j = k | 0x1000;
           }
-          localc = this.aqz.a(this.aqO, (w)localObject, j, ((w)localObject).lI());
+          localc = this.asr.a(this.asG, (w)localObject, j, ((w)localObject).ma());
           if (!bool) {
             break label471;
           }
@@ -1479,78 +1580,78 @@ public class RecyclerView
           i += 1;
           break;
           label471:
-          this.apV.c((w)localObject, localc);
+          this.arN.c((w)localObject, localc);
         }
       }
-      kT();
+      lj();
     }
     for (;;)
     {
       at(true);
       as(false);
-      this.aqO.asm = 2;
+      this.asG.aud = 2;
       return;
-      kT();
+      lj();
     }
   }
   
-  private void kP()
+  private void lf()
   {
-    ks();
-    kD();
-    this.aqO.cA(6);
-    this.apT.iE();
-    this.aqO.asn = this.abe.getItemCount();
-    this.aqO.asl = 0;
-    this.aqO.asp = false;
-    this.apZ.c(this.apR, this.aqO);
-    this.aqO.aso = false;
-    this.apS = null;
-    t localt = this.aqO;
-    if ((this.aqO.ass) && (this.aqz != null)) {}
+    kI();
+    kT();
+    this.asG.cA(6);
+    this.arL.iU();
+    this.asG.aue = this.acW.getItemCount();
+    this.asG.auc = 0;
+    this.asG.aug = false;
+    this.arR.c(this.arJ, this.asG);
+    this.asG.auf = false;
+    this.arK = null;
+    t localt = this.asG;
+    if ((this.asG.auj) && (this.asr != null)) {}
     for (boolean bool = true;; bool = false)
     {
-      localt.ass = bool;
-      this.aqO.asm = 4;
+      localt.auj = bool;
+      this.asG.aud = 4;
       at(true);
       as(false);
       return;
     }
   }
   
-  private void kQ()
+  private void lg()
   {
-    this.aqO.cA(4);
-    ks();
-    kD();
-    this.aqO.asm = 1;
-    if (this.aqO.ass)
+    this.asG.cA(4);
+    kI();
+    kT();
+    this.asG.aud = 1;
+    if (this.asG.auj)
     {
-      int i = this.apU.getChildCount() - 1;
+      int i = this.arM.getChildCount() - 1;
       if (i >= 0)
       {
-        w localw1 = bv(this.apU.getChildAt(i));
+        w localw1 = bv(this.arM.getChildAt(i));
         RecyclerView.f.c localc2;
         w localw2;
         boolean bool1;
         boolean bool2;
         RecyclerView.f.c localc1;
-        if (!localw1.lt())
+        if (!localw1.lL())
         {
           long l = g(localw1);
           localc2 = new RecyclerView.f.c().c(localw1, 0);
-          localw2 = this.apV.n(l);
-          if ((localw2 == null) || (localw2.lt())) {
+          localw2 = this.arN.n(l);
+          if ((localw2 == null) || (localw2.lL())) {
             break label224;
           }
-          bool1 = this.apV.E(localw2);
-          bool2 = this.apV.E(localw1);
+          bool1 = this.arN.E(localw2);
+          bool2 = this.arN.E(localw1);
           if ((bool1) && (localw2 == localw1)) {
             break label224;
           }
-          localc1 = this.apV.d(localw2, 4);
-          this.apV.d(localw1, localc2);
-          localc2 = this.apV.d(localw1, 8);
+          localc1 = this.arN.d(localw2, 4);
+          this.arN.d(localw1, localc2);
+          localc2 = this.arN.d(localw1, 8);
           if (localc1 != null) {
             break label205;
           }
@@ -1564,214 +1665,119 @@ public class RecyclerView
           a(localw2, localw1, localc1, localc2, bool1, bool2);
           continue;
           label224:
-          this.apV.d(localw1, localc2);
+          this.arN.d(localw1, localc2);
         }
       }
-      this.apV.a(this.are);
+      this.arN.a(this.asW);
     }
-    this.apZ.c(this.apR);
-    this.aqO.ask = this.aqO.asn;
-    this.aqq = false;
-    this.aqr = false;
-    this.aqO.ass = false;
-    this.aqO.ast = false;
-    this.apZ.arv = false;
-    if (this.apR.arR != null) {
-      this.apR.arR.clear();
+    this.arR.c(this.arJ);
+    this.asG.aub = this.asG.aue;
+    this.asi = false;
+    this.asj = false;
+    this.asG.auj = false;
+    this.asG.auk = false;
+    this.arR.atm = false;
+    if (this.arJ.atI != null) {
+      this.arJ.atI.clear();
     }
-    if (this.apZ.arA)
+    if (this.arR.atr)
     {
-      this.apZ.arz = 0;
-      this.apZ.arA = false;
-      this.apR.ln();
+      this.arR.atq = 0;
+      this.arR.atr = false;
+      this.arJ.lF();
     }
-    this.apZ.a(this.aqO);
+    this.arR.a(this.asG);
     at(true);
     as(false);
-    this.apV.clear();
-    if (am(this.aqX[0], this.aqX[1])) {
-      an(0, 0);
+    this.arN.clear();
+    if (an(this.asP[0], this.asP[1])) {
+      ao(0, 0);
     }
-    kN();
-    kM();
+    ld();
+    lc();
   }
   
-  private void kS()
+  private void li()
   {
-    int j = this.apU.jb();
+    int j = this.arM.jr();
     int i = 0;
     while (i < j)
     {
-      w localw = bv(this.apU.bL(i));
-      if (!localw.lt()) {
-        localw.ls();
+      w localw = bv(this.arM.bL(i));
+      if (!localw.lL()) {
+        localw.lK();
       }
       i += 1;
     }
   }
   
-  private void kT()
+  private void lj()
   {
-    int j = this.apU.jb();
+    int j = this.arM.jr();
     int i = 0;
     while (i < j)
     {
-      w localw = bv(this.apU.bL(i));
-      if (!localw.lt()) {
-        localw.lr();
+      w localw = bv(this.arM.bL(i));
+      if (!localw.lL()) {
+        localw.lJ();
       }
       i += 1;
     }
-    this.apR.kT();
+    this.arJ.lj();
   }
   
-  private void kU()
+  private void lk()
   {
-    int j = this.apU.jb();
+    int j = this.arM.jr();
     int i = 0;
     while (i < j)
     {
-      w localw = bv(this.apU.bL(i));
-      if ((localw != null) && (!localw.lt())) {
+      w localw = bv(this.arM.bL(i));
+      if ((localw != null) && (!localw.lL())) {
         localw.addFlags(6);
       }
       i += 1;
     }
-    kR();
-    this.apR.kU();
+    lh();
+    this.arJ.lk();
   }
   
-  private void kW()
+  private void ln()
   {
-    int i = this.arb.size() - 1;
+    int i = this.asT.size() - 1;
     while (i >= 0)
     {
-      w localw = (w)this.arb.get(i);
-      if ((localw.asD.getParent() == this) && (!localw.lt()))
+      w localw = (w)this.asT.get(i);
+      if ((localw.auu.getParent() == this) && (!localw.lL()))
       {
-        int j = localw.asS;
+        int j = localw.auJ;
         if (j != -1)
         {
-          t.p(localw.asD, j);
-          localw.asS = -1;
+          t.p(localw.auu, j);
+          localw.auJ = -1;
         }
       }
       i -= 1;
     }
-    this.arb.clear();
-  }
-  
-  private void ku()
-  {
-    this.aqL.stop();
-    if (this.apZ != null) {
-      this.apZ.lh();
-    }
-  }
-  
-  private void kv()
-  {
-    boolean bool2 = false;
-    if (this.aqv != null)
-    {
-      this.aqv.onRelease();
-      bool2 = this.aqv.isFinished();
-    }
-    boolean bool1 = bool2;
-    if (this.aqw != null)
-    {
-      this.aqw.onRelease();
-      bool1 = bool2 | this.aqw.isFinished();
-    }
-    bool2 = bool1;
-    if (this.aqx != null)
-    {
-      this.aqx.onRelease();
-      bool2 = bool1 | this.aqx.isFinished();
-    }
-    bool1 = bool2;
-    if (this.aqy != null)
-    {
-      this.aqy.onRelease();
-      bool1 = bool2 | this.aqy.isFinished();
-    }
-    if (bool1) {
-      t.W(this);
-    }
-  }
-  
-  private void kw()
-  {
-    if (this.aqv != null) {
-      return;
-    }
-    this.aqv = e.e(this);
-    if (this.apW)
-    {
-      this.aqv.setSize(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), getMeasuredWidth() - getPaddingLeft() - getPaddingRight());
-      return;
-    }
-    this.aqv.setSize(getMeasuredHeight(), getMeasuredWidth());
-  }
-  
-  private void kx()
-  {
-    if (this.aqx != null) {
-      return;
-    }
-    this.aqx = e.e(this);
-    if (this.apW)
-    {
-      this.aqx.setSize(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), getMeasuredWidth() - getPaddingLeft() - getPaddingRight());
-      return;
-    }
-    this.aqx.setSize(getMeasuredHeight(), getMeasuredWidth());
-  }
-  
-  private void ky()
-  {
-    if (this.aqw != null) {
-      return;
-    }
-    this.aqw = e.e(this);
-    if (this.apW)
-    {
-      this.aqw.setSize(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), getMeasuredHeight() - getPaddingTop() - getPaddingBottom());
-      return;
-    }
-    this.aqw.setSize(getMeasuredWidth(), getMeasuredHeight());
-  }
-  
-  private void kz()
-  {
-    if (this.aqy != null) {
-      return;
-    }
-    this.aqy = e.e(this);
-    if (this.apW)
-    {
-      this.aqy.setSize(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(), getMeasuredHeight() - getPaddingTop() - getPaddingBottom());
-      return;
-    }
-    this.aqy.setSize(getMeasuredWidth(), getMeasuredHeight());
+    this.asT.clear();
   }
   
   private void m(t paramt)
   {
     if (getScrollState() == 2)
     {
-      OverScroller localOverScroller = this.aqL.SC;
-      paramt.asx = (localOverScroller.getFinalX() - localOverScroller.getCurrX());
-      paramt.asy = (localOverScroller.getFinalY() - localOverScroller.getCurrY());
+      OverScroller localOverScroller = this.asD.Ur;
+      paramt.auo = (localOverScroller.getFinalX() - localOverScroller.getCurrX());
+      paramt.aup = (localOverScroller.getFinalY() - localOverScroller.getCurrY());
       return;
     }
-    paramt.asx = 0;
-    paramt.asy = 0;
+    paramt.auo = 0;
+    paramt.aup = 0;
   }
   
   private void m(int[] paramArrayOfInt)
   {
-    int i2 = this.apU.getChildCount();
+    int i2 = this.arM.getChildCount();
     if (i2 == 0)
     {
       paramArrayOfInt[0] = -1;
@@ -1785,12 +1791,12 @@ public class RecyclerView
     int j;
     if (n < i2)
     {
-      w localw = bv(this.apU.getChildAt(n));
+      w localw = bv(this.arM.getChildAt(n));
       m = i;
-      if (localw.lt()) {
+      if (localw.lL()) {
         break label122;
       }
-      int i1 = localw.lu();
+      int i1 = localw.lM();
       j = i;
       if (i1 < i) {
         j = i1;
@@ -1816,47 +1822,42 @@ public class RecyclerView
     }
   }
   
-  private boolean t(int paramInt1, int paramInt2)
+  final void F(String paramString)
   {
-    return getScrollingChildHelper().t(paramInt1, paramInt2);
-  }
-  
-  final void G(String paramString)
-  {
-    if (kG())
+    if (kW())
     {
       if (paramString == null) {
-        throw new IllegalStateException("Cannot call this method while RecyclerView is computing a layout or scrolling" + kp());
+        throw new IllegalStateException("Cannot call this method while RecyclerView is computing a layout or scrolling" + kF());
       }
       throw new IllegalStateException(paramString);
     }
-    if (this.aqt > 0) {
-      new IllegalStateException(kp());
+    if (this.asl > 0) {
+      new IllegalStateException(kF());
     }
   }
   
   public void a(int paramInt1, int paramInt2, Interpolator paramInterpolator)
   {
     int i = 0;
-    if (this.apZ == null) {}
+    if (this.arR == null) {}
     for (;;)
     {
       return;
-      if (!this.aqk)
+      if (!this.asc)
       {
-        if (!this.apZ.jM()) {
+        if (!this.arR.kc()) {
           paramInt1 = 0;
         }
-        if (!this.apZ.jN()) {
+        if (!this.arR.kd()) {
           paramInt2 = i;
         }
         while ((paramInt1 != 0) || (paramInt2 != 0))
         {
-          v localv = this.aqL;
-          i = localv.aE(paramInt1, paramInt2);
+          v localv = this.asD;
+          i = localv.aF(paramInt1, paramInt2);
           Interpolator localInterpolator = paramInterpolator;
           if (paramInterpolator == null) {
-            localInterpolator = ard;
+            localInterpolator = asV;
           }
           localv.b(paramInt1, paramInt2, i, localInterpolator);
           return;
@@ -1867,47 +1868,47 @@ public class RecyclerView
   
   public final void a(h paramh)
   {
-    if (this.apZ != null) {
-      this.apZ.G("Cannot add item decoration during a scroll  or layout");
+    if (this.arR != null) {
+      this.arR.F("Cannot add item decoration during a scroll  or layout");
     }
-    if (this.aqb.isEmpty()) {
+    if (this.arT.isEmpty()) {
       setWillNotDraw(false);
     }
-    this.aqb.add(paramh);
-    kR();
+    this.arT.add(paramh);
+    lh();
     requestLayout();
   }
   
   public final void a(j paramj)
   {
-    if (this.aqp == null) {
-      this.aqp = new ArrayList();
+    if (this.ash == null) {
+      this.ash = new ArrayList();
     }
-    this.aqp.add(paramj);
+    this.ash.add(paramj);
   }
   
   public final void a(l paraml)
   {
-    this.aqc.add(paraml);
+    this.arU.add(paraml);
   }
   
   public final void a(m paramm)
   {
-    if (this.aqQ == null) {
-      this.aqQ = new ArrayList();
+    if (this.asI == null) {
+      this.asI = new ArrayList();
     }
-    this.aqQ.add(paramm);
+    this.asI.add(paramm);
   }
   
   final void a(w paramw, RecyclerView.f.c paramc)
   {
     paramw.setFlags(0, 8192);
-    if ((this.aqO.asq) && (paramw.lL()) && (!paramw.isRemoved()) && (!paramw.lt()))
+    if ((this.asG.auh) && (paramw.md()) && (!paramw.isRemoved()) && (!paramw.lL()))
     {
       long l = g(paramw);
-      this.apV.a(l, paramw);
+      this.arN.a(l, paramw);
     }
-    this.apV.b(paramw, paramc);
+    this.arN.b(paramw, paramc);
   }
   
   public final boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt, int paramInt5)
@@ -1927,14 +1928,14 @@ public class RecyclerView
   
   public void addFocusables(ArrayList<View> paramArrayList, int paramInt1, int paramInt2)
   {
-    if ((this.apZ == null) || (!this.apZ.a(this, paramArrayList, paramInt1, paramInt2))) {
+    if ((this.arR == null) || (!this.arR.a(this, paramArrayList, paramInt1, paramInt2))) {
       super.addFocusables(paramArrayList, paramInt1, paramInt2);
     }
   }
   
-  public boolean ai(int paramInt1, int paramInt2)
+  public boolean aj(int paramInt1, int paramInt2)
   {
-    if (this.apZ == null) {}
+    if (this.arR == null) {}
     boolean bool2;
     boolean bool3;
     int i;
@@ -1947,13 +1948,13 @@ public class RecyclerView
         do
         {
           return false;
-        } while (this.aqk);
-        bool2 = this.apZ.jM();
-        bool3 = this.apZ.jN();
+        } while (this.asc);
+        bool2 = this.arR.kc();
+        bool3 = this.arR.kd();
         if (bool2)
         {
           i = paramInt1;
-          if (Math.abs(paramInt1) >= this.aqG) {}
+          if (Math.abs(paramInt1) >= this.asy) {}
         }
         else
         {
@@ -1962,7 +1963,7 @@ public class RecyclerView
         if (bool3)
         {
           j = paramInt2;
-          if (Math.abs(paramInt2) >= this.aqG) {}
+          if (Math.abs(paramInt2) >= this.asy) {}
         }
         else
         {
@@ -1973,7 +1974,7 @@ public class RecyclerView
       for (bool1 = true;; bool1 = false)
       {
         dispatchNestedFling(i, j, bool1);
-        if ((this.aqF == null) || (!this.aqF.aA(i, j))) {
+        if ((this.asx == null) || (!this.asx.aB(i, j))) {
           break;
         }
         return true;
@@ -1986,75 +1987,75 @@ public class RecyclerView
       if (bool3) {
         paramInt2 = paramInt1 | 0x2;
       }
-      t(paramInt2, 1);
-      paramInt1 = Math.max(-this.aqH, Math.min(i, this.aqH));
-      paramInt2 = Math.max(-this.aqH, Math.min(j, this.aqH));
-      v localv = this.aqL;
-      localv.arf.setScrollState(2);
-      localv.asA = 0;
-      localv.asz = 0;
-      localv.SC.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
-      localv.lq();
+      A(paramInt2, 1);
+      paramInt1 = Math.max(-this.asz, Math.min(i, this.asz));
+      paramInt2 = Math.max(-this.asz, Math.min(j, this.asz));
+      v localv = this.asD;
+      localv.asX.setScrollState(2);
+      localv.aur = 0;
+      localv.auq = 0;
+      localv.Ur.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
+      localv.lI();
       return true;
     }
   }
   
-  final void aj(int paramInt1, int paramInt2)
+  final void ak(int paramInt1, int paramInt2)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.aqv != null)
+    if (this.asn != null)
     {
       bool1 = bool2;
-      if (!this.aqv.isFinished())
+      if (!this.asn.isFinished())
       {
         bool1 = bool2;
         if (paramInt1 > 0)
         {
-          this.aqv.onRelease();
-          bool1 = this.aqv.isFinished();
+          this.asn.onRelease();
+          bool1 = this.asn.isFinished();
         }
       }
     }
     bool2 = bool1;
-    if (this.aqx != null)
+    if (this.asp != null)
     {
       bool2 = bool1;
-      if (!this.aqx.isFinished())
+      if (!this.asp.isFinished())
       {
         bool2 = bool1;
         if (paramInt1 < 0)
         {
-          this.aqx.onRelease();
-          bool2 = bool1 | this.aqx.isFinished();
+          this.asp.onRelease();
+          bool2 = bool1 | this.asp.isFinished();
         }
       }
     }
     bool1 = bool2;
-    if (this.aqw != null)
+    if (this.aso != null)
     {
       bool1 = bool2;
-      if (!this.aqw.isFinished())
+      if (!this.aso.isFinished())
       {
         bool1 = bool2;
         if (paramInt2 > 0)
         {
-          this.aqw.onRelease();
-          bool1 = bool2 | this.aqw.isFinished();
+          this.aso.onRelease();
+          bool1 = bool2 | this.aso.isFinished();
         }
       }
     }
     bool2 = bool1;
-    if (this.aqy != null)
+    if (this.asq != null)
     {
       bool2 = bool1;
-      if (!this.aqy.isFinished())
+      if (!this.asq.isFinished())
       {
         bool2 = bool1;
         if (paramInt2 < 0)
         {
-          this.aqy.onRelease();
-          bool2 = bool1 | this.aqy.isFinished();
+          this.asq.onRelease();
+          bool2 = bool1 | this.asq.isFinished();
         }
       }
     }
@@ -2063,17 +2064,17 @@ public class RecyclerView
     }
   }
   
-  final void ak(int paramInt1, int paramInt2)
+  final void al(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0)
     {
-      kw();
-      this.aqv.onAbsorb(-paramInt1);
+      kM();
+      this.asn.onAbsorb(-paramInt1);
       if (paramInt2 >= 0) {
         break label66;
       }
-      ky();
-      this.aqw.onAbsorb(-paramInt2);
+      kO();
+      this.aso.onAbsorb(-paramInt2);
     }
     for (;;)
     {
@@ -2084,107 +2085,107 @@ public class RecyclerView
       if (paramInt1 <= 0) {
         break;
       }
-      kx();
-      this.aqx.onAbsorb(paramInt1);
+      kN();
+      this.asp.onAbsorb(paramInt1);
       break;
       label66:
       if (paramInt2 > 0)
       {
-        kz();
-        this.aqy.onAbsorb(paramInt2);
+        kP();
+        this.asq.onAbsorb(paramInt2);
       }
     }
   }
   
-  final void al(int paramInt1, int paramInt2)
+  final void am(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(i.m(paramInt1, getPaddingLeft() + getPaddingRight(), t.ae(this)), i.m(paramInt2, getPaddingTop() + getPaddingBottom(), t.af(this)));
   }
   
-  final void an(int paramInt1, int paramInt2)
+  final void ao(int paramInt1, int paramInt2)
   {
-    this.aqt += 1;
+    this.asl += 1;
     int i = getScrollX();
     int j = getScrollY();
     onScrollChanged(i, j, i, j);
-    if (this.aqP != null) {
-      this.aqP.a(this, paramInt1, paramInt2);
+    if (this.asH != null) {
+      this.asH.a(this, paramInt1, paramInt2);
     }
-    if (this.aqQ != null)
+    if (this.asI != null)
     {
-      i = this.aqQ.size() - 1;
+      i = this.asI.size() - 1;
       while (i >= 0)
       {
-        ((m)this.aqQ.get(i)).a(this, paramInt1, paramInt2);
+        ((m)this.asI.get(i)).a(this, paramInt1, paramInt2);
         i -= 1;
       }
     }
-    this.aqt -= 1;
+    this.asl -= 1;
   }
   
   final void as(boolean paramBoolean)
   {
-    if (this.aqi <= 0) {
-      this.aqi = 1;
+    if (this.asa <= 0) {
+      this.asa = 1;
     }
-    if ((!paramBoolean) && (!this.aqk)) {
-      this.aqj = false;
+    if ((!paramBoolean) && (!this.asc)) {
+      this.asb = false;
     }
-    if (this.aqi == 1)
+    if (this.asa == 1)
     {
-      if ((paramBoolean) && (this.aqj) && (!this.aqk) && (this.apZ != null) && (this.abe != null)) {
-        kK();
+      if ((paramBoolean) && (this.asb) && (!this.asc) && (this.arR != null) && (this.acW != null)) {
+        la();
       }
-      if (!this.aqk) {
-        this.aqj = false;
+      if (!this.asc) {
+        this.asb = false;
       }
     }
-    this.aqi -= 1;
+    this.asa -= 1;
   }
   
   final void at(boolean paramBoolean)
   {
-    this.aqs -= 1;
-    if (this.aqs <= 0)
+    this.ask -= 1;
+    if (this.ask <= 0)
     {
-      this.aqs = 0;
+      this.ask = 0;
       if (paramBoolean)
       {
-        kF();
-        kW();
+        kV();
+        ln();
       }
     }
   }
   
   final void au(boolean paramBoolean)
   {
-    this.aqr |= paramBoolean;
-    this.aqq = true;
-    kU();
+    this.asj |= paramBoolean;
+    this.asi = true;
+    lk();
   }
   
   final void b(int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    ks();
-    kD();
+    kI();
+    kT();
     e.beginSection("RV Scroll");
-    m(this.aqO);
+    m(this.asG);
     if (paramInt1 != 0) {}
-    for (paramInt1 = this.apZ.a(paramInt1, this.apR, this.aqO);; paramInt1 = 0)
+    for (paramInt1 = this.arR.a(paramInt1, this.arJ, this.asG);; paramInt1 = 0)
     {
       if (paramInt2 != 0) {}
-      for (paramInt2 = this.apZ.b(paramInt2, this.apR, this.aqO);; paramInt2 = 0)
+      for (paramInt2 = this.arR.b(paramInt2, this.arJ, this.asG);; paramInt2 = 0)
       {
         e.endSection();
-        int j = this.apU.getChildCount();
+        int j = this.arM.getChildCount();
         int i = 0;
         while (i < j)
         {
-          View localView = this.apU.getChildAt(i);
+          View localView = this.arM.getChildAt(i);
           Object localObject = bh(localView);
-          if ((localObject != null) && (((w)localObject).asK != null))
+          if ((localObject != null) && (((w)localObject).auB != null))
           {
-            localObject = ((w)localObject).asK.asD;
+            localObject = ((w)localObject).auB.auu;
             int k = localView.getLeft();
             int m = localView.getTop();
             if ((k != ((View)localObject).getLeft()) || (m != ((View)localObject).getTop())) {
@@ -2212,43 +2213,43 @@ public class RecyclerView
   
   public final void b(l paraml)
   {
-    this.aqc.remove(paraml);
-    if (this.aqd == paraml) {
-      this.aqd = null;
+    this.arU.remove(paraml);
+    if (this.arV == paraml) {
+      this.arV = null;
     }
   }
   
   public final void b(m paramm)
   {
-    if (this.aqQ != null) {
-      this.aqQ.remove(paramm);
+    if (this.asI != null) {
+      this.asI.remove(paramm);
     }
   }
   
   final boolean b(w paramw, int paramInt)
   {
-    if (kG())
+    if (kW())
     {
-      paramw.asS = paramInt;
-      this.arb.add(paramw);
+      paramw.auJ = paramInt;
+      this.asT.add(paramw);
       return false;
     }
-    t.p(paramw.asD, paramInt);
+    t.p(paramw.auu, paramInt);
     return true;
   }
   
   final void bA(View paramView)
   {
     w localw = bv(paramView);
-    if ((this.abe != null) && (localw != null)) {
-      this.abe.l(localw);
+    if ((this.acW != null) && (localw != null)) {
+      this.acW.l(localw);
     }
-    if (this.aqp != null)
+    if (this.ash != null)
     {
-      int i = this.aqp.size() - 1;
+      int i = this.ash.size() - 1;
       while (i >= 0)
       {
-        ((j)this.aqp.get(i)).bR(paramView);
+        ((j)this.ash.get(i)).bR(paramView);
         i -= 1;
       }
     }
@@ -2286,37 +2287,37 @@ public class RecyclerView
   final Rect by(View paramView)
   {
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
-    if (!localLayoutParams.arI) {
-      return localLayoutParams.anO;
+    if (!localLayoutParams.atz) {
+      return localLayoutParams.apG;
     }
-    if ((this.aqO.asp) && ((localLayoutParams.arH.lL()) || (localLayoutParams.arH.bj()))) {
-      return localLayoutParams.anO;
+    if ((this.asG.aug) && ((localLayoutParams.aty.md()) || (localLayoutParams.aty.isInvalid()))) {
+      return localLayoutParams.apG;
     }
-    Rect localRect = localLayoutParams.anO;
+    Rect localRect = localLayoutParams.apG;
     localRect.set(0, 0, 0, 0);
-    int j = this.aqb.size();
+    int j = this.arT.size();
     int i = 0;
     while (i < j)
     {
       this.mTempRect.set(0, 0, 0, 0);
-      ((h)this.aqb.get(i)).a(this.mTempRect, paramView, this, this.aqO);
+      ((h)this.arT.get(i)).a(this.mTempRect, paramView, this, this.asG);
       localRect.left += this.mTempRect.left;
       localRect.top += this.mTempRect.top;
       localRect.right += this.mTempRect.right;
       localRect.bottom += this.mTempRect.bottom;
       i += 1;
     }
-    localLayoutParams.arI = false;
+    localLayoutParams.atz = false;
     return localRect;
   }
   
   public final void c(h paramh)
   {
-    if (this.apZ != null) {
-      this.apZ.G("Cannot remove item decoration during a scroll  or layout");
+    if (this.arR != null) {
+      this.arR.F("Cannot remove item decoration during a scroll  or layout");
     }
-    this.aqb.remove(paramh);
-    if (this.aqb.isEmpty()) {
+    this.arT.remove(paramh);
+    if (this.arT.isEmpty()) {
       if (getOverScrollMode() != 2) {
         break label60;
       }
@@ -2325,7 +2326,7 @@ public class RecyclerView
     for (boolean bool = true;; bool = false)
     {
       setWillNotDraw(bool);
-      kR();
+      lh();
       requestLayout();
       return;
     }
@@ -2333,29 +2334,29 @@ public class RecyclerView
   
   public void ca(int paramInt)
   {
-    if (this.aqk) {}
+    if (this.asc) {}
     do
     {
       return;
-      kt();
-    } while (this.apZ == null);
-    i locali = this.apZ;
+      kJ();
+    } while (this.arR == null);
+    i locali = this.arR;
     com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.aeD(), "android/support/v7/widget/RecyclerView", "scrollToPosition", "(I)V", "Undefined", "scrollToPosition", "(I)V");
-    locali.ca(((Integer)locala.lR(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahp(), "android/support/v7/widget/RecyclerView", "scrollToPosition", "(I)V", "Undefined", "scrollToPosition", "(I)V");
+    locali.ca(((Integer)locala.mq(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(locali, "android/support/v7/widget/RecyclerView", "scrollToPosition", "(I)V", "Undefined", "scrollToPosition", "(I)V");
     awakenScrollBars();
   }
   
   final void cg(int paramInt)
   {
-    if (this.apZ == null) {
+    if (this.arR == null) {
       return;
     }
-    i locali = this.apZ;
+    i locali = this.arR;
     com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.aeD(), "android/support/v7/widget/RecyclerView", "jumpToPositionForSmoothScroller", "(I)V", "Undefined", "scrollToPosition", "(I)V");
-    locali.ca(((Integer)locala.lR(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(locali, locala.ahp(), "android/support/v7/widget/RecyclerView", "jumpToPositionForSmoothScroller", "(I)V", "Undefined", "scrollToPosition", "(I)V");
+    locali.ca(((Integer)locala.mq(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(locali, "android/support/v7/widget/RecyclerView", "jumpToPositionForSmoothScroller", "(I)V", "Undefined", "scrollToPosition", "(I)V");
     awakenScrollBars();
   }
@@ -2367,30 +2368,30 @@ public class RecyclerView
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    return ((paramLayoutParams instanceof LayoutParams)) && (this.apZ.a((LayoutParams)paramLayoutParams));
+    return ((paramLayoutParams instanceof LayoutParams)) && (this.arR.a((LayoutParams)paramLayoutParams));
   }
   
   public final w ci(int paramInt)
   {
     Object localObject = null;
-    if (this.aqq) {}
+    if (this.asi) {}
     int i;
     w localw;
     do
     {
       return localObject;
-      int j = this.apU.jb();
+      int j = this.arM.jr();
       i = 0;
       localObject = null;
       if (i >= j) {
         break;
       }
-      localw = bv(this.apU.bL(i));
+      localw = bv(this.arM.bL(i));
       if ((localw == null) || (localw.isRemoved()) || (i(localw) != paramInt)) {
         break label100;
       }
       localObject = localw;
-    } while (!this.apU.bg(localw.asD));
+    } while (!this.arM.bg(localw.auu));
     localObject = localw;
     label100:
     for (;;)
@@ -2403,56 +2404,56 @@ public class RecyclerView
   
   public int computeHorizontalScrollExtent()
   {
-    if (this.apZ == null) {}
-    while (!this.apZ.jM()) {
+    if (this.arR == null) {}
+    while (!this.arR.kc()) {
       return 0;
     }
-    return this.apZ.f(this.aqO);
+    return this.arR.f(this.asG);
   }
   
   public int computeHorizontalScrollOffset()
   {
-    if (this.apZ == null) {}
-    while (!this.apZ.jM()) {
+    if (this.arR == null) {}
+    while (!this.arR.kc()) {
       return 0;
     }
-    return this.apZ.d(this.aqO);
+    return this.arR.d(this.asG);
   }
   
   public int computeHorizontalScrollRange()
   {
-    if (this.apZ == null) {}
-    while (!this.apZ.jM()) {
+    if (this.arR == null) {}
+    while (!this.arR.kc()) {
       return 0;
     }
-    return this.apZ.h(this.aqO);
+    return this.arR.h(this.asG);
   }
   
   public int computeVerticalScrollExtent()
   {
-    if (this.apZ == null) {}
-    while (!this.apZ.jN()) {
+    if (this.arR == null) {}
+    while (!this.arR.kd()) {
       return 0;
     }
-    return this.apZ.g(this.aqO);
+    return this.arR.g(this.asG);
   }
   
   public int computeVerticalScrollOffset()
   {
-    if (this.apZ == null) {}
-    while (!this.apZ.jN()) {
+    if (this.arR == null) {}
+    while (!this.arR.kd()) {
       return 0;
     }
-    return this.apZ.e(this.aqO);
+    return this.arR.e(this.asG);
   }
   
   public int computeVerticalScrollRange()
   {
-    if (this.apZ == null) {}
-    while (!this.apZ.jN()) {
+    if (this.arR == null) {}
+    while (!this.arR.kd()) {
       return 0;
     }
-    return this.apZ.i(this.aqO);
+    return this.arR.i(this.asG);
   }
   
   public boolean dispatchNestedFling(float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -2490,23 +2491,23 @@ public class RecyclerView
     int k = 1;
     int m = 0;
     super.draw(paramCanvas);
-    int j = this.aqb.size();
+    int j = this.arT.size();
     int i = 0;
     while (i < j)
     {
-      ((h)this.aqb.get(i)).b(paramCanvas, this, this.aqO);
+      ((h)this.arT.get(i)).b(paramCanvas, this, this.asG);
       i += 1;
     }
     int n;
-    if ((this.aqv != null) && (!this.aqv.isFinished()))
+    if ((this.asn != null) && (!this.asn.isFinished()))
     {
       n = paramCanvas.save();
-      if (this.apW)
+      if (this.arO)
       {
         i = getPaddingBottom();
         paramCanvas.rotate(270.0F);
         paramCanvas.translate(i + -getHeight(), 0.0F);
-        if ((this.aqv == null) || (!this.aqv.draw(paramCanvas))) {
+        if ((this.asn == null) || (!this.asn.draw(paramCanvas))) {
           break label456;
         }
         j = 1;
@@ -2517,16 +2518,16 @@ public class RecyclerView
     for (;;)
     {
       i = j;
-      if (this.aqw != null)
+      if (this.aso != null)
       {
         i = j;
-        if (!this.aqw.isFinished())
+        if (!this.aso.isFinished())
         {
           n = paramCanvas.save();
-          if (this.apW) {
+          if (this.arO) {
             paramCanvas.translate(getPaddingLeft(), getPaddingTop());
           }
-          if ((this.aqw == null) || (!this.aqw.draw(paramCanvas))) {
+          if ((this.aso == null) || (!this.aso.draw(paramCanvas))) {
             break label461;
           }
           i = 1;
@@ -2536,21 +2537,21 @@ public class RecyclerView
         }
       }
       j = i;
-      if (this.aqx != null)
+      if (this.asp != null)
       {
         j = i;
-        if (!this.aqx.isFinished())
+        if (!this.asp.isFinished())
         {
           n = paramCanvas.save();
           int i1 = getWidth();
-          if (!this.apW) {
+          if (!this.arO) {
             break label466;
           }
           j = getPaddingTop();
           label257:
           paramCanvas.rotate(90.0F);
           paramCanvas.translate(-j, -i1);
-          if ((this.aqx == null) || (!this.aqx.draw(paramCanvas))) {
+          if ((this.asp == null) || (!this.asp.draw(paramCanvas))) {
             break label471;
           }
           j = 1;
@@ -2560,23 +2561,23 @@ public class RecyclerView
         }
       }
       i = j;
-      if (this.aqy != null)
+      if (this.asq != null)
       {
         i = j;
-        if (!this.aqy.isFinished())
+        if (!this.asq.isFinished())
         {
           n = paramCanvas.save();
           paramCanvas.rotate(180.0F);
-          if (!this.apW) {
+          if (!this.arO) {
             break label476;
           }
           paramCanvas.translate(-getWidth() + getPaddingRight(), -getHeight() + getPaddingBottom());
           label372:
           i = m;
-          if (this.aqy != null)
+          if (this.asq != null)
           {
             i = m;
-            if (this.aqy.draw(paramCanvas)) {
+            if (this.asq.draw(paramCanvas)) {
               i = 1;
             }
           }
@@ -2584,7 +2585,7 @@ public class RecyclerView
           paramCanvas.restoreToCount(n);
         }
       }
-      if ((i == 0) && (this.aqz != null) && (this.aqb.size() > 0) && (this.aqz.isRunning())) {
+      if ((i == 0) && (this.asr != null) && (this.arT.size() > 0) && (this.asr.isRunning())) {
         i = k;
       }
       for (;;)
@@ -2622,18 +2623,18 @@ public class RecyclerView
   
   final void e(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int j = this.apU.jb();
+    int j = this.arM.jr();
     int i = 0;
     if (i < j)
     {
-      localObject = bv(this.apU.bL(i));
-      if ((localObject != null) && (!((w)localObject).lt()))
+      localObject = bv(this.arM.bL(i));
+      if ((localObject != null) && (!((w)localObject).lL()))
       {
         if (((w)localObject).mPosition < paramInt1 + paramInt2) {
           break label82;
         }
         ((w)localObject).k(-paramInt2, paramBoolean);
-        this.aqO.aso = true;
+        this.asG.auf = true;
       }
       for (;;)
       {
@@ -2646,15 +2647,15 @@ public class RecyclerView
           ((w)localObject).addFlags(8);
           ((w)localObject).k(k, paramBoolean);
           ((w)localObject).mPosition = (paramInt1 - 1);
-          this.aqO.aso = true;
+          this.asG.auf = true;
         }
       }
     }
-    Object localObject = this.apR;
-    i = ((o)localObject).arS.size() - 1;
+    Object localObject = this.arJ;
+    i = ((o)localObject).atJ.size() - 1;
     if (i >= 0)
     {
-      w localw = (w)((o)localObject).arS.get(i);
+      w localw = (w)((o)localObject).atJ.get(i);
       if (localw != null)
       {
         if (localw.mPosition < paramInt1 + paramInt2) {
@@ -2679,28 +2680,28 @@ public class RecyclerView
   
   final void f(w paramw)
   {
-    View localView = paramw.asD;
+    View localView = paramw.auu;
     if (localView.getParent() == this) {}
     for (int i = 1;; i = 0)
     {
-      this.apR.u(bh(localView));
-      if (!paramw.lF()) {
+      this.arJ.u(bh(localView));
+      if (!paramw.lX()) {
         break;
       }
-      this.apU.a(localView, -1, localView.getLayoutParams(), true);
+      this.arM.a(localView, -1, localView.getLayoutParams(), true);
       return;
     }
     if (i == 0)
     {
-      this.apU.a(localView, -1, true);
+      this.arM.a(localView, -1, true);
       return;
     }
-    paramw = this.apU;
-    i = paramw.ajT.indexOfChild(localView);
+    paramw = this.arM;
+    i = paramw.alK.indexOfChild(localView);
     if (i < 0) {
       throw new IllegalArgumentException("view is not a child, cannot hide ".concat(String.valueOf(localView)));
     }
-    paramw.ajU.set(i);
+    paramw.alL.set(i);
     paramw.be(localView);
   }
   
@@ -2712,14 +2713,14 @@ public class RecyclerView
     Object localObject;
     label74:
     int k;
-    if ((this.abe != null) && (this.apZ != null) && (!kG()) && (!this.aqk))
+    if ((this.acW != null) && (this.arR != null) && (!kW()) && (!this.asc))
     {
       i = 1;
       localObject = FocusFinder.getInstance();
       if ((i == 0) || ((paramInt != 2) && (paramInt != 1))) {
         break label327;
       }
-      if (!this.apZ.jN()) {
+      if (!this.arR.kd()) {
         break label991;
       }
       if (paramInt != 2) {
@@ -2732,7 +2733,7 @@ public class RecyclerView
       k = 1;
       label88:
       j = k;
-      if (apN) {
+      if (arF) {
         paramInt = i;
       }
     }
@@ -2751,9 +2752,9 @@ public class RecyclerView
       {
         m = j;
         k = paramInt;
-        if (this.apZ.jM())
+        if (this.arR.kc())
         {
-          if (t.Y(this.apZ.alu) != 1) {
+          if (t.Y(this.arR.anl) != 1) {
             break label237;
           }
           i = 1;
@@ -2780,7 +2781,7 @@ public class RecyclerView
       {
         m = j;
         k = paramInt;
-        if (apN)
+        if (arF)
         {
           k = i;
           m = j;
@@ -2788,7 +2789,7 @@ public class RecyclerView
         if (m == 0) {
           break label288;
         }
-        kr();
+        kH();
         if (bt(paramView) != null) {
           break label260;
         }
@@ -2806,8 +2807,8 @@ public class RecyclerView
         i = 17;
         break label167;
       }
-      ks();
-      this.apZ.a(paramView, k, this.apR, this.aqO);
+      kI();
+      this.arR.a(paramView, k, this.arJ, this.asG);
       as(false);
       localObject = ((FocusFinder)localObject).findNextFocus(this, paramView, k);
       while ((localObject != null) && (!((View)localObject).hasFocusable())) {
@@ -2823,12 +2824,12 @@ public class RecyclerView
             k = paramInt;
             if (i != 0)
             {
-              kr();
+              kH();
               if (bt(paramView) == null) {
                 return null;
               }
-              ks();
-              localObject = this.apZ.a(paramView, paramInt, this.apR, this.aqO);
+              kI();
+              localObject = this.arR.a(paramView, paramInt, this.arJ, this.asG);
               as(false);
               k = paramInt;
             }
@@ -2866,13 +2867,13 @@ public class RecyclerView
             else
             {
               this.mTempRect.set(0, 0, paramView.getWidth(), paramView.getHeight());
-              this.Xg.set(0, 0, ((View)localObject).getWidth(), ((View)localObject).getHeight());
+              this.YV.set(0, 0, ((View)localObject).getWidth(), ((View)localObject).getHeight());
               offsetDescendantRectToMyCoords(paramView, this.mTempRect);
-              offsetDescendantRectToMyCoords((View)localObject, this.Xg);
-              if (t.Y(this.apZ.alu) == 1)
+              offsetDescendantRectToMyCoords((View)localObject, this.YV);
+              if (t.Y(this.arR.anl) == 1)
               {
                 m = -1;
-                if (((this.mTempRect.left >= this.Xg.left) && (this.mTempRect.right > this.Xg.left)) || (this.mTempRect.right >= this.Xg.right)) {
+                if (((this.mTempRect.left >= this.YV.left) && (this.mTempRect.right > this.YV.left)) || (this.mTempRect.right >= this.YV.right)) {
                   break label755;
                 }
                 i = 1;
@@ -2883,7 +2884,7 @@ public class RecyclerView
       }
       for (;;)
       {
-        if (((this.mTempRect.top < this.Xg.top) || (this.mTempRect.bottom <= this.Xg.top)) && (this.mTempRect.bottom < this.Xg.bottom)) {
+        if (((this.mTempRect.top < this.YV.top) || (this.mTempRect.bottom <= this.YV.top)) && (this.mTempRect.bottom < this.YV.bottom)) {
           j = 1;
         }
         for (;;)
@@ -2891,19 +2892,19 @@ public class RecyclerView
           switch (k)
           {
           default: 
-            throw new IllegalArgumentException("Invalid direction: " + k + kp());
+            throw new IllegalArgumentException("Invalid direction: " + k + kF());
             m = 1;
             break label547;
             label755:
-            if (((this.mTempRect.right <= this.Xg.right) && (this.mTempRect.left < this.Xg.right)) || (this.mTempRect.left <= this.Xg.left)) {
+            if (((this.mTempRect.right <= this.YV.right) && (this.mTempRect.left < this.YV.right)) || (this.mTempRect.left <= this.YV.left)) {
               break label986;
             }
             i = -1;
             break label600;
-            if ((this.mTempRect.bottom > this.Xg.bottom) || (this.mTempRect.top >= this.Xg.bottom))
+            if ((this.mTempRect.bottom > this.YV.bottom) || (this.mTempRect.top >= this.YV.bottom))
             {
               j = i1;
-              if (this.mTempRect.top > this.Xg.top) {}
+              if (this.mTempRect.top > this.YV.top) {}
             }
             else
             {
@@ -2970,36 +2971,36 @@ public class RecyclerView
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
-    if (this.apZ == null) {
-      throw new IllegalStateException("RecyclerView has no LayoutManager" + kp());
+    if (this.arR == null) {
+      throw new IllegalStateException("RecyclerView has no LayoutManager" + kF());
     }
-    return this.apZ.jG();
+    return this.arR.jW();
   }
   
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    if (this.apZ == null) {
-      throw new IllegalStateException("RecyclerView has no LayoutManager" + kp());
+    if (this.arR == null) {
+      throw new IllegalStateException("RecyclerView has no LayoutManager" + kF());
     }
-    return this.apZ.a(getContext(), paramAttributeSet);
+    return this.arR.a(getContext(), paramAttributeSet);
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.apZ == null) {
-      throw new IllegalStateException("RecyclerView has no LayoutManager" + kp());
+    if (this.arR == null) {
+      throw new IllegalStateException("RecyclerView has no LayoutManager" + kF());
     }
-    return this.apZ.d(paramLayoutParams);
+    return this.arR.d(paramLayoutParams);
   }
   
   public a getAdapter()
   {
-    return this.abe;
+    return this.acW;
   }
   
   public int getBaseline()
   {
-    if (this.apZ != null) {
+    if (this.arR != null) {
       return -1;
     }
     return super.getBaseline();
@@ -3007,55 +3008,55 @@ public class RecyclerView
   
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    if (this.aqW == null) {
+    if (this.asO == null) {
       return super.getChildDrawingOrder(paramInt1, paramInt2);
     }
-    return this.aqW.av(paramInt1, paramInt2);
+    return this.asO.aw(paramInt1, paramInt2);
   }
   
   public boolean getClipToPadding()
   {
-    return this.apW;
+    return this.arO;
   }
   
   public al getCompatAccessibilityDelegate()
   {
-    return this.aqV;
+    return this.asN;
   }
   
   public e getEdgeEffectFactory()
   {
-    return this.aqu;
+    return this.asm;
   }
   
   public f getItemAnimator()
   {
-    return this.aqz;
+    return this.asr;
   }
   
   public int getItemDecorationCount()
   {
-    return this.aqb.size();
+    return this.arT.size();
   }
   
   public i getLayoutManager()
   {
-    return this.apZ;
+    return this.arR;
   }
   
   public int getMaxFlingVelocity()
   {
-    return this.aqH;
+    return this.asz;
   }
   
   public int getMinFlingVelocity()
   {
-    return this.aqG;
+    return this.asy;
   }
   
   long getNanoTime()
   {
-    if (apM) {
+    if (arE) {
       return System.nanoTime();
     }
     return 0L;
@@ -3063,17 +3064,17 @@ public class RecyclerView
   
   public k getOnFlingListener()
   {
-    return this.aqF;
+    return this.asx;
   }
   
   public boolean getPreserveFocusAfterLayout()
   {
-    return this.aqK;
+    return this.asC;
   }
   
   public n getRecycledViewPool()
   {
-    return this.apR.getRecycledViewPool();
+    return this.arJ.getRecycledViewPool();
   }
   
   public int getScrollState()
@@ -3083,10 +3084,10 @@ public class RecyclerView
   
   l getScrollingChildHelper()
   {
-    if (this.aqY == null) {
-      this.aqY = new l(this);
+    if (this.asQ == null) {
+      this.asQ = new l(this);
     }
-    return this.aqY;
+    return this.asQ;
   }
   
   public boolean hasNestedScrollingParent()
@@ -3099,27 +3100,27 @@ public class RecyclerView
     if ((paramw.cB(524)) || (!paramw.isBound())) {
       return -1;
     }
-    return this.apT.bE(paramw.mPosition);
+    return this.arL.bE(paramw.mPosition);
   }
   
   public boolean isAttachedToWindow()
   {
-    return this.aqe;
+    return this.arW;
   }
   
   public boolean isNestedScrollingEnabled()
   {
-    return getScrollingChildHelper().NV;
+    return getScrollingChildHelper().PM;
   }
   
   public final w j(int paramInt, boolean paramBoolean)
   {
-    int j = this.apU.jb();
+    int j = this.arM.jr();
     Object localObject1 = null;
     int i = 0;
     if (i < j)
     {
-      w localw = bv(this.apU.bL(i));
+      w localw = bv(this.arM.bL(i));
       Object localObject2 = localObject1;
       if (localw != null)
       {
@@ -3142,11 +3143,11 @@ public class RecyclerView
         break;
         label82:
         localObject2 = localObject1;
-        if (localw.lu() == paramInt)
+        if (localw.lM() == paramInt)
         {
           label95:
           localObject1 = localw;
-          if (!this.apU.bg(localw.asD)) {
+          if (!this.arM.bg(localw.auu)) {
             break label121;
           }
           localObject2 = localw;
@@ -3157,83 +3158,31 @@ public class RecyclerView
     return localObject1;
   }
   
-  final void kD()
+  final String kF()
   {
-    this.aqs += 1;
+    return " " + super.toString() + ", adapter:" + this.acW + ", layout:" + this.arR + ", context:" + getContext();
   }
   
-  final boolean kE()
+  final void kG()
   {
-    return (this.aqo != null) && (this.aqo.isEnabled());
-  }
-  
-  public final boolean kG()
-  {
-    return this.aqs > 0;
+    if (this.asr != null) {
+      this.asr.jw();
+    }
+    if (this.arR != null)
+    {
+      this.arR.d(this.arJ);
+      this.arR.c(this.arJ);
+    }
+    this.arJ.clear();
   }
   
   final void kH()
   {
-    if ((!this.aqU) && (this.aqe))
-    {
-      t.b(this, this.arc);
-      this.aqU = true;
-    }
-  }
-  
-  public void kR()
-  {
-    int j = 0;
-    int k = this.apU.jb();
-    int i = 0;
-    while (i < k)
-    {
-      ((LayoutParams)this.apU.bL(i).getLayoutParams()).arI = true;
-      i += 1;
-    }
-    o localo = this.apR;
-    k = localo.arS.size();
-    i = j;
-    while (i < k)
-    {
-      LayoutParams localLayoutParams = (LayoutParams)((w)localo.arS.get(i)).asD.getLayoutParams();
-      if (localLayoutParams != null) {
-        localLayoutParams.arI = true;
-      }
-      i += 1;
-    }
-  }
-  
-  public final boolean kV()
-  {
-    return (!this.aqh) || (this.aqq) || (this.apT.iD());
-  }
-  
-  final String kp()
-  {
-    return " " + super.toString() + ", adapter:" + this.abe + ", layout:" + this.apZ + ", context:" + getContext();
-  }
-  
-  final void kq()
-  {
-    if (this.aqz != null) {
-      this.aqz.jg();
-    }
-    if (this.apZ != null)
-    {
-      this.apZ.d(this.apR);
-      this.apZ.c(this.apR);
-    }
-    this.apR.clear();
-  }
-  
-  final void kr()
-  {
     int k = 0;
-    if ((!this.aqh) || (this.aqq))
+    if ((!this.arZ) || (this.asi))
     {
       e.beginSection("RV FullInvalidate");
-      kK();
+      la();
       e.endSection();
     }
     label168:
@@ -3243,23 +3192,23 @@ public class RecyclerView
       do
       {
         return;
-      } while (!this.apT.iD());
-      if ((this.apT.bC(4)) && (!this.apT.bC(11)))
+      } while (!this.arL.iT());
+      if ((this.arL.bC(4)) && (!this.arL.bC(11)))
       {
         e.beginSection("RV PartialInvalidate");
-        ks();
-        kD();
-        this.apT.iB();
+        kI();
+        kT();
+        this.arL.iR();
         int i;
-        if (!this.aqj)
+        if (!this.asb)
         {
-          int m = this.apU.getChildCount();
+          int m = this.arM.getChildCount();
           i = 0;
           int j = k;
           if (i < m)
           {
-            w localw = bv(this.apU.getChildAt(i));
-            if ((localw == null) || (localw.lt()) || (!localw.lL())) {
+            w localw = bv(this.arM.getChildAt(i));
+            if ((localw == null) || (localw.lL()) || (!localw.md())) {
               break label168;
             }
             j = 1;
@@ -3267,7 +3216,7 @@ public class RecyclerView
           if (j == 0) {
             break label175;
           }
-          kK();
+          la();
         }
         for (;;)
         {
@@ -3277,36 +3226,100 @@ public class RecyclerView
           return;
           i += 1;
           break;
-          this.apT.iC();
+          this.arL.iS();
         }
       }
-    } while (!this.apT.iD());
+    } while (!this.arL.iT());
     e.beginSection("RV FullInvalidate");
-    kK();
+    la();
     e.endSection();
   }
   
-  final void ks()
+  final void kI()
   {
-    this.aqi += 1;
-    if ((this.aqi == 1) && (!this.aqk)) {
-      this.aqj = false;
+    this.asa += 1;
+    if ((this.asa == 1) && (!this.asc)) {
+      this.asb = false;
     }
   }
   
-  public void kt()
+  public void kJ()
   {
     setScrollState(0);
-    ku();
+    kK();
+  }
+  
+  final void kT()
+  {
+    this.ask += 1;
+  }
+  
+  final boolean kU()
+  {
+    return (this.asg != null) && (this.asg.isEnabled());
+  }
+  
+  public final boolean kW()
+  {
+    return this.ask > 0;
+  }
+  
+  final void kX()
+  {
+    if ((!this.asM) && (this.arW))
+    {
+      t.b(this, this.asU);
+      this.asM = true;
+    }
+  }
+  
+  public void lh()
+  {
+    int j = 0;
+    int k = this.arM.jr();
+    int i = 0;
+    while (i < k)
+    {
+      ((LayoutParams)this.arM.bL(i).getLayoutParams()).atz = true;
+      i += 1;
+    }
+    o localo = this.arJ;
+    k = localo.atJ.size();
+    i = j;
+    while (i < k)
+    {
+      LayoutParams localLayoutParams = (LayoutParams)((w)localo.atJ.get(i)).auu.getLayoutParams();
+      if (localLayoutParams != null) {
+        localLayoutParams.atz = true;
+      }
+      i += 1;
+    }
+  }
+  
+  public final void ll()
+  {
+    if (this.arT.size() == 0) {
+      return;
+    }
+    if (this.arR != null) {
+      this.arR.F("Cannot invalidate item decorations during a scroll or layout");
+    }
+    lh();
+    requestLayout();
+  }
+  
+  public final boolean lm()
+  {
+    return (!this.arZ) || (this.asi) || (this.arL.iT());
   }
   
   public final w m(long paramLong)
   {
     w localw2 = null;
     w localw1 = localw2;
-    if (this.abe != null)
+    if (this.acW != null)
     {
-      if (this.abe.arh) {
+      if (this.acW.asZ) {
         break label31;
       }
       localw1 = localw2;
@@ -3316,18 +3329,18 @@ public class RecyclerView
     do
     {
       return localw1;
-      int j = this.apU.jb();
+      int j = this.arM.jr();
       i = 0;
       localw1 = null;
       if (i >= j) {
         break;
       }
-      localw2 = bv(this.apU.bL(i));
-      if ((localw2 == null) || (localw2.isRemoved()) || (localw2.asG != paramLong)) {
+      localw2 = bv(this.arM.bL(i));
+      if ((localw2 == null) || (localw2.isRemoved()) || (localw2.aux != paramLong)) {
         break label120;
       }
       localw1 = localw2;
-    } while (!this.apU.bg(localw2.asD));
+    } while (!this.arM.bg(localw2.auu));
     localw1 = localw2;
     label120:
     for (;;)
@@ -3340,10 +3353,10 @@ public class RecyclerView
   
   public final View o(float paramFloat1, float paramFloat2)
   {
-    int i = this.apU.getChildCount() - 1;
+    int i = this.arM.getChildCount() - 1;
     while (i >= 0)
     {
-      View localView = this.apU.getChildAt(i);
+      View localView = this.arM.getChildAt(i);
       float f1 = localView.getTranslationX();
       float f2 = localView.getTranslationY();
       if ((paramFloat1 >= localView.getLeft() + f1) && (paramFloat1 <= f1 + localView.getRight()) && (paramFloat2 >= localView.getTop() + f2) && (paramFloat2 <= localView.getBottom() + f2)) {
@@ -3358,22 +3371,22 @@ public class RecyclerView
   {
     boolean bool = true;
     super.onAttachedToWindow();
-    this.aqs = 0;
-    this.aqe = true;
+    this.ask = 0;
+    this.arW = true;
     float f;
-    if ((this.aqh) && (!isLayoutRequested()))
+    if ((this.arZ) && (!isLayoutRequested()))
     {
-      this.aqh = bool;
-      if (this.apZ != null) {
-        this.apZ.f(this);
+      this.arZ = bool;
+      if (this.arR != null) {
+        this.arR.f(this);
       }
-      this.aqU = false;
-      if (apM)
+      this.asM = false;
+      if (arE)
       {
-        this.aqM = ((ac)ac.alN.get());
-        if (this.aqM == null)
+        this.asE = ((ac)ac.anE.get());
+        if (this.asE == null)
         {
-          this.aqM = new ac();
+          this.asE = new ac();
           Display localDisplay = t.aE(this);
           if ((isInEditMode()) || (localDisplay == null)) {
             break label162;
@@ -3387,9 +3400,9 @@ public class RecyclerView
     }
     for (;;)
     {
-      this.aqM.alQ = ((1.0E+009F / f));
-      ac.alN.set(this.aqM);
-      this.aqM.alO.add(this);
+      this.asE.anH = ((1.0E+009F / f));
+      ac.anE.set(this.asE);
+      this.asE.anF.add(this);
       return;
       bool = false;
       break;
@@ -3401,53 +3414,53 @@ public class RecyclerView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.aqz != null) {
-      this.aqz.jg();
+    if (this.asr != null) {
+      this.asr.jw();
     }
-    kt();
-    this.aqe = false;
-    if (this.apZ != null) {
-      this.apZ.b(this, this.apR);
+    kJ();
+    this.arW = false;
+    if (this.arR != null) {
+      this.arR.b(this, this.arJ);
     }
-    this.arb.clear();
-    removeCallbacks(this.arc);
-    bg.a.mT();
-    if ((apM) && (this.aqM != null))
+    this.asT.clear();
+    removeCallbacks(this.asU);
+    bg.a.nl();
+    if ((arE) && (this.asE != null))
     {
-      this.aqM.alO.remove(this);
-      this.aqM = null;
+      this.asE.anF.remove(this);
+      this.asE = null;
     }
   }
   
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int j = this.aqb.size();
+    int j = this.arT.size();
     int i = 0;
     while (i < j)
     {
-      ((h)this.aqb.get(i)).a(paramCanvas, this, this.aqO);
+      ((h)this.arT.get(i)).a(paramCanvas, this, this.asG);
       i += 1;
     }
   }
   
   public boolean onGenericMotionEvent(MotionEvent paramMotionEvent)
   {
-    if (this.apZ == null) {}
+    if (this.arR == null) {}
     label188:
     for (;;)
     {
       return false;
-      if ((!this.aqk) && (paramMotionEvent.getAction() == 8))
+      if ((!this.asc) && (paramMotionEvent.getAction() == 8))
       {
         float f1;
         float f3;
         float f2;
         if ((paramMotionEvent.getSource() & 0x2) != 0) {
-          if (this.apZ.jN())
+          if (this.arR.kd())
           {
             f1 = -paramMotionEvent.getAxisValue(9);
-            if (!this.apZ.jM()) {
+            if (!this.arR.kc()) {
               break label114;
             }
             f3 = paramMotionEvent.getAxisValue(10);
@@ -3460,7 +3473,7 @@ public class RecyclerView
           if ((f2 == 0.0F) && (f1 == 0.0F)) {
             break label188;
           }
-          a((int)(this.aqI * f1), (int)(this.aqJ * f2), paramMotionEvent);
+          a((int)(this.asA * f1), (int)(this.asB * f2), paramMotionEvent);
           return false;
           f1 = 0.0F;
           break;
@@ -3472,12 +3485,12 @@ public class RecyclerView
           if ((paramMotionEvent.getSource() & 0x400000) != 0)
           {
             f1 = paramMotionEvent.getAxisValue(26);
-            if (this.apZ.jN())
+            if (this.arR.kd())
             {
               f2 = -f1;
               f1 = 0.0F;
             }
-            else if (this.apZ.jM())
+            else if (this.arR.kc())
             {
               f2 = 0.0F;
             }
@@ -3499,20 +3512,20 @@ public class RecyclerView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.aqk) {
+    if (this.asc) {
       return false;
     }
     int j = paramMotionEvent.getAction();
     if ((j == 3) || (j == 0)) {
-      this.aqd = null;
+      this.arV = null;
     }
-    int k = this.aqc.size();
+    int k = this.arU.size();
     int i = 0;
     if (i < k)
     {
-      l locall = (l)this.aqc.get(i);
+      l locall = (l)this.arU.get(i);
       if ((locall.a(this, paramMotionEvent)) && (j != 3)) {
-        this.aqd = locall;
+        this.arV = locall;
       }
     }
     for (i = 1;; i = 0)
@@ -3520,17 +3533,17 @@ public class RecyclerView
       if (i == 0) {
         break label105;
       }
-      kC();
+      kS();
       return true;
       i += 1;
       break;
     }
     label105:
-    if (this.apZ == null) {
+    if (this.arR == null) {
       return false;
     }
-    boolean bool1 = this.apZ.jM();
-    boolean bool2 = this.apZ.jN();
+    boolean bool1 = this.arR.kc();
+    boolean bool2 = this.arR.kd();
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
     }
@@ -3546,23 +3559,23 @@ public class RecyclerView
       }
       break;
     case 0: 
-      if (this.aql) {
-        this.aql = false;
+      if (this.asd) {
+        this.asd = false;
       }
-      this.aqA = paramMotionEvent.getPointerId(0);
+      this.ass = paramMotionEvent.getPointerId(0);
       i = (int)(paramMotionEvent.getX() + 0.5F);
-      this.aqD = i;
-      this.aqB = i;
+      this.asv = i;
+      this.ast = i;
       i = (int)(paramMotionEvent.getY() + 0.5F);
-      this.aqE = i;
-      this.aqC = i;
+      this.asw = i;
+      this.asu = i;
       if (this.mScrollState == 2)
       {
         getParent().requestDisallowInterceptTouchEvent(true);
         setScrollState(1);
       }
-      paramMotionEvent = this.aqZ;
-      this.aqZ[1] = 0;
+      paramMotionEvent = this.asR;
+      this.asR[1] = 0;
       paramMotionEvent[0] = 0;
       if (!bool1) {}
       break;
@@ -3573,20 +3586,20 @@ public class RecyclerView
       if (bool2) {
         j = i | 0x2;
       }
-      t(j, 0);
+      A(j, 0);
       break;
-      this.aqA = paramMotionEvent.getPointerId(i);
+      this.ass = paramMotionEvent.getPointerId(i);
       j = (int)(paramMotionEvent.getX(i) + 0.5F);
-      this.aqD = j;
-      this.aqB = j;
+      this.asv = j;
+      this.ast = j;
       i = (int)(paramMotionEvent.getY(i) + 0.5F);
-      this.aqE = i;
-      this.aqC = i;
+      this.asw = i;
+      this.asu = i;
       break;
-      j = paramMotionEvent.findPointerIndex(this.aqA);
+      j = paramMotionEvent.findPointerIndex(this.ass);
       if (j < 0)
       {
-        new StringBuilder("Error processing scroll; pointer index for id ").append(this.aqA).append(" not found. Did any MotionEvents get skipped?");
+        new StringBuilder("Error processing scroll; pointer index for id ").append(this.ass).append(" not found. Did any MotionEvents get skipped?");
         return false;
       }
       i = (int)(paramMotionEvent.getX(j) + 0.5F);
@@ -3594,10 +3607,10 @@ public class RecyclerView
       if (this.mScrollState == 1) {
         break;
       }
-      j = this.aqB;
-      int m = this.aqC;
+      j = this.ast;
+      int m = this.asu;
       if ((bool1) && (Math.abs(i - j) > this.mTouchSlop)) {
-        this.aqD = i;
+        this.asv = i;
       }
       for (i = 1;; i = 0)
       {
@@ -3607,7 +3620,7 @@ public class RecyclerView
           j = i;
           if (Math.abs(k - m) > this.mTouchSlop)
           {
-            this.aqE = k;
+            this.asw = k;
             j = 1;
           }
         }
@@ -3621,7 +3634,7 @@ public class RecyclerView
         this.mVelocityTracker.clear();
         aM(0);
         break;
-        kC();
+        kS();
         break;
         return false;
       }
@@ -3631,16 +3644,16 @@ public class RecyclerView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     e.beginSection("RV OnLayout");
-    kK();
+    la();
     e.endSection();
-    this.aqh = true;
+    this.arZ = true;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int j = 0;
-    if (this.apZ == null) {
-      al(paramInt1, paramInt2);
+    if (this.arR == null) {
+      am(paramInt1, paramInt2);
     }
     do
     {
@@ -3648,12 +3661,12 @@ public class RecyclerView
       do
       {
         return;
-        if (!this.apZ.jL()) {
+        if (!this.arR.kb()) {
           break;
         }
         int k = View.MeasureSpec.getMode(paramInt1);
         int m = View.MeasureSpec.getMode(paramInt2);
-        this.apZ.az(paramInt1, paramInt2);
+        this.arR.aA(paramInt1, paramInt2);
         i = j;
         if (k == 1073741824)
         {
@@ -3662,54 +3675,54 @@ public class RecyclerView
             i = 1;
           }
         }
-      } while ((i != 0) || (this.abe == null));
-      if (this.aqO.asm == 1) {
-        kO();
+      } while ((i != 0) || (this.acW == null));
+      if (this.asG.aud == 1) {
+        le();
       }
-      this.apZ.aw(paramInt1, paramInt2);
-      this.aqO.asr = true;
-      kP();
-      this.apZ.ax(paramInt1, paramInt2);
-    } while (!this.apZ.jR());
-    this.apZ.aw(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight(), 1073741824));
-    this.aqO.asr = true;
-    kP();
-    this.apZ.ax(paramInt1, paramInt2);
+      this.arR.ax(paramInt1, paramInt2);
+      this.asG.aui = true;
+      lf();
+      this.arR.ay(paramInt1, paramInt2);
+    } while (!this.arR.kh());
+    this.arR.ax(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(getMeasuredHeight(), 1073741824));
+    this.asG.aui = true;
+    lf();
+    this.arR.ay(paramInt1, paramInt2);
     return;
-    if (this.aqf)
+    if (this.arX)
     {
-      this.apZ.az(paramInt1, paramInt2);
+      this.arR.aA(paramInt1, paramInt2);
       return;
     }
-    if (this.aqn)
+    if (this.asf)
     {
-      ks();
-      kD();
-      kJ();
+      kI();
+      kT();
+      kZ();
       at(true);
-      if (this.aqO.ast)
+      if (this.asG.auk)
       {
-        this.aqO.asp = true;
-        this.aqn = false;
+        this.asG.aug = true;
+        this.asf = false;
         as(false);
         label256:
-        if (this.abe == null) {
+        if (this.acW == null) {
           break label345;
         }
       }
     }
     label345:
-    for (this.aqO.asn = this.abe.getItemCount();; this.aqO.asn = 0)
+    for (this.asG.aue = this.acW.getItemCount();; this.asG.aue = 0)
     {
-      ks();
-      this.apZ.az(paramInt1, paramInt2);
+      kI();
+      this.arR.aA(paramInt1, paramInt2);
       as(false);
-      this.aqO.asp = false;
+      this.asG.aug = false;
       return;
-      this.apT.iE();
-      this.aqO.asp = false;
+      this.arL.iU();
+      this.asG.aug = false;
       break;
-      if (!this.aqO.ast) {
+      if (!this.asG.auk) {
         break label256;
       }
       setMeasuredDimension(getMeasuredWidth(), getMeasuredHeight());
@@ -3719,7 +3732,7 @@ public class RecyclerView
   
   protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
   {
-    if (kG()) {
+    if (kW()) {
       return false;
     }
     return super.onRequestFocusInDescendants(paramInt, paramRect);
@@ -3733,26 +3746,26 @@ public class RecyclerView
     do
     {
       return;
-      this.apS = ((SavedState)paramParcelable);
-      super.onRestoreInstanceState(this.apS.Nj);
-    } while ((this.apZ == null) || (this.apS.arY == null));
-    this.apZ.onRestoreInstanceState(this.apS.arY);
+      this.arK = ((SavedState)paramParcelable);
+      super.onRestoreInstanceState(this.arK.Pa);
+    } while ((this.arR == null) || (this.arK.atP == null));
+    this.arR.onRestoreInstanceState(this.arK.atP);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    if (this.apS != null)
+    if (this.arK != null)
     {
-      localSavedState.arY = this.apS.arY;
+      localSavedState.atP = this.arK.atP;
       return localSavedState;
     }
-    if (this.apZ != null)
+    if (this.arR != null)
     {
-      localSavedState.arY = this.apZ.onSaveInstanceState();
+      localSavedState.atP = this.arR.onSaveInstanceState();
       return localSavedState;
     }
-    localSavedState.arY = null;
+    localSavedState.atP = null;
     return localSavedState;
   }
   
@@ -3760,14 +3773,14 @@ public class RecyclerView
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
-      kA();
+      kQ();
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i2 = 0;
-    if ((this.aqk) || (this.aql)) {}
+    if ((this.asc) || (this.asd)) {}
     label146:
     label155:
     label161:
@@ -3775,10 +3788,10 @@ public class RecyclerView
     {
       return false;
       i = paramMotionEvent.getAction();
-      if (this.aqd != null)
+      if (this.arV != null)
       {
         if (i == 0) {
-          this.aqd = null;
+          this.arV = null;
         }
       }
       else
@@ -3786,16 +3799,16 @@ public class RecyclerView
         if (i == 0) {
           break label155;
         }
-        j = this.aqc.size();
+        j = this.arU.size();
         i = 0;
         if (i >= j) {
           break label155;
         }
-        localObject = (l)this.aqc.get(i);
+        localObject = (l)this.arU.get(i);
         if (!((l)localObject).a(this, paramMotionEvent)) {
           break label146;
         }
-        this.aqd = ((l)localObject);
+        this.arV = ((l)localObject);
         i = 1;
       }
       for (;;)
@@ -3803,11 +3816,11 @@ public class RecyclerView
         if (i == 0) {
           break label161;
         }
-        kC();
+        kS();
         return true;
-        this.aqd.b(this, paramMotionEvent);
+        this.arV.b(this, paramMotionEvent);
         if ((i == 3) || (i == 1)) {
-          this.aqd = null;
+          this.arV = null;
         }
         i = 1;
         continue;
@@ -3815,9 +3828,9 @@ public class RecyclerView
         break;
         i = 0;
       }
-    } while (this.apZ == null);
-    boolean bool1 = this.apZ.jM();
-    boolean bool2 = this.apZ.jN();
+    } while (this.arR == null);
+    boolean bool1 = this.arR.kc();
+    boolean bool2 = this.arR.kd();
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
     }
@@ -3826,11 +3839,11 @@ public class RecyclerView
     int j = paramMotionEvent.getActionIndex();
     if (k == 0)
     {
-      int[] arrayOfInt = this.aqZ;
-      this.aqZ[1] = 0;
+      int[] arrayOfInt = this.asR;
+      this.asR[1] = 0;
       arrayOfInt[0] = 0;
     }
-    ((MotionEvent)localObject).offsetLocation(this.aqZ[0], this.aqZ[1]);
+    ((MotionEvent)localObject).offsetLocation(this.asR[0], this.asR[1]);
     int i = i2;
     switch (k)
     {
@@ -3843,13 +3856,13 @@ public class RecyclerView
       ((MotionEvent)localObject).recycle();
       return true;
     case 0: 
-      this.aqA = paramMotionEvent.getPointerId(0);
+      this.ass = paramMotionEvent.getPointerId(0);
       i = (int)(paramMotionEvent.getX() + 0.5F);
-      this.aqD = i;
-      this.aqB = i;
+      this.asv = i;
+      this.ast = i;
       i = (int)(paramMotionEvent.getY() + 0.5F);
-      this.aqE = i;
-      this.aqC = i;
+      this.asw = i;
+      this.asu = i;
       if (!bool1) {
         break;
       }
@@ -3865,39 +3878,39 @@ public class RecyclerView
       if (bool2) {
         j = i | 0x2;
       }
-      t(j, 0);
+      A(j, 0);
       i = i2;
       break;
-      this.aqA = paramMotionEvent.getPointerId(j);
+      this.ass = paramMotionEvent.getPointerId(j);
       i = (int)(paramMotionEvent.getX(j) + 0.5F);
-      this.aqD = i;
-      this.aqB = i;
+      this.asv = i;
+      this.ast = i;
       i = (int)(paramMotionEvent.getY(j) + 0.5F);
-      this.aqE = i;
-      this.aqC = i;
+      this.asw = i;
+      this.asu = i;
       i = i2;
       break;
-      i = paramMotionEvent.findPointerIndex(this.aqA);
+      i = paramMotionEvent.findPointerIndex(this.ass);
       if (i < 0)
       {
-        new StringBuilder("Error processing scroll; pointer index for id ").append(this.aqA).append(" not found. Did any MotionEvents get skipped?");
+        new StringBuilder("Error processing scroll; pointer index for id ").append(this.ass).append(" not found. Did any MotionEvents get skipped?");
         return false;
       }
       int i3 = (int)(paramMotionEvent.getX(i) + 0.5F);
       int i4 = (int)(paramMotionEvent.getY(i) + 0.5F);
-      int m = this.aqD - i3;
-      k = this.aqE - i4;
+      int m = this.asv - i3;
+      k = this.asw - i4;
       j = m;
       i = k;
-      if (a(m, k, this.SM, this.SL, 0))
+      if (a(m, k, this.UB, this.UA, 0))
       {
-        j = m - this.SM[0];
-        i = k - this.SM[1];
-        ((MotionEvent)localObject).offsetLocation(this.SL[0], this.SL[1]);
-        paramMotionEvent = this.aqZ;
-        paramMotionEvent[0] += this.SL[0];
-        paramMotionEvent = this.aqZ;
-        paramMotionEvent[1] += this.SL[1];
+        j = m - this.UB[0];
+        i = k - this.UB[1];
+        ((MotionEvent)localObject).offsetLocation(this.UA[0], this.UA[1]);
+        paramMotionEvent = this.asR;
+        paramMotionEvent[0] += this.UA[0];
+        paramMotionEvent = this.asR;
+        paramMotionEvent[1] += this.UA[1];
       }
       k = j;
       m = i;
@@ -3942,8 +3955,8 @@ public class RecyclerView
         if (this.mScrollState != 1) {
           break;
         }
-        this.aqD = (i3 - this.SL[0]);
-        this.aqE = (i4 - this.SL[1]);
+        this.asv = (i3 - this.UA[0]);
+        this.asw = (i4 - this.UA[1]);
         if (bool1)
         {
           i = k;
@@ -3958,7 +3971,7 @@ public class RecyclerView
             getParent().requestDisallowInterceptTouchEvent(true);
           }
           i = i2;
-          if (this.aqM == null) {
+          if (this.asE == null) {
             break;
           }
           if (k == 0)
@@ -3968,7 +3981,7 @@ public class RecyclerView
               break;
             }
           }
-          this.aqM.b(this, k, m);
+          this.asE.b(this, k, m);
           i = i2;
           break;
           j = this.mTouchSlop + j;
@@ -3982,27 +3995,27 @@ public class RecyclerView
         i = i2;
         break;
         this.mVelocityTracker.addMovement((MotionEvent)localObject);
-        this.mVelocityTracker.computeCurrentVelocity(1000, this.aqH);
+        this.mVelocityTracker.computeCurrentVelocity(1000, this.asz);
         float f1;
         if (bool1)
         {
-          f1 = -this.mVelocityTracker.getXVelocity(this.aqA);
+          f1 = -this.mVelocityTracker.getXVelocity(this.ass);
           if (!bool2) {
             break label1087;
           }
         }
-        for (float f2 = -this.mVelocityTracker.getYVelocity(this.aqA);; f2 = 0.0F)
+        for (float f2 = -this.mVelocityTracker.getYVelocity(this.ass);; f2 = 0.0F)
         {
-          if (((f1 == 0.0F) && (f2 == 0.0F)) || (!ai((int)f1, (int)f2))) {
+          if (((f1 == 0.0F) && (f2 == 0.0F)) || (!aj((int)f1, (int)f2))) {
             setScrollState(0);
           }
-          kB();
+          kR();
           i = 1;
           break;
           f1 = 0.0F;
           break label1026;
         }
-        kC();
+        kS();
         i = i2;
         break;
       }
@@ -4014,25 +4027,25 @@ public class RecyclerView
     w localw = bv(paramView);
     if (localw != null)
     {
-      if (!localw.lF()) {
+      if (!localw.lX()) {
         break label36;
       }
-      localw.lD();
+      localw.lV();
     }
     label36:
-    while (localw.lt())
+    while (localw.lL())
     {
       paramView.clearAnimation();
       bA(paramView);
       super.removeDetachedView(paramView, paramBoolean);
       return;
     }
-    throw new IllegalArgumentException("Called removeDetachedView with a view which is not flagged as tmp detached." + localw + kp());
+    throw new IllegalArgumentException("Called removeDetachedView with a view which is not flagged as tmp detached." + localw + kF());
   }
   
   public void requestChildFocus(View paramView1, View paramView2)
   {
-    if ((this.apZ.lf()) || (kG())) {}
+    if ((this.arR.lx()) || (kW())) {}
     for (int i = 1;; i = 0)
     {
       if ((i == 0) && (paramView2 != null)) {
@@ -4045,16 +4058,16 @@ public class RecyclerView
   
   public boolean requestChildRectangleOnScreen(View paramView, Rect paramRect, boolean paramBoolean)
   {
-    return this.apZ.a(this, paramView, paramRect, paramBoolean, false);
+    return this.arR.a(this, paramView, paramRect, paramBoolean, false);
   }
   
   public void requestDisallowInterceptTouchEvent(boolean paramBoolean)
   {
-    int j = this.aqc.size();
+    int j = this.arU.size();
     int i = 0;
     while (i < j)
     {
-      ((l)this.aqc.get(i)).ai(paramBoolean);
+      ((l)this.arU.get(i)).ai(paramBoolean);
       i += 1;
     }
     super.requestDisallowInterceptTouchEvent(paramBoolean);
@@ -4062,17 +4075,17 @@ public class RecyclerView
   
   public void requestLayout()
   {
-    if ((this.aqi == 0) && (!this.aqk))
+    if ((this.asa == 0) && (!this.asc))
     {
       super.requestLayout();
       return;
     }
-    this.aqj = true;
+    this.asb = true;
   }
   
   public void scrollBy(int paramInt1, int paramInt2)
   {
-    if (this.apZ == null) {}
+    if (this.arR == null) {}
     boolean bool1;
     boolean bool2;
     do
@@ -4080,9 +4093,9 @@ public class RecyclerView
       do
       {
         return;
-      } while (this.aqk);
-      bool1 = this.apZ.jM();
-      bool2 = this.apZ.jN();
+      } while (this.asc);
+      bool1 = this.arR.kc();
+      bool2 = this.arR.kd();
     } while ((!bool1) && (!bool2));
     if (bool1) {
       if (!bool2) {
@@ -4106,7 +4119,7 @@ public class RecyclerView
   {
     int i = 0;
     int j = 0;
-    if (kG())
+    if (kW())
     {
       if (paramAccessibilityEvent == null) {
         break label65;
@@ -4123,7 +4136,7 @@ public class RecyclerView
       }
       for (;;)
       {
-        this.aqm |= i;
+        this.ase |= i;
         i = 1;
         if (i != 0)
         {
@@ -4142,61 +4155,61 @@ public class RecyclerView
   
   public void setAccessibilityDelegateCompat(al paramal)
   {
-    this.aqV = paramal;
-    t.a(this, this.aqV);
+    this.asN = paramal;
+    t.a(this, this.asN);
   }
   
   public void setAdapter(a parama)
   {
     setLayoutFrozen(false);
-    if (this.abe != null)
+    if (this.acW != null)
     {
-      this.abe.b(this.apQ);
-      this.abe.d(this);
+      this.acW.b(this.arI);
+      this.acW.d(this);
     }
-    kq();
-    this.apT.reset();
-    a locala = this.abe;
-    this.abe = parama;
+    kG();
+    this.arL.reset();
+    a locala = this.acW;
+    this.acW = parama;
     if (parama != null)
     {
-      parama.a(this.apQ);
+      parama.a(this.arI);
       parama.c(this);
     }
-    if (this.apZ != null) {
-      this.apZ.lg();
+    if (this.arR != null) {
+      this.arR.ly();
     }
-    Object localObject = this.apR;
-    parama = this.abe;
+    Object localObject = this.arJ;
+    parama = this.acW;
     ((o)localObject).clear();
     localObject = ((o)localObject).getRecycledViewPool();
     if (locala != null) {
       ((n)localObject).detach();
     }
-    if (((n)localObject).arL == 0)
+    if (((n)localObject).atC == 0)
     {
       int i = 0;
-      while (i < ((n)localObject).arK.size())
+      while (i < ((n)localObject).atB.size())
       {
-        ((RecyclerView.n.a)((n)localObject).arK.valueAt(i)).arM.clear();
+        ((RecyclerView.n.a)((n)localObject).atB.valueAt(i)).atD.clear();
         i += 1;
       }
     }
     if (parama != null) {
-      ((n)localObject).lm();
+      ((n)localObject).lE();
     }
-    this.aqO.aso = true;
+    this.asG.auf = true;
     au(false);
     requestLayout();
   }
   
   public void setChildDrawingOrderCallback(d paramd)
   {
-    if (paramd == this.aqW) {
+    if (paramd == this.asO) {
       return;
     }
-    this.aqW = paramd;
-    if (this.aqW != null) {}
+    this.asO = paramd;
+    if (this.asO != null) {}
     for (boolean bool = true;; bool = false)
     {
       setChildrenDrawingOrderEnabled(bool);
@@ -4206,12 +4219,12 @@ public class RecyclerView
   
   public void setClipToPadding(boolean paramBoolean)
   {
-    if (paramBoolean != this.apW) {
-      kA();
+    if (paramBoolean != this.arO) {
+      kQ();
     }
-    this.apW = paramBoolean;
+    this.arO = paramBoolean;
     super.setClipToPadding(paramBoolean);
-    if (this.aqh) {
+    if (this.arZ) {
       requestLayout();
     }
   }
@@ -4219,47 +4232,47 @@ public class RecyclerView
   public void setEdgeEffectFactory(e parame)
   {
     m.checkNotNull(parame);
-    this.aqu = parame;
-    kA();
+    this.asm = parame;
+    kQ();
   }
   
   public void setHasFixedSize(boolean paramBoolean)
   {
-    this.aqf = paramBoolean;
+    this.arX = paramBoolean;
   }
   
   public void setItemAnimator(f paramf)
   {
-    if (this.aqz != null)
+    if (this.asr != null)
     {
-      this.aqz.jg();
-      this.aqz.ari = null;
+      this.asr.jw();
+      this.asr.ata = null;
     }
-    this.aqz = paramf;
-    if (this.aqz != null) {
-      this.aqz.ari = this.aqT;
+    this.asr = paramf;
+    if (this.asr != null) {
+      this.asr.ata = this.asL;
     }
   }
   
   public void setItemViewCacheSize(int paramInt)
   {
-    o localo = this.apR;
-    localo.arU = paramInt;
-    localo.ln();
+    o localo = this.arJ;
+    localo.atL = paramInt;
+    localo.lF();
   }
   
   public void setLayoutFrozen(boolean paramBoolean)
   {
-    if (paramBoolean != this.aqk)
+    if (paramBoolean != this.asc)
     {
-      G("Do not setLayoutFrozen in layout or scroll");
+      F("Do not setLayoutFrozen in layout or scroll");
       if (!paramBoolean)
       {
-        this.aqk = false;
-        if ((this.aqj) && (this.apZ != null) && (this.abe != null)) {
+        this.asc = false;
+        if ((this.asb) && (this.arR != null) && (this.acW != null)) {
           requestLayout();
         }
-        this.aqj = false;
+        this.asb = false;
       }
     }
     else
@@ -4268,64 +4281,64 @@ public class RecyclerView
     }
     long l = SystemClock.uptimeMillis();
     onTouchEvent(MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0));
-    this.aqk = true;
-    this.aql = true;
-    kt();
+    this.asc = true;
+    this.asd = true;
+    kJ();
   }
   
   public void setLayoutManager(i parami)
   {
-    if (parami == this.apZ) {
+    if (parami == this.arR) {
       return;
     }
-    kt();
-    if (this.apZ != null)
+    kJ();
+    if (this.arR != null)
     {
-      if (this.aqz != null) {
-        this.aqz.jg();
+      if (this.asr != null) {
+        this.asr.jw();
       }
-      this.apZ.d(this.apR);
-      this.apZ.c(this.apR);
-      this.apR.clear();
-      if (this.aqe) {
-        this.apZ.b(this, this.apR);
+      this.arR.d(this.arJ);
+      this.arR.c(this.arJ);
+      this.arJ.clear();
+      if (this.arW) {
+        this.arR.b(this, this.arJ);
       }
-      this.apZ.setRecyclerView(null);
-      this.apZ = null;
+      this.arR.setRecyclerView(null);
+      this.arR = null;
     }
     s locals;
     for (;;)
     {
-      locals = this.apU;
-      for (s.a locala = locals.ajU;; locala = locala.ajX)
+      locals = this.arM;
+      for (s.a locala = locals.alL;; locala = locala.alO)
       {
-        locala.ajW = 0L;
-        if (locala.ajX == null) {
+        locala.alN = 0L;
+        if (locala.alO == null) {
           break;
         }
       }
-      this.apR.clear();
+      this.arJ.clear();
     }
-    int i = locals.ajV.size() - 1;
+    int i = locals.alM.size() - 1;
     while (i >= 0)
     {
-      locals.ajT.bj((View)locals.ajV.get(i));
-      locals.ajV.remove(i);
+      locals.alK.bj((View)locals.alM.get(i));
+      locals.alM.remove(i);
       i -= 1;
     }
-    locals.ajT.removeAllViews();
-    this.apZ = parami;
+    locals.alK.removeAllViews();
+    this.arR = parami;
     if (parami != null)
     {
-      if (parami.alu != null) {
-        throw new IllegalArgumentException("LayoutManager " + parami + " is already attached to a RecyclerView:" + parami.alu.kp());
+      if (parami.anl != null) {
+        throw new IllegalArgumentException("LayoutManager " + parami + " is already attached to a RecyclerView:" + parami.anl.kF());
       }
-      this.apZ.setRecyclerView(this);
-      if (this.aqe) {
-        this.apZ.f(this);
+      this.arR.setRecyclerView(this);
+      if (this.arW) {
+        this.arR.f(this);
       }
     }
-    this.apR.ln();
+    this.arJ.lF();
     requestLayout();
   }
   
@@ -4336,35 +4349,35 @@ public class RecyclerView
   
   public void setOnFlingListener(k paramk)
   {
-    this.aqF = paramk;
+    this.asx = paramk;
   }
   
   @Deprecated
   public void setOnScrollListener(m paramm)
   {
-    this.aqP = paramm;
+    this.asH = paramm;
   }
   
   public void setPreserveFocusAfterLayout(boolean paramBoolean)
   {
-    this.aqK = paramBoolean;
+    this.asC = paramBoolean;
   }
   
   public void setRecycledViewPool(n paramn)
   {
-    o localo = this.apR;
-    if (localo.arW != null) {
-      localo.arW.detach();
+    o localo = this.arJ;
+    if (localo.atN != null) {
+      localo.atN.detach();
     }
-    localo.arW = paramn;
-    if ((localo.arW != null) && (localo.arf.getAdapter() != null)) {
-      localo.arW.lm();
+    localo.atN = paramn;
+    if ((localo.atN != null) && (localo.asX.getAdapter() != null)) {
+      localo.atN.lE();
     }
   }
   
   public void setRecyclerListener(p paramp)
   {
-    this.aqa = paramp;
+    this.arS = paramp;
   }
   
   void setScrollState(int paramInt)
@@ -4375,20 +4388,20 @@ public class RecyclerView
       return;
       this.mScrollState = paramInt;
       if (paramInt != 2) {
-        ku();
+        kK();
       }
-      if (this.apZ != null) {
-        this.apZ.cp(paramInt);
+      if (this.arR != null) {
+        this.arR.cp(paramInt);
       }
-      if (this.aqP != null) {
-        this.aqP.b(this, paramInt);
+      if (this.asH != null) {
+        this.asH.b(this, paramInt);
       }
-      if (this.aqQ != null)
+      if (this.asI != null)
       {
-        int i = this.aqQ.size() - 1;
+        int i = this.asI.size() - 1;
         while (i >= 0)
         {
-          ((m)this.aqQ.get(i)).b(this, paramInt);
+          ((m)this.asI.get(i)).b(this, paramInt);
           i -= 1;
         }
       }
@@ -4411,7 +4424,7 @@ public class RecyclerView
   
   public void setViewCacheExtension(u paramu)
   {
-    this.apR.arX = paramu;
+    this.arJ.atO = paramu;
   }
   
   public final void smoothScrollBy(int paramInt1, int paramInt2)
@@ -4421,16 +4434,16 @@ public class RecyclerView
   
   public void smoothScrollToPosition(int paramInt)
   {
-    if (this.aqk) {}
-    while (this.apZ == null) {
+    if (this.asc) {}
+    while (this.arR == null) {
       return;
     }
-    this.apZ.a(this, this.aqO, paramInt);
+    this.arR.a(this, this.asG, paramInt);
   }
   
   public boolean startNestedScroll(int paramInt)
   {
-    return getScrollingChildHelper().t(paramInt, 0);
+    return getScrollingChildHelper().A(paramInt, 0);
   }
   
   public void stopNestedScroll()
@@ -4441,10 +4454,10 @@ public class RecyclerView
   public static class LayoutParams
     extends ViewGroup.MarginLayoutParams
   {
-    final Rect anO = new Rect();
-    public RecyclerView.w arH;
-    boolean arI = true;
-    boolean arJ = false;
+    final Rect apG = new Rect();
+    boolean atA = false;
+    public RecyclerView.w aty;
+    boolean atz = true;
     
     public LayoutParams(int paramInt1, int paramInt2)
     {
@@ -4471,9 +4484,9 @@ public class RecyclerView
       super();
     }
     
-    public final int ll()
+    public final int lD()
     {
-      return this.arH.lv();
+      return this.aty.lN();
     }
   }
   
@@ -4481,7 +4494,7 @@ public class RecyclerView
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-    Parcelable arY;
+    Parcelable atP;
     
     SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
@@ -4489,7 +4502,7 @@ public class RecyclerView
       if (paramClassLoader != null) {}
       for (;;)
       {
-        this.arY = paramParcel.readParcelable(paramClassLoader);
+        this.atP = paramParcel.readParcelable(paramClassLoader);
         return;
         paramClassLoader = RecyclerView.i.class.getClassLoader();
       }
@@ -4503,20 +4516,20 @@ public class RecyclerView
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeParcelable(this.arY, 0);
+      paramParcel.writeParcelable(this.atP, 0);
     }
   }
   
   public static abstract class a<VH extends RecyclerView.w>
   {
-    public final RecyclerView.b arg = new RecyclerView.b();
-    protected boolean arh = false;
+    public final RecyclerView.b asY = new RecyclerView.b();
+    protected boolean asZ = false;
     
     public abstract VH a(ViewGroup paramViewGroup, int paramInt);
     
     public void a(RecyclerView.c paramc)
     {
-      this.arg.registerObserver(paramc);
+      this.asY.registerObserver(paramc);
     }
     
     public void a(VH paramVH) {}
@@ -4528,59 +4541,59 @@ public class RecyclerView
       a(paramVH, paramInt);
     }
     
-    public final void ao(int paramInt1, int paramInt2)
-    {
-      this.arg.ao(paramInt1, paramInt2);
-    }
-    
     public final void ap(int paramInt1, int paramInt2)
     {
-      this.arg.ap(paramInt1, paramInt2);
+      this.asY.ap(paramInt1, paramInt2);
     }
     
     public final void aq(int paramInt1, int paramInt2)
     {
-      this.arg.aq(paramInt1, paramInt2);
+      this.asY.aq(paramInt1, paramInt2);
     }
     
     public final void ar(int paramInt1, int paramInt2)
     {
-      this.arg.ar(paramInt1, paramInt2);
+      this.asY.ar(paramInt1, paramInt2);
+    }
+    
+    public final void as(int paramInt1, int paramInt2)
+    {
+      this.asY.as(paramInt1, paramInt2);
     }
     
     public void av(boolean paramBoolean)
     {
-      if (this.arg.hasObservers()) {
+      if (this.asY.hasObservers()) {
         throw new IllegalStateException("Cannot change whether this adapter has stable IDs while the adapter has registered observers.");
       }
-      this.arh = paramBoolean;
+      this.asZ = paramBoolean;
     }
     
     public final void b(int paramInt, Object paramObject)
     {
-      this.arg.e(paramInt, 1, paramObject);
+      this.asY.e(paramInt, 1, paramObject);
     }
     
     public void b(RecyclerView.c paramc)
     {
-      this.arg.unregisterObserver(paramc);
+      this.asY.unregisterObserver(paramc);
     }
     
     public void c(RecyclerView paramRecyclerView) {}
     
     public final void cj(int paramInt)
     {
-      this.arg.ao(paramInt, 1);
+      this.asY.ap(paramInt, 1);
     }
     
     public final void ck(int paramInt)
     {
-      this.arg.aq(paramInt, 1);
+      this.asY.ar(paramInt, 1);
     }
     
     public final void cl(int paramInt)
     {
-      this.arg.ar(paramInt, 1);
+      this.asY.as(paramInt, 1);
     }
     
     public final VH d(ViewGroup paramViewGroup, int paramInt)
@@ -4589,7 +4602,7 @@ public class RecyclerView
       {
         e.beginSection("RV CreateView");
         paramViewGroup = a(paramViewGroup, paramInt);
-        if (paramViewGroup.asD.getParent() != null) {
+        if (paramViewGroup.auu.getParent() != null) {
           throw new IllegalStateException("ViewHolder views must not be attached when created. Ensure that you are not passing 'true' to the attachToRoot parameter of LayoutInflater.inflate(..., boolean attachToRoot)");
         }
       }
@@ -4597,7 +4610,7 @@ public class RecyclerView
       {
         e.endSection();
       }
-      paramViewGroup.asH = paramInt;
+      paramViewGroup.auy = paramInt;
       e.endSection();
       return paramViewGroup;
     }
@@ -4606,7 +4619,7 @@ public class RecyclerView
     
     public final void e(int paramInt1, int paramInt2, Object paramObject)
     {
-      this.arg.e(paramInt1, paramInt2, paramObject);
+      this.asY.e(paramInt1, paramInt2, paramObject);
     }
     
     public abstract int getItemCount();
@@ -4627,26 +4640,16 @@ public class RecyclerView
     
     public final void notifyDataSetChanged()
     {
-      this.arg.notifyChanged();
+      this.asY.notifyChanged();
     }
   }
   
   public static final class b
     extends Observable<RecyclerView.c>
   {
-    public final void ao(int paramInt1, int paramInt2)
-    {
-      e(paramInt1, paramInt2, null);
-    }
-    
     public final void ap(int paramInt1, int paramInt2)
     {
-      int i = this.mObservers.size() - 1;
-      while (i >= 0)
-      {
-        ((RecyclerView.c)this.mObservers.get(i)).l(paramInt1, paramInt2, 1);
-        i -= 1;
-      }
+      e(paramInt1, paramInt2, null);
     }
     
     public final void aq(int paramInt1, int paramInt2)
@@ -4654,7 +4657,7 @@ public class RecyclerView
       int i = this.mObservers.size() - 1;
       while (i >= 0)
       {
-        ((RecyclerView.c)this.mObservers.get(i)).at(paramInt1, paramInt2);
+        ((RecyclerView.c)this.mObservers.get(i)).l(paramInt1, paramInt2, 1);
         i -= 1;
       }
     }
@@ -4665,6 +4668,16 @@ public class RecyclerView
       while (i >= 0)
       {
         ((RecyclerView.c)this.mObservers.get(i)).au(paramInt1, paramInt2);
+        i -= 1;
+      }
+    }
+    
+    public final void as(int paramInt1, int paramInt2)
+    {
+      int i = this.mObservers.size() - 1;
+      while (i >= 0)
+      {
+        ((RecyclerView.c)this.mObservers.get(i)).av(paramInt1, paramInt2);
         i -= 1;
       }
     }
@@ -4697,15 +4710,15 @@ public class RecyclerView
   
   public static abstract class c
   {
-    public void as(int paramInt1, int paramInt2) {}
-    
     public void at(int paramInt1, int paramInt2) {}
     
     public void au(int paramInt1, int paramInt2) {}
     
+    public void av(int paramInt1, int paramInt2) {}
+    
     public void f(int paramInt1, int paramInt2, Object paramObject)
     {
-      as(paramInt1, paramInt2);
+      at(paramInt1, paramInt2);
     }
     
     public void l(int paramInt1, int paramInt2, int paramInt3) {}
@@ -4715,7 +4728,7 @@ public class RecyclerView
   
   public static abstract interface d
   {
-    public abstract int av(int paramInt1, int paramInt2);
+    public abstract int aw(int paramInt1, int paramInt2);
   }
   
   public static final class e
@@ -4728,18 +4741,18 @@ public class RecyclerView
   
   public static abstract class f
   {
-    b ari = null;
-    private ArrayList<a> arj = new ArrayList();
-    public long ark = 120L;
-    public long arl = 120L;
-    public long arm = 250L;
-    public long arn = 250L;
+    b ata = null;
+    private ArrayList<a> atb = new ArrayList();
+    public long atc = 120L;
+    public long atd = 120L;
+    public long ate = 250L;
+    public long atf = 250L;
     
     static int m(RecyclerView.w paramw)
     {
-      int j = paramw.DU & 0xE;
+      int j = paramw.FL & 0xE;
       int i;
-      if (paramw.bj()) {
+      if (paramw.isInvalid()) {
         i = 4;
       }
       int k;
@@ -4755,8 +4768,8 @@ public class RecyclerView
               return i;
               i = j;
             } while ((j & 0x4) != 0);
-            k = paramw.asF;
-            m = paramw.lv();
+            k = paramw.auw;
+            m = paramw.lN();
             i = j;
           } while (k == -1);
           i = j;
@@ -4777,13 +4790,13 @@ public class RecyclerView
       if (parama != null)
       {
         if (!bool) {
-          parama.ld();
+          parama.lv();
         }
       }
       else {
         return bool;
       }
-      this.arj.add(parama);
+      this.atb.add(parama);
       return bool;
     }
     
@@ -4804,52 +4817,57 @@ public class RecyclerView
     
     public abstract boolean isRunning();
     
-    public abstract void je();
+    public abstract void ju();
     
-    public abstract void jg();
+    public abstract void jw();
     
-    public long kX()
+    public final void lo()
     {
-      return this.ark;
+      this.ate = 0L;
     }
     
-    public long kY()
+    public long lp()
     {
-      return this.arl;
+      return this.atc;
     }
     
-    public final void kZ()
+    public long lq()
     {
-      this.arl = 2000L;
+      return this.atd;
     }
     
-    public final long la()
+    public final void lr()
     {
-      return this.arn;
+      this.atd = 2000L;
     }
     
-    public final void lb()
+    public final long ls()
     {
-      this.arn = 0L;
+      return this.atf;
     }
     
-    public final void lc()
+    public final void lt()
     {
-      int j = this.arj.size();
+      this.atf = 0L;
+    }
+    
+    public final void lu()
+    {
+      int j = this.atb.size();
       int i = 0;
       while (i < j)
       {
-        ((a)this.arj.get(i)).ld();
+        ((a)this.atb.get(i)).lv();
         i += 1;
       }
-      this.arj.clear();
+      this.atb.clear();
     }
     
     public final void n(RecyclerView.w paramw)
     {
       o(paramw);
-      if (this.ari != null) {
-        this.ari.o(paramw);
+      if (this.ata != null) {
+        this.ata.o(paramw);
       }
     }
     
@@ -4862,7 +4880,7 @@ public class RecyclerView
     
     public static abstract interface a
     {
-      public abstract void ld();
+      public abstract void lv();
     }
     
     static abstract interface b
@@ -4872,7 +4890,7 @@ public class RecyclerView
     
     public static class c
     {
-      public int aro;
+      public int atg;
       public int bottom;
       public int left;
       public int right;
@@ -4880,7 +4898,7 @@ public class RecyclerView
       
       public c c(RecyclerView.w paramw, int paramInt)
       {
-        paramw = paramw.asD;
+        paramw = paramw.auu;
         this.left = paramw.getLeft();
         this.top = paramw.getTop();
         this.right = paramw.getRight();
@@ -4899,24 +4917,24 @@ public class RecyclerView
     {
       boolean bool = true;
       paramw.ax(true);
-      if ((paramw.asJ != null) && (paramw.asK == null)) {
-        paramw.asJ = null;
+      if ((paramw.auA != null) && (paramw.auB == null)) {
+        paramw.auA = null;
       }
-      paramw.asK = null;
+      paramw.auB = null;
       int i;
       RecyclerView localRecyclerView;
       Object localObject;
       s locals;
-      if ((paramw.DU & 0x10) != 0)
+      if ((paramw.FL & 0x10) != 0)
       {
         i = 1;
         if (i == 0)
         {
           localRecyclerView = RecyclerView.this;
-          localObject = paramw.asD;
-          localRecyclerView.ks();
-          locals = localRecyclerView.apU;
-          i = locals.ajT.indexOfChild((View)localObject);
+          localObject = paramw.auu;
+          localRecyclerView.kI();
+          locals = localRecyclerView.arM;
+          i = locals.alK.indexOfChild((View)localObject);
           if (i != -1) {
             break label169;
           }
@@ -4926,8 +4944,8 @@ public class RecyclerView
           if (i != 0)
           {
             localObject = RecyclerView.bv((View)localObject);
-            localRecyclerView.apR.u((RecyclerView.w)localObject);
-            localRecyclerView.apR.t((RecyclerView.w)localObject);
+            localRecyclerView.arJ.u((RecyclerView.w)localObject);
+            localRecyclerView.arJ.t((RecyclerView.w)localObject);
           }
           if (i != 0) {
             break label220;
@@ -4937,18 +4955,18 @@ public class RecyclerView
       for (;;)
       {
         localRecyclerView.as(bool);
-        if ((i == 0) && (paramw.lF())) {
-          RecyclerView.this.removeDetachedView(paramw.asD, false);
+        if ((i == 0) && (paramw.lX())) {
+          RecyclerView.this.removeDetachedView(paramw.auu, false);
         }
         return;
         i = 0;
         break;
         label169:
-        if (locals.ajU.get(i))
+        if (locals.alL.get(i))
         {
-          locals.ajU.remove(i);
+          locals.alL.remove(i);
           locals.bf((View)localObject);
-          locals.ajT.removeViewAt(i);
+          locals.alK.removeViewAt(i);
           i = 1;
           break label99;
         }
@@ -4975,12 +4993,9 @@ public class RecyclerView
   
   public static abstract class i
   {
-    protected RecyclerView alu;
-    s apU;
-    boolean arA;
-    protected int arB;
-    protected int arC;
-    private final bf.b arp = new bf.b()
+    protected RecyclerView anl;
+    s arM;
+    private final bf.b ath = new bf.b()
     {
       public final int bO(View paramAnonymousView)
       {
@@ -5000,17 +5015,17 @@ public class RecyclerView
         return RecyclerView.i.this.getChildAt(paramAnonymousInt);
       }
       
-      public final int lj()
+      public final int lB()
       {
         return RecyclerView.i.this.getPaddingLeft();
       }
       
-      public final int lk()
+      public final int lC()
       {
         return RecyclerView.i.this.mWidth - RecyclerView.i.this.getPaddingRight();
       }
     };
-    private final bf.b arq = new bf.b()
+    private final bf.b ati = new bf.b()
     {
       public final int bO(View paramAnonymousView)
       {
@@ -5030,50 +5045,53 @@ public class RecyclerView
         return RecyclerView.i.this.getChildAt(paramAnonymousInt);
       }
       
-      public final int lj()
+      public final int lB()
       {
         return RecyclerView.i.this.getPaddingTop();
       }
       
-      public final int lk()
+      public final int lC()
       {
         return RecyclerView.i.this.mHeight - RecyclerView.i.this.getPaddingBottom();
       }
     };
-    bf ars = new bf(this.arp);
-    bf art = new bf(this.arq);
-    RecyclerView.s aru;
-    boolean arv = false;
-    protected boolean arw = false;
-    protected boolean arx = true;
-    boolean ary = true;
-    int arz;
+    bf atj = new bf(this.ath);
+    bf atk = new bf(this.ati);
+    RecyclerView.s atl;
+    boolean atm = false;
+    protected boolean atn = false;
+    protected boolean ato = true;
+    boolean atp = true;
+    int atq;
+    boolean atr;
+    protected int ats;
+    protected int att;
     public int mHeight;
     public int mWidth;
-    boolean ou = false;
+    boolean qm = false;
     
     private void H(View paramView, int paramInt)
     {
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
       RecyclerView.w localw = RecyclerView.bv(paramView);
       if (localw.isRemoved()) {
-        this.alu.apV.G(localw);
+        this.anl.arN.G(localw);
       }
       for (;;)
       {
-        this.apU.a(paramView, paramInt, localLayoutParams, localw.isRemoved());
+        this.arM.a(paramView, paramInt, localLayoutParams, localw.isRemoved());
         return;
-        this.alu.apV.H(localw);
+        this.anl.arN.H(localw);
       }
     }
     
     private void a(RecyclerView.o paramo, int paramInt, View paramView)
     {
       RecyclerView.w localw = RecyclerView.bv(paramView);
-      if (localw.lt()) {
+      if (localw.lL()) {
         return;
       }
-      if ((localw.bj()) && (!localw.isRemoved()) && (!this.alu.abe.arh))
+      if ((localw.isInvalid()) && (!localw.isRemoved()) && (!this.anl.acW.asZ))
       {
         removeViewAt(paramInt);
         paramo.t(localw);
@@ -5081,14 +5099,14 @@ public class RecyclerView
       }
       cm(paramInt);
       paramo.bU(paramView);
-      this.alu.apV.H(localw);
+      this.anl.arN.H(localw);
     }
     
-    private void ay(int paramInt1, int paramInt2)
+    private void az(int paramInt1, int paramInt2)
     {
       View localView = getChildAt(paramInt1);
       if (localView == null) {
-        throw new IllegalArgumentException("Cannot move a child from non-existing index:" + paramInt1 + this.alu.toString());
+        throw new IllegalArgumentException("Cannot move a child from non-existing index:" + paramInt1 + this.anl.toString());
       }
       cm(paramInt1);
       H(localView, paramInt2);
@@ -5158,17 +5176,17 @@ public class RecyclerView
     
     public static int bB(View paramView)
     {
-      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).arH.lu();
+      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).aty.lM();
     }
     
     public static int bC(View paramView)
     {
-      return RecyclerView.bv(paramView).asH;
+      return RecyclerView.bv(paramView).auy;
     }
     
     public static int bE(View paramView)
     {
-      Rect localRect = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO;
+      Rect localRect = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG;
       int i = paramView.getMeasuredWidth();
       int j = localRect.left;
       return localRect.right + (i + j);
@@ -5176,7 +5194,7 @@ public class RecyclerView
     
     public static int bF(View paramView)
     {
-      Rect localRect = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO;
+      Rect localRect = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG;
       int i = paramView.getMeasuredHeight();
       int j = localRect.top;
       return localRect.bottom + (i + j);
@@ -5204,22 +5222,22 @@ public class RecyclerView
     
     public static int bK(View paramView)
     {
-      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO.top;
+      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG.top;
     }
     
     public static int bL(View paramView)
     {
-      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO.bottom;
+      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG.bottom;
     }
     
     public static int bM(View paramView)
     {
-      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO.left;
+      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG.left;
     }
     
     public static int bN(View paramView)
     {
-      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO.right;
+      return ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG.right;
     }
     
     public static b c(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
@@ -5227,9 +5245,9 @@ public class RecyclerView
       b localb = new b();
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.RecyclerView, paramInt1, paramInt2);
       localb.orientation = paramContext.getInt(0, 1);
-      localb.arE = paramContext.getInt(9, 1);
-      localb.arF = paramContext.getBoolean(8, false);
-      localb.arG = paramContext.getBoolean(10, false);
+      localb.atv = paramContext.getInt(9, 1);
+      localb.atw = paramContext.getBoolean(8, false);
+      localb.atx = paramContext.getBoolean(10, false);
       paramContext.recycle();
       return localb;
     }
@@ -5240,52 +5258,52 @@ public class RecyclerView
       RecyclerView.LayoutParams localLayoutParams;
       if ((paramBoolean) || (localw.isRemoved()))
       {
-        this.alu.apV.G(localw);
+        this.anl.arN.G(localw);
         localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-        if ((!localw.lB()) && (!localw.lz())) {
+        if ((!localw.lT()) && (!localw.lR())) {
           break label128;
         }
-        if (!localw.lz()) {
+        if (!localw.lR()) {
           break label120;
         }
-        localw.lA();
+        localw.lS();
         label68:
-        this.apU.a(paramView, paramInt, paramView.getLayoutParams(), false);
+        this.arM.a(paramView, paramInt, paramView.getLayoutParams(), false);
       }
       for (;;)
       {
-        if (localLayoutParams.arJ)
+        if (localLayoutParams.atA)
         {
-          localw.asD.invalidate();
-          localLayoutParams.arJ = false;
+          localw.auu.invalidate();
+          localLayoutParams.atA = false;
         }
         return;
-        this.alu.apV.H(localw);
+        this.anl.arN.H(localw);
         break;
         label120:
-        localw.lC();
+        localw.lU();
         break label68;
         label128:
-        if (paramView.getParent() == this.alu)
+        if (paramView.getParent() == this.anl)
         {
-          int j = this.apU.indexOfChild(paramView);
+          int j = this.arM.indexOfChild(paramView);
           int i = paramInt;
           if (paramInt == -1) {
-            i = this.apU.getChildCount();
+            i = this.arM.getChildCount();
           }
           if (j == -1) {
-            throw new IllegalStateException("Added View has RecyclerView as parent but view is not a real child. Unfiltered index:" + this.alu.indexOfChild(paramView) + this.alu.kp());
+            throw new IllegalStateException("Added View has RecyclerView as parent but view is not a real child. Unfiltered index:" + this.anl.indexOfChild(paramView) + this.anl.kF());
           }
           if (j != i) {
-            this.alu.apZ.ay(j, i);
+            this.anl.arR.az(j, i);
           }
         }
         else
         {
-          this.apU.a(paramView, paramInt, false);
-          localLayoutParams.arI = true;
-          if ((this.aru != null) && (this.aru.eg)) {
-            this.aru.bV(paramView);
+          this.arM.a(paramView, paramInt, false);
+          localLayoutParams.atz = true;
+          if ((this.atl != null) && (this.atl.ga)) {
+            this.atl.bV(paramView);
           }
         }
       }
@@ -5299,7 +5317,7 @@ public class RecyclerView
     private void cm(int paramInt)
     {
       getChildAt(paramInt);
-      this.apU.detachViewFromParent(paramInt);
+      this.arM.detachViewFromParent(paramInt);
     }
     
     private boolean f(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
@@ -5322,7 +5340,7 @@ public class RecyclerView
         m = getPaddingRight();
         n = this.mHeight;
         i1 = getPaddingBottom();
-        localRect = this.alu.mTempRect;
+        localRect = this.anl.mTempRect;
         RecyclerView.d(paramRecyclerView, localRect);
       } while ((localRect.left - paramInt1 >= k - m) || (localRect.right - paramInt1 <= i) || (localRect.top - paramInt2 >= n - i1) || (localRect.bottom - paramInt2 <= j));
       return true;
@@ -5343,7 +5361,7 @@ public class RecyclerView
       int j = Math.min(0, n - m);
       int k = Math.max(0, i5 - i3);
       i1 = Math.max(0, n + i7 - (i1 - i6));
-      if (t.Y(this.alu) == 1) {
+      if (t.Y(this.anl) == 1) {
         if (k != 0)
         {
           i = k;
@@ -5371,14 +5389,14 @@ public class RecyclerView
     
     public static void j(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      Rect localRect = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO;
+      Rect localRect = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG;
       paramView.layout(localRect.left + paramInt1, localRect.top + paramInt2, paramInt3 - localRect.right, paramInt4 - localRect.bottom);
     }
     
     public static void k(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-      Rect localRect = localLayoutParams.anO;
+      Rect localRect = localLayoutParams.apG;
       paramView.layout(localRect.left + paramInt1 + localLayoutParams.leftMargin, localRect.top + paramInt2 + localLayoutParams.topMargin, paramInt3 - localRect.right - localLayoutParams.rightMargin, paramInt4 - localRect.bottom - localLayoutParams.bottomMargin);
     }
     
@@ -5421,34 +5439,34 @@ public class RecyclerView
     
     private void removeView(View paramView)
     {
-      s locals = this.apU;
-      int i = locals.ajT.indexOfChild(paramView);
+      s locals = this.arM;
+      int i = locals.alK.indexOfChild(paramView);
       if (i >= 0)
       {
-        if (locals.ajU.remove(i)) {
+        if (locals.alL.remove(i)) {
           locals.bf(paramView);
         }
-        locals.ajT.removeViewAt(i);
+        locals.alK.removeViewAt(i);
       }
     }
     
     private void removeViewAt(int paramInt)
     {
       if (getChildAt(paramInt) != null) {
-        this.apU.removeViewAt(paramInt);
+        this.arM.removeViewAt(paramInt);
+      }
+    }
+    
+    public void F(String paramString)
+    {
+      if (this.anl != null) {
+        this.anl.F(paramString);
       }
     }
     
     public final void G(View paramView, int paramInt)
     {
       c(paramView, paramInt, true);
-    }
-    
-    public void G(String paramString)
-    {
-      if (this.alu != null) {
-        this.alu.G(paramString);
-      }
     }
     
     public int a(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
@@ -5458,11 +5476,11 @@ public class RecyclerView
     
     public int a(RecyclerView.o paramo, RecyclerView.t paramt)
     {
-      if ((this.alu == null) || (this.alu.abe == null)) {}
-      while (!jN()) {
+      if ((this.anl == null) || (this.anl.acW == null)) {}
+      while (!kd()) {
         return 1;
       }
-      return this.alu.abe.getItemCount();
+      return this.anl.acW.getItemCount();
     }
     
     public RecyclerView.LayoutParams a(Context paramContext, AttributeSet paramAttributeSet)
@@ -5494,23 +5512,23 @@ public class RecyclerView
       int m = paramRect.height();
       int n = getPaddingTop();
       int i1 = getPaddingBottom();
-      setMeasuredDimension(m(paramInt1, i + j + k, t.ae(this.alu)), m(paramInt2, m + n + i1, t.af(this.alu)));
+      setMeasuredDimension(m(paramInt1, i + j + k, t.ae(this.anl)), m(paramInt2, m + n + i1, t.af(this.anl)));
     }
     
     public void a(RecyclerView.o paramo, RecyclerView.t paramt, View paramView, android.support.v4.view.a.c paramc)
     {
       int i;
-      if (jN())
+      if (kd())
       {
         i = bB(paramView);
-        if (!jM()) {
+        if (!kc()) {
           break label48;
         }
       }
       label48:
       for (int j = bB(paramView);; j = 0)
       {
-        paramc.G(c.c.a(i, 1, j, 1, false));
+        paramc.H(c.c.a(i, 1, j, 1, false));
         return;
         i = 0;
         break;
@@ -5519,26 +5537,26 @@ public class RecyclerView
     
     public final void a(RecyclerView.s params)
     {
-      if ((this.aru != null) && (params != this.aru) && (this.aru.eg)) {
-        this.aru.stop();
+      if ((this.atl != null) && (params != this.atl) && (this.atl.ga)) {
+        this.atl.stop();
       }
-      this.aru = params;
-      params = this.aru;
-      RecyclerView localRecyclerView = this.alu;
+      this.atl = params;
+      params = this.atl;
+      RecyclerView localRecyclerView = this.anl;
       if (params.mStarted) {
         new StringBuilder("An instance of ").append(params.getClass().getSimpleName()).append(" was started more than once. Each instance of").append(params.getClass().getSimpleName()).append(" is intended to only be used once. You should create a new instance for each use.");
       }
-      params.alu = localRecyclerView;
-      params.apE = this;
-      if (params.arZ == -1) {
+      params.anl = localRecyclerView;
+      params.arw = this;
+      if (params.atQ == -1) {
         throw new IllegalArgumentException("Invalid target position");
       }
-      params.alu.aqO.arZ = params.arZ;
-      params.eg = true;
-      params.asa = true;
-      int i = params.arZ;
-      params.asb = params.alu.apZ.bY(i);
-      params.alu.aqL.lq();
+      params.anl.asG.atQ = params.atQ;
+      params.ga = true;
+      params.atR = true;
+      int i = params.atQ;
+      params.atS = params.anl.arR.bY(i);
+      params.anl.asD.lI();
       params.mStarted = true;
     }
     
@@ -5560,8 +5578,8 @@ public class RecyclerView
     final void a(View paramView, android.support.v4.view.a.c paramc)
     {
       RecyclerView.w localw = RecyclerView.bv(paramView);
-      if ((localw != null) && (!localw.isRemoved()) && (!this.apU.bg(localw.asD))) {
-        a(this.alu.apR, this.alu.aqO, paramView, paramc);
+      if ((localw != null) && (!localw.isRemoved()) && (!this.arM.bg(localw.auu))) {
+        a(this.anl.arJ, this.anl.asG, paramView, paramc);
       }
     }
     
@@ -5615,7 +5633,12 @@ public class RecyclerView
     
     final boolean a(View paramView, int paramInt1, int paramInt2, RecyclerView.LayoutParams paramLayoutParams)
     {
-      return (!this.arx) || (!n(paramView.getMeasuredWidth(), paramInt1, paramLayoutParams.width)) || (!n(paramView.getMeasuredHeight(), paramInt2, paramLayoutParams.height));
+      return (!this.ato) || (!n(paramView.getMeasuredWidth(), paramInt1, paramLayoutParams.width)) || (!n(paramView.getMeasuredHeight(), paramInt2, paramLayoutParams.height));
+    }
+    
+    public final void aA(int paramInt1, int paramInt2)
+    {
+      this.anl.am(paramInt1, paramInt2);
     }
     
     public final void addView(View paramView)
@@ -5628,38 +5651,38 @@ public class RecyclerView
       c(paramView, paramInt, false);
     }
     
-    final void aw(int paramInt1, int paramInt2)
-    {
-      this.mWidth = View.MeasureSpec.getSize(paramInt1);
-      this.arB = View.MeasureSpec.getMode(paramInt1);
-      if ((this.arB == 0) && (!RecyclerView.apK)) {
-        this.mWidth = 0;
-      }
-      this.mHeight = View.MeasureSpec.getSize(paramInt2);
-      this.arC = View.MeasureSpec.getMode(paramInt2);
-      if ((this.arC == 0) && (!RecyclerView.apK)) {
-        this.mHeight = 0;
-      }
-    }
-    
     public final void aw(boolean paramBoolean)
     {
-      if (paramBoolean != this.ary)
+      if (paramBoolean != this.atp)
       {
-        this.ary = paramBoolean;
-        this.arz = 0;
-        if (this.alu != null) {
-          this.alu.apR.ln();
+        this.atp = paramBoolean;
+        this.atq = 0;
+        if (this.anl != null) {
+          this.anl.arJ.lF();
         }
       }
     }
     
     final void ax(int paramInt1, int paramInt2)
     {
+      this.mWidth = View.MeasureSpec.getSize(paramInt1);
+      this.ats = View.MeasureSpec.getMode(paramInt1);
+      if ((this.ats == 0) && (!RecyclerView.arC)) {
+        this.mWidth = 0;
+      }
+      this.mHeight = View.MeasureSpec.getSize(paramInt2);
+      this.att = View.MeasureSpec.getMode(paramInt2);
+      if ((this.att == 0) && (!RecyclerView.arC)) {
+        this.mHeight = 0;
+      }
+    }
+    
+    final void ay(int paramInt1, int paramInt2)
+    {
       int i5 = getChildCount();
       if (i5 == 0)
       {
-        this.alu.al(paramInt1, paramInt2);
+        this.anl.am(paramInt1, paramInt2);
         return;
       }
       int i = 0;
@@ -5670,7 +5693,7 @@ public class RecyclerView
       while (i < i5)
       {
         View localView = getChildAt(i);
-        Rect localRect = this.alu.mTempRect;
+        Rect localRect = this.anl.mTempRect;
         RecyclerView.d(localView, localRect);
         int m = i3;
         if (localRect.left < i3) {
@@ -5694,13 +5717,8 @@ public class RecyclerView
         k = i2;
         j = i4;
       }
-      this.alu.mTempRect.set(i3, k, n, j);
-      a(this.alu.mTempRect, paramInt1, paramInt2);
-    }
-    
-    public final void az(int paramInt1, int paramInt2)
-    {
-      this.alu.al(paramInt1, paramInt2);
+      this.anl.mTempRect.set(i3, k, n, j);
+      a(this.anl.mTempRect, paramInt1, paramInt2);
     }
     
     public int b(int paramInt, RecyclerView.o paramo, RecyclerView.t paramt)
@@ -5710,11 +5728,11 @@ public class RecyclerView
     
     public int b(RecyclerView.o paramo, RecyclerView.t paramt)
     {
-      if ((this.alu == null) || (this.alu.abe == null)) {}
-      while (!jM()) {
+      if ((this.anl == null) || (this.anl.acW == null)) {}
+      while (!kc()) {
         return 1;
       }
-      return this.alu.abe.getItemCount();
+      return this.anl.acW.getItemCount();
     }
     
     public final void b(RecyclerView.o paramo)
@@ -5729,25 +5747,25 @@ public class RecyclerView
     
     final void b(RecyclerView paramRecyclerView, RecyclerView.o paramo)
     {
-      this.ou = false;
+      this.qm = false;
       a(paramRecyclerView, paramo);
     }
     
     final boolean b(View paramView, int paramInt1, int paramInt2, RecyclerView.LayoutParams paramLayoutParams)
     {
-      return (paramView.isLayoutRequested()) || (!this.arx) || (!n(paramView.getWidth(), paramInt1, paramLayoutParams.width)) || (!n(paramView.getHeight(), paramInt2, paramLayoutParams.height));
+      return (paramView.isLayoutRequested()) || (!this.ato) || (!n(paramView.getWidth(), paramInt1, paramLayoutParams.width)) || (!n(paramView.getHeight(), paramInt2, paramLayoutParams.height));
     }
     
     public final void bD(View paramView)
     {
       RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-      Rect localRect = this.alu.by(paramView);
+      Rect localRect = this.anl.by(paramView);
       int k = localRect.left;
       int m = localRect.right;
       int i = localRect.top;
       int j = localRect.bottom;
-      k = b(this.mWidth, this.arB, k + m + 0 + (getPaddingLeft() + getPaddingRight() + localLayoutParams.leftMargin + localLayoutParams.rightMargin), localLayoutParams.width, jM());
-      i = b(this.mHeight, this.arC, j + i + 0 + (getPaddingTop() + getPaddingBottom() + localLayoutParams.topMargin + localLayoutParams.bottomMargin), localLayoutParams.height, jN());
+      k = b(this.mWidth, this.ats, k + m + 0 + (getPaddingLeft() + getPaddingRight() + localLayoutParams.leftMargin + localLayoutParams.rightMargin), localLayoutParams.width, kc());
+      i = b(this.mHeight, this.att, j + i + 0 + (getPaddingTop() + getPaddingBottom() + localLayoutParams.topMargin + localLayoutParams.bottomMargin), localLayoutParams.height, kd());
       if (b(paramView, k, i, localLayoutParams)) {
         paramView.measure(k, i);
       }
@@ -5761,7 +5779,7 @@ public class RecyclerView
       {
         View localView = getChildAt(i);
         RecyclerView.w localw = RecyclerView.bv(localView);
-        if ((localw != null) && (localw.lu() == paramInt) && (!localw.lt()) && ((this.alu.aqO.asp) || (!localw.isRemoved()))) {
+        if ((localw != null) && (localw.lM() == paramInt) && (!localw.lL()) && ((this.anl.asG.aug) || (!localw.isRemoved()))) {
           return localView;
         }
         i += 1;
@@ -5771,43 +5789,43 @@ public class RecyclerView
     
     public final View bt(View paramView)
     {
-      if (this.alu == null) {}
+      if (this.anl == null) {}
       do
       {
         return null;
-        paramView = this.alu.bt(paramView);
-      } while ((paramView == null) || (this.apU.bg(paramView)));
+        paramView = this.anl.bt(paramView);
+      } while ((paramView == null) || (this.arM.bg(paramView)));
       return paramView;
     }
     
     final void c(RecyclerView.o paramo)
     {
-      int j = paramo.arQ.size();
+      int j = paramo.atH.size();
       int i = j - 1;
       while (i >= 0)
       {
-        View localView = ((RecyclerView.w)paramo.arQ.get(i)).asD;
+        View localView = ((RecyclerView.w)paramo.atH.get(i)).auu;
         RecyclerView.w localw = RecyclerView.bv(localView);
-        if (!localw.lt())
+        if (!localw.lL())
         {
           localw.ax(false);
-          if (localw.lF()) {
-            this.alu.removeDetachedView(localView, false);
+          if (localw.lX()) {
+            this.anl.removeDetachedView(localView, false);
           }
-          if (this.alu.aqz != null) {
-            this.alu.aqz.d(localw);
+          if (this.anl.asr != null) {
+            this.anl.asr.d(localw);
           }
           localw.ax(true);
           paramo.bT(localView);
         }
         i -= 1;
       }
-      paramo.arQ.clear();
-      if (paramo.arR != null) {
-        paramo.arR.clear();
+      paramo.atH.clear();
+      if (paramo.atI != null) {
+        paramo.atI.clear();
       }
       if (j > 0) {
-        this.alu.invalidate();
+        this.anl.invalidate();
       }
     }
     
@@ -5819,14 +5837,14 @@ public class RecyclerView
     
     public void cn(int paramInt)
     {
-      if (this.alu != null)
+      if (this.anl != null)
       {
-        RecyclerView localRecyclerView = this.alu;
-        int j = localRecyclerView.apU.getChildCount();
+        RecyclerView localRecyclerView = this.anl;
+        int j = localRecyclerView.arM.getChildCount();
         int i = 0;
         while (i < j)
         {
-          localRecyclerView.apU.getChildAt(i).offsetLeftAndRight(paramInt);
+          localRecyclerView.arM.getChildAt(i).offsetLeftAndRight(paramInt);
           i += 1;
         }
       }
@@ -5834,14 +5852,14 @@ public class RecyclerView
     
     public void co(int paramInt)
     {
-      if (this.alu != null)
+      if (this.anl != null)
       {
-        RecyclerView localRecyclerView = this.alu;
-        int j = localRecyclerView.apU.getChildCount();
+        RecyclerView localRecyclerView = this.anl;
+        int j = localRecyclerView.arM.getChildCount();
         int i = 0;
         while (i < j)
         {
-          localRecyclerView.apU.getChildAt(i).offsetTopAndBottom(paramInt);
+          localRecyclerView.arM.getChildAt(i).offsetTopAndBottom(paramInt);
           i += 1;
         }
       }
@@ -5870,7 +5888,7 @@ public class RecyclerView
       int i = getChildCount() - 1;
       while (i >= 0)
       {
-        if (!RecyclerView.bv(getChildAt(i)).lt()) {
+        if (!RecyclerView.bv(getChildAt(i)).lL()) {
           a(i, paramo);
         }
         i -= 1;
@@ -5886,19 +5904,19 @@ public class RecyclerView
     
     public final void e(View paramView, Rect paramRect)
     {
-      Object localObject = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).anO;
+      Object localObject = ((RecyclerView.LayoutParams)paramView.getLayoutParams()).apG;
       int i = -((Rect)localObject).left;
       int j = -((Rect)localObject).top;
       int k = paramView.getWidth();
       int m = ((Rect)localObject).right;
       int n = paramView.getHeight();
       paramRect.set(i, j, k + m, ((Rect)localObject).bottom + n);
-      if (this.alu != null)
+      if (this.anl != null)
       {
         localObject = paramView.getMatrix();
         if ((localObject != null) && (!((Matrix)localObject).isIdentity()))
         {
-          RectF localRectF = this.alu.apY;
+          RectF localRectF = this.anl.arQ;
           localRectF.set(paramRect);
           ((Matrix)localObject).mapRect(localRectF);
           paramRect.set((int)Math.floor(localRectF.left), (int)Math.floor(localRectF.top), (int)Math.ceil(localRectF.right), (int)Math.ceil(localRectF.bottom));
@@ -5914,18 +5932,18 @@ public class RecyclerView
     
     final void f(RecyclerView paramRecyclerView)
     {
-      this.ou = true;
+      this.qm = true;
       g(paramRecyclerView);
     }
     
     public final void f(View paramView, Rect paramRect)
     {
-      if (this.alu == null)
+      if (this.anl == null)
       {
         paramRect.set(0, 0, 0, 0);
         return;
       }
-      paramRect.set(this.alu.by(paramView));
+      paramRect.set(this.anl.by(paramView));
     }
     
     public int g(RecyclerView.t paramt)
@@ -5939,34 +5957,34 @@ public class RecyclerView
     
     public final View getChildAt(int paramInt)
     {
-      if (this.apU != null) {
-        return this.apU.getChildAt(paramInt);
+      if (this.arM != null) {
+        return this.arM.getChildAt(paramInt);
       }
       return null;
     }
     
     public final int getChildCount()
     {
-      if (this.apU != null) {
-        return this.apU.getChildCount();
+      if (this.arM != null) {
+        return this.arM.getChildCount();
       }
       return 0;
     }
     
     public final boolean getClipToPadding()
     {
-      return (this.alu != null) && (this.alu.apW);
+      return (this.anl != null) && (this.anl.arO);
     }
     
     public final View getFocusedChild()
     {
-      if (this.alu == null) {}
+      if (this.anl == null) {}
       View localView;
       do
       {
         return null;
-        localView = this.alu.getFocusedChild();
-      } while ((localView == null) || (this.apU.bg(localView)));
+        localView = this.anl.getFocusedChild();
+      } while ((localView == null) || (this.arM.bg(localView)));
       return localView;
     }
     
@@ -5977,8 +5995,8 @@ public class RecyclerView
     
     public final int getItemCount()
     {
-      if (this.alu != null) {}
-      for (RecyclerView.a locala = this.alu.getAdapter(); locala != null; locala = null) {
+      if (this.anl != null) {}
+      for (RecyclerView.a locala = this.anl.getAdapter(); locala != null; locala = null) {
         return locala.getItemCount();
       }
       return 0;
@@ -5986,48 +6004,48 @@ public class RecyclerView
     
     public int getPaddingBottom()
     {
-      if (this.alu != null) {
-        return this.alu.getPaddingBottom();
+      if (this.anl != null) {
+        return this.anl.getPaddingBottom();
       }
       return 0;
     }
     
     public int getPaddingEnd()
     {
-      if (this.alu != null) {
-        return t.ac(this.alu);
+      if (this.anl != null) {
+        return t.ac(this.anl);
       }
       return 0;
     }
     
     public int getPaddingLeft()
     {
-      if (this.alu != null) {
-        return this.alu.getPaddingLeft();
+      if (this.anl != null) {
+        return this.anl.getPaddingLeft();
       }
       return 0;
     }
     
     public int getPaddingRight()
     {
-      if (this.alu != null) {
-        return this.alu.getPaddingRight();
+      if (this.anl != null) {
+        return this.anl.getPaddingRight();
       }
       return 0;
     }
     
     public int getPaddingStart()
     {
-      if (this.alu != null) {
-        return t.ab(this.alu);
+      if (this.anl != null) {
+        return t.ab(this.anl);
       }
       return 0;
     }
     
     public int getPaddingTop()
     {
-      if (this.alu != null) {
-        return this.alu.getPaddingTop();
+      if (this.anl != null) {
+        return this.anl.getPaddingTop();
       }
       return 0;
     }
@@ -6044,7 +6062,7 @@ public class RecyclerView
     
     final void h(RecyclerView paramRecyclerView)
     {
-      aw(View.MeasureSpec.makeMeasureSpec(paramRecyclerView.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramRecyclerView.getHeight(), 1073741824));
+      ax(View.MeasureSpec.makeMeasureSpec(paramRecyclerView.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramRecyclerView.getHeight(), 1073741824));
     }
     
     public int i(RecyclerView.t paramt)
@@ -6052,73 +6070,73 @@ public class RecyclerView
       return 0;
     }
     
-    public abstract RecyclerView.LayoutParams jG();
+    public abstract RecyclerView.LayoutParams jW();
     
-    public boolean jK()
+    public boolean ka()
     {
       return false;
     }
     
-    public boolean jL()
+    public boolean kb()
     {
-      return this.arw;
+      return this.atn;
     }
     
-    public boolean jM()
+    public boolean kc()
     {
       return false;
     }
     
-    public boolean jN()
+    public boolean kd()
     {
       return false;
     }
     
-    boolean jR()
+    boolean kh()
     {
       return false;
+    }
+    
+    public void lA()
+    {
+      this.atm = true;
     }
     
     @Deprecated
-    public final void le()
+    public final void lw()
     {
-      this.arw = true;
+      this.atn = true;
     }
     
-    public final boolean lf()
+    public final boolean lx()
     {
-      return (this.aru != null) && (this.aru.eg);
+      return (this.atl != null) && (this.atl.ga);
     }
     
-    public void lg() {}
+    public void ly() {}
     
-    final void lh()
+    final void lz()
     {
-      if (this.aru != null) {
-        this.aru.stop();
+      if (this.atl != null) {
+        this.atl.stop();
       }
-    }
-    
-    public void li()
-    {
-      this.arv = true;
     }
     
     public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
     {
       boolean bool2 = true;
-      if ((this.alu == null) || (paramAccessibilityEvent == null)) {
+      if ((this.anl == null) || (paramAccessibilityEvent == null)) {
         return;
       }
       boolean bool1 = bool2;
-      if (!this.alu.canScrollVertically(1))
+      if (!this.anl.canScrollVertically(1))
       {
         bool1 = bool2;
-        if (!this.alu.canScrollVertically(-1))
+        if (!this.anl.canScrollVertically(-1))
         {
           bool1 = bool2;
-          if (!this.alu.canScrollHorizontally(-1)) {
-            if (!this.alu.canScrollHorizontally(1)) {
+          if (!this.anl.canScrollHorizontally(-1)) {
+            if (!this.anl.canScrollHorizontally(1)) {
               break label96;
             }
           }
@@ -6128,10 +6146,10 @@ public class RecyclerView
       for (bool1 = bool2;; bool1 = false)
       {
         paramAccessibilityEvent.setScrollable(bool1);
-        if (this.alu.abe == null) {
+        if (this.anl.acW == null) {
           break;
         }
-        paramAccessibilityEvent.setItemCount(this.alu.abe.getItemCount());
+        paramAccessibilityEvent.setItemCount(this.anl.acW.getItemCount());
         return;
       }
     }
@@ -6148,60 +6166,60 @@ public class RecyclerView
       int i = getChildCount() - 1;
       while (i >= 0)
       {
-        this.apU.removeViewAt(i);
+        this.arM.removeViewAt(i);
         i -= 1;
       }
     }
     
     public final boolean removeCallbacks(Runnable paramRunnable)
     {
-      if (this.alu != null) {
-        return this.alu.removeCallbacks(paramRunnable);
+      if (this.anl != null) {
+        return this.anl.removeCallbacks(paramRunnable);
       }
       return false;
     }
     
     public final void requestLayout()
     {
-      if (this.alu != null) {
-        this.alu.requestLayout();
+      if (this.anl != null) {
+        this.anl.requestLayout();
       }
     }
     
     public final void setMeasuredDimension(int paramInt1, int paramInt2)
     {
-      RecyclerView.e(this.alu, paramInt1, paramInt2);
+      RecyclerView.e(this.anl, paramInt1, paramInt2);
     }
     
     final void setRecyclerView(RecyclerView paramRecyclerView)
     {
       if (paramRecyclerView == null)
       {
-        this.alu = null;
-        this.apU = null;
+        this.anl = null;
+        this.arM = null;
         this.mWidth = 0;
       }
       for (this.mHeight = 0;; this.mHeight = paramRecyclerView.getHeight())
       {
-        this.arB = 1073741824;
-        this.arC = 1073741824;
+        this.ats = 1073741824;
+        this.att = 1073741824;
         return;
-        this.alu = paramRecyclerView;
-        this.apU = paramRecyclerView.apU;
+        this.anl = paramRecyclerView;
+        this.arM = paramRecyclerView.arM;
         this.mWidth = paramRecyclerView.getWidth();
       }
     }
     
     public static abstract interface a
     {
-      public abstract void R(int paramInt1, int paramInt2);
+      public abstract void S(int paramInt1, int paramInt2);
     }
     
     public static final class b
     {
-      public int arE;
-      public boolean arF;
-      public boolean arG;
+      public int atv;
+      public boolean atw;
+      public boolean atx;
       public int orientation;
     }
   }
@@ -6215,7 +6233,7 @@ public class RecyclerView
   
   public static abstract class k
   {
-    public abstract boolean aA(int paramInt1, int paramInt2);
+    public abstract boolean aB(int paramInt1, int paramInt2);
   }
   
   public static abstract interface l
@@ -6236,8 +6254,8 @@ public class RecyclerView
   
   public static class n
   {
-    SparseArray<a> arK = new SparseArray();
-    int arL = 0;
+    SparseArray<a> atB = new SparseArray();
+    int atC = 0;
     
     static long c(long paramLong1, long paramLong2)
     {
@@ -6249,15 +6267,15 @@ public class RecyclerView
     
     final boolean a(int paramInt, long paramLong1, long paramLong2)
     {
-      long l = cs(paramInt).arO;
+      long l = cs(paramInt).atF;
       return (l == 0L) || (l + paramLong1 < paramLong2);
     }
     
-    public final void aB(int paramInt1, int paramInt2)
+    public final void aC(int paramInt1, int paramInt2)
     {
       Object localObject = cs(paramInt1);
-      ((a)localObject).arN = paramInt2;
-      localObject = ((a)localObject).arM;
+      ((a)localObject).atE = paramInt2;
+      localObject = ((a)localObject).atD;
       while (((ArrayList)localObject).size() > paramInt2) {
         ((ArrayList)localObject).remove(((ArrayList)localObject).size() - 1);
       }
@@ -6265,15 +6283,15 @@ public class RecyclerView
     
     public final int cq(int paramInt)
     {
-      return cs(paramInt).arM.size();
+      return cs(paramInt).atD.size();
     }
     
     public RecyclerView.w cr(int paramInt)
     {
-      Object localObject = (a)this.arK.get(paramInt);
-      if ((localObject != null) && (!((a)localObject).arM.isEmpty()))
+      Object localObject = (a)this.atB.get(paramInt);
+      if ((localObject != null) && (!((a)localObject).atD.isEmpty()))
       {
-        localObject = ((a)localObject).arM;
+        localObject = ((a)localObject).atD;
         return (RecyclerView.w)((ArrayList)localObject).remove(((ArrayList)localObject).size() - 1);
       }
       return null;
@@ -6281,12 +6299,12 @@ public class RecyclerView
     
     final a cs(int paramInt)
     {
-      a locala2 = (a)this.arK.get(paramInt);
+      a locala2 = (a)this.atB.get(paramInt);
       a locala1 = locala2;
       if (locala2 == null)
       {
         locala1 = new a();
-        this.arK.put(paramInt, locala1);
+        this.atB.put(paramInt, locala1);
       }
       return locala1;
     }
@@ -6294,24 +6312,24 @@ public class RecyclerView
     final void d(int paramInt, long paramLong)
     {
       a locala = cs(paramInt);
-      locala.arO = c(locala.arO, paramLong);
+      locala.atF = c(locala.atF, paramLong);
     }
     
     final void detach()
     {
-      this.arL -= 1;
+      this.atC -= 1;
     }
     
-    final void lm()
+    final void lE()
     {
-      this.arL += 1;
+      this.atC += 1;
     }
     
     public void q(RecyclerView.w paramw)
     {
-      int i = paramw.asH;
-      ArrayList localArrayList = cs(i).arM;
-      if (((a)this.arK.get(i)).arN <= localArrayList.size()) {
+      int i = paramw.auy;
+      ArrayList localArrayList = cs(i).atD;
+      if (((a)this.atB.get(i)).atE <= localArrayList.size()) {
         return;
       }
       paramw.resetInternal();
@@ -6320,58 +6338,58 @@ public class RecyclerView
     
     static final class a
     {
-      final ArrayList<RecyclerView.w> arM = new ArrayList();
-      int arN = 5;
-      long arO = 0L;
-      long arP = 0L;
+      final ArrayList<RecyclerView.w> atD = new ArrayList();
+      int atE = 5;
+      long atF = 0L;
+      long atG = 0L;
     }
   }
   
   public final class o
   {
-    final ArrayList<RecyclerView.w> arQ = new ArrayList();
-    ArrayList<RecyclerView.w> arR = null;
-    final ArrayList<RecyclerView.w> arS = new ArrayList();
-    final List<RecyclerView.w> arT = Collections.unmodifiableList(this.arQ);
-    int arU = 2;
-    int arV = 2;
-    RecyclerView.n arW;
-    RecyclerView.u arX;
+    final ArrayList<RecyclerView.w> atH = new ArrayList();
+    ArrayList<RecyclerView.w> atI = null;
+    final ArrayList<RecyclerView.w> atJ = new ArrayList();
+    final List<RecyclerView.w> atK = Collections.unmodifiableList(this.atH);
+    int atL = 2;
+    int atM = 2;
+    RecyclerView.n atN;
+    RecyclerView.u atO;
     
     public o() {}
     
     private RecyclerView.w a(long paramLong, int paramInt)
     {
-      int i = this.arQ.size() - 1;
+      int i = this.atH.size() - 1;
       RecyclerView.w localw;
       while (i >= 0)
       {
-        localw = (RecyclerView.w)this.arQ.get(i);
-        if ((localw.asG == paramLong) && (!localw.lB()))
+        localw = (RecyclerView.w)this.atH.get(i);
+        if ((localw.aux == paramLong) && (!localw.lT()))
         {
-          if (paramInt == localw.asH)
+          if (paramInt == localw.auy)
           {
             localw.addFlags(32);
-            if ((localw.isRemoved()) && (!RecyclerView.this.aqO.asp)) {
+            if ((localw.isRemoved()) && (!RecyclerView.this.asG.aug)) {
               localw.setFlags(2, 14);
             }
             return localw;
           }
-          this.arQ.remove(i);
-          RecyclerView.this.removeDetachedView(localw.asD, false);
-          bT(localw.asD);
+          this.atH.remove(i);
+          RecyclerView.this.removeDetachedView(localw.auu, false);
+          bT(localw.auu);
         }
         i -= 1;
       }
-      i = this.arS.size() - 1;
+      i = this.atJ.size() - 1;
       while (i >= 0)
       {
-        localw = (RecyclerView.w)this.arS.get(i);
-        if (localw.asG == paramLong)
+        localw = (RecyclerView.w)this.atJ.get(i);
+        if (localw.aux == paramLong)
         {
-          if (paramInt == localw.asH)
+          if (paramInt == localw.auy)
           {
-            this.arS.remove(i);
+            this.atJ.remove(i);
             return localw;
           }
           cw(i);
@@ -6384,48 +6402,48 @@ public class RecyclerView
     
     private boolean a(RecyclerView.w paramw, int paramInt1, int paramInt2, long paramLong)
     {
-      paramw.asT = RecyclerView.this;
-      int i = paramw.asH;
+      paramw.auK = RecyclerView.this;
+      int i = paramw.auy;
       long l1 = RecyclerView.this.getNanoTime();
       if (paramLong != 9223372036854775807L)
       {
-        long l2 = this.arW.cs(i).arP;
+        long l2 = this.atN.cs(i).atG;
         if ((l2 == 0L) || (l2 + l1 < paramLong)) {}
         for (i = 1; i == 0; i = 0) {
           return false;
         }
       }
-      Object localObject = RecyclerView.this.abe;
+      Object localObject = RecyclerView.this.acW;
       paramw.mPosition = paramInt1;
-      if (((RecyclerView.a)localObject).arh) {
-        paramw.asG = ((RecyclerView.a)localObject).getItemId(paramInt1);
+      if (((RecyclerView.a)localObject).asZ) {
+        paramw.aux = ((RecyclerView.a)localObject).getItemId(paramInt1);
       }
       paramw.setFlags(1, 519);
       e.beginSection("RV OnBindView");
-      ((RecyclerView.a)localObject).a(paramw, paramInt1, paramw.lI());
-      paramw.lH();
-      localObject = paramw.asD.getLayoutParams();
+      ((RecyclerView.a)localObject).a(paramw, paramInt1, paramw.ma());
+      paramw.lZ();
+      localObject = paramw.auu.getLayoutParams();
       if ((localObject instanceof RecyclerView.LayoutParams)) {
-        ((RecyclerView.LayoutParams)localObject).arI = true;
+        ((RecyclerView.LayoutParams)localObject).atz = true;
       }
       e.endSection();
       paramLong = RecyclerView.this.getNanoTime();
-      localObject = this.arW.cs(paramw.asH);
-      ((RecyclerView.n.a)localObject).arP = RecyclerView.n.c(((RecyclerView.n.a)localObject).arP, paramLong - l1);
-      if (RecyclerView.this.kE())
+      localObject = this.atN.cs(paramw.auy);
+      ((RecyclerView.n.a)localObject).atG = RecyclerView.n.c(((RecyclerView.n.a)localObject).atG, paramLong - l1);
+      if (RecyclerView.this.kU())
       {
-        localObject = paramw.asD;
+        localObject = paramw.auu;
         if (t.X((View)localObject) == 0) {
           t.p((View)localObject, 1);
         }
         if (!t.U((View)localObject))
         {
           paramw.addFlags(16384);
-          t.a((View)localObject, RecyclerView.this.aqV.asU);
+          t.a((View)localObject, RecyclerView.this.asN.auL);
         }
       }
-      if (RecyclerView.this.aqO.asp) {
-        paramw.asI = paramInt2;
+      if (RecyclerView.this.asG.aug) {
+        paramw.auz = paramInt2;
       }
       return true;
     }
@@ -6434,9 +6452,9 @@ public class RecyclerView
     {
       int j = 0;
       int k;
-      if (this.arR != null)
+      if (this.atI != null)
       {
-        k = this.arR.size();
+        k = this.atI.size();
         if (k != 0) {}
       }
       else
@@ -6447,25 +6465,25 @@ public class RecyclerView
       RecyclerView.w localw;
       while (i < k)
       {
-        localw = (RecyclerView.w)this.arR.get(i);
-        if ((!localw.lB()) && (localw.lu() == paramInt))
+        localw = (RecyclerView.w)this.atI.get(i);
+        if ((!localw.lT()) && (localw.lM() == paramInt))
         {
           localw.addFlags(32);
           return localw;
         }
         i += 1;
       }
-      if (RecyclerView.this.abe.arh)
+      if (RecyclerView.this.acW.asZ)
       {
-        paramInt = RecyclerView.this.apT.L(paramInt, 0);
-        if ((paramInt > 0) && (paramInt < RecyclerView.this.abe.getItemCount()))
+        paramInt = RecyclerView.this.arL.M(paramInt, 0);
+        if ((paramInt > 0) && (paramInt < RecyclerView.this.acW.getItemCount()))
         {
-          long l = RecyclerView.this.abe.getItemId(paramInt);
+          long l = RecyclerView.this.acW.getItemId(paramInt);
           paramInt = j;
           while (paramInt < k)
           {
-            localw = (RecyclerView.w)this.arR.get(paramInt);
-            if ((!localw.lB()) && (localw.asG == l))
+            localw = (RecyclerView.w)this.atI.get(paramInt);
+            if ((!localw.lT()) && (localw.aux == l))
             {
               localw.addFlags(32);
               return localw;
@@ -6480,36 +6498,36 @@ public class RecyclerView
     private RecyclerView.w cy(int paramInt)
     {
       int j = 0;
-      int k = this.arQ.size();
+      int k = this.atH.size();
       int i = 0;
       Object localObject1;
       while (i < k)
       {
-        localObject1 = (RecyclerView.w)this.arQ.get(i);
-        if ((!((RecyclerView.w)localObject1).lB()) && (((RecyclerView.w)localObject1).lu() == paramInt) && (!((RecyclerView.w)localObject1).bj()) && ((RecyclerView.this.aqO.asp) || (!((RecyclerView.w)localObject1).isRemoved())))
+        localObject1 = (RecyclerView.w)this.atH.get(i);
+        if ((!((RecyclerView.w)localObject1).lT()) && (((RecyclerView.w)localObject1).lM() == paramInt) && (!((RecyclerView.w)localObject1).isInvalid()) && ((RecyclerView.this.asG.aug) || (!((RecyclerView.w)localObject1).isRemoved())))
         {
           ((RecyclerView.w)localObject1).addFlags(32);
           return localObject1;
         }
         i += 1;
       }
-      Object localObject2 = RecyclerView.this.apU;
-      k = ((s)localObject2).ajV.size();
+      Object localObject2 = RecyclerView.this.arM;
+      k = ((s)localObject2).alM.size();
       i = 0;
       Object localObject3;
       if (i < k)
       {
-        localObject1 = (View)((s)localObject2).ajV.get(i);
-        localObject3 = ((s)localObject2).ajT.bh((View)localObject1);
-        if ((((RecyclerView.w)localObject3).lu() != paramInt) || (((RecyclerView.w)localObject3).bj()) || (((RecyclerView.w)localObject3).isRemoved())) {}
+        localObject1 = (View)((s)localObject2).alM.get(i);
+        localObject3 = ((s)localObject2).alK.bh((View)localObject1);
+        if ((((RecyclerView.w)localObject3).lM() != paramInt) || (((RecyclerView.w)localObject3).isInvalid()) || (((RecyclerView.w)localObject3).isRemoved())) {}
       }
       for (;;)
       {
         if (localObject1 != null)
         {
           localObject2 = RecyclerView.bv((View)localObject1);
-          localObject3 = RecyclerView.this.apU;
-          paramInt = ((s)localObject3).ajT.indexOfChild((View)localObject1);
+          localObject3 = RecyclerView.this.arM;
+          paramInt = ((s)localObject3).alK.indexOfChild((View)localObject1);
           if (paramInt < 0)
           {
             throw new IllegalArgumentException("view is not a child, cannot hide ".concat(String.valueOf(localObject1)));
@@ -6518,29 +6536,29 @@ public class RecyclerView
             localObject1 = null;
             continue;
           }
-          if (!((s)localObject3).ajU.get(paramInt)) {
+          if (!((s)localObject3).alL.get(paramInt)) {
             throw new RuntimeException("trying to unhide a view that was not hidden".concat(String.valueOf(localObject1)));
           }
-          ((s)localObject3).ajU.clear(paramInt);
+          ((s)localObject3).alL.clear(paramInt);
           ((s)localObject3).bf((View)localObject1);
-          paramInt = RecyclerView.this.apU.indexOfChild((View)localObject1);
+          paramInt = RecyclerView.this.arM.indexOfChild((View)localObject1);
           if (paramInt == -1) {
-            throw new IllegalStateException("layout index should not be -1 after unhiding a view:" + localObject2 + RecyclerView.this.kp());
+            throw new IllegalStateException("layout index should not be -1 after unhiding a view:" + localObject2 + RecyclerView.this.kF());
           }
-          RecyclerView.this.apU.detachViewFromParent(paramInt);
+          RecyclerView.this.arM.detachViewFromParent(paramInt);
           bU((View)localObject1);
           ((RecyclerView.w)localObject2).addFlags(8224);
           return localObject2;
         }
       }
-      k = this.arS.size();
+      k = this.atJ.size();
       i = j;
       while (i < k)
       {
-        localObject1 = (RecyclerView.w)this.arS.get(i);
-        if ((!((RecyclerView.w)localObject1).bj()) && (((RecyclerView.w)localObject1).lu() == paramInt))
+        localObject1 = (RecyclerView.w)this.atJ.get(i);
+        if ((!((RecyclerView.w)localObject1).isInvalid()) && (((RecyclerView.w)localObject1).lM() == paramInt))
         {
-          this.arS.remove(i);
+          this.atJ.remove(i);
           return localObject1;
         }
         i += 1;
@@ -6573,17 +6591,17 @@ public class RecyclerView
       paramViewGroup.setVisibility(i);
     }
     
-    private void lo()
+    private void lG()
     {
-      int i = this.arS.size() - 1;
+      int i = this.atJ.size() - 1;
       while (i >= 0)
       {
         cw(i);
         i -= 1;
       }
-      this.arS.clear();
-      if (RecyclerView.apM) {
-        RecyclerView.this.aqN.jm();
+      this.atJ.clear();
+      if (RecyclerView.arE) {
+        RecyclerView.this.asF.jC();
       }
     }
     
@@ -6592,44 +6610,44 @@ public class RecyclerView
       boolean bool2 = false;
       boolean bool1;
       if (paramw.isRemoved()) {
-        bool1 = RecyclerView.this.aqO.asp;
+        bool1 = RecyclerView.this.asG.aug;
       }
       do
       {
         do
         {
           return bool1;
-          if ((paramw.mPosition < 0) || (paramw.mPosition >= RecyclerView.this.abe.getItemCount())) {
-            throw new IndexOutOfBoundsException("Inconsistency detected. Invalid view holder adapter position" + paramw + RecyclerView.this.kp());
+          if ((paramw.mPosition < 0) || (paramw.mPosition >= RecyclerView.this.acW.getItemCount())) {
+            throw new IndexOutOfBoundsException("Inconsistency detected. Invalid view holder adapter position" + paramw + RecyclerView.this.kF());
           }
-          if (RecyclerView.this.aqO.asp) {
+          if (RecyclerView.this.asG.aug) {
             break;
           }
           bool1 = bool2;
-        } while (RecyclerView.this.abe.getItemViewType(paramw.mPosition) != paramw.asH);
-        if (!RecyclerView.this.abe.arh) {
+        } while (RecyclerView.this.acW.getItemViewType(paramw.mPosition) != paramw.auy);
+        if (!RecyclerView.this.acW.asZ) {
           break;
         }
         bool1 = bool2;
-      } while (paramw.asG != RecyclerView.this.abe.getItemId(paramw.mPosition));
+      } while (paramw.aux != RecyclerView.this.acW.getItemId(paramw.mPosition));
       return true;
       return true;
     }
     
     private void s(RecyclerView.w paramw)
     {
-      if ((paramw.asD instanceof ViewGroup)) {
-        d((ViewGroup)paramw.asD, false);
+      if ((paramw.auu instanceof ViewGroup)) {
+        d((ViewGroup)paramw.auu, false);
       }
     }
     
     private void v(RecyclerView.w paramw)
     {
-      if (RecyclerView.this.abe != null) {
-        RecyclerView.this.abe.a(paramw);
+      if (RecyclerView.this.acW != null) {
+        RecyclerView.this.acW.a(paramw);
       }
-      if (RecyclerView.this.aqO != null) {
-        RecyclerView.this.apV.I(paramw);
+      if (RecyclerView.this.asG != null) {
+        RecyclerView.this.arN.I(paramw);
       }
     }
     
@@ -6639,30 +6657,30 @@ public class RecyclerView
       if (paramw.cB(16384))
       {
         paramw.setFlags(0, 16384);
-        t.a(paramw.asD, null);
+        t.a(paramw.auu, null);
       }
       if (paramBoolean) {
         v(paramw);
       }
-      paramw.asT = null;
+      paramw.auK = null;
       getRecycledViewPool().q(paramw);
     }
     
     public final void bS(View paramView)
     {
       RecyclerView.w localw = RecyclerView.bv(paramView);
-      if (localw.lF()) {
+      if (localw.lX()) {
         RecyclerView.this.removeDetachedView(paramView, false);
       }
-      if (localw.lz()) {
-        localw.lA();
+      if (localw.lR()) {
+        localw.lS();
       }
       for (;;)
       {
         t(localw);
         return;
-        if (localw.lB()) {
-          localw.lC();
+        if (localw.lT()) {
+          localw.lU();
         }
       }
     }
@@ -6670,9 +6688,9 @@ public class RecyclerView
     final void bT(View paramView)
     {
       paramView = RecyclerView.bv(paramView);
-      paramView.asP = null;
-      paramView.asQ = false;
-      paramView.lC();
+      paramView.auG = null;
+      paramView.auH = false;
+      paramView.lU();
       t(paramView);
     }
     
@@ -6680,50 +6698,50 @@ public class RecyclerView
     {
       paramView = RecyclerView.bv(paramView);
       int i;
-      if ((!paramView.cB(12)) && (paramView.lL()))
+      if ((!paramView.cB(12)) && (paramView.md()))
       {
         RecyclerView localRecyclerView = RecyclerView.this;
-        if ((localRecyclerView.aqz != null) && (!localRecyclerView.aqz.a(paramView, paramView.lI()))) {
+        if ((localRecyclerView.asr != null) && (!localRecyclerView.asr.a(paramView, paramView.ma()))) {
           break label112;
         }
         i = 1;
       }
       while (i != 0) {
-        if ((paramView.bj()) && (!paramView.isRemoved()) && (!RecyclerView.this.abe.arh))
+        if ((paramView.isInvalid()) && (!paramView.isRemoved()) && (!RecyclerView.this.acW.asZ))
         {
-          throw new IllegalArgumentException("Called scrap view with an invalid view. Invalid views cannot be reused from scrap, they should rebound from recycler pool." + RecyclerView.this.kp());
+          throw new IllegalArgumentException("Called scrap view with an invalid view. Invalid views cannot be reused from scrap, they should rebound from recycler pool." + RecyclerView.this.kF());
           label112:
           i = 0;
         }
         else
         {
           paramView.a(this, false);
-          this.arQ.add(paramView);
+          this.atH.add(paramView);
           return;
         }
       }
-      if (this.arR == null) {
-        this.arR = new ArrayList();
+      if (this.atI == null) {
+        this.atI = new ArrayList();
       }
       paramView.a(this, true);
-      this.arR.add(paramView);
+      this.atI.add(paramView);
     }
     
     public final void clear()
     {
-      this.arQ.clear();
-      lo();
+      this.atH.clear();
+      lG();
     }
     
     public final int ct(int paramInt)
     {
-      if ((paramInt < 0) || (paramInt >= RecyclerView.this.aqO.getItemCount())) {
-        throw new IndexOutOfBoundsException("invalid position " + paramInt + ". State item count is " + RecyclerView.this.aqO.getItemCount() + RecyclerView.this.kp());
+      if ((paramInt < 0) || (paramInt >= RecyclerView.this.asG.getItemCount())) {
+        throw new IndexOutOfBoundsException("invalid position " + paramInt + ". State item count is " + RecyclerView.this.asG.getItemCount() + RecyclerView.this.kF());
       }
-      if (!RecyclerView.this.aqO.asp) {
+      if (!RecyclerView.this.asG.aug) {
         return paramInt;
       }
-      return RecyclerView.this.apT.bD(paramInt);
+      return RecyclerView.this.arL.bD(paramInt);
     }
     
     public final View cu(int paramInt)
@@ -6733,24 +6751,24 @@ public class RecyclerView
     
     final View cv(int paramInt)
     {
-      return e(paramInt, 9223372036854775807L).asD;
+      return e(paramInt, 9223372036854775807L).auu;
     }
     
     final void cw(int paramInt)
     {
-      a((RecyclerView.w)this.arS.get(paramInt), true);
-      this.arS.remove(paramInt);
+      a((RecyclerView.w)this.atJ.get(paramInt), true);
+      this.atJ.remove(paramInt);
     }
     
     final RecyclerView.w e(int paramInt, long paramLong)
     {
       boolean bool2 = true;
-      if ((paramInt < 0) || (paramInt >= RecyclerView.this.aqO.getItemCount())) {
-        throw new IndexOutOfBoundsException("Invalid item position " + paramInt + "(" + paramInt + "). Item count:" + RecyclerView.this.aqO.getItemCount() + RecyclerView.this.kp());
+      if ((paramInt < 0) || (paramInt >= RecyclerView.this.asG.getItemCount())) {
+        throw new IndexOutOfBoundsException("Invalid item position " + paramInt + "(" + paramInt + "). Item count:" + RecyclerView.this.asG.getItemCount() + RecyclerView.this.kF());
       }
       Object localObject1;
       int i;
-      if (RecyclerView.this.aqO.asp)
+      if (RecyclerView.this.asG.aug)
       {
         localObject1 = cx(paramInt);
         if (localObject1 != null) {
@@ -6771,11 +6789,11 @@ public class RecyclerView
               break label321;
             }
             ((RecyclerView.w)localObject2).addFlags(4);
-            if (!((RecyclerView.w)localObject2).lz()) {
+            if (!((RecyclerView.w)localObject2).lR()) {
               break label305;
             }
-            RecyclerView.this.removeDetachedView(((RecyclerView.w)localObject2).asD, false);
-            ((RecyclerView.w)localObject2).lA();
+            RecyclerView.this.removeDetachedView(((RecyclerView.w)localObject2).auu, false);
+            ((RecyclerView.w)localObject2).lS();
             label183:
             t((RecyclerView.w)localObject2);
             localObject1 = null;
@@ -6786,27 +6804,27 @@ public class RecyclerView
         {
           if (localObject1 == null)
           {
-            int k = RecyclerView.this.apT.bD(paramInt);
-            if ((k < 0) || (k >= RecyclerView.this.abe.getItemCount()))
+            int k = RecyclerView.this.arL.bD(paramInt);
+            if ((k < 0) || (k >= RecyclerView.this.acW.getItemCount()))
             {
-              throw new IndexOutOfBoundsException("Inconsistency detected. Invalid item position " + paramInt + "(offset:" + k + ").state:" + RecyclerView.this.aqO.getItemCount() + RecyclerView.this.kp());
+              throw new IndexOutOfBoundsException("Inconsistency detected. Invalid item position " + paramInt + "(offset:" + k + ").state:" + RecyclerView.this.asG.getItemCount() + RecyclerView.this.kF());
               i = 0;
               break;
               label305:
-              if (!((RecyclerView.w)localObject2).lB()) {
+              if (!((RecyclerView.w)localObject2).lT()) {
                 break label183;
               }
-              ((RecyclerView.w)localObject2).lC();
+              ((RecyclerView.w)localObject2).lU();
               break label183;
               label321:
               i = 1;
               localObject1 = localObject2;
               continue;
             }
-            j = RecyclerView.this.abe.getItemViewType(k);
-            if (RecyclerView.this.abe.arh)
+            j = RecyclerView.this.acW.getItemViewType(k);
+            if (RecyclerView.this.acW.asZ)
             {
-              localObject2 = a(RecyclerView.this.abe.getItemId(k), j);
+              localObject2 = a(RecyclerView.this.acW.getItemId(k), j);
               localObject1 = localObject2;
               if (localObject2 != null)
               {
@@ -6821,7 +6839,7 @@ public class RecyclerView
                   {
                     ((RecyclerView.w)localObject2).resetInternal();
                     localObject1 = localObject2;
-                    if (RecyclerView.apJ)
+                    if (RecyclerView.arB)
                     {
                       s((RecyclerView.w)localObject2);
                       localObject1 = localObject2;
@@ -6832,50 +6850,50 @@ public class RecyclerView
                 if (localObject1 == null)
                 {
                   long l1 = RecyclerView.this.getNanoTime();
-                  if ((paramLong != 9223372036854775807L) && (!this.arW.a(j, l1, paramLong))) {
+                  if ((paramLong != 9223372036854775807L) && (!this.atN.a(j, l1, paramLong))) {
                     return null;
                   }
-                  localObject2 = RecyclerView.this.abe.d(RecyclerView.this, j);
-                  if (RecyclerView.apM)
+                  localObject2 = RecyclerView.this.acW.d(RecyclerView.this, j);
+                  if (RecyclerView.arE)
                   {
-                    localObject1 = RecyclerView.bz(((RecyclerView.w)localObject2).asD);
+                    localObject1 = RecyclerView.bz(((RecyclerView.w)localObject2).auu);
                     if (localObject1 != null) {
-                      ((RecyclerView.w)localObject2).asE = new WeakReference(localObject1);
+                      ((RecyclerView.w)localObject2).auv = new WeakReference(localObject1);
                     }
                   }
                   long l2 = RecyclerView.this.getNanoTime();
-                  this.arW.d(j, l2 - l1);
+                  this.atN.d(j, l2 - l1);
                 }
               }
             }
           }
           for (;;)
           {
-            if ((i != 0) && (!RecyclerView.this.aqO.asp) && (((RecyclerView.w)localObject2).cB(8192)))
+            if ((i != 0) && (!RecyclerView.this.asG.aug) && (((RecyclerView.w)localObject2).cB(8192)))
             {
               ((RecyclerView.w)localObject2).setFlags(0, 8192);
-              if (RecyclerView.this.aqO.ass)
+              if (RecyclerView.this.asG.auj)
               {
                 j = RecyclerView.f.m((RecyclerView.w)localObject2);
-                localObject1 = RecyclerView.this.aqz.a(RecyclerView.this.aqO, (RecyclerView.w)localObject2, j | 0x1000, ((RecyclerView.w)localObject2).lI());
+                localObject1 = RecyclerView.this.asr.a(RecyclerView.this.asG, (RecyclerView.w)localObject2, j | 0x1000, ((RecyclerView.w)localObject2).ma());
                 RecyclerView.this.a((RecyclerView.w)localObject2, (RecyclerView.f.c)localObject1);
               }
             }
             boolean bool1;
-            if ((RecyclerView.this.aqO.asp) && (((RecyclerView.w)localObject2).isBound()))
+            if ((RecyclerView.this.asG.aug) && (((RecyclerView.w)localObject2).isBound()))
             {
-              ((RecyclerView.w)localObject2).asI = paramInt;
+              ((RecyclerView.w)localObject2).auz = paramInt;
               bool1 = false;
             }
             for (;;)
             {
-              localObject1 = ((RecyclerView.w)localObject2).asD.getLayoutParams();
+              localObject1 = ((RecyclerView.w)localObject2).auu.getLayoutParams();
               if (localObject1 == null)
               {
                 localObject1 = (RecyclerView.LayoutParams)RecyclerView.this.generateDefaultLayoutParams();
-                ((RecyclerView.w)localObject2).asD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+                ((RecyclerView.w)localObject2).auu.setLayoutParams((ViewGroup.LayoutParams)localObject1);
                 label738:
-                ((RecyclerView.LayoutParams)localObject1).arH = ((RecyclerView.w)localObject2);
+                ((RecyclerView.LayoutParams)localObject1).aty = ((RecyclerView.w)localObject2);
                 if ((i == 0) || (!bool1)) {
                   break label866;
                 }
@@ -6883,17 +6901,17 @@ public class RecyclerView
               label866:
               for (bool1 = bool2;; bool1 = false)
               {
-                ((RecyclerView.LayoutParams)localObject1).arJ = bool1;
+                ((RecyclerView.LayoutParams)localObject1).atA = bool1;
                 return localObject2;
-                if ((((RecyclerView.w)localObject2).isBound()) && (!((RecyclerView.w)localObject2).lE()) && (!((RecyclerView.w)localObject2).bj())) {
+                if ((((RecyclerView.w)localObject2).isBound()) && (!((RecyclerView.w)localObject2).lW()) && (!((RecyclerView.w)localObject2).isInvalid())) {
                   break label872;
                 }
-                bool1 = a((RecyclerView.w)localObject2, RecyclerView.this.apT.bD(paramInt), paramInt, paramLong);
+                bool1 = a((RecyclerView.w)localObject2, RecyclerView.this.arL.bD(paramInt), paramInt, paramLong);
                 break;
                 if (!RecyclerView.this.checkLayoutParams((ViewGroup.LayoutParams)localObject1))
                 {
                   localObject1 = (RecyclerView.LayoutParams)RecyclerView.this.generateLayoutParams((ViewGroup.LayoutParams)localObject1);
-                  ((RecyclerView.w)localObject2).asD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+                  ((RecyclerView.w)localObject2).auu.setLayoutParams((ViewGroup.LayoutParams)localObject1);
                   break label738;
                 }
                 localObject1 = (RecyclerView.LayoutParams)localObject1;
@@ -6914,68 +6932,20 @@ public class RecyclerView
     
     final RecyclerView.n getRecycledViewPool()
     {
-      if (this.arW == null) {
-        this.arW = new RecyclerView.n();
+      if (this.atN == null) {
+        this.atN = new RecyclerView.n();
       }
-      return this.arW;
+      return this.atN;
     }
     
-    final void kT()
+    final void lF()
     {
-      int j = 0;
-      int k = this.arS.size();
-      int i = 0;
-      while (i < k)
+      if (RecyclerView.this.arR != null) {}
+      for (int i = RecyclerView.this.arR.atq;; i = 0)
       {
-        ((RecyclerView.w)this.arS.get(i)).lr();
-        i += 1;
-      }
-      k = this.arQ.size();
-      i = 0;
-      while (i < k)
-      {
-        ((RecyclerView.w)this.arQ.get(i)).lr();
-        i += 1;
-      }
-      if (this.arR != null)
-      {
-        k = this.arR.size();
-        i = j;
-        while (i < k)
-        {
-          ((RecyclerView.w)this.arR.get(i)).lr();
-          i += 1;
-        }
-      }
-    }
-    
-    final void kU()
-    {
-      int j = this.arS.size();
-      int i = 0;
-      while (i < j)
-      {
-        RecyclerView.w localw = (RecyclerView.w)this.arS.get(i);
-        if (localw != null)
-        {
-          localw.addFlags(6);
-          localw.N(null);
-        }
-        i += 1;
-      }
-      if ((RecyclerView.this.abe == null) || (!RecyclerView.this.abe.arh)) {
-        lo();
-      }
-    }
-    
-    final void ln()
-    {
-      if (RecyclerView.this.apZ != null) {}
-      for (int i = RecyclerView.this.apZ.arz;; i = 0)
-      {
-        this.arV = (i + this.arU);
-        i = this.arS.size() - 1;
-        while ((i >= 0) && (this.arS.size() > this.arV))
+        this.atM = (i + this.atL);
+        i = this.atJ.size() - 1;
+        while ((i >= 0) && (this.atJ.size() > this.atM))
         {
           cw(i);
           i -= 1;
@@ -6983,32 +6953,80 @@ public class RecyclerView
       }
     }
     
+    final void lj()
+    {
+      int j = 0;
+      int k = this.atJ.size();
+      int i = 0;
+      while (i < k)
+      {
+        ((RecyclerView.w)this.atJ.get(i)).lJ();
+        i += 1;
+      }
+      k = this.atH.size();
+      i = 0;
+      while (i < k)
+      {
+        ((RecyclerView.w)this.atH.get(i)).lJ();
+        i += 1;
+      }
+      if (this.atI != null)
+      {
+        k = this.atI.size();
+        i = j;
+        while (i < k)
+        {
+          ((RecyclerView.w)this.atI.get(i)).lJ();
+          i += 1;
+        }
+      }
+    }
+    
+    final void lk()
+    {
+      int j = this.atJ.size();
+      int i = 0;
+      while (i < j)
+      {
+        RecyclerView.w localw = (RecyclerView.w)this.atJ.get(i);
+        if (localw != null)
+        {
+          localw.addFlags(6);
+          localw.O(null);
+        }
+        i += 1;
+      }
+      if ((RecyclerView.this.acW == null) || (!RecyclerView.this.acW.asZ)) {
+        lG();
+      }
+    }
+    
     final void t(RecyclerView.w paramw)
     {
       int k = 1;
-      if ((paramw.lz()) || (paramw.asD.getParent() != null))
+      if ((paramw.lR()) || (paramw.auu.getParent() != null))
       {
-        StringBuilder localStringBuilder = new StringBuilder("Scrapped or attached views may not be recycled. isScrap:").append(paramw.lz()).append(" isAttached:");
-        if (paramw.asD.getParent() != null) {}
+        StringBuilder localStringBuilder = new StringBuilder("Scrapped or attached views may not be recycled. isScrap:").append(paramw.lR()).append(" isAttached:");
+        if (paramw.auu.getParent() != null) {}
         for (bool = true;; bool = false) {
-          throw new IllegalArgumentException(bool + RecyclerView.this.kp());
+          throw new IllegalArgumentException(bool + RecyclerView.this.kF());
         }
       }
-      if (paramw.lF()) {
-        throw new IllegalArgumentException("Tmp detached view should be removed from RecyclerView before it can be recycled: " + paramw + RecyclerView.this.kp());
+      if (paramw.lX()) {
+        throw new IllegalArgumentException("Tmp detached view should be removed from RecyclerView before it can be recycled: " + paramw + RecyclerView.this.kF());
       }
-      if (paramw.lt()) {
-        throw new IllegalArgumentException("Trying to recycle an ignored view holder. You should first call stopIgnoringView(view) before calling recycle." + RecyclerView.this.kp());
+      if (paramw.lL()) {
+        throw new IllegalArgumentException("Trying to recycle an ignored view holder. You should first call stopIgnoringView(view) before calling recycle." + RecyclerView.this.kF());
       }
-      boolean bool = paramw.lK();
+      boolean bool = paramw.mc();
       int j;
       int i;
-      if (paramw.lJ()) {
-        if ((this.arV > 0) && (!paramw.cB(526)))
+      if (paramw.mb()) {
+        if ((this.atM > 0) && (!paramw.cB(526)))
         {
-          j = this.arS.size();
+          j = this.atJ.size();
           i = j;
-          if (j >= this.arV)
+          if (j >= this.atM)
           {
             i = j;
             if (j > 0)
@@ -7018,19 +7036,19 @@ public class RecyclerView
             }
           }
           j = i;
-          if (RecyclerView.apM)
+          if (RecyclerView.arE)
           {
             j = i;
             if (i > 0)
             {
               j = i;
-              if (!RecyclerView.this.aqN.bO(paramw.mPosition))
+              if (!RecyclerView.this.asF.bO(paramw.mPosition))
               {
                 i -= 1;
                 while (i >= 0)
                 {
-                  j = ((RecyclerView.w)this.arS.get(i)).mPosition;
-                  if (!RecyclerView.this.aqN.bO(j)) {
+                  j = ((RecyclerView.w)this.atJ.get(i)).mPosition;
+                  if (!RecyclerView.this.asF.bO(j)) {
                     break;
                   }
                   i -= 1;
@@ -7039,7 +7057,7 @@ public class RecyclerView
               }
             }
           }
-          this.arS.add(j, paramw);
+          this.atJ.add(j, paramw);
           i = 1;
           if (i == 0)
           {
@@ -7050,9 +7068,9 @@ public class RecyclerView
       }
       for (;;)
       {
-        RecyclerView.this.apV.I(paramw);
+        RecyclerView.this.arN.I(paramw);
         if ((i == 0) && (j == 0) && (bool)) {
-          paramw.asT = null;
+          paramw.auK = null;
         }
         return;
         j = 0;
@@ -7066,16 +7084,16 @@ public class RecyclerView
     
     final void u(RecyclerView.w paramw)
     {
-      if (paramw.asQ) {
-        this.arR.remove(paramw);
+      if (paramw.auH) {
+        this.atI.remove(paramw);
       }
       for (;;)
       {
-        paramw.asP = null;
-        paramw.asQ = false;
-        paramw.lC();
+        paramw.auG = null;
+        paramw.auH = false;
+        paramw.lU();
         return;
-        this.arQ.remove(paramw);
+        this.atH.remove(paramw);
       }
     }
   }
@@ -7087,52 +7105,52 @@ public class RecyclerView
   {
     q() {}
     
-    private void lp()
+    private void lH()
     {
-      if ((RecyclerView.apL) && (RecyclerView.this.aqf) && (RecyclerView.this.aqe))
+      if ((RecyclerView.arD) && (RecyclerView.this.arX) && (RecyclerView.this.arW))
       {
-        t.b(RecyclerView.this, RecyclerView.this.apX);
+        t.b(RecyclerView.this, RecyclerView.this.arP);
         return;
       }
-      RecyclerView.this.aqn = true;
+      RecyclerView.this.asf = true;
       RecyclerView.this.requestLayout();
-    }
-    
-    public final void at(int paramInt1, int paramInt2)
-    {
-      int i = 1;
-      RecyclerView.this.G(null);
-      d locald = RecyclerView.this.apT;
-      if (paramInt2 > 0)
-      {
-        locald.ahO.add(locald.b(1, paramInt1, paramInt2, null));
-        locald.ahU |= 0x1;
-        if (locald.ahO.size() != 1) {}
-      }
-      for (paramInt1 = i;; paramInt1 = 0)
-      {
-        if (paramInt1 != 0) {
-          lp();
-        }
-        return;
-      }
     }
     
     public final void au(int paramInt1, int paramInt2)
     {
       int i = 1;
-      RecyclerView.this.G(null);
-      d locald = RecyclerView.this.apT;
+      RecyclerView.this.F(null);
+      d locald = RecyclerView.this.arL;
       if (paramInt2 > 0)
       {
-        locald.ahO.add(locald.b(2, paramInt1, paramInt2, null));
-        locald.ahU |= 0x2;
-        if (locald.ahO.size() != 1) {}
+        locald.ajF.add(locald.b(1, paramInt1, paramInt2, null));
+        locald.ajL |= 0x1;
+        if (locald.ajF.size() != 1) {}
       }
       for (paramInt1 = i;; paramInt1 = 0)
       {
         if (paramInt1 != 0) {
-          lp();
+          lH();
+        }
+        return;
+      }
+    }
+    
+    public final void av(int paramInt1, int paramInt2)
+    {
+      int i = 1;
+      RecyclerView.this.F(null);
+      d locald = RecyclerView.this.arL;
+      if (paramInt2 > 0)
+      {
+        locald.ajF.add(locald.b(2, paramInt1, paramInt2, null));
+        locald.ajL |= 0x2;
+        if (locald.ajF.size() != 1) {}
+      }
+      for (paramInt1 = i;; paramInt1 = 0)
+      {
+        if (paramInt1 != 0) {
+          lH();
         }
         return;
       }
@@ -7141,18 +7159,18 @@ public class RecyclerView
     public final void f(int paramInt1, int paramInt2, Object paramObject)
     {
       int i = 1;
-      RecyclerView.this.G(null);
-      d locald = RecyclerView.this.apT;
+      RecyclerView.this.F(null);
+      d locald = RecyclerView.this.arL;
       if (paramInt2 > 0)
       {
-        locald.ahO.add(locald.b(4, paramInt1, paramInt2, paramObject));
-        locald.ahU |= 0x4;
-        if (locald.ahO.size() != 1) {}
+        locald.ajF.add(locald.b(4, paramInt1, paramInt2, paramObject));
+        locald.ajL |= 0x4;
+        if (locald.ajF.size() != 1) {}
       }
       for (paramInt1 = i;; paramInt1 = 0)
       {
         if (paramInt1 != 0) {
-          lp();
+          lH();
         }
         return;
       }
@@ -7161,21 +7179,21 @@ public class RecyclerView
     public final void l(int paramInt1, int paramInt2, int paramInt3)
     {
       int i = 1;
-      RecyclerView.this.G(null);
-      d locald = RecyclerView.this.apT;
+      RecyclerView.this.F(null);
+      d locald = RecyclerView.this.arL;
       if (paramInt1 != paramInt2)
       {
         if (paramInt3 != 1) {
           throw new IllegalArgumentException("Moving more than 1 item is not supported yet");
         }
-        locald.ahO.add(locald.b(8, paramInt1, paramInt2, null));
-        locald.ahU |= 0x8;
-        if (locald.ahO.size() != 1) {}
+        locald.ajF.add(locald.b(8, paramInt1, paramInt2, null));
+        locald.ajL |= 0x8;
+        if (locald.ajF.size() != 1) {}
       }
       for (paramInt1 = i;; paramInt1 = 0)
       {
         if (paramInt1 != 0) {
-          lp();
+          lH();
         }
         return;
       }
@@ -7183,10 +7201,10 @@ public class RecyclerView
     
     public final void onChanged()
     {
-      RecyclerView.this.G(null);
-      RecyclerView.this.aqO.aso = true;
+      RecyclerView.this.F(null);
+      RecyclerView.this.asG.auf = true;
       RecyclerView.this.au(true);
-      if (!RecyclerView.this.apT.iD()) {
+      if (!RecyclerView.this.arL.iT()) {
         RecyclerView.this.requestLayout();
       }
     }
@@ -7194,79 +7212,79 @@ public class RecyclerView
   
   public static abstract class s
   {
-    RecyclerView alu;
-    RecyclerView.i apE;
-    public int arZ = -1;
-    boolean asa;
-    View asb;
-    private final a asc = new a();
-    boolean eg;
+    RecyclerView anl;
+    RecyclerView.i arw;
+    public int atQ = -1;
+    boolean atR;
+    View atS;
+    private final a atT = new a();
+    boolean ga;
     boolean mStarted;
     
     protected abstract void a(int paramInt1, int paramInt2, a parama);
     
     protected abstract void a(View paramView, RecyclerView.t paramt, a parama);
     
-    final void aC(int paramInt1, int paramInt2)
+    final void aD(int paramInt1, int paramInt2)
     {
       int i = 0;
-      RecyclerView localRecyclerView = this.alu;
-      if ((!this.eg) || (this.arZ == -1) || (localRecyclerView == null)) {
+      RecyclerView localRecyclerView = this.anl;
+      if ((!this.ga) || (this.atQ == -1) || (localRecyclerView == null)) {
         stop();
       }
-      if ((this.asa) && (this.asb == null) && (this.apE != null))
+      if ((this.atR) && (this.atS == null) && (this.arw != null))
       {
-        PointF localPointF = bZ(this.arZ);
+        PointF localPointF = bZ(this.atQ);
         if ((localPointF != null) && ((localPointF.x != 0.0F) || (localPointF.y != 0.0F))) {
           localRecyclerView.b((int)Math.signum(localPointF.x), (int)Math.signum(localPointF.y), null);
         }
       }
-      this.asa = false;
-      if (this.asb != null)
+      this.atR = false;
+      if (this.atS != null)
       {
-        if (RecyclerView.bx(this.asb) != this.arZ) {
+        if (RecyclerView.bx(this.atS) != this.atQ) {
           break label233;
         }
-        a(this.asb, localRecyclerView.aqO, this.asc);
-        this.asc.i(localRecyclerView);
+        a(this.atS, localRecyclerView.asG, this.atT);
+        this.atT.i(localRecyclerView);
         stop();
       }
       for (;;)
       {
-        if (this.eg)
+        if (this.ga)
         {
-          a(paramInt1, paramInt2, this.asc);
+          a(paramInt1, paramInt2, this.atT);
           paramInt1 = i;
-          if (this.asc.asg >= 0) {
+          if (this.atT.atX >= 0) {
             paramInt1 = 1;
           }
-          this.asc.i(localRecyclerView);
+          this.atT.i(localRecyclerView);
           if (paramInt1 != 0)
           {
-            if (!this.eg) {
+            if (!this.ga) {
               break;
             }
-            this.asa = true;
-            localRecyclerView.aqL.lq();
+            this.atR = true;
+            localRecyclerView.asD.lI();
           }
         }
         return;
         label233:
-        this.asb = null;
+        this.atS = null;
       }
       stop();
     }
     
     protected final void bV(View paramView)
     {
-      if (RecyclerView.bx(paramView) == this.arZ) {
-        this.asb = paramView;
+      if (RecyclerView.bx(paramView) == this.atQ) {
+        this.atS = paramView;
       }
     }
     
     public PointF bZ(int paramInt)
     {
-      RecyclerView.i locali = this.apE;
+      RecyclerView.i locali = this.arw;
       if ((locali instanceof b)) {
         return ((b)locali).bZ(paramInt);
       }
@@ -7276,43 +7294,43 @@ public class RecyclerView
     
     public final void cz(int paramInt)
     {
-      this.arZ = paramInt;
+      this.atQ = paramInt;
     }
     
     public final RecyclerView.i getLayoutManager()
     {
-      return this.apE;
+      return this.arw;
     }
     
     protected abstract void onStop();
     
     protected final void stop()
     {
-      if (!this.eg) {
+      if (!this.ga) {
         return;
       }
-      this.eg = false;
+      this.ga = false;
       onStop();
-      this.alu.aqO.arZ = -1;
-      this.asb = null;
-      this.arZ = -1;
-      this.asa = false;
-      RecyclerView.i locali = this.apE;
-      if (locali.aru == this) {
-        locali.aru = null;
+      this.anl.asG.atQ = -1;
+      this.atS = null;
+      this.atQ = -1;
+      this.atR = false;
+      RecyclerView.i locali = this.arw;
+      if (locali.atl == this) {
+        locali.atl = null;
       }
-      this.apE = null;
-      this.alu = null;
+      this.arw = null;
+      this.anl = null;
     }
     
     public static final class a
     {
-      private int asd = 0;
-      private int ase = 0;
-      private int asf = -2147483648;
-      int asg = -1;
-      private boolean ash = false;
-      private int asi = 0;
+      private int atU = 0;
+      private int atV = 0;
+      private int atW = -2147483648;
+      int atX = -1;
+      private boolean atY = false;
+      private int atZ = 0;
       private Interpolator mInterpolator = null;
       
       public a()
@@ -7324,52 +7342,52 @@ public class RecyclerView
       
       private void validate()
       {
-        if ((this.mInterpolator != null) && (this.asf <= 0)) {
+        if ((this.mInterpolator != null) && (this.atW <= 0)) {
           throw new IllegalStateException("If you provide an interpolator, you must set a positive duration");
         }
-        if (this.asf <= 0) {
+        if (this.atW <= 0) {
           throw new IllegalStateException("Scroll duration must be a positive number");
         }
       }
       
       public final void a(int paramInt1, int paramInt2, int paramInt3, Interpolator paramInterpolator)
       {
-        this.asd = paramInt1;
-        this.ase = paramInt2;
-        this.asf = paramInt3;
+        this.atU = paramInt1;
+        this.atV = paramInt2;
+        this.atW = paramInt3;
         this.mInterpolator = paramInterpolator;
-        this.ash = true;
+        this.atY = true;
       }
       
       final void i(RecyclerView paramRecyclerView)
       {
-        if (this.asg >= 0)
+        if (this.atX >= 0)
         {
-          int i = this.asg;
-          this.asg = -1;
+          int i = this.atX;
+          this.atX = -1;
           paramRecyclerView.cg(i);
-          this.ash = false;
+          this.atY = false;
           return;
         }
-        if (this.ash)
+        if (this.atY)
         {
           validate();
           if (this.mInterpolator == null) {
-            if (this.asf == -2147483648) {
-              paramRecyclerView.aqL.aD(this.asd, this.ase);
+            if (this.atW == -2147483648) {
+              paramRecyclerView.asD.aE(this.atU, this.atV);
             }
           }
           for (;;)
           {
-            this.asi += 1;
-            this.ash = false;
+            this.atZ += 1;
+            this.atY = false;
             return;
-            paramRecyclerView.aqL.o(this.asd, this.ase, this.asf);
+            paramRecyclerView.asD.o(this.atU, this.atV, this.atW);
             continue;
-            paramRecyclerView.aqL.b(this.asd, this.ase, this.asf, this.mInterpolator);
+            paramRecyclerView.asD.b(this.atU, this.atV, this.atW, this.mInterpolator);
           }
         }
-        this.asi = 0;
+        this.atZ = 0;
       }
     }
     
@@ -7381,42 +7399,42 @@ public class RecyclerView
   
   public static final class t
   {
-    int arZ = -1;
-    private SparseArray<Object> asj;
-    int ask = 0;
-    int asl = 0;
-    int asm = 1;
-    int asn = 0;
-    boolean aso = false;
-    public boolean asp = false;
-    boolean asq = false;
-    boolean asr = false;
-    boolean ass = false;
-    boolean ast = false;
-    int asu;
-    long asv;
-    int asw;
-    int asx;
-    int asy;
+    int atQ = -1;
+    private SparseArray<Object> aua;
+    int aub = 0;
+    int auc = 0;
+    int aud = 1;
+    int aue = 0;
+    boolean auf = false;
+    public boolean aug = false;
+    boolean auh = false;
+    boolean aui = false;
+    boolean auj = false;
+    boolean auk = false;
+    int aul;
+    long aum;
+    int aun;
+    int auo;
+    int aup;
     
     final void cA(int paramInt)
     {
-      if ((this.asm & paramInt) == 0) {
-        throw new IllegalStateException("Layout state should be one of " + Integer.toBinaryString(paramInt) + " but it is " + Integer.toBinaryString(this.asm));
+      if ((this.aud & paramInt) == 0) {
+        throw new IllegalStateException("Layout state should be one of " + Integer.toBinaryString(paramInt) + " but it is " + Integer.toBinaryString(this.aud));
       }
     }
     
     public final int getItemCount()
     {
-      if (this.asp) {
-        return this.ask - this.asl;
+      if (this.aug) {
+        return this.aub - this.auc;
       }
-      return this.asn;
+      return this.aue;
     }
     
     public final String toString()
     {
-      return "State{mTargetPosition=" + this.arZ + ", mData=" + this.asj + ", mItemCount=" + this.asn + ", mIsMeasuring=" + this.asr + ", mPreviousLayoutItemCount=" + this.ask + ", mDeletedInvisibleItemCountSincePreviousLayout=" + this.asl + ", mStructureChanged=" + this.aso + ", mInPreLayout=" + this.asp + ", mRunSimpleAnimations=" + this.ass + ", mRunPredictiveAnimations=" + this.ast + '}';
+      return "State{mTargetPosition=" + this.atQ + ", mData=" + this.aua + ", mItemCount=" + this.aue + ", mIsMeasuring=" + this.aui + ", mPreviousLayoutItemCount=" + this.aub + ", mDeletedInvisibleItemCountSincePreviousLayout=" + this.auc + ", mStructureChanged=" + this.auf + ", mInPreLayout=" + this.aug + ", mRunSimpleAnimations=" + this.auj + ", mRunPredictiveAnimations=" + this.auk + '}';
     }
   }
   
@@ -7425,12 +7443,12 @@ public class RecyclerView
   final class v
     implements Runnable
   {
-    OverScroller SC = new OverScroller(RecyclerView.this.getContext(), RecyclerView.ard);
-    int asA;
-    private boolean asB = false;
-    private boolean asC = false;
-    int asz;
-    Interpolator mInterpolator = RecyclerView.ard;
+    OverScroller Ur = new OverScroller(RecyclerView.this.getContext(), RecyclerView.asV);
+    int auq;
+    int aur;
+    private boolean aus = false;
+    private boolean aut = false;
+    Interpolator mInterpolator = RecyclerView.asV;
     
     v() {}
     
@@ -7439,12 +7457,12 @@ public class RecyclerView
       return (float)Math.sin((paramFloat - 0.5F) * 0.4712389F);
     }
     
-    final void aD(int paramInt1, int paramInt2)
+    final void aE(int paramInt1, int paramInt2)
     {
-      o(paramInt1, paramInt2, aE(paramInt1, paramInt2));
+      o(paramInt1, paramInt2, aF(paramInt1, paramInt2));
     }
     
-    final int aE(int paramInt1, int paramInt2)
+    final int aF(int paramInt1, int paramInt2)
     {
       int j = Math.abs(paramInt1);
       int k = Math.abs(paramInt2);
@@ -7489,23 +7507,23 @@ public class RecyclerView
       if (this.mInterpolator != paramInterpolator)
       {
         this.mInterpolator = paramInterpolator;
-        this.SC = new OverScroller(RecyclerView.this.getContext(), paramInterpolator);
+        this.Ur = new OverScroller(RecyclerView.this.getContext(), paramInterpolator);
       }
       RecyclerView.this.setScrollState(2);
-      this.asA = 0;
-      this.asz = 0;
-      this.SC.startScroll(0, 0, paramInt1, paramInt2, paramInt3);
+      this.aur = 0;
+      this.auq = 0;
+      this.Ur.startScroll(0, 0, paramInt1, paramInt2, paramInt3);
       if (Build.VERSION.SDK_INT < 23) {
-        this.SC.computeScrollOffset();
+        this.Ur.computeScrollOffset();
       }
-      lq();
+      lI();
     }
     
-    final void lq()
+    final void lI()
     {
-      if (this.asB)
+      if (this.aus)
       {
-        this.asC = true;
+        this.aut = true;
         return;
       }
       RecyclerView.this.removeCallbacks(this);
@@ -7514,21 +7532,21 @@ public class RecyclerView
     
     public final void o(int paramInt1, int paramInt2, int paramInt3)
     {
-      b(paramInt1, paramInt2, paramInt3, RecyclerView.ard);
+      b(paramInt1, paramInt2, paramInt3, RecyclerView.asV);
     }
     
     public final void run()
     {
-      if (RecyclerView.this.apZ == null)
+      if (RecyclerView.this.arR == null)
       {
         stop();
         return;
       }
-      this.asC = false;
-      this.asB = true;
-      RecyclerView.this.kr();
-      OverScroller localOverScroller = this.SC;
-      RecyclerView.s locals = RecyclerView.this.apZ.aru;
+      this.aut = false;
+      this.aus = true;
+      RecyclerView.this.kH();
+      OverScroller localOverScroller = this.Ur;
+      RecyclerView.s locals = RecyclerView.this.arR.atl;
       int i6;
       int i7;
       int k;
@@ -7536,13 +7554,13 @@ public class RecyclerView
       int i;
       if (localOverScroller.computeScrollOffset())
       {
-        int[] arrayOfInt = RecyclerView.this.SM;
+        int[] arrayOfInt = RecyclerView.this.UB;
         i6 = localOverScroller.getCurrX();
         i7 = localOverScroller.getCurrY();
-        k = i6 - this.asz;
-        j = i7 - this.asA;
-        this.asz = i6;
-        this.asA = i7;
+        k = i6 - this.auq;
+        j = i7 - this.aur;
+        this.auq = i6;
+        this.aur = i7;
         if (!RecyclerView.this.a(k, j, arrayOfInt, null, 1)) {
           break label849;
         }
@@ -7563,11 +7581,11 @@ public class RecyclerView
         int n;
         int i1;
         int i2;
-        if (RecyclerView.this.abe != null)
+        if (RecyclerView.this.acW != null)
         {
-          RecyclerView.this.b(k, j, RecyclerView.this.ara);
-          i = RecyclerView.this.ara[0];
-          i3 = RecyclerView.this.ara[1];
+          RecyclerView.this.b(k, j, RecyclerView.this.asS);
+          i = RecyclerView.this.asS[0];
+          i3 = RecyclerView.this.asS[1];
           i4 = k - i;
           i5 = j - i3;
           m = i;
@@ -7580,15 +7598,15 @@ public class RecyclerView
             n = i3;
             i1 = i4;
             i2 = i5;
-            if (!locals.asa)
+            if (!locals.atR)
             {
               m = i;
               n = i3;
               i1 = i4;
               i2 = i5;
-              if (locals.eg)
+              if (locals.ga)
               {
-                m = RecyclerView.this.aqO.getItemCount();
+                m = RecyclerView.this.asG.getItemCount();
                 if (m != 0) {
                   break label695;
                 }
@@ -7603,11 +7621,11 @@ public class RecyclerView
         }
         for (;;)
         {
-          if (!RecyclerView.this.aqb.isEmpty()) {
+          if (!RecyclerView.this.arT.isEmpty()) {
             RecyclerView.this.invalidate();
           }
           if (RecyclerView.this.getOverScrollMode() != 2) {
-            RecyclerView.this.aj(k, j);
+            RecyclerView.this.ak(k, j);
           }
           if ((!RecyclerView.this.a(m, n, i1, i2, null, 1)) && ((i1 != 0) || (i2 != 0)))
           {
@@ -7630,21 +7648,21 @@ public class RecyclerView
             for (;;)
             {
               if (RecyclerView.this.getOverScrollMode() != 2) {
-                RecyclerView.this.ak(i4, i);
+                RecyclerView.this.al(i4, i);
               }
               if (((i4 != 0) || (i1 == i6) || (localOverScroller.getFinalX() == 0)) && ((i != 0) || (i2 == i7) || (localOverScroller.getFinalY() == 0))) {
                 localOverScroller.abortAnimation();
               }
               if ((m != 0) || (n != 0)) {
-                RecyclerView.this.an(m, n);
+                RecyclerView.this.ao(m, n);
               }
               if (!RecyclerView.b(RecyclerView.this)) {
                 RecyclerView.this.invalidate();
               }
-              if ((j != 0) && (RecyclerView.this.apZ.jN()) && (n == j))
+              if ((j != 0) && (RecyclerView.this.arR.kd()) && (n == j))
               {
                 i = 1;
-                if ((k == 0) || (!RecyclerView.this.apZ.jM()) || (m != k)) {
+                if ((k == 0) || (!RecyclerView.this.arR.kc()) || (m != k)) {
                   break label779;
                 }
                 m = 1;
@@ -7656,8 +7674,8 @@ public class RecyclerView
                   break label790;
                 }
                 RecyclerView.this.setScrollState(0);
-                if (RecyclerView.apM) {
-                  RecyclerView.this.aqN.jm();
+                if (RecyclerView.arE) {
+                  RecyclerView.this.asF.jC();
                 }
                 RecyclerView.this.aM(1);
               }
@@ -7665,23 +7683,23 @@ public class RecyclerView
               {
                 if (locals != null)
                 {
-                  if (locals.asa) {
-                    locals.aC(0, 0);
+                  if (locals.atR) {
+                    locals.aD(0, 0);
                   }
-                  if (!this.asC) {
+                  if (!this.aut) {
                     locals.stop();
                   }
                 }
-                this.asB = false;
-                if (!this.asC) {
+                this.aus = false;
+                if (!this.aut) {
                   break;
                 }
-                lq();
+                lI();
                 return;
-                if (locals.arZ >= m) {
-                  locals.arZ = (m - 1);
+                if (locals.atQ >= m) {
+                  locals.atQ = (m - 1);
                 }
-                locals.aC(k - i4, j - i5);
+                locals.aD(k - i4, j - i5);
                 m = i;
                 n = i3;
                 i1 = i4;
@@ -7707,9 +7725,9 @@ public class RecyclerView
                 break label569;
                 i = 0;
                 break label588;
-                lq();
-                if (RecyclerView.this.aqM != null) {
-                  RecyclerView.this.aqM.b(RecyclerView.this, k, j);
+                lI();
+                if (RecyclerView.this.asE != null) {
+                  RecyclerView.this.asE.b(RecyclerView.this, k, j);
                 }
               }
               i = 0;
@@ -7726,30 +7744,30 @@ public class RecyclerView
     public final void stop()
     {
       RecyclerView.this.removeCallbacks(this);
-      this.SC.abortAnimation();
+      this.Ur.abortAnimation();
     }
   }
   
   public static abstract class w
   {
-    private static final List<Object> asL = ;
-    int DU;
-    public final View asD;
-    WeakReference<RecyclerView> asE;
-    int asF = -1;
-    public long asG = -1L;
-    public int asH = -1;
-    int asI = -1;
-    w asJ = null;
-    w asK = null;
-    List<Object> asM = null;
-    List<Object> asN = null;
-    private int asO = 0;
-    RecyclerView.o asP = null;
-    boolean asQ = false;
-    int asR = 0;
-    int asS = -1;
-    RecyclerView asT;
+    private static final List<Object> auC = ;
+    int FL;
+    w auA = null;
+    w auB = null;
+    List<Object> auD = null;
+    List<Object> auE = null;
+    private int auF = 0;
+    RecyclerView.o auG = null;
+    boolean auH = false;
+    int auI = 0;
+    int auJ = -1;
+    RecyclerView auK;
+    public final View auu;
+    WeakReference<RecyclerView> auv;
+    int auw = -1;
+    public long aux = -1L;
+    public int auy = -1;
+    int auz = -1;
     int mPosition = -1;
     
     public w(View paramView)
@@ -7757,39 +7775,39 @@ public class RecyclerView
       if (paramView == null) {
         throw new IllegalArgumentException("itemView may not be null");
       }
-      this.asD = paramView;
+      this.auu = paramView;
     }
     
-    private void lG()
+    private void lY()
     {
-      if (this.asM == null)
+      if (this.auD == null)
       {
-        this.asM = new ArrayList();
-        this.asN = Collections.unmodifiableList(this.asM);
+        this.auD = new ArrayList();
+        this.auE = Collections.unmodifiableList(this.auD);
       }
     }
     
-    final void N(Object paramObject)
+    final void O(Object paramObject)
     {
       if (paramObject == null) {
         addFlags(1024);
       }
-      while ((this.DU & 0x400) != 0) {
+      while ((this.FL & 0x400) != 0) {
         return;
       }
-      lG();
-      this.asM.add(paramObject);
+      lY();
+      this.auD.add(paramObject);
     }
     
     final void a(RecyclerView.o paramo, boolean paramBoolean)
     {
-      this.asP = paramo;
-      this.asQ = paramBoolean;
+      this.auG = paramo;
+      this.auH = paramBoolean;
     }
     
     final void addFlags(int paramInt)
     {
-      this.DU |= paramInt;
+      this.FL |= paramInt;
     }
     
     public final void ax(boolean paramBoolean)
@@ -7797,223 +7815,223 @@ public class RecyclerView
       int i;
       if (paramBoolean)
       {
-        i = this.asO - 1;
-        this.asO = i;
-        if (this.asO >= 0) {
+        i = this.auF - 1;
+        this.auF = i;
+        if (this.auF >= 0) {
           break label53;
         }
-        this.asO = 0;
+        this.auF = 0;
         new StringBuilder("isRecyclable decremented below 0: unmatched pair of setIsRecyable() calls for ").append(this);
       }
       label53:
       do
       {
         return;
-        i = this.asO + 1;
+        i = this.auF + 1;
         break;
-        if ((!paramBoolean) && (this.asO == 1))
+        if ((!paramBoolean) && (this.auF == 1))
         {
-          this.DU |= 0x10;
+          this.FL |= 0x10;
           return;
         }
-      } while ((!paramBoolean) || (this.asO != 0));
-      this.DU &= 0xFFFFFFEF;
-    }
-    
-    final boolean bj()
-    {
-      return (this.DU & 0x4) != 0;
+      } while ((!paramBoolean) || (this.auF != 0));
+      this.FL &= 0xFFFFFFEF;
     }
     
     final boolean cB(int paramInt)
     {
-      return (this.DU & paramInt) != 0;
+      return (this.FL & paramInt) != 0;
     }
     
     @Deprecated
     public final int getPosition()
     {
-      if (this.asI == -1) {
+      if (this.auz == -1) {
         return this.mPosition;
       }
-      return this.asI;
+      return this.auz;
     }
     
     final boolean isBound()
     {
-      return (this.DU & 0x1) != 0;
+      return (this.FL & 0x1) != 0;
+    }
+    
+    final boolean isInvalid()
+    {
+      return (this.FL & 0x4) != 0;
     }
     
     public final boolean isRemoved()
     {
-      return (this.DU & 0x8) != 0;
+      return (this.FL & 0x8) != 0;
     }
     
     final void k(int paramInt, boolean paramBoolean)
     {
-      if (this.asF == -1) {
-        this.asF = this.mPosition;
+      if (this.auw == -1) {
+        this.auw = this.mPosition;
       }
-      if (this.asI == -1) {
-        this.asI = this.mPosition;
+      if (this.auz == -1) {
+        this.auz = this.mPosition;
       }
       if (paramBoolean) {
-        this.asI += paramInt;
+        this.auz += paramInt;
       }
       this.mPosition += paramInt;
-      if (this.asD.getLayoutParams() != null) {
-        ((RecyclerView.LayoutParams)this.asD.getLayoutParams()).arI = true;
+      if (this.auu.getLayoutParams() != null) {
+        ((RecyclerView.LayoutParams)this.auu.getLayoutParams()).atz = true;
       }
     }
     
-    final void lA()
+    final void lJ()
     {
-      this.asP.u(this);
+      this.auw = -1;
+      this.auz = -1;
     }
     
-    final boolean lB()
+    final void lK()
     {
-      return (this.DU & 0x20) != 0;
-    }
-    
-    final void lC()
-    {
-      this.DU &= 0xFFFFFFDF;
-    }
-    
-    final void lD()
-    {
-      this.DU &= 0xFFFFFEFF;
-    }
-    
-    final boolean lE()
-    {
-      return (this.DU & 0x2) != 0;
-    }
-    
-    final boolean lF()
-    {
-      return (this.DU & 0x100) != 0;
-    }
-    
-    final void lH()
-    {
-      if (this.asM != null) {
-        this.asM.clear();
+      if (this.auw == -1) {
+        this.auw = this.mPosition;
       }
-      this.DU &= 0xFFFFFBFF;
-    }
-    
-    final List<Object> lI()
-    {
-      if ((this.DU & 0x400) == 0)
-      {
-        if ((this.asM == null) || (this.asM.size() == 0)) {
-          return asL;
-        }
-        return this.asN;
-      }
-      return asL;
-    }
-    
-    public final boolean lJ()
-    {
-      return ((this.DU & 0x10) == 0) && (!t.V(this.asD));
-    }
-    
-    final boolean lK()
-    {
-      return ((this.DU & 0x10) == 0) && (t.V(this.asD));
     }
     
     final boolean lL()
     {
-      return (this.DU & 0x2) != 0;
+      return (this.FL & 0x80) != 0;
     }
     
-    final void lr()
+    public final int lM()
     {
-      this.asF = -1;
-      this.asI = -1;
-    }
-    
-    final void ls()
-    {
-      if (this.asF == -1) {
-        this.asF = this.mPosition;
-      }
-    }
-    
-    final boolean lt()
-    {
-      return (this.DU & 0x80) != 0;
-    }
-    
-    public final int lu()
-    {
-      if (this.asI == -1) {
+      if (this.auz == -1) {
         return this.mPosition;
       }
-      return this.asI;
+      return this.auz;
     }
     
-    public final int lv()
+    public final int lN()
     {
-      if (this.asT == null) {
+      if (this.auK == null) {
         return -1;
       }
-      return this.asT.i(this);
+      return this.auK.i(this);
     }
     
-    public final int lw()
+    public final int lO()
     {
-      return this.asF;
+      return this.auw;
     }
     
-    public final long lx()
+    public final long lP()
     {
-      return this.asG;
+      return this.aux;
     }
     
-    public final int ly()
+    public final int lQ()
     {
-      return this.asH;
+      return this.auy;
     }
     
-    final boolean lz()
+    final boolean lR()
     {
-      return this.asP != null;
+      return this.auG != null;
+    }
+    
+    final void lS()
+    {
+      this.auG.u(this);
+    }
+    
+    final boolean lT()
+    {
+      return (this.FL & 0x20) != 0;
+    }
+    
+    final void lU()
+    {
+      this.FL &= 0xFFFFFFDF;
+    }
+    
+    final void lV()
+    {
+      this.FL &= 0xFFFFFEFF;
+    }
+    
+    final boolean lW()
+    {
+      return (this.FL & 0x2) != 0;
+    }
+    
+    final boolean lX()
+    {
+      return (this.FL & 0x100) != 0;
+    }
+    
+    final void lZ()
+    {
+      if (this.auD != null) {
+        this.auD.clear();
+      }
+      this.FL &= 0xFFFFFBFF;
+    }
+    
+    final List<Object> ma()
+    {
+      if ((this.FL & 0x400) == 0)
+      {
+        if ((this.auD == null) || (this.auD.size() == 0)) {
+          return auC;
+        }
+        return this.auE;
+      }
+      return auC;
+    }
+    
+    public final boolean mb()
+    {
+      return ((this.FL & 0x10) == 0) && (!t.V(this.auu));
+    }
+    
+    final boolean mc()
+    {
+      return ((this.FL & 0x10) == 0) && (t.V(this.auu));
+    }
+    
+    final boolean md()
+    {
+      return (this.FL & 0x2) != 0;
     }
     
     final void resetInternal()
     {
-      this.DU = 0;
+      this.FL = 0;
       this.mPosition = -1;
-      this.asF = -1;
-      this.asG = -1L;
-      this.asI = -1;
-      this.asO = 0;
-      this.asJ = null;
-      this.asK = null;
-      lH();
-      this.asR = 0;
-      this.asS = -1;
+      this.auw = -1;
+      this.aux = -1L;
+      this.auz = -1;
+      this.auF = 0;
+      this.auA = null;
+      this.auB = null;
+      lZ();
+      this.auI = 0;
+      this.auJ = -1;
       RecyclerView.h(this);
     }
     
     final void setFlags(int paramInt1, int paramInt2)
     {
-      this.DU = (this.DU & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+      this.FL = (this.FL & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
     }
     
     public String toString()
     {
-      StringBuilder localStringBuilder1 = new StringBuilder("ViewHolder{" + Integer.toHexString(hashCode()) + " position=" + this.mPosition + " id=" + this.asG + ", oldPos=" + this.asF + ", pLpos:" + this.asI);
+      StringBuilder localStringBuilder1 = new StringBuilder("ViewHolder{" + Integer.toHexString(hashCode()) + " position=" + this.mPosition + " id=" + this.aux + ", oldPos=" + this.auw + ", pLpos:" + this.auz);
       String str;
-      if (lz())
+      if (lR())
       {
         StringBuilder localStringBuilder2 = localStringBuilder1.append(" scrap ");
-        if (this.asQ)
+        if (this.auH)
         {
           str = "[changeScrap]";
           localStringBuilder2.append(str);
@@ -8021,28 +8039,28 @@ public class RecyclerView
       }
       else
       {
-        if (bj()) {
+        if (isInvalid()) {
           localStringBuilder1.append(" invalid");
         }
         if (!isBound()) {
           localStringBuilder1.append(" unbound");
         }
-        if (lE()) {
+        if (lW()) {
           localStringBuilder1.append(" update");
         }
         if (isRemoved()) {
           localStringBuilder1.append(" removed");
         }
-        if (lt()) {
+        if (lL()) {
           localStringBuilder1.append(" ignored");
         }
-        if (lF()) {
+        if (lX()) {
           localStringBuilder1.append(" tmpDetached");
         }
-        if (!lJ()) {
-          localStringBuilder1.append(" not recyclable(" + this.asO + ")");
+        if (!mb()) {
+          localStringBuilder1.append(" not recyclable(" + this.auF + ")");
         }
-        if (((this.DU & 0x200) == 0) && (!bj())) {
+        if (((this.FL & 0x200) == 0) && (!isInvalid())) {
           break label306;
         }
       }
@@ -8052,7 +8070,7 @@ public class RecyclerView
         if (i != 0) {
           localStringBuilder1.append(" undefined adapter position");
         }
-        if (this.asD.getParent() == null) {
+        if (this.auu.getParent() == null) {
           localStringBuilder1.append(" no parent");
         }
         localStringBuilder1.append("}");

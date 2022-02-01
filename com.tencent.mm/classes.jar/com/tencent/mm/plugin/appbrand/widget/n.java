@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hh;
+import com.tencent.mm.g.c.hr;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends hh
+  extends hr
 {
-  public static c.a hlR;
+  public static c.a hEe;
   
   static
   {
     AppMethodBeat.i(76411);
     c.a locala = new c.a();
-    locala.GvF = new Field[3];
+    locala.IhA = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appIdHash";
-    locala.GvH.put("appIdHash", "INTEGER PRIMARY KEY ");
+    locala.IhC.put("appIdHash", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" appIdHash INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "appIdHash";
+    locala.IhB = "appIdHash";
     locala.columns[1] = "appId";
-    locala.GvH.put("appId", "TEXT");
+    locala.IhC.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "openDebug";
-    locala.GvH.put("openDebug", "INTEGER");
+    locala.IhC.put("openDebug", "INTEGER");
     localStringBuilder.append(" openDebug INTEGER");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
-    hlR = locala;
+    hEe = locala;
     AppMethodBeat.o(76411);
   }
   
   public final c.a getDBInfo()
   {
-    return hlR;
+    return hEe;
   }
 }
 

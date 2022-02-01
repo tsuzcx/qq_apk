@@ -1,73 +1,47 @@
 package d.d.b.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.d.d;
-import d.d.e;
 import d.d.f;
-import d.d.f.b;
-import d.d.f.c;
-import d.g.b.k;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlin/coroutines/jvm/internal/ContinuationImpl;", "Lkotlin/coroutines/jvm/internal/BaseContinuationImpl;", "completion", "Lkotlin/coroutines/Continuation;", "", "(Lkotlin/coroutines/Continuation;)V", "_context", "Lkotlin/coroutines/CoroutineContext;", "(Lkotlin/coroutines/Continuation;Lkotlin/coroutines/CoroutineContext;)V", "context", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "intercepted", "releaseIntercepted", "", "kotlin-stdlib"})
-public abstract class c
-  extends a
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlin/coroutines/jvm/internal/CompletedContinuation;", "Lkotlin/coroutines/Continuation;", "", "()V", "context", "Lkotlin/coroutines/CoroutineContext;", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "resumeWith", "", "result", "Lkotlin/Result;", "(Ljava/lang/Object;)V", "toString", "", "kotlin-stdlib"})
+public final class c
+  implements d<Object>
 {
-  private transient d<Object> KUn;
-  private final f KUo;
+  public static final c MLl;
   
-  public c(d<Object> paramd) {}
-  
-  public c(d<Object> paramd, f paramf)
+  static
   {
-    super(paramd);
-    this.KUo = paramf;
+    AppMethodBeat.i(129607);
+    MLl = new c();
+    AppMethodBeat.o(129607);
   }
   
-  public final f fOf()
+  public final void eN(Object paramObject)
   {
-    f localf = this.KUo;
-    if (localf == null) {
-      k.fOy();
-    }
-    return localf;
+    AppMethodBeat.i(129606);
+    paramObject = (Throwable)new IllegalStateException("This continuation is already complete".toString());
+    AppMethodBeat.o(129606);
+    throw paramObject;
   }
   
-  protected final void fOj()
+  public final f gfE()
   {
-    d locald = this.KUn;
-    if ((locald != null) && (locald != (c)this))
-    {
-      f.b localb = fOf().get((f.c)e.KTW);
-      if (localb == null) {
-        k.fOy();
-      }
-      ((e)localb).c(locald);
-    }
-    this.KUn = ((d)b.KUm);
+    AppMethodBeat.i(129605);
+    Throwable localThrowable = (Throwable)new IllegalStateException("This continuation is already complete".toString());
+    AppMethodBeat.o(129605);
+    throw localThrowable;
   }
   
-  public final d<Object> fOk()
+  public final String toString()
   {
-    d locald = this.KUn;
-    Object localObject = locald;
-    if (locald == null)
-    {
-      localObject = (e)fOf().get((f.c)e.KTW);
-      if (localObject == null) {
-        break label52;
-      }
-    }
-    label52:
-    for (localObject = ((e)localObject).b((d)this);; localObject = (d)this)
-    {
-      this.KUn = ((d)localObject);
-      return localObject;
-    }
+    return "This continuation is already complete";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     d.d.b.a.c
  * JD-Core Version:    0.7.0.1
  */

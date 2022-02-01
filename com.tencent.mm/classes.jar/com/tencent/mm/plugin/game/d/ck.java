@@ -1,59 +1,72 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class ck
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public String Desc;
   public String Title;
-  public String thg;
+  public String ufb;
+  public String ufg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(41813);
+    AppMethodBeat.i(41805);
     if (paramInt == 0)
     {
       paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.ufg == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: IconURL");
+        AppMethodBeat.o(41805);
+        throw paramVarArgs;
+      }
+      if (this.ufg != null) {
+        paramVarArgs.d(1, this.ufg);
+      }
       if (this.Title != null) {
-        paramVarArgs.d(1, this.Title);
+        paramVarArgs.d(2, this.Title);
       }
-      if (this.thg != null) {
-        paramVarArgs.d(2, this.thg);
+      if (this.ufb != null) {
+        paramVarArgs.d(3, this.ufb);
       }
-      if (this.Desc != null) {
-        paramVarArgs.d(3, this.Desc);
-      }
-      AppMethodBeat.o(41813);
+      AppMethodBeat.o(41805);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label334;
+      if (this.ufg == null) {
+        break label382;
       }
     }
-    label334:
-    for (int i = f.a.a.b.b.a.e(1, this.Title) + 0;; i = 0)
+    label382:
+    for (int i = f.a.a.b.b.a.e(1, this.ufg) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.thg != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.thg);
+      if (this.Title != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Title);
       }
       i = paramInt;
-      if (this.Desc != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Desc);
+      if (this.ufb != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ufb);
       }
-      AppMethodBeat.o(41813);
+      AppMethodBeat.o(41805);
       return i;
       if (paramInt == 2)
       {
         paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
-        AppMethodBeat.o(41813);
+        if (this.ufg == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: IconURL");
+          AppMethodBeat.o(41805);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(41805);
         return 0;
       }
       if (paramInt == 3)
@@ -63,29 +76,29 @@ public final class ck
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(41813);
+          AppMethodBeat.o(41805);
           return -1;
         case 1: 
-          localck.Title = locala.LVo.readString();
-          AppMethodBeat.o(41813);
+          localck.ufg = locala.NPN.readString();
+          AppMethodBeat.o(41805);
           return 0;
         case 2: 
-          localck.thg = locala.LVo.readString();
-          AppMethodBeat.o(41813);
+          localck.Title = locala.NPN.readString();
+          AppMethodBeat.o(41805);
           return 0;
         }
-        localck.Desc = locala.LVo.readString();
-        AppMethodBeat.o(41813);
+        localck.ufb = locala.NPN.readString();
+        AppMethodBeat.o(41805);
         return 0;
       }
-      AppMethodBeat.o(41813);
+      AppMethodBeat.o(41805);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.ck
  * JD-Core Version:    0.7.0.1
  */

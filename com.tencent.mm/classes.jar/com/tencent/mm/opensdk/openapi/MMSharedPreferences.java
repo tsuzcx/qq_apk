@@ -7,10 +7,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.c.a;
-import com.tencent.mm.opensdk.utils.c.b;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -44,18 +43,21 @@ class MMSharedPreferences
     {
       try
       {
-        Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, "key = ?", new String[] { paramString }, null);
-        if (localCursor == null)
+        Object localObject = this.cr;
+        Uri localUri = com.tencent.mm.opensdk.utils.a.a;
+        String[] arrayOfString = this.columns;
+        localObject = ((ContentResolver)localObject).query(localUri, arrayOfString, "key = ?", new String[] { paramString }, null);
+        if (localObject == null)
         {
           AppMethodBeat.o(3769);
           return null;
         }
-        int i = localCursor.getColumnIndex("type");
-        int j = localCursor.getColumnIndex("value");
-        if (localCursor.moveToFirst())
+        int i = ((Cursor)localObject).getColumnIndex("type");
+        int j = ((Cursor)localObject).getColumnIndex("value");
+        if (((Cursor)localObject).moveToFirst())
         {
-          paramString = c.a.a(localCursor.getInt(i), localCursor.getString(j));
-          localCursor.close();
+          paramString = com.tencent.mm.opensdk.channel.a.a.a(((Cursor)localObject).getInt(i), ((Cursor)localObject).getString(j));
+          ((Cursor)localObject).close();
           AppMethodBeat.o(3769);
           return paramString;
         }
@@ -98,7 +100,7 @@ class MMSharedPreferences
     AppMethodBeat.i(3770);
     try
     {
-      Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, null, null, null);
+      Cursor localCursor = this.cr.query(com.tencent.mm.opensdk.utils.a.a, this.columns, null, null, null);
       if (localCursor == null)
       {
         AppMethodBeat.o(3770);
@@ -109,7 +111,7 @@ class MMSharedPreferences
       int k = localCursor.getColumnIndex("value");
       while (localCursor.moveToNext())
       {
-        Object localObject = c.a.a(localCursor.getInt(j), localCursor.getString(k));
+        Object localObject = com.tencent.mm.opensdk.channel.a.a.a(localCursor.getInt(j), localCursor.getString(k));
         this.values.put(localCursor.getString(i), localObject);
       }
       localHashMap.close();
@@ -130,70 +132,80 @@ class MMSharedPreferences
   {
     AppMethodBeat.i(3775);
     paramString = getValue(paramString);
-    if ((paramString != null) && ((paramString instanceof Boolean)))
+    boolean bool = paramBoolean;
+    if (paramString != null)
     {
-      paramBoolean = ((Boolean)paramString).booleanValue();
-      AppMethodBeat.o(3775);
-      return paramBoolean;
+      bool = paramBoolean;
+      if ((paramString instanceof Boolean)) {
+        bool = ((Boolean)paramString).booleanValue();
+      }
     }
     AppMethodBeat.o(3775);
-    return paramBoolean;
+    return bool;
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
     AppMethodBeat.i(3774);
     paramString = getValue(paramString);
-    if ((paramString != null) && ((paramString instanceof Float)))
+    float f = paramFloat;
+    if (paramString != null)
     {
-      paramFloat = ((Float)paramString).floatValue();
-      AppMethodBeat.o(3774);
-      return paramFloat;
+      f = paramFloat;
+      if ((paramString instanceof Float)) {
+        f = ((Float)paramString).floatValue();
+      }
     }
     AppMethodBeat.o(3774);
-    return paramFloat;
+    return f;
   }
   
   public int getInt(String paramString, int paramInt)
   {
     AppMethodBeat.i(3772);
     paramString = getValue(paramString);
-    if ((paramString != null) && ((paramString instanceof Integer)))
+    int i = paramInt;
+    if (paramString != null)
     {
-      paramInt = ((Integer)paramString).intValue();
-      AppMethodBeat.o(3772);
-      return paramInt;
+      i = paramInt;
+      if ((paramString instanceof Integer)) {
+        i = ((Integer)paramString).intValue();
+      }
     }
     AppMethodBeat.o(3772);
-    return paramInt;
+    return i;
   }
   
   public long getLong(String paramString, long paramLong)
   {
     AppMethodBeat.i(3773);
     paramString = getValue(paramString);
-    if ((paramString != null) && ((paramString instanceof Long)))
+    long l = paramLong;
+    if (paramString != null)
     {
-      paramLong = ((Long)paramString).longValue();
-      AppMethodBeat.o(3773);
-      return paramLong;
+      l = paramLong;
+      if ((paramString instanceof Long)) {
+        l = ((Long)paramString).longValue();
+      }
     }
     AppMethodBeat.o(3773);
-    return paramLong;
+    return l;
   }
   
   public String getString(String paramString1, String paramString2)
   {
     AppMethodBeat.i(3771);
-    paramString1 = getValue(paramString1);
-    if ((paramString1 != null) && ((paramString1 instanceof String)))
+    Object localObject = getValue(paramString1);
+    paramString1 = paramString2;
+    if (localObject != null)
     {
-      paramString1 = (String)paramString1;
-      AppMethodBeat.o(3771);
-      return paramString1;
+      paramString1 = paramString2;
+      if ((localObject instanceof String)) {
+        paramString1 = (String)localObject;
+      }
     }
     AppMethodBeat.o(3771);
-    return paramString2;
+    return paramString1;
   }
   
   public Set<String> getStringSet(String paramString, Set<String> paramSet)
@@ -237,7 +249,7 @@ class MMSharedPreferences
       ContentValues localContentValues = new ContentValues();
       if (this.clear)
       {
-        this.cr.delete(c.b.CONTENT_URI, null, null);
+        this.cr.delete(com.tencent.mm.opensdk.utils.a.a, null, null);
         this.clear = false;
       }
       Iterator localIterator = this.remove.iterator();
@@ -245,7 +257,7 @@ class MMSharedPreferences
       while (localIterator.hasNext())
       {
         localObject1 = (String)localIterator.next();
-        this.cr.delete(c.b.CONTENT_URI, "key = ?", new String[] { localObject1 });
+        this.cr.delete(com.tencent.mm.opensdk.utils.a.a, "key = ?", new String[] { localObject1 });
       }
       localIterator = this.values.entrySet().iterator();
       label152:
@@ -268,7 +280,7 @@ class MMSharedPreferences
           if (i == 0) {
             break label332;
           }
-          this.cr.update(c.b.CONTENT_URI, localContentValues, "key = ?", new String[] { (String)((Map.Entry)localObject1).getKey() });
+          this.cr.update(com.tencent.mm.opensdk.utils.a.a, localContentValues, "key = ?", new String[] { (String)((Map.Entry)localObject1).getKey() });
           break;
           if ((localObject2 instanceof Integer))
           {

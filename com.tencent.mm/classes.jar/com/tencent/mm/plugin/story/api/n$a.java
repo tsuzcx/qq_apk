@@ -7,17 +7,17 @@ public enum n$a
   static
   {
     AppMethodBeat.i(118419);
-    zqc = new a("SelfTabGallery", 0);
-    zqd = new a("SelfGallery", 1);
-    zqe = new a("ProfileGallery", 2);
-    zqf = new a("SingleGallery", 3);
-    zqg = new a("MultiUserGallery", 4);
-    zqh = new a("HistoryGallery", 5);
-    zqi = new a("AllFriendGallery", 6);
-    zqj = new a("FavSelfStoryGallery", 7);
-    zqk = new a("FavOtherStoryGallery", 8);
-    zql = new a("FavSelfStoryGalleryMulti", 9);
-    zqm = new a[] { zqc, zqd, zqe, zqf, zqg, zqh, zqi, zqj, zqk, zql };
+    AHW = new a("SelfTabGallery", 0);
+    AHX = new a("SelfGallery", 1);
+    AHY = new a("ProfileGallery", 2);
+    AHZ = new a("SingleGallery", 3);
+    AIa = new a("MultiUserGallery", 4);
+    AIb = new a("HistoryGallery", 5);
+    AIc = new a("AllFriendGallery", 6);
+    AId = new a("FavSelfStoryGallery", 7);
+    AIe = new a("FavOtherStoryGallery", 8);
+    AIf = new a("FavSelfStoryGalleryMulti", 9);
+    AIg = new a[] { AHW, AHX, AHY, AHZ, AIa, AIb, AIc, AId, AIe, AIf };
     AppMethodBeat.o(118419);
   }
   

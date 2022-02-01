@@ -2,11 +2,10 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.ani;
-import com.tencent.mm.protocal.protobuf.aom;
+import com.tencent.mm.protocal.protobuf.aqy;
 import com.tencent.mm.sdk.e.c;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -14,51 +13,58 @@ import java.util.Map;
 public abstract class cg
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_RedDot_tips_id ON FinderRedDotInfo(tipsId)", "CREATE INDEX IF NOT EXISTS Finder_RedDot_revoke_id ON FinderRedDotInfo(revokeId)" };
-  private static final int eHT = "tipsId".hashCode();
-  private static final int eHU = "ctrInfo".hashCode();
-  private static final int eHV = "revokeId".hashCode();
-  private static final int eHW = "tipsShowEntranceExtInfo".hashCode();
-  private static final int euN = "time".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int eEB = "scene".hashCode();
+  private static final int eQz = "showTips".hashCode();
+  private static final int eVj = "localId".hashCode();
+  private static final int eYO = "likeAction".hashCode();
+  private static final int eYP = "contextObj".hashCode();
+  private static final int eYQ = "isPrivate".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eHP = true;
-  private boolean eHQ = true;
-  private boolean eHR = true;
-  private boolean eHS = true;
-  private boolean euu = true;
-  public ani field_ctrInfo;
-  public String field_revokeId;
-  public long field_time;
-  public String field_tipsId;
-  public aom field_tipsShowEntranceExtInfo;
+  private boolean eEz = true;
+  private boolean eQk = true;
+  private boolean eVh = true;
+  private boolean eYL = true;
+  private boolean eYM = true;
+  private boolean eYN = true;
+  public aqy field_contextObj;
+  public boolean field_isPrivate;
+  public int field_likeAction;
+  public long field_localId;
+  public int field_scene;
+  public boolean field_showTips;
   
-  public static c.a Th()
+  public static c.a Vv()
   {
     c.a locala = new c.a();
-    locala.GvF = new Field[5];
-    locala.columns = new String[6];
+    locala.IhA = new Field[6];
+    locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "tipsId";
-    locala.GvH.put("tipsId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" tipsId TEXT PRIMARY KEY ");
+    locala.columns[0] = "localId";
+    locala.IhC.put("localId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" localId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.GvG = "tipsId";
-    locala.columns[1] = "ctrInfo";
-    locala.GvH.put("ctrInfo", "BLOB");
-    localStringBuilder.append(" ctrInfo BLOB");
+    locala.IhB = "localId";
+    locala.columns[1] = "likeAction";
+    locala.IhC.put("likeAction", "INTEGER");
+    localStringBuilder.append(" likeAction INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "time";
-    locala.GvH.put("time", "LONG");
-    localStringBuilder.append(" time LONG");
+    locala.columns[2] = "scene";
+    locala.IhC.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "revokeId";
-    locala.GvH.put("revokeId", "TEXT");
-    localStringBuilder.append(" revokeId TEXT");
+    locala.columns[3] = "showTips";
+    locala.IhC.put("showTips", "INTEGER");
+    localStringBuilder.append(" showTips INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "tipsShowEntranceExtInfo";
-    locala.GvH.put("tipsShowEntranceExtInfo", "BLOB");
-    localStringBuilder.append(" tipsShowEntranceExtInfo BLOB");
-    locala.columns[5] = "rowid";
+    locala.columns[4] = "contextObj";
+    locala.IhC.put("contextObj", "BLOB");
+    localStringBuilder.append(" contextObj BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "isPrivate";
+    locala.IhC.put("isPrivate", "INTEGER");
+    localStringBuilder.append(" isPrivate INTEGER");
+    locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
     return locala;
   }
@@ -76,11 +82,11 @@ public abstract class cg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eHT != k) {
+      if (eVj != k) {
         break label65;
       }
-      this.field_tipsId = paramCursor.getString(i);
-      this.eHP = true;
+      this.field_localId = paramCursor.getLong(i);
+      this.eVh = true;
     }
     for (;;)
     {
@@ -88,38 +94,56 @@ public abstract class cg
       break label20;
       break;
       label65:
-      if (eHU == k) {
-        try
+      if (eYO == k)
+      {
+        this.field_likeAction = paramCursor.getInt(i);
+      }
+      else if (eEB == k)
+      {
+        this.field_scene = paramCursor.getInt(i);
+      }
+      else
+      {
+        boolean bool;
+        if (eQz == k)
         {
-          byte[] arrayOfByte1 = paramCursor.getBlob(i);
-          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
-            continue;
+          if (paramCursor.getInt(i) != 0) {}
+          for (bool = true;; bool = false)
+          {
+            this.field_showTips = bool;
+            break;
           }
-          this.field_ctrInfo = ((ani)new ani().parseFrom(arrayOfByte1));
         }
-        catch (IOException localIOException1)
+        if (eYP == k)
         {
-          ac.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException1.getMessage());
-        }
-      } else if (euN == k) {
-        this.field_time = paramCursor.getLong(i);
-      } else if (eHV == k) {
-        this.field_revokeId = paramCursor.getString(i);
-      } else if (eHW == k) {
-        try
-        {
-          byte[] arrayOfByte2 = paramCursor.getBlob(i);
-          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
-            continue;
+          try
+          {
+            byte[] arrayOfByte = paramCursor.getBlob(i);
+            if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+              continue;
+            }
+            this.field_contextObj = ((aqy)new aqy().parseFrom(arrayOfByte));
           }
-          this.field_tipsShowEntranceExtInfo = ((aom)new aom().parseFrom(arrayOfByte2));
+          catch (IOException localIOException)
+          {
+            ad.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
+          }
         }
-        catch (IOException localIOException2)
+        else
         {
-          ac.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException2.getMessage());
+          if (eYQ == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_isPrivate = bool;
+              break;
+            }
+          }
+          if (rowid_HASHCODE == k) {
+            this.systemRowid = paramCursor.getLong(i);
+          }
         }
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -127,46 +151,42 @@ public abstract class cg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eHP) {
-      localContentValues.put("tipsId", this.field_tipsId);
+    if (this.eVh) {
+      localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if ((this.eHQ) && (this.field_ctrInfo != null)) {}
+    if (this.eYL) {
+      localContentValues.put("likeAction", Integer.valueOf(this.field_likeAction));
+    }
+    if (this.eEz) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    }
+    if (this.eQk) {
+      localContentValues.put("showTips", Boolean.valueOf(this.field_showTips));
+    }
+    if ((this.eYM) && (this.field_contextObj != null)) {}
     try
     {
-      localContentValues.put("ctrInfo", this.field_ctrInfo.toByteArray());
-      if (this.euu) {
-        localContentValues.put("time", Long.valueOf(this.field_time));
+      localContentValues.put("contextObj", this.field_contextObj.toByteArray());
+      if (this.eYN) {
+        localContentValues.put("isPrivate", Boolean.valueOf(this.field_isPrivate));
       }
-      if (this.eHR) {
-        localContentValues.put("revokeId", this.field_revokeId);
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
       }
-      if ((!this.eHS) || (this.field_tipsShowEntranceExtInfo == null)) {}
+      return localContentValues;
     }
-    catch (IOException localIOException1)
+    catch (IOException localIOException)
     {
-      try
+      for (;;)
       {
-        localContentValues.put("tipsShowEntranceExtInfo", this.field_tipsShowEntranceExtInfo.toByteArray());
-        if (this.systemRowid > 0L) {
-          localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-        }
-        return localContentValues;
-        localIOException1 = localIOException1;
-        ac.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException1.getMessage());
-      }
-      catch (IOException localIOException2)
-      {
-        for (;;)
-        {
-          ac.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException2.getMessage());
-        }
+        ad.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.cg
  * JD-Core Version:    0.7.0.1
  */

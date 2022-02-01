@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.sns.b;
 
 public final class o
 {
-  public static m xLZ;
-  public static g xMa;
-  public static f xMb;
-  public static e xMc;
-  public static l xMd;
-  public static k xMe;
-  public static i xMf;
-  public static h xMg;
+  public static m zbR;
+  public static g zbS;
+  public static f zbT;
+  public static e zbU;
+  public static l zbV;
+  public static k zbW;
+  public static i zbX;
+  public static h zbY;
 }
 
 

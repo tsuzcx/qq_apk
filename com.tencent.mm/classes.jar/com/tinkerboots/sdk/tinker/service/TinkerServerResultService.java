@@ -2,6 +2,7 @@ package com.tinkerboots.sdk.tinker.service;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.tinker.lib.service.DefaultTinkerResultService;
 import com.tencent.tinker.lib.util.b;
 import com.tencent.tinker.loader.shareutil.ShareTinkerLog;
@@ -12,14 +13,18 @@ import java.io.File;
 public class TinkerServerResultService
   extends DefaultTinkerResultService
 {
-  private static boolean KJH = false;
-  private static com.tinkerboots.sdk.tinker.a.a KJI = null;
+  private static boolean MAu = false;
+  private static com.tinkerboots.sdk.tinker.a.a uIZ = null;
   
   static void restartProcess()
   {
     AppMethodBeat.i(3458);
     ShareTinkerLog.v("Tinker.TinkerServerResultService", "app is background now, i can kill quietly", new Object[0]);
-    Process.killProcess(Process.myPid());
+    com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahp(), "com/tinkerboots/sdk/tinker/service/TinkerServerResultService", "restartProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)locala.mq(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tinkerboots/sdk/tinker/service/TinkerServerResultService", "restartProcess", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(3458);
   }
   
@@ -33,19 +38,22 @@ public class TinkerServerResultService
       return;
     }
     ShareTinkerLog.v("Tinker.TinkerServerResultService", "receive result: %s", new Object[] { parama.toString() });
-    b.kY(getApplicationContext());
-    if (parama.deB)
+    b.ll(getApplicationContext());
+    if (uIZ != null) {
+      uIZ.a(parama);
+    }
+    if (parama.dpX)
     {
       ShareTinkerLog.v("Tinker.TinkerServerResultService", "patch success, please restart process", new Object[0]);
-      aa(new File(parama.KqL));
+      ac(new File(parama.MgK));
       if (b(parama))
       {
-        if (KJH)
+        if (MAu)
         {
           ShareTinkerLog.v("Tinker.TinkerServerResultService", "tinker wait screen to restart process", new Object[0]);
           new d.b(getApplicationContext(), new d.a()
           {
-            public final void dom()
+            public final void onScreenOff()
             {
               AppMethodBeat.i(3456);
               TinkerServerResultService.restartProcess();
@@ -70,7 +78,7 @@ public class TinkerServerResultService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tinkerboots.sdk.tinker.service.TinkerServerResultService
  * JD-Core Version:    0.7.0.1
  */

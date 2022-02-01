@@ -1,17 +1,17 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class h
 {
   long beginTime;
-  long cfj;
-  boolean dBE;
+  long cpz;
+  boolean dNR;
   long endTime;
-  long hWA;
-  long hWB;
+  long ipV;
+  long ipW;
   int rtType;
   
   public h() {}
@@ -19,32 +19,32 @@ public final class h
   public h(int paramInt, boolean paramBoolean, long paramLong)
   {
     this.rtType = paramInt;
-    this.dBE = paramBoolean;
-    this.hWA = paramLong;
-    this.hWB = 0L;
+    this.dNR = paramBoolean;
+    this.ipV = paramLong;
+    this.ipW = 0L;
   }
   
-  public final void aIy()
+  public final void aLI()
   {
     AppMethodBeat.i(151079);
-    if (this.hWB == 0L)
+    if (this.ipW == 0L)
     {
-      this.beginTime = bs.eWj();
-      this.cfj = bs.Gn();
+      this.beginTime = bt.flT();
+      this.cpz = bt.HI();
     }
-    this.hWB += 1L;
+    this.ipW += 1L;
     AppMethodBeat.o(151079);
   }
   
-  public final void qp(long paramLong)
+  public final void so(long paramLong)
   {
     AppMethodBeat.i(151080);
-    if (this.hWA == 0L) {
-      this.hWA = paramLong;
+    if (this.ipV == 0L) {
+      this.ipV = paramLong;
     }
-    this.cfj = (bs.Gn() - this.cfj);
-    this.endTime = bs.eWj();
-    ac.d("MicroMsg.MultiSceneStat", "FIN: TIME:" + (this.endTime - this.beginTime) + " datalen:" + this.hWA + " Count:" + this.hWB + " type:" + this.rtType);
+    this.cpz = (bt.HI() - this.cpz);
+    this.endTime = bt.flT();
+    ad.d("MicroMsg.MultiSceneStat", "FIN: TIME:" + (this.endTime - this.beginTime) + " datalen:" + this.ipV + " Count:" + this.ipW + " type:" + this.rtType);
     WatchDogPushReceiver.a(this);
     AppMethodBeat.o(151080);
   }

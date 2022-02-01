@@ -2,61 +2,65 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.aqu;
+import com.tencent.mm.protocal.protobuf.asd;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class cj
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFW;
-  private static final int eIA;
-  private static final int eIB = "connectState".hashCode();
-  private static final int eIC = "expiredTime".hashCode();
-  private static final int eID = "wifiType".hashCode();
-  private static final int eIE = "action".hashCode();
-  private static final int eIF = "showUrl".hashCode();
-  private static final int eIG = "showWordEn".hashCode();
-  private static final int eIH = "showWordCn".hashCode();
-  private static final int eII = "showWordTw".hashCode();
-  private static final int eIJ = "mac".hashCode();
-  private static final int eIK = "verifyResult".hashCode();
-  private static final int eIz = "ssidmd5".hashCode();
-  private static final int erd;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_RedDot_tips_id ON FinderRedDotInfo(tipsId)", "CREATE INDEX IF NOT EXISTS Finder_RedDot_revoke_id ON FinderRedDotInfo(revokeId)" };
+  private static final int eMk = "time".hashCode();
+  private static final int eZZ = "tipsId".hashCode();
+  private static final int faa = "ctrInfo".hashCode();
+  private static final int fab = "revokeId".hashCode();
+  private static final int fac = "tipsShowEntranceExtInfo".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFt = true;
-  private boolean eIn = true;
-  private boolean eIo = true;
-  private boolean eIp = true;
-  private boolean eIq = true;
-  private boolean eIr = true;
-  private boolean eIs = true;
-  private boolean eIt = true;
-  private boolean eIu = true;
-  private boolean eIv = true;
-  private boolean eIw = true;
-  private boolean eIx = true;
-  private boolean eIy = true;
-  private boolean eqZ = true;
-  public int field_action;
-  public int field_connectState;
-  public long field_expiredTime;
-  public String field_mac;
-  public String field_mid;
-  public String field_showUrl;
-  public String field_showWordCn;
-  public String field_showWordEn;
-  public String field_showWordTw;
-  public String field_ssid;
-  public String field_ssidmd5;
-  public String field_url;
-  public int field_verifyResult;
-  public int field_wifiType;
+  private boolean eLR = true;
+  private boolean eZV = true;
+  private boolean eZW = true;
+  private boolean eZX = true;
+  private boolean eZY = true;
+  public aqu field_ctrInfo;
+  public String field_revokeId;
+  public long field_time;
+  public String field_tipsId;
+  public asd field_tipsShowEntranceExtInfo;
   
-  static
+  public static c.a Vv()
   {
-    eFW = "ssid".hashCode();
-    eIA = "mid".hashCode();
-    erd = "url".hashCode();
+    c.a locala = new c.a();
+    locala.IhA = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "tipsId";
+    locala.IhC.put("tipsId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" tipsId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.IhB = "tipsId";
+    locala.columns[1] = "ctrInfo";
+    locala.IhC.put("ctrInfo", "BLOB");
+    localStringBuilder.append(" ctrInfo BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "time";
+    locala.IhC.put("time", "LONG");
+    localStringBuilder.append(" time LONG");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "revokeId";
+    locala.IhC.put("revokeId", "TEXT");
+    localStringBuilder.append(" revokeId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "tipsShowEntranceExtInfo";
+    locala.IhC.put("tipsShowEntranceExtInfo", "BLOB");
+    localStringBuilder.append(" tipsShowEntranceExtInfo BLOB");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -65,18 +69,18 @@ public abstract class cj
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eIz != k) {
+      if (eZZ != k) {
         break label65;
       }
-      this.field_ssidmd5 = paramCursor.getString(i);
-      this.eIn = true;
+      this.field_tipsId = paramCursor.getString(i);
+      this.eZV = true;
     }
     for (;;)
     {
@@ -84,32 +88,36 @@ public abstract class cj
       break label20;
       break;
       label65:
-      if (eFW == k) {
-        this.field_ssid = paramCursor.getString(i);
-      } else if (eIA == k) {
-        this.field_mid = paramCursor.getString(i);
-      } else if (erd == k) {
-        this.field_url = paramCursor.getString(i);
-      } else if (eIB == k) {
-        this.field_connectState = paramCursor.getInt(i);
-      } else if (eIC == k) {
-        this.field_expiredTime = paramCursor.getLong(i);
-      } else if (eID == k) {
-        this.field_wifiType = paramCursor.getInt(i);
-      } else if (eIE == k) {
-        this.field_action = paramCursor.getInt(i);
-      } else if (eIF == k) {
-        this.field_showUrl = paramCursor.getString(i);
-      } else if (eIG == k) {
-        this.field_showWordEn = paramCursor.getString(i);
-      } else if (eIH == k) {
-        this.field_showWordCn = paramCursor.getString(i);
-      } else if (eII == k) {
-        this.field_showWordTw = paramCursor.getString(i);
-      } else if (eIJ == k) {
-        this.field_mac = paramCursor.getString(i);
-      } else if (eIK == k) {
-        this.field_verifyResult = paramCursor.getInt(i);
+      if (faa == k) {
+        try
+        {
+          byte[] arrayOfByte1 = paramCursor.getBlob(i);
+          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+            continue;
+          }
+          this.field_ctrInfo = ((aqu)new aqu().parseFrom(arrayOfByte1));
+        }
+        catch (IOException localIOException1)
+        {
+          ad.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException1.getMessage());
+        }
+      } else if (eMk == k) {
+        this.field_time = paramCursor.getLong(i);
+      } else if (fab == k) {
+        this.field_revokeId = paramCursor.getString(i);
+      } else if (fac == k) {
+        try
+        {
+          byte[] arrayOfByte2 = paramCursor.getBlob(i);
+          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
+            continue;
+          }
+          this.field_tipsShowEntranceExtInfo = ((asd)new asd().parseFrom(arrayOfByte2));
+        }
+        catch (IOException localIOException2)
+        {
+          ad.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException2.getMessage());
+        }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -119,57 +127,46 @@ public abstract class cj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eIn) {
-      localContentValues.put("ssidmd5", this.field_ssidmd5);
+    if (this.eZV) {
+      localContentValues.put("tipsId", this.field_tipsId);
     }
-    if (this.eFt) {
-      localContentValues.put("ssid", this.field_ssid);
+    if ((this.eZW) && (this.field_ctrInfo != null)) {}
+    try
+    {
+      localContentValues.put("ctrInfo", this.field_ctrInfo.toByteArray());
+      if (this.eLR) {
+        localContentValues.put("time", Long.valueOf(this.field_time));
+      }
+      if (this.eZX) {
+        localContentValues.put("revokeId", this.field_revokeId);
+      }
+      if ((!this.eZY) || (this.field_tipsShowEntranceExtInfo == null)) {}
     }
-    if (this.eIo) {
-      localContentValues.put("mid", this.field_mid);
+    catch (IOException localIOException1)
+    {
+      try
+      {
+        localContentValues.put("tipsShowEntranceExtInfo", this.field_tipsShowEntranceExtInfo.toByteArray());
+        if (this.systemRowid > 0L) {
+          localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+        }
+        return localContentValues;
+        localIOException1 = localIOException1;
+        ad.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException1.getMessage());
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.SDK.BaseFinderRedDotInfo", localIOException2.getMessage());
+        }
+      }
     }
-    if (this.eqZ) {
-      localContentValues.put("url", this.field_url);
-    }
-    if (this.eIp) {
-      localContentValues.put("connectState", Integer.valueOf(this.field_connectState));
-    }
-    if (this.eIq) {
-      localContentValues.put("expiredTime", Long.valueOf(this.field_expiredTime));
-    }
-    if (this.eIr) {
-      localContentValues.put("wifiType", Integer.valueOf(this.field_wifiType));
-    }
-    if (this.eIs) {
-      localContentValues.put("action", Integer.valueOf(this.field_action));
-    }
-    if (this.eIt) {
-      localContentValues.put("showUrl", this.field_showUrl);
-    }
-    if (this.eIu) {
-      localContentValues.put("showWordEn", this.field_showWordEn);
-    }
-    if (this.eIv) {
-      localContentValues.put("showWordCn", this.field_showWordCn);
-    }
-    if (this.eIw) {
-      localContentValues.put("showWordTw", this.field_showWordTw);
-    }
-    if (this.eIx) {
-      localContentValues.put("mac", this.field_mac);
-    }
-    if (this.eIy) {
-      localContentValues.put("verifyResult", Integer.valueOf(this.field_verifyResult));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.cj
  * JD-Core Version:    0.7.0.1
  */

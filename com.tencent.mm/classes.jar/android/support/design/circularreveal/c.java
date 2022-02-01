@@ -7,9 +7,9 @@ import android.util.Property;
 public abstract interface c
   extends b.a
 {
-  public abstract void bc();
+  public abstract void bs();
   
-  public abstract void bd();
+  public abstract void bt();
   
   public abstract int getCircularRevealScrimColor();
   
@@ -24,14 +24,14 @@ public abstract interface c
   public static final class a
     implements TypeEvaluator<c.d>
   {
-    public static final TypeEvaluator<c.d> hS = new a();
-    private final c.d hO = new c.d((byte)0);
+    public static final TypeEvaluator<c.d> jN = new a();
+    private final c.d jJ = new c.d((byte)0);
   }
   
   public static final class b
     extends Property<c, c.d>
   {
-    public static final Property<c, c.d> hT = new b("circularReveal");
+    public static final Property<c, c.d> jO = new b("circularReveal");
     
     private b(String paramString)
     {
@@ -42,7 +42,7 @@ public abstract interface c
   public static final class c
     extends Property<c, Integer>
   {
-    public static final Property<c, Integer> hU = new c("circularRevealScrimColor");
+    public static final Property<c, Integer> jP = new c("circularRevealScrimColor");
     
     private c(String paramString)
     {
@@ -82,7 +82,7 @@ public abstract interface c
       b(paramd.centerX, paramd.centerY, paramd.radius);
     }
     
-    public final boolean bj()
+    public final boolean isInvalid()
     {
       return this.radius == 3.4028235E+38F;
     }

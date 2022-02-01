@@ -5,17 +5,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a.ae;
-import d.g.b.k;
+import com.tencent.mm.emoji.a.a.ai;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/view/popview/SmileyPopupHelper;", "Lcom/tencent/mm/view/popview/BasePopupHelper;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "lastAnchor", "Landroid/view/View;", "smileyPopView", "Lcom/tencent/mm/view/popview/AbstractPopView;", "windowManager", "Landroid/view/WindowManager;", "onLongPress", "", "anchor", "item", "", "onMove", "", "onTouchEnd", "updatePopupView", "plugin-emojisdk_release"})
 public final class d
   extends a
 {
-  private AbstractPopView JBU;
-  private View JBy;
+  private View LuF;
+  private AbstractPopView Lvb;
   private final Context context;
   private final WindowManager windowManager;
   
@@ -37,15 +37,15 @@ public final class d
   private final void e(View paramView, Object paramObject)
   {
     AppMethodBeat.i(184006);
-    if (((paramObject instanceof ae)) && (paramView.isEnabled()))
+    if (((paramObject instanceof ai)) && (paramView.isEnabled()))
     {
       Object localObject;
-      if (this.JBU == null)
+      if (this.Lvb == null)
       {
-        this.JBU = c.b(this.context, paramObject);
+        this.Lvb = c.b(this.context, paramObject);
         WindowManager localWindowManager = this.windowManager;
-        View localView = (View)this.JBU;
-        localObject = this.JBU;
+        View localView = (View)this.Lvb;
+        localObject = this.Lvb;
         if (localObject != null)
         {
           localObject = ((AbstractPopView)localObject).getWindowLayoutParams();
@@ -54,18 +54,18 @@ public final class d
       }
       else
       {
-        localObject = this.JBU;
+        localObject = this.Lvb;
         if (localObject != null) {
           ((AbstractPopView)localObject).setVisibility(0);
         }
-        c.a(this.JBU, paramObject);
-        paramObject = this.JBU;
+        c.a(this.Lvb, paramObject);
+        paramObject = this.Lvb;
         if (paramObject != null) {
-          paramObject.gU(paramView);
+          paramObject.hl(paramView);
         }
         paramObject = this.windowManager;
-        localObject = (View)this.JBU;
-        paramView = this.JBU;
+        localObject = (View)this.Lvb;
+        paramView = this.Lvb;
         if (paramView == null) {
           break label165;
         }
@@ -80,7 +80,7 @@ public final class d
         break;
       }
     }
-    paramView = this.JBU;
+    paramView = this.Lvb;
     if (paramView != null)
     {
       paramView.setVisibility(8);
@@ -93,10 +93,10 @@ public final class d
   public final boolean c(View paramView, Object paramObject)
   {
     AppMethodBeat.i(184004);
-    k.h(paramView, "anchor");
-    if (((paramObject instanceof ae)) && (paramView.isEnabled()))
+    p.h(paramView, "anchor");
+    if (((paramObject instanceof ai)) && (paramView.isEnabled()))
     {
-      this.JBy = paramView;
+      this.LuF = paramView;
       e(paramView, paramObject);
       AppMethodBeat.o(184004);
       return true;
@@ -108,26 +108,26 @@ public final class d
   public final void d(View paramView, Object paramObject)
   {
     AppMethodBeat.i(184005);
-    k.h(paramView, "anchor");
-    if (k.g(this.JBy, paramView))
+    p.h(paramView, "anchor");
+    if (p.i(this.LuF, paramView))
     {
       AppMethodBeat.o(184005);
       return;
     }
-    this.JBy = paramView;
+    this.LuF = paramView;
     e(paramView, paramObject);
     AppMethodBeat.o(184005);
   }
   
-  public final void dLc()
+  public final void dXt()
   {
     AppMethodBeat.i(184007);
-    this.JBy = null;
-    AbstractPopView localAbstractPopView = this.JBU;
+    this.LuF = null;
+    AbstractPopView localAbstractPopView = this.Lvb;
     if (localAbstractPopView != null) {
       this.windowManager.removeView((View)localAbstractPopView);
     }
-    this.JBU = null;
+    this.Lvb = null;
     AppMethodBeat.o(184007);
   }
 }

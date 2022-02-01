@@ -1,19 +1,19 @@
 package d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import java.util.Collections;
 import java.util.Set;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"setOf", "", "T", "element", "(Ljava/lang/Object;)Ljava/util/Set;", "sortedSetOf", "Ljava/util/TreeSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/TreeSet;", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Ljava/util/Comparator;[Ljava/lang/Object;)Ljava/util/TreeSet;", "kotlin-stdlib"}, fOb=1)
+@l(gfA=1, gfx={1, 1, 16}, gfy={""}, gfz={"setOf", "", "T", "element", "(Ljava/lang/Object;)Ljava/util/Set;", "sortedSetOf", "Ljava/util/TreeSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/TreeSet;", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "(Ljava/util/Comparator;[Ljava/lang/Object;)Ljava/util/TreeSet;", "kotlin-stdlib"})
 public class al
 {
   public static final <T> Set<T> setOf(T paramT)
   {
     AppMethodBeat.i(129026);
     paramT = Collections.singleton(paramT);
-    k.g(paramT, "java.util.Collections.singleton(element)");
+    p.g(paramT, "java.util.Collections.singleton(element)");
     AppMethodBeat.o(129026);
     return paramT;
   }

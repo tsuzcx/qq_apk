@@ -2,9 +2,9 @@ package com.tencent.mm.modelrecovery;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.recovery.model.RecoveryStatusItem;
 import com.tencent.recovery.report.RecoveryReporter;
 import java.util.ArrayList;
@@ -16,26 +16,26 @@ import java.util.Set;
 
 public final class c
 {
-  public static HashMap<String, Integer> hQw;
+  public static HashMap<String, Integer> ijK;
   
   static
   {
     AppMethodBeat.i(20597);
     HashMap localHashMap = new HashMap();
-    hQw = localHashMap;
-    localHashMap.put(ai.getPackageName(), Integer.valueOf(0));
-    hQw.put(ai.getPackageName() + ":push", Integer.valueOf(20));
-    hQw.put(ai.getPackageName() + ":tools", Integer.valueOf(40));
-    hQw.put(ai.getPackageName() + ":exdevice", Integer.valueOf(60));
-    hQw.put(ai.getPackageName() + ":sandbox", Integer.valueOf(80));
+    ijK = localHashMap;
+    localHashMap.put(aj.getPackageName(), Integer.valueOf(0));
+    ijK.put(aj.getPackageName() + ":push", Integer.valueOf(20));
+    ijK.put(aj.getPackageName() + ":tools", Integer.valueOf(40));
+    ijK.put(aj.getPackageName() + ":exdevice", Integer.valueOf(60));
+    ijK.put(aj.getPackageName() + ":sandbox", Integer.valueOf(80));
     AppMethodBeat.o(20597);
   }
   
-  public static void aGR()
+  public static void aKc()
   {
     AppMethodBeat.i(20594);
-    Object localObject = RecoveryReporter.getItemList(ai.getContext(), "ProcessStatus", RecoveryStatusItem.class);
-    ac.i("MicroMsg.Recovery.WXRecoveryReporter", "reportStatus " + ((List)localObject).size());
+    Object localObject = RecoveryReporter.getItemList(aj.getContext(), "ProcessStatus", RecoveryStatusItem.class);
+    ad.i("MicroMsg.Recovery.WXRecoveryReporter", "reportStatus " + ((List)localObject).size());
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     Iterator localIterator = ((List)localObject).iterator();
@@ -54,11 +54,11 @@ public final class c
           break label252;
         }
         localb = (b)localHashMap2.get(localRecoveryStatusItem.processName);
-        ((a)localObject).fAw += 1;
+        ((a)localObject).fTM += 1;
         if (localRecoveryStatusItem.processStartFlag != 1) {
           break label263;
         }
-        ((a)localObject).hQz += 1;
+        ((a)localObject).ijN += 1;
         i = 0;
         switch (localRecoveryStatusItem.processStage)
         {
@@ -67,7 +67,7 @@ public final class c
       for (;;)
       {
         if (i == 0) {
-          ac.i("MicroMsg.Recovery.WXRecoveryReporter", "recovery statics not set exception");
+          ad.i("MicroMsg.Recovery.WXRecoveryReporter", "recovery statics not set exception");
         }
         localHashMap1.put(localRecoveryStatusItem.processName, localObject);
         localHashMap2.put(localRecoveryStatusItem.processName, localb);
@@ -78,74 +78,74 @@ public final class c
         localb = new b();
         break label142;
         label263:
-        ((a)localObject).hQA += 1;
+        ((a)localObject).ijO += 1;
         break label171;
         if (localRecoveryStatusItem.processStartFlag == 1)
         {
-          localb.hQC += 1;
+          localb.ijQ += 1;
           switch (localRecoveryStatusItem.processStatus)
           {
           default: 
             break;
           case 4096: 
-            localb.hQK += 1;
+            localb.ijY += 1;
             i = 1;
             break;
           case 65536: 
           case 1048576: 
-            localb.hQG += 1;
+            localb.ijU += 1;
             i = 1;
             break;
           }
         }
         else
         {
-          localb.hQD += 1;
+          localb.ijR += 1;
           switch (localRecoveryStatusItem.processStatus)
           {
           default: 
             break;
           case 4096: 
-            localb.hQL += 1;
+            localb.ijZ += 1;
             i = 1;
             break;
           case 65536: 
           case 1048576: 
-            localb.hQH += 1;
+            localb.ijV += 1;
             i = 1;
             continue;
             if (localRecoveryStatusItem.processStartFlag == 1)
             {
-              localb.hQE += 1;
+              localb.ijS += 1;
               switch (localRecoveryStatusItem.processStatus)
               {
               default: 
                 break;
               case 4096: 
-                localb.hQM += 1;
+                localb.ika += 1;
                 i = 1;
                 break;
               case 65536: 
               case 1048576: 
-                localb.hQI += 1;
+                localb.ijW += 1;
                 i = 1;
                 break;
               }
             }
             else
             {
-              localb.hQF += 1;
+              localb.ijT += 1;
               switch (localRecoveryStatusItem.processStatus)
               {
               default: 
                 break;
               case 4096: 
-                localb.hQN += 1;
+                localb.ikb += 1;
                 i = 1;
                 break;
               case 65536: 
               case 1048576: 
-                localb.hQJ += 1;
+                localb.ijX += 1;
                 i = 1;
               }
             }
@@ -156,7 +156,7 @@ public final class c
     }
     b(localHashMap1);
     c(localHashMap2);
-    RecoveryReporter.clearReportFile(ai.getContext(), "ProcessStatus");
+    RecoveryReporter.clearReportFile(aj.getContext(), "ProcessStatus");
     AppMethodBeat.o(20594);
   }
   
@@ -168,65 +168,65 @@ public final class c
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
-      if (hQw.containsKey(((Map.Entry)localObject).getKey()))
+      if (ijK.containsKey(((Map.Entry)localObject).getKey()))
       {
-        int i = ((Integer)hQw.get(((Map.Entry)localObject).getKey())).intValue();
+        int i = ((Integer)ijK.get(((Map.Entry)localObject).getKey())).intValue();
         localObject = (a)((Map.Entry)localObject).getValue();
         IDKey localIDKey;
-        if (((a)localObject).fAw > 0)
+        if (((a)localObject).fTM > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(424);
           localIDKey.SetKey(i + 0);
-          localIDKey.SetValue(((a)localObject).fAw);
+          localIDKey.SetValue(((a)localObject).fTM);
           localArrayList.add(localIDKey);
         }
-        if (((a)localObject).hQx > 0)
+        if (((a)localObject).ijL > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(424);
           localIDKey.SetKey(i + 1);
-          localIDKey.SetValue(((a)localObject).hQx);
+          localIDKey.SetValue(((a)localObject).ijL);
           localArrayList.add(localIDKey);
         }
-        if (((a)localObject).hQy > 0)
+        if (((a)localObject).ijM > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(424);
           localIDKey.SetKey(i + 2);
-          localIDKey.SetValue(((a)localObject).hQy);
+          localIDKey.SetValue(((a)localObject).ijM);
           localArrayList.add(localIDKey);
         }
-        if (((a)localObject).hQz > 0)
+        if (((a)localObject).ijN > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(424);
           localIDKey.SetKey(i + 3);
-          localIDKey.SetValue(((a)localObject).hQz);
+          localIDKey.SetValue(((a)localObject).ijN);
           localArrayList.add(localIDKey);
         }
-        if (((a)localObject).hQA > 0)
+        if (((a)localObject).ijO > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(424);
           localIDKey.SetKey(i + 4);
-          localIDKey.SetValue(((a)localObject).hQA);
+          localIDKey.SetValue(((a)localObject).ijO);
           localArrayList.add(localIDKey);
         }
-        if (((a)localObject).hQB > 0)
+        if (((a)localObject).ijP > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(424);
           localIDKey.SetKey(i + 5);
-          localIDKey.SetValue(((a)localObject).hQB);
+          localIDKey.SetValue(((a)localObject).ijP);
           localArrayList.add(localIDKey);
         }
       }
     }
     if (localArrayList.size() > 0) {
-      h.wUl.b(localArrayList, true);
+      g.yhR.b(localArrayList, true);
     }
-    ac.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery generalObj %s %s", new Object[] { ai.getProcessName(), paramHashMap.toString() });
+    ad.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery generalObj %s %s", new Object[] { aj.getProcessName(), paramHashMap.toString() });
     AppMethodBeat.o(20595);
   }
   
@@ -238,146 +238,146 @@ public final class c
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
-      if (hQw.containsKey(((Map.Entry)localObject).getKey()))
+      if (ijK.containsKey(((Map.Entry)localObject).getKey()))
       {
-        int i = ((Integer)hQw.get(((Map.Entry)localObject).getKey())).intValue();
+        int i = ((Integer)ijK.get(((Map.Entry)localObject).getKey())).intValue();
         localObject = (b)((Map.Entry)localObject).getValue();
         IDKey localIDKey;
-        if (((b)localObject).hQC > 0)
+        if (((b)localObject).ijQ > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 0);
-          localIDKey.SetValue(((b)localObject).hQC);
+          localIDKey.SetValue(((b)localObject).ijQ);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQD > 0)
+        if (((b)localObject).ijR > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 1);
-          localIDKey.SetValue(((b)localObject).hQD);
+          localIDKey.SetValue(((b)localObject).ijR);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQE > 0)
+        if (((b)localObject).ijS > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 2);
-          localIDKey.SetValue(((b)localObject).hQE);
+          localIDKey.SetValue(((b)localObject).ijS);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQF > 0)
+        if (((b)localObject).ijT > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 3);
-          localIDKey.SetValue(((b)localObject).hQF);
+          localIDKey.SetValue(((b)localObject).ijT);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQG > 0)
+        if (((b)localObject).ijU > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 4);
-          localIDKey.SetValue(((b)localObject).hQG);
+          localIDKey.SetValue(((b)localObject).ijU);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQH > 0)
+        if (((b)localObject).ijV > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 5);
-          localIDKey.SetValue(((b)localObject).hQH);
+          localIDKey.SetValue(((b)localObject).ijV);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQI > 0)
+        if (((b)localObject).ijW > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 6);
-          localIDKey.SetValue(((b)localObject).hQI);
+          localIDKey.SetValue(((b)localObject).ijW);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQJ > 0)
+        if (((b)localObject).ijX > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 7);
-          localIDKey.SetValue(((b)localObject).hQJ);
+          localIDKey.SetValue(((b)localObject).ijX);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQK > 0)
+        if (((b)localObject).ijY > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 8);
-          localIDKey.SetValue(((b)localObject).hQK);
+          localIDKey.SetValue(((b)localObject).ijY);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQL > 0)
+        if (((b)localObject).ijZ > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 9);
-          localIDKey.SetValue(((b)localObject).hQL);
+          localIDKey.SetValue(((b)localObject).ijZ);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQM > 0)
+        if (((b)localObject).ika > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 10);
-          localIDKey.SetValue(((b)localObject).hQM);
+          localIDKey.SetValue(((b)localObject).ika);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).hQN > 0)
+        if (((b)localObject).ikb > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 11);
-          localIDKey.SetValue(((b)localObject).hQN);
+          localIDKey.SetValue(((b)localObject).ikb);
           localArrayList.add(localIDKey);
         }
       }
     }
     if (localArrayList.size() > 0) {
-      h.wUl.b(localArrayList, true);
+      g.yhR.b(localArrayList, true);
     }
-    ac.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery statusObj %s %s", new Object[] { ai.getProcessName(), paramHashMap.toString() });
+    ad.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery statusObj %s %s", new Object[] { aj.getProcessName(), paramHashMap.toString() });
     AppMethodBeat.o(20596);
   }
   
   public static final class a
   {
-    public int fAw;
-    public int hQA;
-    public int hQB;
-    public int hQx;
-    public int hQy;
-    public int hQz;
+    public int fTM;
+    public int ijL;
+    public int ijM;
+    public int ijN;
+    public int ijO;
+    public int ijP;
     
     public final String toString()
     {
       AppMethodBeat.i(20592);
       Object localObject = new StringBuffer();
-      if (this.fAw > 0) {
-        ((StringBuffer)localObject).append("totalCount:" + this.fAw + " ");
+      if (this.fTM > 0) {
+        ((StringBuffer)localObject).append("totalCount:" + this.fTM + " ");
       }
-      if (this.hQx > 0) {
-        ((StringBuffer)localObject).append("enterRecoveryCount:" + this.hQx + " ");
+      if (this.ijL > 0) {
+        ((StringBuffer)localObject).append("enterRecoveryCount:" + this.ijL + " ");
       }
-      if (this.hQy > 0) {
-        ((StringBuffer)localObject).append("existRecoveryProcessCount:" + this.hQy + " ");
+      if (this.ijM > 0) {
+        ((StringBuffer)localObject).append("existRecoveryProcessCount:" + this.ijM + " ");
       }
-      if (this.hQz > 0) {
-        ((StringBuffer)localObject).append("foregroundExpCount:" + this.hQz + " ");
+      if (this.ijN > 0) {
+        ((StringBuffer)localObject).append("foregroundExpCount:" + this.ijN + " ");
       }
-      if (this.hQA > 0) {
-        ((StringBuffer)localObject).append("backgroundExpCount:" + this.hQA + " ");
+      if (this.ijO > 0) {
+        ((StringBuffer)localObject).append("backgroundExpCount:" + this.ijO + " ");
       }
-      if (this.hQB > 0) {
-        ((StringBuffer)localObject).append("normalCount:" + this.hQB + " ");
+      if (this.ijP > 0) {
+        ((StringBuffer)localObject).append("normalCount:" + this.ijP + " ");
       }
       localObject = ((StringBuffer)localObject).toString();
       AppMethodBeat.o(20592);
@@ -387,58 +387,58 @@ public final class c
   
   public static final class b
   {
-    public int hQC;
-    public int hQD;
-    public int hQE;
-    public int hQF;
-    public int hQG;
-    public int hQH;
-    public int hQI;
-    public int hQJ;
-    public int hQK;
-    public int hQL;
-    public int hQM;
-    public int hQN;
+    public int ijQ;
+    public int ijR;
+    public int ijS;
+    public int ijT;
+    public int ijU;
+    public int ijV;
+    public int ijW;
+    public int ijX;
+    public int ijY;
+    public int ijZ;
+    public int ika;
+    public int ikb;
     
     public final String toString()
     {
       AppMethodBeat.i(20593);
       Object localObject = new StringBuffer();
-      if (this.hQC > 0) {
-        ((StringBuffer)localObject).append("appForegroundExpCount:" + this.hQC + " ");
+      if (this.ijQ > 0) {
+        ((StringBuffer)localObject).append("appForegroundExpCount:" + this.ijQ + " ");
       }
-      if (this.hQD > 0) {
-        ((StringBuffer)localObject).append("appBackgroundExpCount:" + this.hQD + " ");
+      if (this.ijR > 0) {
+        ((StringBuffer)localObject).append("appBackgroundExpCount:" + this.ijR + " ");
       }
-      if (this.hQE > 0) {
-        ((StringBuffer)localObject).append("componentForegroundExpCount:" + this.hQE + " ");
+      if (this.ijS > 0) {
+        ((StringBuffer)localObject).append("componentForegroundExpCount:" + this.ijS + " ");
       }
-      if (this.hQF > 0) {
-        ((StringBuffer)localObject).append("componentBackgroundExpCount:" + this.hQF + " ");
+      if (this.ijT > 0) {
+        ((StringBuffer)localObject).append("componentBackgroundExpCount:" + this.ijT + " ");
       }
-      if (this.hQG > 0) {
-        ((StringBuffer)localObject).append("appForegroundCrashOrAnrExpCount:" + this.hQG + " ");
+      if (this.ijU > 0) {
+        ((StringBuffer)localObject).append("appForegroundCrashOrAnrExpCount:" + this.ijU + " ");
       }
-      if (this.hQH > 0) {
-        ((StringBuffer)localObject).append("appBackgroundCrashOrAnrExpCount:" + this.hQH + " ");
+      if (this.ijV > 0) {
+        ((StringBuffer)localObject).append("appBackgroundCrashOrAnrExpCount:" + this.ijV + " ");
       }
-      if (this.hQI > 0) {
-        ((StringBuffer)localObject).append("componentForegroundCrashOrAnrExpCount:" + this.hQI + " ");
+      if (this.ijW > 0) {
+        ((StringBuffer)localObject).append("componentForegroundCrashOrAnrExpCount:" + this.ijW + " ");
       }
-      if (this.hQJ > 0) {
-        ((StringBuffer)localObject).append("componentBackgroundCrashOrAnrExpCount:" + this.hQJ + " ");
+      if (this.ijX > 0) {
+        ((StringBuffer)localObject).append("componentBackgroundCrashOrAnrExpCount:" + this.ijX + " ");
       }
-      if (this.hQK > 0) {
-        ((StringBuffer)localObject).append("appForegroundTimeoutExpCount:" + this.hQK + " ");
+      if (this.ijY > 0) {
+        ((StringBuffer)localObject).append("appForegroundTimeoutExpCount:" + this.ijY + " ");
       }
-      if (this.hQL > 0) {
-        ((StringBuffer)localObject).append("appBackgroundTimeoutExpCount:" + this.hQL + " ");
+      if (this.ijZ > 0) {
+        ((StringBuffer)localObject).append("appBackgroundTimeoutExpCount:" + this.ijZ + " ");
       }
-      if (this.hQM > 0) {
-        ((StringBuffer)localObject).append("componentForegroundTimeoutExpCount:" + this.hQM + " ");
+      if (this.ika > 0) {
+        ((StringBuffer)localObject).append("componentForegroundTimeoutExpCount:" + this.ika + " ");
       }
-      if (this.hQN > 0) {
-        ((StringBuffer)localObject).append("componentBackgroundTimeoutExpCount:" + this.hQN + " ");
+      if (this.ikb > 0) {
+        ((StringBuffer)localObject).append("componentBackgroundTimeoutExpCount:" + this.ikb + " ");
       }
       localObject = ((StringBuffer)localObject).toString();
       AppMethodBeat.o(20593);
@@ -448,7 +448,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.story.f.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.b.a.eq;
-import com.tencent.mm.model.ce;
+import com.tencent.mm.g.b.a.fp;
+import com.tencent.mm.model.cf;
 import com.tencent.mm.plugin.sight.base.e;
 import com.tencent.mm.plugin.story.e.a.a;
 import com.tencent.mm.plugin.story.e.b;
@@ -13,18 +13,20 @@ import com.tencent.mm.plugin.story.f.q;
 import com.tencent.mm.plugin.story.f.q.a;
 import com.tencent.mm.plugin.story.i.a.d;
 import com.tencent.mm.plugin.story.i.h;
+import com.tencent.mm.plugin.story.i.k;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.protocal.protobuf.cna;
-import com.tencent.mm.protocal.protobuf.crm;
-import com.tencent.mm.protocal.protobuf.ddp;
-import com.tencent.mm.protocal.protobuf.ddx;
-import com.tencent.mm.protocal.protobuf.ddy;
-import com.tencent.mm.protocal.protobuf.ddz;
-import com.tencent.mm.protocal.protobuf.def;
-import com.tencent.mm.protocal.protobuf.dep;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.protocal.protobuf.bxm;
+import com.tencent.mm.protocal.protobuf.csd;
+import com.tencent.mm.protocal.protobuf.cwt;
+import com.tencent.mm.protocal.protobuf.djc;
+import com.tencent.mm.protocal.protobuf.djk;
+import com.tencent.mm.protocal.protobuf.djl;
+import com.tencent.mm.protocal.protobuf.djm;
+import com.tencent.mm.protocal.protobuf.djs;
+import com.tencent.mm.protocal.protobuf.dkc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.p;
 import d.v;
 import java.nio.charset.Charset;
 import java.util.Collection;
@@ -33,48 +35,48 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/story/model/upload/UploadPackHelper;", "", "()V", "extInfo", "Lcom/tencent/mm/protocal/protobuf/MMSightExtInfo;", "postInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyObj", "Lcom/tencent/mm/protocal/protobuf/StoryObject;", "timelineInfo", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "checkToCreateDir", "", "newVideoPath", "", "commit", "", "createStory", "", "taskId", "thumbPath", "path", "videoMd5", "setBlackUserList", "blackList", "", "setEditorData", "editorInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "setFavorite", "favorite", "setGroupUserList", "groupList", "setImageVideo", "isImageVideo", "setLocation", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setPublishObjId", "publishObjId", "setScope", "scope", "setSightExtInfo", "Companion", "plugin-story_release"})
+@d.l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/story/model/upload/UploadPackHelper;", "", "()V", "extInfo", "Lcom/tencent/mm/protocal/protobuf/MMSightExtInfo;", "postInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaPostInfo;", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyObj", "Lcom/tencent/mm/protocal/protobuf/StoryObject;", "timelineInfo", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "checkToCreateDir", "", "newVideoPath", "", "commit", "", "createStory", "", "taskId", "thumbPath", "path", "videoMd5", "setBlackUserList", "blackList", "", "setEditorData", "editorInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "setFavorite", "favorite", "setGroupUserList", "groupList", "setImageVideo", "isImageVideo", "setLocation", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setPublishObjId", "publishObjId", "setScope", "scope", "setSightExtInfo", "Companion", "plugin-story_release"})
 public final class d
 {
+  public static final d.a AOr;
   private static final String TAG = "MicroMsg.StoryUploadPackHelper";
-  private static final Pattern iYL;
-  public static final d.a zwv;
-  private bsz yBE;
-  private com.tencent.mm.plugin.story.i.j zwd;
-  private ddz zws;
-  private dep zwt;
-  private def zwu;
+  private static final Pattern jrU;
+  private com.tencent.mm.plugin.story.i.j ANZ;
+  private djm AOo;
+  private dkc AOp;
+  private djs AOq;
+  private bxm zSY;
   
   static
   {
     AppMethodBeat.i(119130);
-    zwv = new d.a((byte)0);
+    AOr = new d.a((byte)0);
     TAG = "MicroMsg.StoryUploadPackHelper";
-    iYL = Pattern.compile("(\n){3,}");
+    jrU = Pattern.compile("(\n){3,}");
     AppMethodBeat.o(119130);
   }
   
   public d()
   {
     AppMethodBeat.i(119129);
-    this.zwd = new com.tencent.mm.plugin.story.i.j();
-    this.zwu = new def();
-    this.zwd.setPostWaiting();
-    Object localObject1 = this.zwd;
-    Object localObject2 = com.tencent.mm.plugin.story.i.a.zBQ;
-    int i = com.tencent.mm.plugin.story.i.a.dYi();
-    localObject2 = com.tencent.mm.plugin.story.i.a.zBQ;
-    ((com.tencent.mm.plugin.story.i.j)localObject1).Pb(i | com.tencent.mm.plugin.story.i.a.dYk());
-    localObject1 = this.zwd;
-    localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
-    ((com.tencent.mm.plugin.story.i.j)localObject1).field_userName = j.b.dHx();
-    this.zwd.field_createTime = ce.azK();
-    this.zws = new ddz();
-    this.yBE = new bsz();
-    localObject1 = this.zws;
+    this.ANZ = new com.tencent.mm.plugin.story.i.j();
+    this.AOq = new djs();
+    this.ANZ.setPostWaiting();
+    Object localObject1 = this.ANZ;
+    Object localObject2 = com.tencent.mm.plugin.story.i.a.ATp;
+    int i = com.tencent.mm.plugin.story.i.a.ekx();
+    localObject2 = com.tencent.mm.plugin.story.i.a.ATp;
+    ((com.tencent.mm.plugin.story.i.j)localObject1).QJ(i | com.tencent.mm.plugin.story.i.a.ekz());
+    localObject1 = this.ANZ;
+    localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
+    ((com.tencent.mm.plugin.story.i.j)localObject1).field_userName = j.b.dTJ();
+    this.ANZ.field_createTime = cf.aCN();
+    this.AOo = new djm();
+    this.zSY = new bxm();
+    localObject1 = this.AOo;
     localObject2 = new StringBuilder();
-    Object localObject3 = com.tencent.mm.plugin.story.f.j.zsh;
-    localObject2 = j.b.dHx() + bs.Gn() + ce.azI();
+    Object localObject3 = com.tencent.mm.plugin.story.f.j.AKb;
+    localObject2 = j.b.dTJ() + bt.HI() + cf.aCL();
     localObject3 = d.n.d.UTF_8;
     if (localObject2 == null)
     {
@@ -83,67 +85,67 @@ public final class d
       throw ((Throwable)localObject1);
     }
     localObject2 = ((String)localObject2).getBytes((Charset)localObject3);
-    d.g.b.k.g(localObject2, "(this as java.lang.String).getBytes(charset)");
-    ((ddz)localObject1).hkN = g.getMessageDigest((byte[])localObject2);
-    localObject1 = q.zsy;
-    this.zwt = q.a.dVY();
-    localObject1 = this.zwt;
-    localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
-    ((dep)localObject1).ncR = j.b.dHx();
-    this.zwt.CreateTime = this.zwd.field_createTime;
-    this.zwu.FNN = new SKBuiltinBuffer_t();
-    localObject1 = com.tencent.mm.plugin.recordvideo.d.c.wyg;
-    localObject2 = com.tencent.mm.plugin.recordvideo.d.c.dwr().Rh();
+    p.g(localObject2, "(this as java.lang.String).getBytes(charset)");
+    ((djm)localObject1).hCW = g.getMessageDigest((byte[])localObject2);
+    localObject1 = q.AKs;
+    this.AOp = q.a.ein();
+    localObject1 = this.AOp;
+    localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
+    ((dkc)localObject1).nDo = j.b.dTJ();
+    this.AOp.CreateTime = this.ANZ.field_createTime;
+    this.AOq.Hyy = new SKBuiltinBuffer_t();
+    localObject1 = com.tencent.mm.plugin.recordvideo.d.c.xHa;
+    localObject2 = com.tencent.mm.plugin.recordvideo.d.c.dGL().To();
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = "";
     }
-    d.g.b.k.h(localObject1, "publishObjId");
-    this.zwt.FOd = ((String)localObject1);
-    ac.d(TAG, "storyInfo.createTime=%s timelineInfo.CreateTime=%s", new Object[] { Integer.valueOf(this.zwd.field_createTime), Integer.valueOf(this.zwt.CreateTime) });
+    p.h(localObject1, "publishObjId");
+    this.AOp.HyO = ((String)localObject1);
+    ad.d(TAG, "storyInfo.createTime=%s timelineInfo.CreateTime=%s", new Object[] { Integer.valueOf(this.ANZ.field_createTime), Integer.valueOf(this.AOp.CreateTime) });
     AppMethodBeat.o(119129);
   }
   
-  private static void auo(String paramString)
+  private static void azt(String paramString)
   {
     AppMethodBeat.i(119121);
-    com.tencent.mm.vfs.i.aSh(com.tencent.mm.vfs.i.aSs(paramString));
+    com.tencent.mm.vfs.i.aYg(com.tencent.mm.vfs.i.aYr(paramString));
     AppMethodBeat.o(119121);
   }
   
-  public final void Qx(int paramInt)
+  public final void Sg(int paramInt)
   {
-    this.zwt.FOe = paramInt;
+    this.AOp.HyP = paramInt;
   }
   
-  public final void a(bsz parambsz)
+  public final void a(bxm parambxm)
   {
     AppMethodBeat.i(119125);
-    d.g.b.k.h(parambsz, "extInfo");
-    this.yBE = parambsz;
+    p.h(parambxm, "extInfo");
+    this.zSY = parambxm;
     AppMethodBeat.o(119125);
   }
   
-  public final void a(ddx paramddx)
+  public final void a(djk paramdjk)
   {
     AppMethodBeat.i(119126);
-    d.g.b.k.h(paramddx, "editorInfo");
-    this.zws.FNH = paramddx;
+    p.h(paramdjk, "editorInfo");
+    this.AOo.Hys = paramdjk;
     AppMethodBeat.o(119126);
   }
   
-  public final boolean aD(String paramString1, String paramString2, String paramString3)
+  public final boolean aK(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(119127);
-    d.g.b.k.h(paramString1, "path");
-    d.g.b.k.h(paramString2, "thumbPath");
-    d.g.b.k.h(paramString3, "videoMd5");
-    paramString3 = q.zsy;
-    paramString3 = new ddy();
+    p.h(paramString1, "path");
+    p.h(paramString2, "thumbPath");
+    p.h(paramString3, "videoMd5");
+    paramString3 = q.AKs;
+    paramString3 = new djl();
     Object localObject1 = new StringBuilder();
-    Object localObject2 = b.zrj;
-    localObject1 = ((StringBuilder)localObject1).append(b.dVd());
-    localObject2 = ce.azI() + '-' + bs.Gn();
+    Object localObject2 = b.AJd;
+    localObject1 = ((StringBuilder)localObject1).append(b.ehs());
+    localObject2 = cf.aCL() + '-' + bt.HI();
     Object localObject3 = d.n.d.UTF_8;
     if (localObject2 == null)
     {
@@ -152,30 +154,30 @@ public final class d
       throw paramString1;
     }
     localObject2 = ((String)localObject2).getBytes((Charset)localObject3);
-    d.g.b.k.g(localObject2, "(this as java.lang.String).getBytes(charset)");
+    p.g(localObject2, "(this as java.lang.String).getBytes(charset)");
     paramString3.Id = g.getMessageDigest((byte[])localObject2);
-    localObject1 = com.tencent.mm.plugin.story.f.l.zsu;
-    localObject1 = com.tencent.mm.plugin.story.f.l.awC(paramString3.Id);
-    localObject2 = com.tencent.mm.plugin.story.f.l.zsu;
-    localObject2 = com.tencent.mm.plugin.story.f.l.awB(paramString3.Id);
-    localObject3 = com.tencent.mm.plugin.story.f.l.zsu;
-    com.tencent.mm.plugin.story.f.l.arb((String)localObject1);
-    localObject3 = com.tencent.mm.plugin.story.f.l.zsu;
-    com.tencent.mm.plugin.story.f.l.arb((String)localObject2);
-    auo((String)localObject1);
-    auo((String)localObject2);
-    com.tencent.mm.vfs.i.lZ(paramString1, (String)localObject1);
-    com.tencent.mm.vfs.i.lZ(paramString2, (String)localObject2);
-    paramString3.FNF = (e.asx((String)localObject1).videoDuration / 1000.0F);
-    this.zwt.FOc.Etz.add(paramString3);
+    localObject1 = com.tencent.mm.plugin.story.f.l.AKo;
+    localObject1 = com.tencent.mm.plugin.story.f.l.aBH(paramString3.Id);
+    localObject2 = com.tencent.mm.plugin.story.f.l.AKo;
+    localObject2 = com.tencent.mm.plugin.story.f.l.aBG(paramString3.Id);
+    localObject3 = com.tencent.mm.plugin.story.f.l.AKo;
+    com.tencent.mm.plugin.story.f.l.awb((String)localObject1);
+    localObject3 = com.tencent.mm.plugin.story.f.l.AKo;
+    com.tencent.mm.plugin.story.f.l.awb((String)localObject2);
+    azt((String)localObject1);
+    azt((String)localObject2);
+    com.tencent.mm.vfs.i.mz(paramString1, (String)localObject1);
+    com.tencent.mm.vfs.i.mz(paramString2, (String)localObject2);
+    paramString3.Hyq = (e.axx((String)localObject1).videoDuration / 1000.0F);
+    this.AOp.HyN.GaQ.add(paramString3);
     AppMethodBeat.o(119127);
     return true;
   }
   
-  public final d b(cna paramcna)
+  public final d b(csd paramcsd)
   {
-    if (paramcna != null) {
-      this.zwt.FOb = paramcna;
+    if (paramcsd != null) {
+      this.AOp.HyM = paramcsd;
     }
     return this;
   }
@@ -185,42 +187,42 @@ public final class d
     AppMethodBeat.i(119122);
     try
     {
-      this.zws.FjJ = ce.azK();
-      this.zws.gLY = 0;
-      Object localObject1 = this.zwd;
-      Object localObject2 = this.zws.toByteArray();
-      d.g.b.k.g(localObject2, "postInfo.toByteArray()");
-      ((com.tencent.mm.plugin.story.i.j)localObject1).bD((byte[])localObject2);
-      this.zwd.field_attrBuf = this.zwu.toByteArray();
-      this.zwd.b(this.zwt);
-      localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
-      int i = j.b.dVE().f(this.zwd);
-      localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
-      localObject1 = j.b.dVK();
-      com.tencent.mm.ac.c.g((d.g.a.a)new c.e((c)localObject1, i));
+      this.AOo.GTk = cf.aCN();
+      this.AOo.hfV = 0;
+      Object localObject1 = this.ANZ;
+      Object localObject2 = this.AOo.toByteArray();
+      p.g(localObject2, "postInfo.toByteArray()");
+      ((com.tencent.mm.plugin.story.i.j)localObject1).bK((byte[])localObject2);
+      this.ANZ.field_attrBuf = this.AOq.toByteArray();
+      this.ANZ.b(this.AOp);
+      localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
+      int i = j.b.ehT().f(this.ANZ);
+      localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
+      localObject1 = j.b.ehZ();
+      com.tencent.mm.ad.c.g((d.g.a.a)new c.e((c)localObject1, i));
       ((c)localObject1).checkPost();
-      localObject1 = m.zsv;
-      localObject1 = this.zwd;
-      d.g.b.k.h(localObject1, "storyInfo");
+      localObject1 = m.AKp;
+      localObject1 = this.ANZ;
+      p.h(localObject1, "storyInfo");
       if (i != -1)
       {
-        localObject2 = com.tencent.mm.plugin.story.e.a.zrf;
-        String str = a.a.l(Integer.valueOf(((com.tencent.mm.plugin.story.i.j)localObject1).field_createTime));
-        ac.d(m.access$getTAG$cp(), "insertByLocalStory date=".concat(String.valueOf(str)));
-        localObject1 = com.tencent.mm.plugin.story.f.j.zsh;
-        localObject2 = j.b.dVJ().axg(str);
+        localObject2 = com.tencent.mm.plugin.story.e.a.AIZ;
+        String str = a.a.m(Integer.valueOf(((com.tencent.mm.plugin.story.i.j)localObject1).field_createTime));
+        ad.d(m.access$getTAG$cp(), "insertByLocalStory date=".concat(String.valueOf(str)));
+        localObject1 = com.tencent.mm.plugin.story.f.j.AKb;
+        localObject2 = j.b.ehY().aCk(str);
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = new h();
         }
-        d.g.b.k.h(str, "value");
+        p.h(str, "value");
         ((h)localObject1).field_date = str;
         ((h)localObject1).field_count += 1;
-        ac.d(m.access$getTAG$cp(), "storyHistory.count=" + ((h)localObject1).field_count);
-        localObject2 = com.tencent.mm.plugin.story.f.j.zsh;
-        j.b.dVJ().a((h)localObject1);
+        ad.d(m.access$getTAG$cp(), "storyHistory.count=" + ((h)localObject1).field_count);
+        localObject2 = com.tencent.mm.plugin.story.f.j.AKb;
+        j.b.ehY().a((h)localObject1);
       }
-      ac.d(TAG, "save story to db: ".concat(String.valueOf(i)));
+      ad.d(TAG, "save story to db: ".concat(String.valueOf(i)));
       AppMethodBeat.o(119122);
       return i;
     }
@@ -228,15 +230,15 @@ public final class d
     {
       for (;;)
       {
-        ac.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
+        ad.printErrStackTrace(TAG, (Throwable)localException, "", new Object[0]);
       }
     }
   }
   
-  public final void gc(List<String> paramList)
+  public final void gn(List<String> paramList)
   {
     AppMethodBeat.i(119123);
-    d.g.b.k.h(paramList, "groupList");
+    p.h(paramList, "groupList");
     int i;
     if (((Collection)paramList).isEmpty()) {
       i = 1;
@@ -250,24 +252,24 @@ public final class d
         if (paramList.hasNext())
         {
           String str = (String)paramList.next();
-          crm localcrm = new crm();
-          localcrm.aJV(str);
-          localLinkedList.add(localcrm);
+          cwt localcwt = new cwt();
+          localcwt.aPy(str);
+          localLinkedList.add(localcwt);
           continue;
           i = 0;
           break;
         }
       }
-      this.zwu.GroupUser.addAll((Collection)localLinkedList);
-      this.zwu.GroupUserCount = localLinkedList.size();
+      this.AOq.GroupUser.addAll((Collection)localLinkedList);
+      this.AOq.GroupUserCount = localLinkedList.size();
     }
     AppMethodBeat.o(119123);
   }
   
-  public final void gd(List<String> paramList)
+  public final void go(List<String> paramList)
   {
     AppMethodBeat.i(119124);
-    d.g.b.k.h(paramList, "blackList");
+    p.h(paramList, "blackList");
     int i;
     if (((Collection)paramList).isEmpty()) {
       i = 1;
@@ -281,31 +283,31 @@ public final class d
         if (paramList.hasNext())
         {
           String str = (String)paramList.next();
-          crm localcrm = new crm();
-          localcrm.aJV(str);
-          localLinkedList.add(localcrm);
+          cwt localcwt = new cwt();
+          localcwt.aPy(str);
+          localLinkedList.add(localcwt);
           continue;
           i = 0;
           break;
         }
       }
-      this.zwu.BlackList.addAll((Collection)localLinkedList);
-      this.zwu.BlackListCount = localLinkedList.size();
+      this.AOq.BlackList.addAll((Collection)localLinkedList);
+      this.AOq.BlackListCount = localLinkedList.size();
     }
     AppMethodBeat.o(119124);
   }
   
-  public final boolean jP(String paramString1, String paramString2)
+  public final boolean ke(String paramString1, String paramString2)
   {
     AppMethodBeat.i(119128);
-    d.g.b.k.h(paramString1, "taskId");
-    d.g.b.k.h(paramString2, "thumbPath");
-    Object localObject1 = q.zsy;
-    localObject1 = new ddy();
+    p.h(paramString1, "taskId");
+    p.h(paramString2, "thumbPath");
+    Object localObject1 = q.AKs;
+    localObject1 = new djl();
     Object localObject2 = new StringBuilder();
-    Object localObject3 = b.zrj;
-    localObject2 = ((StringBuilder)localObject2).append(b.dVd());
-    localObject3 = ce.azI() + '-' + bs.Gn();
+    Object localObject3 = b.AJd;
+    localObject2 = ((StringBuilder)localObject2).append(b.ehs());
+    localObject3 = cf.aCL() + '-' + bt.HI();
     Charset localCharset = d.n.d.UTF_8;
     if (localObject3 == null)
     {
@@ -314,29 +316,29 @@ public final class d
       throw paramString1;
     }
     localObject3 = ((String)localObject3).getBytes(localCharset);
-    d.g.b.k.g(localObject3, "(this as java.lang.String).getBytes(charset)");
-    ((ddy)localObject1).Id = g.getMessageDigest((byte[])localObject3);
-    localObject2 = com.tencent.mm.plugin.story.f.l.zsu;
-    localObject2 = com.tencent.mm.plugin.story.f.l.awB(((ddy)localObject1).Id);
-    auo((String)localObject2);
-    com.tencent.mm.vfs.i.lZ(paramString2, (String)localObject2);
-    ((ddy)localObject1).taskId = paramString1;
-    this.zwt.FOc.Etz.add(localObject1);
-    paramString1 = this.zwd;
+    p.g(localObject3, "(this as java.lang.String).getBytes(charset)");
+    ((djl)localObject1).Id = g.getMessageDigest((byte[])localObject3);
+    localObject2 = com.tencent.mm.plugin.story.f.l.AKo;
+    localObject2 = com.tencent.mm.plugin.story.f.l.aBG(((djl)localObject1).Id);
+    azt((String)localObject2);
+    com.tencent.mm.vfs.i.mz(paramString2, (String)localObject2);
+    ((djl)localObject1).taskId = paramString1;
+    this.AOp.HyN.GaQ.add(localObject1);
+    paramString1 = this.ANZ;
     int i = paramString1.field_localFlag;
-    paramString2 = a.d.zBZ;
-    paramString1.field_localFlag = (i | a.d.dYQ());
-    paramString1 = this.zwd;
+    paramString2 = a.d.ATy;
+    paramString1.field_localFlag = (i | a.d.elf());
+    paramString1 = this.ANZ;
     i = paramString1.field_localFlag;
-    paramString2 = a.d.zBZ;
-    paramString1.field_localFlag = (i & (a.d.dYO() ^ 0xFFFFFFFF));
+    paramString2 = a.d.ATy;
+    paramString1.field_localFlag = (i & (a.d.eld() ^ 0xFFFFFFFF));
     AppMethodBeat.o(119128);
     return true;
   }
   
-  public final void rG(boolean paramBoolean)
+  public final void sm(boolean paramBoolean)
   {
-    this.zws.FNJ = paramBoolean;
+    this.AOo.Hyu = paramBoolean;
   }
 }
 

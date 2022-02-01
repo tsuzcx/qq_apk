@@ -78,7 +78,7 @@ public abstract class a<D>
       paramPrintWriter.print("mTask=");
       paramPrintWriter.print(this.mTask);
       paramPrintWriter.print(" waiting=");
-      paramPrintWriter.println(this.mTask.GR);
+      paramPrintWriter.println(this.mTask.IK);
     }
     if (this.mCancellingTask != null)
     {
@@ -86,7 +86,7 @@ public abstract class a<D>
       paramPrintWriter.print("mCancellingTask=");
       paramPrintWriter.print(this.mCancellingTask);
       paramPrintWriter.print(" waiting=");
-      paramPrintWriter.println(this.mCancellingTask.GR);
+      paramPrintWriter.println(this.mCancellingTask.IK);
     }
     if (this.mUpdateThrottle != 0L)
     {
@@ -103,14 +103,14 @@ public abstract class a<D>
   {
     if ((this.mCancellingTask == null) && (this.mTask != null))
     {
-      if (this.mTask.GR)
+      if (this.mTask.IK)
       {
-        this.mTask.GR = false;
+        this.mTask.IK = false;
         this.mHandler.removeCallbacks(this.mTask);
       }
       if ((this.mUpdateThrottle > 0L) && (SystemClock.uptimeMillis() < this.mLastLoadCompleteTime + this.mUpdateThrottle))
       {
-        this.mTask.GR = true;
+        this.mTask.IK = true;
         this.mHandler.postAtTime(this.mTask, this.mLastLoadCompleteTime + this.mUpdateThrottle);
       }
     }
@@ -120,9 +120,9 @@ public abstract class a<D>
     }
     a locala = this.mTask;
     Executor localExecutor = this.mExecutor;
-    if (locala.Hm != e.c.Hu)
+    if (locala.Jg != e.c.Jo)
     {
-      switch (e.4.Hr[locala.Hm.ordinal()])
+      switch (e.4.Jl[locala.Jg.ordinal()])
       {
       default: 
         throw new IllegalStateException("We should never reach this state");
@@ -131,9 +131,9 @@ public abstract class a<D>
       }
       throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
     }
-    locala.Hm = e.c.Hv;
-    locala.Hk.Hy = null;
-    localExecutor.execute(locala.Hl);
+    locala.Jg = e.c.Jp;
+    locala.Je.Js = null;
+    localExecutor.execute(locala.Jf);
   }
   
   public boolean isLoadInBackgroundCanceled()
@@ -152,9 +152,9 @@ public abstract class a<D>
       }
       if (this.mCancellingTask != null)
       {
-        if (this.mTask.GR)
+        if (this.mTask.IK)
         {
-          this.mTask.GR = false;
+          this.mTask.IK = false;
           this.mHandler.removeCallbacks(this.mTask);
         }
         this.mTask = null;
@@ -164,16 +164,16 @@ public abstract class a<D>
     {
       return false;
     }
-    if (this.mTask.GR)
+    if (this.mTask.IK)
     {
-      this.mTask.GR = false;
+      this.mTask.IK = false;
       this.mHandler.removeCallbacks(this.mTask);
       this.mTask = null;
       return false;
     }
     a locala = this.mTask;
-    locala.Hn.set(true);
-    boolean bool = locala.Hl.cancel(false);
+    locala.Jh.set(true);
+    boolean bool = locala.Jf.cancel(false);
     if (bool)
     {
       this.mCancellingTask = this.mTask;
@@ -212,7 +212,7 @@ public abstract class a<D>
     if (locala != null) {}
     try
     {
-      locala.GQ.await();
+      locala.IJ.await();
       return;
     }
     catch (InterruptedException localInterruptedException) {}
@@ -222,12 +222,12 @@ public abstract class a<D>
     extends e<Void, Void, D>
     implements Runnable
   {
-    final CountDownLatch GQ = new CountDownLatch(1);
-    boolean GR;
+    final CountDownLatch IJ = new CountDownLatch(1);
+    boolean IK;
     
     a() {}
     
-    private D dW()
+    private D er()
     {
       try
       {
@@ -236,7 +236,7 @@ public abstract class a<D>
       }
       catch (b localb)
       {
-        if (!this.Hn.get()) {
+        if (!this.Jh.get()) {
           throw localb;
         }
       }
@@ -252,7 +252,7 @@ public abstract class a<D>
       }
       finally
       {
-        this.GQ.countDown();
+        this.IJ.countDown();
       }
     }
     
@@ -265,13 +265,13 @@ public abstract class a<D>
       }
       finally
       {
-        this.GQ.countDown();
+        this.IJ.countDown();
       }
     }
     
     public final void run()
     {
-      this.GR = false;
+      this.IK = false;
       a.this.executePendingTask();
     }
   }

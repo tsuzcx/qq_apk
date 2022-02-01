@@ -1,72 +1,72 @@
 package com.tencent.mm.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/sticker/StickerTransform;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "trans0", "", "getTrans0", "()[D", "setTrans0", "([D)V", "trans1", "getTrans1", "setTrans1", "trans2", "getTrans2", "setTrans2", "trans3", "getTrans3", "setTrans3", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "isEmpty", "", "toJson", "plugin-sticker_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/sticker/StickerTransform;", "Lcom/tencent/mm/sticker/BaseJsonObject;", "()V", "trans0", "", "getTrans0", "()[D", "setTrans0", "([D)V", "trans1", "getTrans1", "setTrans1", "trans2", "getTrans2", "setTrans2", "trans3", "getTrans3", "setTrans3", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "isEmpty", "", "toJson", "plugin-sticker_release"})
 public final class g
   extends a
 {
-  double[] GAB;
-  double[] GAC;
-  double[] GAD;
-  double[] GAE;
+  double[] Imv;
+  double[] Imw;
+  double[] Imx;
+  double[] Imy;
   
   public g()
   {
     AppMethodBeat.i(105911);
-    this.GAB = new double[0];
-    this.GAC = new double[0];
-    this.GAD = new double[0];
-    this.GAE = new double[0];
+    this.Imv = new double[0];
+    this.Imw = new double[0];
+    this.Imx = new double[0];
+    this.Imy = new double[0];
     AppMethodBeat.o(105911);
   }
   
-  public final a by(JSONObject paramJSONObject)
+  public final a bH(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(105909);
-    k.h(paramJSONObject, "jsonObj");
+    p.h(paramJSONObject, "jsonObj");
     Object localObject = paramJSONObject.optJSONArray("trans_0");
     if (localObject != null)
     {
-      localObject = b.P((JSONArray)localObject);
-      this.GAB = ((double[])localObject);
+      localObject = b.Q((JSONArray)localObject);
+      this.Imv = ((double[])localObject);
       localObject = paramJSONObject.optJSONArray("trans_1");
       if (localObject == null) {
         break label116;
       }
-      localObject = b.P((JSONArray)localObject);
+      localObject = b.Q((JSONArray)localObject);
       label48:
-      this.GAC = ((double[])localObject);
+      this.Imw = ((double[])localObject);
       localObject = paramJSONObject.optJSONArray("trans_2");
       if (localObject == null) {
         break label124;
       }
-      localObject = b.P((JSONArray)localObject);
+      localObject = b.Q((JSONArray)localObject);
       label69:
-      this.GAD = ((double[])localObject);
+      this.Imx = ((double[])localObject);
       localObject = paramJSONObject.optJSONArray("trans_3");
       if (localObject == null) {
         break label132;
       }
     }
     label132:
-    for (localObject = b.P((JSONArray)localObject);; localObject = this.GAE)
+    for (localObject = b.Q((JSONArray)localObject);; localObject = this.Imy)
     {
-      this.GAE = ((double[])localObject);
-      paramJSONObject = super.by(paramJSONObject);
+      this.Imy = ((double[])localObject);
+      paramJSONObject = super.bH(paramJSONObject);
       AppMethodBeat.o(105909);
       return paramJSONObject;
-      localObject = this.GAB;
+      localObject = this.Imv;
       break;
       label116:
-      localObject = this.GAC;
+      localObject = this.Imw;
       break label48;
       label124:
-      localObject = this.GAD;
+      localObject = this.Imx;
       break label69;
     }
   }
@@ -75,10 +75,10 @@ public final class g
   {
     AppMethodBeat.i(105910);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("trans_0", b.c(this.GAB));
-    localJSONObject.put("trans_1", b.c(this.GAC));
-    localJSONObject.put("trans_2", b.c(this.GAD));
-    localJSONObject.put("trans_3", b.c(this.GAE));
+    localJSONObject.put("trans_0", b.c(this.Imv));
+    localJSONObject.put("trans_1", b.c(this.Imw));
+    localJSONObject.put("trans_2", b.c(this.Imx));
+    localJSONObject.put("trans_3", b.c(this.Imy));
     AppMethodBeat.o(105910);
     return localJSONObject;
   }

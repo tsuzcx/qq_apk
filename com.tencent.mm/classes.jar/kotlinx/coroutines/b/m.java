@@ -2,7 +2,7 @@ package kotlinx.coroutines.b;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/scheduling/TimeSource;", "", "()V", "nanoTime", "", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/scheduling/TimeSource;", "", "()V", "nanoTime", "", "kotlinx-coroutines-core"})
 public abstract class m
 {
   public abstract long nanoTime();

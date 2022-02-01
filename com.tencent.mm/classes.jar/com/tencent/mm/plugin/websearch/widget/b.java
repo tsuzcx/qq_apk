@@ -6,30 +6,32 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.c;
-import com.tencent.mm.plugin.websearch.api.m;
-import com.tencent.mm.plugin.websearch.api.w;
-import com.tencent.mm.plugin.websearch.api.x;
+import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.websearch.api.ab;
+import com.tencent.mm.plugin.websearch.api.d;
+import com.tencent.mm.plugin.websearch.api.f;
+import com.tencent.mm.plugin.websearch.api.n;
 import com.tencent.mm.plugin.websearch.widget.view.a.1;
 import com.tencent.mm.plugin.websearch.widget.view.a.2;
 import com.tencent.mm.plugin.websearch.widget.view.a.3;
 import com.tencent.mm.plugin.websearch.widget.view.a.4;
+import com.tencent.mm.ui.widget.a.e;
 import java.util.List;
 import java.util.Map;
 
 public final class b
-  implements com.tencent.mm.plugin.websearch.api.e
+  implements f
 {
-  public final int a(Activity paramActivity, String paramString1, String paramString2, List<x> paramList, w paramw)
+  public final int a(Activity paramActivity, String paramString1, String paramString2, List<ab> paramList, aa paramaa)
   {
     AppMethodBeat.i(116629);
-    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.exY();
-    com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramActivity, 2, true);
+    com.tencent.mm.plugin.websearch.widget.view.a locala = com.tencent.mm.plugin.websearch.widget.view.a.eMP();
+    e locale = new e(paramActivity, 2, true);
     int i = locale.hashCode();
-    locale.ISy = new a.1(locala, paramList);
-    locale.ISu = new a.2(locala, paramList, locale);
-    locale.ISv = new a.3(locala, paramw, i);
-    locale.Ihj = new a.4(locala, paramw, i);
+    locale.KJC = new a.1(locala, paramList);
+    locale.KJy = new a.2(locala, paramList, locale);
+    locale.KJz = new a.3(locala, paramaa, i);
+    locale.JXC = new a.4(locala, paramaa, i);
     paramActivity = View.inflate(paramActivity, 2131495319, null);
     if (!TextUtils.isEmpty(paramString1))
     {
@@ -41,10 +43,10 @@ public final class b
     }
     for (;;)
     {
-      locale.JfJ = true;
-      locale.J(paramActivity, false);
-      locale.cED();
-      locala.CbG.put(Integer.valueOf(i), locale);
+      locale.KWX = true;
+      locale.K(paramActivity, false);
+      locale.cMW();
+      locala.DEE.put(Integer.valueOf(i), locale);
       AppMethodBeat.o(116629);
       return i;
       paramActivity.findViewById(2131305902).setVisibility(8);
@@ -54,10 +56,10 @@ public final class b
     }
   }
   
-  public final c a(Context paramContext, m paramm)
+  public final d a(Context paramContext, n paramn)
   {
     AppMethodBeat.i(116628);
-    paramContext = new a(paramContext, paramm);
+    paramContext = new a(paramContext, paramn);
     AppMethodBeat.o(116628);
     return paramContext;
   }

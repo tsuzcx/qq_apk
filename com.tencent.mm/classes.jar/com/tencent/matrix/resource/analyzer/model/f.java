@@ -7,14 +7,14 @@ import java.io.Serializable;
 public final class f
   implements Serializable
 {
-  public final String cuP;
-  public final File cvT;
+  public final String cFK;
+  public final File cGO;
   public final String mActivityName;
   
   public f(File paramFile, String paramString1, String paramString2)
   {
-    this.cvT = ((File)b.checkNotNull(paramFile, "hprofFile"));
-    this.cuP = ((String)b.checkNotNull(paramString1, "refKey"));
+    this.cGO = ((File)b.checkNotNull(paramFile, "hprofFile"));
+    this.cFK = ((String)b.checkNotNull(paramString1, "refKey"));
     this.mActivityName = ((String)b.checkNotNull(paramString2, "activityName"));
   }
 }

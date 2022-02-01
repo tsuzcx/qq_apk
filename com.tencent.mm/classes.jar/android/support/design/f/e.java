@@ -2,20 +2,20 @@ package android.support.design.f;
 
 public final class e
 {
-  private static final a kt = new a();
-  private static final b ku = new b();
-  b kA = ku;
-  b kB = ku;
-  b kC = ku;
-  a kv = kt;
-  a kw = kt;
-  a kx = kt;
-  a ky = kt;
-  public b kz = ku;
+  private static final a mj = new a();
+  private static final b mk = new b();
+  a ml = mj;
+  a mm = mj;
+  a mn = mj;
+  a mo = mj;
+  public b mp = mk;
+  b mq = mk;
+  b mr = mk;
+  b ms = mk;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.f.e
  * JD-Core Version:    0.7.0.1
  */

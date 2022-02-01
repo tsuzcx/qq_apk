@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.normsg.a.b;
+import com.tencent.mm.hellhoundlib.a.a;
 
 final class SnsUploadUI$5
   implements View.OnTouchListener
@@ -14,18 +14,23 @@ final class SnsUploadUI$5
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(99574);
+    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+    localb.bd(paramView);
+    localb.bd(paramMotionEvent);
+    a.b("com/tencent/mm/plugin/sns/ui/SnsUploadUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahq());
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      a.a(false, this, "com/tencent/mm/plugin/sns/ui/SnsUploadUI$13", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(99574);
       return false;
-      this.iSP[0] = true;
-      b.vor.id("ce_sns_upload", "<SnsUpload>");
+      this.jlX[0] = true;
+      com.tencent.mm.plugin.normsg.a.b.wtJ.io("ce_sns_upload", "<SnsUpload>");
       continue;
-      b.vor.a("ce_sns_upload", paramMotionEvent);
-      b.vor.aou("ce_sns_upload");
+      com.tencent.mm.plugin.normsg.a.b.wtJ.a("ce_sns_upload", paramMotionEvent);
+      com.tencent.mm.plugin.normsg.a.b.wtJ.atu("ce_sns_upload");
     }
   }
 }

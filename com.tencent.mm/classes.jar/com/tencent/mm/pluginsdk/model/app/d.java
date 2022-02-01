@@ -3,12 +3,13 @@ package com.tencent.mm.pluginsdk.model.app;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class d
   extends j<c>
 {
+  public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
   e db;
   
@@ -16,25 +17,49 @@ public final class d
   {
     AppMethodBeat.i(151657);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "appattach") };
+    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS msgInfoIdIndex ON appattach ( msgInfoId )", "CREATE INDEX IF NOT EXISTS statusIndex ON appattach ( status )" };
     AppMethodBeat.o(151657);
   }
   
   public d(e parame)
   {
-    super(parame, c.info, "appattach", null);
+    super(parame, c.info, "appattach", INDEX_CREATE);
     this.db = parame;
+  }
+  
+  public final void CA(long paramLong)
+  {
+    AppMethodBeat.i(151652);
+    String str = " update appattach set status = 198 , lastModifyTime = " + bt.aQJ() + " where rowid = " + paramLong;
+    this.db.execSQL("appattach", str);
+    doNotify();
+    AppMethodBeat.o(151652);
+  }
+  
+  public final c CB(long paramLong)
+  {
+    AppMethodBeat.i(151655);
+    c localc = new c();
+    localc.field_msgInfoId = paramLong;
+    if (get(localc, new String[] { "msgInfoId" }))
+    {
+      AppMethodBeat.o(151655);
+      return localc;
+    }
+    AppMethodBeat.o(151655);
+    return null;
   }
   
   public final boolean a(c paramc, String... paramVarArgs)
   {
     AppMethodBeat.i(151654);
     boolean bool = super.update(paramc, paramVarArgs);
-    ac.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramc.field_mediaId, paramc.field_mediaSvrId, Boolean.valueOf(bool), "" });
+    ad.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramc.field_mediaId, paramc.field_mediaSvrId, Boolean.valueOf(bool), "" });
     AppMethodBeat.o(151654);
     return bool;
   }
   
-  public final c aGd(String paramString)
+  public final c aLD(String paramString)
   {
     AppMethodBeat.i(151653);
     c localc = new c();
@@ -50,29 +75,6 @@ public final class d
       return localc;
     }
     AppMethodBeat.o(151653);
-    return null;
-  }
-  
-  public final void zL(long paramLong)
-  {
-    AppMethodBeat.i(151652);
-    String str = " update appattach set status = 198 , lastModifyTime = " + bs.aNx() + " where rowid = " + paramLong;
-    this.db.execSQL("appattach", str);
-    doNotify();
-    AppMethodBeat.o(151652);
-  }
-  
-  public final c zM(long paramLong)
-  {
-    AppMethodBeat.i(151655);
-    c localc = new c();
-    localc.field_msgInfoId = paramLong;
-    if (get(localc, new String[] { "msgInfoId" }))
-    {
-      AppMethodBeat.o(151655);
-      return localc;
-    }
-    AppMethodBeat.o(151655);
     return null;
   }
 }

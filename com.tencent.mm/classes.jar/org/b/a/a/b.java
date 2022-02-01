@@ -12,9 +12,9 @@ public abstract class b
   
   public abstract String b(i parami);
   
-  public abstract String gfO();
+  public abstract String gys();
   
-  public abstract String gfP();
+  public abstract String gyt();
 }
 
 

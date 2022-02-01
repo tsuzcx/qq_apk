@@ -5,12 +5,12 @@ import com.tencent.soter.a.b.c;
 
 public final class h
 {
-  a zne;
-  int znf = -3201;
+  a AEY;
+  int AEZ = -3201;
   
   public h(a parama)
   {
-    this.zne = parama;
+    this.AEY = parama;
   }
 }
 

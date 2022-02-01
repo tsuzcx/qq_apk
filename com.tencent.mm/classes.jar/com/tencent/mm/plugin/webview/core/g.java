@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.webview.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
-import d.g.b.k;
+import com.tencent.mm.sdk.platformtools.ax;
+import d.g.b.p;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "webview-sdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"kvCommand", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getKvCommand", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "webview-sdk_release"})
 public final class g
 {
-  static final aw bBL()
+  public static final ax bFO()
   {
-    AppMethodBeat.i(205491);
-    aw localaw = aw.aKT("__webview_command");
-    k.g(localaw, "MultiProcessMMKV.getMMKV(\"__webview_command\")");
-    AppMethodBeat.o(205491);
-    return localaw;
+    AppMethodBeat.i(214280);
+    ax localax = ax.aQz("__webview_command");
+    p.g(localax, "MultiProcessMMKV.getMMKV(\"__webview_command\")");
+    AppMethodBeat.o(214280);
+    return localax;
   }
 }
 

@@ -1,119 +1,89 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.g;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.pluginsdk.d.d;
-import com.tencent.mm.protocal.protobuf.np;
-import com.tencent.mm.protocal.protobuf.nq;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.protocal.protobuf.ns;
+import com.tencent.mm.protocal.protobuf.nt;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
   extends n
   implements k
 {
-  private g callback;
-  private int dbX;
-  public int dbY;
-  private String drB;
+  private f callback;
+  private String dok;
+  private String pdi;
   public b rr;
-  public boolean wYY;
+  private int scene;
   
-  public i(int paramInt1, String paramString, int paramInt2)
+  public i(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(51626);
-    this.drB = "";
-    this.wYY = false;
-    Object localObject = new b.a();
-    ((b.a)localObject).hvt = new np();
-    ((b.a)localObject).hvu = new nq();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanbarcode";
-    ((b.a)localObject).funcId = 1061;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (np)this.rr.hvr.hvw;
-    this.dbX = paramInt1;
-    ((np)localObject).ndI = paramInt1;
-    ((np)localObject).EdF = paramString;
-    ((np)localObject).Scene = 1;
-    this.dbY = paramInt2;
-    ac.d("MicroMsg.scanner.NetSceneScanBarcode", "NetSceneScanBarcode, codeType: %s, barcode: %s, scene: %s, codeVersion: %s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(51626);
+    this.dok = paramString1;
+    this.scene = paramInt;
+    this.pdi = paramString2;
   }
   
-  public i(String paramString1, String paramString2, int paramInt)
+  public final int doScene(e parame, f paramf)
   {
-    AppMethodBeat.i(51627);
-    this.drB = "";
-    this.wYY = false;
-    Object localObject = new b.a();
-    ((b.a)localObject).hvt = new np();
-    ((b.a)localObject).hvu = new nq();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscanbarcode";
-    ((b.a)localObject).funcId = 1061;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aAz();
-    localObject = (np)this.rr.hvr.hvw;
-    this.dbX = d.d.aFG(paramString1);
-    ((np)localObject).ndI = this.dbX;
-    ((np)localObject).EdF = paramString2;
-    ((np)localObject).Scene = 1;
-    this.dbY = paramInt;
-    this.drB = paramString1;
-    ac.d("MicroMsg.scanner.NetSceneScanBarcode", "NetSceneScanBarcode, codeType: %s, barcode: %s, scene: %s, codeName: %s, codeVersion: %s", new Object[] { Integer.valueOf(this.dbX), paramString2, Integer.valueOf(1), paramString1, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(51627);
-  }
-  
-  public final int doScene(e parame, g paramg)
-  {
-    AppMethodBeat.i(51628);
-    this.callback = paramg;
+    AppMethodBeat.i(51620);
+    this.callback = paramf;
+    paramf = new b.a();
+    paramf.hNM = new ns();
+    paramf.hNN = new nt();
+    paramf.uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetproductinfo";
+    paramf.funcId = 1063;
+    paramf.hNO = 0;
+    paramf.respCmdId = 0;
+    this.rr = paramf.aDC();
+    paramf = (ns)this.rr.hNK.hNQ;
+    paramf.ProductID = this.dok;
+    paramf.Scene = this.scene;
+    paramf.FIa = this.pdi;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(51628);
+    AppMethodBeat.o(51620);
     return i;
   }
   
   public final int getType()
   {
-    return 1061;
+    return 1063;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(51630);
-    ac.d("MicroMsg.scanner.NetSceneScanBarcode", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    AppMethodBeat.i(51622);
+    ad.d("MicroMsg.scanner.NetSceneGetProductInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(51630);
+    AppMethodBeat.o(51622);
   }
   
   public final n.b securityVerificationChecked(q paramq)
   {
-    AppMethodBeat.i(51629);
-    paramq = (np)((b)paramq).hvr.hvw;
-    if ((paramq.ndI < 0) || (paramq.EdF == null) || (paramq.EdF.length() <= 0))
+    AppMethodBeat.i(51621);
+    paramq = (ns)((b)paramq).hNK.hNQ;
+    if ((paramq.Scene < 0) || (paramq.ProductID == null) || (paramq.ProductID.length() <= 0))
     {
-      ac.e("MicroMsg.scanner.NetSceneScanBarcode", "securityVerificationChecked failed, Type = " + paramq.ndI + ", Barcode = %s" + paramq.EdF);
-      paramq = n.b.hwb;
-      AppMethodBeat.o(51629);
+      ad.e("MicroMsg.scanner.NetSceneGetProductInfo", "ERR: Security Check Failed, Scene = %s", new Object[] { Integer.valueOf(paramq.Scene) });
+      paramq = n.b.hOq;
+      AppMethodBeat.o(51621);
       return paramq;
     }
-    paramq = n.b.hwa;
-    AppMethodBeat.o(51629);
+    paramq = n.b.hOp;
+    AppMethodBeat.o(51621);
     return paramq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.i
  * JD-Core Version:    0.7.0.1
  */

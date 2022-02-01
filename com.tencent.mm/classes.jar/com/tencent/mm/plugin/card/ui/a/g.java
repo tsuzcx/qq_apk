@@ -7,73 +7,73 @@ public abstract interface g
 {
   public abstract void a(b paramb, e.a parama);
   
-  public abstract String bSF();
+  public abstract boolean bWJ();
   
-  public abstract boolean bSG();
+  public abstract boolean bXA();
   
-  public abstract boolean bSH();
+  public abstract boolean bXB();
   
-  public abstract boolean bSM();
+  public abstract boolean bXC();
   
-  public abstract boolean bSN();
+  public abstract boolean bXD();
   
-  public abstract boolean bSO();
+  public abstract boolean bXE();
   
-  public abstract boolean bSP();
+  public abstract boolean bXF();
   
-  public abstract boolean bSQ();
+  public abstract boolean bXG();
   
-  public abstract boolean bSR();
+  public abstract boolean bXH();
   
-  public abstract boolean bSS();
+  public abstract boolean bXI();
   
-  public abstract boolean bST();
+  public abstract boolean bXJ();
   
-  public abstract boolean bSU();
+  public abstract boolean bXK();
   
-  public abstract boolean bSV();
+  public abstract boolean bXL();
   
-  public abstract boolean bSW();
+  public abstract boolean bXM();
   
-  public abstract boolean bSX();
+  public abstract boolean bXN();
   
-  public abstract boolean bSY();
+  public abstract boolean bXO();
   
-  public abstract boolean bSZ();
+  public abstract boolean bXP();
   
-  public abstract boolean bSe();
+  public abstract boolean bXQ();
   
-  public abstract boolean bTa();
+  public abstract void bXR();
   
-  public abstract boolean bTb();
+  public abstract String bXk();
   
-  public abstract boolean bTc();
+  public abstract boolean bXl();
   
-  public abstract boolean bTd();
+  public abstract boolean bXm();
   
-  public abstract boolean bTe();
+  public abstract boolean bXr();
   
-  public abstract boolean bTf();
+  public abstract boolean bXs();
   
-  public abstract boolean bTg();
+  public abstract boolean bXt();
   
-  public abstract boolean bTh();
+  public abstract boolean bXu();
   
-  public abstract boolean bTi();
+  public abstract boolean bXv();
   
-  public abstract boolean bTj();
+  public abstract boolean bXw();
   
-  public abstract boolean bTk();
+  public abstract boolean bXx();
   
-  public abstract boolean bTl();
+  public abstract boolean bXy();
   
-  public abstract void bTm();
+  public abstract boolean bXz();
   
   public abstract void release();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.g
  * JD-Core Version:    0.7.0.1
  */

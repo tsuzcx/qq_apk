@@ -1,9 +1,9 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.af;
-import com.tencent.mm.al.e;
-import com.tencent.mm.al.f;
+import com.tencent.mm.am.ag;
+import com.tencent.mm.am.f;
+import com.tencent.mm.am.g;
 import com.tencent.mm.api.c;
 import com.tencent.mm.api.o;
 
@@ -13,7 +13,7 @@ public final class m
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(123965);
-    boolean bool = af.aCW().g(paramc);
+    boolean bool = ag.aFZ().g(paramc);
     AppMethodBeat.o(123965);
     return bool;
   }
@@ -21,23 +21,23 @@ public final class m
   public final boolean b(c paramc)
   {
     AppMethodBeat.i(123968);
-    boolean bool = af.aCW().f(paramc);
+    boolean bool = ag.aFZ().f(paramc);
     AppMethodBeat.o(123968);
     return bool;
   }
   
-  public final c dX(String paramString)
+  public final c eS(String paramString)
   {
     AppMethodBeat.i(123966);
-    paramString = f.dX(paramString);
+    paramString = g.eS(paramString);
     AppMethodBeat.o(123966);
     return paramString;
   }
   
-  public final void dY(String paramString)
+  public final void eT(String paramString)
   {
     AppMethodBeat.i(123967);
-    af.aCW().delete(paramString);
+    ag.aFZ().delete(paramString);
     AppMethodBeat.o(123967);
   }
 }

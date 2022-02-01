@@ -6,124 +6,78 @@ import com.tencent.mm.plugin.report.a;
 public final class fe
   extends a
 {
-  private long dHy = 0L;
-  private long dUP = 0L;
-  private String dWM = "";
-  private String dWN = "";
-  private long dWO = 0L;
-  private String dWP = "";
-  private String dWQ = "";
+  public int dPT = -1;
+  public int dSg = -1;
+  private String dWK = "";
+  private String ejz = "";
+  public int ekt = -1;
+  public int eku = -1;
   
-  public final String PR()
+  public final String RD()
   {
-    AppMethodBeat.i(118519);
+    AppMethodBeat.i(94847);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dHy);
+    ((StringBuffer)localObject).append(this.dWK);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUP);
+    ((StringBuffer)localObject).append(this.ejz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWM);
+    ((StringBuffer)localObject).append(this.dPT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWN);
+    ((StringBuffer)localObject).append(this.ekt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWO);
+    ((StringBuffer)localObject).append(this.dSg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWQ);
+    ((StringBuffer)localObject).append(this.eku);
     localObject = ((StringBuffer)localObject).toString();
-    arz((String)localObject);
-    AppMethodBeat.o(118519);
+    awz((String)localObject);
+    AppMethodBeat.o(94847);
     return localObject;
   }
   
-  public final String PS()
+  public final String RE()
   {
-    AppMethodBeat.i(118520);
+    AppMethodBeat.i(94848);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("EnterTime:").append(this.dHy);
+    ((StringBuffer)localObject).append("Username:").append(this.dWK);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dUP);
+    ((StringBuffer)localObject).append("PublishId:").append(this.ejz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WaitPlayVideoList:").append(this.dWM);
+    ((StringBuffer)localObject).append("Action:").append(this.dPT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WaitPlayUinList:").append(this.dWN);
+    ((StringBuffer)localObject).append("OnDestroyAction:").append(this.ekt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("index:").append(this.dWO);
+    ((StringBuffer)localObject).append("Scene:").append(this.dSg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WaitPlayVideoList1:").append(this.dWP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WaitPlayVideoList2:").append(this.dWQ);
+    ((StringBuffer)localObject).append("StayTime:").append(this.eku);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118520);
+    AppMethodBeat.o(94848);
     return localObject;
-  }
-  
-  public final String RO()
-  {
-    return this.dWM;
-  }
-  
-  public final String RP()
-  {
-    return this.dWP;
-  }
-  
-  public final String RQ()
-  {
-    return this.dWQ;
   }
   
   public final int getId()
   {
-    return 16842;
+    return 18197;
   }
   
-  public final fe jQ(long paramLong)
+  public final fe on(String paramString)
   {
-    this.dHy = paramLong;
+    AppMethodBeat.i(94845);
+    this.dWK = t("Username", paramString, true);
+    AppMethodBeat.o(94845);
     return this;
   }
   
-  public final fe jR(long paramLong)
+  public final fe oo(String paramString)
   {
-    this.dUP = paramLong;
-    return this;
-  }
-  
-  public final fe jS(long paramLong)
-  {
-    this.dWO = paramLong;
-    return this;
-  }
-  
-  public final fe mL(String paramString)
-  {
-    AppMethodBeat.i(118516);
-    this.dWM = t("WaitPlayVideoList", paramString, true);
-    AppMethodBeat.o(118516);
-    return this;
-  }
-  
-  public final fe mM(String paramString)
-  {
-    AppMethodBeat.i(118517);
-    this.dWP = t("WaitPlayVideoList1", paramString, true);
-    AppMethodBeat.o(118517);
-    return this;
-  }
-  
-  public final fe mN(String paramString)
-  {
-    AppMethodBeat.i(118518);
-    this.dWQ = t("WaitPlayVideoList2", paramString, true);
-    AppMethodBeat.o(118518);
+    AppMethodBeat.i(94846);
+    this.ejz = t("PublishId", paramString, true);
+    AppMethodBeat.o(94846);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fe
  * JD-Core Version:    0.7.0.1
  */

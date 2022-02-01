@@ -4,11 +4,11 @@ import d.l.b.a.b.f.f;
 
 public abstract interface z
 {
-  public abstract f fRf();
+  public abstract f giD();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.b.z
  * JD-Core Version:    0.7.0.1
  */

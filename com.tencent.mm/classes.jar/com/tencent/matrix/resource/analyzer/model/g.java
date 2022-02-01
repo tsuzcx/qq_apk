@@ -1,7 +1,7 @@
 package com.tencent.matrix.resource.analyzer.model;
 
-import com.d.a.b.h;
-import com.d.a.b.l;
+import com.e.a.b.h;
+import com.e.a.b.l;
 import com.tencent.matrix.resource.analyzer.a.a;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.i;
@@ -10,15 +10,15 @@ import java.io.File;
 
 public final class g
 {
-  public final l bUb;
-  private final e cvU;
+  private final e cGP;
+  public final l ceo;
   
   public g(e parame)
   {
-    this.cvU = ((e)com.tencent.matrix.resource.analyzer.a.b.checkNotNull(parame, "hprofFile"));
-    parame = new h(new com.d.a.b.a.b(new File(i.k(q.B(parame.mUri), true)), (byte)0)).zQ();
+    this.cGP = ((e)com.tencent.matrix.resource.analyzer.a.b.checkNotNull(parame, "hprofFile"));
+    parame = new h(new com.e.a.b.a.b(new File(i.k(q.B(parame.mUri), true)), (byte)0)).Bn();
     a.a(parame);
-    this.bUb = parame;
+    this.ceo = parame;
   }
 }
 

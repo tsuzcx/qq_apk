@@ -6,31 +6,31 @@ import java.util.Arrays;
 public final class a
   implements Cloneable
 {
-  public int[] bHL;
+  public int[] bRZ;
   public int size;
   
   public a()
   {
     AppMethodBeat.i(12344);
     this.size = 0;
-    this.bHL = new int[1];
+    this.bRZ = new int[1];
     AppMethodBeat.o(12344);
   }
   
   private a(int[] paramArrayOfInt, int paramInt)
   {
-    this.bHL = paramArrayOfInt;
+    this.bRZ = paramArrayOfInt;
     this.size = paramInt;
   }
   
   private void ensureCapacity(int paramInt)
   {
     AppMethodBeat.i(12345);
-    if (paramInt > this.bHL.length << 5)
+    if (paramInt > this.bRZ.length << 5)
     {
       int[] arrayOfInt = new int[(paramInt + 31) / 32];
-      System.arraycopy(this.bHL, 0, arrayOfInt, 0, this.bHL.length);
-      this.bHL = arrayOfInt;
+      System.arraycopy(this.bRZ, 0, arrayOfInt, 0, this.bRZ.length);
+      this.bRZ = arrayOfInt;
     }
     AppMethodBeat.o(12345);
   }
@@ -68,13 +68,13 @@ public final class a
     int i = 0;
     while (i < j)
     {
-      bg(parama.get(i));
+      bh(parama.get(i));
       i += 1;
     }
     AppMethodBeat.o(12348);
   }
   
-  public final void bF(int paramInt1, int paramInt2)
+  public final void bH(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(12347);
     if ((paramInt2 < 0) || (paramInt2 > 32))
@@ -89,7 +89,7 @@ public final class a
       if ((paramInt1 >> paramInt2 - 1 & 0x1) == 1) {}
       for (boolean bool = true;; bool = false)
       {
-        bg(bool);
+        bh(bool);
         paramInt2 -= 1;
         break;
       }
@@ -97,13 +97,13 @@ public final class a
     AppMethodBeat.o(12347);
   }
   
-  public final void bg(boolean paramBoolean)
+  public final void bh(boolean paramBoolean)
   {
     AppMethodBeat.i(12346);
     ensureCapacity(this.size + 1);
     if (paramBoolean)
     {
-      int[] arrayOfInt = this.bHL;
+      int[] arrayOfInt = this.bRZ;
       int i = this.size / 32;
       arrayOfInt[i] |= 1 << (this.size & 0x1F);
     }
@@ -120,7 +120,7 @@ public final class a
       return false;
     }
     paramObject = (a)paramObject;
-    if ((this.size == paramObject.size) && (Arrays.equals(this.bHL, paramObject.bHL)))
+    if ((this.size == paramObject.size) && (Arrays.equals(this.bRZ, paramObject.bRZ)))
     {
       AppMethodBeat.o(12350);
       return true;
@@ -131,14 +131,14 @@ public final class a
   
   public final boolean get(int paramInt)
   {
-    return (this.bHL[(paramInt / 32)] & 1 << (paramInt & 0x1F)) != 0;
+    return (this.bRZ[(paramInt / 32)] & 1 << (paramInt & 0x1F)) != 0;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(12351);
     int i = this.size;
-    int j = Arrays.hashCode(this.bHL);
+    int j = Arrays.hashCode(this.bRZ);
     AppMethodBeat.o(12351);
     return i * 31 + j;
   }
@@ -166,7 +166,7 @@ public final class a
     return localObject;
   }
   
-  public final int xV()
+  public final int zs()
   {
     return (this.size + 7) / 8;
   }

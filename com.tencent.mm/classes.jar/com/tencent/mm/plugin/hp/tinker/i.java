@@ -8,38 +8,38 @@ import java.io.File;
 public final class i
 {
   private static boolean sInitialized;
-  private static final File tGp;
-  private static int tGq;
-  private static int tGr;
+  private static final File uJc;
+  private static int uJd;
+  private static int uJe;
   
   static
   {
     AppMethodBeat.i(117512);
-    tGp = new File(b.aoZ(), "patch_ver_history.bin");
+    uJc = new File(b.arM(), "patch_ver_history.bin");
     sInitialized = false;
-    tGq = 0;
-    tGr = 0;
+    uJd = 0;
+    uJe = 0;
     AppMethodBeat.o(117512);
   }
   
-  private static int cTu()
+  private static int dcE()
   {
     AppMethodBeat.i(117509);
-    int i = Integer.decode(a.gMJ).intValue();
+    int i = Integer.decode(a.hgG).intValue();
     AppMethodBeat.o(117509);
     return i;
   }
   
   /* Error */
-  public static void cTv()
+  public static void dcF()
   {
     // Byte code:
     //   0: ldc 70
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 76	com/tencent/mm/kernel/g:agO	()Lcom/tencent/mm/kernel/d;
-    //   8: invokevirtual 82	com/tencent/mm/kernel/d:agp	()Lcom/tencent/mm/kernel/b/g;
+    //   5: invokestatic 76	com/tencent/mm/kernel/g:ajz	()Lcom/tencent/mm/kernel/d;
+    //   8: invokevirtual 82	com/tencent/mm/kernel/d:ajb	()Lcom/tencent/mm/kernel/b/g;
     //   11: checkcast 84	com/tencent/mm/kernel/b/h
-    //   14: invokevirtual 88	com/tencent/mm/kernel/b/h:ahL	()Z
+    //   14: invokevirtual 88	com/tencent/mm/kernel/b/h:akw	()Z
     //   17: ifne +20 -> 37
     //   20: new 90	java/lang/IllegalStateException
     //   23: dup
@@ -58,7 +58,7 @@ public final class i
     //   50: dup
     //   51: new 101	java/io/FileInputStream
     //   54: dup
-    //   55: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:tGp	Ljava/io/File;
+    //   55: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:uJc	Ljava/io/File;
     //   58: invokespecial 104	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   61: invokespecial 107	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   64: invokespecial 108	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
@@ -67,22 +67,22 @@ public final class i
     //   69: astore_3
     //   70: aload_2
     //   71: invokevirtual 111	java/io/DataInputStream:readInt	()I
-    //   74: putstatic 40	com/tencent/mm/plugin/hp/tinker/i:tGq	I
+    //   74: putstatic 40	com/tencent/mm/plugin/hp/tinker/i:uJd	I
     //   77: aload_2
     //   78: astore_3
     //   79: aload_2
     //   80: invokevirtual 111	java/io/DataInputStream:readInt	()I
-    //   83: putstatic 42	com/tencent/mm/plugin/hp/tinker/i:tGr	I
+    //   83: putstatic 42	com/tencent/mm/plugin/hp/tinker/i:uJe	I
     //   86: aload_2
-    //   87: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   87: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   90: iconst_1
     //   91: putstatic 38	com/tencent/mm/plugin/hp/tinker/i:sInitialized	Z
-    //   94: invokestatic 119	com/tencent/mm/plugin/hp/tinker/i:cTu	()I
+    //   94: invokestatic 119	com/tencent/mm/plugin/hp/tinker/i:dcE	()I
     //   97: istore_0
-    //   98: getstatic 124	com/tencent/mm/sdk/platformtools/h:GqE	I
+    //   98: getstatic 124	com/tencent/mm/sdk/platformtools/i:Ics	I
     //   101: istore_1
     //   102: iload_0
-    //   103: getstatic 40	com/tencent/mm/plugin/hp/tinker/i:tGq	I
+    //   103: getstatic 40	com/tencent/mm/plugin/hp/tinker/i:uJd	I
     //   106: if_icmpeq +126 -> 232
     //   109: ldc 126
     //   111: ldc 128
@@ -90,7 +90,7 @@ public final class i
     //   114: anewarray 4	java/lang/Object
     //   117: dup
     //   118: iconst_0
-    //   119: getstatic 40	com/tencent/mm/plugin/hp/tinker/i:tGq	I
+    //   119: getstatic 40	com/tencent/mm/plugin/hp/tinker/i:uJd	I
     //   122: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   125: aastore
     //   126: dup
@@ -98,10 +98,10 @@ public final class i
     //   128: iload_0
     //   129: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   132: aastore
-    //   133: invokestatic 137	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   133: invokestatic 137	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   136: iload_0
     //   137: iload_1
-    //   138: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:fZ	(II)V
+    //   138: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:gq	(II)V
     //   141: ldc 70
     //   143: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: return
@@ -110,19 +110,19 @@ public final class i
     //   149: astore_2
     //   150: aload_2
     //   151: astore_3
-    //   152: invokestatic 119	com/tencent/mm/plugin/hp/tinker/i:cTu	()I
-    //   155: putstatic 40	com/tencent/mm/plugin/hp/tinker/i:tGq	I
+    //   152: invokestatic 119	com/tencent/mm/plugin/hp/tinker/i:dcE	()I
+    //   155: putstatic 40	com/tencent/mm/plugin/hp/tinker/i:uJd	I
     //   158: aload_2
     //   159: astore_3
-    //   160: getstatic 124	com/tencent/mm/sdk/platformtools/h:GqE	I
-    //   163: putstatic 42	com/tencent/mm/plugin/hp/tinker/i:tGr	I
+    //   160: getstatic 124	com/tencent/mm/sdk/platformtools/i:Ics	I
+    //   163: putstatic 42	com/tencent/mm/plugin/hp/tinker/i:uJe	I
     //   166: aload_2
     //   167: astore_3
-    //   168: getstatic 40	com/tencent/mm/plugin/hp/tinker/i:tGq	I
-    //   171: getstatic 42	com/tencent/mm/plugin/hp/tinker/i:tGr	I
-    //   174: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:fZ	(II)V
+    //   168: getstatic 40	com/tencent/mm/plugin/hp/tinker/i:uJd	I
+    //   171: getstatic 42	com/tencent/mm/plugin/hp/tinker/i:uJe	I
+    //   174: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:gq	(II)V
     //   177: aload_2
-    //   178: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   178: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   181: goto -91 -> 90
     //   184: astore_3
     //   185: aconst_null
@@ -132,19 +132,19 @@ public final class i
     //   190: ldc 143
     //   192: iconst_0
     //   193: anewarray 4	java/lang/Object
-    //   196: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   199: invokestatic 119	com/tencent/mm/plugin/hp/tinker/i:cTu	()I
-    //   202: putstatic 40	com/tencent/mm/plugin/hp/tinker/i:tGq	I
-    //   205: getstatic 124	com/tencent/mm/sdk/platformtools/h:GqE	I
-    //   208: putstatic 42	com/tencent/mm/plugin/hp/tinker/i:tGr	I
+    //   196: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   199: invokestatic 119	com/tencent/mm/plugin/hp/tinker/i:dcE	()I
+    //   202: putstatic 40	com/tencent/mm/plugin/hp/tinker/i:uJd	I
+    //   205: getstatic 124	com/tencent/mm/sdk/platformtools/i:Ics	I
+    //   208: putstatic 42	com/tencent/mm/plugin/hp/tinker/i:uJe	I
     //   211: aload_2
-    //   212: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   212: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   215: goto -125 -> 90
     //   218: astore_3
     //   219: aconst_null
     //   220: astore_2
     //   221: aload_2
-    //   222: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   222: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   225: ldc 70
     //   227: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   230: aload_3
@@ -166,15 +166,15 @@ public final class i
     //   254: iload_1
     //   255: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   258: aastore
-    //   259: invokestatic 137	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   259: invokestatic 137	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   262: iload_0
     //   263: iload_1
-    //   264: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:fZ	(II)V
+    //   264: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:gq	(II)V
     //   267: ldc 70
     //   269: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   272: return
     //   273: iload_1
-    //   274: getstatic 42	com/tencent/mm/plugin/hp/tinker/i:tGr	I
+    //   274: getstatic 42	com/tencent/mm/plugin/hp/tinker/i:uJe	I
     //   277: if_icmpeq +46 -> 323
     //   280: ldc 126
     //   282: ldc 151
@@ -182,7 +182,7 @@ public final class i
     //   285: anewarray 4	java/lang/Object
     //   288: dup
     //   289: iconst_0
-    //   290: getstatic 42	com/tencent/mm/plugin/hp/tinker/i:tGr	I
+    //   290: getstatic 42	com/tencent/mm/plugin/hp/tinker/i:uJe	I
     //   293: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   296: aastore
     //   297: dup
@@ -190,15 +190,15 @@ public final class i
     //   299: iload_1
     //   300: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   303: aastore
-    //   304: invokestatic 154	com/tencent/mm/sdk/platformtools/ac:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   307: getstatic 160	com/tencent/mm/plugin/report/service/h:wUl	Lcom/tencent/mm/plugin/report/service/h;
+    //   304: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   307: getstatic 160	com/tencent/mm/plugin/report/service/g:yhR	Lcom/tencent/mm/plugin/report/service/g;
     //   310: ldc2_w 161
     //   313: lconst_0
     //   314: lconst_1
-    //   315: invokevirtual 166	com/tencent/mm/plugin/report/service/h:n	(JJJ)V
+    //   315: invokevirtual 166	com/tencent/mm/plugin/report/service/g:n	(JJJ)V
     //   318: iload_0
     //   319: iload_1
-    //   320: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:fZ	(II)V
+    //   320: invokestatic 141	com/tencent/mm/plugin/hp/tinker/i:gq	(II)V
     //   323: ldc 70
     //   325: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   328: return
@@ -251,15 +251,15 @@ public final class i
   }
   
   /* Error */
-  private static void fZ(int paramInt1, int paramInt2)
+  private static void gq(int paramInt1, int paramInt2)
   {
     // Byte code:
     //   0: ldc 167
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:tGp	Ljava/io/File;
+    //   5: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:uJc	Ljava/io/File;
     //   8: invokevirtual 170	java/io/File:exists	()Z
     //   11: ifne +13 -> 24
-    //   14: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:tGp	Ljava/io/File;
+    //   14: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:uJc	Ljava/io/File;
     //   17: invokevirtual 174	java/io/File:getParentFile	()Ljava/io/File;
     //   20: invokevirtual 177	java/io/File:mkdirs	()Z
     //   23: pop
@@ -269,7 +269,7 @@ public final class i
     //   31: dup
     //   32: new 183	java/io/FileOutputStream
     //   35: dup
-    //   36: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:tGp	Ljava/io/File;
+    //   36: getstatic 36	com/tencent/mm/plugin/hp/tinker/i:uJc	Ljava/io/File;
     //   39: invokespecial 184	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   42: invokespecial 187	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   45: invokespecial 188	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
@@ -289,7 +289,7 @@ public final class i
     //   65: aload_3
     //   66: invokevirtual 194	java/io/DataOutputStream:flush	()V
     //   69: aload_3
-    //   70: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   70: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   73: ldc 167
     //   75: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: return
@@ -313,9 +313,9 @@ public final class i
     //   104: iload_1
     //   105: invokestatic 132	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   108: aastore
-    //   109: invokestatic 147	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: invokestatic 147	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   112: aload_3
-    //   113: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   113: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   116: ldc 167
     //   118: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   121: return
@@ -323,7 +323,7 @@ public final class i
     //   123: aconst_null
     //   124: astore_2
     //   125: aload_2
-    //   126: invokestatic 117	com/tencent/mm/sdk/platformtools/bs:d	(Ljava/io/Closeable;)V
+    //   126: invokestatic 117	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   129: ldc 167
     //   131: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   134: aload_3
@@ -357,7 +357,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.i
  * JD-Core Version:    0.7.0.1
  */

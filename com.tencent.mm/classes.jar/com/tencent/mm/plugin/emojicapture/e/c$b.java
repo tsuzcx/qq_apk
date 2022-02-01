@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.emojicapture.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.y;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "shouldBlock", "", "invoke"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "shouldBlock", "", "invoke"})
 final class c$b
-  extends d.g.b.l
-  implements b<Boolean, y>
+  extends q
+  implements b<Boolean, z>
 {
   c$b(b paramb)
   {

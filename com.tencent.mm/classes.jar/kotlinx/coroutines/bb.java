@@ -3,38 +3,32 @@ package kotlinx.coroutines;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lkotlinx/coroutines/DisposeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handle", "Lkotlinx/coroutines/DisposableHandle;", "(Lkotlinx/coroutines/DisposableHandle;)V", "invoke", "", "cause", "", "toString", "", "kotlinx-coroutines-core"})
 final class bb
-  implements bj
+  extends i
 {
-  final boolean isActive;
+  private final ba NHy;
   
-  public bb(boolean paramBoolean)
+  public bb(ba paramba)
   {
-    this.isActive = paramBoolean;
-  }
-  
-  public final bx gdQ()
-  {
-    return null;
-  }
-  
-  public final boolean isActive()
-  {
-    return this.isActive;
+    AppMethodBeat.i(118047);
+    this.NHy = paramba;
+    AppMethodBeat.o(118047);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(117965);
-    StringBuilder localStringBuilder = new StringBuilder("Empty{");
-    if (this.isActive) {}
-    for (String str = "Active";; str = "New")
-    {
-      str = str + '}';
-      AppMethodBeat.o(117965);
-      return str;
-    }
+    AppMethodBeat.i(118046);
+    String str = "DisposeOnCancel[" + this.NHy + ']';
+    AppMethodBeat.o(118046);
+    return str;
+  }
+  
+  public final void v(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118044);
+    this.NHy.dispose();
+    AppMethodBeat.o(118044);
   }
 }
 

@@ -12,7 +12,7 @@ public class CircularRevealFrameLayout
   extends FrameLayout
   implements c
 {
-  private final b hI = new b(this);
+  private final b jD = new b(this);
   
   public CircularRevealFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,17 +24,17 @@ public class CircularRevealFrameLayout
     super.draw(paramCanvas);
   }
   
-  public final void bc()
+  public final void bs()
   {
-    this.hI.bc();
+    this.jD.bs();
   }
   
-  public final void bd()
+  public final void bt()
   {
-    this.hI.bd();
+    this.jD.bt();
   }
   
-  public final boolean be()
+  public final boolean bu()
   {
     return super.isOpaque();
   }
@@ -42,9 +42,9 @@ public class CircularRevealFrameLayout
   @SuppressLint({"MissingSuperCall"})
   public void draw(Canvas paramCanvas)
   {
-    if (this.hI != null)
+    if (this.jD != null)
     {
-      this.hI.draw(paramCanvas);
+      this.jD.draw(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -52,40 +52,40 @@ public class CircularRevealFrameLayout
   
   public Drawable getCircularRevealOverlayDrawable()
   {
-    return this.hI.hP;
+    return this.jD.jK;
   }
   
   public int getCircularRevealScrimColor()
   {
-    return this.hI.hN.getColor();
+    return this.jD.jI.getColor();
   }
   
   public c.d getRevealInfo()
   {
-    return this.hI.getRevealInfo();
+    return this.jD.getRevealInfo();
   }
   
   public boolean isOpaque()
   {
-    if (this.hI != null) {
-      return this.hI.isOpaque();
+    if (this.jD != null) {
+      return this.jD.isOpaque();
     }
     return super.isOpaque();
   }
   
   public void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    this.hI.setCircularRevealOverlayDrawable(paramDrawable);
+    this.jD.setCircularRevealOverlayDrawable(paramDrawable);
   }
   
   public void setCircularRevealScrimColor(int paramInt)
   {
-    this.hI.setCircularRevealScrimColor(paramInt);
+    this.jD.setCircularRevealScrimColor(paramInt);
   }
   
   public void setRevealInfo(c.d paramd)
   {
-    this.hI.setRevealInfo(paramd);
+    this.jD.setRevealInfo(paramd);
   }
 }
 

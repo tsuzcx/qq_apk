@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.backup.b;
 
 public final class c
 {
-  public static int mRS = 0;
-  public static int mRT = 1;
-  public static int mRU = 3;
-  public static int mRV = 0;
-  public static int mRW = 1;
-  public static int mRX = 0;
-  public static int mRY = 1;
-  public static int mRZ = 2;
-  public static int mSa = 4;
-  public static int mSb = 8;
+  public static int nsA = 8;
+  public static int nsr = 0;
+  public static int nss = 1;
+  public static int nst = 3;
+  public static int nsu = 0;
+  public static int nsv = 1;
+  public static int nsw = 0;
+  public static int nsx = 1;
+  public static int nsy = 2;
+  public static int nsz = 4;
 }
 
 

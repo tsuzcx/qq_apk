@@ -14,7 +14,7 @@ public class SetStrokeStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetStrokeStyleActionArg> CREATOR;
-  public RealSetStrokeStyleActionArg jzI;
+  public RealSetStrokeStyleActionArg jTD;
   
   static
   {
@@ -33,12 +33,12 @@ public class SetStrokeStyleActionArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145233);
-    if (this.jzI == null)
+    if (this.jTD == null)
     {
       AppMethodBeat.o(145233);
       return false;
     }
-    boolean bool = this.jzI.a(paramd, paramCanvas);
+    boolean bool = this.jTD.a(paramd, paramCanvas);
     AppMethodBeat.o(145233);
     return bool;
   }
@@ -67,7 +67,7 @@ public class SetStrokeStyleActionArg
       return false;
     }
     paramObject = (SetStrokeStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.jzI, paramObject.jzI);
+    boolean bool = Objects.equals(this.jTD, paramObject.jTD);
     AppMethodBeat.o(145237);
     return bool;
   }
@@ -76,14 +76,14 @@ public class SetStrokeStyleActionArg
   {
     AppMethodBeat.i(145234);
     super.h(paramParcel);
-    this.jzI = ((RealSetStrokeStyleActionArg)paramParcel.readParcelable(SetStrokeStyleActionArg.class.getClassLoader()));
+    this.jTD = ((RealSetStrokeStyleActionArg)paramParcel.readParcelable(SetStrokeStyleActionArg.class.getClassLoader()));
     AppMethodBeat.o(145234);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145238);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jzI });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jTD });
     AppMethodBeat.o(145238);
     return i;
   }
@@ -99,8 +99,8 @@ public class SetStrokeStyleActionArg
       return;
     }
     String str = paramJSONObject.optString(0);
-    this.jzI = ((RealSetStrokeStyleActionArg)h.aZX().Ju(str));
-    this.jzI.f(paramJSONObject);
+    this.jTD = ((RealSetStrokeStyleActionArg)h.bdw().MN(str));
+    this.jTD.f(paramJSONObject);
     AppMethodBeat.o(145236);
   }
   
@@ -108,8 +108,8 @@ public class SetStrokeStyleActionArg
   {
     AppMethodBeat.i(145232);
     super.reset();
-    h.aZX().a(this.jzI);
-    this.jzI = null;
+    h.bdw().a(this.jTD);
+    this.jTD = null;
     AppMethodBeat.o(145232);
   }
   
@@ -117,7 +117,7 @@ public class SetStrokeStyleActionArg
   {
     AppMethodBeat.i(145235);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.jzI, paramInt);
+    paramParcel.writeParcelable(this.jTD, paramInt);
     AppMethodBeat.o(145235);
   }
 }

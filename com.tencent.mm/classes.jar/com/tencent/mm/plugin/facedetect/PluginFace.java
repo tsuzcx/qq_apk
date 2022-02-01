@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.facedetect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.vending.g.d.a;
 
 public class PluginFace
@@ -12,7 +12,7 @@ public class PluginFace
   public static boolean isEnabled()
   {
     AppMethodBeat.i(103572);
-    boolean bool = com.tencent.mm.plugin.expansions.a.cil();
+    boolean bool = com.tencent.mm.plugin.expansions.a.cmP();
     AppMethodBeat.o(103572);
     return bool;
   }
@@ -20,9 +20,9 @@ public class PluginFace
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(103571);
-    ac.i("MicroMsg.PluginFace", "hy: starting execute.");
-    if (paramg.ahL()) {
-      com.tencent.mm.vending.g.g.fxs().d(new a()).a(new d.a() {});
+    ad.i("MicroMsg.PluginFace", "hy: starting execute.");
+    if (paramg.akw()) {
+      com.tencent.mm.vending.g.g.fOf().d(new a()).a(new d.a() {});
     }
     AppMethodBeat.o(103571);
   }
@@ -34,7 +34,7 @@ public class PluginFace
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.PluginFace
  * JD-Core Version:    0.7.0.1
  */

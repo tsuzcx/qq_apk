@@ -6,10 +6,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.f;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.az.f;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
 
 final class a$1
@@ -20,22 +21,28 @@ final class a$1
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(63194);
-    paramView = com.tencent.mm.ay.a.aGy();
-    if ((paramView != null) && (paramView.hOr) && (!TextUtils.isEmpty(paramView.hOs)))
+    Object localObject = new b();
+    ((b)localObject).bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahq());
+    paramView = com.tencent.mm.az.a.aJJ();
+    if ((paramView != null) && (paramView.ihF) && (!TextUtils.isEmpty(paramView.ihG)))
     {
-      paramView = paramView.hOs;
-      ac.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramView });
-      Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramView);
-      d.b((Context)this.vhD.Dsc.get(), "webview", ".ui.tools.WebViewUI", localIntent);
+      paramView = paramView.ihG;
+      ad.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramView });
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("rawUrl", paramView);
+      d.b((Context)this.wmY.EXg.get(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+    }
+    for (;;)
+    {
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(63194);
       return;
+      paramView = new Intent();
+      g.yhR.f(11992, new Object[] { Integer.valueOf(1) });
+      paramView.putExtra("key_scene", 1);
+      d.b((Context)this.wmY.EXg.get(), "music", ".ui.MusicMainUI", paramView);
     }
-    paramView = new Intent();
-    h.wUl.f(11992, new Object[] { Integer.valueOf(1) });
-    paramView.putExtra("key_scene", 1);
-    d.b((Context)this.vhD.Dsc.get(), "music", ".ui.MusicMainUI", paramView);
-    AppMethodBeat.o(63194);
   }
 }
 

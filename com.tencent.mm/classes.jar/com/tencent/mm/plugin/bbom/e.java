@@ -20,13 +20,13 @@ public final class e
   public final void parallelsDependency()
   {
     AppMethodBeat.i(22354);
-    com.tencent.mm.kernel.a.b.a.a(this, c.class).by(g.ad(n.class));
+    com.tencent.mm.kernel.a.b.a.a(this, c.class).bA(g.ad(n.class));
     AppMethodBeat.o(22354);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.e
  * JD-Core Version:    0.7.0.1
  */

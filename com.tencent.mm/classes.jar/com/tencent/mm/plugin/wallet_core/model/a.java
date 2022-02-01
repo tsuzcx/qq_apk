@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public String dlQ;
-  public String oxl;
-  public String unW;
-  public String unX;
+  public String dxD;
+  public String kzK;
+  public String kzL;
+  public String paG;
   
-  public final boolean eqP()
+  public final boolean eEP()
   {
     AppMethodBeat.i(70205);
-    if ((!bs.isNullOrNil(this.dlQ)) && (!bs.isNullOrNil(this.unW)) && (!bs.isNullOrNil(this.unX)) && (!bs.isNullOrNil(this.oxl)))
+    if ((!bt.isNullOrNil(this.dxD)) && (!bt.isNullOrNil(this.kzK)) && (!bt.isNullOrNil(this.kzL)) && (!bt.isNullOrNil(this.paG)))
     {
       AppMethodBeat.o(70205);
       return true;

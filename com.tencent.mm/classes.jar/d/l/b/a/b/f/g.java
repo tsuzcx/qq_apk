@@ -1,25 +1,27 @@
 package d.l.b.a.b.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.p;
+import d.n.k;
 
 public final class g
 {
-  private static final d.n.k Lzt;
-  public static final g Lzu;
+  private static final k Nqq;
+  public static final g Nqr;
   
   static
   {
     AppMethodBeat.i(59333);
-    Lzu = new g();
-    Lzt = new d.n.k("[^\\p{L}\\p{Digit}]");
+    Nqr = new g();
+    Nqq = new k("[^\\p{L}\\p{Digit}]");
     AppMethodBeat.o(59333);
   }
   
-  public static final String aWF(String paramString)
+  public static final String bcI(String paramString)
   {
     AppMethodBeat.i(59332);
-    d.g.b.k.h(paramString, "name");
-    paramString = Lzt.d((CharSequence)paramString, "_");
+    p.h(paramString, "name");
+    paramString = Nqq.e((CharSequence)paramString, "_");
     AppMethodBeat.o(59332);
     return paramString;
   }

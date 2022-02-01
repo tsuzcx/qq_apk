@@ -4,17 +4,19 @@ import android.content.Context;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.model.c;
 import com.tencent.mm.openim.PluginOpenIM;
 import com.tencent.mm.openim.a.b;
-import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.platformtools.af;
 import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.bj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bp;
 import com.tencent.mm.storagebase.a.e;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.ui.AddressView;
@@ -25,16 +27,16 @@ import java.util.List;
 public final class x
   extends a
 {
-  private HashSet<String> Iya;
-  private String Iyb;
-  OpenIMAddressUI.OpenIMAddressUIFragment Iyc;
+  private HashSet<String> KoI;
+  private String KoJ;
+  OpenIMAddressUI.OpenIMAddressUIFragment KoK;
   
   public x(Context paramContext, String paramString1, String paramString2)
   {
     super(paramContext, paramString1, null, 2);
     AppMethodBeat.i(37919);
-    this.Iya = new HashSet();
-    this.Iyb = paramString2;
+    this.KoI = new HashSet();
+    this.KoJ = paramString2;
     AppMethodBeat.o(37919);
   }
   
@@ -43,11 +45,11 @@ public final class x
     AppMethodBeat.i(37921);
     if (paramf == null)
     {
-      ac.e("OpenIMContactAdapter", "contact is null, position:%d", new Object[] { Integer.valueOf(paramInt) });
+      ad.e("OpenIMContactAdapter", "contact is null, position:%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(37921);
       return -1;
     }
-    if (bs.isNullOrNil(paramf.field_descWording))
+    if (bt.isNullOrNil(paramf.field_descWording))
     {
       AppMethodBeat.o(37921);
       return -1;
@@ -62,20 +64,20 @@ public final class x
     AppMethodBeat.i(37925);
     if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      ac.d("OpenIMContactAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ad.d("OpenIMContactAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
       AppMethodBeat.o(37925);
       return;
     }
-    az.ayM();
-    if (paramn == c.awB())
+    ba.aBQ();
+    if (paramn == c.azp())
     {
-      if (com.tencent.mm.storage.ai.aNc((String)paramObject))
+      if (am.aSQ((String)paramObject))
       {
-        this.Iyc.Ith = true;
+        this.KoK.KjN = true;
         AppMethodBeat.o(37925);
         return;
       }
-      ac.d("OpenIMContactAdapter", "newcursor is not openim ，return");
+      ad.d("OpenIMContactAdapter", "newcursor is not openim ，return");
     }
     AppMethodBeat.o(37925);
   }
@@ -84,13 +86,13 @@ public final class x
   {
     AppMethodBeat.i(37924);
     paramb = paramf.field_descWordingId;
-    if (this.Iya.contains(paramb))
+    if (this.KoI.contains(paramb))
     {
       AppMethodBeat.o(37924);
       return;
     }
-    this.Iya.add(paramb);
-    ((b)g.ab(b.class)).bB(paramf.field_openImAppid, paramb);
+    this.KoI.add(paramb);
+    ((b)g.ab(b.class)).bC(paramf.field_openImAppid, paramb);
     AppMethodBeat.o(37924);
   }
   
@@ -98,7 +100,7 @@ public final class x
   {
     AppMethodBeat.i(37922);
     paramf = paramf.field_descWording;
-    if (bs.isNullOrNil(paramf))
+    if (bt.isNullOrNil(paramf))
     {
       AppMethodBeat.o(37922);
       return "#";
@@ -110,28 +112,28 @@ public final class x
   protected final void b(com.tencent.mm.storage.f paramf, a.b paramb)
   {
     AppMethodBeat.i(37923);
-    paramb.tUz.updateTextColors();
-    paramb.tUz.setMergeCallback(null);
-    Object localObject1 = paramf.GBP;
+    paramb.uXb.updateTextColors();
+    paramb.uXb.setMergeCallback(null);
+    Object localObject1 = paramf.InJ;
     if (localObject1 == null) {}
     for (;;)
     {
       CharSequence localCharSequence;
       try
       {
-        if (com.tencent.mm.storage.ai.aNc(paramf.field_username))
+        if (am.aSQ(paramf.field_username))
         {
-          localObject1 = ((b)g.ab(b.class)).e(com.tencent.mm.sdk.platformtools.ai.getContext(), paramf.aaS(), com.tencent.mm.cc.a.au(this.context, 2131165517));
+          localObject1 = ((b)g.ab(b.class)).e(aj.getContext(), paramf.adv(), com.tencent.mm.cc.a.ax(this.context, 2131165517));
           Object localObject2 = localObject1;
           if (localObject1 == null) {
             localObject2 = "";
           }
-          paramb.tUz.setName((CharSequence)localObject2);
-          paramb.tUz.setDescription(ae.nullAsNil(paramf.field_remarkDesc));
+          paramb.uXb.setName((CharSequence)localObject2);
+          paramb.uXb.setDescription(af.nullAsNil(paramf.field_remarkDesc));
           AppMethodBeat.o(37923);
           return;
         }
-        localObject1 = k.b(this.context, aQP(getDisplayName(paramf.aaS(), paramf.field_username)), com.tencent.mm.cc.a.au(this.context, 2131165517));
+        localObject1 = k.b(this.context, aWK(getDisplayName(paramf.adv(), paramf.field_username)), com.tencent.mm.cc.a.ax(this.context, 2131165517));
         continue;
       }
       catch (Exception localException)
@@ -139,36 +141,36 @@ public final class x
         localCharSequence = null;
         continue;
       }
-      paramb.tUz.setName(localCharSequence);
+      paramb.uXb.setName(localCharSequence);
     }
   }
   
-  protected final Cursor fqN()
+  protected final Cursor fHA()
   {
     AppMethodBeat.i(37920);
     long l = System.currentTimeMillis();
-    g.agS();
+    g.ajD();
     Object localObject2 = ((PluginOpenIM)g.ad(PluginOpenIM.class)).getAppIdInfoStg();
-    String str = this.Iyb;
+    String str = this.KoJ;
     Object localObject1 = new LinkedList();
-    localObject2 = ((com.tencent.mm.openim.e.d)localObject2).hpA.a("select distinct appid from OpenIMAppIdInfo where acctTypeId=? ", new String[] { str }, 2);
+    localObject2 = ((com.tencent.mm.openim.e.d)localObject2).hHS.a("select distinct appid from OpenIMAppIdInfo where acctTypeId=? ", new String[] { str }, 2);
     if (((Cursor)localObject2).moveToFirst()) {
       do
       {
         str = ((Cursor)localObject2).getString(0);
-        if (!bs.isNullOrNil(str)) {
+        if (!bt.isNullOrNil(str)) {
           ((List)localObject1).add(str);
         }
       } while (((Cursor)localObject2).moveToNext());
     }
     ((Cursor)localObject2).close();
-    az.ayM();
-    localObject2 = c.awB().a(this.fzw, ab.iC(com.tencent.mm.sdk.platformtools.ai.getContext()), (List)localObject1);
+    ba.aBQ();
+    localObject2 = c.azp().a(this.fSL, ac.iM(aj.getContext()), (List)localObject1);
     localObject1 = localObject2;
     if ((localObject2 instanceof com.tencent.mm.storagebase.a.f)) {
-      localObject1 = new e(new com.tencent.mm.storagebase.a.d[] { (com.tencent.mm.storagebase.a.d)com.tencent.mm.storagebase.d.fdy(), (com.tencent.mm.storagebase.a.f)localObject2 });
+      localObject1 = new e(new com.tencent.mm.storagebase.a.d[] { (com.tencent.mm.storagebase.a.d)com.tencent.mm.storagebase.d.ftG(), (com.tencent.mm.storagebase.a.f)localObject2 });
     }
-    ac.d("OpenIMContactAdapter", "createNewCursor : " + (System.currentTimeMillis() - l));
+    ad.d("OpenIMContactAdapter", "createNewCursor : " + (System.currentTimeMillis() - l));
     AppMethodBeat.o(37920);
     return localObject1;
   }

@@ -5,45 +5,45 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cf.e;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class c
 {
-  Context mHB;
-  boolean mHR = false;
-  b mHT;
-  f mHU;
-  int mHV;
-  int mHW;
+  Context nhZ;
+  boolean nip = false;
+  b nir;
+  f nis;
+  int nit;
+  int niu;
   
-  public static int[] bBf()
+  public static int[] bFh()
   {
     AppMethodBeat.i(49955);
-    Display localDisplay = ((WindowManager)ai.getContext().getSystemService("window")).getDefaultDisplay();
+    Display localDisplay = ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay();
     int i = localDisplay.getWidth();
     int j = localDisplay.getHeight();
     AppMethodBeat.o(49955);
     return new int[] { i, j };
   }
   
-  protected e bAO()
+  protected e bEQ()
   {
     AppMethodBeat.i(49956);
-    e locale = e.eXp();
+    e locale = e.fmZ();
     AppMethodBeat.o(49956);
     return locale;
   }
   
-  public final a bBe()
+  public final a bFg()
   {
     AppMethodBeat.i(49954);
-    if (this.mHT == null)
+    if (this.nir == null)
     {
-      this.mHT = new b();
-      this.mHT.mHB = this.mHB;
-      this.mHT.setPanelManager(this);
+      this.nir = new b();
+      this.nir.nhZ = this.nhZ;
+      this.nir.setPanelManager(this);
     }
-    b localb = this.mHT;
+    b localb = this.nir;
     AppMethodBeat.o(49954);
     return localb;
   }

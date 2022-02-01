@@ -4,10 +4,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -45,7 +45,7 @@ public class PlatformComm$C2Java
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
     }
     return null;
   }
@@ -64,8 +64,8 @@ public class PlatformComm$C2Java
     }
     catch (Exception localException)
     {
-      ac.e("PlatformComm", exception2String(localException));
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.e("PlatformComm", exception2String(localException));
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
       PlatformComm.Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return 0;
@@ -78,19 +78,19 @@ public class PlatformComm$C2Java
       if (PlatformComm.access$000() == null) {
         return null;
       }
-      int i = ax.getISPCode(PlatformComm.access$000());
+      int i = ay.getISPCode(PlatformComm.access$000());
       if (i != 0)
       {
         PlatformComm.SIMInfo localSIMInfo = new PlatformComm.SIMInfo();
         localSIMInfo.ispCode = String.valueOf(i);
-        ac.d("PlatformComm", "getISPCode MCC_MNC=%s", new Object[] { localSIMInfo.ispCode });
-        localSIMInfo.ispName = ax.getISPName(PlatformComm.access$000());
+        ad.d("PlatformComm", "getISPCode MCC_MNC=%s", new Object[] { localSIMInfo.ispCode });
+        localSIMInfo.ispName = ay.getISPName(PlatformComm.access$000());
         return localSIMInfo;
       }
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
     }
     return null;
   }
@@ -117,19 +117,19 @@ public class PlatformComm$C2Java
       {
         for (;;)
         {
-          ac.e("PlatformComm", "getActiveNetworkInfo failed.");
+          ad.e("PlatformComm", "getActiveNetworkInfo failed.");
           localWifiInfo = null;
         }
         PlatformComm.WifiInfo localWifiInfo = new PlatformComm.WifiInfo();
-        localWifiInfo.ssid = ax.iL(ai.getContext());
-        localWifiInfo.bssid = ax.iM(ai.getContext());
+        localWifiInfo.ssid = ay.iV(aj.getContext());
+        localWifiInfo.bssid = ay.iW(aj.getContext());
         return localWifiInfo;
       }
       return null;
     }
     catch (Exception localException2)
     {
-      ac.printErrStackTrace("PlatformComm", localException2, "", new Object[0]);
+      ad.printErrStackTrace("PlatformComm", localException2, "", new Object[0]);
       return null;
     }
   }
@@ -166,7 +166,7 @@ public class PlatformComm$C2Java
       }
       catch (Exception localException2)
       {
-        ac.printErrStackTrace("PlatformComm", localException2, "", new Object[0]);
+        ad.printErrStackTrace("PlatformComm", localException2, "", new Object[0]);
       }
     }
     if (localObject1 == null) {
@@ -197,7 +197,7 @@ public class PlatformComm$C2Java
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
     }
     return 0L;
   }
@@ -211,26 +211,26 @@ public class PlatformComm$C2Java
     }
     try
     {
-      int i = ax.getNetType(PlatformComm.access$000());
+      int i = ay.getNetType(PlatformComm.access$000());
       if (i == -1) {
         return -1;
       }
-      if (ax.isWifi(i)) {
+      if (ay.isWifi(i)) {
         return 1;
       }
-      if (ax.is2G(PlatformComm.access$000())) {
+      if (ay.is2G(PlatformComm.access$000())) {
         return 3;
       }
-      if (ax.is3G(PlatformComm.access$000())) {
+      if (ay.is3G(PlatformComm.access$000())) {
         return 4;
       }
-      if (ax.is4G(PlatformComm.access$000())) {
+      if (ay.is4G(PlatformComm.access$000())) {
         return 5;
       }
-      if (ax.is5G(PlatformComm.access$000())) {
+      if (ay.is5G(PlatformComm.access$000())) {
         return 7;
       }
-      boolean bool = ax.isWap(i);
+      boolean bool = ay.isWap(i);
       if (bool) {
         return 2;
       }
@@ -238,8 +238,8 @@ public class PlatformComm$C2Java
     }
     catch (Exception localException)
     {
-      ac.e("PlatformComm", exception2String(localException));
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.e("PlatformComm", exception2String(localException));
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
       PlatformComm.Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return -1;
@@ -254,13 +254,13 @@ public class PlatformComm$C2Java
     }
     try
     {
-      boolean bool = ax.isNetworkConnected(PlatformComm.access$000());
+      boolean bool = ay.isNetworkConnected(PlatformComm.access$000());
       return bool;
     }
     catch (Exception localException)
     {
-      ac.e("PlatformComm", exception2String(localException));
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.e("PlatformComm", exception2String(localException));
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
       PlatformComm.Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return false;
@@ -284,13 +284,13 @@ public class PlatformComm$C2Java
     }
     catch (Exception localException)
     {
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
     }
   }
   
   public static boolean startAlarm(int paramInt1, int paramInt2)
   {
-    ac.i("PlatformComm", "start alarm no type id is %d", new Object[] { Integer.valueOf(paramInt1) });
+    ad.i("PlatformComm", "start alarm no type id is %d", new Object[] { Integer.valueOf(paramInt1) });
     if (PlatformComm.access$000() == null)
     {
       PlatformComm.Assert.assertTrue(false);
@@ -307,8 +307,8 @@ public class PlatformComm$C2Java
       if (PlatformComm.reportCrashImp != null) {
         PlatformComm.reportCrashImp.reportIdkey();
       }
-      ac.e("PlatformComm", exception2String(localException));
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.e("PlatformComm", exception2String(localException));
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
       PlatformComm.Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return false;
@@ -316,7 +316,7 @@ public class PlatformComm$C2Java
   
   public static boolean startAlarm(int paramInt1, int paramInt2, int paramInt3)
   {
-    ac.i("PlatformComm", "start alarm type:%d id is %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("PlatformComm", "start alarm type:%d id is %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (PlatformComm.access$000() == null)
     {
       PlatformComm.Assert.assertTrue(false);
@@ -333,8 +333,8 @@ public class PlatformComm$C2Java
       if (PlatformComm.reportCrashImp != null) {
         PlatformComm.reportCrashImp.reportIdkey();
       }
-      ac.e("PlatformComm", exception2String(localException));
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.e("PlatformComm", exception2String(localException));
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
       PlatformComm.Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return false;
@@ -355,8 +355,8 @@ public class PlatformComm$C2Java
     }
     catch (Exception localException)
     {
-      ac.e("PlatformComm", exception2String(localException));
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.e("PlatformComm", exception2String(localException));
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
       PlatformComm.Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return false;
@@ -376,8 +376,8 @@ public class PlatformComm$C2Java
     }
     catch (Exception localException)
     {
-      ac.e("PlatformComm", exception2String(localException));
-      ac.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
+      ad.e("PlatformComm", exception2String(localException));
+      ad.printErrStackTrace("PlatformComm", localException, "", new Object[0]);
       PlatformComm.Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return null;

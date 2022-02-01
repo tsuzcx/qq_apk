@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.webview.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.report.service.g;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
 {
-  private static final Map<Integer, Integer> Cub;
-  private static final Map<Integer, Integer> Cuc;
-  private static final Map<Integer, Integer> Cud;
-  private static final Map<String, Integer> Cue;
+  private static final Map<Integer, Integer> DXI;
+  private static final Map<Integer, Integer> DXJ;
+  private static final Map<Integer, Integer> DXK;
+  private static final Map<String, Integer> DXL;
   
   static
   {
-    AppMethodBeat.i(205395);
+    AppMethodBeat.i(213997);
     HashMap localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(-1), Integer.valueOf(5));
     localHashMap.put(Integer.valueOf(-2), Integer.valueOf(6));
@@ -32,7 +32,7 @@ public final class a
     localHashMap.put(Integer.valueOf(-13), Integer.valueOf(17));
     localHashMap.put(Integer.valueOf(-14), Integer.valueOf(18));
     localHashMap.put(Integer.valueOf(-15), Integer.valueOf(19));
-    Cub = Collections.unmodifiableMap(localHashMap);
+    DXI = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(-1), Integer.valueOf(4));
     localHashMap.put(Integer.valueOf(-2), Integer.valueOf(5));
@@ -40,12 +40,12 @@ public final class a
     localHashMap.put(Integer.valueOf(-4), Integer.valueOf(7));
     localHashMap.put(Integer.valueOf(-5), Integer.valueOf(8));
     localHashMap.put(Integer.valueOf(-6), Integer.valueOf(9));
-    Cuc = Collections.unmodifiableMap(localHashMap);
+    DXJ = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put(Integer.valueOf(0), Integer.valueOf(0));
     localHashMap.put(Integer.valueOf(1), Integer.valueOf(1));
     localHashMap.put(Integer.valueOf(2), Integer.valueOf(2));
-    Cud = Collections.unmodifiableMap(localHashMap);
+    DXK = Collections.unmodifiableMap(localHashMap);
     localHashMap = new HashMap();
     localHashMap.put("imagePreview", Integer.valueOf(2));
     localHashMap.put("profile", Integer.valueOf(3));
@@ -67,70 +67,11 @@ public final class a
     localHashMap.put("chooseImage", Integer.valueOf(22));
     localHashMap.put("scanCover", Integer.valueOf(23));
     localHashMap.put("openGameWebView", Integer.valueOf(28));
-    Cue = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(205395);
+    DXL = Collections.unmodifiableMap(localHashMap);
+    AppMethodBeat.o(213997);
   }
   
-  public static int Vg(int paramInt)
-  {
-    AppMethodBeat.i(205390);
-    Integer localInteger2 = (Integer)Cub.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = (Integer)Cub.get(Integer.valueOf(-1));
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(205390);
-    return paramInt;
-  }
-  
-  public static int Vh(int paramInt)
-  {
-    AppMethodBeat.i(205391);
-    Integer localInteger2 = (Integer)Cuc.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = (Integer)Cuc.get(Integer.valueOf(-1));
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(205391);
-    return paramInt;
-  }
-  
-  public static int Vi(int paramInt)
-  {
-    AppMethodBeat.i(205392);
-    Integer localInteger2 = (Integer)Cud.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = Integer.valueOf(-1);
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(205392);
-    return paramInt;
-  }
-  
-  public static void Vj(int paramInt)
-  {
-    AppMethodBeat.i(205394);
-    h.wUl.idkeyStat(1061L, paramInt, 1L, false);
-    AppMethodBeat.o(205394);
-  }
-  
-  public static int aCK(String paramString)
-  {
-    AppMethodBeat.i(205393);
-    Integer localInteger = (Integer)Cue.get(paramString);
-    paramString = localInteger;
-    if (localInteger == null) {
-      paramString = Integer.valueOf(-1);
-    }
-    int i = paramString.intValue();
-    AppMethodBeat.o(205393);
-    return i;
-  }
-  
-  public static int zD(long paramLong)
+  public static int Cr(long paramLong)
   {
     if (paramLong < 0L) {
       return -1;
@@ -148,6 +89,65 @@ public final class a
       return 4;
     }
     return 5;
+  }
+  
+  public static int WW(int paramInt)
+  {
+    AppMethodBeat.i(213992);
+    Integer localInteger2 = (Integer)DXI.get(Integer.valueOf(paramInt));
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = (Integer)DXI.get(Integer.valueOf(-1));
+    }
+    paramInt = localInteger1.intValue();
+    AppMethodBeat.o(213992);
+    return paramInt;
+  }
+  
+  public static int WX(int paramInt)
+  {
+    AppMethodBeat.i(213993);
+    Integer localInteger2 = (Integer)DXJ.get(Integer.valueOf(paramInt));
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = (Integer)DXJ.get(Integer.valueOf(-1));
+    }
+    paramInt = localInteger1.intValue();
+    AppMethodBeat.o(213993);
+    return paramInt;
+  }
+  
+  public static int WY(int paramInt)
+  {
+    AppMethodBeat.i(213994);
+    Integer localInteger2 = (Integer)DXK.get(Integer.valueOf(paramInt));
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = Integer.valueOf(-1);
+    }
+    paramInt = localInteger1.intValue();
+    AppMethodBeat.o(213994);
+    return paramInt;
+  }
+  
+  public static void WZ(int paramInt)
+  {
+    AppMethodBeat.i(213996);
+    g.yhR.idkeyStat(1061L, paramInt, 1L, false);
+    AppMethodBeat.o(213996);
+  }
+  
+  public static int aIm(String paramString)
+  {
+    AppMethodBeat.i(213995);
+    Integer localInteger = (Integer)DXL.get(paramString);
+    paramString = localInteger;
+    if (localInteger == null) {
+      paramString = Integer.valueOf(-1);
+    }
+    int i = paramString.intValue();
+    AppMethodBeat.o(213995);
+    return i;
   }
 }
 

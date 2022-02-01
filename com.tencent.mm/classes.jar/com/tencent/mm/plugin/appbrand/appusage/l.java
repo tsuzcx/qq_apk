@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bho;
+import com.tencent.mm.protocal.protobuf.blw;
 import java.util.HashSet;
 import java.util.Set;
 
 public class l
 {
-  private static volatile l juK;
-  private final Set<Object> juL;
-  private volatile bho juM;
+  private static volatile l jOD;
+  private final Set<Object> jOE;
+  private volatile blw jOF;
   private final Object mLock;
   
   public l()
   {
     AppMethodBeat.i(44498);
     this.mLock = new Object();
-    this.juL = new HashSet();
-    this.juM = null;
+    this.jOE = new HashSet();
+    this.jOF = null;
     AppMethodBeat.o(44498);
   }
   
-  public static l aYC()
+  public static l bca()
   {
     AppMethodBeat.i(44499);
-    if (juK == null) {}
+    if (jOD == null) {}
     try
     {
-      if (juK == null) {
-        juK = new l();
+      if (jOD == null) {
+        jOD = new l();
       }
-      l locall = juK;
+      l locall = jOD;
       AppMethodBeat.o(44499);
       return locall;
     }
@@ -42,23 +42,23 @@ public class l
   
   public static enum a
   {
-    int cof;
+    int cyP;
     
     static
     {
       AppMethodBeat.i(44493);
-      juN = new a("FORCE_OFF", 0, 0);
-      juO = new a("FORCE_ON", 1, 1);
-      juP = new a[] { juN, juO };
+      jOG = new a("FORCE_OFF", 0, 0);
+      jOH = new a("FORCE_ON", 1, 1);
+      jOI = new a[] { jOG, jOH };
       AppMethodBeat.o(44493);
     }
     
     private a(int paramInt)
     {
-      this.cof = paramInt;
+      this.cyP = paramInt;
     }
     
-    public static a rx(int paramInt)
+    public static a rX(int paramInt)
     {
       AppMethodBeat.i(44492);
       a[] arrayOfa = values();
@@ -67,7 +67,7 @@ public class l
       while (i < j)
       {
         a locala = arrayOfa[i];
-        if (locala.cof == paramInt)
+        if (locala.cyP == paramInt)
         {
           AppMethodBeat.o(44492);
           return locala;

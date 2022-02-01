@@ -4,13 +4,13 @@ import android.content.Intent;
 
 public abstract interface a
 {
-  public abstract boolean bc(Intent paramIntent);
+  public abstract boolean bh(Intent paramIntent);
   
   public abstract boolean isBusy();
   
   public abstract void onDestroy();
   
-  public abstract void vE(boolean paramBoolean);
+  public abstract void wq(boolean paramBoolean);
 }
 
 

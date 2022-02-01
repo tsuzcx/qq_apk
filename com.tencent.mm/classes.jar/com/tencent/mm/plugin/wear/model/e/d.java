@@ -7,7 +7,7 @@ import java.util.List;
 public final class d
   extends a
 {
-  public final List<Integer> ewH()
+  public final List<Integer> eKN()
   {
     AppMethodBeat.i(30075);
     ArrayList localArrayList = new ArrayList();
@@ -26,21 +26,21 @@ public final class d
     //   6: iload_1
     //   7: sipush 11001
     //   10: if_icmpne +109 -> 119
-    //   13: new 43	com/tencent/mm/protocal/protobuf/dwk
+    //   13: new 43	com/tencent/mm/protocal/protobuf/eck
     //   16: dup
-    //   17: invokespecial 44	com/tencent/mm/protocal/protobuf/dwk:<init>	()V
+    //   17: invokespecial 44	com/tencent/mm/protocal/protobuf/eck:<init>	()V
     //   20: astore_3
     //   21: aload_3
     //   22: aload_2
-    //   23: invokevirtual 48	com/tencent/mm/protocal/protobuf/dwk:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   23: invokevirtual 48	com/tencent/mm/protocal/protobuf/eck:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   26: pop
-    //   27: invokestatic 54	com/tencent/mm/cf/b:eXh	()Lcom/tencent/mm/cf/b;
-    //   30: getfield 58	com/tencent/mm/cf/b:GxF	J
+    //   27: invokestatic 54	com/tencent/mm/cf/b:fmR	()Lcom/tencent/mm/cf/b;
+    //   30: getfield 58	com/tencent/mm/cf/b:Ijz	J
     //   33: aload_3
-    //   34: getfield 61	com/tencent/mm/protocal/protobuf/dwk:ELn	J
+    //   34: getfield 61	com/tencent/mm/protocal/protobuf/eck:Guq	J
     //   37: lcmp
     //   38: ifle +288 -> 326
-    //   41: invokestatic 67	com/tencent/mm/sdk/platformtools/ai:getContext	()Landroid/content/Context;
+    //   41: invokestatic 67	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   44: invokevirtual 73	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   47: ldc 75
     //   49: invokevirtual 81	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
@@ -68,7 +68,7 @@ public final class d
     //   86: ldc 97
     //   88: iconst_0
     //   89: anewarray 99	java/lang/Object
-    //   92: invokestatic 105	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   92: invokestatic 105	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   95: aload_3
     //   96: invokestatic 93	com/tencent/mm/vfs/q:closeQuietly	(Ljava/io/Closeable;)V
     //   99: aconst_null
@@ -87,18 +87,18 @@ public final class d
     //   120: sipush 11004
     //   123: if_icmpne +203 -> 326
     //   126: bipush 9
-    //   128: invokestatic 110	com/tencent/mm/plugin/wear/model/c/a:Ua	(I)V
-    //   131: new 112	com/tencent/mm/protocal/protobuf/dwl
+    //   128: invokestatic 110	com/tencent/mm/plugin/wear/model/c/a:VS	(I)V
+    //   131: new 112	com/tencent/mm/protocal/protobuf/ecl
     //   134: dup
-    //   135: invokespecial 113	com/tencent/mm/protocal/protobuf/dwl:<init>	()V
+    //   135: invokespecial 113	com/tencent/mm/protocal/protobuf/ecl:<init>	()V
     //   138: astore_3
     //   139: aload_3
     //   140: aload_2
-    //   141: invokevirtual 114	com/tencent/mm/protocal/protobuf/dwl:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   141: invokevirtual 114	com/tencent/mm/protocal/protobuf/ecl:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   144: pop
-    //   145: new 116	com/tencent/mm/protocal/protobuf/dwm
+    //   145: new 116	com/tencent/mm/protocal/protobuf/ecm
     //   148: dup
-    //   149: invokespecial 117	com/tencent/mm/protocal/protobuf/dwm:<init>	()V
+    //   149: invokespecial 117	com/tencent/mm/protocal/protobuf/ecm:<init>	()V
     //   152: astore_2
     //   153: ldc 119
     //   155: invokestatic 125	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
@@ -110,7 +110,7 @@ public final class d
     //   174: checkcast 119	com/tencent/mm/plugin/emoji/b/d
     //   177: invokeinterface 129 1 0
     //   182: aload_3
-    //   183: getfield 133	com/tencent/mm/protocal/protobuf/dwl:Egf	Ljava/lang/String;
+    //   183: getfield 133	com/tencent/mm/protocal/protobuf/ecl:FME	Ljava/lang/String;
     //   186: invokeinterface 139 2 0
     //   191: astore 4
     //   193: aload 4
@@ -126,44 +126,44 @@ public final class d
     //   224: checkcast 155	com/tencent/mm/storage/emotion/EmojiInfo
     //   227: astore 5
     //   229: aload 5
-    //   231: invokevirtual 159	com/tencent/mm/storage/emotion/EmojiInfo:JC	()Ljava/lang/String;
-    //   234: invokestatic 165	com/tencent/mm/sdk/platformtools/bs:isNullOrNil	(Ljava/lang/String;)Z
+    //   231: invokevirtual 159	com/tencent/mm/storage/emotion/EmojiInfo:Lb	()Ljava/lang/String;
+    //   234: invokestatic 165	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   237: ifne -30 -> 207
     //   240: aload_2
-    //   241: getfield 169	com/tencent/mm/protocal/protobuf/dwm:DUX	Ljava/util/LinkedList;
+    //   241: getfield 169	com/tencent/mm/protocal/protobuf/ecm:FAs	Ljava/util/LinkedList;
     //   244: aload 5
-    //   246: invokevirtual 159	com/tencent/mm/storage/emotion/EmojiInfo:JC	()Ljava/lang/String;
+    //   246: invokevirtual 159	com/tencent/mm/storage/emotion/EmojiInfo:Lb	()Ljava/lang/String;
     //   249: invokevirtual 172	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   252: pop
     //   253: goto -46 -> 207
     //   256: aload_2
-    //   257: getfield 169	com/tencent/mm/protocal/protobuf/dwm:DUX	Ljava/util/LinkedList;
+    //   257: getfield 169	com/tencent/mm/protocal/protobuf/ecm:FAs	Ljava/util/LinkedList;
     //   260: invokevirtual 176	java/util/LinkedList:size	()I
     //   263: ifne +49 -> 312
-    //   266: new 178	com/tencent/mm/g/a/yh
+    //   266: new 178	com/tencent/mm/g/a/zb
     //   269: dup
-    //   270: invokespecial 179	com/tencent/mm/g/a/yh:<init>	()V
+    //   270: invokespecial 179	com/tencent/mm/g/a/zb:<init>	()V
     //   273: astore 4
     //   275: aload 4
-    //   277: getfield 183	com/tencent/mm/g/a/yh:dBU	Lcom/tencent/mm/g/a/yh$a;
+    //   277: getfield 183	com/tencent/mm/g/a/zb:dOh	Lcom/tencent/mm/g/a/zb$a;
     //   280: iconst_1
     //   281: anewarray 185	java/lang/String
     //   284: dup
     //   285: iconst_0
     //   286: aload_3
-    //   287: getfield 133	com/tencent/mm/protocal/protobuf/dwl:Egf	Ljava/lang/String;
+    //   287: getfield 133	com/tencent/mm/protocal/protobuf/ecl:FME	Ljava/lang/String;
     //   290: aastore
-    //   291: putfield 191	com/tencent/mm/g/a/yh$a:dBV	[Ljava/lang/String;
+    //   291: putfield 191	com/tencent/mm/g/a/zb$a:dOi	[Ljava/lang/String;
     //   294: aload 4
-    //   296: getfield 183	com/tencent/mm/g/a/yh:dBU	Lcom/tencent/mm/g/a/yh$a;
+    //   296: getfield 183	com/tencent/mm/g/a/zb:dOh	Lcom/tencent/mm/g/a/zb$a;
     //   299: iconst_1
-    //   300: putfield 195	com/tencent/mm/g/a/yh$a:cZu	I
-    //   303: getstatic 201	com/tencent/mm/sdk/b/a:GpY	Lcom/tencent/mm/sdk/b/a;
+    //   300: putfield 195	com/tencent/mm/g/a/zb$a:dkM	I
+    //   303: getstatic 201	com/tencent/mm/sdk/b/a:IbL	Lcom/tencent/mm/sdk/b/a;
     //   306: aload 4
     //   308: invokevirtual 205	com/tencent/mm/sdk/b/a:l	(Lcom/tencent/mm/sdk/b/b;)Z
     //   311: pop
     //   312: aload_2
-    //   313: invokevirtual 209	com/tencent/mm/protocal/protobuf/dwm:toByteArray	()[B
+    //   313: invokevirtual 209	com/tencent/mm/protocal/protobuf/ecm:toByteArray	()[B
     //   316: astore_2
     //   317: sipush 30076
     //   320: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -189,7 +189,7 @@ public final class d
     //   0	351	2	paramArrayOfByte	byte[]
     //   20	76	3	localObject1	java.lang.Object
     //   104	14	3	localObject2	java.lang.Object
-    //   138	149	3	localdwl	com.tencent.mm.protocal.protobuf.dwl
+    //   138	149	3	localecl	com.tencent.mm.protocal.protobuf.ecl
     //   342	1	3	localObject3	java.lang.Object
     //   59	3	4	arrayOfByte	byte[]
     //   76	9	4	localIOException1	java.io.IOException

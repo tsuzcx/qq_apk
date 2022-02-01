@@ -20,12 +20,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.b.a;
 import com.tencent.mm.plugin.game.b.b.e;
 import com.tencent.mm.plugin.game.widget.GameGridLayoutManager;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.aq;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -34,23 +33,23 @@ import java.util.Set;
 public final class h
   extends RecyclerView
 {
-  private View pjS;
-  private int sZs;
-  a sZt;
-  private boolean sZu;
-  private boolean sZv;
-  private Set<Integer> sZw;
+  private View pNs;
+  private int tXj;
+  a tXk;
+  private boolean tXl;
+  private boolean tXm;
+  private Set<Integer> tXn;
   
   public h(Context paramContext, int paramInt)
   {
     super(paramContext);
     AppMethodBeat.i(40990);
-    this.sZw = new HashSet();
-    this.sZs = paramInt;
-    this.sZt = new a(getContext());
+    this.tXn = new HashSet();
+    this.tXj = paramInt;
+    this.tXk = new a(getContext());
     getContext();
     paramContext = new GameGridLayoutManager();
-    paramContext.anN = new GridLayoutManager.b()
+    paramContext.apF = new GridLayoutManager.b()
     {
       public final int bW(int paramAnonymousInt)
       {
@@ -67,22 +66,22 @@ public final class h
     };
     setLayoutManager(paramContext);
     a(new b());
-    this.pjS = LayoutInflater.from(getContext()).inflate(2131494300, this, false);
-    this.pjS.setVisibility(8);
-    paramContext = this.sZt;
-    View localView = this.pjS;
-    paramContext.sZz.add(localView);
-    setAdapter(this.sZt);
+    this.pNs = LayoutInflater.from(getContext()).inflate(2131494300, this, false);
+    this.pNs.setVisibility(8);
+    paramContext = this.tXk;
+    View localView = this.pNs;
+    paramContext.tXq.add(localView);
+    setAdapter(this.tXk);
     AppMethodBeat.o(40990);
   }
   
-  public final boolean Gl(int paramInt)
+  public final boolean HF(int paramInt)
   {
     AppMethodBeat.i(40992);
-    int i = ((LinearLayoutManager)getLayoutManager()).jY();
-    if ((paramInt == 0) && (this.sZu) && (i >= this.sZt.getItemCount() - 2))
+    int i = ((LinearLayoutManager)getLayoutManager()).ko();
+    if ((paramInt == 0) && (this.tXl) && (i >= this.tXk.getItemCount() - 2))
     {
-      this.pjS.setVisibility(0);
+      this.pNs.setVisibility(0);
       AppMethodBeat.o(40992);
       return true;
     }
@@ -90,10 +89,10 @@ public final class h
     return false;
   }
   
-  public final e Gm(int paramInt)
+  public final e HG(int paramInt)
   {
     AppMethodBeat.i(40993);
-    e locale = this.sZt.Gm(paramInt);
+    e locale = this.tXk.HG(paramInt);
     AppMethodBeat.o(40993);
     return locale;
   }
@@ -101,46 +100,46 @@ public final class h
   public final void b(LinkedList<e> paramLinkedList, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(40991);
-    this.sZu = paramBoolean1;
-    this.sZv = paramBoolean2;
-    this.pjS.setVisibility(8);
-    a locala = this.sZt;
-    locala.sZA.clear();
-    locala.sZA.addAll(paramLinkedList);
-    locala.arg.notifyChanged();
+    this.tXl = paramBoolean1;
+    this.tXm = paramBoolean2;
+    this.pNs.setVisibility(8);
+    a locala = this.tXk;
+    locala.tXr.clear();
+    locala.tXr.addAll(paramLinkedList);
+    locala.asY.notifyChanged();
     AppMethodBeat.o(40991);
   }
   
   public final void setOnItemClickListener(com.tencent.mm.plugin.appbrand.widget.recyclerview.b paramb)
   {
-    this.sZt.mOw = paramb;
+    this.tXk.noT = paramb;
   }
   
   final class a
     extends RecyclerView.a<h.c>
   {
     private Context mContext;
-    private ViewGroup mOs;
-    private ViewGroup mOt;
-    com.tencent.mm.plugin.appbrand.widget.recyclerview.b mOw;
-    LinkedList<e> sZA;
-    LinkedList<View> sZy;
-    LinkedList<View> sZz;
+    private ViewGroup noP;
+    private ViewGroup noQ;
+    com.tencent.mm.plugin.appbrand.widget.recyclerview.b noT;
+    LinkedList<View> tXp;
+    LinkedList<View> tXq;
+    LinkedList<e> tXr;
     
     a(Context paramContext)
     {
       AppMethodBeat.i(40979);
-      this.sZy = new LinkedList();
-      this.sZz = new LinkedList();
-      this.sZA = new LinkedList();
+      this.tXp = new LinkedList();
+      this.tXq = new LinkedList();
+      this.tXr = new LinkedList();
       this.mContext = paramContext;
       AppMethodBeat.o(40979);
     }
     
-    private int Bl(int paramInt)
+    private int BT(int paramInt)
     {
       AppMethodBeat.i(40983);
-      if ((paramInt < 0) || (paramInt >= this.sZA.size()))
+      if ((paramInt < 0) || (paramInt >= this.tXr.size()))
       {
         AppMethodBeat.o(40983);
         return paramInt;
@@ -149,8 +148,8 @@ public final class h
       int i = 0;
       if (j < paramInt + 1)
       {
-        e locale = (e)this.sZA.get(j);
-        if ((locale.sVz) || (locale.sVA)) {
+        e locale = (e)this.tXr.get(j);
+        if ((locale.tSe) || (locale.tSf)) {
           break label85;
         }
         i += 1;
@@ -173,21 +172,21 @@ public final class h
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("videoid", paramString2);
-        a.a(ai.getContext(), h.d(h.this), paramInt1, paramInt2, paramString1, a.a(i, localHashMap));
+        com.tencent.mm.game.report.b.a.a(aj.getContext(), h.d(h.this), paramInt1, paramInt2, paramString1, com.tencent.mm.game.report.b.a.a(i, localHashMap));
         AppMethodBeat.o(40984);
         return;
       }
     }
     
-    public final e Gm(int paramInt)
+    public final e HG(int paramInt)
     {
       AppMethodBeat.i(40982);
-      if ((paramInt < 0) || (paramInt >= this.sZA.size()))
+      if ((paramInt < 0) || (paramInt >= this.tXr.size()))
       {
         AppMethodBeat.o(40982);
         return null;
       }
-      e locale = (e)this.sZA.get(paramInt);
+      e locale = (e)this.tXr.get(paramInt);
       AppMethodBeat.o(40982);
       return locale;
     }
@@ -196,12 +195,12 @@ public final class h
     {
       int j = 0;
       AppMethodBeat.i(40980);
-      int k = this.sZA.size();
+      int k = this.tXr.size();
       int i;
-      if (this.sZy.isEmpty())
+      if (this.tXp.isEmpty())
       {
         i = 0;
-        if (!this.sZz.isEmpty()) {
+        if (!this.tXq.isEmpty()) {
           break label55;
         }
       }
@@ -224,33 +223,33 @@ public final class h
         AppMethodBeat.o(40981);
         return 0;
       }
-      if ((paramInt == 0) && (!this.sZy.isEmpty()))
+      if ((paramInt == 0) && (!this.tXp.isEmpty()))
       {
         AppMethodBeat.o(40981);
         return 2147483647;
       }
-      if ((paramInt == getItemCount() - 1) && (!this.sZz.isEmpty()))
+      if ((paramInt == getItemCount() - 1) && (!this.tXq.isEmpty()))
       {
         AppMethodBeat.o(40981);
         return 2147483646;
       }
-      if (this.sZy.isEmpty()) {}
+      if (this.tXp.isEmpty()) {}
       for (int i = 0;; i = 1)
       {
         paramInt -= i;
-        if ((paramInt >= 0) && (paramInt < this.sZA.size())) {
+        if ((paramInt >= 0) && (paramInt < this.tXr.size())) {
           break;
         }
         AppMethodBeat.o(40981);
         return 0;
       }
-      e locale = (e)this.sZA.get(paramInt);
-      if ((locale != null) && (locale.sVz))
+      e locale = (e)this.tXr.get(paramInt);
+      if ((locale != null) && (locale.tSe))
       {
         AppMethodBeat.o(40981);
         return 1;
       }
-      if ((locale != null) && (locale.sVA))
+      if ((locale != null) && (locale.tSf))
       {
         AppMethodBeat.o(40981);
         return 2;
@@ -268,7 +267,7 @@ public final class h
     public b()
     {
       AppMethodBeat.i(40987);
-      this.mSize = ao.fromDPToPix(ai.getContext(), 1);
+      this.mSize = aq.fromDPToPix(aj.getContext(), 1);
       AppMethodBeat.o(40987);
     }
     
@@ -278,11 +277,11 @@ public final class h
       paramRecyclerView = (GridLayoutManager)paramRecyclerView.getLayoutManager();
       RecyclerView.bw(paramView);
       paramView = (GridLayoutManager.LayoutParams)paramView.getLayoutParams();
-      int i = paramRecyclerView.anI;
-      ac.i("MicroMsg.GameHaowanRecycleView", "getItemOffsets, spanSize = %d, spanCount = %d, index = %d", new Object[] { Integer.valueOf(paramView.anQ), Integer.valueOf(i), Integer.valueOf(paramView.anP) });
-      if (paramView.anQ != i)
+      int i = paramRecyclerView.apA;
+      ad.i("MicroMsg.GameHaowanRecycleView", "getItemOffsets, spanSize = %d, spanCount = %d, index = %d", new Object[] { Integer.valueOf(paramView.apI), Integer.valueOf(i), Integer.valueOf(paramView.apH) });
+      if (paramView.apI != i)
       {
-        if (paramView.anP == 0)
+        if (paramView.apH == 0)
         {
           paramRect.set(0, this.mSize, this.mSize, this.mSize);
           AppMethodBeat.o(40988);
@@ -300,23 +299,23 @@ public final class h
   static final class c
     extends RecyclerView.w
   {
-    public ImageView lXd;
-    public TextView sZE;
-    public TextView sZF;
-    public GameVideoTagContainer sZG;
-    public TextView sZH;
-    public ImageView sZI;
+    public ImageView mwS;
+    public TextView tXv;
+    public TextView tXw;
+    public GameVideoTagContainer tXx;
+    public TextView tXy;
+    public ImageView tXz;
     
     public c(View paramView)
     {
       super();
       AppMethodBeat.i(40989);
-      this.sZE = ((TextView)paramView.findViewById(2131305821));
-      this.lXd = ((ImageView)paramView.findViewById(2131306344));
-      this.sZF = ((TextView)paramView.findViewById(2131299617));
-      this.sZG = ((GameVideoTagContainer)paramView.findViewById(2131306397));
-      this.sZH = ((TextView)paramView.findViewById(2131306405));
-      this.sZI = ((ImageView)paramView.findViewById(2131300564));
+      this.tXv = ((TextView)paramView.findViewById(2131305821));
+      this.mwS = ((ImageView)paramView.findViewById(2131306344));
+      this.tXw = ((TextView)paramView.findViewById(2131299617));
+      this.tXx = ((GameVideoTagContainer)paramView.findViewById(2131306397));
+      this.tXy = ((TextView)paramView.findViewById(2131306405));
+      this.tXz = ((ImageView)paramView.findViewById(2131300564));
       AppMethodBeat.o(40989);
     }
   }

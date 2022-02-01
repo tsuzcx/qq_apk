@@ -1,14 +1,16 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 
+import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.c.az;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.c.ba;
 import com.tencent.mm.plugin.backup.i.x;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.ap;
-import com.tencent.mm.storage.bk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.bq;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,46 +18,46 @@ import java.util.List;
 import java.util.Random;
 
 public final class d
-  implements com.tencent.mm.ak.h
+  implements com.tencent.mm.al.g
 {
-  private boolean dhO;
-  private boolean gRx;
-  private Random gcX;
+  private boolean dtm;
+  private Random gwH;
+  private boolean hjP;
   Object lock;
-  List<String> naJ;
-  HashSet<String> naK;
-  e.d naL;
-  com.tencent.mm.ak.g naM;
-  boolean naN;
-  private long naO;
-  private long naP;
-  int naQ;
-  int naR;
+  List<String> nBg;
+  HashSet<String> nBh;
+  e.d nBi;
+  f nBj;
+  boolean nBk;
+  private long nBl;
+  private long nBm;
+  int nBn;
+  int nBo;
   
   public d()
   {
     AppMethodBeat.i(21887);
     this.lock = new Object();
-    this.gcX = new Random();
-    this.dhO = false;
-    this.gRx = false;
-    this.naJ = new LinkedList();
-    this.naK = new HashSet();
-    this.naN = false;
-    this.naR = 0;
+    this.gwH = new Random();
+    this.dtm = false;
+    this.hjP = false;
+    this.nBg = new LinkedList();
+    this.nBh = new HashSet();
+    this.nBk = false;
+    this.nBo = 0;
     AppMethodBeat.o(21887);
   }
   
   private static String b(Random paramRandom)
   {
     AppMethodBeat.i(21893);
-    paramRandom = com.tencent.mm.b.g.getMessageDigest((bs.Gn() + paramRandom.nextDouble()).getBytes());
+    paramRandom = com.tencent.mm.b.g.getMessageDigest((bt.HI() + paramRandom.nextDouble()).getBytes());
     AppMethodBeat.o(21893);
     return paramRandom;
   }
   
   /* Error */
-  public final boolean F(String arg1, String paramString2, int paramInt)
+  public final boolean G(String arg1, String paramString2, int paramInt)
   {
     // Byte code:
     //   0: sipush 21891
@@ -64,9 +66,9 @@ public final class d
     //   9: dup
     //   10: invokespecial 120	com/tencent/mm/pointers/PLong:<init>	()V
     //   13: astore 8
-    //   15: invokestatic 126	com/tencent/mm/plugin/backup/bakoldlogic/d/b:bFw	()Lcom/tencent/mm/plugin/backup/bakoldlogic/d/b;
-    //   18: invokevirtual 130	com/tencent/mm/plugin/backup/bakoldlogic/d/b:bFx	()Lcom/tencent/mm/plugin/backup/bakoldlogic/d/c;
-    //   21: invokevirtual 136	com/tencent/mm/plugin/backup/bakoldlogic/d/c:awD	()Lcom/tencent/mm/plugin/messenger/foundation/a/a/h;
+    //   15: invokestatic 126	com/tencent/mm/plugin/backup/bakoldlogic/d/b:bJF	()Lcom/tencent/mm/plugin/backup/bakoldlogic/d/b;
+    //   18: invokevirtual 130	com/tencent/mm/plugin/backup/bakoldlogic/d/b:bJG	()Lcom/tencent/mm/plugin/backup/bakoldlogic/d/c;
+    //   21: invokevirtual 136	com/tencent/mm/plugin/backup/bakoldlogic/d/c:azs	()Lcom/tencent/mm/plugin/messenger/foundation/a/a/i;
     //   24: aload_1
     //   25: invokeinterface 142 2 0
     //   30: astore 7
@@ -92,7 +94,7 @@ public final class d
     //   78: aload_1
     //   79: monitorenter
     //   80: aload_0
-    //   81: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:naK	Ljava/util/HashSet;
+    //   81: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:nBh	Ljava/util/HashSet;
     //   84: invokevirtual 155	java/util/HashSet:size	()I
     //   87: istore 4
     //   89: iload 4
@@ -102,10 +104,10 @@ public final class d
     //   97: getfield 46	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:lock	Ljava/lang/Object;
     //   100: invokevirtual 158	java/lang/Object:wait	()V
     //   103: aload_0
-    //   104: getfield 53	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:dhO	Z
+    //   104: getfield 53	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:dtm	Z
     //   107: ifeq +21 -> 128
     //   110: aload_0
-    //   111: getfield 55	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:gRx	Z
+    //   111: getfield 55	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:hjP	Z
     //   114: istore 5
     //   116: iload 5
     //   118: ifne +10 -> 128
@@ -113,11 +115,11 @@ public final class d
     //   122: getfield 46	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:lock	Ljava/lang/Object;
     //   125: invokevirtual 158	java/lang/Object:wait	()V
     //   128: aload_0
-    //   129: getfield 55	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:gRx	Z
+    //   129: getfield 55	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:hjP	Z
     //   132: ifeq +72 -> 204
     //   135: ldc 160
     //   137: ldc 162
-    //   139: invokestatic 167	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   139: invokestatic 167	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   142: aload_1
     //   143: monitorexit
     //   144: aload 7
@@ -132,7 +134,7 @@ public final class d
     //   165: ldc 172
     //   167: iconst_0
     //   168: anewarray 4	java/lang/Object
-    //   171: invokestatic 176	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   171: invokestatic 176	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   174: goto -46 -> 128
     //   177: astore_2
     //   178: aload_1
@@ -150,19 +152,19 @@ public final class d
     //   203: athrow
     //   204: aload_1
     //   205: monitorexit
-    //   206: new 178	com/tencent/mm/storage/bo
+    //   206: new 178	com/tencent/mm/storage/bu
     //   209: dup
-    //   210: invokespecial 179	com/tencent/mm/storage/bo:<init>	()V
+    //   210: invokespecial 179	com/tencent/mm/storage/bu:<init>	()V
     //   213: astore 10
     //   215: aload 10
     //   217: aload 7
-    //   219: invokevirtual 183	com/tencent/mm/storage/bo:convertFrom	(Landroid/database/Cursor;)V
+    //   219: invokevirtual 183	com/tencent/mm/storage/bu:convertFrom	(Landroid/database/Cursor;)V
     //   222: iload_3
     //   223: ifle +187 -> 410
     //   226: iconst_1
     //   227: istore 4
     //   229: aload 10
-    //   231: getfield 188	com/tencent/mm/g/c/dy:field_msgSvrId	J
+    //   231: getfield 188	com/tencent/mm/g/c/ei:field_msgSvrId	J
     //   234: lconst_0
     //   235: lcmp
     //   236: ifne +180 -> 416
@@ -173,15 +175,15 @@ public final class d
     //   247: dup
     //   248: iconst_0
     //   249: aload 10
-    //   251: getfield 196	com/tencent/mm/g/c/dy:field_talker	Ljava/lang/String;
+    //   251: getfield 196	com/tencent/mm/g/c/ei:field_talker	Ljava/lang/String;
     //   254: aastore
     //   255: dup
     //   256: iconst_1
     //   257: aload 10
-    //   259: invokevirtual 199	com/tencent/mm/storage/bo:getType	()I
+    //   259: invokevirtual 199	com/tencent/mm/storage/bu:getType	()I
     //   262: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   265: aastore
-    //   266: invokestatic 209	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   266: invokestatic 209	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   269: aconst_null
     //   270: astore_1
     //   271: iload_3
@@ -213,9 +215,9 @@ public final class d
     //   326: aload 11
     //   328: getfield 236	com/tencent/mm/plugin/backup/i/u:path	Ljava/lang/String;
     //   331: aload_0
-    //   332: invokestatic 242	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a:bEZ	()Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a;
-    //   335: getfield 248	com/tencent/mm/plugin/backup/b/d:mSi	[B
-    //   338: invokespecial 251	com/tencent/mm/plugin/backup/bakoldlogic/c/c:<init>	(Ljava/lang/String;ILjava/util/LinkedList;Ljava/lang/String;Lcom/tencent/mm/ak/h;[B)V
+    //   332: invokestatic 242	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a:bJi	()Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a;
+    //   335: getfield 248	com/tencent/mm/plugin/backup/b/d:nsH	[B
+    //   338: invokespecial 251	com/tencent/mm/plugin/backup/bakoldlogic/c/c:<init>	(Ljava/lang/String;ILjava/util/LinkedList;Ljava/lang/String;Lcom/tencent/mm/al/g;[B)V
     //   341: astore 12
     //   343: aload_0
     //   344: getfield 46	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:lock	Ljava/lang/Object;
@@ -223,10 +225,10 @@ public final class d
     //   348: aload_1
     //   349: monitorenter
     //   350: aload 12
-    //   352: invokevirtual 254	com/tencent/mm/plugin/backup/bakoldlogic/c/c:bEA	()Z
+    //   352: invokevirtual 254	com/tencent/mm/plugin/backup/bakoldlogic/c/c:bIJ	()Z
     //   355: pop
     //   356: aload_0
-    //   357: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:naK	Ljava/util/HashSet;
+    //   357: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:nBh	Ljava/util/HashSet;
     //   360: aload 11
     //   362: getfield 233	com/tencent/mm/plugin/backup/i/u:mediaId	Ljava/lang/String;
     //   365: invokevirtual 255	java/util/HashSet:add	(Ljava/lang/Object;)Z
@@ -238,11 +240,11 @@ public final class d
     //   378: dup
     //   379: iconst_0
     //   380: aload_0
-    //   381: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:naK	Ljava/util/HashSet;
+    //   381: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:nBh	Ljava/util/HashSet;
     //   384: invokevirtual 155	java/util/HashSet:size	()I
     //   387: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   390: aastore
-    //   391: invokestatic 259	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   391: invokestatic 259	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   394: aload_1
     //   395: monitorexit
     //   396: goto -103 -> 293
@@ -256,96 +258,96 @@ public final class d
     //   410: iconst_0
     //   411: istore 4
     //   413: goto -184 -> 229
-    //   416: new 261	com/tencent/mm/protocal/protobuf/hy
+    //   416: new 261	com/tencent/mm/protocal/protobuf/if
     //   419: dup
-    //   420: invokespecial 262	com/tencent/mm/protocal/protobuf/hy:<init>	()V
+    //   420: invokespecial 262	com/tencent/mm/protocal/protobuf/if:<init>	()V
     //   423: astore_1
     //   424: aload_1
     //   425: aload 10
-    //   427: getfield 188	com/tencent/mm/g/c/dy:field_msgSvrId	J
-    //   430: putfield 265	com/tencent/mm/protocal/protobuf/hy:vTQ	J
+    //   427: getfield 188	com/tencent/mm/g/c/ei:field_msgSvrId	J
+    //   430: putfield 265	com/tencent/mm/protocal/protobuf/if:xbt	J
     //   433: aload 10
-    //   435: getfield 268	com/tencent/mm/g/c/dy:field_isSend	I
+    //   435: getfield 268	com/tencent/mm/g/c/ei:field_isSend	I
     //   438: iconst_1
     //   439: if_icmpne +207 -> 646
     //   442: aload_1
-    //   443: new 270	com/tencent/mm/protocal/protobuf/crm
+    //   443: new 270	com/tencent/mm/protocal/protobuf/cwt
     //   446: dup
-    //   447: invokespecial 271	com/tencent/mm/protocal/protobuf/crm:<init>	()V
+    //   447: invokespecial 271	com/tencent/mm/protocal/protobuf/cwt:<init>	()V
     //   450: aload_2
-    //   451: invokevirtual 275	com/tencent/mm/protocal/protobuf/crm:aJV	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/crm;
-    //   454: putfield 279	com/tencent/mm/protocal/protobuf/hy:DPT	Lcom/tencent/mm/protocal/protobuf/crm;
+    //   451: invokevirtual 275	com/tencent/mm/protocal/protobuf/cwt:aPy	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cwt;
+    //   454: putfield 279	com/tencent/mm/protocal/protobuf/if:Fvi	Lcom/tencent/mm/protocal/protobuf/cwt;
     //   457: aload_1
-    //   458: new 270	com/tencent/mm/protocal/protobuf/crm
+    //   458: new 270	com/tencent/mm/protocal/protobuf/cwt
     //   461: dup
-    //   462: invokespecial 271	com/tencent/mm/protocal/protobuf/crm:<init>	()V
+    //   462: invokespecial 271	com/tencent/mm/protocal/protobuf/cwt:<init>	()V
     //   465: aload 10
-    //   467: getfield 196	com/tencent/mm/g/c/dy:field_talker	Ljava/lang/String;
-    //   470: invokevirtual 275	com/tencent/mm/protocal/protobuf/crm:aJV	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/crm;
-    //   473: putfield 282	com/tencent/mm/protocal/protobuf/hy:DPU	Lcom/tencent/mm/protocal/protobuf/crm;
+    //   467: getfield 196	com/tencent/mm/g/c/ei:field_talker	Ljava/lang/String;
+    //   470: invokevirtual 275	com/tencent/mm/protocal/protobuf/cwt:aPy	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cwt;
+    //   473: putfield 282	com/tencent/mm/protocal/protobuf/if:Fvj	Lcom/tencent/mm/protocal/protobuf/cwt;
     //   476: iconst_2
     //   477: istore 4
     //   479: aload_1
     //   480: iload 4
-    //   482: putfield 285	com/tencent/mm/protocal/protobuf/hy:DVn	I
+    //   482: putfield 285	com/tencent/mm/protocal/protobuf/if:FAI	I
     //   485: aload_1
     //   486: new 287	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t
     //   489: dup
     //   490: invokespecial 288	com/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t:<init>	()V
-    //   493: putfield 292	com/tencent/mm/protocal/protobuf/hy:DVs	Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
+    //   493: putfield 292	com/tencent/mm/protocal/protobuf/if:FAN	Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;
     //   496: aload_1
     //   497: iconst_0
-    //   498: putfield 295	com/tencent/mm/protocal/protobuf/hy:DVt	I
+    //   498: putfield 295	com/tencent/mm/protocal/protobuf/if:FAO	I
     //   501: aload_1
     //   502: iconst_0
-    //   503: putfield 298	com/tencent/mm/protocal/protobuf/hy:DVu	I
+    //   503: putfield 298	com/tencent/mm/protocal/protobuf/if:FAP	I
     //   506: aload_1
     //   507: ldc 172
-    //   509: putfield 301	com/tencent/mm/protocal/protobuf/hy:DPY	Ljava/lang/String;
+    //   509: putfield 301	com/tencent/mm/protocal/protobuf/if:Fvn	Ljava/lang/String;
     //   512: aload_1
     //   513: aload 10
-    //   515: invokevirtual 199	com/tencent/mm/storage/bo:getType	()I
-    //   518: invokestatic 307	com/tencent/mm/pluginsdk/model/app/m:Wz	(I)I
-    //   521: putfield 310	com/tencent/mm/protocal/protobuf/hy:ndI	I
+    //   515: invokevirtual 199	com/tencent/mm/storage/bu:getType	()I
+    //   518: invokestatic 307	com/tencent/mm/pluginsdk/model/app/m:Yv	(I)I
+    //   521: putfield 310	com/tencent/mm/protocal/protobuf/if:nEf	I
     //   524: aload_1
     //   525: aload 10
-    //   527: getfield 313	com/tencent/mm/g/c/dy:field_createTime	J
+    //   527: getfield 313	com/tencent/mm/g/c/ei:field_createTime	J
     //   530: ldc2_w 314
     //   533: ldiv
     //   534: l2i
-    //   535: putfield 318	com/tencent/mm/protocal/protobuf/hy:DVo	I
+    //   535: putfield 318	com/tencent/mm/protocal/protobuf/if:FAJ	I
     //   538: aload_1
     //   539: aload 10
-    //   541: getfield 313	com/tencent/mm/g/c/dy:field_createTime	J
-    //   544: putfield 321	com/tencent/mm/protocal/protobuf/hy:DVw	J
+    //   541: getfield 313	com/tencent/mm/g/c/ei:field_createTime	J
+    //   544: putfield 321	com/tencent/mm/protocal/protobuf/if:FAS	J
     //   547: aload_1
     //   548: aload 10
-    //   550: getfield 324	com/tencent/mm/g/c/dy:field_msgSeq	J
+    //   550: getfield 324	com/tencent/mm/g/c/ei:field_msgSeq	J
     //   553: l2i
-    //   554: putfield 327	com/tencent/mm/protocal/protobuf/hy:DVv	I
+    //   554: putfield 327	com/tencent/mm/protocal/protobuf/if:FAQ	I
     //   557: aload_1
     //   558: aload 10
-    //   560: getfield 330	com/tencent/mm/g/c/dy:field_flag	I
-    //   563: putfield 333	com/tencent/mm/protocal/protobuf/hy:DVx	I
-    //   566: new 270	com/tencent/mm/protocal/protobuf/crm
+    //   560: getfield 330	com/tencent/mm/g/c/ei:field_flag	I
+    //   563: putfield 333	com/tencent/mm/protocal/protobuf/if:FAT	I
+    //   566: new 270	com/tencent/mm/protocal/protobuf/cwt
     //   569: dup
-    //   570: invokespecial 271	com/tencent/mm/protocal/protobuf/crm:<init>	()V
+    //   570: invokespecial 271	com/tencent/mm/protocal/protobuf/cwt:<init>	()V
     //   573: astore 11
     //   575: aload 11
     //   577: aload 10
-    //   579: getfield 336	com/tencent/mm/g/c/dy:field_content	Ljava/lang/String;
+    //   579: getfield 336	com/tencent/mm/g/c/ei:field_content	Ljava/lang/String;
     //   582: ldc 172
-    //   584: invokestatic 340	com/tencent/mm/sdk/platformtools/bs:bG	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   587: invokevirtual 275	com/tencent/mm/protocal/protobuf/crm:aJV	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/crm;
+    //   584: invokestatic 340	com/tencent/mm/sdk/platformtools/bt:bI	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   587: invokevirtual 275	com/tencent/mm/protocal/protobuf/cwt:aPy	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cwt;
     //   590: pop
     //   591: aload_1
     //   592: aload 11
-    //   594: putfield 343	com/tencent/mm/protocal/protobuf/hy:DPV	Lcom/tencent/mm/protocal/protobuf/crm;
-    //   597: invokestatic 349	com/tencent/mm/plugin/backup/bakoldlogic/b/d:bEY	()Lcom/tencent/mm/plugin/backup/bakoldlogic/b/d;
+    //   594: putfield 343	com/tencent/mm/protocal/protobuf/if:Fvk	Lcom/tencent/mm/protocal/protobuf/cwt;
+    //   597: invokestatic 349	com/tencent/mm/plugin/backup/bakoldlogic/b/d:bJh	()Lcom/tencent/mm/plugin/backup/bakoldlogic/b/d;
     //   600: aload 10
-    //   602: invokevirtual 199	com/tencent/mm/storage/bo:getType	()I
-    //   605: invokestatic 307	com/tencent/mm/pluginsdk/model/app/m:Wz	(I)I
-    //   608: invokevirtual 353	com/tencent/mm/plugin/backup/bakoldlogic/b/d:xd	(I)Lcom/tencent/mm/plugin/backup/bakoldlogic/b/j;
+    //   602: invokevirtual 199	com/tencent/mm/storage/bu:getType	()I
+    //   605: invokestatic 307	com/tencent/mm/pluginsdk/model/app/m:Yv	(I)I
+    //   608: invokevirtual 353	com/tencent/mm/plugin/backup/bakoldlogic/b/d:xJ	(I)Lcom/tencent/mm/plugin/backup/bakoldlogic/b/j;
     //   611: astore 11
     //   613: aload 11
     //   615: ifnonnull +76 -> 691
@@ -356,28 +358,28 @@ public final class d
     //   627: dup
     //   628: iconst_0
     //   629: aload 10
-    //   631: invokevirtual 199	com/tencent/mm/storage/bo:getType	()I
+    //   631: invokevirtual 199	com/tencent/mm/storage/bu:getType	()I
     //   634: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   637: aastore
-    //   638: invokestatic 358	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   638: invokestatic 358	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   641: aconst_null
     //   642: astore_1
     //   643: goto -372 -> 271
     //   646: aload_1
-    //   647: new 270	com/tencent/mm/protocal/protobuf/crm
+    //   647: new 270	com/tencent/mm/protocal/protobuf/cwt
     //   650: dup
-    //   651: invokespecial 271	com/tencent/mm/protocal/protobuf/crm:<init>	()V
+    //   651: invokespecial 271	com/tencent/mm/protocal/protobuf/cwt:<init>	()V
     //   654: aload 10
-    //   656: getfield 196	com/tencent/mm/g/c/dy:field_talker	Ljava/lang/String;
-    //   659: invokevirtual 275	com/tencent/mm/protocal/protobuf/crm:aJV	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/crm;
-    //   662: putfield 279	com/tencent/mm/protocal/protobuf/hy:DPT	Lcom/tencent/mm/protocal/protobuf/crm;
+    //   656: getfield 196	com/tencent/mm/g/c/ei:field_talker	Ljava/lang/String;
+    //   659: invokevirtual 275	com/tencent/mm/protocal/protobuf/cwt:aPy	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cwt;
+    //   662: putfield 279	com/tencent/mm/protocal/protobuf/if:Fvi	Lcom/tencent/mm/protocal/protobuf/cwt;
     //   665: aload_1
-    //   666: new 270	com/tencent/mm/protocal/protobuf/crm
+    //   666: new 270	com/tencent/mm/protocal/protobuf/cwt
     //   669: dup
-    //   670: invokespecial 271	com/tencent/mm/protocal/protobuf/crm:<init>	()V
+    //   670: invokespecial 271	com/tencent/mm/protocal/protobuf/cwt:<init>	()V
     //   673: aload_2
-    //   674: invokevirtual 275	com/tencent/mm/protocal/protobuf/crm:aJV	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/crm;
-    //   677: putfield 282	com/tencent/mm/protocal/protobuf/hy:DPU	Lcom/tencent/mm/protocal/protobuf/crm;
+    //   674: invokevirtual 275	com/tencent/mm/protocal/protobuf/cwt:aPy	(Ljava/lang/String;)Lcom/tencent/mm/protocal/protobuf/cwt;
+    //   677: putfield 282	com/tencent/mm/protocal/protobuf/if:Fvj	Lcom/tencent/mm/protocal/protobuf/cwt;
     //   680: iload 4
     //   682: ifeq +398 -> 1080
     //   685: iconst_3
@@ -414,13 +416,13 @@ public final class d
     //   750: ldc 172
     //   752: iconst_0
     //   753: anewarray 4	java/lang/Object
-    //   756: invokestatic 176	com/tencent/mm/sdk/platformtools/ac:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   756: invokestatic 176	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   759: ldc 160
     //   761: ldc_w 371
     //   764: aload_1
     //   765: invokestatic 374	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   768: invokevirtual 378	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   771: invokestatic 381	com/tencent/mm/sdk/platformtools/ac:f	(Ljava/lang/String;Ljava/lang/String;)V
+    //   771: invokestatic 381	com/tencent/mm/sdk/platformtools/ad:f	(Ljava/lang/String;Ljava/lang/String;)V
     //   774: aconst_null
     //   775: astore_1
     //   776: goto -501 -> 275
@@ -442,9 +444,9 @@ public final class d
     //   813: getfield 367	com/tencent/mm/pointers/PLong:value	J
     //   816: invokevirtual 88	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   819: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   822: invokestatic 393	com/tencent/mm/sdk/platformtools/ac:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   822: invokestatic 393	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   825: aload_0
-    //   826: getfield 51	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:gcX	Ljava/util/Random;
+    //   826: getfield 51	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:gwH	Ljava/util/Random;
     //   829: invokestatic 395	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:b	(Ljava/util/Random;)Ljava/lang/String;
     //   832: astore_1
     //   833: new 230	com/tencent/mm/plugin/backup/bakoldlogic/c/c
@@ -454,9 +456,9 @@ public final class d
     //   839: aload 6
     //   841: ldc 172
     //   843: aload_0
-    //   844: invokestatic 242	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a:bEZ	()Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a;
-    //   847: getfield 248	com/tencent/mm/plugin/backup/b/d:mSi	[B
-    //   850: invokespecial 251	com/tencent/mm/plugin/backup/bakoldlogic/c/c:<init>	(Ljava/lang/String;ILjava/util/LinkedList;Ljava/lang/String;Lcom/tencent/mm/ak/h;[B)V
+    //   844: invokestatic 242	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a:bJi	()Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a;
+    //   847: getfield 248	com/tencent/mm/plugin/backup/b/d:nsH	[B
+    //   850: invokespecial 251	com/tencent/mm/plugin/backup/bakoldlogic/c/c:<init>	(Ljava/lang/String;ILjava/util/LinkedList;Ljava/lang/String;Lcom/tencent/mm/al/g;[B)V
     //   853: astore 10
     //   855: aload_0
     //   856: getfield 46	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:lock	Ljava/lang/Object;
@@ -464,10 +466,10 @@ public final class d
     //   861: aload 6
     //   863: monitorenter
     //   864: aload 10
-    //   866: invokevirtual 254	com/tencent/mm/plugin/backup/bakoldlogic/c/c:bEA	()Z
+    //   866: invokevirtual 254	com/tencent/mm/plugin/backup/bakoldlogic/c/c:bIJ	()Z
     //   869: pop
     //   870: aload_0
-    //   871: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:naK	Ljava/util/HashSet;
+    //   871: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:nBh	Ljava/util/HashSet;
     //   874: aload_1
     //   875: invokevirtual 255	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   878: pop
@@ -478,11 +480,11 @@ public final class d
     //   888: dup
     //   889: iconst_0
     //   890: aload_0
-    //   891: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:naK	Ljava/util/HashSet;
+    //   891: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:nBh	Ljava/util/HashSet;
     //   894: invokevirtual 155	java/util/HashSet:size	()I
     //   897: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   900: aastore
-    //   901: invokestatic 259	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   901: invokestatic 259	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   904: aload 6
     //   906: monitorexit
     //   907: new 57	java/util/LinkedList
@@ -511,7 +513,7 @@ public final class d
     //   953: lcmp
     //   954: ifle +95 -> 1049
     //   957: aload_0
-    //   958: getfield 51	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:gcX	Ljava/util/Random;
+    //   958: getfield 51	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:gwH	Ljava/util/Random;
     //   961: invokestatic 395	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:b	(Ljava/util/Random;)Ljava/lang/String;
     //   964: astore_2
     //   965: new 230	com/tencent/mm/plugin/backup/bakoldlogic/c/c
@@ -521,9 +523,9 @@ public final class d
     //   971: aload_1
     //   972: ldc 172
     //   974: aload_0
-    //   975: invokestatic 242	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a:bEZ	()Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a;
-    //   978: getfield 248	com/tencent/mm/plugin/backup/b/d:mSi	[B
-    //   981: invokespecial 251	com/tencent/mm/plugin/backup/bakoldlogic/c/c:<init>	(Ljava/lang/String;ILjava/util/LinkedList;Ljava/lang/String;Lcom/tencent/mm/ak/h;[B)V
+    //   975: invokestatic 242	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a:bJi	()Lcom/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/a;
+    //   978: getfield 248	com/tencent/mm/plugin/backup/b/d:nsH	[B
+    //   981: invokespecial 251	com/tencent/mm/plugin/backup/bakoldlogic/c/c:<init>	(Ljava/lang/String;ILjava/util/LinkedList;Ljava/lang/String;Lcom/tencent/mm/al/g;[B)V
     //   984: astore 6
     //   986: aload_0
     //   987: getfield 46	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:lock	Ljava/lang/Object;
@@ -531,10 +533,10 @@ public final class d
     //   991: aload_1
     //   992: monitorenter
     //   993: aload 6
-    //   995: invokevirtual 254	com/tencent/mm/plugin/backup/bakoldlogic/c/c:bEA	()Z
+    //   995: invokevirtual 254	com/tencent/mm/plugin/backup/bakoldlogic/c/c:bIJ	()Z
     //   998: pop
     //   999: aload_0
-    //   1000: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:naK	Ljava/util/HashSet;
+    //   1000: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:nBh	Ljava/util/HashSet;
     //   1003: aload_2
     //   1004: invokevirtual 255	java/util/HashSet:add	(Ljava/lang/Object;)Z
     //   1007: pop
@@ -545,11 +547,11 @@ public final class d
     //   1017: dup
     //   1018: iconst_0
     //   1019: aload_0
-    //   1020: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:naK	Ljava/util/HashSet;
+    //   1020: getfield 65	com/tencent/mm/plugin/backup/bakoldlogic/bakoldpcmodel/d:nBh	Ljava/util/HashSet;
     //   1023: invokevirtual 155	java/util/HashSet:size	()I
     //   1026: invokestatic 205	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1029: aastore
-    //   1030: invokestatic 259	com/tencent/mm/sdk/platformtools/ac:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1030: invokestatic 259	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1033: aload_1
     //   1034: monitorexit
     //   1035: aload 8
@@ -649,16 +651,16 @@ public final class d
   public final void a(int paramInt1, int paramInt2, n paramn)
   {
     AppMethodBeat.i(21894);
-    this.naP += paramInt1;
-    if (this.naO == 0L) {}
-    for (paramInt1 = 0;; paramInt1 = (int)(this.naP * 100L / this.naO))
+    this.nBm += paramInt1;
+    if (this.nBl == 0L) {}
+    for (paramInt1 = 0;; paramInt1 = (int)(this.nBm * 100L / this.nBl))
     {
-      if (paramInt1 > this.naQ)
+      if (paramInt1 > this.nBn)
       {
-        this.naQ = paramInt1;
-        com.tencent.mm.plugin.backup.bakoldlogic.c.c.setProgress(this.naQ);
-        if ((!this.dhO) && (!this.gRx) && (this.naL != null) && (this.naQ >= 0) && (this.naQ <= 100)) {
-          this.naL.xi(this.naQ);
+        this.nBn = paramInt1;
+        com.tencent.mm.plugin.backup.bakoldlogic.c.c.setProgress(this.nBn);
+        if ((!this.dtm) && (!this.hjP) && (this.nBi != null) && (this.nBn >= 0) && (this.nBn <= 100)) {
+          this.nBi.xO(this.nBn);
         }
       }
       AppMethodBeat.o(21894);
@@ -666,29 +668,29 @@ public final class d
     }
   }
   
-  final void bFg()
+  final void bJp()
   {
     AppMethodBeat.i(21892);
-    if ((!this.naN) || (this.gRx))
+    if ((!this.nBk) || (this.hjP))
     {
       AppMethodBeat.o(21892);
       return;
     }
     synchronized (this.lock)
     {
-      if (this.naK.isEmpty())
+      if (this.nBh.isEmpty())
       {
-        a.bEZ().bFa().nbd = 4;
-        a.bEZ().bFa().nbe = 3;
-        com.tencent.mm.plugin.backup.g.b.b(5, this.naM);
-        new com.tencent.mm.plugin.backup.bakoldlogic.c.b(5).bEA();
-        c localc = a.bEZ().bFb();
-        localc.naF += 1;
-        if (this.naL != null)
+        a.bJi().bJj().nBA = 4;
+        a.bJi().bJj().nBB = 3;
+        com.tencent.mm.plugin.backup.g.b.b(5, this.nBj);
+        new com.tencent.mm.plugin.backup.bakoldlogic.c.b(5).bIJ();
+        c localc = a.bJi().bJk();
+        localc.nBc += 1;
+        if (this.nBi != null)
         {
-          this.naL.bFn();
+          this.nBi.bJw();
           cancel();
-          ac.i("MicroMsg.BakPCServer", "send backup finish cmd");
+          ad.i("MicroMsg.BakPCServer", "send backup finish cmd");
         }
       }
       else
@@ -696,19 +698,19 @@ public final class d
         AppMethodBeat.o(21892);
         return;
       }
-      ac.i("MicroMsg.BakPCServer", "operatorCallback is null");
+      ad.i("MicroMsg.BakPCServer", "operatorCallback is null");
     }
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(21890);
-    ac.i("MicroMsg.BakPCServer", "cancel");
-    this.gRx = true;
-    com.tencent.mm.plugin.backup.g.b.b(5, this.naM);
-    this.naL = null;
-    this.naN = false;
-    this.naQ = 0;
+    ad.i("MicroMsg.BakPCServer", "cancel");
+    this.hjP = true;
+    com.tencent.mm.plugin.backup.g.b.b(5, this.nBj);
+    this.nBi = null;
+    this.nBk = false;
+    this.nBn = 0;
     synchronized (this.lock)
     {
       this.lock.notifyAll();
@@ -720,16 +722,16 @@ public final class d
   public final void pause()
   {
     AppMethodBeat.i(21888);
-    ac.i("MicroMsg.BakPCServer", "pause");
-    this.dhO = true;
+    ad.i("MicroMsg.BakPCServer", "pause");
+    this.dtm = true;
     AppMethodBeat.o(21888);
   }
   
   public final void resume()
   {
     AppMethodBeat.i(21889);
-    ac.i("MicroMsg.BakPCServer", "resume");
-    this.dhO = false;
+    ad.i("MicroMsg.BakPCServer", "resume");
+    this.dtm = false;
     synchronized (this.lock)
     {
       this.lock.notifyAll();

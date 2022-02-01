@@ -4,42 +4,42 @@ import com.tencent.pb.common.c.f;
 
 public final class a
 {
-  private static int JPP = 0;
-  private static String JPQ = "";
+  private static int LJA = 0;
+  private static String LJB = "";
   private static String TAG = "AccountEngine";
   
-  public static void aTa(String paramString)
+  public static void aZa(String paramString)
   {
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    JPQ = str;
+    LJB = str;
   }
   
-  public static void adY(int paramInt)
+  public static void agy(int paramInt)
   {
-    JPP = paramInt;
+    LJA = paramInt;
   }
   
-  public static String fBV()
+  public static String fTk()
   {
-    return JPQ;
+    return LJB;
   }
   
-  public static boolean fBW()
+  public static boolean fTl()
   {
-    return !f.cX(JPQ);
+    return !f.ea(LJB);
   }
   
-  public static boolean fBX()
+  public static boolean fTm()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.a.a.a
  * JD-Core Version:    0.7.0.1
  */

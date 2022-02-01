@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.scanner.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import d.l;
 import d.n.n;
 import d.v;
 import java.util.Iterator;
 import java.util.List;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "run"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "run"})
 final class b$a
   implements Runnable
 {
@@ -17,7 +17,7 @@ final class b$a
   public final void run()
   {
     AppMethodBeat.i(52476);
-    Object localObject = this.xli;
+    Object localObject = this.yzk;
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type kotlin.String");
@@ -25,7 +25,7 @@ final class b$a
       throw ((Throwable)localObject);
     }
     localObject = n.a((CharSequence)localObject, new String[] { "," });
-    ac.i("MicroMsg.OfflineScanManager", "alvinluo notifyMessage localStr: %d, context size: %d", new Object[] { Integer.valueOf(((String)this.xli).length()), Integer.valueOf(((List)localObject).size()) });
+    ad.i("MicroMsg.OfflineScanManager", "alvinluo notifyMessage localStr: %d, context size: %d", new Object[] { Integer.valueOf(((String)this.yzk).length()), Integer.valueOf(((List)localObject).size()) });
     localObject = ((Iterable)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -36,15 +36,15 @@ final class b$a
         if (i == 0) {
           break label154;
         }
-        b localb = b.xlh;
-        b.arU(str);
+        b localb = b.yzj;
+        b.awV(str);
         break;
       }
       label154:
-      ac.i("MicroMsg.OfflineScanManager", "alvinluo notifyOfflineScanMessage context is empty, ignore");
+      ad.i("MicroMsg.OfflineScanManager", "alvinluo notifyOfflineScanMessage context is empty, ignore");
     }
-    localObject = b.xlh;
-    b.dBk();
+    localObject = b.yzj;
+    b.dMI();
     AppMethodBeat.o(52476);
   }
 }

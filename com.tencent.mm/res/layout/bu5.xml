@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/hu">
+        <Button android:id="@id/bpx" android:layout_marginRight="10.0dip" android:text="select log" style="@style/of" />
+        <Button android:id="@id/f03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Req expt" />
+        <Button android:id="@id/bpt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delete" />
+        <Button android:id="@id/bpu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Export" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/hu">
+        <EditText android:id="@id/cr7" android:layout_width="100.0dip" android:layout_marginRight="10.0dip" android:hint="exptId" android:inputType="number" style="@style/lp" />
+        <Button android:id="@id/ayd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="confirm" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="exptId:" />
+            <TextView android:textSize="@dimen/ia" android:id="@id/bpv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="groupId:" />
+            <TextView android:textSize="@dimen/ia" android:id="@id/cgk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="exptSeq:" />
+            <TextView android:textSize="@dimen/ia" android:id="@id/bpy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="exptTime:" />
+            <TextView android:textSize="@dimen/ia" android:id="@id/bpz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ia" android:id="@id/bps" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </ScrollView>> </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="50.0dip">
+        <EditText android:id="@id/bq0" android:layout_width="fill_parent" android:layout_margin="10.0dip" android:hint="xml" style="@style/lp" />
+        <Button android:id="@id/bq1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="confirmXMl" />
+    </LinearLayout>
+    <Button android:id="@id/hzc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/w5" />
+</LinearLayout>

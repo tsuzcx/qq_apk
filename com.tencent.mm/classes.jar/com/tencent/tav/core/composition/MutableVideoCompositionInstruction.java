@@ -20,7 +20,7 @@ public class MutableVideoCompositionInstruction
   
   public void setLayerInstructions(List<VideoCompositionLayerInstruction> paramList)
   {
-    AppMethodBeat.i(197688);
+    AppMethodBeat.i(218056);
     this.layerInstructions.clear();
     this.layerInstructions.addAll(paramList);
     this.requiredSourceTrackIDs.clear();
@@ -30,7 +30,7 @@ public class MutableVideoCompositionInstruction
       VideoCompositionLayerInstruction localVideoCompositionLayerInstruction = (VideoCompositionLayerInstruction)paramList.next();
       this.requiredSourceTrackIDs.add(Integer.valueOf(localVideoCompositionLayerInstruction.getTrackID()));
     }
-    AppMethodBeat.o(197688);
+    AppMethodBeat.o(218056);
   }
   
   public void setTimeRange(CMTimeRange paramCMTimeRange)
@@ -40,7 +40,7 @@ public class MutableVideoCompositionInstruction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.core.composition.MutableVideoCompositionInstruction
  * JD-Core Version:    0.7.0.1
  */

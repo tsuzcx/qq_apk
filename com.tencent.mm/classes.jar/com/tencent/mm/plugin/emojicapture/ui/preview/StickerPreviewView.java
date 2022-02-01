@@ -18,47 +18,49 @@ import com.tencent.mm.plugin.emojicapture.model.d;
 import com.tencent.mm.plugin.emojicapture.model.d.a;
 import com.tencent.mm.plugin.emojicapture.ui.b.n;
 import com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView;
-import com.tencent.mm.plugin.mmsight.model.p;
+import com.tencent.mm.plugin.mmsight.model.k;
 import com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView;
 import com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView;
 import com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView.a;
 import com.tencent.mm.sticker.loader.g;
 import com.tencent.mm.sticker.ui.view.CaptureStickerHint;
-import com.tencent.mm.ui.ap;
-import d.y;
+import com.tencent.mm.ui.ar;
+import d.g.b.q;
+import d.l;
+import d.z;
 
-@d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView;", "Landroid/support/constraint/ConstraintLayout;", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "actionHint", "Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "bottomLine", "Landroid/support/constraint/Guideline;", "callback", "com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$callback$1", "Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$callback$1;", "cameraContainer", "Lcom/tencent/mm/media/widget/camerarecordview/CameraPreviewContainer;", "cameraPreview", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "captureFocus", "Lcom/tencent/mm/plugin/mmsight/ui/CameraFrontSightView;", "captureTouchView", "Lcom/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView;", "emojiPreviewSize", "emojiPreviewTopMargin", "mode", "previewLayout", "Landroid/view/ViewGroup;", "previewRect", "Landroid/graphics/Rect;", "render", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewRender;", "stickerUrl", "switchCamera", "Landroid/view/View;", "switchCameraIcon", "Landroid/widget/ImageView;", "switchMode", "switchModeIcon", "textHint", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView;", "useBackgroundCamera", "", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRecordScene", "getResolutionLimit", "getVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "onDestroy", "onPause", "onResume", "onSizeChanged", "w", "h", "oldw", "oldh", "setStickerUrl", "url", "useCpuCrop", "Companion", "plugin-emojicapture_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView;", "Landroid/support/constraint/ConstraintLayout;", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "actionHint", "Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "bottomLine", "Landroid/support/constraint/Guideline;", "callback", "com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$callback$1", "Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$callback$1;", "cameraContainer", "Lcom/tencent/mm/media/widget/camerarecordview/CameraPreviewContainer;", "cameraPreview", "Lcom/tencent/mm/media/widget/camerarecordview/preview/CameraPreviewGLTextureView;", "captureFocus", "Lcom/tencent/mm/plugin/mmsight/ui/CameraFrontSightView;", "captureTouchView", "Lcom/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView;", "emojiPreviewSize", "emojiPreviewTopMargin", "mode", "previewLayout", "Landroid/view/ViewGroup;", "previewRect", "Landroid/graphics/Rect;", "render", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/StickerPreviewRender;", "stickerUrl", "switchCamera", "Landroid/view/View;", "switchCameraIcon", "Landroid/widget/ImageView;", "switchMode", "switchModeIcon", "textHint", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/FontAnimTextView;", "useBackgroundCamera", "", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "getCameraPreviewView", "Lcom/tencent/mm/media/widget/camerarecordview/preview/ICameraPreviewView;", "getEncodeConfig", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getPreviewRenderer", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "getRecordScene", "getResolutionLimit", "getVideoTransPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "onDestroy", "onPause", "onResume", "onSizeChanged", "w", "h", "oldw", "oldh", "setStickerUrl", "url", "useCpuCrop", "Companion", "plugin-emojicapture_release"})
 public final class StickerPreviewView
   extends ConstraintLayout
   implements com.tencent.mm.media.widget.camerarecordview.d.a
 {
-  public static final StickerPreviewView.a pwb;
+  public static final StickerPreviewView.a pZG;
   private final String TAG;
-  private final int fHW;
+  private final int gbw;
   private int mode;
-  private final CameraFrontSightView prN;
-  private final MMSightCaptureTouchView prO;
-  public final com.tencent.mm.media.widget.camerarecordview.a prU;
-  private boolean prV;
-  private String prr;
-  private final FontAnimTextView psc;
-  private final CaptureStickerHint psd;
-  private final Rect pvL;
-  private final ViewGroup pvR;
-  private final CameraPreviewGLTextureView pvS;
-  private final View pvT;
-  private final View pvU;
-  private final ImageView pvV;
-  private final ImageView pvW;
-  private final Guideline pvX;
-  private n pvY;
-  private final int pvZ;
-  public final b pwa;
+  private String pUX;
+  public final com.tencent.mm.media.widget.camerarecordview.a pVA;
+  private boolean pVB;
+  private final FontAnimTextView pVI;
+  private final CaptureStickerHint pVJ;
+  private final CameraFrontSightView pVt;
+  private final MMSightCaptureTouchView pVu;
+  private final ImageView pZA;
+  private final ImageView pZB;
+  private final Guideline pZC;
+  private n pZD;
+  private final int pZE;
+  public final b pZF;
+  private final Rect pZq;
+  private final ViewGroup pZw;
+  private final CameraPreviewGLTextureView pZx;
+  private final View pZy;
+  private final View pZz;
   
   static
   {
     AppMethodBeat.i(926);
-    pwb = new StickerPreviewView.a((byte)0);
+    pZG = new StickerPreviewView.a((byte)0);
     AppMethodBeat.o(926);
   }
   
@@ -74,122 +76,130 @@ public final class StickerPreviewView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(924);
     this.TAG = "MicroMsg.StickerPreviewView";
-    this.pvY = new n((byte)0);
+    this.pZD = new n((byte)0);
     this.mode = 2;
-    this.pvL = new Rect();
-    this.prr = "";
-    this.pwa = new b(this);
+    this.pZq = new Rect();
+    this.pUX = "";
+    this.pZF = new b(this);
     View.inflate(paramContext, 2131495644, (ViewGroup)this);
-    this.fHW = getResources().getDimensionPixelSize(2131166205);
-    this.pvZ = getResources().getDimensionPixelSize(2131165285);
+    this.gbw = getResources().getDimensionPixelSize(2131166205);
+    this.pZE = getResources().getDimensionPixelSize(2131165285);
     paramAttributeSet = findViewById(2131305220);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticker_preview_capture_layout)");
-    this.pvR = ((ViewGroup)paramAttributeSet);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticker_preview_capture_layout)");
+    this.pZw = ((ViewGroup)paramAttributeSet);
     paramAttributeSet = findViewById(2131305228);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticker_preview_capture_view)");
-    this.pvS = ((CameraPreviewGLTextureView)paramAttributeSet);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticker_preview_capture_view)");
+    this.pZx = ((CameraPreviewGLTextureView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305219);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticke…view_capture_focus_frame)");
-    this.prN = ((CameraFrontSightView)paramAttributeSet);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticke…view_capture_focus_frame)");
+    this.pVt = ((CameraFrontSightView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305227);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticke…eview_capture_touch_view)");
-    this.prO = ((MMSightCaptureTouchView)paramAttributeSet);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticke…eview_capture_touch_view)");
+    this.pVu = ((MMSightCaptureTouchView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305224);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticke…view_capture_switch_mode)");
-    this.pvT = paramAttributeSet;
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticke…view_capture_switch_mode)");
+    this.pZy = paramAttributeSet;
     paramAttributeSet = findViewById(2131305221);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticke…ew_capture_switch_camera)");
-    this.pvU = paramAttributeSet;
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticke…ew_capture_switch_camera)");
+    this.pZz = paramAttributeSet;
     paramAttributeSet = findViewById(2131305225);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticke…capture_switch_mode_icon)");
-    this.pvV = ((ImageView)paramAttributeSet);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticke…capture_switch_mode_icon)");
+    this.pZA = ((ImageView)paramAttributeSet);
     paramAttributeSet = findViewById(2131305222);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticke…pture_switch_camera_icon)");
-    this.pvW = ((ImageView)paramAttributeSet);
-    com.tencent.mm.plugin.emojicapture.ui.c.a(this.pvW, 2131690362, -1);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticke…pture_switch_camera_icon)");
+    this.pZB = ((ImageView)paramAttributeSet);
+    com.tencent.mm.plugin.emojicapture.ui.c.a(this.pZB, 2131690362, -1);
     paramAttributeSet = findViewById(2131305238);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticker_preview_switch_bottom)");
-    this.pvX = ((Guideline)paramAttributeSet);
-    this.pvX.setGuidelineEnd(ap.ej(paramContext) + getResources().getDimensionPixelOffset(2131165294));
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticker_preview_switch_bottom)");
+    this.pZC = ((Guideline)paramAttributeSet);
+    this.pZC.setGuidelineEnd(ar.ej(paramContext) + getResources().getDimensionPixelOffset(2131165294));
     paramAttributeSet = findViewById(2131305230);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticker_preview_hint)");
-    this.psd = ((CaptureStickerHint)paramAttributeSet);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticker_preview_hint)");
+    this.pVJ = ((CaptureStickerHint)paramAttributeSet);
     paramAttributeSet = findViewById(2131305236);
-    d.g.b.k.g(paramAttributeSet, "findViewById(R.id.sticker_preview_subtitle)");
-    this.psc = ((FontAnimTextView)paramAttributeSet);
+    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.sticker_preview_subtitle)");
+    this.pVI = ((FontAnimTextView)paramAttributeSet);
     paramInt = com.tencent.mm.cc.a.fromDPToPix(paramContext, 120);
-    this.prN.gl(paramInt, paramInt);
-    this.pvS.setOpaque(false);
-    this.prU = new com.tencent.mm.media.widget.camerarecordview.a((com.tencent.mm.media.widget.camerarecordview.d.a)this);
-    this.prO.setTouchCallback((MMSightCaptureTouchView.a)new MMSightCaptureTouchView.a()
+    this.pVt.gC(paramInt, paramInt);
+    this.pZx.setOpaque(false);
+    this.pVA = new com.tencent.mm.media.widget.camerarecordview.a((com.tencent.mm.media.widget.camerarecordview.d.a)this);
+    this.pVu.setTouchCallback((MMSightCaptureTouchView.a)new MMSightCaptureTouchView.a()
     {
-      public final void D(float paramAnonymousFloat1, float paramAnonymousFloat2)
+      public final void E(float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(902);
-        StickerPreviewView.f(this.pwc).b(paramAnonymousFloat1, paramAnonymousFloat2, StickerPreviewView.g(this.pwc).getWidth(), StickerPreviewView.g(this.pwc).getHeight());
-        StickerPreviewView.h(this.pwc).U(paramAnonymousFloat1, paramAnonymousFloat2);
+        StickerPreviewView.f(this.pZH).b(paramAnonymousFloat1, paramAnonymousFloat2, StickerPreviewView.g(this.pZH).getWidth(), StickerPreviewView.g(this.pZH).getHeight());
+        StickerPreviewView.h(this.pZH).W(paramAnonymousFloat1, paramAnonymousFloat2);
         AppMethodBeat.o(902);
       }
       
-      public final void aSi()
+      public final void aVu()
       {
         AppMethodBeat.i(904);
-        StickerPreviewView.f(this.pwc).j(true, 1);
+        StickerPreviewView.f(this.pZH).j(true, 1);
         AppMethodBeat.o(904);
       }
       
-      public final void aSj()
+      public final void aVv()
       {
         AppMethodBeat.i(905);
-        StickerPreviewView.f(this.pwc).j(false, 1);
+        StickerPreviewView.f(this.pZH).j(false, 1);
         AppMethodBeat.o(905);
       }
       
-      public final void cfQ()
+      public final void ckt()
       {
         AppMethodBeat.i(903);
-        StickerPreviewView.f(this.pwc).atx();
-        StickerPreviewView.a(this.pwc, com.tencent.mm.media.widget.camerarecordview.a.b(StickerPreviewView.f(this.pwc)));
+        StickerPreviewView.f(this.pZH).awk();
+        StickerPreviewView.a(this.pZH, com.tencent.mm.media.widget.camerarecordview.a.b(StickerPreviewView.f(this.pZH)));
         AppMethodBeat.o(903);
       }
     });
-    this.pvT.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.pZy.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
         AppMethodBeat.i(909);
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahq());
         paramAnonymousView = new android.support.design.widget.a(paramContext);
-        StickerPreviewChangeMode localStickerPreviewChangeMode = new StickerPreviewChangeMode(paramContext);
-        localStickerPreviewChangeMode.setBackgroundResource(2131232016);
-        localStickerPreviewChangeMode.setOnModeSelected((d.g.a.b)new d.g.b.l(paramAnonymousView) {});
-        paramAnonymousView.setContentView((View)localStickerPreviewChangeMode);
+        localObject = new StickerPreviewChangeMode(paramContext);
+        ((StickerPreviewChangeMode)localObject).setBackgroundResource(2131232016);
+        ((StickerPreviewChangeMode)localObject).setOnModeSelected((d.g.a.b)new q(paramAnonymousView) {});
+        paramAnonymousView.setContentView((View)localObject);
         paramAnonymousView.show();
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(909);
       }
     });
-    this.pvU.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.pZz.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(910);
-        com.tencent.mm.media.widget.camerarecordview.a.b(StickerPreviewView.f(this.pwc));
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bd(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
+        com.tencent.mm.media.widget.camerarecordview.a.b(StickerPreviewView.f(this.pZH));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(910);
       }
     });
-    paramContext = com.tencent.mm.sticker.loader.e.GAP;
-    com.tencent.mm.sticker.loader.e.a((com.tencent.mm.loader.g.f)this.pwa);
+    paramContext = com.tencent.mm.sticker.loader.e.ImJ;
+    com.tencent.mm.sticker.loader.e.a((com.tencent.mm.loader.g.f)this.pZF);
     paramContext = new com.tencent.mm.sticker.f();
     paramAttributeSet = new StringBuilder();
-    com.tencent.mm.sticker.loader.e locale = com.tencent.mm.sticker.loader.e.GAP;
-    paramContext.aMs(com.tencent.mm.sticker.loader.e.eYv() + "preview/");
+    com.tencent.mm.sticker.loader.e locale = com.tencent.mm.sticker.loader.e.ImJ;
+    paramContext.aRZ(com.tencent.mm.sticker.loader.e.fof() + "preview/");
     paramAttributeSet = new StringBuilder();
-    locale = com.tencent.mm.sticker.loader.e.GAP;
-    paramContext.aMt(com.tencent.mm.sticker.loader.e.eYv() + "preview/");
+    locale = com.tencent.mm.sticker.loader.e.ImJ;
+    paramContext.aSa(com.tencent.mm.sticker.loader.e.fof() + "preview/");
     a(paramContext);
     AppMethodBeat.o(924);
   }
   
-  public final boolean Nw()
+  public final boolean Pf()
   {
     return false;
   }
@@ -197,32 +207,32 @@ public final class StickerPreviewView
   public final void a(final com.tencent.mm.sticker.f paramf)
   {
     AppMethodBeat.i(917);
-    com.tencent.mm.ac.c.g((d.g.a.a)new c(this, paramf));
-    this.pvS.h((d.g.a.a)new d(this, paramf));
+    com.tencent.mm.ad.c.g((d.g.a.a)new c(this, paramf));
+    this.pZx.h((d.g.a.a)new d(this, paramf));
     AppMethodBeat.o(917);
   }
   
-  public final boolean auW()
+  public final boolean axJ()
   {
     AppMethodBeat.i(920);
-    boolean bool = ((a.a)com.tencent.mm.plugin.emojicapture.b.a.pmV.aqp()).gWY;
+    boolean bool = ((a.a)com.tencent.mm.plugin.emojicapture.b.a.pQv.ate()).hpe;
     AppMethodBeat.o(920);
     return bool;
   }
   
-  public final boolean auX()
+  public final boolean axK()
   {
     return false;
   }
   
-  public final boolean auY()
+  public final boolean axL()
   {
     return false;
   }
   
   public final com.tencent.mm.media.widget.camerarecordview.preview.e getCameraPreviewView()
   {
-    return (com.tencent.mm.media.widget.camerarecordview.preview.e)this.pvS;
+    return (com.tencent.mm.media.widget.camerarecordview.preview.e)this.pZx;
   }
   
   public final VideoTransPara getDaemonVideoTransPara()
@@ -241,12 +251,12 @@ public final class StickerPreviewView
     return locala;
   }
   
-  public final com.tencent.mm.media.i.a getPreviewRenderer()
+  public final com.tencent.mm.media.j.a getPreviewRenderer()
   {
-    return (com.tencent.mm.media.i.a)this.pvY;
+    return (com.tencent.mm.media.j.a)this.pZD;
   }
   
-  public final com.tencent.mm.media.i.a getRecordRenderer()
+  public final com.tencent.mm.media.j.a getRecordRenderer()
   {
     return null;
   }
@@ -264,7 +274,7 @@ public final class StickerPreviewView
   public final int getResolutionLimit()
   {
     AppMethodBeat.i(921);
-    int i = ((a.a)com.tencent.mm.plugin.emojicapture.b.a.pmV.aqp()).gnN;
+    int i = ((a.a)com.tencent.mm.plugin.emojicapture.b.a.pQv.ate()).gHw;
     AppMethodBeat.o(921);
     return i;
   }
@@ -272,7 +282,7 @@ public final class StickerPreviewView
   public final VideoTransPara getVideoTransPara()
   {
     AppMethodBeat.i(923);
-    VideoTransPara localVideoTransPara = com.tencent.mm.plugin.mmsight.model.k.uLk.hcZ;
+    VideoTransPara localVideoTransPara = k.vOq.hvh;
     if (localVideoTransPara != null)
     {
       AppMethodBeat.o(923);
@@ -286,7 +296,7 @@ public final class StickerPreviewView
   public final void onResume()
   {
     AppMethodBeat.i(918);
-    com.tencent.mm.media.widget.camerarecordview.a.a(this.prU, this.prV, null, 6);
+    com.tencent.mm.media.widget.camerarecordview.a.a(this.pVA, this.pVB, null, 6);
     AppMethodBeat.o(918);
   }
   
@@ -296,13 +306,13 @@ public final class StickerPreviewView
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != paramInt3) && (paramInt1 > 0))
     {
-      paramInt1 = (getWidth() - this.fHW) / 2;
-      paramInt2 = this.pvZ;
-      this.pvL.set(paramInt1, paramInt2, this.fHW + paramInt1, this.fHW + paramInt2);
-      n localn = this.pvY;
-      Rect localRect = this.pvL;
-      d.g.b.k.h(localRect, "previewRect");
-      localn.pvL.set(localRect);
+      paramInt1 = (getWidth() - this.gbw) / 2;
+      paramInt2 = this.pZE;
+      this.pZq.set(paramInt1, paramInt2, this.gbw + paramInt1, this.gbw + paramInt2);
+      n localn = this.pZD;
+      Rect localRect = this.pZq;
+      d.g.b.p.h(localRect, "previewRect");
+      localn.pZq.set(localRect);
     }
     AppMethodBeat.o(919);
   }
@@ -310,22 +320,22 @@ public final class StickerPreviewView
   public final void setStickerUrl(String paramString)
   {
     AppMethodBeat.i(916);
-    d.g.b.k.h(paramString, "url");
-    this.prr = paramString;
-    com.tencent.mm.sticker.loader.e locale = com.tencent.mm.sticker.loader.e.GAP;
-    com.tencent.mm.sticker.loader.e.aMw(paramString);
+    d.g.b.p.h(paramString, "url");
+    this.pUX = paramString;
+    com.tencent.mm.sticker.loader.e locale = com.tencent.mm.sticker.loader.e.ImJ;
+    com.tencent.mm.sticker.loader.e.aSd(paramString);
     AppMethodBeat.o(916);
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojicapture_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojicapture_release"})
   public static final class b
     implements com.tencent.mm.loader.g.f<g>
   {}
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class c
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     c(StickerPreviewView paramStickerPreviewView, com.tencent.mm.sticker.f paramf)
     {
@@ -333,10 +343,10 @@ public final class StickerPreviewView
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"<anonymous>", "", "invoke"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"<anonymous>", "", "invoke"})
   static final class d
-    extends d.g.b.l
-    implements d.g.a.a<y>
+    extends q
+    implements d.g.a.a<z>
   {
     d(StickerPreviewView paramStickerPreviewView, com.tencent.mm.sticker.f paramf)
     {
@@ -344,29 +354,29 @@ public final class StickerPreviewView
     }
   }
   
-  @d.l(fNY={1, 1, 16}, fNZ={""}, fOa={"com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$getEncodeConfig$1", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getFilePath", "", "getRecordType", "", "getThumbPath", "plugin-emojicapture_release"})
+  @l(gfx={1, 1, 16}, gfy={""}, gfz={"com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$getEncodeConfig$1", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getFilePath", "", "getRecordType", "", "getThumbPath", "plugin-emojicapture_release"})
   public static final class e
     implements com.tencent.mm.media.widget.camerarecordview.b.a
   {
-    public final int auM()
-    {
-      return 2;
-    }
-    
-    public final String auN()
+    public final String axA()
     {
       AppMethodBeat.i(915);
-      Object localObject = d.pnw;
-      localObject = d.a.ceQ();
+      Object localObject = d.pQW;
+      localObject = d.a.cjt();
       AppMethodBeat.o(915);
       return localObject;
+    }
+    
+    public final int axz()
+    {
+      return 2;
     }
     
     public final String getFilePath()
     {
       AppMethodBeat.i(914);
-      Object localObject = d.pnw;
-      localObject = d.a.ceP();
+      Object localObject = d.pQW;
+      localObject = d.a.cjs();
       AppMethodBeat.o(914);
       return localObject;
     }

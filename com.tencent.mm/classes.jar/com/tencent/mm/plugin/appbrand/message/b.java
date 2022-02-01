@@ -1,71 +1,71 @@
 package com.tencent.mm.plugin.appbrand.message;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f.a;
-import com.tencent.mm.ak.f.b;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.appbrand.ipc.e;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.protocal.protobuf.cu;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.protocal.protobuf.cv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Map;
 
 public enum b
-  implements o
+  implements p
 {
   static
   {
-    AppMethodBeat.i(186881);
-    luP = new b("INSTANCE");
-    luQ = new b[] { luP };
-    AppMethodBeat.o(186881);
+    AppMethodBeat.i(188676);
+    lTY = new b("INSTANCE");
+    lTZ = new b[] { lTY };
+    AppMethodBeat.o(188676);
   }
   
   private b() {}
   
-  public final f.b a(String paramString, Map<String, String> paramMap, f.a parama)
+  public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
   {
-    AppMethodBeat.i(186880);
+    AppMethodBeat.i(188675);
     if ((paramString == null) || (!paramString.equals("wxaapp_msgchannel")))
     {
-      ac.e("MicroMsg.WxaAppMsgChannelHandler", "subType is err, return");
-      AppMethodBeat.o(186880);
+      ad.e("MicroMsg.WxaAppMsgChannelHandler", "subType is err, return");
+      AppMethodBeat.o(188675);
       return null;
     }
-    ac.i("MicroMsg.WxaAppMsgChannelHandler", "consumeNewXml subType:%s", new Object[] { paramString });
-    String str5 = z.a(parama.fXi.DPV);
-    if (bs.isNullOrNil(str5))
+    ad.i("MicroMsg.WxaAppMsgChannelHandler", "consumeNewXml subType:%s", new Object[] { paramString });
+    String str5 = z.a(parama.gqE.Fvk);
+    if (bt.isNullOrNil(str5))
     {
-      ac.w("MicroMsg.WxaAppMsgChannelHandler", "msg content is null");
-      AppMethodBeat.o(186880);
+      ad.w("MicroMsg.WxaAppMsgChannelHandler", "msg content is null");
+      AppMethodBeat.o(188675);
       return null;
     }
     if (paramMap.get(".sysmsg.wxaapp_msgchannel") == null)
     {
-      AppMethodBeat.o(186880);
+      AppMethodBeat.o(188675);
       return null;
     }
     paramString = (String)paramMap.get(".sysmsg.wxaapp_msgchannel.msg_id");
     String str1 = (String)paramMap.get(".sysmsg.wxaapp_msgchannel.sender_openid");
     String str2 = (String)paramMap.get(".sysmsg.wxaapp_msgchannel.receiver_openid");
     String str3 = (String)paramMap.get(".sysmsg.wxaapp_msgchannel.appid");
-    int i = bs.getInt((String)paramMap.get(".sysmsg.wxaapp_msgchannel.msg_type"), 0);
+    int i = bt.getInt((String)paramMap.get(".sysmsg.wxaapp_msgchannel.msg_type"), 0);
     String str4 = (String)paramMap.get(".sysmsg.wxaapp_msgchannel.msg_content");
-    long l = bs.getLong((String)paramMap.get(".sysmsg.wxaapp_msgchannel.send_time"), 0L);
-    ac.i("MicroMsg.WxaAppMsgChannelHandler", "handle addMsg.MsgId:%s", new Object[] { parama.fXi.vTQ });
-    ac.i("MicroMsg.WxaAppMsgChannelHandler", "handle wxaapp_msgchannel xml:%s", new Object[] { str5 });
-    ac.i("MicroMsg.WxaAppMsgChannelHandler", "msgId:%s, senderOpenId:%s, receiverOpenId:%s, appId:%s, msgType:%d, msgContent:%s, sendTime:%d", new Object[] { paramString, str1, str2, str3, Integer.valueOf(i), str4, Long.valueOf(l) });
+    long l = bt.getLong((String)paramMap.get(".sysmsg.wxaapp_msgchannel.send_time"), 0L);
+    ad.i("MicroMsg.WxaAppMsgChannelHandler", "handle addMsg.MsgId:%s", new Object[] { parama.gqE.xbt });
+    ad.i("MicroMsg.WxaAppMsgChannelHandler", "handle wxaapp_msgchannel xml:%s", new Object[] { str5 });
+    ad.i("MicroMsg.WxaAppMsgChannelHandler", "msgId:%s, senderOpenId:%s, receiverOpenId:%s, appId:%s, msgType:%d, msgContent:%s, sendTime:%d", new Object[] { paramString, str1, str2, str3, Integer.valueOf(i), str4, Long.valueOf(l) });
     paramMap = new WxaAppMsgChannel();
-    paramMap.dtG = paramString;
-    paramMap.luN = str1;
-    paramMap.luO = str2;
+    paramMap.msgId = paramString;
+    paramMap.lTW = str1;
+    paramMap.lTX = str2;
     paramMap.appId = str3;
     paramMap.msgType = i;
-    paramMap.drV = str4;
-    paramMap.jGx = l;
+    paramMap.dDP = str4;
+    paramMap.kaJ = l;
     e.b(str3, paramMap);
-    AppMethodBeat.o(186880);
+    AppMethodBeat.o(188675);
     return null;
   }
 }

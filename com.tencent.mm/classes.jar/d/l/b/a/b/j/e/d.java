@@ -11,12 +11,12 @@ import java.util.Set;
 
 public enum d
 {
-  private static final Set<b> LGd;
-  private static final Map<String, d> LGe;
-  private static final Map<h, d> LGf;
-  private static final Map<String, d> LGg;
-  private final h LGh;
-  private final b LGi;
+  private static final Set<b> Nxb;
+  private static final Map<String, d> Nxc;
+  private static final Map<h, d> Nxd;
+  private static final Map<String, d> Nxe;
+  private final h Nxf;
+  private final b Nxg;
   private final String desc;
   private final String name;
   
@@ -24,28 +24,28 @@ public enum d
   {
     int i = 0;
     AppMethodBeat.i(60184);
-    LFV = new d("BOOLEAN", 0, h.LaM, "boolean", "Z", "java.lang.Boolean");
-    LFW = new d("CHAR", 1, h.LaN, "char", "C", "java.lang.Character");
-    LFX = new d("BYTE", 2, h.LaO, "byte", "B", "java.lang.Byte");
-    LFY = new d("SHORT", 3, h.LaP, "short", "S", "java.lang.Short");
-    LFZ = new d("INT", 4, h.LaQ, "int", "I", "java.lang.Integer");
-    LGa = new d("FLOAT", 5, h.LaR, "float", "F", "java.lang.Float");
-    LGb = new d("LONG", 6, h.LaS, "long", "J", "java.lang.Long");
-    LGc = new d("DOUBLE", 7, h.LaT, "double", "D", "java.lang.Double");
-    LGj = new d[] { LFV, LFW, LFX, LFY, LFZ, LGa, LGb, LGc };
-    LGd = new HashSet();
-    LGe = new HashMap();
-    LGf = new EnumMap(h.class);
-    LGg = new HashMap();
+    NwT = new d("BOOLEAN", 0, h.MRH, "boolean", "Z", "java.lang.Boolean");
+    NwU = new d("CHAR", 1, h.MRI, "char", "C", "java.lang.Character");
+    NwV = new d("BYTE", 2, h.MRJ, "byte", "B", "java.lang.Byte");
+    NwW = new d("SHORT", 3, h.MRK, "short", "S", "java.lang.Short");
+    NwX = new d("INT", 4, h.MRL, "int", "I", "java.lang.Integer");
+    NwY = new d("FLOAT", 5, h.MRM, "float", "F", "java.lang.Float");
+    NwZ = new d("LONG", 6, h.MRN, "long", "J", "java.lang.Long");
+    Nxa = new d("DOUBLE", 7, h.MRO, "double", "D", "java.lang.Double");
+    Nxh = new d[] { NwT, NwU, NwV, NwW, NwX, NwY, NwZ, Nxa };
+    Nxb = new HashSet();
+    Nxc = new HashMap();
+    Nxd = new EnumMap(h.class);
+    Nxe = new HashMap();
     d[] arrayOfd = values();
     int j = arrayOfd.length;
     while (i < j)
     {
       d locald = arrayOfd[i];
-      LGd.add(locald.gbH());
-      LGe.put(locald.gbG(), locald);
-      LGf.put(locald.gbF(), locald);
-      LGg.put(locald.getDesc(), locald);
+      Nxb.add(locald.gtg());
+      Nxc.put(locald.gtf(), locald);
+      Nxd.put(locald.gte(), locald);
+      Nxe.put(locald.getDesc(), locald);
       i += 1;
     }
     AppMethodBeat.o(60184);
@@ -54,20 +54,20 @@ public enum d
   private d(h paramh, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(60179);
-    this.LGh = paramh;
+    this.Nxf = paramh;
     this.name = paramString1;
     this.desc = paramString2;
-    this.LGi = new b(paramString3);
+    this.Nxg = new b(paramString3);
     AppMethodBeat.o(60179);
   }
   
-  public static d aWO(String paramString)
+  public static d bcR(String paramString)
   {
     AppMethodBeat.i(60177);
     if (paramString == null) {
-      agL(1);
+      ajm(1);
     }
-    d locald = (d)LGe.get(paramString);
+    d locald = (d)Nxc.get(paramString);
     if (locald == null)
     {
       paramString = new AssertionError("Non-primitive type name passed: ".concat(String.valueOf(paramString)));
@@ -75,7 +75,7 @@ public enum d
       throw paramString;
     }
     if (locald == null) {
-      agL(2);
+      ajm(2);
     }
     AppMethodBeat.o(60177);
     return locald;
@@ -85,47 +85,14 @@ public enum d
   {
     AppMethodBeat.i(60178);
     if (paramh == null) {
-      agL(3);
+      ajm(3);
     }
-    paramh = (d)LGf.get(paramh);
+    paramh = (d)Nxd.get(paramh);
     if (paramh == null) {
-      agL(4);
+      ajm(4);
     }
     AppMethodBeat.o(60178);
     return paramh;
-  }
-  
-  public final h gbF()
-  {
-    AppMethodBeat.i(60180);
-    h localh = this.LGh;
-    if (localh == null) {
-      agL(10);
-    }
-    AppMethodBeat.o(60180);
-    return localh;
-  }
-  
-  public final String gbG()
-  {
-    AppMethodBeat.i(60181);
-    String str = this.name;
-    if (str == null) {
-      agL(11);
-    }
-    AppMethodBeat.o(60181);
-    return str;
-  }
-  
-  public final b gbH()
-  {
-    AppMethodBeat.i(60183);
-    b localb = this.LGi;
-    if (localb == null) {
-      agL(13);
-    }
-    AppMethodBeat.o(60183);
-    return localb;
   }
   
   public final String getDesc()
@@ -133,15 +100,48 @@ public enum d
     AppMethodBeat.i(60182);
     String str = this.desc;
     if (str == null) {
-      agL(12);
+      ajm(12);
     }
     AppMethodBeat.o(60182);
     return str;
   }
+  
+  public final h gte()
+  {
+    AppMethodBeat.i(60180);
+    h localh = this.Nxf;
+    if (localh == null) {
+      ajm(10);
+    }
+    AppMethodBeat.o(60180);
+    return localh;
+  }
+  
+  public final String gtf()
+  {
+    AppMethodBeat.i(60181);
+    String str = this.name;
+    if (str == null) {
+      ajm(11);
+    }
+    AppMethodBeat.o(60181);
+    return str;
+  }
+  
+  public final b gtg()
+  {
+    AppMethodBeat.i(60183);
+    b localb = this.Nxg;
+    if (localb == null) {
+      ajm(13);
+    }
+    AppMethodBeat.o(60183);
+    return localb;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.j.e.d
  * JD-Core Version:    0.7.0.1
  */

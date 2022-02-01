@@ -5,19 +5,19 @@ import android.os.IInterface;
 public abstract interface o
   extends IInterface
 {
-  public abstract long chi();
+  public abstract long clM();
   
-  public abstract byte[] chj();
+  public abstract byte[] clN();
   
-  public abstract int chk();
+  public abstract int clO();
   
-  public abstract int chl();
+  public abstract int clP();
   
-  public abstract int chm();
+  public abstract int clQ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.o
  * JD-Core Version:    0.7.0.1
  */

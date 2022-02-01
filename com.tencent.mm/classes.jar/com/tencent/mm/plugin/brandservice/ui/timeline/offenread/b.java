@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import com.tencent.mm.protocal.protobuf.dhk;
+import com.tencent.mm.protocal.protobuf.dmz;
 
 public class b
-  extends dhk
+  extends dmz
 {
-  public long mSB;
-  public boolean nEw;
+  public long nsZ;
+  public boolean ogW;
   public int position;
   public int type;
   
@@ -22,7 +22,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.b
  * JD-Core Version:    0.7.0.1
  */

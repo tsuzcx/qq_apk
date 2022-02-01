@@ -5,7 +5,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import com.tencent.mm.opensdk.utils.d;
+import com.tencent.mm.opensdk.utils.b;
 import java.io.ByteArrayOutputStream;
 
 public class WXImageObject
@@ -40,13 +40,15 @@ public class WXImageObject
   
   public WXImageObject(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(196935);
     this.imageData = paramArrayOfByte;
+    AppMethodBeat.o(196935);
   }
   
   private int getFileSize(String paramString)
   {
     AppMethodBeat.i(3990);
-    int i = d.getFileSize(paramString);
+    int i = b.a(paramString);
     AppMethodBeat.o(3990);
     return i;
   }
@@ -54,32 +56,41 @@ public class WXImageObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(3989);
-    if (((this.imageData == null) || (this.imageData.length == 0)) && ((this.imagePath == null) || (this.imagePath.length() == 0)))
+    Object localObject = this.imageData;
+    if ((localObject == null) || (localObject.length == 0))
     {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, all arguments are null");
-      AppMethodBeat.o(3989);
-      return false;
+      localObject = this.imagePath;
+      if ((localObject == null) || (((String)localObject).length() == 0)) {}
     }
-    if ((this.imageData != null) && (this.imageData.length > 26214400))
+    else
     {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, content is too large");
+      localObject = this.imageData;
+      if ((localObject != null) && (localObject.length > 26214400))
+      {
+        Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, content is too large");
+        AppMethodBeat.o(3989);
+        return false;
+      }
+      localObject = this.imagePath;
+      if ((localObject != null) && (((String)localObject).length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, path is invalid");
+        AppMethodBeat.o(3989);
+        return false;
+      }
+      localObject = this.imagePath;
+      if ((localObject != null) && (getFileSize((String)localObject) > 26214400))
+      {
+        Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, image content is too large");
+        AppMethodBeat.o(3989);
+        return false;
+      }
       AppMethodBeat.o(3989);
-      return false;
+      return true;
     }
-    if ((this.imagePath != null) && (this.imagePath.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, path is invalid");
-      AppMethodBeat.o(3989);
-      return false;
-    }
-    if ((this.imagePath != null) && (getFileSize(this.imagePath) > 26214400))
-    {
-      Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, image content is too large");
-      AppMethodBeat.o(3989);
-      return false;
-    }
+    Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, all arguments are null");
     AppMethodBeat.o(3989);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

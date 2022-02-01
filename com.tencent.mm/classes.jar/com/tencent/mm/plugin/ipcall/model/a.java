@@ -7,8 +7,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.model.h.b;
 import com.tencent.mm.plugin.ipcall.model.h.d;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ao;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,32 +17,32 @@ import java.util.Map;
 
 public final class a
 {
-  private static a tHs = null;
+  private static a uKf = null;
   private long endTime;
-  ao handler;
+  ap handler;
   private boolean isLoading;
   private long startTime;
-  public ArrayList<a> tHr;
+  public ArrayList<a> uKe;
   
   private a()
   {
     AppMethodBeat.i(25329);
     this.isLoading = false;
-    this.tHr = new ArrayList();
+    this.uKe = new ArrayList();
     this.startTime = -1L;
     this.endTime = -1L;
-    this.handler = new ao(Looper.getMainLooper())
+    this.handler = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(25328);
         long l1 = System.currentTimeMillis();
-        Object localObject1 = i.cUB();
+        Object localObject1 = i.ddM();
         Object localObject2 = (ArrayList)paramAnonymousMessage.obj;
         if ((localObject2 != null) && (((List)localObject2).size() > 0))
         {
-          long l2 = ((d)localObject1).vE(Thread.currentThread().getId());
-          ac.i("MicroMsg.IPCallAddressStorage", "getContactIdMap start");
+          long l2 = ((d)localObject1).xO(Thread.currentThread().getId());
+          ad.i("MicroMsg.IPCallAddressStorage", "getContactIdMap start");
           Object localObject3 = ((d)localObject1).db.a("IPCallAddressItem", new String[] { "contactId" }, null, null, null, null, null, 2);
           paramAnonymousMessage = new HashMap();
           if ((localObject3 != null) && (((Cursor)localObject3).moveToFirst())) {
@@ -57,7 +57,7 @@ public final class a
           if (localObject3 != null) {
             ((Cursor)localObject3).close();
           }
-          ac.i("MicroMsg.IPCallAddressStorage", "getContactIdMap end");
+          ad.i("MicroMsg.IPCallAddressStorage", "getContactIdMap end");
           localObject2 = ((List)localObject2).iterator();
           while (((Iterator)localObject2).hasNext())
           {
@@ -66,36 +66,36 @@ public final class a
               ((d)localObject1).insert((com.tencent.mm.sdk.e.c)localObject3);
             }
           }
-          ((d)localObject1).vF(l2);
+          ((d)localObject1).xP(l2);
         }
-        ac.d("MicroMsg.IPCallAddressBookLoader", "batchInsert, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+        ad.d("MicroMsg.IPCallAddressBookLoader", "batchInsert, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
         a.a(a.this, System.currentTimeMillis());
-        ac.d("MicroMsg.IPCallAddressBookLoader", "loadAllAddressItem, used: %dms", new Object[] { Long.valueOf(a.a(a.this) - a.b(a.this)) });
+        ad.d("MicroMsg.IPCallAddressBookLoader", "loadAllAddressItem, used: %dms", new Object[] { Long.valueOf(a.a(a.this) - a.b(a.this)) });
         a.c(a.this);
         a.a(a.this, -1L);
         a.d(a.this);
-        paramAnonymousMessage = a.this.tHr.iterator();
+        paramAnonymousMessage = a.this.uKe.iterator();
         while (paramAnonymousMessage.hasNext())
         {
           localObject1 = (a.a)paramAnonymousMessage.next();
           if (localObject1 != null) {
-            ((a.a)localObject1).cUf();
+            ((a.a)localObject1).ddq();
           }
         }
-        a.this.tHr.clear();
+        a.this.uKe.clear();
         AppMethodBeat.o(25328);
       }
     };
     AppMethodBeat.o(25329);
   }
   
-  public static a cUe()
+  public static a ddp()
   {
     AppMethodBeat.i(25330);
-    if (tHs == null) {
-      tHs = new a();
+    if (uKf == null) {
+      uKf = new a();
     }
-    a locala = tHs;
+    a locala = uKf;
     AppMethodBeat.o(25330);
     return locala;
   }
@@ -104,22 +104,22 @@ public final class a
   {
     AppMethodBeat.i(25331);
     if (parama != null) {
-      this.tHr.add(parama);
+      this.uKe.add(parama);
     }
     if (this.isLoading)
     {
-      ac.d("MicroMsg.IPCallAddressBookLoader", "loadAllAddressItem, isLoading is true, ignore");
+      ad.d("MicroMsg.IPCallAddressBookLoader", "loadAllAddressItem, isLoading is true, ignore");
       AppMethodBeat.o(25331);
       return;
     }
     this.startTime = System.currentTimeMillis();
-    if ((b.cUZ().size() == 0) || (!paramBoolean))
+    if ((b.dek().size() == 0) || (!paramBoolean))
     {
-      ac.d("MicroMsg.IPCallAddressBookLoader", "loadFromSystemAddressBook");
+      ad.d("MicroMsg.IPCallAddressBookLoader", "loadFromSystemAddressBook");
       long l = System.currentTimeMillis();
       new b();
-      parama = b.cUY();
-      ac.d("MicroMsg.IPCallAddressBookLoader", "getAllAddressItemFromSystemPhoneBook, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      parama = b.dej();
+      ad.d("MicroMsg.IPCallAddressBookLoader", "getAllAddressItemFromSystemPhoneBook, used %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       Message localMessage = this.handler.obtainMessage();
       localMessage.obj = parama;
       this.handler.sendMessage(localMessage);
@@ -132,7 +132,7 @@ public final class a
   
   public static abstract interface a
   {
-    public abstract void cUf();
+    public abstract void ddq();
   }
 }
 

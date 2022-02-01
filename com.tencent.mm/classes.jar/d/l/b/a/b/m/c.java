@@ -1,10 +1,9 @@
 package d.l.b.a.b.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.j;
-import d.g.b.k;
-import d.l.b.a.b.m.c.i;
-import d.l.b.a.b.m.c.m;
+import d.g.b.p;
+import d.l.b.a.b.m.c.h;
+import d.l.b.a.b.m.c.n;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,127 +11,121 @@ import java.util.Set;
 
 public final class c
 {
-  public static final c LKj;
+  public static final c NBi;
   
   static
   {
     AppMethodBeat.i(60571);
-    LKj = new c();
+    NBi = new c();
     AppMethodBeat.o(60571);
   }
   
-  static boolean a(g paramg, i parami, m paramm)
+  static boolean a(g paramg, d.l.b.a.b.m.c.j paramj, n paramn)
   {
     AppMethodBeat.i(60570);
-    k.h(paramg, "$this$hasPathByNotMarkedNullableNodes");
-    k.h(parami, "start");
-    k.h(paramm, "end");
-    if ((paramg.j((d.l.b.a.b.m.c.g)parami)) || ((!paramg.h(parami)) && (paramg.b(paramg.i(parami), paramm)))) {}
-    for (int i = 1; i != 0; i = 0)
+    p.h(paramg, "$this$hasPathByNotMarkedNullableNodes");
+    p.h(paramj, "start");
+    p.h(paramn, "end");
+    if (b(paramg, paramj, paramn))
     {
       AppMethodBeat.o(60570);
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.LKq;
+    ArrayDeque localArrayDeque = paramg.NBp;
     if (localArrayDeque == null) {
-      k.fOy();
+      p.gfZ();
     }
-    Set localSet = paramg.LKr;
+    Set localSet = paramg.NBq;
     if (localSet == null) {
-      k.fOy();
+      p.gfZ();
     }
-    localArrayDeque.push(parami);
-    label268:
-    label401:
+    localArrayDeque.push(paramj);
+    label316:
+    label320:
+    label331:
     for (;;)
     {
       if (!((Collection)localArrayDeque).isEmpty()) {}
-      for (i = 1;; i = 0)
+      for (int i = 1;; i = 0)
       {
         if (i == 0) {
-          break label403;
+          break label333;
         }
         if (localSet.size() <= 1000) {
           break;
         }
-        paramg = (Throwable)new IllegalStateException(("Too many supertypes for type: " + parami + ". Supertypes = " + j.a((Iterable)localSet, null, null, null, 0, null, null, 63)).toString());
+        paramg = (Throwable)new IllegalStateException(("Too many supertypes for type: " + paramj + ". Supertypes = " + d.a.j.a((Iterable)localSet, null, null, null, 0, null, null, 63)).toString());
         AppMethodBeat.o(60570);
         throw paramg;
       }
-      Object localObject = (i)localArrayDeque.pop();
-      k.g(localObject, "current");
+      Object localObject = (d.l.b.a.b.m.c.j)localArrayDeque.pop();
+      p.g(localObject, "current");
       if (localSet.add(localObject))
       {
-        g.c localc;
-        if (paramg.h((i)localObject))
+        g.b localb;
+        if (paramg.h((d.l.b.a.b.m.c.j)localObject))
         {
-          localc = (g.c)g.c.c.LKC;
-          label255:
-          if (!(k.g(localc, g.c.c.LKC) ^ true)) {
-            break label381;
+          localb = (g.b)g.b.c.NBw;
+          label221:
+          if (!(p.i(localb, g.b.c.NBw) ^ true)) {
+            break label316;
           }
-          if (localc == null) {
-            break label385;
+          label234:
+          if (localb == null) {
+            break label320;
           }
-          localObject = paramg.k(paramg.i((i)localObject)).iterator();
+          localObject = paramg.k(paramg.i((d.l.b.a.b.m.c.j)localObject)).iterator();
         }
         for (;;)
         {
           if (!((Iterator)localObject).hasNext()) {
-            break label401;
+            break label331;
           }
-          i locali = localc.b(paramg, (d.l.b.a.b.m.c.g)((Iterator)localObject).next());
-          if ((paramg.j((d.l.b.a.b.m.c.g)locali)) || ((!paramg.h(locali)) && (paramg.b(paramg.i(locali), paramm)))) {}
-          for (i = 1;; i = 0)
+          d.l.b.a.b.m.c.j localj = localb.b(paramg, (h)((Iterator)localObject).next());
+          if (b(paramg, localj, paramn))
           {
-            if (i == 0) {
-              break label392;
-            }
             paramg.clear();
             AppMethodBeat.o(60570);
             return true;
-            localc = (g.c)g.c.b.LKB;
-            break label255;
-            label381:
-            localc = null;
-            break label268;
+            localb = (g.b)g.b.b.NBv;
+            break label221;
+            localb = null;
+            break label234;
             break;
           }
-          localArrayDeque.add(locali);
+          localArrayDeque.add(localj);
         }
       }
     }
-    label385:
-    label392:
-    label403:
+    label333:
     paramg.clear();
     AppMethodBeat.o(60570);
     return false;
   }
   
-  public static boolean a(g paramg, i parami, g.c paramc)
+  public static boolean a(g paramg, d.l.b.a.b.m.c.j paramj, g.b paramb)
   {
     AppMethodBeat.i(60569);
-    k.h(paramg, "$this$hasNotNullSupertype");
-    k.h(parami, "type");
-    k.h(paramc, "supertypesPolicy");
-    if (((paramg.b(parami)) && (!paramg.h(parami))) || (paramg.h((d.l.b.a.b.m.c.g)parami))) {}
+    p.h(paramg, "$this$hasNotNullSupertype");
+    p.h(paramj, "type");
+    p.h(paramb, "supertypesPolicy");
+    if (((paramg.b(paramj)) && (!paramg.h(paramj))) || (paramg.h((h)paramj))) {}
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(60569);
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.LKq;
+    ArrayDeque localArrayDeque = paramg.NBp;
     if (localArrayDeque == null) {
-      k.fOy();
+      p.gfZ();
     }
-    Set localSet = paramg.LKr;
+    Set localSet = paramg.NBq;
     if (localSet == null) {
-      k.fOy();
+      p.gfZ();
     }
-    localArrayDeque.push(parami);
+    localArrayDeque.push(paramj);
     label386:
     for (;;)
     {
@@ -145,35 +138,35 @@ public final class c
         if (localSet.size() <= 1000) {
           break;
         }
-        paramg = (Throwable)new IllegalStateException(("Too many supertypes for type: " + parami + ". Supertypes = " + j.a((Iterable)localSet, null, null, null, 0, null, null, 63)).toString());
+        paramg = (Throwable)new IllegalStateException(("Too many supertypes for type: " + paramj + ". Supertypes = " + d.a.j.a((Iterable)localSet, null, null, null, 0, null, null, 63)).toString());
         AppMethodBeat.o(60569);
         throw paramg;
       }
-      Object localObject = (i)localArrayDeque.pop();
-      k.g(localObject, "current");
+      Object localObject = (d.l.b.a.b.m.c.j)localArrayDeque.pop();
+      p.g(localObject, "current");
       if (localSet.add(localObject))
       {
-        g.c localc;
-        if (paramg.h((i)localObject))
+        g.b localb;
+        if (paramg.h((d.l.b.a.b.m.c.j)localObject))
         {
-          localc = (g.c)g.c.c.LKC;
+          localb = (g.b)g.b.c.NBw;
           label250:
-          if (!(k.g(localc, g.c.c.LKC) ^ true)) {
+          if (!(p.i(localb, g.b.c.NBw) ^ true)) {
             break label366;
           }
           label263:
-          if (localc == null) {
+          if (localb == null) {
             break label370;
           }
-          localObject = paramg.k(paramg.i((i)localObject)).iterator();
+          localObject = paramg.k(paramg.i((d.l.b.a.b.m.c.j)localObject)).iterator();
         }
         for (;;)
         {
           if (!((Iterator)localObject).hasNext()) {
             break label386;
           }
-          i locali = localc.b(paramg, (d.l.b.a.b.m.c.g)((Iterator)localObject).next());
-          if (((paramg.b(locali)) && (!paramg.h(locali))) || (paramg.h((d.l.b.a.b.m.c.g)locali))) {}
+          d.l.b.a.b.m.c.j localj = localb.b(paramg, (h)((Iterator)localObject).next());
+          if (((paramg.b(localj)) && (!paramg.h(localj))) || (paramg.h((h)localj))) {}
           for (i = 1;; i = 0)
           {
             if (i == 0) {
@@ -182,16 +175,16 @@ public final class c
             paramg.clear();
             AppMethodBeat.o(60569);
             return true;
-            localc = paramc;
+            localb = paramb;
             break label250;
             label366:
-            localc = null;
+            localb = null;
             break label263;
             label370:
             break;
           }
           label377:
-          localArrayDeque.add(locali);
+          localArrayDeque.add(localj);
         }
       }
     }
@@ -200,10 +193,33 @@ public final class c
     AppMethodBeat.o(60569);
     return false;
   }
+  
+  private static boolean b(g paramg, d.l.b.a.b.m.c.j paramj, n paramn)
+  {
+    AppMethodBeat.i(187789);
+    if (paramg.j((h)paramj))
+    {
+      AppMethodBeat.o(187789);
+      return true;
+    }
+    if (paramg.h(paramj))
+    {
+      AppMethodBeat.o(187789);
+      return false;
+    }
+    if ((paramg.gtR()) && (paramg.e(paramj)))
+    {
+      AppMethodBeat.o(187789);
+      return true;
+    }
+    boolean bool = paramg.b(paramg.i(paramj), paramn);
+    AppMethodBeat.o(187789);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     d.l.b.a.b.m.c
  * JD-Core Version:    0.7.0.1
  */

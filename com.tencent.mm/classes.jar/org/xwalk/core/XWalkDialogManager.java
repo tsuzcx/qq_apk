@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -134,11 +136,17 @@ public class XWalkDialogManager
           else if (localButtonAction.mClickAction != null) {
             localButton.setOnClickListener(new View.OnClickListener()
             {
+              private byte _hellAccFlag_;
+              
               public void onClick(View paramAnonymous2View)
               {
                 AppMethodBeat.i(154693);
+                b localb = new b();
+                localb.bd(paramAnonymous2View);
+                a.b("org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahq());
                 XWalkDialogManager.this.dismissDialog();
                 this.val$command.run();
+                a.a(this, "org/xwalk/core/XWalkDialogManager$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(154693);
               }
             });

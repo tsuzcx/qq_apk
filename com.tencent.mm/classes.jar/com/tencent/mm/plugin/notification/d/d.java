@@ -4,36 +4,36 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rd;
-import com.tencent.mm.g.a.sl;
-import com.tencent.mm.g.a.sl.a;
-import com.tencent.mm.g.a.sn;
-import com.tencent.mm.g.a.sn.a;
-import com.tencent.mm.g.c.dy;
+import com.tencent.mm.g.a.ro;
+import com.tencent.mm.g.a.sy;
+import com.tencent.mm.g.a.sy.a;
+import com.tencent.mm.g.a.ta;
+import com.tencent.mm.g.a.ta.a;
+import com.tencent.mm.g.c.ei;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.model.ba;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.notification.c.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.storage.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.bu;
 import java.util.ArrayList;
 
 public final class d
-  extends com.tencent.mm.plugin.notification.c.a<bo>
+  extends com.tencent.mm.plugin.notification.c.a<bu>
 {
-  private com.tencent.mm.sdk.b.c vqC;
-  private com.tencent.mm.sdk.b.c vqD;
+  private com.tencent.mm.sdk.b.c wvU;
+  private com.tencent.mm.sdk.b.c wvV;
   
   public d()
   {
     AppMethodBeat.i(26759);
-    this.vqC = new com.tencent.mm.sdk.b.c() {};
-    this.vqD = new com.tencent.mm.sdk.b.c() {};
+    this.wvU = new com.tencent.mm.sdk.b.c() {};
+    this.wvV = new com.tencent.mm.sdk.b.c() {};
     AppMethodBeat.o(26759);
   }
   
-  public final String KA(int paramInt)
+  public final String Mc(int paramInt)
   {
     AppMethodBeat.i(26767);
     String str = getContext().getString(2131761657, new Object[] { Integer.valueOf(paramInt) });
@@ -49,54 +49,26 @@ public final class d
     return str;
   }
   
-  public final void aq(ArrayList<Long> paramArrayList)
+  public final void ap(ArrayList<Long> paramArrayList)
   {
     AppMethodBeat.i(26766);
-    az.ayM();
-    com.tencent.mm.model.c.awD().al(paramArrayList);
+    ba.aBQ();
+    com.tencent.mm.model.c.azs().ak(paramArrayList);
     AppMethodBeat.o(26766);
   }
   
-  public final void dlC()
-  {
-    AppMethodBeat.i(26760);
-    com.tencent.mm.sdk.b.a.GpY.c(this.vqC);
-    AppMethodBeat.o(26760);
-  }
-  
-  public final void dlD()
-  {
-    AppMethodBeat.i(26761);
-    com.tencent.mm.sdk.b.a.GpY.c(this.vqD);
-    AppMethodBeat.o(26761);
-  }
-  
-  public final void dlE()
-  {
-    AppMethodBeat.i(26763);
-    com.tencent.mm.sdk.b.a.GpY.d(this.vqC);
-    AppMethodBeat.o(26763);
-  }
-  
-  public final void dlF()
-  {
-    AppMethodBeat.i(26764);
-    com.tencent.mm.sdk.b.a.GpY.d(this.vqD);
-    AppMethodBeat.o(26764);
-  }
-  
-  public final void dlx()
+  public final void dvO()
   {
     AppMethodBeat.i(26765);
-    ac.i("MicroMsg.SendNormalMsgFailNotificaiton", "onNotificationClick, mMsgList.size:%d", new Object[] { Integer.valueOf(this.vql.vqw.size()) });
-    if (!g.agP().afY())
+    ad.i("MicroMsg.SendNormalMsgFailNotificaiton", "onNotificationClick, mMsgList.size:%d", new Object[] { Integer.valueOf(this.wvD.wvO.size()) });
+    if (!g.ajA().aiK())
     {
-      ac.w("MicroMsg.SendNormalMsgFailNotificaiton", "account not ready.");
+      ad.w("MicroMsg.SendNormalMsgFailNotificaiton", "account not ready.");
       AppMethodBeat.o(26765);
       return;
     }
     Object localObject;
-    if (this.vql.vqw.size() > 1)
+    if (this.wvD.wvO.size() > 1)
     {
       localObject = new Intent();
       ((Intent)localObject).addFlags(67108864);
@@ -105,16 +77,16 @@ public final class d
         ((Intent)localObject).putExtra("resend_fail_messages", true);
       }
       ((Intent)localObject).putExtra("From_fail_notify", true);
-      ac.d("MicroMsg.SendNormalMsgFailNotificaiton", "startMainUI");
-      com.tencent.mm.br.d.e(this.mContext, "com.tencent.mm.ui.LauncherUI", (Intent)localObject);
+      ad.d("MicroMsg.SendNormalMsgFailNotificaiton", "startMainUI");
+      com.tencent.mm.bs.d.f(this.mContext, "com.tencent.mm.ui.LauncherUI", (Intent)localObject);
       AppMethodBeat.o(26765);
       return;
     }
-    if (this.vql.vqw.size() == 1)
+    if (this.wvD.wvO.size() == 1)
     {
-      long l = this.vql.get(0);
-      az.ayM();
-      localObject = com.tencent.mm.model.c.awD().vP(l).field_talker;
+      long l = this.wvD.get(0);
+      ba.aBQ();
+      localObject = com.tencent.mm.model.c.azs().xY(l).field_talker;
       Intent localIntent = new Intent();
       localIntent.putExtra("Main_User", (String)localObject);
       localIntent.putExtra("From_fail_notify", true);
@@ -123,17 +95,40 @@ public final class d
       if (Build.VERSION.SDK_INT < 16) {
         localIntent.putExtra("resend_fail_messages", true);
       }
-      com.tencent.mm.br.d.e(this.mContext, "com.tencent.mm.ui.LauncherUI", localIntent);
+      com.tencent.mm.bs.d.f(this.mContext, "com.tencent.mm.ui.LauncherUI", localIntent);
     }
     AppMethodBeat.o(26765);
   }
   
-  public final int getType()
+  public final void dvT()
   {
-    return 1;
+    AppMethodBeat.i(26760);
+    com.tencent.mm.sdk.b.a.IbL.c(this.wvU);
+    AppMethodBeat.o(26760);
   }
   
-  public final String gx(int paramInt1, int paramInt2)
+  public final void dvU()
+  {
+    AppMethodBeat.i(26761);
+    com.tencent.mm.sdk.b.a.IbL.c(this.wvV);
+    AppMethodBeat.o(26761);
+  }
+  
+  public final void dvV()
+  {
+    AppMethodBeat.i(26763);
+    com.tencent.mm.sdk.b.a.IbL.d(this.wvU);
+    AppMethodBeat.o(26763);
+  }
+  
+  public final void dvW()
+  {
+    AppMethodBeat.i(26764);
+    com.tencent.mm.sdk.b.a.IbL.d(this.wvV);
+    AppMethodBeat.o(26764);
+  }
+  
+  public final String gP(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(26768);
     String str = getContext().getString(2131761713, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
@@ -141,7 +136,7 @@ public final class d
     return str;
   }
   
-  public final String gy(int paramInt1, int paramInt2)
+  public final String gQ(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(26770);
     if (paramInt2 <= 0)
@@ -155,32 +150,37 @@ public final class d
     return str;
   }
   
-  public final void wf(final long paramLong)
+  public final int getType()
+  {
+    return 1;
+  }
+  
+  public final void yo(final long paramLong)
   {
     AppMethodBeat.i(26762);
-    az.ayM();
-    ap.f(new Runnable()
+    ba.aBQ();
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(26758);
-        ac.d("MicroMsg.SendNormalMsgFailNotificaiton", "resend msgId:%d", new Object[] { Long.valueOf(paramLong) });
-        rd localrd = new rd();
-        localrd.dui.cZc = this.hmq;
-        com.tencent.mm.sdk.b.a.GpY.l(localrd);
+        ad.d("MicroMsg.SendNormalMsgFailNotificaiton", "resend msgId:%d", new Object[] { Long.valueOf(paramLong) });
+        ro localro = new ro();
+        localro.dGi.dku = this.hED;
+        com.tencent.mm.sdk.b.a.IbL.l(localro);
         AppMethodBeat.o(26758);
       }
     });
     AppMethodBeat.o(26762);
   }
   
-  public final boolean wg(long paramLong)
+  public final boolean yp(long paramLong)
   {
     AppMethodBeat.i(26771);
-    az.ayM();
-    bo localbo = com.tencent.mm.model.c.awD().vP(paramLong);
-    ac.d("MicroMsg.SendNormalMsgFailNotificaiton", "checkMsgIfExist, msgId:%d, msg.getMsgId:%d", new Object[] { Long.valueOf(paramLong), Long.valueOf(localbo.field_msgId) });
-    if (localbo.field_msgId != 0L)
+    ba.aBQ();
+    bu localbu = com.tencent.mm.model.c.azs().xY(paramLong);
+    ad.d("MicroMsg.SendNormalMsgFailNotificaiton", "checkMsgIfExist, msgId:%d, msg.getMsgId:%d", new Object[] { Long.valueOf(paramLong), Long.valueOf(localbu.field_msgId) });
+    if (localbu.field_msgId != 0L)
     {
       AppMethodBeat.o(26771);
       return true;

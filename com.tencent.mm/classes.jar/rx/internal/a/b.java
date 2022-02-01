@@ -7,22 +7,22 @@ import rx.d.a;
 public enum b
   implements d.a<Object>
 {
-  static final d<Object> McC;
+  static final d<Object> NXE;
   
   static
   {
     AppMethodBeat.i(90248);
-    McB = new b("INSTANCE");
-    McD = new b[] { McB };
-    McC = d.a(McB);
+    NXD = new b("INSTANCE");
+    NXF = new b[] { NXD };
+    NXE = d.a(NXD);
     AppMethodBeat.o(90248);
   }
   
   private b() {}
   
-  public static <T> d<T> ggr()
+  public static <T> d<T> gyV()
   {
-    return McC;
+    return NXE;
   }
 }
 

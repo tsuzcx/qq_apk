@@ -6,18 +6,15 @@ import android.opengl.GLES20;
 import android.os.Bundle;
 import com.tencent.liteav.basic.d.h;
 import com.tencent.liteav.basic.d.h.a;
-import com.tencent.liteav.basic.e.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
 import com.tencent.liteav.basic.module.TXCKeyPointReportProxy;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.structs.TXSVideoFrame;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.d;
 import com.tencent.liteav.beauty.b.o;
 import com.tencent.liteav.renderer.a.a;
 import com.tencent.liteav.renderer.e;
-import com.tencent.liteav.renderer.f;
 import com.tencent.liteav.videodecoder.TXCVideoDecoder;
 import com.tencent.liteav.videodecoder.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -25,13 +22,9 @@ import java.lang.ref.WeakReference;
 
 public class TXCRenderAndDec
   extends com.tencent.liteav.basic.module.a
-  implements com.tencent.liteav.basic.c.a, a.a, f, c
+  implements com.tencent.liteav.basic.c.a, a.a, com.tencent.liteav.renderer.f, c
 {
   public static final String TAG = "TXCRenderAndDec";
-  public static final int VIDEO_PIXEL_FORMAT_I420 = 1;
-  public static final int VIDEO_PIXEL_FORMAT_NV21 = 4;
-  public static final int VIDEO_PIXEL_FORMAT_TEXTURE_EXTERNAL_OES = 3;
-  public static final int VIDEO_PIXEL_FORMAT_Texture_2D = 2;
   private g mConfig;
   private Context mContext;
   private a mDecListener;
@@ -52,7 +45,7 @@ public class TXCRenderAndDec
   private int mStreamType;
   private TXCVideoDecoder mVideoDecoder;
   private h mVideoFrameFilter;
-  private int mVideoFrameFormat;
+  private com.tencent.liteav.basic.a.b mVideoFrameFormat;
   private n mVideoFrameListener;
   private e mVideoRender;
   
@@ -66,7 +59,7 @@ public class TXCRenderAndDec
     this.mEnableRestartDecoder = false;
     this.mVideoRender = null;
     this.mVideoFrameFilter = null;
-    this.mVideoFrameFormat = 1;
+    this.mVideoFrameFormat = com.tencent.liteav.basic.a.b.a;
     this.mRealTime = false;
     this.mIsRendering = false;
     this.mStreamType = 0;
@@ -80,7 +73,7 @@ public class TXCRenderAndDec
     this.mLastRenderFrameCount = 0L;
     this.mDecListener = null;
     this.mContext = paramContext;
-    b.a().a(this.mContext);
+    com.tencent.liteav.basic.e.b.a().a(this.mContext);
     AppMethodBeat.o(16065);
   }
   
@@ -95,7 +88,7 @@ public class TXCRenderAndDec
       localBundle.putCharSequence("EVT_MSG", paramString);
     }
     localBundle.putInt("EVT_STREAM_TYPE", this.mStreamType);
-    d.a(this.mNotifyListener, paramInt, localBundle);
+    com.tencent.liteav.basic.util.f.a(this.mNotifyListener, paramInt, localBundle);
     AppMethodBeat.o(16089);
   }
   
@@ -157,11 +150,11 @@ public class TXCRenderAndDec
       }
       if (!this.mConfig.h) {
         if (this.mRealTime) {
-          break label212;
+          break label211;
         }
       }
     }
-    label212:
+    label211:
     for (bool1 = bool2;; bool1 = false)
     {
       localTXCVideoDecoder.setup(null, null, null, bool1);
@@ -271,7 +264,7 @@ public class TXCRenderAndDec
   {
     AppMethodBeat.i(182282);
     if ((!paramBoolean) && (this.mVideoRender != null)) {
-      this.mVideoRender.n();
+      this.mVideoRender.m();
     }
     AppMethodBeat.o(182282);
   }
@@ -302,16 +295,16 @@ public class TXCRenderAndDec
       i = 360 - paramInt3 * 90;
     }
     n localn = this.mVideoFrameListener;
-    if (localn != null) {
-      if ((this.mVideoRender == null) || (paramTXSVideoFrame == null)) {
-        break label239;
+    if ((localn != null) && (paramTXSVideoFrame != null) && ((this.mVideoFrameFormat == com.tencent.liteav.basic.a.b.b) || (this.mVideoFrameFormat == com.tencent.liteav.basic.a.b.e))) {
+      if (this.mVideoRender == null) {
+        break label261;
       }
     }
-    label239:
+    label261:
     for (TXSVideoFrame localTXSVideoFrame = paramTXSVideoFrame.clone();; localTXSVideoFrame = paramTXSVideoFrame)
     {
       localTXSVideoFrame.rotation = ((this.mRenderRotation + i) % 360);
-      if (this.mVideoFrameFormat == 4) {
+      if (this.mVideoFrameFormat == com.tencent.liteav.basic.a.b.e) {
         localTXSVideoFrame.loadNV21BufferFromI420Buffer();
       }
       localn.onRenderVideoFrame(getID(), this.mStreamType, localTXSVideoFrame);
@@ -350,7 +343,7 @@ public class TXCRenderAndDec
     while (paramInt != 2020)
     {
       paramBundle.putInt("EVT_STREAM_TYPE", this.mStreamType);
-      d.a(this.mNotifyListener, paramInt, paramBundle);
+      com.tencent.liteav.basic.util.f.a(this.mNotifyListener, paramInt, paramBundle);
       AppMethodBeat.o(16092);
       return;
     }
@@ -410,16 +403,39 @@ public class TXCRenderAndDec
   public void onTextureProcess(int paramInt1, int paramInt2, int paramInt3, final int paramInt4)
   {
     AppMethodBeat.i(16098);
-    if (this.mVideoFrameListener != null) {
+    Object localObject = this.mVideoFrameListener;
+    if (localObject != null)
+    {
+      if (this.mVideoFrameFormat == com.tencent.liteav.basic.a.b.c)
+      {
+        TXSVideoFrame localTXSVideoFrame = new TXSVideoFrame();
+        localTXSVideoFrame.width = paramInt2;
+        localTXSVideoFrame.height = paramInt3;
+        localTXSVideoFrame.pts = TXCTimeUtil.getTimeTick();
+        localTXSVideoFrame.rotation = ((this.mRenderRotation + paramInt4) % 360);
+        localTXSVideoFrame.textureId = paramInt1;
+        if ((this.mVideoRender instanceof com.tencent.liteav.renderer.a)) {
+          localTXSVideoFrame.eglContext = ((com.tencent.liteav.renderer.a)this.mVideoRender).b();
+        }
+        ((n)localObject).onRenderVideoFrame(getID(), this.mStreamType, localTXSVideoFrame);
+        AppMethodBeat.o(16098);
+        return;
+      }
+      localObject = this.mVideoDecoder;
+      if ((localObject != null) && (!((TXCVideoDecoder)localObject).isHardwareDecode()))
+      {
+        AppMethodBeat.o(16098);
+        return;
+      }
       if (this.mVideoFrameFilter == null)
       {
-        if (this.mVideoFrameFormat != 4) {
-          break label123;
+        if (this.mVideoFrameFormat != com.tencent.liteav.basic.a.b.e) {
+          break label265;
         }
         this.mVideoFrameFilter = new o(3);
         this.mVideoFrameFilter.a(true);
         if (!this.mVideoFrameFilter.a()) {
-          break label138;
+          break label280;
         }
         this.mVideoFrameFilter.a(paramInt2, paramInt3);
         this.mVideoFrameFilter.a(new h.a()
@@ -453,10 +469,10 @@ public class TXCRenderAndDec
       }
       AppMethodBeat.o(16098);
       return;
-      label123:
+      label265:
       this.mVideoFrameFilter = new o(1);
       break;
-      label138:
+      label280:
       TXCLog.i("TXCRenderAndDec", "throwVideoFrame->release mVideoFrameFilter");
       this.mVideoFrameFilter = null;
     }
@@ -577,13 +593,25 @@ public class TXCRenderAndDec
     AppMethodBeat.o(16086);
   }
   
-  public void setVideoFrameListener(n paramn, int paramInt)
+  public void setVideoFrameListener(n paramn, com.tencent.liteav.basic.a.b paramb)
   {
-    AppMethodBeat.i(16069);
+    AppMethodBeat.i(187215);
     this.mVideoFrameListener = paramn;
-    this.mVideoFrameFormat = paramInt;
-    TXCLog.i("TXCRenderAndDec", "setVideoFrameListener->enter listener: " + paramn + ", format: " + paramInt);
-    AppMethodBeat.o(16069);
+    this.mVideoFrameFormat = paramb;
+    TXCLog.i("TXCRenderAndDec", "setVideoFrameListener->enter listener: " + paramn + ", format: " + paramb);
+    if ((this.mVideoRender != null) && ((this.mVideoRender instanceof com.tencent.liteav.renderer.a)))
+    {
+      if (paramn == null)
+      {
+        TXCLog.i("TXCRenderAndDec", "setCustomRenderListener-> clean listener.");
+        ((com.tencent.liteav.renderer.a)this.mVideoRender).b(null);
+        AppMethodBeat.o(187215);
+        return;
+      }
+      TXCLog.i("TXCRenderAndDec", "setCustomRenderListener-> set listener.");
+      ((com.tencent.liteav.renderer.a)this.mVideoRender).b(this);
+    }
+    AppMethodBeat.o(187215);
   }
   
   public void setVideoRender(e parame)
@@ -601,7 +629,7 @@ public class TXCRenderAndDec
     this.mVideoRender.a(this);
     this.mVideoRender.c(this.mRenderMode);
     this.mVideoRender.d(this.mRenderRotation);
-    if ((this.mVideoRender instanceof com.tencent.liteav.renderer.a)) {
+    if ((this.mVideoFrameListener != null) && ((this.mVideoRender instanceof com.tencent.liteav.renderer.a))) {
       ((com.tencent.liteav.renderer.a)this.mVideoRender).b(this);
     }
     if (this.mConfig != null) {
@@ -620,7 +648,7 @@ public class TXCRenderAndDec
     if (this.mVideoRender != null)
     {
       this.mVideoRender.a(this);
-      this.mVideoRender.g();
+      this.mVideoRender.f();
       this.mVideoRender.setID(getID());
     }
     this.mVideoDecoder = new TXCVideoDecoder();
@@ -645,7 +673,7 @@ public class TXCRenderAndDec
     if (this.mVideoRender != null)
     {
       this.mVideoRender.a(this);
-      this.mVideoRender.g();
+      this.mVideoRender.f();
       this.mVideoRender.setID(getID());
     }
     TXCLog.i("TXCRenderAndDec", "start video dec " + getID() + ", " + this.mStreamType);
@@ -718,7 +746,7 @@ public class TXCRenderAndDec
       if (this.mVideoRender == null) {
         break;
       }
-      this.mVideoRender.o();
+      this.mVideoRender.n();
       AppMethodBeat.o(16085);
       return;
     }

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.aa;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.aa.d.d.a;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.nio.ByteBuffer;
 import java.nio.channels.ByteChannel;
 import java.nio.channels.SelectionKey;
@@ -17,64 +17,64 @@ public final class c
   implements a
 {
   public static boolean DEBUG;
-  public static int mpy;
-  public static final List<com.tencent.mm.plugin.appbrand.aa.b.a> mpz;
-  public SelectionKey mpA;
-  public ByteChannel mpB;
-  public final BlockingQueue<ByteBuffer> mpC;
-  public final BlockingQueue<ByteBuffer> mpD;
-  private volatile boolean mpE;
-  private a.a mpF;
-  public final d mpG;
-  private List<com.tencent.mm.plugin.appbrand.aa.b.a> mpH;
-  public com.tencent.mm.plugin.appbrand.aa.b.a mpI;
-  public a.b mpJ;
-  private d.a mpK;
-  private ByteBuffer mpL;
-  public com.tencent.mm.plugin.appbrand.aa.e.a mpM;
-  private String mpN;
-  private Integer mpO;
-  private Boolean mpP;
-  public String mpQ;
+  public static int mQd;
+  public static final List<com.tencent.mm.plugin.appbrand.aa.b.a> mQe;
+  public SelectionKey mQf;
+  public ByteChannel mQg;
+  public final BlockingQueue<ByteBuffer> mQh;
+  public final BlockingQueue<ByteBuffer> mQi;
+  private volatile boolean mQj;
+  private a.a mQk;
+  public final d mQl;
+  private List<com.tencent.mm.plugin.appbrand.aa.b.a> mQm;
+  public com.tencent.mm.plugin.appbrand.aa.b.a mQn;
+  public a.b mQo;
+  private d.a mQp;
+  private ByteBuffer mQq;
+  public com.tencent.mm.plugin.appbrand.aa.e.a mQr;
+  private String mQs;
+  private Integer mQt;
+  private Boolean mQu;
+  public String mQv;
   
   static
   {
     AppMethodBeat.i(156623);
-    mpy = 16384;
+    mQd = 16384;
     DEBUG = false;
     ArrayList localArrayList = new ArrayList(4);
-    mpz = localArrayList;
+    mQe = localArrayList;
     localArrayList.add(new com.tencent.mm.plugin.appbrand.aa.b.c());
-    mpz.add(new com.tencent.mm.plugin.appbrand.aa.b.b());
-    mpz.add(new com.tencent.mm.plugin.appbrand.aa.b.d());
+    mQe.add(new com.tencent.mm.plugin.appbrand.aa.b.b());
+    mQe.add(new com.tencent.mm.plugin.appbrand.aa.b.d());
     AppMethodBeat.o(156623);
   }
   
   public c(d paramd, com.tencent.mm.plugin.appbrand.aa.b.a parama)
   {
     AppMethodBeat.i(156604);
-    this.mpE = false;
-    this.mpF = a.a.mpo;
-    this.mpI = null;
-    this.mpK = null;
-    this.mpL = ByteBuffer.allocate(0);
-    this.mpM = null;
-    this.mpN = null;
-    this.mpO = null;
-    this.mpP = null;
-    this.mpQ = null;
-    if ((parama == null) && (this.mpJ == a.b.mpv))
+    this.mQj = false;
+    this.mQk = a.a.mPT;
+    this.mQn = null;
+    this.mQp = null;
+    this.mQq = ByteBuffer.allocate(0);
+    this.mQr = null;
+    this.mQs = null;
+    this.mQt = null;
+    this.mQu = null;
+    this.mQv = null;
+    if ((parama == null) && (this.mQo == a.b.mQa))
     {
       paramd = new IllegalArgumentException("parameters must not be null");
       AppMethodBeat.o(156604);
       throw paramd;
     }
-    this.mpC = new LinkedBlockingQueue();
-    this.mpD = new LinkedBlockingQueue();
-    this.mpG = paramd;
-    this.mpJ = a.b.mpu;
+    this.mQh = new LinkedBlockingQueue();
+    this.mQi = new LinkedBlockingQueue();
+    this.mQl = paramd;
+    this.mQo = a.b.mPZ;
     if (parama != null) {
-      this.mpI = parama.bxA();
+      this.mQn = parama.bBF();
     }
     AppMethodBeat.o(156604);
   }
@@ -82,7 +82,7 @@ public final class c
   private void a(com.tencent.mm.plugin.appbrand.aa.c.b paramb)
   {
     AppMethodBeat.i(156613);
-    c(paramb.mqs, paramb.getMessage(), false);
+    c(paramb.mQY, paramb.getMessage(), false);
     AppMethodBeat.o(156613);
   }
   
@@ -90,18 +90,18 @@ public final class c
   {
     AppMethodBeat.i(156620);
     if (DEBUG) {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "open using draft: " + this.mpI.getClass().getSimpleName());
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "open using draft: " + this.mQn.getClass().getSimpleName());
     }
-    this.mpF = a.a.mpq;
+    this.mQk = a.a.mPV;
     try
     {
-      this.mpG.d(paramf);
+      this.mQl.d(paramf);
       AppMethodBeat.o(156620);
       return;
     }
     catch (RuntimeException paramf)
     {
-      this.mpG.k(paramf);
+      this.mQl.k(paramf);
       AppMethodBeat.o(156620);
     }
   }
@@ -115,7 +115,7 @@ public final class c
     //   2: ldc 211
     //   4: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 89	com/tencent/mm/plugin/appbrand/aa/c:mpE	Z
+    //   8: getfield 89	com/tencent/mm/plugin/appbrand/aa/c:mQj	Z
     //   11: ifeq +11 -> 22
     //   14: ldc 211
     //   16: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -125,26 +125,26 @@ public final class c
     //   22: aload_0
     //   23: iload_1
     //   24: invokestatic 217	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   27: putfield 114	com/tencent/mm/plugin/appbrand/aa/c:mpO	Ljava/lang/Integer;
+    //   27: putfield 114	com/tencent/mm/plugin/appbrand/aa/c:mQt	Ljava/lang/Integer;
     //   30: aload_0
     //   31: aload_2
-    //   32: putfield 112	com/tencent/mm/plugin/appbrand/aa/c:mpN	Ljava/lang/String;
+    //   32: putfield 112	com/tencent/mm/plugin/appbrand/aa/c:mQs	Ljava/lang/String;
     //   35: aload_0
     //   36: iload_3
     //   37: invokestatic 222	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   40: putfield 116	com/tencent/mm/plugin/appbrand/aa/c:mpP	Ljava/lang/Boolean;
+    //   40: putfield 116	com/tencent/mm/plugin/appbrand/aa/c:mQu	Ljava/lang/Boolean;
     //   43: aload_0
     //   44: iconst_1
-    //   45: putfield 89	com/tencent/mm/plugin/appbrand/aa/c:mpE	Z
+    //   45: putfield 89	com/tencent/mm/plugin/appbrand/aa/c:mQj	Z
     //   48: aload_0
-    //   49: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   49: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   52: ifnull +10 -> 62
     //   55: aload_0
-    //   56: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   56: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   59: invokevirtual 225	com/tencent/mm/plugin/appbrand/aa/b/a:reset	()V
     //   62: aload_0
     //   63: aconst_null
-    //   64: putfield 110	com/tencent/mm/plugin/appbrand/aa/c:mpM	Lcom/tencent/mm/plugin/appbrand/aa/e/a;
+    //   64: putfield 110	com/tencent/mm/plugin/appbrand/aa/c:mQr	Lcom/tencent/mm/plugin/appbrand/aa/e/a;
     //   67: ldc 211
     //   69: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: goto -53 -> 19
@@ -189,7 +189,7 @@ public final class c
     //   0: ldc_w 265
     //   3: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   7: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   10: invokevirtual 269	java/nio/ByteBuffer:capacity	()I
     //   13: ifne +116 -> 129
     //   16: aload_1
@@ -198,14 +198,14 @@ public final class c
     //   21: invokevirtual 273	java/nio/ByteBuffer:mark	()Ljava/nio/Buffer;
     //   24: pop
     //   25: aload_0
-    //   26: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mpJ	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
-    //   29: getstatic 125	com/tencent/mm/plugin/appbrand/aa/a$b:mpv	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
+    //   26: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mQo	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
+    //   29: getstatic 125	com/tencent/mm/plugin/appbrand/aa/a$b:mQa	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
     //   32: if_acmpne +505 -> 537
     //   35: aload_0
-    //   36: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   36: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   39: ifnonnull +405 -> 444
     //   42: aload_0
-    //   43: getfield 275	com/tencent/mm/plugin/appbrand/aa/c:mpH	Ljava/util/List;
+    //   43: getfield 275	com/tencent/mm/plugin/appbrand/aa/c:mQm	Ljava/util/List;
     //   46: invokeinterface 276 1 0
     //   51: astore 5
     //   53: aload 5
@@ -214,11 +214,11 @@ public final class c
     //   63: aload 5
     //   65: invokeinterface 250 1 0
     //   70: checkcast 146	com/tencent/mm/plugin/appbrand/aa/b/a
-    //   73: invokevirtual 150	com/tencent/mm/plugin/appbrand/aa/b/a:bxA	()Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   73: invokevirtual 150	com/tencent/mm/plugin/appbrand/aa/b/a:bBF	()Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   76: astore 6
     //   78: aload 6
     //   80: aload_0
-    //   81: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mpJ	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
+    //   81: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mQo	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
     //   84: invokevirtual 279	com/tencent/mm/plugin/appbrand/aa/b/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a$b;)V
     //   87: aload 4
     //   89: invokevirtual 281	java/nio/ByteBuffer:reset	()Ljava/nio/Buffer;
@@ -240,13 +240,13 @@ public final class c
     //   127: iconst_0
     //   128: ireturn
     //   129: aload_0
-    //   130: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   130: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   133: invokevirtual 294	java/nio/ByteBuffer:remaining	()I
     //   136: aload_1
     //   137: invokevirtual 294	java/nio/ByteBuffer:remaining	()I
     //   140: if_icmpge +44 -> 184
     //   143: aload_0
-    //   144: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   144: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   147: invokevirtual 269	java/nio/ByteBuffer:capacity	()I
     //   150: aload_1
     //   151: invokevirtual 294	java/nio/ByteBuffer:remaining	()I
@@ -254,28 +254,28 @@ public final class c
     //   155: invokestatic 106	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
     //   158: astore 4
     //   160: aload_0
-    //   161: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   161: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   164: invokevirtual 297	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
     //   167: pop
     //   168: aload 4
     //   170: aload_0
-    //   171: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   171: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   174: invokevirtual 301	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
     //   177: pop
     //   178: aload_0
     //   179: aload 4
-    //   181: putfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   181: putfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   184: aload_0
-    //   185: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   185: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   188: aload_1
     //   189: invokevirtual 301	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
     //   192: pop
     //   193: aload_0
-    //   194: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   194: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   197: invokevirtual 297	java/nio/ByteBuffer:flip	()Ljava/nio/Buffer;
     //   200: pop
     //   201: aload_0
-    //   202: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   202: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   205: astore 4
     //   207: goto -188 -> 19
     //   210: aload 7
@@ -284,14 +284,14 @@ public final class c
     //   217: aload 6
     //   219: aload 7
     //   221: invokevirtual 304	com/tencent/mm/plugin/appbrand/aa/b/a:c	(Lcom/tencent/mm/plugin/appbrand/aa/e/a;)Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
-    //   224: getstatic 310	com/tencent/mm/plugin/appbrand/aa/b/a$b:mqj	Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
+    //   224: getstatic 310	com/tencent/mm/plugin/appbrand/aa/b/a$b:mQO	Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
     //   227: if_acmpne -174 -> 53
     //   230: aload_0
     //   231: aload 7
     //   233: invokeinterface 313 1 0
-    //   238: putfield 118	com/tencent/mm/plugin/appbrand/aa/c:mpQ	Ljava/lang/String;
+    //   238: putfield 118	com/tencent/mm/plugin/appbrand/aa/c:mQv	Ljava/lang/String;
     //   241: aload_0
-    //   242: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mpG	Lcom/tencent/mm/plugin/appbrand/aa/d;
+    //   242: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mQl	Lcom/tencent/mm/plugin/appbrand/aa/d;
     //   245: invokeinterface 317 1 0
     //   250: astore 8
     //   252: aload_0
@@ -300,10 +300,10 @@ public final class c
     //   257: aload 8
     //   259: invokevirtual 320	com/tencent/mm/plugin/appbrand/aa/b/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/e/a;Lcom/tencent/mm/plugin/appbrand/aa/e/i;)Lcom/tencent/mm/plugin/appbrand/aa/e/c;
     //   262: invokestatic 324	com/tencent/mm/plugin/appbrand/aa/b/a:f	(Lcom/tencent/mm/plugin/appbrand/aa/e/f;)Ljava/util/List;
-    //   265: invokevirtual 328	com/tencent/mm/plugin/appbrand/aa/c:bE	(Ljava/util/List;)V
+    //   265: invokevirtual 328	com/tencent/mm/plugin/appbrand/aa/c:bG	(Ljava/util/List;)V
     //   268: aload_0
     //   269: aload 6
-    //   271: putfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   271: putfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   274: aload_0
     //   275: aload 7
     //   277: invokespecial 330	com/tencent/mm/plugin/appbrand/aa/c:c	(Lcom/tencent/mm/plugin/appbrand/aa/e/f;)V
@@ -314,7 +314,7 @@ public final class c
     //   288: astore 6
     //   290: aload_0
     //   291: aload 6
-    //   293: getfield 158	com/tencent/mm/plugin/appbrand/aa/c/b:mqs	I
+    //   293: getfield 158	com/tencent/mm/plugin/appbrand/aa/c/b:mQY	I
     //   296: aload 6
     //   298: invokevirtual 162	com/tencent/mm/plugin/appbrand/aa/c/b:getMessage	()Ljava/lang/String;
     //   301: iconst_0
@@ -325,7 +325,7 @@ public final class c
     //   312: ireturn
     //   313: astore 6
     //   315: aload_0
-    //   316: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mpG	Lcom/tencent/mm/plugin/appbrand/aa/d;
+    //   316: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mQl	Lcom/tencent/mm/plugin/appbrand/aa/d;
     //   319: aload 6
     //   321: invokeinterface 210 2 0
     //   326: aload_0
@@ -348,7 +348,7 @@ public final class c
     //   361: invokevirtual 334	com/tencent/mm/plugin/appbrand/aa/c/d:toString	()Ljava/lang/String;
     //   364: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   367: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   370: invokestatic 337	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   370: invokestatic 337	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   373: goto -320 -> 53
     //   376: astore 5
     //   378: ldc 172
@@ -360,7 +360,7 @@ public final class c
     //   392: invokevirtual 334	com/tencent/mm/plugin/appbrand/aa/c/d:toString	()Ljava/lang/String;
     //   395: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   398: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   401: invokestatic 337	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   401: invokestatic 337	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   404: aload_0
     //   405: aload 5
     //   407: invokespecial 341	com/tencent/mm/plugin/appbrand/aa/c:a	(Lcom/tencent/mm/plugin/appbrand/aa/c/b;)V
@@ -369,7 +369,7 @@ public final class c
     //   416: iconst_0
     //   417: ireturn
     //   418: aload_0
-    //   419: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   419: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   422: ifnonnull +14 -> 436
     //   425: aload_0
     //   426: sipush 1002
@@ -381,7 +381,7 @@ public final class c
     //   442: iconst_0
     //   443: ireturn
     //   444: aload_0
-    //   445: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   445: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   448: aload 4
     //   450: invokevirtual 285	com/tencent/mm/plugin/appbrand/aa/b/a:y	(Ljava/nio/ByteBuffer;)Lcom/tencent/mm/plugin/appbrand/aa/e/f;
     //   453: astore 5
@@ -401,10 +401,10 @@ public final class c
     //   484: checkcast 287	com/tencent/mm/plugin/appbrand/aa/e/a
     //   487: astore 5
     //   489: aload_0
-    //   490: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   490: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   493: aload 5
     //   495: invokevirtual 304	com/tencent/mm/plugin/appbrand/aa/b/a:c	(Lcom/tencent/mm/plugin/appbrand/aa/e/a;)Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
-    //   498: getstatic 310	com/tencent/mm/plugin/appbrand/aa/b/a$b:mqj	Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
+    //   498: getstatic 310	com/tencent/mm/plugin/appbrand/aa/b/a$b:mQO	Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
     //   501: if_acmpne +17 -> 518
     //   504: aload_0
     //   505: aload 5
@@ -423,16 +423,16 @@ public final class c
     //   535: iconst_0
     //   536: ireturn
     //   537: aload_0
-    //   538: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mpJ	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
-    //   541: getstatic 144	com/tencent/mm/plugin/appbrand/aa/a$b:mpu	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
+    //   538: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mQo	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
+    //   541: getstatic 144	com/tencent/mm/plugin/appbrand/aa/a$b:mPZ	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
     //   544: if_acmpne -134 -> 410
     //   547: aload_0
-    //   548: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   548: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   551: aload_0
-    //   552: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mpJ	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
+    //   552: getfield 120	com/tencent/mm/plugin/appbrand/aa/c:mQo	Lcom/tencent/mm/plugin/appbrand/aa/a$b;
     //   555: invokevirtual 279	com/tencent/mm/plugin/appbrand/aa/b/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/a$b;)V
     //   558: aload_0
-    //   559: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   559: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   562: aload 4
     //   564: invokevirtual 285	com/tencent/mm/plugin/appbrand/aa/b/a:y	(Ljava/nio/ByteBuffer;)Lcom/tencent/mm/plugin/appbrand/aa/e/f;
     //   567: astore 5
@@ -452,12 +452,12 @@ public final class c
     //   598: checkcast 347	com/tencent/mm/plugin/appbrand/aa/e/h
     //   601: astore 5
     //   603: aload_0
-    //   604: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   604: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   607: aload_0
-    //   608: getfield 110	com/tencent/mm/plugin/appbrand/aa/c:mpM	Lcom/tencent/mm/plugin/appbrand/aa/e/a;
+    //   608: getfield 110	com/tencent/mm/plugin/appbrand/aa/c:mQr	Lcom/tencent/mm/plugin/appbrand/aa/e/a;
     //   611: aload 5
     //   613: invokevirtual 350	com/tencent/mm/plugin/appbrand/aa/b/a:a	(Lcom/tencent/mm/plugin/appbrand/aa/e/a;Lcom/tencent/mm/plugin/appbrand/aa/e/h;)Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
-    //   616: getstatic 310	com/tencent/mm/plugin/appbrand/aa/b/a$b:mqj	Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
+    //   616: getstatic 310	com/tencent/mm/plugin/appbrand/aa/b/a$b:mQO	Lcom/tencent/mm/plugin/appbrand/aa/b/a$b;
     //   619: if_acmpne +17 -> 636
     //   622: aload_0
     //   623: aload 5
@@ -494,16 +494,16 @@ public final class c
     //   702: invokevirtual 365	com/tencent/mm/plugin/appbrand/aa/c/a:toString	()Ljava/lang/String;
     //   705: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   708: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   711: invokestatic 337	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   711: invokestatic 337	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   714: aload_0
-    //   715: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   715: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   718: invokevirtual 269	java/nio/ByteBuffer:capacity	()I
     //   721: ifne +50 -> 771
     //   724: aload 4
     //   726: invokevirtual 281	java/nio/ByteBuffer:reset	()Ljava/nio/Buffer;
     //   729: pop
     //   730: aload 5
-    //   732: getfield 368	com/tencent/mm/plugin/appbrand/aa/c/a:mqr	I
+    //   732: getfield 368	com/tencent/mm/plugin/appbrand/aa/c/a:mQX	I
     //   735: istore_3
     //   736: iload_3
     //   737: istore_2
@@ -517,24 +517,24 @@ public final class c
     //   751: aload_0
     //   752: iload_2
     //   753: invokestatic 106	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   756: putfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   756: putfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   759: aload_0
-    //   760: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   760: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   763: aload_1
     //   764: invokevirtual 301	java/nio/ByteBuffer:put	(Ljava/nio/ByteBuffer;)Ljava/nio/ByteBuffer;
     //   767: pop
     //   768: goto -358 -> 410
     //   771: aload_0
-    //   772: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   772: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   775: aload_0
-    //   776: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   776: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   779: invokevirtual 371	java/nio/ByteBuffer:limit	()I
     //   782: invokevirtual 375	java/nio/ByteBuffer:position	(I)Ljava/nio/Buffer;
     //   785: pop
     //   786: aload_0
-    //   787: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   787: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   790: aload_0
-    //   791: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mpL	Ljava/nio/ByteBuffer;
+    //   791: getfield 108	com/tencent/mm/plugin/appbrand/aa/c:mQq	Ljava/nio/ByteBuffer;
     //   794: invokevirtual 269	java/nio/ByteBuffer:capacity	()I
     //   797: invokevirtual 377	java/nio/ByteBuffer:limit	(I)Ljava/nio/Buffer;
     //   800: pop
@@ -607,17 +607,17 @@ public final class c
       int i;
       try
       {
-        Iterator localIterator = this.mpI.x(paramByteBuffer).iterator();
+        Iterator localIterator = this.mQn.x(paramByteBuffer).iterator();
         if (!localIterator.hasNext()) {
           break label525;
         }
         paramByteBuffer = (com.tencent.mm.plugin.appbrand.aa.d.d)localIterator.next();
         if (DEBUG) {
-          ac.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "matched frame: ".concat(String.valueOf(paramByteBuffer)));
+          ad.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "matched frame: ".concat(String.valueOf(paramByteBuffer)));
         }
-        locala1 = paramByteBuffer.bxH();
-        bool = paramByteBuffer.bxF();
-        if (locala1 != d.a.mqz) {
+        locala1 = paramByteBuffer.bBM();
+        bool = paramByteBuffer.bBK();
+        if (locala1 != d.a.mRf) {
           break label216;
         }
         i = 1005;
@@ -625,21 +625,21 @@ public final class c
           break label532;
         }
         paramByteBuffer = (com.tencent.mm.plugin.appbrand.aa.d.a)paramByteBuffer;
-        i = paramByteBuffer.bxB();
+        i = paramByteBuffer.bBG();
         paramByteBuffer = paramByteBuffer.getMessage();
-        if (this.mpF == a.a.mpr)
+        if (this.mQk == a.a.mPW)
         {
-          at(i, paramByteBuffer);
+          av(i, paramByteBuffer);
           continue;
         }
-        if (this.mpI.bxz() != com.tencent.mm.plugin.appbrand.aa.b.a.a.mqh) {
+        if (this.mQn.bBE() != com.tencent.mm.plugin.appbrand.aa.b.a.a.mQM) {
           break label206;
         }
       }
       catch (com.tencent.mm.plugin.appbrand.aa.c.b paramByteBuffer)
       {
-        ac.e("MicroMsg.AppBrandNetWork.WebSocketImpl", "decodeFrames: " + paramByteBuffer.toString());
-        this.mpG.k(paramByteBuffer);
+        ad.e("MicroMsg.AppBrandNetWork.WebSocketImpl", "decodeFrames: " + paramByteBuffer.toString());
+        this.mQl.k(paramByteBuffer);
         a(paramByteBuffer);
         AppMethodBeat.o(156607);
         return;
@@ -650,23 +650,23 @@ public final class c
       d(i, paramByteBuffer, false);
       continue;
       label216:
-      if (locala1 == d.a.mqx)
+      if (locala1 == d.a.mRd)
       {
-        this.mpG.a(this, paramByteBuffer);
+        this.mQl.a(this, paramByteBuffer);
       }
-      else if (locala1 != d.a.mqy)
+      else if (locala1 != d.a.mRe)
       {
-        if ((!bool) || (locala1 == d.a.mqu))
+        if ((!bool) || (locala1 == d.a.mRa))
         {
-          if (locala1 != d.a.mqu)
+          if (locala1 != d.a.mRa)
           {
-            if (this.mpK != null)
+            if (this.mQp != null)
             {
               paramByteBuffer = new com.tencent.mm.plugin.appbrand.aa.c.b("Previous continuous frame sequence not completed.");
               AppMethodBeat.o(156607);
               throw paramByteBuffer;
             }
-            this.mpK = locala1;
+            this.mQp = locala1;
           }
           label363:
           do
@@ -675,59 +675,59 @@ public final class c
             {
               try
               {
-                this.mpG.c(paramByteBuffer);
+                this.mQl.c(paramByteBuffer);
               }
               catch (RuntimeException paramByteBuffer)
               {
-                this.mpG.k(paramByteBuffer);
+                this.mQl.k(paramByteBuffer);
               }
               break;
               if (!bool) {
                 break label363;
               }
-              if (this.mpK == null)
+              if (this.mQp == null)
               {
                 paramByteBuffer = new com.tencent.mm.plugin.appbrand.aa.c.b("Continuous frame sequence was not started.");
                 AppMethodBeat.o(156607);
                 throw paramByteBuffer;
               }
-              this.mpK = null;
+              this.mQp = null;
             }
-          } while (this.mpK != null);
+          } while (this.mQp != null);
           paramByteBuffer = new com.tencent.mm.plugin.appbrand.aa.c.b("Continuous frame sequence was not started.");
           AppMethodBeat.o(156607);
           throw paramByteBuffer;
         }
-        if (this.mpK != null)
+        if (this.mQp != null)
         {
           paramByteBuffer = new com.tencent.mm.plugin.appbrand.aa.c.b("Continuous frame sequence not completed.");
           AppMethodBeat.o(156607);
           throw paramByteBuffer;
         }
-        d.a locala2 = d.a.mqv;
+        d.a locala2 = d.a.mRb;
         if (locala1 == locala2)
         {
           try
           {
-            this.mpG.RA(com.tencent.mm.plugin.appbrand.aa.f.b.B(paramByteBuffer.bxE()));
+            this.mQl.Vf(com.tencent.mm.plugin.appbrand.aa.f.b.B(paramByteBuffer.bBJ()));
           }
           catch (RuntimeException paramByteBuffer)
           {
-            this.mpG.k(paramByteBuffer);
+            this.mQl.k(paramByteBuffer);
           }
         }
         else
         {
-          locala2 = d.a.mqw;
+          locala2 = d.a.mRc;
           if (locala1 == locala2)
           {
             try
             {
-              this.mpG.v(paramByteBuffer.bxE());
+              this.mQl.v(paramByteBuffer.bBJ());
             }
             catch (RuntimeException paramByteBuffer)
             {
-              this.mpG.k(paramByteBuffer);
+              this.mQl.k(paramByteBuffer);
             }
           }
           else
@@ -748,40 +748,40 @@ public final class c
   {
     AppMethodBeat.i(156618);
     if (DEBUG) {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "write(\" + buf.remaining() + \"): {\" + ( buf.remaining() > 1000 ? \"too big to display\" : new String( buf.array() ) ) + \"}");
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "write(\" + buf.remaining() + \"): {\" + ( buf.remaining() > 1000 ? \"too big to display\" : new String( buf.array() ) ) + \"}");
     }
-    this.mpC.add(paramByteBuffer);
+    this.mQh.add(paramByteBuffer);
     AppMethodBeat.o(156618);
   }
   
-  private void vg(int paramInt)
+  private void vM(int paramInt)
   {
     AppMethodBeat.i(156610);
-    at(paramInt, "");
+    av(paramInt, "");
     AppMethodBeat.o(156610);
   }
   
-  public final void NN(String paramString)
+  public final void Rm(String paramString)
   {
     AppMethodBeat.i(156614);
     if (paramString == null)
     {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "Cannot send 'null' data to a WebSocketImpl.");
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "Cannot send 'null' data to a WebSocketImpl.");
       AppMethodBeat.o(156614);
       return;
     }
-    com.tencent.mm.plugin.appbrand.aa.b.a locala = this.mpI;
-    if (this.mpJ == a.b.mpu) {}
+    com.tencent.mm.plugin.appbrand.aa.b.a locala = this.mQn;
+    if (this.mQo == a.b.mPZ) {}
     for (boolean bool = true;; bool = false)
     {
-      g(locala.az(paramString, bool));
+      g(locala.aB(paramString, bool));
       AppMethodBeat.o(156614);
       return;
     }
   }
   
   /* Error */
-  public final void at(int paramInt, String paramString)
+  public final void av(int paramInt, String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -789,8 +789,8 @@ public final class c
     //   2: ldc_w 502
     //   5: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 96	com/tencent/mm/plugin/appbrand/aa/c:mpF	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
-    //   12: getstatic 505	com/tencent/mm/plugin/appbrand/aa/a$a:mps	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
+    //   9: getfield 96	com/tencent/mm/plugin/appbrand/aa/c:mQk	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
+    //   12: getstatic 505	com/tencent/mm/plugin/appbrand/aa/a$a:mPX	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
     //   15: if_acmpne +12 -> 27
     //   18: ldc_w 502
     //   21: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -798,38 +798,38 @@ public final class c
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: getfield 507	com/tencent/mm/plugin/appbrand/aa/c:mpA	Ljava/nio/channels/SelectionKey;
+    //   28: getfield 507	com/tencent/mm/plugin/appbrand/aa/c:mQf	Ljava/nio/channels/SelectionKey;
     //   31: ifnull +10 -> 41
     //   34: aload_0
-    //   35: getfield 507	com/tencent/mm/plugin/appbrand/aa/c:mpA	Ljava/nio/channels/SelectionKey;
+    //   35: getfield 507	com/tencent/mm/plugin/appbrand/aa/c:mQf	Ljava/nio/channels/SelectionKey;
     //   38: invokevirtual 512	java/nio/channels/SelectionKey:cancel	()V
     //   41: aload_0
-    //   42: getfield 514	com/tencent/mm/plugin/appbrand/aa/c:mpB	Ljava/nio/channels/ByteChannel;
+    //   42: getfield 514	com/tencent/mm/plugin/appbrand/aa/c:mQg	Ljava/nio/channels/ByteChannel;
     //   45: astore_3
     //   46: aload_3
     //   47: ifnull +12 -> 59
     //   50: aload_0
-    //   51: getfield 514	com/tencent/mm/plugin/appbrand/aa/c:mpB	Ljava/nio/channels/ByteChannel;
+    //   51: getfield 514	com/tencent/mm/plugin/appbrand/aa/c:mQg	Ljava/nio/channels/ByteChannel;
     //   54: invokeinterface 519 1 0
     //   59: aload_0
-    //   60: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mpG	Lcom/tencent/mm/plugin/appbrand/aa/d;
+    //   60: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mQl	Lcom/tencent/mm/plugin/appbrand/aa/d;
     //   63: iload_1
     //   64: aload_2
     //   65: invokeinterface 522 3 0
     //   70: aload_0
-    //   71: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   71: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   74: ifnull +10 -> 84
     //   77: aload_0
-    //   78: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mpI	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
+    //   78: getfield 98	com/tencent/mm/plugin/appbrand/aa/c:mQn	Lcom/tencent/mm/plugin/appbrand/aa/b/a;
     //   81: invokevirtual 225	com/tencent/mm/plugin/appbrand/aa/b/a:reset	()V
     //   84: aload_0
     //   85: aconst_null
-    //   86: putfield 110	com/tencent/mm/plugin/appbrand/aa/c:mpM	Lcom/tencent/mm/plugin/appbrand/aa/e/a;
+    //   86: putfield 110	com/tencent/mm/plugin/appbrand/aa/c:mQr	Lcom/tencent/mm/plugin/appbrand/aa/e/a;
     //   89: aload_0
-    //   90: getstatic 505	com/tencent/mm/plugin/appbrand/aa/a$a:mps	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
-    //   93: putfield 96	com/tencent/mm/plugin/appbrand/aa/c:mpF	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
+    //   90: getstatic 505	com/tencent/mm/plugin/appbrand/aa/a$a:mPX	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
+    //   93: putfield 96	com/tencent/mm/plugin/appbrand/aa/c:mQk	Lcom/tencent/mm/plugin/appbrand/aa/a$a;
     //   96: aload_0
-    //   97: getfield 137	com/tencent/mm/plugin/appbrand/aa/c:mpC	Ljava/util/concurrent/BlockingQueue;
+    //   97: getfield 137	com/tencent/mm/plugin/appbrand/aa/c:mQh	Ljava/util/concurrent/BlockingQueue;
     //   100: invokeinterface 525 1 0
     //   105: ldc_w 502
     //   108: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -841,13 +841,13 @@ public final class c
     //   118: athrow
     //   119: astore_3
     //   120: aload_0
-    //   121: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mpG	Lcom/tencent/mm/plugin/appbrand/aa/d;
+    //   121: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mQl	Lcom/tencent/mm/plugin/appbrand/aa/d;
     //   124: aload_3
     //   125: invokeinterface 210 2 0
     //   130: goto -71 -> 59
     //   133: astore_2
     //   134: aload_0
-    //   135: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mpG	Lcom/tencent/mm/plugin/appbrand/aa/d;
+    //   135: getfield 141	com/tencent/mm/plugin/appbrand/aa/c:mQl	Lcom/tencent/mm/plugin/appbrand/aa/d;
     //   138: aload_2
     //   139: invokeinterface 210 2 0
     //   144: goto -74 -> 70
@@ -877,13 +877,52 @@ public final class c
   {
     AppMethodBeat.i(156617);
     if (DEBUG) {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "\"send frame: \" + framedata ");
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "\"send frame: \" + framedata ");
     }
-    u(this.mpI.d(paramd));
+    u(this.mQn.d(paramd));
     AppMethodBeat.o(156617);
   }
   
-  public final void bE(List<ByteBuffer> paramList)
+  public final void bBB()
+  {
+    AppMethodBeat.i(156612);
+    if (this.mQk == a.a.mPT)
+    {
+      vM(-1);
+      AppMethodBeat.o(156612);
+      return;
+    }
+    if (this.mQj)
+    {
+      int i = this.mQt.intValue();
+      String str = this.mQs;
+      this.mQu.booleanValue();
+      av(i, str);
+      AppMethodBeat.o(156612);
+      return;
+    }
+    if (this.mQn.bBE() == com.tencent.mm.plugin.appbrand.aa.b.a.a.mQK)
+    {
+      vM(1000);
+      AppMethodBeat.o(156612);
+      return;
+    }
+    if ((this.mQn.bBE() == com.tencent.mm.plugin.appbrand.aa.b.a.a.mQL) && (this.mQo != a.b.mQa))
+    {
+      vM(1000);
+      AppMethodBeat.o(156612);
+      return;
+    }
+    vM(1006);
+    AppMethodBeat.o(156612);
+  }
+  
+  public final boolean bBC()
+  {
+    return this.mQk == a.a.mPW;
+  }
+  
+  public final void bG(List<ByteBuffer> paramList)
   {
     AppMethodBeat.i(156619);
     paramList = paramList.iterator();
@@ -893,60 +932,21 @@ public final class c
     AppMethodBeat.o(156619);
   }
   
-  public final void bxw()
-  {
-    AppMethodBeat.i(156612);
-    if (this.mpF == a.a.mpo)
-    {
-      vg(-1);
-      AppMethodBeat.o(156612);
-      return;
-    }
-    if (this.mpE)
-    {
-      int i = this.mpO.intValue();
-      String str = this.mpN;
-      this.mpP.booleanValue();
-      at(i, str);
-      AppMethodBeat.o(156612);
-      return;
-    }
-    if (this.mpI.bxz() == com.tencent.mm.plugin.appbrand.aa.b.a.a.mqf)
-    {
-      vg(1000);
-      AppMethodBeat.o(156612);
-      return;
-    }
-    if ((this.mpI.bxz() == com.tencent.mm.plugin.appbrand.aa.b.a.a.mqg) && (this.mpJ != a.b.mpv))
-    {
-      vg(1000);
-      AppMethodBeat.o(156612);
-      return;
-    }
-    vg(1006);
-    AppMethodBeat.o(156612);
-  }
-  
-  public final boolean bxx()
-  {
-    return this.mpF == a.a.mpr;
-  }
-  
   public final void c(int paramInt, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(156608);
-    if ((this.mpF != a.a.mpr) && (this.mpF != a.a.mps))
+    if ((this.mQk != a.a.mPW) && (this.mQk != a.a.mPX))
     {
-      if (this.mpF == a.a.mpq)
+      if (this.mQk == a.a.mPV)
       {
         if (paramInt == 1006)
         {
-          this.mpF = a.a.mpr;
+          this.mQk = a.a.mPW;
           d(paramInt, paramString, false);
           AppMethodBeat.o(156608);
           return;
         }
-        if (this.mpI.bxz() == com.tencent.mm.plugin.appbrand.aa.b.a.a.mqf) {}
+        if (this.mQn.bBE() == com.tencent.mm.plugin.appbrand.aa.b.a.a.mQK) {}
       }
       for (;;)
       {
@@ -957,15 +957,15 @@ public final class c
           if (paramInt == 1002) {
             d(paramInt, paramString, paramBoolean);
           }
-          this.mpF = a.a.mpr;
-          this.mpL = null;
+          this.mQk = a.a.mPW;
+          this.mQq = null;
           AppMethodBeat.o(156608);
           return;
         }
         catch (com.tencent.mm.plugin.appbrand.aa.c.b localb)
         {
-          ac.e("MicroMsg.AppBrandNetWork.WebSocketImpl", "close: " + localb.toString());
-          this.mpG.k(localb);
+          ad.e("MicroMsg.AppBrandNetWork.WebSocketImpl", "close: " + localb.toString());
+          this.mQl.k(localb);
           d(1006, "generated frame is invalid", false);
           continue;
         }
@@ -989,25 +989,25 @@ public final class c
   
   public final boolean isClosed()
   {
-    return this.mpF == a.a.mps;
+    return this.mQk == a.a.mPX;
   }
   
   public final boolean isOpen()
   {
-    return this.mpF == a.a.mpq;
+    return this.mQk == a.a.mPV;
   }
   
-  public final void p(ByteBuffer paramByteBuffer)
+  public final void o(ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(156615);
     if (paramByteBuffer == null)
     {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "Cannot send 'null' data to a WebSocketImpl.");
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "Cannot send 'null' data to a WebSocketImpl.");
       AppMethodBeat.o(156615);
       return;
     }
-    com.tencent.mm.plugin.appbrand.aa.b.a locala = this.mpI;
-    if (this.mpJ == a.b.mpu) {}
+    com.tencent.mm.plugin.appbrand.aa.b.a locala = this.mQn;
+    if (this.mQo == a.b.mPZ) {}
     for (boolean bool = true;; bool = false)
     {
       g(locala.a(paramByteBuffer, bool));
@@ -1020,17 +1020,17 @@ public final class c
   {
     AppMethodBeat.i(156605);
     if (DEBUG) {
-      ac.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "\"process(\" + socketBuffer.remaining() + \"): {\" + ( socketBuffer.remaining() > 1000 ? \"too big to display\" : new String( socketBuffer.array(), socketBuffer.position(), socketBuffer.remaining() ) ) + \"}\"");
+      ad.i("MicroMsg.AppBrandNetWork.WebSocketImpl", "\"process(\" + socketBuffer.remaining() + \"): {\" + ( socketBuffer.remaining() > 1000 ? \"too big to display\" : new String( socketBuffer.array(), socketBuffer.position(), socketBuffer.remaining() ) ) + \"}\"");
     }
-    if (this.mpF != a.a.mpo)
+    if (this.mQk != a.a.mPT)
     {
-      if (this.mpF == a.a.mpq)
+      if (this.mQk == a.a.mPV)
       {
         t(paramByteBuffer);
         AppMethodBeat.o(156605);
       }
     }
-    else if ((s(paramByteBuffer)) && (!bxx()) && (!isClosed()))
+    else if ((s(paramByteBuffer)) && (!bBC()) && (!isClosed()))
     {
       if (paramByteBuffer.hasRemaining())
       {
@@ -1038,8 +1038,8 @@ public final class c
         AppMethodBeat.o(156605);
         return;
       }
-      if (this.mpL.hasRemaining()) {
-        t(this.mpL);
+      if (this.mQq.hasRemaining()) {
+        t(this.mQq);
       }
     }
     AppMethodBeat.o(156605);
@@ -1055,7 +1055,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.aa.c
  * JD-Core Version:    0.7.0.1
  */

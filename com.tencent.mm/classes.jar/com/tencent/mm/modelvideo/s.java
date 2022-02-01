@@ -3,97 +3,97 @@ package com.tencent.mm.modelvideo;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.protocal.protobuf.dev;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.protocal.protobuf.bxm;
+import com.tencent.mm.protocal.protobuf.dki;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class s
 {
   String clientId;
   public long createTime;
-  public int dnl;
-  public long dpl;
-  public String drG;
-  public int drx;
-  public String dvs;
-  public String dwi;
+  public long dAY;
+  public int dDp;
+  public String dDy;
+  public String dHv;
+  public String dIs;
+  public int dyZ;
+  public int fJH;
   public String fileName;
-  public int fry;
-  public long hYX;
-  public String hYm;
-  public int hZn;
-  public int hpy;
-  public int hux;
-  public String iaC;
-  public int iaE;
-  public int iaF;
-  public int iaG;
-  public long iaH;
-  public long iaI;
-  public int iaJ;
-  public int iaK;
-  public int iaL;
-  public int iaM;
-  public int iaN;
-  public String iaO;
-  public int iaP;
-  public String iaQ;
-  public dev iaR;
-  public bsz iaS;
-  int iaT;
-  String iaU;
-  private boolean iaV;
-  private boolean iaW;
+  public int hHQ;
+  public int hMP;
+  public String irI;
+  public int isJ;
+  public long ist;
+  public String itY;
+  public int iua;
+  public int iub;
+  public int iuc;
+  public long iud;
+  public long iue;
+  public int iuf;
+  public int iug;
+  public int iuh;
+  public int iui;
+  public int iuj;
+  public String iuk;
+  public int iul;
+  public String ium;
+  public dki iun;
+  public bxm iuo;
+  int iup;
+  String iuq;
+  private boolean iur;
+  private boolean ius;
   public int status;
   public int videoFormat;
   
   public s()
   {
     AppMethodBeat.i(126948);
-    this.drx = -1;
+    this.dDp = -1;
     this.fileName = "";
     this.clientId = "";
-    this.dpl = 0L;
-    this.hZn = 0;
-    this.iaE = 0;
-    this.hux = 0;
-    this.iaF = 0;
-    this.iaG = 0;
+    this.dAY = 0L;
+    this.isJ = 0;
+    this.iua = 0;
+    this.hMP = 0;
+    this.iub = 0;
+    this.iuc = 0;
     this.status = 0;
     this.createTime = 0L;
-    this.iaH = 0L;
-    this.iaI = 0L;
-    this.hpy = 0;
-    this.iaJ = 0;
-    this.iaK = 0;
-    this.iaL = 0;
-    this.drG = "";
-    this.iaC = "";
-    this.iaM = 0;
-    this.iaN = 0;
-    this.hYm = "";
-    this.iaO = "";
-    this.iaP = 0;
-    this.hYX = 0L;
-    this.iaQ = "";
-    this.dwi = "";
-    this.iaR = new dev();
-    this.dvs = "";
-    this.fry = 0;
-    this.iaS = new bsz();
-    this.dnl = 0;
+    this.iud = 0L;
+    this.iue = 0L;
+    this.hHQ = 0;
+    this.iuf = 0;
+    this.iug = 0;
+    this.iuh = 0;
+    this.dDy = "";
+    this.itY = "";
+    this.iui = 0;
+    this.iuj = 0;
+    this.irI = "";
+    this.iuk = "";
+    this.iul = 0;
+    this.ist = 0L;
+    this.ium = "";
+    this.dIs = "";
+    this.iun = new dki();
+    this.dHv = "";
+    this.fJH = 0;
+    this.iuo = new bxm();
+    this.dyZ = 0;
     this.videoFormat = 0;
     AppMethodBeat.o(126948);
   }
   
-  public static String DR(String paramString)
+  public static String GY(String paramString)
   {
     AppMethodBeat.i(126949);
     try
     {
-      paramString = bv.L(paramString, "msg");
+      paramString = bw.M(paramString, "msg");
       if (paramString != null)
       {
         paramString = (String)paramString.get(".msg.videomsg.$cdnvideourl");
@@ -108,33 +108,33 @@ public final class s
     return "";
   }
   
-  private byte[] aJI()
+  private byte[] aMT()
   {
     AppMethodBeat.i(126952);
     Object localObject = new byte[0];
     try
     {
-      byte[] arrayOfByte = this.iaR.toByteArray();
+      byte[] arrayOfByte = this.iun.toByteArray();
       localObject = arrayOfByte;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ac.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(126952);
     return localObject;
   }
   
-  private byte[] aJO()
+  private byte[] aMZ()
   {
     AppMethodBeat.i(126956);
     Object localObject = new byte[0];
     try
     {
-      byte[] arrayOfByte = this.iaS.toByteArray();
+      byte[] arrayOfByte = this.iuo.toByteArray();
       localObject = arrayOfByte;
     }
     catch (Exception localException)
@@ -149,16 +149,16 @@ public final class s
   private void ad(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(126953);
-    this.iaR = new dev();
+    this.iun = new dki();
     try
     {
-      this.iaR.parseFrom(paramArrayOfByte);
+      this.iun.parseFrom(paramArrayOfByte);
       AppMethodBeat.o(126953);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ac.printErrStackTrace("MicroMsg.VideoInfo", paramArrayOfByte, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.VideoInfo", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(126953);
     }
   }
@@ -166,10 +166,10 @@ public final class s
   private void ae(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(126955);
-    this.iaS = new bsz();
+    this.iuo = new bxm();
     try
     {
-      this.iaS.parseFrom(paramArrayOfByte);
+      this.iuo.parseFrom(paramArrayOfByte);
       AppMethodBeat.o(126955);
       return;
     }
@@ -179,63 +179,63 @@ public final class s
     }
   }
   
-  public final void DS(String paramString)
+  public final void GZ(String paramString)
   {
-    this.iaU = paramString;
-    this.iaW = true;
+    this.iuq = paramString;
+    this.ius = true;
   }
   
   public final void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(126954);
-    if (this.iaR == null) {
-      this.iaR = new dev();
+    if (this.iun == null) {
+      this.iun = new dki();
     }
-    this.iaR.hjX = paramString2;
-    this.iaR.EBs = paramInt;
-    this.iaR.hjV = paramString1;
-    this.iaR.hjY = paramString3;
-    this.iaR.hjZ = paramString4;
-    this.iaR.hkb = paramString5;
-    this.iaR.hkc = paramString6;
+    this.iun.hCg = paramString2;
+    this.iun.Gje = paramInt;
+    this.iun.hCe = paramString1;
+    this.iun.hCh = paramString3;
+    this.iun.hCi = paramString4;
+    this.iun.hCk = paramString5;
+    this.iun.hCl = paramString6;
     AppMethodBeat.o(126954);
   }
   
-  public final String aJH()
+  public final String aMS()
   {
-    if (this.iaC == null) {
+    if (this.itY == null) {
       return "";
     }
-    return this.iaC;
+    return this.itY;
   }
   
-  public final String aJJ()
+  public final String aMU()
   {
-    if (this.hYm == null) {
+    if (this.irI == null) {
       return "";
     }
-    return this.hYm;
+    return this.irI;
   }
   
-  public final String aJK()
+  public final String aMV()
   {
-    if (this.iaO == null) {
+    if (this.iuk == null) {
       return "";
     }
-    return this.iaO;
+    return this.iuk;
   }
   
-  public final boolean aJL()
+  public final boolean aMW()
   {
     return (this.status == 140) || (this.status == 141) || (this.status == 142);
   }
   
-  public final boolean aJM()
+  public final boolean aMX()
   {
     return (this.status == 121) || (this.status == 122) || (this.status == 120) || (this.status == 123);
   }
   
-  public final boolean aJN()
+  public final boolean aMY()
   {
     return (this.status == 199) || (this.status == 199);
   }
@@ -245,38 +245,38 @@ public final class s
     AppMethodBeat.i(126950);
     this.fileName = paramCursor.getString(0);
     this.clientId = paramCursor.getString(1);
-    this.dpl = paramCursor.getLong(2);
-    this.hZn = paramCursor.getInt(3);
-    this.iaE = paramCursor.getInt(4);
-    this.hux = paramCursor.getInt(5);
-    this.iaF = paramCursor.getInt(6);
-    this.iaG = paramCursor.getInt(7);
+    this.dAY = paramCursor.getLong(2);
+    this.isJ = paramCursor.getInt(3);
+    this.iua = paramCursor.getInt(4);
+    this.hMP = paramCursor.getInt(5);
+    this.iub = paramCursor.getInt(6);
+    this.iuc = paramCursor.getInt(7);
     this.status = paramCursor.getInt(8);
     this.createTime = paramCursor.getLong(9);
-    this.iaH = paramCursor.getLong(10);
-    this.iaI = paramCursor.getLong(11);
-    this.hpy = paramCursor.getInt(12);
-    this.iaJ = paramCursor.getInt(13);
-    this.iaK = paramCursor.getInt(14);
-    this.iaL = paramCursor.getInt(15);
-    this.drG = paramCursor.getString(16);
-    this.iaC = paramCursor.getString(17);
-    this.iaM = paramCursor.getInt(18);
-    this.iaN = paramCursor.getInt(19);
-    this.hYm = paramCursor.getString(20);
-    this.iaO = paramCursor.getString(21);
-    this.iaP = paramCursor.getInt(22);
-    this.hYX = paramCursor.getLong(23);
-    this.iaQ = paramCursor.getString(24);
-    this.dwi = paramCursor.getString(25);
+    this.iud = paramCursor.getLong(10);
+    this.iue = paramCursor.getLong(11);
+    this.hHQ = paramCursor.getInt(12);
+    this.iuf = paramCursor.getInt(13);
+    this.iug = paramCursor.getInt(14);
+    this.iuh = paramCursor.getInt(15);
+    this.dDy = paramCursor.getString(16);
+    this.itY = paramCursor.getString(17);
+    this.iui = paramCursor.getInt(18);
+    this.iuj = paramCursor.getInt(19);
+    this.irI = paramCursor.getString(20);
+    this.iuk = paramCursor.getString(21);
+    this.iul = paramCursor.getInt(22);
+    this.ist = paramCursor.getLong(23);
+    this.ium = paramCursor.getString(24);
+    this.dIs = paramCursor.getString(25);
     ad(paramCursor.getBlob(26));
-    this.dvs = paramCursor.getString(27);
-    this.fry = paramCursor.getInt(28);
+    this.dHv = paramCursor.getString(27);
+    this.fJH = paramCursor.getInt(28);
     ae(paramCursor.getBlob(29));
-    this.dnl = paramCursor.getInt(30);
+    this.dyZ = paramCursor.getInt(30);
     this.videoFormat = paramCursor.getInt(31);
-    this.iaT = paramCursor.getInt(32);
-    this.iaU = paramCursor.getString(33);
+    this.iup = paramCursor.getInt(32);
+    this.iuq = paramCursor.getString(33);
     AppMethodBeat.o(126950);
   }
   
@@ -284,10 +284,10 @@ public final class s
   {
     AppMethodBeat.i(126951);
     ContentValues localContentValues = new ContentValues();
-    if ((this.drx & 0x1) != 0) {
+    if ((this.dDp & 0x1) != 0) {
       localContentValues.put("filename", getFileName());
     }
-    if ((this.drx & 0x2) != 0) {
+    if ((this.dDp & 0x2) != 0) {
       if (this.clientId != null) {
         break label819;
       }
@@ -296,101 +296,101 @@ public final class s
     for (String str = "";; str = this.clientId)
     {
       localContentValues.put("clientid", str);
-      if ((this.drx & 0x4) != 0) {
-        localContentValues.put("msgsvrid", Long.valueOf(this.dpl));
+      if ((this.dDp & 0x4) != 0) {
+        localContentValues.put("msgsvrid", Long.valueOf(this.dAY));
       }
-      if ((this.drx & 0x8) != 0) {
-        localContentValues.put("netoffset", Integer.valueOf(this.hZn));
+      if ((this.dDp & 0x8) != 0) {
+        localContentValues.put("netoffset", Integer.valueOf(this.isJ));
       }
-      if ((this.drx & 0x10) != 0) {
-        localContentValues.put("filenowsize", Integer.valueOf(this.iaE));
+      if ((this.dDp & 0x10) != 0) {
+        localContentValues.put("filenowsize", Integer.valueOf(this.iua));
       }
-      if ((this.drx & 0x20) != 0) {
-        localContentValues.put("totallen", Integer.valueOf(this.hux));
+      if ((this.dDp & 0x20) != 0) {
+        localContentValues.put("totallen", Integer.valueOf(this.hMP));
       }
-      if ((this.drx & 0x40) != 0) {
-        localContentValues.put("thumbnetoffset", Integer.valueOf(this.iaF));
+      if ((this.dDp & 0x40) != 0) {
+        localContentValues.put("thumbnetoffset", Integer.valueOf(this.iub));
       }
-      if ((this.drx & 0x80) != 0) {
-        localContentValues.put("thumblen", Integer.valueOf(this.iaG));
+      if ((this.dDp & 0x80) != 0) {
+        localContentValues.put("thumblen", Integer.valueOf(this.iuc));
       }
-      if ((this.drx & 0x100) != 0) {
+      if ((this.dDp & 0x100) != 0) {
         localContentValues.put("status", Integer.valueOf(this.status));
       }
-      if ((this.drx & 0x200) != 0) {
+      if ((this.dDp & 0x200) != 0) {
         localContentValues.put("createtime", Long.valueOf(this.createTime));
       }
-      if ((this.drx & 0x400) != 0) {
-        localContentValues.put("lastmodifytime", Long.valueOf(this.iaH));
+      if ((this.dDp & 0x400) != 0) {
+        localContentValues.put("lastmodifytime", Long.valueOf(this.iud));
       }
-      if ((this.drx & 0x800) != 0) {
-        localContentValues.put("downloadtime", Long.valueOf(this.iaI));
+      if ((this.dDp & 0x800) != 0) {
+        localContentValues.put("downloadtime", Long.valueOf(this.iue));
       }
-      if ((this.drx & 0x1000) != 0) {
-        localContentValues.put("videolength", Integer.valueOf(this.hpy));
+      if ((this.dDp & 0x1000) != 0) {
+        localContentValues.put("videolength", Integer.valueOf(this.hHQ));
       }
-      if ((this.drx & 0x2000) != 0) {
-        localContentValues.put("msglocalid", Integer.valueOf(this.iaJ));
+      if ((this.dDp & 0x2000) != 0) {
+        localContentValues.put("msglocalid", Integer.valueOf(this.iuf));
       }
-      if ((this.drx & 0x4000) != 0) {
-        localContentValues.put("nettimes", Integer.valueOf(this.iaK));
+      if ((this.dDp & 0x4000) != 0) {
+        localContentValues.put("nettimes", Integer.valueOf(this.iug));
       }
-      if ((this.drx & 0x8000) != 0) {
-        localContentValues.put("cameratype", Integer.valueOf(this.iaL));
+      if ((this.dDp & 0x8000) != 0) {
+        localContentValues.put("cameratype", Integer.valueOf(this.iuh));
       }
-      if ((this.drx & 0x10000) != 0) {
+      if ((this.dDp & 0x10000) != 0) {
         localContentValues.put("user", getUser());
       }
-      if ((this.drx & 0x20000) != 0) {
-        localContentValues.put("human", aJH());
+      if ((this.dDp & 0x20000) != 0) {
+        localContentValues.put("human", aMS());
       }
-      if ((this.drx & 0x40000) != 0) {
-        localContentValues.put("reserved1", Integer.valueOf(this.iaM));
+      if ((this.dDp & 0x40000) != 0) {
+        localContentValues.put("reserved1", Integer.valueOf(this.iui));
       }
-      if ((this.drx & 0x80000) != 0) {
-        localContentValues.put("reserved2", Integer.valueOf(this.iaN));
+      if ((this.dDp & 0x80000) != 0) {
+        localContentValues.put("reserved2", Integer.valueOf(this.iuj));
       }
-      if ((this.drx & 0x100000) != 0) {
-        localContentValues.put("reserved3", aJJ());
+      if ((this.dDp & 0x100000) != 0) {
+        localContentValues.put("reserved3", aMU());
       }
-      if ((this.drx & 0x200000) != 0) {
-        localContentValues.put("reserved4", aJK());
+      if ((this.dDp & 0x200000) != 0) {
+        localContentValues.put("reserved4", aMV());
       }
-      if ((this.drx & 0x400000) != 0) {
-        localContentValues.put("videofuncflag", Integer.valueOf(this.iaP));
+      if ((this.dDp & 0x400000) != 0) {
+        localContentValues.put("videofuncflag", Integer.valueOf(this.iul));
       }
-      if ((this.drx & 0x800000) != 0) {
-        localContentValues.put("masssendid", Long.valueOf(this.hYX));
+      if ((this.dDp & 0x800000) != 0) {
+        localContentValues.put("masssendid", Long.valueOf(this.ist));
       }
-      if ((this.drx & 0x1000000) != 0) {
-        localContentValues.put("masssendlist", this.iaQ);
+      if ((this.dDp & 0x1000000) != 0) {
+        localContentValues.put("masssendlist", this.ium);
       }
-      if ((this.drx & 0x2000000) != 0) {
-        localContentValues.put("videomd5", this.dwi);
+      if ((this.dDp & 0x2000000) != 0) {
+        localContentValues.put("videomd5", this.dIs);
       }
-      if ((this.drx & 0x4000000) != 0) {
-        localContentValues.put("streamvideo", aJI());
+      if ((this.dDp & 0x4000000) != 0) {
+        localContentValues.put("streamvideo", aMT());
       }
-      if ((this.drx & 0x8000000) != 0) {
-        localContentValues.put("statextstr", this.dvs);
+      if ((this.dDp & 0x8000000) != 0) {
+        localContentValues.put("statextstr", this.dHv);
       }
-      if ((this.drx & 0x10000000) != 0) {
-        localContentValues.put("downloadscene", Integer.valueOf(this.fry));
+      if ((this.dDp & 0x10000000) != 0) {
+        localContentValues.put("downloadscene", Integer.valueOf(this.fJH));
       }
-      if ((this.drx & 0x20000000) != 0) {
-        localContentValues.put("mmsightextinfo", aJO());
+      if ((this.dDp & 0x20000000) != 0) {
+        localContentValues.put("mmsightextinfo", aMZ());
       }
-      if ((this.drx & 0x1) != 0) {
-        localContentValues.put("preloadsize", Integer.valueOf(this.dnl));
+      if ((this.dDp & 0x1) != 0) {
+        localContentValues.put("preloadsize", Integer.valueOf(this.dyZ));
       }
-      if ((this.drx & 0x2) != 0) {
+      if ((this.dDp & 0x2) != 0) {
         localContentValues.put("videoformat", Integer.valueOf(this.videoFormat));
       }
-      if (this.iaV) {
-        localContentValues.put("forward_msg_local_id", Integer.valueOf(this.iaT));
+      if (this.iur) {
+        localContentValues.put("forward_msg_local_id", Integer.valueOf(this.iup));
       }
-      if (this.iaW) {
-        localContentValues.put("msg_uuid", this.iaU);
+      if (this.ius) {
+        localContentValues.put("msg_uuid", this.iuq);
       }
       AppMethodBeat.o(126951);
       return localContentValues;
@@ -407,22 +407,22 @@ public final class s
   
   public final String getUser()
   {
-    if (this.drG == null) {
+    if (this.dDy == null) {
       return "";
     }
-    return this.drG;
+    return this.dDy;
   }
   
-  public final void pJ(int paramInt)
+  public final void ql(int paramInt)
   {
-    this.iaT = paramInt;
-    this.iaV = true;
+    this.iup = paramInt;
+    this.iur = true;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(126947);
-    String str = "VideoInfo{fileName='" + this.fileName + '\'' + ", clientId='" + this.clientId + '\'' + ", msgSvrId=" + this.dpl + ", netOffset=" + this.hZn + ", fileNowSize=" + this.iaE + ", totalLen=" + this.hux + ", thumbNetOffset=" + this.iaF + ", thumbLen=" + this.iaG + ", status=" + this.status + ", createTime=" + this.createTime + ", lastModifyTime=" + this.iaH + ", priorityTime=" + this.iaI + ", videoLength=" + this.hpy + ", msgLocalId=" + this.iaJ + ", netTimes=" + this.iaK + ", cameraType=" + this.iaL + ", user='" + this.drG + '\'' + ", human='" + this.iaC + '\'' + ", isExport=" + this.iaM + ", isUseCdn=" + this.iaN + ", importPath='" + this.hYm + '\'' + ", recvXml='" + this.iaO + '\'' + ", videoFuncFlag=" + this.iaP + ", massSendId=" + this.hYX + ", massSendList='" + this.iaQ + '\'' + ", videoMD5='" + this.dwi + '\'' + ", streamVideoProto=" + this.iaR + ", statextstr='" + this.dvs + '\'' + ", downloadScene=" + this.fry + ", mmSightExtInfo=" + this.iaS + ", preloadSize=" + this.dnl + ", videoFormat=" + this.videoFormat + ", flag=" + this.drx + '}';
+    String str = "VideoInfo{fileName='" + this.fileName + '\'' + ", clientId='" + this.clientId + '\'' + ", msgSvrId=" + this.dAY + ", netOffset=" + this.isJ + ", fileNowSize=" + this.iua + ", totalLen=" + this.hMP + ", thumbNetOffset=" + this.iub + ", thumbLen=" + this.iuc + ", status=" + this.status + ", createTime=" + this.createTime + ", lastModifyTime=" + this.iud + ", priorityTime=" + this.iue + ", videoLength=" + this.hHQ + ", msgLocalId=" + this.iuf + ", netTimes=" + this.iug + ", cameraType=" + this.iuh + ", user='" + this.dDy + '\'' + ", human='" + this.itY + '\'' + ", isExport=" + this.iui + ", isUseCdn=" + this.iuj + ", importPath='" + this.irI + '\'' + ", recvXml='" + this.iuk + '\'' + ", videoFuncFlag=" + this.iul + ", massSendId=" + this.ist + ", massSendList='" + this.ium + '\'' + ", videoMD5='" + this.dIs + '\'' + ", streamVideoProto=" + this.iun + ", statextstr='" + this.dHv + '\'' + ", downloadScene=" + this.fJH + ", mmSightExtInfo=" + this.iuo + ", preloadSize=" + this.dyZ + ", videoFormat=" + this.videoFormat + ", flag=" + this.dDp + '}';
     AppMethodBeat.o(126947);
     return str;
   }

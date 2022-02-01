@@ -10,19 +10,19 @@ import java.util.Map;
 public final class ac
   implements ab
 {
-  private h hsn;
-  protected Map<String, o> hso;
+  private h hKF;
+  protected Map<String, o> hKG;
   
   public ac(ab paramab)
   {
     AppMethodBeat.i(76393);
-    this.hso = new HashMap();
+    this.hKG = new HashMap();
     if (paramab == null)
     {
       AppMethodBeat.o(76393);
       return;
     }
-    this.hsn = paramab.aAO();
+    this.hKF = paramab.aDR();
     a(paramab);
     AppMethodBeat.o(76393);
   }
@@ -30,47 +30,47 @@ public final class ac
   public ac(h paramh)
   {
     AppMethodBeat.i(76392);
-    this.hso = new HashMap();
-    this.hsn = paramh;
+    this.hKG = new HashMap();
+    this.hKF = paramh;
     AppMethodBeat.o(76392);
   }
   
   private void a(ab paramab)
   {
     AppMethodBeat.i(76394);
-    paramab = paramab.aAP().iterator();
+    paramab = paramab.aDS().iterator();
     while (paramab.hasNext()) {
       a((o)paramab.next());
     }
     AppMethodBeat.o(76394);
   }
   
+  public final <T> T Cn(String paramString)
+  {
+    AppMethodBeat.i(76395);
+    paramString = this.hKG.get(paramString);
+    AppMethodBeat.o(76395);
+    return paramString;
+  }
+  
   public final void a(o paramo)
   {
     AppMethodBeat.i(76396);
-    this.hso.put(paramo.getName(), paramo);
+    this.hKG.put(paramo.getName(), paramo);
     AppMethodBeat.o(76396);
   }
   
-  public final h aAO()
+  public final h aDR()
   {
-    return this.hsn;
+    return this.hKF;
   }
   
-  public final List<o> aAP()
+  public final List<o> aDS()
   {
     AppMethodBeat.i(76397);
-    ArrayList localArrayList = new ArrayList(this.hso.values());
+    ArrayList localArrayList = new ArrayList(this.hKG.values());
     AppMethodBeat.o(76397);
     return localArrayList;
-  }
-  
-  public final <T> T zo(String paramString)
-  {
-    AppMethodBeat.i(76395);
-    paramString = this.hso.get(paramString);
-    AppMethodBeat.o(76395);
-    return paramString;
   }
 }
 

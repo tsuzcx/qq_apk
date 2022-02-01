@@ -1,50 +1,148 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
 import android.content.Context;
-import com.tencent.luggage.d.c;
-import com.tencent.luggage.d.k;
-import com.tencent.luggage.d.n;
+import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.f;
-import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.plugin.lite.jsapi.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class e
-  extends a
+public class e
+  extends com.tencent.mm.plugin.lite.jsapi.a
 {
-  public e()
+  public final int cXg()
   {
-    super(10);
+    return 0;
   }
   
-  public final void a(Context paramContext, f paramf, final bug parambug)
+  public final void j(String paramString, final JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(83108);
-    paramf.bXF.a(new c()
+    AppMethodBeat.i(211637);
+    com.tencent.mm.ci.a.post(new Runnable()
     {
-      public final JSONObject Aq()
+      public final void run()
       {
-        AppMethodBeat.i(83107);
-        try
+        int i = 0;
+        AppMethodBeat.i(211636);
+        Context localContext = aj.getContext();
+        JSONArray localJSONArray = paramJSONObject.optJSONArray("packageName");
+        Object localObject3;
+        Object localObject4;
+        int m;
+        int j;
+        int k;
+        if (localJSONArray != null)
         {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("itemId", parambug.Fkq);
-          AppMethodBeat.o(83107);
-          return localJSONObject;
+          localObject3 = new JSONObject();
+          localObject4 = new JSONObject();
+          m = 0;
+          i = 0;
+          j = i;
+          k = i;
         }
-        catch (Exception localException)
+        for (;;)
         {
-          AppMethodBeat.o(83107);
+          try
+          {
+            if (m >= localJSONArray.length()) {
+              continue;
+            }
+            j = i;
+            String str = localJSONArray.optString(m);
+            j = i;
+            localObject1 = b.getPackageInfo(localContext, str);
+            if (localObject1 == null)
+            {
+              n = 0;
+              break label484;
+              j = i;
+              ad.i("LiteAppJsApiGetInstallState", "getInstallState, packageName = " + str + ", version = " + n + ", versionName = " + (String)localObject1);
+              k = i;
+              if (i == 0)
+              {
+                k = i;
+                if (n > 0) {
+                  k = 1;
+                }
+              }
+              j = k;
+              ((JSONObject)localObject3).put(str, n);
+              j = k;
+              ((JSONObject)localObject4).put(str, localObject1);
+              m += 1;
+              i = k;
+              break;
+            }
+            j = i;
+            int n = ((PackageInfo)localObject1).versionCode;
+          }
+          catch (Exception localException)
+          {
+            Object localObject1;
+            k = j;
+            localObject2 = new HashMap();
+            ((HashMap)localObject2).put("result", ((JSONObject)localObject3).toString());
+            ((HashMap)localObject2).put("versionName", ((JSONObject)localObject4).toString());
+            if (k == 0) {
+              continue;
+            }
+            e.a(e.this).ai((Map)localObject2);
+            AppMethodBeat.o(211636);
+            return;
+            e.b(e.this).YL("get_install_state:no");
+            AppMethodBeat.o(211636);
+            return;
+          }
+          j = i;
+          localObject1 = ((PackageInfo)localObject1).versionName;
+          continue;
+          localObject3 = paramJSONObject.optString("packageName");
+          if (bt.isNullOrNil((String)localObject3))
+          {
+            ad.i("LiteAppJsApiGetInstallState", "packageName is null or nil");
+            e.c(e.this).YL("get_install_state:no_null_packageName");
+            AppMethodBeat.o(211636);
+            return;
+          }
+          localObject4 = b.getPackageInfo(localContext, (String)localObject3);
+          if (localObject4 == null) {
+            if (localObject4 != null) {
+              break label435;
+            }
+          }
+          label435:
+          for (Object localObject2 = "null";; localObject2 = ((PackageInfo)localObject4).versionName)
+          {
+            ad.i("LiteAppJsApiGetInstallState", "doGetInstallState, packageName = " + (String)localObject3 + ", version = " + i + ", versionName = " + (String)localObject2);
+            if (localObject4 != null) {
+              break label445;
+            }
+            e.d(e.this).YL("get_install_state:no");
+            AppMethodBeat.o(211636);
+            return;
+            i = ((PackageInfo)localObject4).versionCode;
+            break;
+          }
+          label445:
+          localObject3 = new HashMap();
+          ((Map)localObject3).put("versionName", localObject2);
+          e.e(e.this).ai((Map)localObject3);
+          AppMethodBeat.o(211636);
+          return;
+          label484:
+          if (localObject2 == null) {
+            localObject2 = "null";
+          }
         }
-        return null;
-      }
-      
-      public final String name()
-      {
-        return "onCustomGameMenuClicked";
       }
     });
-    AppMethodBeat.o(83108);
+    AppMethodBeat.o(211637);
   }
 }
 

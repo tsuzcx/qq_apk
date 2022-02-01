@@ -7,52 +7,52 @@ public class d
   extends a
 {
   static final String TAG;
-  public static String nqH;
-  public static String nrg;
-  public static String nrh;
-  private final int nri = 1;
-  private final int nrj = 4;
-  private final int nrk = 6;
-  private final int nrl = 8;
-  private final int nrm = 16;
-  String nrn = "";
-  a nro = null;
+  public static String nRD;
+  public static String nSc;
+  public static String nSd;
+  private final int nSe = 1;
+  private final int nSf = 4;
+  private final int nSg = 6;
+  private final int nSh = 8;
+  private final int nSi = 16;
+  String nSj = "";
+  a nSk = null;
   
   static
   {
     AppMethodBeat.i(22579);
     TAG = d.class.getName();
-    nqH = h.nqx;
-    nrg = h.nqy;
-    nrh = h.nqz;
+    nRD = h.nRt;
+    nSc = h.nRu;
+    nSd = h.nRv;
     AppMethodBeat.o(22579);
   }
   
   public d()
   {
-    this.nqF = null;
-    this.nqG = 2;
-    this.npZ = 4L;
+    this.nRB = null;
+    this.nRC = 2;
+    this.nQV = 4L;
   }
   
-  public final byte[] bIB()
+  public final byte[] bMO()
   {
     return null;
   }
   
   final class a
   {
-    public int nrp = 0;
-    public int nrq = 0;
-    public int nrr = 0;
-    public int nrs = 0;
+    public int nSl = 0;
+    public int nSm = 0;
+    public int nSn = 0;
+    public int nSo = 0;
     
     public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.b.a.d
  * JD-Core Version:    0.7.0.1
  */

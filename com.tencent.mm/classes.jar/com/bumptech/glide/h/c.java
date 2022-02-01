@@ -8,13 +8,13 @@ import java.io.InputStream;
 public final class c
   extends FilterInputStream
 {
-  private final long aMd;
-  private int aMe;
+  private final long aNU;
+  private int aNV;
   
   private c(InputStream paramInputStream, long paramLong)
   {
     super(paramInputStream);
-    this.aMd = paramLong;
+    this.aNU = paramLong;
   }
   
   public static InputStream a(InputStream paramInputStream, long paramLong)
@@ -29,14 +29,14 @@ public final class c
   {
     AppMethodBeat.i(77733);
     if (paramInt >= 0) {
-      this.aMe += paramInt;
+      this.aNV += paramInt;
     }
-    while (this.aMd - this.aMe <= 0L)
+    while (this.aNU - this.aNV <= 0L)
     {
       AppMethodBeat.o(77733);
       return paramInt;
     }
-    IOException localIOException = new IOException("Failed to read all expected data, expected: " + this.aMd + ", but read: " + this.aMe);
+    IOException localIOException = new IOException("Failed to read all expected data, expected: " + this.aNU + ", but read: " + this.aNV);
     AppMethodBeat.o(77733);
     throw localIOException;
   }
@@ -46,7 +46,7 @@ public final class c
     try
     {
       AppMethodBeat.i(77729);
-      int i = (int)Math.max(this.aMd - this.aMe, this.in.available());
+      int i = (int)Math.max(this.aNU - this.aNV, this.in.available());
       AppMethodBeat.o(77729);
       return i;
     }

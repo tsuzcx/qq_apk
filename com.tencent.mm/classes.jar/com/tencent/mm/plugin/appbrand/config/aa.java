@@ -1,28 +1,33 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.util.Pair;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+import org.json.JSONArray;
 
-public final class aa
+final class aa
 {
-  public String appId;
-  public String cGs;
-  public int ccR;
-  public int cca;
-  public int ccg;
-  public String dic;
-  public String jDu;
-  public List<Pair<String, String>> jFD;
-  public List<WxaAttributes.WxaEntryInfo> jFq;
-  private String jGl = null;
-  public String nickname;
-  public int originalFlag;
-  public String signature;
-  public String username;
+  static LinkedList<String> m(JSONArray paramJSONArray)
+  {
+    AppMethodBeat.i(123526);
+    if (paramJSONArray == null)
+    {
+      AppMethodBeat.o(123526);
+      return null;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      localLinkedList.add(paramJSONArray.optString(i));
+      i += 1;
+    }
+    AppMethodBeat.o(123526);
+    return localLinkedList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.aa
  * JD-Core Version:    0.7.0.1
  */

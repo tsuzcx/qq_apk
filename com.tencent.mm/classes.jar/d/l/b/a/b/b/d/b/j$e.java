@@ -2,18 +2,18 @@ package d.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import d.g.a.b;
-import d.g.b.l;
+import d.g.b.q;
 
 final class j$e
-  extends l
+  extends q
   implements b<Class<?>, Boolean>
 {
-  public static final e LjA;
+  public static final e Naw;
   
   static
   {
     AppMethodBeat.i(57438);
-    LjA = new e();
+    Naw = new e();
     AppMethodBeat.o(57438);
   }
   

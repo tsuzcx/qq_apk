@@ -15,26 +15,34 @@ public class WXVideoObject
   public boolean checkArgs()
   {
     AppMethodBeat.i(3969);
-    if (((this.videoUrl == null) || (this.videoUrl.length() == 0)) && ((this.videoLowBandUrl == null) || (this.videoLowBandUrl.length() == 0)))
+    String str = this.videoUrl;
+    if ((str == null) || (str.length() == 0))
     {
-      Log.e("MicroMsg.SDK.WXVideoObject", "both arguments are null");
-      AppMethodBeat.o(3969);
-      return false;
+      str = this.videoLowBandUrl;
+      if ((str == null) || (str.length() == 0)) {}
     }
-    if ((this.videoUrl != null) && (this.videoUrl.length() > 10240))
+    else
     {
-      Log.e("MicroMsg.SDK.WXVideoObject", "checkArgs fail, videoUrl is too long");
+      str = this.videoUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXVideoObject", "checkArgs fail, videoUrl is too long");
+        AppMethodBeat.o(3969);
+        return false;
+      }
+      str = this.videoLowBandUrl;
+      if ((str != null) && (str.length() > 10240))
+      {
+        Log.e("MicroMsg.SDK.WXVideoObject", "checkArgs fail, videoLowBandUrl is too long");
+        AppMethodBeat.o(3969);
+        return false;
+      }
       AppMethodBeat.o(3969);
-      return false;
+      return true;
     }
-    if ((this.videoLowBandUrl != null) && (this.videoLowBandUrl.length() > 10240))
-    {
-      Log.e("MicroMsg.SDK.WXVideoObject", "checkArgs fail, videoLowBandUrl is too long");
-      AppMethodBeat.o(3969);
-      return false;
-    }
+    Log.e("MicroMsg.SDK.WXVideoObject", "both arguments are null");
     AppMethodBeat.o(3969);
-    return true;
+    return false;
   }
   
   public void serialize(Bundle paramBundle)

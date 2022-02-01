@@ -7,13 +7,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.emoji.loader.a.b;
 import com.tencent.mm.emoji.loader.e;
 import com.tencent.mm.emoji.view.CoverEmojiStatusView;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import d.g.a.a;
 import d.l;
 import java.lang.ref.WeakReference;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/emoji/loader/request/EmojiCoverRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Landroid/widget/ImageView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/widget/ImageView;)V", "createTask", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoad", "", "success", "", "start", "async", "plugin-emojisdk_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/emoji/loader/request/EmojiCoverRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Landroid/widget/ImageView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/widget/ImageView;)V", "createTask", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoad", "", "success", "", "start", "async", "plugin-emojisdk_release"})
 public final class c
   extends j<ImageView>
 {
@@ -24,27 +24,27 @@ public final class c
     AppMethodBeat.o(105462);
   }
   
-  protected final com.tencent.mm.emoji.loader.e.c acb()
+  protected final com.tencent.mm.emoji.loader.e.c aeF()
   {
     AppMethodBeat.i(105460);
-    Object localObject = e.fOZ;
-    localObject = e.d(this.fPB);
+    Object localObject = e.giz;
+    localObject = e.d(this.gjb);
     AppMethodBeat.o(105460);
     return localObject;
   }
   
-  public final void df(boolean paramBoolean)
+  public final void dh(boolean paramBoolean)
   {
     AppMethodBeat.i(105461);
-    super.df(paramBoolean);
-    Object localObject1 = this.fPY;
+    super.dh(paramBoolean);
+    Object localObject1 = this.gjy;
     if (localObject1 != null) {}
     for (localObject1 = (ImageView)((WeakReference)localObject1).get();; localObject1 = null)
     {
-      Object localObject2 = b.fPi;
-      localObject2 = b.te(this.fPB.JC());
-      ac.d(d.abZ(), "onLoad: " + this.fPB.JC() + ", " + localObject2);
-      com.tencent.mm.ac.c.g((a)new c.a(paramBoolean, (Bitmap)localObject2, (ImageView)localObject1));
+      Object localObject2 = b.giI;
+      localObject2 = b.vT(this.gjb.Lb());
+      ad.d(d.aeD(), "onLoad: " + this.gjb.Lb() + ", " + localObject2);
+      com.tencent.mm.ad.c.g((a)new c.a(paramBoolean, (Bitmap)localObject2, (ImageView)localObject1));
       AppMethodBeat.o(105461);
       return;
     }
@@ -53,22 +53,22 @@ public final class c
   public final void start(boolean paramBoolean)
   {
     AppMethodBeat.i(105459);
-    Object localObject = b.fPi;
-    localObject = b.te(this.fPB.JC());
-    ac.d(d.abZ(), "start: " + this.fPB.JC() + ", " + localObject);
+    Object localObject = b.giI;
+    localObject = b.vT(this.gjb.Lb());
+    ad.d(d.aeD(), "start: " + this.gjb.Lb() + ", " + localObject);
     if (localObject != null)
     {
-      df(true);
+      dh(true);
       AppMethodBeat.o(105459);
       return;
     }
-    localObject = this.fPY;
+    localObject = this.gjy;
     if (localObject != null) {}
     for (localObject = (ImageView)((WeakReference)localObject).get();; localObject = null)
     {
       if (!(localObject instanceof CoverEmojiStatusView))
       {
-        localObject = this.fPY;
+        localObject = this.gjy;
         if (localObject != null)
         {
           localObject = (ImageView)((WeakReference)localObject).get();

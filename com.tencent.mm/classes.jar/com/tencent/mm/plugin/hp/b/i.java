@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.hp.b;
 
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jm;
+import com.tencent.mm.g.a.ju;
 import com.tencent.mm.protocal.b.a.b;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class i
@@ -14,34 +14,34 @@ public final class i
   public static void a(String paramString1, final String paramString2, final String paramString3, final DialogInterface.OnClickListener paramOnClickListener1, final String paramString4, final DialogInterface.OnClickListener paramOnClickListener2)
   {
     AppMethodBeat.i(117443);
-    if (bs.isNullOrNil(paramString2))
+    if (bt.isNullOrNil(paramString2))
     {
-      ac.e("MicroMsg.Tinker.TinkerBootsUpdateDialogUI", "msg is null");
+      ad.e("MicroMsg.Tinker.TinkerBootsUpdateDialogUI", "msg is null");
       AppMethodBeat.o(117443);
       return;
     }
-    ac.i("MicroMsg.Tinker.TinkerBootsUpdateDialogUI", "try to show dialog");
-    ap.f(new Runnable()
+    ad.i("MicroMsg.Tinker.TinkerBootsUpdateDialogUI", "try to show dialog");
+    aq.f(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(117442);
-        jm localjm = new jm();
+        ju localju = new ju();
         b localb = new b();
-        localb.title = this.cNi;
-        localb.bIO = paramString2;
-        localb.DKx = new LinkedList();
+        localb.title = this.cYy;
+        localb.msg = paramString2;
+        localb.FpE = new LinkedList();
         com.tencent.mm.protocal.b.a.a locala = new com.tencent.mm.protocal.b.a.a();
-        locala.DKv = paramString3;
-        localb.DKx.add(locala);
+        locala.FpC = paramString3;
+        localb.FpE.add(locala);
         locala = new com.tencent.mm.protocal.b.a.a();
-        locala.DKv = paramString4;
-        localb.DKx.add(locala);
-        localjm.dkX.type = 1;
-        localjm.dkX.dkY = localb;
-        localjm.dkX.dkZ = paramOnClickListener1;
-        localjm.dkX.dla = paramOnClickListener2;
-        com.tencent.mm.sdk.b.a.GpY.l(localjm);
+        locala.FpC = paramString4;
+        localb.FpE.add(locala);
+        localju.dwK.type = 1;
+        localju.dwK.dwL = localb;
+        localju.dwK.dwM = paramOnClickListener1;
+        localju.dwK.dwN = paramOnClickListener2;
+        com.tencent.mm.sdk.b.a.IbL.l(localju);
         AppMethodBeat.o(117442);
       }
     });

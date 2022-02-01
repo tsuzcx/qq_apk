@@ -2,14 +2,14 @@ package com.tencent.mm.api;
 
 import android.app.Activity;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.storage.ai;
+import com.tencent.mm.storage.am;
 
 public abstract interface l
   extends a
 {
-  public abstract void a(c paramc, Activity paramActivity, ai paramai);
+  public abstract void a(c paramc, Activity paramActivity, am paramam);
   
-  public abstract void a(c paramc, Activity paramActivity, ai paramai, boolean paramBoolean, Runnable paramRunnable);
+  public abstract void a(c paramc, Activity paramActivity, am paramam, boolean paramBoolean, Runnable paramRunnable);
 }
 
 

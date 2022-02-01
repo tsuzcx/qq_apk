@@ -9,8 +9,8 @@ import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.service.c;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class JsApiPauseDownloadTaskForNative
@@ -23,12 +23,12 @@ public final class JsApiPauseDownloadTaskForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<PauseDownloadTask> CREATOR;
-    private int bWl;
-    private boolean jYA;
-    private String jYB;
-    private long jYC;
-    private m jYs;
-    private q jdy;
+    private int cgA;
+    private q jwH;
+    private m ksO;
+    private boolean ksW;
+    private String ksX;
+    private long ksY;
     
     static
     {
@@ -47,27 +47,27 @@ public final class JsApiPauseDownloadTaskForNative
     public PauseDownloadTask(m paramm, q paramq, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45860);
-      this.jYs = paramm;
-      this.jdy = paramq;
-      this.bWl = paramInt;
-      this.jYC = paramJSONObject.optLong("downloadId");
-      this.jYA = true;
+      this.ksO = paramm;
+      this.jwH = paramq;
+      this.cgA = paramInt;
+      this.ksY = paramJSONObject.optLong("downloadId");
+      this.ksW = true;
       AppMethodBeat.o(45860);
     }
     
-    public final void aLq()
+    public final void aOA()
     {
       boolean bool = true;
       AppMethodBeat.i(45862);
-      ac.i("MicroMsg.JsApiPauseDownloadTaskForNative", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.jYC) });
-      if (this.jYC <= 0L) {}
+      ad.i("MicroMsg.JsApiPauseDownloadTaskForNative", "doPauseDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ksY) });
+      if (this.ksY <= 0L) {}
       com.tencent.mm.plugin.downloader.g.a locala;
-      for (this.jYB = "downloadId invalid";; this.jYB = "downloadId invalid")
+      for (this.ksX = "downloadId invalid";; this.ksX = "downloadId invalid")
       {
-        bet();
+        bhX();
         AppMethodBeat.o(45862);
         return;
-        locala = d.sc(this.jYC);
+        locala = d.ua(this.ksY);
         if (locala != null) {
           break;
         }
@@ -77,29 +77,29 @@ public final class JsApiPauseDownloadTaskForNative
         locala.field_downloadInWifi = false;
         d.e(locala);
       }
-      if (!f.bXJ().rU(this.jYC)) {}
+      if (!f.ccl().tT(this.ksY)) {}
       for (;;)
       {
-        this.jYA = bool;
+        this.ksW = bool;
         break;
         bool = false;
       }
     }
     
-    public final void aLr()
+    public final void aOB()
     {
       AppMethodBeat.i(45863);
-      if (this.jYA)
+      if (this.ksW)
       {
-        if (bs.isNullOrNil(this.jYB)) {}
-        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.jYB }))
+        if (bt.isNullOrNil(this.ksX)) {}
+        for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ksX }))
         {
-          this.jdy.h(this.bWl, this.jYs.e(str, null));
+          this.jwH.h(this.cgA, this.ksO.e(str, null));
           AppMethodBeat.o(45863);
           return;
         }
       }
-      this.jdy.h(this.bWl, this.jYs.e("ok", null));
+      this.jwH.h(this.cgA, this.ksO.e("ok", null));
       AppMethodBeat.o(45863);
     }
     
@@ -107,12 +107,12 @@ public final class JsApiPauseDownloadTaskForNative
     {
       boolean bool = true;
       AppMethodBeat.i(45864);
-      this.jYC = paramParcel.readLong();
+      this.ksY = paramParcel.readLong();
       if (paramParcel.readInt() == 1) {}
       for (;;)
       {
-        this.jYA = bool;
-        this.jYB = paramParcel.readString();
+        this.ksW = bool;
+        this.ksX = paramParcel.readString();
         AppMethodBeat.o(45864);
         return;
         bool = false;
@@ -122,12 +122,12 @@ public final class JsApiPauseDownloadTaskForNative
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(45865);
-      paramParcel.writeLong(this.jYC);
-      if (this.jYA) {}
+      paramParcel.writeLong(this.ksY);
+      if (this.ksW) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.jYB);
+        paramParcel.writeString(this.ksX);
         AppMethodBeat.o(45865);
         return;
       }

@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.downloader_app.detail.a;
 
 import android.content.Context;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader_app.b.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class f
-  extends bn
+  extends bq
 {
-  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  public final void a(Context paramContext, String paramString, bq.a parama) {}
   
-  public final void b(a.a parama)
+  public final void b(b.a parama)
   {
     AppMethodBeat.i(8833);
-    Object localObject = parama.bWS.bVY;
+    Object localObject = parama.chh.cgn;
     if (localObject == null)
     {
       parama.a("invalid_data", null);
@@ -28,7 +28,7 @@ public class f
     }
     int i = ((JSONObject)localObject).optInt("logId");
     String str = ((JSONObject)localObject).optString("values");
-    if ((i <= 0) || (bs.isNullOrNil(str)))
+    if ((i <= 0) || (bt.isNullOrNil(str)))
     {
       parama.a("invalid_data", null);
       AppMethodBeat.o(8833);
@@ -36,14 +36,14 @@ public class f
     }
     localObject = str;
     if (i == 16099) {
-      localObject = a.bbs() + "," + str;
+      localObject = a.beW() + "," + str;
     }
-    h.wUl.kvStat(i, (String)localObject);
+    g.yhR.kvStat(i, (String)localObject);
     parama.a("", null);
     AppMethodBeat.o(8833);
   }
   
-  public final int bYk()
+  public final int ccO()
   {
     return 0;
   }

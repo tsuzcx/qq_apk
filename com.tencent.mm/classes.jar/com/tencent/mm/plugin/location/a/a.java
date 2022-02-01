@@ -5,19 +5,19 @@ import f.a.a.b;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<String> dow;
+  public LinkedList<String> dAk;
   public double latitude;
   public double longitude;
-  public String tWE;
   public long timestamp;
+  public String uZn;
   public String username;
   
   public a()
   {
     AppMethodBeat.i(55668);
-    this.dow = new LinkedList();
+    this.dAk = new LinkedList();
     AppMethodBeat.o(55668);
   }
   
@@ -36,28 +36,28 @@ public final class a
       if (this.username != null) {
         paramVarArgs.d(1, this.username);
       }
-      paramVarArgs.e(2, 1, this.dow);
+      paramVarArgs.e(2, 1, this.dAk);
       paramVarArgs.e(3, this.longitude);
       paramVarArgs.e(4, this.latitude);
-      if (this.tWE != null) {
-        paramVarArgs.d(5, this.tWE);
+      if (this.uZn != null) {
+        paramVarArgs.d(5, this.uZn);
       }
-      paramVarArgs.aO(6, this.timestamp);
+      paramVarArgs.aY(6, this.timestamp);
       AppMethodBeat.o(55669);
       return 0;
     }
     if (paramInt == 1) {
       if (this.username == null) {
-        break label516;
+        break label508;
       }
     }
-    label516:
+    label508:
     for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.c(2, 1, this.dow) + (f.a.a.b.b.a.fK(3) + 8) + (f.a.a.b.b.a.fK(4) + 8);
+      int i = paramInt + f.a.a.a.c(2, 1, this.dAk) + f.a.a.b.b.a.alT(3) + f.a.a.b.b.a.alT(4);
       paramInt = i;
-      if (this.tWE != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.tWE);
+      if (this.uZn != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.uZn);
       }
       i = f.a.a.b.b.a.p(6, this.timestamp);
       AppMethodBeat.o(55669);
@@ -65,11 +65,11 @@ public final class a
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.dow.clear();
+        this.dAk.clear();
         paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gfg();
+            paramVarArgs.gxE();
           }
         }
         if (this.username == null)
@@ -91,27 +91,27 @@ public final class a
           AppMethodBeat.o(55669);
           return -1;
         case 1: 
-          locala1.username = locala.LVo.readString();
+          locala1.username = locala.NPN.readString();
           AppMethodBeat.o(55669);
           return 0;
         case 2: 
-          locala1.dow.add(locala.LVo.readString());
+          locala1.dAk.add(locala.NPN.readString());
           AppMethodBeat.o(55669);
           return 0;
         case 3: 
-          locala1.longitude = Double.longBitsToDouble(locala.LVo.gab());
+          locala1.longitude = Double.longBitsToDouble(locala.NPN.grA());
           AppMethodBeat.o(55669);
           return 0;
         case 4: 
-          locala1.latitude = Double.longBitsToDouble(locala.LVo.gab());
+          locala1.latitude = Double.longBitsToDouble(locala.NPN.grA());
           AppMethodBeat.o(55669);
           return 0;
         case 5: 
-          locala1.tWE = locala.LVo.readString();
+          locala1.uZn = locala.NPN.readString();
           AppMethodBeat.o(55669);
           return 0;
         }
-        locala1.timestamp = locala.LVo.xG();
+        locala1.timestamp = locala.NPN.zd();
         AppMethodBeat.o(55669);
         return 0;
       }

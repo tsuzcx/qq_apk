@@ -13,22 +13,20 @@ public class PlayerLayer
   private PlayerLayerReadyListener readyListener;
   Surface surface;
   int surfaceHeight;
-  SurfaceTexture surfaceTexture;
   int surfaceWidth;
   private int videoGravity;
   private Rect videoRect;
   
   public PlayerLayer(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(198228);
+    AppMethodBeat.i(218626);
     this.needReleaseSurface = false;
     this.readyListener = null;
     this.surface = new Surface(paramSurfaceTexture);
     this.needReleaseSurface = true;
-    this.surfaceTexture = paramSurfaceTexture;
     this.surfaceWidth = paramInt1;
     this.surfaceHeight = paramInt2;
-    AppMethodBeat.o(198228);
+    AppMethodBeat.o(218626);
   }
   
   public PlayerLayer(Surface paramSurface, int paramInt1, int paramInt2)
@@ -77,21 +75,21 @@ public class PlayerLayer
   
   void release()
   {
-    AppMethodBeat.i(198230);
+    AppMethodBeat.i(218628);
     if (this.needReleaseSurface) {
       this.surface.release();
     }
-    AppMethodBeat.o(198230);
+    AppMethodBeat.o(218628);
   }
   
   public void setPlayer(Player paramPlayer)
   {
-    AppMethodBeat.i(198229);
+    AppMethodBeat.i(218627);
     this.player = paramPlayer;
     if (paramPlayer != null) {
       paramPlayer.bindLayer(this);
     }
-    AppMethodBeat.o(198229);
+    AppMethodBeat.o(218627);
   }
   
   public void setReadyForDisplay(PlayerLayerReadyListener paramPlayerLayerReadyListener)
@@ -111,7 +109,7 @@ public class PlayerLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tav.player.PlayerLayer
  * JD-Core Version:    0.7.0.1
  */

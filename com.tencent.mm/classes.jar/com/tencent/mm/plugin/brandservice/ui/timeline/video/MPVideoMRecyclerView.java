@@ -8,23 +8,23 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
-import d.g.b.k;
+import d.g.b.p;
 import d.l;
 import d.v;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoMRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/MRecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "animationContainerContainer", "Landroid/view/View;", "canScroll", "", "downY", "", "hasDown", "maxVideoHeight", "", "minVideoHeight", "moveY", "videoView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "videoViewContainer", "Landroid/widget/FrameLayout;", "deltaY", "inScrollRange", "curHeight", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setParam", "", "animationView", "maxHeight", "minHeight", "setVideoHeight", "videoHeight", "plugin-brandservice_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoMRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/MRecyclerView;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "animationContainerContainer", "Landroid/view/View;", "canScroll", "", "downY", "", "hasDown", "maxVideoHeight", "", "minVideoHeight", "moveY", "videoView", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "videoViewContainer", "Landroid/widget/FrameLayout;", "deltaY", "inScrollRange", "curHeight", "onTouchEvent", "event", "Landroid/view/MotionEvent;", "setParam", "", "animationView", "maxHeight", "minHeight", "setVideoHeight", "videoHeight", "plugin-brandservice_release"})
 public final class MPVideoMRecyclerView
   extends MRecyclerView
 {
   private final String TAG = "MicroMsg.MPVideoMRecyclerView";
-  private int btU;
-  private float cCi;
+  private int bEk;
+  private float cNh;
   private boolean canScroll = true;
-  private float jHs;
-  private boolean muJ;
-  private int nNm;
-  private FrameLayout nNn;
-  private View nNo;
+  private float kbE;
+  private boolean mVq;
+  private int opS;
+  private FrameLayout opT;
+  private View opU;
   
   public MPVideoMRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,9 +34,9 @@ public final class MPVideoMRecyclerView
   private final void setVideoHeight(int paramInt)
   {
     AppMethodBeat.i(7267);
-    Object localObject1 = this.nNn;
+    Object localObject1 = this.opT;
     if (localObject1 == null) {
-      k.aVY("videoViewContainer");
+      p.bcb("videoViewContainer");
     }
     localObject1 = ((FrameLayout)localObject1).getLayoutParams();
     if (localObject1 == null)
@@ -46,20 +46,20 @@ public final class MPVideoMRecyclerView
       throw ((Throwable)localObject1);
     }
     ((ViewGroup.LayoutParams)localObject1).height = paramInt;
-    Object localObject2 = this.nNn;
+    Object localObject2 = this.opT;
     if (localObject2 == null) {
-      k.aVY("videoViewContainer");
+      p.bcb("videoViewContainer");
     }
     ((FrameLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
-    localObject1 = this.nNo;
+    localObject1 = this.opU;
     if (localObject1 == null) {
-      k.aVY("animationContainerContainer");
+      p.bcb("animationContainerContainer");
     }
     if (((View)localObject1).getVisibility() == 0)
     {
-      localObject1 = this.nNo;
+      localObject1 = this.opU;
       if (localObject1 == null) {
-        k.aVY("animationContainerContainer");
+        p.bcb("animationContainerContainer");
       }
       localObject1 = ((View)localObject1).getLayoutParams();
       if (localObject1 == null)
@@ -69,9 +69,9 @@ public final class MPVideoMRecyclerView
         throw ((Throwable)localObject1);
       }
       ((ViewGroup.LayoutParams)localObject1).height = paramInt;
-      localObject2 = this.nNo;
+      localObject2 = this.opU;
       if (localObject2 == null) {
-        k.aVY("animationContainerContainer");
+        p.bcb("animationContainerContainer");
       }
       ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
@@ -82,9 +82,9 @@ public final class MPVideoMRecyclerView
   {
     int i = 1;
     AppMethodBeat.i(7266);
-    Object localObject = this.nNn;
+    Object localObject = this.opT;
     if (localObject == null) {
-      k.aVY("videoViewContainer");
+      p.bcb("videoViewContainer");
     }
     int j = ((FrameLayout)localObject).getHeight();
     if (paramMotionEvent != null)
@@ -113,20 +113,20 @@ public final class MPVideoMRecyclerView
       if (((Integer)localObject).intValue() != 0) {
         break label49;
       }
-      this.cCi = paramMotionEvent.getRawY();
-      this.muJ = true;
+      this.cNh = paramMotionEvent.getRawY();
+      this.mVq = true;
       continue;
       label105:
       if (((Integer)localObject).intValue() != 2) {
         break label54;
       }
-      if (!this.muJ)
+      if (!this.mVq)
       {
-        this.cCi = paramMotionEvent.getRawY();
-        this.muJ = true;
+        this.cNh = paramMotionEvent.getRawY();
+        this.mVq = true;
       }
-      this.jHs = paramMotionEvent.getRawY();
-      float f = (this.jHs - this.cCi) * 1.2F;
+      this.kbE = paramMotionEvent.getRawY();
+      float f = (this.kbE - this.cNh) * 1.2F;
       j = (int)(j + f);
       label172:
       int m;
@@ -136,8 +136,8 @@ public final class MPVideoMRecyclerView
         this.canScroll = bool;
         if (this.canScroll)
         {
-          int k = this.nNm;
-          m = this.btU;
+          int k = this.opS;
+          m = this.bEk;
           if (k <= j) {
             break label333;
           }
@@ -152,15 +152,15 @@ public final class MPVideoMRecyclerView
       }
       for (;;)
       {
-        this.cCi = this.jHs;
+        this.cNh = this.kbE;
         break;
         if (f > 0.0F)
         {
-          localObject = this.nNn;
+          localObject = this.opT;
           if (localObject == null) {
-            k.aVY("videoViewContainer");
+            p.bcb("videoViewContainer");
           }
-          if (((FrameLayout)localObject).getHeight() >= this.btU)
+          if (((FrameLayout)localObject).getHeight() >= this.bEk)
           {
             bool = false;
             break label172;
@@ -168,11 +168,11 @@ public final class MPVideoMRecyclerView
         }
         if (f < 0.0F)
         {
-          localObject = this.nNn;
+          localObject = this.opT;
           if (localObject == null) {
-            k.aVY("videoViewContainer");
+            p.bcb("videoViewContainer");
           }
-          if (((FrameLayout)localObject).getHeight() <= this.nNm)
+          if (((FrameLayout)localObject).getHeight() <= this.opS)
           {
             bool = false;
             break label172;
@@ -191,22 +191,22 @@ public final class MPVideoMRecyclerView
         }
         break label206;
         label343:
-        if (j <= this.nNm) {
-          setVideoHeight(this.nNm);
-        } else if (j >= this.btU) {
-          setVideoHeight(this.btU);
+        if (j <= this.opS) {
+          setVideoHeight(this.opS);
+        } else if (j >= this.bEk) {
+          setVideoHeight(this.bEk);
         }
       }
       label383:
       if (((Integer)localObject).intValue() == 1) {
-        this.muJ = false;
+        this.mVq = false;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.MPVideoMRecyclerView
  * JD-Core Version:    0.7.0.1
  */

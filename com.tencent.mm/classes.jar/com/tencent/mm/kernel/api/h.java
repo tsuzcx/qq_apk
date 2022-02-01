@@ -2,7 +2,7 @@ package com.tencent.mm.kernel.api;
 
 public abstract interface h
 {
-  public abstract void aha();
+  public abstract void ajL();
 }
 
 

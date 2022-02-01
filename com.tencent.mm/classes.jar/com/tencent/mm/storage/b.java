@@ -2,11 +2,11 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aex;
+import com.tencent.mm.protocal.protobuf.ahg;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +31,66 @@ public final class b
     this.db = parame;
   }
   
-  public final a aMC(String paramString)
+  public final void A(List<a> paramList, int paramInt)
+  {
+    AppMethodBeat.i(153151);
+    int i = 0;
+    long l = bt.aQJ();
+    this.db.delete("ABTestInfo", String.format(Locale.US, "%s<>0 and %s<%d", new Object[] { "endTime", "endTime", Long.valueOf(l) }), null);
+    a locala1;
+    if (1 == paramInt)
+    {
+      locala1 = new a();
+      locala1.field_prioritylevel = 1;
+      delete(locala1, false, new String[] { "prioritylevel" });
+    }
+    paramList = paramList.iterator();
+    paramInt = i;
+    boolean bool;
+    if (paramList.hasNext())
+    {
+      locala1 = (a)paramList.next();
+      if ((locala1 == null) || (bt.isNullOrNil(locala1.field_abtestkey)))
+      {
+        ad.e("MicroMsg.ABTestInfoStorage", "saveIfNecessary, Invalid item");
+        bool = false;
+        label147:
+        if (!bool) {
+          break label441;
+        }
+        paramInt = 1;
+      }
+    }
+    label441:
+    for (;;)
+    {
+      break;
+      a locala2 = new a();
+      locala2.field_abtestkey = locala1.field_abtestkey;
+      if (!super.get(locala2, new String[0]))
+      {
+        bool = super.insertNotify(locala1, false);
+        ad.i("MicroMsg.ABTestInfoStorage", "Inserted: %s, Result: %b", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool) });
+        break label147;
+      }
+      if (((locala1.field_sequence > locala2.field_sequence) && (locala1.field_prioritylevel == locala2.field_prioritylevel)) || (locala1.field_prioritylevel > locala2.field_prioritylevel))
+      {
+        bool = super.updateNotify(locala1, false, new String[0]);
+        ad.i("MicroMsg.ABTestInfoStorage", "Updated: %s, Result: %b, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool), Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
+        break label147;
+      }
+      ad.i("MicroMsg.ABTestInfoStorage", "Ignored: %s, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
+      bool = false;
+      break label147;
+      if (paramInt != 0) {
+        doNotify("event_updated");
+      }
+      AppMethodBeat.o(153151);
+      return;
+    }
+  }
+  
+  public final a aSj(String paramString)
   {
     AppMethodBeat.i(153153);
     a locala = new a();
@@ -40,12 +99,12 @@ public final class b
     if ((bool) && (locala.field_endTime == 0L)) {
       locala.field_endTime = 9223372036854775807L;
     }
-    ac.i("MicroMsg.ABTestInfoStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
+    ad.i("MicroMsg.ABTestInfoStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
     AppMethodBeat.o(153153);
     return locala;
   }
   
-  public final LinkedList<aex> eYT()
+  public final LinkedList<ahg> foD()
   {
     AppMethodBeat.i(153152);
     LinkedList localLinkedList = new LinkedList();
@@ -65,12 +124,12 @@ public final class b
     for (;;)
     {
       locala.convertFrom(localCursor);
-      aex localaex = new aex();
+      ahg localahg = new ahg();
       try
       {
-        localaex.EuO = bs.getInt(locala.field_expId, 0);
-        localaex.priority = locala.field_prioritylevel;
-        localLinkedList.add(localaex);
+        localahg.Gci = bt.getInt(locala.field_expId, 0);
+        localahg.priority = locala.field_prioritylevel;
+        localLinkedList.add(localahg);
         if (localCursor.moveToNext()) {
           continue;
         }
@@ -82,13 +141,13 @@ public final class b
       {
         for (;;)
         {
-          ac.e("MicroMsg.ABTestInfoStorage", "expId parse failed, %s", new Object[] { locala.field_expId });
+          ad.e("MicroMsg.ABTestInfoStorage", "expId parse failed, %s", new Object[] { locala.field_expId });
         }
       }
     }
   }
   
-  public final String eYU()
+  public final String foE()
   {
     AppMethodBeat.i(153156);
     Object localObject = getAll();
@@ -120,24 +179,10 @@ public final class b
     return localObject;
   }
   
-  public final int fP(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(153154);
-    paramString = aMC(paramString);
-    if (paramString.isValid())
-    {
-      paramInt = bs.getInt(paramString.field_value, paramInt);
-      AppMethodBeat.o(153154);
-      return paramInt;
-    }
-    AppMethodBeat.o(153154);
-    return paramInt;
-  }
-  
   public final String getExpIdByKey(String paramString)
   {
     AppMethodBeat.i(153155);
-    paramString = aMC(paramString);
+    paramString = aSj(paramString);
     if (paramString.isValid())
     {
       if (paramString.field_expId == null)
@@ -153,68 +198,23 @@ public final class b
     return "";
   }
   
-  public final void y(List<a> paramList, int paramInt)
+  public final int gm(String paramString, int paramInt)
   {
-    AppMethodBeat.i(153151);
-    int i = 0;
-    long l = bs.aNx();
-    this.db.delete("ABTestInfo", String.format(Locale.US, "%s<>0 and %s<%d", new Object[] { "endTime", "endTime", Long.valueOf(l) }), null);
-    a locala1;
-    if (1 == paramInt)
+    AppMethodBeat.i(153154);
+    paramString = aSj(paramString);
+    if (paramString.isValid())
     {
-      locala1 = new a();
-      locala1.field_prioritylevel = 1;
-      delete(locala1, false, new String[] { "prioritylevel" });
+      paramInt = bt.getInt(paramString.field_value, paramInt);
+      AppMethodBeat.o(153154);
+      return paramInt;
     }
-    paramList = paramList.iterator();
-    paramInt = i;
-    boolean bool;
-    if (paramList.hasNext())
-    {
-      locala1 = (a)paramList.next();
-      if ((locala1 == null) || (bs.isNullOrNil(locala1.field_abtestkey)))
-      {
-        ac.e("MicroMsg.ABTestInfoStorage", "saveIfNecessary, Invalid item");
-        bool = false;
-        label147:
-        if (!bool) {
-          break label445;
-        }
-        paramInt = 1;
-      }
-    }
-    label445:
-    for (;;)
-    {
-      break;
-      a locala2 = new a();
-      locala2.field_abtestkey = locala1.field_abtestkey;
-      if (!super.get(locala2, new String[0]))
-      {
-        bool = super.insertNotify(locala1, false);
-        ac.i("MicroMsg.ABTestInfoStorage", "Inserted: %s, Result: %b", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool) });
-        break label147;
-      }
-      if (((locala1.field_sequence > locala2.field_sequence) && (locala1.field_prioritylevel == locala2.field_prioritylevel)) || (locala1.field_prioritylevel > locala2.field_prioritylevel))
-      {
-        bool = super.updateNotify(locala1, false, new String[0]);
-        ac.i("MicroMsg.ABTestInfoStorage", "Updated: %s, Result: %b, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool), Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
-        break label147;
-      }
-      ac.i("MicroMsg.ABTestInfoStorage", "Ignored: %s, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
-      bool = false;
-      break label147;
-      if (paramInt != 0) {
-        doNotify("event_updated");
-      }
-      AppMethodBeat.o(153151);
-      return;
-    }
+    AppMethodBeat.o(153154);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.b
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iu
   extends b
 {
-  public a dkd;
+  public a dvt;
   
   public iu()
   {
@@ -15,22 +15,25 @@ public final class iu
   
   private iu(byte paramByte)
   {
-    AppMethodBeat.i(94811);
-    this.dkd = new a();
-    this.Gqe = false;
+    AppMethodBeat.i(19812);
+    this.dvt = new a();
+    this.IbR = false;
     this.callback = null;
-    AppMethodBeat.o(94811);
+    AppMethodBeat.o(19812);
   }
   
   public static final class a
   {
-    public String dke;
-    public int state;
+    public long dvu;
+    public long dvv;
+    public long dvw;
+    public long dvx;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.iu
  * JD-Core Version:    0.7.0.1
  */

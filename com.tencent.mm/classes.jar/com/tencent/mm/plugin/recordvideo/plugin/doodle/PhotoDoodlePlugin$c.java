@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.recordvideo.plugin.doodle;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$Companion;", "", "()V", "BRUSH", "", "COLOR_0", "COLOR_1", "COLOR_2", "COLOR_3", "COLOR_4", "COLOR_5", "COLOR_6", "MSC", "plugin-recordvideo_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$Companion;", "", "()V", "BRUSH", "", "COLOR_0", "COLOR_1", "COLOR_2", "COLOR_3", "COLOR_4", "COLOR_5", "COLOR_6", "MSC", "plugin-recordvideo_release"})
 public final class PhotoDoodlePlugin$c {}
 
 

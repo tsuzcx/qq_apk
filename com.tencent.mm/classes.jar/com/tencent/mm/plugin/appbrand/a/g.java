@@ -1,41 +1,26 @@
 package com.tencent.mm.plugin.appbrand.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ac;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.d.c;
 
-public final class g
-  implements d
+public abstract class g
+  extends c
 {
-  public float dmL;
-  public float doB;
-  public String gPy;
+  private final h jLL;
   
-  public final String aUZ()
+  public g(h paramh)
   {
-    AppMethodBeat.i(153193);
-    try
-    {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("latitude", this.dmL);
-      ((JSONObject)localObject).put("longitude", this.doB);
-      ((JSONObject)localObject).put("name", this.gPy);
-      localObject = new JSONObject().put("location", localObject).toString();
-      AppMethodBeat.o(153193);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      ac.printErrStackTrace("MicroMsg.WeAppOpenPoiNativeExtraData", localJSONException, "", new Object[0]);
-      AppMethodBeat.o(153193);
-    }
-    return "{}";
+    this.jLL = paramh;
+  }
+  
+  public void enter()
+  {
+    super.enter();
+    this.jLL.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.g
  * JD-Core Version:    0.7.0.1
  */

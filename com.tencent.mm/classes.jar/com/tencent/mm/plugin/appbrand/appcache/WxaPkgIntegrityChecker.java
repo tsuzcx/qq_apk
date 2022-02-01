@@ -6,9 +6,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.plugin.appbrand.appstorage.MD5JNI;
-import com.tencent.mm.plugin.expt.a.b.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bs;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.i;
 import com.tencent.mm.vfs.q;
 import java.io.IOException;
@@ -18,19 +18,19 @@ public enum WxaPkgIntegrityChecker
   static
   {
     AppMethodBeat.i(90638);
-    jon = new WxaPkgIntegrityChecker[0];
+    jIj = new WxaPkgIntegrityChecker[0];
     WxaPkgWrappingInfo.class.getClassLoader();
-    j.sC("appbrandcommon");
+    j.vr("appbrandcommon");
     AppMethodBeat.o(90638);
   }
   
-  public static Pair<a, WxaPkgWrappingInfo> B(final String paramString, int paramInt1, int paramInt2)
+  public static Pair<a, WxaPkgWrappingInfo> D(final String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(90633);
-    if ((!com.tencent.mm.kernel.g.agP().ggT) || (((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa() == null))
+    if ((!com.tencent.mm.kernel.g.ajA().gAD) || (((com.tencent.mm.plugin.appbrand.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu() == null))
     {
-      ac.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "get null storage, appId = %s, debugType = %d, version = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramString = Pair.create(a.jou, null);
+      ad.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "get null storage, appId = %s, debugType = %d, version = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      paramString = Pair.create(a.jIq, null);
       AppMethodBeat.o(90633);
       return paramString;
     }
@@ -42,82 +42,82 @@ public enum WxaPkgIntegrityChecker
     localObject[4] = "createTime";
     localObject[5] = "startTime";
     localObject[6] = "endTime";
-    if ((j.a.rq(paramInt1)) && (paramInt2 > 0)) {}
-    for (localObject = ((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa().a(paramString, paramInt2, paramInt1, (String[])localObject); localObject == null; localObject = ((com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class)).aVa().a(paramString, paramInt1, (String[])localObject))
+    if ((j.a.rQ(paramInt1)) && (paramInt2 > 0)) {}
+    for (localObject = ((com.tencent.mm.plugin.appbrand.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu().a(paramString, paramInt2, paramInt1, (String[])localObject); localObject == null; localObject = ((com.tencent.mm.plugin.appbrand.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYu().a(paramString, paramInt1, (String[])localObject))
     {
-      ac.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "get null record, appId = %s, debugType = %d, version = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      paramString = Pair.create(a.joq, null);
+      ad.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "get null record, appId = %s, debugType = %d, version = %d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      paramString = Pair.create(a.jIm, null);
       AppMethodBeat.o(90633);
       return paramString;
     }
     if (paramInt1 == 999)
     {
-      ac.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkPkg for dev_lib, time_scope[%d, %d]", new Object[] { Long.valueOf(((bb)localObject).field_startTime), Long.valueOf(((bb)localObject).field_endTime) });
-      if ((((bb)localObject).field_endTime > 0L) && (((bb)localObject).field_endTime <= bs.aNx()))
+      ad.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkPkg for dev_lib, time_scope[%d, %d]", new Object[] { Long.valueOf(((bc)localObject).field_startTime), Long.valueOf(((bc)localObject).field_endTime) });
+      if ((((bc)localObject).field_endTime > 0L) && (((bc)localObject).field_endTime <= bt.aQJ()))
       {
-        paramString = Pair.create(a.jor, null);
+        paramString = Pair.create(a.jIn, null);
         AppMethodBeat.o(90633);
         return paramString;
       }
     }
-    String str1 = ((bb)localObject).field_pkgPath;
+    String str1 = ((bc)localObject).field_pkgPath;
     if (paramInt2 < 0) {}
     long l;
-    for (int i = ((bb)localObject).field_version;; i = paramInt2)
+    for (int i = ((bc)localObject).field_version;; i = paramInt2)
     {
-      l = ((bb)localObject).field_createTime;
-      if ((!bs.isNullOrNil(str1)) && (i.eA(str1))) {
+      l = ((bc)localObject).field_createTime;
+      if ((!bt.isNullOrNil(str1)) && (i.fv(str1))) {
         break;
       }
-      ac.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "file not exists, pkgPath = %s, appId = %s, debugType = %d, version = %d", new Object[] { str1, paramString, Integer.valueOf(paramInt1), Integer.valueOf(i) });
-      paramString = Pair.create(a.jot, null);
+      ad.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "file not exists, pkgPath = %s, appId = %s, debugType = %d, version = %d", new Object[] { str1, paramString, Integer.valueOf(paramInt1), Integer.valueOf(i) });
+      paramString = Pair.create(a.jIp, null);
       AppMethodBeat.o(90633);
       return paramString;
     }
-    String str2 = Ij(str1);
+    String str2 = LB(str1);
     if (!new d.g.a.b()
     {
       public final Boolean l(String[] paramAnonymousArrayOfString)
       {
-        AppMethodBeat.i(206849);
+        AppMethodBeat.i(207433);
         int j = paramAnonymousArrayOfString.length;
         int i = 0;
         while (i < j)
         {
           String str = paramAnonymousArrayOfString[i];
-          if ((!TextUtils.isEmpty(str)) && (str.equals(this.joo)))
+          if ((!TextUtils.isEmpty(str)) && (str.equals(this.jIk)))
           {
             paramAnonymousArrayOfString = Boolean.TRUE;
-            AppMethodBeat.o(206849);
+            AppMethodBeat.o(207433);
             return paramAnonymousArrayOfString;
           }
           i += 1;
         }
-        ac.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkPkg, appId[%s] checksumMd5List[%s] != file.md5[%s]", new Object[] { paramString, org.apache.commons.b.g.a(paramAnonymousArrayOfString, ","), this.joo });
+        ad.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkPkg, appId[%s] checksumMd5List[%s] != file.md5[%s]", new Object[] { paramString, org.apache.commons.b.g.a(paramAnonymousArrayOfString, ","), this.jIk });
         paramAnonymousArrayOfString = Boolean.FALSE;
-        AppMethodBeat.o(206849);
+        AppMethodBeat.o(207433);
         return paramAnonymousArrayOfString;
       }
-    }.l(new String[] { ((bb)localObject).field_versionMd5, ((bb)localObject).field_NewMd5 }).booleanValue())
+    }.l(new String[] { ((bc)localObject).field_versionMd5, ((bc)localObject).field_NewMd5 }).booleanValue())
     {
-      paramString = Pair.create(a.jot, null);
+      paramString = Pair.create(a.jIp, null);
       AppMethodBeat.o(90633);
       return paramString;
     }
     localObject = new WxaPkgWrappingInfo();
     ((WxaPkgWrappingInfo)localObject).pkgVersion = i;
-    ((WxaPkgWrappingInfo)localObject).jpb = l;
+    ((WxaPkgWrappingInfo)localObject).jIV = l;
     ((WxaPkgWrappingInfo)localObject).pkgPath = str1;
-    ((WxaPkgWrappingInfo)localObject).jpc = false;
-    ((WxaPkgWrappingInfo)localObject).jpa = paramInt1;
+    ((WxaPkgWrappingInfo)localObject).jIW = false;
+    ((WxaPkgWrappingInfo)localObject).jIU = paramInt1;
     ((WxaPkgWrappingInfo)localObject).md5 = str2;
-    ac.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "check ok, params: appId = %s, debugType = %d, version = %d, pkgVersion = %d, return %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), localObject });
-    paramString = Pair.create(a.jop, localObject);
+    ad.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "check ok, params: appId = %s, debugType = %d, version = %d, pkgVersion = %d, return %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i), localObject });
+    paramString = Pair.create(a.jIl, localObject);
     AppMethodBeat.o(90633);
     return paramString;
   }
   
-  public static String Ij(String paramString)
+  public static String LB(String paramString)
   {
     AppMethodBeat.i(90635);
     if (TextUtils.isEmpty(paramString))
@@ -130,13 +130,13 @@ public enum WxaPkgIntegrityChecker
     return paramString;
   }
   
-  private static WxaPkgWrappingInfo aK(String paramString, int paramInt)
+  private static WxaPkgWrappingInfo aM(String paramString, int paramInt)
   {
     AppMethodBeat.i(90630);
-    if (("@LibraryAppId".equals(paramString)) && ((paramInt < 0) || (aw.VERSION >= paramInt)))
+    if (("@LibraryAppId".equals(paramString)) && ((paramInt < 0) || (ax.VERSION >= paramInt)))
     {
-      ac.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "use local library version = %d | query appId = %s, debugType = %d, pkgVersion = %d", new Object[] { Integer.valueOf(aw.VERSION), paramString, Integer.valueOf(0), Integer.valueOf(paramInt) });
-      paramString = aw.aWV();
+      ad.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "use local library version = %d | query appId = %s, debugType = %d, pkgVersion = %d", new Object[] { Integer.valueOf(ax.VERSION), paramString, Integer.valueOf(0), Integer.valueOf(paramInt) });
+      paramString = ax.bas();
       AppMethodBeat.o(90630);
       return paramString;
     }
@@ -148,7 +148,7 @@ public enum WxaPkgIntegrityChecker
   {
     AppMethodBeat.i(176910);
     String[] arrayOfString = new String[1];
-    int i = MD5JNI.getMD5String(i.k(q.B(parame.fxV()), false), arrayOfString);
+    int i = MD5JNI.getMD5String(i.k(q.B(parame.fOK()), false), arrayOfString);
     if (i == 0)
     {
       parame = arrayOfString[0];
@@ -160,7 +160,7 @@ public enum WxaPkgIntegrityChecker
     throw parame;
   }
   
-  public static Pair<a, WxaPkgWrappingInfo> fK(boolean paramBoolean)
+  public static Pair<a, WxaPkgWrappingInfo> fO(boolean paramBoolean)
   {
     AppMethodBeat.i(90631);
     Pair localPair = r(paramBoolean, false);
@@ -171,7 +171,7 @@ public enum WxaPkgIntegrityChecker
   private static String o(com.tencent.mm.vfs.e parame)
   {
     AppMethodBeat.i(176908);
-    long l = bs.Gn();
+    long l = bt.HI();
     boolean bool2 = openMD5JNICheck();
     boolean bool3 = bool2;
     try
@@ -184,7 +184,7 @@ public enum WxaPkgIntegrityChecker
       else
       {
         bool3 = bool2;
-        ac.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] fileName[%s] invalid", new Object[] { parame.getName() });
+        ad.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] fileName[%s] invalid", new Object[] { parame.getName() });
         return null;
       }
       boolean bool1 = bool2;
@@ -194,14 +194,14 @@ public enum WxaPkgIntegrityChecker
         try
         {
           String str1 = checkFileMD5JNI(parame);
-          ac.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] fileName[%s] length[%.2fKB] cost[%dms] openJNI[%b]", new Object[] { parame.getName(), Float.valueOf((float)parame.length() / 1024.0F), Long.valueOf(bs.Gn() - l), Boolean.valueOf(bool2) });
+          ad.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] fileName[%s] length[%.2fKB] cost[%dms] openJNI[%b]", new Object[] { parame.getName(), Float.valueOf((float)parame.length() / 1024.0F), Long.valueOf(bt.HI() - l), Boolean.valueOf(bool2) });
           AppMethodBeat.o(176908);
           return str1;
         }
         catch (IOException localIOException)
         {
           bool3 = bool2;
-          ac.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] JNI exception = %s", new Object[] { localIOException });
+          ad.e("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] JNI exception = %s", new Object[] { localIOException });
           bool1 = false;
         }
       }
@@ -211,7 +211,7 @@ public enum WxaPkgIntegrityChecker
     }
     finally
     {
-      ac.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] fileName[%s] length[%.2fKB] cost[%dms] openJNI[%b]", new Object[] { parame.getName(), Float.valueOf((float)parame.length() / 1024.0F), Long.valueOf(bs.Gn() - l), Boolean.valueOf(bool3) });
+      ad.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "[getFileMD5] fileName[%s] length[%.2fKB] cost[%dms] openJNI[%b]", new Object[] { parame.getName(), Float.valueOf((float)parame.length() / 1024.0F), Long.valueOf(bt.HI() - l), Boolean.valueOf(bool3) });
       AppMethodBeat.o(176908);
     }
   }
@@ -219,7 +219,7 @@ public enum WxaPkgIntegrityChecker
   private static boolean openMD5JNICheck()
   {
     AppMethodBeat.i(90634);
-    boolean bool = ((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pSO, true);
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxs, true);
     AppMethodBeat.o(90634);
     return bool;
   }
@@ -228,25 +228,25 @@ public enum WxaPkgIntegrityChecker
   private static String p(com.tencent.mm.vfs.e parame)
   {
     // Byte code:
-    //   0: ldc_w 362
+    //   0: ldc_w 363
     //   3: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokestatic 366	com/tencent/mm/vfs/i:ag	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   7: invokestatic 367	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
     //   10: astore_2
     //   11: aload_2
     //   12: sipush 16384
-    //   15: invokestatic 372	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
+    //   15: invokestatic 373	com/tencent/mm/b/g:b	(Ljava/io/InputStream;I)Ljava/lang/String;
     //   18: astore_0
     //   19: aload_2
     //   20: ifnull +7 -> 27
     //   23: aload_2
-    //   24: invokevirtual 377	java/io/InputStream:close	()V
-    //   27: ldc_w 362
+    //   24: invokevirtual 378	java/io/InputStream:close	()V
+    //   27: ldc_w 363
     //   30: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   33: aload_0
     //   34: areturn
     //   35: astore_1
-    //   36: ldc_w 362
+    //   36: ldc_w 363
     //   39: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: aload_1
     //   43: athrow
@@ -256,32 +256,32 @@ public enum WxaPkgIntegrityChecker
     //   49: aload_1
     //   50: ifnull +49 -> 99
     //   53: aload_2
-    //   54: invokevirtual 377	java/io/InputStream:close	()V
-    //   57: ldc_w 362
+    //   54: invokevirtual 378	java/io/InputStream:close	()V
+    //   57: ldc_w 363
     //   60: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: aload_0
     //   64: athrow
     //   65: astore_0
     //   66: ldc 70
-    //   68: ldc_w 379
+    //   68: ldc_w 380
     //   71: iconst_1
     //   72: anewarray 74	java/lang/Object
     //   75: dup
     //   76: iconst_0
     //   77: aload_0
     //   78: aastore
-    //   79: invokestatic 86	com/tencent/mm/sdk/platformtools/ac:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   82: ldc_w 362
+    //   79: invokestatic 86	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   82: ldc_w 363
     //   85: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   88: aconst_null
     //   89: areturn
     //   90: astore_2
     //   91: aload_1
     //   92: aload_2
-    //   93: invokevirtual 383	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   93: invokevirtual 384	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   96: goto -39 -> 57
     //   99: aload_2
-    //   100: invokevirtual 377	java/io/InputStream:close	()V
+    //   100: invokevirtual 378	java/io/InputStream:close	()V
     //   103: goto -46 -> 57
     //   106: astore_0
     //   107: aconst_null
@@ -312,26 +312,26 @@ public enum WxaPkgIntegrityChecker
   {
     AppMethodBeat.i(90632);
     Object localObject;
-    if ((paramBoolean1) && ((!paramBoolean2) || (aw.jnB != aw.a.jnF)))
+    if ((paramBoolean1) && ((!paramBoolean2) || (ax.jHy != ax.a.jHC)))
     {
-      localObject = (com.tencent.mm.plugin.appbrand.a.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.a.e.class);
+      localObject = (com.tencent.mm.plugin.appbrand.api.e)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.api.e.class);
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.plugin.appbrand.a.e)localObject).aVa();
+        localObject = ((com.tencent.mm.plugin.appbrand.api.e)localObject).aYu();
         if (localObject != null) {}
       }
       else
       {
-        localObject = Pair.create(a.jop, aw.aWV());
+        localObject = Pair.create(a.jIl, ax.bas());
         AppMethodBeat.o(90632);
         return localObject;
       }
-      i = ((bf)localObject).aO("@LibraryAppId", 0);
-      localObject = aK("@LibraryAppId", i);
+      i = ((bg)localObject).aQ("@LibraryAppId", 0);
+      localObject = aM("@LibraryAppId", i);
       if (localObject != null)
       {
-        ac.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkLibrary, dbMax %d, local %d, use local", new Object[] { Integer.valueOf(i), Integer.valueOf(aw.VERSION) });
-        localObject = Pair.create(a.jop, localObject);
+        ad.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkLibrary, dbMax %d, local %d, use local", new Object[] { Integer.valueOf(i), Integer.valueOf(ax.VERSION) });
+        localObject = Pair.create(a.jIl, localObject);
         AppMethodBeat.o(90632);
         return localObject;
       }
@@ -339,8 +339,8 @@ public enum WxaPkgIntegrityChecker
     if (paramBoolean1) {}
     for (int i = 0;; i = 999)
     {
-      localObject = B("@LibraryAppId", i, -1);
-      ac.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkLibrary, release %b, skipLocalDevPack %b, localPackMode %s, checkRecordResult %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), aw.jnB, ((Pair)localObject).first });
+      localObject = D("@LibraryAppId", i, -1);
+      ad.i("MicroMsg.AppBrandWxaPkgIntegrityChecker", "checkLibrary, release %b, skipLocalDevPack %b, localPackMode %s, checkRecordResult %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), ax.jHy, ((Pair)localObject).first });
       AppMethodBeat.o(90632);
       return localObject;
     }
@@ -351,19 +351,19 @@ public enum WxaPkgIntegrityChecker
     static
     {
       AppMethodBeat.i(90627);
-      jop = new a("APP_READY", 0);
-      joq = new a("APP_MANIFEST_NULL", 1);
-      jor = new a("PKG_EXPIRED", 2);
-      jos = new a("APP_NOT_INSTALLED", 3);
-      jot = new a("APP_BROKEN", 4);
-      jou = new a("ENV_ERR", 5);
-      jov = new a[] { jop, joq, jor, jos, jot, jou };
+      jIl = new a("APP_READY", 0);
+      jIm = new a("APP_MANIFEST_NULL", 1);
+      jIn = new a("PKG_EXPIRED", 2);
+      jIo = new a("APP_NOT_INSTALLED", 3);
+      jIp = new a("APP_BROKEN", 4);
+      jIq = new a("ENV_ERR", 5);
+      jIr = new a[] { jIl, jIm, jIn, jIo, jIp, jIq };
       AppMethodBeat.o(90627);
     }
     
     private a() {}
     
-    public final int aXk()
+    public final int baI()
     {
       AppMethodBeat.i(90626);
       int i = super.ordinal();

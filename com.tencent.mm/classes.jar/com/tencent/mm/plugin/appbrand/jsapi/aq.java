@@ -1,22 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.luggage.h.e.a;
+import com.tencent.luggage.h.e.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class aq
-  extends a<c>
+  extends a<q>
 {
-  public static final int CTRL_INDEX = 627;
-  public static final String NAME = "chooseShareGroup";
+  public static final int CTRL_INDEX = 501;
+  public static final String NAME = "chooseInvoice";
+  final int krZ;
+  
+  public aq()
+  {
+    AppMethodBeat.i(174751);
+    this.krZ = com.tencent.luggage.sdk.g.a.aC(this);
+    AppMethodBeat.o(174751);
+  }
 }
 
 

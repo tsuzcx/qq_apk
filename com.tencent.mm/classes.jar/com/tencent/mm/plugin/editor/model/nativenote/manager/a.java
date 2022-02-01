@@ -10,9 +10,9 @@ import java.lang.reflect.Array;
 public final class a
   extends SpannableString
 {
-  private int anI;
-  private Object[] oQG;
-  private int[] oQH;
+  private int apA;
+  private Object[] puq;
+  private int[] pur;
   
   public a(CharSequence paramCharSequence)
   {
@@ -25,8 +25,8 @@ public final class a
   private void h(CharSequence paramCharSequence, int paramInt)
   {
     AppMethodBeat.i(181714);
-    this.oQG = new Object[20];
-    this.oQH = new int[60];
+    this.puq = new Object[20];
+    this.pur = new int[60];
     if ((paramCharSequence instanceof Spanned))
     {
       paramCharSequence = (Spanned)paramCharSequence;
@@ -59,9 +59,9 @@ public final class a
   
   public final int getSpanEnd(Object paramObject)
   {
-    int i = this.anI;
-    Object[] arrayOfObject = this.oQG;
-    int[] arrayOfInt = this.oQH;
+    int i = this.apA;
+    Object[] arrayOfObject = this.puq;
+    int[] arrayOfInt = this.pur;
     i -= 1;
     while (i >= 0)
     {
@@ -75,9 +75,9 @@ public final class a
   
   public final int getSpanFlags(Object paramObject)
   {
-    int i = this.anI;
-    Object[] arrayOfObject = this.oQG;
-    int[] arrayOfInt = this.oQH;
+    int i = this.apA;
+    Object[] arrayOfObject = this.puq;
+    int[] arrayOfInt = this.pur;
     i -= 1;
     while (i >= 0)
     {
@@ -91,9 +91,9 @@ public final class a
   
   public final int getSpanStart(Object paramObject)
   {
-    int i = this.anI;
-    Object[] arrayOfObject = this.oQG;
-    int[] arrayOfInt = this.oQH;
+    int i = this.apA;
+    Object[] arrayOfObject = this.puq;
+    int[] arrayOfInt = this.pur;
     i -= 1;
     while (i >= 0)
     {
@@ -109,9 +109,9 @@ public final class a
   {
     AppMethodBeat.i(181717);
     int k = 0;
-    int m = this.anI;
-    Object[] arrayOfObject = this.oQG;
-    int[] arrayOfInt = this.oQH;
+    int m = this.apA;
+    Object[] arrayOfObject = this.puq;
+    int[] arrayOfInt = this.pur;
     Object localObject1 = null;
     Object localObject2 = null;
     int j = 0;
@@ -231,9 +231,9 @@ public final class a
   public final int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
   {
     AppMethodBeat.i(181718);
-    int m = this.anI;
-    Object[] arrayOfObject = this.oQG;
-    int[] arrayOfInt = this.oQH;
+    int m = this.apA;
+    Object[] arrayOfObject = this.puq;
+    int[] arrayOfInt = this.pur;
     Object localObject = paramClass;
     if (paramClass == null) {
       localObject = Object.class;
@@ -268,9 +268,9 @@ public final class a
   public final void removeSpan(Object paramObject)
   {
     AppMethodBeat.i(181716);
-    int j = this.anI;
-    Object[] arrayOfObject = this.oQG;
-    int[] arrayOfInt = this.oQH;
+    int j = this.apA;
+    Object[] arrayOfObject = this.puq;
+    int[] arrayOfInt = this.pur;
     int i = j - 1;
     while (i >= 0)
     {
@@ -279,7 +279,7 @@ public final class a
         j -= i + 1;
         System.arraycopy(arrayOfObject, i + 1, arrayOfObject, i, j);
         System.arraycopy(arrayOfInt, (i + 1) * 3, arrayOfInt, i * 3, j * 3);
-        this.anI -= 1;
+        this.apA -= 1;
         AppMethodBeat.o(181716);
         return;
       }
@@ -291,27 +291,27 @@ public final class a
   public final void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(181715);
-    if (this.anI + 1 >= this.oQG.length)
+    if (this.apA + 1 >= this.puq.length)
     {
-      int i = this.anI + 10;
+      int i = this.apA + 10;
       Object[] arrayOfObject = new Object[i];
       int[] arrayOfInt = new int[i * 3];
-      System.arraycopy(this.oQG, 0, arrayOfObject, 0, this.anI);
-      System.arraycopy(this.oQH, 0, arrayOfInt, 0, this.anI * 3);
-      this.oQG = arrayOfObject;
-      this.oQH = arrayOfInt;
+      System.arraycopy(this.puq, 0, arrayOfObject, 0, this.apA);
+      System.arraycopy(this.pur, 0, arrayOfInt, 0, this.apA * 3);
+      this.puq = arrayOfObject;
+      this.pur = arrayOfInt;
     }
-    this.oQG[this.anI] = paramObject;
-    this.oQH[(this.anI * 3 + 0)] = paramInt1;
-    this.oQH[(this.anI * 3 + 1)] = paramInt2;
-    this.oQH[(this.anI * 3 + 2)] = paramInt3;
-    this.anI += 1;
+    this.puq[this.apA] = paramObject;
+    this.pur[(this.apA * 3 + 0)] = paramInt1;
+    this.pur[(this.apA * 3 + 1)] = paramInt2;
+    this.pur[(this.apA * 3 + 2)] = paramInt3;
+    this.apA += 1;
     AppMethodBeat.o(181715);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.a
  * JD-Core Version:    0.7.0.1
  */

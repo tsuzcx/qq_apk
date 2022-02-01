@@ -141,7 +141,7 @@ public class FileProvider
       {
         Object localObject2 = paramString.getCanonicalFile();
         Object localObject1;
-        localb.GW.put(localObject1, localObject2);
+        localb.IQ.put(localObject1, localObject2);
         int i = localXmlResourceParser.next();
         if (i != 1)
         {
@@ -333,12 +333,12 @@ public class FileProvider
   static final class b
     implements FileProvider.a
   {
-    private final String GV;
-    final HashMap<String, File> GW = new HashMap();
+    private final String IP;
+    final HashMap<String, File> IQ = new HashMap();
     
     b(String paramString)
     {
-      this.GV = paramString;
+      this.IP = paramString;
     }
     
     public final File c(Uri paramUri)
@@ -347,7 +347,7 @@ public class FileProvider
       int i = ((String)localObject2).indexOf('/', 1);
       Object localObject1 = Uri.decode(((String)localObject2).substring(1, i));
       localObject2 = Uri.decode(((String)localObject2).substring(i + 1));
-      localObject1 = (File)this.GW.get(localObject1);
+      localObject1 = (File)this.IQ.get(localObject1);
       if (localObject1 == null) {
         throw new IllegalArgumentException("Unable to find configured root for ".concat(String.valueOf(paramUri)));
       }
@@ -375,7 +375,7 @@ public class FileProvider
         {
           str1 = paramFile.getCanonicalPath();
           paramFile = null;
-          Iterator localIterator = this.GW.entrySet().iterator();
+          Iterator localIterator = this.IQ.entrySet().iterator();
           if (localIterator.hasNext())
           {
             Map.Entry localEntry2 = (Map.Entry)localIterator.next();
@@ -409,7 +409,7 @@ public class FileProvider
         for (localObject = str1.substring(((String)localObject).length());; localObject = str1.substring(((String)localObject).length() + 1))
         {
           paramFile = Uri.encode((String)paramFile.getKey()) + '/' + Uri.encode((String)localObject, "/");
-          return new Uri.Builder().scheme("content").authority(this.GV).encodedPath(paramFile).build();
+          return new Uri.Builder().scheme("content").authority(this.IP).encodedPath(paramFile).build();
         }
         label257:
         localObject = paramFile;

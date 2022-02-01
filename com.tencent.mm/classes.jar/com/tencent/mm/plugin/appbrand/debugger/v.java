@@ -1,351 +1,283 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Debug;
+import android.util.Base64;
+import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dth;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bs;
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
-import java.util.LinkedList;
+import com.tencent.mm.ac.h;
+import com.tencent.mm.b.s;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.protocal.protobuf.dzb;
+import com.tencent.mm.protocal.protobuf.dzh;
+import com.tencent.mm.protocal.protobuf.dzi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
-@SuppressLint({"ViewConstructor"})
 public final class v
-  extends FrameLayout
 {
-  private l ceH;
-  ViewGroup jHO;
-  RemoteDebugMoveView jHP;
-  private LinkedList<String> jHQ;
-  private TextView jHR;
-  private TextView jHS;
-  private TextView jHT;
-  private TextView jHU;
-  private TextView jHV;
-  private TextView jHW;
-  private TextView jHX;
-  private ImageView jHY;
-  private ImageView jHZ;
-  private View jIa;
-  boolean jIb;
-  private a jIc;
-  private d jId;
-  private View.OnClickListener mOnClickListener;
+  private static String deviceID = null;
+  public static m kbX = null;
+  private static int kbY = 0;
+  private static Boolean kbZ = null;
   
-  public v(Context paramContext, l paraml, a parama)
+  public static n Oh(String paramString)
   {
-    super(paramContext);
-    AppMethodBeat.i(147113);
-    this.jHQ = new LinkedList();
-    this.jIb = false;
-    this.mOnClickListener = new View.OnClickListener()
+    AppMethodBeat.i(147095);
+    ad.i("MicroMsg.RemoteDebugUtil", "parseRemoteDebugInfo extInfo=%s", new Object[] { paramString });
+    n localn = new n();
+    if (!bt.isNullOrNil(paramString)) {}
+    try
     {
-      public final void onClick(View paramAnonymousView)
+      paramString = h.wJ(paramString);
+      localn.kbm = paramString.optBoolean("open_remote", false);
+      localn.roomId = paramString.optString("room_id");
+      localn.kbn = paramString.optString("wxpkg_info");
+      localn.kbo = paramString.optString("qrcode_id");
+      localn.kbp = paramString.optInt("remote_network_type", 1);
+      localn.cmH = paramString.optBoolean("disable_url_check", true);
+      localn.kbq = paramString.optInt("remote_proxy_port", 9976);
+      localn.kbr = paramString.optInt("remote_support_compress_algo");
+      AppMethodBeat.o(147095);
+      return localn;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        AppMethodBeat.i(147106);
-        v localv = v.this;
-        if (paramAnonymousView.getId() == 2131296825)
-        {
-          localv.jIb = true;
-          localv.show();
-          paramAnonymousView = localv.jHP;
-          paramAnonymousView.postDelayed(new RemoteDebugMoveView.3(paramAnonymousView), 50L);
-          AppMethodBeat.o(147106);
-          return;
-        }
-        if (paramAnonymousView.getId() == 2131296820)
-        {
-          localv.jIb = false;
-          localv.show();
-          AppMethodBeat.o(147106);
-          return;
-        }
-        if (paramAnonymousView.getId() == 2131296828) {
-          localv.bby();
-        }
-        AppMethodBeat.o(147106);
+        ad.e("MicroMsg.RemoteDebugUtil", "parseRemoteDebugInfo %s", new Object[] { paramString });
       }
-    };
-    this.ceH = paraml;
-    this.jIc = parama;
-    setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    setBackgroundColor(getContext().getResources().getColor(2131101053));
-    setId(2131296693);
-    AppMethodBeat.o(147113);
+    }
   }
   
-  private boolean bbv()
+  public static p a(a parama, m paramm, String paramString)
   {
-    AppMethodBeat.i(147118);
-    if ((this.ceH.bbd()) || (this.ceH.isQuit()) || (this.ceH.bbe()))
+    AppMethodBeat.i(147098);
+    localdzi = new dzi();
+    for (;;)
     {
-      AppMethodBeat.o(147118);
-      return true;
+      try
+      {
+        parama = parama.toByteArray();
+        if ((parama.length <= 256) || (paramm == null) || (!sm(paramm.kaU.kbr))) {
+          continue;
+        }
+        byte[] arrayOfByte = s.compress(parama);
+        localdzi.Gdx = b.cj(arrayOfByte);
+        localdzi.HpZ = 1;
+        ad.v("MicroMsg.RemoteDebugUtil", "use zlib %d/%d", new Object[] { Integer.valueOf(parama.length), Integer.valueOf(arrayOfByte.length) });
+      }
+      catch (IOException parama)
+      {
+        ad.e("MicroMsg.RemoteDebugUtil", "parseDebugMessageToSend %s", new Object[] { parama });
+        continue;
+        localdzi.ape = ((int)(System.currentTimeMillis() - paramm.kaX));
+        continue;
+      }
+      if (paramm == null)
+      {
+        Debug.waitForDebugger();
+        ad.e("MicroMsg.RemoteDebugUtil", "env = null ");
+      }
+      localdzi.inh = paramm.kaV.incrementAndGet();
+      if (paramm.kaX != 0L) {
+        continue;
+      }
+      localdzi.ape = 0;
+      paramm.kaX = System.currentTimeMillis();
+      localdzi.category = paramString;
+      ad.d("MicroMsg.RemoteDebugUtil", "parseDebugMessageToSend seq %d", new Object[] { Integer.valueOf(localdzi.inh) });
+      parama = new p();
+      parama.kaJ = System.currentTimeMillis();
+      parama.kbC = localdzi.Gdx.zr.length;
+      parama.kbB = localdzi;
+      AppMethodBeat.o(147098);
+      return parama;
+      localdzi.Gdx = b.cj(parama);
     }
-    AppMethodBeat.o(147118);
+  }
+  
+  public static dzh a(int paramInt, a parama)
+  {
+    AppMethodBeat.i(147099);
+    dzh localdzh = new dzh();
+    localdzh.EN = paramInt;
+    if (bt.isNullOrNil(deviceID))
+    {
+      Random localRandom = new Random(System.currentTimeMillis());
+      deviceID = localRandom.nextInt() + "-" + kbY;
+    }
+    localdzh.uuid = (deviceID + "-" + System.currentTimeMillis());
+    localdzh.Gdx = h(parama);
+    AppMethodBeat.o(147099);
+    return localdzh;
+  }
+  
+  public static String a(String paramString, c paramc)
+  {
+    AppMethodBeat.i(147101);
+    if (!paramc.Fe())
+    {
+      AppMethodBeat.o(147101);
+      return "";
+    }
+    paramString = bf.d(paramc, paramString + ".map");
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(147101);
+      return "";
+    }
+    try
+    {
+      paramString = String.format("\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,%s", new Object[] { new String(Base64.encode(paramString.getBytes(), 2), "utf-8") });
+      AppMethodBeat.o(147101);
+      return paramString;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
+      ad.e("MicroMsg.RemoteDebugUtil", "execGameExternalScript Base64.encode %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(147101);
+    }
+    return "";
+  }
+  
+  public static boolean a(m paramm, dzh paramdzh, dzb paramdzb, w paramw, q paramq)
+  {
+    AppMethodBeat.i(147100);
+    if (paramdzh == null)
+    {
+      ad.w("MicroMsg.RemoteDebugUtil", "handleError dataFormat is null");
+      AppMethodBeat.o(147100);
+      return false;
+    }
+    int i = paramdzh.EN;
+    if (paramdzb == null)
+    {
+      ad.w("MicroMsg.RemoteDebugUtil", "handleError cmd id: %d resp is null", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(147100);
+      return false;
+    }
+    if (i == 1006)
+    {
+      if (-50011 != paramdzb.dqI) {
+        break label102;
+      }
+      paramm.ga(true);
+    }
+    while (paramdzb.dqI == 0)
+    {
+      AppMethodBeat.o(147100);
+      return true;
+      label102:
+      boolean bool = paramm.isBusy();
+      paramm.ga(false);
+      if (bool) {
+        paramq.beQ();
+      }
+    }
+    ad.i("MicroMsg.RemoteDebugUtil", "handleError cmd id: %d, uuid: %s, errorCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), paramdzh.uuid, Integer.valueOf(paramdzb.dqI), paramdzb.dqJ });
+    aq.f(new w.8(paramw, i, paramdzb));
+    AppMethodBeat.o(147100);
     return false;
   }
   
-  private void bbw()
+  public static boolean beX()
   {
-    AppMethodBeat.i(147119);
-    this.jHP = ((RemoteDebugMoveView)LayoutInflater.from(getContext()).inflate(2131493050, null));
-    this.jHS = ((TextView)this.jHP.findViewById(2131296822));
-    this.jHR = ((TextView)this.jHP.findViewById(2131296831));
-    this.jHT = ((TextView)this.jHP.findViewById(2131296826));
-    this.jHU = ((TextView)this.jHP.findViewById(2131296828));
-    this.jHV = ((TextView)this.jHP.findViewById(2131296825));
-    this.jHW = ((TextView)this.jHP.findViewById(2131296820));
-    this.jHX = ((TextView)this.jHP.findViewById(2131296824));
-    this.jHZ = ((ImageView)this.jHP.findViewById(2131296821));
-    this.jHY = ((ImageView)this.jHP.findViewById(2131296829));
-    this.jIa = this.jHP.findViewById(2131296823);
-    show();
-    bbx();
-    AppMethodBeat.o(147119);
-  }
-  
-  private void bbx()
-  {
-    AppMethodBeat.i(147120);
-    this.jHV.setOnClickListener(this.mOnClickListener);
-    this.jHW.setOnClickListener(this.mOnClickListener);
-    this.jHU.setOnClickListener(this.mOnClickListener);
-    AppMethodBeat.o(147120);
-  }
-  
-  public final void KO(final String paramString)
-  {
-    AppMethodBeat.i(147125);
-    if (bs.isNullOrNil(paramString))
+    AppMethodBeat.i(147102);
+    if (kbZ != null)
     {
-      AppMethodBeat.o(147125);
-      return;
+      bool = kbZ.booleanValue();
+      AppMethodBeat.o(147102);
+      return bool;
     }
-    ap.f(new Runnable()
+    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("app_brand_global_sp", 0);
+    if (localSharedPreferences == null)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(147112);
-        v.a(v.this, paramString);
-        AppMethodBeat.o(147112);
-      }
-    });
-    AppMethodBeat.o(147125);
-  }
-  
-  public final void bbA()
-  {
-    AppMethodBeat.i(147124);
-    bbu();
-    bbz();
-    AppMethodBeat.o(147124);
-  }
-  
-  public final void bbu()
-  {
-    AppMethodBeat.i(147117);
-    ap.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(147105);
-        if (v.b(v.this) == null)
-        {
-          ac.w("MicroMsg.RemoteDebugView", "showDebugView mContentView is null");
-          AppMethodBeat.o(147105);
-          return;
-        }
-        if (v.c(v.this))
-        {
-          v.this.setVisibility(0);
-          if (v.b(v.this).indexOfChild(v.this) == -1) {
-            v.b(v.this).addView(v.this);
-          }
-          v.b(v.this).bringChildToFront(v.this);
-          v.this.setBackgroundColor(v.this.getContext().getResources().getColor(2131100482));
-          AppMethodBeat.o(147105);
-          return;
-        }
-        v.this.setBackgroundColor(v.this.getContext().getResources().getColor(2131101053));
-        AppMethodBeat.o(147105);
-      }
-    });
-    AppMethodBeat.o(147117);
-  }
-  
-  final void bby()
-  {
-    AppMethodBeat.i(147121);
-    if ((this.jId != null) && (this.jId.isShowing()))
-    {
-      AppMethodBeat.o(147121);
-      return;
-    }
-    Context localContext = getContext();
-    if (((localContext instanceof Activity)) && (((Activity)localContext).isFinishing()))
-    {
-      AppMethodBeat.o(147121);
-      return;
-    }
-    this.jId = new d.a(localContext).aRH(localContext.getString(2131755632)).aRI("").acM(2131756757).b(new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(147107);
-        if (v.d(v.this) != null) {
-          v.d(v.this).bbh();
-        }
-        AppMethodBeat.o(147107);
-      }
-    }).acN(2131756755).fvp();
-    this.jId.show();
-    AppMethodBeat.o(147121);
-  }
-  
-  public final void bbz()
-  {
-    AppMethodBeat.i(147122);
-    ap.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(147108);
-        if (v.e(v.this).bbd())
-        {
-          v.f(v.this).setImageResource(2131231017);
-          v.g(v.this).setText(v.this.getContext().getString(2131755627));
-        }
-        for (;;)
-        {
-          v.h(v.this);
-          AppMethodBeat.o(147108);
-          return;
-          if (v.e(v.this).isReady())
-          {
-            v.f(v.this).setImageResource(2131231017);
-            v.g(v.this).setText(v.this.getContext().getString(2131755628));
-          }
-          else
-          {
-            v.f(v.this).setImageResource(2131231016);
-            v.g(v.this).setText(v.this.getContext().getString(2131755626));
-          }
-        }
-      }
-    });
-    AppMethodBeat.o(147122);
-  }
-  
-  public final void bringToFront()
-  {
-    AppMethodBeat.i(147116);
-    if (this.jHO == null)
-    {
-      ac.w("MicroMsg.RemoteDebugView", "bringToFront mContentView is null");
-      AppMethodBeat.o(147116);
-      return;
-    }
-    this.jHO.bringChildToFront(this);
-    AppMethodBeat.o(147116);
-  }
-  
-  public final void h(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(147115);
-    this.jHO = ((ViewGroup)paramViewGroup.getParent());
-    int i = 0;
-    while (i < this.jHO.getChildCount())
-    {
-      paramViewGroup = this.jHO.getChildAt(i);
-      if ((paramViewGroup instanceof v)) {
-        this.jHO.removeView(paramViewGroup);
-      }
-      i += 1;
-    }
-    this.jHO.addView(this);
-    this.jHO.bringChildToFront(this);
-    bbw();
-    postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(147104);
-        RemoteDebugMoveView localRemoteDebugMoveView = v.a(v.this);
-        int i = v.this.getWidth();
-        int j = v.this.getHeight();
-        localRemoteDebugMoveView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-        localRemoteDebugMoveView.fUl = i;
-        localRemoteDebugMoveView.mm = j;
-        localRemoteDebugMoveView.post(new RemoteDebugMoveView.1(localRemoteDebugMoveView));
-        v.this.addView(v.a(v.this));
-        AppMethodBeat.o(147104);
-      }
-    }, 100L);
-    AppMethodBeat.o(147115);
-  }
-  
-  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(147114);
-    if (bbv())
-    {
-      AppMethodBeat.o(147114);
+      ad.w("MicroMsg.RemoteDebugUtil", "isHardCodeOpenGamePreload, sp is null.");
+      AppMethodBeat.o(147102);
       return true;
     }
-    boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(147114);
+    boolean bool = localSharedPreferences.getBoolean("hard_code_open_game_preload", true);
+    kbZ = Boolean.valueOf(bool);
+    AppMethodBeat.o(147102);
     return bool;
   }
   
-  public final void show()
+  public static ByteBuffer g(a parama)
   {
-    AppMethodBeat.i(147123);
-    if (this.jIb)
+    AppMethodBeat.i(147096);
+    try
     {
-      this.jIa.setVisibility(0);
-      if (this.jHQ.size() > 0)
-      {
-        this.jHX.setVisibility(0);
-        this.jHV.setVisibility(8);
-      }
+      parama = ByteBuffer.wrap(parama.toByteArray());
+      AppMethodBeat.o(147096);
+      return parama;
     }
-    for (;;)
+    catch (IOException parama)
     {
-      invalidate();
-      AppMethodBeat.o(147123);
-      return;
-      this.jHX.setVisibility(8);
-      break;
-      this.jIa.setVisibility(8);
-      this.jHX.setVisibility(8);
-      this.jHV.setVisibility(0);
+      ad.w("MicroMsg.RemoteDebugUtil", parama.getMessage());
+      parama = ByteBuffer.allocate(0);
+      AppMethodBeat.o(147096);
     }
+    return parama;
   }
   
-  public static abstract interface a
+  public static void gc(boolean paramBoolean)
   {
-    public abstract void bbh();
+    AppMethodBeat.i(147103);
+    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("app_brand_global_sp", 0);
+    if (localSharedPreferences == null)
+    {
+      ad.w("MicroMsg.RemoteDebugUtil", "setHardCodeOpenGamePreload, sp is null.");
+      AppMethodBeat.o(147103);
+      return;
+    }
+    localSharedPreferences.edit().putBoolean("hard_code_open_game_preload", paramBoolean).commit();
+    AppMethodBeat.o(147103);
+  }
+  
+  private static b h(a parama)
+  {
+    AppMethodBeat.i(147097);
+    try
+    {
+      parama = b.cj(parama.toByteArray());
+      AppMethodBeat.o(147097);
+      return parama;
+    }
+    catch (IOException parama)
+    {
+      ad.w("MicroMsg.RemoteDebugUtil", parama.getMessage());
+      parama = b.cj(new byte[0]);
+      AppMethodBeat.o(147097);
+    }
+    return parama;
+  }
+  
+  public static void setUin(int paramInt)
+  {
+    kbY = paramInt;
+  }
+  
+  public static boolean sm(int paramInt)
+  {
+    return (paramInt & 0x1) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.v
  * JD-Core Version:    0.7.0.1
  */

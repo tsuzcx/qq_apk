@@ -13,11 +13,11 @@ public abstract interface b
 {
   public abstract void a(Intent paramIntent, a parama);
   
-  public abstract void aZ(Intent paramIntent);
+  public abstract void be(Intent paramIntent);
   
-  public abstract void ba(Intent paramIntent);
+  public abstract void bf(Intent paramIntent);
   
-  public abstract void bg(Intent paramIntent);
+  public abstract void bl(Intent paramIntent);
   
   public static abstract class a
     extends Binder
@@ -86,7 +86,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {}
         for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          bg(paramParcel1);
+          bl(paramParcel1);
           paramParcel2.writeNoException();
           return true;
         }
@@ -96,7 +96,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {}
         for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          aZ(paramParcel1);
+          be(paramParcel1);
           paramParcel2.writeNoException();
           return true;
         }
@@ -105,7 +105,7 @@ public abstract interface b
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        ba(paramParcel1);
+        bf(paramParcel1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -159,8 +159,13 @@ public abstract interface b
         }
       }
       
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
       /* Error */
-      public final void aZ(Intent paramIntent)
+      public final void be(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 75
@@ -225,13 +230,8 @@ public abstract interface b
         //   66	71	74	finally
       }
       
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
       /* Error */
-      public final void ba(Intent paramIntent)
+      public final void bf(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 77
@@ -297,7 +297,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final void bg(Intent paramIntent)
+      public final void bl(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 79
@@ -366,7 +366,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.service.b
  * JD-Core Version:    0.7.0.1
  */

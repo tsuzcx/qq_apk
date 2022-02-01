@@ -42,35 +42,28 @@ public final class kr
       ((Paint)localObject).setStrokeJoin(Paint.Join.MITER);
       ((Paint)localObject).setStrokeMiter(4.0F);
       ((Paint)localObject).setPathEffect(null);
-      c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
-      localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
+      localObject = c.a((Paint)localObject, paramVarArgs);
+      ((Paint)localObject).setStrokeWidth(1.0F);
       localCanvas.save();
-      localObject = c.a(localPaint, paramVarArgs);
+      localObject = c.a((Paint)localObject, paramVarArgs);
+      ((Paint)localObject).setColor(-2631721);
+      ((Paint)localObject).setStrokeWidth(0.5F);
       Path localPath = c.n(paramVarArgs);
-      localPath.moveTo(13.0F, 0.0F);
-      localPath.cubicTo(16.865993F, 0.0F, 20.0F, 3.134007F, 20.0F, 7.0F);
-      localPath.cubicTo(20.0F, 10.865993F, 16.865993F, 14.0F, 13.0F, 14.0F);
-      localPath.lineTo(7.0F, 14.0F);
-      localPath.cubicTo(3.134007F, 14.0F, 0.0F, 10.865993F, 0.0F, 7.0F);
-      localPath.cubicTo(0.0F, 3.134007F, 3.134007F, 0.0F, 7.0F, 0.0F);
-      localPath.lineTo(13.0F, 0.0F);
+      localPath.moveTo(0.25F, 7.0F);
+      localPath.cubicTo(0.25F, 3.272078F, 3.272078F, 0.25F, 7.0F, 0.25F);
+      localPath.lineTo(13.0F, 0.25F);
+      localPath.cubicTo(16.727922F, 0.25F, 19.75F, 3.272078F, 19.75F, 7.0F);
+      localPath.lineTo(19.75F, 7.0F);
+      localPath.cubicTo(19.75F, 10.727922F, 16.727922F, 13.75F, 13.0F, 13.75F);
+      localPath.lineTo(7.0F, 13.75F);
+      localPath.cubicTo(3.272078F, 13.75F, 0.25F, 10.727922F, 0.25F, 7.0F);
+      localPath.lineTo(0.25F, 7.0F);
       localPath.close();
-      localPath.moveTo(13.0F, 0.5F);
-      localPath.lineTo(7.0F, 0.5F);
-      localPath.cubicTo(3.410149F, 0.5F, 0.5F, 3.410149F, 0.5F, 7.0F);
-      localPath.cubicTo(0.5F, 10.51181F, 3.284996F, 13.373151F, 6.766866F, 13.495897F);
-      localPath.lineTo(7.0F, 13.5F);
-      localPath.lineTo(13.0F, 13.5F);
-      localPath.cubicTo(16.589851F, 13.5F, 19.5F, 10.58985F, 19.5F, 7.0F);
-      localPath.cubicTo(19.5F, 3.48819F, 16.715004F, 0.6268495F, 13.233134F, 0.504103F);
-      localPath.lineTo(13.0F, 0.5F);
-      localPath.close();
-      WeChatSVGRenderC2Java.setFillType(localPath, 1);
       localCanvas.drawPath(localPath, (Paint)localObject);
       localCanvas.restore();
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
+      localPaint.setColor(-2631721);
       localObject = c.n(paramVarArgs);
       ((Path)localObject).moveTo(12.353554F, 4.02022F);
       ((Path)localObject).lineTo(13.02022F, 4.686887F);
@@ -95,7 +88,7 @@ public final class kr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.kr
  * JD-Core Version:    0.7.0.1
  */

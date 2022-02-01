@@ -25,17 +25,6 @@
                             </LinearLayout>
                             <TextView android:textSize="@dimen/ed" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="bottom" android:id="@id/c0w" android:visibility="invisible" android:layout_width="@dimen/c_" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" android:maxLines="1" />
                         </LinearLayout>
-                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-                                <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-                                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                                    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_width="@dimen/cg" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" android:text="@string/cde" />
-                                    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/ia" android:textColor="@color/y4" android:textColorHint="@color/s5" android:id="@id/c2b" android:background="@color/a7c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" android:hint="@string/c9p" android:layout_weight="1.0" />
-                                </LinearLayout>
-                                <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" />
-                            </LinearLayout>
-                            <TextView android:textSize="@dimen/ed" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="bottom" android:id="@id/c2a" android:visibility="invisible" android:layout_width="@dimen/c_" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" android:text="{signature_limit}" android:maxLines="1" />
-                        </LinearLayout>
                         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c_">
                             <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:onClick="onClickEditSex">
                                 <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_width="@dimen/cg" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" android:text="@string/f_v" />

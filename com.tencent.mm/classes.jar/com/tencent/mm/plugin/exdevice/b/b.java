@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.exdevice.b;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.al.n;
 
 public abstract interface b<T extends n>
 {
@@ -8,7 +8,7 @@ public abstract interface b<T extends n>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gallery.picker.c;
 
 import d.l;
 
-@l(fNY={1, 1, 16}, fNZ={""}, fOa={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaBitmapMemoryCache$Companion;", "", "()V", "MAX_DEFAULT_BITMAP_SIZE", "", "TAG", "", "plugin-gallery_release"})
+@l(gfx={1, 1, 16}, gfy={""}, gfz={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaBitmapMemoryCache$Companion;", "", "()V", "MAX_DEFAULT_BITMAP_SIZE", "", "TAG", "", "plugin-gallery_release"})
 public final class b$a {}
 
 

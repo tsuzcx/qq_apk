@@ -9,9 +9,9 @@ import com.tencent.pb.common.c.b;
 public final class g
   extends d
 {
-  public String tmu;
+  public String ukT;
   
-  public final Object cB(byte[] paramArrayOfByte)
+  public final Object cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62535);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -34,7 +34,7 @@ public final class g
     }
   }
   
-  public final String fBB()
+  public final String fSQ()
   {
     return "CsCmd.Cmd_V_CSModifyVoiceGroupInfoReq";
   }
@@ -46,7 +46,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.g
  * JD-Core Version:    0.7.0.1
  */

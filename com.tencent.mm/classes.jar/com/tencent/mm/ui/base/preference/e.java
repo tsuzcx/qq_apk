@@ -10,7 +10,7 @@ public final class e
   Bitmap bitmap = null;
   int resId = -1;
   
-  public final void m(ImageView paramImageView)
+  public final void n(ImageView paramImageView)
   {
     AppMethodBeat.i(142536);
     if (paramImageView == null)

@@ -2,6 +2,7 @@ package com.tencent.liteav;
 
 import android.content.Context;
 import android.view.Surface;
+import com.tencent.liteav.basic.a.b;
 import com.tencent.liteav.basic.c.a;
 import com.tencent.liteav.basic.d.o;
 import com.tencent.liteav.basic.log.TXCLog;
@@ -66,7 +67,7 @@ public abstract class m
     }
   }
   
-  public void a(n paramn) {}
+  public void a(n paramn, b paramb, Object paramObject) {}
   
   public void a(TXLivePlayer.ITXAudioRawDataListener paramITXAudioRawDataListener) {}
   

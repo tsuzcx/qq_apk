@@ -38,14 +38,14 @@ public class SpeedyLinearLayoutManager
         return localPointF;
       }
     };
-    paramRecyclerView.arZ = paramInt;
+    paramRecyclerView.atQ = paramInt;
     a(paramRecyclerView);
     AppMethodBeat.o(111713);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.SpeedyLinearLayoutManager
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.picker.d;
 
 public abstract interface c
 {
-  public abstract void qm(int paramInt);
+  public abstract void onItemSelected(int paramInt);
 }
 
 
